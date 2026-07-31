@@ -11,9 +11,7 @@ related:
   - deep-report
   - deep-plan
   - deep-research
-  - deep-follow
   - deep-validate
-  - deep-optimize
   - pondering
   - follow-parallel
 ---

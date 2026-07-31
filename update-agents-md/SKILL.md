@@ -1,8 +1,8 @@
----
+﻿---
 name: update-agents-md
 description: สร้างหรืออัปเดท AGENTS.md ตาม project analysis, dependencies สำหรับ root และทุก workspace
 related:
-  - follow-write-skill-md
+  - follow-devin-skills-md
   - follow-monorepo
   - all-workspaces
   - deep-plan
@@ -54,7 +54,7 @@ related:
 > Goal: มีแผนครอบคลุมทุก workspace ก่อนลงมือ
 
 1. ทำ `/deep-plan` ถ้างานซับซ้อนสูงหรือหลาย workspace
-2. ระบุรูปแบบ `AGENTS.md` ตาม `/follow-write-skill-md` (frontmatter + Goal/Scope/Execute/Rules/Expected Outcome)
+2. ระบุรูปแบบ `AGENTS.md` ตาม `/follow-devin-skills-md` (frontmatter + Goal/Scope/Execute/Rules/Expected Outcome)
 3. ระบุ skills และ review-* workflows ที่เกี่ยวข้องจาก dependencies
 4. จัดลำดับ: root → foundation packages → apps
 
@@ -64,7 +64,7 @@ related:
 
 > Goal: ใช้มาตรฐานที่ถูกต้องและไม่ซ้ำซ้อน
 
-1. ทำ `/follow-write-skill-md` เพื่อใช้ format มาตรฐานสำหรับ `AGENTS.md`
+1. ทำ `/follow-devin-skills-md` เพื่อใช้ format มาตรฐานสำหรับ `AGENTS.md`
 2. ทำ `/follow-write-devin-skills` เพื่อรักษา workflow structure
 3. อ่าน global rules จาก `c:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 4. ทำ `/read-related-skills` สำหรับ skills ที่เกี่ยวข้อง
@@ -127,7 +127,7 @@ related:
 
 ### 2. AGENTS.md Format
 
-- ใช้ format ตาม `/follow-write-skill-md` (frontmatter `name`, `description`, `related`)
+- ใช้ format ตาม `/follow-devin-skills-md` (frontmatter `name`, `description`, `related`)
 - มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - เนื้อหาภาษาอังกฤษทั้งหมด
 - ไฟล์ไม่เกิน 250 บรรทัด
@@ -155,7 +155,7 @@ related:
 ## Expected Outcome
 
 - ถ้าเป็น monorepo: root `AGENTS.md` และ workspace `AGENTS.md` ทุก target สมบูรณ์
-- `AGENTS.md` มี frontmatter ตาม `/follow-write-skill-md`
+- `AGENTS.md` มี frontmatter ตาม `/follow-devin-skills-md`
 - `AGENTS.md` มี Goal, Scope, Execute, Rules, Expected Outcome ครบถ้วน
 - Workflows, Skills, Review sections อิงจาก dependencies จริง
 - ผ่าน `/check-reference` และ `/validate`

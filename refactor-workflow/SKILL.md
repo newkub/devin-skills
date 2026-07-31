@@ -1,4 +1,4 @@
-﻿---
+---
 name: refactor-workflow
 description: Refactor โครงสร้าง workflow files แยก/รวม/restructure ลด redundancy
 ---
@@ -9,7 +9,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 
 ## Scope
 
-ใช้สำหรับ refactor โครงสร้าง workflow files ทั้งใน `global_workflows/` และ workspace (`.devin/workflows` หรือ `.windsurf/workflows`) ครอบคลุมการแยก, รวม, restructure steps, ลด redundancy ระหว่าง workflows ไม่รวมการสร้าง workflow ใหม่ (ใช้ `/follow-write-devin-skills`) หรือปรับปรุงเนื้อหา (ใช้ `/improve-workflows`)
+ใช้สำหรับ refactor โครงสร้าง workflow files ทั้งใน `global_workflows/` และ workspace (`.devin/workflows` หรือ `.windsurf/workflows`) ครอบคลุมการแยก, รวม, restructure steps, ลด redundancy ระหว่าง workflows ไม่รวมการสร้าง workflow ใหม่ (ใช้ `/follow-write-devin-skills`) หรือปรับปรุงเนื้อหา (ใช้ `/improve-skills`)
 
 ## Execute
 
@@ -100,7 +100,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 ### 1. Structural Focus
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate
-- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-workflows` แทน)
+- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-skills` แทน)
 - ไม่สร้าง workflow ใหม่ (ใช้ `/follow-write-devin-skills` แทน)
 - รักษา workflow intent เดิม
 
@@ -134,7 +134,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 ### 6. Non-Duplication With Related Workflows
 
 - ใช้ `/follow-write-devin-skills` สำหรับสร้าง workflow ใหม่
-- ใช้ `/improve-workflows` สำหรับปรับปรุงเนื้อหา
+- ใช้ `/improve-skills` สำหรับปรับปรุงเนื้อหา
 - ใช้ `/deep-review` สำหรับ review ก่อน refactor
 - ใช้ `/restructure` สำหรับ restructure ไฟล์และโฟลเดอร์ทั่วไป
 - Workflow นี้เน้นเฉพาะ structural refactor ของ workflow files เท่านั้น

@@ -1,15 +1,15 @@
 ﻿---
-name: prepare-workflow-context
-description: ตรวจจับ AI tool อ่าน global rules related workflows และเลือก template ที่เหมาะสมกับ workflow
+name: prepare-skills-context
+description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ที่เหมาะสมกับ skill
 ---
 
 ## Goal
 
-ตรวจจับ AI tool, อ่าน global rules, related workflows, และเลือก template ที่เหมาะสมกับ workflow ก่อนเริ่มเขียน
+ตรวจจับ AI tool, อ่าน global rules, related skills, และเลือก template ที่เหมาะสมกับ skill ก่อนเริ่มเขียน
 
 ## Scope
 
-ใช้เมื่อจะสร้างหรือปรับปรุง workflow files ใน `global_workflows` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา workflow (ใช้ `/follow-write-devin-skills` แทน) หรือการ validate (ใช้ `/validate-workflow` แทน)
+ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (ใช้ `/follow-devin-skills-md` แทน) หรือการ validate (ใช้ `/validate` แทน)
 
 ## Execute
 
@@ -17,15 +17,16 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 ตรวจจับ AI tool และ directory เป้าหมาย
 
-> Goal: รู้ target AI tool และ workflow directory ก่อนอ่าน context
+> Goal: รู้ target AI tool และ skills directory ก่อนอ่าน context
 
 1. ตรวจจับ AI tool จาก directory:
-   - Windsurf → `~/.codeium/windsurf/global_workflows/`
-   - Codex → `~/.codex/workflows/`
-   - Claude → `~/.claude/workflows/`
-   - OpenCode → `~/.opencode/workflows/`
+   - Windsurf → `~/.codeium/windsurf/skills/` หรือ `%APPDATA%\Codeium\Windsurf\skills\`
+   - Codex → `~/.codex/skills/`
+   - Claude → `~/.claude/skills/`
+   - OpenCode → `~/.opencode/skills/`
+   - Devin CLI → `~/.config/devin/skills/` หรือ `%APPDATA%\devin\skills\`
    - ถ้าตรวจจับไม่ได้ → ถามผู้ใช้ — ถ้าผู้ใช้ไม่ตอบ → stop
-2. ระบุ absolute path ของ workflow directory ที่จะเขียน
+2. ระบุ absolute path ของ skills directory ที่จะเขียน
 3. ระบุ parent directory สำหรับ `global_rules.md`
 
 ### 2. Read Global Rules
@@ -34,29 +35,29 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 > Goal: ไม่ซ้ำซ้อนกับ global rules
 
-1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ workflow directory ที่ตรวจจับได้)
+1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ skills directory ที่ตรวจจับได้)
 2. ระบุ rules หรือขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
 3. ถ้า global_rules.md ไม่มี → ข้ามไปยัง Step 3
 
-### 3. Read Related Workflows And References
+### 3. Read Related Skills And References
 
-อ่าน context ของ workflows ที่เกี่ยวข้อง
+อ่าน context ของ skills ที่เกี่ยวข้อง
 
-> Goal: ไม่ duplicate ขั้นตอนที่ workflows อื่นทำอยู่แล้ว
+> Goal: ไม่ duplicate ขั้นตอนที่ skills อื่นทำอยู่แล้ว
 
 1. parallel: `/read-related-skills` ∥ `/check-reference`
-2. ถ้า workflow เกี่ยวกับ `tools` หรือ `libraries` → เพิ่ม `/follow-best-practice` เข้าไปในชุด parallel
-3. สรุป dependencies และ workflows ที่จะถูกเรียกโดยตรง
+2. ถ้า skill เกี่ยวกับ `tools` หรือ `libraries` → เพิ่ม `/follow-best-practice` เข้าไปในชุด parallel
+3. สรุป dependencies และ skills ที่จะถูกเรียกโดยตรง
 
 ### 4. Select Template By Prefix
 
-เลือก template ตามชนิดของ workflow
+เลือก template ตามชนิดของ skill
 
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
    - `run-*` → `/template-skills-run`
-   - `follow-*` → `/template-skills-follow` (ยกเว้น `follow-*-architecture` → `/template-skills-architecture`)
+   - `follow-*` → `/template-skills-follow` ยกเว้น `follow-*-architecture` → `/template-skills-architecture`
    - `check-*` → `/template-skills-check`
    - `review-*` → `/template-skills-review`
    - `deep-*` → `/template-skills-deep`
@@ -83,19 +84,19 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 - ตรวจจับ AI tool จาก path ก่อนอ่าน context
 - ถ้าตรวจจับไม่ได้ต้องถามผู้ใช้ — ไม่เดา
-- ใช้ `/workflow-name` แทน tool-specific syntax
+- ใช้ `/skill-name` แทน tool-specific syntax
 
 ### 2. No Duplication With Global Rules
 
-- อ่าน `global_rules.md` ก่อนเขียน workflow เสมอ
+- อ่าน `global_rules.md` ก่อนเขียน skill เสมอ
 - ถ้า global rules ครอบคลุมขั้นตอนใดไว้แล้ว → อ้างอิงแทน
-- ไม่เขียนขั้นตอนที่ทำหน้าที่ global rules หรือ workflow อื่น
+- ไม่เขียนขั้นตอนที่ทำหน้าที่ global rules หรือ skill อื่น
 
 ### 3. Template Consistency
 
-- ทุก workflow ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
+- ทุก skill ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
 - ใช้ `template-skills-*` เป็น canonical structure
-- ถ้า workflow เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
+- ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 
 ### 4. Prefix Formulas
@@ -106,7 +107,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 - `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers
 - `review-*`/`analyze-*` → ใช้ `/update-codebase-health-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-format-table`
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
-- `deep-*` → เป็น orchestrator ที่เรียก sub-workflows
+- `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
 - `refactor-to-*` → ใช้ `/follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
 - `improve-*`/`write-*` → ใช้ `/follow-write-devin-skills` เป็นมาตรฐาน, มี review ก่อน improve
@@ -124,7 +125,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 ## Expected Outcome
 
-- รู้ target AI tool, workflow directory, และ parent path ของ `global_rules.md`
+- รู้ target AI tool, skills directory, และ parent path ของ `global_rules.md`
 - ได้ template หรือ general structure ที่เหมาะสมกับ prefix
 - รายการ references ที่ต้องใช้ พร้อมสถานะ valid/invalid
-- ไม่ duplicate กับ global rules หรือ workflows อื่น
+- ไม่ duplicate กับ global rules หรือ skills อื่น

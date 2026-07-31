@@ -1,10 +1,10 @@
----
+﻿---
 name: add-devin-skills
 description: เพิ่ม devin skills ใหม่ลงใน windsurf skills repository ตามมาตรฐาน
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
-  - follow-write-skill-md
+  - follow-devin-skills-md
   - scan-codebase
   - check-reference
   - follow-content-quality
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-เพิ่ม devin skill ใหม่ลงใน `C:\Users\Veerapong\.codeium\windsurf\skills` ตามมาตรฐาน `follow-write-skill-md`
+เพิ่ม devin skill ใหม่ลงใน `C:\Users\Veerapong\.codeium\windsurf\skills` ตามมาตรฐาน `follow-devin-skills-md`
 
 ## Scope
 
@@ -28,17 +28,17 @@ related:
 
 > Goal: รู้ตำแหน่ง source และชื่อ skill ที่ถูกต้อง
 
-1. ทำตาม `scan-codebase` เพื่องหา skill ที่ต้องการเพิ่มใน `C:\Users\Veerapong\AppData\Roaming\devin\skills`
+1. ทำตาม `scan-codebase` เพื่อหา skill ที่ต้องการเพิ่มใน `C:\Users\Veerapong\AppData\Roaming\devin\skills`
 2. ระบุ target name ให้ตรงกับ directory name ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
 3. ตรวจสอบว่า skill ชื่อเดียวกันยังไม่มีอยู่ใน windsurf skills
 
 ### 2. Read References
 
-อ่าน context และ references เพื่องไม่ซ้ำซ้อน
+อ่าน context และ references เพื่อไม่ซ้ำซ้อน
 
 > Goal: ได้ context ครบถ้วนก่อนเขียน skill
 
-1. ทำตาม `check-reference` เพื่องตรวจสอบว่า source skill และ references มีอยู่จริง
+1. ทำตาม `check-reference` เพื่อตรวจสอบว่า source skill และ references มีอยู่จริง
 2. อ่าน `AGENTS.md` ใน `C:\Users\Veerapong\.codeium\windsurf\skills` เพื่อดูมาตรฐาน
 3. อ่าน skills ที่คล้ายกันเพื่อป้องกันการซ้ำซ้อน
 
@@ -49,7 +49,7 @@ related:
 > Goal: สร้าง skill ใหม่ให้ถูกต้อง
 
 1. สร้าง directory `<skill-name>/` ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
-2. ทำตาม `follow-write-skill-md` เพื่อเขียน `SKILL.md`
+2. ทำตาม `follow-devin-skills-md` เพื่อเขียน `SKILL.md`
 3. ถ้ามีไฟล์เพิ่มเติม (`guide/`, `key-concepts/`, `references/`) ให้สร้างตามมาตรฐาน
 4. ทำตาม `follow-content-quality` เพื่อตรวจสอบคุณภาพเนื้อหา
 
@@ -73,7 +73,7 @@ related:
 
 ### 2. Content Standard
 
-- ทำตาม `follow-write-skill-md` สำหรับ frontmatter และ structure
+- ทำตาม `follow-devin-skills-md` สำหรับ frontmatter และ structure
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/workflow-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
@@ -86,5 +86,5 @@ related:
 ## Expected Outcome
 
 - Devin skill ใหม่ถูกเพิ่มลงใน windsurf skills repo
-- `SKILL.md` ถูกต้องตามมาตรฐาน `follow-write-skill-md`
+- `SKILL.md` ถูกต้องตามมาตรฐาน `follow-devin-skills-md`
 - ไม่มี skill ซ้ำหรือ references ขาด

@@ -1,4 +1,4 @@
-﻿---
+---
 name: ship
 description: Ship ครบวงจร ตั้งแต่ planning, review, verify, release โดยมี user confirm ก่อน release
 ---
@@ -19,7 +19,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 > Goal: ตรวจสอบ prerequisites และวางแผนงานก่อน ship
 
-1. ทำ `/read-related-skills` และ `/follow-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+1. ทำ `/read-related-skills` และ `/follow-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 2. ตรวจสอบ `bun install` ผ่าน
 3. ถ้า requirement ไม่ชัดเจน ให้ทำ `/ask-requirement`
 4. ทำ `/deep-plan` เพื่อวางแผนงาน (ถ้าเสี่ยงสูงให้รอยืนยัน user)

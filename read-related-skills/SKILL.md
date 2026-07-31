@@ -2,7 +2,6 @@
 name: read-related-skills
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive ทุกระดับ
 related:
-  - read
   - scan-codebase
   - report-format-table
   - suggest-next-action

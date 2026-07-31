@@ -1,11 +1,10 @@
 ---
 name: follow-write-devin-skills
-description: สร้างหรือปรับปรุง skill package ทั้งหมด รวม SKILL.md และ directory contents
+description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
 related:
-  - follow-write-skill-md
-  - prepare-workflow-context
+  - follow-devin-skills-md
+  - prepare-skills-context
   - use-scripts
-  - follow-parallel
   - validate
   - validate-workflow
   - check-circular-dependencies
@@ -14,15 +13,21 @@ related:
   - template-skills-run
   - template-skills-follow
   - template-skills-check
+  - template-skills-deep
+  - template-skills-review
+  - template-skills-analyze
+  - template-skills-idea
+  - template-skills-report
+  - template-skills-architecture
 ---
 
 ## Goal
 
-สร้างหรือปรับปรุง skill package ทั้งหมด ให้ถูกต้อง กระชับ และสอดคล้องกับ conventions ของ skill repo
+สร้างหรือปรับปรุง skill package ทั้งหมด โดย focus ที่การเลือก template, สร้าง directory structure, และจัดการ references
 
 ## Scope
 
-ใช้สำหรับสร้าง skill ใหมหรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุม `SKILL.md`, directory structure, templates, references, scripts และ validation โดยไม่ทำลาย references เดิม
+ใช้สำหรับสร้าง skill ใหมหรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุม directory, template selection, validation และ references โดยไม่ทำลาย references เดิม
 
 ## Execute
 
@@ -32,7 +37,7 @@ related:
 
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
-1. ทำ `/prepare-workflow-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
+1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
 2. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 3. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
 
@@ -44,24 +49,23 @@ related:
 
 1. เลือก template ตาม prefix:
    - `run-*` → `/template-skills-run`
-   - `follow-*` → `/template-skills-follow`
+   - `follow-*` → `/template-skills-follow` ยกเว้น `follow-*-architecture` → `/template-skills-architecture`
    - `check-*` → `/template-skills-check`
    - `analyze-*` → `/template-skills-analyze`
    - `deep-*` → `/template-skills-deep`
    - `review-*` → `/template-skills-review`
    - `report-*` → `/template-skills-report`
    - `idea-*` → `/template-skills-idea`
-   - `follow-*-architecture` → `/template-skills-architecture`
-2. ถ้าไม่ตรง template → ใช้ `/follow-write-skill-md` เป็น fallback
-3. อ่าน template ที่เลือกเพื่อดู sections และ rules
+2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
+3. อ่าน template ที่เลือกเพื่อดู sections, rules, และ example template
 
 ### 3. Write SKILL.md
 
-สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-write-skill-md`
+สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
 
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
-1. ทำ `/follow-write-skill-md` เพื่อเขียน frontmatter และ prompt body
+1. ทำ `/follow-devin-skills-md` เพื่อเขียน frontmatter และ prompt body
 2. ตรวจสอบว่า `name` ตรงกับ directory name
 3. กำหนด `description` ไม่เกิน 100 ตัวอักษร
 4. ตั้งค่า `allowed-tools` และ `permissions` ตามความเหมาะสม
@@ -100,25 +104,25 @@ related:
 
 ## Rules
 
-### 1. Package Structure
+### 1. Template Selection
+
+- ใช้ `template-skills-*` เป็น canonical structure ตาม prefix
+- `follow-*-architecture` ใช้ `/template-skills-architecture` ไม่ใช่ `follow`
+- ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
+- ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
+
+### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก
 - สามารถมี `references/`, `scripts/`, `guide/`, `examples/` ตามความจำเป็น
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
-### 2. Template Consistency
-
-- ใช้ `template-skills-*` เป็น canonical structure ตาม prefix
-- ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
-- ไม่ duplicate เนื้อหาจาก `/follow-write-skill-md`
-
 ### 3. Flow And Parallelism
 
 - เรียง Foundation → Dependencies → High impact → High-risk เพื่อ fail fast
 - ใช้คำนำหน้า `parallel:` และคั่นด้วย `∥` ใน Execute numbered list
 - ทุก skill ที่เรียกต้องนำหน้าด้วย `ทำตาม`
-- ห้ามใช้ `∥` ใน Rules bullets หรือ Expected Outcome
 
 ### 4. Safety
 
@@ -129,7 +133,8 @@ related:
 ## Expected Outcome
 
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน
-- `SKILL.md` valid ตาม Devin CLI spec ผ่าน `/follow-write-skill-md`
+- `SKILL.md` valid ตาม Devin CLI spec ผ่าน `/follow-devin-skills-md`
+- Template ที่เลือกตรงกับ prefix ของ skill
 - Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - `related` ถูกต้อง ไม่มี missing/unused
 - references อัปเดตครบถ้วน

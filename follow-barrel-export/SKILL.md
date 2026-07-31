@@ -4,12 +4,7 @@ description: แนวทางการสร้างและจัดกา�
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
-  - follow-consistency
   - follow-code-quality
-  - fix-circular-dependencies
-  - follow-import
-  - review-filesystem
-  - separate-of-concerns
 ---
 
 ## Goal

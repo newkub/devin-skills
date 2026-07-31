@@ -8,7 +8,6 @@ related:
   - use-lib-better
   - use-lib-effective
   - prioritize
-  - ship-code
   - update-dot-devin
   - recommend-architecture
   - report-format-table

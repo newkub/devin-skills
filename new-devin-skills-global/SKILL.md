@@ -1,11 +1,11 @@
----
+﻿---
 name: new-devin-skills-global
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
   - follow-write-devin-skills
-  - follow-write-skill-md
+  - follow-devin-skills-md
   - scan-codebase
   - ask-me
   - validate
@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-สร้าง skill ใหม่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-write-skill-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
+สร้าง skill ใหม่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-devin-skills-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
 
 ## Scope
 
@@ -62,7 +62,7 @@ related:
 
 > Goal: skill package ถูกต้องและครบถ้วน
 
-1. ทำ `/follow-write-skill-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
+1. ทำ `/follow-devin-skills-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
 2. ทำ `/follow-write-devin-skills` เพื่อจัดการ directory structure, templates, references, `scripts/`, `guide/`, หรือ `examples/`
 3. กำหนด `name` ให้ตรงกับ directory name
 4. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
@@ -88,7 +88,7 @@ related:
 
 ### Content Standard
 
-- ทำตาม `/follow-write-skill-md` สำหรับการเขียน `SKILL.md`
+- ทำตาม `/follow-devin-skills-md` สำหรับการเขียน `SKILL.md`
 - ทำตาม `/follow-write-devin-skills` สำหรับ directory structure และ templates
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`

@@ -9,7 +9,7 @@ description: ตรวจสอบ workflow file ตาม criteria เฉพา
 
 ## Scope
 
-ใช้กับ workflow files ที่เขียนหรือปรับปรุงเสร็จแล้ว — เรียกจาก `/follow-write-devin-skills` หรือ `/improve-workflows` ก่อน finalize
+ใช้กับ workflow files ที่เขียนหรือปรับปรุงเสร็จแล้ว — เรียกจาก `/follow-write-devin-skills` หรือ `/improve-skills` ก่อน finalize
 
 ## Execute
 
@@ -42,7 +42,7 @@ description: ตรวจสอบ workflow file ตาม criteria เฉพา
 
 > Goal: `related` ถูกต้องและไม่มี broken references
 
-1. ทำ `/check-reference` เพื่องตรวจ broken references
+1. ทำ `/check-reference` เพื่อตรวจ broken references
 2. ตรวจ `related` ไม่มี missing/unused ตาม Execute และ Rules
 3. ถ้าพบ broken หรือ unused → fix แล้ว recheck
 

@@ -7,6 +7,10 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 
 วิเคราะห์ dependencies ปัจจุบัน, เปรียบเทียบ alternatives, และสรุปว่าควรใช้ dependency อะไร
 
+## Scope
+
+ใช้เมื่อต้องเปรียบเทียบ dependencies เพื่อตัดสินใจเลือก library หรือ framework ไม่รวมการ execute การเปลี่ยนแปลง
+
 ## Execute
 
 ### 1. Read Context
@@ -15,7 +19,7 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 
 > Goal: เข้าใจมาตรฐานและ patterns ก่อนเริ่มวิเคราะห์ dependencies
 
-1. ทำ `/follow-workflows` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
+1. ทำ `/follow-skills` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
 2. ทำ `/follow-skills` เพื่ออ่าน skills ที่เกี่ยวข้องกับ libraries และ dependencies
 
 ### 2. Snapshot Current Dependencies

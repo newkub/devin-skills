@@ -8,7 +8,6 @@ related:
   - run-test-e2e
   - run-test-coverage
   - validate
-  - validate-test
   - report
 ---
 
