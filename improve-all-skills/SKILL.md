@@ -1,6 +1,19 @@
 ---
 name: improve-all-skills
 description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
+related:
+  - check-reference
+  - follow-devin-skills-md
+  - improve-consistency
+  - improve-redundancy
+  - improve-skills
+  - report
+  - resolve-errors
+  - scan-codebase
+  - update-agents-md
+  - update-reference
+  - use-scripts
+  - validate
 ---
 
 ## Goal
@@ -19,11 +32,10 @@ description: ปรับปรุง skills ทั้ง global และ proje
 
 > Goal: รู้ไฟล์ที่ต้องปรับปรุงและจัดลำดับความสำคัญ
 
-1. ทำ `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด
-2. ทำ `/check-reference` ตรวจ broken references ข้าม skills
-3. ตรวจสอบไฟล์เกิน 250 บรรทัด, description เกิน 100 ตัวอักษร, หรือ heading ผิด
-4. จัดลำดับตาม impact (skills ที่ใช้บ่อย, มี broken references, หรือไฟล์ยาวก่อน)
-5. ถ้าไม่มี skills directory ให้ stop และ report
+1. parallel: ทำตาม `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด ∥ ทำตาม `/check-reference` ตรวจ broken references
+2. ตรวจสอบไฟล์เกิน 250 บรรทัด, description เกิน 100 ตัวอักษร, หรือ heading ผิด
+3. จัดลำดับตาม impact (skills ที่ใช้บ่อย, มี broken references, หรือไฟล์ยาวก่อน)
+4. ถ้าไม่มี skills directory ให้ stop และ report
 
 ### 2. Plan Batch Update
 
@@ -61,11 +73,8 @@ description: ปรับปรุง skills ทั้ง global และ proje
 
 > Goal: ทุก skills ผ่าน validation พร้อมรายงาน
 
-1. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมด
-2. ทำ `/validate`
-3. ทำ `/follow-devin-skills-md` กับทุก `SKILL.md`
-4. ทำ `/update-agents-md` สำหรับทุก `AGENTS.md`
-5. ทำ `/report` เพื่อสรุปผล
+1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate` ∥ ทำตาม `/follow-devin-skills-md` กับทุก `SKILL.md` ∥ ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`
+2. ทำ `/report` เพื่อสรุปผล
 
 ## Rules
 

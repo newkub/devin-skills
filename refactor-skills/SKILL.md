@@ -1,6 +1,22 @@
 ---
 name: refactor-skills
 description: Refactor โครงสร้าง skill files และ directories เพื่อ SRP และลด redundancy
+related:
+  - check-reference
+  - check-srp
+  - deep-review
+  - dont-over-engineer
+  - follow-devin-skills-md
+  - follow-ordering
+  - improve-redundancy
+  - improve-skills
+  - merge
+  - new-devin-skills-global
+  - read-related-skills
+  - refactor-to-srp
+  - report
+  - scan-codebase
+  - update-reference
 ---
 
 ## Goal
@@ -21,11 +37,10 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 > Goal: รู้ว่า skill ไหนควร refactor และทำไม
 
-1. ทำ `/scan-codebase` เพื่อรวบรวม skill files และ directory structure
-2. ทำ `/read-related-skills` เพื่อสร้าง dependency graph
-3. ระบุ skill ที่มีหลาย responsibility หรือไฟล์เกิน 250 บรรทัด
-4. ระบุ skill ที่มี scope ซ้อนทับกันหรือเนื้อหาซ้ำซ้อน
-5. บันทึก issues พร้อม priority
+1. parallel: ทำตาม `/scan-codebase` ∥ ทำตาม `/read-related-skills`
+2. ระบุ skill ที่มีหลาย responsibility หรือไฟล์เกิน 250 บรรทัด
+3. ระบุ skill ที่มี scope ซ้อนทับกันหรือเนื้อหาซ้ำซ้อน
+4. บันทึก issues พร้อม priority
 
 ### 2. Plan Refactor
 
@@ -101,11 +116,9 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 > Goal: skill ผ่าน validation หลัง refactor
 
-1. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
-2. ตรวจสอบ sections ครบ: Goal, Scope, Execute, Rules, Expected Outcome
-3. ทำ `/check-srp` เพื่อ verify SRP
-4. ทำ `/deep-review` เพื่อ verify ผลการ refactor
-5. ทำ `/report` เพื่อสรุป
+1. parallel: ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ sections ครบ
+2. parallel: ทำตาม `/check-srp` ∥ ทำตาม `/deep-review`
+3. ทำ `/report` เพื่อสรุป
 
 ## Rules
 

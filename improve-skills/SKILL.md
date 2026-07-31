@@ -1,6 +1,26 @@
 ---
 name: improve-skills
 description: ปรับปรุง skill ให้ถูกต้อง ครอบคลุม สอดคล้อง และเป็นไปตาม best practices
+related:
+  - check-correctness
+  - check-reference
+  - deep-research
+  - dont-over-engineer
+  - edit-only
+  - follow-best-practice
+  - follow-content-quality
+  - follow-devin-skills-md
+  - improve-all-skills
+  - improve-consistency
+  - improve-redundancy
+  - refactor-skills
+  - report
+  - review-code-quality
+  - review-coverage
+  - review-delivery
+  - scan-codebase
+  - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -33,10 +53,8 @@ description: ปรับปรุง skill ให้ถูกต้อง ค�
 
 > Goal: skill ผ่านเกณฑ์ structure, frontmatter, references ก่อนปรับปรุง
 
-1. ทำ `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections
-2. ทำ `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึงมีอยู่จริง
-3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด (รวม `SKILL.md` และไฟล์ย่อย)
-4. ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
+1. parallel: ทำตาม `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง
+2. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
 
 ### 3. Research Best Practices
 
@@ -44,10 +62,9 @@ description: ปรับปรุง skill ให้ถูกต้อง ค�
 
 > Goal: เนื้อหาอัปเดตและสอดคล้องกับ official documentation
 
-1. ทำ `/deep-research` สำหรับ tools/libraries ที่ skill เกี่ยวข้อง
-2. ทำ `/follow-best-practice` สำหรับ context ของ skill นั้นๆ
-3. ตรวจสอบว่าข้อมูลเป็นปัจจุบันและสอดคล้องกับ official documentation
-4. ระบุ patterns และ conventions ที่แนะนำจาก findings
+1. parallel: ทำตาม `/deep-research` สำหรับ tools/libraries ที่ skill เกี่ยวข้อง ∥ ทำตาม `/follow-best-practice` สำหรับ context
+2. ตรวจสอบ official documentation และ versions ที่เกี่ยวข้อง
+3. ระบุ patterns และ conventions ที่แนะนำจาก findings
 
 ### 4. Refactor Structure
 
@@ -107,12 +124,10 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 > Goal: skill ผ่าน validation และมีรายงานสรุป
 
-1. ทำ `/check-correctness` อีกครั้งเพื่อ verify
-2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
-3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
-4. ทำ `/validate`
-5. ทำ `/report` เพื่อสรุปการปรับปรุง
-6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. parallel: ทำตาม `/check-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
+2. ทำ `/validate`
+3. ทำ `/report` เพื่อสรุปการปรับปรุง
+4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 

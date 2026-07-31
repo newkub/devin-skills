@@ -1,6 +1,17 @@
 ---
 name: improve-consistency
 description: ตรวจสอบและปรับปรุงความสอดคล้องของ skill files ทั้งภายในและข้าม skill
+related:
+  - check-reference
+  - dont-over-engineer
+  - edit-only
+  - follow-content-quality
+  - improve-skills
+  - report
+  - scan-codebase
+  - update-reference
+  - use-scripts
+  - validate
 ---
 
 ## Goal
@@ -21,10 +32,9 @@ description: ตรวจสอบและปรับปรุงความ�
 
 > Goal: รู้ scope ของการตรวจสอบและ patterns ที่มีอยู่
 
-1. ทำ `/scan-codebase` รวบรวม skill files ทั้งหมด
-2. อ่าน frontmatter ของแต่ละ `SKILL.md` บันทึก `name`, `description`, `related`
-3. ตรวจสอบ directory structure ของแต่ละ skill
-4. ระบุ conventions ที่ใช้ร่วมกัน เช่น heading style, bullet language, backtick usage
+1. ทำตาม `/scan-codebase` รวบรวม skill files ทั้งหมด
+2. parallel: อ่าน frontmatter ของแต่ละ `SKILL.md` ∥ ตรวจสอบ directory structure ของแต่ละ skill
+3. ระบุ conventions ที่ใช้ร่วมกัน เช่น heading style, bullet language, backtick usage
 
 ### 2. Check Structure Consistency
 
@@ -76,9 +86,8 @@ description: ตรวจสอบและปรับปรุงความ�
 
 > Goal: ไม่มี inconsistency เหลือและไม่มี broken references
 
-1. ทำ `/check-reference`
-2. ทำ `/validate`
-3. ทำ `/report` สรุปรายการที่แก้ไข
+1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate`
+2. ทำ `/report` สรุปรายการที่แก้ไข
 
 ## Rules
 
