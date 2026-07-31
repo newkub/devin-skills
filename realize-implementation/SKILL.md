@@ -1,0 +1,119 @@
+---
+name: realize-implementation
+description: แปลงทุกอย่างเป็น production code จริง ครบทุกมิติ
+---
+
+## Goal
+
+แปลงทุกอย่างเป็น production code จริงที่ใช้งานได้จริง ครบทุกมิติ
+
+## Scope
+
+แปลง TODO, MOCK, FAKE, STUB, placeholder เป็น production code ครบทุกมิติ: database, API, UX/UI, schema, types, external services พร้อมเชื่อมต่อ infrastructure จริง end-to-end
+
+## Execute
+
+### 1. Review Codebase Everything
+
+Deep Review codebase ครบทุกมิติก่อนเริ่ม implement
+
+> Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือแปลงเป็น production code
+
+1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+
+### 2. Analyze And Verify Infrastructure
+
+วิเคราะห์สิ่งที่ขาดหายไปและตรวจสอบ infrastructure ก่อนเริ่ม implement
+
+> Goal: รู้สิ่งที่ขาด จัดลำดับ critical path และ infrastructure พร้อม
+
+1. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/review-realize-implementation` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
+2. จัดลำดับตาม critical path: schema → data → API → UX/UI
+3. ตรวจสอบ Database (connection pool, indexes, migrations, backup), API Server (endpoints, rate limiting, CORS, auth), Environment Variables (required, secrets, values)
+4. ถ้ามี External Services → ตรวจสอบ credentials, API keys, rate limits — ถ้ามี Monitoring → ตรวจสอบ metrics collection, alerting rules
+5. ถ้า infrastructure ไม่พร้อม → stop และ report
+
+### 3. Implement Schema And Data Layer
+
+Implement schema, validation schemas, types และ data layer ให้สมบูรณ์
+
+> Goal: Schema สมบูรณ์ และ data queries ใช้งานจริง
+
+1. เพิ่ม schema สำหรับ data models ที่ขาด, สร้าง validation schemas สำหรับ API input/output, สร้าง types จาก schema
+2. ตรวจสอบ type flow: schema → validation schema → API types → UI types
+3. สร้างและรัน migrations สำหรับ schema changes
+4. แทนที่ mock data ด้วย real data queries — implement repository/queries layer สำหรับทุก data models
+5. เพิ่ม error handling สำหรับ data operations — สร้างและรัน seed script สำหรับ testing
+6. ตรวจสอบ data integrity หลัง seed — ถ้า migrations หรือ seed fail ให้ทำ `/resolve-errors` ก่อนดำเนินต่อ
+
+### 4. Implement API And UX/UI Layer
+
+Implement API handlers และเชื่อม UX/UI components กับ real API
+
+> Goal: API เชื่อม data source จริง และ UX/UI ใช้ real API calls
+
+1. Implement API handlers ที่ query data source จริง — เพิ่ม validation สำหรับ input/output ทุก endpoint
+2. Implement auth middleware สำหรับ protected endpoints, rate limiting สำหรับ public endpoints, structured error responses
+3. ตรวจสอบว่า API types ตรงกับ schema และ validation schemas
+4. แทนที่ mock data ใน components ด้วย real API calls — implement loading, error, empty states สำหรับทุก data-driven components
+5. Implement form validation ด้วย validation schemas ที่ตรงกับ API, เชื่อม auth UI กับ auth service จริง
+6. ถ้าเหมาะสม → implement optimistic updates สำหรับ mutations — ถ้า API validation fail ให้ทำ `/resolve-errors`
+
+> Reminder: workflow goal คือแปลงทุกอย่างเป็น production code จริง — schema และ data layer เป็น foundation ก่อน API และ UX/UI
+
+### 5. Convert TODO And Use Libraries
+
+แปลง TODO/FIXME/HACK และ missing features เป็น production code และใช้ libraries ให้ครบ
+
+> Goal: ไม่มี TODO/MOCK/placeholder เหลือ และใช้ libraries ครบ
+
+1. ทำ `/implement-comment-todo`, `/implement-features-to-mvp` — แปลง TODO comments และ implement MVP features
+2. ระบุและ implement missing features ที่เหลือจาก requirements
+3. ทำ `/use-lib-effective` เพื่อวิเคราะห์และใช้งาน libraries ให้เต็มประสิทธิภาพ — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า implementation fail ให้ทำ `/resolve-errors`
+
+### 6. Refactor And Verify
+
+ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
+
+> Goal: โค้ดมีคุณภาพสูง ไม่มี unused code ผ่าน lint
+
+1. ทำ `/refactor`, `/update-reference`, `/review-code-quality`, `/improve-typesafe`, `/review-config` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
+2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
+3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
+
+## Rules
+
+### 1. No Mock Implementations
+
+- ไม่มี mock implementations ใน production code — แทนที่ทุก mock data ด้วย real data queries
+- แทนที่ทุก simulated delay ด้วย actual API calls — แทนที่ทุก in-memory stores ด้วย real databases หรือ caches
+- UX/UI components ต้องใช้ real API calls ไม่ใช่ hardcoded data — ไม่ silently fall back ไปใช้ mock data
+
+### 2. Type Flow And Validation
+
+- Types ต้อง flow ตลอดทั้ง chain: schema → validation schema → API types → UI types
+- ใช้ type inference จาก schema ไม่ประกาศ type ซ้ำ — หลีกเลี่ยง `any` ใช้ `unknown` แทน
+- ใช้ validation schemas สำหรับ runtime validation ที่ทุก boundary — ถ้า schema เปลี่ยน types ทุก layer ต้องอัปเดท
+
+### 3. Security And Resilience
+
+- Validate และ sanitize ทุก user inputs — ใช้ parameterized queries ป้องกัน SQL injection
+- ไม่ expose secrets หรือ API keys ใน client-side code — API keys ต้อง encrypted หรือใช้ secrets manager
+- Throw error ถ้า required environment variables ไม่มี — Validate config ที่ startup time
+- ไม่ crash ทั้ง application เมื่อ service ล่ม — return cached data ถ้าเป็นไปได้ — implement retry logic ด้วย exponential backoff
+
+### 4. UX/UI And Observability
+
+- ทุก data-driven component ต้องมี loading, error, empty states
+- Form validation ด้วย validation schemas ที่ตรงกับ API validation — แสดง user-friendly error messages
+- Structured logging สำหรับทุก external call — metrics สำหรับ response times, error rates — log correlation IDs สำหรับ distributed tracing
+
+## Expected Outcome
+
+- ทุกอย่างเป็น production code จริง ใช้งานได้จริง — ไม่มี TODO/MOCK/placeholder เหลือ
+- Schema, validation schemas, TypeScript types สมบูรณ์และเชื่อมต่อกัน
+- API handlers เชื่อม data source จริง — UX/UI components เชื่อม API จริง
+- Type flow ครบ: schema → validation → API → UI
+- Infrastructure พร้อมสำหรับ production — security, error handling, observability ครบถ้วน
+- Unused dependencies และ files ได้รับการพิจารณา — code ผ่าน lint โดยไม่มี errors/warnings
+- ทุก step มี `, ` markers สำหรับ parallel execution

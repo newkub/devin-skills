@@ -1,0 +1,130 @@
+---
+name: prepare-workflow-context
+description: ตรวจจับ AI tool อ่าน global rules related workflows และเลือก template ที่เหมาะสมกับ workflow
+---
+
+## Goal
+
+ตรวจจับ AI tool, อ่าน global rules, related workflows, และเลือก template ที่เหมาะสมกับ workflow ก่อนเริ่มเขียน
+
+## Scope
+
+ใช้เมื่อจะสร้างหรือปรับปรุง workflow files ใน `global_workflows` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา workflow (ใช้ `/write-workflows` แทน) หรือการ validate (ใช้ `/validate-workflow` แทน)
+
+## Execute
+
+### 1. Detect AI Tool
+
+ตรวจจับ AI tool และ directory เป้าหมาย
+
+> Goal: รู้ target AI tool และ workflow directory ก่อนอ่าน context
+
+1. ตรวจจับ AI tool จาก directory:
+   - Windsurf → `~/.codeium/windsurf/global_workflows/`
+   - Codex → `~/.codex/workflows/`
+   - Claude → `~/.claude/workflows/`
+   - OpenCode → `~/.opencode/workflows/`
+   - ถ้าตรวจจับไม่ได้ → ถามผู้ใช้ — ถ้าผู้ใช้ไม่ตอบ → stop
+2. ระบุ absolute path ของ workflow directory ที่จะเขียน
+3. ระบุ parent directory สำหรับ `global_rules.md`
+
+### 2. Read Global Rules
+
+อ่าน global rules ของ AI tool ถ้ามี
+
+> Goal: ไม่ซ้ำซ้อนกับ global rules
+
+1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ workflow directory ที่ตรวจจับได้)
+2. ระบุ rules หรือขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
+3. ถ้า global_rules.md ไม่มี → ข้ามไปยัง Step 3
+
+### 3. Read Related Workflows And References
+
+อ่าน context ของ workflows ที่เกี่ยวข้อง
+
+> Goal: ไม่ duplicate ขั้นตอนที่ workflows อื่นทำอยู่แล้ว
+
+1. parallel: `/read-related-workflows` ∥ `/check-reference`
+2. ถ้า workflow เกี่ยวกับ `tools` หรือ `libraries` → เพิ่ม `/follow-best-practice` เข้าไปในชุด parallel
+3. สรุป dependencies และ workflows ที่จะถูกเรียกโดยตรง
+
+### 4. Select Template By Prefix
+
+เลือก template ตามชนิดของ workflow
+
+> Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
+
+1. เลือก template ตาม prefix:
+   - `run-*` → `/template-workflows-run`
+   - `follow-*` → `/template-workflows-follow` (ยกเว้น `follow-*-architecture` → `/template-workflows-architecture`)
+   - `check-*` → `/template-workflows-check`
+   - `review-*` → `/template-workflows-review`
+   - `deep-*` → `/template-workflows-deep`
+   - `analyze-*` → `/template-workflows-analyze`
+   - `idea-*` → `/template-workflows-idea`
+   - `report-*` → `/template-workflows-report`
+   - ถ้าไม่ตรง → แนะนำใช้ general structure จาก `/write-workflows`
+2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
+3. ถ้า template ไม่มี → ใช้ `/write-workflows` เป็น fallback
+
+### 5. Confirm Context
+
+ตรวจสอบว่าพร้อมเขียนหรือยัง
+
+> Goal: ไม่ฝืนเขียนเมื่อ context ไม่ชัด
+
+1. ตรวจสอบว่ามี: AI tool, directory, template/structure, dependencies
+2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
+3. ทำ `/suggest-next-action` เพื่องแนะนำ step ถัดไป
+
+## Rules
+
+### 1. AI Tool Detection
+
+- ตรวจจับ AI tool จาก path ก่อนอ่าน context
+- ถ้าตรวจจับไม่ได้ต้องถามผู้ใช้ — ไม่เดา
+- ใช้ `/workflow-name` แทน tool-specific syntax
+
+### 2. No Duplication With Global Rules
+
+- อ่าน `global_rules.md` ก่อนเขียน workflow เสมอ
+- ถ้า global rules ครอบคลุมขั้นตอนใดไว้แล้ว → อ้างอิงแทน
+- ไม่เขียนขั้นตอนที่ทำหน้าที่ global rules หรือ workflow อื่น
+
+### 3. Template Consistency
+
+- ทุก workflow ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
+- ใช้ `template-workflows-*` เป็น canonical structure
+- ถ้า workflow เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
+- Template เองต้องมี `## Example Template`
+
+### 4. Prefix Formulas
+
+- `run-*` → output ไป OS temp directory, ใช้ `/check-configuration` ก่อน, มี error handling และ verification
+- `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
+- `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
+- `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers
+- `review-*`/`analyze-*` → ใช้ `/update-codebase-health-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-format-table`
+- `check-*` → มี pass/fail condition, รายงานเป็นตาราง
+- `deep-*` → เป็น orchestrator ที่เรียก sub-workflows
+- `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
+- `refactor-to-*` → ใช้ `/follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
+- `improve-*`/`write-*` → ใช้ `/write-workflows` เป็นมาตรฐาน, มี review ก่อน improve
+- `create-*`/`add-*`/`delete-*` → มี dry run ก่อน, อัปเดท references ด้วย `/update-reference`
+- `update-*` → ตรวจ git changes ก่อน, ใช้ `/check-should-update`
+- `report-*` → ระบุ output format, ใช้ `/report-format-*`
+- `list-*`/`search-*` → อ่านและแสดงข้อมูลเป็นตาราง, ไม่แก้ไขไฟล์
+- `use-*` → อ้างอิง official documentation, ไม่ reinvent
+- `template-*` → เป็น canonical structure สำหรับ prefix นั้น, ต้องมี `## Example Template`
+
+### 5. Fail Fast
+
+- ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
+- ถ้า template ไม่ตรง → ใช้ general structure จาก `/write-workflows`
+
+## Expected Outcome
+
+- รู้ target AI tool, workflow directory, และ parent path ของ `global_rules.md`
+- ได้ template หรือ general structure ที่เหมาะสมกับ prefix
+- รายการ references ที่ต้องใช้ พร้อมสถานะ valid/invalid
+- ไม่ duplicate กับ global rules หรือ workflows อื่น

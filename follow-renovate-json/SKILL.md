@@ -1,0 +1,4 @@
+---
+name: follow-renovate-json
+---
+

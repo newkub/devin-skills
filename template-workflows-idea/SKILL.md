@@ -1,0 +1,156 @@
+---
+name: template-workflows-idea
+description: Template สำหรับสร้าง idea-* workflows ที่สร้างไอเดียและวิเคราะห์ opportunities
+---
+
+## Goal
+
+Template สำหรับสร้าง `idea-*` workflows ที่สร้างไอเดีย วิเคราะห์ gaps และ opportunities พร้อม continuous numbering
+
+## Scope
+
+ใช้สำหรับ workflows ที่สร้างไอเดีย เช่น `idea-features`, `idea-uxui`, `idea-improve-naming`, `compare-and-idea-features`
+
+## Execute
+
+### 1. Gather Context
+
+รวบรวม context ก่อนสร้างไอเดีย
+
+> Goal: ไอเดียตรงกับ project และ user needs
+
+1. ทำ `/deep-analyze` เพื่อเข้าใจ current state
+2. ทำ `/bench-competitors` ถ้าต้องเปรียบเทียบ
+3. อ่าน user feedback, อ่าน issues, อ่าน feature requests
+4. ระบุ constraints: timeline, budget, team size
+
+### 2. Identify Gaps
+
+ระบุ gaps และ opportunities
+
+> Goal: รู้ว่าขาดอะไร โอกาสอะไร
+
+1. วิเคราะห์ gaps (missing features, UX issues, performance bottlenecks)
+2. ระบุ opportunities: new trends, user pain points, competitive advantages
+3. จัดกลุ่ม gaps ตาม category
+4. จัดลำดับตาม impact และ feasibility
+
+### 3. Generate Ideas
+
+สร้างไอเดียพร้อม continuous numbering
+
+> Goal: ไอเดียที่ actionable และ track ได้
+
+1. สร้างไอเดียสำหรับแต่ละ gap หรือ opportunity
+2. ใช้ continuous numbering (ไม่ต่อจากเดิมถ้ามีอยู่แล้ว)
+3. ระบุ scope สำหรับแต่ละไอเดีย: quick win, short-term, long-term
+4. ระบุ impact และ effort สำหรับแต่ละไอเดีย
+
+### 4. Report
+
+รายงานไอเดียเป็นตาราง
+
+> Goal: ผู้ใช้เห็นไอเดียทั้งหมดพร้อมลำดับความสำคัญ
+
+1. ทำ `/report-format-table` สำหรับ summary
+2. คอลัมน์: number, idea, category, impact, effort, scope
+3. จัดลำดับตาม impact/effort ratio
+4. ทำ `/suggest-next-action`
+
+## Rules
+
+### 1. Actionable
+
+- ทุกไอเดียต้อง actionable ไม่เป็นแค่ concept
+- ระบุ scope และ effort ชัดเจน
+- ถ้าไอเดียซับซ้อน → แบ่งเป็น sub-ideas
+
+### 2. Continuous Numbering
+
+- ใช้ continuous numbering ต่อจากไอเดียเดิมถ้ามี
+- ไม่ reset numbering ระหว่าง runs
+- เก็บไอเดียเดิมไว้ ไม่ลบ
+
+### 3. Evidence-Based
+
+- ทุกไอเดียต้องมีพื้นฐานจาก analysis
+- ระบุ gap หรือ opportunity ที่ไอเดียตอบ
+- ถ้าเป็น creative idea → ระบุ inspiration source
+
+### 4. No Over-Engineering
+
+- ไม่เสนอไอเดียที่ซับซ้อนเกินจำเป็น
+- ถ้าไอเดียต้องการ refactor ใหญ่ → ระบุเป็น long-term
+- ทำ `/dont-over-engineer`
+
+## Expected Outcome
+
+- รายการไอเดียพร้อม continuous numbering
+- ทุกไอเดียมี impact, effort และ scope
+- จัดลำดับตาม impact/effort ratio
+- ผู้ใช้รู้ next action ที่ชัดเจน
+
+## Example Template
+
+```markdown
+---
+title: Idea Features
+description: สร้างไอเดีย features ใหม่พร้อม continuous numbering
+auto_execution_mode: 3
+related:
+  - /deep-analyze
+  - /report-format-table
+  - /suggest-next-action
+---
+
+## Goal
+สร้างไอเดีย features ใหม่พร้อม continuous numbering
+
+## Scope
+ใช้สำหรับ feature ideation ในทุก workspace
+
+## Execute
+
+### 1. Gather Context
+รวบรวม context
+
+> Goal: ไอเดียตรงกับ project
+
+1. ทำ `/deep-analyze` เพื่อเข้าใจ current state
+
+### 2. Identify Gaps
+ระบุ gaps
+
+> Goal: รู้ว่าขาดอะไร
+
+1. วิเคราะห์ gaps: missing features, UX issues
+2. จัดลำดับตาม impact และ feasibility
+
+### 3. Generate Ideas
+สร้างไอเดีย
+
+> Goal: ไอเดีย actionable
+
+1. สร้างไอเดียสำหรับแต่ละ gap
+2. ใช้ continuous numbering
+3. ระบุ scope และ effort
+
+### 4. Report
+รายงาน
+
+> Goal: ผู้ใช้เห็นไอเดียทั้งหมด
+
+1. ทำ `/report-format-table`: number, idea, impact, effort, scope
+2. ทำ `/suggest-next-action`
+
+## Rules
+
+### 1. Actionable
+- ทุกไอเดียต้อง actionable
+
+### 2. Continuous Numbering
+- ไม่ reset numbering ระหว่าง runs
+
+## Expected Outcome
+- รายการไอเดียพร้อม numbering และ impact/effort
+```

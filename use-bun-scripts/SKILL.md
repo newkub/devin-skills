@@ -1,0 +1,122 @@
+---
+name: use-bun-scripts
+description: สร้าง Bun scripts สำหรับ automate งาน
+---
+
+## Goal
+
+สร้าง Bun scripts เพื่อ automate งานและประมวลผลไฟล์
+
+## Execute
+
+### 1. Prepare
+
+1. ทำตาม `/write-workflows` เมื่อสร้างหรือแก้ไข workflow
+
+### 2. Create Script
+
+1. สร้างไฟล์ `.ts` ใน `scripts/temp/` ที่ root workspace เท่านั้น
+2. ไม่ต้องสร้าง scripts ในแต่ละ workspace
+3. เขียนแบบ composable: `createScript()` return state + actions
+4. ใช้ Bun native APIs และ CDN imports
+
+### 3. Execute and Cleanup
+
+1. รัน script ด้วย `bun run <script>.ts`
+2. ลบ scripts จาก `scripts/temp/` หลังใช้งาน
+3. ลบ scripts ที่สร้างด้วย `/write-workflows` หลังใช้งาน
+
+## Rules
+
+### File Location
+
+ตำแหน่งไฟล์สำหรับเก็บ scripts
+
+```
+scripts/temp/    # Global scripts ที่ root workspace เท่านั้น (ลบหลังใช้)
+```
+
+- สร้าง scripts เฉพาะใน `scripts/temp/` ที่ root workspace
+- ไม่สร้าง scripts ใน sub-workspaces หรือแต่ละ workspace
+- ใช้ `.ts` เท่านั้น
+- ตั้งชื่อสื่อถึงการทำงาน
+
+### CDN Imports
+
+ใช้ imports จาก CDN สำหรับ dependencies:
+
+```typescript
+import { z } from "https://esm.sh/zod"
+import { glob } from "https://esm.sh/glob"
+```
+
+- ใช้ `https://esm.sh/` สำหรับ TypeScript packages
+- ใช้ `https://deno.land/` สำหรับ Deno-compatible packages
+- ไม่ต้อง install dependencies ด้วย package manager
+
+### Bun APIs
+
+Bun native APIs ที่ใช้บ่อย
+
+```typescript
+// File operations
+const content = await Bun.file(path).text()
+await Bun.write(outputPath, content)
+
+// Shell commands
+await $`git status`.text()
+
+// File patterns
+for await (const file of new Bun.Glob("**/*.ts").scan()) {
+  // process file
+}
+```
+
+### Script Template
+
+ตัวอย่าง script แบบ composable
+
+```typescript
+#!/usr/bin/env bun
+
+import { z } from "https://esm.sh/zod"
+
+interface ScriptOptions {
+  pattern: string
+}
+
+function createScript(options: ScriptOptions) {
+  const errors: Error[] = []
+  let processed = 0
+
+  async function run() {
+    const files = new Bun.Glob(options.pattern).scan()
+    for await (const file of files) {
+      // Process logic
+      processed++
+    }
+  }
+
+  return { run, errors, processed }
+}
+
+const script = createScript({ pattern: "**/*.ts" })
+await script.run()
+```
+
+### Standards
+
+มาตรฐานการเขียน scripts
+
+- ใช้ `bun` เท่านั้น
+- ใช้ Bun native APIs
+- ใช้ ESM format
+- เขียนแบบ composable: `createScript()` return state + actions
+- ใช้ CDN imports สำหรับ external dependencies
+
+## Expected Outcome
+
+- Bun scripts ที่ใช้งานได้จริง
+- ไม่ต้อง install dependencies
+- Scripts ใน `scripts/temp/` ที่ root workspace เท่านั้น
+- Scripts ที่ใช้แล้วลบออก
