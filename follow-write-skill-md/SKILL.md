@@ -1,177 +1,209 @@
 ---
 name: follow-write-skill-md
-description: เขียนหรือปรับปรุง SKILL.md หนึ่งไฟล์ตามมาตรฐาน skills
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+description: เขียนหรือปรับปรุง SKILL.md หนึ่ยไฟล์ตามมาตรฐาน Devin CLI
 related:
   - follow-write-devin-skills
-  - check-reference
-  - validate
   - follow-content-quality
+  - validate
+  - validate-workflow
+  - check-reference
+  - update-reference
   - ask-me
 ---
 
 ## Goal
 
-สร้างหรือปรับปรุง `SKILL.md` หนึ่งไฟล์ให้ถูกต้อง ใช้งานได้ และสอดคล้องกับ conventions ของ workspace
+สร้างหรือปรับปรุงไฟล์ `SKILL.md` หนึ่ยไฟล์ให้ถูกต้อง สมบูรณ์ และสอดคล้องกับ Devin CLI skill format
 
 ## Scope
 
-ใช้สำหรับ skill files ใน `.devin/skills/`, `.windsurf/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยไม่ซ้ำซ้อนกับ `follow-write-devin-skills`
+ใช้สำหรับเขียนหรือแก้ไฟล์ `SKILL.md` ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดย focus เฉพาะไฟล์ `SKILL.md` ไม่รวมการสร้าง directory หรือ orchestration
 
 ## Execute
 
-### 1. Determine Skill Scope
+### 1. Prepare Skill Context
 
-ระบุขอบเขตและตำแหน่งของ skill
+เตรียม context และตำแหน่งของ `SKILL.md`
 
-> Goal: skill ถูกต้องตาม scope และไม่ซ้ำซ้อน
+> Goal: ทราบ target, conventions, และ template ก่อนเขียน
 
-1. ถ้า skill ใช้เฉพาะ project ให้สร้างใน `.devin/skills/<name>/` หรือ `.windsurf/skills/<name>/`
-2. ถ้า skill ใช้ global ทุก project ให้สร้างใน `~/.config/devin/skills/<name>/` หรือ `~/.codeium/<channel>/skills/<name>/`
-3. ถ้า Windows ให้ใช้ `%APPDATA%\devin\skills\<name>\`
-4. ตรวจสอบว่า skill name ซ้ำกับ existing skills หรือไม่ ถ้าซ้้อให้ extend หรือ rename ก่อน
+1. ระบุ target path ของ `SKILL.md` และ skill name
+2. ทำ `/follow-write-devin-skills` เพื่อเข้าใจ conventions ของ skill repo ปัจจุบัน
+3. ทำ `/learn-from-web` จาก `https://docs.devin.ai/cli/extensibility/skills/overview` และ `https://docs.devin.ai/cli/extensibility/skills/creating-skills` เมื่อต้องการ verify spec
+4. เลือก template ตาม prefix จาก `/template-skills-*` ถ้ามี
+5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 
-### 2. Read Skills Reference
-
-อ่าน reference ก่อนเขียน
-
-> Goal: ใช้ frontmatter และ format ทีกำหนด
-
-1. ทำ `learn-from-web` จาก `https://docs.devin.ai/cli/extensibility/skills/overview` และ `https://docs.devin.ai/cli/extensibility/skills/creating-skills` เมื่อจำเป็น
-2. บันทึก fields ที่ต้องใช้: `name`, `description`, `argument-hint`, `model`, `subagent`, `agent`, `allowed-tools`, `permissions`, `triggers`
-3. ตรวจสอบ allowed tools: `read`, `edit`, `grep`, `glob`, `exec`, และ MCP tools
-4. อ่าน `AGENTS.md` หรือ global rules ของ skill repo เพื่อดู conventions
-
-### 3. Plan Skill Content
-
-วางแผนเนื้อหาก่อนสร้างไฟล์
-
-> Goal: skill มีเนื้อหาครบถ้วน ไม่กว้างเกินไป
-
-1. กำหนด `name` ให้ตรงกับ directory name
-2. เขียน `description` กระชับ ไม่เกิน 100 ตัวอักษร
-3. ตัดสินใจว่าจะใช้ `subagent: true`, `agent: <profile>`, หรือ inline
-4. กำหนด `allowed-tools` เฉพาะที่ skill ต้องใช้จริง
-5. กำหนด `permissions` สำหรับ `allow` / `deny` / `ask` ตามความเสี่ยง
-
-### 4. Create Directory And SKILL.md
-
-สร้างโครงสร้าง skill
-
-> Goal: ไฟล์อยู่ในตำแหน่งที่ถูกต้อง
-
-1. สร้าง directory `<skill-name>/` ในตำแหน่งที่เลือก
-2. สร้างไฟล์ `SKILL.md` ภายใน directory
-3. ถ้า skill มีหลายเนื้อหา ให้สร้าง subdirectories หลังจาก `SKILL.md` หลักเสร็จ (ถ้าจำเป็นมาก)
-
-### 5. Write Frontmatter
+### 2. Write Frontmatter
 
 เขียน YAML frontmatter ตาม Devin CLI spec
 
-> Goal: frontmatter valid และครบถ้วน
+> Goal: frontmatter valid ครบถ้วนและตรง spec
 
-1. ใส่ `name` ให้ตรงกับ directory name
-2. ใส่ `description` กระชับ
-3. ใส่ `argument-hint` ถ้า skill รับ arguments
-4. ใส่ `model` ถ้าต้องการ override model
-5. ใส่ `subagent: true` หรือ `agent: <profile>` ถ้าต้องการรันเป็น subagent
-6. ใส่ `allowed-tools` เฉพาะ tools ที่จำเป็น
-7. ใส่ `permissions` สำหรับ `allow`, `deny`, `ask`
-8. ใส่ `triggers` เป็น `['user']`, `['model']`, หรือ `['user', 'model']` ตามลักษณะการใช้งาน
+1. `name` ตรงกับ directory name ใช้ lowercase คั่นด้วย `-`
+2. `description` กระชับ ≤100 ตัวอักษร
+3. `argument-hint` ถ้า skill รับ arguments (เช่น `[file] [options]`)
+4. `model` ถ้าต้องการ override model (เช่น `sonnet`, `swe`, `opus`)
+5. `subagent: true` ถ้ารันเป็น subagent (experimental)
+6. `agent: <profile>` ถ้าใช้ custom subagent profile (เช่น `reviewer`, `subagent_explore`)
+7. `allowed-tools` จำกัดเฉพาะ tools ที่จำเป็น (เช่น `read`, `edit`, `grep`, `glob`, `exec`)
+8. `permissions` กำหนด `allow`, `deny`, `ask` ตามความเสี่ยง
+9. `triggers` เป็น `['user']`, `['model']`, หรือ `['user', 'model']`
 
-### 6. Write Prompt Content
+### 3. Write Prompt Body
 
-เขียน body ของ `SKILL.md`
+เขียนเนื้อหา prompt หลัง frontmatter
 
-> Goal: prompt ชัดเจน ทำตามได้จริง
+> Goal: prompt ชัดเจน ทำตามได้จริง ไม่เกิน 250 บรรทัด
 
-1. เริ่มด้วย `## Goal` ตอบว่า skill ทำอะไร
-2. เขียน `## Scope` ระบุขอบเขต
-3. เขียน `## Execute` แบ่งเป็น numbered steps พร้อม `> Goal:` ก่อนรายการย่อย
-4. เขียน `## Rules` แยกเป็นหมวดหมู่ตาม single concern
-5. เขียน `## Expected Outcome` สอดคล้องกับ Goal
-6. ถ้า skill มี output ชัดเจน ให้ระบุ output format
+1. `## Goal` ตอบว่า skill ทำอะไร
+2. `## Scope` ระบุขอบเขตและไม่ทับซ้อนกับ skills อื่น
+3. `## Execute` แบ่งเป็น steps ไม่เกิน 10 โดยใช้ `### N. Step Name`, description, `> Goal:`, และ numbered list
+4. `## Rules` จัดกลุ่มเป็น single concern
+5. `## Expected Outcome` ระบุ output format ชัดเจน
+6. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, หรือ `## Examples` เมื่อต้องการเน้นรูปแบบหรือตัวอย่าง
+7. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `/skill-name`
 
-### 7. Validate SKILL.md
+### 4. Apply Quality And Safety
 
-ตรวจสอบคุณภาพก่อนใช้งาน
+ตรวจสอบคุณภาพและความปลอดภัย
 
-> Goal: skill ผ่านเกณฑ์คุณภาพ
+> Goal: skill ปลอดภัย กระชับ และ deterministic
 
-1. ทำ `validate` ตรวจสอบว่าไม่เกิน 250 บรรทัด
-2. ทำ `follow-content-quality` เพื่อตรวจสอบความชัดเจน
-3. ตรวจสอบว่า frontmatter fields ตรงกับ Devin CLI spec
-4. ตรวจสอบว่า `related` references มีอยู่จริง
-5. ถ้ามี subdirectories ตรวจสอบว่าไฟล์ทั้งหมดไม่เกิน 250 บรรทัด
+1. `allowed-tools` จำกัดตาม minimum required
+2. `permissions` ระบุ `deny` สำหรับ paths เสี่ยง (เช่น `/etc/`, system root)
+3. ไม่ใส่ secrets, credentials หรือ hardcoded paths ที่ sensitive
+4. ทุก step มี fail handling: stop/report/ask เมื่อ context ไม่ชัด
+5. ผลลัพธ์ deterministic: input เดียวกัน → output เดียวกัน
 
-### 8. Update References And Ask Next
+### 5. Validate SKILL.md
 
-อัปเดต references และถาม user
+ตรวจสอบไฟล์ก่อน finalize
 
-> Goal: skill พร้อมใช้งานและ references ครบถ้วน
+> Goal: SKILL.md ผ่านเกณฑ์ทั้งหมด
 
-1. ทำ `update-reference` ถ้ามีการอ้างอิงไฟล์อื่น
-2. ทำ `ask-me` ถ้าต้องตัดสินใจเรื่องสำคัญ
-3. รายงานชื่อ skill, ตำแหน่งไฟล์, และสถานะ validation
+1. ทำ `/validate` ตรวจความถูกต้อง
+2. ทำ `/validate-workflow` ตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+3. ทำ `/check-reference` ตรวจ `related` references
+4. ถ้ามีปัญหา → แก้และ revalidate (max 3 → stop/report)
+
+### 6. Update References
+
+อัปเดต references หลังเสร็จ
+
+> Goal: references ครบถ้วน
+
+1. ทำ `/update-reference` ถ้ามีการเปลี่ยนชื่อหรือเพิ่ม references
+2. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules
 
-### 1. File Location
+### 1. File And Location
 
-- project skills: `.devin/skills/<name>/SKILL.md` หรือ `.windsurf/skills/<name>/SKILL.md`
-- global skills: `~/.config/devin/skills/<name>/SKILL.md` หรือ `~/.codeium/<channel>/skills/<name>/SKILL.md`
-- Windows global skills: `%APPDATA%\devin\skills\<name>\SKILL.md`
+- `SKILL.md` อยู่ใน `<skill-name>/` ของ skill directory
+- ตำแหน่งรองรับ: `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, `%APPDATA%\devin\skills\`
 - directory name ต้องตรงกับ `name` ใน frontmatter
 
-### 2. Frontmatter Standard
+### 2. Frontmatter Fields
 
-- `name` ตรงกับ directory name
-- `description` กระชับ ไม่เกิน 100 ตัวอักษร
-- `argument-hint` optional: ระบุเฉพาะเมื่อ skill รับ arguments
-- `model` optional: ใช้ค่าเดียวกับ `--model` CLI flag
-- `subagent` optional: `true` ถ้าต้องการรันเป็น subagent
-- `agent` optional: profile name ถ้าต้องการรันด้วย custom subagent
-- `allowed-tools` optional: แต่แนะนำให้จำกัดเฉพาะที่จำเป็น
-- `permissions` optional: ใช้ syntax `allow`, `deny`, `ask`
-- `triggers` optional: ค่าเริ่มต้น `['user', 'model']`
+- `name` (required): ตรง directory name
+- `description` (required): ≤100 ตัวอักษร
+- `argument-hint` (optional): ระบุเฉพาะเมื่อ skill รับ arguments
+- `model` (optional): `sonnet`, `swe`, `opus`, `codex`
+- `subagent` (optional): `true` หรือ `false`
+- `agent` (optional): profile name สำหรับ custom subagent
+- `allowed-tools` (recommended): `read`, `edit`, `grep`, `glob`, `exec` หรือ MCP tools
+- `permissions` (optional): `allow`, `deny`, `ask`
+- `triggers` (optional): default `['user', 'model']`
 
 ### 3. Content Structure
 
-- เรียง `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-- ไฟล์ไม่เกิน 250 บรรทัด
+- ลำดับ sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
+- ใช้ `## Key Concepts`, `## Principles`, `## Guide`, `## Examples` เป็นส่วนเสริม
 - heading ภาษาอังกฤษ Title Case, รายการเนื้อหาภาษาไทย
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
-- ไม่ใช้ TODO/MOCK/placeholder โดยไม่จำเป็น
+- ไม่เกิน 250 บรรทัดต่อ `SKILL.md`
+- ไม่ใช้ `**` (bold markers) ใช้ backticks สำหรับ emphasis
 
-### 4. Safety And Permissions
-
-- `allowed-tools` จำกัดตาม minimum required
-- `permissions` deny สำหรับ paths ที่เสี่ยง เช่น `/etc/`, รากระบบ
-- `permissions` ask สำหรับ write ที่สำคัญถ้า skill ไม่ได้รับอนุญาต auto
-- ไม่ใส่ secrets หรือ credentials ใน prompt content
-
-### 5. Subagent And Model
+### 4. Subagent And Model
 
 - ใช้ `subagent: true` สำหรับงาน focused, self-contained
-- ใช้ `agent: <profile>` เมื่อต้องการ profile เฉพาะ เช่น `subagent_explore` สำหรับ research
-- `model` optional: ใช้เมื่อต้องการความสามารถเฉพาะ เช่น coding, reasoning
+- ใช้ `agent: <profile>` เมื่อต้องการ profile เฉพาะ
+- ถ้า `agent` และ `subagent` ตั้งค่าทั้งคู่ `agent` มี precedence
+- skill ที่รันเป็น subagent จะไม่ spawn nested subagents
 
-### 6. References And Non-Redundancy
+### 5. Safety And Permissions
 
-- ลบข้อความที่ซ้ำซ้อนระหว่าง Execute และ Rules
-- ใช้ references แทนการ duplicate เนื้อหา
-- ทำ `check-reference` เพื่อตรวจสอบ references มีอยู่จริง
-- เมื่อแก้ไข skill ให้ตรวจสอบ dependent skills
-- ถ้ามีการเปลี่ยนชื่อ ย้าย หรือลบ skill ให้ทำ `edit-relative`
-- อ่าน skills ที่เกี่ยวข้องก่อนเขียน
-- ถ้าอ้างถึง skills อย่าพยายามเขียนซ้ำกับไฟล์ที่อ้างไป เขียนแค่ว่าให้ทำตามที่อ้างไป
-- เมื่อใช้ reference ให้เขียนเป็น `ทำตาม `skill-name`` หรือ `ดูจาก `skill-name``
+- `allowed-tools` จำกัดตาม minimum required
+- `permissions` ระบุ `deny` สำหรับ system paths ที่เสี่ยง
+- `permissions` ระบุ `ask` สำหรับ write ที่สำคัญ
+- ไม่ใส่ secrets หรือ credentials ใน prompt
 
 ## Expected Outcome
 
-- `SKILL.md` หนึ่งไฟล์ถูกสร้างหรือปรับปรุงตามมาตรฐาน
-- frontmatter valid และครบถ้วน
-- เนื้อหาไม่เกิน 250 บรรทัด
-- `related` references มีอยู่จริง
-- skill สามารถเรียกใช้ได้โดยไม่ error
+- `SKILL.md` ที่ valid ตาม Devin CLI spec
+- frontmatter ครบถ้วนและถูกต้อง
+- prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
+- ไม่เกิน 250 บรรทัด
+- references อัปเดตครบถ้วน
+
+## Examples
+
+```markdown
+---
+name: review
+description: Review staged changes for issues
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+permissions:
+  allow:
+    - Exec(git diff)
+    - Exec(git log)
+triggers:
+  - user
+---
+
+## Goal
+
+Review the current git diff and provide feedback
+
+## Scope
+
+ใช้ก่อน commit เพื่อตรวจสอบความถูกต้อง
+
+## Execute
+
+### 1. Get Diff
+
+แสดง diff ที่จะ commit
+
+> Goal: รู้สิ่งที่เปลี่ยนแปลง
+
+1. รัน `git diff --staged` หรือ `git diff` ถ้ายังไม่ได้ stage
+2. บันทึก files ที่เปลี่ยน
+
+### 2. Review Changes
+
+ตรวจสอบ changes
+
+> Goal: หาปัญหาที่อาจเกิดขึ้น
+
+1. ตรวจ logic errors หรือ edge cases
+2. ตรวจ security issues
+3. ตรวจ style inconsistencies
+4. สรุป findings พร้อม line references
+
+## Rules
+
+### 1. Review Focus
+
+- ตรวจ correctness, security, performance, style
+- ให้ specific line references
+- ไม่แก้ source โดยไม่ได้รับอนุญาต
+
+## Expected Outcome
+
+- สรุป findings พร้อม specific line references
+- แนะนำ improvements ที่ actionable
+```

@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-สร้าง skill ใหม่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` ตามมาตรฐาน และใช้ `follow-write-devin-skills` เป็นหลักสำหรับเขียน `SKILL.md`
+สร้าง skill ใหม่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-write-skill-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
 
 ## Scope
 
@@ -56,14 +56,14 @@ related:
 2. สร้าง `SKILL.md` เปล่าภายใน directory
 3. ถ้าต้องการ child directories (`guide/`, `references/`, `scripts/`) ให้สร้างตามทีจำเป็น
 
-### 4. Write SKILL.md
+### 4. Write SKILL.md And Directory
 
-เขียน `SKILL.md` โดยใช้ follow-write-devin-skills
+สร้าง `SKILL.md` และ directory contents โดยใช้ทั้งสอง skills
 
-> Goal: `SKILL.md` ถูกต้องตามมาตรฐาน
+> Goal: skill package ถูกต้องและครบถ้วน
 
-1. ทำ `follow-write-skill-md` เพื่อเขียน `SKILL.md` หลัก
-2. ถ้า skill ต้องการ subdirectories หรือหลายไฟล์ ให้ทำ `follow-write-devin-skills`
+1. ทำ `/follow-write-skill-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
+2. ทำ `/follow-write-devin-skills` เพื่อจัดการ directory structure, templates, references, `scripts/`, `guide/`, หรือ `examples/`
 3. กำหนด `name` ให้ตรงกับ directory name
 4. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
 
@@ -88,7 +88,8 @@ related:
 
 ### Content Standard
 
-- ทำตาม `follow-write-devin-skills` สำหรับโครงสร้างและมาตรฐาน
+- ทำตาม `/follow-write-skill-md` สำหรับการเขียน `SKILL.md`
+- ทำตาม `/follow-write-devin-skills` สำหรับ directory structure และ templates
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
