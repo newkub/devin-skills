@@ -1,12 +1,19 @@
 ﻿---
 name: rewrite-files
-description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมด โดยใช้ /devin:assume-reset-context
-auto_execution_mode: 3
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
   - assume-reset-context
-  - follow-write-devin-skills
   - follow-write-devin-skills
   - edit-relative
   - scan-codebase

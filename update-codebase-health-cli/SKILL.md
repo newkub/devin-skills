@@ -1,6 +1,23 @@
 ﻿---
 name: update-codebase-health-cli
-description: สร้างและอัปเดท codebase health CLI ใน tools/health ที่ root ตาม /report-codebase-health 60+ categories
+description: สร้างและอัปเดท codebase health CLI ใน tools/health
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-codebase-health
+  - check-should-update
+  - report-deps
+  - use-scripts
+  - bun
 ---
 
 ## Goal

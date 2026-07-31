@@ -1,6 +1,17 @@
 ﻿---
 name: update-agents-md
-description: สร้างหรืออัปเดท AGENTS.md ตาม project analysis, dependencies สำหรับ root และทุก workspace
+description: สร้างหรืออัปเดท AGENTS.md ตาม project analysis และ dependencies
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
   - follow-devin-skills-md
   - follow-monorepo

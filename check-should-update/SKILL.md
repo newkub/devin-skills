@@ -1,6 +1,20 @@
 ---
 name: check-should-update
-description: ตรวจสอบ git changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่ ก่อนเริ่มงาน
+description: ตรวจสอบ changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - check-git-diff
+  - check-files-diff
+  - report-format-table
+  - ask-me
 ---
 
 ## Goal
@@ -13,18 +27,19 @@ description: ตรวจสอบ git changes เพื่อตัดสิน
 
 ## Execute
 
-### 1. Check Git Changes
+### 1. Check Changes
 
-ตรวจสอบ git changes ของ target paths ที่เกี่ยวข้อง
+ตรวจสอบ changes ของ target paths ที่เกี่ยวข้อง
 
 > Goal: รู้ว่า target ต้องอัปเดทตาม code changes หรือไม่ ไม่เสียเวลาอัปเดทถ้าไม่มีอะไรเปลี่ยน
 
 1. ระบุ target paths ที่ต้องเช็คจาก calling workflow
-2. รัน `git -C <project-root> diff --name-only HEAD~1 -- <target-path>` สำหรับแต่ละ path
-3. รวมผลจากทุก path เป็น changed files list
-4. ถ้าไม่มี git changes เลย → return `skip` (ข้ามไป validate สิ่งที่มีอยู่)
-5. ถ้ามี git changes → return `update` (ทำตามขั้นตอนถัดไปของ calling workflow)
-6. ถ้าเป็นการรันครั้งแรก (target ยังไม่มี) → return `create` (ทำตามขั้นตอนสร้างใหม่ของ calling workflow)
+2. ถ้า target อยู่ใน git repo → ทำ `/check-git-diff` โดยระบุ `<project-root>` และ refs `HEAD~1...HEAD`
+3. ถ้า target ไม่อยู่ใน git หรือต้องเทียบไฟล์โดยตรง → ทำ `/check-files-diff` ระหว่างสอง path
+4. รวมผลจากทุก path เป็น changed files list
+5. ถ้าไม่มี changes เลย → return `skip` (ข้ามไป validate สิ่งที่มีอยู่)
+6. ถ้ามี changes → return `update` (ทำตามขั้นตอนถัดไปของ calling workflow)
+7. ถ้าเป็นการรันครั้งแรก (target ยังไม่มี) → return `create` (ทำตามขั้นตอนสร้างใหม่ของ calling workflow)
 
 ## Rules
 

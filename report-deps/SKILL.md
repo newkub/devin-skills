@@ -1,20 +1,24 @@
 ---
 name: report-deps
----
-
----
-title: Report Deps
 description: สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses
-auto_execution_mode: 3
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-  - /report-format-table
-  - /list-dependencies
-  - /run-audit
-  - /check-unused-deps
-  - /run-install
-  - /update-dependencies-latest
-  - /delete
-  - /suggest-next-action
+  - report-format-table
+  - list-dependencies
+  - run-audit
+  - check-unused-deps
+  - run-install
+  - update-dependencies-latest
+  - delete
+  - suggest-next-action
 ---
 
 ## Goal
@@ -107,79 +111,3 @@ related:
 - มี priority actions ชัดเจน
 - ไม่มีการแก้ไข dependencies จริง — read-only report
 
-## Example Template
-
-```markdown
----
-title: Report Deps
-description: สรุป dependencies ของโปรเจกต์
-auto_execution_mode: 3
-related:
-  - /list-dependencies
-  - /run-audit
-  - /check-unused-deps
-  - /report-format-table
-  - /suggest-next-action
----
-
-## Goal
-
-รายงานสถานะ dependencies ของโปรเจกต์
-
-## Scope
-
-ใช้กับ project ที่มี package manifest
-
-## Execute
-
-### 1. Gather Data
-
-รวบรวม dependencies
-
-> Goal: มี inventory ครบ
-
-1. ทำ `/list-dependencies`
-2. ทำ `/run-audit`
-3. ทำ `/check-unused-deps`
-
-### 2. Analyze
-
-วิเคราะห์สถานะ
-
-> Goal: หา issues
-
-1. จัดกลุ่มตาม latest, outdated, unused, vulnerable
-2. ระบุ priority
-
-### 3. Format
-
-จัดรูปแบบตาราง
-
-> Goal: report อ่านง่าย
-
-1. ทำ `/report-format-table`
-
-### 4. Present
-
-นำเสนอพร้อม next steps
-
-> Goal: รู้ next action
-
-1. สรุป findings
-2. ทำ `/suggest-next-action`
-
-## Rules
-
-### 1. Read-Only
-
-- ไม่ติดตั้ง ไม่อัปเดต ไม่ลบ dependencies
-
-### 2. Output
-
-- ใช้ `/report-format-table` สำหรับผลลัพธ์
-
-## Expected Outcome
-
-- สรุป dependencies ในตาราง
-- ระบุ issues และ next actions
-```

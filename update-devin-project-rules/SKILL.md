@@ -1,6 +1,23 @@
 ---
 name: update-devin-project-rules
-description: อัพเดท .devin/rules ตาม project analysis และ dependencies จริง โดยแบ่งกลุ่ม libs, code-quality, architecture
+description: อัพเดท .devin/rules ตาม project analysis และ dependencies
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-release-changelog
+  - check-release-changelog
+  - analyze-project
+  - update-dot-devin
+  - update-agents-md
 ---
 
 ## Goal
@@ -64,7 +81,18 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 
 4. อัพเดทเนื้อหา rules ให้สอดคล้องกับ version และ config ปัจจุบัน
 
-### 4. Update Model Decision Rules
+### 4. Check Library Release Changelogs
+
+ตรวจสอบ release changelogs ของ dependencies ที่มีการเปลี่ยนแปลง
+
+> Goal: รู้ breaking changes, features, และ fixes ของ libraries ก่อนเขียน rules
+
+1. ระบุ dependencies ที่มี version เปลี่ยนแปลงหรือเพิ่มใหม่จาก `package.json`
+2. ทำ `/check-release-changelog` โดยระบุ repo และ tags (from → to) ของแต่ละ dependency
+3. ทำ `/report-release-changelog` เพื่อสรุปข้อมูลทีสำคัญ
+4. นำข้อมูล breaking changes, new features, และ anti-patterns มาปรับปรุง rules ใน `.devin/rules/always-on/libs/`
+
+### 5. Update Model Decision Rules
 
 อัพเดท rules ใน `.devin/rules/model_decision/` สำหรับ domain patterns
 
@@ -77,7 +105,7 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 5. ถ้า domain เก่าที่ไม่ใช้แล้วให้ลบไฟล์ทิ้ง
 6. พยายามเขียน rules ให้ครอบคลุม: architecture, data flow, error handling, security, testing, integration points, anti-patterns
 
-### 5. Update Glob Rules
+### 6. Update Glob Rules
 
 อัพเดท rules ใน `.devin/rules/glob/` สำหรับ file patterns
 
@@ -90,7 +118,7 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 5. ถ้า pattern เก่าที่ไม่ใช้แล้วให้ลบไฟล์ทิ้ง
 6. อัพเดท `globs:` list ให้สอดคล้องกับ directory structure ปัจจุบัน
 
-### 6. Validate And Finalize
+### 7. Validate And Finalize
 
 ตรวจสอบและ finalize rules ทั้งหมด
 

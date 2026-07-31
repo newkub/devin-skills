@@ -1,17 +1,21 @@
 ---
 name: report-api
----
-
----
-title: Report Api
-description: สรุป API endpoints: paths, methods, validation, auth, rate limiting status
-auto_execution_mode: 3
+description: สรุป API endpoints: paths, methods, validation, auth, rate limiting
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-  - /report-format-table
-  - /scan-codebase
-  - /review-backend
-  - /resolve-errors
-  - /suggest-next-action
+  - report-format-table
+  - scan-codebase
+  - review-backend
+  - resolve-errors
+  - suggest-next-action
 ---
 
 ## Goal
@@ -103,74 +107,3 @@ related:
 - มี recommendations ชัดเจน
 - ไม่มีการแก้ไข API code — read-only report
 
-## Example Template
-
-```markdown
----
-title: Report Api
-description: สรุป API endpoints ของโปรเจกต์
-auto_execution_mode: 3
-related:
-  - /scan-codebase
-  - /report-format-table
-  - /suggest-next-action
----
-
-## Goal
-
-รายงาน API endpoints ของโปรเจกต์
-
-## Scope
-
-ใช้กับ project ที่มี route handlers หรือ oRPC procedures
-
-## Execute
-
-### 1. Gather Data
-
-รวบรวม endpoints
-
-> Goal: มี endpoints ครบ
-
-1. ทำ `/scan-codebase` เพื่อหา route definitions
-
-### 2. Analyze
-
-วิเคราะห์ gaps
-
-> Goal: หา issues
-
-1. ระบุ endpoints ที่ขาด validation หรือ auth
-
-### 3. Format
-
-จัดรูปแบบตาราง
-
-> Goal: report อ่านง่าย
-
-1. ทำ `/report-format-table`
-
-### 4. Present
-
-นำเสนอพร้อม next steps
-
-> Goal: รู้ next action
-
-1. สรุป findings
-2. ทำ `/suggest-next-action`
-
-## Rules
-
-### 1. Read-Only
-
-- ไม่แก้ไข API code
-
-### 2. Output
-
-- ใช้ `/report-format-table` สำหรับผลลัพธ์
-
-## Expected Outcome
-
-- รายการ endpoints ในตาราง
-- ระบุ gaps และ next actions
-```
