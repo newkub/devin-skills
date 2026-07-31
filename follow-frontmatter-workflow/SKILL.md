@@ -207,5 +207,5 @@ related:
 
 - Workflow frontmatter มี 22 fields ครบ — 8 required + 14 optional
 - Metadata ช่วยให้ search, sorting, safety decision, auto-run policy, lifecycle management และ output tracking ทำงานได้
-- `/write-workflows` อ้างอิง workflow นี้แทนการ duplicate frontmatter spec
+- `/follow-write-devin-skills` อ้างอิง workflow นี้แทนการ duplicate frontmatter spec
 - Validation checklist ใช้ตรวจสอบได้ deterministic — input เดียวกัน → pass/fail เหมือนกันทุกครั้ง

@@ -11,7 +11,7 @@ description: ปรับปรุง workflow ให้ถูกต้อง �
 
 ใช้สำหรับปรับปรุง workflow หนึ่งไฟล์หรือกลุ่มย่อย ทั้งใน `global_workflows/` และ workspace (`.devin/workflows` หรือ `.windsurf/workflows`)
 
-หมายเหตุ: สำหรับ batch update ทั้งหมด ใช้ `/improve-all-workflows` แทน
+หมายเหตุ: สำหรับ batch update ทั้งหมด ใช้ `/improve-all-skills` แทน
 
 ## Execute
 
@@ -134,7 +134,7 @@ description: ปรับปรุง workflow ให้ถูกต้อง �
 
 ## Expected Outcome
 
-- Workflow ถูกต้องตามมาตรฐาน `/write-workflows`
+- Workflow ถูกต้องตามมาตรฐาน `/follow-write-devin-skills`
 - ไม่มี broken references
 - เนื้อหาครอบคลุมและเป็นไปตาม best practices
 - ไฟล์ไม่เกิน 250 บรรทัด

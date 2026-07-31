@@ -44,19 +44,18 @@ description: Write AGENTS.md according to project analysis and dependencies
 3. ระบุ tech stack และ frameworks ที่ใช้
 4. วิเคราะห์ patterns และ conventions ที่มีอยู่
 
-### 4. Identify Workflows And Skills
+### 4. Identify Skills
 
-ระบุ workflows และ skills ที่ควร follow จาก dependencies
+ระบุ skills ที่ควร follow จาก dependencies
 
-> Goal: รู้ workflows และ skills ที่ต้องเขียนใน AGENTS.md
+> Goal: รู้ skills ที่ต้องเขียนใน AGENTS.md
 
 1. ดู dependencies ใน `package.json` ทั้ง root และ workspace
-2. ทำ `/list-global-workflows` เพื่อดู workflows ที่มีอยู่ทั้งหมด
-3. ทำ `/list-skills` เพื่อดู skills ในเครื่องทั้งหมด
-4. ถ้าไม่มี skills ที่เกี่ยวข้องในเครื่อง ให้ทำ `/search-skills` เพื่อค้นหา skills จาก external registry ที่เกี่ยวข้องกับ dependencies
-5. ระบุ workflows ที่ควร follow สำหรับแต่ละ dependency
-6. ระบุ skills ที่ควร follow จากผลลัพธ์ของ `/list-skills` และ `/search-skills` (ถ้ามี)
-7. ถ้า project ต้องการ refactor หรือ restructure บ่อย ให้ระบุ `/refactor-codebase`
+2. ทำ `/list-skills` เพื่อดู skills ในเครื่องทั้งหมด
+3. ถ้าไม่มี skills ที่เกี่ยวข้องในเครื่อง ให้ทำ `/search-skills` เพื่อค้นหา skills จาก external registry ที่เกี่ยวข้องกับ dependencies
+4. ระบุ skills ที่ควร follow สำหรับแต่ละ dependency
+5. ระบุ skills ที่ควร follow จากผลลัพธ์ของ `/list-skills` และ `/search-skills` (ถ้ามี)
+6. ถ้า project ต้องการ refactor หรือ restructure บ่อย ให้ระบุ `/refactor-codebase`
 
 ### 5. Identify Reviews
 

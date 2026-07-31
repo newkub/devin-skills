@@ -70,7 +70,7 @@ Configure IPC สำหรับ communication ระหว่าง processes
 
 ## Related Skills
 
-- `follow-write-skills` - มาตรฐานการเขียน skills
+- `follow-write-devin-skills` - มาตรฐานการเขียน skills
 - lang-javascript
 - lang-typescript
 - bun

@@ -65,7 +65,7 @@ Build สำหรับ platform ที่ต้องการ
 
 ## Related Skills
 
-- `follow-write-skills` - มาตรฐานการเขียน skills
+- `follow-write-devin-skills` - มาตรฐานการเขียน skills
 - lang-dart
 
 

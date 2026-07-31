@@ -15,7 +15,7 @@ description: ใช้งาน ast-grep สำหรับ code search, linting
 
 ### 1. Prepare
 
-- ทำ `/write-workflows` เมื่อสร้างหรือแก้ไข workflow
+- ทำ `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 - ติดตั้ง ast-grep CLI: `bun add -g @ast-grep/cli`
 - รัน `ast-grep new` สร้าง project scaffolding (ถ้ายังไม่มี)
 - สร้าง folder `rules/` สำหรับเก็บ rule files

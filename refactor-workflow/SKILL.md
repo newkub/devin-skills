@@ -9,7 +9,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 
 ## Scope
 
-ใช้สำหรับ refactor โครงสร้าง workflow files ทั้งใน `global_workflows/` และ workspace (`.devin/workflows` หรือ `.windsurf/workflows`) ครอบคลุมการแยก, รวม, restructure steps, ลด redundancy ระหว่าง workflows ไม่รวมการสร้าง workflow ใหม่ (ใช้ `/write-workflows`) หรือปรับปรุงเนื้อหา (ใช้ `/improve-workflows`)
+ใช้สำหรับ refactor โครงสร้าง workflow files ทั้งใน `global_workflows/` และ workspace (`.devin/workflows` หรือ `.windsurf/workflows`) ครอบคลุมการแยก, รวม, restructure steps, ลด redundancy ระหว่าง workflows ไม่รวมการสร้าง workflow ใหม่ (ใช้ `/follow-write-devin-skills`) หรือปรับปรุงเนื้อหา (ใช้ `/improve-workflows`)
 
 ## Execute
 
@@ -43,7 +43,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 1. ระบุ workflow ที่เกิน 250 บรรทัดหรือมีหลาย responsibilities
 2. ทำ `/refactor` เพื่อระบุ responsibility ของ workflow ก่อน split — แบ่งเป็น sub-workflows ตาม single responsibility principle
 3. สร้าง orchestrator workflow ที่อ้างถึง sub-workflows ผ่าน `related_workflows`
-4. ทำ `/write-workflows` สำหรับ sub-workflows ใหม่
+4. ทำ `/follow-write-devin-skills` สำหรับ sub-workflows ใหม่
 5. ทำ `/update-reference` เพื่ออัปเดท references ทั้งหมด
 
 ### 4. Merge Redundant Workflows
@@ -101,7 +101,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate
 - ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-workflows` แทน)
-- ไม่สร้าง workflow ใหม่ (ใช้ `/write-workflows` แทน)
+- ไม่สร้าง workflow ใหม่ (ใช้ `/follow-write-devin-skills` แทน)
 - รักษา workflow intent เดิม
 
 ### 2. Non-Redundancy
@@ -133,7 +133,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 
 ### 6. Non-Duplication With Related Workflows
 
-- ใช้ `/write-workflows` สำหรับสร้าง workflow ใหม่
+- ใช้ `/follow-write-devin-skills` สำหรับสร้าง workflow ใหม่
 - ใช้ `/improve-workflows` สำหรับปรับปรุงเนื้อหา
 - ใช้ `/deep-review` สำหรับ review ก่อน refactor
 - ใช้ `/restructure` สำหรับ restructure ไฟล์และโฟลเดอร์ทั่วไป

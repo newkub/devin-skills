@@ -18,7 +18,7 @@ description: ปรับปรุง rule files ให้ถูกต้อง 
 ระบุ rule files ทีต้องปรับปรุง
 
 1. ระบุไฟล์ใน `.devin/rules/`, `global_rules.md`, `rules/` (ast-grep)
-2. ตรวจสอบ structure ตาม `/write-workflows` สำหรับ `.devin/rules/` markdowns
+2. ตรวจสอบ structure ตาม `/follow-write-devin-skills` สำหรับ `.devin/rules/` markdowns
 3. ถ้าไม่มี rule files → stop และ report
 
 ### 2. Check Correctness
@@ -97,7 +97,7 @@ description: ปรับปรุง rule files ให้ถูกต้อง 
 
 ## Expected Outcome
 
-- Rule files ถูกต้องตามมาตรฐาน `/write-workflows`
+- Rule files ถูกต้องตามมาตรฐาน `/follow-write-devin-skills`
 - ครอบคลุม tools, domains, file patterns ที project ใช้
 - ไม่มี broken references
 - ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น

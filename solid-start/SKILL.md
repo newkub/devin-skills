@@ -22,7 +22,7 @@ allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
 
 ### 2. Write SKILL.md Index
 
-เขียน index file ตามมาตรฐาน `follow-write-skills`
+เขียน index file ตามมาตรฐาน `follow-write-devin-skills`
 
 ### 3. Research Before Writing
 
@@ -39,7 +39,7 @@ allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
 
 เขียน content files ใน learn/guide/, learn/key-concepts/, learn/principles/ folders ตามมาตรฐาน
 
-- ทำตามมาตรฐาน `follow-write-skills` สำหรับทุกไฟล์
+- ทำตามมาตรฐาน `follow-write-devin-skills` สำหรับทุกไฟล์
 - เวลาเขียนเกี่ยวกับการติดตั้ง ให้ใช้ `bun add` หรือ `bun add -D` แทน `bun install` เสมอ
 - **แต่ละ .md ใต้ heading ต่างๆ ต้องเขียนอธิบายให้เข้าใจ**
   - อธิบายความหมายของแต่ละ heading อย่างชัดเจน
@@ -82,7 +82,7 @@ allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
 
 ### Structure And Consistency
 
-- ทำตามมาตรฐาน `follow-write-skills` สำหรับโครงสร้างและ consistency
+- ทำตามมาตรฐาน `follow-write-devin-skills` สำหรับโครงสร้างและ consistency
 - ทุก `SKILL.md` ต้องมี frontmatter: `title`, `description`, `auto_execution_mode: 3`
 - ทุก `SKILL.md` ต้องมี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - Goal สอดคล้องกับ skill name, Execute สอดคล้องกับ Goal และ Rules

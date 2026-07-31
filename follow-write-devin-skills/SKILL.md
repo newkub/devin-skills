@@ -1,5 +1,5 @@
 ---
-name: write-workflows
+name: follow-write-devin-skills
 description: เขียน workflow file ที่ deterministic ปลอดภัย อ่านง่าย รองรับหลาย AI tools
 ---
 
@@ -78,7 +78,7 @@ Review คุณภาพเนื้อหาหลังเขียน
 > Goal: Workflow พร้อมใช้งาน references ครบถ้วน
 
 1. parallel: ทำตาม `/update-reference` ∥ ทำตาม `/suggest-next-action` เพื่ออัปเดท references และแนะนำ workflows ถัดไป
-2. ถ้า workflow ต้องการ sub-workflows ใหม่ → ทำตาม `/write-workflows` สำหรับแต่ละ sub-workflow
+2. ถ้า workflow ต้องการ sub-workflows ใหม่ → ทำตาม `/follow-write-devin-skills` สำหรับแต่ละ sub-workflow
 3. ถ้าเป็น monorepo → ทำตาม `/follow-monorepo`
 4. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
 
@@ -103,7 +103,7 @@ Review คุณภาพเนื้อหาหลังเขียน
 ### 3. Responsibility And Duplication
 
 - แต่ละ workflow ทำหน้าที่เดียว — ถ้ามีหน้าที่หลายอย่าง → แยกเป็น sub-workflows ผ่าน `related` — ถ้าเกิน 250 บรรทัด → ทำ `/refactor-workflow`
-- ห้าม duplicate เนื้อหา — ถ้าซ้ำกับ `/write-workflows`, `/write-devin-skills` หรือ `global_rules.md` → อ้างอิงแทน — ห้ามเขียน Execute step ที่ทำหน้าที่ workflow อื่น
+- ห้าม duplicate เนื้อหา — ถ้าซ้ำกับ `/follow-write-devin-skills`, `/write-devin-skills` หรือ `global_rules.md` → อ้างอิงแทน — ห้ามเขียน Execute step ที่ทำหน้าที่ workflow อื่น
 - อ่าน `global_rules.md` ของ AI tool ก่อนเขียนหรือแก้ไข workflow เพื่อไม่ซ้ำซ้อนกับ global rules และไม่ duplicate ขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
 - `related` ต้องมีเฉพาะ workflows ที่เรียกโดยตรงใน Execute หรือ Rules — ไม่มี unused related และไม่มี missing related
 - พยายามใช้ tools, libraries และ CLI ที่มีอยู่แทน manual implementation — ใช้ `bunx <tool>` สำหรับ npm tools, อ้างอิง official docs ก่อนเขียนเอง — ถ้ามี tool ที่ทำงานนั้นได้แล้ว → ใช้ tool นั้น ไม่ reinvent

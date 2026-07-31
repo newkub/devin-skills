@@ -66,7 +66,7 @@ Build สำหรับ SSR หรือ CSR
 
 ## Related Skills
 
-- `follow-write-skills` - มาตรฐานการเขียน skills
+- `follow-write-devin-skills` - มาตรฐานการเขียน skills
 - lang-rust
 - bun
 

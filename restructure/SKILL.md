@@ -1,6 +1,18 @@
 ---
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
+related:
+  - check-folder-quality
+  - check-long-files
+  - deep-review
+  - dont-over-engineer
+  - follow-import-export
+  - follow-ordering
+  - refactor
+  - relocation
+  - review-code-quality
+  - update-reference
+  - use-scripts
 ---
 
 ## Goal
@@ -19,7 +31,8 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 1. ทำ `/deep-review` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
 2. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
-3. ถ้าไม่พบปัญหา → stop และ report
+3. ทำ `/check-folder-quality` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
+4. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Improve File Naming
 

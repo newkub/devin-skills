@@ -9,7 +9,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 
 ## Scope
 
-ใช้กับ workflow files ใน `global_workflows/` และ workspace workflows — ปรับ step ordering, dependencies, parallelism, transitions ตาม `/write-workflows` Rule `Flow And Parallelism`
+ใช้กับ workflow files ใน `global_workflows/` และ workspace workflows — ปรับ step ordering, dependencies, parallelism, transitions ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism`
 
 ## Execute
 
@@ -40,7 +40,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 1. เรียง steps ตาม: foundation → validation → high impact → dependencies → report/cleanup
 2. ย้าย context/reference/requirement checks ไปต้นเพื่อง fail-fast
 3. ทำ `/follow-parallel` เพื่องรวม independent reads/scans/searches เป็น parallel batch
-4. ใช้ `parallel:` และ `∥` ตาม `/write-workflows` Rule `Flow And Parallelism` สำหรับ independent operations
+4. ใช้ `parallel:` และ `∥` ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism` สำหรับ independent operations
 5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/refactor-workflow` เพื่องแยกเป็น sub-workflows
 6. ทำ `/follow-deterministic` เพื่องตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
@@ -84,7 +84,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 
 - อ่าน/scan/search/check อิสระ → รวมเป็น parallel batch
 - สร้าง/แก้ไข/ลบไฟล์เดียวกันหรือ state เดียวกัน → sequential
-- ใช้ `parallel:` และ `∥` ใน Execute numbered list ตาม `/write-workflows`
+- ใช้ `parallel:` และ `∥` ใน Execute numbered list ตาม `/follow-write-devin-skills`
 - parallel operation ต้องไม่แชร์ mutable state หรือ resource ที่ไม่ปลอดภัย
 
 ### 4. Deterministic
@@ -115,5 +115,5 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 - dependencies และ transitions ชัดเจน
 - ไม่มี broken references
 - workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
-- flow ยัง deterministic และสอดคล้องกับ `/write-workflows`
+- flow ยัง deterministic และสอดคล้องกับ `/follow-write-devin-skills`
 - มี report สรุปการปรับปรุง flow

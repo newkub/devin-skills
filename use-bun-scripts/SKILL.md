@@ -11,7 +11,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 
 ### 1. Prepare
 
-1. ทำตาม `/write-workflows` เมื่อสร้างหรือแก้ไข workflow
+1. ทำตาม `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 
 ### 2. Create Script
 
@@ -24,7 +24,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 
 1. รัน script ด้วย `bun run <script>.ts`
 2. ลบ scripts จาก `scripts/temp/` หลังใช้งาน
-3. ลบ scripts ที่สร้างด้วย `/write-workflows` หลังใช้งาน
+3. ลบ scripts ที่สร้างด้วย `/follow-write-devin-skills` หลังใช้งาน
 
 ## Rules
 

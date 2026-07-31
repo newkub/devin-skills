@@ -4,7 +4,7 @@ description: เขียนหรือปรับปรุง SKILL.md หน
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
-  - follow-write-skills
+  - follow-write-devin-skills
   - check-reference
   - validate
   - follow-content-quality
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ skill files ใน `.devin/skills/`, `.windsurf/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยไม่ซ้ำซ้อนกับ `follow-write-skills`
+ใช้สำหรับ skill files ใน `.devin/skills/`, `.windsurf/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยไม่ซ้ำซ้อนกับ `follow-write-devin-skills`
 
 ## Execute
 

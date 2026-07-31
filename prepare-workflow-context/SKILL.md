@@ -9,7 +9,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 ## Scope
 
-ใช้เมื่อจะสร้างหรือปรับปรุง workflow files ใน `global_workflows` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา workflow (ใช้ `/write-workflows` แทน) หรือการ validate (ใช้ `/validate-workflow` แทน)
+ใช้เมื่อจะสร้างหรือปรับปรุง workflow files ใน `global_workflows` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา workflow (ใช้ `/follow-write-devin-skills` แทน) หรือการ validate (ใช้ `/validate-workflow` แทน)
 
 ## Execute
 
@@ -63,9 +63,9 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
    - `analyze-*` → `/template-workflows-analyze`
    - `idea-*` → `/template-workflows-idea`
    - `report-*` → `/template-workflows-report`
-   - ถ้าไม่ตรง → แนะนำใช้ general structure จาก `/write-workflows`
+   - ถ้าไม่ตรง → แนะนำใช้ general structure จาก `/follow-write-devin-skills`
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
-3. ถ้า template ไม่มี → ใช้ `/write-workflows` เป็น fallback
+3. ถ้า template ไม่มี → ใช้ `/follow-write-devin-skills` เป็น fallback
 
 ### 5. Confirm Context
 
@@ -109,7 +109,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 - `deep-*` → เป็น orchestrator ที่เรียก sub-workflows
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
 - `refactor-to-*` → ใช้ `/follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
-- `improve-*`/`write-*` → ใช้ `/write-workflows` เป็นมาตรฐาน, มี review ก่อน improve
+- `improve-*`/`write-*` → ใช้ `/follow-write-devin-skills` เป็นมาตรฐาน, มี review ก่อน improve
 - `create-*`/`add-*`/`delete-*` → มี dry run ก่อน, อัปเดท references ด้วย `/update-reference`
 - `update-*` → ตรวจ git changes ก่อน, ใช้ `/check-should-update`
 - `report-*` → ระบุ output format, ใช้ `/report-format-*`
@@ -120,7 +120,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 ### 5. Fail Fast
 
 - ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
-- ถ้า template ไม่ตรง → ใช้ general structure จาก `/write-workflows`
+- ถ้า template ไม่ตรง → ใช้ general structure จาก `/follow-write-devin-skills`
 
 ## Expected Outcome
 

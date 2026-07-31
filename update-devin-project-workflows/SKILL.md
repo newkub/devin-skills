@@ -40,7 +40,7 @@ description: สร้าง project-specific workflows สำหรับแต
 > Goal: มี workflows ระดับ monorepo สำหรับ refactor และ improve config
 
 1. สร้าง `.devin/workflows/refactor-monorepo.md` — เรียก `/refactor` สำหรับทั้ง monorepo
-2. สร้าง `.devin/workflows/improve-monorepo-config.md` — เรียก `/improve-all-workflows` และ `/improve-all-skills` สำหรับ monorepo config
+2. สร้าง `.devin/workflows/improve-monorepo-config.md` — เรียก `/improve-all-skills` สำหรับ monorepo config
 
 ### 4. Create Workspace-Specific Workflows
 
@@ -70,7 +70,7 @@ description: สร้าง project-specific workflows สำหรับแต
 - ระบุ scope เป็น workspace path
 - เรียก `/realize-implementation` โดยจำกัด scope
 
-2. แต่ละ workflow ต้องมี frontmatter ตามมาตรฐาน `/write-workflows`
+2. แต่ละ workflow ต้องมี frontmatter ตามมาตรฐาน `/follow-write-devin-skills`
 3. แต่ละ workflow ต้องระบุ workspace path ใน Execute steps
 
 ### 5. Validate And Finalize
@@ -79,7 +79,7 @@ description: สร้าง project-specific workflows สำหรับแต
 
 > Goal: Workflows ทั้งหมดถูกต้อง ไม่ซ้ำซ้อน เรียก global workflows ได้
 
-1. ตรวจสอบว่าทุก workflow มี frontmatter ถูกต้องตาม `/write-workflows`
+1. ตรวจสอบว่าทุก workflow มี frontmatter ถูกต้องตาม `/follow-write-devin-skills`
 2. ตรวจสอบว่าทุก workflow ระบุ workspace path ชัดเจน
 3. ตรวจสอบว่าไม่มี workflows ซ้ำซ้อนกัน
 4. ตรวจสอบว่า global workflows ที่อ้างอิงมีอยู่จริง
@@ -97,7 +97,7 @@ description: สร้าง project-specific workflows สำหรับแต
 - `review-<workspace>` → เรียก `/review-codebase-issue` หรือ `/review-codebase-everything`
 - `ship-<workspace>` → เรียก `/ship`
 - `refactor-monorepo` → เรียก `/refactor` สำหรับทั้ง monorepo
-- `improve-monorepo-config` → เรียก `/improve-all-workflows` และ `/improve-all-skills`
+- `improve-monorepo-config` → เรียก `/improve-all-skills`
 - `refactor-<workspace>` → เรียก `/refactor` สำหรับ workspace นั้น
 - `idea-features-<workspace>` → เรียก `/idea-features` สำหรับ workspace นั้น
 - `realize-implementation-<workspace>` → เรียก `/realize-implementation` สำหรับ workspace นั้น

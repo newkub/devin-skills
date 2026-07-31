@@ -92,7 +92,7 @@ description: รายงานแผนการทำงานก่อนด�
 
 - ทำ `/plan-task` เพื่อวางแผน
 - ทำ `/analyze-project` เพื่อวิเคราะห์
-- ทำ `/write-workflows` เพื่อสร้าง workflow
+- ทำ `/follow-write-devin-skills` เพื่อสร้าง workflow
 
 ## Expected Outcome
 

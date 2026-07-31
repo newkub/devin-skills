@@ -47,7 +47,7 @@ description: ตรวจจับและลบเนื้อหาซ้ำ�
 3. สำหรับ partial overlap → extract ส่วนที่ซ้ำเป็น shared section หรือ reference — อ้างอิงแทนการเขียนซ้ำ
 4. สำหรับ reference-only → แทนที่เนื้อหาซ้ำด้วย reference ไปยัง single source of truth
 5. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal — ถ้าลบแล้วทำให้ context ขาด → ยกเลิกการลบ
-6. ถ้าเป็น workflow files → ทำตาม `/write-workflows` Rule `Responsibility And Duplication`
+6. ถ้าเป็น workflow files → ทำตาม `/follow-write-devin-skills` Rule `Responsibility And Duplication`
 
 ### 4. Validate And Update References
 

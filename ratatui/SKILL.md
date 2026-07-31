@@ -99,7 +99,7 @@ Run TUI application ใน terminal
 
 ## Related Skills
 
-- `follow-write-skills` - มาตรฐานการเขียน skills
+- `follow-write-devin-skills` - มาตรฐานการเขียน skills
 - `follow-rust` - Rust development guidelines
 
 

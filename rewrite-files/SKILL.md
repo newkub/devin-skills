@@ -6,8 +6,8 @@ triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
   - assume-reset-context
-  - follow-write-skills
-  - follow-write-skills
+  - follow-write-devin-skills
+  - follow-write-devin-skills
   - edit-relative
   - scan-codebase
   - validate

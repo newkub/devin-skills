@@ -88,7 +88,7 @@ description: อัพเดท project documentation และ configuration �
 
 รักษาความสม่ำเสมอ
 
-- ทำตาม `/write-workflows` สำหรับ workflow structure
+- ทำตาม `/follow-write-devin-skills` สำหรับ workflow structure
 - ใช้ references แทนการ duplicate เนื้อหา
 - ตรวจสอบว่า workflows ที่อ้างถึงมีอยู่จริง
 

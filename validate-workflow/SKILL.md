@@ -9,7 +9,7 @@ description: ตรวจสอบ workflow file ตาม criteria เฉพา
 
 ## Scope
 
-ใช้กับ workflow files ที่เขียนหรือปรับปรุงเสร็จแล้ว — เรียกจาก `/write-workflows` หรือ `/improve-workflows` ก่อน finalize
+ใช้กับ workflow files ที่เขียนหรือปรับปรุงเสร็จแล้ว — เรียกจาก `/follow-write-devin-skills` หรือ `/improve-workflows` ก่อน finalize
 
 ## Execute
 

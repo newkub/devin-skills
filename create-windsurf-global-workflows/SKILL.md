@@ -51,7 +51,7 @@ description: สร้าง global workflow ใหม่ตามมาตร�
 
 ### 5. Validate Quality
 
-1. ทำ `/write-workflows` เพื่อตรวจสอบคุณภาพ workflow ที่สร้าง
+1. ทำ `/follow-write-devin-skills` เพื่อตรวจสอบคุณภาพ workflow ที่สร้าง
 2. ตรวจสอบว่าไม่ซ้ำซ้อนระหว่าง Execute และ Rules
 3. ตรวจสอบว่า Goal สอดคล้องกับ Filename และ Expected Outcome สอดคล้องกับ Goal
 4. ตรวจสอบว่า references มีอยู่จริงทั้งหมด

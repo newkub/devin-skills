@@ -104,7 +104,7 @@ description: ปรับปรุง skills ทั้ง global และ proje
 
 ## Expected Outcome
 
-- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/write-devin-skills` และ `/write-workflows` — ไม่เกิน 250 บรรทัด
+- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/write-devin-skills` และ `/follow-write-devin-skills` — ไม่เกิน 250 บรรทัด
 - Content ครอบคลุมทุก features, APIs, และ use cases — คุณภาพสูง ไม่ซับซ้อนเกินจำเป็น
 - ไม่มี broken references — สอดคล้องกับ best practices และ official documentation
 - ทุก `SKILL.md` ผ่าน `/follow-devin-skills-md`

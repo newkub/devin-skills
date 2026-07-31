@@ -29,23 +29,23 @@ Review คุณภาพของ workflows, skills, และ global rules
 
 > Goal: ระบุ issues ทั้งหมดก่อน improve
 
-1. Review workflows ตาม `/write-workflows`, Review skills ตาม `/write-devin-skills`, Review `global_rules.md` ตาม content quality
+1. Review workflows ตาม `/follow-write-devin-skills`, Review skills ตาม `/follow-write-skill-md`, Review `global_rules.md` ตาม content quality
 2. ตรวจสอบ cross-references: workflows → skills, skills → workflows, rules → both
 3. ระบุ broken references, missing related, unused related — จัดลำดับตาม severity
 
 ### 3. Improve Workflows
 
-ปรับปรุง workflows ให้สอดคล้องกับ `/write-workflows`
+ปรับปรุง workflows ให้สอดคล้องกับ `/follow-write-devin-skills`
 
 > Goal: ทุก workflow ผ่าน validation
 
-1. ทำ `/improve-all-windsurf-global-workflows` เพื่อปรับปรุง workflows ทั้งหมด
-2. ถ้ามี workflows ซ้ำซ้อน → รวมหรือลบ และทำ `/update-reference`
+1. ทำ `/improve-all-skills` เพื่อปรับปรุง skills ทั้งหมด
+2. ถ้ามี skills ซ้ำซ้อน → รวมหรือลบ และทำ `/update-reference`
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ### 4. Improve Skills
 
-ปรับปรุง skills ให้สอดคล้องกับ `/write-devin-skills`
+ปรับปรุง skills ให้สอดคล้องกับ `/follow-write-skill-md`
 
 > Goal: ทุก skill ผ่าน validation
 
@@ -79,7 +79,7 @@ Review คุณภาพของ workflows, skills, และ global rules
 ### 1. Review Before Improve
 
 - ต้อง review ทุก component ก่อนแก้ไข — ไม่แก้ไฟล์ที่ผ่านแล้ว
-- ใช้ `/write-workflows` สำหรับ workflows, `/write-devin-skills` สำหรับ skills
+- ใช้ `/follow-write-devin-skills` สำหรับ workflows, `/follow-write-skill-md` สำหรับ skills
 - ถ้า component ผ่านทุกข้อ → ข้าม ไม่ force change
 
 ### 2. Cross-Reference Alignment
