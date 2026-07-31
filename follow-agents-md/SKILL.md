@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-agents-md
 description: ทำตาม AGENTS.md ใน workspace
 ---
@@ -25,7 +25,7 @@ description: ทำตาม AGENTS.md ใน workspace
 
 อ่าน workflows และ skills ที่เกี่ยวข้องทั้งหมด
 
-1. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ทำ `/read-related-skills` เพื่ออ่าน skills ที่เกี่ยวข้องแบบ recursive
 3. ทำตาม workflows และ skills ที่อ่านได้ทั้งหมด
 

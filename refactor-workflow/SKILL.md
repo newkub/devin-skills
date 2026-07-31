@@ -1,4 +1,4 @@
----
+﻿---
 name: refactor-workflow
 description: Refactor โครงสร้าง workflow files แยก/รวม/restructure ลด redundancy
 ---
@@ -18,7 +18,7 @@ Refactor โครงสร้าง workflow files เพื่อปรับ�
 วิเคราะห์ workflows ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
 
 1. ทำ `/deep-review` เพื่อ review structure และระบุ issues
-2. ทำ `/read-related-workflows` เพื่อสร้าง dependency graph
+2. ทำ `/read-related-skills` เพื่อสร้าง dependency graph
 3. ระบุ workflows ที่มี scope ซ้อนทับกัน
 4. ระบุ workflows ที่มี steps เกิน 10 หรือไฟล์เกิน 250 บรรทัด
 5. ระบุ workflows ที่มี single responsibility ไม่ชัดเจน

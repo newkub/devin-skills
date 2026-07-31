@@ -1,214 +1,235 @@
 ---
 name: follow-write-devin-skills
-description: เขียน workflow file ที่ deterministic ปลอดภัย อ่านง่าย รองรับหลาย AI tools
+description: เขียนหรือปรับปรุง skill ให้ถูกต้อง กระชับ รองรับหลาย AI tools
+related:
+  - follow-write-skill-md
+  - prepare-workflow-context
+  - follow-parallel
+  - follow-content-quality
+  - validate-workflow
+  - validate
+  - update-reference
+  - suggest-next-action
+  - template-skills-run
+  - template-skills-follow
+  - template-skills-check
 ---
 
 ## Goal
 
-สร้าง workflow file ที่ deterministic, ปลอดภัย, อ่านง่าย และรองรับหลาย AI tools
+เขียนหรือปรับปรุง skill ในรูปแบบ `SKILL.md` ที่ถูกต้อง กระชับ อ่านง่าย deterministic ปลอดภัย และรองรับหลาย AI tools
 
 ## Scope
 
-เขียนหรือปรับปรุง workflow file ทั้งใน `global_workflows` และ workspace โดยไม่ทำลาย references เดิม และไม่ duplicate เนื้อหาหรือขั้นตอนที่มีอยู่ใน `global_rules.md` — อ้างอิง global rules แทนและเติมเฉพาะสิ่งที่เกี่ยวกับการเขียน workflow โดยเฉพาะ
+ใช้สำหรับสร้าง skill ใหม่หรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยไม่ทำลาย references เดิม
 
 ## Execute
 
-### 1. Prepare Workflow Context
+### 1. Prepare Context
 
-เตรียม context ก่อนเขียน workflow
+เตรียม context ก่อนเขียน skill
 
-> Goal: ทราบ target AI tool, directory, dependencies, template — 1. ทำตาม `/prepare-workflow-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related workflows, เลือก template ตาม prefix, และตรวจ references
-2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report (ไม่ฝืนเขียน)
+> Goal: ทราบ target AI tool, directory, dependencies, template
 
-### 2. Write Structure
+1. ทำ `/prepare-workflow-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
+2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
 
-เขียน frontmatter, Goal, และ Scope เป็นโครงสร้างพื้นฐานของ workflow
+### 2. Apply Key Concepts
 
-> Goal: โครงสร้าง valid ชัดเจน ตอบได้ว่า workflow ทำอะไรและใช้กับอะไร
+นำ key concepts มาใช้ก่อนลงมือเขียน
 
-1. Frontmatter: `title` Title Case ตรง filename, `description` กระชับ ≤100 ตัวอักษร, `auto_execution_mode: 3`, `related` เฉพาะ workflows ที่เรียกโดยตรง, `url` เมื่อมี external docs
-2. ถ้าไฟล์มีอยู่แล้ว → confirm ก่อน overwrite และแสดง dry run preview
-3. `## Goal` ต้องตอบว่า workflow นี้ทำอะไรและสอดคล้องกับ filename
-4. `## Scope` ต้องระบุชัดเจนว่าใช้กับอะไรและไม่ทับซ้อนกับ workflows อื่น
-5. ถ้า Goal หรือ Scope กว้าง/กำกวม/ไม่ตรง filename → rewrite — ถ้า frontmatter ไม่ valid → fix แล้ว recheck (max 3 → stop)
+> Goal: skill มี foundation ถูกต้อง
 
-### 3. Write Execute
+1. ระบุ single responsibility ของ skill
+2. กำหนด input/output ที่ชัดเจน
+3. จัดลำดับ steps: Foundation → Dependencies → High impact → High risk
+4. ระบุเกณฑ์ผ่าน/ไม่ผ่านทีวัดผลได้
 
-เขียน Execute ตามหลักการ — ทุก step ต้องมี description และ `> Goal:` ก่อน numbered list
+### 3. Write SKILL.md
 
-> Goal: Execute ทำตามได้ deterministic และ parallel ได้ (reminder: ปลอดภัย, อ่านง่าย, รองรับหลาย AI tools)
+เขียน `SKILL.md` ตามโครงสร้างมาตรฐาน
 
-1. Execute ใช้ format: heading → description → `> Goal:` → numbered list — ถ้า step ใหญ่เกินไปให้แยกเป็น step ใหม่ชัดเจน — ใช้ `parallel:` และ `∥` ตาม Rule `Flow And Parallelism`
-2. ถ้า data processing ซับซ้อน → ใช้ `/use-scripts` ตาม Rules section `Flow And Parallelism`
-3. ถ้า Execute ไม่ตรงหลักการ → rewrite — ถ้า structure ไม่ valid → fix แล้ว recheck (max 3 → stop)
+> Goal: ไฟล์หลักถูกต้องและสมบูรณ์
 
-### 4. Write Rules
+1. Frontmatter: `name` ตรง directory name, `description` ≤100 ตัวอักษร, `related` เฉพาะ skills ที่เรียกโดยตรง
+2. `## Goal` ตอบว่า skill ทำอะไร
+3. `## Scope` ระบุขอบเขตและไม่ทับซ้อนกับ skills อื่น
+4. `## Execute` แบ่ง steps ไม่เกิน 10 ทีละ step มี description, `> Goal:`, และรายการ 2-10 ข้อ
+5. `## Rules` จัดกลุ่มเป็น single concern
+6. `## Expected Outcome` ระบุ output format ชัดเจน
+7. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, `## Examples` ถ้ามีเนื้อหาเพิ่มเติม
 
-เขียน Rules ตามหลักการ — จัดกลุ่มเป็นหัวข้อ single concern
+### 4. Add Skill Directory Contents
 
-> Goal: Rules สนับสนุน flow, speed, safety, clarity, deterministic
+สร้างส่วนประกอบเพิ่มเติมถ้าจำเป็น
 
-1. Rules จัดกลุ่มเป็นหัวข้อ single concern และต้อง support flow, speed, safety, clarity, deterministic
-2. ทำ Rule `High Impact Content` เพื่อกรองสิ่งที่ไม่สำคัญ
-3. ถ้า Rules ไม่ตรงหลักการ → rewrite — ถ้า structure ไม่ valid → fix แล้ว recheck (max 3 → stop)
+> Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
-### 5. Review Workflow Content
+1. ถ้าต้องการ external references → สร้าง `references/`
+2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
+3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
+4. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
-Review คุณภาพเนื้อหาหลังเขียน
+### 5. Validate Skill
 
-> Goal: เนื้อหาคุณภาพ ไม่มี noise ไม่ซ้ำซ้อน — ผ่าน `/review-workflow-content`
+ตรวจสอบคุณภาพก่อน finalize
 
-1. parallel: ทำตาม `/review-workflow-content` ∥ ทำตาม `/improve-content-coverage` เพื่อ review คุณภาพ, ลด noise, กรอง high-impact content, และตรวจ parallel/script usage
-2. ถ้าไม่ผ่าน → กลับไปแก้ที่ Steps 3-4 แล้ว recheck (max 3 → stop/report)
+> Goal: skill ผ่านเกณฑ์ทั้งหมด
 
-### 6. Create Skill Directory Contents
+1. ทำตาม `/validate` เพื่อตรวจความถูกต้อง
+2. ทำตาม `/validate-workflow` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
+4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 
-สร้างส่วนประกอบเพิ่มเติมใน skill directory ถ้าจำเป็น
+### 6. Update References
 
-> Goal: skill/workflow directory รองรับ `SKILL.md`, references, scripts และ sub-workflows
+อัปเดต references และสรุป
 
-1. ถ้า skill ต้องการ external references → สร้าง `references/` ด้วย markdown files
-2. ถ้า skill ต้องการ helper scripts → สร้าง `scripts/` ด้วย scripts ตาม `/use-scripts`
-3. ถ้า skill ต้องการ sub-workflows → สร้าง `workflows/` ด้วย markdown files ที่ถูกเรียกจาก `SKILL.md`
-4. ถ้า skill ต้องการ expanded guides → สร้าง `guide/` หรือ `learn/` ด้วย markdown files
-5. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัดและไม่ duplicate เนื้อหาจาก `SKILL.md`
+> Goal: skill พร้อมใช้งาน references ครบถ้วน
 
-### 7. Validate Workflow
-
-เขียน Expected Outcome และ validate workflow ก่อนใช้จริง
-
-> Goal: workflow ผ่าน criteria ทั้งหมดก่อน finalize — ผ่าน `/validate-workflow`
-
-1. `## Expected Outcome` ต้องตอบว่าเสร็จแล้วได้อะไรและสอดคล้องกับ Goal — ระบุ output format: ตาราง, รายการ, ไฟล์, หรือ state change
-2. ทำตาม `/validate-workflow` เพื่อตรวจสอบ: ไม่เกิน 250 บรรทัด, steps ไม่เกิน 10, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder, ไม่ใช้ `∥` นอก Execute numbered list
-3. ถ้าพบ issue → กลับไปแก้ที่ Steps 2-6 แล้ว revalidate (max 3 → stop/report)
-
-### 8. Finalize Workflow
-
-อัปเดท references และสรุป workflow เพื่อให้พร้อมใช้งาน
-
-> Goal: Workflow พร้อมใช้งาน references ครบถ้วน
-
-1. parallel: ทำตาม `/update-reference` ∥ ทำตาม `/suggest-next-action` เพื่ออัปเดท references และแนะนำ workflows ถัดไป
-2. ถ้า workflow ต้องการ sub-workflows ใหม่ → ทำตาม `/follow-write-devin-skills` สำหรับแต่ละ sub-workflow
-3. ถ้าเป็น monorepo → ทำตาม `/follow-monorepo`
-4. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
+1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
+2. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
+3. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
 
 ## Rules
 
 ### 1. Structure And Consistency
 
-- ลำดับ sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`, `## Example Template` (optional), `## Report` (optional)
-- workflow ที่มี output ต้องระบุ output format ชัดเจนและตรวจสอบก่อนจบว่าตรงกับ Expected Outcome
-- workflow ที่เกิน 5 steps ต้องมี goal reminder ใน Execute step กลางๆ เพื่อรักษา goal alignment
-- รองรับหลาย AI tools: ใช้ frontmatter `auto_execution_mode`, ไม่ผูกกับ AI tool เฉพาะ, ใช้ `/workflow-name` แทน tool-specific syntax
+- ลำดับ sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`, `## Key Concepts` (optional), `## Principles` (optional), `## Guide` (optional), `## Examples` (optional)
+- skill ที่มี output ต้องระบุ output format ชัดเจน
+- skill ที่เกิน 5 steps ต้องมี `> Goal:` reminder ใน step กลางๆ
+- ใช้ frontmatter `related` เฉพาะ skills ที่เรียกโดยตรง
 
 ### 2. Flow And Parallelism
 
-- เรียง Foundation, High impact, Dependencies, High-risk ก่อน เพื่อ fail fast และลด rework
-- ใช้คำนำหน้า `parallel:` แล้วคั่น tasks ที่ parallel กันด้วยเครื่องหมาย pipe ใน Execute numbered list เดียว — ทุก workflow ที่เรียกต้องใช้คำว่า `ทำตาม` นำหน้า (เช่น `parallel: ทำตาม `/a` ∥ ทำตาม `/b``) — อ้างอิงตัวอย่างใน `## Example Template` — ห้ามใช้เครื่องหมาย pipe ใน validation checklist, Rules bullets, หรือ Expected Outcome — ใช้ `/follow-parallel` เพื่อเร่งความเร็ว
-- แต่ละ step มี 2-10 รายการย่อย — ถ้าใหญ่เกินไปให้แยกเป็น step ใหม่ชัดเจน — ตรงจุด ไม่แตกย่อยจิปาถะ — รวมงานที่ต่อเนื่องกันไว้ใน step เดียว
-- ใช้ `/use-scripts` เมื่อ operations > 10 ไฟล์, pattern matching ต้อง parser, หรือ metrics ต้อง aggregation เพื่อจำกัด tool calls — workflow ต้องไม่เกิน 15 tool calls ต่อรอบ
-- ใช้ `bunx <tool>` แทน `npx <tool>` สำหรับ npm CLI tools — เร็วกว่า ไม่ต้องติดตั้ง global, ใช้ Bun cache — ตัวอย่าง: `bunx ast-grep`, `bunx knip`, `bunx jscpd`
-- ระบุชัดว่า step ไหน required หรือ optional — ใช้ prefix "ถ้า..." สำหรับ optional
+- เรียง Foundation, Dependencies, High impact, High-risk ก่อนเพื่อ fail fast
+- ใช้คำนำหน้า `parallel:` และคั่นด้วย `∥` ใน Execute numbered list
+- ทุก skill ที่เรียกต้องนำหน้าด้วย `ทำตาม`
+- ห้ามใช้ `∥` ใน Rules bullets หรือ Expected Outcome
+- ใช้ `/follow-parallel` เพื่อเร่งความเร็ว
 
-### 3. Responsibility And Duplication
+### 3. Safety And Determinism
 
-- แต่ละ workflow ทำหน้าที่เดียว — ถ้ามีหน้าที่หลายอย่าง → แยกเป็น sub-workflows ผ่าน `related` — ถ้าเกิน 250 บรรทัด → ทำ `/refactor-workflow`
-- ห้าม duplicate เนื้อหา — ถ้าซ้ำกับ `/follow-write-devin-skills`, `/write-devin-skills` หรือ `global_rules.md` → อ้างอิงแทน — ห้ามเขียน Execute step ที่ทำหน้าที่ workflow อื่น
-- อ่าน `global_rules.md` ของ AI tool ก่อนเขียนหรือแก้ไข workflow เพื่อไม่ซ้ำซ้อนกับ global rules และไม่ duplicate ขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
-- `related` ต้องมีเฉพาะ workflows ที่เรียกโดยตรงใน Execute หรือ Rules — ไม่มี unused related และไม่มี missing related
-- พยายามใช้ tools, libraries และ CLI ที่มีอยู่แทน manual implementation — ใช้ `bunx <tool>` สำหรับ npm tools, อ้างอิง official docs ก่อนเขียนเอง — ถ้ามี tool ที่ทำงานนั้นได้แล้ว → ใช้ tool นั้น ไม่ reinvent
+- ทุก step ต้องมี fail handling: stop/report/ask user ถ้า context ไม่ชัด
+- ใช้เงื่อนไข `ถ้า...` สำหรับ optional steps
+- ผลลัพธ์ deterministic: input เดียวกัน → output เดียวกัน
+- ทำ dry run ก่อน destructive หรือ high-risk actions
 
-### 4. Clarity And Determinism
+### 4. High Impact Content
 
-- หัวข้อภาษาอังกฤษ Title Case, รายการภาษาไทย — ใช้ bullet points (`-`) และ backticks สำหรับ `tools`, `commands`, `/workflow-name`, `parallel:`, `∥`
-- ห้ามใช้ `**` (bold markers) ใน workflow — ใช้ backticks สำหรับ emphasis แทน — ใช้ heading levels สำหรับ structure
-- เขียน explicit: active voice, ระบุ subject/object, หลีกเลี่ยงคำกำกวม — ทุก step ต้องตีความได้ทางเดียว
-- ใน Execute ใช้คำว่า "ทำตาม" นำหน้าการเรียก workflow แทน "ทำ" เพื่อบอกว่าดำเนินการตาม workflow นั้น เช่น "ทำตาม `/workflow-name`" หรือ "parallel: ทำตาม `/a` ∥ ทำตาม `/b`"
-- เขียนเป็นหลักการ how-to ไม่ผูกกับ project — อ้างอิง official documentation เมื่อเกี่ยวกับ `tools` หรือ `libraries`
-- ผลลัพธ์ต้อง deterministic — input เดียวกัน → output เดียวกันทุกครั้ง — ลำดับ steps ต้อง fixed
-- Validation criteria ต้อง measurable: ระบุ threshold, expected format, pass/fail condition, และ retry limit (max 3 → stop)
-- ถ้ามีตัวอย่าง → ใส่ใน `## Example Template` และต้อง match format ที่ Rules กำหนด
+- เขียนเฉพาะสิ่งที่สำคัญและ impact จริง
+- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม"
+- ห้าม TODO, MOCK, placeholder, generic filler
+- ห้ามใช้ `**` (bold markers) ใช้ backticks สำหรับ emphasis
 
-### 5. Safety And Robustness
+### 5. Examples And Guides
 
-- ทุก step ต้องมี fail handling — ถ้า context/reference/requirement ไม่ชัด หรือ validation fail → stop/report/ask user
-- Destructive หรือ high-risk actions ต้องมี user confirmation + dry run mode — ไม่มี hardcoded secrets หรือ paths
-- ถ้าแก้ไข workflow เดิม → ต้องไม่ทำลาย references เดิม — workflow ต้อง idempotent: รันซ้ำได้โดยไม่เกิด side effects
-- workflow ที่มี side effects (สร้างไฟล์, แก้ไข state) ต้องระบุ cleanup หรือ rollback ใน Execute step
-
-### 6. High Impact Content
-
-- เขียนเฉพาะสิ่งที่สำคัญและ impact จริง — ไม่เขียน noise — ครอบคลุมทุก impact ที่สำคัญ
-- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
-- ห้าม TODO, MOCK, placeholder, generic filler, หรือคำสวยแต่ไม่ actionable
-- การ simplify ต้องเก็บ context ครบ ไม่ลบข้อมูลสำคัญ — ลดความซ้ำซ้อนแต่เนื้อหาหลักต้องยังอยู่ครบ
-- ครอบคลุมทุก features/APIs/use cases ของ workflow — ทำ `/review-coverage` ถ้าพบ gaps
-
-### 7. Template Consistency
-
-- ทุก workflow ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน — ใช้ `template-workflows-*` เป็น canonical structure
-- ถ้า workflow เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
-- ทำ `/prepare-workflow-context` เพื่อเลือก template และตรวจสอบ consistency
-
-### 8. Prefix Formulas
-
-- ทุก workflow ต้องมี prefix formula ที่สอดคล้องกับ type ของตัวเอง
-- ทำ `/prepare-workflow-context` เพื่อดูรายละเอียด prefix formula และ mapping ไปยัง `template-workflows-*`
-- ถ้าไม่ตรงกับ formula ที่กำหนด → ระบุเหตุผลใน `## Scope`
-
-### 9. Skill Directory Contents
-
-รองรับ skill/workflow directory ที่มีไฟล์ย่อยนอกเหนือจาก `SKILL.md`
-
-- `SKILL.md` เป็น entry point หลักของ skill หรือ workflow
-- สามารถมี `references/` สำหรับ external links และ docs
-- สามารถมี `scripts/` สำหรับ helper scripts (ใช้ `/use-scripts` เมื่องเหมาะสม)
-- สามารถมี `workflows/` สำหรับ sub-workflows ที่ถูกเรียกจาก `SKILL.md`
-- สามารถมี `guide/` หรือ `learn/` สำหรับ expanded documentation
-- ไฟล์ทุกไฟล์ใน skill directory ไม่เกิน 250 บรรทัด
-- ไม่ duplicate เนื้อหาจาก `SKILL.md` ในส่วนย่อย
+- ใช้ `## Examples` สำหรับตัวอย่างการใช้ skill
+- ใช้ `## Guide` สำหรับขั้นตอนละเอียดเฉพาะทีไม่ใช่ core instruction
+- ใช้ `## Principles` สำหรับ values หลัก
+- ใช้ `## Key Concepts` สำหรับ concepts สำคัญทีต้องเข้าใจก่อนใช้งาน
 
 ## Expected Outcome
 
-- Output format: ไฟล์ workflow `.md` ใหม่ หรือไฟล์เดิมที่ถูกปรับปรุง ตาม Goal และ Scope
-- Workflow ที่ deterministic, ปลอดภัย, อ่านง่าย, รองรับหลาย AI tools, ไม่เกิน 250 บรรทัด, single responsibility, references ถูกต้อง, ใช้ได้จริง และไม่ซ้ำซ้อนกับ `global_rules.md`
-- ทุก workflow มี prefix formula ที่สอดคล้องกับ type ของ workflow
-- ทุก workflow ที่มี prefix ตรงกับ `template-*` ต้องมีโครงสร้างใกล้เคียง template นั้น
+- `SKILL.md` ใหม่หรือที่ปรับปรุงตามมาตรฐาน
+- skill ที่ deterministic, ปลอดภัย, อ่านง่าย, ไม่เกิน 250 บรรทัด
+- `related` ถูกต้อง ไม่มี missing/unused
+- references อัปเดตครบถ้วน
 
-## Example Template
+## Key Concepts
+
+### 1. Single Responsibility
+
+แต่ละ skill ทำหน้าทีเดียวชัดเจน ถ้ามีหลายหน้าทีให้แยกเป็น sub-skills
+
+### 2. Deterministic Execution
+
+input และ state เดียวกันต้องได้ output เดียวกัน ทุกครั้ง
+
+### 3. Fail Fast
+
+จัดลำดับให้ dependencies และ high-risk ตรวจพบก่อนเพื่อลด rework
+
+### 4. High Impact Content
+
+เก็บเฉพาะสิ่งที่ทำให้ผลลัพธ์เปลี่ยน ลด noise และ redundancy
+
+## Principles
+
+### 1. Minimal
+
+เปลี่ยนแปลงน้อยทีสุด แก้เฉพาะสิ่งที่จำเป็น
+
+### 2. Safe
+
+ไม่ทำลาย references หรือ existing skills ต้องมี dry run และ confirmation ก่อนลบ/overwrite
+
+### 3. Explicit
+
+ระบุ subject, object, action, condition ชัดเจน ไม่กำกวม
+
+### 4. Consistent
+
+ภาษาและ format สมำเสมอ หัวข้อภาษาอังกฤษ Title Case รายการภาษาไทย
+
+## Guide
+
+### Writing Frontmatter
+
+- `name` ตรงกับ directory name ใช้ lowercase คั่นด้วย `-`
+- `description` กระชับไม่เกิน 100 ตัวอักษร
+- `related` เป็น YAML list ของ skill names ที่เรียกโดยตรง
+
+### Writing Execute Steps
+
+- ใช้ `### N. Step Name` ภาษาอังกฤษ Title Case
+- ตามด้วย description สั้นๆ ภาษาไทย
+- ใส่ `> Goal: ...` ก่อน numbered list
+- แต่ละ step มี 2-10 รายการ
+
+### Writing Rules
+
+- ใช้ `### N. Rule Name` ภาษาอังกฤษ Title Case
+- แต่ละ rule เป็น single concern
+- รายการเป็นภาษาไทย ใช้ backticks สำหรับ code/skill names
+
+## Examples
 
 ```markdown
 ---
-title: Workflow Name
-description: กระชับไม่เกิน 100 ตัวอักษร
-auto_execution_mode: 3
+name: my-skill
+description: ทำสิ่งสำคัญให้สำเร็จ
 related:
-  - /related-workflow
+  - another-skill
 ---
 
 ## Goal
-วัตถุประสงค์กระชับ ตอบว่า workflow นี้ทำอะไร
+
+ทำสิ่งสำคัญให้สำเร็จตามที่ผู้ใช้ระบุ
 
 ## Scope
-ขอบเขตงาน ระบุว่าใช้กับอะไรและไม่ทับซ้อนกับ workflows อื่น
+
+ใช้กับ project ที่มี X เท่านั้น ไม่ทับซ้อนกับ `/another-skill`
 
 ## Execute
 
-### 1. Step Name
-Description ของ step
+### 1. Prepare
 
-> Goal: เป้าหมายเฉพาะของ step นี้
+เตรียม context
 
-1. parallel: ทำตาม `/workflow-a` ∥ ทำตาม `/workflow-b` — ใช้ `/follow-parallel`
-2. ถ้า fail → retry (max 3 → stop/report)
+> Goal: รู้ input ก่อนลงมือ
+
+1. ตรวจสอบ `package.json`
+2. ถ้าไม่ชัด → stop และ report
 
 ## Rules
 
-### 1. Rule Category
-- rule ที่สำคัญและ impact จริง
+### 1. Safety
+
+- ไม่ลบไฟล์โดยไม่มี dry run
+- ใช้ `/ask-me` เมื่องไม่แน่ใจ
 
 ## Expected Outcome
-- Outcome พร้อม output format (ตาราง, รายการ, ไฟล์, หรือ state change)
+
+- ผลลัพธ์ X พร้อม output เป็นรายการ
 ```

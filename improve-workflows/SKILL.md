@@ -1,4 +1,4 @@
----
+﻿---
 name: improve-workflows
 description: ปรับปรุง workflow ให้ถูกต้อง ครอบคลุม และเป็นไปตาม best practices
 ---
@@ -20,7 +20,7 @@ description: ปรับปรุง workflow ให้ถูกต้อง �
 ระบุ workflow ที่ต้องปรับปรุง
 
 1. ระบุ workflow file ที่ต้องปรับปรุง (เดียวหรือกลุ่มย่อย)
-2. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+2. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 3. ตรวจสอบว่า workflow สอดคล้องกับ project context ถ้าอยู่ใน workspace
 
 ### 2. Check Correctness
@@ -48,8 +48,8 @@ description: ปรับปรุง workflow ให้ถูกต้อง �
 1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
 2. ทำ `/review-code-quality` สำหรับ issues ด้านเนื้อหาและ structure
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
-4. ทำ `/improve-flow` เพื่องปรับ step ordering, dependencies, parallelism, transitions ให้ fail-fast และชัดเจน
-6. ทำ `/review-workflow-content` เพื่อง review คุณภาพเนื้อหา ลด noise และกรอง high-impact content
+4. ทำ `/improve-flow` เพื่อปรับ step ordering, dependencies, parallelism, transitions ให้ fail-fast และชัดเจน
+6. ทำ `/review-workflow-content` เพื่อ review คุณภาพเนื้อหา ลด noise และกรอง high-impact content
 7. อัปเดตเนื้อหาตาม best practices ที่ research ได้
 8. ใช้ references แทนการ duplicate เนื้อหาจาก workflows อื่น
 7. ตรวจสอบว่าไม่ซ้ำซ้อนระหว่าง `Execute` และ `Rules`
@@ -70,7 +70,7 @@ description: ปรับปรุง workflow ให้ถูกต้อง �
 
 1. ทำ `/check-correctness` อีกครั้งเพื่อ verify
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
-3. ทำ `/validate-workflow` เพื่องตรวจสอบ criteria เฉพาะของ workflow
+3. ทำ `/validate-workflow` เพื่อตรวจสอบ criteria เฉพาะของ workflow
 4. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
 5. ทำ `/report` เพื่อสรุปการปรับปรุง
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป

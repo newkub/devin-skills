@@ -5,7 +5,7 @@ description: Review คุณภาพเนื้อหา workflow ลด nois
 
 ## Goal
 
-ตรวจสอบคุณภาพเนื้อหา workflow หลังเขียนเพื่องให้ทำตามได้จริง ไม่มี noise, ไม่ซ้ำซ้อน, ลด tool calls
+ตรวจสอบคุณภาพเนื้อหา workflow หลังเขียนเพื่อให้ทำตามได้จริง ไม่มี noise, ไม่ซ้ำซ้อน, ลด tool calls
 
 ## Scope
 
@@ -22,7 +22,7 @@ description: Review คุณภาพเนื้อหา workflow ลด nois
 1. parallel: `/follow-content-quality` ∥ `/simplify`
 2. ตรวจสอบเนื้อหาซ้ำซ้อนระหว่าง `Execute` และ `Rules`
 3. ถ้าเนื้อหาใน `Rules` ซ้ำกับ workflow อื่น → แทนที่ด้วย reference
-4. ทำ `/dont-over-engineer` เพื่องกำหนดขอบเขตการแก้ไขให้ minimal
+4. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal
 
 ### 2. Check High Impact Content
 

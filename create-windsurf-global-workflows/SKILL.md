@@ -1,4 +1,4 @@
----
+﻿---
 name: create-windsurf-global-workflows
 description: สร้าง global workflow ใหม่ตามมาตรฐาน
 ---
@@ -17,7 +17,7 @@ description: สร้าง global workflow ใหม่ตามมาตร�
 
 วิเคราะห์ความจำเป็นของ workflow ใหม่
 
-1. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ตรวจสอบว่ามี workflow ที่ครอบคลุม topic เดียวกันอยู่แล้วหรือไม่
 3. ถ้ามี workflow ที่คล้ายกัน ให้พิจารณา extend หรือ reference แทนการสร้างใหม่
 4. ระบุวัตถุประสงค์และขอบเขตของ workflow ใหม่อย่างชัดเจน

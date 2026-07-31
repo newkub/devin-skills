@@ -1,4 +1,4 @@
----
+﻿---
 name: review-codebase-everything
 description: Deep Review codebase ครบทุกมิติ ผ่าน group orchestrators และ category workflows พร้อม validate issues
 ---
@@ -20,7 +20,7 @@ Deep Review codebase ครบทุกมิติอย่างลึกซ�
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน — ถ้าไม่ผ่าน stop และ report
-2. ทำ `/read-related-workflows`, `/follow-agents-md`, ทำ `/update-codebase-health-cli` — ระบุ review dimensions, อ่าน workspace guidelines, และอัปเดต analyzers
+2. ทำ `/read-related-skills`, `/follow-agents-md`, ทำ `/update-codebase-health-cli` — ระบุ review dimensions, อ่าน workspace guidelines, และอัปเดต analyzers
 3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
 4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 5. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด

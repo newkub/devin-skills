@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-workflows
 description: อ่านและทำตาม workflows ทั้ง global และ project
 ---
@@ -17,7 +17,7 @@ description: อ่านและทำตาม workflows ทั้ง global 
 
 อ่าน global workflows ทั้งหมดใน `global_workflows/` เพื่อเข้าใจมาตรฐานและป้องกันการซ้ำซ้อน
 
-- ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+- ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 - ระบุ workflows ที่เกี่ยวข้องกับ task ปัจจุบัน
 - ตรวจสอบว่า workflows มีอยู่จริง
 

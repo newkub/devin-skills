@@ -1,4 +1,4 @@
----
+﻿---
 name: resolve-errors
 description: แก้ไข error อย่างเป็นระบบ รวดเร็ว แม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate และ verify ครบถ้วน
 ---
@@ -23,7 +23,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: เข้าใจ codebase structure, conventions และ dependencies
 
-1. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ทำ `/scan-codebase` เพื่อทำความเข้าใจ structure ของไฟล์ที่มี error
 3. ถ้าไฟล์ยาว >250 บรรทัด → อ่าน `/refactor` ก่อนแก้
 4. ถ้าเข้าถึง workspace ไม่ได้ → stop และ report โดยไม่แก้ไขไฟล์

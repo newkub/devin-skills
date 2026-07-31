@@ -4,6 +4,7 @@ description: ตรวจจับและรายงาน circular dependenc
 related:
   - use-scripts
   - scan-codebase
+  - use-scripts
   - follow-import-export
   - refactor-packages
   - update-reference
@@ -61,7 +62,7 @@ related:
 3. สร้าง directed graph ของ references ระหว่าง skills
 4. ตรวจหา cycles ใน graph (A → B → A)
 5. ตรวจสอบ markdown links ในเนื้อหาที่อ้างถึง skill อื่น
-6. ถ้า skills มากกว่า 10 → ทำ `/use-scripts` สำหรับ batch analysis
+6. ถ้า skills มากกว่า 10 → ทำ `/use-scripts` สำหรับ batch analysis หรือรัน `scripts/check-skill-cycles.ps1`
 
 ### 4. Scan Markdown Reference Cycles
 

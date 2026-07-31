@@ -1,4 +1,4 @@
----
+﻿---
 name: prepare-workflow-context
 description: ตรวจจับ AI tool อ่าน global rules related workflows และเลือก template ที่เหมาะสมกับ workflow
 ---
@@ -44,7 +44,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 > Goal: ไม่ duplicate ขั้นตอนที่ workflows อื่นทำอยู่แล้ว
 
-1. parallel: `/read-related-workflows` ∥ `/check-reference`
+1. parallel: `/read-related-skills` ∥ `/check-reference`
 2. ถ้า workflow เกี่ยวกับ `tools` หรือ `libraries` → เพิ่ม `/follow-best-practice` เข้าไปในชุด parallel
 3. สรุป dependencies และ workflows ที่จะถูกเรียกโดยตรง
 
@@ -55,14 +55,14 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `/template-workflows-run`
-   - `follow-*` → `/template-workflows-follow` (ยกเว้น `follow-*-architecture` → `/template-workflows-architecture`)
-   - `check-*` → `/template-workflows-check`
-   - `review-*` → `/template-workflows-review`
-   - `deep-*` → `/template-workflows-deep`
-   - `analyze-*` → `/template-workflows-analyze`
-   - `idea-*` → `/template-workflows-idea`
-   - `report-*` → `/template-workflows-report`
+   - `run-*` → `/template-skills-run`
+   - `follow-*` → `/template-skills-follow` (ยกเว้น `follow-*-architecture` → `/template-skills-architecture`)
+   - `check-*` → `/template-skills-check`
+   - `review-*` → `/template-skills-review`
+   - `deep-*` → `/template-skills-deep`
+   - `analyze-*` → `/template-skills-analyze`
+   - `idea-*` → `/template-skills-idea`
+   - `report-*` → `/template-skills-report`
    - ถ้าไม่ตรง → แนะนำใช้ general structure จาก `/follow-write-devin-skills`
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
 3. ถ้า template ไม่มี → ใช้ `/follow-write-devin-skills` เป็น fallback
@@ -75,7 +75,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 
 1. ตรวจสอบว่ามี: AI tool, directory, template/structure, dependencies
 2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
-3. ทำ `/suggest-next-action` เพื่องแนะนำ step ถัดไป
+3. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules
 
@@ -94,7 +94,7 @@ description: ตรวจจับ AI tool อ่าน global rules related wor
 ### 3. Template Consistency
 
 - ทุก workflow ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
-- ใช้ `template-workflows-*` เป็น canonical structure
+- ใช้ `template-skills-*` เป็น canonical structure
 - ถ้า workflow เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 

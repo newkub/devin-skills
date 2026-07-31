@@ -1,4 +1,4 @@
----
+﻿---
 name: goal
 description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
 ---
@@ -27,7 +27,7 @@ description: ตั้งเป้าหมายและวางแผนง�
 
 วิเคราะห์สถานการณ์และ constraints
 
-1. อ่าน `/read-related-workflows` เพื่อดู workflows ที่เกี่ยวข้อง
+1. อ่าน `/read-related-skills` เพื่อดู workflows ที่เกี่ยวข้อง
 2. ตรวจสอบ dependencies และ constraints
 3. ประเมิน resources ที่มีอยู่
 4. ระบุ risks และ assumptions

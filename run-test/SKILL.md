@@ -1,6 +1,15 @@
 ---
 name: run-test
 description: รัน test suite ตรวจหา failures แล้ว validate/review เพื่อระบุว่าควรแก้ source หรือ test
+related:
+  - run-test-api
+  - run-test-unit
+  - run-test-integration
+  - run-test-e2e
+  - run-test-coverage
+  - validate
+  - validate-test
+  - report
 ---
 
 ## Goal
@@ -67,7 +76,7 @@ description: รัน test suite ตรวจหา failures แล้ว valid
 รันเฉพาะ test types ที่เกี่ยวข้องกับ project:
 
 - ถ้ามี UI: component tests และ accessibility tests (WCAG, ARIA, keyboard, screen reader)
-- ถ้ามี API: API tests และ contract tests
+- ถ้ามี API: ทำ `/run-test-api` สำหรับ API tests และ contract tests
 - ถ้ามี database: database tests สำหรับ queries, migrations, transactions, data integrity, indexes
 - ถ้ามี GraphQL: GraphQL tests สำหรับ queries, mutations, subscriptions, schema validation, resolvers
 - ถ้ามี WebSocket: WebSocket tests สำหรับ connections, real-time messaging, reconnection, error handling

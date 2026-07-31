@@ -1,4 +1,4 @@
----
+﻿---
 name: assume-reset-context
 description: สมมุติว่าต้องแก้ไขไฟล์นี้ใหม่ โดยไม่อ้างอิงจาก context ก่อนหน้า เริ่มจากไฟล์เปล่า วิเคราะห์เองใหม่ทั้งหมด
 ---
@@ -29,7 +29,7 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 2. อ่าน imports และ dependencies ที่ไฟล์เรียกใช้
 3. อ่านไฟล์ที่ import ไฟล์เป้าหมาย (reverse dependencies)
 4. ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด — ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
-5. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+5. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 
 ### 3. Analyze From Scratch
 

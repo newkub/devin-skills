@@ -14,6 +14,7 @@ related:
   - improve-consistency
   - improve-redundancy
   - refactor-skills
+  - read-related-skills
   - report
   - review-code-quality
   - review-coverage
@@ -43,8 +44,9 @@ related:
 > Goal: รู้ skill ที่ต้องปรับปรุงและปัญหาหลักก่อนลงมือ
 
 1. ระบุ skill directory ที่ต้องปรับปรุง (เดียวหรือกลุ่มย่อย)
-2. ตรวจสอบ `SKILL.md` และ directory structure ตาม `/follow-devin-skills-md`
-3. ทำ `/scan-codebase` เพื่อหาไฟล์เกิน 250 บรรทัด, broken references, และ issues ด้าน structure
+2. ทำ `/read-related-skills` เพื่ออ่าน skills ที่เกี่ยวข้องและเข้าใจ dependencies
+3. ตรวจสอบ `SKILL.md` และ directory structure ตาม `/follow-devin-skills-md`
+4. ทำ `/scan-codebase` เพื่อหาไฟล์เกิน 250 บรรทัด, broken references, และ issues ด้าน structure
 4. บันทึก issues พร้อม priority (Critical, High, Medium, Low)
 5. ถ้าอยู่ใน workspace ตรวจสอบว่า skill สอดคล้องกับ project context
 
@@ -75,7 +77,8 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 1. ทำ `/refactor-skills` เพื่อแยก/รวม/ย้าย sections ตาม SRP
 2. จัดลำดับ Execute steps ให้เป็นระบบ ไม่เกิน 10 steps
-3. อัปเดต references หลัง refactor
+3. refactor location ให้เหมาะสม: global skills อยู่ใน `%APPDATA%\devin\skills\` หรือ workspace skills อยู่ใน `.devin/skills/`
+4. อัปเดต references หลัง refactor
 
 ### 5. Remove Redundancy
 

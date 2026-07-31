@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-config
 description: ตั้งค่า configuration ตาม dependencies และ tech stack ที่ใช้
 ---
@@ -40,7 +40,7 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 
 > Goal: รู้ workflows และ skills ที่ต้องรันตาม stack
 
-1. ทำ `/read-related-workflows` สำหรับ config-related workflows
+1. ทำ `/read-related-skills` สำหรับ config-related workflows
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
 3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-biome`, `/follow-turborepo`, `/follow-typescript`)
 

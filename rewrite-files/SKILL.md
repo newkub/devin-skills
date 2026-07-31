@@ -1,4 +1,4 @@
----
+﻿---
 name: rewrite-files
 description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมด โดยใช้ /devin:assume-reset-context
 auto_execution_mode: 3
@@ -47,7 +47,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 1. อ่าน target files ทั้งไฟล์
 2. อ่าน imports, exports, และ dependencies
 3. อ่าน reverse dependencies
-4. ทำ `read-related-workflows` สำหรับ workflows ที่เกี่ยวข้อง
+4. ทำ `read-related-skills` สำหรับ workflows ที่เกี่ยวข้อง
 
 ### 4. Analyze Requirements
 

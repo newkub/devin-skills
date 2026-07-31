@@ -1,4 +1,4 @@
----
+﻿---
 name: update-codebase-health-cli
 description: สร้างและอัปเดท codebase health CLI ใน tools/health ที่ root ตาม /report-codebase-health 60+ categories
 ---
@@ -42,7 +42,7 @@ description: สร้างและอัปเดท codebase health CLI ใ�
 > Goal: เข้าใจ categories ทั้งหมด CLI structure ที่มีอยู่ และ architecture guidelines
 
 1. ทำ `/report-codebase-health` เพื่อดูรายการ 60+ categories จัดกลุ่มตาม 5 domains
-2. ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ project แบบ recursive
+2. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ project แบบ recursive
 3. อ่าน `tools/health/` directory ที่ project root เพื่อดู CLI ที่มีอยู่แล้ว
 4. อ่าน `src/domain/analyzers/` เป็น reference implementation
 5. ทำ `/follow-create-bun-cli` เพื่ออ่าน Bun CLI best practices

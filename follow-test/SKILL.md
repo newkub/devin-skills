@@ -1,6 +1,13 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจรตามมาตรฐาน
+related:
+  - follow-vitest
+  - follow-playwright
+  - run-test
+  - run-test-api
+  - write-test
+  - use-scripts
 ---
 
 ## Goal
@@ -48,6 +55,7 @@ description: ตั้งค่าและใช้งาน testing strategies
 
 - ทำ `/write-test` สำหรับเขียน unit tests และ coverage
 - ทำ `/run-test` สำหรับรัน tests ทุกประเภท (unit, integration, e2e, component)
+- ทำ `/run-test-api` สำหรับ API tests และ contract tests ถ้า project มี API
 
 ### 7. Validate
 

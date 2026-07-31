@@ -1,6 +1,11 @@
 ---
 name: read-related-skills
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive ทุกระดับ
+related:
+  - read
+  - scan-codebase
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -70,7 +75,7 @@ description: อ่านและสรุป skills ที่เกี่ย�
 
 - แยก frontmatter, description, instructions, examples
 - ระบุ skill references จาก patterns เช่น `skill-name`
-- ระบุ skill references จาก `related_workflows` ใน frontmatter
+- ระบุ skill references จาก `related` ใน frontmatter
 
 ### 3. Summary Format
 

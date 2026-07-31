@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-skills
 description: อ่านและใช้ skills ที่มีอยู่ตามที่เหมาะสม
 ---
@@ -17,7 +17,7 @@ description: อ่านและใช้ skills ที่มีอยู่�
 
 อ่าน skills ที่มีอยู่ทั้งหมด
 
-- ทำ `/read-related-workflows` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ skills
+- ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ skills
 - อ่าน skills ที่มีอยู่ใน `skills/`
 - ระบุ skills ที่เกี่ยวข้องกับ task ปัจจุบัน
 - ตรวจสอบว่า skills มีอยู่จริง
