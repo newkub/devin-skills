@@ -1,6 +1,11 @@
 ---
 name: validate
 description: ตรวจสอบความถูกต้อง คุณภาพ และความเหมาะสม
+related:
+  - check-correctness
+  - review-code-quality
+  - report
+  - suggest-next-action
 ---
 
 ## Goal
@@ -15,7 +20,11 @@ description: ตรวจสอบความถูกต้อง คุณภ
 
 ### 1. Check Correctness
 
-1. ตรวจสอบความถูกต้องตาม principle หรือ standard
+ตรวจสอบความถูกต้องตาม principle, standard, และ criteria ที่ผู้ใช้ระบุ
+
+> Goal: ตรวจสอบความถูกต้องก่อนประเมินคุณภาพและความเหมาะสม
+
+1. ทำตาม `/check-correctness` ตาม criteria ที่ผู้ใช้ระบุ
 2. ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
 3. ตรวจสอบ logic และ edge cases ได้รับการจัดการ
 
@@ -36,6 +45,7 @@ description: ตรวจสอบความถูกต้อง คุณภ
 1. สรุปสิ่งที่ดีอยู่แล้วเสมอ
 2. ระบุสิ่งที่ควรปรับปรุงอย่างชัดเจน
 3. ให้ข้อเสนอแนะ actionable และระบุ priority
+4. ทำตาม `/report` และ `/suggest-next-action` เพื่อสรุปผลและแนะนำ action ถัดไป
 
 ## Rules
 

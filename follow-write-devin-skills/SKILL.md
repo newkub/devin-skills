@@ -17,7 +17,7 @@ description: เขียน workflow file ที่ deterministic ปลอด�
 
 เตรียม context ก่อนเขียน workflow
 
-> Goal: ทราบ target AI tool, directory, dependencies, template — 1. ทำตาม `/prepare-workflow-context` เพื่องตรวจจับ AI tool, อ่าน `global_rules.md`, related workflows, เลือก template ตาม prefix, และตรวจ references
+> Goal: ทราบ target AI tool, directory, dependencies, template — 1. ทำตาม `/prepare-workflow-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related workflows, เลือก template ตาม prefix, และตรวจ references
 2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report (ไม่ฝืนเขียน)
 
 ### 2. Write Structure
@@ -58,20 +58,32 @@ Review คุณภาพเนื้อหาหลังเขียน
 
 > Goal: เนื้อหาคุณภาพ ไม่มี noise ไม่ซ้ำซ้อน — ผ่าน `/review-workflow-content`
 
-1. parallel: ทำตาม `/review-workflow-content` ∥ ทำตาม `/improve-content-coverage` เพื่อง review คุณภาพ, ลด noise, กรอง high-impact content, และตรวจ parallel/script usage
+1. parallel: ทำตาม `/review-workflow-content` ∥ ทำตาม `/improve-content-coverage` เพื่อ review คุณภาพ, ลด noise, กรอง high-impact content, และตรวจ parallel/script usage
 2. ถ้าไม่ผ่าน → กลับไปแก้ที่ Steps 3-4 แล้ว recheck (max 3 → stop/report)
 
-### 6. Validate Workflow
+### 6. Create Skill Directory Contents
+
+สร้างส่วนประกอบเพิ่มเติมใน skill directory ถ้าจำเป็น
+
+> Goal: skill/workflow directory รองรับ `SKILL.md`, references, scripts และ sub-workflows
+
+1. ถ้า skill ต้องการ external references → สร้าง `references/` ด้วย markdown files
+2. ถ้า skill ต้องการ helper scripts → สร้าง `scripts/` ด้วย scripts ตาม `/use-scripts`
+3. ถ้า skill ต้องการ sub-workflows → สร้าง `workflows/` ด้วย markdown files ที่ถูกเรียกจาก `SKILL.md`
+4. ถ้า skill ต้องการ expanded guides → สร้าง `guide/` หรือ `learn/` ด้วย markdown files
+5. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัดและไม่ duplicate เนื้อหาจาก `SKILL.md`
+
+### 7. Validate Workflow
 
 เขียน Expected Outcome และ validate workflow ก่อนใช้จริง
 
 > Goal: workflow ผ่าน criteria ทั้งหมดก่อน finalize — ผ่าน `/validate-workflow`
 
 1. `## Expected Outcome` ต้องตอบว่าเสร็จแล้วได้อะไรและสอดคล้องกับ Goal — ระบุ output format: ตาราง, รายการ, ไฟล์, หรือ state change
-2. ทำตาม `/validate-workflow` เพื่องตรวจสอบ: ไม่เกิน 250 บรรทัด, steps ไม่เกิน 10, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder, ไม่ใช้ `∥` นอก Execute numbered list
-3. ถ้าพบ issue → กลับไปแก้ที่ Steps 2-5 แล้ว revalidate (max 3 → stop/report)
+2. ทำตาม `/validate-workflow` เพื่อตรวจสอบ: ไม่เกิน 250 บรรทัด, steps ไม่เกิน 10, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder, ไม่ใช้ `∥` นอก Execute numbered list
+3. ถ้าพบ issue → กลับไปแก้ที่ Steps 2-6 แล้ว revalidate (max 3 → stop/report)
 
-### 7. Finalize Workflow
+### 8. Finalize Workflow
 
 อัปเดท references และสรุป workflow เพื่อให้พร้อมใช้งาน
 
@@ -138,13 +150,25 @@ Review คุณภาพเนื้อหาหลังเขียน
 
 - ทุก workflow ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน — ใช้ `template-workflows-*` เป็น canonical structure
 - ถ้า workflow เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
-- ทำ `/prepare-workflow-context` เพื่องเลือก template และตรวจสอบ consistency
+- ทำ `/prepare-workflow-context` เพื่อเลือก template และตรวจสอบ consistency
 
 ### 8. Prefix Formulas
 
 - ทุก workflow ต้องมี prefix formula ที่สอดคล้องกับ type ของตัวเอง
-- ทำ `/prepare-workflow-context` เพื่องดูรายละเอียด prefix formula และ mapping ไปยัง `template-workflows-*`
+- ทำ `/prepare-workflow-context` เพื่อดูรายละเอียด prefix formula และ mapping ไปยัง `template-workflows-*`
 - ถ้าไม่ตรงกับ formula ที่กำหนด → ระบุเหตุผลใน `## Scope`
+
+### 9. Skill Directory Contents
+
+รองรับ skill/workflow directory ที่มีไฟล์ย่อยนอกเหนือจาก `SKILL.md`
+
+- `SKILL.md` เป็น entry point หลักของ skill หรือ workflow
+- สามารถมี `references/` สำหรับ external links และ docs
+- สามารถมี `scripts/` สำหรับ helper scripts (ใช้ `/use-scripts` เมื่องเหมาะสม)
+- สามารถมี `workflows/` สำหรับ sub-workflows ที่ถูกเรียกจาก `SKILL.md`
+- สามารถมี `guide/` หรือ `learn/` สำหรับ expanded documentation
+- ไฟล์ทุกไฟล์ใน skill directory ไม่เกิน 250 บรรทัด
+- ไม่ duplicate เนื้อหาจาก `SKILL.md` ในส่วนย่อย
 
 ## Expected Outcome
 
@@ -178,16 +202,6 @@ Description ของ step
 > Goal: เป้าหมายเฉพาะของ step นี้
 
 1. parallel: ทำตาม `/workflow-a` ∥ ทำตาม `/workflow-b` — ใช้ `/follow-parallel`
-้อนกับ workflows อื่น
-
-## Execute
-
-### 1. Step Name
-Description ของ step
-
-> Goal: เป้าหมายเฉพาะของ step นี้
-
-1. parallel: `/workflow-a` ∥ `/workflow-b` — ใช้ `/follow-parallel`
 2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
