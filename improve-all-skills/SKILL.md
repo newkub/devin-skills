@@ -1,112 +1,110 @@
 ---
 name: improve-all-skills
-description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสม่ำเสมอ
+description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
 ---
 
 ## Goal
 
-ปรับปรุง skills ทั้งหมดให้สมบูรณ์ สม่ำเสมอ และตรงตามมาตรฐาน ครอบคลุมทุก `.md` ไฟล์ในแต่ละ skill
+ปรับปรุง skills ทั้งหมดให้สมบูรณ์ สอดคล้องกัน และตรงตามมาตรฐาน ครอบคลุมทุก `.md` ไฟล์ในแต่ละ skill
 
 ## Scope
 
-ปรับปรุงทุก `.md` ไฟล์ในแต่ละ skill directory (`SKILL.md`, `guide/`, `key-concepts/`, `principles/`, `references/`, `workflows/`, `templates/`) ทั้งใน `skills/` และ workspace รวมถึง `AGENTS.md`
+ปรับปรุงทุก `.md` ไฟล์ใน skill directories ทั้งใน `skills/` และ workspace รวมถึง `AGENTS.md` โดยใช้ `/improve-skills` เป็นหลักและทำ cross-skill checks
 
 ## Execute
 
-### 1. Analyze Current State
+### 1. Discover And Inventory
 
 วิเคราะห์สถานะปัจจุบันของทุก `.md` ไฟล์ใน skills
 
 > Goal: รู้ไฟล์ที่ต้องปรับปรุงและจัดลำดับความสำคัญ
 
-1. ทำ `/check-reference`, สแกนทุก `.md` ไฟล์ใน skill directories, ตรวจสอบไฟล์ที่เกิน 250 บรรทัด — broken references, file inventory, long files
-2. ทำ `/all-folders` เพื่อประมวลผลทีละ folder ถ้ามีหลาย skill หรือ workspace
-3. ระบุไฟล์ที่ต้องปรับปรุง: structure, content, references, description > 100 ตัวอักษร, title prefix
-4. หา `AGENTS.md` ทั้งหมดด้วย `glob **/AGENTS.md`
-5. จัดลำดับตาม impact (skills ที่ใช้บ่อยก่อน) — ถ้าไม่มี skills directory → stop และ report
+1. ทำ `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด
+2. ทำ `/check-reference` ตรวจ broken references ข้าม skills
+3. ตรวจสอบไฟล์เกิน 250 บรรทัด, description เกิน 100 ตัวอักษร, หรือ heading ผิด
+4. จัดลำดับตาม impact (skills ที่ใช้บ่อย, มี broken references, หรือไฟล์ยาวก่อน)
+5. ถ้าไม่มี skills directory ให้ stop และ report
 
-### 2. Apply Structure And Content Quality
+### 2. Plan Batch Update
 
-ปรับปรุง structure และคุณภาพเนื้อหาของทุก `.md` ไฟล์
+วางแผนการปรับปรุงทีละ batch
 
-> Goal: ทุก `.md` ไฟล์มี structure ตรงตาม `/write-devin-skills` และ content คุณภาพสูง
+> Goal: ประมวลผลทั้งหมดอย่างมีประสิทธิภาพ
 
-1. ตรวจสอบ `SKILL.md` frontmatter (title, description, auto_execution_mode), ตรวจสอบ sections ครบ (Goal, Scope, Execute, Rules, Expected Outcome), ปรับ heading เป็น English Title Case
-2. ทำ `/follow-content-quality`, `/simplify` — content quality และลดความซับซ้อน
-3. ลดจำนวนบรรทัดไม่เกิน 250 สำหรับทุกไฟล์ — ใช้ references แทนการ duplicate เนื้อหา
-4. ถ้าไฟล์มากกว่า 10 → ใช้ `/use-scripts` สำหรับ batch operations — ถ้า structure ไม่ valid → fix และ recheck (max 3 → stop/report)
+1. จัดกลุ่ม skills ตาม category (improve, follow, use, run, test) และ priority
+2. ถ้ามีไฟล์มากกว่า 10 ให้ใช้ `/use-scripts` สำหรับ batch operations
+3. ทำ `/dont-over-engineer` เพื่อให้แผนไม่ over-plan
 
-### 3. Fix References And Align Best Practices
+### 3. Improve Each Skill
 
-แก้ไข references และปรับให้สอดคล้องกับ best practices
+ปรับปรุงทีละ skill โดยใช้ `/improve-skills`
 
-> Goal: ไม่มี broken references และ skills สอดคล้องกับ best practices
+> Goal: ทุก skill ได้รับการปรับปรุงตามมาตรฐานเดียวกัน
 
-1. ตรวจสอบ skills ที่อ้างถึงมีอยู่จริง, ตรวจสอบ workflows ที่อ้างถึงมีอยู่จริง, ทำ `/follow-best-practice` สำหรับ topics ที่เกี่ยวข้อง
-2. ลบ references ที่ไม่มีอยู่จริง — เพิ่ม references ที่ขาดหาย — อ้างอิง official documentation สำหรับ tools/libraries
-3. ทำ `/check-reference` หลังแก้ไข — ถ้าพบ broken references ใหม่ → retry (max 3 → stop/report)
+1. สำหรับแต่ละ skill เรียก `/improve-skills` พร้อมระบุ target directory
+2. ติดตาม progress ต่อ skill
+3. ถ้าพบ error ให้ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 
-### 4. Write Content Coverage
+### 4. Cross-Skill Consistency
 
-เขียน content ครอบคลุมทุก features และ APIs ของแต่ละ skill
+ตรวจสอบความสอดคล้องและลด redundancy ข้าม skill
 
-> Goal: ทุก `.md` ไฟล์มี content ครอบคลุมทุก features และ use cases
+> Goal: ทุก skill สอดคล้องกันและไม่ซ้ำซ้อน
 
-1. ทำ `/review-coverage` สำหรับแต่ละ skill ครอบคลุมทุกไฟล์ใน `guide/`, `key-concepts/`, `principles/`, `references/`, `workflows/`
-2. ตรวจสอบว่าทุกไฟล์มี content ครบถ้วน (guides, examples, references, key-concepts, principles)
-3. ถ้าไฟล์มากกว่า 10 → ใช้ `/use-scripts` สำหรับ batch process — ถ้า coverage fail → retry (max 3 → stop/report)
+1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
+2. ทำ `/improve-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
+3. ทำ `/update-reference` หลังการรวม/แยก/ย้าย skill หรือ sections
 
-### 5. Batch Update And Validate
+### 5. Validate And Report
 
-อัพเดท skills เป็น batch และ validate ผลลัพธ์
+ตรวจสอบผลลัพธ์และสรุป
 
-> Goal: ทุก skills อัพเดทอย่างมีประสิทธิภาพ และผ่าน validation
+> Goal: ทุก skills ผ่าน validation พร้อมรายงาน
 
-1. จัดกลุ่ม skills ตาม category (improve, follow, use, run, test) — อัพเดทตามลำดับความสำคัญ
-2. ทำ `/check-reference`, `/validate` หลังแต่ละ batch — broken references, structure validation
-3. ทำ `/update-reference` เพื่ออัปเดท references ทั้งหมด — ถ้า validate fail → retry (max 3 → stop/report)
-
-### 6. Update Devin Specifics
-
-ปรับปรุง `SKILL.md` และ `AGENTS.md` ตาม Devin CLI spec
-
-> Goal: skills และ `AGENTS.md` สอดคล้องกับ Devin CLI
-
-1. ทำ `/follow-devin-skills-md` กับทุก `SKILL.md` เพื่อ verify frontmatter, sections, `name` ตรงกับ directory
-2. ทำ `/write-devin-skills` สำหรับ skills ที่ขาดหรือต้อง rewrite
-3. ทำ `/update-agents-md` สำหรับทุก `AGENTS.md`
-4. ทำ `/check-reference` และ `/validate` เพื่อตรวจสอบ references และ structure
+1. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมด
+2. ทำ `/validate`
+3. ทำ `/follow-devin-skills-md` กับทุก `SKILL.md`
+4. ทำ `/update-agents-md` สำหรับทุก `AGENTS.md`
+5. ทำ `/report` เพื่อสรุปผล
 
 ## Rules
 
-### 1. Structure Standards
+### 1. Delegate To Sub-Skills
 
-- `SKILL.md` frontmatter ต้องมี title, description, auto_execution_mode: 3
-- Title Case ตรงกับ skill name ไม่มี prefix (Guide/Tool/Lang) — Description ไม่เกิน 100 ตัวอักษร
-- `SKILL.md` มี sections ครบ (Goal, Scope, Execute, Rules, Expected Outcome) — ทุก `.md` ไฟล์ไม่เกิน 250 บรรทัด
+- ใช้ `/improve-skills` สำหรับปรับปรุงแต่ละ skill
+- ใช้ `/improve-consistency` สำหรับข้าม skill consistency
+- ใช้ `/improve-redundancy` สำหรับลด redundancy ข้าม skill
+- ไม่ duplicate เนื้อหาที่มีอยู่แล้วใน `/improve-skills`
 
-### 2. Language And Content Quality
+### 2. Batch Execution
 
-- Execute headings: English Title Case — Rules section: ภาษาไทย — Bullet points: ภาษาไทย — File names: kebab-case
-- ใช้ references แทนการ duplicate เนื้อหา — ไม่ซ้ำซ้อนระหว่าง Execute และ Rules — เนื้อหา explicit แทน implicit
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/skill-name` — ทำ `/simplify` เพื่อลดความซับซ้อน
+- ประมวลผลตามลำดับ priority เพื่อ fail fast
+- ใช้ `/use-scripts` ถ้าต้องทำงานกับไฟล์จำนวนมาก
+- ตรวจสอบ progress ต่อ skill ก่อนไป step ถัดไป
 
-### 3. High Impact Content
+### 3. Reference Integrity
 
-- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
-- ห้าม TODO, MOCK, placeholder, generic filler — รักษา skill intent เดิม
+- ทำ `/check-reference` ก่อนและหลังการปรับปรุง
+- ทำ `/update-reference` หลังการ rename, merge, หรือ split skill
+- ไม่ทิ้ง broken references ไว้
 
-### 4. Devin CLI And AGENTS
+### 4. Size And Structure
 
-- ทุก `SKILL.md` ต้องผ่าน `/follow-devin-skills-md`
-- `AGENTS.md` ต้องผ่าน `/update-agents-md`
-- ชื่่อ skill ใน frontmatter ต้องตรงกับ directory ไม่มี prefix
+- ทุก `SKILL.md` ไม่เกิน 250 บรรทัด
+- ทุก `SKILL.md` มี sections ครบ (Goal, Scope, Execute, Rules, Expected Outcome)
+- Execute steps ไม่เกิน 10
+
+### 5. Scope Boundary
+
+- ไม่แก้ไข source code ของ project โดยตรง
+- ถ้าพบว่าต้องแก้ไข project ให้หยุดและแนะนำให้ใช้ `/improve-skills` ใน project workspace
 
 ## Expected Outcome
 
-- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/write-devin-skills` และ `/follow-write-devin-skills` — ไม่เกิน 250 บรรทัด
-- Content ครอบคลุมทุก features, APIs, และ use cases — คุณภาพสูง ไม่ซับซ้อนเกินจำเป็น
-- ไม่มี broken references — สอดคล้องกับ best practices และ official documentation
-- ทุก `SKILL.md` ผ่าน `/follow-devin-skills-md`
+- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/follow-devin-skills-md`
+- Content ครอบคลุมทุก features, APIs, และ use cases
+- ไม่มี broken references
+- ทุก skill สอดคล้องกันในเรื่องภาษา, format, terminology
+- ไม่มี redundancy ข้าม skill
 - `AGENTS.md` ผ่าน `/update-agents-md`
-- ทุก step มี `, ` markers สำหรับ parallel execution
+- รายงานสรุปผลชัดเจน
