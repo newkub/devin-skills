@@ -1,8 +1,17 @@
 ---
 name: template-skills-review
 description: Template สำหรับ review-* skills วิเคราะห์ quality
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal
@@ -173,7 +182,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 ### 7. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
 - ใช้ heading levels สำหรับ structure
 

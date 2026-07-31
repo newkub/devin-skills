@@ -1,8 +1,15 @@
 ---
 name: template-skills-check
 description: Template สำหรับ check-* skills scan และ report
-allowed-tools: ['read', 'grep', 'glob', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,8 +1,15 @@
 ---
 name: template-skills-report
 description: Template สำหรับ report-* skills รวบรวมข้อมูล
-allowed-tools: ['read', 'grep', 'glob', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

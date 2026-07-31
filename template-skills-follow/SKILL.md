@@ -1,8 +1,17 @@
 ---
 name: template-skills-follow
 description: Template สำหรับ follow-* skills ใช้ best practices
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

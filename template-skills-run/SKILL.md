@@ -1,8 +1,13 @@
 ---
 name: template-skills-run
 description: Template สำหรับ run-* skills execute commands
-allowed-tools: ['read', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

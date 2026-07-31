@@ -1,9 +1,17 @@
 ---
-
 name: template-skills-architecture
 description: Template สำหรับ follow-*-architecture skills จัดโครงสร้าง project
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

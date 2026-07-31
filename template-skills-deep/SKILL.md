@@ -1,8 +1,16 @@
 ---
 name: template-skills-deep
 description: Template สำหรับ deep-* skills วิเคราะห์เชิงลึก
-allowed-tools: ['read', 'grep', 'glob', 'exec', 'ask_user_question', 'run_subagent']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+  - run_subagent
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

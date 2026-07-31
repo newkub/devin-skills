@@ -1,8 +1,14 @@
 ---
 name: template-skills-idea
 description: Template สำหรับ idea-* skills สร้างไอเดีย
-allowed-tools: ['read', 'grep', 'glob', 'ask_user_question']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

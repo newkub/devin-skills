@@ -1,8 +1,18 @@
 ---
 name: template-skills-analyze
 description: Template สำหรับ analyze-* skills วิเคราะห์ codebase
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question', 'run_subagent']
-triggers: ['user', 'model']
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+  - run_subagent
+triggers:
+  - user
+  - model
 ---
 
 ## Goal
