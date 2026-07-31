@@ -1,6 +1,21 @@
 ---
 name: follow-moonrepo
 description: แนวทางการพัฒนา monorepo ด้วย Moonrepo v2.x
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+related:
+  - follow-monorepo
+  - follow-tasks
+  - follow-package-manifest
 ---
 
 ## Goal
@@ -113,19 +128,18 @@ description: แนวทางการพัฒนา monorepo ด้วย Mo
    - `pre-commit` - lint, format (use `--affected --status=staged`)
    - `pre-push` - typecheck, test (use `--affected`)
 
-### 10. GitHub Actions CI
+### 10. CI And Integrations
+
+ตั้งค่า CI pipeline และ integrations สำหรับ Moonrepo
 
 1. สร้าง `.github/workflows/ci.yml` สำหรับ CI/CD pipeline
 2. ใช้ `moon ci` สำหรับ CI validation
 3. ใช้ `moonrepo/run-report-action@v1` สำหรับ reporting
 4. ใช้ `MOON_<TOOLCHAIN>_VERSION` env vars สำหรับ matrix strategy
-
-### 11. MCP Integration
-
-1. ใช้ Moon MCP server สำหรับ AI integration
-2. ใช้ `get_templates` และ `get_template` สำหรับ template discovery (v2.3)
-3. ใช้ `get_projects` และ `get_tasks` สำหรับ workspace inspection
-4. ตั้งค่า MCP ใน `.mcp.json` ของ project
+5. ใช้ Moon MCP server สำหรับ AI integration
+6. ใช้ `get_templates` และ `get_template` สำหรับ template discovery (v2.3)
+7. ใช้ `get_projects` และ `get_tasks` สำหรับ workspace inspection
+8. ตั้งค่า MCP ใน `.mcp.json` ของ project
 
 ## Rules
 

@@ -1,6 +1,21 @@
 ---
 name: follow-turborepo
 description: แนวทางการพัฒนา monorepo ด้วย Turborepo v2.x
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+related:
+  - follow-monorepo
+  - follow-tasks
+  - follow-package-manifest
 ---
 
 ## Goal
@@ -19,7 +34,7 @@ description: แนวทางการพัฒนา monorepo ด้วย Tu
 2. ตั้งค่า root `package.json` ให้มี `private`, `packageManager`, `workspaces`
 3. ใช้ package tasks แทน root tasks
 4. สร้าง `turbo.json` ที่ root พร้อม `$schema`
-5. จัดโครงสร้าง directory ด้วย `apps/*`, `packages/*` (ห้าม nested packages เช่น `apps/**`)
+5. จัดโครงสร้าง directory ด้วย `apps/*`, `packages/*` (ห้าม nested packages เช่น `apps/nested/*`)
 6. แต่ละ package ต้องมี `package.json` พร้อม `exports` สำหรับ entrypoints
 7. หลีกเลี่ยงการเข้าถึง files ข้าม package boundaries (ห้ามใช้ `../`)
 
