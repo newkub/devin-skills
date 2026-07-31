@@ -18,6 +18,7 @@ related:
   - review-code-quality
   - review-coverage
   - review-delivery
+  - check-circular-dependencies
   - scan-codebase
   - suggest-next-action
   - validate
@@ -53,7 +54,7 @@ related:
 
 > Goal: skill ผ่านเกณฑ์ structure, frontmatter, references ก่อนปรับปรุง
 
-1. parallel: ทำตาม `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง
+1. parallel: ทำตาม `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจสอบ circular references ใน target
 2. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
 
 ### 3. Research Best Practices
@@ -124,7 +125,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 > Goal: skill ผ่าน validation และมีรายงานสรุป
 
-1. parallel: ทำตาม `/check-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
+1. parallel: ทำตาม `/check-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ทำตาม `/check-circular-dependencies` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 2. ทำ `/validate`
 3. ทำ `/report` เพื่อสรุปการปรับปรุง
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
@@ -138,6 +139,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 - ตรวจสอบ sections ครบถ้วน (`## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`)
 - ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
 - ทำ `/check-reference` ก่อนและหลังแก้ไข
+- ทำ `/check-circular-dependencies` ก่อนและหลังแก้ไขเพื่อตรวจ circular references ระหว่าง skills
 
 ### 2. Research-Driven Improvements
 

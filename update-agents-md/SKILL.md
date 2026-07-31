@@ -1,206 +1,162 @@
 ---
 name: update-agents-md
-description: Write AGENTS.md according to project analysis and dependencies
+description: สร้างหรืออัปเดท AGENTS.md ตาม project analysis, dependencies สำหรับ root และทุก workspace
+related:
+  - follow-write-skill-md
+  - follow-monorepo
+  - all-workspaces
+  - deep-plan
+  - improve-config
+  - analyze-project
+  - check-monorepo
+  - follow-write-devin-skills
+  - review-codebase-everything
+  - git-commit
+  - ask-me
 ---
 
 ## Goal
 
-เขียน `AGENTS.md` ตาม project analysis, dependencies และ best practices
+สร้างหรืออัปเดท `AGENTS.md` ตาม project analysis, dependencies และ best practices สำหรับ root และทุก workspace ใน monorepo
 
 ## Scope
 
-ใช้สำหรับเขียน `AGENTS.md` ใน workspace ตาม project จริง ถ้าเป็น monorepo ให้เขียนทั้ง root และ workspace level
+ใช้สำหรับเขียน `AGENTS.md` ใน workspace ตาม project จริง ถ้าเป็น monorepo ให้เขียนทั้ง root และ workspace level สามารถรับ argument เป็น workspace หรือ file path ถ้าต้องการทำเฉพาะ workspace
 
 ## Execute
 
-### 1. Check Project Type
+### 1. Determine Target
 
-ตรวจสอบประเภท project
+ระบุ target ที่จะสร้าง/อัปเดท AGENTS.md
 
-> Goal: รู้ประเภท project เพื่อเลือก flow ที่ถูกต้อง
+> Goal: ทราบ scope ว่าทำ root, workspace เดียว หรือทุก workspace
 
-1. ทำ `/check-monorepo` เพื่อตรวจสอบว่า project เป็น monorepo หรือไม่
-2. ถ้าเป็น monorepo ให้ทำตาม Monorepo section
-3. ถ้าไม่ใช่ monorepo ให้ทำตาม Single Project section
+1. ถ้ามี argument ชื่อ workspace หรือ path → ทำเฉพาะ workspace นั้น
+2. ถ้าไม่มี argument → ทำ root และทุก workspace ใน monorepo
+3. ทำ `/check-monorepo` เพื่อตรวจสอบว่า project เป็น monorepo หรือไม่
+4. ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` ก่อน
 
-### 2. Read Global Workflows
-
-เข้าใจมาตรฐานและป้องกันการซ้ำซ้อน
-
-> Goal: เข้าใจมาตรฐานและไม่ซ้ำซ้อนกับ workflows ที่มีอยู่
-
-1. อ่าน global rules จาก `c:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-2. อ่าน workflows ที่คล้ายกันหรือเกี่ยวข้อง
-3. ดูตัวอย่างจาก workflows ที่มีอยู่ใน `global_workflows`
-
-### 3. Analyze Project
+### 2. Analyze Project
 
 วิเคราะห์ project เพื่อเข้าใจ requirements
 
 > Goal: เข้าใจ tech stack, dependencies และ patterns ของ project
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ codebase
-2. อ่าน `package.json` ทั้ง root และ workspace เพื่อดู dependencies
-3. ระบุ tech stack และ frameworks ที่ใช้
-4. วิเคราะห์ patterns และ conventions ที่มีอยู่
+2. ทำ `/all-workspaces` เพื่อรวบรวมและจัดลำดับ workspaces
+3. อ่าน `package.json` ทั้ง root และ target workspaces
+4. ระบุ tech stack และ frameworks ที่ใช้
 
-### 4. Identify Skills
+### 3. Plan AGENTS.md
 
-ระบุ skills ที่ควร follow จาก dependencies
+วางแผนรายละเอียดก่อนเขียน
 
-> Goal: รู้ skills ที่ต้องเขียนใน AGENTS.md
+> Goal: มีแผนครอบคลุมทุก workspace ก่อนลงมือ
 
-1. ดู dependencies ใน `package.json` ทั้ง root และ workspace
-2. ทำ `/list-skills` เพื่อดู skills ในเครื่องทั้งหมด
-3. ถ้าไม่มี skills ที่เกี่ยวข้องในเครื่อง ให้ทำ `/search-skills` เพื่อค้นหา skills จาก external registry ที่เกี่ยวข้องกับ dependencies
-4. ระบุ skills ที่ควร follow สำหรับแต่ละ dependency
-5. ระบุ skills ที่ควร follow จากผลลัพธ์ของ `/list-skills` และ `/search-skills` (ถ้ามี)
-6. ถ้า project ต้องการ refactor หรือ restructure บ่อย ให้ระบุ `/refactor-codebase`
+1. ทำ `/deep-plan` ถ้างานซับซ้อนสูงหรือหลาย workspace
+2. ระบุรูปแบบ `AGENTS.md` ตาม `/follow-write-skill-md` (frontmatter + Goal/Scope/Execute/Rules/Expected Outcome)
+3. ระบุ skills และ review-* workflows ที่เกี่ยวข้องจาก dependencies
+4. จัดลำดับ: root → foundation packages → apps
 
-### 5. Identify Reviews
+### 4. Read References
 
-ระบุ review-* workflows ที่ควรใช้จาก project characteristics
+อ่าน references ก่อนเขียน
 
-> Goal: รู้ review-* workflows ที่เกี่ยวข้องกับ workspace
+> Goal: ใช้มาตรฐานที่ถูกต้องและไม่ซ้ำซ้อน
 
-1. ทำ `/review-codebase-everything` เพื่อดู review dimensions ทั้งหมดที่มี
-2. เลือก review-* workflows ที่เกี่ยวข้องกับ workspace ตาม dependencies และ project type
-3. ข้าม review-* workflows ที่ไม่เกี่ยวข้องตาม skip conditions ใน `/review-codebase-everything`
+1. ทำ `/follow-write-skill-md` เพื่อใช้ format มาตรฐานสำหรับ `AGENTS.md`
+2. ทำ `/follow-write-devin-skills` เพื่อรักษา workflow structure
+3. อ่าน global rules จาก `c:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+4. ทำ `/read-related-skills` สำหรับ skills ที่เกี่ยวข้อง
 
-### 6. Write AGENTS.md
+### 5. Write Root AGENTS.md
 
-เขียน `AGENTS.md` ตาม Rules section โดยทำตาม `/follow-write-devin-skills`
+สร้างหรืออัปเดท root `AGENTS.md`
 
-> Goal: `AGENTS.md` ที่เขียนตามมาตรฐาน `/follow-write-devin-skills` และ Rules section
+> Goal: root AGENTS.md ครอบคลุมทุก workspace และสอดคล้อง project
 
-1. ทำ `/follow-write-devin-skills` เพื่อเขียนตามมาตรฐาน structure, clarity และ high impact content
-2. ทำ `/follow-write-devin-skills` เพื่อเขียนตามมาตรฐาน workflow structure
-3. ทำ `/follow-principles-engineering` เพื่อเขียนเป็นหลักการ
-4. ตรวจสอบความสม่ำเสมอของ terminology และ format ทั่วทั้งเอกสาร
-5. เขียน `AGENTS.md` ตาม Rules section
+1. สร้าง frontmatter ด้วย `name`, `description`, `related`
+2. ระบุ `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+3. ใน `## Rules` เพิ่ม `### Workspaces` ที่บอกให้ทำตาม workspace `AGENTS.md` ของแต่ละ workspace
+4. รวม sections: Project, Workflows, Skills, Review
+5. ใช้ภาษาอังกฤษทั้งหมด ใช้ backticks สำหรับ tools/commands
 
-### 7. Validate And Finalize
+### 6. Write Workspace AGENTS.md
+
+สร้างหรืออัปเดท workspace `AGENTS.md` แต่ละ target
+
+> Goal: แต่ละ workspace มี AGENTS.md ที่สอดคล้องกับ dependencies ของตัวเอง
+
+1. สำหรับแต่ละ target workspace สร้าง/อัปเดท `AGENTS.md`
+2. สร้าง frontmatter ด้วย `name`, `description`, `related`
+3. ระบุ sections Goal, Scope, Execute, Rules, Expected Outcome
+4. อ้างอิง dependencies ใน `package.json` ของ workspace นั้น
+5. รวม review-* workflows จาก `/review-codebase-everything` ตาม project characteristics
+6. ทำซ้ำจนครบทุก target workspace
+
+### 7. Improve Configuration
+
+ปรับปรุง config ให้สอดคล้องกับ AGENTS.md
+
+> Goal: project config รองรับ workflows ที่ระบุใน AGENTS.md
+
+1. ทำ `/improve-config` เพื่อ sync config, scripts, build ทั่ว project
+2. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกับ AGENTS.md
+3. ตรวจสอบว่า config files รองรับ workflows ที่ระบุ
+
+### 8. Validate And Finalize
 
 ตรวจสอบและ finalize
 
 > Goal: AGENTS.md ผ่าน validation และพร้อมใช้งาน
 
-1. ทำ `/review-delivery` สำหรับปรับปรุงคุณภาพ
+1. ทำ `/check-reference` เพื่อตรวจสอบ references
 2. ตรวจสอบว่าไฟล์ไม่เกิน 250 บรรทัด
-3. ตรวจสอบ references ว่ามีอยู่จริง
+3. ทำ `/validate`
+4. ทำ `/git-commit` เพื่อ commit การเปลี่ยนแปลง
+5. ทำ `/ask-me` เพื่อถามว่าจะ `/git-push` หรือ `/run-release` ต่อไหม
 
 ## Rules
 
-### 1. Monorepo Handling
+### 1. Target And Monorepo
 
-ถ้าเป็น monorepo ต้องเขียน `AGENTS.md` ทั้ง root และ workspace level
+- ถ้ามี argument workspace/file path → ทำเฉพาะ target นั้น
+- ถ้าไม่มี argument → ทำ root และทุก workspace
+- ทำ `/follow-monorepo` ก่อนเสมอถ้าเป็น monorepo
+- ทำ `/all-workspaces` เพื่อรวบรวมและจัดลำดับ workspaces
 
-- Root `AGENTS.md` ต้องมี `### Workspaces` ใน `## Rules` ที่ระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
-- แต่ละ workspace ต้องมี `AGENTS.md` ของตัวเองที่เขียนตาม Rules section ด้านล่าง
-- Root `AGENTS.md` ต้องมี `## Goal`, `## Scope`, `## Execute`, `## Rules` (พร้อม `### Workspaces`), `## Expected Outcome`
-- Workspace `AGENTS.md` ต้องมี `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+### 2. AGENTS.md Format
 
-### 2. Section Structure
+- ใช้ format ตาม `/follow-write-skill-md` (frontmatter `name`, `description`, `related`)
+- มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+- เนื้อหาภาษาอังกฤษทั้งหมด
+- ไฟล์ไม่เกิน 250 บรรทัด
+- ใช้ backticks สำหรับ tools, commands, file paths, skill-name
 
-โครงสร้าง sections ตาม `/follow-write-devin-skills` format (เรียงลำดับจากบนลงล่าง):
+### 3. Root AGENTS.md
 
-- `## Goal`: อธิบายว่า workspace ทำอะไรและสอดคล้องกับ workspace name
-- `## Scope`: ระบุขอบเขตว่าใช้กับอะไรและไม่ทับซ้อนกับ workspaces อื่น
-- `## Execute`: steps ที่ต้องทำใน workspace แต่ละ step มี heading → description → `> Goal:` → numbered list
-- `## Rules`: จัดกลุ่มเป็นหัวข้อ single concern รวม Project, Architecture, Commands, Workflows, Skills, Review
-- `## Expected Outcome`: ผลลัพธ์ที่คาดหวังหลังทำงานใน workspace
+- ต้องมี `### Workspaces` ใน `## Rules`
+- ระบุให้ทำตาม workspace `AGENTS.md` ของแต่ละ workspace
+- ครอบคลุม project-wide conventions
 
-Root `AGENTS.md` เพิ่ม `### Workspaces` ใน `## Rules` ที่ระบุว่าให้ทำตาม `AGENTS.md` ของแต่ละ workspace
+### 4. Workspace AGENTS.md
 
-### 3. Content Language
+- ระบุ `name` ใน frontmatter ตรงกับชื่อ workspace
+- ระบุ tech stack, workflows, skills, reviews ตาม dependencies ของ workspace
+- ไม่ duplicate เนื้อหาจาก root
 
-เนื้อหาใน `AGENTS.md` ที่สร้างต้องเป็นภาษาอังกฤษทั้งหมด
+### 5. Planning And Safety
 
-- `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome` ต้องเป็นภาษาอังกฤษทั้งหมด
-- `## Execute` descriptions และ `> Goal:` ต้องเป็นภาษาอังกฤษ
-- ใช้ backticks สำหรับ `concepts`, `tools`, `terms`, และ `commands`
-- ห้ามใช้ภาษาไทยใน `AGENTS.md` ที่สร้างขึ้น
-
-### 4. Execute Format
-
-รูปแบบ `## Execute` ตาม `/follow-write-devin-skills`:
-
-- แต่ละ step ใช้ format: `### N. Step Name` → description → `> Goal:` → numbered list
-- ทุก step ต้องมี `> Goal:` ก่อน numbered list
-- Steps ไม่เกิน 10
-- รวม validation step และ ship step เป็น step สุดท้าย
-
-### 5. Rules Format
-
-รูปแบบ `## Rules` ตาม `/follow-write-devin-skills`:
-
-- จัดกลุ่มเป็นหัวข้อ single concern: `### N. Rule Name`
-- แต่ละ rule รวม Project Configuration, Architecture, Commands, Workflows, Skills, Review
-- ใช้ bullet points พร้อม colon separator สำหรับ Project Configuration
-- ตัวอย่าง: `Project Type: \`cli\``
-- ไม่ใช้ตาราง
-
-### 6. Workflow Format
-
-รูปแบบ `## Workflows`:
-
-- ใช้ bullet points พร้อมคำว่า "Follow" และ backticks
-- เพิ่มข้อความนำหน้า section: "Workflows used in this project:"
-- ตัวอย่าง: `- Follow \`/follow-biome\``
-- ไม่ใช้ตาราง
-- รวมรายการ workflows ทั้งหมดที่เกี่ยวข้องจาก dependencies ใน `package.json`
-- ตรวจสอบทั้ง root และ workspace `package.json`
-- รวม workflows สำหรับ: runtime, framework, build tool, linter, formatter, test runner, database, ORM, validation, styling, router, state management, auth, payment, API layer, monorepo, git hooks, deployment, code analysis, unused code detection
-
-### 7. Skills Format
-
-รูปแบบ `## Skills`:
-
-- ใช้ bullet points พร้อมคำว่า "Follow" และ backticks
-- เพิ่มข้อความนำหน้า section: "Skills used in this project:"
-- ตัวอย่าง: `- Follow \`context7-mcp\``
-- ไม่ใช้ตาราง
-- รวมรายการ skills ทั้งหมดที่เกี่ยวข้องจาก dependencies ใน `package.json`
-- Skills ไม่ใช่ optional - ต้องมี section นี้เสมอ
-- ตรวจสอบทั้ง root และ workspace `package.json` สำหรับ dependencies ที่เกี่ยวข้องกับ skills
-- รวม skills สำหรับ MCP servers, AI integrations, หรือ specialized tooling
-- Skills ที่ควรตรวจสอบ: `mcp-builder`, `frontend-design`, `shadcn-vue`, `vueuse`
-- ถ้าไม่มี skills ให้เขียน: `- (No skills needed for this project)`
-
-### 8. Review Format
-
-รูปแบบ `## Review`:
-
-- ใช้ bullet points พร้อมคำว่า "Follow" และ backticks
-- เพิ่มข้อความนำหน้า section: "Review workflows for this project:"
-- ตัวอย่าง: `- Follow \`/review-code-quality\``
-- ไม่ใช้ตาราง
-- เลือก review-* workflows จาก `/review-codebase-everything` ตาม project characteristics
-- ข้าม review-* workflows ที่ไม่เกี่ยวข้องตาม skip conditions ใน `/review-codebase-everything`
-- Root `AGENTS.md` ใน monorepo ให้ระบุว่าให้ดู review-* workflows จาก `/review-codebase-everything` และทำตาม workspace `AGENTS.md` ของแต่ละ workspace
-- ถ้าไม่มี reviews ที่เกี่ยวข้อง ให้เขียน: `- (No reviews needed for this project)`
-
-### 9. Write Workflows Compliance
-
-`AGENTS.md` ที่สร้างต้องทำตาม `/follow-write-devin-skills`
-
-- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
-- ห้าม TODO, MOCK, placeholder, generic filler หรือคำสวยแต่ไม่ actionable
-- ใช้ active voice ระบุ subject/object ชัดเจน ทุกบรรทัดตีความได้ทางเดียว
-- ลำดับ sections ต้อง fixed และ consistent ทุก workspace
-- ถ้าแก้ไข `AGENTS.md` เดิม → ต้องไม่ทำลาย references เดิม
+- ทำ `/deep-plan` ถ้างานซับซ้อนสูง
+- ทำ `/improve-config` หลังเขียน AGENTS.md เพื่อ sync config
+- ทำ `/git-commit` หลังเสร็จ
+- ทำ `/ask-me` ก่อน `/git-push` หรือ `/run-release`
 
 ## Expected Outcome
 
-- ถ้าเป็น monorepo: root `AGENTS.md` มี `### Workspaces` ใน `## Rules` ที่บอกให้ทำตาม workspace `AGENTS.md`
-- ถ้าเป็น monorepo: แต่ละ workspace มี `AGENTS.md` ของตัวเอง
-- `AGENTS.md` มี `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome` ครบถ้วนตาม `/follow-write-devin-skills`
-- `## Execute` ทุก step มี `> Goal:` ก่อน numbered list
-- `## Rules` จัดกลุ่มเป็นหัวข้อ single concern รวม Project, Workflows, Skills, Review
-- `## Workflows` เป็น bullet points พร้อม "Follow" และ backticks
-- `## Skills` เป็น bullet points พร้อม "Follow" และ backticks - ห้ามว่างหรือหาย
-- Workflows อิงจาก dependencies ใน `package.json`
-- Skills อิงจาก dependencies ใน `package.json`
-- `## Review` อิงจาก `/review-codebase-everything` และ project characteristics
-- ไฟล์ไม่เกิน 250 บรรทัด
-- เนื้อหาทั้งหมดใน `AGENTS.md` ที่สร้างเป็นภาษาอังกฤษ
+- ถ้าเป็น monorepo: root `AGENTS.md` และ workspace `AGENTS.md` ทุก target สมบูรณ์
+- `AGENTS.md` มี frontmatter ตาม `/follow-write-skill-md`
+- `AGENTS.md` มี Goal, Scope, Execute, Rules, Expected Outcome ครบถ้วน
+- Workflows, Skills, Review sections อิงจาก dependencies จริง
+- ผ่าน `/check-reference` และ `/validate`
+- มี commit พร้อม next action จาก `/ask-me`
