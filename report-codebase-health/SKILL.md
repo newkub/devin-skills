@@ -9,7 +9,7 @@ description: วิเคราะห์สุขภาพ codebase 60+ categori
 
 ## Scope
 
-ใช้สำหรับตรวจสอบสุขภาพ codebase ทุกประเภท ครอบคลุม 60+ categories จัดกลุ่มตาม 5 domains — ไม่ทับซ้อนกับ `/report-workflows-health` หรือ `/report-skills-health`
+ใช้สำหรับตรวจสอบสุขภาพ codebase ทุกประเภท ครอบคลุม 60+ categories จัดกลุ่มตาม 5 domains — ไม่ทับซ้อนกับ `/report-skills-health`
 
 ## Execute
 

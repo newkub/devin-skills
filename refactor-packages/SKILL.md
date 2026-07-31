@@ -22,9 +22,9 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 > Goal: เข้าใจ current structure, responsibilities, coupling, duplication
 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
-2. ทำ `/analyze-project` เพื่องดูภาพรวม project type และ structure
-3. ทำ `/deep-analyze` เพื่องวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
-4. ทำ `/scan-codebase` ∥ `/analyze-code-structure` เพื่องค้นหา consumers, call sites, exports, cohesion
+2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
+4. ทำ `/scan-codebase` ∥ `/analyze-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
 5. ทำ `/check-duplication` และ `/check-circular-dependencies`
 6. ถ้าเป็น monorepo → ทำ `/follow-monorepo`
 
@@ -38,7 +38,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 2. ประเมิน signals:
    - Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม modules/packages
    - ไม่ refactor: single responsibility ชัด, cohesive สูง, เปลี่ยนด้วยกัน, deploy ด้วยกัน
-3. ทำ `/dont-over-engineer` เพื่องกำหนดขอบเขต minimal
+3. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขต minimal
 
 ### 3. Plan Refactor
 
@@ -46,7 +46,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 > Goal: แผน minimal ที่กระทบน้อยที่สุด
 
-1. ทำ `/plan` เพื่องสร้างแผน split, extract, merge, หรือ relocate
+1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
 2. ระบุ module/package boundaries ตาม domain, reason to change, cohesion
 3. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
 4. จัดลำดับตาม dependency direction (foundation ก่อน)
@@ -74,7 +74,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
 2. ใช้ `/restructure` หรือ `/relocation` สำหรับ file operations
-3. ใช้ `/follow-import-export` เพื่องจัดการ barrel exports และ import aliases
+3. ใช้ `/follow-import-export` เพื่อจัดการ barrel exports และ import aliases
 4. ทำ `/update-reference` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
 5. ลบ dependencies ที่ไม่จำเป็น
 
@@ -86,7 +86,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 1. parallel: ทำ `/run-check` ∥ ทำ `/run-test` ∥ ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/check-duplication`
-3. ทำ `/analyze-code-structure` เพื่องเปรียบเทียบกับ baseline
+3. ทำ `/analyze-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
 5. ทำ `/update-reference` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
 

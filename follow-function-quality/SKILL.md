@@ -31,8 +31,8 @@ related:
 
 > Goal: มีรายการ functions พร้อม signature และ body overview
 
-1. ทำ `/analyze-code-structure` เพื่องดู top-level functions, methods, members
-2. ทำ `/use-ast-grep-outline` ด้วย `--type function --view expanded` เพื่องดู parameters, return type, body structure
+1. ทำ `/analyze-code-structure` เพื่อดู top-level functions, methods, members
+2. ทำ `/use-ast-grep-outline` ด้วย `--type function --view expanded` เพื่อดู parameters, return type, body structure
 3. กรองเฉพาะ source functions ไม่รวม test/spec/generated
 
 ### 2. Check Function SRP
@@ -51,7 +51,7 @@ related:
 
 > Goal: ชื่อ function บ่งบอกสิ่งที่ทำอย่างชัดเจน
 
-1. ใช้ `/review-naming` เพื่องตรวจสอบ naming conventions
+1. ใช้ `/review-naming` เพื่อตรวจสอบ naming conventions
 2. ตรวจสอบว่าชื่อขึ้นต้นด้วย verb (get, set, compute, validate, handle, etc.)
 3. หลีกเลี่ยงชื่อกำกวม เช่น `doStuff`, `process`, `data`, `temp`, `helper`, หรือ single-letter
 4. ถ้าชื่อไม่สะท้อน intent → ระบุ rename candidate
@@ -66,7 +66,7 @@ related:
 2. นับจำนวน parameters (ไม่เกิน 4 ตัว; ถ้าเกินควรรับ object)
 3. นับ nesting depth (if/for/while ซ้อนกัน) ไม่เกิน 3 ระดับ
 4. ตรวจสอบ cyclomatic complexity (if/switch/loop branches) ไม่เกิน 10
-5. ใช้ `/use-scripts` เพื่องคำนวณ metrics ถ้ามีหลายไฟล์
+5. ใช้ `/use-scripts` เพื่อคำนวณ metrics ถ้ามีหลายไฟล์
 
 ### 5. Check Purity And Side Effects
 

@@ -47,7 +47,7 @@ ImprovVdat
 ### 4. Validate And Finalize
 ปรับปรุงและ
 
-1.ำ `/improve-rules` เพื่องปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
+1.ำ `/improve-rules` เพื่อปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
 2
 3. รัน `bun run scan` เพื่อตรวจสอบ ast-grep rules ทำงานได้
 4. รัน `bun run typecheck` เพื่อตรวจสอบไม่มี type errors จากการเปลี่ยนแปลง

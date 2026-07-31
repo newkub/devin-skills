@@ -89,7 +89,7 @@ Review ความเสถียรของ application เพื่อหา
 2. ถ้าพบ performance issues ให้ทำ `/review-performance`
 3. ถ้าพบ concurrency issues ให้ทำ `/review-concurrency`
 4. ถ้าพบ security issues ให้ทำ `/review-security`
-5. ใช้ `/report-format-table` เพื่องจัดรูปแบบผลลัพธ์
+5. ใช้ `/report-format-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Format Report
 

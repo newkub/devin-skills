@@ -20,7 +20,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 1. อ่าน workflow ที่ต้องปรับปรุง พร้อม frontmatter และ `related`
 2. ระบุ steps ทั้งหมด รวม dependencies, inputs, outputs, side effects
 3. ระบุ branches/conditions เช่น `ถ้า X → stop/report`, `ถ้า fail → retry`
-4. บันทึก flow เป็น list หรือ diagram ง่ายๆ เพื่องวิเคราะห์
+4. บันทึก flow เป็น list หรือ diagram ง่ายๆ เพื่อวิเคราะห์
 
 ### 2. Identify Flow Issues
 
@@ -38,11 +38,11 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 ปรับลำดับ steps และเพิ่ม parallelism
 
 1. เรียง steps ตาม: foundation → validation → high impact → dependencies → report/cleanup
-2. ย้าย context/reference/requirement checks ไปต้นเพื่อง fail-fast
-3. ทำ `/follow-parallel` เพื่องรวม independent reads/scans/searches เป็น parallel batch
+2. ย้าย context/reference/requirement checks ไปต้นเพื่อ fail-fast
+3. ทำ `/follow-parallel` เพื่อรวม independent reads/scans/searches เป็น parallel batch
 4. ใช้ `parallel:` และ `∥` ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism` สำหรับ independent operations
-5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/refactor-workflow` เพื่องแยกเป็น sub-workflows
-6. ทำ `/follow-deterministic` เพื่องตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
+5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/refactor-workflow` เพื่อแยกเป็น sub-workflows
+6. ทำ `/follow-deterministic` เพื่อตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
 ### 4. Clarify Transitions
 
@@ -52,18 +52,18 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 2. ใช้ `stop/report` เมื่อง context/ref ไม่ชัด หรือ validation fail
 3. ใช้ `retry (max 3 → stop/report)` สำหรับ recoverable failures ที่ชัดเจน
 4. ห้ามใช้คำกำกวม เช่น `จากนั้น` โดยไม่มีเหตุผลหรือเงื่องไข
-5. ทำ `/dont-over-engineer` เพื่องไม่เพิ่ม transitions ที่ไม่จำเป็นทำให้ flow ซับซ้อน
+5. ทำ `/dont-over-engineer` เพื่อไม่เพิ่ม transitions ที่ไม่จำเป็นทำให้ flow ซับซ้อน
 
 ### 5. Validate And Report
 
 ตรวจสอบผลการปรับปรุง
 
-1. ทำ `/check-correctness` เพื่อง verify flow ถูกต้อง
+1. ทำ `/check-correctness` เพื่อ verify flow ถูกต้อง
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
-3. ทำ `/review-workflow-content` เพื่องตรวจ content ไม่ซ้ำซ้อนหลังแก้ flow
+3. ทำ `/review-workflow-content` เพื่อตรวจ content ไม่ซ้ำซ้อนหลังแก้ flow
 4. ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
-5. ทำ `/report` เพื่องสรุปการปรับปรุง flow
-6. ทำ `/suggest-next-action` เพื่องแนะนำ action ถัดไป
+5. ทำ `/report` เพื่อสรุปการปรับปรุง flow
+6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 

@@ -1,15 +1,40 @@
 ﻿---
 name: prepare-skills-context
-description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ที่เหมาะสมกับ skill
+description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน skill
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - find_file_by_name
+  - skill
+  - ask_user_question
+related:
+  - ask-me
+  - read-related-skills
+  - check-reference
+  - follow-best-practice
+  - template-skills-run
+  - template-skills-follow
+  - template-skills-architecture
+  - template-skills-check
+  - template-skills-analyze
+  - template-skills-deep
+  - template-skills-review
+  - template-skills-idea
+  - template-skills-report
+  - suggest-next-action
 ---
 
 ## Goal
 
-ตรวจจับ AI tool, อ่าน global rules, related skills, และเลือก template ที่เหมาะสมกับ skill ก่อนเริ่มเขียน
+ตรวจจับ AI tool, อ่าน `global_rules.md`, อ่าน related skills, และเลือก template ที่เหมาะสมก่อนเริ่มเขียน skill
 
 ## Scope
 
-ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (ใช้ `/follow-devin-skills-md` แทน) หรือการ validate (ใช้ `/validate` แทน)
+ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (`/follow-devin-skills-md`) หรือการ validate (`/validate`)
 
 ## Execute
 
@@ -25,7 +50,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
    - Claude → `~/.claude/skills/`
    - OpenCode → `~/.opencode/skills/`
    - Devin CLI → `~/.config/devin/skills/` หรือ `%APPDATA%\devin\skills\`
-   - ถ้าตรวจจับไม่ได้ → ถามผู้ใช้ — ถ้าผู้ใช้ไม่ตอบ → stop
+   - ถ้าตรวจจับไม่ได้ → ถามผู้ใช้ด้วย `/ask-me` — ถ้าผู้ใช้ไม่ตอบ → stop
 2. ระบุ absolute path ของ skills directory ที่จะเขียน
 3. ระบุ parent directory สำหรับ `global_rules.md`
 
@@ -37,7 +62,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 
 1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ skills directory ที่ตรวจจับได้)
 2. ระบุ rules หรือขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
-3. ถ้า global_rules.md ไม่มี → ข้ามไปยัง Step 3
+3. ถ้า `global_rules.md` ไม่มี → ข้ามไปยัง Step 3
 
 ### 3. Read Related Skills And References
 
@@ -59,14 +84,14 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
    - `run-*` → `/template-skills-run`
    - `follow-*` → `/template-skills-follow` ยกเว้น `follow-*-architecture` → `/template-skills-architecture`
    - `check-*` → `/template-skills-check`
-   - `review-*` → `/template-skills-review`
-   - `deep-*` → `/template-skills-deep`
    - `analyze-*` → `/template-skills-analyze`
+   - `deep-*` → `/template-skills-deep`
+   - `review-*` → `/template-skills-review`
    - `idea-*` → `/template-skills-idea`
    - `report-*` → `/template-skills-report`
-   - ถ้าไม่ตรง → แนะนำใช้ general structure จาก `/follow-write-devin-skills`
+   - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
-3. ถ้า template ไม่มี → ใช้ `/follow-write-devin-skills` เป็น fallback
+3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
 
 ### 5. Confirm Context
 
@@ -121,7 +146,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 5. Fail Fast
 
 - ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
-- ถ้า template ไม่ตรง → ใช้ general structure จาก `/follow-write-devin-skills`
+- ถ้า template ไม่ตรง → ให้ `/suggest-next-action` แนะนำ next step เช่น `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
 
 ## Expected Outcome
 

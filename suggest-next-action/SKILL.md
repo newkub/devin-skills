@@ -1,6 +1,12 @@
 ---
 name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
+related:
+  - ask-me
+  - report-format-table
+  - scan-codebase
+  - report-status
+  - continue
 ---
 
 ## Goal
@@ -68,6 +74,7 @@ description: วิเคราะห์สถานการณ์และแ�
 3. ให้ผู้ใช้เลือก action ที่ต้องการ
 4. อธิบาย trade-offs ระหว่าง options เป็นตาราง: Option, Pros, Cons, Risk
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
+6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → ทำ `/ask-me` พร้อม recommend action ที่เหมาะสมที่สุด
 
 ## Rules
 

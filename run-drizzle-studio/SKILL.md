@@ -57,7 +57,7 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 
 > Goal: User เข้าถึง GUI ได้ทันที
 
-1. ใช้ `open-web` หรือ platform equivalent เพื่องเปิด `http://localhost:<port>`
+1. ใช้ `open-web` หรือ platform equivalent เพื่อเปิด `http://localhost:<port>`
 2. default port คือ `4983`
 3. ถ้า port ถูกใช้แล้ว ให้รอ output บอก port ใหม่
 4. ยืนยันว่าหน้า Studio โหลดได้

@@ -19,11 +19,11 @@ description: สร้างไอเดียการ refactor files ตาม
 
 > Goal: เข้าใจ project, files และ quality issues
 
-1. ทำ `/scan-codebase` เพื่องค้นหา file structure, sizes และ import patterns
-2. ทำ `/deep-analyze` เพื่องวิเคราะห์ cognitive complexity และ reasons to change
-3. ทำ `/check-long-files` เพื่องระบุไฟล์ที่ยาวกว่า threshold
-4. ทำ `/check-duplication` เพื่องระบุ code ซ้ำซ้อน
-5. ทำ `/follow-code-quality` เพื่องประเมิน quality ของ files
+1. ทำ `/scan-codebase` เพื่อค้นหา file structure, sizes และ import patterns
+2. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity และ reasons to change
+3. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า threshold
+4. ทำ `/check-duplication` เพื่อระบุ code ซ้ำซ้อน
+5. ทำ `/follow-code-quality` เพื่อประเมิน quality ของ files
 6. ถ้าเข้าถึง project ไม่ได้ → stop และ report
 
 ### 2. Identify File Refactor Gaps
@@ -50,7 +50,7 @@ description: สร้างไอเดียการ refactor files ตาม
 3. ระบุ scope สำหรับแต่ละไอเดีย: quick win, short-term, long-term
 4. ระบุ impact และ effort สำหรับแต่ละไอเดีย
 5. ระบุ action ที่ชัดเจน: split, merge, relocate, rewrite, extract
-6. ทำ `/dont-over-engineer` เพื่องกรองไอเดียที่ over-engineer
+6. ทำ `/dont-over-engineer` เพื่อกรองไอเดียที่ over-engineer
 
 ### 4. Report
 

@@ -39,7 +39,7 @@ related:
 
 > Goal: มี structural overview ของ target files
 
-1. ทำ `/use-ast-grep-outline` เพื่องรัน `sg outline <path> --json`
+1. ทำ `/use-ast-grep-outline` เพื่อรัน `sg outline <path> --json`
 2. ดู top-level items (functions, classes, interfaces, types, exports)
 3. ดู members ของแต่ละ class/type ด้วย `--view expanded`
 4. รวบรวม imports/dependencies ด้วย `--items imports`

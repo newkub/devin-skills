@@ -1,6 +1,33 @@
 ---
 name: review-uxui
-description: Review UX/UI ครอบคลุม user flows interaction design visual hierarchy typography color spacing accessibility design system responsive microcopy
+description: Review UX/UI ครอบคลุม flows, interactions, visual, a11y, design system
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+  - skill
+related:
+  - follow-uxui-interaction
+  - follow-uxui-animation
+  - follow-uxui-accessibility
+  - follow-uxui-chart
+  - follow-uxui-3d
+  - follow-uxui
+  - check-accessibility
+  - follow-best-practice
+  - deep-analyze
+  - validate
+  - validate-workflow
+  - report
+  - suggest-next-action
+  - report-format-table
 ---
 
 ## Goal
@@ -48,6 +75,7 @@ Review user journey, interaction patterns และ state feedback
 4. ตรวจสอบ cognitive load: information density, progressive disclosure, decision fatigue, context switching, task complexity, attention management
 5. Critical: broken user flow, dead-end state ไม่มีทางออก, no error recovery path, confusing navigation ที่ผู้ใช้หลงทาง, missing system status ที่ผู้ใช้ไม่รู้ว่ากำลังเกิดอะไร
 6. High: missing loading state, inconsistent interaction pattern, confusing empty state, missing success feedback, high cognitive load ที่เกินจำเป็น, missing progressive disclosure
+7. ถ้าพบปัญหา interaction/feedback/loading/toast/form/modal → ทำ `/follow-uxui-interaction` แล้ว delegate ไป `/follow-uxui-skeleton`, `/follow-uxui-toast`, `/follow-uxui-feedback`, `/follow-uxui-form`, `/follow-uxui-modal` ตามกรณี
 
 ### 4. Visual Design Review
 
@@ -99,6 +127,7 @@ Review responsive UX, animation UX และ accessibility compliance
 3. ตรวจสอบ accessibility: keyboard navigation (tab order, focus visible, focus trap), screen reader support (ARIA, semantic HTML, heading hierarchy), color contrast (WCAG AA 4.5:1 text, 3:1 large text), alternative text (images, icons, charts), form accessibility (label association, error identification), skip links, landmark roles
 4. Critical: no keyboard navigation, keyboard trap, no screen reader support, contrast below 3:1, missing focus indicator, no `prefers-reduced-motion` บน animation ที่รุนแรง, touch target เล็กกว่า 44px บน critical action
 5. High: missing ARIA, broken focus management, insufficient contrast (below WCAG AA), missing alt text, heading hierarchy issue, missing responsive breakpoint สำคัญ, animation ที่ไม่จำเป็น, missing micro-interaction feedback
+6. ถ้าพบปัญหา animation/interaction/gesture/scroll/a11y/3D/chart → ทำ `/follow-uxui-animation`, `/follow-uxui-interaction`, `/follow-uxui-gesture`, `/follow-uxui-scroll`, `/follow-uxui-accessibility`, `/follow-uxui-3d`, หรือ `/follow-uxui-chart` ตามกรณี
 
 ### 8. Validate, Rate And Report
 

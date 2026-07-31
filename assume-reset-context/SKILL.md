@@ -1,6 +1,28 @@
 ﻿---
 name: assume-reset-context
 description: สมมุติว่าต้องแก้ไขไฟล์นี้ใหม่ โดยไม่อ้างอิงจาก context ก่อนหน้า เริ่มจากไฟล์เปล่า วิเคราะห์เองใหม่ทั้งหมด
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - grep
+  - glob
+  - find_file_by_name
+  - skill
+related:
+  - scan-codebase
+  - use-ast-grep
+  - read-related-skills
+  - deep-thinking
+  - follow-best-practice
+  - follow-layered-architecture
+  - deep-plan
+  - refactor
+  - use-scripts
+  - realize-implementation
+  - validate
+  - run-check
 ---
 
 ## Goal
@@ -17,33 +39,41 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 
 ล้าง assumptions ทั้งหมดจาก context ก่อนหน้า
 
+> Goal: เริ่มต้นด้วย mindset ที่ไม่มี bias จากสนทนาก่อนหน้า
+
 1. ไม่อ้างอิงข้อสรุป การวิเคราะห์ หรือ decisions จากการสนทนาก่อนหน้า
-2. ไม่สมมติว่า code ก่อนหน้าถูกต้องหรือผิด ให้พิสูจน์ใหม่จากไฟล์จริง
+2. ไม่สมมติว่า `code` ก่อนหน้าถูกต้องหรือผิด ให้พิสูจน์ใหม่จากไฟล์จริง
 3. ถือว่าไฟล์นี้เป็นไฟล์ที่ไม่เคยเห็นมาก่อน ต้องอ่านและเข้าใจใหม่ทั้งหมด
 
 ### 2. Read File Fresh
 
 อ่านไฟล์เป้าหมายและไฟล์ที่เกี่ยวข้องใหม่ทั้งหมด
 
+> Goal: รวบรวมข้อมูลจริงจาก codebase โดยไม่ข้ามส่วนใด
+
 1. อ่านไฟล์เป้าหมายทั้งไฟล์ ไม่ข้ามบรรทัด
-2. อ่าน imports และ dependencies ที่ไฟล์เรียกใช้
+2. อ่าน `imports` และ dependencies ที่ไฟล์เรียกใช้
 3. อ่านไฟล์ที่ import ไฟล์เป้าหมาย (reverse dependencies)
-4. ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด — ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
+4. parallel: ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด ∥ ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
 5. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 
 ### 3. Analyze From Scratch
 
 วิเคราะห์ไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context เดิม
 
+> Goal: ได้ findings ที่อิงจากสภาพไฟล์จริง ไม่ใช่ความจำ
+
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์ปัญหาและโครงสร้างของไฟล์
 2. ระบุว่าไฟล์นี้ทำหน้าที่อะไร รับผิดชอบอะไร
 3. ระบุ dependencies และ relationships กับไฟล์อื่น
 4. ระบุ issues, bugs, หรือ improvements จากการอ่านจริง
-5. ทำ `/follow-best-practice` และ `/follow-layered-architecture` เพื่อเทียบกับมาตรฐาน
+5. parallel: ทำ `/follow-best-practice` ∥ ทำ `/follow-layered-architecture` เพื่อเทียบกับมาตรฐาน
 
 ### 4. Plan Fresh
 
 วางแผนการแก้ไขใหม่จากการวิเคราะห์ปัจจุบัน
+
+> Goal: มีแผนที่อิงจาก findings ใหม่ทั้งหมด
 
 1. ทำ `/deep-plan` เพื่อวางแผนการแก้ไขตาม findings ใหม่
 2. ระบุว่าต้องแก้อะไร เพราะอะไร อย่างไร
@@ -53,6 +83,8 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 
 แก้ไขไฟล์ตามแผนใหม่
 
+> Goal: แก้ไขตามแผนโดยใช้ skills ที่เหมาะสม
+
 1. ทำ `/refactor` ก่อนเขียน code ใหม่ถ้าจำเป็น
 2. แก้ไขตามแผนที่วางไว้ — ใช้ `/use-scripts` เมื่อต้องประมวลผลไฟล์หลายไฟล์
 3. ทำ `/realize-implementation` เพื่อให้แน่ใจว่า code สมบูรณ์
@@ -60,6 +92,8 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 ### 6. Validate
 
 ตรวจสอบผลลัพธ์ใหม่ทั้งหมด
+
+> Goal: ผลลัพธ์ผ่าน validation โดยไม่อ้างอิง context เดิม
 
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
 2. ทำ `/run-check` เพื่อรัน lint, typecheck, scan
@@ -69,7 +103,7 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 ### 1. No Context Reference
 
 - ห้ามอ้างอิง conclusions, analysis, หรือ decisions จากการสนทนาก่อนหน้า
-- ห้ามสมมติว่า code ก่อนหน้าถูกต้องโดยไม่พิสูจน์
+- ห้ามสมมติว่า `code` ก่อนหน้าถูกต้องโดยไม่พิสูจน์
 - ทุกการตัดสินใจต้องมาจากการอ่านไฟล์จริงในปัจจุบัน
 
 ### 2. Fresh Analysis
@@ -87,8 +121,8 @@ description: สมมุติว่าต้องแก้ไขไฟล์�
 ### 4. Complete Independence
 
 - ถ้ามี progress notes หรือ shared notes จาก context เดิม ให้อ่านแต่ไม่เชื่อโดยไม่พิสูจน์
-- ถ้ามี TODO หรือ FIXME ในไฟล์ ให้ตรวจสอบว่ายังเกี่ยวข้องหรือไม่
-- ถ้ามี comments อธิบายการแก้ไขก่อนหน้า ให้ตรวจสอบว่ายังถูกต้องหรือไม่
+- ถ้ามี `TODO` หรือ `FIXME` ในไฟล์ ให้ตรวจสอบว่ายังเกี่ยวข้องหรือไม่
+- ถ้ามี `comments` อธิบายการแก้ไขก่อนหน้า ให้ตรวจสอบว่ายังถูกต้องหรือไม่
 
 ## Expected Outcome
 

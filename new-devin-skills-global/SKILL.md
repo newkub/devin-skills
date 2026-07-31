@@ -1,14 +1,24 @@
 ﻿---
 name: new-devin-skills-global
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 related:
   - follow-write-devin-skills
   - follow-devin-skills-md
   - scan-codebase
   - ask-me
   - validate
+  - validate-workflow
   - check-reference
   - follow-content-quality
   - update-reference
@@ -16,7 +26,7 @@ related:
 
 ## Goal
 
-สร้าง skill ใหม่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-devin-skills-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
+สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-devin-skills-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
 
 ## Scope
 
@@ -32,8 +42,8 @@ related:
 
 1. รับชื่อ skill และสิ่งที่ต้องการทำจาก user
 2. ตรวจสอบว่า skill name ใช้ lowercase, คั่นด้วย `-` และไม่มีอักขระพิเศษ
-3. ระบุ target directory: `C:\Users\Veerapong\AppData\Roaming\devin\skills\<skill-name>`
-4. ถ้าชื่อไม่ชัด → ทำ `ask-me` ก่อนดำเนินการ
+3. ระบุ target directory: `%APPDATA%\devin\skills\<skill-name>`
+4. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ
 
 ### 2. Check Existing Skills
 
@@ -41,7 +51,7 @@ related:
 
 > Goal: ไม่สร้าง skill ซ้ำ
 
-1. ทำ `scan-codebase` ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills`
+1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
 2. ตรวจสอบว่า skill name ซ้ำกับ existing skills หรือไม่
 3. ถ้าซ้ำ ให้เสนอ extend หรือ rename ก่อน
 4. อ่าน `AGENTS.md` และ `global_rules.md` เพื่อดู conventions
@@ -52,18 +62,18 @@ related:
 
 > Goal: โครงสร้าง skill ถูกต้อง
 
-1. สร้าง `C:\Users\Veerapong\AppData\Roaming\devin\skills\<skill-name>\`
+1. สร้าง `%APPDATA%\devin\skills\<skill-name>\`
 2. สร้าง `SKILL.md` เปล่าภายใน directory
 3. ถ้าต้องการ child directories (`guide/`, `references/`, `scripts/`) ให้สร้างตามทีจำเป็น
 
 ### 4. Write SKILL.md And Directory
 
-สร้าง `SKILL.md` และ directory contents โดยใช้ทั้งสอง skills
+สร้าง `SKILL.md` และ directory contents
 
 > Goal: skill package ถูกต้องและครบถ้วน
 
 1. ทำ `/follow-devin-skills-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
-2. ทำ `/follow-write-devin-skills` เพื่อจัดการ directory structure, templates, references, `scripts/`, `guide/`, หรือ `examples/`
+2. ทำ `/follow-write-devin-skills` เพื่อเลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
 3. กำหนด `name` ให้ตรงกับ directory name
 4. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
 
@@ -73,20 +83,21 @@ related:
 
 > Goal: skill พร้อมใช้งาน
 
-1. ทำ `validate` เพื่อตรวจสอบว่าไฟล์ไม่เกิน 250 บรรทัด
-2. ทำ `check-reference` เพื่อตรวจสอบ `related` references
-3. ทำ `follow-content-quality` เพื่อตรวจสอบความชัดเจน
-4. ทำ `update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
+1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
+2. ทำ `/validate-workflow` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
+4. ทำ `/follow-content-quality` เพื่อตรวจสอบความชัดเจน
+5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
 
 ## Rules
 
-### Target Location
+### 1. Target Location
 
-- สร้าง skill ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills`
+- สร้าง skill ใน `%APPDATA%\devin\skills`
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ห้ามสร้างทับ skill ที่มีอยู่ ถ้าซ้ำให้ extend หรือ rename
 
-### Content Standard
+### 2. Content Standard
 
 - ทำตาม `/follow-devin-skills-md` สำหรับการเขียน `SKILL.md`
 - ทำตาม `/follow-write-devin-skills` สำหรับ directory structure และ templates
@@ -94,13 +105,7 @@ related:
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 
-### Safety
+### 3. Safety
 
 - ถ้ามีการ overwrite ไฟล์เดิม ต้องมี dry run และ user confirmation ก่อน
 - ไม่ทำลาย references หรือ existing skills
-
-## Expected Outcome
-
-- Skill ใหม่อยู่ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills\<skill-name>`
-- `SKILL.md` ถูกต้องตามมาตรฐาน `follow-write-devin-skills`
-- ไม่มี skill ซ้ำหรือ references ขาด

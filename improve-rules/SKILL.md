@@ -25,8 +25,8 @@ description: ปรับปรุง rule files ให้ถูกต้อง 
 
 ตรวจสอบความถูกต้องของ rule files
 
-1. ทำ `/check-correctness` เพื่องตรวจ issues
-2. ทำ `/check-reference` เพื่องตรวจ broken references
+1. ทำ `/check-correctness` เพื่อตรวจ issues
+2. ทำ `/check-reference` เพื่อตรวจ broken references
 3. ตรวจว่า rules ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น
 4. บันทึก issues พร้อม priority (Critical, High, Medium, Low)
 
@@ -47,14 +47,14 @@ description: ปรับปรุง rule files ให้ถูกต้อง 
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
 4. อัปเดตเนื้อหาตาม best practices ที research ได้
 5. ใช้ references แทนการ duplicate เนื้อหาจาก rules หรือ workflows อื่น
-6. ทำ `/dont-over-engineer` เพื่องกำหนดขอบเขตการแก้ไขให้ minimal
-7. ถ้าจำนวน rule files มากกว่า 10 ไฟล์ → ทำ `/use-scripts` เพื่อง batch processing
+6. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal
+7. ถ้าจำนวน rule files มากกว่า 10 ไฟล์ → ทำ `/use-scripts` เพื่อ batch processing
 
 ### 5. Validate And Report
 
 ตรวจสอบผลการปรับปรุง
 
-1. ทำ `/check-correctness` อีกครั้งเพื่อง verify
+1. ทำ `/check-correctness` อีกครั้งเพื่อ verify
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
 3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 4. ทำ `/report` เพื่อสรุปการปรับปรุง

@@ -1,6 +1,15 @@
 ---
 name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
+related:
+  - deep-plan
+  - deep-analyze
+  - check-correctness
+  - run-typecheck
+  - follow-code-quality
+  - check-configuration
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

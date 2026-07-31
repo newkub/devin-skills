@@ -1,6 +1,17 @@
 ---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
+triggers:
+  - user
+  - model
+allowed-tools:
+  - read
+  - skill
+related:
+  - deep-analyze-by-use-scripts
+  - follow-monorepo
+  - follow-uxui-animation
+  - follow-tanstack-ai
 ---
 
 ## Goal
@@ -17,19 +28,24 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 
 ระบุ tools และ frameworks ที่ใช้
 
+> Goal: รู้ภาพรวม tech stack ของ project
+
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ tools ที่ใช้
 2. ระบุ ecosystem: TypeScript/JavaScript หรือ Rust หรือทั้งสองอย่าง
 3. ระบุ runtime, build tools, frameworks, ORM, และ ecosystem libraries
 4. ถ้าเป็น monorepo: ทำ `/follow-monorepo` เพื่อตรวจสอบ workspace dependencies
-5. ถ้ามี desktop app: ระบุ Tauri และ Rust backend
-6. ถ้ามี mobile app: ระบุ Capacitor และ native plugins
-7. ถ้ามี AI features: ระบุ TanStack AI และ AI providers
+5. ถ้ามี desktop app: ระบุ `Tauri` และ Rust backend
+6. ถ้ามี mobile app: ระบุ `Capacitor` และ native plugins
+7. ถ้ามี AI features: ระบุ `TanStack AI` และ AI providers
+8. ถ้ามี animation/interactive visuals: ระบุ `/follow-uxui-animation`
 
 ### 2. Document Tech Stack
 
 สร้างรายการสรุปเป็นตารางเดียวโดยใช้ ecosystem เป็น columns
 
-1. ใช้ตาราง Category | TypeScript | Rust ใน Rules
+> Goal: สรุป tech stack ครบถ้วนและอัปเดต
+
+1. ใช้ตาราง `Category | TypeScript | Rust` ใน Rules
 2. จัดกลุ่มตาม domain: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
 3. ระบุ default must-have libraries สำหรับโปรเจกต์ใหม่
 4. อัปเดตเมื่อมีการเปลี่ยนแปลง
@@ -62,17 +78,23 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 | Data Fetching | `TanStack Query` | `reqwest` |
 | Caching | `TanStack Query` cache | `moka` |
 | Table | `TanStack Table` | - |
+| Charts | `TanStack Charts` | - |
 | Form | `TanStack Form` | - |
-| Virtual | `TanStack Virtual` | - |
 | Hotkeys | `TanStack Hotkeys` | - |
-| Parser | `TanStack Parser` | - |
+| Markdown | `TanStack Markdown`, `marked`, `shiki` | `pulldown-cmark` |
+| Highlight | `TanStack Highlight` | - |
+| Virtual | `TanStack Virtual` | - |
+| Pacer | `TanStack Pacer` | - |
+| Animation / Interactive | `animejs`, `GSAP`, `Framer Motion`, `Motion One`, `Lottie`, `Rive` | - |
 | UI Library | `Nuxt UI`, `shadcn-vue` | - |
 | Styling | `UnoCSS`, `TailwindCSS` | - |
 | Icons | `@iconify-json/*` | - |
 | Utilities | `VueUse` | - |
 | i18n | `@intlify/vuex-i18n`, `vue-i18n` | `fluent` |
-| Markdown | `marked`, `shiki` | `pulldown-cmark` |
+| Devtools | `TanStack Devtools` | - |
+| Config | `TanStack Config` | - |
 | CLI | `TanStack CLI`, `Wrangler`, `Clap` | `Clap` |
+| Intent | `TanStack Intent` | - |
 | TUI | - | `Ratatui` |
 | Async Runtime | - | `Tokio` |
 | HTTP Client | - | `reqwest` |
@@ -114,6 +136,7 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 - ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack-ai`)
 - ถ้ามี desktop: เพิ่ม `Tauri`
 - ถ้ามี mobile: เพิ่ม `Capacitor`
+- ถ้ามี animation/interactive visuals: เพิ่ม `/follow-uxui-animation`
 
 ## Expected Outcome
 
@@ -122,7 +145,7 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 - ง่ายต่อการอ้างอิงและอัปเดต
 - เห็นภาพรวมของ tools ที่ใช้ทุก domain
 - Default must-have libraries ชัดเจนสำหรับทุกโปรเจกต์
-- รองรับหลาย project types: web, API, desktop, mobile, AI, monorepo
+- รองรับหลาย project types: web, API, desktop, mobile, AI, monorepo, interactive UI
 
 ## Common Mistakes
 
@@ -130,4 +153,4 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 - จัดกลุ่ม tools ไม่ถูกต้องตาม domain
 - ทิ้ง tools ที่ obsolete ไว้ในรายการ
 - ไม่ระบุ Rust equivalents เมื่อใช้หลาย ecosystems
-- ลืม conditional libraries สำหรับ project types เฉพาะ (desktop, mobile, AI)
+- ลืม conditional libraries สำหรับ project types เฉพาะ (desktop, mobile, AI, animation)

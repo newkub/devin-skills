@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Refactor codebase ครบวงจรเพื่องปรับปรุง SRP, boundaries, code styles, maintainability
+Refactor codebase ครบวงจรเพื่อปรับปรุง SRP, boundaries, code styles, maintainability
 
 ## Scope
 

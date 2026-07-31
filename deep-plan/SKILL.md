@@ -1,6 +1,17 @@
 ---
 name: deep-plan
 description: วางแผนละเอียดหลายมิติ ครอบคลุม risk, dependencies, alternatives, timeline
+related:
+  - deep-analyze
+  - deep-thinking
+  - deep-pondering
+  - deep-validate
+  - deep-research
+  - create-plan
+  - prioritize
+  - recommend-architecture
+  - report-plan
+  - suggest-next-action
 ---
 
 ## Goal
@@ -25,14 +36,19 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม�
 
 1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
-### 2. Deep Thinking And Research
+### 2. Deep Analysis And Thinking
 
-ทำ `/deep-thinking` และ `/deep-research` เพื่อเตรียมการวางแผน
+ทำ `/deep-analyze`, `/deep-thinking`, `/deep-pondering`, `/deep-validate`, และ `/deep-research` เพื่อเตรียมการวางแผน
 
-- ทำ `/deep-thinking` เพื่อวางแผนการวางแผนอย่างเป็นระบบ
-- ทำ `/deep-research` สำหรับ tech stack และ architecture patterns ที่เกี่ยวข้อง
-- ระบุ scope, constraints, assumptions ของงาน
-- ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
+> Goal: เข้าใจปัญหาหลายมิติก่อนวางแผน
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ปัจจุบันหลายมิติ: architecture, quality, dependencies, risks
+2. ทำ `/deep-thinking` เพื่อวางแผนการวางแผนอย่างเป็นระบบ
+3. ทำ `/deep-pondering` เพื่อครุ่นคิด trade-offs, uncertainties, และ goal alignment
+4. ทำ `/deep-validate` เพื่อ validate assumptions และ constraints
+5. ทำ `/deep-research` สำหรับ tech stack และ architecture patterns ที่เกี่ยวข้อง
+6. ระบุ scope, constraints, assumptions ของงาน
+7. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
 
 ### 3. Analyze Project
 
@@ -92,20 +108,24 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - จำลอง worst-case scenario และตรวจสอบว่าแผนยังทำได้
 - ระบุ critical path และ bottlenecks
 - ตรวจสอบ assumptions ทุกข้อในแผน
-- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` ก่อน step นี้
+- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` และ `/deep-pondering` ก่อน step นี้
 - ถ้าพบ issue ให้กลับไป Step 4-5 แก้แผน
 
 ### 9. Validate And Report
 
 ตรวจสอบแผนและรายงาน
 
-- ยืนยัน dependencies ไม่ conflict กับ existing versions
-- ตรวจสอบทุก task มี single responsibility และ test ได้
-- ตรวจสอบไม่มี missing tasks หรือ gaps
-- ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ พร้อม risks และ mitigation
-- ทำ `/report-format-table` สำหรับ tasks และ file structure
-- ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
-- ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+> Goal: แผนผ่าน validation และพร้อม implement
+
+1. ยืนยัน dependencies ไม่ conflict กับ existing versions
+2. ตรวจสอบทุก task มี single responsibility และ test ได้
+3. ตรวจสอบไม่มี missing tasks หรือ gaps
+4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ พร้อม risks และ mitigation
+5. ทำ `/deep-validate` เพื่อ validate แผนก่อนบันทึก
+6. ทำ `/create-plan` เพื่อสร้างแผนลง `.devin/plan/<title>-<date>.md`
+7. ทำ `/report-format-table` สำหรับ tasks และ file structure
+8. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
+9. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
 
@@ -121,7 +141,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - ทุก architectural decision ต้องมี trade-off analysis พร้อม alternatives ที่ปฏิเสธ
 - ทุก high-risk task ต้องมี mitigation plan และ rollback strategy
 - จัดลำดับ risks ตาม probability × impact
-- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` และ `/deep-research` ก่อนวางแผน
+- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking`, `/deep-pondering`, และ `/deep-research` ก่อนวางแผน
 
 ### 3. Module Design
 

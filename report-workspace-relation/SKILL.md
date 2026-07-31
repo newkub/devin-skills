@@ -96,7 +96,7 @@ description: รายงานความสัมพันธ์ระหว�
 
 > Goal: output ชัดเจน อ่านง่าย
 
-1. ทำ `/report-format-table` เพื่องจัดรูปแบบตาราง
+1. ทำ `/report-format-table` เพื่อจัดรูปแบบตาราง
 2. กำหนด columns: `No`, `Source`, `Target`, `Relation`, `Strength`, `Files`, `Notes`
 3. แสดง dependency graph ด้วย text หรือ mermaid
 4. แยก section: Internal Relations, Shared Dependencies, Circular, Recommendations

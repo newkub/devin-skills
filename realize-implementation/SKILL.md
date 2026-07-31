@@ -1,6 +1,17 @@
 ---
 name: realize-implementation
 description: แปลงทุกอย่างเป็น production code จริง ครบทุกมิติ
+related:
+  - implement-all
+  - run-verify
+  - implement-plan
+  - deep-analyze-by-use-scripts
+  - deep-review
+  - review-realize-implementation
+  - implement-comment-todo
+  - implement-features-to-mvp
+  - use-lib-effective
+  - resolve-errors
 ---
 
 ## Goal
@@ -69,8 +80,9 @@ Implement API handlers และเชื่อม UX/UI components กับ re
 > Goal: ไม่มี TODO/MOCK/placeholder เหลือ และใช้ libraries ครบ
 
 1. ทำ `/implement-comment-todo`, `/implement-features-to-mvp` — แปลง TODO comments และ implement MVP features
-2. ระบุและ implement missing features ที่เหลือจาก requirements
-3. ทำ `/use-lib-effective` เพื่อวิเคราะห์และใช้งาน libraries ให้เต็มประสิทธิภาพ — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า implementation fail ให้ทำ `/resolve-errors`
+2. ทำ `/implement-all` เพื่อตรวจสอบและแปลง TODO/MOCK/FAKE/STUB/placeholder ทั้งหมดใน scope ที่ review ครอบคลุม
+3. ระบุและ implement missing features ที่เหลือจาก requirements
+4. ทำ `/use-lib-effective` เพื่อวิเคราะห์และใช้งาน libraries ให้เต็มประสิทธิภาพ — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า implementation fail ให้ทำ `/resolve-errors`
 
 ### 6. Refactor And Verify
 
@@ -81,6 +93,7 @@ Implement API handlers และเชื่อม UX/UI components กับ re
 1. ทำ `/refactor`, `/update-reference`, `/review-code-quality`, `/improve-typesafe`, `/review-config` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
 3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
+4. ทำ `/run-verify` เพื่อตรวจสอบ scan, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
 
@@ -112,9 +125,11 @@ Implement API handlers และเชื่อม UX/UI components กับ re
 ## Expected Outcome
 
 - ทุกอย่างเป็น production code จริง ใช้งานได้จริง — ไม่มี TODO/MOCK/placeholder เหลือ
+- `/implement-all` ถูกรันเพื่อตรวจสอบ completeness
 - Schema, validation schemas, TypeScript types สมบูรณ์และเชื่อมต่อกัน
 - API handlers เชื่อม data source จริง — UX/UI components เชื่อม API จริง
 - Type flow ครบ: schema → validation → API → UI
 - Infrastructure พร้อมสำหรับ production — security, error handling, observability ครบถ้วน
 - Unused dependencies และ files ได้รับการพิจารณา — code ผ่าน lint โดยไม่มี errors/warnings
+- `/run-verify` ผ่าน: scan, typecheck, test, build ไม่มี errors
 - ทุก step มี `, ` markers สำหรับ parallel execution

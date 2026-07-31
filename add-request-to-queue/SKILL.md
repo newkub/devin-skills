@@ -1,17 +1,19 @@
 ---
-name: create-request
-description: สร้าง raw request file ใน .devin/request-queue/<title-date>.md
+name: add-request-to-queue
+description: รับ request จากผู้ใช้ บันทึกลง .devin/request-queue/<title-date>.md พร้อมแผน
 argument-hint: "<title> <request>"
 triggers: ['user']
 allowed-tools: ['read', 'edit', 'write', 'exec']
 related:
-  - enhance-prompt
-  - implement-plan
+  - deep-plan
+  - realize-implementation
+  - implement-request-queue
+  - report-plan
 ---
 
 ## Goal
 
-รับ request จากผู้ใช้ บันทึกลง `.devin/request-queue/<title-date>.md` และแนะนำ next steps
+รับ request จากผู้ใช้ บันทึกลง `.devin/request-queue/<title-date>.md` พร้อมชี้แนะให้ deep-plan หรือ implement ต่อได้
 
 ## Scope
 
@@ -44,8 +46,9 @@ related:
 
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
-1. ถ้าต้องการปรับปรุง prompt → ใช้ `/enhance-prompt` กับ request นี้
-2. ถ้าพร้อม implement → ใช้ `/create-plan` ตามด้วย `/implement-plan` หรือ `/follow-your-suggestion`
+1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`
+2. ถ้าพร้อม implement → ใช้ `/realize-implementation` หรือ `/implement-request-queue`
+3. ถ้ามีหลาย request รออยู่ → ใช้ `/implement-request-queue`
 
 ## Rules
 
@@ -75,4 +78,4 @@ related:
 
 - Request file ถูกสร้างใน `.devin/request-queue/<title>-<date>.md`
 - มี original request, goal, scope, notes
-- พร้อมสำหรับ enhance หรือ implement ต่อ
+- พร้อมสำหรับ `/deep-plan`, `/realize-implementation`, หรือ `/implement-request-queue` ต่อ

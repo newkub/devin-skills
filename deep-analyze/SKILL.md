@@ -1,6 +1,17 @@
 ---
 name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งด้วยหลายมิติและ external research
+related:
+  - deep-thinking
+  - deep-pondering
+  - deep-analyze-by-use-scripts
+  - deep-research
+  - scan-codebase
+  - analyze-project
+  - use-ast-grep
+  - use-scripts
+  - report
+  - report-format-table
 ---
 
 ## Goal
@@ -32,10 +43,13 @@ description: วิเคราะห์โปรเจกต์อย่าง�
 
 ### 2. Quick Scan Phase
 
-ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
+ทำ `/analyze-project` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์พื้นฐานและลึกด้วย scripts
+
+> Goal: มี foundation สำหรับ deep analysis ทั้งแบบ manual และ script-based
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์อย่างครบถ้วน
-2. Scan file structure และ project type
+2. ถ้าต้องการ analysis ด้วย health CLI และ scripts → ทำ `/deep-analyze-by-use-scripts`
+3. Scan file structure และ project type
 3. Search code patterns ทั่วไป
 4. Structural analysis ด้วย ast-grep
 5. Quality check พื้นฐาน

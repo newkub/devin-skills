@@ -42,7 +42,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 > Goal: ระบุ SRP violations และสิ่งที่ต้องแก้ไข
 
 1. ทำ `/analyze-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
-2. ทำ `/check-srp` เพื่องระบุ SRP violations ด้วย `ast-grep outline` และ deep analysis
+2. ทำ `/check-srp` เพื่อระบุ SRP violations ด้วย `ast-grep outline` และ deep analysis
 3. ระบุ units ที่ violate SRP (ยืนยันจาก `/check-srp`):
    - ไฟล์มี top-level symbols เกิน 5 อันที่ไม่เกี่ยวข้องกัน
    - function/class มี public members เกิน 10 หรือทำหลายหน้าที่
