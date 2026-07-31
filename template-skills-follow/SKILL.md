@@ -5,11 +5,11 @@ description: Template สำหรับ follow-* skills ใช้ best practice
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `follow-*` workflows α╕ùα╕╡α╣ê implement best practices α╕éα╕¡α╕ç tools, libraries α╕½α╕úα╕╖α╕¡ frameworks
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `follow-*` skills α╕ùα╕╡α╣ê implement best practices α╕éα╕¡α╕ç tools, libraries α╕½α╕úα╕╖α╕¡ frameworks
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣ê setup α╕½α╕úα╕╖α╕¡ implement patterns α╣Çα╕èα╣êα╕Ö `follow-vite`, `follow-solidjs`, `follow-biome`, `follow-drizzle`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣ê setup α╕½α╕úα╕╖α╕¡ implement patterns α╣Çα╕èα╣êα╕Ö `follow-vite`, `follow-solidjs`, `follow-biome`, `follow-drizzle`
 
 ## Execute
 

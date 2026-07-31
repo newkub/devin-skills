@@ -5,11 +5,11 @@ description: Template สำหรับ deep-* skills วิเคราะห�
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `deep-*` workflows α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣îα╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤α╕¡α╕óα╣êα╕▓α╕çα╕Ñα╕╢α╕üα╕ïα╕╢α╣ëα╕ç α╕₧α╕úα╣ëα╕¡α╕í cross-reference α╣üα╕Ñα╕░ comprehensive output
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `deep-*` skills α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣îα╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤α╕¡α╕óα╣êα╕▓α╕çα╕Ñα╕╢α╕üα╕ïα╕╢α╣ëα╕ç α╕₧α╕úα╣ëα╕¡α╕í cross-reference α╣üα╕Ñα╕░ comprehensive output
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕òα╣ëα╕¡α╕çα╕üα╕▓α╕ú analysis α╣Çα╕èα╕┤α╕çα╕Ñα╕╢α╕ü α╣Çα╕èα╣êα╕Ö `deep-analyze`, `deep-debug`, `deep-review`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕òα╣ëα╕¡α╕çα╕üα╕▓α╕ú analysis α╣Çα╕èα╕┤α╕çα╕Ñα╕╢α╕ü α╣Çα╕èα╣êα╕Ö `deep-analyze`, `deep-debug`, `deep-review`
 
 ## Execute
 

@@ -5,11 +5,11 @@ description: Template สำหรับ analyze-* skills วิเคราะ�
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `analyze-*` workflows α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î codebase α╕öα╣ëα╕ºα╕ó scripts, tools α╣üα╕Ñα╕░α╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `analyze-*` skills α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î codebase α╕öα╣ëα╕ºα╕ó scripts, tools α╣üα╕Ñα╕░α╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î α╣Çα╕èα╣êα╕Ö `analyze-project`, `analyze-code-structure`, `deep-analyze-by-use-scripts`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î α╣Çα╕èα╣êα╕Ö `analyze-project`, `analyze-code-structure`, `deep-analyze-by-use-scripts`
 
 ## Execute
 

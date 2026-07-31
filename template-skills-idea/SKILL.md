@@ -5,11 +5,11 @@ description: Template สำหรับ idea-* skills สร้างไอเ�
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `idea-*` workflows α╕ùα╕╡α╣êα╕¬α╕úα╣ëα╕▓α╕çα╣äα╕¡α╣Çα╕öα╕╡α╕ó α╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î gaps α╣üα╕Ñα╕░ opportunities α╕₧α╕úα╣ëα╕¡α╕í continuous numbering
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `idea-*` skills α╕ùα╕╡α╣êα╕¬α╕úα╣ëα╕▓α╕çα╣äα╕¡α╣Çα╕öα╕╡α╕ó α╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î gaps α╣üα╕Ñα╕░ opportunities α╕₧α╕úα╣ëα╕¡α╕í continuous numbering
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕¬α╕úα╣ëα╕▓α╕çα╣äα╕¡α╣Çα╕öα╕╡α╕ó α╣Çα╕èα╣êα╕Ö `idea-features`, `idea-uxui`, `idea-improve-naming`, `compare-and-idea-features`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕¬α╕úα╣ëα╕▓α╕çα╣äα╕¡α╣Çα╕öα╕╡α╕ó α╣Çα╕èα╣êα╕Ö `idea-features`, `idea-uxui`, `idea-improve-naming`, `compare-and-idea-features`
 
 ## Execute
 

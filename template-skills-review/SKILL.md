@@ -5,11 +5,11 @@ description: Template สำหรับ review-* skills วิเคราะ�
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `review-*` workflows α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î quality α╕₧α╕úα╣ëα╕¡α╕í severity ratings, health score, α╣üα╕Ñα╕░ actionable recommendations
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `review-*` skills α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î quality α╕₧α╕úα╣ëα╕¡α╕í severity ratings, health score, α╣üα╕Ñα╕░ actionable recommendations
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣ê review α╣Çα╕èα╣êα╕Ö `review-code-quality`, `review-security`, `review-performance`, `review-architecture` ΓÇö α╣äα╕íα╣êα╕úα╕ºα╕í `review-codebase-everything` α╕ïα╕╢α╣êα╕çα╣Çα╕¢α╣çα╕Ö orchestrator
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣ê review α╣Çα╕èα╣êα╕Ö `review-code-quality`, `review-security`, `review-performance`, `review-architecture` ΓÇö α╣äα╕íα╣êα╕úα╕ºα╕í `review-codebase-everything` α╕ïα╕╢α╣êα╕çα╣Çα╕¢α╣çα╕Ö orchestrator
 
 ## Execute
 

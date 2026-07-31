@@ -5,11 +5,11 @@ description: Template สำหรับ check-* skills scan และ report
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `check-*` workflows α╕ùα╕╡α╣ê scan codebase α╕½α╕▓ issues α╣üα╕Ñα╕░ report findings α╕₧α╕úα╣ëα╕¡α╕íα╕äα╕│α╣üα╕Öα╕░α╕Öα╕│
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `check-*` skills α╕ùα╕╡α╣ê scan codebase α╕½α╕▓ issues α╣üα╕Ñα╕░ report findings α╕₧α╕úα╣ëα╕¡α╕íα╕äα╕│α╣üα╕Öα╕░α╕Öα╕│
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü α╣Çα╕èα╣êα╕Ö `check-duplication`, `check-unused-deps`, `check-configuration`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü α╣Çα╕èα╣êα╕Ö `check-duplication`, `check-unused-deps`, `check-configuration`
 
 ## Execute
 

@@ -5,11 +5,11 @@ description: Template สำหรับ follow-*-architecture skills จัด�
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `follow-*-architecture` workflows α╕ùα╕╡α╣êα╕êα╕▒α╕öα╣éα╕äα╕úα╕çα╕¬α╕úα╣ëα╕▓α╕ç project α╕òα╕▓α╕í best practices α╕₧α╕úα╣ëα╕¡α╕í file structure α╣üα╕Ñα╕░ patterns
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `follow-*-architecture` skills α╕ùα╕╡α╣êα╕êα╕▒α╕öα╣éα╕äα╕úα╕çα╕¬α╕úα╣ëα╕▓α╕ç project α╕òα╕▓α╕í best practices α╕₧α╕úα╣ëα╕¡α╕í file structure α╣üα╕Ñα╕░ patterns
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕üα╕│α╕½α╕Öα╕ö architecture α╣Çα╕èα╣êα╕Ö `follow-solid-tanstack-architecture`, `follow-nuxt-architecture`, `follow-nextjs-architecture`, `follow-svelte-kit-architecture`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕üα╕│α╕½α╕Öα╕ö architecture α╣Çα╕èα╣êα╕Ö `follow-solid-tanstack-architecture`, `follow-nuxt-architecture`, `follow-nextjs-architecture`, `follow-svelte-kit-architecture`
 
 ## Execute
 
@@ -17,11 +17,11 @@ Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕�
 
 α╕òα╕úα╕ºα╕êα╕êα╕▒α╕Ü tech stack α╕éα╕¡α╕ç project
 
-> Goal: α╕úα╕╣α╣ëα╕ºα╣êα╕▓α╣âα╕èα╣ë framework α╕¡α╕░α╣äα╕ú version α╣âα╕ö α╣üα╕Ñα╕░α╕íα╕╡ `follow-*` workflows α╕¡α╕░α╣äα╕úα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç
+> Goal: α╕úα╕╣α╣ëα╕ºα╣êα╕▓α╣âα╕èα╣ë framework α╕¡α╕░α╣äα╕ú version α╣âα╕ö α╣üα╕Ñα╕░α╕íα╕╡ `follow-*` skills α╕¡α╕░α╣äα╕úα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç
 
 1. α╕¡α╣êα╕▓α╕Ö `package.json`, α╕¡α╣êα╕▓α╕Ö dependency manifest, α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü standalone α╕½α╕úα╕╖α╕¡ monorepo
 2. α╕úα╕░α╕Üα╕╕ framework, meta-framework, α╣üα╕Ñα╕░ key dependencies
-3. α╕úα╕░α╕Üα╕╕ tech stack `follow-*` workflows α╕ùα╕╡α╣êα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç (α╣Çα╕èα╣êα╕Ö `/follow-nextjs`, `/follow-vue`, `/follow-pinia`, `/follow-vite`, `/follow-vitest`)
+3. α╕úα╕░α╕Üα╕╕ tech stack `follow-*` skills α╕ùα╕╡α╣êα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç (α╣Çα╕èα╣êα╕Ö `/follow-nextjs`, `/follow-vue`, `/follow-pinia`, `/follow-vite`, `/follow-vitest`)
 4. α╕ûα╣ëα╕▓α╣äα╕íα╣êα╕₧α╕Ü framework ΓåÆ stop α╣üα╕Ñα╕░ report
 
 ### 2. Define Structure
@@ -62,7 +62,7 @@ Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕�
 
 > Goal: Architecture α╕¬α╕íα╕Üα╕╣α╕úα╕ôα╣î α╣äα╕íα╣êα╕íα╕╡ conflicts
 
-1. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ºα╣êα╕▓ structure α╣äα╕íα╣êα╕ùα╕▒α╕Üα╕ïα╣ëα╕¡α╕Öα╕üα╕▒α╕Ü workflows α╕¡α╕╖α╣êα╕Ö
+1. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ºα╣êα╕▓ structure α╣äα╕íα╣êα╕ùα╕▒α╕Üα╕ïα╣ëα╕¡α╕Öα╕üα╕▒α╕Ü skills α╕¡α╕╖α╣êα╕Ö
 2. α╕ùα╕│ `/restructure` α╕ûα╣ëα╕▓α╕êα╕│α╣Çα╕¢α╣çα╕Ö, α╕ùα╕│ `/refactor-packages` α╕ûα╣ëα╕▓ modules α╣âα╕½α╕ìα╣êα╣Çα╕üα╕┤α╕Öα╣äα╕¢, α╕úα╕▒α╕Ö typecheck, α╕úα╕▒α╕Ö lint
 3. α╕ùα╕│ `/suggest-next-action`
 
@@ -76,7 +76,7 @@ Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕�
 
 ### 2. Tech Stack References
 
-- `related` α╣âα╕Ö frontmatter α╕òα╣ëα╕¡α╕çα╕íα╕╡ `follow-*` workflows α╕éα╕¡α╕ç tech stack α╕ùα╕╡α╣êα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç
+- `related` α╣âα╕Ö frontmatter α╕òα╣ëα╕¡α╕çα╕íα╕╡ `follow-*` skills α╕éα╕¡α╕ç tech stack α╕ùα╕╡α╣êα╣Çα╕üα╕╡α╣êα╕óα╕ºα╕éα╣ëα╕¡α╕ç
 - α╕òα╕▒α╕ºα╕¡α╕óα╣êα╕▓α╕ç: Next.js ΓåÆ `/follow-nextjs`, `/follow-vite`, `/follow-vitest`
 - α╕òα╕▒α╕ºα╕¡α╕óα╣êα╕▓α╕ç: Nuxt ΓåÆ `/follow-nuxtjs`, `/follow-vue`, `/follow-pinia`, `/follow-nitro`
 - α╕òα╕▒α╕ºα╕¡α╕óα╣êα╕▓α╕ç: SvelteKit ΓåÆ `/follow-svelte`, `/follow-vite`, `/follow-vitest`
@@ -134,10 +134,10 @@ related:
 ### 1. Detect Stack
 α╕òα╕úα╕ºα╕êα╕êα╕▒α╕Ü Next.js α╣üα╕Ñα╕░ dependencies
 
-> Goal: α╕úα╕╣α╣ë framework version α╣üα╕Ñα╕░ related workflows
+> Goal: α╕úα╕╣α╣ë framework version α╣üα╕Ñα╕░ related skills
 
 1. α╕¡α╣êα╕▓α╕Ö `package.json`, α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü monorepo
-2. α╕úα╕░α╕Üα╕╕ tech stack `follow-*` workflows
+2. α╕úα╕░α╕Üα╕╕ tech stack `follow-*` skills
 
 ### 2. Define Structure
 α╕üα╕│α╕½α╕Öα╕ö file structure

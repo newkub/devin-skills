@@ -5,11 +5,11 @@ description: Template สำหรับ run-* skills execute commands
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `run-*` workflows α╕ùα╕╡α╣ê execute commands α╕₧α╕úα╣ëα╕¡α╕í prerequisites check, error handling α╣üα╕Ñα╕░ result reporting
+Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `run-*` skills α╕ùα╕╡α╣ê execute commands α╕₧α╕úα╣ëα╕¡α╕í prerequisites check, error handling α╣üα╕Ñα╕░ result reporting
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü workflows α╕ùα╕╡α╣êα╕úα╕▒α╕Ö commands α╣Çα╕èα╣êα╕Ö `run-build`, `run-test`, `run-lint`, `run-dev`, `run-deploy`
+α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣êα╕úα╕▒α╕Ö commands α╣Çα╕èα╣êα╕Ö `run-build`, `run-test`, `run-lint`, `run-dev`, `run-deploy`
 
 ## Execute
 
