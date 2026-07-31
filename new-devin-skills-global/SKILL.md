@@ -109,3 +109,12 @@ related:
 
 - ถ้ามีการ overwrite ไฟล์เดิม ต้องมี dry run และ user confirmation ก่อน
 - ไม่ทำลาย references หรือ existing skills
+
+## Expected Outcome
+
+- skill ใหม่ถูกสร้างที่ `%APPDATA%\devin\skills\<skill-name>\` พร้อม `SKILL.md` ถูกต้อง
+- directory name ตรงกับ `name` ใน frontmatter
+- `SKILL.md` ผ่าน `/validate` และ `/validate-workflow` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- `related` references ครบถ้วน ไม่มี missing/unused
+- directory structure ครบถ้วนตาม `/follow-write-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
+- ไม่ซ้ำกับ skills ที่มี่อยู่ หรือได้รับการยืนยันให้ extend หรือ rename
