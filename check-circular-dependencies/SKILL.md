@@ -59,7 +59,7 @@ description: ตรวจจับและรายงาน circular dependenc
 > Goal: ผู้ใช้รู้ issues และวิธีแก้
 
 1. สร้าง report เป็นตาราง: cycle, modules, severity, root cause, recommendation
-2. ถ้ามี critical issues → แนะนำทำ `/resolve-errors` หรือ `/use-or-refactor-to-modules`
+2. ถ้ามี critical issues → แนะนำทำ `/resolve-errors` หรือ `/refactor-packages`
 3. ถ้าไม่พบ issues → report "no circular dependencies found"
 4. ทำ `/suggest-next-action`
 
@@ -80,7 +80,7 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 3. Actionable
 
 - ทุก finding ต้องมี recommendation เช่น: แยก shared types, ใช้ dependency injection, restructure module boundaries
-- ถ้า issue ซับซ้อน → แนะนำ `/use-or-refactor-to-modules` หรือ `/follow-import-export`
+- ถ้า issue ซับซ้อน → แนะนำ `/refactor-packages` หรือ `/follow-import-export`
 - ถ้า cycle เกิดจาก barrel exports → แนะนำการแยก barrel file หรือใช้ type-only imports
 
 ## Expected Outcome

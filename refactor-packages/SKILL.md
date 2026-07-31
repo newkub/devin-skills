@@ -1,159 +1,134 @@
 ---
 name: refactor-packages
-description: Refactor packages ตาม SRP และแนะนำ packages จาก workspace
+description: Refactor modules/packages ให้มี SRP, แนะนำ packages/modules จาก workspace, และอัปเดท references
+related:
+  - refactor-codebase
 ---
 
 ## Goal
 
-Refactor packages ให้มี single responsibility ตาม SRP และแนะนำ packages จาก workspace ที่เหมาะสมกับโปรเจกต์
+Refactor modules/packages ให้มี single responsibility, high cohesion, low coupling และแนะนำ packages/modules จาก workspace ที่ควรนำมาใช้
 
 ## Scope
 
-ใช้กับ monorepo หรือ project ที่มี packages หลายตัว โดยประเมินว่าควร split/merge/relocate packages หรือไม่ วิเคราะห์ cohesion, change frequency, deployment boundaries และแนะนำ packages ที่ควรนำมาใช้
+ใช้กับ project หรือ monorepo ที่ต้อง split/merge/relocate modules หรือ packages หรือแนะนำ packages/modules จาก workspace
 
 ## Execute
 
-### 1. Analyze Current Project
+### 1. Analyze Project And Structure
 
-วิเคราะห์โปรเจกต์ก่อนตัดสินใจ
+วิเคราะห์โปรเจกต์และโครงสร้าง modules/packages
 
-> Goal: รู้ว่า project เป็นอะไร ใช้อะไร และมี packages อะไร
+> Goal: เข้าใจ current structure, responsibilities, coupling, duplication
 
-1. อ่าน `package.json`, `Cargo.toml`, `bun.lock`, หรือ manifest ที่เกี่ยวข้อง
-2. ระบุภาษา, framework, project type, และ workspace layout
-3. วิเคราะห์ dependencies ทั้งหมด (ภายใน/ภายนอก) และจุดประสงค์ของแต่ละ package
-4. ทำ `/analyze-project` เพื่อดูภาพรวม
+1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
+2. ทำ `/analyze-project` เพื่องดูภาพรวม project type และ structure
+3. ทำ `/deep-analyze` เพื่องวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
+4. ทำ `/scan-codebase` ∥ `/analyze-code-structure` เพื่องค้นหา consumers, call sites, exports, cohesion
+5. ทำ `/check-duplication` และ `/check-circular-dependencies`
+6. ถ้าเป็น monorepo → ทำ `/follow-monorepo`
 
-### 2. Evaluate Package Cohesion
+### 2. Evaluate Refactor Necessity
 
-ประเมินว่า package ต่างๆ มี SRP หรือไม่
+ประเมินว่าควร refactor หรือไม่
 
-> Goal: หา packages ที่ violate SRP หรือ over-coupled
+> Goal: ตัดสินใจ refactor อย่างมีหลักฐาน
 
-1. สร้างตาราง package: ชื่อ, ไฟล์, top-level symbols, imports/exports, จำนวน consumer
-2. ตรวจสอบ cognitive complexity, navigability, และ test setup ความยาก
-3. ระบุ reasons to change ของแต่ละ package (ควรมีหนึ่งเหตุผล)
-4. ตรวจ coupling ระหว่าง concerns ภายใน package และ dependencies ที่ไม่จำเป็น
-5. วิเคราะห์ change patterns: แต่ละส่วนเปลี่ยนพร้อมกันหรือไม่, maintain โดยทีมเดียวกัน, release lifecycle เดียวกัน
+1. วิเคราะห์ change patterns: เปลี่ยนพร้อมกัน, maintain โดยทีมเดียวกัน, release lifecycle
+2. ประเมิน signals:
+   - Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม modules/packages
+   - ไม่ refactor: single responsibility ชัด, cohesive สูง, เปลี่ยนด้วยกัน, deploy ด้วยกัน
+3. ทำ `/dont-over-engineer` เพื่องกำหนดขอบเขต minimal
 
-### 3. Assess Refactor Necessity
+### 3. Plan Refactor
 
-ตัดสินใจว่าควร refactor หรือไม่
-
-> Goal: ไม่ refactor โดยใช้เหตุผลชัดเจน
-
-1. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขต
-2. เครื่องหมาย refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies เกิน
-3. เครื่องหมายไม่ refactor: single responsibility ชัด, ยาวแต่ cohesive, เปลี่ยนด้วยกันเสมอ, refactor ทำลาย stability
-4. พิจารณา deployment/versioning boundary: concerns ที่ deploy ร่วมกันควรอยู่ด้วยกันถ้าแยกไม่มีประโยชน์
-
-### 4. Plan Refactor
-
-วางแผนการ split/merge/relocate packages
+วางแผนการ split/merge/relocate modules/packages
 
 > Goal: แผน minimal ที่กระทบน้อยที่สุด
 
-1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
-2. ใช้ `/use-or-refactor-to-modules` สำหรับ packages ที่ยังแยกย่อยได้ในระดับ module
-3. ระบุ consumers ทั้งหมดและ public API ที่จะกระทบ
-4. กำหนดลำดับงาน: เริ่มจาก leaf packages ที่ไม่มี dependents
+1. ทำ `/plan` เพื่องสร้างแผน split, extract, merge, หรือ relocate
+2. ระบุ module/package boundaries ตาม domain, reason to change, cohesion
+3. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
+4. จัดลำดับตาม dependency direction (foundation ก่อน)
+5. ทำ `/report-plan` ก่อนลงมือ execute
 
-### 5. Refactor Packages
+### 4. Scan And Recommend Workspace Modules/Packages
 
-ดำเนินการ restructure packages ตามแผน
+สำรวจ workspace และแนะนำ modules/packages
 
-> Goal: ทุก package มี single responsibility ชัดเจน
+> Goal: รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
 
-1. split/merge packages ตาม domain concern
-2. ใช้ `/restructure` หรือ `/relocation` เมื่อต้องย้ายไฟล์ระหว่าง packages
-3. ใช้ `/rename` เมื่อต้องเปลี่ยนชื่อ package หรือ identifier
-4. ลบ dependencies ที่ไม่จำเป็น
-5. สร้าง abstractions เมื่อจำเป็นและลด coupling
+1. สำรวจโครงสร้าง workspace และอ่าน manifest ของแต่ละ module/package
+2. จัดกลุ่ม: UI, Utilities, Frameworks, Libraries, Tools, Integrations
+3. ประเมิน: compatibility, benefit, stability, maintenance, docs
+4. สร้างรายงานแบ่งตาม priority:
+   - High — แก้ปัญหา, ลด duplication
+   - Medium — ปรับปรุง DX, trade-offs
+   - Low — ไม่จำเป็น, over-engineering
 
-### 6. Scan and Recommend Workspace Packages
+### 5. Execute Refactor
 
-สำรวจ packages ใน workspace และแนะนำที่เหมาะสม
+ดำเนินการ refactor ตามแผน
 
-> Goal: แนะนำ packages ที่แก้ปัญหา, ลด duplication, หรือปรับปรุง DX
+> Goal: Refactor ตามแผน ผ่าน tests ไม่ทำลาย consumers
 
-1. parallel: ทำ `/all-workspaces` สำรวจ workspace ทั้งหมด ∥ อ่าน `package.json` หรือ `Cargo.toml` ของแต่ละ package
-2. จัดกลุ่ม packages: UI Components, Utilities, Frameworks, Libraries, Tools, Integrations
-3. สำหรับแต่ละ package ประเมิน: ภาษา/เข้ากันได้, stability, maintenance, documentation, adoption
-4. จัดลำดับความสำคัญ: Critical (แก้ปัญหา/ความปลอดภัย), High (ลด duplication/ประสิทธิภาพ), Medium (DX), Low (nice-to-have)
-5. ระบุ installation, usage, trade-offs, breaking changes
+1. สร้าง/ย้าย/รวม directory structure ตาม plan
+2. ใช้ `/restructure` หรือ `/relocation` สำหรับ file operations
+3. ใช้ `/follow-import-export` เพื่องจัดการ barrel exports และ import aliases
+4. ทำ `/update-reference` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
+5. ลบ dependencies ที่ไม่จำเป็น
 
-### 7. Verify Refactor Impact
+### 6. Verify Impact And Update References
 
-ตรวจสอบว่า packages ยังทำงานได้และดีขึ้น
+ตรวจสอบผลกระทบและอัปเดท references
 
-> Goal: ไม่มี regression, circular dependency, หรือ fragmentation
+> Goal: ไม่มี regression, circular dependencies, หรือ broken references
 
-1. parallel: ทำ `/run-check` สำหรับ lint/typecheck ∥ ทำ `/run-test` สำหรับ regression
+1. parallel: ทำ `/run-check` ∥ ทำ `/run-test` ∥ ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/check-duplication`
-3. ประเมินว่า package ดีขึ้นหรือไม่: cohesion, coupling, consumer ใช้งานได้
-4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 4-5 (สูงสุด 3 ครั้ง → stop/report)
-
-### 8. Update References and Report
-
-อัปเดท references และสรุปผล
-
-> Goal: ไม่มี broken references และมีรายงานชัดเจน
-
-1. ทำ `/update-reference` เพื่ออัปเดท `package.json`, imports, path aliases, tsconfig, AGENTS.md, .devin/rules
-2. ทำ `/edit-relative` สำหรับ relative paths ที่เปลี่ยน
-3. สร้างรายงาน: ตาราง Before/After (package, reason to change, dependencies, consumer count, SRP status), actions ที่ทำ, recommendations, TODO ถ้ามี
+3. ทำ `/analyze-code-structure` เพื่องเปรียบเทียบกับ baseline
+4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
+5. ทำ `/update-reference` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
 
 ## Rules
 
-### 1. Cohesion Over Separation
+### 1. Cohesion First
 
-- ไม่ split packages เพื่อ conceptual purity อย่างเดียว
-- รวม code ที่ change, deploy, test, และเข้าใจด้วยกัน
+- รวม code ที่ changes together, deploys together, tests together
 - หลีกเลี่ยง fragmentation ที่เพิ่ม cognitive load
+- พิจารณา dependency graph complexity
 
-### 2. Refactor Signals
+### 2. When To Refactor Vs Not
 
-Refactor เมื่อ:
+- Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม modules/packages
+- ไม่ refactor: single responsibility ชัด, cohesive สูง, เปลี่ยนด้วยกัน, deploy ด้วยกัน
+- ถ้า refactor ทำลาย stability หรือเพิ่ม fragmentation → อย่า refactor
 
-- หลาย reasons to change
-- test ยากเพราะ concerns ปน
-- coupling สูง
-- ไม่ reusable
-- dependencies ไม่จำเป็น
+### 3. Dependency Direction
 
-### 3. No-Refactor Signals
+- Foundation modules/packages ไม่มี dependency กับอื่น
+- High-level modules/packages พึ่งพา low-level modules/packages เท่านั้น
+- ไม่มี circular dependencies
+- จัดลำดับการทำงานตาม dependency direction
 
-ไม่ refactor เมื่อ:
+### 4. Public API And Boundaries
 
-- single responsibility ชัด
-- ยาวแต่ cohesive
-- เปลี่ยนด้วยกันเสมอ
-- ทำลาย stability หรือเพิ่ม fragmentation
+- แต่ละ module/package มี barrel file (`index.ts`) เป็น public API
+- เก็บ internal code private
+- ห้าม import ลึกเข้าไปใน module/package
+- ใช้ barrel exports กำหนด public surface
 
-### 4. Appropriate Coupling
+### 5. Safety And Minimal Changes
 
-- ใช้ abstractions เมื่อจำเป็นจริง
-- ไม่ lock implementation โดยไม่จำเป็น
-- interfaces ชัดเจน
-- dependencies ชัดเจนและจำเป็น
-
-### 5. Avoid Over-Refactoring
-
-- ไม่สร้าง micro-packages
-- ไม่สร้าง abstractions ที่ไม่ใช้
-- ไม่เพิ่ม dependency graph depth โดยไม่ได้ผล
-- ไม่ส่ง dependencies จำนวนมากข้าม packages
-
-### 6. Verification Required
-
-- ต้องทำ `/analyze-project` ก่อนและหลัง
-- ต้องผ่าน `/run-check` และ `/run-test`
-- ต้องอัปเดท `/update-reference` หลังทุกครั้งที่ restructure
+- ทำ `/dont-over-engineer` — ไม่สร้าง micro-modules/packages
+- ไม่สร้าง abstraction ที่ไม่จำเป็น
+- ทำ `/update-reference` หลังทุกการย้าย code
+- ถ้า broken references → ทำ `/resolve-errors`
 
 ## Expected Outcome
 
-- Packages มี single responsibility ชัดเจน
-- Dependencies ชัดเจน ไม่มี circular
-- ผ่าน lint, typecheck, test
-- รายงาน recommendations จัดลำดับตาม priority
-- รายงาน Before/After ของ SRP metrics และ actions ที่ทำ
+- Modules/packages มี single responsibility, high cohesion, low coupling
+- ไม่ over-refactor หรือ fragmentation
+- รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
+- Code ผ่าน tests, lint, typecheck
+- ไม่มี circular dependencies, broken references, regression

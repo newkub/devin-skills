@@ -69,7 +69,7 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 6. สร้าง `src/modules/<feature>/index.ts` เป็น barrel export สำหรับ public API
 7. ใช้ `/follow-import-export` สำหรับ barrel export strategy
 8. เก็บ internal code ใน private directories ไม่ export ออก
-9. ถ้า module ใหญ่เกินไป → ทำ `/use-or-refactor-to-modules`
+9. ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 
 ### 5. Implement Server Functions
 

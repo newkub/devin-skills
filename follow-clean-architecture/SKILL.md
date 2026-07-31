@@ -102,7 +102,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 8. Split Modules When Too Large
 
-ถ้า module โตเกินเกณฑ์ ให้ทำ `/use-or-refactor-to-modules`:
+ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-packages`:
 
 > Goal: module แบ่งเล็กลงตาม SRP โดยไม่เกิด circular dependency
 

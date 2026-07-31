@@ -1,6 +1,8 @@
 ---
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest
+related:
+  - refactor-codebase
 ---
 
 ## Goal
@@ -9,7 +11,8 @@ description: เลือก architecture pattern ตาม package manifest
 
 ## Scope
 
-ใช้สำหรับเลือก architecture pattern ตาม framework, language, และ scale ของโปรเจกต์
+- ใช้สำหรับเลือก architecture pattern ตาม framework, language, และ scale ของโปรเจกต์
+- ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
 
 ## Execute
 

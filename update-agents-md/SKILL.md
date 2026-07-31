@@ -56,6 +56,7 @@ description: Write AGENTS.md according to project analysis and dependencies
 4. ถ้าไม่มี skills ที่เกี่ยวข้องในเครื่อง ให้ทำ `/search-skills` เพื่อค้นหา skills จาก external registry ที่เกี่ยวข้องกับ dependencies
 5. ระบุ workflows ที่ควร follow สำหรับแต่ละ dependency
 6. ระบุ skills ที่ควร follow จากผลลัพธ์ของ `/list-skills` และ `/search-skills` (ถ้ามี)
+7. ถ้า project ต้องการ refactor หรือ restructure บ่อย ให้ระบุ `/refactor-codebase`
 
 ### 5. Identify Reviews
 
@@ -69,12 +70,12 @@ description: Write AGENTS.md according to project analysis and dependencies
 
 ### 6. Write AGENTS.md
 
-เขียน `AGENTS.md` ตาม Rules section โดยทำตาม `/write-workflows`
+เขียน `AGENTS.md` ตาม Rules section โดยทำตาม `/follow-write-devin-skills`
 
-> Goal: `AGENTS.md` ที่เขียนตามมาตรฐาน `/write-workflows` และ Rules section
+> Goal: `AGENTS.md` ที่เขียนตามมาตรฐาน `/follow-write-devin-skills` และ Rules section
 
-1. ทำ `/write-workflows` เพื่อเขียนตามมาตรฐาน structure, clarity และ high impact content
-2. ทำ `/write-workflows` เพื่อเขียนตามมาตรฐาน workflow structure
+1. ทำ `/follow-write-devin-skills` เพื่อเขียนตามมาตรฐาน structure, clarity และ high impact content
+2. ทำ `/follow-write-devin-skills` เพื่อเขียนตามมาตรฐาน workflow structure
 3. ทำ `/follow-principles-engineering` เพื่อเขียนเป็นหลักการ
 4. ตรวจสอบความสม่ำเสมอของ terminology และ format ทั่วทั้งเอกสาร
 5. เขียน `AGENTS.md` ตาม Rules section
@@ -102,7 +103,7 @@ description: Write AGENTS.md according to project analysis and dependencies
 
 ### 2. Section Structure
 
-โครงสร้าง sections ตาม `/write-workflows` format (เรียงลำดับจากบนลงล่าง):
+โครงสร้าง sections ตาม `/follow-write-devin-skills` format (เรียงลำดับจากบนลงล่าง):
 
 - `## Goal`: อธิบายว่า workspace ทำอะไรและสอดคล้องกับ workspace name
 - `## Scope`: ระบุขอบเขตว่าใช้กับอะไรและไม่ทับซ้อนกับ workspaces อื่น
@@ -123,7 +124,7 @@ Root `AGENTS.md` เพิ่ม `### Workspaces` ใน `## Rules` ที่ร
 
 ### 4. Execute Format
 
-รูปแบบ `## Execute` ตาม `/write-workflows`:
+รูปแบบ `## Execute` ตาม `/follow-write-devin-skills`:
 
 - แต่ละ step ใช้ format: `### N. Step Name` → description → `> Goal:` → numbered list
 - ทุก step ต้องมี `> Goal:` ก่อน numbered list
@@ -132,7 +133,7 @@ Root `AGENTS.md` เพิ่ม `### Workspaces` ใน `## Rules` ที่ร
 
 ### 5. Rules Format
 
-รูปแบบ `## Rules` ตาม `/write-workflows`:
+รูปแบบ `## Rules` ตาม `/follow-write-devin-skills`:
 
 - จัดกลุ่มเป็นหัวข้อ single concern: `### N. Rule Name`
 - แต่ละ rule รวม Project Configuration, Architecture, Commands, Workflows, Skills, Review
@@ -182,7 +183,7 @@ Root `AGENTS.md` เพิ่ม `### Workspaces` ใน `## Rules` ที่ร
 
 ### 9. Write Workflows Compliance
 
-`AGENTS.md` ที่สร้างต้องทำตาม `/write-workflows`
+`AGENTS.md` ที่สร้างต้องทำตาม `/follow-write-devin-skills`
 
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 - ห้าม TODO, MOCK, placeholder, generic filler หรือคำสวยแต่ไม่ actionable
@@ -194,7 +195,7 @@ Root `AGENTS.md` เพิ่ม `### Workspaces` ใน `## Rules` ที่ร
 
 - ถ้าเป็น monorepo: root `AGENTS.md` มี `### Workspaces` ใน `## Rules` ที่บอกให้ทำตาม workspace `AGENTS.md`
 - ถ้าเป็น monorepo: แต่ละ workspace มี `AGENTS.md` ของตัวเอง
-- `AGENTS.md` มี `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome` ครบถ้วนตาม `/write-workflows`
+- `AGENTS.md` มี `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome` ครบถ้วนตาม `/follow-write-devin-skills`
 - `## Execute` ทุก step มี `> Goal:` ก่อน numbered list
 - `## Rules` จัดกลุ่มเป็นหัวข้อ single concern รวม Project, Workflows, Skills, Review
 - `## Workflows` เป็น bullet points พร้อม "Follow" และ backticks

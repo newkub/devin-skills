@@ -9,7 +9,7 @@ description: สร้างไอเดียการ refactor files ตาม
 
 ## Scope
 
-ใช้สำหรับวิเคราะห์ไฟล์ใน project ว่าควร split, merge, relocate หรือแก้ไขอย่างไร — ไม่รวมการ refactor modules/packages (ใช้ `/use-or-refactor-to-modules` หรือ `/use-or-refactor-to-packages` แทน)
+ใช้สำหรับวิเคราะห์ไฟล์ใน project ว่าควร split, merge, relocate หรือแก้ไขอย่างไร — ไม่รวมการ refactor modules/packages (ใช้ `/refactor-packages` แทน)
 
 ## Execute
 

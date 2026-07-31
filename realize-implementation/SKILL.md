@@ -27,11 +27,12 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม i
 
 > Goal: รู้สิ่งที่ขาด จัดลำดับ critical path และ infrastructure พร้อม
 
-1. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/review-realize-implementation` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
-2. จัดลำดับตาม critical path: schema → data → API → UX/UI
-3. ตรวจสอบ Database (connection pool, indexes, migrations, backup), API Server (endpoints, rate limiting, CORS, auth), Environment Variables (required, secrets, values)
-4. ถ้ามี External Services → ตรวจสอบ credentials, API keys, rate limits — ถ้ามี Monitoring → ตรวจสอบ metrics collection, alerting rules
-5. ถ้า infrastructure ไม่พร้อม → stop และ report
+1. ถ้ามี `.devin/plan/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
+2. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/review-realize-implementation` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
+3. จัดลำดับตาม critical path: schema → data → API → UX/UI
+4. ตรวจสอบ Database (connection pool, indexes, migrations, backup), API Server (endpoints, rate limiting, CORS, auth), Environment Variables (required, secrets, values)
+5. ถ้ามี External Services → ตรวจสอบ credentials, API keys, rate limits — ถ้ามี Monitoring → ตรวจสอบ metrics collection, alerting rules
+6. ถ้า infrastructure ไม่พร้อม → stop และ report
 
 ### 3. Implement Schema And Data Layer
 

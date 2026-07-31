@@ -151,7 +151,7 @@ apps/
 - ใช้ path aliases ใน `tsconfig.json`
 - ไม่มี circular dependencies ระหว่าง modules
 - ทำ `/follow-import-export` สำหรับ barrel export strategy
-- ถ้า module ใหญ่เกินไป → ทำ `/use-or-refactor-to-modules`
+- ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 
 ### 3. Server/Client Components
 

@@ -63,7 +63,7 @@ Template สำหรับสร้าง `follow-*-architecture` workflows ท
 > Goal: Architecture สมบูรณ์ ไม่มี conflicts
 
 1. ตรวจสอบว่า structure ไม่ทับซ้อนกับ workflows อื่น
-2. ทำ `/restructure` ถ้าจำเป็น, ทำ `/use-or-refactor-to-modules` ถ้า modules ใหญ่เกินไป, รัน typecheck, รัน lint
+2. ทำ `/restructure` ถ้าจำเป็น, ทำ `/refactor-packages` ถ้า modules ใหญ่เกินไป, รัน typecheck, รัน lint
 3. ทำ `/suggest-next-action`
 
 ## Rules

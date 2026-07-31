@@ -162,7 +162,7 @@ apps/
 - เก็บ internal code private ไม่ export ออก
 - ทำ `/follow-import-export` สำหรับ barrel export strategy
 - ไม่มี circular dependencies ระหว่าง modules
-- ถ้า module ใหญ่เกินไป → ทำ `/use-or-refactor-to-modules`
+- ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 
 ### 3. Svelte 5 Runes
 

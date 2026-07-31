@@ -4,7 +4,6 @@ description: สร้างไอเดียการสร้างหรื�
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
-  - use-or-refactor-to-packages
   - refactor-packages
   - idea-refactor-files
   - scan-codebase
@@ -28,7 +27,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการวิเคราะห์ว่าควรแยก package ใหม่อะไร รวม package ไหน หรือ refactor packages เดิมอย่างไรเพื่อรองรับ packages ใหม่ — ไม่รวมการ execute refactor ให้ทำตาม `use-or-refactor-to-packages` หรือ `refactor-packages` ต่อ
+ใช้เมื่อต้องการวิเคราะห์ว่าควรแยก package ใหม่อะไร รวม package ไหน หรือ refactor packages เดิมอย่างไรเพื่อรองรับ packages ใหม่ — ไม่รวมการ execute refactor ให้ทำตาม `refactor-packages` ต่อ
 
 ## Execute
 
@@ -106,7 +105,7 @@ related:
 2. คอลัมน์: number, package(s), issue, idea, action, scope, impact, effort
 3. จัดลำดับตาม impact/effort ratio
 4. ทำ `suggest-next-action`
-5. ถ้าพร้อม execute → แนะนำให้ทำ `use-or-refactor-to-packages` หรือ `refactor-packages`
+5. ถ้าพร้อม execute → แนะนำให้ทำ `refactor-packages`
 
 ## Rules
 
@@ -114,7 +113,7 @@ related:
 
 - เน้นการสร้าง packages ใหม่หรือ refactor packages เดิมเพื่องรองรับ packages ใหม่
 - ไม่ลงมือ execute การย้ายหรือแก้ไข code ด้วยตรง
-- ใช้ `use-or-refactor-to-packages` หรือ `refactor-packages` สำหรับ execution
+- ใช้ `refactor-packages` สำหรับ execution
 
 ### 2. Evidence-Based
 
@@ -145,4 +144,4 @@ related:
 - รายการไอเดีย new packages/refactor แบบ continuous numbering
 - ทุกไอเดียมี package name, action, scope, impact, effort
 - ตาราง `report-format-table` พร้อม next action
-- ไอเดียพร้อม execute ด้วย `use-or-refactor-to-packages` หรือ `refactor-packages`
+- ไอเดียพร้อม execute ด้วย `refactor-packages`

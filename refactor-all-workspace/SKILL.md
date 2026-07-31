@@ -59,7 +59,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 
 ทำ deep refactoring ในแต่ละ workspace ตามลำดับที่กำหนด
 
-- ทำ `/use-or-refactor-to-modules` เพื่อปรับปรุงโครงสร้างโค้ดใน workspace
+- ทำ `/refactor-packages` เพื่อปรับปรุงโครงสร้างโค้ดใน workspace
 - ทำ `/run-test` เพื่อตรวจสอบว่า workspace ทำงานได้ปกติ
 - ทำ `/run-typecheck` เพื่อตรวจสอบ types ถูกต้อง
 - สร้าง commit checkpoint หลังแต่ละ workspace

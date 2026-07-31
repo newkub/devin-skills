@@ -179,7 +179,7 @@ apps/
 
 - แต่ละ module ใน `modules/` มี `index.ts` เป็น public API
 - เก็บ internal code private ไม่ export ออก
-- ถ้า module ใหญ่เกินไป → ทำ `/use-or-refactor-to-modules`
+- ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 
 ### 3. Naming Conventions
 

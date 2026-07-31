@@ -1,6 +1,8 @@
 ---
 name: refactor-long-files
 description: ตรวจหาและ refactor ไฟล์ที่ยาวกว่า threshold ให้มีขนาดเหมาะสม
+related:
+  - refactor-codebase
 ---
 
 ## Goal
@@ -9,7 +11,8 @@ description: ตรวจหาและ refactor ไฟล์ที่ยาว
 
 ## Scope
 
-ใช้สำหรับ refactor ไฟล์ที่ยาวกว่า threshold ในทุก workspace
+- ใช้สำหรับ refactor ไฟล์ที่ยาวกว่า threshold ในทุก workspace
+- ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
 
 ## Execute
 
