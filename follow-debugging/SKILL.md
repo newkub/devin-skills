@@ -104,7 +104,7 @@ description: หลักการ debug อย่างเป็นระบบ
 - Test failures → `/run-test` + `/follow-vitest`
 - E2E failures → `/follow-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
-- Type errors → `/run-typecheck` + `/follow-tsgo`
+- Type errors → `/run-typecheck` + `/follow-typescript`
 - Performance → `/run-profiler` + `/deep-review`
 - Git issues → `/follow-git-bisect` + `/follow-git-blame`
 

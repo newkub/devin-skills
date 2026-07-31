@@ -103,7 +103,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | prepare (Workspace) | - | - | - | - | - | - | - | - | - |
 | dev | bun run src/index.ts | nuxt dev | next dev | vite dev | vite dev | tauri dev | cargo run | python -m src | go run . |
 | build | bun build | nuxt build | next build | vite build | vite build | tauri build | cargo build | python -m build | go build . |
-| typecheck | tsgo --noEmit | nuxt typecheck | tsgo --noEmit | tsgo --noEmit | svelte-check --tsconfig ./tsconfig.json | tsgo --noEmit | cargo check | mypy src | go vet ./... |
+| typecheck | tsc --noEmit | nuxt typecheck | tsc --noEmit | tsc --noEmit | svelte-check --tsconfig ./tsconfig.json | tsc --noEmit | cargo check | mypy src | go vet ./... |
 | lint | biome lint | biome lint | biome lint | biome lint | biome lint | biome lint | cargo clippy | ruff check | golangci-lint run |
 | format | biome lint --write | biome lint --write | biome lint --write | biome lint --write | biome lint --write | biome lint --write | cargo fmt | ruff format | gofmt -w . |
 | test | vitest run | vitest run | vitest run | vitest run | vitest run | vitest run | cargo nextest run | pytest | go test ./... |
@@ -119,7 +119,7 @@ Scripts สำหรับ development mode เพื่อเพิ่มปร
 | Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
 |------|-----|------|---------|------------|----------|-------|------|--------|----|
 | test:watch | vitest | vitest | vitest | vitest | vitest | vitest | cargo nextest run --watch | pytest-watch | go test ./... -watch |
-| typecheck:watch | tsgo --noEmit --watch | nuxt typecheck --watch | tsgo --noEmit --watch | tsgo --noEmit --watch | svelte-check --watch --tsconfig ./tsconfig.json | tsgo --noEmit --watch | cargo watch -x check | - | - |
+| typecheck:watch | tsc --noEmit --watch | nuxt typecheck --watch | tsc --noEmit --watch | tsc --noEmit --watch | svelte-check --watch --tsconfig ./tsconfig.json | tsc --noEmit --watch | cargo watch -x check | - | - |
 | build:watch | bunup --watch | nuxt build --watch | next build --watch | vite build --watch | vite build --watch | tauri build --watch | cargo build --watch | - | - |
 
 ### 4. Testing Scripts

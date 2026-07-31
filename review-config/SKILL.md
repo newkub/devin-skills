@@ -34,7 +34,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 1. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 2. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-3. ตรวจสอบ `tsconfig.json`: compiler options (target, module, strict, isolatedModules), path aliases (`~/*` → `./src/*`), project references, `tsgo` usage ไม่ใช่ `tsc`
+3. ตรวจสอบ `tsconfig.json`: compiler options (target, module, strict, isolatedModules), path aliases (`~/*` → `./src/*`), project references, `tsc` usage
 4. ตรวจสอบ `vite.config.ts`: plugins (tanstackStart, viteSolid, UnoCSS, tsconfigPaths), build options (manualChunks, minify, sourcemap), dev server, optimizeDeps, SPA config ถ้ามี
 5. ตรวจสอบ `biome.jsonc`: enabled domains (drizzle, turborepo, types, solid, test), format rules, `vcs` enabled, ไม่มี `biome-ignore` โดยไม่จำเป็น, workspace-specific configs ไม่ขัดแย้ง root
 6. ตรวจสอบ `uno.config.ts`: presets (presetWind4, presetIcons), theme colors (HSL variables, color tokens, variants), transformers, shortcuts, safelist
@@ -42,7 +42,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 8. ตรวจสอบ `vitest.config.ts`: environment (jsdom/node), coverage (v8 provider, reporters), aliases (tsconfigPaths), setup file, `vite-plugin-solid` `hot: false`
 9. ตรวจสอบ `lefthook.yml`: `assert_lefthook_installed`, pre-commit (Biome lint/format, `stage_fixed: true`), pre-push (typecheck + test parallel), pre-merge-commit (typecheck), glob patterns, exclude patterns, `fail_text`
 10. ตรวจสอบ `turbo.json`: tasks ครบ, `dependsOn` (`^build`), cached tasks มี outputs, non-cached tasks, task inputs, `globalEnv` ครบ, `globalDependencies`
-11. ตรวจสอบ `package.json` scripts: dev, build, test, lint, typecheck, format, verify, ci, clean — `bun`/`bunx` usage, `tsgo` usage, workspace-specific scripts, `prepare` script
+11. ตรวจสอบ `package.json` scripts: dev, build, test, lint, typecheck, format, verify, ci, clean — `bun`/`bunx` usage, `tsc` usage, workspace-specific scripts, `prepare` script
 12. ตรวจสอบ env vars: validation, parity (dev/staging/prod), `.env.example` completeness, exposure (client vs server, `VITE_` prefix), type safety, secret management (Infisical, ไม่ hardcode)
 13. จับ findings พร้อม evidence (file, line, code snippet) — ตรวจสอบทั้ง positive และ negative aspects
 

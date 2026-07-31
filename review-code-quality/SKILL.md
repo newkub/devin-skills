@@ -21,7 +21,7 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure และ tech stack
 2. อ่าน `AGENTS.md` เพื่อทราบ tools ที่ใช้ใน project
-3. ระบุ quality tools ที่มี: `biome`, `tsgo`, `ast-grep`, `knip`, `jscpd`, `madge`
+3. ระบุ quality tools ที่มี: `biome`, `tsc`, `ast-grep`, `knip`, `jscpd`, `madge`
 
 ### 2. Deep Analyze
 

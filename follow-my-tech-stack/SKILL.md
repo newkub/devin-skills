@@ -60,7 +60,7 @@ related:
 | Package Manager | `Bun` | `Cargo` |
 | Build Tool | `tsdown`, `Rolldown` | `Cargo` |
 | Bundler | `Vite` (with Rolldown) | - |
-| Type Checker | `tsgo` | `rustc` |
+| Type Checker | `tsc` | `rustc` |
 | Web Framework | `ElysiaJS`, `Hono`, `Nitro` | `Axum`, `Actix Web` |
 | Full-stack Framework | `TanStack Start`, `Nuxt 3` | - |
 | Frontend Framework | `Vue 3` | - |

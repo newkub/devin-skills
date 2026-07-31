@@ -221,7 +221,7 @@ src/
   "dev": "bun run src/index.ts",       // Development mode
   "build": "bunup",                     // Build
   "test": "vitest run",                 // Tests
-  "check": "biome lint && tsgo --noEmit && ast-grep scan",  // Lint + type + scan
+  "check": "biome lint && tsc --noEmit && ast-grep scan",  // Lint + type + scan
   "verify": "bun run check && bun run test",                // Check + test
   "ci": "bun run verify && bun run build"                   // Verify + build
 }

@@ -51,7 +51,6 @@ Complete list of Bunup configuration options
 | `dts.minify` | `boolean` | `--dts.minify` | `false` |
 | `dts.resolve` | `boolean \| string[]` | `--dts.resolve` | `false` |
 | `dts.inferTypes` | `boolean` | `--dts.infer-types` | `false` |
-| `dts.tsgo` | `boolean` | `--dts.tsgo` | `false` |
 | `dts.entry` | `string \| string[]` | `--dts.entry` | - |
 
 ## Environment Options

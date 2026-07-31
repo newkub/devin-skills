@@ -19,7 +19,7 @@ description: วิเคราะห์และปรับปรุง type s
 
 > Goal: รู้ว่ามี type issues อะไรบ้าง และจัดลำดับตาม severity
 
-1. ทำ `/scan-codebase`, รัน `tsgo --noEmit`, ทำ `/review-code-quality` — ระบุ `any`, `as`, non-null assertions, missing return types
+1. ทำ `/scan-codebase`, รัน `tsc --noEmit`, ทำ `/review-code-quality` — ระบุ `any`, `as`, non-null assertions, missing return types
 2. ค้นหา patterns: `: any`, `as any`, `as unknown`, `!`, `@ts-ignore`, `@ts-expect-error`, missing type annotations
 3. จัดลำดับตาม severity: runtime bugs > type errors > missing types > style issues — ถ้าไม่มี issues → stop และ report
 
@@ -64,7 +64,7 @@ description: วิเคราะห์และปรับปรุง type s
 
 > Goal: Type safety ดีขึ้น ผ่าน typecheck และมี report ชัดเจน
 
-1. รัน `tsgo --noEmit`, ทำ `/run-typecheck`, รัน lint (`bunx biome lint`)
+1. รัน `tsc --noEmit`, ทำ `/run-typecheck`, รัน lint (`bunx biome lint`)
 2. เทียบ before/after: `any` count, `as` count, non-null assertion count, `@ts-ignore` count
 3. ถ้า typecheck fail → ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 4. รายงานเป็นตาราง: metric | before | after | status — ทำ `/suggest-next-action`

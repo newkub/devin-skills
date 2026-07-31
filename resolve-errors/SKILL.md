@@ -78,7 +78,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: ยืนยันด้วยการรัน ไม่ใช่คาดการณ์
 
 1. รัน command เดียวกับที่ทำให้เกิด error เพื่อยืนยันว่า error หายไป
-2. รัน `bun run check` เพื่อตรวจสอบรวม (lint + typecheck + scan) หรือรันเฉพาะเจาะจง: `bunx biome lint` | `bunx tsgo --noEmit` | `bun test` | `bun run build`
+2. รัน `bun run check` เพื่อตรวจสอบรวม (lint + typecheck + scan) หรือรันเฉพาะเจาะจง: `bunx biome lint` | `tsc --noEmit` | `bun test` | `bun run build`
 3. ใช้ `/run-until-pass` เพื่อรันจนกว่าจะผ่านทุก check
 4. ตรวจสอบไม่มี side effects: ไม่มี error ใหม่ในไฟล์อื่น, ไม่มี test ที่เคยผ่านแล้ว fail, ไม่มี warning ใหม่
 5. ตรวจสอบว่า fix ไม่ได้เพิ่ม ignore comments (`// biome-ignore`, `// @ts-ignore`, `# type: ignore`, etc.) — ทำตาม `/no-use-ignore` ถ้าพบ → ลบและแก้ที่ source

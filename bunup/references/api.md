@@ -117,7 +117,6 @@ interface DTSOptions {
   minify?: boolean;
   resolve?: boolean | string[];
   inferTypes?: boolean;
-  tsgo?: boolean;
   entry?: string | string[];
 }
 ```
@@ -128,7 +127,6 @@ interface DTSOptions {
 | `minify` | `boolean` | Minify declarations |
 | `resolve` | `boolean \| string[]` | Resolve external types |
 | `inferTypes` | `boolean` | Use tsc for type inference |
-| `tsgo` | `boolean` | Use TypeScript native compiler |
 | `entry` | `string \| string[]` | Custom declaration entries |
 
 ---

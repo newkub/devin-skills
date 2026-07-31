@@ -116,7 +116,6 @@ interface DTSOptions {
   minify?: boolean;
   resolve?: boolean | string[];
   inferTypes?: boolean;
-  tsgo?: boolean;
 }
 ```
 

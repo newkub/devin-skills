@@ -57,7 +57,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
 3. ระบุ package manager (Bun, npm, pnpm, yarn)
 4. ระบุ formatter/linter (Biome, ESLint, Prettier)
-5. ระบุ type checker (tsgo, tsc)
+5. ระบุ type checker (tsc)
 6. ระบุ test runner (Vitest, Jest, Playwright)
 7. ถ้า project type ไม่ชัด → stop และ report
 
@@ -91,7 +91,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
    - `js/ts.preferences.importModuleSpecifier` → `non-relative` (ถ้าใช้ path alias)
    - `js/ts.preferences.importModuleSpecifierEnding` → `minimal`
    - `js/ts.updateImportsOnFileMove.enabled` → `always`
-   - `js/ts.experimental.useTsgo` → `true` (ถ้าใช้ tsgo)
 6. กำหนด search exclude (`search.exclude`):
    - `/node_modules`, `/dist`, `/.output`, `/.turbo`
    - `/.supabase`, `/target` (Rust)
@@ -113,7 +112,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 
 1. ระบุ extensions ตาม tech stack:
    - Formatter/Linter: `biomejs.biome` (Biome) หรือ `dbaeumer.vscode-eslint` (ESLint)
-   - TypeScript: `ms-vscode.typescript-tsgo` (tsgo) ถ้าใช้
    - Framework: extensions ตาม framework (SolidJS, Vue, React, etc.)
    - CSS: `antfu.unocss` (UnoCSS) หรือ `bradlc.vscode-tailwindcss` (Tailwind)
    - Desktop: `tauri-apps.tauri-vscode` (Tauri) ถ้าใช้

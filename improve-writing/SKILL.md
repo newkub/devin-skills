@@ -78,7 +78,7 @@ description: ปรับปรุงคุณภาพการเขียน�
 > Goal: writing ดีขึ้น ผ่าน validation และมี report ชัดเจน
 
 1. ทำ `/follow-content-quality` เพื่อ review คุณภาพเนื้อหาหลังปรับปรุง
-2. รัน `tsgo --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวข้องกับ code
+2. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวข้องกับ code
 3. เทียบ before/after: unclear count, verbose count, inconsistent count, missing context count
 4. ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 5. รายงานเป็นตาราง: category | issues found | issues fixed | status — ทำ `/suggest-next-action`

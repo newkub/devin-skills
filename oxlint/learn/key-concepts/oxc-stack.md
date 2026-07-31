@@ -25,7 +25,7 @@ OXC Stack คือ collection ของ tools สำหรับ JavaScript/Typ
 
 ### Oxlint Typecheck
 - Type-aware linting
-- Uses tsgo for TypeScript
+- Uses TypeScript compiler (`tsc`) for type-aware linting
 - Fast type checking
 - Compatible with TypeScript
 

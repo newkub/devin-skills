@@ -95,7 +95,7 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 > Goal: Code ทำงานได้ ไม่มี broken references
 
 1. รัน `grep_search` ค้นหาชื่อเดิมอีกครั้ง → ต้องไม่พบ (ยกเว้นใน git history หรือ comments ที่ไม่เกี่ยวข้อง)
-2. รัน typecheck: `tsgo --noEmit` หรือ `bun run typecheck`
+2. รัน typecheck: `tsc --noEmit` หรือ `bun run typecheck`
 3. รัน lint: `biome lint` หรือ `bun run lint`
 4. รัน tests: `bun run test` หรือ `vitest run`
 5. ถ้า validation ไม่ผ่าน → ทำ `/resolve-errors` และ fix จนผ่าน (max 3 ครั้ง → stop/report)

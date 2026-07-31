@@ -30,7 +30,7 @@ description: จัดการ git hooks ผ่าน Lefthook สำหรั�
 ### 3. Pre-Push Hooks
 
 1. ตรวจสอบว่า pre-push รัน typecheck และ test แบบ parallel
-2. ตรวจสอบว่า typecheck ใช้ `tsgo` หรือ `tsc`
+2. ตรวจสอบว่า typecheck ใช้ `tsc`
 3. ตรวจสอบว่า test ใช้ `vitest` หรือ `bun test`
 4. ตรวจสอบ fail_text messages มี actionable guidance
 

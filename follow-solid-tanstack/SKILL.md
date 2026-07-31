@@ -19,7 +19,7 @@ description: พัฒนา @tanstack/solid-start app ด้วย oRPC, Query,
 2. ถ้า project มี forms ติดตั้ง `@tanstack/solid-form`
 3. ติดตั้ง dev dependencies: `bun add -d vite vite-plugin-solid @tanstack/router-plugin typescript`
 4. ถ้าใช้ Vite (Rolldown) ตั้งค่า `"vite": "npm:rolldown-vite@latest"` ใน `package.json`
-5. ตั้งค่า `package.json` scripts: `dev` → `vite`, `build` → `vite build`, `typecheck` → `tsgo --noEmit`, `test` → `vitest`
+5. ตั้งค่า `package.json` scripts: `dev` → `vite`, `build` → `vite build`, `typecheck` → `tsc --noEmit`, `test` → `vitest`
 
 ### 2. Configure Vite And TypeScript
 
