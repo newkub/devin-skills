@@ -31,11 +31,8 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 > Goal: รู้ว่าใช้ framework อะไร version ใด และมี `follow-*` skills อะไรเกี่ยวข้อง
 
 1. อ่าน `package.json`, อ่าน dependency manifest, ตรวจสอบ standalone หรือ monorepo
-
 2. ระบุ framework, meta-framework, และ key dependencies
-
 3. ระบุ tech stack `follow-*` skills ที่เกี่ยวข้อง (เช่น `/follow-nextjs`, `/follow-vue`, `/follow-pinia`, `/follow-vite`, `/follow-vitest`)
-
 4. ถ้าไม่พบ framework → stop และ report
 
 ### 2. Define Structure
@@ -45,9 +42,7 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 > Goal: มี file structure ที่เหมาะสม รองรับ modules/ และ monorepo
 
 1. กำหนด directories หลัก, กำหนด module structure, กำหนด shared package structure ถ้าเป็น monorepo
-
 2. Module structure: `src/modules/<feature>/` พร้อม `components/`, `hooks/`, `schemas/`, `utils/`, `types/`, `index.ts`
-
 3. สร้าง file structure diagram ทั้ง standalone และ monorepo
 
 ### 3. Define Patterns
@@ -57,9 +52,7 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 > Goal: ใช้ framework patterns ถูกต้อง
 
 1. กำหนด routing conventions, กำหนด server functions / API patterns, กำหนด rendering modes (SSR, CSR, SSG)
-
 2. กำหนด state management patterns
-
 3. กำหนด component organization
 
 ### 4. Define Rules
@@ -69,13 +62,9 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 > Goal: Rules ชัดเจน บังคับได้ ไม่ขัด best practices
 
 1. กำหนด routing rules
-
 2. กำหนด module boundary rules
-
 3. กำหนด import/export rules — ทำ `/follow-import-export`
-
 4. กำหนด monorepo rules ถ้าเกี่ยวข้อง
-
 5. กำหนด configuration rules
 
 ### 5. Validate
@@ -85,9 +74,7 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 > Goal: Architecture สมบูรณ์ ไม่มี conflicts
 
 1. ตรวจสอบว่า structure ไม่ทับซ้อนกับ skills อื่น
-
 2. ทำ `/restructure` ถ้าจำเป็น, ทำ `/refactor-packages` ถ้า modules ใหญ่เกินไป, รัน typecheck, รัน lint
-
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -95,55 +82,39 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 1. Generality
 
 - ไม่ผูกกับชื่อ project หรือ scope เฉพาะ
-
 - ใช้ `@<scope>/shared` แทนชื่อจริง
-
 - รองรับทั้ง standalone และ monorepo
 
 ### 2. Tech Stack References
 
 - `related` ใน frontmatter ต้องมี `follow-*` skills ของ tech stack ที่เกี่ยวข้อง
-
 - ตัวอย่าง: Next.js → `/follow-nextjs`, `/follow-vite`, `/follow-vitest`
-
 - ตัวอย่าง: Nuxt → `/follow-nuxtjs`, `/follow-vue`, `/follow-pinia`, `/follow-nitro`
-
 - ตัวอย่าง: SvelteKit → `/follow-svelte`, `/follow-vite`, `/follow-vitest`
-
 - ตัวอย่าง: SolidJS+TanStack → `/follow-solidjs`, `/follow-tanstack-start`, `/follow-tanstack-router`, `/follow-tanstack-query`
-
 - รวม `/follow-vite` และ `/follow-vitest` เสมอเพราะเป็น build และ test tools ที่ใช้ร่วมกัน
 
 ### 3. Module Boundaries
 
 - แต่ละ module มี `index.ts` เป็น public API
-
 - เก็บ internal code private
-
 - ไม่มี circular dependencies
 
 ### 4. File Structure
 
 - แสดง file structure diagram
-
 - ระบุ file patterns เป็นตาราง
-
 - ไม่เกิน 250 บรรทัดต่อ skill
 
 ### 5. Monorepo
 
 - อย่า share route tree ข้าม package boundary
-
 - Share components, hooks, schemas, utils แทน
-
 - ทำ `/follow-monorepo` สำหรับ validation
 
 ## Expected Outcome
 
 - Architecture ที่ชัดเจนพร้อม file structure diagram
-
 - Module boundaries และ patterns ที่ทำตามได้
-
 - รองรับทั้ง standalone และ monorepo
-
 - ไม่ผูกกับ project เฉพาะ
