@@ -1,6 +1,28 @@
 ---
 name: report-skills-health
 description: วิเคราะห์สุขภาพ skills ทั้ง global และ project พร้อม health score และ action items
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - list-skills
+  - check-reference
+  - follow-content-quality
+  - report-format-table
+  - report
+  - suggest-next-action
+  - follow-devin-skills-md
+  - validate
+  - validate-workflow
+  - ask-me
 ---
 
 ## Goal
@@ -29,7 +51,7 @@ description: วิเคราะห์สุขภาพ skills ทั้ง g
 
 > Goal: ทุก skill มี frontmatter และ sections ครบถ้วน
 
-1. ตรวจสอบ `SKILL.md` frontmatter ครบถ้วน: `title`, `description`, `auto_execution_mode`
+1. ตรวจสอบ `SKILL.md` frontmatter ครบถ้วน: `name`, `description`, `triggers`, `allowed-tools`, `related`
 2. ตรวจสอบ sections ครบ: `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 3. ตรวจสอบ Execute headings เป็น English Title Case
 4. ตรวจสอบ Rules เป็นภาษาไทย
@@ -90,6 +112,17 @@ description: วิเคราะห์สุขภาพ skills ทั้ง g
 3. แสดงตาราง issues ตาม severity
 
 ## Rules
+
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
 
 ### 1. Health Score
 

@@ -1,6 +1,20 @@
 ---
 name: report-workspace-relation
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -103,6 +117,17 @@ description: รายงานความสัมพันธ์ระหว�
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### 1. Workspace Detection
 
 - ตรวจสอบ monorepo ก่อนเสมอ
@@ -140,3 +165,5 @@ description: รายงานความสัมพันธ์ระหว�
 - Shared dependencies ที่หลาย workspace ใช้ร่วมกัน
 - Circular dependencies ถ้ามี พร้อม severity
 - คำแนะนำสำหรับการลด coupling หรือ refactoring
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

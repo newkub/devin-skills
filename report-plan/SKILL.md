@@ -1,6 +1,20 @@
 ---
 name: report-plan
-description: รายงานแผนงานก่อน implement พร้อม task table, bullet points ของ task with before-after แต่ละข้อ และ file structure
+description: รายงานแผนงานก่อน implement พร้อม task table, bullet points ของ task with before-after แต่ละข้อ...
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -83,6 +97,18 @@ description: รายงานแผนงานก่อน implement พร�
 
 ## Rules
 
+
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### 1. Report Before Implement
 
 - ต้อง report plan ในแชทก่อนลงมือทำเสมอ
@@ -115,3 +141,5 @@ description: รายงานแผนงานก่อน implement พร�
 - File structure tree diagram
 - Execution order แบ่งเป็น phases พร้อม critical path
 - ทำงานต่อได้เลยหรือถามก่อนถ้าเสี่ยง
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

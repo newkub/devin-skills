@@ -1,6 +1,20 @@
 ---
 name: report-review
 description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -69,6 +83,17 @@ description: รายงานผล review ครบทุกมิติอ�
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### 1. Report Structure
 
 - เริ่มด้วย executive summary (overall health score, สรุป severity)
@@ -118,3 +143,5 @@ description: รายงานผล review ครบทุกมิติอ�
 - Recommendations ที่ actionable และจัดลำดับตาม priority
 - ทำตาม `/report`
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

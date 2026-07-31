@@ -1,6 +1,20 @@
 ---
 name: report-format-table
 description: จัดรูปแบบตาราง สรุปข้อมูล และ metrics สำหรับรายงาน
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-terminal
+  - suggest-next-action
 ---
 
 ## Goal
@@ -60,6 +74,18 @@ description: จัดรูปแบบตาราง สรุปข้อม
 
 ## Rules
 
+
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### Table Structure
 
 - ใช้ numbered columns สำหรับลำดับที่ชัดเจน
@@ -94,3 +120,5 @@ description: จัดรูปแบบตาราง สรุปข้อม
 - Summary ที่กระชับและ actionable
 - Metrics ที่ชัดเจนพร้อม context
 - Grouping และ sorting ที่เป็นระบบ
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

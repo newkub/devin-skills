@@ -1,6 +1,21 @@
 ---
 name: report-format-code
 description: จัดรูปแบบ code blocks, diffs, JSON และ markdown documents
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
+  - report-format-terminal
 ---
 
 ## Goal
@@ -61,6 +76,17 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### Code Formatting
 
 - ใช้ language tags ที่ถูกต้องและ standard
@@ -95,3 +121,5 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 - Diffs ที่ชัดเจนและอ่านง่าย
 - JSON output ที่ valid และ consistent
 - Markdown documents ที่อ่านง่ายและ well-structured
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

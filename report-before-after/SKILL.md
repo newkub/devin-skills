@@ -1,6 +1,20 @@
 ---
 name: report-before-after
 description: รายงานแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -46,6 +60,17 @@ description: รายงานแผนการทำงานก่อนด�
 3. ดำเนินการเมื่อได้รับอนุมัติ
 
 ## Rules
+
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
 
 ### 1. Explain First
 
@@ -100,3 +125,5 @@ description: รายงานแผนการทำงานก่อนด�
 - แสดง before-after อย่างชัดเจน
 - ไม่มีการแก้ไขจริงจนกว่าจะได้รับอนุมัติ
 - ผู้ใช้ยืนยันก่อนดำเนินการต่อ
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

@@ -1,6 +1,20 @@
 ---
 name: report-features
 description: รายงาน features ทั้งหมดใน project เป็นตารางจาก generated TypeScript files
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -52,6 +66,17 @@ description: รายงาน features ทั้งหมดใน project เ
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### 1. Read-Only Action
 
 - อ่าน feature files เท่านั้น ไม่แก้ไข code หรือ feature files
@@ -83,3 +108,5 @@ description: รายงาน features ทั้งหมดใน project เ
 - ตาราง features ทั้งหมดในแชท จัดกลุ่มตาม workspace และ module
 - Summary สถานะ features ต่อ workspace
 - แนะนำ workflows ที่ควรใช้ต่อ (`/deep-review`, `/deep-review`)
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

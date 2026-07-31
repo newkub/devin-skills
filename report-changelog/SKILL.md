@@ -1,6 +1,20 @@
 ---
 name: report-changelog
 description: สร้าง changelog รายงานจาก git log ระหว่าง tags หรือ releases
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -93,6 +107,17 @@ description: สร้าง changelog รายงานจาก git log ร�
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### Commit Parsing
 
 - ใช้ conventional commits format สำหรับจัดหมวดหมู่
@@ -132,3 +157,5 @@ description: สร้าง changelog รายงานจาก git log ร�
 - สรุปสถิติ: จำนวน commits ตามประเภท, contributors
 - ชี้เน้น breaking changes ก่อนเสมอ
 - ไม่มีการสร้างไฟล์ — read-only report
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน

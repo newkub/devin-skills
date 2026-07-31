@@ -1,6 +1,20 @@
 ---
 name: report-my-tech-stack-update
 description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -77,6 +91,17 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 
 ## Rules
 
+### Report UX/UI
+
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+6. ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ### 1. Update Categories
 
 - Breaking Changes: อัปเดตที่อาจกระทบการใช้งานปัจจุบัน ต้อง migration
@@ -116,3 +141,5 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 - Migration guides สำหรับ major version bumps
 - Executive summary พร้อม top highlights
 - สามารถใช้เป็น weekly briefing สำหรับผู้ใช้
+- Report อ่านง่าย มี key findings ด้านบน
+- มี next action ชัดเจน
