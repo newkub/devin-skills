@@ -1,238 +1,190 @@
-﻿---
+---
 name: template-skills-review
 description: Template สำหรับ review-* skills วิเคราะห์ quality
+allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers: ['user', 'model']
 ---
 
 ## Goal
 
-Template α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕¬α╕úα╣ëα╕▓α╕ç `review-*` skills α╕ùα╕╡α╣êα╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î quality α╕₧α╕úα╣ëα╕¡α╕í severity ratings, health score, α╣üα╕Ñα╕░ actionable recommendations
+Template สำหรับสร้าง `review-*` skills ที่วิเคราะห์ quality พร้อม severity ratings, health score, และ actionable recommendations
 
 ## Scope
 
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü skills α╕ùα╕╡α╣ê review α╣Çα╕èα╣êα╕Ö `review-code-quality`, `review-security`, `review-performance`, `review-architecture` ΓÇö α╣äα╕íα╣êα╕úα╕ºα╕í `review-codebase-everything` α╕ïα╕╢α╣êα╕çα╣Çα╕¢α╣çα╕Ö orchestrator
+ใช้สำหรับ skills ที่ review เช่น `review-code-quality`, `review-security`, `review-performance`, `review-architecture` — ไม่รวม `review-codebase-everything` ซึ่งเป็น orchestrator
 
 ## Execute
 
 ### 1. Gather Context
 
-α╕úα╕ºα╕Üα╕úα╕ºα╕í context α╕üα╣êα╕¡α╕Ö review
+รวบรวม context ก่อน review
 
-> Goal: α╣Çα╕éα╣ëα╕▓α╣âα╕ê scope, target, α╣üα╕Ñα╕░ criteria α╕éα╕¡α╕ç review
+> Goal: เข้าใจ scope, target, และ criteria ของ review
 
-1. α╕úα╕░α╕Üα╕╕ review target: file, directory, package α╕½α╕úα╕╖α╕¡α╕ùα╕▒α╣ëα╕ç project
-2. α╕¡α╣êα╕▓α╕Ö relevant configs, α╕¡α╣êα╕▓α╕Ö dependencies, α╕ùα╕│ `/scan-codebase`
-3. α╕úα╕░α╕Üα╕╕ review criteria α╣üα╕Ñα╕░ rubric α╕¬α╕│α╕½α╕úα╕▒α╕Üα╣üα╕òα╣êα╕Ñα╕░ dimension
-4. α╕ûα╣ëα╕▓α╣Çα╕¢α╣çα╕Ö web project ΓåÆ α╣Çα╕₧α╕┤α╣êα╕í `/run-dev` α╣Çα╕₧α╕╖α╣êα╕¡ verify dev server α╕üα╣êα╕¡α╕Ö review
+1. ระบุ review target: file, directory, package หรือทั้ง project
+
+2. อ่าน relevant configs, อ่าน dependencies, ทำ `/scan-codebase`
+
+3. ระบุ review criteria และ rubric สำหรับแต่ละ dimension
+
+4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
 
 ### 2. Deep Analyze
 
-α╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣î target α╕¡α╕óα╣êα╕▓α╕çα╕Ñα╕╢α╕üα╕ïα╕╢α╣ëα╕çα╕öα╣ëα╕ºα╕ó health CLI α╣üα╕Ñα╕░ rules
+วิเคราะห์ target อย่างลึกซึ้งด้วย health CLI และ rules
 
-> Goal: α╕₧α╕Üα╕ùα╕╕α╕ü issue α╕₧α╕úα╣ëα╕¡α╕í root cause α╣üα╕Ñα╕░ health score
+> Goal: พบทุก issue พร้อม root cause และ health score
 
-1. α╕ùα╕│ `/deep-analyze` α╣Çα╕₧α╕╖α╣êα╕¡α╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣îα╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤α╕¡α╕óα╣êα╕▓α╕çα╕Ñα╕╢α╕üα╕ïα╕╢α╣ëα╕ç
-2. α╕ùα╕│ `/update-codebase-health-cli` α╣Çα╕₧α╕╖α╣êα╕¡α╣âα╕½α╣ë analyzers α╕äα╕úα╕¡α╕Üα╕äα╕Ñα╕╕α╕í categories α╕Ñα╣êα╕▓α╕¬α╕╕α╕ö ΓÇö `/update-codebase-health-cli` α╣Çα╕úα╕╡α╕óα╕ü `/update-rules` α╕áα╕▓α╕óα╣âα╕Öα╕òα╕▒α╕ºα╣Çα╕¡α╕çα╣Çα╕₧α╕╖α╣êα╕¡α╕¡α╕▒α╕¢α╣Çα╕öα╕ò ast-grep rules α╣âα╕Ö `rules/` α╕öα╣ëα╕ºα╕ó
-3. α╕ûα╣ëα╕▓ `/update-codebase-health-cli` α╕éα╣ëα╕▓α╕í `/update-rules` ΓåÆ α╕ùα╕│ `/update-rules` α╣üα╕óα╕üα╣Çα╕₧α╕╖α╣êα╕¡α╣âα╕½α╣ëα╣üα╕Öα╣êα╣âα╕êα╕ºα╣êα╕▓ rules α╕äα╕úα╕¡α╕Üα╕äα╕Ñα╕╕α╕í
-4. α╕úα╕▒α╕Ö `bunx ast-grep scan --inspect summary` α╣Çα╕₧α╕╖α╣êα╕¡ verify rules α╕ùα╕│α╕çα╕▓α╕Öα╣äα╕öα╣ë
-5. α╕úα╕▒α╕Ö `bun --filter @booking/tools-health health:json` α╣Çα╕₧α╕╖α╣êα╕¡α╕öα╕╢α╕ç health report α╕₧α╕úα╣ëα╕¡α╕í metrics
-6. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ùα╕╡α╕Ñα╕░ dimension α╕òα╕▓α╕í criteria α╕êα╕▓α╕ü health CLI output
-7. α╕êα╕▒α╕Ü findings α╣Çα╕¢α╣çα╕Ö list α╕₧α╕úα╣ëα╕¡α╕í evidence (file, line, code snippet)
-8. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ùα╕▒α╣ëα╕ç positive α╣üα╕Ñα╕░ negative aspects
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
+
+2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
+
+3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
+
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
+
+6. ตรวจสอบทีละ dimension ตาม criteria จาก health CLI output
+
+7. จับ findings เป็น list พร้อม evidence (file, line, code snippet)
+
+8. ตรวจสอบทั้ง positive และ negative aspects
 
 ### 3. Run Health
 
-α╕úα╕▒α╕Ö health CLI α╣Çα╕₧α╕╖α╣êα╕¡α╕öα╕╢α╕ç metrics α╕Ñα╣êα╕▓α╕¬α╕╕α╕ö
+รัน health CLI เพื่อดึง metrics ล่าสุด
 
-> Goal: α╕íα╕╡ health report α╕₧α╕úα╣ëα╕¡α╕í metrics α╕¬α╕│α╕½α╕úα╕▒α╕Ü scoring
+> Goal: มี health report พร้อม metrics สำหรับ scoring
 
-1. α╕ùα╕│ `/run-health` α╣Çα╕₧α╕╖α╣êα╕¡α╕úα╕▒α╕Ö health CLI α╣üα╕Ñα╕░α╕öα╕╢α╕ç health report
-2. α╣âα╕èα╣ë health report α╕¬α╕│α╕½α╕úα╕▒α╕Üα╕äα╕│α╕Öα╕ºα╕ô health score α╣âα╕Öα╕éα╕▒α╣ëα╕Öα╕òα╕¡α╕Öα╕ûα╕▒α╕öα╣äα╕¢
+1. ทำ `/run-health` เพื่อรัน health CLI และดึง health report
+
+2. ใช้ health report สำหรับคำนวณ health score ในขั้นตอนถัดไป
 
 ### 4. Validate Findings
 
-α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü findings α╕¡α╕óα╣êα╕▓α╕çα╕Ñα╕░α╣Çα╕¡α╕╡α╕óα╕öα╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤
+ตรวจสอบ findings อย่างละเอียดหลายมิติ
 
-> Goal: findings α╕ùα╕╡α╣êα╕£α╣êα╕▓α╕Ö validation α╣Çα╕ùα╣êα╕▓α╕Öα╕▒α╣ëα╕Ö α╕Ñα╕ö noise α╣üα╕Ñα╕░ rework
+> Goal: findings ที่ผ่าน validation เท่านั้น ลด noise และ rework
 
-1. α╕ùα╕│ `/deep-validate` α╣Çα╕₧α╕╖α╣êα╕¡ validate findings α╕½α╕Ñα╕▓α╕óα╕íα╕┤α╕òα╕┤: cross-reference, type safety, runtime, security, compliance
-2. cross-check: α╣üα╕òα╣êα╕Ñα╕░ finding α╕òα╣ëα╕¡α╕çα╕íα╕╡ evidence α╕èα╕▒α╕öα╣Çα╕êα╕Ö (file, line, code) ΓÇö α╕ûα╣ëα╕▓α╣äα╕íα╣êα╕íα╕╡ ΓåÆ discard
-3. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ºα╣êα╕▓ finding α╣Çα╕¢α╣çα╕Öα╕¢α╕▒α╕ìα╕½α╕▓α╕êα╕úα╕┤α╕ç α╣äα╕íα╣êα╣âα╕èα╣ê false positive α╕êα╕▓α╕ü tool
-4. α╕ûα╣ëα╕▓ finding α╕ïα╣ëα╕¡α╕Öα╕ùα╕▒α╕Üα╕üα╕▒α╕Ü review α╕¡α╕╖α╣êα╕Ö ΓåÆ α╕¡α╣ëα╕▓α╕çα╕¡α╕┤α╕çα╣üα╕ùα╕Ö α╣äα╕íα╣ê duplicate
-5. α╕ûα╣ëα╕▓ finding α╕Öα╕¡α╕ü scope ΓåÆ α╕úα╕░α╕Üα╕╕α╣Çα╕¢α╣çα╕Ö info α╣Çα╕ùα╣êα╕▓α╕Öα╕▒α╣ëα╕Ö α╣äα╕íα╣ê rate severity
+1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
+
+2. cross-check: แต่ละ finding ต้องมี evidence ชัดเจน (file, line, code) — ถ้าไม่มี → discard
+
+3. ตรวจสอบว่า finding เป็นปัญหาจริง ไม่ใช่ false positive จาก tool
+
+4. ถ้า finding ซ้อนทับกับ review อื่น → อ้างอิงแทน ไม่ duplicate
+
+5. ถ้า finding นอก scope → ระบุเป็น info เท่านั้น ไม่ rate severity
 
 ### 5. Rate Severity And Health Score
 
-α╣âα╕½α╣ëα╕äα╕░α╣üα╕Öα╕Ö severity α╕éα╕¡α╕çα╣üα╕òα╣êα╕Ñα╕░ finding α╣üα╕Ñα╕░α╕äα╕│α╕Öα╕ºα╕ô health score
+ให้คะแนน severity ของแต่ละ finding และคำนวณ health score
 
-> Goal: α╕£α╕╣α╣ëα╣âα╕èα╣ëα╕úα╕╣α╣ëα╕Ñα╕│α╕öα╕▒α╕Üα╕äα╕ºα╕▓α╕íα╕¬α╕│α╕äα╕▒α╕ìα╣üα╕Ñα╕░α╕¬α╕ûα╕▓α╕Öα╕░ overall health
+> Goal: ผู้ใช้รู้ลำดับความสำคัญและสถานะ overall health
 
-1. α╣âα╕½α╣ë severity: Critical, High, Medium, Low, Info
-2. α╕₧α╕┤α╕êα╕▓α╕úα╕ôα╕▓ impact (security, performance, maintainability, UX)
-3. α╕₧α╕┤α╕êα╕▓α╕úα╕ôα╕▓ effort: quick fix, moderate, major refactor
-4. α╕äα╕│α╕Öα╕ºα╕ô health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) ΓåÆ weighted average
-5. α╕êα╕▒α╕öα╕Ñα╕│α╕öα╕▒α╕Ü findings α╕òα╕▓α╕í severity
+1. ให้ severity: Critical, High, Medium, Low, Info
+
+2. พิจารณา impact (security, performance, maintainability, UX)
+
+3. พิจารณา effort: quick fix, moderate, major refactor
+
+4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+
+5. จัดลำดับ findings ตาม severity
 
 ### 6. Recommend
 
-α╣üα╕Öα╕░α╕Öα╕│ actions α╕ùα╕╡α╣ê actionable α╣üα╕Ñα╕░α╕êα╕▒α╕öα╕Ñα╕│α╕öα╕▒α╕Üα╕òα╕▓α╕í priority
+แนะนำ actions ที่ actionable และจัดลำดับตาม priority
 
-> Goal: α╕£α╕╣α╣ëα╣âα╕èα╣ëα╕úα╕╣α╣ëα╕ºα╣êα╕▓α╕òα╣ëα╕¡α╕çα╕ùα╕│α╕¡α╕░α╣äα╕úα╕üα╣êα╕¡α╕Ö α╕₧α╕úα╣ëα╕¡α╕í estimated effort
+> Goal: ผู้ใช้รู้ว่าต้องทำอะไรก่อน พร้อม estimated effort
 
-1. α╕¬α╕│α╕½α╕úα╕▒α╕Üα╣üα╕òα╣êα╕Ñα╕░ finding ΓåÆ α╣üα╕Öα╕░α╕Öα╕│ fix α╕½α╕úα╕╖α╕¡ workflow α╕ùα╕╡α╣êα╣Çα╕½α╕íα╕▓α╕░α╕¬α╕í
-2. α╕êα╕▒α╕öα╕üα╕Ñα╕╕α╣êα╕í recommendations: immediate, short-term, long-term
-3. α╕úα╕░α╕Üα╕╕ estimated effort α╕¬α╕│α╕½α╕úα╕▒α╕Üα╣üα╕òα╣êα╕Ñα╕░ action
-4. α╕ùα╕│ `/report-review`, α╕ùα╕│ `/report-format-table` α╕¬α╕│α╕½α╕úα╕▒α╕Ü summary
-5. α╕ùα╕│ `/suggest-next-action`
+1. สำหรับแต่ละ finding → แนะนำ fix หรือ skill ที่เหมาะสม
+
+2. จัดกลุ่ม recommendations: immediate, short-term, long-term
+
+3. ระบุ estimated effort สำหรับแต่ละ action
+
+4. ทำ `/report-review`, ทำ `/report-format-table` สำหรับ summary
+
+5. ทำ `/suggest-next-action`
 
 ### 7. Implement All
 
-α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Üα╕ºα╣êα╕▓ findings α╕ùα╕╡α╣êα╕₧α╕Üα╕¬α╕▓α╕íα╕▓α╕úα╕û implement α╣äα╕öα╣ëα╕êα╕úα╕┤α╕ç
+ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
 
-> Goal: α╣äα╕íα╣êα╕íα╕╡ TODO, MOCK, STUB, placeholder α╕äα╣ëα╕▓α╕çα╕¡α╕óα╕╣α╣êα╕½α╕Ñα╕▒α╕ç review
+> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. α╕ùα╕│ `/implement-all` α╣Çα╕₧α╕╖α╣êα╕¡α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü implementation completeness α╕éα╕¡α╕ç areas α╕ùα╕╡α╣ê review
-2. α╕ûα╣ëα╕▓α╕₧α╕Ü incomplete implementations ΓåÆ α╣Çα╕₧α╕┤α╣êα╕íα╣Çα╕¢α╣çα╕Ö findings α╣âα╕Ö report
+1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
+
+2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
 
 ## Rules
 
 ### 1. Objectivity
 
-- α╣âα╕½α╣ëα╕äα╕░α╣üα╕Öα╕Öα╕òα╕▓α╕í criteria α╕ùα╕╡α╣êα╕üα╕│α╕½α╕Öα╕ö α╣äα╕íα╣êα╕òα╕▓α╕íα╕äα╕ºα╕▓α╕íα╕èα╕¡α╕Üα╕¬α╣êα╕ºα╕Öα╕òα╕▒α╕º
-- α╕úα╕░α╕Üα╕╕ evidence α╕ùα╕╕α╕ü finding ΓÇö file, line, code snippet
-- α╕ûα╣ëα╕▓α╣äα╕íα╣êα╣üα╕Öα╣êα╣âα╕ê ΓåÆ α╕úα╕░α╕Üα╕╕α╕úα╕░α╕öα╕▒α╕Üα╕äα╕ºα╕▓α╕íα╣äα╕íα╣êα╣üα╕Öα╣êα╕Öα╕¡α╕Ö
+- ให้คะแนนตาม criteria ที่กำหนด ไม่ตามความชอบส่วนตัว
+
+- ระบุ evidence ทุก finding — file, line, code snippet
+
+- ถ้าไม่แน่ใจ → ระบุระดับความไม่แน่นอน
 
 ### 2. Actionable
 
-- α╕ùα╕╕α╕ü finding α╕òα╣ëα╕¡α╕çα╕íα╕╡ recommendation
-- α╕ûα╣ëα╕▓ recommendation α╕äα╕╖α╕¡ "α╕ùα╕│ workflow X" ΓåÆ α╕úα╕░α╕Üα╕╕α╕ºα╣êα╕▓α╕ùα╕│α╕óα╕▒α╕çα╣äα╕ç
-- α╕ûα╣ëα╕▓ issue α╣äα╕íα╣êα╕¬α╕▓α╕íα╕▓α╕úα╕ûα╣üα╕üα╣ëα╣äα╕öα╣ëα╣âα╕Öα╕¢α╕▒α╕êα╕êα╕╕α╕Üα╕▒α╕Ö ΓåÆ α╕úα╕░α╕Üα╕╕α╣Çα╕¢α╣çα╕Ö long-term
+- ทุก finding ต้องมี recommendation
+
+- ถ้า recommendation คือ "ทำ skill X" → ระบุว่าทำยังไง
+
+- ถ้า issue ไม่สามารถแก้ได้ในปัจจุบัน → ระบุเป็น long-term
 
 ### 3. Balance
 
-- α╕úα╕▓α╕óα╕çα╕▓α╕Öα╕ùα╕▒α╣ëα╕ç strengths α╣üα╕Ñα╕░ weaknesses
-- α╣äα╕íα╣ê focus α╣Çα╕ëα╕₧α╕▓α╕░ negative
-- α╕èα╕╖α╣êα╕Öα╕èα╕í patterns α╕ùα╕╡α╣êα╕öα╕╡
+- รายงานทั้ง strengths และ weaknesses
+
+- ไม่ focus เฉพาะ negative
+
+- ชื่นชม patterns ที่ดี
 
 ### 4. Scope
 
-- α╣äα╕íα╣ê review α╕Öα╕¡α╕ü scope α╕ùα╕╡α╣êα╕üα╕│α╕½α╕Öα╕ö
-- α╕ûα╣ëα╕▓α╕₧α╕Ü issue α╕Öα╕¡α╕ü scope ΓåÆ α╕úα╕░α╕Üα╕╕α╣Çα╕¢α╣çα╕Ö info α╣Çα╕ùα╣êα╕▓α╕Öα╕▒α╣ëα╕Ö
-- α╕ûα╣ëα╕▓ issue α╕ïα╣ëα╕¡α╕Öα╕ùα╕▒α╕Üα╕üα╕▒α╕Ü review α╕¡α╕╖α╣êα╕Ö ΓåÆ α╕¡α╣ëα╕▓α╕çα╕¡α╕┤α╕ç
+- ไม่ review นอก scope ที่กำหนด
+
+- ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
+
+- ถ้า issue ซ้อนทับกับ review อื่น → อ้างอิง
 
 ### 5. Evidence Quality
 
-- α╣üα╕òα╣êα╕Ñα╕░ finding α╕òα╣ëα╕¡α╕çα╕íα╕╡: file path, line number, code snippet α╕½α╕úα╕╖α╕¡ config evidence
-- α╕ûα╣ëα╕▓ evidence α╣äα╕íα╣êα╣Çα╕₧α╕╡α╕óα╕çα╕₧α╕¡ ΓåÆ α╕ùα╕│ `/scan-codebase` α╣Çα╕₧α╕┤α╣êα╕íα╣Çα╕òα╕┤α╕í
-- α╕½α╣ëα╕▓α╕í report α╣éα╕öα╕óα╣äα╕íα╣êα╕íα╕╡ evidence α╕½α╕úα╕╖α╕¡α╕¡α╣ëα╕▓α╕çα╕¡α╕┤α╕çα╕êα╕▓α╕üα╕äα╕ºα╕▓α╕íα╕êα╕│α╣Çα╕₧α╕╡α╕óα╕çα╕¡α╕óα╣êα╕▓α╕çα╣Çα╕öα╕╡α╕óα╕º
+- แต่ละ finding ต้องมี: file path, line number, code snippet หรือ config evidence
+
+- ถ้า evidence ไม่เพียงพอ → ทำ `/scan-codebase` เพิ่มเติม
+
+- ห้าม report โดยไม่มี evidence หรืออ้างอิงจากความจำเพียงอย่างเดียว
 
 ### 6. Health Score
 
-- α╕äα╕│α╕Öα╕ºα╕ô health score α╣Çα╕¢α╣çα╕Ö percentage (0-100)
-- 0 = α╕ùα╕╕α╕ü finding α╣Çα╕¢α╣çα╕Ö Critical, 100 = α╣äα╕íα╣êα╕íα╕╡ finding
-- α╣üα╕¬α╕öα╕ç score α╕òα╣êα╕¡ dimension α╣üα╕Ñα╕░ overall score
-- α╣âα╕èα╣ë score α╣Çα╕¢α╕úα╕╡α╕óα╕Üα╣Çα╕ùα╕╡α╕óα╕Ü before/after α╣âα╕Öα╕üα╕▓α╕úα╕¢α╕úα╕▒α╕Üα╕¢α╕úα╕╕α╕ç
+- คำนวณ health score เป็น percentage (0-100)
+
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
+
+- แสดง score ต่อ dimension และ overall score
+
+- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
 ### 7. Formatting
 
-- α╕½α╣ëα╕▓α╕íα╣âα╕èα╣ë `**` (bold markers) ΓÇö α╣âα╕èα╣ë backticks α╕¬α╕│α╕½α╕úα╕▒α╕Ü emphasis
-- α╣âα╕èα╣ë heading levels α╕¬α╕│α╕½α╕úα╕▒α╕Ü structure
-- α╕úα╕▓α╕óα╕çα╕▓α╕Öα╣Çα╕¢α╣çα╕Öα╕òα╕▓α╕úα╕▓α╕çα╕öα╣ëα╕ºα╕ó `/report-format-table`
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+
+- ใช้ heading levels สำหรับ structure
+
+- รายงานเป็นตารางด้วย `/report-format-table`
 
 ## Expected Outcome
 
-- Review report α╕₧α╕úα╣ëα╕¡α╕í severity ratings, health score, α╣üα╕Ñα╕░ recommendations
-- α╕£α╕╣α╣ëα╣âα╕èα╣ëα╕úα╕╣α╣ëα╕Ñα╕│α╕öα╕▒α╕Üα╕üα╕▓α╕úα╣üα╕üα╣ëα╣äα╕éα╣üα╕Ñα╕░ estimated effort
-- α╕ùα╕╕α╕ü finding α╕íα╕╡ evidence α╣üα╕Ñα╕░ actionable fix
-- Health score α╕òα╣êα╕¡ dimension α╣üα╕Ñα╕░ overall
+- Review report พร้อม severity ratings, health score, และ recommendations
 
-## Example Template
+- ผู้ใช้รู้ลำดับการแก้ไขและ estimated effort
 
-```markdown
----
-title: Review Code Quality
-description: Review code quality α╕äα╕úα╕¡α╕Üα╕äα╕Ñα╕╕α╕í static analysis, architecture, types
-auto_execution_mode: 3
-related:
-  - /scan-codebase
-  - /update-codebase-health-cli
-  - /report-review
-  - /report-format-table
-  - /suggest-next-action
----
+- ทุก finding มี evidence และ actionable fix
 
-## Goal
-
-Review code quality α╕₧α╕úα╣ëα╕¡α╕í severity, health score, α╣üα╕Ñα╕░ recommendations
-
-## Scope
-
-α╣âα╕èα╣ëα╕¬α╕│α╕½α╕úα╕▒α╕Ü code quality review α╣âα╕Öα╕ùα╕╕α╕ü workspace ΓÇö α╕äα╕úα╕¡α╕Üα╕äα╕Ñα╕╕α╕í naming, types, complexity, duplication
-
-## Execute
-
-### 1. Gather Context
-
-α╕úα╕ºα╕Üα╕úα╕ºα╕í context α╕üα╣êα╕¡α╕Ö review
-
-> Goal: α╣Çα╕éα╣ëα╕▓α╣âα╕ê scope α╣üα╕Ñα╕░ target
-
-1. α╕úα╕░α╕Üα╕╕ target workspace
-2. α╕¡α╣êα╕▓α╕Ö configs, α╕ùα╕│ `/scan-codebase`
-
-### 2. Analyze
-
-α╕ºα╕┤α╣Çα╕äα╕úα╕▓α╕░α╕½α╣îα╕òα╕▓α╕í criteria
-
-> Goal: α╕₧α╕Üα╕ùα╕╕α╕ü issue α╕₧α╕úα╣ëα╕¡α╕í evidence
-
-1. α╕ùα╕│ `/update-codebase-health-cli` ΓÇö `/update-codebase-health-cli` α╣Çα╕úα╕╡α╕óα╕ü `/update-rules` α╕áα╕▓α╕óα╣âα╕Öα╣Çα╕₧α╕╖α╣êα╕¡α╕¡α╕▒α╕¢α╣Çα╕öα╕ò ast-grep rules
-2. α╕ûα╣ëα╕▓ `/update-codebase-health-cli` α╕éα╣ëα╕▓α╕í `/update-rules` ΓåÆ α╕ùα╕│ `/update-rules` α╣üα╕óα╕ü
-3. α╕úα╕▒α╕Ö `bunx ast-grep scan --inspect summary` α╣Çα╕₧α╕╖α╣êα╕¡ verify rules
-4. α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü: naming, types, complexity, duplication
-5. α╕êα╕▒α╕Ü findings α╕₧α╕úα╣ëα╕¡α╕í evidence (file, line, code)
-
-### 3. Validate Findings
-
-α╕òα╕úα╕ºα╕êα╕¬α╕¡α╕Ü findings α╕Ñα╕ö false positives
-
-> Goal: findings α╕ùα╕╡α╣êα╕£α╣êα╕▓α╕Ö validation α╣Çα╕ùα╣êα╕▓α╕Öα╕▒α╣ëα╕Ö
-
-1. cross-check α╣üα╕òα╣êα╕Ñα╕░ finding α╕íα╕╡ evidence α╕èα╕▒α╕öα╣Çα╕êα╕Ö
-2. α╕ûα╣ëα╕▓α╣äα╕íα╣êα╕íα╕╡ evidence ΓåÆ discard
-
-### 4. Rate Severity And Health Score
-
-α╣âα╕½α╣ëα╕äα╕░α╣üα╕Öα╕Öα╣üα╕Ñα╕░α╕äα╕│α╕Öα╕ºα╕ô health score
-
-> Goal: α╕úα╕╣α╣ëα╕Ñα╕│α╕öα╕▒α╕Üα╕äα╕ºα╕▓α╕íα╕¬α╕│α╕äα╕▒α╕ìα╣üα╕Ñα╕░ overall health
-
-1. α╣âα╕½α╣ë severity: Critical, High, Medium, Low, Info
-2. α╕äα╕│α╕Öα╕ºα╕ô health score α╕òα╣êα╕¡ dimension
-
-### 5. Recommend
-
-α╣üα╕Öα╕░α╕Öα╕│ actions
-
-> Goal: α╕úα╕╣α╣ëα╕ºα╣êα╕▓α╕ùα╕│α╕¡α╕░α╣äα╕úα╕üα╣êα╕¡α╕Ö
-
-1. α╕êα╕▒α╕öα╕üα╕Ñα╕╕α╣êα╕í: immediate, short-term, long-term
-2. α╕ùα╕│ `/report-review`, α╕ùα╕│ `/report-format-table`
-3. α╕ùα╕│ `/suggest-next-action`
-
-## Rules
-
-### 1. Objectivity
-- α╣âα╕½α╣ëα╕äα╕░α╣üα╕Öα╕Öα╕òα╕▓α╕í criteria α╣äα╕íα╣êα╕òα╕▓α╕íα╕äα╕ºα╕▓α╕íα╕èα╕¡α╕Ü
-- α╕úα╕░α╕Üα╕╕ evidence α╕ùα╕╕α╕ü finding
-
-### 2. Actionable
-- α╕ùα╕╕α╕ü finding α╕òα╣ëα╕¡α╕çα╕íα╕╡ recommendation
-
-### 3. Evidence Quality
-- α╣üα╕òα╣êα╕Ñα╕░ finding α╕òα╣ëα╕¡α╕çα╕íα╕╡ file path, line number, code snippet
-
-## Expected Outcome
-
-- Review report α╕₧α╕úα╣ëα╕¡α╕í severity, health score, α╣üα╕Ñα╕░ recommendations
-- α╕ùα╕╕α╕ü finding α╕íα╕╡ evidence α╣üα╕Ñα╕░ actionable fix
-```
+- Health score ต่อ dimension และ overall
