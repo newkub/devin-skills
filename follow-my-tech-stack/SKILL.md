@@ -12,6 +12,9 @@ related:
   - follow-monorepo
   - follow-uxui-animation
   - follow-tanstack-ai
+  - follow-hk
+  - follow-pitchfork
+  - follow-usage
 ---
 
 ## Goal
@@ -111,7 +114,9 @@ related:
 | Mutation Testing | - | `cargo-mutants` |
 | Code Coverage | `v8` (via Vitest) | `tarpaulin` |
 | Build System | `Turborepo`, `Moonrepo` | `Cargo` workspaces |
-| Git Hooks | `Lefthook` | `Lefthook` |
+| Git Hooks | `hk` | `hk` |
+| Process Manager | `pitchfork` | `pitchfork` |
+| CLI Spec | `usage` | `usage` |
 | CI/CD | `GitHub Actions` | `GitHub Actions` |
 | Documentation | `Docus`, `VitePress` | - |
 | Release | `Auto` | - |
@@ -136,6 +141,8 @@ related:
 - ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack-ai`)
 - ถ้ามี desktop: เพิ่ม `Tauri`
 - ถ้ามี mobile: เพิ่ม `Capacitor`
+- ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-pitchfork`)
+- ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-usage`)
 - ถ้ามี animation/interactive visuals: เพิ่ม `/follow-uxui-animation`
 
 ## Expected Outcome

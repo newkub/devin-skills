@@ -19,6 +19,8 @@ related:
   - follow-uxui-accessibility
   - follow-uxui-chart
   - follow-uxui-3d
+  - follow-uxui-dashboard
+  - follow-uxui-landing-pages
   - follow-uxui
   - check-accessibility
   - follow-best-practice
@@ -50,6 +52,7 @@ UX/UI review สำหรับ: user flows, interaction design, visual hierarch
 2. ระบุ UI framework, CSS framework, design tokens, breakpoint config และ component library ที่ใช้
 3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
 4. ทำ `/follow-uxui` เพื่ออ้างอิง UX/UI best practices
+5. ถ้างานเกี่ยวข้อง dashboard → ทำ `/follow-uxui-dashboard`; ถ้าเป็น landing page → ทำ `/follow-uxui-landing-pages`
 
 ### 2. Deep Analyze Core
 
@@ -90,6 +93,7 @@ Review visual hierarchy, typography, color theory, spacing system และ layo
 5. ตรวจสอบ layout principles: grid system, alignment consistency, balance (symmetrical, asymmetrical), proximity (grouping related items), consistency across pages
 6. Critical: broken visual hierarchy ที่ผู้ใช้ไม่รู้ว่าอะไรสำคัญ, insufficient contrast ที่อ่านไม่ได้, broken grid ที่ทำให้ layout พัง, brand inconsistency ที่ทำให้ไม่น่าเชื่อถือ
 7. High: inconsistent typography scale, insufficient contrast (below WCAG AA), inconsistent spacing system, missing dark mode support, font loading ที่ทำให้ text กระตุก, missing responsive typography
+8. ถ้างานเกี่ยวข้อง dashboard หรือ landing page → ทำ `/follow-uxui-dashboard` หรือ `/follow-uxui-landing-pages` ตามกรณี
 
 ### 5. UX Writing And Microcopy Review
 

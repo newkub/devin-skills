@@ -1,131 +1,113 @@
 ---
 name: use-in-another-skills
-description: พิจารณาการใช้ skills ใน skills อื่นๆ เพื่อหลีกเลี่ยงการซ้ำซ้อนและรักษาความสอดคล้อง
+description: ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill เพื่อลดซ้ำซ้อนและส่งต่องาน
+allowed-tools:
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - follow-write-devin-skills
+  - follow-devin-skills-md
+  - check-reference
+  - update-reference
+  - validate
 ---
 
 ## Goal
 
-พิจารณาและตัดสินใจว่าควรใช้ skills ใดใน skills อื่นๆ เพื่อหลีกเลี่ยงการซ้ำซ้อน รักษาความสอดคล้อง และเพิ่มประสิทธิภาพการทำงาน
+ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill โดยปลอดภัย ไม่ซ้ำซ้อน และ references ถูกต้อง
 
 ## Scope
 
-ใช้เมื่อเขียนหรือปรับปรุง skill ใหม่ หรือเมื่อพบว่า skill ปัจจุบันมีเนื้อหาที่อาจซ้ำซ้อนกับ skills อื่น
+ใช้เมื่อ skill ต้องการ delegate งานไปยัง skill อื่น หรือต้องการให้ user/AI เรียก skill อื่นต่อใน workflow
 
 ## Execute
 
-### 1. Analyze Current Skill
+### 1. Identify Reusable Skill
 
-วิเคราะห์ skill ปัจจุบันเพื่อระบุส่วนที่อาจซ้ำซ้อน
+ระบุ skill ที่จะใช้งาน
 
-> Goal: ระบุส่วนที่อาจซ้ำซ้อนกับ skills อื่น
+> Goal: ไม่ reinvent เนื้อหาที่มีอยู่
 
-1. อ่าน skill ปัจจุบันทั้งหมด
-2. ระบุ Execute steps ที่มีลักษณะทั่วไปหรือ reusable
-3. ระบุ Rules ที่มีลักษณะทั่วไปหรือ reusable
-4. ระบุ patterns ที่เกิดซ้ำใน skills อื่น
-5. ทำ `/read-related-skills` เพื่อดู dependencies ของ skill ปัจจุบัน
+1. ทำ `/list-skills` เพื่อหา skill ที่เกี่ยวข้อง
+2. อ่าน `SKILL.md` ของ skill เป้าหมาย
+3. ตรวจสอบ Goal, Scope, Execute ว่าเหมาะกับงานของเรา
+4. ถ้าไม่มี skill ที่เหมาะ → ทำ `/ask-me` ก่อนสร้างใหม่
 
-### 2. Search For Existing Skills
+### 2. Add To Related
 
-ค้นหา skills ที่มีอยู่แล้วซึ่งอาจทำหน้าที่เดียวกัน
+เพิ่ม reference ใน frontmatter
 
-> Goal: ค้นหา skills ที่มีอยู่แล้วเพื่อใช้แทนการเขียนใหม่
+> Goal: skill ของเราลิงก์ไป skill เป้าหมายอย่างถูกต้อง
 
-1. ค้นหาใน `skills/` สำหรับ skills ที่มี:
-   - Goal ที่คล้ายกัน
-   - Execute steps ที่คล้ายกัน
-   - Rules ที่คล้ายกัน
-2. อ่าน skills ที่พบเพื่อเปรียบเทียบ
-3. ระบุ skills ที่สามารถใช้แทนได้โดยไม่ต้องแก้ไข
-4. ระบุ skills ที่ต้องปรับเล็กน้อยก่อนใช้
-5. ทำ `/check-reference` เพื่อยืนยันว่า skills ที่พบมีอยู่จริง
+1. เปิด `SKILL.md` ของเรา
+2. เพิ่มชื่อ skill เป้าหมายใน `related` ถ้ายังไม่มี
+3. เรียงลำดับ `related` ตามลำดับการเรียก
+4. ไม่่เพิ่ม skill ที่ไม่ได้ใช้จริง
 
-### 3. Evaluate Reusability
+### 3. Reference In Prompt Body
 
-ประเมินว่าส่วนไหนควร extract เป็น skill แยกหรือใช้ skill ที่มีอยู่
+อ้างอิง skill ในเนื้อหา
 
-> Goal: ตัดสินใจว่าควร reuse, extract, หรือ keep inline
+> Goal: บอกว่าต้องเรียก skill เป้าหมายเมื่อใด
 
-1. ถ้าพบ skill ที่ตรงกันทั้งหมด → ใช้ skill นั้นผ่าน `related`
-2. ถ้าพบ skill ที่คล้ายกันแต่ไม่ตรง 100% → ปรับ skill นั้นให้ generic แล้วใช้
-3. ถ้าไม่พบ skill ที่เหมาะสม → พิจารณา extract เป็น skill ใหม่ถ้า:
-   - ใช้ซ้ำใน > 2 skills อื่น
-   - มีความซับซ้อน > 5 steps
-   - เป็นหลักการที่ใช้ได้กับหลาย contexts
-4. ถ้าใช้เฉพาะใน skill นี้ → keep inline
+1. ใช้ backticks สำหรับ `/skill-name` เช่น ทำตาม `/follow-containerize-app`
+2. ระบุ condition ก่อนเรียก เช่น "ถ้าเป็น production → ทำ `/follow-release-docker`"
+3. ไม่่คัดลอกเนื้อหาของ skill เป้าหมายมาทั้้งหมด
+4. ถ้า skill เป้าหมายหลายตัว ให้ระบุลำดับก่อนหลัง
 
-### 4. Update Skill References
+### 4. Verify Circular References
 
-อัปเดท skill ปัจจุบันให้ใช้ skills อื่นผ่าน references
+ตรวจสอบ references ไม่วนกลับ
 
-> Goal: ลดการซ้ำซ้อนโดยใช้ references แทน duplicate content
+> Goal: ไม่เกิด infinite loop หรือ circular dependency
 
-1. เพิ่ม skills ที่จะใช้ใน `related` ใน frontmatter
-2. แก้ Execute steps ให้เรียก `/skill-name` แทนเขียน detail ซ้ำ
-3. ลบ Rules ที่ซ้ำซ้อนกับ skills ที่เรียก
-4. รักษา context เฉพาะของ skill นี้ไว้
-5. ทำ `/update-reference` ถ้ามีการเปลี่ยนชื่อหรือย้ายไฟล์
+1. ทำ `/check-circular-dependencies` หรือ `/check-reference`
+2. ตรวจว่า skill เป้าหมายไม่ได้อ้างอิงกลับมาที่เรา
+3. ถ้ามี loop ให้เลือก skill ตัวกลางหรือรวมเนื้อหา
 
-### 5. Validate Consistency
+### 5. Update And Validate
 
-ตรวจสอบว่าการใช้ skills อื่นสอดคล้องและไม่ทำให้ skill เสียความสมบูรณ์
+อัปเดท references และ validate
 
-> Goal: ยืนยันว่า skill ยังสมบูรณ์และ deterministic
+> Goal: ทุก reference ใช้งานได้จริง
 
-1. ตรวจสอบว่าทุก step ยังทำได้จริง
-2. ตรวจสอบว่า flow ยังลื่นไหล
-3. ตรวจสอบว่าไม่มี circular dependencies
-4. ตรวจสอบว่า `related` มีเฉพาะ skills ที่เรียกโดยตรง
-5. จำลองการรัน skill เพื่อยืนยันว่าทำตามได้จริง
+1. ทำ `/update-reference` เพื่อ sync references
+2. ทำ `/validate` เพื่อตรวจความถูกต้อง
+3. ทำ `/check-reference` เพื่อยื่นยันว่า skill เป้าหมายมีอยู่จริง
 
 ## Rules
 
-### 1. Reuse Over Duplicate
+### 1. Delegate, Don’t Duplicate
 
-- ใช้ skills ที่มีอยู่เสมอถ้าทำหน้าที่เดียวกัน
-- ห้าม duplicate Execute steps หรือ Rules จาก skills อื่น
-- ถ้า skill มีอยู่แต่ไม่ตรง 100% → ปรับให้ generic แทนสร้างใหม่
-- `related` ต้องมีเฉพาะ skills ที่เรียกโดยตรงใน Execute หรือ Rules
+- ถ้า skill อื่นครอบคลุมงานอยู่แล้ว ให้อ้างอิงแทนการคัดลอก
+- เก็บเฉพาะ context หรือ steps ที่เฉพาะของ skill เรา
 
-### 2. Extraction Criteria
+### 2. Explicit Conditions
 
-- Extract เป็น skill ใหม่เฉพาะเมื่อ:
-  - ใช้ซ้ำใน > 2 skills อื่น
-  - มีความซับซ้อน > 5 steps
-  - เป็นหลักการที่ใช้ได้กับหลาย contexts
-- ถ้าใช้เฉพาะใน skill เดียว → keep inline
-- ถ้ามีความซับซ้อน < 5 steps → keep inline
+- ระบุว่าเมื่อไหร่ต้องเรียก skill เป้าหมาย
+- อย่าสั่งให้เรียกทุกกรณี ถ้าไม่จำเป็น
 
-### 3. Reference Integrity
+### 3. Keep Related Accurate
 
-- ทุก skill ใน `related` ต้องถูกเรียกโดยตรงใน Execute หรือ Rules
-- ห้ามมี unused related ใน frontmatter
-- ห้ามมี missing related — skills ที่เรียกต้องอยู่ใน `related`
-- ทำ `/check-reference` ก่อนเพิ่ม reference
+- `related` ต้องมีเฉพาะ skills ที่เรียกโดยตรง
+- ถ้าเลิกใช้ skill ให้เอาออกจาก `related`
 
-### 4. Context Preservation
+### 4. No Circular Dependencies
 
-- เมื่อใช้ skill อื่น ต้องรักษา context เฉพาะของ skill นี้
-- ลบเฉพาะส่วนที่ซ้ำซ้อน ไม่ลบ context เฉพาะ
-- ถ้า skill อื่นไม่ครอบคลุม context เฉพาะ → เพิ่ม detail เฉพาะใน skill นี้
-
-### 5. Dependency Management
-
-- หลีกเลี่ยง circular dependencies ระหว่าง skills
-- อ่าน skills ตามลำดับ topological sort
-- ถ้าพบ circular dependency → restructure skills
-
-### 6. Naming Conventions
-
-- ใช้ชื่อ skill ที่สะท้อนหน้าที่อย่างชัดเจน
-- ถ้า extract skill ใหม่ → ใช้ชื่อที่ generic แต่ยังสื่อความหมาย
-- ตรวจสอบว่าชื่อไม่ทับซ้อนกับ skills ที่มีอยู่
+- ไม่ให้ skill A อ้างอิง skill B แล้ว B อ้างอิง A
+- ถ้าจำเป็นทั้งสองทาง ให้รวมเป็น skill เดียวหรือใช้ skill กลาง
 
 ## Expected Outcome
 
-- Skill ที่ไม่มีการซ้ำซ้อนกับ skills อื่น
-- References ถูกต้องทั้งหมดใน `related` frontmatter
-- Execute steps และ Rules ที่ concise และไม่ duplicate
-- Context เฉพาะของ skill ยังครบถ้วน
-- ไม่มี circular dependencies ระหว่าง skills
-- Skill ที่ deterministic และทำตามได้จริง
+- Skill ของเราอ้างอิง skill อื่นได้ถูกต้อง
+- `related` ครบถ้วนและไม่มี missing/unused
+- ไม่มี circular references
+- ผ่าน `/validate` และ `/check-reference`
