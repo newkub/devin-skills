@@ -1,6 +1,15 @@
 ---
 name: write-test
 description: เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
+triggers: [user, model]
+allowed-tools: [read, edit, write, grep, find_file_by_name, exec, skill, ask_user_question]
+related:
+  - write-spec
+  - review-code-quality
+  - follow-content-quality
+  - review-delivery
+  - run-test-coverage
+  - improve-test-coverage
 ---
 
 ## Goal
@@ -9,7 +18,7 @@ description: เขียน test ที่มีคุณภาพสูง ค
 
 ## Scope
 
-เขียน test files ทั้งใน global workflows และ workspace โดยทุก workspace ต้องเขียนให้ `/follow-content-quality`
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/follow-content-quality` เพื่อคุณภาพเนื้อหา
 
 ## Execute
 
@@ -19,7 +28,7 @@ description: เขียน test ที่มีคุณภาพสูง ค
 
 > Goal: ทราบ framework, coverage tools, และ strategy ที่เหมาะสม
 
-1. ตรวจสอบ `package.json` หรือ `Cargo.toml` สำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
+1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
 2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
 3. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
 4. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
@@ -98,7 +107,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 > Goal: Tests รันผ่านทั้งหมด ไม่มี false positive
 
-1. รัน `bun run test` หรือคำสั่งที่เทียบเท่าสำหรับภาษาอื่น
+1. รัน test script ตาม ecosystem (`bun|npm run test`, `cargo test`, `pytest`, `go test ./...`)
 2. แก้ไข failing tests จนผ่านทั้งหมด — retry max 3 → stop/report
 3. ตรวจสอบว่าไม่มี test ที่ pass เพราะเหตุผลผิด (false positive)
 4. ตรวจสอบว่า error path tests จริงๆ ทดสอบ error ไม่ใช่แค่ทดสอบว่าไม่ throw
@@ -119,7 +128,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 > Goal: SPEC.md และ references ครบถ้วน
 
-1. อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
+1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
 2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
@@ -233,4 +242,4 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Coverage 100% ผ่าน `/review-delivery` และ `/run-test-coverage`
 - Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
 - Test data ใช้ factories/fixtures/builders ตาม strategy
-- SPEC.md ถูกอัพเดทด้วย test cases ที่เขียนแล้ว
+- `spec/SPEC.md` หรือเอกสาร test plan ถูกอัพเดทด้วย test cases ที่เขียนแล้ว
