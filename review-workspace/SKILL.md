@@ -24,6 +24,7 @@ related:
   - validate
   - report-format-table
   - suggest-next-action
+  - refactor-packages
 ---
 
 ## Goal
@@ -71,6 +72,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 3. ตรวจสอบว่ามี `README.md`, `LICENSE`, `.gitignore` หรือไม่
 4. ตรวจสอบ file size เกิน 250 บรรทัดหรือไม่
 5. ระบุ files ที่ไม่มีการใช้งานหรือ orphan files
+6. ตรวจสอบว่า workspace มีขนาดเหมาะสมและ single responsibility — ถ้าใหญ่เกินไป, เล็กเกินไป, ทำหลายสิ่ง, หรือไม่มีเหตุผลชัดเจนที่แยกเป็น workspace ให้พิจารณา `/refactor-packages`
 
 ### 4. Review Dependencies
 
@@ -150,10 +152,18 @@ validate findings และสรุปผล
 - ไม่ใช้ bold markers `**`
 - รายงานเป็นตารางด้วย `/report-format-table`
 
+### 6. Workspace Size And Responsibility
+
+- แต่ละ workspace ต้องมี single responsibility ชัดเจน — รวม code ที่เปลี่ยนด้วยกัน, deploy ด้วยกัน, test ด้วยกัน
+- workspace ไม่ควรใหญ่เกินไป — ถ้าจัดการไม่ไหว, มีหลาย reasons to change, หรือ coupling สูง ให้พิจารณา `/refactor-packages`
+- workspace ไม่ควรเล็กเกินไป — ถ้าไม่มี value ชัดเจนหรือทับซ้อนกับ workspace อื่น ให้พิจารณา merge หรือลบ
+- ใช้ `/refactor-packages` เมื่อต้อง split, merge, หรือ relocate packages/modules
+
 ## Expected Outcome
 
 - Review report ของ single workspace พร้อม health score
 - Findings ที่มี severity, evidence, และ recommendations
-- รายการ config drift, dependency issues, และ script gaps
+- รายการ config drift, dependency issues, script gaps, และ SRP/size issues
+- คำแนะนำ `/refactor-packages` ถ้า workspace ใหญ่เกินไป, เล็กเกินไป, หรือทำหลายสิ่ง
 - Health score ต่อ dimension และ overall
 - คำแนะนำ action ถัดไปผ่าน `/suggest-next-action`
