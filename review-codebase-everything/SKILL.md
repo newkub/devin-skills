@@ -1,11 +1,56 @@
 ﻿---
 name: review-codebase-everything
-description: Deep Review codebase ครบทุกมิติ ผ่าน group orchestrators และ category workflows พร้อม validate issues
+description: Review codebase ครบทุกมิติ ผ่าน orchestrators และ validate issues
+argument-hint: optional workspace path or name
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - review-frontend
+  - review-backend
+  - review-code-quality
+  - review-security
+  - review-auth
+  - review-infrastructure
+  - review-business
+  - review-delivery
+  - review-platform
+  - review-performance
+  - review-config
+  - review-test
+  - review-formal-verification
+  - review-workspace
+  - run-check
+  - resolve-errors
+  - read-related-skills
+  - follow-agents-md
+  - update-codebase-health-cli
+  - run-dev
+  - deep-analyze
+  - run-health
+  - deep-validate
+  - validate
+  - implement-all
+  - update-reference
+  - git-commit
+  - report-codebase-health
+  - report-format-terminal
+  - report-format-table
+  - report
+  - suggest-next-action
 ---
 
 ## Goal
 
-Deep Review codebase ครบทุกมิติอย่างลึกซึ้ง ตั้งแต่ foundation ไปจนถึง delivery โดยจัดกลุ่มตามลำดับความสำคัญ และ validate issues ที่พบ
+Review codebase ครบทุกมิติอย่างลึกซึ้ง ตั้งแต่ foundation ไปจนถึง delivery โดยจัดกลุ่มตามลำดับความสำคัญ และ validate issues ที่พบ
 
 ## Scope
 
@@ -19,11 +64,12 @@ Deep Review codebase ครบทุกมิติอย่างลึกซ�
 
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
-1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน — ถ้าไม่ผ่าน stop และ report
+1. ทำ `/run-check` เพือรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน — ถ้าไม่ผ่าน stop และ report
 2. ทำ `/read-related-skills`, `/follow-agents-md`, ทำ `/update-codebase-health-cli` — ระบุ review dimensions, อ่าน workspace guidelines, และอัปเดต analyzers
-3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
-4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-5. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพือ verify dev server ก่อน review
+4. ทำ `/deep-analyze` เพือวิเคราะห์หลายมิติอย่างลึกซึ้ง
+5. ทำ `/run-health` เพือรัน health CLI และดึง metrics ล่าสุด
+6. ทำ `/review-workspace` เพือรวบรวม workspace-level context และ findings ก่อน group/category reviews — ถ้าเป็น monorepo ให้ทำตามลำดับ workspaces
 
 ### 2. Run Group And Category Reviews
 
@@ -41,7 +87,7 @@ Deep Review codebase ครบทุกมิติอย่างลึกซ�
 
 > Goal: Issues ถูก validate ครบถ้วนตาม severity
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
+1. ทำ `/deep-validate` เพือ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง — จัดลำดับตาม severity: Critical → High → Medium → Low
 3. ทำ `/implement-all` สำหรับ issues ที่ต้องการ refactor หรือ realize implementation
 4. ทำ `/update-reference` หลังจากแก้ไขไฟล์ — ทำ `/git-commit` เมื่อ validate issues กลุ่มเสร็จ — ถ้า validate fail ให้ทำ `/resolve-errors` ก่อนดำเนินต่อ
@@ -52,10 +98,10 @@ Deep Review codebase ครบทุกมิติอย่างลึกซ�
 
 > Goal: รายงาน before-after health score และสรุปผลการ review
 
-1. ทำ `/report-codebase-health` เพื่อวัด health score หลัง validate — เปรียบเทียบ before-after score
+1. ทำ `/report-codebase-health` เพือวัด health score หลัง validate — เปรียบเทียบ before-after score
 2. ทำ `/report-format-terminal`, `/report-format-table` — รายงานความคืบหน้าและสรุปผลลัพธ์ before-after
-3. ทำ `/report` เพื่อสรุปผลการ review และ validate — ถ้า report fail ให้ retry (max 3 → stop/report)
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+3. ทำ `/report` เพือสรุปผลการ review และ validate — ถ้า report fail ให้ retry (max 3 → stop/report)
+4. ทำ `/suggest-next-action` เพือแนะนำ action ถัดไป
 
 ## Rules
 
