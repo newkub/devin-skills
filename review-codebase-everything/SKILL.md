@@ -28,6 +28,7 @@ related:
   - review-config
   - review-test
   - review-formal-verification
+  - review-simplicity
   - review-workspace
   - run-check
   - resolve-errors
@@ -55,7 +56,7 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 ## Scope
 
-ใช้สำหรับ comprehensive Review ครอบคลุมทุก dimension ผ่าน 2 group orchestrators (`review-frontend`, `review-backend`) และ 12 category orchestrator workflows พร้อม validate issues ที่พบ
+ใช้สำหรับ comprehensive Review ครอบคลุมทุก dimension ผ่าน 2 group orchestrators (`review-frontend`, `review-backend`) และ 13 category orchestrator workflows พร้อม validate issues ที่พบ
 
 ## Execute
 
@@ -79,7 +80,7 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 > Goal: ครอบคลุมทุก dimension ผ่าน 2 group orchestrators และ 12 category orchestrators
 
 1. ทำ `/review-frontend`, `/review-backend`, `/review-code-quality`, `/review-security`, `/review-auth` — `review-frontend` เรียก 15 frontend sub-reviews — `review-backend` เรียก 13 backend sub-reviews — `review-code-quality` เรียก `/review-types`, `/review-naming`, `/review-refactor`, `/review-bug-prone`, `/review-techstack`, `/review-realize-implementation`, `/review-delivery`, `/review-config`, `/review-lib`, `/review-concurrency`, `/review-error-handling`
-2. ทำ `/review-infrastructure`, `/review-business`, `/review-delivery`, `/review-platform`, `/review-performance`, `/review-memory`, `/review-config`, `/review-test`, `/review-formal-verification`
+2. ทำ `/review-infrastructure`, `/review-business`, `/review-delivery`, `/review-platform`, `/review-performance`, `/review-memory`, `/review-config`, `/review-test`, `/review-formal-verification`, `/review-simplicity`
 3. ถ้า group, category หรือ sub-review ไม่เกี่ยวข้องกับ project → ข้าม workflow นั้น
 
 ### 3. Validate Findings
@@ -140,7 +141,7 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 ## Expected Outcome
 
-- Findings และ recommendations จาก 2 group orchestrators และ 12 category orchestrator workflows
+- Findings และ recommendations จาก 2 group orchestrators และ 13 category orchestrator workflows
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
 - Before-after health score ผ่าน `/report-codebase-health`
 - รายงานในแชทเป็นตารางตาม `/report` และ `/report-format-table`
