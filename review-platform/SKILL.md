@@ -1,6 +1,17 @@
 ---
 name: review-platform
 description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, state management, routing, PWA
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
+  - implement-all
 ---
 
 ## Goal
@@ -35,8 +46,8 @@ Review mobile app ครอบคลุม Capacitor plugins, platform-specific 
 1. ตรวจสอบ Capacitor plugin usage, platform detection, และ native bridge patterns
 2. ตรวจสอบ offline support, push notification handling, และ biometric auth
 3. ตรวจสอบ mobile UX: touch targets, safe area, และ responsive layout
-4. Critical: broken native bridge, missing required plugin, app crash on platform
-5. High: missing offline support, broken push notification, missing platform detection
+4. Critical: native bridge พัง, plugin ที่จำเป็นหายไป, app crash บน platform
+5. High: ไม่มี offline support, push notification พัง, ไม่มี platform detection
 
 ### 3. Desktop Review
 
@@ -51,8 +62,8 @@ Review desktop app ครอบคลุม Tauri/Electron patterns, native APIs
 5. ตรวจสอบ platform-specific code, conditional compilation, และ platform feature detection
 6. ตรวจสอบ offline support, local data persistence, และ sync conflict resolution
 7. ตรวจสอบ desktop UX: system tray, notifications, keyboard shortcuts, clipboard integration
-8. Critical: IPC without validation, unrestricted file system access, missing sandbox, unverified auto-update
-9. High: missing platform-specific handling, broken native integration, missing auto-update rollback, no offline fallback
+8. Critical: IPC ไม่มี validation, file system access ไม่จำกัด, ไม่มี sandbox, auto-update ไม่ verify
+9. High: ไม่มี platform-specific handling, native integration พัง, ไม่มี auto-update rollback, ไม่มี offline fallback
 
 ### 4. CLI Review
 
@@ -65,8 +76,8 @@ Review CLI และ TUI tools ครอบคลุม commands, options, help 
 3. ตรวจสอบ interactive mode, autocomplete, และ configuration file support
 4. ตรวจสอบ TUI layout, component composition, resize handling, และ focus management
 5. ตรวจสอบ TUI color support, terminal compatibility, และ rendering performance
-6. Critical: broken command, missing required command, incorrect exit code, broken TUI layout, unhandled input, terminal crash
-7. High: missing help text, confusing error message, missing required option, rendering glitch, missing resize handling, broken focus
+6. Critical: command พัง, command ที่จำเป็นหายไป, exit code ผิด, TUI layout พัง, input ไม่ถูกจัดการ, terminal crash
+7. High: ไม่มี help text, error message สับสน, ไม่มี required option, rendering glitch, ไม่รองรับ resize, focus พัง
 
 ### 5. SSR Review
 
@@ -78,8 +89,8 @@ Review server-side rendering ครอบคลุม SSR implementation, hydrat
 2. ตรวจสอบ hydration correctness, hydration mismatch, และ client takeover
 3. ตรวจสอบ SSR-compatible code, browser API guards, และ server-only imports
 4. ตรวจสอบ streaming SSR, suspense boundaries, และ SSR error handling
-5. Critical: hydration mismatch, broken SSR, server-only code in client bundle
-6. High: missing hydration, no SSR error handling, browser API without guard
+5. Critical: hydration mismatch, SSR พัง, server-only code ใน client bundle
+6. High: ไม่มี hydration, ไม่มี SSR error handling, browser API ไม่มี guard
 
 ### 6. State Management Review
 
@@ -90,8 +101,8 @@ Review state management ครอบคลุม store organization, reactivity,
 1. ตรวจสอบ store organization, state shape, และ store boundaries
 2. ตรวจสอบ reactivity patterns, unnecessary re-renders, และ derived state
 3. ตรวจสอบ side effect management, state synchronization, และ persistence
-4. Critical: state corruption, race condition, data loss from state mutation
-5. High: unnecessary re-render on hot path, missing store boundary, broken reactivity
+4. Critical: state corruption, race condition, data loss จาก state mutation
+5. High: unnecessary re-render บน hot path, ไม่มี store boundary, reactivity พัง
 
 ### 7. Routing Review
 
@@ -103,8 +114,8 @@ Review routing ครอบคลุม route definitions, navigation guards, la
 2. ตรวจสอบ navigation guards, auth checks, และ permission enforcement
 3. ตรวจสอบ lazy loading, code splitting, และ route-level loading states
 4. ตรวจสอบ route params validation, type safety, และ route middleware patterns
-5. Critical: missing auth guard, broken route, no params validation
-6. High: missing lazy load, inconsistent guard, no loading state
+5. Critical: ไม่มี auth guard, route พัง, ไม่มี params validation
+6. High: ไม่มี lazy load, guard ไม่สอดคล้อง, ไม่มี loading state
 
 ### 8. PWA Review
 
@@ -120,8 +131,8 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 6. ตรวจสอบ push notifications: permission flow, notification display, action handling
 7. ตรวจสอบ PWA-to-native bridge: Capacitor plugin usage, platform-specific code, native feature access
 8. ตรวจสอบ PWA performance: load time on mobile, cache hit ratio, service worker overhead
-9. Critical: no service worker on production, broken offline experience, missing web manifest
-10. High: stale cache after update, missing offline fallback, no push notification permission handling
+9. Critical: ไม่มี service worker บน production, offline experience พัง, ไม่มี web manifest
+10. High: cache เก่าหลัง update, ไม่มี offline fallback, ไม่จัดการ push notification permission
 
 ### 9. Validate Findings
 
@@ -166,8 +177,8 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 
 ### 2. Severity Classification
 
-- Critical: broken native bridge, IPC without validation, broken command, hydration mismatch, state corruption, missing auth guard, no service worker on production
-- High: missing offline support, missing platform-specific handling, missing help text, missing hydration, unnecessary re-render, missing lazy load, stale cache after update
+- Critical: ระบบพัง, data loss, security hole — ดูรายละเอียดในแต่ละ section
+- High: ฟังก์ชันหลักพัง, ขาด feature สำคัญ — ดูรายละเอียดในแต่ละ section
 - Medium: inconsistent UX pattern, missing safe area, inconsistent flag naming, suboptimal streaming, inconsistent state pattern, suboptimal code splitting, incomplete manifest fields
 - Low: cosmetic improvement, naming convention, minor layout issue, minor routing improvement, minor manifest improvement
 

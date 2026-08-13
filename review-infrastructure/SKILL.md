@@ -26,33 +26,21 @@ infrastructure review สำหรับ: deployment, CI/CD, config files, monit
 5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
 6. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
 
-### 2. Deployment Review
+### 2. Deployment And CI/CD Review
 
-Review deployment และ configuration ครอบคลุม CI/CD pipeline, rollback, zero-downtime, env vars, post-deploy validation
+Review deployment, CI/CD pipeline, rollback, zero-downtime, env vars, post-deploy validation
 
-> Goal: ครอบคลุมทุก deployment dimension
+> Goal: ครอบคลุมทุก deployment และ CI/CD dimension
 
-1. ตรวจสอบ CI/CD pipeline, deployment steps, rollback strategy
-2. ตรวจสอบ zero-downtime config, post-deploy validation, และ environment promotion
+1. ตรวจสอบ CI/CD pipeline, workflow structure, job dependencies, execution order, และ deployment steps
+2. ตรวจสอบ rollback strategy, zero-downtime config, post-deploy validation, และ environment promotion
 3. ตรวจสอบ env var coverage, missing config, hardcoded values, และ secrets management
-4. ตรวจสอบ build config optimization และ environment consistency
-5. Critical: no rollback strategy, no post-deploy validation, hardcoded secrets, missing required env var
-6. High: missing CI/CD step, no zero-downtime, inconsistent config
+4. ตรวจสอบ caching strategy, artifact management, build optimization, และ parallel job efficiency
+5. ตรวจสอบ secrets handling, environment variables, permissions, test automation, และ conditional execution
+6. Critical: no rollback strategy, no post-deploy validation, hardcoded secrets, exposed secrets, broken pipeline, no test gate, missing required env var, missing required workflow
+7. High: missing CI/CD step, no zero-downtime, inconsistent config, missing caching, slow pipeline, no artifact retention, broken job dependency
 
-### 3. CI/CD Review
-
-Review CI/CD pipeline ครอบคลุม workflows, jobs, caching, secrets, pipeline quality
-
-> Goal: ครอบคลุมทุก CI/CD dimension
-
-1. ตรวจสอบ workflow structure, job dependencies, และ execution order
-2. ตรวจสอบ caching strategy, artifact management, และ build optimization
-3. ตรวจสอบ secrets handling, environment variables, และ permissions
-4. ตรวจสอบ test automation, conditional execution, และ parallel job efficiency
-5. Critical: exposed secrets, broken pipeline, no test gate, missing required workflow
-6. High: missing caching, slow pipeline, no artifact retention, broken job dependency
-
-### 4. Config Files Review
+### 3. Config Files Review
 
 Review config files ครอบคลุม tsconfig, vite, biome, env-specific configs, consistency
 
@@ -65,65 +53,41 @@ Review config files ครอบคลุม tsconfig, vite, biome, env-specific
 5. Critical: broken config, conflicting settings, missing required config
 6. High: inconsistent config across workspaces, missing path alias, suboptimal compiler option
 
-### 5. Monitoring Review
+### 4. Monitoring, Tracing And Observability Review
 
-Review monitoring และ observability ครอบคลุม metrics, alerts, dashboards, incident response
+Review monitoring, distributed tracing และ observability stack ครอบคลุม metrics, alerts, dashboards, span propagation, correlation IDs, incident response
 
-> Goal: ครอบคลุมทุก monitoring dimension
+> Goal: ครอบคลุมทุก monitoring, tracing และ observability dimension
 
-1. ตรวจสอบ metrics collection, custom metrics, และ metric labeling
-2. ตรวจสอบ alert configuration, threshold tuning, และ alert routing
-3. ตรวจสอบ dashboard design, metric visualization, และ data freshness
-4. ตรวจสอบ incident response readiness, runbook availability, และ escalation paths
-5. Critical: no monitoring on critical path, missing alert for critical metric, broken dashboard
-6. High: missing key metric, alert fatigue, no runbook
-7. ทำ `/review-observability` เพื่อ observability deep dive เฉพาะทาง
+1. ตรวจสอบ metrics collection, custom metrics, metric labeling, และ metric aggregation
+2. ตรวจสอบ alert configuration, threshold tuning, alert routing, และ alert correlation with dashboards
+3. ตรวจสอบ dashboard design, metric visualization, data freshness, และ service health coverage
+4. ตรวจสอบ trace context propagation: W3C Trace Context, B3 propagation, header forwarding
+5. ตรวจสอบ span creation, span attributes, span events, span coverage บน database queries, external API calls, background jobs, error paths
+6. ตรวจสอบ trace sampling, cross-service correlation, log-trace-metric correlation, และ trace visualization
+7. ตรวจสอบ instrumentation coverage, structured logging, log levels, log retention, และ observability tooling SDK initialization
+8. ตรวจสอบ incident response readiness, runbook availability, และ escalation paths
+9. Critical: no monitoring on critical path, missing alert for critical metric, no trace context propagation, missing span บน critical path, no error tracing, no observability on critical path, no correlation between signals, broken dashboard
+10. High: missing key metric, alert fatigue, no runbook, missing trace sampling, no cross-service correlation, incomplete instrumentation, missing dashboard for core service, no trace-log correlation
+11. ทำ `/review-observability` เพื่อ observability deep dive เฉพาะทาง
 
-### 6. Tracing Review
+### 5. Disaster Recovery And Backup Review
 
-Review distributed tracing ครอบคลุม request correlation, span propagation, trace context
+Review DR plan และ backup ครอบคลุม RPO/RTO, failover, data backup, recovery procedures, restore testing
 
-> Goal: ครอบคลุมทุก tracing dimension
-
-1. ตรวจสอบ trace context propagation: W3C Trace Context, B3 propagation, header forwarding
-2. ตรวจสอบ span creation: span naming, span attributes, span events, span links
-3. ตรวจสอบ span coverage: database queries, external API calls, background jobs, error paths
-4. ตรวจสอบ trace sampling: sampling rate, sampling strategy, tail-based sampling
-5. ตรวจสอบ trace correlation: cross-service correlation, log correlation, metric correlation
-6. ตรวจสอบ trace visualization: trace dashboard, service map, latency breakdown
-7. Critical: no trace context propagation, missing span บน critical path, no error tracing
-8. High: missing trace sampling, no cross-service correlation, missing trace dashboard
-
-### 7. Disaster Recovery Review
-
-Review DR plan ครอบคลุม RPO/RTO, failover, data backup, recovery procedures
-
-> Goal: ครอบคลุมทุก DR dimension
+> Goal: ครอบคลุมทุก DR และ backup dimension
 
 1. ตรวจสอบ RPO/RTO targets: definition per service, measurement method, compliance status
 2. ตรวจสอบ failover strategy: active-passive vs active-active, failover trigger, failback procedure
-3. ตรวจสอบ data backup: backup frequency, backup type, backup storage, backup encryption
-4. ตรวจสอบ recovery procedures: recovery steps, recovery time estimation, recovery validation
+3. ตรวจสอบ data backup: backup frequency, backup type, backup storage, backup encryption, และ retention policy
+4. ตรวจสอบ recovery procedures: recovery steps, recovery time estimation, recovery validation, และ restore testing
 5. ตรวจสอบ DR testing: test frequency, test scope, test documentation, automated DR test
 6. ตรวจสอบ DR documentation: runbook, contact list, escalation procedure, dependency map
 7. ตรวจสอบ single points of failure: redundant services, data replication, geographic distribution
-8. Critical: no backup, no failover, single point of failure บน critical service
-9. High: missing RPO/RTO, no DR testing, missing recovery procedure
+8. Critical: no backup, no failover, single point of failure บน critical service, untested restore, RPO/RTO non-compliance
+9. High: missing RPO/RTO, no DR testing, missing recovery procedure, missing restore test, inconsistent backup, no retention policy
 
-### 8. Backup Review
-
-Review backup ครอบคลุม strategy, restore testing, recovery procedures, RPO/RTO
-
-> Goal: ครอบคลุมทุก backup dimension
-
-1. ตรวจสอบ backup strategy, backup types, และ backup frequency
-2. ตรวจสอบ restore testing, restore procedures, และ restore verification
-3. ตรวจสอบ RPO/RTO compliance, recovery time objectives, และ data loss tolerance
-4. ตรวจสอบ backup verification, backup integrity, และ backup retention policy
-5. Critical: no backup, untested restore, RPO/RTO non-compliance
-6. High: missing restore test, inconsistent backup, no retention policy
-
-### 9. Caching Review
+### 6. Caching Review
 
 Review caching strategy ครอบคลุม invalidation, key design, TTL, storage, stale-while-revalidate
 
@@ -136,7 +100,7 @@ Review caching strategy ครอบคลุม invalidation, key design, TTL, 
 5. Critical: cache poisoning, no invalidation on data change, cache stampede
 6. High: missing TTL, inconsistent cache key, no cache warming
 
-### 10. Cost Review
+### 7. Cost Review
 
 Review cloud cost optimization ครอบคลุม resource usage, billing, waste elimination
 
@@ -152,7 +116,7 @@ Review cloud cost optimization ครอบคลุม resource usage, billing,
 8. Critical: significant waste, no cost monitoring, unbounded resource scaling
 9. High: missing caching strategy, over-provisioned resources, no cost alerts
 
-### 11. Resilience Review
+### 8. Resilience Review
 
 Review resilience patterns ครอบคลุม circuit breakers, fallbacks, graceful degradation, retry strategies
 
@@ -167,7 +131,7 @@ Review resilience patterns ครอบคลุม circuit breakers, fallbacks,
 7. Critical: no circuit breaker บน critical service, no timeout, cascading failure risk
 8. High: missing fallback, no retry strategy, no bulkhead isolation
 
-### 12. Environment Review
+### 9. Environment Review
 
 Review environment config ครอบคลุม env var validation, parity, secret rotation, documentation, env safety
 
@@ -183,24 +147,7 @@ Review environment config ครอบคลุม env var validation, parity, s
 8. Critical: secret exposed to client, missing required env var in prod, no validation on critical env var
 9. High: env parity gap, missing .env.example, no secret rotation, missing env documentation
 
-### 13. Observability Review
-
-Review observability stack ครอบคลุม metrics, logs, traces integration, correlation IDs, alerting, dashboards
-
-> Goal: ครอบคลุมทุก observability dimension
-
-1. ตรวจสอบ instrumentation coverage: critical paths covered, missing instrumentation, coverage gaps
-2. ตรวจสอบ correlation: correlation ID generation, propagation across services, log-trace-metric correlation
-3. ตรวจสอบ metrics integration: custom metrics, metric naming, metric labeling, metric aggregation
-4. ตรวจสอบ logs integration: structured logging, log levels, log-trace correlation, log retention
-5. ตรวจสอบ traces integration: span coverage, trace context, trace sampling, trace-log correlation
-6. ตรวจสอบ alerting integration: alert thresholds, alert routing, alert correlation with dashboards
-7. ตรวจสอบ dashboard completeness: service health, error rates, latency, throughput, saturation
-8. ตรวจสอบ observability tooling: SDK initialization, configuration, performance overhead
-9. Critical: no observability on critical path, no correlation between signals, missing alert for critical error
-10. High: incomplete instrumentation, missing dashboard for core service, no trace-log correlation
-
-### 14. Health Endpoint Review
+### 10. Health Endpoint Review
 
 Review health and readiness endpoints ครอบคลุม liveness, readiness probes, dependency checks, graceful shutdown
 
@@ -215,7 +162,7 @@ Review health and readiness endpoints ครอบคลุม liveness, readine
 7. Critical: no health endpoint, liveness checks dependencies, no graceful shutdown, health endpoint exposes secrets
 8. High: missing readiness probe, no dependency check, incomplete shutdown, missing health endpoint auth
 
-### 15. Upgrade Safety Review
+### 11. Upgrade Safety Review
 
 Review upgrade safety ครอบคลุม breaking change analysis, migration scripts, rollback plan, compatibility matrix
 
@@ -230,52 +177,33 @@ Review upgrade safety ครอบคลุม breaking change analysis, migrati
 7. Critical: no rollback plan for critical dependency, breaking change without migration, data loss risk in upgrade
 8. High: missing migration script, no upgrade tests, incompatible peer dependency, missing upgrade guide
 
-### 16. Validate Findings
+### 12. Validate, Report And Implement
 
-ตรวจสอบและ validate issues จากทุก section
+ตรวจสอบ findings, validate, รายงานผล และตรวจสอบ implementation completeness
 
-> Goal: Issues ถูกต้องและจัดลำดับตาม severity
+> Goal: Issues ถูก validate ครบถ้วน จัดลำดับตาม severity และรายงานเป็นตาราง
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-
-### 17. Report
-
-รายงานผล review ในรูปแบบตาราง
-
-> Goal: รายงาน aggregate findings พร้อม actionable recommendations
-
-1. ทำ `/report` พร้อม `/report-format-table`
-2. สร้างตาราง aggregate findings จากทุก section
-3. ทำ `/suggest-next-action`
-
-### 18. Implement All
-
-ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
-
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
-
-1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
-2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
+4. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review — ถ้าพบ incomplete implementations → เพิ่มเป็น findings
+5. ทำ `/report` พร้อม `/report-format-table` สร้างตาราง aggregate findings จากทุก section
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี deployment setup ให้ข้าม Section 2
-- ถ้า project ไม่มี CI/CD ให้ข้าม Section 3
-- ถ้า project ไม่มี config files ให้ข้าม Section 4
-- ถ้า project ไม่มี monitoring ให้ข้าม Section 5
-- ถ้า project ไม่มี tracing ให้ข้าม Section 6
-- ถ้า project ไม่มี DR plan ให้ข้าม Section 7 และ 8
-- ถ้า project ไม่มี caching ให้ข้าม Section 9
-- ถ้า project ไม่มี cloud resources ให้ข้าม Section 10
-- ถ้า project ไม่มี external dependencies ให้ข้าม Section 11
-- ถ้า project ไม่มี environment config ให้ข้าม Section 12
-- ถ้า project ไม่มี observability ให้ข้าม Section 13
-- ถ้า project ไม่มี health endpoints ให้ข้าม Section 14
-- ถ้า project ไม่มี dependencies ให้ข้าม Section 15
+- ถ้า project ไม่มี deployment setup หรือ CI/CD → ข้าม Section 2
+- ถ้า project ไม่มี config files → ข้าม Section 3
+- ถ้า project ไม่มี monitoring, tracing หรือ observability → ข้าม Section 4
+- ถ้า project ไม่มี DR plan หรือ backup → ข้าม Section 5
+- ถ้า project ไม่มี caching → ข้าม Section 6
+- ถ้า project ไม่มี cloud resources → ข้าม Section 7
+- ถ้า project ไม่มี external dependencies → ข้าม Section 8
+- ถ้า project ไม่มี environment config → ข้าม Section 9
+- ถ้า project ไม่มี health endpoints → ข้าม Section 10
+- ถ้า project ไม่มี dependencies → ข้าม Section 11
 
 ### 2. Severity Classification
 

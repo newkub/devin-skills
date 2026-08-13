@@ -1,6 +1,10 @@
 ---
 name: review-dx
-description: Review developer experience ครอบคลุม build times, error messages, tools, HMR, onboarding พร้อม health score
+description: Review developer experience ครอบคลุม build, errors, tools, HMR, onboarding พร้อม health score
+related:
+  - scan-codebase
+  - suggest-next-action
+  - review-config
 ---
 
 ## Goal
@@ -9,7 +13,7 @@ Review developer experience ครอบคลุม build performance, error me
 
 ## Scope
 
-DX review สำหรับ: build times, error messages clarity, development tools, HMR setup, onboarding documentation, local development experience — ไม่รวมการ fix (ใช้ `/review-dx` สำหรับ fix)
+DX review สำหรับ: build times, error messages clarity, development tools, HMR setup, onboarding documentation, local development experience — ไม่รวมการ fix
 
 ## Execute
 
@@ -83,7 +87,6 @@ DX review สำหรับ: build times, error messages clarity, development t
 
 ### 3. Non-Redundancy
 
-- รายละเอียดการ fix อยู่ใน `/review-dx` แล้ว
 - รายละเอียด config review อยู่ใน `/review-config` แล้ว
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 

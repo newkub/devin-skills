@@ -1,6 +1,6 @@
 ---
 name: review-naming
-description: Review variable, function, class, file, directory, API endpoint, database naming, prefix/suffix conventions, cross-layer consistency
+description: Review naming for variables, functions, classes, files, directories, APIs, databases, cross-layer
 ---
 
 ## Goal
@@ -48,10 +48,7 @@ naming review สำหรับ: variable naming, function naming, class naming
 3. ตรวจสอบ API endpoint naming: RESTful resource naming, plural nouns for collections, kebab-case for URLs, consistent endpoint naming, HTTP method consistency
 4. ตรวจสอบ database naming: table naming (snake_case plural), column naming (snake_case), foreign key naming (table_id), index naming, constraint naming, consistent naming conventions
 5. ตรวจสอบ cross-layer consistency: same concept same name across layers, API field name vs database column name mapping, client-side naming vs API naming, consistent terminology across codebase
-6. Critical: inconsistent naming ที่ก่อให้เกิด bug, misleading name ที่ทำให้เข้าใจผิด, naming ที่สื่อผิดความหมายใน critical path
-7. High: inconsistent convention across layer, naming ที่สื่อผิด, single-letter names ใน non-trivial scope, data/temp/info names, inconsistent verb usage
-8. Medium: minor naming inconsistency, inconsistent prefix/suffix, missing naming convention documentation
-9. Low: cosmetic, minor naming improvement, documentation gap
+6. จัดลำดับ findings ตาม severity ตาม Rules section `Severity Classification`
 
 ### 5. Validate, Rate And Report
 

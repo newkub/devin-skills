@@ -95,7 +95,7 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 ### 1. Severity Classification
 
 - Critical: การเข้าถึง `null`/`undefined` ใน critical path, type assertion ที่ bypass type safety, floating promise ที่ lead to unhandled rejection, `JSON.parse`/`eval` ที่ไม่ผ่าน validation ใน critical path
-- High: ขาด exhaustive handling, off-by-one ใน loop, unsafe default ใน critical path, missing resource cleanup ที่ก่อน leak
+- High: ขาด exhaustive handling, off-by-one ใน loop, unsafe default ใน critical path, missing resource cleanup ที่ก่อให้เกิด leak
 - Medium: optional chaining ไม่มี fallback, regex ที่อันตราย, unsafe narrowing, implicit assumption ใน non-critical path
 - Low: missing fallback, minor assumption, documentation gap
 

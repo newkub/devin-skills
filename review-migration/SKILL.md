@@ -1,22 +1,18 @@
 ---
 name: review-migration
----
-
----
-title: Review Migration
 description: Review migration safety: framework, database, schema, data, rollback, and data integrity
 auto_execution_mode: 3
 related:
   - /scan-codebase
-  - /deep-analyze
-  - /update-codebase-health-cli
   - /run-health
   - /deep-validate
   - /validate
   - /report
   - /report-format-table
   - /suggest-next-action
-  - /follow-content-quality
+  - /review-database
+  - /review-config
+  - /review-backend
 ---
 
 ## Goal
@@ -36,7 +32,7 @@ Review migration safety ครอบคลุม framework migrations, database 
 > Goal: เข้าใจ migration history, tools, และ patterns
 
 1. ทำ `/scan-codebase` เพื่อหา migration files, scripts, versioning
-2. ระบุ migration tools: Drizzle, Prisma, TypeORM, custom scripts
+2. ระบุ migration tools: `Drizzle`, `Prisma`, `TypeORM`, custom scripts
 3. ระบุ environments: dev, staging, prod
 
 ### 2. Identify Migrations
@@ -55,7 +51,7 @@ Review migration safety ครอบคลุม framework migrations, database 
 
 > Goal: migrations ปลอดภัยและ backwards compatible
 
-1. ตรวจสอบ destructive operations: DROP, DELETE, ALTER ที่ทำให้ data loss
+1. ตรวจสอบ destructive operations: `DROP`, `DELETE`, `ALTER` ที่ทำให้ data loss
 2. ตรวจสอบ backwards compatibility: rolling updates, blue/green deployments
 3. ตรวจสอบ transaction boundaries และ error handling
 4. ตรวจสอบ data integrity constraints ระหว่าง migrations
@@ -72,6 +68,8 @@ Review migration safety ครอบคลุม framework migrations, database 
 4. ทำ `/run-health` เพื่อดึง migration metrics
 
 ### 5. Validate and Report
+
+ตรวจสอบและรายงาน migration findings
 
 > Goal: รายงาน migration findings
 

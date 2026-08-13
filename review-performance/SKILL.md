@@ -1,6 +1,6 @@
 ---
 name: review-performance
-description: Review performance ครอบคลุม bundler, caching, time complexity, Core Web Vitals, rendering, bottlenecks
+description: Performance review ครอบคลุม bundler, caching, time complexity, Core Web Vitals, bottlenecks
 ---
 
 ## Goal
@@ -52,8 +52,6 @@ Review bundler/build tool config ครอบคลุม chunk splitting, tree 
 5. ตรวจสอบ plugin configuration: build plugins, transform plugins, plugin ordering
 6. ตรวจสอบ asset optimization: image compression, font subsetting, SVG optimization
 7. ตรวจสอบ build output: bundle size, chunk count, asset count, gzip size
-8. Critical: bundle size ที่ส่งผลกระทบรุนแรง, broken build config, missing code splitting บน critical path
-9. High: missing code splitting, large vendor chunk, missing tree shaking, missing source maps
 
 ### 4. Caching Review
 
@@ -65,8 +63,6 @@ Review caching strategy ครอบคลุม invalidation, key design, TTL, 
 2. ตรวจสอบ TTL configuration, expiration policy, และ cache eviction
 3. ตรวจสอบ cache storage selection, memory vs persistent, และ distributed cache
 4. ตรวจสอบ stale-while-revalidate patterns, cache warming, และ cache hit ratio
-5. Critical: cache poisoning, no invalidation on data change, cache stampede
-6. High: missing TTL, inconsistent cache key, no cache warming, missing cache on hot path
 
 ### 5. Time Complexity Review
 
@@ -81,10 +77,6 @@ Review time complexity ของ critical paths ครอบคลุม Big O a
 5. วิเคราะห์ composed operations: เช่น sort + binary search = O(n log n)
 6. ตรวจสอบ input bounds: UI = 10³, API = 10⁴, batch = 10⁶, data pipeline = 10⁸
 7. ตรวจหา anti-patterns: nested loop โดยไม่ใช้ hash map, sort ทุกครั้งแทน binary search, recursive โดยไม่ memoize, `array.indexOf` ใน loop
-8. Critical: complexity เกิน budget 10× ขึ้นไป บน hot path ที่ user-facing
-9. High: complexity เกิน budget บน hot path หรือ anti-pattern ที่แน่นอนว่าทำให้ช้า
-10. Medium: complexity เกิน budget บน cold path หรือ anti-pattern ที่อาจทำให้ช้า
-11. Low: complexity ใกล้ budget หรือ minor optimization opportunity
 
 ### 6. Validate Findings
 
@@ -125,8 +117,8 @@ Review time complexity ของ critical paths ครอบคลุม Big O a
 
 ### 2. Severity Classification
 
-- Critical: blocking performance bottleneck, bundle size ที่ส่งผลกระทบรุนแรง, Core Web Vitals ไม่ผ่าน, cache poisoning, complexity เกิน budget 10× บน user-facing hot path
-- High: N+1 query, missing cache on hot path, missing code splitting, large vendor chunk, missing TTL, complexity เกิน budget บน hot path, anti-pattern ที่แน่นอนว่าทำให้ช้า
+- Critical: blocking performance bottleneck, bundle size ที่ส่งผลกระทบรุนแรง, broken build config, Core Web Vitals ไม่ผ่าน, cache poisoning, no invalidation on data change, cache stampede, complexity เกิน budget 10× บน user-facing hot path
+- High: N+1 query, missing cache on hot path, missing code splitting, large vendor chunk, missing tree shaking, missing source maps, missing TTL, inconsistent cache key, no cache warming, complexity เกิน budget บน hot path, anti-pattern ที่แน่นอนว่าทำให้ช้า
 - Medium: suboptimal query, missing lazy load, suboptimal chunk, inconsistent cache key, complexity เกิน budget บน cold path
 - Low: minor optimization opportunity, minor cache improvement, complexity ใกล้ budget
 

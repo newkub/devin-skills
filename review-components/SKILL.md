@@ -1,6 +1,6 @@
 ---
 name: review-components
-description: Review component structure, prop design, event emission, reactivity, memo/computed, composition, reusability, testing, isolation
+description: Review component structure, props, events, reactivity, composition, reusability, testing, isolation
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ component review สำหรับ: component structure, prop design, event emi
 > Goal: ครอบคลุมทุก component dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ component patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด

@@ -1,6 +1,6 @@
 ---
 name: review-browser-compat
-description: Review CSS compatibility, vendor prefixes, JS API compatibility, polyfills, feature detection, browserslist, CSS reset/normalize
+description: Review browser compatibility: CSS prefixes, JS APIs, polyfills, feature detection, browserslist
 ---
 
 ## Goal

@@ -1,6 +1,6 @@
 ---
 name: review-rendering
-description: Review SSR/CSR/hydration, rendering performance, layout thrashing, unnecessary re-renders, memo/computed, virtual DOM efficiency
+description: Review SSR/CSR/hydration, rendering performance, re-renders, memo/computed, virtual DOM
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ rendering review สำหรับ: SSR/SSG/CSR/ISR rendering modes, hydration 
 > Goal: ครอบคลุมทุก rendering dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ rendering patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -37,8 +37,6 @@ rendering review สำหรับ: SSR/SSG/CSR/ISR rendering modes, hydration 
 1. ตรวจสอบ SSR correctness: server-side data fetching, server component patterns, SSR error handling, SSR-safe code (window/document guards)
 2. ตรวจสอบ hydration: hydration mismatch prevention, client/server consistency, hydration error handling, selective hydration, progressive hydration
 3. ตรวจสอบ universal rendering: code that works on both server และ client, environment detection, shared logic, server-only vs client-only code separation
-4. Critical: hydration mismatch ที่ก่อให้เกิด error, SSR crash, server/client state inconsistency, broken SSR on key pages
-5. High: missing SSR-safe guards, inconsistent rendering, hydration performance issue, missing error boundary for hydration
 
 ### 4. Rendering Performance And Re-render Review
 
@@ -49,8 +47,6 @@ rendering review สำหรับ: SSR/SSG/CSR/ISR rendering modes, hydration 
 3. ตรวจสอบ render blocking: render-blocking resources, critical rendering path, above-the-fold optimization, deferred rendering, lazy hydration
 4. ตรวจสอบ paint optimization: paint complexity, layer promotion, will-change usage, composite layers, transform/opacity vs layout/paint
 5. ตรวจสอบ virtual DOM efficiency: keyed lists, v-for/:key correctness, list virtualization, large list rendering, diff algorithm efficiency
-6. Critical: layout thrashing ใน hot path, broken rendering on key pages, hydration mismatch ที่ก่อให้เกิด error, infinite render loop
-7. High: unnecessary re-renders ใน hot path, missing memo on expensive component, missing list virtualization, missing key on list items, render-blocking resource
 
 ### 5. Validate, Rate And Report
 
@@ -73,8 +69,8 @@ rendering review สำหรับ: SSR/SSG/CSR/ISR rendering modes, hydration 
 
 ### 2. Severity Classification
 
-- Critical: hydration mismatch ที่ก่อให้เกิด error, SSR crash, layout thrashing ใน hot path, infinite render loop, broken rendering on key pages
-- High: unnecessary re-renders ใน hot path, missing memo on expensive component, missing list virtualization, missing key, render-blocking resource, hydration performance issue
+- Critical: hydration mismatch ที่ก่อให้เกิด error, SSR crash, server/client state inconsistency, layout thrashing ใน hot path, infinite render loop, broken rendering on key pages
+- High: unnecessary re-renders ใน hot path, missing memo on expensive component, missing list virtualization, missing key, render-blocking resource, missing SSR-safe guards, inconsistent rendering, hydration performance issue, missing error boundary for hydration
 - Medium: suboptimal re-render, minor hydration warning, missing lazy hydration, suboptimal paint
 - Low: cosmetic, minor optimization, documentation gap
 

@@ -1,6 +1,6 @@
 ---
 name: review-data-validation
-description: Review Zod schemas, input validation, output validation, data contracts, transformation safety, type coercion, null handling
+description: Review Zod schemas, input/output validation, data contracts, transformation safety, type coercion
 ---
 
 ## Goal
@@ -47,8 +47,6 @@ data validation review สำหรับ: Zod schemas, input validation gaps, o
 2. ตรวจสอบ data contracts: API-to-database mapping contracts, API-to-client mapping contracts, schema consistency across layers, contract testing
 3. ตรวจสอบ transformation safety: type coercion risks, null handling in transformations, data loss in transformations, schema mismatch causing runtime error
 4. ตรวจสอบ sanitization: HTML sanitization, SQL injection prevention, command injection prevention, path traversal prevention, XSS prevention
-5. Critical: missing input validation on critical endpoint, data loss in transformation, schema mismatch causing runtime error, no sanitization on user input, SQL injection risk
-6. High: missing schema on endpoint, inconsistent error format, missing output validation, missing contract test, incomplete field rules, missing sanitization
 
 ### 5. Validate, Rate And Report
 

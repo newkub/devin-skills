@@ -1,6 +1,17 @@
 ---
 name: review-integration
-description: Review API client design, timeout, connection pooling, retry, circuit breaker, vendor lock-in, abstraction, swappability, fallback
+description: Review API client design, timeout, retry, circuit breaker, vendor lock-in, abstraction, fallback
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -39,8 +50,6 @@ integration review สำหรับ: API client design, timeout configuration,
 2. ตรวจสอบ timeout configuration: request timeout, connection timeout, read timeout, write timeout, retry timeout, timeout per endpoint
 3. ตรวจสอบ connection pooling: pool size, pool configuration, connection reuse, connection cleanup, connection leak prevention, keep-alive strategy
 4. ตรวจสอบ error handling: HTTP error mapping, network error handling, timeout error handling, 5xx vs 4xx handling, error propagation, error retry decision
-5. Critical: no timeout on external call, no error handling on critical integration, connection leak, client created per request ใน hot path
-6. High: missing timeout configuration, inconsistent error handling, missing connection pooling, missing error propagation
 
 ### 4. Resilience And Abstraction Review
 
@@ -53,8 +62,6 @@ integration review สำหรับ: API client design, timeout configuration,
 5. ตรวจสอบ fallback/degradation: fallback strategy, degraded mode operation, cached response fallback, default value fallback, user-facing fallback message
 6. ตรวจสอบ integration health monitoring: integration health check, integration metrics, integration alerting, integration status dashboard, dependency status page
 7. ตรวจสอบ integration testability: integration test strategy, mock/stub patterns, integration test coverage, contract testing, sandbox vs production
-8. Critical: no circuit breaker on critical dependency, no fallback on critical integration, hardcoded vendor dependency ที่ไม่มี abstraction, no retry on critical integration
-9. High: missing retry, no circuit breaker, no rate limit handling, missing fallback, missing integration health monitoring, untestable integration
 
 ### 5. Validate, Rate And Report
 
@@ -71,7 +78,6 @@ integration review สำหรับ: API client design, timeout configuration,
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี third-party integrations → ข้ามทั้งหมด
 - ถ้า integration ไม่มี retry → ข้าม Step 4 item 1
 - ถ้า integration ไม่มี circuit breaker → ข้าม Step 4 item 2
 - ถ้า integration ไม่มี rate limit → ข้าม Step 4 item 4

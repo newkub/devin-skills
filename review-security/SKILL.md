@@ -1,6 +1,6 @@
 ---
 name: review-security
-description: Review security ครอบคลุม auth secrets RBAC browser security data leak privacy audit session token rate limiting webhooks file upload compliance input sanitization zero trust CSP
+description: Security review ครอบคลุม browser data protection infrastructure compliance พร้อม health score
 ---
 
 ## Goal

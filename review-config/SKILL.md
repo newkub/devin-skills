@@ -1,6 +1,6 @@
 ---
 name: review-config
-description: Review config files ครอบคลุม tsconfig vite biome uno drizzle vitest lefthook turbo env vars consistency security optimization พร้อม health score
+description: Review config files ครอบคลุม tsconfig vite biome drizzle vitest turbo env พร้อม health score
 ---
 
 ## Goal
@@ -123,7 +123,6 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 - ทุก finding ต้องมี file path และ line number
 - ไม่เดา ใช้ tools สำหรับ verification
-- ระบุ false positives ที่พบ
 
 ### 4. Review Independence
 

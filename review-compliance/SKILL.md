@@ -1,22 +1,16 @@
 ---
 name: review-compliance
----
-
----
-title: Review Compliance
 description: Review compliance: GDPR, privacy, consent, audit, retention, and regulatory requirements
 auto_execution_mode: 3
 related:
   - /scan-codebase
-  - /deep-analyze
-  - /update-codebase-health-cli
-  - /run-health
   - /deep-validate
   - /validate
   - /report
   - /report-format-table
   - /suggest-next-action
-  - /follow-content-quality
+  - /review-security
+  - /review-auth
 ---
 
 ## Goal
@@ -70,6 +64,8 @@ Review compliance ครอบคลุม GDPR, privacy, consent, data retentio
 3. ตรวจสอบ compliance documentation และ DPO contact
 
 ### 5. Validate and Report
+
+ตรวจสอบและรายงาน compliance findings
 
 > Goal: รายงาน compliance findings
 

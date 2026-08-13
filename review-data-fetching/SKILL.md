@@ -1,6 +1,6 @@
 ---
 name: review-data-fetching
-description: Review loading states, error states, cache strategy, optimistic updates, pagination, request dedup, race condition prevention, data freshness, polling, WebSocket
+description: Review data fetching: loading/error states, cache, optimistic updates, pagination, race conditions
 ---
 
 ## Goal
@@ -39,8 +39,6 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 2. ตรวจสอบ error states: error boundaries for data fetching, error fallback UI, retry mechanism, error state coverage, error state UX (error message, retry button, contact support)
 3. ตรวจสอบ cache strategy: stale-while-revalidate, cache invalidation, background refresh, cache key design, cache stale time, cache GC time, cache persistence, cache optimistic updates
 4. ตรวจสอบ request deduplication: duplicate request prevention, request dedup per cache key, request dedup per render, request dedup across components, dedup configuration
-5. Critical: missing loading state ที่ทำให้ UI พัง, no error handling on data fetch, broken cache ที่แสดงข้อมูลผิด, no retry on critical data fetch
-6. High: missing loading state, missing error state, missing cache invalidation, missing request dedup, no retry, no skeleton screen
 
 ### 4. Optimistic Updates, Pagination, Race Conditions And Freshness Review
 
@@ -51,8 +49,6 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 3. ตรวจสอบ race condition prevention: stale closure prevention, latest-wins strategy, abort on unmount, AbortController usage, request cancellation, concurrent fetch handling, out-of-order response handling
 4. ตรวจสอบ data freshness: polling strategy, polling interval, polling cleanup, WebSocket updates, real-time data sync, stale-while-revalidate, background refresh, data freshness indicator
 5. ตรวจสอบ data fetching library usage: library config correctness, query key design, mutation patterns, query invalidation, prefetching, suspense mode, SSR/SSG data fetching, hydration
-6. Critical: race condition ที่แสดงข้อมูลผิด, missing request cancellation ที่ก่อให้เกิด memory leak, broken infinite scroll cleanup, stale data ที่ก่อให้เกิด business error
-7. High: missing optimistic update, missing cache invalidation, missing pagination error handling, missing polling cleanup, missing prefetch, incorrect query key, no WebSocket cleanup
 
 ### 5. Validate, Rate And Report
 

@@ -1,6 +1,6 @@
 ---
 name: review-form
-description: Review form validation schemas, field rules, error messages, form state, submit handling, loading states, accessibility, form UX
+description: Review form validation, field rules, error messages, state, submit, loading, accessibility, UX
 ---
 
 ## Goal
@@ -26,7 +26,7 @@ form review สำหรับ: validation schemas, field rules, error message q
 > Goal: ครอบคลุมทุก form dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ form patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -39,8 +39,6 @@ form review สำหรับ: validation schemas, field rules, error message q
 2. ตรวจสอบ field rules: real-time validation, blur validation, submit validation, debounce validation, conditional validation, cross-field validation (password confirm), dependent field validation
 3. ตรวจสอบ error message quality: error message clarity, error message localization, error message specificity, field-level vs form-level errors, error display timing, error display position
 4. ตรวจสอบ validation UX: inline validation timing, error display on blur vs on change, success feedback, error clearing on input, error focus management
-5. Critical: missing validation on critical field, no submit error handling, validation bypass ที่ก่อให้เกิด error, SQL injection จาก form input
-6. High: missing validation schema, incomplete field rules, poor error messages, missing inline validation, missing cross-field validation
 
 ### 4. Form State, Submit And Accessibility Review
 
@@ -52,8 +50,6 @@ form review สำหรับ: validation schemas, field rules, error message q
 4. ตรวจสอบ form accessibility: label association (for/id), aria-invalid, aria-describedby, error message association, keyboard navigation, tab order, focus management on error, screen reader announcements
 5. ตรวจสอบ multi-step forms: step validation, step navigation, step state preservation, progress indicator, back button handling, step completion feedback
 6. ตรวจสอบ dynamic forms: dynamic field add/remove, field array validation, dynamic field naming, dynamic field rendering, conditional field display
-7. Critical: inaccessible form, keyboard trap, no screen reader support, missing label association, submit error ที่ไม่ handle ทำให้ UI พัง
-8. High: missing loading state, missing keyboard navigation, missing ARIA, broken focus management, missing duplicate submit prevention, missing form reset
 
 ### 5. Validate, Rate And Report
 

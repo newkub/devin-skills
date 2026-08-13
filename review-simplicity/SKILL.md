@@ -14,12 +14,10 @@ triggers:
   - model
 related:
   - review-refactor
-  - review-code-quality
-  - review-naming
-  - review-bug-prone
-  - dont-over-engineer
   - scan-codebase
   - deep-analyze
+  - update-codebase-health-cli
+  - run-health
   - deep-validate
   - validate
   - report-review

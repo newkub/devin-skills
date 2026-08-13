@@ -1,6 +1,6 @@
 ---
 name: review-queue
-description: Review job processing, serialization, idempotency, retry strategies, backoff, dead letter queue, worker concurrency, backpressure, prioritization
+description: Review job processing, idempotency, retry, dead letter queue, concurrency, backpressure, priority
 ---
 
 ## Goal
@@ -39,8 +39,6 @@ queue review สำหรับ: job processing patterns, job serialization, job
 2. ตรวจสอบ job serialization: job payload serialization, serialization format (JSON, protobuf), serialization safety (circular refs, functions), deserialization error handling, version compatibility
 3. ตรวจสอบ job idempotency: idempotency key, duplicate job detection, idempotent processing, side effect deduplication, idempotency storage, idempotency expiration
 4. ตรวจสอบ job dependencies: job chaining, job fan-out, job fan-in, dependency graph, dependency failure handling, parallel job execution
-5. Critical: no idempotency ที่ก่อให้เกิด duplicate side effects, job loss, serialization error ที่ก่อให้เกิด crash, missing job validation
-6. High: missing idempotency, inconsistent serialization, missing job state tracking, missing job dependencies, missing job input validation
 
 ### 4. Retry, Dead Letter, Concurrency And Backpressure Review
 
@@ -52,8 +50,6 @@ queue review สำหรับ: job processing patterns, job serialization, job
 4. ตรวจสอบ backpressure handling: queue depth monitoring, backpressure strategy, job rejection on overload, rate limiting producers, queue size limits, memory management
 5. ตรวจสอบ job prioritization: priority levels, priority queue config, priority starvation prevention, priority fairness, priority override
 6. ตรวจสอบ queue monitoring: queue metrics, queue health, queue dashboard, queue alerting, job processing time, queue throughput, failed job rate
-7. Critical: no retry, no dead letter queue, unbounded concurrency ที่ก่อให้เกิด resource exhaustion, no backpressure ที่ก่อให้เกิด crash, job loss on queue overflow
-8. High: missing retry logic, missing dead letter queue, missing backpressure, missing worker monitoring, missing prioritization, missing queue metrics, no alerting
 
 ### 5. Validate, Rate And Report
 
@@ -70,7 +66,7 @@ queue review สำหรับ: job processing patterns, job serialization, job
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี queue system → ข้ามทั้งหมด
+- ถ้า project ไม่มี queue system → stop และ report
 - ถ้า project ไม่มี dead letter queue → ข้าม Step 4 item 2
 - ถ้า project ไม่มี job prioritization → ข้าม Step 4 item 5
 

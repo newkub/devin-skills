@@ -1,6 +1,6 @@
 ---
 name: review-bundler
-description: Review Vite config, esbuild options, build mode, chunk splitting, tree shaking, minification, compression, source maps, build scripts, plugins, build performance
+description: Review Vite config, chunk splitting, tree shaking, minification, compression, source maps, plugins
 ---
 
 ## Goal
@@ -26,7 +26,7 @@ bundler review สำหรับ: Vite config, esbuild options, build mode (SSR
 > Goal: ครอบคลุมทุก bundler dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ bundler patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -39,8 +39,6 @@ bundler review สำหรับ: Vite config, esbuild options, build mode (SSR
 2. ตรวจสอบ chunk splitting: manual chunks configuration, vendor splitting strategy, dynamic imports usage, route-level code splitting, lazy loading chunks, shared chunk detection, chunk size limits, chunk naming
 3. ตรวจสอบ tree shaking: side effects declaration (sideEffects field), tree-shakeable exports, unused exports detection, dead code elimination, pure function annotations, import granularity (named vs namespace)
 4. ตรวจสอบ minification: minification enabled, minifier selection (esbuild, terser), minification options, CSS minification, HTML minification, minification correctness
-5. Critical: broken build config, missing minification, production source maps exposed, build ที่ fail บน production
-6. High: missing chunk splitting, no tree shaking, oversized chunks, missing dynamic imports, incorrect sideEffects field, no vendor splitting
 
 ### 4. Compression, Source Maps, Plugins And Performance Review
 
@@ -52,8 +50,6 @@ bundler review สำหรับ: Vite config, esbuild options, build mode (SSR
 4. ตรวจสอบ build scripts: build script correctness, build script consistency, build script documentation, build script environment handling, build script CI compatibility
 5. ตรวจสอบ build performance: build time, build caching, incremental build, parallel build, build optimization, bundle analysis (rollup-plugin-visualizer, webpack-bundle-analyzer), dependency size impact
 6. ตรวจสอบ bundle analysis: bundle size tracking, bundle size limits, bundle composition, largest dependencies, duplicate dependencies, export size analysis
-7. Critical: production source maps exposed, broken build config, missing minification, build ที่ fail บน production
-8. High: missing chunk splitting, no tree shaking, slow build blocking CI, missing compression, oversized bundle, missing bundle analysis, incorrect source maps
 
 ### 5. Validate, Rate And Report
 

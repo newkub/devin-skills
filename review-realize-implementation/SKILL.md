@@ -1,6 +1,6 @@
 ---
 name: review-realize-implementation
-description: Review implementation completeness รวม TODO, MOCK, STUB, FAKE, placeholder, flows, missing features ที่ API/database มีแล้วแต่ UX/UI ยังไม่สมบูรณ์
+description: Review implementation completeness หา TODO, MOCK, STUB, placeholder, flows ขาด UX/UI ที่มี API แล้ว
 ---
 
 ## Goal
@@ -41,15 +41,14 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
-5. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context
-6. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
-7. Analyzer ตรวจหา incomplete flows, dead-ends, missing success/error branches, missing recovery path
-8. Analyzer ตรวจหา missing features: API endpoints ที่ไม่มี corresponding UI action, database tables/columns ที่ไม่มี UX จัดการ, backend flows ที่ขาด user-facing steps, features ที่มี partial UX (มี list แต่ไม่มี create/edit, มี create แต่ไม่มี delete), features ที่มี admin/staff flow แต่ไม่มี customer-facing counterpart, feature flags/config ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
-9. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
-10. Health CLI คำนวณ implementation completeness score จาก health report
-11. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+3. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context
+5. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
+6. Analyzer ตรวจหา incomplete flows, dead-ends, missing success/error branches, missing recovery path
+7. Analyzer ตรวจหา missing features: API endpoints ที่ไม่มี corresponding UI action, database tables/columns ที่ไม่มี UX จัดการ, backend flows ที่ขาด user-facing steps, features ที่มี partial UX (มี list แต่ไม่มี create/edit, มี create แต่ไม่มี delete), features ที่มี admin/staff flow แต่ไม่มี customer-facing counterpart, feature flags/config ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
+8. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
+9. Health CLI คำนวณ implementation completeness score จาก health report
+10. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -113,7 +112,6 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 ### 5. Critical Path Priority
 
-- จัดลำดับ findings ตาม critical path: schema → data → API → UI/flow
 - แก้ไข schema ก่อน data, data ก่อน API, API ก่อน UI/flow
 
 ### 6. Flow And Feature Completeness

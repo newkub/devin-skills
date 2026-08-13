@@ -1,6 +1,17 @@
 ---
 name: review-i18n
-description: Review translation completeness, missing keys, locale coverage, locale formatting, RTL support, text direction, i18n library config, fallback, cultural adaptation, locale-specific validation
+description: Review i18n: translation completeness, missing keys, locale coverage, formatting, RTL, fallback
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -40,8 +51,7 @@ i18n review สำหรับ: translation completeness, missing keys, locale c
 3. ตรวจสอบ locale coverage: supported locales list, locale detection strategy, locale switching mechanism, locale persistence, default locale
 4. ตรวจสอบ i18n library configuration: library config correctness, namespace configuration, lazy loading strategy, bundle splitting per locale, fallback locale configuration
 5. ตรวจสอบ fallback strategy: fallback locale, missing key fallback behavior, fallback chain, fallback warning, fallback vs default value
-6. Critical: missing locale entirely, broken translation key in critical path, no fallback, hardcoded string ใน critical path ที่ควรเป็น i18n key
-7. High: missing translation keys, incomplete locale coverage, missing fallback strategy, no lazy loading, inconsistent translation file structure
+6. จัด severity ตาม `## Rules` → Severity Classification
 
 ### 4. Locale Formatting, RTL And Cultural Adaptation Review
 
@@ -52,10 +62,7 @@ i18n review สำหรับ: translation completeness, missing keys, locale c
 3. ตรวจสอบ cultural adaptation: address format (locale-specific), name format (first/last order), phone number format, postal code validation, tax ID validation, calendar system (Gregorian, Hijri, Buddhist)
 4. ตรวจสอบ locale-specific validation: postal codes, phone numbers, tax IDs, email format variations, password rules per locale
 5. ตรวจสอบ locale-aware error messages: error message translation, error message locale formatting, locale-specific error examples, locale fallback for error messages
-6. Critical: wrong currency display, broken RTL layout, timezone error in critical path, incorrect pluralization ที่ก่อให้เกิด misunderstanding
-7. High: broken pluralization, incorrect locale formatting, missing currency formatting, missing timezone support, missing RTL support, missing locale-specific validation
-8. Medium: suboptimal fallback, missing relative time, inconsistent formatting, missing cultural adaptation
-9. Low: cosmetic, minor formatting improvement, documentation gap
+6. จัด severity ตาม `## Rules` → Severity Classification
 
 ### 5. Validate, Rate And Report
 
@@ -78,10 +85,10 @@ i18n review สำหรับ: translation completeness, missing keys, locale c
 
 ### 2. Severity Classification
 
-- Critical: missing locale entirely, broken translation key in critical path, no fallback, hardcoded string ใน critical path, wrong currency display, broken RTL layout, timezone error in critical path
-- High: missing translation keys, incomplete locale coverage, missing fallback strategy, broken pluralization, incorrect locale formatting, missing RTL support, missing locale-specific validation
-- Medium: suboptimal fallback, missing relative time, inconsistent formatting, missing cultural adaptation, no lazy loading
-- Low: cosmetic, minor formatting, documentation gap
+- Critical: missing locale entirely, broken translation key in critical path, no fallback, hardcoded string ใน critical path, wrong currency display, broken RTL layout, timezone error in critical path, incorrect pluralization ที่ก่อให้เกิด misunderstanding
+- High: missing translation keys, incomplete locale coverage, missing fallback strategy, no lazy loading, inconsistent translation file structure, broken pluralization, incorrect locale formatting, missing currency formatting, missing timezone support, missing RTL support, missing locale-specific validation
+- Medium: suboptimal fallback, missing relative time, inconsistent formatting, missing cultural adaptation
+- Low: cosmetic, minor formatting improvement, documentation gap
 
 ### 3. Evidence-Based Findings
 

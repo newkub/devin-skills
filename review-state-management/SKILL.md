@@ -1,6 +1,6 @@
 ---
 name: review-state-management
-description: Review store structure, state normalization, mutation patterns, persistence, synchronization, scoping, derivation, SSR hydration, performance
+description: Review state management: store structure, mutations, persistence, sync, derivation, SSR, performance
 ---
 
 ## Goal

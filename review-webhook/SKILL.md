@@ -1,6 +1,17 @@
 ---
 name: review-webhook
-description: Review webhook signature verification, replay attack prevention, idempotency, retry, dead letter queue, payload validation, secret management
+description: Review webhook signature verification, replay, idempotency, retry, dead letter queue, secrets
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -39,8 +50,6 @@ webhook review สำหรับ: signature verification, timestamp validation,
 2. ตรวจสอบ timestamp validation: timestamp window check, stale webhook rejection, clock skew tolerance, timestamp header parsing
 3. ตรวจสอบ replay attack prevention: nonce tracking, event ID deduplication, replay window enforcement, idempotency key from webhook payload
 4. ตรวจสอบ webhook secret management: secret storage (env vars, secret manager), secret rotation strategy, secret access logging, no hardcoded secrets, secret per endpoint
-5. Critical: missing signature verification, webhook secret exposed, no replay prevention, hardcoded webhook secret, signature check ที่ bypass ได้
-6. High: missing timestamp validation, weak signature scheme, no secret rotation, missing secret access logging
 
 ### 4. Processing, Retry And Delivery Review
 
@@ -52,8 +61,6 @@ webhook review สำหรับ: signature verification, timestamp validation,
 4. ตรวจสอบ dead letter queue: failed webhook storage, dead letter queue processing, manual replay capability, alerting on dead letter, retention policy
 5. ตรวจสอบ event ordering: event ordering guarantees, out-of-order handling, sequence number tracking, event versioning, breaking change handling
 6. ตรวจสอบ delivery tracking: webhook delivery logging, delivery status tracking, delivery metrics, failure rate monitoring, alerting on delivery failures
-7. Critical: no idempotency, no retry, job loss, no dead letter queue, missing payload validation ที่ก่อให้เกิด error
-8. High: missing retry logic, no backpressure, missing dead letter queue, missing delivery tracking, no alerting
 
 ### 5. Validate, Rate And Report
 

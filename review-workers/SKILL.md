@@ -1,6 +1,17 @@
 ---
 name: review-workers
-description: Review job lifecycle, error handling, cron jobs, schedule configuration, timezone handling, task dependencies, worker health monitoring, restart strategy, worker scaling
+description: Review background workers: job lifecycle, cron jobs, scheduling, health, restart, scaling, shutdown
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -26,7 +37,7 @@ workers review สำหรับ: job lifecycle, job error handling, cron jobs,
 > Goal: ครอบคลุมทุก worker dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ worker patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -40,8 +51,7 @@ workers review สำหรับ: job lifecycle, job error handling, cron jobs,
 3. ตรวจสอบ schedule configuration: schedule format (cron, interval, one-time), schedule persistence, schedule update, schedule deletion, schedule conflict detection
 4. ตรวจสอบ timezone handling: timezone config, timezone in cron expression, UTC vs local time, daylight saving time handling, timezone conversion, timezone consistency
 5. ตรวจสอบ task dependencies: task dependency graph, dependency failure handling, parallel task execution, sequential task execution, dependency timeout, circular dependency detection
-6. Critical: worker crash without restart, cron job ที่ก่อให้เกิด data corruption, timezone error ใน scheduling, missing cron job overlap prevention ที่ก่อให้เกิด duplicate execution
-7. High: missing cron job idempotency, missing timezone config, missing task dependency handling, missing schedule persistence, missing job timeout
+6. จัด severity ตาม `## Rules` §2
 
 ### 4. Health, Restart, Scaling And Shutdown Review
 
@@ -53,8 +63,7 @@ workers review สำหรับ: job lifecycle, job error handling, cron jobs,
 4. ตรวจสอบ graceful shutdown: SIGTERM handling, in-progress job completion, shutdown timeout, resource cleanup on shutdown, connection cleanup, queue disconnection
 5. ตรวจสอบ worker resource management: memory limits, CPU limits, file descriptor limits, connection limits, resource monitoring, resource leak detection
 6. ตรวจสอบ worker logging: job start/end logging, job error logging, job duration logging, worker status logging, structured logging, log level configuration
-7. Critical: worker crash without restart, no graceful shutdown ที่ก่อให้เกิด job loss, unbounded worker scaling ที่ก่อให้เกิด resource exhaustion, missing health monitoring ที่ทำให้ worker ตายเงียบ
-8. High: missing restart strategy, missing graceful shutdown, missing worker scaling, missing resource management, incomplete logging, missing heartbeat
+7. จัด severity ตาม `## Rules` §2
 
 ### 5. Validate, Rate And Report
 

@@ -1,6 +1,17 @@
 ---
 name: review-responsive
-description: Review viewport meta, breakpoints, flexible layouts, touch targets, responsive typography, overflow prevention, container queries
+description: Review viewport, breakpoints, flex layouts, touch targets, typography, overflow, container queries
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -25,7 +36,7 @@ responsive review สำหรับ: viewport meta tag, breakpoint coverage, mo
 > Goal: ครอบคลุมทุก responsive dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ responsive patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -49,8 +60,6 @@ responsive review สำหรับ: viewport meta tag, breakpoint coverage, mo
 4. ตรวจสอบ overflow prevention: horizontal scroll on mobile, safe area insets, overflow-x handling, max-width constraints, word-break/overflow-wrap
 5. ตรวจสอบ orientation handling: portrait/landscape support, orientation-specific layouts, orientation lock (if needed)
 6. ตรวจสอบ responsive images: srcset, sizes attribute, art direction with picture element, responsive image formats
-7. Critical: no viewport meta tag, horizontal scroll บน mobile, fixed width ที่ทำลาย layout, touch target เล็กกว่า 44px บน critical interaction
-8. High: missing breakpoint สำคัญ, non-mobile-first approach, missing responsive images, missing safe area insets, broken layout บน tablet
 
 ### 5. Validate, Rate And Report
 

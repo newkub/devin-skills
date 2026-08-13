@@ -1,27 +1,22 @@
 ---
 name: review-docs
----
-
----
-title: Review Docs
 description: Review documentation quality: README, API docs, examples, guides, JSDoc, and changelogs
 auto_execution_mode: 3
 related:
   - /scan-codebase
-  - /deep-analyze
-  - /update-codebase-health-cli
-  - /run-health
   - /deep-validate
   - /validate
   - /report
   - /report-format-table
   - /suggest-next-action
-  - /follow-content-quality
+  - /review-seo
+  - /review-code-quality
+  - /review-delivery
 ---
 
 ## Goal
 
-Review documentation quality ครอบคลุม README, API docs, examples, guides, JSDoc/TSDoc, VitePress content, และ changelogs พร้อม health score
+Review documentation quality ครอบคลุม README, API docs, examples, guides, `JSDoc`/`TSDoc`, `VitePress` content, และ changelogs พร้อม health score
 
 ## Scope
 
@@ -35,8 +30,8 @@ Review documentation quality ครอบคลุม README, API docs, examples
 
 > Goal: เข้าใจ doc setup, tools, และ target audience
 
-1. ทำ `/scan-codebase` เพื่อหา docs files, README, API docs, VitePress
-2. ระบุ doc tools: VitePress, Docusaurus, Storybook, custom docs
+1. ทำ `/scan-codebase` เพื่อหา docs files, README, API docs, `VitePress`
+2. ระบุ doc tools: `VitePress`, `Docusaurus`, `Storybook`, custom docs
 3. ระบุ target audience: developers, users, contributors
 
 ### 2. Review README and Setup
@@ -57,19 +52,21 @@ Review documentation quality ครอบคลุม README, API docs, examples
 
 1. ตรวจสอบ API docs ครอบคลุม public functions, classes, endpoints
 2. ตรวจสอบ examples runnable และ up-to-date
-3. ตรวจสอบ JSDoc/TSDoc completeness บน public API
+3. ตรวจสอบ `JSDoc`/`TSDoc` completeness บน public API
 
 ### 4. Review VitePress and Changelogs
 
-ตรวจสอบ VitePress content และ changelogs
+ตรวจสอบ `VitePress` content และ changelogs
 
 > Goal: docs สมัยใหม่และ changelog ถูกต้อง
 
-1. ตรวจสอบ VitePress content ตรงกับ code ปัจจุบัน
+1. ตรวจสอบ `VitePress` content ตรงกับ code ปัจจุบัน
 2. ตรวจสอบ broken links, missing pages, stale screenshots
 3. ตรวจสอบ changelog format, entry completeness, breaking changes documentation
 
 ### 5. Validate and Report
+
+ตรวจสอบและรายงานผล findings
 
 > Goal: report สรุป findings
 

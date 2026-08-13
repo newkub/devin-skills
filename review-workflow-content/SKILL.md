@@ -1,6 +1,16 @@
 ---
 name: review-workflow-content
 description: Review คุณภาพเนื้อหา workflow ลด noise ซ้ำซ้อน และกรอง high-impact content
+related:
+  - follow-content-quality
+  - simplify
+  - dont-over-engineer
+  - review-coverage
+  - use-scripts
+  - improve-context-rot
+  - follow-harness-engineering
+  - suggest-next-action
+  - validate-workflow
 ---
 
 ## Goal
@@ -68,28 +78,10 @@ description: Review คุณภาพเนื้อหา workflow ลด nois
 
 ## Rules
 
-### 1. Non-Redundancy
-
-- ไม่ซ้ำซ้อนระหว่าง `Execute` และ `Rules`
-- ใช้ references แทนการเขียนซ้ำ
-- รวบรวมรายละเอียดที่เหมือนกันไว้ที่เดียว
-
-### 2. High Impact Only
-
-- ทุก bullet ต้องตอบได้ว่า “ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม”
-- ห้าม generic filler หรือคำสวยแต่ไม่ actionable
-- ลด noise แต่เนื้อหาหลักต้องครบ
-
-### 3. Clarity And Determinism
-
-- ใช้ active voice, ระบุ subject/object ชัดเจน
-- ทุก step ตีความได้ทางเดียว
-- validation criteria ต้อง measurable
-
-### 4. Parallel And Scripts
-
-- ใช้ `parallel:` และ `∥` เฉพาะใน `Execute` numbered list
-- ใช้ `/use-scripts` เมื่อ operations ซับซ้อน
+- ห้ามซ้ำซ้อนระหว่าง `Execute` และ `Rules` — ใช้ references แทนการเขียนซ้ำ
+- ทุก bullet ต้องมี impact จริง ห้าม generic filler หรือคำสวยแต่ไม่ actionable
+- ทุก step ตีความได้ทางเดียว ใช้ active voice และ validation criteria ที่ measurable
+- `parallel:` และ `∥` เฉพาะใน `Execute` numbered list เท่านั้น
 - ลด tool calls โดยไม่ทำลาย safety
 
 ## Expected Outcome

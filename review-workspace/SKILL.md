@@ -16,6 +16,7 @@ triggers:
 related:
   - check-monorepo
   - list-workspaces
+  - follow-package-manifest
   - scan-codebase
   - check-unused-deps
   - run-audit
@@ -33,7 +34,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Scope
 
-ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `review-frontend` หรือ `review-backend`
+ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/review-frontend` หรือ `/review-backend`
 
 ## Execute
 
@@ -44,8 +45,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 > Goal: รู้ว่า review workspace ใด และอยู่ที่ไหน
 
 1. ถ้ามี argument ให้ใช้เป็นค่าเริ่มต้น ถ้าไม่มีให้ใช้ current working directory
-2. ทำ `/check-monorepo` เพือตรวจสอบว่าเป็น monorepo หรือไม่
-3. ถ้าเป็น monorepo ให้ทำ `/list-workspaces` เพือแสดงรายการ workspaces ทั้งหมด
+2. ทำ `/check-monorepo` เพื่อตรวจสอบว่าเป็น monorepo หรือไม่
+3. ถ้าเป็น monorepo ให้ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces ทั้งหมด
 4. ระบุ target workspace path และ root workspace path
 5. ถ้า workspace ไม่พบให้ stop และ report
 
@@ -82,8 +83,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 1. แยก `dependencies`, `devDependencies`, `peerDependencies`, `optionalDependencies`
 2. ระบุ `workspace:*` dependencies และตรวจสอบว่ามีอยู่จริง
-3. ทำ `/check-unused-deps` เพือหา unused dependencies
-4. ทำ `/run-audit` เพือตรวจ security vulnerabilities
+3. ทำ `/check-unused-deps` เพื่อหา unused dependencies
+4. ทำ `/run-audit` เพื่อตรวจ security vulnerabilities
 5. ตรวจสอบ version constraints ระหว่าง workspaces ว่าสอดคล้องกัน
 
 ### 5. Review Config Consistency
@@ -99,11 +100,11 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ### 6. Run Checks
 
-รัน verification commands เพือตรวจสอบ workspace health
+รัน verification commands เพื่อตรวจสอบ workspace health
 
 > Goal: พบ runtime และ build issues ก่อน report
 
-1. ทำ `/run-check` เพือรัน lint, typecheck, scan
+1. ทำ `/run-check` เพื่อรัน lint, typecheck, scan
 2. ถ้ามี scripts ให้รัน `bun run verify` หรือ `bun run ci` ตามลำดับ
 3. ถ้าเป็น Rust ให้รัน `cargo clippy && cargo check && cargo test`
 4. บันทึก errors และ failures พร้อม evidence
@@ -114,18 +115,18 @@ validate findings และสรุปผล
 
 > Goal: findings ถูกต้อง พร้อม health score และ recommendations
 
-1. ทำ `/validate` เพือตรวจสอบ findings
+1. ทำ `/validate` เพื่อตรวจสอบ findings
 2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
 3. คำนวณ health score โดย weighted average
 4. ทำ `/report-format-table` สำหรับ summary
-5. ทำ `/suggest-next-action` เพือแนะนำ action ถัดไป
+5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 
 ### 1. Scope Boundary
 
 - review หนึ่ง workspace ต่อการเรียก
-- ไม่ duplicate กับ `review-frontend`, `review-backend`, `review-codebase-everything`
+- ไม่ duplicate กับ `/review-frontend`, `/review-backend`, `/review-codebase-everything`
 - ถ้าพบ issues นอก scope ให้ระบุเป็น Info และอ้างอิง skill ที่เหมาะสม
 
 ### 2. Evidence Quality
@@ -154,9 +155,8 @@ validate findings และสรุปผล
 
 ### 6. Workspace Size And Responsibility
 
-- แต่ละ workspace ต้องมี single responsibility ชัดเจน — รวม code ที่เปลี่ยนด้วยกัน, deploy ด้วยกัน, test ด้วยกัน
-- workspace ไม่ควรใหญ่เกินไป — ถ้าจัดการไม่ไหว, มีหลาย reasons to change, หรือ coupling สูง ให้พิจารณา `/refactor-packages`
-- workspace ไม่ควรเล็กเกินไป — ถ้าไม่มี value ชัดเจนหรือทับซ้อนกับ workspace อื่น ให้พิจารณา merge หรือลบ
+- single responsibility คือรวม code ที่เปลี่ยนด้วยกัน, deploy ด้วยกัน, test ด้วยกัน
+- ถ้า workspace ทับซ้อนกับ workspace อื่น ให้พิจารณา merge หรือลบ
 - ใช้ `/refactor-packages` เมื่อต้อง split, merge, หรือ relocate packages/modules
 
 ## Expected Outcome

@@ -1,22 +1,16 @@
 ---
 name: review-observability
----
-
----
-title: Review Observability
 description: Review observability: metrics, logs, traces, alerts, dashboards, and SLOs
 auto_execution_mode: 3
 related:
   - /scan-codebase
-  - /deep-analyze
-  - /update-codebase-health-cli
-  - /run-health
   - /deep-validate
   - /validate
   - /report
   - /report-format-table
   - /suggest-next-action
-  - /follow-content-quality
+  - /review-infrastructure
+  - /review-debugging
 ---
 
 ## Goal
@@ -36,7 +30,7 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 > Goal: เข้าใจ observability stack และ requirements
 
 1. ทำ `/scan-codebase` เพื่อหา observability config, SDK, exporters
-2. ระบุ tools: Prometheus, Grafana, OpenTelemetry, Datadog, Sentry
+2. ระบุ tools: `Prometheus`, `Grafana`, `OpenTelemetry`, `Datadog`, `Sentry`
 3. ระบุ SLOs และ critical paths ที่ต้อง monitor
 
 ### 2. Metrics Review
@@ -67,7 +61,7 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 
 > Goal: สามารถ trace request และ alert ได้ทันเวลา
 
-1. ตรวจสอบ distributed tracing: W3C Trace Context, span coverage
+1. ตรวจสอบ distributed tracing: `W3C Trace Context`, span coverage
 2. ตรวจสอบ alert rules: threshold, routing, alert fatigue
 3. ตรวจสอบ dashboards: critical path, SLOs, error budget
 4. ตรวจสอบ incident response runbooks, escalation paths
@@ -88,7 +82,6 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 
 - ไม่ review deployment / CI/CD — ใช้ `/review-infrastructure`
 - ไม่ review debugging practices — ใช้ `/review-debugging`
-- อยู่ภายใต้ `/review-infrastructure` เมื่อ review infrastructure ทั้งหมด
 
 ### 2. Severity
 

@@ -1,11 +1,11 @@
 ---
 name: review-refactor
-description: Review refactor opportunities รวม SRP violations, duplication, complexity, coupling, code smells, testability, dependency injection, pure functions, และ side effect isolation
+description: Review refactor opportunities รวม SRP, duplication, complexity, coupling, smells, testability
 ---
 
 ## Goal
 
-Review refactor opportunities รวม SRP violations, code duplication, file complexity, function complexity, coupling, dead code, naming conventions, code smells, testability (dependency injection, pure functions, side effect isolation, test setup complexity, module coupling, hardcoded dependencies, global state, async testability)
+Review refactor opportunities และรายงาน findings พร้อม actionable recommendations
 
 ## Scope
 
@@ -92,7 +92,6 @@ Review refactor opportunities รวม SRP violations, code duplication, file c
 
 - ทุก finding ต้องมี file path และ line number
 - ไม่เดา ใช้ tools สำหรับ verification (`jscpd`, `madge`, `knip`, `ast-grep`)
-- ระบุ false positives ที่พบ
 
 ### 3. Review Independence
 

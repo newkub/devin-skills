@@ -1,6 +1,6 @@
 ---
 name: review-database
-description: Review database schema, migrations, data integrity, query patterns, N+1, connection management, search indexing
+description: Review database schema, migrations, data integrity, query patterns, N+1, connection, search indexing
 ---
 
 ## Goal

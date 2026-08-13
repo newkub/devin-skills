@@ -1,6 +1,10 @@
 ---
 name: review-coverage
 description: Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม health score
+related:
+  - scan-codebase
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -9,7 +13,7 @@ Review content coverage ครอบคลุมทุก features, APIs, use ca
 
 ## Scope
 
-content coverage review สำหรับ: skills, workflows, documentation — วิเคราะห์ gaps ระหว่าง inventory และ coverage surface ไม่รวมการเขียน content ใหม่ (ใช้ `/review-coverage` สำหรับ fix)
+content coverage review สำหรับ: skills, workflows, documentation — วิเคราะห์ gaps ระหว่าง inventory และ coverage surface ไม่รวมการเขียน content ใหม่
 
 ## Execute
 
@@ -52,7 +56,6 @@ content coverage review สำหรับ: skills, workflows, documentation —
 
 - ทุก features ต้องมี guide — ทุก APIs ต้องมี examples — ทุก use cases ต้องมี documentation
 - ทุก concepts ต้องมี explanations — ทุก best practices ต้องมี guidelines
-- จัดลำดับตาม impact: Getting Started > core > edge cases > advanced
 
 ### 2. High Impact Content
 
@@ -61,7 +64,6 @@ content coverage review สำหรับ: skills, workflows, documentation —
 
 ### 3. Non-Redundancy
 
-- รายละเอียดการเขียน content อยู่ใน `/review-coverage` แล้ว
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 
 ## Expected Outcome

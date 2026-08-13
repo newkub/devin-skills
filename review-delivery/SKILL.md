@@ -1,6 +1,6 @@
 ---
 name: review-delivery
-description: Review delivery ครอบคลุม docs, SEO, DX, analytics, testing, PR, logging, debugging, versioning, deprecation, git hygiene
+description: Review delivery ครอบคลุม docs, SEO, DX, analytics, testing, PR, logging, versioning, git hygiene
 ---
 
 ## Goal
@@ -22,9 +22,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup
 2. ระบุ delivery channels, documentation tools, และ versioning strategy ที่ใช้
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-6. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+4. ทำ `/update-codebase-health-cli` แล้วทำ `/run-health` เพื่อดึง metrics ล่าสุด
 
 ### 2. Documentation Review
 
@@ -181,9 +179,8 @@ Review git practices ครอบคลุม commit conventions, branch naming,
 
 > Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
+1. ทำ `/deep-validate` (cross-reference, type safety, runtime, security, compliance) และ `/validate` สำหรับ issues จากทุก section
+2. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
 ### 14. Report
 
@@ -220,11 +217,8 @@ Review git practices ครอบคลุม commit conventions, branch naming,
 - ถ้า project ไม่มี deprecation policy ให้ข้าม Section 11
 - ถ้า project ไม่มี git repository ให้ข้าม Section 12
 
-### 2. Severity Classification
+### 2. Low Severity Classification
 
-- Critical: missing README, broken setup guide, missing meta tags on key pages, broken setup, broken tracking, untested critical path, CI fail, secrets in diff, secrets in logs, silent failure, no versioning strategy, breaking change without notice, secrets in git history
-- High: missing API documentation, outdated example, missing structured data, missing debug tooling, missing event tracking, low coverage, missing tests, debug code in production, inconsistent log levels, missing stack trace, semver violation, missing deprecation notice, inconsistent commit conventions
-- Medium: incomplete guide, incomplete meta description, suboptimal hot reload, suboptimal funnel, missing edge case test, missing context in logs, incomplete error context, incomplete changelog, incomplete migration guide, inconsistent branch naming, large PRs
 - Low: cosmetic improvement, formatting issue, minor metadata improvement, minor DX improvement, minor analytics improvement, minor logging improvement, minor message improvement, changelog formatting, minor deprecation improvement, minor convention improvement
 
 ### 3. Evidence-Based Findings

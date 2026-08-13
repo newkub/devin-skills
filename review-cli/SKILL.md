@@ -1,6 +1,10 @@
 ---
 name: review-cli
 description: Review คุณภาพ CLI applications ครอบคลุม design, UX, error handling, tests
+related:
+  - report-format-table
+  - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal
@@ -44,7 +48,7 @@ Review CLI applications ให้ครอบคลุม design, structure, UX,
 
 1. ตรวจสอบ error types และ messages
 2. ตรวจสอบ exit codes
-3. ตรวจสอบ unwrap/expect/panic ใน Rust หรือ throw ที่ไม่มี catch
+3. ตรวจสอบ `unwrap`/`expect`/`panic` ใน Rust หรือ `throw` ที่ไม่มี catch
 4. ตรวจสอบ logging/tracing
 5. ตรวจสอบ input validation
 
@@ -76,7 +80,7 @@ Review CLI applications ให้ครอบคลุม design, structure, UX,
 
 - ทุก CLI ต้องมี `--help` และ `--version`
 - Error messages ต้องชัดเจนและ actionable
-- ไม่มี unwrap/expect ใน production code ยกเว้น invariant ที่ชัดเจน
+- ไม่มี `unwrap`/`expect` ใน production code ยกเว้น invariant ที่ชัดเจน
 - Commands ต้องมี tests ครอบคลุม
 
 ### 2. Severity

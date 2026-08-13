@@ -1,6 +1,17 @@
 ---
 name: review-data
-description: Review data flow lineage, API-to-database mapping, API-to-client mapping, schema consistency, upstream/downstream impact
+description: Review data flow lineage, API-to-database and API-to-client mapping, schema consistency, impact
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -48,8 +59,6 @@ data review สำหรับ: data flow lineage, API input/output schemas, dat
 2. ตรวจสอบ data caching: cache strategy (SWR, TTL, tag-based), cache invalidation, cache key design, cache stampede prevention, stale data risk
 3. ตรวจสอบ data freshness: polling strategy, WebSocket updates, real-time data sync, stale-while-revalidate, background refresh
 4. ตรวจสอบ upstream/downstream impact: breaking change propagation, consumer impact analysis, backward compatibility of data shape changes
-5. Critical: data loss in transformation, schema mismatch causing runtime error, broken data pipeline, stale data ที่ก่อให้เกิด business error, cache stampede
-6. High: inconsistent type mapping, missing cache invalidation, missing data contract, broken data lineage, unsafe timezone conversion
 
 ### 5. Validate, Rate And Report
 

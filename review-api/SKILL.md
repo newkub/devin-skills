@@ -1,6 +1,6 @@
 ---
 name: review-api
-description: Review API handlers, middleware, rate limiting, input validation, idempotency, API documentation, endpoint patterns
+description: Review API handlers, middleware, rate limiting, validation, idempotency, documentation, endpoints
 ---
 
 ## Goal

@@ -1,6 +1,17 @@
 ---
 name: review-error-handling
-description: Review error boundaries, try-catch coverage, unhandled rejections, error messages, error codes, graceful degradation, error recovery patterns
+description: Review error boundaries, try-catch, unhandled rejections, messages, codes, recovery, degradation
+related:
+  - scan-codebase
+  - deep-analyze
+  - update-codebase-health-cli
+  - update-rules
+  - run-health
+  - deep-validate
+  - validate
+  - report
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -25,7 +36,7 @@ error handling review สำหรับ: error boundaries, try-catch coverage, 
 > Goal: ครอบคลุมทุก error handling dimension พร้อม health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ error handling patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
@@ -38,8 +49,7 @@ error handling review สำหรับ: error boundaries, try-catch coverage, 
 2. ตรวจสอบ try-catch coverage: try-catch on async operations, try-catch on external calls, try-catch on critical functions, missing try-catch detection, catch block quality (not empty, not swallowing)
 3. ตรวจสอบ unhandled rejections: unhandled rejection handler, global rejection handler, floating promises, promise chain error propagation, async function error propagation
 4. ตรวจสอบ error classification: error types (network, validation, auth, server, client), error hierarchy, custom error classes, error discrimination, error vs exception vs fault
-5. Critical: unhandled error on critical path, silent failure ที่ก่อให้เกิด data loss, missing error handling on critical integration, empty catch block ใน critical path, no global error handler
-6. High: missing error boundary, missing try-catch on external call, floating promise, swallowing error, missing error classification, no error monitoring
+5. จัด severity ตาม `## Rules` section Severity Classification
 
 ### 4. Error Messages, Recovery And Monitoring Review
 
@@ -51,8 +61,7 @@ error handling review สำหรับ: error boundaries, try-catch coverage, 
 4. ตรวจสอบ error recovery: error recovery patterns, automatic retry, user-initiated retry, state recovery after error, error boundary reset, form data preservation on error
 5. ตรวจสอบ error logging: error logging completeness, error context (stack, user, request), error severity logging, PII scrubbing in logs, log level appropriateness, structured logging
 6. ตรวจสอบ error monitoring: error monitoring integration, error alerting, error rate thresholds, error grouping, error dashboard, error trend tracking
-7. Critical: data loss from error, no error recovery on critical path, PII exposed in error logs, no error monitoring on critical path
-8. High: confusing error message, no error recovery, missing error logging, missing error code, no graceful degradation, no retry option, missing structured logging
+7. จัด severity ตาม `## Rules` section Severity Classification
 
 ### 5. Validate, Rate And Report
 
@@ -75,8 +84,8 @@ error handling review สำหรับ: error boundaries, try-catch coverage, 
 
 ### 2. Severity Classification
 
-- Critical: unhandled error on critical path, silent failure ที่ก่อให้เกิด data loss, missing error handling on critical integration, empty catch block ใน critical path, no global error handler, data loss from error, no error recovery on critical path, PII exposed in error logs
-- High: missing error boundary, missing try-catch on external call, floating promise, swallowing error, confusing error message, no error recovery, missing error logging, no graceful degradation, no error monitoring
+- Critical: unhandled error on critical path, silent failure ที่ก่อให้เกิด data loss, missing error handling on critical integration, empty catch block ใน critical path, no global error handler, data loss from error, no error recovery on critical path, PII exposed in error logs, no error monitoring on critical path
+- High: missing error boundary, missing try-catch on external call, floating promise, swallowing error, missing error classification, confusing error message, no error recovery, missing error logging, no graceful degradation, no error monitoring
 - Medium: suboptimal error message, missing error code, missing structured logging, inconsistent error classification, missing retry option
 - Low: cosmetic, minor error message improvement, documentation gap
 

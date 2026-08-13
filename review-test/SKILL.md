@@ -21,7 +21,7 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 
 1. ระบุ test target: unit tests, integration tests, E2E tests
 2. อ่าน test configs, อ่าน test dependencies, ทำ `/scan-codebase`
-3. ระบุ test framework และ runner: Vitest, Jest, Playwright, Cypress
+3. ระบุ test framework และ runner: `Vitest`, `Jest`, `Playwright`, `Cypress`
 4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
 
 ### 2. Deep Analyze
@@ -31,7 +31,7 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 > Goal: พบทุก issue พร้อม root cause และ health score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ test patterns หลายมิติ
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
 3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-health` เพื่อดึง health report พร้อม test metrics

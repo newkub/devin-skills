@@ -1,6 +1,6 @@
 ---
 name: review-file-upload
-description: Review file size validation, MIME type checking, extension validation, magic number verification, file name sanitization, path traversal prevention, storage, access control, CDN, virus scan
+description: Review file upload validation, sanitization, storage, access control, CDN, virus scan, health score
 ---
 
 ## Goal
@@ -41,8 +41,7 @@ file upload review สำหรับ: file size validation, MIME type checking,
 4. ตรวจสอบ magic number verification: file signature verification, magic number for common types (JPEG, PNG, PDF, ZIP), missing magic number check, magic number vs MIME consistency
 5. ตรวจสอบ file name sanitization: file name character sanitization, unicode normalization, file name length limit, file name uniqueness (UUID, hash), original name preservation, file name collision prevention
 6. ตรวจสอบ path traversal prevention: path sanitization, directory traversal (../), null byte injection, absolute path prevention, symlink prevention, storage path construction
-7. Critical: no file type validation, path traversal vulnerability, no size limit ที่ก่อให้เกิด DoS, missing magic number verification ที่อนุญาต malicious file, no sanitization ที่ก่อให้เกิด XSS
-8. High: missing MIME type check, missing extension validation, missing file name sanitization, weak size limit, missing path traversal prevention
+7. จัด severity ตาม `## Rules` → Severity Classification
 
 ### 4. Storage, Access Control, CDN And Virus Scan Review
 
@@ -54,8 +53,7 @@ file upload review สำหรับ: file size validation, MIME type checking,
 4. ตรวจสอบ virus scan: virus scan integration, scan before storage, scan after upload, scan result handling, infected file handling, scan timeout, scan queue
 5. ตรวจสอบ upload error handling: upload failure handling, partial upload recovery, upload retry, upload timeout, upload cancellation, upload error messages
 6. ตรวจสอบ upload UX: upload progress indicator, upload cancel button, upload drag-and-drop, multi-file upload, upload preview, upload success feedback, upload error feedback
-7. Critical: insecure storage ที่ก่อให้เกิด data leak, no access control on private files, missing virus scan on user uploads, path traversal ที่เข้าถึง system files
-8. High: missing CDN for public files, missing signed URL, missing upload progress, missing upload retry, weak access control, missing upload error handling
+7. จัด severity ตาม `## Rules` → Severity Classification
 
 ### 5. Validate, Rate And Report
 
@@ -95,7 +93,6 @@ file upload review สำหรับ: file size validation, MIME type checking,
 ### 5. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
 
 ## Expected Outcome
 

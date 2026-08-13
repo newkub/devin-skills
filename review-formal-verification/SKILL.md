@@ -1,6 +1,6 @@
 ---
 name: review-formal-verification
-description: Review invariant verification, contract verification, property-based testing, exhaustive verification, static analysis, runtime verification
+description: Review invariants, contracts, property tests, exhaustive checks, static and runtime verification
 ---
 
 ## Goal
@@ -18,7 +18,7 @@ formal verification review สำหรับ: invariant verification (loop inva
 > Goal: เข้าใจ formal verification tools และ patterns ที่ใช้
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ verification structure
-2. ระบุ verification tools: property-based testing libraries (fast-check, Hypothesis, QuickCheck), assertion libraries, SMT solvers (Z3), static analyzers, runtime verification tools ที่ใช้
+2. ระบุ verification tools: property-based testing libraries (`fast-check`, `Hypothesis`, `QuickCheck`), assertion libraries, SMT solvers (`Z3`), static analyzers, runtime verification tools ที่ใช้
 3. ระบุ verification patterns: assertions, invariants, contracts, property tests, exhaustive checks ที่มีใน codebase
 4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
 
@@ -39,7 +39,7 @@ formal verification review สำหรับ: invariant verification (loop inva
 1. ตรวจสอบ invariant verification: loop invariants (assertions ก่อน/หลัง loop), data invariants (object/array structure assumptions), state invariants (state machine valid states), class invariants (constructor + methods รักษา invariant)
 2. ตรวจสอบ contract verification: preconditions (input validation ก่อน execute), postconditions (output guarantees หลัง execute), invariants (state ที่ต้องคงที่), function contracts (input → output mapping guarantees), API contracts (request/response guarantees)
 3. ตรวจสอบ assertion usage: assertion coverage ใน critical paths, assertion messages (descriptive บอก what และ why), assertion vs throw (assert สำหรับ impossible states, throw สำหรับ expected errors), assertion stripping ใน production
-4. ตรวจสอบ Design by Contract patterns: contract encoding (TypeScript branded types, runtime checks, Zod schemas), contract enforcement location (boundary vs internal), contract documentation, contract testing
+4. ตรวจสอบ Design by Contract patterns: contract encoding (TypeScript branded types, runtime checks, `Zod` schemas), contract enforcement location (boundary vs internal), contract documentation, contract testing
 5. Critical: missing invariant ใน critical path ที่ก่อให้เกิด data corruption, missing precondition ที่ก่อให้เกิด crash, broken contract ที่ก่อให้เกิด incorrect output, assertion ที่เป็น false negative
 6. High: missing assertion ใน important path, weak invariant, missing postcondition, inconsistent contract enforcement, missing contract documentation
 
@@ -85,8 +85,8 @@ formal verification review สำหรับ: invariant verification (loop inva
 
 ### 2. Severity Classification
 
-- Critical: missing invariant ใน critical path ที่ก่อให้เกิด data corruption, missing precondition ที่ก่อให้เกิด crash, broken contract, non-exhaustive pattern matching ใน critical path, null safety gap ที่ก่อให้เกิด crash, taint analysis gap ที่ก่อให้เกิด security issue, missing runtime assertion ที่ก่อให้เกิด silent data corruption
-- High: missing assertion ใน important path, weak invariant, missing postcondition, inconsistent contract enforcement, weak generator, missing exhaustive check, incomplete state machine, missing fail-fast, missing runtime invariant monitoring
+- Critical: ตามที่ระบุใน Execute steps 3-5 (data corruption, crash, security issue, silent data corruption)
+- High: ตามที่ระบุใน Execute steps 3-5 (missing assertion, weak invariant, incomplete state machine, missing fail-fast)
 - Medium: missing contract documentation, suboptimal property test coverage, minor dead code, inconsistent fail-fast/fail-safe
 - Low: cosmetic, minor assertion message, documentation gap
 

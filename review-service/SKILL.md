@@ -1,6 +1,6 @@
 ---
 name: review-service
-description: Review service layer organization, single responsibility, boundary clarity, business logic patterns, transaction boundaries, error propagation, testability, dependency injection
+description: Review service layer organization, boundaries, business logic, transactions, testability, DI
 ---
 
 ## Goal

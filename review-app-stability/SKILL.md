@@ -117,18 +117,11 @@ Review ความเสถียรของ application เพื่อหา
 - ระบุ monitoring gaps, missing logs, missing health checks
 - ระบุ recovery patterns, retries, circuit breakers
 
-### 3. Use Other Workflows
+### 3. Output Format
 
-- ใช้ `/use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
-- ไม่ duplicate เนื้อหาที่มีอยู่แล้วใน review-* skills อื่น
-- อ้างอิงไปยัง skills ที่เหมาะสมแทนการเขียนซ้ำ
-
-### 4. Output Format
-
-- ใช้ `/report-format-table` สำหรับตาราง
 - ระบุ severity ชัดเจน: `critical`, `high`, `medium`, `low`
 - ให้ actionable recommendations ทุกรายการ
-- ใช้ backticks สำหรับ files, functions, commands
+- ใช้ backticks สำหรับ `files`, `functions`, `commands`
 
 ## Expected Outcome
 
