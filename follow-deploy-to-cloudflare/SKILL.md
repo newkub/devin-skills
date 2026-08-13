@@ -1,22 +1,35 @@
 ---
 name: follow-deploy-to-cloudflare
-description: Deploy Nitro application ไปยัง Cloudflare Pages หรือ Workers ด้วย wrangler
+description: Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangler จนกว่าจะ live สำเร็จ
+related:
+  - follow-nitro
+  - follow-wrangler-cli
+  - follow-cloudflare-worker
+  - run-build
+  - watch-browser
+  - resolve-errors
+  - loop-until-complete
 ---
 
 ## Goal
 
-Deploy Nitro application ไปยัง Cloudflare Pages หรือ Workers ด้วย wrangler จนกว่าจะ live สำเร็จ
+Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangler จนกว่าจะ live สำเร็จ
+
+## Scope
+
+ใช้กับ Nitro project ที่ต้องการ deploy ด้วย `wrangler` บน Cloudflare Workers ครอบคลุม build, deploy, watch, และ fix errors จนใช้งานได้
 
 ## Execute
 
 ### 1. Setup Nitro Config
 
-ตั้งค่า Nitro configuration สำหรับ Cloudflare deployment
+ตั้งค่า Nitro configuration สำหรับ Cloudflare Workers
 
-1. สร้างหรืออัพเดท `nitro.config.ts`
-2. เลือก preset ตาม deployment target
+1. สร้างหรืออัปเดต `nitro.config.ts`
+2. ตั้งค่า `preset: "cloudflare_module"`
 3. ตั้งค่า `cloudflare.deployConfig: true` สำหรับ auto-generate wrangler config
 4. ตั้งค่า `cloudflare.nodeCompat: true` ถ้าใช้ Node.js APIs
+5. ตั้งค่า `compatibilityDate: "2024-09-19"` ใน `nitro.config.ts`
 
 ### 2. Build Application
 
@@ -24,15 +37,15 @@ Build application สำหรับ deployment
 
 1. Run `bun run build` หรือ `bunx nitro build`
 2. ตรวจสอบว่า build สำเร็จ
-3. ตรวจสอบว่า `.output` folder ถูกสร้าง
-4. ตรวจสอบว่า `wrangler.json` ถูก generate (ถ้าใช้ deployConfig)
+3. ตรวจสอบว่า `.output/server` ถูกสร้าง
+4. ตรวจสอบว่า `wrangler.json` ถูก generate ใน `.output/server` (ถ้าใช้ deployConfig)
 
-### 3. Deploy To Cloudflare
+### 3. Deploy To Cloudflare Workers
 
-Deploy ไปยัง Cloudflare ด้วย wrangler
+Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 
 1. Login ด้วย `bunx wrangler login`
-2. Deploy ด้วย `bunx wrangler deploy` (Workers) หรือ `bunx wrangler pages deploy` (Pages)
+2. Deploy ด้วย `bunx wrangler deploy` หรือ `bunx wrangler deploy --config .output/server/wrangler.json` ถ้า wrangler ไม่ auto-detect config
 3. ตรวจสอบว่า deployment เริ่มขึ้นแล้ว
 4. รับ deployment URL จาก output
 
@@ -68,21 +81,20 @@ Watch deployment ด้วย browser preview
 ### 1. Preset Selection
 
 - ใช้ `cloudflare_module` สำหรับ Cloudflare Workers
-- ใช้ `cloudflare_pages` สำหรับ Cloudflare Pages
 - ตั้งค่า `compatibilityDate` เป็น `"2024-09-19"` เสมอ
-- ใช้ `deployConfig: true` สำหรับ auto-generate wrangler config
+- ใช้ `cloudflare.deployConfig: true` สำหรับ auto-generate wrangler config
+- เปิดใช้งาน `cloudflare.nodeCompat: true` ถ้าใช้ Node.js APIs
 
 ### 2. Build Process
 
 - ใช้ `bun run build` หรือ `bunx nitro build` ก่อน deploy เสมอ
-- ตรวจสอบ build output ใน `.output` folder
+- ตรวจสอบ build output ใน `.output/server`
 - ตรวจสอบว่า build สำเร็จ
 
 ### 3. Wrangler Deployment
 
 - Login ด้วย `bunx wrangler login` ก่อน deploy
-- ใช้ `bunx wrangler deploy` สำหรับ Cloudflare Workers
-- ใช้ `bunx wrangler pages deploy` สำหรับ Cloudflare Pages
+- ใช้ `bunx wrangler deploy` สำหรับ Cloudflare Workers หรือระบุ `--config .output/server/wrangler.json` ถ้า wrangler ไม่ auto-detect config
 - ตรวจสอบ deployment output
 - รับ deployment URL จาก output
 
@@ -107,7 +119,7 @@ Watch deployment ด้วย browser preview
 ## Expected Outcome
 
 - Nitro application build สำเร็จ
-- Deploy ไป Cloudflare สำเร็จด้วย wrangler
+- Deploy ไปยัง Cloudflare Workers สำเร็จด้วย wrangler
 - Deployment live และใช้งานได้
 - ไม่มี console errors
 - ไม่มี network errors
