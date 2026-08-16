@@ -71,12 +71,13 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
-- ตั้งค่า `INFISICAL_TOKEN` environment variable ใน CI/CD platform
+- GitHub Actions: ใช้ `Infisical/secrets-action` ด้วย OIDC แทน long-lived token
+- CI/CD อื่นๆ: ตั้งค่า `INFISICAL_TOKEN` environment variable ใน CI/CD platform
 - Export เป็น `.env`: `infisical export --format=dotenv-export > .env`
 - Export เป็น JSON: `infisical export --format=json > secrets.json`
 - Export เป็น YAML: `infisical export --format=yaml > secrets.yaml`
 - ใช้ `infisical run` ใน CI/CD scripts แทนการ export ไฟล์
-- Machine identity token: `export INFISICAL_TOKEN=$(infisical login --method=universal-auth --client-id=<id> --client-secret=<secret> --silent --plain)`
+- Machine identity token (non-OIDC): `export INFISICAL_TOKEN=$(infisical login --method=universal-auth --client-id=<id> --client-secret=<secret> --silent --plain)`
 
 ### 7. Use SDK For Programmatic Access
 
@@ -96,7 +97,32 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 - Docker: ติดตั้ง CLI ใน Dockerfile และใช้ `infisical run` ใน `CMD`
 - Kubernetes: ใช้ Infisical Operator หรือ sync ไป Kubernetes secrets
-- GitHub Actions: ใช้ Infisical GitHub Action หรือ `infisical run` ใน workflow
+- GitHub Actions: ใช้ `Infisical/secrets-action` ด้วย OIDC authentication
+  - สร้าง machine identity ใน Infisical project > Access Control > Machine Identities
+  - ลบ Universal Auth default แล้วเพิ่ม auth method `OIDC Auth`
+  - ตั้งค่า OIDC Discovery URL และ Issuer เป็น `https://token.actions.githubusercontent.com`
+  - ตั้งค่า Subject `repo:<owner>/<repo>:<context>` เช่น `repo:octocat/example-repo:ref:refs/heads/main`
+  - ตั้งค่า Audiences เป็น GitHub organization URL เช่น `https://github.com/octo-org`
+  - คัดลอก Identity ID (safe สำหรับ commit ใน workflow)
+  - Workflow example:
+    ```yaml
+    permissions:
+      id-token: write
+      contents: read
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+          - uses: Infisical/secrets-action@v1.0.9
+            with:
+              method: oidc
+              identity-id: <identity-id>
+              project-slug: <project-slug>
+              env-slug: dev
+    ```
+  - ใช้ `github/actions-oidc-debugger` ช่วย inspect token claims
+  - ทางเลือก: GitHub Secret Syncs สำหรับ one-way sync Infisical → GitHub Secrets
 - Vercel: ใช้ Infisical sync ไป Vercel environment variables
 - Terraform: ใช้ Infisical Terraform Provider
 - OIDC: ใช้สำหรับ passwordless authentication ใน CI/CD ถ้ารองรับ
@@ -163,7 +189,8 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 ### 5. CI/CD Patterns
 
-- ใช้ `INFISICAL_TOKEN` environment variable สำหรับ authentication
+- GitHub Actions: ใช้ `Infisical/secrets-action` ด้วย OIDC — ไม่ต้องเก็บ `INFISICAL_TOKEN`
+- CI/CD อื่นๆ: ใช้ `INFISICAL_TOKEN` environment variable สำหรับ authentication
 - ใช้ `infisical export` สำหรับ export secrets ไปยังไฟล์
 - ใช้ `infisical run` สำหรับ inject secrets โดยตรง
 - แยก machine identities สำหรับแต่ละ environment
@@ -186,7 +213,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
   - `"secrets:export": "infisical export --format=dotenv-export > .env"` — export secrets เป็น .env
   - `"secrets:run": "infisical run --env=dev --"` — generic secrets runner สำหรับ command อื่นๆ
 - Workspace scripts: ไม่ต้องเพิ่ม Infisical scripts ที่ workspace level — ใช้ root scripts ครอบผ่าน Turborepo
-- CI/CD: ตั้งค่า `INFISICAL_TOKEN` เป็น secret variable แล้วใช้ `infisical run --env=prod -- turbo run ci`
+- CI/CD: สำหรับ GitHub Actions ใช้ `Infisical/secrets-action` ด้วย OIDC; สำหรับ CI/CD อื่นๆ ตั้งค่า `INFISICAL_TOKEN` แล้วใช้ `infisical run --env=prod -- turbo run ci`
 - `.env.example` ต้องมี `INFISICAL_TOKEN` และ `INFISICAL_DOMAIN` สำหรับ documentation
 - `turbo.json` ต้องมี `INFISICAL_TOKEN` ใน `passThroughEnv` และ `INFISICAL_DOMAIN` ใน `env`
 
