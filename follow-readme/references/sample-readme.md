@@ -78,7 +78,7 @@
 | Framework | Workflows |
 |-----------|-----------|
 | Vue | `/follow-vue`, `/follow-nuxt`, `/follow-vueuse` |
-| React | `/follow-react`, `/follow-next` |
+| React | `/follow-react`, `/follow-nextjs` |
 | Rust | `/follow-rust` |
 | Bun | `/follow-bun`, `/use-bun-native-instead-nodejs` |
 
