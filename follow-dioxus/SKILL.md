@@ -20,7 +20,6 @@ triggers:
 
 ตั้งค่า Dioxus สำหรับสร้าง cross-platform applications (Desktop, Web, Mobile) ด้วย Rust และ React-like components
 
-
 - ติดตั้ง Dioxus CLI และ dependencies
 - กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
 - พัฒนา desktop application ด้วย Rust
@@ -28,160 +27,81 @@ triggers:
 
 ## Execute
 
-### Phase 0: Precondition
+### 1. Check Precondition
 
-- 0.1 ตรวจสอบ Environment
-  - มี Rust ติดตั้งแล้ว (`rustc --version`)
-  - มี Cargo ติดตั้งแล้ว (`cargo --version`)
-  - มี `wasm32-unknown-unknown` target (สำหรับ web)
+ตรวจสอบ environment ก่อนเริ่ม
 
-### Phase 1: Setup
+> Goal: มี Rust toolchain พร้อมสำหรับ Dioxus
 
-- 1.1 ติดตั้ง Dioxus CLI
-  - รัน `cargo install dioxus-cli`
-  - ตรวจสอบ `dx --version`
+1. ตรวจสอบ Rust ติดตั้งแล้ว (`rustc --version`)
+2. ตรวจสอบ Cargo ติดตั้งแล้ว (`cargo --version`)
+3. ติดตั้ง `wasm32-unknown-unknown` target ถ้าทำ Web (`rustup target add wasm32-unknown-unknown`)
 
-- 1.2 ติดตั้ง Web Target (ถ้าทำ Web)
-  - รัน `rustup target add wasm32-unknown-unknown`
+### 2. Setup
 
-### Phase 2: Create
+ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
 
-- 2.1 สร้างโปรเจกต์
-  - รัน `dx new my-dioxus-app`
-  - เลือก template ที่ต้องการ (Desktop, Web, FullStack)
+> Goal: มี project structure เริ่มต้นพร้อมพัฒนา
 
-- 2.2 หรือสร้างด้วยตนเอง
-  - สร้าง `Cargo.toml`:
+1. ติดตั้ง Dioxus CLI: `cargo install dioxus-cli`
+2. ตรวจสอบ `dx --version`
+3. สร้างโปรเจกต์: `dx new my-dioxus-app` และเลือก template (Desktop, Web, FullStack)
+4. หรือสร้าง `Cargo.toml` เองด้วย dependency `dioxus`
 
-```toml [Cargo.toml]
-[package]
-name = "my-dioxus-app"
-version = "0.1.0"
-edition = "2021"
+### 3. Configure
 
-[dependencies]
-dioxus = { version = "0.5", features = ["desktop"] }
+กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
 
-[profile.release]
-opt-level = 3
-lto = true
-```
+> Goal: project สามารถ build ได้ทุก target
 
-### Phase 3: Configure
+1. ระบุ `dioxus` dependency ใน `Cargo.toml` พร้อม feature ตาม target
+2. สร้าง `Dioxus.toml` กำหนด `default_platform`, `out_dir`, `asset_dir`
+3. ตั้งค่า `web.proxy` ถ้าเชื่อม API backend
+4. ตรวจสอบ profile release: `opt-level = 3` และ `lto = true`
 
-- 3.1 สร้าง Dioxus.toml
-  - สร้างไฟล์ `Dioxus.toml`:
+### 4. Develop
 
-```toml [Dioxus.toml]
-[application]
-name = "My Dioxus App"
-default_platform = "desktop"
-out_dir = "dist"
-asset_dir = "public"
+พัฒนา components และรัน development server
 
-[web.app]
-title = "My Dioxus App"
+> Goal: UI ทำงานได้ และ development server รันได้
 
-[web.watcher]
-reload_html = true
-watch_path = ["src", "public"]
+1. สร้าง `src/main.rs` ด้วย `launch(app)` และ component tree
+2. ใช้ `use_signal` สำหรับ state
+3. สร้าง components แยกไฟล์ใน `src/components/`
+4. รัน `dx serve` หรือ `dx serve --platform desktop`
 
-[[web.proxy]]
-backend = "http://localhost:3000/api/"
-```
+### 5. Build
 
-### Phase 4: Develop
+Build สำหรับ production
 
-- 4.1 สร้าง Components
-  - สร้าง `src/main.rs`:
+> Goal: ได้ executable หรือ static files พร้อม deploy
 
-```rust [src/main.rs]
-use dioxus::prelude::*;
-
-fn main() {
-    launch(app);
-}
-
-fn app() -> Element {
-    let mut count = use_signal(|| 0);
-
-    rsx! {
-        div {
-            h1 { "Hello, Dioxus!" }
-            p { "Count: {count}" }
-            button {
-                onclick: move |_| count += 1,
-                "Increment"
-            }
-        }
-    }
-}
-```
-
-- 4.2 รัน Development Server
-  - รัน `dx serve`
-  - หรือ `dx serve --platform desktop`
-
-### Phase 5: Build
-
-- 5.1 Build สำหรับ Production
-  - Desktop: `dx build --release`
-  - Web: `dx build --release --platform web`
-
-- 5.2 ตรวจสอบ Output
-  - Desktop: `dist/` มี executable
-  - Web: `dist/` มี static files
-
-## Inputs
-
-| Input | Details |
-|-------|-----------|
-| Language | Rust |
-| Platform | Desktop (default), Web, Mobile |
-| CLI | Dioxus CLI |
+1. Desktop: `dx build --release`
+2. Web: `dx build --release --platform web`
+3. ตรวจสอบ `dist/` มี output ที่ถูกต้อง
 
 ## Rules
 
-| Category | Requirements |
-|------|---------|
-| Rust | ต้องมี Rust ติดตั้งแล้ว |
-| CLI | `cargo install dioxus-cli` |
-| Config | สร้าง `Dioxus.toml` |
-| Dependencies | `dioxus` crate ใน Cargo.toml |
-| Hot Reload | ใช้ `dx serve` สำหรับ development |
+### 1. Project Structure
 
-## Structure
+- `Cargo.toml` สำหรับ Rust dependencies
+- `Dioxus.toml` สำหรับ Dioxus config
+- `src/main.rs` สำหรับ entry point
+- `src/components/` สำหรับ reusable components
+- `dist/` สำหรับ build output
 
-### Directory Structure
+### 2. Rust Requirements
 
-```text
-project/
-├── Cargo.toml            # Rust dependencies
-├── Dioxus.toml           # Dioxus config
-└── src/
-    ├── main.rs           # Entry point
-    └── components/
-        └── app.rs        # App component
-```
+- ต้องมี Rust ติดตั้งแล้ว
+- ติดตั้ง `dioxus-cli` ด้วย `cargo install dioxus-cli`
+- ใช้ `dioxus` crate ใน `Cargo.toml`
+- ใช้ `dx serve` สำหรับ development
 
-### Phase Definitions
+### 3. Platform Targets
 
-| Phase | Description | Main Activities |
-|-------|-------------|---------------|
-| Setup | ติดตั้ง | Install CLI |
-| Create | สร้างโปรเจกต์ | dx new |
-| Configure | กำหนดค่า | Cargo.toml, Dioxus.toml |
-| Develop | พัฒนา | Write components |
-| Build | Build | dx build |
-
-## Outputs
-
-| Output | Details |
-|--------|-----------|
-| Cargo.toml | Rust dependencies |
-| Dioxus.toml | Dioxus configuration |
-| src/main.rs | Application code |
-| dist/ | Built application |
+- Desktop: default platform
+- Web: ต้องมี `wasm32-unknown-unknown` target
+- Mobile: ใช้ Dioxus mobile target ตาม official docs
 
 ## Expected Outcome
 
@@ -189,8 +109,3 @@ project/
 - Project สร้างสำเร็จ
 - Development server ทำงานได้
 - Production build สร้าง executable ได้
-
-## Reference
-
-- `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
-- `connect-workflows` - เชื่อมโยง workflows

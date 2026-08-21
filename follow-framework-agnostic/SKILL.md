@@ -1,6 +1,6 @@
 ---
 name: follow-framework-agnostic
-description: แนวทางการพัฒนาโค้ดที่ทำงานได้บน multiple frameworks โดยไม่ผูกติดกับ framework ใด framework หนึ่ง
+description: พัฒนา libraries ที่ใช้ได้บน multiple frameworks โดยไม่ผูกติด framework ใด
 allowed-tools:
   - read
   - edit
@@ -20,7 +20,6 @@ triggers:
 
 พัฒนาโค้ดที่สามารถทำงานได้บน multiple frameworks (React, Vue, Svelte, Solid) โดยไม่ผูกติดกับ framework ใด framework หนึ่งเป็นพิเศษ
 
-
 ใช้สำหรับ:
 
 - สร้าง libraries ที่ใช้ได้หลาย frameworks
@@ -30,83 +29,60 @@ triggers:
 
 ## Execute
 
-### Phase 1: Design
+### 1. Design Core API
 
-- 1.1 Define Core API
-  - กำหนด interfaces หลัก
-  - กำหนด public API
-  - ไม่ใช้ framework-specific types
+กำหนด interfaces และ adapters ที่ framework-agnostic
 
-- 1.2 Design Adapters
-  - วางแผน adapter สำหรับแต่ละ framework
-  - กำหนด adapter interface
-  - วางแผน framework-specific hooks
+> Goal: มี public API ที framework ใดก็ใช้ได้
 
-### Phase 2: Implement Core
+1. กำหนด interfaces หลักโดยไม่อ้างอิง framework-specific types
+2. กำหนด public API
+3. วางแผน adapter สำหรับแต่ละ framework
+4. กำหนด framework-specific hooks/composables ทีต้อง implement
 
-- 2.1 Create Core Logic
-  - สร้าง `src/core/` directory
-  - Implement business logic
-  - ใช้ vanilla TypeScript/JavaScript
-  - ไม่ import framework dependencies
+### 2. Implement Core
 
-- 2.2 Core Utilities
-  - สร้าง utility functions
-  - ใช้ standard Web APIs
-  - สร้าง pure functions
+สร้าง framework-agnostic business logic
 
-### Phase 3: Create Adapters
+> Goal: core logic ทำงานได้โดยไม่ต้องมี framework
 
-- 3.1 React Adapter
-  - สร้าง `src/react/` directory
-  - สร้าง hooks ที่ wrap core logic
-  - ใช้ React patterns (useState, useEffect)
+1. สร้าง `src/core/` directory
+2. Implement business logic ด้วย vanilla TypeScript/JavaScript
+3. สร้าง utility functions โดยใช้ standard Web APIs
+4. ห้าม import framework dependencies ใน `src/core/`
 
-- 3.2 Vue Adapter
-  - สร้าง `src/vue/` directory
-  - สร้าง composables ที่ wrap core logic
-  - ใช้ Vue patterns (ref, computed, watch)
+### 3. Create Adapters
 
-- 3.3 Other Frameworks
-  - ทำซ้ำสำหรับ frameworks อื่น
-  - รักษา consistent API
-  - ใช้ framework-specific patterns
+สร้าง adapters สำหรับแต่ละ framework
 
-### Phase 4: Test
+> Goal: ทุก framework ใช้ core ได้ผ่าน adapter
 
-- 4.1 Core Tests
-  - เขียน unit tests สำหรับ core
-  - ใช้ vanilla test framework
+1. สร้าง `src/react/` directory และ hooks ที่ wrap core logic
+2. สร้าง `src/vue/` directory และ composables ที่ wrap core logic
+3. ทำซ้ำสำหรับ Svelte, Solid, หรือ frameworks อื่น
+4. รักษา consistent API ข้าม adapters
 
-- 4.2 Adapter Tests
-  - เขียน integration tests สำหรับแต่ละ adapter
-  - ทดสอบกับ framework-specific patterns
-  - verify compatibility
+### 4. Test
 
-- 4.3 Cross-Framework Tests
-  - ทดสอบว่า behavior consistent ทุก framework
-  - ทดสอบ edge cases
-  - verify type safety
+ทดสอบ core และ adapters
 
-## Inputs
+> Goal: behavior consistent และ type-safe ข้าม frameworks
 
-| Input | Details |
-|-------|---------|
-| Target Frameworks | รายการ frameworks ที่ต้องการรองรับ |
-| Core Logic | business logic ที่ต้องการแยก |
+1. เขียน unit tests สำหรับ core ด้วย vanilla test framework
+2. เขียน integration tests สำหรับแต่ละ adapter
+3. ทดสอบ edge cases ข้าม frameworks
+4. verify type safety ด้วย TypeScript
 
 ## Rules
 
-### Core Principles
+### 1. Core Principles
 
-| Principle | Description |
-|-----------|-------------|
-| Framework-agnostic core | Core logic ไม่ import framework |
-| Adapter pattern | สร้าง adapters สำหรับแต่ละ framework |
-| Standard APIs | ใช้ Web APIs มาตรฐาน |
-| Type-safe | รองรับ TypeScript ทุก framework |
+- Framework-agnostic core: core logic ไม่ import framework
+- Adapter pattern: สร้าง adapters สำหรับแต่ละ framework
+- Standard APIs: ใช้ Web APIs มาตรฐาน
+- Type-safe: รองรับ TypeScript ทุก framework
 
-### Code Organization
+### 2. Code Organization
 
 ```text
 src/
@@ -124,25 +100,11 @@ src/
     └── helpers.ts
 ```
 
-## Structure
+### 3. Safety
 
-### Phase Definitions
-
-| Phase | Description | Main Activities |
-|-------|-------------|---------------|
-| Design | ออกแบบ | กำหนด core API |
-| Implement Core | พัฒนา core | framework-agnostic logic |
-| Create Adapters | สร้าง adapters | สำหรับแต่ละ framework |
-| Test | ทดสอบ | verify ทุก frameworks |
-
-## Outputs
-
-| Output | Details |
-|--------|---------|
-| Core Library | Framework-agnostic core |
-| Adapters | Adapters สำหรับแต่ละ framework |
-| Tests | Test suite ครอบคลุม |
-| Documentation | คู่มือการใช้งาน |
+- ไม่ผูก core logic กับ framework lifecycle
+- ไม่ใช้ framework-specific global state
+- เก็บ types ใน `core/types.ts` ไม่ใช่ใน adapter
 
 ## Expected Outcome
 
@@ -151,7 +113,7 @@ src/
 - API consistent ข้าม frameworks
 - Type safety ครบถ้วน
 
-## Reference
+## Guide
 
-- `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
-- `/follow-typescript` - TypeScript best practices
+- `/validate` — ตรวจสอบความถูกต้องก่อนเริ่ม
+- `/follow-typescript` — TypeScript best practices
