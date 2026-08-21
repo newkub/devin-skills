@@ -3,6 +3,7 @@ name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-clean-architecture
+  - follow-bunup
+  - follow-tasks
 ---
 
 ## Goal
@@ -94,7 +99,7 @@ triggers:
 - `bun run build` สร้าง dist/ พร้อม type declarations
 - Scripts สอดคล้องกับ `/follow-tasks`
 
-## Example Template
+## Examples
 
 ```text
 project/
@@ -134,7 +139,7 @@ export default defineConfig({
 });
 ```
 
-## Reference
+## Guide
 
 - `/follow-clean-architecture` — Clean Architecture structure
 - `/follow-bunup` — Bunup bundler configuration
