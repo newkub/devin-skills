@@ -73,7 +73,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 3. จัดเรียงตาม popularity และ relevance
 4. รวมเฉพาะ libraries ที่มี public repositories
 5. อัพเดท list เป็นระยะ
-6. เชื่อมโยงกับ `/rolldown`
+6. เชื่อมโยงกับ `/follow-rolldown`
 
 ## Expected Outcome
 

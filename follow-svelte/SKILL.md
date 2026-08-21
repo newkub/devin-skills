@@ -10,7 +10,7 @@ description: ตั้งค่า Vite + Svelte 5 Runes + TypeScript (client-si
 ## Scope
 
 ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
-หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ `/follow-svelte-kit-architecture` แทน
+หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ `/follow-svelte-kit` แทน
 
 ## Execute
 

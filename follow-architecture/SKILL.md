@@ -68,7 +68,7 @@ related:
 | Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
 | Vue.js | `vue` in dependencies | `/follow-vue` |
 | SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack-architecture` |
-| Svelte | `svelte` in dependencies | `/follow-svelte-kit-architecture` |
+| Svelte | `svelte` in dependencies | `/follow-svelte-kit` |
 | Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `/follow-layered-architecture` |
 | Rust | `Cargo.toml` exists | `/follow-clean-architecture` |
 | Bun | `bun` in dependencies | `/follow-clean-architecture` |

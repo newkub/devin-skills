@@ -1,5 +1,5 @@
 ---
-name: semantic-release
+name: follow-sematic-release
 description: "Fully automated version management และ package publishing tool ที่ใช้ conventional commits"
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']

@@ -1,5 +1,5 @@
 ---
-name: supabase
+name: follow-supabase
 description: "Open source Firebase alternative สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, และ..."
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
