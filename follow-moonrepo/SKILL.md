@@ -1,6 +1,6 @@
 ---
 name: follow-moonrepo
-description: แนวทางการพัฒนา monorepo ด้วย Moonrepo v2.x
+description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project graph
 allowed-tools:
   - read
   - edit
@@ -8,224 +8,105 @@ allowed-tools:
   - grep
   - glob
   - exec
-  - ask_user_question
 triggers:
   - user
   - model
 related:
-  - follow-monorepo
   - follow-tasks
   - follow-package-manifest
+  - follow-config
+  - validate
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา monorepo ด้วย Moonrepo v2.x ให้มีประสิทธิภาพสูงสุด
+ตั้งค่าและใช้งาน moonrepo สำหรับ monorepo ด้วย `.moon/` configuration, task graph, และ project boundaries
 
 ## Scope
 
-ใช้สำหรับ monorepo ที่ใช้ Moonrepo สำหรับ task orchestration และ build orchestration
+ใช้สำหรับ project ที่เลือกใช้ moonrepo เป็น monorepo orchestrator แทน turborepo
 
 ## Execute
 
-### 1. Setup
+### 1. Identify Workspace
 
-ติดตั้งและ initialize Moonrepo
+ระบุว่า project ใช้ moonrepo
 
-> Goal: มี `.moon/` directory และ config files เริ่มต้น
+> Goal: รู้ scope ของ moonrepo workspace
 
-1. ติดตั้ง Moonrepo ด้วย `bun add -d @moonrepo/cli`
-2. Initialize monorepo ด้วย `moon init -y`
-3. สร้าง `.moon/` directory สำหรับ configuration
-4. สร้าง `workspace.yml` สำหรับ workspace configuration
-5. สร้าง `.moon/tasks/` directory สำหรับ task definitions
-6. สร้าง `toolchains.yml` สำหรับ language versions
+1. ตรวจสอบ `.moon/workspace.yml` หรือ `moon.yml`
+2. อ่าน root `package.json` scripts
+3. ระบุ projects ใน monorepo จาก `.moon/workspace.yml` globs
+4. บันทึก project list
 
-### 2. Workspace Configuration
+### 2. Configure Workspace
 
-ตั้งค่า workspace, pipeline, VCS, และ caching
+ตั้งค่า moonrepo workspace
 
-> Goal: workspace configuration ครบถ้วน
+> Goal: `.moon/` config ครบถ้วน
 
-1. กำหนด `projects` ใน `.moon/workspace.yml` ด้วย glob list หรือ sources map
-2. ตั้งค่า `defaultProject` สำหรับ default scope
-3. ตั้งค่า `pipeline` สำหรับ task execution behavior:
-   - `syncWorkspace`, `syncProjects`, `installDependencies`
-   - `autoCleanCache`, `cacheLifetime`
-4. ตั้งค่า `vcs` สำหรับ version control integration
-5. ตั้งค่า `hasher` สำหรับ file hashing configuration
-6. ตั้งค่า `remote` สำหรับ remote caching (Bazel RE API)
-7. ตั้งค่า `constraints` สำหรับ dependency rules
-8. ตั้งค่า `codeowners` สำหรับ code ownership rules
-9. ใช้ `experiments` สำหรับ experimental features
-10. ใช้ schema จาก local cache ใน configuration files
+1. สร้าง/อัปเดต `.moon/workspace.yml` ด้วย project globs
+2. สร้าง/อัปเดต `.moon/toolchains.yml` ตาม stack (Bun, Rust, Node)
+3. สร้าง `.moon/tasks/all.yml` สำหรับ shared task config
+4. ตรวจสอบ `moon.yml` ในแต่ละ workspace
 
-### 3. Project Configuration
+### 3. Define Tasks
 
-ตั้งค่า project metadata, tags, และ dependencies
+กำหนด tasks ใน moonrepo
 
-> Goal: ทุก project มี config ตรงกับ architecture
+> Goal: tasks ทำงานสอดคล้องกันระหว่าง projects
 
-1. ใช้ `moon.yml` สำหรับ project metadata
-2. กำหนด `layer` สำหรับ project type (`application`, `library`, `tool`, `automation`, `configuration`, `scaffolding`)
-3. กำหนด `stack` สำหรับ technology stack (`backend`, `frontend`, `data`, `infrastructure`, `systems`)
-4. ตั้งค่า `project` metadata: `title`, `description`, `channel`, `owner`, `maintainers`
-5. กำหนด `tags` สำหรับ categorization และ grouping
-6. ตั้งค่า `env` สำหรับ environment variables ของ tasks
-7. กำหนด `fileGroups` สำหรับ grouping files ที่ใช้ใน tasks
-8. ตั้งค่า project dependencies ใน `dependsOn`
-9. ใช้ task inheritance จาก `.moon/tasks/all.yml`
+1. ใช้ชื่อ task เดียวกันกับ package scripts (build, dev, test, lint, typecheck, scan)
+2. กำหนด `deps` (`^build`) ให้ถูกต้อง
+3. กำหนด `outputs` สำหรับ build tasks
+4. กำหนด `inputs` และ `options` ตามจำเป็น
 
-### 4. Tasks
+### 4. Migrate From Turborepo
 
-กำหนด reusable tasks, deps, และ caching
+ย้ายจาก turborepo ไป moonrepo
 
-> Goal: tasks รันและ reuse ได้ทั่ว monorepo
+> Goal: ไม่มี turborepo dependency เหลือ
 
-1. กำหนด tasks ใน `.moon/tasks/all.yml` สำหรับ reusability
-2. ใช้ `command` สำหรับ simple commands (single binary + args)
-3. ใช้ `script` สำหรับ complex commands (pipes, redirects, chaining)
-4. ตั้งค่า task dependencies ด้วย `deps` และ `cacheStrategy`:
-   - `hash` - ใช้ dependency hash (default)
-   - `outputs` - ใช้ dependency outputs เท่านั้น
-   - `ignored` - ไม่ใช้ hash (purely sequencing)
-5. ใช้ `implicitDeps` และ `implicitInputs` สำหรับ global task dependencies
-6. ใช้ `fileGroups` สำหรับ reusable file patterns
-7. ใช้ `@group(name)` token สำหรับ reference file groups
-8. กำหนด `tags` สำหรับ tasks (v2.3) เพื่อ filtering และ grouping
-9. ใช้ `moon run <project>:<task>` สำหรับ execution
-10. ใช้ `--affected` flag สำหรับ affected projects
-11. กำหนด cache ให้เหมาะสมสำหรับแต่ละ task type
+1. ลบ `turbo.json`
+2. ลบ `turbo` ออกจาก `package.json` devDependencies
+3. แก้ไข scripts ใน `package.json` จาก `turbo run` ไป `moon run`
+4. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
+5. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
 
-### 5. Task Tags (v2.3)
+### 5. Verify
 
-ใช้ task tags สำหรับ filter และ grouping
+ตรวจสอบว่า moonrepo ทำงานได้
 
-> Goal: จัดกลุ่ม tasks และ query ได้ง่าย
+> Goal: workspace พร้อมใช้งานและผ่าน validation
 
-1. ใช้ `tags` ใน task definition สำหรับ labeling tasks
-2. ใช้ `:#tag` syntax ใน targets:
-   - `:#tag` - ทุก tasks ที่มี tag
-   - `^:#tag` - tasks ใน upstream projects
-   - `project:#tag` - tasks ใน project เฉพาะ
-   - `#tag1:#tag2` - tasks ที่มี tag2 ใน projects ที่มี tag1
-3. ใช้ `options.mergeTags` สำหรับควบคุม tag merging ระหว่าง inheritance
-4. ใช้ `taskTag` field ใน MQL สำหรับ querying tasks by tags
-5. ใช้ `--tags` filter สำหรับ `moon query tasks`
-
-### 6. Caching
-
-ตั้งค่า hashing, cache lifetime, และ remote caching
-
-> Goal: build เร็วและ deterministic ด้วย caching
-
-1. ใช้ smart hashing สำหรับ deterministic builds
-2. ตั้งค่า remote caching ด้วย Bazel RE API หรือ moonrepo.dev
-3. ใช้ `experiments.casOutputsCache: true` (v2.3) สำหรับ local CAS cache
-4. ใช้ `experiments.nativeFileHashing: true` (v2.3) สำหรับ native file hashing (10-50% faster)
-5. ตั้งค่า `cacheLifetime` สำหรับ cache staleness (เช่น `1 day`, `3 hr`, `1m`)
-6. ใช้ `pipeline.autoCleanCache: true` สำหรับ auto-clean stale cache
-7. ตรวจสอบ cache hit/miss ด้วย `moon run <task> --dry-run`
-
-### 7. Toolchain
-
-ตั้งค่า language versions และ toolchain management
-
-> Goal: toolchain consistent ทั่ว monorepo
-
-1. ตั้งค่า Node.js version ใน `.moon/toolchains.yml`
-2. ตั้งค่า Bun version สำหรับ runtime
-3. กำหนด Rust version สำหรับ polyglot projects
-4. ใช้ `proto` สำหรับ multi-language version management
-5. ใช้ `MOON_<TOOLCHAIN>_VERSION` env vars สำหรับ CI/CD
-6. ตรวจสอบ toolchain versions ด้วย `moon check`
-
-### 8. Constraints And Dependencies
-
-กำหนดและตรวจสอบ layer/tag relationships
-
-> Goal: dependencies ถูกต้องตาม rules
-
-1. ใช้ `constraints.enforceLayerRelationships` สำหรับ layer-based rules
-2. ใช้ `constraints.tagRelationships` สำหรับ tag-based dependency rules
-3. กำหนด allowed/denied dependencies ระหว่าง layers และ tags
-4. ตรวจสอบ constraints ด้วย `moon check`
-
-### 9. VCS Hooks
-
-ตั้งค่า git hooks สำหรับ lint, format, test
-
-> Goal: hooks รันเฉพาะ affected tasks อัตโนมัติ
-
-1. ตั้งค่า `vcs.hooks` ใน `.moon/workspace.yml`
-2. ใช้ `vcs.sync: true` สำหรับ automatic hook generation
-3. ตั้งค่า `vcs.hookFormat` เป็น `native` หรือ `bash`
-4. ใช้เฉพาะ hooks ที่จำเป็น:
-   - `pre-commit` - lint, format (use `--affected --status=staged`)
-   - `pre-push` - typecheck, test (use `--affected`)
-
-### 10. CI And Integrations
-
-ตั้งค่า CI pipeline และ integrations สำหรับ Moonrepo
-
-> Goal: CI รัน affected tasks และ report อัตโนมัติ
-
-1. สร้าง `.github/workflows/ci.yml` สำหรับ CI/CD pipeline
-2. ใช้ `moon ci` สำหรับ CI validation
-3. ใช้ `moonrepo/run-report-action@v1` สำหรับ reporting
-4. ใช้ `MOON_<TOOLCHAIN>_VERSION` env vars สำหรับ matrix strategy
-5. ใช้ Moon MCP server สำหรับ AI integration
-6. ใช้ `get_templates` และ `get_template` สำหรับ template discovery (v2.3)
-7. ใช้ `get_projects` และ `get_tasks` สำหรับ workspace inspection
-8. ตั้งค่า MCP ใน `.mcp.json` ของ project
+1. รัน `moon check` หรือ `moon run :check`
+2. รัน `moon run :build` เพื่อตรวจ project graph
+3. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
+4. ทำ `/validate` เพื่อ verify setup
 
 ## Rules
 
-### 1. Configuration Files
+### 1. Prefer moonrepo For This Codebase
 
-- ต้องมี `.moon/` directory ที่ root ของ monorepo
-- ทุก projects ต้องมี `moon.yml` สำหรับ metadata
-- สร้าง `.moon/tasks/all.yml` สำหรับ reusable tasks
-- สร้าง `workspace.yml` สำหรับ global settings
-- สร้าง `toolchains.yml` สำหรับ language versions
-- ทำ `/follow-monorepo` สำหรับ directory structure
+- ใช้ `moon` สำหรับ task orchestration
+- ไม่เพิ่ม `turbo` dependencies กลับเข้ามา
+- ใช้ `moon run :<task>` ใน root scripts
 
-### 2. Task Synchronization
+### 2. Task Naming
 
-- กำหนด tasks ใน `.moon/tasks/all.yml` สำหรับ reusability
-- ใช้ task inheritance ในแต่ละ project
-- ให้ tasks ตรงกับ scripts ตาม `/follow-package-manifest`
-- ใช้ `moon run <project>:<task>` สำหรับ task execution
-- ใช้ `command` สำหรับ simple commands, `script` สำหรับ complex commands
-- ใช้ `cacheStrategy: outputs` สำหรับ build dependencies (v2.3)
+- ใช้ชื่อ task เดียวกันระหว่าง workspaces
+- ใช้ kebab-case สำหรับ task labels
+- หลีกเลี่ยง task ทีไม่มี `deps` ทีชัดเจน
 
-### 3. Caching
+### 3. Project Boundaries
 
-- ใช้ `experiments.nativeFileHashing: true` สำหรับ performance (v2.3)
-- ใช้ `experiments.casOutputsCache: true` สำหรับ local CAS (v2.3)
-- ตั้งค่า `cacheLifetime` สำหรับ cache staleness
-- ใช้ `pipeline.autoCleanCache: true` สำหรับ auto-clean
-- ตั้งค่า remote caching ด้วย Bazel RE API
-
-### 4. VCS Hooks
-
-- `pre-commit` - lint, format (use `--affected --status=staged`)
-- `pre-push` - typecheck, test (use `--affected`)
-- ใช้ `vcs.sync: true` สำหรับ automatic hook generation
-
-### 5. Installation
-
-- ใช้ `bun add -d @moonrepo/cli` สำหรับ installation
-- Initialize ด้วย `moon init`
-- ตรวจสอบ configuration ด้วย `moon check`
+- กำหนด project globs ใน `.moon/workspace.yml`
+- ใช้ moonrepo implicit project detection
+- ไม่ซ้อน project boundaries ซ้ำซ้อน
 
 ## Expected Outcome
 
-- Moonrepo v2.x configuration ที่สมบูรณ์
-- Task orchestration ที่ automatic และ efficient
-- Caching ที่ทำงานได้อย่างมีประสิทธิภาพด้วย CAS และ native hashing
-- Toolchain consistency ทั่วทั้ง team
-- Build times ที่ลดลงอย่างมีนัยสำคัญ
-- Polyglot support สำหรับ multi-language projects
-- Automatic task execution บน affected code only
-- AI integration ผ่าน MCP server
+- `.moon/` config ถูกต้องและสมบูรณ์
+- ไม่มี `turbo.json` หรือ `turbo` dependency
+- root scripts ใช้ `moon run`
+- project graph สามารถ build ได้

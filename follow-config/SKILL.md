@@ -16,7 +16,7 @@ related:
   - follow-dot-vscode
   - follow-dot-github
   - follow-biome
-  - follow-turborepo
+  - follow-moonrepo
   - follow-typescript
   - follow-ast-grep
   - follow-hk
@@ -50,8 +50,8 @@ related:
 > Goal: รู้ dependencies, config files ที่มี และ tech stack ที่ใช้
 
 1. อ่าน `package.json` ใน root และ target workspaces
-2. ตรวจสอบ config files ที่มีอยู่ (`biome.jsonc`, `tsconfig.json`, `turbo.json`, `lefthook.yml`)
-3. ระบุ tech stack ที่ใช้ (Bun, TypeScript, Biome, Turborepo, Drizzle, etc.)
+2. ตรวจสอบ config files ที่มีอยู่ (`biome.jsonc`, `tsconfig.json`, `moon.yml`, `lefthook.yml`)
+3. ระบุ tech stack ที่ใช้ (Bun, TypeScript, Biome, Moonrepo, Drizzle, etc.)
 
 ### 3. Check Workflows And Skills
 
@@ -61,7 +61,7 @@ related:
 
 1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-biome`)
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
-3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-biome`, `/follow-turborepo`, `/follow-typescript`)
+3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-biome`, `/follow-moonrepo`, `/follow-typescript`)
 
 ### 4. Run Required Workflows
 
@@ -70,7 +70,7 @@ related:
 > Goal: Config files ถูกต้องครบถ้วนสอดคล้องกับ tech stack
 
 1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
-2. รัน workflows ตาม tech stack (เช่น `/follow-biome`, `/follow-turborepo`, `/follow-typescript`)
+2. รัน workflows ตาม tech stack (เช่น `/follow-biome`, `/follow-moonrepo`, `/follow-typescript`)
 3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-hk`, `/follow-ast-grep`)
 4. รัน `/follow-dot-vscode` สำหรับ `.vscode/` directory setup
 5. รัน `/follow-dot-github` สำหรับ `.github/` directory setup
@@ -104,7 +104,7 @@ related:
 
 - ใช้ `bun` สำหรับ package manager และ runtime
 - ใช้ `biome` สำหรับ linting และ formatting
-- ใช้ `turborepo` สำหรับ monorepo management
+- ใช้ `Moonrepo` สำหรับ monorepo management
 - ใช้ `typescript` สำหรับ type safety
 - ใช้ `lefthook` สำหรับ git hooks
 - ใช้ `ast-grep` สำหรับ code search และ transformation
