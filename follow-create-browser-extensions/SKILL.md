@@ -1,8 +1,9 @@
 ---
 name: follow-create-browser-extensions
-description: Guidelines for creating browser extensions for Chrome, Firefox, Edge, and other browsers...
+description: สร้าง browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,38 +11,63 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-wxt
 ---
 
 ## Goal
 
 สร้าง browser extensions สำหรับ Chrome, Firefox, Edge และ browsers อื่นๆ ตาม Manifest V3 standard
 
-
 ## Scope
 
 ใช้สำหรับการสร้าง extensions ที่ modify web pages, add functionality, integrate กับ web services และ automate browser tasks
-
 
 ## Execute
 
 ### 1. Create Project
 
-ใช้ `WXT` หรือ scaffolding tools
+เริ่มต้น project ด้วย WXT หรือ scaffolding tool
+
+> Goal: มี project structure สำหรับ browser extension
+
+1. ทำ `/follow-wxt` ถ้าใช้ WXT
+2. สร้าง `manifest.json` ตาม Manifest V3
+3. สร้างโครงสร้าง: `src/background.ts`, `src/content.ts`, `src/popup/`
+4. ติดตั้ง dependencies ด้วย `bun install`
 
 ### 2. Configure Manifest
 
 ตั้งค่า `manifest.json` ตาม Manifest V3
 
+> Goal: manifest ถูกต้องและมีสิทธิ์เฉพาะทีจำเป็น
+
+1. ตั้งค่า `manifest_version: 3`
+2. กำหนด `name`, `version`, `description`
+3. ระบุ `permissions` และ `host_permissions` เท่านทีจำเป็น
+4. ระบุ `background.service_worker`, `content_scripts`, `action.default_popup`
+
 ### 3. Implement Features
 
-- Background scripts
-- Content scripts
-- Popup UI
+พัฒนา background, content, และ popup scripts
+
+> Goal: extension ทำงานตาม requirements บนทุก target browsers
+
+1. สร้าง background service worker สำหรับ events
+2. สร้าง content script สำหรับ web page integration
+3. สร้าง popup UI สำหรับ user interaction
+4. แยก pure logic ออกจาก browser API integration
 
 ### 4. Test
 
 Test บน browsers ที่ต้องการ support
 
+> Goal: extension ทำงานถูกต้องและปลอดภัยบนทุก browsers
+
+1. โหลด extension ใน Chrome developer mode
+2. ทดสอบบน Firefox ด้วย temporary add-on
+3. ตรวจสอบ console errors และ permissions
+4. ทดสอบ cross-browser compatibility
 
 ## Rules
 
@@ -62,16 +88,6 @@ Test บน browsers ที่ต้องการ support
 - ใช้ TypeScript สำหรับ type safety
 - Test บนหลาย browsers
 - Follow browser extension guidelines
-
-
-## References
-
-- [Chrome Extensions Docs](https://developer.chrome.com/docs/extensions)
-- [Firefox Add-ons Docs](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons)
-- [MDN Web Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-- [Chrome Web Store](https://chrome.google.com/webstore)
-- [Firefox Add-ons](https://addons.mozilla.org)
-
 
 ## Expected Outcome
 
