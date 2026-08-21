@@ -1,6 +1,6 @@
-﻿---
+---
 name: review-codebase-everything
-description: Review codebase ครบทุกมิติ ผ่าน orchestrators และ validate issues
+description: Master orchestrator สำหรับ review ทุกมิติของ codebase ผ่านทุก review-* workflow
 argument-hint: optional workspace path or name
 allowed-tools:
   - read
@@ -19,26 +19,26 @@ related:
   - review-code-quality
   - review-security
   - review-auth
-  - review-types
-  - review-naming
-  - review-refactor
-  - review-bug-prone
-  - review-techstack
-  - review-realize-implementation
-  - review-lib
-  - review-concurrency
-  - review-error-handling
+  - review-compliance
   - review-infrastructure
-  - review-business
-  - review-delivery
-  - review-platform
+  - review-app-stability
+  - review-observability
   - review-performance
   - review-memory
-  - review-config
+  - review-platform
+  - review-cli
+  - review-business
+  - review-docs
+  - review-dx
+  - review-workflow-content
+  - review-coverage
+  - review-debugging
   - review-test
   - review-formal-verification
   - review-simplicity
+  - review-codebase-issue
   - review-workspace
+  - review-pr
   - run-check
   - resolve-errors
   - read-related-skills
@@ -61,11 +61,11 @@ related:
 
 ## Goal
 
-Review codebase ครบทุกมิติอย่างลึกซึ้ง ตั้งแต่ foundation ไปจนถึง delivery โดยจัดกลุ่มตามลำดับความสำคัญ และ validate issues ที่พบ
+Review codebase ครบทุกมิติอย่างลึกซึ้ง ผ่าน group orchestrators, category workflows และทุก review-* skill โดยจัดกลุ่มตามลำดับความสำคัญ และ validate issues ที่พบ
 
 ## Scope
 
-ใช้สำหรับ comprehensive Review ครอบคลุมทุก dimension ผ่าน 2 group orchestrators (`review-frontend`, `review-backend`) และ 13 category orchestrator workflows พร้อม validate issues ที่พบ
+ใช้สำหรับ comprehensive codebase review ครอบคลุมทุก dimension — เป็น entry point ของ review workflows และ catalog ของทุก review-* skill
 
 ## Execute
 
@@ -75,22 +75,27 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
-1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน — ถ้าไม่ผ่าน stop และ report
-2. ทำ `/read-related-skills`, `/follow-agents-md`, ทำ `/update-codebase-health-cli` — ระบุ review dimensions, อ่าน workspace guidelines, และอัปเดต analyzers
-3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
-4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-5. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
-6. ทำ `/review-workspace` เพื่อรวบรวม workspace-level context และ findings ก่อน group/category reviews — ถ้าเป็น monorepo ให้ทำตามลำดับ workspaces
+1. ทำ /run-check เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ /resolve-errors ก่อน
+2. ทำ /read-related-skills, /follow-agents-md, /update-codebase-health-cli — ระบุ review dimensions และอัปเดต analyzers
+3. ถ้าเป็น web project → เพิ่ม /run-dev เพื่อ verify dev server
+4. ทำ /deep-analyze เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
+5. ทำ /run-health เพื่อรัน health CLI และดึง metrics ล่าสุด
+6. ทำ /review-workspace เพื่อรวบรวม workspace-level context
 
 ### 2. Run Group And Category Reviews
 
-ทำ 2 group orchestrators และ 13 category orchestrator workflows แบบ parallel — group orchestrators เรียก sub-review workflows ภายในตัวเอง ถ้าพบ critical issues ให้หยุดและ validate ก่อนดำเนินต่อ
+ทำกลุ่ม review ตาม category แบบ parallel
 
-> Goal: ครอบคลุมทุก dimension ผ่าน 2 group orchestrators และ 13 category orchestrators
+> Goal: ครอบคลุมทุก dimension โดยไม่ duplicate
 
-1. ทำ `/review-frontend`, `/review-backend`, `/review-code-quality`, `/review-security`, `/review-auth` — `review-frontend` เรียก 15 frontend sub-reviews — `review-backend` เรียก 13 backend sub-reviews — `review-code-quality` เรียก `/review-types`, `/review-naming`, `/review-refactor`, `/review-bug-prone`, `/review-techstack`, `/review-realize-implementation`, `/review-delivery`, `/review-config`, `/review-lib`, `/review-concurrency`, `/review-error-handling`
-2. ทำ `/review-infrastructure`, `/review-business`, `/review-delivery`, `/review-platform`, `/review-performance`, `/review-memory`, `/review-config`, `/review-test`, `/review-formal-verification`, `/review-simplicity`
-3. ถ้า group, category หรือ sub-review ไม่เกี่ยวข้องกับ project → ข้าม workflow นั้น
+1. ทำ /review-frontend, /review-backend, /review-code-quality เป็น group orchestrators
+2. ทำ /review-security, /review-auth, /review-compliance
+3. ทำ /review-infrastructure, /review-app-stability, /review-observability, /review-performance, /review-memory, /review-platform, /review-cli
+4. ทำ /review-business, /review-docs, /review-dx, /review-workflow-content, /review-coverage, /review-debugging, /review-test
+5. ทำ /review-formal-verification, /review-simplicity, /review-codebase-issue, /review-workspace
+6. ถ้ามี PR ที่กำลัง review → เพิ่ม /review-pr
+7. ถ้า category หรือ workflow ไม่เกี่ยวข้องกับ project → ข้าม workflow นั้น
+8. ถ้าพบ critical issues → หยุดและทำ /validate ก่อนดำเนินต่อ
 
 ### 3. Validate Findings
 
@@ -98,60 +103,68 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 > Goal: Issues ถูก validate ครบถ้วนตาม severity
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง — จัดลำดับตาม severity: Critical → High → Medium → Low
-3. ทำ `/implement-all` สำหรับ issues ที่ต้องการ refactor หรือ realize implementation
-4. ทำ `/update-reference` หลังจากแก้ไขไฟล์ — ทำ `/git-commit` เมื่อ validate issues กลุ่มเสร็จ — ถ้า validate fail ให้ทำ `/resolve-errors` ก่อนดำเนินต่อ
+1. ทำ /deep-validate เพื่อ validate findings หลายมิติ
+2. ทำ /validate สำหรับ validate issues แต่ละอย่าง
+3. จัดลำดับตาม severity: Critical → High → Medium → Low
+4. ทำ /implement-all สำหรับ issues ที่ต้องการ refactor
 
 ### 4. Report And Verify
 
 รายงานผลและวัด health score หลัง validate
 
-> Goal: รายงาน before-after health score และสรุปผลการ review
+> Goal: รายงาน before-after health score และสรุปผล
 
-1. ทำ `/report-codebase-health` เพื่อวัด health score หลัง validate — เปรียบเทียบ before-after score
-2. ทำ `/report-format-terminal`, `/report-format-table` — รายงานความคืบหน้าและสรุปผลลัพธ์ before-after
-3. ทำ `/report` เพื่อสรุปผลการ review และ validate — ถ้า report fail ให้ retry (max 3 → stop/report)
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ทำ /report-codebase-health เพื่อวัด health score
+2. ทำ /report-format-terminal, /report-format-table
+3. ทำ /report เพื่อสรุปผล
+4. ทำ /suggest-next-action เพื่อแนะนำ action ถัดไป
 
 ## Rules
 
 ### 1. Delegation And Scope
 
-- Orchestrator เรียก group orchestrators และ category workflows โดยตรง ไม่ทำ review เอง — Group orchestrators เรียก sub-review workflows ภายในตัวเอง
-- ไม่ duplicate เนื้อหา inline sections, group/category workflows หรือ sub-review workflows — Skip conditions ของแต่ละ workflow อยู่ใน workflow เอง
+- Orchestrator เรียก group/category workflows โดยตรง ไม่ทำ review เอง
+- ไม่ duplicate เนื้อหา inline — ใช้ /review-frontend, /review-backend, /review-code-quality เพื่อ cover sub-reviews
 - ถ้า project ไม่มี dimension ใด → ข้าม workflow นั้น
 
 ### 2. Execution Governance
 
-- ทำ category orchestrator workflows ตามลำดับ Step 2 ถ้าพบ issues ทำ `/resolve-errors` ก่อนดำเนินต่อ
-- ทำ `/update-reference` หลังแต่ละ category orchestrator workflow
-- รัน tests หลังแต่ละ improvement และตรวจสอบ coverage ไม่ลดลง — ใช้ `/report-codebase-health` score เป็น before-after metric
-- ไม่ข้ามขั้นตอน Review หรือ validate
+- ทำ category workflows ตามลำดับ Step 2
+- ทำ /update-reference หลังจากแก้ไขไฟล์
+- รัน tests หลังแต่ละ improvement
 
 ### 3. Severity And Evidence
 
-- จัดลำดับ issues ตาม severity: Critical → High → Medium → Low — validate Critical ก่อน
-- ทุก finding ต้องมี evidence: file path, line number, code snippet, คำอธิบาย
-- รายงาน false positives และ mark ว่าไม่ใช่ issue จริง
+- จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
+- ทุก finding ต้องมี evidence: file path, line number, code snippet
 
 ### 4. Health Score
 
-- คำนวณ health score เป็น percentage (0-100) จาก `/report-codebase-health`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ category และ overall score
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- คำนวณ health score เป็น percentage 0-100 จาก /report-codebase-health
+- แสดง score ต่อ category และ overall
 
 ### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- ห้ามใช้ bold markers ใช้ backticks สำหรับ emphasis
+- รายงานเป็นตารางด้วย /report-format-table
+
+## Review Catalog
+
+รวมทุก review-* skill ที่ /review-codebase-everything ประสานงาน
+
+- Group orchestrators: `review-frontend`, `review-backend`, `review-code-quality`
+- Foundation and code quality: `review-architecture`, `review-bug-prone`, `review-codebase-issue`, `review-formal-verification`, `review-naming`, `review-realize-implementation`, `review-refactor`, `review-simplicity`, `review-types`
+- Frontend and UX: `review-accessibility`, `review-browser-compat`, `review-bundler`, `review-components`, `review-css`, `review-data-fetching`, `review-design-system`, `review-event-handling`, `review-form`, `review-hooks-composables`, `review-i18n`, `review-images`, `review-rendering`, `review-responsive`, `review-seo`, `review-state-management`, `review-uxui`
+- Backend and data: `review-api`, `review-concurrency`, `review-data`, `review-data-validation`, `review-database`, `review-error-handling`, `review-file-upload`, `review-integration`, `review-migration`, `review-queue`, `review-scalability`, `review-service`, `review-webhook`, `review-workers`
+- Security and compliance: `review-auth`, `review-compliance`, `review-security`
+- Infrastructure and operations: `review-app-stability`, `review-cli`, `review-config`, `review-dx`, `review-infrastructure`, `review-memory`, `review-observability`, `review-performance`, `review-platform`
+- Business and delivery: `review-business`, `review-coverage`, `review-debugging`, `review-delivery`, `review-docs`, `review-lib`, `review-techstack`, `review-test`, `review-workflow-content`, `review-workspace`
+- Pull request: `review-pr`
 
 ## Expected Outcome
 
-- Findings และ recommendations จาก 2 group orchestrators และ 13 category orchestrator workflows
+- Findings และ recommendations จากทุก review-* workflow
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
-- Before-after health score ผ่าน `/report-codebase-health`
-- รายงานในแชทเป็นตารางตาม `/report` และ `/report-format-table`
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- Before-after health score ผ่าน /report-codebase-health
+- รายงานในแชทเป็นตาราง
+- แนะนำ action ถัดไปผ่าน /suggest-next-action
