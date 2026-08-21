@@ -17,6 +17,7 @@ related:
   - use-nu-shell
   - use-pwsh-shell
   - use-bun-shell
+  - follow-esm-sh
 ---
 
 ## Goal
@@ -75,7 +76,8 @@ related:
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
 5. ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/<name>`
-6. เพิ่ม `dryRun` option สำหรับ testing
+6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (ดู `/follow-esm-sh` สำหรับ CDN convention)
+7. เพิ่ม `dryRun` option สำหรับ testing
 
 ### 4. Test And Execute
 
@@ -117,12 +119,14 @@ related:
 ```typescript
 import { z } from "https://esm.sh/zod"
 import { glob } from "https://esm.sh/glob"
+import { render } from "https://esm.sh/eta@4.6.0"
 ```
 
 - CLI: `zod`, `cac`, `consola`, `@clack/prompts`, `picocolors`
 - Parsing: `yaml`, `gray-matter`, `jsonc-parser`
 - File System: `pretty-bytes`, `env-paths`, `semver`
 - Async: `p-limit`, `p-queue`, `p-map`
+- Template: `eta` สำหรับ generate text/files จาก template
 
 ### 5. Decision Records
 
@@ -135,6 +139,7 @@ import { glob } from "https://esm.sh/glob"
 - Scripts ทำงานได้ด้วย Bun, nushell, pwsh, หรือ ast-grep
 - การเลือก shell มีเหตุผลชัดเจน
 - Dependencies ผ่าน CDN (ไม่ต้อง install)
+- สามารถใช้ `eta` สำหรับ template/render ใน Bun scripts
 - Scripts อยู่ใน location ถูกต้องตาม Rules
 - Temp scripts ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
-- Dry run mode สำหรับทดสอบก่อน execute จริง
+- Dry run mode สำหรับทดสอบก่อน execute จิง
