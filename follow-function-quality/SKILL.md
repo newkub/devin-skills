@@ -7,7 +7,6 @@ related:
   - analyze-code-structure
   - use-ast-grep-outline
   - review-naming
-  - follow-functional-core-imperative-shell
   - refactor
   - refactor-to-srp
   - edit-relative
@@ -77,7 +76,7 @@ related:
 1. ระบุ function ที่อ่าน/เขียน global state, DOM, file, network, database
 2. ระบุ function ที่ modify parameters โดย reference
 3. แนะนำให้แยก logic เป็น pure function และ isolate side effect ไปอีก function
-4. ใช้ `/follow-functional-core-imperative-shell` ถ้าโครงสร้างใหญ่
+
 
 ### 6. Check Parameters And Returns
 

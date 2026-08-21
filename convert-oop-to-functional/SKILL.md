@@ -59,7 +59,7 @@ description: แปลง OOP code เป็น functional programming patterns
 
 ใช้ Functional Core, Imperative Shell pattern
 
-1. ทำ `/follow-functional-core-imperative-shell`
+1. แยก business logic เป็น pure functions และ side effects เป็น shell layer
 2. แยก business logic เป็น pure functions
 3. แยก side effects (API, I/O, state mutations) เป็น shell
 4. ใช้ dependency injection สำหรับ external dependencies

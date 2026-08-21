@@ -43,7 +43,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 3. Implement Functional Core
 
-ทำ `/follow-functional-core-imperative-shell` เพื่อเขียน business logic ใน `modules/*/domain/` (ถ้า project ใช้ TypeScript ให้ทำ `/follow-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection):
+เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection):
 
 > Goal: domain logic เป็น pure functions ไม่มี side effects
 

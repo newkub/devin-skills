@@ -48,7 +48,7 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม r
 2. ทำ `/pondering` เพื่อทบทวนผลกระทบของการ split และ restructure ก่อนดำเนินการ
 3. จัดกลุ่ม violations ตาม category และ type — กำหนด action: split, extract, relocate — จัดลำดับตาม dependency direction (leaf units ก่อน)
 4. ระบุ consumers, call sites และ public API ที่จะกระทบ — ถ้าเปลี่ยนต้องอัปเดท consumers
-5. ทำ `/follow-functional-core-imperative-shell`, `/follow-clean-architecture`, `/improve-typesafe` — แยก pure/impure, layers, type safety
+5. ทำ `/follow-clean-architecture`, `/improve-typesafe` — แยก layers และ type safety
 6. แยก business logic, UI, data access, utilities, และ types ออกจากกัน — กำหนด public API ของแต่ละ module
 7. ใช้ `sg outline --items exports` ยืนยันว่า split ไม่ทำลาย exported API
 

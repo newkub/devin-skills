@@ -32,7 +32,7 @@ description: ปรับปรุงการจัดการ side effects �
 แยก pure functions จาก impure functions
 
 1. ทำ `/follow-functional-programming` เพื่อเข้าใจ pure/impure separation
-2. ทำ `/follow-functional-core-imperative-shell` เพื่อแยก core และ shell
+2. แยก core (pure functions) ออกจาก shell (side effects) ตาม Functional Core, Imperative Shell pattern
 3. แยก business logic ที่เป็น pure ออกจาก side effects
 4. สร้าง pure functions สำหรับ calculations, validations, transformations
 5. ย้าย side effects ไปที่ outer layer (imperative shell)
@@ -83,7 +83,7 @@ description: ปรับปรุงการจัดการ side effects �
 - Shell: side effects และ I/O
 - ใช้ dependency injection สำหรับ impure dependencies
 - Shell เรียก core และจัดการ side effects
-- ทำตาม `/follow-functional-core-imperative-shell`
+- แยก core (pure functions) ออกจาก shell (side effects)
 
 ### 3. Functional Patterns
 
