@@ -18,6 +18,7 @@ related:
   - follow-gitignore
   - validate
   - update-dot-devin
+  - follow-release
 ---
 
 ## Goal

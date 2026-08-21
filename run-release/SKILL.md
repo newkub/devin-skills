@@ -17,6 +17,7 @@ related:
   - follow-release-docker
   - follow-release-crates
   - create-vscode-extensions
+  - follow-release
 ---
 
 ## Goal
