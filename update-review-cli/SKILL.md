@@ -76,15 +76,7 @@ related:
    - แต่ละ domain มี analyzer file ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
    - แต่ละ category เป็น `Analyzer` object ใน domain file
 2. Map analyzers ไปยัง category orchestrators จาก `/review-codebase`:
-   - `/review-codebase` → Code & Architecture domain analyzers
-   - `/review-codebase` → Security & Compliance domain analyzers
-   - `/review-codebase` → User-Facing domain analyzers
-   - `/review-codebase` → Backend & Data domain analyzers
-   - `/review-codebase` → Infrastructure domain analyzers
-   - `/review-codebase` → Business domain analyzers
-   - `/review-codebase` → Delivery domain analyzers
-   - `/review-codebase` → Platform domain analyzers
-   - `/review-codebase` → Performance domain analyzers
+   - `/review-codebase` → รวม 8+1 domain analyzers: Code & Architecture, Security & Compliance, User-Facing, Backend & Data, Infrastructure, Business, Delivery, Platform, Performance
 3. ระบุ analyzers ที่มีอยู่แล้ว, ที่ต้องสร้างใหม่, และที่ต้องอัปเดท
 4. ระบุ analyzers ที่ไม่มี category สอดคล้องแล้วเพื่อพิจารณาลบ
 

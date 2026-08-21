@@ -1,6 +1,6 @@
 ---
 name: review-codebase
-description: Master orchestrator สำหรับ review ทุกมิติของ codebase ผ่าน review CLI และ references
+description: Review ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
 argument-hint: optional workspace path or name
 allowed-tools:
   - read
@@ -14,16 +14,13 @@ triggers:
   - user
   - model
 related:
+  - run-review
+  - update-review-cli
   - review-pr
   - review-devin-global-skills
   - run-check
   - resolve-errors
-  - read-related-skills
-  - follow-agents-md
-  - update-review-cli
-  - run-dev
   - deep-analyze
-  - run-review
   - deep-validate
   - validate
   - implement-all
@@ -37,46 +34,67 @@ related:
 
 ## Goal
 
-Review codebase ครบทุกมิติอย่างลึกซึ้ง ตามลำดับความสำคัญ validate issues ที่พบ และสรุปผลเป็น review score
+Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension โดย run `/run-review` วิเคราะห์ metrics แล้วเรียก `/update-review-cli` อัตโนมัติเมื่อ metrics บ่งชี้ว่า CLI ต้องปรับปรุง
 
 ## Scope
 
-ใช้สำหรับ comprehensive codebase review ครอบคลุมทุก dimension — เป็น entry point ของ review workflows โดยอ่าน references ของแต่ละ dimension แทนการเรียกหลาย skill
+ใช้สำหรับ comprehensive codebase review ผ่าน `tools/review` CLI — รัน CLI parse JSON output ตัดสินใจ update analyzers ตาม metrics แล้วรันใหม่ ถ้าต้องการดู dimension เฉพาะให้อ่าน `references/review-<dimension>/SKILL.md`
 
 ## Execute
 
 ### 1. Prepare And Read Context
 
-ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนเริ่ม review
+ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
 
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
-2. ทำ `/read-related-skills`, `/follow-agents-md`, `/update-review-cli` — ระบุ review dimensions และอัปเดต analyzers
-3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
-4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-5. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-6. อ่าน `references/review-workspace/SKILL.md` เพื่อรวบรวม workspace-level context
+2. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)
+4. ทำ `/run-review` Step 1 เพื่อ verify CLI มีอยู่
 
-### 2. Run Dimension Reviews
+### 2. Run Review CLI And Capture Metrics
 
-Review ทุก dimension โดยอ่าน references ใน `## Review Catalog`
+รัน review CLI ทั้ง table และ JSON output เพื่อวิเคราะห์ metrics
 
-> Goal: ครอบคลุมทุก dimension โดยไม่ duplicate
+> Goal: ได้ review report ทีครอบคลุม พร้อม score, findings และ metrics
 
-1. อ่าน `references/review-frontend/`, `references/review-backend/`, `references/review-code-quality/` เป็น group orchestrators
-2. อ่าน `references/review-security/`, `references/review-auth/`, `references/review-compliance/`
-3. อ่าน `references/review-infrastructure/`, `references/review-app-stability/`, `references/review-observability/`, `references/review-performance/`, `references/review-memory/`, `references/review-platform/`, `references/review-cli/`
-4. อ่าน `references/review-business/`, `references/review-docs/`, `references/review-dx/`, `references/review-workflow-content/`, `references/review-coverage/`, `references/review-debugging/`, `references/review-test/`
-5. อ่าน `references/review-formal-verification/`, `references/review-simplicity/`, `references/review-codebase-issue/`, `references/review-workspace/`
-6. ถ้ามี PR ที่กำลัง review → เพิ่ม `/review-pr`
-7. ถ้าต้องการ review global skills → เพิ่ม `/review-devin-global-skills`
-8. ถ้า dimension ใดไม่เกี่ยวข้องกับ project → ข้าม dimension นั้น
-9. ถ้าพบ critical issues → หยุดและทำ `/validate` ก่อนดำเนินต่อ
+1. ทำ `/run-review` สำหรับ table output
+2. รัน `bun --filter @booking/tools-review review:json` หรือ `bun run --filter @booking/tools-review review -- --output report.json` เพื่อดึง JSON
+3. บันทึก before score, grade, domain breakdown, category coverage, findings count
+4. ถ้า CLI error → ทำ `/update-review-cli` Step 5 แล้วกลับมา Step 2
 
-### 3. Validate Findings
+### 3. Decide Update CLI From Metrics
 
-ตรวจสอบและ validate issues ที่พบจากทุก category
+ตัดสินใจให้ `/update-review-cli` อัตโนมัติตาม metrics
+
+> Goal: CLI ครอบคลุม categories ล่าสุดและให้ผลถูกต้อง
+
+ถ้า metrics ตรงเงื่อนไขใดข้างล่าง → ทำ `/update-review-cli` แล้วกลับไป Step 2 (ทำซ้ำไม่เกิน 3 รอบ):
+
+1. `categories` น้อยกว่า 60
+2. overall `score` ต่ำกว่า 70 หรือ `grade` เป็น `D`/`F`
+3. domain ใด `score` ต่ำกว่า 50
+4. `analyzerErrors` > 0
+5. `falsePositiveRate` สูงกว่า 20%
+6. findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
+7. `reviewWorkflow` field ไม่ map ไปยัง `review-codebase/references/<dimension>/` ที่มีอยู่
+8. `tools/review/package.json` หรือ `tools/review/src/presentation/cli.ts` ไม่อยู่
+
+ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → ไป Step 4
+
+### 4. Run PR And Global Reviews
+
+รัน review เฉพาะทางถ้าจำเป็น
+
+> Goal: ครอบคลุม PR และ global skills ถ้ามี
+
+1. ถ้ามี PR ที่กำลัง review → ทำ `/review-pr`
+2. ถ้าต้องการ review global Devin skills → ทำ `/review-devin-global-skills`
+
+### 5. Validate Findings
+
+ตรวจสอบและ validate issues ที่ review CLI พบ
 
 > Goal: Issues ถูก validate ครบถ้วนตาม severity
 
@@ -85,40 +103,45 @@ Review ทุก dimension โดยอ่าน references ใน `## Review Ca
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. ทำ `/implement-all` สำหรับ issues ที่ต้องการ refactor
 
-### 4. Report And Verify
+### 6. Report And Verify
 
-รายงานผลและวัด review score หลัง validate
+รายงานผลและวัด after review score
 
 > Goal: รายงาน before-after review score และสรุปผล
 
-1. ทำ `/run-review` เพื่อวัด review score
+1. ทำ `/run-review` เพื่อวัด after score
 2. ทำ `/report-format-terminal`, `/report-format-table`
 3. ทำ `/report` เพื่อสรุปผล
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 
-### 1. Delegation And Scope
+### 1. CLI-Driven Review
 
-- `/review-codebase` เป็น entry point สำหรับ review ทุก dimension
-- อ่าน `references/review-<dimension>/SKILL.md` แทนการเรียก `/review-<dimension>`
-- ถ้า project ไม่มี dimension ใด → ข้าม dimension นั้น
+- ใช้ `/run-review` และ `tools/review` CLI เป็นแหล่งหลักของ findings
+- ไม่ manual อ่าน `references/review-<dimension>/SKILL.md` ทีละตัว — อ่านเฉพาะเมื่อ CLI output ไม่ชัดเจนหรือต้องการ deep-dive
+- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ `/update-review-cli` ก่อนรีวิวต่อ
 
-### 2. Execution Governance
+### 2. Metric Triggers
 
-- ทำ dimension reviews ตามลำดับใน `## Review Catalog`
+- `categories < 60` → `/update-review-cli` Step 2-3 เพื่อเพิ่ม categories
+- `score < 70` หรือ `grade D/F` → `/update-review-cli` Step 3 เพื่อปรับปรุง analyzers
+- `domain score < 50` → `/update-review-cli` Step 3 เฉพาะ domain นั้น
+- `analyzerErrors > 0` → `/update-review-cli` Step 5
+- `falsePositiveRate > 20%` → `/update-review-cli` Step 3 เพื่อ tune rules
+- `reviewWorkflow` ไม่ถูกต้อง → `/update-review-cli` Step 6
+
+### 3. Execution Governance
+
+- ทำ `/update-review-cli` แล้วรัน `/run-review` ใหม่ ไม่เกิน 3 รอบ
 - ทำ `/update-reference` หลังจากแก้ไขไฟล์
 - รัน tests หลังแต่ละ improvement
 
-### 3. Severity And Evidence
+### 4. Severity And Evidence
 
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 - ทุก finding ต้องมี evidence: file path, line number, code snippet
-
-### 4. Review Score
-
-- คำนวณ review score เป็น percentage 0-100 จาก `/run-review`
-- แสดง score ต่อ category และ overall
+- แต่ละ finding ต้อง map ไปยัง `review-codebase/references/<dimension>/` ผ่าน `reviewWorkflow` field
 
 ### 5. Formatting
 
@@ -127,7 +150,7 @@ Review ทุก dimension โดยอ่าน references ใน `## Review Ca
 
 ## Review Catalog
 
-รวม references ของทุก review dimension ที่ `/review-codebase` ประสานงาน
+CLI ครอบคลุมทุก dimension ด้านล่าง ถ้าขาด category ใดให้ `/update-review-cli`
 
 - Group orchestrators: `references/review-frontend/`, `references/review-backend/`, `references/review-code-quality/`
 - Foundation and code quality: `references/review-architecture/`, `references/review-bug-prone/`, `references/review-codebase-issue/`, `references/review-formal-verification/`, `references/review-naming/`, `references/review-realize-implementation/`, `references/review-refactor/`, `references/review-simplicity/`, `references/review-types/`
@@ -141,8 +164,9 @@ Review ทุก dimension โดยอ่าน references ใน `## Review Ca
 
 ## Expected Outcome
 
-- Findings และ recommendations จากทุก dimension
-- Issues ที่พบถูก validate ครบถ้วนตาม severity
+- Review ทำงานผ่าน `tools/review` CLI ไม่ manual อ่าน references ทีละ dimension
+- Findings จาก CLI ครอบคลุม 60+ categories พร้อม evidence และ severity
+- `/update-review-cli` ถูกเรียกอัตโนมัติเมื่อ metrics บ่งชี้
 - Before-after review score ผ่าน `/run-review`
-- รายงานในแชทเป็นตาราง
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- Issues ถูก validate และจัดลำดับตาม severity
+- รายงานในแชทเป็นตารางพร้อม action ถัดไป

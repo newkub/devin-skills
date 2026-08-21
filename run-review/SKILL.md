@@ -41,8 +41,8 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 1. อ่าน review score และ grade จาก summary
 2. ระบุ findings ที่เป็น Critical และ High severity
-3. จัดกลุ่ม findings ตาม `reviewWorkflow` ที่แนะนำ
-4. ถ้า score < 70 → พิจารณาทำ `/update-review-cli` เพื่อปรับปรุง analyzers
+3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-codebase` หรือ `review-codebase/references/<dimension>/`
+4. ถ้า score < 70, categories < 60, หรือ `analyzerErrors` > 0 → พิจารณาทำ `/update-review-cli` เพื่อปรับปรุง analyzers
 
 ### 4. Suggest Actions
 
@@ -52,7 +52,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. ทำ `/report-format-table` แสดง summary: domain scores, top findings, recommended workflows
-3. แนะนำ `/review-*` workflow สำหรับแต่ละ finding ตาม `reviewWorkflow` field
+3. แนะนำ `/review-codebase` หรือ `review-codebase/references/<dimension>/SKILL.md` สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 
 ## Rules
 
@@ -69,7 +69,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 - Status: ✅ pass, ⚠️ warn, ❌ fail
 - Severity order: Critical > High > Medium > Low
 - จัดลำดับ action items ตาม severity: Critical ก่อน, High รองลงมง
-- แต่ละ finding map ไปยัง `/review-*` workflow ผ่าน `reviewWorkflow` field
+- แต่ละ finding map ไปยัง `/review-codebase` หรือ `review-codebase/references/<dimension>/SKILL.md` ผ่าน `reviewWorkflow` field
 
 ### 3. When To Update CLI
 
@@ -81,7 +81,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 - Review report พร้อม score, grade, domain breakdown และ findings
 - ตาราง summary ตาม `/report-format-table` แสดง top findings และ recommended actions
-- แนะนำ `/review-*` workflow สำหรับแต่ละปัญหา
+- แนะนำ `/review-codebase` หรือ `review-codebase/references/<dimension>/SKILL.md` สำหรับแต่ละปัญหา
 - แนะนำ `/update-review-cli` ถ้า CLI ต้องปรับปรุง
 
 
