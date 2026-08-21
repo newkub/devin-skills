@@ -1,17 +1,17 @@
 ---
 name: follow-shadcn-solid
-description: shadcn/ui port สำหรับ SolidJS - accessible, customizable components ที่
-  copy-paste ได้
-triggers:
-- user
-- model
+description: shadcn/ui port สำหรับ SolidJS - accessible, customizable components ที่ copy-paste ได้
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ shadcn/ui สำหรับ SolidJS component library ด้วย copy-to-own pattern และ accessible components

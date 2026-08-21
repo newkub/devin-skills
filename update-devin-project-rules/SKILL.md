@@ -2,22 +2,22 @@
 name: update-devin-project-rules
 description: อัพเดท .devin/rules ตาม project analysis และ dependencies
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-release-changelog
-- check-release-changelog
-- analyze-project
-- update-dot-devin
-- update-agents-md
+  - report-release-changelog
+  - check-release-changelog
+  - analyze-project
+  - update-dot-devin
+  - update-agents-md
 ---
 
 ## Goal

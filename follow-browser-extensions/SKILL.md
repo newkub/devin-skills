@@ -1,16 +1,17 @@
 ---
 name: follow-browser-extensions
+description: Follow Browser Extensions
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
-description: /follow-reactive-vscode
+  - user
+  - model
 ---
+
 ## Goal
 
 Follow Browser Extensions

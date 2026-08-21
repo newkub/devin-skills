@@ -2,14 +2,14 @@
 name: list-workspaces
 description: แสดงรายการ workspaces ทั้งหมดใน monorepo พร้อม dependencies graph
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

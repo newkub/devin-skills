@@ -2,14 +2,14 @@
 name: check-long-files
 description: ตรวจสอบและรายงานไฟล์ที่ยาวกว่า threshold ด้วย PowerShell script
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

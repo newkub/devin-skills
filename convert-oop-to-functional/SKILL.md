@@ -2,14 +2,14 @@
 name: convert-oop-to-functional
 description: แปลง OOP code เป็น functional programming patterns
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

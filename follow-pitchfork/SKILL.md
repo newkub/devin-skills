@@ -1,18 +1,18 @@
 ---
 name: follow-pitchfork
 description: ตั้งค่าและใช้งาน pitchfork สำหรับจัดการ daemons/processes ใน project
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- write
-- edit
-- exec
-- webfetch
+  - read
+  - write
+  - edit
+  - exec
+  - webfetch
+triggers:
+  - user
+  - model
 related:
-- follow-mise
-- run-dev
+  - follow-mise
+  - run-dev
 ---
 
 ## Goal

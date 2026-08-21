@@ -2,14 +2,14 @@
 name: follow-flutter
 description: พัฒนา Flutter applications ด้วย Clean Architecture และ Riverpod
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,16 +1,15 @@
 ---
 name: git-file-history
-description: ดู git file history ของไฟล์ที่ระบุผ่าน `@wrikka/git-cli` package ที่
-  release แล้ว โดยใช้คำสั่ง `g...
+description: ดู git file history ของไฟล์ที่ระบุผ่าน `@wrikka/git-cli` package ที่ release แล้ว โดยใช้คำสั่ง `g...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

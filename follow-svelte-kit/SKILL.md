@@ -1,17 +1,17 @@
 ---
 name: follow-svelte-kit
-description: Full-stack framework สำหรับสร้าง web applications ด้วย Svelte รองรับ
-  file-based routing,...
-triggers:
-- user
-- model
+description: Full-stack framework สำหรับสร้าง web applications ด้วย Svelte รองรับ file-based routing,...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 สร้าง Svelte applications ด้วย SSR/CSR/Prerendering และ file-based routing ตามมาตรฐาน SvelteKit

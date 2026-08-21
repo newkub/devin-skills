@@ -2,14 +2,14 @@
 name: follow-react
 description: พัฒนา React 19 applications ตาม best practices 2026
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

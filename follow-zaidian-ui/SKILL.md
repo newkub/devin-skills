@@ -1,17 +1,17 @@
 ---
 name: follow-zaidian-ui
-description: Shadcn UI registry สำหรับ SolidJS - collection ของ accessible, customizable
-  components ที่ built...
-triggers:
-- user
-- model
+description: Shadcn UI registry สำหรับ SolidJS - collection ของ accessible, customizable components ที่ built...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ Zaidian UI สำหรับ UI components สำหรับ SolidJS ด้วย accessible, customizable components ที่ built with Kobalte, Corvu, และ Tailwind CSS

@@ -2,15 +2,16 @@
 name: delete-submodules
 description: Steps to delete a git submodule
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 Delete Submodules

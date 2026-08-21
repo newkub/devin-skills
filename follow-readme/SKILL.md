@@ -1,16 +1,17 @@
 ---
 name: follow-readme
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: <div align="center">
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 Global Workflows

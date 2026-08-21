@@ -2,19 +2,19 @@
 name: report-git-diff
 description: รายงาน git diff พร้อมสรุปการเปลี่ยนแปลง สถิติ และ insights ในรูปแบบที่อ่านง่าย
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

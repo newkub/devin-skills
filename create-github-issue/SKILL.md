@@ -2,14 +2,14 @@
 name: create-github-issue
 description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, และ milestones
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

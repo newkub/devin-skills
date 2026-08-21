@@ -2,14 +2,14 @@
 name: report
 description: ตอบในแชทเป็นตารางพร้อม numbered columns, grouping, sorting
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,21 +1,21 @@
 ---
 name: choose-tech-stack
 description: เลือก tech stack ที่เหมาะสมสำหรับ project ตาม requirements และ constraints
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-- follow-typescript
-- follow-rust
-- follow-best-practice
+  - follow-typescript
+  - follow-rust
+  - follow-best-practice
 ---
 
 ## Goal

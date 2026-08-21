@@ -2,23 +2,23 @@
 name: rewrite-files
 description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- assume-reset-context
-- follow-write-devin-skills
-- edit-relative
-- scan-codebase
-- validate
-- run-check
+  - assume-reset-context
+  - follow-write-devin-skills
+  - edit-relative
+  - scan-codebase
+  - validate
+  - run-check
 ---
 
 ## Goal

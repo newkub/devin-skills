@@ -1,24 +1,23 @@
 ---
 name: run-test
-description: รัน test suite ตรวจหา failures แล้ว validate/review เพื่อระบุว่าควรแก้
-  source หรือ test
+description: รัน test suite ตรวจหา failures แล้ว validate/review เพื่อระบุว่าควรแก้ source หรือ test
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- run-test-api
-- run-test-unit
-- run-test-integration
-- run-test-e2e
-- run-test-coverage
-- validate
-- report
+  - run-test-api
+  - run-test-unit
+  - run-test-integration
+  - run-test-e2e
+  - run-test-coverage
+  - validate
+  - report
 ---
 
 ## Goal

@@ -2,14 +2,14 @@
 name: follow-context-engineering
 description: จัดการ context ของ AI agent อย่างมีประสิทธิภาพ ลด context rot เพิ่มคุณภาพการทำงาน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

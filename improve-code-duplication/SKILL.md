@@ -2,14 +2,14 @@
 name: improve-code-duplication
 description: ตรวจจับ code duplication ด้วย jscpd
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

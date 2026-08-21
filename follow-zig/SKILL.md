@@ -2,14 +2,14 @@
 name: follow-zig
 description: เขียน Zig ตาม best practices และ language conventions
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

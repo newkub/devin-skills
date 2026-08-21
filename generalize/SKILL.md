@@ -2,14 +2,14 @@
 name: generalize
 description: ทำให้ code หรือ patterns เป็น generic เพื่อ reuse กับหลาย use cases
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

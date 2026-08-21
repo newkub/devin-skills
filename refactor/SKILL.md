@@ -2,35 +2,35 @@
 name: refactor
 description: Refactor codebase ครบวงจร — SRP, boundaries, code styles, maintainability
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- review-codebase
-- check-code-structure
-- improve-code-duplication
-- check-long-files
-- create-plan
-- implement-plan
-- refactor-to-srp
-- follow-function-quality
-- follow-import-export
-- follow-architecture
-- refactor-packages
-- edit-relative
-- update-reference
-- resolve-errors
-- run-check
-- run-test
-- dont-over-engineer
-- report
+  - review-codebase
+  - check-code-structure
+  - improve-code-duplication
+  - check-long-files
+  - create-plan
+  - implement-plan
+  - refactor-to-srp
+  - follow-function-quality
+  - follow-import-export
+  - follow-architecture
+  - refactor-packages
+  - edit-relative
+  - update-reference
+  - resolve-errors
+  - run-check
+  - run-test
+  - dont-over-engineer
+  - report
 ---
 
 ## Goal

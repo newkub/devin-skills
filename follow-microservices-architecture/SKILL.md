@@ -1,16 +1,15 @@
 ---
 name: follow-microservices-architecture
-description: พัฒนา distributed systems ด้วย Microservices Architecture สำหรับ scalability
-  และ independence
+description: พัฒนา distributed systems ด้วย Microservices Architecture สำหรับ scalability และ independence
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

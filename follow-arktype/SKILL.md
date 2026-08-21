@@ -1,17 +1,17 @@
 ---
 name: follow-arktype
-description: TypeScript runtime validation ด้วย native type syntax 1:1, 20x faster
-  than Zod
-triggers:
-- user
-- model
+description: "TypeScript runtime validation ด้วย native type syntax 1:1, 20x faster than Zod"
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ ArkType สำหรับ TypeScript runtime validation ด้วย type syntax โดยตรง

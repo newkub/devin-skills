@@ -1,32 +1,32 @@
 ---
 name: idea-refactor-packages
 description: สร้างไอเดียการสร้างหรือ refactor packages ใหม่พร้อม continuous numbering
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-- refactor-packages
-- scan-codebase
-- analyze-project
-- deep-analyze
-- check-code-structure
-- improve-code-duplication
-- check-circular-dependencies
-- follow-monorepo
-- follow-architecture
-- follow-import-export
-- dont-over-engineer
-- report-format-table
-- suggest-next-action
-- report-plan
+  - refactor-packages
+  - scan-codebase
+  - analyze-project
+  - deep-analyze
+  - check-code-structure
+  - improve-code-duplication
+  - check-circular-dependencies
+  - follow-monorepo
+  - follow-architecture
+  - follow-import-export
+  - dont-over-engineer
+  - report-format-table
+  - suggest-next-action
+  - report-plan
 ---
 
 ## Goal

@@ -2,25 +2,25 @@
 name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งด้วยหลายมิติและ external research
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- deep-thinking
-- deep-pondering
-- deep-analyze-by-use-scripts
-- deep-research
-- scan-codebase
-- analyze-project
-- use-ast-grep
-- use-scripts
-- report
-- report-format-table
+  - deep-thinking
+  - deep-pondering
+  - deep-analyze-by-use-scripts
+  - deep-research
+  - scan-codebase
+  - analyze-project
+  - use-ast-grep
+  - use-scripts
+  - report
+  - report-format-table
 ---
 
 ## Goal

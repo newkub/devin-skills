@@ -1,17 +1,17 @@
 ---
 name: follow-leptos
-description: Rust framework for building reactive web applications with SSR and CSR
-  support. Includes...
-triggers:
-- user
-- model
+description: Rust framework for building reactive web applications with SSR and CSR support. Includes...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 สร้าง reactive web applications ด้วย Rust พร้อม SSR และ CSR support

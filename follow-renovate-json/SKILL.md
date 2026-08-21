@@ -1,16 +1,17 @@
 ---
 name: follow-renovate-json
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: Guide for Renovate Json
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 Follow Renovate Json

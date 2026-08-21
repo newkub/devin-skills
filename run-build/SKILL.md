@@ -2,14 +2,14 @@
 name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

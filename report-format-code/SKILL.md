@@ -2,20 +2,20 @@
 name: report-format-code
 description: จัดรูปแบบ code blocks, diffs, JSON และ markdown documents
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
-- report-format-terminal
+  - report-format-table
+  - suggest-next-action
+  - report-format-terminal
 ---
 
 ## Goal

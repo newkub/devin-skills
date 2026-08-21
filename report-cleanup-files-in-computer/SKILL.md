@@ -2,19 +2,19 @@
 name: report-cleanup-files-in-computer
 description: รายงานไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้ โดยไม่ลบอัตโนมัติ
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -24,7 +24,7 @@ related:
 ## Scope
 
 ใช้กับ computer ของผู้ใช้ทั่วไป (ไม่จำกัด workspace) ครอบคลุม package caches, temp files, logs, editor caches, browser caches, และ artifacts เก่า
-- เป็น **report-only** ไม่ลบอัตโนมัติ
+- เป็น `report-only` ไม่ลบอัตโนมัติ
 - ไม่รวมการลบไฟล์ส่วนบุคคล, source code, หรือ secrets
 
 ## Execute
@@ -35,7 +35,7 @@ related:
 
 > Goal: รู้ว่าจะ scan อะไร scan ที่ไหน และไม่ลบอัตโนมัติ
 
-1. ยืนยันกับผู้ใช้ว่า workflow นี้ **report-only**
+1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-only`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
 4. parallel: ทำ `/list-system-env` เพื่อดู paths หลัก ∥ ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง

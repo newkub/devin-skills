@@ -2,14 +2,14 @@
 name: bench-features
 description: เปรียบเทียบ features กับคู่แข่ง หา gaps แล้วสร้าง roadmap ให้ดีกว่า
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

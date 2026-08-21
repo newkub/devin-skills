@@ -2,14 +2,14 @@
 name: memorize
 description: จดจำสิ่งสำคัญ เช่น การตัดสินใจ ข้อค้นพบ บทเรียน และ context เพื่อใช้ในอนาคต
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

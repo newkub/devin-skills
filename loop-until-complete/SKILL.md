@@ -2,14 +2,14 @@
 name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

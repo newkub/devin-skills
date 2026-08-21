@@ -1,16 +1,15 @@
 ---
 name: idea-improve-naming
-description: สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database,
-  files, CSS พร้อม continuous...
+description: สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files, CSS พร้อม continuous...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,17 +1,17 @@
 ---
 name: follow-create-browser-extensions
-description: Guidelines for creating browser extensions for Chrome, Firefox, Edge,
-  and other browsers...
-triggers:
-- user
-- model
+description: Guidelines for creating browser extensions for Chrome, Firefox, Edge, and other browsers...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 สร้าง browser extensions สำหรับ Chrome, Firefox, Edge และ browsers อื่นๆ ตาม Manifest V3 standard

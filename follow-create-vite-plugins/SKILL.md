@@ -1,18 +1,19 @@
 ---
 name: follow-create-vite-plugins
 description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

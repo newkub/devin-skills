@@ -2,20 +2,20 @@
 name: report-format-file-structure
 description: แสดงโครงสร้างไฟล์ โฟลเดอร์ พร้อม metadata สถิติ และคำแนะนำ
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
-- report-format-terminal
+  - report-format-table
+  - suggest-next-action
+  - report-format-terminal
 ---
 
 ## Goal

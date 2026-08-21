@@ -1,17 +1,17 @@
 ---
-name: follow-nextest\references\nextest
-description: Next-generation test runner for Rust with faster execution, per-test
-  isolation, and CI support
+name: follow-nextest/references/nextest
+description: Next-generation test runner for Rust with faster execution, per-test isolation, and CI support
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Nextest สำหรับ test runner ที่เร็วกว่า cargo test

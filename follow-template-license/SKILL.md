@@ -2,14 +2,14 @@
 name: follow-template-license
 description: ตั้งค่าและใช้งาน license ตาม template มาตรฐานสำหรับโปรเจกต์
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,15 +2,16 @@
 name: merge
 description: merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

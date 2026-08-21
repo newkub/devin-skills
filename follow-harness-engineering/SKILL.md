@@ -2,14 +2,14 @@
 name: follow-harness-engineering
 description: สร้างและปรับปรุง AI agent harness เพื่อ reliability และ verifiable execution
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

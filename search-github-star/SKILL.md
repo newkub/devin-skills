@@ -2,14 +2,14 @@
 name: search-github-star
 description: ค้นหา repositories จาก GitHub stars ด้วย gh CLI
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

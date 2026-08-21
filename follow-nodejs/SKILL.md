@@ -1,17 +1,17 @@
 ---
 name: follow-nodejs
-description: Node.js JavaScript runtime ที่ใช้ Chrome V8 engine สำหรับรัน JavaScript
-  นอก browser รองรับ bun...
-triggers:
-- user
-- model
+description: Node.js JavaScript runtime ที่ใช้ Chrome V8 engine สำหรับรัน JavaScript นอก browser รองรับ bun...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem ที่ใหญ่ที่สุด

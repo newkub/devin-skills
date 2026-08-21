@@ -2,14 +2,14 @@
 name: follow-nvim
 description: ตั้งค่า Neovim configuration ด้วย lazy.nvim ตาม best practices
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

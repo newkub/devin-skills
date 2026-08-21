@@ -2,14 +2,14 @@
 name: learn-from-code-pattern
 description: สกัด reusable patterns จาก code จริงเพื่อนำมาประยุกต์ใช้ใน project
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

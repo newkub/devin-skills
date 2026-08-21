@@ -1,17 +1,17 @@
 ---
 name: follow-event-driven
-description: Implement Event-Driven Architecture สำหรับ async workflows และ loose
-  coupling
+description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

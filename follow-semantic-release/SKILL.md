@@ -1,16 +1,17 @@
 ---
 name: follow-semantic-release
+description: "ใช้ https://github.com/semantic-release/"
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
-description: ใช้ https://github.com/semantic-release/
+  - user
+  - model
 ---
+
 ## Goal
 
 Follow Semantic Release

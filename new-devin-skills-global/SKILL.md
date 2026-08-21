@@ -1,26 +1,26 @@
 ---
 name: new-devin-skills-global
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-- follow-write-devin-skills
-- follow-devin-skills-md
-- scan-codebase
-- ask-me
-- validate
-- check-reference
-- follow-content-quality
-- update-reference
+  - follow-write-devin-skills
+  - follow-devin-skills-md
+  - scan-codebase
+  - ask-me
+  - validate
+  - check-reference
+  - follow-content-quality
+  - update-reference
 ---
 
 ## Goal

@@ -2,17 +2,17 @@
 name: cleanup-git-branch
 description: ลบ git branches เก่าที merge แล้วหรือไม่ใช้แล้ว
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-git-branch
-- follow-git
+  - follow-git-branch
+  - follow-git
 ---
 
 ## Goal

@@ -1,16 +1,16 @@
 ---
 name: read-related
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- skill
+  - read
+  - skill
+triggers:
+  - user
+  - model
 related:
-- read-related-skills
-- report-format-table
-- suggest-next-action
+  - read-related-skills
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

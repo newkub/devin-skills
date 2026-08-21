@@ -1,17 +1,17 @@
 ---
 name: follow-lua
-description: แนวทางการพัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight
-  automation
-triggers:
-- user
-- model
+description: แนวทางการพัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight automation
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 พัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight automation

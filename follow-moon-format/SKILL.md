@@ -2,15 +2,16 @@
 name: follow-moon-format
 description: Format code ด้วย moonrepo และแก้ไข errors จนไม่มีเหลือ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

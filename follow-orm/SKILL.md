@@ -1,16 +1,15 @@
 ---
 name: follow-orm
-description: กำหนด ORM และ data access patterns ด้วย repository pattern และ type-safe
-  mappings
+description: กำหนด ORM และ data access patterns ด้วย repository pattern และ type-safe mappings
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

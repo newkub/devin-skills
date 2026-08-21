@@ -1,24 +1,24 @@
 ---
 name: report-deps
-description: 'สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses'
+description: "สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses"
 allowed-tools:
-- read
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- list-dependencies
-- run-audit
-- check-unused-deps
-- run-install
-- update-dependencies-latest
-- delete
-- suggest-next-action
+  - report-format-table
+  - list-dependencies
+  - run-audit
+  - check-unused-deps
+  - run-install
+  - update-dependencies-latest
+  - delete
+  - suggest-next-action
 ---
 
 ## Goal

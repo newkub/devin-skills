@@ -2,14 +2,14 @@
 name: list-git-stash
 description: แสดง stashes ทั้งหมดพร้อมข้อมูลและสถานะ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,14 +2,14 @@
 name: follow-desktop-app
 description: สร้าง Desktop Applications ด้วย Tauri, SolidStart, และ UnoCSS
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

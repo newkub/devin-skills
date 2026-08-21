@@ -2,15 +2,16 @@
 name: follow-react-scan
 description: ตรวจจับและแก้ไข React performance issues ด้วย react-scan โดยไม่แก้ไขโค้ด
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

@@ -2,15 +2,16 @@
 name: run-audit
 description: Audit dependencies และ security เพื่อตรวจสอบ vulnerabilities
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

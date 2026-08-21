@@ -1,16 +1,16 @@
 ---
 name: bench-perf
 description: Run benchmarks and measure performance of code
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,16 +1,15 @@
 ---
 name: improve-database-design
-description: Review and improve an existing or proposed database design to achieve
-  better performance, integri...
+description: Review and improve an existing or proposed database design to achieve better performance, integri...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

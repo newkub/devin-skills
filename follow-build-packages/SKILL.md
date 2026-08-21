@@ -1,16 +1,17 @@
 ---
 name: follow-build-packages
+description: Setup
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
-description: /follow-turborepo
+  - user
+  - model
 ---
+
 ## Goal
 
 Setup

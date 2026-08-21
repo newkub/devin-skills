@@ -1,16 +1,15 @@
 ---
 name: follow-create-cli
-description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack
-  ที่เหมาะสม
+description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack ที่เหมาะสม
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,15 +1,15 @@
 ---
 name: summarize-this-chat-session
+description: "title: Summarize This Chat Session"
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
-description: 'title: Summarize This Chat Session'
+  - user
+  - model
 ---
 
 ---

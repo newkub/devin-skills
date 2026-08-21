@@ -1,21 +1,21 @@
 ---
 name: follow-data-structures
 description: เลือกและใช้งาน data structures ตามลักษณะข้อมูลและ operations
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 related:
-- follow-algorithms
-- check-time-complexity
-- follow-functional-programming
-- validate
+  - follow-algorithms
+  - check-time-complexity
+  - follow-functional-programming
+  - validate
 ---
 
 ## Goal

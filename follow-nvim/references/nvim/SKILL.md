@@ -1,16 +1,17 @@
 ---
-name: follow-nvim\references\nvim
+name: follow-nvim/references/nvim
 description: แนวทางการใช้งาน Neovim - Modern, extensible text editor ที่พัฒนาจาก Vim
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Neovim สำหรับ text editing ที่ highly customizable

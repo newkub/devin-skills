@@ -2,14 +2,14 @@
 name: check-type-declarations
 description: ค้นหาและวิเคราะห์ d.ts files ทั้งใน project และ node_modules
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

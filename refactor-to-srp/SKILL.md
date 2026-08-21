@@ -2,33 +2,33 @@
 name: refactor-to-srp
 description: Refactor code ให้เป็น SRP โดยวิเคราะห์ structure และอัปเดท references
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- all-workspaces
-- check-code-structure
-- check-circular-dependencies
-- improve-code-duplication
-- check-long-files
-- dont-over-engineer
-- edit-relative
-- plan
-- refactor
-- refactor-codebase
-- refactor-file-remain-this
-- refactor-packages
-- relocation
-- rename
-- restructure
-- run-check
-- run-test
-- update-reference
+  - all-workspaces
+  - check-code-structure
+  - check-circular-dependencies
+  - improve-code-duplication
+  - check-long-files
+  - dont-over-engineer
+  - edit-relative
+  - plan
+  - refactor
+  - refactor-codebase
+  - refactor-file-remain-this
+  - refactor-packages
+  - relocation
+  - rename
+  - restructure
+  - run-check
+  - run-test
+  - update-reference
 ---
 
 ## Goal

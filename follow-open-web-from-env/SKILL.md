@@ -2,15 +2,16 @@
 name: follow-open-web-from-env
 description: อ่าน .env files แล้วเปิด URL เพื่อไปเอา API keys หรือ secrets
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

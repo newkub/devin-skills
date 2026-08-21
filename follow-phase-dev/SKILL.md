@@ -1,17 +1,17 @@
 ---
 name: follow-phase-dev
-description: ตั้งค่าและใช้งาน Phase.dev สำหรับจัดการ secrets และ environment variables
-  อย่างปลอดภัย
+description: ตั้งค่าและใช้งาน Phase.dev สำหรับจัดการ secrets และ environment variables อย่างปลอดภัย
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

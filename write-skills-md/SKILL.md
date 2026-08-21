@@ -2,21 +2,21 @@
 name: write-skills-md
 description: เขียนหรือปรับปรุง SKILL.md หนึ่งไฟล์ตามมาตรฐาน Devin CLI
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-write-devin-skills
-- follow-content-quality
-- validate
-- check-reference
-- update-reference
-- ask-me
+  - follow-write-devin-skills
+  - follow-content-quality
+  - validate
+  - check-reference
+  - update-reference
+  - ask-me
 ---
 
 ## Goal

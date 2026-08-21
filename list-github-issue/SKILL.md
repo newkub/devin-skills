@@ -2,14 +2,14 @@
 name: list-github-issue
 description: แสดงรายการ issues ของ repository ที่ระบุบน GitHub
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

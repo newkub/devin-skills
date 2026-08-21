@@ -2,15 +2,16 @@
 name: follow-release-crates
 description: ตั้งค่า Cargo สำหรับ automated releases ไปยัง crates.io
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

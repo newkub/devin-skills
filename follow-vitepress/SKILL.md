@@ -2,14 +2,14 @@
 name: follow-vitepress
 description: ตั้งค่า VitePress ด้วย UnoCSS, Shiki Twoslash, Group Icons
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

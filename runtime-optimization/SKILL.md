@@ -1,17 +1,17 @@
 ---
 name: runtime-optimization
-description: คู่มือการ optimize runtime รวมถึง JIT compilation, memory management,
-  hot path optimization, และ...
-triggers:
-- user
-- model
+description: คู่มือการ optimize runtime รวมถึง JIT compilation, memory management, hot path optimization, และ...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ให้ผู้ใช้เข้าใจและสามารถ optimize runtime systems ได้อย่างมีประสิทธิภาพ

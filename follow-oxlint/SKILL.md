@@ -1,17 +1,17 @@
 ---
 name: follow-oxlint
-description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast linting ผ่าน ESLint 9+ flat
-  config
+description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast linting ผ่าน ESLint 9+ flat config
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

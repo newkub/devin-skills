@@ -1,17 +1,17 @@
 ---
 name: follow-animejs
-description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ
-  และใช้งานง่าย
-triggers:
-- user
-- model
+description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่าย
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ Anime.js สร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่ายในโปรเจกต์

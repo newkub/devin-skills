@@ -2,12 +2,12 @@
 name: open-github-org
 description: เปิดหน้า GitHub organization ที่ระบุใน browser
 argument-hint: <org-name>
-triggers:
-- user
 allowed-tools:
-- exec
+  - exec
+triggers:
+  - user
 related:
-- open-web
+  - open-web
 ---
 
 ## Goal

@@ -2,14 +2,14 @@
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

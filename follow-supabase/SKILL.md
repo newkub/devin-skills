@@ -1,17 +1,17 @@
 ---
 name: follow-supabase
-description: Open source Firebase alternative สำหรับ build backend ด้วย PostgreSQL,
-  Auth, Edge Functions, และ...
-triggers:
-- user
-- model
+description: Open source Firebase alternative สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, และ...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, และ Realtime

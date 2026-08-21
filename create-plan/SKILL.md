@@ -1,19 +1,18 @@
 ---
 name: create-plan
-description: สร้างแผนงานละเอียดใน .devin/plan/<title-date>.md ด้วย /deep-plan และ
-  /report-plan
+description: สร้างแผนงานละเอียดใน .devin/plan/<title-date>.md ด้วย /deep-plan และ /report-plan
 argument-hint: <title>
-triggers:
-- user
 allowed-tools:
-- read
-- edit
-- write
-- exec
+  - read
+  - edit
+  - write
+  - exec
+triggers:
+  - user
 related:
-- deep-plan
-- report-plan
-- implement-plan
+  - deep-plan
+  - report-plan
+  - implement-plan
 ---
 
 ## Goal

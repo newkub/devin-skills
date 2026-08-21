@@ -2,15 +2,16 @@
 name: follow-incident-triage
 description: จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสม
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

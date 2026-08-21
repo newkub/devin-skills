@@ -2,19 +2,19 @@
 name: follow-asynchronous
 description: ใช้งาน async patterns ใน JavaScript/TypeScript ให้ถูกต้อง
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-javascript
-- follow-typescript
-- validate
+  - follow-javascript
+  - follow-typescript
+  - validate
 ---
 
 ## Goal

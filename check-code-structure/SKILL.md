@@ -1,16 +1,15 @@
 ---
 name: check-code-structure
-description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols,
-  exports, members, และ cohesion
+description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

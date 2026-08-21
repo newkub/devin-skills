@@ -2,14 +2,14 @@
 name: git-restore-file
 description: กู้คืนไฟล์จาก git history โดยเริ่มจาก commit ล่าสุดและเดินกลับจนพบ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

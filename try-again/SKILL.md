@@ -2,14 +2,14 @@
 name: try-again
 description: ทำตาม user prompt ล่าสุดอีกครั้ง
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

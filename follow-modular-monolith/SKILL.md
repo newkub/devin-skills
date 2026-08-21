@@ -2,15 +2,16 @@
 name: follow-modular-monolith
 description: Implement Modular Monolith architecture สำหรับ medium scale systems
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

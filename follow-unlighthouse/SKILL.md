@@ -2,15 +2,16 @@
 name: follow-unlighthouse
 description: ตั้งค่า Unlighthouse CLI และ CI สำหรับ audit website ด้วย Google Lighthouse
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

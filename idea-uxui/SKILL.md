@@ -1,16 +1,15 @@
 ---
 name: idea-uxui
-description: สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous
-  numbering และ scope ที่ช...
+description: สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous numbering และ scope ที่ช...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

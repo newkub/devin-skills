@@ -1,16 +1,17 @@
 ---
-name: follow-release-it\references\release-it
+name: follow-release-it/references/release-it
 description: Generic CLI tool สำหรับ automate versioning และ package publishing
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Release It สำหรับ automate versioning และ package publishing

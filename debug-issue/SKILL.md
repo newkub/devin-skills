@@ -2,14 +2,14 @@
 name: debug-issue
 description: หา root cause ของปัญหาอย่างเป็นระบบด้วยการจัดลำดับและตัดสิ่งที่ไม่ใช่
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

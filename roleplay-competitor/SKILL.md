@@ -2,14 +2,14 @@
 name: roleplay-competitor
 description: รับบทเป็นคู่แข่งอ่าน code แล้ววิเคราะห์จุดอ่อน ช่องโหว่ และโอกาสที่คู่แข่งจะเอาชนะได้
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,26 +1,25 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze`
-  CLI, `@ast-grep/napi` และ...
+description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- deep-analyze
-- update-review-cli
-- follow-create-cli
-- follow-clean-architecture
-- use-ast-grep
-- use-scripts
-- deep-report
-- report-format-table
-- update-reference
+  - deep-analyze
+  - update-review-cli
+  - follow-create-cli
+  - follow-clean-architecture
+  - use-ast-grep
+  - use-scripts
+  - deep-report
+  - report-format-table
+  - update-reference
 ---
 
 ## Goal

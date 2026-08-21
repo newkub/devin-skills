@@ -2,22 +2,22 @@
 name: run-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- use-scripts
-- use-ast-grep-programatic
-- run-test
-- follow-test
-- run-test-integration
-- validate
-- report
+  - use-scripts
+  - use-ast-grep-programatic
+  - run-test
+  - follow-test
+  - run-test-integration
+  - validate
+  - report
 ---
 
 ## Goal

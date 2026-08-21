@@ -2,15 +2,16 @@
 name: follow-request-math-formular
 description: ขอสูตรคณิตศาสตร์ที่กระชับและเข้าใจง่าย
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

@@ -1,16 +1,15 @@
 ---
 name: follow-bunup
-description: ตั้งค่า Bunup เป็น library bundler ที่ใช้ Bun's native bundler สำหรับ
-  TypeScript libraries ที่ต้อ...
+description: ตั้งค่า Bunup เป็น library bundler ที่ใช้ Bun's native bundler สำหรับ TypeScript libraries ที่ต้อ...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,17 +1,17 @@
 ---
-name: follow-tauri\references\tauri
-description: Build cross-platform desktop and mobile applications with Rust backend
-  and web frontend....
+name: follow-tauri/references/tauri
+description: Build cross-platform desktop and mobile applications with Rust backend and web frontend....
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 สร้าง cross-platform desktop และ mobile applications ด้วย Rust backend และ web technologies frontend

@@ -1,16 +1,17 @@
 ---
 name: publish-package-to-npm
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: Publish Package To Npm
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 Publish Package To Npm

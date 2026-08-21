@@ -2,14 +2,14 @@
 name: view-files-in-terminal
 description: แสดงเนื้อหาไฟล์ใน terminal ด้วย bat พร้อม syntax highlighting
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

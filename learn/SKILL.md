@@ -1,16 +1,15 @@
 ---
 name: learn
-description: เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ ด้วย research และ
-  practice
+description: เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ ด้วย research และ practice
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

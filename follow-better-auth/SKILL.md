@@ -2,16 +2,16 @@
 name: follow-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-workos
+  - follow-workos
 ---
 
 ## Goal

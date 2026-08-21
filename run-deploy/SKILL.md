@@ -1,16 +1,15 @@
 ---
 name: run-deploy
-description: Deploy application ไปยัง platform ที่กำหนด พร้อม commit, push และ watch
-  จน live
+description: Deploy application ไปยัง platform ที่กำหนด พร้อม commit, push และ watch จน live
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

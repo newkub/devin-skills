@@ -2,14 +2,14 @@
 name: follow-changelogen
 description: สร้าง changelog และจัดการ releases ด้วย changelogen
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

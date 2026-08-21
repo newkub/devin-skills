@@ -1,24 +1,23 @@
 ---
 name: prepare-skills-context
-description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน
-  skill
-triggers:
-- user
-- model
+description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน skill
 allowed-tools:
-- read
-- grep
-- glob
-- find_file_by_name
-- skill
-- ask_user_question
+  - read
+  - grep
+  - glob
+  - find_file_by_name
+  - skill
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-- ask-me
-- read-related-skills
-- check-reference
-- follow-best-practice
-- follow-write-devin-skills
-- suggest-next-action
+  - ask-me
+  - read-related-skills
+  - check-reference
+  - follow-best-practice
+  - follow-write-devin-skills
+  - suggest-next-action
 ---
 
 ## Goal

@@ -2,14 +2,14 @@
 name: follow-package-manifest
 description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

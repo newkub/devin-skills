@@ -1,16 +1,17 @@
 ---
-name: follow-nitro\references\nitro
+name: follow-nitro/references/nitro
 description: Universal server framework ที่ deploy ได้ทุก platform ด้วย Vite integration
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ Nitro สร้าง server applications ที่ deploy ได้ทุก runtime และ platform ด้วย zero config และ Vite integration

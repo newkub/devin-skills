@@ -2,15 +2,16 @@
 name: follow-wxt
 description: ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

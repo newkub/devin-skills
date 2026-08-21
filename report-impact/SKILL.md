@@ -1,23 +1,23 @@
 ---
 name: report-impact
-description: 'วิเคราะห์ผลกระทบของการเปลี่ยนแปลง: ไฟล์ที่กระทบ, ผู้ใช้, breaking changes'
+description: "วิเคราะห์ผลกระทบของการเปลี่ยนแปลง: ไฟล์ที่กระทบ, ผู้ใช้, breaking changes"
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- report-git-diff
-- scan-codebase
-- rename
-- suggest-next-action
+  - report-format-table
+  - report-git-diff
+  - scan-codebase
+  - rename
+  - suggest-next-action
 ---
 
 ## Goal

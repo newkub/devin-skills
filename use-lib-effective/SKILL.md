@@ -2,14 +2,14 @@
 name: use-lib-effective
 description: วิเคราะห์ dependencies และใช้งาน libraries ให้ครบและครอบคลุม ไม่ reinvent
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

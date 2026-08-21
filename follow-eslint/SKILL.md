@@ -2,14 +2,14 @@
 name: follow-eslint
 description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

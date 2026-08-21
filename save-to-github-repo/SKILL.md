@@ -1,17 +1,16 @@
 ---
 name: save-to-github-repo
-description: บันทึก local project ใหม่ขึ้น GitHub ด้วย git init, create repo, และ
-  /git-commit-and-push
-argument-hint: '[<repo-name>] [--public|--private]'
-triggers:
-- user
+description: บันทึก local project ใหม่ขึ้น GitHub ด้วย git init, create repo, และ /git-commit-and-push
+argument-hint: "[<repo-name>] [--public|--private]"
 allowed-tools:
-- exec
-- read
-- write
+  - exec
+  - read
+  - write
+triggers:
+  - user
 related:
-- git-commit-and-push
-- open-web
+  - git-commit-and-push
+  - open-web
 ---
 
 ## Goal

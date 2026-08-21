@@ -2,14 +2,14 @@
 name: idea-new-devin-skills-global
 description: แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้/สร้างต่อจาก skill ปัจจุบัน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

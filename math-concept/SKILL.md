@@ -1,15 +1,15 @@
 ---
 name: math-concept
 description: คู่มือคณิตศาสตร์สำหรับ software development
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
 
 ## Goal

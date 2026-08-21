@@ -1,16 +1,15 @@
 ---
 name: follow-create-bun-cli
-description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best
-  practices
+description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

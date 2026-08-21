@@ -2,14 +2,14 @@
 name: list-alternative
 description: List alternatives ที่ดีกว่าสำหรับ libraries, tools, frameworks หรือ patterns
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

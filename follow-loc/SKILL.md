@@ -2,14 +2,14 @@
 name: follow-loc
 description: ใช้งาน loc tool สำหรับนับ lines of code แบบเร็ว กรองไฟล์ และวิเคราะห์ขนาดไฟล์
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

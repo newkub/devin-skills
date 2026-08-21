@@ -1,17 +1,17 @@
 ---
 name: follow-zod
-description: ตั้งค่าและใช้งาน Zod สำหรับ TypeScript-first schema validation ด้วย static
-  type inference
+description: ตั้งค่าและใช้งาน Zod สำหรับ TypeScript-first schema validation ด้วย static type inference
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

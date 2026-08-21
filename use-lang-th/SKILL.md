@@ -2,14 +2,14 @@
 name: use-lang-th
 description: ใช้ภาษาไทยในการสื่อสารและทำงาน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,16 +2,16 @@
 name: follow-import-export
 description: จัดการ import strategy และ barrel exports สำหรับ module public API
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- refactor-codebase
+  - refactor-codebase
 ---
 
 ## Goal

@@ -1,17 +1,17 @@
 ---
 name: follow-sematic-release
-description: Fully automated version management และ package publishing tool ที่ใช้
-  conventional commits
-triggers:
-- user
-- model
+description: Fully automated version management และ package publishing tool ที่ใช้ conventional commits
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Semantic Release สำหรับ automated version management และ package publishing

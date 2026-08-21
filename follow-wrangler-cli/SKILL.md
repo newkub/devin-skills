@@ -2,14 +2,14 @@
 name: follow-wrangler-cli
 description: ใช้งาน Wrangler CLI สำหรับ Cloudflare Workers และ Developer Platform
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

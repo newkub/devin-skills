@@ -1,17 +1,17 @@
 ---
 name: follow-aws-sdk
-description: AWS SDK for JavaScript. Use for interacting with AWS services like S3,
-  Lambda, DynamoDB, and...
-triggers:
-- user
-- model
+description: AWS SDK for JavaScript. Use for interacting with AWS services like S3, Lambda, DynamoDB, and...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services

@@ -2,19 +2,19 @@
 name: report-workspace-relation
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

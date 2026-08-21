@@ -1,16 +1,15 @@
 ---
 name: improve-test-coverage
-description: วิเคราะห์และเพิ่ม test coverage ให้ครอบคลุมทุก critical paths, edge cases,
-  และ error paths
+description: วิเคราะห์และเพิ่ม test coverage ให้ครอบคลุมทุก critical paths, edge cases, และ error paths
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

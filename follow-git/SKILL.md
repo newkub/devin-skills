@@ -2,17 +2,17 @@
 name: follow-git
 description: ใช้งาน git commands ตามสถานการณ์
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- validate
-- ask-me
+  - validate
+  - ask-me
 ---
 
 ## Goal

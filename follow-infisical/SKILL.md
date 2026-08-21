@@ -2,14 +2,14 @@
 name: follow-infisical
 description: ใช้งาน Infisical สำหรับจัดการ secrets และ environment variables อย่างปลอดภัย
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

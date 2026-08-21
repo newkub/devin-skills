@@ -1,22 +1,22 @@
 ---
-name: refactor-to-srp\references\check-srp
+name: refactor-to-srp/references/check-srp
 description: ตรวจสอบ SRP violations ด้วย ast-grep outline และ deep analysis พร้อมรายงานครอบคลุม
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- use-ast-grep-outline
-- deep-analyze-by-use-scripts
-- use-scripts
-- refactor-to-srp
+  - use-ast-grep-outline
+  - deep-analyze-by-use-scripts
+  - use-scripts
+  - refactor-to-srp
 ---
 
 ## Goal

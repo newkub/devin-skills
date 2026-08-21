@@ -2,14 +2,14 @@
 name: follow-software-engineering
 description: ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

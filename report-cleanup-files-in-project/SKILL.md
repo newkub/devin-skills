@@ -2,19 +2,19 @@
 name: report-cleanup-files-in-project
 description: รายงานไฟล์และโฟลเดอร์ใน project workspace ที่สามารถลบหรือทำความสะอาดได้
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -24,7 +24,7 @@ related:
 ## Scope
 
 ใช้กับ project workspace ปัจจุบันหรือ workspace ที่ระบุ
-- เป็น **report-only** ไม่ลบอัตโนมัติ
+- เป็น `report-only` ไม่ลบอัตโนมัติ
 - ครอบคลุม build artifacts, dependency caches, framework cache, logs, coverage, และ temp files
 - ไม่รวม source code, lock files, config, .env
 

@@ -1,16 +1,17 @@
 ---
 name: follow-devin
 description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ skill นี้เพื่อเข้าใจและใช้งาน Devin/Cascade AI coding assistant สำหรับ autonomous software development, code generation, debugging, และ testing
@@ -41,12 +42,12 @@ allowed-tools:
 ### 2. เข้าใจ Core Concepts
 
 อ่าน `key-concepts/` เพื่อเข้าใจ:
-- **SWE Models**: SWE-1.6, SWE-1.5, SWE-1, SWE-1-mini, swe-grep
-- **Agent Client Protocol (ACP)**: Protocol สำหรับ communication ระหว่าง agents
-- **Spaces**: Shared context และ Git worktrees สำหรับ agents
-- **Supercomplete**: Intelligent autocomplete ที่ predict next thought
-- **Tool Calling**: Parallel tool calls สำหรับ efficient execution
-- **Context Awareness**: Fast Context และ context retrieval
+- `SWE Models`: SWE-1.6, SWE-1.5, SWE-1, SWE-1-mini, swe-grep
+- `Agent Client Protocol (ACP)`: Protocol สำหรับ communication ระหว่าง agents
+- `Spaces`: Shared context และ Git worktrees สำหรับ agents
+- `Supercomplete`: Intelligent autocomplete ที่ predict next thought
+- `Tool Calling`: Parallel tool calls สำหรับ efficient execution
+- `Context Awareness`: Fast Context และ context retrieval
 
 ### 3. ปฏิบัติตาม Best Practices
 
@@ -72,11 +73,11 @@ allowed-tools:
 ### 1. Model Selection
 
 - เลือก model ตาม task:
-  - **SWE-1.6**: General coding tasks, high intelligence
-  - **SWE-1.6 Fast**: Fast coding tasks, speed priority
-  - **SWE-1.5**: Legacy support, near Claude 4.5 performance
-  - **SWE-1-mini**: Real-time autocomplete, low latency
-  - **swe-grep**: Context retrieval และ search
+  - `SWE-1.6`: General coding tasks, high intelligence
+  - `SWE-1.6 Fast`: Fast coding tasks, speed priority
+  - `SWE-1.5`: Legacy support, near Claude 4.5 performance
+  - `SWE-1-mini`: Real-time autocomplete, low latency
+  - `swe-grep`: Context retrieval และ search
 
 ### 2. Prompt Engineering
 

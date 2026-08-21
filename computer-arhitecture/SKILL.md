@@ -1,17 +1,17 @@
 ---
 name: computer-arhitecture
-description: Computer architecture guide covering CPU design, memory hierarchy, instruction
-  sets, pipelining,...
-triggers:
-- user
-- model
+description: Computer architecture guide covering CPU design, memory hierarchy, instruction sets, pipelining,...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ให้ผู้ใช้เข้าใจและสามารถประยุกต์ใช้ computer architecture ได้อย่างมีประสิทธิภาพ

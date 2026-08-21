@@ -2,15 +2,16 @@
 name: refactor-file-remain-this
 description: Refactor into smaller files, keeping this one as is.
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 Refactor File Remain This

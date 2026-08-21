@@ -1,20 +1,20 @@
 ---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- skill
+  - read
+  - skill
+triggers:
+  - user
+  - model
 related:
-- deep-analyze-by-use-scripts
-- follow-monorepo
-- follow-uxui
-- follow-tanstack
-- follow-hk
-- follow-pitchfork
-- follow-usage
+  - deep-analyze-by-use-scripts
+  - follow-monorepo
+  - follow-uxui
+  - follow-tanstack
+  - follow-hk
+  - follow-pitchfork
+  - follow-usage
 ---
 
 ## Goal

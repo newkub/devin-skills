@@ -2,19 +2,19 @@
 name: report-format-table
 description: จัดรูปแบบตาราง สรุปข้อมูล และ metrics สำหรับรายงาน
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-terminal
-- suggest-next-action
+  - report-format-terminal
+  - suggest-next-action
 ---
 
 ## Goal

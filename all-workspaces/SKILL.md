@@ -2,14 +2,14 @@
 name: all-workspaces
 description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,14 +2,14 @@
 name: list-github-branch
 description: แสดง branches ทั้งหมดของ repo ที่ระบุบน GitHub
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

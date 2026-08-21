@@ -2,14 +2,14 @@
 name: rename
 description: เปลี่ยนชื่อ identifier ใน code ด้วย ast-grep และอัปเดท references ทั้งหมด
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

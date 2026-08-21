@@ -1,24 +1,23 @@
 ---
 name: convert-to-flat-files
-description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file
-  `<name>.md`
+description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file `<name>.md`
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- write-skills-md
-- follow-write-devin-skills
-- validate
-- check-reference
-- update-reference
+  - write-skills-md
+  - follow-write-devin-skills
+  - validate
+  - check-reference
+  - update-reference
 ---
 
 ## Goal

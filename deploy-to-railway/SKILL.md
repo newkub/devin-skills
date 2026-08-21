@@ -2,14 +2,14 @@
 name: deploy-to-railway
 description: Deploy application ไปยัง Railway ด้วย railway up จนกว่าจะ live สำเร็จ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

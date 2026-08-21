@@ -1,17 +1,17 @@
 ---
 name: follow-design-pattern
-description: Design patterns guide covering creational, structural, and behavioral
-  patterns with examples and...
-triggers:
-- user
-- model
+description: Design patterns guide covering creational, structural, and behavioral patterns with examples and...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

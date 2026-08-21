@@ -2,14 +2,14 @@
 name: improve-typesafe
 description: วิเคราะห์และปรับปรุง type safety ลด any เพิ่ม type inference และ strictness
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -1,16 +1,15 @@
 ---
 name: ship
-description: Ship ครบวงจร ตั้งแต่ planning, review, verify, release โดยมี user confirm
-  ก่อน release
+description: Ship ครบวงจร ตั้งแต่ planning, review, verify, release โดยมี user confirm ก่อน release
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

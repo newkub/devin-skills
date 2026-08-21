@@ -1,21 +1,20 @@
 ---
 name: report-plan
-description: รายงานแผนงานก่อน implement พร้อม task table, bullet points ของ task with
-  before-after แต่ละข้อ...
+description: รายงานแผนงานก่อน implement พร้อม task table, bullet points ของ task with before-after แต่ละข้อ...
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

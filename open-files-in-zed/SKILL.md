@@ -2,14 +2,14 @@
 name: open-files-in-zed
 description: เปิดไฟล์หรือ directory ใน Zed editor ผ่าน CLI ที่ถูกต้องตาม OS
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

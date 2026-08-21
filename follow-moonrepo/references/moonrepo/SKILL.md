@@ -1,16 +1,17 @@
 ---
-name: follow-moonrepo\references\moonrepo
+name: follow-moonrepo/references/moonrepo
 description: แนวทางการใช้งาน moonrepo สำหรับ monorepo management และ task running
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน moonrepo สำหรับ monorepo management และ task running

@@ -2,14 +2,14 @@
 name: sync-drive-d-submodules
 description: Sync และอัพเดท git submodules ใน D drive กับ remote repositories
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

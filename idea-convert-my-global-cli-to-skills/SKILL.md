@@ -1,27 +1,27 @@
 ---
 name: idea-convert-my-global-cli-to-skills
 description: สร้างไอเดียและ draft แปลง CLI tools ที่ติดตั้งเป็น Devin skills
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
-- skill
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+  - skill
+triggers:
+  - user
+  - model
 related:
-- follow-my-global-cli
-- report-my-global-cli
-- learn-from-cli
-- follow-write-devin-skills
-- write-skills-md
-- validate
-- report-format-table
-- suggest-next-action
+  - follow-my-global-cli
+  - report-my-global-cli
+  - learn-from-cli
+  - follow-write-devin-skills
+  - write-skills-md
+  - validate
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

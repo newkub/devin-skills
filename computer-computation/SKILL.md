@@ -1,17 +1,17 @@
 ---
 name: computer-computation
-description: Computer computation and theory of computation guide covering computational
-  models, complexity...
-triggers:
-- user
-- model
+description: Computer computation and theory of computation guide covering computational models, complexity...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

@@ -2,14 +2,14 @@
 name: compare
 description: เปรียบเทียบ options, tools, หรือ solutions เพื่อตัดสินใจ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

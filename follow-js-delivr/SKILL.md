@@ -1,17 +1,17 @@
 ---
 name: follow-js-delivr
-description: Open Source CDN for bun packages and GitHub repositories with multi-CDN
-  infrastructure, smart...
-triggers:
-- user
-- model
+description: Open Source CDN for bun packages and GitHub repositories with multi-CDN infrastructure, smart...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้ jsDelivr CDN สำหรับโหลด bun packages และ GitHub repositories บน web pages

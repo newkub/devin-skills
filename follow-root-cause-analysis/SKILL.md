@@ -2,15 +2,16 @@
 name: follow-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

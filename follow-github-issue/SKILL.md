@@ -2,14 +2,14 @@
 name: follow-github-issue
 description: ใช้ `gh issue` สร้าง ดู แก้ไข และจัดการ issues ของ repository ผ่าน CLI
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

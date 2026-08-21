@@ -1,16 +1,17 @@
 ---
 name: search-npm-libraries
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: หา libraries ตามที่บอกหรือคล้ายที่บอก โดย libraries นั้น ต้อง
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 Search Npm Libraries

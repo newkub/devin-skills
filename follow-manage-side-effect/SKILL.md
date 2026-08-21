@@ -2,15 +2,16 @@
 name: follow-manage-side-effect
 description: แยก pure functions จาก side effects เพื่อเพิ่ม testability และ maintainability
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

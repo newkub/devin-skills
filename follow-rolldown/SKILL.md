@@ -1,16 +1,17 @@
 ---
 name: follow-rolldown
 description: Fast JavaScript bundler ที่เขียนด้วย Rust ใช้ Rollup-compatible API
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง
@@ -57,10 +58,10 @@ bunx rolldown
 
 ### Learning Path
 
-1. **Getting Started**: อ่าน [learn/guide/getting-started.md](learn/guide/getting-started.md)
-2. **Key Concepts**: เรียนรู้ [learn/key-concepts/three-stage-pipeline.md](learn/key-concepts/three-stage-pipeline.md)
-3. **Best Practices**: ดู [learn/principles/best-practices.md](learn/principles/best-practices.md)
-4. **Workflows**: ใช้ [workflows/setup-rolldown.md](workflows/setup-rolldown.md)
+1. `Getting Started`: อ่าน [learn/guide/getting-started.md](learn/guide/getting-started.md)
+2. `Key Concepts`: เรียนรู้ [learn/key-concepts/three-stage-pipeline.md](learn/key-concepts/three-stage-pipeline.md)
+3. `Best Practices`: ดู [learn/principles/best-practices.md](learn/principles/best-practices.md)
+4. `Workflows`: ใช้ [workflows/setup-rolldown.md](workflows/setup-rolldown.md)
 
 
 ## Rules

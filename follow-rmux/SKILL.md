@@ -1,17 +1,17 @@
 ---
 name: follow-rmux
-description: Terminal multiplexer สำหรับ automation ที่เขียนด้วย Rust เข้ากันได้กับ
-  tmux และมี Rust SDK...
-triggers:
-- user
-- model
+description: Terminal multiplexer สำหรับ automation ที่เขียนด้วย Rust เข้ากันได้กับ tmux และมี Rust SDK...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 ใช้งาน RMUX สำหรับ terminal multiplexer และ automation

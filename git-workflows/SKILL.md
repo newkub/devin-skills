@@ -1,16 +1,17 @@
 ---
 name: git-workflows
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: เข้า branch ชื่อ `restructure`
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 restructure

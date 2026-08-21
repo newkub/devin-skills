@@ -2,14 +2,14 @@
 name: follow-solid-tanstack
 description: พัฒนา @tanstack/solid-start app ด้วย oRPC, Query, Store, Form และ Vite
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

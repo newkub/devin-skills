@@ -1,16 +1,15 @@
 ---
 name: roleplay-product-manager
-description: รับบทเป็น PM มอง code ว่า features ครบไหม priority ถูกไหม MVP ใช้ได้ไหม
-  ขาดอะไรที่ user ต้องการจริง
+description: รับบทเป็น PM มอง code ว่า features ครบไหม priority ถูกไหม MVP ใช้ได้ไหม ขาดอะไรที่ user ต้องการจริง
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

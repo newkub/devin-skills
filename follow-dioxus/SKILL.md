@@ -1,16 +1,15 @@
 ---
 name: follow-dioxus
-description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust
-  framework
+description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

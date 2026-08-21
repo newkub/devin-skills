@@ -1,17 +1,17 @@
 ---
-name: refactor-to-srp\references\refactor-long-files
+name: refactor-to-srp/references/refactor-long-files
 description: ตรวจหาและ refactor ไฟล์ที่ยาวกว่า threshold ให้มีขนาดเหมาะสม
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- refactor-codebase
+  - refactor-codebase
 ---
 
 ## Goal

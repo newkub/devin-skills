@@ -1,17 +1,17 @@
 ---
-name: follow-mise\references\mise
-description: Mise - Development environment manager สำหรับ manage tools และ versions
-  ต่างๆ
+name: follow-mise/references/mise
+description: Mise - Development environment manager สำหรับ manage tools และ versions ต่างๆ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 จัดการ development environment และ tool versions อย่างมีประสิทธิภาพด้วย mise

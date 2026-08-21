@@ -2,16 +2,16 @@
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- refactor-codebase
+  - refactor-codebase
 ---
 
 ## Goal

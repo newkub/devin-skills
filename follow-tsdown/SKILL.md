@@ -1,17 +1,17 @@
 ---
 name: follow-tsdown
-description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ
-  type declarations gene...
+description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations gene...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

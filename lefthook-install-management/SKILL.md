@@ -2,14 +2,14 @@
 name: lefthook-install-management
 description: Manage lefthook install only in root package.json
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

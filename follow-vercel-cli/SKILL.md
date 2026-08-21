@@ -2,14 +2,14 @@
 name: follow-vercel-cli
 description: ใช้งาน Vercel CLI สำหรับ deploy และ manage projects บน Vercel
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

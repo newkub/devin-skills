@@ -1,29 +1,28 @@
 ---
 name: assume-reset-context
-description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า
-  วิเคราะห์และเข้...
-triggers:
-- user
-- model
+description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า วิเคราะห์และเข้...
 allowed-tools:
-- read
-- grep
-- glob
-- find_file_by_name
-- skill
+  - read
+  - grep
+  - glob
+  - find_file_by_name
+  - skill
+triggers:
+  - user
+  - model
 related:
-- scan-codebase
-- use-ast-grep
-- read-related-skills
-- deep-thinking
-- follow-best-practice
-- follow-layered-architecture
-- deep-plan
-- refactor
-- use-scripts
-- realize-implementation
-- validate
-- run-check
+  - scan-codebase
+  - use-ast-grep
+  - read-related-skills
+  - deep-thinking
+  - follow-best-practice
+  - follow-layered-architecture
+  - deep-plan
+  - refactor
+  - use-scripts
+  - realize-implementation
+  - validate
+  - run-check
 ---
 
 ## Goal

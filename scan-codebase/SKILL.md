@@ -1,16 +1,15 @@
 ---
 name: scan-codebase
-description: Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality
-  ใน 3 นาที
+description: Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality ใน 3 นาที
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

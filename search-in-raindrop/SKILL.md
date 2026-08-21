@@ -2,20 +2,20 @@
 name: search-in-raindrop
 description: Search Raindrop.io bookmarks via raindrop CLI with filters, output formats, and result parsing
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-my-global-cli
-- learn-from-cli
-- use-scripts
+  - follow-my-global-cli
+  - learn-from-cli
+  - use-scripts
 ---
 
 ## Goal

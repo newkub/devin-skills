@@ -1,21 +1,20 @@
 ---
 name: report-architecture-diagram
-description: วาด architecture diagram ด้วย ANSI box-drawing characters ในแชทจาก codebase
-  จริง
+description: วาด architecture diagram ด้วย ANSI box-drawing characters ในแชทจาก codebase จริง
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- report-format-table
-- suggest-next-action
+  - report-format-table
+  - suggest-next-action
 ---
 
 ## Goal

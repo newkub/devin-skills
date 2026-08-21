@@ -2,17 +2,17 @@
 name: create-git-branch
 description: สร้าง git branch ใหม่อย่างถูกต้อง
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-git-branch
-- follow-git
+  - follow-git-branch
+  - follow-git
 ---
 
 ## Goal

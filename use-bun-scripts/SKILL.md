@@ -2,15 +2,16 @@
 name: use-bun-scripts
 description: สร้าง Bun scripts สำหรับ automate งาน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

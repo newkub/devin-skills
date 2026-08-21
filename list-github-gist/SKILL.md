@@ -1,13 +1,13 @@
 ---
 name: list-github-gist
 description: แสดงรายการ GitHub gists ของผู้ใช้
-argument-hint: '[--limit <n>] [--public|--secret]'
-triggers:
-- user
+argument-hint: "[--limit <n>] [--public|--secret]"
 allowed-tools:
-- exec
+  - exec
+triggers:
+  - user
 related:
-- report-format-table
+  - report-format-table
 ---
 
 ## Goal

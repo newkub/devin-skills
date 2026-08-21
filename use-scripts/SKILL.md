@@ -2,14 +2,14 @@
 name: use-scripts
 description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

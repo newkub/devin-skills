@@ -1,18 +1,17 @@
 ---
 name: refactor-packages
-description: Refactor modules/packages ให้มี SRP, แนะนำ packages/modules จาก workspace,
-  และอัปเดท references
+description: Refactor modules/packages ให้มี SRP, แนะนำ packages/modules จาก workspace, และอัปเดท references
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- refactor-codebase
+  - refactor-codebase
 ---
 
 ## Goal

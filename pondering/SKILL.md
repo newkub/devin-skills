@@ -2,14 +2,14 @@
 name: pondering
 description: ครุ่นคิดและทบทวนอย่างลึกซึ้งก่อนตัดสินใจหรือดำเนินการ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

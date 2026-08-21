@@ -1,17 +1,17 @@
 ---
-name: follow-next\references\next
-description: React framework for building web applications with SSR, SSG, ISR, and
-  App Router. Includes...
+name: follow-next/references/next
+description: React framework for building web applications with SSR, SSG, ISR, and App Router. Includes...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 สร้าง React applications ด้วย SSR/SSG/ISR และ App Router

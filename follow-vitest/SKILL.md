@@ -2,14 +2,14 @@
 name: follow-vitest
 description: ติดตั้งและตั้งค่า Vitest 4 สำหรับ unit testing ด้วย Vite
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

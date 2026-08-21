@@ -2,29 +2,29 @@
 name: refactor-skills
 description: Refactor โครงสร้าง skill files และ directories เพื่อ SRP และลด redundancy
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- check-reference
-- refactor-to-srp
-- deep-review
-- dont-over-engineer
-- follow-devin-skills-md
-- follow-ordering
-- improve-redundancy
-- improve-skills
-- merge
-- new-devin-skills-global
-- read-related-skills
-- report
-- scan-codebase
-- update-reference
+  - check-reference
+  - refactor-to-srp
+  - deep-review
+  - dont-over-engineer
+  - follow-devin-skills-md
+  - follow-ordering
+  - improve-redundancy
+  - improve-skills
+  - merge
+  - new-devin-skills-global
+  - read-related-skills
+  - report
+  - scan-codebase
+  - update-reference
 ---
 
 ## Goal

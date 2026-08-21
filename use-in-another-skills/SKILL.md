@@ -2,22 +2,22 @@
 name: use-in-another-skills
 description: ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill เพื่อลดซ้ำซ้อนและส่งต่องาน
 allowed-tools:
-- read
-- write
-- edit
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - write
+  - edit
+  - grep
+  - glob
+  - exec
+  - ask_user_question
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-write-devin-skills
-- follow-devin-skills-md
-- check-reference
-- update-reference
-- validate
+  - follow-write-devin-skills
+  - follow-devin-skills-md
+  - check-reference
+  - update-reference
+  - validate
 ---
 
 ## Goal

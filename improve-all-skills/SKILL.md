@@ -2,27 +2,27 @@
 name: improve-all-skills
 description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- check-reference
-- follow-devin-skills-md
-- improve-consistency
-- improve-redundancy
-- improve-skills
-- report
-- resolve-errors
-- scan-codebase
-- update-agents-md
-- update-reference
-- use-scripts
-- validate
+  - check-reference
+  - follow-devin-skills-md
+  - improve-consistency
+  - improve-redundancy
+  - improve-skills
+  - report
+  - resolve-errors
+  - scan-codebase
+  - update-agents-md
+  - update-reference
+  - use-scripts
+  - validate
 ---
 
 ## Goal

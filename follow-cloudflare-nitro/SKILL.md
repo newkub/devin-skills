@@ -1,16 +1,17 @@
 ---
 name: follow-cloudflare-nitro
-allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
-triggers:
-- user
-- model
 description: กำหนดใน nuxt.config.ts
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+triggers:
+  - user
+  - model
 ---
+
 ## Goal
 
 Follow Cloudflare Nitro

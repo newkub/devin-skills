@@ -1,16 +1,15 @@
 ---
 name: learn-from-web
-description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official
-  Documentation
+description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official Documentation
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,16 +2,16 @@
 name: follow-workos
 description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, และ Authentication
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-better-auth
+  - follow-better-auth
 ---
 
 ## Goal

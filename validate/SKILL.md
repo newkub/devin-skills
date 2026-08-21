@@ -2,19 +2,19 @@
 name: validate
 description: ตรวจสอบความถูกต้อง คุณภาพ และความเหมาะสม
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- check-correctness
-- review-codebase
-- report
-- suggest-next-action
+  - check-correctness
+  - review-codebase
+  - report
+  - suggest-next-action
 ---
 
 ## Goal

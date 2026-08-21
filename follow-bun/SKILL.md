@@ -1,16 +1,15 @@
 ---
 name: follow-bun
-description: ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง
-  Bun-specific APIs และ We...
+description: ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ We...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

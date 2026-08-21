@@ -2,14 +2,14 @@
 name: use-pwsh-shell
 description: ใช้ PowerShell สำหรับ shell commands, scripting, และ automation
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

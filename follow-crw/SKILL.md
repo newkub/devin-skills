@@ -1,17 +1,17 @@
 ---
 name: follow-crw
-description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ
-  serving
+description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

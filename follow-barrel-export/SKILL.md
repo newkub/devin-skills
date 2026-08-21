@@ -1,19 +1,19 @@
 ---
 name: follow-barrel-export
 description: แนวทางการสร้างและจัดการ barrel exports สำหรับ module public API
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- edit
-- write
-- grep
-- glob
-- exec
-- ask_user_question
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
 related:
-- follow-code-quality
+  - follow-code-quality
 ---
 
 ## Goal
@@ -50,9 +50,9 @@ related:
 
 เลือก export strategy ตาม context
 
-1. **Named exports** — ใช้เป็นหลัก กระชับ เข้าใจง่าย ตรวจสอบได้ว่า export อะไรบ้าง
-2. **`export *`** — ใช้เฉพาะ schema files, type definition files, หรือเมื่อทุก export เป็น public API
-3. **Mixed** — ใช้ `export *` สำหรับกลุ่มหนึ่ง และ named exports สำหรับอีกกลุ่ม เมื่อต้องการซ่อนบางส่วน
+1. `Named exports` — ใช้เป็นหลัก กระชับ เข้าใจง่าย ตรวจสอบได้ว่า export อะไรบ้าง
+2. ``export *`` — ใช้เฉพาะ schema files, type definition files, หรือเมื่อทุก export เป็น public API
+3. `Mixed` — ใช้ `export *` สำหรับกลุ่มหนึ่ง และ named exports สำหรับอีกกลุ่ม เมื่อต้องการซ่อนบางส่วน
 
 ### 4. Update Imports
 

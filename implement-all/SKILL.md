@@ -1,16 +1,15 @@
 ---
 name: implement-all
-description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO,
-  MOCK, FAKE, STUB, place...
+description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO, MOCK, FAKE, STUB, place...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

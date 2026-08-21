@@ -2,18 +2,18 @@
 name: idea-merge
 description: สร้างไอเดียการ merge branches ตามสถานการณ์
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 related:
-- follow-git
-- git-merge-commit
-- create-git-branch
+  - follow-git
+  - git-merge-commit
+  - create-git-branch
 ---
 
 ## Goal
@@ -35,10 +35,10 @@ related:
 
 ### 2. Evaluate Strategies
 
-1. **Fast-forward**: branch ไม่มีคนแตะ, ประวัติตรง
-2. **Merge commit**: ต้องการเก็บ branch context
-3. **Squash merge**: branch มี commits จำนวนมาก, ต้องการ history สะอาด
-4. **Rebase**: ต้องการ history เป็นเส้นตรงและ clean
+1. `Fast-forward`: branch ไม่มีคนแตะ, ประวัติตรง
+2. `Merge commit`: ต้องการเก็บ branch context
+3. `Squash merge`: branch มี commits จำนวนมาก, ต้องการ history สะอาด
+4. `Rebase`: ต้องการ history เป็นเส้นตรงและ clean
 
 ### 3. Recommend
 

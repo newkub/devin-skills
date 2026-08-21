@@ -1,16 +1,16 @@
 ---
 name: check-monorepo
 description: ตรวจสอบว่า project เป็น monorepo หรือไม่
-triggers:
-- user
-- model
 allowed-tools:
-- read
-- glob
-- exec
-- grep
+  - read
+  - glob
+  - exec
+  - grep
+triggers:
+  - user
+  - model
 related:
-- report-format-table
+  - report-format-table
 ---
 
 ## Goal

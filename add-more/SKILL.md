@@ -2,14 +2,14 @@
 name: add-more
 description: วิเคราะห์ gaps และเพิ่มสิ่งที่ขาดหายไปตาม context
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

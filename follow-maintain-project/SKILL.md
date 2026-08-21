@@ -2,15 +2,16 @@
 name: follow-maintain-project
 description: ดูแลรักษาโปรเจกต์ด้วย compliance และ maintenance ที่เป็นระบบ
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

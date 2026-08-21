@@ -1,16 +1,15 @@
 ---
 name: create-vscode-extensions
-description: Guidelines for creating VS Code extensions using TypeScript and VS Code
-  API. Includes commands,...
+description: Guidelines for creating VS Code extensions using TypeScript and VS Code API. Includes commands,...
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal
@@ -81,17 +80,17 @@ Workflow for creating a VS Code extension.
 
 ## Steps
 
-1. **Install prerequisites**
+1. `Install prerequisites`
    ```bash
    bun install -g yo generator-code
    ```
 
-2. **Generate extension**
+2. `Generate extension`
    ```bash
    yo code
    ```
 
-3. **Choose extension type**
+3. `Choose extension type`
    - Extension (New Extension)
    - Color Theme
    - Language Support
@@ -99,35 +98,35 @@ Workflow for creating a VS Code extension.
    - Keymap
    - Extension Pack
 
-4. **Configure package.json**
+4. `Configure package.json`
    - Set extension name
    - Add commands
    - Configure activation events
    - Set contribution points
 
-5. **Implement extension logic**
+5. `Implement extension logic`
    - Create command handlers
    - Implement features
    - Add UI components
 
-6. **Test locally**
+6. `Test locally`
    ```bash
    code .
    # Press F5 to launch Extension Development Host
    ```
 
-7. **Build for production**
+7. `Build for production`
    ```bash
    bun run compile
    ```
 
-8. **Package extension**
+8. `Package extension`
    ```bash
    bun install -g vsce
    vsce package
    ```
 
-9. **Publish to marketplace**
+9. `Publish to marketplace`
    ```bash
    vsce publish
    ```

@@ -1,16 +1,15 @@
 ---
 name: follow-dot-vscode
-description: จัดการ .vscode directory ครบถ้วน ทั้ง settings, extensions, tasks, และ
-  launch config
+description: จัดการ .vscode directory ครบถ้วน ทั้ง settings, extensions, tasks, และ launch config
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

@@ -2,15 +2,16 @@
 name: list-project-in-drive-d
 description: แสดง template shell script list projects ใน drive D ที่มี .git
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal

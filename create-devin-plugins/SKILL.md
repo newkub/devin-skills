@@ -2,14 +2,14 @@
 name: create-devin-plugins
 description: สร้าง Devin CLI plugin ที่รวม skills, rules, agents, hooks และ MCP servers
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
 
 ## Goal

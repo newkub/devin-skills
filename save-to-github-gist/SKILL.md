@@ -2,13 +2,13 @@
 name: save-to-github-gist
 description: สร้าง GitHub gist จากไฟล์หรือข้อความที่ระบุ
 argument-hint: <file-or-content> [--public|--secret]
-triggers:
-- user
 allowed-tools:
-- exec
-- read
+  - exec
+  - read
+triggers:
+  - user
 related:
-- open-web
+  - open-web
 ---
 
 ## Goal

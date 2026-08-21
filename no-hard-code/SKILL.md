@@ -2,15 +2,16 @@
 name: no-hard-code
 description: ลบ hard code ออกจาก codebase ด้วย environment variables, config, constants
 allowed-tools:
-- read
-- edit
-- grep
-- glob
-- exec
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
 triggers:
-- user
-- model
+  - user
+  - model
 ---
+
 ## Goal
 
 ## Goal
