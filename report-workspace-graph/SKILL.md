@@ -1,5 +1,5 @@
 ---
-name: report-workspace-relation
+name: report-workspace-graph
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
 allowed-tools:
   - read

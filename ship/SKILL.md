@@ -32,10 +32,12 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 2. ตรวจสอบ `bun install` ผ่าน
 3. ถ้า requirement ไม่ชัดเจน ให้ทำ `/ask-requirement`
 4. ทำ `/deep-plan` เพื่อวางแผนงาน (ถ้าเสี่ยงสูงให้รอยืนยัน user)
-5. ทำ `/update-project` เพื่ออัพเดท `.devin`, `README`, `AGENTS.md`
-6. ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` และ `/all-workspaces` เพื่อประมวลผลทุก workspace ตามลำดับ foundation ก่อน
-7. ทำ `/follow-tasks` เพื่อตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน
-8. ถ้า project ต้องการ deployment ให้ทำ `/follow-deploy` เพื่อตั้งค่า CI/CD
+5. ทำ `/update-agents-md` เพื่อสร้างหรืออัปเดท `AGENTS.md`
+6. ทำ `/follow-agents-md` เพื่อ execute instructions จาก `AGENTS.md`
+7. ทำ `/loop-until-complete` เพื่อตรวจสอบและทำซ้ำจนผ่าน
+8. ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` และ `/all-workspaces` เพื่อประมวลผลทุก workspace ตามลำดับ foundation ก่อน
+9. ทำ `/follow-tasks` เพื่อตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน
+10. ถ้า project ต้องการ deployment ให้ทำ `/follow-deploy` เพื่อตั้งค่า CI/CD
 
 ### 2. Review And Fix
 

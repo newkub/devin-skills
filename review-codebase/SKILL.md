@@ -22,6 +22,7 @@ related:
   - resolve-errors
   - deep-analyze
   - deep-validate
+  - review-agents-md
   - validate
   - implement-all
   - update-reference
@@ -49,9 +50,10 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
-2. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)
-4. ทำ `/run-review` Step 1 เพื่อ verify CLI มีอยู่
+2. ทำ `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
+3. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
+4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)
+5. ทำ `/run-review` Step 1 เพื่อ verify CLI มีอยู่
 
 ### 2. Run Review CLI And Capture Metrics
 
