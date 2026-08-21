@@ -10,6 +10,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-design-system
+  - follow-unocss
+  - follow-unocss-theme
+  - review-codebase
 ---
 
 ## Goal
@@ -24,11 +29,19 @@ triggers:
 
 ### 1. Setup Design System
 
+กำหนด foundation ของ design system
+
+> Goal: มี design tokens และ theme ที่ใช้ร่วมกันทั้ง project
+
 1. ทำ `/follow-design-system` สำหรับ universal design tokens
 2. ถ้า project ใช้ UnoCSS ทำ `/follow-unocss` และ `/follow-unocss-theme`
 3. กำหนด design tokens (colors, typography, spacing) สำหรับ web platform
 
 ### 2. Design Layout
+
+ออกแบบโครงสร้างหน้าเว็บ
+
+> Goal: มี layout ที่ responsive, semantic และ maintainable
 
 1. ใช้ semantic HTML (`<header>`, `<nav>`, `<main>`, `<footer>`, `<aside>`)
 2. ใช้ CSS Grid หรือ Flexbox สำหรับ layouts
@@ -37,12 +50,20 @@ triggers:
 
 ### 3. Design Typography
 
+กำหนดระบบตัวอักษร
+
+> Goal: ตัวอักษรอ่านง่ายและ responsive
+
 1. เลือก font families ที่เหมาะสม (system fonts เป็น default)
 2. กำหนด font scale ด้วย `clamp()` สำหรับ fluid responsive
 3. ใช้ line-height 1.5-1.6 สำหรับ body text
 4. ใช้ `text-wrap: balance` สำหรับ headings
 
 ### 4. Design Colors
+
+กำหนดระบบสีและ theme
+
+> Goal: สีสม่ำเสมอ, รองรับ dark mode และ accessibility
 
 1. ใช้ color palette ที่สม่ำเสมอผ่าน CSS variables
 2. กำหนด semantic colors (success, warning, error, info)
@@ -51,6 +72,10 @@ triggers:
 
 ### 5. Design Components
 
+ออกแบบ component library
+
+> Goal: มี reusable components ที่เป็นระบบ
+
 1. สร้าง reusable components ด้วย atomic design principles
 2. ใช้ design tokens จาก `/follow-design-system`
 3. Document ทุก component
@@ -58,12 +83,20 @@ triggers:
 
 ### 6. Design UX States
 
+ออกแบบสถานะ UI ที่ครบถ้วน
+
+> Goal: ผู้ใช้เข้าใจสถานะของระบบในทุก scenarios
+
 1. Loading states: skeleton screens, shimmer, progressive loading
 2. Empty states: onboarding, no-data, first-use พร้อม CTA
 3. Error states: 404, 500, offline, maintenance พร้อม friendly illustrations
 4. Success states: toast, inline feedback, confirmation
 
 ### 7. Design Responsive
+
+ออกแบบ responsive บนทุก devices
+
+> Goal: ประสบการณ์ใช้งานดีบนทุกขนาดหน้าจอ
 
 1. Mobile-first approach
 2. ใช้ relative units (rem, em, %, vw, vh)
@@ -73,6 +106,10 @@ triggers:
 
 ### 8. Design Accessibility
 
+ออกแบบสำหรับทุกคน
+
+> Goal: ผู้ใช้ทุกกลุ่มเข้าถึงและใช้งานได้
+
 1. ทำตาม WCAG 2.1 AA guidelines
 2. รองรับ keyboard navigation ครบทุก interactive elements
 3. รองรับ screen readers ด้วย ARIA labels
@@ -81,12 +118,20 @@ triggers:
 
 ### 9. Design Animation
 
+ออกแบบ animation ที่ smooth และ accessible
+
+> Goal: การเคลื่อนไหวเพิ่ม UX โดยไม่รบกวนการใช้งาน
+
 1. ใช้ CSS transitions สำหรับ microinteractions (hover, focus)
 2. ใช้ `prefers-reduced-motion` สำหรับ accessibility
 3. ใช้ `view-transition` API สำหรับ page transitions
 4. กำหนด timing functions ที่สม่ำเสมอ (ease, ease-out)
 
 ### 10. Optimize Performance
+
+ตรวจสอบและปรับปรุง performance
+
+> Goal: หน้าเว็บโหลดและทำงานได้เร็ว
 
 1. ทำ `/review-codebase` สำหรับ Core Web Vitals
 2. Optimize images ด้วย modern formats (WebP, AVIF)
@@ -199,10 +244,3 @@ triggers:
 - ใช้ colors ที่ไม่มี semantic meaning
 - ใช้ spinner แทน skeleton screens
 - ไม่มี empty state guidance
-
-## References
-
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [CSS Container Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/container_queries)
-- [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
