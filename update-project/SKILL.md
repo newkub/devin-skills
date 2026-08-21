@@ -1,6 +1,15 @@
 ---
 name: update-project
 description: อัพเดท project documentation และ configuration ครบถ้วน
+related:
+  - update-dot-devin
+  - update-readme
+  - update-agents-md
+  - update-docs
+  - update-ast-grep-rules
+  - update-review-cli
+  - follow-dot-vscode
+  - follow-write-devin-skills
 ---
 
 ## Goal

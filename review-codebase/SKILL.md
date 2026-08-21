@@ -78,7 +78,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 4. `analyzerErrors` > 0
 5. `falsePositiveRate` สูงกว่า 20%
 6. findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-7. `reviewWorkflow` field ไม่ map ไปยัง `review-codebase/references/<dimension>/` ที่มีอยู่
+7. `reviewWorkflow` field ไม่ map ไปยัง `?review-codebase/references/<dimension>.md`? ที่มีอยู่
 8. `tools/review/package.json` หรือ `tools/review/src/presentation/cli.ts` ไม่อยู่
 
 ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → ไป Step 4
@@ -141,7 +141,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 - ทุก finding ต้องมี evidence: file path, line number, code snippet
-- แต่ละ finding ต้อง map ไปยัง `review-codebase/references/<dimension>/` ผ่าน `reviewWorkflow` field
+- แต่ละ finding ต้อง map ไปยัง `?review-codebase/references/<dimension>.md`? ผ่าน `reviewWorkflow` field
 
 ### 5. Formatting
 
@@ -152,13 +152,13 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 CLI ครอบคลุมทุก dimension ด้านล่าง ถ้าขาด category ใดให้ `/update-review-cli`
 
-- Group orchestrators: `references/review-frontend/`, `references/review-backend/`, `references/review-code-quality/`
-- Foundation and code quality: `references/review-architecture/`, `references/review-bug-prone/`, `references/review-codebase-issue/`, `references/review-formal-verification/`, `references/review-naming/`, `references/review-realize-implementation/`, `references/review-refactor/`, `references/review-simplicity/`, `references/review-types/`
-- Frontend and UX: `references/review-accessibility/`, `references/review-browser-compat/`, `references/review-bundler/`, `references/review-components/`, `references/review-css/`, `references/review-data-fetching/`, `references/review-design-system/`, `references/review-event-handling/`, `references/review-form/`, `references/review-hooks-composables/`, `references/review-i18n/`, `references/review-images/`, `references/review-rendering/`, `references/review-responsive/`, `references/review-seo/`, `references/review-state-management/`, `references/review-uxui/`
-- Backend and data: `references/review-api/`, `references/review-concurrency/`, `references/review-data/`, `references/review-data-validation/`, `references/review-database/`, `references/review-error-handling/`, `references/review-file-upload/`, `references/review-integration/`, `references/review-migration/`, `references/review-queue/`, `references/review-scalability/`, `references/review-service/`, `references/review-webhook/`, `references/review-workers/`
-- Security and compliance: `references/review-auth/`, `references/review-compliance/`, `references/review-security/`
-- Infrastructure and operations: `references/review-app-stability/`, `references/review-cli/`, `references/review-config/`, `references/review-dx/`, `references/review-infrastructure/`, `references/review-memory/`, `references/review-observability/`, `references/review-performance/`, `references/review-platform/`
-- Business and delivery: `references/review-business/`, `references/review-coverage/`, `references/review-debugging/`, `references/review-delivery/`, `references/review-docs/`, `references/review-lib/`, `references/review-techstack/`, `references/review-test/`, `references/review-workflow-content/`, `references/review-workspace/`
+- Group orchestrators: `?references/review-frontend.md`?, `?references/review-backend.md`?, `?references/review-code-quality.md`?
+- Foundation and code quality: `?references/review-architecture.md`?, `?references/review-bug-prone.md`?, `?references/review-codebase-issue.md`?, `?references/review-formal-verification.md`?, `?references/review-naming.md`?, `?references/review-realize-implementation.md`?, `?references/review-refactor.md`?, `?references/review-simplicity.md`?, `?references/review-types.md`?
+- Frontend and UX: `?references/review-accessibility.md`?, `?references/review-browser-compat.md`?, `?references/review-bundler.md`?, `?references/review-components.md`?, `?references/review-css.md`?, `?references/review-data-fetching.md`?, `?references/review-design-system.md`?, `?references/review-event-handling.md`?, `?references/review-form.md`?, `?references/review-hooks-composables.md`?, `references/review-i18n/`, `?references/review-images.md`?, `?references/review-rendering.md`?, `?references/review-responsive.md`?, `?references/review-seo.md`?, `?references/review-state-management.md`?, `?references/review-uxui.md`?
+- Backend and data: `?references/review-api.md`?, `?references/review-concurrency.md`?, `?references/review-data.md`?, `?references/review-data-validation.md`?, `?references/review-database.md`?, `?references/review-error-handling.md`?, `?references/review-file-upload.md`?, `?references/review-integration.md`?, `?references/review-migration.md`?, `?references/review-queue.md`?, `?references/review-scalability.md`?, `?references/review-service.md`?, `?references/review-webhook.md`?, `?references/review-workers.md`?
+- Security and compliance: `?references/review-auth.md`?, `?references/review-compliance.md`?, `?references/review-security.md`?
+- Infrastructure and operations: `?references/review-app-stability.md`?, `?references/review-cli.md`?, `?references/review-config.md`?, `?references/review-dx.md`?, `?references/review-infrastructure.md`?, `?references/review-memory.md`?, `?references/review-observability.md`?, `?references/review-performance.md`?, `?references/review-platform.md`?
+- Business and delivery: `?references/review-business.md`?, `?references/review-coverage.md`?, `?references/review-debugging.md`?, `?references/review-delivery.md`?, `?references/review-docs.md`?, `?references/review-lib.md`?, `?references/review-techstack.md`?, `?references/review-test.md`?, `?references/review-workflow-content.md`?, `?references/review-workspace.md`?
 - Pull request: `/review-pr`
 - Global skills: `/review-devin-global-skills`
 

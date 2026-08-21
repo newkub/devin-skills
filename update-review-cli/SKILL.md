@@ -14,9 +14,12 @@ triggers:
   - model
 related:
   - run-review
+  - review-codebase
   - check-should-update
   - report-deps
   - use-scripts
+  - add-task-in-package-manifest
+  - follow-tasks
   - bun
 ---
 
@@ -45,7 +48,7 @@ related:
 
 ตรวจสอบว่า AGENTS.md ต้องอัปเดทก่อนหรือไม่ เพื่อให้ reviewWorkflow mapping ถูกต้อง
 
-> Goal: AGENTS.md เป็นปัจจุบันก่อนอัปเดท analyzers เพราะ analyzers อ้างอิง review-* workflows จาก AGENTS.md
+> Goal: AGENTS.md เป็นปัจจุบันก่อนอัปเดท analyzers เพราะ analyzers อ้างอิง review workflow จาก AGENTS.md
 
 1. อ่าน `AGENTS.md` ที่ root และ workspace level
 2. เช็คว่า `## Workflows`, `## Review`, และ `## Skills` section ครอบคลุม dependencies ใน `package.json` ทั้งหมด
@@ -97,7 +100,7 @@ related:
 3. แต่ละ analyzer ต้องมี:
    - `name` ตรงกับ category name ใน `/run-review`
    - `domain` ตรงกับ domain ใน `/run-review`
-   - `reviewWorkflow` ตรงกับ `/review-*` workflow จาก AGENTS.md
+   - `reviewWorkflow` ตรงกับ `/review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
    - `analyze()` ที่ return `CategoryResult` พร้อม `status`, `score`, `findings`
 4. ใส่ specific checks ตาม scope ของแต่ละ category
 5. ถ้า analyzer ไม่สามารถ implement ทั้งหมดได้ ให้ comment `// TODO` พร้อมรายละเอียดสิ่งที่ต้องทำ
@@ -113,8 +116,10 @@ related:
 1. ทำ `/add-task-in-package-manifest` สำหรับ script ที่จำเป็น:
    - `review` → `bun run src/presentation/cli.ts` ใน `tools/review/package.json`
    - `review` → `bun --filter @booking/tools-review review` ใน root `package.json`
-2. ถ้ามี script ใหม่ที่ต้อง orchestration → register task ใน `turbo.json`
-3. ถ้า script มีอยู่และถูกต้อง → ข้าม
+   - `review:json` → `bun --filter @booking/tools-review review:json` ใน root `package.json`
+2. ทำ `/follow-tasks` เพื่อเพิ่ม `review` และ `review:json` ใน package scripts ตาม tech stack (ดู section 11 Review CLI Scripts ใน `/follow-tasks`)
+3. ถ้ามี script ใหม่ที่ต้อง orchestration → register task ใน `turbo.json`
+4. ถ้า script มีอยู่และถูกต้อง → ข้าม
 
 ### 7. Restructure Analyzers
 
@@ -160,7 +165,7 @@ related:
 - Entry point: `src/presentation/cli.ts` และ `src/index.ts`
 - ใช้ Bun native APIs: `Bun.file`, `Bun.spawn`, `Bun.write`
 - ทุก analyzer ต้อง return `CategoryResult` พร้อม `status`, `score`, `findings`
-- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `/review-*` workflow จาก AGENTS.md
+- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `/review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
 - ใช้ shared utilities จาก `src/adapters/` แทนการ duplicate code
 - Output เป็น table และ JSON ตาม `--format` flag
 

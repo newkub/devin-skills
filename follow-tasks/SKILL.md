@@ -191,6 +191,17 @@ Scripts สำหรับ documentation เพื่อจัดการ docs 
 |------|-----|------|---------|------------|----------|------|--------|----|
 | docs | vitepress dev | vitepress dev | vitepress dev | vitepress dev | vitepress dev | mdbook serve | mkdocs serve | godoc |
 
+### 11. Review CLI Scripts
+
+Scripts สำหรับรัน review CLI เพื่อ review codebase ผ่าน 	ools/review:
+
+|| Task | Bun |
+||------|-----|
+|| review | un --filter @booking/tools-review review |
+|| review:json | un --filter @booking/tools-review review:json |
+
+ถ้า project ใช้ 	ools/review ให้เพิ่ม scripts นี้ใน package.json เมื่อตั้งค่า scripts ตาม /follow-tasks
+
 ## Expected Outcome
 
 - `package.json` มี scripts ตาม template ที่เลือก (state change)
