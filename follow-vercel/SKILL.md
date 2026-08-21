@@ -183,6 +183,15 @@ jobs:
 - ใช้ `crons` สำหรับ scheduled functions
 - ใช้ `ignoreCommand` สำหรับ skip builds
 
+## Guide
+
+อ้างอิงเพิ่มเติม:
+
+- `references/vercel-overview.md` — overview ของ Vercel platform
+- `references/website.md` — links หลักของ Vercel
+- `learn/guide/` — documentation การใช้งาน Vercel
+- `workflows/deploy-to-vercel.md` — workflow สำหรับ deploy
+
 ## Expected Outcome
 
 - Application ที่ deploy บน Vercel ได้สำเร็จ
