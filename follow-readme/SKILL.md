@@ -298,7 +298,7 @@ await executeWorkflow('analyze-project', {
 | Clean Architecture | `/clean-architecture` |
 | DDD | `/ddd` |
 | Microservices | `/microservices` |
-| Monorepo | `/monorepo`, `/turborepo`, `/moonrepo` |
+| Monorepo | `/monorepo`, `/follow-turborepo`, `/moonrepo` |
 
 ### Framework Workflows
 

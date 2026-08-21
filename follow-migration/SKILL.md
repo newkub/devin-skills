@@ -33,7 +33,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 3. Code Transformation
 
-1. ใช้ `/gritql` หรือ `/ast-grep` สำหรับ automated code changes
+1. ใช้ `/gritql` หรือ `/follow-ast-grep` สำหรับ automated code changes
 2. อัพเดท imports และ API calls
 3. แก้ไข breaking changes ใน code
 4. อัพเดท configuration files
@@ -91,7 +91,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 เลือก tools ที่เหมาะสมสำหรับ code changes:
 
 - ใช้ `/gritql` สำหรับ Biome projects และ custom linting
-- ใช้ `/ast-grep` สำหรับ complex codemods และ multi-language support
+- ใช้ `/follow-ast-grep` สำหรับ complex codemods และ multi-language support
 - ใช้ official codemods หากมีให้
 - ใช้ automated tools แทน manual changes เมื่อเป็นไปได้
 

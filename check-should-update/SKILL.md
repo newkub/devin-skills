@@ -12,7 +12,6 @@ triggers:
   - model
 related:
   - check-git-diff
-  - check-files-diff
   - report-format-table
   - ask-me
 ---
@@ -35,11 +34,10 @@ related:
 
 1. ระบุ target paths ที่ต้องเช็คจาก calling workflow
 2. ถ้า target อยู่ใน git repo → ทำ `/check-git-diff` โดยระบุ `<project-root>` และ refs `HEAD~1...HEAD`
-3. ถ้า target ไม่อยู่ใน git หรือต้องเทียบไฟล์โดยตรง → ทำ `/check-files-diff` ระหว่างสอง path
-4. รวมผลจากทุก path เป็น changed files list
-5. ถ้าไม่มี changes เลย → return `skip` (ข้ามไป validate สิ่งที่มีอยู่)
-6. ถ้ามี changes → return `update` (ทำตามขั้นตอนถัดไปของ calling workflow)
-7. ถ้าเป็นการรันครั้งแรก (target ยังไม่มี) → return `create` (ทำตามขั้นตอนสร้างใหม่ของ calling workflow)
+3. รวมผลจากทุก path เป็น changed files list
+4. ถ้าไม่มี changes เลย → return `skip` (ข้ามไป validate สิ่งที่มีอยู่)
+5. ถ้ามี changes → return `update` (ทำตามขั้นตอนถัดไปของ calling workflow)
+6. ถ้าเป็นการรันครั้งแรก (target ยังไม่มี) → return `create` (ทำตามขั้นตอนสร้างใหม่ของ calling workflow)
 
 ## Rules
 

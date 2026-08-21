@@ -79,7 +79,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 
 ### Related Workflows
 
-สำหรับ library bundling ที่ง่ายกว่า ใช้ `/tsdown`
+สำหรับ library bundling ที่ง่ายกว่า ใช้ `/follow-tsdown`
 
 ## Expected Outcome
 

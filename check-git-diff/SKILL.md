@@ -11,7 +11,6 @@ triggers:
   - user
   - model
 related:
-  - check-files-diff
   - check-should-update
   - report-format-table
   - suggest-next-action
