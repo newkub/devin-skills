@@ -1,115 +1,109 @@
 ---
 name: improve-rules
-description: ปรับปรุง rule files ให้ถูกต้อง ครอบคลุม และสอดคล้องกับ project
+description: ปรับปรุงคุณภาพ .devin/rules และ ast-grep rules ให้ถูกต้อง ครบถ้วน และไม่ซ้ำซ้อน
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-write-devin-skills
+  - review-devin-global-skills
+  - check-reference
+  - validate
+  - use-ast-grep-programatic
 ---
 
 ## Goal
 
-ปรับปรุง rule files ทั้ง `.devin/rules/`, `global_rules.md`, และ `rules/` (ast-grep) ให้ถูกต้อง ครอบคลุม และสอดคล้องกับ project โดยไม่ duplicate เนื้อหาจาก workflows หรือ global rules
+ปรับปรุง rules ทั้งใน `.devin/rules/` และ root `rules/` ให้ถูกต้อง ไม่ซ้ำซ้อน และสอดคล้องกัน
 
 ## Scope
 
-ใช้กับ rule files ทั้งใน project workspace และ `global_rules.md` รวม ast-grep rules ทั้งหมด — ไม่รวม code หรือ workflow files
+ใช้สำหรับ project ที่มี `.devin/rules/`, `rules/`, หรือ `sgconfig.yml`
 
 ## Execute
 
-### 1. Identify Target Rules
+### 1. Scan Existing Rules
 
-ระบุ rule files ทีต้องปรับปรุง
+ค้นหา rules ทั้งหมด
 
-1. ระบุไฟล์ใน `.devin/rules/`, `global_rules.md`, `rules/` (ast-grep)
-2. ตรวจสอบ structure ตาม `/follow-write-devin-skills` สำหรับ `.devin/rules/` markdowns
-3. ถ้าไม่มี rule files → stop และ report
+> Goal: รู้ scope และปัญหาของ rules ปัจจุบัน
 
-### 2. Check Correctness
+1. ใช้ `/scan-codebase` ใน `.devin/rules/` และ `rules/`
+2. ระบุ duplicate rules (เช่น `import-alias` vs `import-aliases`)
+3. ระบุ rules ทีขาด frontmatter หรือ metadata ไม่ครบ
+4. บันทึก findings
 
-ตรวจสอบความถูกต้องของ rule files
+### 2. Check Alignment
 
-1. ทำ `/improve-correctness` เพื่อตรวจ issues
-2. ทำ `/check-reference` เพื่อตรวจ broken references
-3. ตรวจว่า rules ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น
-4. บันทึก issues พร้อม priority (Critical, High, Medium, Low)
+ตรวจสอบความสอดคล้อง
 
-### 3. Research Best Practices
+> Goal: ระบุ misalignment และ gaps
 
-ค้นหา best practices สำหรับ rules
+1. เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/`
+2. ตรวจสอบว่า frontmatter ถูกต้อง (`trigger: always_on`, `model_decision`, `glob`)
+3. ตรวจสอบ filenames ใช้ kebab-case
+4. ตรวจสอบ `ruleDirs` ใน `sgconfig.yml`
 
-1. ทำ `/deep-research` สำหรับ tools/domains ที rules เกี่ยวข้อง
-2. ทำ `/follow-best-practice` ตาม context ของ rule นั้น
-3. ระบุ patterns ทีควรเพิ่มหรือแก้ไข
+### 3. Fix Issues
 
-### 4. Apply Improvements
+แก้ไขปัญหาทีพบ
 
-ปรับปรุง rule files ตาม findings
+> Goal: rules ถูกต้อง ไม่ซ้ำ และสอดคล้อง
 
-1. แก้ไข issues ตาม priority จาก `/improve-correctness` (Critical ก่อน)
-2. ทำ `/review-codebase` สำหรับ issues ด้านเนื้อหาและ structure
-3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
-4. อัปเดตเนื้อหาตาม best practices ที research ได้
-5. ใช้ references แทนการ duplicate เนื้อหาจาก rules หรือ workflows อื่น
-6. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal
-7. ถ้าจำนวน rule files มากกว่า 10 ไฟล์ → ทำ `/use-scripts` เพื่อ batch processing
+1. ลบ duplicate rules หลัง user confirm
+2. เพิ่ม missing rules ตาม `.devin/rules`
+3. แก้ frontmatter ให้ถูกต้อง
+4. อัปเดต `sgconfig.yml` ให้ match directory structure
 
-### 5. Validate And Report
+### 4. Validate
 
-ตรวจสอบผลการปรับปรุง
+ตรวจสอบผลลัพธ์
 
-1. ทำ `/improve-correctness` อีกครั้งเพื่อ verify
-2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
-3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
-4. ทำ `/report` เพื่อสรุปการปรับปรุง
-5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+> Goal: rules ผ่าน scan และ validation
+
+1. รัน `ast-grep scan` หรือ `bun run scan`
+2. ทำ `/validate` เพื่อ verify rule files
+3. ทำ `/check-reference` เพื่อตรวจ broken references
+
+### 5. Report
+
+สรุปการปรับปรุง
+
+> Goal: รายงานผลและ next actions
+
+1. รายงาน rules ทีแก้ไข
+2. รายงาน rules ทียังเหลือ
+3. แนะนำ next actions
 
 ## Rules
 
-### 1. Correctness First
+### 1. No Duplicates
 
-- แก้ไข Critical issues ก่อนเสมอ
-- ตรวจสอบ frontmatter ถูกต้อง (title, description, `auto_execution_mode: 3`)
-- ตรวจสอบ sections ครบถ้วน (Goal, Scope, Execute, Rules, Expected Outcome)
-- ทำ `/check-reference` ก่อนและหลังแก้ไข
+- ไม่เก็บ rules ซ้ำซ้อน
+- ถ้ามีหลาย rules คล้ายกัน ให้ merge หรือเลือก canonical
 
-### 2. Coverage
+### 2. Frontmatter Standard
 
-- ครอบคลุม tools, domains, file patterns ที project ใช้จริง
-- ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น
-- ทุก devin rule ทีแปลงเป็น ast-grep ได้ ต้องมี ast-grep counterpart หรือระบุเหตุผล
+- `trigger: always_on`, `model_decision`, หรือ `glob`
+- `title` Title Case
+- `description` ไม่เกิน 100 ตัวอักษร
 
-### 3. Content Quality
+### 3. Safety
 
-- เนื้อหา explicit แทน implicit
-- ไม่ซ้ำซ้อนระหว่าง Execute และ Rules
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `workflow-name`
-- Execute headings: English Title Case, Rules: ภาษาไทย
-
-### 4. Minimal Changes
-
-- แก้ไขเฉพาะสิงทีจำเป็น
-- รักษา rule intent เดิม
-- หลีกเลี่ยงการเขียนใหม่ทั้งไฟล์ถ้าไม่จำเป็น
-- ใช้ `/edit-only` เมื่องเป็นไปได้
-
-### 5. Verification
-
-- ทำ `/improve-correctness` ก่อนและหลังแก้ไข
-- ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
-- ไม่มี TODO, MOCK, placeholder, generic filler
+- ไม่ลบ rule โดยไม่ user confirm
+- ไม่เปลี่ยน rule intent โดยไม่ record
 
 ## Expected Outcome
 
-- Rule files ถูกต้องตามมาตรฐาน `/follow-write-devin-skills`
-- ครอบคลุม tools, domains, file patterns ที project ใช้
+- `.devin/rules` และ `rules/` sync กัน
+- ไม่มี duplicate rules
 - ไม่มี broken references
-- ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น
-- ทุกไฟล์ไม่เกิน 250 บรรทัด
-- สอดคล้องกับ best practices และ official documentation
-- มี report สรุปการปรับปรุง
+- `ast-grep scan` ผ่าน
