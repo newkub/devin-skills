@@ -56,7 +56,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 2. ตรวจสอบ config security: secrets ไม่อยู่ใน committed configs, `.gitignore` ครอบคลุม, ไม่มี secret exposure ใน client bundle, Infisical config ไม่ถูก commit
 3. ตรวจสอบ config documentation: non-obvious options มี comment, `.env.example` มี description, มี config template สำหรับ new workspace
 4. ตรวจสอบ config optimization: `tsconfig.json` target/module เหมาะสม, `vite.config.ts` manualChunks/optimizeDeps, `turbo.json` caching strategy, `biome.jsonc` ไม่มี unnecessary rules, `uno.config.ts` safelist กระชับ
-5. ถ้ามีหลาย environments → ทำ `/report-config-drift` เพื่อเปรียบเทียบ config drift
+5. ถ้ามีหลาย environments → ทำ `/report-config-files` เพื่อเปรียบเทียบ config drift
 
 ### 4. Validate Findings
 
@@ -85,7 +85,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-format-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง aggregate findings จากทุก section
 3. ทำ `/suggest-next-action`
 
@@ -139,7 +139,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

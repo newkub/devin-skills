@@ -9,7 +9,7 @@ triggers:
   - model
 related:
   - read-related-skills
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -39,7 +39,7 @@ related:
 
 1. รวบรวม guidelines และ instructions จาก skills ที่อ่าน
 2. ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้งกัน
-3. ทำ `/report-format-table` เพื่อจัดรูปแบบ output
+3. ทำ `/report-table` เพื่อจัดรูปแบบ output
 4. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules

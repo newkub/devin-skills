@@ -1,6 +1,6 @@
 ---
 name: update-agents-md
-description: Create or update AGENTS.md with project architecture, lib mapping, ship readiness, and workspace rules
+description: Create or update AGENTS.md with architecture, lib mapping, ship readiness, and workspace rules
 allowed-tools:
   - read
   - write

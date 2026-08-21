@@ -2,7 +2,7 @@
 name: review-cli
 description: Review คุณภาพ CLI applications ครอบคลุม design, UX, error handling, tests
 related:
-  - report-format-table
+  - report-table
   - suggest-next-action
   - resolve-errors
 ---
@@ -70,7 +70,7 @@ Review CLI applications ให้ครอบคลุม design, structure, UX,
 
 > Goal: ได้ action items ที่ชัดเจน
 
-1. ทำ `/report-format-table` สำหรับ findings: Category, Item, Severity, Evidence, Recommendation
+1. ทำ `/report-table` สำหรับ findings: Category, Item, Severity, Evidence, Recommendation
 2. จัดลำดับตาม severity: Critical > High > Medium > Low
 3. ทำ `/suggest-next-action`
 

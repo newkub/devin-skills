@@ -16,8 +16,8 @@ related:
   - list-skills
   - check-reference
   - follow-content-quality
-  - report-format-table
-  - report-format-terminal
+  - report-table
+  - report-ansi
   - report
   - suggest-next-action
   - follow-devin-skills-md
@@ -155,8 +155,8 @@ Summarize findings and next steps
 
 > Goal: the report drives the next action
 
-1. use `report-format-table` for issues, scores, and action items
-2. use `report-format-terminal` for summary, grade, and progress
+1. use `report-table` for issues, scores, and action items
+2. use `report-ansi` for summary, grade, and progress
 3. list top findings at the top with file paths and line numbers
 4. group issues by severity: Critical, High, Medium, Low
 5. separate quick wins from major improvements

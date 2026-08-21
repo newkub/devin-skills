@@ -17,7 +17,7 @@ title: Summarize This Chat Session
 description: สรุปสิ่งที่ทำใน chat session นี้: ไฟล์ที่แก้, การตัดสินใจ, ปัญหาที่พบ
 auto_execution_mode: 3
 related:
-  - /report-format-table
+  - /report-table
   - /memorize
 ---
 
@@ -89,7 +89,7 @@ related:
 
 > Goal: สรุปกระชับ ครบข้อมูล อ่านง่าย
 
-1. ทำ `/report-format-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
+1. ทำ `/report-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
 2. แสดงผลตามลำดับ: Summary → Files Changed → Decisions → Issues → Next Steps
 3. กำหนด columns สำหรับตาราง files:
    - No. ลำดับ
@@ -119,7 +119,7 @@ related:
 
 ### Output Format
 
-- ทำ `/report-format-table` สำหรับตารางไฟล์
+- ทำ `/report-table` สำหรับตารางไฟล์
 - ใช้ bullet points สำหรับ decisions, issues, next steps
 - สรุปกระชับ — ไม่เกิน 50 บรรทัด
 - ใช้ symbols: ✅ created, ✏️ modified, ❌ deleted, 📝 renamed

@@ -42,7 +42,7 @@ triggers:
 > Goal: ตอบกระชับ เป็นภาษาไทย มีแค่ 2 ตาราง + diagrams + suggest-next-action
 
 1. ตอบ 2 ตาราง (Extends และ New) ในแชท พร้อม 27 คอลัมน์ตาม Rules — ภาษาไทย
-2. ทำ `/report-format-table`, ทำ `/report-uxui-sketch` (features ที่ UX/UI = 🔴 หรือ 🟡), ทำ `/report-architecture-diagram` (จาก codebase จริง)
+2. ทำ `/report-table`, ทำ `/report-uxui-sketch` (features ที่ UX/UI = 🔴 หรือ 🟡), ทำ `/report-architecture-diagram` (จาก codebase จริง)
 3. ทำ `/suggest-next-action` — แนะนำ action ถัดไป
 4. ไม่สร้างไฟล์ .md, .html หรือ .json — ตอบในแชทเท่านั้น
 5. ห้ามแสดงผลวิเคราะห์ยาวๆ เช่น existing features list, step-by-step analysis, market research details

@@ -62,7 +62,7 @@ triggers:
 
 > Goal: รายงานอ่านง่าย ครบข้อมูล
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Tag ชื่อ tag
@@ -84,7 +84,7 @@ triggers:
 
 ### Output Format
 
-- ทำ `/report-format-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตาม version ล่าสุดก่อน
 - ชี้เน้น latest stable และ latest pre-release
 - ใช้ symbols: ✅ SemVer compliant, ❌ non-SemVer

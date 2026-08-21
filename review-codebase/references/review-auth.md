@@ -101,7 +101,7 @@ Review session management และ token/JWT lifecycle
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-format-table` สร้างตาราง aggregate findings จากทุก section
+5. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings จากทุก section
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -148,7 +148,7 @@ Review session management และ token/JWT lifecycle
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

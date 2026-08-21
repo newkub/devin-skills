@@ -59,7 +59,7 @@ triggers:
 
 > Goal: ตารางที่ actionable และตรวจสอบได้
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. สร้างตารางด้วย 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
 3. จัดกลุ่มตาม `reviewWorkflow` เพื่อเชื่อมโยงกับ `/review-*` workflows จาก AGENTS.md
 4. ภายในแต่ละกลุ่ม จัดเรียงตาม severity: Critical ก่อน, High รองลงมา
@@ -123,7 +123,7 @@ triggers:
 
 - จัดกลุ่มตาม `reviewWorkflow` เพื่อเชื่อมโยงกับ `/review-*` workflows
 - ภายในแต่ละกลุ่ม จัดเรียงตาม severity: Critical ก่อน, High รองลงมา
-- ใช้ headers สำหรับ grouping ตาม `/report-format-table`
+- ใช้ headers สำหรับ grouping ตาม `/report-table`
 
 ### 3. Evidence Requirement
 

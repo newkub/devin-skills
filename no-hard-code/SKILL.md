@@ -145,7 +145,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 
 ระบุรูปแบบรายงาน
 
-- ทำ `/report-format-table` สำหรับสรุปผลลัพธ์
+- ทำ `/report-table` สำหรับสรุปผลลัพธ์
 
 ## Expected Outcome
 

@@ -7,7 +7,7 @@ related:
   - /deep-validate
   - /validate
   - /report
-  - /report-format-table
+  - /report-table
   - /suggest-next-action
   - /review-codebase
 ---
@@ -72,7 +72,7 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 1. ทำ `/deep-validate`
 2. ทำ `/validate`
 3. ให้ severity, คำนวณ review score
-4. ทำ `/report` พร้อม `/report-format-table`
+4. ทำ `/report` พร้อม `/report-table`
 5. ทำ `/suggest-next-action`
 
 ## Rules
@@ -97,7 +97,7 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 ### 4. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

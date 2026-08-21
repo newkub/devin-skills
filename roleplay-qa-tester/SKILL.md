@@ -99,7 +99,7 @@ Non-Functional:
 
 ### 6. Generate QA Report
 
-1. ทำ `/report` ด้วย `/report-format-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Risk Scenario, Existing Coverage, Test Priority, Recommendation
 3. สร้าง test scenario list: Scenario, Steps, Expected, Risk Level
 4. สรุป top 3-5 high-risk areas ที่ต้อง test ก่อน

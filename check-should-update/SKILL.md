@@ -12,7 +12,7 @@ triggers:
   - model
 related:
   - check-git-diff
-  - report-format-table
+  - report-table
   - ask-me
 ---
 

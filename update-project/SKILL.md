@@ -12,6 +12,7 @@ triggers:
   - model
 related:
   - update-dot-devin
+  - cleanup-files-in-project
   - update-readme
   - update-agents-md
   - update-docs
@@ -37,40 +38,47 @@ related:
 
 1. ทำ `/update-dot-devin` เพื่ออัพเดท .devin structure ครบถ้วน
 
-### 2. Update README
+### 2. Cleanup Source Files
+
+ลบ source files ที่ไม่จำเป็น
+
+1. ทำ `/cleanup-files-in-project` เพื่อหาและลบ source files ที่ไม่จำเป็น โดยไม่แตะ build artifacts หรือ dependency caches
+2. ขอ user confirm ก่อนลบ
+
+### 3. Update README
 
 อัพเดท README.md สำหรับ project
 
 1. ทำ `/update-readme` เพื่ออัพเดท README.md ครบถ้วน
 
-### 3. Update AGENTS.md
+### 4. Update AGENTS.md
 
 อัพเดท AGENTS.md สำหรับ project
 
 1. ทำ `/update-agents-md` เพื่ออัพเดท AGENTS.md ครบถ้วน
 
-### 4. Update Documentation
+### 5. Update Documentation
 
 อัพเดท documentation สำหรับ project (ถ้ามี docs/)
 
 1. ตรวจสอบว่ามี docs/ directory หรือไม่
 2. ถ้ามี docs/ ให้ทำ `/update-docs` เพื่ออัพเดท documentation ครบถ้วน
 
-### 5. Update Ast-Grep Rules
+### 6. Update Ast-Grep Rules
 
 อัพเดท ast-grep rules สำหรับ project (ถ้ามี sgconfig.yml)
 
 1. ตรวจสอบว่ามี `sgconfig.yml` และ `rules/` directory หรือไม่
 2. ถ้ามี ให้ทำ `/update-ast-grep-rules` เพื่ออัพเดท ast-grep rules ให้สอดคล้องกับ `.devin/rules/`
 
-### 6. Update Codebase Review CLI
+### 7. Update Codebase Review CLI
 
 อัปเดท codebase review CLI สำหรับ project (ถ้ามี `tools/review/`)
 
 1. ตรวจสอบว่ามี `tools/review/` directory หรือไม่
 2. ถ้ามี ให้ทำ `/update-review-cli` เพื่อสร้าง/อัปเดท review CLI ให้ครอบคลุม 60+ categories ตาม `/run-review`
 
-### 7. Update Dot VSCode
+### 8. Update Dot VSCode
 
 อัปเดท `.vscode` configuration สำหรับ project
 
@@ -83,6 +91,7 @@ related:
 ทำตามลำดับที่กำหนดเพื่อให้ได้ผลลัพธ์ที่ถูกต้อง
 
 - ทำ `/update-dot-devin` ก่อนเสมอ เพื่อตั้งค่าพื้นฐาน
+- ทำ `/cleanup-files-in-project` หลังจาก update-dot-devin ถ้า project มี source files ที่ไม่จำเป็น
 - ทำ `/update-readme` หลังจากตั้งค่าพื้นฐาน
 - ทำ `/update-agents-md` หลังจากอัพเดท README
 - ทำ `/update-docs` เป็นลำดับสุดท้าย (ถ้ามี docs/)

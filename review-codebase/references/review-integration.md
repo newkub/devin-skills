@@ -10,7 +10,7 @@ related:
   - deep-validate
   - validate
   - report
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -71,7 +71,7 @@ integration review สำหรับ: API client design, timeout configuration,
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-format-table`
+5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -101,7 +101,7 @@ integration review สำหรับ: API client design, timeout configuration,
 ### 5. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

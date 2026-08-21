@@ -20,7 +20,7 @@ related:
   - follow-write-devin-skills
   - write-skills-md
   - validate
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -103,7 +103,7 @@ related:
    - `triggers`, `allowed-tools`, `related`
    - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
-4. ทำ `/report-format-table` เพื่อสรุป draft skills ทีสร้าง
+4. ทำ `/report-table` เพื่อสรุป draft skills ทีสร้าง
 
 ### 6. Validate And Suggest
 

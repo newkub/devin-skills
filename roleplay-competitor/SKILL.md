@@ -95,7 +95,7 @@ Ecosystem and Partnerships:
 
 ### 6. Generate Competitive Intelligence Report
 
-1. ทำ `/report` ด้วย `/report-format-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Weakness, Competitor Opportunity, Recommendation
 3. สร้างตาราง strengths: Dimension, Location, Strength, Why Hard To Copy
 4. สรุป top 3-5 จุดอ่อนที่คู่แข่งจะโจมตีก่อน

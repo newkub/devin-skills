@@ -90,7 +90,7 @@ Summarize review results
 
 > Goal: actionable report with severity
 
-1. use `/report-format-table` for issues
+1. use `/report-table` for issues
 2. group issues by severity: critical, high, medium, low
 3. include file path and line number for each finding
 4. suggest next action

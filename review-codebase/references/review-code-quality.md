@@ -78,10 +78,10 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 ### 5. Report
 
-สร้างรายงานตารางตาม `/report-format-table`
+สร้างรายงานตารางตาม `/report-table`
 > Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
 
-1. ทำ `/report` พร้อม `/report-format-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Quality Metrics Summary: 14 metrics พร้อม count, threshold, status
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
@@ -147,7 +147,7 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 ### 8. Report Format
 
-- ใช้ `/report` และ `/report-format-table` สำหรับ structured output
+- ใช้ `/report` และ `/report-table` สำหรับ structured output
 - ตอบในแชทเท่านั้น ไม่สร้างไฟล์แยก
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning
 
@@ -155,7 +155,7 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

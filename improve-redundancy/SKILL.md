@@ -75,7 +75,7 @@ triggers:
 
 > Goal: ผู้ใช้รู้ว่าลบอะไร รวมอะไร และเหลืออะไร
 
-1. รายงานเป็นตารางด้วย `/report-format-table`: รายการที่ลบ, รายการที่ merge, รายการที่แปลงเป็น reference, จำนวนบรรทัดที่ลดลง
+1. รายงานเป็นตารางด้วย `/report-table`: รายการที่ลบ, รายการที่ merge, รายการที่แปลงเป็น reference, จำนวนบรรทัดที่ลดลง
 2. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -113,7 +113,7 @@ triggers:
 ### 6. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

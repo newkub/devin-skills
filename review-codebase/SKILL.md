@@ -27,8 +27,8 @@ related:
   - implement-all
   - update-reference
   - git-commit
-  - report-format-terminal
-  - report-format-table
+  - report-ansi
+  - report-table
   - report
   - suggest-next-action
 ---
@@ -112,7 +112,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 > Goal: รายงาน before-after review score และสรุปผล
 
 1. ทำ `/run-review` เพื่อวัด after score
-2. ทำ `/report-format-terminal`, `/report-format-table`
+2. ทำ `/report-ansi`, `/report-table`
 3. ทำ `/report` เพื่อสรุปผล
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
@@ -148,7 +148,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 5. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Review Catalog
 

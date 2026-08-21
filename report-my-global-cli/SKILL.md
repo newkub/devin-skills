@@ -11,7 +11,7 @@ triggers:
 related:
   - follow-my-global-cli
   - learn-from-cli
-  - report-format-table
+  - report-table
   - suggest-next-action
   - idea-convert-my-global-cli-to-skills
 ---
@@ -61,7 +61,7 @@ related:
    - ใช้งานซับซ้อนจนควรมี skill คอยช่วย
    - มี project หลาย workspace ที่ใช้ร่วมกัน
 2. จัดลำดับ commands ตาม priority: High, Medium, Low
-3. ทำ `/report-format-table` เพื่อสรุป candidates
+3. ทำ `/report-table` เพื่อสรุป candidates
 
 ### 4. Suggest Next Action
 
@@ -80,8 +80,8 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ

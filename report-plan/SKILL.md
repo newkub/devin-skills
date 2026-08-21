@@ -13,7 +13,7 @@ triggers:
   - user
   - model
 related:
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -40,7 +40,7 @@ related:
 
 ### 2. Report Task Table
 
-แสดงตาราง tasks ตาม `/report-format-table`
+แสดงตาราง tasks ตาม `/report-table`
 
 > Goal: ผู้ใช้เห็นรายการงานและ priority ได้ชัดเจน
 
@@ -65,7 +65,7 @@ related:
 
 ### 4. Report File Structure
 
-แสดง file structure ตาม `/report-format-file-structure`
+แสดง file structure ตาม `/report-file-structure`
 
 > Goal: ผู้ใช้เห็นไฟล์ที่จะสร้าง/แก้ไข/ลบได้ชัดเจน
 
@@ -103,8 +103,8 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -129,8 +129,8 @@ related:
 
 ### 4. Format
 
-- ใช้ `/report-format-table` สำหรับ task table
-- ใช้ `/report-format-file-structure` สำหรับ file tree
+- ใช้ `/report-table` สำหรับ task table
+- ใช้ `/report-file-structure` สำหรับ file tree
 - ใช้ table หรือ code block สำหรับ before-after comparison
 
 ## Expected Outcome

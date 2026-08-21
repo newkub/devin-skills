@@ -24,7 +24,7 @@ related:
   - follow-architecture
   - follow-import-export
   - dont-over-engineer
-  - report-format-table
+  - report-table
   - suggest-next-action
   - report-plan
 ---
@@ -109,7 +109,7 @@ related:
 
 > Goal: ผู้ใช้เห็นภาพรวมและลำดับถัดไป
 
-1. ทำ `report-format-table`
+1. ทำ `report-table`
 2. คอลัมน์: number, package(s), issue, idea, action, scope, impact, effort
 3. จัดลำดับตาม impact/effort ratio
 4. ทำ `suggest-next-action`
@@ -151,5 +151,5 @@ related:
 
 - รายการไอเดีย new packages/refactor แบบ continuous numbering
 - ทุกไอเดียมี package name, action, scope, impact, effort
-- ตาราง `report-format-table` พร้อม next action
+- ตาราง `report-table` พร้อม next action
 - ไอเดียพร้อม execute ด้วย `refactor-packages`

@@ -18,7 +18,7 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 
 ## Scope
 
-ใช้สำหรับ skills ที่ report เช่น `report-health`, `report-status`, `report-todo`, `report-features`, `report-bundle`
+ใช้สำหรับ skills ที่ report เช่น `report-health`, `report-agents-session-status`, `report-todo`, `report-features`, `report-bundle`
 
 ## Execute
 
@@ -48,7 +48,7 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 
 > Goal: Report อ่านง่าย เหมาะกับ audience
 
-1. ทำ `/report-format-table`, ทำ `/report-format-file-structure` ถ้าเกี่ยวกับ files
+1. ทำ `/report-table`, ทำ `/report-file-structure` ถ้าเกี่ยวกับ files
 2. ใช้ headings, lists และ tables ตามประเภทข้อมูล
 3. สรุป key findings ไว้ด้านบน
 
@@ -59,7 +59,7 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 > Goal: ผู้ใช้ได้ report ที่พร้อมใช้
 
 1. นำเสนอ report ในรูปแบบที่เหมาะสม
-2. ถ้าเป็น interactive → ทำ `/report-html` หรือ `/visualize-in-web`
+2. ถ้าเป็น interactive → ทำ `/report-in-html` หรือ `/visualize-in-web`
 3. ระบุ next actions ที่ชัดเจน
 4. ทำ `/suggest-next-action`
 

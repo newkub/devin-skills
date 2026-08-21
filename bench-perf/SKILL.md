@@ -59,7 +59,7 @@ Use before and after optimization to measure impact
 
 > Goal: report
 
-1. Create /report-format-table with metrics
+1. Create /report-table with metrics
 1. Call /suggest-next-action
 
 ## Rules

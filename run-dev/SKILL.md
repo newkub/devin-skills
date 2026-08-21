@@ -61,7 +61,7 @@ triggers:
 
 ### 7. Report
 
-1. ทำ `/report-format-terminal` เพื่อแสดง terminal output
+1. ทำ `/report-ansi` เพื่อแสดง terminal output
 2. สรุปสถานะ dev server และ issues ที่เหลือ
 
 ## Rules

@@ -126,7 +126,7 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 
 > Goal: มีตารางสรุปผลและ next action
 
-1. ทำ `/report-format-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
+1. ทำ `/report-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
 2. สรุป root cause, fix, regression tests, preventive measures
 3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 

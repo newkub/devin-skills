@@ -116,7 +116,7 @@ Review codebase อย่างเป็นระบบ ระบุ issues พ�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

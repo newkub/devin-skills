@@ -15,7 +15,7 @@ triggers:
 related:
   - list-project-in-drive-d
   - at-project-in-drive-d
-  - report-format-table
+  - report-table
   - ask-me
 ---
 
@@ -56,7 +56,7 @@ related:
 
 > Goal: แสดงผลในรูปแบบที่เข้าใจง่าย
 
-1. ใช้ `report-format-table` เพื่อสร้างตาราง
+1. ใช้ `report-table` เพื่อสร้างตาราง
 2. จัดเรียง columns: No., Project Name, Path, Match Type
 3. แสดง path ด้วย backticks
 4. รวบรวมจำนวน matches และแสดง summary

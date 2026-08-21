@@ -16,7 +16,7 @@ related:
   - check-correctness
   - run-typecheck
   - follow-code-quality
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -113,7 +113,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 ### 8. Report And Suggest
 
-ทำ `/report-format-table` เพื่อสร้างตารางสรุปผล
+ทำ `/report-table` เพื่อสร้างตารางสรุปผล
 
 - ตาราง: Dimension, Finding, Severity, Location, Recommendation
 - จัดกลุ่ม findings ตาม dimension

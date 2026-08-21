@@ -69,7 +69,7 @@ triggers:
 
 รายงาน issues ที่พบในรูปแบบตาราง
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. สร้างตารางพร้อม columns: Category, Issue, Severity, Location, Action Required
 3. หมวดหมู่: Build, Pages, Assets, API, Console Errors, Responsive
 4. จัดลำดับ issues ตาม severity (critical, high, medium, low)
@@ -93,7 +93,7 @@ triggers:
 - ทดสอบ responsive design บนหลาย screen sizes
 - ใช้ `/watch-browser` สำหรับตรวจสอบต่อเนื่อง
 - ใช้ `/run-test` สำหรับทดสอบแบบละเอียด
-- ใช้ `/report-format-table` สำหรับรายงาน issues
+- ใช้ `/report-table` สำหรับรายงาน issues
 - Preview server ควรหยุดเมื่อไม่ใช้งาน
 - ลบ preview builds เก่าเป็นระยะ
 - ใช้ preview URLs ชั่วคราว ห้ามใช้เป็น production

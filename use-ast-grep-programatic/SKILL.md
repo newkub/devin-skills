@@ -99,7 +99,7 @@ triggers:
 ### 4. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

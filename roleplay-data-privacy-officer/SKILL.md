@@ -107,7 +107,7 @@ Privacy by Design:
 
 ### 6. Generate Privacy Compliance Report
 
-1. ทำ `/report` ด้วย `/report-format-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Regulatory Risk, Recommendation
 3. สร้าง compliance scorecard: 6 dimensions, score 1-5 (Compliant, Partial, Non-compliant)
 4. สรุป top 3-5 critical compliance gaps ที่ต้องแก้ก่อน

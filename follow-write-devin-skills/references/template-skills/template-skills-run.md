@@ -61,7 +61,7 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 > Goal: ผู้ใช้รู้ผลลัพธ์และ next action
 
 1. สรุปผล: success/fail, duration, key metrics
-2. ถ้าสำเร็จ → ทำ `/report-status`, `/suggest-next-action`
+2. ถ้าสำเร็จ → ทำ `/report-agents-session-status`, `/suggest-next-action`
 3. ถ้ามี warnings → รายงานพร้อมคำแนะนำ
 4. ถ้าเป็น watch mode → รายงาน errors ต่อเนื่องและ fix อัตโนมัติ
 

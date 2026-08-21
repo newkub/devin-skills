@@ -98,7 +98,7 @@ triggers:
 
 ### 5. Report Formatting
 
-จัดรูปแบบ output ตาม `/report-format-table`
+จัดรูปแบบ output ตาม `/report-table`
 
 1. กำหนด table structure ด้วย numbered columns (No, Name, Version, Type, Purpose, Status)
 2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน

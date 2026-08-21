@@ -74,7 +74,7 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 
 > Goal: รายงาน findings พร้อม review score และ actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-format-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Bug-Prone Metrics Summary: 8 metrics พร้อม count, threshold, status
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
@@ -138,7 +138,7 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

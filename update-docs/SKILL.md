@@ -99,8 +99,8 @@ For monorepos with many workspaces:
 
 > Goal: บันทึก report output format ของ analyze-* และ review-* workflows
 
-1. ตรวจสอบว่า `analyze-*` workflows มี report step (เช่น `/report-format-table`) และบันทึกใน docs ว่าผลลัพธ์อยู่ในรูปแบบใด
-2. ตรวจสอบว่า `review-*` workflows มี report step (เช่น `/report-review` หรือ `/report-format-table`) และบันทึกใน docs
+1. ตรวจสอบว่า `analyze-*` workflows มี report step (เช่น `/report-table`) และบันทึกใน docs ว่าผลลัพธ์อยู่ในรูปแบบใด
+2. ตรวจสอบว่า `review-*` workflows มี report step (เช่น `/report-review` หรือ `/report-table`) และบันทึกใน docs
 3. บันทึกตัวอย่าง report output ใน docs ถ้าจำเป็น
 
 ### 7. Update References

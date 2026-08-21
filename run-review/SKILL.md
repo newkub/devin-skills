@@ -60,7 +60,7 @@ triggers:
 > Goal: รู้ action ถัดไปที่ควรทำตาม priority
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
-2. ทำ `/report-format-table` แสดง summary: domain scores, top findings, recommended workflows
+2. ทำ `/report-table` แสดง summary: domain scores, top findings, recommended workflows
 3. แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 
 ## Rules
@@ -89,7 +89,7 @@ triggers:
 ## Expected Outcome
 
 - Review report พร้อม score, grade, domain breakdown และ findings
-- ตาราง summary ตาม `/report-format-table` แสดง top findings และ recommended actions
+- ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
 - แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละปัญหา
 - แนะนำ `/update-review-cli` ถ้า CLI ต้องปรับปรุง
 

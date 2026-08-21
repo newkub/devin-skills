@@ -43,12 +43,12 @@ triggers:
 > Goal: ข้อมูลถูกจัดรูปแบบในรูปแบบที่อ่านง่ายที่สุด
 
 
-1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-format-table`
-2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-format-table` พร้อม numbered columns
+1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-table`
+2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-table` พร้อม numbered columns
 3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
-4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-format-terminal`
-5. ถ้าเป็นรายงานสถานะ ใช้ `/report-status`
-6. ถ้าเป็นรายงาน error ใช้ `/report-format-terminal`
+4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-ansi`
+5. ถ้าเป็นรายงานสถานะ ใช้ `/report-agents-session-status`
+6. ถ้าเป็นรายงาน error ใช้ `/report-ansi`
 
 ### 3. Apply Grouping And Sorting
 

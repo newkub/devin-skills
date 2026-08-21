@@ -1,5 +1,5 @@
 ---
-name: translate-code
+name: report-translate-code
 description: แปล function และ code เป็นประโยคที่เข้าใจง่าย
 allowed-tools:
   - read

@@ -10,7 +10,7 @@ triggers:
   - user
   - model
 related:
-  - report-format-table
+  - report-table
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ related:
 2. ถ้าเป็น monorepo ให้ระบุ workspaces ทั้งหมด
 3. ถ้าเป็น monorepo ให้ระบุ monorepo tool ที่ใช้
 4. ระบุ run command pattern ทั่วไป เช่น `moon run <project>:<task>` สำหรับ Moonrepo หรือ `<tool> run <task>` สำหรับ Turborepo/pnpm
-5. ใช้ `/report-format-table` สำหรับ output
+5. ใช้ `/report-table` สำหรับ output
 
 ## Rules
 

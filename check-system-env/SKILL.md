@@ -245,10 +245,10 @@ Test-Path "$env:USERPROFILE\.vscode\settings.json"
 
 ### 13. Generate Report
 
-รวบรวมข้อมูลทั้งหมดและรายงานในรูปแบบตารางตาม `/report-format-table`:
+รวบรวมข้อมูลทั้งหมดและรายงานในรูปแบบตารางตาม `/report-table`:
 
 1. รวบรวมข้อมูลจากทุก steps
-2. จัดรูปแบบตารางตาม `/report-format-table`
+2. จัดรูปแบบตารางตาม `/report-table`
 3. ใช้ numbered columns, headers ชัดเจน, alignment ที่เหมาะสม
 4. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
 
@@ -278,7 +278,7 @@ Test-Path "$env:USERPROFILE\.vscode\settings.json"
 
 ### 4. Report Format
 
-รายงานในรูปแบบตารางตาม `/report-format-table`:
+รายงานในรูปแบบตารางตาม `/report-table`:
 - ใช้ numbered columns
 - ใช้ headers ชัดเจน
 - ใช้ alignment ที่เหมาะสม

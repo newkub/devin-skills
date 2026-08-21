@@ -52,7 +52,7 @@ triggers:
 > Goal: Documentation สำหรับ features ใน docs/ โดยไม่เขียนซ้ำในแต่ละ workspace
 
 1. ทำ `/update-docs` เพื่อสร้าง documentation สำหรับ features ที่วิเคราะห์ได้
-2. แสดง existing features ในแชทเป็นตารางตาม `/report-format-table`
+2. แสดง existing features ในแชทเป็นตารางตาม `/report-table`
 
 ## Rules
 

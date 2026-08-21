@@ -3,7 +3,7 @@ name: review-coverage
 description: Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม review score
 related:
   - scan-codebase
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -47,7 +47,7 @@ content coverage review สำหรับ: skills, workflows, documentation —
 > Goal: Report ชัดเจน  actionable สอดคล้อง Goal
 
 1. รายงานเป็นตาราง: category | coverage % | gaps found | severity | action item
-2. ทำ `/report-format-table` สำหรับสรุปผล
+2. ทำ `/report-table` สำหรับสรุปผล
 3. ทำ `/suggest-next-action` สำหรับขั้นตอนถัดไป
 
 ## Rules

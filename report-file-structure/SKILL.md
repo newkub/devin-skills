@@ -1,5 +1,5 @@
 ---
-name: report-format-file-structure
+name: report-file-structure
 description: แสดงโครงสร้างไฟล์ โฟลเดอร์ พร้อม metadata สถิติ และคำแนะนำ
 allowed-tools:
   - read
@@ -13,9 +13,9 @@ triggers:
   - user
   - model
 related:
-  - report-format-table
+  - report-table
   - suggest-next-action
-  - report-format-terminal
+  - report-ansi
 ---
 
 ## Goal
@@ -81,7 +81,7 @@ related:
 ### 7. Report Output
 
 1. แสดง tree view พร้อม icons และ hierarchy
-2. แสดงสถิติโดยใช้ `/report-format-table`:
+2. แสดงสถิติโดยใช้ `/report-table`:
    - Metric, Value (total files, total dirs, total size, file types)
 3. แสดงสรุป: structure health, issues found, recommendations
 4. ทำ `/report` สำหรับจัดรูปแบบ output รวม
@@ -93,8 +93,8 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-format-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-format-terminal` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ

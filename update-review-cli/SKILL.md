@@ -16,7 +16,7 @@ related:
   - run-review
   - review-codebase
   - check-should-update
-  - report-deps
+  - report-dependencies
   - use-scripts
   - follow-tasks
 ---

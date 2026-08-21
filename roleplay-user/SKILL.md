@@ -101,7 +101,7 @@ Platform and Environment:
 
 ### 7. Generate Report
 
-1. ทำ `/report` ด้วย `/report-format-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Aspect, Location, Issue, User Impact, Recommendation
 3. สรุป top 3-5 issues ที่ควรแก้ก่อน
 4. ทำ `/suggest-next-action`

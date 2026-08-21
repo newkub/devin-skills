@@ -125,7 +125,7 @@ related:
 ### 11. Report
 
 1. ทำ `/report` สรุปผลลัพธ์
-2. ใช้ `/report-format-table` สำหรับ test results, coverage metrics, และ action items
+2. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
 3. ทำ `/suggest-next-action` หากยังมี issues
 
 ## Rules

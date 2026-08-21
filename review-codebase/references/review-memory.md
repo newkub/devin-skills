@@ -20,7 +20,7 @@ related:
   - deep-validate
   - validate
   - report-review
-  - report-format-table
+  - report-table
   - suggest-next-action
   - implement-all
 ---
@@ -135,7 +135,7 @@ Review cache และ state management
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report-review` และ `/report-format-table`
+1. ทำ `/report-review` และ `/report-table`
 2. สร้างตาราง findings พร้อม severity, file, line, recommendation
 3. ทำ `/suggest-next-action`
 
@@ -179,7 +179,7 @@ Review cache และ state management
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

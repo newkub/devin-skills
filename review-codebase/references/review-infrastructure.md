@@ -187,7 +187,7 @@ Review upgrade safety ครอบคลุม breaking change analysis, migrati
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 4. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review — ถ้าพบ incomplete implementations → เพิ่มเป็น findings
-5. ทำ `/report` พร้อม `/report-format-table` สร้างตาราง aggregate findings จากทุก section
+5. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings จากทุก section
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -232,7 +232,7 @@ Review upgrade safety ครอบคลุม breaking change analysis, migrati
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

@@ -81,7 +81,7 @@ Goal reminder: ทุก dimension ต้องมี severity และ actiona
 ตรวจสอบความถูกต้องและแนะนำ action ถัดไป
 
 - ทำ `/validate` เพื่อตรวจสอบความถูกต้องของ findings
-- ทำ `/report-format-table` สรุปผลรวม
+- ทำ `/report-table` สรุปผลรวม
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไปที่มี impact จริง
 - ถ้าพบ critical issues → ระบุ quick wins และ major improvements แยกกัน
 

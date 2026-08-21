@@ -34,7 +34,7 @@ triggers:
 1. รัน `bun run bench` หรือ script ที่กำหนดใน `package.json`
 2. ถ้าต้องการรันเฉพาะ benchmark ให้ระบุ pattern (เช่น `bun run bench -- --grep "pattern"`)
 3. รอ benchmarks เสร็จสิ้นและบันทึกผลลัพธ์ทั้งหมด
-4. ทำ `/report-format-table` เพื่อจัดรูปแบบผลลัพธ์
+4. ทำ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 3. Analyze Results
 

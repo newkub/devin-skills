@@ -32,7 +32,7 @@ triggers:
 ### 2. Run Scan
 
 1. รัน `bun run scan` หรือ `ast-grep scan`
-2. ทำ `/report-format-terminal` เพื่อจัดรูปแบบ output และระบุ issues
+2. ทำ `/report-ansi` เพื่อจัดรูปแบบ output และระบุ issues
 3. พิจารณา rules ที่ไม่เหมาะสม ว่าถูกต้องและเหมาะสมหรือไม่
 4. แก้ไข code ตาม suggestions ที่เหมาะสม หรือใช้ `--interactive` mode สำหรับ selective apply
 

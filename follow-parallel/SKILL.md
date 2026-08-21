@@ -79,7 +79,7 @@ triggers:
 1. ตรวจว่าทุก parallel operation มีผลลัพธ์ครบ — ไม่มี operation ที่หายไป
 2. ตรวจ errors จาก `Promise.allSettled` — แยก fulfilled และ rejected
 3. ถ้ามี rejected operations → ระบุสาเหตุและ retry หรือ report
-4. ทำ `/report-format-table` สรุปผลลัพธ์เป็นตาราง
+4. ทำ `/report-table` สรุปผลลัพธ์เป็นตาราง
 5. ระบุใน report ว่า operations ไหนรัน parallel และใช้เวลาเท่าไหร่
 
 ## Rules

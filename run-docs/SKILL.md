@@ -64,8 +64,8 @@ triggers:
 
 ### 6. Report
 
-1. รัน `/report-format-terminal` เพื่อวาด terminal output ด้วย ANSI codes
-2. รัน `/report-format-table` เพื่อจัดรูปแบบตาราง
+1. รัน `/report-ansi` เพื่อวาด terminal output ด้วย ANSI codes
+2. รัน `/report-table` เพื่อจัดรูปแบบตาราง
 3. แสดงผลลัพธ์ที่จัดรูปแบบแล้ว
 
 ## Rules

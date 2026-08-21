@@ -35,7 +35,7 @@ triggers:
 
 ### 3. Format Output
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Tag tag name
@@ -55,7 +55,7 @@ triggers:
 
 ### 2. Output Format
 
-- ทำ `/report-format-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่ publish ล่าสุด
 - แสดงข้อมูลสำคัญ: tag, title, draft, prerelease, published, author
 

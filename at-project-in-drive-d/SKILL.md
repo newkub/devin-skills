@@ -40,7 +40,7 @@ Use `at-project-in-drive-d` for the specific tasks and workflows it covers
 
 ### 3. Format Table
 
-1. สร้างตารางตามมาตรฐาน `/report-format-table`
+1. สร้างตารางตามมาตรฐาน `/report-table`
 2. ใช้ numbered columns สำหรับลำดับ
 3. ใช้ bold headers และ backticks สำหรับ paths
 4. จัดเรียง columns: No., Project Name, Path, Category

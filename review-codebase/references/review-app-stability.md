@@ -89,7 +89,7 @@ Review ความเสถียรของ application เพื่อหา
 2. ถ้าพบ performance issues ให้ทำ `/review-codebase`
 3. ถ้าพบ concurrency issues ให้ทำ `/review-codebase`
 4. ถ้าพบ security issues ให้ทำ `/review-codebase`
-5. ใช้ `/report-format-table` เพื่อจัดรูปแบบผลลัพธ์
+5. ใช้ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Format Report
 
@@ -97,7 +97,7 @@ Review ความเสถียรของ application เพื่อหา
 
 > Goal: รายงานชัดเจน พร้อม severity และ recommendations
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
 3. จัดกลุ่มตาม category: Crashes, Errors, Monitoring, Recovery, Health
 4. แยก section: Critical, High, Medium, Low

@@ -104,8 +104,8 @@ triggers:
 > Goal: รายงานผลลัพธ์และ next action ที่ชัดเจน
 
 1. ตรวจสอบว่า build artifacts ถูกสร้างและทำงานได้
-2. รัน `/report-format-table` เพื่อแสดง before/after metrics (build time, output size, bundle count)
-3. รัน `/report-format-terminal` เพื่อสรุปการปรับปรุง
+2. รัน `/report-table` เพื่อแสดง before/after metrics (build time, output size, bundle count)
+3. รัน `/report-ansi` เพื่อสรุปการปรับปรุง
 4. ถ้า output size หรือ build time ไม่ดีขึ้น → ระบุสาเหตุและแนะนำ next step
 
 ## Rules
@@ -155,7 +155,7 @@ related:
   - /analyze-project
   - /check-unused-deps
   - /run-clean
-  - /report-format-table
+  - /report-table
 ---
 
 ## Goal

@@ -18,7 +18,7 @@ related:
   - use-ast-grep
   - use-scripts
   - deep-report
-  - report-format-table
+  - report-table
   - update-reference
 ---
 
@@ -106,7 +106,7 @@ related:
 
 1. ทำ `/update-reference` เพื่อเพิ่ม references ในไฟล์ที่ขาด
 2. ทำ `/check-reference` เพื่อตรวจสอบว่า references มีอยู่จริง
-3. ทำ `/report-format-table` เพื่อสรุปผลลัพธ์เป็นตาราง
+3. ทำ `/report-table` เพื่อสรุปผลลัพธ์เป็นตาราง
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules

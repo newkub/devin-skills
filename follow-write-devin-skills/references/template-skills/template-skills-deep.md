@@ -70,7 +70,7 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 
 > Goal: Report ครบทุกมิติ อ่านง่าย ลำดับชัดเจน
 
-1. ทำ `/report-format-table` สำหรับ summary
+1. ทำ `/report-table` สำหรับ summary
 2. จัดลำดับ findings ตาม impact และ effort
 3. ระบุ immediate actions และ long-term actions
 4. ทำ `/suggest-next-action`

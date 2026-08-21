@@ -92,7 +92,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 1. สำหรับแต่ละ finding → แนะนำ fix หรือ skill ที่เหมาะสม
 2. จัดกลุ่ม recommendations: immediate, short-term, long-term
 3. ระบุ estimated effort สำหรับแต่ละ action
-4. ทำ `/report-review`, ทำ `/report-format-table` สำหรับ summary
+4. ทำ `/report-review`, ทำ `/report-table` สำหรับ summary
 5. ทำ `/suggest-next-action`
 
 ### 7. Implement All
@@ -147,7 +147,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

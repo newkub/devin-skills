@@ -100,7 +100,7 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 > Goal: รู้ว่าทำอะไรก่อน พร้อม estimated effort
 
 1. จัดกลุ่ม: immediate (critical path tests), short-term (coverage gaps), long-term (test refactoring)
-2. ทำ `/report-review`, ทำ `/report-format-table`
+2. ทำ `/report-review`, ทำ `/report-table`
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -122,7 +122,7 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 
 ### 5. Formatting
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

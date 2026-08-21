@@ -12,7 +12,7 @@ triggers:
   - model
 related:
   - scan-codebase
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -65,7 +65,7 @@ related:
 1. แสดง dependency graph แบบ tree structure
 2. แสดง tasks ที่ต้องทำตามลำดับ
 3. แสดง guidelines ที่ต้องปฏิบัติ
-4. ใช้ `/report-format-table` สำหรับจัดรูปแบบ output
+4. ใช้ `/report-table` สำหรับจัดรูปแบบ output
 
 ## Rules
 

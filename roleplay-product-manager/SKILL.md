@@ -101,7 +101,7 @@ Quality and Trust:
 
 ### 6. Generate Product Review Report
 
-1. ทำ `/report` ด้วย `/report-format-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Finding, User Impact, PM Recommendation
 3. สร้าง feature inventory: Feature, Status, User Value, Effort, Priority
 4. สรุป top 3-5 feature gaps ที่ต้องทำก่อน

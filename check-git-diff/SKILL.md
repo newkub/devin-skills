@@ -12,7 +12,7 @@ triggers:
   - model
 related:
   - check-should-update
-  - report-format-table
+  - report-table
   - suggest-next-action
 ---
 
@@ -82,7 +82,7 @@ related:
 
 ### 3. Output
 
-- ใช้ `/report-format-table` สำหรับสรุป stat
+- ใช้ `/report-table` สำหรับสรุป stat
 - ระบุ file paths เป็น relative จาก repo root
 
 ## Expected Outcome

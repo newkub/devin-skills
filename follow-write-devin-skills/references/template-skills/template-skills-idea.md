@@ -60,7 +60,7 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 
 > Goal: ผู้ใช้เห็นไอเดียทั้งหมดพร้อมลำดับความสำคัญ
 
-1. ทำ `/report-format-table` สำหรับ summary
+1. ทำ `/report-table` สำหรับ summary
 2. คอลัมน์: number, idea, category, impact, effort, scope
 3. จัดลำดับตาม impact/effort ratio
 4. ทำ `/suggest-next-action`

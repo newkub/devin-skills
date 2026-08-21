@@ -82,8 +82,8 @@ triggers:
 
 > Goal: ผู้ใช้รู้ผลลัพธ์และ next action
 
-1. รัน `/report-format-table` เพื่อแสดง build metrics (time, size, files)
-2. รัน `/report-format-terminal` เพื่อแสดงสรุปผลลัพธ์
+1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
+2. รัน `/report-ansi` เพื่อแสดงสรุปผลลัพธ์
 
 ## Rules
 
@@ -104,8 +104,8 @@ triggers:
 
 ### 3. Reporting
 
-- ใช้ `/report-format-table` สำหรับ metrics
-- ใช้ `/report-format-terminal` สำหรับสรุปข้อความ
+- ใช้ `/report-table` สำหรับ metrics
+- ใช้ `/report-ansi` สำหรับสรุปข้อความ
 - ไม่รายงานซ้ำซ้อน
 
 ## Expected Outcome
@@ -163,8 +163,8 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-format-table`
-2. ทำ `/report-format-terminal`
+1. ทำ `/report-table`
+2. ทำ `/report-ansi`
 
 ## Rules
 

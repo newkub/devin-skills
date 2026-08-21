@@ -123,7 +123,7 @@ related:
 - `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
 - `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
 - `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers
-- `review-*`/`analyze-*` → ใช้ `/update-review-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-format-table`
+- `review-*`/`analyze-*` → ใช้ `/update-review-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-table`
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
@@ -131,7 +131,7 @@ related:
 - `improve-*`/`write-*` → ใช้ `/follow-write-devin-skills` เป็นมาตรฐาน, มี review ก่อน improve
 - `create-*`/`add-*`/`delete-*` → มี dry run ก่อน, อัปเดท references ด้วย `/update-reference`
 - `update-*` → ตรวจ git changes ก่อน, ใช้ `/check-should-update`
-- `report-*` → ระบุ output format, ใช้ `report-format-*`
+- `report-*` → ระบุ output format, ใช้ `/report-table`, `/report-file-structure`, `/report-codeblock`, `/report-ansi`
 - `list-*`/`search-*` → อ่านและแสดงข้อมูลเป็นตาราง, ไม่แก้ไขไฟล์
 - `use-*` → อ้างอิง official documentation, ไม่ reinvent
 - `template-*` → เป็น canonical structure สำหรับ prefix นั้น, ต้องมี `## Example Template`

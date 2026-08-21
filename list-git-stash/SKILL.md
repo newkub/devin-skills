@@ -60,7 +60,7 @@ triggers:
 
 > Goal: รายงานอ่านง่าย ครบข้อมูล
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Stash stash@{n}
@@ -81,7 +81,7 @@ triggers:
 
 ### Output Format
 
-- ทำ `/report-format-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตาม stash index
 - ชี้เน้น stale stashes ที่เก่าเกิน 30 วัน
 - ชี้เน้น stashes ที่มีจำนวนไฟล์มาก

@@ -35,7 +35,7 @@ triggers:
 
 ### 3. Format Output
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Branch ชื่อ branch
@@ -52,7 +52,7 @@ triggers:
 
 ### 2. Output Format
 
-- ทำ `/report-format-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - แสดงข้อมูลสำคัญ: branch name, last commit SHA, protected status
 
 ## Expected Outcome

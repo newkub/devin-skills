@@ -55,7 +55,7 @@ triggers:
 จัดลำดับและรายงานในแชท
 
 1. จัดลำดับตาม impact: API naming → database naming → component naming → function naming → variable naming → file naming → CSS naming
-2. ทำ `/report` พร้อม `/report-format-table` เพื่อแสดงผลเป็นตาราง
+2. ทำ `/report` พร้อม `/report-table` เพื่อแสดงผลเป็นตาราง
 3. สร้างตารางเดียวรวมทั้ง Extends และ New พร้อม continuous numbering
 4. ใช้ impact indicators: 🔴 สูง, 🟡 ปานกลาง, 🟢 ต่ำ
 5. ใช้ difficult indicators: 🔴 ยาก, 🟡 ปานกลาง, 🟢 ง่าย

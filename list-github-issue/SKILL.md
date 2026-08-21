@@ -40,7 +40,7 @@ triggers:
 
 ### 3. Format Output
 
-1. ทำ `/report-format-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. เลข issue
    - Title ชื่อ issue
@@ -62,7 +62,7 @@ triggers:
 
 ### 2. Output Format
 
-- ทำ `/report-format-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: number, title, labels, state, author, comments, updated
 

@@ -52,7 +52,7 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 
 > Goal: Report ชัดเจน อ่านง่าย ลำดับถูกต้อง
 
-1. ทำ `/report-format-table` สำหรับ summary
+1. ทำ `/report-table` สำหรับ summary
 2. จัดลำดับ findings ตาม impact
 3. ระบุ evidence สำหรับทุก finding
 4. ทำ `/suggest-next-action`

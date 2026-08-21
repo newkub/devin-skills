@@ -18,7 +18,7 @@ related:
   - deep-validate
   - run-check
   - report
-  - report-format-table
+  - report-table
   - suggest-next-action
   - git-commit
 ---
@@ -90,7 +90,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 > Goal: รายงานผล review พร้อม recommendation
 
-1. ทำ /report พร้อม /report-format-table
+1. ทำ /report พร้อม /report-table
 2. สร้างตาราง PR Checklist: Title, Description, Size, Conflicts, Conventional Commits, Tests, CI
 3. สร้างตาราง Findings: Category, Severity, Location, Recommendation
 4. ระบุ merge readiness: ready, needs changes, needs discussion

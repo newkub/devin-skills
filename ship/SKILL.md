@@ -114,7 +114,7 @@ Release ไปยัง external platforms หลัง user confirm
 > Goal: ตรวจสอบความครบถ้วนและรายงานผล
 
 1. ตรวจสอบสถานะของทุก phase (1-8) ว่าทำเสร็จแล้วทั้งหมด
-2. รวบรวมสถานะและทำ `/report` พร้อม `/report-format-table`
+2. รวบรวมสถานะและทำ `/report` พร้อม `/report-table`
 3. ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⏭️ ข้าม, ⚠️ มี warning
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 

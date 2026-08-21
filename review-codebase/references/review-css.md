@@ -67,7 +67,7 @@ Review CSS ครอบคลุม CSS architecture, utility classes, cascade, 
 2. ทำ `/validate` สำหรับ issues แต่ละอย่าง
 3. ให้ severity: Critical, High, Medium, Low, Info
 4. คำนวณ review score ต่อ dimension
-5. ทำ `/report` พร้อม `/report-format-table`
+5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -94,7 +94,7 @@ Review CSS ครอบคลุม CSS architecture, utility classes, cascade, 
 ### 4. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

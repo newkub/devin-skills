@@ -14,7 +14,7 @@ triggers:
 related:
   - report-release-changelog
   - learn-from-web
-  - report-format-table
+  - report-table
   - ask-me
 ---
 

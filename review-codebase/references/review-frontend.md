@@ -45,7 +45,7 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 2. ทำ `/validate` สำหรับ validate issues จากทุก sub-review
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-format-table`
+5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -64,12 +64,12 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 ### 3. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
 - Findings และ recommendations จาก 17 frontend sub-review workflows
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
 - Review score ต่อ dimension และ overall
-- รายงานในแชทเป็นตารางตาม `/report-format-table`
+- รายงานในแชทเป็นตารางตาม `/report-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

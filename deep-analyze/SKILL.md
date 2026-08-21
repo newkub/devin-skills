@@ -20,7 +20,7 @@ related:
   - use-ast-grep
   - use-scripts
   - report
-  - report-format-table
+  - report-table
 ---
 
 ## Goal
@@ -203,7 +203,7 @@ related:
 - ให้ recommendations ตาม priority และ impact
 - ระบุ action items ที่ชัดเจน
 - สร้าง roadmap สำหรับ improvements
-- ใช้ `/report-format-table` สำหรับ structured output
+- ใช้ `/report-table` สำหรับ structured output
 
 ## Expected Outcome
 

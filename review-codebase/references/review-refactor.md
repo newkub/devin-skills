@@ -63,7 +63,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 
 > Goal: รายงาน refactor findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-format-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Refactor Metrics Summary: SRP violations, duplication %, long files, complex functions, coupling issues, dead code, code smells
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Refactors: Priority, Refactor Action, Impact, Effort, Workflow
@@ -112,7 +112,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-format-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
