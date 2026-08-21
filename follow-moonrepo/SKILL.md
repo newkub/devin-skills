@@ -191,3 +191,8 @@ related:
 - Polyglot support สำหรับ multi-language projects
 - Automatic task execution บน affected code only
 - AI integration ผ่าน MCP server
+
+
+## References
+
+- `moonrepo` content: `references/moonrepo/`

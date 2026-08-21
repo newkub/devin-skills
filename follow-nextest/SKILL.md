@@ -125,3 +125,8 @@ test-threads = 4
 - Tests รันแบบ parallel อัตโนมัติ
 - CI integration ที่เหมาะสม
 - Test execution time ลดลง
+
+
+## References
+
+- `nextest` content: `references/nextest/`

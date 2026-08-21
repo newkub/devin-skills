@@ -132,3 +132,8 @@ desktop-apps/{project}/
 - Dev server ทำงานได้ที่ `bun run tauri dev`
 - Frontend และ Rust backend เชื่อมต่อกันผ่าน IPC
 - Production build สร้าง executables ได้
+
+
+## References
+
+- `tauri` content: `references/tauri/`

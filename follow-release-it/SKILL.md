@@ -100,3 +100,8 @@ jobs:
 - release-it ติดตั้งและตั้งค่าเรียบร้อย
 - GitHub workflow สร้างอัตโนมัติเมื่อ push ไป main branch
 - Package release ไปยัง npm อัตโนมัติ
+
+
+## References
+
+- `release-it` content: `references/release-it/`

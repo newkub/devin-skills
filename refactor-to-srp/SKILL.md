@@ -7,7 +7,6 @@ related:
   - check-circular-dependencies
   - check-duplication
   - check-long-files
-  - check-srp
   - dont-over-engineer
   - edit-relative
   - plan
@@ -42,8 +41,8 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 > Goal: ระบุ SRP violations และสิ่งที่ต้องแก้ไข
 
 1. ทำ `/analyze-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
-2. ทำ `/check-srp` เพื่อระบุ SRP violations ด้วย `ast-grep outline` และ deep analysis
-3. ระบุ units ที่ violate SRP (ยืนยันจาก `/check-srp`):
+2. อ่าน `references/check-srp/SKILL.md` เพื่อระบุ SRP violations ด้วย ast-grep outline
+3. ระบุ units ที่ violate SRP จาก thresholds ใน `references/check-srp/SKILL.md`:
    - ไฟล์มี top-level symbols เกิน 5 อันที่ไม่เกี่ยวข้องกัน
    - function/class มี public members เกิน 10 หรือทำหลายหน้าที่
    - imports ข้าม boundary หรือ layer
@@ -141,3 +140,9 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 - References ทั้งหมดถูกต้อง ไม่มี broken imports
 - Lint, typecheck, test ผ่าน
 - มีรายงาน before/after ของ SRP metrics
+
+
+## References
+
+- `refactor-long-files` content: `references/refactor-long-files/`
+- `check-srp` content: `references/check-srp/`

@@ -165,3 +165,8 @@ Netlify: `preset: 'netlify'`, `netlify: { edge: false }`
 - Runtime configuration ยืดหยุ่น
 - Static site generation รองรับ
 - Cache, Storage, Database, WebSocket, OpenAPI พร้อมใช้งาน
+
+
+## References
+
+- `nitro` content: `references/nitro/`

@@ -61,7 +61,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
    ```vue
    <!-- Bad: โหลดทันที -->
    <Modal v-if="showModal" />
-   
+
    <!-- Good: โหลดเมื่อจำเป็น -->
    <LazyModal v-if="showModal" />
    ```
@@ -186,3 +186,8 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 - Build และ test ที่ผ่านทั้งหมด
 - Error handling ที่ดี
 - Assets management ที่ถูกต้อง
+
+
+## References
+
+- `nuxt` content: `references/nuxt/`

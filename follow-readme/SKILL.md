@@ -298,14 +298,14 @@ await executeWorkflow('analyze-project', {
 | Clean Architecture | `/clean-architecture` |
 | DDD | `/ddd` |
 | Microservices | `/microservices` |
-| Monorepo | `/monorepo`, `/follow-turborepo`, `/moonrepo` |
+| Monorepo | `/monorepo`, `/follow-turborepo`, `/follow-moonrepo` |
 
 ### Framework Workflows
 
 | Framework | Workflows |
 |-----------|-----------|
-| Vue | `/vue`, `/nuxt`, `/vueuse` |
-| React | `/react`, `/next` |
+| Vue | `/vue`, `/follow-nuxt`, `/vueuse` |
+| React | `/react`, `/follow-next` |
 | Rust | `/follow-rust` |
 | Bun | `/follow-bun`, `/bun-native` |
 

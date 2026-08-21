@@ -62,7 +62,7 @@ Refactor code, content, และ workflow units ที่มีหลาย res
 2. แยก God modules — ระบุ responsibilities ที่ปนกัน, แยกแต่ละ responsibility ออกเป็น module ใหม่
 3. Extract multi-responsibility functions — ระบุ operations ที่ปนกัน, extract แต่ละ operation เป็น function ใหม่, สร้าง orchestrator
 4. Split multi-responsibility classes — ระบุ member groups ตาม responsibility, extract แต่ละ group เป็น class/type ใหม่, ใช้ composition
-5. ทำ `/refactor-long-files`, `/refactor-packages` — long files and mixed module/package responsibilities
+5. ทำ `/refactor-to-srp`, `/refactor-packages` — long files and mixed module/package responsibilities
 6. แยก content ที่ผสมหลาย topics ออกเป็นไฟล์ใหม่ — ตั้งชื่อไฟล์ให้สะท้อน topic, สร้าง index
 7. ทำ `/review-naming`, `/simplify` — rename identifiers และ simplify functions ที่ซับซ้อน
 8. ทำ `/check-circular-dependencies` หลัง split/move และ `/update-reference` หลัง split ทุกระดับ — ถ้ามี broken references → ทำ `/resolve-errors`

@@ -215,3 +215,8 @@ jobs:
 - มี unit tests สำหรับ utility functions
 - ใช้ `stylua` สำหรับ formatting
 - CI รัน automated checks
+
+
+## References
+
+- `nvim` content: `references/nvim/`

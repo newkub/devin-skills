@@ -135,3 +135,8 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 - Env vars load อัตโนมัติเมื่อเข้า project directory
 - Tasks รันได้ด้วย `mise run <task>`
 - Project setup repeatable บนเครื่องอื่น
+
+
+## References
+
+- `mise` content: `references/mise/`

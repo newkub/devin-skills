@@ -3,7 +3,7 @@ name: refactor-skills
 description: Refactor โครงสร้าง skill files และ directories เพื่อ SRP และลด redundancy
 related:
   - check-reference
-  - check-srp
+  - refactor-to-srp
   - deep-review
   - dont-over-engineer
   - follow-devin-skills-md
@@ -13,7 +13,6 @@ related:
   - merge
   - new-devin-skills-global
   - read-related-skills
-  - refactor-to-srp
   - report
   - scan-codebase
   - update-reference
@@ -117,7 +116,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 > Goal: skill ผ่าน validation หลัง refactor
 
 1. parallel: ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ sections ครบ
-2. parallel: ทำตาม `/check-srp` ∥ ทำตาม `/deep-review`
+2. parallel: ทำตาม `/refactor-to-srp` ∥ ทำตาม `/deep-review`
 3. ทำ `/report` เพื่อสรุป
 
 ## Rules

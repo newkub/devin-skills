@@ -50,3 +50,8 @@ nextjs-project/
 | tailwind.config.js | [Tailwind Config](https://tailwindcss.com/docs/configuration) |
 | .gitignore | [Git Ignore](https://git-scm.com/docs/gitignore) |
 | README.md | [Markdown Guide](https://www.markdownguide.org/) |
+
+
+## References
+
+- `next` content: `references/next/`

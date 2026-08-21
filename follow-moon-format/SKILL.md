@@ -79,7 +79,7 @@ Format code ด้วย moonrepo และแก้ไข errors อัตโ�
 ใช้ workflows ที่เกี่ยวข้องสำหรับการแก้ไข errors
 
 - ใช้ `/resolve-errors` สำหรับแก้ไข errors
-- ใช้ `/moonrepo` สำหรับ moonrepo best practices
+- ใช้ `/follow-moonrepo` สำหรับ moonrepo best practices
 - ใช้ `/loop-until-complete` สำหรับทำซ้ำจนสำเร็จ
 
 ## Expected Outcome

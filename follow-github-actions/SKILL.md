@@ -30,7 +30,7 @@ description: ตั้งค่า GitHub Actions สำหรับ CI/CD ค�
 ### 2. Setup พื้นฐาน
 
 1. ทำ `/renovate` เพื่อตั้งค่า dependency updates
-2. ทำ `/release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
+2. ทำ `/follow-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
 3. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
 
 ### 3. เลือกเพิ่ม Workflows ตามความต้องการ
