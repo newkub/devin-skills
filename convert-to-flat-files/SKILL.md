@@ -16,7 +16,6 @@ related:
   - write-skills-md
   - follow-write-devin-skills
   - validate
-  - validate-workflow
   - check-reference
   - update-reference
 ---
@@ -73,7 +72,7 @@ related:
 > Goal: active skill ยังเรียก references ได้
 
 1. ตรวจสอบ active skill ยังเรียก references ได้
-2. ทำ `/validate-workflow` กับ active skill หลัก
+2. ทำ `/update-reference` กับ active skill หลัก
 3. ทำ `/validate` เพื่อตรวจความถูกต้องของ flat files
 4. ถ้ามีปัญหา → แก้ไขและ revalidate (max 3 → stop/report)
 

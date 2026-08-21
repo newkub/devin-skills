@@ -23,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/comment-todo`) และไม่รวมการ implement TODO (ใช้ `/implement-comment-todo`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/add-to-queue`) และไม่รวมการ implement TODO (ใช้ `/implement-comment-todo`)
 
 ## Execute
 
@@ -125,7 +125,7 @@ related:
 ### Read-Only
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
-- ใช้ `/comment-todo` สำหรับเพิ่ม TODO
+- ใช้ `/add-to-queue` สำหรับเพิ่ม TODO
 - ใช้ `/implement-comment-todo` สำหรับ implement TODO
 
 ### Output Format
@@ -143,7 +143,7 @@ related:
 
 ### Non-Redundancy
 
-- การเพิ่ม TODO อยู่ใน `/comment-todo` แล้ว
+- การเพิ่ม TODO อยู่ใน `/add-to-queue` แล้ว
 - การ implement TODO อยู่ใน `/implement-comment-todo` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 

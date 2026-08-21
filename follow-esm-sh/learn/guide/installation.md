@@ -34,7 +34,7 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
 
   <script type="module">
     import { createApp, ref } from 'https://esm.sh/vue@3';
-    
+
     createApp({
       setup() {
         return { message: ref('Hello from esm.sh!') };
@@ -60,7 +60,7 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
   <script>
     const { useState } = React;
     const { createRoot } = ReactDOM;
-    
+
     function App() {
       const [count, setCount] = useState(0);
       return React.createElement('div', null,
@@ -68,7 +68,7 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
         React.createElement('button', { onClick: () => setCount(c => c + 1) }, '+1')
       );
     }
-    
+
     createRoot(document.getElementById('root')).render(React.createElement(App));
   </script>
 </body>
@@ -87,9 +87,9 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
     import { h, render } from 'https://esm.sh/preact@10';
     import { useState } from 'https://esm.sh/preact/hooks';
     import htm from 'https://esm.sh/htm';
-    
+
     const html = htm.bind(h);
-    
+
     function Counter() {
       const [count, setCount] = useState(0);
       return html`
@@ -99,7 +99,7 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
         </div>
       `;
     }
-    
+
     render(html`<${Counter} />`, document.getElementById('app'));
   </script>
 </body>
@@ -115,7 +115,7 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
 <html>
 <head>
   <link rel="preconnect" href="https://esm.sh" crossorigin>
-  
+
   <script type="importmap">
     {
       "imports": {
@@ -132,22 +132,22 @@ esm.sh เป็น CDN service ที่ใช้งานได้ทันท
   <script type="module">
     import { createApp, ref } from 'vue';
     import { debounce } from 'lodash-es';
-    
+
     const app = createApp({
       setup() {
         const input = ref('');
-        
+
         const onInput = debounce((e) => {
           console.log('Search:', e.target.value);
         }, 300);
-        
+
         return { input, onInput };
       },
       template: `
         <input v-model="input" @input="onInput">
       `
     });
-    
+
     app.mount('#app');
   </script>
 </body>

@@ -147,8 +147,11 @@ Component ต้อง follow standards:
 
 ## Guide
 
-เอกสารอ้างอิงเฉพาะทางสำหรับ components และ design system:
+เอกสารอ้างอิงเฉพาะทางสำหรับ Vue:
 
+- `references/vue.md` — Vue.js 3.5+ overview และ best practices
+- `guide/` — installation, quick-start, configuration, features, integration, architecture
+- `key-concepts/` — reactivity, composition-api, components, vapor-mode, compiler-macros
 - `references/follow-vue-components.md` — รายละเอียด component-level guidelines
 - `references/follow-vue-design-system-best-practics.md` — รายละเอียด design system, stores, และ composables
 

@@ -96,7 +96,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/comment-todo` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - แยก review process จาก refactor process
 - ถ้าต้อง refactor ให้ทำ `/refactor` หลัง review
 - ถ้าพบ naming issues ให้ใช้ `/rename` หลัง review

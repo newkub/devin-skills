@@ -33,7 +33,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 วิเคราะหา codebase เชิงลึกเพื่อระบุ issues ทั้งหมด
 
 - ทำ `/run-lint` เพื่อตรวจสอบ code quality issues
-- ทำ `/check-duplication` เพื่อหา code duplication
+- ทำ `/improve-code-duplication` เพื่อหา code duplication
 - ทำ `/read-all-files` เพื่ออ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะหา
 - ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวเกินไป
 - ทำ `/check-architecture` เพื่อตรวจสอบ architecture issues

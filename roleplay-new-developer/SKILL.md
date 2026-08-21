@@ -137,7 +137,7 @@ Domain Knowledge:
 - ถ้า onboarding ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
 - ถ้าต้องการ scan DX patterns จริง ให้ใช้ `/review-codebase`
-- ถ้าต้องการ scan file structure ให้ใช้ `/analyze-code-structure`
+- ถ้าต้องการ scan file structure ให้ใช้ `/check-code-structure`
 - ถ้าต้องการ scan naming ให้ใช้ `/review-codebase`
 
 ### 7. Output

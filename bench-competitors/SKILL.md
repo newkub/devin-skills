@@ -43,7 +43,7 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 1. ทำ `/review-codebase` สำหรับ performance
 2. ทำ `/review-codebase` สำหรับ UX/UI
 3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
-4. บันทึกผลใน `docs/project/comparison.md`
+4. บันทึกผลใน `docs/project.md`
 
 ### 4. Plan Improvements
 
@@ -73,7 +73,7 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 
 > Goal: รายงาน reflect สถานะล่าสุด
 
-1. ทำ `/update-docs` เพื่ออัปเดต `docs/project/comparison.md`
+1. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
 2. อัปเดต status ในตารางเปรียบเทียบ
 3. Re-benchmark หลังการปรับปรุง
 
@@ -113,6 +113,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 
 ## Expected Outcome
 
-- ไฟล์ `docs/project/comparison.md` ที่มีตารางเปรียบเทียบทุกมิติ
+- ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark

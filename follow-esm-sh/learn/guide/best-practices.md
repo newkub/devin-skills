@@ -184,7 +184,7 @@ async function verifyIntegrity(url, expectedHash) {
 
 ```html
 <!-- Content-Security-Policy for esm.sh -->
-<meta http-equiv="Content-Security-Policy" 
+<meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; connect-src 'self' https://esm.sh;">
 ```
 
@@ -233,7 +233,7 @@ async function verifyIntegrity(url, expectedHash) {
 ```html
 <script type="module">
   import { createElement, useState } from 'https://esm.sh/react@18';
-  
+
   function App() {
     const [count, setCount] = useState(0);
     return createElement('div', null,
@@ -249,7 +249,7 @@ async function verifyIntegrity(url, expectedHash) {
 ```html
 <script type="module">
   import { createApp, ref, computed } from 'https://esm.sh/vue@3';
-  
+
   createApp({
     setup() {
       const count = ref(0);

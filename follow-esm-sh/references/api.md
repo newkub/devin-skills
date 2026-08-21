@@ -178,7 +178,7 @@ https://esm.sh/preact@10/hooks
 esm.sh also mirrors jsdelivr:
 
 ```text
-# Equivalent to cdn.jsdelivr.net/bun/vue@3
+# Equivalent to cdn.jsdelivr.net/npm/vue@3
 https://esm.sh/v3/vue
 ```
 

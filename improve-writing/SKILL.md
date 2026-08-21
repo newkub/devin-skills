@@ -42,7 +42,7 @@ description: ปรับปรุงคุณภาพการเขียน�
 
 > Goal: comments สื่อความหมาย ไม่ใช่ noise
 
-1. ทำ `/comment` สำหรับ comments ที่ขาดหายไปใน complex logic
+1. ทำ `/improve-comment` สำหรับ comments ที่ขาดหายไปใน complex logic
 2. ลบ comments ที่ไม่จำเป็น: obvious comments, commented-out code, noise comments
 3. ปรับปรุง comments ที่มี: เปลี่ยนจาก what → why, อธิบาย intent ไม่ใช่ implementation
 4. ตรวจสอบ TODO/FIXME: มี context, มี owner, มี deadline หรือ clear action

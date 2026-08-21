@@ -22,7 +22,6 @@ related:
   - suggest-next-action
   - follow-devin-skills-md
   - validate
-  - validate-workflow
   - ask-me
 ---
 

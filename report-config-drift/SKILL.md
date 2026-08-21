@@ -111,7 +111,7 @@ related:
 1. สรุปจำนวน drifts แยกตาม type และ risk
 2. ระบุ critical drifts ที่ต้องแก้ทันที
 3. ระบุ drifts ที่ทำให้ staging ไม่เหมือน prod
-4. แนะนำ next steps: `/follow-config` สำหรับแก้ไข, `/check-configuration` สำหรับ validate
+4. แนะนำ next steps: `/follow-config` สำหรับแก้ไข, `/validate` สำหรับ validate
 
 ## Rules
 
@@ -130,7 +130,7 @@ related:
 
 - ไม่แก้ไข config หรือ env vars — รายงานเท่านั้น
 - ใช้ `/follow-config` สำหรับการจัดการ config
-- ใช้ `/check-configuration` สำหรับ validation
+- ใช้ `/validate` สำหรับ validation
 
 ### Security
 
@@ -154,7 +154,7 @@ related:
 ### Non-Redundancy
 
 - การจัดการ config อยู่ใน `/follow-config` แล้ว
-- การ validation อยู่ใน `/check-configuration` แล้ว
+- การ validation อยู่ใน `/validate` แล้ว
 
 ## Expected Outcome
 

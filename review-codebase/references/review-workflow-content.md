@@ -10,7 +10,6 @@ related:
   - improve-context-rot
   - follow-harness-engineering
   - suggest-next-action
-  - validate-workflow
 ---
 
 ## Goal
@@ -90,4 +89,4 @@ related:
 - ทุก bullet มี impact จริง
 - ไม่มี TODO/MOCK/placeholder
 - `parallel:` / `∥` ใช้ถูกต้อง
-- พร้อมไป `/validate-workflow`
+- พร้อมไป `/run-review`

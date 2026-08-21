@@ -24,8 +24,8 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
 2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
-4. ทำ `/scan-codebase` ∥ `/analyze-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
-5. ทำ `/check-duplication` และ `/check-circular-dependencies`
+4. ทำ `/scan-codebase` ∥ `/check-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
+5. ทำ `/improve-code-duplication` และ `/check-circular-dependencies`
 6. ถ้าเป็น monorepo → ทำ `/follow-monorepo`
 
 ### 2. Evaluate Refactor Necessity
@@ -85,8 +85,8 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 > Goal: ไม่มี regression, circular dependencies, หรือ broken references
 
 1. parallel: ทำ `/run-check` ∥ ทำ `/run-test` ∥ ทำ `/run-typecheck`
-2. ทำ `/check-circular-dependencies` และ `/check-duplication`
-3. ทำ `/analyze-code-structure` เพื่อเปรียบเทียบกับ baseline
+2. ทำ `/check-circular-dependencies` และ `/improve-code-duplication`
+3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
 5. ทำ `/update-reference` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
 

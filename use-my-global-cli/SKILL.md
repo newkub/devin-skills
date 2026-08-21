@@ -5,7 +5,6 @@ triggers:
   - user
   - model
 related:
-  - follow-my-global-cli
   - report-my-global-cli
   - idea-convert-my-global-cli-to-skills
 ---
@@ -24,7 +23,7 @@ related:
 
 1. ระบุ tool จาก user request หรือ context
 2. ตรวจสอบว่า tool ติดตั้งด้วย `which`, `where`, หรือ `Get-Command`
-3. ถ้าไม่มีให้ทำ `/follow-my-global-cli` หรือ `/install-*` ก่อน
+3. ถ้าไม่มีให้ทำ `/report-my-global-cli` หรือ `/install-*` ก่อน
 
 ### 2. Build Command
 

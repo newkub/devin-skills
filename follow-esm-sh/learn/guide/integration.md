@@ -53,11 +53,11 @@ export default defineConfig({
 </head>
 <body>
   <div id="root"></div>
-  
+
   <script>
     const { createRoot } = ReactDOM;
     const { useState } = React;
-    
+
     function Counter() {
       const [count, setCount] = useState(0);
       return React.createElement('div', null,
@@ -65,7 +65,7 @@ export default defineConfig({
         React.createElement('button', { onClick: () => setCount(c => c + 1) }, '+1')
       );
     }
-    
+
     createRoot(document.getElementById('root'))
       .render(React.createElement(Counter));
   </script>
@@ -83,7 +83,7 @@ export default defineConfig({
 </head>
 <body>
   <div id="root"></div>
-  
+
   <script type="text/babel">
     function App() {
       const [count, setCount] = useState(0);
@@ -92,7 +92,7 @@ export default defineConfig({
         <button onClick={() => setCount(c => c + 1)}>+1</button>
       </div>;
     }
-    
+
     createRoot(document.getElementById('root')).render(<App />);
   </script>
 </body>
@@ -106,7 +106,7 @@ export default defineConfig({
 ```html
 <script type="module">
   import { createApp } from 'https://esm.sh/vue@3';
-  
+
   const app = createApp({
     data() {
       return {
@@ -127,7 +127,7 @@ export default defineConfig({
       </div>
     `
   });
-  
+
   app.mount('#app');
 </script>
 ```
@@ -137,12 +137,12 @@ export default defineConfig({
 ```html
 <script type="module">
   import { createApp, ref, computed } from 'https://esm.sh/vue@3';
-  
+
   createApp({
     setup() {
       const count = ref(0);
       const doubled = computed(() => count.value * 2);
-      
+
       return { count, doubled };
     },
     template: `
@@ -165,12 +165,12 @@ export default defineConfig({
   import { h, render } from 'https://esm.sh/preact@10';
   import { useState } from 'https://esm.sh/preact/hooks';
   import htm from 'https://esm.sh/htm';
-  
+
   const html = htm.bind(h);
-  
+
   function App() {
     const [count, setCount] = useState(0);
-    
+
     return html`
       <div>
         <h1>Count: ${count}</h1>
@@ -178,7 +178,7 @@ export default defineConfig({
       </div>
     `;
   }
-  
+
   render(html`<${App} />`, document.getElementById('app'));
 </script>
 ```
@@ -189,10 +189,10 @@ export default defineConfig({
 <script type="module">
   import { createSignal } from 'https://esm.sh/solid-js';
   import { render } from 'https://esm.sh/solid-js/web';
-  
+
   function Counter() {
     const [count, setCount] = createSignal(0);
-    
+
     return (
       <div>
         <p>Count: {count()}</p>
@@ -200,7 +200,7 @@ export default defineConfig({
       </div>
     );
   }
-  
+
   render(() => <Counter />, document.getElementById('app'));
 </script>
 ```

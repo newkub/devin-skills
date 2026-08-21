@@ -96,16 +96,16 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/comment-todo` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
 
 ### 4. Scope Boundaries
 
-- ไม่ review code-level structure (symbols, exports, members) ที่ `/analyze-code-structure` ทำ
-- ไม่ review filesystem organization ที่ `/analyze-code-structure` ทำ
+- ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
+- ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
 - ไม่ review refactor opportunities ลึกที่ `/review-codebase` ทำ
 - focus ที่ system-level: patterns, boundaries, coupling, SOLID, scalability, design pattern correctness และ appropriateness
-- สำหรับ drill-down ระดับไฟล์ ทำ `/analyze-code-structure`
+- สำหรับ drill-down ระดับไฟล์ ทำ `/check-code-structure`
 
 ### 5. Health Score
 

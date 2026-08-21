@@ -8,4 +8,4 @@ description: Define and run the review script in package.json.
 3. /run-build
 4. /run-test
 5. run review ใน package.json
-6. /commit
+6. /git-commit

@@ -18,7 +18,6 @@ related:
   - scan-codebase
   - ask-me
   - validate
-  - validate-workflow
   - check-reference
   - follow-content-quality
   - update-reference
@@ -84,7 +83,7 @@ related:
 > Goal: skill พร้อมใช้งาน
 
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/validate-workflow` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำ `/review-devin-global-skills` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
 4. ทำ `/follow-content-quality` เพื่อตรวจสอบความชัดเจน
 5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
@@ -114,7 +113,7 @@ related:
 
 - skill ใหม่ถูกสร้างที่ `%APPDATA%\devin\skills\<skill-name>\` พร้อม `SKILL.md` ถูกต้อง
 - directory name ตรงกับ `name` ใน frontmatter
-- `SKILL.md` ผ่าน `/validate` และ `/validate-workflow` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- `SKILL.md` ผ่าน `/validate` และ `/review-devin-global-skills` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - `related` references ครบถ้วน ไม่มี missing/unused
 - directory structure ครบถ้วนตาม `/follow-write-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
 - ไม่ซ้ำกับ skills ที่มี่อยู่ หรือได้รับการยืนยันให้ extend หรือ rename

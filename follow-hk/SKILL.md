@@ -96,8 +96,8 @@ related:
 1. ลบ `lefthook.yml` และ `lefthook-local.yml` ออกจาก repo
 2. เอา `bunx lefthook install` ออกจาก `package.json` `prepare`
 3. เปลี่ยน `prepare` เป็น `mise x -- hk install`
-4. อัปเดต `.devin/rules/always-on/lefthook.md` เป็น `hk.md`
-5. ลบ ast-grep rule `rules/always-on/lefthook.yml` ถ้ามี
+4. อัปเดต `.devin/rules/always-on/follow-lefthook.md` เป็น `hk.md`
+5. ลบ ast-grep rule `rules/always-on/follow-lefthook.yml` ถ้ามี
 
 ## Rules
 

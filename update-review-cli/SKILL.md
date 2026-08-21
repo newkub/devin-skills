@@ -18,7 +18,6 @@ related:
   - check-should-update
   - report-deps
   - use-scripts
-  - add-task-in-package-manifest
   - follow-tasks
   - bun
 ---
@@ -113,7 +112,7 @@ related:
 
 > Goal: scripts ใน `package.json` ครบถ้วนและรันได้ก่อน validate
 
-1. ทำ `/add-task-in-package-manifest` สำหรับ script ที่จำเป็น:
+1. ทำ `/use-scripts` สำหรับ script ที่จำเป็น:
    - `review` → `bun run src/presentation/cli.ts` ใน `tools/review/package.json`
    - `review` → `bun --filter @booking/tools-review review` ใน root `package.json`
    - `review:json` → `bun --filter @booking/tools-review review:json` ใน root `package.json`

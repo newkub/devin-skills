@@ -12,7 +12,7 @@
 <head>
   <script type="module">
     import { createApp } from 'https://esm.sh/vue@3';
-    
+
     createApp({
       data() { return { count: 0 }; }
     }).mount('#app');

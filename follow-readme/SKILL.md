@@ -304,7 +304,7 @@ await executeWorkflow('analyze-project', {
 
 | Framework | Workflows |
 |-----------|-----------|
-| Vue | `/vue`, `/follow-nuxt`, `/vueuse` |
+| Vue | `/follow-vue`, `/follow-nuxt`, `/vueuse` |
 | React | `/react`, `/follow-next` |
 | Rust | `/follow-rust` |
 | Bun | `/follow-bun`, `/bun-native` |

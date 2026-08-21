@@ -3,9 +3,9 @@ name: refactor-to-srp
 description: Refactor code ให้เป็น SRP โดยวิเคราะห์ structure และอัปเดท references
 related:
   - all-workspaces
-  - analyze-code-structure
+  - check-code-structure
   - check-circular-dependencies
-  - check-duplication
+  - improve-code-duplication
   - check-long-files
   - dont-over-engineer
   - edit-relative
@@ -30,7 +30,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 - ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
 
-- ใช้กับ source code ใน project หรือ workspace ที่พบ SRP violations เช่น ไฟล์/ฟังก์ชัน/class ทำหลายหน้าที่ โดยใช้ `/analyze-code-structure` เพื่อหา issues และ `/edit-relative` เพื่ออัปเดท references หลังการเปลี่ยนแปลง
+- ใช้กับ source code ใน project หรือ workspace ที่พบ SRP violations เช่น ไฟล์/ฟังก์ชัน/class ทำหลายหน้าที่ โดยใช้ `/check-code-structure` เพื่อหา issues และ `/edit-relative` เพื่ออัปเดท references หลังการเปลี่ยนแปลง
 
 ## Execute
 
@@ -40,7 +40,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 > Goal: ระบุ SRP violations และสิ่งที่ต้องแก้ไข
 
-1. ทำ `/analyze-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
+1. ทำ `/check-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
 2. อ่าน `references/check-srp/SKILL.md` เพื่อระบุ SRP violations ด้วย ast-grep outline
 3. ระบุ units ที่ violate SRP จาก thresholds ใน `references/check-srp/SKILL.md`:
    - ไฟล์มี top-level symbols เกิน 5 อันที่ไม่เกี่ยวข้องกัน
@@ -92,10 +92,10 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 > Goal: code ผ่าน lint, typecheck, test และ structure ดีขึ้น
 
-1. ทำ `/analyze-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
+1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
 2. ทำ `/run-check` สำหรับ lint, typecheck, scan
 3. ทำ `/run-test` สำหรับ regression
-4. ทำ `/check-circular-dependencies` และ `/check-duplication`
+4. ทำ `/check-circular-dependencies` และ `/improve-code-duplication`
 5. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-4 (สูงสุด 3 ครั้ง → stop/report)
 
 ### 6. Report
@@ -130,7 +130,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 4. Verification
 
-- ต้องรัน `/analyze-code-structure` ก่อนและหลัง refactor
+- ต้องรัน `/check-code-structure` ก่อนและหลัง refactor
 - ต้องผ่าน `/run-check` และ `/run-test` ก่อนถือว่าเสร็จ
 
 ## Expected Outcome

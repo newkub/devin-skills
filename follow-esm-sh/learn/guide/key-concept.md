@@ -237,7 +237,7 @@ if (vue) {
 async function safeImport(url) {
   const maxRetries = 3;
   let lastError;
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await import(url);
@@ -246,7 +246,7 @@ async function safeImport(url) {
       await new Promise(r => setTimeout(r, 1000 * (i + 1)));
     }
   }
-  
+
   throw lastError;
 }
 ```

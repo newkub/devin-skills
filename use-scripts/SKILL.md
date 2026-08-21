@@ -19,12 +19,14 @@ description: สร้าง scripts สำหรับ automate งานด้
 
 > Goal: เลือก tool ที่เหมาะสมที่สุดกับ task
 
-1. ใช้ `/use-bun-shell` เมื่อ:
+1. ค่าเริ่มต้น: ใช้ `/use-bun-scripts` / `/use-bun-shell` เมื่อ:
+   - ต้องการ Bun native APIs สำหรับ automate งาน
+   - ใช้ JS/TS scripts เป็นค่าเริ่มต้น
    - ต้องการ JavaScript/TypeScript runtime
    - ทำงานกับ JSON, HTTP, async/await, npm packages
    - ต้องการ Bun native APIs เช่น `Bun.file`, `Bun.write`, `Bun.$`
    - ต้องการ cross-platform scripts ด้วย JS/TS
-2. ใช้ `/use-nushell` เมื่อ:
+2. ใช้ `/use-nu-shell` เมื่อ:
    - ต้องการ structured data pipelines
    - อ่าน/ประมวลผล JSON, CSV, TOML, YAML ด้วย built-in commands
    - ต้องการ cross-platform shell syntax ที่อ่านง่าย
@@ -82,7 +84,7 @@ description: สร้าง scripts สำหรับ automate งานด้
 ### 1. Script Type Selection
 
 - `/use-bun-shell` — JS/TS, JSON, HTTP, async, cross-platform
-- `/use-nushell` — structured data, pipelines, cross-platform shell
+- `/use-nu-shell` — structured data, pipelines, cross-platform shell
 - `/use-pwsh-shell` — Windows system admin, .NET, COM, WMI
 - `ast-grep` — AST-based code search/transformation
 

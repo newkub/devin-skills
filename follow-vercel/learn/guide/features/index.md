@@ -14,7 +14,7 @@
 - [Security Features](./security-features.md) - Password protection, headers, edge security
 - [Integrations](./integrations.md) - Database connectors, monitoring, CMS integration
 - [Team Features](./team-features.md) - Collaboration, git integration
-- [Comparison](./comparison.md) - Comparison with Netlify and AWS Amplify
+- [Comparison](..md) - Comparison with Netlify and AWS Amplify
 
 ## สรุป
 

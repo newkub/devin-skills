@@ -17,7 +17,6 @@ related:
   - follow-my-tech-stack
   - follow-best-practice
   - validate
-  - validate-workflow
   - check-reference
   - update-reference
 ---

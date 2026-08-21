@@ -7,7 +7,6 @@ related:
   - check-correctness
   - run-typecheck
   - follow-code-quality
-  - check-configuration
   - report-format-table
   - suggest-next-action
 ---
@@ -96,7 +95,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 ตรวจสอบ cross-references ทั้งหมด
 
-- ทำ `/check-configuration` เพื่อตรวจสอบ config files และ environment variables
+- ทำ `/validate` เพื่อตรวจสอบ config files และ environment variables
 - ตรวจสอบ references ระหว่าง modules ถูกต้อง
 - ตรวจสอบ API contracts ตรงกับ implementation
 - ตรวจสอบ documentation ตรงกับ code จริง

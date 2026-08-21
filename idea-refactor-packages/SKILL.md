@@ -8,8 +8,8 @@ related:
   - scan-codebase
   - analyze-project
   - deep-analyze
-  - analyze-code-structure
-  - check-duplication
+  - check-code-structure
+  - improve-code-duplication
   - check-circular-dependencies
   - follow-monorepo
   - follow-architecture

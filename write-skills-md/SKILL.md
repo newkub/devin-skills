@@ -5,7 +5,6 @@ related:
   - follow-write-devin-skills
   - follow-content-quality
   - validate
-  - validate-workflow
   - check-reference
   - update-reference
   - ask-me
@@ -82,7 +81,7 @@ related:
 > Goal: SKILL.md ผ่านเกณฑ์ทั้งหมด
 
 1. ทำ `/validate` ตรวจความถูกต้อง
-2. ทำ `/validate-workflow` ตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำ `/review-devin-global-skills` ตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-reference` ตรวจ `related` references
 4. ถ้ามีปัญหา → แก้และ revalidate (max 3 → stop/report)
 

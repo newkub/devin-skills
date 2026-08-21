@@ -4,7 +4,7 @@ description: ตรวจสอบและปรับปรุงคุณภ�
 triggers: ['user', 'model']
 allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
 related:
-  - analyze-code-structure
+  - check-code-structure
   - use-ast-grep-outline
   - review-codebase
   - refactor
@@ -30,7 +30,7 @@ related:
 
 > Goal: มีรายการ functions พร้อม signature และ body overview
 
-1. ทำ `/analyze-code-structure` เพื่อดู top-level functions, methods, members
+1. ทำ `/check-code-structure` เพื่อดู top-level functions, methods, members
 2. ทำ `/use-ast-grep-outline` ด้วย `--type function --view expanded` เพื่อดู parameters, return type, body structure
 3. กรองเฉพาะ source functions ไม่รวม test/spec/generated
 

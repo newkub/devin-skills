@@ -18,7 +18,7 @@
 
   <script type="module">
     import { createApp, ref } from 'https://esm.sh/vue@3';
-    
+
     createApp({
       setup() {
         const count = ref(0);
@@ -60,7 +60,7 @@
   <script type="module">
     import { createApp, ref } from 'vue';
     import { debounce } from 'lodash-es';
-    
+
     // Use lodash
     const debouncedFn = debounce(() => {
       console.log('Debounced!');
@@ -97,7 +97,7 @@
         </div>
       );
     }
-    
+
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
@@ -117,12 +117,12 @@
     import { h, render } from 'https://esm.sh/preact';
     import { useState } from 'https://esm.sh/preact/hooks';
     import htm from 'https://esm.sh/htm';
-    
+
     const html = htm.bind(h);
-    
+
     function Counter() {
       const [count, setCount] = useState(0);
-      
+
       return html`
         <div>
           <p>Count: ${count}</p>
@@ -132,7 +132,7 @@
         </div>
       `;
     }
-    
+
     render(html`<${Counter} />`, document.getElementById('app'));
   </script>
 </body>
@@ -158,7 +158,7 @@
 
   <script type="module">
     import { createApp, ref, computed } from 'https://esm.sh/vue@3';
-    
+
     createApp({
       setup() {
         const newItem = ref('');
@@ -166,7 +166,7 @@
           { id: 1, text: 'Learn esm.sh' }
         ]);
         let nextId = 2;
-        
+
         const add = () => {
           if (!newItem.value.trim()) return;
           items.value.push({
@@ -175,7 +175,7 @@
           });
           newItem.value = '';
         };
-        
+
         return { newItem, items, add };
       }
     }).mount('#app');
@@ -300,11 +300,11 @@ import { expect, test } from 'https://esm.sh/vitest@1';
 ```html
 <script type="module">
   import { ref } from 'https://esm.sh/vue@3';
-  
+
   // Simple test
   const count = ref(0);
   count.value++;
-  
+
   console.assert(count.value === 1, 'Should increment');
   console.log('Tests passed!');
 </script>

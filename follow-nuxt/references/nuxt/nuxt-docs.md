@@ -1,11 +1,11 @@
 # Nuxt: The Full-Stack Vue Framework
 
-# The Full-Stack  
+# The Full-Stack
 Vue Framework
 
 Build fast, production-ready web apps with Vue. File-based routing, auto-imports, and server-side rendering — all configured out of the box.
 
-[Get started](/docs/getting-started/installation) Nuxt in 100 seconds 
+[Get started](/docs/getting-started/installation) Nuxt in 100 seconds
 
 MinimalRoutingData FetchingAuto-ImportsAPI Routes
 
@@ -244,13 +244,13 @@ Powering startups to enterprises. 100% open source.
 
 6.2M
 
-Monthly downloads 
+Monthly downloads
 
 [](https://bun.chart.dev/nuxt)
 
 60.4K
 
-GitHub Stars 
+GitHub Stars
 
 [](https://go.nuxt.com/github)
 
@@ -570,7 +570,7 @@ Overall, server-side rendering can provide a faster and more efficient user expe
 
 As Nuxt is a versatile framework, it gives you the possibility to statically render your whole application to a static hosting with `nuxt generate`, disable SSR globally with the `ssr: false` option or leverage hybrid rendering by setting up the `routeRules` option.
 
-[](/docs/4.x/guide/concepts/rendering) Read more in Nuxt rendering modes. 
+[](/docs/4.x/guide/concepts/rendering) Read more in Nuxt rendering modes.
 
 ### [Server engine](#server-engine)
 
@@ -580,19 +580,19 @@ In development, it uses Rollup and Node.js workers for your server code and cont
 
 In production, Nitro builds your app and server into one universal `.output` directory. This output is light: minified and removed from any Node.js modules (except polyfills). You can deploy this output on any system supporting JavaScript, from Node.js, Serverless, Workers, Edge-side rendering or purely static.
 
-[](/docs/4.x/guide/concepts/server-engine) Read more in Nuxt server engine. 
+[](/docs/4.x/guide/concepts/server-engine) Read more in Nuxt server engine.
 
 ### [Production-ready](#production-ready)
 
 A Nuxt application can be deployed on a Node or Deno server, pre-rendered to be hosted in static environments, or deployed to serverless and edge providers.
 
-[](/docs/4.x/getting-started/deployment) Read more in Deployment section. 
+[](/docs/4.x/getting-started/deployment) Read more in Deployment section.
 
 ### [Modular](#modular)
 
 A module system allows you to extend Nuxt with custom features and integrations with third-party services.
 
-[](/docs/4.x/guide/concepts/modules) Read more in Nuxt Modules Concept. 
+[](/docs/4.x/guide/concepts/modules) Read more in Nuxt Modules Concept.
 
 ### [Architecture](#architecture)
 
@@ -606,7 +606,7 @@ Nuxt is composed of different [core packages](https://github.com/nuxt/nuxt/tree/
 
 We recommend reading each concept to have a full vision of Nuxt capabilities and the scope of each package.
 
-Was this helpful? 
+Was this helpful?
 
 🤩🙂☹️😰
 
@@ -620,7 +620,7 @@ MenuOn this page
 
 # Build faster with 313+ Nuxt Modules
 
-Discover our list of modules to supercharge your Nuxt project. Created and maintained by more than 2009 people from the Nuxt team and community. 
+Discover our list of modules to supercharge your Nuxt project. Created and maintained by more than 2009 people from the Nuxt team and community.
 
 /
 
@@ -632,7 +632,7 @@ Select categoryDownloads
 
 Shift+click to select modules for bulk installation
 
-[Create your own module](/docs/guide/modules/getting-started) 
+[Create your own module](/docs/guide/modules/getting-started)
 
 ![logto](https://raw.githubusercontent.com/nuxt/modules/main/icons/logto.svg)
 
@@ -1006,13 +1006,13 @@ A Nuxt Charts dashboard template built with Nuxt UI.
 
 [Demo](https://nuxt-dashboard-demo.nuxtcharts.com?via=nuxt)[Purchase](https://nuxtcharts.com/dashboard?via=nuxt)
 
-![Charts Dashboard shadcn/vue](https://ipx.nuxt.com/pos_top&f_webp&s_1348x758/assets/templates/nuxt-charts-dashboard-shadcn-vue.webp)
+![Charts Dashboard shadcn-vue](https://ipx.nuxt.com/pos_top&f_webp&s_1348x758/assets/templates/nuxt-charts-dashboard-shadcn-vue.webp)
 
-Charts Dashboard shadcn/vue
+Charts Dashboard shadcn-vue
 
 Premium
 
-A beautiful dashboard template built with shadcn/vue and Nuxt Charts.
+A beautiful dashboard template built with shadcn-vue and Nuxt Charts.
 
 [Demo](https://nuxt-shadcn-dashboard-demo.nuxtcharts.com/monitor?via=nuxt)[Purchase](https://nuxtcharts.com/templates/nuxt-shadcn-dashboard?via=nuxt)
 
@@ -1266,15 +1266,15 @@ Explore inspiring websites, apps, and digital experiences made by developers and
 
 ### #1
 
-Vue Framework 
+Vue Framework
 
 ### 60.4K
 
-GitHub Stars 
+GitHub Stars
 
 ### 6.2M
 
-Monthly Downloads 
+Monthly Downloads
 
 ## Chosen by leading companies worldwide
 
@@ -1296,241 +1296,241 @@ Monthly Downloads
 
 ![Louis Vuitton](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/louis-vuitton.webp)
 
-Louis Vuitton 
+Louis Vuitton
 
 [](https://eu.louisvuitton.com/)
 
 ![Trade Republic](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/trade-republic.webp)
 
-Trade Republic 
+Trade Republic
 
 [](https://traderepublic.com/)
 
 ![Armani](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/armani.webp)
 
-Armani 
+Armani
 
 [](https://www.armani.com/)
 
 ![NASA Jet Propulsion Laboratory](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/nasa-jet-propulsion-laboratory.webp)
 
-NASA Jet Propulsion Laboratory 
+NASA Jet Propulsion Laboratory
 
 [](https://jpl.nasa.gov/)
 
 ![Google Ventures](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/google-ventures.webp)
 
-Google Ventures 
+Google Ventures
 
 [](https://www.gv.com/)
 
 ![Microsoft Edge Developer](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/microsoft-edge-developer.webp)
 
-Microsoft Edge Developer 
+Microsoft Edge Developer
 
 [](https://developer.microsoft.com/en-us/microsoft-edge)
 
 ![Tiktok Ads](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/tiktok-ads.webp)
 
-Tiktok Ads 
+Tiktok Ads
 
 [](https://tiktok.com/business/en)
 
 ![Stack Overflow](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/stack-overflow.webp)
 
-Stack Overflow 
+Stack Overflow
 
 [](https://stackoverflow.co/)
 
 ![Upwork](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/upwork.webp)
 
-Upwork 
+Upwork
 
 [](https://upwork.com/)
 
 ![Mc Donalds France](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/mc-donalds-france.webp)
 
-Mc Donalds France 
+Mc Donalds France
 
 [](https://www.mcdonalds.fr/)
 
 ![Directus](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/directus.webp)
 
-Directus 
+Directus
 
 [](https://directus.io/)
 
 ![n8n](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/n8n.webp)
 
-n8n 
+n8n
 
 [](https://n8n.io/)
 
 ![Hostinger](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/hostinger.webp)
 
-Hostinger 
+Hostinger
 
 [](https://hostinger.com/)
 
 ![GitLab](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/git-lab.webp)
 
-GitLab 
+GitLab
 
 [](https://about.gitlab.com/)
 
 ![Caudalie](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/caudalie.webp)
 
-Caudalie 
+Caudalie
 
 [](https://us.caudalie.com/)
 
 ![Virgin Galactic](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/virgin-galactic.webp)
 
-Virgin Galactic 
+Virgin Galactic
 
 [](https://www.virgingalactic.com/)
 
 ![Delvaux](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/delvaux.webp)
 
-Delvaux 
+Delvaux
 
 [](https://eu.delvaux.com/)
 
 ![Immersive Garden](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/immersive-garden.webp)
 
-Immersive Garden 
+Immersive Garden
 
 [](https://immersive-g.com/)
 
 ![Icons8](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/icons8.webp)
 
-Icons8 
+Icons8
 
 [](https://icons8.com/)
 
 ![Harrods](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/harrods.webp)
 
-Harrods 
+Harrods
 
 [](https://www.harrods.com/)
 
 ![Le Collectionist](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/le-collectionist.webp)
 
-Le Collectionist 
+Le Collectionist
 
 [](https://www.lecollectionist.com/)
 
 ![Buy Me a Coffee](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/buy-mea-coffee.webp)
 
-Buy Me a Coffee 
+Buy Me a Coffee
 
 [](https://buymeacoffee.com/)
 
 ![Croix Rouge](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/croix-rouge.webp)
 
-Croix Rouge 
+Croix Rouge
 
 [](https://www.croix-rouge.fr/)
 
 ![Hostel World](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/hostel-world.webp)
 
-Hostel World 
+Hostel World
 
 [](https://www.hostelworld.com/)
 
 ![Too Good To Go](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/too-good-to-go.webp)
 
-Too Good To Go 
+Too Good To Go
 
 [](https://toogoodtogo.com/)
 
 ![Explore France](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/explore-france.webp)
 
-Explore France 
+Explore France
 
 [](https://www.france.fr/)
 
 ![CleanShot X](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/clean-shot-x.webp)
 
-CleanShot X 
+CleanShot X
 
 [](https://cleanshot.com/)
 
 ![12GO](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/12go.webp)
 
-12GO 
+12GO
 
 [](https://12go.com/)
 
 ![Paul Smith](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/paul-smith.webp)
 
-Paul Smith 
+Paul Smith
 
 [](https://www.paulsmith.com/fr)
 
 ![Roland Garros](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/roland-garros.webp)
 
-Roland Garros 
+Roland Garros
 
 [](https://www.rolandgarros.com/)
 
 ![Push Security](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/push-security.webp)
 
-Push Security 
+Push Security
 
 [](https://pushsecurity.com/)
 
 ![Toolstation](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/toolstation.webp)
 
-Toolstation 
+Toolstation
 
 [](https://www.toolstation.nl/)
 
 ![Vans](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/vans.webp)
 
-Vans 
+Vans
 
 [](https://www.vans.com/)
 
 ![The North Face](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/the-north-face.webp)
 
-The North Face 
+The North Face
 
 [](https://www.thenorthface.com/)
 
 ![Timberland](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/timberland.webp)
 
-Timberland 
+Timberland
 
 [](https://www.timberland.com/)
 
 ![On Running](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/on-running.webp)
 
-On Running 
+On Running
 
 [](https://www.on.com/)
 
 ![Promod](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/promod.webp)
 
-Promod 
+Promod
 
 [](https://www.promod.com/en/)
 
 ![Departamento](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/departamento.webp)
 
-Departamento 
+Departamento
 
 [](https://www.dpto.la/)
 
 ![Hai](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/hai.webp)
 
-Hai 
+Hai
 
 [](https://www.homeofhai.com/)
 
 ![Shaina Mote](https://ipx.nuxt.com/f_webp&s_1150x646/assets/websites/shaina-mote.webp)
 
-Shaina Mote 
+Shaina Mote
 
 [](https://www.shainamote.com/)
 
@@ -1744,7 +1744,7 @@ United Kingdom
 
 # The Nuxt Blog
 
-Read the latest news about all Nuxt solutions, from framework announcements to integration tutorials. [RSS](/blog/rss.xml) 
+Read the latest news about all Nuxt solutions, from framework announcements to integration tutorials. [RSS](/blog/rss.xml)
 
 Subscribe to our newsletter
 

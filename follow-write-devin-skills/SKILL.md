@@ -7,7 +7,6 @@ related:
   - prepare-skills-context
   - use-scripts
   - validate
-  - validate-workflow
   - check-circular-dependencies
   - update-reference
   - suggest-next-action
@@ -80,7 +79,7 @@ related:
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
 1. ทำตาม `/validate` เพื่อตรวจความถูกต้อง
-2. ทำตาม `/validate-workflow` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำตาม `/review-devin-global-skills` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
 4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 

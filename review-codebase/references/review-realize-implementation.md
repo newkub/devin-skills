@@ -100,7 +100,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/comment-todo` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - ถ้าต้อง implement ให้ใช้ `/implement-all` หลัง review
 
 ### 4. Health Score Formula

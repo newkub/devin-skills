@@ -95,7 +95,7 @@ Review codebase อย่างเป็นระบบ ระบุ issues พ�
 ### 2. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไขระหว่าง review
-- ใช้ `/comment-todo` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
 
 ### 3. Non-Redundancy

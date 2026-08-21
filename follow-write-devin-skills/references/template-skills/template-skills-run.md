@@ -27,7 +27,7 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 > Goal: รันได้แน่น ไม่เสียเวลา fail จากของขาด
 
 1. ตรวจสอบว่า target มีอยู่จริง (file, directory, package)
-2. ตรวจสอบ dependencies, ตรวจสอบ tools ที่จำเป็น, ทำ `/check-configuration`
+2. ตรวจสอบ dependencies, ตรวจสอบ tools ที่จำเป็น, ทำ `/run-check`
 3. ถ้าขาด prerequisites → stop และ report พร้อมวิธีติดตั้ง
 4. ทำ `/check-should-update` ถ้า target อาจเป็น stale
 
@@ -51,7 +51,7 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 
 1. ถ้ามี errors → ทำ `/resolve-errors`
 2. ถ้า error เป็น dependency issue → ทำ `/run-install` แล้ว retry (max 1 ครั้ง)
-3. ถ้า error เป็น config issue → ทำ `/check-configuration`
+3. ถ้า error เป็น config issue → ทำ `/follow-config`
 4. ถ้า error ซ้ำ 3 ครั้ง → stop และ report พร้อม error log
 
 ### 4. Report Results

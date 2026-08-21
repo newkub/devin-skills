@@ -168,7 +168,7 @@ const activeTab = ref('features')
 const filteredFeatures = computed(() => {
   if (!featureSearch.value) return features.value
   const query = featureSearch.value.toLowerCase()
-  return features.value.filter(f => 
+  return features.value.filter(f =>
     f.name.toLowerCase().includes(query) ||
     f.description.toLowerCase().includes(query) ||
     f.benefit.toLowerCase().includes(query)

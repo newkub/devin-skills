@@ -158,6 +158,15 @@ pre-push:
 - ใช้ `lefthook-local.yml` สำหรับ local overrides
 - ใช้ Bun scripts สำหรับ cross-platform compatibility
 
+## Guide
+
+เอกสารอ้างอิงเพิ่มเติม:
+
+- `references/lefthook.md` — Lefthook overview
+- `references/api.md`, `references/cli.md`, `references/configuration.md`, `references/website.md` — references
+- `learn/guide/` — installation, quick-start, key-concept, features, best-practices
+- `workflows/` — workflows เฉพาะทาง
+
 ## Expected Outcome
 
 - Lefthook ใช้งานผ่าน bunx สำเร็จ

@@ -119,7 +119,7 @@ related:
 
 ### 4. Prefix Formulas
 
-- `run-*` → output ไป OS temp directory, ใช้ `/check-configuration` ก่อน, มี error handling และ verification
+- `run-*` → output ไป OS temp directory, ใช้ `/use-scripts` ก่อน, มี error handling และ verification
 - `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
 - `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
 - `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers

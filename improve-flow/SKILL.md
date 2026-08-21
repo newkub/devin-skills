@@ -41,7 +41,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 2. ย้าย context/reference/requirement checks ไปต้นเพื่อ fail-fast
 3. ทำ `/follow-parallel` เพื่อรวม independent reads/scans/searches เป็น parallel batch
 4. ใช้ `parallel:` และ `∥` ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism` สำหรับ independent operations
-5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/refactor-workflow` เพื่อแยกเป็น sub-workflows
+5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/plan` เพื่อแยกเป็น sub-workflows
 6. ทำ `/follow-deterministic` เพื่อตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
 ### 4. Clarify Transitions

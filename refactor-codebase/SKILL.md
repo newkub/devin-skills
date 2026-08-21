@@ -31,7 +31,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 > Goal: เข้าใจ codebase ก่อน refactor
 
 1. ทำ `/review-codebase` สำหรับ deep review
-2. ทำ `/analyze-code-structure`, `/check-duplication`, `/check-long-files`
+2. ทำ `/check-code-structure`, `/improve-code-duplication`, `/check-long-files`
 3. บันทึก baseline: files, symbols, responsibilities
 
 ### 2. Create Plan If Large
@@ -65,7 +65,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 > Goal: code ผ่าน lint/typecheck/test
 
 1. ทำ `/run-check`, `/run-test`
-2. ทำ `/analyze-code-structure` เปรียบเทียบ baseline
+2. ทำ `/check-code-structure` เปรียบเทียบ baseline
 3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
 
 ### 6. Implement Plan
