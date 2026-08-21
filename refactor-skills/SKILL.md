@@ -20,7 +20,7 @@ related:
   - improve-redundancy
   - improve-skills
   - merge
-  - new-devin-skills-global
+  - create-devin-global-skills
   - read-related-skills
   - report
   - scan-codebase
@@ -35,7 +35,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ใช้สำหรับ refactor โครงสร้าง skill files ทั้งใน `%APPDATA%\devin\skills\`, `.devin/skills/`, และ `.windsurf/skills/`
 
-ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/new-devin-skills-global`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/improve-skills`)
+ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/improve-skills`)
 
 ## Execute
 
@@ -134,7 +134,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate
 - ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-skills`)
-- ไม่สร้าง skill ใหม่ (ใช้ `/new-devin-skills-global`)
+- ไม่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
 - รักษา skill intent เดิม
 
 ### 2. Non-Redundancy
