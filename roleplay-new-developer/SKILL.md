@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - suggest-next-action
+  - check-code-structure
+  - run-dev
+  - deep-thinking
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Read Code Context
+> Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อเข้าใจ project structure
 2. อ่าน README, AGENTS.md, docs, contributing guides
@@ -31,6 +40,7 @@ triggers:
 5. ถ้าไม่มี docs เลย ให้บันทึกเป็น finding ทันที
 
 ### 2. Identify New Developer Profile
+> Goal: Identify New Developer Profile
 
 1. ระบุ dev level (junior, mid, senior, staff)
 2. ระบุ tech stack familiarity (knows framework, new to framework, new to language)
@@ -39,6 +49,7 @@ triggers:
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Onboarding Journey
+> Goal: Simulate Onboarding Journey
 
 Goal reminder: คิดเหมือน dev ใหม่จริงที่งง ไม่ใช่ dev เดิมที่คุ้นเคย
 
@@ -49,6 +60,7 @@ Goal reminder: คิดเหมือน dev ใหม่จริงที่
 5. ประเมินเวลาที่ใช้ onboard โดยประมาณ
 
 ### 4. Analyze Every Onboarding Dimension
+> Goal: Analyze Every Onboarding Dimension
 
 Documentation and Context:
 
@@ -89,6 +101,7 @@ Domain Knowledge:
 23. Data model: เข้าใจ schema ไหม, มี ERD ไหม, มี data dictionary ไหม
 
 ### 5. Map Findings To Code
+> Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
 2. ระบุ severity: Critical, High, Medium, Low
@@ -97,6 +110,7 @@ Domain Knowledge:
 5. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate Onboarding Report
+> Goal: Generate Onboarding Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, New Dev Impact, Recommendation

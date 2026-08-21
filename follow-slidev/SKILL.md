@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Verify Root Setup
+> Goal: Verify Root Setup
 
 1. ตรวจสอบว่า `D:/newkub/slides/package.json` มีอยู่แล้ว
 2. ถ้าไม่มี ให้สร้าง `package.json` ที่ root พร้อม dependencies:
@@ -33,6 +36,7 @@ triggers:
 3. รัน `bun install` ที่ root
 
 ### 2. Create Slide Project
+> Goal: Create Slide Project
 
 1. สร้าง directory `D:/newkub/slides/{project-name}/`
 2. สร้าง `slides.md` พร้อม headmatter
@@ -40,18 +44,21 @@ triggers:
 4. ถ้าต้องการ สร้าง subdirectories: `components/`, `layouts/`, `public/`, `styles/`
 
 ### 3. Configure Slides
+> Goal: Configure Slides
 
 1. แก้ไข `slides.md` ตามเนื้อหาที่ต้องการ
 2. ตั้งค่า headmatter (theme, title, info, etc.)
 3. เขียน content ด้วย Markdown syntax ของ Slidev
 
 ### 4. Run Dev Server
+> Goal: Run Dev Server
 
 1. รัน `bunx slidev {project-name}/slides.md` ที่ root directory
 2. dev server จะรันที่ port 3030 (default)
 3. เปิด browser เพื่อดู slides แบบ real-time
 
 ### 5. Export Slides (Optional)
+> Goal: Export Slides (Optional)
 
 1. ใช้ `bunx slidev export {project-name}/slides.md` เพื่อ export เป็น PDF
 2. ใช้ `bunx slidev build {project-name}/slides.md --out dist/{project-name}` เพื่อ build เป็น static site

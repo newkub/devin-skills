@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - renovate
+  - follow-release-it
 ---
-
-## Goal
 
 ## Goal
 
@@ -20,15 +22,12 @@ triggers:
 
 ## Scope
 
-## Scope
-
 ตั้งค่า GitHub Actions สำหรับ projects และ repositories
 
 ## Execute
 
-## Execute
-
 ### 1. เลือก Workflows ที่เหมาะสม
+> Goal: เลือก Workflows ที่เหมาะสม
 
 เลือก workflows ตามความต้องการของ project:
 
@@ -43,12 +42,14 @@ triggers:
 - Git Ops: `commitlint.yml`, `dependency-review.yml`, `auto-merge.yml` - Team project ที่ต้องการ governance
 
 ### 2. Setup พื้นฐาน
+> Goal: Setup พื้นฐาน
 
 1. ทำ `/renovate` เพื่อตั้งค่า dependency updates
 2. ทำ `/follow-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
 3. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
 
 ### 3. เลือกเพิ่ม Workflows ตามความต้องการ
+> Goal: เลือกเพิ่ม Workflows ตามความต้องการ
 
 - Security: เพิ่ม `codeql.yml`, `dependabot.yml` สำหรับ production
 - Testing: เพิ่ม `coverage.yml`, `e2e.yml` สำหรับ quality assurance
@@ -61,8 +62,6 @@ triggers:
 
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
-
-## Expected Outcome
 
 ## Expected Outcome
 

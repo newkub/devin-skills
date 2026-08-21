@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - loop-until-complete
+  - improve-context-rot
+  - suggest-next-action
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Curate System Context
+> Goal: Curate System Context
 
 คัดเลือก context เริ่มต้นให้มี high-signal tokens น้อยที่สุดเท่าที่จำเป็น
 
@@ -33,6 +40,7 @@ triggers:
 5. คัดเลือกเฉพาะข้อมูลที่จำเป็นต่อ task ปัจจุบัน ไม่ใส่ข้อมูลที่ไม่เกี่ยวข้อง
 
 ### 2. Optimize Tool Usage
+> Goal: Optimize Tool Usage
 
 ใช้ tools อย่างมีประสิทธิภาพเพื่อลด context consumption
 
@@ -44,6 +52,7 @@ triggers:
 6. ใช้ `offset` และ `limit` เพื่ออ่านเฉพาะส่วนไฟล์ที่จำเป็น
 
 ### 3. Apply Compaction
+> Goal: Apply Compaction
 
 ใช้ compaction เมื่อ context ใกล้เต็ม เพื่อรักษา conversational flow
 
@@ -54,6 +63,7 @@ triggers:
 5. ทำ `/improve-context-rot` เมื่อตรวจพบสัญญาณ context degradation
 
 ### 4. Use Structured Note-Taking
+> Goal: Use Structured Note-Taking
 
 ใช้ agentic memory เพื่อ maintain progress นอก context window
 
@@ -64,6 +74,7 @@ triggers:
 5. อัปเดต notes ทุกครั้งหลังเสร็จ sub-task สำคัญ
 
 ### 5. Decompose With Sub-Agent Pattern
+> Goal: Decompose With Sub-Agent Pattern
 
 แบ่งงานใหญ่เป็น sub-tasks เพื่อจำกัด context ของแต่ละส่วน
 
@@ -74,6 +85,7 @@ triggers:
 5. ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
 
 ### 6. Manage Context Lifecycle
+> Goal: Manage Context Lifecycle
 
 จัดการ context ตลอด conversation lifecycle
 

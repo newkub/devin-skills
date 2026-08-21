@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - follow-architecture
+  - dont-over-engineer
+  - follow-root-cause-analysis
+  - deep-research
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Problem
+> Goal: Analyze Problem
 
 วิเคราะห์ปัญหาอย่างละเอียด
 
@@ -31,6 +39,7 @@ triggers:
 3. รวบรวม context และ constraints
 
 ### 2. Research Solutions
+> Goal: Research Solutions
 
 ค้นหาแนวทางแก้ไขที่เหมาะสม
 
@@ -39,6 +48,7 @@ triggers:
 3. ศึกษา solutions ที่ใช้ใน projects อื่น
 
 ### 3. Design Solution
+> Goal: Design Solution
 
 ออกแบบ solution ที่เหมาะสมกับ context
 
@@ -47,6 +57,7 @@ triggers:
 3. ตั้งค่า success criteria ชัดเจน
 
 ### 4. Write Solution Document
+> Goal: Write Solution Document
 
 เขียน solution document ตามมาตรฐาน
 
@@ -55,6 +66,7 @@ triggers:
 3. เพิ่ม examples และ edge cases
 
 ### 5. Validate And Refine
+> Goal: Validate And Refine
 
 ตรวจสอบและปรับปรุง solution
 

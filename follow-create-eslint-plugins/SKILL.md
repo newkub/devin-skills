@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,27 +24,29 @@ Use `follow-create-eslint-plugins` for the specific tasks and workflows it cover
 
 ## Execute
 
-## Execute
-
 ### 1. Setup
+> Goal: Setup
 
 1. สร้าง project directory สำหรับ plugin
 2. สร้าง `package.json` ด้วย npm package name เป็น `eslint-plugin-*`
 3. ติดตั้ง dependencies ที่จำเป็น
 
 ### 2. Create Plugin Entry
+> Goal: Create Plugin Entry
 
 1. สร้าง entry file ที่ export plugin object
 2. กำหนด properties: meta, configs, rules, processors
 3. Export สำหรับ ESM หรือ CommonJS
 
 ### 3. Create Custom Rules
+> Goal: Create Custom Rules
 
 1. สร้าง rule files ใน rules directory
 2. กำหนด rule structure ด้วย meta object
 3. Implement create function สำหรับ rule logic
 
 ### 4. Configure Rule Metadata
+> Goal: Configure Rule Metadata
 
 1. กำหนด type: problem, suggestion, หรือ layout
 2. เพิ่ม docs สำหรับ documentation
@@ -52,12 +54,11 @@ Use `follow-create-eslint-plugins` for the specific tasks and workflows it cover
 4. กำหนด schema ถ้า rule มี options
 
 ### 5. Test Plugin
+> Goal: Test Plugin
 
 1. สร้าง test files สำหรับ rules
 2. รัน tests ด้วย test runner
 3. ตรวจสอบว่า rules ทำงานถูกต้อง
-
-## Rules
 
 ## Rules
 
@@ -95,8 +96,6 @@ Use `follow-create-eslint-plugins` for the specific tasks and workflows it cover
 - ใช้ plugins key ใน flat config format
 - Import plugin และ assign namespace
 - ใช้ rule format `namespace/rule-name` ใน rules object
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -1,15 +1,23 @@
 ---
 name: learn-with-slide
-description: "เรียนรู้และสร้าง Slidev presentation สรุปความรู้ใน D:/newkub/slides/learn/"
+description: เรียนรู้และสร้าง Slidev presentation สรุปความรู้ใน D:/newkub/slides/learn/
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - open-web
+  - learn
+  - use-lang-th
+  - create-slide-in-newkub-slides
+  - follow-slidev
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Define Learning Target
+> Goal: Define Learning Target
 
 กำหนดเป้าหมายการเรียนรู้และชื่อ slide:
 
@@ -32,6 +41,7 @@ triggers:
 4. ระบุคำถามหลักที่ต้องการคำตอบ
 
 ### 2. Deep Research
+> Goal: Deep Research
 
 ทำ `/learn` เพื่อเรียนรู้และรวบรวมข้อมูล:
 
@@ -40,6 +50,7 @@ triggers:
 3. ระบุ key points ที่จะนำไปทำ slides
 
 ### 3. Create Slide Project
+> Goal: Create Slide Project
 
 ทำ `/create-slide-in-newkub-slides` สำหรับสร้าง Slidev project:
 
@@ -49,6 +60,7 @@ triggers:
 4. ทำ `/use-lang-th` — เนื้อหา slides เป็นภาษาไทย
 
 ### 4. Write Slide Content
+> Goal: Write Slide Content
 
 เขียน content จากข้อมูลที่เรียนรู้:
 
@@ -61,6 +73,7 @@ triggers:
 7. เพิ่ม `v-click` และ `v-motion` สำหรับ animations ตามต้องการ
 
 ### 5. Run And Open
+> Goal: Run And Open
 
 รัน dev server และเปิด browser:
 

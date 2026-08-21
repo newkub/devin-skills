@@ -7,6 +7,7 @@ allowed-tools:
   - edit
   - exec
   - webfetch
+  - ask_user_question
 triggers:
   - user
   - model
@@ -26,7 +27,6 @@ related:
 ## Execute
 
 ### 1. Install
-
 > Goal: มี pitchfork CLI พร้อมใช้
 
 1. แนะนำติดตั้งผ่าน mise: `mise use -g pitchfork` หรือ `mise use pitchfork`
@@ -35,7 +35,6 @@ related:
 4. ยืนยันด้วย `pitchfork --version`
 
 ### 2. Create Configuration
-
 > Goal: กำหนด daemons สำหรับ project
 
 1. สร้าง `pitchfork.toml` ใน root หรือ `.config/pitchfork.toml`
@@ -46,7 +45,6 @@ related:
 6. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit)
 
 ### 3. Manage Daemons
-
 > Goal: start/stop/monitor daemons
 
 1. `pitchfork start --all` หรือ `pitchfork start <name>`
@@ -58,7 +56,6 @@ related:
 7. `pitchfork tui` สำหรับ dashboard
 
 ### 4. Shell Hook
-
 > Goal: auto-start/stop เมื่อ enter/leave directory
 
 1. เพิ่ม `eval "$(pitchfork activate bash)"` ใน `.bashrc`
@@ -69,7 +66,6 @@ related:
 6. ใช้ `auto = ["start", "stop"]` สำหรับทั้งสอง
 
 ### 5. Lifecycle Hooks
-
 > Goal: react ต่อ events ของ daemon
 
 1. กำหนด `[daemons.<name>.hooks]` ด้วย `on_ready`, `on_fail`, `on_retry`, `on_stop`, `on_exit`, `on_output`

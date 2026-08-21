@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,12 +23,9 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install Tools
 
-ติดตั้ง tools สำหรับตรวจสอบ performance
-
+> Goal: ติดตั้ง tools สำหรับตรวจสอบ performance
 > Goal: เครื่องมือพร้อมใช้งาน
 
 1. รัน `bun add -D lighthouse` หรือ `npm install -D lighthouse`
@@ -39,12 +35,16 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 
 ### 2. Check Core Web Vitals
 
+> Goal: Check Core Web Vitals
+
 1. ตรวจสอบ LCP (Largest Contentful Paint) < 2.5s
 2. ตรวจสอบ INP (Interaction to Next Paint) < 200ms
 3. ตรวจสอบ CLS (Cumulative Layout Shift) < 0.1
 4. ใช้ Lighthouse หรือ PageSpeed Insights
 
 ### 3. Check Bundle Size
+
+> Goal: Check Bundle Size
 
 1. ตรวจสอบ JavaScript bundle size
 2. ตรวจสอบ CSS bundle size
@@ -53,12 +53,16 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 
 ### 4. Check Network
 
+> Goal: Check Network
+
 1. ตรวจสอบ render-blocking resources
 2. ตรวจสอบ number of requests
 3. ตรวจสอบ resource loading times
 4. ตรวจสอบ caching strategy
 
 ### 5. Check Runtime Performance
+
+> Goal: Check Runtime Performance
 
 1. ตรวจสอบ JavaScript execution time
 2. ตรวจสอบ memory usage
@@ -67,6 +71,8 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 
 ### 6. Check Loading Performance
 
+> Goal: Check Loading Performance
+
 1. ตรวจสอบ FCP (First Contentful Paint)
 2. ตรวจสอบ TTI (Time to Interactive)
 3. ตรวจสอบ speed index
@@ -74,12 +80,12 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 
 ### 7. Run Lighthouse
 
+> Goal: Run Lighthouse
+
 1. รัน Lighthouse audit
 2. ตรวจสอบ performance score
 3. ตรวจสอบ opportunities และ diagnostics
 4. แก้ไข issues ที่พบ
-
-## Rules
 
 ## Rules
 
@@ -103,8 +109,6 @@ Use `check-web-performance` for the specific tasks and workflows it covers
 - High: ทำให้ performance แย่มาก
 - Medium: ทำให้ performance แย่เล็กน้อย
 - Low: เป็น best practices
-
-## Expected Outcome
 
 ## Expected Outcome
 

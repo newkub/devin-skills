@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-scan
+  - run-test
+  - run-build
+  - follow-gitignore
+  - follow-tasks
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Setup Tasks
 
-ตั้งค่า scripts และ config ก่อนรัน verify
-
+> Goal: ตั้งค่า scripts และ config ก่อนรัน verify
 > Goal: มี verify script และ config พร้อมรัน
 
 1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐานใน package manifest
@@ -35,8 +41,7 @@ triggers:
 
 ### 2. Run Checks
 
-รัน scan, lint, typecheck และ test แบบ parallel เพื่อตรวจสอบคุณภาพโค้ด
-
+> Goal: รัน scan, lint, typecheck และ test แบบ parallel เพื่อตรวจสอบคุณภาพโค้ด
 > Goal: ไม่มี scan, lint, typecheck หรือ test errors
 
 1. `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-test`
@@ -45,8 +50,7 @@ triggers:
 
 ### 3. Fix Errors
 
-แก้ไขข้อผิดพลาดจนกว่าจะผ่านทั้งหมด
-
+> Goal: แก้ไขข้อผิดพลาดจนกว่าจะผ่านทั้งหมด
 > Goal: ไม่มี errors เหลือ
 
 1. ทำ `/resolve-errors` เพื่อแก้ไขข้อผิดพลาดทั้งหมดที่พบจาก Step 2
@@ -54,8 +58,7 @@ triggers:
 
 ### 4. Run Build
 
-รัน build เพื่อสร้าง production-ready artifacts
-
+> Goal: รัน build เพื่อสร้าง production-ready artifacts
 > Goal: Build สำเร็จไม่มี errors
 
 1. ทำ `/run-build` เพื่อสร้าง production-ready artifacts

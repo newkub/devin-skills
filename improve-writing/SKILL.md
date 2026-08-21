@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - scan-codebase
+  - improve-ux-writing
+  - suggest-next-action
+  - follow-content-quality
+  - update-changelog-md
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Audit Current Writing
 
-ตรวจสอบการเขียนที่มีอยู่ทั้งหมด
-
+> Goal: ตรวจสอบการเขียนที่มีอยู่ทั้งหมด
 > Goal: รู้ว่ามี writing issues อะไรบ้าง จัดลำดับตาม severity
 
 1. ทำ `/scan-codebase` เพื่อหาเอกสารทั้งหมด: README, docs, comments, changelogs, commit messages
@@ -35,8 +42,7 @@ triggers:
 
 ### 2. Improve Documentation
 
-ปรับปรุง documentation ให้ชัดเจนและอ่านง่าย
-
+> Goal: ปรับปรุง documentation ให้ชัดเจนและอ่านง่าย
 > Goal: documentation ชัดเจน กระชับ สื่อสารได้ตรงประเด็น
 
 1. ทำ `/update-readme` สำหรับ README — ใช้ `/follow-content-quality` เพื่อ review คุณภาพ
@@ -47,8 +53,7 @@ triggers:
 
 ### 3. Improve Code Comments
 
-ปรับปรุง code comments ให้มีคุณค่า
-
+> Goal: ปรับปรุง code comments ให้มีคุณค่า
 > Goal: comments สื่อความหมาย ไม่ใช่ noise
 
 1. ทำ `/improve-comment` สำหรับ comments ที่ขาดหายไปใน complex logic
@@ -59,8 +64,7 @@ triggers:
 
 ### 4. Improve Commit Messages And Changelogs
 
-ปรับปรุง commit messages และ changelogs ให้สื่อสารชัดเจน
-
+> Goal: ปรับปรุง commit messages และ changelogs ให้สื่อสารชัดเจน
 > Goal: commit messages และ changelogs บอก what และ why อ่านง่าย
 
 1. ตรวจสอบ commit messages: ใช้ conventional commits format, active voice, กระชับ, บอก why ไม่ใช่แค่ what
@@ -70,8 +74,7 @@ triggers:
 
 ### 5. Improve Writing Consistency
 
-ปรับปรุงความสม่ำเสมอของการเขียนทั่ว project
-
+> Goal: ปรับปรุงความสม่ำเสมอของการเขียนทั่ว project
 > Goal: terminology, voice, tone สม่ำเสมอทั่วทั้ง project
 
 1. สร้าง glossary: ระบุคำศัพท์ที่ใช้ทั่ว project และคำที่ควรหลีกเลี่ยง
@@ -82,8 +85,7 @@ triggers:
 
 ### 6. Validate And Report
 
-ตรวจสอบผลลัพธ์และรายงาน
-
+> Goal: ตรวจสอบผลลัพธ์และรายงาน
 > Goal: writing ดีขึ้น ผ่าน validation และมี report ชัดเจน
 
 1. ทำ `/follow-content-quality` เพื่อ review คุณภาพเนื้อหาหลังปรับปรุง

@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -25,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare Questions
+> Goal: Prepare Questions
 
 เตรียมคำถามสำหรับสัมภาษณ์
 
@@ -34,6 +38,7 @@ triggers:
 4. เตรียม `follow-up questions` สำหรับคำตอบที่น่าสนใจ
 
 ### 2. Conduct Interview
+> Goal: Conduct Interview
 
 ดำเนินการสัมภาษณ์ผู้ใช้โดยใช้ `ask_user_question` tool
 
@@ -43,6 +48,7 @@ triggers:
 4. วิเคราะห์คำตอบจาก `ask_user_question` response
 
 ### 3. Analyze Responses
+> Goal: Analyze Responses
 
 1. จัดกลุ่มคำตอบตาม patterns
 2. ระบุ contradictions หรือ inconsistencies
@@ -50,6 +56,7 @@ triggers:
 4. สรุป key insights ที่พบ
 
 ### 4. Save To Memory
+> Goal: Save To Memory
 
 บันทึกข้อมูลลงใน `memory system`
 
@@ -59,6 +66,7 @@ triggers:
 4. อัปเดท `existing memories` หากมีข้อมูลใหม่
 
 ### 5. Update Context
+> Goal: Update Context
 
 อัปเดท `context` ตามข้อมูลที่ได้
 

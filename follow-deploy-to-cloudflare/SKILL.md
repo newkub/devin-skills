@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,8 +18,6 @@ related:
   - follow-cloudflare-worker
   - run-build
   - watch-browser
-  - resolve-errors
-  - loop-until-complete
 ---
 
 ## Goal
@@ -31,6 +31,7 @@ Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangle
 ## Execute
 
 ### 1. Setup Nitro Config
+> Goal: Setup Nitro Config
 
 ตั้งค่า Nitro configuration สำหรับ Cloudflare Workers
 
@@ -41,6 +42,7 @@ Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangle
 5. ตั้งค่า `compatibilityDate: "2024-09-19"` ใน `nitro.config.ts`
 
 ### 2. Build Application
+> Goal: Build Application
 
 Build application สำหรับ deployment
 
@@ -50,6 +52,7 @@ Build application สำหรับ deployment
 4. ตรวจสอบว่า `wrangler.json` ถูก generate ใน `.output/server` (ถ้าใช้ deployConfig)
 
 ### 3. Deploy To Cloudflare Workers
+> Goal: Deploy To Cloudflare Workers
 
 Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 
@@ -59,6 +62,7 @@ Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 4. รับ deployment URL จาก output
 
 ### 4. Watch Deployment
+> Goal: Watch Deployment
 
 Watch deployment ด้วย browser preview
 
@@ -68,6 +72,7 @@ Watch deployment ด้วย browser preview
 4. ตรวจสอบ network errors
 
 ### 5. Fix Errors
+> Goal: Fix Errors
 
 แก้ไข errors ที่พบ
 
@@ -77,6 +82,7 @@ Watch deployment ด้วย browser preview
 4. Deploy ใหม่และตรวจสอบอีกครั้ง
 
 ### 6. Loop Until Live
+> Goal: Loop Until Live
 
 ทำซ้ำจนกว่า deployment live สำเร็จ
 

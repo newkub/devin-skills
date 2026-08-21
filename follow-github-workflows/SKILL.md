@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-github-actions
+  - analyze-project
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Project
+> Goal: Analyze Project
 
 วิเคราะหาโปรเจกต์เพื่อเข้าใจความต้องการ
 
@@ -32,6 +37,7 @@ triggers:
 4. ระบุ deployment targets
 
 ### 2. Analyze Existing Workflows
+> Goal: Analyze Existing Workflows
 
 วิเคราะหา GitHub workflows ที่มีอยู่แล้ว
 
@@ -41,6 +47,7 @@ triggers:
 4. ระบุ workflows ที่ซ้ำซ้อนหรือไม่มีประสิทธิภาพ
 
 ### 3. Plan Workflows
+> Goal: Plan Workflows
 
 วางแผน GitHub workflows ที่ควรมี
 
@@ -50,6 +57,7 @@ triggers:
 4. ระบุ workflows สำหรับ security (vulnerability scan, code review)
 
 ### 4. Write Workflows
+> Goal: Write Workflows
 
 เขียน GitHub workflows ตาม best practices
 
@@ -59,6 +67,7 @@ triggers:
 4. ตั้งค่า permissions และ secrets อย่างปลอดภัย
 
 ### 5. Validate And Test
+> Goal: Validate And Test
 
 ตรวจสอบและทดสอบ workflows
 

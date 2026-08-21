@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,11 +18,6 @@ related:
   - edit-only
   - follow-content-quality
   - improve-skills
-  - report
-  - scan-codebase
-  - update-reference
-  - use-scripts
-  - validate
 ---
 
 ## Goal
@@ -37,8 +34,7 @@ related:
 
 ### 1. Inventory And Baseline
 
-รวบรวม skill files และบันทึก baseline
-
+> Goal: รวบรวม skill files และบันทึก baseline
 > Goal: รู้ scope ของการตรวจสอบและ patterns ที่มีอยู่
 
 1. ทำตาม `/scan-codebase` รวบรวม skill files ทั้งหมด
@@ -47,8 +43,7 @@ related:
 
 ### 2. Check Structure Consistency
 
-ตรวจสอบโครงสร้าง skill files
-
+> Goal: ตรวจสอบโครงสร้าง skill files
 > Goal: ทุก skill มีโครงสร้างเดียวกัน
 
 1. ตรวจสอบลำดับ sections (`## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`)
@@ -58,8 +53,7 @@ related:
 
 ### 3. Check Language And Terminology
 
-ตรวจสอบภาษาและคำศัพท์
-
+> Goal: ตรวจสอบภาษาและคำศัพท์
 > Goal: ภาษาและ terminology สม่ำเสมอข้าม skill
 
 1. ตรวจสอบคำศัพท์สำคัญ (เช่น `skill`, `workflow`, `Execute`, `Rules`) ใช้สม่ำเสมอ
@@ -69,8 +63,7 @@ related:
 
 ### 4. Check Formatting And Style
 
-ตรวจสอบรูปแบบและ style
-
+> Goal: ตรวจสอบรูปแบบและ style
 > Goal: รูปแบบ skill files สม่ำเสมอ
 
 1. ตรวจสอบ spacing, indentation, การเว้นบรรทัด
@@ -80,8 +73,7 @@ related:
 
 ### 5. Apply Fixes
 
-แก้ไข inconsistency ตามลำดับ priority
-
+> Goal: แก้ไข inconsistency ตามลำดับ priority
 > Goal: ทุก skill สอดคล้องกันโดยไม่ทำลาย context
 
 1. แก้ไข Critical inconsistencies ก่อน (frontmatter, broken `related`, section order)
@@ -91,8 +83,7 @@ related:
 
 ### 6. Validate
 
-ตรวจสอบผลลัพธ์
-
+> Goal: ตรวจสอบผลลัพธ์
 > Goal: ไม่มี inconsistency เหลือและไม่มี broken references
 
 1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate`

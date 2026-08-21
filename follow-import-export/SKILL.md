@@ -7,11 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
 related:
   - refactor-codebase
+  - rename
+  - check-circular-dependencies
+  - run-check
+  - use-scripts
 ---
 
 ## Goal
@@ -29,8 +35,7 @@ related:
 
 ### 1. Analyze Module Structure And Import Landscape
 
-วิเคราะห์โครงสร้าง module และ import patterns ที่มีอยู่
-
+> Goal: วิเคราะห์โครงสร้าง module และ import patterns ที่มีอยู่
 > Goal: เข้าใจโครงสร้าง module, import patterns ปัจจุบัน และปัญหา
 
 1. อ่าน configuration files หลัก (`package.json`, `tsconfig.json`, `vite.config.ts`, `biome.jsonc`)
@@ -42,8 +47,7 @@ related:
 
 ### 2. Configure Import Aliases
 
-ตั้งค่า import aliases ใน configuration files
-
+> Goal: ตั้งค่า import aliases ใน configuration files
 > Goal: Import aliases สอดคล้องกันทุก config
 
 1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-typescript`)
@@ -55,8 +59,7 @@ related:
 
 ### 3. Create Or Update Barrel File
 
-สร้างหรืออัปเดต barrel export file และเลือก export strategy
-
+> Goal: สร้างหรืออัปเดต barrel export file และเลือก export strategy
 > Goal: Barrel file รวบรวม public API ชัดเจน ซ่อน internal symbols
 
 1. สร้าง `index.ts` ที่ root ของ module (ถ้ายังไม่มี)
@@ -69,8 +72,7 @@ related:
 
 ### 4. Replace Relative Imports And Enforce Ordering
 
-แทนที่ relative paths ที่ซับซ้อนด้วย import aliases และจัดเรียง imports ให้สม่ำเสมอ
-
+> Goal: แทนที่ relative paths ที่ซับซ้อนด้วย import aliases และจัดเรียง imports ให้สม่ำเสมอ
 > Goal: Import paths สั้น อ่านง่าย สม่ำเสมอ ใช้ barrel exports
 
 1. ค้นหา relative imports ที่ซับซ้อน (`../../../`)
@@ -85,8 +87,7 @@ related:
 
 ### 5. Detect Circular Dependencies
 
-ตรวจจับและแก้ไข circular dependencies
-
+> Goal: ตรวจจับและแก้ไข circular dependencies
 > Goal: ไม่มี circular dependencies
 
 1. ทำ `/check-circular-dependencies` เพื่อตรวจจับและแก้ไข circular dependencies
@@ -95,8 +96,7 @@ related:
 
 ### 6. Verify And Optimize
 
-ตรวจสอบว่า import และ export strategy ทำงานได้ถูกต้องและมีประสิทธิภาพ
-
+> Goal: ตรวจสอบว่า import และ export strategy ทำงานได้ถูกต้องและมีประสิทธิภาพ
 > Goal: Import และ export strategy ทำงานได้ ไม่มี errors และไม่มี waste
 
 1. รัน `/run-typecheck` เพื่อตรวจสอบ type safety

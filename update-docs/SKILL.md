@@ -9,6 +9,7 @@ allowed-tools:
   - glob
   - find_file_by_name
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -18,8 +19,6 @@ related:
   - follow-content-quality
   - check-should-update
   - check-monorepo
-  - follow-vitepress
-  - report-table
 ---
 
 ## Goal
@@ -34,8 +33,7 @@ Cover comprehensive documentation writing including features, examples, API docs
 
 ### 1. Check Should Update, Project Type, And Distribution Type
 
-ตรวจ git changes, project type, และ distribution type เพื่อกำหนด documentation strategy
-
+> Goal: ตรวจ git changes, project type, และ distribution type เพื่อกำหนด documentation strategy
 > Goal: ยืนยันว่า docs ต้องอัปเดท, ระบุ monorepo/single, และ open-source/product
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ว่า docs ต้องอัปเดทหรือไม่ — ถ้าไม่ต้องอัปเดท → stop
@@ -51,8 +49,7 @@ Cover comprehensive documentation writing including features, examples, API docs
 
 ### 2. Update Documentation For Single Project
 
-For non-monorepo projects:
-
+> Goal: For non-monorepo projects
 > Goal: สร้าง documentation สำหรับ single project ตาม template และ distribution type
 
 1. `/deep-review`, `/analyze-project` เพื่อ analyze project
@@ -68,8 +65,7 @@ For non-monorepo projects:
 
 ### 3. Update Documentation For Monorepo
 
-For monorepos with many workspaces:
-
+> Goal: For monorepos with many workspaces
 > Goal: สร้าง documentation สำหรับ monorepo ที่รวมทุก workspaces ใน docs/ เดียว
 
 1. `/deep-review`, `/analyze-project` เพื่อ analyze entire project
@@ -89,8 +85,7 @@ For monorepos with many workspaces:
 
 ### 4. Setup Project Docs Site
 
-ตั้งค่า docs site โดยทำตาม `/follow-project-docs` ซึ่งรวม VitePress setup, Vue components, และ Bun shell data scripts
-
+> Goal: ตั้งค่า docs site โดยทำตาม `/follow-project-docs` ซึ่งรวม VitePress setup, Vue components, และ Bun shell data scripts
 > Goal: ตั้งค่า VitePress site พร้อม Vue components, Bun shell scripts, และ nav/sidebar ที่ถูกต้อง
 
 1. ทำ `/follow-project-docs` เพื่อ setup docs site ทั้งหมด (VitePress + Vue components + Bun shell)
@@ -114,8 +109,7 @@ For monorepos with many workspaces:
 
 ### 6. Document Workflow Reports
 
-เอกสารต้องอธิบาย report output ของ workflows ที่ใช้ใน project
-
+> Goal: เอกสารต้องอธิบาย report output ของ workflows ที่ใช้ใน project
 > Goal: บันทึก report output format ของ analyze-* และ review-* workflows
 
 1. ตรวจสอบว่า `analyze-*` workflows มี report step (เช่น `/report-table`) และบันทึกใน docs ว่าผลลัพธ์อยู่ในรูปแบบใด
@@ -124,8 +118,7 @@ For monorepos with many workspaces:
 
 ### 7. Update References
 
-เมื่อแก้ไขไฟล์ ให้อัปเดท references ทั้งหมด
-
+> Goal: เมื่อแก้ไขไฟล์ ให้อัปเดท references ทั้งหมด
 > Goal: อัปเดท references ทั้งหมดเพื่อป้องกัน broken links
 
 1. `/update-reference` เพื่ออัปเดท references ใน project, workflows, skills และไฟล์ที่เกี่ยวข้อง
@@ -133,8 +126,7 @@ For monorepos with many workspaces:
 
 ### 8. Build Development Sidebar
 
-สร้าง sidebar สำหรับ developers ทั้ง open-source และ product
-
+> Goal: สร้าง sidebar สำหรับ developers ทั้ง open-source และ product
 > Goal: มี development guide ที่ครอบคลุมสำหรับทั้งสอง distribution type
 
 1. สร้าง directory `docs/development/`
@@ -150,8 +142,7 @@ For monorepos with many workspaces:
 
 ### 9. Build References Section
 
-สร้าง references ตาม distribution type
-
+> Goal: สร้าง references ตาม distribution type
 > Goal: มี references สำหรับ product และ open-source แยกกัน
 
 1. สร้าง `docs/references/` (หรือ `docs/project/references/`)

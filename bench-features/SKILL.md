@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - idea-features
+  - deep-plan
+  - deep-research
+  - ship
+  - review-codebase
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 0. Report Current State
 
-รายงานสถานะปัจจุบันก่อนเริ่ม benchmark features
-
+> Goal: รายงานสถานะปัจจุบันก่อนเริ่ม benchmark features
 > Goal: ผู้ใช้ทราบสถานะปัจจุบันและสิ่งที่จะเปรียบเทียบก่อนเริ่มงาน
 
 1. ระบุ competitors ที่จะ benchmark และ scope ของการเปรียบเทียบ
@@ -33,8 +39,7 @@ triggers:
 
 ### 1. Research Competitor Features
 
-เก็บข้อมูล features ของคู่แข่ง
-
+> Goal: เก็บข้อมูล features ของคู่แข่ง
 > Goal: รู้ feature set ของ competitor แต่ละราย
 
 1. ทำ `/deep-research` เพื่อหาข้อมูล features ของคู่แข่ง
@@ -44,8 +49,7 @@ triggers:
 
 ### 2. Compare Features (ตอบในแชท — ภาษาไทย)
 
-สร้างตารางเปรียบเทียบ features และไอเดียเพิ่มเติม ตอบในแชทเหมือน `/idea-features`
-
+> Goal: สร้างตารางเปรียบเทียบ features และไอเดียเพิ่มเติม ตอบในแชทเหมือน `/idea-features`
 > Goal: เห็น gaps ในมิติ features ชัดเจน และตอบกระชับในแชท
 
 1. ทำ `/compare-and-idea-features` เพื่อสร้าง feature ideas จาก gaps
@@ -55,8 +59,7 @@ triggers:
 
 ### 3. Build Feature Roadmap
 
-จัดลำดับ features ที่ต้องปรับปรุง/เพิ่ม
-
+> Goal: จัดลำดับ features ที่ต้องปรับปรุง/เพิ่ม
 > Goal: ได้ roadmap ที่ actionable
 
 1. รวม gaps จากตารางเปรียบเทียบ
@@ -66,8 +69,7 @@ triggers:
 
 ### 4. Implement Feature Improvements
 
-ทำให้ features ดีกว่าคู่แข่ง
-
+> Goal: ทำให้ features ดีกว่าคู่แข่ง
 > Goal: ปิด gap และสร้าง differentiation
 
 1. ทำ `/ship` เพื่อ implement features ตาม roadmap
@@ -76,8 +78,7 @@ triggers:
 
 ### 5. Update Feature Comparison (ตอบในแชท — ภาษาไทย)
 
-อัปเดตรายงานหลัง implement ตอบในแชท
-
+> Goal: อัปเดตรายงานหลัง implement ตอบในแชท
 > Goal: รายงาน reflect สถานะล่าสุดในแชท
 
 1. ตอบตารางเปรียบเทียบที่อัปเดตแล้วในแชท

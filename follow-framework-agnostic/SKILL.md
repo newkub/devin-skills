@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - validate
+  - follow-typescript
 ---
 
 ## Goal
@@ -31,8 +35,7 @@ triggers:
 
 ### 1. Design Core API
 
-กำหนด interfaces และ adapters ที่ framework-agnostic
-
+> Goal: กำหนด interfaces และ adapters ที่ framework-agnostic
 > Goal: มี public API ที framework ใดก็ใช้ได้
 
 1. กำหนด interfaces หลักโดยไม่อ้างอิง framework-specific types
@@ -42,8 +45,7 @@ triggers:
 
 ### 2. Implement Core
 
-สร้าง framework-agnostic business logic
-
+> Goal: สร้าง framework-agnostic business logic
 > Goal: core logic ทำงานได้โดยไม่ต้องมี framework
 
 1. สร้าง `src/core/` directory
@@ -53,8 +55,7 @@ triggers:
 
 ### 3. Create Adapters
 
-สร้าง adapters สำหรับแต่ละ framework
-
+> Goal: สร้าง adapters สำหรับแต่ละ framework
 > Goal: ทุก framework ใช้ core ได้ผ่าน adapter
 
 1. สร้าง `src/react/` directory และ hooks ที่ wrap core logic
@@ -64,8 +65,7 @@ triggers:
 
 ### 4. Test
 
-ทดสอบ core และ adapters
-
+> Goal: ทดสอบ core และ adapters
 > Goal: behavior consistent และ type-safe ข้าม frameworks
 
 1. เขียน unit tests สำหรับ core ด้วย vanilla test framework

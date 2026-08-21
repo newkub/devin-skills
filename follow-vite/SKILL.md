@@ -30,8 +30,7 @@ related:
 
 ### 1. Installation
 
-ติดตั้ง Vite และตรวจสอบ environment
-
+> Goal: ติดตั้ง Vite และตรวจสอบ environment
 > Goal: มา Vite 7+ environment ทีพร้อมใช้งาน
 
 1. ติดตั้ง Vite ด้วย `bun add -D vite`
@@ -40,8 +39,7 @@ related:
 
 ### 2. Configuration
 
-สร้างและกำหนด `vite.config.ts`
-
+> Goal: สร้างและกำหนด `vite.config.ts`
 > Goal: config รองรับ dev, build, และ frameworks ทีใช้
 
 1. สร้าง `vite.config.ts` ด้วย `defineConfig` สำหรับ IntelliSense
@@ -55,8 +53,7 @@ related:
 
 ### 3. Development
 
-ตั้งค่า dev server และ development workflow
-
+> Goal: ตั้งค่า dev server และ development workflow
 > Goal: dev server เร็วและ stable พร้อม HMR
 
 1. รัน dev server ด้วย `bunx vite` หรือ `bun run dev`
@@ -70,8 +67,7 @@ related:
 
 ### 4. Build
 
-Build สำหรับ production
-
+> Goal: Build สำหรับ production
 > Goal: production build optimized ตาม target และ performance
 
 1. รัน build ด้วย `bunx vite build`
@@ -87,8 +83,7 @@ Build สำหรับ production
 
 ### 5. Performance Optimization
 
-ปรับแต่ง performance
-
+> Goal: ปรับแต่ง performance
 > Goal: ลด resolve/transform time และ bundle size
 
 1. ทำ plugin selection, audit, และประเมิน performance impact
@@ -102,8 +97,7 @@ Build สำหรับ production
 
 ### 6. Monorepo Setup
 
-ตั้งค่า Vite สำหรับ monorepo
-
+> Goal: ตั้งค่า Vite สำหรับ monorepo
 > Goal: linked packages และ workspace aliases ทำงานถูกต้อง
 
 1. Vite ตรวจจับ linked packages อัตโนมัติและ treat เป็น source code
@@ -114,8 +108,7 @@ Build สำหรับ production
 
 ### 7. SSR Considerations
 
-ตั้งค่า SSR ถ้าต้องการ
-
+> Goal: ตั้งค่า SSR ถ้าต้องการ
 > Goal: SSR build และ runtime ทำงานถูกต้อง
 
 1. ใช้ `import.meta.env.SSR` สำหรับ conditional logic
@@ -126,8 +119,7 @@ Build สำหรับ production
 
 ### 8. Testing Setup
 
-ตั้งค่า Vitest สำหรับ testing
-
+> Goal: ตั้งค่า Vitest สำหรับ testing
 > Goal: test setup integrate กับ Vite config
 
 1. ใช้ Vitest สำหรับ unit/integration testing (ทำ `/follow-vitest`)
@@ -137,8 +129,7 @@ Build สำหรับ production
 
 ### 9. Deployment
 
-เตรียมสำหรับ deploy
-
+> Goal: เตรียมสำหรับ deploy
 > Goal: deployment ready พร้อม caching และ error handling
 
 1. ตั้งค่า `base` สำหรับ public base path

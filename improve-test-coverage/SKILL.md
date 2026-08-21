@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-test-coverage
+  - run-test
+  - suggest-next-action
+  - run-check
+  - refactor
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Analyze Coverage Gaps
 
-วิเคราะห์ test coverage gaps ใน codebase
-
+> Goal: วิเคราะห์ test coverage gaps ใน codebase
 > Goal: รู้ว่ามี untested paths อะไรบ้าง จัดลำดับตาม severity
 
 1. ทำ `/scan-codebase`, ทำ `/review-codebase`, ทำ `/run-test-coverage` — ระบุ untested files, functions, branches
@@ -38,8 +45,7 @@ triggers:
 
 ### 2. Write Missing Critical Path Tests
 
-เขียน tests สำหรับ critical paths ที่ไม่มี test
-
+> Goal: เขียน tests สำหรับ critical paths ที่ไม่มี test
 > Goal: ทุก critical path มี test ครอบคลุม
 
 1. เขียน unit tests สำหรับ business logic ที่ขาด — ใช้ `/write-test`
@@ -50,8 +56,7 @@ triggers:
 
 ### 3. Write Missing Error Path Tests
 
-เขียน tests สำหรับ error paths และ failure scenarios
-
+> Goal: เขียน tests สำหรับ error paths และ failure scenarios
 > Goal: ทุก error path มี test ครอบคลุม
 
 1. เขียน tests สำหรับ error handling: try/catch, error boundaries, fallback behavior
@@ -61,8 +66,7 @@ triggers:
 
 ### 4. Write Missing Edge Case Tests
 
-เขียน tests สำหรับ edge cases และ boundary conditions
-
+> Goal: เขียน tests สำหรับ edge cases และ boundary conditions
 > Goal: ทุก edge case มี test ครอบคลุม
 
 1. เขียน tests สำหรับ boundary conditions: empty array, single item, max capacity
@@ -73,8 +77,7 @@ triggers:
 
 ### 5. Validate And Report
 
-ตรวจสอบผลลัพธ์และรายงาน
-
+> Goal: ตรวจสอบผลลัพธ์และรายงาน
 > Goal: Test coverage ดีขึ้น ผ่าน validation และมี report ชัดเจน
 
 1. รัน `bun run test:coverage`, ทำ `/run-test`, ทำ `/run-check`

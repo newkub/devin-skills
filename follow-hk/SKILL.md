@@ -9,6 +9,7 @@ allowed-tools:
   - grep
   - glob
   - webfetch
+  - ask_user_question
 triggers:
   - user
   - model
@@ -30,7 +31,6 @@ related:
 ## Execute
 
 ### 1. Install hk
-
 > Goal: มี hk CLI พร้อมใช้
 
 1. แนะนำติดตั้งผ่าน mise: `mise use -g hk` หรือ `mise use hk` ใน project
@@ -39,7 +39,6 @@ related:
 4. ยืนยันด้วย `hk --version`
 
 ### 2. Install Git Hooks
-
 > Goal: git เรียก hk อัตโนมัติ
 
 1. แนะนำ per-repo install: `hk install` หรือ `mise x -- hk install`
@@ -48,7 +47,6 @@ related:
 4. ถ้าใช้ mise ตั้ง `HK_MISE=1` ใน `mise.toml` หรือ `mise = true` ใน `hk.pkl`
 
 ### 3. Create mise.toml
-
 > Goal: จัดการ tools ที hk ใช้
 
 1. รัน `mise use bun gitleaks hk` เพื่อเพิ่ม tools ใน project
@@ -57,7 +55,6 @@ related:
 4. ไม่ commit secrets หรือ user-specific paths
 
 ### 4. Create hk.pkl
-
 > Goal: ตั้งค่า hooks สำหรับ project
 
 1. รัน `hk init` เพื่อสร้าง `hk.pkl` ต้นแบบ
@@ -67,7 +64,6 @@ related:
 5. ใช้ `hk.local.pkl` สำหรับ local overrides โดยไม่ commit
 
 ### 5. Configure Steps
-
 > Goal: กำหนด linters/tests ให้ hk รัน
 
 1. ใช้ `Builtins.<name>` สำหรับเครื่องมือที่รองรับ เช่น `Builtins.gitleaks`
@@ -79,7 +75,6 @@ related:
 7. ใช้ `batch = true` สำหรับเครื่องมือที่รองรับ batch
 
 ### 6. Run and Validate
-
 > Goal: ตรวจสอบว่า hooks ทำงาน
 
 1. รัน `hk run pre-commit` เพื่อทดสอบ
@@ -90,7 +85,6 @@ related:
 6. ทำ `/run-check` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
 
 ### 7. Migrate from Lefthook
-
 > Goal: ย้ายจาก lefthook มา hk
 
 1. ลบ `lefthook.yml` และ `lefthook-local.yml` ออกจาก repo

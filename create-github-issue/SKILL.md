@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -25,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare Issue Information
+> Goal: Prepare Issue Information
 
 1. รวบรวมข้อมูล issue: title, description, priority, type
 2. ระบุ repository และ branch ที่เกี่ยวข้อง
@@ -33,6 +37,7 @@ triggers:
 5. เชื่อมโยงกับ milestones หากมี roadmap
 
 ### 2. Write Issue Template
+> Goal: Write Issue Template
 
 1. ใช้ issue template ตาม project standards
 2. เขียน title ที่ชัดเจนและกระชับ
@@ -45,6 +50,7 @@ triggers:
 4. เพิ่ม screenshots หรือ logs หากจำเป็น
 
 ### 3. Create Issue With MCP Tool
+> Goal: Create Issue With MCP Tool
 
 1. ใช้ `mcp8_issue_write` ด้วย method `create`
 2. ระบุ owner, repo, title, body
@@ -53,6 +59,7 @@ triggers:
 5. ตั้งค่า priority และ state
 
 ### 4. Verify Issue Creation
+> Goal: Verify Issue Creation
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
 2. ยืนยันว่า metadata ถูกต้อง (labels, assignees, milestones)

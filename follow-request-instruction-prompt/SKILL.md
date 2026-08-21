@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-request-instruction-prompt` for the specific tasks and workflows it 
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze Conversation
+> Goal: Analyze Conversation
 
 1. อ่านและวิเคราะห์การสนทนาทั้งหมด
 2. ระบุจุดประสงค์หลักของการสนทนา
@@ -34,6 +33,7 @@ Use `follow-request-instruction-prompt` for the specific tasks and workflows it 
 4. ระบุขั้นตอนและเงื่อนไขที่สำคัญ
 
 ### 2. Extract Key Information
+> Goal: Extract Key Information
 
 1. สรุปคำสั่งและข้อกำหนดที่ชัดเจน
 2. ระบุ input และ output ที่คาดหวัง
@@ -41,6 +41,7 @@ Use `follow-request-instruction-prompt` for the specific tasks and workflows it 
 4. ระบุ edge cases และข้อยกเว้น
 
 ### 3. Write Instruction Prompt
+> Goal: Write Instruction Prompt
 
 1. เขียน prompt ที่กระชับและชัดเจน
 2. จัดลำดับขั้นตอนอย่างเป็นระบบ
@@ -48,6 +49,7 @@ Use `follow-request-instruction-prompt` for the specific tasks and workflows it 
 4. ใส่ constraints และ edge cases
 
 ### 4. Validate Prompt
+> Goal: Validate Prompt
 
 1. ตรวจสอบว่า prompt ครอบคลุมทุกจุดสำคัญ
 2. ทดสอบ prompt กับกรณีตัวอย่าง
@@ -56,15 +58,11 @@ Use `follow-request-instruction-prompt` for the specific tasks and workflows it 
 
 ## Rules
 
-## Rules
-
 1. Instruction prompt ต้องกระชับและชัดเจน
 2. ต้องระบุ input/output อย่างชัดเจน
 3. ต้องจัดลำดับขั้นตอนอย่างเป็นระบบ
 4. ต้องระบุ constraints และ edge cases
 5. ห้ามใช้ภาษาที่คลุมเครือหรือหลายความหมาย
-
-## Expected Outcome
 
 ## Expected Outcome
 

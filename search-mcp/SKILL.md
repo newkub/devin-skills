@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `search-mcp` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Search MCP
+> Goal: Search MCP
 
 ค้นหา MCP ที่เกี่ยวข้อง
 
@@ -36,13 +34,9 @@ Use `search-mcp` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - ค้นหา MCP ที่เกี่ยวข้อง
 - ค้นหา internet ที่เกี่ยวข้อง
 - ระบุที่น่าสนใจ
-
-## Expected Outcome
 
 ## Expected Outcome
 

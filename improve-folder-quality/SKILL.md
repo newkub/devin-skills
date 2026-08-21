@@ -40,8 +40,7 @@ related:
 
 ### 1. Determine Threshold
 
-กำหนดเกณฑ์สำหรับ "โฟลเดอร์มีไฟล์มาก"
-
+> Goal: กำหนดเกณฑ์สำหรับ "โฟลเดอร์มีไฟล์มาก"
 > Goal: มีเกณฑ์ชัดเจนก่อน scan
 
 1. ค่าเริ่มต้น: โฟลเดอร์ที่มีไฟล์มากกว่า `20` ไฟล์ (ไม่รวม test หรือ generated)
@@ -50,8 +49,7 @@ related:
 
 ### 2. Scan Folder Structure
 
-หาไฟล์ทั้งหมดใน target path
-
+> Goal: หาไฟล์ทั้งหมดใน target path
 > Goal: มีรายการไฟล์ครบถ้วนพร้อม path
 
 1. ทำ `/scan-codebase` เพื่อ list ไฟล์ใน target path
@@ -60,8 +58,7 @@ related:
 
 ### 3. Count Files Per Folder
 
-นับจำนวนไฟล์ในแต่ละโฟลเดอร์
-
+> Goal: นับจำนวนไฟล์ในแต่ละโฟลเดอร์
 > Goal: ระบุโฟลเดอร์ที่เกิน threshold
 
 1. ใช้ `/use-scripts` สร้าง script นับไฟล์ต่อโฟลเดอร์ด้วย `Bun.Glob`
@@ -70,8 +67,7 @@ related:
 
 ### 4. Assess Folder Quality
 
-ประเมินหลายมิติของคุณภาพโฟลเดอร์
-
+> Goal: ประเมินหลายมิติของคุณภาพโฟลเดอร์
 > Goal: ระบุปัญหาคุณภาพนอกเหนือจากจำนวนไฟล์
 
 1. ตรวจสอบ domain cohesion: ไฟล์ในโฟลเดอร์เกี่ยวข้องกันหรือไม่ ดูจาก filenames และ imports
@@ -83,8 +79,7 @@ related:
 
 ### 5. Identify Restructure Candidates
 
-วิเคราะห์ว่าโฟลเดอร์ใดควร restructure
-
+> Goal: วิเคราะห์ว่าโฟลเดอร์ใดควร restructure
 > Goal: ไม่ทุกโฟลเดอร์ที่มีไฟล์เยอะจำเป็นต้อง restructure
 
 1. รวมผลจาก Step 3 และ Step 4 เป็น quality score หรือ priority
@@ -93,8 +88,7 @@ related:
 
 ### 6. Report
 
-สรุปผลการตรวจสอบ
-
+> Goal: สรุปผลการตรวจสอบ
 > Goal: ผู้ใช้ได้รับ report ที่ใช้ตัดสินใจได้
 
 1. สร้างตาราง: folder | file count | quality issues | restructure candidate | priority

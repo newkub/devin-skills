@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,20 +24,21 @@ Use `follow-pkg-new` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install GitHub Application
+> Goal: Install GitHub Application
 
 1. ไปที่ https://github.com/apps/pkg-pr-new
 2. Install application บน repository
 3. ตรวจสอบ permissions ที่จำเป็น
 
 ### 2. Install Package
+> Goal: Install Package
 
 1. รัน `bun add -D pkg-pr-new`
 2. หรือใช้ `bunx pkg-pr-new publish` โดยตรง
 
 ### 3. Configure Workflow
+> Goal: Configure Workflow
 
 1. สร้างไฟล์ `.github/workflows/publish.yml`
 
@@ -78,6 +79,7 @@ on:
 ```
 
 ### 4. Configure Options
+> Goal: Configure Options
 
 1. สำหรับ templates
 
@@ -102,8 +104,6 @@ bunx pkg-pr-new publish --comment=update
 ```bash
 bunx pkg-pr.new publish --packageManager=bun
 ```
-
-## Rules
 
 ## Rules
 
@@ -132,8 +132,6 @@ bunx pkg-pr.new publish --packageManager=bun
 - Publish approved pull requests เท่านั้นสำหรับความปลอดภัย
 - ใช้ outputs สำหรับ E2E tests
 - หลีกเลี่ยง publishing บน tags
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -1,26 +1,26 @@
 ---
 name: follow-leptos
-description: Rust framework for building reactive web applications with SSR and CSR support. Includes...
+description: สร้าง reactive web applications ด้วย Rust พร้อม SSR และ CSR support
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 สร้าง reactive web applications ด้วย Rust พร้อม SSR และ CSR support
 
-
 ## Scope
 
 ใช้สำหรับการพัฒนา web applications ด้วย Rust ที่มี performance สูงและ memory footprint ต่ำ
-
 
 ## When To Use
 
@@ -29,10 +29,11 @@ triggers:
 - เมื่อต้องการ performance สูงและ memory footprint ต่ำ
 - เมื่อต้องการใช้ Rust ecosystem สำหรับ web development
 
-
 ## Execute
 
 ### 1. Create Project
+
+> Goal: Create Project
 
 ```bash
 cargo install cargo-leptos
@@ -41,16 +42,15 @@ cargo leptos new my-app
 
 ### 2. Develop Components
 
-ใช้ Leptos component system และ signals
+> Goal: ใช้ Leptos component system และ signals
 
 ### 3. Configure Routing
 
-ตั้งค่า routing สำหรับ navigation
+> Goal: ตั้งค่า routing สำหรับ navigation
 
 ### 4. Build and Run
 
-Build สำหรับ SSR หรือ CSR
-
+> Goal: Build สำหรับ SSR หรือ CSR
 
 ## Rules
 
@@ -64,20 +64,17 @@ Build สำหรับ SSR หรือ CSR
 - Optimize reactivity
 - Test SSR และ CSR modes
 
-
 ## References
 
 - [Leptos Docs](https://leptos.dev)
 - [Leptos GitHub](https://github.com/leptos-rs/leptos)
 - [Leptos Book](https://book.leptos.dev)
 
-
 ## Related Skills
 
 - `follow-write-devin-skills` - มาตรฐานการเขียน skills
 - lang-rust
 - bun
-
 
 ## Expected Outcome
 

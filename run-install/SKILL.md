@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - update-dependencies-latest
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,14 +26,14 @@ Use `run-install` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Update Dependencies
+> Goal: Update Dependencies
 
 1. ทำ `/update-dependencies-latest` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
 2. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
 
 ### 2. Determine Package Manager
+> Goal: Determine Package Manager
 
 1. ตรวจสอบ lockfile และ manifest ทั้งหมด:
    - JS/TS: bun.lock, package-lock.json, pnpm-lock.yaml, yarn.lock
@@ -43,6 +45,7 @@ Use `run-install` for the specific tasks and workflows it covers
 4. ใช้ cargo สำหรับ Rust projects
 
 ### 3. Clean Install (ถ้าต้องการ)
+> Goal: Clean Install (ถ้าต้องการ)
 
 JavaScript/TypeScript:
 1. ลบ `node_modules/` directory
@@ -60,6 +63,7 @@ Python:
 3. ลบ *.pyc files
 
 ### 4. Install Dependencies
+> Goal: Install Dependencies
 
 JavaScript/TypeScript:
 1. รัน `bun install` หรือ package manager ที่ใช้
@@ -77,6 +81,7 @@ Python:
 3. ติดตาม progress และ errors
 
 ### 5. Fix Issues
+> Goal: Fix Issues
 
 JavaScript/TypeScript:
 1. แก้ไข dependency conflicts
@@ -95,8 +100,6 @@ Python:
 2. อัพเดท versions ใน requirements.txt หรือ pyproject.toml
 3. ใช้ pip constraints ถ้าจำเป็น
 4. รัน install อีกครั้งเพื่อยืนยัน
-
-## Rules
 
 ## Rules
 
@@ -169,8 +172,6 @@ Python:
 General:
 - ใช้ clean install เมื่อมี dependency conflicts ข้ามภาษา
 - ลบ cache ของทุก package manager ก่อน install
-
-## Expected Outcome
 
 ## Expected Outcome
 

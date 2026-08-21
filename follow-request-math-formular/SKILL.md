@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-request-math-formular` for the specific tasks and workflows it cover
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze Problem
+> Goal: Analyze Problem
 
 1. วิเคราะห์ปัญหาที่ต้องการสูตรคณิตศาสตร์
 2. ระบุตัวแปรและค่าที่รู้
@@ -34,6 +33,7 @@ Use `follow-request-math-formular` for the specific tasks and workflows it cover
 4. เข้าใจบริบทและขอบเขตของปัญหา
 
 ### 2. Request Formula
+> Goal: Request Formula
 
 1. ขอสูตรคณิตศาสตร์ที่กระชับที่สุด
 2. ขอคำอธิบายแต่ละส่วนของสูตร
@@ -41,6 +41,7 @@ Use `follow-request-math-formular` for the specific tasks and workflows it cover
 4. ขอเงื่อนไขการใช้งานและข้อจำกัด
 
 ### 3. Validate Formula
+> Goal: Validate Formula
 
 1. ตรวจสอบว่าสูตรตรงกับปัญหาที่ต้องการ
 2. ทดสอบสูตรกับค่าตัวอย่าง
@@ -49,15 +50,11 @@ Use `follow-request-math-formular` for the specific tasks and workflows it cover
 
 ## Rules
 
-## Rules
-
 1. ขอสูตรที่กระชับที่สุดเท่าที่จะทำได้
 2. ต้องมีคำอธิบายแต่ละส่วนของสูตร
 3. ต้องมีตัวอย่างการใช้งานจริง
 4. ต้องระบุเงื่อนไขและข้อจำกัด
 5. ห้ามขอสูตรที่ซับซ้อนเกินความจำเป็น
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install And Authenticate
+> Goal: Install And Authenticate
 
 ติดตั้งและตั้งค่า Wrangler CLI
 
@@ -32,6 +35,7 @@ triggers:
 4. ตรวจสอบ authentication ด้วย `wrangler whoami`
 
 ### 2. Initialize Project
+> Goal: Initialize Project
 
 สร้างและตั้งค่าโปรเจกต์
 
@@ -41,6 +45,7 @@ triggers:
 4. เลือก template หรือ framework ที่ต้องการ
 
 ### 3. Local Development
+> Goal: Local Development
 
 พัฒนาและทดสอบใน local environment
 
@@ -51,6 +56,7 @@ triggers:
 5. Test bindings และ environment variables
 
 ### 4. Deploy To Production
+> Goal: Deploy To Production
 
 Deploy Workers และ resources ไปยัง Cloudflare
 
@@ -61,6 +67,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. ใช้ `wrangler versions` สำหรับ version management
 
 ### 5. Manage Bindings
+> Goal: Manage Bindings
 
 จัดการ bindings สำหรับ Workers
 
@@ -71,6 +78,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. Link bindings ด้วย `wrangler d1 execute` หรือ `wrangler kv:key put`
 
 ### 6. Manage Secrets
+> Goal: Manage Secrets
 
 จัดการ secrets และ environment variables
 
@@ -81,6 +89,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. ไม่ commit secrets ไปยัง git
 
 ### 7. Manage Workers
+> Goal: Manage Workers
 
 จัดการ Workers และ configurations
 
@@ -91,6 +100,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. Manage subrequests และ limits
 
 ### 8. Advanced Features
+> Goal: Advanced Features
 
 ใช้งาน features ขั้นสูง
 

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,6 +26,8 @@ triggers:
 
 ### 1. Initialize Plugin Project
 
+> Goal: Initialize Plugin Project
+
 สร้าง plugin ใหม่ด้วย Tauri CLI
 
 1. รัน `bunx @tauri-apps/cli plugin new <name>` สำหรับสร้าง plugin ใหม่
@@ -33,6 +37,8 @@ triggers:
 
 ### 2. Configure Plugin
 
+> Goal: Configure Plugin
+
 กำหนด configuration ของ plugin
 
 1. กำหนด plugin configuration ใน `tauri.conf.json`
@@ -40,6 +46,8 @@ triggers:
 3. ใช้ Builder สำหรับ setup plugin ด้วย config
 
 ### 3. Define Commands
+
+> Goal: Define Commands
 
 สร้าง commands สำหรับ webview เรียกใช้
 
@@ -49,6 +57,8 @@ triggers:
 
 ### 4. Implement Lifecycle Events
 
+> Goal: Implement Lifecycle Events
+
 Hook ลง lifecycle events ของ plugin
 
 1. Implement lifecycle hooks: `setup`, `on_navigation`, `on_page_load`, `on_webview_ready`, `on_event`, `on_drop`
@@ -56,6 +66,8 @@ Hook ลง lifecycle events ของ plugin
 3. Access state ผ่าน extension trait บน Manager instances
 
 ### 5. Create JavaScript API
+
+> Goal: Create JavaScript API
 
 สร้าง bindings สำหรับ JavaScript/TypeScript
 
@@ -72,7 +84,7 @@ export async function myCommand() {
 
 ### 6. Add Mobile Support
 
-เพิ่ม mobile support สำหรับ Android และ iOS
+> Goal: เพิ่ม mobile support สำหรับ Android และ iOS
 
 1. รัน `bunx @tauri-apps/cli plugin android add` สำหรับ Android
 2. รัน `bunx @tauri-apps/cli plugin ios add` สำหรับ iOS
@@ -81,7 +93,7 @@ export async function myCommand() {
 
 ### 7. Test And Publish
 
-ทดสอบและ publish plugin
+> Goal: ทดสอบและ publish plugin
 
 1. Test plugin ใน Tauri app: ติดตั้งด้วย `tauri add <plugin-name>`
 2. Build plugin: `cargo build`

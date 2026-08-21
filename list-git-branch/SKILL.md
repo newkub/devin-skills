@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - list-git-stash
+  - list-github-branch
+  - report-table
+  - follow-git
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. List Local Branches
 
-ดู branches ในเครื่อง
-
+> Goal: ดู branches ในเครื่อง
 > Goal: รู้ branches ในเครื่องและ metadata
 
 1. รัน `git branch -v` เพื่อดู local branches พร้อม last commit
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. List Remote Branches
 
-ดู branches บน remote
-
+> Goal: ดู branches บน remote
 > Goal: รู้ remote branches ที่มี
 
 1. รัน `git branch -r` เพื่อดู remote branches
@@ -44,8 +49,7 @@ triggers:
 
 ### 3. List All Branches
 
-ดู branches ทั้งหมด
-
+> Goal: ดู branches ทั้งหมด
 > Goal: เห็นภาพรวมทั้ง local และ remote
 
 1. รัน `git branch -a` เพื่อดู branches ทั้งหมด
@@ -54,8 +58,7 @@ triggers:
 
 ### 4. Collect Branch Metadata
 
-รวบรวมข้อมูลเพิ่มเติมของแต่ละ branch
-
+> Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ branch
 > Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git log <branch> -1 --format="%H|%ci|%an|%s"` สำหรับแต่ละ branch เพื่อดู last commit info
@@ -65,8 +68,7 @@ triggers:
 
 ### 5. Format Output
 
-จัดรูปแบบผลลัพธ์เป็นตาราง
-
+> Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 > Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

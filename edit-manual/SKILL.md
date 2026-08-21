@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-check
+  - dont-over-engineer
+  - learn-from-web
+  - use-scripts
+  - run-audit
 ---
 
 ## Goal
@@ -26,8 +34,7 @@ triggers:
 
 ### 1. Pre-Edit Safety Check
 
-ตรวจสอบสภาพแวดล้อมก่อนแก้ไขเพื่อให้สามารถ rollback ได้เสมอ
-
+> Goal: ตรวจสอบสภาพแวดล้อมก่อนแก้ไขเพื่อให้สามารถ rollback ได้เสมอ
 > Goal: รู้ git state และมี rollback path ชัดเจนก่อนแก้
 
 1. ตรวจสอบ git working tree สะอาด: รัน `git status --porcelain` ถ้ามี unstaged changes → ถามผู้ใช้ก่อนดำเนินการ (ใช้ `/ask-me`)
@@ -37,8 +44,7 @@ triggers:
 
 ### 2. Read And Understand
 
-อ่าน config file และ official docs ก่อนแก้เพื่อเข้าใจผลกระทบของการเปลี่ยนแปลง
-
+> Goal: อ่าน config file และ official docs ก่อนแก้เพื่อเข้าใจผลกระทบของการเปลี่ยนแปลง
 > Goal: เข้าใจ config ปัจจุบัน ผลกระทบ และ available options ก่อนแก้
 
 1. อ่าน config file ที่ต้องการแก้ไขให้เข้าใจโครงสร้างและ settings ปัจจุบัน
@@ -48,8 +54,7 @@ triggers:
 
 ### 3. Plan And Preview Changes
 
-วางแผนการแก้ไขและ preview diff ก่อน apply เพื่อลดความเสี่ยง
-
+> Goal: วางแผนการแก้ไขและ preview diff ก่อน apply เพื่อลดความเสี่ยง
 > Goal: รู้ exact changes ก่อน apply และมี impact analysis ชัดเจน
 
 1. ระบุจุดที่ต้องแก้ไขและค่าใหม่ที่ต้องการ
@@ -60,8 +65,7 @@ triggers:
 
 ### 4. Apply Edits
 
-แก้ไข config file อย่าง precise โดยเปลี่ยนเฉพาะจุดที่จำเป็น
-
+> Goal: แก้ไข config file อย่าง precise โดยเปลี่ยนเฉพาะจุดที่จำเป็น
 > Goal: การแก้ไข minimal, precise, ไม่กระทบ settings อื่น
 
 1. ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไข config file
@@ -72,8 +76,7 @@ triggers:
 
 ### 5. Post-Edit Validation
 
-ตรวจสอบความถูกต้องของ config หลังแก้ไขครบทุกด้าน
-
+> Goal: ตรวจสอบความถูกต้องของ config หลังแก้ไขครบทุกด้าน
 > Goal: config ผ่าน validation ครบทุกประเภท ไม่มี secrets รั่ว
 
 1. ทำ `/check-reference` เพื่อตรวจสอบไม่มี broken references
@@ -85,8 +88,7 @@ triggers:
 
 ### 6. Verify And Finalize
 
-ยืนยันว่าการเปลี่ยนแปลงทำงานได้จริงและไม่ทำลายอะไร
-
+> Goal: ยืนยันว่าการเปลี่ยนแปลงทำงานได้จริงและไม่ทำลายอะไร
 > Goal: ยืนยันการทำงานจริง ลบ temp files และสรุปผล
 
 1. ถ้าเป็น build config → ทดสอบ `bun run build` ว่าผ่าน

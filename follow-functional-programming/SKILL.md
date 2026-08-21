@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - review-codebase
+  - follow-declarative-programming
+  - follow-typescript
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +27,8 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 
 ## Execute
 
-## Execute
-
 ### 1. Use Pure Functions
+> Goal: Use Pure Functions
 
 เขียนฟังก์ชันที่ pure เสมอเมื่อเป็นไปได้
 
@@ -37,6 +39,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. ใช้ `impure functions` เฉพาะใน imperative shell
 
 ### 2. Enforce Immutability
+> Goal: Enforce Immutability
 
 ทำตาม `/follow-declarative-programming` เพื่อใช้ immutability
 
@@ -47,6 +50,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. ใช้ `array methods` ที่ไม่ mutate: `map`, `filter`, `reduce`
 
 ### 3. Function Composition
+> Goal: Function Composition
 
 ทำตาม `/follow-declarative-programming` เพื่อใช้ composition
 
@@ -57,6 +61,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. ใช้ `generics` สำหรับ reusable composition
 
 ### 4. Type Safety
+> Goal: Type Safety
 
 ทำตาม `/follow-typescript` เพื่อเพิ่มความปลอดภัย
 
@@ -67,6 +72,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. ใช้ `discriminated unions` สำหรับ complex state
 
 ### 5. Separate Core and Shell
+> Goal: Separate Core and Shell
 
 แยก functional core จาก imperative shell
 
@@ -78,6 +84,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 6. ทำ `/review-codebase` เพื่อจัดการ side effects
 
 ### 6. Avoid Mutable State
+> Goal: Avoid Mutable State
 
 หลีกเลี่ยง mutable state ที่ไม่จำเป็น
 
@@ -88,6 +95,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. ใช้ `message passing` แทน shared state
 
 ### 7. Error Handling
+> Goal: Error Handling
 
 จัดการ errors ด้วย functional approach
 
@@ -98,6 +106,7 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 5. Handle errors อย่าง explicit
 
 ### 8. Testing
+> Goal: Testing
 
 เขียน tests สำหรับ pure functions
 
@@ -106,8 +115,6 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 3. Test composition แยกจาก individual functions
 4. ใช้ `property-based testing`
 5. Test edge cases ด้วย pure functions
-
-## Rules
 
 ## Rules
 
@@ -180,8 +187,6 @@ Use `follow-functional-programming` for the specific tasks and workflows it cove
 - `Typed error classes`
 - Explicit `error propagation`
 - No `try/catch` ใน pure functions
-
-## Expected Outcome
 
 ## Expected Outcome
 

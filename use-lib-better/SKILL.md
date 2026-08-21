@@ -10,6 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-skills
+  - learn-from-web
+  - follow-my-tech-stack
+  - deep-research
+  - review-codebase
 ---
 
 ## Goal
@@ -24,8 +30,7 @@ triggers:
 
 ### 1. Read Context
 
-อ่าน workflows และ skills ที่เกี่ยวข้องกับ dependencies และ libraries
-
+> Goal: อ่าน workflows และ skills ที่เกี่ยวข้องกับ dependencies และ libraries
 > Goal: เข้าใจมาตรฐานและ patterns ก่อนเริ่มวิเคราะห์ dependencies
 
 1. ทำ `/follow-skills` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
@@ -33,8 +38,7 @@ triggers:
 
 ### 2. Snapshot Current Dependencies
 
-รวบรวม dependencies ปัจจุบันทั้งหมด
-
+> Goal: รวบรวม dependencies ปัจจุบันทั้งหมด
 > Goal: รู้ dependencies ปัจจุบันทั้งหมดพร้อม version และสถานะ
 
 1. ทำ `/follow-my-tech-stack` เพื่อดู tech stack ทั้งหมด
@@ -43,8 +47,7 @@ triggers:
 
 ### 3. Analyze Usage
 
-ตรวจสอบการใช้งานจริงของแต่ละ package
-
+> Goal: ตรวจสอบการใช้งานจริงของแต่ละ package
 > Goal: รู้ว่า package ไหนใช้จริง และ package ไหนเป็น candidate สำหรับ replace
 
 1. ค้นหา imports ของแต่ละ package ใน codebase
@@ -53,8 +56,7 @@ triggers:
 
 ### 4. Research Alternatives
 
-ค้นหาและศึกษา alternatives จาก official sources
-
+> Goal: ค้นหาและศึกษา alternatives จาก official sources
 > Goal: รู้ alternatives ที่ดีกว่าพร้อมข้อมูลเปรียบเทียบจาก official sources
 
 1. ใช้ `/deep-research` เพื่อหา dependencies ทางเลือกที่ดีกว่า
@@ -64,8 +66,7 @@ triggers:
 
 ### 5. Evaluate Candidates
 
-ให้คะแนนแต่ละ candidate ตามเกณฑ์ที่กำหนด
-
+> Goal: ให้คะแนนแต่ละ candidate ตามเกณฑ์ที่กำหนด
 > Goal: มี scoring ชัดเจนสำหรับแต่ละ candidate
 
 1. ให้คะแนนแต่ละ candidate ตามเกณฑ์ (1-5 points):
@@ -81,8 +82,7 @@ triggers:
 
 ### 6. Recommend Dependencies
 
-สรุป dependencies ที่ควรใช้พร้อม priority
-
+> Goal: สรุป dependencies ที่ควรใช้พร้อม priority
 > Goal: รายการ deps ที่ควรใช้พร้อม priority และเหตุผล
 
 1. ตอบแบบ list "ควรใช้อะไร" แยกตาม category (framework, ui, database, testing, tooling)

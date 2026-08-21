@@ -18,15 +18,6 @@ related:
   - analyze-project
   - deep-analyze
   - check-code-structure
-  - improve-code-duplication
-  - check-circular-dependencies
-  - follow-monorepo
-  - follow-architecture
-  - follow-import-export
-  - dont-over-engineer
-  - report-table
-  - suggest-next-action
-  - report-plan
 ---
 
 ## Goal
@@ -41,8 +32,7 @@ related:
 
 ### 1. Analyze Project And Packages
 
-รวบรวม context ก่อนสร้างไอเดีย
-
+> Goal: รวบรวม context ก่อนสร้างไอเดีย
 > Goal: เข้าใจ project structure, packages, และ dependencies
 
 1. ทำ `scan-codebase` เพื่อดู file structure และ package boundaries
@@ -54,8 +44,7 @@ related:
 
 ### 2. Identify New Package Opportunities
 
-ระบุโอกาสสำหรับ packages ใหม่
-
+> Goal: ระบุโอกาสสำหรับ packages ใหม่
 > Goal: รู้ว่าควรสร้าง package ใหม่อะไรบ้าง
 
 1. ระบุ code ที่ถูกใช้ซ้ำหลายที่แต่ยังไม่มี package ของตัวเอง
@@ -66,8 +55,7 @@ related:
 
 ### 3. Evaluate Refactor Options
 
-ประเมินวิธีรองรับ packages ใหม่
-
+> Goal: ประเมินวิธีรองรับ packages ใหม่
 > Goal: ตัดสินใจว่าจะ create, split, merge, relocate หรือ keep
 
 1. ประเมินแต่ละ opportunity ตามเงื่อนไข:
@@ -81,8 +69,7 @@ related:
 
 ### 4. Plan New Package Boundaries
 
-วางโครงสร้าง packages ใหม่
-
+> Goal: วางโครงสร้าง packages ใหม่
 > Goal: แผน new packages ชัดเจน ไม่ทำลาย stability
 
 1. ทำ `follow-architecture` หรือ `follow-monorepo` เพื่อออกแบบ package structure
@@ -93,8 +80,7 @@ related:
 
 ### 5. Generate Ideas
 
-สร้างไอเดีย new packages/refactor แบบ actionable
-
+> Goal: สร้างไอเดีย new packages/refactor แบบ actionable
 > Goal: ไอเดีย track ได้และพร้อม execute
 
 1. สร้างไอเดียสำหรับแต่ละ opportunity
@@ -105,8 +91,7 @@ related:
 
 ### 6. Report
 
-รายงานไอเดียและ next action
-
+> Goal: รายงานไอเดียและ next action
 > Goal: ผู้ใช้เห็นภาพรวมและลำดับถัดไป
 
 1. ทำ `report-table`

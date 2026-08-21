@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-gitignore
+  - follow-typescript
+  - follow-unocss
 ---
 
 ## Goal
@@ -24,6 +29,8 @@ triggers:
 
 ### 1. Project Initialization
 
+> Goal: Project Initialization
+
 1. สร้าง `docs/` directory ที่ root ของ project
 2. สำหรับ monorepo ให้ `docs/` เป็น workspace โดยสร้าง `docs/package.json` ที่มี `vitepress` เป็น dependency และ scripts ของตัวเอง
 3. เพิ่ม `docs` ใน `workspaces` ของ root `package.json`
@@ -32,6 +39,8 @@ triggers:
 6. ทำ `/follow-typescript` สร้าง `docs/tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
 
 ### 2. VitePress Configuration
+
+> Goal: VitePress Configuration
 
 สร้าง `.vitepress/config.ts`:
 
@@ -79,6 +88,7 @@ nav: [
 
 ### 3. UnoCSS Integration
 
+> Goal: UnoCSS Integration
 1. ทำ `/follow-unocss` สำหรับ UnoCSS configuration แบบเต็ม
 2. ติดตั้ง `unocss` ใน `docs/` workspace:
    ```bash
@@ -109,7 +119,7 @@ nav: [
 
 ### 4. Theme Setup
 
-สร้าง `.vitepress/theme/index.ts`:
+> Goal: สร้าง `.vitepress/theme/index.ts`
 
 ```typescript
 import DefaultTheme from 'vitepress/theme'
@@ -132,6 +142,8 @@ export default {
 
 ### 5. Package Scripts
 
+> Goal: Package Scripts
+
 สำหรับ monorepo ให้ใส่ scripts ใน `docs/package.json`:
 
 ```json
@@ -153,6 +165,7 @@ export default {
 
 ### 6. Shiki Twoslash Integration
 
+> Goal: Shiki Twoslash Integration
 1. ติดตั้ง `@shikijs/vitepress-twoslash`
 2. เพิ่ม `transformerTwoslash` ใน markdown config
 3. เพิ่ม plugin ใน theme
@@ -160,11 +173,13 @@ export default {
 
 ### 7. VitePress Plugin Group Icons
 
+> Goal: VitePress Plugin Group Icons
 1. ติดตั้ง `vitepress-plugin-group-icons`
 2. เพิ่ม plugin ใน VitePress config
 
 ### 8. GitHub Actions Deployment
 
+> Goal: GitHub Actions Deployment
 1. สร้าง `.github/workflows/deploy.yml`
 2. ตั้งค่า deploy ไปยัง GitHub Pages
 3. ตั้งค่า triggers สำหรับ push และ pull request

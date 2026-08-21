@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - pondering
+  - deep-plan
+  - update-docs
+  - deep-research
+  - ship
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Research Competitors
 
-วิจัยคู่แข่งที่ relevant
-
+> Goal: วิจัยคู่แข่งที่ relevant
 > Goal: รู้ competitor landscape และ best practices
 
 1. ทำ `/deep-research` เพื่อรวบรวมข้อมูลคู่แข่ง
@@ -35,8 +41,7 @@ triggers:
 
 ### 2. Benchmark Features
 
-เปรียบเทียบและปรับปรุงมิติ features
-
+> Goal: เปรียบเทียบและปรับปรุงมิติ features
 > Goal: ให้ features ดีกว่าคู่แข่ง
 
 1. ทำ `/bench-features` เพื่อ benchmark มิติ features
@@ -45,8 +50,7 @@ triggers:
 
 ### 3. Benchmark Other Dimensions
 
-เปรียบเทียบมิติที่เหลือนอกเหนือ features
-
+> Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
 > Goal: ครอบคลุม performance, UX/UI, architecture, DX, security, business
 
 1. ทำ `/review-codebase` สำหรับ performance
@@ -56,8 +60,7 @@ triggers:
 
 ### 4. Plan Improvements
 
-วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
-
+> Goal: วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
 > Goal: ได้ roadmap ครอบทุกมิติ
 
 1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
@@ -67,8 +70,7 @@ triggers:
 
 ### 5. Implement Improvements
 
-ปรับปรุง project ตาม roadmap
-
+> Goal: ปรับปรุง project ตาม roadmap
 > Goal: ดีกว่าคู่แข่งในทุกมิติ
 
 1. ทำ `/ship` เพื่อ implement improvements
@@ -78,8 +80,7 @@ triggers:
 
 ### 6. Update Report
 
-อัปเดตรายงานเปรียบเทียบ
-
+> Goal: อัปเดตรายงานเปรียบเทียบ
 > Goal: รายงาน reflect สถานะล่าสุด
 
 1. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`

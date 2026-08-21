@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - learn-from-web
+  - deep-research
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Context
+> Goal: Analyze Context
 
 1. ระบุ context ของงานที่ทำ (code, workflow, config, documentation, ฯลฯ)
 2. ถ้าเป็น code: อ่าน `package.json`, `Cargo.toml`, หรือ package manifest ที่เกี่ยวข้อง
@@ -30,6 +36,7 @@ triggers:
 4. สรุป tech stack หรือ tools ที่เกี่ยวข้องกับ context นั้นๆ
 
 ### 2. Research Best Practices
+> Goal: Research Best Practices
 
 1. ระบุ library, framework หรือ tool ที่ต้องการเรียนรู้ best practices
 2. ทำตาม `/learn-from-web` สำหรับ systematic learning จาก web sources
@@ -37,6 +44,7 @@ triggers:
 4. ตรวจสอบว่าข้อมูลเป็นปัจจุบัน
 
 ### 3. Apply Best Practices
+> Goal: Apply Best Practices
 
 1. อ่านไฟล์ที่ต้องปรับปรุงทั้งหมด
 2. วิเคราะห์ว่าไฟล์เหล่านี้ต้องการปรับปรุงอะไรตาม best practices ของ context นั้นๆ
@@ -46,6 +54,7 @@ triggers:
 6. ระบุ patterns และ conventions ที่แนะนำ
 
 ### 4. Verify Implementation
+> Goal: Verify Implementation
 
 1. รัน linter และ typecheck เพื่อตรวจสอบ
 2. รัน tests เพื่อยืนยันว่าไม่มี regression

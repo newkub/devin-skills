@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,21 +24,22 @@ Use `follow-zod` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install Zod
+> Goal: Install Zod
 
 1. ติดตั้ง Zod ด้วย Bun
 2. ตรวจสอบ version ล่าสุด
 3. เพิ่ม dependencies ใน package.json
 
 ### 2. Enable Strict TypeScript Mode
+> Goal: Enable Strict TypeScript Mode
 
 1. เปิด strict mode ใน tsconfig.json
 2. ตั้งค่า strict: true
 3. ตรวจสอบ compiler options อื่นๆ
 
 ### 3. Define Schemas
+> Goal: Define Schemas
 
 1. ใช้ factory functions จาก z namespace
 2. กำหนด schemas สำหรับ primitive types (string, number, boolean)
@@ -48,6 +49,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 6. จัดโครงสร้าง schemas ให้ reusable
 
 ### 4. Validate Data
+> Goal: Validate Data
 
 1. ใช้ .parse() สำหรับ validation ที่ต้องการ throw error
 2. ใช้ .safeParse() สำหรับ validation ที่ต้องการ result object
@@ -55,6 +57,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 4. เลือก method ที่เหมาะสมกับ use case
 
 ### 5. Handle Errors
+> Goal: Handle Errors
 
 1. ใช้ try-catch กับ .parse()
 2. ตรวจสอบ z.ZodError instance
@@ -63,6 +66,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 5. ใช้ z.config() สำหรับ global error messages
 
 ### 6. TypeScript Integration
+> Goal: TypeScript Integration
 
 1. ใช้ z.infer<typeof schema> สำหรับ type inference
 2. ใช้ z.input<typeof schema> สำหรับ input type
@@ -71,6 +75,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 5. รักษา type safety ทั้ง runtime และ compile-time
 
 ### 7. Schema Composition
+> Goal: Schema Composition
 
 1. ใช้ spread syntax แทนการ chain `.extend()` เพื่อลด TypeScript compilation time
 2. ใช้ .safeExtend() สำหรับ extending schemas ที่มี refinements
@@ -82,6 +87,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 8. จัดระเบียบ schemas ให้ maintainable ตาม domain หรือ feature
 
 ### 8. Advanced Patterns
+> Goal: Advanced Patterns
 
 1. ใช้ .refine() สำหรับ custom validation logic
 2. ใช้ .transform() สำหรับ data transformation (หลัง validation)
@@ -94,6 +100,7 @@ Use `follow-zod` for the specific tasks and workflows it covers
 9. ใช้ .prefault() สำหรับ prefault values (input side)
 
 ### 9. Performance Optimization
+> Goal: Performance Optimization
 
 1. ใช้ spread syntax แทน chain `.extend()` เพื่อลด TypeScript compilation time
 2. ใช้ .safeParse() แทน try-catch ใน performance-sensitive code
@@ -103,12 +110,14 @@ Use `follow-zod` for the specific tasks and workflows it covers
 6. ใช้ .format() สำหรับ error formatting ที่มีประสิทธิภาพ
 
 ### 10. Recursive Types
+> Goal: Recursive Types
 
 1. ใช้ type hints สำหรับ recursive schemas
 2. กำหนด type ด้วยตนเองเนื่องจาก TypeScript ไม่สามารถ infer recursive types
 3. ใช้ z.lazy() สำหรับ lazy evaluation ของ recursive schemas
 
 ### 11. Testing Schemas
+> Goal: Testing Schemas
 
 1. เขียน unit tests สำหรับ validation logic
 2. test valid cases
@@ -116,8 +125,6 @@ Use `follow-zod` for the specific tasks and workflows it covers
 4. test edge cases
 5. test error messages
 6. ใช้ .safeParse() ใน tests
-
-## Rules
 
 ## Rules
 
@@ -137,8 +144,6 @@ Use `follow-zod` for the specific tasks and workflows it covers
 - ใช้ type hints สำหรับ recursive schemas เนื่องจาก TypeScript ไม่สามารถ infer
 - ใช้ .preprocess() สำหรับ data normalization ก่อน validation
 - ใช้ .transform() สำหรับ data transformation หลัง validation
-
-## Expected Outcome
 
 ## Expected Outcome
 

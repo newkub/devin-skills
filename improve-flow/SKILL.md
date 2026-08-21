@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - check-reference
+  - suggest-next-action
+  - plan
+  - dont-over-engineer
+  - use-scripts
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Map Current Flow
+> Goal: Map Current Flow
 
 วิเคราะห์ flow ปัจจุบัน
 
@@ -32,6 +41,7 @@ triggers:
 4. บันทึก flow เป็น list หรือ diagram ง่ายๆ เพื่อวิเคราะห์
 
 ### 2. Identify Flow Issues
+> Goal: Identify Flow Issues
 
 หาปัญหา flow ที่ทำให้ช้าหรือ fail ช้า
 
@@ -43,6 +53,7 @@ triggers:
 6. ถ้า flow ซับซ้อน → ทำ `/use-scripts` ช่วยวิเคราะห์ dependencies และ ordering
 
 ### 3. Reorder And Parallelize
+> Goal: Reorder And Parallelize
 
 ปรับลำดับ steps และเพิ่ม parallelism
 
@@ -54,6 +65,7 @@ triggers:
 6. ทำ `/follow-deterministic` เพื่อตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
 ### 4. Clarify Transitions
+> Goal: Clarify Transitions
 
 ทำ transitions และ conditions ชัดเจน
 
@@ -64,6 +76,7 @@ triggers:
 5. ทำ `/dont-over-engineer` เพื่อไม่เพิ่ม transitions ที่ไม่จำเป็นทำให้ flow ซับซ้อน
 
 ### 5. Validate And Report
+> Goal: Validate And Report
 
 ตรวจสอบผลการปรับปรุง
 

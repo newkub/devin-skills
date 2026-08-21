@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - memorize
+  - suggest-next-action
+  - git-debug
+  - run-check
+  - follow-root-cause-analysis
 ---
 
 ## Goal
@@ -28,8 +36,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 1. Deep Thinking Phase
 
-วางแผน debug อย่างเป็นระบบก่อนเริ่ม investigate
-
+> Goal: วางแผน debug อย่างเป็นระบบก่อนเริ่ม investigate
 > Goal: มี debug strategy ชัดเจนพร้อม objectives และ dimensions
 
 1. ทำ `/deep-thinking` เพื่อกำหนด debug objectives: อาการ, ความถี่, ผลกระทบ
@@ -39,8 +46,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 2. Reproduce And Define
 
-Reproduce ปัญหาและนิยามให้ชัดเจน
-
+> Goal: Reproduce ปัญหาและนิยามให้ชัดเจน
 > Goal: reproduce ได้และมีนิยามปัญหาที่ชัดเจน
 
 1. ทำ `/follow-debugging` เพื่อ reproduce ปัญหา ถ้า reproduce ไม่ได้ให้หาเงื่อนไขที่ทำให้เกิด
@@ -50,8 +56,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 3. Hypothesis Generation
 
-สร้าง hypothesis list 3-5 ข้อพร้อม prior probability
-
+> Goal: สร้าง hypothesis list 3-5 ข้อพร้อม prior probability
 > Goal: มี hypothesis list ที่ครอบคลุมพร้อม probability
 
 1. สร้าง hypothesis H = {H₁, H₂, ..., Hₙ} จากอาการและ environment
@@ -61,8 +66,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 4. Systematic Elimination
 
-ใช้ Bayesian Inference และ Information Theory เพื่อตัด hypothesis
-
+> Goal: ใช้ Bayesian Inference และ Information Theory เพื่อตัด hypothesis
 > Goal: เหลือ hypothesis เดียวที่ P(H|E) → 1.0
 
 1. คำนวณ Information Gain สำหรับแต่ละ test ที่ทำได้
@@ -74,8 +78,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 5. Isolate And Confirm Root Cause
 
-ยืนยัน root cause ด้วยการ isolate variable
-
+> Goal: ยืนยัน root cause ด้วยการ isolate variable
 > Goal: ยืนยัน root cause ผ่าน 3 เงื่อนไข
 
 1. เปลี่ยนทีละอย่างเท่านั้น: config, dependency, runtime, code
@@ -86,8 +89,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 6. Fix At Root Cause
 
-แก้ปัญหาที่ root cause ด้วย minimal changes
-
+> Goal: แก้ปัญหาที่ root cause ด้วย minimal changes
 > Goal: ปัญหาถูกแก้ที่ root cause ไม่ใช่ symptoms
 
 1. แก้ปัญหาที่ root cause ไม่ใช่ symptoms ใช้ minimal changes ที่สุด
@@ -97,8 +99,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 7. Regression Tests
 
-สร้าง regression tests จาก reproduction steps
-
+> Goal: สร้าง regression tests จาก reproduction steps
 > Goal: มี regression test ที่ fail ก่อน fix และ pass หลัง fix
 
 1. ทำ `/write-test` เพื่อสร้าง test จาก reproduction steps ใน Step 2
@@ -109,8 +110,7 @@ Reproduce ปัญหาและนิยามให้ชัดเจน
 
 ### 8. Verify And Prevent
 
-Verify จนกว่าจะผ่านทุกเงื่อนไขและป้องกันการเกิดซ้ำ
-
+> Goal: Verify จนกว่าจะผ่านทุกเงื่อนไขและป้องกันการเกิดซ้ำ
 > Goal: ผ่านทุก check และมี preventive measures
 
 1. ทำ `/loop-until-complete` เพื่อรัน test suite ทั้งหมดจนกว่าจะผ่าน 100%
@@ -122,8 +122,7 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 
 ### 9. Report
 
-สร้างตารางสรุปผลและแนะนำขั้นต่อไป
-
+> Goal: สร้างตารางสรุปผลและแนะนำขั้นต่อไป
 > Goal: มีตารางสรุปผลและ next action
 
 1. ทำ `/report-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
@@ -133,7 +132,6 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 ## Rules
 
 ### 1. Systematic Approach
-
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - ห้ามเดา ต้องมี hypothesis และ evidence
@@ -143,7 +141,6 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 - ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
 
 ### 2. Bayesian Method
-
 > Goal: ใช้ Bayesian Inference อย่างถูกต้อง
 
 - กำหนด prior probability สำหรับทุก hypothesis
@@ -152,7 +149,6 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 - ถ้าทุก hypothesis ถูกตัด ให้สร้าง hypothesis ใหม่
 
 ### 3. Regression Safety
-
 > Goal: ทุก bug fix ต้องมี regression test
 
 - ทุก bug fix ต้องมี regression test
@@ -161,7 +157,6 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 - ถ้ามี regression ให้กลับไปแก้ fix
 
 ### 4. Error Handling
-
 > Goal: หยุดเมื่อไม่สามารถดำเนินต่อได้อย่างปลอดภัย
 
 - ถ้า reproduce ไม่ได้ → stop และ report
@@ -170,7 +165,6 @@ Verify จนกว่าจะผ่านทุกเงื่อนไขแ�
 - ถ้าซับซ้อนมาก → ทำ `/deep-thinking` ก่อน debug
 
 ### 5. Prevention
-
 > Goal: ป้องกันการเกิดปัญหาซ้ำ
 
 - ระบุ root cause ในระดับ process ไม่ใช่แค่ code

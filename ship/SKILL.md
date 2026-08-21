@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-monorepo
+  - all-workspaces
+  - report
+  - git-commit
+  - follow-tasks
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 ### 1. Prepare
 
-เตรียมความพร้อมก่อนเริ่ม ship
-
+> Goal: เตรียมความพร้อมก่อนเริ่ม ship
 > Goal: ตรวจสอบ prerequisites และวางแผนงานก่อน ship
 
 1. ทำ `/read-related-skills` และ `/follow-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
@@ -41,8 +48,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 ### 2. Review And Fix
 
-ทำ comprehensive review และแก้ไข issues ครบทุกมิติ
-
+> Goal: ทำ comprehensive review และแก้ไข issues ครบทุกมิติ
 > Goal: Review ครบทุกมิติและแก้ไข issues ตาม severity จนครบ
 
 1. ทำ `/review-codebase` เพื่อ review ครบทุกมิติ แก้ไข issues ตาม severity จนครบ
@@ -50,8 +56,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 ### 3. Improve Codebase
 
-ปรับปรุง codebase ครบวงจร จาก review → analyze → improve → validate
-
+> Goal: ปรับปรุง codebase ครบวงจร จาก review → analyze → improve → validate
 > Goal: Codebase ผ่านการปรับปรุงครบวงจร ไม่มี regression
 
 1. ทำ `/review-codebase` เพื่อ review → analyze gaps → implement improvements → validate
@@ -59,8 +64,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 ### 4. Ship
 
-Git operations และ commit
-
+> Goal: Git operations และ commit
 > Goal: Git operations สำเร็จ
 
 1. ทำ `/git-commit` เพื่อ commit ทุกการเปลี่ยนแปลง
@@ -68,8 +72,7 @@ Git operations และ commit
 
 ### 5. Verify
 
-ตรวจสอบ quality gates หลัง commit
-
+> Goal: ตรวจสอบ quality gates หลัง commit
 > Goal: ตรวจสอบ quality gates ผ่าน verify และ CI
 
 1. ทำ `/loop-until-complete` กับ `/run-verify` จนกว่าจะผ่าน
@@ -78,8 +81,7 @@ Git operations และ commit
 
 ### 6. Review Codebase
 
-ทำ comprehensive review ครบทุกมิติหลัง verify ผ่าน
-
+> Goal: ทำ comprehensive review ครบทุกมิติหลัง verify ผ่าน
 > Goal: Review ครบ 8 categories และ issues ถูก validate ครบถ้วน
 
 1. ทำ `/review-codebase` เพื่อ review ครบ 8 category orchestrators พร้อม validate issues
@@ -87,8 +89,7 @@ Git operations และ commit
 
 ### 7. Confirm Release
 
-ขอ user confirm ก่อน release เสมอ — ห้ามข้ามขั้นตอนนี้
-
+> Goal: ขอ user confirm ก่อน release เสมอ — ห้ามข้ามขั้นตอนนี้
 > Goal: User ยืนยันการ release หรือปฏิเสธ
 
 1. ทำ `/ask-me` เพื่อขอ user confirm การ release พร้อมแสดงสรุปผลจาก Phase 1-6:
@@ -100,8 +101,7 @@ Git operations และ commit
 
 ### 8. Run Release
 
-Release ไปยัง external platforms หลัง user confirm
-
+> Goal: Release ไปยัง external platforms หลัง user confirm
 > Goal: Release สำเร็จไปยัง platforms ที่ detect ได้
 
 1. ทำ `/run-release` เพื่อ auto-detect platforms และ release ไปยัง external platforms
@@ -109,8 +109,7 @@ Release ไปยัง external platforms หลัง user confirm
 
 ### 9. Finalize
 
-ตรวจสอบความครบถ้วนและรายงานผล
-
+> Goal: ตรวจสอบความครบถ้วนและรายงานผล
 > Goal: ตรวจสอบความครบถ้วนและรายงานผล
 
 1. ตรวจสอบสถานะของทุก phase (1-8) ว่าทำเสร็จแล้วทั้งหมด
@@ -121,7 +120,6 @@ Release ไปยัง external platforms หลัง user confirm
 ## Rules
 
 ### 1. Non-Redundancy
-
 > Goal: หลีกเลี่ยงการ duplicate รายละเอียด
 
 - ห้าม duplicate รายละเอียดที่มีอยู่ใน sub-workflows
@@ -131,7 +129,6 @@ Release ไปยัง external platforms หลัง user confirm
 - รายละเอียด verify อยู่ใน `/run-verify` แล้ว — รายละเอียด release อยู่ใน `/run-release` แล้ว
 
 ### 2. Mandatory User Confirmation
-
 > Goal: ห้าม release โดยไม่ได้รับ user confirmation
 
 - ห้ามข้าม Phase 7 (Confirm Release) เด็ดขาด — ไม่ว่ากรณีใดๆ
@@ -140,14 +137,12 @@ Release ไปยัง external platforms หลัง user confirm
 - ถ้า user ขอดูสรุปก่อน → แสดงสรุปแล้วถามซ้ำ ไม่ข้ามไป release
 
 ### 3. Error Resolution
-
 > Goal: แก้ไข errors จนกว่าจะผ่านทุกอย่าง
 
 - ทำ `/resolve-errors` เมื่อพบ error แล้วทำ `/loop-until-complete` ซ้ำจนกว่าจะผ่าน
 - ห้ามข้าม errors หรือทำ workaround
 
 ### 4. Execution Order
-
 > Goal: ทำตามลำดับ phases อย่างเป็นระบบ
 
 - ทำตามลำดับ phases ห้ามข้าม phase
@@ -157,7 +152,6 @@ Release ไปยัง external platforms หลัง user confirm
 - ทำงานอัตโนมัติโดยไม่หยุดถาม ยกเว้นกรณีเสี่ยงสูง
 
 ### 5. Sub-Workflow Execution Discipline
-
 > Goal: บังคับให้ทุก sub-workflow ถูกอ่านและทำจริง ไม่ข้าม
 
 - คำว่า "ทำ `<skill-name>`" หมายถึง: อ่านไฟล์ workflow ที่ `C:\Users\Veerapong\.codeium\windsurf\global_workflows\<skill-name>.md` ด้วย `read_file` แล้วทำตาม `## Execute` section ของไฟล์นั้น

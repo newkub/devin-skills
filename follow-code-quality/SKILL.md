@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-test
+  - check-circular-dependencies
+  - improve-typesafe
+  - dont-over-engineer
+  - run-lint
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Analyze Code Quality
 
-วิเคราะห์คุณภาพโค้ดปัจจุบัน
-
+> Goal: วิเคราะห์คุณภาพโค้ดปัจจุบัน
 > Goal: ระบุ issues ด้าน code quality ทั้งหมดก่อนแก้ไข
 
 1. ทำ `/review-codebase`, `/deep-review`, `/check-circular-dependencies`, `/review-codebase` — mixed concerns/duplication/code smells, SRP/SoC/type safety/hard code/anti-patterns/dead code/side effects/naming, circular dependencies, type safety check
@@ -33,8 +39,7 @@ triggers:
 
 ### 2. Apply Fixes
 
-แก้ไข issues ที่พบตามลำดับความสำคัญ
-
+> Goal: แก้ไข issues ที่พบตามลำดับความสำคัญ
 > Goal: แก้ไข issues ทั้งหมดตาม priority
 
 1. ทำ `/no-hard-code` เพื่อลบ hard code — ถ้าพบ sensitive data exposure → แก้ก่อนเป็น priority สูงสุด
@@ -43,8 +48,7 @@ triggers:
 
 ### 3. Verify Quality
 
-ตรวจสอบผลลัพธ์หลังแก้ไข
-
+> Goal: ตรวจสอบผลลัพธ์หลังแก้ไข
 > Goal: ยืนยันว่า code ผ่าน lint, typecheck, และ test
 
 1. ทำ `/run-lint`, `/run-typecheck`, `/run-test` — lint, typecheck, test พร้อมกัน

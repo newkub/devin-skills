@@ -34,8 +34,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 1. Design Event Model
 
-ออกแบบ event model และ event catalog
-
+> Goal: ออกแบบ event model และ event catalog
 > Goal: มี event contracts ที่ชัดเจนและ versionable
 
 1. ระบุ business events ที่สำคัญ:
@@ -48,8 +47,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 2. Choose Message Broker
 
-เลือก message broker ตาม scalability และ delivery requirements
-
+> Goal: เลือก message broker ตาม scalability และ delivery requirements
 > Goal: broker เหมาะสมกับระบบ
 
 1. เลือก message broker ตาม requirements:
@@ -63,8 +61,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 3. Implement Event Bus
 
-สร้าง abstraction และ adapters สำหรับ event bus
-
+> Goal: สร้าง abstraction และ adapters สำหรับ event bus
 > Goal: event bus พร้อม error handling และ resilience
 
 1. สร้าง abstraction layer สำหรับ event bus:
@@ -80,8 +77,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 4. Setup Event Handlers
 
-สร้าง handlers ตาม event types พร้อม idempotency
-
+> Goal: สร้าง handlers ตาม event types พร้อม idempotency
 > Goal: consumers process events ได้ถูกต้องและ reliable
 
 1. สร้าง handler registry หรือ dispatcher
@@ -93,8 +89,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 5. Configure Event Sourcing (Optional)
 
-ตัดสินใจและตั้งค่า event sourcing ถ้าจำเป็น
-
+> Goal: ตัดสินใจและตั้งค่า event sourcing ถ้าจำเป็น
 > Goal: ใช้ event sourcing ได้ถูกต้องเมื่องจำเป็น
 
 1. ตัดสินใจว่าต้องการ event sourcing หรือไม่:
@@ -106,8 +101,7 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ### 6. Add Observability
 
-เพิ่ม tracing, logging, และ monitoring สำหรับ event flow
-
+> Goal: เพิ่ม tracing, logging, และ monitoring สำหรับ event flow
 > Goal: เห็น event flow และ failed events ชัดเจน
 
 1. Implement distributed tracing ผ่าน events

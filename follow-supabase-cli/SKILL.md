@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,7 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install And Authenticate
-
+> Goal: Install And Authenticate
 ติดตั้งและตั้งค่า Supabase CLI
 
 1. ติดตั้ง Supabase CLI ด้วย Homebrew, Scoop, หรือ standalone binary
@@ -33,7 +35,7 @@ triggers:
 5. ติดตั้ง Docker สำหรับ local development
 
 ### 2. Initialize Project
-
+> Goal: Initialize Project
 สร้างและตั้งค่าโปรเจกต์
 
 1. Initialize project ด้วย `supabase init`
@@ -43,7 +45,7 @@ triggers:
 5. ตรวจสอบ project status ด้วย `supabase status`
 
 ### 3. Local Development
-
+> Goal: Local Development
 พัฒนาและทดสอบใน local environment
 
 1. Start local stack ด้วย `supabase start`
@@ -53,7 +55,7 @@ triggers:
 5. Test migrations และ seed data ใน local
 
 ### 4. Database Migrations
-
+> Goal: Database Migrations
 จัดการ database migrations
 
 1. Create migration ด้วย `supabase migration new migration_name`
@@ -63,7 +65,7 @@ triggers:
 5. Fetch remote migrations ด้วย `supabase migration fetch`
 
 ### 5. Database Operations
-
+> Goal: Database Operations
 จัดการ database operations
 
 1. Pull schema จาก remote ด้วย `supabase db pull`
@@ -73,7 +75,7 @@ triggers:
 5. Diff schemas ด้วย `supabase db diff`
 
 ### 6. Seed Data
-
+> Goal: Seed Data
 จัดการ seed data
 
 1. Create seed files ใน `supabase/seed.sql`
@@ -83,7 +85,7 @@ triggers:
 5. Version control seed files
 
 ### 7. Type Generation
-
+> Goal: Type Generation
 สร้าง TypeScript types จาก database schema
 
 1. Generate types ด้วย `supabase gen types typescript`
@@ -93,7 +95,7 @@ triggers:
 5. Regenerate types เมื่อ schema เปลี่ยน
 
 ### 8. Edge Functions
-
+> Goal: Edge Functions
 จัดการ Edge Functions
 
 1. Create function ด้วย `supabase functions new function_name`
@@ -103,7 +105,7 @@ triggers:
 5. Delete function ด้วย `supabase functions delete`
 
 ### 9. Secrets Management
-
+> Goal: Secrets Management
 จัดการ secrets สำหรับ Edge Functions
 
 1. Set secret ด้วย `supabase secrets set`
@@ -113,7 +115,7 @@ triggers:
 5. ไม่ commit secrets ไปยัง git
 
 ### 10. Storage Management
-
+> Goal: Storage Management
 จัดการ storage buckets และ files
 
 1. List storage ด้วย `supabase storage ls`
@@ -123,7 +125,7 @@ triggers:
 5. Manage bucket policies ผ่าน dashboard
 
 ### 11. Branch Management
-
+> Goal: Branch Management
 จัดการ database branches
 
 1. Create branch ด้วย `supabase branches create`
@@ -133,7 +135,7 @@ triggers:
 5. Delete branch ด้วย `supabase branches delete`
 
 ### 12. Database Inspection
-
+> Goal: Database Inspection
 ตรวจสอบ database performance และ health
 
 1. Inspect bloat ด้วย `supabase inspect db bloat`

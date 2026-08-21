@@ -29,6 +29,7 @@ related:
 ## Execute
 
 ### 1. Repository Structure
+> Goal: Repository Structure
 
 1. ใช้ workspace configuration ด้วย `bun` (แนะนำ) หรือ pnpm/npm/yarn
 2. ตั้งค่า root `package.json` ให้มี `private`, `packageManager`, `workspaces`
@@ -39,6 +40,7 @@ related:
 7. หลีกเลี่ยงการเข้าถึง files ข้าม package boundaries (ห้ามใช้ `../`)
 
 ### 2. Task Configuration
+> Goal: Task Configuration
 
 1. กำหนด `inputs` สำหรับ cache invalidation - ใช้ `$TURBO_DEFAULT$` เพื่อ include default inputs พร้อม custom
 2. กำหนด `outputs` สำหรับ caching artifacts (เช่น `dist/`, `.next/`)
@@ -55,6 +57,7 @@ related:
 11. ตั้งค่า `outputLogs` เป็น `full`, `new-only`, `errors-only`, หรือ `none`
 
 ### 3. Global Configuration
+> Goal: Global Configuration
 
 1. เปิดใช้ `futureFlags.globalConfiguration: true` เพื่อใช้ `global` key
 2. `global.inputs` (แทน `globalDependencies`) - files ที่ prepend เข้าทุก task's inputs
@@ -66,6 +69,7 @@ related:
 8. แต่ละ task สามารถ exclude global files ด้วย negation globs เมื่อใช้ `globalConfiguration`
 
 ### 4. Package Configurations
+> Goal: Package Configurations
 
 1. ใช้ package-level `turbo.json` เพื่อ override หรือ extend root config
 2. ใช้ `"extends": ["//"]` เพื่อ inherit จาก root `turbo.json`
@@ -74,6 +78,7 @@ related:
 5. รองรับ fields: `dependsOn`, `env`, `inputs`, `outputs`, `passThroughEnv`, `with`
 
 ### 5. Boundaries And Tags (Experimental)
+> Goal: Boundaries And Tags (Experimental)
 
 1. ใช้ `turbo boundaries` เพื่อตรวจสอบ package isolation
 2. กำหนด `tags` ใน package-level `turbo.json` สำหรับ labeling packages
@@ -84,6 +89,7 @@ related:
 5. ตรวจสอบ rules ลึกถึง transitive dependencies
 
 ### 6. Watch Mode
+> Goal: Watch Mode
 
 1. ใช้ `turbo watch <task>` สำหรับ re-run tasks เมื่อ source changes
 2. Watch mode ตาม Task Graph ใน `turbo.json`
@@ -92,6 +98,7 @@ related:
 5. ใช้ `--experimental-write-cache` สำหรับ write cache ใน watch mode
 
 ### 7. Usage And Filtering
+> Goal: Usage And Filtering
 
 1. รัน `turbo run <task>` สำหรับ task เฉพาะ
 2. ใช้ `--affected` เพื่อรันเฉพาะ changed packages (auto-compares กับ default branch)
@@ -105,6 +112,7 @@ related:
 6. ใช้ `--dry=json` สำหรับ inspect task dependencies
 
 ### 8. Remote Caching
+> Goal: Remote Caching
 
 1. ตั้งค่า `remoteCache` ใน `turbo.json` หรือ `global.remoteCache`
 2. รัน `bunx turbo link --yes` เพื่อเชื่อมต่อ Vercel Remote Cache

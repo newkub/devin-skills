@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - loop-until-complete
+  - watch-browser
+  - resolve-errors
+  - run-build
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 ## Execute
 
 ### 1. Install And Authenticate
+> Goal: Install And Authenticate
 
 ติดตั้ง Railway CLI และตั้งค่า authentication
 
@@ -32,6 +40,7 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 4. ตรวจสอบด้วย `railway whoami --json` ว่า authenticated แล้ว
 
 ### 2. Setup Project
+> Goal: Setup Project
 
 ตั้งค่า Railway project และ service
 
@@ -44,6 +53,7 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 4. ตรวจสอบด้วย `railway status --json` ว่า link ถูกต้อง
 
 ### 3. Configure Environment
+> Goal: Configure Environment
 
 ตั้งค่า environment variables และ domains
 
@@ -53,6 +63,7 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 4. ตรวจสอบ variables ด้วย `railway variables list --json`
 
 ### 4. Deploy
+> Goal: Deploy
 
 Deploy application ไปยัง Railway
 
@@ -63,6 +74,7 @@ Deploy application ไปยัง Railway
 5. ตรวจสอบ exit code: 0 = SUCCESS, 1 = FAILED
 
 ### 5. Watch Deployment
+> Goal: Watch Deployment
 
 ตรวจสอบ deployment จนกว่าจะ live
 
@@ -73,6 +85,7 @@ Deploy application ไปยัง Railway
 5. ทำ `/watch-browser` ด้วย deployment URL ถ้ามี domain
 
 ### 6. Fix Errors
+> Goal: Fix Errors
 
 แก้ไข errors ที่พบ
 
@@ -83,6 +96,7 @@ Deploy application ไปยัง Railway
 5. หรือรัน `railway up` ใหม่หลังแก้ code
 
 ### 7. Loop Until Live
+> Goal: Loop Until Live
 
 ทำซ้ำจนกว่า deployment live สำเร็จ
 

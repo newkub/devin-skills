@@ -17,6 +17,7 @@ related:
   - follow-config
   - follow-gitignore
   - validate
+  - update-dot-devin
 ---
 
 ## Goal
@@ -31,8 +32,7 @@ related:
 
 ### 1. Detect Project Structure
 
-ตรวจสอบ project ก่อน update
-
+> Goal: ตรวจสอบ project ก่อน update
 > Goal: รู้ structure, docs, config, และ tools
 
 1. อ่าน root `package.json`
@@ -42,8 +42,7 @@ related:
 
 ### 2. Run Updates In Order
 
-รัน update ตามลำดับ
-
+> Goal: รัน update ตามลำดับ
 > Goal: docs, rules, และ tooling อัปเดตครบ
 
 1. `/update-dot-devin`
@@ -58,8 +57,7 @@ related:
 
 ### 3. Coordinate Config
 
-ตรวจสอบ config files
-
+> Goal: ตรวจสอบ config files
 > Goal: config, gitignore, และ scripts sync กัน
 
 1. ทำ `/follow-config` เพื่อ sync config ทั้งหมด
@@ -68,8 +66,7 @@ related:
 
 ### 4. Validate
 
-ตรวจสอบผลลัพธ์
-
+> Goal: ตรวจสอบผลลัพธ์
 > Goal: ผ่าน validation โดยไม่มี side effects
 
 1. ทำ `/validate`
@@ -78,8 +75,7 @@ related:
 
 ### 5. Report
 
-สรุปผล
-
+> Goal: สรุปผล
 > Goal: รายงานผลและ next actions
 
 1. รายงาน files ทีเปลี่ยน

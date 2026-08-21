@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-rolldown
 ---
 
 ## Goal
@@ -23,8 +26,10 @@ triggers:
 ## Execute
 
 ### 1. Libraries
+> Goal: Libraries
 
 ### 1. tsdown (rolldown/tsdown)
+> Goal: tsdown (rolldown/tsdown)
 
 - Description: The elegant bundler for libraries powered by Rolldown
 - Stars: 3.8k
@@ -32,24 +37,28 @@ triggers:
 - Use Case: Library bundling for TypeScript projects
 
 ### 2. rolldphobia (ssssota/rolldphobia)
+> Goal: rolldphobia (ssssota/rolldphobia)
 
 - Description: A modern bundle size analyzer powered by Rolldown and esm.sh
 - Features: Browser-based bundling, real bundle analysis
 - Use Case: Bundle size analysis tools
 
 ### 3. vitejs/rolldown-vite
+> Goal: vitejs/rolldown-vite
 
 - Description: Vite with Rolldown as bundler (WIP)
 - Status: Temporary package for Vite 7 to Vite 8 migration
 - Use Case: Testing Rolldown with Vite
 
 ### 4. cloudflare/agents
+> Goal: cloudflare/agents
 
 - Description: Cloudflare Agents project using tsdown
 - Features: Uses tsdown for library bundling
 - Use Case: Production application
 
 ### 5. Rolldown Official Packages
+> Goal: Rolldown Official Packages
 
 - `rolldown` - Main bundler package
 - `@rolldown/browser` - Browser-compatible WASM distribution
@@ -58,17 +67,20 @@ triggers:
 - `@rolldown/binding-*` - Platform-specific native bindings (15+ packages)
 
 ### 6. rolldown-require
+> Goal: rolldown-require
 
 - Description: Load configuration files of any format for Rolldown
 - Features: Support CommonJS, .mjs, TypeScript configs
 - Use Case: Configuration file loading
 
 ### 7. Built-in Plugins
+> Goal: Built-in Plugins
 
 - General: BundleAnalyzerPlugin, ReplacePlugin, IsolatedDeclarationPlugin, EsmExternalRequirePlugin
 - Vite Compatibility: ViteResolvePlugin, ViteJsonPlugin, ViteManifestPlugin, ViteReporterPlugin, ViteAliasPlugin, ViteImportGlobPlugin
 
 ### 8. Community Plugins
+> Goal: Community Plugins
 
 - rolldown-plugin-dts (sxzz/rolldown-plugin-dts) - Plugin สำหรับ generate type definitions
 - rolldown-plugin-require-cjs - Plugin สำหรับ CJS require support

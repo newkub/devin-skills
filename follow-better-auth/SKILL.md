@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -25,12 +26,14 @@ related:
 ## Execute
 
 ### 1. Install
+> Goal: Install
 
 1. ติดตั้ง `better-auth`
 2. ติดตั้ง adapter สำหรับ database (prisma, drizzle, mongodb, etc.)
 3. ตั้งค่า environment variables
 
 ### 2. Configure
+> Goal: Configure
 
 1. สร้าง `auth.ts` พร้อม `betterAuth()` config
 2. กำหนด plugins (email, oauth, passkey, admin)
@@ -38,12 +41,14 @@ related:
 4. กำหนด session ให้ปลอดภัย
 
 ### 3. Integrate
+> Goal: Integrate
 
 1. สร้าง API route สำหรับ auth handler
 2. ใช้ client ใน frontend (`useSession`, `signIn`, `signUp`, `signOut`)
 3. จัดการ roles/permissions
 
 ### 4. Test
+> Goal: Test
 
 1. ทดสอบ sign in / sign up
 2. ทดสอบ protected routes

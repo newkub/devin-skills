@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - idea-features
+  - suggest-next-action
+  - idea-uxui
+  - realize-implementation
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Context
+> Goal: Analyze Context
 
 วิเคราะห์ context จาก user request:
 
@@ -31,6 +39,7 @@ triggers:
 3. ระบุ pain points และ gaps จาก context
 
 ### 2. Generate Ideas
+> Goal: Generate Ideas
 
 สร้างไอเดียตาม context:
 
@@ -42,6 +51,7 @@ triggers:
 6. จัดกลุ่มตาม topics
 
 ### 3. Prioritize And Report
+> Goal: Prioritize And Report
 
 จัดลำดับและรายงาน:
 

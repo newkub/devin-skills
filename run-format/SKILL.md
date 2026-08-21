@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Check Formatter Config
+> Goal: Check Formatter Config
 
 ตรวจสอบ formatter ที่ใช้ใน project
 
@@ -32,6 +36,7 @@ triggers:
 4. ตรวจสอบ scripts ใน `package.json`
 
 ### 2. Run Format Command
+> Goal: Run Format Command
 
 รัน formatter command ตามที่ตั้งค่าไว้
 
@@ -42,6 +47,7 @@ triggers:
 5. รอให้ format เสร็จสิ้นก่อนดำเนินการต่อ
 
 ### 3. Analyze Format Issues
+> Goal: Analyze Format Issues
 
 วิเคราะห์ปัญหาที่เกิดจาก formatter
 
@@ -54,6 +60,7 @@ triggers:
 3. ระบุ files ที่มีปัญหา
 
 ### 4. Fix Config Issues
+> Goal: Fix Config Issues
 
 แก้ไขปัญหาที่เกี่ยวกับ config
 
@@ -63,6 +70,7 @@ triggers:
 4. รัน format อีกครั้งเพื่อทดสอบ
 
 ### 5. Fix Code Issues
+> Goal: Fix Code Issues
 
 แก้ไขปัญหาที่เกิดใน code
 
@@ -72,6 +80,7 @@ triggers:
 4. รัน format ซ้ำจนไม่มี errors
 
 ### 6. Verify
+> Goal: Verify
 
 ตรวจสอบผลลัพธ์
 

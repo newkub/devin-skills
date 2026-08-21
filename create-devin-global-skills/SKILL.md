@@ -18,9 +18,6 @@ related:
   - scan-codebase
   - ask-me
   - validate
-  - check-reference
-  - follow-content-quality
-  - update-reference
 ---
 
 ## Goal
@@ -35,8 +32,7 @@ related:
 
 ### 1. Identify New Skill
 
-ระบุชื่อและวัตถุประสงค์ของ skill
-
+> Goal: ระบุชื่อและวัตถุประสงค์ของ skill
 > Goal: skill ใหม่มีชื่อและ scope ชัดเจน
 
 1. รับชื่อ skill และสิ่งที่ต้องการทำจาก user
@@ -46,8 +42,7 @@ related:
 
 ### 2. Check Existing Skills
 
-ตรวจสอบว่าไม่ซ้ำซ้อน
-
+> Goal: ตรวจสอบว่าไม่ซ้ำซ้อน
 > Goal: ไม่สร้าง skill ซ้ำ
 
 1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
@@ -57,8 +52,7 @@ related:
 
 ### 3. Create Directory
 
-สร้าง directory สำหรับ skill
-
+> Goal: สร้าง directory สำหรับ skill
 > Goal: โครงสร้าง skill ถูกต้อง
 
 1. สร้าง `%APPDATA%\devin\skills\<skill-name>\`
@@ -67,8 +61,7 @@ related:
 
 ### 4. Write SKILL.md And Directory
 
-สร้าง `SKILL.md` และ directory contents
-
+> Goal: สร้าง `SKILL.md` และ directory contents
 > Goal: skill package ถูกต้องและครบถ้วน
 
 1. ทำ `/follow-devin-skills-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
@@ -78,8 +71,7 @@ related:
 
 ### 5. Validate And Update References
 
-ตรวจสอบคุณภาพและ references
-
+> Goal: ตรวจสอบคุณภาพและ references
 > Goal: skill พร้อมใช้งาน
 
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง

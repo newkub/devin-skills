@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - add-to-queue
+  - report-ansi
+  - implement-comment-todo
 ---
 
 ## Goal
@@ -29,8 +32,7 @@ related:
 
 ### 1. Search For Markers
 
-ค้นหา TODO/FIXME/HACK markers ทั้งหมดใน codebase
-
+> Goal: ค้นหา TODO/FIXME/HACK markers ทั้งหมดใน codebase
 > Goal: มี markers ครบสำหรับการวิเคราะห์
 
 1. ทำ `/scan-codebase` เพื่อค้นหา `TODO`, `FIXME`, `HACK`, `NOTE`, `XXX`, `BUG` ใน source files
@@ -40,8 +42,7 @@ related:
 
 ### 2. Categorize Markers
 
-จัดประเภท markers ตามชนิด
-
+> Goal: จัดประเภท markers ตามชนิด
 > Goal: Markers จัดประเภทชัดเจน
 
 1. จัดประเภทตาม marker type:
@@ -56,8 +57,7 @@ related:
 
 ### 3. Collect Context
 
-รวบรวมบริบทของแต่ละ marker
-
+> Goal: รวบรวมบริบทของแต่ละ marker
 > Goal: เข้าใจสิ่งที่ marker อ้างถึง
 
 1. อ่านบรรทัดรอบๆ marker เพื่อเข้าใจ context
@@ -67,8 +67,7 @@ related:
 
 ### 4. Assess Priority
 
-ประเมินความสำคัญของแต่ละ marker
-
+> Goal: ประเมินความสำคัญของแต่ละ marker
 > Goal: รู้ว่า marker ใดต้องจัดการก่อน
 
 1. จัด priority ตาม marker type:
@@ -81,8 +80,7 @@ related:
 
 ### 5. Format Report
 
-จัดรูปแบบรายงานให้อ่านง่าย
-
+> Goal: จัดรูปแบบรายงานให้อ่านง่าย
 > Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
@@ -100,8 +98,7 @@ related:
 
 ### 6. Provide Insights
 
-ให้ insights และ recommendations
-
+> Goal: ให้ insights และ recommendations
 > Goal: ผู้อ่านรู้ว่าต้องจัดการอะไรก่อน
 
 1. สรุปจำนวน markers แยกตาม type และ priority
@@ -112,7 +109,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

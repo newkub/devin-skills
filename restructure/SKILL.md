@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,12 +18,6 @@ related:
   - deep-review
   - dont-over-engineer
   - follow-import-export
-  - follow-ordering
-  - refactor
-  - relocation
-  - review-codebase
-  - update-reference
-  - use-scripts
 ---
 
 ## Goal
@@ -35,6 +31,7 @@ related:
 ## Execute
 
 ### 1. Analyze Current Structure
+> Goal: Analyze Current Structure
 
 วิเคราะห์โครงสร้างปัจจุบันเพื่อระบุปัญหาก่อนเปลี่ยนแปลง
 
@@ -44,6 +41,7 @@ related:
 4. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Improve File Naming
+> Goal: Improve File Naming
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
@@ -52,6 +50,7 @@ related:
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 
 ### 3. Split Files With Multiple Responsibilities
+> Goal: Split Files With Multiple Responsibilities
 
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
 
@@ -62,6 +61,7 @@ related:
 > Goal reminder: เป้าหมายคือทุกไฟล์มี single responsibility ไม่เกิน 250 บรรทัด
 
 ### 4. Relocate And Group By Domain
+> Goal: Relocate And Group By Domain
 
 ย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ domain — high-risk action
 
@@ -72,6 +72,7 @@ related:
 5. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 
 ### 5. Refactor Imports And Exports
+> Goal: Refactor Imports And Exports
 
 ปรับปรุง barrel exports, import aliases และ import paths ให้ใช้ alias แทน relative paths ที่ซับซ้อน
 
@@ -79,6 +80,7 @@ related:
 2. ถ้า barrel files และ import aliases ไม่ต้องปรับ → skip ไป Step 6
 
 ### 6. Validate Single Responsibility
+> Goal: Validate Single Responsibility
 
 ตรวจสอบว่าผลลัพธ์เป็นไปตามเป้าหมาย
 

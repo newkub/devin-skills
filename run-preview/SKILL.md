@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-build
+  - run-deploy
+  - watch-browser
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Build Preview
+> Goal: Build Preview
 
 สร้าง preview build สำหรับทดสอบ
 
@@ -36,6 +44,7 @@ triggers:
 8. ถ้าเป็น Cloudflare: ใช้ `bunx wrangler pages dev` สำหรับ local preview
 
 ### 2. Start Preview Server
+> Goal: Start Preview Server
 
 รัน preview server ตาม framework
 
@@ -45,6 +54,7 @@ triggers:
 4. ถ้าเป็น deployment preview ให้รอจนกว่า URL จะพร้อม
 
 ### 3. Test Preview
+> Goal: Test Preview
 
 ทดสอบ preview ใน browser
 
@@ -55,6 +65,7 @@ triggers:
 5. ทำ `/run-test` สำหรับทดสอบแบบละเอียด
 
 ### 4. Verify Preview
+> Goal: Verify Preview
 
 ตรวจสอบความถูกต้องของ preview
 
@@ -66,6 +77,7 @@ triggers:
 6. ตรวจสอบ environment variables ถูกต้องสำหรับ preview
 
 ### 5. Report Issues
+> Goal: Report Issues
 
 รายงาน issues ที่พบในรูปแบบตาราง
 
@@ -75,6 +87,7 @@ triggers:
 4. จัดลำดับ issues ตาม severity (critical, high, medium, low)
 
 ### 6. Share Preview
+> Goal: Share Preview
 
 แชร์ preview ให้ทีมและรวบรวม feedback
 

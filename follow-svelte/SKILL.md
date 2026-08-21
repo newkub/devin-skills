@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-svelte-kit
+  - follow-unocss
+  - refactor
 ---
 
 ## Goal
@@ -24,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project
+> Goal: Setup Project
 
 1. สร้าง `vite.config.ts` ด้วย `@sveltejs/vite-plugin-svelte`
 2. สร้าง `svelte.config.js` ด้วย `vitePreprocess` และ `runes: true`
@@ -33,6 +39,7 @@ triggers:
 6. ใช้ Svelte 5.56+ (latest stable มีนาคม 2026)
 
 ### 2. Configure TypeScript
+> Goal: Configure TypeScript
 
 1. ตั้งค่า `target: ES2020` และ `module: ESNext`
 2. ใช้ `moduleResolution: bundler`
@@ -41,6 +48,7 @@ triggers:
 5. รองรับ TypeScript 6.0 (svelte-check 4.4.8+, svelte2tsx 0.7.55+)
 
 ### 3. Svelte 5 Runes
+> Goal: Svelte 5 Runes
 
 ใช้ Runes สำหรับ reactivity อย่างถูกต้อง
 
@@ -54,6 +62,7 @@ triggers:
 8. ใช้ `$effect.pre` สำหรับ effects ที่ต้องทำงานก่อน DOM updates
 
 ### 4. Snippets And Components
+> Goal: Snippets And Components
 
 ใช้ Snippets แทน Slots
 
@@ -64,12 +73,14 @@ triggers:
 5. อนุญาต declarations ใน markup ได้ (Svelte 5.56+)
 
 ### 5. Setup Styling
+> Goal: Setup Styling
 
 1. ทำ `/follow-unocss` สำหรับ styling
 2. ใช้ UnoCSS ทั้งหมดถ้าเป็นไปได้
 3. หลีกเลี่ยง style scoped
 
 ### 6. State Management Patterns
+> Goal: State Management Patterns
 
 1. ใช้ `$state` ใน classes สำหรับ business logic ที่ reusable
 2. จัดกลุ่ม related state ใน cohesive objects (granular reactivity)
@@ -78,6 +89,7 @@ triggers:
 5. ใช้ `$state.snapshot()` สำหรับ get immutable snapshot
 
 ### 7. Event Handling
+> Goal: Event Handling
 
 1. ใช้ `onclick` แทน `on:click` (Svelte 5 syntax)
 2. Event handlers เป็น properties เหมือน attributes อื่นๆ

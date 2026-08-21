@@ -1,14 +1,16 @@
 ---
 name: save-to-github-gist
 description: สร้าง GitHub gist จากไฟล์หรือข้อความที่ระบุ
-argument-hint: <file-or-content> [--public|--secret]
 allowed-tools:
   - exec
   - read
+  - write
+  - ask_user_question
 triggers:
   - user
 related:
   - open-web
+argument-hint: <file-or-content> [--public|--secret]
 ---
 
 ## Goal
@@ -24,7 +26,6 @@ related:
 ## Execute
 
 ### 1. Prepare Gist Content
-
 > Goal: มีเนื้อหาที่จะบันทึกลง gist
 
 1. ตรวจสอบ `gh auth status` ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
@@ -35,7 +36,6 @@ related:
 6. รับ description จาก argument หรือถาม user
 
 ### 2. Create Gist
-
 > Goal: gist ถูกสร้างบน GitHub
 
 1. กำหนด visibility: ใช้ `--public` ถ้า public; ถ้า secret ไม่ต้องใส่ flag (ค่าเริ่มต้นของ `gh`)
@@ -44,7 +44,6 @@ related:
 4. บันทึก URL จาก output
 
 ### 3. Open And Report
-
 > Goal: แสดงผล gist URL
 
 1. รับ URL จาก output หรือ `gh gist view <gist-id> --json url --jq .url`

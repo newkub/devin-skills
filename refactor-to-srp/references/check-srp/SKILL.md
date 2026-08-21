@@ -17,6 +17,7 @@ related:
   - deep-analyze-by-use-scripts
   - use-scripts
   - refactor-to-srp
+  - restructure
 ---
 
 ## Goal
@@ -31,8 +32,7 @@ related:
 
 ### 1. Determine Scope And Threshold
 
-กำหนดเป้าหมายและเกณฑ์ SRP
-
+> Goal: กำหนดเป้าหมายและเกณฑ์ SRP
 > Goal: มี scope และ threshold ชัดเจอก่อน analyze
 
 1. รับ target path หรือ file จาก user (default = ทั้ง project)
@@ -44,8 +44,7 @@ related:
 
 ### 2. Run Ast-Grep Outline
 
-ใช้ `ast-grep outline` สรุป top-level symbols และ members
-
+> Goal: ใช้ `ast-grep outline` สรุป top-level symbols และ members
 > Goal: มี structural overview ของ target files
 
 1. ทำ `/use-ast-grep-outline` เพื่อรัน `sg outline <path> --json`
@@ -55,8 +54,7 @@ related:
 
 ### 3. Calculate SRP Metrics
 
-ประมวลผล metrics จาก outline output
-
+> Goal: ประมวลผล metrics จาก outline output
 > Goal: ระบุ units ที่ violate SRP
 
 1. ใช้ `/use-scripts` สร้าง script นับ top-level symbols ต่อไฟล์
@@ -66,8 +64,7 @@ related:
 
 ### 4. Deep Analyze With Use Scripts
 
-ทำ deep analysis สำหรับ findings ที่พบ
-
+> Goal: ทำ deep analysis สำหรับ findings ที่พบ
 > Goal: ได้รายงานลึกซึ้งครอบคลุม
 
 1. ทำ `/deep-analyze-by-use-scripts` บน findings จาก Step 3
@@ -76,8 +73,7 @@ related:
 
 ### 5. Generate Comprehensive Report
 
-สร้างรายงาน SRP ครอบคลุม
-
+> Goal: สร้างรายงาน SRP ครอบคลุม
 > Goal: รายงานสามารถใช้ตัดสินใจ refactor ได้
 
 1. สร้างตาราง: file, unit, top-level symbols, public members, cohesion score, srp status, severity, recommended action

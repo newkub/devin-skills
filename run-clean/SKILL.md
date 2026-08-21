@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +23,15 @@ Use `run-clean` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Clean Build Artifacts
+> Goal: Clean Build Artifacts
 
 1. ลบโฟลเดอร์ `dist`, `build`, `out`
 2. ลบ `.next`, `.nuxt`, `.output` ตาม framework
 3. ลบ compiled files ทั้งหมด
 
 ### 2. Clean Cache
+> Goal: Clean Cache
 
 1. ลบ `node_modules/.cache`
 2. ลบ `.turbo`, `.cache`
@@ -40,12 +39,14 @@ Use `run-clean` for the specific tasks and workflows it covers
 4. ลบ TypeScript cache
 
 ### 3. Clean Dependencies
+> Goal: Clean Dependencies
 
 1. ลบ `node_modules` ถ้าจำเป็น
 2. ลบ lock files ถ้าจำเป็น
 3. ลบ package manager cache
 
 ### 4. Clean Temporary Files
+> Goal: Clean Temporary Files
 
 1. ลบ `.DS_Store`, `Thumbs.db`
 2. ลบ log files
@@ -53,18 +54,18 @@ Use `run-clean` for the specific tasks and workflows it covers
 4. ลบ coverage reports เก่า
 
 ### 5. Clean Git
+> Goal: Clean Git
 
 1. รัน `git clean -fdx` เพื่อลบ untracked files
 2. รัน `git gc` เพื่อ optimize repository
 3. ลบ stale branches ถ้าจำเป็น
 
 ### 6. Reinstall Dependencies
+> Goal: Reinstall Dependencies
 
 1. รัน `bun install` หรือ package manager ที่ใช้
 2. ตรวจสอบว่า dependencies ติดตั้งสำเร็จ
 3. รัน build เพื่อทดสอบ
-
-## Rules
 
 ## Rules
 
@@ -85,8 +86,6 @@ Use `run-clean` for the specific tasks and workflows it covers
 - ตรวจสอบ git status ก่อน clean
 - Commit หรือ stash changes ที่สำคัญ
 - ใช้ `--dry-run` ก่อน `git clean`
-
-## Expected Outcome
 
 ## Expected Outcome
 

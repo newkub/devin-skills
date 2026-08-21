@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 
 ## Execute
 
-## Execute
-
 ### 1. Describe What Not How
+> Goal: Describe What Not How
 
 เขียน code ที่บอกว่าอะไรต้องทำ ไม่ใช่วิธีทำ
 
@@ -37,6 +35,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. หลีกเลี่ยง manual state management
 
 ### 2. Use Immutability
+> Goal: Use Immutability
 
 ใช้ immutability เพื่อลด side effects
 
@@ -47,6 +46,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. ใช้ runtime immutability mechanisms สำหรับ runtime immutability
 
 ### 3. Use Composition
+> Goal: Use Composition
 
 รวม functions หรือ components เข้าด้วยกัน
 
@@ -57,6 +57,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. ใช้ function composition utilities
 
 ### 4. Use Declarative APIs
+> Goal: Use Declarative APIs
 
 ใช้ APIs ที่เป็น declarative
 
@@ -67,6 +68,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. ใช routing libraries สำหรับ routing
 
 ### 5. Data Transformation
+> Goal: Data Transformation
 
 แปลง data อย่าง declarative
 
@@ -77,6 +79,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. ใช้ serializers สำหรับ data serialization
 
 ### 6. Configuration
+> Goal: Configuration
 
 ใช้ configuration แทน hardcoded logic
 
@@ -87,6 +90,7 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 5. Document configuration อย่างชัดเจน
 
 ### 7. Testing
+> Goal: Testing
 
 เขียน tests สำหรับ declarative code
 
@@ -95,8 +99,6 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 3. Test configuration
 4. Test data transformations
 5. Use property-based testing
-
-## Rules
 
 ## Rules
 
@@ -169,8 +171,6 @@ Use `follow-declarative-programming` for the specific tasks and workflows it cov
 - Test configuration
 - Test data transformations
 - Use property-based testing
-
-## Expected Outcome
 
 ## Expected Outcome
 

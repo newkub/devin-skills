@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install And Authenticate
+> Goal: Install And Authenticate
 
 ติดตั้ง Infisical CLI และ authenticate ด้วย machine identity strategies
 
@@ -35,6 +38,7 @@ triggers:
 - Production: ตั้งค่า `INFISICAL_DISABLE_UPDATE_CHECK=true`
 
 ### 2. Initialize Project
+> Goal: Initialize Project
 
 ตั้งค่า Infisical สำหรับ project และ commit configuration
 
@@ -44,6 +48,7 @@ triggers:
 - Commit `.infisical.json` ไปยัง repository (ไม่มี sensitive data)
 
 ### 3. Configure .infisical.json
+> Goal: Configure .infisical.json
 
 ตั้งค่า workspace ID, default environment, และ environment mapping
 
@@ -53,6 +58,7 @@ triggers:
 - ใช้ `domain` field สำหรับ self-hosted instances หรือ EU Cloud
 
 ### 4. Manage Secrets
+> Goal: Manage Secrets
 
 จัดการ secrets ผ่าน CLI และ dashboard
 
@@ -65,6 +71,7 @@ triggers:
 - ใช้ secret referencing: `${KEY}` สำหรับ local references
 
 ### 5. Inject Secrets In Local Development
+> Goal: Inject Secrets In Local Development
 
 ใช้ `infisical run` เพื่อ inject secrets เป็น environment variables
 
@@ -77,6 +84,7 @@ triggers:
 - Bun project: `infisical run -- bun run dev`
 
 ### 6. Export Secrets For CI/CD
+> Goal: Export Secrets For CI/CD
 
 Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
@@ -89,6 +97,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - Machine identity token (non-OIDC): `export INFISICAL_TOKEN=$(infisical login --method=universal-auth --client-id=<id> --client-secret=<secret> --silent --plain)`
 
 ### 7. Use SDK For Programmatic Access
+> Goal: Use SDK For Programmatic Access
 
 ใช้ `@infisical/sdk` สำหรับ programmatic access ใน production
 
@@ -101,6 +110,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - อย่า hardcode `clientId` และ `clientSecret` — ใช้ environment variables
 
 ### 8. Configure Platform Integrations
+> Goal: Configure Platform Integrations
 
 ตั้งค่า Infisical สำหรับ platforms ต่างๆ
 
@@ -140,8 +150,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - Infisical Agent: ใช้ daemon สำหรับ automatic secret rotation และ certificate management
 
 ### 9. Rotate Secrets
-
-ตั้งค่า secret rotation schedule และ monitor
+> Goal: ตั้งค่า secret rotation schedule และ monitor
 
 - ใช้ dual-phase rotation สำหรับ zero-downtime rotation
 - Rotation schedule: Database passwords (30-90 วัน), API keys (60-90 วัน), Cloud access keys (90 วัน)
@@ -150,8 +159,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - ทดสอบ application หลัง rotation
 
 ### 10. Monitor And Audit
-
-ตรวจสอบ audit logs และ secret access patterns
+> Goal: ตรวจสอบ audit logs และ secret access patterns
 
 - ตรวจสอบ audit logs ใน Infisical dashboard อย่างสม่ำเสมอ
 - Monitor secret access patterns สำหรับ anomalous behavior

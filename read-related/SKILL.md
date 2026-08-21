@@ -4,6 +4,7 @@ description: อ่านและสรุป skills ที่เกี่ย�
 allowed-tools:
   - read
   - skill
+  - write
 triggers:
   - user
   - model
@@ -11,6 +12,7 @@ related:
   - read-related-skills
   - report-table
   - suggest-next-action
+  - improve-redundancy
 ---
 
 ## Goal
@@ -25,16 +27,14 @@ related:
 
 ### 1. Read Related Skills
 
-อ่าน skills ที่เกี่ยวข้อง
-
+> Goal: อ่าน skills ที่เกี่ยวข้อง
 > Goal: รู้ dependencies และขั้นตอนของ skills ทั้งหมด
 
 1. ทำ `/read-related-skills` เพื่อสร้าง dependency graph และสรุป skills
 
 ### 2. Synthesize And Report
 
-รวมผลลัพธ์และรายงาน
-
+> Goal: รวมผลลัพธ์และรายงาน
 > Goal: ผู้ใช้ได้ภาพรวมของ related context พร้อมดำเนินการต่อ
 
 1. รวบรวม guidelines และ instructions จาก skills ที่อ่าน

@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
+  - follow-code-quality
+  - refactor
+  - review-codebase
+  - scan-codebase
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Analyze Type Safety Issues
 
-วิเคราะห์ type safety issues ใน codebase
-
+> Goal: วิเคราะห์ type safety issues ใน codebase
 > Goal: รู้ว่ามี type issues อะไรบ้าง และจัดลำดับตาม severity
 
 1. ทำ `/scan-codebase`, รัน `tsc --noEmit`, ทำ `/review-codebase` — ระบุ `any`, `as`, non-null assertions, missing return types
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Fix Critical Type Issues
 
-แก้ไข type issues ที่มีผลกระทบต่อ runtime safety
-
+> Goal: แก้ไข type issues ที่มีผลกระทบต่อ runtime safety
 > Goal: ไม่มี `any` ที่ทำให้เกิด runtime bugs
 
 1. แทนที่ `any` ด้วย `unknown` + type narrowing หรือ specific types
@@ -46,8 +51,7 @@ triggers:
 
 ### 3. Improve Type Design
 
-ปรับปรุง type design ให้ expressive และ maintainable
-
+> Goal: ปรับปรุง type design ให้ expressive และ maintainable
 > Goal: Types เป็น single source of truth และ expressive
 
 1. ใช้ type inference จาก schema และ API, เพิ่ม branded types สำหรับ IDs และ domain types, ใช้ discriminated unions สำหรับ state machines
@@ -57,8 +61,7 @@ triggers:
 
 ### 4. Increase Strictness
 
-เพิ่ม strictness ใน `tsconfig.json` เพื่อป้องกัน type issues ในอนาคต
-
+> Goal: เพิ่ม strictness ใน `tsconfig.json` เพื่อป้องกัน type issues ในอนาคต
 > Goal: tsconfig strict สุด เพื่อ catch type issues ตั้งแต่ compile time
 
 1. ทำ `/follow-typescript` เพื่อตั้งค่า `tsconfig.json` ให้ strict สุด — ถ้าเป็น TS project ทุกครั้ง
@@ -69,8 +72,7 @@ triggers:
 
 ### 5. Validate And Report
 
-ตรวจสอบผลลัพธ์และรายงาน
-
+> Goal: ตรวจสอบผลลัพธ์และรายงาน
 > Goal: Type safety ดีขึ้น ผ่าน typecheck และมี report ชัดเจน
 
 1. รัน `tsc --noEmit`, ทำ `/run-typecheck`, รัน lint (`bunx biome lint`)

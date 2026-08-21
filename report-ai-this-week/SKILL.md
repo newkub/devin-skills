@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - deep-research
+  - report
 ---
 
 ## Goal
@@ -33,8 +36,7 @@ related:
 
 ### 1. Define News Categories
 
-กำหนดหมวดข่าวที่ต้องการติดตาม
-
+> Goal: กำหนดหมวดข่าวที่ต้องการติดตาม
 > Goal: รู้หมวดข่าวและ keywords สำหรับค้นหา
 
 1. ระบุหมวดข่าว AI: models, frameworks, tools, research papers, industry news
@@ -44,8 +46,7 @@ related:
 
 ### 2. Research AI News
 
-ทำ `/deep-research` สำหรับข่าว AI
-
+> Goal: ทำ `/deep-research` สำหรับข่าว AI
 > Goal: ได้ข่าว AI ล่าสุดตาม time range
 
 1. ทำ `/deep-research` ด้วย keywords: `AI news this week`, `AI latest releases`, `AI breakthroughs`
@@ -57,8 +58,7 @@ related:
 
 ### 3. Research Open Source News
 
-ทำ `/deep-research` สำหรับข่าว open source
-
+> Goal: ทำ `/deep-research` สำหรับข่าว open source
 > Goal: ได้ข่าว open source ล่าสุดตาม time range
 
 1. ทำ `/deep-research` ด้วย keywords: `open source releases this week`, `trending GitHub repositories`
@@ -70,8 +70,7 @@ related:
 
 ### 4. Research AI Research Papers
 
-ค้นหา AI research papers ล่าสุด
-
+> Goal: ค้นหา AI research papers ล่าสุด
 > Goal: ได้ papers ล่าสุดที่มี impact สูง
 
 1. ค้นหาด้วย `search_web` ใช้ query `AI research papers latest`, `machine learning breakthroughs`
@@ -81,8 +80,7 @@ related:
 
 ### 5. Verify And Cross-Reference
 
-ตรวจสอบความถูกต้องและความใหม่ของข่าว
-
+> Goal: ตรวจสอบความถูกต้องและความใหม่ของข่าว
 > Goal: ข่าวผ่านการตรวจสอบความถูกต้องและ freshness
 
 1. เปรียบเทียบข่าวจาก multiple sources เพื่อยืนยันความถูกต้อง
@@ -92,8 +90,7 @@ related:
 
 ### 6. Compile Report
 
-สร้างรายงานข่าวรายสัปดาห์
-
+> Goal: สร้างรายงานข่าวรายสัปดาห์
 > Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางข่าว
@@ -106,7 +103,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

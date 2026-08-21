@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-ast-grep-rules
+  - use-ast-grep
+  - use-ast-grep-outline
+  - use-scripts
+  - improve-code-duplication
 ---
 
 ## Goal
@@ -24,6 +31,8 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ### 1. File Structure Discovery (30 วินาที)
 
+> Goal: File Structure Discovery (30 วินาที)
+
 ค้นพบ structure ของ codebase
 
 1. ทำ `find_by_name` หา manifest files (`package.json`, `tsconfig.json`, `Cargo.toml`, `pyproject.toml`)
@@ -32,6 +41,8 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 4. ตรวจสอบ monorepo structure (workspaces, packages/)
 
 ### 2. Pattern Search (1 นาที)
+
+> Goal: Pattern Search (1 นาที)
 
 ค้นหา patterns ทั่วไปด้วย Grep
 
@@ -42,6 +53,8 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 5. รวบรวม results และ count frequencies
 
 ### 3. Structural Analysis (1 นาที)
+
+> Goal: Structural Analysis (1 นาที)
 
 วิเคราะห์ structure ด้วย ast-grep ผ่าน `/use-scripts`
 
@@ -58,7 +71,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ### 4. Structure Navigation (30 วินาที)
 
-สำรวจ structure ด้วย `ast-grep outline` โดยไม่ต้องอ่านทั้งไฟล์
+> Goal: สำรวจ structure ด้วย `ast-grep outline` โดยไม่ต้องอ่านทั้งไฟล์
 
 1. ทำ `/use-ast-grep-outline` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
 2. รัน `ast-grep outline <path> --items structure` สำหรับ top-level symbols
@@ -70,7 +83,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ### 5. Quality Check (30 วินาที)
 
-ตรวจสอบคุณภาพโค้ด
+> Goal: ตรวจสอบคุณภาพโค้ด
 
 1. ทำ `/improve-code-duplication` หา duplicate code
 2. ทำ `Grep` หา anti-patterns (`any`, `console.log`, nested ternary)
@@ -79,7 +92,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ### 6. Structured Data Generation (30 วินาที)
 
-สร้าง structured data สำหรับ AI ด้วย `/use-scripts`
+> Goal: สร้าง structured data สำหรับ AI ด้วย `/use-scripts`
 
 1. ทำ `/use-scripts` สร้าง Bun script ใน `.devin/scripts/` สำหรับรวบรวม findings และสร้าง structured data:
    ```typescript
@@ -96,13 +109,12 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ### 7. AI Summarization (Minimal Token)
 
-สรุป findings ด้วย AI
+> Goal: สรุป findings ด้วย AI
 
 1. ส่ง structured data ให้ AI
 2. ขอ summary ของ codebase
 3. ขอ recommendations ตาม priority
 4. ทำ `/report` สรุปผลลัพธ์
-
 
 ## Rules
 

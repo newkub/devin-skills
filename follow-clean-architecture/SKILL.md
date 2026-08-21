@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-test
+  - follow-event-driven
+  - follow-zod
+  - refactor-packages
+  - follow-orm
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ Implement Clean Architecture ด้วย Vertical Slice Modules, Functional Cor
 
 ### 1. Setup Project Structure
 
-สร้าง project structure ตาม Clean Architecture
-
+> Goal: สร้าง project structure ตาม Clean Architecture
 > Goal: มี project structure ตาม Clean Architecture พร้อม modules และ adapters
 
 ```
@@ -40,8 +47,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 2. Create Shared Kernel
 
-ทำ `/follow-functional-programming` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`:
-
+> Goal: ทำ `/follow-functional-programming` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
 > Goal: มี shared kernel พร้อม types, utils, errors และ ports
 
 1. `types/` - Common types (`Result`, `Option`)
@@ -52,8 +58,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 3. Implement Functional Core
 
-เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection):
-
+> Goal: เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection)
 > Goal: domain logic เป็น pure functions ไม่มี side effects
 
 1. ใช้ `pure functions` เท่านั้น, Immutable data structures (`readonly`)
@@ -63,8 +68,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 4. Implement Application Layer
 
-ทำ `/follow-event-driven` เมื่อ application มี event-driven workflows; ถ้าไม่ใช้ event-driven ให้สร้าง usecases/queries ตรงๆ ใน `modules/*/application/`:
-
+> Goal: ทำ `/follow-event-driven` เมื่อ application มี event-driven workflows; ถ้าไม่ใช้ event-driven ให้สร้าง usecases/queries ตรงๆ ใน `modules/*/application/`
 > Goal: application layer ใช้ ports สำหรับ side effects
 
 1. `usecases/` - Flow orchestration (write side)
@@ -75,8 +79,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 5. Implement Adapters And Presentation
 
-ทำ `/follow-layered-architecture` เพื่อวางโครงสร้าง adapters และ presentation layers ตาม layered pattern:
-
+> Goal: ทำ `/follow-layered-architecture` เพื่อวางโครงสร้าง adapters และ presentation layers ตาม layered pattern
 > Goal: adapters จัดการ side effects, presentation เป็น entry points
 
 1. `adapters/db/` - Database implementations — ทำ `/follow-orm`
@@ -87,8 +90,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 6. Refactor Existing Code
 
-ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้าม step นี้):
-
+> Goal: ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้าม step นี้)
 > Goal: existing code ย้ายไป Clean Architecture โดยไม่พัง functionality
 
 1. ย้าย business logic ไป `modules/*/domain/operations/`
@@ -99,8 +101,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 7. Testing Strategy
 
-ทำ `/write-test` เพื่อจัดการ tests ตาม Clean Architecture:
-
+> Goal: ทำ `/write-test` เพื่อจัดการ tests ตาม Clean Architecture
 > Goal: tests ครบทุกระดับ unit, integration, e2e
 
 1. ทำ `/follow-vitest` สำหรับ testing framework setup
@@ -111,8 +112,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 8. Split Modules When Too Large
 
-ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-packages`:
-
+> Goal: ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-packages`
 > Goal: module แบ่งเล็กลงตาม SRP โดยไม่เกิด circular dependency
 
 1. วัด module size: module เกิน 15 ไฟล์, ไฟล์ใน `domain/operations/` เกิน 300 บรรทัด, usecases ใน `application/usecases/` เกิน 5 ตัว

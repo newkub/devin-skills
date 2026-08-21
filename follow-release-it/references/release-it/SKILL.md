@@ -10,12 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Release It สำหรับ automate versioning และ package publishing
-
 
 ## Scope
 
@@ -26,10 +26,11 @@ triggers:
 - Changelog generation
 - bun publishing
 
-
 ## Execute
 
 ### 1. Install Release It
+
+> Goal: Install Release It
 
 ติดตั้ง Release It:
 ```bash
@@ -38,25 +39,26 @@ bun add -D release-it
 
 ### 2. Interactive Release
 
-Interactive release:
+> Goal: Interactive release
 ```bash
 bunx release-it
 ```
 
 ### 3. CI Mode
 
-CI mode (no prompts):
+> Goal: CI mode (no prompts)
 ```bash
 bunx release-it --ci
 ```
 
 ### 4. Dry Run
 
+> Goal: Dry Run
+
 Dry run:
 ```bash
 bunx release-it --dry-run
 ```
-
 
 ## Rules
 
@@ -64,7 +66,6 @@ bunx release-it --dry-run
 - ใช้ `bunx release-it` สำหรับ interactive release
 - ใช้ `--ci` สำหรับ CI mode
 - ใช้ `--dry-run` สำหรับ dry run
-
 
 ## Expected Outcome
 

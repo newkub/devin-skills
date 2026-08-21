@@ -18,12 +18,6 @@ related:
   - follow-monorepo
   - all-workspaces
   - analyze-project
-  - check-monorepo
-  - follow-write-devin-skills
-  - review-agents-md
-  - validate
-  - git-commit
-  - ask-me
 ---
 
 ## Goal
@@ -38,8 +32,7 @@ related:
 
 ### 1. Update Project
 
-วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
-
+> Goal: วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
 > Goal: root `AGENTS.md` ครอบคลุม project
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
@@ -52,8 +45,7 @@ related:
 
 ### 2. Follow Lib
 
-Map libraries และ dependencies ไปยัง follow skills
-
+> Goal: Map libraries และ dependencies ไปยัง follow skills
 > Goal: `### Architecture` ใน `AGENTS.md` ระบุ `tech: /follow-<tech>` ครบถ้วน
 
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
@@ -64,8 +56,7 @@ Map libraries และ dependencies ไปยัง follow skills
 
 ### 3. Ship
 
-Validate และ commit การเปลี่ยนแปลง `AGENTS.md`
-
+> Goal: Validate และ commit การเปลี่ยนแปลง `AGENTS.md`
 > Goal: `AGENTS.md` ผ่าน validation และถูก commit
 
 1. ทำ `/review-agents-md` เพื่อ review `AGENTS.md`
@@ -76,8 +67,7 @@ Validate และ commit การเปลี่ยนแปลง `AGENTS.md`
 
 ### 4. Monorepo Workspace Rules
 
-สร้าง/อัปเดท `AGENTS.md` สำหรับแต่ละ workspace ถ้าเป็น monorepo
-
+> Goal: สร้าง/อัปเดท `AGENTS.md` สำหรับแต่ละ workspace ถ้าเป็น monorepo
 > Goal: ทุก workspace มี `AGENTS.md` ที่ระบุ dependencies ระหว่าง workspaces
 
 1. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure

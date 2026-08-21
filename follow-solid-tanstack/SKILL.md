@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-zod
+  - follow-vite
+  - follow-tanstack
+  - follow-typescript
+  - follow-vitest
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project
+> Goal: Setup Project
 
 1. ติดตั้ง dependencies: `bun add @tanstack/solid-start @tanstack/solid-router @tanstack/solid-query @tanstack/solid-store solid-js`
 2. ถ้า project มี forms ติดตั้ง `@tanstack/solid-form`
@@ -31,6 +39,7 @@ triggers:
 5. ตั้งค่า `package.json` scripts: `dev` → `vite`, `build` → `vite build`, `typecheck` → `tsc --noEmit`, `test` → `vitest`
 
 ### 2. Configure Vite And TypeScript
+> Goal: Configure Vite And TypeScript
 
 1. สร้าง `vite.config.ts` พร้อม `tanstackStart()` จาก `@tanstack/solid-start/plugin/vite`, `viteSolid({ ssr: true })`, `UnoCSS()` - `viteSolid` ต้องอยู่หลัง `tanstackStart()` เสมอ
 2. ตั้งค่า `router.routeFileIgnorePattern` สำหรับไฟล์ที่ไม่ใช่ route
@@ -42,6 +51,7 @@ triggers:
 8. ห้ามเปิด `verbatimModuleSyntax` เพราะทำให้ server bundles รั่วเข้า client bundles
 
 ### 3. Setup Entry Points And Router
+> Goal: Setup Entry Points And Router
 
 1. สร้าง `src/client.tsx`: import `uno.css`/`theme.css`, ใช้ `hydrateStart()` จาก `@tanstack/solid-start/client`, `StartClient` พร้อม router, `SolidQueryDevtools`, `hydrate()` จาก `solid-js/web`
 2. สร้าง `src/server.ts`: ใช้ `createServerEntry` จาก `@tanstack/solid-start/server-entry`, รองรับ universal fetch handler format (Cloudflare Workers, WinterCG)
@@ -51,6 +61,7 @@ triggers:
 6. ใช้ request context ผ่าน TypeScript module augmentation สำหรับส่ง typed data (auth, DB) เข้า server handlers
 
 ### 4. Implement Routing
+> Goal: Implement Routing
 
 1. ทำ `/follow-tanstack` สำหรับ file-based routing patterns
 2. ใช้ `createFileRoute("/path")` สำหรับทุก route
@@ -60,6 +71,7 @@ triggers:
 6. เปิดใช้ `autoCodeSplitting` ใน router plugin
 
 ### 5. Setup Server Functions And API Layer
+> Goal: Setup Server Functions And API Layer
 
 1. ใช้ `createServerFn` จาก `@tanstack/solid-start` สำหรับ server-side logic พร้อม `method` และ `validator`/`inputValidator`
 2. ใช้ `createCsrfMiddleware()` สำหรับ protect server functions จาก cross-site requests (auto-installed ถ้าไม่มี `src/start.ts`)
@@ -72,6 +84,7 @@ triggers:
 9. ใช้ `createIsomorphicFn` สำหรับ environment-specific RPCLink config
 
 ### 6. Setup Data And State
+> Goal: Setup Data And State
 
 1. ทำ `/follow-tanstack` สำหรับ Query v5 setup และ patterns
 2. สร้าง `src/lib/query-client.ts` พร้อม `QueryClient` (`staleTime`, `gcTime`, `retry`)
@@ -82,6 +95,7 @@ triggers:
 7. ถ้า project มี forms ทำ `/follow-tanstack` สำหรับ Form v1 patterns
 
 ### 7. Configure Testing And Deployment
+> Goal: Configure Testing And Deployment
 
 1. ทำ `/follow-vitest` สำหรับ testing setup
 2. ใช้ `@solidjs/testing-library` สำหรับ component testing

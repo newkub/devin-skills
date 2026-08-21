@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - scan-codebase
+  - idea-uxui
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Audit Current Copy
+> Goal: Audit Current Copy
 
 ตรวจสอบ UX copy ที่มีอยู่ทั้งหมด
 
@@ -33,6 +39,7 @@ triggers:
 5. ทำ `/idea-uxui` เพื่อวิเคราะห์และสร้างไอเดีย UX writing improvements
 
 ### 2. Define Voice And Tone
+> Goal: Define Voice And Tone
 
 กำหนด voice และ tone ของผลิตภัณฑ์
 
@@ -43,6 +50,7 @@ triggers:
 5. เก็บ guidelines ไว้ในไฟล์อ้างอิง เช่น `docs/ux-writing-guidelines.md`
 
 ### 3. Improve Microcopy
+> Goal: Improve Microcopy
 
 ปรับปรุง microcopy สำหรับ interactive elements
 
@@ -54,6 +62,7 @@ triggers:
 6. ตรวจสอบความสม่ำเสมอของคำศัพท์ทั่วทั้งแอป
 
 ### 4. Improve Error Messages
+> Goal: Improve Error Messages
 
 ปรับปรุงข้อความแสดงข้อผิดพลาด
 
@@ -64,6 +73,7 @@ triggers:
 5. แยก validation errors จาก system errors โดยใช้ tone ที่เหมาะสม
 
 ### 5. Improve Empty States
+> Goal: Improve Empty States
 
 ปรับปรุง empty states ให้เป็นประโยชน์
 
@@ -74,6 +84,7 @@ triggers:
 5. แยก empty states ตาม context: first-time, no results, no permission, no data
 
 ### 6. Improve Onboarding Copy
+> Goal: Improve Onboarding Copy
 
 ปรับปรุงข้อความระหว่าง onboarding
 
@@ -84,6 +95,7 @@ triggers:
 5. หลีกเลี่ยง information overload ใน onboarding flow
 
 ### 7. Improve Forms And Validation
+> Goal: Improve Forms And Validation
 
 ปรับปรุงข้อความในฟอร์ม
 
@@ -95,6 +107,7 @@ triggers:
 6. ใช้ inline validation พร้อม feedback ทันที
 
 ### 8. Improve Notifications And Alerts
+> Goal: Improve Notifications And Alerts
 
 ปรับปรุงข้อความแจ้งเตือน
 
@@ -105,6 +118,7 @@ triggers:
 5. ใช้ tone ที่เหมาะกับ severity: info, success, warning, error
 
 ### 9. Improve CLI And TUI Copy
+> Goal: Improve CLI And TUI Copy
 
 ปรับปรุง UX writing สำหรับ CLI และ TUI
 
@@ -116,6 +130,7 @@ triggers:
 6. สำหรับ TUI: ใช้ color coding ที่สื่อความหมาย ไม่ใช่ decoration อย่างเดียว
 
 ### 10. Localize And Internationalize
+> Goal: Localize And Internationalize
 
 เตรียม UX writing สำหรับการแปล
 

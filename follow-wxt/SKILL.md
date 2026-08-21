@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -34,8 +35,7 @@ related:
 
 ### 1. Initialize Project
 
-เริ่มต้น WXT project ด้วย template ทีเหมาะสม
-
+> Goal: เริ่มต้น WXT project ด้วย template ทีเหมาะสม
 > Goal: มี project structure พร้อม dependencies
 
 1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐาน
@@ -46,8 +46,7 @@ related:
 
 ### 2. Configure WXT
 
-กำหนดค่า `wxt.config.ts` และ manifest
-
+> Goal: กำหนดค่า `wxt.config.ts` และ manifest
 > Goal: WXT build ถูกต้องตาม requirements
 
 1. แก้ไข `wxt.config.ts` ตาม requirements
@@ -58,8 +57,7 @@ related:
 
 ### 3. Structure Extension
 
-สร้างโครงสร้าง extension ทีแยก concerns ชัดเจน
-
+> Goal: สร้างโครงสร้าง extension ทีแยก concerns ชัดเจน
 > Goal: code อ่านง่าย ทดสอบได้ และ maintain ได้
 
 1. สร้าง `src/background.ts` สำหรับ background script
@@ -71,8 +69,7 @@ related:
 
 ### 4. Setup CI/CD
 
-ตั้งค่า GitHub Actions สำหรับ build และ release
-
+> Goal: ตั้งค่า GitHub Actions สำหรับ build และ release
 > Goal: สามารถ release extension ไป Chrome Web Store อัตโนมัติ
 
 1. ทำ `/follow-github-actions` เพื่อตั้งค่า CI/CD
@@ -83,8 +80,7 @@ related:
 
 ### 5. Build And Release
 
-Build production และ release
-
+> Goal: Build production และ release
 > Goal: extension พร้อมใช้งานบน Chrome Web Store
 
 1. รัน `bun run build` เพื่อ build production

@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - understand-me
+  - ask-requirement
 ---
 
 ## Goal
@@ -25,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Question Type
+> Goal: Identify Question Type
 
 ระบุประเภทคำถามที่จะถาม
 
@@ -35,6 +42,7 @@ triggers:
 5. ถ้าเป็น `clarification` ให้ตัวเลือกที่ช่วยให้ผู้ใช้ระบุสิ่งที่ต้องการชัดเจนขึ้น
 
 ### 2. Prepare Options With Recommendation
+> Goal: Prepare Options With Recommendation
 
 เตรียมตัวเลือกสำหรับคำถามพร้อมระบุตัวเลือกที่แนะนำ
 
@@ -48,6 +56,7 @@ triggers:
 8. เพิ่มตัวเลือก `Suggest another` เพื่อให้ผู้ใช้ขอตัวเลือกอื่น — `description`: "ขอให้ AI เสนอตัวเลือกอื่นที่ไม่อยู่ในรายการ"
 
 ### 3. Ask Question
+> Goal: Ask Question
 
 ถามผู้ใช้โดยใช้ `ask_user_question` tool
 
@@ -57,6 +66,7 @@ triggers:
 4. ถ้าต้องถามหลายคำถาม ให้ถามทีละคำถาม ไม่ถามพร้อมกัน
 
 ### 4. Process Response
+> Goal: Process Response
 
 ประมวลผลคำตอบจากผู้ใช้
 

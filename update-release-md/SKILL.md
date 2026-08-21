@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Generate Release
+> Goal: Generate Release
 
 สร้าง RELEASE.md จาก git tags ด้วย Bun Shell
 
@@ -30,6 +33,7 @@ triggers:
 2. ตรวจสอบ output จาก command
 
 ### 2. Review Release
+> Goal: Review Release
 
 ตรวจสอบ release ที่สร้าง
 

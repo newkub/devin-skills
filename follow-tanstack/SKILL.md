@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -27,8 +28,7 @@ related:
 
 ### 1. Identify Needs
 
-ระบุว่าต้องการ library ตัวไหนของ TanStack
-
+> Goal: ระบุว่าต้องการ library ตัวไหนของ TanStack
 > Goal: เลือก library ทีตรงกับปัญหา
 
 1. ทำ `analyze-project` เพื่อเข้าใจ state, data flow, routing, form needs
@@ -46,8 +46,7 @@ related:
 
 ### 2. Install And Configure
 
-ติดตั้ง library ทีเลือก
-
+> Goal: ติดตั้ง library ทีเลือก
 > Goal: library พร้อมใช้งานใน project
 
 1. ใช้ package manager ที project ใช้ (`npm`, `pnpm`, `bun`, `yarn`)
@@ -57,8 +56,7 @@ related:
 
 ### 3. Implement Feature
 
-ใช้งาน library ในฟีเจอร์จริง
-
+> Goal: ใช้งาน library ในฟีเจอร์จริง
 > Goal: ฟีเจอร์ทำงานได้ถูกต้อง
 
 1. Query: สร้าง query keys, fetchers, caching, invalidation
@@ -72,8 +70,7 @@ related:
 
 ### 4. Test And Optimize
 
-ตรวจสอบว่า integration ทำงานได้ดี
-
+> Goal: ตรวจสอบว่า integration ทำงานได้ดี
 > Goal: ไม่มี regression และ performance ทีเหมาะสม
 
 1. รัน `run-test` และ `run-typecheck`

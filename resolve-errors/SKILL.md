@@ -1,15 +1,23 @@
 ---
 name: resolve-errors
-description: แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate ...
+description: แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - rename
+  - memorize
+  - run-check
+  - use-scripts
+  - refactor
 ---
 
 ## Goal
@@ -28,8 +36,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 1. Prepare Context
 
-เตรียม context ก่อนเริ่มแก้ไข error
-
+> Goal: เตรียม context ก่อนเริ่มแก้ไข error
 > Goal: เข้าใจ codebase structure, conventions และ dependencies
 
 1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
@@ -39,8 +46,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 2. Capture And Triage Errors
 
-เก็บ error ทั้งหมด จัดประเภท จัดกลุ่ม และจัดลำดับการแก้ไข
-
+> Goal: เก็บ error ทั้งหมด จัดประเภท จัดกลุ่ม และจัดลำดับการแก้ไข
 > Goal: มี error list ที่จัดประเภท จัดกลุ่ม และจัดลำดับแล้ว
 
 1. รัน command ที่ทำให้เกิด error อีกครั้งเพื่อ capture output ทั้งหมด
@@ -53,8 +59,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 3. Identify Root Cause
 
-ระบุสาเหตุที่แท้จริงของ error อย่างแม่นยำ
-
+> Goal: ระบุสาเหตุที่แท้จริงของ error อย่างแม่นยำ
 > Goal: รู้ว่าต้องแก้อะไรที่จุดไหน อย่างแน่นอน
 
 1. อ่าน error message ทั้งหมดรวม stack trace และ error code
@@ -67,8 +72,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 4. Apply Minimal Fix
 
-แก้ไขที่ root cause ด้วยการเปลี่ยนแปลงน้อยที่สุด — รวม parallel fix สำหรับ independent errors
-
+> Goal: แก้ไขที่ root cause ด้วยการเปลี่ยนแปลงน้อยที่สุด — รวม parallel fix สำหรับ independent errors
 > Goal: แก้ถูกจุด แก้น้อย แก้ได้ผล
 
 1. แก้ไขที่จุดเดียวที่เป็น root cause จริง — single-line change เมื่อเป็นไปได้
@@ -82,8 +86,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 5. Verify Fix
 
-ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
-
+> Goal: ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
 > Goal: ยืนยันด้วยการรัน ไม่ใช่คาดการณ์
 
 1. รัน command เดียวกับที่ทำให้เกิด error เพื่อยืนยันว่า error หายไป
@@ -95,8 +98,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 6. Document And Prevent
 
-บันทึกการแก้ไขและป้องกัน regression
-
+> Goal: บันทึกการแก้ไขและป้องกัน regression
 > Goal: ป้องกันปัญหาซ้ำ และมี reference สำหรับอนาคต
 
 1. เขียน comment อธิบายสาเหตุของการแก้ไขถ้าไม่ชัดเจน

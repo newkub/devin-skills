@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-release-crates` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Package Configuration
+> Goal: Setup Package Configuration
 
 1. ตรวจสอบ Cargo.toml มีข้อมูลครบถ้วน
 2. เพิ่ม name, version, authors, description
@@ -34,12 +33,14 @@ Use `follow-release-crates` for the specific tasks and workflows it covers
 4. เพิ่ม keywords และ categories
 
 ### 2. Install Release Tool
+> Goal: Install Release Tool
 
 1. รัน `cargo install release-plz` หรือ `cargo install cargo-release`
 2. ตรวจสอบ installation สำเร็จ
 3. หรือใช้ release-plz action บน GitHub
 
 ### 3. Configure Release Tool
+> Goal: Configure Release Tool
 
 1. เพิ่ม config ใน release-plz.toml หรือ .release.toml
 2. ตั้งค่า changelog_config เป็น conventional
@@ -47,19 +48,19 @@ Use `follow-release-crates` for the specific tasks and workflows it covers
 4. ระบุ packages ที่ต้องการ publish
 
 ### 4. Setup Authentication
+> Goal: Setup Authentication
 
 1. สร้าง API token จาก crates.io
 2. เพิ่ม CARGO_REGISTRY_TOKEN ใน GitHub secrets
 3. หรือใช้ trusted publishing
 
 ### 5. Create GitHub Workflow
+> Goal: Create GitHub Workflow
 
 1. สร้างไฟล์ .github/workflows/release.yml
 2. เพิ่ม permissions: contents write, pull-requests write
 3. ตั้งค่า trigger บน push ไป main branch
 4. เพิ่ม release-plz-release และ release-plz-pr jobs
-
-## Rules
 
 ## Rules
 
@@ -95,8 +96,6 @@ Use `follow-release-crates` for the specific tasks and workflows it covers
 - ต้องมี persist-credentials: false
 - ต้องมี concurrency สำหรับ release-pr job
 - ต้องมี GITHUB_TOKEN environment
-
-## Expected Outcome
 
 ## Expected Outcome
 

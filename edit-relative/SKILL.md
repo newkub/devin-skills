@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -36,6 +38,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Changed Files
+> Goal: Identify Changed Files
 
 ระบุไฟล์ที่มีการเปลี่ยนแปลง
 
@@ -44,6 +47,7 @@ triggers:
 3. ระบุประเภทการเปลี่ยนแปลง: ย้าย เปลี่ยนชื่อ ลบ หรือแก้ไขเนื้อหา
 
 ### 2. Search For References
+> Goal: Search For References
 
 ค้นหา references ทั้งหมดที่เกี่ยวข้องในทุกตำแหน่ง
 
@@ -56,6 +60,7 @@ triggers:
 7. ค้นหาชื่อไฟล์เก่า เส้นทางเก่า import statements และ workflow references
 
 ### 3. Update References
+> Goal: Update References
 
 อัปเดท references ทั้งหมดที่พบตามประเภทการเปลี่ยนแปลง
 
@@ -83,6 +88,7 @@ triggers:
 6. อัปเดท references ใน project codebase
 
 ### 4. Verify Updates
+> Goal: Verify Updates
 
 ตรวจสอบว่า references ถูกอัปเดทครบถ้วน
 

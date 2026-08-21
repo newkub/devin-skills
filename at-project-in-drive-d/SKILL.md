@@ -7,12 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,21 +25,22 @@ Use `at-project-in-drive-d` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Run PowerShell Command
+> Goal: Run PowerShell Command
 
 1. Run PowerShell command เพื่อ list projects
 2. Filter เฉพาะ directories ที่มี `.git`
 3. รวบรวมข้อมูล projects ทั้งหมด
 
 ### 2. Group and Sort Projects
+> Goal: Group and Sort Projects
 
 1. จัดกลุ่ม projects ตาม directory (forked, newkub, saas)
 2. เรียงลำดับ projects ภายในกลุ่มตามชื่อ
 3. กำหนด category สำหรับแต่ละ project
 
 ### 3. Format Table
+> Goal: Format Table
 
 1. สร้างตารางตามมาตรฐาน `/report-table`
 2. ใช้ numbered columns สำหรับลำดับ
@@ -46,12 +48,11 @@ Use `at-project-in-drive-d` for the specific tasks and workflows it covers
 4. จัดเรียง columns: No., Project Name, Path, Category
 
 ### 4. Create Summary Table
+> Goal: Create Summary Table
 
 1. สร้าง summary table สำหรับ category counts
 2. คำนวณ percentage สำหรับแต่ละ category
 3. แสดง total projects และ total categories
-
-## Rules
 
 ## Rules
 
@@ -97,8 +98,6 @@ Filter เฉพาน projects ใน drive D:
 - คำนวณ percentage
 - แสดง total projects และ categories
 - ใช้ symbols (✅) สำหรับ summary
-
-## Expected Outcome
 
 ## Expected Outcome
 

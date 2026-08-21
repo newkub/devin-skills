@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - loop-until-complete
+  - resolve-errors
+  - follow-moonrepo
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +27,8 @@ Use `follow-moon-format` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Run Format Task
+> Goal: Run Format Task
 
 รัน format task ด้วย moonrepo
 
@@ -36,6 +38,7 @@ Use `follow-moon-format` for the specific tasks and workflows it covers
 4. รวบรวม errors ทั้งหมด
 
 ### 2. Apply Fix Error
+> Goal: Apply Fix Error
 
 แก้ไข format errors ทั้งหมด
 
@@ -44,14 +47,13 @@ Use `follow-moon-format` for the specific tasks and workflows it covers
 3. ทำซ้ำจนไม่มี errors เหลือ
 
 ### 3. Verify Format
+> Goal: Verify Format
 
 ตรวจสอบว่า format ผ่าน
 
 1. รัน `moon run :format` อีกครั้ง
 2. ตรวจสอบว่าไม่มี errors
 3. ตรวจสอบ code style consistency
-
-## Rules
 
 ## Rules
 
@@ -98,8 +100,6 @@ Use `follow-moon-format` for the specific tasks and workflows it covers
 - ใช้ `/resolve-errors` สำหรับแก้ไข errors
 - ใช้ `/follow-moonrepo` สำหรับ moonrepo best practices
 - ใช้ `/loop-until-complete` สำหรับทำซ้ำจนสำเร็จ
-
-## Expected Outcome
 
 ## Expected Outcome
 

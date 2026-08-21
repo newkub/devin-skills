@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Type System
+> Goal: Setup Type System
 
 ตั้งค่า TypeScript type system ให้เข้มงวด
 
@@ -35,6 +38,7 @@ triggers:
 7. ใช้ `readonly` สำหรับ properties ที่ไม่ควรเปลี่ยนแปลง
 
 ### 2. Use Modern Type Features
+> Goal: Use Modern Type Features
 
 ใช้ modern TypeScript features สำหรับ type safety สูงสุด
 
@@ -47,6 +51,7 @@ triggers:
 7. ใช้ mapped types สำหรับ type transformations
 
 ### 3. Setup Code Quality
+> Goal: Setup Code Quality
 
 ตั้งค่า code quality tools และ conventions
 
@@ -59,6 +64,7 @@ triggers:
 7. ใช้ generic constraints สำหรับ reusable type-safe code
 
 ### 4. Setup Testing
+> Goal: Setup Testing
 
 ตั้งค่า testing ด้วย type safety
 
@@ -68,6 +74,7 @@ triggers:
 4. ตรวจสอบ type coverage ด้วย `type-coverage`
 
 ### 5. Setup Documentation
+> Goal: Setup Documentation
 
 ตั้งค่า documentation standards
 

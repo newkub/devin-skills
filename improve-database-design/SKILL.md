@@ -1,15 +1,17 @@
 ---
 name: improve-database-design
-description: Review and improve an existing or proposed database design to achieve better performance, integri...
+description: Review and improve an existing or proposed database design to achieve better performance,
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ Use with relational or NoSQL databases when schema, queries, indexing, normaliza
 
 ### 1. Assess Current Design
 
-Understand the database and its context
-
+> Goal: Understand the database and its context
 > Goal: identify database type, schema, workload, and pain points
 
 1. identify database engine (PostgreSQL, MySQL, MongoDB, Redis, etc.)
@@ -37,8 +38,7 @@ Understand the database and its context
 
 ### 2. Diagnose Schema Issues
 
-Find structural problems
-
+> Goal: Find structural problems
 > Goal: list schema-level issues with severity
 
 1. review normalization (1NF–3NF) and denormalization needs
@@ -50,8 +50,7 @@ Find structural problems
 
 ### 3. Diagnose Query And Index Performance
 
-Find runtime inefficiencies
-
+> Goal: Find runtime inefficiencies
 > Goal: list query and index issues with evidence
 
 1. collect slow query logs, `EXPLAIN ANALYZE`, and query frequency
@@ -63,8 +62,7 @@ Find runtime inefficiencies
 
 ### 4. Diagnose Integrity And Security
 
-Ensure data correctness and safety
-
+> Goal: Ensure data correctness and safety
 > Goal: list integrity and security gaps
 
 1. verify constraints, triggers, and check rules
@@ -76,8 +74,7 @@ Ensure data correctness and safety
 
 ### 5. Prioritize Improvements
 
-Rank issues by impact and effort
-
+> Goal: Rank issues by impact and effort
 > Goal: produce an actionable improvement plan
 
 1. classify issues by severity: critical, high, medium, low
@@ -88,8 +85,7 @@ Rank issues by impact and effort
 
 ### 6. Plan Migration
 
-Design safe schema or query changes
-
+> Goal: Design safe schema or query changes
 > Goal: have a reversible, tested migration plan
 
 1. choose migration strategy: online, batched, blue/green, feature flag
@@ -100,8 +96,7 @@ Design safe schema or query changes
 
 ### 7. Apply And Validate
 
-Implement improvements and verify
-
+> Goal: Implement improvements and verify
 > Goal: database design improved without regression
 
 1. apply schema changes in a non-production environment first

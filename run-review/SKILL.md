@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - review-codebase
+  - update-review-cli
+  - suggest-next-action
+  - report-table
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Verify CLI Exists
 
-ตรวจสอบว่า review CLI มีอยู่และพร้อมรัน
-
+> Goal: ตรวจสอบว่า review CLI มีอยู่และพร้อมรัน
 > Goal: ยืนยันว่า CLI พร้อมรัน
 
 1. ตรวจสอบว่า `tools/review/package.json` มีอยู่ที่ project root
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Run Review CLI
 
-รัน review CLI เพื่อวิเคราะห์ project review
-
+> Goal: รัน review CLI เพื่อวิเคราะห์ project review
 > Goal: ได้ review report พร้อม score, findings และ action items
 
 1. รัน `bun --filter @booking/tools-review review` สำหรับ table output
@@ -44,8 +49,7 @@ triggers:
 
 ### 3. Analyze Results
 
-วิเคราะห์ผลลัพธ์จาก review report เพื่อระบุปัญหาและจัดลำดับ
-
+> Goal: วิเคราะห์ผลลัพธ์จาก review report เพื่อระบุปัญหาและจัดลำดับ
 > Goal: เข้าใจ findings และจัดลำดับตาม severity
 
 1. อ่าน review score และ grade จาก summary
@@ -55,8 +59,7 @@ triggers:
 
 ### 4. Suggest Actions
 
-แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
-
+> Goal: แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
 > Goal: รู้ action ถัดไปที่ควรทำตาม priority
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
@@ -92,7 +95,6 @@ triggers:
 - ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
 - แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละปัญหา
 - แนะนำ `/update-review-cli` ถ้า CLI ต้องปรับปรุง
-
 
 ## References
 

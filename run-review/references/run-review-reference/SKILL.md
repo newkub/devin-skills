@@ -10,6 +10,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-lint
+  - run-build
+  - git-commit
 ---
 
 ## Goal

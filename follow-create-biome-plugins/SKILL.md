@@ -27,8 +27,7 @@ related:
 
 ### 1. Setup
 
-ตรวจสอบ Biome และ project prerequisites
-
+> Goal: ตรวจสอบ Biome และ project prerequisites
 > Goal: environment พร้อมสำหรับการสร้าง Biome plugins
 
 1. ตรวจสอบว่ามี Biome ติดตั้งแล้วโดยทำ `/follow-biome`
@@ -37,8 +36,7 @@ related:
 
 ### 2. Create Plugin File
 
-สร้างและเขียน `.grit` plugin file
-
+> Goal: สร้างและเขียน `.grit` plugin file
 > Goal: มา `.grit` file ทีมี GritQL patterns ที่ถูกต้อง
 
 1. สร้างไฟล์ `.grit` ที่ root ของโปรเจกต์
@@ -50,8 +48,7 @@ related:
 
 ### 3. Configure Plugin
 
-ตั้งค่า plugin ใน `biome.jsonc`
-
+> Goal: ตั้งค่า plugin ใน `biome.jsonc`
 > Goal: Biome โหลดและรัน plugin ถูกต้อง
 
 1. เพิ่ม plugin path ใน `biome.jsonc` ผ่าน `plugins` array
@@ -61,8 +58,7 @@ related:
 
 ### 4. Discover CST Node Names
 
-หา CST node names สำหรับ GritQL patterns
-
+> Goal: หา CST node names สำหรับ GritQL patterns
 > Goal: ใช้ CST node names ทีถูกต้องตาม Biome version
 
 1. เปิด [Biome Playground](https://biomejs.dev/playground/)
@@ -73,8 +69,7 @@ related:
 
 ### 5. Verify
 
-ทดสอบ plugin กับ Biome
-
+> Goal: ทดสอบ plugin กับ Biome
 > Goal: custom rules ทำงานถูกต้อง ไม่มี false positives
 
 1. รัน `bunx biome lint` เพื่อทดสอบ plugin

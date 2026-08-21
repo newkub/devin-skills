@@ -1,15 +1,21 @@
 ---
 name: summarize-this-chat-session
-description: "title: Summarize This Chat Session"
+description: สรุป chat session ทีคุยในครังนี้
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - sumarize-to-bullet
+  - memorize
+  - report-table
+  - sumrize-this-project
 ---
 
 ---
@@ -33,8 +39,7 @@ related:
 
 ### 1. Collect Session Activity
 
-รวบรวมกิจกรรมที่ทำใน session นี้
-
+> Goal: รวบรวมกิจกรรมที่ทำใน session นี้
 > Goal: มีข้อมูลครบสำหรับการสรุป
 
 1. ระบุ tasks ที่ทำใน session นี้จาก conversation context
@@ -44,8 +49,7 @@ related:
 
 ### 2. Categorize Changes
 
-จัดประเภทการเปลี่ยนแปลงที่ทำ
-
+> Goal: จัดประเภทการเปลี่ยนแปลงที่ทำ
 > Goal: การเปลี่ยนแปลงจัดประเภทชัดเจน
 
 1. จัดประเภทตาม action:
@@ -63,8 +67,7 @@ related:
 
 ### 3. Identify Decisions
 
-ระบุการตัดสินใจที่ทำใน session
-
+> Goal: ระบุการตัดสินใจที่ทำใน session
 > Goal: เข้าใจเหตุผลของการเปลี่ยนแปลง
 
 1. ระบุ design decisions ที่ทำ
@@ -74,8 +77,7 @@ related:
 
 ### 4. Identify Issues
 
-ระบุปัญหาที่พบและแก้ไข
-
+> Goal: ระบุปัญหาที่พบและแก้ไข
 > Goal: เข้าใจปัญหาและการแก้ไข
 
 1. ระบุ errors ที่พบและแก้ไข
@@ -85,8 +87,7 @@ related:
 
 ### 5. Format Summary
 
-จัดรูปแบบสรุปให้อ่านง่าย
-
+> Goal: จัดรูปแบบสรุปให้อ่านง่าย
 > Goal: สรุปกระชับ ครบข้อมูล อ่านง่าย
 
 1. ทำ `/report-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
@@ -101,8 +102,7 @@ related:
 
 ### 6. Save Important Context
 
-บันทึก context สำคัญจาก session
-
+> Goal: บันทึก context สำคัญจาก session
 > Goal: context สำคัญไม่หายไป
 
 1. ทำ `/memorize` สำหรับ decisions และ preferences ที่สำคัญ

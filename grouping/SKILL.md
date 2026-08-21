@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Groups
+> Goal: Identify Groups
 
 ระบุหมวดหมู่ที่เหมาะสม
 
@@ -31,6 +34,7 @@ triggers:
 3. กำหนด criteria สำหรับการจัดกลุ่ม
 
 ### 2. Create Groups
+> Goal: Create Groups
 
 สร้าง groups ตาม criteria
 
@@ -39,6 +43,7 @@ triggers:
 3. จัดเรียง items ภายในแต่ละ group
 
 ### 3. Organize Structure
+> Goal: Organize Structure
 
 จัดโครงสร้างตาม groups
 

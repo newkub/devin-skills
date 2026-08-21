@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-release-vscode` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Package Configuration
+> Goal: Setup Package Configuration
 
 1. ตรวจสอบ package.json มีข้อมูลครบถ้วน
 2. เพิ่ม publisher ใน package.json
@@ -35,31 +34,33 @@ Use `follow-release-vscode` for the specific tasks and workflows it covers
 5. ตั้งค่า engines.vscode
 
 ### 2. Install VSCE
+> Goal: Install VSCE
 
 1. รัน `bun add -D @vscode/vsce`
 2. ตรวจสอบ installation สำเร็จ
 3. หรือใช้ `npm install -g @vscode/vsce`
 
 ### 3. Setup Publisher
+> Goal: Setup Publisher
 
 1. สร้าง publisher บน marketplace.visualstudio.com
 2. ตั้งค่า publisher name
 3. เพิ่ม publisher ใน package.json
 
 ### 4. Setup Authentication
+> Goal: Setup Authentication
 
 1. สร้าง PAT token จาก Azure DevOps
 2. เพิ่ม VSCE_PAT ใน environment variables
 3. หรือใช้ `vsce login publisher-name`
 
 ### 5. Create GitHub Workflow
+> Goal: Create GitHub Workflow
 
 1. สร้างไฟล์ .github/workflows/release.yml
 2. เพิ่ม permissions: contents write
 3. เพิ่ม environment variables: VSCE_PAT
 4. ตั้งค่า trigger บน push ไป main branch
-
-## Rules
 
 ## Rules
 
@@ -87,8 +88,6 @@ Use `follow-release-vscode` for the specific tasks and workflows it covers
 - ต้องมี VSCE_PAT หรือ login
 - token ต้องมีสิทธิ์ publish
 - ต้องมี permissions ใน workflow
-
-## Expected Outcome
 
 ## Expected Outcome
 

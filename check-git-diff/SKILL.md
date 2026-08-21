@@ -14,6 +14,8 @@ related:
   - check-should-update
   - report-table
   - suggest-next-action
+  - delete
+  - ask-me
 ---
 
 ## Goal
@@ -28,8 +30,7 @@ related:
 
 ### 1. Identify Refs
 
-ระบุ refs ที่ต้องเปรียบเทียบ
-
+> Goal: ระบุ refs ที่ต้องเปรียบเทียบ
 > Goal: รู้ว่าเปรียบเทียบอะไรกับอะไร
 
 1. รับ target paths และ refs จาก user เช่น `HEAD`, `HEAD~1`, `<branch>`, `staged`, `unstaged`
@@ -38,8 +39,7 @@ related:
 
 ### 2. Run Git Diff
 
-รัน `git diff` ตามรูปแบบที่ต้องการ
-
+> Goal: รัน `git diff` ตามรูปแบบที่ต้องการ
 > Goal: ได้ diff output ที่เหมาะสม
 
 1. ถ้าเปรียบเทียบสอง refs → `git diff <from>..<to> -- <paths>`
@@ -49,8 +49,7 @@ related:
 
 ### 3. Analyze Diff
 
-วิเคราะห์ changes
-
+> Goal: วิเคราะห์ changes
 > Goal: สรุปสิ่งที่เปลี่ยน
 
 1. ดู `--stat` เพื่อรู้จำนวน file/insert/delete
@@ -59,8 +58,7 @@ related:
 
 ### 4. Report
 
-สรุปผล
-
+> Goal: สรุปผล
 > Goal: ผู้ใช้เข้าใจ diff
 
 1. สรุปจำนวน files, insertions, deletions

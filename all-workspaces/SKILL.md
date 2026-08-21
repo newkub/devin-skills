@@ -10,6 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - validate
+  - resolve-errors
+  - analyze-project
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Discover Workspaces
+> Goal: Discover Workspaces
 
 ค้นหาและระบุ workspaces ทั้งหมดใน monorepo
 
@@ -31,6 +36,7 @@ triggers:
 3. จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน, applications ทีหลัง)
 
 ### 2. Process Each Workspace
+> Goal: Process Each Workspace
 
 ทำงานกับแต่ละ workspace ตามลำดับ
 
@@ -39,6 +45,7 @@ triggers:
 3. หลีกเลี่ยง circular dependencies ระหว่าง workspaces
 
 ### 3. Verify Completion
+> Goal: Verify Completion
 
 ตรวจสอบว่าทุก workspace ได้รับการประมวลผลครบถ้วน
 

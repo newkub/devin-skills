@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,12 +26,16 @@ triggers:
 
 ### 1. Prepare
 
+> Goal: Prepare
+
 1. ตรวจสอบ framework ที่ใช้ (Next.js, Nuxt, Vite, Astro, HTML)
 2. อ่าน config ที่มีอยู่แล้ว
 3. ระบุตำแหน่ง CSS entry point
 4. ตรวจสอบ UnoCSS version (ต้องเป็น v66+)
 
 ### 2. Install Dependencies
+
+> Goal: Install Dependencies
 
 1. ติดตั้ง UnoCSS:
 
@@ -63,7 +69,7 @@ triggers:
 
 ### 3. Configure
 
-ตั้งค่า UnoCSS config พื้นฐาน
+> Goal: ตั้งค่า UnoCSS config พื้นฐาน
 
 1. สร้าง `uno.config.ts` พื้นฐาน:
 
@@ -100,6 +106,7 @@ triggers:
 
 ### 4. Setup Framework Integration
 
+> Goal: Setup Framework Integration
 1. Next.js: สร้าง `postcss.config.mjs` และเพิ่ม `@unocss all;` ใน `app/globals.css`
 2. Nuxt: เพิ่ม `@unocss/nuxt` module ใน `nuxt.config.ts`
 3. Vite: เพิ่ม UnoCSS plugin ใน `vite.config.ts` และ `@unocss all;` ใน `src/style.css`
@@ -107,7 +114,7 @@ triggers:
 
 ### 5. Use presetWind4 Features
 
-ใช้ features ใหม่ของ presetWind4 (v66+)
+> Goal: ใช้ features ใหม่ของ presetWind4 (v66+)
 
 1. Theme variables generate แบบ on-demand เป็น CSS custom properties
 2. ใช้ bracket syntax สำหรับ theme values (เช่น `text-[--my-color]`)
@@ -118,7 +125,7 @@ triggers:
 
 ### 6. Use Transformers
 
-ใช้ transformers สำหรับ functionality เพิ่มเติม
+> Goal: ใช้ transformers สำหรับ functionality เพิ่มเติม
 
 1. `transformerVariantGroup`: Group utilities (เช่น `hover:(bg-gray-400 font-medium)`)
 2. `transformerDirectives`: ใช้ `@apply`, `@screen`, `theme()` directives
@@ -126,7 +133,7 @@ triggers:
 
 ### 7. Use Additional Presets (Optional)
 
-ใช้ presets เพิ่มเติมตามความต้องการ
+> Goal: ใช้ presets เพิ่มเติมตามความต้องการ
 
 1. `presetWebFonts`: โหลด web fonts พร้อม local font processor และ onDownload callback
 2. `presetTypography`: สำหรับ prose styling
@@ -136,11 +143,13 @@ triggers:
 
 ### 8. Setup Language Server (Optional)
 
+> Goal: Setup Language Server (Optional)
 1. ใช้ `@unocss/language-server` สำหรับ IDE support
 2. ใช้ `@unocss/twoslash` สำหรับ TypeScript twoslash integration
 
 ### 9. Verify
 
+> Goal: Verify
 1. รัน dev server และทดสอบใช้ utilities เช่น `flex`, `bg-blue-500`, `i-mdi-home`
 2. ตรวจสอบ CSS custom properties generate ถูกต้อง
 3. ตรวจสอบ dark mode ทำงานผ่าน CSS variables

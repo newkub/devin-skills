@@ -10,6 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - run-test
+  - dont-over-engineer
+  - use-scripts
+  - refactor
+  - run-typecheck
 ---
 
 ## Goal
@@ -23,12 +29,14 @@ triggers:
 ## Execute
 
 ### 1. Identify And Analyze
+> Goal: Identify And Analyze
 
 1. ระบุสิ่งที่ต้อง generalize และ use cases ใหม่ที่ต้องการ
 2. ระบุ hard-coded values, specific types, และ assumptions ที่จำกัด use cases
 3. ถ้ามีไฟล์มากกว่า 10 ไฟล์ ให้ใช้ `/use-scripts` สำหรับ batch analysis
 
 ### 2. Generalize
+> Goal: Generalize
 
 1. แปลง hard-coded values เป็น parameters พร้อม default values
 2. แปลง specific types เป็น generic types หรือ interfaces
@@ -36,6 +44,7 @@ triggers:
 4. ใช้ configuration objects สำหรับ parameters ที่มากกว่า 3 ตัว
 
 ### 3. Validate And Update
+> Goal: Validate And Update
 
 1. ตรวจสอบว่า use cases เดิมยังทำงานได้
 2. รัน `/run-test` และ `/run-typecheck` ถ้ามี

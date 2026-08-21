@@ -30,8 +30,7 @@ Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, 
 
 ### 1. Ensure CLI Is Ready
 
-Set up raindrop CLI and confirm authentication before searching
-
+> Goal: Set up raindrop CLI and confirm authentication before searching
 > Goal: `raindrop` command is installed and authenticated
 
 1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
@@ -42,8 +41,7 @@ Set up raindrop CLI and confirm authentication before searching
 
 ### 2. Search Bookmarks
 
-Run search queries against Raindrop.io
-
+> Goal: Run search queries against Raindrop.io
 > Goal: get the exact bookmarks that match the query
 
 1. รัน `raindrop bookmark search "<query>"` สำหรับ full-text search
@@ -55,8 +53,7 @@ Run search queries against Raindrop.io
 
 ### 3. Use Search Filters
 
-Apply Raindrop search operators
-
+> Goal: Apply Raindrop search operators
 > Goal: narrow results with precise filters
 
 1. tag filter: `tag:<tag>` เช่น `tag:typescript`
@@ -69,8 +66,7 @@ Apply Raindrop search operators
 
 ### 4. Format And Parse Results
 
-Present search results in a useful format
-
+> Goal: Present search results in a useful format
 > Goal: output is readable and easy to act on
 
 1. default JSON: `raindrop bookmark search "<query>"`
@@ -85,8 +81,7 @@ Present search results in a useful format
 
 ### 5. Handle Empty Or Unexpected Results
 
-Verify search outcomes and troubleshoot
-
+> Goal: Verify search outcomes and troubleshoot
 > Goal: no silent failures
 
 1. ถ้า results ว่าง → ตรวจสอบว่า query ถูกต้อง, collection id ถูกต้อง, auth ยัง valid

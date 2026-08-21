@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - deep-analyze-by-use-scripts
+  - check-type-declarations
+  - use-lib-better
+  - learn-from-web
+  - realize-implementation
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Deep Analyze
 
-วิเคราะห์ dependencies และ usage แบบลึกซึ้งครบทุกมิติ
-
+> Goal: วิเคราะห์ dependencies และ usage แบบลึกซึ้งครบทุกมิติ
 > Goal: รู้ dependencies ทั้งหมด, usage patterns, และ custom implementations ที่ library ทำให้แล้ว
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์โปรเจกต์อย่างลึกซึ้ง ครอบคลุม architecture, code quality, dependencies และ tech stack
@@ -37,8 +43,7 @@ triggers:
 
 ### 2. Research Capabilities Via Web
 
-ศึกษา capabilities ของ libraries ที่มี จาก official documentation และเอกสารภายนอก
-
+> Goal: ศึกษา capabilities ของ libraries ที่มี จาก official documentation และเอกสารภายนอก
 > Goal: รู้ features ที่ library มีแต่ยังไม่ได้ใช้ และ best practices สำหรับการใช้งาน
 
 1. ทำ `/learn-from-web` เพื่อศึกษา documentation และ features ของ libraries ที่ใช้
@@ -53,8 +58,7 @@ triggers:
 
 ### 3. Analyze Type Declarations
 
-วิเคราะห์ type declarations เพื่อรู้ APIs ที่พร้อมใช้งาน
-
+> Goal: วิเคราะห์ type declarations เพื่อรู้ APIs ที่พร้อมใช้งาน
 > Goal: รู้ APIs ที่พร้อมใช้งานจาก dependencies ที่ยังไม่ได้ใช้
 
 1. ทำ `/check-type-declarations` เพื่อค้นหาและวิเคราะห์ d.ts files
@@ -65,8 +69,7 @@ triggers:
 
 ### 4. Maximize Library Coverage
 
-ใช้ libraries ให้ครบและครอบคลุม ไม่ reinvent
-
+> Goal: ใช้ libraries ให้ครบและครอบคลุม ไม่ reinvent
 > Goal: แทนที่ custom implementations ด้วย library functions ทุกที่ที่เป็นไปได้
 
 1. แทนที่ custom implementation ด้วย library functions ทุกที่ที่เป็นไปได้
@@ -78,8 +81,7 @@ triggers:
 
 ### 5. Document Patterns
 
-บันทึก patterns การใช้งาน
-
+> Goal: บันทึก patterns การใช้งาน
 > Goal: มี documentation สำหรับการใช้งาน library ที่ซับซ้อน
 
 1. สร้าง examples สำหรับการใช้งานที่ซับซ้อน

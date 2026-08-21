@@ -27,6 +27,7 @@ related:
 ## Execute
 
 ### 1. Assess Context
+> Goal: Assess Context
 
 1. ตรวจสอบ branch ปัจจุบันและ target
 2. ดู commit history (`git log --oneline --graph`)
@@ -34,6 +35,7 @@ related:
 4. ระบุข้อกำหนดของ project/team
 
 ### 2. Evaluate Strategies
+> Goal: Evaluate Strategies
 
 1. `Fast-forward`: branch ไม่มีคนแตะ, ประวัติตรง
 2. `Merge commit`: ต้องการเก็บ branch context
@@ -41,6 +43,7 @@ related:
 4. `Rebase`: ต้องการ history เป็นเส้นตรงและ clean
 
 ### 3. Recommend
+> Goal: Recommend
 
 1. เลือก strategy ตามความเสี่ยงและ conventions
 2. อธิบายข้อดี/ข้อเสีย

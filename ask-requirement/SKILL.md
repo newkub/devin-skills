@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-goal
+  - deep-plan
+  - compare-and-idea-features
+  - bench-competitors
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Run CLI
+> Goal: Run CLI
 
 รัน CLI เพื่อถามความต้องการแบบ interactive
 
@@ -33,6 +41,7 @@ triggers:
 5. CLI แสดงผลและถามจะบันทึกไฟล์หรือไม่
 
 ### 2. Use Web UI
+> Goal: Use Web UI
 
 เปิด Web UI สำหรับกรอกผ่าน browser
 
@@ -43,6 +52,7 @@ triggers:
 5. กด Copy Summary เพื่อคัดลอกผลลัพธ์
 
 ### 3. Form Sections
+> Goal: Form Sections
 
 ทั้ง CLI และ Web มี 7 หัวข้อ:
 
@@ -55,6 +65,7 @@ triggers:
 7. Custom Data - เพิ่ม key-value pairs พร้อม icon สำหรับ AI consumption
 
 ### 4. MCP Server
+> Goal: MCP Server
 
 MCP server ให้ 5 tools:
 
@@ -65,6 +76,7 @@ MCP server ให้ 5 tools:
 5. `generate-markdown-only` - สร้าง markdown only (lightweight)
 
 ### 5. Process Results
+> Goal: Process Results
 
 หลังจากได้ผลลัพธ์:
 

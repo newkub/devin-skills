@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-analyze-by-use-scripts
+  - run-bench
+  - delete
+  - write-test
+  - deep-review
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Identify Critical Paths
 
-ระบุ code paths ที่ต้องวิเคราะห์ time complexity
-
+> Goal: ระบุ code paths ที่ต้องวิเคราะห์ time complexity
 > Goal: รู้ว่าต้องวิเคราะห์ฟังก์ชันใดบ้าง
 
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อหา hot paths และ functions ที่รับ input ขนาด variable
@@ -35,8 +41,7 @@ triggers:
 
 ### 2. Classify Complexity
 
-วิเคราะห์ Big O ของแต่ละ critical path
-
+> Goal: วิเคราะห์ Big O ของแต่ละ critical path
 > Goal: รู้ time complexity ของทุก critical path
 
 1. วิเคราะห์ loops: single loop = O(n), nested loop = O(n²), binary search = O(log n)
@@ -47,8 +52,7 @@ triggers:
 
 ### 3. Validate Against Input Bounds
 
-ตรวจสอบว่า complexity รับได้กับ input size จริง
-
+> Goal: ตรวจสอบว่า complexity รับได้กับ input size จริง
 > Goal: ยืนยันว่า code ทำงานได้ภายใน time budget ที่กำหนด
 
 1. ระบุ input size สูงสุดจาก production data หรือ requirements
@@ -59,8 +63,7 @@ triggers:
 
 ### 4. Optimize Complexity
 
-ลด time complexity ของ paths ที่เกิน budget
-
+> Goal: ลด time complexity ของ paths ที่เกิน budget
 > Goal: ทุก critical path อยู่ใน time budget
 
 1. เปลี่ยน data structure: array → hash map (O(n) → O(1) lookup), array → sorted array (O(n) → O(log n) search)
@@ -72,8 +75,7 @@ triggers:
 
 ### 5. Verify With Benchmarks
 
-ทดสอบว่า complexity จริงตรงกับการวิเคราะห์
-
+> Goal: ทดสอบว่า complexity จริงตรงกับการวิเคราะห์
 > Goal: ยืนยัน empirical performance ตรงกับ theoretical complexity
 
 1. ทำ `/run-bench` กับ input sizes หลายระดับ: small, medium, large, worst-case

@@ -10,6 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
+  - deep-research
+  - report
 ---
 
 ## Goal
@@ -23,23 +27,27 @@ triggers:
 ## Execute
 
 ### 1. Identify Check Target
+> Goal: Identify Check Target
 
 - ระบุสิ่งที่ต้องตรวจสอบจากผู้ใช้
 - กำหนด criteria สำหรับการตรวจสอบ
 - เลือก tools หรือ workflows ที่เกี่ยวข้อง
 
 ### 2. Research Best Practices (ถ้าจำเป็น)
+> Goal: Research Best Practices (ถ้าจำเป็น)
 
 - ทำ `/deep-research` เพื่อค้นหา best practices, references, และ standards
 - ใช้ findings เพื่อปรับ criteria การตรวจสอบ
 
 ### 3. Perform Check
+> Goal: Perform Check
 
 - ตรวจสอบตาม criteria ที่กำหนด
 - บันทึก issues ที่พบ
 - จัดลำดับความสำคัญของ issues
 
 ### 4. Report Results
+> Goal: Report Results
 
 - ทำ `/report` เพื่อสรุปผลการตรวจสอบ
 - ท้า /suggest-next-action เพือแนะนำอก์ชันถัดไป้

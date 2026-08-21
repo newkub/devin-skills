@@ -10,6 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - prioritize
+  - dont-over-engineer
+  - read-related-skills
+  - realize-implementation
+  - no-use-ignore
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Review And Prioritize
+> Goal: Review And Prioritize
 
 จัดลำดับ suggestions ตาม impact และ effort
 
@@ -31,6 +38,7 @@ triggers:
 3. ตรวจสอบ context และ relevance ของแต่ละ suggestion ก่อน apply
 
 ### 2. Apply Critical Fixes
+> Goal: Apply Critical Fixes
 
 แก้ไข issues ตามลำดับ priority
 
@@ -38,12 +46,14 @@ triggers:
 2. แก้ไข `performance` และ `code quality` issues ที่เหลือ
 
 ### 3. Resolve Errors
+> Goal: Resolve Errors
 
 หมายเหตุ: ทำเฉพาะเมื่อได้รับ errors จากการแก้ไขเท่านั้น
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข errors ที่เกิดขึ้น
 
 ### 4. Realize Implementation
+> Goal: Realize Implementation
 
 1. ทำ `/realize-implementation` เพื่อแปลงเป็น production code ครบถ้วน
 

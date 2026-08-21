@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-unocss
+  - follow-create-biome-plugins
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare
+> Goal: Prepare
 
 1. ตรวจสอบว่า UnoCSS ติดตั้งแล้วโดยทำ `/follow-unocss`
 2. อ่าน `uno.config.ts` ที่มีอยู่
@@ -32,24 +37,28 @@ triggers:
    - Vite: `src/theme.css`
 
 ### 2. Update Configuration
+> Goal: Update Configuration
 
 1. เพิ่ม theme colors ใน `uno.config.ts` ด้วย HSL variables
 2. กำหนด colors: primary, secondary, success, warning, destructive, background, foreground, surface, muted, accent, border, focus, overlay, skeleton
 3. ใช้ format `hsl(var(--color-{name}))` สำหรับแต่ละ color
 
 ### 3. Create Theme CSS
+> Goal: Create Theme CSS
 
 1. สร้างไฟล์ `theme.css` พร้อม HSL variables สำหรับ light/dark mode
 2. กำหนด CSS variables ใน `:root` และ `.dark` selector
 3. ใช้ format `--color-{name}: hue saturation% lightness%`
 
 ### 4. Import Theme CSS
+> Goal: Import Theme CSS
 
 1. Nuxt: ใน `app.vue` import `./assets/theme.css`
 2. Next.js: ใน `app/layout.tsx` import `./theme.css`
 3. Vite: ใน `main.ts` import `./theme.css`
 
 ### 5. Create Biome Validator Plugin
+> Goal: Create Biome Validator Plugin
 
 1. ทำ `/follow-create-biome-plugins` สำหรับสร้าง GritQL plugin
 2. สร้างไฟล์ `theme-validator.grit` ที่ root ของโปรเจกต์
@@ -61,6 +70,7 @@ triggers:
 5. รัน `bunx biome lint` เพื่อทดสอบ validator
 
 ### 6. Verify
+> Goal: Verify
 
 1. ทดสอบ theme classes เช่น `bg-primary`, `text-foreground`
 2. ทดสอบ dark mode ด้วย class `.dark` บน html element

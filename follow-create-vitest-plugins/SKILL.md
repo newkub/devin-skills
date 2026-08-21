@@ -11,6 +11,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -25,8 +26,7 @@ triggers:
 
 ### 1. Understand Plugin API
 
-ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
-
+> Goal: ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
 > Goal: เข้าใจ lifecycle และ hooks ของ Vitest plugin
 
 1. ศึกษา Plugin API 3.1.0+ จาก official docs
@@ -36,8 +36,7 @@ triggers:
 
 ### 2. Create Plugin
 
-สร้าง plugin ด้วย `configureVitest` method
-
+> Goal: สร้าง plugin ด้วย `configureVitest` method
 > Goal: มี Vitest plugin ที่ทำงานได้
 
 1. สร้าง plugin ด้วย `configureVitest` method
@@ -62,8 +61,7 @@ export function myPlugin(options: PluginOptions) {
 
 ### 3. Use Context Properties
 
-ใช้ context properties ตามจุดประสงค์
-
+> Goal: ใช้ context properties ตามจุดประสงค์
 > Goal: ใช้ context อย่างถูกต้อง
 
 1. ใช้ `project` เข้าถึง test project ปัจจุบัน
@@ -73,8 +71,7 @@ export function myPlugin(options: PluginOptions) {
 
 ### 4. Implement Cache Key Generator
 
-ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
-
+> Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
 > Goal: caching ทำงานถูกต้องกับ plugin options
 
 1. ใช้ `experimental_defineCacheKeyGenerator` (4.0.11+)
@@ -93,8 +90,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 
 ### 5. Test Plugin
 
-สร้าง test project เพื่อทดสอบ plugin
-
+> Goal: สร้าง test project เพื่อทดสอบ plugin
 > Goal: plugin ทำงานได้ในสถานการณ์จริง
 
 1. สร้าง test project สำหรับทดสอบ plugin
@@ -137,6 +133,7 @@ const newProjects = await injectTestProjects({
 - Filter อาจมีผล - อัปเดท `vitest.config.project` ถ้าจำเป็น
 
 ### 4. Cache Key Generator (4.0.11+)
+> Goal: Cache Key Generator (4.0.11+)
 
 - Return string สำหรับ cache key hashing
 - Return `false` เพื่อ disable file system caching
@@ -144,6 +141,7 @@ const newProjects = await injectTestProjects({
 - ทำงานเมื่อมี `experimental.fsModuleCache`
 
 ### 5. Config Mutations
+> Goal: Config Mutations
 
 - แก้ไข `vitest.config` โดยตรงได้
 - Reporters ยังไม่ถูกสร้าง - แก้ไข config แทน

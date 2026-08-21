@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `search-skills` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Define Search Keyword
+> Goal: Define Search Keyword
 
 ระบุ keyword สำหรับการค้นหา skills
 
@@ -35,6 +34,7 @@ Use `search-skills` for the specific tasks and workflows it covers
 3. กำหนด scope ของการค้นหา (specific หรือ general)
 
 ### 2. Execute Skills Find
+> Goal: Execute Skills Find
 
 ค้นหา skills ด้วย `skills find` command
 
@@ -43,6 +43,7 @@ Use `search-skills` for the specific tasks and workflows it covers
 3. บันทึก skills ที่พบพร้อมรายละเอียด
 
 ### 3. Analyze Results
+> Goal: Analyze Results
 
 วิเคราะห์และจัดกลุ่ม skills ที่พบ
 
@@ -52,14 +53,13 @@ Use `search-skills` for the specific tasks and workflows it covers
 4. ตรวจสอบว่า skills มีความเกี่ยวข้องกับงานปัจจุบันหรือไม่
 
 ### 4. Summarize Findings
+> Goal: Summarize Findings
 
 สรุปผลลัพธ์ในรูปแบบตาราง
 
 1. สร้างตารางสรุป skills ที่พบ
 2. แยกประเภทเป็น Direct matches, Related skills, Recommended
 3. แนะนำ skills ที่ควรใช้งาน
-
-## Rules
 
 ## Rules
 
@@ -92,8 +92,6 @@ Use `search-skills` for the specific tasks and workflows it covers
 | Match Type | Direct/Related/Recommended |
 | Priority | ระดับความสำคัญ |
 | Description | รายละเอียดสั้นๆ |
-
-## Expected Outcome
 
 ## Expected Outcome
 

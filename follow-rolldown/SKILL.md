@@ -16,7 +16,6 @@ triggers:
 
 ใช้งาน Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง
 
-
 ## Scope
 
 ใช้สำหรับ:
@@ -24,7 +23,6 @@ triggers:
 - Migration จาก Rollup ไปยัง Rust-based bundler
 - Code splitting และ tree-shaking
 - Plugin system ที่ compatible กับ Rollup
-
 
 ## Execute
 
@@ -63,7 +61,6 @@ bunx rolldown
 3. `Best Practices`: ดู [learn/principles/best-practices.md](learn/principles/best-practices.md)
 4. `Workflows`: ใช้ [workflows/setup-rolldown.md](workflows/setup-rolldown.md)
 
-
 ## Rules
 
 - ใช้ `bun add -D rolldown` สำหรับติดตั้ง
@@ -72,7 +69,6 @@ bunx rolldown
 - ใช้ `--config` สำหรับ config file
 - ใช้ TypeScript สำหรับ config file (rolldown.config.ts)
 - ใช้ `defineConfig` สำหรับ type safety
-
 
 ## Expected Outcome
 

@@ -18,6 +18,7 @@ related:
   - follow-content-quality
   - run-test-coverage
   - improve-test-coverage
+  - report
 ---
 
 ## Goal
@@ -32,8 +33,7 @@ related:
 
 ### 1. Detect Test Framework And Define Strategy
 
-ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
-
+> Goal: ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
 > Goal: ทราบ framework, coverage tools, และ strategy ที่เหมาะสม
 
 1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
@@ -49,8 +49,7 @@ related:
 
 ### 2. Analyze Source Code
 
-อ่านและวิเคราะห์ source code ที่จะ test ก่อนเขียน
-
+> Goal: อ่านและวิเคราะห์ source code ที่จะ test ก่อนเขียน
 > Goal: ระบุทุก branch, dependency, และ security-critical logic
 
 1. อ่าน source file ทั้งหมดที่เกี่ยวข้อง (handler, service, utils, types)
@@ -64,8 +63,7 @@ related:
 
 ### 3. Organize, Write Spec, And Improve Naming
 
-ย้าย test files ไว้ใน location ที่ถูกต้อง สร้าง spec และปรับปรุง naming ก่อนเขียน test
-
+> Goal: ย้าย test files ไว้ใน location ที่ถูกต้อง สร้าง spec และปรับปรุง naming ก่อนเขียน test
 > Goal: Test files พร้อม, spec ครอบคลุม, naming สอดคล้องมาตรฐาน
 
 1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
@@ -74,8 +72,7 @@ related:
 
 ### 4. Write Spec
 
-เขียน spec files ใน `spec/` ตาม test files ที่มีอยู่
-
+> Goal: เขียน spec files ใน `spec/` ตาม test files ที่มีอยู่
 > Goal: spec ครอบคลุม test ทั้งหมด และ sync กับ tests
 
 1. อ่าน test files ทั้งหมดใน `tests/`
@@ -86,8 +83,7 @@ related:
 
 ### 5. Write Tests
 
-เขียน test ตามประเภทและ conventions ของภาษาที่ใช้ ครอบคลุมทุก category — reminder: workflow goal คือ test ที่มีคุณภาพสูงครอบคลุมทุกกรณี
-
+> Goal: เขียน test ตามประเภทและ conventions ของภาษาที่ใช้ ครอบคลุมทุก category — reminder: workflow goal คือ test ที่มีคุณภาพสูงครอบคลุมทุกกรณี
 > Goal: Tests ครอบคลุมทุก category ที่จำเป็น
 
 Required categories (ทุก handler/function):
@@ -123,8 +119,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 ### 6. Run Tests
 
-รัน tests หลังเขียนเสร็จเพื่อ verify ว่าผ่านทั้งหมด
-
+> Goal: รัน tests หลังเขียนเสร็จเพื่อ verify ว่าผ่านทั้งหมด
 > Goal: Tests รันผ่านทั้งหมด ไม่มี false positive
 
 1. รัน test script ตาม ecosystem (`bun|npm run test`, `cargo test`, `pytest`, `go test ./...`)
@@ -134,8 +129,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 ### 7. Verify Coverage
 
-ตรวจสอบ coverage และเขียน tests ที่ขาดเพิ่มเติม
-
+> Goal: ตรวจสอบ coverage และเขียน tests ที่ขาดเพิ่มเติม
 > Goal: Coverage 100% สำหรับทุก critical paths
 
 1. ทำ `/review-codebase` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
@@ -144,8 +138,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 ### 8. Sync And Verify
 
-อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
-
+> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
 > Goal: SPEC.md และ references ครบถ้วน
 
 1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว

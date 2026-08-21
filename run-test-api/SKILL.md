@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,8 +18,6 @@ related:
   - run-test
   - follow-test
   - run-test-integration
-  - validate
-  - report
 ---
 
 ## Goal
@@ -32,8 +32,7 @@ related:
 
 ### 1. Prepare API Test Context
 
-เตรียม context ก่อนรัน API tests
-
+> Goal: เตรียม context ก่อนรัน API tests
 > Goal: รู้ endpoints, schemas, auth, และ environment ที่ต้องทดสอบ
 
 1. ตรวจสอบ `package.json` หรือ config เพื่อหา test framework และ scripts
@@ -44,8 +43,7 @@ related:
 
 ### 2. Create API Test Script
 
-สร้าง script สำหรับรัน API tests
-
+> Goal: สร้าง script สำหรับรัน API tests
 > Goal: มี script ที่รัน requests และตรวจ responses ได้
 
 1. ทำ `/use-scripts` เพื่อเลือก shell และ location
@@ -56,8 +54,7 @@ related:
 
 ### 3. Run API Tests
 
-รัน script และบันทึกผล
-
+> Goal: รัน script และบันทึกผล
 > Goal: ทราบว่า API endpoints ตอบสนองตาม expectations
 
 1. รัน script ใน `dryRun` mode ก่อน
@@ -68,8 +65,7 @@ related:
 
 ### 4. Validate And Report
 
-ตรวจสอบผลและรายงาน
-
+> Goal: ตรวจสอบผลและรายงาน
 > Goal: ระบุสาเหตุของ failures และ action items
 
 1. ทำ `/validate` กับ source ที่เกี่ยวข้องเมื่อ API test fail

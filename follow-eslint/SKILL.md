@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,15 +26,21 @@ triggers:
 
 ### 1. Install Core Dependencies
 
+> Goal: Install Core Dependencies
+
 1. รัน `bun add -D eslint @eslint/js typescript-eslint`
 2. รัน `bun add -D eslint-config-prettier`
 
 ### 2. Install Vue/Nuxt Plugins
 
+> Goal: Install Vue/Nuxt Plugins
+
 1. รัน `bun add -D eslint-plugin-vue @vue/eslint-config-typescript`
 2. รัน `bun add -D @nuxt/eslint-config`
 
 ### 3. Install Code Quality Plugins
+
+> Goal: Install Code Quality Plugins
 
 1. รัน `bun add -D eslint-plugin-import eslint-plugin-unused-imports`
 2. รัน `bun add -D eslint-plugin-no-secrets eslint-plugin-regexp`
@@ -40,9 +48,13 @@ triggers:
 
 ### 4. Install Testing/A11y Plugins
 
+> Goal: Install Testing/A11y Plugins
+
 1. รัน `bun add -D eslint-plugin-vitest eslint-plugin-vue-a11y`
 
 ### 5. Create Flat Config
+
+> Goal: Create Flat Config
 
 สร้าง `eslint.config.ts` ด้วย flat config format
 
@@ -98,7 +110,7 @@ export default defineConfig([
 
 ### 6. Add Package Scripts
 
-เพิ่ม scripts สำหรับ linting ใน `package.json`
+> Goal: เพิ่ม scripts สำหรับ linting ใน `package.json`
 
 ```json [package.json]
 {
@@ -112,7 +124,7 @@ export default defineConfig([
 
 ### 7. Configure IDE
 
-ตั้งค่า IDE settings สำหรับ ESLint integration
+> Goal: ตั้งค่า IDE settings สำหรับ ESLint integration
 
 ```json [.vscode/settings.json]
 {

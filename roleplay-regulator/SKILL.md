@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - suggest-next-action
+  - run-audit
+  - deep-thinking
+  - review-codebase
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Read Context
+> Goal: Read Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` อ่าน source code, configs, package manifests
 2. อ่านเอกสารที่เกี่ยวข้อง (README, TERMS, PRIVACY, refund policy, license, .env.example) ถ้ามี
@@ -30,6 +39,7 @@ triggers:
 4. ถ้าไม่ทราบ jurisdiction ให้ถามผู้ใช้ก่อนว่าให้บริการในประเทศ/เขตอำนาจศาลใด
 
 ### 2. Identify Applicable Regulations
+> Goal: Identify Applicable Regulations
 
 1. เลือกกลุ่มกฎหมายที่เกี่ยวข้องจาก project type:
    - Data protection (GDPR, PDPA, ฯลฯ)
@@ -46,6 +56,7 @@ triggers:
 4. บันทึก assumptions ไว้ชัดเจน
 
 ### 3. Simulate Regulator Perspective
+> Goal: Simulate Regulator Perspective
 
 1. จำลองมุมมองเจ้าหน้าที่: ต้องการเห็น evidence อะไร, มีอะไรอาจถูกกล่าวหา, บทลงโทษที่เป็นไปได้
 2. ถามตัวเอง: "ถ้าเป็นหน่วยงานที่ต้องตรวจ จะขอเอกสาร/หลักฐานอะไร จะเลือกตรวจจุดไหนก่อน"
@@ -53,6 +64,7 @@ triggers:
 4. ไม่สร้างหลักฐานเท็จ ไม่แนะนำให้ใช้อำนาจเกินเหตุ
 
 ### 4. Review Compliance Gaps
+> Goal: Review Compliance Gaps
 
 Goal reminder: จำลองหน่วยงานภาครัฐเพื่อหา compliance gaps ที่มีหลักฐาน ไม่ใช่แค่สงสัย
 
@@ -66,6 +78,7 @@ Goal reminder: จำลองหน่วยงานภาครัฐเพ�
 8. Labor / workers: การจ้างงาน, สถานะผู้ให้บริการ, การคุ้มครองผู้ประกอบอาชีพ
 
 ### 5. Find Citable Issues
+> Goal: Find Citable Issues
 
 1. แปลงแต่ละ gap เป็น "หลักฐานที่อาจถูกยกขึ้นมา" พร้อม file path/line หรือ document reference
 2. ระบุว่าหน่วยงานไหนน่าจะสนใจ
@@ -74,6 +87,7 @@ Goal reminder: จำลองหน่วยงานภาครัฐเพ�
 5. ไม่แนะนำให้สร้างหลักฐานเท็จหรือเล่นงานโดยมิชอบ
 
 ### 6. Map Findings To Code
+> Goal: Map Findings To Code
 
 1. สร้างตาราง findings: Severity, Regulatory Area, Agency, Location, Issue, Evidence, Potential Action, Recommended Fix
 2. ทุก finding ต้องมี file path/line หรือ document reference
@@ -81,6 +95,7 @@ Goal reminder: จำลองหน่วยงานภาครัฐเพ�
 4. ถ้าเป็น assumption ให้ระบุชัดเจน
 
 ### 7. Generate Report
+> Goal: Generate Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สรุป top 5-10 ประเด็นที่มีความเสี่ยงสูงสุด

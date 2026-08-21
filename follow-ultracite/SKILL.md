@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,9 @@ Use `follow-ultracite` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Installation
+
+> Goal: Installation
 
 1. ติดตั้ง Ultracite และ Biome:
    ```bash
@@ -35,6 +35,7 @@ Use `follow-ultracite` for the specific tasks and workflows it covers
 
 ### 2. Configuration
 
+> Goal: Configuration
 1. สร้างหรือแก้ไข `biome.json`:
    ```json
    {
@@ -63,6 +64,7 @@ Use `follow-ultracite` for the specific tasks and workflows it covers
 
 ### 3. Usage
 
+> Goal: Usage
 1. Lint โค้ดโดยไม่แก้ไข:
    ```bash
    bun run lint
@@ -78,15 +80,11 @@ Use `follow-ultracite` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - ใช้ preset configs จาก Ultracite ก่อน custom rules
 - Custom overrides ควรเป็น minimum เท่านั้น
 - ใช้ extends เพื่อ inherit จาก core configs
 - เลือก frameworks ที่ใช้งานจริงเท่านั้น
 - Commit config files ที่สร้างขึ้น
-
-## Expected Outcome
 
 ## Expected Outcome
 

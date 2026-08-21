@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - understand-me
+  - follow-skills
+  - use-lang-en
+  - use-lang-th
+  - follow-my-tech-stack
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Define Identity
+> Goal: Define Identity
 
 1. ระบุชื่อหรือ nickname ที่ต้องการให้ AI ใช้เรียก
 2. ระบุ role หรือ profession (เช่น developer, architect, founder)
@@ -30,6 +39,7 @@ triggers:
 4. ระบุภาษาหลักที่ใช้สื่อสาร (ไทย/อังกฤษ) — ใช้ `/use-lang-th` หรือ `/use-lang-en`
 
 ### 2. Define Communication Style
+> Goal: Define Communication Style
 
 1. ระบุระดับความละเอียดของการตอบ (concise, balanced, detailed)
 2. ระบุ tone (formal, casual, technical)
@@ -38,6 +48,7 @@ triggers:
 5. ระบุ preference เรื่อง proactive vs careful — ใช้ `/ask-me` เมื่อต้องการยืนยัน
 
 ### 3. Define Working Style
+> Goal: Define Working Style
 
 1. ระบุ workflow ที่ต้องการให้ AI ทำตามเสมอ (อ้างอิง `/follow-skills`)
 2. ระบุระดับ automation ที่ต้องการ (manual approval, semi-auto, full-auto)
@@ -46,6 +57,7 @@ triggers:
 5. ระบุ preference เรื่อง minimal changes vs comprehensive changes
 
 ### 4. Define Tech Stack Preferences
+> Goal: Define Tech Stack Preferences
 
 1. ระบุ tech stack หลักที่ใช้ — อ้างอิง `/follow-my-tech-stack`
 2. ระบุ package manager และ runtime ที่ต้องการ (เช่น Bun)
@@ -54,6 +66,7 @@ triggers:
 5. ระบุ testing preferences
 
 ### 5. Define Project Context
+> Goal: Define Project Context
 
 1. ระบุประเภทโปรเจกต์ที่ทำอยู่ (เช่น SaaS, monorepo, open source)
 2. ระบุ stage ของโปรเจกต์ (early, growth, mature)
@@ -61,6 +74,7 @@ triggers:
 4. ระบุ priorities (speed, quality, maintainability, scalability)
 
 ### 6. Save Persona
+> Goal: Save Persona
 
 1. บันทึก persona ลง memory ด้วย `create_memory`
 2. ตั้งค่า tags: `persona`, `user-preferences`, `communication-style`

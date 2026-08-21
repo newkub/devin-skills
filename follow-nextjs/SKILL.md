@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Project Structure
+> Goal: Project Structure
 
 1. ใช้ App Router ด้วย `app/` directory
 2. สร้าง `app/layout.tsx` สำหรับ root layout
@@ -33,6 +36,7 @@ triggers:
 7. ใช้ route groups `(group)` สำหรับ organize routes โดยไม่กระทบ URL
 
 ### 2. Directory Organization
+> Goal: Directory Organization
 
 1. ใช้ `components/` สำหรับ React components (ui, features)
 2. ใช้ `hooks/` สำหรับ custom React hooks
@@ -41,6 +45,7 @@ triggers:
 5. ใช้ `public/` สำหรับ static assets
 
 ### 3. Configuration
+> Goal: Configuration
 
 1. ตั้งค่า `next.config.ts` สำหรับ Next.js config
 2. ตั้งค่า `tsconfig.json` ด้วย strict mode
@@ -49,6 +54,7 @@ triggers:
 5. ใช้ Turbopack สำหรับ dev และ build (stable ใน Next.js 15)
 
 ### 4. Server And Client Components
+> Goal: Server And Client Components
 
 1. Server Components เป็น default (ไม่ใช้ `useState`, `useEffect`)
 2. Client Components เฉพาะเมื่อต้องการ interactivity (`'use client'`)
@@ -57,6 +63,7 @@ triggers:
 5. หลีกเลี่ยง non-serializable props จาก Server → Client (functions, dates)
 
 ### 5. Data Fetching
+> Goal: Data Fetching
 
 1. ใช้ Server Components สำหรับ data fetching (ไม่ใช้ `useEffect`)
 2. ใช้ `Promise.all` สำหรับ parallel data fetching (หลีกเลี่ยง waterfalls)
@@ -66,6 +73,7 @@ triggers:
 6. ใช้ `generateStaticParams` สำหรับ static generation
 
 ### 6. Server Actions
+> Goal: Server Actions
 
 1. ใช้ Server Actions สำหรับ form handling และ mutations
 2. Validate inputs ด้วย Zod schemas
@@ -74,6 +82,7 @@ triggers:
 5. ทดสอบ forms โดยไม่ใช้ client-side JavaScript
 
 ### 7. Performance
+> Goal: Performance
 
 1. ใช้ `next/image` สำหรับ image optimization
 2. ใช้ `next/link` สำหรับ navigation
@@ -83,6 +92,7 @@ triggers:
 6. ใช้ React Compiler แทน manual `memo`/`useMemo`/`useCallback`
 
 ### 8. Caching Strategy
+> Goal: Caching Strategy
 
 1. `fetch()` ไม่ cached by default ใน Next.js 15+
 2. ใช้ `next: { revalidate: seconds }` สำหรับ time-based revalidation

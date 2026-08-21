@@ -30,8 +30,7 @@ related:
 
 ### 1. Identify Workspace
 
-ระบุว่า project ใช้ moonrepo
-
+> Goal: ระบุว่า project ใช้ moonrepo
 > Goal: รู้ scope ของ moonrepo workspace
 
 1. ตรวจสอบ `.moon/workspace.yml` หรือ `moon.yml`
@@ -41,8 +40,7 @@ related:
 
 ### 2. Configure Workspace
 
-ตั้งค่า moonrepo workspace
-
+> Goal: ตั้งค่า moonrepo workspace
 > Goal: `.moon/` config ครบถ้วน
 
 1. สร้าง/อัปเดต `.moon/workspace.yml` ด้วย project globs
@@ -52,8 +50,7 @@ related:
 
 ### 3. Define Tasks
 
-กำหนด tasks ใน moonrepo
-
+> Goal: กำหนด tasks ใน moonrepo
 > Goal: tasks ทำงานสอดคล้องกันระหว่าง projects
 
 1. ใช้ชื่อ task เดียวกันกับ package scripts (build, dev, test, lint, typecheck, scan)
@@ -63,8 +60,7 @@ related:
 
 ### 4. Migrate From Turborepo
 
-ย้ายจาก turborepo ไป moonrepo
-
+> Goal: ย้ายจาก turborepo ไป moonrepo
 > Goal: ไม่มี turborepo dependency เหลือ
 
 1. ลบ `turbo.json`
@@ -75,8 +71,7 @@ related:
 
 ### 5. Verify
 
-ตรวจสอบว่า moonrepo ทำงานได้
-
+> Goal: ตรวจสอบว่า moonrepo ทำงานได้
 > Goal: workspace พร้อมใช้งานและผ่าน validation
 
 1. รัน `moon check` หรือ `moon run :check`

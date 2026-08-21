@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - check-reference
+  - update-reference
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Current Skill
+> Goal: Analyze Current Skill
 
 วิเคราะห์ skill ปัจจุบันเพื่อเข้าใจ context และ purpose
 
@@ -32,6 +37,7 @@ triggers:
 4. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 
 ### 2. List Available Skills
+> Goal: List Available Skills
 
 รวบรวม devin global skills ทั้งหมดที่มีอยู่
 
@@ -41,6 +47,7 @@ triggers:
 4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว
 
 ### 3. Match Related Skills
+> Goal: Match Related Skills
 
 จับคู่ skills ที่เกี่ยวข้องกับ skill ปัจจุบัน
 
@@ -50,6 +57,7 @@ triggers:
 4. กรอง skills ที่ไม่เกี่ยวข้องออก
 
 ### 4. Suggest Skills And New Ideas
+> Goal: Suggest Skills And New Ideas
 
 แนะนำ skills พร้อมเหตุผลและไอเดียใหม่
 
@@ -60,6 +68,7 @@ triggers:
 5. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
 
 ### 5. Update Related Skills
+> Goal: Update Related Skills
 
 อัปเดต `related` ในไฟล์ skill ปัจจุบัน
 

@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -29,6 +30,7 @@ related:
 ## Execute
 
 ### 1. Analyze Current State
+> Goal: Analyze Current State
 
 วิเคราะห์สถานการณ์ปัจจุบัน
 
@@ -40,6 +42,7 @@ related:
 6. ดู documentation ที่อาจต้องอัปเดท
 
 ### 2. Identify Context
+> Goal: Identify Context
 
 ระบุ context ของสถานการณ์
 
@@ -51,6 +54,7 @@ related:
 - เป็นการ learning หรือ research
 
 ### 3. Evaluate Priority
+> Goal: Evaluate Priority
 
 ประเมินความสำคัญของ actions ที่อาจทำ
 
@@ -62,6 +66,7 @@ related:
 - Time sensitivity
 
 ### 4. Suggest Actions
+> Goal: Suggest Actions
 
 แนะนำ actions ที่ควรทำถัดไป
 
@@ -75,6 +80,7 @@ related:
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 
 ### 5. Present Options
+> Goal: Present Options
 
 นำเสนอ options ให้ผู้ใช้ตัดสินใจ
 

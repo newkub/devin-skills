@@ -34,8 +34,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ### 1. Analyze System Boundaries
 
-วิเคราะห์ domain และกำหนด module boundaries
-
+> Goal: วิเคราะห์ domain และกำหนด module boundaries
 > Goal: modules สอดคล้องกับ bounded contexts
 
 1. ระบุ business domains และ modules ที่จำเป็น
@@ -45,8 +44,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ### 2. Setup Module Structure
 
-สร้าง folder structure สำหรับแต่ละ module
-
+> Goal: สร้าง folder structure สำหรับแต่ละ module
 > Goal: มีโครงสร้าง module ที่ชัดเจนและ encapsulate
 
 1. สร้าง `src/modules/<module>/{domain,application,infrastructure}` สำหรับแต่ละ module
@@ -57,8 +55,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ### 3. Implement Inter-Module Communication
 
-เลือกและ implement communication pattern
-
+> Goal: เลือกและ implement communication pattern
 > Goal: modules สื่อสารกันได้โดยไม่ทำลาย boundaries
 
 1. เลือก communication pattern:
@@ -72,8 +69,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ### 4. Setup Database Strategy
 
-เลือกและตั้งค่า database strategy
-
+> Goal: เลือกและตั้งค่า database strategy
 > Goal: ข้อมูลแยกตาม module โดยไม่ทำให้เกิด coupling
 
 1. เลือก database approach:
@@ -86,8 +82,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ### 5. Configure Build And Deploy
 
-ตั้งค่า build, tests, และ deployment pipeline
-
+> Goal: ตั้งค่า build, tests, และ deployment pipeline
 > Goal: deploy เป็น single unit พร้อม tests ครบถ้วน
 
 1. สร้าง module-aware build configuration

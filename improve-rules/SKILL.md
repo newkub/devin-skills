@@ -32,8 +32,7 @@ related:
 
 ### 1. Scan Existing Rules
 
-ค้นหา rules ทั้งหมด
-
+> Goal: ค้นหา rules ทั้งหมด
 > Goal: รู้ scope และปัญหาของ rules ปัจจุบัน
 
 1. ใช้ `/scan-codebase` ใน `.devin/rules/` และ `rules/`
@@ -43,8 +42,7 @@ related:
 
 ### 2. Check Alignment
 
-ตรวจสอบความสอดคล้อง
-
+> Goal: ตรวจสอบความสอดคล้อง
 > Goal: ระบุ misalignment และ gaps
 
 1. เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/`
@@ -54,8 +52,7 @@ related:
 
 ### 3. Fix Issues
 
-แก้ไขปัญหาทีพบ
-
+> Goal: แก้ไขปัญหาทีพบ
 > Goal: rules ถูกต้อง ไม่ซ้ำ และสอดคล้อง
 
 1. ลบ duplicate rules หลัง user confirm
@@ -65,8 +62,7 @@ related:
 
 ### 4. Validate
 
-ตรวจสอบผลลัพธ์
-
+> Goal: ตรวจสอบผลลัพธ์
 > Goal: rules ผ่าน scan และ validation
 
 1. รัน `ast-grep scan` หรือ `bun run scan`
@@ -75,8 +71,7 @@ related:
 
 ### 5. Report
 
-สรุปการปรับปรุง
-
+> Goal: สรุปการปรับปรุง
 > Goal: รายงานผลและ next actions
 
 1. รายงาน rules ทีแก้ไข

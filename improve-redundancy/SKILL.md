@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
+  - dont-over-engineer
+  - refactor
+  - update-reference
+  - simplify
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Detect Redundancy
 
-ตรวจจับเนื้อหาซ้ำซ้อนด้วย tools ก่อน manual review
-
+> Goal: ตรวจจับเนื้อหาซ้ำซ้อนด้วย tools ก่อน manual review
 > Goal: รู้ว่ามีอะไรซ้ำซ้อน ที่ไหน กี่จุด
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ structure และ identify scope ของการตรวจสอบ
@@ -36,8 +43,7 @@ triggers:
 
 ### 2. Classify And Prioritize
 
-จัดประเภทและจัดลำดับความสำคัญของ redundancy ที่พบ
-
+> Goal: จัดประเภทและจัดลำดับความสำคัญของ redundancy ที่พบ
 > Goal: รู้ว่าอะไรลบได้ อะไรต้อง merge อะไรต้อง reference
 
 1. จัดประเภท redundancy: exact duplicate (ลบได้), near-duplicate (merge), partial overlap (extract shared), reference-only (อ้างอิงแทน)
@@ -47,8 +53,7 @@ triggers:
 
 ### 3. Remove And Merge
 
-ลบและรวมเนื้อหาซ้ำซ้อนตามลำดับความสำคัญ
-
+> Goal: ลบและรวมเนื้อหาซ้ำซ้อนตามลำดับความสำคัญ
 > Goal: เนื้อหาไม่ซ้ำซ้อน เก็บ context ครบ เป็น single source of truth
 
 1. สำหรับ exact duplicate → ลบสำเนา เก็บต้นฉบับที่ location ที่เหมาะสม — แสดง dry run preview ก่อนลบ
@@ -60,8 +65,7 @@ triggers:
 
 ### 4. Validate And Update References
 
-ตรวจสอบว่าการลบไม่ทำลาย references และเนื้อหายังครบ
-
+> Goal: ตรวจสอบว่าการลบไม่ทำลาย references และเนื้อหายังครบ
 > Goal: ไม่มี broken references เนื้อหาครบ ไม่มี context หาย
 
 1. ทำ `/validate` เพื่อตรวจสอบว่าเนื้อหาที่เหลือยังสมบูรณ์ — ไม่มี missing context จากการลบ
@@ -71,8 +75,7 @@ triggers:
 
 ### 5. Report
 
-รายงานผลการลด redundancy
-
+> Goal: รายงานผลการลด redundancy
 > Goal: ผู้ใช้รู้ว่าลบอะไร รวมอะไร และเหลืออะไร
 
 1. รายงานเป็นตารางด้วย `/report-table`: รายการที่ลบ, รายการที่ merge, รายการที่แปลงเป็น reference, จำนวนบรรทัดที่ลดลง

@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,9 +18,6 @@ related:
   - follow-config
   - follow-monorepo
   - all-workspaces
-  - deep-plan
-  - git-commit
-  - ask-me
 ---
 
 ## Goal
@@ -33,8 +32,7 @@ related:
 
 ### 1. Analyze Project
 
-วิเคราะห์ project และ workspaces ทั้งหมด
-
+> Goal: วิเคราะห์ project และ workspaces ทั้งหมด
 > Goal: เข้าใจ tech stack, structure, และ scope ของ config ที่ต้องปรับปรุง
 
 1. ทำ `/follow-monorepo` เพื่อตรวจสอบและจัดระเบียบ monorepo
@@ -44,8 +42,7 @@ related:
 
 ### 2. Plan Configuration Improvements
 
-วางแผนการปรับปรุง config
-
+> Goal: วางแผนการปรับปรุง config
 > Goal: มีแผนครอบคลุมทุกจุดก่อนลงมือแก้ไข
 
 1. ทำ `/deep-plan` ถ้างานซับซ้อนสูงหรือหลาย workspace
@@ -55,8 +52,7 @@ related:
 
 ### 3. Improve Tasks And Scripts
 
-ปรับปรุง scripts ใน package manifest
-
+> Goal: ปรับปรุง scripts ใน package manifest
 > Goal: ทุก workspace มี scripts ตามมาตรฐานและสอดคล้อง tech stack
 
 1. ทำ `/follow-tasks` สำหรับ root และแต่ละ workspace
@@ -65,8 +61,7 @@ related:
 
 ### 4. Optimize Build Configuration
 
-ปรับปรุง build configuration
-
+> Goal: ปรับปรุง build configuration
 > Goal: build เร็วขึ้น output เล็กลง โดยไม่ทำลาย functionality
 
 1. ทำ `/optimize-build` สำหรับ build config แต่ละ workspace
@@ -75,8 +70,7 @@ related:
 
 ### 5. Fix Shared Configuration
 
-ตั้งค่า shared config files
-
+> Goal: ตั้งค่า shared config files
 > Goal: config files สอดคล้องกันทั้ง monorepo
 
 1. ทำ `/follow-config` ตาม tech stack ที่ detect ได้
@@ -86,8 +80,7 @@ related:
 
 ### 6. Validate And Commit
 
-ตรวจสอบผลลัพธ์และ commit
-
+> Goal: ตรวจสอบผลลัพธ์และ commit
 > Goal: config ถูกต้องและพร้อมใช้งาน
 
 1. ทำ `/run-check` เพื่อตรวจ lint, typecheck, scan

@@ -16,13 +16,6 @@ related:
   - improve-consistency
   - improve-redundancy
   - improve-skills
-  - report
-  - resolve-errors
-  - scan-codebase
-  - update-agents-md
-  - update-reference
-  - use-scripts
-  - validate
 ---
 
 ## Goal
@@ -37,8 +30,7 @@ related:
 
 ### 1. Discover And Inventory
 
-วิเคราะห์สถานะปัจจุบันของทุก `.md` ไฟล์ใน skills
-
+> Goal: วิเคราะห์สถานะปัจจุบันของทุก `.md` ไฟล์ใน skills
 > Goal: รู้ไฟล์ที่ต้องปรับปรุงและจัดลำดับความสำคัญ
 
 1. parallel: ทำตาม `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด ∥ ทำตาม `/check-reference` ตรวจ broken references
@@ -48,8 +40,7 @@ related:
 
 ### 2. Plan Batch Update
 
-วางแผนการปรับปรุงทีละ batch
-
+> Goal: วางแผนการปรับปรุงทีละ batch
 > Goal: ประมวลผลทั้งหมดอย่างมีประสิทธิภาพ
 
 1. จัดกลุ่ม skills ตาม category (improve, follow, use, run, test) และ priority
@@ -58,8 +49,7 @@ related:
 
 ### 3. Improve Each Skill
 
-ปรับปรุงทีละ skill โดยใช้ `/improve-skills`
-
+> Goal: ปรับปรุงทีละ skill โดยใช้ `/improve-skills`
 > Goal: ทุก skill ได้รับการปรับปรุงตามมาตรฐานเดียวกัน
 
 1. สำหรับแต่ละ skill เรียก `/improve-skills` พร้อมระบุ target directory
@@ -68,8 +58,7 @@ related:
 
 ### 4. Cross-Skill Consistency
 
-ตรวจสอบความสอดคล้องและลด redundancy ข้าม skill
-
+> Goal: ตรวจสอบความสอดคล้องและลด redundancy ข้าม skill
 > Goal: ทุก skill สอดคล้องกันและไม่ซ้ำซ้อน
 
 1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
@@ -78,8 +67,7 @@ related:
 
 ### 5. Validate And Report
 
-ตรวจสอบผลลัพธ์และสรุป
-
+> Goal: ตรวจสอบผลลัพธ์และสรุป
 > Goal: ทุก skills ผ่าน validation พร้อมรายงาน
 
 1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate` ∥ ทำตาม `/follow-devin-skills-md` กับทุก `SKILL.md` ∥ ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`

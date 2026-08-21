@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Setup
 
-ติดตั้ง dependencies และตั้งค่า project
-
+> Goal: ติดตั้ง dependencies และตั้งค่า project
 > Goal: มี dependencies และ config ครบ
 
 1. ติดตั้ง: Compose Multiplatform, Coroutines, Koin, Ktor, Arrow
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Project Structure
 
-จัดโครงสร้างตาม Clean Architecture
-
+> Goal: จัดโครงสร้างตาม Clean Architecture
 > Goal: โครงสร้าง project เป็น Clean Architecture
 
 1. แบ่งเป็น `data/`, `domain/`, `presentation/`
@@ -45,8 +45,7 @@ triggers:
 
 ### 3. Core Principles
 
-เขียน Kotlin ตาม best practices
-
+> Goal: เขียน Kotlin ตาม best practices
 > Goal: โค้ดเป็นไปตาม Kotlin best practices
 
 1. ใช้ Coroutines สำหรับ async operations
@@ -57,8 +56,7 @@ triggers:
 
 ### 4. Error Handling
 
-จัดการ error ด้วย Arrow Either pattern
-
+> Goal: จัดการ error ด้วย Arrow Either pattern
 > Goal: error handling เป็น type-safe
 
 1. ใช้ `Either<Error, Success>` สำหรับ operations ที่อาจ fail
@@ -67,8 +65,7 @@ triggers:
 
 ### 5. Testing
 
-เขียน tests สำหรับทุก layer
-
+> Goal: เขียน tests สำหรับทุก layer
 > Goal: มี unit tests ครอบคลุม
 
 1. ใช้ `kotlin.test` หรือ `JUnit 5`
@@ -93,4 +90,3 @@ triggers:
 - DI ด้วย Koin
 - Error handling ด้วย Arrow Either pattern
 - มี unit tests ครอบคลุม
-

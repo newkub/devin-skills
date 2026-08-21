@@ -1,6 +1,6 @@
 ---
 name: run-cleanup
-description: run task มีปัญหา ต้อง cleanup file ต่างๆ เช่น node_modules, dist, .nuxt, target และอื่นๆ ที่อยู่ใ...
+description: Run Cleanup
 allowed-tools:
   - read
   - edit
@@ -10,6 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal

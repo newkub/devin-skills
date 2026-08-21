@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - check-unused-deps
+  - report-ansi
+  - use-scripts
+  - run-clean
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Analyze Project And Baseline
 
-ระบุ project type และ build tool พร้อมบันทึก baseline
-
+> Goal: ระบุ project type และ build tool พร้อมบันทึก baseline
 > Goal: รู้ build tool และมี baseline สำหรับเปรียบเทียบ
 
 1. ทำ `/analyze-project` เพื่อระบุ project type, package manager, build tool
@@ -35,8 +42,7 @@ triggers:
 
 ### 2. Review Build Configuration
 
-อ่านและประเมิน build config ปัจจุบัน
-
+> Goal: อ่านและประเมิน build config ปัจจุบัน
 > Goal: หาจุดที่ปรับปรุง config ได้
 
 1. อ่าน build config file ที่พบ
@@ -45,8 +51,7 @@ triggers:
 
 ### 3. Optimize Dependencies
 
-ลด bundle size จาก dependencies ที่ไม่จำเป็น
-
+> Goal: ลด bundle size จาก dependencies ที่ไม่จำเป็น
 > Goal: ลบ dependencies ไม่ใช้งานและปรับ import strategy
 
 1. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ได้ใช้
@@ -56,8 +61,7 @@ triggers:
 
 ### 4. Optimize Imports And Code Splitting
 
-ลด dead code และใช้ dynamic imports ถ้าได้
-
+> Goal: ลด dead code และใช้ dynamic imports ถ้าได้
 > Goal: ลด dead code และ split bundle อย่างมีประสิทธิภาพ
 
 1. ใช้ `/scan-codebase` เพื่อหา unused files, dead code, หรือ unused exports
@@ -66,8 +70,7 @@ triggers:
 
 ### 5. Optimize Assets
 
-ลดขนาด assets ถ้ามี
-
+> Goal: ลดขนาด assets ถ้ามี
 > Goal: ลดขนาด assets โดยไม่ทำลาย functionality
 
 1. ตรวจหา assets ขนาดใหญ่ใน `src/` หรือ `public/`
@@ -76,8 +79,7 @@ triggers:
 
 ### 6. Apply Build Optimizations
 
-แก้ไข build config ตาม findings
-
+> Goal: แก้ไข build config ตาม findings
 > Goal: build config ถูกตั้งค่าให้ output ขนาดเล็กและเร็วขึ้น
 
 1. เปิด `minify` สำหรับ production
@@ -88,8 +90,7 @@ triggers:
 
 ### 7. Clean And Rebuild
 
-ลบ artifacts เก่าแล้ว build ใหม่เพื่อตรวจสอบ
-
+> Goal: ลบ artifacts เก่าแล้ว build ใหม่เพื่อตรวจสอบ
 > Goal: ยืนยันว่า optimization ยังสร้าง output ถูกต้อง
 
 1. ทำ `/run-clean` เพื่อลบ build artifacts และ cache เก่า
@@ -99,8 +100,7 @@ triggers:
 
 ### 8. Verify And Report
 
-ตรวจสอบ output และสรุปผล
-
+> Goal: ตรวจสอบ output และสรุปผล
 > Goal: รายงานผลลัพธ์และ next action ที่ชัดเจน
 
 1. ตรวจสอบว่า build artifacts ถูกสร้างและทำงานได้
@@ -171,7 +171,6 @@ related:
 ### 1. Analyze Project
 
 ระบุ project type และ build tool
-
 > Goal: รู้ build tool ก่อน optimize
 
 1. ทำ `/analyze-project`
@@ -180,7 +179,6 @@ related:
 ### 2. Optimize Dependencies
 
 ลด bundle size จาก dependencies
-
 > Goal: ลบสิ่งที่ไม่จำเป็น
 
 1. ทำ `/check-unused-deps`
@@ -189,7 +187,6 @@ related:
 ### 3. Rebuild And Verify
 
 ลบ artifacts เก่าแล้ว build ใหม่
-
 > Goal: ยืนยัน optimization
 
 1. ทำ `/run-clean`

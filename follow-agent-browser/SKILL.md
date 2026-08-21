@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - resolve-errors
 ---
 
 ## Goal
@@ -21,9 +24,8 @@ triggers:
 ใช้สำหรับ browser automation, web testing, monitoring และ debugging ด้วย `agent-browser` CLI จาก Vercel Labs (vercel-labs/agent-browser)
 
 ## Execute
-
 ### 1. Install And Verify
-
+> Goal: Install And Verify
 ติดตั้ง `agent-browser` ก่อนใช้งานครั้งแรก
 
 1. ติดตั้งด้วย `bun install -g agent-browser`
@@ -31,9 +33,8 @@ triggers:
 3. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
 4. ตรวจสอบเวอร์ชันด้วย `agent-browser --version`
 5. ถ้าติดตั้งไม่ได้ ให้ใช้ `playwriter` skill หรือ `browser-preview` tool แทนตาม ## Rules ข้อ 8
-
 ### 2. Open Browser Session
-
+> Goal: Open Browser Session
 เปิด browser session ตาม ## Rules ข้อ 1
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
@@ -42,9 +43,8 @@ triggers:
 4. ใช้ `agent-browser --profile <name|path> open <url>` สำหรับ persistent data
 5. ถ้าเปิดไม่ได้ ให้ตรวจสอบว่า `agent-browser install` ทำแล้ว
 6. ถ้า daemon error ให้ใช้ `browser-preview` tool แทน
-
 ### 3. Navigate
-
+> Goal: Navigate
 นำทางหน้าเว็บตาม ## Rules ข้อ 2
 
 1. ใช้ `agent-browser open <url>` สำหรับเปิดและ navigate (aliases: `goto`, `navigate`)
@@ -53,9 +53,8 @@ triggers:
 4. ใช้ `agent-browser reload` สำหรับรีเฟรชหน้า
 5. ใช้ `agent-browser pushstate <url>` สำหรับ SPA client-side navigation
 6. ใช้ `agent-browser read [url]` สำหรับอ่าน agent-readable text จากหน้าเว็บ
-
 ### 4. Snapshot And Interact
-
+> Goal: Snapshot And Interact
 ถ่ายภาพ accessibility tree และโต้ตอบกับหน้าเว็บตาม ## Rules ข้อ 3
 
 1. ใช้ `agent-browser snapshot -i` สำหรับดู interactive elements และ refs (แนะนำ)
@@ -66,9 +65,8 @@ triggers:
 6. ใช้ `agent-browser press Enter` สำหรับกดปุ่ม keyboard
 7. ใช้ `agent-browser scroll down 500` สำหรับเลื่อนหน้า
 8. ใช้ semantic locators เป็นทางเลือกแทน refs ตาม ## Rules ข้อ 3
-
 ### 5. Monitor And Debug
-
+> Goal: Monitor And Debug
 Monitor และ debug ตาม ## Rules ข้อ 4
 
 1. ใช้ `agent-browser snapshot -i` สำหรับดู interactive elements และ refs
@@ -78,13 +76,11 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 5. ใช้ `agent-browser console` สำหรับดู console messages
 6. ใช้ `agent-browser errors` สำหรับดู page errors
 7. ใช้ `agent-browser inspect` สำหรับเปิด Chrome DevTools
-
 ### 6. Handle Errors
-
+> Goal: Handle Errors
 จัดการ errors ที่เกิดขึ้นตาม ## Rules ข้อ 5
-
 ### 7. Cleanup And Close
-
+> Goal: Cleanup And Close
 ทำ cleanup หลังจากใช้งานเสร็จ
 
 1. ปิด browser session ด้วย `agent-browser close`
@@ -93,7 +89,6 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 4. สรุปผลลัพธ์และ issues ที่พบ
 
 ## Rules
-
 ### 1. Browser Configuration
 
 ตั้งค่า browser configuration อย่างถูกต้อง
@@ -106,7 +101,6 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 - ใช้ `agent-browser --proxy <url> open <url>` สำหรับเชื่อมต่อผ่าน proxy
 - ใช้ `agent-browser --user-agent <ua> open <url>` สำหรับกำหนด custom User-Agent
 - ใช้ `agent-browser --color-scheme dark open <url>` สำหรับกำหนด color scheme
-
 ### 2. Navigation
 
 นำทางหน้าเว็บอย่างถูกต้อง
@@ -120,7 +114,6 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 - ใช้ `agent-browser pushstate <url>` สำหรับ SPA navigation (auto-detect Next.js router)
 - ใช้ `agent-browser read [url]` สำหรับอ่าน agent-readable text หรือ rendered DOM
 - ใช้ `agent-browser connect <port>` สำหรับเชื่อมต่อ browser ที่เปิดอยู่ผ่าน CDP
-
 ### 3. Snapshot And Interaction
 
 ถ่ายภาพ accessibility tree และโต้ตอบกับหน้าเว็บอย่างถูกต้อง
@@ -148,7 +141,6 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 - ใช้ `agent-browser find placeholder "Search" type "query"` สำหรับ find by placeholder
 - ใช้ `agent-browser find testid "submit-btn" click` สำหรับ find by testid
 - รอให้ page load เสร็จก่อน interact ด้วย `agent-browser wait @e1` หรือ `agent-browser wait --load networkidle`
-
 ### 4. Monitoring And Debugging
 
 Monitor และ debug อย่างมีประสิทธิภาพ
@@ -168,7 +160,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ใช้ `agent-browser trace start` และ `agent-browser trace stop <path>` สำหรับ trace recording
 - ใช้ `agent-browser profiler start` และ `agent-browser profiler stop <path>` สำหรับ profiling
 - ใช้ `agent-browser record start <path>` และ `agent-browser record stop` สำหรับ video recording
-
 ### 5. Error Handling
 
 จัดการ errors ที่เกิดขึ้นอย่างถูกต้อง
@@ -180,7 +171,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - บันทึก error logs ด้วย `agent-browser console` และ `agent-browser errors`
 - ตรวจสอบ element availability ก่อน interact ด้วย `agent-browser wait @e1`
 - ใช้ `agent-browser is visible @e1` ตรวจสอบ visibility ก่อน interact
-
 ### 6. Get Information
 
 ดึงข้อมูลจากหน้าเว็บอย่างถูกต้อง
@@ -194,7 +184,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ใช้ `agent-browser get count "<selector>"` สำหรับนับ matching elements
 - ใช้ `agent-browser get box @e1` สำหรับดึง bounding box
 - ใช้ `agent-browser get styles @e1` สำหรับดึง computed styles
-
 ### 7. Tabs And Windows
 
 จัดการ tabs และ windows อย่างถูกต้อง
@@ -207,7 +196,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ใช้ `agent-browser window new` สำหรับเปิด window ใหม่
 - tab ids เป็น `t1`, `t2`, `t3` (ไม่รับตัวเลข positional)
 - labels ต้อง unique ใน session และไม่ถูก auto-generate
-
 ### 8. Fallback Options
 
 ใช้ fallback เมื่อ `agent-browser` ไม่พร้อมใช้งาน
@@ -216,7 +204,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ติดตั้ง `playwriter` ด้วย `bun i -g playwriter` แล้ว `npx -y skills add remorses/playwriter`
 - ถ้า `playwriter` ไม่พร้อม ให้ใช้ `browser-preview` tool สำหรับ preview web server
 - ถ้าไม่มี fallback ใดใช้ได้ ให้แจ้งผู้ใช้ว่าต้องติดตั้ง `agent-browser` หรือ `playwriter`
-
 ### 9. Security
 
 รักษา security ระหว่างการใช้งาน
@@ -226,7 +213,6 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ลบ temporary files และ profiles หลังใช้งาน
 - ไม่แชร์ sessions ระหว่าง test cases
 - ใช้ `agent-browser state save <path>` และ `agent-browser state load <path>` สำหรับจัดการ state
-
 ### 10. Performance
 
 ปรับปรุง performance สำหรับ operations ต่อเนื่อง

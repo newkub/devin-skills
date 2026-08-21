@@ -33,8 +33,7 @@ related:
 
 ### 1. Decompose Task
 
-แบ่งงานออกเป็น subtasks
-
+> Goal: แบ่งงานออกเป็น subtasks
 > Goal: แต่ละ subtask ชัดเจนและ independent
 
 1. ทำ `/deep-plan` ถ้างานซับซ้อน
@@ -44,8 +43,7 @@ related:
 
 ### 2. Spawn Subagents
 
-สร้าง subagents ตาม subtasks
-
+> Goal: สร้าง subagents ตาม subtasks
 > Goal: ทุก subtask มี agent ทำงาน
 
 1. ทำ `/spawn-subagents` เพื่อสร้าง agent ตาม subtask
@@ -54,8 +52,7 @@ related:
 
 ### 3. Collect Results
 
-รอและรวบรวมผลลัพธ์
-
+> Goal: รอและรวบรวมผลลัพธ์
 > Goal: ได้ผลลัพธ์จากทุก agent
 
 1. ใช้ `read_subagent` เพื่อติดตาม progress
@@ -64,8 +61,7 @@ related:
 
 ### 4. Merge And Report
 
-รวมผลลัพธ์และรายงาน
-
+> Goal: รวมผลลัพธ์และรายงาน
 > Goal: ส่งมอบผลลัพธ์รวม
 
 1. แก้ไข conflicts ถ้ามี

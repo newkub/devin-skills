@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,7 +26,6 @@ triggers:
 ## Execute
 
 ### 1. Prepare Context
-
 > Goal: ระบุ target paths และ Zed CLI ที่ถูกต้อง
 
 1. ระบุ target paths จากลำดับความสำคัญ: path ที่ user ระบุไว้ ไฟล์ที่เปิดอยู่ใน IDE หรือ current working directory
@@ -32,7 +34,6 @@ triggers:
 4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
 
 ### 2. Open Files
-
 > Goal: เปิด target ใน Zed อย่างปลอดภัย
 
 1. เลือก Zed CLI ตาม OS:
@@ -44,7 +45,6 @@ triggers:
 3. ถ้าเป็น directory ให้เปิดเป็น workspace โดยส่ง path เดียว
 
 ### 3. Verify And Report
-
 > Goal: ยืนยันว่าไฟล์ถูกเปิดและรายงานผล
 
 1. ตรวจสอบ exit code หรือสถานะ process ที่ spawn

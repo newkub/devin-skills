@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-solid-tanstack-architecture
+  - follow-typescript
+  - follow-vitest
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Component Development
+> Goal: Component Development
 
 พัฒนา components ตาม Solid.js patterns
 
@@ -34,6 +40,7 @@ triggers:
 6. ห้าม destructure props ใช้ `mergeProps` และ `splitProps` เพื่อ preserve getter chain
 
 ### 2. Use Control Flow Components
+> Goal: Use Control Flow Components
 
 ใช้ control flow components ที่ optimized สำหรับ Solid.js
 
@@ -45,6 +52,7 @@ triggers:
 6. หลีกเลี่ยง `map` และ `filter` โดยตรงบน reactive arrays
 
 ### 3. Implement Reactivity
+> Goal: Implement Reactivity
 
 ใช้ reactive primitives อย่างถูกต้อง
 
@@ -61,6 +69,7 @@ triggers:
 11. ห้ามใช้ `createEffect` สำหรับ sync derived state ใช้ function หรือ `createMemo` แทน
 
 ### 4. State Management
+> Goal: State Management
 
 จัดการ state ด้วย patterns ที่เหมาะสม
 
@@ -73,6 +82,7 @@ triggers:
 7. หลีกเลี่ยง deep nesting ถ้าไม่จำเป็น
 
 ### 5. Async Data And Resources
+> Goal: Async Data And Resources
 
 จัดการ async data อย่างถูกต้อง
 
@@ -84,6 +94,7 @@ triggers:
 6. หลีกเลี่ยง race conditions โดยใช้ `createResource` แทน manual fetch ใน `createEffect`
 
 ### 6. Optimize Performance
+> Goal: Optimize Performance
 
 ปรับปรุง performance ด้วย Solid.js patterns
 
@@ -97,6 +108,7 @@ triggers:
 8. ใช้ `untrack` เมื่อไม่ต้องการสร้าง dependencies
 
 ### 7. Testing
+> Goal: Testing
 
 ทดสอบ Solid.js applications
 

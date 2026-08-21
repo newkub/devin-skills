@@ -19,9 +19,6 @@ related:
   - learn-from-cli
   - follow-write-devin-skills
   - write-skills-md
-  - validate
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal
@@ -41,8 +38,7 @@ related:
 
 ### 1. Select CLI Tools
 
-ระบุ CLI ทีต้องการ convert
-
+> Goal: ระบุ CLI ทีต้องการ convert
 > Goal: ทราบ scope ของ tools
 
 1. ดูรายการจาก `/report-my-global-cli` หรือถาม user
@@ -52,8 +48,7 @@ related:
 
 ### 2. Explore Commands
 
-เรียนรู้ command structure ของแต่ละ tool
-
+> Goal: เรียนรู้ command structure ของแต่ละ tool
 > Goal: รู้ commands, subcommands, options ที่ควร convert
 
 1. ทำ `/learn-from-cli` กับแต่ละ tool
@@ -66,8 +61,7 @@ related:
 
 ### 3. Evaluate Conversion Candidates
 
-ประเมินว่า command ไหนน่าเป็น skill
-
+> Goal: ประเมินว่า command ไหนน่าเป็น skill
 > Goal: ได้รายการ commands ที่มี justification ชัดเจน
 
 1. ใช้ criteria:
@@ -81,8 +75,7 @@ related:
 
 ### 4. Group And Prioritize
 
-จัดกลุ่ม commands ตาม concern และ priority
-
+> Goal: จัดกลุ่ม commands ตาม concern และ priority
 > Goal: ได้กลุ่ม commands ทีสมควรแยก skill
 
 1. แยก commands ทีซับซ้อนหรือใช้บ่อยมากเป็น skill เดียว
@@ -92,8 +85,7 @@ related:
 
 ### 5. Draft Skills
 
-เขียน draft skill สำหรับ candidates ที่เลือก
-
+> Goal: เขียน draft skill สำหรับ candidates ที่เลือก
 > Goal: ได้ draft skills ทีพร้อม review
 
 1. ใช้ `/follow-write-devin-skills` หรือ `/write-skills-md` สำหรับแต่ละ skill
@@ -107,8 +99,7 @@ related:
 
 ### 6. Validate And Suggest
 
-ตรวจสอบและนำเสนอทิศทางถัดไป
-
+> Goal: ตรวจสอบและนำเสนอทิศทางถัดไป
 > Goal: skills ผ่านเกณฑ์และผู้ใช้ทราบ next step
 
 1. ทำ `/validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ

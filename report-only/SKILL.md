@@ -7,6 +7,7 @@ allowed-tools:
   - glob
   - exec
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -16,10 +17,6 @@ related:
   - analyze-project
   - scan-codebase
   - report-table
-  - report-file-structure
-  - report-ansi
-  - suggest-next-action
-  - ask-me
 ---
 
 ## Goal
@@ -34,8 +31,7 @@ related:
 
 ### 1. Gather Context
 
-รวบรวมข้อมูลสถานะปัจจุบัน
-
+> Goal: รวบรวมข้อมูลสถานะปัจจุบัน
 > Goal: มีข้อมูลพร้อมสร้าง report
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ structure
@@ -45,8 +41,7 @@ related:
 
 ### 2. Build Report
 
-สร้าง report ทีอ่านง่าย
-
+> Goal: สร้าง report ทีอ่านง่าย
 > Goal: สรุปข้อมูลสำคัญให้ user
 
 1. ทำ `/deep-report` ถ้าต้องการ report ละเอียด
@@ -56,8 +51,7 @@ related:
 
 ### 3. Suggest Next Action
 
-เสนอทิศทางถัดไปโดยไม่ดำเนินการเอง
-
+> Goal: เสนอทิศทางถัดไปโดยไม่ดำเนินการเอง
 > Goal: user ตัดสินใจเอง
 
 1. สรุป findings พร้อม evidence

@@ -33,8 +33,7 @@ related:
 
 ### 1. Detect UX/UI Dimension
 
-ระบุ dimension ทีเหมาะสมกับสิ่งที่ต้องทำ
-
+> Goal: ระบุ dimension ทีเหมาะสมกับสิ่งที่ต้องทำ
 > Goal: ได้ approach ทีถูกต้อง
 
 1. ถ้าเป็น micro-interaction, hover, focus, loading, toggle, feedback → ใช้ interaction patterns
@@ -46,8 +45,7 @@ related:
 
 ### 2. Apply Pattern
 
-นำ dimension ทีเลือกไปใช้งานจริง
-
+> Goal: นำ dimension ทีเลือกไปใช้งานจริง
 > Goal: เกิดผลลัพธ์ทีใช้งานได้
 
 1. ระบุ components/elements ทีได้รับผลกระทบ

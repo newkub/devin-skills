@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -29,8 +30,7 @@ related:
 
 ### 1. Setup
 
-วางแผน project architecture
-
+> Goal: วางแผน project architecture
 > Goal: ระบุ version, rendering mode, และ stack ทีเหมาะสม
 
 1. ระบุ project location ใน monorepo เช่น `apps/web/`
@@ -42,8 +42,7 @@ related:
 
 ### 2. Directory Structure
 
-สร้างโครงสร้างโฟลเดอร์
-
+> Goal: สร้างโครงสร้างโฟลเดอร์
 > Goal: มา project structure ที scale ได้
 
 1. ใช้ `app/` directory สำหรับ Nuxt 4
@@ -54,8 +53,7 @@ related:
 
 ### 3. Configuration
 
-ตั้งค่า config และ scripts
-
+> Goal: ตั้งค่า config และ scripts
 > Goal: config รองรับ dev, build, typecheck, lint, test
 
 1. ตั้งค่า `nuxt.config.ts` (extends, modules, nitro, typescript)
@@ -66,8 +64,7 @@ related:
 
 ### 4. Code Standards
 
-กำหนด coding standards
-
+> Goal: กำหนด coding standards
 > Goal: code มี type safety และ consistency
 
 1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template
@@ -83,8 +80,7 @@ related:
 
 ### 5. Development
 
-พัฒนา base project
-
+> Goal: พัฒนา base project
 > Goal: project พร้อมพัฒนา features
 
 1. สร้าง directory structure ตามที่วางแปลง
@@ -95,8 +91,7 @@ related:
 
 ### 6. Performance
 
-ปรับแต่ง performance
-
+> Goal: ปรับแต่ง performance
 > Goal: ลด TTI และ bundle size
 
 1. **Lazy Loading Components** — ใช้ `Lazy` prefix สำหรับ components ที่ไม่จำเป็นต้องโหลดทันที
@@ -138,8 +133,7 @@ related:
 
 ### 7. Plugins Best Practices
 
-ตั้งค่า Nuxt plugins
-
+> Goal: ตั้งค่า Nuxt plugins
 > Goal: plugins initialize เร็วและไม่กระทบ performance
 
 1. Avoid costly plugin setup - หลีกเลี่ยง plugins ที่มีการคำนวณหนักหรือใช้เวลา initialize นาน
@@ -156,8 +150,7 @@ related:
 
 ### 8. Assets Management
 
-จัดการ assets
-
+> Goal: จัดการ assets
 > Goal: assets ถูกประมวลผลหรือ static ได้ถูกต้อง
 
 1. ใช้ `~/assets` สำหรับไฟล์ที่ต้อง processing
@@ -172,8 +165,7 @@ related:
 
 ### 9. Error Handling
 
-ตั้งค่า error boundaries
-
+> Goal: ตั้งค่า error boundaries
 > Goal: errors ถูก handle อย่างถูกต้อง
 
 1. ใช้ `NuxtErrorBoundary` สำหรับ handle errors ในส่วนต่างๆ ของ app
@@ -189,8 +181,7 @@ related:
 
 ### 10. Verification
 
-ตรวจสอบ quality
-
+> Goal: ตรวจสอบ quality
 > Goal: project build และ test ผ่าน
 
 1. รัน `nuxt typecheck` ตรวจสอบ TypeScript errors

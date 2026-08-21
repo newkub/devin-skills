@@ -20,8 +20,6 @@ related:
   - check-reference
   - review-codebase
   - follow-content-quality
-  - report-table
-  - resolve-errors
 ---
 
 ## Goal
@@ -41,8 +39,7 @@ related:
 
 ### 1. Gather Criteria
 
-รวบรวม criteria และ context ทีใช้ตรวจสอบ
-
+> Goal: รวบรวม criteria และ context ทีใช้ตรวจสอบ
 > Goal: ทราบสิ่งทีต้องตรวจ และวิธีวัดผล
 
 1. อ่าน requirements, rules, standards ที user ระบุ
@@ -52,8 +49,7 @@ related:
 
 ### 2. Detect Issues
 
-ค้นหาปัญหาด้วย tools หรือ scripts
-
+> Goal: ค้นหาปัญหาด้วย tools หรือ scripts
 > Goal: หาปัญหาจริงโดยไม่เดา
 
 1. ใช้ `read`, `grep`, `glob` เพื่อ scan ไฟล์ทีเกี่ยวข้อง
@@ -63,8 +59,7 @@ related:
 
 ### 3. Prioritize
 
-จัดลำดับ issues ก่อนแก้ไข
-
+> Goal: จัดลำดับ issues ก่อนแก้ไข
 > Goal: แก้ปัญหาสำคัญก่อน และลด rework
 
 1. แบ่ง severity: Critical, High, Medium, Low
@@ -74,8 +69,7 @@ related:
 
 ### 4. Fix Issues
 
-แก้ไข issues ตาม priority
-
+> Goal: แก้ไข issues ตาม priority
 > Goal: ปรับปรุงความถูกต้องให้ผ่าน criteria
 
 1. แก้ไขปัญหาแต่ละข้อด้วย `edit` หรือ `write`
@@ -85,8 +79,7 @@ related:
 
 ### 5. Verify
 
-ตรวจสอบว่าแก้ไขแล้วถูกต้อง
-
+> Goal: ตรวจสอบว่าแก้ไขแล้วถูกต้อง
 > Goal: ยืนยันว่าไม่มี issues เหลือ หรือ เหลือเฉพาะทียอมรับได้
 
 1. รัน checks เดิมซ้ำเพื่อ verify
@@ -96,8 +89,7 @@ related:
 
 ### 6. Report
 
-สรุปผลการปรับปรุง
-
+> Goal: สรุปผลการปรับปรุง
 > Goal: รายงานสิ่งทีทำ และสถานะปัจจุบัน
 
 1. ใช้ `/report-table` สรุป issues ทีพบและแก้ไข

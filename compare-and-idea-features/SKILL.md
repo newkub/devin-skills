@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - idea-features
+  - deep-research
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +26,8 @@ Use `compare-and-idea-features` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. วิจัย Competitors
+> Goal: วิจัย Competitors
 
 วิจัย competitors โดยใช้ deep research methods
 
@@ -35,6 +36,7 @@ Use `compare-and-idea-features` for the specific tasks and workflows it covers
 3. บันทึก differentiation opportunities
 
 ### 2. สร้างไอเดีย Features
+> Goal: สร้างไอเดีย Features
 
 สร้างไอเดีย features ตามผลวิจัย
 
@@ -44,14 +46,10 @@ Use `compare-and-idea-features` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - Numbering: Enhancements 1-40, New Features 41-60 (continuous)
 - Order: Enhancements ก่อน แล้วค่อย New Features
 - Priority: 🔴 Critical, 🟡 Recommended, 🟢 Optional
 - Format: ตารางเดียวพร้อม column Type (Enhancement/New Feature)
-
-## Expected Outcome
 
 ## Expected Outcome
 

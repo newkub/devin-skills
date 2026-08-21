@@ -1,15 +1,17 @@
 ---
 name: git-file-history
-description: ดู git file history ของไฟล์ที่ระบุผ่าน `@wrikka/git-cli` package ที่ release แล้ว โดยใช้คำสั่ง `g...
+description: ดู git file history ของไฟล์ที่ระบุผ่าน @wrikka/git-cli package ที่ release แล้ว โดยใช้คำสั่ง
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install @wrikka/git-cli
+> Goal: Install @wrikka/git-cli
 
 1. ตรวจสอบว่าติดตั้ง `@wrikka/git-cli` แล้ว:
    - รัน `git-ai --help` เพื่อตรวจสอบ
@@ -31,6 +34,7 @@ triggers:
 2. ตรวจสอบว่ามี `OPENAI_API_KEY` environment variable ถ้าต้องการ AI features
 
 ### 2. Run file-history Command
+> Goal: Run file-history Command
 
 1. ระบุไฟล์ที่ต้องการดู history (จาก active document หรือที่ผู้ใช้ระบุ)
 2. รัน `git-ai file-history <file_path>` ใน git root directory
@@ -43,6 +47,7 @@ triggers:
 4. ถ้าไม่ต้องการเปิด browser อัตโนมัติ ใช้ `--no-open` flag
 
 ### 3. UI Components
+> Goal: UI Components
 
 1. Header - glassmorphism bar แสดง file path, commit count, view toggle, keyboard hints
 2. Timeline Sidebar - split-screen vertical timeline ด้านซ้าย:
@@ -61,6 +66,7 @@ triggers:
 7. Copy Button - copy file content to clipboard
 
 ### 4. Keyboard Navigation
+> Goal: Keyboard Navigation
 
 1. `ArrowLeft` - ไป commit ก่อนหน้า (older)
 2. `ArrowRight` - ไป commit ถัดไป (newer)
@@ -68,6 +74,7 @@ triggers:
 4. แสดง keyboard hint ที่ header
 
 ### 5. Transition Animations
+> Goal: Transition Animations
 
 1. ใช้ Vue `<transition>` component กับ `mode="out-in"`
 2. Slide right (ไป commit ใหม่กว่า): `translateX(30px) scale(0.98)` → `translateX(0)`

@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-scan
+  - deep-validate
+  - use-ast-grep
+  - follow-ast-grep
 ---
 
 ## Goal
@@ -26,8 +32,7 @@ triggers:
 
 ### 1. Analyze Devin Rules
 
-วิเคราะห์ devin rules ก่อนแปลง
-
+> Goal: วิเคราะห์ devin rules ก่อนแปลง
 > Goal: ระบุ rules ที่แปลงได้และจัดกลุ่มตาม priority
 
 1. อ่านไฟล์ทั้งหมดจาก `.devin/rules/always-on/`, `.devin/rules/model_decision/`, `.devin/rules/glob/`
@@ -36,8 +41,7 @@ triggers:
 
 ### 2. Setup Ast-Grep Project
 
-ตั้งค่า project structure และ `sgconfig.yml`
-
+> Goal: ตั้งค่า project structure และ `sgconfig.yml`
 > Goal: sgconfig.yml พร้อมใช้งาน ครอบคลุม 3 rule directories
 
 1. ทำ `/follow-ast-grep` สำหรับการตั้งค่า `sgconfig.yml` และ project structure
@@ -46,8 +50,7 @@ triggers:
 
 ### 3. Convert Rules To Ast-Grep Format
 
-แปลง devin rules เป็น ast-grep YAML
-
+> Goal: แปลง devin rules เป็น ast-grep YAML
 > Goal: rules ครอบคลุม atomic, relational, composite พร้อม metadata ครบ
 
 1. ทำ `/follow-ast-grep` สำหรับ rule structure และ pattern syntax
@@ -61,8 +64,7 @@ triggers:
 
 ### 4. Scan And Validate
 
-ตรวจสอบ rules กับ codebase จริง
-
+> Goal: ตรวจสอบ rules กับ codebase จริง
 > Goal: rules ทำงานได้จริง ไม่มี false positives/negatives
 
 1. ทำ `/run-scan` เพื่อรัน `ast-grep scan` กับ codebase และตรวจสอบผลลัพธ์
@@ -73,8 +75,7 @@ triggers:
 
 ### 5. Integrate With Development
 
-เพิ่ม scan script และ CI/CD integration
-
+> Goal: เพิ่ม scan script และ CI/CD integration
 > Goal: scan รันได้จาก CLI และ CI/CD
 
 1. เพิ่ม `scan` script ใน `package.json`: `"scan": "bunx ast-grep scan"`

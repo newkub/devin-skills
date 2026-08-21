@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-bun
+  - follow-zod
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Install And Setup
+> Goal: Install And Setup
 
 1. ติดตั้ง `bun add elysia`
 2. ถ้าต้องการ end-to-end type safety ติดตั้ง `bun add @elysia/eden`
@@ -30,6 +35,7 @@ triggers:
 4. สร้าง `new Elysia()` instance และ `.listen(port)`
 
 ### 2. Define Routes
+> Goal: Define Routes
 
 1. ใช้ HTTP verb methods: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`
 2. ใช้ dynamic path parameters: `/users/:id`, `/posts/:category/:slug`
@@ -38,6 +44,7 @@ triggers:
 5. ใช้ custom methods ด้วย `.route(method, path, handler)`
 
 ### 3. Handle Context
+> Goal: Handle Context
 
 1. ใช้ `context.body`, `context.query`, `context.params`, `context.headers`, `context.cookie`
 2. ใช้ `context.store` สำหรับ global mutable state
@@ -46,6 +53,7 @@ triggers:
 5. ใช้ `context.redirect(path)` สำหรับ redirects
 
 ### 4. Validate With Schema
+> Goal: Validate With Schema
 
 1. ใช้ `Elysia.t` (TypeBox) สำหรับ schema validation แบบ built-in
 2. ใช้ Standard Schema (Zod, Valibot, ArkType) ได้โดย import แล้วส่งให้ route handler
@@ -55,6 +63,7 @@ triggers:
 6. ทำ `/follow-zod` ถ้าใช้ Zod เป็น validator
 
 ### 5. Use Lifecycle Hooks
+> Goal: Use Lifecycle Hooks
 
 1. ใช้ `.onRequest()` สำหรับ notify new request
 2. ใช้ `.parse()` สำหรับ custom body parsing
@@ -66,6 +75,7 @@ triggers:
 8. ใช้ `.afterResponse()` สำหรับ cleanup หลัง response ส่งแล้ว
 
 ### 6. Use Plugins
+> Goal: Use Plugins
 
 1. ใช้ `.use(plugin)` สำหรับ register plugin
 2. ประกาศ dependency อย่างชัดเจน: main instance ต้อง `.use(auth)` ก่อนใช้ `Auth`
@@ -76,6 +86,7 @@ triggers:
 7. ใช้ `.lazyLoadModule()` สำหรับ deferred module loading
 
 ### 7. Setup Eden Client (ถ้าจำเป็น)
+> Goal: Setup Eden Client (ถ้าจำเป็น)
 
 1. Export `type App` จาก server: `export type App = typeof app`
 2. ใช้ `treaty<App>(url)` จาก `@elysia/eden` (recommended)

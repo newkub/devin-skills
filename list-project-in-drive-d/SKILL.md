@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `list-project-in-drive-d` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Create Shell Script Template
+> Goal: Create Shell Script Template
 
 1. สร้าง shell script สำหรับ list projects
 2. ใช้ `find` command หรือ PowerShell equivalent
@@ -34,6 +33,7 @@ Use `list-project-in-drive-d` for the specific tasks and workflows it covers
 4. แสดงผลเป็น list พร้อม path
 
 ### 2. Script Options
+> Goal: Script Options
 
 1. รองรับ PowerShell (Windows)
 2. รองรับ Bash (WSL/Linux)
@@ -41,12 +41,11 @@ Use `list-project-in-drive-d` for the specific tasks and workflows it covers
 4. แสดงผลในรูปแบบที่อ่านง่าย
 
 ### 3. Save Template
+> Goal: Save Template
 
 1. บันทึก script template ไว้ใน workspace
 2. แจ้งให้ user ทราบว่า script ถูกสร้างแล้ว
 3. แสดงวิธีใช้งาน
-
-## Rules
 
 ## Rules
 
@@ -73,8 +72,6 @@ Filter เฉพาะ projects ใน drive D:
 - แสดง path แบบ full path
 - แสดง project name (directory name)
 - รองรับ table format หรือ list format
-
-## Expected Outcome
 
 ## Expected Outcome
 

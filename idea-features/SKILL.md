@@ -1,15 +1,22 @@
 ---
 name: idea-features
-description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps, user needs และ market tre...
+description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps, user needs และ market
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
+  - implement-features-to-mvp
+  - learn-from-web
+  - compare-and-idea-features
+  - refactor
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Internal Analysis (เงียบ — ไม่ต้องแสดงผลในแชท)
 
-วิเคราะห์ภายในเพื่อเข้าใจโครงสร้าง หา gaps และสร้างไอเดีย — ห้ามแสดงผลของขั้นตอนนี้ในแชท
-
+> Goal: วิเคราะห์ภายในเพื่อเข้าใจโครงสร้าง หา gaps และสร้างไอเดีย — ห้ามแสดงผลของขั้นตอนนี้ในแชท
 > Goal: เข้าใจ project, packages, existing features, market trends และได้ไอเดีย features
 
 1. ทำ `/analyze-project`, อ่าน `.devin/features/<workspace>/features.md`, วิเคราะห์ packages และกำหนด scope (internal)
@@ -37,8 +43,7 @@ triggers:
 
 ### 2. Present Results (ตอบในแชท — ภาษาไทย)
 
-ตอบผลลัพธ์ในแชทเป็นภาษาไทย เฉพาะส่วนที่ผู้ใช้ต้องการ
-
+> Goal: ตอบผลลัพธ์ในแชทเป็นภาษาไทย เฉพาะส่วนที่ผู้ใช้ต้องการ
 > Goal: ตอบกระชับ เป็นภาษาไทย มีแค่ 2 ตาราง + diagrams + suggest-next-action
 
 1. ตอบ 2 ตาราง (Extends และ New) ในแชท พร้อม 27 คอลัมน์ตาม Rules — ภาษาไทย

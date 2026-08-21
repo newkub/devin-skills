@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,36 +24,37 @@ Use `follow-create-oxlint-plugins` for the specific tasks and workflows it cover
 
 ## Execute
 
-## Execute
-
 ### 1. Setup
+> Goal: Setup
 
 1. ติดตั้ง oxlint ด้วย `bun add -D oxlint`
 2. ตรวจสอบว่ามี config file อยู่แล้ว
 
 ### 2. Create Config File
+> Goal: Create Config File
 
 1. สร้าง `.oxlintrc.json` หรือ `oxlint.config.ts` ที่ root
 2. เลือกใช้ format ที่ต้องการ
 
 ### 3. Configure Built-in Plugins
+> Goal: Configure Built-in Plugins
 
 1. เลือก built-in plugins ที่ต้องการ
 2. กำหนดผ่าน `plugins` field ใน config
 3. ตั้งค่า categories สำหรับ severity
 
 ### 4. Configure JS Plugins (Optional)
+> Goal: Configure JS Plugins (Optional)
 
 1. ติดตั้ง ESLint plugin ที่ต้องการ
 2. กำหนดผ่าน `jsPlugins` field ใน config
 3. ใช้ custom name สำหรับ reserved plugin names
 
 ### 5. Verify
+> Goal: Verify
 
 1. รัน `oxlint` เพื่อทดสอบ plugins
 2. ตรวจสอบว่า rules ทำงานได้ถูกต้อง
-
-## Rules
 
 ## Rules
 
@@ -92,8 +93,6 @@ Use `follow-create-oxlint-plugins` for the specific tasks and workflows it cover
 - style: Rules สำหรับ style ที่เป็นไปในทิศทางเดียวกัน
 - restriction: Rules ที่ห้าม patterns หรือ features เฉพาะ
 - nursery: Rules ที่อยู่ระหว่างพัฒนาอาจเปลี่ยนแปลง
-
-## Expected Outcome
 
 ## Expected Outcome
 

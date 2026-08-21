@@ -1,15 +1,22 @@
 ---
 name: implement-all
-description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO, MOCK, FAKE, STUB, place...
+description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO, MOCK, FAKE, STUB,
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - implement-mock
+  - implement-todo-md
+  - suggest-next-action
+  - implement-features-to-mvp
+  - deep-analyze
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Identify Incomplete Implementations
 
-ระบุ TODO, MOCK, FAKE, STUB, placeholder ใน areas ที่ review
-
+> Goal: ระบุ TODO, MOCK, FAKE, STUB, placeholder ใน areas ที่ review
 > Goal: รู้ว่ามี incomplete implementations อะไรบ้างใน scope ที่ review
 
 1. รวบรวม findings จาก review ที่ระบุ incomplete implementations
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Convert Incomplete To Production
 
-แปลง incomplete implementations เป็น production code
-
+> Goal: แปลง incomplete implementations เป็น production code
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่ใน scope ที่ review
 
 1. ทำ `/implement-comment-todo`, `/implement-mock`, `/implement-todo-md` — แปลง TODO comments, mock implementations, และ TODO markdown เป็น production code
@@ -44,8 +49,7 @@ triggers:
 
 ### 3. Verify And Report
 
-ตรวจสอบว่าไม่มี incomplete implementations เหลือ และรายงานผล
-
+> Goal: ตรวจสอบว่าไม่มี incomplete implementations เหลือ และรายงานผล
 > Goal: ยืนยัน implementation completeness และรายงาน
 
 1. ทำ `/review-codebase` เพื่อ verify ว่าไม่มี incomplete implementations เหลือใน scope

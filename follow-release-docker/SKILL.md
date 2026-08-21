@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-release-docker` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Docker Configuration
+> Goal: Setup Docker Configuration
 
 1. ตรวจสอบ Dockerfile มีข้อมูลครบถ้วน
 2. เพิ่ม base image ที่เหมาะสม
@@ -35,25 +34,26 @@ Use `follow-release-docker` for the specific tasks and workflows it covers
 5. เพิ่ .dockerignore
 
 ### 2. Setup Registry
+> Goal: Setup Registry
 
 1. สร้าง repository บน Docker Hub หรือ GitHub Container Registry
 2. ตั้งค่า registry URL
 3. เพิ่ม image name และ tags
 
 ### 3. Setup Authentication
+> Goal: Setup Authentication
 
 1. สร้าง access token จาก Docker Hub
 2. หรือใช้ GITHUB_TOKEN สำหรับ GHCR
 3. เพิ่ม DOCKER_USERNAME, DOCKER_PASSWORD ใน environment variables
 
 ### 4. Create GitHub Workflow
+> Goal: Create GitHub Workflow
 
 1. สร้างไฟล์ .github/workflows/release.yml
 2. เพิ่ม permissions: contents write, packages write
 3. เพิ่ม environment variables: DOCKER_USERNAME, DOCKER_PASSWORD
 4. ตั้งค่า trigger บน push ไป main branch
-
-## Rules
 
 ## Rules
 
@@ -73,8 +73,6 @@ Use `follow-release-docker` for the specific tasks and workflows it covers
 - ต้องมี DOCKER_USERNAME และ DOCKER_PASSWORD
 - สำหรับ GHCR: ต้องมี GITHUB_TOKEN
 - token ต้องมีสิทธิ์ push
-
-## Expected Outcome
 
 ## Expected Outcome
 

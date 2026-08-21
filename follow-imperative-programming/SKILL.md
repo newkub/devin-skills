@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 
 ## Execute
 
-## Execute
-
 ### 1. Use Control Structures
+> Goal: Use Control Structures
 
 ใช้ control structures อย่างเหมาะสม
 
@@ -37,6 +35,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. ใช้ error handling mechanisms สำหรับ error handling
 
 ### 2. Sequential Execution
+> Goal: Sequential Execution
 
 เขียน code แบบ sequential
 
@@ -47,6 +46,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. ใช้ guard clauses สำหรับ validation
 
 ### 3. Variable Management
+> Goal: Variable Management
 
 จัดการ variables อย่างเหมาะสม
 
@@ -57,6 +57,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. ใช้ meaningful names
 
 ### 4. Loop Optimization
+> Goal: Loop Optimization
 
 ปรับปรุง loops
 
@@ -67,6 +68,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. ใช้ flow control statements อย่างระมัดระวัง
 
 ### 5. Error Handling
+> Goal: Error Handling
 
 จัดการ errors อย่าง systematic
 
@@ -77,6 +79,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. Propagate errors อย่างเหมาะสม
 
 ### 6. State Mutation
+> Goal: State Mutation
 
 จัดการ state mutations อย่างปลอดภัย
 
@@ -87,6 +90,7 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 5. Test mutations อย่างครบถ้วน
 
 ### 7. Performance
+> Goal: Performance
 
 ปรับปรุง performance
 
@@ -95,8 +99,6 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 3. Optimize hot paths
 4. Profile และ benchmark
 5. ใช้ efficient algorithms
-
-## Rules
 
 ## Rules
 
@@ -169,8 +171,6 @@ Use `follow-imperative-programming` for the specific tasks and workflows it cove
 - Optimize `hot paths`
 - Profile และ benchmark
 - ใช้ `efficient algorithms`
-
-## Expected Outcome
 
 ## Expected Outcome
 

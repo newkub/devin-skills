@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Check Test Framework
 
-ตรวจสอบ E2E test framework ที่ใช้
-
+> Goal: ตรวจสอบ E2E test framework ที่ใช้
 > Goal: รู้ framework, config, และ test files
 
 1. ตรวจสอบ `playwright.config.ts` สำหรับ Playwright
@@ -35,8 +36,7 @@ triggers:
 
 ### 2. Install Browser Dependencies
 
-ติดตั้ง browser dependencies ถ้าจำเป็น
-
+> Goal: ติดตั้ง browser dependencies ถ้าจำเป็น
 > Goal: Browsers พร้อมสำหรับรัน tests
 
 1. รัน `bunx playwright install` สำหรับ Playwright
@@ -45,8 +45,7 @@ triggers:
 
 ### 3. Run E2E Tests
 
-รัน E2E tests ตาม framework
-
+> Goal: รัน E2E tests ตาม framework
 > Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. ถ้าใช้ Playwright: รัน `bunx playwright test`
@@ -56,8 +55,7 @@ triggers:
 
 ### 4. Review Test Results
 
-ตรวจสอบผลลัพธ์จากการทดสอบ
-
+> Goal: ตรวจสอบผลลัพธ์จากการทดสอบ
 > Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Check Repository
+> Goal: Check Repository
 
 ตรวจสอบ repository และ templates ที่มี
 
@@ -32,6 +35,7 @@ triggers:
 4. ตรวจสอบ README ของแต่ละ template
 
 ### 2. Clone Template With Degit
+> Goal: Clone Template With Degit
 
 Clone template ด้วย `bunx degit`
 
@@ -41,6 +45,7 @@ Clone template ด้วย `bunx degit`
 4. ตรวจสอบ cloned files ว่าครบถ้วน
 
 ### 3. Setup Template
+> Goal: Setup Template
 
 ตั้งค่า template หลัง clone
 
@@ -50,6 +55,7 @@ Clone template ด้วย `bunx degit`
 4. รัน setup scripts ถ้ามี (เช่น `bun run setup`)
 
 ### 4. Verify Template
+> Goal: Verify Template
 
 ตรวจสอบว่า template ทำงานได้
 

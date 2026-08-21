@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -27,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Apply Formatting Rules
+> Goal: Apply Formatting Rules
 
 ทำตาม formatting rules ด้านล่างนี้
 
@@ -36,6 +39,7 @@ triggers:
 - ใช้ bullet points (-) ชิดซ้ายใน Rules
 
 ### 2. Structure Document
+> Goal: Structure Document
 
 จัดโครงสร้างเอกสารตามมาตรฐาน
 
@@ -45,6 +49,7 @@ triggers:
 - ใช้ table สำหรับข้อมูลที่เปรียบเทียบได้
 
 ### 3. Use Extended Syntax
+> Goal: Use Extended Syntax
 
 ใช้ extended syntax เมื่อจำเป็น
 
@@ -54,6 +59,7 @@ triggers:
 - ใช้ tabs สำหรับ content หลายรูปแบบ
 
 ### 4. Add Heading Descriptions
+> Goal: Add Heading Descriptions
 
 เพิ่ม description ให้แต่ละ heading
 
@@ -62,6 +68,7 @@ triggers:
 - ใช้ภาษาไทยสำหรับ description
 
 ### 5. Validate Content
+> Goal: Validate Content
 
 ตรวจสอบคุณภาพเอกสาร
 

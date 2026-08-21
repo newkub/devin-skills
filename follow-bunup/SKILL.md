@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -28,8 +29,7 @@ related:
 
 ### 1. Analyze Project
 
-ตรวจสอบว่า project เหมาะสมกับ Bunup
-
+> Goal: ตรวจสอบว่า project เหมาะสมกับ Bunup
 > Goal: ระบุ entry points, output formats, และ prerequisites
 
 1. ตรวจสอบว่าเป็น TypeScript library project
@@ -39,8 +39,7 @@ related:
 
 ### 2. Setup Bunup
 
-ติดตั้ง Bunup และตั้งค่า config
-
+> Goal: ติดตั้ง Bunup และตั้งค่า config
 > Goal: Bunup พร้อม build ด้วย config และ scripts
 
 1. ติดตั้ง Bunup ด้วยคำสั่ง `bun add --dev bunup`
@@ -50,8 +49,7 @@ related:
 
 ### 3. Verify Setup
 
-ตรวจสอบ build output
-
+> Goal: ตรวจสอบ build output
 > Goal: output ถูกต้องและพร้อมใช้งาน
 
 1. ตรวจสอบ output ใน `dist/` ว่าสร้างถูกต้อง

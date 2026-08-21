@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Pinia Store
+> Goal: Setup Pinia Store
 
 1. ติดตั้ง Pinia dependency ด้วย `bun add pinia @pinia/nuxt`
 2. สร้าง stores directory ที่ `stores/`
@@ -34,6 +33,7 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 4. Setup Pinia module ใน `nuxt.config.ts`
 
 ### 2. Define Store Structure
+> Goal: Define Store Structure
 
 1. ใช้ Composition API style (setup stores) เท่านั้น
 2. กำหนด state, getters, actions อย่างชัดเจน
@@ -41,6 +41,7 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 4. แยก stores ตาม domain/feature ไม่ใช่ generic names
 
 ### 3. Implement State Management
+> Goal: Implement State Management
 
 1. ใช้ `ref`/`reactive` สำหรับ state
 2. สร้าง getters ด้วย `computed`
@@ -48,6 +49,7 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 4. ใช้ `$reset` สำหรับ resetting state
 
 ### 4. Use Stores in Components
+> Goal: Use Stores in Components
 
 1. ใช้ `storeToRefs` สำหรับ destructuring
 2. Access stores ใน `<script setup>` components
@@ -55,6 +57,7 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 4. จัดการ subscriptions ถ้าจำเป็น
 
 ### 5. Add Persistence (Optional)
+> Goal: Add Persistence (Optional)
 
 1. ติดตั้ง `pinia-plugin-persistedstate`
 2. กำหนด persist strategies
@@ -62,13 +65,12 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 4. Handle serialization
 
 ### 6. Test Stores
+> Goal: Test Stores
 
 1. เขียน unit tests สำหรับ stores ด้วย Vitest
 2. Test actions และ state changes
 3. Mock external dependencies
 4. Test edge cases
-
-## Rules
 
 ## Rules
 
@@ -99,8 +101,6 @@ Use `follow-pinia` for the specific tasks and workflows it covers
 - หลีกเลี่ยง duplicate computations
 - Pass parameters ด้วย closure ถ้าจำเป็น
 - Cache expensive computations
-
-## Expected Outcome
 
 ## Expected Outcome
 

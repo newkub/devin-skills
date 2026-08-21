@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Ignore Patterns
+> Goal: Identify Ignore Patterns
 
 ตรวจสอบ ignore patterns ใน codebase ทุกภาษาและทุกประเภท
 
@@ -37,6 +40,7 @@ triggers:
 9. ค้นหา ignore options ใน CLI commands
 
 ### 2. Analyze Root Cause
+> Goal: Analyze Root Cause
 
 วิเคราะห์สาเหตุที่ต้องใช้ ignore
 
@@ -46,6 +50,7 @@ triggers:
 4. ตรวจสอบว่า dependencies ผิดหรือไม่
 
 ### 3. Fix at Source
+> Goal: Fix at Source
 
 แก้ปัญหาที่ source แทนการ suppress
 
@@ -56,6 +61,7 @@ triggers:
 5. สร้าง custom rules ถ้าจำเป็นจริงๆ
 
 ### 4. Remove Ignores
+> Goal: Remove Ignores
 
 ลบ ignore comments/attributes, ignore files, และ ignore config ทั้งหมด
 
@@ -70,6 +76,7 @@ triggers:
 9. ลบ ignore options จาก CLI commands
 
 ### 5. Verify
+> Goal: Verify
 
 ตรวจสอบว่าไม่มี ignore patterns เหลืออยู่
 

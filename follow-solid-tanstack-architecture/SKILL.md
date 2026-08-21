@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - refactor-packages
+  - follow-monorepo
+  - follow-solidjs
+  - follow-tanstack
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Setup Project Structure
 
-สร้างโครงสร้างโปรเจกต์พื้นฐาน
-
+> Goal: สร้างโครงสร้างโปรเจกต์พื้นฐาน
 > Goal: มีโครงสร้างโฟลเดอร์หลักครบถ้วนพร้อม modules/
 
 1. สร้าง `public/` สำหรับ static assets
@@ -38,8 +44,7 @@ triggers:
 
 ### 2. Configure Entry Points
 
-ตั้งค่า entry points สำหรับ TanStack Start
-
+> Goal: ตั้งค่า entry points สำหรับ TanStack Start
 > Goal: มี router configuration และ root route พร้อม SSR setup
 
 1. ทำ `/follow-tanstack` เพื่อตั้งค่า TanStack Start entry points
@@ -51,8 +56,7 @@ triggers:
 
 ### 3. Implement File-Based Routing
 
-ใช้ TanStack Router file-based routing conventions
-
+> Goal: ใช้ TanStack Router file-based routing conventions
 > Goal: ใช้ routing conventions ครบถ้วน พร้อม code splitting อัตโนมัติ
 
 1. ทำ `/follow-tanstack` เพื่อใช้ file-based routing conventions
@@ -66,8 +70,7 @@ triggers:
 
 ### 4. Organize Modules
 
-จัดระเบียบ feature-based modules ใน `src/modules/`
-
+> Goal: จัดระเบียบ feature-based modules ใน `src/modules/`
 > Goal: แต่ละ module มี single responsibility, boundaries ชัดเจน
 
 1. ทำ `/follow-solidjs` เพื่อใช้ component patterns และ reactivity
@@ -82,8 +85,7 @@ triggers:
 
 ### 5. Implement Server Functions
 
-ใช้ server functions สำหรับ client-server communication
-
+> Goal: ใช้ server functions สำหรับ client-server communication
 > Goal: server functions type-safe พร้อม validation และ error handling
 
 1. ใช้ `createServerFn` จาก `@tanstack/solid-start`
@@ -95,8 +97,7 @@ triggers:
 
 ### 6. Configure Rendering Modes
 
-ตั้งค่า rendering modes ตามความต้องการ
-
+> Goal: ตั้งค่า rendering modes ตามความต้องการ
 > Goal: rendering modes ตั้งค่าตาม use case และมี performance ที่เหมาะสม
 
 1. ตั้งค่า SSR mode (default) ใน `vite.config.ts`
@@ -107,8 +108,7 @@ triggers:
 
 ### 7. Setup Monorepo Structure
 
-ตั้งค่า monorepo สำหรับ shared packages และ multiple apps
-
+> Goal: ตั้งค่า monorepo สำหรับ shared packages และ multiple apps
 > Goal: shared packages ใช้ได้หลาย apps โดย route tree แยก per app
 
 1. สร้าง `packages/shared/` สำหรับ shared code (components, utils, types, schemas)

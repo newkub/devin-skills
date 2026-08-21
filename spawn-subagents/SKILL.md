@@ -31,8 +31,7 @@ related:
 
 ### 1. Prepare Tasks
 
-เตรียมรายการ subtasks
-
+> Goal: เตรียมรายการ subtasks
 > Goal: แต่ละ subtask พร้อมส่งให้ agent
 
 1. แบ่งงานออกเป็น subtasks
@@ -42,8 +41,7 @@ related:
 
 ### 2. Spawn Subagents
 
-สร้าง agents ใน background
-
+> Goal: สร้าง agents ใน background
 > Goal: ทุก subtask มี agent ทำงาน
 
 1. ใช้ `run_subagent` ด้วย `is_background=true`
@@ -52,8 +50,7 @@ related:
 
 ### 3. Monitor Progress
 
-ติดตาม subagents
-
+> Goal: ติดตาม subagents
 > Goal: รู้ status ของทุก agent
 
 1. ใช้ `read_subagent` ตรวจสอบ progress
@@ -62,8 +59,7 @@ related:
 
 ### 4. Report
 
-รายงานสถานะ
-
+> Goal: รายงานสถานะ
 > Goal: ผู้ใช้ทราบ progress
 
 1. ทำ `/report-table` ของ agent id, status, result

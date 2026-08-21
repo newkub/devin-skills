@@ -1,6 +1,6 @@
 ---
 name: follow-esm-sh
-description: CDN สำหรับ ES Modules ที่ให้บริการโหลด bun packages ผ่าน ESM format โดยตรงบน browser รองรับ...
+description: ใช้ esm.sh CDN สำหรับโหลด ES Modules บน browser โดยไม่ต้อง bundler
 allowed-tools:
   - read
   - edit
@@ -10,17 +10,16 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ esm.sh CDN สำหรับโหลด ES Modules บน browser โดยไม่ต้อง bundler
 
-
 ## Scope
 
 ใช้สำหรับการโหลด bun packages ผ่าน ESM format บน browser ด้วย tree-shaking และ optimization อัตโนมัติ
-
 
 ## Execute
 
@@ -31,7 +30,6 @@ triggers:
 - ใช้ `?external` สำหรับ peer dependencies
 - Test ใน production ก่อน deploy
 
-
 ## Rules
 
 - ใช้ URL format: `https://esm.sh/package@version`
@@ -40,7 +38,6 @@ triggers:
 - Pin version เสมอเพื่อ stability
 - ใช้ `?external` สำหรับ peer dependencies
 - Test ใน production ก่อน deploy
-
 
 ## Expected Outcome
 

@@ -7,6 +7,7 @@ allowed-tools:
   - glob
   - exec
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -16,9 +17,6 @@ related:
   - report-ansi
   - report-codeblock
   - analyze-project
-  - check-unused-files
-  - check-unused-deps
-  - suggest-next-action
 ---
 
 ## Goal
@@ -33,8 +31,7 @@ related:
 
 ### 1. Identify Targets
 
-ระบุสิ่งทีต้องวัด usage
-
+> Goal: ระบุสิ่งทีต้องวัด usage
 > Goal: scope ของ report ชัดเจน
 
 1. ถาม user หรือ detect จาก request
@@ -43,8 +40,7 @@ related:
 
 ### 2. Collect Usage Data
 
-รวบรวมข้อมูลการใช้งาน
-
+> Goal: รวบรวมข้อมูลการใช้งาน
 > Goal: มี metrics ครบ
 
 1. นับจำนวน call sites/imports
@@ -54,8 +50,7 @@ related:
 
 ### 3. Report Usage
 
-สร้างรายงาน
-
+> Goal: สร้างรายงาน
 > Goal: usage patterns เข้าใจง่าย
 
 1. ทำ `/report-table` สำหรับ top consumers, frequency, versions

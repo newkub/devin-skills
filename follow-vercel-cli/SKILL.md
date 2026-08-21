@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install And Authenticate
+> Goal: Install And Authenticate
 
 ติดตั้งและตั้งค่า Vercel CLI
 
@@ -33,6 +36,7 @@ triggers:
 5. ตรวจสอบ authentication ด้วย `vercel whoami`
 
 ### 2. Initialize Project
+> Goal: Initialize Project
 
 สร้างและ link โปรเจกต์กับ Vercel
 
@@ -43,6 +47,7 @@ triggers:
 5. สร้าง `vercel.json` config file หากจำเป็น
 
 ### 3. Local Development
+> Goal: Local Development
 
 พัฒนาและทดสอบใน local environment
 
@@ -53,6 +58,7 @@ triggers:
 5. Simulate production environment ใน local
 
 ### 4. Deploy To Preview
+> Goal: Deploy To Preview
 
 Deploy ไปยัง preview environments
 
@@ -63,6 +69,7 @@ Deploy ไปยัง preview environments
 5. Share preview URL สำหรับ code review
 
 ### 5. Deploy To Production
+> Goal: Deploy To Production
 
 Deploy ไปยัง production environment
 
@@ -73,6 +80,7 @@ Deploy ไปยัง production environment
 5. Rollback หากจำเป็นด้วย `vercel rollback`
 
 ### 6. Manage Environment Variables
+> Goal: Manage Environment Variables
 
 จัดการ environment variables และ secrets
 
@@ -83,6 +91,7 @@ Deploy ไปยัง production environment
 5. ไม่ commit secrets ไปยัง git
 
 ### 7. Monitor And Debug
+> Goal: Monitor And Debug
 
 Monitor และ debug deployments
 
@@ -93,6 +102,7 @@ Monitor และ debug deployments
 5. View deployment metrics ด้วย `vercel metrics`
 
 ### 8. Manage Domains
+> Goal: Manage Domains
 
 จัดการ custom domains
 
@@ -103,6 +113,7 @@ Monitor และ debug deployments
 5. Configure SSL certificates อัตโนมัติ
 
 ### 9. Team And Project Management
+> Goal: Team And Project Management
 
 จัดการ teams และ projects
 

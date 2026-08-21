@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 พัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight automation
 
-
 ## Scope
 
 ใช้สำหรับการพัฒนา Lua ทุกประเภท เช่น game development, embedded systems, scripting within applications, rapid prototyping, configuration files, และ lightweight automation
-
 
 ## Execute
 
@@ -40,7 +40,6 @@ triggers:
 - เขียน unit tests สำหรับ functions สำคัญ
 - ใช้ debugging tools
 - ตรวจสอบ memory usage และ performance
-
 
 ## Rules
 
@@ -64,7 +63,6 @@ triggers:
 - ใช้ custom error types
 - log errors อย่างเหมาะสม
 - ให้ error messages ที่ชัดเจน
-
 
 ## Expected Outcome
 

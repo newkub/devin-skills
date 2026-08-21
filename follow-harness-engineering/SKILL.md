@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - review-codebase
+  - validate
+  - follow-context-engineering
+  - run-test
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Assess Harness Components
+> Goal: Assess Harness Components
 
 ประเมิน harness components ตาม ETCLOVG taxonomy
 
@@ -35,6 +42,7 @@ triggers:
 7. ตรวจสอบ Governance: permissions, access control, audit trail, intervention recording
 
 ### 2. Optimize Tool Interface
+> Goal: Optimize Tool Interface
 
 ปรับปรุง tool interface ให้มีประสิทธิภาพ
 
@@ -46,6 +54,7 @@ triggers:
 6. ถ้าเป็น MCP server ให้ทำตาม `mcp-builder` skill
 
 ### 3. Strengthen Lifecycle And Orchestration
+> Goal: Strengthen Lifecycle And Orchestration
 
 ปรับปรุง agent lifecycle และ orchestration
 
@@ -56,6 +65,7 @@ triggers:
 5. ถ้ามี multi-agent orchestration: ตรวจสอบ coordination, message passing, และ error propagation
 
 ### 4. Improve Observability
+> Goal: Improve Observability
 
 เพิ่ม observability สำหรับ auditable execution
 
@@ -66,6 +76,7 @@ triggers:
 5. ทำ `/review-codebase` สำหรับ comprehensive observability improvements
 
 ### 5. Implement Verification
+> Goal: Implement Verification
 
 สร้าง verification layer สำหรับ verifiable execution
 
@@ -76,6 +87,7 @@ triggers:
 5. ทำ `/run-test` และ `/validate` สำหรับ comprehensive verification
 
 ### 6. Apply Harness Ladder
+> Goal: Apply Harness Ladder
 
 ประเมินและปรับปรุง harness level ตาม H0-H3 ladder
 
@@ -86,6 +98,7 @@ triggers:
 5. วางแผนการยกระดับจาก level ปัจจุบันไปสู่ level ที่สูงขึ้น
 
 ### 7. Evaluate Harness Quality
+> Goal: Evaluate Harness Quality
 
 ประเมิน harness quality ผ่าน trace-based evaluation
 

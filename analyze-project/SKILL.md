@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - use-ast-grep
+  - suggest-next-action
+  - check-unused-deps
+  - use-scripts
+  - run-audit
 ---
 
 ## Goal
@@ -25,17 +32,20 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 ## Execute
 
 ### 1. Tool Selection
+> Goal: Tool Selection
 
 1. ทำ `/follow-my-global-cli` เพื่อเช็ค CLI tools ที่ติดตั้ง
 2. เลือกใช้ tools ตามความเหมาะสมตาม ## Rules ข้อ 1
 
 ### 2. Codebase Scanning
+> Goal: Codebase Scanning
 
 1. ทำ `/scan-codebase` เพื่อ scan structure, patterns, และ quality อย่างรวดเร็ว
 2. ใช้ผลลัพธ์จาก `/scan-codebase` เป็น foundation สำหรับขั้นตอนถัดไป
 3. ทำ `/deep-review` เพื่อดูโครงสร้างไฟล์และ folders เพิ่มเติมถ้าจำเป็น
 
 ### 3. Data Collection
+> Goal: Data Collection
 
 1. อ่าน manifest files แบบ parallel
 2. ทำ `/scan-codebase` ค้นหา code patterns และ symbols
@@ -43,12 +53,14 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 4. ทำ `/use-scripts` สำหรับ data processing ซับซ้อน
 
 ### 4. Architecture And Dependencies
+> Goal: Architecture And Dependencies
 
 1. ทำ `/deep-review` เพื่อระบุ architectural pattern
 2. ทำ `/scan-codebase` วิเคราะหา data flow
 3. ระบุ tech stack และ dependencies
 
 ### 5. Code Analysis
+> Goal: Code Analysis
 
 1. ทำ `/use-ast-grep` หา patterns, anti-patterns, design patterns
 2. ทำ `/scan-codebase` หา code smells
@@ -56,12 +68,14 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 4. ตรวจสอบ naming conventions
 
 ### 6. Quality And Security
+> Goal: Quality And Security
 
 1. ทำ `/improve-code-duplication`, `/check-unused-files`, `/check-unused-deps` แบบ parallel
 2. ทำ `/run-audit` ตรวจสอบ security
 3. ทำ `/scan-codebase` ตรวจหา hardcoded secrets
 
 ### 7. Report And Recommendations
+> Goal: Report And Recommendations
 
 1. ทำ `/report` สร้างตารางจัดกลุ่มตามหมวดหมู่
 2. ท้า /suggest-next-action เพือแนะนำอก์ชันถัดไป้

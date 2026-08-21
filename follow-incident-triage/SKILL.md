@@ -10,9 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - debug-issue
+  - resolve-errors
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +25,8 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Assess Severity
+> Goal: Assess Severity
 
 ประเมินความรุนแรงของ incident ตามผลกระทบต่อผู้ใช้และระบบ
 
@@ -36,6 +36,7 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 - Low: UI glitch หรือปัญหาเล็กน้อยที่ไม่กระทบการใช้งานหลัก
 
 ### 2. Determine Impact
+> Goal: Determine Impact
 
 ประเมินผลกระทบต่อผู้ใช้และธุรกิจ
 
@@ -44,6 +45,7 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 - ผลกระทบทางธุรกิจ (revenue, reputation, compliance)
 
 ### 3. Assign Priority
+> Goal: Assign Priority
 
 กำหนด priority ตาม severity และ impact
 
@@ -58,6 +60,7 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 | Low      | Any     | P3       | 24 hours      |
 
 ### 4. Assign Owner
+> Goal: Assign Owner
 
 มอบหมายผู้รับผิดชอบตามประเภทของ incident
 
@@ -66,6 +69,7 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 - P3: ทีมที่เกี่ยวข้องสามารถจัดการได้
 
 ### 5. Define Action Plan
+> Goal: Define Action Plan
 
 กำหนด action plan ตาม priority
 
@@ -75,14 +79,13 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 - P3: ทำ `/debug-issue` ภายใน 24 ชั่วโมง
 
 ### 6. Communicate
+> Goal: Communicate
 
 สื่อสารสถานะแก่ stakeholder ตาม priority
 
 - P0-P1: แจ้งทันที อัพเดททุก 15-30 นาที
 - P2: แจ้งภายใน 1 ชั่วโมง อัพเดททุก 2 ชั่วโมง
 - P3: แจ้งใน next standup หรือ scheduled update
-
-## Rules
 
 ## Rules
 
@@ -120,8 +123,6 @@ Use `follow-incident-triage` for the specific tasks and workflows it covers
 - P0-P1: Real-time communication
 - P2: Scheduled updates
 - P3: Next scheduled meeting
-
-## Expected Outcome
 
 ## Expected Outcome
 

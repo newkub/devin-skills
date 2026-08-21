@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - report-table
+  - use-scripts
+  - refactor
 ---
 
 ## Goal
@@ -24,8 +29,7 @@ triggers:
 
 ### 1. Setup Configuration
 
-สร้าง `.jscpd.json` สำหรับ config ระดับ project
-
+> Goal: สร้าง `.jscpd.json` สำหรับ config ระดับ project
 > Goal: Config ครบ สอดคล้อง monorepo
 
 1. สร้าง `.jscpd.json` ที่ project root พร้อม `ignore` patterns สำหรับ `node_modules`, `dist`, `.turbo`, `coverage`
@@ -35,8 +39,7 @@ triggers:
 
 ### 2. Run Duplication Detection
 
-รัน jscpd เพื่อตรวจจับ duplication
-
+> Goal: รัน jscpd เพื่อตรวจจับ duplication
 > Goal: ได้ผลลัพธ์ duplication report ชัดเจน
 
 1. รัน `bunx jscpd . --reporters console,json --output report`
@@ -46,8 +49,7 @@ triggers:
 
 ### 3. Analyze Results
 
-วิเคราะห์ผลจาก `report/jscpd-report.json`
-
+> Goal: วิเคราะห์ผลจาก `report/jscpd-report.json`
 > Goal: ระบุ files, patterns, และ priority สำหรับ refactor
 
 1. อ่าน `report/jscpd-report.json` เพื่อดู `duplicates` array
@@ -58,8 +60,7 @@ triggers:
 
 ### 4. Plan Refactor
 
-วางแผน refactor ตามผล duplication
-
+> Goal: วางแผน refactor ตามผล duplication
 > Goal: มี priority list สำหรับ refactor แต่ละ item
 
 1. ลำดับที่ 1: core logic ที่ซ้ำและมีผลกระทบสูง

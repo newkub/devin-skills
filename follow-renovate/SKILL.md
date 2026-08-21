@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - renovate
 ---
 
 ## Goal
@@ -23,6 +26,8 @@ triggers:
 ## Execute
 
 ### 1. Setup Renovate Config
+
+> Goal: Setup Renovate Config
 
 1. สร้างไฟล์ `.github/renovate.json` ด้วย config พื้นฐาน
 2. ตั้งค่า schedule และ automerge rules
@@ -47,6 +52,7 @@ triggers:
 
 ### 2. Setup GitHub Actions Workflow
 
+> Goal: Setup GitHub Actions Workflow
 1. สร้างไฟล์ `.github/workflows/renovate.yml`
 2. ตั้งค่า schedule และ triggers
 3. ตั้งค่า permissions สำหรับ contents, pull-requests, issues
@@ -102,6 +108,7 @@ jobs:
 
 ### 3. Setup RENOVATE_TOKEN
 
+> Goal: Setup RENOVATE_TOKEN
 1. สร้าง GitHub Personal Access Token ด้วย `repo` scope
 2. ตั้งค่า secret ใน repository ผ่าน GitHub CLI: `gh secret set RENOVATE_TOKEN`
 3. ตรวจสอบว่า workflow สามารถ access secret ได้

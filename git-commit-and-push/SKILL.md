@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - git-push
+  - update-reference
+  - git-commit
+  - follow-monorepo
 ---
 
 ## Goal
@@ -24,8 +30,7 @@ Commit ไฟล์และ push ไปยัง remote repository
 
 ### 1. Commit Changes
 
-สร้าง commit สำหรับไฟล์ที่มีการเปลี่ยนแปลง
-
+> Goal: สร้าง commit สำหรับไฟล์ที่มีการเปลี่ยนแปลง
 > Goal: commit ถูกสร้างถูกต้องตาม conventional commits
 
 1. ทำตาม `/git-commit`
@@ -33,8 +38,7 @@ Commit ไฟล์และ push ไปยัง remote repository
 
 ### 2. Push Changes
 
-Push commits ไปยัง remote repository
-
+> Goal: Push commits ไปยัง remote repository
 > Goal: commits ถูก push ไปยัง remote สำเร็จ
 
 1. ทำตาม `/git-push`
@@ -42,14 +46,12 @@ Push commits ไปยัง remote repository
 
 ### 3. Update References
 
-อัปเดท references ทั้งหมดที่เกี่ยวข้อง
-
+> Goal: อัปเดท references ทั้งหมดที่เกี่ยวข้อง
 > Goal: references อัปเดตครบถ้วน
 
 1. ทำตาม `/update-reference`
 
 ## Rules
-
 > Goal: ใช้เป็น orchestrator ปลอดภัยไม่ทำลาย history
 
 - ใช้เป็น orchestrator เท่านั้น รายละเอียดอยู่ใน `/git-commit` และ `/git-push`

@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - use-bun-scripts
+  - follow-gitignore
+  - use-nu-shell
+  - use-pwsh-shell
+  - use-bun-shell
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Choose Shell And Type
 
-เลือก shell/script type ให้เหมาะสม
-
+> Goal: เลือก shell/script type ให้เหมาะสม
 > Goal: เลือก tool ที่เหมาะสมที่สุดกับ task
 
 1. ค่าเริ่มต้น: ใช้ `/use-bun-scripts` / `/use-bun-shell` เมื่อ:
@@ -51,8 +57,7 @@ triggers:
 
 ### 2. Choose Script Location
 
-เลือก location สำหรับ script
-
+> Goal: เลือก location สำหรับ script
 > Goal: script อยู่ใน location ที่ถูกต้อง
 
 1. `temp/` — scripts ชั่วคราวที่ workspace root (throwaway, gitignored)
@@ -62,8 +67,7 @@ triggers:
 
 ### 3. Create Script
 
-เขียน script ตาม standards
-
+> Goal: เขียน script ตาม standards
 > Goal: เขียน script ที่ reusable และ maintainable
 
 1. เขียนแบบ composable: `createScript()` return state + actions
@@ -75,8 +79,7 @@ triggers:
 
 ### 4. Test And Execute
 
-ทดสอบและรัน script อย่างปลอดภัย
-
+> Goal: ทดสอบและรัน script อย่างปลอดภัย
 > Goal: script รันได้โดยไม่เกิด regression
 
 1. รัน script ใน dry run mode เพื่อดูผลลัพธ์

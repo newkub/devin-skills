@@ -10,9 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - check-reference
+  - learn-from-web
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +25,9 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Prepare
+
+> Goal: Prepare
 
 1. รัน `/check-reference` เก็บ reference จากทุก sources
 2. ใช้ `/learn-from-web` ศึกษา react-scan APIs และ integration methods
@@ -34,12 +35,16 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 2. Select Integration Method
 
+> Goal: Select Integration Method
+
 1. Script tag สำหรับ quick testing หรือ legacy apps ไม่ต้อง build
 2. NPM package สำหรับ production apps ต้องการ control และ TypeScript
 3. Build tool plugin สำหรับ Vite, Webpack, esbuild, Rollup, Rspack, Rolldown, Astro
 4. Browser extension สำหรับ analyze apps โดยไม่แก้โค้ด
 
 ### 3. Install React Scan
+
+> Goal: Install React Scan
 
 1. Script tag: ใส่ script ใน `index.html` ก่อน React
    ```html
@@ -65,6 +70,7 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 4. Configure Options
 
+> Goal: Configure Options
 1. ตั้ง `enabled` ตาม environment (`process.env.NODE_ENV === 'development'`)
 2. เปิด `trackUnnecessaryRenders` เพื่อหา renders ที่ไม่มี DOM changes
 3. ตั้งค่า `showToolbar`, `showFPS`, `animationSpeed` ตามต้องการ
@@ -73,6 +79,7 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 5. Initialize Scanning
 
+> Goal: Initialize Scanning
 1. Import `scan` หรือ `useScan` ก่อน React และ React DOM
 2. เรียก `scan(options)` ทันทีสำหรับ client-side apps
 3. ใช้ `useScan` hook ใน `useEffect` สำหรับ SSR apps หลัง hydration
@@ -80,6 +87,7 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 6. Interpret Visual Cues
 
+> Goal: Interpret Visual Cues
 1. Component มี outline = มี render เกิดขึ้น
 2. สีและความหนาของ outline = ความรุนแรงของปัญหา
 3. ตัวเลข render count = จำนวนครั้งที่ render
@@ -87,6 +95,7 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 7. Analyze Performance Data
 
+> Goal: Analyze Performance Data
 1. ดู FPS meter (`showFPS: true`) เช็ค performance โดยรวม
 2. ใช้ notification count (`showNotificationCount: true`) ดู slowdown alerts
 3. เรียก `getReport()` เพื่อดู render report แบบละเอียด
@@ -94,6 +103,7 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 8. Optimize Components
 
+> Goal: Optimize Components
 1. หา components ที่ re-render บ่อยโดยไม่จำเป็น
 2. ใช้ `React.memo` สำหรับ components ที่มี props เหมือนเดิม
 3. ใช้ `useMemo`/`useCallback` สำหรับ expensive computations และ callbacks
@@ -102,12 +112,11 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 
 ### 9. Disable in Production
 
+> Goal: Disable in Production
 1. ตั้ง `enabled: false` ใน production build
 2. หลีกเลี่ยง `dangerouslyForceRunInProduction` ยกเว้น debugging จำเป็น
 3. ใช้ build tool plugins เพื่อ strip code ออกใน production
 4. เช็คว่า bundle size ไม่เพิ่มจาก react-scan code
-
-## Rules
 
 ## Rules
 
@@ -125,8 +134,6 @@ Use `follow-react-scan` for the specific tasks and workflows it covers
 - เริ่ม optimize จาก components ที่มี impact มากที่สุดก่อน
 - ตรวจสอบว่าการ optimize ลด renders ได้จริงหลังแก้ไข
 - ปิดหรือ remove `react-scan` ก่อน deploy production
-
-## Expected Outcome
 
 ## Expected Outcome
 

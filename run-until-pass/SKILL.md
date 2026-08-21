@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `run-until-pass` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Run Command
+> Goal: Run Command
 
 run command และตรวจสอบผล
 
@@ -35,6 +33,7 @@ run command และตรวจสอบผล
 3. ถ้าไม่ผ่าน ให้ดำเนินการต่อ
 
 ### 2. Fix Errors
+> Goal: Fix Errors
 
 แก้ไข errors ทั้งหมด
 
@@ -45,13 +44,9 @@ run command และตรวจสอบผล
 
 ## Rules
 
-## Rules
-
 - แก้ไข errors ทั้งหมดจนไม่มีเหลือ
 - รัน command จนกว่าจะผ่าน
 - ตรวจสอบว่าไม่มี errors ที่เหลือ
-
-## Expected Outcome
 
 ## Expected Outcome
 

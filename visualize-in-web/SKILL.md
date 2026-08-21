@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - open-readme-html
+  - report-in-html
+  - open-web
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Content
+> Goal: Analyze Content
 
 วิเคราะห์เนื้อหาที่จะ visualize:
 
@@ -31,6 +37,7 @@ triggers:
 3. กำหนด layout ที่เหมาะสม (tables, hierarchies, flows, comparisons, statistics, relationships)
 
 ### 2. Generate Web Mode
+> Goal: Generate Web Mode
 
 สร้าง visual แบบ HTML ใน browser:
 
@@ -44,6 +51,7 @@ triggers:
 6. ทำ `/open-web` เพื่อเปิดใน browser
 
 ### 3. Design Visual Layout
+> Goal: Design Visual Layout
 
 ออกแบบ layout ตามประเภทเนื้อหา:
 
@@ -55,6 +63,7 @@ triggers:
 6. Relationships: ใช้ graph หรือ matrix
 
 ### 4. Add Interactivity
+> Goal: Add Interactivity
 
 เพิ่ม interaction สำหรับ Web mode:
 

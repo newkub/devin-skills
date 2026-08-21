@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,8 +17,6 @@ related:
   - follow-import-export
   - refactor-packages
   - update-reference
-  - resolve-errors
-  - suggest-next-action
 ---
 
 ## Goal
@@ -35,8 +34,7 @@ related:
 
 ### 1. Define Scope
 
-กำหนด target และประเภท circular dependencies
-
+> Goal: กำหนด target และประเภท circular dependencies
 > Goal: รู้ target และรูปแบบ circular dependencies ที่ต้องตรวจ
 
 1. ระบุ target: workspace, directory, หรือทั้ง project
@@ -47,8 +45,7 @@ related:
 
 ### 2. Scan Code Dependencies
 
-สแกน circular dependencies จาก module imports
-
+> Goal: สแกน circular dependencies จาก module imports
 > Goal: พบ cycles ใน source code
 
 1. รัน tool ตามภาษา:
@@ -61,8 +58,7 @@ related:
 
 ### 3. Scan Skill Reference Cycles
 
-สแกน circular references ใน skills directory
-
+> Goal: สแกน circular references ใน skills directory
 > Goal: พบ cycles ระหว่าง `related` references ใน `SKILL.md`
 
 1. ระบุ skills directory: global `%APPDATA%\devin\skills\` หรือ project `.devin\skills\` / `.windsurf\skills\`
@@ -74,8 +70,7 @@ related:
 
 ### 4. Scan Markdown Reference Cycles
 
-ตรวจ circular references ใน markdown project docs
-
+> Goal: ตรวจ circular references ใน markdown project docs
 > Goal: พบ cycles ใน `AGENTS.md` และ markdown references
 
 1. หา `AGENTS.md` และ markdown files ที่มี references ซ้อนกัน
@@ -84,8 +79,7 @@ related:
 
 ### 5. Analyze Findings
 
-วิเคราะห์ severity และ root cause
-
+> Goal: วิเคราะห์ severity และ root cause
 > Goal: เข้าใจ impact และสาเหตุของแต่ละ cycle
 
 1. จัดประเภท findings:
@@ -98,8 +92,7 @@ related:
 
 ### 6. Report And Act
 
-รายงานผลและแนะนำ next action
-
+> Goal: รายงานผลและแนะนำ next action
 > Goal: ผู้ใช้รู้ issues และวิธีแก้
 
 1. สร้าง report เป็นตาราง: cycle, modules/files, severity, root cause, recommendation

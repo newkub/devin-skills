@@ -10,6 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - read-related-skills
+  - update-agents-md
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Update AGENTS.md
+> Goal: Update AGENTS.md
 
 ทำ `/update-agents-md` ก่อนเสมอ ก่อนทำอย่างอื่นใด
 
@@ -31,6 +35,7 @@ triggers:
 - ห้ามข้ามขั้นตอนนี้ไม่ว่ากรณีใดๆ
 
 ### 2. Read Related Workflows And Skills
+> Goal: Read Related Workflows And Skills
 
 อ่าน workflows และ skills ที่เกี่ยวข้องทั้งหมด
 
@@ -39,6 +44,7 @@ triggers:
 3. ทำตาม workflows และ skills ที่อ่านได้ทั้งหมด
 
 ### 3. Parse And Execute AGENTS.md
+> Goal: Parse And Execute AGENTS.md
 
 อ่านและ execute workflows/skills ที่ระบุใน `AGENTS.md`
 
@@ -49,6 +55,7 @@ triggers:
 5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace ที่มี `AGENTS.md`
 
 ### 4. Verify Execution
+> Goal: Verify Execution
 
 ตรวจสอบว่า workflows และ skills ถูก execute ครบถ้วน
 

@@ -16,6 +16,7 @@ related:
   - check-monorepo
   - learn-from-web
   - update-reference
+  - follow-vscode-extensions
 ---
 
 ## Goal
@@ -52,8 +53,7 @@ related:
 
 ### 1. Analyze Existing .vscode
 
-อ่านและวิเคราะห์ `.vscode` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
-
+> Goal: อ่านและวิเคราะห์ `.vscode` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
 > Goal: รู้ไฟล์ที่มี ไฟล์ที่ขาด และไฟล์ที่ต้องอัปเดต
 
 1. อ่าน `.vscode/` directory ทั้งหมด
@@ -64,8 +64,7 @@ related:
 
 ### 2. Analyze Project
 
-วิเคราะห์ project เพื่อกำหนด settings ที่จำเป็น
-
+> Goal: วิเคราะห์ project เพื่อกำหนด settings ที่จำเป็น
 > Goal: รู้ project type, tech stack, package manager, และ settings ที่ต้องมี
 
 1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
@@ -78,8 +77,7 @@ related:
 
 ### 3. Setup Settings.json
 
-สร้างหรืออัปเดต `settings.json` ตาม tech stack ของ project
-
+> Goal: สร้างหรืออัปเดต `settings.json` ตาม tech stack ของ project
 > Goal: Workspace settings ตรง tech stack และเพิ่ม productivity
 
 1. ทำ `/learn-from-web` จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
@@ -119,8 +117,7 @@ related:
 
 ### 4. Setup Extensions.json
 
-สร้างหรืออัปเดต `extensions.json` พร้อม recommended extensions
-
+> Goal: สร้างหรืออัปเดต `extensions.json` พร้อม recommended extensions
 > Goal: Extensions ครบตาม tech stack ช่วยเพิ่ม productivity
 
 1. ระบุ extensions ตาม tech stack:
@@ -138,8 +135,7 @@ related:
 
 ### 5. Setup Launch.json
 
-สร้างหรืออัปเดต `launch.json` สำหรับ debug configurations
-
+> Goal: สร้างหรืออัปเดต `launch.json` สำหรับ debug configurations
 > Goal: Debug configs ครบสำหรับแต่ละ app ใน project
 
 1. สร้าง debug config สำหรับ browser app (SolidJS/Vue/React):
@@ -154,8 +150,7 @@ related:
 
 ### 6. Setup Tasks.json
 
-สร้างหรืออัปเดต `tasks.json` สำหรับ task configurations
-
+> Goal: สร้างหรืออัปเดต `tasks.json` สำหรับ task configurations
 > Goal: Tasks ครบสำหรับ build, dev, test, lint, typecheck
 
 1. สร้าง task สำหรับ `dev` (รัน dev server)
@@ -170,8 +165,7 @@ related:
 
 ### 7. Validate And Update References
 
-ตรวจสอบความถูกต้องและอัปเดต references
-
+> Goal: ตรวจสอบความถูกต้องและอัปเดต references
 > Goal: ทุกไฟล์ถูกต้อง ไม่มี broken references
 
 1. ตรวจสอบ JSON syntax ของทุกไฟล์ใน `.vscode/`

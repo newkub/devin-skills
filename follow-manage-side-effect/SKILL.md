@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze Functions
+> Goal: Analyze Functions
 
 วิเคราะห์ functions ทั้งหมดใน codebase
 
@@ -35,6 +34,7 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 3. ระบุ functions ที่ผสมกันระหว่าง pure logic และ side effects
 
 ### 2. Extract Pure Logic
+> Goal: Extract Pure Logic
 
 แยก business logic ออกจาก side effects
 
@@ -43,6 +43,7 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 3. ให้แน่ใจว่า pure functions ไม่มี dependencies ภายนอก
 
 ### 3. Isolate Side Effects
+> Goal: Isolate Side Effects
 
 แยก side effects ออกเป็น functions เฉพาะ
 
@@ -52,6 +53,7 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 4. ให้แน่ใจว่า side effect functions ไม่มี business logic
 
 ### 4. Use Dependency Injection
+> Goal: Use Dependency Injection
 
 ใช้ dependency injection สำหรับ side effects
 
@@ -60,6 +62,7 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 3. ใช้ mock implementations สำหรับ testing
 
 ### 5. Write Tests for Pure Functions
+> Goal: Write Tests for Pure Functions
 
 เขียน tests สำหรับ pure functions
 
@@ -68,6 +71,7 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 3. ให้แน่ใจว่า tests ครอบคลุม edge cases
 
 ### 6. Write Tests for Side Effects
+> Goal: Write Tests for Side Effects
 
 เขียน tests สำหรับ side effect functions
 
@@ -76,14 +80,13 @@ Use `follow-manage-side-effect` for the specific tasks and workflows it covers
 3. เขียน E2E tests สำหรับ critical user flows
 
 ### 7. Validate Separation
+> Goal: Validate Separation
 
 ตรวจสอบการแยก concerns
 
 1. ตรวจสอบว่า pure functions ไม่มี side effects
 2. ตรวจสอบว่า side effect functions ไม่มี business logic
 3. ตรวจสอบว่า dependency injection ใช้งานได้ถูกต้อง
-
-## Rules
 
 ## Rules
 
@@ -118,8 +121,6 @@ Pure functions ต้องเป็น deterministic และไม่มี�
 - Pure functions ต้องมี unit tests
 - Side effects ต้องมี integration tests
 - Critical flows ต้องมี E2E tests
-
-## Expected Outcome
 
 ## Expected Outcome
 

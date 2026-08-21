@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-research
 ---
 
 ## Goal
@@ -23,12 +26,14 @@ triggers:
 ## Execute
 
 ### 1. Identify Subject
+> Goal: Identify Subject
 
 1. ระบุสิ่งที่ user ถาม (library, tool, framework, pattern)
 2. แยก keywords และ requirements สำคัญ
 3. กำหนด context และ use case
 
 ### 2. Deep Research
+> Goal: Deep Research
 
 1. ทำ `/deep-research` เพื่อค้นหาข้อมูลจาก multiple sources
 2. ใช้ CRW สำหรับ web search และ scraping
@@ -36,6 +41,7 @@ triggers:
 4. ใช้ DeepWiki และ Context7 สำหรับ documentation
 
 ### 3. Compare Alternatives
+> Goal: Compare Alternatives
 
 1. รวบรวม alternatives ที่เกี่ยวข้อง
 2. เปรียบเทียบ features, performance, maintenance
@@ -43,6 +49,7 @@ triggers:
 4. ตรวจสอบ community support และ ecosystem
 
 ### 4. Recommend Best Option
+> Goal: Recommend Best Option
 
 1. แนะนำตัวเลือกที่เหมาะสมที่สุด
 2. อธิบายเหตุผลการเลือก

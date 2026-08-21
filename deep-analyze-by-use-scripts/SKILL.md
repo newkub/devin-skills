@@ -1,12 +1,13 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ...
+description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย tools/review CLI, tools/analyze CLI, @ast-grep/napi และ
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,10 +17,6 @@ related:
   - follow-create-cli
   - follow-clean-architecture
   - use-ast-grep
-  - use-scripts
-  - deep-report
-  - report-table
-  - update-reference
 ---
 
 ## Goal
@@ -34,8 +31,7 @@ related:
 
 ### 1. Analyze Project
 
-วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
-
+> Goal: วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
 > Goal: มี foundation สำหรับ deep analysis
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
@@ -44,8 +40,7 @@ related:
 
 ### 2. Setup Analyze CLI
 
-สร้าง `tools/analyze` CLI สำหรับ AST-based analysis
-
+> Goal: สร้าง `tools/analyze` CLI สำหรับ AST-based analysis
 > Goal: มี `tools/analyze` CLI ที่ maintainable และผ่าน review
 
 1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
@@ -56,8 +51,7 @@ related:
 
 ### 3. Ensure Review CLI Ready
 
-ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
-
+> Goal: ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
 > Goal: Review CLI พร้อมรันและครอบคลุม categories ล่าสุด
 
 1. ทำ `/update-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
@@ -66,8 +60,7 @@ related:
 
 ### 4. Run Review CLI And NAPI Analysis
 
-รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
-
+> Goal: รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
 > Goal: มี metrics และ AST analysis ครบสำหรับ deep report
 
 1. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report เป็น JSON
@@ -78,8 +71,7 @@ related:
 
 ### 5. Deep Report Findings
 
-จัดรูปแบบผลลัพธ์เป็น deep report ตาราง 7 columns พร้อม deep summary
-
+> Goal: จัดรูปแบบผลลัพธ์เป็น deep report ตาราง 7 columns พร้อม deep summary
 > Goal: Deep report ที่ actionable และตรวจสอบได้
 
 1. ทำ `/deep-report` เพื่อจัดรูปแบบผลลัพธ์เป็นตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
@@ -89,8 +81,7 @@ related:
 
 ### 6. Analyze Cross-References
 
-ระบุ workflows และ skills ที่ควรอ้างอิงจากผล deep analysis
-
+> Goal: ระบุ workflows และ skills ที่ควรอ้างอิงจากผล deep analysis
 > Goal: รู้ว่า findings จาก deep analysis ควรถูกอ้างอิงในไฟล์ใดบ้าง
 
 1. ระบุ workflow หรือ skill ที่เกี่ยวข้องกับ findings จาก step 5
@@ -100,8 +91,7 @@ related:
 
 ### 7. Apply References And Report
 
-เพิ่ม references ที่ขาดและรายงานผลลัพธ์
-
+> Goal: เพิ่ม references ที่ขาดและรายงานผลลัพธ์
 > Goal: References ครบถ้วน ไม่มี broken references
 
 1. ทำ `/update-reference` เพื่อเพิ่ม references ในไฟล์ที่ขาด

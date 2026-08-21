@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -33,8 +35,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 ### 1. Setup Prerequisites
 
-ตรวจสอบและตั้งค่า prerequisites ก่อน commit
-
+> Goal: ตรวจสอบและตั้งค่า prerequisites ก่อน commit
 > Goal: มี .gitignore, Git hooks และ config พร้อมก่อน commit
 
 1. ทำตาม `/follow-gitignore` สำหรับ .gitignore
@@ -43,8 +44,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 ### 2. Categorize Changes
 
-จัดกลุ่มไฟล์ที่มีการเปลี่ยนแปลง แยกระหว่าง task files และ other files แล้วจัดตามประเภท
-
+> Goal: จัดกลุ่มไฟล์ที่มีการเปลี่ยนแปลง แยกระหว่าง task files และ other files แล้วจัดตามประเภท
 > Goal: ไฟล์ถูกแยก task files vs other files และจัดกลุ่มตามประเภท
 
 1. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการแก้ไขทั้งหมด
@@ -59,8 +59,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 ### 3. Choose Commit Mode
 
-เลือกโหมดการ commit โดยพิจารณา task files และ other files อัตโนมัติ
-
+> Goal: เลือกโหมดการ commit โดยพิจารณา task files และ other files อัตโนมัติ
 > Goal: เลือกโหมดการ commit ที่เหมาะสมโดยไม่ต้องถามผู้ใช้
 
 1. ถ้ามีเฉพาะ task files (ไม่มี other files) → ใช้ Single Commit (task files)
@@ -70,8 +69,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 ### 4. Review File Changes
 
-ดู actual changes ของไฟล์ที่จะ commit เพื่อให้ commit message ตรงมากขึ้น
-
+> Goal: ดู actual changes ของไฟล์ที่จะ commit เพื่อให้ commit message ตรงมากขึ้น
 > Goal: เข้าใจ changes จริงก่อนเขียน commit message
 
 1. รัน `git diff` เพื่อดู changes ที่ยังไม่ได้ commit
@@ -81,8 +79,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 ### 5. Stage Changes By Mode
 
-Stage ไฟล์ตามโหมดที่เลือก
-
+> Goal: Stage ไฟล์ตามโหมดที่เลือก
 > Goal: ไฟล์ถูก stage ถูกต้องตามโหมดที่เลือก
 
 Single Commit (task files):
@@ -103,8 +100,7 @@ Split Commit (by category):
 
 ### 6. Write Commit Message(s)
 
-เลือก commit type และเขียน commit message ตาม conventional commits format
-
+> Goal: เลือก commit type และเขียน commit message ตาม conventional commits format
 > Goal: commit message(s) สอดคล้อง conventional commits
 
 1. เลือก commit type ตาม Rules ส่วน Commit Types
@@ -113,8 +109,7 @@ Split Commit (by category):
 
 ### 7. Execute Commit
 
-ดำเนินการ commit ตามโหมดที่เลือก
-
+> Goal: ดำเนินการ commit ตามโหมดที่เลือก
 > Goal: commit สำเร็จไม่มี error
 
 Single Commit และ Commit All:
@@ -129,8 +124,7 @@ Split Commit:
 
 ### 8. Verify Commits
 
-ตรวจสอบความถูกต้องของ commits
-
+> Goal: ตรวจสอบความถูกต้องของ commits
 > Goal: commits ถูกต้องและ working directory สะอาด
 
 1. รัน `git log --oneline -5` เพื่อดู commits ล่าสุด
@@ -141,7 +135,6 @@ Split Commit:
 ## Rules
 
 ### Commit Message Format
-
 > Goal: commit message มีรูปแบบมาตรฐาน
 
 ใช้รูปแบบ conventional commits
@@ -153,7 +146,6 @@ Split Commit:
 - ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
 
 ### Commit Types
-
 > Goal: เลือก type ที่เหมาะสมกับการเปลี่ยนแปลง
 
 - feat: ฟีเจอร์ใหม่
@@ -166,14 +158,12 @@ Split Commit:
 - chore: เปลี่ยนแปลง build process, dependencies
 
 ### Scope
-
 > Goal: ระบุส่วนของโปรเจกต์ที่ถูกแก้ไข
 
 - ระบุส่วนของโปรเจกต์ที่ถูกแก้ไข
 - เช่น: api, ui, db, config, deps, auth, test, docs, ci
 
 ### Body
-
 > Goal: อธิบายเหตุผลและ context เพิ่มเติม
 
 - อธิบายเหตุผลและ context

@@ -7,15 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ skill นี้เพื่อเข้าใจและใช้งาน Devin/Cascade AI coding assistant สำหรับ autonomous software development, code generation, debugging, และ testing
-
 
 ## Scope
 
@@ -27,10 +28,10 @@ triggers:
 - Debug และ review code ที่ agents สร้าง
 - จัดการ fleets ของ local และ cloud agents
 
-
 ## Execute
 
 ### 1. เริ่มต้นใช้งาน
+> Goal: เริ่มต้นใช้งาน
 
 อ่าน `guide/getting-started.md` เพื่อเรียนรู้:
 - การติดตั้งและ setup Devin Desktop
@@ -40,6 +41,7 @@ triggers:
 - การเขียน prompt แรกของคุณ
 
 ### 2. เข้าใจ Core Concepts
+> Goal: เข้าใจ Core Concepts
 
 อ่าน `key-concepts/` เพื่อเข้าใจ:
 - `SWE Models`: SWE-1.6, SWE-1.5, SWE-1, SWE-1-mini, swe-grep
@@ -50,6 +52,7 @@ triggers:
 - `Context Awareness`: Fast Context และ context retrieval
 
 ### 3. ปฏิบัติตาม Best Practices
+> Goal: ปฏิบัติตาม Best Practices
 
 อ่าน `principles/` เพื่อเรียนรู้:
 - Prompt engineering สำหรับ coding agents
@@ -59,6 +62,7 @@ triggers:
 - Performance optimization
 
 ### 4. ใช้ Workflows
+> Goal: ใช้ Workflows
 
 ใช้ `workflows/` สำหรับ tasks เฉพาะ:
 - `setup-devin.md`: Setup Devin Desktop และ Windsurf
@@ -66,7 +70,6 @@ triggers:
 - `debug-with-agent.md`: Debug ด้วย agents
 - `review-code.md`: Review code จาก agents
 - `deploy-with-agent.md`: Deploy ด้วย agents
-
 
 ## Rules
 
@@ -99,7 +102,6 @@ triggers:
 - Review code สำหรับ security issues
 - ใช้ environment variables สำหรับ secrets
 - Follow security best practices
-
 
 ## Expected Outcome
 

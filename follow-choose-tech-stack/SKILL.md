@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-rust
+  - follow-best-practice
+  - follow-typescript
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Requirements
+> Goal: Analyze Requirements
 
 วิเคราะห์ requirements ของ project
 
@@ -32,6 +38,7 @@ triggers:
 4. ทำ `/follow-best-practice` สำหรับ context ของ project นั้นๆ
 
 ### 2. Choose Programming Language
+> Goal: Choose Programming Language
 
 เลือกภาษาตามประเภท application
 
@@ -42,6 +49,7 @@ triggers:
 5. ทำ `/follow-typescript` หรือ `/follow-rust` ตามภาษาที่เลือก
 
 ### 3. Choose Frameworks And Libraries
+> Goal: Choose Frameworks And Libraries
 
 เลือก frameworks และ libraries ตามภาษา
 
@@ -51,6 +59,7 @@ triggers:
 4. State Management: Pinia (Vue), Zustand (React)
 
 ### 4. Choose Build Tools
+> Goal: Choose Build Tools
 
 เลือก build tools ตามภาษา
 
@@ -59,6 +68,7 @@ triggers:
 3. Go: Go build
 
 ### 5. Choose Deployment Platform
+> Goal: Choose Deployment Platform
 
 เลือก deployment platform ตาม requirements
 
@@ -67,6 +77,7 @@ triggers:
 3. Traditional: VPS, PaaS (Railway)
 
 ### 6. Create Decision Matrix
+> Goal: Create Decision Matrix
 
 สร้างตารางเปรียบเทียบ tech options
 
@@ -76,6 +87,7 @@ triggers:
 4. เปรียบเทียบ total scores
 
 ### 7. Test And Validate
+> Goal: Test And Validate
 
 ทดสอบและ validate decision
 

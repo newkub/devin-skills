@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-unocss
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project Structure
+> Goal: Setup Project Structure
 
 สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน
 
@@ -33,6 +37,7 @@ triggers:
 5. ใช้ React 19+ เป็น minimum version
 
 ### 2. Configure Core Principles
+> Goal: Configure Core Principles
 
 ตั้งค่าหลักการพื้นฐานของ React 19
 
@@ -44,6 +49,7 @@ triggers:
 6. ใช้ Server Actions สำหรับ form handling และ mutations
 
 ### 3. React 19 Hooks And APIs
+> Goal: React 19 Hooks And APIs
 
 ใช้ hooks ใหม่ของ React 19
 
@@ -55,6 +61,7 @@ triggers:
 6. ใช้ `useDeferredValue` สำหรับ deferring expensive renders
 
 ### 4. Implement Folder Rules
+> Goal: Implement Folder Rules
 
 ใช้ rules สำหรับแต่ละ folder
 
@@ -64,6 +71,7 @@ triggers:
 4. `lib`: Pure utilities, clients, adapters
 
 ### 5. Setup Import Rules
+> Goal: Setup Import Rules
 
 ตั้งค่า import dependencies ตามลำดับ
 
@@ -75,6 +83,7 @@ triggers:
 6. types → no internal dependencies
 
 ### 6. Server Components Patterns
+> Goal: Server Components Patterns
 
 ใช้ Server Components อย่างถูกต้อง
 
@@ -86,6 +95,7 @@ triggers:
 6. ใช้ `loading.tsx` และ `error.tsx` สำหรับ streaming และ error boundaries
 
 ### 7. Optimize Performance
+> Goal: Optimize Performance
 
 ตั้งค่า performance optimization
 

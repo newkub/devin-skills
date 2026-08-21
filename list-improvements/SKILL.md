@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - analyze-project
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Project
+> Goal: Analyze Project
 
 วิเคราะห์ project เพื่อดูสิ่งที่ improve ได้
 
@@ -31,6 +34,7 @@ triggers:
 3. ดู code quality metrics หากมี
 
 ### 2. Suggest Improvements
+> Goal: Suggest Improvements
 
 แนะนำ improvements ที่เหมาะสมกับ project
 

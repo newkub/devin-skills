@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - update-reference
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Identify File Responsibilities
+> Goal: Identify File Responsibilities
 
 1. วิเคราะห์ domain หรือ responsibility ของแต่ละไฟล์:
    - `domain`: business logic และ entities
@@ -34,6 +40,7 @@ triggers:
 3. ระบุไฟล์ที่อยู่ในตำแหน่งไม่เหมาะสม
 
 ### 2. Plan Relocation Strategy
+> Goal: Plan Relocation Strategy
 
 1. กำหนด target folder สำหรับแต่ละไฟล์ตาม responsibility
 2. ตรวจสอบ dependency direction ก่อนย้าย:
@@ -43,6 +50,7 @@ triggers:
 4. บันทึก mapping ของ old path → new path
 
 ### 3. Execute File Relocation
+> Goal: Execute File Relocation
 
 1. ทำ `use-scripts` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่เหมาะสม
 2. ย้ายไฟล์ตามลำดับที่วางแผนไว้
@@ -50,6 +58,7 @@ triggers:
 4. ทำ `/follow-import-export` เพื่อสร้าง barrel exports และตั้งค่า import aliases สำหรับโฟลเดอร์ใหม่ถ้าจำเป็น
 
 ### 4. Update Import Paths
+> Goal: Update Import Paths
 
 1. ทำ `/update-reference` เพื่ออัปเดท references ทั้งหมด
 2. ค้นหา import paths ที่อ้างอิงถึงไฟล์ที่ย้าย
@@ -57,6 +66,7 @@ triggers:
 4. ตรวจสอบว่า import paths ถูกต้องทั้งหมด
 
 ### 5. Validate Changes
+> Goal: Validate Changes
 
 1. รัน type check เพื่อยืนยันว่า import paths ถูกต้อง
 2. รัน build เพื่อตรวจสอบว่าไม่มี errors

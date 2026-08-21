@@ -1,15 +1,18 @@
 ---
 name: follow-bun
-description: ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ We...
+description: ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Requirements
+> Goal: Analyze Requirements
 
 วิเคราะห์ความต้องการและเลือก APIs ที่เหมาะสม
 
@@ -31,6 +35,7 @@ triggers:
 3. เลือก APIs ที่เหมาะสมกับงาน (HTTP server, file I/O, networking, database, etc.)
 
 ### 2. Implement Bun APIs
+> Goal: Implement Bun APIs
 
 ดำเนินการพัฒนาตาม Bun APIs best practices
 
@@ -41,6 +46,7 @@ triggers:
 5. ใช้ Web-standard APIs เมื่อเป็นไปได้ (fetch, ReadableStream, etc.)
 
 ### 3. Verify And Optimize
+> Goal: Verify And Optimize
 
 ตรวจสอบและ optimize การใช้งาน Bun APIs
 

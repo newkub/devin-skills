@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-oop-to-composables` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Identify OOP Code
+> Goal: Identify OOP Code
 
 ระบุ OOP code ที่ต้องแปลง
 
@@ -35,6 +34,7 @@ Use `follow-oop-to-composables` for the specific tasks and workflows it covers
 3. วิเคราะห์ dependencies ระหว่าง components
 
 ### 2. Convert to Composables
+> Goal: Convert to Composables
 
 แปลงเป็น composables function style
 
@@ -44,14 +44,10 @@ Use `follow-oop-to-composables` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - แยก logic ออกจาก classes
 - ใช้ composables functions แทน classes
 - ใช้ reactive patterns
 - ทำให้ code ทดสอบได้ง่ายขึ้น
-
-## Expected Outcome
 
 ## Expected Outcome
 

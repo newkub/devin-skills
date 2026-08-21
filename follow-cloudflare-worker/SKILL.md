@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,6 +27,8 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 
 ### 1. Install And Configure Wrangler
 
+> Goal: Install And Configure Wrangler
+
 ตั้งค่า Wrangler และ dependencies
 
 1. รัน `bunx wrangler deploy` โดยไม่ต้องมี config file (Wrangler 4.55+ auto-detect)
@@ -34,6 +39,8 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 6. รัน `bun run types` เพื่อ generate `worker-configuration.d.ts`
 
 ### 2. Configure Wrangler
+
+> Goal: Configure Wrangler
 
 กำหนด configuration สำหรับ manual setup ถ้าต้องการ
 
@@ -61,7 +68,7 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 
 ### 3. Typecheck And Build
 
-ตรวจสอบ types และ build
+> Goal: ตรวจสอบ types และ build
 
 1. รัน `bun run typecheck` และแก้ไข errors จนผ่าน
 2. รัน `bun run build` หรือ `bun run build:local`
@@ -70,7 +77,7 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 
 ### 4. Setup Staging Environment
 
-ตั้งค่า staging environment และ D1 databases
+> Goal: ตั้งค่า staging environment และ D1 databases
 
 1. เพิ่ม staging environment ใน `wrangler.jsonc` หรือ `wrangler.toml`
 2. สร้าง D1 databases: `wrangler d1 create project-name` และ `wrangler d1 create project-name-staging`
@@ -79,7 +86,7 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 
 ### 5. Development
 
-รัน local dev server
+> Goal: รัน local dev server
 
 1. รัน `bunx wrangler dev` เพื่อ start local dev server
 2. ใช้ `--port 8787` สำหรับกำหนด port
@@ -88,7 +95,7 @@ Setup build แบบ auto และ deploy applications บน Cloudflare Worke
 
 ### 6. Deploy Staging First
 
-Deploy ไป staging เพื่อทดสอบก่อน
+> Goal: Deploy ไป staging เพื่อทดสอบก่อน
 
 1. รัน `wrangler deploy --env staging --dry-run`
 2. ตรวจสอบ staging configuration
@@ -98,7 +105,7 @@ Deploy ไป staging เพื่อทดสอบก่อน
 
 ### 7. Deploy Production
 
-Deploy ไป production เมื่อ staging ผ่าน
+> Goal: Deploy ไป production เมื่อ staging ผ่าน
 
 1. รัน `wrangler deploy --dry-run`
 2. ตรวจสอบ production configuration
@@ -108,7 +115,7 @@ Deploy ไป production เมื่อ staging ผ่าน
 
 ### 8. Environment Variables And Bindings
 
-ตั้งค่า secrets, variables และ bindings
+> Goal: ตั้งค่า secrets, variables และ bindings
 
 1. ใช้ `wrangler secret put KEY_NAME` เพื่อ set secrets
 2. ใช้ `wrangler vars put KEY_NAME` เพื่อ set non-secret variables
@@ -119,7 +126,7 @@ Deploy ไป production เมื่อ staging ผ่าน
 
 ### 9. CI/CD Deployment
 
-ตั้งค่า automated deployment
+> Goal: ตั้งค่า automated deployment
 
 `.github/workflows/deploy.yml`:
 ```yaml

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,10 +26,14 @@ triggers:
 
 ### 1. Install Changesets
 
+> Goal: Install Changesets
+
 1. รัน `bun add -D @changesets/cli`
 2. รัน `bunx changeset init`
 
 ### 2. Configure Changesets
+
+> Goal: Configure Changesets
 
 1. แก้ไข `.changeset/config.json`
 2. ตั้งค่า base branch, access, และ updateInternalDependencies
@@ -49,6 +55,7 @@ triggers:
 
 ### 3. Setup GitHub Actions
 
+> Goal: Setup GitHub Actions
 1. สร้าง `.github/workflows/release.yml`
 2. กำหนดค่า GITHUB_TOKEN และ NPM_TOKEN
 3. ตั้งค่า version และ publish commands
@@ -82,12 +89,14 @@ jobs:
 
 ### 4. Create Changesets
 
+> Goal: Create Changesets
 1. รัน `bunx changeset` เพื่อสร้าง changeset file
 2. เลือก packages และระบุ changeset type (major, minor, patch)
 3. เขียน description สำหรับ changelog
 
 ### 5. Publish
 
+> Goal: Publish
 1. Merge release PR ที่สร้างโดย GitHub Actions
 2. หรือรัน `bunx changeset publish` ด้วยตนเอง
 3. Changesets จะ version และ publish packages อัตโนมัติ

@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - deep-plan
+  - suggest-next-action
+  - follow-root-cause-analysis
+  - debug-issue
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Define Problem Clearly
+> Goal: Define Problem Clearly
 
 กำหนดปัญหาหรือเป้าหมายให้ชัดเจน:
 
@@ -32,6 +41,7 @@ triggers:
 4. ระบุ stakeholders ที่เกี่ยวข้อง
 
 ### 2. Break Down Problem
+> Goal: Break Down Problem
 
 แบ่งปัญหาออกเป็นส่วนย่อย:
 
@@ -41,6 +51,7 @@ triggers:
 4. ระบุสิ่งที่ไม่รู้ (unknowns)
 
 ### 3. Generate Alternatives
+> Goal: Generate Alternatives
 
 สร้างทางเลือกที่เป็นไปได้:
 
@@ -51,6 +62,7 @@ triggers:
 5. เลือกทางที่ดีที่สุดพร้อมระบุเหตุผล
 
 ### 4. Validate Assumptions
+> Goal: Validate Assumptions
 
 ตรวจสอบสมมติฐานที่ใช้:
 
@@ -60,6 +72,7 @@ triggers:
 4. ปรับแก้ assumptions หากผิด และวิเคราะห์ใหม่หากจำเป็น
 
 ### 5. Create Action Plan
+> Goal: Create Action Plan
 
 สร้างแผนการดำเนินการ:
 
@@ -70,6 +83,7 @@ triggers:
 5. ระบุว่าแต่ละ step สามารถย้อนกลับได้หรือไม่
 
 ### 6. Execute And Iterate
+> Goal: Execute And Iterate
 
 ดำเนินการตามแผน:
 

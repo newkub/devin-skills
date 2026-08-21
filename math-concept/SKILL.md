@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Explore Concepts
 
-เรียนรู้ concepts ที่เกี่ยวข้อง
-
+> Goal: เรียนรู้ concepts ที่เกี่ยวข้อง
 > Goal: เข้าใจพื้นฐานคณิตศาสตร์สำหรับ software
 
 1. อ่านเอกสารหรือ resources ที่เชื่อถือได้สำหรับ concepts ที่เกี่ยวข้อง
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Apply Mathematics
 
-ประยุกต์ใช้คณิตศาสตร์กับปัญหา
-
+> Goal: ประยุกต์ใช้คณิตศาสตร์กับปัญหา
 > Goal: นำ concepts ไปใช้จริงใน code
 
 1. ระบุ domain ที่ต้องการแก้ไข

@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-review
+  - check-unused-files
+  - resolve-errors
+  - no-use-ignore
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Run Lint
+> Goal: Run Lint
 
 1. ตรวจสอบ project type และ lint config ก่อนรัน
 2. รัน lint ตามที่กำหนดไว้ใน config:
@@ -31,6 +38,7 @@ triggers:
 3. รอให้ lint เสร็จสิ้นก่อนดำเนินการต่อ
 
 ### 2. Analyze Errors
+> Goal: Analyze Errors
 
 1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก lint
 2. ตรวจสอบประเภทของ errors:
@@ -41,6 +49,7 @@ triggers:
    - style violations
 
 ### 3. Fix Code Issues
+> Goal: Fix Code Issues
 
 1. แก้ code-related errors ตามลำดับความสำคัญ
 2. สำหรับ unused variables:
@@ -51,6 +60,7 @@ triggers:
 4. สำหรับ style violations ให้แก้ตาม conventions
 
 ### 4. Verify
+> Goal: Verify
 
 1. รัน lint อีกครั้งเพื่อยืนยัน
 2. ตรวจสอบว่าไม่มี errors/warnings เหลือ

@@ -7,12 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-reference
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +25,15 @@ Use `read-all-files` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Prepare
+> Goal: Prepare
 
 1. ใช้ `/update-reference` เพื่อเก็บ reference
 2. ระบุประเภทไฟล์ที่ต้องการอ่าน
 3. กำหนดลำดับความสำคัญของไฟล์
 
 ### 2. Read Files
+> Goal: Read Files
 
 1. อ่านไฟล์ที่สำคัญก่อน (config, index, main)
 2. อ่านไฟล์ตามลำดับ dependency
@@ -40,13 +41,12 @@ Use `read-all-files` for the specific tasks and workflows it covers
 4. อ่านไฟล์ใน directory structure ตามลำดับ
 
 ### 3. Analyze
+> Goal: Analyze
 
 1. วิเคราะห์โครงสร้างโปรเจกต์
 2. ระบุความสัมพันธ์ระหว่างไฟล์
 3. สรุป pattern และ architecture
 4. ตรวจสอบความสมบูรณ์ของการอ่าน
-
-## Rules
 
 ## Rules
 
@@ -70,8 +70,6 @@ Use `read-all-files` for the specific tasks and workflows it covers
 - ระบุ shared patterns
 - หาความสัมพันธ์ระหว่าง modules
 - สรุป architecture ที่ใช้
-
-## Expected Outcome
 
 ## Expected Outcome
 

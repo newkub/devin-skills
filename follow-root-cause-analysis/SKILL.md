@@ -7,12 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - use-bun-shell
+  - debug-issue
+  - resolve-errors
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +28,8 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Gather Evidence
+> Goal: Gather Evidence
 
 รวบรวมข้อมูลและ evidence ทั้งหมดที่เกี่ยวข้องกับปัญหา
 
@@ -37,6 +40,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 5. เก็บ environment information (version, config, dependencies)
 
 ### 2. Construct Causal Graph (Graph Theory)
+> Goal: Construct Causal Graph (Graph Theory)
 
 สร้าง Directed Acyclic Graph (DAG) ของ causal relationships:
 
@@ -50,6 +54,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 5. ระบุ root nodes (nodes ที่ไม่มี incoming edges) เป็น potential root causes
 
 ### 3. Use 5 Whys (Causal Inference)
+> Goal: Use 5 Whys (Causal Inference)
 
 ใช้เทคนิค 5 Whys ร่วมกับ Causal Inference:
 
@@ -72,6 +77,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 - Root Cause: Deployment script ไม่มี shutdown handler
 
 ### 4. Analyze Causal Paths (Graph Theory)
+> Goal: Analyze Causal Paths (Graph Theory)
 
 วิเคราะห์ causal paths ใน DAG:
 
@@ -85,6 +91,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 5. เลือก root node ที่มี causal paths สั้นและ strong ที่สุด
 
 ### 5. Validate Causal Hypothesis (Causal Inference)
+> Goal: Validate Causal Hypothesis (Causal Inference)
 
 ตรวจสอบ causal hypothesis ด้วย intervention:
 
@@ -98,6 +105,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 5. ตรวจสอบว่าไม่มี confounding variables ที่ซ่อนอยู่
 
 ### 6. Document Root Cause
+> Goal: Document Root Cause
 
 บันทึก root cause และการวิเคราะห์อย่างละเอียด
 
@@ -108,6 +116,7 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 5. ระบุ action items สำหรับ prevention
 
 ### 7. Define Preventive Actions
+> Goal: Define Preventive Actions
 
 กำหนด action สำหรับป้องกันปัญหาซ้ำ
 
@@ -116,8 +125,6 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 3. เพิ่ม test cases สำหรับป้องกัน regression
 4. อัพเดท documentation และ runbooks
 5. ทำ training หรือ knowledge sharing กับทีม
-
-## Rules
 
 ## Rules
 
@@ -164,8 +171,6 @@ Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
 - อธิบายวิธีการวิเคราะห์
 - แนบ evidence ทั้งหมด
 - ระบุ action items สำหรับ prevention
-
-## Expected Outcome
 
 ## Expected Outcome
 

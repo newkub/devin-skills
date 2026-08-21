@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Setup VueUse
+> Goal: Setup VueUse
 
 ตั้งค่า VueUse ใน project
 
@@ -33,6 +36,7 @@ triggers:
 5. กำหนด imports ที่ต้องการใช้
 
 ### 2. Use VueUse Composables
+> Goal: Use VueUse Composables
 
 ใช้ VueUse composables ตาม use case
 
@@ -44,6 +48,7 @@ triggers:
 6. Utilities: `useSortable`, `useWebSocket`, `useElementVisibility`
 
 ### 3. VueUse v14 New Features
+> Goal: VueUse v14 New Features
 
 ใช้ features ใหม่ของ VueUse v14
 
@@ -56,6 +61,7 @@ triggers:
 7. `useElementVisibility` มี `initialValue` option
 
 ### 4. Integrate With Components
+> Goal: Integrate With Components
 
 ใช้ VueUse ใน components
 
@@ -66,6 +72,7 @@ triggers:
 5. ใช้ `controls` option สำหรับ advanced configuration
 
 ### 5. Optimize Performance
+> Goal: Optimize Performance
 
 ปรับปรุง performance
 

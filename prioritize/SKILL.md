@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Assess Impact
+> Goal: Assess Impact
 
 ประเมินผลกระทบของ task
 
@@ -32,6 +36,7 @@ triggers:
 4. ประเมิน `urgency`: deadline, dependencies, blocking issues
 
 ### 2. Estimate Effort
+> Goal: Estimate Effort
 
 ประเมินความยากและเวลาที่ต้องใช้
 
@@ -41,6 +46,7 @@ triggers:
 4. ประเมิน `risk`: ความเสี่ยงของการทำงาน
 
 ### 3. Calculate Priority
+> Goal: Calculate Priority
 
 คำนวณ priority จาก impact และ effort
 
@@ -59,6 +65,7 @@ triggers:
 | Low    | High   | P4       | Defer or skip |
 
 ### 4. Consider Dependencies
+> Goal: Consider Dependencies
 
 พิจารณา dependencies ระหว่าง tasks
 
@@ -68,6 +75,7 @@ triggers:
 4. จัดลำดับ tasks ที่เป็น prerequisites ก่อน
 
 ### 5. Validate With Stakeholders
+> Goal: Validate With Stakeholders
 
 ตรวจสอบ priority กับ stakeholders
 

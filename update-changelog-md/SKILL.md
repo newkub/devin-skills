@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - git-commit
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Generate Changelog
+> Goal: Generate Changelog
 
 สร้าง changelog จาก commits ด้วย Bun Shell และ format เป็น table (2 columns, 10 commits ล่าสุด, no grouping, no emoji)
 
@@ -30,6 +34,7 @@ triggers:
 2. ตรวจสอบ output จาก command
 
 ### 2. Review Changelog
+> Goal: Review Changelog
 
 ตรวจสอบ changelog ที่สร้าง
 
@@ -39,6 +44,7 @@ triggers:
 4. ตรวจสอบ dates ถูกต้อง
 
 ### 3. Commit Changelog
+> Goal: Commit Changelog
 
 Commit changelog ที่สร้าง
 

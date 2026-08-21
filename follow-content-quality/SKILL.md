@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - dont-over-engineer
+  - simplify
+  - report
 ---
 
 ## Goal
@@ -24,8 +29,7 @@ triggers:
 
 ### 1. Simplify And Remove Redundancy
 
-ทำเนื้อหาให้กระชับ ลบความซ้ำซ้อน และรวมส่วนที่เหมือนกัน
-
+> Goal: ทำเนื้อหาให้กระชับ ลบความซ้ำซ้อน และรวมส่วนที่เหมือนกัน
 > Goal: เนื้อหากระชับ ไม่ซ้ำซ้อน เก็บ context ครบ
 
 1. ทำ `/simplify` เพื่อลดความซับซ้อนโดยไม่สูญเสีย context — ลบ sections ที่ไม่จำเป็น รวม sections ที่คล้ายกัน
@@ -34,8 +38,7 @@ triggers:
 
 ### 2. Make Content Explicit
 
-เขียน content ให้ชัดเจน explicit มากกว่า implicit
-
+> Goal: เขียน content ให้ชัดเจน explicit มากกว่า implicit
 > Goal: ทุกประโยคตีความได้ทางเดียว ไม่กำกวม
 
 1. ตรวจสอบ active voice, ระบุ subject/object ชัดเจน, หลีกเลี่ยงคำกำกวม (should, could, might) — เปลี่ยนเป็นคำเฉพาะเจาะจง
@@ -45,8 +48,7 @@ triggers:
 
 ### 3. Improve Content Dimensions
 
-ปรับปรุง content ครบทุกมิติ
-
+> Goal: ปรับปรุง content ครบทุกมิติ
 > Goal: ครอบคลุม readability, completeness, correctness, accessibility, maintainability, relevance, actionability
 
 1. ตรวจสอบ Readability, Completeness, Correctness — explanations ชัดเจน/formatting เหมาะสม, รวม use cases/examples/edge cases, ตรวจสอบ structure/flow/assumptions
@@ -57,8 +59,7 @@ triggers:
 
 ### 4. Validate Structure And Format
 
-ตรวจสอบโครงสร้างและรูปแบบให้สม่ำเสมอ
-
+> Goal: ตรวจสอบโครงสร้างและรูปแบบให้สม่ำเสมอ
 > Goal: โครงสร้างสม่ำเสมอ hierarchy ชัดเจน format ถูกต้อง
 
 1. ตรวจสอบ spacing/indentation/headings สม่ำเสมอ, หัวขอ่ม Title Case ภาษาอังกฤษ รายการภาษาไทย, grouping และ hierarchy logical

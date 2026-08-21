@@ -32,8 +32,7 @@ related:
 
 ### 1. Verify Devin Structure
 
-ตรวจสอบว่า `.devin` structure มีอยู่แล้ว
-
+> Goal: ตรวจสอบว่า `.devin` structure มีอยู่แล้ว
 > Goal: ยืนยันว่า .devin/rules/ พร้อม subdirectories ครบถ้วน
 
 1. ตรวจสอบว่า `.devin/rules/` directory ที่ root มีอยู่พร้อม subdirectories: `always-on/`, `model_decision/`, `glob/`
@@ -43,8 +42,7 @@ related:
 
 ### 2. Analyze Project
 
-วิเคราะห์ project เพื่อระบุ rules ที่ต้องอัพเดท
-
+> Goal: วิเคราะห์ project เพื่อระบุ rules ที่ต้องอัพเดท
 > Goal: รู้ tools, domains, และ file patterns ที่ต้องมี rules
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ codebase, tech stack, และ patterns
@@ -55,8 +53,7 @@ related:
 
 ### 3. Update Always-On Rules
 
-อัพเดท rules ใน `.devin/rules/always-on/` โดยจัดกลุ่มเป็น 3 subdirectories: `libs/`, `code-quality/`, `architecture/`
-
+> Goal: อัพเดท rules ใน `.devin/rules/always-on/` โดยจัดกลุ่มเป็น 3 subdirectories: `libs/`, `code-quality/`, `architecture/`
 > Goal: Always-on rules ครอบคลุม tools ทั้งหมด จัดกลุ่มเป็น libs, code-quality, architecture
 
 1. สร้าง subdirectories ใน `.devin/rules/always-on/`: `libs/`, `code-quality/`, `architecture/`
@@ -83,8 +80,7 @@ related:
 
 ### 4. Check Library Release Changelogs
 
-ตรวจสอบ release changelogs ของ dependencies ที่มีการเปลี่ยนแปลง
-
+> Goal: ตรวจสอบ release changelogs ของ dependencies ที่มีการเปลี่ยนแปลง
 > Goal: รู้ breaking changes, features, และ fixes ของ libraries ก่อนเขียน rules
 
 1. ระบุ dependencies ที่มี version เปลี่ยนแปลงหรือเพิ่มใหม่จาก `package.json`
@@ -94,8 +90,7 @@ related:
 
 ### 5. Update Model Decision Rules
 
-อัพเดท rules ใน `.devin/rules/model_decision/` สำหรับ domain patterns
-
+> Goal: อัพเดท rules ใน `.devin/rules/model_decision/` สำหรับ domain patterns
 > Goal: Model decision rules ครอบคลุม domain patterns ที่มีใน project
 
 1. ระบุ domain patterns ที่ต้องมี model decision rules จาก project structure และ codebase analysis
@@ -107,8 +102,7 @@ related:
 
 ### 6. Update Glob Rules
 
-อัพเดท rules ใน `.devin/rules/glob/` สำหรับ file patterns
-
+> Goal: อัพเดท rules ใน `.devin/rules/glob/` สำหรับ file patterns
 > Goal: Glob rules ครอบคลุม file patterns ที่สำคัญใน project
 
 1. ระบุ file patterns ที่ต้องมี glob rules จาก project structure และ directory analysis
@@ -120,8 +114,7 @@ related:
 
 ### 7. Validate And Finalize
 
-ตรวจสอบและ finalize rules ทั้งหมด
-
+> Goal: ตรวจสอบและ finalize rules ทั้งหมด
 > Goal: Rules ทั้งหมดถูกต้อง สอดคล้องกับ dependencies ไม่ซ้ำซ้อน
 
 1. ตรวจสอบว่า rules สอดคล้องกับ dependencies ใน `package.json`

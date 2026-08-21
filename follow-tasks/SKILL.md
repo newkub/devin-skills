@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-infisical
+  - follow-monorepo
+  - use-bun-scripts
+  - use-scripts
+  - follow-config
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Check Prerequisites
 
-ตรวจสอบ project structure และ tools ก่อนเริ่มตั้งค่า scripts
-
+> Goal: ตรวจสอบ project structure และ tools ก่อนเริ่มตั้งค่า scripts
 > Goal: ทราบ project type, package manager, และ tools ที่ติดตั้งแล้ว
 
 1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
@@ -35,8 +42,7 @@ triggers:
 
 ### 2. Update Dependencies
 
-ตรวจสอบ package manager และ update dependencies ตาม ecosystem
-
+> Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
 > Goal: dependencies อัปเดตล่าสุดก่อนตั้งค่า scripts
 
 1. ตรวจสอบ package manager (`bun`, `npm`, `pnm`, `yarn`, `cargo`, `pip`, `go`)
@@ -47,8 +53,7 @@ triggers:
 
 ### 3. Select Template Level
 
-เลือกระดับ scripts ตามขนาดและความซับซ้อนของโปรเจกต์
-
+> Goal: เลือกระดับ scripts ตามขนาดและความซับซ้อนของโปรเจกต์
 > Goal: เลือกระดับที่เหมาะสม — Minimal (Default), Standard, หรือ Complete
 
 1. ประเมินขนาดโปรเจกต์และความต้องการ testing/deployment
@@ -57,8 +62,7 @@ triggers:
 
 ### 4. Apply Scripts
 
-ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
-
+> Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
 > Goal: ตั้งค่า scripts ในทุก workspace ให้สอดคล้องกับ tech stack และ template level ที่เลือก
 
 1. ทำ `/use-scripts` ตาม tech stack จากตาราง Rules — Single workspace: แก้ไข `package.json` หรือ `Cargo.toml` โดยตรง
@@ -68,8 +72,7 @@ triggers:
 
 ### 5. Setup Config And Secrets
 
-ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
-
+> Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
 > Goal: config files ครบและ secrets injection พร้อมใช้งาน
 
 1. `/follow-config` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
@@ -80,8 +83,7 @@ triggers:
 
 ### 6. Validate
 
-ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
-
+> Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
 > Goal: scripts ทำงานได้จริง `verify` และ `ci` pipeline ถูกต้อง
 
 1. ตรวจสอบ scripts syntax ใน `package.json` หรือ `Cargo.toml` — ถ้า syntax invalid → fix และ recheck (max 3 → stop)

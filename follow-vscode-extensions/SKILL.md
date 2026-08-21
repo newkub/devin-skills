@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-bun
+  - follow-nuxt
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Setup
 
-ติดตั้ง dependency และสร้างโครงสร้างไฟล์
-
+> Goal: ติดตั้ง dependency และสร้างโครงสร้างไฟล์
 > Goal: มี dependency และโครงสร้างไฟล์ที่ถูกต้อง
 
 1. ติดตั้ง: `bun add -d reactive-vscode`
@@ -45,8 +48,7 @@ packages/
 
 ### 2. Configure Package
 
-เพิ่ม scripts สำหรับ package และ publish
-
+> Goal: เพิ่ม scripts สำหรับ package และ publish
 > Goal: package.json มี scripts ครบ
 
 1. เพิ่ม `"package": "vsce package"` ใน scripts
@@ -54,8 +56,7 @@ packages/
 
 ### 3. Follow Related
 
-ทำตาม workflows ที่เกี่ยวข้อง
-
+> Goal: ทำตาม workflows ที่เกี่ยวข้อง
 > Goal: ใช้งานร่วมกับ workflows อื่นได้
 
 1. ทำ `/follow-bun` สำหรับ runtime

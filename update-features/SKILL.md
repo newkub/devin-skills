@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - idea-features
+  - use-scripts
+  - update-docs
+  - analyze-project
+  - report-table
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Analyze Project Structure
 
-วิเคราะห์ project structure เพื่อระบุ workspace และ tech stack
-
+> Goal: วิเคราะห์ project structure เพื่อระบุ workspace และ tech stack
 > Goal: ระบุ workspace ที่ต้องวิเคราะห์และบันทึก tech stack
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ project structure
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Identify Features
 
-วิเคราะห์ routes, modules, database schemas, และ API endpoints เพื่อระบุ features ทั้งหมด
-
+> Goal: วิเคราะห์ routes, modules, database schemas, และ API endpoints เพื่อระบุ features ทั้งหมด
 > Goal: ระบุ features จากทุก source และจัดกลุ่มตาม domain
 
 1. อ่าน routes directory เพื่อระบุ pages และ features ที่ผู้ใช้เห็น
@@ -47,8 +52,7 @@ triggers:
 
 ### 3. Generate Documentation
 
-สร้าง documentation สำหรับ features ที่วิเคราะห์ได้โดย delegate ทั้งหมดให้ `/update-docs`
-
+> Goal: สร้าง documentation สำหรับ features ที่วิเคราะห์ได้โดย delegate ทั้งหมดให้ `/update-docs`
 > Goal: Documentation สำหรับ features ใน docs/ โดยไม่เขียนซ้ำในแต่ละ workspace
 
 1. ทำ `/update-docs` เพื่อสร้าง documentation สำหรับ features ที่วิเคราะห์ได้

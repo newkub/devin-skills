@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-slidev
+  - run-dev
+  - create-slide-in-newkub-slides
 ---
 
 ## Goal
@@ -24,8 +30,7 @@ triggers:
 
 ### 1. Define Project
 
-กำหนดชื่อและตำแหน่ง project
-
+> Goal: กำหนดชื่อและตำแหน่ง project
 > Goal: รู้ชื่อและตำแหน่งที่จะสร้าง
 
 1. รับชื่อ project และตำแหน่งที่ต้องการสร้างจากผู้ใช้
@@ -34,8 +39,7 @@ triggers:
 
 ### 2. Scaffold Project
 
-สร้าง Slidev project ด้วย CLI
-
+> Goal: สร้าง Slidev project ด้วย CLI
 > Goal: project structure สร้างสำเร็จพร้อม dependencies
 
 1. รัน `bun create slidev@latest {project-name}` ที่ตำแหน่งที่กำหนด
@@ -45,8 +49,7 @@ triggers:
 
 ### 3. Configure Headmatter
 
-ตั้งค่า headmatter ใน `slides.md`
-
+> Goal: ตั้งค่า headmatter ใน `slides.md`
 > Goal: headmatter มีค่าที่เหมาะสมสำหรับ presentation
 
 1. ตั้ง `theme` ตาม template ที่เลือก
@@ -63,8 +66,7 @@ triggers:
 
 ### 4. Write Slide Content
 
-เขียนเนื้อหา slides ตามต้องการ
-
+> Goal: เขียนเนื้อหา slides ตามต้องการ
 > Goal: slides มีโครงสร้างชัดเจน เริ่มต้นด้วย cover จบด้วย end
 
 1. สร้าง title slide ด้วย `layout: cover`

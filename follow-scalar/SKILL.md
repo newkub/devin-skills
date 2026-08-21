@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Scalar API Designer สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร GraphQL APIs แบบครบวงจร
 
-
 ## Scope
 
 ใช้สำหรับการทำงานกับ Scalar ทุกประเภท เช่น ออกแบบ GraphQL APIs, ทดสอบ API, จัดทำเอกสาร API, สร้าง API reference, และทำงานร่วมกับทีม
-
 
 ## Execute
 
@@ -41,7 +41,6 @@ triggers:
 - ตรวจสอบ schema validity
 - deploy documentation
 - monitor API usage
-
 
 ## Rules
 
@@ -65,7 +64,6 @@ triggers:
 - ใช้ branching strategy ที่เหมาะสม
 - สื่อสาร changes อย่างชัดเจน
 - ใช้ permissions อย่างเหมาะสม
-
 
 ## Expected Outcome
 

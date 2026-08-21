@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-ast-grep
+  - run-test
+  - git-commit
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 ## Execute
 
 ### 1. Assessment And Planning
+> Goal: Assessment And Planning
 
 1. ระบุสิ่งที่ต้อง migration (dependencies, frameworks, databases)
 2. วิเคราะห์ impact และ dependencies ที่เกี่ยวข้อง
@@ -32,6 +38,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. สร้าง migration plan พร้อม timeline และ rollback strategy
 
 ### 2. Preparation
+> Goal: Preparation
 
 1. สร้าง feature branch สำหรับ migration
 2. ติดตั้ง dependencies ใหม่หรือ setup environment ใหม่
@@ -41,6 +48,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. ตั้งค่า automated monitoring และ alerts
 
 ### 3. Code Transformation
+> Goal: Code Transformation
 
 1. ใช้ `/follow-ast-grep` หรือ `/follow-ast-grep` สำหรับ automated code changes
 2. อัพเดท imports และ API calls
@@ -48,6 +56,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 4. อัพเดท configuration files
 
 ### 4. Testing
+> Goal: Testing
 
 1. รัน unit tests สำหรับ changed code
 2. รัน integration tests สำหรับ affected flows
@@ -58,6 +67,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 7. ทดสอบ rollback plan บน staging environment
 
 ### 5. Deployment
+> Goal: Deployment
 
 1. ทำ deployment แบบ phased หรือ canary
 2. ใช้ blue-green deployment สำหรับ zero-downtime
@@ -67,6 +77,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. ตรวจสอบว่า migration สำเร็จ
 
 ### 6. Cleanup
+> Goal: Cleanup
 
 1. ลบ dependencies ที่ไม่ได้ใช้แล้ว
 2. อัพเดท documentation
@@ -74,6 +85,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 4. สรุป lessons learned
 
 ### 7. Commit Changes
+> Goal: Commit Changes
 
 1. ทำตาม `/git-commit` เพื่อ commit migration changes
 2. ใช้ conventional commit format (เช่น `feat(migration): migrate from X to Y`)

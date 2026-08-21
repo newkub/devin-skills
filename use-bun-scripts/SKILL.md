@@ -7,12 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-write-devin-skills
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,13 +25,13 @@ Use `use-bun-scripts` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Prepare
+> Goal: Prepare
 
 1. ทำตาม `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 
 ### 2. Create Script
+> Goal: Create Script
 
 1. สร้างไฟล์ `.ts` ใน `scripts/temp/` ที่ root workspace เท่านั้น
 2. ไม่ต้องสร้าง scripts ในแต่ละ workspace
@@ -38,12 +39,11 @@ Use `use-bun-scripts` for the specific tasks and workflows it covers
 4. ใช้ Bun native APIs และ CDN imports
 
 ### 3. Execute and Cleanup
+> Goal: Execute and Cleanup
 
 1. รัน script ด้วย `bun run <script>.ts`
 2. ลบ scripts จาก `scripts/temp/` หลังใช้งาน
 3. ลบ scripts ที่สร้างด้วย `/follow-write-devin-skills` หลังใช้งาน
-
-## Rules
 
 ## Rules
 
@@ -132,8 +132,6 @@ await script.run()
 - ใช้ ESM format
 - เขียนแบบ composable: `createScript()` return state + actions
 - ใช้ CDN imports สำหรับ external dependencies
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -10,6 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - check-reference
+  - read-related-skills
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Read Available Skills
+> Goal: Read Available Skills
 
 อ่าน skills ที่มีอยู่ทั้งหมด
 
@@ -32,6 +36,7 @@ triggers:
 - ตรวจสอบว่า skills มีอยู่จริง
 
 ### 2. Check References
+> Goal: Check References
 
 ตรวจสอบ references ก่อนเริ่มใช้ skills
 
@@ -40,6 +45,7 @@ triggers:
 - ตรวจสอบ dependencies ของ skills มีอยู่จริง
 
 ### 3. Use Skills
+> Goal: Use Skills
 
 ใช้ skills ที่เลือกตามที่เหมาะสม
 

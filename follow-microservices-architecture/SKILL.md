@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-architecture
+  - follow-event-driven
+  - follow-orm
+  - restructure
+  - follow-validation
 ---
 
 ## Goal
@@ -24,8 +32,7 @@ triggers:
 
 ### 1. Analyze Domain Boundaries
 
-วิเคราะห์ domain boundaries และ data ownership
-
+> Goal: วิเคราะห์ domain boundaries และ data ownership
 > Goal: รู้ service boundaries และ data ownership ชัดเจน
 
 1. ระบุ business capabilities และ bounded contexts
@@ -35,8 +42,7 @@ triggers:
 
 ### 2. Design Service Boundaries
 
-ออกแบบ service boundaries และ contracts
-
+> Goal: ออกแบบ service boundaries และ contracts
 > Goal: มี service boundaries และ API contracts ชัดเจน
 
 1. กำหนด service boundaries ชัดเจน
@@ -46,8 +52,7 @@ triggers:
 
 ### 3. Implement API Gateway
 
-สร้าง API Gateway สำหรับ routing และ cross-cutting concerns
-
+> Goal: สร้าง API Gateway สำหรับ routing และ cross-cutting concerns
 > Goal: มี API Gateway ที่จัดการ routing, auth และ rate limiting
 
 1. สร้าง API Gateway สำหรับ routing
@@ -57,8 +62,7 @@ triggers:
 
 ### 4. Implement Service Discovery
 
-ตั้งค่า service discovery และ health checks
-
+> Goal: ตั้งค่า service discovery และ health checks
 > Goal: services ค้นพบกันได้อัตโนมัติและมี health monitoring
 
 1. ติดตั้ง service registry (Consul, Eureka, etcd)
@@ -68,8 +72,7 @@ triggers:
 
 ### 5. Implement Communication
 
-เลือกและตั้งค่า communication patterns ระหว่าง services
-
+> Goal: เลือกและตั้งค่า communication patterns ระหว่าง services
 > Goal: services สื่อสารกันได้อย่าง reliable และ fault-tolerant
 
 1. เลือก communication pattern: REST, gRPC, message queues
@@ -79,8 +82,7 @@ triggers:
 
 ### 6. Implement Data Isolation
 
-กำหนด data isolation strategy สำหรับแต่ละ service
-
+> Goal: กำหนด data isolation strategy สำหรับแต่ละ service
 > Goal: แต่ละ service มี database อิสระและมี consistency strategy ชัดเจน
 
 1. กำหนด database per service — ทำ `/follow-orm` สำหรับ data access patterns
@@ -90,8 +92,7 @@ triggers:
 
 ### 7. Validate Architecture
 
-ตรวจสอบ architecture หลัง implement
-
+> Goal: ตรวจสอบ architecture หลัง implement
 > Goal: ยืนยัน service independence, fault tolerance และ scalability
 
 1. ตรวจสอบ service independence

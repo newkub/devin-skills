@@ -10,6 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,28 +24,33 @@ triggers:
 ## Execute
 
 ### 1. Deinit Submodule
+> Goal: Deinit Submodule
 
 1. รัน `git submodule deinit -f <submodule-path>` เพื่อลบ submodule จาก configuration
 2. ตรวจสอบว่า submodule ถูก deinit สำเร็จ
 
 ### 2. Remove From Gitmodules
+> Goal: Remove From Gitmodules
 
 1. ลบ entry ของ submodule ออกจาก `.gitmodules`
 2. ลบ entry ของ submodule ออกจาก `.git/config`
 3. ถ้าไม่มี submodule เหลือ ลบไฟล์ `.gitmodules` ออกเลย
 
 ### 3. Remove From Working Tree
+> Goal: Remove From Working Tree
 
 1. รัน `git rm -f <submodule-path>` เพื่อลบ submodule จาก working tree
 2. ตรวจสอบว่า submodule folder ถูกลบแล้ว
 
 ### 4. Clean Git Modules
+> Goal: Clean Git Modules
 
 1. ลบ submodule ออกจาก `.git/modules/<submodule-path>`
 2. ใช้ `Remove-Item .git/modules/<submodule-path> -Recurse -Force` บน Windows
 3. ใช้ `rm -rf .git/modules/<submodule-path>` บน macOS/Linux
 
 ### 5. Garbage Collect
+> Goal: Garbage Collect
 
 1. รัน `git gc` เพื่อ cleanup orphaned objects
 2. ตรวจสอบว่าไม่มี references เหลืออยู่

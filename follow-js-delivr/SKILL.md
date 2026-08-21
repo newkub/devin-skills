@@ -1,6 +1,6 @@
 ---
 name: follow-js-delivr
-description: Open Source CDN for bun packages and GitHub repositories with multi-CDN infrastructure, smart...
+description: ใช้ jsDelivr CDN สำหรับโหลด bun packages และ GitHub repositories บน web pages
 allowed-tools:
   - read
   - edit
@@ -10,17 +10,16 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ jsDelivr CDN สำหรับโหลด bun packages และ GitHub repositories บน web pages
 
-
 ## Scope
 
 ใช้สำหรับการโหลด JavaScript libraries, CSS frameworks, และ static assets บน web pages ด้วย multi-CDN infrastructure
-
 
 ## Execute
 
@@ -33,7 +32,6 @@ triggers:
 - ใช้ SRI hashes สำหรับ security
 - Monitor CDN performance
 
-
 ## Rules
 
 - ใช้ URL format: `https://cdn.jsdelivr.net/npm/package@version`
@@ -42,7 +40,6 @@ triggers:
 - Test ใน production ก่อน deploy
 - ใช้ SRI hashes สำหรับ security
 - Monitor CDN performance
-
 
 ## Expected Outcome
 

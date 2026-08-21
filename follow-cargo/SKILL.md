@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-verify
+  - analyze-project
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +26,9 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze Project
+
+> Goal: Analyze Project
 
 1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
@@ -34,6 +36,8 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 4. ระบุว่าเป็น single crate หรือ workspace
 
 ### 2. Configure Cargo.toml Lint Rules
+
+> Goal: Configure Cargo.toml Lint Rules
 
 1. เพิ่ม lint attributes ใน `[lints]` section:
    ```toml
@@ -67,6 +71,8 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 
 ### 3. Configure Workspace Lints
 
+> Goal: Configure Workspace Lints
+
 1. ตั้งค่า workspace-level lint rules ใน `Cargo.toml` หลัก
 2. ใช้ `[workspace.lints]` สำหรับ shared lint rules
 3. แต่ละ crate สามารถ inherit ด้วย:
@@ -77,6 +83,7 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 
 ### 4. Setup Pre-commit Hooks
 
+> Goal: Setup Pre-commit Hooks
 1. ติดตั้ง `lefthook` หรือ `pre-commit`
 2. เพิ่ม hooks สำหรับ:
    - `cargo check --all-targets`
@@ -97,12 +104,11 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 
 ### 5. Verify Configuration
 
+> Goal: Verify Configuration
 1. รัน `cargo check --all-targets`
 2. รัน `cargo clippy --all-targets -- -D warnings`
 3. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
 4. รัน `/run-verify` เพื่อยืนยันว่าทุกอย่างทำงานได้
-
-## Rules
 
 ## Rules
 
@@ -126,8 +132,6 @@ Use `follow-cargo` for the specific tasks and workflows it covers
 - ใช้ `[workspace.lints]` สำหรับ shared lint rules
 - แต่ละ crate สามารถ inherit ด้วย `workspace = true`
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
-
-## Expected Outcome
 
 ## Expected Outcome
 

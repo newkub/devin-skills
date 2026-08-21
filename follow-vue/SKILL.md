@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Setup And Configuration
 
-ตั้งค่า Vue 3 project ด้วย dependencies และ tools ที่จำเป็น
-
+> Goal: ตั้งค่า Vue 3 project ด้วย dependencies และ tools ที่จำเป็น
 > Goal: มี project structure พร้อม TypeScript, state management, routing, และ styling
 
 1. ติดตั้ง Vue 3.5+ ด้วย Vite หรือ Nuxt 4
@@ -38,8 +39,7 @@ triggers:
 
 ### 2. Component Development
 
-เขียน Vue components ตาม Composition API standards
-
+> Goal: เขียน Vue components ตาม Composition API standards
 > Goal: Components type-safe, reusable และ maintainable
 
 1. ใช้ Single-File Components (SFC) ด้วย `<script setup lang="ts">`
@@ -55,8 +55,7 @@ triggers:
 
 ### 3. Composables And State
 
-จัดระเบียบ logic และ state ด้วย composables และ Pinia
-
+> Goal: จัดระเบียบ logic และ state ด้วย composables และ Pinia
 > Goal: แยก concerns และ reusable logic ชัดเจน
 
 1. แยก logic ออกจาก components ไปที่ composables
@@ -70,8 +69,7 @@ triggers:
 
 ### 4. Reactivity Best Practices
 
-ใช้ Vue reactivity อย่างมีประสิทธิภาพ
-
+> Goal: ใช้ Vue reactivity อย่างมีประสิทธิภาพ
 > Goal: Performance และ memory usage ดีขึ้นด้วย reactivity ที่ถูกต้อง
 
 1. ใช้ `shallowRef()` สำหรับ large immutable data structures (ประหยัด memory)
@@ -84,8 +82,7 @@ triggers:
 
 ### 5. Vapor Mode (Vue 3.6+)
 
-พิจารณา Vapor Mode สำหรับ performance ทีดีขึ้น
-
+> Goal: พิจารณา Vapor Mode สำหรับ performance ทีดีขึ้น
 > Goal: ใช้ Vapor Mode ได้ถูกต้องตาม scenarios
 
 1. ใช้ `vapor` attribute ใน `<script setup>` สำหรับ opt-in Vapor Mode
@@ -97,8 +94,7 @@ triggers:
 
 ### 6. Styling
 
-กำหนด component styles ด้วย design system
-
+> Goal: กำหนด component styles ด้วย design system
 > Goal: Styling consistent, scoped และไม่ hard-code
 
 1. ใช้ UnoCSS theme ที่กำหนดไว้
@@ -108,8 +104,7 @@ triggers:
 
 ### 7. Project Organization
 
-จัดระเบียบ project structure และ conventions
-
+> Goal: จัดระเบียบ project structure และ conventions
 > Goal: Project maintainable สำหรับทีมและ scale ได้
 
 1. components ที่ใช้ซ้ำกันให้ refactor ไปที่ `components/ui/`

@@ -16,9 +16,6 @@ related:
   - run-audit
   - check-unused-deps
   - run-install
-  - update-dependencies-latest
-  - delete
-  - suggest-next-action
 ---
 
 ## Goal
@@ -33,8 +30,7 @@ related:
 
 ### 1. Gather Data
 
-รวบรวม dependencies และตรวจสอบสถานะทั้งหมด
-
+> Goal: รวบรวม dependencies และตรวจสอบสถานะทั้งหมด
 > Goal: มี inventory และ status ครบสำหรับการวิเคราะห์
 
 1. ทำ `/list-dependencies` เพื่อดู dependencies ทั้งหมด แยกตามประเภท: `dependencies`, `devDependencies`, `peerDependencies`
@@ -45,8 +41,7 @@ related:
 
 ### 2. Analyze
 
-วิเคราะห์ข้อมูลที่รวบรวม
-
+> Goal: วิเคราะห์ข้อมูลที่รวบรวม
 > Goal: เข้าใจ patterns และ priority ของ issues
 
 1. จัดกลุ่ม dependencies ตามสถานะ: latest, outdated, unused, vulnerable, license issue
@@ -56,8 +51,7 @@ related:
 
 ### 3. Format
 
-จัดรูปแบบรายงานให้อ่านง่าย
-
+> Goal: จัดรูปแบบรายงานให้อ่านง่าย
 > Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
@@ -67,8 +61,7 @@ related:
 
 ### 4. Present
 
-นำเสนอ report พร้อม insights และ recommendations
-
+> Goal: นำเสนอ report พร้อม insights และ recommendations
 > Goal: ผู้อ่านรู้ว่าต้องทำอะไรต่อ
 
 1. สรุปจำนวน dependencies ทั้งหมดแยกตามประเภท
@@ -79,7 +72,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

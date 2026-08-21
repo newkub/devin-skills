@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-reference
+  - follow-devin-skills-md
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Plan Plugin Scope
 
-วางแผนว่า plugin ทำอะไร
-
+> Goal: วางแผนว่า plugin ทำอะไร
 > Goal: plugin มี purpose ชัดเจน และไม่ซ้ำซ้อนกับ existing plugins
 
 1. ระบุ problem ที่ plugin แก้หรือช่องว่างที่เติม
@@ -36,8 +39,7 @@ triggers:
 
 ### 2. Create Plugin Directory
 
-สร้างโครงสร้าง plugin
-
+> Goal: สร้างโครงสร้าง plugin
 > Goal: plugin structure ถูกต้องตาม Devin CLI spec
 
 1. สร้าง root directory `<plugin-name>/`
@@ -51,8 +53,7 @@ triggers:
 
 ### 3. Write Plugin Manifest
 
-เขียน `.devin-plugin/plugin.json`
-
+> Goal: เขียน `.devin-plugin/plugin.json`
 > Goal: manifest valid และครบถ้วน
 
 1. ใส่ `name` ที่ unique (จำเป็น) เป็น namespace สำหรับ `/<name>:<skill>`
@@ -66,8 +67,7 @@ triggers:
 
 ### 4. Create Skills
 
-สร้าง skills ภายใน plugin
-
+> Goal: สร้าง skills ภายใน plugin
 > Goal: skills ทำงานได้จริงและติดตั้งผ่าน plugin ได้
 
 1. ทำตาม `/follow-devin-skills-md` สำหรับแต่ละ skill
@@ -77,8 +77,7 @@ triggers:
 
 ### 5. Add Rules And Agents
 
-เพิ่ม rules และ custom subagents ถ้าจำเป็น
-
+> Goal: เพิ่ม rules และ custom subagents ถ้าจำเป็น
 > Goal: rules และ agents ถูกต้องตาม spec
 
 1. เขียน `AGENTS.md` เป็น always-on rule ถ้าต้องการ
@@ -88,8 +87,7 @@ triggers:
 
 ### 6. Add Hooks And MCP
 
-เพิ่ม lifecycle hooks และ MCP servers
-
+> Goal: เพิ่ม lifecycle hooks และ MCP servers
 > Goal: hooks และ MCP ประกาศถูกต้อง
 
 1. สร้าง `hooks.json` สำหรับ lifecycle hooks ถ้าจำเป็น
@@ -98,8 +96,7 @@ triggers:
 
 ### 7. Test Plugin Locally
 
-ทดสอบ plugin ก่อน publish
-
+> Goal: ทดสอบ plugin ก่อน publish
 > Goal: plugin ติดตั้งและทำงานได้
 
 1. รัน `devin plugins install ./<plugin-name>` จาก local path
@@ -110,8 +107,7 @@ triggers:
 
 ### 8. Publish And Manage
 
-publish plugin และจัดการ versions
-
+> Goal: publish plugin และจัดการ versions
 > Goal: plugin พร้อมใช้งานและ maintain ได้
 
 1. push plugin repository ไปยัง GitHub หรือ git host

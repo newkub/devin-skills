@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-unocss
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project
+> Goal: Setup Project
 
 1. สร้าง Astro 5 project ด้วย `bunx create-astro@latest`
 2. ใช้ `astro.config.mjs` สำหรับ configuration
@@ -32,6 +36,7 @@ triggers:
 6. ใช้ Vite 6+ เป็น build tool
 
 ### 2. Rendering Modes
+> Goal: Rendering Modes
 
 1. Astro เป็น static by default
 2. ใช้ `prerender = false` ในหน้าที่ต้องการ SSR
@@ -40,6 +45,7 @@ triggers:
 5. ใช้ Server Islands สำหรับ dynamic content บน static pages
 
 ### 3. Server Islands
+> Goal: Server Islands
 
 1. ใช้ `server:defer` directive สำหรับ components ที่ต้อง render บน server per-request
 2. ใช้ `slot="fallback"` สำหรับ loading content ระหว่างรอ
@@ -49,6 +55,7 @@ triggers:
 6. ใช้ server islands สำหรับ personalized content (cart, user info, live data)
 
 ### 4. Content Layer API
+> Goal: Content Layer API
 
 1. ใช้ Content Layer แทน Content Collections แบบเดิม
 2. กำหนด schema ด้วย Zod ใน `src/content.config.ts`
@@ -59,6 +66,7 @@ triggers:
 7. Live Content Loaders (experimental) สำหรับ request-time data
 
 ### 5. Astro Actions
+> Goal: Astro Actions
 
 1. ใช้ Astro Actions สำหรับ type-safe server functions
 2. กำหนด actions ใน `src/actions/`
@@ -67,6 +75,7 @@ triggers:
 5. ใช้ actions แทน manual API routes สำหรับ forms และ mutations
 
 ### 6. Islands Architecture
+> Goal: Islands Architecture
 
 1. ใช้ `client:load` สำหรับ hydrate ทันที
 2. ใช้ `client:idle` สำหรับ hydrate เมื่อ browser idle
@@ -76,24 +85,28 @@ triggers:
 6. ใช้ framework components (React, Vue, Svelte, Solid) เป็น islands
 
 ### 7. View Transitions
+> Goal: View Transitions
 
 1. ใช้ `<ViewTransitions />` ใน layout สำหรับ native View Transitions API
 2. ใช้ `transition:animate` สำหรับ animations
 3. ใช้ `transition:persist` สำหรับ persist state ระหว่าง navigations
 
 ### 8. Type-Safe Environment Variables
+> Goal: Type-Safe Environment Variables
 
 1. กำหนด schema ใน `astro.config.mjs` ด้วย `env.schema`
 2. ใช้ `import.meta.env` สำหรับ access variables (type-safe)
 3. ใช้ `getSecret()` สำหรับ server-only secrets
 
 ### 9. i18n
+> Goal: i18n
 
 1. ใช้ built-in i18n routing (stable ใน Astro 5)
 2. กำหนด locales ใน `astro.config.mjs`
 3. ใช้ fallback routing และ domain routing
 
 ### 10. Styling
+> Goal: Styling
 
 1. ทำ `/follow-unocss` สำหรับ styling
 2. ใช้ UnoCSS หรือ Tailwind CSS

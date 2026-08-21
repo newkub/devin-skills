@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-drizzle
+  - write-test
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Define Repository Interfaces
 
-กำหนด repository interfaces เพื่อ abstract data access
-
+> Goal: กำหนด repository interfaces เพื่อ abstract data access
 > Goal: Business logic ไม่รู้จัก ORM หรือ database implementation
 
 1. กำหนด `Repository<T>` interface โดยใช้ domain types ไม่ใช่ ORM types
@@ -37,8 +40,7 @@ triggers:
 
 ### 2. Implement Repository Adapters
 
-เขียน repository implementations โดยใช้ ORM
-
+> Goal: เขียน repository implementations โดยใช้ ORM
 > Goal: Database operations ถูก isolate ใน data access layer เท่านั้น
 
 1. ทำ `/follow-drizzle` ถ้า project ใช้ Drizzle (หรือ ORM ที่ตรวจพบ)
@@ -50,8 +52,7 @@ triggers:
 
 ### 3. Map Business Models To ORM Schemas
 
-แยก business models จาก ORM table definitions
-
+> Goal: แยก business models จาก ORM table definitions
 > Goal: Business models ไม่ผูกกับ database schema
 
 1. กำหนด ORM table definitions โดยใช้ ORM API
@@ -63,8 +64,7 @@ triggers:
 
 ### 4. Implement Query Specifications
 
-สร้าง query specification pattern สำหรับ complex queries
-
+> Goal: สร้าง query specification pattern สำหรับ complex queries
 > Goal: Business logic ส่ง query spec ได้โดยไม่รู้จัก ORM query builder
 
 1. กำหนด `QuerySpec<T>` type เป็น plain object
@@ -75,8 +75,7 @@ triggers:
 
 ### 5. Manage Transactions
 
-จัดการ transactions โดยใช้ unit of work pattern
-
+> Goal: จัดการ transactions โดยใช้ unit of work pattern
 > Goal: Transaction boundaries ชัดเจน ไม่กระทบ business logic
 
 1. กำหนด `UnitOfWork` interface สำหรับ multi-step operations
@@ -87,8 +86,7 @@ triggers:
 
 ### 6. Handle Migrations
 
-ทำ `/follow-drizzle` สำหรับ migration strategy
-
+> Goal: ทำ `/follow-drizzle` สำหรับ migration strategy
 > Goal: Migrations จัดการโดยไม่กระทบ business logic
 
 1. กำหนด migration strategy: `push` (dev) หรือ `generate + migrate` (production)
@@ -99,8 +97,7 @@ triggers:
 
 ### 7. Test Data Access
 
-ทำ `/write-test` เพื่อทดสอบ repository implementations
-
+> Goal: ทำ `/write-test` เพื่อทดสอบ repository implementations
 > Goal: Repository implementations มี test coverage ครบ
 
 1. Integration tests สำหรับ repository implementations กับ test database

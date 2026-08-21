@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Identify DP Problems
+> Goal: Identify DP Problems
 
 ระบุปัญหาที่เหมาะกับ dynamic programming
 
@@ -37,6 +36,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. ตรวจสอบว่ามี repeated calculations
 
 ### 2. Design Recurrence
+> Goal: Design Recurrence
 
 ออกแบบ recurrence relation
 
@@ -47,6 +47,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. วิเคราะห์ complexity
 
 ### 3. Choose Approach
+> Goal: Choose Approach
 
 เลือก approach ที่เหมาะสม
 
@@ -57,6 +58,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. เลือก data structure ที่เหมาะสม
 
 ### 4. Implement Memoization
+> Goal: Implement Memoization
 
 ใช้ memoization สำหรับ top-down approach
 
@@ -67,6 +69,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. จัดการ cache size
 
 ### 5. Implement Tabulation
+> Goal: Implement Tabulation
 
 ใช้ tabulation สำหรับ bottom-up approach
 
@@ -77,6 +80,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. return final result
 
 ### 6. Optimize
+> Goal: Optimize
 
 ปรับปรุง performance
 
@@ -87,6 +91,7 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 5. profile และ benchmark
 
 ### 7. Test
+> Goal: Test
 
 ทดสอบ solution
 
@@ -95,8 +100,6 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 3. Test with small inputs
 4. Test with large inputs
 5. Verify correctness
-
-## Rules
 
 ## Rules
 
@@ -169,8 +172,6 @@ Use `follow-dynamic-programming` for the specific tasks and workflows it covers
 - Test with small inputs
 - Test with large inputs
 - Verify correctness
-
-## Expected Outcome
 
 ## Expected Outcome
 

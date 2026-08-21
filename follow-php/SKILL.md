@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,9 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup
+
+> Goal: Setup
 
 1. ติดตั้ง PHP 8.2+ หรือ latest stable
 2. ติดตั้ง Composer สำหรับ dependency management
@@ -40,6 +39,7 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 2. Configuration
 
+> Goal: Configuration
 1. สร้าง `composer.json` ใน root ของ project
 2. ตั้งค่า PHP version และ project metadata
 3. ตั้งค่า autoload (PSR-4)
@@ -51,6 +51,7 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 3. Project Structure
 
+> Goal: Project Structure
 1. ใช้ PSR-4 autoloading standard
 2. สร้าง `src/` สำหรับ source code
 3. สร้าง `tests/` สำหรับ unit tests
@@ -59,6 +60,7 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 4. Code Standards
 
+> Goal: Code Standards
 1. ทำตาม PSR-12 coding style
 2. ใช้ type hints ทุก function (PHP 7.4+)
 3. ใช้ strict types: `declare(strict_types=1);`
@@ -69,6 +71,7 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 5. Dependency Management
 
+> Goal: Dependency Management
 1. ใช้ Composer สำหรับ dependency management
 2. ใช้ Dependency Injection Container
 3. ใช้ interfaces สำหรับ abstraction
@@ -77,6 +80,7 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 6. Testing
 
+> Goal: Testing
 1. ใช้ PHPUnit สำหรับ unit testing
 2. เขียน tests สำหรับ business logic
 3. ใช้ mocks สำหรับ external dependencies
@@ -85,13 +89,12 @@ Use `follow-php` for the specific tasks and workflows it covers
 
 ### 7. Quality Assurance
 
+> Goal: Quality Assurance
 1. รัน PHPStan: `vendor/bin/phpstan analyse src`
 2. รัน PHP-CS-Fixer: `vendor/bin/php-cs-fixer fix`
 3. รัน PHPUnit: `vendor/bin/phpunit`
 4. ใช้ Psalm สำหรับ additional static analysis
 5. ตั้งค่า CI/CD สำหรับ automated checks
-
-## Rules
 
 ## Rules
 
@@ -149,8 +152,6 @@ Use `follow-php` for the specific tasks and workflows it covers
 - ใช้ @throws, @param, @return tags
 - เขียน README.md สำหรับ project
 - เขียน CHANGELOG.md สำหรับ version history
-
-## Expected Outcome
 
 ## Expected Outcome
 

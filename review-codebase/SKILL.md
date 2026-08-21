@@ -45,8 +45,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 1. Prepare And Read Context
 
-ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
-
+> Goal: ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
@@ -57,8 +56,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 2. Run Review CLI And Capture Metrics
 
-รัน review CLI ทั้ง table และ JSON output เพื่อวิเคราะห์ metrics
-
+> Goal: รัน review CLI ทั้ง table และ JSON output เพื่อวิเคราะห์ metrics
 > Goal: ได้ review report ทีครอบคลุม พร้อม score, findings และ metrics
 
 1. ทำ `/run-review` สำหรับ table output
@@ -68,8 +66,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 3. Decide Update CLI From Metrics
 
-ตัดสินใจให้ `/update-review-cli` อัตโนมัติตาม metrics
-
+> Goal: ตัดสินใจให้ `/update-review-cli` อัตโนมัติตาม metrics
 > Goal: CLI ครอบคลุม categories ล่าสุดและให้ผลถูกต้อง
 
 ถ้า metrics ตรงเงื่อนไขใดข้างล่าง → ทำ `/update-review-cli` แล้วกลับไป Step 2 (ทำซ้ำไม่เกิน 3 รอบ):
@@ -87,8 +84,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 4. Run PR And Global Reviews
 
-รัน review เฉพาะทางถ้าจำเป็น
-
+> Goal: รัน review เฉพาะทางถ้าจำเป็น
 > Goal: ครอบคลุม PR และ global skills ถ้ามี
 
 1. ถ้ามี PR ที่กำลัง review → ทำ `/review-github-pr`
@@ -96,8 +92,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 5. Validate Findings
 
-ตรวจสอบและ validate issues ที่ review CLI พบ
-
+> Goal: ตรวจสอบและ validate issues ที่ review CLI พบ
 > Goal: Issues ถูก validate ครบถ้วนตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
@@ -107,8 +102,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ### 6. Report And Verify
 
-รายงานผลและวัด after review score
-
+> Goal: รายงานผลและวัด after review score
 > Goal: รายงาน before-after review score และสรุปผล
 
 1. ทำ `/run-review` เพื่อวัด after score

@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `follow-maintain-project` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Compliance
+> Goal: Compliance
 
 1. รักษา compliance ตามกฎหมาย
 2. ปกป้องความเป็นส่วนตัวของข้อมูล
@@ -37,6 +35,7 @@ Use `follow-maintain-project` for the specific tasks and workflows it covers
 7. ประเมินความเสี่ยงอย่างสม่ำเสมอ
 
 ### 2. Maintenance
+> Goal: Maintenance
 
 1. อัพเดท dependencies อย่างสม่ำเสมอ
 2. จัดการ technical debt
@@ -48,16 +47,12 @@ Use `follow-maintain-project` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 1. ปฏิบัติตาม compliance frameworks
 2. บันทึก compliance measures
 3. ใช้ automated dependency updates
 4. ให้ความสำคัญกับการลด technical debt
 5. วางแผน maintenance windows
 6. แจ้งให้ stakeholders ทราบ
-
-## Expected Outcome
 
 ## Expected Outcome
 

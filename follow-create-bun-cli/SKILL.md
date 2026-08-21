@@ -29,8 +29,7 @@ related:
 
 ### 1. Setup Project Structure
 
-สร้างโครงสร้างโปรเจกต์ตาม Clean Architecture
-
+> Goal: สร้างโครงสร้างโปรเจกต์ตาม Clean Architecture
 > Goal: แยก concerns ชัดเจนตาม Clean Architecture layers
 
 1. ทำ `/follow-clean-architecture` เพื่อสร้างโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
@@ -39,8 +38,7 @@ related:
 
 ### 2. Configure Build Tools
 
-ตั้งค่า build tools สำหรับ production
-
+> Goal: ตั้งค่า build tools สำหรับ production
 > Goal: Build ได้เร็ว มี type declarations ครบ
 
 1. ติดตั้ง `bunup` ด้วย `bun add -d bunup`
@@ -49,8 +47,7 @@ related:
 
 ### 3. Setup Scripts
 
-ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
-
+> Goal: ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
 > Goal: Scripts ครบ สอดคล้อง monorepo standards
 
 1. เพิ่ม `dev`: `bun run src/presentation/cli.ts`
@@ -61,8 +58,7 @@ related:
 
 ### 4. Development Workflow
 
-ใช้ development workflow ที่มีประสิทธิภาพ
-
+> Goal: ใช้ development workflow ที่มีประสิทธิภาพ
 > Goal: รันได้เร็ว แก้ไขได้ทันที
 
 1. ใช้ `bun run dev` สำหรับ run CLI โดยตรง

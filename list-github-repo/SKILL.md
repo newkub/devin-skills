@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
 
 ## Goal
@@ -23,17 +26,20 @@ triggers:
 ## Execute
 
 ### 1. Get Authenticated User
+> Goal: Get Authenticated User
 
 1. ทำ `mcp7_get_me` เพื่อรับ GitHub username ของผู้ใช้
 2. บันทึก username สำหรับใช้ใน step ถัดไป
 
 ### 2. List Repositories
+> Goal: List Repositories
 
 1. ทำ `mcp7_search_repositories` ด้วย `user:{username} sort:updated`
 2. ใช้ `perPage: 100` สำหรับดูได้มากครั้งละ
 3. ถ้ามีมากกว่า 100 ให้ใช้ `page` parameter เพื่อ pagination
 
 ### 3. Format Output
+> Goal: Format Output
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:

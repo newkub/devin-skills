@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,9 @@ Use `follow-release-npm` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Package Configuration
+
+> Goal: Setup Package Configuration
 
 1. ตรวจสอบ package.json มีข้อมูลครบถ้วน
 2. ตั้งค่า private เป็น false
@@ -35,10 +35,14 @@ Use `follow-release-npm` for the specific tasks and workflows it covers
 
 ### 2. Install Auto
 
+> Goal: Install Auto
+
 1. รัน `bun add -D auto`
 2. ตรวจสอบ installation สำเร็จ
 
 ### 3. Configure Auto
+
+> Goal: Configure Auto
 
 1. เพิ่ม config ใน package.json
 2. เพิ่ม script release: `auto shipit`
@@ -46,6 +50,8 @@ Use `follow-release-npm` for the specific tasks and workflows it covers
 4. เพิ่ม released plugin
 
 ### 4. Setup Authentication
+
+> Goal: Setup Authentication
 
 1. สร้าง NPM token จาก https://www.npmjs.com/settings/newkubise/tokens (Automation token)
 2. เพิ่ม NPM_TOKEN ใน GitHub secrets ด้วย:
@@ -60,12 +66,11 @@ Use `follow-release-npm` for the specific tasks and workflows it covers
 
 ### 5. Create GitHub Workflow
 
+> Goal: Create GitHub Workflow
 1. สร้างไฟล์ .github/workflows/release.yml
 2. เพิ่ม permissions: contents write, pull-requests write
 3. เพิ่ม environment variables: GH_TOKEN, NPM_TOKEN
 4. ตั้งค่า trigger บน push ไป main branch
-
-## Rules
 
 ## Rules
 
@@ -92,8 +97,6 @@ Use `follow-release-npm` for the specific tasks and workflows it covers
 - ต้องมี GH_TOKEN หรือ GITHUB_TOKEN
 - ต้องมี NODE_AUTH_TOKEN สำหรับ npm publish
 - ต้องมี permissions ใน workflow
-
-## Expected Outcome
 
 ## Expected Outcome
 

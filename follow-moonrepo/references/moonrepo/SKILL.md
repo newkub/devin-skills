@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน moonrepo สำหรับ monorepo management และ task running
 
-
 ## Scope
 
 ใช้สำหรับจัดการ monorepo อย่างมีประสิทธิภาพ, run tasks ข้าม multiple projects, ใช้ smart hashing และ caching, และตรวจสอบ affected projects
-
 
 ## Execute
 
@@ -37,7 +37,6 @@ triggers:
 - อ่าน `guide/structure.md` สำหรับ project structure
 - อ่าน `guide/troubleshooting.md` สำหรับปัญหาทั่วไป
 
-
 ## Rules
 
 - ใช้ smart hashing สำหรับ efficiency
@@ -46,7 +45,6 @@ triggers:
 - ใช้ backticks สำหรับ commands
 - ใช้ code blocks สำหรับ examples
 - ใช้ ansi markdown diagrams สำหรับ flow และ architecture
-
 
 ## Expected Outcome
 

@@ -24,8 +24,7 @@ triggers:
 
 ### 1. Check Bat Installation
 
-ตรวจสอบว่า `bat` ติดตั้งแล้ว
-
+> Goal: ตรวจสอบว่า `bat` ติดตั้งแล้ว
 > Goal: ใช้ `bat` ได้หรือ fallback ถูกต้อง
 
 1. รัน `where bat` หรือ `Get-Command bat`
@@ -34,8 +33,7 @@ triggers:
 
 ### 2. View Single File
 
-แสดงไฟล์เดียวด้วย `bat`
-
+> Goal: แสดงไฟล์เดียวด้วย `bat`
 > Goal: ดูเนื้อหาไฟล์แบบ highlight
 
 1. รัน `bat <file>`
@@ -45,8 +43,7 @@ triggers:
 
 ### 3. View Multiple Files
 
-แสดงหลายไฟล์พร้อมกัน
-
+> Goal: แสดงหลายไฟล์พร้อมกัน
 > Goal: เปรียบเทียบหรืออ่านหลายไฟล์ต่อเนื่อง
 
 1. รัน `bat <file1> <file2> <file3>`
@@ -56,8 +53,7 @@ triggers:
 
 ### 4. Adjust Output Style
 
-ปรับ style ของ output ให้เหมาะสม
-
+> Goal: ปรับ style ของ output ให้เหมาะสม
 > Goal: output อ่านง่ายและ copy ได้
 
 1. ใช้ `bat --plain <file>` เพื่อ output แบบไม่มี line numbers หรือ borders
@@ -67,8 +63,7 @@ triggers:
 
 ### 5. Handle Large And Binary Files
 
-จัดการไฟล์ขนาดใหญ่หรือ binary
-
+> Goal: จัดการไฟล์ขนาดใหญ่หรือ binary
 > Goal: ไม่ทำ terminal lag หรือแสดง binary garbage
 
 1. ตรวจสอบ file type ก่อนด้วย `file <file>` ถ้ามี
@@ -78,8 +73,7 @@ triggers:
 
 ### 6. Integration And Aliases
 
-เพิ่ม productivity ด้วย aliases
-
+> Goal: เพิ่ม productivity ด้วย aliases
 > Goal: ใช้งาน `bat` ได้เร็วขึ้น
 
 1. เพิ่ม alias `cat=bat` หรือ `catp=bat --plain` ตาม shell

@@ -24,8 +24,7 @@ triggers:
 
 ### 1. Detect Test Framework
 
-ตรวจสอบ unit test framework ที่ project ใช้
-
+> Goal: ตรวจสอบ unit test framework ที่ project ใช้
 > Goal: รู้ framework, config, และ test file patterns
 
 1. ตรวจสอบ `package.json` สำหรับ test dependencies (`vitest`, `jest`, `mocha`, `pytest`, `go test`)
@@ -35,8 +34,7 @@ triggers:
 
 ### 2. Run Unit Tests
 
-รัน unit tests ตาม framework
-
+> Goal: รัน unit tests ตาม framework
 > Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. รัน `bun run test:unit` หรือ `bun test` ถ้ามี script
@@ -47,8 +45,7 @@ triggers:
 
 ### 3. Review Test Results
 
-ตรวจสอบผลลัพธ์
-
+> Goal: ตรวจสอบผลลัพธ์
 > Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework

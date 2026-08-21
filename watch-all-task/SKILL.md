@@ -11,6 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - run-all-task
+  - implement-queue-md
 ---
 
 ## Goal
@@ -24,7 +27,6 @@ Use for workspaces with task queues or QUEUE.md that need continuous execution
 ## Execute
 
 ### 1. Read task queue
-
 > Goal: read task queue
 
 1. Read QUEUE.md or task list
@@ -32,7 +34,6 @@ Use for workspaces with task queues or QUEUE.md that need continuous execution
 1. Sort by priority
 
 ### 2. Watch for changes
-
 > Goal: watch for changes
 
 1. Watch task queue file with file watcher
@@ -40,7 +41,6 @@ Use for workspaces with task queues or QUEUE.md that need continuous execution
 1. Debounce rapid changes
 
 ### 3. Run pending tasks
-
 > Goal: run pending tasks
 
 1. Call /run-all-task or /implement-queue-md
@@ -48,7 +48,6 @@ Use for workspaces with task queues or QUEUE.md that need continuous execution
 1. Stop on error or ask user
 
 ### 4. Report
-
 > Goal: report
 
 1. Log completed and failed tasks

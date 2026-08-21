@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - suggest-next-action
+  - deep-research
+  - deep-thinking
+  - ask-me
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Pause And Define Decision
 
-หยุดและระบุสิ่งที่ต้องตัดสินใจ
-
+> Goal: หยุดและระบุสิ่งที่ต้องตัดสินใจ
 > Goal: รู้ว่าต้องพิจารณาอะไร
 
 1. ระบุ decision หรือ action ที่กำลังจะทำ
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Consider Perspectives
 
-พิจารณาจากหลายมุมมอง
-
+> Goal: พิจารณาจากหลายมุมมอง
 > Goal: ครอบคลุมผลกระทบทุกด้าน
 
 1. มุมมองผู้ใช้ — needs, UX, expectations
@@ -45,8 +50,7 @@ triggers:
 
 ### 3. Weigh Trade-Offs
 
-ชั่งน้ำหนัก trade-offs
-
+> Goal: ชั่งน้ำหนัก trade-offs
 > Goal: ตัดสินใจด้วยข้อมูลครบ
 
 1. ระบุทางเลือกที่เป็นไปได้อย่างน้อย 2 ทาง
@@ -56,8 +60,7 @@ triggers:
 
 ### 4. Surface Uncertainties
 
-ระบุความไม่แน่นอนและความเสี่ยง
-
+> Goal: ระบุความไม่แน่นอนและความเสี่ยง
 > Goal: ไม่ซ่อน unknowns
 
 1. ระบุ known unknowns และ unknown unknowns
@@ -67,8 +70,7 @@ triggers:
 
 ### 5. Reach Conclusion
 
-สรุปผลการครุ่นคิด
-
+> Goal: สรุปผลการครุ่นคิด
 > Goal: ได้ข้อสรุปชัดเจน
 
 1. เลือกแนวทางที่เหมาะสมที่สุดพร้อมเหตุผล

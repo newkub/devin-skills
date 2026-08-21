@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,7 +17,6 @@ related:
   - run-test
   - run-test-api
   - write-test
-  - use-scripts
 ---
 
 ## Goal
@@ -30,6 +30,7 @@ related:
 ## Execute
 
 ### 1. Check Prerequisites
+> Goal: Check Prerequisites
 
 - ตรวจสอบ `package.json` หรือ `Cargo.toml`
 - ตรวจสอบ testing framework ที่ใช้ตาม ecosystem
@@ -37,10 +38,12 @@ related:
 - ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
 
 ### 2. Select Test Strategy Level
+> Goal: Select Test Strategy Level
 
 เลือกระดับตาม Rules section 1
 
 ### 3. Setup Test Configurations
+> Goal: Setup Test Configurations
 
 - ทำ `/follow-vitest` สำหรับ framework testing
 - ทำ `/follow-playwright` สำหรับ E2E testing
@@ -48,6 +51,7 @@ related:
 - ตั้งค่า config files ตาม tech stack
 
 ### 4. Apply Test Scripts
+> Goal: Apply Test Scripts
 
 - ทำ `/use-scripts` ตาม tech stack จาก Rules section 3
 - เพิ่ม test scripts ใน `package.json` หรือ `Cargo.toml`
@@ -55,18 +59,21 @@ related:
 - Multiple workspaces: ทำ `/follow-monorepo` ก่อน
 
 ### 5. Setup Test Directories
+> Goal: Setup Test Directories
 
 - สร้าง directory structure ตาม Rules section 4
 - จัดระเบียบ test files ตาม conventions
 - ตั้งค่า test fixtures และ helpers
 
 ### 6. Write Tests
+> Goal: Write Tests
 
 - ทำ `/write-test` สำหรับเขียน unit tests และ coverage
 - ทำ `/run-test` สำหรับรัน tests ทุกประเภท (unit, integration, e2e, component)
 - ทำ `/run-test-api` สำหรับ API tests และ contract tests ถ้า project มี API
 
 ### 7. Validate
+> Goal: Validate
 
 - รัน test scripts ตามระดับที่เลือก
 - ตรวจสอบ coverage ตามเป้าหมาย

@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - deep-research
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Read Env Example
+> Goal: Read Env Example
 
 อ่านไฟล์ `.env.example`
 
@@ -31,6 +34,7 @@ triggers:
 3. แยก environment variables ออกมา
 
 ### 2. Identify External Services
+> Goal: Identify External Services
 
 ระบุ external services จาก environment variables
 
@@ -39,6 +43,7 @@ triggers:
 3. รวบรวมรายชื่อ services ที่ต้อง API keys
 
 ### 3. Deep Research API Key Pages
+> Goal: Deep Research API Key Pages
 
 ค้นหาหน้ากรอก API keys ของแต่ละ service ด้วย `/deep-research`
 
@@ -54,6 +59,7 @@ Service Mapping:
 - LINE Developers: https://developers.line.biz/console/ (LIFF tab)
 
 ### 4. Open Websites
+> Goal: Open Websites
 
 เปิด websites ของ external services
 

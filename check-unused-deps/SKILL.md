@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-knip
+  - check-unused-files
+  - resolve-errors
 ---
 
 ## Goal
@@ -24,8 +29,7 @@ triggers:
 
 ### 1. Detect Ecosystem
 
-ระบุ ecosystem และ package manager ที่ใช้
-
+> Goal: ระบุ ecosystem และ package manager ที่ใช้
 > Goal: รู้ ecosystem และ tool ที่จะใช้ตรวจสอบ
 
 1. ตรวจสอบ `package.json` → JavaScript/TypeScript ใช้ `knip`
@@ -36,8 +40,7 @@ triggers:
 
 ### 2. Run Dependency Analysis
 
-รัน tool ตรวจสอบ unused dependencies
-
+> Goal: รัน tool ตรวจสอบ unused dependencies
 > Goal: ได้รายการ unused dependencies จาก tool
 
 1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include dependencies`
@@ -48,8 +51,7 @@ triggers:
 
 ### 3. Verify Results
 
-ตรวจสอบผลลัพธ์เพื่อแยก false positives
-
+> Goal: ตรวจสอบผลลัพธ์เพื่อแยก false positives
 > Goal: รายการ unused dependencies ที่ยืนยันแล้ว
 
 1. ตรวจสอบ implicit usage — เช่น plugins, runtime config, framework conventions
@@ -60,8 +62,7 @@ triggers:
 
 ### 4. Fix Or Remove
 
-แก้ไขหรือลบ unused dependencies
-
+> Goal: แก้ไขหรือลบ unused dependencies
 > Goal: ไม่มี unused dependencies เหลือในโปรเจกต์
 
 1. ลบ dependency ออกจาก `package.json` หรือ manifest file

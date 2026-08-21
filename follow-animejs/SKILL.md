@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ Anime.js สร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่ายในโปรเจกต์
 
-
 ## Scope
 
 ใช้สำหรับสร้าง CSS/JS animations ด้วย Anime.js
-
 
 ## Execute
 
@@ -46,7 +46,6 @@ triggers:
 - อ่าน `references/api.md` สำหรับ API documentation
 - อ่าน `references/configuration.md` สำหรับ configuration reference
 
-
 ## Rules
 
 - ใช้ `bun add animejs` สำหรับ installation
@@ -60,7 +59,6 @@ triggers:
 - ให้ผู้ใช้ปิด animations ได้ด้วย `prefers-reduced-motion`
 - ใช้ animations เพื่อเสริม UX ไม่ใช่ distraction
 - ให้ feedback ชัดเจนเมื่อ animation เสร็จ
-
 
 ## Expected Outcome
 

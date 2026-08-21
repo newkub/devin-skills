@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 
 ## Execute
 
-## Execute
-
 ### 1. Use Encapsulation
+> Goal: Use Encapsulation
 
 ใช้ encapsulation เพื่อซ่อน implementation details
 
@@ -38,6 +36,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 6. ใช้ utility types: Pick, Omit, Readonly, NonNullable
 
 ### 2. Use Inheritance
+> Goal: Use Inheritance
 
 ใช้ inheritance สำหรับ code reuse และ hierarchy
 
@@ -50,6 +49,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 7. ใช้ type guards สำหรับ narrowing
 
 ### 3. Use Polymorphism
+> Goal: Use Polymorphism
 
 ใช้ polymorphism สำหรับ flexible behavior
 
@@ -61,6 +61,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 6. ใช้ Partial สำหรับ optional properties
 
 ### 4. Design Classes
+> Goal: Design Classes
 
 ออกแบบ classes ตาม OOP principles
 
@@ -72,6 +73,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 6. ใช้ static members สำหรับ class-level data
 
 ### 5. Manage State
+> Goal: Manage State
 
 จัดการ state ใน objects
 
@@ -83,6 +85,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 6. Avoid shared mutable state
 
 ### 6. Use Composition
+> Goal: Use Composition
 
 ใช้ composition เมื่อเหมาะสมกว่า inheritance
 
@@ -93,6 +96,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 5. หลีกเลี่ยง deep inheritance hierarchies
 
 ### 7. Type Safety
+> Goal: Type Safety
 
 ใช้ TypeScript เพื่อเพิ่มความปลอดภัยของ OOP
 
@@ -104,6 +108,7 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 6. Avoid any และ unknown
 
 ### 8. Testing
+> Goal: Testing
 
 เขียน tests สำหรับ OOP code
 
@@ -112,8 +117,6 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 3. Test inheritance hierarchies
 4. Test polymorphic behavior
 5. Use dependency injection สำหรับ testability
-
-## Rules
 
 ## Rules
 
@@ -193,8 +196,6 @@ Use `follow-object-oriented-programming` for the specific tasks and workflows it
 - ใช้ `instanceof`
 - ใช้ `discriminated unions`
 - Avoid `any/unknown`
-
-## Expected Outcome
 
 ## Expected Outcome
 

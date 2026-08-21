@@ -38,8 +38,7 @@ related:
 
 ### 1. Analyze Project
 
-วิเคราะห์ project structure, manifest และ build tool
-
+> Goal: วิเคราะห์ project structure, manifest และ build tool
 > Goal: รู้ว่าเป็น monorepo หรือ single repo และใช้ build tool อะไร
 
 1. ทำตาม `/check-monorepo` เพื่อตรวจสอบ monorepo
@@ -50,8 +49,7 @@ related:
 
 ### 2. Select Engine and Base Image
 
-เลือก container engine และ base image ที่เหมาะสม
-
+> Goal: เลือก container engine และ base image ที่เหมาะสม
 > Goal: engine และ base image ตรงกับ environment ที่ใช้
 
 1. ระบุ engine: `docker`, `podman`, `buildah` หรือ `nerdctl`
@@ -61,8 +59,7 @@ related:
 
 ### 3. Configure Multi-Stage Build
 
-ออกแบบ multi-stage build เพื่อแยก build environment กับ runtime
-
+> Goal: ออกแบบ multi-stage build เพื่อแยก build environment กับ runtime
 > Goal: image สุดท้ายมีเฉพาะ artifacts ที่จำเป็น
 
 1. สร้าง `builder` stage ด้วย full toolchain
@@ -74,8 +71,7 @@ related:
 
 ### 4. Optimize Build Context
 
-ลด build context ด้วย `.dockerignore` หรือ `.containerignore`
-
+> Goal: ลด build context ด้วย `.dockerignore` หรือ `.containerignore`
 > Goal: context มีเฉพาะไฟล์ที่ build ต้องการ
 
 1. ทำตาม `/follow-gitignore` เพื่อหา patterns ที่ควร ignore
@@ -86,8 +82,7 @@ related:
 
 ### 5. Create Containerfile
 
-เขียน `Dockerfile` หรือ `Containerfile` ตาม best practices
-
+> Goal: เขียน `Dockerfile` หรือ `Containerfile` ตาม best practices
 > Goal: Containerfile valid, cache friendly และ secure
 
 1. เรียงคำสั่งจาก least-frequent เปลี่ยน ไป frequent เพื่อ layer caching
@@ -101,8 +96,7 @@ related:
 
 ### 6. Handle Monorepo Context
 
-จัดการ build context สำหรับ monorepo
-
+> Goal: จัดการ build context สำหรับ monorepo
 > Goal: copy เฉพาะ workspace ที่ต้องการ build
 
 1. ทำตาม `/follow-monorepo` เพื่อเลือก workspace ที่เกี่ยวข้อง
@@ -113,8 +107,7 @@ related:
 
 ### 7. Build and Verify Image
 
-build image และตรวจสอบ
-
+> Goal: build image และตรวจสอบ
 > Goal: image build สำเร็จและทำงานได้
 
 1. รัน `docker build -t <image>:<tag> .` หรือ `podman build -t <image>:<tag> .`
@@ -126,8 +119,7 @@ build image และตรวจสอบ
 
 ### 8. Publish Image
 
-publish ด้วย `/follow-release-docker`
-
+> Goal: publish ด้วย `/follow-release-docker`
 > Goal: image พร้อม release
 
 1. ทำตาม `/follow-release-docker` เพื่อตั้งค่า registry, tag และ pipeline

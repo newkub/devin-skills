@@ -7,12 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-readme
+  - loop-until-complete
+  - resolve-errors
+  - write-test
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +28,8 @@ Use `implement-todo-md` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Discovery And Inventory
+> Goal: Discovery And Inventory
 
 ค้นหาและรวบรวม TODO จากไฟล์ Markdown
 
@@ -36,6 +39,7 @@ Use `implement-todo-md` for the specific tasks and workflows it covers
 4. สร้าง plan สำหรับการ implement แต่ละ item
 
 ### 2. Implementation
+> Goal: Implementation
 
 Implement production code ตาม TODO items ใน Markdown
 
@@ -47,14 +51,13 @@ Implement production code ตาม TODO items ใน Markdown
 6. ลบ TODO items ที่ implement เสร็จแล้ว
 
 ### 3. Verification
+> Goal: Verification
 
 ตรวจสอบว่าไม่มี TODO เหลือในไฟล์ Markdown
 
 1. ตรวจสอบไฟล์ Markdown ว่าไม่มี TODO items เหลือ
 2. ตรวจสอบว่า features ที่ implement ใช้งานได้จริง
 3. อัพเดทไฟล์ Markdown ตามสถานะปัจจุบัน
-
-## Rules
 
 ## Rules
 
@@ -92,8 +95,6 @@ Implement production code ตาม TODO items ใน Markdown
 - ลบ TODO items ที่ implement เสร็จแล้ว
 - เพิ่ม changelog สำหรับ features ที่ implement
 - อัพเดท README ตาม `/follow-readme`
-
-## Expected Outcome
 
 ## Expected Outcome
 

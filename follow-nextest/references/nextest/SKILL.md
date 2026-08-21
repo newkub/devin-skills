@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Nextest สำหรับ test runner ที่เร็วกว่า cargo test
 
-
 ## Scope
 
 ใช้สำหรับ test runner ที่เร็วกว่า cargo test, per-test isolation, CI support ระดับหนึ่ง, retry policies และ test groups
-
 
 ## Execute
 
@@ -49,7 +49,6 @@ triggers:
 - อ่าน `workflows/configure-nextest.md` สำหรับการตั้งค่า
 - อ่าน `workflows/run-tests.md` สำหรับการรัน tests
 
-
 ## Rules
 
 - ใช้ Nextest แทน cargo test สำหรับ performance
@@ -59,7 +58,6 @@ triggers:
 - ใช้ backticks สำหรับ commands
 - ใช้ code blocks สำหรับ examples
 - ใช้ ansi markdown diagrams สำหรับ flow และ architecture
-
 
 ## Expected Outcome
 

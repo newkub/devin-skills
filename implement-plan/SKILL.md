@@ -1,17 +1,22 @@
 ---
 name: implement-plan
 description: อ่านแผนใน .devin/plan/<title-date>.md ทำงานให้ครบ แล้วลบแผน
-argument-hint: [<plan-path-or-title>]
 allowed-tools:
   - read
   - edit
   - write
   - exec
+  - ask_user_question
 triggers:
   - user
 related:
   - create-plan
   - realize-implementation
+  - deep-plan
+  - report-plan
+  - plan
+argument-hint:
+  - <plan-path-or-title>
 ---
 
 ## Goal
@@ -28,7 +33,6 @@ related:
 ## Execute
 
 ### 1. Find Plan File
-
 > Goal: ระบุไฟล์แผน
 
 1. ถ้ามี argument ให้ใช้เป้น plan path หรือ title
@@ -36,7 +40,6 @@ related:
 3. อ่านไฟล์ด้วย `read`
 
 ### 2. Analyze Tasks
-
 > Goal: รู้ว่าต้องทำอะไร
 
 1. สร้าง task list จากไฟล์แผน
@@ -44,7 +47,6 @@ related:
 3. จัดลำดับตาม `## Execution Order` ในแผน
 
 ### 3. Execute Tasks
-
 > Goal: ทำงานให้ครบตามแผน
 
 1. ทำตาม task ทีละข้อ เริ่มจาก critical path
@@ -53,7 +55,6 @@ related:
 4. ถ้าพบปัญหา → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 
 ### 4. Verify And Delete Plan
-
 > Goal: ยืนยันว่างานครบแล้วลบแผน
 
 1. ตรวจสอบว่า tasks ทั้งหมด `status: completed`

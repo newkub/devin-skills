@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - roleplay-user
+  - suggest-next-action
+  - deep-thinking
+  - review-codebase
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Read Code Context
+> Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อเข้าใจ product
 2. อ่าน routes, features, modules, API endpoints, database schema
@@ -31,6 +40,7 @@ triggers:
 5. ถ้าเข้าใจ product ไม่ได้ ให้ถามผู้ใช้
 
 ### 2. Identify PM Profile
+> Goal: Identify PM Profile
 
 1. ระบุ PM level (associate, PM, senior PM, group PM, VP Product)
 2. ระบุ product type (B2B SaaS, B2C, marketplace, platform, enterprise)
@@ -39,6 +49,7 @@ triggers:
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Product Review
+> Goal: Simulate Product Review
 
 Goal reminder: คิดเหมือน PM ที่ต้องตัดสินใจว่าจะ ship อะไร ไม่ใช่ dev ที่สนแค่ทำงานไหม
 
@@ -49,6 +60,7 @@ Goal reminder: คิดเหมือน PM ที่ต้องตัดส�
 5. ประเมิน product-market fit signals จาก code
 
 ### 4. Analyze Every Product Dimension
+> Goal: Analyze Every Product Dimension
 
 Feature Completeness:
 
@@ -92,6 +104,7 @@ Quality and Trust:
 23. Data portability: user export ข้อมูลตัวเองได้ไหม, import ได้ไหม, ย้ายได้ไหม
 
 ### 5. Map Findings To Code
+> Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
 2. ระบุ severity: Critical, High, Medium, Low
@@ -100,6 +113,7 @@ Quality and Trust:
 5. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
 ### 6. Generate Product Review Report
+> Goal: Generate Product Review Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Finding, User Impact, PM Recommendation

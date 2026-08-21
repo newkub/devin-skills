@@ -12,6 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report
 ---
 
 ## Goal
@@ -26,8 +28,7 @@ triggers:
 
 ### 1. Discover Usage Examples
 
-ค้นหา usage examples ทั้งหมด
-
+> Goal: ค้นหา usage examples ทั้งหมด
 > Goal: รู้ code blocks และ commands ที่ต้อง test
 
 1. หา `README.md` ทั้งหมดใน project (root และ workspaces)
@@ -37,8 +38,7 @@ triggers:
 
 ### 2. Test CLI Commands
 
-ทดสอบ CLI commands ที่ไม่ทำลายข้อมูล
-
+> Goal: ทดสอบ CLI commands ที่ไม่ทำลายข้อมูล
 > Goal: ยืนยันว่า CLI commands ทำงานได่
 
 1. ทดสอบ commands ที่ปลอดภัย (`--help`, `--version`, `help`, `version`)
@@ -48,8 +48,7 @@ triggers:
 
 ### 3. Test SDK Examples
 
-ทดสอบ SDK code examples
-
+> Goal: ทดสอบ SDK code examples
 > Goal: ยืนยันว่า imports และ function calls ทำงานได่
 
 1. สร้างไฟล์ชั่วคราว (`tmp/test-usage-<ts|js>`) จาก code example
@@ -60,8 +59,7 @@ triggers:
 
 ### 4. Test Package Scripts
 
-ทดสอบ package.json scripts ที่เกี่ยวข้องกับ usage
-
+> Goal: ทดสอบ package.json scripts ที่เกี่ยวข้องกับ usage
 > Goal: ยืนยันว่า scripts ที่อ้างถึงใน docs ทำงานได่
 
 1. ระบุ scripts ที่มีอยู่ใน `package.json` (root และ workspaces)
@@ -71,8 +69,7 @@ triggers:
 
 ### 5. Report And Fix
 
-รายงานผลและจัดการ issues
-
+> Goal: รายงานผลและจัดการ issues
 > Goal: ไม่มี broken usage examples ก่อน ship
 
 1. รวบรวมผลการทดสอบเป็นตาราง (example, expected, actual, status)

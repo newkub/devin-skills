@@ -7,6 +7,7 @@ allowed-tools:
   - edit
   - exec
   - webfetch
+  - ask_user_question
 triggers:
   - user
   - model
@@ -14,6 +15,7 @@ related:
   - follow-create-cli
   - follow-create-bun-cli
   - follow-create-rust-cli
+  - follow-mise
 ---
 
 ## Goal
@@ -27,7 +29,6 @@ related:
 ## Execute
 
 ### 1. Install
-
 > Goal: มี usage CLI พร้อมใช้
 
 1. แนะนำติดตั้งผ่าน mise: `mise use -g usage` หรือ `mise use usage`
@@ -36,7 +37,6 @@ related:
 4. ยืนยันด้วย `usage --version`
 
 ### 2. Define Spec
-
 > Goal: กำหนด CLI ด้วย KDL
 
 1. สร้าง `usage.kdl` หรือ `cli.usage.kdl` ใน project
@@ -47,7 +47,6 @@ related:
 6. ใช้ `global=#true` สำหรับ global flags
 
 ### 3. Generate Outputs
-
 > Goal: สร้าง artifacts จาก spec
 
 1. `usage generate completion <shell> <bin> -f usage.kdl` สำหรับ bash/zsh/fish/pwsh/nushell
@@ -59,7 +58,6 @@ related:
 7. `usage generate fig` สำหรับ Fig completions
 
 ### 4. Validate and Scripts
-
 > Goal: ตรวจสอบ spec และใช้ scripts
 
 1. รัน `usage lint` เพื่อตรวจสอบ spec
@@ -67,7 +65,6 @@ related:
 3. ใช้ `usage scripts` เพื่อ generate bash scripts with arg parsing
 
 ### 5. Framework Integrations
-
 > Goal: integrate กับ CLI frameworks ทีมีอยู่
 
 1. clap (Rust) — ดู `spec/integrations/clap`

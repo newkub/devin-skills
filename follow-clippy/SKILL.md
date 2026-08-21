@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-verify
+  - analyze-project
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +27,8 @@ Use `follow-clippy` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze Project
+> Goal: Analyze Project
 
 1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
@@ -34,6 +36,7 @@ Use `follow-clippy` for the specific tasks and workflows it covers
 4. ตรวจสอบ workspace configuration
 
 ### 2. Setup Clippy Configuration
+> Goal: Setup Clippy Configuration
 
 1. สร้าง `clippy.toml` ที่ root ของ workspace หรือ crate
 2. ตั้งค่า lint categories ที่เหมาะสม:
@@ -53,6 +56,7 @@ Use `follow-clippy` for the specific tasks and workflows it covers
    - `allow-dbg-in-tests = true`
 
 ### 3. Setup Error Handling Standards
+> Goal: Setup Error Handling Standards
 
 1. สร้าง error type ที่เป็นมาตรฐาน (ใช้ `thiserror` หรือ `anyhow`)
 2. ใช้ `Result<T, E>` แทนการ unwrap ใน production code
@@ -63,13 +67,12 @@ Use `follow-clippy` for the specific tasks and workflows it covers
 4. ตั้งค่า `missing-docs-in-private-items = false` ถ้าจำเป็น
 
 ### 4. Verify Configuration
+> Goal: Verify Configuration
 
 1. รัน `cargo clippy --all-targets -- -D warnings`
 2. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
 3. แก้ไข warnings ที่เกิดขึ้น
 4. รัน `/run-verify` เพื่อยืนยันว่าทุกอย่างทำงานได้
-
-## Rules
 
 ## Rules
 
@@ -111,8 +114,6 @@ allow-mixed-uninlined-format-args = true
 - ใช้ `Result<T, E>` สำหรับ error handling
 - ใช้ `thiserror` สำหรับ custom error types
 - ใช้ `anyhow` สำหรับ application-level errors
-
-## Expected Outcome
 
 ## Expected Outcome
 

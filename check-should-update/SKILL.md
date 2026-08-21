@@ -7,6 +7,7 @@ allowed-tools:
   - glob
   - exec
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -28,8 +29,7 @@ related:
 
 ### 1. Check Changes
 
-ตรวจสอบ changes ของ target paths ที่เกี่ยวข้อง
-
+> Goal: ตรวจสอบ changes ของ target paths ที่เกี่ยวข้อง
 > Goal: รู้ว่า target ต้องอัปเดทตาม code changes หรือไม่ ไม่เสียเวลาอัปเดทถ้าไม่มีอะไรเปลี่ยน
 
 1. ระบุ target paths ที่ต้องเช็คจาก calling workflow

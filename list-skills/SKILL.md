@@ -10,6 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report-table
+  - search-skills
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. List Skill Directories
+> Goal: List Skill Directories
 
 อ่านไดเรกทอรีทั้งหมดใน `skills` directory
 
@@ -31,6 +35,7 @@ triggers:
 3. อ่าน frontmatter ของแต่ละ `SKILL.md` เพื่อดู `title` และ `description`
 
 ### 2. Categorize Skills
+> Goal: Categorize Skills
 
 จัดกลุ่ม skills ตามประเภท
 
@@ -38,6 +43,7 @@ triggers:
 2. แสดงจำนวน skills ในแต่ละกลุ่ม
 
 ### 3. Report Skills
+> Goal: Report Skills
 
 แสดงรายการ skills ทั้งหมด
 

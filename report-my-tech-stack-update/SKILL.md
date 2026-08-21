@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - follow-my-tech-stack
+  - deep-research
 ---
 
 ## Goal
@@ -33,8 +36,7 @@ related:
 
 ### 1. Identify Current Tech Stack
 
-ระบุ tech stack ปัจจุบัน
-
+> Goal: ระบุ tech stack ปัจจุบัน
 > Goal: รู้ dependencies ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
 
 1. ทำ `/follow-my-tech-stack` เพื่อระบุ tech stack ทั้งหมด
@@ -44,8 +46,7 @@ related:
 
 ### 2. Check For Updates
 
-ตรวจสอบอัปเดตที่มีอยู่
-
+> Goal: ตรวจสอบอัปเดตที่มีอยู่
 > Goal: รู้ dependencies ที่มีอัปเดตพร้อมเวอร์ชันใหม่
 
 1. รัน `bun outdated` เพื่อเช็ค npm packages ที่มีอัปเดต
@@ -56,8 +57,7 @@ related:
 
 ### 3. Research Release Notes
 
-ค้นหา release notes และ changelogs
-
+> Goal: ค้นหา release notes และ changelogs
 > Goal: รู้ breaking changes และ migration guides ของ dependencies ที่มีอัปเดต
 
 1. ทำ `/deep-research` สำหรับ libraries ที่มีอัปเดตสำคัญ
@@ -68,8 +68,7 @@ related:
 
 ### 4. Categorize Updates
 
-จัดกลุ่มอัปเดตตามประเภท
-
+> Goal: จัดกลุ่มอัปเดตตามประเภท
 > Goal: อัปเดตจัดกลุ่มและจัดลำดับตาม impact
 
 1. จัดกลุ่มตาม category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
@@ -79,8 +78,7 @@ related:
 
 ### 5. Compile Report
 
-สร้างรายงานอัปเดตรายสัปดาห์
-
+> Goal: สร้างรายงานอัปเดตรายสัปดาห์
 > Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางอัปเดต
@@ -92,7 +90,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

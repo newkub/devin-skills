@@ -8,6 +8,7 @@ allowed-tools:
   - find_file_by_name
   - skill
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -17,7 +18,6 @@ related:
   - check-reference
   - follow-best-practice
   - follow-write-devin-skills
-  - suggest-next-action
 ---
 
 ## Goal
@@ -32,8 +32,7 @@ related:
 
 ### 1. Detect AI Tool
 
-ตรวจจับ AI tool และ directory เป้าหมาย
-
+> Goal: ตรวจจับ AI tool และ directory เป้าหมาย
 > Goal: รู้ target AI tool และ skills directory ก่อนอ่าน context
 
 1. ตรวจจับ AI tool จาก directory:
@@ -48,8 +47,7 @@ related:
 
 ### 2. Read Global Rules
 
-อ่าน global rules ของ AI tool ถ้ามี
-
+> Goal: อ่าน global rules ของ AI tool ถ้ามี
 > Goal: ไม่ซ้ำซ้อนกับ global rules
 
 1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ skills directory ที่ตรวจจับได้)
@@ -58,8 +56,7 @@ related:
 
 ### 3. Read Related Skills And References
 
-อ่าน context ของ skills ที่เกี่ยวข้อง
-
+> Goal: อ่าน context ของ skills ที่เกี่ยวข้อง
 > Goal: ไม่ duplicate ขั้นตอนที่ skills อื่นทำอยู่แล้ว
 
 1. parallel: `/read-related-skills` ∥ `/check-reference`
@@ -68,8 +65,7 @@ related:
 
 ### 4. Select Template By Prefix
 
-เลือก template ตามชนิดของ skill
-
+> Goal: เลือก template ตามชนิดของ skill
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
@@ -88,8 +84,7 @@ related:
 
 ### 5. Confirm Context
 
-ตรวจสอบว่าพร้อมเขียนหรือยัง
-
+> Goal: ตรวจสอบว่าพร้อมเขียนหรือยัง
 > Goal: ไม่ฝืนเขียนเมื่อ context ไม่ชัด
 
 1. ตรวจสอบว่ามี: AI tool, directory, template/structure, dependencies

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project Structure
+> Goal: Setup Project Structure
 
 สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน
 
@@ -33,6 +36,7 @@ triggers:
 5. ถ้า project มีหลาย binaries: สร้างใน `src/bin/`
 
 ### 2. Configure Dependencies
+> Goal: Configure Dependencies
 
 ตั้งค่า dependencies ใน `Cargo.toml`
 
@@ -46,6 +50,7 @@ triggers:
 8. ตั้งค่า `edition = "2024"` ใน `Cargo.toml`
 
 ### 3. Configure Build Profiles
+> Goal: Configure Build Profiles
 
 ตั้งค่า build profiles สำหรับ development และ production
 
@@ -54,6 +59,7 @@ triggers:
 3. ตั้งค่า `[profile.dev.package."*"]` ด้วย `debug = false` เพื่อ speed up deps compilation
 
 ### 4. Setup Scripts
+> Goal: Setup Scripts
 
 ตั้งค่า development scripts ใน `justfile`
 
@@ -64,6 +70,7 @@ triggers:
 5. เพิ่ม `run` recipe: `cargo run --`
 
 ### 5. Development Workflow
+> Goal: Development Workflow
 
 ใช้ development workflow ที่มีประสิทธิภาพ
 

@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -29,8 +30,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ### 1. Install Vercel CLI
 
-ติดตั้งและ authenticate Vercel CLI
-
+> Goal: ติดตั้งและ authenticate Vercel CLI
 > Goal: Vercel CLI ติดตั้งและ authenticate สำเร็จ
 
 1. รัน `bun add -D vercel`
@@ -39,8 +39,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ### 2. Link Project
 
-เชื่อมต่อ project กับ Vercel
-
+> Goal: เชื่อมต่อ project กับ Vercel
 > Goal: Project เชื่อมต่อกับ Vercel ได้
 
 1. รัน `bunx vercel link` ใน project directory
@@ -49,8 +48,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ### 3. Configure vercel.json
 
-กำหนด configuration สำหรับ deployment
-
+> Goal: กำหนด configuration สำหรับ deployment
 > Goal: `vercel.json` ตั้งค่าถูกต้องตาม project
 
 `vercel.json`:
@@ -74,8 +72,7 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ### 4. Framework Presets
 
-Vercel รองรับ auto-detection สำหรับ frameworks:
-
+> Goal: Vercel รองรับ auto-detection สำหรับ frameworks
 > Goal: ระบุ framework preset ที่เหมาะสม
 
 - Next.js: ใช้ `next` preset อัตโนมัติ
@@ -87,8 +84,7 @@ Vercel รองรับ auto-detection สำหรับ frameworks:
 
 ### 5. Build And Deploy
 
-Build และ deploy application
-
+> Goal: Build และ deploy application
 > Goal: Application build และ deploy สำเร็จ
 
 1. รัน `bun run build` หรือ `nitro build` สำหรับ Nitro projects
@@ -99,8 +95,7 @@ Build และ deploy application
 
 ### 6. Environment Variables
 
-ตั้งค่า environment variables
-
+> Goal: ตั้งค่า environment variables
 > Goal: Environment variables ถูกต้องและ sync กับ Vercel
 
 1. รัน `bunx vercel env add KEY_NAME`
@@ -110,8 +105,7 @@ Build และ deploy application
 
 ### 7. Serverless Functions
 
-สร้าง serverless functions ใน `api/` directory
-
+> Goal: สร้าง serverless functions ใน `api/` directory
 > Goal: Serverless functions ทำงานได้บน Vercel
 
 `api/hello.ts`:
@@ -125,8 +119,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
 ### 8. Edge Functions
 
-สร้าง edge functions สำหรับ edge deployment
-
+> Goal: สร้าง edge functions สำหรับ edge deployment
 > Goal: Edge functions ทำงานได้ถูกต้อง
 
 `api/edge.ts`:
@@ -142,8 +135,7 @@ export default async function handler(req: Request) {
 
 ### 9. Watch Deployment
 
-ตรวจสอบ deployment ด้วย browser preview
-
+> Goal: ตรวจสอบ deployment ด้วย browser preview
 > Goal: Deployment ทำงานถูกต้องไม่มี errors
 
 1. ทำ `/watch-browser` ด้วย deployment URL
@@ -154,8 +146,7 @@ export default async function handler(req: Request) {
 
 ### 10. CI/CD Deployment
 
-ตั้งค่า automated deployment
-
+> Goal: ตั้งค่า automated deployment
 > Goal: CI/CD deploy อัตโนมัติทั้ง preview และ production
 
 `.github/workflows/deploy.yml`:

@@ -32,8 +32,7 @@ related:
 
 ### 1. Gather Project Context
 
-รวบรวมข้อมูล project
-
+> Goal: รวบรวมข้อมูล project
 > Goal: รู้ project setup, stack, และ conventions
 
 1. อ่าน `package.json`, `README.md`, `AGENTS.md`
@@ -43,8 +42,7 @@ related:
 
 ### 2. Identify Contributing Sections
 
-ระบุ sections
-
+> Goal: ระบุ sections
 > Goal: CONTRIBUTING ครอบคลุมทุกสิ่งที contributor ต้องรู้ ทีต้องมี
 
 1. Prerequisites (tools, versions)
@@ -58,8 +56,7 @@ related:
 
 ### 3. Write Or Update
 
-เขียนหรืออัปเดต `CONTRIBUTING.md`
-
+> Goal: เขียนหรืออัปเดต `CONTRIBUTING.md`
 > Goal: `CONTRIBUTING.md` ครบถ้วนและถูกต้อง
 
 1. ใช้ข้อมูลจริงจาก project ไม่ใส่ placeholder
@@ -69,8 +66,7 @@ related:
 
 ### 4. Coordinate With Other Files
 
-ประสานงานกับเอกสารอื่น
-
+> Goal: ประสานงานกับเอกสารอื่น
 > Goal: เอกสารทีเกี่ยวข้องสอดคล้องกัน
 
 1. ตรวจสอบว่า conventions สอดคล้องกับ `AGENTS.md`
@@ -79,8 +75,7 @@ related:
 
 ### 5. Validate
 
-ตรวจสอบคุณภาพ
-
+> Goal: ตรวจสอบคุณภาพ
 > Goal: `CONTRIBUTING.md` ผ่าน validation
 
 1. ทำ `/validate` เพื่อตรวจ Markdown quality

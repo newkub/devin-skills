@@ -1,15 +1,22 @@
 ---
 name: idea-improve-naming
-description: สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files, CSS พร้อม continuous...
+description: สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files, CSS พร้อม
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - rename
+  - suggest-next-action
+  - follow-best-practice
+  - review-codebase
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Current Naming
+> Goal: Analyze Current Naming
 
 วิเคราะห์ naming conventions ปัจจุบัน
 
@@ -32,6 +40,7 @@ triggers:
 4. บันทึก findings เป็น baseline สำหรับสร้างไอเดีย
 
 ### 2. Research Best Practices
+> Goal: Research Best Practices
 
 ค้นหา naming best practices สำหรับ tech stack ที่ใช้
 
@@ -41,6 +50,7 @@ triggers:
 4. ระบุ framework-specific naming rules (เช่น SolidJS component naming, Drizzle table naming)
 
 ### 3. Generate Ideas
+> Goal: Generate Ideas
 
 สร้างไอเดียปรับปรุง naming ทั้ง Extends และ New
 
@@ -51,6 +61,7 @@ triggers:
 5. จัดกลุ่มไอเดียตาม category
 
 ### 4. Prioritize And Present Results
+> Goal: Prioritize And Present Results
 
 จัดลำดับและรายงานในแชท
 

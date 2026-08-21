@@ -18,13 +18,6 @@ related:
   - use-lib-effective
   - prioritize
   - update-dot-devin
-  - recommend-architecture
-  - report-table
-  - report-file-structure
-  - report-plan
-  - deep-thinking
-  - deep-research
-  - pondering
 ---
 
 ## Goal
@@ -38,6 +31,7 @@ related:
 ## Execute
 
 ### 1. Analyze And Research
+> Goal: Analyze And Research
 
 1. ทำ `analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
 2. ระบุ scope, constraints, และ assumptions
@@ -46,6 +40,7 @@ related:
 5. บันทึก library ที่เลือกพร้อมเหตุผล (modern, type safety, performance, DX, maintenance)
 
 ### 2. Define Implementation Path
+> Goal: Define Implementation Path
 
 1. ทำ `prioritize` เพื่อจัดลำดับ tasks ตาม impact และ effort
 2. จัดลำดับ: foundation ก่อน, high risk เพื่อ fail fast
@@ -55,6 +50,7 @@ related:
 6. คำนวณ planning metrics (ดู Metrics section)
 
 ### 3. Plan Architecture
+> Goal: Plan Architecture
 
 1. ทำ `pondering` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
 2. ทำ `recommend-architecture` เพื่อแนะนำ architecture ที่เหมาะสม
@@ -65,12 +61,14 @@ related:
 7. วางแผน error handling, caching strategy, และ data validation points
 
 ### 4. Plan Test Strategy
+> Goal: Plan Test Strategy
 
 1. ออกแบบ test case ที่ครอบคลุม: unit, integration, e2e
 2. กำหนด test coverage requirements และ test data fixtures
 3. วางแผน regression test strategy
 
 ### 5. Create Documents
+> Goal: Create Documents
 
 1. ถ้า tasks > 10 ให้สร้าง `.devin/tasks/<name>-DD-MM-YYYY.md` พร้อม tasks ทั้งหมด
 2. ถ้า tasks > 10 ให้สร้าง `.devin/tasks/<name>-arch-DD-MM-YYYY.md` พร้อม architecture
@@ -79,6 +77,7 @@ related:
 5. ทำ `update-dot-devin` ถ้ามีการเปลี่ยนแปลง package manifest
 
 ### 6. Stress-Test Plan
+> Goal: Stress-Test Plan
 
 ตรวจสอบแผนอย่างละเอียดสำหรับงานที่ซับซ้อนสูง
 
@@ -90,6 +89,7 @@ related:
 6. ถ้างานซับซ้อนสูง: ทำ `deep-thinking` ก่อน step นี้
 
 ### 7. Validate And Report
+> Goal: Validate And Report
 
 1. ยืนยัน dependencies ไม่ conflict กับ existing versions
 2. ตรวจสอบทุก task มี single responsibility และ test ได้

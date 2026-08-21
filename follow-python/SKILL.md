@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Installation
 
-ติดตั้ง Python และ dependencies
-
+> Goal: ติดตั้ง Python และ dependencies
 > Goal: มี Python environment พร้อมใช้งาน
 
 1. ติดตั้ง Python 3.11+ จาก `https://python.org`
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Configuration
 
-ตั้งค่า `pyproject.toml`
-
+> Goal: ตั้งค่า `pyproject.toml`
 > Goal: มี config ครบสำหรับ Python project
 
 1. กำหนด dependencies ใน `[project.dependencies]`
@@ -45,8 +45,7 @@ triggers:
 
 ### 3. Project Structure
 
-จัดโครงสร้างตาม Clean Architecture
-
+> Goal: จัดโครงสร้างตาม Clean Architecture
 > Goal: โครงสร้าง project เป็น Clean Architecture
 
 1. แบ่งเป็น `domain/`, `application/`, `adapters/`, `presentation/`
@@ -57,8 +56,7 @@ triggers:
 
 ### 4. Core Principles
 
-เขียน Python ตาม best practices
-
+> Goal: เขียน Python ตาม best practices
 > Goal: โค้ดเป็นไปตาม Python best practices
 
 1. ใช้ type hints ทุก function
@@ -68,8 +66,7 @@ triggers:
 
 ### 5. Folder Rules
 
-จัดโครงสร้าง folders อย่างเป็นระบบ
-
+> Goal: จัดโครงสร้าง folders อย่างเป็นระบบ
 > Goal: folders แบ่งตาม responsibility ชัดเจน
 
 1. แยก modules ตาม domain
@@ -78,8 +75,7 @@ triggers:
 
 ### 6. Import Rules
 
-จัดลำดับ imports อย่างเป็นระบบ
-
+> Goal: จัดลำดับ imports อย่างเป็นระบบ
 > Goal: imports เรียงลำดับชัดเจน
 
 1. เรียง: stdlib → third-party → local

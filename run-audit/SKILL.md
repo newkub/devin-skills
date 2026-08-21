@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,45 +24,47 @@ Use `run-audit` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Audit Dependencies
+> Goal: Audit Dependencies
 
 1. รัน `npm audit` หรือ `bun audit`
 2. ตรวจสอบ vulnerabilities ใน dependencies
 3. ดู severity levels ของ vulnerabilities
 
 ### 2. Audit Licenses
+> Goal: Audit Licenses
 
 1. ตรวจสอบ licenses ของ dependencies
 2. ระบุ licenses ที่ไม่เหมาะสม
 3. ตรวจสอบ compliance requirements
 
 ### 3. Audit Code
+> Goal: Audit Code
 
 1. สแกน code หา security vulnerabilities
 2. ตรวจสอบ hardcoded secrets
 3. ตรวจสอบ insecure patterns
 
 ### 4. Review Findings
+> Goal: Review Findings
 
 1. จัดลำดับ priorities ของ issues
 2. วิเคราะห์ impact ของแต่ละ issue
 3. กำหนด action items
 
 ### 5. Fix Issues
+> Goal: Fix Issues
 
 1. อัพเดท dependencies ที่มี vulnerabilities
 2. แก้ไข security issues ใน code
 3. ทดสอบหลังแก้ไข
 
 ### 6. Generate Report
+> Goal: Generate Report
 
 1. สร้าง audit report
 2. แชร์ findings กับทีม
 3. ติดตาม remediation progress
-
-## Rules
 
 ## Rules
 
@@ -83,8 +85,6 @@ Use `run-audit` for the specific tasks and workflows it covers
 - ตรวจสอบ license compatibility
 - ระบุ copyleft licenses
 - ติดตาม license obligations
-
-## Expected Outcome
 
 ## Expected Outcome
 

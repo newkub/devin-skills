@@ -1,7 +1,6 @@
 ---
 name: create-plan
 description: สร้างแผนงานละเอียดใน .devin/plan/<title-date>.md ด้วย /deep-plan และ /report-plan
-argument-hint: <title>
 allowed-tools:
   - read
   - edit
@@ -13,6 +12,8 @@ related:
   - deep-plan
   - report-plan
   - implement-plan
+  - plan
+argument-hint: <title>
 ---
 
 ## Goal
@@ -29,7 +30,6 @@ related:
 ## Execute
 
 ### 1. Prepare Plan Title And Date
-
 > Goal: มีชื่อไฟล์แผนที่ไม่ซ้ำ
 
 1. รับ `<title>` จาก argument หรือ derived จาก request
@@ -38,14 +38,12 @@ related:
 4. สร้าง path `.devin/plan/<title>-<date>.md`
 
 ### 2. Deep Plan
-
 > Goal: มีแผนละเอียดครบมิติ
 
 1. ทำ `/deep-plan` เพื่อวางแผนงาน
 2. บันทึกผลลัพธ์จาก `/report-plan`
 
 ### 3. Write Plan File
-
 > Goal: บันทึกแผนลงไฟล์
 
 1. เขียนไฟล์ `.devin/plan/<title>-<date>.md` ด้วย frontmatter:
@@ -55,7 +53,6 @@ related:
 3. รายงาน path ให้ผู้ใช้
 
 ### 4. Mark Complete And Delete
-
 > Goal: ลบแผนเมื่องานเสร็จ
 
 1. ถ้าผู้ใช้หรืองานอื่นแจ้งว่าทำตามแผนเสร็จแล้ว → อัปเดต `status` เป้น `completed`

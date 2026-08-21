@@ -7,12 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-config
+  - run-lint
+  - update-reference
+  - update-docs
+  - report-table
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +29,8 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Identify Hard Code
+> Goal: Identify Hard Code
 
 ค้นหา hard code ใน codebase
 
@@ -38,6 +42,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ใช้ `Grep` เพื่อค้นหา business rules ที่ hardcoded
 
 ### 2. Replace Magic Values
+> Goal: Replace Magic Values
 
 แทนที่ magic values ด้วย named constants
 
@@ -48,6 +53,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ทำ `/update-reference` เพื่อแทนที่ magic values ด้วย constants
 
 ### 3. Extract Configuration
+> Goal: Extract Configuration
 
 แยก configuration ออกจาก code
 
@@ -58,6 +64,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ใช้ type-safe config ด้วย TypeScript
 
 ### 4. Externalize Business Rules
+> Goal: Externalize Business Rules
 
 ทำให้ business rules เป็น configurable
 
@@ -68,6 +75,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ทำ `/update-docs` เพื่อ Document business rules อย่างชัดเจน
 
 ### 5. Externalize URLs and Paths
+> Goal: Externalize URLs and Paths
 
 แยก URLs และ paths ออกจาก code
 
@@ -78,6 +86,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ทำ `/update-reference` เพื่อใช้ relative paths แทน absolute เมื่อเป็นไปได้
 
 ### 6. Secure Secrets
+> Goal: Secure Secrets
 
 จัดการ secrets อย่างปลอดภัย
 
@@ -88,6 +97,7 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - Rotate secrets เป็นประจำ
 
 ### 7. Validate
+> Goal: Validate
 
 ตรวจสอบว่าไม่มี hard code เหลืออยู่
 
@@ -96,8 +106,6 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 - ตรวจสอบใน environments ต่างๆ
 - ตรวจสอบว่า configuration ถูกต้อง
 - ทำ `/update-docs` เพื่อ Document configuration ทั้งหมด
-
-## Rules
 
 ## Rules
 
@@ -146,8 +154,6 @@ Use `no-hard-code` for the specific tasks and workflows it covers
 ระบุรูปแบบรายงาน
 
 - ทำ `/report-table` สำหรับสรุปผลลัพธ์
-
-## Expected Outcome
 
 ## Expected Outcome
 

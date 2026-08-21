@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - run-build
+  - optimize-build
+  - report-ansi
 ---
 
 ## Goal
@@ -29,8 +32,7 @@ related:
 
 ### 1. Build Project
 
-Build โปรเจกต์เพื่อสร้าง bundle
-
+> Goal: Build โปรเจกต์เพื่อสร้าง bundle
 > Goal: มี build output สำหรับวิเคราะห์
 
 1. ทำ `/run-build` เพื่อ build โปรเจกต์
@@ -39,8 +41,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 2. Collect Bundle Statistics
 
-รวบรวมสถิติของ bundle
-
+> Goal: รวบรวมสถิติของ bundle
 > Goal: มีสถิติครบสำหรับการวิเคราะห์
 
 1. รัน `du -sh <output-dir>` เพื่อดูขนาดรวม
@@ -51,8 +52,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 3. Analyze Chunks
 
-วิเคราะห์ chunks ของ bundle
-
+> Goal: วิเคราะห์ chunks ของ bundle
 > Goal: เข้าใจการกระจายขนาดในแต่ละ chunk
 
 1. ระบุ vendor chunks และ sizes (เช่น `solid-vendor.js`, `tanstack-router.js`)
@@ -64,8 +64,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 4. Analyze Dependencies
 
-วิเคราะห์ dependencies ที่มีผลต่อ bundle size
-
+> Goal: วิเคราะห์ dependencies ที่มีผลต่อ bundle size
 > Goal: รู้ dependencies ที่ทำให้ bundle ใหญ่
 
 1. ระบุ dependencies ที่อยู่ใน vendor chunks
@@ -76,8 +75,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 5. Check Tree-Shaking
 
-ตรวจสอบ tree-shaking effectiveness
-
+> Goal: ตรวจสอบ tree-shaking effectiveness
 > Goal: รู้ว่า tree-shaking ทำงานได้ดีแค่ไหน
 
 1. ตรวจสอบ `sideEffects` ใน `package.json`
@@ -88,8 +86,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 6. Format Report
 
-จัดรูปแบบรายงานให้อ่านง่าย
-
+> Goal: จัดรูปแบบรายงานให้อ่านง่าย
 > Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
@@ -105,8 +102,7 @@ Build โปรเจกต์เพื่อสร้าง bundle
 
 ### 7. Provide Insights
 
-ให้ insights และ recommendations
-
+> Goal: ให้ insights และ recommendations
 > Goal: ผู้อ่านรู้ว่าต้องทำอะไรเพื่อลด bundle size
 
 1. สรุปขนาด bundle รวมและสัดส่วนตามประเภท
@@ -118,7 +114,6 @@ Build โปรเจกต์เพื่อสร้าง bundle
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

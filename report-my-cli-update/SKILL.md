@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - deep-research
+  - report
 ---
 
 ## Goal
@@ -33,8 +36,7 @@ related:
 
 ### 1. Check Installed CLI Tools
 
-ตรวจสอบ CLI tools ที่ติดตั้งในเครื่อง
-
+> Goal: ตรวจสอบ CLI tools ที่ติดตั้งในเครื่อง
 > Goal: รู้ tools ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
 
 1. ทำ `/follow-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
@@ -45,8 +47,7 @@ related:
 
 ### 2. Check For Updates
 
-ตรวจสอบอัปเดตที่มีอยู่
-
+> Goal: ตรวจสอบอัปเดตที่มีอยู่
 > Goal: รู้ tools ที่มีอัปเดตพร้อมเวอร์ชันใหม่
 
 1. รัน `mise outdated` เพื่อเช็ค mise tools ที่มีอัปเดต
@@ -56,8 +57,7 @@ related:
 
 ### 3. Research Release Notes
 
-ค้นหา release notes และ changelogs
-
+> Goal: ค้นหา release notes และ changelogs
 > Goal: รู้ breaking changes และ features ใหม่ของ tools ที่มีอัปเดต
 
 1. ทำ `/deep-research` สำหรับ tools ที่มีอัปเดตสำคัญ
@@ -68,8 +68,7 @@ related:
 
 ### 4. Categorize Updates
 
-จัดกลุ่มอัปเดตตามประเภท
-
+> Goal: จัดกลุ่มอัปเดตตามประเภท
 > Goal: อัปเดตจัดกลุ่มและจัดลำดับตาม impact
 
 1. จัดกลุ่มตาม package manager: mise, scoop, winget
@@ -79,8 +78,7 @@ related:
 
 ### 5. Compile Report
 
-สร้างรายงานอัปเดตรายสัปดาห์
-
+> Goal: สร้างรายงานอัปเดตรายสัปดาห์
 > Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางอัปเดต
@@ -92,7 +90,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

@@ -29,8 +29,7 @@ related:
 
 ### 1. Check Correctness
 
-ตรวจสอบความถูกต้องตาม principle, standard, และ criteria ที่ผู้ใช้ระบุ
-
+> Goal: ตรวจสอบความถูกต้องตาม principle, standard, และ criteria ที่ผู้ใช้ระบุ
 > Goal: ตรวจสอบความถูกต้องก่อนประเมินคุณภาพและความเหมาะสม
 
 1. ทำตาม `/improve-correctness` ตาม criteria ที่ผู้ใช้ระบุ
@@ -39,17 +38,23 @@ related:
 
 ### 2. Check Quality
 
+> Goal: Check Quality
+
 1. ตรวจสอบคุณภาพโดยรวม (readability, completeness, consistency)
 2. ตรวจสอบมี documentation เพียงพอหรือ clear
 3. ตรวจสอบใช้ best practices และไม่มี redundancy
 
 ### 3. Check Appropriateness
 
+> Goal: Check Appropriateness
+
 1. ตรวจสอบความเหมาะสมกับ requirements หรือ context
 2. ตรวจสอบความเหมาะสมกับ capabilities หรือ constraints
 3. ตรวจสอบความเหมาะสมกับ scalability หรือ maintainability
 
 ### 4. Provide Feedback
+
+> Goal: Provide Feedback
 
 1. สรุปสิ่งที่ดีอยู่แล้วเสมอ
 2. ระบุสิ่งที่ควรปรับปรุงอย่างชัดเจน

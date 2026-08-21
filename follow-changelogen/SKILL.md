@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Configure Changelogen
+> Goal: Configure Changelogen
 
 ตั้งค่า changelogen สำหรับ project
 
@@ -32,6 +35,7 @@ triggers:
 4. ตั้งค่า `changelogFile` ถ้าต้องการ custom path
 
 ### 2. Setup Package Scripts
+> Goal: Setup Package Scripts
 
 เพิ่ม scripts ลงใน `package.json`
 
@@ -40,6 +44,7 @@ triggers:
 3. เพิ่ม `"changelog:generate": "bunx changelogen@latest"` สำหรับ generate only
 
 ### 3. Generate Changelog
+> Goal: Generate Changelog
 
 สร้าง changelog จาก git commits
 
@@ -49,6 +54,7 @@ triggers:
 4. ตรวจสอบ `CHANGELOG.md` ที่สร้าง
 
 ### 4. Review And Commit
+> Goal: Review And Commit
 
 ตรวจสอบและ commit changelog
 

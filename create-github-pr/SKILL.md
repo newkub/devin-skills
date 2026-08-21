@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-lint
+  - run-build
 ---
 
 ## Goal
@@ -26,6 +32,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare Branch
+> Goal: Prepare Branch
 
 1. ตรวจสอบว่า branch ปัจจุบันสะอาดและ sync กับ remote
 2. ทำ `/run-lint` เพื่อตรวจสอบ code quality
@@ -34,12 +41,14 @@ triggers:
 5. Commit changes ด้วย conventional commit format
 
 ### 2. Link To Issue
+> Goal: Link To Issue
 
 1. ระบุ issue ที่เกี่ยวข้อง (ถ้ามี)
 2. ใช้ format `Closes #issue-number` หรือ `Fixes #issue-number` ใน commit message
 3. อัปเดต issue ด้วย link ไปยัง PR
 
 ### 3. Write PR Description
+> Goal: Write PR Description
 
 1. ใช้ PR template ตาม project standards
 2. เขียน title ที่ชัดเจนและกระชับ
@@ -52,6 +61,7 @@ triggers:
 4. เพิ่ม checklist สำหรับ review
 
 ### 4. Create PR With MCP Tool
+> Goal: Create PR With MCP Tool
 
 1. ใช้ `mcp3_create_pull_request`
 2. ระบุ owner, repo, title, body
@@ -60,6 +70,7 @@ triggers:
 5. ตั้งค่า draft mode หากยังไม่พร้อม review
 
 ### 5. Verify PR Creation
+> Goal: Verify PR Creation
 
 1. ตรวจสอบว่า PR ถูกสร้างสำเร็จ
 2. ยืนยันว่า CI checks รันอัตโนมัติ

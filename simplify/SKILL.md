@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - update-reference
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze
+> Goal: Analyze
 
 วิเคราะห์ความซับซ้อนก่อนลงมือ
 
@@ -30,6 +33,7 @@ triggers:
 2. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Simplify
+> Goal: Simplify
 
 ลดความซับซ้อน
 

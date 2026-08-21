@@ -24,14 +24,12 @@ Use when an existing issue needs content or metadata updates
 ## Execute
 
 ### 1. Identify issue
-
 > Goal: identify issue
 
 1. Run gh issue view <number>
 1. Confirm issue number and repo
 
 ### 2. Update content
-
 > Goal: update content
 
 1. Edit title and body with gh issue edit
@@ -39,14 +37,12 @@ Use when an existing issue needs content or metadata updates
 1. Update milestone or project
 
 ### 3. Verify
-
 > Goal: verify
 
 1. View issue again to confirm changes
 1. Check linked PRs or sub-issues
 
 ### 4. Report
-
 > Goal: report
 
 1. Summarize changes

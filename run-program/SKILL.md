@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-install
+  - run-build
+  - review-codebase
 ---
 
 ## Goal
@@ -31,8 +36,7 @@ triggers:
 
 ### 1. Prepare
 
-เตรียม dependencies, build, และ environment ก่อนรัน
-
+> Goal: เตรียม dependencies, build, และ environment ก่อนรัน
 > Goal: โปรเจกต์พร้อมรัน
 
 1. รัน `/run-install` เพื่อติดตั้ง dependencies
@@ -42,8 +46,7 @@ triggers:
 
 ### 2. Execute
 
-รันโปรแกรมหลัก
-
+> Goal: รันโปรแกรมหลัก
 > Goal: โปรแกรมเริ่มทำงาน
 
 1. เลือก command ตาม project type:
@@ -55,8 +58,7 @@ triggers:
 
 ### 3. Monitor
 
-ติดตาม output และ verify ฟังก์ชัน
-
+> Goal: ติดตาม output และ verify ฟังก์ชัน
 > Goal: โปรแกรมทำงานถูกต้อง
 
 1. ติดตาม stdout/stderr และ logs
@@ -66,8 +68,7 @@ triggers:
 
 ### 4. Fix Issues
 
-แก้ไขปัญหาที่พบ
-
+> Goal: แก้ไขปัญหาที่พบ
 > Goal: โปรแกรมรันสำเร็จโดยไม่มี errors ที่ block
 
 1. อ่าน error messages และระบุ root cause

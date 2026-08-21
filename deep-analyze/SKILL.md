@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,11 +17,6 @@ related:
   - deep-analyze-by-use-scripts
   - deep-research
   - scan-codebase
-  - analyze-project
-  - use-ast-grep
-  - use-scripts
-  - report
-  - report-table
 ---
 
 ## Goal
@@ -42,6 +38,8 @@ related:
 
 ### 1. Deep Thinking Phase
 
+> Goal: Deep Thinking Phase
+
 ทำ `/deep-thinking` เพื่อวิเคราะห์ปัญหาและวางแผนก่อนเริ่ม
 
 1. กำหนด objectives ของการวิเคราะห์
@@ -52,8 +50,7 @@ related:
 
 ### 2. Quick Scan Phase
 
-ทำ `/analyze-project` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์พื้นฐานและลึกด้วย scripts
-
+> Goal: ทำ `/analyze-project` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์พื้นฐานและลึกด้วย scripts
 > Goal: มี foundation สำหรับ deep analysis ทั้งแบบ manual และ script-based
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์อย่างครบถ้วน
@@ -66,6 +63,8 @@ related:
 
 ### 3. Structure Analysis
 
+> Goal: Structure Analysis
+
 ทำ `/scan-codebase` เพื่อวิเคราะห์โครงสร้าง
 
 1. รัน tree command ดู directory structure
@@ -75,6 +74,8 @@ related:
 5. ตรวจสอบ file patterns และ naming conventions
 
 ### 4. Architecture Analysis
+
+> Goal: Architecture Analysis
 
 วิเคราะหา architecture และ design patterns
 
@@ -86,6 +87,8 @@ related:
 
 ### 5. Features Analysis
 
+> Goal: Features Analysis
+
 วิเคราะหา features และ business logic
 
 1. Discovery และ inventory features ทั้งหมด
@@ -94,6 +97,8 @@ related:
 4. Validate และ review features
 
 ### 6. Code Quality Analysis
+
+> Goal: Code Quality Analysis
 
 วิเคราะหา code quality อย่างละเอียด
 
@@ -106,6 +111,8 @@ related:
 
 ### 7. Dependencies And Tech Stack
 
+> Goal: Dependencies And Tech Stack
+
 วิเคราะหา dependencies และ tech stack
 
 1. อ่าน manifest files แบบ parallel
@@ -115,6 +122,8 @@ related:
 5. วิเคราะหา security vulnerabilities ด้วย `/run-audit`
 
 ### 8. Performance And Security
+
+> Goal: Performance And Security
 
 วิเคราะหา performance และ security
 
@@ -126,6 +135,8 @@ related:
 
 ### 9. External Research
 
+> Goal: External Research
+
 ทำ `/deep-research` เพื่อค้นหา best practices
 
 1. ค้นหา best practices สำหรับ tech stack ที่ใช้
@@ -135,6 +146,8 @@ related:
 5. ระบุ gaps ระหว่าง current implementation และ best practices
 
 ### 10. Comprehensive Report
+
+> Goal: Comprehensive Report
 
 สร้างรายงานครบถ้วน
 

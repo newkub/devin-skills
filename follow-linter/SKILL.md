@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-biome
+  - resolve-errors
+  - follow-oxlint
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Select Linter
+> Goal: Select Linter
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก linter ตามความเหมาะสม:
@@ -32,12 +38,14 @@ triggers:
    - Python: ruff
 
 ### 2. Setup Linter
+> Goal: Setup Linter
 
 1. รัน `/follow-biome` สำหรับ TypeScript/JavaScript
 2. รัน `/follow-oxlint` สำหรับ TypeScript/JavaScript
 3. รัน `clippy` สำหรับ Rust
 
 ### 3. Validate
+> Goal: Validate
 
 1. รัน linter เพื่อทดสอบ
 2. ตรวจสอบ configuration

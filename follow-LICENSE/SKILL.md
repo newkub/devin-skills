@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Choose License
 
-เลือก license ที่เหมาะสมกับ project
-
+> Goal: เลือก license ที่เหมาะสมกับ project
 > Goal: รู้ประเภท license ที่จะใช้
 
 1. เลือกจาก common licenses: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Create License File
 
-สร้าง `LICENSE` file ที่ root directory
-
+> Goal: สร้าง `LICENSE` file ที่ root directory
 > Goal: มี license file ที่ root directory
 
 1. สร้างไฟล์ `LICENSE` (ไม่มี extension) ที่ root
@@ -68,8 +68,7 @@ SOFTWARE.
 
 ### 3. Update Package Manifest
 
-ระบุ license ใน `package.json` หรือ `pyproject.toml`
-
+> Goal: ระบุ license ใน `package.json` หรือ `pyproject.toml`
 > Goal: license ถูกระบุใน package manifest
 
 1. เพิ่ม `"license": "MIT"` ใน `package.json`

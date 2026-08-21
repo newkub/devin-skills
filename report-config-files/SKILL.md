@@ -7,6 +7,7 @@ allowed-tools:
   - glob
   - exec
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -30,8 +31,7 @@ related:
 
 ### 1. Discover Config Files
 
-หา config files ทั้งหมด
-
+> Goal: หา config files ทั้งหมด
 > Goal: รู้ว่ามี config files อะไรบ้าง
 
 1. ใช้ `glob` หา `**/*.{json,yaml,yml,toml,ini,conf,config,env,env.*}`
@@ -40,8 +40,7 @@ related:
 
 ### 2. Compare Environments
 
-เปรียบเทียบ config drift
-
+> Goal: เปรียบเทียบ config drift
 > Goal: พบ config drift
 
 1. จับคู่ไฟล์ config ตาม environment
@@ -51,8 +50,7 @@ related:
 
 ### 3. Report Findings
 
-สร้าง report
-
+> Goal: สร้าง report
 > Goal: config drift อ่านง่าย
 
 1. ทำ `/report-table` สำหรับ drift ระหว่าง environments

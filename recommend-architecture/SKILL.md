@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - review-codebase
+  - analyze-project
+  - ship
 ---
 
 ## Goal
@@ -27,6 +33,7 @@ triggers:
 ## Execute
 
 ### 1. Deep Analyze
+> Goal: Deep Analyze
 
 วิเคราะห์โปรเจกต์อย่างละเอียด
 
@@ -35,6 +42,7 @@ triggers:
 - บันทึก findings และ recommendations
 
 ### 2. Check Architecture
+> Goal: Check Architecture
 
 ตรวจสอบโครงสร้างไฟล์และ folders
 
@@ -43,6 +51,7 @@ triggers:
 - ตรวจสอบ consistency ของโครงสร้าง
 
 ### 3. Recommend Architecture
+> Goal: Recommend Architecture
 
 แนะนำ architecture ที่เหมาะสม
 
@@ -52,6 +61,7 @@ triggers:
 - มี comment ด้านหลังแต่ละ file/folder
 
 ### 4. Create File Pattern Table
+> Goal: Create File Pattern Table
 
 สร้างตาราง file pattern
 

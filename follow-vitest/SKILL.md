@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - write-test
+  - follow-vite
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Installation
+> Goal: Installation
 
 1. ทำ `/follow-vite` เพื่อตรวจสอบ Vite setup
 2. ติดตั้ง Vitest ด้วย `bun add -D vitest`
@@ -32,6 +37,7 @@ triggers:
 6. ใช้ `bun run test` แทน `bun test` เพื่อหลีกเลี่ยง Bun test runner
 
 ### 2. Configuration
+> Goal: Configuration
 
 1. สร้าง `vitest.config.ts` หรือใช้ `vite.config.ts` ที่มีอยู่
 2. เปิดใช้งาน `globals` เพื่อลดการ import
@@ -46,6 +52,7 @@ triggers:
 11. เพิ่ม `lcov` reporter สำหรับ CI/CD
 
 ### 3. Monorepo Setup
+> Goal: Monorepo Setup
 
 1. ใช้ `test.projects` array สำหรับหลาย packages (แทน `workspace` ที่ deprecated ตั้งแต่ Vitest 3.2)
 2. กำหนด glob patterns หรือ inline config สำหรับแต่ละ project
@@ -55,6 +62,7 @@ triggers:
 6. ระบุ `name` ให้แต่ละ project ไม่ซ้ำกัน
 
 ### 4. Writing Tests
+> Goal: Writing Tests
 
 1. ทำ `/write-test` เพื่อเขียน test ที่มีคุณภาพ
 2. ใช้ `test` หรือ `it` จาก globals แทนการ import
@@ -66,6 +74,7 @@ triggers:
 8. ใช้ test tags สำหรับ categorize tests และ apply shared options เช่น `timeout` หรือ `retry`
 
 ### 5. Test Tags
+> Goal: Test Tags
 
 1. กำหนด tags ใน config ด้วย `test.tags` array แต่ละ tag มี `name` และ optional test options
 2. ใช้ `test('name', { tags: ['db', 'flaky'] }, fn)` สำหรับ tag tests
@@ -73,6 +82,7 @@ triggers:
 4. ใช้ tag options เช่น `timeout`, `retry` ที่ apply อัตโนมัติกับทุก test ที่มี tag นั้น
 
 ### 6. Type-Checking
+> Goal: Type-Checking
 
 1. เปิดใช้งาน type-checking ด้วย `typecheck.enabled: true`
 2. ใช้ไฟล์ `.test-d.ts` สำหรับ type tests
@@ -83,6 +93,7 @@ triggers:
 7. ตั้งค่า `typecheck.ignoreSourceErrors` สำหรับ ignore errors นอก test files
 
 ### 7. Fixtures And Test Context
+> Goal: Fixtures And Test Context
 
 1. ใช้ `test.extend()` สำหรับ create reusable fixtures
 2. ใช้ scopes: `test`, `file`, `worker` สำหรับ lifecycle management
@@ -92,18 +103,21 @@ triggers:
 6. ใช้ `{ injected: true }` สำหรับ project-specific fixture values
 
 ### 8. Hooks
+> Goal: Hooks
 
 1. ใช้ `aroundEach` สำหรับ wrap tests ใน context เช่น `AsyncLocalStorage` หรือ database transactions
 2. ใช้ `aroundAll` สำหรับ wrap ทุก suite
 3. ใช้ `beforeAll`, `afterAll` รับ file และ worker contexts จาก fixtures (Vitest 4.1)
 
 ### 9. In-Source Testing
+> Goal: In-Source Testing
 
 1. เปิดใช้งาน `includeSource` ใน config
 2. เขียน tests ใน source code ด้วย `if (import.meta.vitest)` block
 3. ใช้สำหรับ test utilities ที่อยู่ใกล้กับ implementation
 
 ### 10. Mocking And Stubbing
+> Goal: Mocking And Stubbing
 
 1. ใช้ `vi.mock` สำหรับ mocking modules
 2. ใช้ `vi.fn` สำหรับ creating mock functions
@@ -113,6 +127,7 @@ triggers:
 6. ใช้ `vi.clearAllMocks` สำหรับ cleanup ระหว่าง tests
 
 ### 11. Coverage
+> Goal: Coverage
 
 1. ใช้ `coverage.include` แบบ explicit เพราะ Vitest 4 รายงานเฉพาะ files ที่ loaded ระหว่าง test run
 2. ใช้ `coverage.changed` เพื่อ limit coverage report เฉพาะ changed files
@@ -120,6 +135,7 @@ triggers:
 4. ตั้งค่า `coverage.htmlDir` สำหรับ custom HTML coverage output
 
 ### 12. Watch Mode And CI
+> Goal: Watch Mode And CI
 
 1. ตั้งค่า watch mode สำหรับ development
 2. ใช้ `vitest run` สำหรับ CI/CD

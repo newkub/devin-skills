@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,11 +27,15 @@ triggers:
 
 ### 1. Setup Environment
 
+> Goal: Setup Environment
+
 1. ติดตั้ง Raycast บน macOS และ Sign in
 2. ตรวจสอบ Raycast CLI: `bunx ray --version` และ `bunx ray whoami`
 3. ยืนยัน Node.js 18+ และ Bun ติดตั้งแล้ว
 
 ### 2. Create Extension Project
+
+> Goal: Create Extension Project
 
 1. รัน `bunx create-raycast-extension@latest {extension-name}`
 2. เลือก template: `hello-world`, `detail`, `form`, `list`, `ai`, หรือ `menu-bar`
@@ -36,6 +43,8 @@ triggers:
 4. ตรวจสอบโครงสร้าง: `package.json`, `src/`, `tsconfig.json`
 
 ### 3. Configure Manifest
+
+> Goal: Configure Manifest
 
 1. แก้ไข `package.json` ตาม Raycast schema:
 
@@ -61,6 +70,7 @@ triggers:
 
 ### 4. Develop Commands
 
+> Goal: Develop Commands
 1. List Command:
 
 ```tsx
@@ -97,12 +107,14 @@ export default function Command() {
 
 ### 5. Test Extension
 
+> Goal: Test Extension
 1. รัน `bunx ray develop`
 2. รัน `bunx ray lint`
 3. รัน `bunx ray build`
 
 ### 6. Publish Extension
 
+> Goal: Publish Extension
 1. สร้าง screenshots ใน `metadata/`
 2. อัปเดต `CHANGELOG.md`
 3. Fork https://github.com/raycast/extensions

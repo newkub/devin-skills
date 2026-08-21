@@ -24,8 +24,7 @@ triggers:
 
 ### 1. Detect Test Framework
 
-ตรวจสอบ integration test framework ที่ project ใช้
-
+> Goal: ตรวจสอบ integration test framework ที่ project ใช้
 > Goal: รู้ framework, config, และ test file patterns
 
 1. ตรวจสอบ `package.json` สำหรับ test dependencies
@@ -35,8 +34,7 @@ triggers:
 
 ### 2. Setup Integration Environment
 
-เตรียม environment สำหรับ integration tests
-
+> Goal: เตรียม environment สำหรับ integration tests
 > Goal: Environment พร้อมสำหรับ integration tests
 
 1. ตรวจสอบ test database setup (SQLite, PostgreSQL test instance)
@@ -46,8 +44,7 @@ triggers:
 
 ### 3. Run Integration Tests
 
-รัน integration tests ตาม framework
-
+> Goal: รัน integration tests ตาม framework
 > Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. รัน `bun run test:integration` ถ้ามี script
@@ -57,8 +54,7 @@ triggers:
 
 ### 4. Review Test Results
 
-ตรวจสอบผลลัพธ์
-
+> Goal: ตรวจสอบผลลัพธ์
 > Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework

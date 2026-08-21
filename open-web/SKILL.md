@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `open-web` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Open Website
+> Goal: Open Website
 
 เปิด website ด้วย open command
 
@@ -36,13 +34,9 @@ Use `open-web` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - ใช้ `open <url>` command
 - ตรวจสอบ URL ว่าถูกต้อง
 - ใช้ default browser ของระบบ
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-lint
+  - run-typecheck
 ---
 
 ## Goal
@@ -28,6 +33,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze OOP Code
+> Goal: Analyze OOP Code
 
 วิเคราะห์ OOP code ปัจจุบัน
 
@@ -38,6 +44,7 @@ triggers:
 5. ระบุ static methods ที่เป็น pure functions อยู่แล้ว
 
 ### 2. Convert Classes to Data Structures
+> Goal: Convert Classes to Data Structures
 
 แปลง classes เป็น data structures
 
@@ -47,6 +54,7 @@ triggers:
 4. แยก data types ออกจาก functions
 
 ### 3. Convert Methods to Functions
+> Goal: Convert Methods to Functions
 
 แปลง methods เป็น standalone functions
 
@@ -56,6 +64,7 @@ triggers:
 4. จัดกลุ่ม functions ตาม responsibilities
 
 ### 4. Replace Inheritance with Composition
+> Goal: Replace Inheritance with Composition
 
 แทนที่ inheritance ด้วย composition
 
@@ -65,6 +74,7 @@ triggers:
 4. ใช้ module exports สำหรับ shared utilities
 
 ### 5. Apply Functional Core Imperative Shell
+> Goal: Apply Functional Core Imperative Shell
 
 ใช้ Functional Core, Imperative Shell pattern
 
@@ -74,6 +84,7 @@ triggers:
 4. ใช้ dependency injection สำหรับ external dependencies
 
 ### 6. Refactor State Management
+> Goal: Refactor State Management
 
 แปลง stateful code เป็น immutable
 
@@ -83,6 +94,7 @@ triggers:
 4. แยก state logic ออกจาก business logic
 
 ### 7. Verify Quality
+> Goal: Verify Quality
 
 ตรวจสอบคุณภาพหลังแปลง
 

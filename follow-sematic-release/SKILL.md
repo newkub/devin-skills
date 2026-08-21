@@ -10,12 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Semantic Release สำหรับ automated version management และ package publishing
-
 
 ## Scope
 
@@ -25,10 +25,11 @@ triggers:
 - Automated changelog generation
 - Package publishing ไปยัง bun, GitHub, GitLab
 
-
 ## Execute
 
 ### 1. Install Semantic Release
+
+> Goal: Install Semantic Release
 
 ติดตั้ง Semantic Release:
 ```bash
@@ -37,25 +38,26 @@ bun add -D semantic-release
 
 ### 2. Run Semantic Release
 
-รัน semantic-release:
+> Goal: รัน semantic-release
 ```bash
 bunx semantic-release
 ```
 
 ### 3. Dry Run
 
-Dry run:
+> Goal: Dry run
 ```bash
 bunx semantic-release --dry-run
 ```
 
 ### 4. Debug Mode
 
+> Goal: Debug Mode
+
 Debug mode:
 ```bash
 DEBUG=semantic-release:* bunx semantic-release
 ```
-
 
 ## Rules
 
@@ -63,7 +65,6 @@ DEBUG=semantic-release:* bunx semantic-release
 - ใช้ `bunx semantic-release` สำหรับรัน
 - ใช้ `--dry-run` สำหรับ dry run
 - ใช้ conventional commits สำหรับ version bump
-
 
 ## Expected Outcome
 

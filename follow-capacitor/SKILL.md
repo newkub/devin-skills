@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - learn-from-web
+  - follow-deploy
+  - follow-config
+  - follow-bun
+  - follow-vite
 ---
 
 ## Goal
@@ -23,7 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Environment Setup
-
+> Goal: Environment Setup
 ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
 
 1. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
@@ -35,7 +42,7 @@ triggers:
 7. ทำ `/follow-config` สำหรับ configuration files
 
 ### 2. Project Configuration
-
+> Goal: Project Configuration
 ตั้งค่า Capacitor config อย่างถูกต้อง
 
 1. สร้าง `capacitor.config.ts` ด้วย `CapacitorConfig` type จาก `@capacitor/cli`
@@ -50,7 +57,7 @@ triggers:
 10. ใช้ platform-specific overrides ใน `android` และ `ios` properties เมื่อจำเป็น
 
 ### 3. SPA Integration
-
+> Goal: SPA Integration
 เชื่อมต่อ web app เข้ากับ Capacitor native container
 
 1. ทำ `/follow-vite` สำหรับ SPA build configuration
@@ -62,7 +69,7 @@ triggers:
 7. ตั้งค่า `cap:copy` script เป็น `bun run build && cap copy`
 
 ### 4. Plugin Management
-
+> Goal: Plugin Management
 จัดการ Capacitor plugins อย่างเป็นระบบ
 
 1. ติดตั้ง plugins ด้วย `bun add @capacitor/<plugin-name>`
@@ -75,7 +82,7 @@ triggers:
 8. ทำ `/learn-from-web` เมื่อต้องการค้นหา plugins ใหม่
 
 ### 5. Platform Development
-
+> Goal: Platform Development
 พัฒนาและทดสอบบน native platforms
 
 1. เพิ่ม platform ด้วย `cap add ios` หรือ `cap add android`
@@ -88,7 +95,7 @@ triggers:
 8. ทดสอบบน real devices ก่อน production release
 
 ### 6. Platform-Specific Code
-
+> Goal: Platform-Specific Code
 จัดการ platform-specific code อย่างถูกต้อง
 
 1. ใช้ `Capacitor.platform` สำหรับตรวจจับ platform (`ios`, `android`, `web`)
@@ -100,7 +107,7 @@ triggers:
 7. จัดการ edge cases สำหรับแต่ละ platform (เช่น WKWebView process termination บน iOS)
 
 ### 7. Build And Deployment
-
+> Goal: Build And Deployment
 Build และ deploy ไปยัง app stores
 
 1. ทำ `/follow-deploy` สำหรับ deployment strategy
@@ -113,7 +120,7 @@ Build และ deploy ไปยัง app stores
 8. ใช้ OTA updates ผ่าน `@capgo/capacitor-updater` สำหรับ hot fixes
 
 ### 8. OTA Updates
-
+> Goal: OTA Updates
 จัดการ over-the-air updates สำหรับ web bundle
 
 1. ติดตั้ง `@capgo/capacitor-updater` สำหรับ OTA update support
@@ -123,7 +130,7 @@ Build และ deploy ไปยัง app stores
 5. มี rollback strategy สำหรับกรณี update มีปัญหา
 
 ### 9. Security
-
+> Goal: Security
 ทำตาม security best practices สำหรับ Capacitor apps
 
 1. ไม่ embed secrets ใน app code ใช้ server-side สำหรับ sensitive operations

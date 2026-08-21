@@ -29,8 +29,7 @@ related:
 
 ### 1. Define Design Tokens
 
-กำหนด visual, interaction, และ language tokens
-
+> Goal: กำหนด visual, interaction, และ language tokens
 > Goal: มี design tokens ทีใช้ได้ทั่วทั้ง project
 
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
@@ -40,8 +39,7 @@ related:
 
 ### 2. Create Component Guidelines
 
-สร้างและ document reusable components
-
+> Goal: สร้างและ document reusable components
 > Goal: component library มี patterns และ variants ชัดเจน
 
 1. สร้าง reusable components ด้วย atomic design (atoms → molecules → organisms)
@@ -51,8 +49,7 @@ related:
 
 ### 3. Apply To Platforms
 
-แปลง tokens และ guidelines ตาม platform
-
+> Goal: แปลง tokens และ guidelines ตาม platform
 > Goal: design system ใช้ได้ทุก platform ทีต้องการ
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
@@ -62,8 +59,7 @@ related:
 
 ### 4. Ensure Accessibility
 
-ตรวจสอบและ implement accessibility สำหรับทุก platform
-
+> Goal: ตรวจสอบและ implement accessibility สำหรับทุก platform
 > Goal: ผ่าน WCAG และรองรับ keyboard/screen reader
 
 1. ทำตาม WCAG guidelines สำหรับทุก platform
@@ -73,8 +69,7 @@ related:
 
 ### 5. Test And Validate
 
-ทดสอบ design system บนทุก platform
-
+> Goal: ทดสอบ design system บนทุก platform
 > Goal: design system consistent, accessible, และ reusable
 
 1. ทดสอบ visual consistency ทุก platform

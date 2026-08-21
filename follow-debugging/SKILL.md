@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-build
+  - follow-playwright
+  - follow-root-cause-analysis
+  - run-typecheck
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Reproduce Consistently
+> Goal: Reproduce Consistently
 
 1. สร้าง minimal reproduction case ที่ trigger ปัญหาได้ทุกครั้ง
 2. ระบุ exact steps, input, environment ที่ทำให้เกิดปัญหา
@@ -30,6 +39,7 @@ triggers:
 4. ใช้ `/use-bun-shell` เพื่อรัน reproduction script ซ้ำจนกว่าจะ stable
 
 ### 2. Define Problem Clearly
+> Goal: Define Problem Clearly
 
 1. เขียนปัญหาแบบ Expected vs Actual — สิ่งที่ควรเกิด vs สิ่งที่เกิดจริง
 2. ระบุ scope: file, function, module, API endpoint, หรือ system level
@@ -37,6 +47,7 @@ triggers:
 4. ระบุ impact: blocking, degraded, หรือ cosmetic
 
 ### 3. Gather Evidence
+> Goal: Gather Evidence
 
 1. เก็บ error messages, stack traces, และ logs ทั้งหมด
 2. ใช้ `/run-test` เพื่อดูว่า tests ไหน fail
@@ -45,6 +56,7 @@ triggers:
 5. ถ้ามี monitoring ให้เก็บ metrics และ traces ด้วย
 
 ### 4. Form Hypotheses
+> Goal: Form Hypotheses
 
 1. สร้าง 3-5 hypotheses ที่เป็นไปได้ — อ้างอิง evidence ไม่ใช่ความรู้สึก
 2. จัดลำดับตาม probability และ ease of testing
@@ -52,6 +64,7 @@ triggers:
 4. เลือก top 1-2 hypotheses ที่ test ง่ายและมี probability สูงสุด
 
 ### 5. Test And Eliminate
+> Goal: Test And Eliminate
 
 1. ทดสอบทีละ hypothesis — เปลี่ยนทีละ variable เท่านั้น
 2. ใช้ `/use-bun-shell` เพื่อ execute test แต่ละ hypothesis
@@ -60,6 +73,7 @@ triggers:
 5. ถ้าทดสอบหมดแล้วไม่ตรง ให้กลับไปสร้าง hypotheses ใหม่
 
 ### 6. Isolate Root Cause
+> Goal: Isolate Root Cause
 
 1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
 2. ใช้ 5 Whys เพื่อ trace จาก symptom ไป root cause
@@ -67,6 +81,7 @@ triggers:
 4. ตรวจสอบว่าไม่ใช่ symptom ของปัญหาที่ลึกกว่า
 
 ### 7. Fix And Verify
+> Goal: Fix And Verify
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
 2. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
@@ -75,6 +90,7 @@ triggers:
 5. ทำ `/run-lint` และ `/run-typecheck` เพื่อตรวจสอบ code quality
 
 ### 8. Prevent Recurrence
+> Goal: Prevent Recurrence
 
 1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-vitest` หรือ `/follow-playwright`
 2. ทำ `/review-codebase` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. เตรียมความพร้อม
 
-ตรวจสอบ requirements ก่อนเริ่ม
-
+> Goal: ตรวจสอบ requirements ก่อนเริ่ม
 > Goal: มี requirements ครบก่อนเริ่ม
 
 1. ติดตั้ง Neovim 0.9+
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Config Structure
 
-สร้างโครงสร้าง config สำหรับ lazy.nvim
-
+> Goal: สร้างโครงสร้าง config สำหรับ lazy.nvim
 > Goal: มีโครงสร้าง config ที่ถูกต้อง
 
 1. สร้าง `lua/plugins/` directory สำหรับ plugin specs
@@ -44,8 +44,7 @@ triggers:
 
 ### 3. Bootstrap lazy.nvim
 
-ติดตั้ง lazy.nvim ใน `init.lua`
-
+> Goal: ติดตั้ง lazy.nvim ใน `init.lua`
 > Goal: lazy.nvim ติดตั้งและทำงานได้
 
 1. Bootstrap lazy.nvim ใน `init.lua`
@@ -54,8 +53,7 @@ triggers:
 
 ### 4. Plugin Specs
 
-กำหนด plugin specs
-
+> Goal: กำหนด plugin specs
 > Goal: plugin specs ชัดเจนและ lazy load ถูกต้อง
 
 1. กำหนด plugin ด้วย URL (เช่น `github.com/user/plugin`)
@@ -66,8 +64,7 @@ triggers:
 
 ### 5. Performance
 
-เพิ่มประสิทธิภาพ Neovim startup
-
+> Goal: เพิ่มประสิทธิภาพ Neovim startup
 > Goal: Neovim startup < 50ms
 
 1. ใช้ lazy loading สำหรับทุก plugin

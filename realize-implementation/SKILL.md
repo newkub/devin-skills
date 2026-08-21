@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,11 +17,6 @@ related:
   - implement-plan
   - deep-analyze-by-use-scripts
   - deep-review
-  - review-codebase
-  - implement-comment-todo
-  - implement-features-to-mvp
-  - use-lib-effective
-  - resolve-errors
 ---
 
 ## Goal
@@ -35,16 +31,14 @@ related:
 
 ### 1. Review Codebase Everything
 
-Deep Review codebase ครบทุกมิติก่อนเริ่ม implement
-
+> Goal: Deep Review codebase ครบทุกมิติก่อนเริ่ม implement
 > Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือแปลงเป็น production code
 
 1. ทำ `/review-codebase` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Analyze And Verify Infrastructure
 
-วิเคราะห์สิ่งที่ขาดหายไปและตรวจสอบ infrastructure ก่อนเริ่ม implement
-
+> Goal: วิเคราะห์สิ่งที่ขาดหายไปและตรวจสอบ infrastructure ก่อนเริ่ม implement
 > Goal: รู้สิ่งที่ขาด จัดลำดับ critical path และ infrastructure พร้อม
 
 1. ถ้ามี `.devin/plan/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
@@ -56,8 +50,7 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม i
 
 ### 3. Implement Schema And Data Layer
 
-Implement schema, validation schemas, types และ data layer ให้สมบูรณ์
-
+> Goal: Implement schema, validation schemas, types และ data layer ให้สมบูรณ์
 > Goal: Schema สมบูรณ์ และ data queries ใช้งานจริง
 
 1. เพิ่ม schema สำหรับ data models ที่ขาด, สร้าง validation schemas สำหรับ API input/output, สร้าง types จาก schema
@@ -69,8 +62,7 @@ Implement schema, validation schemas, types และ data layer ให้สม
 
 ### 4. Implement API And UX/UI Layer
 
-Implement API handlers และเชื่อม UX/UI components กับ real API
-
+> Goal: Implement API handlers และเชื่อม UX/UI components กับ real API
 > Goal: API เชื่อม data source จริง และ UX/UI ใช้ real API calls
 
 1. Implement API handlers ที่ query data source จริง — เพิ่ม validation สำหรับ input/output ทุก endpoint
@@ -84,8 +76,7 @@ Implement API handlers และเชื่อม UX/UI components กับ re
 
 ### 5. Convert TODO And Use Libraries
 
-แปลง TODO/FIXME/HACK และ missing features เป็น production code และใช้ libraries ให้ครบ
-
+> Goal: แปลง TODO/FIXME/HACK และ missing features เป็น production code และใช้ libraries ให้ครบ
 > Goal: ไม่มี TODO/MOCK/placeholder เหลือ และใช้ libraries ครบ
 
 1. ทำ `/implement-comment-todo`, `/implement-features-to-mvp` — แปลง TODO comments และ implement MVP features
@@ -95,8 +86,7 @@ Implement API handlers และเชื่อม UX/UI components กับ re
 
 ### 6. Refactor And Verify
 
-ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
-
+> Goal: ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
 > Goal: โค้ดมีคุณภาพสูง ไม่มี unused code ผ่าน lint
 
 1. ทำ `/refactor`, `/update-reference`, `/review-codebase`, `/improve-typesafe`, `/review-codebase` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization

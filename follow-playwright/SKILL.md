@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Installation
+> Goal: Installation
 
 1. ติดตั้ง Playwright ด้วย `bun add -D @playwright/test`
 2. รัน `bunx playwright install` เพื่อติดตั้ง browsers
@@ -32,6 +35,7 @@ triggers:
 6. อัพเดท Playwright เป็น latest version เสมอด้วย `bun add -D @playwright/test@latest`
 
 ### 2. Configuration
+> Goal: Configuration
 
 1. สร้าง `playwright.config.ts` ที่ root
 2. ตั้งค่า browsers (chromium, firefox, webkit) ผ่าน `projects`
@@ -46,6 +50,7 @@ triggers:
 11. ตั้งค่า `forbidOnly: !!process.env.CI` สำหรับป้องกัน `test.only` ใน CI
 
 ### 3. Monorepo Setup
+> Goal: Monorepo Setup
 
 1. ตั้งค่า `testDir` สำหรับแต่ละ workspace
 2. ใช้ workspace protocol สำหรับ internal dependencies
@@ -54,6 +59,7 @@ triggers:
 5. ตั้งค่า config extends จาก root config
 
 ### 4. Writing Tests
+> Goal: Writing Tests
 
 1. ใช้ `test` จาก `@playwright/test`
 2. ใช้ `page` fixture สำหรับ browser automation
@@ -64,6 +70,7 @@ triggers:
 7. ใช้ `test.describe.configure({ mode: 'parallel' })` สำหรับ parallel tests ใน file
 
 ### 5. Page Object Model
+> Goal: Page Object Model
 
 1. สร้าง Page Object classes สำหรับแต่ละ page
 2. แยก selectors และ actions ออกจาก test files
@@ -72,6 +79,7 @@ triggers:
 5. ใช้ `waitFor()` สำหรับ waiting strategies
 
 ### 6. Locators Strategy
+> Goal: Locators Strategy
 
 1. ใช้ `getByRole()` สำหรับ role-based selectors (preferred)
 2. ใช้ `getByText()` สำหรับ text-based selectors
@@ -82,6 +90,7 @@ triggers:
 7. ใช้ locator chaining และ filtering สำหรับ narrow down
 
 ### 7. Assertions And Matchers
+> Goal: Assertions And Matchers
 
 1. ใช้ `expect(page).toHaveURL()` สำหรับ URL assertions
 2. ใช้ `expect(locator).toBeVisible()` สำหรับ visibility
@@ -91,6 +100,7 @@ triggers:
 6. ใช้ `expect(locator).toMatchAriaSnapshot()` สำหรับ accessibility tree verification
 
 ### 8. Authentication Setup
+> Goal: Authentication Setup
 
 1. สร้าง setup project สำหรับ login ครั้งเดียว
 2. บันทึก `storageState` ลง disk
@@ -99,6 +109,7 @@ triggers:
 5. ใช้ `BrowserContext.setStorageState()` สำหรับ clear และ set state ใหม่
 
 ### 9. Running Tests
+> Goal: Running Tests
 
 1. รัน tests ด้วย `bunx playwright test`
 2. รัน tests ใน headed mode ด้วย `--headed`
@@ -108,6 +119,7 @@ triggers:
 6. ใช้ `--last-failed` สำหรับ re-run เฉพาะ tests ที่ fail
 
 ### 10. CI/CD Integration
+> Goal: CI/CD Integration
 
 1. ติดตั้ง browsers ใน CI pipeline ด้วย `bunx playwright install`
 2. ใช้ `--shard=x/y` สำหรับ parallel execution ข้าม machines

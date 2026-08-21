@@ -1,13 +1,16 @@
 ---
 name: create-github-repo
 description: สร้าง GitHub repository ใหม่ผ่าน gh CLI ด้วยชื่อและ visibility ที่ระบุ
-argument-hint: <repo-name> [--public|--private|--internal]
 allowed-tools:
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
 related:
   - open-web
+  - save-to-github-repo
+argument-hint: <repo-name> [--public|--private|--internal]
 ---
 
 ## Goal
@@ -23,7 +26,6 @@ related:
 ## Execute
 
 ### 1. Prepare Repo Metadata
-
 > Goal: มีชื่อ repository และ visibility ที่ถูกต้อง
 
 1. รับ `repo-name` จาก argument หรือถามผู้ใช้ถ้าขาด
@@ -32,7 +34,6 @@ related:
 4. รับ visibility จาก argument (ค่าเริ่มต้น `--private`)
 
 ### 2. Create Repository
-
 > Goal: repository ถูกสร้างบน GitHub
 
 1. รัน `gh repo create <repo-name> --<visibility>`
@@ -40,7 +41,6 @@ related:
 3. บันทึก URL จาก output
 
 ### 3. Open And Report
-
 > Goal: แสดงผล URL และเปิดหน้า repo
 
 1. รัน `gh repo view <repo-name> --json url --jq .url` เพื่อเอา URL

@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-drizzle
+  - resolve-errors
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Verify Prerequisites
 
-ตรวจสอบว่า project พร้อมรัน Drizzle Studio
-
+> Goal: ตรวจสอบว่า project พร้อมรัน Drizzle Studio
 > Goal: ไม่พลาดเพราะ config หรือ dependencies ขาด
 
 1. ตรวจสอบว่ามีไฟล์ `drizzle.config.ts` หรือ `drizzle.config.js`
@@ -36,8 +39,7 @@ triggers:
 
 ### 2. Check Database Connection
 
-ตรวจสอบว่า database พร้อมใช้งาน
-
+> Goal: ตรวจสอบว่า database พร้อมใช้งาน
 > Goal: รัน studio ได้โดยไม่ติด connection error
 
 1. ดึง `DATABASE_URL` จาก `.env` หรือ environment
@@ -47,8 +49,7 @@ triggers:
 
 ### 3. Start Drizzle Studio
 
-รัน Drizzle Studio ด้วยคำสั่งที่ถูกต้อง
-
+> Goal: รัน Drizzle Studio ด้วยคำสั่งที่ถูกต้อง
 > Goal: Studio process รันอยู่บน port ทีกำหนด
 
 1. เลือกคำสั่งตาม package manager:
@@ -62,8 +63,7 @@ triggers:
 
 ### 4. Open Browser
 
-เปิด browser เพื่อเข้าใช้งาน Studio
-
+> Goal: เปิด browser เพื่อเข้าใช้งาน Studio
 > Goal: User เข้าถึง GUI ได้ทันที
 
 1. ใช้ `open-web` หรือ platform equivalent เพื่อเปิด `http://localhost:<port>`
@@ -73,8 +73,7 @@ triggers:
 
 ### 5. Handle Errors
 
-แก้ไขปัญหาทั่วไประหว่างรัน
-
+> Goal: แก้ไขปัญหาทั่วไประหว่างรัน
 > Goal: studio รันผ่านโดยไม่มี error
 
 1. ถ้า `drizzle-kit: command not found` → รัน `bun add -D drizzle-kit`
@@ -85,8 +84,7 @@ triggers:
 
 ### 6. Stop Studio
 
-หยุด process อย่างถูกต้อง
-
+> Goal: หยุด process อย่างถูกต้อง
 > Goal: ไม่ทิ้ง process ค้าง
 
 1. บันทึกว่าจะหยุดเมื่อไหร่ตาม user request

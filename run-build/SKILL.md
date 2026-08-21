@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - optimize-build
+  - report-ansi
+  - run-clean
+  - report-table
+  - run-typecheck
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Optimize Build
 
-ปรับปรุง build configuration และลดขนาด output ก่อน build
-
+> Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
 > Goal: build config และ dependencies พร้อมสำหรับ build ที่เร็วและเล็ก
 
 1. ทำ `/optimize-build` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
@@ -33,8 +39,7 @@ triggers:
 
 ### 2. Typecheck
 
-ตรวจสอบ TypeScript types ก่อน build
-
+> Goal: ตรวจสอบ TypeScript types ก่อน build
 > Goal: ไม่ให้ build fail จาก type errors
 
 1. ทำ `/run-typecheck` เพื่อตรวจสอบ TypeScript types
@@ -42,8 +47,7 @@ triggers:
 
 ### 3. Install Dependencies
 
-ติดตั้ง dependencies ที่จำเป็น
-
+> Goal: ติดตั้ง dependencies ที่จำเป็น
 > Goal: dependencies พร้อมสำหรับ build
 
 1. รัน `bun install`
@@ -51,16 +55,14 @@ triggers:
 
 ### 4. Clean Build Artifacts
 
-ลบ artifacts เก่าเพื่อ build ใหม่
-
+> Goal: ลบ artifacts เก่าเพื่อ build ใหม่
 > Goal: build ไม่มี artifacts หรือ cache เก่าปะปน
 
 1. ทำ `/run-clean` เพื่อลบ build artifacts และ cache เก่า
 
 ### 5. Execute Build
 
-รัน build command ตาม package manifest
-
+> Goal: รัน build command ตาม package manifest
 > Goal: build สำเร็จหรือได้ error ที่ชัดเจน
 
 1. รัน `bun run build` หรือ build script ที่กำหนด
@@ -69,8 +71,7 @@ triggers:
 
 ### 6. Verify Output
 
-ตรวจสอบ build artifacts
-
+> Goal: ตรวจสอบ build artifacts
 > Goal: output ถูกต้องและพร้อมใช้
 
 1. ตรวจสอบว่า build artifacts ถูกสร้าง
@@ -78,8 +79,7 @@ triggers:
 
 ### 7. Report
 
-สรุปผล build
-
+> Goal: สรุปผล build
 > Goal: ผู้ใช้รู้ผลลัพธ์และ next action
 
 1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
@@ -140,27 +140,23 @@ related:
 ## Execute
 
 ### 1. Optimize Build
-
 > Goal: build config พร้อม
 
 1. ทำ `/optimize-build`
 
 ### 2. Typecheck
-
 > Goal: ไม่มี type errors
 
 1. ทำ `/run-typecheck`
 2. ถ้ามี errors → ทำ `/resolve-errors`
 
 ### 3. Build
-
 > Goal: build สำเร็จ
 
 1. ทำ `/run-clean`
 2. รัน build command
 
 ### 4. Report
-
 > Goal: สรุปผล
 
 1. ทำ `/report-table`

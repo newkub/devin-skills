@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. When to Use
 
-ใช้ Excalidraw เมื่อต้องวาด diagram
-
+> Goal: ใช้ Excalidraw เมื่อต้องวาด diagram
 > Goal: รู้ว่าเมื่อไหร่ควรใช้ Excalidraw
 
 1. วาด architecture diagrams
@@ -35,8 +36,7 @@ triggers:
 
 ### 2. Quick Start
 
-เริ่มวาด diagram อย่างรวดเร็ว
-
+> Goal: เริ่มวาด diagram อย่างรวดเร็ว
 > Goal: สร้าง diagram ได้อย่างรวดเร็ว
 
 1. เปิด Excalidraw ที่ `https://excalidraw.com`
@@ -46,8 +46,7 @@ triggers:
 
 ### 3. Diagram Elements
 
-ใช้ elements ต่างประเภทใน diagram
-
+> Goal: ใช้ elements ต่างประเภทใน diagram
 > Goal: รู้วิธีใช้ elements ต่างประเภท
 
 1. ใช้ rectangles สำหรับ components/boxes
@@ -57,8 +56,7 @@ triggers:
 
 ### 4. Styling
 
-จัดรูปแบบ diagram ให้อ่านง่าย
-
+> Goal: จัดรูปแบบ diagram ให้อ่านง่าย
 > Goal: diagram อ่านง่ายและสื่อความหมาย
 
 1. ใช้ colors สำหรับแยก layers หรือ types
@@ -67,8 +65,7 @@ triggers:
 
 ### 5. Verification
 
-ตรวจสอบ diagram ก่อนใช้งาน
-
+> Goal: ตรวจสอบ diagram ก่อนใช้งาน
 > Goal: diagram ถูกต้องและสื่อความหมายชัดเจน
 
 1. ตรวจสอบว่าทุก component มี label

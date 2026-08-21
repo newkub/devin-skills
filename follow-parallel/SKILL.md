@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - check-unused-deps
+  - report-plan
+  - run-check
+  - report-table
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Identify Parallelizable Operations
 
-วิเคราะห์ operations ที่สามารถทำ parallel ได้
-
+> Goal: วิเคราะห์ operations ที่สามารถทำ parallel ได้
 > Goal: รู้ว่า operations ไหนทำ parallel ได้และไหนต้อง sequential
 
 1. จัดกลุ่ม operations เป็น independent sets — แต่ละ set ไม่มี data dependency กัน
@@ -36,8 +42,7 @@ triggers:
 
 ### 2. Batch Tool Calls
 
-รวม independent tool calls เป็น parallel batch
-
+> Goal: รวม independent tool calls เป็น parallel batch
 > Goal: ลดจำนวนรอบและ context accumulation
 
 1. รวม independent `read_file` calls เป็น batch เดียว — อ่านหลายไฟล์พร้อมกัน
@@ -48,8 +53,7 @@ triggers:
 
 ### 3. Parallel Script Execution
 
-ใช้ `Promise.all` และ `Promise.allSettled` ใน scripts สำหรับ parallel data processing
-
+> Goal: ใช้ `Promise.all` และ `Promise.allSettled` ใน scripts สำหรับ parallel data processing
 > Goal: Script ประมวลผลข้อมูลหลาย sources พร้อมกัน
 
 1. ใช้ `Promise.all` เมื่อทุก operation ต้องสำเร็จ — ถ้าตัวใดตัวหนึ่ง fail ทั้งหมด fail
@@ -60,8 +64,7 @@ triggers:
 
 ### 4. Parallel Workflow Orchestration
 
-รัน independent workflows แบบ parallel ใน orchestrator workflows
-
+> Goal: รัน independent workflows แบบ parallel ใน orchestrator workflows
 > Goal: Orchestrator รัน sub-workflows ที่ independent พร้อมกัน
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
@@ -72,8 +75,7 @@ triggers:
 
 ### 5. Verify And Report
 
-ตรวจสอบผลลัพธ์และรายงาน
-
+> Goal: ตรวจสอบผลลัพธ์และรายงาน
 > Goal: ผลลัพธ์ครบถ้วน ถูกต้อง ไม่มี missing results
 
 1. ตรวจว่าทุก parallel operation มีผลลัพธ์ครบ — ไม่มี operation ที่หายไป

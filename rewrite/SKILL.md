@@ -18,7 +18,6 @@ related:
   - edit-relative
   - scan-codebase
   - validate
-  - run-check
 ---
 
 ## Goal
@@ -32,6 +31,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 ## Execute
 
 ### 1. Reset Context
+> Goal: Reset Context
 
 เริ่มต้นด้วย `/assume-reset-context` เพื่อล้าง context ก่อนหน้า
 
@@ -40,6 +40,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 3. ถือว่าไฟล์เป้าหมายเป็นไฟล์ใหม่ที่ต้องเขียนใหม่ทั้งหมด
 
 ### 2. Identify Targets
+> Goal: Identify Targets
 
 ระบุไฟล์ที่ต้อง rewrite ให้ชัดเจน
 
@@ -48,6 +49,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 3. ตรวจสอบ dependencies และ references ของ target files
 
 ### 3. Read Targets Fresh
+> Goal: Read Targets Fresh
 
 อ่านไฟล์เป้าหมายและ references ทั้งหมดใหม่
 
@@ -57,6 +59,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 4. ทำ `read-related-skills` สำหรับ workflows ที่เกี่ยวข้อง
 
 ### 4. Analyze Requirements
+> Goal: Analyze Requirements
 
 วิเคราะห์ requirement ใหม่ทั้งหมด
 
@@ -66,6 +69,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 4. ทำ `follow-best-practice` สำหรับ topic ที่เกี่ยวข้อง
 
 ### 5. Rewrite From Scratch
+> Goal: Rewrite From Scratch
 
 เขียนไฟล์ใหม่ทั้งหมดจากไฟล์เปล่า
 
@@ -76,6 +80,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 5. ทำ `edit-relative` หากชื่อไฟล์หรือ path เปลี่ยน
 
 ### 6. Validate
+> Goal: Validate
 
 ตรวจสอบผลลัพธ์
 

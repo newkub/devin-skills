@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - publish-package-to-npm
+  - follow-create-browser-extensions
+  - follow-release-docker
+  - follow-release-crates
+  - create-vscode-extensions
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 ## Execute
 
 ### 1. Detect Platforms
+> Goal: Detect Platforms
 
 ตรวจสอบ platforms ที่ project รองรับจาก configuration files
 
@@ -33,6 +41,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. ตรวจสอบ `Dockerfile` มีอยู่ → รองรับ `docker`
 
 ### 2. Check Configuration
+> Goal: Check Configuration
 
 ตรวจสอบ configuration ครบถ้วนก่อน release ตาม platforms ที่ detect ได้
 
@@ -43,6 +52,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `docker`: ตรวจสอบ `Dockerfile` มี FROM, WORKDIR, COPY, RUN และ `.dockerignore` มีการ exclude files
 
 ### 3. Setup Authentication
+> Goal: Setup Authentication
 
 ตั้งค่า authentication สำหรับ platforms ที่ detect ได้
 
@@ -53,6 +63,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `docker`: ตั้งค่า `DOCKER_USERNAME`, `DOCKER_PASSWORD` ใน GitHub Secrets
 
 ### 4. Run Verify
+> Goal: Run Verify
 
 ตรวจสอบคุณภาพโค้ดก่อน release
 
@@ -60,6 +71,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 2. ถ้า verify ไม่ผ่าน ให้แก้ไขก่อนดำเนินการต่อ
 
 ### 5. Setup Release Tool
+> Goal: Setup Release Tool
 
 ตั้งค่า release tool ตาม platforms ที่ detect ได้
 
@@ -70,6 +82,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. `docker`: ทำ `/follow-release-docker` เพื่อตั้งค่า release tool
 
 ### 6. Run Release
+> Goal: Run Release
 
 รัน release ตาม platforms ที่ detect ได้
 

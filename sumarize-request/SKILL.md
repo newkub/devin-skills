@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - update-features
+  - idea-features
+  - report-features
 ---
 
 ## Goal
@@ -26,8 +32,7 @@ triggers:
 
 ### 1. Analyze Request
 
-อ่านและวิเคราะห์ request จากผู้ใช้
-
+> Goal: อ่านและวิเคราะห์ request จากผู้ใช้
 > Goal: เข้าใจ request อย่างละเอียด
 
 1. ระบุประเภทของ request (feature, bug fix, refactor, new project)
@@ -37,8 +42,7 @@ triggers:
 
 ### 2. Prepare Context
 
-เตรียม context สำหรับ `/idea-features`
-
+> Goal: เตรียม context สำหรับ `/idea-features`
 > Goal: context ครบสำหรับสร้างตาราง features
 
 1. ระบุ project context และ current state
@@ -48,8 +52,7 @@ triggers:
 
 ### 3. Call /idea-features
 
-เรียกใช้ `/idea-features` เพื่อสร้างตาราง features
-
+> Goal: เรียกใช้ `/idea-features` เพื่อสร้างตาราง features
 > Goal: ได้ตาราง features ที่ครบถ้วน
 
 1. ใช้ `/idea-features` สำหรับสร้างตาราง
@@ -60,8 +63,7 @@ triggers:
 
 ### 4. Present Summary
 
-นำเสนอสรุปพร้อมภาพรวมและขั้นตอนต่อไป
-
+> Goal: นำเสนอสรุปพร้อมภาพรวมและขั้นตอนต่อไป
 > Goal: ผู้ใช้ได้ภาพรวมและทราบขั้นตอนต่อไป
 
 1. แสดงสรุปภาพรวมของ request ด้านบน

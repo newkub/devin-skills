@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,24 +25,28 @@ triggers:
 ## Execute
 
 ### 1. Prepare Worktree Directory
+> Goal: Prepare Worktree Directory
 
 1. ตรวจสอบว่า `worktree/` directory มีอยู่ใน project root
 2. ถ้าไม่มีให้สร้าง `worktree/` directory
 3. ตรวจสอบว่า `worktree/` ไม่ได้อยู่ใน `.gitignore`
 
 ### 2. Check Current Branch
+> Goal: Check Current Branch
 
 1. รัน `git branch --show-current` เพื่อดู branch ปัจจุบัน
 2. รัน `git status` เพื่อตรวจสอบ working tree clean
 3. ถ้ามี uncommitted changes ให้ commit หรือ stash ก่อน
 
 ### 3. Create Worktree
+> Goal: Create Worktree
 
 1. รัน `git worktree add worktree/<branch-name> -b <branch-name>` เพื่อสร้าง worktree พร้อม branch ใหม่เสมอ
 2. ตรวจสอบว่า worktree ถูกสร้างด้วย `git worktree list`
 3. รัน `cd worktree/<branch-name>` เพื่อเข้าไปทำงานใน worktree
 
 ### 4. Verify Worktree
+> Goal: Verify Worktree
 
 1. ตรวจสอบว่า worktree directory มีไฟล์ครบถ้วน
 2. รัน `git status` ใน worktree เพื่อตรวจสอบ branch ถูกต้อง

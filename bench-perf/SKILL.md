@@ -11,6 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -24,7 +27,6 @@ Use before and after optimization to measure impact
 ## Execute
 
 ### 1. Identify target
-
 > Goal: identify target
 
 1. Select function, API, or module to benchmark
@@ -32,7 +34,6 @@ Use before and after optimization to measure impact
 1. Choose benchmark tool
 
 ### 2. Setup benchmark
-
 > Goal: setup benchmark
 
 1. Write or reuse benchmark script
@@ -40,7 +41,6 @@ Use before and after optimization to measure impact
 1. Set warm-up and iteration counts
 
 ### 3. Run benchmark
-
 > Goal: run benchmark
 
 1. Execute benchmark multiple times
@@ -48,7 +48,6 @@ Use before and after optimization to measure impact
 1. Store baseline results
 
 ### 4. Compare
-
 > Goal: compare
 
 1. Run after changes
@@ -56,7 +55,6 @@ Use before and after optimization to measure impact
 1. Highlight regressions or improvements
 
 ### 5. Report
-
 > Goal: report
 
 1. Create /report-table with metrics

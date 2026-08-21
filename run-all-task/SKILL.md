@@ -11,6 +11,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - run-test
+  - run-check
+  - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal
@@ -24,7 +29,6 @@ Use when there are multiple queued tasks to complete in one pass
 ## Execute
 
 ### 1. Read queue
-
 > Goal: read queue
 
 1. Read QUEUE.md or task list
@@ -32,7 +36,6 @@ Use when there are multiple queued tasks to complete in one pass
 1. Sort by priority/created
 
 ### 2. Execute tasks
-
 > Goal: execute tasks
 
 1. Run each task with appropriate skill
@@ -40,7 +43,6 @@ Use when there are multiple queued tasks to complete in one pass
 1. Handle errors with /resolve-errors
 
 ### 3. Verify
-
 > Goal: verify
 
 1. Run /run-check and /run-test after tasks
@@ -48,7 +50,6 @@ Use when there are multiple queued tasks to complete in one pass
 1. Retry failed tasks up to 3 times
 
 ### 4. Update and report
-
 > Goal: update and report
 
 1. Mark completed tasks in queue

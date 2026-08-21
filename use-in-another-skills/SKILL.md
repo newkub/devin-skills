@@ -32,8 +32,7 @@ related:
 
 ### 1. Identify Reusable Skill
 
-ระบุ skill ที่จะใช้งาน
-
+> Goal: ระบุ skill ที่จะใช้งาน
 > Goal: ไม่ reinvent เนื้อหาที่มีอยู่
 
 1. ทำ `/list-skills` เพื่อหา skill ที่เกี่ยวข้อง
@@ -43,8 +42,7 @@ related:
 
 ### 2. Add To Related
 
-เพิ่ม reference ใน frontmatter
-
+> Goal: เพิ่ม reference ใน frontmatter
 > Goal: skill ของเราลิงก์ไป skill เป้าหมายอย่างถูกต้อง
 
 1. เปิด `SKILL.md` ของเรา
@@ -54,8 +52,7 @@ related:
 
 ### 3. Reference In Prompt Body
 
-อ้างอิง skill ในเนื้อหา
-
+> Goal: อ้างอิง skill ในเนื้อหา
 > Goal: บอกว่าต้องเรียก skill เป้าหมายเมื่อใด
 
 1. ใช้ backticks สำหรับ `skill-name` เช่น ทำตาม `/follow-containerize-app`
@@ -65,8 +62,7 @@ related:
 
 ### 4. Verify Circular References
 
-ตรวจสอบ references ไม่วนกลับ
-
+> Goal: ตรวจสอบ references ไม่วนกลับ
 > Goal: ไม่เกิด infinite loop หรือ circular dependency
 
 1. ทำ `/check-circular-dependencies` หรือ `/check-reference`
@@ -75,8 +71,7 @@ related:
 
 ### 5. Update And Validate
 
-อัปเดท references และ validate
-
+> Goal: อัปเดท references และ validate
 > Goal: ทุก reference ใช้งานได้จริง
 
 1. ทำ `/update-reference` เพื่อ sync references

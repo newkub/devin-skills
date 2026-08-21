@@ -25,8 +25,7 @@ triggers:
 
 ### 1. Setup Project
 
-สร้างโครงสร้าง project สำหรับ NuShell plugin
-
+> Goal: สร้างโครงสร้าง project สำหรับ NuShell plugin
 > Goal: มา Rust project สำหรับ NuShell plugin
 
 1. สร้าง project ด้วย `cargo new nu_plugin_<name>`
@@ -38,8 +37,7 @@ triggers:
 
 ### 2. Implement Plugin Trait
 
-สร้าง struct ที่ implement `Plugin` trait
-
+> Goal: สร้าง struct ที่ implement `Plugin` trait
 > Goal: plugin มี commands และ version ถูกต้อง
 
 1. สร้าง unit struct สำหรับ plugin (เช่น `LenPlugin`)
@@ -50,8 +48,7 @@ triggers:
 
 ### 3. Implement Command
 
-สร้าง command ด้วย `SimplePluginCommand` หรือ `PluginCommand`
-
+> Goal: สร้าง command ด้วย `SimplePluginCommand` หรือ `PluginCommand`
 > Goal: command มี signature และ run logic ถูกต้อง
 
 1. สร้าง unit struct สำหรับแต่ละ command (เช่น `Len`)
@@ -65,8 +62,7 @@ triggers:
 
 ### 4. Wire Main Entry Point
 
-ต่อเข้ากับ NuShell plugin runtime
-
+> Goal: ต่อเข้ากับ NuShell plugin runtime
 > Goal: plugin สื่อสารกับ NuShell ได้
 
 1. ใน `main()` เรียก `serve_plugin(&YourPlugin, JsonSerializer)` หรือ `MsgPackSerializer`
@@ -75,8 +71,7 @@ triggers:
 
 ### 5. Build And Register Plugin
 
-ติดตั้งและ register plugin กับ NuShell
-
+> Goal: ติดตั้งและ register plugin กับ NuShell
 > Goal: plugin พร้อมใช้ใน NuShell
 
 1. สร้าง release build ด้วย `cargo install --path . --locked`
@@ -86,8 +81,7 @@ triggers:
 
 ### 6. Development Workflow
 
-พัฒนาและทดสอบ plugin
-
+> Goal: พัฒนาและทดสอบ plugin
 > Goal: plugin ผ่าน quality checks และทดสอบ
 
 1. ใช้ `cargo build` และ `cargo run` ใน development

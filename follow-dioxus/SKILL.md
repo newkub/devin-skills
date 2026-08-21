@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -29,8 +31,7 @@ triggers:
 
 ### 1. Check Precondition
 
-ตรวจสอบ environment ก่อนเริ่ม
-
+> Goal: ตรวจสอบ environment ก่อนเริ่ม
 > Goal: มี Rust toolchain พร้อมสำหรับ Dioxus
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว (`rustc --version`)
@@ -39,8 +40,7 @@ triggers:
 
 ### 2. Setup
 
-ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
-
+> Goal: ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
 > Goal: มี project structure เริ่มต้นพร้อมพัฒนา
 
 1. ติดตั้ง Dioxus CLI: `cargo install dioxus-cli`
@@ -50,8 +50,7 @@ triggers:
 
 ### 3. Configure
 
-กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
-
+> Goal: กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
 > Goal: project สามารถ build ได้ทุก target
 
 1. ระบุ `dioxus` dependency ใน `Cargo.toml` พร้อม feature ตาม target
@@ -61,8 +60,7 @@ triggers:
 
 ### 4. Develop
 
-พัฒนา components และรัน development server
-
+> Goal: พัฒนา components และรัน development server
 > Goal: UI ทำงานได้ และ development server รันได้
 
 1. สร้าง `src/main.rs` ด้วย `launch(app)` และ component tree
@@ -72,8 +70,7 @@ triggers:
 
 ### 5. Build
 
-Build สำหรับ production
-
+> Goal: Build สำหรับ production
 > Goal: ได้ executable หรือ static files พร้อม deploy
 
 1. Desktop: `dx build --release`

@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-ast-grep-rules
+  - follow-write-devin-skills
+  - use-ast-grep-outline
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare
+> Goal: Prepare
 
 - ทำ `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 - ติดตั้ง ast-grep CLI: `bun add -g @ast-grep/cli`
@@ -30,6 +36,7 @@ triggers:
 - สร้าง folder `rules/` สำหรับเก็บ rule files
 
 ### 2. Create Rule
+> Goal: Create Rule
 
 - สร้าง rule YAML file ใน `rules/`
 - กำหนด id, language, rule, fix, message
@@ -38,6 +45,7 @@ triggers:
 - ทำ `/update-ast-grep-rules` สำหรับเขียน rules ที่ซับซ้อน
 
 ### 3. Advanced Rules
+> Goal: Advanced Rules
 
 - ใช้ relational rules: inside, has, precedes, follows
 - ใช้ composite rules: all, any, not, matches
@@ -45,6 +53,7 @@ triggers:
 - ใช้ transform สำหรับ complex transformations
 
 ### 4. Test Rules
+> Goal: Test Rules
 
 - สร้าง test cases (valid และ invalid)
 - รัน `ast-grep test` เพื่อ verify rules
@@ -52,6 +61,7 @@ triggers:
 - รัน `ast-grep scan` เพื่อ test กับ codebase
 
 ### 5. Usage
+> Goal: Usage
 
 - ใช้ `ast-grep run -p 'pattern'` สำหรับ ad-hoc search
 - รัน `ast-grep scan --config sgconfig.yml` สำหรับ routine check
@@ -59,6 +69,7 @@ triggers:
 - ตรวจสอบ output และ tune rules
 
 ### 6. Outline Command
+> Goal: Outline Command
 
 ใช้ `sg outline` สำหรับ explore code structure และ navigation
 

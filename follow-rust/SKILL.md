@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-cargo
+  - follow-clean-architecture
+  - follow-test
+  - follow-mutants-rs
+  - follow-clippy
 ---
 
 ## Goal
@@ -23,7 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Project Planning
-
+> Goal: Project Planning
 1. ระบุ Project Location ใน monorepo
 2. ตัดสินใจใช้ Workspace หรือ Single Crate
 3. กำหนด Architecture: Clean Architecture หรือ Standard
@@ -34,7 +42,7 @@ triggers:
 8. ถ้า project ต้องการ WASM: เลือก wasm-bindgen และ wasm-pack
 
 ### 2. Directory Structure
-
+> Goal: Directory Structure
 1. ใช้ `src/` directory สำหรับ source code
 2. สร้าง `crates/` สำหรับ workspace members
 3. สร้าง `tests/` สำหรับ integration tests
@@ -43,7 +51,7 @@ triggers:
 6. ถ้า project มี Clean Architecture: ทำ `/follow-clean-architecture`
 
 ### 3. Configuration
-
+> Goal: Configuration
 1. ตั้งค่า `Cargo.toml` (workspace หรือ single crate)
 2. ตั้งค่า `.cargo/config.toml` สำหรับ build configurations
 3. ตั้งค่า `rust-toolchain.toml` สำหรับ Rust version
@@ -51,7 +59,7 @@ triggers:
 5. ตั้งค่า sccache สำหรับ shared compilation cache
 
 ### 4. Quality Enforcement
-
+> Goal: Quality Enforcement
 1. รัน `/follow-cargo` เพื่อตั้งค่า Cargo lint rules และ workspace lint inheritance
 2. รัน `/follow-clippy` เพื่อตั้งค่า Clippy lint rules และ thresholds
 3. ตั้งค่า `forbid unsafe_code` ใน workspace
@@ -62,7 +70,7 @@ triggers:
 8. ใช้ Miri สำหรับตรวจสอบ undefined behavior ใน CI
 
 ### 5. Verification
-
+> Goal: Verification
 1. รัน `cargo check` ตรวจสอบ compilation errors
 2. รัน `cargo clippy` ตรวจสอบ linting
 3. รัน `cargo fmt` ตรวจสอบ formatting
@@ -72,7 +80,7 @@ triggers:
 7. ถ้า project มี WASM target: ทดสอบ `cargo build --target wasm32-unknown-unknown`
 
 ### 6. Testing Strategy
-
+> Goal: Testing Strategy
 กำหนด testing strategy ตาม project type
 
 1. ทำ `/follow-test` สำหรับ testing strategy ทั่วไป

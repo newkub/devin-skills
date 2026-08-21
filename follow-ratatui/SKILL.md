@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Install Dependencies
+> Goal: Install Dependencies
 
 ติดตั้ง Ratatui และ dependencies ที่จำเป็น
 
@@ -30,6 +33,7 @@ triggers:
 2. เพิ่ม dependencies เสริมตามความต้องการ
 
 ### 2. Setup Terminal
+> Goal: Setup Terminal
 
 ตั้งค่า terminal สำหรับ TUI
 
@@ -38,6 +42,7 @@ triggers:
 3. จัดการ `PanicHook` สำหรับ graceful shutdown
 
 ### 3. Create Layout
+> Goal: Create Layout
 
 สร้าง layout สำหรับ UI components
 
@@ -46,6 +51,7 @@ triggers:
 3. กำหนด sizes (percentage, fixed, min, max)
 
 ### 4. Build Components
+> Goal: Build Components
 
 สร้าง UI components ต่างๆ
 
@@ -55,6 +61,7 @@ triggers:
 4. ใช้ `Gauge`, `Sparkline` สำหรับ progress
 
 ### 5. Handle Events
+> Goal: Handle Events
 
 จัดการ keyboard และ terminal events
 
@@ -63,6 +70,7 @@ triggers:
 3. จัดการ terminal resize events
 
 ### 6. Render Loop
+> Goal: Render Loop
 
 สร้าง render loop สำหรับ update UI
 

@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - use-scripts
 ---
 
 ## Goal
@@ -24,8 +27,7 @@ triggers:
 
 ### 1. Check Pwsh Installation
 
-ตรวจสอบและติดตั้ง pwsh
-
+> Goal: ตรวจสอบและติดตั้ง pwsh
 > Goal: ยื่นยันว่ามี pwsh พร้อมใช้
 
 1. รัน `pwsh --version` เพื่อตรวจสอบ PowerShell Core
@@ -37,8 +39,7 @@ triggers:
 
 ### 2. Run Commands With Pwsh
 
-รันคำสั่งด้วย pwsh
-
+> Goal: รันคำสั่งด้วย pwsh
 > Goal: execute commands อย่างถูกต้อง
 
 1. คำสั่งเดี่ยว: `pwsh -Command '<command>'`
@@ -49,8 +50,7 @@ triggers:
 
 ### 3. Use Pwsh For File Operations
 
-จัดการไฟล์และโฟลเดอร
-
+> Goal: จัดการไฟล์และโฟลเดอร
 > Goal: file operations ปลอดภัยและ cross-platform
 
 1. สร้าง directory: `New-Item -ItemType Directory -Path <path>`
@@ -63,8 +63,7 @@ triggers:
 
 ### 4. Write Pwsh Scripts
 
-เขียนสคริปต์สำหรับ automation
-
+> Goal: เขียนสคริปต์สำหรับ automation
 > Goal: scripts reusable และ maintainable
 
 1. ใช้ `param` block สำหรับ parameters
@@ -77,8 +76,7 @@ triggers:
 
 ### 5. Integrate With Use Scripts
 
-เชื่อมต่อกับ `/use-scripts`
-
+> Goal: เชื่อมต่อกับ `/use-scripts`
 > Goal: scripts ทำงานร่วมกับ automation pipeline ได้
 
 1. ใช้ pwsh สำหรับ Windows-specific หรือ .NET integration

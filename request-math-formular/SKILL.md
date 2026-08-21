@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-request-math-formular
 ---
 
 ## Goal
@@ -25,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Input
+> Goal: Analyze Input
 
 วิเคราะห์ input ที่ผู้ใช้ให้มาเพื่อเข้าใจสิ่งที่ต้องการแปลง
 
@@ -34,6 +38,7 @@ triggers:
 4. ถ้า input ไม่ชัดเจน ให้ถามผู้ใช้ ถ้าผู้ใช้ไม่ตอบให้ stop และ report
 
 ### 2. Extract Variables And Relationships
+> Goal: Extract Variables And Relationships
 
 สกัดตัวแปรและความสัมพันธ์ทางคณิตศาสตร์จาก input
 
@@ -43,6 +48,7 @@ triggers:
 4. ถ้ามีหลายสูตรที่เกี่ยวข้องกัน ให้จัดกลุ่มตามลำดับการใช้งาน
 
 ### 3. Convert To Math Formula
+> Goal: Convert To Math Formula
 
 แปลงเป็นสูตรคณิตศาสตร์ตามมาตรฐาน
 
@@ -52,6 +58,7 @@ triggers:
 4. ถ้ามีหลายขั้นตอน ให้เขียนเป็นลำดับสูตรพร้อมเลขกำกับ
 
 ### 4. Validate And Simplify
+> Goal: Validate And Simplify
 
 ตรวจสอบความถูกต้องและทำให้กระชับที่สุด
 
@@ -61,6 +68,7 @@ triggers:
 4. ถ้าผลไม่ตรง ให้กลับไป Step 2 และ re-extract
 
 ### 5. Report
+> Goal: Report
 
 รายงานผลลัพธ์ในรูปแบบที่อ่านง่าย
 

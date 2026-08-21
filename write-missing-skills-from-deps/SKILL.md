@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - update-reference
+  - learn-from-web
+  - follow-write-devin-skills
+  - follow-content-quality
 ---
 
 ## Goal
@@ -23,18 +30,21 @@ triggers:
 ## Execute
 
 ### 1. Read Package Manifest
+> Goal: Read Package Manifest
 
 1. อ่าน `package.json` หรือ `Cargo.toml` จาก workspace
 2. ดึงรายชื่อ dependencies ที่มี skills ใน Cascade
 3. กรองเฉพาะ dependencies ที่มี official skills
 
 ### 2. Check Skills In Global
+> Goal: Check Skills In Global
 
 1. อ่านรายการ skills ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
 2. เปรียบเทียบ dependencies กับ skills ที่มีอยู่
 3. ระบุ skills ที่ยังไม่มีใน global
 
 ### 3. Create Missing Skills
+> Goal: Create Missing Skills
 
 1. ทำ `/follow-write-devin-skills` สำหรับแต่ละ skill ที่ขาด
 2. สร้าง folder structure ตามมาตรฐาน
@@ -42,6 +52,7 @@ triggers:
 4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
 
 ### 4. Validate And Finalize
+> Goal: Validate And Finalize
 
 1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
 2. ใช้ `/follow-content-quality` สำหรับทุกไฟล์

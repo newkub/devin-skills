@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - check-should-update
+  - all-workspaces
+  - follow-content-quality
+  - report-uxui-sketch
+  - update-changelog-md
 ---
 
 ## Goal
@@ -23,9 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Prepare
-
-เตรียมข้อมูลก่อนเขียน README
-
+> Goal: เตรียมข้อมูลก่อนเขียน README
 > Goal: รู้ project type และมี changelog พร้อม
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ก่อน — ถ้าไม่มี changes → skip และ report
@@ -35,8 +40,7 @@ triggers:
 
 ### 2. Write Root README
 
-เขียน README หลักของ monorepo
-
+> Goal: เขียน README หลักของ monorepo
 > Goal: Root README ครบถ้วนตาม template ใช้ข้อมูลจริง
 
 1. ทำ `/analyze-project` เพื่อเก็บข้อมูล root
@@ -46,8 +50,7 @@ triggers:
 
 ### 3. Generate UI Sketch
 
-สร้าง UX/UI sketch สำหรับ README
-
+> Goal: สร้าง UX/UI sketch สำหรับ README
 > Goal: มี sketch แสดง layout หลักของ workspace
 
 1. ทำ `/report-uxui-sketch` เพื่อวาด layout หลักของ workspace
@@ -57,8 +60,7 @@ triggers:
 
 ### 4. Update Workspaces READMEs
 
-อัปเดต README ทุก workspace ใน monorepo
-
+> Goal: อัปเดต README ทุก workspace ใน monorepo
 > Goal: ทุก workspace มี README ครบถ้วนตาม template
 
 1. ทำ `/all-workspaces` เพื่อ update README ทุก workspaces
@@ -67,8 +69,7 @@ triggers:
 
 ### 5. Validate
 
-ตรวจสอบคุณภาพและอัปเดต references
-
+> Goal: ตรวจสอบคุณภาพและอัปเดต references
 > Goal: README ผ่าน quality check และ references ถูกต้อง
 
 1. `/follow-content-quality`, `/update-reference` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
@@ -136,7 +137,7 @@ triggers:
 
 ## Example Template
 
-```markdown
+````markdown
 # @wrikka/package-name
 > 🚀 Short description — Longer description.
 
@@ -237,6 +238,8 @@ src/
 ```
 </details>
 <!-- Workflows, Skills: file structure codeblock with # comments -->
+
+````
 
 ## Expected Outcome
 

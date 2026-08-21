@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `learn-from-cli` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Basic Discovery
+> Goal: Basic Discovery
 
 1. รัน `<cli> --version` เพื่อดู version
 2. รัน `<cli> --help` หรือ `<cli> -h`
@@ -34,6 +32,7 @@ Use `learn-from-cli` for the specific tasks and workflows it covers
 4. รัน `<cli> <subcommand> --help` เพื่อดู options ของแต่ละ subcommand
 
 ### 2. Machine-Readable Context
+> Goal: Machine-Readable Context
 
 ถ้า CLI รองรับ machine-readable metadata:
 1. รัน `<cli> agent-context` ถ้ามี
@@ -41,6 +40,7 @@ Use `learn-from-cli` for the specific tasks and workflows it covers
 3. บันทึก command list, flags, และ argument types
 
 ### 3. Document
+> Goal: Document
 
 สรุปทีได้:
 - command groups

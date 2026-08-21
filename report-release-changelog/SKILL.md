@@ -14,6 +14,7 @@ related:
   - report-table
   - report-file-structure
   - suggest-next-action
+  - report-ansi
 ---
 
 ## Goal
@@ -28,8 +29,7 @@ related:
 
 ### 1. Receive Data
 
-รับข้อมูล diff ดิบ
-
+> Goal: รับข้อมูล diff ดิบ
 > Goal: มีข้อมูลครบสำหรับเขียน report
 
 1. ถ้าได้รับจาก `/check-release-changelog` → อ่าน `repo`, `from`, `to`, `compareUrl`, `releaseNotes`, `commits`, `filesChanged`
@@ -38,8 +38,7 @@ related:
 
 ### 2. Format Changelog
 
-จัดรูปแบบ report
-
+> Goal: จัดรูปแบบ report
 > Goal: report อ่านง่าย มี highlights
 
 1. Header: release version, compare URL, release date
@@ -54,8 +53,7 @@ related:
 
 ### 3. Output
 
-นำเสนอ report
-
+> Goal: นำเสนอ report
 > Goal: user ได้รับ report พร้อม next action
 
 1. ใช้ `/report-table` สำหรับตารางสรุป
@@ -65,7 +63,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

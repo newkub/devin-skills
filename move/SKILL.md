@@ -10,9 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - update-reference
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `move` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Move File
+> Goal: Move File
 
 ย้ายไฟล์ไปยังตำแหน่งใหม่
 
@@ -35,6 +34,7 @@ Use `move` for the specific tasks and workflows it covers
 3. ตรวจสอบว่าย้ายถูกต้อง
 
 ### 2. Update Reference
+> Goal: Update Reference
 
 อัพเดท reference
 
@@ -43,13 +43,9 @@ Use `move` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ตรวจสอบว่าไม่มี data loss
 - อัพเดท references หลังจากย้ายไฟล์
-
-## Expected Outcome
 
 ## Expected Outcome
 

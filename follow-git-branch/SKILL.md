@@ -28,6 +28,7 @@ related:
 ## Execute
 
 ### 1. List Branches
+> Goal: List Branches
 
 1. `git branch` สำหรับ local
 2. `git branch -r` สำหรับ remote
@@ -35,12 +36,14 @@ related:
 4. `git branch --list <pattern>` เพื่อ filter
 
 ### 2. Switch Branch
+> Goal: Switch Branch
 
 1. `git switch <branch>` หรือ `git checkout <branch>`
 2. ตรวจสอบ working tree สะอาด
 3. ถ้ามี uncommitted changes → stash หรือ commit ก่อน
 
 ### 3. Rename Branch
+> Goal: Rename Branch
 
 1. `git branch -m <old> <new>` สำหรับ local
 2. `git branch -m <new>` สำหรับ current
@@ -48,12 +51,14 @@ related:
 4. อัปเดต tracking ด้วย `git branch -u origin/<new>`
 
 ### 4. Delete Branch
+> Goal: Delete Branch
 
 1. `git branch -d <branch>` ลบหลัง merge
 2. `git branch -D <branch>` บังคับลบ
 3. `git push origin --delete <branch>` สำหรับ remote
 
 ### 5. Merge Branch
+> Goal: Merge Branch
 
 1. switch ไป target branch
 2. `git merge <source>`

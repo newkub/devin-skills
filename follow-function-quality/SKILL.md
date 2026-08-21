@@ -18,9 +18,6 @@ related:
   - review-codebase
   - refactor
   - refactor-to-srp
-  - edit-relative
-  - use-scripts
-  - refactor-codebase
 ---
 
 ## Goal
@@ -35,8 +32,7 @@ related:
 
 ### 1. Scan Functions
 
-หา functions ทั้งหมดใน target path
-
+> Goal: หา functions ทั้งหมดใน target path
 > Goal: มีรายการ functions พร้อม signature และ body overview
 
 1. ทำ `/check-code-structure` เพื่อดู top-level functions, methods, members
@@ -45,8 +41,7 @@ related:
 
 ### 2. Check Function SRP
 
-ตรวจสอบว่า function ทำหน้าที่เดียว
-
+> Goal: ตรวจสอบว่า function ทำหน้าที่เดียว
 > Goal: ทุก function มี single responsibility
 
 1. อ่าน body ของ function ว่ามีหลาย concern หรือไม่
@@ -55,8 +50,7 @@ related:
 
 ### 3. Check Naming Quality
 
-ตรวจสอบชื่อ function ให้สะท้อน intent
-
+> Goal: ตรวจสอบชื่อ function ให้สะท้อน intent
 > Goal: ชื่อ function บ่งบอกสิ่งที่ทำอย่างชัดเจน
 
 1. ใช้ `/review-codebase` เพื่อตรวจสอบ naming conventions
@@ -66,8 +60,7 @@ related:
 
 ### 4. Check Function Complexity
 
-วัด complexity ของ function
-
+> Goal: วัด complexity ของ function
 > Goal: function เล็ก อ่านง่าย ทดสอบง่าย
 
 1. วัดจำนวนบรรทัดของ function (ไม่เกิน 50 บรรทัด หรือ threshold ของ project)
@@ -78,19 +71,16 @@ related:
 
 ### 5. Check Purity And Side Effects
 
-ตรวจสอบ pure functions และ side effects
-
+> Goal: ตรวจสอบ pure functions และ side effects
 > Goal: แยก pure functions ออกจาก side effects เมื่อเป็นไปได้
 
 1. ระบุ function ที่อ่าน/เขียน global state, DOM, file, network, database
 2. ระบุ function ที่ modify parameters โดย reference
 3. แนะนำให้แยก logic เป็น pure function และ isolate side effect ไปอีก function
 
-
 ### 6. Check Parameters And Returns
 
-ตรวจสอบ parameter และ return patterns
-
+> Goal: ตรวจสอบ parameter และ return patterns
 > Goal: ลด coupling ผ่าน interface ที่ชัดเจน
 
 1. หลีกเลี่ยง boolean parameters (flag parameters) หรือทำให้ชื่ออ่านออก
@@ -100,8 +90,7 @@ related:
 
 ### 7. Refactor Functions
 
-แก้ไข functions ที่มีปัญหา
-
+> Goal: แก้ไข functions ที่มีปัญหา
 > Goal: ได้ function ทีดีขึ้น
 
 1. แยก multi-responsibility function ออกเป็น functions ย่อยด้วย composition
@@ -112,8 +101,7 @@ related:
 
 ### 8. Report
 
-สรุปผลการตรวจสอบ
-
+> Goal: สรุปผลการตรวจสอบ
 > Goal: ผู้ใช้ได้รับ actionable report
 
 1. สร้างตาราง: file, function, issue, severity, recommended action

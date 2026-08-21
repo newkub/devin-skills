@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze CSS Setup
+> Goal: Analyze CSS Setup
 
 วิเคราะห์ CSS setup ปัจจุบัน
 
@@ -32,6 +35,7 @@ triggers:
 4. ระบุ browser compatibility requirements
 
 ### 2. Apply Modern CSS Features
+> Goal: Apply Modern CSS Features
 
 ใช้ modern CSS features ที่เหมาะสม
 
@@ -43,6 +47,7 @@ triggers:
 6. ใช้ Grid และ Flexbox สำหรับ layouts
 
 ### 3. Optimize Performance
+> Goal: Optimize Performance
 
 ปรับปรุง performance ของ CSS
 
@@ -54,6 +59,7 @@ triggers:
 6. ใช้ critical CSS สำหรับ above-the-fold content
 
 ### 4. Ensure Accessibility
+> Goal: Ensure Accessibility
 
 ตรวจสอบ accessibility
 

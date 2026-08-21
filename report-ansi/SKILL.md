@@ -30,8 +30,7 @@ related:
 
 ### 1. Collect Status
 
-รวบรวมข้อมูลทีต้องรายงาน
-
+> Goal: รวบรวมข้อมูลทีต้องรายงาน
 > Goal: มีข้อมูลสถานะครบ
 
 1. อ่าน logs หรือ status จาก file/stdout
@@ -40,8 +39,7 @@ related:
 
 ### 2. Format With ANSI
 
-จัดรูปแบบด้วย ANSI escape codes
-
+> Goal: จัดรูปแบบด้วย ANSI escape codes
 > Goal: terminal output ชัดเจน
 
 1. ใช้สี green สำหรับ success, red สำหรับ error, yellow สำหรับ warning, blue สำหรับ info
@@ -51,8 +49,7 @@ related:
 
 ### 3. Render Summary
 
-แสดงสรุปด้านบน
-
+> Goal: แสดงสรุปด้านบน
 > Goal: user เห็นภาพรวมก่อนรายละเอียด
 
 1. สรุปจำนวนรายการตาม status

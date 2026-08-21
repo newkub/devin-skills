@@ -1,6 +1,6 @@
 ---
 name: use-ast-grep-outline
-description: ใช้งาน ast-grep outline เพื่อ explore code structure และ navigation อย่างรวดเร็ว โดยไม่ต้อง build...
+description: ใช้งาน ast-grep outline เพื่อ explore code structure และ navigation อย่างรวดเร็ว โดยไม่ต้อง
 allowed-tools:
   - read
   - edit
@@ -10,6 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -28,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Basic Usage
+> Goal: Basic Usage
 
 รัน ast-grep outline เพื่อ explore code structure:
 
@@ -43,8 +45,7 @@ sg outline src/parser.ts src/rule.ts
 ```
 
 ### 2. Filter Items
-
-เลือก top-level items ที่ต้องการดู:
+> Goal: เลือก top-level items ที่ต้องการดู
 
 ```bash
 # ดู imports/dependencies ของ file
@@ -61,8 +62,7 @@ sg outline src/parser.ts --items structure
 ```
 
 ### 3. Filter By Type
-
-กรอง symbols ตาม type:
+> Goal: กรอง symbols ตาม type
 
 ```bash
 # ดูเฉพาะ classes และ enums
@@ -76,6 +76,7 @@ sg outline src --type interface
 ```
 
 ### 4. Filter By Pattern
+> Goal: Filter By Pattern
 
 กรอง symbols ด้วย regex:
 
@@ -91,8 +92,7 @@ sg outline src --match "^use"
 ```
 
 ### 5. Select View
-
-เลือก presentation level:
+> Goal: เลือก presentation level
 
 ```bash
 # ดูเฉพาะ names (grouped by symbol type)
@@ -109,8 +109,7 @@ sg outline src --view expanded
 ```
 
 ### 6. Expand Specific Symbol
-
-Expand symbol เฉพาะเจาะจง:
+> Goal: Expand symbol เฉพาะเจาะจง
 
 ```bash
 # Expand class Parser ดู members ทั้งหมด
@@ -121,6 +120,7 @@ sg outline src/parser.ts --match parseRule --type function --view expanded
 ```
 
 ### 7. Public Members Only
+> Goal: Public Members Only
 
 ดูเฉพาะ public members:
 

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,11 +25,13 @@ triggers:
 ## Execute
 
 ### 1. Identify Latest Prompt
+> Goal: Identify Latest Prompt
 
 1. อ่าน user prompt ล่าสุดจาก conversation history
 2. ถ้าไม่พบ ให้ถามผู้ใช้
 
 ### 2. Re-Execute
+> Goal: Re-Execute
 
 1. ทำตาม user prompt ล่าสุดอีกครั้ง
 2. แก้ไขปัญหาที่ root cause

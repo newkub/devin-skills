@@ -1,13 +1,14 @@
 ---
 name: list-github-gist
 description: แสดงรายการ GitHub gists ของผู้ใช้
-argument-hint: "[--limit <n>] [--public|--secret]"
 allowed-tools:
   - exec
+  - ask_user_question
 triggers:
   - user
 related:
   - report-table
+argument-hint: "[--limit <n>] [--public|--secret]"
 ---
 
 ## Goal
@@ -23,14 +24,12 @@ related:
 ## Execute
 
 ### 1. Verify Authentication
-
 > Goal: ยืนยันว่า `gh` login แล้ว
 
 1. รัน `gh auth status`
 2. ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
 
 ### 2. List Gists
-
 > Goal: ได้รายการ gists
 
 1. รับ `--limit` จาก argument (ค่าเริ่มต้น 30)
@@ -38,7 +37,6 @@ related:
 3. บันทึก output สำหรับ format
 
 ### 3. Format Output
-
 > Goal: แสดงผลในรูปแบบอ่านง่าย
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบ

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,12 +25,14 @@ triggers:
 ## Execute
 
 ### 1. Check Current License
+> Goal: Check Current License
 
 1. ตรวจสอบไฟล์ `LICENSE.md` ที่มีอยู่
 2. ระบุประเภท license ปัจจุบัน
 3. ตรวจสอบว่า license ถูกต้องตามประเภทโปรเจกต์
 
 ### 2. Choose Appropriate License
+> Goal: Choose Appropriate License
 
 1. เลือก license ตามประเภทโปรเจกต์:
    - Open Source Library: MIT, Apache-2.0, BSD-3-Clause
@@ -39,6 +43,7 @@ triggers:
 3. ตรวจสอบความเหมาะสมกับ dependencies
 
 ### 3. Apply License Template
+> Goal: Apply License Template
 
 1. ใช้ template มาตรฐานตามประเภท license
 2. อัปเดตปีและชื่อผู้ถือลิขสิทธิ์
@@ -46,6 +51,7 @@ triggers:
 4. บันทึกไฟล์ `LICENSE.md`
 
 ### 4. Update Package Manifest
+> Goal: Update Package Manifest
 
 1. อัปเดต `license` field ใน `package.json` หรือ `Cargo.toml`
 2. ตรวจสอบว่าค่าตรงกับ LICENSE.md

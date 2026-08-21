@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-install
+  - report-table
+  - report
+  - check-time-complexity
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Environment
+> Goal: Setup Environment
 
 1. ทำ `/run-install` เพื่อติดตั้ง dependencies และ benchmark libraries (เช่น `vitest bench`, `tinybench`)
 2. ตรวจสอบว่ามี benchmark files ใน project (เช่น `*.bench.ts`, `bench/` directory)
@@ -30,6 +37,7 @@ triggers:
 4. ถ้ามี baseline results ให้บันทึกไว้สำหรับการเปรียบเทียบ
 
 ### 2. Run Benchmarks
+> Goal: Run Benchmarks
 
 1. รัน `bun run bench` หรือ script ที่กำหนดใน `package.json`
 2. ถ้าต้องการรันเฉพาะ benchmark ให้ระบุ pattern (เช่น `bun run bench -- --grep "pattern"`)
@@ -37,6 +45,7 @@ triggers:
 4. ทำ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 3. Analyze Results
+> Goal: Analyze Results
 
 1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
 2. ทำ `/check-time-complexity` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
@@ -45,6 +54,7 @@ triggers:
 5. ถ้ามี variance สูง ให้รันซ้ำเพื่อยืนยันผลลัพธ์
 
 ### 4. Compare With Baseline
+> Goal: Compare With Baseline
 
 1. เปรียบเทียบผลลัพธ์กับ baseline ถ้ามี
 2. ระบุ regressions (ช้าลง) และ improvements (เร็วขึ้น)

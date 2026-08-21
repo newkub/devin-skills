@@ -27,8 +27,7 @@ related:
 
 ### 1. Create Project
 
-เริ่มต้น project ด้วย WXT หรือ scaffolding tool
-
+> Goal: เริ่มต้น project ด้วย WXT หรือ scaffolding tool
 > Goal: มี project structure สำหรับ browser extension
 
 1. ทำ `/follow-wxt` ถ้าใช้ WXT
@@ -38,8 +37,7 @@ related:
 
 ### 2. Configure Manifest
 
-ตั้งค่า `manifest.json` ตาม Manifest V3
-
+> Goal: ตั้งค่า `manifest.json` ตาม Manifest V3
 > Goal: manifest ถูกต้องและมีสิทธิ์เฉพาะทีจำเป็น
 
 1. ตั้งค่า `manifest_version: 3`
@@ -49,8 +47,7 @@ related:
 
 ### 3. Implement Features
 
-พัฒนา background, content, และ popup scripts
-
+> Goal: พัฒนา background, content, และ popup scripts
 > Goal: extension ทำงานตาม requirements บนทุก target browsers
 
 1. สร้าง background service worker สำหรับ events
@@ -60,8 +57,7 @@ related:
 
 ### 4. Test
 
-Test บน browsers ที่ต้องการ support
-
+> Goal: Test บน browsers ที่ต้องการ support
 > Goal: extension ทำงานถูกต้องและปลอดภัยบนทุก browsers
 
 1. โหลด extension ใน Chrome developer mode

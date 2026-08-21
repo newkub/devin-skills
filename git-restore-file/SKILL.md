@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - ask-me
+  - git-commit
+  - follow-git
 ---
 
 ## Goal
@@ -25,8 +30,7 @@ triggers:
 
 ### 1. Identify Target Files
 
-ระบุไฟล์ที่ต้องการ restore จาก context หรือถามผู้ใช้
-
+> Goal: ระบุไฟล์ที่ต้องการ restore จาก context หรือถามผู้ใช้
 > Goal: ทราบไฟล์ที่ต้องการ restore และ path ที่ชัดเจน
 
 1. ระบุไฟล์ที่ต้องการ restore จาก context
@@ -35,8 +39,7 @@ triggers:
 
 ### 2. Check Latest Commit
 
-ดู commit ล่าสุดว่ามีไฟล์ที่ต้องการหรือไม่
-
+> Goal: ดู commit ล่าสุดว่ามีไฟล์ที่ต้องการหรือไม่
 > Goal: ทราบว่า commit ล่าสุดมีไฟล์เป้าหมายหรือไม่
 
 1. รัน `git log -1 --name-status` เพื่อดูไฟล์ที่เปลี่ยนแปลงใน commit ล่าสุด
@@ -46,8 +49,7 @@ triggers:
 
 ### 3. Walk Back Through Log
 
-เดินกลับไปใน git log ทีละ commit จนกว่าจะพบไฟล์ที่ต้องการ
-
+> Goal: เดินกลับไปใน git log ทีละ commit จนกว่าจะพบไฟล์ที่ต้องการ
 > Goal: พบ commit ที่มีไฟล์เป้าหมาย พร้อมระบุ commit hash
 
 1. รัน `git log --oneline --all -- <file-path>` เพื่อดู commits ที่แก้ไฟล์เป้าหมาย
@@ -57,8 +59,7 @@ triggers:
 
 ### 4. Restore Files
 
-กู้คืนไฟล์จาก commit ที่พบ
-
+> Goal: กู้คืนไฟล์จาก commit ที่พบ
 > Goal: ไฟล์ถูก restore กลับไปยัง working directory
 
 1. รัน `git restore --source=<commit-hash> <file-path>` เพื่อ restore ไฟล์จาก commit ที่พบ
@@ -67,8 +68,7 @@ triggers:
 
 ### 5. Verify Restoration
 
-ตรวจสอบความถูกต้องของไฟล์ที่ restore
-
+> Goal: ตรวจสอบความถูกต้องของไฟล์ที่ restore
 > Goal: ไฟล์ที่ restore ถูกต้องและใช้งานได้
 
 1. รัน `git diff <file-path>` เพื่อดูสิ่งที่เปลี่ยนแปลงหลัง restore
@@ -78,7 +78,6 @@ triggers:
 ## Rules
 
 ### Restore Strategy
-
 > Goal: restore ไฟล์อย่างปลอดภัย ไม่ทำลาย working directory
 
 - ใช้ `git restore --source=<commit-hash>` เสมอ ไม่ใช้ `git checkout <commit-hash> -- <file>` เพราะ restore สามารถยกเลิกได้ง่ายกว่า
@@ -86,7 +85,6 @@ triggers:
 - ไม่ใช้ `git reset --hard` เพราะเป็น destructive action
 
 ### Walk Back Strategy
-
 > Goal: เดินกลับใน git log อย่างมีประสิทธิภาพ
 
 - ใช้ `git log -- <file-path>` เพื่อกรองเฉพาะ commits ที่แก้ไฟล์เป้าหมาย ไม่ต้องเดินทุก commit

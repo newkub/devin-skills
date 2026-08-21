@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,9 @@ Use `follow-crw` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Web Search
+
+> Goal: Web Search
 
 ใช้ `crw search` สำหรับ web search ผ่าน SearXNG:
 
@@ -42,7 +41,7 @@ crw search "rust web scraper" --format json
 
 ### 2. URL Scraping
 
-ใช้ `crw scrape` หรือ default mode สำหรับ scrape URL เดียว:
+> Goal: ใช้ `crw scrape` หรือ default mode สำหรับ scrape URL เดียว
 
 ```bash
 crw example.com
@@ -65,7 +64,7 @@ Options สำคัญ:
 
 ### 3. Website Crawling
 
-ใช้ `crw crawl` สำหรับ BFS crawl เว็บไซต์:
+> Goal: ใช้ `crw crawl` สำหรับ BFS crawl เว็บไซต์
 
 ```bash
 crw crawl example.com --depth 3
@@ -78,6 +77,8 @@ crw crawl example.com --depth 2 --format json
 - กำหนด depth ชัดเจน
 
 ### 4. URL Discovery
+
+> Goal: URL Discovery
 
 ใช้ `crw map` สำหรับ discover URLs บนเว็บไซต์:
 
@@ -93,7 +94,7 @@ crw map example.com --format json
 
 ### 5. Structured Data Extraction
 
-ใช้ `--extract` กับ JSON Schema สำหรับ extract structured data:
+> Goal: ใช้ `--extract` กับ JSON Schema สำหรับ extract structured data
 
 ```bash
 crw example.com --extract '{"type": "object", "properties": {"title": {"type": "string"}}}'
@@ -107,7 +108,7 @@ crw example.com --extract @schema.json
 
 ### 6. AI Summary
 
-ใช้ `--summary` หรือ `--prompt` สำหรับ generate AI summary:
+> Goal: ใช้ `--summary` หรือ `--prompt` สำหรับ generate AI summary
 
 ```bash
 crw example.com --summary
@@ -127,6 +128,8 @@ Options สำหรับ LLM:
 
 ### 7. MCP Server
 
+> Goal: MCP Server
+
 ใช้ `crw mcp` สำหรับ start MCP server:
 
 ```bash
@@ -145,7 +148,7 @@ Environment Variables:
 
 ### 8. Browser Automation
 
-ใช้ `crw browse` สำหรับ browser automation MCP:
+> Goal: ใช้ `crw browse` สำหรับ browser automation MCP
 
 ```bash
 crw browse
@@ -158,7 +161,7 @@ crw browse
 
 ### 9. REST API Server
 
-ใช้ `crw serve` สำหรับ start REST API server (Firecrawl-compatible):
+> Goal: ใช้ `crw serve` สำหรับ start REST API server (Firecrawl-compatible)
 
 ```bash
 crw serve --port 3000
@@ -168,8 +171,6 @@ crw serve --port 3000
 - Integration กับ existing systems
 - Firecrawl-compatible API
 - Serve ผ่าน HTTP endpoint
-
-## Rules
 
 ## Rules
 
@@ -206,8 +207,6 @@ crw serve --port 3000
 - rawhtml: สำหรับ full HTML content
 - text: สำหรับ plain text
 - links: สำหรับ URL extraction
-
-## Expected Outcome
 
 ## Expected Outcome
 

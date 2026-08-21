@@ -10,6 +10,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-agent-browser
+  - run-typecheck
+  - resolve-errors
+  - watch-browser-console
 ---
 
 ## Goal
@@ -23,10 +28,12 @@ triggers:
 ## Execute
 
 ### 1. Run Typecheck
+> Goal: Run Typecheck
 
 ทำ `/run-typecheck` ก่อนเริ่ม watch browser เพื่อให้แน่ใจว่าโค้ดผ่าน type check
 
 ### 2. Install And Verify Agent Browser
+> Goal: Install And Verify Agent Browser
 
 ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-agent-browser` ข้อ 1
 
@@ -36,6 +43,7 @@ triggers:
 4. ถ้าติดตั้งไม่ได้ ให้ใช้ `playwriter` skill หรือ `browser-preview` tool แทน
 
 ### 3. Open Browser
+> Goal: Open Browser
 
 เปิด browser และ navigate ไปยัง URL ที่ต้องการ watch ตาม `/follow-agent-browser` ข้อ 2
 
@@ -43,6 +51,7 @@ triggers:
 2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
 
 ### 4. Watch And Monitor
+> Goal: Watch And Monitor
 
 Monitor ตาม ## Rules ข้อ 1 และจัดการ errors ตาม ## Rules ข้อ 2
 

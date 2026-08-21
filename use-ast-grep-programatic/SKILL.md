@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-create-bun-cli
+  - use-ast-grep
+  - update-review-cli
+  - suggest-next-action
+  - use-scripts
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Prepare Context
 
-อ่าน context และเตรียม environment ก่อนเขียน scripts
-
+> Goal: อ่าน context และเตรียม environment ก่อนเขียน scripts
 > Goal: เข้าใจ ast-grep API, review CLI structure, และ rules ที่ต้องใช้
 
 1. ทำ `/use-ast-grep`, ทำ `/follow-bun`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
@@ -35,8 +41,7 @@ triggers:
 
 ### 2. Create Programmatic Script
 
-สร้าง Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
-
+> Goal: สร้าง Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
 > Goal: script ที่รัน ast-grep analysis ผ่าน API และ integrate กับ review CLI
 
 1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `temp/`
@@ -53,8 +58,7 @@ triggers:
 
 ### 3. Run Analysis
 
-รัน programmatic analysis และ integrate ผลลัพธ์กับ review CLI
-
+> Goal: รัน programmatic analysis และ integrate ผลลัพธ์กับ review CLI
 > Goal: ได้ review report พร้อม ast-grep findings ที่ครอบคลุมและ accurate
 
 1. รัน script ใน dry run mode เพื่อดูผลลัพธ์ก่อน
@@ -64,8 +68,7 @@ triggers:
 
 ### 4. Validate And Report
 
-ตรวจสอบ findings และรายงานผล
-
+> Goal: ตรวจสอบ findings และรายงานผล
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
 1. ทำ `/validate` สำหรับ validate issues จาก ast-grep analysis

@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +27,7 @@ triggers:
 
 ### 1. Verify Repository
 
-ตรวจสอบ repository เป้าหมายก่อนใช้ `gh issue`
-
+> Goal: ตรวจสอบ repository เป้าหมายก่อนใช้ `gh issue`
 > Goal: ยืนยันว่า `gh` ชี้ไปยัง repository ถูกต้อง
 
 1. รัน `gh repo view` เพื่อดู repository ปัจจุบัน
@@ -34,8 +36,7 @@ triggers:
 
 ### 2. List And View Issues
 
-ค้นหาและดูรายละเอียด issue
-
+> Goal: ค้นหาและดูรายละเอียด issue
 > Goal: หา issue ที่ต้องการทำงาน
 
 1. รัน `gh issue list` เพื่อดู open issues เริ่มต้น
@@ -48,8 +49,7 @@ triggers:
 
 ### 3. Create Issues
 
-สร้าง issue ใหม่
-
+> Goal: สร้าง issue ใหม่
 > Goal: สร้าง issue โดยใช้ interactive หรือ flags
 
 1. รัน `gh issue create` เพื่อสร้างแบบ interactive (ถาม title/body ถ้าขาด)
@@ -61,8 +61,7 @@ triggers:
 
 ### 4. Edit Issues
 
-แก้ไข metadata และเนื้อหาของ issue
-
+> Goal: แก้ไข metadata และเนื้อหาของ issue
 > Goal: ปรับ title, body, labels, assignees, projects ของ issue
 
 1. รัน `gh issue edit <number> --title "<title>" --body "<body>"`
@@ -74,8 +73,7 @@ triggers:
 
 ### 5. Manage Issue Lifecycle
 
-ปิด เปิด คอมเมนต์ ย้าย ลบ issue
-
+> Goal: ปิด เปิด คอมเมนต์ ย้าย ลบ issue
 > Goal: เปลี่ยนสถานะหรือสื่อสารบน issue
 
 1. รัน `gh issue close <number>` หรือ `gh issue reopen <number>`
@@ -87,8 +85,7 @@ triggers:
 
 ### 6. Use Output And Automation
 
-ใช้ output ของ `gh issue` กับ scripts
-
+> Goal: ใช้ output ของ `gh issue` กับ scripts
 > Goal: นำ output ไปใช้ใน pipeline หรือ automation
 
 1. ใช้ `--json` หรือ `--jq <expression>` เพื่อรับ output เป็น JSON

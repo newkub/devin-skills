@@ -32,8 +32,7 @@ related:
 
 ### 1. Assess Git State
 
-ตรวจสอบ git state ก่อน
-
+> Goal: ตรวจสอบ git state ก่อน
 > Goal: ยืนยันว่า git ใช้ไม่ได้จริง
 
 1. รัน `git status` ใน repo ที่เสียหาย
@@ -43,8 +42,7 @@ related:
 
 ### 2. Inspect Devin Session History
 
-อ่านประวัติ Devin CLI
-
+> Goal: อ่านประวัติ Devin CLI
 > Goal: รู้ว้า agent ทำอะไรไปก่อนเสียหาย
 
 1. ดูโฟลเดอร์ `C:\Users\Veerapong\AppData\Roaming\devin\cli\summaries`
@@ -56,8 +54,7 @@ related:
 
 ### 3. Correlate With Last Commit
 
-เทียบเวลา
-
+> Goal: เทียบเวลา
 > Goal: รู้ช่องโหว่ระหว่าง last commit กับช่วงทีเสียหาย
 
 1. บันทึก last commit time จาก step 1
@@ -67,8 +64,7 @@ related:
 
 ### 4. Report Findings
 
-รายงานสิ่งที่พบ
-
+> Goal: รายงานสิ่งที่พบ
 > Goal: ผู้ใช้ทราบว่าเกิดอะไรขึ้นและทางเลือกกู้คืน
 
 1. สรุปไฟล์ที่เสียหายและสาเหตุทีคาดการณ์
@@ -79,8 +75,7 @@ related:
 
 ### 5. Ask Next Step
 
-ถาม user ว่าจะทำต่ออย่างไร
-
+> Goal: ถาม user ว่าจะทำต่ออย่างไร
 > Goal: ไม่ทำ action เสี่ยงโดยไม่ได้รับอนุญาต
 
 1. ใช้ `ask-me` skill เพื่อถาม user ด้วยตัวเลือกชัดเจน

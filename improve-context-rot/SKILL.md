@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - loop-until-complete
+  - suggest-next-action
+  - continue
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Detect Context Rot
+> Goal: Detect Context Rot
 
 ตรวจจับสัญญาณ context rot ใน conversation ปัจจุบัน
 
@@ -32,6 +39,7 @@ triggers:
 4. ถ้ามีสัญญาณ context rot ให้ดำเนินการ mitigate
 
 ### 2. Summarize And Preserve
+> Goal: Summarize And Preserve
 
 สรุป context สำคัญเพื่อ preserve ไว้ใช้ต่อ
 
@@ -42,6 +50,7 @@ triggers:
 5. ใช้ `create_memory` tool สำหรับบันทึก context สำคัญที่ต้องใช้ข้าม session
 
 ### 3. Reset Context
+> Goal: Reset Context
 
 รีเซ็ต context เพื่อเริ่มต้นใหม่อย่างสะอาด
 
@@ -51,6 +60,7 @@ triggers:
 4. ถ้าไม่สามารถเริ่ม conversation ใหม่ได้ ให้ใช้ goal reminder แทน
 
 ### 4. Apply Goal Reminders
+> Goal: Apply Goal Reminders
 
 ใช้ goal reminders เพื่อลด context drift โดยไม่ต้อง reset
 
@@ -61,6 +71,7 @@ triggers:
 5. ใช้ `/deep-plan` เพื่อวางแผนใหม่ถ้า goal เปลี่ยนหรือไม่ชัดเจน
 
 ### 5. Break Long Tasks
+> Goal: Break Long Tasks
 
 แบ่ง long-horizon tasks เป็น chunks เล็กลง
 
@@ -71,6 +82,7 @@ triggers:
 5. สรุปผลแต่ละ sub-task ก่อนไปต่อ
 
 ### 6. Manage Context Window
+> Goal: Manage Context Window
 
 จัดการ context window อย่างมีประสิทธิภาพ
 

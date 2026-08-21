@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Check Keyboard Navigation
+> Goal: Check Keyboard Navigation
 
 1. ทดสอบ navigation ด้วย keyboard เท่านั้น
 2. ตรวจสอบ tab order ที่เหมาะสม
@@ -34,6 +32,7 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 4. ทดสอบ keyboard shortcuts
 
 ### 2. Check Screen Reader
+> Goal: Check Screen Reader
 
 1. ทดสอบด้วย screen reader (NVDA, JAWS, VoiceOver)
 2. ตรวจสอบ ARIA labels และ roles
@@ -41,6 +40,7 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 4. ตรวจสอบ semantic HTML
 
 ### 3. Check Color Contrast
+> Goal: Check Color Contrast
 
 1. ตรวจสอบ contrast ratio ตาม WCAG AA/AAA
 2. ใช้ tools เช่น axe DevTools, Lighthouse
@@ -48,6 +48,7 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 4. ตรวจสอบ text กับ background contrast
 
 ### 4. Check Forms
+> Goal: Check Forms
 
 1. ตรวจสอบ form labels ชัดเจน
 2. ตรวจสอบ error messages สามารถเข้าถึงได้
@@ -55,6 +56,7 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 4. ตรวจสอบ form controls สามารถใช้ keyboard ได้
 
 ### 5. Check Media
+> Goal: Check Media
 
 1. ตรวจสอบ captions สำหรับ videos
 2. ตรวจสอบ audio descriptions
@@ -62,13 +64,12 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 4. ตรวจสอบ controls สามารถ pause ได้
 
 ### 6. Run Automated Tests
+> Goal: Run Automated Tests
 
 1. รัน accessibility audit tools
 2. ตรวจสอบ automated violations
 3. แก้ไข issues ที่พบ
 4. ทำ manual testing สำหรับสิ่งที่ automated ไม่ตรวจได้
-
-## Rules
 
 ## Rules
 
@@ -91,8 +92,6 @@ Use `check-accessibility` for the specific tasks and workflows it covers
 - High: ทำให้ใช้งานยากอย่างมาก
 - Medium: ทำให้ใช้งานยากเล็กน้อย
 - Low: เป็น best practices
-
-## Expected Outcome
 
 ## Expected Outcome
 

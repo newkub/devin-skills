@@ -15,6 +15,8 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - scan-codebase
+  - report-ansi
 ---
 
 ## Goal
@@ -28,6 +30,7 @@ related:
 ## Execute
 
 ### 1. Analyze Existing Components
+> Goal: Analyze Existing Components
 
 1. ทำ `/scan-codebase` เพื่อหา components, routes, และ layouts ที่เกี่ยวข้อง
 2. ระบุ existing UI components ที่จะ reuse หรือ extend
@@ -36,6 +39,7 @@ related:
 5. จดขนาดและประเภทของ content ที่จะแสดง
 
 ### 2. Define Sketch Scope
+> Goal: Define Sketch Scope
 
 1. เลือก view type: full page, dialog/modal, component, หรือ flow
 2. กำหนด target device: desktop, mobile, หรือ both
@@ -43,6 +47,7 @@ related:
 4. กำหนดความกว้างสูงสุดไม่เกิน 80 characters สำหรับ chat readability
 
 ### 3. Draw Page Layout
+> Goal: Draw Page Layout
 
 1. วาด outer window frame ด้วย `┌─┐│└─┘` พร้อม title bar และ close button `[×]`
 2. วาด sections หลัก: header, content area, sidebar, footer
@@ -51,6 +56,7 @@ related:
 5. ใส่ labels สั้นๆ ในแต่ละ section: ชื่อ component และ key content
 
 ### 4. Draw Components And Interactions
+> Goal: Draw Components And Interactions
 
 1. วาด interactive elements: `[Button]`, `[Input]`, `[Select]`, `[Checkbox]`
 2. ใช้ `[____]` สำหรับ text inputs
@@ -60,6 +66,7 @@ related:
 6. วาด lists ด้วย `┌─┐` boxes หรือ bullet points
 
 ### 5. Draw User Flow
+> Goal: Draw User Flow
 
 1. วาด flow จาก entry point ถึง completion
 2. ใช้ arrows (`→`, `↓`) ระหว่าง steps
@@ -69,6 +76,7 @@ related:
 6. ระบุ page transitions ด้วย `→ [Page Name]`
 
 ### 6. Draw Mobile View (ถ้าจำเป็น)
+> Goal: Draw Mobile View (ถ้าจำเป็น)
 
 1. วาด mobile frame แสดงเฉพาะ essential elements
 2. ลด columns เป็น single column
@@ -77,6 +85,7 @@ related:
 5. แสดง swipe gestures ด้วย `←swipe→`
 
 ### 7. Add Annotations
+> Goal: Add Annotations
 
 1. ใช้ `//` สำหรับ inline comments ใน sketch
 2. ใช้ `⚠` สำหรับ UX concerns หรือ edge cases
@@ -85,6 +94,7 @@ related:
 5. ระบุ route path เหนือ sketch (`/provider/$id/dashboard/bookings`)
 
 ### 8. Validate And Present
+> Goal: Validate And Present
 
 1. ตรวจสอบว่าทุก interactive element มี label ชัดเจน
 2. ตรวจสอบว่า layout สมเหมาะกับ target device
@@ -95,7 +105,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

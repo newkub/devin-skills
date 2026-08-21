@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - suggest-next-action
+  - run-build
+  - deep-thinking
+  - review-codebase
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Read Code Context
+> Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา infra/deploy code
 2. อ่าน CI/CD configs, Dockerfile, deployment scripts, infrastructure as code
@@ -31,6 +40,7 @@ triggers:
 5. ถ้าหา infra code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify DevOps Profile
+> Goal: Identify DevOps Profile
 
 1. ระบุ DevOps role (DevOps engineer, SRE, platform engineer, infra engineer)
 2. ระบุ infrastructure type (cloud, on-prem, hybrid, serverless, containerized)
@@ -39,6 +49,7 @@ triggers:
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Operational Scenarios
+> Goal: Simulate Operational Scenarios
 
 Goal reminder: คิดเหมือน DevOps ที่ต้องรับผิดชอบระบบจริง ไม่ใช่ dev ที่สนแค่ code ทำงาน
 
@@ -49,6 +60,7 @@ Goal reminder: คิดเหมือน DevOps ที่ต้องรับ
 5. ประเมิน MTTR (Mean Time To Recovery) โดยประมาณ
 
 ### 4. Analyze Every DevOps Dimension
+> Goal: Analyze Every DevOps Dimension
 
 Deployment:
 
@@ -91,6 +103,7 @@ Infrastructure:
 25. Backup and recovery: มี backups ไหม, มี restore testing ไหม, มี RPO/RTO ชัดไหม
 
 ### 5. Map Findings To Code
+> Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
 2. ระบุ severity: Critical, High, Medium, Low
@@ -99,6 +112,7 @@ Infrastructure:
 5. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate DevOps Review Report
+> Goal: Generate DevOps Review Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Operational Impact, Recommendation

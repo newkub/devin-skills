@@ -1,12 +1,14 @@
 ---
 name: assume-reset-context
-description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า วิเคราะห์และเข้...
+description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า
 allowed-tools:
   - read
   - grep
   - glob
   - find_file_by_name
   - skill
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,13 +18,6 @@ related:
   - read-related-skills
   - deep-thinking
   - follow-best-practice
-  - follow-layered-architecture
-  - deep-plan
-  - refactor
-  - use-scripts
-  - realize-implementation
-  - validate
-  - run-check
 ---
 
 ## Goal
@@ -37,8 +32,7 @@ related:
 
 ### 1. Reset Mindset
 
-ล้าง assumptions ทั้งหมดจาก context ก่อนหน้า
-
+> Goal: ล้าง assumptions ทั้งหมดจาก context ก่อนหน้า
 > Goal: เริ่มต้นด้วย mindset ที่ไม่มี bias จากสนทนาก่อนหน้า
 
 1. ไม่อ้างอิงข้อสรุป การวิเคราะห์ หรือ decisions จากการสนทนาก่อนหน้า
@@ -47,8 +41,7 @@ related:
 
 ### 2. Read File Fresh
 
-อ่านไฟล์เป้าหมายและไฟล์ที่เกี่ยวข้องใหม่ทั้งหมด
-
+> Goal: อ่านไฟล์เป้าหมายและไฟล์ที่เกี่ยวข้องใหม่ทั้งหมด
 > Goal: รวบรวมข้อมูลจริงจาก codebase โดยไม่ข้ามส่วนใด
 
 1. อ่านไฟล์เป้าหมายทั้งไฟล์ ไม่ข้ามบรรทัด
@@ -59,8 +52,7 @@ related:
 
 ### 3. Analyze From Scratch
 
-วิเคราะห์ไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context เดิม
-
+> Goal: วิเคราะห์ไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context เดิม
 > Goal: ได้ findings ที่อิงจากสภาพไฟล์จริง ไม่ใช่ความจำ
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์ปัญหาและโครงสร้างของไฟล์
@@ -71,8 +63,7 @@ related:
 
 ### 4. Plan Fresh
 
-วางแผนการแก้ไขใหม่จากการวิเคราะห์ปัจจุบัน
-
+> Goal: วางแผนการแก้ไขใหม่จากการวิเคราะห์ปัจจุบัน
 > Goal: มีแผนที่อิงจาก findings ใหม่ทั้งหมด
 
 1. ทำ `/deep-plan` เพื่อวางแผนการแก้ไขตาม findings ใหม่
@@ -81,8 +72,7 @@ related:
 
 ### 5. Implement
 
-แก้ไขไฟล์ตามแผนใหม่
-
+> Goal: แก้ไขไฟล์ตามแผนใหม่
 > Goal: แก้ไขตามแผนโดยใช้ skills ที่เหมาะสม
 
 1. ทำ `/refactor` ก่อนเขียน code ใหม่ถ้าจำเป็น
@@ -91,8 +81,7 @@ related:
 
 ### 6. Validate
 
-ตรวจสอบผลลัพธ์ใหม่ทั้งหมด
-
+> Goal: ตรวจสอบผลลัพธ์ใหม่ทั้งหมด
 > Goal: ผลลัพธ์ผ่าน validation โดยไม่อ้างอิง context เดิม
 
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง

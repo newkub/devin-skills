@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - follow-clean-architecture
+  - refactor
+  - follow-modular-monolith
+  - follow-vite
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 
 ### 1. Select Pattern
 
-เลือก pattern ตาม Pattern Selection ในส่วน Rules
-
+> Goal: เลือก pattern ตาม Pattern Selection ในส่วน Rules
 > Goal: เลือก pattern ที่เหมาะสมกับ project size และ team
 
 1. ประเมิน project size และ team experience
@@ -35,8 +41,7 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 
 ### 2. Create Structure
 
-สร้าง folder structure ตาม pattern ที่เลือก
-
+> Goal: สร้าง folder structure ตาม pattern ที่เลือก
 > Goal: มี folder structure ตาม pattern ที่เลือก
 
 Traditional Layered (โปรเจกต์ขนาดเล็ก หรือ classic):
@@ -101,8 +106,7 @@ src/
 
 ### 3. Enforce Dependencies And Public APIs
 
-ดู Dependency Discipline แลง Public API Rules ในส่วน Rules
-
+> Goal: ดู Dependency Discipline แลง Public API Rules ในส่วน Rules
 > Goal: dependency rules ถูก enforce ผ่าน aliases และ lint
 
 1. ใช้ path aliases (`@/domain/...`, `@/application/...`) เพื่อให้ layer transitions ชัดเจน
@@ -112,8 +116,7 @@ src/
 
 ### 4. Align Tests With Layers
 
-จัดเรียง tests ตาม layers
-
+> Goal: จัดเรียง tests ตาม layers
 > Goal: tests จัดเรียงตาม layers และใช้ fake repositories
 
 1. `Domain` tests: pure functions และ policies
@@ -124,8 +127,7 @@ src/
 
 ### 5. Setup And Migrate
 
-ย้าย code ทีละ feature และมี migration path ชัดเจน
-
+> Goal: ย้าย code ทีละ feature และมี migration path ชัดเจน
 > Goal: ย้าย code ทีละ feature และมี migration path ชัดเจน
 
 1. สร้าง folder structure ตาม pattern ที่เลือก

@@ -1,15 +1,18 @@
 ---
 name: open-readme-html
-description: สร้างและเปิดไฟล์ `README.html` ด้วย Element Plus + Tailwind CSS, tab system 7 tabs พร้อม search, ...
+description: สร้างและเปิดไฟล์ README.html ด้วย Element Plus + Tailwind CSS, tab system 7 tabs พร้อม search,
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - open-web
 ---
 
 ## Goal
@@ -21,24 +24,21 @@ triggers:
 สร้างไฟล์ README.html ที่มี tab system 7 tabs: Features, Dependencies, Architecture, API Endpoints, Database Schema, Environment Variables, Getting Started โดยใช้ Element Plus components และ Tailwind CSS
 
 ## Execute
-
 ### 1. Setup HTML Structure
-
+> Goal: Setup HTML Structure
 1. ทำตาม `/html` เพื่อ setup HTML structure พื้นฐาน
 2. สร้างไฟล์ `README.html` ใน project root
 3. ใช้ Vue 3 ผ่าน unpkg CDN (vue.global.js)
 4. ใช้ Element Plus CSS (base + dark mode)
 5. ใช้ Tailwind CSS CDN
-
 ### 2. Create Tab System
-
+> Goal: Create Tab System
 1. สร้าง 7 tabs: Features, Dependencies, Architecture, API Endpoints, Database Schema, Environment Variables, Getting Started
 2. ใช้ Element Plus `<el-tabs>` component สำหรับ tab navigation
 3. ใช้ `<el-tab-pane>` สำหรับแต่ละ tab content
 4. เพิ่ม active state สำหรับ tab ที่เลือก
-
 ### 3. Add Features Tab
-
+> Goal: Add Features Tab
 1. จัดกลุ่ม features ตาม category
 2. ใช้ Element Plus `<el-collapse>` สำหรับ expand/collapse แต่ละ category
 3. ใช้ `<el-table>` สำหรับแสดง features
@@ -46,63 +46,55 @@ triggers:
 5. เพิ่ม sorting functionality ด้วย `<el-table-column sortable>`
 6. เพิ่ม search functionality ด้วย `<el-input>`
 7. ใช้ `<el-tag>` สำหรับ status และ priority
-
 ### 4. Add Dependencies Tab
-
+> Goal: Add Dependencies Tab
 1. จัดกลุ่ม dependencies ตาม category
 2. ใช้ `<el-table>` สำหรับแสดง dependencies
 3. แสดง 6 columns: library (link), version, license, type, security, source
 4. ใช้ `<el-tag>` สำหรับ types พร้อม color coding
 5. เพิ่ม search functionality ด้วย `<el-input>`
 6. ใช้ `<el-link>` สำหรับ library links
-
 ### 5. Add Architecture Tab
-
+> Goal: Add Architecture Tab
 1. แสดงโครงสร้างโปรเจกต์แบบ tree view
 2. จัดกลุ่มตาม layers (Domain, Application, Infrastructure, Adapters, Presentation)
 3. ใช้ `<el-collapse>` สำหรับ expand/collapse แต่ละ layer
 4. ใช้ `<el-tree>` หรือ nested `<el-collapse-item>` สำหรับ tree structure
-
 ### 6. Add API Endpoints Tab
-
+> Goal: Add API Endpoints Tab
 1. จัดกลุ่ม API endpoints ตาม module
 2. ใช้ `<el-card>` สำหรับแต่ละ endpoint
 3. แสดง method, path, description, parameters
 4. เพิ่ม search functionality ด้วย `<el-input>`
 5. ใช้ `<el-tag>` สำหรับ HTTP methods พร้อม color coding
-
 ### 7. Add Database Schema Tab
-
+> Goal: Add Database Schema Tab
 1. จัดกลุ่ม tables ตาม module
 2. ใช้ `<el-collapse>` สำหรับ expand/collapse แต่ละ table
 3. ใช้ `<el-table>` สำหรับแสดง columns
 4. แสดง table name, columns, types, relationships
 5. เพิ่ม search functionality ด้วย `<el-input>`
-
 ### 8. Add Environment Variables Tab
-
+> Goal: Add Environment Variables Tab
 1. จัดกลุ่ม env vars ตาม category
 2. ใช้ `<el-card>` สำหรับแต่ละ variable
 3. แสดง variable name, description, default value, required
 4. เพิ่ม search functionality ด้วย `<el-input>`
 5. ใช้ `<el-tag>` สำหรับ required/optional
-
 ### 9. Add Getting Started Tab
-
+> Goal: Add Getting Started Tab
 1. แสดงขั้นตอนการติดตั้ง
 2. ใช้ `<el-steps>` สำหรับแสดง steps
 3. ใช้ `<el-alert>` สำหรับ prerequisites
 4. ใช้ `<el-code-block>` หรือ `<pre>` สำหรับ commands
 5. ใช้ `<el-table>` สำหรับ scripts
-
 ### 10. Open HTML in Browser
-
+> Goal: Open HTML in Browser
 1. ทำตาม `/open-web` เพื่อเปิด README.html ใน browser
 2. ใช้ `start README.html` (Windows) หรือ `open README.html` (macOS/Linux)
 3. ตรวจสอบว่า file เปิดถูกต้อง
 
 ## Rules
-
 ### 1. Follow HTML Structure
 
 ทำตาม `/html` สำหรับ HTML structure พื้นฐาน:
@@ -111,7 +103,6 @@ triggers:
 - Tailwind CSS CDN: `https://cdn.tailwindcss.com`
 - Dark mode ด้วย `<html class="dark">`
 - ใช้ `<script setup>` สำหรับ Vue composition API
-
 ### 2. Element Plus Components
 
 ใช้ Element Plus components สำหรับ UI:
@@ -124,7 +115,6 @@ triggers:
 - `<el-link>` สำหรับ clickable links
 - `<el-steps>` สำหรับ step indicators
 - `<el-alert>` สำหรับ alerts/notices
-
 ### 3. Tab System Pattern
 
 ```html
@@ -142,7 +132,6 @@ triggers:
 ```javascript
 const activeTab = ref('features')
 ```
-
 ### 4. Features Grouping with Element Plus
 
 ```html
@@ -161,7 +150,6 @@ const activeTab = ref('features')
   </el-collapse-item>
 </el-collapse>
 ```
-
 ### 5. Search Functionality
 
 ```html
@@ -184,7 +172,6 @@ const filteredFeatures = computed(() => {
   )
 })
 ```
-
 ### 6. Element Plus Tag Types
 
 ```javascript
@@ -206,7 +193,6 @@ const getPriorityType = (priority) => {
   return types[priority] || 'info'
 }
 ```
-
 ### 7. Library Links with Element Plus
 
 ```html
@@ -220,7 +206,6 @@ const getPriorityType = (priority) => {
   {{ dep.name }}
 </el-link>
 ```
-
 ### 8. Dark Mode Support
 
 - Element Plus รองรับ dark mode ผ่าน CSS variables

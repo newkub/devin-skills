@@ -18,12 +18,6 @@ related:
   - report-plan
   - analyze-project
   - scan-codebase
-  - report-table
-  - report-file-structure
-  - report-ansi
-  - resolve-errors
-  - suggest-next-action
-  - ask-me
 ---
 
 ## Goal
@@ -38,8 +32,7 @@ related:
 
 ### 1. Report Current State
 
-สร้าง report ก่อน fix
-
+> Goal: สร้าง report ก่อน fix
 > Goal: user เห็นภาพรวมก่อนแก้ไข
 
 1. ทำ `/report-only` เพื่อสร้าง report เริ่มต้น
@@ -48,8 +41,7 @@ related:
 
 ### 2. Plan Fixes
 
-วางแผนการแก้ไข
-
+> Goal: วางแผนการแก้ไข
 > Goal: มีแผนชัดเจนก่อนลงมือ
 
 1. ทำ `/deep-report` หรือ `/report-plan`
@@ -58,8 +50,7 @@ related:
 
 ### 3. Confirm With User
 
-ขอ user confirm ก่อน fix
-
+> Goal: ขอ user confirm ก่อน fix
 > Goal: ไม่แก้ไขโดยไม่ได้รับอนุญาต
 
 1. ทำ `/report-table` สรุป issues, severity, suggested fix
@@ -68,8 +59,7 @@ related:
 
 ### 4. Apply Fixes
 
-แก้ไขตามแผน
-
+> Goal: แก้ไขตามแผน
 > Goal: issues ถูกแก้ไข
 
 1. ใช้ `edit` หรือ `write` แก้ไขไฟล์
@@ -78,8 +68,7 @@ related:
 
 ### 5. Verify
 
-ตรวจสอบผลหลัง fix
-
+> Goal: ตรวจสอบผลหลัง fix
 > Goal: ไม่มี regression
 
 1. รัน tests/build/typecheck ตาม ecosystem

@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Discover Workspaces
+> Goal: Discover Workspaces
 
 ค้นหา workspaces ทั้งหมดใน monorepo
 
@@ -32,6 +36,7 @@ triggers:
 4. ตรวจสอบ workspaces ที่ไม่มี package.json (orphaned)
 
 ### 2. Analyze Dependencies
+> Goal: Analyze Dependencies
 
 วิเคราะห์ dependencies ระหว่าง workspaces
 
@@ -41,6 +46,7 @@ triggers:
 4. ระบุ circular dependencies ถ้ามี
 
 ### 3. Categorize Workspaces
+> Goal: Categorize Workspaces
 
 จัดกลุ่ม workspaces ตามประเภท
 
@@ -50,6 +56,7 @@ triggers:
 4. ระบุ workspaces ที่เป็น CLI tools (มี bin)
 
 ### 4. Identify Issues
+> Goal: Identify Issues
 
 ระบุปัญหาใน workspaces
 

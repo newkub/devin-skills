@@ -1,6 +1,6 @@
 ---
 name: report-plan
-description: รายงานแผนงานก่อน implement พร้อม task table, bullet points ของ task with before-after แต่ละข้อ...
+description: รายงานแผนงานในแชทก่อนลงมือ implement เพื่อให้ผู้ใช้เห็นภาพรวมและตัดสินใจได้
 allowed-tools:
   - read
   - write
@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - deep-plan
+  - report-ansi
+  - report-file-structure
 ---
 
 ## Goal
@@ -29,8 +32,7 @@ related:
 
 ### 1. Summarize Plan
 
-สรุปแผนงานเป็น bullet points สั้นๆ
-
+> Goal: สรุปแผนงานเป็น bullet points สั้นๆ
 > Goal: ผู้ใช้เข้าใจภาพรวมของงานทันที
 
 1. ระบุ goal และ scope ของงาน
@@ -40,8 +42,7 @@ related:
 
 ### 2. Report Task Table
 
-แสดงตาราง tasks ตาม `/report-table`
-
+> Goal: แสดงตาราง tasks ตาม `/report-table`
 > Goal: ผู้ใช้เห็นรายการงานและ priority ได้ชัดเจน
 
 1. คอลัมน์ (# | Task | Type | Priority | Effort | Impact | Risk | Status)
@@ -54,8 +55,7 @@ related:
 
 ### 3. Report Task Bullets with Before-After
 
-แสดง bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after
-
+> Goal: แสดง bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after
 > Goal: ผู้ใช้เห็นรายละเอียดและผลกระทบของแต่ละงาน
 
 1. ต่อจากตาราง tasks ให้แสดงรายการ task เป็นข้อๆ
@@ -65,8 +65,7 @@ related:
 
 ### 4. Report File Structure
 
-แสดง file structure ตาม `/report-file-structure`
-
+> Goal: แสดง file structure ตาม `/report-file-structure`
 > Goal: ผู้ใช้เห็นไฟล์ที่จะสร้าง/แก้ไข/ลบได้ชัดเจน
 
 1. แสดง tree diagram ของไฟล์ที่จะสร้าง/แก้ไข/ลบ
@@ -75,8 +74,7 @@ related:
 
 ### 5. Report Execution Order
 
-ระบุลำดับการทำงาน
-
+> Goal: ระบุลำดับการทำงาน
 > Goal: ผู้ใช้รู้ว่าจะเริ่มจากอะไร ทำพร้อมกันได้ตรงไหน
 
 1. จัดกลุ่ม tasks เป็น phases: Foundation → Core → Polish → Test
@@ -87,8 +85,7 @@ related:
 
 ### 6. Continue Execution
 
-ดำเนินการต่อหลัง report
-
+> Goal: ดำเนินการต่อหลัง report
 > Goal: ทำงานต่อได้เลยหรือถามก่อนถ้าจำเป็น
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
@@ -97,9 +94,7 @@ related:
 
 ## Rules
 
-
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

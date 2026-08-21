@@ -10,6 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - write-test
+  - follow-functional-programming
+  - follow-zod
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Identify Validation Types
 
-ระบุประเภท validation ที่ project ต้องการ
-
+> Goal: ระบุประเภท validation ที่ project ต้องการ
 > Goal: รู้ว่าต้อง validate อะไรและที่ไหน
 
 1. Input validation - ตรวจข้อมูลจากผู้ใช้: HTTP request body, query params, CLI args, form input
@@ -36,8 +39,7 @@ triggers:
 
 ### 2. Implement Business Rule Validation
 
-เขียน business rule validators เป็น pure functions
-
+> Goal: เขียน business rule validators เป็น pure functions
 > Goal: Business rules เป็น pure functions ที่ test ได้โดยไม่ต้อง mock
 
 1. เขียน validation เป็น pure functions ที่ return `Result<T, ValidationError>`
@@ -49,8 +51,7 @@ triggers:
 
 ### 3. Implement Input Validation
 
-เขียน input schemas โดยใช้ schema library
-
+> Goal: เขียน input schemas โดยใช้ schema library
 > Goal: Input จากภายนอกถูก validate ก่อนเข้าระบบ
 
 1. ทำ `/follow-zod` ถ้า project ใช้ Zod (หรือ schema library ที่ตรวจพบ)
@@ -62,8 +63,7 @@ triggers:
 
 ### 4. Implement Output Validation
 
-เขียน output validation สำหรับ external data
-
+> Goal: เขียน output validation สำหรับ external data
 > Goal: ข้อมูลจากภายนอกถูก validate ก่อนนำไปใช้
 
 1. กำหนด response schemas สำหรับ external API responses
@@ -74,8 +74,7 @@ triggers:
 
 ### 5. Compose Validation Pipeline
 
-เรียงลำดับ validation จากนอกเข้าใน
-
+> Goal: เรียงลำดับ validation จากนอกเข้าใน
 > Goal: Validation flow ชัดเจน ไม่ซ้ำซ้อน
 
 1. Input validation → กรอง malformed data ก่อนเข้าระบบ
@@ -86,8 +85,7 @@ triggers:
 
 ### 6. Test Validation Logic
 
-ทำ `/write-test` เพื่อทดสอบ validation ทุกประเภท
-
+> Goal: ทำ `/write-test` เพื่อทดสอบ validation ทุกประเภท
 > Goal: Validation logic มี test coverage ครบ
 
 1. Unit tests สำหรับ business rule validators — test pure functions โดยตรง

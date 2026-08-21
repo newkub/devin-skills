@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-ast-grep-rules
+  - update-agents-md
+  - check-monorepo
+  - run-lint
+  - analyze-project
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Check Project Type
 
-ตรวจสอบประเภท project เพื่อกำหนด structure
-
+> Goal: ตรวจสอบประเภท project เพื่อกำหนด structure
 > Goal: ระบุว่า project เป็น monorepo หรือ single project
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบว่า project เป็น monorepo หรือไม่
@@ -34,8 +40,7 @@ triggers:
 
 ### 2. Analyze Project
 
-วิเคราะห์ project เพื่อดู tech stack, structure, และ patterns
-
+> Goal: วิเคราะห์ project เพื่อดู tech stack, structure, และ patterns
 > Goal: ระบุ tech stack, structure, และ dependencies ทั้งหมด
 
 1. ทำ `/analyze-project` เพื่อดู tech stack, structure, และ patterns
@@ -43,8 +48,7 @@ triggers:
 
 ### 3. Setup Root Rules And Hooks
 
-สร้าง root `.devin` structure สำหรับ shared rules และ hooks
-
+> Goal: สร้าง root `.devin` structure สำหรับ shared rules และ hooks
 > Goal: สร้าง .devin/rules directory และ rules ตาม dependencies
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/rules เพื่อเข้าใจ rules
@@ -55,8 +59,7 @@ triggers:
 
 ### 4. Setup Hooks
 
-สร้าง hooks สำหรับ Cascade
-
+> Goal: สร้าง hooks สำหรับ Cascade
 > Goal: สร้าง .devin/hooks directory และ hook scripts
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/hooks/overview เพื่อเข้าใจ hooks
@@ -67,8 +70,7 @@ triggers:
 
 ### 5. Setup Workspace AGENTS.md (Monorepo Only)
 
-ถ้าเป็น monorepo ให้สร้าง `AGENTS.md` สำหรับแต่ละ workspace โดยไม่สร้าง `.devin/` ใน sub-workspace
-
+> Goal: ถ้าเป็น monorepo ให้สร้าง `AGENTS.md` สำหรับแต่ละ workspace โดยไม่สร้าง `.devin/` ใน sub-workspace
 > Goal: สร้าง AGENTS.md สำหรับทุก workspace และ root
 
 1. ระบุ workspaces ทั้งหมดจาก root `package.json` `workspaces` field
@@ -80,8 +82,7 @@ triggers:
 
 ### 6. Setup Skills And MCP (Optional)
 
-ตั้งค่า skills และ MCP servers (ถ้า project มีความต้องการเฉพาะ)
-
+> Goal: ตั้งค่า skills และ MCP servers (ถ้า project มีความต้องการเฉพาะ)
 > Goal: ตั้งค่า skills และ MCP servers ตามความจำเป็น
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/skills/overview เพื่อเข้าใจ skills
@@ -90,8 +91,7 @@ triggers:
 
 ### 7. Update Ast-Grep Rules
 
-เขียน ast-grep rules ใน `rules/` directory ที่ project root ตาม devin rules ที่สร้างขึ้น
-
+> Goal: เขียน ast-grep rules ใน `rules/` directory ที่ project root ตาม devin rules ที่สร้างขึ้น
 > Goal: สร้าง ast-grep rules และตั้งค่า sgconfig.yml
 
 1. ทำ `/update-ast-grep-rules` เพื่อแปลง devin rules เป็น ast-grep YAML format
@@ -104,8 +104,7 @@ triggers:
 
 ### 8. Remove Workflows Directory
 
-ลบ `.devin/workflows/` directory ถ้ามีอยู่
-
+> Goal: ลบ `.devin/workflows/` directory ถ้ามีอยู่
 > Goal: ลบ .devin/workflows/ directory ถ้ามีอยู่
 
 1. ตรวจสอบว่า `.devin/workflows/` directory มีอยู่หรือไม่
@@ -113,8 +112,7 @@ triggers:
 
 ### 9. Test And Validate
 
-ทดสอบและตรวจสอบ
-
+> Goal: ทดสอบและตรวจสอบ
 > Goal: ตรวจสอบว่าทุกอย่างทำงานได้ถูกต้อง
 
 1. ทดสอบ hooks ด้วยการแก้ไข code

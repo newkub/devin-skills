@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-plan
+  - suggest-next-action
+  - deep-research
+  - deep-thinking
+  - ask-me
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Pause And Reflect
+> Goal: Pause And Reflect
 
 หยุดและทบทวนก่อนดำเนินการ:
 
@@ -32,6 +41,7 @@ triggers:
 4. ถ้ามีความเสี่ยง ซับซ้อน หรือไม่แน่ใจ ให้ดำเนินการ ponder
 
 ### 2. Consider Multiple Perspectives
+> Goal: Consider Multiple Perspectives
 
 พิจารณาจากหลายมุมมอง:
 
@@ -41,6 +51,7 @@ triggers:
 4. มุมมองของ trade-offs — อะไรได้และอะไรเสียจากแต่ละทางเลือก
 
 ### 3. Weigh Implications
+> Goal: Weigh Implications
 
 ชั่งน้ำหนักผลกระทบของแต่ละทางเลือก:
 
@@ -51,6 +62,7 @@ triggers:
 5. ถ้า irreversible ให้คิดให้รอบคอบเป็นพิเศษ
 
 ### 4. Surface Uncertainties
+> Goal: Surface Uncertainties
 
 ระบุสิ่งที่ไม่แน่ใจ:
 
@@ -60,6 +72,7 @@ triggers:
 4. ถ้าจำเป็น ให้ใช้ `/ask-me` เพื่อถามผู้ใช้ หรือ `/deep-research` เพื่อค้นหาข้อมูล
 
 ### 5. Reach Conclusion
+> Goal: Reach Conclusion
 
 สรุปผลการครุ่นคิด:
 

@@ -8,9 +8,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -32,8 +34,7 @@ triggers:
 
 ### 1. Setup Environment
 
-ตรวจสอบ prerequisites สำหรับ Tauri development
-
+> Goal: ตรวจสอบ prerequisites สำหรับ Tauri development
 > Goal: environment พร้อมสำหรับ Tauri development
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
@@ -42,8 +43,7 @@ triggers:
 
 ### 2. Install Dependencies
 
-ติดตั้ง dependencies สำหรับ Tauri app
-
+> Goal: ติดตั้ง dependencies สำหรับ Tauri app
 > Goal: dependencies พร้อมสำหรับ Tauri runtime และ CLI
 
 1. รัน `bun install`
@@ -52,8 +52,7 @@ triggers:
 
 ### 3. Configure Vite
 
-ตั้งค่า `vite.config.ts` ให้เข้ากับ Tauri dev server
-
+> Goal: ตั้งค่า `vite.config.ts` ให้เข้ากับ Tauri dev server
 > Goal: Vite dev server ทำงานร่วมกับ Tauri ได้
 
 1. ตั้งค่า port 5173
@@ -62,8 +61,7 @@ triggers:
 
 ### 4. Configure Tauri
 
-ตั้งค่า `tauri.conf.json` และ capabilities
-
+> Goal: ตั้งค่า `tauri.conf.json` และ capabilities
 > Goal: Tauri configuration ถูกต้องและปลอดภัย
 
 1. แก้ไข `src-tauri/tauri.conf.json`: ตั้ง `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
@@ -71,8 +69,7 @@ triggers:
 
 ### 5. Develop IPC Commands
 
-สร้าง Rust commands และเรียกใช้จาก frontend
-
+> Goal: สร้าง Rust commands และเรียกใช้จาก frontend
 > Goal: frontend และ backend เชื่อมต่อกันผ่าน IPC
 
 1. สร้าง Rust command ใน `src-tauri/src/lib.rs`
@@ -81,8 +78,7 @@ triggers:
 
 ### 6. Add Plugins
 
-ติดตั้ง official หรือ community plugins ตามต้องการ
-
+> Goal: ติดตั้ง official หรือ community plugins ตามต้องการ
 > Goal: เพิ่ม capabilities จาก plugins โดยไม่เปิดสิทธิ์เกินความจำเป็น
 
 1. ติดตั้ง official plugins ด้วย `bun run tauri add <plugin-name>`
@@ -91,8 +87,7 @@ triggers:
 
 ### 7. Build And Test
 
-Build และ test Tauri app
-
+> Goal: Build และ test Tauri app
 > Goal: application รันและ build สำเร็จบน target platforms
 
 1. Development mode: `bun run tauri dev`

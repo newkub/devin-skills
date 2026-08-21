@@ -12,9 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -26,39 +25,40 @@ Use `follow-create-vite-plugins` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup
+> Goal: Setup
 
 1. สร้างโครงสร้างโฟลเดอร์ `packages/{plugin-name}/`
 2. สร้าง `package.json` ด้วย dependencies และ scripts
 3. สร้าง `tsconfig.json` สำหรับ TypeScript configuration
 
 ### 2. Create Plugin
+> Goal: Create Plugin
 
 1. สร้าง `src/index.ts` พร้อม plugin implementation
 2. กำหนด plugin function ที่ return object ด้วย hooks
 3. ใช้ TypeScript สำหรับ type safety
 
 ### 3. Configure Build
+> Goal: Configure Build
 
 1. สร้าง `vite.config.ts` สำหรับ library mode build
 2. ตั้งค่า build.lib ด้วย entry, name, fileName
 3. external vite จาก bundle
 
 ### 4. Add Examples
+> Goal: Add Examples
 
 1. สร้าง `examples/basic/` พร้อมตัวอย่างพื้นฐาน
 2. สร้าง `examples/advanced/` พร้อมตัวอย่างขั้นสูง
 3. ทดสอบ examples ว่าทำงานได้จริง
 
 ### 5. Add Tests
+> Goal: Add Tests
 
 1. สร้าง `test/` ด้วย unit และ integration tests
 2. รัน `build` เพื่อตรวจสอบ build process
 3. รัน `test` เพื่อตรวจสอบ functionality
-
-## Rules
 
 ## Rules
 
@@ -97,8 +97,6 @@ Use `follow-create-vite-plugins` for the specific tasks and workflows it covers
 - ตั้งค่า build.lib ด้วย entry, name, fileName
 - ใช้ formats: ['es', 'cjs']
 - external vite จาก bundle
-
-## Expected Outcome
 
 ## Expected Outcome
 

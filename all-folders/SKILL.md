@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - validate
+  - resolve-errors
+  - analyze-project
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,24 +27,23 @@ Use `all-folders` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Discover Folders
+> Goal: Discover Folders
 
 1. ทำ `/analyze-project` เพื่อดูโครงสร้าง
 2. ใช้ `find_by_name` หรือ `list_dir` เพื่อค้นหา folders ตาม pattern
 
 ### 2. Process Each Folder
+> Goal: Process Each Folder
 
 1. อ่าน folder contents ด้วย `list_dir`
 2. ประมวลผล folder ตาม workflow ที่เกี่ยวข้อง
 
 ### 3. Verify
+> Goal: Verify
 
 1. ตรวจสอบว่าทุก folder ได้รับการประมวลผลแล้ว
 2. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
-
-## Rules
 
 ## Rules
 
@@ -59,8 +61,6 @@ Use `all-folders` for the specific tasks and workflows it covers
 
 - บันทึก folders ที่มีปัญหา
 - ทำ `/resolve-errors` สำหรับ folders ที่มี issues
-
-## Expected Outcome
 
 ## Expected Outcome
 

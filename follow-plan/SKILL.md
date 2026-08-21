@@ -27,8 +27,7 @@ triggers:
 
 ### 1. Load Plan
 
-โหลด plan เข้ามา
-
+> Goal: โหลด plan เข้ามา
 > Goal: รู้ steps ทั้งหมดที่ต้องทำ
 
 1. อ่าน `AGENTS.md` ใน project root
@@ -38,8 +37,7 @@ triggers:
 
 ### 2. Parse Steps
 
-แยก plan ออกเป็น executable steps
-
+> Goal: แยก plan ออกเป็น executable steps
 > Goal: ทุก step ต้องระบุ action ชัดเจน
 
 1. แปลงแต่ละ step เป็นหนึ่งใน:
@@ -52,8 +50,7 @@ triggers:
 
 ### 3. Execute Steps
 
-ทำตาม plan ทีละ step
-
+> Goal: ทำตาม plan ทีละ step
 > Goal: ทุก step ทำเสร็จและผ่าน expected outcome
 
 1. สร้าง todo list จาก steps ทั้งหมด
@@ -65,8 +62,7 @@ triggers:
 
 ### 4. Handle Failures
 
-จัดการ step ทีไม่ผ่าน
-
+> Goal: จัดการ step ทีไม่ผ่าน
 > Goal: ไม่ข้าม failures โดยไม่ได้รับการอนุมัติ
 
 1. ถ้า step ไม่ผ่าน → ทำ `resolve-errors` หรือถาม user
@@ -76,8 +72,7 @@ triggers:
 
 ### 5. Validate And Report
 
-ตรวจสอบและรายงานผล
-
+> Goal: ตรวจสอบและรายงานผล
 > Goal: ผู้ใช้ทราบสถานะ plan ทั้งหมด
 
 1. ตรวจสอบว่าทุก step เป็น `completed` หรือ `ข้าม`

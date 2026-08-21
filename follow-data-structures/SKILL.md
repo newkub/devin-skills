@@ -16,6 +16,7 @@ related:
   - check-time-complexity
   - follow-functional-programming
   - validate
+  - delete
 ---
 
 ## Goal
@@ -30,8 +31,7 @@ related:
 
 ### 1. Analyze Data Access Patterns
 
-เข้าใจวิธีทีข้อมูลถูกใช้
-
+> Goal: เข้าใจวิธีทีข้อมูลถูกใช้
 > Goal: ระบุ operations หลัก
 
 1. ระบุ operations ทีต้องทำบ่อย (insert, delete, search, access, traverse)
@@ -41,8 +41,7 @@ related:
 
 ### 2. Choose Data Structure
 
-เลือก data structure ตาม complexity ของ operations
-
+> Goal: เลือก data structure ตาม complexity ของ operations
 > Goal: ได้ structure ทีมี cost ต่ำสำหรับ use case
 
 1. ใช้ Array/Vector สำหรับ random access บ่อย
@@ -54,8 +53,7 @@ related:
 
 ### 3. Consider Language And Libraries
 
-ใช้สิ่งที ecosystem มีให้
-
+> Goal: ใช้สิ่งที ecosystem มีให้
 > Goal: ไม่ implement ซ้ำ
 
 1. ใช้ built-in types ก่อน (array, map, set, list)
@@ -65,8 +63,7 @@ related:
 
 ### 4. Implement And Encapsulate
 
-สร้าง abstraction ที่เหมาะสม
-
+> Goal: สร้าง abstraction ที่เหมาะสม
 > Goal: โค้ดใช้งานง่ายและปลอดภัย
 
 1. สร้าง class/type ทีซ่อน internal representation
@@ -76,8 +73,7 @@ related:
 
 ### 5. Profile And Refactor
 
-ตรวจสอบว่า structure ตอบสนองต่อ use case
-
+> Goal: ตรวจสอบว่า structure ตอบสนองต่อ use case
 > Goal: ไม่มี bottleneck
 
 1. วัด time ของ operations หลัก

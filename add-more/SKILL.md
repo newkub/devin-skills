@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - idea-features
+  - run-build
+  - report-ansi
+  - use-scripts
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Context
+> Goal: Identify Context
 
 1. ระบุ context ของสิ่งที่ต้องการเพิ่ม (features, files, tests, configs, docs, modules, ฯลฯ)
 2. ทำ `/analyze-project` เพื่อเข้าใจโครงสร้างและ characteristics ของ project
@@ -31,6 +39,7 @@ triggers:
 5. บันทึกสิ่งที่มีอยู่ปัจจุบันเป็น baseline
 
 ### 2. Analyze Gaps
+> Goal: Analyze Gaps
 
 1. ระบุสิ่งที่มีอยู่ปัจจุบันใน context ที่กำหนด
 2. ระบุสิ่งที่ควรมีแต่ยังไม่มี (gaps)
@@ -39,6 +48,7 @@ triggers:
 5. ถ้ามี gaps มากกว่า 10 รายการ ให้ใช้ `/use-scripts` สำหรับ batch analysis
 
 ### 3. Prioritize
+> Goal: Prioritize
 
 1. จัดลำดับตาม impact (สิ่งที่มีผลกระทบมากก่อน)
 2. จัดลำดับตาม dependencies (สิ่งที่เป็น dependencies ของสิ่งอื่นก่อน)
@@ -46,6 +56,7 @@ triggers:
 4. จัดลำดับตาม effort (สิ่งที่ทำง่ายและมี impact มากก่อน)
 
 ### 4. Add Missing Items
+> Goal: Add Missing Items
 
 1. สร้างเพิ่มทีละรายการตามลำดับความสำคัญ
 2. ทำตาม best practices ของ context นั้นๆ โดยใช้ `/follow-best-practice`
@@ -54,6 +65,7 @@ triggers:
 5. อัพเดท references ที่เกี่ยวข้องทุกครั้งที่เพิ่ม item ใหม่
 
 ### 5. Validate
+> Goal: Validate
 
 1. ตรวจสอบว่าสิ่งที่เพิ่มใหม่ทำงานได้ถูกต้อง
 2. ตรวจสอบว่าไม่ทำลาย functionality ที่มีอยู่
@@ -61,6 +73,7 @@ triggers:
 4. รัน verify หรือ test ตาม context (เช่น `/run-verify`, `/run-test`, `/run-build`)
 
 ### 6. Report
+> Goal: Report
 
 1. รัน `/report-table` เพื่อแสดง before/after ของสิ่งที่เพิ่มขึ้น
 2. รัน `/report-ansi` เพื่อแสดงสรุปการเพิ่ม

@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-open-github-secrets` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Open GitHub Secrets Page
+> Goal: Open GitHub Secrets Page
 
 1. เปิด URL: `https://github.com/{GITHUB_USERNAME}/{GITHUB_REPOSITORY}/settings/secrets/actions`
 2. แทนที่ `{GITHUB_USERNAME}` ด้วย GitHub username ของคุณ
@@ -35,13 +34,9 @@ Use `follow-open-github-secrets` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 1. ต้องมีสิทธิ์เข้าถึง repository settings
 2. ต้องเป็น owner หรือ maintainer ของ repository
 3. ระบุชื่อ repository และ username ให้ถูกต้อง
-
-## Expected Outcome
 
 ## Expected Outcome
 

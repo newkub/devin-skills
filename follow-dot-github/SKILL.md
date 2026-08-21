@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - check-monorepo
+  - follow-github-workflows
+  - analyze-project
+  - follow-github-actions
+  - update-reference
 ---
 
 ## Goal
@@ -55,8 +62,7 @@ triggers:
 
 ### 1. Analyze Existing .github
 
-อ่านและวิเคราะห์ `.github` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
-
+> Goal: อ่านและวิเคราะห์ `.github` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
 > Goal: รู้ไฟล์ที่มี ไฟล์ที่ขาด และไฟล์ที่ต้องอัปเดต
 
 1. อ่าน `.github/` directory ทั้งหมด
@@ -67,8 +73,7 @@ triggers:
 
 ### 2. Analyze Project
 
-วิเคราะห์ project เพื่อกำหนดไฟล์ที่จำเป็น
-
+> Goal: วิเคราะห์ project เพื่อกำหนดไฟล์ที่จำเป็น
 > Goal: รู้ project type, tech stack, และ community files ที่ต้องมี
 
 1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
@@ -79,8 +84,7 @@ triggers:
 
 ### 3. Setup CI/CD Workflows
 
-จัดการ CI/CD workflows โดยอ้างอิง workflows เฉพาะทาง
-
+> Goal: จัดการ CI/CD workflows โดยอ้างอิง workflows เฉพาะทาง
 > Goal: CI/CD workflows ครบถ้วนไม่ทับซ้อนกับ specialized workflows
 
 1. ทำ `/follow-github-actions` เพื่อเลือก workflows ที่เหมาะสม
@@ -91,8 +95,7 @@ triggers:
 
 ### 4. Setup Issue Templates
 
-สร้าง issue templates สำหรับ bug reports, feature requests และ config
-
+> Goal: สร้าง issue templates สำหรับ bug reports, feature requests และ config
 > Goal: Issue templates ครบถ้วนช่วยให้ contributors ให้ข้อมูลที่จำเป็น
 
 1. สร้าง `.github/ISSUE_TEMPLATE/bug_report.yml` พร้อมฟิลด์: description, steps to reproduce, expected behavior, environment
@@ -103,8 +106,7 @@ triggers:
 
 ### 5. Setup PR Template
 
-สร้าง pull request template เพื่อ guide contributors
-
+> Goal: สร้าง pull request template เพื่อ guide contributors
 > Goal: PR template ช่วยให้ PR มีข้อมูลครบและตรงมาตรฐาน
 
 1. สร้าง `.github/PULL_REQUEST_TEMPLATE.md`
@@ -115,8 +117,7 @@ triggers:
 
 ### 6. Setup CODEOWNERS
 
-สร้าง CODEOWNERS เพื่อกำหนด code owners ตาม directory structure
-
+> Goal: สร้าง CODEOWNERS เพื่อกำหนด code owners ตาม directory structure
 > Goal: PR reviews ไปถึงคนที่รู้เรื่องนั้นๆ อัตโนมัติ
 
 1. สร้าง `.github/CODEOWNERS`
@@ -127,8 +128,7 @@ triggers:
 
 ### 7. Setup Dependabot
 
-สร้าง `dependabot.yml` เพื่อ automated dependency updates
-
+> Goal: สร้าง `dependabot.yml` เพื่อ automated dependency updates
 > Goal: Dependencies อัปเดตอัตโนมัติปลอดภัยและควบคุมได้
 
 1. สร้าง `.github/dependabot.yml`
@@ -142,8 +142,7 @@ triggers:
 
 ### 8. Setup Community Files
 
-สร้าง community files ตามประเภท project
-
+> Goal: สร้าง community files ตามประเภท project
 > Goal: Project มี community guidelines และ security policy ที่ชัดเจน
 
 1. สร้าง `.github/SECURITY.md` พร้อมวิธีรายงาน vulnerabilities และ response timeline
@@ -154,8 +153,7 @@ triggers:
 
 ### 9. Validate And Update References
 
-ตรวจสอบความถูกต้องและอัปเดต references
-
+> Goal: ตรวจสอบความถูกต้องและอัปเดต references
 > Goal: ทุกไฟล์ถูกต้อง ไม่มี broken references
 
 1. ตรวจสอบ YAML syntax ของทุก `.yml`/`.yaml` ไฟล์

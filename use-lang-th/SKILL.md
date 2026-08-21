@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Set Language Context
+> Goal: Set Language Context
 
 ตั้งค่าใช้ภาษาไทยเป็นหลัก:
 
@@ -32,6 +35,7 @@ triggers:
 4. ใช้คำศัพท์ภาษาอังกฤษเฉพาะ technical terms ที่ไม่มีคำแปลไทย
 
 ### 2. Communicate In Thai
+> Goal: Communicate In Thai
 
 สื่อสารเป็นภาษาไทย:
 
@@ -41,6 +45,7 @@ triggers:
 4. ใช้ technical terms ภาษาอังกฤษเมื่อจำเป็น
 
 ### 3. Documentation
+> Goal: Documentation
 
 เขียน documentation เป็นภาษาไทย:
 

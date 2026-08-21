@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-readme
+  - analyze-project
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +26,15 @@ Use `write-examples` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Analyze APIs
+> Goal: Analyze APIs
 
 1. รัน `/analyze-project` เพื่อดูภาพรวม
 2. อ่าน entry point และ index files ในแต่ละ module
 3. ระบุ API ทั้งหมดจาก source code
 
 ### 2. Create Structure
+> Goal: Create Structure
 
 1. สร้าง `examples/` directory
 2. สร้าง subdirectories ตาม project organization
@@ -40,6 +42,7 @@ Use `write-examples` for the specific tasks and workflows it covers
 4. สร้าง `README.md` อธิบายโครงสร้าง
 
 ### 3. Write Examples per Module
+> Goal: Write Examples per Module
 
 1. เขียน examples สำหรับทุก module ครอบคล้วทุก API
 2. เขียน basic usage สำหรับแต่ละ API
@@ -48,24 +51,25 @@ Use `write-examples` for the specific tasks and workflows it covers
 5. เขียน `src/index.ts` ที่เมื่อ run example แล้ว ต้องแสดงทั้งหมดแบบ reactive ว่ามีอะไรบ้าง เพื่อให้เห็นภาพรวม
 
 ### 4. Write Integration Examples
+> Goal: Write Integration Examples
 
 1. End-to-end use case flows
 2. Cross-module integration
 3. Error handling flows
 
 ### 5. Validate
+> Goal: Validate
 
 1. รัน examples เพื่อตรวจสอบว่าทำงานได้จริง
 2. ตรวจสอบว่าครอบคลุมทุก API
 3. ตรวจสอบว่า code ถูกต้องและ runnable
 
 ### 6. Update Documentation
+> Goal: Update Documentation
 
 1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
 3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
-
-## Rules
 
 ## Rules
 
@@ -91,8 +95,6 @@ Use `write-examples` for the specific tasks and workflows it covers
 ### 5. Organization
 
 - จัดเรียงตาม modules และ complexity
-
-## Expected Outcome
 
 ## Expected Outcome
 

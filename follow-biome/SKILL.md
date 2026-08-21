@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,14 +24,16 @@ Use `follow-biome` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup
+
+> Goal: Setup
 
 1. ติดตั้ง Biome CLI ด้วย `bun add -D @biomejs/biome`
 2. ตรวจสอบว่ามี `package.json` อยู่แล้ว
 
 ### 2. Configure
+
+> Goal: Configure
 
 1. สร้าง `biome.jsonc` ที่ root พร้อม VCS integration และ recommended rules
 
@@ -77,6 +79,7 @@ Use `follow-biome` for the specific tasks and workflows it covers
 
 ### 3. Monorepo
 
+> Goal: Monorepo
 1. ในแต่ละ workspace สร้าง `biome.jsonc` ด้วย `root: false` และ `extends: ["../../biome.jsonc"]`
 
 ```json [biome.jsonc]
@@ -88,6 +91,7 @@ Use `follow-biome` for the specific tasks and workflows it covers
 
 ### 4. Optional Domains
 
+> Goal: Optional Domains
 1. เลือก domains ที่เกี่ยวข้องกับโปรเจกต์
 2. เพิ่ม domains ใน `biome.jsonc` ผ่าน `linter.domains`
 
@@ -108,11 +112,13 @@ Use `follow-biome` for the specific tasks and workflows it covers
 
 ### 5. Verify
 
+> Goal: Verify
 1. รัน `bun run lint`
 2. รัน `bun run format`
 
 ### 6. GitHub Actions CI
 
+> Goal: GitHub Actions CI
 1. สร้าง `.github/workflows/biome.yml` สำหรับ CI/CD
 
 ```yaml [.github/workflows/biome.yml]
@@ -139,8 +145,6 @@ jobs:
       - name: Run Biome
         run: biome ci .
 ```
-
-## Rules
 
 ## Rules
 
@@ -177,8 +181,6 @@ jobs:
 - Turborepo: สำหรับ Turborepo projects
 - Types: สำหรับ type analysis (มีผลต่อ performance)
 - Vue: สำหรับ Vue projects
-
-## Expected Outcome
 
 ## Expected Outcome
 

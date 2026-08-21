@@ -32,8 +32,7 @@ related:
 
 ### 1. Identify Target Directories
 
-หา directories ที่ต้องแปลง
-
+> Goal: หา directories ที่ต้องแปลง
 > Goal: รู้จำนวนไฟล์และตำแหน่งที่ต้องแปลง
 
 1. ระบุ `references/` หรือ target directory ที่ต้องการแปลง
@@ -43,8 +42,7 @@ related:
 
 ### 2. Convert To Flat Files
 
-ย้าย `SKILL.md` จากแต่ละ directory ออกมาเป็น flat file
-
+> Goal: ย้าย `SKILL.md` จากแต่ละ directory ออกมาเป็น flat file
 > Goal: ไม่มี nested directories เหลืออยู่
 
 1. สำหรับแต่ละ `<name>/SKILL.md`:
@@ -56,8 +54,7 @@ related:
 
 ### 3. Update Path References
 
-อัปเดท paths ใน active skill files หรือ references อื่นที่อ้างอิงถึง directories เดิม
-
+> Goal: อัปเดท paths ใน active skill files หรือ references อื่นที่อ้างอิงถึง directories เดิม
 > Goal: ไม่มี broken references
 
 1. ใช้ `grep` ค้นหา `references/<name>/` หรือ `references/<name>/SKILL.md` ทั่ว target skill
@@ -67,8 +64,7 @@ related:
 
 ### 4. Validate
 
-ตรวจสอบว่าโครงสร้าง flat ถูกต้อง
-
+> Goal: ตรวจสอบว่าโครงสร้าง flat ถูกต้อง
 > Goal: active skill ยังเรียก references ได้
 
 1. ตรวจสอบ active skill ยังเรียก references ได้

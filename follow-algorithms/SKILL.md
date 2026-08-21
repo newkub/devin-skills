@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -30,8 +31,7 @@ related:
 
 ### 1. Understand The Problem
 
-วิเคราะห์ปัญหาก่อนเลือก algorithm
-
+> Goal: วิเคราะห์ปัญหาก่อนเลือก algorithm
 > Goal: ระบุ requirements ชัดเจน
 
 1. ระบุ input/output ทีต้องการ
@@ -41,8 +41,7 @@ related:
 
 ### 2. Choose Algorithm
 
-เลือก algorithm ตาม characteristics
-
+> Goal: เลือก algorithm ตาม characteristics
 > Goal: ได้ algorithm ทีตอบโจทย์
 
 1. ค้นหา algorithm ทั่วไปสำหรับปัญหาประเภทนี้ (sorting, searching, graph, DP, greedy)
@@ -52,8 +51,7 @@ related:
 
 ### 3. Analyze Complexity
 
-วิเคราะห์ก่อน implement
-
+> Goal: วิเคราะห์ก่อน implement
 > Goal: ยืนยันว่า algorithm ผ่าน constraints
 
 1. คำนวณ best/average/worst time complexity
@@ -63,8 +61,7 @@ related:
 
 ### 4. Implement
 
-เขียน algorithm ให้ถูกต้องและอ่านง่าย
-
+> Goal: เขียน algorithm ให้ถูกต้องและอ่านง่าย
 > Goal: โค้ดทำงานได้และ maintain ได้
 
 1. ใช้ชื่อตัวแปรและฟังก์ชันทีสื่อความหมาย
@@ -74,8 +71,7 @@ related:
 
 ### 5. Optimize If Needed
 
-ปรับปรุงเมื่อจำเป็น
-
+> Goal: ปรับปรุงเมื่อจำเป็น
 > Goal: ได้ performance ทีดีพอ
 
 1. Profile ก่อน optimize

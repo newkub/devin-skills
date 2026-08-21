@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - check-long-files
 ---
 
 ## Goal
@@ -23,18 +25,21 @@ triggers:
 ## Execute
 
 ### 1. Check Prerequisites
+> Goal: Check Prerequisites
 
 1. ตรวจสอบว่ามี `loc` ติดตั้งหรือไม่: `loc --version`
 2. ถ้าไม่มี → ติดตั้งด้วย `cargo install loc` หรือดาวน์โหลด binary จาก https://github.com/cgag/loc/releases
 3. ถ้าไม่มี Rust/Cargo → ติดตั้งจาก https://www.rustup.rs/
 
 ### 2. Count Lines Of Code
+> Goal: Count Lines Of Code
 
 1. รัน `loc` เพื่อนับ lines of code ทั้ง project: `loc`
 2. ระบุ path เฉพาะ: `loc src/` หรือ `loc ci benches`
 3. ผลลัพธ์แสดงตารางแยกตามภาษา: Files, Lines, Blank, Comment, Code
 
 ### 3. Show Per-File Statistics
+> Goal: Show Per-File Statistics
 
 1. รัน `loc --files` เพื่อแสดงสถิติระดับไฟล์
 2. ใช้ `--sort` สำหรับเรียงลำดับ:
@@ -45,6 +50,7 @@ triggers:
 3. ค่า `Language` และ `Files` ใช้ได้เฉพาะเมื่อไม่มี `--files`
 
 ### 4. Filter Files
+> Goal: Filter Files
 
 1. ใช้ `--include <REGEX>` กรองเฉพาะไฟล์ที่ตรงเงื่อนไข:
    - `loc --include '\.ts$'` — เฉพาะ TypeScript files
@@ -56,6 +62,7 @@ triggers:
 4. ใช้ `-u` เพื่อข้าม `.gitignore` และ `-uu` เพื่อรวม hidden files
 
 ### 5. Filter Long Files
+> Goal: Filter Long Files
 
 1. รัน `loc --files --sort Lines` แล้ว pipe ไปกรองเฉพาะไฟล์ที่ > threshold:
    ```bash

@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - review-codebase
+  - check-correctness
+  - report
+  - analyze-project
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze SaaS Structure
+> Goal: Analyze SaaS Structure
 
 วิเคราะห์โครงสร้าง SaaS ปัจจุบัน
 
@@ -32,6 +40,7 @@ triggers:
 4. ถ้า project มี SDK ให้ตรวจสอบ developer API surface
 
 ### 2. Improve Performance
+> Goal: Improve Performance
 
 ปรับปรุง performance ครบวงจร
 
@@ -40,6 +49,7 @@ triggers:
 3. Optimize database queries, API responses และ implement CDN
 
 ### 3. Improve UX/UI
+> Goal: Improve UX/UI
 
 ปรับปรุง UX/UI ครบวงจร
 
@@ -47,6 +57,7 @@ triggers:
 2. ปรับปรุง onboarding flow, user dashboard, settings interface และ notification experience
 
 ### 4. Improve SEO
+> Goal: Improve SEO
 
 ปรับปรุง SEO ครบวงจร
 
@@ -55,6 +66,7 @@ triggers:
 3. Implement structured data และ monitor search performance
 
 ### 5. Improve Integrations
+> Goal: Improve Integrations
 
 ปรับปรุง integrations ครบวงจร
 
@@ -63,6 +75,7 @@ triggers:
 3. ทำ `/review-codebase` สำหรับ transactional email service (booking confirmations, receipts, password reset, email templates, deliverability)
 
 ### 6. Improve Security
+> Goal: Improve Security
 
 ปรับปรุง security ครบวงจร
 
@@ -73,6 +86,7 @@ triggers:
 5. Implement multi-factor authentication, data encryption และ security monitoring
 
 ### 7. Improve Scalability
+> Goal: Improve Scalability
 
 ปรับปรุง scalability
 
@@ -82,6 +96,7 @@ triggers:
 4. Optimize database for scale, implement horizontal scaling และ load balancing
 
 ### 8. Improve Database
+> Goal: Improve Database
 
 ปรับปรุง database operations
 
@@ -89,6 +104,7 @@ triggers:
 2. Optimize queries, implement proper indexing, connection pooling และ data archiving
 
 ### 9. Improve Error Handling
+> Goal: Improve Error Handling
 
 ปรับปรุง error handling
 
@@ -97,6 +113,7 @@ triggers:
 3. Implement global error handling, error tracking และ error recovery
 
 ### 10. Improve Monitoring
+> Goal: Improve Monitoring
 
 ปรับปรุง monitoring และ observability
 
@@ -105,6 +122,7 @@ triggers:
 3. Implement application monitoring, business metrics และ alerting
 
 ### 11. Improve Developer Experience
+> Goal: Improve Developer Experience
 
 ปรับปรุง developer experience
 
@@ -114,6 +132,7 @@ triggers:
 4. Improve build times, local development และ documentation
 
 ### 12. Verify And Report
+> Goal: Verify And Report
 
 ตรวจสอบผลการปรับปรุง
 

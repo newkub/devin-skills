@@ -16,6 +16,7 @@ related:
   - learn-from-web
   - report-table
   - ask-me
+  - compare
 ---
 
 ## Goal
@@ -30,8 +31,7 @@ related:
 
 ### 1. Identify Repo And Tags
 
-ระบุ repository และ tags ที่ต้องเปรียบเทียบ
-
+> Goal: ระบุ repository และ tags ที่ต้องเปรียบเทียบ
 > Goal: รู้ `owner/repo` และ `from...to` tags ที่ชัดเจน
 
 1. ถ้า user ให้ compare URL เช่น `https://github.com/moonrepo/moon/compare/v2.4.5...v2.4.6` → แยก `owner/repo`, `from`, `to`
@@ -40,8 +40,7 @@ related:
 
 ### 2. Fetch Compare Data
 
-ดึงข้อมูล diff ระหว่าง tags
-
+> Goal: ดึงข้อมูล diff ระหว่าง tags
 > Goal: มี commit list, PR list, และ release notes ดิบ
 
 1. ทำ `mcp_call_tool` บน `github-mcp-server` เพื่อ compare ระหว่าง tags
@@ -51,8 +50,7 @@ related:
 
 ### 3. Categorize Changes
 
-จัดประเภท changes จาก commits
-
+> Goal: จัดประเภท changes จาก commits
 > Goal: แยกประเภทเพื่อ report อ่านง่าย
 
 1. อ่าน commit messages ทั้งหมด และ pull request titles
@@ -68,8 +66,7 @@ related:
 
 ### 4. Pass To Report
 
-ส่งข้อมูลไป format
-
+> Goal: ส่งข้อมูลไป format
 > Goal: ให้ `/report-release-changelog` จัดรูปแบบ report
 
 1. ทำ `/report-release-changelog` พร้อม raw data:

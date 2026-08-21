@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Use Modern Syntax
+> Goal: Use Modern Syntax
 
 ใช้ modern JavaScript syntax และ ES2024+ features
 
@@ -38,6 +41,7 @@ triggers:
 10. ใช้ `findLast()` และ `findLastIndex()` สำหรับ reverse search (ES2023)
 
 ### 2. Use Async Patterns
+> Goal: Use Async Patterns
 
 ใช้ async patterns ที่เหมาะสม
 
@@ -50,6 +54,7 @@ triggers:
 7. ใช้ dynamic `import()` สำหรับ lazy loading modules
 
 ### 3. Write Clean Code
+> Goal: Write Clean Code
 
 เขียน code ที่ clean และ maintainable
 
@@ -63,6 +68,7 @@ triggers:
 8. ใช้ SOLID principles เมื่อเป็นไปได้
 
 ### 4. Error Handling
+> Goal: Error Handling
 
 จัดการ errors อย่างเหมาะสม
 
@@ -74,6 +80,7 @@ triggers:
 6. ไม่ใช้ `catch` โดยไม่มี error parameter (optional catch binding)
 
 ### 5. Write Tests
+> Goal: Write Tests
 
 เขียน tests สำหรับ quality assurance
 

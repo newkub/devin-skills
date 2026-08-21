@@ -1,6 +1,6 @@
 ---
 name: follow-aws-sdk
-description: AWS SDK for JavaScript. Use for interacting with AWS services like S3, Lambda, DynamoDB, and...
+description: ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
 allowed-tools:
   - read
   - edit
@@ -10,17 +10,16 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
 
-
 ## Scope
 
 ใช้สำหรับการพัฒนา applications ที่ต้องการ interact กับ AWS services เช่น S3, Lambda, DynamoDB และอื่นๆ
-
 
 ## Execute
 
@@ -30,7 +29,6 @@ triggers:
 - Make API calls ด้วย command pattern เช่น `await client.send(new PutObjectCommand(...))`
 - Handle errors ด้วย try-catch และใช้ built-in retry logic
 - ใช้ TypeScript สำหรับ type safety และ autocomplete
-
 
 ## Rules
 
@@ -45,7 +43,6 @@ triggers:
 - ใช้ TypeScript สำหรับ type safety
 - ใช้ streaming สำหรับ large files
 - ใช้ pagination helpers สำหรับ large datasets
-
 
 ## Expected Outcome
 

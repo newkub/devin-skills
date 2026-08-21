@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-reference
+  - relocation
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ triggers:
 
 ### 1. Read All Gitignore Files
 
-อ่าน .gitignore ทั้งหมดที่มีอยู่เพื่อเข้าใจสถานะปัจจุบันก่อนแก้ไข
-
+> Goal: อ่าน .gitignore ทั้งหมดที่มีอยู่เพื่อเข้าใจสถานะปัจจุบันก่อนแก้ไข
 > Goal: รู้ patterns ที่มีอยู่ในทุก .gitignore ทุกระดับ
 
 1. ค้นหาไฟล์ .gitignore ทั้งหมดใน project (root + workspace + subdirectories)
@@ -34,8 +37,7 @@ triggers:
 
 ### 2. Analyze Project
 
-วิเคราะห์ tools และ workspaces เพื่อระบุ patterns ที่จำเป็น
-
+> Goal: วิเคราะห์ tools และ workspaces เพื่อระบุ patterns ที่จำเป็น
 > Goal: รู้ประเภทโปรเจกต์ tools และ workspace ที่ต้องมี .gitignore
 
 1. ตรวจสอบ manifest files (package.json, Cargo.toml, go.mod, pyproject.toml)
@@ -44,8 +46,7 @@ triggers:
 
 ### 3. Distribute Patterns
 
-แจกจ่าย patterns ระหว่าง root และ workspace ตามหลักการ `/relocation` — shared ไป root, specific ไป workspace
-
+> Goal: แจกจ่าย patterns ระหว่าง root และ workspace ตามหลักการ `/relocation` — shared ไป root, specific ไป workspace
 > Goal: แต่ละ pattern อยู่ใน .gitignore ที่เหมาะสม ไม่ซ้ำกัน
 
 1. ระบุ shared patterns (ใช้กับหลาย workspace) → ใส่ใน root .gitignore
@@ -56,8 +57,7 @@ triggers:
 
 ### 4. Validate
 
-ตรวจสอบว่า patterns ทำงานถูกต้องและไม่มีไฟล์ที่ไม่ควร commit ถูกติดตาม
-
+> Goal: ตรวจสอบว่า patterns ทำงานถูกต้องและไม่มีไฟล์ที่ไม่ควร commit ถูกติดตาม
 > Goal: ทุก pattern ทำงานถูกต้อง ไม่มีไฟล์รั่ว
 
 1. ตรวจสอบว่าไม่มี patterns ซ้ำกันระหว่าง root และ workspace

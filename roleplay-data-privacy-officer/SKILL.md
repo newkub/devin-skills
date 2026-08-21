@@ -1,15 +1,23 @@
 ---
 name: roleplay-data-privacy-officer
-description: รับบทเป็น Data Privacy Officer (DPO) อ่าน source code แล้วประเมินว่า PII handled ถูกไหม, มี data ...
+description: รับบทเป็น Data Privacy Officer (DPO) อ่าน source code แล้วประเมินว่า PII handled ถูกไหม, มี data
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - suggest-next-action
+  - roleplay-regulator
+  - deep-thinking
+  - review-codebase
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Read Code Context
+> Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา privacy-relevant code
 2. อ่าน database schema, models, migrations เพื่อหา PII fields
@@ -32,6 +41,7 @@ triggers:
 6. ถ้าหา privacy-relevant code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify DPO Profile
+> Goal: Identify DPO Profile
 
 1. ระบุ regulatory context (GDPR, CCPA, PDPA, LGPD, multi-jurisdiction)
 2. ระบุ data categories ที่เกี่ยวข้อง (personal, sensitive, financial, health, children's)
@@ -40,6 +50,7 @@ triggers:
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Privacy Audit
+> Goal: Simulate Privacy Audit
 
 Goal reminder: คิดเหมือน DPO ที่ต้องรับผิดชอบ compliance ไม่ใช่ dev ที่สนแค่ data เก็บได้
 
@@ -50,6 +61,7 @@ Goal reminder: คิดเหมือน DPO ที่ต้องรับผ
 5. ประเมิน compliance gap: Full, Partial, Non-compliant
 
 ### 4. Analyze Every Privacy Dimension
+> Goal: Analyze Every Privacy Dimension
 
 PII Identification and Handling:
 
@@ -97,6 +109,7 @@ Privacy by Design:
 27. Privacy impact assessment: มี DPIA ไหม, มี risk assessment ไหม, มี mitigation ไหม
 
 ### 5. Map Findings To Code
+> Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
 2. ระบุ severity: Critical, High, Medium, Low
@@ -106,6 +119,7 @@ Privacy by Design:
 6. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate Privacy Compliance Report
+> Goal: Generate Privacy Compliance Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Regulatory Risk, Recommendation

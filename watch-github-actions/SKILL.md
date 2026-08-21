@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-github-actions
 ---
 
 ## Goal
@@ -23,12 +25,14 @@ triggers:
 ## Execute
 
 ### 1. Check Workflows
+> Goal: Check Workflows
 
 1. ทำตาม `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repository ไหม
 2. ตรวจสอบ workflow ที่ trigger จาก push นี้
 3. ทำตาม `gh run list --limit 5` เพื่อดู recent workflow runs
 
 ### 2. Watch And Fix
+> Goal: Watch And Fix
 
 1. ทำตาม `gh run list --limit 1` เพื่อดู recent workflow run
 2. ทำตาม `gh run watch <run-id>` เพื่อติดตาม real-time

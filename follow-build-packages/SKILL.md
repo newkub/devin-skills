@@ -10,6 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - refactor-packages
+  - follow-turborepo
+  - follow-tsdown
+  - analyze-project
+  - follow-functional-programming
 ---
 
 ## Goal

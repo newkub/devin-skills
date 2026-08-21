@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Use Taze
+> Goal: Use Taze
 
 ใช้ Taze ผ่าน bunx โดยไม่ต้องติดตั้ง
 
@@ -30,6 +33,7 @@ triggers:
 2. ไม่ต้องติดตั้ง taze ใน package.json
 
 ### 2. Configure Package.json
+> Goal: Configure Package.json
 
 1. เพิ่ม `prepare` script ใน `package.json`
 2. ใช้ `bunx taze latest -w -r -i` สำหรับ update latest, write, recursive, install

@@ -10,6 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +24,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze References
+> Goal: Analyze References
 
 ค้นหาและวิเคราะห์ references ทั้งหมด
 
@@ -31,6 +33,7 @@ triggers:
 - บันทึก locations ทั้งหมดที่ต้องอัพเดท
 
 ### 2. Delete
+> Goal: Delete
 
 ดำเนินการลบและอัพเดท
 

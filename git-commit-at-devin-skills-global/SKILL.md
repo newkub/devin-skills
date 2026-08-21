@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 ## Execute
 
 ### 1. Navigate To Global Devin Skills
+> Goal: Navigate To Global Devin Skills
 
 เปลี่ยน directory ไปยัง global devin skills
 
@@ -30,6 +33,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ตรวจสอบว่าอยู่ใน directory ที่ถูกต้องด้วย `pwd`
 
 ### 2. Check Git Status
+> Goal: Check Git Status
 
 ตรวจสอบสถานะของ repository
 
@@ -37,6 +41,7 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ตรวจสอบว่าอยู่ใน repository ที่ถูกต้อง
 
 ### 3. Stage All Changes
+> Goal: Stage All Changes
 
 Stage ทุกไฟล์ที่มีการเปลี่ยนแปลง
 
@@ -44,6 +49,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ตรวจสอบด้วย `git diff --cached` ว่าไฟล์ที่ stage ถูกต้อง
 
 ### 4. Determine Commit Type
+> Goal: Determine Commit Type
 
 เลือก conventional commit type ที่เหมาะสม
 
@@ -56,6 +62,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
    - chore: ปรับปรุง configuration หรือ structure
 
 ### 5. Write Commit Message
+> Goal: Write Commit Message
 
 เขียน commit message ตาม conventional commits format
 
@@ -66,6 +73,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 5. ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
 
 ### 6. Execute Commit
+> Goal: Execute Commit
 
 ดำเนินการ commit
 
@@ -74,6 +82,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 3. ถ้ามี error: แก้ไขแล้วลองอีกครั้ง
 
 ### 7. Verify Commits
+> Goal: Verify Commits
 
 ตรวจสอบความถูกต้องของ commits
 

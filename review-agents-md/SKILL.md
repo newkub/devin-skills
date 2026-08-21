@@ -17,7 +17,6 @@ related:
   - update-agents-md
   - review-codebase
   - check-reference
-  - validate
 ---
 
 ## Goal
@@ -32,8 +31,7 @@ Review root and workspace `AGENTS.md` files in `.devin/` or project root. Does n
 
 ### 1. Locate AGENTS.md
 
-Find all `AGENTS.md` files in the project
-
+> Goal: Find all `AGENTS.md` files in the project
 > Goal: know which files to review
 
 1. use `glob` to find `**/AGENTS.md`
@@ -42,8 +40,7 @@ Find all `AGENTS.md` files in the project
 
 ### 2. Validate Frontmatter
 
-Check frontmatter for each `AGENTS.md`
-
+> Goal: Check frontmatter for each `AGENTS.md`
 > Goal: frontmatter is complete and consistent
 
 1. check `name` matches workspace or project
@@ -53,8 +50,7 @@ Check frontmatter for each `AGENTS.md`
 
 ### 3. Validate Sections
 
-Ensure required sections exist in correct order
-
+> Goal: Ensure required sections exist in correct order
 > Goal: `AGENTS.md` follows the standard structure
 
 1. verify `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
@@ -64,8 +60,7 @@ Ensure required sections exist in correct order
 
 ### 4. Check References
 
-Validate all skill references in `AGENTS.md`
-
+> Goal: Validate all skill references in `AGENTS.md`
 > Goal: no broken skill slash commands
 
 1. extract all `skill-name` references
@@ -75,8 +70,7 @@ Validate all skill references in `AGENTS.md`
 
 ### 5. Check Workspace Coverage
 
-For monorepo, verify each workspace has an `AGENTS.md`
-
+> Goal: For monorepo, verify each workspace has an `AGENTS.md`
 > Goal: every workspace is covered
 
 1. use `/check-monorepo` to confirm workspace list
@@ -86,8 +80,7 @@ For monorepo, verify each workspace has an `AGENTS.md`
 
 ### 6. Report Findings
 
-Summarize review results
-
+> Goal: Summarize review results
 > Goal: actionable report with severity
 
 1. use `/report-table` for issues

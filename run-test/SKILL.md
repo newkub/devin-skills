@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,8 +18,6 @@ related:
   - run-test-integration
   - run-test-e2e
   - run-test-coverage
-  - validate
-  - report
 ---
 
 ## Goal
@@ -32,11 +32,15 @@ related:
 
 ### 1. Run Lint And Typecheck
 
+> Goal: Run Lint And Typecheck
+
 1. ทำ `/run-lint` เพื่อตรวจสอบ code quality
 2. ทำ `/run-typecheck` เพื่อตรวจสอบ type safety
 3. แก้ไข lint/type errors ก่อนรัน tests (code quality ไม่ใช่ test failure)
 
 ### 2. Setup Test Structure
+
+> Goal: Setup Test Structure
 
 1. ตรวจสอบ test structure: `test/unit/`, `test/integration/`, `test/e2e/`, `test/fixtures/`, `test/mocks/`, `test/utils/`
 2. สร้าง directories ถ้ายังไม่มี
@@ -45,14 +49,15 @@ related:
 
 ### 3. Prepare Tests
 
+> Goal: Prepare Tests
+
 1. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ ให้ทำ `/write-test` เพื่อสร้าง tests ที่ขาดหายไป
 2. ตรวจสอบ test files ครอบคลุม happy path, edge cases, error cases
 3. ไม่แก้ไข test assertions หรือ source code เพื่อให้ผ่านในขั้นตอนนี้
 
 ### 4. Run Unit Tests
 
-รัน unit tests สำหรับ pure functions และ business logic
-
+> Goal: รัน unit tests สำหรับ pure functions และ business logic
 > Goal: Unit tests ผ่านทั้งหมด ไม่มี logic errors
 
 1. ทำ `/run-test-unit` เพื่อรัน unit tests
@@ -61,8 +66,7 @@ related:
 
 ### 5. Run Integration Tests
 
-รัน integration tests สำหรับ module interactions และ data flow
-
+> Goal: รัน integration tests สำหรับ module interactions และ data flow
 > Goal: Integration tests ผ่านทั้งหมด ไม่มี integration issues
 
 1. ทำ `/run-test-integration` เพื่อรัน integration tests
@@ -71,8 +75,7 @@ related:
 
 ### 6. Run E2E Tests (Conditional)
 
-รัน E2E tests ถ้า project มี web frontend
-
+> Goal: รัน E2E tests ถ้า project มี web frontend
 > Goal: E2E tests ผ่าน critical paths ทั้งหมด
 
 1. ถ้ามี web frontend: ทำ `/run-test-e2e` เพื่อรัน E2E tests ด้วย Playwright หรือ Cypress
@@ -80,6 +83,8 @@ related:
 3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
 
 ### 7. Run Specialized Tests (Conditional)
+
+> Goal: Run Specialized Tests (Conditional)
 
 รันเฉพาะ test types ที่เกี่ยวข้องกับ project:
 
@@ -99,6 +104,8 @@ related:
 
 ### 8. Validate And Classify Failures
 
+> Goal: Validate And Classify Failures
+
 1. ทำ `/validate` กับ source code ที่เกี่ยวข้องเพื่อตรวจสอบความถูกต้อง
 2. ทำ `/run-test` เพื่อตรวจสอบ test quality, assertions, mocks
 3. ทำ `/review-codebase` เพื่อ review ทั้ง source และ test files
@@ -110,6 +117,8 @@ related:
 
 ### 9. Fix Based On Classification
 
+> Goal: Fix Based On Classification
+
 1. ถ้าได้รับการยืนยันและผล validate/review ชัดเจน:
    - ถ้า source ผิด → ทำ `/resolve-errors` กับ source
    - ถ้า test ผิด → ทำ `/write-test` หรือ `/edit` กับ test
@@ -118,11 +127,15 @@ related:
 
 ### 10. Check Coverage
 
+> Goal: Check Coverage
+
 1. ทำ `/run-test-coverage` เพื่อวิเคราะห์ coverage
 2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/write-test` เพิ่ม แล้วรัน tests ใหม่
 
 ### 11. Report
+
+> Goal: Report
 
 1. ทำ `/report` สรุปผลลัพธ์
 2. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items

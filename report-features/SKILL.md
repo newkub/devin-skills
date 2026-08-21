@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - all-workspaces
+  - update-features
 ---
 
 ## Goal
@@ -30,6 +33,7 @@ related:
 ## Execute
 
 ### 1. Ensure Features Generated
+> Goal: Ensure Features Generated
 
 ตรวจสอบว่า features files มีอยู่และเป็นปัจจุบัน
 
@@ -38,6 +42,7 @@ related:
 3. ถ้ามีแล้ว ให้ข้ามไป Step 2
 
 ### 2. Read Feature Files
+> Goal: Read Feature Files
 
 อ่าน feature files จากทุก workspace
 
@@ -47,6 +52,7 @@ related:
 4. รวบรวม features จากทุก workspace ไว้ใน list เดียว
 
 ### 3. Format Report Table
+> Goal: Format Report Table
 
 จัดรูปแบบ features เป็นตารางในแชท
 
@@ -56,6 +62,7 @@ related:
 4. เรียงลำดับ features ตาม module และ status (`active` ก่อน, `partial` ทีหลัง, `deprecated` สุดท้าย)
 
 ### 4. Report Summary
+> Goal: Report Summary
 
 สรุปสถานะ features ทั้งหมด
 
@@ -67,7 +74,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

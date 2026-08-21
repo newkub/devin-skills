@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-vercel-cli
+  - follow-vercel
+  - follow-cloudflare-worker
+  - follow-github-actions
+  - follow-wrangler-cli
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Select Platform
+> Goal: Select Platform
 
 เลือก platform ที่เหมาะสมกับ project
 
@@ -34,6 +42,7 @@ triggers:
 3. ตรวจสอบว่า platform configuration พร้อม
 
 ### 2. Setup Environment Variables
+> Goal: Setup Environment Variables
 
 ตั้งค่า environment variables สำหรับ deployment
 
@@ -45,6 +54,7 @@ triggers:
 3. ตรวจสอบว่า environment variables ครบถ้วนและถูกต้อง
 
 ### 3. Setup CI/CD
+> Goal: Setup CI/CD
 
 ตั้งค่า GitHub Actions สำหรับ automated deployment
 
@@ -57,6 +67,7 @@ triggers:
 4. ตั้งค่า Release-it สำหรับ automated releases (ถ้าจำเป็น)
 
 ### 4. Setup Platform-Specific Configuration
+> Goal: Setup Platform-Specific Configuration
 
 ตั้งค่า configuration ตาม platform ที่เลือก
 
@@ -65,6 +76,7 @@ triggers:
 - Railway: ตั้งค่า `railway.json` หรือ environment variables
 
 ### 5. Test Deployment
+> Goal: Test Deployment
 
 ทดสอบ deployment ใน staging environment
 

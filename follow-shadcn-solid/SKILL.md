@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ shadcn/ui สำหรับ SolidJS component library ด้วย copy-to-own pattern และ accessible components
 
-
 ## Scope
 
 ใช้สำหรับสร้าง UI components ด้วย shadcn/ui บน SolidJS
-
 
 ## Execute
 
@@ -44,7 +44,6 @@ triggers:
 - อ่าน `guide/structure.md` สำหรับ project structure
 - อ่าน `guide/troubleshooting.md` สำหรับปัญหาทั่วไป
 
-
 ## Rules
 
 - ใช้ CLI init สำหรับ initial setup
@@ -57,7 +56,6 @@ triggers:
 - ใช้ accessible components เสมอ
 - Customize components ตามความต้องการ
 - หลีกเลี่ยง modifying core components
-
 
 ## Expected Outcome
 

@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - try-again
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Define Loop Condition
+> Goal: Define Loop Condition
 
 กำหนดเงื่อนไขสำหรับการทำซ้ำ
 
@@ -31,6 +36,7 @@ triggers:
 3. ตั้งค่าจำนวนรอบสูงสุดถ้าจำเป็น
 
 ### 2. Execute Loop
+> Goal: Execute Loop
 
 ทำงานซ้ำตามเงื่อนไข
 
@@ -41,6 +47,7 @@ triggers:
 5. หยุดเมื่อบรรลุเงื่อนไข
 
 ### 3. Verify Completion
+> Goal: Verify Completion
 
 ตรวจสอบว่างานเสร็จสมบูรณ์
 

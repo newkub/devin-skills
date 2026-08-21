@@ -15,6 +15,7 @@ triggers:
 related:
   - follow-config
   - check-system-env
+  - validate
 ---
 
 ## Goal
@@ -29,8 +30,7 @@ related:
 
 ### 1. Inspect Current
 
-ตรวจสอบ `.gitignore` ปัจจุบัน
-
+> Goal: ตรวจสอบ `.gitignore` ปัจจุบัน
 > Goal: รู้ว่ามี entries อะไรบ้างและขาดอะไร
 
 1. อ่าน root `.gitignore`
@@ -39,8 +39,7 @@ related:
 
 ### 2. Determine Stack
 
-ระบุ artifacts ทีต้อง ignore
-
+> Goal: ระบุ artifacts ทีต้อง ignore
 > Goal: รู้ stack-specific patterns
 
 1. อ่าน `package.json` สำหรับ package manager (bun, node)
@@ -49,8 +48,7 @@ related:
 
 ### 3. Update Root .gitignore
 
-อัปเดต root `.gitignore`
-
+> Goal: อัปเดต root `.gitignore`
 > Goal: root `.gitignore` ครอบคลุมสิ่งทีควร ignore
 
 1. เพิ่ม `node_modules`, `dist`, `.output`, `coverage`, `target`, `.turbo`, `.moon/cache`
@@ -61,8 +59,7 @@ related:
 
 ### 4. Update Workspace .gitignore
 
-อัปเดต workspace-specific `.gitignore`
-
+> Goal: อัปเดต workspace-specific `.gitignore`
 > Goal: workspace `.gitignore` ไม่ซ้ำ root และครบ
 
 1. ตรวจสอบว่า workspace มี build output พิเศษหรือไม่
@@ -71,8 +68,7 @@ related:
 
 ### 5. Validate
 
-ตรวจสอบความถูกต้อง
-
+> Goal: ตรวจสอบความถูกต้อง
 > Goal: `.gitignore` ทำงานได้ตาม expected
 
 1. รัน `git status` เพื่อดูว่าไม่มีไฟล์ทีควร ignore

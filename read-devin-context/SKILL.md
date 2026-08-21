@@ -7,6 +7,7 @@ allowed-tools:
   - exec
   - grep
   - ask_user_question
+  - write
 triggers:
   - user
   - model
@@ -29,8 +30,7 @@ related:
 
 ### 1. Discover Context Paths
 
-หา context directories ใน environment
-
+> Goal: หา context directories ใน environment
 > Goal: รู้ตำแหน่ง context ทั้งหมด
 
 1. ตรวจหา global context:
@@ -45,8 +45,7 @@ related:
 
 ### 2. Read Global Rules
 
-อ่าน global rules
-
+> Goal: อ่าน global rules
 > Goal: เข้าใจกฎ global ที่ใช้กับทุก task
 
 1. อ่าน `global_rules.md` จาก windsurf memories หรือ project `.devin/rules/`
@@ -55,8 +54,7 @@ related:
 
 ### 3. Read Skills
 
-อ่าน skills context
-
+> Goal: อ่าน skills context
 > Goal: รู้ว่ามี skills อะไรบ้างและตัวไหนเกี่ยวข้อง
 
 1. list skills ใน `%APPDATA%\devin\skills` (global skills)
@@ -66,8 +64,7 @@ related:
 
 ### 4. Read MCP Config
 
-อ่าน mcp configuration
-
+> Goal: อ่าน mcp configuration
 > Goal: รู้ MCP servers ที่มี และสถานะ disabled/enabled
 
 1. อ่าน `%APPDATA%\devin\mcp_config.json`
@@ -77,8 +74,7 @@ related:
 
 ### 5. Read Hooks
 
-อ่าน hooks ที่อาจมีผลต่อการทำงาน
-
+> Goal: อ่าน hooks ที่อาจมีผลต่อการทำงาน
 > Goal: รู้ hooks ที่ active หรือ custom
 
 1. list ไฟล์ใน `%APPDATA%\devin\hooks`
@@ -88,8 +84,7 @@ related:
 
 ### 6. Read Plugins
 
-อ่าน plugins/ extensions
-
+> Goal: อ่าน plugins/ extensions
 > Goal: รู้ plugins ที่ติดตั้งหรือ cache ไว้
 
 1. list ไฟล์/โฟลเดอร์ใน `%APPDATA%\devin\cli\plugins\cache`
@@ -98,8 +93,7 @@ related:
 
 ### 7. Summarize Context
 
-สรุป context เพื่อใช้งาน
-
+> Goal: สรุป context เพื่อใช้งาน
 > Goal: ได้ภาพรวม context ทั้งหมด
 
 1. สร้างตารางสรุป: context type | location | status | key points

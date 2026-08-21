@@ -1,6 +1,6 @@
 ---
 name: follow-design-pattern
-description: Design patterns guide covering creational, structural, and behavioral patterns with examples and...
+description: ให้ผู้ใช้เข้าใจและสามารถใช้ design patterns ได้อย่างมีประสิทธิภาพ
 allowed-tools:
   - read
   - edit
@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -20,11 +19,7 @@ triggers:
 
 ## Scope
 
-## Scope
-
 ใช้สำหรับเลือก pattern ที่เหมาะสมกับปัญหา, เข้าใจและใช้งาน GoF patterns, ออกแบบซอฟต์แวร์ที่ maintainable และ extensible, หลีกเลี่ยง anti-patterns, ปรับปรุง code quality ผ่าน patterns, และเรียนรู้ best practices ในการออกแบบ
-
-## Execute
 
 ## Execute
 

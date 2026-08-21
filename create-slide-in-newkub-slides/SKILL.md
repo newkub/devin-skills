@@ -1,15 +1,20 @@
 ---
 name: create-slide-in-newkub-slides
-description: "สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ"
+description: สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-slidev
+  - run-dev
 ---
 
 ## Goal
@@ -40,8 +45,7 @@ triggers:
 
 ### 3. Create Slides File
 
-สร้าง `slides.md` ด้วย headmatter และ per-slide frontmatter มาตรฐาน
-
+> Goal: สร้าง `slides.md` ด้วย headmatter และ per-slide frontmatter มาตรฐาน
 > Goal: `slides.md` มี headmatter และ per-slide frontmatter ครบถ้วน
 
 1. เขียน headmatter (first `---` block) สำหรับ global config
@@ -77,8 +81,7 @@ transition: fade-out
 
 ### 4. Use Built-in Layouts
 
-เลือก layout ตามเนื้อหา
-
+> Goal: เลือก layout ตามเนื้อหา
 > Goal: ใช้ layout ที่เหมาะสมกับเนื้อหาแต่ละ slide
 
 - `cover` — title slide หน้าแรก
@@ -93,8 +96,7 @@ transition: fade-out
 
 ### 5. Add Code Blocks
 
-ใช้ Shiki syntax highlighting พร้อม features
-
+> Goal: ใช้ Shiki syntax highlighting พร้อม features
 > Goal: code blocks มี syntax highlighting และ interactive features
 
 - ใช้ `{2|4-6|all}` สำหรับ line highlighting
@@ -107,8 +109,7 @@ transition: fade-out
 
 ### 6. Add Diagrams And Animations
 
-เพิ่ม diagrams และ animations ตามต้องการ
-
+> Goal: เพิ่ม diagrams และ animations ตามต้องการ
 > Goal: slides มี diagrams และ animations ที่ช่วยอธิบายเนื้อหา
 
 1. ใช้ Mermaid สำหรับ diagrams:

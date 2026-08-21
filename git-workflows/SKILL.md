@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - refactor
 ---
 
 ## Goal
@@ -24,8 +28,7 @@ Use `git-workflows` when the user wants to move the working tree to a workflow-s
 
 ### 1. Identify Workflow
 
-Determine which workflow branch to use
-
+> Goal: Determine which workflow branch to use
 > Goal: know the correct branch name and current git state
 
 1. ถามหรือวิเคราะห์ว่า user ต้องการ workflow ใด: `restructure`, `dev`, `fix`, `review`
@@ -34,8 +37,7 @@ Determine which workflow branch to use
 
 ### 2. Switch Branch
 
-Move to the workflow branch
-
+> Goal: Move to the workflow branch
 > Goal: working tree อยู่บน branch ทีถูกต้อง
 
 1. รัน `git branch --list` เพื่อตรวจว่า branch มีอยู่หรือไม่
@@ -45,8 +47,7 @@ Move to the workflow branch
 
 ### 3. Confirm Context
 
-Report the new branch and next action
-
+> Goal: Report the new branch and next action
 > Goal: ยืนยันกับ user ว่าอยู่บน branch ทีถูกต้อง
 
 1. แสดง branch ปัจจุบัน

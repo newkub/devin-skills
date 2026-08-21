@@ -1,21 +1,22 @@
 ---
 name: follow-rmux
-description: Terminal multiplexer สำหรับ automation ที่เขียนด้วย Rust เข้ากันได้กับ tmux และมี Rust SDK...
+description: ใช้งาน RMUX สำหรับ terminal multiplexer และ automation
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน RMUX สำหรับ terminal multiplexer และ automation
-
 
 ## Scope
 
@@ -25,10 +26,11 @@ triggers:
 - Programmatic terminal management
 - Session automation และ scripting
 
-
 ## Execute
 
 ### 1. Create Session
+
+> Goal: Create Session
 
 สร้าง session:
 ```bash
@@ -37,18 +39,17 @@ rmux new-session -s mysession
 
 ### 2. Attach to Session
 
-Attach ไปยัง session:
+> Goal: Attach ไปยัง session
 ```bash
 rmux attach -t mysession
 ```
 
 ### 3. List Sessions
 
-แสดง sessions:
+> Goal: แสดง sessions
 ```bash
 rmux ls
 ```
-
 
 ## Rules
 
@@ -56,7 +57,6 @@ rmux ls
 - เข้ากันได้กับ tmux
 - ใช้สำหรับ automation และ scripting
 - ใช้ session management ที่ efficient
-
 
 ## Expected Outcome
 

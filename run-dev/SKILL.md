@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - open-web
+  - report-ansi
+  - watch-terminal
+  - watch-browser
+  - resolve-errors
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Check Configuration
+> Goal: Check Configuration
 
 1. ตรวจสอบ main config และ dev script ว่ามีการกำหนดไว้หรือไม่
 2. ถ้าไม่มี dev script ใน main config ต้องกำหนดให้
@@ -30,6 +38,7 @@ triggers:
 4. ตรวจสอบว่า environment variables ที่จำเป็นถูกกำหนดแล้ว
 
 ### 2. Run Dev Server
+> Goal: Run Dev Server
 
 1. รัน dev server ด้วยคำสั่งที่เหมาะสม (bun dev, npm run dev, cargo run)
 2. ถ้ามี errors ให้ทำ `/resolve-errors` เพื่อแก้ไข
@@ -37,29 +46,34 @@ triggers:
 4. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
 
 ### 3. Watch Terminal
+> Goal: Watch Terminal
 
 1. ทำ `/watch-terminal` เพื่อ watch terminal ทุก 5 วินาที
 2. ตรวจจับ errors และ warnings ใหม่ๆ อัตโนมัติ
 3. ถ้าพบ errors ให้ทำ `/resolve-errors` ทันที
 
 ### 4. Open Web (ถ้าเป็น web)
+> Goal: Open Web (ถ้าเป็น web)
 
 1. ถ้าเป็น web project ให้ทำ `/open-web` เพื่อเปิด browser ที่ dev server URL
 2. ตรวจสอบว่า website เปิดได้และแสดงผลถูกต้อง
 
 ### 5. Watch Browser (ถ้าเป็น web)
+> Goal: Watch Browser (ถ้าเป็น web)
 
 1. ถ้าเป็น web project ให้ทำ `/watch-browser` เพื่อตรวจสอบ browser
 2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
 3. ทดสอบ features หลักทำงานได้
 
 ### 6. Verify
+> Goal: Verify
 
 1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
 2. ตรวจสอบว่า services ที่เกี่ยวข้องทำงานปกติ
 3. ยืนยันว่าไม่มี runtime errors ใน console
 
 ### 7. Report
+> Goal: Report
 
 1. ทำ `/report-ansi` เพื่อแสดง terminal output
 2. สรุปสถานะ dev server และ issues ที่เหลือ

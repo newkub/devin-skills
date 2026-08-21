@@ -1,26 +1,26 @@
 ---
 name: follow-nodejs
-description: Node.js JavaScript runtime ที่ใช้ Chrome V8 engine สำหรับรัน JavaScript นอก browser รองรับ bun...
+description: ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem ที่ใหญ่ที่สุด
 
-
 ## Scope
 
 ใช้สำหรับโปรเจกต์ที่ต้องการ ecosystem ที่ใหญ่และ mature หรือต้องการ compatibility สูง
-
 
 ## Execute
 
@@ -40,7 +40,6 @@ triggers:
 - ดู `references/cli.md` สำหรับคำสั่ง CLI
 - ดู `references/website.md` สำหรับเอกสารอย่างเป็นทางการ
 
-
 ## Rules
 
 - ใช้ `bun` สำหรับ package management
@@ -49,7 +48,6 @@ triggers:
 - ใช้ TypeScript เสมอ
 - ใช้ proper error handling
 - ใช้ async/await สำหรับ async operations
-
 
 ## Expected Outcome
 

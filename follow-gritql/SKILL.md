@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Understand GritQL Basics
+> Goal: Understand GritQL Basics
 
 1. อ่าน GritQL documentation ที่ `https://biomejs.dev/reference/gritql/`
 2. เรียนรู้ pattern syntax ด้วย code snippets ใน backticks
@@ -30,6 +33,7 @@ triggers:
 4. เรียนรู้ conditions ด้วย `where` และ operators
 
 ### 2. Set Up Language Target
+> Goal: Set Up Language Target
 
 1. ระบุ target language ด้วย `language js`, `language css`, หรือ `language json`
 2. ใช้ flavors เช่น `typescript`, `jsx` สำหรับ JavaScript
@@ -37,6 +41,7 @@ triggers:
 4. อ่าน language documentation สำหรับ syntax เฉพาะภาษา
 
 ### 3. Write Basic Patterns
+> Goal: Write Basic Patterns
 
 1. เขียน code snippet patterns ใน backticks เช่น `` `console.log($message)` ``
 2. ใช้ variables สำหรับ flexible matching เช่น `$method`, `$message`
@@ -44,6 +49,7 @@ triggers:
 4. ใช้ same variable multiple times สำหรับ consistency matching
 
 ### 4. Add Conditions And Filters
+> Goal: Add Conditions And Filters
 
 1. ใช้ `where` clause สำหรับ conditions
 2. ใช้ pattern matching operator `<:` สำหรับ pattern comparison
@@ -51,6 +57,7 @@ triggers:
 4. ใช้ built-in functions สำหรับ complex logic
 
 ### 5. Create Analyzer Plugin
+> Goal: Create Analyzer Plugin
 
 1. สร้าง GritQL plugin file สำหรับ Biome linter
 2. ใช้ `register_diagnostic()` สำหรับ custom lint rules
@@ -58,6 +65,7 @@ triggers:
 4. ลงทะเบียน plugin ใน Biome configuration
 
 ### 6. Use Biome Search Command
+> Goal: Use Biome Search Command
 
 1. ใช้ `biome search` สำหรับ structural code search
 2. ใช้ single quotes รอบ GritQL patterns เพื่อ avoid shell conflicts
@@ -65,6 +73,7 @@ triggers:
 4. ใช้ output options สำหรับ format results
 
 ### 7. Optimize Performance
+> Goal: Optimize Performance
 
 1. ใช้ anchor kinds สำหรับ efficient matching
 2. หลีกเลี่ยง overly broad patterns

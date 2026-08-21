@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -34,8 +35,7 @@ related:
 
 ### 1. Check Precondition
 
-ตรวจสอบ environment ก่อนเริ่ม
-
+> Goal: ตรวจสอบ environment ก่อนเริ่ม
 > Goal: มี Bun, database server, และ package.json พร้อม
 
 1. ยืนยันว่า Bun ติดตั้งแล้ว
@@ -45,8 +45,7 @@ related:
 
 ### 2. Setup
 
-ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
-
+> Goal: ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
 > Goal: project มี dependencies ครบถ้วนตาม runtime
 
 1. รัน `bun add drizzle-orm`
@@ -61,8 +60,7 @@ related:
 
 ### 3. Configure
 
-สร้าง `drizzle.config.ts` และเลือก driver
-
+> Goal: สร้าง `drizzle.config.ts` และเลือก driver
 > Goal: Drizzle Kit สามารถ connect และ generate migrations ได้
 
 1. สร้าง `drizzle.config.ts` ด้วย `defineConfig`:
@@ -76,8 +74,7 @@ related:
 
 ### 4. Define Schema
 
-สร้าง database schema ด้วย type-safe columns
-
+> Goal: สร้าง database schema ด้วย type-safe columns
 > Goal: schema ถูกต้องและสอดคล้องกับ business requirements
 
 1. สร้าง `src/db/schema.ts` หรือแยกเป็นไฟล์ใน `src/db/schema/`
@@ -88,8 +85,7 @@ related:
 
 ### 5. Create Client
 
-สร้าง database client สำหรับ runtime ทีใช้
-
+> Goal: สร้าง database client สำหรับ runtime ทีใช้
 > Goal: สามารถ query database ได้จาก application
 
 1. สร้าง `src/db/index.ts` ตาม runtime:
@@ -102,8 +98,7 @@ related:
 
 ### 6. Manage Migrations
 
-เลือก migration strategy และรัน migrations
-
+> Goal: เลือก migration strategy และรัน migrations
 > Goal: database schema sync กับโค้ดอย่างปลอดภัย
 
 1. เลือก strategy ตาม use case:
@@ -117,8 +112,7 @@ related:
 
 ### 7. Query Data
 
-ใช้งาน type-safe queries
-
+> Goal: ใช้งาน type-safe queries
 > Goal: CRUD operations ทำงานได้และ type-safe
 
 1. import `db` และ schema จาก `src/db`

@@ -7,15 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Remotion สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React
-
 
 ## Scope
 
@@ -26,10 +27,11 @@ triggers:
 - Programmatic video creation
 - Cloud rendering (AWS Lambda, GCP Cloud Run)
 
-
 ## Execute
 
 ### 1. Create Project
+
+> Goal: Create Project
 
 สร้างโปรเจกต์ใหม่:
 ```bash
@@ -38,7 +40,7 @@ bunx create-video@latest
 
 ### 2. Start Preview
 
-เริ่มต้น preview:
+> Goal: เริ่มต้น preview
 ```bash
 bun run dev
 # หรือ
@@ -47,18 +49,19 @@ bunx remotion studio
 
 ### 3. Render Video
 
-Render วิดีโอ:
+> Goal: Render วิดีโอ
 ```bash
 bunx remotion render MyComposition
 ```
 
 ### 4. Render GIF
 
+> Goal: Render GIF
+
 Render เป็น GIF:
 ```bash
 bunx remotion render MyComposition --output.gif
 ```
-
 
 ## Rules
 
@@ -70,7 +73,6 @@ bunx remotion render MyComposition --output.gif
 - ใช้ `<OffthreadVideo>` สำหรับ videos ขนาดใหญ่
 - Test ใน Studio ก่อน render
 - Optimize assets ก่อน rendering
-
 
 ## Expected Outcome
 

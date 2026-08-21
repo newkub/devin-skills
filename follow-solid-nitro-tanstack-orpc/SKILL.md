@@ -17,7 +17,6 @@ related:
   - follow-orpc
   - follow-zod
   - follow-vite
-  - follow-deploy-to-cloudflare
 ---
 
 ## Goal
@@ -38,8 +37,7 @@ related:
 
 ### 1. Setup Project
 
-สร้าง project ใหม่
-
+> Goal: สร้าง project ใหม่
 > Goal: มีโครงสร้างเริ่มต้นที่ถูกต้อง
 
 1. ใช้ TanStack Start CLI:
@@ -51,8 +49,7 @@ related:
 
 ### 2. Install Dependencies
 
-ติดตั้ง packages ที่จำเป็น
-
+> Goal: ติดตั้ง packages ที่จำเป็น
 > Goal: dependencies ครบสำหรับ SSR, routing, และ oRPC
 
 1. Core:
@@ -71,8 +68,7 @@ related:
 
 ### 3. Configure Build Tool
 
-ตั้งค่า Vite หรือ Rsbuild
-
+> Goal: ตั้งค่า Vite หรือ Rsbuild
 > Goal: build tool รองรับ SSR และ Nitro
 
 1. Vite:
@@ -86,8 +82,7 @@ related:
 
 ### 4. Configure TypeScript
 
-ตั้งค่า `tsconfig.json`
-
+> Goal: ตั้งค่า `tsconfig.json`
 > Goal: TypeScript รองรับ SolidJS, oRPC และ Nitro
 
 1. ใช้ `jsx: "preserve"` และ `jsxImportSource: "solid-js"`
@@ -98,8 +93,7 @@ related:
 
 ### 5. Setup oRPC Server
 
-สร้าง type-safe API layer
-
+> Goal: สร้าง type-safe API layer
 > Goal: API procedures มี validation และ context ครบ
 
 1. สร้าง `os` builder พร้อม `.$context<{ headers: Headers }>()`
@@ -112,8 +106,7 @@ related:
 
 ### 6. Setup oRPC Client
 
-สร้าง client สำหรับ call API
-
+> Goal: สร้าง client สำหรับ call API
 > Goal: client เรียก procedure เหมือน local function
 
 1. ใช้ `RPCLink` จาก `@orpc/client/fetch`
@@ -124,8 +117,7 @@ related:
 
 ### 7. Integrate TanStack Router
 
-สร้าง type-safe routing
-
+> Goal: สร้าง type-safe routing
 > Goal: routes ทำงานร่วม SSR และ oRPC
 
 1. ใช้ `createFileRoute` สำหรับ file-based routing
@@ -135,8 +127,7 @@ related:
 
 ### 8. Build And Deploy
 
-รัน build และ deploy
-
+> Goal: รัน build และ deploy
 > Goal: project พร้อมใช้งานบน target platform
 
 1. รัน `bun run build`

@@ -1,30 +1,32 @@
 ---
 name: follow-svelte-kit
-description: Full-stack framework สำหรับสร้าง web applications ด้วย Svelte รองรับ file-based routing,...
+description: สร้าง Svelte applications ด้วย SSR/CSR/Prerendering และ file-based routing ตามมาตรฐาน SvelteKit
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 สร้าง Svelte applications ด้วย SSR/CSR/Prerendering และ file-based routing ตามมาตรฐาน SvelteKit
 
-
 ## Scope
 
 ใช้สำหรับการพัฒนา Svelte applications ที่ต้องการ full-stack framework ด้วย Vite-powered HMR
 
-
 ## Execute
 
 ### 1. Create Project
+
+> Goal: Create Project
 
 สร้าง project ใหม่ด้วย `bun create svelte@latest`
 
@@ -34,20 +36,19 @@ bun create svelte@latest my-app
 
 ### 2. Setup Configuration
 
-ตั้งค่า `svelte.config.js` และ environment variables
+> Goal: ตั้งค่า `svelte.config.js` และ environment variables
 
 ### 3. Develop Pages
 
-ใช้ file-based routing ใน `src/routes/` directory
+> Goal: ใช้ file-based routing ใน `src/routes/` directory
 
 ### 4. Implement Data Fetching
 
-ใช้ `load` functions สำหรับ data fetching
+> Goal: ใช้ `load` functions สำหรับ data fetching
 
 ### 5. Build and Deploy
 
-Build สำหรับ SSR, CSR หรือ prerendering
-
+> Goal: Build สำหรับ SSR, CSR หรือ prerendering
 
 ## Rules
 
@@ -71,7 +72,6 @@ Build สำหรับ SSR, CSR หรือ prerendering
 - แยก server และ client logic
 - ใช้ layouts สำหรับ shared UI
 - ใช้ error pages สำหรับ error handling
-
 
 ## Expected Outcome
 

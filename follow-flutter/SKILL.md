@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -33,8 +34,7 @@ related:
 
 ### 1. Setup Project
 
-ติดตั้ง Flutter project และ dependencies
-
+> Goal: ติดตั้ง Flutter project และ dependencies
 > Goal: มี Flutter project พร้อม dependencies ทีใช้
 
 1. ตรวจสอบ Flutter SDK (`flutter doctor`)
@@ -48,8 +48,7 @@ related:
 
 ### 2. Create Project Structure
 
-สร้างโฟลเดอร์ตาม Clean Architecture
-
+> Goal: สร้างโฟลเดอร์ตาม Clean Architecture
 > Goal: โครงสร้าง project รองรับ data, domain, presentation layers
 
 1. สร้าง `lib/src/core/` สำหรับ error, typedefs, network
@@ -60,8 +59,7 @@ related:
 
 ### 3. Implement Data Layer
 
-สร้าง models และ repositories
-
+> Goal: สร้าง models และ repositories
 > Goal: data layer จัดการ I/O และแปลงข้อมูลไป domain layer
 
 1. สร้าง DTOs ด้วย `freezed` ใน `lib/src/data/models/`
@@ -72,8 +70,7 @@ related:
 
 ### 4. Implement Domain Layer
 
-สร้าง domain models, repository interfaces, และ use cases
-
+> Goal: สร้าง domain models, repository interfaces, และ use cases
 > Goal: domain layer มี pure business logic
 
 1. สร้าง domain models ใน `lib/src/domain/models/`
@@ -83,8 +80,7 @@ related:
 
 ### 5. Implement Presentation Layer
 
-สร้าง providers และ screens ด้วย Riverpod
-
+> Goal: สร้าง providers และ screens ด้วย Riverpod
 > Goal: UI ตอบสนอง state และทำงานถูกต้อง
 
 1. สร้าง providers ด้วย `riverpod_generator` หรือ `StateNotifier`
@@ -94,8 +90,7 @@ related:
 
 ### 6. Setup Navigation
 
-ตั้งค่า GoRouter สำหรับ navigation
-
+> Goal: ตั้งค่า GoRouter สำหรับ navigation
 > Goal: navigation ทำงานได้ทุก screen
 
 1. สร้าง router ใน `lib/src/core/router/` หรือ `lib/main.dart`
@@ -105,8 +100,7 @@ related:
 
 ### 7. Setup Error Handling
 
-ใช้ `fpdart` สำหรับ functional error handling
-
+> Goal: ใช้ `fpdart` สำหรับ functional error handling
 > Goal: error handling เป็น type-safe และทำงานทุก layer
 
 1. สร้าง `Failure` classes ใน `lib/src/core/error/`
@@ -116,8 +110,7 @@ related:
 
 ### 8. Setup Testing
 
-เขียน unit tests สำหรับแต่ละ layer
-
+> Goal: เขียน unit tests สำหรับแต่ละ layer
 > Goal: มี tests ครอบคลุม repository และ use cases
 
 1. เพิ่ม `flutter_test`, `mocktail` ใน dev dependencies

@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -29,8 +31,7 @@ related:
 
 ### 1. Setup Design System
 
-กำหนด foundation ของ design system
-
+> Goal: กำหนด foundation ของ design system
 > Goal: มี design tokens และ theme ที่ใช้ร่วมกันทั้ง project
 
 1. ทำ `/follow-design-system` สำหรับ universal design tokens
@@ -39,8 +40,7 @@ related:
 
 ### 2. Design Layout
 
-ออกแบบโครงสร้างหน้าเว็บ
-
+> Goal: ออกแบบโครงสร้างหน้าเว็บ
 > Goal: มี layout ที่ responsive, semantic และ maintainable
 
 1. ใช้ semantic HTML (`<header>`, `<nav>`, `<main>`, `<footer>`, `<aside>`)
@@ -50,8 +50,7 @@ related:
 
 ### 3. Design Typography
 
-กำหนดระบบตัวอักษร
-
+> Goal: กำหนดระบบตัวอักษร
 > Goal: ตัวอักษรอ่านง่ายและ responsive
 
 1. เลือก font families ที่เหมาะสม (system fonts เป็น default)
@@ -61,8 +60,7 @@ related:
 
 ### 4. Design Colors
 
-กำหนดระบบสีและ theme
-
+> Goal: กำหนดระบบสีและ theme
 > Goal: สีสม่ำเสมอ, รองรับ dark mode และ accessibility
 
 1. ใช้ color palette ที่สม่ำเสมอผ่าน CSS variables
@@ -72,8 +70,7 @@ related:
 
 ### 5. Design Components
 
-ออกแบบ component library
-
+> Goal: ออกแบบ component library
 > Goal: มี reusable components ที่เป็นระบบ
 
 1. สร้าง reusable components ด้วย atomic design principles
@@ -83,8 +80,7 @@ related:
 
 ### 6. Design UX States
 
-ออกแบบสถานะ UI ที่ครบถ้วน
-
+> Goal: ออกแบบสถานะ UI ที่ครบถ้วน
 > Goal: ผู้ใช้เข้าใจสถานะของระบบในทุก scenarios
 
 1. Loading states: skeleton screens, shimmer, progressive loading
@@ -94,8 +90,7 @@ related:
 
 ### 7. Design Responsive
 
-ออกแบบ responsive บนทุก devices
-
+> Goal: ออกแบบ responsive บนทุก devices
 > Goal: ประสบการณ์ใช้งานดีบนทุกขนาดหน้าจอ
 
 1. Mobile-first approach
@@ -106,8 +101,7 @@ related:
 
 ### 8. Design Accessibility
 
-ออกแบบสำหรับทุกคน
-
+> Goal: ออกแบบสำหรับทุกคน
 > Goal: ผู้ใช้ทุกกลุ่มเข้าถึงและใช้งานได้
 
 1. ทำตาม WCAG 2.1 AA guidelines
@@ -118,8 +112,7 @@ related:
 
 ### 9. Design Animation
 
-ออกแบบ animation ที่ smooth และ accessible
-
+> Goal: ออกแบบ animation ที่ smooth และ accessible
 > Goal: การเคลื่อนไหวเพิ่ม UX โดยไม่รบกวนการใช้งาน
 
 1. ใช้ CSS transitions สำหรับ microinteractions (hover, focus)
@@ -129,8 +122,7 @@ related:
 
 ### 10. Optimize Performance
 
-ตรวจสอบและปรับปรุง performance
-
+> Goal: ตรวจสอบและปรับปรุง performance
 > Goal: หน้าเว็บโหลดและทำงานได้เร็ว
 
 1. ทำ `/review-codebase` สำหรับ Core Web Vitals

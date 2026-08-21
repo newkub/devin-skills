@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-create-bun-cli
+  - follow-clean-architecture
+  - follow-monorepo
+  - follow-create-rust-cli
+  - compare
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Decide CLI Stack
 
-พิจารณาเลือก stack ที่เหมาะสม
-
+> Goal: พิจารณาเลือก stack ที่เหมาะสม
 > Goal: เลือก Rust หรือ Bun ให้เหมาะกับ context
 
 1. วิเคราะห์ requirements: performance, distribution, ecosystem, team skill
@@ -35,8 +41,7 @@ triggers:
 
 ### 2. Create CLI Project
 
-สร้างโครงสร้างตาม stack ที่เลือก
-
+> Goal: สร้างโครงสร้างตาม stack ที่เลือก
 > Goal: มี project structure ที่ถูกต้อง
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
@@ -46,8 +51,7 @@ triggers:
 
 ### 3. Review CLI
 
-ตรวจสอบคุณภาพ CLI หลังสร้าง
-
+> Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 > Goal: CLI ผ่าน review ก่อนใช้งาน
 
 1. ทำ `/review-codebase` เพื่อตรวจสอบ design, structure, UX, error handling
@@ -56,8 +60,7 @@ triggers:
 
 ### 4. Integrate Into Workspace
 
-ผสาน CLI เข้ากับ workspace
-
+> Goal: ผสาน CLI เข้ากับ workspace
 > Goal: CLI ใช้งานได้ใน project
 
 1. เพิ่ม scripts ใน package manifest หรือ task runner ตาม `/follow-tasks`

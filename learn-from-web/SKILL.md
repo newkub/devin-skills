@@ -7,9 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-best-practice
+  - deep-research
 ---
 
 ## Goal
@@ -24,8 +29,7 @@ triggers:
 
 ### 1. Research Strategy
 
-กำหนดลำดับความสำคัญของแหล่งข้อมูลก่อนเริ่มค้นหา
-
+> Goal: กำหนดลำดับความสำคัญของแหล่งข้อมูลก่อนเริ่มค้นหา
 > Goal: รู้ลำดับแหล่งข้อมูลและใช้แหล่งที่เหมาะสมก่อน
 
 1. กำหนดลำดับความสำคัญของแหล่งข้อมูล
@@ -36,8 +40,7 @@ triggers:
 
 ### 2. Official Website Research
 
-อ่าน documentation โดยตรงจาก official website ของ tool, library หรือ framework
-
+> Goal: อ่าน documentation โดยตรงจาก official website ของ tool, library หรือ framework
 > Goal: ได้ข้อมูลจากแหล่งหลักที่ถูกต้องและเป็นปัจจุบันที่สุด
 
 1. ระบุ official website ของ tool, library หรือ framework ที่ต้องการเรียนรู้
@@ -51,8 +54,7 @@ triggers:
 
 ### 3. DeepWiki Research
 
-ใช้ DeepWiki สำหรับ GitHub repositories เพื่อดู topics และถามคำถามเฉพาะเจาะจง
-
+> Goal: ใช้ DeepWiki สำหรับ GitHub repositories เพื่อดู topics และถามคำถามเฉพาะเจาะจง
 > Goal: เข้าใจ repository structure และได้คำตอบเฉพาะเจาะจง
 
 1. ใช้ `read_wiki_structure` เพื่อดู topics ทั้งหมด
@@ -65,8 +67,7 @@ triggers:
 
 ### 4. Context7 Research
 
-ใช้ Context7 สำหรับ libraries และ frameworks ที่มี documentation ในระบบ
-
+> Goal: ใช้ Context7 สำหรับ libraries และ frameworks ที่มี documentation ในระบบ
 > Goal: ได้ documentation และ code examples ที่ตรงกับ library version
 
 1. ใช้ `resolve-library-id` เพื่อหา library ID ที่ถูกต้อง
@@ -80,8 +81,7 @@ triggers:
 
 ### 5. Web Search Research
 
-ใช้ Web Search เป็น fallback เมื่อไม่มีข้อมูลจากแหล่งอื่น
-
+> Goal: ใช้ Web Search เป็น fallback เมื่อไม่มีข้อมูลจากแหล่งอื่น
 > Goal: ได้ข้อมูลเพิ่มเติมเมื่อแหล่งหลักไม่เพียงพอ
 
 1. ใช้ `search_web` เมื่อไม่มีข้อมูลจาก DeepWiki หรือ Context7
@@ -92,8 +92,7 @@ triggers:
 
 ### 6. Knowledge Extraction
 
-สกัดและบันทึกความรู้ที่ได้จากทุกแหล่งข้อมูล
-
+> Goal: สกัดและบันทึกความรู้ที่ได้จากทุกแหล่งข้อมูล
 > Goal: มีความรู้ที่จดบันทึกและจัดระเบียบไว้ใช้งาน
 
 1. จดบันทึกหลักการที่สำคัญและ core concepts
@@ -106,8 +105,7 @@ triggers:
 
 ### 7. Validation
 
-ตรวจสอบความถูกต้องของข้อมูลและ code examples ที่ได้จากการเรียนรู้
-
+> Goal: ตรวจสอบความถูกต้องของข้อมูลและ code examples ที่ได้จากการเรียนรู้
 > Goal: ยืนยันว่าข้อมูลและ code ทำงานได้จริง
 
 1. ทดลองใช้งานตามที่เรียนรู้
@@ -119,8 +117,7 @@ triggers:
 
 ### 8. Application
 
-นำความรู้ที่ได้ไปใช้ในโปรเจกต์จริงและแชร์กับทีม
-
+> Goal: นำความรู้ที่ได้ไปใช้ในโปรเจกต์จริงและแชร์กับทีม
 > Goal: ความรู้ถูกนำไปใช้และแชร์อย่างมีประสิทธิภาพ
 
 1. นำความรู้ไปใช้ในโปรเจกต์จริง

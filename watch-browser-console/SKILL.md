@@ -10,6 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-agent-browser
+  - watch-browser
+  - resolve-errors
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ Watch browser console อย่างต่อเนื่องเพื่อ�
 ## Execute
 
 ### 1. Open Browser
+> Goal: Open Browser
 
 เปิด browser และ navigate ไปยัง URL ตาม `/follow-agent-browser` ข้อ 2
 
@@ -30,6 +35,7 @@ Watch browser console อย่างต่อเนื่องเพื่อ�
 2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทนตาม `/follow-agent-browser` ข้อ 8
 
 ### 2. Clear Console
+> Goal: Clear Console
 
 เคลียร์ console ก่อนเริ่ม watch ตาม `/follow-agent-browser` ข้อ 4
 
@@ -37,6 +43,7 @@ Watch browser console อย่างต่อเนื่องเพื่อ�
 2. ใช้ `agent-browser errors --clear` เพื่อ clear page errors
 
 ### 3. Watch Console
+> Goal: Watch Console
 
 Monitor console อย่างต่อเนื่องตาม ## Rules ข้อ 1
 
@@ -46,6 +53,7 @@ Monitor console อย่างต่อเนื่องตาม ## Rules ข
 4. ถ้าเจอ error ใหม่ ให้ไปขั้นตอนที่ 4
 
 ### 4. Resolve Errors
+> Goal: Resolve Errors
 
 แก้ไข errors ที่พบตาม `/resolve-errors`
 
@@ -55,6 +63,7 @@ Monitor console อย่างต่อเนื่องตาม ## Rules ข
 4. กลับไปขั้นตอนที่ 2 เพื่อ clear console และ watch ต่อ
 
 ### 5. Cleanup
+> Goal: Cleanup
 
 ทำ cleanup หลังจากใช้งานเสร็จตาม `/follow-agent-browser` ข้อ 7
 

@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - update-reference
+  - follow-code-quality
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +27,8 @@ Use `implement-comment-todo` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Discovery And Inventory
+> Goal: Discovery And Inventory
 
 ค้นหาและรวบรวมทุกสิ่งที่ต้อง implement จริง
 
@@ -36,6 +38,7 @@ Use `implement-comment-todo` for the specific tasks and workflows it covers
 4. จัดกลุ่มตาม priority และ dependencies
 
 ### 2. Code Modification
+> Goal: Code Modification
 
 แก้ไข code ด้วย file editing tools เท่านั้น
 
@@ -46,12 +49,11 @@ Use `implement-comment-todo` for the specific tasks and workflows it covers
 5. ทำ `/update-reference` เพื่ออัพเดท references ทั้งหมด
 
 ### 3. Validation
+> Goal: Validation
 
 ตรวจสอบว่าไม่มี TODO เหลือและ code ใช้งานได้จริง
 
 1. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK` อีกครั้งด้วย `Grep`
-
-## Rules
 
 ## Rules
 
@@ -81,8 +83,6 @@ Use `implement-comment-todo` for the specific tasks and workflows it covers
 - ผ่าน type checking ไม่มี errors
 - ใช้ import และ export strategy ตาม `/follow-import-export`
 - ทำตาม `/follow-code-quality`
-
-## Expected Outcome
 
 ## Expected Outcome
 

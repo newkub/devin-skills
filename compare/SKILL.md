@@ -10,6 +10,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - pondering
+  - report-table
+  - deep-research
 ---
 
 ## Goal
@@ -23,12 +27,14 @@ triggers:
 ## Execute
 
 ### 1. Identify Comparison Criteria
+> Goal: Identify Comparison Criteria
 
 1. ระบุ criteria ที่สำคัญสำหรับการตัดสินใจ
 2. กำหนด weight สำหรับแต่ละ criterion (ถ้าจำเป็น)
 3. จัดลำดับ criteria ตามความสำคัญ
 
 ### 2. Gather Information
+> Goal: Gather Information
 
 1. ทำ `/deep-research` สำหรับ options ที่ต้องการเปรียบเทียบ
 2. รวบรวม features, pros, cons ของแต่ละ option
@@ -36,12 +42,14 @@ triggers:
 4. รวบรวม pricing, licensing, และ maintenance status
 
 ### 3. Create Comparison Table
+> Goal: Create Comparison Table
 
 1. ทำ `/report-table` สำหรับจัดรูปแบบตาราง
 2. กำหนด columns สำหรับ comparison criteria
 3. เติมข้อมูลสำหรับแต่ละ option ในแต่ละ row
 
 ### 4. Analyze Trade-offs
+> Goal: Analyze Trade-offs
 
 1. วิเคราะห์ pros และ cons ของแต่ละ option
 2. ระบุ trade-offs ที่สำคัญ
@@ -49,6 +57,7 @@ triggers:
 4. ประเมิน impact ระยะยาว
 
 ### 5. Provide Recommendation
+> Goal: Provide Recommendation
 
 1. ทำ `/pondering` เพื่อทบทวน trade-offs และผลกระทบก่อนแนะนำ
 2. สรุป findings จากการเปรียบเทียบ

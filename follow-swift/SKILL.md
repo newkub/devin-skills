@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-swift` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Configuration
+> Goal: Setup Configuration
 
 ตั้งค่า Swift Package Manager และ dependencies
 
@@ -35,6 +34,7 @@ Use `follow-swift` for the specific tasks and workflows it covers
 3. ตั้งค่า targets สำหรับ main และ test
 
 ### 2. Project Structure
+> Goal: Project Structure
 
 จัดโครงสร้างโปรเจกต์ตาม Clean Architecture
 
@@ -46,6 +46,7 @@ Use `follow-swift` for the specific tasks and workflows it covers
 6. Resources/ - Assets, Color sets
 
 ### 3. Core Principles
+> Goal: Core Principles
 
 ใช้หลักการสำคัญในการพัฒนา
 
@@ -55,6 +56,7 @@ Use `follow-swift` for the specific tasks and workflows it covers
 4. Dependency Injection - ใช้ Factory สำหรับ decoupling
 
 ### 4. Folder Rules
+> Goal: Folder Rules
 
 จัดระเบียบโครงสร้างตาม Layer
 
@@ -65,6 +67,7 @@ Use `follow-swift` for the specific tasks and workflows it covers
 5. Presentation/Screens/ - ประกอบ Components และ ViewModels
 
 ### 5. Import Rules
+> Goal: Import Rules
 
 กำหนด dependencies ระหว่าง Layers
 
@@ -75,14 +78,13 @@ Use `follow-swift` for the specific tasks and workflows it covers
 5. Application <-- Presentation, Domain, Data
 
 ### 6. Testing
+> Goal: Testing
 
 ทดสอบโปรเจกต์อย่างมีประสิทธิภาพ
 
 1. แยก Unit tests ของ Domain/UseCases ออกจาก UI tests
 2. ทำให้ UseCase/Repository ทดสอบได้ด้วย dependency injection
 3. แยก UI/Network tests เป็น unit/integration
-
-## Rules
 
 ## Rules
 
@@ -107,8 +109,6 @@ Use `follow-swift` for the specific tasks and workflows it covers
 - ใช้ protocol สำหรับ interfaces
 - ทำให้ code decoupled และ testable
 - ใช้ naming conventions อย่างสม่ำเสมอ
-
-## Expected Outcome
 
 ## Expected Outcome
 

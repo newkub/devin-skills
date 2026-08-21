@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Use Pure Functions
+> Goal: Use Pure Functions
 
 เขียนฟังก์ชันที่ deterministic เสมอ
 
@@ -37,6 +35,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Isolate non-deterministic operations
 
 ### 2. Manage External State
+> Goal: Manage External State
 
 จัดการ external state อย่างเหมาะสม
 
@@ -47,6 +46,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Document external dependencies อย่างชัดเจน
 
 ### 3. Control Time Dependencies
+> Goal: Control Time Dependencies
 
 จัดการ time-dependent operations
 
@@ -57,6 +57,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Document time dependencies อย่างชัดเจน
 
 ### 4. Handle Concurrency
+> Goal: Handle Concurrency
 
 จัดการ concurrent operations อย่าง deterministic
 
@@ -67,6 +68,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Document concurrency assumptions
 
 ### 5. Input Validation
+> Goal: Input Validation
 
 ตรวจสอบ inputs อย่างเข้มงวด
 
@@ -77,6 +79,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Return predictable errors สำหรับ invalid inputs
 
 ### 6. Error Handling
+> Goal: Error Handling
 
 จัดการ errors อย่าง deterministic
 
@@ -87,6 +90,7 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 5. Test error paths อย่างครบถ้วน
 
 ### 7. Testing
+> Goal: Testing
 
 เขียน tests สำหรับ deterministic behavior
 
@@ -95,8 +99,6 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 3. Mock external dependencies
 4. ใช้ deterministic test data
 5. Verify consistent outputs
-
-## Rules
 
 ## Rules
 
@@ -159,8 +161,6 @@ Use `follow-deterministic` for the specific tasks and workflows it covers
 - Document `error scenarios`
 - Handle `consistently`
 - Test `error paths`
-
-## Expected Outcome
 
 ## Expected Outcome
 

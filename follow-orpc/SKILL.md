@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-zod
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Install Packages
+> Goal: Install Packages
 
 1. ติดตั้ง `bun add @orpc/server @orpc/client`
 2. ถ้าใช้ TanStack Query ติดตั้ง `bun add @orpc/tanstack-query`
@@ -30,6 +34,7 @@ triggers:
 4. ใช้ Zod สำหรับ schema validation (ทำ `/follow-zod`)
 
 ### 2. Define Procedures
+> Goal: Define Procedures
 
 1. สร้าง `os` builder พร้อม initial context ด้วย `.$context<{ headers: Headers }>()`
 2. ใช้ `.input(zodSchema)` สำหรับ input validation
@@ -39,6 +44,7 @@ triggers:
 6. Export `type Router` สำหรับ client-side type inference
 
 ### 3. Setup Middleware
+> Goal: Setup Middleware
 
 1. ใช้ `.$context<{ ... }>()` ก่อน `.middleware()` เพื่อระบุ dependent context
 2. ใช้ `next({ context: { ... } })` สำหรับ inject execution context (auth, db, etc.)
@@ -47,6 +53,7 @@ triggers:
 5. ใช้ inline middleware ด้วย `.use(async ({ context, next }) => { ... })` สำหรับ simple cases
 
 ### 4. Setup Server Handler
+> Goal: Setup Server Handler
 
 1. ใช้ `RPCHandler` จาก `@orpc/server/fetch` (หรือ `@orpc/server/node` สำหรับ Node.js)
 2. ตั้งค่า `interceptors: [onError((error) => console.error(error))]`
@@ -55,6 +62,7 @@ triggers:
 5. ถ้าใช้ TanStack Start ใช้ `createFileRoute` พร้อม `server.handlers`
 
 ### 5. Create Client
+> Goal: Create Client
 
 1. ใช้ `RPCLink` จาก `@orpc/client/fetch` สำหรับ create link
 2. ใช้ `createORPCClient(link)` พร้อม `RouterClient<typeof router>` type
@@ -63,6 +71,7 @@ triggers:
 5. ถ้าใช้ TanStack Start ใช้ `createIsomorphicFn` สำหรับ environment-specific config
 
 ### 6. Handle Errors
+> Goal: Handle Errors
 
 1. ใช้ `.errors()` ใน procedure สำหรับ define type-safe errors
 2. ใช้ `safe()` จาก `@orpc/client` แทน try/catch สำหรับ tuple/object destructuring
@@ -71,6 +80,7 @@ triggers:
 5. ห้ามใส่ sensitive information ใน `message` หรือ `data` (ถูกส่งไป client)
 
 ### 7. Integrate TanStack Query (ถ้าจำเป็น)
+> Goal: Integrate TanStack Query (ถ้าจำเป็น)
 
 1. ใช้ `createTanstackQueryUtils` จาก `@orpc/tanstack-query`
 2. ใช้ `orpc.<path>.queryOptions({ input: { ... } })` สำหรับ type-safe queries

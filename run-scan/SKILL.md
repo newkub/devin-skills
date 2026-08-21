@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-ast-grep-rules
+  - report-ansi
+  - loop-until-complete
+  - follow-ast-grep
+  - resolve-errors
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Setup And Write Rules
+> Goal: Setup And Write Rules
 
 1. ทำ `/follow-ast-grep` เพื่อติดตั้งและตั้งค่า `ast-grep`
 2. ตรวจสอบ `sgconfig.yml` มี `ruleDirs: rules` และมี `scan` script ใน `package.json`
@@ -30,6 +38,7 @@ triggers:
 4. ทำ `/update-ast-grep-rules` เพื่อตรวจสอบ rules ก่อนรัน scan
 
 ### 2. Run Scan
+> Goal: Run Scan
 
 1. รัน `bun run scan` หรือ `ast-grep scan`
 2. ทำ `/report-ansi` เพื่อจัดรูปแบบ output และระบุ issues
@@ -37,6 +46,7 @@ triggers:
 4. แก้ไข code ตาม suggestions ที่เหมาะสม หรือใช้ `--interactive` mode สำหรับ selective apply
 
 ### 3. Verify
+> Goal: Verify
 
 1. ทำ `/loop-until-complete` เพื่อรัน scan ซ้ำจนกว่าจะไม่มี issues
 2. ตรวจสอบว่า fixes ไม่ทำให้ code เสีย

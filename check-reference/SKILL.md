@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,30 +25,35 @@ triggers:
 ## Execute
 
 ### 1. Read File References
+> Goal: Read File References
 
 1. อ่าน reference จากไฟล์ใน project
 2. ตรวจสอบว่าข้อมูลถูกต้องและเป็นปัจจุบัน
 3. เปรียบเทียบกับ implementation จริง
 
 ### 2. Read Web References
+> Goal: Read Web References
 
 1. ค้นหาข้อมูลจาก official documentation
 2. ตรวจสอบความถูกต้องของข้อมูล
 3. ตรวจสอบว่าเป็น version ล่าสุด
 
 ### 3. Read CLI Help
+> Goal: Read CLI Help
 
 1. รัน `--help` หรือ `-h` สำหรับ CLI tools
 2. ตรวจสอบ options และ parameters
 3. ตรวจสอบ examples ใน help
 
 ### 4. Read GitHub References
+> Goal: Read GitHub References
 
 1. อ่าน README.md จาก GitHub repositories
 2. อ่าน issues และ discussions
 3. ตรวจสอบ changelog และ releases
 
 ### 5. Read Package Registry
+> Goal: Read Package Registry
 
 1. ตรวจสอบ package information จาก npm, crates.io, PyPI
 2. ตรวจสอบ version และ dependencies

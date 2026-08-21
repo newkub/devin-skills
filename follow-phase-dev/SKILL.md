@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,14 +24,14 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Prepare
+> Goal: Prepare
 
 1. ศึกษา Phase.dev documentation จาก DeepWiki (phasehq/console), Official Docs (docs.phase.dev), และ Web Search
 2. อ่าน workflows ที่คล้ายกันเพื่อดู patterns และ conventions
 
 ### 2. Account Setup
+> Goal: Account Setup
 
 1. เข้าไปที่ https://phase.dev/
 2. Login หรือสมัครสมาชิก (รองรับ Google, GitHub, GitLab OAuth)
@@ -39,6 +39,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 4. สร้าง App ภายใน Organization
 
 ### 3. Authentication
+> Goal: Authentication
 
 1. Authenticate กับ Phase Cloud: `phase auth` (default mode: webauth)
 2. สำหรับ self-hosted: `phase auth --mode token`
@@ -49,6 +50,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
    - Self-hosted: `PHASE_HOST=http://localhost`, `PHASE_TOKEN=<token>`
 
 ### 4. Project Initialization
+> Goal: Project Initialization
 
 1. Navigate ไปยัง project directory
 2. Run `phase init` เพื่อเชื่อมโยง project กับ Phase
@@ -57,6 +59,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 5. Import existing secrets (optional): `phase secrets import .env`
 
 ### 5. Secret Management
+> Goal: Secret Management
 
 1. สร้าง secrets: `phase secrets create KEY "value" --env production`
 2. ดึง secrets: `phase secrets get KEY --env production`
@@ -74,6 +77,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 11. จัดระเบียบ secrets ด้วย folders สำหรับจำนวน secrets ที่มาก
 
 ### 6. Encryption and Security
+> Goal: Encryption and Security
 
 1. Phase ใช้ end-to-end encryption (E2EE) ด้วย `libsodium` asymmetric encryption
 2. Secrets encrypt ด้วย environment-specific `public/private keys`
@@ -82,12 +86,14 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 5. Validate secret references ก่อน save เพื่อป้องกัน broken references
 
 ### 7. Bulk Operations
+> Goal: Bulk Operations
 
 1. ใช้ bulk operations สำหรับ create, update, delete secrets ใน transaction เดียว
 2. Track `unsaved changes` ใน UI component
 3. ใช้ `BulkProcessSecrets` mutation สำหรับ operations หลายตัวพร้อมกัน
 
 ### 8. Sync Configuration
+> Goal: Sync Configuration
 
 1. ตั้งค่า sync ไปยัง external services (`AWS Secrets Manager`, `GitHub Actions`, `Vercel`, `Railway`)
 2. สร้าง sync configuration: `phase sync create aws-secrets-manager --env production --region us-east-1`
@@ -95,6 +101,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 4. Trigger sync manually: `phase sync trigger --env production`
 
 ### 9. Platform Integration
+> Goal: Platform Integration
 
 1. Docker: ใช้ Phase SDK หรือ CLI injection
 2. Kubernetes: ใช้ Phase Agent หรือ sync ไป Kubernetes secrets
@@ -105,6 +112,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 7. Cloudflare Pages: ใช้ Phase integration
 
 ### 10. Dynamic Secrets
+> Goal: Dynamic Secrets
 
 1. List dynamic secrets: `phase dynamic-secrets list`
 2. Manage leases: `phase dynamic-secrets lease`
@@ -112,6 +120,7 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 4. Set lease TTL ด้วย `phase run --lease-ttl <seconds>`
 
 ### 11. Application Integration
+> Goal: Application Integration
 
 1. Inject secrets ด้วย CLI: `phase run --env production -- npm run dev`
 2. ใช้ flags สำหรับ `phase run`:
@@ -126,14 +135,13 @@ Use `follow-phase-dev` for the specific tasks and workflows it covers
 5. Test secrets injection ใน staging environment ก่อน production
 
 ### 12. Monitoring and Audit
+> Goal: Monitoring and Audit
 
 1. ตรวจสอบ audit logs อย่างสม่ำเสมอ (`CREATE`, `UPDATE`, `READ`, `DELETE` events)
 2. Monitor sync status เพื่อให้แน่ใจว่า secrets sync สำเร็จ
 3. ตั้งค่า alerts สำหรับ failed syncs หรือ unauthorized access
 4. Audit logs รวม `timestamps`, `IP addresses`, `user agents`, `secret version`
 5. Read logs trigger เมื่อ user reveal secret ใน UI
-
-## Rules
 
 ## Rules
 
@@ -147,8 +155,6 @@ related_workflows: เท่านั้น
 ### 2. Structure & Format
 
 - โครงสร้างต้องเป็น: ## Goal, ## Execute, ## Rules,
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Change Impact
+> Goal: Analyze Change Impact
 
 1. ระบุ files และ modules ที่ถูกเปลี่ยนแปลง
 2. วิเคราะห์ dependencies และ downstream effects
@@ -30,6 +33,7 @@ triggers:
 4. ตรวจสอบ integration points ที่เกี่ยวข้อง
 
 ### 2. Select Test Cases
+> Goal: Select Test Cases
 
 1. เลือก test cases ที่ครอบคลุม changed code
 2. รวม test cases สำหรับ critical paths
@@ -37,6 +41,7 @@ triggers:
 4. จัดลำดับ test cases ตามความสำคัญ
 
 ### 3. Run Test Suite
+> Goal: Run Test Suite
 
 1. รัน unit tests สำหรับ modules ที่เปลี่ยนแปลง
 2. รัน integration tests สำหรับ affected flows
@@ -44,6 +49,7 @@ triggers:
 4. รัน performance tests หากมีการเปลี่ยนแปลง performance-critical code
 
 ### 4. Analyze Results
+> Goal: Analyze Results
 
 1. ตรวจสอบ test failures และ errors
 2. จัดกลุ่ม failures ตาม root cause
@@ -51,6 +57,7 @@ triggers:
 4. ตรวจสอบ flaky tests และ environment issues
 
 ### 5. Fix And Verify
+> Goal: Fix And Verify
 
 1. แก้ไข regressions ที่พบ
 2. เพิ่ม test cases ใหม่หากจำเป็น

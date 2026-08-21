@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - git-commit
+  - git-file-history
+  - debug-issue
+  - write-test
+  - git-restore-file
 ---
 
 ## Goal
@@ -25,8 +33,7 @@ triggers:
 
 ### 1. Identify Git Problem
 
-ระบุปัญหา git ที่ต้อง debug
-
+> Goal: ระบุปัญหา git ที่ต้อง debug
 > Goal: ทราบปัญหา git และประเภทของการ debug ที่ต้องการ
 
 1. ระบุอาการของปัญหา: bug ที่เกิดหลัง commit ใด, ไฟล์หาย, commit หาย, conflict ไม่คาดคิด
@@ -39,8 +46,7 @@ triggers:
 
 ### 2. Find Bug Commit With Bisect
 
-ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
-
+> Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
 > Goal: พบ commit ที่ทำให้เกิด bug พร้อมระบุ commit hash
 
 1. ทำ `/follow-git` เพื่อรัน bisect workflow
@@ -52,8 +58,7 @@ triggers:
 
 ### 3. Trace Change With Blame
 
-ใช้ git blame และ log เพื่อดูประวัติการเปลี่ยนแปลง
-
+> Goal: ใช้ git blame และ log เพื่อดูประวัติการเปลี่ยนแปลง
 > Goal: ทราบใครเปลี่ยนบรรทัดใด เมื่อไหร่ และทำไม
 
 1. ทำ `/follow-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
@@ -63,8 +68,7 @@ triggers:
 
 ### 4. Recover Lost Commit With Reflog
 
-ใช้ git reflog เพื่อกู้คืน commit ที่หายไป
-
+> Goal: ใช้ git reflog เพื่อกู้คืน commit ที่หายไป
 > Goal: กู้คืน commit ที่หายไปกลับมาได้
 
 1. ทำ `/follow-git` เพื่อดู reflog และหา commit ที่หาย
@@ -74,8 +78,7 @@ triggers:
 
 ### 5. Restore Lost File
 
-กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
-
+> Goal: กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
 > Goal: ไฟล์ที่หายไปถูก restore กลับมา
 
 1. ทำ `/git-restore-file` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
@@ -85,8 +88,7 @@ triggers:
 
 ### 6. Investigate Unknown Cause
 
-สำรวจปัญหาที่ไม่ทราบสาเหตุโดยใช้ git tools หลายตัว
-
+> Goal: สำรวจปัญหาที่ไม่ทราบสาเหตุโดยใช้ git tools หลายตัว
 > Goal: พบสาเหตุของปัญหาโดยใช้ git investigation tools
 
 1. รัน `git status` เพื่อดูสถานะ working directory
@@ -98,8 +100,7 @@ triggers:
 
 ### 7. Apply Fix
 
-แก้ไขปัญหาที่พบ
-
+> Goal: แก้ไขปัญหาที่พบ
 > Goal: ปัญหาถูกแก้ไขและป้องกันการเกิดซ้ำ
 
 1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-git` เพื่อ revert commit นั้น
@@ -110,7 +111,6 @@ triggers:
 ## Rules
 
 ### Debug Strategy
-
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - เริ่มจากการระบุปัญหาให้ชัดเจนก่อนใช้ git tools
@@ -120,7 +120,6 @@ triggers:
 - ถ้าไม่ทราบสาเหตุ → ใช้ Step 6 Investigate Unknown Cause
 
 ### Safety
-
 > Goal: debug โดยไม่ทำลาย working directory
 
 - สำรอง working directory ด้วย `git stash` ก่อน debug ถ้ามี uncommitted changes
@@ -129,7 +128,6 @@ triggers:
 - หลัง debug → ตรวจสอบ `git status` ว่า working directory สะอาด
 
 ### Tool Selection
-
 > Goal: เลือก git tool ที่เหมาะสมกับปัญหา
 
 - bug introduced by commit → `git bisect`

@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - refactor-all-workspace
 ---
 
 ## Goal
@@ -28,11 +32,15 @@ triggers:
 
 ### 1. Setup Environment
 
+> Goal: Setup Environment
+
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
 2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
 3. ยืนยัน WebView2 บน Windows (ติดตั้งอัตโนมัติตอน run ครั้งแรก)
 
 ### 2. Initialize Project
+
+> Goal: Initialize Project
 
 สร้าง SolidStart project ใหม่ด้วย starter
 
@@ -43,20 +51,28 @@ triggers:
 
 ### 3. Install Tauri Dependencies
 
+> Goal: Install Tauri Dependencies
+
 1. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
 2. ติดตั้ง Tauri CLI: `bun add -D @tauri-apps/cli`
 3. รัน `bun install`
 
 ### 4. Install UnoCSS
 
+> Goal: Install UnoCSS
+
 1. ติดตั้ง UnoCSS: `bun add -d unocss`
 2. สำหรับ Icons ติดตั้ง iconify collections: `bun add -d @iconify-json/mdi`
 
 ### 5. Configure TypeScript
 
+> Goal: Configure TypeScript
+
 ตั้งค่า TypeScript สำหรับ SolidStart: `jsx: preserve`, `jsxImportSource: solid-js`, `moduleResolution: bundler`, `strict: true`
 
 ### 6. Configure Vite
+
+> Goal: Configure Vite
 
 แก้ไข `vite.config.ts` ให้:
 - port 5173
@@ -65,6 +81,8 @@ triggers:
 - เพิ่ม UnoCSS plugin
 
 ### 7. Configure UnoCSS
+
+> Goal: Configure UnoCSS
 
 สร้าง `uno.config.ts`:
 
@@ -92,7 +110,7 @@ export default defineConfig({
 
 ### 8. Configure Tauri
 
-แก้ไข `src-tauri/tauri.conf.json`:
+> Goal: แก้ไข `src-tauri/tauri.conf.json`
 - ตั้ง `productName`, `identifier`
 - `devUrl: http://localhost:5173`
 - `beforeDevCommand: bun run dev`
@@ -105,6 +123,7 @@ export default defineConfig({
 
 ### 9. Develop IPC Commands
 
+> Goal: Develop IPC Commands
 1. สร้าง Rust command ใน `src-tauri/src/lib.rs`:
 
 ```rust
@@ -131,11 +150,11 @@ const response = await invoke('greet', { name: 'World' })
 
 ### 10. Add Tauri Plugins
 
-ติดตั้ง plugins ด้วย `bun run tauri add <plugin-name>` หรือ `bun add @tauri-apps/plugin-<plugin-name>`
+> Goal: ติดตั้ง plugins ด้วย `bun run tauri add <plugin-name>` หรือ `bun add @tauri-apps/plugin-<plugin-name>`
 
 ### 11. Development
 
-พัฒนา application ตาม best practices
+> Goal: พัฒนา application ตาม best practices
 
 1. รัน `bun run dev` สำหรับ development server
 2. ใช้ `.tsx` สำหรับ components
@@ -144,6 +163,7 @@ const response = await invoke('greet', { name: 'World' })
 
 ### 12. Build And Test
 
+> Goal: Build And Test
 1. Development mode: `bun run tauri dev`
 2. Production build: `bun run tauri build`
 3. Platform specific: `bun run tauri build --target x86_64-apple-darwin`

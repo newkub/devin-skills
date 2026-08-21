@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +24,15 @@ Use `follow-open-web-from-env` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Parse Env Files
+> Goal: Parse Env Files
 
 1. อ่าน `.env.example`, `.env.local`, `.env.*` ทั้งหมด
 2. ระบุ variables ที่ต้องการ keys: `*_API_KEY`, `*_SECRET`, `*_TOKEN`, `*_PASSWORD`, หรือ placeholder
 3. จับคู่แต่ละ variable กับ service name
 
 ### 2. Map and Open URLs
+> Goal: Map and Open URLs
 
 1. ใช้หลักการ mapping:
    - `OPENAI_*` → `https://platform.openai.com/api-keys`
@@ -46,13 +46,9 @@ Use `follow-open-web-from-env` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 1. เปิด URL เฉพาะที่จำเป็นตาม env files
 2. เก็บ secrets ใน `.env.local` อย่างปลอดภัย
 3. ห้าม commit secrets ไป git
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -29,8 +29,7 @@ related:
 
 ### 1. Identify Async Pattern
 
-ระบุลักษณะของงานทีต้องทำ
-
+> Goal: ระบุลักษณะของงานทีต้องทำ
 > Goal: เลือก pattern ทีเหมาะสม
 
 1. ดูว่า tasks เป็น sequential, parallel หรือ race condition
@@ -40,8 +39,7 @@ related:
 
 ### 2. Choose The Right Primitive
 
-เลือก API ทีเหมาะสมกับงาน
-
+> Goal: เลือก API ทีเหมาะสมกับงาน
 > Goal: ใช้ primitive ทีถูกต้อง
 
 1. `async/await` สำหรับ sequential flow ทั่วไป
@@ -52,8 +50,7 @@ related:
 
 ### 3. Implement Error Handling
 
-จัดการ error ใน async flow
-
+> Goal: จัดการ error ใน async flow
 > Goal: ไม่มี unhandled rejection และ error สามารถ trace ได้
 
 1. ใช้ `try/catch` รอบ `await` หรือ `.catch()` สำหรับ Promise
@@ -63,8 +60,7 @@ related:
 
 ### 4. Optimize Concurrency
 
-ควบคุมจำนวน concurrent operations
-
+> Goal: ควบคุมจำนวน concurrent operations
 > Goal: ได้ประสิทธิภาพทีเหมาะสม
 
 1. ใช้ `p-limit` หรือ `AsyncPool` ถ้าต้องการ limit concurrency
@@ -74,8 +70,7 @@ related:
 
 ### 5. Test Async Code
 
-เขียน test สำหรับ async flow
-
+> Goal: เขียน test สำหรับ async flow
 > Goal: มั่นใจว่า async code ทำงานถูกต้อง
 
 1. ใช้ `async/await` ใน test

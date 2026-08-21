@@ -1,7 +1,6 @@
 ---
 name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
-argument-hint: optional PR number or branch
 allowed-tools:
   - read
   - grep
@@ -9,6 +8,7 @@ allowed-tools:
   - exec
   - ask_user_question
   - mcp_call_tool
+  - write
 triggers:
   - user
   - model
@@ -18,9 +18,7 @@ related:
   - deep-validate
   - run-check
   - report
-  - report-table
-  - suggest-next-action
-  - git-commit
+argument-hint: optional PR number or branch
 ---
 
 ## Goal
@@ -35,8 +33,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 1. Fetch PR Context
 
-รวบรวมข้อมูล PR ทั้งหมด
-
+> Goal: รวบรวมข้อมูล PR ทั้งหมด
 > Goal: เข้าใจ scope, changes และ context ของ PR
 
 1. ถ้ามี PR number → รัน `gh pr view <pr>` และ `gh pr diff <pr>` — ถ้าไม่มี → รัน `git diff <base>..<head>` และ `git log --oneline <base>..<head>`
@@ -46,8 +43,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 2. Review PR Metadata
 
-ตรวจสอบ metadata ของ PR
-
+> Goal: ตรวจสอบ metadata ของ PR
 > Goal: PR พร้อม merge จาก high-level
 
 1. ตรวจ title ตาม conventional commit format (`<type>: <subject>`)
@@ -59,8 +55,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 3. Review Code Changes
 
-ตรวจสอบ code changes ของ PR
-
+> Goal: ตรวจสอบ code changes ของ PR
 > Goal: หา issues ใน diff ทั้ง quality, security, test, architecture
 
 1. ทำ /run-check เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
@@ -75,8 +70,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 4. Validate Findings
 
-ตรวจสอบ findings ก่อน report
-
+> Goal: ตรวจสอบ findings ก่อน report
 > Goal: Findings ถูกต้องและจัดลำดับชัดเจน
 
 1. ทำ /deep-validate เพื่อ validate findings หลายมิติ
@@ -86,8 +80,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 5. Report And Recommend
 
-สร้างรายงานและแนะนำ action
-
+> Goal: สร้างรายงานและแนะนำ action
 > Goal: รายงานผล review พร้อม recommendation
 
 1. ทำ /report พร้อม /report-table

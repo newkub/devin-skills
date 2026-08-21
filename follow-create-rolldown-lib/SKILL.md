@@ -7,12 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-tsdown
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +25,15 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install Rolldown
+> Goal: Install Rolldown
 
 1. ติดตั้งด้วย `bun add -D rolldown`
 2. ตรวจสอบ version ด้วย `rolldown --version`
 3. ตรวจสอบ CLI options ด้วย `rolldown --help`
 
 ### 2. Create Config File
+> Goal: Create Config File
 
 1. สร้าง config file (.js, .cjs, .mjs, .ts, .mts, หรือ .cts)
 2. ใช้ `defineConfig` helper สำหรับ type safety
@@ -40,6 +41,7 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 4. เพิ่ม config ลงใน npm scripts ด้วย `rolldown -c`
 
 ### 3. Configure Build Options
+> Goal: Configure Build Options
 
 1. ตั้งค่า `external` สำหรับ dependencies
 2. ตั้งค่า `plugins` สำหรับ custom transformations
@@ -48,6 +50,7 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 5. ตั้งค่า `declaration` สำหรับ TypeScript types
 
 ### 4. Use Native Plugins
+> Goal: Use Native Plugins
 
 1. ใช้ `BundleAnalyzerPlugin` สำหรับ analyze bundle size
 2. ใช้ `ReplacePlugin` สำหรับ replace variables
@@ -55,6 +58,7 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 4. ใช้ Vite compatibility plugins ถ้าจำเป็น
 
 ### 5. Build and Bundle
+> Goal: Build and Bundle
 
 1. รัน `bun run build` สำหรับ production builds
 2. รัน `bun run dev` สำหรับ development
@@ -62,13 +66,12 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 4. ตรวจสอบ type declarations ถ้ามี
 
 ### 6. Optimize Performance
+> Goal: Optimize Performance
 
 1. ใช้ `@rolldown/browser` สำหรับ WASM builds
 2. ใช้ native bindings สำหรับ platform-specific optimizations
 3. ตั้งค่า `treeshake` สำหรับ dead code elimination
 4. ใช้ `code splitting` สำหรับ large libraries
-
-## Rules
 
 ## Rules
 
@@ -99,8 +102,6 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 ### Related Workflows
 
 สำหรับ library bundling ที่ง่ายกว่า ใช้ `/follow-tsdown`
-
-## Expected Outcome
 
 ## Expected Outcome
 

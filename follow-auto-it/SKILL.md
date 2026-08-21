@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,10 +26,14 @@ triggers:
 
 ### 1. Install Auto
 
+> Goal: Install Auto
+
 1. รัน `bun add -D auto`
 2. ตรวจสอบ installation สำเร็จ
 
 ### 2. Configure Auto
+
+> Goal: Configure Auto
 
 1. เพิ่ม config ใน `package.json`
 
@@ -81,11 +87,15 @@ Important: ต้องเพิ่ม `author` ใน package.json หรือ
 
 ### 3. Setup GitHub Token
 
+> Goal: Setup GitHub Token
+
 1. สร้าง GitHub Personal Access Token
 2. เพิ่มเป็น `GH_TOKEN` ใน repository secrets
 3. หรือใช้ `GITHUB_TOKEN` (ถ้าใช้ GitHub Actions)
 
 ### 4. Setup NPM Token
+
+> Goal: Setup NPM Token
 
 1. สร้าง NPM token จาก https://www.npmjs.com/settings/newkubise/tokens (Automation token)
 2. เพิ่ม NPM_TOKEN ใน GitHub secrets ด้วย:
@@ -99,6 +109,7 @@ Important: ต้องเพิ่ม `author` ใน package.json หรือ
 
 ### 5. Create GitHub Workflow
 
+> Goal: Create GitHub Workflow
 1. สร้างไฟล์ `.github/workflows/release.yml`
 
 ```yml
@@ -133,6 +144,7 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 
 ### 6. Run Release
 
+> Goal: Run Release
 1. รัน `bun run release` (local)
 2. หรือ push ไป main branch (CI/CD)
 3. Auto จะ detect commits และสร้าง release/tag อัตโนมัติ

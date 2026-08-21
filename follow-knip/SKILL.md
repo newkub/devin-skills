@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Install And Create Config
 
-ติดตั้ง Knip และสร้าง config file ใน root directory
-
+> Goal: ติดตั้ง Knip และสร้าง config file ใน root directory
 > Goal: Knip ติดตั้งและมี config file พร้อมใช้งาน
 
 1. รัน `bun add -D knip`
@@ -35,8 +36,7 @@ triggers:
 
 ### 2. Configure Workspaces
 
-กำหนด entry points และ project patterns สำหรับแต่ละ workspace
-
+> Goal: กำหนด entry points และ project patterns สำหรับแต่ละ workspace
 > Goal: ทุก workspace มี entry และ project patterns ที่ถูกต้อง ไม่มี redundant patterns
 
 1. Knip อ่าน workspaces จาก `package.json#workspaces`, `pnpm-workspace.yaml`, หรือ `knip.json#workspaces` อัตโนมัติ
@@ -48,8 +48,7 @@ triggers:
 
 ### 3. Configure Advanced Options
 
-เพิ่ม options ที่เพิ่มความแม่นยำในการตรวจจับ
-
+> Goal: เพิ่ม options ที่เพิ่มความแม่นยำในการตรวจจับ
 > Goal: Config มี advanced options ที่ลด false positives และบังคับใช้ config ที่ถูกต้อง
 
 1. เพิ่ม `ignoreExportsUsedInFile` เพื่อ ignore exports ที่ใช้เฉพาะภายในไฟล์ — แนะนำ `{ "interface": true, "type": true }`
@@ -60,8 +59,7 @@ triggers:
 
 ### 4. Configure Package.json Scripts
 
-เพิ่ม scripts สำหรับรัน Knip ใน `package.json`
-
+> Goal: เพิ่ม scripts สำหรับรัน Knip ใน `package.json`
 > Goal: Scripts ครบสำหรับ default, production, และ strict mode
 
 1. เพิ่ม `"knip": "knip"` สำหรับ default analysis
@@ -71,8 +69,7 @@ triggers:
 
 ### 5. Run And Fix Issues
 
-รัน Knip และแก้ไข issues ตามลำดับความสำคัญ
-
+> Goal: รัน Knip และแก้ไข issues ตามลำดับความสำคัญ
 > Goal: ไม่มี config hints และ unused code ถูกแก้ไขหรือ ignore อย่างถูกต้อง
 
 1. รัน `bunx knip` ครั้งแรกเพื่อดู config hints — แก้ config hints ก่อนเสมอ

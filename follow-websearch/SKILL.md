@@ -10,6 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -26,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Search With Crw
+> Goal: Search With Crw
 
 ค้นหาข้อมูลจากเว็บผ่าน SearXNG
 
@@ -34,6 +36,7 @@ triggers:
 3. วิเคราะห์ผลลัพธ์และเลือก URL ที่น่าสนใจ
 
 ### 2. Scrape Target URL
+> Goal: Scrape Target URL
 
 ดึงข้อมูลจาก URL เป้าหมาย
 
@@ -43,6 +46,7 @@ triggers:
 4. ใช้ `crw scrape <url> --summary` หากต้องการ AI summary
 
 ### 3. Choose Right Format
+> Goal: Choose Right Format
 
 เลือก format ตามวัตถุประสงค์
 
@@ -54,6 +58,7 @@ triggers:
 | เฉพาะ links | links | `--format links` |
 
 ### 4. Advanced Usage
+> Goal: Advanced Usage
 
 ใช้ฟีเจอร์ขั้นสูงเมื่อต้องการ
 

@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-import-export
+  - follow-nextjs
+  - follow-monorepo
+  - refactor-packages
+  - follow-vite
 ---
 
 ## Goal
@@ -24,8 +31,7 @@ triggers:
 
 ### 1. Setup Project Structure
 
-สร้างโครงสร้างโปรเจกต์พื้นฐาน
-
+> Goal: สร้างโครงสร้างโปรเจกต์พื้นฐาน
 > Goal: มีโครงสร้างโฟลเดอร์หลักครบถ้วน
 
 1. สร้าง `app/` สำหรับ App Router (pages, layouts, templates)
@@ -38,8 +44,7 @@ triggers:
 
 ### 2. Configure Next.js
 
-ตั้งค่า Next.js และ build tools
-
+> Goal: ตั้งค่า Next.js และ build tools
 > Goal: มี Next.js config และ TypeScript config พร้อมใช้งาน
 
 1. ทำ `/follow-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
@@ -50,8 +55,7 @@ triggers:
 
 ### 3. Implement App Router Patterns
 
-ใช้ App Router patterns ของ Next.js
-
+> Goal: ใช้ App Router patterns ของ Next.js
 > Goal: ใช้ App Router conventions ครบถ้วน
 
 1. ใช้ `app/` directory สำหรับ routing
@@ -64,8 +68,7 @@ triggers:
 
 ### 4. Data Fetching
 
-จัดการ data fetching อย่างมีประสิทธิภาพ
-
+> Goal: จัดการ data fetching อย่างมีประสิทธิภาพ
 > Goal: data fetching มีประสิทธิภาพและใช้ caching อย่างเหมาะสม
 
 1. ใช้ `async/await` ใน Server Components
@@ -77,8 +80,7 @@ triggers:
 
 ### 5. State Management
 
-จัดการ state อย่างมีประสิทธิภาพ
-
+> Goal: จัดการ state อย่างมีประสิทธิภาพ
 > Goal: state management แยก Server/Client Components ชัดเจน
 
 1. ใช้ Server Components สำหรับ data fetching

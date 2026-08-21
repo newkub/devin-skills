@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +27,7 @@ triggers:
 
 ### 1. Verify Authentication And Scope
 
-ตรวจสอบสิทธิ์ก่อนใช้ `gh project`
-
+> Goal: ตรวจสอบสิทธิ์ก่อนใช้ `gh project`
 > Goal: ยืนยันว่า token มี scope `project` พร้อมใช้งาน
 
 1. รัน `gh auth status` เพื่อตรวจสอบ scopes ปัจจุบัน
@@ -34,8 +36,7 @@ triggers:
 
 ### 2. List And View Projects
 
-ค้นหาและดูรายละเอียด project
-
+> Goal: ค้นหาและดูรายละเอียด project
 > Goal: ระบุ project ที่ต้องการทำงาน
 
 1. รัน `gh project list --owner "@me"` เพื่อดู projects ของตัวเอง
@@ -45,8 +46,7 @@ triggers:
 
 ### 3. Create And Edit Projects
 
-สร้างหรือปรับแต่ง project
-
+> Goal: สร้างหรือปรับแต่ง project
 > Goal: จัดการ project ด้วย CLI
 
 1. รัน `gh project create --title "<title>" --owner "@me"` เพื่อสร้าง project
@@ -58,8 +58,7 @@ triggers:
 
 ### 4. Manage Project Items
 
-เพิ่ม ลบ หรือแก้ไข items ใน project
-
+> Goal: เพิ่ม ลบ หรือแก้ไข items ใน project
 > Goal: จัดการ issues, PRs และ draft items ใน project
 
 1. รัน `gh project item-list <number> --owner "@me"` เพื่อดู items
@@ -72,8 +71,7 @@ triggers:
 
 ### 5. Inspect And Create Fields
 
-ดูหรือสร้าง custom fields
-
+> Goal: ดูหรือสร้าง custom fields
 > Goal: ทำงานกับ custom fields ของ project
 
 1. รัน `gh project field-list <number> --owner "@me"` เพื่อดู fields และ field IDs
@@ -82,8 +80,7 @@ triggers:
 
 ### 6. Use Output And Automation
 
-ใช้ output ของ `gh project` กับ scripts
-
+> Goal: ใช้ output ของ `gh project` กับ scripts
 > Goal: นำ output ไปใช้ต่อใน pipeline หรือ scripts
 
 1. ใช้ `--json` หรือ `--jq <expression>` เพื่อรับ output เป็น JSON

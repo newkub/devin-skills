@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Setup Project
+> Goal: Setup Project
 
 ตั้งค่า Zig project
 
@@ -32,6 +35,7 @@ triggers:
 4. ตั้งค่า target สำหรับ cross-compilation
 
 ### 2. Write Zig Code
+> Goal: Write Zig Code
 
 เขียน Zig code ตาม conventions
 
@@ -42,6 +46,7 @@ triggers:
 5. ใช้ `try` สำหรับ error handling
 
 ### 3. Memory Management
+> Goal: Memory Management
 
 จัดการ memory อย่างเหมาะสม
 
@@ -52,6 +57,7 @@ triggers:
 5. ใช้ RAII patterns สำหรับ resource management
 
 ### 4. Optimize Performance
+> Goal: Optimize Performance
 
 ปรับปรุง performance
 

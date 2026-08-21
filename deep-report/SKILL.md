@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
+  - update-agents-md
+  - deep-analyze
+  - report-table
+  - deep-review
 ---
 
 ## Goal
@@ -24,20 +31,17 @@ triggers:
 
 ### 1. Gather Data
 
-รวบรวมข้อมูลจาก review workflows และ codebase analysis
-
+> Goal: รวบรวมข้อมูลจาก review workflows และ codebase analysis
 > Goal: มีข้อมูลครบสำหรับสร้าง deep report
 
 1. ทำ `/deep-review` เพื่อวิเคราะห์ codebase ครบทุกด้าน
 2. ทำ `/deep-analyze` เพื่อวิเคราะห์เชิงลึกถ้าต้องการข้อมูลเพิ่มเติม
 3. รวบรวม findings จาก review results และ codebase analysis
-
 > Goal: มีข้อมูลครบจาก review workflows และ codebase analysis
 
 ### 2. Classify Findings
 
-จำแนก findings เพื่อเตรียมข้อมูลสำหรับตาราง
-
+> Goal: จำแนก findings เพื่อเตรียมข้อมูลสำหรับตาราง
 > Goal: แต่ละ finding มีข้อมูลครบ 7 columns
 
 1. สำหรับแต่ละ finding จาก review results:
@@ -50,13 +54,11 @@ triggers:
    7. ระบุ Evidence: code snippet หรือ pattern ที่ trigger finding
 2. ถ้า finding เป็น false positive ให้ระบุใน column Cause ว่า `False positive: <reason>`
 3. จัดเรียงตาม severity: Critical ก่อน, High รองลงมา
-
 > Goal: แต่ละ finding มีข้อมูลครบทุก column พร้อม root cause analysis
 
 ### 3. Build Report Table
 
-สร้างตาราง deep report ตาม format 7 columns
-
+> Goal: สร้างตาราง deep report ตาม format 7 columns
 > Goal: ตารางที่ actionable และตรวจสอบได้
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
@@ -65,13 +67,11 @@ triggers:
 4. ภายในแต่ละกลุ่ม จัดเรียงตาม severity: Critical ก่อน, High รองลงมา
 5. กรองเฉพาะ categories ที่มี findings (ไม่แสดง pass)
 6. แต่ละ row ต้องมี evidence ที่ตรวจสอบได้จริง
-
 > Goal: ตารางที่จัดกลุ่มตาม review workflow พร้อม evidence ที่ตรวจสอบได้
 
 ### 4. Build Deep Summary
 
-สร้างสรุปละเอียดครบทุกมิติท้าย report
-
+> Goal: สร้างสรุปละเอียดครบทุกมิติท้าย report
 > Goal: สรุปที่ครบทุกมิติและนำไป action ได้
 
 1. Domain Breakdown — score และ status ของทุก domain:
@@ -88,19 +88,16 @@ triggers:
    - Quick wins: low effort, high impact
    - Major improvements: high effort, high impact
    - แต่ละ action: reviewWorkflow ที่แนะนำ, estimated effort, expected impact
-
 > Goal: สรุป 4 ส่วนที่ครบทุกมิติและนำไป action ได้
 
 ### 5. Suggest Next Actions
 
-แนะนำ action ถัดไปตาม findings
-
+> Goal: แนะนำ action ถัดไปตาม findings
 > Goal: รู้ action ถัดไปที่ควรทำตาม priority
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. แนะนำ `/review-*` workflow สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 3. แนะนำ `/update-agents-md` ถ้า AGENTS.md ไม่ตรงกับ dependencies ปัจจุบัน
-
 > Goal: action items ที่ชัดเจนและจัดลำดับตาม priority
 
 ## Rules

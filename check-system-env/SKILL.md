@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
 
 ## Goal
@@ -32,6 +34,7 @@ triggers:
 ## Execute
 
 ### 1. Check Operating System
+> Goal: Check Operating System
 
 ตรวจสอบ OS ที่ใช้:
 
@@ -45,8 +48,7 @@ $PSVersionTable.OS
 ```
 
 ### 2. Check Shell Information
-
-ตรวจสอบ shell type และ version:
+> Goal: ตรวจสอบ shell type และ version
 
 1. รัน `$PSVersionTable.PSVersion` เพื่อแสดง PowerShell version
 2. รัน `$PSVersionTable.PSEdition` เพื่อแสดง shell type
@@ -60,8 +62,7 @@ $PSVersionTable.PSEdition
 ```
 
 ### 3. Check Environment Variables
-
-ตรวจสอบ environment variables ที่สำคัญ:
+> Goal: ตรวจสอบ environment variables ที่สำคัญ
 
 1. รัน `$env:PATH -split ';'` เพื่อแสดง PATH
 2. รัน `$env:USERPROFILE` เพื่อแสดง user profile path
@@ -83,6 +84,7 @@ $env:WINDSURF_HOME
 ```
 
 ### 4. Check Global Root Paths
+> Goal: Check Global Root Paths
 
 ตรวจสอบ global root paths ของ Windsurf:
 
@@ -106,8 +108,7 @@ $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 ```
 
 ### 5. Check MCP Configuration
-
-ตรวจสอบ MCP configuration:
+> Goal: ตรวจสอบ MCP configuration
 
 1. รัน `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` เพื่อแสดง MCP config
 
@@ -117,8 +118,7 @@ Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 ```
 
 ### 6. Check Global Workflows
-
-ตรวจสอบ global workflows ที่มี:
+> Goal: ตรวจสอบ global workflows ที่มี
 
 1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"` เพื่อแสดงรายการ workflows
 
@@ -128,6 +128,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"
 ```
 
 ### 7. Check Global Skills
+> Goal: Check Global Skills
 
 ตรวจสอบ global skills ที่มี:
 
@@ -139,8 +140,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"
 ```
 
 ### 8. Check Global Rules
-
-ตรวจสอบ global rules ที่มี:
+> Goal: ตรวจสอบ global rules ที่มี
 
 1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"` เพื่อแสดงรายการ rules
 
@@ -150,8 +150,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"
 ```
 
 ### 9. Check CLI Programs Inventory
-
-ตรวจสอบ CLI programs ที่มีในเครื่อง:
+> Goal: ตรวจสอบ CLI programs ที่มีในเครื่อง
 
 1. รัน `Get-Command git, npm, bun, pnpm, yarn, docker, node, python, rust, go, cargo -ErrorAction SilentlyContinue` เพื่อแสดง CLI tools ที่สำคัญ
 2. รัน `where.exe git npm bun pnpm yarn docker node python 2>$null` เพื่อแสดง paths ของ CLI tools
@@ -177,6 +176,7 @@ pip list 2>$null
 ```
 
 ### 10. Check Browser History Analysis
+> Goal: Check Browser History Analysis
 
 ตรวจสอบ browser history paths และสถานะ:
 

@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,15 +24,12 @@ Use `follow-node-modules-inspector` for the specific tasks and workflows it cove
 
 ## Execute
 
-## Execute
-
 ### 1. Setup Node Modules Inspector
+> Goal: Setup Node Modules Inspector
 
 1. รัน `bunx node-modules-inspector` ใน project root
 2. สร้าง `node-modules-inspector.config.ts` หากจำเป็น
 3. ตั้งค่า config options
-
-## Rules
 
 ## Rules
 
@@ -43,8 +40,6 @@ Use `follow-node-modules-inspector` for the specific tasks and workflows it cove
 ```bash [command]
 bunx node-modules-inspector
 ```
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,15 +18,6 @@ related:
   - deep-review
   - dont-over-engineer
   - follow-devin-skills-md
-  - follow-ordering
-  - improve-redundancy
-  - improve-skills
-  - merge
-  - create-devin-global-skills
-  - read-related-skills
-  - report
-  - scan-codebase
-  - update-reference
 ---
 
 ## Goal
@@ -41,8 +34,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 1. Analyze Skills
 
-วิเคราะห์ skill ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
-
+> Goal: วิเคราะห์ skill ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
 > Goal: รู้ว่า skill ไหนควร refactor และทำไม
 
 1. parallel: ทำตาม `/scan-codebase` ∥ ทำตาม `/read-related-skills`
@@ -52,8 +44,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 2. Plan Refactor
 
-วางแผนการ refactor ตาม findings
-
+> Goal: วางแผนการ refactor ตาม findings
 > Goal: มีแผนชัดเจนก่อนลงมือ
 
 1. จัดกลุ่ม issues เป็น categories: Split, Merge, Restructure, Deduplicate
@@ -63,8 +54,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 3. Split Large Skills
 
-แยก skill ที่ใหญ่เกินไปหรือมีหลาย responsibilities
-
+> Goal: แยก skill ที่ใหญ่เกินไปหรือมีหลาย responsibilities
 > Goal: แต่ละ skill มี SRP ชัดเจน
 
 1. ระบุ skill ที่เกิน 250 บรรทัดหรือมีหลาย responsibilities
@@ -75,8 +65,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 4. Merge Redundant Skills
 
-รวม skill ที่ซ้ำซ้อนกัน
-
+> Goal: รวม skill ที่ซ้ำซ้อนกัน
 > Goal: ลดจำนวน skill ที่มี scope ซ้อนทับ
 
 1. ระบุ skill คู่ที่มี scope ซ้อนทับหรือเนื้อหาซ้ำกัน
@@ -87,8 +76,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 5. Restructure Content
 
-จัดระเบียบ sections ใน `SKILL.md`
-
+> Goal: จัดระเบียบ sections ใน `SKILL.md`
 > Goal: ลำดับ sections และ steps เป็นระบบ
 
 1. ตรวจสอบลำดับ: Foundation → Dependencies → High impact → High risk
@@ -98,8 +86,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 6. Deduplicate Content
 
-ลดเนื้อหาซ้ำซ้อนภายในและระหว่าง skill
-
+> Goal: ลดเนื้อหาซ้ำซ้อนภายในและระหว่าง skill
 > Goal: เป็น single source of truth
 
 1. ระบุเนื้อหาที่ซ้ำกันระหว่าง skill หรือระหว่าง Execute และ Rules
@@ -109,8 +96,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 7. Update References And Sort
 
-อัปเดต references และจัดเรียง skill
-
+> Goal: อัปเดต references และจัดเรียง skill
 > Goal: references ถูกต้องและจัดหมวดหมู่ชัดเจน
 
 1. ทำ `/update-reference` เพื่ออัปเดต references ทั้งหมด
@@ -120,8 +106,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 8. Verify Quality
 
-ตรวจสอบคุณภาพหลัง refactor
-
+> Goal: ตรวจสอบคุณภาพหลัง refactor
 > Goal: skill ผ่าน validation หลัง refactor
 
 1. parallel: ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ sections ครบ

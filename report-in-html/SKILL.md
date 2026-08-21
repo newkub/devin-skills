@@ -1,6 +1,6 @@
 ---
 name: report-in-html
-description: สร้าง HTML สำหรับแสดงข้อมูลใน browser รองรับทั้งแบบง่าย ๆ และแบบ interactive พร้อม Vue 3,...
+description: สร้าง HTML ไฟล์เดียวสำหรับแสดงข้อมูลใน browser
 allowed-tools:
   - read
   - write
@@ -15,6 +15,8 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - open-web
+  - report-ansi
 ---
 
 ## Goal
@@ -28,6 +30,7 @@ related:
 ## Execute
 
 ### 1. Setup HTML Structure
+> Goal: Setup HTML Structure
 
 1. โหลด Tailwind CSS: `<script src="https://cdn.tailwindcss.com"></script>`
 2. ถ้าต้องการ interactivity → โหลด Vue 3 ผ่าน `<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>`
@@ -36,6 +39,7 @@ related:
 5. เพิ่ม `tailwind.config = { darkMode: 'class' }` สำหรับ dark mode support
 
 ### 2. Initialize Vue Ecosystem
+> Goal: Initialize Vue Ecosystem
 
 1. ใช้ `Vue.createApp()` จาก global object
 2. ใช้ Vue template syntax (`v-model`, `v-for`, `{{ }}`) ใน HTML
@@ -43,6 +47,7 @@ related:
 4. ใช้ JavaScript ธรรมดา (ไม่ใช้ TypeScript) ใน `<script>` block
 
 ### 3. Theme Toggle
+> Goal: Theme Toggle
 
 1. สร้างปุ่ม toggle สำหรับสลับ light/dark theme
 2. ใช้ `isDark` ref สำหรับเก็บ state ของ theme
@@ -52,6 +57,7 @@ related:
 6. ใช้ `dark:` prefix ของ Tailwind สำหรับ dark mode styles
 
 ### 4. Sticky Tabs
+> Goal: Sticky Tabs
 
 1. ใช้ `position: sticky` และ `top-0` สำหรับ tab bar container
 2. เพิ่ม `z-index` สำหรับให้อยู่เหนือเนื้อหาเมื่อ scroll
@@ -60,6 +66,7 @@ related:
 5. แต่ละ tab มี badge แสดง count
 
 ### 5. Search And Filter
+> Goal: Search And Filter
 
 1. สร้าง search input ด้วย `v-model`
 2. สร้าง filter chips แบบ toggle (กดเพื่อเปิด/ปิด)
@@ -67,14 +74,13 @@ related:
 4. เพิ่มปุ่ม Clear filters เมื่อมี active filter
 
 ### 6. Open In Browser
+> Goal: Open In Browser
 
 1. ทำ `/open-web` เพื่อเปิดไฟล์ HTML ใน browser
 
 ## Rules
 
-
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

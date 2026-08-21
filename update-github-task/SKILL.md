@@ -24,28 +24,24 @@ Use when a project task needs metadata changes
 ## Execute
 
 ### 1. Find task
-
 > Goal: find task
 
 1. Run gh project item-list
 1. Get item ID
 
 ### 2. Edit fields
-
 > Goal: edit fields
 
 1. Run gh project item-edit with field-id and value
 1. Update status, priority, assignee
 
 ### 3. Verify
-
 > Goal: verify
 
 1. Run gh project item-list again
 1. Confirm changes
 
 ### 4. Report
-
 > Goal: report
 
 1. Return updated task summary

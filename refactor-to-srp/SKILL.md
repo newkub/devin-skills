@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,19 +18,6 @@ related:
   - check-circular-dependencies
   - improve-code-duplication
   - check-long-files
-  - dont-over-engineer
-  - edit-relative
-  - plan
-  - refactor
-  - refactor-codebase
-  - refactor-file-remain-this
-  - refactor-packages
-  - relocation
-  - rename
-  - restructure
-  - run-check
-  - run-test
-  - update-reference
 ---
 
 ## Goal
@@ -45,8 +34,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 1. Analyze Code Structure
 
-วิเคราะห์ structure ก่อน refactor
-
+> Goal: วิเคราะห์ structure ก่อน refactor
 > Goal: ระบุ SRP violations และสิ่งที่ต้องแก้ไข
 
 1. ทำ `/check-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
@@ -61,8 +49,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 2. Plan Refactor
 
-วางแผนการแก้ไข
-
+> Goal: วางแผนการแก้ไข
 > Goal: แผน minimal ที่กระทบน้อยที่สุด
 
 1. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขต
@@ -72,8 +59,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 3. Refactor To Single Responsibility
 
-แยก/ extract units ให้ทำหน้าที่เดียว
-
+> Goal: แยก/ extract units ให้ทำหน้าที่เดียว
 > Goal: ทุก unit มี SRP ชัดเจน
 
 1. แยก multi-responsibility functions ออกเป็น functions ย่อย
@@ -86,8 +72,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 4. Update References
 
-อัปเดท references ทั้งหมดหลังการเปลี่ยนแปลง
-
+> Goal: อัปเดท references ทั้งหมดหลังการเปลี่ยนแปลง
 > Goal: ไม่มี broken imports หรือ references ค้าง
 
 1. ทำ `/edit-relative` เพื่ออัปเดท relative paths, imports, exports, และ references ทั้งหมด
@@ -97,8 +82,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 5. Verify
 
-ตรวจสอบว่า refactor สำเร็จและไม่มี regression
-
+> Goal: ตรวจสอบว่า refactor สำเร็จและไม่มี regression
 > Goal: code ผ่าน lint, typecheck, test และ structure ดีขึ้น
 
 1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
@@ -109,8 +93,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 6. Report
 
-รายงานผล refactor
-
+> Goal: รายงานผล refactor
 > Goal: สื่อสารสิ่งที่เปลี่ยนและสถานะ
 
 1. สร้างตาราง Before/After: file, top-level symbols, public members, SRP status
@@ -149,7 +132,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 - References ทั้งหมดถูกต้อง ไม่มี broken imports
 - Lint, typecheck, test ผ่าน
 - มีรายงาน before/after ของ SRP metrics
-
 
 ## References
 

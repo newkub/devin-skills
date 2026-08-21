@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-git
+  - report-table
+  - list-git-branch
+  - list-git-tags
 ---
 
 ## Goal
@@ -24,8 +30,7 @@ triggers:
 
 ### 1. List Stashes
 
-ดู stashes ทั้งหมดในเครื่อง
-
+> Goal: ดู stashes ทั้งหมดในเครื่อง
 > Goal: รู้ stashes ที่มีและ metadata
 
 1. รัน `git stash list` เพื่อดู stashes ทั้งหมด
@@ -34,8 +39,7 @@ triggers:
 
 ### 2. Collect Stash Details
 
-รวบรวมข้อมูลเพิ่มเติมของแต่ละ stash
-
+> Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ stash
 > Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git stash show stash@{n}` สำหรับแต่ละ stash เพื่อดูไฟล์ที่เก็บ
@@ -45,8 +49,7 @@ triggers:
 
 ### 3. Analyze Stash Content
 
-วิเคราะห์เนื้อหาของแต่ละ stash
-
+> Goal: วิเคราะห์เนื้อหาของแต่ละ stash
 > Goal: เข้าใจสิ่งที่เก็บในแต่ละ stash
 
 1. ระบุจำนวนไฟล์ในแต่ละ stash
@@ -56,8 +59,7 @@ triggers:
 
 ### 4. Format Output
 
-จัดรูปแบบผลลัพธ์เป็นตาราง
-
+> Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 > Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

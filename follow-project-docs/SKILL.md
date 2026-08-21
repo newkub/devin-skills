@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-vitepress
+  - follow-unocss
 ---
 
 ## Goal
@@ -24,6 +28,8 @@ triggers:
 
 ### 1. Setup VitePress And Vue Components
 
+> Goal: Setup VitePress And Vue Components
+
 1. ทำ `/follow-vitepress` เพื่อตั้งค่า VitePress พื้นฐาน
 2. ทำ `/follow-unocss` เพื่อตั้งค่า UnoCSS สำหรับ styling
 3. สร้าง `.vitepress/theme/components/` สำหรับ Vue components
@@ -31,6 +37,8 @@ triggers:
 5. สร้าง home page ด้วย VitePress `layout: home`
 
 ### 2. Configure Nav And Sidebar
+
+> Goal: Configure Nav And Sidebar
 
 ตั้งค่า nav 4 sections ใน `.vitepress/config.ts`:
 
@@ -45,7 +53,7 @@ nav: [
 
 ### 3. Create Bun Shell Data Scripts
 
-สร้าง scripts ดึงข้อมูลจริงจาก project ใน `.vitepress/scripts/`:
+> Goal: สร้าง scripts ดึงข้อมูลจริงจาก project ใน `.vitepress/scripts/`
 
 1. สร้าง `data/project.ts` — ดึง project info ด้วย `Bun.$` (package.json, workspaces, tech stack)
 2. สร้าง `data/features.ts` — ดึง features จาก source code (route files, modules)
@@ -56,6 +64,7 @@ nav: [
 
 ### 4. Project Section (Vue Components)
 
+> Goal: Project Section (Vue Components)
 1. สร้าง `ProjectOverview.vue` — แสดง project info จาก `data/project.ts`
 2. สร้าง `ProjectArchitecture.vue` — แสดง architecture diagram และ tech stack
 3. สร้าง `WorkspaceCards.vue` — แสดง workspaces เป็น card grid (monorepo only)
@@ -63,6 +72,7 @@ nav: [
 
 ### 5. Features Section (Vue Components)
 
+> Goal: Features Section (Vue Components)
 1. สร้าง `FeaturesTable.vue` — แสดง features แบบ interactive table
 2. ดึงข้อมูลจาก `data/features.ts` ที่ scan source code จริง
 3. Features ของ table:
@@ -74,6 +84,7 @@ nav: [
 
 ### 6. Review Section (Vue Components)
 
+> Goal: Review Section (Vue Components)
 1. สร้าง `ReviewSidebar.vue` — sidebar navigation สำหรับ review categories
 2. สร้าง `TestResults.vue` — แสดง test results จาก `data/test-results.ts`:
    - Pass/fail counts พร้อม progress bars
@@ -85,6 +96,7 @@ nav: [
 
 ### 7. Release Section (Vue Components)
 
+> Goal: Release Section (Vue Components)
 1. สร้าง `ReleaseTimeline.vue` — แสดง release history แบบ timeline
 2. สร้าง `ChangelogViewer.vue` — แสดง changelog จาก `data/releases.ts`
 3. สร้าง `CommitHistory.vue` — แสดง commit history พร้อม:
@@ -98,6 +110,7 @@ nav: [
 
 ### 8. UX/UI Design
 
+> Goal: UX/UI Design
 1. ใช้ VitePress `layout: home` สำหรับ home page พร้อม hero และ feature cards
 2. ออกแบบ card components สำหรับ project และ release sections
 3. ออกแบบ table components สำหรับ features section

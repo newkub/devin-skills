@@ -7,11 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
 related:
   - refactor-codebase
+  - report-plan
+  - run-check
+  - check-long-files
+  - refactor
 ---
 
 ## Goal
@@ -26,6 +31,7 @@ related:
 ## Execute
 
 ### 1. Find And Categorize Long Files
+> Goal: Find And Categorize Long Files
 
 ค้นหาและจัดหมวดหมู่ไฟล์ที่ยาวกว่า threshold
 
@@ -39,6 +45,7 @@ related:
 4. ถ้าไม่มี source files ที่เกิน threshold → stop และ report
 
 ### 2. Analyze And Plan
+> Goal: Analyze And Plan
 
 วิเคราะห์แต่ละไฟล์และวางแผน refactor
 
@@ -50,6 +57,7 @@ related:
 6. ถ้าไฟล์ไม่สามารถ split ได้โดยไม่ทำลาย functionality → skip และไปไฟล์ถัดไป
 
 ### 3. Refactor Files
+> Goal: Refactor Files
 
 ทำ refactor ทีละไฟล์ เริ่มจาก source files ที่ยาวที่สุด
 
@@ -60,6 +68,7 @@ related:
 5. ถ้ามี broken references → ทำ `/resolve-errors` ก่อนไปไฟล์ถัดไป
 
 ### 4. Verify And Report
+> Goal: Verify And Report
 
 ตรวจสอบว่า refactor ผ่านทุกเงื่อนไข
 

@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - learn-from-web
+  - follow-crw
+  - follow-best-practice
+  - check-reference
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Identify Research Topic
+> Goal: Identify Research Topic
 
 ระบุหัวข้อและ scope ให้ชัดเจน:
 
@@ -33,6 +41,7 @@ triggers:
 5. ระบุ constraints: เวอร์ชัน, ปี, ภาษา, framework
 
 ### 2. Select Sources By Topic Type
+> Goal: Select Sources By Topic Type
 
 เลือก sources ตามประเภทของข้อมูลที่ต้องการ:
 
@@ -45,6 +54,7 @@ triggers:
 7. เลือกอย่างน้อย 2-3 sources เพื่อ cross-reference
 
 ### 3. Search Package And Code Sources
+> Goal: Search Package And Code Sources
 
 ค้นหาจาก package registries และ code repositories:
 
@@ -55,6 +65,7 @@ triggers:
 5. บันทึก package names, versions, และ URLs ที่พบ
 
 ### 4. Use AI Documentation Tools
+> Goal: Use AI Documentation Tools
 
 ใช้ AI tools สำหรับ documentation ที่มี MCP integration:
 
@@ -65,6 +76,7 @@ triggers:
 5. บันทึก key findings จากแต่ละ tool
 
 ### 5. Use CRW For Official Documentation
+> Goal: Use CRW For Official Documentation
 
 ใช้ CRW สำหรับ crawl official documentation:
 
@@ -75,6 +87,7 @@ triggers:
 5. ทำตาม `/follow-crw` สำหรับการใช้งาน CRW อย่างเต็มประสิทธิภาพ
 
 ### 6. Use Windsurf WebSearch
+> Goal: Use Windsurf WebSearch
 
 ใช้ Windsurf WebSearch สำหรับ sources ที่ไม่มี MCP integration:
 
@@ -85,6 +98,7 @@ triggers:
 5. กรองผลลัพธ์จาก credible sources เท่านั้น
 
 ### 7. Find Latest Year
+> Goal: Find Latest Year
 
 ค้นหาปีล่าสุดเพื่อให้ได้ข้อมูลที่ current ที่สุด:
 
@@ -96,6 +110,7 @@ triggers:
 6. เลือกข้อมูลที่มีปีล่าสุดเป็น primary source
 
 ### 8. Cross-Reference And Validate
+> Goal: Cross-Reference And Validate
 
 ตรวจสอบความถูกต้องโดย cross-reference:
 
@@ -106,6 +121,7 @@ triggers:
 5. ระบุข้อมูลที่ยังไม่แน่ใจและต้องตรวจสอบเพิ่ม
 
 ### 9. Synthesize Findings
+> Goal: Synthesize Findings
 
 รวบรวมและสรุปผลการค้นหา:
 

@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - use-scripts
 ---
 
 ## Goal
@@ -24,8 +27,7 @@ triggers:
 
 ### 1. Check Nushell Installation
 
-ตรวจสอบและติดตั้ง `nu`
-
+> Goal: ตรวจสอบและติดตั้ง `nu`
 > Goal: ยื่นยันว่ามี `nu` พร้อมใช้
 
 1. รัน `nu --version`
@@ -38,8 +40,7 @@ triggers:
 
 ### 2. Run Commands With Nushell
 
-รันคำสั่งด้วย `nu`
-
+> Goal: รันคำสั่งด้วย `nu`
 > Goal: execute commands อย่างถูกต้อง
 
 1. คำสั่งเดี่ยว: `nu -c '<command>'`
@@ -51,8 +52,7 @@ triggers:
 
 ### 3. Use Pipelines And Filters
 
-ใช้ pipeline และ filters ของ `nu`
-
+> Goal: ใช้ pipeline และ filters ของ `nu`
 > Goal: ประมวลผล data อย่างมีประสิทธิภาพ
 
 1. pipeline: `<input> | <filter> | <output>` เช่น `ls | where size > 10kb | sort-by size`
@@ -63,8 +63,7 @@ triggers:
 
 ### 4. Write Nushell Scripts
 
-เขียนสคริปต์สำหรับ automation
-
+> Goal: เขียนสคริปต์สำหรับ automation
 > Goal: scripts reusable และ maintainable
 
 1. ใช้ `def` สำหรับ custom commands
@@ -76,8 +75,7 @@ triggers:
 
 ### 5. Integrate With Use Scripts
 
-เชื่อมต่อกับ `/use-scripts`
-
+> Goal: เชื่อมต่อกับ `/use-scripts`
 > Goal: scripts ทำงานร่วมกับ automation pipeline ได้
 
 1. ใช้ `nu` สำหรับ structured data pipelines

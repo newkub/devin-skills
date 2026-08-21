@@ -25,8 +25,7 @@ triggers:
 
 ### 1. Setup TypeScript Config
 
-ตั้งค่า `tsconfig.json` สำหรับ Effect
-
+> Goal: ตั้งค่า `tsconfig.json` สำหรับ Effect
 > Goal: TypeScript config รองรับ strict mode และ Effect types
 
 1. แก้ไข `tsconfig.json` ให้มี:
@@ -37,8 +36,7 @@ triggers:
 
 ### 2. Install Effect Packages
 
-ติดตั้ง Effect libraries ตามความจำเป็น
-
+> Goal: ติดตั้ง Effect libraries ตามความจำเป็น
 > Goal: dependencies ของ Effect-TS พร้อมใช้งาน
 
 1. รัน `bun add effect` สำหรับ core library
@@ -50,8 +48,7 @@ triggers:
 
 ### 3. Create Project Structure
 
-สร้างโครงสร้างโฟลเดอร์ตาม Effect patterns
-
+> Goal: สร้างโครงสร้างโฟลเดอร์ตาม Effect patterns
 > Goal: project structure สอดคล้องกับ Effect architecture
 
 1. สร้าง `src/app/` สำหรับ composition root
@@ -66,8 +63,7 @@ triggers:
 
 ### 4. Implement Effect Patterns
 
-เขียน code ตาม Effect patterns v3.x
-
+> Goal: เขียน code ตาม Effect patterns v3.x
 > Goal: code ใช้ patterns มาตรฐานของ Effect-TS
 
 1. ใช้ `Effect.gen` แทน pipe สำหรับ ergonomic code
@@ -79,8 +75,7 @@ triggers:
 
 ### 5. Write Tests
 
-เขียน tests ด้วย vitest และ tstyche
-
+> Goal: เขียน tests ด้วย vitest และ tstyche
 > Goal: tests ครอบคลุม runtime และ type-level
 
 1. ใช้ `it.effect` สำหรับ Effect-based tests

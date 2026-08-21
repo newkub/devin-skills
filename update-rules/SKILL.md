@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - update-ast-grep-rules
+  - update-agents-md
+  - use-scripts
+  - improve-rules
+  - update-devin-project-rules
 ---
 
 ## Goal
@@ -24,6 +31,8 @@ triggers:
 
 ### 1. Update Devin Rules
 
+> Goal: Update Devin Rules
+
 อัพเดท `.devin/rules/` ทั้ง 3 subdirectories ตาม project analysis และ dependencies จริง
 
 1. ทำ `/update-devin-project-rules` เพื่ออัพเดท rules ใน `.devin/rules/always-on/`, `.devin/rules/model_decision/`, และ `.devin/rules/glob/`
@@ -33,8 +42,7 @@ triggers:
 
 ### 2. Update Ast-Grep Rules
 
-อัพเดท `rules/` directory ที่ project root ให้ครอบคลุมทุก devin rules ที่อัพเดทใน step 1 และสอดคล้องกับ official documentation
-
+> Goal: อัพเดท `rules/` directory ที่ project root ให้ครอบคลุมทุก devin rules ที่อัพเดทใน step 1 และสอดคล้องกับ official documentation
 > Goal: ast-grep rules ครอบคลุมทุก devin rules ที่แปลงได้ ไม่มี devin rule ใดที่ขาด ast-grep counterpart
 
 1. ทำ `/update-ast-grep-rules` เพื่อแปลง devin rules ทั้งหมดจาก step 1 เป็น ast-grep YAML format
@@ -47,6 +55,8 @@ triggers:
 
 ### 3. Update AGENTS.md
 
+> Goal: Update AGENTS.md
+
 อัพเดท `AGENTS.md` ให้สอดคล้องกับ rules ที่อัพเดท
 
 1. ทำ `/update-agents-md` เพื่อเขียน `AGENTS.md` ตาม project analysis และ dependencies ล่าสุด
@@ -54,6 +64,8 @@ triggers:
 3. ตรวจสอบว่า root และ workspace `AGENTS.md` อัพเดทครบถ้วน
 ImprovVdat
 ### 4. Validate And Finalize
+
+> Goal: Validate And Finalize
 ปรับปรุงและ
 
 1.ำ `/improve-rules` เพื่อปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references

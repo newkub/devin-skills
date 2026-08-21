@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,8 @@ Use `update-reference` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Determine Context
+> Goal: Determine Context
 
 ตรวจสอบว่าแก้ไขไฟล์ที่ไหนเพื่อกำหนด scope ของการค้นหา references
 
@@ -35,6 +33,7 @@ Use `update-reference` for the specific tasks and workflows it covers
 3. ตรวจสอบ workspace ที่ใช้งานปัจจุบัน
 
 ### 2. Update Project References
+> Goal: Update Project References
 
 เมื่อแก้ไขไฟล์ใน project ให้ค้นหาและอัพเดท references ภายใน project
 
@@ -44,6 +43,7 @@ Use `update-reference` for the specific tasks and workflows it covers
 4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยังไฟล์เดิม
 
 ### 3. Update Workflow References
+> Goal: Update Workflow References
 
 เมื่อแก้ไขไฟล์ใน workflows ให้ค้นหาและอัพเดท references ใน workflows และ skills
 
@@ -54,6 +54,7 @@ Use `update-reference` for the specific tasks and workflows it covers
 5. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง workflow เดิม
 
 ### 4. Update Skill References
+> Goal: Update Skill References
 
 เมื่อแก้ไขไฟล์ใน skills ให้ค้นหาและอัพเดท references ภายใน skills
 
@@ -61,8 +62,6 @@ Use `update-reference` for the specific tasks and workflows it covers
 2. ระบุชื่อ skill ที่แก้ไขเพื่อค้นหา references
 3. อัพเดท references ที่ตรงกับ skill ที่แก้ไข
 4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง skill เดิม
-
-## Rules
 
 ## Rules
 
@@ -103,8 +102,6 @@ Use `update-reference` for the specific tasks and workflows it covers
 - ตรวจสอบว่าไม่มี references ที่ซ้ำซ้อนหรือไม่จำเป็น
 - ทำการ test หรือ verify ว่า references ที่อัพเดททำงานได้จริง
 - ตรวจสอบว่าไม่มี syntax errors หรือ formatting issues หลังอัพเดท
-
-## Expected Outcome
 
 ## Expected Outcome
 

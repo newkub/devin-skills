@@ -8,6 +8,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -34,8 +35,7 @@ related:
 
 ### 1. Check Prerequisites
 
-ตรวจสอบ project ก่อนตั้งค่า scripts
-
+> Goal: ตรวจสอบ project ก่อนตั้งค่า scripts
 > Goal: มี project structure พร้อมสำหรับกำหนด scripts
 
 1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
@@ -45,8 +45,7 @@ related:
 
 ### 2. Select Template Level
 
-ประเมินและเลือกระดับ template
-
+> Goal: ประเมินและเลือกระดับ template
 > Goal: เลือก scripts ชุดทีเหมาะสมกับขนาด project
 
 1. ประเมินขนาดและความซับซ้อนของโปรเจกต์
@@ -57,8 +56,7 @@ related:
 
 ### 3. Apply Scripts Template
 
-เลือกและเขียน scripts ตาม template
-
+> Goal: เลือกและเขียน scripts ตาม template
 > Goal: `package.json` มี scripts ครบตาม template ทีเลือก
 
 1. ดูตัวอย่าง `package.json` ใน `references/package-json-examples.md`
@@ -72,8 +70,7 @@ related:
 
 ### 4. Validate Scripts
 
-ตรวจสอบว่า scripts ทำงานได้
-
+> Goal: ตรวจสอบว่า scripts ทำงานได้
 > Goal: ทุก script ผ่าน syntax และทำงานได้จริง
 
 1. ตรวจสอบว่า scripts ถูกต้องตาม syntax

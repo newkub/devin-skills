@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
 
 ## Goal
@@ -23,17 +25,20 @@ triggers:
 ## Execute
 
 ### 1. Get Authenticated User
+> Goal: Get Authenticated User
 
 1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
 2. รับชื่อ repository ที่ต้องการดู branches จากผู้ใช้
 
 ### 2. List Branches
+> Goal: List Branches
 
 1. ทำ `mcp7_list_branches` ด้วย `owner` และ `repo` parameters
 2. ใช้ `perPage: 100` สำหรับ pagination
 3. ใช้ `page` parameter ถ้ามีมากกว่า 100 branches
 
 ### 3. Format Output
+> Goal: Format Output
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:

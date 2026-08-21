@@ -7,12 +7,14 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
 related:
   - validate
   - ask-me
+  - merge
 ---
 
 ## Goal
@@ -27,8 +29,7 @@ related:
 
 ### 1. Setup Repository
 
-เตรียม repo ให้พร้อมใช้งาน
-
+> Goal: เตรียม repo ให้พร้อมใช้งาน
 > Goal: repo พร้อมสำหรับการพัฒนา
 
 1. ใช้ `git clone` สำหรับ repo ทีมีอยู่
@@ -38,8 +39,7 @@ related:
 
 ### 2. Daily Workflow
 
-ทำงานประจำวันกับ branch และ commit
-
+> Goal: ทำงานประจำวันกับ branch และ commit
 > Goal: สร้าง commit ทีสะอาดและ branch ทีชัดเจน
 
 1. ใช้ `git branch` หรือ `git switch -c` สร้าง feature branch
@@ -50,8 +50,7 @@ related:
 
 ### 3. History And Inspection
 
-สำรวจประวัติและหาต้นตอของปัญหา
-
+> Goal: สำรวจประวัติและหาต้นตอของปัญหา
 > Goal: เข้าใจ history และหา answers จาก git
 
 1. ใช้ `git log` ดูประวัติ commit
@@ -61,8 +60,7 @@ related:
 
 ### 4. Collaboration And Integration
 
-ทำงานร่วมกับทีมและรวมงาน
-
+> Goal: ทำงานร่วมกับทีมและรวมงาน
 > Goal: รวมงานโดยไม่ทำลาย history ของผู้อื่น
 
 1. ใช้ `git rebase` ปรับ history ให้เป็นเส้นตรง
@@ -73,8 +71,7 @@ related:
 
 ### 5. Advanced Operations
 
-ใช้งาน git ขั้นสูงตามจำเป็น
-
+> Goal: ใช้งาน git ขั้นสูงตามจำเป็น
 > Goal: จัดการ repo ขนาดใหญ่และ edge cases
 
 1. ใช้ `git submodules` สำหรับ external dependencies

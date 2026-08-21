@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - memorize
+  - git-debug
+  - follow-root-cause-analysis
+  - follow-incident-triage
+  - write-test
 ---
 
 ## Goal
@@ -25,8 +33,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 1. Triage And Define Problem
 
-จัดลำดับความสำคัญและเขียนปัญหาให้ชัดเจน
-
+> Goal: จัดลำดับความสำคัญและเขียนปัญหาให้ชัดเจน
 > Goal: ทราบ priority และปัญหาที่ชัดเจน พร้อม expected/actual/scope
 
 1. ทำ `/follow-incident-triage` เพื่อจัดลำดับความสำคัญและกำหนด action plan
@@ -35,8 +42,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 2. List Possible Causes
 
-สร้าง hypothesis list 3–5 ข้อ
-
+> Goal: สร้าง hypothesis list 3–5 ข้อ
 > Goal: มี hypothesis list ที่ครอบคลุมและไม่เดา
 
 1. สร้าง hypothesis list H = {H₁, H₂, ..., Hₙ} 3–5 ข้อ เช่น: config issue, environment (PATH / runtime), dependency / package, tool version mismatch, user mistake
@@ -44,8 +50,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 3. Rank By Probability
 
-ใช้ Bayesian Inference เพื่อจัดลำดับความเป็นไปได้
-
+> Goal: ใช้ Bayesian Inference เพื่อจัดลำดับความเป็นไปได้
 > Goal: พบ top 1–2 hypotheses ที่น่าจะเป็นสาเหตุมากที่สุด
 
 1. กำหนด prior probability P(H) สำหรับแต่ละ hypothesis (0.1–0.9)
@@ -55,8 +60,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 4. Eliminate Fast
 
-ใช้ Information Theory เพื่อเลือก test ที่ให้ข้อมูลมากที่สุด
-
+> Goal: ใช้ Information Theory เพื่อเลือก test ที่ให้ข้อมูลมากที่สุด
 > Goal: ตัด hypothesis ที่ไม่ใช่ออกอย่างมีประสิทธิภาพ
 
 1. คำนวณ entropy H(H) = -Σ P(Hᵢ) log₂ P(Hᵢ) ของ hypotheses ปัจจุบัน
@@ -69,8 +73,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 5. Isolate Variable
 
-เปลี่ยนทีละอย่างเท่านั้นเพื่อยืนยันสาเหตุ
-
+> Goal: เปลี่ยนทีละอย่างเท่านั้นเพื่อยืนยันสาเหตุ
 > Goal: ยืนยันว่า hypothesis ที่เหลือเป็นสาเหตุจริง
 
 1. เปลี่ยนทีละอย่าง: ปิด extension, เปลี่ยน PATH, ใช้ clean terminal, run bare command
@@ -79,8 +82,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 6. Confirm Root Cause
 
-ยืนยัน root cause ด้วย 3 เงื่อนไข
-
+> Goal: ยืนยัน root cause ด้วย 3 เงื่อนไข
 > Goal: ยืนยันได้ว่านี่คือ root cause จริง
 
 1. Reproduce ได้ — สร้างปัญหาซ้ำได้
@@ -89,8 +91,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 7. Perform Root Cause Analysis
 
-วิเคราะห์หาสาเหตุหลักอย่างละเอียด
-
+> Goal: วิเคราะห์หาสาเหตุหลักอย่างละเอียด
 > Goal: เข้าใจ root cause ในระดับ process
 
 1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
@@ -98,8 +99,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 8. Fix And Write Regression Tests
 
-แก้ปัญหาที่ root cause และสร้าง regression tests
-
+> Goal: แก้ปัญหาที่ root cause และสร้าง regression tests
 > Goal: ปัญหาถูกแก้และมี test ป้องกันการเกิดซ้ำ
 
 1. ทำ `/resolve-errors` เพื่อแก้ปัญหาที่ root cause อย่างเป็นระบบ ใช้ scripts automate เมื่อมีหลายไฟล์
@@ -109,8 +109,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 ### 9. Prevent Recurrence
 
-ป้องกันการเกิดปัญหาซ้ำ
-
+> Goal: ป้องกันการเกิดปัญหาซ้ำ
 > Goal: มี preventive measures สำหรับ future
 
 1. แนะนำ preventive measures: linter rules, type constraints, code review checklist
@@ -119,7 +118,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ## Rules
 
 ### 1. Core Principles
-
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - ห้ามแก้หลายอย่างพร้อมกัน
@@ -128,7 +126,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 - ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
 
 ### 2. Heuristic Cheatsheet
-
 > Goal: เริ่ม debug ได้เร็วด้วย common patterns
 
 | Symptom                 | Likely Cause                         |
@@ -144,7 +141,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 | runtime crash           | null / undefined / async timing      |
 
 ### 3. Mental Model
-
 > Goal: มีกรอบการคิดที่เป็นระบบ
 
 Debug = Bayesian Search in Hypothesis Space
@@ -158,13 +154,11 @@ Debug = Bayesian Search in Hypothesis Space
 - Optimal test = maximizes Information Gain
 
 ### 4. Fast Debug Loop
-
 > Goal: debug loop ที่รวดเร็วและซ้ำได้
 
 1. Observe → 2. List 3–5 causes → 3. Pick top 1–2 → 4. Test one change at a time → 5. Eliminate → 6. Repeat
 
 ### 5. Regression Safety
-
 > Goal: ทุก bug fix ต้องมี regression test
 
 - ทุก bug fix ต้องมี regression test
@@ -172,7 +166,6 @@ Debug = Bayesian Search in Hypothesis Space
 - รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression
 
 ### 6. Time Budget And Escalation
-
 > Goal: ไม่ใช้เวลานานเกินไปกับปัญหาเดียว
 
 - ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที

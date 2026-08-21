@@ -7,11 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
 related:
   - refactor-codebase
+  - follow-monorepo
+  - plan
+  - restructure
+  - deep-analyze
 ---
 
 ## Goal
@@ -26,8 +31,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 1. Analyze Project And Structure
 
-วิเคราะห์โปรเจกต์และโครงสร้าง modules/packages
-
+> Goal: วิเคราะห์โปรเจกต์และโครงสร้าง modules/packages
 > Goal: เข้าใจ current structure, responsibilities, coupling, duplication
 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
@@ -39,8 +43,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 2. Evaluate Refactor Necessity
 
-ประเมินว่าควร refactor หรือไม่
-
+> Goal: ประเมินว่าควร refactor หรือไม่
 > Goal: ตัดสินใจ refactor อย่างมีหลักฐาน
 
 1. วิเคราะห์ change patterns: เปลี่ยนพร้อมกัน, maintain โดยทีมเดียวกัน, release lifecycle
@@ -51,8 +54,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 3. Plan Refactor
 
-วางแผนการ split/merge/relocate modules/packages
-
+> Goal: วางแผนการ split/merge/relocate modules/packages
 > Goal: แผน minimal ที่กระทบน้อยที่สุด
 
 1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
@@ -63,8 +65,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 4. Scan And Recommend Workspace Modules/Packages
 
-สำรวจ workspace และแนะนำ modules/packages
-
+> Goal: สำรวจ workspace และแนะนำ modules/packages
 > Goal: รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
 
 1. สำรวจโครงสร้าง workspace และอ่าน manifest ของแต่ละ module/package
@@ -77,8 +78,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 5. Execute Refactor
 
-ดำเนินการ refactor ตามแผน
-
+> Goal: ดำเนินการ refactor ตามแผน
 > Goal: Refactor ตามแผน ผ่าน tests ไม่ทำลาย consumers
 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
@@ -89,8 +89,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 6. Verify Impact And Update References
 
-ตรวจสอบผลกระทบและอัปเดท references
-
+> Goal: ตรวจสอบผลกระทบและอัปเดท references
 > Goal: ไม่มี regression, circular dependencies, หรือ broken references
 
 1. parallel: ทำ `/run-check` ∥ ทำ `/run-test` ∥ ทำ `/run-typecheck`

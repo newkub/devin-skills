@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,11 +18,6 @@ related:
   - deep-pondering
   - deep-validate
   - deep-research
-  - create-plan
-  - prioritize
-  - recommend-architecture
-  - report-plan
-  - suggest-next-action
 ---
 
 ## Goal
@@ -39,16 +36,14 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 1. Review Codebase Everything
 
-Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
-
+> Goal: Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
 > Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือวางแผน
 
 1. ทำ `/review-codebase` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Deep Analysis And Thinking
 
-ทำ `/deep-analyze`, `/deep-thinking`, `/deep-pondering`, `/deep-validate`, และ `/deep-research` เพื่อเตรียมการวางแผน
-
+> Goal: ทำ `/deep-analyze`, `/deep-thinking`, `/deep-pondering`, `/deep-validate`, และ `/deep-research` เพื่อเตรียมการวางแผน
 > Goal: เข้าใจปัญหาหลายมิติก่อนวางแผน
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ปัจจุบันหลายมิติ: architecture, quality, dependencies, risks
@@ -61,6 +56,8 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม�
 
 ### 3. Analyze Project
 
+> Goal: Analyze Project
+
 ทำ `/analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
 
 - วิเคราะห์ project structure, tech stack, และ architecture
@@ -69,6 +66,8 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม�
 - บันทึก library ที่เลือกพร้อมเหตุผล: modern, type safety, performance, DX, maintenance
 
 ### 4. Define Implementation Path
+
+> Goal: Define Implementation Path
 
 ทำ `/prioritize` เพื่อจัดลำดับ tasks ตาม impact และ effort
 
@@ -80,6 +79,8 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม�
 
 ### 5. Plan Architecture
 
+> Goal: Plan Architecture
+
 ทำ `/recommend-architecture` เพื่อแนะนำ architecture ที่เหมาะสม
 
 - วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
@@ -89,6 +90,8 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม�
 - วางแผน error handling, caching strategy, และ data validation points
 
 ### 6. Risk Assessment
+
+> Goal: Risk Assessment
 
 วิเคราะห์ความเสี่ยงและ trade-offs อย่างละเอียด
 
@@ -102,6 +105,8 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 
 ### 7. Plan Test Strategy
 
+> Goal: Plan Test Strategy
+
 ออกแบบ test strategy ที่ครอบคลุม
 
 - ออกแบบ test case ที่ครอบคลุม: unit, integration, e2e
@@ -111,6 +116,8 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - กำหนด performance test targets ถ้าเกี่ยวข้อง
 
 ### 8. Stress-Test Plan
+
+> Goal: Stress-Test Plan
 
 ตรวจสอบแผนอย่างละเอียดสำหรับงานที่ซับซ้อนสูง
 
@@ -122,8 +129,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 
 ### 9. Validate And Report
 
-ตรวจสอบแผนและรายงาน
-
+> Goal: ตรวจสอบแผนและรายงาน
 > Goal: แผนผ่าน validation และพร้อม implement
 
 1. ยืนยัน dependencies ไม่ conflict กับ existing versions

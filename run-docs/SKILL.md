@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - report-ansi
+  - open-web
+  - watch-terminal
+  - follow-project-docs
+  - deep-review
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Check Documentation Setup
+> Goal: Check Documentation Setup
 
 1. ตรวจสอบว่ามี documentation config หรือไม่ (VitePress, Docus, ฯลฯ)
 2. ถ้าเป็น VitePress ให้ทำ `/follow-vitepress` เพื่อตรวจสอบ configuration
@@ -31,12 +40,14 @@ triggers:
 5. ตรวจสอบว่า content structure ครบถ้วน
 
 ### 2. Update Documentation
+> Goal: Update Documentation
 
 1. ทำ `/follow-project-docs` เพื่อสร้างและอัพเดทเอกสาร
 2. ทำ `/review-codebase` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
 ### 3. Run Dev Server
+> Goal: Run Dev Server
 
 1. ดำเนินการรัน dev server ด้วยคำสั่งที่เหมาะสมตาม documentation framework
 2. ถ้ามี errors ให้รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ
@@ -47,6 +58,7 @@ triggers:
 5. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
 
 ### 4. Open Browser and Watch (ถ้าจำเป็น)
+> Goal: Open Browser and Watch (ถ้าจำเป็น)
 
 1. ถ้าต้องเปิด URL ให้เลือก:
    - ถ้าต้องการตรวจสอบผ่าน browser automation → รัน `/watch-browser`
@@ -56,6 +68,7 @@ triggers:
 3. ทดสอบเข้าถึง documentation site และตรวจสอบว่า features หลักทำงานได้
 
 ### 5. Verify
+> Goal: Verify
 
 1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
 2. ตรวจสอบว่า navigation และ content แสดงผลถูกต้อง
@@ -63,6 +76,7 @@ triggers:
 4. ตรวจสอบว่า styling และ theme ทำงานได้
 
 ### 6. Report
+> Goal: Report
 
 1. รัน `/report-ansi` เพื่อวาด terminal output ด้วย ANSI codes
 2. รัน `/report-table` เพื่อจัดรูปแบบตาราง

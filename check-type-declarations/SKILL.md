@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Find DTS Files In Project
 
-ค้นหา `.d.ts` files ใน project
-
+> Goal: ค้นหา `.d.ts` files ใน project
 > Goal: รู้ internal d.ts files ทั้งหมด
 
 1. ใช้ `fd` หรือ `find` เพื่อค้นหาไฟล์ `.d.ts` ใน project
@@ -35,8 +36,7 @@ triggers:
 
 ### 2. Find DTS Files In Node Modules
 
-ค้นหา `.d.ts` files ใน dependencies
-
+> Goal: ค้นหา `.d.ts` files ใน dependencies
 > Goal: รู้ external d.ts files ทั้งหมด
 
 1. ค้นหาใน `node_modules/@types/` สำหรับ DefinitelyTyped
@@ -46,8 +46,7 @@ triggers:
 
 ### 3. Analyze Internal Types
 
-วิเคราะห์ d.ts files ใน project
-
+> Goal: วิเคราะห์ d.ts files ใน project
 > Goal: เข้าใจ custom types และ exports
 
 1. อ่าน d.ts files ใน project
@@ -57,8 +56,7 @@ triggers:
 
 ### 4. Analyze External Types
 
-วิเคราะห์ d.ts files จาก dependencies
-
+> Goal: วิเคราะห์ d.ts files จาก dependencies
 > Goal: เข้าใจ APIs จาก dependencies
 
 1. อ่าน d.ts files จาก dependencies
@@ -68,8 +66,7 @@ triggers:
 
 ### 5. Document Findings
 
-สร้าง summary ของ types
-
+> Goal: สร้าง summary ของ types
 > Goal: มีรายงาน types ทั้งหมด พร้อม recommendations
 
 1. สร้าง summary ของ types ทั้งหมด

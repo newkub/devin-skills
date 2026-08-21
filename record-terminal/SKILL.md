@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - watch-terminal
+  - resolve-errors
+  - run-dev
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Requirements
+> Goal: Analyze Requirements
 
 วิเคราะห์ความต้องการก่อนเลือก tool
 
@@ -32,6 +39,7 @@ triggers:
 4. ต้องการใช้ใน CI/CD หรือเฉพาะ local
 
 ### 2. Select Tool
+> Goal: Select Tool
 
 เลือก tool ตาม use case ตาม ## Rules ข้อ 1
 
@@ -41,6 +49,7 @@ triggers:
 4. tuirec: animated GIF จาก keystroke script, เหมาะสำหรับ TUI testing
 
 ### 3. Install Tool
+> Goal: Install Tool
 
 ติดตั้ง tool ที่เลือก
 
@@ -50,6 +59,7 @@ triggers:
 4. ติดตั้ง tuirec ด้วย `go install github.com/gui-cs/tuirec/cmd/tuirec@latest`
 
 ### 4. Record Session
+> Goal: Record Session
 
 บันทึก terminal session ตาม tool ที่เลือก
 
@@ -59,6 +69,7 @@ triggers:
 4. ใช้ tuirec: `tuirec record --binary <app> --keystrokes "<keys>" --output <path>.gif`
 
 ### 5. Verify Recording
+> Goal: Verify Recording
 
 ตรวจสอบไฟล์ที่บันทึก
 

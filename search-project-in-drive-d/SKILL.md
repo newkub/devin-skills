@@ -31,8 +31,7 @@ related:
 
 ### 1. Get Search Criteria
 
-ระบุ keyword หรือ pattern ที่ต้องการค้นหา
-
+> Goal: ระบุ keyword หรือ pattern ที่ต้องการค้นหา
 > Goal: ทราบสิ่งที่ต้องค้นหาอย่างชัดเจน
 
 1. ถาม user สำหรับ keyword หรือ pattern ถ้ายังไม่ได้ระบุ
@@ -41,8 +40,7 @@ related:
 
 ### 2. Search Git Projects
 
-ค้นหา projects ใน drive D ที่ตรงกับ criteria
-
+> Goal: ค้นหา projects ใน drive D ที่ตรงกับ criteria
 > Goal: ได้รายการ projects ที่ตรงเงื่อนไข
 
 1. ใช้ `Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3` เพื่อ scan directories
@@ -52,8 +50,7 @@ related:
 
 ### 3. Format Output
 
-จัดรูปแบบผลลัพธ์ให้อ่านง่าย
-
+> Goal: จัดรูปแบบผลลัพธ์ให้อ่านง่าย
 > Goal: แสดงผลในรูปแบบที่เข้าใจง่าย
 
 1. ใช้ `report-table` เพื่อสร้างตาราง
@@ -63,8 +60,7 @@ related:
 
 ### 4. Return Results
 
-ส่งมอบผลการค้นหา
-
+> Goal: ส่งมอบผลการค้นหา
 > Goal: user ได้รับข้อมูลครบถ้วน
 
 1. แสดงตาราง projects ที่ตรงกับ keyword

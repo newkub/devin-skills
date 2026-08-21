@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - pondering
+  - deep-plan
+  - deep-analyze-by-use-scripts
+  - suggest-next-action
+  - deep-analyze
 ---
 
 ## Goal
@@ -25,6 +32,7 @@ Review ครบทุกมิติอย่างลึกซึ้ง พร
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ (Step N ขึ้นกับ Step N-1)
 
 ### 1. Deep Thinking And Pondering
+> Goal: Deep Thinking And Pondering
 
 ทำ `/deep-thinking` และ `/pondering` เพื่อเตรียมการ review อย่างเป็นระบบ
 
@@ -34,6 +42,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
 
 ### 2. Deep Analyze Foundation
+> Goal: Deep Analyze Foundation
 
 ทำ `/deep-analyze` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์แบบลึก
 
@@ -43,6 +52,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - บันทึก findings จาก analysis เป็น foundation สำหรับ review
 
 ### 3. Deep Plan Review Strategy
+> Goal: Deep Plan Review Strategy
 
 ทำ `/deep-plan` เพื่อวางแผน review strategy อย่างละเอียด
 
@@ -52,6 +62,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - กำหนด review metrics: coverage, severity distribution, finding count
 
 ### 4. Review All Dimensions
+> Goal: Review All Dimensions
 
 Review ครบทุกมิติตามนี้:
 
@@ -68,6 +79,7 @@ Goal reminder: ทุก dimension ต้องมี severity และ actiona
 9. ถ้า project มี `/review-codebase` → ใช้เป็น orchestrator สำหรับ dimension reviews
 
 ### 5. Deep Report
+> Goal: Deep Report
 
 ทำ `/deep-report` เพื่อสร้าง deep report ตาราง 7 columns พร้อม deep summary
 
@@ -77,6 +89,7 @@ Goal reminder: ทุก dimension ต้องมี severity และ actiona
 - ทุก finding ต้องมี evidence ที่ตรวจสอบได้
 
 ### 6. Validate And Suggest Next Action
+> Goal: Validate And Suggest Next Action
 
 ตรวจสอบความถูกต้องและแนะนำ action ถัดไป
 

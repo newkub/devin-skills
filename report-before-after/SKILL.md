@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - plan
+  - analyze-project
 ---
 
 ## Goal
@@ -28,6 +31,7 @@ related:
 ## Execute
 
 ### 1. Analyze Request
+> Goal: Analyze Request
 
 วิเคราะห์สิ่งที่ผู้ใช้ต้องการ
 
@@ -36,6 +40,7 @@ related:
 3. ทำ `/plan` เพื่อวางแผนการทำงาน
 
 ### 2. Explain Plan
+> Goal: Explain Plan
 
 ตอบว่าจะทำอะไร ทำอย่างไร
 
@@ -44,6 +49,7 @@ related:
 3. ใช้ `/report-before-after` format สำหรับการแสดง
 
 ### 3. Show Before After
+> Goal: Show Before After
 
 แสดง before-after comparison
 
@@ -52,6 +58,7 @@ related:
 3. อธิบายเหตุผลและประโยชน์ที่จะได้รับ
 
 ### 4. Confirm With User
+> Goal: Confirm With User
 
 ถามผู้ใช้ยืนยันก่อนดำเนินการ
 
@@ -62,7 +69,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

@@ -10,6 +10,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-git
+  - report-table
+  - list-github-release
+  - list-git-branch
 ---
 
 ## Goal
@@ -24,8 +29,7 @@ triggers:
 
 ### 1. List Tags
 
-ดู tags ทั้งหมดในเครื่อง
-
+> Goal: ดู tags ทั้งหมดในเครื่อง
 > Goal: รู้ tags ที่มีและจำนวน
 
 1. รัน `git tag` เพื่อดู tags ทั้งหมด
@@ -35,8 +39,7 @@ triggers:
 
 ### 2. Collect Tag Details
 
-รวบรวมข้อมูลเพิ่มเติมของแต่ละ tag
-
+> Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ tag
 > Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git show <tag> --no-patch --format="%H|%ci|%an|%s"` สำหรับแต่ละ tag
@@ -46,8 +49,7 @@ triggers:
 
 ### 3. Analyze Semantic Versioning
 
-วิเคราะห์ tags ตาม semantic versioning
-
+> Goal: วิเคราะห์ tags ตาม semantic versioning
 > Goal: รู้ versioning status และ patterns
 
 1. ระบุ tags ที่เป็น semantic version (เริ่มด้วย `v` + MAJOR.MINOR.PATCH)
@@ -58,8 +60,7 @@ triggers:
 
 ### 4. Format Output
 
-จัดรูปแบบผลลัพธ์เป็นตาราง
-
+> Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 > Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

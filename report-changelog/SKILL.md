@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - report-ansi
+  - update-changelog-md
+  - run-release
 ---
 
 ## Goal
@@ -29,8 +32,7 @@ related:
 
 ### 1. Determine Version Range
 
-ระบุช่วงของ changelog ที่ต้องการ
-
+> Goal: ระบุช่วงของ changelog ที่ต้องการ
 > Goal: รู้ว่าจะรายงาน changelog ช่วงใด
 
 1. ระบุ range ที่ต้องการ:
@@ -43,8 +45,7 @@ related:
 
 ### 2. Collect Commits
 
-รวบรวม commits ในช่วงที่กำหนด
-
+> Goal: รวบรวม commits ในช่วงที่กำหนด
 > Goal: มี commits ครบสำหรับการจัดหมวดหมู่
 
 1. รัน `git log <range> --oneline` เพื่อดู commits ทั้งหมด
@@ -54,8 +55,7 @@ related:
 
 ### 3. Categorize Commits
 
-จัดหมวดหมู่ commits ตาม conventional commits
-
+> Goal: จัดหมวดหมู่ commits ตาม conventional commits
 > Goal: Changelog จัดหมวดหมู่ชัดเจน อ่านง่าย
 
 1. จัดกลุ่มตาม commit type:
@@ -73,8 +73,7 @@ related:
 
 ### 4. Format Changelog
 
-จัดรูปแบบ changelog ให้อ่านง่าย
-
+> Goal: จัดรูปแบบ changelog ให้อ่านง่าย
 > Goal: Changelog อ่านง่าย ครบข้อมูล มีมาตรฐาน
 
 1. ทำ `/report-table` สำหรับสรุปสถิติ
@@ -96,8 +95,7 @@ related:
 
 ### 5. Provide Insights
 
-ให้ insights ของ changelog
-
+> Goal: ให้ insights ของ changelog
 > Goal: ผู้อ่านเข้าใจการเปลี่ยนแปลงโดยรวม
 
 1. สรุปจำนวน commits แยกตามประเภท
@@ -108,7 +106,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

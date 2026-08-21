@@ -33,8 +33,7 @@ related:
 
 ### 1. Discover Installed CLI Tools
 
-หา CLI tools ที่ติดตั้งทั้งหมด
-
+> Goal: หา CLI tools ที่ติดตั้งทั้งหมด
 > Goal: มีรายการ tools พร้อม version และ package manager
 
 1. เช็ค tools ที่ติดตั้งด้วย `mise list`, `scoop list`, `winget list`, `bun --version`
@@ -42,8 +41,7 @@ related:
 
 ### 2. Learn Commands
 
-สำรวจ commands และ options ของแต่ละ tool
-
+> Goal: สำรวจ commands และ options ของแต่ละ tool
 > Goal: รู้จัก commands ทั้งหมดและลักษณะของแต่ละ command
 
 1. ทำ `/learn-from-cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
@@ -51,8 +49,7 @@ related:
 
 ### 3. Evaluate Conversion Candidates
 
-ประเมินว่า command ไหนเหมาะแปลงเป็น skill
-
+> Goal: ประเมินว่า command ไหนเหมาะแปลงเป็น skill
 > Goal: ระบุ commands ที่ควร convert เป็น skills ตาม criteria
 
 1. ระบุ criteria:
@@ -65,8 +62,7 @@ related:
 
 ### 4. Suggest Next Action
 
-นำเสนอทิศทางถัดไป
-
+> Goal: นำเสนอทิศทางถัดไป
 > Goal: ผู้ใช้ทราบว่าควรทำอะไรต่อ
 
 1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
@@ -76,7 +72,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

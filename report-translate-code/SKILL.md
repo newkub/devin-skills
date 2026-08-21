@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Code Analysis
+> Goal: Code Analysis
 
 วิเคราะห์ code ที่ต้องการแปล:
 
@@ -32,6 +35,7 @@ triggers:
 4. สรุป functionality หลักและความสัมพันธ์ระหว่าง functions
 
 ### 2. Translation Process
+> Goal: Translation Process
 
 แปล code เป็นประโยคที่เข้าใจง่าย:
 
@@ -41,6 +45,7 @@ triggers:
 4. ให้ตัวอย่างการใช้งานและ edge cases ถ้ามี
 
 ### 3. Format Output
+> Goal: Format Output
 
 จัดรูปแบบผลลัพธ์:
 

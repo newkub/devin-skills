@@ -7,9 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-content-quality
 ---
 
 ## Goal
@@ -23,6 +26,7 @@ triggers:
 ## Execute
 
 ### 1. Research From Multiple Sources
+> Goal: Research From Multiple Sources
 
 research ข้อมูลจากแหล่งต่างๆ ตามลำดับความสำคัญ
 
@@ -33,6 +37,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 5. ไม่เรียก `Context7` เกิน 3 ครั้งต่อคำถาม
 
 ### 2. Extract Knowledge
+> Goal: Extract Knowledge
 
 บันทึกความรู้จากการ research
 
@@ -42,6 +47,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 4. บันทึก best practices, edge cases, และ common pitfalls
 
 ### 3. Analyze Coverage Gaps
+> Goal: Analyze Coverage Gaps
 
 วิเคราะห์ features ที่ยังไม่มี content
 
@@ -50,6 +56,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 3. จัดลำดับ priority ตามความสำคัญและ impact
 
 ### 4. Write Missing Content
+> Goal: Write Missing Content
 
 เขียน content สำหรับส่วนที่ขาด
 
@@ -60,6 +67,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 5. เขียน principles สำหรับ best practices
 
 ### 5. Verify Completeness
+> Goal: Verify Completeness
 
 ตรวจสอบว่า content ครอบคลุมทุก aspects
 
@@ -69,6 +77,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 4. ตรวจสอบทุก concepts มี explanations
 
 ### 6. Update Index Files
+> Goal: Update Index Files
 
 อัปเดต index files ให้ครบถ้วน
 

@@ -15,6 +15,9 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - check-circular-dependencies
+  - report-ansi
+  - check-monorepo
 ---
 
 ## Goal
@@ -29,8 +32,7 @@ related:
 
 ### 1. Detect Workspace Structure
 
-ตรวจพบโครงสร้าง workspaces ใน project
-
+> Goal: ตรวจพบโครงสร้าง workspaces ใน project
 > Goal: รู้ว่า project มี workspaces อะไรบ้าง
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบว่าเป็น monorepo หรือไม่
@@ -40,8 +42,7 @@ related:
 
 ### 2. Collect Workspace Metadata
 
-รวบรวมข้อมูลพื้นฐานของแต่ละ workspace
-
+> Goal: รวบรวมข้อมูลพื้นฐานของแต่ละ workspace
 > Goal: มี metadata ครบสำหรับวิเคราะห์ relations
 
 1. อ่าน `package.json` ของแต่ละ workspace
@@ -51,8 +52,7 @@ related:
 
 ### 3. Analyze Internal Dependencies
 
-วิเคราะห์ dependencies ภายใน monorepo
-
+> Goal: วิเคราะห์ dependencies ภายใน monorepo
 > Goal: รู้ว่า workspace ไหนพึ่งพา workspace ไหน
 
 1. ค้นหา `workspace:*` หรือชื่อ workspace อื่นใน `dependencies` และ `devDependencies`
@@ -62,8 +62,7 @@ related:
 
 ### 4. Analyze External References
 
-วิเคราะห์การ import หรืออ้างอิงระหว่าง workspaces ผ่าน source code
-
+> Goal: วิเคราะห์การ import หรืออ้างอิงระหว่าง workspaces ผ่าน source code
 > Goal: รู้ว่า workspace ไหนใช้ code ของ workspace ไหน
 
 1. ใช้ `grep` ค้นหา `from '<workspace-name>'` หรือ `from '<workspace-path>'`
@@ -73,8 +72,7 @@ related:
 
 ### 5. Identify Shared Dependencies
 
-หา dependencies ที่หลาย workspace ใช้ร่วมกัน
-
+> Goal: หา dependencies ที่หลาย workspace ใช้ร่วมกัน
 > Goal: รู้ว่า dependencies ภายนอกถูก share อย่างไร
 
 1. เปรียบเทียบ dependencies ระหว่าง workspaces
@@ -84,8 +82,7 @@ related:
 
 ### 6. Detect Circular Dependencies
 
-ตรวจหา circular dependencies ระหว่าง workspaces
-
+> Goal: ตรวจหา circular dependencies ระหว่าง workspaces
 > Goal: ไม่มี circular dependencies ระหว่าง workspaces
 
 1. ทำ `/check-circular-dependencies` ระหว่าง workspaces
@@ -95,8 +92,7 @@ related:
 
 ### 7. Categorize Relations
 
-จัดประเภทความสัมพันธ์ระหว่าง workspaces
-
+> Goal: จัดประเภทความสัมพันธ์ระหว่าง workspaces
 > Goal: รายงานอ่านง่ายและ actionable
 
 1. จัดกลุ่มตาม relation type: `depends-on`, `imports-from`, `shared-dep`, `peer`, `circular`
@@ -106,8 +102,7 @@ related:
 
 ### 8. Format Report
 
-จัดรูปแบบรายงาน
-
+> Goal: จัดรูปแบบรายงาน
 > Goal: output ชัดเจน อ่านง่าย
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
@@ -118,7 +113,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

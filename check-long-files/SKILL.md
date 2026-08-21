@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -24,8 +26,7 @@ triggers:
 
 ### 1. Create Script
 
-สร้าง script PowerShell สำหรับตรวจสอบไฟล์ยาว
-
+> Goal: สร้าง script PowerShell สำหรับตรวจสอบไฟล์ยาว
 > Goal: สร้าง script ที่สามารถรันซ้ำได้
 
 1. ตรวจสอบว่ามี `scripts/check-long-files.ps1` อยู่แล้วหรือไม่
@@ -34,8 +35,7 @@ triggers:
 
 ### 2. Run Script
 
-รัน script ที่สร้างไว้
-
+> Goal: รัน script ที่สร้างไว้
 > Goal: รายงานไฟล์ที่ยาวกว่า threshold ที่กำหนด
 
 1. รันคำสั่ง `pwsh -NoProfile -File scripts/check-long-files.ps1`

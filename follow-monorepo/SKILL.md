@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - follow-architecture
+  - follow-turborepo
+  - follow-package-manifest
+  - run-verify
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Analyze Requirements
+> Goal: Analyze Requirements
 
 วิเคราะห์ความต้องการ monorepo และเลือก tool ที่เหมาะสม
 
@@ -33,6 +41,7 @@ triggers:
 5. ตรวจสอบ criteria สำหรับ monorepo adoption
 
 ### 2. Setup Monorepo
+> Goal: Setup Monorepo
 
 ตั้งค่า monorepo ด้วย tool ที่เลือก
 
@@ -42,6 +51,7 @@ triggers:
 4. รัน `/run-verify` เพื่อตรวจสอบ
 
 ### 3. Configure Build System
+> Goal: Configure Build System
 
 ตั้งค่า build system สำหรับ monorepo
 
@@ -50,6 +60,7 @@ triggers:
 3. ตั้งค่า outputs สำหรับ cache invalidation
 
 ### 4. Setup Shared Configuration
+> Goal: Setup Shared Configuration
 
 ตั้งค่า shared configs สำหรับทั้ง monorepo
 

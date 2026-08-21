@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
@@ -16,7 +17,6 @@ related:
   - validate
   - check-reference
   - update-reference
-  - ask-me
 ---
 
 ## Goal
@@ -31,8 +31,7 @@ related:
 
 ### 1. Prepare Skill Context
 
-เตรียม context และตำแหน่งของ `SKILL.md`
-
+> Goal: เตรียม context และตำแหน่งของ `SKILL.md`
 > Goal: ทราบ target, conventions, และ template ก่อนเขียน
 
 1. ระบุ target path ของ `SKILL.md` และ skill name
@@ -43,8 +42,7 @@ related:
 
 ### 2. Write Frontmatter
 
-เขียน YAML frontmatter ตาม Devin CLI spec
-
+> Goal: เขียน YAML frontmatter ตาม Devin CLI spec
 > Goal: frontmatter valid ครบถ้วนและตรง spec
 
 1. `name` ตรงกับ directory name ใช้ lowercase คั่นด้วย `-`
@@ -59,8 +57,7 @@ related:
 
 ### 3. Write Prompt Body
 
-เขียนเนื้อหา prompt หลัง frontmatter
-
+> Goal: เขียนเนื้อหา prompt หลัง frontmatter
 > Goal: prompt ชัดเจน ทำตามได้จริง ไม่เกิน 250 บรรทัด
 
 1. `## Goal` ตอบว่า skill ทำอะไร
@@ -73,8 +70,7 @@ related:
 
 ### 4. Apply Quality And Safety
 
-ตรวจสอบคุณภาพและความปลอดภัย
-
+> Goal: ตรวจสอบคุณภาพและความปลอดภัย
 > Goal: skill ปลอดภัย กระชับ และ deterministic
 
 1. `allowed-tools` จำกัดตาม minimum required
@@ -85,8 +81,7 @@ related:
 
 ### 5. Validate SKILL.md
 
-ตรวจสอบไฟล์ก่อน finalize
-
+> Goal: ตรวจสอบไฟล์ก่อน finalize
 > Goal: SKILL.md ผ่านเกณฑ์ทั้งหมด
 
 1. ทำ `/validate` ตรวจความถูกต้อง
@@ -96,8 +91,7 @@ related:
 
 ### 6. Update References
 
-อัปเดต references หลังเสร็จ
-
+> Goal: อัปเดต references หลังเสร็จ
 > Goal: references ครบถ้วน
 
 1. ทำ `/update-reference` ถ้ามีการเปลี่ยนชื่อหรือเพิ่ม references
@@ -192,7 +186,6 @@ Review the current git diff and provide feedback
 ### 1. Get Diff
 
 แสดง diff ที่จะ commit
-
 > Goal: รู้สิ่งที่เปลี่ยนแปลง
 
 1. รัน `git diff --staged` หรือ `git diff` ถ้ายังไม่ได้ stage
@@ -201,7 +194,6 @@ Review the current git diff and provide feedback
 ### 2. Review Changes
 
 ตรวจสอบ changes
-
 > Goal: หาปัญหาที่อาจเกิดขึ้น
 
 1. ตรวจ logic errors หรือ edge cases

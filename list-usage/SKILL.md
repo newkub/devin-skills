@@ -10,6 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. Scan Codebase
+> Goal: Scan Codebase
 
 สแกน codebase เพื่อหาการใช้งาน
 
@@ -32,6 +35,7 @@ triggers:
 4. สแกน dependencies จาก package.json
 
 ### 2. Analyze Dependencies Usage
+> Goal: Analyze Dependencies Usage
 
 วิเคราะห์การใช้งาน dependencies
 
@@ -41,6 +45,7 @@ triggers:
 4. ตรวจสอบ dependencies ที่ใช้บางส่วนเท่านั้น (tree-shaking opportunity)
 
 ### 3. Analyze Functions Usage
+> Goal: Analyze Functions Usage
 
 วิเคราะห์การใช้งาน functions
 
@@ -50,6 +55,7 @@ triggers:
 4. ตรวจสอบ functions ที่ควร export แต่ยังไม่ได้
 
 ### 4. Analyze Exports Usage
+> Goal: Analyze Exports Usage
 
 วิเคราะห์การใช้งาน exports
 

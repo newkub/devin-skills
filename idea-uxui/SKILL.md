@@ -1,15 +1,20 @@
 ---
 name: idea-uxui
-description: สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous numbering และ scope ที่ช...
+description: สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous numbering และ scope
 allowed-tools:
   - read
   - edit
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - deep-analyze
+  - ship
 ---
 
 ## Goal
@@ -23,6 +28,7 @@ triggers:
 ## Execute
 
 ### 1. Deep Analyze
+> Goal: Deep Analyze
 
 วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ
 
@@ -32,6 +38,7 @@ triggers:
 - ระบุ UI components ที่สามารถ reuse ได้
 
 ### 2. Research Design Trends
+> Goal: Research Design Trends
 
 วิจัย design trends และ best practices
 
@@ -41,6 +48,7 @@ triggers:
 - ศึกษา design systems และ accessibility guidelines (WCAG)
 
 ### 3. Generate Ideas
+> Goal: Generate Ideas
 
 สร้างไอเดีย UX/UI improvements ทั้ง Extends และ New
 
@@ -51,6 +59,7 @@ triggers:
 - ระบุ component type (button, form, layout, navigation, etc)
 
 ### 4. Output to Chat
+> Goal: Output to Chat
 
 ตอบตาราง UX/UI improvements ในแชท
 
@@ -66,6 +75,7 @@ triggers:
 - เรียงลำดับตารางตาม Impact (สูง → ปานกลาง → ต่ำ)
 
 ### 5. Prioritize and Roadmap
+> Goal: Prioritize and Roadmap
 
 จัดลำดับและเสนอ roadmap
 

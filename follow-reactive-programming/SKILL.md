@@ -7,12 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - merge
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +25,8 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Use Streams
+> Goal: Use Streams
 
 ใช้ streams สำหรับ data flow ที่ต่อเนื่อง
 
@@ -37,6 +37,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 5. ใช้ hot vs cold streams ตาม use case
 
 ### 2. Use Observables
+> Goal: Use Observables
 
 ใช้ observables สำหรับ reacting ต่อ data changes
 
@@ -47,6 +48,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 5. จัดการ cleanup เมื่อ unsubscribe
 
 ### 3. Use Operators
+> Goal: Use Operators
 
 ใช้ operators สำหรับ transform และ combine streams
 
@@ -58,6 +60,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 6. ใช้ catchError สำหรับ error handling
 
 ### 4. Manage State
+> Goal: Manage State
 
 จัดการ state ด้วย reactive approach
 
@@ -68,6 +71,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 5. แยก state จาก UI updates
 
 ### 5. Handle Side Effects
+> Goal: Handle Side Effects
 
 จัดการ side effects ใน reactive context
 
@@ -78,6 +82,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 5. แยก pure logic จาก side effects
 
 ### 6. Error Handling
+> Goal: Error Handling
 
 จัดการ errors ใน reactive streams
 
@@ -88,6 +93,7 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 5. ใช finalize สำหรับ cleanup ทุกกรณี
 
 ### 7. Testing
+> Goal: Testing
 
 เขียน tests สำหรับ reactive code
 
@@ -96,8 +102,6 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 3. Test error scenarios
 4. Test timing ด้วย virtual time schedulers
 5. Mock observables สำหรับ isolated testing
-
-## Rules
 
 ## Rules
 
@@ -170,8 +174,6 @@ Use `follow-reactive-programming` for the specific tasks and workflows it covers
 - Use `share` for multicasting
 - Use `async scheduler` for heavy operations
 - Profile and optimize `hot paths`
-
-## Expected Outcome
 
 ## Expected Outcome
 

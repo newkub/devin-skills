@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -16,20 +18,6 @@ related:
   - deep-research
   - dont-over-engineer
   - edit-only
-  - follow-best-practice
-  - follow-content-quality
-  - follow-devin-skills-md
-  - improve-all-skills
-  - improve-consistency
-  - improve-redundancy
-  - refactor-skills
-  - read-related-skills
-  - report
-  - review-codebase
-  - check-circular-dependencies
-  - scan-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal
@@ -46,8 +34,7 @@ related:
 
 ### 1. Identify And Assess
 
-ระบุ skill เป้าหมายและประเมินสถานะปัจจุบัน
-
+> Goal: ระบุ skill เป้าหมายและประเมินสถานะปัจจุบัน
 > Goal: รู้ skill ที่ต้องปรับปรุงและปัญหาหลักก่อนลงมือ
 
 1. ระบุ skill directory ที่ต้องปรับปรุง (เดียวหรือกลุ่มย่อย)
@@ -59,8 +46,7 @@ related:
 
 ### 2. Check Correctness
 
-ตรวจสอบความถูกต้องตามมาตรฐาน
-
+> Goal: ตรวจสอบความถูกต้องตามมาตรฐาน
 > Goal: skill ผ่านเกณฑ์ structure, frontmatter, references ก่อนปรับปรุง
 
 1. parallel: ทำตาม `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจสอบ circular references ใน target
@@ -68,8 +54,7 @@ related:
 
 ### 3. Research Best Practices
 
-ค้นหา best practices สำหรับ topics ที่เกี่ยวข้อง
-
+> Goal: ค้นหา best practices สำหรับ topics ที่เกี่ยวข้อง
 > Goal: เนื้อหาอัปเดตและสอดคล้องกับ official documentation
 
 1. parallel: ทำตาม `/deep-research` สำหรับ tools/libraries ที่ skill เกี่ยวข้อง ∥ ทำตาม `/follow-best-practice` สำหรับ context
@@ -78,8 +63,7 @@ related:
 
 ### 4. Refactor Structure
 
-refactor โครงสร้าง skill ก่อนแก้ไขเนื้อหา
-
+> Goal: refactor โครงสร้าง skill ก่อนแก้ไขเนื้อหา
 > Goal: skill มี single responsibility ชัดเจนและจัดการง่าย
 
 1. ทำ `/refactor-skills` เพื่อแยก/รวม/ย้าย sections ตาม SRP
@@ -89,8 +73,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 5. Remove Redundancy
 
-ลบเนื้อหาซ้ำซ้อนและรักษา single source of truth
-
+> Goal: ลบเนื้อหาซ้ำซ้อนและรักษา single source of truth
 > Goal: ไม่มี duplicate content ระหว่าง Execute, Rules, หรือ skills ที่เกี่ยวข้อง
 
 1. ทำ `/improve-redundancy` เพื่อตรวจจับและลบเนื้อหาซ้ำซ้อน
@@ -99,8 +82,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 6. Improve Consistency
 
-ปรับปรุงความสอดคล้องของภาษา รูปแบบ และ terminology
-
+> Goal: ปรับปรุงความสอดคล้องของภาษา รูปแบบ และ terminology
 > Goal: skill มีลักษณะภาษา การ format และ frontmatter สม่ำเสมอ
 
 1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, headings, backticks, parallel markers
@@ -109,8 +91,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 7. Apply Content Improvements
 
-ปรับปรุงเนื้อหาตาม findings
-
+> Goal: ปรับปรุงเนื้อหาตาม findings
 > Goal: เนื้อหาครอบคลุม ชัดเจน และตรงตาม best practices
 
 1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
@@ -121,8 +102,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 8. Improve Coverage
 
-ปรับปรุงความครอบคลุมของเนื้อหา
-
+> Goal: ปรับปรุงความครอบคลุมของเนื้อหา
 > Goal: skill ครอบคลุม use cases, edge cases, และ subdirectories ครบถ้วน
 
 1. ทำ `/review-codebase` เพื่อตรวจสอบว่า skill ครอบคลุม use cases ครบถ้วน
@@ -131,8 +111,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 9. Verify And Report
 
-ตรวจสอบผลการปรับปรุง
-
+> Goal: ตรวจสอบผลการปรับปรุง
 > Goal: skill ผ่าน validation และมีรายงานสรุป
 
 1. parallel: ทำตาม `/check-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ทำตาม `/check-circular-dependencies` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด

@@ -7,9 +7,17 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - pondering
+  - suggest-next-action
+  - learn
+  - resolve-errors
+  - deep-research
 ---
 
 ## Goal
@@ -23,6 +31,7 @@ triggers:
 ## Execute
 
 ### 1. Identify What To Memorize
+> Goal: Identify What To Memorize
 
 ระบุสิ่งที่ควรจดจำ:
 
@@ -37,6 +46,7 @@ triggers:
 3. ถ้าคำตอบคือใช่ ให้ดำเนินการจดจำ
 
 ### 2. Capture Key Information
+> Goal: Capture Key Information
 
 บันทึกข้อมูลสำคัญ:
 
@@ -47,6 +57,7 @@ triggers:
 5. ถ้ามีตัวเลขหรือ facts เฉพาะ ให้บันทึกพร้อม source
 
 ### 3. Categorize And Tag
+> Goal: Categorize And Tag
 
 จัดหมวดและ tag:
 
@@ -56,6 +67,7 @@ triggers:
 4. ระบุ scope: global, project, workspace, task
 
 ### 4. Store Memory
+> Goal: Store Memory
 
 จัดเก็บความจำ:
 
@@ -67,6 +79,7 @@ triggers:
 6. ตรวจสอบว่าไม่ซ้ำกับ memory ที่มีอยู่ — ถ้าซ้ำให้ update แทน
 
 ### 5. Verify Memory
+> Goal: Verify Memory
 
 ตรวจสอบความถูกต้อง:
 

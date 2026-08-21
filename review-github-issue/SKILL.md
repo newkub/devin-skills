@@ -24,21 +24,18 @@ Use before implementing or assigning an issue
 ## Execute
 
 ### 1. Read issue
-
 > Goal: read issue
 
 1. Run gh issue view <number>
 1. Read title, body, comments, linked PRs
 
 ### 2. Check metadata
-
 > Goal: check metadata
 
 1. Verify labels, assignee, milestone, project
 1. Check sub-issues or dependencies
 
 ### 3. Assess quality
-
 > Goal: assess quality
 
 1. Check for clear goal and scope
@@ -46,7 +43,6 @@ Use before implementing or assigning an issue
 1. Suggest improvements
 
 ### 4. Report
-
 > Goal: report
 
 1. Summarize review findings

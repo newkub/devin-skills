@@ -7,15 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 ใช้งาน Renovate สำหรับ automated dependency updates
-
 
 ## Scope
 
@@ -26,10 +27,11 @@ triggers:
 - Monorepo support
 - Schedule dependency updates
 
-
 ## Execute
 
 ### 1. Install Renovate CLI
+
+> Goal: Install Renovate CLI
 
 ติดตั้ง Renovate CLI:
 ```bash
@@ -38,25 +40,26 @@ npx renovate --version
 
 ### 2. Run Renovate in Dry-run
 
-รัน Renovate ในโหมด dry-run:
+> Goal: รัน Renovate ในโหมด dry-run
 ```bash
 npx renovate --dry-run
 ```
 
 ### 3. Validate Config
 
-ตั้งค่า config:
+> Goal: ตั้งค่า config
 ```bash
 renovate:config:validate
 ```
 
 ### 4. Create PR for Testing
 
+> Goal: Create PR for Testing
+
 สร้าง PR สำหรับทดสอบ:
 ```bash
 npx renovate --platform=github
 ```
-
 
 ## Rules
 
@@ -64,7 +67,6 @@ npx renovate --platform=github
 - รองรับ monorepo ได้ดี
 - กำหนดเวลาสร้าง PR ได้
 - ใช้ configuration ที่ centralized
-
 
 ## Expected Outcome
 

@@ -10,9 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +23,9 @@ Use `follow-aube` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Installation
+
+> Goal: Installation
 
 1. ติดตั้ง Aube ด้วย `mise use aube` หรือดูวิธีอื่นๆ ที่ https://aube.en.dev/installation
 2. ตรวจสอบ version ด้วย `aube --version`
@@ -34,11 +33,15 @@ Use `follow-aube` for the specific tasks and workflows it covers
 
 ### 2. First Run
 
+> Goal: First Run
+
 1. Aube จะอ่านและเขียน lockfiles ที่มีอยู่แล้ว (yarn.lock, pnpm-lock.yaml, package-lock.json)
 2. ไม่ต้อง migrate lockfiles ทีละคน - Aube รองรับทั้งหมด
 3. Run scripts ปกติ - Aube จะ auto-install เมื่อ dependencies เปลี่ยน
 
 ### 3. Daily Commands
+
+> Goal: Daily Commands
 
 ใช้ `aubr` สำหรับ run scripts ที่ต้องการ dependencies:
 
@@ -57,6 +60,8 @@ aubx tsc       # run tsc without installing
 
 ### 4. Dependency Management
 
+> Goal: จัดการ dependencies ด้วย Aube
+
 ```bash
 aube add react          # add dependency
 aube add -D vitest      # add dev dependency
@@ -65,6 +70,8 @@ aube update             # update dependencies within package.json ranges
 ```
 
 ### 5. Security Configuration
+
+> Goal: Security Configuration
 
 Aube มี security defaults ที่เหมาะสมที่สุด:
 - Trust downgrades fail at resolve
@@ -82,7 +89,7 @@ paranoid: true
 
 ### 6. CI Integration
 
-ใช้ Aube ใน CI โดยไม่ต้อง install step แยก:
+> Goal: ใช้ Aube ใน CI โดยไม่ต้อง install step แยก
 
 ```yaml
 - run: aubr test
@@ -92,21 +99,19 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 
 ### 7. Workspace Support
 
-Aube รองรับ workspaces และ monorepo:
+> Goal: Aube รองรับ workspaces และ monorepo
 - Global content-addressable store สำหรับ share package files
 - ลด disk usage โดยไม่ copy dependencies ทั้งหมดในแต่ละ project
 - node_modules layout ที่ efficient
 
 ### 8. Lockfile Compatibility
 
-Aube รองรับ lockfiles หลายประเภท:
+> Goal: Aube รองรับ lockfiles หลายประเภท
 - yarn.lock
 - pnpm-lock.yaml
 - package-lock.json
 
 อ่านและเขียน lockfiles ใน place โดยไม่ต้อง migrate
-
-## Rules
 
 ## Rules
 
@@ -143,8 +148,6 @@ Aube รองรับ lockfiles หลายประเภท:
 - Global content-addressable store ลด disk usage
 - Share package files ระหว่าง projects
 - node_modules layout ที่ efficient
-
-## Expected Outcome
 
 ## Expected Outcome
 

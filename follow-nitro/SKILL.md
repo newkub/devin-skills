@@ -25,8 +25,7 @@ triggers:
 
 ### 1. Install Dependencies
 
-ติดตั้ง Nitro ตาม project type
-
+> Goal: ติดตั้ง Nitro ตาม project type
 > Goal: มี dependencies พร้อมสำหรับ Nitro
 
 1. รัน `bun add nitro` สำหรับ standalone projects
@@ -35,8 +34,7 @@ triggers:
 
 ### 2. Create Nitro Config
 
-สร้าง `nitro.config.ts` หรือ config ใน framework ที่ใช้
-
+> Goal: สร้าง `nitro.config.ts` หรือ config ใน framework ที่ใช้
 > Goal: config ถูกต้องและรองรับ deployment
 
 1. สร้าง `nitro.config.ts`:
@@ -57,8 +55,7 @@ triggers:
 
 ### 3. Choose Preset
 
-เลือก preset ตาม deployment target
-
+> Goal: เลือก preset ตาม deployment target
 > Goal: preset เหมาะสมกับ target platform
 
 1. ระบุ platform: Node, Cloudflare, Vercel, Netlify, AWS Lambda, Bun, Deno
@@ -69,8 +66,7 @@ triggers:
 
 ### 4. Configure Runtime And Features
 
-ตั้งค่า runtime config, cache, storage, database, และ assets
-
+> Goal: ตั้งค่า runtime config, cache, storage, database, และ assets
 > Goal: runtime และ core features ทำงานถูกต้อง
 
 1. ใช้ `runtimeConfig` สำหรับ environment variables
@@ -82,8 +78,7 @@ triggers:
 
 ### 5. Setup Routing And Middleware
 
-สร้าง routes และ middleware
-
+> Goal: สร้าง routes และ middleware
 > Goal: routing และ middleware ทำงานตามที่ออกแบบ
 
 1. ใช้ filesystem routing ใน `routes/` และ `api/`
@@ -94,8 +89,7 @@ triggers:
 
 ### 6. Setup Renderer, WebSocket, Tasks, OpenAPI
 
-ตั้งค่า features เสริมตามจำเป็น
-
+> Goal: ตั้งค่า features เสริมตามจำเป็น
 > Goal: features ทำงานและพร้อมใช้
 
 1. ใช้ `index.html` template หรือ `renderer.template` สำหรับ SSR
@@ -106,8 +100,7 @@ triggers:
 
 ### 7. Build, Test, Deploy
 
-Build, test, และ deploy
-
+> Goal: Build, test, และ deploy
 > Goal: application พร้อม deploy
 
 1. เพิ่ม scripts: `dev`, `build`, `preview`, `typecheck`

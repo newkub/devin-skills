@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,9 @@ Use `follow-oxlint` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install Dependencies
+
+> Goal: Install Dependencies
 
 1. ติดตั้ง oxlint และ eslint-plugin-oxlint
 
@@ -36,6 +36,7 @@ bun add -D oxlint@latest eslint-plugin-oxlint
 
 ### 2. Configure Oxlint
 
+> Goal: Configure Oxlint
 1. สร้าง `oxlint.config.ts`:
 
 ```ts
@@ -52,6 +53,7 @@ export default defineConfig({
 
 ### 3. Configure ESLint
 
+> Goal: Configure ESLint
 1. สร้างหรือแก้ไข eslint.config.js ที่ root
 
 ```javascript
@@ -76,6 +78,7 @@ export default [
 
 ### 4. Add Scripts
 
+> Goal: Add Scripts
 1. เพิ่ม scripts ใน package.json
 
 ```json
@@ -89,11 +92,10 @@ export default [
 
 ### 5. Verify
 
+> Goal: Verify
 1. รัน bun run lint เพื่อทดสอบการทำงาน
 2. ตรวจสอบว่า oxlint rules ทำงานถูกต้อง
 3. ตรวจสอบว่า ESLint integration ทำงานได้
-
-## Rules
 
 ## Rules
 
@@ -151,8 +153,6 @@ export default [
 | jest | No | eslint-plugin-jest |
 | vitest | No | @vitest/eslint-plugin aka eslint-plugin-vitest |
 | vue | No | eslint-plugin-vue rules that work with script tags |
-
-## Expected Outcome
 
 ## Expected Outcome
 

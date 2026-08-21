@@ -11,6 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - suggest-next-action
 ---
 
 ## Goal
@@ -24,28 +26,24 @@ Use for issue backlog maintenance
 ## Execute
 
 ### 1. Identify targets
-
 > Goal: identify targets
 
 1. List open issues with filters
 1. Find duplicates or stale issues
 
 ### 2. Confirm
-
 > Goal: confirm
 
 1. Ask user before close or delete
 1. Prefer close over delete
 
 ### 3. Execute
-
 > Goal: execute
 
 1. Run gh issue close or gh issue delete
 1. Add closing comment if needed
 
 ### 4. Report
-
 > Goal: report
 
 1. Summary of closed/deleted issues

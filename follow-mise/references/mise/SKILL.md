@@ -7,20 +7,20 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
 
 จัดการ development environment และ tool versions อย่างมีประสิทธิภาพด้วย mise
 
-
 ## Scope
 
 ใช้สำหรับจัดการ multiple tool versions, environment setup, และ automation สำหรับ development
-
 
 ## Execute
 
@@ -43,7 +43,6 @@ triggers:
 - อ่าน `guide/structure.md` สำหรับ project structure
 - อ่าน `guide/troubleshooting.md` สำหรับปัญหาทั่วไป
 
-
 ## Rules
 
 - ใช้ `.mise.toml` สำหรับ project config
@@ -54,7 +53,6 @@ triggers:
 - ใช้ backticks สำหรับ commands
 - ใช้ code blocks สำหรับ examples
 - ใช้ ansi markdown diagrams สำหรับ flow และ architecture
-
 
 ## Expected Outcome
 

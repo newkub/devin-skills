@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - run-test
+  - use-ast-grep
+  - use-scripts
+  - run-lint
+  - deep-analyze
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 0. Analyze Project
+> Goal: Analyze Project
 
 วิเคราะห์โปรเจกต์อย่างลึกซึ้งก่อนเริ่มปรับปรุง side effects
 
@@ -30,6 +38,7 @@ triggers:
 2. รับผลลัพธ์จาก deep analysis เพื่อใช้ในการวางแผนการปรับปรุง side effects
 
 ### 1. Analyze Side Effects
+> Goal: Analyze Side Effects
 
 วิเคราะห์ side effects ทั้งหมดใน codebase และจัดกลุ่มตามประเภท
 
@@ -37,6 +46,7 @@ triggers:
 2. จัดกลุ่ม side effects ตามประเภท: database, I/O, external services, time, randomness, environment
 
 ### 2. Separate Pure And Impure
+> Goal: Separate Pure And Impure
 
 แยก pure functions จาก impure functions
 
@@ -48,6 +58,7 @@ triggers:
 6. ใช้ dependency injection สำหรับ impure dependencies
 
 ### 3. Apply Functional Patterns
+> Goal: Apply Functional Patterns
 
 ใช้ functional programming patterns สำหรับ side effect management
 
@@ -57,6 +68,7 @@ triggers:
 4. สร้าง service abstractions สำหรับ impure operations
 
 ### 4. Remove Impurities
+> Goal: Remove Impurities
 
 ลบหรือ wrap impurities
 
@@ -66,6 +78,7 @@ triggers:
 4. สร้าง service abstractions: `Clock`, `Random`, `Env`, `Logger`
 
 ### 5. Verify Improvements
+> Goal: Verify Improvements
 
 ตรวจสอบผลลัพธ์
 

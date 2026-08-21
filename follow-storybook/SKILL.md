@@ -7,12 +7,12 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,9 +24,8 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Install Storybook
+> Goal: Install Storybook
 
 1. รัน `bunx storybook@latest create` ใน project root
 2. หรือรัน `bunx storybook@7 create` สำหรับ version 7.x.x
@@ -34,6 +33,7 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 4. รัน `bun run storybook` เพื่อ start development server
 
 ### 2. Configure Main File
+> Goal: Configure Main File
 
 1. สร้าง `.storybook/main.ts` ใน project root
 2. ตั้งค่า `framework` สำหรับ framework-specific settings
@@ -42,6 +42,7 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 5. ตั้งค่า `staticDirs` สำหรับ static assets
 
 ### 3. Configure Preview File
+> Goal: Configure Preview File
 
 1. สร้าง `.storybook/preview.ts` สำหรับ story rendering
 2. เพิ่ม global decorators สำหรับ component wrapping
@@ -50,6 +51,7 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 5. เพิ่ม mocks สำหรับ external dependencies
 
 ### 4. Write Stories
+> Goal: Write Stories
 
 1. สร้าง `.stories.ts` ไฟล์ตาม component
 2. import `Meta` และ `StoryObj` types
@@ -58,6 +60,7 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 5. ใช้ `args` สำหรับ component props และ state
 
 ### 5. Configure Styling
+> Goal: Configure Styling
 
 1. ตั้งค่า CSS tooling สำหรับ Storybook environment
 2. ตั้งค่า Tailwind, Material UI, หรือ Sass ถ้าใช้
@@ -66,6 +69,7 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 5. ทดสอบ component rendering ใน Storybook
 
 ### 6. Setup Addons
+> Goal: Setup Addons
 
 1. install addons ที่จำเป็นเช่น `@storybook/addon-essentials`
 2. register addons ใน `main.ts` config
@@ -74,14 +78,13 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 5. ใช้ `@storybook/addon-a11y` สำหรับ accessibility testing
 
 ### 7. Configure Testing
+> Goal: Configure Testing
 
 1. setup interaction testing ด้วย `@storybook/addon-interactions`
 2. setup visual testing ด้วย Chromatic หรือ similar tools
 3. setup accessibility testing ด้วย axe-core
 4. configure test runner สำหรับ CI integration
 5. รัน tests ใน CI pipeline
-
-## Rules
 
 ## Rules
 
@@ -154,8 +157,6 @@ Use `follow-storybook` for the specific tasks and workflows it covers
 - setup accessibility testing ด้วย axe-core
 - configure test runner สำหรับ CI integration
 - รัน tests ใน CI pipeline สำหรับ quality assurance
-
-## Expected Outcome
 
 ## Expected Outcome
 

@@ -7,9 +7,11 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ triggers:
 ## Execute
 
 ### 1. หลักการสำคัญ (Core Principles)
+> Goal: หลักการสำคัญ (Core Principles)
 
 - Modularity & Single Responsibility: แต่ละไฟล์ควรทำหน้าที่เพียงอย่างเดียว การตั้งค่าปลั๊กอิน, options, และ keymaps ควรแยกจากกันอย่างชัดเจน เพื่อให้ง่ายต่อการบำรุงรักษาและแก้ไข
 - Performance First (Lazy Loading): ทุกปลั๊กอินควรถูก Lazy Load เป็นค่าเริ่มต้น โหลดเฉพาะเมื่อถูกใช้งานจริงผ่าน `ft`, `cmd`, `keys`, หรือ `event` เพื่อให้ Neovim เปิดได้เร็วที่สุด (< 50ms)
@@ -224,7 +227,6 @@ jobs:
 - มี unit tests สำหรับ utility functions
 - ใช้ `stylua` สำหรับ formatting
 - CI รัน automated checks
-
 
 ## References
 

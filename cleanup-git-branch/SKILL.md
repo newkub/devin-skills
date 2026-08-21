@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
@@ -26,6 +27,7 @@ related:
 ## Execute
 
 ### 1. Identify Candidates
+> Goal: Identify Candidates
 
 1. `git branch --merged main` สำหรับ local
 2. `git branch -r --merged main` สำหรับ remote
@@ -33,12 +35,14 @@ related:
 4. ยกเว้น `main`, `master`, `develop`, release branches
 
 ### 2. Confirm With Team
+> Goal: Confirm With Team
 
 1. ถ้า shared repo ให้ confirm ก่อนลบ
 2. ตรวจสอบว่า branch ไม่มี unmerged commits
 3. สำรอง ref ถ้ามีความเสี่ยง
 
 ### 3. Delete
+> Goal: Delete
 
 1. `git branch -d <branch>` สำหรับ local (merged)
 2. `git branch -D <branch>` ถ้าบังคับ

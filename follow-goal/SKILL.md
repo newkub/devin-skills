@@ -7,9 +7,13 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - pondering
+  - read-related-skills
 ---
 
 ## Goal
@@ -23,6 +27,7 @@ triggers:
 ## Execute
 
 ### 1. Define Goal
+> Goal: Define Goal
 
 ตั้งเป้าหมายที่ชัดเจนและวัดผลได้
 
@@ -33,6 +38,7 @@ triggers:
 5. ตรวจสอบว่าเป้าหมายสอดคล้องกับ context ปัจจุบัน
 
 ### 2. Analyze Context
+> Goal: Analyze Context
 
 วิเคราะห์สถานการณ์และ constraints
 
@@ -42,6 +48,7 @@ triggers:
 4. ระบุ risks และ assumptions
 
 ### 3. Create Plan
+> Goal: Create Plan
 
 สร้างแผนงานที่เป็นระบบ
 
@@ -51,6 +58,7 @@ triggers:
 4. กำหนด milestones และ deliverables
 
 ### 4. Validate Plan
+> Goal: Validate Plan
 
 ตรวจสอบแผนงานก่อนเริ่มทำ
 

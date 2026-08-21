@@ -7,9 +7,16 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model
+related:
+  - follow-architecture
+  - write-examples
+  - use-ast-grep
+  - bench-competitors
+  - run-check
 ---
 
 ## Goal
@@ -23,6 +30,7 @@ triggers:
 ## Execute
 
 ### 1. Define Pattern Target
+> Goal: Define Pattern Target
 
 กำหนดเป้าหมายการเรียนรู้:
 
@@ -32,6 +40,7 @@ triggers:
 4. ระบุ context ที่ต้องการนำ pattern ไปใช้
 
 ### 2. Discover Patterns
+> Goal: Discover Patterns
 
 ค้นหา patterns จากแหล่งที่กำหนด:
 
@@ -42,6 +51,7 @@ triggers:
 5. ถ้าศึกษาจาก competitor ให้ทำ `/bench-competitors` เพื่อวิเคราะห์ patterns ของคู่แข่ง
 
 ### 3. Extract And Document Patterns
+> Goal: Extract And Document Patterns
 
 สกัดและจัดทำเอกสาร patterns ที่พบ:
 
@@ -52,6 +62,7 @@ triggers:
 5. ระบุ anti-patterns ที่เกี่ยวข้องเพื่อหลีกเลี่ยง
 
 ### 4. Validate Patterns
+> Goal: Validate Patterns
 
 ตรวจสอบความถูกต้องและความเข้ากันได้:
 
@@ -62,6 +73,7 @@ triggers:
 5. ตรวจสอบว่า pattern ไม่ขัดกับ existing architecture
 
 ### 5. Apply Patterns
+> Goal: Apply Patterns
 
 นำ patterns ไปใช้ใน project:
 
@@ -72,6 +84,7 @@ triggers:
 5. รัน `/run-check` เพื่อตรวจสอบคุณภาพหลัง implement
 
 ### 6. Document And Share
+> Goal: Document And Share
 
 จัดทำเอกสารและแชร์ความรู้:
 

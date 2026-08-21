@@ -7,9 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - follow-knip
+  - update-reference
+  - resolve-errors
+  - check-unused-deps
 ---
 
 ## Goal
@@ -24,8 +30,7 @@ triggers:
 
 ### 1. Detect Ecosystem
 
-ระบุ ecosystem และ tool ที่จะใช้
-
+> Goal: ระบุ ecosystem และ tool ที่จะใช้
 > Goal: รู้ ecosystem และ tool ที่จะใช้ตรวจสอบ
 
 1. ตรวจสอบ `package.json` → JavaScript/TypeScript ใช้ `knip`
@@ -36,8 +41,7 @@ triggers:
 
 ### 2. Run File Analysis
 
-รัน tool ตรวจสอบ unused files
-
+> Goal: รัน tool ตรวจสอบ unused files
 > Goal: ได้รายการ unused files จาก tool
 
 1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include files`
@@ -48,8 +52,7 @@ triggers:
 
 ### 3. Verify Results
 
-ตรวจสอบผลลัพธ์เพื่อแยก false positives
-
+> Goal: ตรวจสอบผลลัพธ์เพื่อแยก false positives
 > Goal: รายการ unused files ที่ยืนยันแล้ว
 
 1. ตรวจสอบ dynamic imports — `import()` ที่อาจไม่ detect โดย static analysis
@@ -60,8 +63,7 @@ triggers:
 
 ### 4. Remove Or Implement
 
-ลบไฟล์ที่ไม่ได้ใช้หรือนำไปใช้งาน
-
+> Goal: ลบไฟล์ที่ไม่ได้ใช้หรือนำไปใช้งาน
 > Goal: ไม่มี unused files เหลือในโปรเจกต์
 
 1. ลบไฟล์ที่ยืนยันว่าไม่ได้ใช้

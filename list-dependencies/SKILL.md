@@ -10,6 +10,12 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - check-unused-deps
+  - use-lib-better
+  - run-audit
+  - follow-taze
+  - report-table
 ---
 
 ## Goal
@@ -23,6 +29,7 @@ triggers:
 ## Execute
 
 ### 1. Read Package Manifest
+> Goal: Read Package Manifest
 
 อ่าน package manifest เพื่อดู dependencies ทั้งหมด
 
@@ -32,6 +39,7 @@ triggers:
 4. ถ้าเป็น monorepo อ่านทุก workspace
 
 ### 2. Categorize Dependencies
+> Goal: Categorize Dependencies
 
 จัดกลุ่ม dependencies ตาม purpose
 
@@ -41,6 +49,7 @@ triggers:
 4. แยก `production` และ `development` dependencies
 
 ### 3. Analyze Usage
+> Goal: Analyze Usage
 
 วิเคราะห์การใช้งาน dependencies
 
@@ -50,6 +59,7 @@ triggers:
 4. ดู dependencies ที่มี version เก่ากว่า latest
 
 ### 4. Suggest Improvements
+> Goal: Suggest Improvements
 
 แนะนำ improvements สำหรับ dependencies
 

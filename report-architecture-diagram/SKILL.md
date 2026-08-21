@@ -15,6 +15,8 @@ triggers:
 related:
   - report-table
   - suggest-next-action
+  - scan-codebase
+  - report-ansi
 ---
 
 ## Goal
@@ -28,6 +30,7 @@ related:
 ## Execute
 
 ### 1. Analyze System Structure
+> Goal: Analyze System Structure
 
 1. ทำ `/scan-codebase` เพื่อหา modules, services, และ entry points
 2. ระบุ layers หลัก: frontend, API, server, database, external services
@@ -36,6 +39,7 @@ related:
 5. จดกลุ่มของ components ตาม domain (auth, booking, payment, etc.)
 
 ### 2. Define Diagram Scope
+> Goal: Define Diagram Scope
 
 1. เลือกระดับ abstraction: system overview, module-level, หรือ feature-level
 2. กำหนด boundary: แสดงเฉพาะส่วนที่เกี่ยวข้องกับ task ปัจจุบัน
@@ -43,6 +47,7 @@ related:
 4. กำหนดความกว้างสูงสุดไม่เกิน 80 characters สำหรับ chat readability
 
 ### 3. Draw System Overview
+> Goal: Draw System Overview
 
 1. วาด outer container ด้วย double-line borders (`╔═╗║╚═╝`)
 2. วาด layers หลักเป็น boxes ด้วย single-line borders (`┌─┐│└─┘`)
@@ -51,6 +56,7 @@ related:
 5. ใส่ labels สั้นๆ ในแต่ละ box: ชื่อ layer และ key components
 
 ### 4. Draw Module Dependencies
+> Goal: Draw Module Dependencies
 
 1. วาด modules เป็น boxes ในระดับเดียวกัน
 2. เชื่อมด้วย arrows แสดง dependency direction
@@ -59,6 +65,7 @@ related:
 5. วาด database schema groups เป็น nested boxes
 
 ### 5. Draw Data Flow
+> Goal: Draw Data Flow
 
 1. ระบุ entry points: routes, API endpoints, server functions
 2. วาด flow จาก entry point ผ่าน layers จนถึง database
@@ -67,6 +74,7 @@ related:
 5. แสดง error paths ด้วย `✗` และ success paths ด้วย `✓`
 
 ### 6. Add Annotations
+> Goal: Add Annotations
 
 1. ใช้ `//` สำหรับ inline comments
 2. ใช้ `⚠` สำหรับ risk points หรือ bottlenecks
@@ -75,6 +83,7 @@ related:
 5. เพิ่ม legend ด้านล่างถ้าใช้ symbols หลายชนิด
 
 ### 7. Validate And Present
+> Goal: Validate And Present
 
 1. ตรวจสอบว่าทุก box มี label ชัดเจน
 2. ตรวจสอบว่า arrows เชื่อมถูก direction
@@ -85,7 +94,6 @@ related:
 ## Rules
 
 ### Report UX/UI
-
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

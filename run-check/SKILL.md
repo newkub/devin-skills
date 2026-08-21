@@ -7,12 +7,15 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
+related:
+  - run-scan
+  - run-lint
+  - run-typecheck
 ---
-
-## Goal
 
 ## Goal
 
@@ -24,27 +27,26 @@ Use `run-check` for the specific tasks and workflows it covers
 
 ## Execute
 
-## Execute
-
 ### 1. Run Lint
+> Goal: Run Lint
 
 1. ทำ `/run-lint` เพื่อตรวจสอบ code style
 2. แก้ไข lint errors ถ้ามี
 3. ยืนยันว่า lint ผ่าน
 
 ### 2. Run Typecheck
+> Goal: Run Typecheck
 
 1. ทำ `/run-typecheck` เพื่อตรวจสอบ types
 2. แก้ไข type errors ถ้ามี
 3. ยืนยันว่า typecheck ผ่าน
 
 ### 3. Run Scan
+> Goal: Run Scan
 
 1. ทำ `/run-scan` เพื่อตรวจสอบ code patterns
 2. แก้ไข scan issues ถ้ามี
 3. ยืนยันว่า scan ผ่าน
-
-## Rules
 
 ## Rules
 
@@ -65,8 +67,6 @@ Use `run-check` for the specific tasks and workflows it covers
 - รัน lint, typecheck และ scan แบบ parallel เมื่อเป็นไปได้
 - ใช้ cache เพื่อเพิ่มความเร็ว
 - รัน checks ใน CI environment
-
-## Expected Outcome
 
 ## Expected Outcome
 
