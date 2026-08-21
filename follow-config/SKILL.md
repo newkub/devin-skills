@@ -10,6 +10,16 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-package-manifest
+  - follow-tasks
+  - follow-dot-vscode
+  - follow-dot-github
+  - follow-biome
+  - follow-turborepo
+  - follow-typescript
+  - follow-ast-grep
+  - follow-hk
 ---
 
 ## Goal
@@ -28,7 +38,7 @@ triggers:
 
 > Goal: ทราบ scope ว่าทำ root, workspace เดียว หรือทุก workspace
 
-1. ถ้าถูกเรียกจาก `/improve-config` ให้ใช้ target จาก context นั้น
+1. ถ้ามี target จาก context หรือ argument ให้ใช้ target นั้น
 2. ถ้ามี argument workspace/file path → ทำเฉพาะ workspace นั้น
 3. ถ้าไม่มี target ให้ทำ root และทุก workspace ใน monorepo
 4. บันทึก target list ก่อนไป step ถัดไป
@@ -49,7 +59,7 @@ triggers:
 
 > Goal: รู้ workflows และ skills ที่ต้องรันตาม stack
 
-1. ทำ `/read-related-skills` สำหรับ config-related workflows
+1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-biome`)
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
 3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-biome`, `/follow-turborepo`, `/follow-typescript`)
 
@@ -73,20 +83,20 @@ triggers:
 > Goal: config สอดคล้องกับ scripts และ build config
 
 1. ถ้ายังไม่ได้รัน → ทำ `/follow-tasks` สำหรับ target workspaces
-2. ถ้ามี build config ให้ทำ `/optimize-build` หรือระบุปัญหาที่ควรแก้
+2. ถ้ามี build config ให้รัน build script จาก `package.json` หรือทำ `/follow-package-manifest`
 3. บันทึก dependencies ระหว่าง config, scripts, build ที่ต้อง sync
-4. ถ้าอยู่ใน context `/improve-config` ให้รายงานผลกลับไปยัง orchestrator
+4. ถ้าถูกเรียกจาก skill orchestrator อื่น ให้รายงานผลกลับไปยัง orchestrator
 
 ## Rules
 
-### 1. Integration With improve-config
+### 1. Integration With Orchestrator
 
 รองรับการถูกเรียกจากภายนอกและ monorepo context
 
-- สามารถถูกเรียกโดย `/improve-config` หรือ standalone
+- สามารถถูกเรียกโดย skill อื่นหรือ standalone
 - รับ target เป็น root, workspace, หรือทุก workspace
-- ถ้าอยู่ใน context `/improve-config` ให้รายงานผลกลับไปยัง orchestrator
-- ประสานงานกับ `/follow-tasks` และ `/optimize-build` เพื่อ sync config, scripts, build
+- ถ้าถูกเรียกจาก skill อื่น ให้รายงานผลกลับไปยัง caller
+- ประสานงานกับ `/follow-tasks` และ build scripts เพื่อ sync config, scripts, build
 
 ### 2. Stack-Specific Configuration
 
@@ -101,7 +111,7 @@ triggers:
 
 ### 3. Minimal And Necessary
 
-รันเฉพากที่จำเป็น
+รันเฉพาะที่จำเป็น
 
 - รันเฉพาะ workflows ที่เกี่ยวข้องกับ stack ที่ใช้
 - ไม่รัน workflows ที่ไม่จำเป็น

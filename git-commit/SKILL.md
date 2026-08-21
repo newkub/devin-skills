@@ -10,6 +10,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-gitignore
+  - follow-hk
+  - follow-config
+  - update-readme
 ---
 
 ## Goal

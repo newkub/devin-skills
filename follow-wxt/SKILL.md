@@ -15,7 +15,6 @@ related:
   - follow-typescript
   - follow-github-actions
   - follow-tasks
-  - run-test-unit
 ---
 
 ## Goal
@@ -54,7 +53,7 @@ related:
 1. แก้ไข `wxt.config.ts` ตาม requirements
 2. กำหนด manifest permissions และ host permissions
 3. ตั้งค่า `srcDir` และ `outDir`
-4. เพิ่ม TypeScript configuration หากจำเป็น
+4. ถ้าต้องการ TypeScript configuration ให้ทำ `/follow-typescript`
 5. ตรวจสอบ `wxt.config.ts` ไม่มี invalid paths
 
 ### 3. Structure Extension
