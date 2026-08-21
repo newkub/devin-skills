@@ -1,6 +1,15 @@
 ---
 name: follow-github-actions
 description: ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

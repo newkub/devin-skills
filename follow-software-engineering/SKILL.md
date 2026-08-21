@@ -1,6 +1,16 @@
 ---
 name: follow-software-engineering
-description: ออกแบบ architecture ที่ test ง่าย scale ง่าย, เขียน code ที่ debug ง่าย test ง่าย, ออกแบบให้ใช้งานง่าย
+description: ออกแบบ architecture ที่ test ง่าย scale ง่าย, เขียน code ที่ debug ง่าย
+  test ง่าย, ออกแบบให้ใช้งานง่าย
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

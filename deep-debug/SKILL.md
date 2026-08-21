@@ -1,6 +1,15 @@
 ---
 name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

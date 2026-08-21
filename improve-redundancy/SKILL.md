@@ -1,6 +1,15 @@
 ---
 name: improve-redundancy
 description: ตรวจจับและลบเนื้อหาซ้ำซ้อนระหว่างไฟล์และ sections โดยใช้ tools ก่อน manual
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

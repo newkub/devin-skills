@@ -1,6 +1,15 @@
 ---
 name: watch-terminal
 description: เปิดเบราว์เซอร์และ watch terminal ทุก 5 วินาที พร้อมจัดการ error อัตโนมัติ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

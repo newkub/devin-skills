@@ -1,6 +1,15 @@
 ---
 name: watch-lint
 description: ตรวจสอบและ monitor linting ในโปรเจกต์อย่างต่อเนื่อง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

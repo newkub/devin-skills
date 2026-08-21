@@ -1,6 +1,15 @@
 ---
 name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

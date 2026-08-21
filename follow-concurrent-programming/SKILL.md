@@ -1,6 +1,16 @@
 ---
 name: follow-concurrent-programming
-description: พัฒนาโปรเจกต์ด้วย concurrent programming พร้อม async/await, workers, parallelism
+description: พัฒนาโปรเจกต์ด้วย concurrent programming พร้อม async/await, workers,
+  parallelism
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

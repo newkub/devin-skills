@@ -1,6 +1,15 @@
 ---
 name: list-usage
 description: แสดงรายการการใช้งาน dependencies, functions, exports ใน project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

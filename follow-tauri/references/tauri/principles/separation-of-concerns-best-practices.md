@@ -31,7 +31,7 @@ impl UserRepository for SqliteUserRepository {
     async fn find(&self, id: u32) -> Result<User, Error> {
         // SQLite implementation
     }
-    
+
     async fn save(&self, user: User) -> Result<(), Error> {
         // SQLite implementation
     }

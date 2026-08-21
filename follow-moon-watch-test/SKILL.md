@@ -1,6 +1,15 @@
 ---
 name: follow-moon-watch-test
 description: Watch และแก้ไข test errors ด้วย moonrepo
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 Run test task ด้วย moonrepo และแก้ไข errors จนไม่มีเหลือ

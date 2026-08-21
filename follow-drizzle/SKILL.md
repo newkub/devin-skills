@@ -1,6 +1,16 @@
 ---
 name: follow-drizzle
-description: ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations ด้วย SQL-like syntax
+description: ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations
+  ด้วย SQL-like syntax
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

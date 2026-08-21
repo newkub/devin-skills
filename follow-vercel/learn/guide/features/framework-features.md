@@ -28,7 +28,7 @@ export async function GET() {
 // pages/blog/[id].tsx
 export async function getStaticProps({ params }) {
   const post = await fetchPost(params.id);
-  
+
   return {
     props: { post },
     revalidate: 60 // Seconds

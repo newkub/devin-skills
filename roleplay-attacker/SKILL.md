@@ -1,6 +1,16 @@
 ---
 name: roleplay-attacker
-description: รับบทเป็น hacker มองหา vulnerabilities attack surfaces และ exploit paths จาก source code
+description: รับบทเป็น hacker มองหา vulnerabilities attack surfaces และ exploit paths
+  จาก source code
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

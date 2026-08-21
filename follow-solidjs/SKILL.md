@@ -1,6 +1,16 @@
 ---
 name: follow-solidjs
-description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
+description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance
+  optimization
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

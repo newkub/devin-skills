@@ -1,15 +1,24 @@
 ---
 name: update-project
 description: อัพเดท project documentation และ configuration ครบถ้วน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - update-dot-devin
-  - update-readme
-  - update-agents-md
-  - update-docs
-  - update-ast-grep-rules
-  - update-review-cli
-  - follow-dot-vscode
-  - follow-write-devin-skills
+- update-dot-devin
+- update-readme
+- update-agents-md
+- update-docs
+- update-ast-grep-rules
+- update-review-cli
+- follow-dot-vscode
+- follow-write-devin-skills
 ---
 
 ## Goal

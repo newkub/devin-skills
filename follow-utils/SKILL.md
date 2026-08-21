@@ -1,6 +1,15 @@
 ---
 name: follow-utils
 description: แนวทางการเขียนและจัดโครงสร้าง utils functions
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: follow-migration
 description: วางแผนและ execute migration สำหรับ dependencies, frameworks, และ infrastructure
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

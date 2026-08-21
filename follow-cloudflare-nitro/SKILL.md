@@ -1,5 +1,14 @@
 ---
 name: follow-cloudflare-nitro
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 1. กำหนดใน nuxt.config.ts
@@ -17,6 +26,6 @@ export default defineNuxtConfig({
 			nodeCompat: true,
 		},
     },
-				
+
 });
 ```

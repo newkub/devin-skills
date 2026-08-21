@@ -1,6 +1,16 @@
 ---
 name: follow-dot-github
-description: จัดการ .github directory ครบถ้วน ทั้ง workflows, templates, policies, และ automation config
+description: จัดการ .github directory ครบถ้วน ทั้ง workflows, templates, policies,
+  และ automation config
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

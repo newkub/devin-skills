@@ -43,11 +43,11 @@ struct RateLimiter {
 async fn rate_limited_command(limiter: State<RateLimiter>) -> Result<String, String> {
     let mut last_call = limiter.last_call.lock().unwrap();
     let now = Instant::now();
-    
+
     if now.duration_since(*last_call) < Duration::from_secs(1) {
         return Err("Rate limit exceeded".to_string());
     }
-    
+
     *last_call = now;
     Ok("Success".to_string())
 }

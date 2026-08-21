@@ -1,8 +1,16 @@
 ---
 name: runtime-optimization
-description: "คู่มือการ optimize runtime รวมถึง JIT compilation, memory management, hot path optimization, และ..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: คู่มือการ optimize runtime รวมถึง JIT compilation, memory management,
+  hot path optimization, และ...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

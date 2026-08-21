@@ -115,18 +115,18 @@ interface ArkType<T = unknown> {
   // Parsing
   (data: unknown): T | type.errors;
   assert(data: unknown): T;
-  
+
   // Type information
   t: T;  // TypeScript type
   name: string;
-  
+
   // Introspection
   extends(other: unknown): boolean;
-  
+
   // Composition
   or(other: ArkType): ArkType;
   and(other: ArkType): ArkType;
-  
+
   // Utilities
   named(name: string): ArkType<T>;
   defaults(values: Partial<T>): ArkType<T>;
@@ -152,7 +152,7 @@ type typeError = {
   [2]: unknown;       // actual
   [3]: string;        // expected
   [4]: string;        // branch
-  
+
   // Plus helpers
   path: string[];
   message: string;

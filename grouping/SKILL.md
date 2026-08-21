@@ -1,6 +1,15 @@
 ---
 name: grouping
 description: จัดกลุ่ม items ตามหมวดหมู่หรือคุณลักษณะ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

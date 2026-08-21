@@ -1,6 +1,15 @@
 ---
 name: git-commit-and-push
 description: Commit ไฟล์และ push ไปยัง remote repository
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

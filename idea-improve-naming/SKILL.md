@@ -1,6 +1,16 @@
 ---
 name: idea-improve-naming
-description: สร้างไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files พร้อม continuous numbering และ scope
+description: สร้างไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files
+  พร้อม continuous numbering และ scope
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

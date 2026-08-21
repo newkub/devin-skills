@@ -48,12 +48,12 @@ token.cancel();
 ```rust
 async fn with_cleanup() -> Result<String, Error> {
     let resource = acquire_resource().await?;
-    
+
     scopeguard::guard!(resource, |r| {
         // Cleanup on scope exit
         release_resource(r);
     });
-    
+
     // Use resource
     Ok("Success".to_string())
 }

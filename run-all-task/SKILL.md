@@ -2,15 +2,15 @@
 name: run-all-task
 description: Run all pending tasks from queue in order
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
+- read
+- edit
+- write
+- grep
+- exec
+- ask_user_question
 ---
 
 ## Goal

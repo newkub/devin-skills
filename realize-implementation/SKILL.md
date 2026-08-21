@@ -1,17 +1,26 @@
 ---
 name: realize-implementation
 description: แปลงทุกอย่างเป็น production code จริง ครบทุกมิติ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - implement-all
-  - run-verify
-  - implement-plan
-  - deep-analyze-by-use-scripts
-  - deep-review
-  - review-codebase
-  - implement-comment-todo
-  - implement-features-to-mvp
-  - use-lib-effective
-  - resolve-errors
+- implement-all
+- run-verify
+- implement-plan
+- deep-analyze-by-use-scripts
+- deep-review
+- review-codebase
+- implement-comment-todo
+- implement-features-to-mvp
+- use-lib-effective
+- resolve-errors
 ---
 
 ## Goal

@@ -1,17 +1,27 @@
 ---
 name: follow-function-quality
-description: ตรวจสอบและปรับปรุงคุณภาพของ functions เช่น SRP, naming, side effects, complexity, purity
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+description: ตรวจสอบและปรับปรุงคุณภาพของ functions เช่น SRP, naming, side effects,
+  complexity, purity
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - check-code-structure
-  - use-ast-grep-outline
-  - review-codebase
-  - refactor
-  - refactor-to-srp
-  - edit-relative
-  - use-scripts
-  - refactor-codebase
+- check-code-structure
+- use-ast-grep-outline
+- review-codebase
+- refactor
+- refactor-to-srp
+- edit-relative
+- use-scripts
+- refactor-codebase
 ---
 
 ## Goal

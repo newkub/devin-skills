@@ -1,6 +1,16 @@
 ---
 name: scan-codebase
-description: Scan codebase อย่างรวดเร็วด้วย static analysis tools ครอบคลุม text search, file search, AST-based search, และ structure navigation
+description: Scan codebase อย่างรวดเร็วด้วย static analysis tools ครอบคลุม text search,
+  file search, AST-based search, และ structure navigation
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

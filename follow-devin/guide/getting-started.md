@@ -71,13 +71,13 @@ Cascade จะ:
 def factorial(n: int) -> int:
     """
     Calculate the factorial of a non-negative integer n.
-    
+
     Args:
         n: A non-negative integer
-        
+
     Returns:
         The factorial of n
-        
+
     Raises:
         ValueError: If n is negative
         TypeError: If n is not an integer
@@ -86,7 +86,7 @@ def factorial(n: int) -> int:
         raise TypeError("n must be an integer")
     if n < 0:
         raise ValueError("n must be non-negative")
-    
+
     result = 1
     for i in range(2, n + 1):
         result *= i

@@ -1,8 +1,16 @@
 ---
 name: renovate
-description: "Automated dependency update tool ที่สร้าง pull requests อัตโนมัติสำหรับ update dependencies"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Automated dependency update tool ที่สร้าง pull requests อัตโนมัติสำหรับ
+  update dependencies
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

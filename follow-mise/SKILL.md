@@ -1,6 +1,15 @@
 ---
 name: follow-mise
 description: ตั้งค่าและใช้งาน mise สำหรับจัดการ dev tools, env vars, และ tasks
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

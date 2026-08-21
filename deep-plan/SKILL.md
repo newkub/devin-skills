@@ -1,17 +1,26 @@
 ---
 name: deep-plan
 description: วางแผนละเอียดหลายมิติ ครอบคลุม risk, dependencies, alternatives, timeline
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - deep-analyze
-  - deep-thinking
-  - deep-pondering
-  - deep-validate
-  - deep-research
-  - create-plan
-  - prioritize
-  - recommend-architecture
-  - report-plan
-  - suggest-next-action
+- deep-analyze
+- deep-thinking
+- deep-pondering
+- deep-validate
+- deep-research
+- create-plan
+- prioritize
+- recommend-architecture
+- report-plan
+- suggest-next-action
 ---
 
 ## Goal

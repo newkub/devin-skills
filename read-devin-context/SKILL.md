@@ -1,13 +1,20 @@
 ---
 name: read-devin-context
 description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
-triggers: ['user', 'model']
-allowed-tools: ['read', 'glob', 'exec', 'grep', 'ask_user_question']
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- glob
+- exec
+- grep
+- ask_user_question
 related:
-  - check-reference
-  - scan-codebase
-  - follow-skills
-  - ask-me
+- check-reference
+- scan-codebase
+- follow-skills
+- ask-me
 ---
 
 ## Goal

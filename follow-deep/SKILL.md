@@ -1,19 +1,28 @@
 ---
 name: follow-deep
 description: พิจารณาและเรียก deep- workflows ที่เกี่ยวข้องตาม context ของ task
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - deep-thinking
-  - deep-analyze
-  - deep-analyze-by-use-scripts
-  - deep-review
-  - deep-report
-  - deep-plan
-  - deep-research
-  - deep-validate
-  - pondering
-  - follow-parallel
+- deep-thinking
+- deep-analyze
+- deep-analyze-by-use-scripts
+- deep-review
+- deep-report
+- deep-plan
+- deep-research
+- deep-validate
+- pondering
+- follow-parallel
 ---
 
 ## Goal

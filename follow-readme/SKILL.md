@@ -1,5 +1,14 @@
 ---
 name: follow-readme
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 # Global Workflows

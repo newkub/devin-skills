@@ -1,6 +1,15 @@
 ---
 name: follow-nextjs-architecture
 description: จัดโครงสร้างโปรเจกต์ Next.js ตาม best practices
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

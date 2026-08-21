@@ -1,6 +1,15 @@
 ---
 name: delete
 description: ลบไฟล์หรือ folder และอัพเดท references ทั้งหมด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

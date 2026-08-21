@@ -1,8 +1,15 @@
 ---
 name: follow-remotion
-description: "Framework สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งโดยใช้ React"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Framework สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งโดยใช้ React
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

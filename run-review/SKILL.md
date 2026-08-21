@@ -1,6 +1,15 @@
 ---
 name: run-review
 description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

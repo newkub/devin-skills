@@ -1,6 +1,15 @@
 ---
 name: run-test-coverage
 description: รัน test coverage analysis ตรวจสอบ framework และบรรลุ 100% coverage
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

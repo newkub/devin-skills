@@ -1,15 +1,24 @@
 ---
 name: improve-config
 description: ปรับปรุง project config ครบถ้วนด้วย follow-tasks, optimize-build, follow-config
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - follow-tasks
-  - optimize-build
-  - follow-config
-  - follow-monorepo
-  - all-workspaces
-  - deep-plan
-  - git-commit
-  - ask-me
+- follow-tasks
+- optimize-build
+- follow-config
+- follow-monorepo
+- all-workspaces
+- deep-plan
+- git-commit
+- ask-me
 ---
 
 ## Goal

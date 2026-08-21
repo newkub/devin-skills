@@ -40,10 +40,10 @@ fn read_and_process_and_save(path: String) -> Result<String, String> {
 
 ```rust
 /// Reads a file from the file system
-/// 
+///
 /// # Arguments
 /// * `path` - The path to the file to read
-/// 
+///
 /// # Returns
 /// * `Result<String, String>` - The file content or error message
 #[tauri::command]

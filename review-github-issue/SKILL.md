@@ -2,15 +2,15 @@
 name: review-github-issue
 description: Review GitHub issue content, labels, and readiness
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
+- read
+- edit
+- write
+- grep
+- exec
+- ask_user_question
 ---
 
 ## Goal

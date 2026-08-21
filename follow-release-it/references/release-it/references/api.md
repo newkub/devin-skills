@@ -103,7 +103,7 @@ interface ConfigOptions {
     commitAll?: boolean
     changelog?: string
   }
-  
+
   // bun
   bun?: {
     publish?: boolean
@@ -111,7 +111,7 @@ interface ConfigOptions {
     distTag?: string
     skipChecks?: boolean
   }
-  
+
   // GitHub
   github?: {
     release?: boolean
@@ -121,22 +121,22 @@ interface ConfigOptions {
     prerelease?: boolean
     assets?: string[]
   }
-  
+
   // GitLab
   gitlab?: {
     release?: boolean
     releaseName?: string
     releaseNotes?: string
   }
-  
+
   // Plugins
   plugins?: Record<string, any>
-  
+
   // Hooks
   hooks?: {
     [key: string]: string | string[] | function
   }
-  
+
   // Other
   increment?: string
   preRelease?: string
@@ -153,11 +153,11 @@ import releaseIt from 'release-it'
 
 const myPlugin = {
   name: 'my-plugin',
-  
+
   async init(context) {
     console.log('Initializing...')
   },
-  
+
   async bump(version, pluginContext) {
     console.log(`Bumping to ${version}`)
     return version
@@ -176,7 +176,7 @@ const result = await releaseIt({
 ```typescript
 {
   name: 'my-plugin',
-  
+
   // Lifecycle methods
   async init(context) {},
   async beforeBump(context) {},

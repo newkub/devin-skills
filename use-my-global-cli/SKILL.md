@@ -1,12 +1,18 @@
 ---
 name: use-my-global-cli
 description: ใช้งาน global CLI tools ทีติดตั้งบนเครื่อง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-my-global-cli
-  - idea-convert-my-global-cli-to-skills
+- report-my-global-cli
+- idea-convert-my-global-cli-to-skills
 ---
 
 ## Goal

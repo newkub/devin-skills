@@ -1,11 +1,13 @@
 ---
 name: open-github-personal
 description: เปิดหน้า GitHub profile ของผู้ใช้ใน browser
-argument-hint: "[<username>]"
-triggers: ['user']
-allowed-tools: ['exec']
+argument-hint: '[<username>]'
+triggers:
+- user
+allowed-tools:
+- exec
 related:
-  - open-web
+- open-web
 ---
 
 ## Goal

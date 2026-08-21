@@ -1,8 +1,16 @@
 ---
 name: follow-nodejs
-description: "Node.js JavaScript runtime ที่ใช้ Chrome V8 engine สำหรับรัน JavaScript นอก browser รองรับ bun..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Node.js JavaScript runtime ที่ใช้ Chrome V8 engine สำหรับรัน JavaScript
+  นอก browser รองรับ bun...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

@@ -1,13 +1,22 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจรตามมาตรฐาน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - follow-vitest
-  - follow-playwright
-  - run-test
-  - run-test-api
-  - write-test
-  - use-scripts
+- follow-vitest
+- follow-playwright
+- run-test
+- run-test-api
+- write-test
+- use-scripts
 ---
 
 ## Goal

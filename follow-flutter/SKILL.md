@@ -1,6 +1,15 @@
 ---
 name: follow-flutter
 description: พัฒนา Flutter applications ด้วย Clean Architecture และ Riverpod
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal
@@ -19,7 +28,7 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 
 ```yaml
 dependencies:
-  flutter: 
+  flutter:
     sdk: flutter
 
   # State Management & DI

@@ -8,19 +8,19 @@ use tokio::sync::mpsc;
 #[tauri::command]
 async fn producer_consumer() -> Result<(), String> {
     let (tx, mut rx) = mpsc::channel(100);
-    
+
     // Producer
     tokio::spawn(async move {
         for i in 0..10 {
             tx.send(i).await.unwrap();
         }
     });
-    
+
     // Consumer
     while let Some(value) = rx.recv().await {
         println!("Received: {}", value);
     }
-    
+
     Ok(())
 }
 ```
@@ -33,7 +33,7 @@ use tokio::sync::Semaphore;
 #[tauri::command]
 async fn worker_pool() -> Result<(), String> {
     let semaphore = Arc::new(Semaphore::new(4)); // 4 workers
-    
+
     let tasks: Vec<_> = (0..10)
         .map(|i| {
             let semaphore = semaphore.clone();
@@ -44,11 +44,11 @@ async fn worker_pool() -> Result<(), String> {
             })
         })
         .collect();
-    
+
     for task in tasks {
         task.await.map_err(|e| e.to_string())?;
     }
-    
+
     Ok(())
 }
 ```

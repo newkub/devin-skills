@@ -74,11 +74,11 @@ fn read_any_file(path: String) -> Result<String> {
 fn read_allowed_file(path: String) -> Result<String> {
     let allowed_dir = PathBuf::from("$HOME/documents");
     let full_path = allowed_dir.join(path);
-    
+
     if !full_path.starts_with(&allowed_dir) {
         return Err("Path traversal detected".into());
     }
-    
+
     fs::read_to_string(full_path)
 }
 ```

@@ -1,6 +1,15 @@
 ---
 name: run-verify
 description: รัน verify task เพื่อตรวจสอบคุณภาพโค้ดตาม package manifest
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

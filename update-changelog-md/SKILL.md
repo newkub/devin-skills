@@ -1,6 +1,15 @@
 ---
 name: update-changelog-md
 description: สร้าง changelog ด้วย Bun Shell
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: update-features
 description: วิเคราะห์ features ที่มีอยู่ใน project และสร้าง documentation ผ่าน /update-docs
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

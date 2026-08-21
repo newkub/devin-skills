@@ -1,6 +1,15 @@
 ---
 name: dont-over-engineer
 description: หลีกเลี่ยงการ over-engineering ใช้ minimal changes
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

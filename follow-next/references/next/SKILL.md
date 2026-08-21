@@ -1,8 +1,16 @@
 ---
-name: next
-description: "React framework for building web applications with SSR, SSG, ISR, and App Router. Includes..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-next\references\next
+description: React framework for building web applications with SSR, SSG, ISR, and
+  App Router. Includes...
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

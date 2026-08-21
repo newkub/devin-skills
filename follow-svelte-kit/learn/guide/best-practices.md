@@ -108,9 +108,9 @@ export async function load({ fetch }) {
 ```svelte
 <script>
   import { onMount } from 'svelte';
-  
+
   let HeavyComponent;
-  
+
   onMount(async () => {
     const module = await import('$lib/components/Heavy.svelte');
     HeavyComponent = module.default;
@@ -152,11 +152,11 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const result = schema.safeParse(Object.fromEntries(data));
-    
+
     if (!result.success) {
       return fail(400, { errors: result.error.flatten() });
     }
-    
+
     // Process valid data
     return { success: true };
   }
@@ -169,17 +169,17 @@ export const actions = {
 // src/hooks.server.ts
 export async function handle({ event, resolve }) {
   const protectedRoutes = ['/dashboard', '/settings'];
-  
+
   if (protectedRoutes.includes(event.url.pathname)) {
     const session = await getSession(event.cookies);
-    
+
     if (!session) {
       throw redirect(303, '/login');
     }
-    
+
     event.locals.user = session.user;
   }
-  
+
   return resolve(event);
 }
 ```
@@ -229,11 +229,11 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const parsed = FormSchema.safeParse(Object.fromEntries(data));
-    
+
     if (!parsed.success) {
       return fail(400, { errors: parsed.error.flatten() });
     }
-    
+
     const validData: FormData = parsed.data;
     // ...
   }

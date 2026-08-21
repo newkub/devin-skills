@@ -1,6 +1,15 @@
 ---
 name: remove-unnecessary
 description: ลบสิ่งที่ไม่จำเป็นออกจากงานหรือระบบอย่างเรียบง่าย
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

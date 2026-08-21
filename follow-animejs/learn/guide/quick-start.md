@@ -200,10 +200,10 @@ animation.restart();
   <div class="box"></div>
   <div class="box"></div>
   <div class="box"></div>
-  
+
   <script type="module">
     import anime from 'https://cdn.jsdelivr.net/bun/animejs@3.2.1/lib/anime.es.js';
-    
+
     anime({
       targets: '.box',
       translateX: 250,

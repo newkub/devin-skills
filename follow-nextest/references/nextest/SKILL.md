@@ -1,8 +1,16 @@
 ---
-name: nextest
-description: "Next-generation test runner for Rust with faster execution, per-test isolation, and CI support"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-nextest\references\nextest
+description: Next-generation test runner for Rust with faster execution, per-test
+  isolation, and CI support
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

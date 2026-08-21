@@ -1,18 +1,27 @@
 ---
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - improve-folder-quality
-  - check-long-files
-  - deep-review
-  - dont-over-engineer
-  - follow-import-export
-  - follow-ordering
-  - refactor
-  - relocation
-  - review-codebase
-  - update-reference
-  - use-scripts
+- improve-folder-quality
+- check-long-files
+- deep-review
+- dont-over-engineer
+- follow-import-export
+- follow-ordering
+- refactor
+- relocation
+- review-codebase
+- update-reference
+- use-scripts
 ---
 
 ## Goal

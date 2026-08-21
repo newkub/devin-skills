@@ -1,17 +1,26 @@
 ---
 name: improve-consistency
 description: ตรวจสอบและปรับปรุงความสอดคล้องของ skill files ทั้งภายในและข้าม skill
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - check-reference
-  - dont-over-engineer
-  - edit-only
-  - follow-content-quality
-  - improve-skills
-  - report
-  - scan-codebase
-  - update-reference
-  - use-scripts
-  - validate
+- check-reference
+- dont-over-engineer
+- edit-only
+- follow-content-quality
+- improve-skills
+- report
+- scan-codebase
+- update-reference
+- use-scripts
+- validate
 ---
 
 ## Goal

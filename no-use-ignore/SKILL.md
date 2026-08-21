@@ -1,6 +1,16 @@
 ---
 name: no-use-ignore
-description: ป้องกันการใช้ ignore comments/attributes และ ignore files ทุกประเภท แก้ปัญหาที่ source
+description: ป้องกันการใช้ ignore comments/attributes และ ignore files ทุกประเภท แก้ปัญหาที่
+  source
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

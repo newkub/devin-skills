@@ -1,6 +1,16 @@
 ---
 name: use-ast-grep-programatic
-description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis และ integrate กับ review CLI
+description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis
+  และ integrate กับ review CLI
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

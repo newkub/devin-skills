@@ -16,13 +16,13 @@ Lua ถูกออกแบบมาเพื่อ embedding ใน applicatio
 int main() {
     // สร้าง Lua state
     lua_State *L = luaL_newstate();
-    
+
     // เปิด standard libraries
     luaL_openlibs(L);
-    
+
     // รัน Lua script
     luaL_dofile(L, "script.lua");
-    
+
     // ปิด Lua state
     lua_close(L);
     return 0;
@@ -92,14 +92,14 @@ print(result)  -- 30
 int main() {
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
-    
+
     // Register C++ function
     luabridge::getGlobalNamespace(L)
         .beginNamespace("game")
             .addFunction("getScore", getScore)
             .addFunction("setScore", setScore)
         .endNamespace();
-    
+
     luaL_dofile(L, "script.lua");
     lua_close(L);
     return 0;
@@ -114,16 +114,16 @@ int main() {
 int main() {
     sol::state lua;
     lua.open_libraries(sol::lib::base, sol::lib::math);
-    
+
     // Register function
     lua.set_function("add", [](int a, int b) {
         return a + b;
     });
-    
+
     // Call Lua function
     lua.script("function multiply(x, y) return x * y end");
     int result = lua["multiply"](5, 3);
-    
+
     return 0;
 }
 ```
@@ -180,11 +180,11 @@ import org.luaj.vm2.lib.jse.*;
 public class LuaIntegration {
     public static void main(String[] args) {
         Globals globals = JsePlatform.standardGlobals();
-        
+
         // Load script
         LuaValue script = globals.loadfile("script.lua");
         script.call();
-        
+
         // Call Lua function
         LuaValue func = globals.get("my_function");
         LuaValue result = func.call(LuaValue.valueOf(42));
@@ -203,16 +203,16 @@ using MoonSharp.Interpreter;
 class Program {
     static void Main() {
         Script script = new Script();
-        
+
         // Register C# function
         script.Globals["add"] = (Func<int, int, int>)((a, b) => a + b);
-        
+
         // Execute Lua
         script.DoString(@"
             result = add(10, 20)
             print(result)
         ");
-        
+
         // Get Lua variable
         int result = script.Globals["result"].Number;
     }
@@ -229,10 +229,10 @@ class Program {
         using (Lua lua = new Lua()) {
             // Register C# object
             lua["myObject"] = new MyClass();
-            
+
             // Execute Lua
             lua.DoFile("script.lua");
-            
+
             // Call Lua function
             object[] result = lua.GetFunction("my_func").Call(42);
         }
@@ -250,14 +250,14 @@ import "github.com/yuin/gopher-lua"
 func main() {
     L := lua.NewState()
     defer L.Close()
-    
+
     // Register Go function
     L.SetGlobal("greet", L.NewFunction(func(L *lua.LState) int {
         name := L.ToString(1)
         L.Push(lua.LString("Hello, " + name))
         return 1
     }))
-    
+
     // Execute Lua
     if err := L.DoString(`print(greet("World"))`); err != nil {
         panic(err)
@@ -274,18 +274,18 @@ use rlua::{Lua, Result};
 
 fn main() -> Result<()> {
     let lua = Lua::new();
-    
+
     // Register Rust function
     lua.globals().set("add", lua.create_function(|_, (a, b): (i32, i32)| {
         Ok(a + b)
     })?)?;
-    
+
     // Execute Lua
     lua.exec(r#"
         result = add(10, 20)
         print(result)
     "#)?;
-    
+
     Ok(())
 }
 ```
@@ -328,13 +328,13 @@ using MoonSharp.Interpreter;
 
 public class LuaScript : MonoBehaviour {
     private Script script;
-    
+
     void Start() {
         script = new Script();
         script.Globals["gameObject"] = this;
         script.DoFile("script.lua");
     }
-    
+
     void Update() {
         script.Call(script.Globals["update"]);
     }
@@ -375,7 +375,7 @@ local function onPlayerJoin(player)
     local leaderstats = Instance.new("Folder")
     leaderstats.Name = "leaderstats"
     leaderstats.Parent = player
-    
+
     local coins = Instance.new("IntValue")
     coins.Name = "Coins"
     coins.Value = 0
@@ -396,10 +396,10 @@ Players.PlayerAdded:Connect(onPlayerJoin)
     const lua = fengari.lua;
     const lauxlib = fengari.lauxlib;
     const lualib = fengari.lualib;
-    
+
     const L = lauxlib.luaL_newstate();
     lualib.luaL_openlibs(L);
-    
+
     lauxlib.luaL_dostring(L, `
         print("Hello from Lua in browser!")
     `);

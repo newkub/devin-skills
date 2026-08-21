@@ -42,7 +42,7 @@ async fn fetch_multiple() -> Result<Vec<String>, Error> {
         fetch_data_b(),
         fetch_data_c()
     );
-    
+
     Ok(vec![a?, b?, c?])
 }
 ```

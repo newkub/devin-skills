@@ -1,6 +1,16 @@
 ---
 name: roleplay-uxui-designer
-description: รับบทเป็น UX/UI designer อ่าน code แล้ววิจารณ์ design quality consistency และ design system compliance
+description: รับบทเป็น UX/UI designer อ่าน code แล้ววิจารณ์ design quality consistency
+  และ design system compliance
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

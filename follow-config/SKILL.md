@@ -1,6 +1,15 @@
-﻿---
+---
 name: follow-config
 description: ตั้งค่า configuration ตาม dependencies และ tech stack ที่ใช้
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

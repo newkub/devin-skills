@@ -1,21 +1,21 @@
 ---
 name: report-api
-description: สรุป API endpoints: paths, methods, validation, auth, rate limiting
+description: 'สรุป API endpoints: paths, methods, validation, auth, rate limiting'
 allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-format-table
-  - scan-codebase
-  - review-codebase
-  - resolve-errors
-  - suggest-next-action
+- report-format-table
+- scan-codebase
+- review-codebase
+- resolve-errors
+- suggest-next-action
 ---
 
 ## Goal

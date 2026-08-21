@@ -1,6 +1,15 @@
 ---
 name: idea
 description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

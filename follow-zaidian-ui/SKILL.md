@@ -1,8 +1,16 @@
 ---
 name: follow-zaidian-ui
-description: "Shadcn UI registry สำหรับ SolidJS - collection ของ accessible, customizable components ที่ built..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Shadcn UI registry สำหรับ SolidJS - collection ของ accessible, customizable
+  components ที่ built...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

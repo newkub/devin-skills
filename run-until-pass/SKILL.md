@@ -1,6 +1,15 @@
 ---
 name: run-until-pass
 description: run command จนกว่าจะผ่าน และแก้ไข error ทั้งหมด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

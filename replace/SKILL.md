@@ -1,6 +1,15 @@
 ---
 name: replace
 description: แทนที่เนื้อหาในไฟล์หรือโค้ด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 # Replace Content

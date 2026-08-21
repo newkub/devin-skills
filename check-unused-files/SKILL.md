@@ -1,6 +1,15 @@
 ---
 name: check-unused-files
 description: Detect and remove unused files in project using Knip and reference analysis
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

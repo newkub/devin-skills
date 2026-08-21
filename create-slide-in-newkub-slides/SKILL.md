@@ -1,6 +1,15 @@
 ---
 name: create-slide-in-newkub-slides
 description: สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

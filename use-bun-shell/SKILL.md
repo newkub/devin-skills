@@ -1,6 +1,15 @@
 ---
 name: use-bun-shell
 description: ใช้ Bun shell สำหรับ execute commands ด้วย bun -e
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

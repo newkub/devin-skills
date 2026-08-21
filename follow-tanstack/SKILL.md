@@ -1,12 +1,18 @@
 ---
 name: follow-tanstack
 description: เลือกและใช้งาน TanStack libraries ใน project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - validate
-  - ask-me
+- validate
+- ask-me
 ---
 
 ## Goal

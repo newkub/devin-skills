@@ -1,14 +1,20 @@
 ---
 name: follow-git-branch
 description: จัดการ git branches ทั้งหมดใน repository
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - follow-git
-  - create-git-branch
-  - cleanup-git-branch
-  - git-merge-commit
+- follow-git
+- create-git-branch
+- cleanup-git-branch
+- git-merge-commit
 ---
 
 ## Goal

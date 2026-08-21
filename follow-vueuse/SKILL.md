@@ -1,6 +1,15 @@
 ---
 name: follow-vueuse
 description: ใช้งาน VueUse v14 composables ตาม best practices 2026
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

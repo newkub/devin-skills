@@ -1,8 +1,16 @@
 ---
 name: follow-esm-sh
-description: "CDN สำหรับ ES Modules ที่ให้บริการโหลด bun packages ผ่าน ESM format โดยตรงบน browser รองรับ..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: CDN สำหรับ ES Modules ที่ให้บริการโหลด bun packages ผ่าน ESM format โดยตรงบน
+  browser รองรับ...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

@@ -2,20 +2,20 @@
 name: check-release-changelog
 description: ดึง GitHub release diff ระหว่างสอง tags และสรุป changelog ดิบ
 allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - mcp_call_tool
-  - ask_user_question
+- read
+- grep
+- glob
+- exec
+- mcp_call_tool
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-release-changelog
-  - learn-from-web
-  - report-format-table
-  - ask-me
+- report-release-changelog
+- learn-from-web
+- report-format-table
+- ask-me
 ---
 
 ## Goal

@@ -1,6 +1,16 @@
 ---
 name: improve-database-design
-description: Review, evaluate, and improve database schema, indexing, queries, and integrity for relational and NoSQL systems
+description: Review, evaluate, and improve database schema, indexing, queries, and
+  integrity for relational and NoSQL systems
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

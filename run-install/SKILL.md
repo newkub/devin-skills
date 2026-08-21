@@ -1,6 +1,15 @@
 ---
 name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,14 +1,23 @@
 ---
 name: write-test
 description: เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
-triggers: [user, model]
-allowed-tools: [read, edit, write, grep, find_file_by_name, exec, skill, ask_user_question]
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- find_file_by_name
+- exec
+- skill
+- ask_user_question
+triggers:
+- user
+- model
 related:
-  - write-spec
-  - review-codebase
-  - follow-content-quality
-  - run-test-coverage
-  - improve-test-coverage
+- review-codebase
+- follow-content-quality
+- run-test-coverage
+- improve-test-coverage
 ---
 
 ## Goal

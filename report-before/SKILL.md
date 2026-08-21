@@ -2,23 +2,23 @@
 name: report-before
 description: รายงานสถานะปัจจุบันก่อนเริ่มทำงาน แล้วดำเนินการต่อทันที
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - deep-report
-  - report-plan
-  - analyze-project
-  - scan-codebase
-  - report-format-table
-  - suggest-next-action
+- deep-report
+- report-plan
+- analyze-project
+- scan-codebase
+- report-format-table
+- suggest-next-action
 ---
 
 ## Goal

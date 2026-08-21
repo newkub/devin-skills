@@ -1,6 +1,17 @@
 ---
 name: idea-uxui
-description: สร้างไอเดีย UX/UI improvements ใหม่และปรับปรุง UX/UI ที่มีอยู่ วิเคราะห์ usability gaps, user experience และ design trends ด้วย continuous numbering และ scope ที่ชัดเจน
+description: สร้างไอเดีย UX/UI improvements ใหม่และปรับปรุง UX/UI ที่มีอยู่ วิเคราะห์
+  usability gaps, user experience และ design trends ด้วย continuous numbering และ
+  scope ที่ชัดเจน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

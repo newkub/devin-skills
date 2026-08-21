@@ -34,11 +34,11 @@ const CreateUserSchema = type({
 function validateBody(schema: typeof CreateUserSchema) {
   return (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const result = schema(req.body);
-    
+
     if (result instanceof type.errors) {
       return res.status(400).json({ errors: result });
     }
-    
+
     req.body = result;
     next();
   };
@@ -85,11 +85,11 @@ function validateBody(schema: typeof CreateUserSchema) {
   return async (c: Context, next: Next) => {
     const body = await c.req.json();
     const result = schema(body);
-    
+
     if (result instanceof type.errors) {
       return c.json({ errors: result }, 400);
     }
-    
+
     c.set("body", result);
     await next();
   };
@@ -120,13 +120,13 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const body = Object.fromEntries(data);
-    
+
     const result = ContactSchema(body);
-    
+
     if (result instanceof type.errors) {
       return fail(400, { errors: result, values: body });
     }
-    
+
     // Process valid data
     await sendEmail(result);
     return { success: true };
@@ -151,13 +151,13 @@ export async function GET({ url }) {
     page: url.searchParams.get("page") ?? "1",
     limit: url.searchParams.get("limit") ?? "10",
   };
-  
+
   const result = QuerySchema(query);
-  
+
   if (result instanceof type.errors) {
     return json({ errors: result }, { status: 400 });
   }
-  
+
   return json({ page: result.page, limit: result.limit });
 }
 ```
@@ -177,14 +177,14 @@ const FormSchema = type({
 
 export function UserForm() {
   const [errors, setErrors] = useState<type.errors | null>(null);
-  
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
-    
+
     const result = FormSchema(data);
-    
+
     if (result instanceof type.errors) {
       setErrors(result);
     } else {
@@ -192,7 +192,7 @@ export function UserForm() {
       // Submit data
     }
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       {/* Form fields */}

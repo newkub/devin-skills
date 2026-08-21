@@ -34,7 +34,7 @@ use leptos::*;
 #[component]
 pub fn App() -> impl IntoView {
     provide_context(router());
-    
+
     view! {
         <Router>
             <Header />
@@ -60,7 +60,7 @@ use leptos::*;
 #[server]
 pub async fn get_user(id: i32) -> Result<User, ServerFnError> {
     let pool = expect_context::<Pool<Postgres>>();
-    
+
     sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
         .fetch_optional(pool)
         .await
@@ -77,11 +77,11 @@ pub async fn get_user(id: i32) -> Result<User, ServerFnError> {
 fn AppProvider(children: Children) -> impl IntoView {
     let (user, set_user) = create_signal::<Option<User>>(None);
     let (theme, set_theme) = create_signal(Theme::Light);
-    
+
     provide_context(user);
     provide_context(set_user);
     provide_context(theme);
-    
+
     view! { {children()} }
 }
 
@@ -89,7 +89,7 @@ fn AppProvider(children: Children) -> impl IntoView {
 #[component]
 fn ProfileButton() -> impl IntoView {
     let user = expect_context::<Signal<Option<User>>>();
-    
+
     view! {
         <button>
             {move || user.get().map(|u| u.name).unwrap_or("Guest")}
@@ -111,12 +111,12 @@ impl Routes {
     pub fn home() -> impl IntoView {
         view! { <HomePage /> }
     }
-    
+
     #[route("/blog/:slug")]
     pub fn blog(slug: String) -> impl IntoView {
         view! { <BlogPost slug={slug} /> }
     }
-    
+
     #[route("/admin")]
     pub fn admin() -> impl IntoView {
         view! { <AdminPage /> }

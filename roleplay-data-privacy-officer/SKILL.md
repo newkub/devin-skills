@@ -1,6 +1,16 @@
 ---
 name: roleplay-data-privacy-officer
-description: รับบทเป็น DPO มอง code ว่า PII handled ถูกไหม มี data retention ไหม consent management ไหม GDPR compliant ไหม
+description: รับบทเป็น DPO มอง code ว่า PII handled ถูกไหม มี data retention ไหม consent
+  management ไหม GDPR compliant ไหม
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,16 @@
 ---
 name: implement-all
-description: ตรวจสอบ implementation completeness ครบทุกมิติ ใช้หลัง review เพื่อ verify ไม่มี TODO MOCK STUB placeholder
+description: ตรวจสอบ implementation completeness ครบทุกมิติ ใช้หลัง review เพื่อ verify
+  ไม่มี TODO MOCK STUB placeholder
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

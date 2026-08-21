@@ -1,6 +1,15 @@
 ---
 name: ask-requirement
 description: ถามความต้องการโปรเจกต์ผ่าน CLI และ MCP server สร้าง custom data อัตโนมัติ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,8 +1,16 @@
 ---
-name: tauri
-description: "Build cross-platform desktop and mobile applications with Rust backend and web frontend...."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-tauri\references\tauri
+description: Build cross-platform desktop and mobile applications with Rust backend
+  and web frontend....
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

@@ -1,6 +1,15 @@
 ---
 name: follow-create-biome-plugins
 description: สร้าง custom Biome linter plugins ด้วย GritQL
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

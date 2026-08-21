@@ -1,6 +1,15 @@
 ---
 name: follow-layered-architecture
 description: Implement Layered Architecture สำหรับ Frontend projects ขนาดเล็ก-กลาง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

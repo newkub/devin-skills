@@ -1,6 +1,16 @@
 ---
 name: follow-bun
-description: แนวทางการใช้งาน Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ Web-standard APIs ที่ Bun รองรับ
+description: แนวทางการใช้งาน Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific
+  APIs และ Web-standard APIs ที่ Bun รองรับ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

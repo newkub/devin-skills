@@ -1,6 +1,15 @@
 ---
 name: follow-jscpd
 description: ตั้งค่าและใช้งาน jscpd สำหรับตรวจจับ code duplication ใน codebase
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

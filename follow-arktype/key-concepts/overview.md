@@ -36,7 +36,7 @@ ArkType เป็น TypeScript runtime validation library ที่ใช้ ty
    "number"         tuple()        record()
    "boolean"        union()        intersection
    "date"           or()           extends()
-   "symbol"         and()         
+   "symbol"         and()
 ```
 
 ## Type Syntax Examples

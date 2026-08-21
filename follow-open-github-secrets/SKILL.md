@@ -1,6 +1,15 @@
 ---
 name: follow-open-github-secrets
 description: เปิดหน้า GitHub Secrets สำหรับตั้งค่า
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 เปิดหน้า GitHub Secrets สำหรับตั้งค่า environment variables และ secrets

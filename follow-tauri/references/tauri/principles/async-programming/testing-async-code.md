@@ -25,7 +25,7 @@ test('async function', async () => {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[tokio::test]
     async fn test_with_mock() {
         let mock_data = "mock data";

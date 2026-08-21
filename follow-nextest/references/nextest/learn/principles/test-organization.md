@@ -81,10 +81,10 @@ test_<feature>_<scenario>_<expected_result>
 fn test_user_login() {
     // Arrange
     let user = User::new("test@example.com", "password");
-    
+
     // Act
     let result = user.login();
-    
+
     // Assert
     assert!(result.is_ok());
 }

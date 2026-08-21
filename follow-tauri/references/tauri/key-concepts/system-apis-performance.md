@@ -26,7 +26,7 @@ async function getCachedFile(path: string) {
   if (cache.has(path)) {
     return cache.get(path)
   }
-  
+
   const content = await readTextFile(path)
   cache.set(path, content)
   return content

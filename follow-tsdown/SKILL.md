@@ -1,6 +1,16 @@
 ---
 name: follow-tsdown
-description: ตั้งค่าและใช้งาน tsdown สำหรับ bundle TypeScript libraries ด้วย Rolldown - รองรับทุก config options และ plugin ecosystems
+description: ตั้งค่าและใช้งาน tsdown สำหรับ bundle TypeScript libraries ด้วย Rolldown
+  - รองรับทุก config options และ plugin ecosystems
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

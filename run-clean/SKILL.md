@@ -1,6 +1,15 @@
 ---
 name: run-clean
 description: Clean build artifacts และ cache เพื่อเริ่มต้นใหม่
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

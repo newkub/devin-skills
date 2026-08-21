@@ -172,7 +172,7 @@ import { defineConfig } from 'rolldown'
 
 export default defineConfig(async () => {
   const external = await getExternalPackages()
-  
+
   return {
     input: 'src/index.ts',
     output: {

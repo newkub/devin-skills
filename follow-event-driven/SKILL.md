@@ -1,6 +1,16 @@
 ---
 name: follow-event-driven
-description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
+description: Implement Event-Driven Architecture สำหรับ async workflows และ loose
+  coupling
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal
@@ -130,10 +140,10 @@ async fn handle_event(event: Event) -> Result<()> {
     if idempotency_store.contains(&event.id).await? {
         return Ok(()); // Already processed
     }
-    
+
     // Process event
     process(&event).await?;
-    
+
     // Mark as processed
     idempotency_store.add(event.id).await?;
     Ok(())

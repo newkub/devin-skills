@@ -1,21 +1,20 @@
 ---
 name: follow-asynchronous
 description: ใช้งาน async patterns ใน JavaScript/TypeScript ให้ถูกต้อง
-triggers:
-  - user
-  - model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - follow-javascript
-  - follow-typescript
-  - follow-error-handling
-  - validate
+- follow-javascript
+- follow-typescript
+- validate
 ---
 
 ## Goal

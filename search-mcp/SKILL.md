@@ -1,6 +1,15 @@
 ---
 name: search-mcp
 description: ค้นหา MCP และ internet ที่เกี่ยวข้องและน่าสนใจ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

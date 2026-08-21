@@ -32,7 +32,7 @@ function process(value: unknown) {
 ## 3. Union Types
 
 ```typescript
-type Result = 
+type Result =
   | { success: true; data: Data }
   | { success: false; error: string }
 
@@ -57,7 +57,7 @@ class UserRepository implements Repository<User> {
   async find(id: number): Promise<User | null> {
     // Implementation
   }
-  
+
   async save(user: User): Promise<void> {
     // Implementation
   }

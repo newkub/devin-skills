@@ -1,6 +1,15 @@
 ---
 name: follow-mutants-rs
 description: ตั้งค่าและใช้งาน cargo-mutants สำหรับ mutation testing ใน Rust projects
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

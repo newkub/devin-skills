@@ -2,20 +2,20 @@
 name: follow-moonrepo
 description: แนวทางการพัฒนา monorepo ด้วย Moonrepo v2.x
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - follow-monorepo
-  - follow-tasks
-  - follow-package-manifest
+- follow-monorepo
+- follow-tasks
+- follow-package-manifest
 ---
 
 ## Goal

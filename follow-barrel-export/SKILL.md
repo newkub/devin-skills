@@ -1,10 +1,19 @@
 ---
 name: follow-barrel-export
 description: แนวทางการสร้างและจัดการ barrel exports สำหรับ module public API
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - follow-code-quality
+- follow-code-quality
 ---
 
 ## Goal

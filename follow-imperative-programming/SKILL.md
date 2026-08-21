@@ -1,6 +1,16 @@
 ---
 name: follow-imperative-programming
-description: พัฒนาโปรเจกต์ด้วย imperative programming พร้อม control structures, sequential execution
+description: พัฒนาโปรเจกต์ด้วย imperative programming พร้อม control structures, sequential
+  execution
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: ask-me
 description: ถามผู้ใช้คำถามพร้อมตัวเลือกและคำแนะนำเพื่อขอคำยืนยันหรือตัดสินใจ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

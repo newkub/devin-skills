@@ -1,8 +1,16 @@
 ---
 name: computer-arhitecture
-description: "Computer architecture guide covering CPU design, memory hierarchy, instruction sets, pipelining,..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Computer architecture guide covering CPU design, memory hierarchy, instruction
+  sets, pipelining,...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

@@ -1,16 +1,26 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase ด้วย tools/review, tools/analyze, ast-grep และ scripts พร้อมรองรับ /update-review-cli
+description: วิเคราะห์ codebase ด้วย tools/review, tools/analyze, ast-grep และ scripts
+  พร้อมรองรับ /update-review-cli
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - deep-analyze
-  - update-review-cli
-  - follow-create-cli
-  - follow-clean-architecture
-  - use-ast-grep
-  - use-scripts
-  - deep-report
-  - report-format-table
-  - update-reference
+- deep-analyze
+- update-review-cli
+- follow-create-cli
+- follow-clean-architecture
+- use-ast-grep
+- use-scripts
+- deep-report
+- report-format-table
+- update-reference
 ---
 
 ## Goal

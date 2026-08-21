@@ -1,8 +1,15 @@
 ---
-name: nitro
-description: "Universal server framework ที่ deploy ได้ทุก platform ด้วย Vite integration"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-nitro\references\nitro
+description: Universal server framework ที่ deploy ได้ทุก platform ด้วย Vite integration
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

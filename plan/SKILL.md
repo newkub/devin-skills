@@ -1,21 +1,30 @@
 ---
 name: plan
 description: วางแผนงานและ architecture อย่างเป็นระบบก่อนเริ่ม implement
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - analyze-project
-  - use-lib-better
-  - use-lib-effective
-  - prioritize
-  - update-dot-devin
-  - recommend-architecture
-  - report-format-table
-  - report-format-file-structure
-  - report-plan
-  - deep-thinking
-  - deep-research
-  - pondering
+- analyze-project
+- use-lib-better
+- use-lib-effective
+- prioritize
+- update-dot-devin
+- recommend-architecture
+- report-format-table
+- report-format-file-structure
+- report-plan
+- deep-thinking
+- deep-research
+- pondering
 ---
 
 ## Goal

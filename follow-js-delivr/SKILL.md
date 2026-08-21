@@ -1,8 +1,16 @@
 ---
 name: follow-js-delivr
-description: "Open Source CDN for bun packages and GitHub repositories with multi-CDN infrastructure, smart..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Open Source CDN for bun packages and GitHub repositories with multi-CDN
+  infrastructure, smart...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

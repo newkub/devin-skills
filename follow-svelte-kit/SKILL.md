@@ -1,8 +1,16 @@
 ---
 name: follow-svelte-kit
-description: "Full-stack framework สำหรับสร้าง web applications ด้วย Svelte รองรับ file-based routing,..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Full-stack framework สำหรับสร้าง web applications ด้วย Svelte รองรับ
+  file-based routing,...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

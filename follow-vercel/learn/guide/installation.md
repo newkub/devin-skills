@@ -214,15 +214,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Install dependencies
         run: bun ci
-        
+
       - name: Deploy
         run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
 ```

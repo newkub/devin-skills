@@ -1,26 +1,27 @@
 ---
 name: review-github-pr
-description: Review pull request ครอบคลุม diff, commits, description, CI, conventional commits และ merge readiness
+description: Review pull request ครอบคลุม diff, commits, description, CI, conventional
+  commits และ merge readiness
 argument-hint: optional PR number or branch
 allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - mcp_call_tool
+- read
+- grep
+- glob
+- exec
+- ask_user_question
+- mcp_call_tool
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - review-codebase
-  - validate
-  - deep-validate
-  - run-check
-  - report
-  - report-format-table
-  - suggest-next-action
-  - git-commit
+- review-codebase
+- validate
+- deep-validate
+- run-check
+- report
+- report-format-table
+- suggest-next-action
+- git-commit
 ---
 
 ## Goal

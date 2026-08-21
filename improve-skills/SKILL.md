@@ -1,26 +1,35 @@
 ---
 name: improve-skills
 description: ปรับปรุง skill ให้ถูกต้อง ครอบคลุม สอดคล้อง และเป็นไปตาม best practices
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - check-correctness
-  - check-reference
-  - deep-research
-  - dont-over-engineer
-  - edit-only
-  - follow-best-practice
-  - follow-content-quality
-  - follow-devin-skills-md
-  - improve-all-skills
-  - improve-consistency
-  - improve-redundancy
-  - refactor-skills
-  - read-related-skills
-  - report
-  - review-codebase
-  - check-circular-dependencies
-  - scan-codebase
-  - suggest-next-action
-  - validate
+- check-correctness
+- check-reference
+- deep-research
+- dont-over-engineer
+- edit-only
+- follow-best-practice
+- follow-content-quality
+- follow-devin-skills-md
+- improve-all-skills
+- improve-consistency
+- improve-redundancy
+- refactor-skills
+- read-related-skills
+- report
+- review-codebase
+- check-circular-dependencies
+- scan-codebase
+- suggest-next-action
+- validate
 ---
 
 ## Goal

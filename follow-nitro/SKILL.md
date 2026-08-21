@@ -1,6 +1,15 @@
 ---
 name: follow-nitro
 description: ตั้งค่า Nitro framework พร้อม presets และ deployment targets
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: follow-regression-test
 description: ทดสอบเพื่อตรวจสอบว่าการเปลี่ยนแปลงไม่ได้ทำลายฟีเจอร์ที่มีอยู่
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

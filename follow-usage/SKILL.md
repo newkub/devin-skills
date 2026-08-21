@@ -2,18 +2,18 @@
 name: follow-usage
 description: สร้าง CLI spec ด้วย usage เพื่อ generate completions/docs/SDK
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - webfetch
+- read
+- write
+- edit
+- exec
+- webfetch
 related:
-  - follow-create-cli
-  - follow-create-bun-cli
-  - follow-create-rust-cli
+- follow-create-cli
+- follow-create-bun-cli
+- follow-create-rust-cli
 ---
 
 ## Goal

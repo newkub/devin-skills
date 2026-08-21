@@ -1,6 +1,15 @@
 ---
 name: check-system-env
 description: ตรวจสอบ OS, shell, environment variables และ global root paths
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

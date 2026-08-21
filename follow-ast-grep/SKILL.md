@@ -1,6 +1,16 @@
 ---
 name: follow-ast-grep
-description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
+description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation
+  ด้วย AST patterns
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

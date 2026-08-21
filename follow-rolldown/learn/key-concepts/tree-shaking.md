@@ -246,7 +246,7 @@ window.globalVar = 'value'
    ```typescript
    // Good
    export const foo = 'foo'
-   
+
    // Bad (CommonJS)
    module.exports.foo = 'foo'
    ```
@@ -255,7 +255,7 @@ window.globalVar = 'value'
    ```typescript
    // Good
    export const value = 'value'
-   
+
    // Bad
    console.log('Side effect')
    export const value = 'value'

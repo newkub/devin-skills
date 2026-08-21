@@ -1,6 +1,16 @@
 ---
 name: follow-validation
-description: กำหนด validation strategy ด้วย pure functions และ schema validation สำหรับทุก project
+description: กำหนด validation strategy ด้วย pure functions และ schema validation สำหรับทุก
+  project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: follow-web-design
 description: ออกแบบ web interfaces ด้วย design system principles และ modern best practices
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

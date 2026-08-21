@@ -1,15 +1,24 @@
 ---
 name: follow-write-devin-skills
 description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - follow-devin-skills-md
-  - write-skills-md
-  - prepare-skills-context
-  - use-scripts
-  - validate
-  - check-circular-dependencies
-  - update-reference
-  - suggest-next-action
+- follow-devin-skills-md
+- write-skills-md
+- prepare-skills-context
+- use-scripts
+- validate
+- check-circular-dependencies
+- update-reference
+- suggest-next-action
 ---
 
 ## Goal

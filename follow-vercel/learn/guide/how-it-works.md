@@ -159,7 +159,7 @@ User Request
 
 ```text
                     World Map
-                    
+
         ┌───────────────────────────────┐
         │        North America          │
         │  ┌───┐ ┌───┐ ┌───┐ ┌───┐     │

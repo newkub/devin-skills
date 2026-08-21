@@ -1,8 +1,18 @@
 ---
 name: test-usage
-description: ทดสอบ usage examples จาก README และ docs เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+description: ทดสอบ usage examples จาก README และ docs เพื่อยื่นยันว่าทำงานได่จริงก่อน
+  ship
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 ---
 
 ## Goal

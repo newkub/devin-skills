@@ -1,13 +1,19 @@
 ---
 name: idea-merge
 description: สร้างไอเดียการ merge branches ตามสถานการณ์
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - follow-git
-  - git-merge-commit
-  - create-git-branch
+- follow-git
+- git-merge-commit
+- create-git-branch
 ---
 
 ## Goal

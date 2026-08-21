@@ -1,6 +1,15 @@
 ---
 name: write-test-spec
 description: เขียน spec ใน spec/ directory ตาม test files ที่มีอยู่
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

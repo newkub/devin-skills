@@ -1,6 +1,16 @@
 ---
 name: refactor-commit
-description: Refactor commits ที่ commit ไปแล้วด้วย interactive rebase (break down, edit, reorganize)
+description: Refactor commits ที่ commit ไปแล้วด้วย interactive rebase (break down,
+  edit, reorganize)
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

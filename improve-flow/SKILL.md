@@ -1,6 +1,16 @@
 ---
 name: improve-flow
-description: ปรับปรุง flow ของ workflow ให้ fail-fast ชัดเจน ลด bottleneck และ parallel ได้เมื่องปลอดภัย
+description: ปรับปรุง flow ของ workflow ให้ fail-fast ชัดเจน ลด bottleneck และ parallel
+  ได้เมื่องปลอดภัย
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

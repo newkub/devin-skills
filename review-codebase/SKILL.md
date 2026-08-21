@@ -1,35 +1,36 @@
 ---
 name: review-codebase
-description: Review ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
+description: Review ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension
+  โดยอัปเดต CLI ตาม metrics
 argument-hint: optional workspace path or name
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - run-review
-  - update-review-cli
-  - review-github-pr
-  - review-devin-global-skills
-  - run-check
-  - resolve-errors
-  - deep-analyze
-  - deep-validate
-  - validate
-  - implement-all
-  - update-reference
-  - git-commit
-  - report-format-terminal
-  - report-format-table
-  - report
-  - suggest-next-action
+- run-review
+- update-review-cli
+- review-github-pr
+- review-devin-global-skills
+- run-check
+- resolve-errors
+- deep-analyze
+- deep-validate
+- validate
+- implement-all
+- update-reference
+- git-commit
+- report-format-terminal
+- report-format-table
+- report
+- suggest-next-action
 ---
 
 ## Goal

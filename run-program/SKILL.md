@@ -1,6 +1,15 @@
 ---
 name: run-program
 description: รันโปรแกรมหลักและทำให้ทำงานได้จริง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

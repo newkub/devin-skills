@@ -1,6 +1,16 @@
 ---
 name: follow-functional-programming
-description: พัฒนาโปรเจกต์ด้วย functional programming principles พร้อม pure functions, immutability, composition
+description: พัฒนาโปรเจกต์ด้วย functional programming principles พร้อม pure functions,
+  immutability, composition
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

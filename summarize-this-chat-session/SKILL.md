@@ -1,5 +1,14 @@
 ---
 name: summarize-this-chat-session
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ---

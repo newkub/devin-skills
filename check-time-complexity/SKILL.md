@@ -1,6 +1,15 @@
 ---
 name: check-time-complexity
 description: วิเคราะห์และควบคุม time complexity ของ algorithms และ data structures
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

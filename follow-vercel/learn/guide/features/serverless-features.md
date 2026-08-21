@@ -43,7 +43,7 @@ export async function GET() {
       controller.close();
     }
   });
-  
+
   return new Response(stream);
 }
 ```

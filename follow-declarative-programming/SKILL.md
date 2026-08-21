@@ -1,6 +1,16 @@
 ---
 name: follow-declarative-programming
-description: พัฒนาโปรเจกต์ด้วย declarative programming พร้อม what not how, immutability, composition
+description: พัฒนาโปรเจกต์ด้วย declarative programming พร้อม what not how, immutability,
+  composition
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

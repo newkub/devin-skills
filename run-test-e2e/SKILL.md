@@ -1,6 +1,15 @@
 ---
 name: run-test-e2e
 description: รัน E2E tests ด้วย Playwright หรือ Cypress
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

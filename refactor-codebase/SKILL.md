@@ -1,16 +1,24 @@
 ---
 name: refactor-codebase
-description: Refactor codebase ครบวงจร — SRP, long files, imports, architecture, packages, code styles
-triggers: ['user']
-allowed-tools: ['read', 'edit', 'write', 'exec', 'grep', 'glob']
+description: Refactor codebase ครบวงจร — SRP, long files, imports, architecture, packages,
+  code styles
+triggers:
+- user
+allowed-tools:
+- read
+- edit
+- write
+- exec
+- grep
+- glob
 related:
-  - refactor-to-srp
-  - follow-function-quality
-  - follow-import-export
-  - follow-architecture
-  - refactor-packages
-  - create-plan
-  - implement-plan
+- refactor-to-srp
+- follow-function-quality
+- follow-import-export
+- follow-architecture
+- refactor-packages
+- create-plan
+- implement-plan
 ---
 
 ## Goal

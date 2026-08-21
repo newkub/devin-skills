@@ -60,7 +60,7 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const name = data.get('name');
-    
+
     return { success: true, name };
   }
 };
@@ -70,7 +70,7 @@ export const actions = {
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
   import { enhance } from '$app/forms';
-  
+
   let { data, form } = $props();
 </script>
 
@@ -154,11 +154,11 @@ src/routes/
 // src/routes/blog/[slug]/+page.server.ts
 export async function load({ params }) {
   const post = await getPost(params.slug);
-  
+
   if (!post) {
     throw error(404, 'Post not found');
   }
-  
+
   return { post };
 }
 ```

@@ -1,6 +1,15 @@
 ---
 name: follow-astro
 description: พัฒนา Astro 5 applications ด้วย Server Islands, Content Layer และ Actions
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

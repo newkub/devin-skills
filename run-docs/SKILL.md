@@ -1,6 +1,15 @@
 ---
 name: run-docs
 description: รัน documentation site และแก้ไขข้อผิดพลาด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

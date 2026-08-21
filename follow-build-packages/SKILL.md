@@ -1,5 +1,14 @@
 ---
 name: follow-build-packages
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Setup

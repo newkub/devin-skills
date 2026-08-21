@@ -1,6 +1,15 @@
 ---
 name: open-env-website
 description: อ่าน .env.example แล้วเปิด external services websites เพื่อกรอก API keys
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: no-hard-code
 description: ลบ hard code ออกจาก codebase ด้วย environment variables, config, constants
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal
@@ -10,7 +19,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 ## Execute
 
 ### 1. Identify Hard Code
- 
+
 ค้นหา hard code ใน codebase
 
 - ใช้ `Grep` เพื่อค้นหา magic numbers ด้วย patterns

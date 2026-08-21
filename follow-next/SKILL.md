@@ -1,6 +1,15 @@
 ---
 name: follow-next
 description: แนวทางการจัดโครงสร้างโปรเจกต์ Next.js
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 # แนวทางการจัดโครงสร้างโปรเจกต์ Next.js

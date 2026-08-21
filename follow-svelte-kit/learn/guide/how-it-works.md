@@ -73,7 +73,7 @@ src/routes/
 export async function load({ params, fetch }) {
   const res = await fetch(`/api/posts/${params.slug}`);
   const post = await res.json();
-  
+
   return { post };
 }
 ```
@@ -85,7 +85,7 @@ export async function load({ params, fetch }) {
 export async function load({ fetch }) {
   const res = await fetch('/api/posts');
   const posts = await res.json();
-  
+
   return { posts };
 }
 ```
@@ -118,9 +118,9 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const name = data.get('name');
-    
+
     await saveToDatabase(name);
-    
+
     return { success: true };
   }
 };
@@ -182,9 +182,9 @@ export async function load() {
 <!-- +page.svelte -->
 <script>
   import { browser } from '$app/environment';
-  
+
   let data;
-  
+
   if (browser) {
     // Runs on client only
     data = await fetch('/api/data').then(r => r.json());

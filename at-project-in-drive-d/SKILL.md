@@ -1,6 +1,15 @@
 ---
 name: at-project-in-drive-d
 description: List projects ใน drive D ที่มี .git directory และจัดรูปแบบเป็นตาราง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

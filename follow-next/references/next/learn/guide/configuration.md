@@ -7,13 +7,13 @@
 const nextConfig = {
   // Enable strict mode
   reactStrictMode: true,
-  
+
   // Image optimization
   images: {
     domains: ['images.example.com'],
     formats: ['image/avif', 'image/webp']
   },
-  
+
   // Environment variables
   env: {
     NEXT_PUBLIC_API_URL: process.env.API_URL

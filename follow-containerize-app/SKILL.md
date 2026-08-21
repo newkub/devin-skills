@@ -1,29 +1,30 @@
 ---
 name: follow-containerize-app
-description: สร้าง container images ด้วย Docker, Podman และ container engines อื่น รองรับ monorepo และ mise
+description: สร้าง container images ด้วย Docker, Podman และ container engines อื่น
+  รองรับ monorepo และ mise
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - find_file_by_name
-  - exec
-  - ask_user_question
-  - skill
+- read
+- edit
+- write
+- grep
+- glob
+- find_file_by_name
+- exec
+- ask_user_question
+- skill
 related:
-  - follow-mise
-  - follow-monorepo
-  - optimize-build
-  - follow-release-docker
-  - follow-package-manifest
-  - run-build
-  - check-monorepo
-  - follow-gitignore
-  - follow-LICENSE
+- follow-mise
+- follow-monorepo
+- optimize-build
+- follow-release-docker
+- follow-package-manifest
+- run-build
+- check-monorepo
+- follow-gitignore
+- follow-LICENSE
 ---
 
 ## Goal

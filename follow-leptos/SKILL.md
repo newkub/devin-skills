@@ -1,8 +1,16 @@
 ---
 name: follow-leptos
-description: "Rust framework for building reactive web applications with SSR and CSR support. Includes..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Rust framework for building reactive web applications with SSR and CSR
+  support. Includes...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

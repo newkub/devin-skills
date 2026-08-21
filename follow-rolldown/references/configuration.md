@@ -19,10 +19,10 @@ Configuration options reference สำหรับ Rolldown
 export default defineConfig({
   // Single entry
   input: 'src/index.ts',
-  
+
   // Multiple entries
   input: ['src/a.ts', 'src/b.ts'],
-  
+
   // Named entries
   input: {
     main: 'src/main.ts',
@@ -37,10 +37,10 @@ export default defineConfig({
 export default defineConfig({
   // Array
   external: ['react', 'react-dom'],
-  
+
   // Function
   external: (id) => id.startsWith('react'),
-  
+
   // RegExp
   external: /node_modules/,
 })
@@ -62,10 +62,10 @@ export default defineConfig({
 export default defineConfig({
   // Enable (default)
   treeshake: true,
-  
+
   // Disable
   treeshake: false,
-  
+
   // With options
   treeshake: {
     moduleSideEffects: 'no-external',

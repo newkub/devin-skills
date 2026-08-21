@@ -1,6 +1,15 @@
 ---
 name: follow-svelte
 description: ตั้งค่า Vite + Svelte 5 Runes + TypeScript (client-side only)
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

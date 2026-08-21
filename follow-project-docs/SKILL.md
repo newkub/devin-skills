@@ -1,6 +1,15 @@
 ---
 name: follow-project-docs
 description: สร้าง project docs site ด้วย VitePress + Vue components + Bun shell ดึงข้อมูลจริง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

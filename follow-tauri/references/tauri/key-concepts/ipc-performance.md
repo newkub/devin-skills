@@ -31,7 +31,7 @@ async fn cached_fetch(key: String, cache: State<Cache>) -> Result<String, String
             return Ok(value.clone());
         }
     }
-    
+
     let value = fetch_from_network(&key).await?;
     cache.data.lock().unwrap().insert(key.clone(), value.clone());
     Ok(value)

@@ -1,6 +1,15 @@
 ---
 name: optimize-build
 description: ปรับปรุง build configuration และลดขนาด output เพื่อให้ build เร็วและเล็กลง
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

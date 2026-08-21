@@ -1,6 +1,15 @@
 ---
 name: update-rules
 description: อัพเดท rules ทั้ง .devin/rules และ ast-grep rules
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

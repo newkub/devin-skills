@@ -1,6 +1,15 @@
 ---
 name: follow-react-scan
 description: ตรวจจับและแก้ไข React performance issues ด้วย react-scan โดยไม่แก้ไขโค้ด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ตรวจหา render ที่ไม่จำเป็นและปัญหาความเร็วใน React ได้ทันทีโดยไม่แก้โค้ด พร้อมดูปัญหาและแก้ไขตามข้อมูลที่เห็น

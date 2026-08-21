@@ -1,6 +1,15 @@
 ---
 name: list-system-env
 description: แสดงรายการ OS, shell, environment variables และ global root paths
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

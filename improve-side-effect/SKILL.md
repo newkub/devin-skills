@@ -1,6 +1,15 @@
 ---
 name: improve-side-effect
 description: ปรับปรุงการจัดการ side effects ด้วย functional programming patterns
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,15 @@
 ---
 name: follow-LICENSE
 description: ตั้งค่าและจัดการ license สำหรับ project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

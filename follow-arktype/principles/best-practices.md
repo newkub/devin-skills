@@ -93,7 +93,7 @@ function validateRequest<T>(
   schema: type<T>
 ): { success: true; data: T } | { success: false; errors: Error[] } {
   const result = schema(data);
-  
+
   if (result instanceof type.errors) {
     return {
       success: false,
@@ -103,7 +103,7 @@ function validateRequest<T>(
       })),
     };
   }
-  
+
   return { success: true, data: result };
 }
 ```
@@ -126,7 +126,7 @@ describe("User validation", () => {
     const result = User({ name: "John", email: "john@example.com" });
     expect(result instanceof type.errors).toBe(false);
   });
-  
+
   it("should reject invalid email", () => {
     const result = User({ name: "John", email: "not-an-email" });
     expect(result instanceof type.errors).toBe(true);

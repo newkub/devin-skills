@@ -1,6 +1,15 @@
 ---
 name: git-merge-commit
 description: รวม commits หลายตัวเป็น commit เดียวด้วย git rebase
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

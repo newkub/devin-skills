@@ -1,28 +1,29 @@
-﻿---
+---
 name: assume-reset-context
-description: สมมุติว่าต้องแก้ไขไฟล์นี้ใหม่ โดยไม่อ้างอิงจาก context ก่อนหน้า เริ่มจากไฟล์เปล่า วิเคราะห์เองใหม่ทั้งหมด
+description: สมมุติว่าต้องแก้ไขไฟล์นี้ใหม่ โดยไม่อ้างอิงจาก context ก่อนหน้า เริ่มจากไฟล์เปล่า
+  วิเคราะห์เองใหม่ทั้งหมด
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - grep
-  - glob
-  - find_file_by_name
-  - skill
+- read
+- grep
+- glob
+- find_file_by_name
+- skill
 related:
-  - scan-codebase
-  - use-ast-grep
-  - read-related-skills
-  - deep-thinking
-  - follow-best-practice
-  - follow-layered-architecture
-  - deep-plan
-  - refactor
-  - use-scripts
-  - realize-implementation
-  - validate
-  - run-check
+- scan-codebase
+- use-ast-grep
+- read-related-skills
+- deep-thinking
+- follow-best-practice
+- follow-layered-architecture
+- deep-plan
+- refactor
+- use-scripts
+- realize-implementation
+- validate
+- run-check
 ---
 
 ## Goal

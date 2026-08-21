@@ -34,10 +34,10 @@ mod tests {
     fn test_file_operations() {
         let dir = TempDir::new().unwrap();
         let file_path = dir.path().join("test.txt");
-        
+
         fs::write(&file_path, "Hello").unwrap();
         let content = fs::read_to_string(&file_path).unwrap();
-        
+
         assert_eq!(content, "Hello");
     }
 }

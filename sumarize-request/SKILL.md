@@ -1,6 +1,15 @@
 ---
 name: sumarize-request
 description: สรุป request และแสดงผลเป็นตารางครบถ้วนโดยใช้ /idea-features
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

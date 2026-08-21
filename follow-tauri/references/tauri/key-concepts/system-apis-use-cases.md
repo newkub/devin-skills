@@ -18,7 +18,7 @@ async function saveUserData(data: any) {
 async function loadUserData() {
   const appDir = await appDir()
   const filePath = await join(appDir, 'user-data.json')
-  
+
   if (await exists(filePath)) {
     const content = await readTextFile(filePath)
     return JSON.parse(content)
@@ -36,11 +36,11 @@ import { readTextFile, writeTextFile } from '@tauri-apps/plugin-fs'
 async function saveSetting(key: string, value: any) {
   const appDir = await appDir()
   const settingsPath = await join(appDir, 'settings.json')
-  
+
   const content = await readTextFile(settingsPath)
   const settings = JSON.parse(content || '{}')
   settings[key] = value
-  
+
   await writeTextFile(settingsPath, JSON.stringify(settings))
 }
 ```
@@ -54,10 +54,10 @@ import { writeBinaryFile } from '@tauri-apps/plugin-fs'
 async function downloadFile(url: string, filename: string) {
   const response = await fetch(url)
   const buffer = await response.arrayBuffer()
-  
+
   const downloadPath = await downloadDir()
   const filePath = await join(downloadPath, filename)
-  
+
   await writeBinaryFile(filePath, new Uint8Array(buffer))
 }
 ```

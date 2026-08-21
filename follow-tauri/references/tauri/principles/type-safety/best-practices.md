@@ -27,7 +27,7 @@ impl UserId {
     fn new(id: u32) -> Self {
         Self(id)
     }
-    
+
     fn value(&self) -> u32 {
         self.0
     }
@@ -63,11 +63,11 @@ fn handle_status(status: Status) {
 fn divide<N: Into<u32>, D: Into<u32>>(numerator: N, denominator: D) -> Result<f64, String> {
     let n = numerator.into();
     let d = denominator.into();
-    
+
     if d == 0 {
         return Err("Division by zero".to_string());
     }
-    
+
     Ok(n as f64 / d as f64)
 }
 ```

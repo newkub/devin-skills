@@ -1,6 +1,15 @@
 ---
 name: follow-aube
 description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

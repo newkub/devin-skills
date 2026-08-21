@@ -1,6 +1,15 @@
 ---
 name: follow-package-manifest
 description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal
@@ -18,7 +27,7 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
 2. ตรวจสอบว่ามี `package.json` หรือ `Cargo.toml`
 3. ยืนยันว่า tools จำเป็นติดตั้งแล้ว (`biome`, `vitest`)
-4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify` 
+4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify`
 
 ### 2. Select Template Level
 

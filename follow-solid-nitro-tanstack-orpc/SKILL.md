@@ -1,25 +1,24 @@
 ---
 name: follow-solid-nitro-tanstack-orpc
-description: ตั้งค่า TanStack Start (SolidJS) กับ Nitro และ oRPC สำหรับ full-stack type-safe
-triggers:
-  - user
-  - model
+description: ตั้งค่า TanStack Start (SolidJS) กับ Nitro และ oRPC สำหรับ full-stack
+  type-safe
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - follow-nitro
-  - follow-solidjs
-  - follow-tanstack-router
-  - follow-orpc
-  - follow-zod
-  - follow-ts
-  - follow-vite
-  - follow-deploy-to-cloudflare
+- follow-nitro
+- follow-solidjs
+- follow-orpc
+- follow-zod
+- follow-vite
+- follow-deploy-to-cloudflare
 ---
 
 ## Goal

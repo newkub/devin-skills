@@ -1,6 +1,15 @@
 ---
 name: follow-typescript
 description: Develop TypeScript projects with type safety and code quality best practices
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

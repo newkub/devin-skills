@@ -1,20 +1,21 @@
 ---
 name: add-to-queue
-description: รับ request จากผู้ใช้ และเพิ่มลง QUEUE.md ใน project root พร้อมชี้แนะ next step
-argument-hint: "<title> <request>"
+description: รับ request จากผู้ใช้ และเพิ่มลง QUEUE.md ใน project root พร้อมชี้แนะ
+  next step
+argument-hint: <title> <request>
 triggers:
-  - user
+- user
 allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- exec
+- ask_user_question
 related:
-  - deep-plan
-  - realize-implementation
-  - implement-queue-md
-  - report-plan
+- deep-plan
+- realize-implementation
+- implement-queue-md
+- report-plan
 ---
 
 ## Goal

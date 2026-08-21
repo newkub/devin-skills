@@ -1,6 +1,15 @@
 ---
 name: git-submodule-delete
 description: ลบ git submodule ออกจาก repository อย่างสมบูรณ์
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

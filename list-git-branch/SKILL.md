@@ -1,6 +1,15 @@
 ---
 name: list-git-branch
 description: แสดง branches ในเครื่องและ remote พร้อมข้อมูลล่าสุด
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

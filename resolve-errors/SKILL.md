@@ -1,6 +1,16 @@
-﻿---
+---
 name: resolve-errors
-description: แก้ไข error อย่างเป็นระบบ รวดเร็ว แม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate และ verify ครบถ้วน
+description: แก้ไข error อย่างเป็นระบบ รวดเร็ว แม่นยำ — ระบุ root cause แก้น้อยที่สุด
+  ใช้ scripts automate และ verify ครบถ้วน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

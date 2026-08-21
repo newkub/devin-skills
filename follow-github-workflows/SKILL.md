@@ -1,6 +1,15 @@
 ---
 name: follow-github-workflows
 description: วิเคราะหาและเขียน GitHub workflows ที่ควรมีตามที่ควรจะเป็นให้เหมาะสม
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

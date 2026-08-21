@@ -1,8 +1,16 @@
 ---
 name: follow-jspm
-description: "JSPM เป็น ES Module Package Manager และ CDN ที่ใช้มาตรฐาน native ES modules พร้อม import maps"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: JSPM เป็น ES Module Package Manager และ CDN ที่ใช้มาตรฐาน native ES modules
+  พร้อม import maps
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

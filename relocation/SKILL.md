@@ -1,6 +1,15 @@
 ---
 name: relocation
 description: ย้ายไฟล์และโฟลเดอร์ไปยังตำแหน่งที่เหมาะสมตาม domain และ responsibility
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

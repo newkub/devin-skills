@@ -1,6 +1,16 @@
 ---
 name: follow-knip
-description: Setup and configure Knip for detecting unused files, dependencies, and exports in monorepos
+description: Setup and configure Knip for detecting unused files, dependencies, and
+  exports in monorepos
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

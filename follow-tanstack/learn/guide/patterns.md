@@ -8,8 +8,8 @@
 
 ```typescript
 const postsQuery = useQuery({ queryKey: ['posts'], queryFn: fetchPosts });
-const postQuery = useQuery({ 
-  queryKey: ['post', postId], 
+const postQuery = useQuery({
+  queryKey: ['post', postId],
   queryFn: () => fetchPost(postId),
   enabled: !!postId
 });

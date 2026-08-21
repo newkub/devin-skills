@@ -162,7 +162,7 @@ if (result instanceof type.errors) {
   result[0].path    // ["name"]
   result[0].message // "Expected string, received number"
   result[0].actual  // 123
-  
+
   // Summary for display
   result.summary    // Full formatted message
 }

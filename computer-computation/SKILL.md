@@ -1,8 +1,16 @@
 ---
 name: computer-computation
-description: "Computer computation and theory of computation guide covering computational models, complexity..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Computer computation and theory of computation guide covering computational
+  models, complexity...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

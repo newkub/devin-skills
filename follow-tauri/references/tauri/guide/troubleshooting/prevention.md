@@ -47,10 +47,10 @@ mod tests {
 
 ```rust
 /// Performs X operation
-/// 
+///
 /// # Arguments
 /// * `param` - Description
-/// 
+///
 /// # Returns
 /// * `Result<String, Error>` - Description
 fn documented_function(param: String) -> Result<String, Error> {

@@ -1,6 +1,16 @@
 ---
 name: create-vscode-extensions
-description: Guidelines for creating VS Code extensions using TypeScript and VS Code API. Includes commands,...
+description: Guidelines for creating VS Code extensions using TypeScript and VS Code
+  API. Includes commands,...
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

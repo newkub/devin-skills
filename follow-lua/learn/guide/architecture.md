@@ -369,19 +369,19 @@ local environments = {
 
 function Config.load(env)
     local config = {}
-    
+
     -- Copy defaults
     for k, v in pairs(defaults) do
         config[k] = v
     end
-    
+
     -- Override with environment
     if environments[env] then
         for k, v in pairs(environments[env]) do
             config[k] = v
         end
     end
-    
+
     return config
 end
 
@@ -558,11 +558,11 @@ function Pool.new(factory, initial_size)
     local self = setmetatable({}, Pool)
     self.factory = factory
     self.pool = {}
-    
+
     for i = 1, initial_size do
         table.insert(self.pool, factory())
     end
-    
+
     return self
 end
 

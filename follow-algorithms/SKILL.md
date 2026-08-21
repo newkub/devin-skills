@@ -2,20 +2,20 @@
 name: follow-algorithms
 description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
+- read
+- edit
+- write
+- grep
+- glob
+- exec
 related:
-  - follow-data-structures
-  - check-time-complexity
-  - follow-functional-programming
-  - validate
+- follow-data-structures
+- check-time-complexity
+- follow-functional-programming
+- validate
 ---
 
 ## Goal

@@ -2,19 +2,19 @@
 name: report-review
 description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-format-table
-  - suggest-next-action
+- report-format-table
+- suggest-next-action
 ---
 
 ## Goal

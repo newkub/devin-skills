@@ -1,6 +1,15 @@
 ---
 name: list-improvements
 description: แสดงรายการ improvements ที่ทำได้ใน project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -1,6 +1,16 @@
 ---
 name: follow-raycast-extension
-description: สร้าง Raycast Extensions ด้วย TypeScript, React และ Raycast API สำหรับ macOS productivity
+description: สร้าง Raycast Extensions ด้วย TypeScript, React และ Raycast API สำหรับ
+  macOS productivity
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

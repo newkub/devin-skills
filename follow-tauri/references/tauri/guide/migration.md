@@ -183,7 +183,7 @@ Create `capabilities/default.json`:
    ```typescript
    // v1
    import { invoke } from '@tauri-apps/api/tauri'
-   
+
    // v2
    import { invoke } from '@tauri-apps/api/core'
    ```

@@ -1,6 +1,15 @@
 ---
 name: follow-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

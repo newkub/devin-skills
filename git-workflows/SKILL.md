@@ -1,5 +1,14 @@
 ---
 name: git-workflows
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## restructure

@@ -89,7 +89,7 @@ const User = Database("models/user");
 ### Custom Error Messages
 
 ```typescript
-const Email = type("string").assert((s) => 
+const Email = type("string").assert((s) =>
   s.includes("@") ? null : "Must be a valid email"
 );
 ```

@@ -1,12 +1,17 @@
 ---
 name: implement-plan
 description: อ่านแผนใน .devin/plan/<title-date>.md ทำงานให้ครบ แล้วลบแผน
-argument-hint: "[<plan-path-or-title>]"
-triggers: ['user']
-allowed-tools: ['read', 'edit', 'write', 'exec']
+argument-hint: '[<plan-path-or-title>]'
+triggers:
+- user
+allowed-tools:
+- read
+- edit
+- write
+- exec
 related:
-  - create-plan
-  - realize-implementation
+- create-plan
+- realize-implementation
 ---
 
 ## Goal

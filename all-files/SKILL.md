@@ -1,6 +1,15 @@
 ---
 name: all-files
 description: ทำงานกับแต่ละ file ใน project จนครบถ้วน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

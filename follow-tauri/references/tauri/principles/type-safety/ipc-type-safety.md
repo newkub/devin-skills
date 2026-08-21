@@ -64,10 +64,10 @@ use validator::Validate;
 struct CreateUser {
     #[validate(length(min = 1, max = 100))]
     name: String,
-    
+
     #[validate(email)]
     email: String,
-    
+
     #[validate(range(min = 18, max = 120))]
     age: u8,
 }

@@ -1,6 +1,15 @@
 ---
-name: run-review
+name: run-review\references\run-review
 description: Define and run the review script in package.json.
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 1. /follow-global-workflows

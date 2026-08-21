@@ -1,14 +1,24 @@
 ---
 name: deep-validate
-description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
+description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security,
+  compliance
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - deep-plan
-  - deep-analyze
-  - check-correctness
-  - run-typecheck
-  - follow-code-quality
-  - report-format-table
-  - suggest-next-action
+- deep-plan
+- deep-analyze
+- check-correctness
+- run-typecheck
+- follow-code-quality
+- report-format-table
+- suggest-next-action
 ---
 
 ## Goal

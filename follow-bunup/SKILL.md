@@ -1,6 +1,16 @@
 ---
 name: follow-bunup
-description: ตั้งค่าและใช้งาน Bunup สำหรับ bundle TypeScript libraries ด้วย Bun's native bundler - เร็ว ง่าย และ auto-detect entry points
+description: ตั้งค่าและใช้งาน Bunup สำหรับ bundle TypeScript libraries ด้วย Bun's
+  native bundler - เร็ว ง่าย และ auto-detect entry points
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

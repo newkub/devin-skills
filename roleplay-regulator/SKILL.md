@@ -1,6 +1,16 @@
 ---
 name: roleplay-regulator
-description: รับบทเป็นหน่วยงานภาครัฐตรวจ platform หาช่องโหว่กฎหมายและ compliance gaps ที่อาจถูกดำเนินการ
+description: รับบทเป็นหน่วยงานภาครัฐตรวจ platform หาช่องโหว่กฎหมายและ compliance gaps
+  ที่อาจถูกดำเนินการ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

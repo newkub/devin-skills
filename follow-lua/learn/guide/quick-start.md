@@ -101,7 +101,7 @@ end
 local function main()
   local salary = 50000
   local years = 3
-  
+
   local bonus = calculate_bonus(salary, years)
   print(string.format("Bonus: $%.2f", bonus))
 end

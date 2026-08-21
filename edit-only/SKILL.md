@@ -1,6 +1,15 @@
 ---
 name: edit-only
 description: แก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

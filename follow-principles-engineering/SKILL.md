@@ -1,6 +1,15 @@
 ---
 name: follow-principles-engineering
 description: ตรวจสอบว่าไฟล์ match กับ software engineering principles ตาม file name
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

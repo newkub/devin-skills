@@ -1,6 +1,15 @@
 ---
 name: translate-code
 description: แปล function และ code เป็นประโยคที่เข้าใจง่าย
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

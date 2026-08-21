@@ -1,6 +1,15 @@
 ---
 name: use-raindrop-cli
 description: ใช้ raindrop CLI สำหรับจัดการ Raindrop.io bookmarks, collections, tags
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

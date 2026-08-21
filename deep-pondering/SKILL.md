@@ -1,6 +1,15 @@
 ---
 name: deep-pondering
 description: ครุ่นคิดเชิงลึกก่อนตัดสินใจสำหรับงานซับซ้อน ระบุ trade-offs และ uncertainties
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

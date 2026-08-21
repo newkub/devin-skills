@@ -105,11 +105,11 @@ interface Builder {
       platform?: object;
     }
   ): Promise<Response>;
-  
+
   // Write files to output
   writeFile(path: string, data: string): Promise<void>;
   writeDir(path: string): Promise<void>;
-  
+
   // Generate prerendered pages
   generatePreloadHash(): string;
   prerender(options: PrerenderOptions): Promise<void>;
@@ -154,7 +154,7 @@ export async function load({ fetch }) {
 // +page.ts - runs on both
 export async function load({ fetch, depends }) {
   depends('app:posts'); // Invalidate with invalidate()
-  
+
   const res = await fetch('/api/posts');
   return { posts: await res.json() };
 }

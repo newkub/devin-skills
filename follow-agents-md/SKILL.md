@@ -1,6 +1,15 @@
-﻿---
+---
 name: follow-agents-md
 description: ทำตาม AGENTS.md ใน workspace
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

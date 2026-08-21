@@ -1,6 +1,15 @@
 ---
 name: create-github-pr
 description: สร้าง pull request ใหม่จาก branch ปัจจุบัน พร้อม description และ reviewers
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -230,13 +230,13 @@ anime({
   targets: '.box',
   // Single value
   translateX: 250,
-  
+
   // Array value [from, to]
   opacity: [0, 1],
-  
+
   // Array value [from, to, easing]
   backgroundColor: ['#fff', '#000', 'linear'],
-  
+
   // Relative value
   width: '+=100px', // เพิ่ม 100px
   height: '-=50px'  // ลด 50px

@@ -41,7 +41,7 @@ use leptos::*;
 #[component]
 fn LoginForm() -> impl IntoView {
     let (name, set_name) = create_signal(String::new());
-    
+
     view! {
         <form>
             <input

@@ -1,8 +1,15 @@
 ---
-name: nvim
-description: "แนวทางการใช้งาน Neovim - Modern, extensible text editor ที่พัฒนาจาก Vim"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-nvim\references\nvim
+description: แนวทางการใช้งาน Neovim - Modern, extensible text editor ที่พัฒนาจาก Vim
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

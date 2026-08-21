@@ -24,7 +24,7 @@ impl<R: UserRepository> UserService<R> {
     pub fn new(repo: R) -> Self {
         Self { repo }
     }
-    
+
     pub async fn get_user(&self, id: u32) -> Result<User, Error> {
         self.repo.find(id).await
     }
@@ -39,7 +39,7 @@ impl UserRepository for SqliteUserRepository {
     async fn find(&self, id: u32) -> Result<User, Error> {
         // SQLite implementation
     }
-    
+
     async fn save(&self, user: User) -> Result<(), Error> {
         // SQLite implementation
     }

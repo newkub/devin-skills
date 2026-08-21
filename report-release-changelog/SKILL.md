@@ -2,18 +2,18 @@
 name: report-release-changelog
 description: จัดรูปแบบ release changelog จากข้อมูล diff ระหว่าง GitHub tags
 allowed-tools:
-  - read
-  - write
-  - exec
-  - ask_user_question
+- read
+- write
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - check-release-changelog
-  - report-format-table
-  - report-format-file-structure
-  - suggest-next-action
+- check-release-changelog
+- report-format-table
+- report-format-file-structure
+- suggest-next-action
 ---
 
 ## Goal

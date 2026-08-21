@@ -2,19 +2,19 @@
 name: report-config-drift
 description: เปรียบเทียบ config ระหว่าง environments เพื่อตรวจจับ drift
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-format-table
-  - suggest-next-action
+- report-format-table
+- suggest-next-action
 ---
 
 ## Goal

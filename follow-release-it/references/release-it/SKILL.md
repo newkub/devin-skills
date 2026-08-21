@@ -1,8 +1,15 @@
 ---
-name: release-it
-description: "Generic CLI tool สำหรับ automate versioning และ package publishing"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-release-it\references\release-it
+description: Generic CLI tool สำหรับ automate versioning และ package publishing
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

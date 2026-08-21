@@ -1,6 +1,15 @@
 ---
 name: list-github-repo
 description: แสดงรายการ repositories ทั้งหมดที่ผู้ใช้สร้างบน GitHub
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

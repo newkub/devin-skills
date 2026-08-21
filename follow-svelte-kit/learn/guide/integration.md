@@ -110,18 +110,18 @@ import { auth } from '$lib/server/auth';
 
 export async function handle({ event, resolve }) {
   const sessionId = event.cookies.get(auth.sessionCookieName);
-  
+
   if (!sessionId) {
     event.locals.user = null;
     event.locals.session = null;
     return resolve(event);
   }
-  
+
   const { session, user } = await auth.validateSession(sessionId);
-  
+
   event.locals.user = user;
   event.locals.session = session;
-  
+
   return resolve(event);
 }
 ```
@@ -143,15 +143,15 @@ import { json } from '@sveltejs/kit';
 export async function GET({ url, fetch }) {
   const limit = Number(url.searchParams.get('limit') ?? 10);
   const posts = await db.select().from(postsTable).limit(limit);
-  
+
   return json(posts);
 }
 
 export async function POST({ request, fetch }) {
   const data = await request.json();
-  
+
   const post = await db.insert(postsTable).values(data).returning();
-  
+
   return json(post, { status: 201 });
 }
 ```
@@ -207,11 +207,11 @@ export const actions = {
   default: async ({ request }) => {
     const data = await request.formData();
     const result = CreateUserSchema.safeParse(Object.fromEntries(data));
-    
+
     if (!result.success) {
       return fail(400, { errors: result.error.flatten() });
     }
-    
+
     // Create user
     return { success: true };
   }

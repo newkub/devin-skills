@@ -1,6 +1,15 @@
 ---
 name: follow-release-vscode
 description: ตั้งค่า VS Code extensions สำหรับ automated releases
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ตั้งค่า VS Code extensions สำหรับ automated releases

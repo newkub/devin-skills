@@ -255,7 +255,7 @@ export default async function handler(req) {
 // pages/posts/[id].tsx
 export async function getStaticProps({ params }) {
   const post = await fetchPost(params.id);
-  
+
   return {
     props: { post },
     revalidate: 60 // Revalidate every 60 seconds

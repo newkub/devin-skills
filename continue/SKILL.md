@@ -1,6 +1,15 @@
 ---
 name: continue
 description: ทำงานต่อให้ครบถ้วนตามที่ได้รับมอบหมาย ตรวจสอบความสมบูรณ์ และหยุดเมื่องานเสร็จสิ้น
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

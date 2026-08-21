@@ -1,6 +1,15 @@
 ---
 name: use-lang-en
 description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

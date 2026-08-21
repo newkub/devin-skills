@@ -1,8 +1,16 @@
 ---
 name: follow-create-browser-extensions
-description: "Guidelines for creating browser extensions for Chrome, Firefox, Edge, and other browsers..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Guidelines for creating browser extensions for Chrome, Firefox, Edge,
+  and other browsers...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

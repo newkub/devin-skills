@@ -1,6 +1,16 @@
 ---
 name: git-file-history
-description: ดู git file history ผ่าน @wrikka/git-cli package ที่ release แล้ว แบบ interactive HTML viewer พร้อม split-screen timeline และ diff
+description: ดู git file history ผ่าน @wrikka/git-cli package ที่ release แล้ว แบบ
+  interactive HTML viewer พร้อม split-screen timeline และ diff
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

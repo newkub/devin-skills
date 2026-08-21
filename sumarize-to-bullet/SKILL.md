@@ -1,6 +1,15 @@
 ---
 name: sumarize-to-bullet
 description: สรุปเนื้อหาให้อยู่ในรูปแบบ bullet points
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

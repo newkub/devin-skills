@@ -52,7 +52,7 @@ impl<const N: usize> Vector<N> {
     fn new(data: [f64; N]) -> Self {
         Self { data }
     }
-    
+
     fn dot(&self, other: Vector<N>) -> f64 {
         self.data.iter()
             .zip(other.data.iter())

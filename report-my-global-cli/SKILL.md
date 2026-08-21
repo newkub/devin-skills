@@ -2,18 +2,18 @@
 name: report-my-global-cli
 description: รายงาน CLI tools ที่ติดตั้งและ commands ที่ควรแปลงเป็น skills
 allowed-tools:
-  - read
-  - exec
-  - ask_user_question
+- read
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - use-my-global-cli
-  - learn-from-cli
-  - report-format-table
-  - suggest-next-action
-  - idea-convert-my-global-cli-to-skills
+- use-my-global-cli
+- learn-from-cli
+- report-format-table
+- suggest-next-action
+- idea-convert-my-global-cli-to-skills
 ---
 
 ## Goal

@@ -1,13 +1,22 @@
 ---
 name: search-project-in-drive-d
 description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern ที่ระบุ
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - list-project-in-drive-d
-  - at-project-in-drive-d
-  - report-format-table
-  - ask-me
+- list-project-in-drive-d
+- at-project-in-drive-d
+- report-format-table
+- ask-me
 ---
 
 ## Goal

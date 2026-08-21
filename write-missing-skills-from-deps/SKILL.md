@@ -1,6 +1,15 @@
 ---
 name: write-missing-skills-from-deps
 description: สร้าง skills ที่ขาดจาก dependencies ใน package manifest
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

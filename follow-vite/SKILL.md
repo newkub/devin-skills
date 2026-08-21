@@ -1,6 +1,15 @@
 ---
 name: follow-vite
 description: แนวทางการพัฒนาด้วย Vite 7+ build tool สำหรับ modern web applications
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

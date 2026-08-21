@@ -1,8 +1,15 @@
 ---
-name: moonrepo
-description: "แนวทางการใช้งาน moonrepo สำหรับ monorepo management และ task running"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-moonrepo\references\moonrepo
+description: แนวทางการใช้งาน moonrepo สำหรับ monorepo management และ task running
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

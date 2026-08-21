@@ -33,15 +33,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Install Scalar
         run: bun install @scalar/api-designer
-        
+
       - name: Deploy
         run: bun run deploy
         env:

@@ -1,6 +1,15 @@
 ---
 name: follow-resolve-pr
 description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

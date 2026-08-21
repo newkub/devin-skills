@@ -1,12 +1,21 @@
 ---
 name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 related:
-  - ask-me
-  - report-format-table
-  - scan-codebase
-  - report-status
-  - continue
+- ask-me
+- report-format-table
+- scan-codebase
+- report-status
+- continue
 ---
 
 ## Goal

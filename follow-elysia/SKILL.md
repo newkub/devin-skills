@@ -1,6 +1,16 @@
 ---
 name: follow-elysia
-description: แนวทางการพัฒนา API ด้วย Elysia บน Bun แบบ type-safe ตาม official best practices
+description: แนวทางการพัฒนา API ด้วย Elysia บน Bun แบบ type-safe ตาม official best
+  practices
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

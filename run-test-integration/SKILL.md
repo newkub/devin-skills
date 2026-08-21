@@ -1,6 +1,15 @@
 ---
 name: run-test-integration
 description: รัน integration tests สำหรับ module interactions และ data flow
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

@@ -56,8 +56,8 @@ const Schema = type({...})
 
 const validate = (data) => pipe(
   Schema(data),
-  (result) => result instanceof type.errors ? 
-    Effect.fail(result.summary) : 
+  (result) => result instanceof type.errors ?
+    Effect.fail(result.summary) :
     Effect.succeed(result)
 )
 ```

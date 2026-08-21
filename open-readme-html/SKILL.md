@@ -1,6 +1,16 @@
 ---
 name: open-readme-html
-description: สร้างและเปิดไฟล์ README.html ด้วย Element Plus + Tailwind CSS, tab system 7 tabs พร้อม search, sorting, grouping และ expand/collapse
+description: สร้างและเปิดไฟล์ README.html ด้วย Element Plus + Tailwind CSS, tab system
+  7 tabs พร้อม search, sorting, grouping และ expand/collapse
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

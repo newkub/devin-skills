@@ -1,6 +1,15 @@
 ---
 name: follow-node-modules-inspector
 description: Setup Node Modules Inspector for interactive node modules inspection
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

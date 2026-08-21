@@ -1,6 +1,15 @@
 ---
 name: follow-vue
 description: แนวทางการพัฒนา Vue 3 applications ตาม best practices 2026
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

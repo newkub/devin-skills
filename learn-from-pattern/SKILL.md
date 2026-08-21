@@ -1,6 +1,15 @@
 ---
 name: learn-from-pattern
 description: เรียนรู้จาก patterns ที่พบใน codebase, competitors, หรือ real-world implementations
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

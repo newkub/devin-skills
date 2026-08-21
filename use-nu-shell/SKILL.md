@@ -1,6 +1,15 @@
 ---
 name: use-nu-shell
 description: ใช้ Nushell สำหรับ shell commands, structured data pipelines, และ scripting
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

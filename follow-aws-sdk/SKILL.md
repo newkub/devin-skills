@@ -1,8 +1,16 @@
 ---
 name: follow-aws-sdk
-description: "AWS SDK for JavaScript. Use for interacting with AWS services like S3, Lambda, DynamoDB, and..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: AWS SDK for JavaScript. Use for interacting with AWS services like S3,
+  Lambda, DynamoDB, and...
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

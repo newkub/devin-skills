@@ -90,7 +90,7 @@ impl Greeting {
             timestamp: Utc::now(),
         }
     }
-    
+
     pub fn is_valid(&self) -> bool {
         !self.message.is_empty()
     }
@@ -117,7 +117,7 @@ impl FileRepository {
     pub fn save(&self, path: &Path, content: &str) -> Result<(), std::io::Error> {
         fs::write(path, content)
     }
-    
+
     pub fn load(&self, path: &Path) -> Result<String, std::io::Error> {
         fs::read_to_string(path)
     }

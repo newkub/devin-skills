@@ -1,6 +1,15 @@
 ---
 name: improve-rules
 description: ปรับปรุง rule files ให้ถูกต้อง ครอบคลุม และสอดคล้องกับ project
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

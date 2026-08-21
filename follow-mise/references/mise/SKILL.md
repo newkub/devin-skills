@@ -1,8 +1,16 @@
 ---
-name: mise
-description: "Mise - Development environment manager สำหรับ manage tools และ versions ต่างๆ"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+name: follow-mise\references\mise
+description: Mise - Development environment manager สำหรับ manage tools และ versions
+  ต่างๆ
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 ## Goal
 

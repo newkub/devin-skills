@@ -2,19 +2,19 @@
 name: report-bundle
 description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - report-format-table
-  - suggest-next-action
+- report-format-table
+- suggest-next-action
 ---
 
 ## Goal

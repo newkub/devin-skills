@@ -1,6 +1,15 @@
 ---
 name: use-bun-native-instead-nodejs
 description: ใช้ Bun ecosystem ทั้งหมดแทน Node.js สำหรับ performance และ simplicity
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
+triggers:
+- user
+- model
 ---
 
 ## Goal

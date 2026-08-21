@@ -1,8 +1,15 @@
 ---
 name: follow-devin
-description: "Devin/Cascade AI coding assistant สำหรับ autonomous software engineering"
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- grep
+- glob
+- exec
 ---
 ## Goal
 

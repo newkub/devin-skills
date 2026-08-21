@@ -1,14 +1,24 @@
 ---
 name: restore-from-devin-history
-description: กู้คืนไฟล์ที่เสียหายรุนแรงโดยอ่านประวัติ Devin session แทน git restore เมื่อง git ใช้ไม่ได้แล้ว
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_question']
+description: กู้คืนไฟล์ที่เสียหายรุนแรงโดยอ่านประวัติ Devin session แทน git restore
+  เมื่อง git ใช้ไม่ได้แล้ว
+triggers:
+- user
+- model
+allowed-tools:
+- read
+- edit
+- write
+- grep
+- glob
+- exec
+- ask_user_question
 related:
-  - ask-me
-  - report
-  - report-plan
-  - git-debug
-  - git-restore-file
+- ask-me
+- report
+- report-plan
+- git-debug
+- git-restore-file
 ---
 
 ## Goal

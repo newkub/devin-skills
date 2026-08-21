@@ -139,7 +139,7 @@ export const actions = {
 // src/hooks.server.ts
 export async function handle({ event, resolve }) {
   event.locals.user = await getUser(event);
-  
+
   return resolve(event);
 }
 ```

@@ -1,28 +1,29 @@
-﻿---
+---
 name: update-agents-md
-description: สร้างหรืออัปเดท AGENTS.md โดยไม่มี workflows และมี architecture พร้อม skills mapping
+description: สร้างหรืออัปเดท AGENTS.md โดยไม่มี workflows และมี architecture พร้อม
+  skills mapping
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - follow-devin-skills-md
-  - follow-monorepo
-  - all-workspaces
-  - deep-plan
-  - analyze-project
-  - check-monorepo
-  - follow-write-devin-skills
-  - review-codebase
-  - git-commit
-  - ask-me
+- follow-devin-skills-md
+- follow-monorepo
+- all-workspaces
+- deep-plan
+- analyze-project
+- check-monorepo
+- follow-write-devin-skills
+- review-codebase
+- git-commit
+- ask-me
 ---
 
 ## Goal

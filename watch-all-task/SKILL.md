@@ -2,15 +2,15 @@
 name: watch-all-task
 description: Watch task files and auto run pending tasks on changes
 triggers:
-  - user
-  - model
+- user
+- model
 allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
+- read
+- edit
+- write
+- grep
+- exec
+- ask_user_question
 ---
 
 ## Goal

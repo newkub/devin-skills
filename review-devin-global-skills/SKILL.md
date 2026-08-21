@@ -1,31 +1,32 @@
 ---
 name: review-devin-global-skills
-description: Review global Devin skills for structure, valid references, and quality with scores and action items
+description: Review global Devin skills for structure, valid references, and quality
+  with scores and action items
 allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
+- read
+- write
+- edit
+- grep
+- glob
+- exec
+- ask_user_question
 triggers:
-  - user
-  - model
+- user
+- model
 related:
-  - list-skills
-  - check-reference
-  - follow-content-quality
-  - report-format-table
-  - report-format-terminal
-  - report
-  - suggest-next-action
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - validate
-  - use-scripts
-  - deep-analyze-by-use-scripts
-  - ask-me
+- list-skills
+- check-reference
+- follow-content-quality
+- report-format-table
+- report-format-terminal
+- report
+- suggest-next-action
+- follow-devin-skills-md
+- follow-write-devin-skills
+- validate
+- use-scripts
+- deep-analyze-by-use-scripts
+- ask-me
 ---
 
 ## Goal
