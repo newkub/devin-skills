@@ -64,7 +64,7 @@ related:
 
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
-| Nuxt | `nuxt` in dependencies | `/follow-nuxt-architecture` |
+| Nuxt | `nuxt` in dependencies | `/follow-nuxt` |
 | Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
 | Vue.js | `vue` in dependencies | `/follow-vue` |
 | SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack-architecture` |

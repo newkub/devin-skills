@@ -37,7 +37,7 @@ related:
 
 > Goal: Import aliases สอดคล้องกันทุก config
 
-1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-tsconfig-json`)
+1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-typescript`)
 2. ตั้งค่า `resolve.alias` ใน `vite.config.ts` สำหรับ Vite
 3. ตั้งค่า `imports` ใน `package.json` สำหรับ Bun
 4. ตั้งค่า framework-specific aliases (Next.js, Nuxt, Solid, etc.)

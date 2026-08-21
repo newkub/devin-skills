@@ -11,7 +11,7 @@ description: ใช้ Bun shell สำหรับ execute commands ด้ว�
 
 ### 1. Prepare Bun Shell Environment
 
-1. ทำ `/bun` เพื่อ setup Bun environment
+1. ทำ `/follow-bun` เพื่อ setup Bun environment
 2. ตรวจสอบว่า Bun ติดตั้งและพร้อมใช้งาน
 3. ตั้งค่า environment variables ที่จำเป็นสำหรับ Bun
 

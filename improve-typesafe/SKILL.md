@@ -52,7 +52,7 @@ description: วิเคราะห์และปรับปรุง type s
 
 > Goal: tsconfig strict สุด เพื่อ catch type issues ตั้งแต่ compile time
 
-1. ทำ `/follow-tsconfig-json` เพื่อตั้งค่า `tsconfig.json` ให้ strict สุด — ถ้าเป็น TS project ทุกครั้ง
+1. ทำ `/follow-typescript` เพื่อตั้งค่า `tsconfig.json` ให้ strict สุด — ถ้าเป็น TS project ทุกครั้ง
 2. ตรวจสอบ strict options: `strict: true`, `noUncheckedIndexedAccess`, `noImplicitOverride`, `exactOptionalPropertyTypes`
 3. เพิ่ม strict options ที่ขาด — ถ้าเพิ่มแล้วมี errors → แก้ก่อน (ไม่ suppress)
 4. ถ้าเป็น monorepo → ตรวจสอบว่าทุก workspace ใช้ strict settings เดียวกัน

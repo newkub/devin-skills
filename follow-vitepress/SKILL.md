@@ -20,7 +20,7 @@ description: ตั้งค่า VitePress ด้วย UnoCSS, Shiki Twoslash
 3. เพิ่ม `docs` ใน `workspaces` ของ root `package.json`
 4. สร้าง `.vitepress/` config directory ภายใน `docs/`
 5. ทำ `/follow-gitignore` สร้าง `docs/.gitignore` สำหรับ VitePress build output และ cache
-6. ทำ `/follow-tsconfig-json` สร้าง `docs/tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
+6. ทำ `/follow-typescript` สร้าง `docs/tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
 
 ### 2. VitePress Configuration
 
@@ -232,7 +232,7 @@ features:
 ### 6. Gitignore And TypeScript Config
 
 - ทำ `/follow-gitignore` สร้าง `docs/.gitignore` ครอบคลุม `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
-- ทำ `/follow-tsconfig-json` สร้าง `docs/tsconfig.json` extends จาก root พร้อม `noEmit: true`, `types: ["vitepress"]`
+- ทำ `/follow-typescript` สร้าง `docs/tsconfig.json` extends จาก root พร้อม `noEmit: true`, `types: ["vitepress"]`
 - สำหรับ monorepo ให้เพิ่ม `docs` ใน `exclude` ของ root `tsconfig.json`
 
 ## Expected Outcome

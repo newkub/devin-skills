@@ -113,7 +113,7 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 
 ### 5. Non-Redundancy
 
-- ไม่ซ้ำกับ `/drizzle` หรือ `/follow-drizzle` ที่เน้น development guide
+- ไม่ซ้ำกับ `/follow-drizzle` ที่เน้น development guide
 - ใช้ขั้นตอนนี้เฉพาะเมื่อต้องการรัน studio จริง
 
 ## Expected Outcome

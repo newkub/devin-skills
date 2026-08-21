@@ -10,7 +10,7 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ## Scope
 
 ใช้สำหรับ restore ไฟล์จาก commit ในประวัติ git โดยเริ่มจาก commit ล่าสุดและเดินกลับทีละ commit
-ไม่ใช้สำหรับ restore จาก stash หรือ reflog — ใช้ `/follow-git-stash` หรือ `/follow-git-reflog` แทน
+ไม่ใช้สำหรับ restore จาก stash หรือ reflog — ใช้ `/follow-git` หรือ `/follow-git` แทน
 
 ## Execute
 

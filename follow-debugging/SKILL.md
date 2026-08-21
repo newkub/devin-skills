@@ -86,7 +86,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 - ไล่จากบนลงล่าง: UI → API → Database → Infrastructure
 - ไล่จาก narrow ไป broad: specific function → module → system
-- ใช้ binary search สำหรับ large codebase — ทำ `/follow-git-bisect`
+- ใช้ binary search สำหรับ large codebase — ทำ `/follow-git`
 - ถ้า intermittent ให้เก็บ log ทุกครั้งจนกว่าจะ pattern ชัด
 - ถ้า environment-specific ให้เปรียบเทียบ working vs broken environment
 
@@ -106,7 +106,7 @@ description: หลักการ debug อย่างเป็นระบบ
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-typescript`
 - Performance → `/run-profiler` + `/deep-review`
-- Git issues → `/follow-git-bisect` + `/follow-git-blame`
+- Git issues → `/follow-git` + `/follow-git`
 
 ### 5. Non-Redundancy
 

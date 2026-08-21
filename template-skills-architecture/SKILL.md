@@ -91,7 +91,7 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 - ตัวอย่าง: Next.js → `/follow-nextjs`, `/follow-vite`, `/follow-vitest`
 - ตัวอย่าง: Nuxt → `/follow-nuxtjs`, `/follow-vue`, `/follow-pinia`, `/follow-nitro`
 - ตัวอย่าง: SvelteKit → `/follow-svelte`, `/follow-vite`, `/follow-vitest`
-- ตัวอย่าง: SolidJS+TanStack → `/follow-solidjs`, `/follow-tanstack-start`, `/follow-tanstack-router`, `/follow-tanstack-query`
+- ตัวอย่าง: SolidJS+TanStack → `/follow-solidjs`, `/follow-tanstack`
 - รวม `/follow-vite` และ `/follow-vitest` เสมอเพราะเป็น build และ test tools ที่ใช้ร่วมกัน
 
 ### 3. Module Boundaries

@@ -35,7 +35,7 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 
 ### 3. Plugins
 
-ติดตั้งและตั้งค่า plugins ตาม use cases (ดูรายละเอียดที `/follow-vite-plugins`)
+ติดตั้งและตั้งค่า plugins ตาม use cases (ดูรายละเอียดที section นี้)
 
 ### 4. Development
 
@@ -63,7 +63,7 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 
 ### 6. Performance Optimization
 
-1. ทำ `/follow-vite-plugins` สำหรับ plugin selection, audit, และ performance impact
+1. ทำ plugin selection, audit, และประเมิน performance impact ตามหลักการของ skill นี้
 2. Reduce resolve operations: ใช้ explicit import paths เช่น `import './Component.jsx'` แทน `import './Component'`
 3. Avoid barrel files: import จากไฟล์ตรงๆ เช่น `import { slash } from './utils/slash.js'` แทน `import { slash } from './utils'`
 4. Warm up files: ใช้ `server.warmup.clientFiles` สำหรับไฟล์ที่ใช้บ่อยและ transform ช้า
@@ -129,14 +129,14 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 - ใช้ `manualChunks` สำหรับ vendor splitting
 - ใช้ `esbuild.drop` สำหรับ remove console/debugger ใน production
 - ตั้งค่า `chunkSizeWarningLimit` สำหรับ monitor bundle size
-- ใช้ bundle analysis plugin ตาม `/follow-vite-plugins`
+- ใช้ bundle analysis plugin ตามหลักการของ skill นี้
 
 ### 4. Performance Rules
 
 - หลีกเลี่ยง barrel files - import จากไฟล์ตรงๆ
 - ใช้ explicit import paths พร้อม extension
 - เปิด `moduleResolution: "bundler"` ใน tsconfig
-- ทำ `/follow-vite-plugins` สำหรับ plugin selection และ audit
+- ทำ plugin selection และ audit ตามหลักการของ skill นี้
 - ใช้ native tooling (LightningCSS) เมื่อได้
 
 ### 5. Environment Variables

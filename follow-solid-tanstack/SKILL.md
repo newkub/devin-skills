@@ -29,7 +29,7 @@ description: พัฒนา @tanstack/solid-start app ด้วย oRPC, Query,
 4. ตั้งค่า `manualChunks` สำหรับ vendor splitting: `solid-vendor`, `tanstack-router`, `tanstack-query`, แยก major dependencies
 5. ตั้งค่า `server.warmup.clientFiles` สำหรับ pre-transform ไฟล์ที่ใช้บ่อย (ทำ `/follow-vite`)
 6. เปิดใช้ `experimental.rolldown: true` สำหรับ Rolldown bundler ถ้าใช้ Vite 7+
-7. ตั้งค่า `tsconfig.json` ตาม `/follow-tsconfig-json`: `jsx: "preserve"`, `jsxImportSource: "solid-js"`, `moduleResolution: "Bundler"`, `module: "ESNext"`, `target: "ES2022"`, `paths: { "~/*": ["./src/*"] }`, `strict: true`, `skipLibCheck: true`
+7. ตั้งค่า `tsconfig.json` ตาม `/follow-typescript`: `jsx: "preserve"`, `jsxImportSource: "solid-js"`, `moduleResolution: "Bundler"`, `module: "ESNext"`, `target: "ES2022"`, `paths: { "~/*": ["./src/*"] }`, `strict: true`, `skipLibCheck: true`
 8. ห้ามเปิด `verbatimModuleSyntax` เพราะทำให้ server bundles รั่วเข้า client bundles
 
 ### 3. Setup Entry Points And Router
@@ -43,7 +43,7 @@ description: พัฒนา @tanstack/solid-start app ด้วย oRPC, Query,
 
 ### 4. Implement Routing
 
-1. ทำ `/follow-tanstack-router` สำหรับ file-based routing patterns
+1. ทำ `/follow-tanstack` สำหรับ file-based routing patterns
 2. ใช้ `createFileRoute("/path")` สำหรับทุก route
 3. ใช้ `beforeLoad` สำหรับ auth guards และ `throw redirect()` สำหรับ redirects
 4. ใช้ `head` ในแต่ละ route สำหรับ per-route SEO meta tags
@@ -64,13 +64,13 @@ description: พัฒนา @tanstack/solid-start app ด้วย oRPC, Query,
 
 ### 6. Setup Data And State
 
-1. ทำ `/follow-tanstack-query` สำหรับ Query v5 setup และ patterns
+1. ทำ `/follow-tanstack` สำหรับ Query v5 setup และ patterns
 2. สร้าง `src/lib/query-client.ts` พร้อม `QueryClient` (`staleTime`, `gcTime`, `retry`)
 3. ใช้ `useQuery(() => orpc.<path>.queryOptions({ input: { ... } }))` ด้วย function arguments สำหรับ reactive tracking
 4. ห้าม destructure query return value - access ใน JSX reactive context ผ่าน `<Switch>`/`<Match>`
-5. ทำ `/follow-tanstack-store` สำหรับ Store patterns
+5. ทำ `/follow-tanstack` สำหรับ Store patterns
 6. สร้าง stores ใน `src/modules/<feature>/stores/`, re-export จาก `src/stores/index.ts`
-7. ถ้า project มี forms ทำ `/follow-tanstack-form` สำหรับ Form v1 patterns
+7. ถ้า project มี forms ทำ `/follow-tanstack` สำหรับ Form v1 patterns
 
 ### 7. Configure Testing And Deployment
 

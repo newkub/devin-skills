@@ -41,7 +41,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 
 ### 4. Type Safety
 
-ทำตาม `/typescript` เพื่อเพิ่มความปลอดภัย
+ทำตาม `/follow-typescript` เพื่อเพิ่มความปลอดภัย
 
 1. ใช้ `function types` อย่างชัดเจน
 2. ใช้ `generics` สำหรับ reusable functions
@@ -124,7 +124,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 
 ### Type Safety
 
-ทำตาม `/typescript` เพื่อความปลอดภัย
+ทำตาม `/follow-typescript` เพื่อความปลอดภัย
 
 - Explicit `function types`
 - `Generics` สำหรับ reusability

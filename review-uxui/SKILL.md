@@ -14,13 +14,6 @@ allowed-tools:
   - ask_user_question
   - skill
 related:
-  - follow-uxui-interaction
-  - follow-uxui-animation
-  - follow-uxui-accessibility
-  - follow-uxui-chart
-  - follow-uxui-3d
-  - follow-uxui-dashboard
-  - follow-uxui-landing-pages
   - follow-uxui
   - check-accessibility
   - deep-analyze
@@ -50,7 +43,7 @@ UX/UI review สำหรับ: user flows, interaction design, visual hierarch
 2. ระบุ UI framework, CSS framework, design tokens, breakpoint config และ component library ที่ใช้
 3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
 4. ทำ `/follow-uxui` เพื่ออ้างอิง UX/UI best practices
-5. ถ้างานเกี่ยวข้อง dashboard → ทำ `/follow-uxui-dashboard`; ถ้าเป็น landing page → ทำ `/follow-uxui-landing-pages`
+5. ถ้างานเกี่ยวข้อง dashboard → ทำ `/follow-uxui`; ถ้าเป็น landing page → ทำ `/follow-uxui`
 
 ### 2. Deep Analyze Core
 
@@ -76,7 +69,7 @@ Review user journey, interaction patterns และ state feedback
 4. ตรวจสอบ cognitive load: information density, progressive disclosure, decision fatigue, context switching, task complexity, attention management
 5. Critical: broken user flow, dead-end state ไม่มีทางออก, no error recovery path, confusing navigation ที่ผู้ใช้หลงทาง, missing system status ที่ผู้ใช้ไม่รู้ว่ากำลังเกิดอะไร
 6. High: missing loading state, inconsistent interaction pattern, confusing empty state, missing success feedback, high cognitive load ที่เกินจำเป็น, missing progressive disclosure
-7. ถ้าพบปัญหา interaction/feedback/loading/toast/form/modal → ทำ `/follow-uxui-interaction` แล้ว delegate ไป `/follow-uxui-skeleton`, `/follow-uxui-toast`, `/follow-uxui-feedback`, `/follow-uxui-form`, `/follow-uxui-modal` ตามกรณี
+7. ถ้าพบปัญหา interaction/feedback/loading/toast/form/modal → ทำ `/follow-uxui` แล้ว delegate ไป `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, `/follow-uxui` ตามกรณี
 
 ### 4. Visual Design Review
 
@@ -91,7 +84,7 @@ Review visual hierarchy, typography, color theory, spacing system และ layo
 5. ตรวจสอบ layout principles: grid system, alignment consistency, balance (symmetrical, asymmetrical), proximity (grouping related items), consistency across pages
 6. Critical: broken visual hierarchy ที่ผู้ใช้ไม่รู้ว่าอะไรสำคัญ, insufficient contrast ที่อ่านไม่ได้, broken grid ที่ทำให้ layout พัง, brand inconsistency ที่ทำให้ไม่น่าเชื่อถือ
 7. High: inconsistent typography scale, insufficient contrast (below WCAG AA), inconsistent spacing system, missing dark mode support, font loading ที่ทำให้ text กระตุก, missing responsive typography
-8. ถ้างานเกี่ยวข้อง dashboard หรือ landing page → ทำ `/follow-uxui-dashboard` หรือ `/follow-uxui-landing-pages` ตามกรณี
+8. ถ้างานเกี่ยวข้อง dashboard หรือ landing page → ทำ `/follow-uxui` หรือ `/follow-uxui` ตามกรณี
 
 ### 5. UX Writing And Microcopy Review
 
@@ -129,7 +122,7 @@ Review responsive UX, animation UX และ accessibility compliance
 3. ตรวจสอบ accessibility: keyboard navigation (tab order, focus visible, focus trap), screen reader support (ARIA, semantic HTML, heading hierarchy), color contrast (WCAG AA 4.5:1 text, 3:1 large text), alternative text (images, icons, charts), form accessibility (label association, error identification), skip links, landmark roles
 4. Critical: no keyboard navigation, keyboard trap, no screen reader support, contrast below 3:1, missing focus indicator, no `prefers-reduced-motion` บน animation ที่รุนแรง, touch target เล็กกว่า 44px บน critical action
 5. High: missing ARIA, broken focus management, insufficient contrast (below WCAG AA), missing alt text, heading hierarchy issue, missing responsive breakpoint สำคัญ, animation ที่ไม่จำเป็น, missing micro-interaction feedback
-6. ถ้าพบปัญหา animation/interaction/gesture/scroll/a11y/3D/chart → ทำ `/follow-uxui-animation`, `/follow-uxui-interaction`, `/follow-uxui-gesture`, `/follow-uxui-scroll`, `/follow-uxui-accessibility`, `/follow-uxui-3d`, หรือ `/follow-uxui-chart` ตามกรณี
+6. ถ้าพบปัญหา animation/interaction/gesture/scroll/a11y/3D/chart → ทำ `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, `/follow-uxui`, หรือ `/follow-uxui` ตามกรณี
 
 ### 8. Validate, Rate And Report
 

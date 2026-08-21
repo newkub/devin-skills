@@ -149,7 +149,7 @@ related:
 
 - การสร้างไฟล์ changelog อยู่ใน `/gen-changelog` แล้ว
 - การสร้าง release อยู่ใน `/run-release` แล้ว
-- การจัดการ tags อยู่ใน `/follow-git-tags` แล้ว
+- การจัดการ tags อยู่ใน `/follow-git` แล้ว
 
 ## Expected Outcome
 

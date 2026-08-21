@@ -10,8 +10,8 @@ allowed-tools:
 related:
   - deep-analyze-by-use-scripts
   - follow-monorepo
-  - follow-uxui-animation
-  - follow-tanstack-ai
+  - follow-uxui
+  - follow-tanstack
   - follow-hk
   - follow-pitchfork
   - follow-usage
@@ -40,7 +40,7 @@ related:
 5. ถ้ามี desktop app: ระบุ `Tauri` และ Rust backend
 6. ถ้ามี mobile app: ระบุ `Capacitor` และ native plugins
 7. ถ้ามี AI features: ระบุ `TanStack AI` และ AI providers
-8. ถ้ามี animation/interactive visuals: ระบุ `/follow-uxui-animation`
+8. ถ้ามี animation/interactive visuals: ระบุ `/follow-uxui`
 
 ### 2. Document Tech Stack
 
@@ -102,7 +102,7 @@ related:
 | Async Runtime | - | `Tokio` |
 | HTTP Client | - | `reqwest` |
 | Logging | `pino` | `tracing` |
-| AI | `TanStack AI` (ดู `/follow-tanstack-ai`), `Workers AI` | - |
+| AI | `TanStack AI` (ดู `/follow-tanstack`), `Workers AI` | - |
 | MCP Server | `@modelcontextprotocol/sdk` | `rmcp` |
 | Web Scraping | `fastCRW` | `scraper` |
 | Linter | `Biome` | `Clippy` |
@@ -138,12 +138,12 @@ related:
 - ถ้าเป็น web app: เพิ่ม Router, State Management, Styling, UI Library, Data Fetching
 - ถ้าเป็น API: เพิ่ม API Schema, HTTP Client, Auth
 - ถ้าเป็น monorepo: เพิ่ม Build System, Documentation
-- ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack-ai`)
+- ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack`)
 - ถ้ามี desktop: เพิ่ม `Tauri`
 - ถ้ามี mobile: เพิ่ม `Capacitor`
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-pitchfork`)
 - ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-usage`)
-- ถ้ามี animation/interactive visuals: เพิ่ม `/follow-uxui-animation`
+- ถ้ามี animation/interactive visuals: เพิ่ม `/follow-uxui`
 
 ## Expected Outcome
 

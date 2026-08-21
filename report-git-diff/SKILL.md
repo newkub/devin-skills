@@ -150,7 +150,7 @@ related:
 ### Non-Redundancy
 
 - การ commit และ stage อยู่ใน `/git-commit` แล้ว
-- การดู file history อยู่ใน `/follow-git-blame` แล้ว
+- การดู file history อยู่ใน `/follow-git` แล้ว
 - การจัดรูปแบบ code blocks อยู่ใน `/report-format-code` แล้ว
 - การจัดรูปแบบตารางอยู่ใน `/report-format-table` แล้ว
 

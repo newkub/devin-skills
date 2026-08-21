@@ -4,7 +4,6 @@ description: ตรวจจับและรายงาน circular dependenc
 related:
   - use-scripts
   - scan-codebase
-  - use-scripts
   - follow-import-export
   - refactor-packages
   - update-reference

@@ -89,7 +89,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 3. Server Setup
 
-- ใช้ `RPCHandler` จาก package ที่ตรงกับ runtime (`/fetch`, `/node`, `/bun`)
+- ใช้ `RPCHandler` จาก package ที่ตรงกับ runtime (`/fetch`, `/node`, `bun`)
 - ตั้งค่า `interceptors` สำหรับ error logging
 - ส่ง initial context ผ่าน `handler.handle(request, { context: { ... } })`
 - ตรวจสอบ `result.matched` ก่อน return response

@@ -9,7 +9,7 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 
 ## Scope
 
-ใช้สำหรับดู stashes ใน local repository — ไม่รวมการ create, apply, drop (ใช้ `/follow-git-stash` สำหรับ stash operations)
+ใช้สำหรับดู stashes ใน local repository — ไม่รวมการ create, apply, drop (ใช้ `/follow-git` สำหรับ stash operations)
 
 ## Execute
 
@@ -66,7 +66,7 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 
 ### Read-Only
 
-- ไม่ create, apply, drop หรือ clear stash — ใช้ `/follow-git-stash` สำหรับ stash operations
+- ไม่ create, apply, drop หรือ clear stash — ใช้ `/follow-git` สำหรับ stash operations
 - ไม่แก้ไข working directory
 - รายงานเท่านั้น — read-only operation
 
@@ -85,7 +85,7 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 
 ### Non-Redundancy
 
-- Stash operations อยู่ใน `/follow-git-stash` แล้ว
+- Stash operations อยู่ใน `/follow-git` แล้ว
 - Branch listing อยู่ใน `/list-git-branch` แล้ว
 - Tag listing อยู่ใน `/list-git-tags` แล้ว
 

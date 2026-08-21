@@ -34,7 +34,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: พบ commit ที่ทำให้เกิด bug พร้อมระบุ commit hash
 
-1. ทำ `/follow-git-bisect` เพื่อรัน bisect workflow
+1. ทำ `/follow-git` เพื่อรัน bisect workflow
 2. ระบุ commit ล่าสุดที่รู้ว่า good และ commit แรกที่รู้ว่า bad
 3. ให้ bisect หา commit ที่ทำให้เกิด bug อัตโนมัติ
 4. บันทึก commit hash ที่พบ
@@ -47,7 +47,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ทราบใครเปลี่ยนบรรทัดใด เมื่อไหร่ และทำไม
 
-1. ทำ `/follow-git-blame` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
+1. ทำ `/follow-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
 2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
 3. ทำ `/git-file-history` เพื่อดู file history แบบ interactive
 4. วิเคราะห์เหตุผลของการเปลี่ยนแปลงจาก commit message และ diff
@@ -58,7 +58,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: กู้คืน commit ที่หายไปกลับมาได้
 
-1. ทำ `/follow-git-reflog` เพื่อดู reflog และหา commit ที่หาย
+1. ทำ `/follow-git` เพื่อดู reflog และหา commit ที่หาย
 2. ระบุ commit hash ที่ต้องการกู้คืนจาก reflog
 3. รัน `git cherry-pick <commit-hash>` เพื่อนำ commit กลับมา หรือ `git reset --hard <commit-hash>` ถ้าต้องการ reset HEAD
 4. ตรวจสอบด้วย `git log --oneline -5` ว่า commit กลับมาแล้ว
@@ -93,7 +93,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ปัญหาถูกแก้ไขและป้องกันการเกิดซ้ำ
 
-1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-git-revert` เพื่อ revert commit นั้น
+1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-git` เพื่อ revert commit นั้น
 2. ถ้าไฟล์ถูก restore → ทำ `/git-commit` เพื่อ commit ไฟล์ที่ restore
 3. ถ้า commit ถูกกู้คืน → ตรวจสอบว่า code ทำงานได้ก่อน push
 4. ทำ `/write-test` เพื่อสร้าง regression test สำหรับปัญหาที่พบ

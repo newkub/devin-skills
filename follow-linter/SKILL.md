@@ -24,8 +24,8 @@ description: ตั้งค่า linter สำหรับ project
 
 ### 2. Setup Linter
 
-1. รัน `/biome` สำหรับ TypeScript/JavaScript
-2. รัน `/oxlint` สำหรับ TypeScript/JavaScript
+1. รัน `/follow-biome` สำหรับ TypeScript/JavaScript
+2. รัน `/follow-oxlint` สำหรับ TypeScript/JavaScript
 3. รัน `/clippy` สำหรับ Rust
 
 ### 3. Validate
