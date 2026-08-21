@@ -7,7 +7,7 @@ triggers:
 related:
   - follow-my-global-cli
   - report-my-global-cli
-  - convert-my-global-cli-to-skills
+  - idea-convert-my-global-cli-to-skills
 ---
 
 ## Goal
