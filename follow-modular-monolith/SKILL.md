@@ -3,6 +3,7 @@ name: follow-modular-monolith
 description: Implement Modular Monolith architecture สำหรับ medium scale systems
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,9 +11,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-clean-architecture
+  - follow-event-driven
+  - follow-microservices-architecture
 ---
-
-## Goal
 
 ## Goal
 
@@ -20,13 +23,20 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 
 ## Scope
 
-Use `follow-modular-monolith` for the specific tasks and workflows it covers
+ใช้สำหรับออกแบบและพัฒนา medium scale systems ด้วย Modular Monolith
 
-## Execute
+- แยก modules ตาม bounded contexts
+- กำหนด communication patterns ระหว่าง modules
+- เลือก database strategy
+- ตั้งค่า build, deploy, และ migration path
 
 ## Execute
 
 ### 1. Analyze System Boundaries
+
+วิเคราะห์ domain และกำหนด module boundaries
+
+> Goal: modules สอดคล้องกับ bounded contexts
 
 1. ระบุ business domains และ modules ที่จำเป็น
 2. กำหนด module boundaries ตาม bounded contexts
@@ -35,27 +45,21 @@ Use `follow-modular-monolith` for the specific tasks and workflows it covers
 
 ### 2. Setup Module Structure
 
-1. สร้าง folder structure สำหรับแต่ละ module:
-   ```
-   src/
-   ├── modules/
-   │   ├── module-a/
-   │   │   ├── domain/
-   │   │   ├── application/
-   │   │   └── infrastructure/
-   │   └── module-b/
-   │       ├── domain/
-   │       ├── application/
-   │       └── infrastructure/
-   └── shared/
-       ├── infrastructure/
-       └── kernel/
-   ```
-2. สร้าง module exports สำหรับ public APIs
-3. กำหนด module interfaces และ contracts
-4. ใช้ `/follow-clean-architecture` ภายในแต่ละ module
+สร้าง folder structure สำหรับแต่ละ module
+
+> Goal: มีโครงสร้าง module ที่ชัดเจนและ encapsulate
+
+1. สร้าง `src/modules/<module>/{domain,application,infrastructure}` สำหรับแต่ละ module
+2. สร้าง `src/shared/{infrastructure,kernel}` สำหรับ shared concerns
+3. สร้าง module exports สำหรับ public APIs
+4. กำหนด module interfaces และ contracts
+5. ทำ `/follow-clean-architecture` ภายในแต่ละ module
 
 ### 3. Implement Inter-Module Communication
+
+เลือกและ implement communication pattern
+
+> Goal: modules สื่อสารกันได้โดยไม่ทำลาย boundaries
 
 1. เลือก communication pattern:
    - In-process method calls (synchronous)
@@ -64,8 +68,13 @@ Use `follow-modular-monolith` for the specific tasks and workflows it covers
 2. สร้าง shared kernel สำหรับ common types
 3. Implement module registry หรือ service locator
 4. กำหนด transaction boundaries ข้าม modules
+5. ถ้าใช้ async ทำ `/follow-event-driven`
 
 ### 4. Setup Database Strategy
+
+เลือกและตั้งค่า database strategy
+
+> Goal: ข้อมูลแยกตาม module โดยไม่ทำให้เกิด coupling
 
 1. เลือก database approach:
    - Single database, schema-per-module
@@ -77,6 +86,10 @@ Use `follow-modular-monolith` for the specific tasks and workflows it covers
 
 ### 5. Configure Build And Deploy
 
+ตั้งค่า build, tests, และ deployment pipeline
+
+> Goal: deploy เป็น single unit พร้อม tests ครบถ้วน
+
 1. สร้าง module-aware build configuration
 2. Setup integration tests ระหว่าง modules
 3. Implement health checks สำหรับแต่ละ module
@@ -84,23 +97,21 @@ Use `follow-modular-monolith` for the specific tasks and workflows it covers
 
 ## Rules
 
-## Rules
-
 ### 1. Module Boundaries
 
-Strict Encapsulation
-- แต่ละ module มี domain, application, infrastructure เป็นของตัวเอง
+- แต่ละ module มี `domain`, `application`, `infrastructure` เป็นของตัวเอง
 - Modules สื่อสารกันผ่าน public APIs เท่านั้น
 - ห้าม access internal implementation ของ module อื่นโดยตรง
 - ใช้ compiler/module system enforce boundaries
 
-Shared Kernel
+### 2. Shared Kernel
+
 - เก็บ common types, utilities, base classes ใน shared kernel
 - Shared kernel ต้อง stable และ minimal
 - หลีกเลี่ยง business logic ใน shared kernel
 - Version shared kernel อย่างระมัดระวัง
 
-### 2. Communication Patterns
+### 3. Communication Patterns
 
 Synchronous (Default)
 - ใช้สำหรับ operations ที่ต้องการ immediate consistency
@@ -113,7 +124,7 @@ Asynchronous (Event-Driven)
 - รองรับ eventual consistency
 - Implement retry และ dead letter queue
 
-### 3. Database Strategies
+### 4. Database Strategies
 
 | Strategy | Pros | Cons | Use Case |
 |----------|------|------|----------|
@@ -121,24 +132,20 @@ Asynchronous (Event-Driven)
 | Shared schema | Simplest setup | Tight coupling | Smaller systems |
 | Separate databases | True isolation | Distributed complexity | Large modules |
 
-Recommendations
 - เริ่มด้วย schema-per-module สำหรับ future flexibility
 - ใช้ database-per-module เฉพาะเมื่อมี strong isolation requirements
 - Avoid distributed transactions ถ้าเป็นไปได้
 
-### 4. Testing Strategy
+### 5. Testing Strategy
 
-Module Tests
 - Unit tests ในแต่ละ module
 - Integration tests สำหรับ module boundaries
 - Contract tests สำหรับ public APIs
-
-System Tests
 - End-to-end tests สำหรับ critical paths
 - Performance tests สำหรับ cross-module operations
 - Migration tests สำหรับ database changes
 
-### 5. Migration Path
+### 6. Migration Path
 
 From Layered to Modular Monolith
 1. Identify boundaries จาก existing code
@@ -151,20 +158,7 @@ From Modular Monolith to Microservices
 2. เปลี่ยน in-process calls เป็น network calls
 3. Implement distributed tracing
 4. Add service discovery
-
-### 6. Anti-Patterns
-
-Module Coupling
-- Circular dependencies ระหว่าง modules
-- Shared database tables โดยไม่มี abstraction
-- Business logic leak ระหว่าง modules
-
-Over-Engineering
-- สร้าง too many small modules (nanomodules)
-- ใช้ distributed database โดยไม่จำเป็น
-- แยก modules ก่อนที่จะเข้าใจ domains
-
-## Expected Outcome
+5. ทำ `/follow-microservices-architecture` สำหรับรายละเอียด
 
 ## Expected Outcome
 
@@ -174,7 +168,7 @@ Over-Engineering
 - Single deployment unit ที่ manage ได้ง่าย
 - Path สำหรับ migrate to microservices เมื่อจำเป็น
 
-## References
+## Guide
 
 - ทำ `/follow-clean-architecture` เพื่อ implement architecture ภายในแต่ละ module
 - ทำ `/follow-event-driven` หากใช้ async communication
