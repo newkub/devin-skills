@@ -1,4 +1,4 @@
-
+﻿
 # Global Workflows
 
 <div align="center">
@@ -80,7 +80,7 @@
 | Vue | `/follow-vue`, `/follow-nuxt`, `/follow-vueuse` |
 | React | `/follow-react`, `/follow-nextjs` |
 | Rust | `/follow-rust` |
-| Bun | `/follow-bun`, `/use-bun-native-instead-nodejs` |
+| Bun | `/follow-bun`, `/use-bun-native-api` |
 
 ### Utility Workflows
 

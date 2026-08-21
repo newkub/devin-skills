@@ -48,7 +48,8 @@ related:
 1. ทำ `/follow-turborepo` หรือ `/follow-moonrepo` สำหรับ tool setup
 2. แยก packages ตาม concerns
 3. ตั้งค่า workspace protocol
-4. รัน `/run-verify` เพื่อตรวจสอบ
+4. ตั้งค่า dependency catalog ใน root (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) สำหรับ shared versions
+5. รัน `/run-verify` เพื่อตรวจสอบ
 
 ### 3. Configure Build System
 > Goal: Configure Build System
@@ -116,6 +117,7 @@ related:
 
 - ระบุ dependencies ระหว่าง packages/crates อย่างชัดเจน
 - ใช้ workspace protocol สำหรับ internal dependencies
+- ใช้ workspace catalog (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) เพื่อ centralize shared dependency versions
 - หลีกเลี่ยง circular dependencies
 - Workspace-level lockfile
 - ใช้ dependency management tools สำหรับ updates

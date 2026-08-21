@@ -1,6 +1,6 @@
----
-name: use-bun-native-instead-nodejs
-description: ใช้ Bun ecosystem ทั้งหมดแทน Node.js สำหรับ performance และ simplicity
+﻿---
+name: use-bun-native-api
+description: ใช้ Bun native APIs แทน Node.js libraries เพื่อ performance และ simplicity
 allowed-tools:
   - read
   - edit
@@ -20,7 +20,7 @@ related:
 
 ## Scope
 
-Use `use-bun-native-instead-nodejs` for the specific tasks and workflows it covers
+Use `use-bun-native-api` for the specific tasks and workflows it covers
 
 ## Execute
 

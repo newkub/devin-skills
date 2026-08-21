@@ -15,6 +15,7 @@ related:
   - follow-clean-architecture
   - follow-bunup
   - follow-tasks
+  - use-bun-native-api
 ---
 
 ## Goal
@@ -43,7 +44,9 @@ related:
 
 1. ติดตั้ง `bunup` ด้วย `bun add -d bunup`
 2. สร้าง `bunup.config.ts` พร้อม `dts.splitting: true`
-3. ตั้งค่า `tsconfig.json`: `declaration: true`, `isolatedDeclarations: true`
+3. ติดตั้ง `picocolors` แทน `chalk` สำหรับ terminal colors
+4. ติดตั้ง `cac` แทน `commander` สำหรับ argument parsing
+5. ตั้งค่า `tsconfig.json`: `declaration: true`, `isolatedDeclarations: true`
 
 ### 3. Setup Scripts
 
@@ -56,7 +59,16 @@ related:
 4. เพิ่ม `lint`: `bunx tsc --noEmit && bunx biome lint --write`
 5. เพิ่ม `test`: `bun test`
 
-### 4. Development Workflow
+### 4. Choose CLI Libraries and APIs
+
+> Goal: ใช้ lightweight libraries และ Bun native APIs
+
+1. ทำตาม `/use-bun-native-api` โดยใช้ `Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob` แทน `node:*`
+2. ใช้ `picocolors` สำหรับสีใน terminal
+3. ใช้ `cac` สำหรับ argument parsing และ command structure
+4. หลีกเลี่ยง `chalk`, `commander` และ `node:fs`/`node:child_process` ถ้ามี Bun native equivalent
+
+### 5. Development Workflow
 
 > Goal: ใช้ development workflow ที่มีประสิทธิภาพ
 > Goal: รันได้เร็ว แก้ไขได้ทันที
@@ -80,6 +92,7 @@ related:
 - ใช้ `bunup` สำหรับ building — ดู `/follow-bunup` สำหรับ config options
 - ตั้งค่า `dts.splitting: true` สำหรับ type declarations
 - TypeScript: `declaration: true`, `isolatedDeclarations: true`
+- ตั้งค่า `packages: "bundle"` ใน `bunup.config.ts` ถ้าต้องการ zero runtime dependencies
 
 ### 3. Scripts
 
@@ -87,6 +100,13 @@ related:
 - `build:watch` = `bunx bunup --watch`
 - ใช้ `bunx` แทน `npx`
 - รัน lint และ typecheck ก่อน commit
+
+### 4. Dependencies
+
+- ใช้ `picocolors` แทน `chalk`
+- ใช้ `cac` แทน `commander`
+- ใช้ Bun native APIs (`Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob`) แทน `node:*` modules
+- bundle dependencies ด้วย `bunup` เพื่อลด runtime dependencies ถ้าเหมาะสม
 
 ## Expected Outcome
 
@@ -140,4 +160,5 @@ export default defineConfig({
 - `/follow-clean-architecture` — Clean Architecture structure
 - `/follow-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards
+- `/use-bun-native-api` — Bun native APIs แทน Node.js
 - [Bun Documentation](https://bun.sh/docs)

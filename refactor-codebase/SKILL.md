@@ -17,6 +17,7 @@ related:
   - follow-import-export
   - follow-architecture
   - refactor-packages
+  - improve-consistency
 ---
 
 ## Goal
@@ -26,7 +27,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 ## Scope
 
 - ใช้กับทุก workspace ที่ต้องการ refactor
-- ครอบคลุม SRP, long files, import/export, architecture, packages, code styles
+- ครอบคลุม SRP, long files, import/export, architecture, packages, code styles, consistency
 - ใช้ `/create-plan` สำหรับงานใหญ่
 - ใช้ `/implement-plan` สำหรับ execute แผน
 
@@ -54,6 +55,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 4. ถ้ามี imports/exports ซับซ้อน → ทำ `/follow-import-export`
 5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
 6. ถ้ามี package/module ปัญหา → ทำ `/refactor-packages`
+7. ถ้ามี inconsistencies ใน naming, patterns, structure, หรือ style → ทำ `/improve-consistency`
 
 ### 4. Update References
 > Goal: ไม่มี broken references
@@ -95,19 +97,25 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - ลบ unused imports/exports
 - จัดเรียง imports/exports ตามมาตรฐาน project
 
-### 2. Minimal Change
+### 2. Consistency
+
+- ทำ `/improve-consistency` เมื่อพบ inconsistencies ใน naming, patterns, structure, หรือ style
+- รักษา conventions เดียวกันทั้ง codebase
+- อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
+
+### 3. Minimal Change
 
 - ทำ `/dont-over-engineer` ก่อน
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 
-### 3. Safety
+### 4. Safety
 
 - destructive actions ต้องมี user confirmation
 - ทำ `/update-reference` หลังย้าย/ลบ/แยกไฟล์
 - ไม่ force push
 
-### 4. Verification
+### 5. Verification
 
 - ต้องผ่าน `/run-check` และ `/run-test`
 - ไฟล์ไม่เกิน 250 บรรทัด
@@ -118,5 +126,6 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - Codebase มี SRP ชัดเจน
 - ไฟล์และ packages มีขนาดเหมาะสม
 - imports/exports สะอาด
+- naming, patterns, structure มี consistency
 - ผ่าน lint/typecheck/test
 - รายงาน before/after
