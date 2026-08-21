@@ -3,6 +3,7 @@ name: follow-tauri
 description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -14,19 +15,26 @@ triggers:
 
 ## Goal
 
-## Goal
-
 สร้าง Tauri desktop application ที่ใช้ web frontend (Vite + React) ร่วมกับ Rust backend สำหรับ cross-platform desktop apps
 
 ## Scope
 
-Use `follow-tauri` for the specific tasks and workflows it covers
+ใช้สำหรับสร้าง ปรับปรุง และ build Tauri desktop apps ด้วย Bun และ Vite
 
-## Execute
+- ตรวจสอบ prerequisites (Rust, Bun, WebView2)
+- ติดตั้ง dependencies และ Tauri CLI
+- ตั้งค่า Vite และ `tauri.conf.json`
+- สร้าง IPC commands ระหว่าง frontend และ Rust backend
+- เพิ่ม plugins ตามต้องการ
+- build และ test บน target platforms
 
 ## Execute
 
 ### 1. Setup Environment
+
+ตรวจสอบ prerequisites สำหรับ Tauri development
+
+> Goal: environment พร้อมสำหรับ Tauri development
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
 2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
@@ -34,84 +42,68 @@ Use `follow-tauri` for the specific tasks and workflows it covers
 
 ### 2. Install Dependencies
 
+ติดตั้ง dependencies สำหรับ Tauri app
+
+> Goal: dependencies พร้อมสำหรับ Tauri runtime และ CLI
+
 1. รัน `bun install`
 2. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
 3. ติดตั้ง Tauri CLI: `bun add -D @tauri-apps/cli`
 
 ### 3. Configure Vite
 
-แก้ไข `vite.config.ts` ให้ port 5173, ignore `src-tauri/`, envPrefix `VITE_`, `TAURI_`
+ตั้งค่า `vite.config.ts` ให้เข้ากับ Tauri dev server
+
+> Goal: Vite dev server ทำงานร่วมกับ Tauri ได้
+
+1. ตั้งค่า port 5173
+2. ตั้งค่า `server.fs.deny` หรือ ignore `src-tauri/`
+3. ตั้งค่า `envPrefix` ให้รองรับ `VITE_` และ `TAURI_`
 
 ### 4. Configure Tauri
 
-แก้ไข `src-tauri/tauri.conf.json`: ตั้ง `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
+ตั้งค่า `tauri.conf.json` และ capabilities
 
-กำหนด capabilities ใน `src-tauri/capabilities/default.json`: `["core:default", "fs:allow-read-file", "dialog:allow-open"]`
+> Goal: Tauri configuration ถูกต้องและปลอดภัย
+
+1. แก้ไข `src-tauri/tauri.conf.json`: ตั้ง `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
+2. กำหนด capabilities ใน `src-tauri/capabilities/default.json`: `["core:default", "fs:allow-read-file", "dialog:allow-open"]`
 
 ### 5. Develop IPC Commands
 
-1. สร้าง Rust command ใน `src-tauri/src/lib.rs`:
+สร้าง Rust commands และเรียกใช้จาก frontend
 
-```rust
-#[tauri::command]
-fn greet(name: &str) -> String {
-  format!("Hello, {}!", name)
-}
-```
+> Goal: frontend และ backend เชื่อมต่อกันผ่าน IPC
 
-2. Register command:
-
-```rust
-tauri::Builder::default()
-  .invoke_handler(tauri::generate_handler![greet])
-  .run(tauri::generate_context!())
-```
-
-3. เรียกใช้จาก frontend:
-
-```typescript
-import { invoke } from '@tauri-apps/api/core'
-const response = await invoke('greet', { name: 'World' })
-```
+1. สร้าง Rust command ใน `src-tauri/src/lib.rs`
+2. Register command ด้วย `tauri::Builder::default().invoke_handler(...)`
+3. เรียกใช้จาก frontend ด้วย `invoke('command', args)`
 
 ### 6. Add Plugins
 
-ติดตั้ง official plugins ด้วย Tauri CLI:
+ติดตั้ง official หรือ community plugins ตามต้องการ
 
-```bash
-bun run tauri add <plugin-name>
-```
+> Goal: เพิ่ม capabilities จาก plugins โดยไม่เปิดสิทธิ์เกินความจำเป็น
 
-ติดตั้ง community plugins ด้วย:
-
-```bash
-bun add @tauri-apps/plugin-<plugin-name>
-```
-
-Official Plugins (30+): autostart, barcode-scanner, biometric, cli, clipboard-manager, deep-link, dialog, fs, geolocation, global-shortcut, haptics, http, localhost, log, nfc, notification, opener, os, persisted-scope, positioner, process, shell, single-instance, sql, store, stronghold, updater, upload, websocket, window-state
-
-Community Plugins (40+): tauri-plugin-blec, tauri-plugin-cache, tauri-plugin-context-menu, tauri-plugin-device-info, tauri-plugin-graphql, tauri-plugin-iap, tauri-plugin-in-app-review, tauri-plugin-ios-photos, tauri-plugin-js, tauri-plugin-keep-screen-on, tauri-plugin-macos-permissions, tauri-plugin-mobile-sharetarget, tauri-plugin-mqtt, tauri-plugin-network, tauri-plugin-nosleep, tauri-plugin-ota, tauri-plugin-pinia, tauri-plugin-prevent-default, tauri-plugin-python, tauri-plugin-screenshots, tauri-plugin-serialport, tauri-plugin-sharesheet, tauri-plugin-svelte, tauri-plugin-system-info, tauri-plugin-tcp, tauri-plugin-theme, tauri-plugin-thermal-printer, tauri-plugin-tracing, tauri-plugin-udp, tauri-plugin-velesdb, tauri-plugin-view, taurpc
+1. ติดตั้ง official plugins ด้วย `bun run tauri add <plugin-name>`
+2. ติดตั้ง community plugins ด้วย `bun add @tauri-apps/plugin-<plugin-name>`
+3. อัปเดต `tauri.conf.json` และ capabilities สำหรับ plugin ที่เพิ่ม
 
 ### 7. Build And Test
 
+Build และ test Tauri app
+
+> Goal: application รันและ build สำเร็จบน target platforms
+
 1. Development mode: `bun run tauri dev`
 2. Production build: `bun run tauri build`
-3. Platform specific: `bun run tauri build --target x86_64-apple-darwin`
+3. Platform specific: `bun run tauri build --target <triple>`
 
 ## Rules
-
-## Rules
-
-### Frontmatter
-
-- title: Title Case
-- description: ไม่เกิน 100 ตัวอักษร
-- auto_execution_mode: 3
-related_workflows:
 
 ### Project Structure
 
-```
+```text
 desktop-apps/{project}/
 ├── src/                    # Frontend
 │   ├── components/
@@ -145,16 +137,16 @@ desktop-apps/{project}/
 | Frontend → Backend | `invoke('command', args)` |
 | Backend → Frontend | Events |
 
-## Expected Outcome
+### Plugins
+
+- เพิ่ม plugin เฉพาะที่จำเป็นจริง ๆ
+- อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
+- ไม่เปิด permission กว้างเกินความจำเป็น
 
 ## Expected Outcome
 
-- Tauri project สร้างสำเร็จด้วย `bun create tauri-app`
+- Tauri project สร้างสำเร็จ
 - Dev server ทำงานได้ที่ `bun run tauri dev`
 - Frontend และ Rust backend เชื่อมต่อกันผ่าน IPC
 - Production build สร้าง executables ได้
-
-
-## References
-
-- `tauri` content: `references/tauri/`
+- Capabilities กำหนดตาม least privilege
