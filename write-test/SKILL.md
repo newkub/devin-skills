@@ -69,10 +69,22 @@ related:
 > Goal: Test files พร้อม, spec ครอบคลุม, naming สอดคล้องมาตรฐาน
 
 1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
-2. `/write-test-spec`, `/review-codebase` — สร้าง spec และปรับ naming ไปพร้อมกัน
+2. ทำ `/review-codebase` เพื่อตรวจ naming และ structure
 3. ถ้า fail → retry (max 3 → stop/report)
 
-### 4. Write Tests
+### 4. Write Spec
+
+เขียน spec files ใน `spec/` ตาม test files ที่มีอยู่
+
+> Goal: spec ครอบคลุม test ทั้งหมด และ sync กับ tests
+
+1. อ่าน test files ทั้งหมดใน `tests/`
+2. สร้าง `spec/overview.md` ระบุ framework, coverage threshold และ structure
+3. แยก spec เป้นไฟล์ย่อยๆ ตาม modules/features
+4. บันทึก test cases ทั้งหมดแบบกระชับ พร้อม status tracking
+5. แต่ละ spec file ไม่เกิน 250 บรรทัด — ถ้าเกินให้ refactor แยกไฟล์
+
+### 5. Write Tests
 
 เขียน test ตามประเภทและ conventions ของภาษาที่ใช้ ครอบคลุมทุก category — reminder: workflow goal คือ test ที่มีคุณภาพสูงครอบคลุมทุกกรณี
 
@@ -109,7 +121,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Input validation หลายกรณี (เช่น missing required fields แต่ละ field)
 - Permission matrix (role x action)
 
-### 5. Run Tests
+### 6. Run Tests
 
 รัน tests หลังเขียนเสร็จเพื่อ verify ว่าผ่านทั้งหมด
 
@@ -120,7 +132,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 3. ตรวจสอบว่าไม่มี test ที่ pass เพราะเหตุผลผิด (false positive)
 4. ตรวจสอบว่า error path tests จริงๆ ทดสอบ error ไม่ใช่แค่ทดสอบว่าไม่ throw
 
-### 6. Verify Coverage
+### 7. Verify Coverage
 
 ตรวจสอบ coverage และเขียน tests ที่ขาดเพิ่มเติม
 
@@ -130,7 +142,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/improve-test-coverage` เพื่อเขียน tests ที่ขาด
 
-### 7. Sync And Verify
+### 8. Sync And Verify
 
 อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
 
@@ -152,18 +164,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 ### 2. Language Conventions
 
-ทำตาม conventions ของภาษาที่ใช้:
-
-| Language | File Pattern | Framework | Conventions |
-|----------|-------------|-----------|-------------|
-| TypeScript/JavaScript | `*.test.ts` | vitest, jest | `describe/it` |
-| Go | `*_test.go` | testing | `t.Run`, table-driven |
-| Python | `test_*.py` | pytest, unittest | fixtures |
-| Rust | `#[cfg(test)]` | - | `assert!`, `#[test]` |
-| Java/Kotlin | `*Test.java` | JUnit | `@Test`, `@BeforeEach` |
-| C# | `*Tests.cs` | xUnit, NUnit | `[Fact]`, `[Theory]` |
-| Ruby | `*_spec.rb` | rspec | `describe/it` |
-| PHP | `*Test.php` | PHPUnit | `test*` |
+ทำตาม conventions ของภาษาที่ใช้: TypeScript ใช้ `vitest/jest`, Go ใช้ `*_test.go` table-driven, Python ใช้ `pytest`, Rust ใช้ `#[test]`, Java ใช้ `JUnit`, C# ใช้ `xUnit`, Ruby ใช้ `rspec`, PHP ใช้ `PHPUnit`
 
 ### 3. File Organization
 
@@ -221,16 +222,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Avoid fragile assertions: ไม่ assert ค่าที่ non-deterministic ใช้ `expect.any(Date)` หรือ `expect.any(String)`
 - Avoid test interdependence: แต่ละ test ต้องรันได้อิสระ
 
-### 9. What NOT to Test
-
-- Trivial getters/setters: ถ้าไม่มี logic ไม่ต้อง test
-- Third-party libraries: test เฉพาะ integration ของเรา ไม่ test library เอง
-- Implementation details: test behavior ไม่ใช่ว่าเรียก function อะไรบ้าง (เว้นแต่เป็น security-critical)
-- Configuration objects: ถ้าเป็นแค่ data ไม่มี logic
-- Type-only code: ถ้า TypeScript types รับประกันแล้ว ไม่ต้อง test runtime
-- Framework boilerplate: route registration, middleware chain ที่ framework รับผิดชอบ
-
-### 10. Security And Handler Test Patterns
+### 9. Security And Handler Test Patterns
 
 - Auth bypass: ส่ง request โดยไม่มี auth -> ต้อง reject
 - IDOR: user A เข้าถึง resource ของ user B -> ต้อง deny
