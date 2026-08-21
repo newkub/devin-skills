@@ -22,6 +22,8 @@ related:
   - suggest-next-action
   - follow-devin-skills-md
   - follow-write-devin-skills
+  - follow-create-bun-cli
+  - follow-create-cli
   - validate
   - use-scripts
   - deep-analyze-by-use-scripts
@@ -40,7 +42,7 @@ All `SKILL.md` files and subdirectories under the skills repository, plus `globa
 
 ### 1. Prepare Review
 
-Set the baseline and scope
+> Goal: Set the baseline and scope
 
 > Goal: know which rules to enforce and which files to review
 
@@ -51,7 +53,7 @@ Set the baseline and scope
 
 ### 2. Inventory And Classify
 
-Build the list of skills to review
+> Goal: Build the list of skills to review
 
 > Goal: have a complete, categorized inventory
 
@@ -62,7 +64,7 @@ Build the list of skills to review
 
 ### 3. Validate Frontmatter
 
-Check metadata for every skill
+> Goal: Check metadata for every skill
 
 > Goal: frontmatter is complete, correct, and consistent
 
@@ -76,7 +78,7 @@ Check metadata for every skill
 
 ### 4. Validate Structure
 
-Check sections and file limits
+> Goal: Check sections and file limits
 
 > Goal: every skill follows the required structure
 
@@ -89,7 +91,7 @@ Check sections and file limits
 
 ### 5. Run Automated Reference Checks
 
-Find broken and invalid references
+> Goal: Find broken and invalid references
 
 > Goal: no broken internal or external references
 
@@ -106,7 +108,7 @@ Find broken and invalid references
 
 ### 6. Review Content Quality
 
-Evaluate usefulness and clarity
+> Goal: Evaluate usefulness and clarity
 
 > Goal: content is precise, actionable, and free from filler
 
@@ -120,7 +122,7 @@ Evaluate usefulness and clarity
 
 ### 7. Analyze Distribution And Redundancy
 
-Find gaps and overlaps
+> Goal: Find gaps and overlaps
 
 > Goal: the repository is balanced and skills are not duplicated
 
@@ -133,7 +135,7 @@ Find gaps and overlaps
 
 ### 8. Calculate Health Score
 
-Score each skill and the repository
+> Goal: Score each skill and the repository
 
 > Goal: produce a ranked, evidence-based quality report
 
@@ -149,9 +151,21 @@ Score each skill and the repository
 4. calculate repository average and category averages
 5. assign grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 
-### 9. Generate Report And Actions
+### 9. Create Missing CLI
 
-Summarize findings and next steps
+> Goal: Create CLI for skills that require one
+
+> Goal: skills that need a CLI also have a working CLI package
+
+1. list skills with `## Execute` sections mentioning CLI but missing `src/presentation/cli.ts`
+2. use `use-scripts` to detect missing CLI entry points
+3. for each missing CLI, run `/follow-create-bun-cli` or `/follow-create-cli`
+4. keep generated CLI files under 250 lines and within `src/presentation/cli.ts`
+5. re-run validation after CLI creation
+
+### 10. Generate Report And Actions
+
+> Goal: Summarize findings and next steps
 
 > Goal: the report drives the next action
 
@@ -193,6 +207,7 @@ Summarize findings and next steps
 ### 5. No Modifications Without Scope
 
 - do not edit skill content unless the review scope explicitly includes fixes
+- CLI creation is in scope when the skill has CLI references but no `src/presentation/cli.ts`
 - if changes are made, re-run all checks and update references
 - never commit fixes without `git diff --check`
 
@@ -203,5 +218,6 @@ Summarize findings and next steps
 - table of issues sorted by severity with file paths and line numbers
 - list of broken references, missing skills, and circular `related` links
 - list of duplicate or overlapping skills
+- missing CLI packages created for skills that need them
 - action items split into quick wins and major improvements
 - no broken references in the reviewed set

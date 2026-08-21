@@ -7,6 +7,8 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
+  - ask_user_question
 triggers:
   - user
   - model
@@ -14,11 +16,10 @@ related:
   - follow-devin-skills-md
   - write-skills-md
   - prepare-skills-context
+  - follow-create-bun-cli
+  - follow-create-cli
   - use-scripts
   - validate
-  - check-circular-dependencies
-  - update-reference
-  - suggest-next-action
 ---
 
 ## Goal
@@ -27,13 +28,13 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง skill ใหมหรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุม directory, template selection, validation และ references โดยไม่ทำลาย references เดิม
+ใช้สำหรับสร้าง skill ใหมหรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุบ directory, template selection, validation, references และการสร้าง CLI ถ้าจำเป็น โดยไม่ทำลาย references เดิม
 
 ## Execute
 
 ### 1. Prepare Context
 
-เตรียม context ก่อนเขียน skill
+> Goal: เตรียม context ก่อนเขียน skill
 
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
@@ -43,7 +44,7 @@ related:
 
 ### 2. Select Template
 
-เลือก template ตามประเภท skill
+> Goal: เลือก template ตามประเภท skill
 
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
@@ -61,7 +62,7 @@ related:
 
 ### 3. Write SKILL.md
 
-สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
+> Goal: สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
 
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
@@ -73,7 +74,7 @@ related:
 
 ### 4. Add Directory Contents
 
-สร้างส่วนประกอบเพิ่มเติมถ้าจำเป็น
+> Goal: สร้างส่วนประกอบเพิ่มเติมถ้าจำเป็น
 
 > Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
@@ -82,9 +83,22 @@ related:
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
 4. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
-### 5. Validate Skill
+### 5. Create CLI (if needed)
 
-ตรวจสอบคุณภาพก่อน finalize
+> Goal: สร้าง CLI ถ้า skill ต้องการ executable
+
+> Goal: skill ที่ระบุ CLI มี entry point และรันผ่าน `bun run dev`
+
+1. ถ้า `## Execute` ระบุว่าต้องใช้ CLI หรือทำงานผ่าน terminal → สร้าง CLI
+2. ใช้ `/follow-create-bun-cli` หรือ `/follow-create-cli` เลือก framework
+3. ใช้ `/use-scripts` สำหรับ helper scripts
+4. วาง entry point ที่ `src/presentation/cli.ts`
+5. รันทดสอบด้วย `bun run dev` หรือ `bun run src/presentation/cli.ts -- --help`
+6. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
+
+### 6. Validate Skill
+
+> Goal: ตรวจสอบคุณภาพก่อน finalize
 
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
@@ -93,9 +107,9 @@ related:
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
 4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 
-### 6. Update References
+### 7. Update References
 
-อัปเดต references และสรุป
+> Goal: อัปเดต references และสรุป
 
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 
@@ -116,6 +130,7 @@ related:
 
 - `SKILL.md` เป็น entry point หลัก
 - สามารถมี `references/`, `scripts/`, `guide/`, `examples/` ตามความจำเป็น
+- ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
@@ -138,11 +153,19 @@ related:
 - หลีกเลี่ยงการให้ตรวจด้วยตาเปล่า; ใช้ commands, scripts, หรือ linters
 - ผลลัพธ์ต้อง reproducible และอ้างอิงไฟล์/บรรทัด
 
+### 6. CLI Support
+
+- ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation
+- ใช้ `src/presentation/cli.ts` เป็น entry point
+- ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
+- รักษา package structure ที่ไม่เกิน 250 บรรทัด
+
 ## Expected Outcome
 
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน
 - `SKILL.md` valid ตาม Devin CLI spec ผ่าน `/follow-devin-skills-md`
 - Template ที่เลือกตรงกับ prefix ของ skill
 - Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
+- ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว
 - `related` ถูกต้อง ไม่มี missing/unused
 - references อัปเดตครบถ้วน
