@@ -145,6 +145,13 @@ related:
 - `permissions` ระบุ `ask` สำหรับ write ที่สำคัญ
 - ไม่ใส่ secrets หรือ credentials ใน prompt
 
+### 6. Check Skills
+
+- ถ้า skill ขึ้นต้นด้วย `check-` → พยายามใช้ tools หรือ `/use-scripts` ใน `## Execute`
+- `allowed-tools` ควรรวม `exec`, `grep`, `glob`, `find_file_by_name` เพื่อ scan หรือ run checks
+- หลีกเลี่ยงการให้ตรวจด้วยตาเปล่า; ใช้ commands, scripts, หรือ linters
+- ผลลัพธ์ต้อง reproducible และระบุไฟล์/บรรทัด
+
 ## Expected Outcome
 
 - `SKILL.md` ที่ valid ตาม Devin CLI spec

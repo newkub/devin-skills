@@ -11,7 +11,7 @@ triggers:
   - user
   - model
 related:
-  - check-correctness
+  - improve-correctness
   - review-codebase
   - report
   - suggest-next-action
@@ -33,7 +33,7 @@ related:
 
 > Goal: ตรวจสอบความถูกต้องก่อนประเมินคุณภาพและความเหมาะสม
 
-1. ทำตาม `/check-correctness` ตาม criteria ที่ผู้ใช้ระบุ
+1. ทำตาม `/improve-correctness` ตาม criteria ที่ผู้ใช้ระบุ
 2. ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
 3. ตรวจสอบ logic และ edge cases ได้รับการจัดการ
 

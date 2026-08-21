@@ -69,6 +69,7 @@ related:
 2. ตรวจสอบว่า `name` ตรงกับ directory name
 3. กำหนด `description` ไม่เกิน 100 ตัวอักษร
 4. ตั้งค่า `allowed-tools` และ `permissions` ตามความเหมาะสม
+5. ถ้า skill ขึ้นต้นด้วย `check-` → กำหนด `allowed-tools` ให้รองรับ `exec`, `grep`, `glob`, `find_file_by_name` และวางแผนใช้ `/use-scripts` สำหรับ scan ซับซ้อน
 
 ### 4. Add Directory Contents
 
@@ -129,6 +130,13 @@ related:
 - ทำ dry run ก่อน destructive หรือ high-risk actions
 - ถ้ามี overwrite ไฟล์เดิม → user confirmation ก่อน
 - ไม่ทำลาย references หรือ existing skills
+
+### 5. Check And Validate Skills
+
+- ถ้า skill ขึ้นต้นด้วย `check-` → พยายามใช้ tools หรือ `/use-scripts` ใน `## Execute`
+- `allowed-tools` ของ `check-*` ต้องรวม `exec`, `grep`, `glob`, `find_file_by_name`
+- หลีกเลี่ยงการให้ตรวจด้วยตาเปล่า; ใช้ commands, scripts, หรือ linters
+- ผลลัพธ์ต้อง reproducible และอ้างอิงไฟล์/บรรทัด
 
 ## Expected Outcome
 

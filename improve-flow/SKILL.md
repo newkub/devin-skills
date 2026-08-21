@@ -67,7 +67,7 @@ triggers:
 
 ตรวจสอบผลการปรับปรุง
 
-1. ทำ `/check-correctness` เพื่อ verify flow ถูกต้อง
+1. ทำ `/improve-correctness` เพื่อ verify flow ถูกต้อง
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
 3. ทำ `/review-codebase` เพื่อตรวจ content ไม่ซ้ำซ้อนหลังแก้ flow
 4. ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
@@ -112,7 +112,7 @@ triggers:
 
 ### 6. Verification
 
-- ทำ `/check-correctness` และ `/check-reference` ก่อนและหลังแก้ flow
+- ทำ `/improve-correctness` และ `/check-reference` ก่อนและหลังแก้ flow
 - ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
 - ห้ามใช้ `**` (bold markers) ใน workflow
 - ใช้ backticks สำหรับ `tools`, `commands`, `workflow-name`, `parallel:`, `∥`

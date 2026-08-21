@@ -34,7 +34,7 @@ triggers:
 
 ตรวจสอบความถูกต้องของ rule files
 
-1. ทำ `/check-correctness` เพื่อตรวจ issues
+1. ทำ `/improve-correctness` เพื่อตรวจ issues
 2. ทำ `/check-reference` เพื่อตรวจ broken references
 3. ตรวจว่า rules ไม่ซ้ำซ้อนกับ `global_rules.md` หรือ workflows อื่น
 4. บันทึก issues พร้อม priority (Critical, High, Medium, Low)
@@ -51,7 +51,7 @@ triggers:
 
 ปรับปรุง rule files ตาม findings
 
-1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
+1. แก้ไข issues ตาม priority จาก `/improve-correctness` (Critical ก่อน)
 2. ทำ `/review-codebase` สำหรับ issues ด้านเนื้อหาและ structure
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
 4. อัปเดตเนื้อหาตาม best practices ที research ได้
@@ -63,7 +63,7 @@ triggers:
 
 ตรวจสอบผลการปรับปรุง
 
-1. ทำ `/check-correctness` อีกครั้งเพื่อ verify
+1. ทำ `/improve-correctness` อีกครั้งเพื่อ verify
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
 3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 4. ทำ `/report` เพื่อสรุปการปรับปรุง
@@ -100,7 +100,7 @@ triggers:
 
 ### 5. Verification
 
-- ทำ `/check-correctness` ก่อนและหลังแก้ไข
+- ทำ `/improve-correctness` ก่อนและหลังแก้ไข
 - ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี TODO, MOCK, placeholder, generic filler
 
