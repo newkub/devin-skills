@@ -40,14 +40,14 @@ related:
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `references/template-skills/template-skills-run/SKILL.md`
-   - `follow-*` → `references/template-skills/template-skills-follow/SKILL.md` ยกเว้น `follow-*-architecture` → `references/template-skills/template-skills-architecture/SKILL.md`
-   - `check-*` → `references/template-skills/template-skills-check/SKILL.md`
-   - `analyze-*` → `references/template-skills/template-skills-analyze/SKILL.md`
-   - `deep-*` → `references/template-skills/template-skills-deep/SKILL.md`
-   - `review-*` → `references/template-skills/template-skills-review/SKILL.md`
-   - `report-*` → `references/template-skills/template-skills-report/SKILL.md`
-   - `idea-*` → `references/template-skills/template-skills-idea/SKILL.md`
+   - `run-*` → `references/template-skills/template-skills-run.md`
+   - `follow-*` → `references/template-skills/template-skills-follow.md` ยกเว้น `follow-*-architecture` → `references/template-skills/template-skills-architecture.md`
+   - `check-*` → `references/template-skills/template-skills-check.md`
+   - `analyze-*` → `references/template-skills/template-skills-analyze.md`
+   - `deep-*` → `references/template-skills/template-skills-deep.md`
+   - `review-*` → `references/template-skills/template-skills-review.md`
+   - `report-*` → `references/template-skills/template-skills-report.md`
+   - `idea-*` → `references/template-skills/template-skills-idea.md`
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, และ example template
 
@@ -99,7 +99,7 @@ related:
 ### 1. Template Selection
 
 - ใช้ `references/template-skills/template-skills-*/SKILL.md` เป็น canonical structure ตาม prefix
-- `follow-*-architecture` ใช้ `references/template-skills/template-skills-architecture/SKILL.md` ไม่ใช่ `follow`
+- `follow-*-architecture` ใช้ `references/template-skills/template-skills-architecture.md` ไม่ใช่ `follow`
 - ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 

@@ -73,14 +73,14 @@ related:
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `follow-write-devin-skills/references/template-skills/template-skills-run/SKILL.md`
-   - `follow-*` → `follow-write-devin-skills/references/template-skills/template-skills-follow/SKILL.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/template-skills/template-skills-architecture/SKILL.md`
-   - `check-*` → `follow-write-devin-skills/references/template-skills/template-skills-check/SKILL.md`
-   - `analyze-*` → `follow-write-devin-skills/references/template-skills/template-skills-analyze/SKILL.md`
-   - `deep-*` → `follow-write-devin-skills/references/template-skills/template-skills-deep/SKILL.md`
-   - `review-*` → `follow-write-devin-skills/references/template-skills/template-skills-review/SKILL.md`
-   - `idea-*` → `follow-write-devin-skills/references/template-skills/template-skills-idea/SKILL.md`
-   - `report-*` → `follow-write-devin-skills/references/template-skills/template-skills-report/SKILL.md`
+   - `run-*` → `follow-write-devin-skills/references/template-skills/template-skills-run.md`
+   - `follow-*` → `follow-write-devin-skills/references/template-skills/template-skills-follow.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/template-skills/template-skills-architecture.md`
+   - `check-*` → `follow-write-devin-skills/references/template-skills/template-skills-check.md`
+   - `analyze-*` → `follow-write-devin-skills/references/template-skills/template-skills-analyze.md`
+   - `deep-*` → `follow-write-devin-skills/references/template-skills/template-skills-deep.md`
+   - `review-*` → `follow-write-devin-skills/references/template-skills/template-skills-review.md`
+   - `idea-*` → `follow-write-devin-skills/references/template-skills/template-skills-idea.md`
+   - `report-*` → `follow-write-devin-skills/references/template-skills/template-skills-report.md`
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
    - ใช้ relative path `follow-write-devin-skills/references/template-skills/template-skills-<prefix>/SKILL.md`
