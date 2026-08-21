@@ -313,7 +313,7 @@ await executeWorkflow('analyze-project', {
 
 | Category | Workflows |
 |----------|-----------|
-| Git | `/git-branch`, `/git-worktree`, `/git-submodule-add` |
+| Git | `/follow-git-branch`, `/follow-git` |
 | Testing | `/test-function`, `/test-e2e`, `/test-integration` |
 | Documentation | `/update-readme`, `/update-docs` |
 

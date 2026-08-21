@@ -20,7 +20,7 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 > Goal: รู้ project type และมี changelog พร้อม
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ก่อน — ถ้าไม่มี changes → skip และ report
-2. `/gen-changelog`, `/gen-release` ถ้ามี tag release
+2. `/update-changelog-md`, `/update-release-md` ถ้ามี tag release
 3. อ่าน `package.json` ตรวจสอบ project type: `cli-sdk` หรือ `app`
 4. ถ้าอ่าน `package.json` ไม่ได้ → stop และ report
 

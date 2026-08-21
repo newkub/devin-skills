@@ -55,7 +55,7 @@ description: ปรับปรุงคุณภาพการเขียน�
 > Goal: commit messages และ changelogs บอก what และ why อ่านง่าย
 
 1. ตรวจสอบ commit messages: ใช้ conventional commits format, active voice, กระชับ, บอก why ไม่ใช่แค่ what
-2. ทำ `/gen-changelog` สำหรับ changelog — ตรวจสอบ format, grouping, user-facing language
+2. ทำ `/update-changelog-md` สำหรับ changelog — ตรวจสอบ format, grouping, user-facing language
 3. ปรับปรุง changelog: จัดกลุ่มตาม category (Features, Bug Fixes, Breaking Changes), ใช้ user-facing language
 4. ตรวจสอบ breaking changes: ระบุชัดเมื่อมี breaking change, บอก migration path
 

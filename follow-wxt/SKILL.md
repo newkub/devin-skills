@@ -33,7 +33,7 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 
 ### 4. Setup CI/CD
 
-1. ทำ `/github-actions` เพื่อตั้งค่า CI/CD
+1. ทำ `/follow-github-actions` เพื่อตั้งค่า CI/CD
 2. ติดตั้ง `chrome-webstore-upload-cli` ด้วย `bun add -D`
 3. สร้าง `.github/workflows/chrome-release.yml`
 4. ตั้งค่า GitHub Secrets สำหรับ Chrome Web Store

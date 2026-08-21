@@ -32,7 +32,7 @@ performance review สำหรับ: bundler config, caching strategy, time co
 2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
 4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
-5. ทำ `/follow-time-complexity` วิเคราะห์ time complexity ของ critical paths
+5. ทำ `/check-time-complexity` วิเคราะห์ time complexity ของ critical paths
 6. Analyzer ตรวจสอบ N+1 queries, missing indexes, caching gaps
 7. Analyzer ตรวจสอบ bundle size, chunk splitting, tree shaking, และ asset optimization
 8. Analyzer ตรวจสอบ rendering performance, unnecessary re-renders, และ lazy loading

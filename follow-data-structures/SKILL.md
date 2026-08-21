@@ -13,7 +13,7 @@ allowed-tools:
   - exec
 related:
   - follow-algorithms
-  - follow-time-complexity
+  - check-time-complexity
   - follow-functional-programming
   - validate
 ---

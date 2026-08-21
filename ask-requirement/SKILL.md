@@ -61,7 +61,7 @@ MCP server ให้ 5 tools:
 
 1. วิเคราะห์ความต้องการที่ได้รับ
 2. ทำ `/deep-plan` เพื่อวางแผนงานตามความต้องการ
-3. ทำ `/goal` เพื่อตั้งเป้าหมาย
+3. ทำ `/follow-goal` เพื่อตั้งเป้าหมาย
 4. ถ้าต้องการเปรียบเทียบคู่แข่ง ทำ `/bench-competitors`
 5. ถ้าต้องการไอเดีย features เพิ่ม ทำ `/compare-and-idea-features`
 
@@ -111,4 +111,4 @@ MCP server ให้ 5 tools:
 - Web UI 2-column layout พร้อม icons และ live summary
 - MCP server 5 tools สำหรับ AI integration
 - Custom data พร้อม icons สำหรับ AI consumption
-- นำผลลัพธ์ไปวางแผนงานด้วย `/deep-plan` และ `/goal`
+- นำผลลัพธ์ไปวางแผนงานด้วย `/deep-plan` และ `/follow-goal`

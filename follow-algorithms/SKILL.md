@@ -13,7 +13,7 @@ allowed-tools:
   - exec
 related:
   - follow-data-structures
-  - follow-time-complexity
+  - check-time-complexity
   - follow-functional-programming
   - validate
 ---
@@ -59,7 +59,7 @@ related:
 1. คำนวณ best/average/worst time complexity
 2. คำนวณ space complexity
 3. ระบุ bottlenecks
-4. ทำ `/follow-time-complexity` ถ้าต้องการตรวจสอบละเอียด
+4. ทำ `/check-time-complexity` ถ้าต้องการตรวจสอบละเอียด
 
 ### 4. Implement
 

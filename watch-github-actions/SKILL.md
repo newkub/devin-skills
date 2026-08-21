@@ -23,7 +23,7 @@ description: รันและตรวจสอบ GitHub Actions จนกว
 
 1. ทำตาม `gh run list --limit 1` เพื่อดู recent workflow run
 2. ทำตาม `gh run watch <run-id>` เพื่อติดตาม real-time
-3. ถ้า workflow ล้มเหลว ให้ทำ `/github-actions` เพื่อแก้ไข
+3. ถ้า workflow ล้มเหลว ให้ทำ `/follow-github-actions` เพื่อแก้ไข
 4. ทำตาม `gh run list` เพื่อดูสถานะ runs ทั้งหมด
 5. ทำซ้ำจนกว่าทุก workflow ผ่าน
 
@@ -40,7 +40,7 @@ description: รันและตรวจสอบ GitHub Actions จนกว
 
 แก้ไข workflow ที่ล้มเหลว:
 
-- ใช้ `/github-actions` เพื่อแก้ไข workflow ที่ล้มเหลว
+- ใช้ `/follow-github-actions` เพื่อแก้ไข workflow ที่ล้มเหลว
 - อ่าน logs อย่างละเอียดเพื่อหา root cause
 - แก้ไขและ push ใหม่จนกว่าจะผ่าน
 

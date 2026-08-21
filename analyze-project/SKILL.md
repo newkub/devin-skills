@@ -9,7 +9,7 @@ description: วิเคราะห์โปรเจกต์พื้นฐ�
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์โปรเจกต์พื้นฐานด้วย 4 tools หลัก: `/scan-codebase`, `/use-ast-grep`, `/use-scripts`, `/follow-my-cli`
+ครอบคลุมการวิเคราะห์โปรเจกต์พื้นฐานด้วย 4 tools หลัก: `/scan-codebase`, `/use-ast-grep`, `/use-scripts`, `/follow-my-global-cli`
 
 Note: ถ้าต้องการวิเคราะห์อย่างลึกซึ้งครบทุกมิติ ให้ทำ `/deep-analyze` แทน
 
@@ -17,7 +17,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 
 ### 1. Tool Selection
 
-1. ทำ `/follow-my-cli` เพื่อเช็ค CLI tools ที่ติดตั้ง
+1. ทำ `/follow-my-global-cli` เพื่อเช็ค CLI tools ที่ติดตั้ง
 2. เลือกใช้ tools ตามความเหมาะสมตาม ## Rules ข้อ 1
 
 ### 2. Codebase Scanning
@@ -63,7 +63,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 - ทำ `/scan-codebase` สำหรับค้นหา code patterns, symbols, และ references
 - ใช้ `/use-ast-grep` สำหรับ pattern matching และ structural search
 - ใช้ `/use-scripts` สำหรับ metrics calculation และ complex processing
-- ทำ `/follow-my-cli` สำหรับเช็คและใช้ CLI tools ที่ติดตั้ง
+- ทำ `/follow-my-global-cli` สำหรับเช็คและใช้ CLI tools ที่ติดตั้ง
 - อ่าน manifest files พร้อมกัน
 - รัน checks หลายอย่างพร้อมกัน
 - รัน `/scan-codebase` patterns พร้อมกัน

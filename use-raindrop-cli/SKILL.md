@@ -9,7 +9,7 @@ description: ใช้ raindrop CLI สำหรับจัดการ Raindro
 
 ## Scope
 
-ครอบคลุมการใช้ raindrop CLI (jvm/raindrop-cli) สำหรับ Raindrop.io API — แตกต่างจาก `/follow-my-cli` ที่เป็นการเลือก CLI tool ทั่วไป
+ครอบคลุมการใช้ raindrop CLI (jvm/raindrop-cli) สำหรับ Raindrop.io API — แตกต่างจาก `/follow-my-global-cli` ที่เป็นการเลือก CLI tool ทั่วไป
 
 ## Execute
 
@@ -19,7 +19,7 @@ description: ใช้ raindrop CLI สำหรับจัดการ Raindro
 
 > Goal: raindrop CLI พร้อมใช้งานและ authenticated
 
-1. ตรวจสอบการติดตั้ง: รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-cli` เพื่อติดตั้ง
+1. ตรวจสอบการติดตั้ง: รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
 2. ตรวจสอบ auth: รัน `raindrop auth status`
 3. ถ้ายังไม่ authenticated → รัน `printf '%s' "$RAINDROP_ACCESS_TOKEN" | raindrop auth login --token-stdin`
 4. รัน `raindrop doctor` เพื่อตรวจสอบ config, auth, และ API connectivity

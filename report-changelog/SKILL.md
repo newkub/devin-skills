@@ -23,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน changelog จาก git history — ไม่รวมการสร้างไฟล์ changelog (ใช้ `/gen-changelog` สำหรับสร้างไฟล์) และไม่รวมการสร้าง release (ใช้ `/run-release`)
+ใช้สำหรับการรายงาน changelog จาก git history — ไม่รวมการสร้างไฟล์ changelog (ใช้ `/update-changelog-md` สำหรับสร้างไฟล์) และไม่รวมการสร้าง release (ใช้ `/run-release`)
 
 ## Execute
 
@@ -141,13 +141,13 @@ related:
 
 ### Read-Only
 
-- ไม่สร้างไฟล์ changelog — ใช้ `/gen-changelog` สำหรับสร้างไฟล์
+- ไม่สร้างไฟล์ changelog — ใช้ `/update-changelog-md` สำหรับสร้างไฟล์
 - ไม่สร้าง release — ใช้ `/run-release`
 - รายงานเท่านั้น — read-only operation
 
 ### Non-Redundancy
 
-- การสร้างไฟล์ changelog อยู่ใน `/gen-changelog` แล้ว
+- การสร้างไฟล์ changelog อยู่ใน `/update-changelog-md` แล้ว
 - การสร้าง release อยู่ใน `/run-release` แล้ว
 - การจัดการ tags อยู่ใน `/follow-git` แล้ว
 

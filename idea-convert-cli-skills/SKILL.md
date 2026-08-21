@@ -8,7 +8,7 @@ allowed-tools:
   - read
   - skill
 related:
-  - follow-my-cli
+  - follow-my-global-cli
   - learn-from-cli
   - follow-write-devin-skills
   - report-format-table
@@ -35,7 +35,7 @@ related:
 
 > Goal: มีรายการ tools ที่จะสำรวจ
 
-1. ทำ `/follow-my-cli` เพื่อรายการ tools ที่ติดตั้ง
+1. ทำ `/follow-my-global-cli` เพื่อรายการ tools ที่ติดตั้ง
 2. ถ้ามีผลลัพธ์จากการ report CLI tools ก่อนหน้า ให้ใช้เป็นจุดเริ่มต้น
 3. เลือก 1-3 tools ต่อรอบเพื่อไม่ให้ผลลัพธ์ยาวเกินไป
 
@@ -88,7 +88,7 @@ related:
 > Goal: ผู้ใช้ทราบว่าควรทำอะไรต่อ
 
 1. ถ้า draft ผ่าน → ทำ `/follow-write-devin-skills` เพื่อ commit หรือบันทึก skills
-2. ถ้าต้องปรับ criteria → ทำ `/follow-my-cli` อีกรอบเพื่อรวบรวมข้อมูลใหม่
+2. ถ้าต้องปรับ criteria → ทำ `/follow-my-global-cli` อีกรอบเพื่อรวบรวมข้อมูลใหม่
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
 ## Rules
