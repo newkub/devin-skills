@@ -3,10 +3,6 @@ name: report-agents-session-status
 description: รายงานสถานะปัจจุบันของระบบหรือโปรเจกต์
 allowed-tools:
   - read
-  - write
-  - edit
-  - grep
-  - glob
   - exec
   - ask_user_question
 triggers:
@@ -14,8 +10,8 @@ triggers:
   - model
 related:
   - report-table
-  - suggest-next-action
   - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal
@@ -29,9 +25,10 @@ related:
 ## Execute
 
 ### 1. Check System Health
-> Goal: Check System Health
 
 ตรวจสอบสุขภาพของระบบ
+
+> Goal: ทราบสถานะ services, database, API, และ external services
 
 1. ตรวจสอบ services ที่ทำงานอยู่
 2. ตรวจสอบ database connectivity
@@ -39,9 +36,10 @@ related:
 4. ตรวจสอบ external services
 
 ### 2. Collect Metrics
-> Goal: Collect Metrics
 
 รวบรวม metrics ที่สำคัญ
+
+> Goal: มี metrics ครบทั้ง performance, errors, resources, และ business
 
 1. รวบรวม performance metrics (response time, throughput)
 2. รวบรวม error rates และ error types
@@ -49,9 +47,10 @@ related:
 4. รวบรวม business metrics (active users, bookings)
 
 ### 3. Analyze Trends
-> Goal: Analyze Trends
 
 วิเคราะห์แนวโนค์ของ metrics
+
+> Goal: ระบุ anomalies, patterns, และ trends ที่น่าสนใจ
 
 1. เปรียบเทียบกับช่วงเวลาก่อนหน้า
 2. ระบุ anomalies หรือ spikes
@@ -59,9 +58,10 @@ related:
 4. คาดการณ์ future trends
 
 ### 4. Report Findings
-> Goal: Report Findings
 
 รายงานผลการวิเคราะห์
+
+> Goal: report สรุปสถานะ พร้อม issues และ next actions
 
 1. สรุปสถานะโดยรวม
 2. ระบุ issues ที่ต้องให้ความสำคัญ
@@ -70,46 +70,38 @@ related:
 
 ## Rules
 
-### Report UX/UI
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+### 1. Report UX/UI
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
-4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+- report ต้องอ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+- สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+- ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+- ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+- ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
+- ทำ `/suggest-next-action` ท้าย report เสมอ
 
-### 1. Real-Time Monitoring
-
-ต้องตรวจสอบสถานะแบบ real-time
+### 2. Real-Time Monitoring
 
 - ใช้ monitoring tools ที่เหมาะสม
 - ตั้งค่า alerts สำหรับ critical metrics
 - ตรวจสอบ dashboard อย่างสม่ำเสมอ
 - รับ notifications สำหรับ critical issues
 
-### 2. Data Accuracy
-
-ต้องรับประกันความถูกต้องของข้อมูล
+### 3. Data Accuracy
 
 - ใช้ data sources ที่เชื่อถือได้
 - ตรวจสอบ data freshness
 - ระบุ data gaps หรือ inconsistencies
 - ใช้ sampling ที่เหมาะสมสำหรับ large datasets
 
-### 3. Contextual Analysis
-
-ต้องวิเคราะห์ในบริบทที่เหมาะสม
+### 4. Contextual Analysis
 
 - เปรียบเทียบกับ baseline ที่เหมาะสม
 - พิจารณา seasonality และ patterns
 - ระบุ external factors ที่มีผลกระทบ
 - ใช้ statistical analysis ถ้าจำเป็น
 
-### 4. Actionable Insights
-
-ต้องให้ข้อมูลที่นำไปปฏิบัติได้
+### 5. Actionable Insights
 
 - ระบุ root causes ของ issues
 - แนะนำ specific actions ที่ต้องทำ
@@ -125,7 +117,7 @@ related:
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน
 
-## Common Mistakes (optional)
+## Guide
 
 ข้อผิดพลาดที่พบบ่อย:
 
