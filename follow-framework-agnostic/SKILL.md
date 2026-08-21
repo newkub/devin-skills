@@ -16,11 +16,10 @@ triggers:
 
 พัฒนาโค้ดที่ทำงานได้บน multiple frameworks โดยไม่ผูกติดกับ framework ใด framework หนึ่ง
 
-## Execute
+## Scope
 
 พัฒนาโค้ดที่สามารถทำงานได้บน multiple frameworks (React, Vue, Svelte, Solid) โดยไม่ผูกติดกับ framework ใด framework หนึ่งเป็นพิเศษ
 
-## Scope
 
 ใช้สำหรับ:
 
@@ -29,54 +28,7 @@ triggers:
 - สร้าง adapters สำหรับแต่ละ framework
 - Design composable interfaces
 
-## Inputs
-
-| Input | Details |
-|-------|---------|
-| Target Frameworks | รายการ frameworks ที่ต้องการรองรับ |
-| Core Logic | business logic ที่ต้องการแยก |
-
-## Rules
-
-### Core Principles
-
-| Principle | Description |
-|-----------|-------------|
-| Framework-agnostic core | Core logic ไม่ import framework |
-| Adapter pattern | สร้าง adapters สำหรับแต่ละ framework |
-| Standard APIs | ใช้ Web APIs มาตรฐาน |
-| Type-safe | รองรับ TypeScript ทุก framework |
-
-### Code Organization
-
-```text
-src/
-├── core/                   # Framework-agnostic core
-│   ├── logic.ts
-│   ├── types.ts
-│   └── utils.ts
-├── react/                  # React adapter
-│   ├── useHook.ts
-│   └── adapter.tsx
-├── vue/                    # Vue adapter
-│   ├── composable.ts
-│   └── adapter.vue
-└── shared/                 # Shared utilities
-    └── helpers.ts
-```
-
-## Structure
-
-### Phase Definitions
-
-| Phase | Description | Main Activities |
-|-------|-------------|---------------|
-| Design | ออกแบบ | กำหนด core API |
-| Implement Core | พัฒนา core | framework-agnostic logic |
-| Create Adapters | สร้าง adapters | สำหรับแต่ละ framework |
-| Test | ทดสอบ | verify ทุก frameworks |
-
-## Steps
+## Execute
 
 ### Phase 1: Design
 
@@ -135,6 +87,53 @@ src/
   - ทดสอบว่า behavior consistent ทุก framework
   - ทดสอบ edge cases
   - verify type safety
+
+## Inputs
+
+| Input | Details |
+|-------|---------|
+| Target Frameworks | รายการ frameworks ที่ต้องการรองรับ |
+| Core Logic | business logic ที่ต้องการแยก |
+
+## Rules
+
+### Core Principles
+
+| Principle | Description |
+|-----------|-------------|
+| Framework-agnostic core | Core logic ไม่ import framework |
+| Adapter pattern | สร้าง adapters สำหรับแต่ละ framework |
+| Standard APIs | ใช้ Web APIs มาตรฐาน |
+| Type-safe | รองรับ TypeScript ทุก framework |
+
+### Code Organization
+
+```text
+src/
+├── core/                   # Framework-agnostic core
+│   ├── logic.ts
+│   ├── types.ts
+│   └── utils.ts
+├── react/                  # React adapter
+│   ├── useHook.ts
+│   └── adapter.tsx
+├── vue/                    # Vue adapter
+│   ├── composable.ts
+│   └── adapter.vue
+└── shared/                 # Shared utilities
+    └── helpers.ts
+```
+
+## Structure
+
+### Phase Definitions
+
+| Phase | Description | Main Activities |
+|-------|-------------|---------------|
+| Design | ออกแบบ | กำหนด core API |
+| Implement Core | พัฒนา core | framework-agnostic logic |
+| Create Adapters | สร้าง adapters | สำหรับแต่ละ framework |
+| Test | ทดสอบ | verify ทุก frameworks |
 
 ## Outputs
 

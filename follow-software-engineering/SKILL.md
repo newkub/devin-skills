@@ -39,7 +39,7 @@ triggers:
 
 เขียน code ที่ debug ง่ายและ test ง่าย
 
-1. ทำ `/functional-core-imperative-shell` เพื่อแยก pure logic จาก side effects
+1. ทำ `/follow-functional-programming` เพื่อแยก pure logic จาก side effects
 2. เขียน business logic เป็น pure functions
 3. ใช้ naming ที่ชัดเจนและ meaningful
 4. เขียน functions ที่ small และ focused (max 20-30 lines)
@@ -65,7 +65,7 @@ triggers:
 
 สร้าง boundaries ที่ชัดเจนระหว่าง layers
 
-1. ทำ `/layered-architecture` สำหรับแยก layers
+1. ทำ `/follow-layered-architecture` สำหรับแยก layers
 2. กำหนด interfaces ระหว่าง layers
 3. ใช้ ports และ adapters pattern
 4. แยก domain logic จาก application logic

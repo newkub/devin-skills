@@ -1,5 +1,5 @@
 ---
-name: follow-nvim/references/nvim
+name: nvim
 description: แนวทางการใช้งาน Neovim - Modern, extensible text editor ที่พัฒนาจาก Vim
 allowed-tools:
   - read

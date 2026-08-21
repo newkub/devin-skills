@@ -32,7 +32,7 @@ triggers:
 
 - Headings เป็น Title Case (EN)
 - รายการเป็นภาษาไทย
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/workflow-name`
+- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `workflow-name`
 - ใช้ bullet points (-) ชิดซ้ายใน Rules
 
 ### 2. Structure Document
@@ -77,7 +77,7 @@ triggers:
 - ไฟล์ไม่เกิน 250 บรรทัด
 - Headings เป็น Title Case (EN)
 - รายการเป็นภาษาไทย
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/workflow-name`
+- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `workflow-name`
 - ใช้ bullet points (-) ชิดซ้ายใน Rules
 
 ### Content Quality

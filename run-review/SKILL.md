@@ -96,4 +96,4 @@ triggers:
 
 ## References
 
-- package.json review script reference: `references/run-review/`
+- package.json review script reference: `references/run-review-reference/`

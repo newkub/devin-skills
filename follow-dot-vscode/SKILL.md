@@ -101,12 +101,12 @@ triggers:
    - `js/ts.preferences.importModuleSpecifierEnding` → `minimal`
    - `js/ts.updateImportsOnFileMove.enabled` → `always`
 6. กำหนด search exclude (`search.exclude`):
-   - `/node_modules`, `/dist`, `/.output`, `/.turbo`
-   - `/.supabase`, `/target` (Rust)
+   - `node_modules`, `dist`, `.output`, `.turbo`
+   - `.supabase`, `target` (Rust)
    - อื่นๆ ตาม build output ของ tech stack
 7. กำหนด files exclude (`files.exclude`):
    - `/.git`: `true`, `/.DS_Store`: `true`
-   - `/dist`: `true`, `/.turbo`: `true`
+   - `dist`: `true`, `.turbo`: `true`
 8. ทำ `/follow-config` กับ existing configs (biome.jsonc, tsconfig.json)
 9. ถ้ามี settings ที่ขัดแย้งกับ existing configs → แก้ให้สอดคล้อง
 10. ถ้าเป็น monorepo → เพิ่ม `conventionalCommits.scopes` ตาม workspaces

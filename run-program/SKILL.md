@@ -16,11 +16,10 @@ triggers:
 
 รันโปรแกรมหลักและทำให้ทำงานได้จริง
 
-## Execute
+## Scope
 
 รันโปรแกรมหลักของโปรเจกต์และทำให้ทำงานได้จริง พร้อมแก้ไขปัญหาที่พบ
 
-## Scope
 
 ใช้สำหรับ:
 
@@ -29,52 +28,7 @@ triggers:
 - รัน background services
 - ตรวจสอบโปรแกรมทำงานได้ถูกต้อง
 
-## Inputs
-
-| Input | Details |
-|-------|---------|
-| Entry Point | (optional) file หลักที่ต้องการ run |
-| Arguments | (optional) arguments สำหรับโปรแกรม |
-| Environment | (optional) environment variables |
-
-## Rules
-
-### Program Types
-
-| Type | การรัน |
-|------|---------|
-| Node/Bun | `bun run start` หรือ `bun src/index.ts` |
-| Rust | `cargo run` |
-| Binary | รัน executable โดยตรง |
-
-### Error Handling
-
-| กรณี | การจัดการ |
-|------|-----------|
-| Compile error | แก้ไข code และ rebuild |
-| Runtime error | debug และ fix |
-| Missing deps | ติดตั้ง dependencies |
-| Config error | แก้ไข configuration |
-
-## Structure
-
-### File Location
-
-```text
-.windsurf/workflows/
-└── run-program.md
-```
-
-### Phase Definitions
-
-| Phase | Description | Main Activities |
-|-------|-------------|---------------|
-| Prepare | เตรียม | install, build |
-| Execute | รัน | run program |
-| Monitor | ตรวจสอบ | watch output |
-| Fix | แก้ไข | fix errors |
-
-## Steps
+## Execute
 
 ### Phase 1: Prepare
 
@@ -126,6 +80,51 @@ triggers:
   - แก้ไข code ที่เป็นปัญหา
   - รัน `/review-codebase` ถ้าจำเป็น
   - rebuild และรันใหม่
+
+## Inputs
+
+| Input | Details |
+|-------|---------|
+| Entry Point | (optional) file หลักที่ต้องการ run |
+| Arguments | (optional) arguments สำหรับโปรแกรม |
+| Environment | (optional) environment variables |
+
+## Rules
+
+### Program Types
+
+| Type | การรัน |
+|------|---------|
+| Node/Bun | `bun run start` หรือ `bun src/index.ts` |
+| Rust | `cargo run` |
+| Binary | รัน executable โดยตรง |
+
+### Error Handling
+
+| กรณี | การจัดการ |
+|------|-----------|
+| Compile error | แก้ไข code และ rebuild |
+| Runtime error | debug และ fix |
+| Missing deps | ติดตั้ง dependencies |
+| Config error | แก้ไข configuration |
+
+## Structure
+
+### File Location
+
+```text
+.windsurf/workflows/
+└── run-program.md
+```
+
+### Phase Definitions
+
+| Phase | Description | Main Activities |
+|-------|-------------|---------------|
+| Prepare | เตรียม | install, build |
+| Execute | รัน | run program |
+| Monitor | ตรวจสอบ | watch output |
+| Fix | แก้ไข | fix errors |
 
 ## Outputs
 

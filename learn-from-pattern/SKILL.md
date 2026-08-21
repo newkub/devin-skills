@@ -35,7 +35,7 @@ triggers:
 
 ค้นหา patterns จากแหล่งที่กำหนด:
 
-1. ทำ `/code-search` เพื่อค้นหา code patterns ใน codebase ปัจจุบัน
+1. ทำ `/scan-codebase` เพื่อค้นหา code patterns ใน codebase ปัจจุบัน
 2. ทำ `/scan-codebase` เพื่อ scan หา recurring structures
 3. ทำ `/use-ast-grep` สำหรับ AST-based pattern discovery
 4. ถ้าศึกษาจาก open-source ให้ทำ `/deep-research` เพื่อหา reference projects
@@ -84,7 +84,7 @@ triggers:
 
 ### Pattern Discovery
 
-- ใช้ `/code-search` สำหรับค้นหา patterns ใน codebase
+- ใช้ `/scan-codebase` สำหรับค้นหา patterns ใน codebase
 - ใช้ `/use-ast-grep` สำหรับ AST-based structural pattern matching
 - ใช้ `/scan-codebase` สำหรับ quick pattern scanning
 - ค้นหาทั้ง positive patterns (ดี) และ anti-patterns (ไม่ดี)

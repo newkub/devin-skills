@@ -1,5 +1,5 @@
 ---
-name: run-review/references/run-review
+name: run-review-reference
 description: Define and run the review script in package.json.
 allowed-tools:
   - read

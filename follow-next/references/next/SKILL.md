@@ -1,5 +1,5 @@
 ---
-name: follow-next/references/next
+name: next
 description: React framework for building web applications with SSR, SSG, ISR, and App Router. Includes...
 allowed-tools:
   - read

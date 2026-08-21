@@ -57,7 +57,7 @@ triggers:
 
 แก้ไขปัญหาที่เกี่ยวกับ config
 
-1. ถ้าเป็น config-related errors ให้ทำ `/formatter` เพื่อแก้ config
+1. ถ้าเป็น config-related errors ให้ทำ `formatter` เพื่อแก้ config
 2. ปรับ formatter config ให้เหมาะสมกับ codebase
 3. ปรับ rules ที่เหมาะสมกับ project
 4. รัน format อีกครั้งเพื่อทดสอบ
@@ -88,7 +88,7 @@ triggers:
 
 - ปรับ formatter config ให้เหมาะสมกับ codebase
 - ปรับ rules ที่เหมาะสมกับ project
-- ใช้ `/formatter` เพื่อแก้ config อย่างถูกต้อง
+- ใช้ `formatter` เพื่อแก้ config อย่างถูกต้อง
 - หลีกเลี่ยงการปิด rules โดยไม่จำเป็น
 
 ### 2. Syntax Errors

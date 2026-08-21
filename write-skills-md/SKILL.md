@@ -69,7 +69,7 @@ related:
 4. `## Rules` จัดกลุ่มเป็น single concern
 5. `## Expected Outcome` ระบุ output format ชัดเจน
 6. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, หรือ `## Examples` เมื่อต้องการเน้นรูปแบบหรือตัวอย่าง
-7. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `/skill-name`
+7. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 
 ### 4. Apply Quality And Safety
 

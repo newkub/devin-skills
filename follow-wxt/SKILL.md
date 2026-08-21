@@ -13,9 +13,6 @@ triggers:
 ---
 
 ## Goal
-
-## Goal
-
 ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices
 
 ## Scope
@@ -23,12 +20,9 @@ triggers:
 Use `follow-wxt` for the specific tasks and workflows it covers
 
 ## Execute
-
-## Execute
-
 ### 1. Initialize Project
 
-1. ทำ `/tasks` เพื่อตั้งค่า scripts มาตรฐาน
+1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐาน
 2. รัน `bunx wxt init` เพื่อเริ่มต้นโปรเจกต์
 3. เลือก template ที่ต้องการ (vanilla, react, vue)
 4. ติดตั้ง dependencies ด้วย `bun install`
@@ -63,9 +57,6 @@ Use `follow-wxt` for the specific tasks and workflows it covers
 4. ตรวจสอบ Chrome Web Store
 
 ## Rules
-
-## Rules
-
 ### 1. Project Structure
 
 โครงสร้างโปรเจกต์ต้องเป็นไปตามนี้:
@@ -119,9 +110,6 @@ project/
 - ใช้ ESLint และ Prettier สำหรับ code quality
 
 ## Expected Outcome
-
-## Expected Outcome
-
 - WXT project ติดตั้งและทำงานได้
 - Extension structure ถูกต้องตาม best practices
 - CI/CD workflow สามารถ release ไป Chrome Web Store ได้

@@ -63,11 +63,11 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ตั้งค่า release tool ตาม platforms ที่ detect ได้
 
-1. `npm`: ทำ `/release-npm` เพื่อตั้งค่า release tool
-2. `crates`: ทำ `/release-crates` เพื่อตั้งค่า release tool
-3. `vscode`: ทำ `/release-vscode` เพื่อตั้งค่า release tool
-4. `webstore`: ทำ `/release-webstore` เพื่อตั้งค่า release tool
-5. `docker`: ทำ `/release-docker` เพื่อตั้งค่า release tool
+1. `npm`: ทำ `/publish-package-to-npm` เพื่อตั้งค่า release tool
+2. `crates`: ทำ `/follow-release-crates` เพื่อตั้งค่า release tool
+3. `vscode`: ทำ `/create-vscode-extensions` เพื่อตั้งค่า release tool
+4. `webstore`: ทำ `/follow-create-browser-extensions` เพื่อตั้งค่า release tool
+5. `docker`: ทำ `/follow-release-docker` เพื่อตั้งค่า release tool
 
 ### 6. Run Release
 

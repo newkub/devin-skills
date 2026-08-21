@@ -1,5 +1,5 @@
 ---
-name: follow-moonrepo/references/moonrepo
+name: moonrepo
 description: แนวทางการใช้งาน moonrepo สำหรับ monorepo management และ task running
 allowed-tools:
   - read

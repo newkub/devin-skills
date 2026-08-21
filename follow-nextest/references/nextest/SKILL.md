@@ -1,5 +1,5 @@
 ---
-name: follow-nextest/references/nextest
+name: nextest
 description: Next-generation test runner for Rust with faster execution, per-test isolation, and CI support
 allowed-tools:
   - read

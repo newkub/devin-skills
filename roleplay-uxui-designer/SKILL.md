@@ -148,7 +148,7 @@ Design-Dev Handoff:
 
 - ถ้า design review ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการวาด sketch ช่วย visualize ให้ทำ `/sketch`
+- ถ้าต้องการวาด sketch ช่วย visualize ให้ทำ `/report-uxui-sketch`
 - ถ้าต้องการ scan UX/UI patterns จริง ให้ใช้ `/review-codebase`
 - ถ้าต้องการ scan components ให้ใช้ `/review-codebase`
 - ถ้าต้องการ scan accessibility จริง ให้ใช้ `/review-codebase`

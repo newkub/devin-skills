@@ -160,8 +160,8 @@ Release ไปยัง external platforms หลัง user confirm
 
 > Goal: บังคับให้ทุก sub-workflow ถูกอ่านและทำจริง ไม่ข้าม
 
-- คำว่า "ทำ `/xxx`" หมายถึง: อ่านไฟล์ workflow ที่ `C:\Users\Veerapong\.codeium\windsurf\global_workflows\xxx.md` ด้วย `read_file` แล้วทำตาม `## Execute` section ของไฟล์นั้น
-- ห้ามตีความ "ทำ `/xxx`" เป็นแค่ concept หรือ suggestion — ต้องอ่านไฟล์จริงและทำตาม steps จริง
+- คำว่า "ทำ `<skill-name>`" หมายถึง: อ่านไฟล์ workflow ที่ `C:\Users\Veerapong\.codeium\windsurf\global_workflows\<skill-name>.md` ด้วย `read_file` แล้วทำตาม `## Execute` section ของไฟล์นั้น
+- ห้ามตีความ "ทำ `<skill-name>`" เป็นแค่ concept หรือ suggestion — ต้องอ่านไฟล์จริงและทำตาม steps จริง
 - ทุก sub-workflow ต้องถูก track ใน `todo_list`
 - ห้ามข้าม sub-workflow ใดๆ ยกเว้นกรณี: ไม่มีไฟล์ workflow อยู่จริง หรือ condition ใน workflow บอกให้ข้าม
 - ก่อน mark `completed` ต้อง verify ว่า `## Expected Outcome` ของ sub-workflow นั้นบรรลุแล้ว

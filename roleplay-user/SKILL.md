@@ -146,7 +146,7 @@ Platform and Environment:
 
 - ถ้า journey ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม simulate
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการวาด flow ช่วย visualize ให้ทำ `/sketch`
+- ถ้าต้องการวาด flow ช่วย visualize ให้ทำ `/report-uxui-sketch`
 - ถ้าต้องการ scan จริงด้วย scripts ให้ใช้ `/review-codebase`
 - ถ้าต้องการ review cross-domain impact ให้ใช้ `/review-codebase`
 

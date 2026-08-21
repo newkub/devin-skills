@@ -58,7 +58,7 @@ related:
 
 > Goal: บอกว่าต้องเรียก skill เป้าหมายเมื่อใด
 
-1. ใช้ backticks สำหรับ `/skill-name` เช่น ทำตาม `/follow-containerize-app`
+1. ใช้ backticks สำหรับ `skill-name` เช่น ทำตาม `/follow-containerize-app`
 2. ระบุ condition ก่อนเรียก เช่น "ถ้าเป็น production → ทำ `/follow-release-docker`"
 3. ไม่่คัดลอกเนื้อหาของ skill เป้าหมายมาทั้้งหมด
 4. ถ้า skill เป้าหมายหลายตัว ให้ระบุลำดับก่อนหลัง

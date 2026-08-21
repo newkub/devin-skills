@@ -16,60 +16,17 @@ triggers:
 
 ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
 
-## Execute
+## Scope
 
 ตั้งค่า Dioxus สำหรับสร้าง cross-platform applications (Desktop, Web, Mobile) ด้วย Rust และ React-like components
 
-## Scope
 
 - ติดตั้ง Dioxus CLI และ dependencies
 - กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
 - พัฒนา desktop application ด้วย Rust
 - Build สำหรับหลาย platforms
 
-## Inputs
-
-| Input | Details |
-|-------|-----------|
-| Language | Rust |
-| Platform | Desktop (default), Web, Mobile |
-| CLI | Dioxus CLI |
-
-## Rules
-
-| Category | Requirements |
-|------|---------|
-| Rust | ต้องมี Rust ติดตั้งแล้ว |
-| CLI | `cargo install dioxus-cli` |
-| Config | สร้าง `Dioxus.toml` |
-| Dependencies | `dioxus` crate ใน Cargo.toml |
-| Hot Reload | ใช้ `dx serve` สำหรับ development |
-
-## Structure
-
-### Directory Structure
-
-```text
-project/
-├── Cargo.toml            # Rust dependencies
-├── Dioxus.toml           # Dioxus config
-└── src/
-    ├── main.rs           # Entry point
-    └── components/
-        └── app.rs        # App component
-```
-
-### Phase Definitions
-
-| Phase | Description | Main Activities |
-|-------|-------------|---------------|
-| Setup | ติดตั้ง | Install CLI |
-| Create | สร้างโปรเจกต์ | dx new |
-| Configure | กำหนดค่า | Cargo.toml, Dioxus.toml |
-| Develop | พัฒนา | Write components |
-| Build | Build | dx build |
-
-## Steps
+## Execute
 
 ### Phase 0: Precondition
 
@@ -174,6 +131,48 @@ fn app() -> Element {
 - 5.2 ตรวจสอบ Output
   - Desktop: `dist/` มี executable
   - Web: `dist/` มี static files
+
+## Inputs
+
+| Input | Details |
+|-------|-----------|
+| Language | Rust |
+| Platform | Desktop (default), Web, Mobile |
+| CLI | Dioxus CLI |
+
+## Rules
+
+| Category | Requirements |
+|------|---------|
+| Rust | ต้องมี Rust ติดตั้งแล้ว |
+| CLI | `cargo install dioxus-cli` |
+| Config | สร้าง `Dioxus.toml` |
+| Dependencies | `dioxus` crate ใน Cargo.toml |
+| Hot Reload | ใช้ `dx serve` สำหรับ development |
+
+## Structure
+
+### Directory Structure
+
+```text
+project/
+├── Cargo.toml            # Rust dependencies
+├── Dioxus.toml           # Dioxus config
+└── src/
+    ├── main.rs           # Entry point
+    └── components/
+        └── app.rs        # App component
+```
+
+### Phase Definitions
+
+| Phase | Description | Main Activities |
+|-------|-------------|---------------|
+| Setup | ติดตั้ง | Install CLI |
+| Create | สร้างโปรเจกต์ | dx new |
+| Configure | กำหนดค่า | Cargo.toml, Dioxus.toml |
+| Develop | พัฒนา | Write components |
+| Build | Build | dx build |
 
 ## Outputs
 

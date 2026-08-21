@@ -63,7 +63,7 @@ triggers:
 
 แนะนำ workflows ที่เหมาะสมกับแต่ละ improvement
 
-- ใช้ `/workflow-name` format
+- ใช้ `workflow-name` format
 - แนะนำ workflows ที่มีอยู่จริงใน global_workflows
 - อธิบายสั้นๆ ว่า workflow นั้นทำอะไร
 - แนะนำ workflows ที่เกี่ยวข้องกับ context ของ project

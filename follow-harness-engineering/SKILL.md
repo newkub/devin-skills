@@ -43,7 +43,7 @@ triggers:
 3. ตรวจสอบว่า tool descriptions ชัดเจน ไม่กำกวม และเพียงพอสำหรับ model เลือกใช้ได้ถูกต้อง
 4. ตรวจสอบว่า tools return ข้อมูลกระชับ ไม่ bloated output
 5. ตรวจสอบ error handling ของ tools: มี structured error responses ไม่ crash ทั้งระบบ
-6. ถ้าเป็น MCP server ให้ทำตาม `/mcp-builder` skill
+6. ถ้าเป็น MCP server ให้ทำตาม `mcp-builder` skill
 
 ### 3. Strengthen Lifecycle And Orchestration
 

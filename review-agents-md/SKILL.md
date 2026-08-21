@@ -68,7 +68,7 @@ Validate all skill references in `AGENTS.md`
 
 > Goal: no broken skill slash commands
 
-1. extract all `/skill-name` references
+1. extract all `skill-name` references
 2. verify each target skill directory exists
 3. check `tech: /follow-<tech>` and `skill-name: /skill-name` mappings
 4. report missing or invalid references
@@ -106,7 +106,7 @@ Summarize review results
 
 ### 2. Reference Validity
 
-- all `/skill-name` must be existing skills
+- all `skill-name` must be existing skills
 - `tech: /follow-<tech>` should map to a real `follow-*` skill if possible
 - `skill-name: /skill-name` should map to a real skill
 

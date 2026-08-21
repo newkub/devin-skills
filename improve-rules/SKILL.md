@@ -88,7 +88,7 @@ triggers:
 
 - เนื้อหา explicit แทน implicit
 - ไม่ซ้ำซ้อนระหว่าง Execute และ Rules
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/workflow-name`
+- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `workflow-name`
 - Execute headings: English Title Case, Rules: ภาษาไทย
 
 ### 4. Minimal Changes

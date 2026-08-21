@@ -78,7 +78,7 @@ triggers:
 
 ### 2. Suggestion Format
 
-- ระบุชื่อ skill ด้วย backticks เช่น `/skill-name`
+- ระบุชื่อ skill ด้วย backticks เช่น `skill-name`
 - ระบุเหตุผลสั้นกระชับ
 - ระบุประเภทความเกี่ยวข้องในวงเล็บ
 - สำหรับไอเดียใหม่ ระบุชื่อ proposed skill และ rationale

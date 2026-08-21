@@ -1,5 +1,5 @@
 ---
-name: refactor-to-srp/references/check-srp
+name: check-srp
 description: ตรวจสอบ SRP violations ด้วย ast-grep outline และ deep analysis พร้อมรายงานครอบคลุม
 allowed-tools:
   - read

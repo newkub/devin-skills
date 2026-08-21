@@ -102,7 +102,7 @@ related:
 
 - ตรวจจับ AI tool จาก path ก่อนอ่าน context
 - ถ้าตรวจจับไม่ได้ต้องถามผู้ใช้ — ไม่เดา
-- ใช้ `/skill-name` แทน tool-specific syntax
+- ใช้ `skill-name` แทน tool-specific syntax
 
 ### 2. No Duplication With Global Rules
 

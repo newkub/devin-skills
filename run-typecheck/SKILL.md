@@ -24,7 +24,7 @@ triggers:
 
 ### 1. Check Config
 
-1. ทำ `/config` เพื่อตรวจสอบ config
+1. ทำ `config` เพื่อตรวจสอบ config
 2. ห้ามแก้ไข config ใดๆ
 
 ### 2. Run Typecheck
@@ -41,7 +41,7 @@ triggers:
 
 ## Rules
 
-- ทำ `/config` เพื่อตรวจสอบ config แต่ห้ามแก้ไข
+- ทำ `config` เพื่อตรวจสอบ config แต่ห้ามแก้ไข
 - ห้ามใช้ ignore comments/attributes ทุกภาษา แก้ปัญหาที่ source
 - แก้ไขข้อผิดพลาดที่เกิดขึ้นจาก typecheck ก่อนดำเนินการต่อ
 

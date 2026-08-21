@@ -35,7 +35,7 @@ triggers:
 
 1. รัน `/follow-biome` สำหรับ TypeScript/JavaScript
 2. รัน `/follow-oxlint` สำหรับ TypeScript/JavaScript
-3. รัน `/clippy` สำหรับ Rust
+3. รัน `clippy` สำหรับ Rust
 
 ### 3. Validate
 

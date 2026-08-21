@@ -1,5 +1,5 @@
 ---
-name: follow-nitro/references/nitro
+name: nitro
 description: Universal server framework ที่ deploy ได้ทุก platform ด้วย Vite integration
 allowed-tools:
   - read

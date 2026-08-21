@@ -169,36 +169,6 @@ export default {
 2. ตั้งค่า deploy ไปยัง GitHub Pages
 3. ตั้งค่า triggers สำหรับ push และ pull request
 
-### 9. Home Page
-
-สร้าง `index.md` พร้อม frontmatter ตาม VitePress default:
-
-```yaml
----
-layout: home
-
-hero:
-  name: My Docs
-  text: Documentation site
-  tagline: Beautiful documentation powered by VitePress
-  actions:
-    - theme: brand
-      text: Get Started
-      link: /docs/getting-started
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/your-repo
-
-features:
-  - title: Feature A
-    details: Description for feature A
-  - title: Feature B
-    details: Description for feature B
-  - title: Feature C
-    details: Description for feature C
----
-```
-
 ## Rules
 
 ### 1. Configuration Standards

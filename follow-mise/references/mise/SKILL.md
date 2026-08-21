@@ -1,5 +1,5 @@
 ---
-name: follow-mise/references/mise
+name: mise
 description: Mise - Development environment manager สำหรับ manage tools และ versions ต่างๆ
 allowed-tools:
   - read

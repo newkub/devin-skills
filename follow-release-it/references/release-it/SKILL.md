@@ -1,5 +1,5 @@
 ---
-name: follow-release-it/references/release-it
+name: release-it
 description: Generic CLI tool สำหรับ automate versioning และ package publishing
 allowed-tools:
   - read

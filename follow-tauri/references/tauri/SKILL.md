@@ -1,5 +1,5 @@
 ---
-name: follow-tauri/references/tauri
+name: tauri
 description: Build cross-platform desktop and mobile applications with Rust backend and web frontend....
 allowed-tools:
   - read

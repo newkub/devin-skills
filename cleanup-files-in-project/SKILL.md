@@ -62,7 +62,7 @@ related:
 
 1. ทำ `/report-table` รายงาน candidates พร้อมเหตุผลและ path
 2. ทำ `/report-file-structure` แสดง top-level files ที่จะลบ
-3. ถาม user ด้วย `/ask_user_question` ว่าต้องการลบไหม
+3. ถาม user ด้วย `ask_user_question` ว่าต้องการลบไหม
 
 ### 4. Remove Source Files
 

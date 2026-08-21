@@ -44,7 +44,7 @@ related:
 
 > Goal: มี commit list, PR list, และ release notes ดิบ
 
-1. ทำ `/mcp_call_tool` บน `github-mcp-server` เพื่อ compare ระหว่าง tags
+1. ทำ `mcp_call_tool` บน `github-mcp-server` เพื่อ compare ระหว่าง tags
 2. ถ้าไม่มี GitHub MCP → ใช้ `curl`/`Invoke-RestMethod` กับ GitHub REST API: `GET /repos/{owner}/{repo}/compare/{from}...{to}`
 3. ดึง release notes ของ `to` tag จาก `GET /repos/{owner}/{repo}/releases/tags/{to}`
 4. เก็บ commits, files changed, additions, deletions, pull request numbers

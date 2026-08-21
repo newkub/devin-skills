@@ -22,88 +22,9 @@ triggers:
 
 ## Execute
 
-### 1. Setup และ Dependencies
+### 1. Data Layer: การจัดการข้อมูล
 
-### `pubspec.yaml`
-
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-
-  # State Management & DI
-  flutter_riverpod: ^2.5.1
-  riverpod_annotation: ^2.3.5
-
-  # Functional Programming & Error Handling
-  fpdart: ^1.1.0
-
-  # HTTP Client
-  dio: ^5.4.3+1
-
-  # Routing
-  go_router: ^14.1.0
-
-  # Immutable Data Classes & Serialization
-  freezed_annotation: ^2.4.1
-  json_annotation: ^4.9.0
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  # Code Generation
-  build_runner: ^2.4.9
-  riverpod_generator: ^2.4.0
-  freezed: ^2.5.2
-  json_serializable: ^6.8.0
-
-  # Mocking
-  mocktail: ^1.0.3
-```
-
-### Code Generation
-
-ใช้ `build_runner` เพื่อสร้างไฟล์ `.g.dart` และ `.freezed.dart` ทั้งหมด
-
-```bash
-# Run once to generate files
-dart run build_runner build --delete-conflicting-outputs
-
-# Watch for changes and regenerate automatically
-dart run build_runner watch --delete-conflicting-outputs
-```
-
-## 2. Project Structure (Clean Architecture)
-
-เพิ่มโฟลเดอร์ `core` สำหรับจัดการส่วนกลางที่ใช้ร่วมกันในโปรเจกต์
-
-```plaintext
-lib/
-├── src/
-│   ├── core/              # Core utilities
-│   │   ├── error/         # Failure classes, Exceptions
-│   │   ├── network/       # Network info, Dio client setup
-│   │   └── usecases/      # Base usecase class
-│   │   └── typedefs/      # Common type definitions
-│   ├── data/
-│   │   ├── datasources/   # Remote/Local data sources
-│   │   ├── models/        # DTOs (Data Transfer Objects) with Freezed
-│   │   └── repositories/  # Implementation of domain repositories
-│   ├── domain/
-│   │   ├── models/        # Business models (Entities)
-│   │   ├── repositories/  # Repository interfaces (contracts)
-│   │   └── usecases/      # Business logic
-│   └── presentation/
-│       ├── providers/     # Riverpod providers
-│       ├── screens/       # UI screens/pages
-│       └── widgets/       # Reusable UI widgets
-└── main.dart
-```
-
-## 3. Data Layer: การจัดการข้อมูล
-
-### `data/models` (DTOs)
+### 2. `data/models` (DTOs)
 
 ใช้ `freezed` เพื่อสร้าง DTOs ที่รับข้อมูลโดยตรงจาก API
 
@@ -132,7 +53,7 @@ class UserModel with _$UserModel {
 }
 ```
 
-### `data/repositories`
+### 3. `data/repositories`
 
 Implement Repository โดยจัดการ `Exception` และแปลงเป็น `Failure` ผ่าน `Either`
 
@@ -162,9 +83,9 @@ class UserRepositoryImpl implements UserRepository {
 }
 ```
 
-## 4. Domain Layer: ตรรกะทางธุรกิจ
+### 4. Domain Layer: ตรรกะทางธุรกิจ
 
-### `domain/repositories`
+### 5. `domain/repositories`
 
 กำหนด Interface โดยใช้ `FutureEither` เพื่อบังคับให้มีการจัดการ Error
 
@@ -178,7 +99,7 @@ abstract class UserRepository {
 }
 ```
 
-### `domain/usecases`
+### 6. `domain/usecases`
 
 สร้าง Use Case สำหรับแต่ละ Business Flow เพื่อให้ Logic ถูกแยกและนำกลับมาใช้ใหม่ได้
 
@@ -193,9 +114,9 @@ class GetUserUseCase {
 }
 ```
 
-## 5. Presentation Layer: UI และ State
+### 7. Presentation Layer: UI และ State
 
-### `presentation/providers`
+### 8. `presentation/providers`
 
 ใช้ `riverpod_generator` เพื่อสร้าง Provider ที่อ่านง่ายและ Type-safe
 
@@ -228,7 +149,7 @@ Future<User> user(UserRef ref, String id) {
 }
 ```
 
-### `presentation/screens`
+### 9. `presentation/screens`
 
 UI จะ "React" กับ State ที่มาจาก Provider ผ่าน `AsyncValue`
 
@@ -254,97 +175,6 @@ class UserProfileScreen extends ConsumerWidget {
       ),
     );
   }
-}
-```
-
-## 6. Error Handling ด้วย `fpdart`
-
-ใช้ `Either<L, R>` เพื่อจัดการกับผลลัพธ์ที่อาจเป็น `Failure` (L) หรือ `Success` (R) โดยไม่ต้องใช้ `try-catch` ใน UI Layer
-
-```dart
-// lib/src/core/error/failure.dart
-abstract class Failure {
-  final String message;
-  const Failure(this.message);
-}
-
-class ServerFailure extends Failure {
-  const ServerFailure(super.message);
-
-  factory ServerFailure.fromDioException(DioException e) {
-    // Logic to parse DioException
-    return ServerFailure('API Error: ${e.message}');
-  }
-}
-```
-
-## 7. Navigation ด้วย `GoRouter`
-
-ตั้งค่า Router ใน `main.dart` หรือไฟล์แยกเพื่อจัดการเส้นทางทั้งหมดในแอป
-
-```dart
-final _router = GoRouter(
-  initialLocation: '/',
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: '/user/:id',
-      builder: (context, state) {
-        final id = state.pathParameters['id']!;
-        return UserProfileScreen(userId: id);
-      },
-    ),
-  ],
-);
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-    );
-  }
-}
-```
-
-## 8. Testing
-
-เขียนเทสสำหรับแต่ละ Layer เพื่อรับประกันคุณภาพของโค้ด
-
-### Repository Unit Test
-
-```dart
-import 'package:mocktail/mocktail.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-// Mocks
-class MockUserRemoteDataSource extends Mock implements UserRemoteDataSource {}
-
-void main() {
-  late UserRepository repository;
-  late UserRemoteDataSource dataSource;
-
-  setUp(() {
-    dataSource = MockUserRemoteDataSource();
-    repository = UserRepositoryImpl(dataSource);
-  });
-
-  test('should return User when call is successful', () async {
-    // Arrange
-    when(() => dataSource.fetchUser(any())).thenAnswer((_) async => userModel);
-
-    // Act
-    final result = await repository.getUser('1');
-
-    // Assert
-    expect(result, isA<Right<Failure, User>>());
-    verify(() => dataSource.fetchUser('1')).called(1);
-  });
 }
 ```
 

@@ -75,7 +75,7 @@ triggers:
 3. แก้ไข code ที่ใช้ไฟล์ที่ถูกลบ
 
 สำหรับการเปลี่ยนชื่อ workflow หรือ skill:
-1. อัปเดท references ใน global workflows (`/old-name` → `/new-name`)
+1. อัปเดท references ใน global workflows (`old-name` → `new-name`)
 2. อัปเดท references ใน global skills
 3. อัปเดท references ใน `AGENTS.md` ของทุก workspace
 4. อัปเดท references ใน `.devin/rules/` ของทุก workspace

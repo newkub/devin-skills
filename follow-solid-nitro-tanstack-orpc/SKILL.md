@@ -94,7 +94,7 @@ related:
 2. ใช้ `moduleResolution: "Bundler"` และ `target: "ES2022"`
 3. ใช้ `module: "ESNext"` และ `skipLibCheck: true`
 4. หลีกเลี่ยง `verbatimModuleSyntax` เพื่อป้องกัน server bundles รั่วไป client
-5. ทำตาม `/follow-ts`
+5. ทำตาม `/follow-typescript`
 
 ### 5. Setup oRPC Server
 
@@ -131,7 +131,7 @@ related:
 1. ใช้ `createFileRoute` สำหรับ file-based routing
 2. ใช้ server functions ผ่าน `server.handlers` ถ้าจำเป็น
 3. ใช้ `HydrationScript` สำหรับ client-side hydration
-4. ทำตาม `/follow-tanstack-router`
+4. ทำตาม `/follow-tanstack`
 
 ### 8. Build And Deploy
 

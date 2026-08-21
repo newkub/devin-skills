@@ -115,7 +115,7 @@ triggers:
 - ทำ `/check-correctness` และ `/check-reference` ก่อนและหลังแก้ flow
 - ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
 - ห้ามใช้ `**` (bold markers) ใน workflow
-- ใช้ backticks สำหรับ `tools`, `commands`, `/workflow-name`, `parallel:`, `∥`
+- ใช้ backticks สำหรับ `tools`, `commands`, `workflow-name`, `parallel:`, `∥`
 
 ## Expected Outcome
 
