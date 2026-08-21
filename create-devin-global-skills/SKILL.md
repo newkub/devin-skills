@@ -18,6 +18,7 @@ related:
   - scan-codebase
   - ask-me
   - validate
+  - ship
 ---
 
 ## Goal
@@ -79,6 +80,13 @@ related:
 3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
 4. ทำ `/follow-content-quality` เพื่อตรวจสอบความชัดเจน
 5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

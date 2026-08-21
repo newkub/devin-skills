@@ -13,6 +13,7 @@ triggers:
   - model
 related:
   - follow-wxt
+  - ship
 ---
 
 ## Goal
@@ -64,6 +65,13 @@ related:
 2. ทดสอบบน Firefox ด้วย temporary add-on
 3. ตรวจสอบ console errors และ permissions
 4. ทดสอบ cross-browser compatibility
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

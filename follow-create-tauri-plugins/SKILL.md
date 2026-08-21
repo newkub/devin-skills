@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -98,6 +99,13 @@ export async function myCommand() {
 1. Test plugin ใน Tauri app: ติดตั้งด้วย `tauri add <plugin-name>`
 2. Build plugin: `cargo build`
 3. Publish ไป crates.io และ NPM
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

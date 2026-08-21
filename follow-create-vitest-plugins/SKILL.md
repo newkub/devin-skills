@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -97,6 +98,13 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 2. Verify plugin ทำงานได้
 3. Test config injection
 4. ตรวจสอบ cache behavior
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

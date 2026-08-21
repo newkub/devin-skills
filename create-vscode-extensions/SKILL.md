@@ -11,6 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - ship
 ---
 
 ## Goal
@@ -99,6 +101,13 @@ triggers:
 1. สร้าง publisher ใน Marketplace
 2. รัน `vsce publish`
 3. ตรวจสอบว่า extension ปรากฏใน Marketplace
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

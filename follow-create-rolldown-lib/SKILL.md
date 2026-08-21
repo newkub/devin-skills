@@ -13,6 +13,7 @@ triggers:
   - model
 related:
   - follow-tsdown
+  - ship
 ---
 
 ## Goal
@@ -72,6 +73,13 @@ Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
 2. ใช้ native bindings สำหรับ platform-specific optimizations
 3. ตั้งค่า `treeshake` สำหรับ dead code elimination
 4. ใช้ `code splitting` สำหรับ large libraries
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

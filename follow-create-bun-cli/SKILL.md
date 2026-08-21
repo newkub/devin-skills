@@ -16,6 +16,7 @@ related:
   - follow-bunup
   - follow-tasks
   - use-bun-native-api
+  - ship
 ---
 
 ## Goal
@@ -77,6 +78,13 @@ related:
 2. ใช้ `bun run build:watch` สำหรับ watch build mode
 3. ใช้ `bun run build` สำหรับ production build
 4. รัน lint และ typecheck ก่อน commit
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

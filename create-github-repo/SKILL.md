@@ -11,6 +11,7 @@ related:
   - open-web
   - save-to-github-repo
 argument-hint: <repo-name> [--public|--private|--internal]
+  - ship
 ---
 
 ## Goal
@@ -46,6 +47,13 @@ argument-hint: <repo-name> [--public|--private|--internal]
 1. รัน `gh repo view <repo-name> --json url --jq .url` เพื่อเอา URL
 2. ทำ `/open-web` หรือ `start <url>` เพื่อเปิดใน browser
 3. รายงาน URL และ visibility
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

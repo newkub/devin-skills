@@ -11,6 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - ship
 ---
 
 ## Goal
@@ -45,6 +47,13 @@ Use when adding work items to a GitHub Project without an issue or PR
 > Goal: report
 
 1. Return task ID and project URL
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

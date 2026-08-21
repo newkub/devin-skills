@@ -13,6 +13,7 @@ triggers:
   - model
 related:
   - follow-biome
+  - ship
 ---
 
 ## Goal
@@ -76,6 +77,13 @@ related:
 2. ตรวจสอบว่า custom rules ทำงานได้ถูกต้อง
 3. ทดสอบ edge cases และ false positives
 4. ทดสอบ rewrites (`=>`) สำหรับ fixable diagnostics
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

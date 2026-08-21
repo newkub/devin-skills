@@ -11,6 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - ship
 ---
 
 ## Goal
@@ -88,6 +90,13 @@ triggers:
 2. ใช้ `cargo clippy` และ `cargo fmt` สำหรับ code quality
 3. ทดสอบ command ใน NuShell หลัง `plugin use <command_name>`
 4. ปรับ `Signature` ให้ประกาศ input/output types ถูกต้องเพื่อ type checking
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

@@ -16,6 +16,7 @@ related:
   - run-test
   - run-lint
   - run-build
+  - ship
 ---
 
 ## Goal
@@ -76,6 +77,13 @@ related:
 2. ยืนยันว่า CI checks รันอัตโนมัติ
 3. ตรวจสอบว่า issue ถูกเชื่อมโยงอย่างถูกต้อง
 4. ทดสอบว่า reviewers ได้รับ notification
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

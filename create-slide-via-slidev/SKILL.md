@@ -16,6 +16,7 @@ related:
   - follow-slidev
   - run-dev
   - create-slide-in-newkub-slides
+  - ship
 ---
 
 ## Goal
@@ -82,6 +83,13 @@ related:
 1. ทำ `/run-dev` เพื่อรัน `bunx slidev` ใน project directory
 2. เปิด browser ที่ `http://localhost:3030`
 3. ตรวจสอบว่า slides แสดงผลถูกต้อง
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

@@ -14,6 +14,7 @@ related:
   - implement-plan
   - plan
 argument-hint: <title>
+  - ship
 ---
 
 ## Goal
@@ -58,6 +59,13 @@ argument-hint: <title>
 1. ถ้าผู้ใช้หรืองานอื่นแจ้งว่าทำตามแผนเสร็จแล้ว → อัปเดต `status` เป้น `completed`
 2. ลบไฟล์ `.devin/plan/<title>-<date>.md`
 3. รายงานว่าแผนถูกลบ
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

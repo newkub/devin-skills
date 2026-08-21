@@ -13,6 +13,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -59,6 +60,13 @@ Use `follow-create-vite-plugins` for the specific tasks and workflows it covers
 1. สร้าง `test/` ด้วย unit และ integration tests
 2. รัน `build` เพื่อตรวจสอบ build process
 3. รัน `test` เพื่อตรวจสอบ functionality
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

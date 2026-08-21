@@ -13,6 +13,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -65,6 +66,13 @@ related:
 2. ยืนยันว่า metadata ถูกต้อง (labels, assignees, milestones)
 3. ตรวจสอบความสมบูรณ์ของ description
 4. ทดสอบการเชื่อมโยงกับ issues อื่น
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -55,6 +56,13 @@ Use `follow-create-oxlint-plugins` for the specific tasks and workflows it cover
 
 1. รัน `oxlint` เพื่อทดสอบ plugins
 2. ตรวจสอบว่า rules ทำงานได้ถูกต้อง
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

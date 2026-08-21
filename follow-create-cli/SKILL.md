@@ -17,6 +17,7 @@ related:
   - follow-monorepo
   - follow-create-rust-cli
   - compare
+  - ship
 ---
 
 ## Goal
@@ -66,6 +67,13 @@ related:
 1. เพิ่ม scripts ใน package manifest หรือ task runner ตาม `/follow-tasks`
 2. ถ้าเป็น monorepo → ทำ `/follow-monorepo` เพื่อกำหนด workspace และ dependencies
 3. อัปเดต references ใน `README.md` และ `AGENTS.md` ถ้าจำเป็น
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

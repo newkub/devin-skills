@@ -14,6 +14,7 @@ triggers:
 related:
   - update-reference
   - follow-devin-skills-md
+  - ship
 ---
 
 ## Goal
@@ -115,6 +116,13 @@ related:
 3. รัน `devin plugins update <plugin-name>` เมื่อมีการเปลี่ยนแปลง
 4. รัน `devin plugins remove <plugin-name>` ถ้าต้องการถอนการติดตั้ง
 5. ทำ `/update-reference` ถ้ามี project อ้างอิง plugin
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

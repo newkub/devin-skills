@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -59,6 +60,13 @@ Use `follow-create-eslint-plugins` for the specific tasks and workflows it cover
 1. สร้าง test files สำหรับ rules
 2. รัน tests ด้วย test runner
 3. ตรวจสอบว่า rules ทำงานถูกต้อง
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

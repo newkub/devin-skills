@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -51,6 +52,13 @@ related:
 1. ตรวจสอบว่า worktree directory มีไฟล์ครบถ้วน
 2. รัน `git status` ใน worktree เพื่อตรวจสอบ branch ถูกต้อง
 3. ตรวจสอบว่าสามารถทำงานได้ปกติใน worktree
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

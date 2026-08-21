@@ -14,6 +14,7 @@ triggers:
 related:
   - follow-git-branch
   - follow-git
+  - ship
 ---
 
 ## Goal
@@ -49,6 +50,13 @@ related:
 2. หรือ `git checkout -b <branch>`
 3. ตรวจสอบว่าอยู่บน commit ที่ถูกต้อง
 4. push upstream ด้วย `git push -u origin <branch>`
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

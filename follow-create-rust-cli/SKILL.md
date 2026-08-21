@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -78,6 +79,13 @@ related:
 2. ใช้ `cargo build --release` สำหรับ production build
 3. ใช้ `cargo clippy -- -D warnings` สำหรับ code quality checks
 4. ใช้ `cargo fmt` สำหรับ formatting
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

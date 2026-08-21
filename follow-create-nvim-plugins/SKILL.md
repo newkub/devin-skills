@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - ship
 ---
 
 ## Goal
@@ -70,6 +71,13 @@ related:
 1. ใช้ lazy loading สำหรับทุก plugin
 2. หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น
 3. ใช้ `priority` สำหรับ plugins ที่ต้องโหลดก่อน
+
+### Ship
+
+> Goal: ส่งมอบงาน
+
+1. ทำ `/ship`
+2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 
