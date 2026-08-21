@@ -24,6 +24,10 @@ triggers:
 
 ### 1. Setup And Configuration
 
+ตั้งค่า Vue 3 project ด้วย dependencies และ tools ที่จำเป็น
+
+> Goal: มี project structure พร้อม TypeScript, state management, routing, และ styling
+
 1. ติดตั้ง Vue 3.5+ ด้วย Vite หรือ Nuxt 4
 2. ใช้ TypeScript strict mode
 3. ติดตั้ง Pinia 3 สำหรับ state management
@@ -33,6 +37,10 @@ triggers:
 7. พิจารณา Vue 3.6 beta สำหรับ Vapor Mode และ alien-signals reactivity
 
 ### 2. Component Development
+
+เขียน Vue components ตาม Composition API standards
+
+> Goal: Components type-safe, reusable และ maintainable
 
 1. ใช้ Single-File Components (SFC) ด้วย `<script setup lang="ts">`
 2. ใช้ Composition API แทน Options API (Options API เป็น legacy)
@@ -47,6 +55,10 @@ triggers:
 
 ### 3. Composables And State
 
+จัดระเบียบ logic และ state ด้วย composables และ Pinia
+
+> Goal: แยก concerns และ reusable logic ชัดเจน
+
 1. แยก logic ออกจาก components ไปที่ composables
 2. logic ทั้งหมดต้องอยู่ใน composables
 3. ใช้ Pinia 3 สำหรับ global state management
@@ -58,6 +70,10 @@ triggers:
 
 ### 4. Reactivity Best Practices
 
+ใช้ Vue reactivity อย่างมีประสิทธิภาพ
+
+> Goal: Performance และ memory usage ดีขึ้นด้วย reactivity ที่ถูกต้อง
+
 1. ใช้ `shallowRef()` สำหรับ large immutable data structures (ประหยัด memory)
 2. ใช้ `ref()` สำหรับ primitive values
 3. ใช้ `reactive()` สำหรับ object state ที่ต้องการ deep reactivity
@@ -68,6 +84,10 @@ triggers:
 
 ### 5. Vapor Mode (Vue 3.6+)
 
+พิจารณา Vapor Mode สำหรับ performance ทีดีขึ้น
+
+> Goal: ใช้ Vapor Mode ได้ถูกต้องตาม scenarios
+
 1. ใช้ `vapor` attribute ใน `<script setup>` สำหรับ opt-in Vapor Mode
 2. หรือใช้ `.vapor.vue` file extension สำหรับ opt-in โดยไม่แก้ script
 3. เริ่มจาก leaf components (list items, table rows, icon buttons) ก่อน
@@ -77,12 +97,20 @@ triggers:
 
 ### 6. Styling
 
+กำหนด component styles ด้วย design system
+
+> Goal: Styling consistent, scoped และไม่ hard-code
+
 1. ใช้ UnoCSS theme ที่กำหนดไว้
 2. ไม่ hard-code colors หรือ spacing
 3. ใช้ utility classes แทน custom styles
 4. ใช้ `<style scoped>` สำหรับ component-specific styles
 
 ### 7. Project Organization
+
+จัดระเบียบ project structure และ conventions
+
+> Goal: Project maintainable สำหรับทีมและ scale ได้
 
 1. components ที่ใช้ซ้ำกันให้ refactor ไปที่ `components/ui/`
 2. ใช้ import alias (`~/`, `#server`, `#shared`) ห้ามใช้ relative paths
@@ -154,16 +182,6 @@ Component ต้อง follow standards:
 - ใช้ Vapor Mode สำหรับ component-heavy scenarios (up to 97% faster)
 - ใช้ tree-shaking อย่างเต็มที่
 
-## Guide
-
-เอกสารอ้างอิงเฉพาะทางสำหรับ Vue:
-
-- `references/vue.md` — Vue.js 3.5+ overview และ best practices
-- `guide/` — installation, quick-start, configuration, features, integration, architecture
-- `key-concepts/` — reactivity, composition-api, components, vapor-mode, compiler-macros
-- `references/follow-vue-components.md` — รายละเอียด component-level guidelines
-- `references/follow-vue-design-system-best-practics.md` — รายละเอียด design system, stores, และ composables
-
 ## Expected Outcome
 
 - Vue 3 components ที่มีโครงสร้างถูกต้องตาม Composition API
@@ -172,3 +190,11 @@ Component ต้อง follow standards:
 - Performance ที่ดีขึ้นด้วย Vapor Mode (ถ้าใช้ Vue 3.6+)
 - Type safety เต็มรูปแบบด้วย TypeScript
 - Code ที่ maintainable
+
+## Guide
+
+เอกสารอ้างอิงเฉพาะทางสำหรับ Vue:
+
+- `references/vue.md` — Vue.js 3.5+ overview และ best practices
+- `references/follow-vue-components.md` — รายละเอียด component-level guidelines
+- `references/follow-vue-design-system-best-practics.md` — รายละเอียด design system, stores, และ composables
