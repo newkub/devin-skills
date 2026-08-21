@@ -1,6 +1,6 @@
 ---
 name: idea-features
-description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps, user needs และ market
+description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps, user needs และ market trends ด้วย continuous numbering และ scope ที่ชัดเจน
 allowed-tools:
   - read
   - edit
@@ -17,6 +17,7 @@ related:
   - learn-from-web
   - compare-and-idea-features
   - refactor
+  - follow-your-suggestion
 ---
 
 ## Goal
@@ -31,7 +32,8 @@ related:
 
 ### 1. Internal Analysis (เงียบ — ไม่ต้องแสดงผลในแชท)
 
-> Goal: วิเคราะห์ภายในเพื่อเข้าใจโครงสร้าง หา gaps และสร้างไอเดีย — ห้ามแสดงผลของขั้นตอนนี้ในแชท
+วิเคราะห์ภายในเพื่อเข้าใจโครงสร้าง หา gaps และสร้างไอเดีย — ห้ามแสดงผลของขั้นตอนนี้ในแชท
+
 > Goal: เข้าใจ project, packages, existing features, market trends และได้ไอเดีย features
 
 1. ทำ `/analyze-project`, อ่าน `.devin/features/<workspace>/features.md`, วิเคราะห์ packages และกำหนด scope (internal)
@@ -43,7 +45,8 @@ related:
 
 ### 2. Present Results (ตอบในแชท — ภาษาไทย)
 
-> Goal: ตอบผลลัพธ์ในแชทเป็นภาษาไทย เฉพาะส่วนที่ผู้ใช้ต้องการ
+ตอบผลลัพธ์ในแชทเป็นภาษาไทย เฉพาะส่วนที่ผู้ใช้ต้องการ
+
 > Goal: ตอบกระชับ เป็นภาษาไทย มีแค่ 2 ตาราง + diagrams + suggest-next-action
 
 1. ตอบ 2 ตาราง (Extends และ New) ในแชท พร้อม 27 คอลัมน์ตาม Rules — ภาษาไทย
@@ -56,6 +59,8 @@ related:
 
 ### 1. Group By Type With Continuous Numbering
 
+> Goal: Group By Type With Continuous Numbering
+
 - แยกเป็น 2 ตารางตาม Type: Extends และ New
 - Continuous numbering รวมทั้ง 2 ตาราง: Extends เริ่มจาก 1, New ต่อจากเลขสุดท้ายของ Extends
 - แต่ละตาราง 20 row, รวมกันไม่เกิน 40 row
@@ -64,6 +69,8 @@ related:
 - Scope ระบุ: package-level, app-level, หรือ cross-package
 
 ### 2. Column Order (27 คอลัมน์)
+
+> Goal: Column Order (27 คอลัมน์)
 
 - ลำดับ: # | Priority | Impact | Feature | Description | Why | How To | Phase | Effort | Difficult | Scope | Interface | Target | Topics | Deps | Feature Deps | Routing | Components | Types | API | DB | Risk | Breaking | Estimate | MVP Score | KPI | UX/UI
 - Impact: 🔴 สูง, 🟡 ปานกลาง, 🟢 ต่ำ
@@ -89,6 +96,8 @@ related:
 
 ### 3. Summary Tables
 
+> Goal: Summary Tables
+
 - สรุป DB tables ที่จะสร้าง/แก้
 - สรุป API endpoints ที่จะสร้าง
 - สรุป Components ที่จะสร้าง/แก้
@@ -96,11 +105,15 @@ related:
 
 ### 4. Define Problem First
 
+> Goal: Define Problem First
+
 - ทุก feature ต้อง solve real problem — ถ้าไม่มี problem ชัดเจน → ไม่เสนอ
 - Validate ว่า users ต้องการจริง
 - Focus บน pain points ที่มี impact สูง
 
 ### 5. Start With MVP
+
+> Goal: Start With MVP
 
 - เริ่มด้วย minimum viable version
 - Build iteratively ไม่ใช่ big bang
@@ -108,15 +121,20 @@ related:
 
 ### 6. Assess Technical Feasibility
 
+> Goal: Assess Technical Feasibility
+
 - ประเมิน effort อย่าง realistic
 - พิจารณา long-term maintenance cost
 - ระบุ technical debt ที่อาจเกิด
 
 ### 7. Direct Execution
 
+> Goal: Direct Execution
+
 - ถ้าผู้ใช้สั่ง "ทำ ... ให้" → ทำ `/refactor` และ `/realize-implementation` เลย ไม่ต้องทำตาม workflow ปกติ
 - ถ้าผู้ใช้สั่ง implement เฉพาะ feature → ทำ `/implement-features-to-mvp` เลย
 - ถ้าผู้ใช้สั่ง implement features ที่ขาดทั้งหมด → ทำ `/review-codebase` เลย
+- ถ้าผู้ใช้ชี้แนะหรือต้องการทำตามข้อเสนอ → ทำ `/follow-your-suggestion` เพื่อ apply โดยตรง
 
 ## Expected Outcome
 
