@@ -6,7 +6,7 @@ triggers:
   - model
 related:
   - follow-git
-  - git-merge-current-branch-to-main
+  - git-merge-commit
   - create-git-branch
 ---
 

@@ -8,7 +8,7 @@ related:
   - follow-git
   - create-git-branch
   - delete-git-older-branch
-  - git-merge-current-branch-to-main
+  - git-merge-commit
 ---
 
 ## Goal
