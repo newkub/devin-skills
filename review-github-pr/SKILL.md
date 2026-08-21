@@ -1,5 +1,5 @@
 ---
-name: review-pr
+name: review-github-pr
 description: Review pull request ครอบคลุม diff, commits, description, CI, conventional commits และ merge readiness
 argument-hint: optional PR number or branch
 allowed-tools:

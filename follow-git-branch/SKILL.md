@@ -7,7 +7,7 @@ triggers:
 related:
   - follow-git
   - create-git-branch
-  - delete-git-older-branch
+  - cleanup-git-branch
   - git-merge-commit
 ---
 

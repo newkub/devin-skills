@@ -16,7 +16,7 @@ triggers:
 related:
   - run-review
   - update-review-cli
-  - review-pr
+  - review-github-pr
   - review-devin-global-skills
   - run-check
   - resolve-errors
@@ -89,7 +89,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 > Goal: ครอบคลุม PR และ global skills ถ้ามี
 
-1. ถ้ามี PR ที่กำลัง review → ทำ `/review-pr`
+1. ถ้ามี PR ที่กำลัง review → ทำ `/review-github-pr`
 2. ถ้าต้องการ review global Devin skills → ทำ `/review-devin-global-skills`
 
 ### 5. Validate Findings
@@ -159,7 +159,7 @@ CLI ครอบคลุมทุก dimension ด้านล่าง ถ้�
 - Security and compliance: `?references/review-auth.md`?, `?references/review-compliance.md`?, `?references/review-security.md`?
 - Infrastructure and operations: `?references/review-app-stability.md`?, `?references/review-cli.md`?, `?references/review-config.md`?, `?references/review-dx.md`?, `?references/review-infrastructure.md`?, `?references/review-memory.md`?, `?references/review-observability.md`?, `?references/review-performance.md`?, `?references/review-platform.md`?
 - Business and delivery: `?references/review-business.md`?, `?references/review-coverage.md`?, `?references/review-debugging.md`?, `?references/review-delivery.md`?, `?references/review-docs.md`?, `?references/review-lib.md`?, `?references/review-techstack.md`?, `?references/review-test.md`?, `?references/review-workflow-content.md`?, `?references/review-workspace.md`?
-- Pull request: `/review-pr`
+- Pull request: `/review-github-pr`
 - Global skills: `/review-devin-global-skills`
 
 ## Expected Outcome
