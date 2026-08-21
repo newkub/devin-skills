@@ -9,9 +9,6 @@ related:
   - update-reference
   - follow-content-quality
   - ask-me
-  - template-skills-run
-  - template-skills-follow
-  - template-skills-check
 ---
 
 ## Goal
@@ -31,7 +28,7 @@ related:
 > Goal: ทราบ target, conventions, และ template ก่อนลงมือ
 
 1. ระบุ target path ของ `SKILL.md` และ skill name
-2. เลือก template ตาม prefix จาก `/template-skills-*` ถ้ามี
+2. เลือก template ตาม prefix จาก `follow-write-devin-skills/references/template-skills/template-skills-*/SKILL.md` ถ้ามี
 3. ทำ `/learn-from-web` จาก `https://docs.devin.ai/cli/extensibility/skills/overview` และ `https://docs.devin.ai/cli/extensibility/skills/creating-skills` เมื่อต้องการ verify spec
 4. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 

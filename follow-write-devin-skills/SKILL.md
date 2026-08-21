@@ -11,15 +11,6 @@ related:
   - check-circular-dependencies
   - update-reference
   - suggest-next-action
-  - template-skills-run
-  - template-skills-follow
-  - template-skills-check
-  - template-skills-deep
-  - template-skills-review
-  - template-skills-analyze
-  - template-skills-idea
-  - template-skills-report
-  - template-skills-architecture
 ---
 
 ## Goal
@@ -49,14 +40,14 @@ related:
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `/template-skills-run`
-   - `follow-*` → `/template-skills-follow` ยกเว้น `follow-*-architecture` → `/template-skills-architecture`
-   - `check-*` → `/template-skills-check`
-   - `analyze-*` → `/template-skills-analyze`
-   - `deep-*` → `/template-skills-deep`
-   - `review-*` → `/template-skills-review`
-   - `report-*` → `/template-skills-report`
-   - `idea-*` → `/template-skills-idea`
+   - `run-*` → `references/template-skills/template-skills-run/SKILL.md`
+   - `follow-*` → `references/template-skills/template-skills-follow/SKILL.md` ยกเว้น `follow-*-architecture` → `references/template-skills/template-skills-architecture/SKILL.md`
+   - `check-*` → `references/template-skills/template-skills-check/SKILL.md`
+   - `analyze-*` → `references/template-skills/template-skills-analyze/SKILL.md`
+   - `deep-*` → `references/template-skills/template-skills-deep/SKILL.md`
+   - `review-*` → `references/template-skills/template-skills-review/SKILL.md`
+   - `report-*` → `references/template-skills/template-skills-report/SKILL.md`
+   - `idea-*` → `references/template-skills/template-skills-idea/SKILL.md`
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, และ example template
 
@@ -107,8 +98,8 @@ related:
 
 ### 1. Template Selection
 
-- ใช้ `template-skills-*` เป็น canonical structure ตาม prefix
-- `follow-*-architecture` ใช้ `/template-skills-architecture` ไม่ใช่ `follow`
+- ใช้ `references/template-skills/template-skills-*/SKILL.md` เป็น canonical structure ตาม prefix
+- `follow-*-architecture` ใช้ `references/template-skills/template-skills-architecture/SKILL.md` ไม่ใช่ `follow`
 - ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 

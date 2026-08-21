@@ -16,15 +16,7 @@ related:
   - read-related-skills
   - check-reference
   - follow-best-practice
-  - template-skills-run
-  - template-skills-follow
-  - template-skills-architecture
-  - template-skills-check
-  - template-skills-analyze
-  - template-skills-deep
-  - template-skills-review
-  - template-skills-idea
-  - template-skills-report
+  - follow-write-devin-skills
   - suggest-next-action
 ---
 
@@ -81,16 +73,17 @@ related:
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `/template-skills-run`
-   - `follow-*` → `/template-skills-follow` ยกเว้น `follow-*-architecture` → `/template-skills-architecture`
-   - `check-*` → `/template-skills-check`
-   - `analyze-*` → `/template-skills-analyze`
-   - `deep-*` → `/template-skills-deep`
-   - `review-*` → `/template-skills-review`
-   - `idea-*` → `/template-skills-idea`
-   - `report-*` → `/template-skills-report`
+   - `run-*` → `follow-write-devin-skills/references/template-skills/template-skills-run/SKILL.md`
+   - `follow-*` → `follow-write-devin-skills/references/template-skills/template-skills-follow/SKILL.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/template-skills/template-skills-architecture/SKILL.md`
+   - `check-*` → `follow-write-devin-skills/references/template-skills/template-skills-check/SKILL.md`
+   - `analyze-*` → `follow-write-devin-skills/references/template-skills/template-skills-analyze/SKILL.md`
+   - `deep-*` → `follow-write-devin-skills/references/template-skills/template-skills-deep/SKILL.md`
+   - `review-*` → `follow-write-devin-skills/references/template-skills/template-skills-review/SKILL.md`
+   - `idea-*` → `follow-write-devin-skills/references/template-skills/template-skills-idea/SKILL.md`
+   - `report-*` → `follow-write-devin-skills/references/template-skills/template-skills-report/SKILL.md`
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
+   - ใช้ relative path `follow-write-devin-skills/references/template-skills/template-skills-<prefix>/SKILL.md`
 3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
 
 ### 5. Confirm Context
@@ -120,7 +113,7 @@ related:
 ### 3. Template Consistency
 
 - ทุก skill ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
-- ใช้ `template-skills-*` เป็น canonical structure
+- ใช้ templates ใน `follow-write-devin-skills/references/template-skills/` เป็น canonical structure
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 
