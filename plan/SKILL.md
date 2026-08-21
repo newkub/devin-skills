@@ -30,15 +30,15 @@ related:
 
 ### 1. Analyze And Research
 
-1. ทำ `analyze-project`` เพื่อวิเคราะห์ project structure และ dependencies
+1. ทำ `analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
 2. ระบุ scope, constraints, และ assumptions
 3. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
-4. ทำ `use-lib-better`` และ `use-lib-effective`` เพื่อสำรวจและวิเคราะห์ libraries
+4. ทำ `use-lib-better` และ `use-lib-effective` เพื่อสำรวจและวิเคราะห์ libraries
 5. บันทึก library ที่เลือกพร้อมเหตุผล (modern, type safety, performance, DX, maintenance)
 
 ### 2. Define Implementation Path
 
-1. ทำ `prioritize`` เพื่อจัดลำดับ tasks ตาม impact และ effort
+1. ทำ `prioritize` เพื่อจัดลำดับ tasks ตาม impact และ effort
 2. จัดลำดับ: foundation ก่อน, high risk เพื่อ fail fast
 3. จัดกลุ่ม tasks เป็น phases: Foundation → Core → Polish → Test
 4. ระบุ critical path, dependencies ระหว่าง tasks, และ parallelizable tasks
@@ -47,8 +47,8 @@ related:
 
 ### 3. Plan Architecture
 
-1. ทำ `pondering`` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
-2. ทำ `recommend-architecture`` เพื่อแนะนำ architecture ที่เหมาะสม
+1. ทำ `pondering` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
+2. ทำ `recommend-architecture` เพื่อแนะนำ architecture ที่เหมาะสม
 3. วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
 4. สร้าง file pattern table: File Pattern, Description, Naming, Import
 5. กำหนด module boundaries, dependencies (high-level → low-level), และ public APIs
@@ -67,7 +67,7 @@ related:
 2. ถ้า tasks > 10 ให้สร้าง `.devin/tasks/<name>-arch-DD-MM-YYYY.md` พร้อม architecture
 3. บันทึก: tasks, library choices, milestones, test strategy, assumptions, risks, migration plan
 4. ถ้า tasks <= 10 ให้บันทึกใน chat report เท่านั้น
-5. ทำ `update-dot-devin`` ถ้ามีการเปลี่ยนแปลง package manifest
+5. ทำ `update-dot-devin` ถ้ามีการเปลี่ยนแปลง package manifest
 
 ### 6. Stress-Test Plan
 
@@ -78,7 +78,7 @@ related:
 3. ระบุ critical path และ bottlenecks
 4. วิเคราะห์ trade-offs ของ architectural decisions พร้อม alternatives ที่ปฏิเสธ
 5. วางแผน rollback strategy สำหรับ high-risk tasks
-6. ถ้างานซับซ้อนสูง: ทำ `deep-thinking`` ก่อน step นี้
+6. ถ้างานซับซ้อนสูง: ทำ `deep-thinking` ก่อน step นี้
 
 ### 7. Validate And Report
 
@@ -86,8 +86,8 @@ related:
 2. ตรวจสอบทุก task มี single responsibility และ test ได้
 3. ตรวจสอบไม่มี missing tasks หรือ gaps
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ และ risks พร้อม mitigation
-5. จัดรูปแบบตาราง tasks ตาม `report-format-table`` และ file structure ตาม `report-format-file-structure``
-6. ทำ `report-plan`` เพื่อรายงานแผนในแชทก่อนลงมือทำ แล้วทำงานต่อได้เลย
+5. จัดรูปแบบตาราง tasks ตาม `report-format-table` และ file structure ตาม `report-format-file-structure`
+6. ทำ `report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ แล้วทำงานต่อได้เลย
 
 ## Metrics
 
@@ -124,9 +124,9 @@ related:
 
 ### 3. Document Handling
 
-- ถ้า tasks > 10 สร้างใน `.devin/tasks/` และทำ `update-dot-devin``
+- ถ้า tasks > 10 สร้างใน `.devin/tasks/` และทำ `update-dot-devin`
 - ถ้า tasks <= 10 บันทึกใน chat report เท่านั้น
-- ต้องทำ `report-plan`` ก่อนลงมือทำ ตอบในแชท แล้วทำต่อได้เลย
+- ต้องทำ `report-plan` ก่อนลงมือทำ ตอบในแชท แล้วทำต่อได้เลย
 - ไม่ต้องรอยืนยันจาก user ยกเว้นกรณีเสี่ยงสูง
 
 ### 4. Trade-Off And Risk Analysis
@@ -134,7 +134,7 @@ related:
 - ทุก architectural decision ต้องมี trade-off analysis พร้อม alternatives ที่ปฏิเสธ
 - ทุก high-risk task ต้องมี mitigation plan และ rollback strategy
 - จัดลำดับ risks ตาม probability × impact
-- ถ้างานซับซ้อนสูง: ทำ `deep-thinking`` และ `deep-research`` ก่อนวางแผน
+- ถ้างานซับซ้อนสูง: ทำ `deep-thinking` และ `deep-research` ก่อนวางแผน
 
 ## Expected Outcome
 
