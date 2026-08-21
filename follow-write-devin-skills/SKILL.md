@@ -49,14 +49,14 @@ related:
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `references/template-skills/template-skills-run.md`
-   - `follow-*` → `references/template-skills/template-skills-follow.md` ยกเว้น `follow-*-architecture` → `references/template-skills/template-skills-architecture.md`
-   - `check-*` → `references/template-skills/template-skills-check.md`
-   - `analyze-*` → `references/template-skills/template-skills-analyze.md`
-   - `deep-*` → `references/template-skills/template-skills-deep.md`
-   - `review-*` → `references/template-skills/template-skills-review.md`
-   - `report-*` → `references/template-skills/template-skills-report.md`
-   - `idea-*` → `references/template-skills/template-skills-idea.md`
+   - `run-*` → `references/skills-type-run.md`
+   - `follow-*` → `references/skills-type-follow.md` ยกเว้น `follow-*-architecture` → `references/skills-type-architecture.md`
+   - `check-*` → `references/skills-type-check.md`
+   - `analyze-*` → `references/skills-type-analyze.md`
+   - `deep-*` → `references/skills-type-deep.md`
+   - `review-*` → `references/skills-type-review.md`
+   - `report-*` → `references/skills-type-report.md`
+   - `idea-*` → `references/skills-type-idea.md`
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, และ example template
 
@@ -121,8 +121,8 @@ related:
 
 ### 1. Template Selection
 
-- ใช้ `references/template-skills/template-skills-*/SKILL.md` เป็น canonical structure ตาม prefix
-- `follow-*-architecture` ใช้ `references/template-skills/template-skills-architecture.md` ไม่ใช่ `follow`
+- ใช้ `references/skills-type-*.md` เป็น canonical structure ตาม prefix
+- `follow-*-architecture` ใช้ `references/skills-type-architecture.md` ไม่ใช่ `follow`
 - ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 

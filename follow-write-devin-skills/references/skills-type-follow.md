@@ -1,5 +1,5 @@
 ---
-name: template-skills-follow
+name: skills-type-follow
 description: Template สำหรับ follow-* skills ใช้ best practices
 allowed-tools:
   - read

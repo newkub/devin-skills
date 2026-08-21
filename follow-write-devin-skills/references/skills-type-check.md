@@ -1,5 +1,5 @@
 ---
-name: template-skills-check
+name: skills-type-check
 description: Template สำหรับ check-* skills scan และ report
 allowed-tools:
   - read

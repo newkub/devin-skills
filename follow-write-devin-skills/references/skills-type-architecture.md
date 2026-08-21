@@ -1,5 +1,5 @@
 ---
-name: template-skills-architecture
+name: skills-type-architecture
 description: Template สำหรับ follow-*-architecture skills จัดโครงสร้าง project
 allowed-tools:
   - read

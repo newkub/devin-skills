@@ -1,5 +1,5 @@
 ---
-name: template-skills-deep
+name: skills-type-deep
 description: Template สำหรับ deep-* skills วิเคราะห์เชิงลึก
 allowed-tools:
   - read

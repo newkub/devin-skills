@@ -1,5 +1,5 @@
 ---
-name: template-skills-idea
+name: skills-type-idea
 description: Template สำหรับ idea-* skills สร้างไอเดีย
 allowed-tools:
   - read
