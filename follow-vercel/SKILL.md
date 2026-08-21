@@ -3,6 +3,7 @@ name: follow-vercel
 description: Deploy applications บน Vercel พร้อม serverless และ edge functions
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - watch-browser
+  - resolve-errors
+  - loop-until-complete
 ---
 
 ## Goal
@@ -26,6 +31,8 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 ติดตั้งและ authenticate Vercel CLI
 
+> Goal: Vercel CLI ติดตั้งและ authenticate สำเร็จ
+
 1. รัน `bun add -D vercel`
 2. หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง
 3. รัน `bunx vercel login` เพื่อ authenticate
@@ -34,6 +41,8 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 เชื่อมต่อ project กับ Vercel
 
+> Goal: Project เชื่อมต่อกับ Vercel ได้
+
 1. รัน `bunx vercel link` ใน project directory
 2. ยืนยัน project settings
 3. หรือใช้ `VERCEL_ORG_ID` และ `VERCEL_PROJECT_ID` สำหรับ CI/CD
@@ -41,6 +50,8 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 3. Configure vercel.json
 
 กำหนด configuration สำหรับ deployment
+
+> Goal: `vercel.json` ตั้งค่าถูกต้องตาม project
 
 `vercel.json`:
 ```json
@@ -65,6 +76,8 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 
 Vercel รองรับ auto-detection สำหรับ frameworks:
 
+> Goal: ระบุ framework preset ที่เหมาะสม
+
 - Next.js: ใช้ `next` preset อัตโนมัติ
 - Nuxt: ใช้ `nuxt` preset พร้อม SSR
 - SvelteKit: ใช้ `sveltekit` preset
@@ -76,6 +89,8 @@ Vercel รองรับ auto-detection สำหรับ frameworks:
 
 Build และ deploy application
 
+> Goal: Application build และ deploy สำเร็จ
+
 1. รัน `bun run build` หรือ `nitro build` สำหรับ Nitro projects
 2. ตรวจสอบว่า build สำเร็จและ output พร้อม
 3. รัน `bunx vercel deploy` สำหรับ preview deployment
@@ -86,6 +101,8 @@ Build และ deploy application
 
 ตั้งค่า environment variables
 
+> Goal: Environment variables ถูกต้องและ sync กับ Vercel
+
 1. รัน `bunx vercel env add KEY_NAME`
 2. หรือใช้ dashboard สำหรับ manage variables
 3. ใช้ `vercel env pull .env.local` เพื่อ sync ไปยัง local
@@ -94,6 +111,8 @@ Build และ deploy application
 ### 7. Serverless Functions
 
 สร้าง serverless functions ใน `api/` directory
+
+> Goal: Serverless functions ทำงานได้บน Vercel
 
 `api/hello.ts`:
 ```typescript
@@ -107,6 +126,8 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 ### 8. Edge Functions
 
 สร้าง edge functions สำหรับ edge deployment
+
+> Goal: Edge functions ทำงานได้ถูกต้อง
 
 `api/edge.ts`:
 ```typescript
@@ -123,6 +144,8 @@ export default async function handler(req: Request) {
 
 ตรวจสอบ deployment ด้วย browser preview
 
+> Goal: Deployment ทำงานถูกต้องไม่มี errors
+
 1. ทำ `/watch-browser` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
@@ -132,6 +155,8 @@ export default async function handler(req: Request) {
 ### 10. CI/CD Deployment
 
 ตั้งค่า automated deployment
+
+> Goal: CI/CD deploy อัตโนมัติทั้ง preview และ production
 
 `.github/workflows/deploy.yml`:
 ```yaml
@@ -192,15 +217,6 @@ jobs:
 - ใช้ `crons` สำหรับ scheduled functions
 - ใช้ `ignoreCommand` สำหรับ skip builds
 
-## Guide
-
-อ้างอิงเพิ่มเติม:
-
-- `references/vercel-overview.md` — overview ของ Vercel platform
-- `references/website.md` — links หลักของ Vercel
-- `learn/guide/` — documentation การใช้งาน Vercel
-- `workflows/deploy-to-vercel.md` — workflow สำหรับ deploy
-
 ## Expected Outcome
 
 - Application ที่ deploy บน Vercel ได้สำเร็จ
@@ -209,3 +225,10 @@ jobs:
 - CI/CD pipeline ที่ deploy อัตโนมัติทั้ง preview และ production
 - Environment variables ที่จัดการอย่างปลอดภัย
 - Deployment live และใช้งานได้ ไม่มี console หรือ network errors
+
+## Guide
+
+อ้างอิงเพิ่มเติม:
+
+- `references/vercel-overview.md` — overview ของ Vercel platform
+- `references/website.md` — links หลักของ Vercel
