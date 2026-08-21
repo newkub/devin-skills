@@ -1,44 +1,62 @@
 ---
 name: software-testing
-description: "Software testing guide covering testing principles, types, strategies, tools, and best practices..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: วางกลยุทธ์การทดสอบ software ทีครอบคลุมและ maintainable
+triggers:
+  - user
+  - model
+related:
+  - follow-test
+  - follow-vitest
+  - follow-playwright
 ---
+
 ## Goal
 
-ให้ผู้ใช้เข้าใจและสามารถทดสอบ software ได้อย่างมีประสิทธิภาพ
-
+สร้าง testing strategy ทีครอบคลุม regression และส่งมอบคุณภาพ
 
 ## Scope
 
-ใช้สำหรับเรียนรู้หลักการทดสอบซอฟต์แวร์, เขียน tests ที่มีคุณภาพ, เข้าใจ test pyramid และ test strategies, ตั้งค่า testing framework, และรวม testing เข้ากับ CI/CD
-
+ใช้เมื่อต้องออกแบบ test suite สำหรับ project
 
 ## Execute
 
-- อ่าน guide/ เพื่อเข้าใจ concepts และ best practices
-- ศึกษา key-concepts/ สำหรับ concepts พื้นฐาน
-- ศึกษา principles/ สำหรับ principles และ best practices
-- ดู examples/ สำหรับ code examples จริง
-- ศึกษา references/ สำหรับ documentation และ resources
-- ปฏิบัติตาม workflows/ สำหรับการทำงานเฉพาะทาง
-- ใช้ภาษาไทยในการอธิบาย
-- ให้ code examples ที่ชัดเจนและใช้งานได้จริง
-- อ้างอิง sources ที่เชื่อถือได้
-- อัปเดต content ให้ทันสมัยตาม version ล่าสุด
+### 1. Define Test Levels
 
+1. Unit tests สำหรับ business logic
+2. Integration tests สำหรับ boundaries
+3. E2E tests สำหรับ user flows
+4. Contract tests สำหรับ APIs
+
+### 2. Choose Tools
+
+1. เลือก test runner ตาม stack (vitest, jest, pytest, go test)
+2. เลือก E2E tool (playwright, cypress)
+3. เลือก mock/stub approach
+4. ตั้ง CI pipeline สำหรับ test
+
+### 3. Write Maintainable Tests
+
+1. 1 test ต่อ 1 behavior
+2. ใช้ Arrange-Act-Assert
+3. หลีกเลี่ยง brittle selectors
+4. ใช้ factories/fixtures
+
+### 4. Coverage And Quality
+
+1. ตั้ง target coverage ที่ sensible
+2. รัน mutation testing ถ้าจำเป็น
+3. ตรวจ flaky tests
+4. ทดสอบ error paths
 
 ## Rules
 
-- ใช้ภาษาไทยในการอธิบาย
-- ให้ code examples ที่ชัดเจนและใช้งานได้จริง
-- อ้างอิง sources ที่เชื่อถือได้
-- อัปเดต content ให้ทันสมัยตาม version ล่าสุด
-
+- Tests ต้อง fast, reliable, isolated
+- ไม่ทดสอบ implementation details
+- ใช้ realistic data
+- รักษา test suite ให้สะอาด
 
 ## Expected Outcome
 
-- เข้าใจ testing principles และ strategies
-- สามารถเขียน tests ที่มีคุณภาพได้
-- สามารถตั้งค่า testing framework ได้
-- สามารถรวม testing เข้ากับ CI/CD ได้
+- Test suite ครอบคลุม critical paths
+- CI green
+- Regression ลดลง

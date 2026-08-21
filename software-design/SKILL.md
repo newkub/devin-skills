@@ -1,90 +1,67 @@
 ---
 name: software-design
-description: "คู่มือการออกแบบ software รวมถึง SOLID principles, DDD, clean architecture, microservices, และ..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: ออกแบบ software ด้วย principles, patterns และ architecture ทีเหมาะสม
+triggers:
+  - user
+  - model
+related:
+  - follow-architecture
+  - follow-clean-architecture
+  - follow-software-engineering
 ---
+
 ## Goal
 
-ให้ผู้ใช้เข้าใจและสามารถออกแบบ software ได้อย่างมีประสิทธิภาพ
-
+เลือกและประยุกต์ใช้หลักการออกแบบ software ให้เหมาะกับ context
 
 ## Scope
 
-ใช้สำหรับออกแบบ software architecture, apply SOLID principles, implement Domain-Driven Design, เลือกระหว่าง microservices และ monolith, และ design API และ systems
-
+ใช้เมื่อต้องออกแบบระบบ, refactor, หรือเลือก architecture pattern
 
 ## Execute
 
-### 1. Study Key Concepts
+### 1. Understand Requirements
 
-อ่าน `key-concepts/` เพื่อเข้าใจแนวคิดพื้นฐาน
-- SOLID principles
-- Design patterns
-- Architectural patterns
+1. เก็บ functional และ non-functional requirements
+2. ระบุ constraints (time, budget, team, tech stack)
+3. หา core use cases และ bounded contexts
 
-### 2. Apply Principles
+### 2. Choose Principles
 
-ปฏิบัติตาม `principles/` เพื่อ apply หลักการในการออกแบบ
-- SOLID principles application
-- Design principles (DRY, KISS, YAGNI)
-- Architecture selection
+1. SOLID สำหรับ OOP
+2. DRY, KISS, YAGNI สำหรับ simplicity
+3. Coupling/Cohesion สำหรับ maintainability
+4. Failure modes สำหรับ resilience
 
-### 3. Follow Guides
+### 3. Select Patterns
 
-อ่าน `guide/` เพื่อเข้าใจ best practices และ implementation
-- Architecture patterns (Layered, Clean, Microservices)
-- Design patterns detailed
-- Domain-Driven Design
-- API design
-- System design
-- Best practices
+1. Creational/Structural/Behavioral patterns ตามปัญหา
+2. Architectural pattern: Monolith, Microservices, Modular Monolith, Serverless
+3. DDD สำหรับ complex domains
+4. Event-driven สำหรับ async workflows
 
-### 4. Use Workflows
+### 4. Design Components
 
-ปฏิบัติตาม `workflows/` สำหรับการทำงานเฉพาะทาง
-- Apply SOLID principles
-- Design architecture
-- Implement DDD
+1. กำหนด boundaries และ interfaces
+2. ระบุ data flow
+3. เลือก coupling ระหว่าง modules
+4. วาด diagram เพื่อสื่อสาร
 
-### 5. Reference Documentation
+### 5. Evaluate Trade-offs
 
-ศึกษา `references/` สำหรับ external resources
-- Documentation
-- Tools
-- Best practices
-
+1. เปรียบเทียบ alternatives
+2. ตรวจสอบ scalability, security, cost
+3. ทบทวนด้วย /review-architecture
 
 ## Rules
 
-### Structure And Consistency
-
-- ใช้ภาษาไทยใน `key-concepts/` และ `principles/`
-- ใช้ภาษาอังกฤษใน `guide/` และ `references/`
-- แต่ละไฟล์ไม่เกิน 250 บรรทัด
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `/workflow-name`
-
-### Content And Style
-
-- ให้ code examples ที่ชัดเจนและใช้งานได้จริง
-- อ้างอิง sources ที่เชื่อถือได้
-- อัปเดต content ให้ทันสมัยตาม version ล่าสุด
-- ใช้ตารางสรุปข้อมูลที่เปรียบเทียบได้
-- ใช้ `codeblock` สำหรับ code examples, configuration, หรือ commands
-- ใช้ `ansi markdown diagrams` สำหรับ flow, architecture, หรือ how-it-works
-
-### File Organization
-
-- `key-concepts/` - เขียนเป็นภาษาไทย แต่ละ concept อยู่ในไฟล์แยกกัน
-- `principles/` - เขียนเป็นภาษาไทย แต่ละ principle อยู่ในไฟล์แยกกัน
-- ใช้ชื่อสื่อความหมายโดยตรง ไม่ใช้ prefix ชื่อ skill
-- ใช้ `kebab-case` เสมอ ชื่อไฟล์ต้องสอดคล้องกับเนื้อหา
-
+- ไม่ over-engineer
+- ใช้ patterns ตามปัญหา ไม่ใช้ pattern เพื่อใช้
+- แยก concerns ชัดเจน
+- เอกสาร decision และ trade-off
 
 ## Expected Outcome
 
-- เข้าใจ software design principles
-- สามารถ apply SOLID principles ได้
-- สามารถ implement DDD ได้
-- สามารถเลือก architecture ที่เหมาะสมได้
-- สามารถ design systems ที่ maintainable และ scalable ได้
+- Design ทีตอบโจทย์
+- Architecture diagram และ rationale
+- ผ่าน review

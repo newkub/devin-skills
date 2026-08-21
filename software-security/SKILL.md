@@ -1,41 +1,69 @@
 ---
 name: software-security
-description: "คู่มือ software security รวมถึง authentication, authorization, cryptography, OWASP top 10, และ..."
-triggers: ['user', 'model']
-allowed-tools: ['read', 'edit', 'grep', 'glob', 'exec']
+description: พัฒนา software อย่างปลอดภัย defensive security
+triggers:
+  - user
+  - model
+related:
+  - review-security
+  - follow-auth
+  - follow-best-practice
 ---
+
 ## Goal
 
-ให้ผู้ใช้เข้าใจและสามารถ implement security ใน applications ได้อย่างมีประสิทธิภาพ
-
+ออกแบบและเขียน software ทีปลอดภัยจาก threats ทั่วไป
 
 ## Scope
 
-ใช้สำหรับ authentication และ authorization, cryptography ใน applications, ป้องกัน OWASP top 10 vulnerabilities, apply secure coding practices, และ design secure architecture
-
+ใช้กับทุก project ที่ต้องการ secure coding, auth, data protection
 
 ## Execute
 
-- อ่าน guide/ เพื่อเข้าใจ concepts และ best practices
-- ศึกษา references/ สำหรับ documentation และ resources
-- ปฏิบัติตาม workflows/ สำหรับการทำงานเฉพาะทาง
-- ใช้ภาษาไทยในการอธิบาย
-- ให้ code examples ที่ชัดเจนและใช้งานได้จริง
-- อ้างอิง sources ที่เชื่อถือได้
-- อัปเดต content ให้ทันสมัยตาม version ล่าสุด
+### 1. Identify Threats
 
+1. ระบุ assets ที่ต้องปกป้อง
+2. หา attack surface
+3. ใช้ STRIDE หรือ OWASP สำหรับ threat modeling
+
+### 2. Secure Code
+
+1. Validate input ทุกช่องทาง
+2. Output encode ก่อน render
+3. ใช้ parameterized queries
+4. หลีกเลี่ยง secrets ใน source
+
+### 3. Authentication And Authorization
+
+1. ใช้ standard auth (OAuth, OIDC, SAML) ถ้าเป็นไปได้
+2. กำหนด least privilege
+3. ใช้ RBAC/ABAC ถ้าจำเป็น
+4. ทำ /follow-auth หรือ /follow-workos ถ้าใช้ service
+
+### 4. Data Protection
+
+1. Encrypt at rest และ in transit
+2. Hash passwords ด้วย bcrypt/argon2
+3. ลบ sensitive data ที่ไม่จำเป็น
+4. ใช้ secure headers
+
+### 5. Scan And Test
+
+1. รัน SAST/DAST
+2. ตรวจ dependencies vulnerabilities
+3. ทำ security review
+4. ติดตั้ง monitoring
 
 ## Rules
 
-- ใช้ภาษาไทยในการอธิบาย
-- ให้ code examples ที่ชัดเจนและใช้งานได้จริง
-- อ้างอิง sources ที่เชื่อถือได้
-- อัปเดต content ให้ทันสมัยตาม version ล่าสุด
-
+- Never trust input
+- Fail securely
+- Keep secrets out of code
+- Use least privilege
 
 ## Expected Outcome
 
-- เข้าใจ software security principles
-- สามารถ implement authentication และ authorization ได้
-- สามารถใช้ cryptography ได้อย่างปลอดภัย
-- สามารถป้องกัน OWASP top 10 vulnerabilities ได้
+- ไม่มี common vulnerabilities
+- Auth/AuthZ ถูกต้อง
+- Sensitive data ปลอดภัย
+- ผ่าน security review
