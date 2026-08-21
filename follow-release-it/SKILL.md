@@ -3,6 +3,7 @@ name: follow-release-it
 description: ตั้งค่า release-it สำหรับ automated releases
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-open-github-secrets
+  - open-env-website
 ---
 
 ## Goal
@@ -24,6 +28,10 @@ triggers:
 
 ### 1. Setup Package Scripts
 
+เพิ่ม release script ใน `package.json`
+
+> Goal: สามารถรัน `bun run release` ได้
+
 1. เพิ่ม script ใน `package.json`
 
 ```json
@@ -35,6 +43,10 @@ triggers:
 ```
 
 ### 2. Create Release-it Config
+
+สร้างไฟล์ config สำหรับ release-it
+
+> Goal: config ตั้งค่า git, npm, GitHub, และ hooks ถูกต้อง
 
 1. สร้างไฟล์ `.releaseit.json`
 
@@ -70,6 +82,10 @@ triggers:
 
 ### 3. Create GitHub Workflow
 
+สร้าง GitHub Actions workflow สำหรับ auto release
+
+> Goal: release อัตโนมัติเมื่อ push ไป main
+
 1. สร้างไฟล์ `.github/workflows/release-it.yml`
 
 ```yml
@@ -94,23 +110,24 @@ jobs:
 
 ### 4. Setup GitHub Secrets
 
+ตั้งค่า secrets สำหรับ npm และ GitHub
+
+> Goal: GitHub Actions มีสิทธิ์ release และ publish package
+
 1. ทำ `/follow-open-github-secrets`
 2. ทำ `/open-env-website`
 3. เพิ่ม secrets ที่จำเป็น
 
 ## Rules
 
-1. ใช้ bun แทน npm เสมอ
-2. ตรวจสอบว่ามีสิทธิ์ publish ไปยัง npm
-3. ตรวจสอบว่า GITHUB_TOKEN มีสิทธิ์เพียงพอ
+### 1. Release Rules
+
+- ใช้ `bun` แทน `npm` เสมอ
+- ตรวจสอบว่ามีสิทธิ์ publish ไปยัง npm
+- ตรวจสอบว่า `GITHUB_TOKEN` มีสิทธิ์เพียงพอ
 
 ## Expected Outcome
 
 - release-it ติดตั้งและตั้งค่าเรียบร้อย
 - GitHub workflow สร้างอัตโนมัติเมื่อ push ไป main branch
 - Package release ไปยัง npm อัตโนมัติ
-
-
-## References
-
-- `release-it` content: `references/release-it/`
