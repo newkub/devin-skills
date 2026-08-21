@@ -3,6 +3,7 @@ name: create-nushell-plugins
 description: สร้าง NuShell plugin ด้วย Rust ตาม official contributor guide
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -26,6 +27,8 @@ triggers:
 
 สร้างโครงสร้าง project สำหรับ NuShell plugin
 
+> Goal: มา Rust project สำหรับ NuShell plugin
+
 1. สร้าง project ด้วย `cargo new nu_plugin_<name>`
 2. แก้ไข `Cargo.toml` เพื่อเพิ่ม dependencies:
    - `nu-plugin = "0.104.0"`
@@ -37,6 +40,8 @@ triggers:
 
 สร้าง struct ที่ implement `Plugin` trait
 
+> Goal: plugin มี commands และ version ถูกต้อง
+
 1. สร้าง unit struct สำหรับ plugin (เช่น `LenPlugin`)
 2. implement `Plugin` trait:
    - `fn version(&self) -> String` ใช้ `env!("CARGO_PKG_VERSION").into()`
@@ -46,6 +51,8 @@ triggers:
 ### 3. Implement Command
 
 สร้าง command ด้วย `SimplePluginCommand` หรือ `PluginCommand`
+
+> Goal: command มี signature และ run logic ถูกต้อง
 
 1. สร้าง unit struct สำหรับแต่ละ command (เช่น `Len`)
 2. implement `SimplePluginCommand` (หรือ `PluginCommand` ถ้าต้อง handle streams):
@@ -60,13 +67,17 @@ triggers:
 
 ต่อเข้ากับ NuShell plugin runtime
 
+> Goal: plugin สื่อสารกับ NuShell ได้
+
 1. ใน `main()` เรียก `serve_plugin(&YourPlugin, JsonSerializer)` หรือ `MsgPackSerializer`
 2. ใช้ `MsgPackSerializer` สำหรับ production เพราะเร็วกว่า
 3. ใช้ `JsonSerializer` สำหรับ debug หรือทดสอบ protocol
 
-### 5. Build and Register Plugin
+### 5. Build And Register Plugin
 
 ติดตั้งและ register plugin กับ NuShell
+
+> Goal: plugin พร้อมใช้ใน NuShell
 
 1. สร้าง release build ด้วย `cargo install --path . --locked`
 2. ใน NuShell register plugin ด้วย `plugin add <path/to/nu_plugin_name>` (เติม `.exe` บน Windows)
@@ -77,6 +88,8 @@ triggers:
 
 พัฒนาและทดสอบ plugin
 
+> Goal: plugin ผ่าน quality checks และทดสอบ
+
 1. ใช้ `cargo build` และ `cargo run` ใน development
 2. ใช้ `cargo clippy` และ `cargo fmt` สำหรับ code quality
 3. ทดสอบ command ใน NuShell หลัง `plugin use <command_name>`
@@ -84,13 +97,25 @@ triggers:
 
 ## Rules
 
+### 1. Naming And Version
+
 - ตั้งชื่อ project ด้วย `nu_plugin_<name>` เสมอ
 - `nu-plugin` และ `nu-protocol` version ต้องตรงกับ version ของ NuShell ที่ติดตั้ง
+- อย่า hardcode version แต่ให้ดึงจาก `env!("CARGO_PKG_VERSION")`
+
+### 2. Command Type
+
 - ใช้ `SimplePluginCommand` สำหรับ command ที่ไม่ต้องจัดการ stream
 - ใช้ `PluginCommand` สำหรับ command ที่ต้องจัดการ stream
+
+### 3. Error Handling
+
 - คืนค่า error ด้วย `LabeledError` พร้อม `call.head` span เพื่อให้ NuShell underline command ที error
+
+### 4. Serialization
+
 - ใช้ `MsgPackSerializer` สำหรับ production
-- อย่า hardcode version แต่ให้ดึงจาก `env!("CARGO_PKG_VERSION")`
+- ใช้ `JsonSerializer` สำหรับ debug หรือทดสอบ protocol
 
 ## Expected Outcome
 
@@ -99,7 +124,7 @@ triggers:
 - Plugin ทำงานได้ตาม `Signature` ที่ประกาศ
 - Code ผ่าน `cargo clippy` และ `cargo fmt`
 
-## Example
+## Examples
 
 ### Cargo.toml
 
@@ -179,7 +204,7 @@ fn main() {
 }
 ```
 
-### Register and Use
+### Register And Use
 
 ```nu
 # build and install (from project root)
@@ -193,7 +218,7 @@ plugin use len
 "hello" | len    # => 5
 ```
 
-## Reference
+## Guide
 
 - [NuShell Plugins Guide](https://www.nushell.sh/contributor-book/plugins.html#creating-a-plugin-in-rust)
 - [nu-plugin crate docs](https://docs.rs/nu-plugin)
