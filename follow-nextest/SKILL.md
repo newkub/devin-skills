@@ -3,6 +3,7 @@ name: follow-nextest
 description: ตั้งค่าและใช้งาน cargo-nextest สำหรับ test runner ที่รวดเร็วใน Rust projects
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -22,9 +23,13 @@ triggers:
 
 ## Execute
 
-### 1 Installation
+### 1. Installation
 
-ติดตั้ง cargo-nextest ด้วย cargo-binstall:
+ติดตั้ง cargo-nextest บน environment
+
+> Goal: cargo-nextest พร้อมใช้งาน
+
+ติดตั้งด้วย `cargo-binstall`:
 
 ```bash
 cargo binstall cargo-nextest --secure
@@ -56,9 +61,11 @@ Windows (winget):
 winget install nextest.cargo-nextest
 ```
 
-### 2 Run Tests
+### 2. Run Tests
 
-รัน tests ด้วย cargo-nextest:
+รัน tests ด้วย cargo-nextest
+
+> Goal: tests รันสำเร็จและแสดงผลลัพธ์
 
 ```bash
 cargo nextest run
@@ -70,9 +77,11 @@ cargo nextest run
 cargo test --doc
 ```
 
-### 3 Configuration
+### 3. Configuration
 
-สร้าง `.config/nextest.toml` สำหรับ configuration:
+สร้าง `.config/nextest.toml` สำหรับ configuration
+
+> Goal: config สำหรับ local และ CI ครบถ้วน
 
 ```toml
 [profile.ci]
@@ -86,17 +95,21 @@ fail-fast = false
 cargo nextest run --profile ci
 ```
 
-### 4 List Tests
+### 4. List Tests
 
-แสดงรายการ tests ทั้งหมด:
+แสดงรายการ tests ทั้งหมด
+
+> Goal: รู้ scope และชื่อ tests ทีรัน
 
 ```bash
 cargo nextest list
 ```
 
-### 5 Profiles
+### 5. Profiles
 
-ใช้ profiles สำหรับ local และ CI runs:
+ใช้ profiles สำหรับ local และ CI runs
+
+> Goal: แยก config ตาม environment ได้ถูกต้อง
 
 - default: สำหรับ local development
 - ci: สำหรับ CI (fail-fast = false)
@@ -109,9 +122,11 @@ fail-fast = false
 test-threads = 4
 ```
 
-### 6 CI Integration
+### 6. CI Integration
 
-เพิ่ม cargo-nextest ใน CI pipeline:
+เพิ่ม cargo-nextest ใน CI pipeline
+
+> Goal: CI รัน tests ด้วย nextest อย่างมีประสิทธิภาพ
 
 ```yaml
 - name: Run tests
@@ -134,8 +149,3 @@ test-threads = 4
 - Tests รันแบบ parallel อัตโนมัติ
 - CI integration ที่เหมาะสม
 - Test execution time ลดลง
-
-
-## References
-
-- `nextest` content: `references/nextest/`
