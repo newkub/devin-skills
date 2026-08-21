@@ -3,6 +3,7 @@ name: follow-dot-vscode
 description: จัดการ .vscode directory ครบถ้วน ทั้ง settings, extensions, tasks, และ launch config
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - analyze-project
+  - check-monorepo
+  - learn-from-web
+  - update-reference
 ---
 
 ## Goal
@@ -107,7 +113,7 @@ triggers:
 7. กำหนด files exclude (`files.exclude`):
    - `/.git`: `true`, `/.DS_Store`: `true`
    - `dist`: `true`, `.turbo`: `true`
-8. ทำ `/follow-config` กับ existing configs (biome.jsonc, tsconfig.json)
+8. ตรวจสอบ existing configs (`biome.jsonc`, `tsconfig.json`) ว่าไม่ขัดแย้งกัน
 9. ถ้ามี settings ที่ขัดแย้งกับ existing configs → แก้ให้สอดคล้อง
 10. ถ้าเป็น monorepo → เพิ่ม `conventionalCommits.scopes` ตาม workspaces
 
@@ -116,8 +122,6 @@ triggers:
 สร้างหรืออัปเดต `extensions.json` พร้อม recommended extensions
 
 > Goal: Extensions ครบตาม tech stack ช่วยเพิ่ม productivity
-
-> Reminder: workflow goal คือจัดการ `.vscode/` directory ให้ครบ — อย่าลืมตรวจสอบ extension IDs จาก Marketplace
 
 1. ระบุ extensions ตาม tech stack:
    - Formatter/Linter: `biomejs.biome` (Biome) หรือ `dbaeumer.vscode-eslint` (ESLint)
