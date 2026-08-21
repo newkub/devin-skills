@@ -3,6 +3,7 @@ name: follow-vite
 description: แนวทางการพัฒนาด้วย Vite 7+ build tool สำหรับ modern web applications
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-vitest
+  - follow-tsdown
 ---
 
 ## Goal
@@ -26,12 +30,19 @@ triggers:
 
 ### 1. Installation
 
+ติดตั้ง Vite และตรวจสอบ environment
+
+> Goal: มา Vite 7+ environment ทีพร้อมใช้งาน
+
 1. ติดตั้ง Vite ด้วย `bun add -D vite`
 2. ตรวจสอบ Node.js version >= 20.19+ หรือ 22.12+ (Vite 7 เป็น ESM-only)
 3. รัน dev server ด้วย `bunx vite`
-4. สำหรับ VitePress ใช้ `bunx vitepress dev`
 
 ### 2. Configuration
+
+สร้างและกำหนด `vite.config.ts`
+
+> Goal: config รองรับ dev, build, และ frameworks ทีใช้
 
 1. สร้าง `vite.config.ts` ด้วย `defineConfig` สำหรับ IntelliSense
 2. ใช้ conditional config ผ่าน function signature `defineConfig(({ command, mode }) => ({...}))`
@@ -42,11 +53,11 @@ triggers:
 7. เปิดใช้ `resolve.tsconfigPaths: true` สำหรับ auto-resolve tsconfig paths
 8. ตั้งค่า `envPrefix` สำหรับ custom environment variable prefix
 
-### 3. Plugins
+### 3. Development
 
-ติดตั้งและตั้งค่า plugins ตาม use cases (ดูรายละเอียดที section นี้)
+ตั้งค่า dev server และ development workflow
 
-### 4. Development
+> Goal: dev server เร็วและ stable พร้อม HMR
 
 1. รัน dev server ด้วย `bunx vite` หรือ `bun run dev`
 2. ใช้ HMR สำหรับ fast refresh โดยไม่ต้อง reload ทั้งหน้า
@@ -57,7 +68,11 @@ triggers:
 7. ใช้ `server.open: true` เพื่อ warm up entry point อัตโนมัติ
 8. ใช้ `vite --profile` และ `vite --debug plugin-transform` สำหรับ profiling
 
-### 5. Build
+### 4. Build
+
+Build สำหรับ production
+
+> Goal: production build optimized ตาม target และ performance
 
 1. รัน build ด้วย `bunx vite build`
 2. ใช้ `build.target: 'baseline-widely-available'` (Vite 7 default) สำหรับ browser compatibility
@@ -70,9 +85,13 @@ triggers:
 9. ตั้งค่า `chunkSizeWarningLimit` สำหรับ bundle size monitoring
 10. ใช้ `vite build --watch` สำหรับ rebuild on file changes
 
-### 6. Performance Optimization
+### 5. Performance Optimization
 
-1. ทำ plugin selection, audit, และประเมิน performance impact ตามหลักการของ skill นี้
+ปรับแต่ง performance
+
+> Goal: ลด resolve/transform time และ bundle size
+
+1. ทำ plugin selection, audit, และประเมิน performance impact
 2. Reduce resolve operations: ใช้ explicit import paths เช่น `import './Component.jsx'` แทน `import './Component'`
 3. Avoid barrel files: import จากไฟล์ตรงๆ เช่น `import { slash } from './utils/slash.js'` แทน `import { slash } from './utils'`
 4. Warm up files: ใช้ `server.warmup.clientFiles` สำหรับไฟล์ที่ใช้บ่อยและ transform ช้า
@@ -81,7 +100,11 @@ triggers:
 7. Optimize deps: ใช้ `optimizeDeps.include` สำหรับ deps ที่ Vite อาจ miss และ `optimizeDeps.exclude` สำหรับ ESM deps
 8. Profile: ใช้ `vite --profile` แล้วกด `p + enter` สำหรับบันทึก `.cpuprofile`
 
-### 7. Monorepo Setup
+### 6. Monorepo Setup
+
+ตั้งค่า Vite สำหรับ monorepo
+
+> Goal: linked packages และ workspace aliases ทำงานถูกต้อง
 
 1. Vite ตรวจจับ linked packages อัตโนมัติและ treat เป็น source code
 2. หาก linked dependency ไม่ใช่ ESM ให้เพิ่มใน `optimizeDeps.include`
@@ -89,7 +112,11 @@ triggers:
 4. ตั้งค่า `resolve.alias` ด้วย absolute paths สำหรับ workspace packages
 5. ใช้ `server.fs.strict: false` หากต้องการ access นอก workspace
 
-### 8. SSR Considerations
+### 7. SSR Considerations
+
+ตั้งค่า SSR ถ้าต้องการ
+
+> Goal: SSR build และ runtime ทำงานถูกต้อง
 
 1. ใช้ `import.meta.env.SSR` สำหรับ conditional logic
 2. Dependencies ถูก externalize โดย default สำหรับ SSR
@@ -97,14 +124,22 @@ triggers:
 4. โครงสร้างไฟล์: `entry-client.js`, `entry-server.js`, `server.js`
 5. ใช้ Environment API สำหรับ multi-environment builds (client, server, edge)
 
-### 9. Testing Setup
+### 8. Testing Setup
+
+ตั้งค่า Vitest สำหรับ testing
+
+> Goal: test setup integrate กับ Vite config
 
 1. ใช้ Vitest สำหรับ unit/integration testing (ทำ `/follow-vitest`)
 2. Vitest ใช้ Vite config โดยตรง ไม่ต้อง config ซ้ำ
 3. ใช้ `import.meta.env.VITEST` สำหรับ conditional test logic
 4. รัน coverage ด้วย `vitest run --coverage`
 
-### 10. Deployment
+### 9. Deployment
+
+เตรียมสำหรับ deploy
+
+> Goal: deployment ready พร้อม caching และ error handling
 
 1. ตั้งค่า `base` สำหรับ public base path
 2. ใช้ relative base สำหรับ deploy ได้หลายที่โดยไม่ต้อง rebuild
