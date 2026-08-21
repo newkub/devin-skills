@@ -3,6 +3,7 @@ name: follow-create-biome-plugins
 description: สร้าง custom Biome linter plugins ด้วย GritQL
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-biome
 ---
 
 ## Goal
@@ -24,11 +27,19 @@ triggers:
 
 ### 1. Setup
 
+ตรวจสอบ Biome และ project prerequisites
+
+> Goal: environment พร้อมสำหรับการสร้าง Biome plugins
+
 1. ตรวจสอบว่ามี Biome ติดตั้งแล้วโดยทำ `/follow-biome`
 2. ตรวจสอบว่ามี `biome.jsonc` อยู่แล้ว
 3. ระบุ target language และ rules ที่ต้องการตรวจสอบ
 
 ### 2. Create Plugin File
+
+สร้างและเขียน `.grit` plugin file
+
+> Goal: มา `.grit` file ทีมี GritQL patterns ที่ถูกต้อง
 
 1. สร้างไฟล์ `.grit` ที่ root ของโปรเจกต์
 2. เพิ่ม `language` directive ที่ด้านบนของไฟล์ (เช่น `language css`, `language js`, `language json`)
@@ -39,12 +50,20 @@ triggers:
 
 ### 3. Configure Plugin
 
+ตั้งค่า plugin ใน `biome.jsonc`
+
+> Goal: Biome โหลดและรัน plugin ถูกต้อง
+
 1. เพิ่ม plugin path ใน `biome.jsonc` ผ่าน `plugins` array
 2. ใช้ relative path จาก root ของโปรเจกต์
 3. ใช้ `includes` เพื่อจำกัดไฟล์ที่ plugin ทำงาน (optional)
 4. ตรวจสอบว่า plugin ถูก load อย่างถูกต้อง
 
 ### 4. Discover CST Node Names
+
+หา CST node names สำหรับ GritQL patterns
+
+> Goal: ใช้ CST node names ทีถูกต้องตาม Biome version
 
 1. เปิด [Biome Playground](https://biomejs.dev/playground/)
 2. วาง code snippet ที่ต้องการ match
@@ -53,6 +72,10 @@ triggers:
 5. ตรวจสอบ node names ใน `.ungram` files ใน Biome repository สำหรับ complete list
 
 ### 5. Verify
+
+ทดสอบ plugin กับ Biome
+
+> Goal: custom rules ทำงานถูกต้อง ไม่มี false positives
 
 1. รัน `bunx biome lint` เพื่อทดสอบ plugin
 2. ตรวจสอบว่า custom rules ทำงานได้ถูกต้อง
@@ -114,22 +137,6 @@ triggers:
 - JSON: `JsonMember`, `JsonMemberName`, `JsonObjectValue`, `JsonArrayValue`
 - ตรวจสอบ node names ใน [Biome Playground](https://biomejs.dev/playground/) เสมอ
 
-## Common Mistakes
-
-- ไม่ระบุ `language` directive เมื่อ target ไม่ใช่ JavaScript
-- ใช้ `any` แทน `or` สำหรับ multiple rules
-- ไม่ใช้ `engine biome(1.0)` เมื่อใช้ CST node names
-- ไม่ทดสอบใน Biome Playground ก่อนเขียน patterns
-- Hardcode node names โดยไม่ตรวจสอบกับ Biome version ปัจจุบัน
-
-## References
-
-- [Biome Linter Plugins](https://biomejs.dev/linter/plugins/)
-- [GritQL Plugin Recipes](https://biomejs.dev/recipes/gritql-plugins/)
-- [GritQL Reference](https://biomejs.dev/reference/gritql/)
-- [GritQL Language Documentation](https://docs.grit.io/language/overview)
-- [Biome Playground](https://biomejs.dev/playground/)
-
 ## Expected Outcome
 
 - Plugin file `.grit` สร้างขึ้นที่ root
@@ -138,3 +145,11 @@ triggers:
 - Plugin กำหนดใน `biome.jsonc` อย่างถูกต้อง
 - Custom rules ทำงานได้เมื่อรัน `bunx biome lint`
 - ไม่มี false positives หรือ missing matches
+
+## Guide
+
+- [Biome Linter Plugins](https://biomejs.dev/linter/plugins/)
+- [GritQL Plugin Recipes](https://biomejs.dev/recipes/gritql-plugins/)
+- [GritQL Reference](https://biomejs.dev/reference/gritql/)
+- [GritQL Language Documentation](https://docs.grit.io/language/overview)
+- [Biome Playground](https://biomejs.dev/playground/)
