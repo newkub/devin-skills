@@ -3,6 +3,7 @@ name: follow-design-system
 description: Design system principles พื้นฐานที่ใช้ได้กับทุก platform (TUI, Web, Desktop, Mobile)
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,6 +11,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-unocss-theme
+  - follow-web-design
+  - review-codebase
 ---
 
 ## Goal
@@ -24,12 +29,20 @@ triggers:
 
 ### 1. Define Design Tokens
 
+กำหนด visual, interaction, และ language tokens
+
+> Goal: มี design tokens ทีใช้ได้ทั่วทั้ง project
+
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
 2. กำหนด interaction tokens: transitions, animations, cursors
 3. กำหนด language tokens: terminology, tone of voice, iconography
 4. ถ้า project ใช้ UnoCSS ทำ `/follow-unocss-theme` สำหรับ HSL theme variables
 
 ### 2. Create Component Guidelines
+
+สร้างและ document reusable components
+
+> Goal: component library มี patterns และ variants ชัดเจน
 
 1. สร้าง reusable components ด้วย atomic design (atoms → molecules → organisms)
 2. ใช้ design tokens สำหรับทุก component
@@ -38,6 +51,10 @@ triggers:
 
 ### 3. Apply To Platforms
 
+แปลง tokens และ guidelines ตาม platform
+
+> Goal: design system ใช้ได้ทุก platform ทีต้องการ
+
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/follow-web-design` สำหรับ web-specific guidelines
 3. ถ้า project มี mobile ทำ `/review-codebase`
@@ -45,12 +62,20 @@ triggers:
 
 ### 4. Ensure Accessibility
 
+ตรวจสอบและ implement accessibility สำหรับทุก platform
+
+> Goal: ผ่าน WCAG และรองรับ keyboard/screen reader
+
 1. ทำตาม WCAG guidelines สำหรับทุก platform
 2. รองรับ keyboard navigation
 3. รองรับ screen readers
 4. ตรวจสอบ color contrast ratio
 
 ### 5. Test And Validate
+
+ทดสอบ design system บนทุก platform
+
+> Goal: design system consistent, accessible, และ reusable
 
 1. ทดสอบ visual consistency ทุก platform
 2. ทดสอบ component reusability
@@ -102,14 +127,7 @@ triggers:
 - Cross-platform consistency
 - Accessibility compliance
 
-## Common Mistakes
-
-- ไม่กำหนด design tokens ก่อนสร้าง components
-- สร้าง components โดยไม่ document
-- ไม่ test accessibility
-- ไม่พิจารณา platform differences
-
-## References
+## Guide
 
 - [Design Systems](https://www.designsystems.com/)
 - [Atomic Design](http://atomicdesign.bradfrost.com/)
