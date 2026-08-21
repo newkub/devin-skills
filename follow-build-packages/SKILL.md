@@ -26,7 +26,7 @@ packages/
 
 ## Core Principles
 
-- เริ่มจาก `/analyze-project` และ `/use-packages`
+- เริ่มจาก `/analyze-project` และ `/refactor-packages`
 - เลือก runtime:
   - Node: `/follow-node-functional-programming`
   - Bun: `/follow-bun-functional-programming`

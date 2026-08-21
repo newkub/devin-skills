@@ -132,3 +132,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 - รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
 - Code ผ่าน tests, lint, typecheck
 - ไม่มี circular dependencies, broken references, regression
+
+## Guide
+
+- `references/use-packages.md` — วิธีวิเคราะห์และแนะนำ packages จาก workspace
