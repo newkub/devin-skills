@@ -60,6 +60,7 @@ Create a single HTML file that presents project findings, analysis, or feature p
 2. Add a theme toggle button that toggles `dark` class on `<html>`
 3. Persist preference in `localStorage`
 4. Read `prefers-color-scheme` on load
+5. Use a clear status indicator (e.g., badge or icon) for report type
 
 ### 4. Add Sticky Tabs And Key Findings
 
@@ -67,8 +68,9 @@ Create a single HTML file that presents project findings, analysis, or feature p
 
 1. Create a sticky tab bar with `position: sticky; top: 0`
 2. Use `backdrop-blur` and a contrasting background
-3. First tab shows `Key Findings` cards
+3. First tab shows `Key Findings` cards in a responsive grid
 4. Each tab gets a badge with item count
+5. Use clear visual hierarchy: title > subtitle > key findings > tabs
 
 ### 5. Build Interactive Table
 
@@ -80,7 +82,8 @@ Create a single HTML file that presents project findings, analysis, or feature p
 4. Add sort controls on column headers (click to toggle asc/desc)
 5. Add group by selector (e.g., group by `Phase` or `Priority`)
 6. Add a `Clear` button when any filter is active
-7. Use computed `filteredRows` for sort/filter/group/search
+7. Show a `No results` empty state when filters return zero rows
+8. Use computed `filteredRows` for sort/filter/group/search
 
 ### 6. Add Per-Row Dropdown
 
@@ -99,6 +102,7 @@ Create a single HTML file that presents project findings, analysis, or feature p
 1. Add summary sections for DB/Files, API/Functions, Components
 2. Add text-based UX/UI sketch and architecture diagram
 3. Keep diagrams in `<pre>` blocks with monospaced font
+4. Use cards and grids for summary, not just plain lists
 
 ### 8. Add Next Action
 
@@ -107,6 +111,7 @@ Create a single HTML file that presents project findings, analysis, or feature p
 1. Add a `Next Action` section at the bottom
 2. Use numbered or bullet list
 3. Reference the top-priority items by `#`
+4. Style the next action with a distinct background or border
 
 ### 9. Open In Browser
 
@@ -139,6 +144,7 @@ Create a single HTML file that presents project findings, analysis, or feature p
 - Group rows by a selected column
 - Clear filters button
 - Highlight active filter/sort state
+- Show empty state when no rows match
 
 ### 4. Per-Row Dropdown
 
@@ -147,26 +153,74 @@ Create a single HTML file that presents project findings, analysis, or feature p
 - For `/idea-features` output, columns should be `UX/UI Sketch` and `Plan`
 - Dropdown content uses concise text or code blocks
 
-### 5. UX/UI Improvements
+### 5. Design Tokens And Visual Hierarchy
 
-- Use rounded corners, subtle shadows, and clear spacing
-- Sticky tab bar with backdrop blur
-- Responsive layout (horizontal scroll for wide tables)
-- Dark mode with `dark:` Tailwind prefix
-- Status colors: red for high, yellow for medium, green for low
-- Use badges for priority and phase
+- Define a small design token set with CSS variables for brand, success, warning, danger, and neutral colors
+- Use consistent spacing scale: `4`, `8`, `12`, `16`, `24`, `32`, `48`
+- Keep font stack: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+- Use `text-sm` for tables, `text-base` for body, `text-2xl` for page title
+- Avoid more than 6 accent colors
 
-### 6. Safety
+### 6. UX/UI Improvements
+
+- Rounded corners (`rounded-lg` for cards, `rounded` for buttons/badges)
+- Subtle shadows (`shadow-sm` for cards, `shadow` for sticky headers)
+- Sticky tab bar with `backdrop-blur`
+- Sticky table headers (`sticky top-0 z-10`) on wide tables
+- Row hover state with `hover:bg-gray-50 dark:hover:bg-gray-700/50`
+- Alternating row colors optional, but keep contrast
+- Status colors: red for high/danger, yellow for medium/warning, green for low/success, blue for info
+- Use badges/pills for `Priority`, `Phase`, `Impact`, `Effort`
+- Group headers distinct from rows (background + bold)
+- Summary cards in responsive grid (`grid-cols-1 md:grid-cols-3`)
+
+### 7. Responsive And Accessible
+
+- Horizontal scroll for wide tables (`overflow-x-auto`)
+- On small screens, stack filters and tabs vertically
+- Use `focus:outline-none focus:ring-2 focus:ring-blue-500` for focusable elements
+- Do not use color alone to convey meaning; add text or icon
+- Use `aria-label` for icon-only buttons
+- Respect `prefers-reduced-motion`
+- Ensure sufficient color contrast in both light and dark mode
+
+### 8. Empty, Loading, And Error States
+
+- Show a friendly `No results` message when filters match nothing
+- Show a `Loading...` fallback while Vue initializes (use `v-cloak`)
+- Provide a `Reset filters` button in empty state
+- If data is missing, show a clear message instead of a broken table
+
+### 9. Micro-Interactions
+
+- Highlight the active sort column
+- Show a count badge on the active tab
+- Animate row expansion with a simple `max-height` transition (respect `prefers-reduced-motion`)
+- Use subtle hover transitions for buttons and rows
+- Show `Copied` or `Saved` feedback for any copy/export actions
+
+### 10. Print And Share
+
+- Add a print-friendly CSS block:
+  - Hide sticky tab bar, theme toggle, and filters
+  - Expand all dropdown rows automatically
+  - Use black text on white background
+- Keep URLs and code blocks readable when printed
+
+### 11. Safety
 
 - No secrets, credentials, or hardcoded sensitive paths
 - Use relative paths for project files
 - Sanitize any user-provided content before injecting into HTML
+- Use `DOMPurify` if rendering HTML from untrusted sources
 
 ## Expected Outcome
 
 - A single `.html` file saved in the project
 - Report body in English, table cells in the project language if needed
-- Interactive table with sort, filter, group, search
+- Interactive table with sort, filter, group, search, and sticky headers
 - Per-row dropdown with two columns
 - Theme toggle, sticky tabs, key findings, summary, diagrams, next action
+- Responsive, accessible, and print-friendly
+- Clear empty/loading/error states
 - File opens in browser and renders correctly
