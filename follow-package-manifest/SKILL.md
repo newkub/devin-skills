@@ -191,8 +191,8 @@ Verify Pipeline ตามมาตรฐาน `run-verify`:
 - ใช้ `bun run ci` สำหรับ task ที่ต้องการ build ด้วย
 - ใช้ `bun turbo run verify --filter=...[origin/main]` สำหรับการตรวจสอบเฉพาะที่เปลี่ยนแปลงใน monorepo
 - Execution Order: pre-commit (lint), pre-push (verify), CI (ci), Local dev (dev)
-- Lefthook hooks จะรันอัตโนมัติก่อน commit, push, rebase (ต้องรัน `follow-lefthook` ก่อน)
-- ลำดับการทำงาน: Prepare → Update Dependencies → Setup Verify → Setup Lefthook → Scan → Lint → Format → Build → Test → Dev → Verify
+- hk hooks จะรันอัตโนมัติก่อน commit, push, rebase (ต้องรัน `/follow-hk` ก่อน)
+- ลำดับการทำงาน: Prepare → Update Dependencies → Setup Verify → Setup hk → Scan → Lint → Format → Build → Test → Dev → Verify
 - Script Composition Layer: สำหรับ monorepo ขนาดใหญ่ ควรพิจารณาใช้ turbo, justfile, หรือ makefile สำหรับ reuse และ scale
 
 ## Expected Outcome

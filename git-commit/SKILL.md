@@ -33,7 +33,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 > Goal: มี .gitignore, Git hooks และ config พร้อมก่อน commit
 
 1. ทำตาม `/follow-gitignore` สำหรับ .gitignore
-2. ทำตาม `/follow-lefthook` สำหรับ Git hooks
+2. ทำตาม `/follow-hk` สำหรับ Git hooks
 3. ทำตาม `/follow-config` สำหรับ configuration
 
 ### 2. Categorize Changes

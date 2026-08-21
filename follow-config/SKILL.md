@@ -61,7 +61,7 @@ triggers:
 
 1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
 2. รัน workflows ตาม tech stack (เช่น `/follow-biome`, `/follow-turborepo`, `/follow-typescript`)
-3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-lefthook`, `/follow-ast-grep`)
+3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-hk`, `/follow-ast-grep`)
 4. รัน `/follow-dot-vscode` สำหรับ `.vscode/` directory setup
 5. รัน `/follow-dot-github` สำหรับ `.github/` directory setup
 6. ตรวจสอบว่า config files ถูกต้องและสอดคล้องกัน
