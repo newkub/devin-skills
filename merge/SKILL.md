@@ -11,6 +11,7 @@ triggers:
   - user
   - model
 related:
+  - validate
 ---
 
 ## Goal
@@ -45,6 +46,7 @@ merge ไฟล์เข้าด้วยกัน
 - ตรวจสอบว่า merge ถูกต้องก่อนลบไฟล์เดิม
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ตรวจสอบว่าไม่มี data loss
+- ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก ให้ทำ `/validate` แล้วเลือกสิ่งที่ดีที่สุด
 
 ## Expected Outcome
 
