@@ -42,8 +42,8 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 > Goal: พบทุก issue พร้อม root cause และ review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
-3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ตรวจสอบทีละ dimension ตาม criteria จาก review CLI output

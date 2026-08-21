@@ -14,7 +14,7 @@ triggers:
   - model
 related:
   - review-codebase
-  - update-review-cli
+  - update-create-review-cli
   - suggest-next-action
   - report-table
 ---
@@ -25,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรัน review CLI ที่ `tools/review` ที่ project root และแปลผลลัพธ์ ไม่ใช้สำหรับสร้างหรืออัปเดท analyzers (ใช้ `/update-review-cli` แทน)
+ใช้สำหรับรัน review CLI ที่ `tools/review` ที่ project root และแปลผลลัพธ์ ไม่ใช้สำหรับสร้างหรืออัปเดท analyzers (ใช้ `/update-create-review-cli` แทน)
 
 ## Execute
 
@@ -35,7 +35,7 @@ related:
 > Goal: ยืนยันว่า CLI พร้อมรัน
 
 1. ตรวจสอบว่า `tools/review/package.json` มีอยู่ที่ project root
-2. ถ้าไม่มี → ทำ `/update-review-cli` เพื่อสร้าง CLI ก่อน แล้วกลับมาทำ step ถัดไป
+2. ถ้าไม่มี → ทำ `/update-create-review-cli` เพื่อสร้าง CLI ก่อน แล้วกลับมาทำ step ถัดไป
 3. ตรวจสอบว่า `tools/review/src/presentation/cli.ts` มีอยู่
 
 ### 2. Run Review CLI
@@ -45,7 +45,7 @@ related:
 
 1. รัน `bun --filter @booking/tools-review review` สำหรับ table output
 2. รัน `bun --filter @booking/tools-review review:json` สำหรับ JSON output (ถ้าต้องการ parse)
-3. ถ้า CLI error → ทำ `/update-review-cli` Step 5 เพื่อ validate และ fix
+3. ถ้า CLI error → ทำ `/update-create-review-cli` Step 5 เพื่อ validate และ fix
 
 ### 3. Analyze Results
 
@@ -55,7 +55,7 @@ related:
 1. อ่าน review score และ grade จาก summary
 2. ระบุ findings ที่เป็น Critical และ High severity
 3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`?
-4. ถ้า score < 70, categories < 60, หรือ `analyzerErrors` > 0 → พิจารณาทำ `/update-review-cli` เพื่อปรับปรุง analyzers
+4. ถ้า score < 70, categories < 60, หรือ `analyzerErrors` > 0 → พิจารณาทำ `/update-create-review-cli` เพื่อปรับปรุง analyzers
 
 ### 4. Suggest Actions
 
@@ -73,7 +73,7 @@ related:
 - ใช้ `bun --filter @booking/tools-review review` สำหรับ table output
 - ใช้ `bun --filter @booking/tools-review review:json` สำหรับ JSON output
 - ใช้ `bun --filter @booking/tools-review review -- --output report.txt` สำหรับเขียนลงไฟล์
-- ถ้า CLI ไม่มี → ทำ `/update-review-cli` ก่อน
+- ถ้า CLI ไม่มี → ทำ `/update-create-review-cli` ก่อน
 
 ### 2. Output Interpretation
 
@@ -85,16 +85,16 @@ related:
 
 ### 3. When To Update CLI
 
-- ถ้า CLI error หรือ crash → ทำ `/update-review-cli` Step 5
-- ถ้า categories ไม่ครบ 60+ → ทำ `/update-review-cli` Step 2-3
-- ถ้า analyzer ให้ผลไม่ถูกต้อง → ทำ `/update-review-cli` Step 3
+- ถ้า CLI error หรือ crash → ทำ `/update-create-review-cli` Step 5
+- ถ้า categories ไม่ครบ 60+ → ทำ `/update-create-review-cli` Step 2-3
+- ถ้า analyzer ให้ผลไม่ถูกต้อง → ทำ `/update-create-review-cli` Step 3
 
 ## Expected Outcome
 
 - Review report พร้อม score, grade, domain breakdown และ findings
 - ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
 - แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละปัญหา
-- แนะนำ `/update-review-cli` ถ้า CLI ต้องปรับปรุง
+- แนะนำ `/update-create-review-cli` ถ้า CLI ต้องปรับปรุง
 
 ## References
 

@@ -29,7 +29,7 @@ framework selection, library versions, runtime compatibility, build tools, packa
 > Goal: ครอบคลุมทุก tech stack dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ framework versions, compatibility matrix, และ EOL status
@@ -37,7 +37,7 @@ framework selection, library versions, runtime compatibility, build tools, packa
 7. Analyzer ตรวจสอบ build tool configuration, package manager consistency, และ runtime requirements
 8. Analyzer ตรวจสอบ outdated dependencies, security vulnerabilities, unused packages, transitive dependencies, และ duplicate packages
 9. Review CLI คำนวณ tech stack review score จาก review report
-10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 

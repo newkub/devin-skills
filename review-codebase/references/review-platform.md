@@ -4,7 +4,7 @@ description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, 
 related:
   - scan-codebase
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - run-review
   - deep-validate
   - validate
@@ -33,7 +33,7 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-sid
 1. ทำ `/scan-codebase` เพื่อเข้าใจ platform setup
 2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 

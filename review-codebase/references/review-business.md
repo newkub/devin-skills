@@ -22,7 +22,7 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ business logic setup
 2. ระบุ payment provider, subscription model, tenant model, flag provider, realtime protocol, email tools
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 

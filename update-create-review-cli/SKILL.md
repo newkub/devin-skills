@@ -1,5 +1,5 @@
 ---
-name: update-review-cli
+name: update-create-review-cli
 description: สร้างและอัปเดท codebase review CLI ใน tools/review
 allowed-tools:
   - read

@@ -4,7 +4,7 @@ description: Review viewport, breakpoints, flex layouts, touch targets, typograp
 related:
   - scan-codebase
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - update-rules
   - run-review
   - deep-validate
@@ -36,8 +36,8 @@ responsive review สำหรับ: viewport meta tag, breakpoint coverage, mo
 > Goal: ครอบคลุมทุก responsive dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ responsive patterns
-2. ทำ `/update-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 

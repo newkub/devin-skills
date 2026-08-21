@@ -16,7 +16,7 @@ related:
   - review-codebase
   - scan-codebase
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - run-review
   - deep-validate
   - validate
@@ -52,7 +52,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 > Goal: ครอบคลุมทุก simplicity dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม simplicity categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม simplicity categories ล่าสุด
 3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจจับ unnecessary abstractions: interfaces ที่มี implementor เดียว, abstract classes ที่มี subclass เดียว, generic functions ที่ใช้กับ type เดียว, wrapper classes ที่ไม่เพิ่ม value
@@ -63,7 +63,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 10. Analyzer ตรวจจับ configuration complexity: config ที่ไม่จำเป็น, environment-specific code ที่ไม่ได้ใช้, feature flags ที่ไม่มี consumer, over-configurable components
 11. Analyzer ตรวจจับ over-generic code: functions ที่รับ `any` หรือ `unknown` โดยไม่จำเป็น, generic ที่ซับซ้อนเกินไป, utility functions ที่ไม่ได้ใช้
 12. Review CLI คำนวณ simplicity review score จาก review report
-13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 

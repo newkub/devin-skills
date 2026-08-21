@@ -4,7 +4,7 @@ description: Review API client design, timeout, retry, circuit breaker, vendor l
 related:
   - scan-codebase
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - update-rules
   - run-review
   - deep-validate
@@ -37,8 +37,8 @@ integration review สำหรับ: API client design, timeout configuration,
 > Goal: ครอบคลุมทุก integration dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ integration patterns
-2. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 

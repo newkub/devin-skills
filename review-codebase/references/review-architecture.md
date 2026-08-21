@@ -30,7 +30,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ:
@@ -45,7 +45,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 10. Analyzer ตรวจสอบ pattern appropriateness: pattern ที่ over-engineer สำหรับ use case ง่าย หรือ under-engineer สำหรับ use case ซับซ้อน
 11. Analyzer ตรวจสอบ functional patterns: composition over inheritance, pure functions, immutability ที่ควรใช้แทน OOP patterns
 12. Review CLI คำนวณ architecture review score จาก review report
-13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 

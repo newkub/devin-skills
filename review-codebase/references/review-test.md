@@ -31,8 +31,8 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 > Goal: พบทุก issue พร้อม root cause และ review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ test patterns หลายมิติ
-2. ทำ `/update-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
-3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง review report พร้อม test metrics
 6. จับ findings เป็น list พร้อม evidence (file, line, code snippet)

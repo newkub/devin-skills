@@ -19,8 +19,8 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 
 > Goal: rules และ analyzers ครอบคลุมล่าสุด พร้อมรัน sub-reviews
 
-1. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในเพื่ออัปเดต ast-grep rules
-2. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+1. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในเพื่ออัปเดต ast-grep rules
+2. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 3. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
 
@@ -58,8 +58,8 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 
 ### 2. Update Before Run
 
-- ทำ `/update-review-cli` ก่อนรัน sub-reviews เสมอ — `/update-review-cli` เรียก `/update-rules` ภายใน
-- ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+- ทำ `/update-create-review-cli` ก่อนรัน sub-reviews เสมอ — `/update-create-review-cli` เรียก `/update-rules` ภายใน
+- ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 
 ### 3. Formatting
 

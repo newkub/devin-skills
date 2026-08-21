@@ -52,7 +52,7 @@ related:
 4. `/update-agents-md`
 5. `/update-docs` (ถ้ามี `docs/`)
 6. `/update-ast-grep-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
-7. `/update-review-cli` (ถ้ามี `tools/review/`)
+7. `/update-create-review-cli` (ถ้ามี `tools/review/`)
 8. `/update-vscode`
 9. `/update-contributing-md`
 

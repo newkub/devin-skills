@@ -30,7 +30,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 > Goal: ครอบคลุมทุก refactor dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ SRP violations: mixed concerns, God modules, multiple reasons to change
@@ -43,7 +43,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 12. Analyzer ตรวจสอบ missing abstractions และ inline logic ที่ควร extract
 13. Analyzer ตรวจสอบ testability: dependency injection (functions ที่ new dependencies ภายในแทนรับผ่าน parameters), pure functions (side effects ใน logic path), side effect isolation (side effects ผสมกับ business logic), test setup complexity (test files ที่มี setup เกิน 50 บรรทัด), module coupling, hardcoded dependencies (`new` keyword ใน logic path), global mutable state, async testability (floating promises, missing await, timer dependencies)
 14. Review CLI คำนวณ refactor review score จาก review report
-15. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+15. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 

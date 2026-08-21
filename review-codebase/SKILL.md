@@ -15,7 +15,7 @@ triggers:
   - model
 related:
   - run-review
-  - update-review-cli
+  - update-create-review-cli
   - review-github-pr
   - review-devin-global-skills
   - run-check
@@ -35,7 +35,7 @@ related:
 
 ## Goal
 
-Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension โดย run `/run-review` วิเคราะห์ metrics แล้วเรียก `/update-review-cli` อัตโนมัติเมื่อ metrics บ่งชี้ว่า CLI ต้องปรับปรุง
+Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension โดย run `/run-review` วิเคราะห์ metrics แล้วเรียก `/update-create-review-cli` อัตโนมัติเมื่อ metrics บ่งชี้ว่า CLI ต้องปรับปรุง
 
 ## Scope
 
@@ -62,14 +62,14 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 1. ทำ `/run-review` สำหรับ table output
 2. รัน `bun --filter @booking/tools-review review:json` หรือ `bun run --filter @booking/tools-review review -- --output report.json` เพื่อดึง JSON
 3. บันทึก before score, grade, domain breakdown, category coverage, findings count
-4. ถ้า CLI error → ทำ `/update-review-cli` Step 5 แล้วกลับมา Step 2
+4. ถ้า CLI error → ทำ `/update-create-review-cli` Step 5 แล้วกลับมา Step 2
 
 ### 3. Decide Update CLI From Metrics
 
-> Goal: ตัดสินใจให้ `/update-review-cli` อัตโนมัติตาม metrics
+> Goal: ตัดสินใจให้ `/update-create-review-cli` อัตโนมัติตาม metrics
 > Goal: CLI ครอบคลุม categories ล่าสุดและให้ผลถูกต้อง
 
-ถ้า metrics ตรงเงื่อนไขใดข้างล่าง → ทำ `/update-review-cli` แล้วกลับไป Step 2 (ทำซ้ำไม่เกิน 3 รอบ):
+ถ้า metrics ตรงเงื่อนไขใดข้างล่าง → ทำ `/update-create-review-cli` แล้วกลับไป Step 2 (ทำซ้ำไม่เกิน 3 รอบ):
 
 1. `categories` น้อยกว่า 60
 2. overall `score` ต่ำกว่า 70 หรือ `grade` เป็น `D`/`F`
@@ -116,20 +116,20 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 - ใช้ `/run-review` และ `tools/review` CLI เป็นแหล่งหลักของ findings
 - ไม่ manual อ่าน `references/review-<dimension>/SKILL.md` ทีละตัว — อ่านเฉพาะเมื่อ CLI output ไม่ชัดเจนหรือต้องการ deep-dive
-- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ `/update-review-cli` ก่อนรีวิวต่อ
+- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ `/update-create-review-cli` ก่อนรีวิวต่อ
 
 ### 2. Metric Triggers
 
-- `categories < 60` → `/update-review-cli` Step 2-3 เพื่อเพิ่ม categories
-- `score < 70` หรือ `grade D/F` → `/update-review-cli` Step 3 เพื่อปรับปรุง analyzers
-- `domain score < 50` → `/update-review-cli` Step 3 เฉพาะ domain นั้น
-- `analyzerErrors > 0` → `/update-review-cli` Step 5
-- `falsePositiveRate > 20%` → `/update-review-cli` Step 3 เพื่อ tune rules
-- `reviewWorkflow` ไม่ถูกต้อง → `/update-review-cli` Step 6
+- `categories < 60` → `/update-create-review-cli` Step 2-3 เพื่อเพิ่ม categories
+- `score < 70` หรือ `grade D/F` → `/update-create-review-cli` Step 3 เพื่อปรับปรุง analyzers
+- `domain score < 50` → `/update-create-review-cli` Step 3 เฉพาะ domain นั้น
+- `analyzerErrors > 0` → `/update-create-review-cli` Step 5
+- `falsePositiveRate > 20%` → `/update-create-review-cli` Step 3 เพื่อ tune rules
+- `reviewWorkflow` ไม่ถูกต้อง → `/update-create-review-cli` Step 6
 
 ### 3. Execution Governance
 
-- ทำ `/update-review-cli` แล้วรัน `/run-review` ใหม่ ไม่เกิน 3 รอบ
+- ทำ `/update-create-review-cli` แล้วรัน `/run-review` ใหม่ ไม่เกิน 3 รอบ
 - ทำ `/update-reference` หลังจากแก้ไขไฟล์
 - รัน tests หลังแต่ละ improvement
 
@@ -146,7 +146,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ## Review Catalog
 
-CLI ครอบคลุมทุก dimension ด้านล่าง ถ้าขาด category ใดให้ `/update-review-cli`
+CLI ครอบคลุมทุก dimension ด้านล่าง ถ้าขาด category ใดให้ `/update-create-review-cli`
 
 - Group orchestrators: `?references/review-frontend.md`?, `?references/review-backend.md`?, `?references/review-code-quality.md`?
 - Foundation and code quality: `?references/review-architecture.md`?, `?references/review-bug-prone.md`?, `?references/review-codebase-issue.md`?, `?references/review-formal-verification.md`?, `?references/review-naming.md`?, `?references/review-realize-implementation.md`?, `?references/review-refactor.md`?, `?references/review-simplicity.md`?, `?references/review-types.md`?
@@ -162,7 +162,7 @@ CLI ครอบคลุมทุก dimension ด้านล่าง ถ้�
 
 - Review ทำงานผ่าน `tools/review` CLI ไม่ manual อ่าน references ทีละ dimension
 - Findings จาก CLI ครอบคลุม 60+ categories พร้อม evidence และ severity
-- `/update-review-cli` ถูกเรียกอัตโนมัติเมื่อ metrics บ่งชี้
+- `/update-create-review-cli` ถูกเรียกอัตโนมัติเมื่อ metrics บ่งชี้
 - Before-after review score ผ่าน `/run-review`
 - Issues ถูก validate และจัดลำดับตาม severity
 - รายงานในแชทเป็นตารางพร้อม action ถัดไป

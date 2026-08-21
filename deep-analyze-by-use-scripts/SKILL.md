@@ -13,7 +13,7 @@ triggers:
   - model
 related:
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - follow-create-cli
   - follow-clean-architecture
   - use-ast-grep
@@ -21,7 +21,7 @@ related:
 
 ## Goal
 
-วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-review-cli` และ `/run-review`
+วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-create-review-cli` และ `/run-review`
 
 ## Scope
 
@@ -54,9 +54,9 @@ related:
 > Goal: ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
 > Goal: Review CLI พร้อมรันและครอบคลุม categories ล่าสุด
 
-1. ทำ `/update-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
+1. ทำ `/update-create-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
 2. ถ้า review CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
-3. ถ้าต้องสร้างใหม่ → ทำ `/update-review-cli` ก่อน แล้วกลับมาทำ Step 4
+3. ถ้าต้องสร้างใหม่ → ทำ `/update-create-review-cli` ก่อน แล้วกลับมาทำ Step 4
 
 ### 4. Run Review CLI And NAPI Analysis
 
@@ -103,8 +103,8 @@ related:
 
 ### 1. Review CLI Integration
 
-- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-review-cli` ก่อนรัน `/run-review`
-- ถ้า review CLI ไม่มี → ทำ `/update-review-cli` ก่อนเสมอ
+- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-create-review-cli` ก่อนรัน `/run-review`
+- ถ้า review CLI ไม่มี → ทำ `/update-create-review-cli` ก่อนเสมอ
 - ถ้า review CLI มีอยู่ → รัน `bun --filter @booking/tools-review review:json` ได้เลย
 - รัน review CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
 

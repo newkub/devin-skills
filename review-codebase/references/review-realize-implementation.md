@@ -40,7 +40,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 > Goal: หา implementation ที่ไม่สมบูรณ์ในทุกมิติ
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context
 5. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
@@ -48,7 +48,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 7. Analyzer ตรวจหา missing features: API endpoints ที่ไม่มี corresponding UI action, database tables/columns ที่ไม่มี UX จัดการ, backend flows ที่ขาด user-facing steps, features ที่มี partial UX (มี list แต่ไม่มี create/edit, มี create แต่ไม่มี delete), features ที่มี admin/staff flow แต่ไม่มี customer-facing counterpart, feature flags/config ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
 8. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
 9. Review CLI คำนวณ implementation completeness score จาก review report
-10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 

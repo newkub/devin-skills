@@ -22,7 +22,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup
 2. ระบุ delivery channels, documentation tools, และ versioning strategy ที่ใช้
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-review-cli` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
+4. ทำ `/update-create-review-cli` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 2. Documentation Review
 

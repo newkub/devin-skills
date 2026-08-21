@@ -15,7 +15,7 @@ triggers:
 related:
   - scan-codebase
   - deep-analyze
-  - update-review-cli
+  - update-create-review-cli
   - run-review
   - deep-validate
   - validate
@@ -53,7 +53,7 @@ Review memory usage and management patterns ใน codebase พร้อมร�
 > Goal: พบ root cause ของ memory issues
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. ทำ `/run-review` เพื่อดึง review report
 4. วิเคราะห์ heap growth patterns
 5. ตรวจหา synchronous bulk allocation (`JSON.parse` ไฟล์ใหญ่, `Buffer.concat`, array ขนาดใหญ่)
