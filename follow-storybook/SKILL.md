@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่าและใช้ Storybook เพื่อพัฒนา UI components แบบ isolation พร้อม documentation และ testing
+
+## Scope
+
+Use `follow-storybook` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -72,6 +79,8 @@ triggers:
 3. setup accessibility testing ด้วย axe-core
 4. configure test runner สำหรับ CI integration
 5. รัน tests ใน CI pipeline
+
+## Rules
 
 ## Rules
 
@@ -144,6 +153,8 @@ triggers:
 - setup accessibility testing ด้วย axe-core
 - configure test runner สำหรับ CI integration
 - รัน tests ใน CI pipeline สำหรับ quality assurance
+
+## Expected Outcome
 
 ## Expected Outcome
 

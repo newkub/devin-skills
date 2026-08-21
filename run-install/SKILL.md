@@ -11,16 +11,23 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ติดตั้ง dependencies ทั้งหมดในโปรเจกต์ พร้อมแก้ไขปัญหาที่เกิดขึ้นระหว่าง installation
 
+## Scope
+
+Use `run-install` for the specific tasks and workflows it covers
+
+## Execute
+
 ## Execute
 
 ### 1. Update Dependencies
 
-1. ทำ `/update-dependencies` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
+1. ทำ `/update-dependencies-latest` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
 2. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
 
 ### 2. Determine Package Manager
@@ -87,6 +94,8 @@ Python:
 2. อัพเดท versions ใน requirements.txt หรือ pyproject.toml
 3. ใช้ pip constraints ถ้าจำเป็น
 4. รัน install อีกครั้งเพื่อยืนยัน
+
+## Rules
 
 ## Rules
 
@@ -159,6 +168,8 @@ Python:
 General:
 - ใช้ clean install เมื่อมี dependency conflicts ข้ามภาษา
 - ลบ cache ของทุก package manager ก่อน install
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+
+## Scope
+
+Use `write-examples` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -53,9 +60,11 @@ triggers:
 
 ### 6. Update Documentation
 
-1. ทำตาม `/write-readme` สำหรับการอัพเดท README.md
+1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/write-readme`
+3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
+
+## Rules
 
 ## Rules
 
@@ -81,6 +90,8 @@ triggers:
 ### 5. Organization
 
 - จัดเรียงตาม modules และ complexity
+
+## Expected Outcome
 
 ## Expected Outcome
 

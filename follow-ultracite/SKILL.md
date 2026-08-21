@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า Ultracite กับ Biome สำหรับ linting และ formatting แบบ zero-config
+## Goal
 
 ## Goal
 
 ติดตั้งและตั้งค่า Ultracite กับ Biome สำหรับ linting และ formatting
+
+## Scope
+
+Use `follow-ultracite` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -72,11 +77,15 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ใช้ preset configs จาก Ultracite ก่อน custom rules
 - Custom overrides ควรเป็น minimum เท่านั้น
 - ใช้ extends เพื่อ inherit จาก core configs
 - เลือก frameworks ที่ใช้งานจริงเท่านั้น
 - Commit config files ที่สร้างขึ้น
+
+## Expected Outcome
 
 ## Expected Outcome
 

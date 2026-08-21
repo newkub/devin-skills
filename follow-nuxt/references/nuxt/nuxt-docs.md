@@ -2645,4 +2645,3 @@ Follow the docs to [set up your local development environment](https://ui.nuxt.c
 ## [License](#license)
 
 Licensed under the [MIT license](https://github.com/nuxt/ui/blob/v4/LICENSE.md).
-

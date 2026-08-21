@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
+
+## Scope
+
+Use `merge` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -35,9 +42,13 @@ merge ไฟล์เข้าด้วยกัน
 
 ## Rules
 
+## Rules
+
 - ตรวจสอบว่า merge ถูกต้องก่อนลบไฟล์เดิม
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ตรวจสอบว่าไม่มี data loss
+
+## Expected Outcome
 
 ## Expected Outcome
 

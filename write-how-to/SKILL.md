@@ -24,7 +24,7 @@ triggers:
 
 ### 1. Define Purpose
 
-ทำ `/write-content-explicit` เพื่อกำหนดวัตถุประสงค์และ audience ของ how-to guide
+ทำ `write-content-explicit` เพื่อกำหนดวัตถุประสงค์และ audience ของ how-to guide
 
 1. ระบุ audience และ skill level ของผู้อ่าน
 2. กำหนด objective ที่ชัดเจนสำหรับ guide
@@ -75,7 +75,7 @@ triggers:
 2. ขอ feedback จาก peers หรือ target audience
 3. ตรวจสอบ clarity และ completeness
 4. อัพเดท content ตาม feedback ที่ได้รับ
-5. รัน `/update-references` สำหรับไฟล์ที่เพิ่ม
+5. รัน `/update-reference` สำหรับไฟล์ที่เพิ่ม
 
 ## Rules
 

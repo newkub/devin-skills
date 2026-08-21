@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า Biome เป็นเครื่องมือหลักสำหรับ linting และ formatting แทน ESLint/Prettier
+## Goal
 
 ## Goal
 
 ติดตั้งและกำหนดค่า Biome สำหรับ linting และ formatting ด้วย Bun
+
+## Scope
+
+Use `follow-biome` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -136,6 +141,8 @@ jobs:
 
 ## Rules
 
+## Rules
+
 ### 1. Installation
 
 - ใช้ `bun add -D @biomejs/biome` เท่านั้น
@@ -169,6 +176,8 @@ jobs:
 - Turborepo: สำหรับ Turborepo projects
 - Types: สำหรับ type analysis (มีผลต่อ performance)
 - Vue: สำหรับ Vue projects
+
+## Expected Outcome
 
 ## Expected Outcome
 

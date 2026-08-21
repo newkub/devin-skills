@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ใช้ Rolldown bundler สำหรับสร้าง JavaScript/TypeScript libraries ด้วยความเร็วสูง
+
+## Scope
+
+Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -62,6 +69,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Library Bundler Choice
 
 สำหรับ TypeScript libraries ให้ใช้ `tsdown` แทน direct Rolldown
@@ -89,6 +98,8 @@ triggers:
 ### Related Workflows
 
 สำหรับ library bundling ที่ง่ายกว่า ใช้ `/follow-tsdown`
+
+## Expected Outcome
 
 ## Expected Outcome
 

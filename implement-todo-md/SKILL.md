@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 แปลง TODO ในไฟล์ Markdown (เช่น TODO.md) ให้กลายเป็น production code ที่ใช้งานได้จริง
+
+## Scope
+
+Use `implement-todo-md` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -45,6 +52,8 @@ Implement production code ตาม TODO items ใน Markdown
 1. ตรวจสอบไฟล์ Markdown ว่าไม่มี TODO items เหลือ
 2. ตรวจสอบว่า features ที่ implement ใช้งานได้จริง
 3. อัพเดทไฟล์ Markdown ตามสถานะปัจจุบัน
+
+## Rules
 
 ## Rules
 
@@ -81,7 +90,9 @@ Implement production code ตาม TODO items ใน Markdown
 
 - ลบ TODO items ที่ implement เสร็จแล้ว
 - เพิ่ม changelog สำหรับ features ที่ implement
-- อัพเดท README ตาม `/write-readme`
+- อัพเดท README ตาม `/follow-readme`
+
+## Expected Outcome
 
 ## Expected Outcome
 

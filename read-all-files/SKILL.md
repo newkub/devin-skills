@@ -11,18 +11,23 @@ triggers:
 - user
 - model
 ---
-
-อ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะห์และเข้าใจโครงสร้าง
+## Goal
 
 ## Goal
 
 อ่านและวิเคราะห์ไฟล์ทั้งหมดในโปรเจกต์อย่างครบถ้วน
 
+## Scope
+
+Use `read-all-files` for the specific tasks and workflows it covers
+
+## Execute
+
 ## Execute
 
 ### 1. Prepare
 
-1. ใช้ `/update-references` เพื่อเก็บ reference
+1. ใช้ `/update-reference` เพื่อเก็บ reference
 2. ระบุประเภทไฟล์ที่ต้องการอ่าน
 3. กำหนดลำดับความสำคัญของไฟล์
 
@@ -39,6 +44,8 @@ triggers:
 2. ระบุความสัมพันธ์ระหว่างไฟล์
 3. สรุป pattern และ architecture
 4. ตรวจสอบความสมบูรณ์ของการอ่าน
+
+## Rules
 
 ## Rules
 
@@ -62,6 +69,8 @@ triggers:
 - ระบุ shared patterns
 - หาความสัมพันธ์ระหว่าง modules
 - สรุป architecture ที่ใช้
+
+## Expected Outcome
 
 ## Expected Outcome
 

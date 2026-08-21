@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices
+
+## Scope
+
+Use `follow-wxt` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -53,6 +60,8 @@ triggers:
 2. ตรวจสอบ `dist/` directory
 3. Trigger GitHub Actions workflow
 4. ตรวจสอบ Chrome Web Store
+
+## Rules
 
 ## Rules
 
@@ -107,6 +116,8 @@ project/
 - ใช้ TypeScript สำหรับ type safety
 - เขียน tests สำหรับ pure logic
 - ใช้ ESLint และ Prettier สำหรับ code quality
+
+## Expected Outcome
 
 ## Expected Outcome
 

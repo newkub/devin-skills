@@ -11,6 +11,15 @@ triggers:
 - user
 - model
 ---
+## Goal
+
+แนวทางการจัดโครงสร้างโปรเจกต์ Next.js
+
+## Scope
+
+Use `follow-next` for the specific tasks and workflows it covers
+
+## Execute
 
 # แนวทางการจัดโครงสร้างโปรเจกต์ Next.js
 
@@ -64,3 +73,12 @@ nextjs-project/
 ## References
 
 - `next` content: `references/next/`
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `follow-next` workflow with correct output

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 กำหนดแนวทางการใช้งาน Pinia สำหรับ state management ใน Vue applications ให้มีประสิทธิภาพและเป็นมาตรฐาน
+
+## Scope
+
+Use `follow-pinia` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -62,6 +69,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Setup Store Pattern
 
 - ใช้ setup function pattern (ไม่ใช่ option stores)
@@ -89,6 +98,8 @@ triggers:
 - หลีกเลี่ยง duplicate computations
 - Pass parameters ด้วย closure ถ้าจำเป็น
 - Cache expensive computations
+
+## Expected Outcome
 
 ## Expected Outcome
 

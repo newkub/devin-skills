@@ -9,7 +9,17 @@ allowed-tools:
 triggers:
 - user
 - model
+description: /follow-turborepo
 ---
+## Goal
+
+Setup
+
+## Scope
+
+Use `follow-build-packages` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Setup
 
@@ -20,7 +30,7 @@ triggers:
 - /follow-turborepo
 - /follow-tsdown
 - /follow-vitest
-- /follow-bun-functional-programming หรือ /follow-node-functional-programming
+- /follow-functional-programming หรือ /follow-functional-programming
 
 ## Project Structure
 
@@ -37,8 +47,8 @@ packages/
 
 - เริ่มจาก `/analyze-project` และ `/refactor-packages`
 - เลือก runtime:
-  - Node: `/follow-node-functional-programming`
-  - Bun: `/follow-bun-functional-programming`
+  - Node: `/follow-functional-programming`
+  - Bun: `/follow-functional-programming`
 - build/test/lint ต้องรันผ่าน pipeline เดียวกันใน monorepo
 
 ## Folder Rules
@@ -63,3 +73,12 @@ export const add = (a: number, b: number) => a + b
 packages/*/src <-- packages/*/src (ผ่าน public API)
 tests/examples <-- src
 ```
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `follow-build-packages` workflow with correct output

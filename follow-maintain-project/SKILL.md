@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ดูแลรักษาโปรเจกต์ให้มีความมั่นคงด้วย compliance และ maintenance ที่เป็นระบบ
+
+## Scope
+
+Use `follow-maintain-project` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -40,12 +47,16 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. ปฏิบัติตาม compliance frameworks
 2. บันทึก compliance measures
 3. ใช้ automated dependency updates
 4. ให้ความสำคัญกับการลด technical debt
 5. วางแผน maintenance windows
 6. แจ้งให้ stakeholders ทราบ
+
+## Expected Outcome
 
 ## Expected Outcome
 

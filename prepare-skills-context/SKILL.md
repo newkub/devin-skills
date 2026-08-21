@@ -128,11 +128,11 @@ related:
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
-- `refactor-to-*` → ใช้ `/follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
+- `refactor-to-*` → ใช้ `follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
 - `improve-*`/`write-*` → ใช้ `/follow-write-devin-skills` เป็นมาตรฐาน, มี review ก่อน improve
 - `create-*`/`add-*`/`delete-*` → มี dry run ก่อน, อัปเดท references ด้วย `/update-reference`
 - `update-*` → ตรวจ git changes ก่อน, ใช้ `/check-should-update`
-- `report-*` → ระบุ output format, ใช้ `/report-format-*`
+- `report-*` → ระบุ output format, ใช้ `report-format-*`
 - `list-*`/`search-*` → อ่านและแสดงข้อมูลเป็นตาราง, ไม่แก้ไขไฟล์
 - `use-*` → อ้างอิง official documentation, ไม่ reinvent
 - `template-*` → เป็น canonical structure สำหรับ prefix นั้น, ต้องมี `## Example Template`

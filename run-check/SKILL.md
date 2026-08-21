@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
+
+## Scope
+
+Use `run-check` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -38,6 +45,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Check Order
 
 - Lint: ตรวจสอบ code style ก่อน
@@ -55,6 +64,8 @@ triggers:
 - รัน lint, typecheck และ scan แบบ parallel เมื่อเป็นไปได้
 - ใช้ cache เพื่อเพิ่มความเร็ว
 - รัน checks ใน CI environment
+
+## Expected Outcome
 
 ## Expected Outcome
 

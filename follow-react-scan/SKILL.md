@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตรวจหา render ที่ไม่จำเป็นและปัญหาความเร็วใน React ได้ทันทีโดยไม่แก้โค้ด พร้อมดูปัญหาและแก้ไขตามข้อมูลที่เห็น
+## Goal
 
 ## Goal
 
 หา performance issues ใน React และแก้ไขตามข้อมูลจาก react-scan
+
+## Scope
+
+Use `follow-react-scan` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -103,6 +108,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. Integration Standards
 
 - Import `react-scan` ก่อน React และ React DOM เสมอ
@@ -117,6 +124,8 @@ triggers:
 - เริ่ม optimize จาก components ที่มี impact มากที่สุดก่อน
 - ตรวจสอบว่าการ optimize ลด renders ได้จริงหลังแก้ไข
 - ปิดหรือ remove `react-scan` ก่อน deploy production
+
+## Expected Outcome
 
 ## Expected Outcome
 

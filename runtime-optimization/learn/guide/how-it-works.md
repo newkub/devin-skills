@@ -176,4 +176,3 @@ Tier 0: Interpreter → Tier 1: Baseline JIT → Tier 2: Optimizing JIT
 **Implementation**:
 
 ```	ypescript\n// TypeScript/Bun example\n```
-

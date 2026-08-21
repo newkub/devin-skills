@@ -161,4 +161,3 @@ const config: StorybookConfig = {
   },
 };
 ```
-

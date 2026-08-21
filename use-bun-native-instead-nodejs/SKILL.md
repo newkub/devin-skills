@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ใช้ Bun ecosystem ทั้งหมดแทน Node.js รวมถึง runtime, package manager, test runner, bundler, และ native APIs
+
+## Scope
+
+Use `use-bun-native-instead-nodejs` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -131,6 +138,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Runtime API Selection
 
 ใช้ Bun native APIs เสมอเมื่อมีให้ใช้
@@ -180,6 +189,8 @@ triggers:
 - ใช้ Web-standard APIs ก่อน Bun-specific APIs
 - ตรวจสอบ compatibility กับ Web standards
 - ใช้ Bun APIs เฉพาะสำหรับ server-side tasks
+
+## Expected Outcome
 
 ## Expected Outcome
 

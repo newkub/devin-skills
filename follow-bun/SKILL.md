@@ -1,7 +1,7 @@
 ---
 name: follow-bun
-description: แนวทางการใช้งาน Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific
-  APIs และ Web-standard APIs ที่ Bun รองรับ
+description: ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง
+  Bun-specific APIs และ We...
 allowed-tools:
 - read
 - edit

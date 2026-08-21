@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย object-oriented programming principles เพื่อเพิ่มความสามารถในการ reuse, maintainability และ scalability
+
+## Scope
+
+Use `follow-object-oriented-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -107,6 +114,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Encapsulation
 
 ซ่อน implementation details อย่างเหมาะสม
@@ -183,6 +192,8 @@ triggers:
 - ใช้ `instanceof`
 - ใช้ `discriminated unions`
 - Avoid `any/unknown`
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สร้าง pattern rules ที่อธิบายโครงสร้างและลักษณะเฉพาะจากข้อมูลที่ให้มา
+
+## Scope
+
+Use `follow-request-pattern` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -48,11 +55,15 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. Pattern rules ต้องชัดเจนและเข้าใจง่าย
 2. ต้องมีตัวอย่างประกอบทุก rule
 3. ต้องระบุเงื่อนไขและข้อจำกัด
 4. ห้ามเขียน rules ที่ซับซ้อนเกินความจำเป็น
 5. ต้องครอบคลุมทุกกรณีที่เป็นไปได้
+
+## Expected Outcome
 
 ## Expected Outcome
 

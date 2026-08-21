@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย deterministic programming เพื่อให้โค้ดให้ผลลัพธ์เหมือนกันเสมอเมื่อ input เดิม
+
+## Scope
+
+Use `follow-deterministic` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Pure Functions
 
 ฟังก์ชันต้อง deterministic เมื่อเป็นไปได้
@@ -150,6 +159,8 @@ triggers:
 - Document `error scenarios`
 - Handle `consistently`
 - Test `error paths`
+
+## Expected Outcome
 
 ## Expected Outcome
 

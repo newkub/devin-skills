@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสมตามความรุนแรงและผลกระทบ
+
+## Scope
+
+Use `follow-incident-triage` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -76,6 +83,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Severity Classification
 
 ใช้เกณฑ์ที่ชัดเจนในการจัดประเภท severity
@@ -110,6 +119,8 @@ triggers:
 - P0-P1: Real-time communication
 - P2: Scheduled updates
 - P3: Next scheduled meeting
+
+## Expected Outcome
 
 ## Expected Outcome
 

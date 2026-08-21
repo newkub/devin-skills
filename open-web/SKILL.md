@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 เปิด website ด้วย open command
+
+## Scope
+
+Use `open-web` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -28,9 +35,13 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ใช้ `open <url>` command
 - ตรวจสอบ URL ว่าถูกต้อง
 - ใช้ default browser ของระบบ
+
+## Expected Outcome
 
 ## Expected Outcome
 

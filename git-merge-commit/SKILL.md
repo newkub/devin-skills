@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 รวม commits หลายตัวเป็น commit เดียวด้วย git rebase interactive เพื่อให้ git history สะอาด
+
+## Scope
+
+Use `git-merge-commit` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -95,12 +102,16 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. สร้าง backup branch เสมอก่อนทำ rebase
 2. ตรวจสอบว่า commits ยังไม่ถูก push ไป remote
 3. ใช้ `force-with-lease` แทน `force` เสมอ
 4. แจ้งทีมก่อนทำ force push
 5. ใช้ conventional commit format สำหรับ commit message
 6. ตรวจสอบผลลัพธ์หลังรวมเสร็จเสมอ
+
+## Expected Outcome
 
 ## Expected Outcome
 

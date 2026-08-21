@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่า Clippy lint rules และ error handling standards เพื่อลด manual error fixing
+
+## Scope
+
+Use `follow-clippy` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -63,6 +70,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Lint Categories
 
 - correctness: deny เสมอ (catch bugs ที่แน่นอน)
@@ -101,6 +110,8 @@ allow-mixed-uninlined-format-args = true
 - ใช้ `Result<T, E>` สำหรับ error handling
 - ใช้ `thiserror` สำหรับ custom error types
 - ใช้ `anyhow` สำหรับ application-level errors
+
+## Expected Outcome
 
 ## Expected Outcome
 

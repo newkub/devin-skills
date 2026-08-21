@@ -1,7 +1,7 @@
 ---
 name: improve-database-design
-description: Review, evaluate, and improve database schema, indexing, queries, and
-  integrity for relational and NoSQL systems
+description: Review and improve an existing or proposed database design to achieve
+  better performance, integri...
 allowed-tools:
 - read
 - edit

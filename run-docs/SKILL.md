@@ -32,7 +32,7 @@ triggers:
 
 ### 2. Update Documentation
 
-1. ทำ `/write-docs` เพื่อสร้างและอัพเดทเอกสาร
+1. ทำ `/follow-project-docs` เพื่อสร้างและอัพเดทเอกสาร
 2. ทำ `/review-codebase` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
@@ -73,7 +73,7 @@ triggers:
 - ใช้คำสั่งที่เหมาะสมกับ documentation framework
 - ติดตามและแก้ไขข้อผิดพลาดทันทีจนกว่าจะผ่าน
 - ตรวจสอบว่า dev server เริ่มต้นสำเร็จก่อนเปิด browser
-- ต้องทำ `/write-docs` ก่อนเพื่อสร้างและอัพเดทเอกสาร
+- ต้องทำ `/follow-project-docs` ก่อนเพื่อสร้างและอัพเดทเอกสาร
 
 ## Expected Outcome
 

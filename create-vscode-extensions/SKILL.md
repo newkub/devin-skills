@@ -31,7 +31,7 @@ triggers:
 
 ## Skills Related
 
-- `/write-devin-skills` - มาตรฐานการเขียน skills
+- `/follow-write-devin-skills` - มาตรฐานการเขียน skills
 - `lang-typescript`
 - `lang-javascript`
 

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 Clean build artifacts และ cache เพื่อเริ่มต้นใหม่
+
+## Scope
+
+Use `run-clean` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -58,6 +65,8 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 
 ## Rules
 
+## Rules
+
 ### 1. Clean Scope
 
 - Clean เฉพาะสิ่งที่จำเป็น
@@ -75,6 +84,8 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 - ตรวจสอบ git status ก่อน clean
 - Commit หรือ stash changes ที่สำคัญ
 - ใช้ `--dry-run` ก่อน `git clean`
+
+## Expected Outcome
 
 ## Expected Outcome
 

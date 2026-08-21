@@ -1,7 +1,7 @@
 ---
 name: follow-tsdown
-description: ตั้งค่าและใช้งาน tsdown สำหรับ bundle TypeScript libraries ด้วย Rolldown
-  - รองรับทุก config options และ plugin ecosystems
+description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ
+  type declarations gene...
 allowed-tools:
 - read
 - edit
@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations generation และ multiple output formats
+
+## Scope
+
+Use `follow-tsdown` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -48,6 +55,8 @@ triggers:
 2. ยืนยันว่า type declarations (.d.ts) สร้างครบถ้วน
 3. ทดสอบ build scripts ว่าทำงานได้
 4. ทดสอบ watch mode ด้วย `bunx tsdown --watch`
+
+## Rules
 
 ## Rules
 
@@ -137,6 +146,8 @@ Migrate จาก bundlers อื่น
 - ใช้ `tsdown-migrate` สำหรับ migrate จาก tsup
 - Compatible กับ tsup options หลักๆ
 - ใช้ `bunx tsdown-migrate` สำหรับ auto-migration
+
+## Expected Outcome
 
 ## Expected Outcome
 

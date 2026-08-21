@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่า Node Modules Inspector สำหรับ inspection และ debugging node modules แบบ interactive
+
+## Scope
+
+Use `follow-node-modules-inspector` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -26,6 +33,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ใช้ Node Modules Inspector สำหรับ inspection และ debugging node modules
 - รองรับ pnpm, npm, และ bun
 - ใช้ bunx สำหรับรันโดยไม่ต้องติดตั้ง
@@ -33,6 +42,8 @@ triggers:
 ```bash [command]
 bunx node-modules-inspector
 ```
+
+## Expected Outcome
 
 ## Expected Outcome
 

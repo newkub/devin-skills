@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย declarative programming เพื่อเขียน code ที่อ่านง่าย maintain ได้ง่าย
+
+## Scope
+
+Use `follow-declarative-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### What Not How
 
 เขียน code ที่บอกว่าอะไรต้องทำ
@@ -160,6 +169,8 @@ triggers:
 - Test configuration
 - Test data transformations
 - Use property-based testing
+
+## Expected Outcome
 
 ## Expected Outcome
 

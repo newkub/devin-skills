@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สร้าง Tauri desktop application ที่ใช้ web frontend (Vite + React) ร่วมกับ Rust backend สำหรับ cross-platform desktop apps
+
+## Scope
+
+Use `follow-tauri` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -92,6 +99,8 @@ Community Plugins (40+): tauri-plugin-blec, tauri-plugin-cache, tauri-plugin-con
 
 ## Rules
 
+## Rules
+
 ### Frontmatter
 
 - title: Title Case
@@ -134,6 +143,8 @@ desktop-apps/{project}/
 |-----------|--------|
 | Frontend → Backend | `invoke('command', args)` |
 | Backend → Frontend | Events |
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -53,5 +53,3 @@ docker run -p 3000:3000 \
   -e SCALAR_API_URL=https://api.example.com \
   scalarorg/scalar:latest
 ```
-
-

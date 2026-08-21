@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่าและใช้ Unlighthouse CLI และ CI เพื่อ audit performance, accessibility, SEO ของ website ทั้งเว็บไซต์
+
+## Scope
+
+Use `follow-unlighthouse` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -70,6 +77,8 @@ triggers:
 3. ใช้ `--reporter lighthouseServer` สำหรับ LHCI server upload
 4. ใช้ `--build-static` สำหรับ HTML dashboard
 5. Upload `.unlighthouse/` folder ไปยัง static host
+
+## Rules
 
 ## Rules
 
@@ -143,6 +152,8 @@ triggers:
 - ใช้ `--reporter csv` หรือ `csvExpanded` สำหรับ stakeholders
 - ใช้ `--reporter lighthouseServer` สำหรับ LHCI server upload
 - Upload `.unlighthouse/` folder ไปยัง static host
+
+## Expected Outcome
 
 ## Expected Outcome
 

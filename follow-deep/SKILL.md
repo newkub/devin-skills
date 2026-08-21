@@ -59,7 +59,7 @@ related:
 5. Testing → `run-test`
 6. Validation → `deep-validate` (comprehensive) หรือ `validate` (simple)
 7. Security → `review-security`
-8. Performance → `/deep-optimize` (comprehensive) หรือ `review-performance` (specific)
+8. Performance → `/review-codebase` (comprehensive) หรือ `review-performance` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)
 10. Thinking → `deep-thinking` (systematic) หรือ `pondering` (reflective)
 
@@ -76,12 +76,12 @@ related:
 
 ### 4. Apply Deep Follow If Needed
 
-ถ้า task ต้องการการทำตามแบบ recursive ใช้ `/deep-follow`
+ถ้า task ต้องการการทำตามแบบ recursive ใช้ `deep-follow`
 
 > Goal: ทุก step ของ deep- workflows ถูก execute และ verify ครบถ้วน
 
-1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `/deep-follow`
-2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `/deep-follow`
+1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `deep-follow`
+2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `deep-follow`
 3. บันทึกผลลัพธ์สรุป
 
 ## Rules
@@ -107,9 +107,9 @@ related:
 
 ### 4. Deep Follow Integration
 
-- ใช้ `/deep-follow` เมื่อ deep- workflows มี sub-workflows ซับซ้อน
-- ไม่ใช้ `/deep-follow` สำหรับ deep- workflows ที่ตรงไปตรงมา
-- `/deep-follow` รองรับทั้ง workflows และ skills แบบ recursive
+- ใช้ `deep-follow` เมื่อ deep- workflows มี sub-workflows ซับซ้อน
+- ไม่ใช้ `deep-follow` สำหรับ deep- workflows ที่ตรงไปตรงมา
+- `deep-follow` รองรับทั้ง workflows และ skills แบบ recursive
 
 ## Expected Outcome
 

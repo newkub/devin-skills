@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 Implement Event-Driven Architecture ที่รองรับ async workflows, scalability, และ loose coupling
+
+## Scope
+
+Use `follow-event-driven` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -77,6 +84,8 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 2. Setup event logging และ audit trail
 3. Create dashboards สำหรับ event flow
 4. Add alerting สำหรับ failed events
+
+## Rules
 
 ## Rules
 
@@ -192,6 +201,8 @@ Design Issues
 - Circular event dependencies
 - Missing error handling
 - No observability
+
+## Expected Outcome
 
 ## Expected Outcome
 

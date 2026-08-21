@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ทำงานกับแต่ละ folder ใน project จนครบทั้งหมดตาม workflow ที่กำหนด
+
+## Scope
+
+Use `all-folders` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -35,6 +42,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Processing Order
 
 - ทำ folders ที่เป็น foundation ก่อน (root, config, types)
@@ -49,6 +58,8 @@ triggers:
 
 - บันทึก folders ที่มีปัญหา
 - ทำ `/resolve-errors` สำหรับ folders ที่มี issues
+
+## Expected Outcome
 
 ## Expected Outcome
 

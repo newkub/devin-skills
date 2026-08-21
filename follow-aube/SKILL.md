@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ใช้ Aube เป็น Node.js package manager หลักสำหรับโปรเจกต์ที่ต้องการความเร็วสูง ความปลอดภัย และประสิทธิภาพสูงสุด
+
+## Scope
+
+Use `follow-aube` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -100,6 +107,8 @@ Aube รองรับ lockfiles หลายประเภท:
 
 ## Rules
 
+## Rules
+
 ### 1. Command Selection
 
 เลือก command ตาม use case:
@@ -133,6 +142,8 @@ Aube รองรับ lockfiles หลายประเภท:
 - Global content-addressable store ลด disk usage
 - Share package files ระหว่าง projects
 - node_modules layout ที่ efficient
+
+## Expected Outcome
 
 ## Expected Outcome
 

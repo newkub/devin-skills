@@ -53,7 +53,7 @@ allowed-tools:
 
 > Goal: ยืนยันว่า imports และ function calls ทำงานได่
 
-1. สร้างไฟล์ชั่วคราว (`/tmp/test-usage-<ts|js>`) จาก code example
+1. สร้างไฟล์ชั่วคราว (`tmp/test-usage-<ts|js>`) จาก code example
 2. แก้ไข relative paths ให้ตรงกับ test environment
 3. รันด้วย `bun` หรือ `node`
 4. ถ้าต้องการ build ก่อน → ทำ `resolve-errors` แล้วลอง `build`

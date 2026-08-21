@@ -11,6 +11,15 @@ triggers:
 - user
 - model
 ---
+## Goal
+
+Replace Content
+
+## Scope
+
+Use `replace` for the specific tasks and workflows it covers
+
+## Execute
 
 # Replace Content
 
@@ -35,3 +44,12 @@ triggers:
 1. REPLACE x ด้วย y ในไฟล์หรือโค้ดที่ระบุ
 2. VERIFY ว่าการแทนที่ถูกต้อง
 3. CHECK ว่าไม่มีผลข้างเคียงจากการแทนที่
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `replace` workflow with correct output

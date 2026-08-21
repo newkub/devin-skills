@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน กระชับ และนำไปใช้ได้จริง
+
+## Scope
+
+Use `follow-request-instruction-prompt` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -48,11 +55,15 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. Instruction prompt ต้องกระชับและชัดเจน
 2. ต้องระบุ input/output อย่างชัดเจน
 3. ต้องจัดลำดับขั้นตอนอย่างเป็นระบบ
 4. ต้องระบุ constraints และ edge cases
 5. ห้ามใช้ภาษาที่คลุมเครือหรือหลายความหมาย
+
+## Expected Outcome
 
 ## Expected Outcome
 

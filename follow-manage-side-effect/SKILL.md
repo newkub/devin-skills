@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 แยก business logic จาก side effects เพื่อให้ code สามารถ test ได้ง่ายขึ้นและ maintain ได้ดีขึ้น
+
+## Scope
+
+Use `follow-manage-side-effect` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -77,6 +84,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Pure Functions
 
 Pure functions ต้องเป็น deterministic และไม่มีผลข้างเคียง
@@ -108,6 +117,8 @@ Pure functions ต้องเป็น deterministic และไม่มี�
 - Pure functions ต้องมี unit tests
 - Side effects ต้องมี integration tests
 - Critical flows ต้องมี E2E tests
+
+## Expected Outcome
 
 ## Expected Outcome
 

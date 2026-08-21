@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ย้ายไฟล์ไปยังตำแหน่งใหม่และอัพเดท reference
+
+## Scope
+
+Use `move` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -35,9 +42,13 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ตรวจสอบว่าไม่มี data loss
 - อัพเดท references หลังจากย้ายไฟล์
+
+## Expected Outcome
 
 ## Expected Outcome
 

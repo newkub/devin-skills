@@ -80,4 +80,3 @@ Storybook auto-detects framework จาก:
 ```bash
 bun create storybook@latest --type react
 ```
-

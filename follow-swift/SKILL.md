@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนา Swift applications ด้วย Clean Architecture และ SwiftUI ตาม best practices
+
+## Scope
+
+Use `follow-swift` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -76,6 +83,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Component Structure
 
 - ใช้ Single-File Components (SFC) สำหรับ SwiftUI Views
@@ -97,6 +106,8 @@ triggers:
 - ใช้ protocol สำหรับ interfaces
 - ทำให้ code decoupled และ testable
 - ใช้ naming conventions อย่างสม่ำเสมอ
+
+## Expected Outcome
 
 ## Expected Outcome
 

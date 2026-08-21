@@ -19,7 +19,7 @@ triggers:
 
 ## Scope
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/write-ast-grep-rules`
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-ast-grep`
 
 ## Execute
 

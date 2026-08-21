@@ -1,7 +1,7 @@
 ---
 name: review-github-pr
-description: Review pull request ครอบคลุม diff, commits, description, CI, conventional
-  commits และ merge readiness
+description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata,
+  CI และ code changes
 argument-hint: optional PR number or branch
 allowed-tools:
 - read

@@ -69,7 +69,7 @@ related:
 > Goal: Test files พร้อม, spec ครอบคลุม, naming สอดคล้องมาตรฐาน
 
 1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
-2. `/write-spec`, `/review-codebase` — สร้าง spec และปรับ naming ไปพร้อมกัน
+2. `/write-test-spec`, `/review-codebase` — สร้าง spec และปรับ naming ไปพร้อมกัน
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ### 4. Write Tests

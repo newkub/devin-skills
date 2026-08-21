@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่าและใช้งาน Zod สำหรับ schema validation และ type safety ใน TypeScript projects
+
+## Scope
+
+Use `follow-zod` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -112,6 +119,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - เปิด strict mode ใน tsconfig.json เสมอ
 - ใช้ .safeParse() สำหรับ user input validation และ performance-sensitive code
 - ใช้ .parse() สำหรับ critical validation ที่ต้องการ throw error
@@ -128,6 +137,8 @@ triggers:
 - ใช้ type hints สำหรับ recursive schemas เนื่องจาก TypeScript ไม่สามารถ infer
 - ใช้ .preprocess() สำหรับ data normalization ก่อน validation
 - ใช้ .transform() สำหรับ data transformation หลัง validation
+
+## Expected Outcome
 
 ## Expected Outcome
 

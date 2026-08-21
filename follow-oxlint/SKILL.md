@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ติดตั้งและตั้งค่า eslint-plugin-oxlint สำหรับใช้งานร่วมกับ ESLint 9+ (flat config) เพื่อ linting ที่เร็วขึ้นด้วย Rust-based linter
+
+## Scope
+
+Use `follow-oxlint` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -88,6 +95,8 @@ export default [
 
 ## Rules
 
+## Rules
+
 ### 1. Installation
 
 - ใช้ bun add -D เท่านั้น
@@ -142,6 +151,8 @@ export default [
 | jest | No | eslint-plugin-jest |
 | vitest | No | @vitest/eslint-plugin aka eslint-plugin-vitest |
 | vue | No | eslint-plugin-vue rules that work with script tags |
+
+## Expected Outcome
 
 ## Expected Outcome
 

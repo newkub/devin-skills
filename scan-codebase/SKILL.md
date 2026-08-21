@@ -1,7 +1,7 @@
 ---
 name: scan-codebase
-description: Scan codebase อย่างรวดเร็วด้วย static analysis tools ครอบคลุม text search,
-  file search, AST-based search, และ structure navigation
+description: Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality
+  ใน 3 นาที
 allowed-tools:
 - read
 - edit

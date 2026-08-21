@@ -14,13 +14,17 @@ allowed-tools:
 ---
 ## Goal
 
+## Goal
+
 ให้ผู้ใช้เข้าใจและสามารถประยุกต์ใช้ theory of computation ได้อย่างมีประสิทธิภาพ
 
+## Scope
 
 ## Scope
 
 ใช้สำหรับเข้าใจทฤษฎี computation และ computational models, เรียนรู้ complexity theory และ algorithm analysis, เข้าใจ formal languages และ automata, เตรียมสอบ theory of computation, ออกแบบ algorithms ที่มีประสิทธิภาพ, และเข้าใจ limits ของ computation
 
+## Execute
 
 ## Execute
 
@@ -63,3 +67,12 @@ allowed-tools:
 - ดู `references/sitemap.md` สำหรับ content map
 - อ้างอิง sources ที่เชื่อถือได้
 - อัปเดต content ให้ทันสมัยตาม version ล่าสุด
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `computer-computation` workflow with correct output

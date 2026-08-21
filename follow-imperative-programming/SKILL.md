@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย imperative programming เพื่อควบคุม flow ของโปรแกรมอย่างชัดเจน
+
+## Scope
+
+Use `follow-imperative-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Control Structures
 
 ใช้ control structures อย่างเหมาะสม
@@ -160,6 +169,8 @@ triggers:
 - Optimize `hot paths`
 - Profile และ benchmark
 - ใช้ `efficient algorithms`
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า VS Code extensions สำหรับ automated releases
+## Goal
 
 ## Goal
 
 ตั้งค่า VS Code extensions สำหรับ automated releases ไปยัง VS Code Marketplace
+
+## Scope
+
+Use `follow-release-vscode` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -55,6 +60,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Package Configuration
 
 - ต้องมี publisher, name, version, displayName
@@ -79,6 +86,8 @@ triggers:
 - ต้องมี VSCE_PAT หรือ login
 - token ต้องมีสิทธิ์ publish
 - ต้องมี permissions ใน workflow
+
+## Expected Outcome
 
 ## Expected Outcome
 

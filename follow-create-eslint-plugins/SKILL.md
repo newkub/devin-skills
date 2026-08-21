@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript เพื่อเพิ่ม rules ที่เฉพาะทาง
+## Goal
 
 ## Goal
 
 สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์
+
+## Scope
+
+Use `follow-create-eslint-plugins` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -50,6 +55,8 @@ triggers:
 1. สร้าง test files สำหรับ rules
 2. รัน tests ด้วย test runner
 3. ตรวจสอบว่า rules ทำงานถูกต้อง
+
+## Rules
 
 ## Rules
 
@@ -87,6 +94,8 @@ triggers:
 - ใช้ plugins key ใน flat config format
 - Import plugin และ assign namespace
 - ใช้ rule format `namespace/rule-name` ใน rules object
+
+## Expected Outcome
 
 ## Expected Outcome
 

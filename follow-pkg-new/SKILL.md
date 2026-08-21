@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า pkg.pr.new สำหรับ continuous (preview) releases สำหรับ libraries ด้วยการ publish อัตโนมัติทุก commit และ pull request
+## Goal
 
 ## Goal
 
 ตั้งค่า pkg.pr.new สำหรับ continuous (preview) releases สำหรับ libraries ด้วยการ publish อัตโนมัติทุก commit และ pull request
+
+## Scope
+
+Use `follow-pkg-new` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -99,6 +104,8 @@ bunx pkg-pr.new publish --packageManager=bun
 
 ## Rules
 
+## Rules
+
 ### 1. Installation
 
 - ต้อง install GitHub Application ก่อนใช้งาน
@@ -124,6 +131,8 @@ bunx pkg-pr.new publish --packageManager=bun
 - Publish approved pull requests เท่านั้นสำหรับความปลอดภัย
 - ใช้ outputs สำหรับ E2E tests
 - หลีกเลี่ยง publishing บน tags
+
+## Expected Outcome
 
 ## Expected Outcome
 

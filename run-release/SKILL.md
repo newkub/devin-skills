@@ -108,7 +108,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ### 4. Release Tool Usage
 
-- ใช้ `/release-*` workflows สำหรับตั้งค่า release tool แต่ละ platform
+- ใช้ `release-*` workflows สำหรับตั้งค่า release tool แต่ละ platform
 - รัน verify ก่อน release เสมอ
 - รัน prerelease script ก่อน release สำหรับ npm
 - รัน `vsce package` ก่อน publish สำหรับ vscode

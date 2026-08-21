@@ -195,4 +195,4 @@ fn app() -> Element {
 ## Reference
 
 - `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
-- `/connect-workflows` - เชื่อมโยง workflows
+- `connect-workflows` - เชื่อมโยง workflows

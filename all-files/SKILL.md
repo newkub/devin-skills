@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ทำงานกับแต่ละ file ใน project จนครบทั้งหมดตาม workflow ที่กำหนด
+
+## Scope
+
+Use `all-files` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -36,6 +43,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Processing Order
 
 - ทำ files ที่เป็น foundation ก่อน (config, types, utilities)
@@ -50,6 +59,8 @@ triggers:
 
 - บันทึก files ที่มีปัญหา
 - ทำ `/resolve-errors` สำหรับ files ที่มี issues
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -1,7 +1,6 @@
 ---
 name: review-devin-global-skills
-description: Review global Devin skills for structure, valid references, and quality
-  with scores and action items
+description: Review global Devin skills for structure, valid references, and quality with scores and actions
 allowed-tools:
 - read
 - write
@@ -94,15 +93,16 @@ Find broken and invalid references
 
 > Goal: no broken internal or external references
 
-1. use `use-scripts` or Python to:
-   - extract all ` /skill-name` slash commands in `SKILL.md` files
-   - verify the target directory exists
-   - report missing skills
-2. use `check-reference` to find broken links
-3. check `related` for circular dependencies and self-references
-4. check for empty or malformed backticks
-5. flag `localhost`, `example.com`, or obviously invalid external URLs
-6. run `git diff --check` for trailing whitespace and CRLF issues
+1. use `use-scripts` or Python to extract slash commands
+2. only treat as skill references:
+   - backticked ` /skill-name `
+   - slash after command verbs such as `ทำ /`, `ใช้ /`, `เรียก /`, `ตาม /`
+3. ignore placeholders: `workflow-name`, `skill-name`, `xxx`, `old-name`, `new-name`, wildcard `*`
+4. ignore common tool and path tokens: `edit`, `dist`, `target`, `assets`, `fetch`, `node`, `bun`, `localhost`
+5. verify the target skill directory exists
+6. use `check-reference` to find broken Markdown links
+7. check `related` for circular dependencies and self-references
+8. check for empty or malformed backticks
 
 ### 6. Review Content Quality
 
@@ -111,7 +111,7 @@ Evaluate usefulness and clarity
 > Goal: content is precise, actionable, and free from filler
 
 1. use `follow-content-quality` on a representative sample
-2. scan for `TODO`, `MOCK`, `placeholder`, `FIXME`, or generic filler
+2. scan for actual placeholders, not skill names containing `todo` or `mock`
 3. flag emojis unless the user explicitly requested them
 4. identify duplicate content across skills
 5. flag vague instructions such as "do the right thing" or "best practice" without specifics

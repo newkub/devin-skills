@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตรวจสอบ performance ด้วย Core Web Vitals และ metrics สำคัญ
+
+## Scope
+
+Use `check-web-performance` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -73,6 +80,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Performance Targets
 
 - LCP: < 2.5s (good), < 4s (needs improvement)
@@ -93,6 +102,8 @@ triggers:
 - High: ทำให้ performance แย่มาก
 - Medium: ทำให้ performance แย่เล็กน้อย
 - Low: เป็น best practices
+
+## Expected Outcome
 
 ## Expected Outcome
 

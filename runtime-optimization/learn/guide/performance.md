@@ -138,4 +138,3 @@ ASAN_OPTIONS=detect_leaks=1 ./application
 # Heaptrack
 heaptrack ./application
 ```
-

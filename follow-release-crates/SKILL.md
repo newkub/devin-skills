@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่า Cargo สำหรับ automated releases ไปยัง crates.io ด้วย semantic versioning
+
+## Scope
+
+Use `follow-release-crates` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -53,6 +60,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Package Configuration
 
 - ต้องมี name, version, authors, description
@@ -85,6 +94,8 @@ triggers:
 - ต้องมี persist-credentials: false
 - ต้องมี concurrency สำหรับ release-pr job
 - ต้องมี GITHUB_TOKEN environment
+
+## Expected Outcome
 
 ## Expected Outcome
 

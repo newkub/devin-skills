@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 อ่าน `.env.*` แล้วเปิด URL ของ services เพื่อไปเอา API keys มาใส่
+
+## Scope
+
+Use `follow-open-web-from-env` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -38,9 +45,13 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. เปิด URL เฉพาะที่จำเป็นตาม env files
 2. เก็บ secrets ใน `.env.local` อย่างปลอดภัย
 3. ห้าม commit secrets ไป git
+
+## Expected Outcome
 
 ## Expected Outcome
 

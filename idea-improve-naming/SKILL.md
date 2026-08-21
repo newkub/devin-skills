@@ -1,7 +1,7 @@
 ---
 name: idea-improve-naming
-description: สร้างไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files
-  พร้อม continuous numbering และ scope
+description: สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database,
+  files, CSS พร้อม continuous...
 allowed-tools:
 - read
 - edit

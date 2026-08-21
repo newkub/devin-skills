@@ -1,7 +1,7 @@
 ---
 name: implement-all
-description: ตรวจสอบ implementation completeness ครบทุกมิติ ใช้หลัง review เพื่อ verify
-  ไม่มี TODO MOCK STUB placeholder
+description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO,
+  MOCK, FAKE, STUB, place...
 allowed-tools:
 - read
 - edit

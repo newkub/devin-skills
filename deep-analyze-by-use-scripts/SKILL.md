@@ -1,7 +1,7 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase ด้วย tools/review, tools/analyze, ast-grep และ scripts
-  พร้อมรองรับ /update-review-cli
+description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze`
+  CLI, `@ast-grep/napi` และ...
 allowed-tools:
 - read
 - edit

@@ -42,7 +42,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 3. Code Transformation
 
-1. ใช้ `/gritql` หรือ `/follow-ast-grep` สำหรับ automated code changes
+1. ใช้ `/follow-ast-grep` หรือ `/follow-ast-grep` สำหรับ automated code changes
 2. อัพเดท imports และ API calls
 3. แก้ไข breaking changes ใน code
 4. อัพเดท configuration files
@@ -51,7 +51,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 1. รัน unit tests สำหรับ changed code
 2. รัน integration tests สำหรับ affected flows
-3. ทำ `/regression-test` เพื่อตรวจสอบว่าไม่มี regressions
+3. ทำ `/run-test` เพื่อตรวจสอบว่าไม่มี regressions
 4. ทำ manual testing สำหรับ critical functionality
 5. ทำ automated validation สำหรับ data integrity
 6. ทำ load testing สำหรับ performance-critical migrations
@@ -99,7 +99,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 เลือก tools ที่เหมาะสมสำหรับ code changes:
 
-- ใช้ `/gritql` สำหรับ Biome projects และ custom linting
+- ใช้ `/follow-ast-grep` สำหรับ Biome projects และ custom linting
 - ใช้ `/follow-ast-grep` สำหรับ complex codemods และ multi-language support
 - ใช้ official codemods หากมีให้
 - ใช้ automated tools แทน manual changes เมื่อเป็นไปได้
@@ -109,7 +109,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 ทดสอบอย่างครอบคลุมก่อน deployment:
 
 - รัน tests ทุกประเภท (unit, integration, e2e)
-- ทำ `/regression-test` เพื่อตรวจสอบ existing functionality
+- ทำ `/run-test` เพื่อตรวจสอบ existing functionality
 - ทำ automated validation สำหรับ data integrity
 - ทำ load testing สำหรับ performance-critical migrations
 - ทำ manual testing สำหรับ critical user journeys

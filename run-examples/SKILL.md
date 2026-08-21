@@ -11,16 +11,23 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 เขียน examples ครอบคลุมทุก API ในโปรเจกต์
 
+## Scope
+
+Use `run-examples` for the specific tasks and workflows it covers
+
+## Execute
+
 ## Execute
 
 ### 1. Prepare
 
-1. ใช้ `/write-docs` เพื่อเก็บ reference
+1. ใช้ `/follow-project-docs` เพื่อเก็บ reference
 2. รัน `/analyze-project` เพื่อดูภาพรวม
 
 ### 2. Analyze APIs
@@ -55,13 +62,15 @@ triggers:
 
 ### 7. Update Documentation
 
-1. ทำตาม `/write-readme` สำหรับการอัพเดท README.md
+1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/write-readme`
+3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
 
 ### 8. Update Reference
 
-1. ใช้ `/update-references` เพื่ออัพเดท references
+1. ใช้ `/update-reference` เพื่ออัพเดท references
+
+## Rules
 
 ## Rules
 
@@ -81,6 +90,8 @@ triggers:
 ### 3. Dependencies
 
 - ใช้ `workspace:*` สำหรับ internal dependencies ใน monorepo
+
+## Expected Outcome
 
 ## Expected Outcome
 

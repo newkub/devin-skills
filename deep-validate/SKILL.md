@@ -29,7 +29,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-สำหรับ validate แบบปกติ ใช้ `/validate`, สำหรับ validate tests ใช้ `/validate-test`, สำหรับ validate review ใช้ `/validate-review`
+สำหรับ validate แบบปกติ ใช้ `/validate`, สำหรับ validate tests ใช้ `/run-test`, สำหรับ validate review ใช้ `/validate`
 
 ## Execute
 

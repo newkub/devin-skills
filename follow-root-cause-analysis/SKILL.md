@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบเพื่อป้องกันปัญหาซ้ำ
+
+## Scope
+
+Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -111,6 +118,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Evidence-Based
 
 ต้องมี evidence สนับสนุนทุกข้อสรุป
@@ -154,6 +163,8 @@ triggers:
 - อธิบายวิธีการวิเคราะห์
 - แนบ evidence ทั้งหมด
 - ระบุ action items สำหรับ prevention
+
+## Expected Outcome
 
 ## Expected Outcome
 

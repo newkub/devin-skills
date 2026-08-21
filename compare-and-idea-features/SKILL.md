@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 เปรียบเทียบกับ competitors และสร้าง 60 ไอเดีย features (40 enhancements + 20 new features) พร้อม continuous numbering
+
+## Scope
+
+Use `compare-and-idea-features` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -36,10 +43,14 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - Numbering: Enhancements 1-40, New Features 41-60 (continuous)
 - Order: Enhancements ก่อน แล้วค่อย New Features
 - Priority: 🔴 Critical, 🟡 Recommended, 🟢 Optional
 - Format: ตารางเดียวพร้อม column Type (Enhancement/New Feature)
+
+## Expected Outcome
 
 ## Expected Outcome
 

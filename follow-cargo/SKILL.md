@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่า Cargo lint rules และ workspace lint configuration ใน Cargo.toml
+
+## Scope
+
+Use `follow-cargo` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -96,6 +103,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Rust Lint Categories
 
 - unused_extern_crates: warn (unused external crates)
@@ -116,6 +125,8 @@ triggers:
 - ใช้ `[workspace.lints]` สำหรับ shared lint rules
 - แต่ละ crate สามารถ inherit ด้วย `workspace = true`
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
+
+## Expected Outcome
 
 ## Expected Outcome
 

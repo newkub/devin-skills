@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript plugins
+## Goal
 
 ## Goal
 
 ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript plugins สำหรับ linting
+
+## Scope
+
+Use `follow-create-oxlint-plugins` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -46,6 +51,8 @@ triggers:
 
 1. รัน `oxlint` เพื่อทดสอบ plugins
 2. ตรวจสอบว่า rules ทำงานได้ถูกต้อง
+
+## Rules
 
 ## Rules
 
@@ -84,6 +91,8 @@ triggers:
 - style: Rules สำหรับ style ที่เป็นไปในทิศทางเดียวกัน
 - restriction: Rules ที่ห้าม patterns หรือ features เฉพาะ
 - nursery: Rules ที่อยู่ระหว่างพัฒนาอาจเปลี่ยนแปลง
+
+## Expected Outcome
 
 ## Expected Outcome
 

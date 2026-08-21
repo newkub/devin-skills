@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สร้าง shell script template สำหรับ list projects ใน drive D ที่มี `.git` directory
+
+## Scope
+
+Use `list-project-in-drive-d` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -37,6 +44,8 @@ triggers:
 1. บันทึก script template ไว้ใน workspace
 2. แจ้งให้ user ทราบว่า script ถูกสร้างแล้ว
 3. แสดงวิธีใช้งาน
+
+## Rules
 
 ## Rules
 
@@ -63,6 +72,8 @@ Filter เฉพาะ projects ใน drive D:
 - แสดง path แบบ full path
 - แสดง project name (directory name)
 - รองรับ table format หรือ list format
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -9,7 +9,17 @@ allowed-tools:
 triggers:
 - user
 - model
+description: เข้า branch ชื่อ `restructure`
 ---
+## Goal
+
+restructure
+
+## Scope
+
+Use `git-workflows` for the specific tasks and workflows it covers
+
+## Execute
 
 ## restructure
 
@@ -24,3 +34,12 @@ triggers:
 ## review
 
 - เข้า branch ชื่อ `review`
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `git-workflows` workflow with correct output

@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า Docker images สำหรับ automated releases
+## Goal
 
 ## Goal
 
 ตั้งค่า Docker images สำหรับ automated releases ไปยัง Docker Hub หรือ GHCR
+
+## Scope
+
+Use `follow-release-docker` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -49,6 +54,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Docker Configuration
 
 - ต้องมี Dockerfile ที่ valid
@@ -65,6 +72,8 @@ triggers:
 - ต้องมี DOCKER_USERNAME และ DOCKER_PASSWORD
 - สำหรับ GHCR: ต้องมี GITHUB_TOKEN
 - token ต้องมีสิทธิ์ push
+
+## Expected Outcome
 
 ## Expected Outcome
 

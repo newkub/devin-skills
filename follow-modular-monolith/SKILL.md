@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 Implement Modular Monolith architecture ที่แยก modules ชัดเจน แต่ deploy เป็น single unit
+
+## Scope
+
+Use `follow-modular-monolith` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -73,6 +80,8 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 2. Setup integration tests ระหว่าง modules
 3. Implement health checks สำหรับแต่ละ module
 4. สร้าง deployment pipeline ที่ deploy ทั้ง monolith
+
+## Rules
 
 ## Rules
 
@@ -153,6 +162,8 @@ Over-Engineering
 - สร้าง too many small modules (nanomodules)
 - ใช้ distributed database โดยไม่จำเป็น
 - แยก modules ก่อนที่จะเข้าใจ domains
+
+## Expected Outcome
 
 ## Expected Outcome
 

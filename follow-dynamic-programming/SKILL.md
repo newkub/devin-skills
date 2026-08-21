@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 แก้ปัญหาที่ซับซ้อนด้วย dynamic programming เพื่อลด time complexity และ space complexity
+
+## Scope
+
+Use `follow-dynamic-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Problem Identification
 
 ระบุปัญหาที่เหมาะกับ DP อย่างถูกต้อง
@@ -160,6 +169,8 @@ triggers:
 - Test with small inputs
 - Test with large inputs
 - Verify correctness
+
+## Expected Outcome
 
 ## Expected Outcome
 

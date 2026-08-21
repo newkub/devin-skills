@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตรวจสอบ accessibility ตามมาตรฐาน WCAG เพื่อให้ทุกคนใช้งานได้
+
+## Scope
+
+Use `check-accessibility` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -62,6 +69,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. WCAG Compliance
 
 - ตรวจสอบตาม WCAG 2.1 AA ขั้นต่ำ
@@ -81,6 +90,8 @@ triggers:
 - High: ทำให้ใช้งานยากอย่างมาก
 - Medium: ทำให้ใช้งานยากเล็กน้อย
 - Low: เป็น best practices
+
+## Expected Outcome
 
 ## Expected Outcome
 

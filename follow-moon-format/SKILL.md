@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-Run format task ด้วย moonrepo และแก้ไข errors จนไม่มีเหลือ
+## Goal
 
 ## Goal
 
 Format code ด้วย moonrepo และแก้ไข errors อัตโนมัติ
+
+## Scope
+
+Use `follow-moon-format` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -44,6 +49,8 @@ Format code ด้วย moonrepo และแก้ไข errors อัตโ�
 1. รัน `moon run :format` อีกครั้ง
 2. ตรวจสอบว่าไม่มี errors
 3. ตรวจสอบ code style consistency
+
+## Rules
 
 ## Rules
 
@@ -90,6 +97,8 @@ Format code ด้วย moonrepo และแก้ไข errors อัตโ�
 - ใช้ `/resolve-errors` สำหรับแก้ไข errors
 - ใช้ `/follow-moonrepo` สำหรับ moonrepo best practices
 - ใช้ `/loop-until-complete` สำหรับทำซ้ำจนสำเร็จ
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -9,6 +9,7 @@ allowed-tools:
 triggers:
 - user
 - model
+description: 'title: Summarize This Chat Session'
 ---
 
 ---

@@ -1,7 +1,7 @@
 ---
 name: idea-features
-description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps
-  และ user needs ด้วย continuous numbering
+description: สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่ วิเคราะห์ gaps,
+  user needs และ market tre...
 allowed-tools:
 - read
 - edit

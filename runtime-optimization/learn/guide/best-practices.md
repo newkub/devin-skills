@@ -150,4 +150,3 @@ Detect และใช้ CPU features ที่มี:
 ใช้ logging เพื่อ debug optimization issues:
 
 ```	ypescript\n// TypeScript/Bun example\n```
-

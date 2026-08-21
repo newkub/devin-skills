@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย reactive programming เพื่อจัดการ data ที่เปลี่ยนแปลงตามเวลาอย่างมีประสิทธิภาพ
+
+## Scope
+
+Use `follow-reactive-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -92,6 +99,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Streams
 
 ใช้ streams อย่างถูกต้องสำหรับ data flow
@@ -161,6 +170,8 @@ triggers:
 - Use `share` for multicasting
 - Use `async scheduler` for heavy operations
 - Profile and optimize `hot paths`
+
+## Expected Outcome
 
 ## Expected Outcome
 

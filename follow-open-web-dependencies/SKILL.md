@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-เปิด website ของ dependencies จาก package manifest เพื่อดูข้อมูลและเอาค่า config
+## Goal
 
 ## Goal
 
 อ่าน package manifest และเปิด website ของ dependencies ที่ใช้ใน project
+
+## Scope
+
+Use `follow-open-web-dependencies` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -35,10 +40,14 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. ต้องมีสิทธิ์เข้าถึง accounts ของ services ต่างๆ
 2. เก็บ secrets ไว้อย่างปลอดภัย ห้าม commit ไปยัง repository
 3. ใช้ environment variables หรือ secrets management tools
 4. อย่าแชร์ secrets กับบุคคลอื่น
+
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-เปิดหน้า GitHub Secrets สำหรับตั้งค่า environment variables และ secrets
+## Goal
 
 ## Goal
 
 เปิดหน้า GitHub Secrets สำหรับตั้งค่า environment variables และ secrets ใน repository
+
+## Scope
+
+Use `follow-open-github-secrets` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -29,9 +34,13 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. ต้องมีสิทธิ์เข้าถึง repository settings
 2. ต้องเป็น owner หรือ maintainer ของ repository
 3. ระบุชื่อ repository และ username ให้ถูกต้อง
+
+## Expected Outcome
 
 ## Expected Outcome
 

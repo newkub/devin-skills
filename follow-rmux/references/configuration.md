@@ -76,4 +76,3 @@ set-option -g history-limit 10000
 ```
 
 ---
-

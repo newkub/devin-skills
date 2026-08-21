@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 Audit dependencies และ security เพื่อตรวจสอบ vulnerabilities
+
+## Scope
+
+Use `run-audit` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -56,6 +63,8 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 
 ## Rules
 
+## Rules
+
 ### 1. Audit Frequency
 
 - Audit dependencies เป็นระยะ
@@ -73,6 +82,8 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 - ตรวจสอบ license compatibility
 - ระบุ copyleft licenses
 - ติดตาม license obligations
+
+## Expected Outcome
 
 ## Expected Outcome
 

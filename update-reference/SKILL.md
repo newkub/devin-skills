@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 อัพเดท references ทั้งหมดเมื่อมีการแก้ไขไฟล์ใน project, workflows, หรือ skills
+
+## Scope
+
+Use `update-reference` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -56,6 +63,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Context Detection
 
 ตรวจสอบ context ก่อนอัพเดท references
@@ -93,6 +102,8 @@ triggers:
 - ตรวจสอบว่าไม่มี references ที่ซ้ำซ้อนหรือไม่จำเป็น
 - ทำการ test หรือ verify ว่า references ที่อัพเดททำงานได้จริง
 - ตรวจสอบว่าไม่มี syntax errors หรือ formatting issues หลังอัพเดท
+
+## Expected Outcome
 
 ## Expected Outcome
 

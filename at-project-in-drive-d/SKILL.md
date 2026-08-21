@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 List projects ทั้งหมดใน drive D ที่มี `.git` directory และจัดรูปแบบเป็นตารางตามมาตรฐาน
+
+## Scope
+
+Use `at-project-in-drive-d` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -42,6 +49,8 @@ List projects ทั้งหมดใน drive D ที่มี `.git` directo
 1. สร้าง summary table สำหรับ category counts
 2. คำนวณ percentage สำหรับแต่ละ category
 3. แสดง total projects และ total categories
+
+## Rules
 
 ## Rules
 
@@ -87,6 +96,8 @@ Filter เฉพาน projects ใน drive D:
 - คำนวณ percentage
 - แสดง total projects และ categories
 - ใช้ symbols (✅) สำหรับ summary
+
+## Expected Outcome
 
 ## Expected Outcome
 

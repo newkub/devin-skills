@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ตั้งค่าและใช้งาน Phase.dev สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย
+
+## Scope
+
+Use `follow-phase-dev` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -128,6 +135,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Frontmatter Standards
 
 - title: Title Case สื่อความหมายชัดเจน
@@ -137,39 +146,9 @@ related_workflows: เท่านั้น
 
 ### 2. Structure & Format
 
-- โครงสร้างต้องเป็น: ## Goal, ## Execute, ## Rules, ## Expected Outcome
-- ใช้ numbered list (1., 2., 3.) เรียงตาม flow การทำงาน
-- Bullet points ชิดซ้าย ไม่ indent ใช้ dash (-)
+- โครงสร้างต้องเป็น: ## Goal, ## Execute, ## Rules,
 
-### 3. Security Rules
-
-- ใช้ end-to-end encryption (E2EE) และ least privilege access เสมอ
-- แยก secrets ตาม environments (development, staging, production) อย่างเคร่งครัด
-- ใช้ personal access tokens แทน shared credentials
-- Rotate secrets อย่างสม่ำเสมอ
-- Validate secret references ก่อน save เพื่อป้องกัน broken references
-
-### 4. Development Workflow Rules
-
-- ใช้ Phase CLI สำหรับ local development
-- ใช้ automatic sync เพื่อลดความผิดพลาดจาก manual updates
-- Test secrets injection ใน staging ก่อน production
-- เขียน comments สำหรับ secrets ที่ซับซ้อน
-- ใช้ bulk operations สำหรับ multiple secrets
-
-### 5. Tool Usage
-
-- ใช้ `phase init` เพื่อเชื่อมโยง project กับ Phase
-- ใช้ `phase secrets create` เพื่อสร้าง secrets
-- ใช้ `phase secrets get` เพื่อดึง secrets
-- ใช้ `phase secrets update` เพื่ออัพเดท secrets
-- ใช้ `phase secrets delete` เพื่อลบ secrets
-- ใช้ `phase secrets list` เพื่อแสดง secrets ทั้งหมด
-- ใช้ `phase secrets import` เพื่อ import จาก `.env` files
-- ใช้ `phase secrets export` เพื่อ export secrets
-- ใช้ `phase run` เพื่อ inject secrets ลงใน application
-- ใช้ `phase dynamic-secrets list` เพื่อ list dynamic secrets
-- ใช้ `phase dynamic-secrets lease` เพื่อ manage leases
+## Expected Outcome
 
 ## Expected Outcome
 

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 แปลง TODO, FIXME, HACK comments และ placeholder functions ให้กลายเป็น production code ที่ใช้งานได้จริง โดยไม่รัน command ใดๆ
+
+## Scope
+
+Use `implement-comment-todo` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -35,13 +42,15 @@ triggers:
 2. ใช้ `write_to_file` สำหรับสร้างไฟล์ใหม่
 3. Implement functions ตาม business logic ที่ถูกต้อง
 4. เชื่อมต่อกับ dependencies ที่จำเป็น (database, API, services)
-5. ทำ `/update-references` เพื่ออัพเดท references ทั้งหมด
+5. ทำ `/update-reference` เพื่ออัพเดท references ทั้งหมด
 
 ### 3. Validation
 
 ตรวจสอบว่าไม่มี TODO เหลือและ code ใช้งานได้จริง
 
 1. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK` อีกครั้งด้วย `Grep`
+
+## Rules
 
 ## Rules
 
@@ -70,7 +79,9 @@ triggers:
 - ผ่าน linting rules ทั้งหมด
 - ผ่าน type checking ไม่มี errors
 - ใช้ import และ export strategy ตาม `/follow-import-export`
-- ทำตาม `/code-quality`
+- ทำตาม `/follow-code-quality`
+
+## Expected Outcome
 
 ## Expected Outcome
 

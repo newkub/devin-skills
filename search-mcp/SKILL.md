@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ค้นหา MCP และ internet ที่เกี่ยวข้องและน่าสนใจ
+
+## Scope
+
+Use `search-mcp` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -28,9 +35,13 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ค้นหา MCP ที่เกี่ยวข้อง
 - ค้นหา internet ที่เกี่ยวข้อง
 - ระบุที่น่าสนใจ
+
+## Expected Outcome
 
 ## Expected Outcome
 

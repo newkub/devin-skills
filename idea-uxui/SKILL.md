@@ -1,8 +1,7 @@
 ---
 name: idea-uxui
-description: สร้างไอเดีย UX/UI improvements ใหม่และปรับปรุง UX/UI ที่มีอยู่ วิเคราะห์
-  usability gaps, user experience และ design trends ด้วย continuous numbering และ
-  scope ที่ชัดเจน
+description: สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous
+  numbering และ scope ที่ช...
 allowed-tools:
 - read
 - edit

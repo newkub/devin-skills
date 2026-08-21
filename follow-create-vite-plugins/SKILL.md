@@ -13,12 +13,17 @@ allowed-tools:
 - exec
 - ask_user_question
 ---
-
-สร้าง Vite plugins ตามมาตรฐาน Plugin API จาก vite.dev/guide/api-plugin
+## Goal
 
 ## Goal
 
 สร้าง Vite plugins ด้วย Plugin API มาตรฐาน พร้อมรองรับ Rolldown compatibility
+
+## Scope
+
+Use `follow-create-vite-plugins` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -51,6 +56,8 @@ allowed-tools:
 1. สร้าง `test/` ด้วย unit และ integration tests
 2. รัน `build` เพื่อตรวจสอบ build process
 3. รัน `test` เพื่อตรวจสอบ functionality
+
+## Rules
 
 ## Rules
 
@@ -89,6 +96,8 @@ allowed-tools:
 - ตั้งค่า build.lib ด้วย entry, name, fileName
 - ใช้ formats: ['es', 'cjs']
 - external vite จาก bundle
+
+## Expected Outcome
 
 ## Expected Outcome
 

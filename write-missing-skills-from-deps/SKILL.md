@@ -36,7 +36,7 @@ triggers:
 
 ### 3. Create Missing Skills
 
-1. ทำ `/write-windsurf-skills` สำหรับแต่ละ skill ที่ขาด
+1. ทำ `/follow-write-devin-skills` สำหรับแต่ละ skill ที่ขาด
 2. สร้าง folder structure ตามมาตรฐาน
 3. เขียน SKILL.md index และ content files
 4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
@@ -44,9 +44,9 @@ triggers:
 ### 4. Validate And Finalize
 
 1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
-2. ใช้ `/content-quality` สำหรับทุกไฟล์
+2. ใช้ `/follow-content-quality` สำหรับทุกไฟล์
 3. ตรวจสอบ folder structure ถูกต้อง
-4. ใช้ `/update-references` หากมี file operations
+4. ใช้ `/update-reference` หากมี file operations
 
 ## Rules
 
@@ -79,7 +79,7 @@ triggers:
 สร้าง skills แบบ batch:
 
 - สร้าง skills ที่ขาดทั้งหมดในครั้งเดียว
-- ใช้ `/write-windsurf-skills` สำหรับแต่ละ skill
+- ใช้ `/follow-write-devin-skills` สำหรับแต่ละ skill
 - รักษาความสม่ำเสมอทั้งหมด
 
 ### 5. Error Handling
@@ -101,7 +101,7 @@ triggers:
 
 - ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
 - สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/write-windsurf-skills` ในการสร้าง
+- ไม่ใช้ `/follow-write-devin-skills` ในการสร้าง
 - ไม่ตรวจสอบ folder structure หลังสร้าง
 
 ## Anti-Patterns

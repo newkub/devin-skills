@@ -177,4 +177,3 @@ All callbacks receive an animation object with the following properties:
 | paused | boolean | Pause status |
 | began | boolean | Began status |
 | completed | boolean | Completed status |
-

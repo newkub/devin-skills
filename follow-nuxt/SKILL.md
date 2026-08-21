@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 กำหนดแนวทางการพัฒนา Nuxt 3/4 applications ให้มีประสิทธิภาพสูงสุด
+
+## Scope
+
+Use `follow-nuxt` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -167,6 +174,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - ใช้ `app/` directory สำหรับ Nuxt 4
 - สร้าง `layers/` สำหรับ feature-based architecture
 - Vue components ใช้ `script setup lang="ts"` เท่านั้น
@@ -185,6 +194,8 @@ triggers:
 - หลีกเลี่ยง costly plugins
 - ใช้ `~/assets` สำหรับ processed files
 - ใช้ `~/public` สำหรับ static files
+
+## Expected Outcome
 
 ## Expected Outcome
 

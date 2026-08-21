@@ -67,5 +67,3 @@ features:
   playground: true
   mockServer: true
 ```
-
-

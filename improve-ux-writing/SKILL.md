@@ -57,7 +57,7 @@ triggers:
 
 ปรับปรุงข้อความแสดงข้อผิดพลาด
 
-1. ทำ `/improve-error-messages` สำหรับ error message system ครบวงจร
+1. ทำ `improve-error-messages` สำหรับ error message system ครบวงจร
 2. เขียน error messages ที่บอกสาเหตุและวิธีแก้ (what + how to fix)
 3. หลีกเลี่ยงคำว่า "Error", "Failed", "Invalid" โดยไม่มีบริบท
 4. ใช้ human language ไม่ใช่ technical jargon หรือ error codes
@@ -87,7 +87,7 @@ triggers:
 
 ปรับปรุงข้อความในฟอร์ม
 
-1. ทำ `/improve-form` สำหรับ form UX ครบวงจร
+1. ทำ `improve-form` สำหรับ form UX ครบวงจร
 2. ปรับปรุง field labels: ชัดเจน กระชับ บอกหน่วยถ้ามี
 3. ปรับปรุง helper text: อธิบาย format หรือข้อกำหนดก่อนกรอก
 4. ปรับปรุง validation messages: บอกเกณฑ์ที่ต้องการ ไม่ใช่แค่ "ไม่ถูกต้อง"
@@ -98,7 +98,7 @@ triggers:
 
 ปรับปรุงข้อความแจ้งเตือน
 
-1. ทำ `/improve-notifications` สำหรับ notification system ครบวงจร
+1. ทำ `improve-notifications` สำหรับ notification system ครบวงจร
 2. ปรับปรุง toast messages: กระชับ บอกผลลัพธ์ ไม่หายเร็วเกินไป
 3. ปรับปรุง banner messages: บอกความสำคัญและ action ที่ต้องทำ
 4. ปรับปรุง confirmation dialogs: ถามชัดเจน บอกผลของการเลือก
@@ -119,7 +119,7 @@ triggers:
 
 เตรียม UX writing สำหรับการแปล
 
-1. ทำ `/improve-i18n` สำหรับ i18n ครบวงจร
+1. ทำ `improve-i18n` สำหรับ i18n ครบวงจร
 2. หลีกเลี่ยง idioms และ cultural references เฉพาะภาษา
 3. เขียน copy ที่ยืดหยุ่นต่อความยาวของข้อความ (text length varies by language)
 4. ใช้ placeholders ที่ชัดเจน เช่น `{name}` ไม่ใช่ `{}`

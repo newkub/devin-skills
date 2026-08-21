@@ -11,12 +11,17 @@ triggers:
 - user
 - model
 ---
-
-ตั้งค่า Auto สำหรับ automated releases ไปยัง npm
+## Goal
 
 ## Goal
 
 ตั้งค่า Auto สำหรับ automated releases ไปยัง npm ด้วย conventional commits และ semantic versioning
+
+## Scope
+
+Use `follow-release-npm` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -61,6 +66,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Package Configuration
 
 - ต้องมี name, description, version, author
@@ -84,6 +91,8 @@ triggers:
 - ต้องมี GH_TOKEN หรือ GITHUB_TOKEN
 - ต้องมี NODE_AUTH_TOKEN สำหรับ npm publish
 - ต้องมี permissions ใน workflow
+
+## Expected Outcome
 
 ## Expected Outcome
 

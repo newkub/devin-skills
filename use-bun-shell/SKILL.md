@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ใช้ Bun shell runtime สำหรับ execute commands และ shell operations ด้วย `bun -e` แทนการใช้ shell โดยตรง
+
+## Scope
+
+Use `use-bun-shell` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -44,6 +51,8 @@ triggers:
 2. ใช้ `Bun.$` สำหรับ shell command execution
 3. จัดการ stdout/stderr ด้วย Bun APIs
 4. ตรวจสอบ process exit codes และ errors
+
+## Rules
 
 ## Rules
 
@@ -111,6 +120,8 @@ bun -e "const result = await $`ls -la | grep '.json'`; console.log(result.stdout
 - Fast startup time
 - Built-in utilities (crypto, hash, etc.)
 - Concurrent execution capabilities
+
+## Expected Outcome
 
 ## Expected Outcome
 

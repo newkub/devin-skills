@@ -94,7 +94,7 @@ jobs:
 
 ### 4. Setup GitHub Secrets
 
-1. ทำ `/open-github-secrets`
+1. ทำ `/follow-open-github-secrets`
 2. ทำ `/open-env-website`
 3. เพิ่ม secrets ที่จำเป็น
 

@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 กำหนดแนวทางการพัฒนา PHP applications ตาม PSR standards และ modern best practices
+
+## Scope
+
+Use `follow-php` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -85,6 +92,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. PSR Standards
 
 ทำตาม PHP-FIG PSR standards อย่างเคร่งครัด
@@ -139,6 +148,8 @@ triggers:
 - ใช้ @throws, @param, @return tags
 - เขียน README.md สำหรับ project
 - เขียน CHANGELOG.md สำหรับ version history
+
+## Expected Outcome
 
 ## Expected Outcome
 

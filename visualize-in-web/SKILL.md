@@ -40,7 +40,7 @@ triggers:
 4. ถ้าต้องการ tab system ให้อ้างอิง `/open-readme-html`
 5. สร้างไฟล์ใน OS temp directory:
    - Windows: `$env:TEMP\visualize-<name>.html`
-   - macOS/Linux: `/tmp/visualize-<name>.html`
+   - macOS/Linux: `tmp/visualize-<name>.html`
 6. ทำ `/open-web` เพื่อเปิดใน browser
 
 ### 3. Design Visual Layout
@@ -70,7 +70,7 @@ triggers:
 
 - สร้างไฟล์ใน OS temp directory เท่านั้น เป็นไฟล์ชั่วคราว
 - Windows: ใช้ `$env:TEMP` environment variable
-- macOS/Linux: ใช้ `/tmp` directory
+- macOS/Linux: ใช้ `tmp` directory
 - ตั้งชื่อไฟล์ `visualize-<descriptive-name>.html`
 - ไม่สร้างไฟล์ใน project directory
 

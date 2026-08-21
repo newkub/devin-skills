@@ -69,7 +69,7 @@ related:
 
 1. รัน `run-typecheck` เพื่อตรวจสอบ type safety
 2. รัน `run-lint` เพื่อตรวจสอบ code quality
-3. ทำ `/fix-circular-dependencies` เพื่อตรวจสอบ circular dependencies
+3. ทำ `/check-circular-dependencies` เพื่อตรวจสอบ circular dependencies
 4. ตรวจสอบว่าไม่มี unused exports โดยใช้ `run-check` หรือ `knip`
 5. ตรวจสอบว่า tree-shaking ยังทำงานได้ (ไม่มี side effects ใน barrel file)
 
@@ -93,7 +93,7 @@ related:
 
 - ไม่สร้าง barrel file ที่ import จากกันและกันระหว่าง sibling modules
 - ถ้าเกิด circular dependency ให้แยก shared types ออกเป็นไฟล์ต่างหาก
-- ใช้ `/fix-circular-dependencies` เมื่อสงสัย
+- ใช้ `/check-circular-dependencies` เมื่อสงสัย
 - พิจารณาใช้ type-only imports สำหรับ types ที่ใช้ข้าม module
 
 ### 4. Performance
@@ -108,7 +108,7 @@ related:
 - ใช้รูปแบบ barrel export สม่ำเสมอทั่วทั้ง project
 - จัดเรียง exports ตามตัวอักษรของ source file
 - ใช้ naming conventions สม่ำเสมอ
-- ทำ `/follow-consistency` เพื่อตรวจสอบ
+- ทำ `/improve-consistency` เพื่อตรวจสอบ
 
 ## Expected Outcome
 

@@ -140,7 +140,7 @@ const response = await invoke('greet', { name: 'World' })
 1. รัน `bun run dev` สำหรับ development server
 2. ใช้ `.tsx` สำหรับ components
 3. กำหนด types สำหรับ props
-4. ทำ `/refactor-workspace` เพื่อปรับปรุงโค้ด
+4. ทำ `/refactor-all-workspace` เพื่อปรับปรุงโค้ด
 
 ### 12. Build And Test
 

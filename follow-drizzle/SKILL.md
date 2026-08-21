@@ -289,4 +289,4 @@ await db.delete(users).where(eq(users.id, 1))
 - [Migration Fundamentals](https://orm.drizzle.team/docs/migrations)
 - [Database Connection](https://orm.drizzle.team/docs/connect-overview)
 - `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
-- `/connect-workflows` - เชื่อมโยง workflows
+- `connect-workflows` - เชื่อมโยง workflows

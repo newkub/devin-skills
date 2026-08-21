@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 แปลง OOP code เป็น composables function style คล้าย Vue composables
+
+## Scope
+
+Use `follow-oop-to-composables` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -36,10 +43,14 @@ triggers:
 
 ## Rules
 
+## Rules
+
 - แยก logic ออกจาก classes
 - ใช้ composables functions แทน classes
 - ใช้ reactive patterns
 - ทำให้ code ทดสอบได้ง่ายขึ้น
+
+## Expected Outcome
 
 ## Expected Outcome
 

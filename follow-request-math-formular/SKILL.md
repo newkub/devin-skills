@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ขอสูตรคณิตศาสตร์ที่กระชับ เข้าใจง่าย และนำไปใช้ได้จริง
+
+## Scope
+
+Use `follow-request-math-formular` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -41,11 +48,15 @@ triggers:
 
 ## Rules
 
+## Rules
+
 1. ขอสูตรที่กระชับที่สุดเท่าที่จะทำได้
 2. ต้องมีคำอธิบายแต่ละส่วนของสูตร
 3. ต้องมีตัวอย่างการใช้งานจริง
 4. ต้องระบุเงื่อนไขและข้อจำกัด
 5. ห้ามขอสูตรที่ซับซ้อนเกินความจำเป็น
+
+## Expected Outcome
 
 ## Expected Outcome
 

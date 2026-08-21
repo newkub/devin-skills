@@ -152,4 +152,3 @@ Vectorization คือการใช้ SIMD instructions สำหรับ p
 **Example**:
 
 ```	ypescript\n// TypeScript/Bun example\n```
-

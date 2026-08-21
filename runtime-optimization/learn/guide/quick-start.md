@@ -64,4 +64,3 @@ Pooled Sum          : 2.890123 ns
 3. ศึกษา `architecture.md` สำหรับ design patterns
 4. ทำตาม `best-practices.md` สำหรับ production-ready code
 5. ดู `performance.md` สำหรับ advanced optimization techniques
-

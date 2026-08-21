@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย functional programming principles เพื่อลดความซับซ้อน เพิ่มความปลอดภัย และทำให้โค้ด test ได้ง่ายขึ้น
+
+## Scope
+
+Use `follow-functional-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -31,7 +38,7 @@ triggers:
 
 ### 2. Enforce Immutability
 
-ทำตาม `/declarative-programming` เพื่อใช้ immutability
+ทำตาม `/follow-declarative-programming` เพื่อใช้ immutability
 
 1. ใช้ `const` แทน `let/var` เสมอ
 2. ใช้ `Readonly<>` type สำหรับ objects/arrays
@@ -41,7 +48,7 @@ triggers:
 
 ### 3. Function Composition
 
-ทำตาม `/declarative-programming` เพื่อใช้ composition
+ทำตาม `/follow-declarative-programming` เพื่อใช้ composition
 
 1. เขียนฟังก์ชันขนาดเล็กที่ทำหน้าที่เดียว
 2. ใช้ `higher-order functions`: `map`, `filter`, `reduce`
@@ -102,6 +109,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Pure Functions
 
 ฟังก์ชันต้องเป็น pure เมื่อเป็นไปได้
@@ -114,7 +123,7 @@ triggers:
 
 ### Immutability
 
-ทำตาม `/declarative-programming` เพื่อใช้ immutability
+ทำตาม `/follow-declarative-programming` เพื่อใช้ immutability
 
 - ใช้ `const` แทน `let/var`
 - ใช้ `Readonly<>` type
@@ -124,7 +133,7 @@ triggers:
 
 ### Function Composition
 
-ทำตาม `/declarative-programming` เพื่อใช้ composition
+ทำตาม `/follow-declarative-programming` เพื่อใช้ composition
 
 - ฟังก์ชันขนาดเล็ก `single responsibility`
 - ใช้ `higher-order functions`
@@ -171,6 +180,8 @@ triggers:
 - `Typed error classes`
 - Explicit `error propagation`
 - No `try/catch` ใน pure functions
+
+## Expected Outcome
 
 ## Expected Outcome
 

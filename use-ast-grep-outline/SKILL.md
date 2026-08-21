@@ -1,7 +1,7 @@
 ---
 name: use-ast-grep-outline
-description: ใช้งาน ast-grep outline สำหรับ explore code structure, symbols, imports,
-  exports, และ members อย่างรวดเร็ว
+description: ใช้งาน ast-grep outline เพื่อ explore code structure และ navigation อย่างรวดเร็ว
+  โดยไม่ต้อง build...
 allowed-tools:
 - read
 - edit

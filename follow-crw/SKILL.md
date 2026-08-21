@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ใช้ CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving อย่างมีประสิทธิภาพสูงสุด เร็วที่สุด และลด AI token
+
+## Scope
+
+Use `follow-crw` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -164,6 +171,8 @@ crw serve --port 3000
 
 ## Rules
 
+## Rules
+
 ### 1. Command Selection
 
 เลือก command ตาม use case:
@@ -197,6 +206,8 @@ crw serve --port 3000
 - rawhtml: สำหรับ full HTML content
 - text: สำหรับ plain text
 - links: สำหรับ URL extraction
+
+## Expected Outcome
 
 ## Expected Outcome
 

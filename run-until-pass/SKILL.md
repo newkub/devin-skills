@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 run command จนกว่าจะผ่าน ถ้าเจอ error ให้แก้ไขท้งหมดจนไม่มีเหลือ
+
+## Scope
+
+Use `run-until-pass` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -37,9 +44,13 @@ run command และตรวจสอบผล
 
 ## Rules
 
+## Rules
+
 - แก้ไข errors ทั้งหมดจนไม่มีเหลือ
 - รัน command จนกว่าจะผ่าน
 - ตรวจสอบว่าไม่มี errors ที่เหลือ
+
+## Expected Outcome
 
 ## Expected Outcome
 

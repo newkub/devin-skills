@@ -11,6 +11,7 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
@@ -18,7 +19,11 @@ triggers:
 
 ## Scope
 
+## Scope
+
 ตั้งค่า GitHub Actions สำหรับ projects และ repositories
+
+## Execute
 
 ## Execute
 
@@ -50,6 +55,13 @@ triggers:
 - Deployment: เพิ่ม workflows ตาม platform ที่ใช้ (Docker, Cloudflare, Vercel)
 - Monitoring: เพิ่ม `slack-notify.yml` สำหรับ team notifications
 - Git Ops: เพิ่ม `commitlint.yml`, `dependency-review.yml` สำหรับ team collaboration
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
 
 ## Expected Outcome
 

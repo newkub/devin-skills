@@ -1,7 +1,7 @@
 ---
 name: follow-bunup
-description: ตั้งค่าและใช้งาน Bunup สำหรับ bundle TypeScript libraries ด้วย Bun's
-  native bundler - เร็ว ง่าย และ auto-detect entry points
+description: ตั้งค่า Bunup เป็น library bundler ที่ใช้ Bun's native bundler สำหรับ
+  TypeScript libraries ที่ต้อ...
 allowed-tools:
 - read
 - edit
@@ -124,7 +124,7 @@ export default defineConfig({
 ## Reference
 
 - `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
-- `/connect-workflows` - เชื่อมโยง workflows
+- `connect-workflows` - เชื่อมโยง workflows
 - [Bunup Documentation](https://bunup.dev)
 
 ## Expected Outcome

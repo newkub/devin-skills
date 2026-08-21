@@ -68,4 +68,3 @@ gh action list
 | `-R` | Repository |
 | `--help` | แสดง help |
 | `--json` | JSON output |
-

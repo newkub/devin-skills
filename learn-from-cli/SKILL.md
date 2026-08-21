@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สำรวจ CLI tool ให้รู้ว่ามี subcommands, options, flags, และ output อย่างไรก่อนใช้งาน
+
+## Scope
+
+Use `learn-from-cli` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -40,3 +47,12 @@ triggers:
 - ตัวอย่างการใช้งานพื้นฐาน
 - options/flags ที่ควรรู้
 - exit codes และ output format
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `learn-from-cli` workflow with correct output

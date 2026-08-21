@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 สร้าง Bun scripts เพื่อ automate งานและประมวลผลไฟล์
+
+## Scope
+
+Use `use-bun-scripts` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -34,6 +41,8 @@ triggers:
 1. รัน script ด้วย `bun run <script>.ts`
 2. ลบ scripts จาก `scripts/temp/` หลังใช้งาน
 3. ลบ scripts ที่สร้างด้วย `/follow-write-devin-skills` หลังใช้งาน
+
+## Rules
 
 ## Rules
 
@@ -122,6 +131,8 @@ await script.run()
 - ใช้ ESM format
 - เขียนแบบ composable: `createScript()` return state + actions
 - ใช้ CDN imports สำหรับ external dependencies
+
+## Expected Outcome
 
 ## Expected Outcome
 

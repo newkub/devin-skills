@@ -25,7 +25,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 ### 1. Define MVP Requirements
 
 1. ทำ `/analyze-project` เพื่อดู features ทั้งหมด
-2. ทำ `/plan-task` เพื่อวางแผน MVP scope
+2. ทำ `/plan` เพื่อวางแผน MVP scope
 3. ระบุ MVP requirements จาก business goals
 4. สร้าง MVP checklist ที่ชัดเจน
 5. ตรวจสอบว่า requirements สอดคล้องกับ timeframe

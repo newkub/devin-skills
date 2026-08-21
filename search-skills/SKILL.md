@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ค้นหา skills ที่เกี่ยวข้องกับ keyword ด้วย `skills find` command เพื่อหา skills ที่เหมาะสมสำหรับงาน
+
+## Scope
+
+Use `search-skills` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -53,6 +60,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Search Strategy
 
 กลยุทธ์การค้นหา
@@ -82,6 +91,8 @@ triggers:
 | Match Type | Direct/Related/Recommended |
 | Priority | ระดับความสำคัญ |
 | Description | รายละเอียดสั้นๆ |
+
+## Expected Outcome
 
 ## Expected Outcome
 

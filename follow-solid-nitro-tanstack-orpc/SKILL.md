@@ -83,7 +83,7 @@ related:
 2. Rsbuild:
    - ใช้ `@tanstack/solid-start/plugin/rsbuild`
    - ใช้ `@rsbuild/plugin-solid`
-3. ทำตาม `/follow-vite` หรือ `/follow-rsbuild` ตามทีเลือก
+3. ทำตาม `/follow-vite` หรือ `/follow-vite` ตามทีเลือก
 
 ### 4. Configure TypeScript
 

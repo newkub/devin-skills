@@ -11,10 +11,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 ลบ hard code ทั้งหมดออกจาก codebase เพื่อเพิ่ม flexibility, security และ maintainability
+
+## Scope
+
+Use `no-hard-code` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -26,7 +33,7 @@ triggers:
 - ใช้ `Grep` เพื่อค้นหา hardcoded strings ที่ไม่ใช่ messages
 - ใช้ `Grep` เพื่อค้นหา hardcoded URLs และ API endpoints
 - ใช้ `Grep` เพื่อค้นหา hardcoded paths และ filenames
-- ทำ `/run-secret-scanning` เพื่อค้นหา secrets หรือ sensitive data
+- ทำ `run-secret-scanning` เพื่อค้นหา secrets หรือ sensitive data
 - ใช้ `Grep` เพื่อค้นหา business rules ที่ hardcoded
 
 ### 2. Replace Magic Values
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### 1. Analysis Requirements
 
 ตรวจสอบและวิเคราะห์ hard code ใน codebase
@@ -136,6 +145,8 @@ triggers:
 ระบุรูปแบบรายงาน
 
 - ทำ `/report-format-table` สำหรับสรุปผลลัพธ์
+
+## Expected Outcome
 
 ## Expected Outcome
 

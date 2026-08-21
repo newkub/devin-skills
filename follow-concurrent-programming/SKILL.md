@@ -12,10 +12,17 @@ triggers:
 - user
 - model
 ---
+## Goal
 
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย concurrent programming เพื่อเพิ่ม performance และ responsiveness
+
+## Scope
+
+Use `follow-concurrent-programming` for the specific tasks and workflows it covers
+
+## Execute
 
 ## Execute
 
@@ -91,6 +98,8 @@ triggers:
 
 ## Rules
 
+## Rules
+
 ### Async Await
 
 ใช้ async/await อย่างถูกต้อง
@@ -160,6 +169,8 @@ triggers:
 - Test `error handling`
 - Test `performance` under load
 - Use `concurrency testing tools`
+
+## Expected Outcome
 
 ## Expected Outcome
 

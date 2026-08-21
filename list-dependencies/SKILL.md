@@ -92,7 +92,7 @@ triggers:
 แนะนำ improvements ที่เป็นประโยชน์
 
 - ใช้ `/use-lib-better` เพื่อเปรียบเทียบกับ alternatives
-- แนะนำ dependencies ที่ควร update ด้วย `/taze`
+- แนะนำ dependencies ที่ควร update ด้วย `/follow-taze`
 - แนะนำ dependencies ที่ควรลบ
 - แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า
 

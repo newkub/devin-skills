@@ -9,7 +9,17 @@ allowed-tools:
 triggers:
 - user
 - model
+description: <div align="center">
 ---
+## Goal
+
+Global Workflows
+
+## Scope
+
+Use `follow-readme` for the specific tasks and workflows it covers
+
+## Execute
 
 # Global Workflows
 
@@ -247,7 +257,7 @@ check-file-length
 /deploy-to-cloudflare
 
 # Update dependencies
-/update-dependencies
+/update-dependencies-latest
 ```
 
 </td>
@@ -294,11 +304,11 @@ await executeWorkflow('analyze-project', {
 
 | Category | Workflows |
 |----------|-----------|
-| Project Analysis | `/analyze-project`, `/deep-analyze`, `/check-architecture` |
+| Project Analysis | `/analyze-project`, `/deep-analyze`, `/review-codebase` |
 | Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
 | Deployment | `/deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
-| Maintenance | `/update-dependencies`, `/cleanup`, `/refactor` |
+| Maintenance | `/update-dependencies-latest`, `/cleanup`, `/refactor` |
 
 ### Architecture Workflows
 
@@ -323,7 +333,7 @@ await executeWorkflow('analyze-project', {
 | Category | Workflows |
 |----------|-----------|
 | Git | `/follow-git-branch`, `/follow-git` |
-| Testing | `/test-function`, `/test-e2e`, `/test-integration` |
+| Testing | `/run-test`, `/run-test-e2e`, `/run-test-integration` |
 | Documentation | `/update-readme`, `/update-docs` |
 
 ### Configuration
@@ -507,8 +517,8 @@ git remote add upstream https://github.com/newkub/global_workflows.git
 git checkout -b feature/my-workflow
 ```
 
-2. Follow `/write-windsurf-global-workflows` for workflow structure
-3. Follow `/content-quality` for content standards
+2. Follow `/follow-write-devin-skills` for workflow structure
+3. Follow `/follow-content-quality` for content standards
 4. Test workflows thoroughly before submitting
 5. Commit your changes
 
@@ -539,3 +549,12 @@ git fetch upstream
 git merge upstream/main
 git push origin main
 ```
+
+## Rules
+
+- Follow the project conventions and global rules
+- Use the allowed tools only when needed
+
+## Expected Outcome
+
+Completed `follow-readme` workflow with correct output
