@@ -9,7 +9,7 @@ triggers:
 - user
 - model
 related:
-- use-my-global-cli
+- follow-my-global-cli
 - learn-from-cli
 - report-format-table
 - suggest-next-action
@@ -70,7 +70,7 @@ related:
 > Goal: ผู้ใช้ทราบว่าควรทำอะไรต่อ
 
 1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
-2. ถ้าข้อมูลไม่พอ → ทำ `/use-my-global-cli` อีกรอบหรือ `/learn-from-cli` เพิ่มเติม
+2. ถ้าข้อมูลไม่พอ → ทำ `/follow-my-global-cli` อีกรอบหรือ `/learn-from-cli` เพิ่มเติม
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
 ## Rules
@@ -96,7 +96,7 @@ related:
 
 - บันทึก command, subcommand, options ทั้งหมด
 - ระบุ flags ที่สำคัญสำหรับ common workflows
-- ไม่ duplicate ข้อมูลจาก `/use-my-global-cli` หรือ `/learn-from-cli`
+- ไม่ duplicate ข้อมูลจาก `/follow-my-global-cli` หรือ `/learn-from-cli`
 
 ### 3. Conversion Criteria
 
