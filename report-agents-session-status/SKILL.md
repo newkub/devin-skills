@@ -1,9 +1,10 @@
 ---
 name: report-agents-session-status
-description: รายงานสถานะปัจจุบันของระบบหรือโปรเจกต์
+description: รายงานสถานะของ agent session ปัจจุบัน รวมงานทีเสร็จ งานค้าง และ next actions
 allowed-tools:
   - read
   - exec
+  - write
   - ask_user_question
 triggers:
   - user
@@ -12,116 +13,94 @@ related:
   - report-table
   - report-ansi
   - suggest-next-action
+  - ask-me
 ---
 
 ## Goal
 
-รายงานสถานะปัจจุบันของระบบหรือโปรเจกต์อย่างครบถ้วนและเป็นปัจจุบัน
+รายงานสถานะของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จแล้วหรือไม่ อะไรยังค้างอยู่ และต้องทำอะไรต่อ
 
 ## Scope
 
-ใช้สำหรับการรายงานสถานะของ services, database, หรือ overall system health
+ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, และ todo list ที่มีอยู่
 
 ## Execute
 
-### 1. Check System Health
+### 1. Gather Session Context
 
-ตรวจสอบสุขภาพของระบบ
+เก็บข้อมูลของ session ปัจจุบัน
 
-> Goal: ทราบสถานะ services, database, API, และ external services
+> Goal: รู้ context ของงานทีกำลังทำ
 
-1. ตรวจสอบ services ที่ทำงานอยู่
-2. ตรวจสอบ database connectivity
-3. ตรวจสอบ API endpoints
-4. ตรวจสอบ external services
+1. อ่าน session summary ล่าสุดจาก `%APPDATA%\devin\cli\summaries\`
+2. ตรวจสอบ working directory ปัจจุบัน และ `git status --short`
+3. อ่าน `AGENTS.md` หรือ `global_rules.md` ของ project ถ้ามี
+4. ค้นหาไฟล์ todo/roadmap เช่น `todo.md`, `ROADMAP.md`, `.devin/todo.md`
+5. ถ้า context ไม่ชัด → ทำ `/ask-me` เพื่อถาม user
 
-### 2. Collect Metrics
+### 2. Identify Completed Work
 
-รวบรวม metrics ที่สำคัญ
+ระบุงานทีทำเสร็จแล้ว
 
-> Goal: มี metrics ครบทั้ง performance, errors, resources, และ business
+> Goal: รู้งานทีผ่านไปแล้ว
 
-1. รวบรวม performance metrics (response time, throughput)
-2. รวบรวม error rates และ error types
-3. รวบรวม resource usage (CPU, memory, disk)
-4. รวบรวม business metrics (active users, bookings)
+1. สรุป commit ล่าสุด ชื่องาน และ files ทีเปลี่ยนแปลง
+2. ตรวจสอบสถานะ working tree ว่าสะอาดหรือมี uncommitted changes
+3. ระบุ checkpoints สำคัญจาก conversation history
+4. ใช้ `/report-table` แสดง completed work
 
-### 3. Analyze Trends
+### 3. Identify Pending Work
 
-วิเคราะห์แนวโนค์ของ metrics
+ระบุงานทียังไม่เสร็จ
 
-> Goal: ระบุ anomalies, patterns, และ trends ที่น่าสนใจ
+> Goal: รู้งานทียังค้าง และ blockers
 
-1. เปรียบเทียบกับช่วงเวลาก่อนหน้า
-2. ระบุ anomalies หรือ spikes
-3. ระบุ patterns ที่น่ากังวล
-4. คาดการณ์ future trends
+1. ตรวจสอบ todo/roadmap ทียังไม่เครื่องหมาย completed
+2. ระบุ uncommitted/unpushed changes
+3. ระบุ tests, build, lint หรือ validation ทียังไม่ผ่าน
+4. ระบุ dependencies หรือ decisions ทีรอ user
 
-### 4. Report Findings
+### 4. Report And Suggest Next Actions
 
-รายงานผลการวิเคราะห์
+สร้าง report และ next actions
 
-> Goal: report สรุปสถานะ พร้อม issues และ next actions
+> Goal: report ชัดเจน พร้อม next steps
 
-1. สรุปสถานะโดยรวม
-2. ระบุ issues ที่ต้องให้ความสำคัญ
-3. แนะนำ actions ที่ต้องทำ
-4. ระบุ SLA compliance
+1. สรุปสถานะโดยรวมของ session
+2. ใช้ `/report-table` หรือ `/report-ansi` แสดง completed, pending, blockers
+3. ระบุ priority ของงานค้าง
+4. ทำ `/suggest-next-action` เพื่อเสนอ next step
 
 ## Rules
 
-### 1. Report UX/UI
+### 1. Data Sources
 
-- report ต้องอ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
-- สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-- ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-- ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
-- ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
-- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-- ทำ `/suggest-next-action` ท้าย report เสมอ
+- ใช้ `%APPDATA%\devin\cli\summaries\` สำหรับ session history
+- ใช้ `git status` และ `git log` สำหรับ committed/uncommitted changes
+- อ่าน `AGENTS.md` และ project rules ถ้ามี
+- ถาม user ถ้าข้อมูลไม่ครบ
 
-### 2. Real-Time Monitoring
+### 2. Accuracy
 
-- ใช้ monitoring tools ที่เหมาะสม
-- ตั้งค่า alerts สำหรับ critical metrics
-- ตรวจสอบ dashboard อย่างสม่ำเสมอ
-- รับ notifications สำหรับ critical issues
+- ไม่อ้างว่างานเสร็จถ้า git ยังไม่ commit หรือยังไม่ verified
+- ไม่ hallucinate งานทีไม่ได้เกิดขึ้นใน session
+- แยกแยะระหว่างงานทีเสร็จ งานค้าง และงานทีต้องรอ user
 
-### 3. Data Accuracy
+### 3. Report Format
 
-- ใช้ data sources ที่เชื่อถือได้
-- ตรวจสอบ data freshness
-- ระบุ data gaps หรือ inconsistencies
-- ใช้ sampling ที่เหมาะสมสำหรับ large datasets
+- สรุป key findings ไว้ด้านบนสุด
+- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
+- ใช้ `/report-table` สำหรับงานทีต้องการหลาย columns
+- ใช้ `/report-ansi` สำหรับสถานะ/progress
 
-### 4. Contextual Analysis
+### 4. Privacy
 
-- เปรียบเทียบกับ baseline ที่เหมาะสม
-- พิจารณา seasonality และ patterns
-- ระบุ external factors ที่มีผลกระทบ
-- ใช้ statistical analysis ถ้าจำเป็น
-
-### 5. Actionable Insights
-
-- ระบุ root causes ของ issues
-- แนะนำ specific actions ที่ต้องทำ
-- ระบุ priority ของแต่ละ action
-- ระบุ owner สำหรับแต่ละ action
+- ไม่อ้างอิงหรือเปิดเผย secrets, API keys, credentials
+- ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
 
 ## Expected Outcome
 
-- สถานะของระบบชัดเจนและเป็นปัจจุบัน
-- รู้ว่า issues ที่ต้องให้ความสำคัญ
-- มีข้อมูลสำหรับการตัดสินใจ
-- สามารถจัดการ incidents ได้อย่างรวดเร็ว
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
-
-## Guide
-
-ข้อผิดพลาดที่พบบ่อย:
-
-- ไม่มี context ในการวิเคราะห์ metrics
-- รายงาน metrics โดยไม่มี insights
-- ไม่ระบุ root causes ของ issues
-- ไม่ให้ recommendations ที่ actionable
+- รู้สถานะปัจจุบันของ session ทั้งหมด
+- รายงาน completed work, pending work, blockers ชัดเจน
+- มี priority และ next actions ที actionable
+- report อ่านง่าย พร้อม symbols และ table
