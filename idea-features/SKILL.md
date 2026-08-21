@@ -1,6 +1,6 @@
 ---
 name: idea-features
-description: Generate feature ideas and produce an interactive HTML report with prioritized tables and per-row UX/Plan dropdowns
+description: Generate feature ideas and write them into VitePress docs as markdown via /update-docs
 allowed-tools:
   - read
   - edit
@@ -18,20 +18,18 @@ related:
   - learn-from-web
   - compare-and-idea-features
   - refactor
-  - report-in-html
-  - report-uxui-sketch
-  - report-plan
+  - update-docs
 ---
 
 ## Goal
 
-Generate new and extended feature ideas for a project, analyze gaps and user needs, and produce an interactive HTML report with continuously numbered tables and per-row UX/UI and Plan dropdowns.
+Generate new and extended feature ideas for a project and produce a markdown documentation page under `docs/roadmap/idea-features.md` via `/update-docs`.
 
 ## Scope
 
 - Analyze the project, packages, existing features, and market trends
 - Create prioritized feature ideas for two tables: `Extends` and `New`
-- Output is an HTML file generated via `/report-in-html`, not chat text
+- Output is a VitePress markdown page, not an HTML report or chat text
 - Report body is in English; feature table cell content may be in the project language (e.g., Thai)
 - Do not compare competitors directly; use `/compare-and-idea-features` for that
 
@@ -41,7 +39,7 @@ Generate new and extended feature ideas for a project, analyze gaps and user nee
 
 > Goal: Understand the project, gaps, market trends, and generate ideas
 
-1. Run `/analyze-project`, read `.devin/features/<workspace>/features.md`, analyze packages, and define scope (silent)
+1. Run `/analyze-project`, read `docs/project/features.md` if it exists, analyze packages, and define scope (silent)
 2. Run `/learn-from-web` to study market trends, user needs, and competitor features from external sources (silent)
 3. Analyze `/learn-from-web` output to identify gaps and opportunities (silent)
 4. Generate `Extends` and `New` feature ideas (silent)
@@ -59,48 +57,61 @@ Generate new and extended feature ideas for a project, analyze gaps and user nee
 5. Keep descriptions to one line
 6. Scope must be clear: package-level, app-level, or cross-package
 
-### 3. Add Per-Row Dropdowns
+### 3. Add Per-Feature Details
 
-> Goal: Every feature row exposes UX/UI and Plan details
+> Goal: Each feature is documented with UX and Plan in plain markdown
 
-1. For each feature, generate a concise UX/UI sketch in text/ASCII format
+1. For each feature, generate a concise UX/UI sketch in text/ASCII or bullet form
 2. For each feature, generate a short implementation plan with 3-5 bullet steps
-3. The HTML report must render each row with an expandable dropdown
-4. The dropdown has two columns:
-   - `UX/UI Sketch` — output of `/report-uxui-sketch` for this feature
-   - `Plan` — output of `/report-plan` for this feature
-5. Keep dropdown content compact (under 20 lines per column)
+3. Under each feature heading, write two sub-sections:
+   - `UX/UI` — text or ASCII sketch
+   - `Plan` — numbered steps
+4. Keep each detail section under 15 lines
 
-### 4. Generate HTML Report
+### 4. Write Markdown Page
 
-> Goal: Produce the final interactive report
+> Goal: Produce the final markdown page
 
-1. Run `/report-in-html` to create a single HTML file
-2. Pass all feature data including dropdown content
-3. Ensure the HTML report has:
-   - Key findings at the top
-   - Two tables (`Extends`, `New`) with 27 columns
-   - Sort, filter, group, and search for the table
-   - Per-row dropdown with `UX/UI Sketch` and `Plan`
-   - Summary tables for DB/Files, API, Components
-   - Text-based architecture diagram
-   - Next action from `/suggest-next-action`
-4. Save the file to `reports/idea-features.html` or `.devin/reports/idea-features.html`
+1. Write `docs/roadmap/idea-features.md` with frontmatter:
+   ```yaml
+   ---
+   title: Idea Features
+   description: New and extended feature ideas for the project
+   ---
+   ```
+2. Include in the page:
+   - Key Findings (bullet list, English)
+   - `## Extends` table with 27 columns
+   - `## New` table with 27 columns
+   - `## Feature Details` — one `### <#> <feature>` per row with `UX/UI` and `Plan`
+   - `## Summary` — DB/Files, API/Functions, Components tables
+   - `## Architecture` — text diagram
+   - `## Next Action` — numbered list
+3. Use markdown tables, not HTML
+4. Save the file in `docs/roadmap/idea-features.md`
 
-### 5. Validate
+### 5. Update Docs Site
 
-> Goal: Confirm the report is correct and usable
+> Goal: Ensure the new page is part of the docs site
 
-1. Open the HTML in a browser using `/open-web`
-2. Verify sort, filter, search, dropdowns, and theme toggle
-3. If validation fails, fix and regenerate (max 3 → stop/report)
+1. Run `/update-docs` to update `docs/.vitepress/config.ts` sidebar and references
+2. Verify `docs/roadmap/index.md` links to `idea-features.md`
+3. If `update-docs` reports missing structure, fix and re-run (max 3)
 
-### 6. Final Chat
+### 6. Validate
+
+> Goal: Confirm the markdown and docs site are correct
+
+1. Check that `docs/roadmap/idea-features.md` renders in VitePress preview
+2. Verify all tables have valid markdown
+3. Verify sidebar includes the page
+
+### 7. Final Chat
 
 > Goal: Only report the file path and top action
 
-1. Reply in chat with a short message: the HTML path and the top next action
-2. Do not paste the full table, analysis, or report in chat
+1. Reply in chat with the docs path and the top next action
+2. Do not paste the full table, analysis, or markdown in chat
 
 ## Rules
 
@@ -138,17 +149,16 @@ Generate new and extended feature ideas for a project, analyze gaps and user nee
 - KPI: metric, `-` if none
 - UX/UI: 🔴 needs a lot, 🟡 some, 🟢 use existing
 
-### 3. Per-Row Dropdown
+### 3. Markdown Only
 
-- Every feature row must have an expandable dropdown
-- Dropdown has two columns: `UX/UI Sketch` and `Plan`
-- `UX/UI Sketch` uses text/ASCII layout or bullet list
-- `Plan` uses 3-5 short steps
-- Content is concise and specific to that feature
+- No HTML reports, no interactive UX, no dropdowns
+- Tables are markdown tables
+- Feature details are headings and bullet lists
+- Use `pre` for ASCII sketches inside markdown
 
 ### 4. Language
 
-- Report body, headings, summaries, and next action are in English
+- Page body, headings, summaries, and next action are in English
 - Feature table cell content may be in the project language (e.g., Thai)
 - Do not output the full report in chat
 
@@ -172,10 +182,10 @@ Generate new and extended feature ideas for a project, analyze gaps and user nee
 
 ## Expected Outcome
 
-- Single HTML file at `reports/idea-features.html` or `.devin/reports/idea-features.html`
+- Markdown file at `docs/roadmap/idea-features.md`
 - Two tables (`Extends` and `New`) with 27 columns and continuous numbering
-- Each table row has an expandable dropdown with `UX/UI Sketch` and `Plan`
-- Sort, filter, group, and search enabled on the table
-- Key findings, summary, architecture diagram, and next action in the report
+- Each feature has a markdown section with `UX/UI` and `Plan` sub-sections
+- Key findings, summary, architecture diagram, and next action in the page
+- Page integrated into VitePress sidebar via `/update-docs`
 - Report body in English; table cells may be in the project language
-- Final chat message contains only the file path and top next action
+- Final chat message contains only the docs path and top next action

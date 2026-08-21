@@ -1,6 +1,6 @@
 ---
 name: update-docs
-description: Write high-quality product or open-source docs with VitePress
+description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
 allowed-tools:
   - read
   - write
@@ -17,205 +17,183 @@ related:
   - follow-project-docs
   - update-readme
   - follow-content-quality
-  - check-should-update
-  - check-monorepo
+  - update-reference
+  - update-features
+  - idea-features
 ---
 
 ## Goal
 
-Write high-quality documentation using real data from source code and VitePress
+สร้าง documentation site ด้วย VitePress โดยเขียนเนื้อหาเป็น markdown ปกติ มี sidebar/nav ครบ ไม่ใช้ HTML หรือ UX ซับซ้อน
 
 ## Scope
 
-Cover comprehensive documentation writing including features, examples, API docs, references, and development guides for both open-source and product projects
+- ตั้งค่า `docs/` สำหรับ single project และ monorepo
+- สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
+- ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
+- รองรับ `update-features` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
 
 ## Execute
 
-### 1. Check Should Update, Project Type, And Distribution Type
+### 1. Prepare
 
-> Goal: ตรวจ git changes, project type, และ distribution type เพื่อกำหนด documentation strategy
-> Goal: ยืนยันว่า docs ต้องอัปเดท, ระบุ monorepo/single, และ open-source/product
+> Goal: ระบุ project type, distribution type, และ scope ของ docs
 
-1. ทำ `/check-should-update` เพื่อตรวจ git changes ว่า docs ต้องอัปเดทหรือไม่ — ถ้าไม่ต้องอัปเดท → stop
-2. Run `/check-monorepo` to verify if project is a monorepo
-3. Determine distribution type (`open-source` vs `product`):
-   - ค้นหา auth signals: `package.json` deps เช่น `next-auth`, `clerk`, `supabase-auth`, `lucia`, `passport`, `firebase-auth`
-   - ค้นหาไฟล์ `auth.config.*`, `src/auth/`, `middleware.ts`, `routes/login.*`, `app/login.*`
-   - ตรวจ `.env` หรือ `process.env` keys: `AUTH_`, `JWT_`, `CLERK_`, `NEXTAUTH_`, `SUPABASE_`, `FIREBASE_`, `OAUTH_`
-   - ถ้าพบ auth → `product`; ถ้าไม่พบ → `open-source`
-   - ถ้า `package.json` มี `private: true` หรือ license เป็น commercial → `product`
-4. If monorepo, follow Monorepo section
-5. If not monorepo, follow Single Project section
+1. ทำ `/check-should-update` ถ้ามี git changes
+2. ทำ `/check-monorepo` เพื่อระบุ monorepo
+3. ระบุ distribution type:
+   - `product`: มี auth, `private: true`, license commercial
+   - `open-source`: ไม่มี auth, license เปิด
+4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product)
 
-### 2. Update Documentation For Single Project
+### 2. Ensure Docs Structure
 
-> Goal: For non-monorepo projects
-> Goal: สร้าง documentation สำหรับ single project ตาม template และ distribution type
+> Goal: มี directory structure พื้นฐานสำหรับ VitePress
 
-1. `/deep-review`, `/analyze-project` เพื่อ analyze project
-2. Select template based on project type (Library, Product, CLI, Web) and distribution type
-3. Create `docs/` folder and structure according to template
-4. Write real content in main files:
-   - `project/overview.md` - Project overview with features and architecture
-   - `project/features.md` - Detailed features with examples
-   - `getting-started/installation.md` - Installation guide with examples
-   - `getting-started/usage.md` - Usage examples that work
-5. Write `index.md` according to `/update-readme` template (Features table, Key Concepts, Tech Stack, Quick Start)
-6. Use frontmatter for all files
+1. สร้าง `docs/` ที่ root (เสมอ ไม่ใช่ `apps/docs/`)
+2. สร้าง `docs/.vitepress/` ถ้ายังไม่มี
+3. สร้างโครงสร้างหน้า:
+   - `docs/index.md`
+   - `docs/project/overview.md`
+   - `docs/project/features.md`
+   - `docs/getting-started/installation.md`
+   - `docs/getting-started/usage.md`
+   - `docs/development/setup.md`
+   - `docs/development/architecture.md`
+   - `docs/development/workflows.md`
+   - `docs/development/testing.md`
+   - `docs/references/index.md`
+   - `docs/roadmap/index.md`
+4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
 
-### 3. Update Documentation For Monorepo
+### 3. Update VitePress Config
 
-> Goal: For monorepos with many workspaces
-> Goal: สร้าง documentation สำหรับ monorepo ที่รวมทุก workspaces ใน docs/ เดียว
+> Goal: ตั้งค่า nav และ sidebar ที่ถูกต้อง
 
-1. `/deep-review`, `/analyze-project` เพื่อ analyze entire project
-2. Run `/all-workspaces` to discover and prioritize workspaces
-3. Create single `docs/` folder in root directory only
-4. ห้ามสร้าง `docs/` ในแต่ละ workspace ภายใต้ `packages/`, `apps/`, หรือ `framework/`
-5. Write real content in main files:
-   - `project/overview.md` - Entire monorepo overview with features and architecture
-   - `project/features.md` - Detailed features of all workspaces with examples
-   - `project/workspaces.md` - Details of each workspace (summary + link ไปยัง workspace page)
-   - `getting-started/installation.md` - Installation guide with examples
-   - `getting-started/usage.md` - Usage examples that work
-6. สร้างหน้า documentation สำหรับแต่ละ workspace ภายใต้ `docs/workspaces/` เช่น `docs/workspaces/core-shared.md`, `docs/workspaces/cli-release.md`
-7. ใช้ VitePress nav ลิงก์ไปยัง workspace pages แทนการเขียนเนื้อหาซ้ำในหลายไฟล์
-8. Write `index.md` according to `/update-readme` template (Features table, Key Concepts, Tech Stack, Quick Start)
-9. Use frontmatter for all files
+1. สร้าง/อัปเดท `docs/.vitepress/config.ts`
+2. nav:
+   - product: Project, Features, Getting Started, Roadmap, Development, References
+   - open-source: Project, Features, Getting Started, Roadmap, Development, References
+3. sidebar:
+   - `/project/` — overview, features, workspaces (monorepo)
+   - `/getting-started/` — installation, usage
+   - `/roadmap/` — index, idea-features (ถ้ามี)
+   - `/development/` — setup, architecture, workflows, testing
+   - `/references/` — index + ตาม distribution type
+4. ใช้ `collapsed: true` เมื่อหมวดมีหลายหน้า
+5. ไม่ต้องใช้ Vue components ซับซ้อน ใช้ markdown ธรรมดา
 
-### 4. Setup Project Docs Site
+### 4. Write Content Pages
 
-> Goal: ตั้งค่า docs site โดยทำตาม `/follow-project-docs` ซึ่งรวม VitePress setup, Vue components, และ Bun shell data scripts
-> Goal: ตั้งค่า VitePress site พร้อม Vue components, Bun shell scripts, และ nav/sidebar ที่ถูกต้อง
+> Goal: เนื้อหาจากข้อมูลจริงใน project
 
-1. ทำ `/follow-project-docs` เพื่อ setup docs site ทั้งหมด (VitePress + Vue components + Bun shell)
-2. สำหรับ monorepo ให้สร้าง `docs/` ที่ root และตั้งค่าที่นั่น (ไม่ใช่ `apps/docs/`)
-3. สำหรับ single project ให้สร้าง `docs/` ที่ root เช่นกัน
-4. เลือก nav/sidebar ตาม distribution type:
-   - `product` nav: `Project`, `Features`, `Auth`, `Admin`, `Review`, `Release`, `Development`
-   - `open-source` nav: `Project`, `Features`, `Contributing`, `Review`, `Release`, `Development`
-   - development sidebar ใช้ร่วมกันใน `development/`
-5. กำหนด `docs/.vitepress/config.ts` sidebar ตาม template ใน `update-docs/templates/sidebar-<type>.md`
-6. `/follow-project-docs` จะตั้งค่า VitePress, UnoCSS, Vue components, และ Bun shell scripts ให้อัตโนมัติ
-7. Add scripts in `package.json`: `dev:docs`, `build:docs`, `preview:docs`
+1. `index.md`: title, tagline, features list, quick start link, actions
+2. `project/overview.md`: สรุป project, architecture, tech stack, key concepts
+3. `project/features.md`: รายการ features ทั้งหมดจาก `update-features` หรือ analyze
+4. `getting-started/installation.md`: ขั้นตอนติดตั้ง ตรวจ dependencies
+5. `getting-started/usage.md`: ตัวอย่างใช้งานจริง
+6. `development/setup.md`: ตั้งค่า dev environment
+7. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
+8. `development/workflows.md`: slash commands, scripts, CI/CD
+9. `development/testing.md`: วิธี run test, lint, typecheck
+10. `references/index.md`: สรุป references
+11. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 
-### 5. Content Quality
+### 5. Integrate update-features
 
-> Goal: ตรวจสอบและปรับปรุงคุณภาพเนื้อหาครบวงจร
+> Goal: หน้า existing features ถูกต้อง
 
-1. ทำ `/follow-content-quality` เพื่อตรวจสอบและปรับปรุงคุณภาพเนื้อหาครบวงจร
-2. ตรวจสอบความสม่ำเสมอของ formatting, heading structure, และ style
-3. ตรวจสอบว่าเนื้อหาอ่านง่าย สอดคล้องกัน และไม่ซ้ำซ้อน
+1. ถ้า `/update-features` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
+2. เขียน `docs/project/features.md` ด้วยตาราง markdown
+3. แต่ละ row มี name, description, module, status
+4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
+5. ไม่ต้องมี dropdown ใช้ heading และ bullet ธรรมดา
 
-### 6. Document Workflow Reports
+### 6. Integrate idea-features
 
-> Goal: เอกสารต้องอธิบาย report output ของ workflows ที่ใช้ใน project
-> Goal: บันทึก report output format ของ analyze-* และ review-* workflows
+> Goal: หน้า idea features ถูกต้อง
 
-1. ตรวจสอบว่า `analyze-*` workflows มี report step (เช่น `/report-table`) และบันทึกใน docs ว่าผลลัพธ์อยู่ในรูปแบบใด
-2. ตรวจสอบว่า `review-*` workflows มี report step (เช่น `/report-review` หรือ `/report-table`) และบันทึกใน docs
-3. บันทึกตัวอย่าง report output ใน docs ถ้าจำเป็น
+1. ถ้า `/idea-features` เรียกมา จะมี `docs/roadmap/idea-features.md` หรือข้อมูลให้เขียน
+2. เขียน/อัปเดท `docs/roadmap/idea-features.md` ด้วยตาราง `Extends` และ `New`
+3. แต่ละ feature ใช้ heading `### <#> <feature>` แล้วเขียน `UX/UI` และ `Plan` เป็น bullet
+4. ตาราง markdown 27 คอลัมน์ ภาษาไทย body English
+5. รวม Key Findings, Summary, Architecture, Next Action ในเนื้อหา
 
-### 7. Update References
+### 7. Content Quality
 
-> Goal: เมื่อแก้ไขไฟล์ ให้อัปเดท references ทั้งหมด
-> Goal: อัปเดท references ทั้งหมดเพื่อป้องกัน broken links
+> Goal: เนื้อหาอ่านง่าย สม่ำเสมอ ไม่ซ้ำ
 
-1. `/update-reference` เพื่ออัปเดท references ใน project, workflows, skills และไฟล์ที่เกี่ยวข้อง
-2. ตรวจสอบว่าไม่มี references ที่เสียหาย
+1. ทำ `/follow-content-quality`
+2. ตรวจ heading structure, frontmatter, links
+3. แก้ไขซ้ำซ้อนหรือ placeholder
 
-### 8. Build Development Sidebar
+### 8. Update References
 
-> Goal: สร้าง sidebar สำหรับ developers ทั้ง open-source และ product
-> Goal: มี development guide ที่ครอบคลุมสำหรับทั้งสอง distribution type
+> Goal: links ไม่เสีย
 
-1. สร้าง directory `docs/development/`
-2. สร้างไฟล์:
-   - `development/setup.md` - ตั้งค่า environment และ install
-   - `development/architecture.md` - Architecture, conventions, และ project structure
-   - `development/workflows.md` - Development workflows และ slash commands
-   - `development/testing.md` - Testing strategy และ commands
-   - `development/ci-cd.md` - CI/CD pipeline และ release process
-   - `development/scripts.md` - Bun shell scripts และ common commands
-   - `development/troubleshooting.md` - Common issues และ debug tips
-3. ใส่ทุกหน้าใน sidebar `development` ตาม `update-docs/templates/sidebar-development.md`
-
-### 9. Build References Section
-
-> Goal: สร้าง references ตาม distribution type
-> Goal: มี references สำหรับ product และ open-source แยกกัน
-
-1. สร้าง `docs/references/` (หรือ `docs/project/references/`)
-2. สำหรับ `product` สร้าง:
-   - `references/auth.md` - Auth flows, roles, และ endpoints
-   - `references/admin.md` - Admin features และ permissions
-   - `references/pricing.md` - Plans, limits, และ billing (ถ้ามี)
-3. สำหรับ `open-source` สร้าง:
-   - `references/contributing.md` - Contribution guidelines, code of conduct, และ PR process
-   - `references/license.md` - License summary และ attribution
-   - `references/roadmap.md` - Roadmap และ issue labels
-4. ใช้ template ใน `update-docs/templates/content-page.md` เขียนเนื้อหาแต่ละหน้า
+1. ทำ `/update-reference`
+2. ตรวจ internal links, nav, sidebar paths
+3. อัปเดท README ให้ลิงก์ไป docs
 
 ## Rules
 
-### 1. Documentation Principles
+### 1. Markdown Only
 
-- เขียนจากข้อมูลจริงใน codebase ไม่ใช่สมมติ
-- ใช้ examples ที่ทำงานได้จริง ไม่ใช่ placeholder
-- ทุกไฟล์ต้องมี frontmatter
-- `index.md` เขียนตาม template ของ `/update-readme`
-- ถ้า project มี `analyze-*` หรือ `review-*` workflows ต้องบันทึก report output format ใน docs
+- เขียนเนื้อหาด้วย markdown ธรรมดา
+- ห้ามสร้าง HTML report, interactive table, หรือ UX ซับซ้อน
+- ตารางใช้ markdown table ได้
+- ไม่ใช้ Vue components ยกเว้น `:::` ของ VitePress เมื่อจำเป็น
 
-### 2. Directory Structure
+### 2. Sidebar And Nav
 
-ใช้ structure ตามประเภท project (Library, Product, CLI, Web, Monorepo):
+- `docs/.vitepress/config.ts` ต้องมี nav และ sidebar
+- sidebar ต้องมีอย่างน้อย 5 หมวด: Project, Getting Started, Roadmap, Development, References
+- แต่ละหมวด `collapsed: true` ถ้ามี >5 หน้า
+- ใช้ relative path เริ่มต้นด้วย `/`
 
-- Required Files: `index.md`, `.vitepress/config.ts`
-- Required Directories: `project/`, `getting-started/`, `.vitepress/`, `development/`
-- Optional Directories: `workspaces/` (monorepo only), `guides/`, `key-concepts/`, `principles/`, `api/`, `examples/`, `reference/`, `templates/`, `workflows/`, `references/`
+### 3. Frontmatter
 
-### 3. Monorepo Rules
+- ทุก markdown ไฟล์ต้องมี frontmatter:
+  ```yaml
+  ---
+  title: Page Title
+  description: Short description
+  ---
+  ```
+- title ใช้ Title Case
+- description ≤ 120 ตัวอักษร
 
-- มี `docs/` เดียวใน root directory เท่านั้น
+### 4. Feature Tables
+
+- `docs/project/features.md` ใช้ table `| Feature | Description | Module | Status |`
+- `docs/roadmap/idea-features.md` ใช้ table 27 คอลัมน์ เรียงตาม impact
+- feature แต่ละตัวละเอียดใต้ heading `###`
+
+### 5. Language
+
+- เนื้อหา markdown ใช้ภาษาของ project หรือภาษาอังกฤษ
+- `idea-features` body ภาษาอังกฤษ ตารางภาษาไทย
+- ห้ามผสมภาษาในย่อหน้าเดียวกัน
+
+### 6. No Workspace Duplicates
+
+- monorepo สร้าง `docs/` เดียวที่ root
 - ห้ามสร้าง `docs/` ในแต่ละ workspace
-- จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน)
-- ใน `project/workspaces.md` เขียนเพียง summary และ link ไปยัง workspace page
+- workspace pages อยู่ `docs/workspaces/<name>.md`
 
-### 4. Project Docs Site Rules
+### 7. Real Data
 
-- ทำ `/follow-project-docs` สำหรับ setup ทั้งหมด ไม่ต้องเรียก `/follow-vitepress` แยก
-- สำหรับ monorepo สร้าง `docs/` ที่ root ไม่ใช่ `apps/docs/`
-- ใช้ Vue components แทน markdown ธรรมดา
-- ใช้ Bun shell scripts ดึงข้อมูลจริง
-- ตั้งค่า nav ตาม distribution type:
-  - `product`: Project, Features, Auth, Admin, Review, Release, Development
-  - `open-source`: Project, Features, Contributing, Review, Release, Development
-
-### 5. Distribution Type Detection
-
-- ถ้ามี auth หรือ `private: true` → `product`
-- ถ้าไม่มี auth และ license เปิดเผย → `open-source`
-- ตรวจสอบ `package.json`, `.env`, `src/auth/`, `auth.config.*`, `middleware.ts`, `routes/login.*`, `app/login.*`
-- ไม่สรุป distribution type จากชื่อ repo หรือ description อย่างเดียว
-
-### 6. References Rules
-
-- `product` references: เน้น auth, admin, pricing, API usage
-- `open-source` references: เน้น contributing, license, roadmap, community
-- references ไม่ซ้ำกับ `development/`
-- ทุก reference page ใช้ frontmatter และตาม `update-docs/templates/content-page.md`
+- เนื้อหาต้องมาจาก source code จริง
+- examples ต้องรันได้
+- ไม่ใช้ placeholder หรือ lorem ipsum
 
 ## Expected Outcome
 
-- Documentation ตามมาตรฐาน มี structure สอดคล้องกับ template
-- Content คุณภาพสูง เขียนจากข้อมูลจริงใน codebase
-- ไฟล์ทั้งหมดมี frontmatter
-- `index.md` เขียนตาม template ของ `/update-readme`
-- สำหรับ monorepo: มี `docs/` เดียวใน root ที่รวมทุก workspaces
-- สำหรับ monorepo: workspace pages อยู่ใน `docs/workspaces/` และ nav ลิงก์ไปยังแต่ละ page
-- Docs site พร้อมใช้งานตาม `/follow-project-docs` (VitePress + Vue components + Bun shell)
-- Nav ถูกต้องตาม distribution type (`product` หรือ `open-source`)
-- มี `development/` sidebar สำหรับทั้งสอง distribution type
-- มี `references/` แยกสำหรับ product และ open-source
-- Report output ของ `analyze-*` และ `review-*` workflows บันทึกใน docs
-- References ใน project, workflows, และ skills ถูกอัพเดททั้งหมด
+- `docs/` directory ที่ root มี VitePress config, nav, sidebar
+- Markdown files สมบูรณ์: index, project, features, getting-started, roadmap, development, references
+- `docs/project/features.md` มีตาราง features จาก `update-features`
+- `docs/roadmap/idea-features.md` มีตาราง `Extends` และ `New` จาก `idea-features`
+- ทุกไฟล์มี frontmatter
+- ไม่มี HTML/UX ซับซ้อน
+- Links ถูกต้อง ไม่เสีย
+- README อัปเดทลิงก์ไป docs
