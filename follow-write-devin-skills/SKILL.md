@@ -3,6 +3,7 @@ name: follow-write-devin-skills
 description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
 related:
   - follow-devin-skills-md
+  - write-skills-md
   - prepare-skills-context
   - use-scripts
   - validate
@@ -65,7 +66,7 @@ related:
 
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
-1. ทำ `/follow-devin-skills-md` เพื่อเขียน frontmatter และ prompt body
+1. ทำ `/follow-devin-skills-md` หรือ `/write-skills-md` เพื่อเขียน frontmatter และ prompt body
 2. ตรวจสอบว่า `name` ตรงกับ directory name
 3. กำหนด `description` ไม่เกิน 100 ตัวอักษร
 4. ตั้งค่า `allowed-tools` และ `permissions` ตามความเหมาะสม
