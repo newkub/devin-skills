@@ -1,131 +1,110 @@
 ---
 name: update-project
-description: อัพเดท project documentation และ configuration ครบถ้วน
+description: อัปเดต project documentation, config, rules, และ tooling ให้ครบถ้วนและสอดคล้องกัน
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
 related:
-  - update-dot-devin
-  - cleanup-files-in-project
-  - update-readme
-  - update-agents-md
-  - update-docs
-  - update-ast-grep-rules
-  - update-review-cli
-  - follow-dot-vscode
-  - follow-write-devin-skills
+  - update-contributing-md
+  - follow-config
+  - follow-gitignore
+  - validate
 ---
 
 ## Goal
 
-อัพเดท project documentation และ configuration ครบถ้วนในครั้งเดียว
+อัปเดต project ทังหมดให้สอดคล้องกันในครั้งเดียว ตาม execution order ทีกำหนด
 
 ## Scope
 
-ใช้สำหรับอัพเดท project ทั้งหมด รวม .devin structure, README, AGENTS.md, documentation, ast-grep rules, review CLI, และ .vscode configuration
+ใช้สำหรับ project ที่ต้องการ update docs, config, rules, และ tooling
 
 ## Execute
 
-### 1. Update Dot Devin
+### 1. Detect Project Structure
 
-อัพเดท .devin structure สำหรับ project
+ตรวจสอบ project ก่อน update
 
-1. ทำ `/update-dot-devin` เพื่ออัพเดท .devin structure ครบถ้วน
+> Goal: รู้ structure, docs, config, และ tools
 
-### 2. Cleanup Source Files
+1. อ่าน root `package.json`
+2. อ่าน `AGENTS.md` ถ้ามี
+3. ตรวจสอบ `docs/`, `rules/`, `.devin/`, `.vscode/`
+4. ระบุ orchestration tools (moon, turbo)
 
-ลบ source files ที่ไม่จำเป็น
+### 2. Run Updates In Order
 
-1. ทำ `/cleanup-files-in-project` เพื่อหาและลบ source files ที่ไม่จำเป็น โดยไม่แตะ build artifacts หรือ dependency caches
-2. ขอ user confirm ก่อนลบ
+รัน update ตามลำดับ
 
-### 3. Update README
+> Goal: docs, rules, และ tooling อัปเดตครบ
 
-อัพเดท README.md สำหรับ project
+1. `/update-dot-devin`
+2. `/cleanup-files-in-project` (ถ้าจำเป็น)
+3. `/update-readme`
+4. `/update-agents-md`
+5. `/update-docs` (ถ้ามี `docs/`)
+6. `/update-ast-grep-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+7. `/update-review-cli` (ถ้ามี `tools/review/`)
+8. `/update-vscode`
+9. `/update-contributing-md`
 
-1. ทำ `/update-readme` เพื่ออัพเดท README.md ครบถ้วน
+### 3. Coordinate Config
 
-### 4. Update AGENTS.md
+ตรวจสอบ config files
 
-อัพเดท AGENTS.md สำหรับ project
+> Goal: config, gitignore, และ scripts sync กัน
 
-1. ทำ `/update-agents-md` เพื่ออัพเดท AGENTS.md ครบถ้วน
+1. ทำ `/follow-config` เพื่อ sync config ทั้งหมด
+2. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
+3. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
 
-### 5. Update Documentation
+### 4. Validate
 
-อัพเดท documentation สำหรับ project (ถ้ามี docs/)
+ตรวจสอบผลลัพธ์
 
-1. ตรวจสอบว่ามี docs/ directory หรือไม่
-2. ถ้ามี docs/ ให้ทำ `/update-docs` เพื่ออัพเดท documentation ครบถ้วน
+> Goal: ผ่าน validation โดยไม่มี side effects
 
-### 6. Update Ast-Grep Rules
+1. ทำ `/validate`
+2. รัน `git diff --check`
+3. รัน checks ตาม project เช่น `bun run scan`, `bun run lint`
 
-อัพเดท ast-grep rules สำหรับ project (ถ้ามี sgconfig.yml)
+### 5. Report
 
-1. ตรวจสอบว่ามี `sgconfig.yml` และ `rules/` directory หรือไม่
-2. ถ้ามี ให้ทำ `/update-ast-grep-rules` เพื่ออัพเดท ast-grep rules ให้สอดคล้องกับ `.devin/rules/`
+สรุปผล
 
-### 7. Update Codebase Review CLI
+> Goal: รายงานผลและ next actions
 
-อัปเดท codebase review CLI สำหรับ project (ถ้ามี `tools/review/`)
-
-1. ตรวจสอบว่ามี `tools/review/` directory หรือไม่
-2. ถ้ามี ให้ทำ `/update-review-cli` เพื่อสร้าง/อัปเดท review CLI ให้ครอบคลุม 60+ categories ตาม `/run-review`
-
-### 8. Update Dot VSCode
-
-อัปเดท `.vscode` configuration สำหรับ project
-
-1. ทำ `/follow-dot-vscode` เพื่ออัปเดท `.vscode/` directory ให้ครบถ้วน ครอบคลุม settings.json, extensions.json, launch.json, tasks.json และ snippets
+1. รายงาน files ทีเปลี่ยน
+2. รายงาน checks ทีผ่าน/ไม่ผ่าน
+3. ระบุ next actions ถ้ามี
 
 ## Rules
 
-### 1. Execution Order
+### 1. Idempotency
 
-ทำตามลำดับที่กำหนดเพื่อให้ได้ผลลัพธ์ที่ถูกต้อง
+- รัน update-project ซ้ำได้โดยไม่เกิด side effects
+- ไม่ลบหรือ overwrite โดยไม่ dry run
 
-- ทำ `/update-dot-devin` ก่อนเสมอ เพื่อตั้งค่าพื้นฐาน
-- ทำ `/cleanup-files-in-project` หลังจาก update-dot-devin ถ้า project มี source files ที่ไม่จำเป็น
-- ทำ `/update-readme` หลังจากตั้งค่าพื้นฐาน
-- ทำ `/update-agents-md` หลังจากอัพเดท README
-- ทำ `/update-docs` เป็นลำดับสุดท้าย (ถ้ามี docs/)
-- ทำ `/update-ast-grep-rules` หลังจาก update docs (ถ้ามี `sgconfig.yml`)
-- ทำ `/update-review-cli` หลังจาก update ast-grep rules (ถ้ามี `tools/review/`)
-- ทำ `/follow-dot-vscode` หลังจาก `/update-review-cli`
+### 2. Conditionality
 
-### 2. Conditional Execution
+- รัน steps ทีมี conditions ตามทีกำหนด (เช่น ถ้ามี `docs/`)
+- ข้าม steps ทีไม่จำเป็น
 
-ตรวจสอบความจำเป็นก่อน execute
+### 3. Validation
 
-- ทำ `/update-docs` เฉพาะเมื่อมี docs/ directory
-- ถ้าไม่มี docs/ ให้ข้าม step นี้
-- ทำ `/update-ast-grep-rules` เฉพาะเมื่อมี `sgconfig.yml` และ `rules/` directory
-- ถ้าไม่มี ให้ข้าม step นี้
-- ทำ `/update-review-cli` เฉพาะเมื่อมี `tools/review/` directory
-- ถ้าไม่มี ให้ข้าม step นี้
-- ทำ `/follow-dot-vscode` ทุกครั้ง เพราะทุก project ควรมี `.vscode/` configuration
-
-### 3. Consistency
-
-รักษาความสม่ำเสมอ
-
-- ทำตาม `/follow-write-devin-skills` สำหรับ workflow structure
-- ใช้ references แทนการ duplicate เนื้อหา
-- ตรวจสอบว่า workflows ที่อ้างถึงมีอยู่จริง
+- รัน validation หลัง update
+- ไม่อ้างว่า check ผ่าน ถ้า command fail
 
 ## Expected Outcome
 
-- .devin structure อัพเดทครบถ้วน
-- README.md อัพเดทครบถ้วน
-- AGENTS.md อัพเดทครบถ้วน
-- Documentation อัพเดทครบถ้วน (ถ้ามี docs/)
-- Ast-grep rules อัพเดทครบถ้วน (ถ้ามี `sgconfig.yml`)
-- Review CLI อัพเดทครบถ้วน (ถ้ามี `tools/review/`)
-- .vscode configuration อัพเดทครบถ้วน
-- Project documentation และ configuration สอดคล้องกัน
+- Project docs, config, rules, และ tooling sync กัน
+- ผ่าน validation ตาม project
+- รายงานผลชัดเจน
