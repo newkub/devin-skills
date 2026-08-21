@@ -19,7 +19,7 @@ description: เพิ่มหรืออัปเดท script ใน package
 
 > Goal: รู้ target workspace, script name, command และ manifest path
 
-1. ระบุ workspace จาก task scope (เช่น `tools/health`, `apps/website`)
+1. ระบุ workspace จาก task scope (เช่น `tools/review`, `apps/website`)
 2. ระบุ `package.json` path ของ workspace นั้น
 3. ระบุ script name, command และ description ที่ต้องเพิ่ม
 4. ถ้าเป็น monorepo → ระบุ root `package.json` path ด้วย

@@ -1,6 +1,6 @@
 ---
-name: report-skills-health
-description: วิเคราะห์สุขภาพ skills ทั้ง global และ project พร้อม health score, metrics, และ action items
+name: review-devin-global-skills
+description: วิเคราะห์คุณภาพ Devin skills ทั้ง global และ project พร้อม review score, metrics, และ action items
 allowed-tools:
   - read
   - write
@@ -28,7 +28,7 @@ related:
 
 ## Goal
 
-วิเคราะห์สุขภาพ skills ทั้ง global และ project ระบุ issues, คำนวณ health score และจัด action items ครอบคลุม
+วิเคราะห์คุณภาพ skills ทั้ง global และ project ระบุ issues, คำนวณ review score และจัด action items ครอบคลุม
 
 ## Scope
 
@@ -110,13 +110,13 @@ related:
 
 ### 7. Calculate Health Score
 
-คำนวณ health score จาก metrics
+คำนวณ review score จาก metrics
 
-> Goal: มี health score รวม พร้อม grade และ prioritization
+> Goal: มี review score รวม พร้อม grade และ prioritization
 
 1. กำหนด metrics: frontmatter, structure, references, content quality, consistency, file naming, related coverage
 2. คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
-3. คำนวณ health score รวม (0-100%)
+3. คำนวณ review score รวม (0-100%)
 4. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 5. คำนวณ category score แยก prefix
 
@@ -168,7 +168,7 @@ related:
 
 ## Expected Outcome
 
-- รายงานสุขภาพ skills พร้อม health score และ grade
+- รายงานคุณภาพ skills พร้อม review score และ grade
 - ตาราง issues จัดลำดับตาม severity
 - ตาราง skills แยก category พร้อม metrics
 - Action items แยก quick wins จาก major improvements

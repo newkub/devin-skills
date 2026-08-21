@@ -1,6 +1,6 @@
 ---
 name: review-dx
-description: Review developer experience ครอบคลุม build, errors, tools, HMR, onboarding พร้อม health score
+description: Review developer experience ครอบคลุม build, errors, tools, HMR, onboarding พร้อม review score
 related:
   - scan-codebase
   - suggest-next-action
@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-Review developer experience ครอบคลุม build performance, error messages, development tools, HMR, onboarding, local development พร้อม health score
+Review developer experience ครอบคลุม build performance, error messages, development tools, HMR, onboarding, local development พร้อม review score
 
 ## Scope
 
@@ -99,5 +99,5 @@ DX review สำหรับ: build times, error messages clarity, development t
 
 - ตาราง: dimension | issues found | severity | action item
 - DX gaps ถูกระบุและจัดลำดับ
-- Health score สำหรับ developer experience
+- Review score สำหรับ developer experience
 - Action items ชัดเจนสำหรับขั้นตอนถัดไป

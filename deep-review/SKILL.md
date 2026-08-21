@@ -29,7 +29,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ทำ `/deep-analyze` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์แบบลึก
 
 - ทำ `/deep-analyze` เพื่อวิเคราะห์ architecture, code quality, features, dependencies, performance, security
-- ทำ `/deep-analyze-by-use-scripts` เพื่อรัน health CLI และ AST-based analysis พร้อม metrics
+- ทำ `/deep-analyze-by-use-scripts` เพื่อรัน review CLI และ AST-based analysis พร้อม metrics
 - ทำ `/scan-codebase` เพื่อค้นหา symbols, call sites, consumers
 - บันทึก findings จาก analysis เป็น foundation สำหรับ review
 

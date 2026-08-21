@@ -16,7 +16,7 @@ triggers:
 
 ## Goal
 
-Template สำหรับสร้าง `review-*` skills ที่วิเคราะห์ quality พร้อม severity ratings, health score, และ actionable recommendations
+Template สำหรับสร้าง `review-*` skills ที่วิเคราะห์ quality พร้อม severity ratings, review score, และ actionable recommendations
 
 ## Scope
 
@@ -37,27 +37,27 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 ### 2. Deep Analyze
 
-วิเคราะห์ target อย่างลึกซึ้งด้วย health CLI และ rules
+วิเคราะห์ target อย่างลึกซึ้งด้วย review CLI และ rules
 
-> Goal: พบทุก issue พร้อม root cause และ health score
+> Goal: พบทุก issue พร้อม root cause และ review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-6. ตรวจสอบทีละ dimension ตาม criteria จาก health CLI output
+5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+6. ตรวจสอบทีละ dimension ตาม criteria จาก review CLI output
 7. จับ findings เป็น list พร้อม evidence (file, line, code snippet)
 8. ตรวจสอบทั้ง positive และ negative aspects
 
 ### 3. Run Health
 
-รัน health CLI เพื่อดึง metrics ล่าสุด
+รัน review CLI เพื่อดึง metrics ล่าสุด
 
-> Goal: มี health report พร้อม metrics สำหรับ scoring
+> Goal: มี review report พร้อม metrics สำหรับ scoring
 
-1. ทำ `/run-health` เพื่อรัน health CLI และดึง health report
-2. ใช้ health report สำหรับคำนวณ health score ในขั้นตอนถัดไป
+1. ทำ `/run-review` เพื่อรัน review CLI และดึง review report
+2. ใช้ review report สำหรับคำนวณ review score ในขั้นตอนถัดไป
 
 ### 4. Validate Findings
 
@@ -71,16 +71,16 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 4. ถ้า finding ซ้อนทับกับ review อื่น → อ้างอิงแทน ไม่ duplicate
 5. ถ้า finding นอก scope → ระบุเป็น info เท่านั้น ไม่ rate severity
 
-### 5. Rate Severity And Health Score
+### 5. Rate Severity And Review Score
 
-ให้คะแนน severity ของแต่ละ finding และคำนวณ health score
+ให้คะแนน severity ของแต่ละ finding และคำนวณ review score
 
-> Goal: ผู้ใช้รู้ลำดับความสำคัญและสถานะ overall health
+> Goal: ผู้ใช้รู้ลำดับความสำคัญและสถานะ overall review score
 
 1. ให้ severity: Critical, High, Medium, Low, Info
 2. พิจารณา impact (security, performance, maintainability, UX)
 3. พิจารณา effort: quick fix, moderate, major refactor
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. จัดลำดับ findings ตาม severity
 
 ### 6. Recommend
@@ -138,7 +138,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 ### 6. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -151,7 +151,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 ## Expected Outcome
 
-- Review report พร้อม severity ratings, health score, และ recommendations
+- Review report พร้อม severity ratings, review score, และ recommendations
 - ผู้ใช้รู้ลำดับการแก้ไขและ estimated effort
 - ทุก finding มี evidence และ actionable fix
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall

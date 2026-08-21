@@ -1,11 +1,11 @@
 ---
 name: review-file-upload
-description: Review file upload validation, sanitization, storage, access control, CDN, virus scan, health score
+description: Review file upload validation, sanitization, storage, access control, CDN, virus scan, review score
 ---
 
 ## Goal
 
-Review file upload ครอบคลุม validation, sanitization, storage, access control, CDN, virus scan พร้อม health score
+Review file upload ครอบคลุม validation, sanitization, storage, access control, CDN, virus scan พร้อม review score
 
 ## Scope
 
@@ -23,13 +23,13 @@ file upload review สำหรับ: file size validation, MIME type checking,
 
 ### 2. Deep Analyze
 
-> Goal: ครอบคลุมทุก file upload dimension พร้อม health score
+> Goal: ครอบคลุมทุก file upload dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ file upload patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
+5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 3. Validation And Sanitization Review
 
@@ -62,7 +62,7 @@ file upload review สำหรับ: file size validation, MIME type checking,
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -97,5 +97,5 @@ file upload review สำหรับ: file size validation, MIME type checking,
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก file upload section
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

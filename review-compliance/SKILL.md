@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Review compliance ครอบคลุม GDPR, privacy, consent, data retention, audit trail, และ regulatory requirements พร้อม health score
+Review compliance ครอบคลุม GDPR, privacy, consent, data retention, audit trail, และ regulatory requirements พร้อม review score
 
 ## Scope
 
@@ -71,7 +71,7 @@ Review compliance ครอบคลุม GDPR, privacy, consent, data retentio
 
 1. ทำ `/deep-validate`
 2. ทำ `/validate`
-3. ให้ severity, คำนวณ health score
+3. ให้ severity, คำนวณ review score
 4. ทำ `/report` พร้อม `/report-format-table`
 5. ทำ `/suggest-next-action`
 
@@ -103,6 +103,6 @@ Review compliance ครอบคลุม GDPR, privacy, consent, data retentio
 ## Expected Outcome
 
 - รายงาน compliance findings
-- Health score
+- Review score
 - Regulatory gap analysis
 - Next actions

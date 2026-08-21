@@ -1,11 +1,11 @@
 ---
 name: review-code-quality
-description: Review code quality ครอบคลุม static analysis, architecture, types, naming, readability, hardcode, refactor, testability, techstack, dependencies, consistency พร้อม health score
+description: Review code quality ครอบคลุม static analysis, architecture, types, naming, readability, hardcode, refactor, testability, techstack, dependencies, consistency พร้อม review score
 ---
 
 ## Goal
 
-Review code quality ครอบคลุมทุก dimension ผ่าน static analysis และ sub-workflows พร้อม aggregate findings, health score และ action items
+Review code quality ครอบคลุมทุก dimension ผ่าน static analysis และ sub-workflows พร้อม aggregate findings, review score และ action items
 
 ## Scope
 
@@ -27,18 +27,18 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 รวบรวม metrics ผ่าน script automation และ sub-workflows
 
-> Goal: รวบรวม findings จากทุก dimension พร้อม health score
+> Goal: รวบรวม findings จากทุก dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer รัน static analysis tools แบบ lint, typecheck, ast-grep scan, knip, jscpd, madge
 6. Analyzer วิเคราะห์ code smells: `any` type, `console.log`, TODO/FIXME/HACK, ignore comments
 7. Analyzer ตรวจสอบ SRP violations, code duplication, long files, complex functions, และ coupling issues
 8. Analyzer ตรวจสอบ TODO, FIXME, MOCK, STUB, placeholder patterns, และ unimplemented interfaces
-9. Health CLI คำนวณ health score จาก health report
-10. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+9. Review CLI คำนวณ review score จาก review report
+10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 11. ทำ `/review-architecture` เพื่อ review patterns, boundaries, coupling, design patterns, anti-patterns, SOLID, concurrency, scalability
 12. ทำ `/review-types` เพื่อ review type design: generics, type inference, discriminated unions, type narrowing, branded types, type safety, `as const`, exhaustive checks, `any` usage, type assertions, readonly/immutable patterns
 13. ทำ `/review-naming` เพื่อ review naming conventions: variable, function, class, file, directory, API endpoint, database naming, prefix/suffix conventions, cross-layer consistency, naming clarity
@@ -79,13 +79,13 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 ### 5. Report
 
 สร้างรายงานตารางตาม `/report-format-table`
-> Goal: รายงานชัดเจน ครบทุก dimension พร้อม health score
+> Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
 
 1. ทำ `/report` พร้อม `/report-format-table`
 2. สร้างตาราง Quality Metrics Summary: 14 metrics พร้อม count, threshold, status
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
-5. แสดง health score พร้อม progress bar และ grade
+5. แสดง review score พร้อม progress bar และ grade
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ### 6. Implement All
@@ -122,7 +122,7 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 
 - 14 metrics หลัก แต่ละ metric มีน้ำหนักเท่ากัน
 - คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
-- Health score = (total score / 14) × 100%
+- Review score = (total score / 14) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 
 ### 5. Hardcode Exclusions
@@ -162,5 +162,5 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 - รายงานตาราง Quality Metrics Summary พร้อม status indicators
 - รายงาน Findings by Category พร้อม severity และ location
 - รายงาน Recommended Actions พร้อม priority และ workflow
-- Health score พร้อม grade และ progress bar
+- Review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

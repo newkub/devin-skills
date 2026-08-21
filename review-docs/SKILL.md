@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Review documentation quality ครอบคลุม README, API docs, examples, guides, `JSDoc`/`TSDoc`, `VitePress` content, และ changelogs พร้อม health score
+Review documentation quality ครอบคลุม README, API docs, examples, guides, `JSDoc`/`TSDoc`, `VitePress` content, และ changelogs พร้อม review score
 
 ## Scope
 
@@ -72,7 +72,7 @@ Review documentation quality ครอบคลุม README, API docs, examples
 
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate`
-3. ให้ severity, คำนวณ health score
+3. ให้ severity, คำนวณ review score
 4. ทำ `/report` พร้อม `/report-format-table`
 5. ทำ `/suggest-next-action`
 
@@ -104,6 +104,6 @@ Review documentation quality ครอบคลุม README, API docs, examples
 ## Expected Outcome
 
 - รายงาน docs findings
-- Health score
+- Review score
 - Recommendations
 - Next actions

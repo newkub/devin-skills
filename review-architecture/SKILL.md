@@ -27,12 +27,12 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 วิเคราะห์ architecture อย่างลึกซึ้งด้วย scripts
 
-> Goal: ครอบคลุมทุก architecture dimension พร้อม health score
+> Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ:
    - Module boundaries และ import directions
    - Dependency graph และ circular dependencies
@@ -44,8 +44,8 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 9. Analyzer ตรวจสอบ anti-patterns: God object, singleton abuse, callback hell, premature abstraction, magic numbers ใน pattern logic
 10. Analyzer ตรวจสอบ pattern appropriateness: pattern ที่ over-engineer สำหรับ use case ง่าย หรือ under-engineer สำหรับ use case ซับซ้อน
 11. Analyzer ตรวจสอบ functional patterns: composition over inheritance, pure functions, immutability ที่ควรใช้แทน OOP patterns
-12. Health CLI คำนวณ architecture health score จาก health report
-13. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+12. Review CLI คำนวณ architecture review score จาก review report
+13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -109,7 +109,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง

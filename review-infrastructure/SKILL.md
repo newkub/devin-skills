@@ -5,7 +5,7 @@ description: Review infrastructure ครอบคลุม deployment, CI/CD, c
 
 ## Goal
 
-Review infrastructure ครอบคลุมทุก dimension ของ infrastructure พร้อม aggregate findings และ health score
+Review infrastructure ครอบคลุมทุก dimension ของ infrastructure พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -22,9 +22,9 @@ infrastructure review สำหรับ: deployment, CI/CD, config files, monit
 1. ทำ `/scan-codebase` เพื่อเข้าใจ infrastructure setup
 2. ระบุ deployment platform, CI/CD tools, monitoring tools, และ cloud providers ที่ใช้
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-6. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+4. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
 ### 2. Deployment And CI/CD Review
 
@@ -55,7 +55,7 @@ Review config files ครอบคลุม tsconfig, vite, biome, env-specific
 
 ### 4. Monitoring, Tracing And Observability Review
 
-Review monitoring, distributed tracing และ observability stack ครอบคลุม metrics, alerts, dashboards, span propagation, correlation IDs, incident response
+Health monitoring, distributed tracing และ observability stack ครอบคลุม metrics, alerts, dashboards, span propagation, correlation IDs, incident response
 
 > Goal: ครอบคลุมทุก monitoring, tracing และ observability dimension
 
@@ -223,7 +223,7 @@ Review upgrade safety ครอบคลุม breaking change analysis, migrati
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง

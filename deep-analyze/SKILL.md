@@ -48,7 +48,7 @@ related:
 > Goal: มี foundation สำหรับ deep analysis ทั้งแบบ manual และ script-based
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์อย่างครบถ้วน
-2. ถ้าต้องการ analysis ด้วย health CLI และ scripts → ทำ `/deep-analyze-by-use-scripts`
+2. ถ้าต้องการ analysis ด้วย review CLI และ scripts → ทำ `/deep-analyze-by-use-scripts`
 3. Scan file structure และ project type
 3. Search code patterns ทั่วไป
 4. Structural analysis ด้วย ast-grep

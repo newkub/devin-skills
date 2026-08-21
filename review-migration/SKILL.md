@@ -4,7 +4,7 @@ description: Review migration safety: framework, database, schema, data, rollbac
 auto_execution_mode: 3
 related:
   - /scan-codebase
-  - /run-health
+  - /run-review
   - /deep-validate
   - /validate
   - /report
@@ -17,7 +17,7 @@ related:
 
 ## Goal
 
-Review migration safety ครอบคลุม framework migrations, database migrations, schema changes, data migrations, rollback strategy, และ data integrity พร้อม health score
+Review migration safety ครอบคลุม framework migrations, database migrations, schema changes, data migrations, rollback strategy, และ data integrity พร้อม review score
 
 ## Scope
 
@@ -65,7 +65,7 @@ Review migration safety ครอบคลุม framework migrations, database 
 1. ตรวจสอบ rollback scripts สำหรับแต่ละ migration
 2. ตรวจสอบ rollback testing, dry-run capability
 3. ตรวจสอบ recovery procedures และ RTO/RPO
-4. ทำ `/run-health` เพื่อดึง migration metrics
+4. ทำ `/run-review` เพื่อดึง migration metrics
 
 ### 5. Validate and Report
 
@@ -75,7 +75,7 @@ Review migration safety ครอบคลุม framework migrations, database 
 
 1. ทำ `/deep-validate`
 2. ทำ `/validate`
-3. ให้ severity, คำนวณ health score
+3. ให้ severity, คำนวณ review score
 4. ทำ `/report` พร้อม `/report-format-table`
 5. ทำ `/suggest-next-action`
 
@@ -107,6 +107,6 @@ Review migration safety ครอบคลุม framework migrations, database 
 ## Expected Outcome
 
 - รายงาน migration findings
-- Health score
+- Review score
 - Rollback readiness assessment
 - Next actions

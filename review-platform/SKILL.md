@@ -4,8 +4,8 @@ description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, 
 related:
   - scan-codebase
   - deep-analyze
-  - update-codebase-health-cli
-  - run-health
+  - update-review-cli
+  - run-review
   - deep-validate
   - validate
   - report
@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Review platform ครอบคลุมทุก dimension ของ platform พร้อม aggregate findings และ health score
+Review platform ครอบคลุมทุก dimension ของ platform พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -33,9 +33,9 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-sid
 1. ทำ `/scan-codebase` เพื่อเข้าใจ platform setup
 2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-6. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+4. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
 ### 2. Mobile Review
 
@@ -193,7 +193,7 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง

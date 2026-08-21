@@ -1,11 +1,11 @@
 ---
 name: review-bug-prone
-description: Review bug-prone code patterns พร้อม health score และ actionable findings
+description: Review bug-prone code patterns พร้อม review score และ actionable findings
 ---
 
 ## Goal
 
-Review รูปแบบโค้ดที่มีแนวโน้มก่อให้เกิด bugs ใน codebase ครอบคลุม null safety, control flow, arithmetic, mutable state, async/promise, parse/regex, และ resource cleanup พร้อมสร้างรายงานตารางและ health score
+Review รูปแบบโค้ดที่มีแนวโน้มก่อให้เกิด bugs ใน codebase ครอบคลุม null safety, control flow, arithmetic, mutable state, async/promise, parse/regex, และ resource cleanup พร้อมสร้างรายงานตารางและ review score
 
 ## Scope
 
@@ -38,12 +38,12 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 
 วิเคราะห์ bug-prone patterns อย่างลึกซึ้งด้วย scripts
 
-> Goal: ครอบคลุมทุก bug-prone dimension พร้อม health score
+> Goal: ครอบคลุมทุก bug-prone dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ `null`/`undefined` safety: unsafe access, optional chaining ไม่มี fallback, non-null assertions
 6. Analyzer ตรวจสอบ type assertions, `as`, `any`, และ unsafe narrowing
 7. Analyzer ตรวจสอบ exhaustive handling: `switch`/`if-else` ที่ไม่ครอบคลุมทุก case, missing default branch
@@ -53,8 +53,8 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 11. Analyzer ตรวจสอบ unsafe parse/regex: `JSON.parse` ไม่มี `try-catch`, unsafe `eval`, regex ที่ไม่ validated
 12. Analyzer ตรวจสอบ resource cleanup: event listeners, subscriptions, timers, intervals ที่ไม่ถูก cleanup
 13. Analyzer ตรวจสอบ implicit assumptions และ unsafe defaults
-14. Health CLI คำนวณ bug-prone health score จาก health report
-15. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+14. Review CLI คำนวณ bug-prone review score จาก review report
+15. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -72,13 +72,13 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 
 สร้างรายงานผลการ review ในแชท
 
-> Goal: รายงาน findings พร้อม health score และ actionable recommendations
+> Goal: รายงาน findings พร้อม review score และ actionable recommendations
 
 1. ทำ `/report` พร้อม `/report-format-table`
 2. สร้างตาราง Bug-Prone Metrics Summary: 8 metrics พร้อม count, threshold, status
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
-5. แสดง bug-prone health score พร้อม progress bar และ grade
+5. แสดง bug-prone review score พร้อม progress bar และ grade
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ### 5. Implement All
@@ -124,7 +124,7 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
   7. Parse/Serialize/Regex Safety
   8. Resource Cleanup & Assumptions
 - คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
-- Health score = (total score / 8) × 100%
+- Review score = (total score / 8) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 
 ### 5. Scope Boundaries
@@ -145,5 +145,5 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 - รายงานตาราง Bug-Prone Metrics Summary พร้อม status indicators
 - รายงาน Findings by Category พร้อม severity และ location
 - รายงาน Recommended Actions พร้อม priority และ workflow
-- Bug-prone health score พร้อม grade และ progress bar
+- Bug-prone review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

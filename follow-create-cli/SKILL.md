@@ -9,7 +9,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/health`, `tools/analyze`) — เลือกระหว่าง `/follow-create-rust-cli` และ `/follow-create-bun-cli` ตาม performance, distribution, ecosystem
+ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review`, `tools/analyze`) — เลือกระหว่าง `/follow-create-rust-cli` และ `/follow-create-bun-cli` ตาม performance, distribution, ecosystem
 
 ## Execute
 

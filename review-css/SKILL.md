@@ -5,7 +5,7 @@ description: Review CSS architecture, utility classes, cascade, unused styles, a
 
 ## Goal
 
-Review CSS ครอบคลุม CSS architecture, utility classes, cascade, specificity, unused/dead styles, preprocessor usage, และ CSS-in-JS patterns พร้อม health score
+Review CSS ครอบคลุม CSS architecture, utility classes, cascade, specificity, unused/dead styles, preprocessor usage, และ CSS-in-JS patterns พร้อม review score
 
 ## Scope
 
@@ -55,18 +55,18 @@ Review CSS ครอบคลุม CSS architecture, utility classes, cascade, 
 1. ใช้ tooling หา unused CSS classes / rules
 2. ตรวจสอบ styles ที่ no longer match any element
 3. ตรวจสอบ duplicated styles ที่สามารถรวมได้
-4. ทำ `/run-health` เพื่อดึง metrics
+4. ทำ `/run-review` เพื่อดึง metrics
 
 ### 5. Validate and Report
 
 ตรวจสอบ findings และรายงานผล
 
-> Goal: รายงาน health score พร้อม actionable recommendations
+> Goal: รายงาน review score พร้อม actionable recommendations
 
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate` สำหรับ issues แต่ละอย่าง
 3. ให้ severity: Critical, High, Medium, Low, Info
-4. คำนวณ health score ต่อ dimension
+4. คำนวณ review score ต่อ dimension
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -99,6 +99,6 @@ Review CSS ครอบคลุม CSS architecture, utility classes, cascade, 
 ## Expected Outcome
 
 - รายงาน CSS findings ในตาราง
-- Health score ต่อ dimension
+- Review score ต่อ dimension
 - Actionable recommendations
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

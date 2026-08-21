@@ -1,11 +1,11 @@
 ---
 name: review-config
-description: Review config files ครอบคลุม tsconfig vite biome drizzle vitest turbo env พร้อม health score
+description: Review config files ครอบคลุม tsconfig vite biome drizzle vitest turbo env พร้อม review score
 ---
 
 ## Goal
 
-Review config files ครอบคลุมทุก dimension ของ configuration พร้อม aggregate findings และ health score
+Review config files ครอบคลุมทุก dimension ของ configuration พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -24,16 +24,16 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 3. ระบุว่าเป็น monorepo หรือ single project — ถ้า monorepo ให้ระบุ config files ในแต่ละ workspace
 4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
 ### 2. Analyze Config Files
 
 วิเคราะห์ทุก config file พร้อมรวบรวม findings
 
-> Goal: พบทุก issue พร้อม evidence และ health score
+> Goal: พบทุก issue พร้อม evidence และ review score
 
-1. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-2. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
+1. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
 3. ตรวจสอบ `tsconfig.json`: compiler options (target, module, strict, isolatedModules), path aliases (`~/*` → `./src/*`), project references, `tsc` usage
 4. ตรวจสอบ `vite.config.ts`: plugins (tanstackStart, viteSolid, UnoCSS, tsconfigPaths), build options (manualChunks, minify, sourcemap), dev server, optimizeDeps, SPA config ถ้ามี
 5. ตรวจสอบ `biome.jsonc`: enabled domains (drizzle, turborepo, types, solid, test), format rules, `vcs` enabled, ไม่มี `biome-ignore` โดยไม่จำเป็น, workspace-specific configs ไม่ขัดแย้ง root
@@ -71,12 +71,12 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 ### 5. Rate Severity And Health Score
 
-ให้คะแนน severity และคำนวณ health score
+ให้คะแนน severity และคำนวณ review score
 
 > Goal: รู้ลำดับความสำคัญและ overall health
 
 1. ให้ severity: Critical, High, Medium, Low, Info
-2. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+2. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 3. จัดลำดับ findings ตาม severity
 
 ### 6. Report
@@ -130,7 +130,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -145,5 +145,5 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 - รายงานตาราง aggregate findings จากทุก config section
 - รายงาน recommended actions พร้อม priority
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -5,7 +5,7 @@ description: Review stateless design, horizontal scaling, database scaling, queu
 
 ## Goal
 
-Review scalability ครอบคลุม stateless design, horizontal scaling, database scaling, caching, resource pooling พร้อม health score
+Review scalability ครอบคลุม stateless design, horizontal scaling, database scaling, caching, resource pooling พร้อม review score
 
 ## Scope
 
@@ -22,13 +22,13 @@ scalability review สำหรับ: stateless design, horizontal scaling (sha
 
 ### 2. Deep Analyze
 
-> Goal: ครอบคลุมทุก scalability dimension พร้อม health score
+> Goal: ครอบคลุมทุก scalability dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ scalability patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
+5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 3. Stateless Design And Horizontal Scaling Review
 
@@ -61,7 +61,7 @@ scalability review สำหรับ: stateless design, horizontal scaling (sha
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -98,5 +98,5 @@ scalability review สำหรับ: stateless design, horizontal scaling (sha
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก scalability section
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

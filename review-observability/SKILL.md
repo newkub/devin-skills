@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Review observability ครอบคลุม metrics, logs, traces, alerts, dashboards, SLOs, และ incident response readiness พร้อม health score
+Review observability ครอบคลุม metrics, logs, traces, alerts, dashboards, SLOs, และ incident response readiness พร้อม review score
 
 ## Scope
 
@@ -72,7 +72,7 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 
 1. ทำ `/deep-validate`
 2. ทำ `/validate`
-3. ให้ severity, คำนวณ health score
+3. ให้ severity, คำนวณ review score
 4. ทำ `/report` พร้อม `/report-format-table`
 5. ทำ `/suggest-next-action`
 
@@ -103,6 +103,6 @@ Review observability ครอบคลุม metrics, logs, traces, alerts, das
 ## Expected Outcome
 
 - รายงาน observability findings
-- Health score
+- Review score
 - SLO/alert gap analysis
 - Next actions

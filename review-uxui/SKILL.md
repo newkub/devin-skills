@@ -25,7 +25,7 @@ related:
 
 ## Goal
 
-Review UX/UI ครอบคลุมทุก dimension ของ user experience และ interface design พร้อม aggregate findings และ health score
+Review UX/UI ครอบคลุมทุก dimension ของ user experience และ interface design พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -47,14 +47,14 @@ UX/UI review สำหรับ: user flows, interaction design, visual hierarch
 
 ### 2. Deep Analyze Core
 
-วิเคราะห์ UX/UI อย่างลึกซึ้งด้วย health CLI และ tools
+วิเคราะห์ UX/UI อย่างลึกซึ้งด้วย review CLI และ tools
 
-> Goal: พบทุก UX/UI issue พร้อม health score
+> Goal: พบทุก UX/UI issue พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม UX/UI categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม UX/UI categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. ทำ `/check-accessibility` เพื่อตรวจสอบ accessibility ตามมาตรฐาน WCAG
 
 ### 3. User Flows And Interaction Design Review
@@ -133,7 +133,7 @@ Review responsive UX, animation UX และ accessibility compliance
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review — ถ้าพบ incomplete implementations → เพิ่มเป็น findings
 6. ทำ `/report` พร้อม `/report-format-table` สร้างตาราง aggregate findings จากทุก section
 7. ทำ `/suggest-next-action`
@@ -168,7 +168,7 @@ Review responsive UX, animation UX และ accessibility compliance
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -183,5 +183,5 @@ Review responsive UX, animation UX และ accessibility compliance
 
 - รายงานตาราง aggregate findings จากทุก UX/UI section
 - รายงาน recommended actions พร้อม priority
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

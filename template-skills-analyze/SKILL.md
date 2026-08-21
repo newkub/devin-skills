@@ -69,7 +69,7 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 
 - ถ้าประมวลผลซับซ้อน → ทำ `/use-scripts`
 - ใช้ ast-grep สำหรับ structural analysis
-- ใช้ health CLI สำหรับ project health
+- ใช้ review CLI สำหรับ project review
 
 ### 3. Completeness
 

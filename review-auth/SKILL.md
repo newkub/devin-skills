@@ -1,11 +1,11 @@
 ---
 name: review-auth
-description: Review auth ครอบคลุม RBAC auth flows session token MFA OAuth SSO password reset JWT Supabase permission enforcement พร้อม health score
+description: Review auth ครอบคลุม RBAC auth flows session token MFA OAuth SSO password reset JWT Supabase permission enforcement พร้อม review score
 ---
 
 ## Goal
 
-Review authentication และ authorization ครอบคลุมทุก dimension พร้อม aggregate findings และ health score
+Review authentication และ authorization ครอบคลุมทุก dimension พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -28,14 +28,14 @@ auth review สำหรับ: RBAC (roles, permissions, guards, enforcement), 
 
 วิเคราะห์ auth core อย่างลึกซึ้ง
 
-> Goal: ครอบคลุมทุก auth dimension พร้อม health score
+> Goal: ครอบคลุมทุก auth dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ auth patterns, RBAC enforcement, guard coverage, session config, token lifecycle
-6. Health CLI คำนวณ auth health score จาก health report
+6. Review CLI คำนวณ auth review score จาก review report
 
 ### 3. RBAC Review
 
@@ -100,7 +100,7 @@ Review session management และ token/JWT lifecycle
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table` สร้างตาราง aggregate findings จากทุก section
 6. ทำ `/suggest-next-action`
 
@@ -139,7 +139,7 @@ Review session management และ token/JWT lifecycle
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -154,5 +154,5 @@ Review session management และ token/JWT lifecycle
 
 - รายงานตาราง aggregate findings จากทุก auth section
 - รายงาน recommended actions พร้อม priority
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

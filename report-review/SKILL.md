@@ -57,7 +57,7 @@ related:
 
 แสดงสรุปภาพรวมของการ review
 
-1. แสดง overall health score (0-100)
+1. แสดง overall review score (0-100)
 2. แสดงสรุป findings ตาม severity: Critical, High, Medium, Low
 3. แสดงสรุป findings ตาม dimension
 4. ระบุ critical issues ที่ต้องแก้ก่อน production
@@ -96,7 +96,7 @@ related:
 
 ### 1. Report Structure
 
-- เริ่มด้วย executive summary (overall health score, สรุป severity)
+- เริ่มด้วย executive summary (overall review score, สรุป severity)
 - แสดงตาราง findings แยกตาม dimension
 - แสดงสถานะการแก้ไข
 - จบด้วย recommendations และ action ถัดไป
@@ -137,7 +137,7 @@ related:
 
 ## Expected Outcome
 
-- Executive summary พร้อม overall health score
+- Executive summary พร้อม overall review score
 - ตาราง findings ทุก dimension พร้อม severity และ evidence
 - ตารางสถานะการแก้ไข issues
 - Recommendations ที่ actionable และจัดลำดับตาม priority

@@ -15,8 +15,8 @@ triggers:
 related:
   - scan-codebase
   - deep-analyze
-  - update-codebase-health-cli
-  - run-health
+  - update-review-cli
+  - run-review
   - deep-validate
   - validate
   - report-review
@@ -53,8 +53,8 @@ Review memory usage and management patterns ใน codebase พร้อมร�
 > Goal: พบ root cause ของ memory issues
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. ทำ `/run-health` เพื่อดึง health report
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. ทำ `/run-review` เพื่อดึง review report
 4. วิเคราะห์ heap growth patterns
 5. ตรวจหา synchronous bulk allocation (`JSON.parse` ไฟล์ใหญ่, `Buffer.concat`, array ขนาดใหญ่)
 6. ตรวจหา unbounded caches, Map, Set, arrays
@@ -171,7 +171,7 @@ Review cache และ state management
 
 ### 4. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 
@@ -183,7 +183,7 @@ Review cache และ state management
 
 ## Expected Outcome
 
-- Findings พร้อม severity, health score, และ actionable recommendations
-- Health score ต่อ dimension และ overall
+- Findings พร้อม severity, review score, และ actionable recommendations
+- Review score ต่อ dimension และ overall
 - Before/after memory metrics ถ้ามี
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

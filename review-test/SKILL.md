@@ -5,7 +5,7 @@ description: Review test coverage, test quality, test patterns และ testing
 
 ## Goal
 
-Review test coverage, test quality, test patterns, และ testing strategy พร้อม severity ratings และ health score
+Review test coverage, test quality, test patterns, และ testing strategy พร้อม severity ratings และ review score
 
 ## Scope
 
@@ -26,15 +26,15 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 
 ### 2. Deep Analyze
 
-วิเคราะห์ test quality ด้วย health CLI และ rules
+วิเคราะห์ test quality ด้วย review CLI และ rules
 
-> Goal: พบทุก issue พร้อม root cause และ health score
+> Goal: พบทุก issue พร้อม root cause และ review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ test patterns หลายมิติ
-2. ทำ `/update-codebase-health-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-health` เพื่อดึง health report พร้อม test metrics
+5. ทำ `/run-review` เพื่อดึง review report พร้อม test metrics
 6. จับ findings เป็น list พร้อม evidence (file, line, code snippet)
 
 ### 3. Coverage Analysis
@@ -86,12 +86,12 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 
 ### 7. Rate Severity And Health Score
 
-ให้คะแนนและคำนวณ health score
+ให้คะแนนและคำนวณ review score
 
 > Goal: รู้ลำดับความสำคัญและ overall health
 
 1. ให้ severity: Critical (untested critical paths), High (low coverage), Medium (test quality), Low (naming/style), Info (suggestions)
-2. คำนวณ health score ต่อ dimension: coverage, quality, patterns, performance
+2. คำนวณ review score ต่อ dimension: coverage, quality, patterns, performance
 
 ### 8. Recommend
 
@@ -126,7 +126,7 @@ Review test coverage, test quality, test patterns, และ testing strategy �
 
 ## Expected Outcome
 
-- Review report พร้อม severity ratings, health score, และ recommendations
+- Review report พร้อม severity ratings, review score, และ recommendations
 - Coverage analysis พร้อม gaps และ untested critical paths
 - Test quality assessment พร้อม actionable improvements
 - ทุก finding มี evidence และ actionable fix

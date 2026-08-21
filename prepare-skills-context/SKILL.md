@@ -130,7 +130,7 @@ related:
 - `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
 - `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
 - `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers
-- `review-*`/`analyze-*` → ใช้ `/update-codebase-health-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-format-table`
+- `review-*`/`analyze-*` → ใช้ `/update-review-cli` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-format-table`
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis

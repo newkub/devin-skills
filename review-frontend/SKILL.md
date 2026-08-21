@@ -19,8 +19,8 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 
 > Goal: rules และ analyzers ครอบคลุมล่าสุด พร้อมรัน sub-reviews
 
-1. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในเพื่ออัปเดต ast-grep rules
-2. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+1. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในเพื่ออัปเดต ast-grep rules
+2. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 3. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
 
@@ -44,7 +44,7 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
 2. ทำ `/validate` สำหรับ validate issues จากทุก sub-review
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -58,8 +58,8 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 
 ### 2. Update Before Run
 
-- ทำ `/update-codebase-health-cli` ก่อนรัน sub-reviews เสมอ — `/update-codebase-health-cli` เรียก `/update-rules` ภายใน
-- ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+- ทำ `/update-review-cli` ก่อนรัน sub-reviews เสมอ — `/update-review-cli` เรียก `/update-rules` ภายใน
+- ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 
 ### 3. Formatting
 
@@ -70,6 +70,6 @@ Orchestrate frontend review ครอบคลุม 17 sub-review workflows แ
 
 - Findings และ recommendations จาก 17 frontend sub-review workflows
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - รายงานในแชทเป็นตารางตาม `/report-format-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -30,7 +30,7 @@ related:
 
 ## Goal
 
-Review workspace เดี่ยวใน monorepo หรือ project เดี่ยว ให้ครบถ้วนตามมาตรฐาน พร้อม health score และ actionable recommendations
+Review workspace เดี่ยวใน monorepo หรือ project เดี่ยว ให้ครบถ้วนตามมาตรฐาน พร้อม review score และ actionable recommendations
 
 ## Scope
 
@@ -113,11 +113,11 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 validate findings และสรุปผล
 
-> Goal: findings ถูกต้อง พร้อม health score และ recommendations
+> Goal: findings ถูกต้อง พร้อม review score และ recommendations
 
 1. ทำ `/validate` เพื่อตรวจสอบ findings
 2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
-3. คำนวณ health score โดย weighted average
+3. คำนวณ review score โดย weighted average
 4. ทำ `/report-format-table` สำหรับ summary
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
@@ -143,7 +143,7 @@ validate findings และสรุปผล
 
 ### 4. Health Score
 
-- คำนวณ health score เป็น percentage 0-100
+- คำนวณ review score เป็น percentage 0-100
 - Critical=0, High=25, Medium=50, Low=75, Info=100
 - แสดง overall score และ score ต่อ dimension
 
@@ -161,9 +161,9 @@ validate findings และสรุปผล
 
 ## Expected Outcome
 
-- Review report ของ single workspace พร้อม health score
+- Review report ของ single workspace พร้อม review score
 - Findings ที่มี severity, evidence, และ recommendations
 - รายการ config drift, dependency issues, script gaps, และ SRP/size issues
 - คำแนะนำ `/refactor-packages` ถ้า workspace ใหญ่เกินไป, เล็กเกินไป, หรือทำหลายสิ่ง
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - คำแนะนำ action ถัดไปผ่าน `/suggest-next-action`

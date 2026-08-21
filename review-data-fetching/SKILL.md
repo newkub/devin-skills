@@ -5,7 +5,7 @@ description: Review data fetching: loading/error states, cache, optimistic updat
 
 ## Goal
 
-Review data fetching ครอบคลุม loading states, cache, optimistic updates, pagination, race conditions, data freshness พร้อม health score
+Review data fetching ครอบคลุม loading states, cache, optimistic updates, pagination, race conditions, data freshness พร้อม review score
 
 ## Scope
 
@@ -23,13 +23,13 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 
 ### 2. Deep Analyze
 
-> Goal: ครอบคลุมทุก data fetching dimension พร้อม health score
+> Goal: ครอบคลุมทุก data fetching dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ data fetching patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
+5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 3. Loading, Error And Cache Review
 
@@ -57,7 +57,7 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -95,5 +95,5 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก data fetching section
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

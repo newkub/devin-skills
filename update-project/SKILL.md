@@ -9,7 +9,7 @@ description: อัพเดท project documentation และ configuration �
 
 ## Scope
 
-ใช้สำหรับอัพเดท project ทั้งหมด รวม .devin structure, README, AGENTS.md, documentation, ast-grep rules, health CLI, และ .vscode configuration
+ใช้สำหรับอัพเดท project ทั้งหมด รวม .devin structure, README, AGENTS.md, documentation, ast-grep rules, review CLI, และ .vscode configuration
 
 ## Execute
 
@@ -45,12 +45,12 @@ description: อัพเดท project documentation และ configuration �
 1. ตรวจสอบว่ามี `sgconfig.yml` และ `rules/` directory หรือไม่
 2. ถ้ามี ให้ทำ `/update-ast-grep-rules` เพื่ออัพเดท ast-grep rules ให้สอดคล้องกับ `.devin/rules/`
 
-### 6. Update Codebase Health CLI
+### 6. Update Codebase Review CLI
 
-อัปเดท codebase health CLI สำหรับ project (ถ้ามี `tools/health/`)
+อัปเดท codebase review CLI สำหรับ project (ถ้ามี `tools/review/`)
 
-1. ตรวจสอบว่ามี `tools/health/` directory หรือไม่
-2. ถ้ามี ให้ทำ `/update-codebase-health-cli` เพื่อสร้าง/อัปเดท health CLI ให้ครอบคลุม 60+ categories ตาม `/report-codebase-health`
+1. ตรวจสอบว่ามี `tools/review/` directory หรือไม่
+2. ถ้ามี ให้ทำ `/update-review-cli` เพื่อสร้าง/อัปเดท review CLI ให้ครอบคลุม 60+ categories ตาม `/run-review`
 
 ### 7. Update Dot VSCode
 
@@ -69,8 +69,8 @@ description: อัพเดท project documentation และ configuration �
 - ทำ `/update-agents-md` หลังจากอัพเดท README
 - ทำ `/update-docs` เป็นลำดับสุดท้าย (ถ้ามี docs/)
 - ทำ `/update-ast-grep-rules` หลังจาก update docs (ถ้ามี `sgconfig.yml`)
-- ทำ `/update-codebase-health-cli` หลังจาก update ast-grep rules (ถ้ามี `tools/health/`)
-- ทำ `/follow-dot-vscode` หลังจาก `/update-codebase-health-cli`
+- ทำ `/update-review-cli` หลังจาก update ast-grep rules (ถ้ามี `tools/review/`)
+- ทำ `/follow-dot-vscode` หลังจาก `/update-review-cli`
 
 ### 2. Conditional Execution
 
@@ -80,7 +80,7 @@ description: อัพเดท project documentation และ configuration �
 - ถ้าไม่มี docs/ ให้ข้าม step นี้
 - ทำ `/update-ast-grep-rules` เฉพาะเมื่อมี `sgconfig.yml` และ `rules/` directory
 - ถ้าไม่มี ให้ข้าม step นี้
-- ทำ `/update-codebase-health-cli` เฉพาะเมื่อมี `tools/health/` directory
+- ทำ `/update-review-cli` เฉพาะเมื่อมี `tools/review/` directory
 - ถ้าไม่มี ให้ข้าม step นี้
 - ทำ `/follow-dot-vscode` ทุกครั้ง เพราะทุก project ควรมี `.vscode/` configuration
 
@@ -99,6 +99,6 @@ description: อัพเดท project documentation และ configuration �
 - AGENTS.md อัพเดทครบถ้วน
 - Documentation อัพเดทครบถ้วน (ถ้ามี docs/)
 - Ast-grep rules อัพเดทครบถ้วน (ถ้ามี `sgconfig.yml`)
-- Health CLI อัพเดทครบถ้วน (ถ้ามี `tools/health/`)
+- Review CLI อัพเดทครบถ้วน (ถ้ามี `tools/review/`)
 - .vscode configuration อัพเดทครบถ้วน
 - Project documentation และ configuration สอดคล้องกัน

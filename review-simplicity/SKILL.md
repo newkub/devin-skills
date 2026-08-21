@@ -16,8 +16,8 @@ related:
   - review-refactor
   - scan-codebase
   - deep-analyze
-  - update-codebase-health-cli
-  - run-health
+  - update-review-cli
+  - run-review
   - deep-validate
   - validate
   - report-review
@@ -49,12 +49,12 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 
 วิเคราะห์ simplicity issues อย่างลึกซึ้งด้วย rules และ scripts
 
-> Goal: ครอบคลุมทุก simplicity dimension พร้อม health score
+> Goal: ครอบคลุมทุก simplicity dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม simplicity categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม simplicity categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจจับ unnecessary abstractions: interfaces ที่มี implementor เดียว, abstract classes ที่มี subclass เดียว, generic functions ที่ใช้กับ type เดียว, wrapper classes ที่ไม่เพิ่ม value
 6. Analyzer ตรวจจับ YAGNI violations: unused config options, unused parameters, unused exports ด้วย `knip`, extension points ที่ไม่มี extension, features ที่ปิดอยู่หรือไม่ได้ใช้
 7. Analyzer ตรวจจับ premature optimization: cache ก่อน measure, complex algorithms แทน simple, micro-optimizations ที่ไม่จำเป็น, manual inlining, bit manipulation แทน readable code
@@ -62,8 +62,8 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 9. Analyzer ตรวจจับ dead abstractions: base classes ที่มี subclass เดียว, strategy pattern ที่มี strategy เดียว, factory ที่สร้าง object ประเภทเดียว, builder ที่ไม่จำเป็น
 10. Analyzer ตรวจจับ configuration complexity: config ที่ไม่จำเป็น, environment-specific code ที่ไม่ได้ใช้, feature flags ที่ไม่มี consumer, over-configurable components
 11. Analyzer ตรวจจับ over-generic code: functions ที่รับ `any` หรือ `unknown` โดยไม่จำเป็น, generic ที่ซับซ้อนเกินไป, utility functions ที่ไม่ได้ใช้
-12. Health CLI คำนวณ simplicity health score จาก health report
-13. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+12. Review CLI คำนวณ simplicity review score จาก review report
+13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -79,7 +79,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 
 ### 4. Rate Severity And Health Score
 
-ให้คะแนน severity และคำนวณ health score
+ให้คะแนน severity และคำนวณ review score
 
 > Goal: ผู้ใช้รู้ลำดับความสำคัญและสถานะ overall simplicity
 
@@ -89,7 +89,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 4. Medium: YAGNI violations ที่เพิ่ม code โดยไม่จำเป็น
 5. Low: minor indirection หรือ minor premature optimization
 6. Info: patterns ที่อาจเป็น over-engineering แต่ยังไม่ชัด
-7. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+7. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 
 ### 5. Report
 
@@ -137,7 +137,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 
 ### 6. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -150,7 +150,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 
 ## Expected Outcome
 
-- Review report พร้อม severity ratings, health score, และ simplification recommendations
+- Review report พร้อม severity ratings, review score, และ simplification recommendations
 - ผู้ใช้รู้ลำดับการแก้ไขและ estimated effort
 - ทุก finding มี evidence และ actionable simplification
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall

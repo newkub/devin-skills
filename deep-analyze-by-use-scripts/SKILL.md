@@ -1,9 +1,9 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase ด้วย tools/health, tools/analyze, ast-grep และ scripts พร้อมรองรับ /update-codebase-health-cli
+description: วิเคราะห์ codebase ด้วย tools/review, tools/analyze, ast-grep และ scripts พร้อมรองรับ /update-review-cli
 related:
   - deep-analyze
-  - update-codebase-health-cli
+  - update-review-cli
   - follow-create-cli
   - follow-clean-architecture
   - use-ast-grep
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/health` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-codebase-health-cli` และ run health
+วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-review-cli` และ `/run-review`
 
 ## Scope
 
@@ -45,27 +45,27 @@ related:
 4. ทำ `/review-cli` เพื่อตรวจสอบคุณภาพก่อน integrate
 5. ผสาน CLI เข้ากับ package manifest ด้วย `/follow-tasks`
 
-### 3. Ensure Health CLI Ready
+### 3. Ensure Review CLI Ready
 
-ตรวจสอบและอัปเดท health CLI ก่อนรัน analysis
+ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
 
-> Goal: Health CLI พร้อมรันและครอบคลุม categories ล่าสุด
+> Goal: Review CLI พร้อมรันและครอบคลุม categories ล่าสุด
 
-1. ทำ `/update-codebase-health-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
-2. ถ้า health CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
-3. ถ้าต้องสร้างใหม่ → ทำ `/update-codebase-health-cli` ก่อน แล้วกลับมาทำ Step 4
+1. ทำ `/update-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
+2. ถ้า review CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
+3. ถ้าต้องสร้างใหม่ → ทำ `/update-review-cli` ก่อน แล้วกลับมาทำ Step 4
 
-### 4. Run Health CLI And NAPI Analysis
+### 4. Run Review CLI And NAPI Analysis
 
-รัน health CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
+รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
 
 > Goal: มี metrics และ AST analysis ครบสำหรับ deep report
 
-1. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report เป็น JSON
+1. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report เป็น JSON
 2. รัน `bun --filter @booking/tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
 3. ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis ใน scripts — Bun auto-install บน `import`
 4. รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`, `@ast-grep/napi`
-5. รัน health CLI และ analyze CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer แล้ว process results
+5. รัน review CLI และ analyze CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer แล้ว process results
 
 ### 5. Deep Report Findings
 
@@ -102,12 +102,12 @@ related:
 
 ## Rules
 
-### 1. Health CLI Integration
+### 1. Review CLI Integration
 
-- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-codebase-health-cli` ก่อนรัน health
-- ถ้า health CLI ไม่มี → ทำ `/update-codebase-health-cli` ก่อนเสมอ
-- ถ้า health CLI มีอยู่ → รัน `bun --filter @booking/tools-health health:json` ได้เลย
-- รัน health CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
+- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-review-cli` ก่อนรัน `/run-review`
+- ถ้า review CLI ไม่มี → ทำ `/update-review-cli` ก่อนเสมอ
+- ถ้า review CLI มีอยู่ → รัน `bun --filter @booking/tools-review review:json` ได้เลย
+- รัน review CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
 
 ### 2. Analyze CLI Integration
 
@@ -143,14 +143,14 @@ related:
 
 ### 6. Output Format
 
-- Health CLI output เป็น JSON หรือ table format
+- Review CLI output เป็น JSON หรือ table format
 - Analyze CLI output เป็น JSON หรือ table format
 - Deep report ใช้ตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
 - ทุก finding ต้องมี evidence ที่ตรวจสอบได้ — ถ้าเป็น false positive ให้ระบุใน column Cause
 
 ## Expected Outcome
 
-- Health CLI JSON report พร้อม metrics ครบถ้วน
+- Review CLI JSON report พร้อม metrics ครบถ้วน
 - `tools/analyze` CLI พร้อมใช้งานและผ่าน `/review-cli`
 - Structural overview ด้วย `ast-grep outline`
 - Deep report ตาราง 7 columns พร้อม evidence ที่ตรวจสอบได้

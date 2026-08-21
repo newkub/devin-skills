@@ -1,6 +1,6 @@
 ---
 name: review-coverage
-description: Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม health score
+description: Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม review score
 related:
   - scan-codebase
   - report-format-table
@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม health score
+Review content coverage ครอบคลุมทุก features, APIs, use cases พร้อม review score
 
 ## Scope
 
@@ -70,5 +70,5 @@ content coverage review สำหรับ: skills, workflows, documentation —
 
 - ตาราง: category | coverage % | gaps found | severity | action item
 - Coverage gaps ถูกระบุและจัดลำดับ
-- Health score สำหรับ content coverage
+- Review score สำหรับ content coverage
 - Action items ชัดเจนสำหรับขั้นตอนถัดไป

@@ -1,11 +1,11 @@
 ---
 name: review-debugging
-description: Review debuggability ครอบคลุม logging, error messages, naming, complexity พร้อม health score
+description: Review debuggability ครอบคลุม logging, error messages, naming, complexity พร้อม review score
 ---
 
 ## Goal
 
-Review debuggability ครอบคลุม logging context, error messages clarity, naming conventions, code complexity พร้อม health score
+Review debuggability ครอบคลุม logging context, error messages clarity, naming conventions, code complexity พร้อม review score
 
 ## Scope
 
@@ -93,5 +93,5 @@ debuggability review สำหรับ: logging statements, error messages, nam
 
 - ตาราง: category | issues found | severity | action item
 - Debuggability gaps ถูกระบุและจัดลำดับ
-- Health score สำหรับ debuggability
+- Review score สำหรับ debuggability
 - Action items ชัดเจนสำหรับขั้นตอนถัดไป

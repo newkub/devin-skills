@@ -43,7 +43,7 @@ related:
 
 > Goal: เลือก deep- workflows ที่จำเป็นและเกี่ยวข้องจริง
 
-1. Analysis → `deep-analyze` หรือ `deep-analyze-by-use-scripts` (ถ้าต้อง scripts/health CLI)
+1. Analysis → `deep-analyze` หรือ `deep-analyze-by-use-scripts` (ถ้าต้อง scripts/review CLI)
 2. Review → `deep-review` (comprehensive) หรือ `/review-*` (specific dimension)
 3. Planning → `deep-plan`
 4. Refactoring → `refactor`

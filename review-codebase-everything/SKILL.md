@@ -43,16 +43,15 @@ related:
   - resolve-errors
   - read-related-skills
   - follow-agents-md
-  - update-codebase-health-cli
+  - update-review-cli
   - run-dev
   - deep-analyze
-  - run-health
+  - run-review
   - deep-validate
   - validate
   - implement-all
   - update-reference
   - git-commit
-  - report-codebase-health
   - report-format-terminal
   - report-format-table
   - report
@@ -76,10 +75,10 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 > Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ /run-check เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ /resolve-errors ก่อน
-2. ทำ /read-related-skills, /follow-agents-md, /update-codebase-health-cli — ระบุ review dimensions และอัปเดต analyzers
+2. ทำ /read-related-skills, /follow-agents-md, /update-review-cli — ระบุ review dimensions และอัปเดต analyzers
 3. ถ้าเป็น web project → เพิ่ม /run-dev เพื่อ verify dev server
 4. ทำ /deep-analyze เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-5. ทำ /run-health เพื่อรัน health CLI และดึง metrics ล่าสุด
+5. ทำ /run-review เพื่อรัน review CLI และดึง metrics ล่าสุด
 6. ทำ /review-workspace เพื่อรวบรวม workspace-level context
 
 ### 2. Run Group And Category Reviews
@@ -110,11 +109,11 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 ### 4. Report And Verify
 
-รายงานผลและวัด health score หลัง validate
+รายงานผลและวัด review score หลัง validate
 
-> Goal: รายงาน before-after health score และสรุปผล
+> Goal: รายงาน before-after review score และสรุปผล
 
-1. ทำ /report-codebase-health เพื่อวัด health score
+1. ทำ /run-review เพื่อวัด review score
 2. ทำ /report-format-terminal, /report-format-table
 3. ทำ /report เพื่อสรุปผล
 4. ทำ /suggest-next-action เพื่อแนะนำ action ถัดไป
@@ -140,7 +139,7 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 ### 4. Health Score
 
-- คำนวณ health score เป็น percentage 0-100 จาก /report-codebase-health
+- คำนวณ review score เป็น percentage 0-100 จาก /run-review
 - แสดง score ต่อ category และ overall
 
 ### 5. Formatting
@@ -165,6 +164,6 @@ Review codebase ครบทุกมิติอย่างลึกซึ้�
 
 - Findings และ recommendations จากทุก review-* workflow
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
-- Before-after health score ผ่าน /report-codebase-health
+- Before-after review score ผ่าน /run-review
 - รายงานในแชทเป็นตาราง
 - แนะนำ action ถัดไปผ่าน /suggest-next-action

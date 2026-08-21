@@ -27,12 +27,12 @@ Review refactor opportunities และรายงาน findings พร้อ�
 
 วิเคราะห์ refactor opportunities อย่างลึกซึ้งด้วย scripts
 
-> Goal: ครอบคลุมทุก refactor dimension พร้อม health score
+> Goal: ครอบคลุมทุก refactor dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-codebase-health-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-health health:json` เพื่อดึง health report พร้อม metrics
-4. ทำ `/run-health` เพื่อรัน health CLI และดึง metrics ล่าสุด
+2. ทำ `/update-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ SRP violations: mixed concerns, God modules, multiple reasons to change
 6. Analyzer ตรวจสอบ code duplication ด้วย `jscpd` และระบุ duplicate blocks
 7. Analyzer ตรวจสอบ file complexity: files เกิน 250 บรรทัด, functions ที่ซับซ้อนเกินไป
@@ -42,8 +42,8 @@ Review refactor opportunities และรายงาน findings พร้อ�
 11. Analyzer ตรวจสอบ naming conventions และ anti-patterns ด้วย `ast-grep`
 12. Analyzer ตรวจสอบ missing abstractions และ inline logic ที่ควร extract
 13. Analyzer ตรวจสอบ testability: dependency injection (functions ที่ new dependencies ภายในแทนรับผ่าน parameters), pure functions (side effects ใน logic path), side effect isolation (side effects ผสมกับ business logic), test setup complexity (test files ที่มี setup เกิน 50 บรรทัด), module coupling, hardcoded dependencies (`new` keyword ใน logic path), global mutable state, async testability (floating promises, missing await, timer dependencies)
-14. Health CLI คำนวณ refactor health score จาก health report
-15. ถ้า health CLI ไม่ผ่าน → ทำ `/update-codebase-health-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+14. Review CLI คำนวณ refactor review score จาก review report
+15. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -67,7 +67,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 2. สร้างตาราง Refactor Metrics Summary: SRP violations, duplication %, long files, complex functions, coupling issues, dead code, code smells
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Refactors: Priority, Refactor Action, Impact, Effort, Workflow
-5. แสดง refactor health score พร้อม progress bar และ grade
+5. แสดง refactor review score พร้อม progress bar และ grade
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ### 5. Implement All
@@ -105,7 +105,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 
 - 8 metrics หลัก: SRP violations, duplication, long files, complex functions, coupling, dead code, code smells, testability
 - คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
-- Health score = (total score / 8) × 100%
+- Review score = (total score / 8) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 
 ### 5. Formatting
@@ -119,6 +119,6 @@ Review refactor opportunities และรายงาน findings พร้อ�
 - รายงานตาราง Refactor Metrics Summary พร้อม status indicators
 - รายงาน Findings by Category พร้อม severity และ location
 - รายงาน Recommended Refactors พร้อม priority และ workflow
-- Refactor health score พร้อม grade และ progress bar
+- Refactor review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 - ใช้ `/rename` สำหรับ fix naming convention issues ที่พบ

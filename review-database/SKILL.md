@@ -5,7 +5,7 @@ description: Review database schema, migrations, data integrity, query patterns,
 
 ## Goal
 
-Review database ครอบคลุม schema design, migration safety, data integrity, query patterns, search พร้อม health score
+Review database ครอบคลุม schema design, migration safety, data integrity, query patterns, search พร้อม review score
 
 ## Scope
 
@@ -22,13 +22,13 @@ database review สำหรับ: schema design, index coverage, relation inte
 
 ### 2. Deep Analyze
 
-> Goal: ครอบคลุมทุก database dimension พร้อม health score
+> Goal: ครอบคลุมทุก database dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ database patterns
-2. ทำ `/update-codebase-health-cli` — `/update-codebase-health-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-codebase-health-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-cli` — `/update-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-health` เพื่อดึง metrics ล่าสุด
+5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 3. Schema Design And Index Review
 
@@ -63,7 +63,7 @@ database review สำหรับ: schema design, index coverage, relation inte
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-format-table`
 6. ทำ `/suggest-next-action`
 
@@ -99,5 +99,5 @@ database review สำหรับ: schema design, index coverage, relation inte
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก database section
-- Health score ต่อ dimension และ overall
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

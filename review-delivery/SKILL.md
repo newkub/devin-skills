@@ -5,7 +5,7 @@ description: Review delivery ครอบคลุม docs, SEO, DX, analytics, 
 
 ## Goal
 
-Review delivery ครอบคลุมทุก dimension ของ delivery พร้อม aggregate findings และ health score
+Review delivery ครอบคลุมทุก dimension ของ delivery พร้อม aggregate findings และ review score
 
 ## Scope
 
@@ -22,7 +22,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup
 2. ระบุ delivery channels, documentation tools, และ versioning strategy ที่ใช้
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-codebase-health-cli` แล้วทำ `/run-health` เพื่อดึง metrics ล่าสุด
+4. ทำ `/update-review-cli` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 2. Documentation Review
 
@@ -232,7 +232,7 @@ Review git practices ครอบคลุม commit conventions, branch naming,
 
 ### 5. Health Score
 
-- คำนวณ health score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
