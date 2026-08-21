@@ -25,34 +25,35 @@ related:
 
 ## Scope
 
-ใช้สำหรับเขียนหรือแก้ไฟล์ `SKILL.md` ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดย focus เฉพาะไฟล์ `SKILL.md` ไม่รวมการสร้าง directory หรือ template selection
+ใช้สำหรับเขียนหรือแก้ไฟล์ `SKILL.md` ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดย focus เฉพาะไฟล์ `SKILL.md` ไม่รวมการสร้าง directory หรือ orchestration
 
 ## Execute
 
 ### 1. Prepare Skill Context
 
-> Goal: เตรียม context ก่อนเขียน
-> Goal: ทราบ target, conventions, และ template ก่อนลงมือ
+> Goal: เตรียม context และตำแหน่งของ `SKILL.md`
+> Goal: ทราบ target, conventions, และ template ก่อนเขียน
 
 1. ระบุ target path ของ `SKILL.md` และ skill name
-2. เลือก template ตาม prefix จาก `follow-write-devin-skills/references/template-skills/template-skills-*.md` ถ้ามี
+2. ทำ `/follow-write-devin-skills` เพื่อเข้าใจ conventions ของ skill repo ปัจจุบัน
 3. ทำ `/learn-from-web` จาก `https://docs.devin.ai/cli/extensibility/skills/overview` และ `https://docs.devin.ai/cli/extensibility/skills/creating-skills` เมื่อต้องการ verify spec
-4. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
+4. เลือก template ตาม prefix จาก `/template-skills-*` ถ้ามี
+5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 
 ### 2. Write Frontmatter
 
 > Goal: เขียน YAML frontmatter ตาม Devin CLI spec
-> Goal: frontmatter valid ครบถ้วน
+> Goal: frontmatter valid ครบถ้วนและตรง spec
 
 1. `name` ตรงกับ directory name ใช้ lowercase คั่นด้วย `-`
-2. `description` ≤100 ตัวอักษร
-3. `argument-hint` ถ้า skill รับ arguments
-4. `model` ถ้าต้องการ override model เช่น `sonnet`, `swe`, `opus`
-5. `subagent: true` หรือ `agent: <profile>` ถ้ารันเป็น subagent
-6. `allowed-tools` จำกัดเฉพาะ tools ที่จำเป็น
-7. `permissions` กำหนด `allow`, `deny`, `ask` ตามความเสี่ยง
-8. `triggers` เป็น `['user']`, `['model']`, หรือ `['user', 'model']`
-9. `related` เฉพาะ skills ที่เรียกโดยตรง
+2. `description` กระชับ ≤100 ตัวอักษร
+3. `argument-hint` ถ้า skill รับ arguments (เช่น `[file] [options]`)
+4. `model` ถ้าต้องการ override model (เช่น `sonnet`, `swe`, `opus`)
+5. `subagent: true` ถ้ารันเป็น subagent (experimental)
+6. `agent: <profile>` ถ้าใช้ custom subagent profile (เช่น `reviewer`, `subagent_explore`)
+7. `allowed-tools` จำกัดเฉพาะ tools ที่จำเป็น (เช่น `read`, `edit`, `grep`, `glob`, `exec`)
+8. `permissions` กำหนด `allow`, `deny`, `ask` ตามความเสี่ยง
+9. `triggers` เป็น `['user']`, `['model']`, หรือ `['user', 'model']`
 
 ### 3. Write Prompt Body
 
@@ -63,7 +64,7 @@ related:
 2. `## Scope` ระบุขอบเขตและไม่ทับซ้อนกับ skills อื่น
 3. `## Execute` แบ่งเป็น steps ไม่เกิน 10 โดยใช้ `### N. Step Name`, description, `> Goal:`, และ numbered list
 4. `## Rules` จัดกลุ่มเป็น single concern
-5. `## Expected Outcome` ระบุ output ชัดเจน
+5. `## Expected Outcome` ระบุ output format ชัดเจน
 6. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, หรือ `## Examples` เมื่อต้องการเน้นรูปแบบหรือตัวอย่าง
 7. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 
@@ -73,10 +74,10 @@ related:
 > Goal: skill ปลอดภัย กระชับ และ deterministic
 
 1. `allowed-tools` จำกัดตาม minimum required
-2. `permissions` ระบุ `deny` สำหรับ paths เสี่ยง เช่น `/etc/`, system root
-3. ทุก step มี fail handling: stop/report/ask เมื่อ context ไม่ชัด
-4. ผลลัพธ์ deterministic: input เดียวกัน → output เดียวกัน
-5. ไม่ใส่ secrets, credentials หรือ hardcoded paths ที่ sensitive
+2. `permissions` ระบุ `deny` สำหรับ paths เสี่ยง (เช่น `/etc/`, system root)
+3. ไม่ใส่ secrets, credentials หรือ hardcoded paths ที่ sensitive
+4. ทุก step มี fail handling: stop/report/ask เมื่อ context ไม่ชัด
+5. ผลลัพธ์ deterministic: input เดียวกัน → output เดียวกัน
 
 ### 5. Validate SKILL.md
 
@@ -98,13 +99,13 @@ related:
 
 ## Rules
 
-### 1. File Location
+### 1. File And Location
 
 - `SKILL.md` อยู่ใน `<skill-name>/` ของ skill directory
 - ตำแหน่งรองรับ: `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, `%APPDATA%\devin\skills\`
 - directory name ต้องตรงกับ `name` ใน frontmatter
 
-### 2. Frontmatter Standard
+### 2. Frontmatter Fields
 
 - `name` (required): ตรง directory name
 - `description` (required): ≤100 ตัวอักษร
@@ -137,6 +138,13 @@ related:
 - `permissions` ระบุ `deny` สำหรับ system paths ที่เสี่ยง
 - `permissions` ระบุ `ask` สำหรับ write ที่สำคัญ
 - ไม่ใส่ secrets หรือ credentials ใน prompt
+
+### 6. Check Skills
+
+- ถ้า skill ขึ้นต้นด้วย `check-` → พยายามใช้ tools หรือ `/use-scripts` ใน `## Execute`
+- `allowed-tools` ควรรวม `exec`, `grep`, `glob`, `find_file_by_name` เพื่อ scan หรือ run checks
+- หลีกเลี่ยงการให้ตรวจด้วยตาเปล่า; ใช้ commands, scripts, หรือ linters
+- ผลลัพธ์ต้อง reproducible และระบุไฟล์/บรรทัด
 
 ## Expected Outcome
 
