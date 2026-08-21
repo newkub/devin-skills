@@ -19,6 +19,7 @@ related:
   - compare-and-idea-features
   - refactor
   - update-docs
+  - open-web
 ---
 
 ## Goal
@@ -103,8 +104,14 @@ Generate new and extended feature ideas for a project and produce a markdown doc
 > Goal: Confirm the markdown and docs site are correct
 
 1. Check that `docs/roadmap/idea-features.md` renders in VitePress preview
-2. Verify all tables have valid markdown
-3. Verify sidebar includes the page
+2. If `package.json` has `dev:docs` or `preview:docs`:
+   - Start the docs dev/preview server in the background
+   - Run `/open-web <url>` (default `http://localhost:5173` or the configured port)
+   - Verify the page renders and sidebar includes it
+   - Stop the background server after preview
+3. If no docs scripts exist, run `/open-web` with the file URL or skip
+4. Verify all tables have valid markdown
+5. Verify sidebar includes the page
 
 ### 7. Final Chat
 
