@@ -4,12 +4,16 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
 triggers:
   - user
   - model
+related:
+  - run-test-unit
+  - follow-config
 ---
 
 ## Goal
@@ -18,174 +22,141 @@ triggers:
 
 ## Scope
 
-ใช้สำหรับ project ที่พัฒนาด้วย Flutter framework
+ใช้สำหรับ project ทีพัฒนาด้วย Flutter framework โดยแบ่ง layers ชัดเจน และใช้ Riverpod สำหรับ state management
+
+- ติดตั้ง dependencies (Riverpod, GoRouter, fpdart, freezed)
+- สร้าง project structure ตาม Clean Architecture
+- จัดการ data layer, domain layer, presentation layer
+- ตั้งค่า error handling, navigation, และ testing
 
 ## Execute
 
-### 1. Data Layer: การจัดการข้อมูล
+### 1. Setup Project
 
-### 2. `data/models` (DTOs)
+ติดตั้ง Flutter project และ dependencies
 
-ใช้ `freezed` เพื่อสร้าง DTOs ที่รับข้อมูลโดยตรงจาก API
+> Goal: มี Flutter project พร้อม dependencies ทีใช้
 
-```dart
-// lib/src/data/models/user_model.dart
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:your_app/src/domain/models/user.dart';
+1. ตรวจสอบ Flutter SDK (`flutter doctor`)
+2. สร้าง project ด้วย `flutter create` หรือเปิด project มีอยู่
+3. เพิ่ม dependencies ใน `pubspec.yaml`:
+   - `flutter_riverpod` หรือ `hooks_riverpod`
+   - `go_router`
+   - `fpdart`
+   - `freezed_annotation`, `json_serializable`, `build_runner`
+4. รัน `flutter pub get`
 
-part 'user_model.freezed.dart';
-part 'user_model.g.dart';
+### 2. Create Project Structure
 
-@freezed
-class UserModel with _$UserModel {
-  const factory UserModel({
-    required String id,
-    required String username,
-    required String email,
-  }) = _UserModel;
+สร้างโฟลเดอร์ตาม Clean Architecture
 
-  const UserModel._();
+> Goal: โครงสร้าง project รองรับ data, domain, presentation layers
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+1. สร้าง `lib/src/core/` สำหรับ error, typedefs, network
+2. สร้าง `lib/src/data/datasources/`, `models/`, `repositories/`
+3. สร้าง `lib/src/domain/models/`, `repositories/`, `usecases/`
+4. สร้าง `lib/src/presentation/providers/`, `screens/`, `widgets/`
+5. ดูรายละเอียดโครงสร้างใน `references/extra.md`
 
-  // Mapper to convert DTO to Domain Model
-  User toDomain() => User(id: id, name: username, email: email);
-}
-```
+### 3. Implement Data Layer
 
-### 3. `data/repositories`
+สร้าง models และ repositories
 
-Implement Repository โดยจัดการ `Exception` และแปลงเป็น `Failure` ผ่าน `Either`
+> Goal: data layer จัดการ I/O และแปลงข้อมูลไป domain layer
 
-```dart
-// lib/src/data/repositories/user_repository_impl.dart
-import 'package:fpdart/fpdart.dart';
-import 'package:your_app/src/core/error/failure.dart';
-import 'package:your_app/src/core/typedefs/future_either.dart';
-import 'package:your_app/src/domain/models/user.dart';
+1. สร้าง DTOs ด้วย `freezed` ใน `lib/src/data/models/`
+2. สร้าง data sources (remote/local)
+3. สร้าง repository implementations ใน `lib/src/data/repositories/`
+4. แปลง DTO เป็น domain model ด้วย mapper
+5. จัดการ exception ด้วย `Either<Failure, Success>`
 
-class UserRepositoryImpl implements UserRepository {
-  final UserRemoteDataSource _remoteDataSource;
+### 4. Implement Domain Layer
 
-  UserRepositoryImpl(this._remoteDataSource);
+สร้าง domain models, repository interfaces, และ use cases
 
-  @override
-  FutureEither<User> getUser(String id) async {
-    try {
-      final userModel = await _remoteDataSource.fetchUser(id);
-      return Right(userModel.toDomain());
-    } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-}
-```
+> Goal: domain layer มี pure business logic
 
-### 4. Domain Layer: ตรรกะทางธุรกิจ
+1. สร้าง domain models ใน `lib/src/domain/models/`
+2. สร้าง repository interfaces ใน `lib/src/domain/repositories/`
+3. สร้าง use cases ใน `lib/src/domain/usecases/`
+4. ยืนยันว่า domain layer ไม่ import framework หรือ data source โดยตรง
 
-### 5. `domain/repositories`
+### 5. Implement Presentation Layer
 
-กำหนด Interface โดยใช้ `FutureEither` เพื่อบังคับให้มีการจัดการ Error
+สร้าง providers และ screens ด้วย Riverpod
 
-```dart
-// lib/src/domain/repositories/user_repository.dart
-import 'package:your_app/src/core/typedefs/future_either.dart';
-import 'package:your_app/src/domain/models/user.dart';
+> Goal: UI ตอบสนอง state และทำงานถูกต้อง
 
-abstract class UserRepository {
-  FutureEither<User> getUser(String id);
-}
-```
+1. สร้าง providers ด้วย `riverpod_generator` หรือ `StateNotifier`
+2. สร้าง screens ใน `lib/src/presentation/screens/`
+3. ใช้ `ConsumerWidget` เพื่อ subscribe providers
+4. จัดการ loading, error, success states ด้วย `AsyncValue`
 
-### 6. `domain/usecases`
+### 6. Setup Navigation
 
-สร้าง Use Case สำหรับแต่ละ Business Flow เพื่อให้ Logic ถูกแยกและนำกลับมาใช้ใหม่ได้
+ตั้งค่า GoRouter สำหรับ navigation
 
-```dart
-// lib/src/domain/usecases/get_user_usecase.dart
-class GetUserUseCase {
-  final UserRepository _repository;
+> Goal: navigation ทำงานได้ทุก screen
 
-  GetUserUseCase(this._repository);
+1. สร้าง router ใน `lib/src/core/router/` หรือ `lib/main.dart`
+2. กำหนด routes และ parameters
+3. ใช้ `MaterialApp.router` หรือ `CupertinoApp.router`
+4. ดูตัวอย่าง GoRouter ใน `references/extra.md`
 
-  FutureEither<User> call(String id) => _repository.getUser(id);
-}
-```
+### 7. Setup Error Handling
 
-### 7. Presentation Layer: UI และ State
+ใช้ `fpdart` สำหรับ functional error handling
 
-### 8. `presentation/providers`
+> Goal: error handling เป็น type-safe และทำงานทุก layer
 
-ใช้ `riverpod_generator` เพื่อสร้าง Provider ที่อ่านง่ายและ Type-safe
+1. สร้าง `Failure` classes ใน `lib/src/core/error/`
+2. ใช้ `Either<Failure, Success>` สำหรับ operations ทีอาจ fail
+3. ไม่ propagate exception ไป presentation โดยตรง
+4. ดูตัวอย่าง `Failure` และ `Either` ใน `references/extra.md`
 
-```dart
-// lib/src/presentation/providers/user_provider.dart
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+### 8. Setup Testing
 
-part 'user_provider.g.dart';
+เขียน unit tests สำหรับแต่ละ layer
 
-// 1. Provider for dependencies
-@riverpod
-UserRepository userRepository(UserRepositoryRef ref) {
-  return UserRepositoryImpl(ref.watch(userRemoteDataSourceProvider));
-}
+> Goal: มี tests ครอบคลุม repository และ use cases
 
-@riverpod
-GetUserUseCase getUserUseCase(GetUserUseCaseRef ref) {
-  return GetUserUseCase(ref.watch(userRepositoryProvider));
-}
-
-// 2. Provider for fetching data
-@riverpod
-Future<User> user(UserRef ref, String id) {
-  return ref.watch(getUserUseCaseProvider).call(id).then(
-        (result) => result.fold(
-          (failure) => throw failure, // Riverpod's AsyncValue.error will catch this
-          (user) => user,
-        ),
-      );
-}
-```
-
-### 9. `presentation/screens`
-
-UI จะ "React" กับ State ที่มาจาก Provider ผ่าน `AsyncValue`
-
-```dart
-// lib/src/presentation/screens/user_profile_screen.dart
-class UserProfileScreen extends ConsumerWidget {
-  final String userId;
-  const UserProfileScreen({super.key, required this.userId});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final userAsync = ref.watch(userProvider(userId));
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('User Profile')),
-      body: userAsync.when(
-        data: (user) => Center(child: Text('Hello, ${user.name}')),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) {
-          final failure = error as Failure;
-          return Center(child: Text(failure.message));
-        },
-      ),
-    );
-  }
-}
-```
+1. เพิ่ม `flutter_test`, `mocktail` ใน dev dependencies
+2. เขียน tests สำหรับ repositories
+3. เขียน tests สำหรับ use cases
+4. ใช้ `build_runner` สำหรับ code generation (`freezed`, `riverpod_generator`)
+5. ดูตัวอย่าง unit test ใน `references/extra.md`
 
 ## Rules
 
+### 1. Architecture
+
 - ใช้ Clean Architecture แบ่งเป็น data, domain, presentation layers
+- Domain layer ไม่มี dependencies กับ data หรือ presentation
+- Data layer ขึ้นกับ domain layer
+
+### 2. State Management
+
 - ใช้ Riverpod สำหรับ state management และ DI
+- Providers ควรอยู่ใน `lib/src/presentation/providers/`
+- ใช้ `AsyncValue` จัดการ loading/error/data
+
+### 3. Navigation
+
 - ใช้ GoRouter สำหรับ navigation
-- ใช้ fpdart สำหรับ error handling (Either<Failure, Success>)
-- ใช้ `freezed` สำหรับ immutable data classes
+- Routes กำหนดไว้ในไฟล์เดียว
+- ส่ง parameters ผ่าน `state.pathParameters`
+
+### 4. Error Handling
+
+- ใช้ fpdart `Either<Failure, Success>` สำหรับ operations ทีอาจ fail
+- ไม่ throw exceptions ใน domain layer
+- UI แสดง error จาก `Failure`
+
+### 5. Testing
+
 - เขียน unit tests สำหรับ repository และ use cases
+- ใช้ `mocktail` สำหรับ mocks
+- Code generation ต้องรันก่อน commit
 
 ## Expected Outcome
 

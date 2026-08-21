@@ -4,12 +4,17 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
 triggers:
   - user
   - model
+related:
+  - follow-typescript
+  - run-test-unit
+  - follow-biome
 ---
 
 ## Goal
@@ -20,7 +25,6 @@ triggers:
 
 ตั้งค่า Drizzle ORM สำหรับ type-safe database operations ด้วย SQL-like syntax, zero dependencies และ excellent TypeScript support
 
-
 - ติดตั้ง Drizzle ORM และ Kit
 - กำหนดค่า `drizzle.config.ts`
 - สร้าง database schema และ migrations
@@ -28,185 +32,137 @@ triggers:
 
 ## Execute
 
-### Phase 0: Precondition
+### 1. Check Precondition
 
-- 0.1 ตรวจสอบ Environment
-  - มี Bun ติดตั้งแล้ว
-  - มี database server (PostgreSQL/MySQL/SQLite)
-  - มี `package.json` อยู่แล้ว
+ตรวจสอบ environment ก่อนเริ่ม
 
-### Phase 1: Setup
+> Goal: มี Bun, database server, และ package.json พร้อม
 
-- 1.1 ติดตั้ง Drizzle
-  - รัน `bun add drizzle-orm`
-  - ติดตั้ง driver ตาม runtime และ database:
-    - Bun + SQLite: `bun add` (ใช้ native `bun:sqlite`)
-    - Node.js + SQLite: `bun add better-sqlite3`
-    - PostgreSQL: `bun add postgres`
-    - MySQL: `bun add mysql2`
-    - Turso/libsql: `bun add @libsql/client`
-  - รัน `bun add -D drizzle-kit`
+1. ยืนยันว่า Bun ติดตั้งแล้ว
+2. ยืนยันว่ามี database server (PostgreSQL, MySQL, หรือ SQLite)
+3. อ่าน `package.json` ของ project
+4. ถ้าไม่มี `package.json` → stop และ report
 
-### Phase 2: Configure
+### 2. Setup
 
-- 2.1 สร้าง drizzle.config.ts
-  - สร้างไฟล์ `drizzle.config.ts`:
+ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
 
-```ts [drizzle.config.ts]
-import { defineConfig } from 'drizzle-kit'
+> Goal: project มี dependencies ครบถ้วนตาม runtime
 
-export default defineConfig({
-  schema: './src/db/schema.ts', // หรือใช้ glob: './src/db/**/*.ts'
-  out: './src/db/migrations',
-  dialect: 'postgresql', // หรือ 'mysql', 'sqlite'
-  driver: 'postgres', // หรือ 'mysql2', 'better-sqlite', 'bun', 'turso'
-  dbCredentials: {
-    url: process.env.DATABASE_URL!,
-  },
-})
-```
+1. รัน `bun add drizzle-orm`
+2. ติดตั้ง driver ตาม runtime และ database:
+   - Bun + SQLite: ใช้ native `bun:sqlite`
+   - Node.js + SQLite: `bun add better-sqlite3`
+   - PostgreSQL: `bun add postgres`
+   - MySQL: `bun add mysql2`
+   - Turso/libsql: `bun add @libsql/client`
+3. รัน `bun add -D drizzle-kit`
+4. ตรวจสอบว่า dependencies อยู่ใน `package.json`
 
-- 2.2 Driver Selection ตาม Runtime
+### 3. Configure
 
-| Runtime | Database | Driver | Import Path |
-|---------|----------|--------|-------------|
-| Bun | SQLite | `bun` | `drizzle-orm/bun-sqlite` |
-| Node.js | SQLite | `better-sqlite` | `drizzle-orm/better-sqlite3` |
-| Any | PostgreSQL | `postgres` | `drizzle-orm/node-postgres` |
-| Any | MySQL | `mysql2` | `drizzle-orm/mysql2` |
-| Any | Turso | `turso` | `drizzle-orm/libsql` |
+สร้าง `drizzle.config.ts` และเลือก driver
 
-### Phase 3: Schema
+> Goal: Drizzle Kit สามารถ connect และ generate migrations ได้
 
-- 3.1 กำหนด Schema
-  - สร้าง `src/db/schema.ts` (หรือแยกเป็นหลายไฟล์ใน `schema/`):
+1. สร้าง `drizzle.config.ts` ด้วย `defineConfig`:
+   - `schema`: path ของ schema files (เช่น `./src/db/schema.ts` หรือ glob `./src/db/**/*.ts`)
+   - `out`: output directory ของ migrations (เช่น `./src/db/migrations`)
+   - `dialect`: `postgresql`, `mysql`, หรือ `sqlite`
+   - `driver`: `postgres`, `mysql2`, `better-sqlite`, `bun`, หรือ `turso`
+   - `dbCredentials.url`: อ่านจาก `DATABASE_URL` หรือ environment ที่เหมาะสม
+2. เลือก driver ให้ตรงกับ runtime และ database
+3. อย่า hardcode credentials ใน `drizzle.config.ts`
 
-```ts [src/db/schema.ts]
-import { pgTable, serial, varchar, timestamp } from 'drizzle-orm/pg-core'
-// สำหรับ SQLite: import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
+### 4. Define Schema
 
-export const users = pgTable('users', {
-  id: serial('id').primaryKey(),
-  email: varchar('email', { length: 255 }).notNull().unique(),
-  name: varchar('name', { length: 255 }),
-  createdAt: timestamp('created_at').defaultNow(),
-})
+สร้าง database schema ด้วย type-safe columns
 
-export type User = typeof users.$inferSelect
-export type NewUser = typeof users.$inferInsert
-```
+> Goal: schema ถูกต้องและสอดคล้องกับ business requirements
 
-- 3.2 สร้าง Database Client
-  - สำหรับ Bun + SQLite:
+1. สร้าง `src/db/schema.ts` หรือแยกเป็นไฟล์ใน `src/db/schema/`
+2. นิยาม tables, columns, indexes, และ relations
+3. ใช้ `pgTable` สำหรับ PostgreSQL, `sqliteTable` สำหรับ SQLite, `mysqlTable` สำหรับ MySQL
+4. ระบุ `notNull`, `unique`, `defaultNow` ตามที่จำเป็น
+5. สร้าง type จาก schema ด้วย `typeof table.$inferSelect` และ `$inferInsert`
 
-```ts [src/db/index.ts]
-import { drizzle } from 'drizzle-orm/bun-sqlite'
-import Database from 'bun:sqlite'
-import * as schema from './schema'
+### 5. Create Client
 
-const sqlite = new Database('./data/app.db')
-// Enable WAL mode สำหรับ performance
-sqlite.exec('PRAGMA journal_mode = WAL')
+สร้าง database client สำหรับ runtime ทีใช้
 
-export const db = drizzle(sqlite, { schema })
-```
+> Goal: สามารถ query database ได้จาก application
 
-  - สำหรับ Node.js + SQLite:
+1. สร้าง `src/db/index.ts` ตาม runtime:
+   - Bun + SQLite: `import { drizzle } from 'drizzle-orm/bun-sqlite'`
+   - Node.js + SQLite: `import { drizzle } from 'drizzle-orm/better-sqlite3'`
+   - PostgreSQL: `import { drizzle } from 'drizzle-orm/node-postgres'`
+2. เปิดใช้งาน WAL mode สำหรับ SQLite เพื่อ performance
+3. export `db` instance ที่ import schema ทั้งหมด
+4. อย่า expose client credentials ใน source code
 
-```ts [src/db/index.ts]
-import { drizzle } from 'drizzle-orm/better-sqlite3'
-import Database from 'better-sqlite3'
-import * as schema from './schema'
+### 6. Manage Migrations
 
-const sqlite = new Database('./data/app.db')
-sqlite.pragma('journal_mode = WAL')
+เลือก migration strategy และรัน migrations
 
-export const db = drizzle(sqlite, { schema })
-```
+> Goal: database schema sync กับโค้ดอย่างปลอดภัย
 
-  - สำหรับ PostgreSQL:
+1. เลือก strategy ตาม use case:
+   - Rapid prototyping: `bunx drizzle-kit push`
+   - Production/team: `bunx drizzle-kit generate` แล้ว `bunx drizzle-kit migrate`
+   - Existing database: `bunx drizzle-kit pull`
+2. สำหรับ production: generate migrations ด้วย `bunx drizzle-kit generate --name=<name>`
+3. ตรวจสอบไฟล์ migrations ใน output directory
+4. รัน migrations ด้วย `bunx drizzle-kit migrate`
+5. สำหรับ development: ใช้ `bunx drizzle-kit push` เพื่อ sync schema เร็ว
 
-```ts [src/db/index.ts]
-import { drizzle } from 'drizzle-orm/node-postgres'
-import { Client } from 'pg'
-import * as schema from './schema'
+### 7. Query Data
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-})
-await client.connect()
+ใช้งาน type-safe queries
 
-export const db = drizzle(client, { schema })
-```
+> Goal: CRUD operations ทำงานได้และ type-safe
 
-### Phase 4: Migrations
-
-- 4.1 เลือก Migration Strategy
-
-| Strategy | Command | Use Case |
-|----------|---------|----------|
-| Push | `drizzle-kit push` | Rapid prototyping, Development, Solo developers |
-| Generate + Migrate | `drizzle-kit generate` + `drizzle-kit migrate` | Production, Teams, Code-first |
-| Pull | `drizzle-kit pull` | Database-first, Existing database |
-
-- 4.2 Generate Migrations (Production)
-  - รัน `bunx drizzle-kit generate --name=migration_name`
-  - ตรวจสอบไฟล์ migrations ใน `src/db/migrations/`
-  - ไฟล์จะมี `migration.sql` และ `snapshot.json`
-
-- 4.3 Run Migrations (Production)
-  - รัน `bunx drizzle-kit migrate`
-  - ตรวจสอบว่า migrations ถูกนำไปใช้แล้ว
-
-- 4.4 Push Schema (Development)
-  - รัน `bunx drizzle-kit push`
-  - ใช้สำหรับ rapid prototyping และ development
-  - Drizzle จะ sync schema โดยตรงไปยัง database
-
-### Phase 5: Query
-
-- 5.1 ใช้งาน Database
-  - Example CRUD operations:
-
-```ts
-import { db } from './db'
-import { users } from './db/schema'
-import { eq } from 'drizzle-orm'
-
-// Create
-const newUser = await db.insert(users).values({
-  email: 'user@example.com',
-  name: 'John Doe',
-}).returning()
-
-// Read
-const allUsers = await db.select().from(users)
-const user = await db.select().from(users).where(eq(users.id, 1))
-
-// Update
-await db.update(users)
-  .set({ name: 'Jane Doe' })
-  .where(eq(users.id, 1))
-
-// Delete
-await db.delete(users).where(eq(users.id, 1))
-```
+1. import `db` และ schema จาก `src/db`
+2. ใช้ `db.insert(table).values(...).returning()` สำหรับ create
+3. ใช้ `db.select().from(table).where(eq(table.id, ...))` สำหรับ read
+4. ใช้ `db.update(table).set(...).where(...)` สำหรับ update
+5. ใช้ `db.delete(table).where(...)` สำหรับ delete
+6. ใช้ `eq`, `and`, `or`, `like`, ฯลฯ จาก `drizzle-orm` สำหรับ filters
 
 ## Rules
 
-| Category | Requirements |
-|------|---------|
-| Installation | `bun add drizzle-orm` + driver ตาม runtime |
-| Dev Tools | `bun add -D drizzle-kit` |
-| Config | สร้าง `drizzle.config.ts` ด้วย `defineConfig` |
-| Schema | กำหนด schema ในไฟล์แยก หรือใช้ glob patterns |
-| Migrations | เลือก migration strategy ตาม use case |
-| Driver Selection | ใช้ driver ที่เหมาะสมกับ runtime |
+### 1. Installation
+
+- `bun add drizzle-orm` + driver ตาม runtime
+- `bun add -D drizzle-kit` สำหรับ dev tools
+
+### 2. Configuration
+
+- สร้าง `drizzle.config.ts` ด้วย `defineConfig`
+- ระบุ `schema`, `out`, `dialect`, `driver`, และ `dbCredentials`
+- อ่าน database URL จาก environment variables
+
+### 3. Schema
+
+- กำหนด schema ในไฟล์แยกหรือใช้ glob patterns
+- ใช้ type inference จาก schema
+- ไม่ hardcode credentials
+
+### 4. Migrations
+
+- เลือก migration strategy ตาม use case
+- Production ต้อง generate + migrate
+- Development ใช้ push ได้
+
+### 5. Driver Selection
+
+- ใช้ driver ที่เหมาะสมกับ runtime และ database
+- Bun + SQLite ใช้ `drizzle-orm/bun-sqlite`
+- Node.js + SQLite ใช้ `drizzle-orm/better-sqlite3`
 
 ## Expected Outcome
 
-- Drizzle ORM ติดตั้งและทำงานได้ด้วย driver ที่ถูกต้อง
+- Drizzle ORM ติดตั้งและทำงานได้ด้วย driver ทีถูกต้อง
 - Schema กำหนดค่าถูกต้องตาม column types
-- Migrations จัดการตาม strategy ที่เหมาะสม
+- Migrations จัดการตาม strategy ทีเหมาะสม
 - Type-safe queries ทำงานได้
 - Performance ได้รับการ optimize ด้วย WAL mode และ indexes
