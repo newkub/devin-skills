@@ -145,6 +145,13 @@ Component ต้อง follow standards:
 - ใช้ Vapor Mode สำหรับ component-heavy scenarios (up to 97% faster)
 - ใช้ tree-shaking อย่างเต็มที่
 
+## Guide
+
+เอกสารอ้างอิงเฉพาะทางสำหรับ components และ design system:
+
+- `references/follow-vue-components.md` — รายละเอียด component-level guidelines
+- `references/follow-vue-design-system-best-practics.md` — รายละเอียด design system, stores, และ composables
+
 ## Expected Outcome
 
 - Vue 3 components ที่มีโครงสร้างถูกต้องตาม Composition API
