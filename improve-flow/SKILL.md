@@ -60,7 +60,7 @@ description: ปรับปรุง flow ของ workflow ให้ fail-fas
 
 1. ทำ `/check-correctness` เพื่อ verify flow ถูกต้อง
 2. ทำ `/check-reference` เพื่อยืนยัน references ทั้งหมดถูกต้อง
-3. ทำ `/review-workflow-content` เพื่อตรวจ content ไม่ซ้ำซ้อนหลังแก้ flow
+3. ทำ `/review-codebase` เพื่อตรวจ content ไม่ซ้ำซ้อนหลังแก้ flow
 4. ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
 5. ทำ `/report` เพื่อสรุปการปรับปรุง flow
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป

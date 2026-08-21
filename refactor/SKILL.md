@@ -19,7 +19,7 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม r
 
 > Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือ refactor
 
-1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+1. ทำ `/review-codebase` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Analyze And Baseline
 
@@ -28,7 +28,7 @@ Deep Review codebase ครบทุกมิติก่อนเริ่ม r
 > Goal: เข้าใจโครงสร้าง ระบุปัญหา และมี baseline ก่อน refactor
 
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์ครบทุกมิติ
-2. ทำ `/follow-architecture`, `/deep-review`, `/review-refactor`, `/follow-principles-engineering` — architecture, SRP/SoC, code smells, coupling, engineering principles
+2. ทำ `/follow-architecture`, `/deep-review`, `/review-codebase`, `/follow-principles-engineering` — architecture, SRP/SoC, code smells, coupling, engineering principles
 3. ทำ `/analyze-code-structure`, `/check-duplication`, `/check-long-files`, `/use-lib-effective` — structure, duplication, long files, dependencies
 4. ระบุ violation type ตาม category:
    - Code: God modules, multi-responsibility functions/classes, mixed concerns
@@ -64,7 +64,7 @@ Refactor code, content, และ workflow units ที่มีหลาย res
 4. Split multi-responsibility classes — ระบุ member groups ตาม responsibility, extract แต่ละ group เป็น class/type ใหม่, ใช้ composition
 5. ทำ `/refactor-to-srp`, `/refactor-packages` — long files and mixed module/package responsibilities
 6. แยก content ที่ผสมหลาย topics ออกเป็นไฟล์ใหม่ — ตั้งชื่อไฟล์ให้สะท้อน topic, สร้าง index
-7. ทำ `/review-naming`, `/simplify` — rename identifiers และ simplify functions ที่ซับซ้อน
+7. ทำ `/review-codebase`, `/simplify` — rename identifiers และ simplify functions ที่ซับซ้อน
 8. ทำ `/check-circular-dependencies` หลัง split/move และ `/update-reference` หลัง split ทุกระดับ — ถ้ามี broken references → ทำ `/resolve-errors`
 
 ### 5. Refactor Workspaces
@@ -88,7 +88,7 @@ Enforce module boundaries, อัปเดท references, restructure files แ�
 1. ทำ `/follow-import-export` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal symbols ที่ไม่ต้อง public
 2. ใช้ path aliases / import rules ป้องกันการ import เข้าไปข้างใน module — อัปเดท `ast-grep` rules หรือ `biome.jsonc` ถ้าจำเป็น
 3. ทำ `/update-reference` เพื่ออัปเดท references หลัง refactor — ถ้ามี broken references ให้ทำ `/resolve-errors`
-4. ทำ `/restructure`, `/review-config` — physical structure, config optimization
+4. ทำ `/restructure`, `/review-codebase` — physical structure, config optimization
 5. ตรวจสอบว่า import alias ทำงานได้ถูกต้อง ถ้า fail ให้ทำ `/resolve-errors`
 
 ### 7. Final Verify

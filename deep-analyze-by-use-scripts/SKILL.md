@@ -42,7 +42,7 @@ related:
 1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
 2. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
 3. เลือก stack: Rust ถ้าต้องการ binary performance, Bun ถ้าทีมใช้ TypeScript
-4. ทำ `/review-cli` เพื่อตรวจสอบคุณภาพก่อน integrate
+4. ทำ `/review-codebase` เพื่อตรวจสอบคุณภาพก่อน integrate
 5. ผสาน CLI เข้ากับ package manifest ด้วย `/follow-tasks`
 
 ### 3. Ensure Review CLI Ready
@@ -114,7 +114,7 @@ related:
 - ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบ `tools/analyze/` ด้วย
 - ถ้า `tools/analyze/` ไม่มี → ทำ `/follow-create-cli` ก่อนเสมอ
 - `tools/analyze/` ต้อง follow `/follow-clean-architecture`
-- ทำ `/review-cli` ก่อนใช้งาน
+- ทำ `/review-codebase` ก่อนใช้งาน
 
 ### 3. Ast-Grep NAPI Usage
 
@@ -151,7 +151,7 @@ related:
 ## Expected Outcome
 
 - Review CLI JSON report พร้อม metrics ครบถ้วน
-- `tools/analyze` CLI พร้อมใช้งานและผ่าน `/review-cli`
+- `tools/analyze` CLI พร้อมใช้งานและผ่าน `/review-codebase`
 - Structural overview ด้วย `ast-grep outline`
 - Deep report ตาราง 7 columns พร้อม evidence ที่ตรวจสอบได้
 - Deep summary 5 ส่วน: Domain Breakdown, Severity Distribution, Analyzer Changes, False Positive Analysis, Recommended Actions

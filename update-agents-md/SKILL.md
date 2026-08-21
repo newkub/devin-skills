@@ -20,7 +20,7 @@ related:
   - analyze-project
   - check-monorepo
   - follow-write-devin-skills
-  - review-codebase-everything
+  - review-codebase
   - git-commit
   - ask-me
 ---
@@ -104,7 +104,7 @@ related:
 3. ระบุ sections Goal, Scope, Execute, Rules, Expected Outcome
 4. ใน `### Architecture` ระบุ tech stack ของ workspace ด้วย `tech: /follow-<tech>`
 5. ใน `### Skills` ระบุ skills ที่ใช้ใน workspace
-6. รวม review จาก `/review-codebase-everything` ตาม project characteristics
+6. รวม review จาก `/review-codebase` ตาม project characteristics
 7. ทำซ้ำจนครบทุก target workspace
 
 ### 7. Validate And Finalize

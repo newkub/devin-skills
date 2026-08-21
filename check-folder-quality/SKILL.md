@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - use-scripts
   - restructure
-  - review-code-quality
+  - review-codebase
   - use-ast-grep-outline
 ---
 
@@ -66,7 +66,7 @@ related:
 > Goal: ระบุปัญหาคุณภาพนอกเหนือจากจำนวนไฟล์
 
 1. ตรวจสอบ domain cohesion: ไฟล์ในโฟลเดอร์เกี่ยวข้องกันหรือไม่ ดูจาก filenames และ imports
-2. ตรวจสอบ naming consistency: ชื่อไฟล์และโฟลเดอร์สะท้อน responsibility หรือไม่ ใช้ `/review-code-quality` ถ้าจำเป็น
+2. ตรวจสอบ naming consistency: ชื่อไฟล์และโฟลเดอร์สะท้อน responsibility หรือไม่ ใช้ `/review-codebase` ถ้าจำเป็น
 3. ตรวจสอบ imports boundaries: มี imports ข้าม domain, layer, หรือ boundary หรือไม่ ใช้ `/use-ast-grep-outline --items imports`
 4. ตรวจสอบ nesting depth: โฟลเดอร์ลึกเกินไป (เกิน 5 ระดับ) หรือ flat เกินไปหรือไม่
 5. ตรวจสอบ mixed concerns: มีไฟล์ logic, test, config, generated, barrel ปะปนกันหรือไม่

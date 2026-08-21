@@ -24,7 +24,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 ### 2. Update Documentation
 
 1. ทำ `/write-docs` เพื่อสร้างและอัพเดทเอกสาร
-2. ทำ `/review-delivery` เพื่อปรับปรุง SEO สำหรับ documentation site
+2. ทำ `/review-codebase` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
 ### 3. Run Dev Server

@@ -10,7 +10,7 @@ related:
   - follow-ordering
   - refactor
   - relocation
-  - review-code-quality
+  - review-codebase
   - update-reference
   - use-scripts
 ---
@@ -38,7 +38,7 @@ related:
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
-1. ทำ `/review-code-quality` เพื่อปรับปรุง naming
+1. ทำ `/review-codebase` เพื่อปรับปรุง naming
 2. ทำ `/update-reference` เพื่ออัปเดต import paths
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 

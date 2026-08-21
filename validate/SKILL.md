@@ -3,7 +3,7 @@ name: validate
 description: ตรวจสอบความถูกต้อง คุณภาพ และความเหมาะสม
 related:
   - check-correctness
-  - review-code-quality
+  - review-codebase
   - report
   - suggest-next-action
 ---

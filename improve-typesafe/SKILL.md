@@ -19,7 +19,7 @@ description: วิเคราะห์และปรับปรุง type s
 
 > Goal: รู้ว่ามี type issues อะไรบ้าง และจัดลำดับตาม severity
 
-1. ทำ `/scan-codebase`, รัน `tsc --noEmit`, ทำ `/review-code-quality` — ระบุ `any`, `as`, non-null assertions, missing return types
+1. ทำ `/scan-codebase`, รัน `tsc --noEmit`, ทำ `/review-codebase` — ระบุ `any`, `as`, non-null assertions, missing return types
 2. ค้นหา patterns: `: any`, `as any`, `as unknown`, `!`, `@ts-ignore`, `@ts-expect-error`, missing type annotations
 3. จัดลำดับตาม severity: runtime bugs > type errors > missing types > style issues — ถ้าไม่มี issues → stop และ report
 

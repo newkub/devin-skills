@@ -61,7 +61,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 > Goal: Bottlenecks ถูก optimize และ verify ผล
 
-1. ทำ `/review-performance` เพื่อปรับปรุง
+1. ทำ `/review-codebase` เพื่อปรับปรุง
 2. ใช้ caching ที่เหมาะสม
 3. Optimize algorithms และ data structures
 4. ลบ unnecessary work

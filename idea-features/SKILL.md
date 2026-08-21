@@ -102,7 +102,7 @@ description: สร้างไอเดีย features ใหม่และป
 
 - ถ้าผู้ใช้สั่ง "ทำ ... ให้" → ทำ `/refactor` และ `/realize-implementation` เลย ไม่ต้องทำตาม workflow ปกติ
 - ถ้าผู้ใช้สั่ง implement เฉพาะ feature → ทำ `/implement-features-to-mvp` เลย
-- ถ้าผู้ใช้สั่ง implement features ที่ขาดทั้งหมด → ทำ `/review-realize-implementation` เลย
+- ถ้าผู้ใช้สั่ง implement features ที่ขาดทั้งหมด → ทำ `/review-codebase` เลย
 
 ## Expected Outcome
 

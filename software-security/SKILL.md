@@ -5,7 +5,7 @@ triggers:
   - user
   - model
 related:
-  - review-security
+  - review-codebase
   - follow-auth
   - follow-best-practice
 ---

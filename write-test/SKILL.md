@@ -5,9 +5,8 @@ triggers: [user, model]
 allowed-tools: [read, edit, write, grep, find_file_by_name, exec, skill, ask_user_question]
 related:
   - write-spec
-  - review-code-quality
+  - review-codebase
   - follow-content-quality
-  - review-delivery
   - run-test-coverage
   - improve-test-coverage
 ---
@@ -61,7 +60,7 @@ related:
 > Goal: Test files พร้อม, spec ครอบคลุม, naming สอดคล้องมาตรฐาน
 
 1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
-2. `/write-spec`, `/review-code-quality` — สร้าง spec และปรับ naming ไปพร้อมกัน
+2. `/write-spec`, `/review-codebase` — สร้าง spec และปรับ naming ไปพร้อมกัน
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ### 4. Write Tests
@@ -118,7 +117,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 > Goal: Coverage 100% สำหรับทุก critical paths
 
-1. ทำ `/review-delivery` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
+1. ทำ `/review-codebase` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/improve-test-coverage` เพื่อเขียน tests ที่ขาด
 
@@ -188,7 +187,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Unit tests: `< 10ms` ต่อ test
 - Integration tests: `< 100ms` ต่อ test
 - ใช้ `parallel execution` เมื่อ tests ไม่ dependent กัน
-- Coverage verification และ 100% enforcement อยู่ใน `/review-delivery` และ `/run-test-coverage`
+- Coverage verification และ 100% enforcement อยู่ใน `/review-codebase` และ `/run-test-coverage`
 
 ### 7. Testing Strategy Per Type
 
@@ -239,7 +238,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Test files อยู่ใน location ที่ถูกต้องตาม conventions
 - Tests ครอบคลุมทุก category และ test type (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility)
 - Tests รันผ่านทั้งหมด ไม่มี false positive
-- Coverage 100% ผ่าน `/review-delivery` และ `/run-test-coverage`
+- Coverage 100% ผ่าน `/review-codebase` และ `/run-test-coverage`
 - Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
 - Test data ใช้ factories/fixtures/builders ตาม strategy
 - `spec/SPEC.md` หรือเอกสาร test plan ถูกอัพเดทด้วย test cases ที่เขียนแล้ว

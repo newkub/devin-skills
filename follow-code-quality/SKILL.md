@@ -19,7 +19,7 @@ description: รักษามาตรฐานคุณภาพโค้ด�
 
 > Goal: ระบุ issues ด้าน code quality ทั้งหมดก่อนแก้ไข
 
-1. ทำ `/review-refactor`, `/deep-review`, `/check-circular-dependencies`, `/review-code-quality` — mixed concerns/duplication/code smells, SRP/SoC/type safety/hard code/anti-patterns/dead code/side effects/naming, circular dependencies, type safety check
+1. ทำ `/review-codebase`, `/deep-review`, `/check-circular-dependencies`, `/review-codebase` — mixed concerns/duplication/code smells, SRP/SoC/type safety/hard code/anti-patterns/dead code/side effects/naming, circular dependencies, type safety check
 2. จัดลำดับ issues ตาม priority: security > type errors > performance > code quality — ถ้าไม่พบ issues → ข้ามไป Step 3
 
 ### 2. Apply Fixes
@@ -29,7 +29,7 @@ description: รักษามาตรฐานคุณภาพโค้ด�
 > Goal: แก้ไข issues ทั้งหมดตาม priority
 
 1. ทำ `/no-hard-code` เพื่อลบ hard code — ถ้าพบ sensitive data exposure → แก้ก่อนเป็น priority สูงสุด
-2. ทำ `/review-code-quality`, `/review-architecture`, `/review-delivery`, `/improve-typesafe`, `/review-config` — naming conventions/type safety, side effects management, debuggability, type safety improvements, config optimization
+2. ทำ `/review-codebase`, `/improve-typesafe`, `/review-codebase` — naming conventions/type safety, side effects management, debuggability, type safety improvements, config optimization
 3. แก้ไข issues ที่เหลือตามลำดับความสำคัญ — ถ้าแก้ไม่ได้ → ทำ `/resolve-errors` ก่อนดำเนินต่อ
 
 ### 3. Verify Quality

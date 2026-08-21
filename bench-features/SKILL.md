@@ -62,7 +62,7 @@ description: เปรียบเทียบ features กับคู่แข
 > Goal: ปิด gap และสร้าง differentiation
 
 1. ทำ `/ship` เพื่อ implement features ตาม roadmap
-2. ทำ `/review-realize-implementation` เพื่อตรวจสอบ completeness
+2. ทำ `/review-codebase` เพื่อตรวจสอบ completeness
 3. หยุดเมื่อ features ดีกว่าคู่แข่งทั้งหมด
 
 ### 5. Update Feature Comparison (ตอบในแชท — ภาษาไทย)

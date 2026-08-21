@@ -92,7 +92,7 @@ related:
 
 1. ทำ `/validate` กับ source code ที่เกี่ยวข้องเพื่อตรวจสอบความถูกต้อง
 2. ทำ `/validate-test` เพื่อตรวจสอบ test quality, assertions, mocks
-3. ทำ `/review-codebase-issue` หรือ `/review-delivery` เพื่อ review ทั้ง source และ test files
+3. ทำ `/review-codebase` เพื่อ review ทั้ง source และ test files
 4. จำแนกผล:
    - ถ้า source ผิด → ระบุไฟล์ source ที่ต้องแก้ แนะนำ `/resolve-errors` หรือ `/edit`
    - ถ้า test ผิด (assertion, mock, expectation) → ระบุไฟล์ test ที่ต้องแก้ แนะนำ `/write-test` หรือ `/edit`
@@ -133,7 +133,7 @@ related:
 
 - ทำ `/validate` กับ source ทุกครั้งเมื่อ test fail
 - ทำ `/validate-test` กับ test ทุกครั้งเมื่อ test fail
-- ทำ `/review-codebase-issue` หรือ `/review-delivery` เพื่อหาต้นเหตุ
+- ทำ `/review-codebase` เพื่อหาต้นเหตุ
 - ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report
 
 ### 3. Fix Direction

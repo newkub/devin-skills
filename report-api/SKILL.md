@@ -13,7 +13,7 @@ triggers:
 related:
   - report-format-table
   - scan-codebase
-  - review-backend
+  - review-codebase
   - resolve-errors
   - suggest-next-action
 ---
@@ -24,7 +24,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน API layer จาก codebase — ไม่รวมการ review API quality (ใช้ `/review-backend` สำหรับ review)
+ใช้สำหรับการรายงาน API layer จาก codebase — ไม่รวมการ review API quality (ใช้ `/review-codebase` สำหรับ review)
 
 ## Execute
 
@@ -69,7 +69,7 @@ related:
 
 1. สรุปจำนวน endpoints แยกตาม module และ method
 2. ระบุ priority actions: endpoints ที่ขาด auth ก่อน, จากนั้น validation, จากนั้น rate limiting
-3. แนะนำ next steps: `/review-backend` สำหรับ review, `/resolve-errors` สำหรับแก้ issues
+3. แนะนำ next steps: `/review-codebase` สำหรับ review, `/resolve-errors` สำหรับแก้ issues
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -88,7 +88,7 @@ related:
 ### Read-Only
 
 - ไม่แก้ไข API code — รายงานเท่านั้น
-- ใช้ `/review-backend` สำหรับ review API quality
+- ใช้ `/review-codebase` สำหรับ review API quality
 - ใช้ `/resolve-errors` สำหรับการแก้ไข
 
 ### Output Format
@@ -106,9 +106,9 @@ related:
 
 ### Non-Redundancy
 
-- การ review API quality อยู่ใน `/review-backend` แล้ว
+- การ review API quality อยู่ใน `/review-codebase` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
-- การรายงาน OpenAPI docs อยู่ใน `/review-backend` แล้ว
+- การรายงาน OpenAPI docs อยู่ใน `/review-codebase` แล้ว
 
 ## Expected Outcome
 

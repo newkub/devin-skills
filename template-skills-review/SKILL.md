@@ -20,7 +20,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 
 ## Scope
 
-ใช้สำหรับ skills ที่ review เช่น `review-code-quality`, `review-security`, `review-performance`, `review-architecture` — ไม่รวม `review-codebase-everything` ซึ่งเป็น orchestrator
+ใช้สำหรับ skills ที่ review เช่น `review-code-quality`, `review-security`, `review-performance`, `review-architecture` — ไม่รวม `review-codebase` ซึ่งเป็น orchestrator
 
 ## Execute
 

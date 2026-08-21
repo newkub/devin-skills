@@ -99,7 +99,7 @@ Ecosystem and Partnerships:
 
 - ไม่รัน dev server, test, build, browser, emulator, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/bench-competitors` หรือ `/review-codebase-everything`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/bench-competitors` หรือ `/review-codebase`
 
 ### 2. Think Like A Competitor
 
@@ -141,7 +141,7 @@ Ecosystem and Partnerships:
 - ถ้าต้องการ research คู่แข่งจริง ให้ทำ `/deep-research`
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
 - ถ้าต้องการ benchmark จริงและ implement ให้ใช้ `/bench-competitors`
-- ถ้าต้องการ review ทุกมิติ ให้ใช้ `/review-codebase-everything`
+- ถ้าต้องการ review ทุกมิติ ให้ใช้ `/review-codebase`
 
 ### 8. Output
 

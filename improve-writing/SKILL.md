@@ -20,7 +20,7 @@ description: ปรับปรุงคุณภาพการเขียน�
 > Goal: รู้ว่ามี writing issues อะไรบ้าง จัดลำดับตาม severity
 
 1. ทำ `/scan-codebase` เพื่อหาเอกสารทั้งหมด: README, docs, comments, changelogs, commit messages
-2. ทำ `/review-delivery` เพื่อ review documentation quality
+2. ทำ `/review-codebase` เพื่อ review documentation quality
 3. จัดประเภท writing issues: unclear, verbose, inconsistent terminology, missing context, passive voice, jargon overuse, broken structure
 4. จัดลำดับตาม severity: README/docs > API docs > code comments > changelogs > commit messages — ถ้าไม่มี issues → stop และ report
 

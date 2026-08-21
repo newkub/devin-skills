@@ -138,7 +138,7 @@ Non-Functional:
 
 - ถ้า test planning ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan test coverage จริง ให้ใช้ `/review-delivery`
+- ถ้าต้องการ scan test coverage จริง ให้ใช้ `/review-codebase`
 - ถ้าต้องการเขียน test จริง ให้ใช้ `/write-test`
 - ถ้าต้องการรัน test จริง ให้ใช้ `/run-test`
 

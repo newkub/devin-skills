@@ -5,7 +5,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-cli`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase`
 
 ## Scope
 
@@ -41,8 +41,8 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 > Goal: CLI ผ่าน review ก่อนใช้งาน
 
-1. ทำ `/review-cli` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/review-cli` ระบุ
+1. ทำ `/review-codebase` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/review-codebase` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 4. Integrate Into Workspace
@@ -73,7 +73,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ### 3. Review Before Ship
 
-- ทำ `/review-cli` ก่อน commit
+- ทำ `/review-codebase` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -82,5 +82,5 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม Clean Architecture
-- ผ่าน `/review-cli`
+- ผ่าน `/review-codebase`
 - ผสานเข้ากับ workspace ได้

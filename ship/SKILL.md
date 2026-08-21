@@ -34,7 +34,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 > Goal: Review ครบทุกมิติและแก้ไข issues ตาม severity จนครบ
 
-1. ทำ `/review-codebase-everything` เพื่อ review ครบทุกมิติ แก้ไข issues ตาม severity จนครบ
+1. ทำ `/review-codebase` เพื่อ review ครบทุกมิติ แก้ไข issues ตาม severity จนครบ
 2. ถ้าพบ issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` ขั้นตอน 1 จนกว่าจะผ่าน
 
 ### 3. Improve Codebase
@@ -43,7 +43,7 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 
 > Goal: Codebase ผ่านการปรับปรุงครบวงจร ไม่มี regression
 
-1. ทำ `/review-codebase-everything` เพื่อ review → analyze gaps → implement improvements → validate
+1. ทำ `/review-codebase` เพื่อ review → analyze gaps → implement improvements → validate
 2. ถ้าพบ issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` ขั้นตอน 1 จนกว่าจะผ่าน
 
 ### 4. Ship
@@ -71,7 +71,7 @@ Git operations และ commit
 
 > Goal: Review ครบ 8 categories และ issues ถูก validate ครบถ้วน
 
-1. ทำ `/review-codebase-everything` เพื่อ review ครบ 8 category orchestrators พร้อม validate issues
+1. ทำ `/review-codebase` เพื่อ review ครบ 8 category orchestrators พร้อม validate issues
 2. ถ้าพบ critical หรือ high severity issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` กลับไปทำ Phase 2 จนกว่าจะผ่าน
 
 ### 7. Confirm Release
@@ -115,8 +115,8 @@ Release ไปยัง external platforms หลัง user confirm
 
 - ห้าม duplicate รายละเอียดที่มีอยู่ใน sub-workflows
 - Orchestrator อ้างถึง sub-workflow โดยไม่ระบุรายละเอียดภายใน
-- Review, refactor, security, test quality, migration validation อยู่ใน `/review-codebase-everything` แล้ว
-- Codebase improvement อยู่ใน `/review-codebase-everything` แล้ว
+- Review, refactor, security, test quality, migration validation อยู่ใน `/review-codebase` แล้ว
+- Codebase improvement อยู่ใน `/review-codebase` แล้ว
 - รายละเอียด verify อยู่ใน `/run-verify` แล้ว — รายละเอียด release อยู่ใน `/run-release` แล้ว
 
 ### 2. Mandatory User Confirmation
@@ -159,8 +159,8 @@ Release ไปยัง external platforms หลัง user confirm
 ## Expected Outcome
 
 - Requirement ชัดเจน และ plan ได้รับการยืนยันจาก user
-- Code ผ่าน comprehensive review และ issues ถูกแก้ไขครบถ้วน ผ่าน `/review-codebase-everything`
-- Codebase ผ่านการปรับปรุงครบวงจร ผ่าน `/review-codebase-everything`
+- Code ผ่าน comprehensive review และ issues ถูกแก้ไขครบถ้วน ผ่าน `/review-codebase`
+- Codebase ผ่านการปรับปรุงครบวงจร ผ่าน `/review-codebase`
 - Git operations สำเร็จ
 - Code ผ่าน verify และ CI/CD
 - Code ผ่าน comprehensive review ครบ 8 categories

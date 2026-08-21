@@ -82,15 +82,15 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
    - Medium: Score 20-24, Effort: Medium, Risk: Medium
    - Low: Score < 20, Effort: High, Risk: High
 3. ให้เหตุผลสั้น ๆ ว่าทำไมถึงเลือกตัวนั้น
-4. ถ้าต้องการ execute การเปลี่ยนแปลงจริง ให้ส่งต่อไปยัง `/review-techstack`
+4. ถ้าต้องการ execute การเปลี่ยนแปลงจริง ให้ส่งต่อไปยัง `/review-codebase`
 
 ## Rules
 
 - ตอบแค่ deps ที่ควรใช้ ไม่ execute การเปลี่ยนแปลง package ใด ๆ
-- ถ้าพบ unused, duplicate, security issues ให้ reference ไป `/review-techstack`
+- ถ้าพบ unused, duplicate, security issues ให้ reference ไป `/review-codebase`
 - ใช้ scoring system ชัดเจน (1-35 points)
 - เปรียบเทียบ apples-to-apples กับ version ล่าสุด
-- ไม่ต้องเขียน migration plan ละเอียด (ให้ `/review-techstack` ทำ)
+- ไม่ต้องเขียน migration plan ละเอียด (ให้ `/review-codebase` ทำ)
 
 ## Expected Outcome
 

@@ -50,9 +50,9 @@ description: สร้าง project-specific workflows สำหรับแต
 
 1. สำหรับแต่ละ workspace ให้สร้าง workflows ต่อไปนี้ใน `.devin/workflows/`:
 
-`review-<workspace>.md` — เรียก `/review-codebase-issue` สำหรับ workspace นั้น:
+`review-<workspace>.md` — เรียก `/review-codebase` สำหรับ workspace นั้น:
 - ระบุ scope เป็น workspace path (เช่น `apps/website`)
-- เรียก `/review-codebase-everything` โดยจำกัด scope
+- เรียก `/review-codebase` โดยจำกัด scope
 
 `ship-<workspace>.md` — เรียก `/ship` สำหรับ workspace นั้น:
 - ระบุ scope เป็น workspace path
@@ -94,7 +94,7 @@ description: สร้าง project-specific workflows สำหรับแต
 
 ### 2. Global Workflow Mapping
 
-- `review-<workspace>` → เรียก `/review-codebase-issue` หรือ `/review-codebase-everything`
+- `review-<workspace>` → เรียก `/review-codebase`
 - `ship-<workspace>` → เรียก `/ship`
 - `refactor-monorepo` → เรียก `/refactor` สำหรับทั้ง monorepo
 - `improve-monorepo-config` → เรียก `/improve-all-skills`

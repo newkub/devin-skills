@@ -9,7 +9,7 @@ description: วิเคราะห์และเพิ่ม test coverage �
 
 ## Scope
 
-ใช้สำหรับแก้ไข test coverage issues ที่ตรวจพบ: unit tests, integration tests, E2E tests — ไม่รวมการ review เท่านั้น (ใช้ `/review-delivery`) หรือรัน coverage เท่านั้น (ใช้ `/run-test-coverage`)
+ใช้สำหรับแก้ไข test coverage issues ที่ตรวจพบ: unit tests, integration tests, E2E tests — ไม่รวมการ review เท่านั้น (ใช้ `/review-codebase`) หรือรัน coverage เท่านั้น (ใช้ `/run-test-coverage`)
 
 ## Execute
 
@@ -19,7 +19,7 @@ description: วิเคราะห์และเพิ่ม test coverage �
 
 > Goal: รู้ว่ามี untested paths อะไรบ้าง จัดลำดับตาม severity
 
-1. ทำ `/scan-codebase`, ทำ `/review-delivery`, ทำ `/run-test-coverage` — ระบุ untested files, functions, branches
+1. ทำ `/scan-codebase`, ทำ `/review-codebase`, ทำ `/run-test-coverage` — ระบุ untested files, functions, branches
 2. จำแนก gaps ตามประเภท:
    - Critical paths: business logic ที่ไม่มี test, API endpoints ที่ไม่มี integration test
    - Edge cases: boundary conditions, empty inputs, null/undefined handling

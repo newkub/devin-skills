@@ -9,7 +9,7 @@ description: สร้างไอเดียปรับปรุง naming co
 
 ## Scope
 
-ใช้เมื่อผู้ใช้ต้องการไอเดียปรับปรุง naming ทั่ว codebase ครอบคลุม: variables, functions, files, components, types, API endpoints, database tables/columns, CSS classes, constants ไม่รวมการ implement (ใช้ `/review-code-quality`)
+ใช้เมื่อผู้ใช้ต้องการไอเดียปรับปรุง naming ทั่ว codebase ครอบคลุม: variables, functions, files, components, types, API endpoints, database tables/columns, CSS classes, constants ไม่รวมการ implement (ใช้ `/review-codebase`)
 
 ## Execute
 
@@ -105,7 +105,7 @@ description: สร้างไอเดียปรับปรุง naming co
 ### 6. Non-Duplication
 
 - ใช้ `/deep-review` สำหรับ analysis
-- ใช้ `/review-naming` สำหรับ implement naming improvements แบบครบวงจร
+- ใช้ `/review-codebase` สำหรับ implement naming improvements แบบครบวงจร
 - ใช้ `/rename` สำหรับ rename code identifiers รายตัวที่ได้จากไอเดีย
 - Workflow นี้เน้นเฉพาะการสร้างไอเดียและรายงาน
 
@@ -122,5 +122,5 @@ description: สร้างไอเดียปรับปรุง naming co
 - ทุกไอเดียมี Current และ Proposed naming
 - จัดลำดับตาม Impact (🔴 สูง → 🟡 ปานกลาง → 🟢 ต่ำ)
 - ระบุ Category และ Scope ชัดเจน
-- พร้อมสำหรับ `/review-naming` เพื่อ implement naming improvements แบบครบวงจร
+- พร้อมสำหรับ `/review-codebase` เพื่อ implement naming improvements แบบครบวงจร
 - พร้อมสำหรับ `/rename` เพื่อ rename code identifiers รายตัว

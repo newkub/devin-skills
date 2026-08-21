@@ -70,21 +70,21 @@ related:
 
 สร้าง mapping ระหว่าง categories และ analyzer modules เพื่อระบุสิ่งที่ต้องทำ
 
-> Goal: รู้ analyzers ที่ต้องสร้าง อัปเดท และลบ — โดย map กับ 8+1 category orchestrators จาก `/review-codebase-everything`
+> Goal: รู้ analyzers ที่ต้องสร้าง อัปเดท และลบ — โดย map กับ 8+1 category orchestrators จาก `/review-codebase`
 
 1. สร้าง mapping จาก run-review categories เป็น analyzer module:
    - แต่ละ domain มี analyzer file ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
    - แต่ละ category เป็น `Analyzer` object ใน domain file
-2. Map analyzers ไปยัง category orchestrators จาก `/review-codebase-everything`:
-   - `/review-code-quality` → Code & Architecture domain analyzers
-   - `/review-security` → Security & Compliance domain analyzers
-   - `/review-frontend` → User-Facing domain analyzers
-   - `/review-backend` → Backend & Data domain analyzers
-   - `/review-infrastructure` → Infrastructure domain analyzers
-   - `/review-business` → Business domain analyzers
-   - `/review-delivery` → Delivery domain analyzers
-   - `/review-platform` → Platform domain analyzers
-   - `/review-performance` → Performance domain analyzers
+2. Map analyzers ไปยัง category orchestrators จาก `/review-codebase`:
+   - `/review-codebase` → Code & Architecture domain analyzers
+   - `/review-codebase` → Security & Compliance domain analyzers
+   - `/review-codebase` → User-Facing domain analyzers
+   - `/review-codebase` → Backend & Data domain analyzers
+   - `/review-codebase` → Infrastructure domain analyzers
+   - `/review-codebase` → Business domain analyzers
+   - `/review-codebase` → Delivery domain analyzers
+   - `/review-codebase` → Platform domain analyzers
+   - `/review-codebase` → Performance domain analyzers
 3. ระบุ analyzers ที่มีอยู่แล้ว, ที่ต้องสร้างใหม่, และที่ต้องอัปเดท
 4. ระบุ analyzers ที่ไม่มี category สอดคล้องแล้วเพื่อพิจารณาลบ
 
@@ -220,7 +220,7 @@ related:
 | Cause | สาเหตุรากของปัญหา (root cause) | `Case-insensitive 'placeholder' matches HTML attributes` |
 | Solutions | วิธีแก้ที่ actionable และเฉพาะเจาะจง | `Use case-sensitive search for MOCK/STUB/FAKE markers only` |
 | Severity | ระดับความรุนแรง: Critical > High > Medium > Low | `High` |
-| Review Workflow | `/review-*` workflow ที่แนะนำจาก AGENTS.md | `/review-realize-implementation` |
+| Review Workflow | review workflow ที่แนะนำจาก AGENTS.md | `/review-codebase` |
 | Evidence | code snippet หรือ pattern ที่ trigger finding | `grep -i 'placeholder' → 947 matches in <input placeholder=...>` |
 
 - จัดเรียงตาม severity: Critical ก่อน, High รองลงมา

@@ -13,15 +13,7 @@ triggers:
   - user
   - model
 related:
-  - review-code-quality
-  - review-security
-  - review-test
-  - review-delivery
-  - review-frontend
-  - review-backend
-  - review-api
-  - review-auth
-  - review-business
+  - review-codebase
   - validate
   - deep-validate
   - run-check
@@ -72,14 +64,14 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: หา issues ใน diff ทั้ง quality, security, test, architecture
 
 1. ทำ /run-check เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
-2. ทำ /review-code-quality บน files ที่เปลี่ยนแปลง
-3. ทำ /review-security สำหรับ security-sensitive changes
-4. ทำ /review-test สำหรับ test coverage และ test quality
-5. ทำ /review-delivery สำหรับ docs, changelog, versioning, git hygiene
-6. ถ้า PR เป็น frontend → ทำ /review-frontend
-7. ถ้า PR เป็น backend → ทำ /review-backend
-8. ถ้า PR เป็น API → ทำ /review-api
-9. ถ้า PR เป็น auth → ทำ /review-auth
+2. ทำ /review-codebase บน files ที่เปลี่ยนแปลง
+3. ทำ /review-codebase สำหรับ security-sensitive changes
+4. ทำ /review-codebase สำหรับ test coverage และ test quality
+5. ทำ /review-codebase สำหรับ docs, changelog, versioning, git hygiene
+6. ถ้า PR เป็น frontend → ทำ /review-codebase
+7. ถ้า PR เป็น backend → ทำ /review-codebase
+8. ถ้า PR เป็น API → ทำ /review-codebase
+9. ถ้า PR เป็น auth → ทำ /review-codebase
 
 ### 4. Validate Findings
 

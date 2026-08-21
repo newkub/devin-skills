@@ -31,8 +31,8 @@ description: Design system principles พื้นฐานที่ใช้ไ
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/follow-web-design` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/review-platform`
-4. ถ้า project มี TUI ทำ `/review-platform`
+3. ถ้า project มี mobile ทำ `/review-codebase`
+4. ถ้า project มี TUI ทำ `/review-codebase`
 
 ### 4. Ensure Accessibility
 

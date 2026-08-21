@@ -43,7 +43,7 @@ description: ปรับปรุง rule files ให้ถูกต้อง 
 ปรับปรุง rule files ตาม findings
 
 1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
-2. ทำ `/review-code-quality` สำหรับ issues ด้านเนื้อหาและ structure
+2. ทำ `/review-codebase` สำหรับ issues ด้านเนื้อหาและ structure
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
 4. อัปเดตเนื้อหาตาม best practices ที research ได้
 5. ใช้ references แทนการ duplicate เนื้อหาจาก rules หรือ workflows อื่น

@@ -115,7 +115,7 @@ description: รันโปรแกรมหลักและทำให้�
 
 - 4.2 Apply Fixes
   - แก้ไข code ที่เป็นปัญหา
-  - รัน `/review-deliveryoblems-and-fix` ถ้าจำเป็น
+  - รัน `/review-codebase` ถ้าจำเป็น
   - rebuild และรันใหม่
 
 ## Outputs
@@ -137,4 +137,4 @@ description: รันโปรแกรมหลักและทำให้�
 - `/validate` - ตรวจสอบความถูกต้องก่อนเริ่ม
 - `/run-install` - ติดตั้ง dependencies
 - `/run-build` - build โปรแกรม
-- `/review-deliveryoblems-and-fix` - วิเคราะห์และแก้ไขปัญหา
+- `/review-codebase` - วิเคราะห์และแก้ไขปัญหา

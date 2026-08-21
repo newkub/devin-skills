@@ -79,7 +79,7 @@ description: ออกแบบ web interfaces ด้วย design system princi
 
 ### 10. Optimize Performance
 
-1. ทำ `/review-performance` สำหรับ Core Web Vitals
+1. ทำ `/review-codebase` สำหรับ Core Web Vitals
 2. Optimize images ด้วย modern formats (WebP, AVIF)
 3. ใช้ lazy loading สำหรับ images และ components
 4. ใช้ `content-visibility: auto` สำหรับ long pages

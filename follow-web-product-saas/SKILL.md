@@ -26,22 +26,22 @@ description: ปรับปรุง web SaaS product ครบวงจรเ�
 
 ปรับปรุง performance ครบวงจร
 
-1. ทำ `/review-performance` สำหรับ web performance
-2. ทำ `/review-performance` สำหรับ caching strategy
+1. ทำ `/review-codebase` สำหรับ web performance
+2. ทำ `/review-codebase` สำหรับ caching strategy
 3. Optimize database queries, API responses และ implement CDN
 
 ### 3. Improve UX/UI
 
 ปรับปรุง UX/UI ครบวงจร
 
-1. ทำ `/review-frontend` สำหรับ UX/UI improvements
+1. ทำ `/review-codebase` สำหรับ UX/UI improvements
 2. ปรับปรุง onboarding flow, user dashboard, settings interface และ notification experience
 
 ### 4. Improve SEO
 
 ปรับปรุง SEO ครบวงจร
 
-1. ทำ `/review-delivery` สำหรับ SEO improvements
+1. ทำ `/review-codebase` สำหรับ SEO improvements
 2. Optimize landing pages และ content pages
 3. Implement structured data และ monitor search performance
 
@@ -49,59 +49,59 @@ description: ปรับปรุง web SaaS product ครบวงจรเ�
 
 ปรับปรุง integrations ครบวงจร
 
-1. ทำ `/review-backend` สำหรับ integrations
+1. ทำ `/review-codebase` สำหรับ integrations
 2. Improve third-party integrations, API integrations, webhook handling และ data synchronization
-3. ทำ `/review-business` สำหรับ transactional email service (booking confirmations, receipts, password reset, email templates, deliverability)
+3. ทำ `/review-codebase` สำหรับ transactional email service (booking confirmations, receipts, password reset, email templates, deliverability)
 
 ### 6. Improve Security
 
 ปรับปรุง security ครบวงจร
 
-1. ทำ `/review-security` สำหรับ security improvements
-2. ทำ `/review-security` สำหรับ rate limiting และ DDoS protection
-3. ทำ `/review-delivery` สำหรับ audit logging และ compliance trail (who/what/when สำหรับทุก data mutation)
-4. ทำ `/review-backend` สำหรับ idempotency keys ป้องกัน duplicate bookings/payments เมื่อ retry
+1. ทำ `/review-codebase` สำหรับ security improvements
+2. ทำ `/review-codebase` สำหรับ rate limiting และ DDoS protection
+3. ทำ `/review-codebase` สำหรับ audit logging และ compliance trail (who/what/when สำหรับทุก data mutation)
+4. ทำ `/review-codebase` สำหรับ idempotency keys ป้องกัน duplicate bookings/payments เมื่อ retry
 5. Implement multi-factor authentication, data encryption และ security monitoring
 
 ### 7. Improve Scalability
 
 ปรับปรุง scalability
 
-1. ทำ `/review-architecture` สำหรับ scalability improvements
-2. ทำ `/review-architecture` สำหรับ tenant isolation และ resource limits
-3. ทำ `/review-architecture` สำหรับ background jobs และ task queue (async notifications, report generation, refund processing, dead letter handling)
+1. ทำ `/review-codebase` สำหรับ scalability improvements
+2. ทำ `/review-codebase` สำหรับ tenant isolation และ resource limits
+3. ทำ `/review-codebase` สำหรับ background jobs และ task queue (async notifications, report generation, refund processing, dead letter handling)
 4. Optimize database for scale, implement horizontal scaling และ load balancing
 
 ### 8. Improve Database
 
 ปรับปรุง database operations
 
-1. ทำ `/review-backend` สำหรับ database improvements
+1. ทำ `/review-codebase` สำหรับ database improvements
 2. Optimize queries, implement proper indexing, connection pooling และ data archiving
 
 ### 9. Improve Error Handling
 
 ปรับปรุง error handling
 
-1. ทำ `/review-backend` สำหรับ error handling
-2. ทำ `/review-backend` สำหรับ external error tracking (Sentry/Datadog) สำหรับ production real-time error alerts
+1. ทำ `/review-codebase` สำหรับ error handling
+2. ทำ `/review-codebase` สำหรับ external error tracking (Sentry/Datadog) สำหรับ production real-time error alerts
 3. Implement global error handling, error tracking และ error recovery
 
 ### 10. Improve Monitoring
 
 ปรับปรุง monitoring และ observability
 
-1. ทำ `/review-delivery` สำหรับ monitoring improvements
-2. ทำ `/review-delivery` สำหรับ logging strategy
+1. ทำ `/review-codebase` สำหรับ monitoring improvements
+2. ทำ `/review-codebase` สำหรับ logging strategy
 3. Implement application monitoring, business metrics และ alerting
 
 ### 11. Improve Developer Experience
 
 ปรับปรุง developer experience
 
-1. ทำ `/review-delivery` สำหรับ DX improvements
-2. ทำ `/review-infrastructure` สำหรับ deployment และ rollback strategy
-3. ทำ `/review-infrastructure` สำหรับ gradual rollout และ kill switches
+1. ทำ `/review-codebase` สำหรับ DX improvements
+2. ทำ `/review-codebase` สำหรับ deployment และ rollback strategy
+3. ทำ `/review-codebase` สำหรับ gradual rollout และ kill switches
 4. Improve build times, local development และ documentation
 
 ### 12. Verify And Report

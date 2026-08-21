@@ -6,7 +6,7 @@ allowed-tools: ['read', 'edit', 'write', 'grep', 'glob', 'exec', 'ask_user_quest
 related:
   - analyze-code-structure
   - use-ast-grep-outline
-  - review-naming
+  - review-codebase
   - refactor
   - refactor-to-srp
   - edit-relative
@@ -50,7 +50,7 @@ related:
 
 > Goal: ชื่อ function บ่งบอกสิ่งที่ทำอย่างชัดเจน
 
-1. ใช้ `/review-naming` เพื่อตรวจสอบ naming conventions
+1. ใช้ `/review-codebase` เพื่อตรวจสอบ naming conventions
 2. ตรวจสอบว่าชื่อขึ้นต้นด้วย verb (get, set, compute, validate, handle, etc.)
 3. หลีกเลี่ยงชื่อกำกวม เช่น `doStuff`, `process`, `data`, `temp`, `helper`, หรือ single-letter
 4. ถ้าชื่อไม่สะท้อน intent → ระบุ rename candidate

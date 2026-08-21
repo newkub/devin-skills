@@ -51,7 +51,7 @@ related:
 
 1. เปรียบเทียบ alternatives
 2. ตรวจสอบ scalability, security, cost
-3. ทบทวนด้วย /review-architecture
+3. ทบทวนด้วย /review-codebase
 
 ## Rules
 

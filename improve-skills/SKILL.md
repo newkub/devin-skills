@@ -16,9 +16,7 @@ related:
   - refactor-skills
   - read-related-skills
   - report
-  - review-code-quality
-  - review-coverage
-  - review-delivery
+  - review-codebase
   - check-circular-dependencies
   - scan-codebase
   - suggest-next-action
@@ -107,7 +105,7 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 > Goal: เนื้อหาครอบคลุม ชัดเจน และตรงตาม best practices
 
 1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
-2. ทำ `/review-code-quality` สำหรับ issues ด้านเนื้อหาและ structure
+2. ทำ `/review-codebase` สำหรับ issues ด้านเนื้อหาและ structure
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
 4. อัปเดตเนื้อหาตาม best practices ที่ research ได้
 5. เพิ่ม edge cases และ conditional execution ที่ขาดหาย
@@ -118,8 +116,8 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 > Goal: skill ครอบคลุม use cases, edge cases, และ subdirectories ครบถ้วน
 
-1. ทำ `/review-delivery` เพื่อตรวจสอบว่า skill ครอบคลุม use cases ครบถ้วน
-2. ทำ `/review-coverage` สำหรับแต่ละ subdirectory ที่ขาดเนื้อหา
+1. ทำ `/review-codebase` เพื่อตรวจสอบว่า skill ครอบคลุม use cases ครบถ้วน
+2. ทำ `/review-codebase` สำหรับแต่ละ subdirectory ที่ขาดเนื้อหา
 3. ตรวจสอบว่า Expected Outcome สอดคล้องกับ Goal
 
 ### 9. Verify And Report
@@ -160,9 +158,9 @@ refactor โครงสร้าง skill ก่อนแก้ไขเนื�
 
 ### 4. Coverage Quality
 
-- ครอบคลุม use cases ครบถ้วน (ทำ `/review-delivery`)
+- ครอบคลุม use cases ครบถ้วน (ทำ `/review-codebase`)
 - ครอบคลุม edge cases และ conditional execution
-- ทำ `/review-coverage` สำหรับ subdirectories ที่ขาดเนื้อหา
+- ทำ `/review-codebase` สำหรับ subdirectories ที่ขาดเนื้อหา
 - Expected Outcome สอดคล้องกับ Goal
 - ไม่มี missing sections หรือไฟล์
 
