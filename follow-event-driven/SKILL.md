@@ -3,6 +3,7 @@ name: follow-event-driven
 description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
 allowed-tools:
   - read
+  - write
   - edit
   - grep
   - glob
@@ -10,9 +11,11 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-modular-monolith
+  - follow-microservices-architecture
+  - follow-clean-architecture
 ---
-
-## Goal
 
 ## Goal
 
@@ -20,13 +23,20 @@ Implement Event-Driven Architecture ที่รองรับ async workflows,
 
 ## Scope
 
-Use `follow-event-driven` for the specific tasks and workflows it covers
+ใช้สำหรับออกแบบและ implement Event-Driven Architecture สำหรับ async workflows, loose coupling, และ scalability
 
-## Execute
+- ออกแบบ event model และ message broker
+- สร้าง event bus, handlers, และ consumers
+- กำหนด delivery guarantees, idempotency, และ error handling
+- รองรับ event sourcing และ observability
 
 ## Execute
 
 ### 1. Design Event Model
+
+ออกแบบ event model และ event catalog
+
+> Goal: มี event contracts ที่ชัดเจนและ versionable
 
 1. ระบุ business events ที่สำคัญ:
    - Domain events (business facts)
@@ -38,6 +48,10 @@ Use `follow-event-driven` for the specific tasks and workflows it covers
 
 ### 2. Choose Message Broker
 
+เลือก message broker ตาม scalability และ delivery requirements
+
+> Goal: broker เหมาะสมกับระบบ
+
 1. เลือก message broker ตาม requirements:
    - In-memory: Tokio mpsc, channels (single process)
    - Single node: Redis Pub/Sub, SQLite queue
@@ -48,6 +62,10 @@ Use `follow-event-driven` for the specific tasks and workflows it covers
 4. สร้าง connection management
 
 ### 3. Implement Event Bus
+
+สร้าง abstraction และ adapters สำหรับ event bus
+
+> Goal: event bus พร้อม error handling และ resilience
 
 1. สร้าง abstraction layer สำหรับ event bus:
    ```rust
@@ -62,6 +80,10 @@ Use `follow-event-driven` for the specific tasks and workflows it covers
 
 ### 4. Setup Event Handlers
 
+สร้าง handlers ตาม event types พร้อม idempotency
+
+> Goal: consumers process events ได้ถูกต้องและ reliable
+
 1. สร้าง handler registry หรือ dispatcher
 2. Implement handlers ตาม event types:
    - Synchronous handlers (quick operations)
@@ -70,6 +92,10 @@ Use `follow-event-driven` for the specific tasks and workflows it covers
 4. Implement idempotency สำหรับ handlers
 
 ### 5. Configure Event Sourcing (Optional)
+
+ตัดสินใจและตั้งค่า event sourcing ถ้าจำเป็น
+
+> Goal: ใช้ event sourcing ได้ถูกต้องเมื่องจำเป็น
 
 1. ตัดสินใจว่าต้องการ event sourcing หรือไม่:
    - Event sourcing: Store events as source of truth
@@ -80,12 +106,14 @@ Use `follow-event-driven` for the specific tasks and workflows it covers
 
 ### 6. Add Observability
 
+เพิ่ม tracing, logging, และ monitoring สำหรับ event flow
+
+> Goal: เห็น event flow และ failed events ชัดเจน
+
 1. Implement distributed tracing ผ่าน events
 2. Setup event logging และ audit trail
 3. Create dashboards สำหรับ event flow
 4. Add alerting สำหรับ failed events
-
-## Rules
 
 ## Rules
 
@@ -204,8 +232,6 @@ Design Issues
 
 ## Expected Outcome
 
-## Expected Outcome
-
 - Event-driven system ที่ scalable และ resilient
 - Loose coupling ระหว่าง components
 - Async processing ที่ reliable
@@ -213,7 +239,7 @@ Design Issues
 - Complete observability ของ event flows
 - Path สำหรับ scale และ evolution
 
-## References
+## Guide
 
 - ทำ `/follow-modular-monolith` สำหรับ base architecture
 - ทำ `/follow-microservices-architecture` สำหรับ distributed event-driven systems
