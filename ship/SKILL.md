@@ -1,6 +1,6 @@
 ---
 name: ship
-description: Ship ครบวงจร ตั้งแต่ planning, review, verify, release โดยมี user confirm ก่อน release
+description: Ship โดยอัปเดต AGENTS.md แล้วทำตาม workflows ใน AGENTS.md โดยมี user confirm ก่อน release
 allowed-tools:
   - read
   - edit
@@ -13,159 +13,86 @@ triggers:
   - user
   - model
 related:
-  - CD
+  - update-agents-md
+  - follow-agents-md
+  - git-commit
+  - run-release
+  - ask-me
+  - resolve-errors
+  - report
 ---
 
 ## Goal
 
-Ship ครบวงจร ตั้งแต่ planning, review, improve, commit, verify, deep review และ release ไปยัง external platforms โดยมี user confirm ก่อน release เสมอ
+Ship ครบวงจรโดยอัปเดต `AGENTS.md` แล้วทำตาม workflows ใน `AGENTS.md` จนถึง release โดยมี user confirm ก่อน release เสมอ
 
 ## Scope
 
-ครอบคลุมการวางแผน ตั้งค่าพื้นฐาน review ปรับปรุง codebase commit verify deep review และ release ไม่รวม deploy หรือ CI/CD setup (ใช้ `/follow-deploy`)
+ใช้กับ workspace ที่มี `AGENTS.md` ทั้ง root และ sub-workspaces ถ้าเป็น monorepo ไม่รวม deploy setup (ใช้ `/follow-deploy`)
 
 ## Execute
 
-### 1. Prepare
+### 1. Update AGENTS.md
 
-> Goal: เตรียมความพร้อมก่อนเริ่ม ship
-> Goal: ตรวจสอบ prerequisites และวางแผนงานก่อน ship
+> Goal: `AGENTS.md` เป็นปัจจุบันก่อนเริ่ม ship
 
-1. ทำ `/read-related-skills` และ `/follow-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
-2. ตรวจสอบ `bun install` ผ่าน
-3. ถ้า requirement ไม่ชัดเจน ให้ทำ `/ask-requirement`
-4. ทำ `/deep-plan` เพื่อวางแผนงาน (ถ้าเสี่ยงสูงให้รอยืนยัน user)
-5. ทำ `/update-agents-md` เพื่อสร้างหรืออัปเดท `AGENTS.md`
-6. ทำ `/follow-agents-md` เพื่อ execute instructions จาก `AGENTS.md`
-7. ทำ `/loop-until-complete` เพื่อตรวจสอบและทำซ้ำจนผ่าน
-8. ถ้าเป็น monorepo ให้ทำ `/follow-monorepo` และ `/all-workspaces` เพื่อประมวลผลทุก workspace ตามลำดับ foundation ก่อน
-9. ทำ `/follow-tasks` เพื่อตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน
-10. ถ้า project ต้องการ deployment ให้ทำ `/follow-deploy` เพื่อตั้งค่า CI/CD
+1. ทำ `/update-agents-md` ก่อนทุกอย่าง
+2. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
+3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
-### 2. Review And Fix
+### 2. Follow AGENTS.md
 
-> Goal: ทำ comprehensive review และแก้ไข issues ครบทุกมิติ
-> Goal: Review ครบทุกมิติและแก้ไข issues ตาม severity จนครบ
+> Goal: ทำตาม workflows/skills ที่ `AGENTS.md` ระบุ
 
-1. ทำ `/review-codebase` เพื่อ review ครบทุกมิติ แก้ไข issues ตาม severity จนครบ
-2. ถ้าพบ issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` ขั้นตอน 1 จนกว่าจะผ่าน
+1. ทำ `/follow-agents-md` เพื่ออ่านและ execute instructions จาก `AGENTS.md`
+2. ตรวจสอบว่า workflows ทุกตัวถูก execute ครบถ้วนตาม `## Expected Outcome` ของ `follow-agents-md`
+3. ถ้าพบ error ให้ทำ `/resolve-errors` แล้วกลับไปทำ `/follow-agents-md` ซ้ำจนผ่าน
 
-### 3. Improve Codebase
+### 3. Confirm Release
 
-> Goal: ปรับปรุง codebase ครบวงจร จาก review → analyze → improve → validate
-> Goal: Codebase ผ่านการปรับปรุงครบวงจร ไม่มี regression
+> Goal: ขอ user confirm ก่อน release เสมอ
 
-1. ทำ `/review-codebase` เพื่อ review → analyze gaps → implement improvements → validate
-2. ถ้าพบ issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` ขั้นตอน 1 จนกว่าจะผ่าน
+1. ทำ `/ask-me` พร้อมตัวเลือก:
+   - `Proceed with release (recommended)` — ดำเนินการ release ต่อ
+   - `Abort release` — หยุดไม่ release รายงานสถานะ
+   - `Review summary first` — แสดงสรุปผลลัพธ์ก่อนตัดสินใจ
+2. ถ้า user เลือก `Abort release` → stop และ report ทันที
+3. ถ้า user เลือก `Review summary first` → แสดงสรุปผลจาก Phase 1-2 แล้วถามซ้ำ
 
-### 4. Ship
-
-> Goal: Git operations และ commit
-> Goal: Git operations สำเร็จ
-
-1. ทำ `/git-commit-and-push` เพื่อ commit และ push branch
-2. ทำ `/ask-me` เพื่อถาม user ว่าต้องการรัน `/run-release` หรือไม่
-3. ทำ `/update-readme` เพื่ออัปเดท docs ให้ตรงกับ version ใหม่
-
-### 5. Verify
-
-> Goal: ตรวจสอบ quality gates หลัง commit
-> Goal: ตรวจสอบ quality gates ผ่าน verify และ CI
-
-1. ทำ `/loop-until-complete` กับ `/run-verify` จนกว่าจะผ่าน
-2. ทำ `/watch-github-actions` เพื่อตรวจสอบว่า CI ผ่านทุก checks
-3. ถ้าพบ CI failures ให้ทำ `/resolve-errors` ก่อนดำเนินการต่อ
-
-### 6. Review Codebase
-
-> Goal: ทำ comprehensive review ครบทุกมิติหลัง verify ผ่าน
-> Goal: Review ครบ 8 categories และ issues ถูก validate ครบถ้วน
-
-1. ทำ `/review-codebase` เพื่อ review ครบ 8 category orchestrators พร้อม validate issues
-2. ถ้าพบ critical หรือ high severity issues ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` กลับไปทำ Phase 2 จนกว่าจะผ่าน
-
-### 7. Confirm Release
-
-> Goal: ขอ user confirm ก่อน release เสมอ — ห้ามข้ามขั้นตอนนี้
-> Goal: User ยืนยันการ release หรือปฏิเสธ
-
-1. ทำ `/ask-me` เพื่อขอ user confirm การ release พร้อมแสดงสรุปผลจาก Phase 1-6:
-   - ตัวเลือก `Proceed with release (recommended)` — ดำเนินการ release ต่อ
-   - ตัวเลือก `Abort release` — หยุดไม่ release รายงานสถานะ
-   - ตัวเลือก `Review summary first` — แสดงสรุปผลลัพธ์ก่อนตัดสินใจ
-2. ถ้า user เลือก `Abort release` → stop และ report ไม่ดำเนินการต่อ
-3. ถ้า user เลือก `Review summary first` → แสดงสรุปผลจาก Phase 1-6 แล้วถามซ้ำ
-
-### 8. Run Release
+### 4. Release And Finalize
 
 > Goal: Release ไปยัง external platforms หลัง user confirm
-> Goal: Release สำเร็จไปยัง platforms ที่ detect ได้
 
-1. ทำ `/run-release` เพื่อ auto-detect platforms และ release ไปยัง external platforms
-2. ถ้า release ไม่สำเร็จ ให้ทำ `/resolve-errors` แล้วทำ `/loop-until-complete` ขั้นตอน 1 จนกว่าจะผ่าน
-
-### 9. Finalize
-
-> Goal: ตรวจสอบความครบถ้วนและรายงานผล
-> Goal: ตรวจสอบความครบถ้วนและรายงานผล
-
-1. ตรวจสอบสถานะของทุก phase (1-8) ว่าทำเสร็จแล้วทั้งหมด
-2. รวบรวมสถานะและทำ `/report` พร้อม `/report-table`
-3. ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⏭️ ข้าม, ⚠️ มี warning
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ทำ `/git-commit` ถ้ายังไม่มี commit สำหรับการเปลี่ยนแปลงที่เกิดจาก Phase 1-2
+2. ทำ `/run-release` เพื่อ auto-detect platforms และ release
+3. ถ้า release ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
+4. ทำ `/report` พร้อม `/report-table` สรุปผล
+5. ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Non-Redundancy
-> Goal: หลีกเลี่ยงการ duplicate รายละเอียด
+### 1. AGENTS.md First
 
-- ห้าม duplicate รายละเอียดที่มีอยู่ใน sub-workflows
-- Orchestrator อ้างถึง sub-workflow โดยไม่ระบุรายละเอียดภายใน
-- Review, refactor, security, test quality, migration validation อยู่ใน `/review-codebase` แล้ว
-- Codebase improvement อยู่ใน `/review-codebase` แล้ว
-- รายละเอียด verify อยู่ใน `/run-verify` แล้ว — รายละเอียด release อยู่ใน `/run-release` แล้ว
+- `/update-agents-md` ต้องทำก่อนทุกอย่าง ไม่ข้ามกรณีใด
+- `/follow-agents-md` ต้องทำหลัง `AGENTS.md` อัปเดตแล้ว
+- ห้าม duplicate รายละเอียดที่มีอยู่ใน `AGENTS.md`
 
 ### 2. Mandatory User Confirmation
-> Goal: ห้าม release โดยไม่ได้รับ user confirmation
 
-- ห้ามข้าม Phase 7 (Confirm Release) เด็ดขาด — ไม่ว่ากรณีใดๆ
-- ใช้ `/ask-me` เท่านั้น สำหรับการขอ confirm — ห้ามใช้วิธีอื่น
-- ถ้า user ปฏิเสธ → stop ทันที ไม่ดำเนินการ release
-- ถ้า user ขอดูสรุปก่อน → แสดงสรุปแล้วถามซ้ำ ไม่ข้ามไป release
+- ห้าม release โดยไม่ได้รับ user confirmation
+- ใช้ `/ask-me` เท่านั้น
+- หาก user ปฏิเสธ → stop ทันที
 
-### 3. Error Resolution
-> Goal: แก้ไข errors จนกว่าจะผ่านทุกอย่าง
+### 3. Sub-Workflow Discipline
 
-- ทำ `/resolve-errors` เมื่อพบ error แล้วทำ `/loop-until-complete` ซ้ำจนกว่าจะผ่าน
-- ห้ามข้าม errors หรือทำ workaround
-
-### 4. Execution Order
-> Goal: ทำตามลำดับ phases อย่างเป็นระบบ
-
-- ทำตามลำดับ phases ห้ามข้าม phase
-- แต่ละ phase เป็น gate condition ถ้าไม่ผ่านไม่ต้องไป phase ถัดไป
-- Review ต้องทำหลัง verify ผ่านเท่านั้น — review บน code ที่ไม่ผ่าน quality gates เป็นการสิ้นเปลือง
-- Release ต้องทำหลัง user confirm เท่านั้น — ไม่มีข้อยกเว้น
-- ทำงานอัตโนมัติโดยไม่หยุดถาม ยกเว้นกรณีเสี่ยงสูง
-
-### 5. Sub-Workflow Execution Discipline
-> Goal: บังคับให้ทุก sub-workflow ถูกอ่านและทำจริง ไม่ข้าม
-
-- คำว่า "ทำ `<skill-name>`" หมายถึง: อ่านไฟล์ workflow ที่ `C:\Users\Veerapong\.codeium\windsurf\global_workflows\<skill-name>.md` ด้วย `read_file` แล้วทำตาม `## Execute` section ของไฟล์นั้น
-- ห้ามตีความ "ทำ `<skill-name>`" เป็นแค่ concept หรือ suggestion — ต้องอ่านไฟล์จริงและทำตาม steps จริง
-- ทุก sub-workflow ต้องถูก track ใน `todo_list`
-- ห้ามข้าม sub-workflow ใดๆ ยกเว้นกรณี: ไม่มีไฟล์ workflow อยู่จริง หรือ condition ใน workflow บอกให้ข้าม
-- ก่อน mark `completed` ต้อง verify ว่า `## Expected Outcome` ของ sub-workflow นั้นบรรลุแล้ว
-- ถ้า sub-workflow มี sub-workflows ของตัวเอง (nested) ต้องทำ recursive เช่นกัน — อ่านและทำตามทุกระดับ
+- ทุก `/command` ที่อ้างถึงต้องอ่าน `SKILL.md` จริงก่อนทำ
+- ทำตาม `## Execute` ของแต่ละ skill จนครบ
+- ก่อน mark `completed` ต้อง verify `## Expected Outcome` ของ sub-workflow นั้น
 
 ## Expected Outcome
 
-- Requirement ชัดเจน และ plan ได้รับการยืนยันจาก user
-- Code ผ่าน comprehensive review และ issues ถูกแก้ไขครบถ้วน ผ่าน `/review-codebase`
-- Codebase ผ่านการปรับปรุงครบวงจร ผ่าน `/review-codebase`
-- Git operations สำเร็จ
-- Code ผ่าน verify และ CI/CD
-- Code ผ่าน comprehensive review ครบ 8 categories
+- `AGENTS.md` อัปเดตและถูกต้อง
+- Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
 - User ยืนยันการ release ผ่าน `/ask-me`
-- `/run-release` สำเร็จ (auto-detect platforms, release ไปยัง external platforms)
-- รายงานผลลัพธ์การ ship ครบวงจร ตาม `/report`
+- `/run-release` สำเร็จ หรือ report สถานะหากยกเลิก
+- รายงานผลลัพธ์การ ship ครบถ้วนตาม `/report`
