@@ -55,8 +55,9 @@ related:
 
 Monitor ตาม ## Rules ข้อ 1 และจัดการ errors ตาม ## Rules ข้อ 2
 
-1. ใช้ `/watch-browser-console` สำหรับ focus ที่ console errors โดยเฉพาะ
-2. ใช้ `agent-browser snapshot -i` สำหรับ interactive elements และ `agent-browser console` สำหรับ console messages
+1. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เพื่อ capture หน้าจอก่อนว่าแสดงอะไร
+2. ถ้าอยากดูเพิ่มหรือต้องการ focus ที่ console errors → ใช้ `/watch-browser-console`
+3. ใช้ `agent-browser snapshot -i` สำหรับ interactive elements และ `agent-browser console` สำหรับ console messages
 
 ## Rules
 
