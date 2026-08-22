@@ -27,7 +27,6 @@ Template สำหรับสร้าง `follow-*` skills ที่ implement
 ### 1. Detect Tool
 
 ตรวจจับ tool/library ใน project
-
 > Goal: รู้ว่าใช้ tool อะไร version ใด
 
 1. อ่าน `package.json`, `Cargo.toml`, หรือไฟล์ dependencies ที่เกี่ยวข้อง
@@ -38,7 +37,6 @@ Template สำหรับสร้าง `follow-*` skills ที่ implement
 ### 2. Read Best Practices
 
 อ่าน best practices จาก official docs
-
 > Goal: ใช้ข้อมูลที่ถูกต้องและทันสมัย
 
 1. ทำ `/learn-from-web`, `/check-reference`, ทำ `/follow-best-practice`
@@ -48,7 +46,6 @@ Template สำหรับสร้าง `follow-*` skills ที่ implement
 ### 3. Implement Patterns
 
 Implement best practices patterns
-
 > Goal: Code ตรง best practices และทำงานได้
 
 1. สร้างหรืออัปเดท configuration files
@@ -60,7 +57,6 @@ Implement best practices patterns
 ### 4. Validate
 
 ตรวจสอบว่า implementation ทำงานได้
-
 > Goal: Implementation ผ่าน validation ไม่มี errors
 
 1. รัน typecheck, รัน lint, รัน tests ถ้ามี
@@ -88,9 +84,17 @@ Implement best practices patterns
 - ไม่ rewrite ทั้งไฟล์ถ้าเปลี่ยนเฉพาะ config
 - ถ้าต้องแก้ >10 ไฟล์ → ทำ `/use-scripts`
 
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+
 ## Expected Outcome
 
 - Tool/library setup ตาม best practices
 - Configuration files ถูกต้องและ consistent
 - Code ผ่าน typecheck และ lint
 - ไม่มี breaking changes โดยไม่จำเป็น
+
+

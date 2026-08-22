@@ -20,6 +20,10 @@ related:
   - follow-create-cli
   - use-scripts
   - validate
+  - review-devin-global-skills
+  - check-circular-dependencies
+  - update-reference
+  - suggest-next-action
 ---
 
 ## Goal
@@ -28,24 +32,23 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง skill ใหมหรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุบ directory, template selection, validation, references และการสร้าง CLI ถ้าจำเป็น โดยไม่ทำลาย references เดิม
+ใช้สำหรับสร้าง skill ใหม่หรือแก้ไข skill ใน `%APPDATA%\devin\skills\` หรือ workspace `.devin/skills/` โดยครอบคลุม directory, template selection, validation, references และการสร้าง CLI ถ้าจำเป็น โดยไม่ทำลาย references เดิม
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: เตรียม context ก่อนเขียน skill
-
+เตรียม context ก่อนเขียน skill
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
 1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
 2. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 3. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
+4. ถ้ามี dependencies จำเป็น → install พร้อมเขียน references ลง `references/`
 
 ### 2. Select Template
 
-> Goal: เลือก template ตามประเภท skill
-
+เลือก template ตามประเภท skill
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
@@ -58,12 +61,12 @@ related:
    - `report-*` → `references/skills-type-report.md`
    - `idea-*` → `references/skills-type-idea.md`
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
-3. อ่าน template ที่เลือกเพื่อดู sections, rules, และ example template
+3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
+4. สร้าง directory structure ตาม pattern ใน template ที่เลือก
 
 ### 3. Write SKILL.md
 
-> Goal: สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
-
+สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
 1. ทำ `/follow-devin-skills-md` หรือ `/write-skills-md` เพื่อเขียน frontmatter และ prompt body
@@ -74,19 +77,18 @@ related:
 
 ### 4. Add Directory Contents
 
-> Goal: สร้างส่วนประกอบเพิ่มเติมถ้าจำเป็น
-
+สร้างส่วนประกอบเพิ่มเติมถ้าจำเป็น
 > Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
-1. ถ้าต้องการ external references → สร้าง `references/`
+1. ถ้าต้องการ external references หรือ dependencies → สร้าง `references/` และพยายามเขียน references ให้ครบถ้วน
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
-4. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+4. ถ้าต้องการ Devin workflows → สร้าง `workflows/`
+5. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ### 5. Create CLI (if needed)
 
-> Goal: สร้าง CLI ถ้า skill ต้องการ executable
-
+สร้าง CLI ถ้า skill ต้องการ executable
 > Goal: skill ที่ระบุ CLI มี entry point และรันผ่าน `bun run dev`
 
 1. ถ้า `## Execute` ระบุว่าต้องใช้ CLI หรือทำงานผ่าน terminal → สร้าง CLI
@@ -98,8 +100,7 @@ related:
 
 ### 6. Validate Skill
 
-> Goal: ตรวจสอบคุณภาพก่อน finalize
-
+ตรวจสอบคุณภาพก่อน finalize
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
 1. ทำตาม `/validate` เพื่อตรวจความถูกต้อง
@@ -109,8 +110,7 @@ related:
 
 ### 7. Update References
 
-> Goal: อัปเดต references และสรุป
-
+อัปเดต references และสรุป
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 
 1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
@@ -129,7 +129,7 @@ related:
 ### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก
-- สามารถมี `references/`, `scripts/`, `guide/`, `examples/` ตามความจำเป็น
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
 - ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -137,7 +137,7 @@ related:
 ### 3. Flow And Parallelism
 
 - เรียง Foundation → Dependencies → High impact → High-risk เพื่อ fail fast
-- ใช้คำนำหน้า `parallel:` และคั่นด้วย `∥` ใน Execute numbered list
+- ใช้คำนำหน้า `parallel:` และคั่นด้วย `∥` ใน `## Execute` สำหรับรายการที่รันพร้อมกันได้
 - ทุก skill ที่เรียกต้องนำหน้าด้วย `ทำตาม`
 
 ### 4. Safety
@@ -159,6 +159,12 @@ related:
 - ใช้ `src/presentation/cli.ts` เป็น entry point
 - ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
+
+### 7. Skill Type File Structure
+
+- ใช้ `references/skills-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
+- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`
+- directory structure ต้องสอดคล้องกับ template ที่เลือก ไม่เพิ่ม/ลดโดยไม่มีเหตุผล
 
 ## Expected Outcome
 

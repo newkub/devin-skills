@@ -23,7 +23,6 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 ### 1. Check Prerequisites
 
 ตรวจสอบ prerequisites ก่อนรัน
-
 > Goal: รันได้แน่น ไม่เสียเวลา fail จากของขาด
 
 1. ตรวจสอบว่า target มีอยู่จริง (file, directory, package)
@@ -34,7 +33,6 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 ### 2. Execute Command
 
 รัน command หลัก
-
 > Goal: รัน command สำเร็จหรือได้ error ที่ชัดเจน
 
 1. รัน command พร้อม timeout ที่เหมาะสม
@@ -46,7 +44,6 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 ### 3. Handle Errors
 
 จัดการ errors ถ้า command ล้มเหลว
-
 > Goal: Error ถูก resolve หรือ report ด้วย root cause
 
 1. ถ้ามี errors → ทำ `/resolve-errors`
@@ -57,7 +54,6 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 ### 4. Report Results
 
 รายงานผลลัพธ์
-
 > Goal: ผู้ใช้รู้ผลลัพธ์และ next action
 
 1. สรุปผล: success/fail, duration, key metrics
@@ -84,6 +80,12 @@ Template สำหรับสร้าง `run-*` skills ที่ execute comm
 - รายงานสั้นกระชับ เน้นผลลัพธ์และ next action
 - ไม่ dump output ทั้งหมด — เฉพาะส่วนสำคัญ
 - ถ้ามีตัวเลข (tests passed, coverage) → แสดง
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

@@ -27,7 +27,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 1. Gather Context
 
 รวบรวม context ก่อน review
-
 > Goal: เข้าใจ scope, target, และ criteria ของ review
 
 1. ระบุ review target: file, directory, package หรือทั้ง project
@@ -38,7 +37,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 2. Deep Analyze
 
 วิเคราะห์ target อย่างลึกซึ้งด้วย review CLI และ rules
-
 > Goal: พบทุก issue พร้อม root cause และ review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
@@ -53,7 +51,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 3. Run Health
 
 รัน review CLI เพื่อดึง metrics ล่าสุด
-
 > Goal: มี review report พร้อม metrics สำหรับ scoring
 
 1. ทำ `/run-review` เพื่อรัน review CLI และดึง review report
@@ -62,7 +59,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 4. Validate Findings
 
 ตรวจสอบ findings อย่างละเอียดหลายมิติ
-
 > Goal: findings ที่ผ่าน validation เท่านั้น ลด noise และ rework
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
@@ -74,7 +70,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 5. Rate Severity And Review Score
 
 ให้คะแนน severity ของแต่ละ finding และคำนวณ review score
-
 > Goal: ผู้ใช้รู้ลำดับความสำคัญและสถานะ overall review score
 
 1. ให้ severity: Critical, High, Medium, Low, Info
@@ -86,7 +81,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 6. Recommend
 
 แนะนำ actions ที่ actionable และจัดลำดับตาม priority
-
 > Goal: ผู้ใช้รู้ว่าต้องทำอะไรก่อน พร้อม estimated effort
 
 1. สำหรับแต่ละ finding → แนะนำ fix หรือ skill ที่เหมาะสม
@@ -98,7 +92,6 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 ### 7. Implement All
 
 ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
-
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
 1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
@@ -148,6 +141,12 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

@@ -28,7 +28,6 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 ### 1. Gather Data
 
 รวบรวมข้อมูลจาก codebase
-
 > Goal: มีข้อมูลครบเพื่อวิเคราะห์
 
 1. ทำ `/scan-codebase`, อ่าน package manifests, อ่าน configs และ key files
@@ -38,7 +37,6 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 ### 2. Analyze
 
 วิเคราะห์ข้อมูลที่รวบรวม
-
 > Goal: เข้าใจ patterns, issues และ opportunities
 
 1. วิเคราะห์ structure, dependencies และ patterns
@@ -49,7 +47,6 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 ### 3. Report
 
 รายงานผลการวิเคราะห์
-
 > Goal: Report ชัดเจน อ่านง่าย ลำดับถูกต้อง
 
 1. ทำ `/report-table` สำหรับ summary
@@ -76,6 +73,12 @@ Template สำหรับสร้าง `analyze-*` skills ที่วิเ
 - ครอบคลุมทุก workspaces ใน monorepo
 - ไม่ข้าม dependencies และ configs
 - รวม external references ถ้าเกี่ยวข้อง
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

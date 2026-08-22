@@ -13,11 +13,13 @@ triggers:
   - model
 related:
   - follow-better-auth
+  - follow-config
+  - validate
 ---
 
 ## Goal
 
-ตั้งค่าและใช้งาน WorkOS APIs สำหรับ authentication และ identity management
+กำหนดค่าและใช้งาน WorkOS APIs สำหรับ authentication และ identity management
 
 ## Scope
 
@@ -26,20 +28,26 @@ related:
 ## Execute
 
 ### 1. Install SDK
+
+เตรียม SDK สำหรับ WorkOS
 > Goal: Install SDK
 
-1. ติดตั้ง package ตาม runtime (`@workos-inc/node`, `workos-python`, etc.)
+1. install package ตาม runtime (`@workos-inc/node`, `workos-python`, etc.)
 2. สร้าง API key จาก WorkOS Dashboard
 3. เก็บ credentials ใน environment variables
 
 ### 2. Configure WorkOS
+
+กำหนดค่า WorkOS ให้พร้อมใช้งาน
 > Goal: Configure WorkOS
 
 1. กำหนด `WORKOS_API_KEY` และ `WORKOS_CLIENT_ID`
-2. ตั้งค่า redirect URI และ allowed origins
+2. กำหนด redirect URI และ allowed origins
 3. สร้าง organization และ connection ตาม provider (SAML, OIDC, Microsoft, Google)
 
 ### 3. Implement SSO
+
+ใช้งาน SSO ด้วย WorkOS APIs
 > Goal: Implement SSO
 
 1. สร้าง `authorization_url` ด้วย `workos.sso.getAuthorizationURL`
@@ -48,22 +56,30 @@ related:
 4. ตรวจสอบ `state` และ `code_challenge` สำหรับ PKCE
 
 ### 4. Directory Sync
+
+จัดการ Directory Sync และ webhook events
 > Goal: Directory Sync
 
 1. สร้าง directory สำหรับ connection
-2. ตั้งค่า webhook endpoint สำหรับ events
+2. กำหนด webhook endpoint สำหรับ events
 3. จัดการ users/groups จาก `dsync.*` APIs
 4. ตรวจสอบ webhook signature
 
 ## Rules
 
+### 1. Security
+
 - ไม่ hardcode API key ใน code
-- ใช้ environment-based config
 - validate webhook signatures ทุกครั้ง
 - จัดการ state อย่างปลอดภัย
 
+### 2. Configuration
+
+- ใช้ environment-based config
+
 ## Expected Outcome
 
+- WorkOS SDK พร้อมใช้งานและกำหนดค่าถูกต้อง
 - SSO/Dsync พร้อมใช้งาน
 - Credentials ปลอดภัย
 - User data sync ถูกต้อง

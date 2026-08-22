@@ -25,7 +25,6 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 ### 1. Gather Data
 
 รวบรวมข้อมูลจาก source
-
 > Goal: มีข้อมูลครบ ถูกต้อง ทันสมัย
 
 1. ทำ `/scan-codebase`, อ่าน configs, อ่าน manifests, อ่าน key files
@@ -35,7 +34,6 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 ### 2. Analyze
 
 วิเคราะห์ข้อมูลที่รวบรวม
-
 > Goal: เข้าใจข้อมูล หา patterns และ insights
 
 1. จัดกลุ่มข้อมูลตาม category
@@ -45,7 +43,6 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 ### 3. Format
 
 จัดรูปแบบ report
-
 > Goal: Report อ่านง่าย เหมาะกับ audience
 
 1. ทำ `/report-table`, ทำ `/report-file-structure` ถ้าเกี่ยวกับ files
@@ -55,7 +52,6 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 ### 4. Present
 
 นำเสนอ report
-
 > Goal: ผู้ใช้ได้ report ที่พร้อมใช้
 
 1. นำเสนอ report ในรูปแบบที่เหมาะสม
@@ -88,6 +84,12 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 - ทุก report ต้องมี next actions
 - ถ้า report พบ issues → แนะนำ skill ที่เหมาะสม
 - ถ้า report ไม่พบ issues → ระบุว่า "no issues found"
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

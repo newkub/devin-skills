@@ -24,7 +24,6 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 ### 1. Gather Context
 
 รวบรวม context ก่อนสร้างไอเดีย
-
 > Goal: ไอเดียตรงกับ project และ user needs
 
 1. ทำ `/deep-analyze` เพื่อเข้าใจ current state
@@ -35,7 +34,6 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 ### 2. Identify Gaps
 
 ระบุ gaps และ opportunities
-
 > Goal: รู้ว่าขาดอะไร โอกาสอะไร
 
 1. วิเคราะห์ gaps (missing features, UX issues, performance bottlenecks)
@@ -46,7 +44,6 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 ### 3. Generate Ideas
 
 สร้างไอเดียพร้อม continuous numbering
-
 > Goal: ไอเดียที่ actionable และ track ได้
 
 1. สร้างไอเดียสำหรับแต่ละ gap หรือ opportunity
@@ -57,7 +54,6 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 ### 4. Report
 
 รายงานไอเดียเป็นตาราง
-
 > Goal: ผู้ใช้เห็นไอเดียทั้งหมดพร้อมลำดับความสำคัญ
 
 1. ทำ `/report-table` สำหรับ summary
@@ -90,6 +86,12 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 - ไม่เสนอไอเดียที่ซับซ้อนเกินจำเป็น
 - ถ้าไอเดียต้องการ refactor ใหญ่ → ระบุเป็น long-term
 - ทำ `/dont-over-engineer`
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

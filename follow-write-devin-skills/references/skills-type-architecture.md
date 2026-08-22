@@ -27,7 +27,6 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 1. Detect Stack
 
 ตรวจจับ tech stack ของ project
-
 > Goal: รู้ว่าใช้ framework อะไร version ใด และมี `follow-*` skills อะไรเกี่ยวข้อง
 
 1. อ่าน `package.json`, อ่าน dependency manifest, ตรวจสอบ standalone หรือ monorepo
@@ -38,7 +37,6 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 2. Define Structure
 
 กำหนด file structure ตาม best practices
-
 > Goal: มี file structure ที่เหมาะสม รองรับ modules/ และ monorepo
 
 1. กำหนด directories หลัก, กำหนด module structure, กำหนด shared package structure ถ้าเป็น monorepo
@@ -48,7 +46,6 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 3. Define Patterns
 
 กำหนด patterns เฉพาะของ framework
-
 > Goal: ใช้ framework patterns ถูกต้อง
 
 1. กำหนด routing conventions, กำหนด server functions / API patterns, กำหนด rendering modes (SSR, CSR, SSG)
@@ -58,7 +55,6 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 4. Define Rules
 
 กำหนด rules สำหรับ architecture
-
 > Goal: Rules ชัดเจน บังคับได้ ไม่ขัด best practices
 
 1. กำหนด routing rules
@@ -70,7 +66,6 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 ### 5. Validate
 
 ตรวจสอบว่า architecture ทำงานได้
-
 > Goal: Architecture สมบูรณ์ ไม่มี conflicts
 
 1. ตรวจสอบว่า structure ไม่ทับซ้อนกับ skills อื่น
@@ -112,9 +107,17 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 - Share components, hooks, schemas, utils แทน
 - ทำ `/follow-monorepo` สำหรับ validation
 
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+
 ## Expected Outcome
 
 - Architecture ที่ชัดเจนพร้อม file structure diagram
 - Module boundaries และ patterns ที่ทำตามได้
 - รองรับทั้ง standalone และ monorepo
 - ไม่ผูกกับ project เฉพาะ
+
+

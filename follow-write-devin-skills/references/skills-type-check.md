@@ -25,7 +25,6 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 ### 1. Define Scope
 
 กำหนดขอบเขตการตรวจสอบ
-
 > Goal: รู้ว่าจะตรวจสอบอะไร ที่ไหน
 
 1. ระบุ target: file, directory, package หรือทั้ง project
@@ -36,7 +35,6 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 ### 2. Scan
 
 สแกน target ตาม criteria
-
 > Goal: พบ issues ทั้งหมดที่เกี่ยวข้อง
 
 1. ทำ `/scan-codebase` เพื่อค้นหา patterns ที่เกี่ยวข้อง
@@ -47,7 +45,6 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 ### 3. Analyze Findings
 
 วิเคราะห์ findings
-
 > Goal: เข้าใจ severity และ root cause ของแต่ละ finding
 
 1. จัดประเภท findings: Critical, Warning, Info
@@ -57,7 +54,6 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 ### 4. Report
 
 รายงานผลและคำแนะนำ
-
 > Goal: ผู้ใช้รู้ issues และวิธีแก้
 
 1. สร้าง report เป็นตาราง: file, line, issue, severity, recommendation
@@ -84,6 +80,12 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 - ทุก finding ต้องมี recommendation
 - ถ้า issue ซับซ้อน → แนะนำ skill ที่เหมาะสม
 - ถ้าไม่มีวิธีแก้ → ระบุว่าต้องวิจัยเพิ่ม
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 

@@ -26,7 +26,6 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 ### 1. Define Dimensions
 
 กำหนดมิติที่จะวิเคราะห์
-
 > Goal: รู้ว่าจะวิเคราะห์อะไรบ้าง ครบไม่ตกหล่น
 
 1. ระบุ target และ scope ของการวิเคราะห์
@@ -37,7 +36,6 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 ### 2. Research
 
 ค้นคว้าข้อมูลเพิ่มเติม
-
 > Goal: ข้อมูลครบ ถูกต้อง ทันสมัย
 
 1. ทำ `/deep-research`, ทำ `/learn-from-web`, ทำ `/check-reference`
@@ -46,7 +44,6 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 ### 3. Analyze Per Dimension
 
 วิเคราะห์ทีละ dimension
-
 > Goal: แต่ละ dimension มี findings ครบพร้อม evidence
 
 1. ทำ `/deep-analyze` สำหรับแต่ละ dimension
@@ -57,7 +54,6 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 ### 4. Cross-Reference
 
 เชื่อมโยง findings ระหว่าง dimensions
-
 > Goal: พบ patterns และ root causes ที่เชื่อมโยงกัน
 
 1. หา findings ที่ซ้ำซ้อนระหว่าง dimensions, หา root causes ที่ส่งผลต่อหลาย dimensions
@@ -67,7 +63,6 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 ### 5. Report
 
 สร้าง comprehensive report
-
 > Goal: Report ครบทุกมิติ อ่านง่าย ลำดับชัดเจน
 
 1. ทำ `/report-table` สำหรับ summary
@@ -100,6 +95,12 @@ Template สำหรับสร้าง `deep-*` skills ที่วิเค
 - ครบทุก dimensions ที่กำหนด
 - ถ้า dimension หนึ่งไม่มี findings → ระบุว่า "no issues"
 - ไม่ข้าม dimensions เพราะเวลาจำกัด
+
+### Package Structure
+
+- `SKILL.md` คือ entry point หลัก
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 
