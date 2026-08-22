@@ -15,8 +15,10 @@
     "vis-network": "latest"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "latest",
     "@types/node": "latest",
     "typescript": "latest",
+    "unocss": "latest",
     "vite": "latest",
     "vite-plugin-solid": "latest"
   }

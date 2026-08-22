@@ -1,3 +1,5 @@
+@unocss all;
+
 * { box-sizing: border-box; }
 
 :root {
