@@ -11,6 +11,10 @@ allowed-tools:
 triggers:
   - user
   - model
+related:
+  - follow-typescript
+  - follow-bun
+  - follow-vitest
 ---
 
 ## Goal
@@ -25,8 +29,7 @@ triggers:
 
 ### 1. Setup TypeScript Config
 
-> Goal: ตั้งค่า `tsconfig.json` สำหรับ Effect
-> Goal: TypeScript config รองรับ strict mode และ Effect types
+> Goal: ตั้งค่า `tsconfig.json` ให้รองรับ strict mode และ Effect types
 
 1. แก้ไข `tsconfig.json` ให้มี:
    - `strict: true`
@@ -36,8 +39,7 @@ triggers:
 
 ### 2. Install Effect Packages
 
-> Goal: ติดตั้ง Effect libraries ตามความจำเป็น
-> Goal: dependencies ของ Effect-TS พร้อมใช้งาน
+> Goal: ติดตั้ง dependencies ของ Effect-TS ตามความจำเป็น
 
 1. รัน `bun add effect` สำหรับ core library
 2. รัน `bun add @effect/schema` สำหรับ data validation
@@ -48,23 +50,22 @@ triggers:
 
 ### 3. Create Project Structure
 
-> Goal: สร้างโครงสร้างโฟลเดอร์ตาม Effect patterns
-> Goal: project structure สอดคล้องกับ Effect architecture
+> Goal: สร้างโครงสร้างโฟลเดอร์ตาม Effect architecture
 
-1. สร้าง `src/app/` สำหรับ composition root
-2. สร้าง `src/domain/` สำหรับ pure business logic
-3. สร้าง `src/services/` สำหรับ side effects
-4. สร้าง `src/adapters/` สำหรับ external lib wrappers
-5. สร้าง `src/config/` สำหรับ runtime config
-6. สร้าง `src/types/` สำหรับ shared types
-7. สร้าง `src/utils/` สำหรับ pure helpers
-8. สร้าง `test/unit/` สำหรับ unit tests
-9. สร้าง `test/integration/` สำหรับ integration tests
+1. ใช้ `exec` รัน `mkdir -p src/app src/domain src/services src/adapters src/config src/types src/utils test/unit test/integration`
+2. สร้าง `src/app/` สำหรับ composition root
+3. สร้าง `src/domain/` สำหรับ pure business logic
+4. สร้าง `src/services/` สำหรับ side effects
+5. สร้าง `src/adapters/` สำหรับ external lib wrappers
+6. สร้าง `src/config/` สำหรับ runtime config
+7. สร้าง `src/types/` สำหรับ shared types
+8. สร้าง `src/utils/` สำหรับ pure helpers
+9. สร้าง `test/unit/` สำหรับ unit tests
+10. สร้าง `test/integration/` สำหรับ integration tests
 
 ### 4. Implement Effect Patterns
 
-> Goal: เขียน code ตาม Effect patterns v3.x
-> Goal: code ใช้ patterns มาตรฐานของ Effect-TS
+> Goal: เขียน code ตาม Effect patterns มาตรฐานของ Effect-TS v3.x
 
 1. ใช้ `Effect.gen` แทน pipe สำหรับ ergonomic code
 2. ใช้ `Data.TaggedError` สำหรับ type-safe errors
@@ -75,12 +76,12 @@ triggers:
 
 ### 5. Write Tests
 
-> Goal: เขียน tests ด้วย vitest และ tstyche
-> Goal: tests ครอบคลุม runtime และ type-level
+> Goal: เขียน tests ด้วย vitest และ tstyche ให้ครอบคลุม runtime และ type-level
 
 1. ใช้ `it.effect` สำหรับ Effect-based tests
 2. ใช้ `tstyche` สำหรับ type-level assertions
 3. ใช้ `Layer.mock` สำหรับ partial implementations
+4. รัน `bunx vitest` เพื่อ execute tests
 
 ## Rules
 

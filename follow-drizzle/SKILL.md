@@ -12,7 +12,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
+related: []
 ---
 
 ## Goal
@@ -35,8 +35,8 @@ related:
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
 > Goal: มี Bun, database server, และ package.json พร้อม
 
-1. ยืนยันว่า Bun ติดตั้งแล้ว
-2. ยืนยันว่ามี database server (PostgreSQL, MySQL, หรือ SQLite)
+1. ยืนยันว่า Bun ติดตั้งแล้ว โดยรัน `bun --version`
+2. ยืนยันว่ามี database server (PostgreSQL หรือ MySQL) หรือ SQLite file ที่กำหนดใช้งานได้
 3. อ่าน `package.json` ของ project
 4. ถ้าไม่มี `package.json` → stop และ report
 
@@ -89,7 +89,7 @@ related:
    - Bun + SQLite: `import { drizzle } from 'drizzle-orm/bun-sqlite'`
    - Node.js + SQLite: `import { drizzle } from 'drizzle-orm/better-sqlite3'`
    - PostgreSQL: `import { drizzle } from 'drizzle-orm/node-postgres'`
-2. เปิดใช้งาน WAL mode สำหรับ SQLite เพื่อ performance
+2. เปิดใช้งาน WAL mode สำหรับ SQLite ด้วย `PRAGMA journal_mode = WAL` เพื่อ performance
 3. export `db` instance ที่ import schema ทั้งหมด
 4. อย่า expose client credentials ใน source code
 

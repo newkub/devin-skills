@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - follow-bun
+  - follow-zod
 ---
 
 ## Goal
