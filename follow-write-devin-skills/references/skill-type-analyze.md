@@ -1,5 +1,5 @@
 ---
-name: skills-type-analyze
+name: skill-type-analyze
 description: Template สำหรับ analyze-* skills วิเคราะห์ codebase
 allowed-tools:
   - read

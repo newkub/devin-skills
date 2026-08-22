@@ -69,17 +69,17 @@ related:
 > Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `follow-write-devin-skills/references/skills-type-run.md`
-   - `follow-*` → `follow-write-devin-skills/references/skills-type-follow.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/skills-type-architecture.md`
-   - `check-*` → `follow-write-devin-skills/references/skills-type-check.md`
-   - `analyze-*` → `follow-write-devin-skills/references/skills-type-analyze.md`
-   - `deep-*` → `follow-write-devin-skills/references/skills-type-deep.md`
-   - `review-*` → `follow-write-devin-skills/references/skills-type-review.md`
-   - `idea-*` → `follow-write-devin-skills/references/skills-type-idea.md`
-   - `report-*` → `follow-write-devin-skills/references/skills-type-report.md`
+   - `run-*` → `follow-write-devin-skills/references/skill-type-run.md`
+   - `follow-*` → `follow-write-devin-skills/references/skill-type-follow.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/skill-type-architecture.md`
+   - `check-*` → `follow-write-devin-skills/references/skill-type-check.md`
+   - `analyze-*` → `follow-write-devin-skills/references/skill-type-analyze.md`
+   - `deep-*` → `follow-write-devin-skills/references/skill-type-deep.md`
+   - `review-*` → `follow-write-devin-skills/references/skill-type-review.md`
+   - `idea-*` → `follow-write-devin-skills/references/skill-type-idea.md`
+   - `report-*` → `follow-write-devin-skills/references/skill-type-report.md`
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
-   - ใช้ relative path `follow-write-devin-skills/references/skills-type-<prefix>.md`
+   - ใช้ relative path `follow-write-devin-skills/references/skill-type-<prefix>.md`
 3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
 
 ### 5. Confirm Context
@@ -108,7 +108,7 @@ related:
 ### 3. Template Consistency
 
 - ทุก skill ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
-- ใช้ templates ใน `follow-write-devin-skills/references/skills-type-*.md` เป็น canonical structure
+- ใช้ templates ใน `follow-write-devin-skills/references/skill-type-*.md` เป็น canonical structure
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 

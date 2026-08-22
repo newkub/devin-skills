@@ -54,14 +54,14 @@ related:
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `references/skills-type-run.md`
-   - `follow-*` → `references/skills-type-follow.md` ยกเว้น `follow-*-architecture` → `references/skills-type-architecture.md`
-   - `check-*` → `references/skills-type-check.md`
-   - `analyze-*` → `references/skills-type-analyze.md`
-   - `deep-*` → `references/skills-type-deep.md`
-   - `review-*` → `references/skills-type-review.md`
-   - `report-*` → `references/skills-type-report.md`
-   - `idea-*` → `references/skills-type-idea.md`
+   - `run-*` → `references/skill-type-run.md`
+   - `follow-*` → `references/skill-type-follow.md` ยกเว้น `follow-*-architecture` → `references/skill-type-architecture.md`
+   - `check-*` → `references/skill-type-check.md`
+   - `analyze-*` → `references/skill-type-analyze.md`
+   - `deep-*` → `references/skill-type-deep.md`
+   - `review-*` → `references/skill-type-review.md`
+   - `report-*` → `references/skill-type-report.md`
+   - `idea-*` → `references/skill-type-idea.md`
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
 4. สร้าง directory structure ตาม pattern ใน template ที่เลือก
@@ -134,8 +134,8 @@ related:
 
 ### 1. Template Selection
 
-- ใช้ `references/skills-type-*.md` เป็น canonical structure ตาม prefix
-- `follow-*-architecture` ใช้ `references/skills-type-architecture.md` ไม่ใช่ `follow`
+- ใช้ `references/skill-type-*.md` เป็น canonical structure ตาม prefix
+- `follow-*-architecture` ใช้ `references/skill-type-architecture.md` ไม่ใช่ `follow`
 - ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 
@@ -175,7 +175,7 @@ related:
 
 ### 7. Skill Type File Structure
 
-- ใช้ `references/skills-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
+- ใช้ `references/skill-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
 - แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`
 - directory structure ต้องสอดคล้องกับ template ที่เลือก ไม่เพิ่ม/ลดโดยไม่มีเหตุผล
 

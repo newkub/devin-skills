@@ -1,5 +1,5 @@
 ---
-name: skills-type-report
+name: skill-type-report
 description: Template สำหรับ report-* skills รวบรวมข้อมูล
 allowed-tools:
   - read

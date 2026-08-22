@@ -1,5 +1,5 @@
 ---
-name: skills-type-run
+name: skill-type-run
 description: Template สำหรับ run-* skills execute commands
 allowed-tools:
   - read

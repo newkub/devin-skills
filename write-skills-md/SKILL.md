@@ -37,7 +37,7 @@ related:
 1. ระบุ target path ของ `SKILL.md` และ skill name
 2. ทำ `/follow-write-devin-skills` เพื่อเข้าใจ conventions ของ skill repo ปัจจุบัน
 3. ทำ `/learn-from-web` จาก `https://docs.devin.ai/cli/extensibility/skills/overview` และ `https://docs.devin.ai/cli/extensibility/skills/creating-skills` เมื่อต้องการ verify spec
-4. เลือก template ตาม prefix จาก `follow-write-devin-skills/references/skills-type-*.md` ถ้ามี
+4. เลือก template ตาม prefix จาก `follow-write-devin-skills/references/skill-type-*.md` ถ้ามี
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 
 ### 2. Write Frontmatter

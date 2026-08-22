@@ -1,5 +1,5 @@
 ---
-name: skills-type-review
+name: skill-type-review
 description: Template สำหรับ review-* skills วิเคราะห์ quality
 allowed-tools:
   - read

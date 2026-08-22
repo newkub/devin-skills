@@ -1,5 +1,5 @@
 ---
-name: skills-type-idea
+name: skill-type-idea
 description: Template สำหรับ idea-* skills สร้างไอเดีย
 allowed-tools:
   - read
@@ -60,6 +60,16 @@ Template สำหรับสร้าง `idea-*` skills ที่สร้า
 2. คอลัมน์: number, idea, category, impact, effort, scope
 3. จัดลำดับตาม impact/effort ratio
 4. ทำ `/suggest-next-action`
+
+### 5. Refine And Prioritize
+
+ปรับแต่งและจัดลำดับไอเดีย
+> Goal: ไอเดียพร้อมลงมือทำตามความเหมาะสม
+
+1. ทบทวนไอเดียกับ stakeholders หรือ user feedback
+2. รวมหรือแยกไอเดียตามความใกล้เคียง
+3. ระบุ dependencies และ prerequisites ของไอเดีย
+4. ทำ `/suggest-next-action` สำหรับ top ideas
 
 ## Rules
 
