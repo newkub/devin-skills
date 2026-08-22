@@ -1,9 +1,22 @@
 {
   "name": "visulize-devin-global-skills-in-web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "build": "bun scripts/build.ts",
-    "dev": "bunx serve ."
+    "build:graph": "bun scripts/build.ts",
+    "dev": "vite",
+    "build:app": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/solid-router": "latest",
+    "solid-js": "latest",
+    "vis-network": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vite-plugin-solid": "latest"
   }
 }

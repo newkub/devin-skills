@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const skillsRoot = join(import.meta.dir, "..", "..", "..");
-const outPath = join(import.meta.dir, "..", "skills-graph.json");
+const outPath = join(import.meta.dir, "..", "public", "skills-graph.json");
 
 const nodes: { id: string; label: string; title: string; group: string }[] = [];
 const edges: { from: string; to: string }[] = [];
