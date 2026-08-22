@@ -128,7 +128,4 @@ related:
 - Testing ด้วย vitest + tstyche
 - Import dependencies ถูกต้องตามกฎ
 
-## Reference
 
-- [Effect Official Docs](https://effect.website/)
-- [Effect GitHub](https://github.com/Effect-TS/effect)

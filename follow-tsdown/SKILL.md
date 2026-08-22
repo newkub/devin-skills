@@ -13,7 +13,7 @@ triggers:
   - user
   - model
 related:
-  - rolldown
+  - follow-rolldown
 ---
 
 ## Goal

@@ -7,6 +7,7 @@ allowed-tools:
   - grep
   - glob
   - exec
+  - write
 triggers:
   - user
   - model

@@ -11,9 +11,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - released
-  - tag
+related: []
 ---
 
 ## Goal

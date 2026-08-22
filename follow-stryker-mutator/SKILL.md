@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - CD
-  - TypeScript
-  - core
+  - follow-typescript
 ---
 
 ## Goal
@@ -27,7 +25,7 @@ related:
 
 ## Execute
 
-### 1 Installation
+### 1. Installation
 
 ติดตั้ง Stryker ด้วย Bun:
 
@@ -41,7 +39,7 @@ bunx stryker init
 bun add -D @stryker-mutator/core
 ```
 
-### 2 Configuration
+### 2. Configuration
 
 สร้าง `stryker.config.mjs` หรือใช้ initializer:
 
@@ -61,7 +59,7 @@ export default {
 }
 ```
 
-### 3 Run Mutation Testing
+### 3. Run Mutation Testing
 
 รัน Stryker เพื่อทำ mutation testing:
 
@@ -75,7 +73,7 @@ bunx stryker run
 bunx stryker run --logLevel trace
 ```
 
-### 4 Supported Mutators
+### 4. Supported Mutators
 
 Stryker รองรับ mutators มากกว่า 30 ชนิด:
 
@@ -95,7 +93,7 @@ Stryker รองรับ mutators มากกว่า 30 ชนิด:
 - Unary Operator
 - Update Operator
 
-### 5 Reports
+### 5. Reports
 
 ตรวจสอบ mutation reports:
 
@@ -103,7 +101,7 @@ Stryker รองรับ mutators มากกว่า 30 ชนิด:
 - Dashboard: https://dashboard.stryker-mutator.io
 - Clear text report: terminal output
 
-### 6 CI Integration
+### 6. CI Integration
 
 เพิ่ม Stryker ใน CI pipeline:
 

@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - CSR
-  - catch
-  - mutation
-  - object
-  - server
+  - follow-zod
 ---
 
 ## Goal
@@ -83,8 +79,8 @@ related:
 4. ใช้ `createSafeClient` สำหรับ auto-wrap ทุก procedure calls ด้วย `safe()`
 5. ห้ามใส่ sensitive information ใน `message` หรือ `data` (ถูกส่งไป client)
 
-### 7. Integrate TanStack Query (ถ้าจำเป็น)
-> Goal: Integrate TanStack Query (ถ้าจำเป็น)
+### 7. Integrate TanStack Query
+> Goal: ตั้งค่า TanStack Query ถ้าจำเป็น
 
 1. ใช้ `createTanstackQueryUtils` จาก `@orpc/tanstack-query`
 2. ใช้ `orpc.<path>.queryOptions({ input: { ... } })` สำหรับ type-safe queries

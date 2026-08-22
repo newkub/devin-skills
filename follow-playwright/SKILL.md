@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - CD
-  - teardown
-  - text
 ---
 
 ## Goal
@@ -46,7 +43,7 @@ related:
 4. ตั้งค่า `timeout` สำหรับ test execution (default 30,000ms)
 5. ตั้งค่า `retries: process.env.CI ? 2 : 0` สำหรับ flaky tests
 6. ตั้งค่า `workers: process.env.CI ? 4 : undefined` สำหรับ parallel execution
-7. ตั้งค่า `fullytrue` สำหรับ parallel tests within files
+7. ตั้งค่า `fullyParallel` สำหรับ parallel tests within files
 8. ตั้งค่า `trace: 'on-first-retry'` สำหรับ debugging
 9. ตั้งค่า `screenshot: 'only-on-failure'` สำหรับ failure artifacts
 10. ตั้งค่า `reporter` เป็น `html` สำหรับ local และ `blob` สำหรับ CI sharding
@@ -142,7 +139,7 @@ related:
 - ใช้ `bun add -D @playwright/test` สำหรับ installation
 - รัน `bunx playwright install` เพื่อติดตั้ง browsers
 - ตั้งค่า `testDir` ให้ชัดเจน
-- ตั้งค่า `fullytrue` สำหรับ parallel execution
+- ตั้งค่า `fullyParallel` สำหรับ parallel execution
 - ตั้งค่า `trace: 'on-first-retry'` สำหรับ debugging
 - ตั้งค่า `screenshot: 'only-on-failure'` สำหรับ failure artifacts
 - ใช้ `reporter` ที่เหมาะสมกับ environment (`html` local, `blob` CI)
@@ -175,7 +172,7 @@ related:
 - ใช้ web-first assertions ที่ auto-wait
 - ใช้ Page Object Model สำหรับ maintainability
 - ใช้ fixtures สำหรับ shared setup
-- ใช้ `fullytrue` สำหรับ performance
+- ใช้ `fullyParallel` สำหรับ performance
 - ใช้ `request` fixture สำหรับ seed data ผ่าน API ไม่ใช่ UI
 - ใช้ `storageState` สำหรับ authentication reuse
 - หลีกเลี่ยง conditional logic (`if`, `try/catch`) ใน tests

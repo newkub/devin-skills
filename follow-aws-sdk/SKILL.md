@@ -10,7 +10,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
+related: []
 ---
 
 ## Goal

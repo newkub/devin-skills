@@ -85,8 +85,8 @@ related:
 6. ใช้ `.scope()` สำหรับ control plugin merge behavior (local, scoped, global)
 7. ใช้ `.lazyLoadModule()` สำหรับ deferred module loading
 
-### 7. Setup Eden Client (ถ้าจำเป็น)
-> Goal: Setup Eden Client (ถ้าจำเป็น)
+### 7. Setup Eden Client
+> Goal: ตั้งค่า Eden Client ถ้าจำเป็น
 
 1. Export `type App` จาก server: `export type App = typeof app`
 2. ใช้ `treaty<App>(url)` จาก `@elysia/eden` (recommended)

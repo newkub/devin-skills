@@ -11,15 +11,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - all
-  - eslint
-  - eslint-plugin
-  - eslint-plugin-next
-  - import
-  - react
-  - recommended
-  - typescript
+related: []
 ---
 
 ## Goal
@@ -28,7 +20,7 @@ related:
 
 ## Scope
 
-Use `follow-oxlint` for the specific tasks and workflows it covers
+ใช้สำหรับตั้งค่าและใช้งาน oxlint ร่วมกับ ESLint 9+ flat config
 
 ## Execute
 

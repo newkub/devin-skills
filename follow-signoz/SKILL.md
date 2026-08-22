@@ -8,7 +8,6 @@ allowed-tools:
   - edit
   - ask_user_question
   - webfetch
-  - learn-from-web
 triggers:
   - user
   - model

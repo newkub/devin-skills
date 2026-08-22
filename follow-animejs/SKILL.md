@@ -11,8 +11,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - JS
+related: []
 ---
 
 ## Goal

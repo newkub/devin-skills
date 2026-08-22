@@ -12,8 +12,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - 4
+related: []
 ---
 
 ## Goal
@@ -92,7 +91,7 @@ related:
 > Goal: ปรับแต่ง performance
 > Goal: ลด TTI และ bundle size
 
-1. **Lazy Loading Components** — ใช้ `Lazy` prefix สำหรับ components ที่ไม่จำเป็นต้องโหลดทันที
+1. Lazy Loading Components — ใช้ `Lazy` prefix สำหรับ components ที่ไม่จำเป็นต้องโหลดทันที
    ```vue
    <!-- Bad: โหลดทันที -->
    <Modal v-if="showModal" />
@@ -100,11 +99,11 @@ related:
    <!-- Good: โหลดเมื่อจำเป็น -->
    <LazyModal v-if="showModal" />
    ```
-2. **Lazy Hydration** — ใช้ `hydrate-on-visible` สำหรับ components ที่ไม่ต้อง interactive ทันที
+2. Lazy Hydration — ใช้ `hydrate-on-visible` สำหรับ components ที่ไม่ต้อง interactive ทันที
    ```vue
    <LazyMyComponent hydrate-on-visible />
    ```
-3. **Hybrid Rendering** — ใช้ route rules สำหรับ rendering แบบผสม
+3. Hybrid Rendering — ใช้ route rules สำหรับ rendering แบบผสม
    ```typescript
    export default defineNuxtConfig({
      routeRules: {
@@ -115,15 +114,15 @@ related:
      },
    })
    ```
-4. **NuxtLink Smart Prefetching** — ใช้ `<NuxtLink>` แทน `<a>` tag ทั้งหมด
+4. NuxtLink Smart Prefetching — ใช้ `<NuxtLink>` แทน `<a>` tag ทั้งหมด
    ```vue
    <NuxtLink to="/about">About page</NuxtLink>
    ```
-5. **Data Fetching Optimization** — ใช้ `useFetch` และ `useAsyncData` พร้อม key parameter
+5. Data Fetching Optimization — ใช้ `useFetch` และ `useAsyncData` พร้อม key parameter
    ```typescript
    const { data } = useAsyncData('tracks', () => fetch(`/tracks/${id}`))
    ```
-6. **Built-in Storage** — ใช้ `useStorage` สำหรับ key-value storage
+6. Built-in Storage — ใช้ `useStorage` สำหรับ key-value storage
    ```typescript
    const storage = useStorage()
    await storage.setItem('session:token', sessionToken)

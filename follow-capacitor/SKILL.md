@@ -12,9 +12,11 @@ triggers:
   - user
   - model
 related:
-  - Keystore
-  - TLS
-  - emulator
+  - follow-bun
+  - follow-config
+  - follow-vite
+  - learn-from-web
+  - follow-deploy
 ---
 
 ## Goal

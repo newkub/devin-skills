@@ -12,7 +12,7 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
+related: []
 ---
 
 ## Goal
@@ -27,8 +27,7 @@ related:
 
 ### 1. Analyze Project
 
-> Goal: ตรวจสอบว่า project เหมาะสมกับ Bunup
-> Goal: ระบุ entry points, output formats, และ prerequisites
+> Goal: ตรวจสอบ project, entry points, output formats, และ prerequisites ก่อนใช้ Bunup
 
 1. ตรวจสอบว่าเป็น TypeScript library project
 2. ยืนยันว่ามี Bun ติดตั้งแล้ว
@@ -37,8 +36,7 @@ related:
 
 ### 2. Setup Bunup
 
-> Goal: ติดตั้ง Bunup และตั้งค่า config
-> Goal: Bunup พร้อม build ด้วย config และ scripts
+> Goal: ติดตั้ง Bunup, ตั้งค่า config, build scripts, และ build ลอง
 
 1. ติดตั้ง Bunup ด้วยคำสั่ง `bun add --dev bunup`
 2. สร้างไฟล์ `bunup.config.ts` พร้อมกำหนด `entry`, `format`, `dts`
@@ -47,8 +45,7 @@ related:
 
 ### 3. Verify Setup
 
-> Goal: ตรวจสอบ build output
-> Goal: output ถูกต้องและพร้อมใช้งาน
+> Goal: ตรวจสอบ build output, type declarations, และ build scripts
 
 1. ตรวจสอบ output ใน `dist/` ว่าสร้างถูกต้อง
 2. ยืนยันว่า type declarations (`.d.ts`) สร้างครบถ้วน
