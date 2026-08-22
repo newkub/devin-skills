@@ -4,14 +4,20 @@ description: ลบไฟล์หรือ folder และอัพเดท r
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
+  - ask_user_question
 triggers:
   - user
   - model
 related:
----
+  - follow-devin-skills-md
+  - follow-skills-map
+  - use-scripts
+  - check
+  - validate
 
 ## Goal
 
@@ -37,7 +43,7 @@ related:
 
 ดำเนินการลบและอัพเดท
 
-- ทำ `/check` หรือ `/validate` ก่อนลบไฟล์หรือ folder เพื่อตรวจสอบความถูกต้องและหลีกเลี่ยง broken references
+- ทำ `/validate` ก่อนลบไฟล์หรือ folder เพื่อตรวจสอบความถูกต้องและหลีกเลี่ยง broken references
 - ลบไฟล์หรือ folder
 - อัพเดททุก references ใน codebase
 - อัพเดท imports ทั้งหมด
