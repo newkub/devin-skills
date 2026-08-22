@@ -9,11 +9,9 @@ triggers:
   - user
   - model
 related:
-  - deep-analyze-by-use-scripts
-  - follow-monorepo
-  - follow-uxui
-  - follow-tanstack-ecosystem
-  - follow-hk
+  - CD
+  - JavaScript
+  - interactive
 ---
 
 ## Goal

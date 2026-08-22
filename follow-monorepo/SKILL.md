@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - follow-architecture
-  - follow-turborepo
-  - follow-package-manifest
-  - run-verify
+  - CD
+  - crate
+  - crates
 ---
 
 ## Goal

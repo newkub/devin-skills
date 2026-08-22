@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - check-circular-dependencies
-  - improve-typesafe
-  - dont-over-engineer
-  - run-lint
+  - hard
+  - side
+  - type
 ---
 
 ## Goal

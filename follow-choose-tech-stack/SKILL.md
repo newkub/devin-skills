@@ -12,9 +12,11 @@ triggers:
   - user
   - model
 related:
-  - follow-rust
-  - follow-best-practice
-  - follow-typescript
+  - Echo
+  - Fastify
+  - Kotlin
+  - TUI
+  - prototype
 ---
 
 ## Goal

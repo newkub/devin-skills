@@ -12,9 +12,13 @@ triggers:
   - user
   - model
 related:
-  - dont-over-engineer
-  - simplify
-  - report
+  - alt
+  - anchor
+  - clear
+  - consistent
+  - formatting
+  - keywords
+  - object
 ---
 
 ## Goal

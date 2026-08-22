@@ -12,10 +12,11 @@ triggers:
   - user
   - model
 related:
-  - follow-create-cli
-  - follow-create-bun-cli
-  - follow-create-rust-cli
-  - follow-mise
+  - alias
+  - cli
+  - docs
+  - long
+  - manpages
 ---
 
 ## Goal

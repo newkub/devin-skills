@@ -13,12 +13,17 @@ triggers:
   - user
   - model
 related:
-  - follow-infisical
-  - follow-monorepo
-  - follow-mise
-  - use-bun-scripts
-  - use-scripts
-  - follow-config
+  - Bun
+  - CD
+  - deployment
+  - e2e
+  - follow-tasks
+  - integration
+  - migrate
+  - review
+  - seed
+  - tooling
+  - tools-review
 ---
 
 ## Goal

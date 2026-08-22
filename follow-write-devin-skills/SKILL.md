@@ -13,20 +13,9 @@ triggers:
   - user
   - model
 related:
-  - follow-devin-skills-md
-  - write-skills-md
-  - prepare-skills-context
-  - follow-create-bun-cli
-  - follow-create-cli
-  - use-scripts
-  - validate
-  - review-devin-global-skills
-  - check-circular-dependencies
-  - update-reference
-  - suggest-next-action
-  - follow-web-design
-  - visualize-in-web
-  - open-web
+  - UX
+  - directory
+  - unused
 ---
 
 ## Goal

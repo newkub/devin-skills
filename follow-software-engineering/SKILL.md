@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-clean-architecture
-  - follow-layered-architecture
-  - write-test
-  - follow-functional-programming
-  - follow-web-design
+  - O
+  - UI
+  - teardown
 ---
 
 ## Goal

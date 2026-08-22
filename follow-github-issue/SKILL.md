@@ -13,6 +13,13 @@ triggers:
   - user
   - model
 related:
+  - assignee
+  - body
+  - closed
+  - irreversible
+  - repo
+  - sub-issue
+  - unpin
 ---
 
 ## Goal

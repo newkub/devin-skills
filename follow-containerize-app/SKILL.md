@@ -15,15 +15,6 @@ triggers:
   - user
   - model
 related:
-  - follow-mise
-  - follow-monorepo
-  - optimize-build
-  - follow-release-docker
-  - follow-package-manifest
-  - run-build
-  - check-monorepo
-  - follow-gitignore
-  - follow-LICENSE
 ---
 
 ## Goal

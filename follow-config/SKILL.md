@@ -12,12 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-package-manifest
-  - follow-tasks
-  - follow-mise
-  - follow-dot-vscode
-  - follow-dot-github
-  - follow-biome
+  - apps
+  - file
 ---
 
 ## Goal

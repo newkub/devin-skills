@@ -12,15 +12,15 @@ triggers:
   - user
   - model
 related:
-  - follow-orpc
-  - follow-elysia
-  - follow-unocss
-  - follow-zod
-  - follow-tanstack-ecosystem
-  - follow-effect-ts
-  - follow-typescript
-  - follow-bun
-  - follow-vitest
+  - catch
+  - client
+  - context
+  - eden
+  - mdi
+  - node
+  - server
+  - solid-router
+  - solid-start
 ---
 
 ## Goal

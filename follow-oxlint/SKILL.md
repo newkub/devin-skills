@@ -12,6 +12,14 @@ triggers:
   - user
   - model
 related:
+  - all
+  - eslint
+  - eslint-plugin
+  - eslint-plugin-next
+  - import
+  - react
+  - recommended
+  - typescript
 ---
 
 ## Goal

@@ -12,14 +12,10 @@ triggers:
   - user
   - model
 related:
-  - follow-auto-it
-  - follow-semantic-release
-  - follow-release-crates
-  - follow-release-docker
-  - follow-release-vscode
-  - follow-release-npm
-  - follow-changesets
-  - follow-pkg-new
+  - Commit
+  - PR
+  - changelog
+  - permissions
 ---
 
 ## Goal

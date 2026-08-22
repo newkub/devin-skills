@@ -12,11 +12,14 @@ triggers:
   - user
   - model
 related:
-  - follow-algorithms
-  - check-time-complexity
-  - follow-functional-programming
-  - validate
+  - Balanced
+  - DFS
+  - Set
+  - Stack
+  - Vector
   - delete
+  - graph
+  - type
 ---
 
 ## Goal

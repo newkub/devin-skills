@@ -13,11 +13,10 @@ triggers:
   - user
   - model
 related:
-  - check-code-structure
-  - use-ast-grep-outline
-  - review-codebase
-  - refactor
-  - refactor-to-srp
+  - after
+  - rename
+  - return
+  - undefined
 ---
 
 ## Goal

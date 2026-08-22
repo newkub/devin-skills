@@ -14,11 +14,12 @@ triggers:
   - user
   - model
 related:
-  - follow-my-tech-stack
-  - follow-best-practice
-  - validate
-  - check-reference
-  - update-reference
+  - 3D
+  - UI
+  - data
+  - elements
+  - timeline
+  - viewer
 ---
 
 ## Goal

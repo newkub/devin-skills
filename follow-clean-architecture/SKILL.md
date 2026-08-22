@@ -13,11 +13,9 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - follow-event-driven
-  - follow-zod
-  - refactor-packages
-  - follow-orm
+  - MVP
+  - O
+  - queries
 ---
 
 ## Goal
