@@ -14,6 +14,7 @@ triggers:
   - model
 related:
   - libraries
+  - refactor-skills
 ---
 
 ## Goal

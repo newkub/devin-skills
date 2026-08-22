@@ -88,7 +88,7 @@ Template สำหรับสร้าง `report-*` skills ที่รวบ�
 ### Package Structure
 
 - `SKILL.md` คือ entry point หลัก
-- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/` ตามความจำเป็น
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome

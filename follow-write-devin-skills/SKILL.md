@@ -86,7 +86,7 @@ related:
 1. ถ้าต้องการ external references หรือ dependencies → สร้าง `references/` และพยายามเขียน references ให้ครบถ้วน
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
-4. ถ้าต้องการ Devin workflows → สร้าง `workflows/` โดยใช้ชื่อ `setup-*`, `update-*`, `improve-*`, `optimize-*`, `follow-*`, `use-*`, `review-*`, `write-*` ตามลักษณะงาน
+4. ถ้าต้องการ Devin subskills → สร้าง `subskills/<domain>/<subskill>/SKILL.md` โดยตั้ง `name` เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api` แล้วให้ parent skill `<domain>-subskills/SKILL.md` อ้างถึง
 5. ถ้าต้องการ project rules → ทำ `/update-dot-devin` เพื่อสร้าง `.devin/rules/`
 6. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
@@ -145,7 +145,7 @@ related:
 ### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก
-- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/`, `web/`, `.devin/rules/` ตามความจำเป็น
+- สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `web/`, `.devin/rules/` ตามความจำเป็น
 - ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -186,7 +186,7 @@ related:
 ### 8. Skill Type File Structure
 
 - ใช้ `references/skill-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
-- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`, `web/`, `.devin/rules/`
+- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `subskills/`, `src/presentation/cli.ts`, `guide/`, `examples/`, `web/`, `.devin/rules/`
 - directory structure ต้องสอดคล้องกับ template ที่เลือก ไม่เพิ่ม/ลดโดยไม่มีเหตุผล
 
 ## Expected Outcome

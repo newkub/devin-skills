@@ -22,7 +22,7 @@ description: โครงสร้างไฟล์และ directory สำ�
   - `skill-me.md` เนื้อหาหลักของ skill เมื่อต้องการแยกออกจาก `SKILL.md`
   - `file-structure.md` เอกสารโครงสร้างไฟล์ (this file)
 - `scripts/` สำหรับ helper scripts
-- `workflows/` สำหรับ Devin workflows เช่น `setup-*.md`, `update-*.md`, `improve-*.md`, `optimize-*.md`, `follow-*.md`, `use-*.md`, `review-*.md`, `write-*.md`
+- `subskills/<domain>/<subskill>/SKILL.md` สำหรับ Devin subskills โดย `name` หน้า frontmatter เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`
 - `guide/` สำหรับขยายเอกสาร
 - `examples/` สำหรับตัวอย่าง
 - `web/` สำหรับ web app ถ้า skill ต้องการ
