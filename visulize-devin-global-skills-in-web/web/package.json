@@ -9,6 +9,8 @@
     "server": "bun server.ts"
   },
   "dependencies": {
+    "@orpc/client": "latest",
+    "@orpc/server": "latest",
     "@tanstack/solid-router": "latest",
     "elysia": "latest",
     "solid-js": "latest",

@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5173,
     host: true,
     proxy: {
-      "/api": "http://localhost:3000",
+      "/rpc": "http://localhost:3000",
     },
   },
   build: { target: "esnext" },

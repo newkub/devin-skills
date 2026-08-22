@@ -1,9 +1,9 @@
 import { createEffect, createSignal, onCleanup, onMount, type Accessor, type Component } from "solid-js";
+import { orpc } from "./orpc/client";
+import type { GraphData } from "./orpc/router";
 
-export type GraphNode = { id: string; label: string; title: string; group: string };
-type GraphEdge = { from: string; to: string };
-export type GraphData = { nodes: GraphNode[]; edges: GraphEdge[] };
-
+export type { GraphData } from "./orpc/router";
+export type GraphNode = GraphData["nodes"][number];
 export type SelectedNode = GraphNode & { incoming: number; outgoing: number };
 
 export const groupColors: Record<string, { background: string; border: string }> = {
@@ -39,8 +39,7 @@ export const Graph: Component<{
   const [colored, setColored] = createSignal<GraphData | null>(null);
 
   onMount(async () => {
-    const res = await fetch("/api/skills-graph");
-    const data: GraphData = await res.json();
+    const data = await orpc.skillsGraph();
     setRaw(data);
     const nodes = data.nodes.map((n) => ({
       ...n,
