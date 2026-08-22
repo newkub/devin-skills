@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - follow-devin-skills-md
-  - check-reference
-  - update-reference
-  - validate
+  - AI
+  - unused
 ---
 
 ## Goal

@@ -11,6 +11,10 @@ triggers:
   - user
   - model
 related:
+  - dependencies
+  - module
+  - modules
+  - signature
 ---
 
 ## Goal

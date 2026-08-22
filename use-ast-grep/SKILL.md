@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - update-ast-grep-rules
-  - follow-write-devin-skills
-  - use-ast-grep-outline
+  - exclude
 ---
 
 ## Goal

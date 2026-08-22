@@ -12,6 +12,10 @@ triggers:
   - user
   - model
 related:
+  - Fastify
+  - TypeScript
+  - Vitest
+  - rollup
 ---
 
 ## Goal

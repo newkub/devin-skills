@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-create-bun-cli
-  - use-ast-grep
-  - update-create-review-cli
-  - suggest-next-action
-  - use-scripts
+  - O
 ---
 
 ## Goal

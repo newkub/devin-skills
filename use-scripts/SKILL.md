@@ -12,12 +12,12 @@ triggers:
   - user
   - model
 related:
-  - use-bun-scripts
-  - follow-gitignore
-  - use-nu-shell
-  - use-pwsh-shell
-  - use-bun-shell
-  - follow-esm-sh
+  - TS
+  - TypeScript
+  - files
+  - render
+  - script
+  - transformation
 ---
 
 ## Goal

@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - deep-analyze-by-use-scripts
-  - check-type-declarations
-  - use-lib-better
-  - learn-from-web
-  - realize-implementation
 ---
 
 ## Goal

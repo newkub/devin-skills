@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - follow-skills
-  - learn-from-web
-  - follow-my-tech-stack
-  - deep-research
-  - review-codebase
 ---
 
 ## Goal

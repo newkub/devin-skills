@@ -12,7 +12,10 @@ triggers:
   - user
   - model
 related:
-  - follow-bun
+  - TypeScript
+  - await
+  - stderr
+  - writing
 ---
 
 ## Goal
