@@ -15,8 +15,8 @@ triggers:
 related:
   - understand-me
   - follow-skills
-  - use-lang-en
-  - use-lang-th
+  - convert-to-lang-en
+  - convert-to-lang-th
   - follow-my-tech-stack
 ---
 
@@ -36,7 +36,7 @@ related:
 1. ระบุชื่อหรือ nickname ที่ต้องการให้ AI ใช้เรียก
 2. ระบุ role หรือ profession (เช่น developer, architect, founder)
 3. ระบุ timezone และ working hours
-4. ระบุภาษาหลักที่ใช้สื่อสาร (ไทย/อังกฤษ) — ใช้ `/use-lang-th` หรือ `/use-lang-en`
+4. ระบุภาษาหลักที่ใช้สื่อสาร (ไทย/อังกฤษ) — ใช้ `/convert-to-lang-th` หรือ `/convert-to-lang-en`
 
 ### 2. Define Communication Style
 > Goal: Define Communication Style
@@ -91,8 +91,8 @@ related:
 
 ### Communication
 
-- ถ้าผู้ใช้กำหนดภาษาไทย ให้คุยภาษาไทยทุกครั้ง — ใช้ `/use-lang-th`
-- ถ้าผู้ใช้กำหนดภาษาอังกฤษ ให้คุยภาษาอังกฤษทุกครั้ง — ใช้ `/use-lang-en`
+- ถ้าผู้ใช้กำหนดภาษาไทย ให้คุยภาษาไทยทุกครั้ง — ใช้ `/convert-to-lang-th`
+- ถ้าผู้ใช้กำหนดภาษาอังกฤษ ให้คุยภาษาอังกฤษทุกครั้ง — ใช้ `/convert-to-lang-en`
 - ถ้าผู้ใช้กำหนด concise ให้ตอบสั้นและตรงประเด็น
 - ถ้าผู้ใช้กำหนด detailed ให้อธิบายครบถ้วน
 

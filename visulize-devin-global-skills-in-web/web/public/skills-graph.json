@@ -277,6 +277,18 @@
       "group": "convert"
     },
     {
+      "id": "convert-to-lang-en",
+      "label": "convert-to-lang-en",
+      "title": "ใช้ภาษาอังกฤษในการสื่อสารและทำงาน",
+      "group": "convert"
+    },
+    {
+      "id": "convert-to-lang-th",
+      "label": "convert-to-lang-th",
+      "title": "ใช้ภาษาไทยในการสื่อสารและทำงาน",
+      "group": "convert"
+    },
+    {
       "id": "copy-skills-global-to-project-readonly",
       "label": "copy-skills-global-to-project-readonly",
       "title": "คัดลอก global skills ไปยัง project ในโหมด read-only โดยไม่กระทบ source จริง",
@@ -3298,18 +3310,6 @@
       "id": "use-in-another-skills",
       "label": "use-in-another-skills",
       "title": "ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill เพื่อลดซ้ำซ้อนและส่งต่องาน",
-      "group": "use"
-    },
-    {
-      "id": "use-lang-en",
-      "label": "use-lang-en",
-      "title": "ใช้ภาษาอังกฤษในการสื่อสารและทำงาน",
-      "group": "use"
-    },
-    {
-      "id": "use-lang-th",
-      "label": "use-lang-th",
-      "title": "ใช้ภาษาไทยในการสื่อสารและทำงาน",
       "group": "use"
     },
     {
@@ -6762,7 +6762,7 @@
     },
     {
       "from": "learn-with-slide",
-      "to": "use-lang-th"
+      "to": "convert-to-lang-th"
     },
     {
       "from": "learn-with-slide",
@@ -6938,11 +6938,11 @@
     },
     {
       "from": "my-persona",
-      "to": "use-lang-en"
+      "to": "convert-to-lang-en"
     },
     {
       "from": "my-persona",
-      "to": "use-lang-th"
+      "to": "convert-to-lang-th"
     },
     {
       "from": "my-persona",

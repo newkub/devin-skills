@@ -1,5 +1,5 @@
 ---
-name: use-lang-en
+name: convert-to-lang-en
 description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
 allowed-tools:
   - read

@@ -106,7 +106,7 @@ related:
 
 ### 3. Content Standards
 
-- ทำ `/use-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
+- ทำ `/convert-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
 - ใช้ข้อมูลจริงจาก `/analyze-project`, code รันได้จริง
 - ไม่ใช้ placeholder ยกเว้น banner image
 - ไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก
@@ -247,4 +247,4 @@ src/
 - Section order: UI Sketch > Get Started > Features > Usage > Project > API References > Development > License
 - `## Usage` ครอบคลุมทุก access methods — ใช้ `### Usage via ...` heading สำหรับแต่ละ method
 - Features: row กระชับ ครอบคลุมทุก feature เขียน business value
-- ตารางทั้งหมดใช้ colored icon จาก iconify CDN คอลัมน์ Icon จัดกึ่งกลาง — ไม่มี ANSI codeblock — ภาษาอังกฤษตาม `/use-lang-en`
+- ตารางทั้งหมดใช้ colored icon จาก iconify CDN คอลัมน์ Icon จัดกึ่งกลาง — ไม่มี ANSI codeblock — ภาษาอังกฤษตาม `/convert-to-lang-en`

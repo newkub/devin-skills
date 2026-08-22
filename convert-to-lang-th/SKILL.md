@@ -1,5 +1,5 @@
 ---
-name: use-lang-th
+name: convert-to-lang-th
 description: ใช้ภาษาไทยในการสื่อสารและทำงาน
 allowed-tools:
   - read

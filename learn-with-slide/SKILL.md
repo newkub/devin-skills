@@ -15,7 +15,7 @@ triggers:
 related:
   - open-web
   - learn
-  - use-lang-th
+  - convert-to-lang-th
   - create-slide-in-newkub-slides
   - follow-slidev
 ---
@@ -57,7 +57,7 @@ related:
 1. สร้าง project ใน `D:/newkub/slides/learn/{topic-name}`
 2. ไม่ต้องสร้าง `package.json` — dependencies อยู่ที่ root `D:/newkub/slides/package.json` แล้ว
 3. สร้าง `slides.md` พร้อม frontmatter มาตรฐาน
-4. ทำ `/use-lang-th` — เนื้อหา slides เป็นภาษาไทย
+4. ทำ `/convert-to-lang-th` — เนื้อหา slides เป็นภาษาไทย
 
 ### 4. Write Slide Content
 > Goal: Write Slide Content
@@ -110,7 +110,7 @@ related:
 - ใช้ข้อมูลจาก `/learn` โดยตรง
 - ไม่เขียน content ใหม่นอกจากที่ research มา
 - บันทึก lessons learned ใน slide สุดท้าย
-- ทำ `/use-lang-th` — เนื้อหาและคำอธิบายเป็นภาษาไทย
+- ทำ `/convert-to-lang-th` — เนื้อหาและคำอธิบายเป็นภาษาไทย
 - ใช้ technical terms ภาษาอังกฤษเมื่อจำเป็น เช่น `ownership`, `borrowing`, `async`
 
 ## Expected Outcome
