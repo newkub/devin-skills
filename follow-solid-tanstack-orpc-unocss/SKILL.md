@@ -1,6 +1,6 @@
 ---
 name: follow-solid-tanstack-orpc-unocss
-description: ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS), oRPC, Elysia และ UnoCSS แบบ type-safe
+description: ตั้งค่าและพัฒนา full-stack app ด้วย TanStack Start (SolidJS), oRPC, Elysia และ UnoCSS
 allowed-tools:
   - read
   - edit
