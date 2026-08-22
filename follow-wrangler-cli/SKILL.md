@@ -12,6 +12,11 @@ triggers:
   - user
   - model
 related:
+  - follow-deploy-to-cloudflare
+  - follow-config
+  - validate
+  - follow-best-practice
+  - use-scripts
 ---
 
 ## Goal
@@ -25,29 +30,29 @@ related:
 ## Execute
 
 ### 1. Install And Authenticate
+
+installและกำหนดค่า Wrangler CLI
 > Goal: Install And Authenticate
 
-ติดตั้งและตั้งค่า Wrangler CLI
-
-1. ติดตั้ง Wrangler ด้วย `bun add -D wrangler` หรือ `npm install -g wrangler`
+1. install Wrangler ด้วย `bun add -D wrangler` หรือ `npm install -g wrangler`
 2. ตรวจสอบ version ด้วย `wrangler --version`
-3. Login ด้วย `wrangler login` เพื่อเชื่อมต่อกับ Cloudflare account
+3. Login ด้วย `wrangler login` เพื่อต่อกับ Cloudflare account
 4. ตรวจสอบ authentication ด้วย `wrangler whoami`
 
 ### 2. Initialize Project
-> Goal: Initialize Project
 
-สร้างและตั้งค่าโปรเจกต์
+สร้างและกำหนดค่าโปรเจกต์
+> Goal: Initialize Project
 
 1. สร้างโปรเจกต์ใหม่ด้วย `wrangler init project-name`
 2. สร้าง `wrangler.toml` config file อัตโนมัติ
-3. ตั้งค่า `main`, `compatibility_date`, `vars` ใน config
+3. กำหนดค่า `main`, `compatibility_date`, `vars` ใน config
 4. เลือก template หรือ framework ที่ต้องการ
 
 ### 3. Local Development
-> Goal: Local Development
 
 พัฒนาและทดสอบใน local environment
+> Goal: Local Development
 
 1. รัน local dev server ด้วย `wrangler dev`
 2. ตรวจสอบ logs และ errors ใน terminal
@@ -56,9 +61,9 @@ related:
 5. Test bindings และ environment variables
 
 ### 4. Deploy To Production
-> Goal: Deploy To Production
 
 Deploy Workers และ resources ไปยัง Cloudflare
+> Goal: Deploy To Production
 
 1. Deploy ด้วย `wrangler deploy`
 2. Deploy ไปยัง specific environment ด้วย `--env`
@@ -67,9 +72,9 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. ใช้ `wrangler versions` สำหรับ version management
 
 ### 5. Manage Bindings
-> Goal: Manage Bindings
 
 จัดการ bindings สำหรับ Workers
+> Goal: Manage Bindings
 
 1. สร้าง D1 database ด้วย `wrangler d1 create`
 2. สร้าง KV namespace ด้วย `wrangler kv:namespace create`
@@ -78,20 +83,20 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. Link bindings ด้วย `wrangler d1 execute` หรือ `wrangler kv:key put`
 
 ### 6. Manage Secrets
-> Goal: Manage Secrets
 
 จัดการ secrets และ environment variables
+> Goal: Manage Secrets
 
 1. Set secrets ด้วย `wrangler secret put SECRET_NAME`
 2. List secrets ด้วย `wrangler secret list`
 3. Delete secrets ด้วย `wrangler secret delete`
 4. ใช้ environment-specific secrets ด้วย `--env`
-5. ไม่ commit secrets ไปยัง git
+5. ห้าม commit secrets ไปยัง git
 
 ### 7. Manage Workers
-> Goal: Manage Workers
 
 จัดการ Workers และ configurations
+> Goal: Manage Workers
 
 1. List workers ด้วย `wrangler workers list`
 2. Delete worker ด้วย `wrangler delete`
@@ -100,9 +105,9 @@ Deploy Workers และ resources ไปยัง Cloudflare
 5. Manage subrequests และ limits
 
 ### 8. Advanced Features
-> Goal: Advanced Features
 
 ใช้งาน features ขั้นสูง
+> Goal: Advanced Features
 
 1. ใช้ `wrangler pages deploy` สำหรับ Pages projects
 2. ใช้ `wrangler queues` สำหรับ message queues
@@ -117,9 +122,9 @@ Deploy Workers และ resources ไปยัง Cloudflare
 จัดการ configuration files อย่างเป็นระบบ
 
 - ใช้ `wrangler.toml` เป็น single source of truth
-- ตั้งค่า `compatibility_date` เป็นวันปัจจุบันเสมอ
+- กำหนดค่า `compatibility_date` เป็นวันปัจจุบันเสมอ
 - ใช้ environment-specific configs ด้วย `[env.production]`
-- ไม่ hardcode secrets ใน config files
+- ห้าม hardcode secrets ใน config files
 - ใช้ `vars` สำหรับ public environment variables
 - ใช้ `secrets` สำหรับ sensitive data
 
@@ -132,7 +137,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 - Test ใน local ก่อน deploy ด้วย `wrangler dev --local`
 - ตรวจสอบ logs หลัง deploy ด้วย `wrangler tail`
 - ใช้ versioning สำหรับ rollback capability
-- ตั้งค่า routing และ custom domains อย่างถูกต้อง
+- กำหนดค่า routing และ custom domains อย่างถูกต้อง
 
 ### 3. Binding Management
 
@@ -149,9 +154,9 @@ Deploy Workers และ resources ไปยัง Cloudflare
 
 รักษาความปลอดภัยของ secrets
 
-- ไม่ commit secrets ไปยัง version control
+- ห้าม commit secrets ไปยัง version control
 - ใช้ `wrangler secret put` แทนการแก้ config files
-- Rotate secrets อย่างสม่ำเสมอ
+- Rotate secrets เป็นระยะ
 - ใช้ environment-specific secrets
 - ตรวจสอบ secret access logs
 - ใช้ secret management services สำหรับ production
@@ -165,7 +170,7 @@ Deploy Workers และ resources ไปยัง Cloudflare
 - Monitor logs และ errors ใน real-time
 - Test bindings และ integrations ใน local
 - ใช้ `wrangler tail` สำหรับ production debugging
-- ตั้งค่า log levels และ filtering
+- กำหนดค่า log levels และ filtering
 
 ### 6. Performance Optimization
 
@@ -184,14 +189,14 @@ Deploy Workers และ resources ไปยัง Cloudflare
 
 - ใช้ `WRANGLER_API_TOKEN` สำหรับ authentication
 - ใช้ `wrangler deploy --env production` ใน CI
-- ตั้งค่า environment variables ใน CI/CD
+- กำหนดค่า environment variables ใน CI/CD
 - ใช้ `wrangler secret put` ใน CI สำหรับ secrets
 - Test ก่อน deploy ด้วย `wrangler dev --local`
 - ใช้ GitHub Actions หรือ GitLab CI สำหรับ automation
 
 ## Expected Outcome
 
-- Wrangler CLI ติดตั้งและตั้งค่าอย่างถูกต้อง
+- Wrangler CLI installและกำหนดค่าอย่างถูกต้อง
 - Workers deploy ได้อย่างราบรื่น
 - Bindings และ secrets จัดการอย่างปลอดภัย
 - Development workflow มีประสิทธิภาพ
