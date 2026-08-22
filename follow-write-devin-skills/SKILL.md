@@ -18,6 +18,8 @@ related:
   - prepare-skills-context
   - follow-create-bun-cli
   - follow-create-cli
+  - follow-web-design
+  - visualize-in-web
   - use-scripts
   - validate
   - review-devin-global-skills
@@ -98,7 +100,18 @@ related:
 5. รันทดสอบด้วย `bun run dev` หรือ `bun run src/presentation/cli.ts -- --help`
 6. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
 
-### 6. Validate Skill
+### 6. Create Web (if needed)
+
+สร้าง web app ถ้า skill ต้องการ visual หรือ browser
+> Goal: skill ที่ระบุ web มี `web/` directory พร้อมรัน
+
+1. ถ้า `## Execute` ระบุว่าต้องแสดงผล web หรือ browser → สร้าง `web/`
+2. ใช้ `/follow-web-design` เพื่อออกแบบ UI/UX
+3. ใช้ `/visualize-in-web` สร้างไฟล์ HTML entry ใน `web/`
+4. รันทดสอบด้วย `bunx serve web/` หรือ `/open-web`
+5. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
+
+### 7. Validate Skill
 
 ตรวจสอบคุณภาพก่อน finalize
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
@@ -108,7 +121,7 @@ related:
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
 4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 
-### 7. Update References
+### 8. Update References
 
 อัปเดต references และสรุป
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
@@ -129,7 +142,7 @@ related:
 ### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก
-- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/` ตามความจำเป็น
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/`, `web/` ตามความจำเป็น
 - ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -173,5 +186,6 @@ related:
 - Template ที่เลือกตรงกับ prefix ของ skill
 - Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว
+- ถ้าต้องการ web จะมี `web/` directory ที่ทดสอบผ่านแล้ว
 - `related` ถูกต้อง ไม่มี missing/unused
 - references อัปเดตครบถ้วน

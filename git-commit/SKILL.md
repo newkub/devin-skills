@@ -177,3 +177,7 @@ Split Commit:
 3. โหมดการ commit ที่เหมาะสม: task files only, commit all, หรือ split by category
 4. ไฟล์ที่มีการเปลี่ยนแปลงถูก commit ตามที่ต้องการ
 5. Working directory สะอาด (สำหรับ Commit All และ Split Commit)
+
+## Addendum
+
+- ก่อนรัน `git commit` จริง `/git-commit` ต้องเรียก `/follow-hk` เพื่อให้ pre-commit hooks รันและ format/lint ผ่านก่อนเสมอ

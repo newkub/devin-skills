@@ -37,6 +37,7 @@ related:
 
 ดำเนินการลบและอัพเดท
 
+- ทำ `/check` หรือ `/validate` ก่อนลบไฟล์หรือ folder เพื่อตรวจสอบความถูกต้องและหลีกเลี่ยง broken references
 - ลบไฟล์หรือ folder
 - อัพเดททุก references ใน codebase
 - อัพเดท imports ทั้งหมด

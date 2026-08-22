@@ -14,6 +14,7 @@ triggers:
 related:
   - follow-package-manifest
   - follow-tasks
+  - follow-mise
   - follow-dot-vscode
   - follow-dot-github
   - follow-biome

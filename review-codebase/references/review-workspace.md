@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-workspace
 description: Review workspace ใน monorepo หรือ project เดี่ยว ครอบคลุม manifest, dependencies, scripts, config
 argument-hint: optional workspace path or name

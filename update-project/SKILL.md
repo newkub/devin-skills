@@ -105,3 +105,7 @@ related:
 - Project docs, config, rules, และ tooling sync กัน
 - ผ่าน validation ตาม project
 - รายงานผลชัดเจน
+
+## Addendum
+
+- `/update-project` ต้องเรียก `/follow-monorepo` ก่อนเสมอ (Step 1) เพื่อ detect monorepo และเรียงลำดับ workspace ก่อนเริ่ม update

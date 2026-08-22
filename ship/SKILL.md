@@ -67,8 +67,9 @@ Ship ครบวงจร ตั้งแต่ planning, review, improve, comm
 > Goal: Git operations และ commit
 > Goal: Git operations สำเร็จ
 
-1. ทำ `/git-commit` เพื่อ commit ทุกการเปลี่ยนแปลง
-2. ทำ `/update-readme` เพื่ออัปเดท docs ให้ตรงกับ version ใหม่
+1. ทำ `/git-commit-and-push` เพื่อ commit และ push branch
+2. ทำ `/ask-me` เพื่อถาม user ว่าต้องการรัน `/run-release` หรือไม่
+3. ทำ `/update-readme` เพื่ออัปเดท docs ให้ตรงกับ version ใหม่
 
 ### 5. Verify
 

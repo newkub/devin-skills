@@ -99,3 +99,7 @@ related:
 ## References
 
 - package.json review script reference: `references/run-review-reference/`
+
+## Addendum
+
+- ถ้าต้องแก้ไข analyzer logic `/run-review` ต้องเรียก `/update-create-analyze-cli` ก่อน เพื่ออัปเดท `tools/analyze` ก่อนจะอัปเดท `tools/review`
