@@ -37,7 +37,7 @@ export const Graph: Component<{
   const [colored, setColored] = createSignal<GraphData | null>(null);
 
   onMount(async () => {
-    const res = await fetch("/skills-graph.json");
+    const res = await fetch("/api/skills-graph");
     const data: GraphData = await res.json();
     setRaw(data);
     const nodes = data.nodes.map((n) => ({
