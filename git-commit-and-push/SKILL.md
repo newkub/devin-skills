@@ -12,10 +12,6 @@ triggers:
   - user
   - model
 related:
-  - git-push
-  - update-reference
-  - git-commit
-  - follow-monorepo
 ---
 
 ## Goal

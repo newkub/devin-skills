@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - list-project-in-drive-d
-  - at-project-in-drive-d
-  - report-table
-  - ask-me
 ---
 
 ## Goal

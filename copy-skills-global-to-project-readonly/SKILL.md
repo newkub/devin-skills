@@ -13,11 +13,15 @@ triggers:
   - user
   - model
 related:
-  - use-scripts
-  - use-bun-shell
-  - follow-gitignore
-  - update-reference
-  - validate
+  - D
+  - MIR
+  - S
+  - T
+  - deny
+  - directories
+  - files
+  - junction
+  - scope
 ---
 
 ## Goal

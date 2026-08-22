@@ -13,12 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - follow-devin-skills-md
-  - scan-codebase
-  - ask-me
-  - validate
-  - ship
+  - unused
 ---
 
 ## Goal

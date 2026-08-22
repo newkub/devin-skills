@@ -12,6 +12,10 @@ triggers:
   - user
   - model
 related:
+  - TS
+  - TypeScript
+  - attributes
+  - warnings
 ---
 
 ## Goal

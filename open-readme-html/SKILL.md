@@ -12,7 +12,11 @@ triggers:
   - user
   - model
 related:
-  - open-web
+  - UX
+  - collapse
+  - notices
+  - optional
+  - priority
 ---
 
 ## Goal

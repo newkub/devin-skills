@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - idea-features
-  - deep-plan
-  - deep-research
-  - ship
-  - review-codebase
+  - advantage
 ---
 
 ## Goal

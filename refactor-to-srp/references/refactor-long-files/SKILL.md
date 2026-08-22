@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - refactor-codebase
-  - report-plan
-  - run-check
-  - check-long-files
-  - refactor
 ---
 
 ## Goal

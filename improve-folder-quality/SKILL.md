@@ -13,10 +13,8 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
-  - use-scripts
-  - restructure
-  - review-codebase
+  - dependency
+  - folders
   - use-ast-grep-outline
 ---
 

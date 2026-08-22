@@ -11,10 +11,11 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-lint
-  - run-build
+  - follow-global-workflows
   - git-commit
+  - run-build
+  - run-lint
+  - run-test
 ---
 
 ## Goal

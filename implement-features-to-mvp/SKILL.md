@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - plan
-  - dont-over-engineer
-  - realize-implementation
-  - analyze-project
-  - report
 ---
 
 ## Goal

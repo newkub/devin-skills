@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - report-release-changelog
-  - check-release-changelog
-  - analyze-project
-  - update-dot-devin
-  - update-agents-md
 ---
 
 ## Goal

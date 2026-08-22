@@ -11,7 +11,7 @@ triggers:
   - user
   - model
 related:
-  - follow-github-actions
+  - CD
 ---
 
 ## Goal

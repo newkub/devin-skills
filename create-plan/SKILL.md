@@ -9,10 +9,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - deep-plan
-  - report-plan
-  - implement-plan
-  - plan
 argument-hint: <title>
   - ship
 ---

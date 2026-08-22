@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - run-scan
-  - run-lint
-  - run-typecheck
+  - deploy
 ---
 
 ## Goal

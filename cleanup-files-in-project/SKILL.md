@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - check-unused-files
-  - check-unused-deps
-  - report-file-structure
-  - report-table
-  - report-ansi
+  - exports
+  - references
 ---
 
 ## Goal

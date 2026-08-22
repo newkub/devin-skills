@@ -12,11 +12,13 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-check
-  - refactor
-  - realize-implementation
+  - PR
   - create-plan
+  - realize-implementation
+  - refactor
+  - run-check
+  - run-test
+  - task
 ---
 
 ## Goal

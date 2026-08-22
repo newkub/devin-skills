@@ -13,11 +13,13 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - validate
   - deep-validate
-  - run-check
   - report
+  - report-table
+  - review-codebase
+  - run-check
+  - suggest-next-action
+  - validate
 argument-hint: optional PR number or branch
 ---
 

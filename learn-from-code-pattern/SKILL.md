@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-architecture
-  - use-ast-grep
-  - run-check
-  - generalize
-  - learn-from-web
+  - cons
 ---
 
 ## Goal

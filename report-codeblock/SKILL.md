@@ -13,9 +13,10 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - report-ansi
+  - UI
+  - class
+  - deletions
+  - text
 ---
 
 ## Goal

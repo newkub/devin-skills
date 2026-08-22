@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - list-git-stash
-  - list-github-branch
-  - report-table
-  - follow-git
 ---
 
 ## Goal

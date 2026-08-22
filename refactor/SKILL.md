@@ -13,11 +13,10 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - check-code-structure
-  - improve-code-duplication
-  - check-long-files
-  - create-plan
+  - after
+  - exports
+  - imports
+  - module
 ---
 
 ## Goal

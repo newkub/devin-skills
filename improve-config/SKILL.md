@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - follow-tasks
-  - optimize-build
-  - follow-config
-  - follow-monorepo
-  - all-workspaces
+  - CD
+  - after
 ---
 
 ## Goal

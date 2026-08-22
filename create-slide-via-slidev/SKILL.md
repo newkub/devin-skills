@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-slidev
-  - run-dev
-  - create-slide-in-newkub-slides
-  - ship
 ---
 
 ## Goal

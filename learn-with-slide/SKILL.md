@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - open-web
-  - learn
-  - convert-to-lang-th
-  - create-slide-in-newkub-slides
-  - follow-slidev
 ---
 
 ## Goal

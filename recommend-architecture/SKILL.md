@@ -13,9 +13,7 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - analyze-project
-  - ship
+  - folder
 ---
 
 ## Goal

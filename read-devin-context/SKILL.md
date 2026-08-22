@@ -12,10 +12,7 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - scan-codebase
-  - follow-skills
-  - ask-me
+  - enabled
 ---
 
 ## Goal

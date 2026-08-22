@@ -9,10 +9,6 @@ triggers:
   - user
   - model
 related:
-  - read-related-skills
-  - report-table
-  - suggest-next-action
-  - improve-redundancy
 ---
 
 ## Goal

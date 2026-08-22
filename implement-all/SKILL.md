@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - implement-mock
-  - implement-todo-md
-  - suggest-next-action
-  - implement-features-to-mvp
-  - deep-analyze
+  - UI
 ---
 
 ## Goal

@@ -13,8 +13,9 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-lint
+  - Stub
+  - TLS
+  - response
 ---
 
 ## Goal

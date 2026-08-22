@@ -13,13 +13,10 @@ triggers:
   - user
   - model
 related:
-  - suggest-next-action
-  - implement-features-to-mvp
-  - learn-from-web
-  - compare-and-idea-features
-  - refactor
-  - update-docs
+  - ASCII
+  - UI
   - open-web
+  - preview
 ---
 
 ## Goal

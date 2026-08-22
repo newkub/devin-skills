@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-config
-  - run-lint
-  - update-reference
-  - update-docs
-  - report-table
 ---
 
 ## Goal

@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
-  - use-ast-grep
-  - read-related-skills
-  - deep-thinking
-  - follow-best-practice
 ---
 
 ## Goal

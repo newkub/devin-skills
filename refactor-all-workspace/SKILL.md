@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - follow-architecture
-  - run-build
-  - refactor-packages
-  - check-long-files
 ---
 
 ## Goal

@@ -13,7 +13,7 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
+  - O
 ---
 
 ## Goal

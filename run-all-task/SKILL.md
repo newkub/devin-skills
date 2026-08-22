@@ -12,10 +12,11 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-check
-  - suggest-next-action
+  - created
   - resolve-errors
+  - run-check
+  - run-test
+  - suggest-next-action
 ---
 
 ## Goal

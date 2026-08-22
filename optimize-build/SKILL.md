@@ -13,11 +13,12 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
+  - after
+  - analyze-project
   - check-unused-deps
-  - report-ansi
-  - use-scripts
+  - report-table
   - run-clean
+  - under-configure
 ---
 
 ## Goal

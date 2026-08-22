@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - update-reference
-  - follow-code-quality
 ---
 
 ## Goal

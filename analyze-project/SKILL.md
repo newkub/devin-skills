@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - use-ast-grep
   - suggest-next-action
-  - check-unused-deps
-  - use-scripts
-  - run-audit
 ---
 
 ## Goal

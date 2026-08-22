@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - report-ansi
-  - follow-my-tech-stack
-  - deep-research
+  - UI
 ---
 
 ## Goal

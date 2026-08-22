@@ -13,8 +13,7 @@ triggers:
   - user
   - model
 related:
-  - resolve-errors
-  - deep-debug
+  - CD
 ---
 
 ## Goal

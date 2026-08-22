@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - deep-plan
-  - suggest-next-action
-  - follow-root-cause-analysis
-  - debug-issue
+  - cons
 ---
 
 ## Goal

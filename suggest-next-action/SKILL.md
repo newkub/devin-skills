@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - ask-me
-  - report-table
-  - scan-codebase
-  - report-agents-session-status
-  - continue
 ---
 
 ## Goal

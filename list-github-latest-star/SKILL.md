@@ -11,7 +11,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
+  - starred
 ---
 
 ## Goal

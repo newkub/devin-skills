@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-agent-browser
-  - resolve-errors
+  - VP9
 ---
 
 ## Goal

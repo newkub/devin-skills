@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - follow-architecture
-  - dont-over-engineer
-  - follow-root-cause-analysis
-  - deep-research
 ---
 
 ## Goal

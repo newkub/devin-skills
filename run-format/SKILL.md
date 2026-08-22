@@ -13,6 +13,7 @@ triggers:
   - user
   - model
 related:
+  - warnings
 ---
 
 ## Goal

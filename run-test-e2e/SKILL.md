@@ -12,6 +12,9 @@ triggers:
   - user
   - model
 related:
+  - fail
+  - localStorage
+  - teardown
 ---
 
 ## Goal

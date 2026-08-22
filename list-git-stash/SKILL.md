@@ -12,10 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-git
-  - report-table
-  - list-git-branch
-  - list-git-tags
+  - -
+  - deletions
 ---
 
 ## Goal

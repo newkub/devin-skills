@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - check-circular-dependencies
-  - report-ansi
-  - check-monorepo
+  - UI
 ---
 
 ## Goal

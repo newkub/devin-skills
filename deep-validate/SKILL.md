@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - deep-plan
-  - deep-analyze
-  - improve-correctness
-  - run-typecheck
-  - follow-code-quality
 ---
 
 ## Goal

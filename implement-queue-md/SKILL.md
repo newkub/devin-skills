@@ -10,11 +10,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - add-to-queue
-  - deep-plan
-  - realize-implementation
-  - implement-all
-  - run-verify
 ---
 
 ## Goal

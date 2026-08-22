@@ -13,13 +13,6 @@ triggers:
   - user
   - model
 related:
-  - review
-  - report-and-fix
-  - report-only
-  - fixer
-  - validate
-  - ask-me
-  - suggest-next-action
 ---
 
 ## Goal

@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - run-build
-  - optimize-build
-  - report-ansi
+  - UI
+  - lazy
 ---
 
 ## Goal

@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - ask-me
-  - report
-  - report-plan
-  - git-debug
-  - git-restore-file
+  - files
 ---
 
 ## Goal

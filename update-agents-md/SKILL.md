@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-devin-skills-md
-  - follow-agents-md
-  - follow-monorepo
-  - all-workspaces
-  - analyze-project
 ---
 
 ## Goal

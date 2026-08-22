@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - run-all-task
   - implement-queue-md
+  - run-all-task
 ---
 
 ## Goal

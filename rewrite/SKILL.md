@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - assume-reset-context
-  - follow-write-devin-skills
-  - edit-relative
-  - scan-codebase
-  - validate
 ---
 
 ## Goal

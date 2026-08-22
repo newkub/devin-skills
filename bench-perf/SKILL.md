@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - after
+  - low-resource
   - report-table
   - suggest-next-action
 ---

@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-gitignore
-  - follow-config
-  - follow-agents-md
-  - follow-readme
-  - update-dot-devin
+  - packages
 ---
 
 ## Goal

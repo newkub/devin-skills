@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - pondering
-  - suggest-next-action
-  - write-test
-  - deep-thinking
+  - flows
+  - line
 ---
 
 ## Goal

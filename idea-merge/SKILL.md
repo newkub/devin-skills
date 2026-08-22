@@ -11,9 +11,7 @@ triggers:
   - user
   - model
 related:
-  - follow-git
-  - git-merge-commit
-  - create-git-branch
+  - team
 ---
 
 ## Goal

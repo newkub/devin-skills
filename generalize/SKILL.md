@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - dont-over-engineer
-  - use-scripts
-  - refactor
-  - run-typecheck
 ---
 
 ## Goal

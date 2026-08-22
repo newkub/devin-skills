@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - add-to-queue
-  - report-ansi
-  - implement-comment-todo
+  - BUG
+  - UI
 ---
 
 ## Goal

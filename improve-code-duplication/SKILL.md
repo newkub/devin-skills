@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-jscpd
-  - refactor
 ---
 
 ## Goal

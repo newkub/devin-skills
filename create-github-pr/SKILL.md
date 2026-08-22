@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-lint
-  - run-build
-  - ship
 ---
 
 ## Goal

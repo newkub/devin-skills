@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - idea-features
-  - run-build
-  - report-ansi
-  - use-scripts
+  - after
 ---
 
 ## Goal

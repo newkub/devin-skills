@@ -12,10 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-readme
-  - loop-until-complete
-  - resolve-errors
-  - write-test
 ---
 
 ## Goal

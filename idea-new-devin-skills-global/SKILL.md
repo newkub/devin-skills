@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - update-reference
 ---
 
 ## Goal

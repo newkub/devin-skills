@@ -9,9 +9,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - git-commit-and-push
-  - open-web
-  - git-push
 argument-hint: "[<repo-name>] [--public|--private]"
 ---
 

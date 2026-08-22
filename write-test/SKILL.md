@@ -14,11 +14,15 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - follow-content-quality
-  - run-test-coverage
-  - improve-test-coverage
+  - cleanup
+  - environment
+  - features
+  - malicious
+  - max
+  - ports
   - report
+  - result
+  - undefined
 ---
 
 ## Goal

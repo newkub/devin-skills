@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - report-ansi
-  - use-scripts
-  - scan-codebase
+  - CD
+  - UI
 ---
 
 ## Goal

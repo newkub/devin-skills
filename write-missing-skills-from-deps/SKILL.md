@@ -13,10 +13,7 @@ triggers:
   - user
   - model
 related:
-  - update-reference
-  - learn-from-web
-  - follow-write-devin-skills
-  - follow-content-quality
+  - TypeScript
 ---
 
 ## Goal

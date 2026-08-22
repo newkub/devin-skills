@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - dont-over-engineer
-  - edit-only
-  - follow-content-quality
-  - improve-skills
 ---
 
 ## Goal

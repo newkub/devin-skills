@@ -12,11 +12,10 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - use-ast-grep
-  - use-scripts
-  - run-lint
-  - deep-analyze
+  - Either
+  - O
+  - impure
+  - output
 ---
 
 ## Goal

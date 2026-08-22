@@ -11,10 +11,6 @@ triggers:
   - user
   - model
 related:
-  - follow-git
-  - report-table
-  - list-github-release
-  - list-git-branch
 ---
 
 ## Goal

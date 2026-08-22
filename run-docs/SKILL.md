@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - report-ansi
-  - open-web
-  - watch-terminal
-  - follow-project-docs
-  - deep-review
 ---
 
 ## Goal

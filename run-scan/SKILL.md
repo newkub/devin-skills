@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - update-ast-grep-rules
-  - report-ansi
-  - loop-until-complete
-  - follow-ast-grep
-  - resolve-errors
+  - CD
 ---
 
 ## Goal

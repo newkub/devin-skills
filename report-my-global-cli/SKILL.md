@@ -9,11 +9,8 @@ triggers:
   - user
   - model
 related:
-  - follow-my-global-cli
-  - learn-from-cli
-  - report-table
-  - suggest-next-action
-  - idea-convert-my-global-cli-to-skills
+  - UI
+  - flags
 ---
 
 ## Goal

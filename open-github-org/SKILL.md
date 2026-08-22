@@ -8,7 +8,8 @@ allowed-tools:
 triggers:
   - user
 related:
-  - open-web
+  - Linux
+  - orgs
 argument-hint: <org-name>
 ---
 

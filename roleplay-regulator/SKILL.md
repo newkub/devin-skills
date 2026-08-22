@@ -13,11 +13,12 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - run-audit
-  - deep-thinking
-  - review-codebase
+  - commercial
+  - complaint-driven
+  - docs
+  - financial
+  - line
+  - workers
 ---
 
 ## Goal

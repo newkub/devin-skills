@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-build
-  - run-deploy
-  - watch-browser
-  - report-table
 ---
 
 ## Goal

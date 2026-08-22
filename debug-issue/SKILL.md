@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - memorize
-  - git-debug
-  - follow-root-cause-analysis
-  - follow-incident-triage
-  - write-test
 ---
 
 ## Goal

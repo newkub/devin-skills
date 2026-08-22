@@ -13,11 +13,11 @@ triggers:
   - user
   - model
 related:
-  - all-workspaces
-  - check-code-structure
-  - check-circular-dependencies
-  - improve-code-duplication
-  - check-long-files
+  - after
+  - barrel
+  - class
+  - type
+  - types
 ---
 
 ## Goal

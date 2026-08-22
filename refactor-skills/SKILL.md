@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - refactor-to-srp
-  - deep-review
-  - dont-over-engineer
-  - follow-devin-skills-md
 ---
 
 ## Goal

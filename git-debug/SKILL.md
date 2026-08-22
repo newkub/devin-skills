@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - git-commit
-  - git-file-history
-  - debug-issue
-  - write-test
-  - git-restore-file
+  - code
 ---
 
 ## Goal

@@ -13,9 +13,8 @@ triggers:
   - user
   - model
 related:
-  - watch-terminal
-  - resolve-errors
-  - run-dev
+  - CD
+  - GIF
 ---
 
 ## Goal

@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - learn
-  - resolve-errors
-  - deep-research
 ---
 
 ## Goal

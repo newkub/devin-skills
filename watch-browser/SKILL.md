@@ -11,10 +11,6 @@ triggers:
   - user
   - model
 related:
-  - follow-agent-browser
-  - run-typecheck
-  - resolve-errors
-  - watch-browser-console
 ---
 
 ## Goal

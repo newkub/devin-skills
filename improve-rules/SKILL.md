@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - review-devin-global-skills
-  - check-reference
-  - validate
-  - use-ast-grep-programatic
 ---
 
 ## Goal

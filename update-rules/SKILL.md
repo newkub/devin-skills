@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - update-ast-grep-rules
-  - update-agents-md
-  - use-scripts
-  - improve-rules
-  - update-devin-project-rules
 ---
 
 ## Goal

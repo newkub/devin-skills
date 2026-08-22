@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - idea-features
-  - suggest-next-action
-  - idea-uxui
-  - realize-implementation
-  - report-table
+  - UI
 ---
 
 ## Goal

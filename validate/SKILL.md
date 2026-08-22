@@ -11,10 +11,6 @@ triggers:
   - user
   - model
 related:
-  - improve-correctness
-  - review-codebase
-  - report
-  - suggest-next-action
 ---
 
 ## Goal

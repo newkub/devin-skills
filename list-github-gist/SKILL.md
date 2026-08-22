@@ -7,7 +7,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - report-table
 argument-hint: "[--limit <n>] [--public|--secret]"
 ---
 

@@ -15,11 +15,6 @@ triggers:
   - user
   - model
 related:
-  - use-scripts
-  - validate
-  - check-reference
-  - review-codebase
-  - follow-content-quality
 ---
 
 ## Goal

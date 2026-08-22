@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - run-review
-  - review-codebase
-  - check-should-update
-  - report-dependencies
-  - use-scripts
+  - tools-analyze
+  - tools-review
 ---
 
 ## Goal

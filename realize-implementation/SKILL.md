@@ -12,11 +12,10 @@ triggers:
   - user
   - model
 related:
-  - implement-all
-  - run-verify
-  - implement-plan
-  - deep-analyze-by-use-scripts
-  - deep-review
+  - UI
+  - output
+  - queries
+  - warnings
 ---
 
 ## Goal

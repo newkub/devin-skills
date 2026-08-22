@@ -13,12 +13,7 @@ triggers:
   - user
   - model
 related:
-  - spawn-subagents
-  - follow-parallel
-  - deep-plan
-  - report-table
-  - report-ansi
-  - suggest-next-action
+  - outputs
 ---
 
 ## Goal

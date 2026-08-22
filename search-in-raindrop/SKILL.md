@@ -13,9 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-my-global-cli
-  - learn-from-cli
-  - use-scripts
 ---
 
 ## Goal

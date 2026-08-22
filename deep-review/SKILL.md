@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - deep-plan
-  - deep-analyze-by-use-scripts
-  - suggest-next-action
-  - deep-analyze
 ---
 
 ## Goal

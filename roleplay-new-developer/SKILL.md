@@ -13,11 +13,9 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - check-code-structure
-  - run-dev
-  - deep-thinking
+  - docs
+  - line
+  - output
 ---
 
 ## Goal

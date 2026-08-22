@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - ask-me
-  - git-commit
-  - follow-git
 ---
 
 ## Goal

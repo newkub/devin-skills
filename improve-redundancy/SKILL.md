@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - suggest-next-action
-  - dont-over-engineer
-  - refactor
-  - update-reference
-  - simplify
 ---
 
 ## Goal

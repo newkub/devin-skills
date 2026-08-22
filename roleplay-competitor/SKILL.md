@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - deep-research
-  - deep-thinking
-  - review-codebase
+  - ML
+  - line
 ---
 
 ## Goal

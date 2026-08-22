@@ -13,11 +13,11 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - suggest-next-action
-  - plan
-  - dont-over-engineer
-  - use-scripts
+  - cleanup
+  - conditions
+  - confirm
+  - ref
+  - report
 ---
 
 ## Goal

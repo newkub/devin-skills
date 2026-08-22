@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - report-file-structure
-  - follow-config
-  - check-system-env
-  - suggest-next-action
+  - inconsistent
+  - values
 ---
 
 ## Goal

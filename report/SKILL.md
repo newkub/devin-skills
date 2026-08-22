@@ -12,10 +12,6 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - report-agents-session-status
-  - follow-content-quality
-  - report-ansi
 ---
 
 ## Goal

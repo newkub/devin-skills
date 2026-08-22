@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - run-test-coverage
-  - run-test
-  - suggest-next-action
-  - run-check
-  - refactor
+  - undefined
 ---
 
 ## Goal

@@ -10,11 +10,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - create-plan
-  - realize-implementation
-  - deep-plan
-  - report-plan
-  - plan
 argument-hint:
   - <plan-path-or-title>
 ---

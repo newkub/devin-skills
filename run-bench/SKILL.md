@@ -12,10 +12,7 @@ triggers:
   - user
   - model
 related:
-  - run-install
-  - report-table
-  - report
-  - check-time-complexity
+  - max
 ---
 
 ## Goal

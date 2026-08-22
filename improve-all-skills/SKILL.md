@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - follow-devin-skills-md
-  - improve-consistency
-  - improve-redundancy
-  - improve-skills
 ---
 
 ## Goal

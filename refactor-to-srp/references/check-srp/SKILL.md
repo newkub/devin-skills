@@ -13,11 +13,10 @@ triggers:
   - user
   - model
 related:
-  - use-ast-grep-outline
-  - deep-analyze-by-use-scripts
-  - use-scripts
-  - refactor-to-srp
-  - restructure
+  - aggregate
+  - dependencies
+  - index
+  - type
 ---
 
 ## Goal

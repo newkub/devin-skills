@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - deep-plan
-  - update-docs
-  - deep-research
-  - ship
+  - UI
 ---
 
 ## Goal

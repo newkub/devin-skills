@@ -11,11 +11,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - list-dependencies
-  - run-audit
-  - check-unused-deps
-  - run-install
+  - UI
 ---
 
 ## Goal

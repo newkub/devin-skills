@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - update-reference
-  - follow-devin-skills-md
-  - ship
 ---
 
 ## Goal

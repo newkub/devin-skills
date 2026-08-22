@@ -13,9 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-config
-  - check-system-env
-  - validate
+  - Tauri
 ---
 
 ## Goal

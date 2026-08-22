@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - validate
-  - resolve-errors
-  - analyze-project
 ---
 
 ## Goal

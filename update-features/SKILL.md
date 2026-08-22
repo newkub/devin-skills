@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - idea-features
-  - use-scripts
+  - nav
   - update-docs
-  - analyze-project
-  - report-table
 ---
 
 ## Goal

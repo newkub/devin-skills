@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-devin-skills-md
-  - follow-agents-md
-  - update-agents-md
-  - review-codebase
-  - check-reference
 ---
 
 ## Goal

@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - git-cli
+  - next
 ---
 
 ## Goal

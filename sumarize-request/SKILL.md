@@ -13,9 +13,7 @@ triggers:
   - user
   - model
 related:
-  - update-features
   - idea-features
-  - report-features
 ---
 
 ## Goal

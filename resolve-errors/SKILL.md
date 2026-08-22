@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - rename
-  - memorize
-  - run-check
-  - use-scripts
-  - refactor
+  - quotes
 ---
 
 ## Goal

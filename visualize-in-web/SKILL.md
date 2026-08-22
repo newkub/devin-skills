@@ -12,9 +12,8 @@ triggers:
   - user
   - model
 related:
-  - open-readme-html
-  - report-in-html
-  - open-web
+  - collapse
+  - contrast
 ---
 
 ## Goal

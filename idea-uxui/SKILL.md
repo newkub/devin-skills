@@ -13,8 +13,9 @@ triggers:
   - user
   - model
 related:
-  - deep-analyze
-  - ship
+  - Category
+  - Solves
+  - UI
 ---
 
 ## Goal

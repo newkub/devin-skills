@@ -13,8 +13,6 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
-  - idea-uxui
 ---
 
 ## Goal

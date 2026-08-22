@@ -13,11 +13,9 @@ triggers:
   - user
   - model
 related:
-  - refactor-packages
-  - scan-codebase
-  - analyze-project
-  - deep-analyze
-  - check-code-structure
+  - effort
+  - library
+  - refactor
 ---
 
 ## Goal

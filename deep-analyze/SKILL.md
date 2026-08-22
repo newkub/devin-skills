@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - deep-thinking
-  - deep-pondering
-  - deep-analyze-by-use-scripts
-  - deep-research
-  - scan-codebase
+  - libraries
 ---
 
 ## Goal

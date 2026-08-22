@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - suggest-next-action
-  - update-agents-md
-  - deep-analyze
-  - report-table
-  - deep-review
 ---
 
 ## Goal

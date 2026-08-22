@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

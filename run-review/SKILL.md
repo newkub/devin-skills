@@ -13,10 +13,7 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - update-create-review-cli
-  - suggest-next-action
-  - report-table
+  - tools-review
 ---
 
 ## Goal

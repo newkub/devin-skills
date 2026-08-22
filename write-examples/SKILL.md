@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-readme
-  - analyze-project
+  - output
 ---
 
 ## Goal

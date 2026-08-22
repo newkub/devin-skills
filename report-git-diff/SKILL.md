@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - git-commit
-  - report-ansi
-  - report-codeblock
+  - UI
 ---
 
 ## Goal

@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - run-scan
-  - run-test
-  - run-build
-  - follow-gitignore
-  - follow-tasks
+  - CD
+  - report
 ---
 
 ## Goal

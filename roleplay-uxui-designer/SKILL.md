@@ -13,11 +13,10 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - roleplay-user
-  - suggest-next-action
-  - report-uxui-sketch
-  - deep-thinking
+  - AAA
+  - UI
+  - line
+  - styling
 ---
 
 ## Goal

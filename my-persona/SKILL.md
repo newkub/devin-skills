@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - understand-me
-  - follow-skills
-  - convert-to-lang-en
-  - convert-to-lang-th
-  - follow-my-tech-stack
+  - formatting
 ---
 
 ## Goal

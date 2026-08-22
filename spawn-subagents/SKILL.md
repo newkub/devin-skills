@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - collaborate-with-agents
-  - follow-parallel
-  - deep-plan
-  - report-table
-  - report-ansi
+  - iteration
+  - progress
 ---
 
 ## Goal

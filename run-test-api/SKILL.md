@@ -13,11 +13,11 @@ triggers:
   - user
   - model
 related:
-  - use-scripts
-  - use-ast-grep-programatic
-  - run-test
-  - follow-test
-  - run-test-integration
+  - Node
+  - Report
+  - fail
+  - response
+  - rollback
 ---
 
 ## Goal

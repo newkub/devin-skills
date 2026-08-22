@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - update-ast-grep-rules
-  - use-ast-grep
-  - use-ast-grep-outline
-  - use-scripts
-  - improve-code-duplication
+  - directories
+  - gritql
 ---
 
 ## Goal

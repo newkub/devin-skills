@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - refactor-commit
-  - open-web
-  - follow-gitignore
-  - watch-github-actions
-  - resolve-errors
 ---
 
 ## Goal

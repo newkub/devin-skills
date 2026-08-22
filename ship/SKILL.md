@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-monorepo
-  - all-workspaces
-  - report
-  - git-commit
-  - follow-tasks
+  - CD
 ---
 
 ## Goal

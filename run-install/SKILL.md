@@ -13,7 +13,8 @@ triggers:
   - user
   - model
 related:
-  - update-dependencies-latest
+  - TS
+  - overrides
 ---
 
 ## Goal

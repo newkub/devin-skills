@@ -13,11 +13,11 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - report-ansi
-  - use-scripts
-  - report-file-structure
+  - IDE
+  - UI
+  - browser
+  - cache
+  - zsh
 ---
 
 ## Goal

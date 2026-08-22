@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - report-only
-  - deep-report
-  - report-plan
-  - analyze-project
-  - scan-codebase
+  - after
 ---
 
 ## Goal

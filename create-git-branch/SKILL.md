@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-git-branch
-  - follow-git
-  - ship
 ---
 
 ## Goal

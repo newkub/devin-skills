@@ -12,15 +12,7 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - review-agents-md
-  - review-github-issue
-  - review-github-pr
-  - review-devin-global-skills
-  - report-only
-  - scan-codebase
-  - validate
-  - suggest-next-action
+  - PR
 ---
 
 ## Goal

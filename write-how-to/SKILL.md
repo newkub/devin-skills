@@ -12,7 +12,7 @@ triggers:
   - user
   - model
 related:
-  - update-reference
+  - after
 ---
 
 ## Goal

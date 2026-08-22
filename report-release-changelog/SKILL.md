@@ -10,11 +10,8 @@ triggers:
   - user
   - model
 related:
-  - check-release-changelog
-  - report-table
-  - report-file-structure
-  - suggest-next-action
-  - report-ansi
+  - Security
+  - UI
 ---
 
 ## Goal

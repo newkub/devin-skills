@@ -10,9 +10,7 @@ triggers:
   - user
   - model
 related:
-  - validate
-  - run-lint
-  - run-format
+  - fail
 ---
 
 ## Goal

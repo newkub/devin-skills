@@ -13,10 +13,14 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - suggest-next-action
-  - open-web
-  - report-ansi
+  - CSS
+  - UI
+  - collapse
+  - desc
+  - export
+  - light
+  - pills
+  - sort
 ---
 
 ## Goal

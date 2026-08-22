@@ -13,7 +13,8 @@ triggers:
   - user
   - model
 related:
-  - resolve-errors
+  - CD
+  - SVG
 ---
 
 ## Goal

@@ -12,12 +12,8 @@ triggers:
   - user
   - model
 related:
-  - publish-package-to-npm
-  - follow-create-browser-extensions
-  - follow-release-docker
-  - follow-release-crates
-  - create-vscode-extensions
-  - follow-release
+  - Automation
+  - extension
 ---
 
 ## Goal

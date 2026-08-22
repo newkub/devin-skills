@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - open-web
-  - report-ansi
-  - watch-terminal
-  - watch-browser
-  - resolve-errors
 ---
 
 ## Goal

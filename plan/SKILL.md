@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - analyze-project
-  - use-lib-better
-  - use-lib-effective
-  - prioritize
-  - update-dot-devin
 ---
 
 ## Goal

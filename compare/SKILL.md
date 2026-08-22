@@ -11,9 +11,6 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - report-table
-  - deep-research
 ---
 
 ## Goal

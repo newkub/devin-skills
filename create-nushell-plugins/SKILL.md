@@ -12,7 +12,7 @@ triggers:
   - user
   - model
 related:
-  - ship
+  - output
 ---
 
 ## Goal

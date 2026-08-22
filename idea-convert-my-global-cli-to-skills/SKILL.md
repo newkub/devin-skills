@@ -14,11 +14,8 @@ triggers:
   - user
   - model
 related:
-  - follow-my-global-cli
-  - report-my-global-cli
-  - learn-from-cli
-  - follow-write-devin-skills
-  - write-skills-md
+  - options
+  - output
 ---
 
 ## Goal

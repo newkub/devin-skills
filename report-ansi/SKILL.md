@@ -11,11 +11,7 @@ triggers:
   - user
   - model
 related:
-  - report
-  - report-table
-  - report-file-structure
-  - report-codeblock
-  - suggest-next-action
+  - stdout
 ---
 
 ## Goal

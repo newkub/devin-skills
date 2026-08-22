@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - deep-analyze
-  - update-create-review-cli
-  - follow-create-cli
-  - follow-clean-architecture
-  - use-ast-grep
+  - end
+  - tools-analyze
+  - tools-review
 ---
 
 ## Goal

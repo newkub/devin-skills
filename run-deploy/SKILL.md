@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - run-build
-  - git-commit
-  - follow-vercel
-  - run-test-e2e
-  - follow-cloudflare-worker
+  - push
 ---
 
 ## Goal

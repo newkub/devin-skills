@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - deep-report
-  - report-plan
-  - analyze-project
-  - scan-codebase
-  - report-table
+  - progress
+  - structure
 ---
 
 ## Goal

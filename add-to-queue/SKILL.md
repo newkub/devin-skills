@@ -11,10 +11,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - deep-plan
-  - realize-implementation
-  - implement-queue-md
-  - report-plan
 ---
 
 ## Goal

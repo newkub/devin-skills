@@ -13,11 +13,9 @@ triggers:
   - user
   - model
 related:
-  - run-test-api
-  - run-test-unit
-  - run-test-integration
-  - run-test-e2e
-  - run-test-coverage
+  - Review
+  - review
+  - type
 ---
 
 ## Goal

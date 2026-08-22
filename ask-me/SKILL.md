@@ -13,9 +13,9 @@ triggers:
   - user
   - model
 related:
+  - abort
   - deep-plan
-  - understand-me
-  - ask-requirement
+  - no
 ---
 
 ## Goal

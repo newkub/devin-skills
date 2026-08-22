@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - idea-features
-  - deep-research
+  - New
 ---
 
 ## Goal

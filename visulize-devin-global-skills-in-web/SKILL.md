@@ -13,14 +13,11 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - visualize-in-web
-  - follow-uxui
-  - follow-web-design
-  - follow-solid-tanstack-orpc-unocss
-  - use-lib-effective
-  - check-circular-dependencies
-  - ship
+  - Select
+  - UX
+  - edges
+  - filter
+  - serve
 ---
 
 ## Goal

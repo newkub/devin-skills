@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - learn-from-web
-  - follow-crw
-  - follow-best-practice
-  - check-reference
 ---
 
 ## Goal

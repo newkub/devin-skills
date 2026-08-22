@@ -8,7 +8,7 @@ allowed-tools:
 triggers:
   - user
 related:
-  - open-web
+  - Linux
 argument-hint:
   - <username>
 ---

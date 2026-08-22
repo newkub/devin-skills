@@ -13,10 +13,7 @@ triggers:
   - user
   - model
 related:
-  - loop-until-complete
-  - watch-browser
-  - resolve-errors
-  - run-build
+  - CD
 ---
 
 ## Goal

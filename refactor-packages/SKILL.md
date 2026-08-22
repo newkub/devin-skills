@@ -12,11 +12,10 @@ triggers:
   - user
   - model
 related:
-  - refactor-codebase
-  - follow-monorepo
-  - plan
-  - restructure
-  - deep-analyze
+  - Packages
+  - modules
+  - package
+  - packages
 ---
 
 ## Goal

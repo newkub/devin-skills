@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - roleplay-regulator
-  - deep-thinking
-  - review-codebase
+  - CCPA
+  - line
 ---
 
 ## Goal

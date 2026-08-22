@@ -13,8 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - update-reference
 ---
 
 ## Goal

@@ -12,10 +12,7 @@ triggers:
   - user
   - model
 related:
-  - update-reference
-  - use-ast-grep
-  - resolve-errors
-  - report
+  - export
 ---
 
 ## Goal

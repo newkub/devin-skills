@@ -12,10 +12,8 @@ triggers:
   - user
   - model
 related:
-  - sumarize-to-bullet
   - memorize
   - report-table
-  - sumrize-this-project
 ---
 
 ---

@@ -9,7 +9,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - open-web
 argument-hint: <file-or-content> [--public|--secret]
 ---
 

@@ -13,11 +13,9 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - roleplay-user
-  - suggest-next-action
-  - deep-thinking
-  - review-codebase
+  - B
+  - line
+  - paid
 ---
 
 ## Goal

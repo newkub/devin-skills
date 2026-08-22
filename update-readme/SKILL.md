@@ -12,11 +12,10 @@ triggers:
   - user
   - model
 related:
-  - check-should-update
-  - all-workspaces
-  - follow-content-quality
-  - report-uxui-sketch
-  - update-changelog-md
+  - UI
+  - in
+  - out
+  - package-name
 ---
 
 ## Goal

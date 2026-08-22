@@ -13,8 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-best-practice
-  - deep-research
 ---
 
 ## Goal

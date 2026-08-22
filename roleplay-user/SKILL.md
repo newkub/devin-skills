@@ -13,11 +13,12 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - report-uxui-sketch
-  - deep-thinking
-  - review-codebase
+  - UI
+  - abort
+  - error
+  - escape
+  - line
+  - time
 ---
 
 ## Goal

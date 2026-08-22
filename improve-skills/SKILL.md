@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - check-correctness
-  - check-reference
-  - deep-research
-  - dont-over-engineer
-  - edit-only
+  - libraries
 ---
 
 ## Goal

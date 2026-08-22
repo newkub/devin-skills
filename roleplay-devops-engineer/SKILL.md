@@ -13,11 +13,14 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - suggest-next-action
-  - run-build
-  - deep-thinking
-  - review-codebase
+  - CD
+  - RTO
+  - SLO
+  - SRE
+  - USE
+  - deploy
+  - line
+  - liveness
 ---
 
 ## Goal

@@ -11,10 +11,7 @@ triggers:
   - user
   - model
 related:
-  - deep-review
-  - debug-issue
-  - resolve-errors
-  - deep-debug
+  - attributes
 ---
 
 ## Goal

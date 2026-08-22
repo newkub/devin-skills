@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-lint
-  - run-typecheck
 ---
 
 ## Goal

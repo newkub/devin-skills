@@ -14,12 +14,9 @@ triggers:
   - user
   - model
 related:
-  - follow-project-docs
-  - update-readme
-  - follow-content-quality
-  - update-reference
-  - update-features
-  - idea-features
+  - CD
+  - UX
+  - nav
 ---
 
 ## Goal

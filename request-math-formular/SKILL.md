@@ -12,7 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-request-math-formular
+  - description
+  - percentage
 ---
 
 ## Goal

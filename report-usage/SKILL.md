@@ -12,11 +12,10 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - report-file-structure
-  - report-ansi
-  - report-codeblock
-  - analyze-project
+  - deprecated
+  - imports
+  - progress
+  - workspaces
 ---
 
 ## Goal

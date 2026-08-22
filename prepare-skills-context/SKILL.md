@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - ask-me
-  - read-related-skills
-  - check-reference
-  - follow-best-practice
-  - follow-write-devin-skills
+  - fail
+  - invalid
 ---
 
 ## Goal

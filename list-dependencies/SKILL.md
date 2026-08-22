@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - check-unused-deps
-  - use-lib-better
-  - run-audit
-  - follow-taze
-  - report-table
 ---
 
 ## Goal

@@ -13,10 +13,9 @@ triggers:
   - user
   - model
 related:
-  - follow-goal
-  - deep-plan
-  - compare-and-idea-features
-  - bench-competitors
+  - 4
+  - cli
+  - web
 ---
 
 ## Goal

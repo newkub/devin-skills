@@ -12,10 +12,8 @@ triggers:
   - user
   - model
 related:
-  - run-scan
-  - deep-validate
-  - use-ast-grep
-  - follow-ast-grep
+  - CD
+  - negatives
 ---
 
 ## Goal

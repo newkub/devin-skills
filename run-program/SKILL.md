@@ -12,9 +12,9 @@ triggers:
   - user
   - model
 related:
-  - run-install
-  - run-build
-  - review-codebase
+  - Bun
+  - stderr
+  - warnings
 ---
 
 ## Goal

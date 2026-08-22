@@ -14,23 +14,7 @@ triggers:
   - user
   - model
 related:
-  - run-review
-  - update-create-review-cli
-  - review-github-pr
-  - review-devin-global-skills
-  - run-check
-  - resolve-errors
-  - deep-analyze
-  - deep-validate
-  - review-agents-md
-  - validate
-  - implement-all
-  - update-reference
-  - git-commit
-  - report-ansi
-  - report-table
-  - report
-  - suggest-next-action
+  - tools-review
 ---
 
 ## Goal

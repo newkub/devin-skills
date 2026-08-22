@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - rename
-  - suggest-next-action
-  - follow-best-practice
-  - review-codebase
-  - report-table
+  - Solves
 ---
 
 ## Goal

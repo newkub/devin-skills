@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - update-ast-grep-rules
-  - update-agents-md
-  - check-monorepo
-  - run-lint
-  - analyze-project
+  - hooks
+  - rules
 ---
 
 ## Goal

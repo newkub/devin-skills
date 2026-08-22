@@ -11,7 +11,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
+  - USERPROFILE
+  - Zsh
 ---
 
 ## Goal

@@ -11,8 +11,6 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - search-skills
 ---
 
 ## Goal

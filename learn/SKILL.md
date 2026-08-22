@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - write-examples
-  - learn-from-web
-  - learn-from-code-pattern
-  - follow-best-practice
-  - deep-research
+  - library
 ---
 
 ## Goal

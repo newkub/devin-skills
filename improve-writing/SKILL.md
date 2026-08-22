@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
-  - improve-ux-writing
-  - suggest-next-action
-  - follow-content-quality
-  - update-changelog-md
+  - docs
 ---
 
 ## Goal

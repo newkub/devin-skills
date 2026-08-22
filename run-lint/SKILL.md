@@ -12,10 +12,9 @@ triggers:
   - user
   - model
 related:
-  - deep-review
-  - check-unused-files
-  - resolve-errors
-  - no-use-ignore
+  - attributes
+  - placeholder
+  - warnings
 ---
 
 ## Goal

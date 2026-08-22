@@ -10,10 +10,10 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - report-ansi
-  - suggest-next-action
-  - ask-me
+  - progress
+  - roadmap
+  - uncommitted
+  - unpushed
 ---
 
 ## Goal

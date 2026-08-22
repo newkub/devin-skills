@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - improve-folder-quality
-  - check-long-files
-  - deep-review
-  - dont-over-engineer
-  - follow-import-export
+  - folder
 ---
 
 ## Goal

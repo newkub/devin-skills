@@ -8,8 +8,6 @@ allowed-tools:
 triggers:
   - user
 related:
-  - open-web
-  - save-to-github-repo
 argument-hint: <repo-name> [--public|--private|--internal]
   - ship
 ---

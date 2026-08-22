@@ -13,21 +13,7 @@ triggers:
   - user
   - model
 related:
-  - list-skills
-  - check-reference
-  - follow-content-quality
-  - report-table
-  - report-ansi
-  - report
-  - suggest-next-action
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - follow-create-bun-cli
-  - follow-create-cli
-  - validate
-  - use-scripts
-  - deep-analyze-by-use-scripts
-  - ask-me
+  - skill-name
 ---
 
 ## Goal

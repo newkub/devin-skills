@@ -13,9 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-slidev
-  - run-dev
-  - ship
 ---
 
 ## Goal

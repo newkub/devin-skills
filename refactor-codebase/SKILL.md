@@ -12,12 +12,11 @@ allowed-tools:
 triggers:
   - user
 related:
-  - refactor-to-srp
-  - follow-function-quality
-  - follow-import-export
-  - follow-architecture
-  - refactor-packages
-  - improve-consistency
+  - after
+  - configs
+  - exports
+  - imports
+  - module
 ---
 
 ## Goal

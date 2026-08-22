@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - run-check
-  - dont-over-engineer
-  - learn-from-web
-  - use-scripts
-  - run-audit
+  - CD
+  - YAML
 ---
 
 ## Goal

@@ -12,6 +12,12 @@ triggers:
   - user
   - model
 related:
+  - DML
+  - after
+  - columns
+  - denormalization
+  - sharding
+  - write
 ---
 
 ## Goal

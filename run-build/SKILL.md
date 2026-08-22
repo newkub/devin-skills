@@ -13,9 +13,8 @@ triggers:
   - model
 related:
   - optimize-build
-  - report-ansi
+  - resolve-errors
   - run-clean
-  - report-table
   - run-typecheck
 ---
 
