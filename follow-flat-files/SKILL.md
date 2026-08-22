@@ -1,5 +1,5 @@
 ---
-name: convert-to-flat-files
+name: follow-flat-files
 description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file `<name>.md`
 allowed-tools:
   - read
