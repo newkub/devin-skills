@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - refactor-codebase
-  - rename
-  - check-circular-dependencies
-  - run-check
-  - use-scripts
+  - exports
 ---
 
 ## Goal

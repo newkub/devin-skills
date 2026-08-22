@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - follow-nextjs
-  - follow-monorepo
-  - refactor-packages
-  - follow-vite
+  - Client
+  - shared
 ---
 
 ## Goal

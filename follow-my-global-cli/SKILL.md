@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - report-my-global-cli
-  - learn-from-cli
-  - follow-mise
-  - check-system-env
-  - list-system-env
+  - result
 ---
 
 ## Goal

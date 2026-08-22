@@ -12,9 +12,10 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - follow-declarative-programming
-  - follow-typescript
+  - Either
+  - Maybe
+  - arrays
+  - output
 ---
 
 ## Goal

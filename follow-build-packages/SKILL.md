@@ -11,11 +11,11 @@ triggers:
   - user
   - model
 related:
-  - refactor-packages
-  - follow-turborepo
-  - follow-tsdown
-  - analyze-project
+  - examples
   - follow-functional-programming
+  - follow-tsdown
+  - follow-turborepo
+  - follow-vitest
 ---
 
 ## Goal

@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - check-monorepo
-  - follow-github-workflows
-  - analyze-project
-  - follow-github-actions
-  - update-reference
+  - CD
+  - PR
 ---
 
 ## Goal

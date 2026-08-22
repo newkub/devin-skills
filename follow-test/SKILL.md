@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-vitest
-  - follow-playwright
-  - run-test
-  - run-test-api
-  - write-test
+  - Node
+  - e2e
+  - integration
 ---
 
 ## Goal

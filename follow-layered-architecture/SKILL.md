@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - follow-clean-architecture
-  - refactor
-  - follow-modular-monolith
-  - follow-vite
+  - feature
 ---
 
 ## Goal

@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - follow-architecture
-  - follow-event-driven
-  - follow-orm
-  - restructure
-  - follow-validation
+  - CD
+  - response
 ---
 
 ## Goal

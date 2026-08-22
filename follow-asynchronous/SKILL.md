@@ -12,9 +12,10 @@ triggers:
   - user
   - model
 related:
-  - follow-javascript
-  - follow-typescript
-  - validate
+  - O
+  - TS
+  - TypeScript
+  - debounce
 ---
 
 ## Goal

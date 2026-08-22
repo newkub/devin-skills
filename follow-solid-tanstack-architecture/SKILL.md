@@ -12,11 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - refactor-packages
-  - follow-monorepo
-  - follow-solidjs
-  - follow-tanstack-ecosystem
+  - posts
+  - shared
+  - splat
 ---
 
 ## Goal

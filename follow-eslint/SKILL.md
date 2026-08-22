@@ -12,6 +12,11 @@ triggers:
   - user
   - model
 related:
+  - A11y
+  - API
+  - Export
+  - Nuxt
+  - js
 ---
 
 ## Goal

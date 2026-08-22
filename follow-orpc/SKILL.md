@@ -12,7 +12,11 @@ triggers:
   - user
   - model
 related:
-  - follow-zod
+  - CSR
+  - catch
+  - mutation
+  - object
+  - server
 ---
 
 ## Goal

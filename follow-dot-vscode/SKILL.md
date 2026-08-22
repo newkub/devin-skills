@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - analyze-project
-  - check-monorepo
-  - learn-from-web
-  - update-reference
-  - follow-vscode-extensions
+  - Bun
+  - linter
 ---
 
 ## Goal

@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-vercel-cli
-  - follow-vercel
-  - follow-cloudflare-worker
-  - follow-github-actions
-  - follow-wrangler-cli
+  - CD
+  - Pages
 ---
 
 ## Goal

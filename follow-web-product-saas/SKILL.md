@@ -13,10 +13,10 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - check-correctness
-  - report
-  - analyze-project
+  - B
+  - UI
+  - payments
+  - subscription
 ---
 
 ## Goal

@@ -12,8 +12,11 @@ triggers:
   - user
   - model
 related:
-  - follow-vitest
-  - follow-tsdown
+  - Less
+  - URL
+  - debugger
+  - integration
+  - transform
 ---
 
 ## Goal

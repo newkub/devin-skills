@@ -13,10 +13,8 @@ triggers:
   - user
   - model
 related:
-  - follow-data-structures
-  - check-time-complexity
-  - follow-functional-programming
-  - validate
+  - output
+  - space
 ---
 
 ## Goal

@@ -12,12 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-create-bun-cli
-  - follow-clean-architecture
-  - follow-monorepo
-  - follow-create-rust-cli
-  - compare
-  - ship
+  - O
 ---
 
 ## Goal

@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - deep-thinking
-  - deep-analyze
-  - deep-analyze-by-use-scripts
-  - deep-review
-  - deep-report
+  - review
 ---
 
 ## Goal
