@@ -215,6 +215,52 @@ button:hover {
   100% { background-position: -200% 0; }
 }
 
+.group-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: white;
+  margin-right: 8px;
+}
+
+.loading-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+  color: var(--muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.error-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+  background: var(--bg);
+  padding: 24px;
+  text-align: center;
+}
+
+.error-overlay pre {
+  max-width: 80%;
+  overflow: auto;
+  background: var(--panel);
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+  color: #f87171;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 720px) {
   .app { flex-direction: column; }
   .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }

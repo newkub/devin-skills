@@ -31,7 +31,9 @@ export const Graph: Component<{
   highlight: string | null;
   zoom: Accessor<{ dir: "in" | "out" } | null>;
   onSelect: (node: SelectedNode | null) => void;
-  onReady: (data: GraphData) => void;
+  onData: (data: GraphData) => void;
+  onReady: () => void;
+  onError?: (error: unknown) => void;
 }> = (props) => {
   let container: HTMLDivElement;
   let network: any;
@@ -39,49 +41,61 @@ export const Graph: Component<{
   const [colored, setColored] = createSignal<GraphData | null>(null);
 
   onMount(async () => {
-    const data = await orpc.skillsGraph();
-    setRaw(data);
-    const nodes = data.nodes.map((n) => ({
-      ...n,
-      color: groupColors[n.group] || groupColors.default,
-    }));
-    setColored({ nodes, edges: data.edges });
+    try {
+      const data = await orpc.skillsGraph();
+      setRaw(data);
+      const nodes = data.nodes.map((n) => ({
+        ...n,
+        color: groupColors[n.group] || groupColors.default,
+      }));
+      setColored({ nodes, edges: data.edges });
+      props.onData(data);
 
-    const fontColor = props.dark ? "#e2e8f0" : "#1e293b";
-    const edgeColor = props.dark ? "#64748b" : "#94a3b8";
+      const fontColor = props.dark ? "#e2e8f0" : "#1e293b";
+      const edgeColor = props.dark ? "#64748b" : "#94a3b8";
 
-    const ds = {
-      nodes: new window.vis.DataSet(nodes),
-      edges: new window.vis.DataSet(data.edges),
-    };
-    network = new window.vis.Network(container, ds, {
-      nodes: {
-        shape: "dot",
-        size: 9,
-        font: { color: fontColor, size: 12 },
-        borderWidth: 2,
-      },
-      edges: {
-        arrows: { to: { enabled: true, scaleFactor: 0.4 } },
-        width: 0.8,
-        color: { color: edgeColor },
-      },
-      physics: { enabled: props.physics, stabilization: { iterations: 80 } },
-      interaction: { hover: true, tooltipDelay: 200 },
-    });
-    network.on("selectNode", () => {
-      const id = network.getSelectedNodes()[0];
-      const node = data.nodes.find((n) => n.id === id);
-      if (!node) return;
-      const incoming = data.edges.filter((e) => e.to === id).length;
-      const outgoing = data.edges.filter((e) => e.from === id).length;
-      props.onSelect({ ...node, incoming, outgoing });
-    });
-    network.on("deselectNode", () => props.onSelect(null));
-    network.on("click", (params: any) => {
-      if (params.nodes.length === 0) props.onSelect(null);
-    });
-    props.onReady(data);
+      const ds = {
+        nodes: new window.vis.DataSet(nodes),
+        edges: new window.vis.DataSet(data.edges),
+      };
+      network = new window.vis.Network(container, ds, {
+        nodes: {
+          shape: "dot",
+          size: 9,
+          font: { color: fontColor, size: 12 },
+          borderWidth: 2,
+        },
+        edges: {
+          arrows: { to: { enabled: true, scaleFactor: 0.4 } },
+          width: 0.8,
+          color: { color: edgeColor },
+        },
+        physics: { enabled: props.physics, stabilization: { iterations: 80 } },
+        interaction: { hover: true, tooltipDelay: 200 },
+      });
+      network.on("selectNode", () => {
+        const id = network.getSelectedNodes()[0];
+        const node = data.nodes.find((n) => n.id === id);
+        if (!node) return;
+        const incoming = data.edges.filter((e) => e.to === id).length;
+        const outgoing = data.edges.filter((e) => e.from === id).length;
+        props.onSelect({ ...node, incoming, outgoing });
+      });
+      network.on("deselectNode", () => props.onSelect(null));
+      network.on("click", (params: any) => {
+        if (params.nodes.length === 0) props.onSelect(null);
+      });
+      let ready = false;
+      const markReady = () => {
+        if (ready) return;
+        ready = true;
+        props.onReady();
+      };
+      network.on("stabilizationIterationsDone", markReady);
+      network.on("afterDrawing", markReady);
+    } catch (err) {
+      props.onError?.(err);
+    }
   });
 
   onCleanup(() => network?.destroy());

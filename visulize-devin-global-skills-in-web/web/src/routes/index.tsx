@@ -6,6 +6,7 @@ export function GraphPage() {
   const [prefix, setPrefix] = createSignal("all");
   const [selected, setSelected] = createSignal<SelectedNode | null>(null);
   const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal<string | null>(null);
   const [graphData, setGraphData] = createSignal<GraphData | null>(null);
 
   const saved = typeof localStorage !== "undefined" ? localStorage.getItem("visulize-theme") : null;
@@ -24,6 +25,13 @@ export function GraphPage() {
   const counts = createMemo(() =>
     graphData() ? { nodes: graphData()!.nodes.length, edges: graphData()!.edges.length } : { nodes: 0, edges: 0 }
   );
+
+  const groups = createMemo(() => {
+    const data = graphData();
+    if (!data) return [];
+    const set = new Set(data.nodes.map((n) => n.group));
+    return [...set].sort();
+  });
 
   const topSkills = createMemo(() => {
     if (!graphData()) return [];
@@ -67,11 +75,9 @@ export function GraphPage() {
         />
         <select value={prefix()} onChange={(e) => setPrefix(e.currentTarget.value)}>
           <option value="all">all prefixes</option>
-          <option value="follow">follow</option>
-          <option value="run">run</option>
-          <option value="check">check</option>
-          <option value="report">report</option>
-          <option value="idea">idea</option>
+          <For each={groups()}>
+            {(g) => <option value={g}>{g}</option>}
+          </For>
         </select>
         <div class="controls">
           <button onClick={() => setDark((v) => !v)}>{dark() ? "light" : "dark"}</button>
@@ -87,10 +93,15 @@ export function GraphPage() {
           <div class="detail">
             <h3>{selected()!.id}</h3>
             <p class="desc">{selected()!.title}</p>
-            <p class="meta">incoming {selected()!.incoming} · outgoing {selected()!.outgoing}</p>
+            <p class="meta">
+              <span class="group-badge" style={{ "background-color": (groupColors[selected()!.group] || groupColors.default).background }}>{selected()!.group}</span>
+              <span>incoming {selected()!.incoming} · outgoing {selected()!.outgoing}</span>
+            </p>
             <div class="controls small">
               <button onClick={doFocus}>focus</button>
               <button onClick={() => setSelected(null)}>clear</button>
+              <button onClick={() => navigator.clipboard?.writeText?.(selected()!.id)}>copy</button>
+              <button onClick={() => window.open(`vscode://file/C:/Users/Veerapong/AppData/Roaming/devin/skills/${selected()!.dir}/SKILL.md`)}>open</button>
             </div>
           </div>
         </Show>
@@ -117,13 +128,16 @@ export function GraphPage() {
         <div class="section">
           <h4>legend</h4>
           <ul class="legend">
-            <For each={Object.entries(groupColors)}>
-              {([group, c]) => (
-                <li>
-                  <span class="dot" style={{ "background-color": c.background, "border-color": c.border }} />
-                  <span class="cap">{group}</span>
-                </li>
-              )}
+            <For each={groups()}>
+              {(group) => {
+                const c = groupColors[group] || groupColors.default;
+                return (
+                  <li>
+                    <span class="dot" style={{ "background-color": c.background, "border-color": c.border }} />
+                    <span class="cap">{group}</span>
+                  </li>
+                );
+              }}
             </For>
           </ul>
         </div>
@@ -132,6 +146,14 @@ export function GraphPage() {
       <main class="canvas-wrap">
         <Show when={loading()}>
           <div class="skeleton" />
+          <div class="loading-message">{graphData() ? `rendering ${counts().nodes} nodes...` : "loading skills..."}</div>
+        </Show>
+        <Show when={error()}>
+          <div class="error-overlay">
+            <p>failed to load graph</p>
+            <pre>{error()}</pre>
+            <button onClick={() => window.location.reload()}>retry</button>
+          </div>
         </Show>
         <Graph
           search={search()}
@@ -143,7 +165,9 @@ export function GraphPage() {
           highlight={selected()?.id ?? null}
           zoom={zoom}
           onSelect={setSelected}
-          onReady={(d) => { setLoading(false); setGraphData(d); }}
+          onData={setGraphData}
+          onReady={() => setLoading(false)}
+          onError={(e) => { setLoading(false); setError(String(e)); }}
         />
       </main>
     </div>

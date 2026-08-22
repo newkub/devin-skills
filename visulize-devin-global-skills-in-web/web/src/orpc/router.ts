@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const SKILLS_ROOT = process.env.SKILLS_ROOT ?? "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills";
 
-type GraphNode = { id: string; label: string; title: string; group: string };
+type GraphNode = { id: string; label: string; title: string; group: string; dir: string };
 type GraphEdge = { from: string; to: string };
 export type GraphData = { nodes: GraphNode[]; edges: GraphEdge[] };
 
@@ -25,7 +25,7 @@ export function buildGraph(): GraphData {
       const description = front.match(/^description:\s*(.+)$/m)?.[1].trim() ?? "";
       const relatedBlock = front.match(/^related:\s*\n((?:\s*- .+\n?)+)/m)?.[1] ?? "";
       const group = name.split("-")[0] || "default";
-      nodes.push({ id: name, label: name, title: description, group });
+      nodes.push({ id: name, label: name, title: description, group, dir: dir.name });
       for (const line of relatedBlock.split(/\r?\n/)) {
         const related = line.match(/^\s*-\s*(.+)$/)?.[1].trim();
         if (!related) continue;
