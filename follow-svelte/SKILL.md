@@ -12,6 +12,12 @@ triggers:
   - user
   - model
 related:
+  - follow-vite
+  - follow-typescript
+  - follow-unocss
+  - follow-svelte-kit
+  - validate
+  - refactor-skills
 ---
 
 ## Goal
