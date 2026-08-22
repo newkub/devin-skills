@@ -1,4 +1,4 @@
-import { IGNORE_PATTERNS } from "@analyze-codebase-quality/shared";
+import { IGNORE_PATTERNS } from "../../shared/index.js";
 import { join, relative } from "node:path";
 import { statSync, readdirSync, readFileSync, existsSync } from "node:fs";
 
@@ -8,10 +8,10 @@ const CODE_EXTENSIONS = new Set([
 ]);
 
 export function shouldIgnore(name: string): boolean {
-  return IGNORE_PATTERNS.includes(name);
+  return (IGNORE_PATTERNS as readonly string[]).includes(name);
 }
 
-export function walkFiles(dir: string, basePath = dir): string[] {
+export function walkFiles(dir: string, basePath: string = dir): string[] {
   if (!existsSync(dir)) return [];
   const results: string[] = [];
   try {

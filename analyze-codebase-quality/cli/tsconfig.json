@@ -11,9 +11,17 @@
     "isolatedModules": true,
     "declaration": true,
     "isolatedDeclarations": true,
+    "outDir": "./dist",
+    "rootDir": ".",
     "types": [
       "bun-types"
     ]
   },
-  "files": []
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

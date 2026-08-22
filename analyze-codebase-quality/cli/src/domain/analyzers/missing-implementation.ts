@@ -1,8 +1,8 @@
-import type { AnalysisConfig, AnalysisIssue, AnalysisResult } from "@analyze-codebase-quality/shared";
-import { createIssue, createResult } from "@analyze-codebase-quality/shared";
+import type { AnalysisConfig, AnalysisIssue, AnalysisResult } from "../../shared/index.js";
+import { createIssue, createResult } from "../../shared/index.js";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
-import { walkFiles, readFileContent } from "../file-utils.js";
+import { walkFiles, readFileContent } from "../../adapters/filesystem/file-adapter.js";
 
 export function analyzeMissingImplementation(config: AnalysisConfig): AnalysisResult {
   const issues: AnalysisIssue[] = [];

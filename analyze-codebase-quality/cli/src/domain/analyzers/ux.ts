@@ -1,7 +1,7 @@
-import type { AnalysisConfig, AnalysisIssue, AnalysisResult } from "@analyze-codebase-quality/shared";
-import { createIssue, createResult } from "@analyze-codebase-quality/shared";
+import type { AnalysisConfig, AnalysisIssue, AnalysisResult } from "../../shared/index.js";
+import { createIssue, createResult } from "../../shared/index.js";
 import { join } from "node:path";
-import { readFileContent, findFilesByExtension } from "../file-utils.js";
+import { readFileContent, findFilesByExtension } from "../../adapters/filesystem/file-adapter.js";
 
 export function analyzeUx(config: AnalysisConfig): AnalysisResult {
   const issues: AnalysisIssue[] = [];

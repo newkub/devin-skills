@@ -1,5 +1,5 @@
-import type { AnalysisConfig } from "@analyze-codebase-quality/shared";
-import { ALL_CATEGORIES, DEFAULT_CONFIG } from "@analyze-codebase-quality/shared";
+import type { AnalysisConfig } from "./shared/index.js";
+import { ALL_CATEGORIES, DEFAULT_CONFIG } from "./shared/index.js";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
-import { createConfig } from "./config.js";
-import { analyzeAll, analyzeCategory } from "./orchestrator.js";
+import { createConfig } from "../../config.js";
+import { analyzeAll, analyzeCategory } from "../../application/orchestrator.js";
 import {
   ALL_CATEGORIES,
   CATEGORY_LABELS,
@@ -13,8 +13,8 @@ import {
   formatSingleResultTable,
   formatSummary,
   formatTable,
-} from "@analyze-codebase-quality/shared";
-import type { AnalysisCategory, Severity } from "@analyze-codebase-quality/shared";
+} from "../../shared/index.js";
+import type { AnalysisCategory, Severity } from "../../shared/index.js";
 import { writeFileSync } from "node:fs";
 
 type OutputFormat = "table" | "json" | "markdown" | "plain";

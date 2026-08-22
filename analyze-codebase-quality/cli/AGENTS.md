@@ -2,31 +2,27 @@
 
 ## Project
 
-- Project Type: `monorepo`
+- Project Type: `single-package`
 - Package Manager: `Bun`
 - Runtime: `Bun`
 - Language: `TypeScript`
 - Linting: `Biome`
-- Monorepo: `Turborepo`
 - Build: `bunup`
-
-## Workspaces
-
-- `apps/cli`: CLI application with 8 analyzers and orchestrator
-- `packages/shared`: Shared types, constants, and utilities
 
 ## Scripts
 
-- `bun run build` - Build all packages
-- `bun run lint` - Lint all packages
-- `bun run typecheck` - Type check all packages
+- `bun run build` - Build the CLI and library
+- `bun run lint` - Lint the source
+- `bun run typecheck` - Type check the source
 - `bun run test` - Run tests
-- `bun run verify` - Run typecheck, lint, test, build in sequence
 - `bun run dev` - Watch mode development
+- `bun run start` - Run the built CLI
 
 ## Architecture
 
-- Each analyzer is a pure function: `(config) => AnalysisResult`
-- Orchestrator runs all analyzers and consolidates results
-- CLI parses args, creates config, runs analysis, outputs report
-- Shared package provides types, constants, and utility functions
+- `src/domain/analyzers/` — Pure analyzer functions `(config) => AnalysisResult`
+- `src/application/orchestrator.ts` — Runs all analyzers and consolidates results
+- `src/presentation/cli/cli.ts` — CLI entry point: parses args, creates config, outputs report
+- `src/adapters/filesystem/file-adapter.ts` — File system side effects (walk, read)
+- `src/shared/` — Types, constants, colors, formatting, and utility functions
+- `src/config.ts` — Configuration creation

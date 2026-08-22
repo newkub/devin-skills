@@ -1,8 +1,8 @@
 import { createConfig } from "../src/config.js";
-import { analyzeStructure } from "../src/analyzers/structure.js";
-import { analyzeFoundation } from "../src/analyzers/foundation.js";
-import { analyzeRuntime } from "../src/analyzers/runtime.js";
-import { analyzeAll, analyzeCategory } from "../src/orchestrator.js";
+import { analyzeStructure } from "../src/domain/analyzers/structure.js";
+import { analyzeFoundation } from "../src/domain/analyzers/foundation.js";
+import { analyzeRuntime } from "../src/domain/analyzers/runtime.js";
+import { analyzeAll, analyzeCategory } from "../src/application/orchestrator.js";
 import {
   formatTable,
   formatSummary,
@@ -14,7 +14,7 @@ import {
   ALL_CATEGORIES,
   CATEGORY_LABELS,
   SEVERITY_ICONS,
-} from "@analyze-codebase-quality/shared";
+} from "../src/shared/index.js";
 import { join } from "node:path";
 
 const projectPath = join(import.meta.dir, "..");

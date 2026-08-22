@@ -1,18 +1,11 @@
+import { analyzeStructure, analyzeFoundation, analyzeRuntime, analyzeUx, analyzeLocalization, analyzeFeatures, analyzeErrors, analyzeMissingImplementation } from "../domain/analyzers/index.js";
 import type {
   AnalysisCategory,
   AnalysisConfig,
   AnalysisResult,
   ConsolidatedReport,
-} from "@analyze-codebase-quality/shared";
-import { DEFAULT_CATEGORY_ORDER, createStats } from "@analyze-codebase-quality/shared";
-import { analyzeStructure } from "./analyzers/structure.js";
-import { analyzeFoundation } from "./analyzers/foundation.js";
-import { analyzeRuntime } from "./analyzers/runtime.js";
-import { analyzeUx } from "./analyzers/ux.js";
-import { analyzeLocalization } from "./analyzers/localization.js";
-import { analyzeFeatures } from "./analyzers/features.js";
-import { analyzeErrors } from "./analyzers/errors.js";
-import { analyzeMissingImplementation } from "./analyzers/missing-implementation.js";
+} from "../shared/index.js";
+import { DEFAULT_CATEGORY_ORDER, createStats } from "../shared/index.js";
 
 const ANALYZERS: Record<AnalysisCategory, (config: AnalysisConfig) => AnalysisResult> = {
   structure: analyzeStructure,
