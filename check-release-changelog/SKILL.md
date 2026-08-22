@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - report-release-changelog
-  - learn-from-web
-  - report-table
-  - ask-me
-  - compare
+  - to
 ---
 
 ## Goal

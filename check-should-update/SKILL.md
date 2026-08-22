@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - check-git-diff
-  - report-table
-  - ask-me
 ---
 
 ## Goal

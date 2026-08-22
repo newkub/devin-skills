@@ -12,8 +12,6 @@ triggers:
   - model
 related:
   - suggest-next-action
-  - deep-research
-  - report
 ---
 
 ## Goal

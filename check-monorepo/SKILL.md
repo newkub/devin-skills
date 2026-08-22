@@ -10,7 +10,7 @@ triggers:
   - user
   - model
 related:
-  - report-table
+  - pnpm
 ---
 
 ## Goal

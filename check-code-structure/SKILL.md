@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - follow-import-export
-  - rename
-  - use-ast-grep
-  - suggest-next-action
-  - use-ast-grep-outline
+  - class
+  - export
 ---
 
 ## Goal

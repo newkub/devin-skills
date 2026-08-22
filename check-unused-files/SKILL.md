@@ -12,10 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-knip
-  - update-reference
-  - resolve-errors
-  - check-unused-deps
+  - TS
+  - TypeScript
 ---
 
 ## Goal

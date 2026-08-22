@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - check-should-update
-  - report-table
-  - suggest-next-action
-  - delete
-  - ask-me
 ---
 
 ## Goal

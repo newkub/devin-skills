@@ -12,11 +12,8 @@ triggers:
   - user
   - model
 related:
-  - deep-analyze-by-use-scripts
-  - run-bench
   - delete
-  - write-test
-  - deep-review
+  - max
 ---
 
 ## Goal

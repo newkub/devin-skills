@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - use-scripts
-  - scan-codebase
-  - follow-import-export
-  - refactor-packages
-  - update-reference
+  - mentions
 ---
 
 ## Goal
