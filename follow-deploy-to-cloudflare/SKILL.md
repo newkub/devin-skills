@@ -13,7 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-nitro
   - follow-wrangler-cli
   - follow-cloudflare-worker
   - run-build

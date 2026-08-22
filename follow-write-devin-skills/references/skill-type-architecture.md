@@ -84,7 +84,7 @@ Template สำหรับสร้าง `follow-*-architecture` skills ที
 
 - `related` ใน frontmatter ต้องมี `follow-*` skills ของ tech stack ที่เกี่ยวข้อง
 - ตัวอย่าง: Next.js → `/follow-nextjs`, `/follow-vite`, `/follow-vitest`
-- ตัวอย่าง: Nuxt → `/follow-nuxt`, `/follow-vue`, `/follow-pinia`, `/follow-nitro`
+- ตัวอย่าง: Nuxt → `/follow-nuxt`, `/follow-vue`, `/follow-pinia`
 - ตัวอย่าง: SvelteKit → `/follow-svelte`, `/follow-vite`, `/follow-vitest`
 - ตัวอย่าง: SolidJS+TanStack → `/follow-solidjs`, `/follow-tanstack`
 - รวม `/follow-vite` และ `/follow-vitest` เสมอเพราะเป็น build และ test tools ที่ใช้ร่วมกัน

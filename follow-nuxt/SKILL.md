@@ -14,7 +14,6 @@ triggers:
   - model
 related:
   - follow-vue
-  - follow-nitro
   - follow-vite
 ---
 

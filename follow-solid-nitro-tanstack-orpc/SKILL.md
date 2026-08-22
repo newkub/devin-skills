@@ -12,7 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-nitro
   - follow-solidjs
   - follow-orpc
   - follow-zod
@@ -168,7 +167,6 @@ related:
 
 - ใช้ `nitro/vite` plugin สำหรับ integration กับ Vite Environments API
 - ตั้งค่า `preset` ตาม deployment target
-- ทำตาม `/follow-nitro` สำหรับ config ที่ครบถ้วน
 
 ### 5. Error Handling
 
