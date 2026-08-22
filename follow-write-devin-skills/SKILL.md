@@ -63,6 +63,7 @@ related:
    - `review-*` → `references/skill-type-review.md`
    - `report-*` → `references/skill-type-report.md`
    - `idea-*` → `references/skill-type-idea.md`
+   - `lib-*` → `references/skill-type-lib.md` (library ติดตั้งผ่าน registry, ต้องมี `references/api/`, `references/cli/`, `references/components/`, และ `subskills/`)
 2. ถ้าไม่ตรง template → ใช้ `/follow-devin-skills-md` เป็น fallback
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
 4. สร้าง directory structure ตาม pattern ใน template ที่เลือก

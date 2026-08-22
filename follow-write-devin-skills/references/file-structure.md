@@ -21,6 +21,9 @@ description: โครงสร้างไฟล์และ directory สำ�
   - `skill-type-*.md` ใช้เป็น canonical pattern ตาม prefix
   - `skill-me.md` เนื้อหาหลักของ skill เมื่อต้องการแยกออกจาก `SKILL.md`
   - `file-structure.md` เอกสารโครงสร้างไฟล์ (this file)
+  - `references/api/` สำหรับ API references ของ lib
+  - `references/cli/` สำหรับ CLI references ของ lib
+  - `references/components/` สำหรับ component/usage examples ของ lib
 - `scripts/` สำหรับ helper scripts
 - `subskills/<domain>/<subskill>/SKILL.md` สำหรับ Devin subskills โดย `name` หน้า frontmatter เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`
 - `guide/` สำหรับขยายเอกสาร
@@ -37,6 +40,7 @@ description: โครงสร้างไฟล์และ directory สำ�
 - `references/skill-type-deep.md`
 - `references/skill-type-follow.md`
 - `references/skill-type-idea.md`
+- `references/skill-type-lib.md`
 - `references/skill-type-report.md`
 - `references/skill-type-review.md`
 - `references/skill-type-run.md`
