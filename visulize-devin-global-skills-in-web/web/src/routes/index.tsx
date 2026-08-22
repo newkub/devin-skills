@@ -1,19 +1,59 @@
-import { createSignal, Show } from "solid-js";
-import { Graph, type SelectedNode } from "../Graph";
+import { createEffect, createMemo, createSignal, For, Show } from "solid-js";
+import { Graph, groupColors, type GraphData, type SelectedNode } from "../Graph";
 
 export function GraphPage() {
   const [search, setSearch] = createSignal("");
   const [prefix, setPrefix] = createSignal("all");
   const [selected, setSelected] = createSignal<SelectedNode | null>(null);
   const [loading, setLoading] = createSignal(true);
-  const [counts, setCounts] = createSignal({ nodes: 0, edges: 0 });
-  const [dark, setDark] = createSignal(true);
+  const [graphData, setGraphData] = createSignal<GraphData | null>(null);
+
+  const saved = typeof localStorage !== "undefined" ? localStorage.getItem("visulize-theme") : null;
+  const [dark, setDark] = createSignal(saved ? saved === "dark" : true);
   const [physics, setPhysics] = createSignal(true);
   const [reset, setReset] = createSignal(0);
   const [focus, setFocus] = createSignal<string | null>(null);
+  const [zoom, setZoom] = createSignal<{ dir: "in" | "out" } | null>(null);
+
+  createEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("visulize-theme", dark() ? "dark" : "light");
+    }
+  });
+
+  const counts = createMemo(() =>
+    graphData() ? { nodes: graphData()!.nodes.length, edges: graphData()!.edges.length } : { nodes: 0, edges: 0 }
+  );
+
+  const topSkills = createMemo(() => {
+    if (!graphData()) return [];
+    const deg = new Map<string, number>();
+    for (const n of graphData()!.nodes) deg.set(n.id, 0);
+    for (const e of graphData()!.edges) {
+      deg.set(e.from, (deg.get(e.from) || 0) + 1);
+      deg.set(e.to, (deg.get(e.to) || 0) + 1);
+    }
+    return [...deg.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8)
+      .map(([id, count]) => ({ id, count, node: graphData()!.nodes.find((n) => n.id === id)! }));
+  });
 
   const doReset = () => setReset((v) => v + 1);
   const doFocus = () => { if (selected()) setFocus(selected()!.id); };
+  const doRandom = () => {
+    if (!graphData()) return;
+    const n = graphData()!.nodes[Math.floor(Math.random() * graphData()!.nodes.length)];
+    const incoming = graphData()!.edges.filter((e) => e.to === n.id).length;
+    const outgoing = graphData()!.edges.filter((e) => e.from === n.id).length;
+    setSelected({ ...n, incoming, outgoing });
+    setFocus(n.id);
+  };
+
+  const selectNode = (n: SelectedNode) => {
+    setSelected(n);
+    setFocus(n.id);
+  };
 
   return (
     <div class="app" classList={{ light: !dark() }}>
@@ -36,7 +76,12 @@ export function GraphPage() {
         <div class="controls">
           <button onClick={() => setDark((v) => !v)}>{dark() ? "light" : "dark"}</button>
           <button onClick={() => setPhysics((v) => !v)}>{physics() ? "stop physics" : "start physics"}</button>
-          <button onClick={doReset}>reset zoom</button>
+        </div>
+        <div class="controls">
+          <button onClick={() => setZoom({ dir: "out" })}>-</button>
+          <button onClick={doReset}>fit</button>
+          <button onClick={() => setZoom({ dir: "in" })}>+</button>
+          <button onClick={doRandom}>random</button>
         </div>
         <Show when={selected()}>
           <div class="detail">
@@ -49,6 +94,39 @@ export function GraphPage() {
             </div>
           </div>
         </Show>
+        <div class="section">
+          <h4>top skills</h4>
+          <ul class="top-list">
+            <For each={topSkills()}>
+              {(item) => (
+                <li
+                  onClick={() => {
+                    const n = item.node;
+                    const incoming = graphData()!.edges.filter((e) => e.to === n.id).length;
+                    const outgoing = graphData()!.edges.filter((e) => e.from === n.id).length;
+                    selectNode({ ...n, incoming, outgoing });
+                  }}
+                >
+                  <span>{item.id}</span>
+                  <span class="count">{item.count}</span>
+                </li>
+              )}
+            </For>
+          </ul>
+        </div>
+        <div class="section">
+          <h4>legend</h4>
+          <ul class="legend">
+            <For each={Object.entries(groupColors)}>
+              {([group, c]) => (
+                <li>
+                  <span class="dot" style={{ "background-color": c.background, "border-color": c.border }} />
+                  <span class="cap">{group}</span>
+                </li>
+              )}
+            </For>
+          </ul>
+        </div>
         <div class="status">{counts().nodes} nodes · {counts().edges} edges</div>
       </aside>
       <main class="canvas-wrap">
@@ -62,8 +140,10 @@ export function GraphPage() {
           physics={physics()}
           reset={reset()}
           focus={focus()}
+          highlight={selected()?.id ?? null}
+          zoom={zoom}
           onSelect={setSelected}
-          onReady={(c) => { setLoading(false); setCounts(c); }}
+          onReady={(d) => { setLoading(false); setGraphData(d); }}
         />
       </main>
     </div>

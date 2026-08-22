@@ -1,12 +1,12 @@
-import { createEffect, createSignal, onCleanup, onMount, type Component } from "solid-js";
+import { createEffect, createSignal, onCleanup, onMount, type Accessor, type Component } from "solid-js";
 
 export type GraphNode = { id: string; label: string; title: string; group: string };
 type GraphEdge = { from: string; to: string };
-type GraphData = { nodes: GraphNode[]; edges: GraphEdge[] };
+export type GraphData = { nodes: GraphNode[]; edges: GraphEdge[] };
 
 export type SelectedNode = GraphNode & { incoming: number; outgoing: number };
 
-const colors: Record<string, { background: string; border: string }> = {
+export const groupColors: Record<string, { background: string; border: string }> = {
   follow: { background: "#6366f1", border: "#4f46e5" },
   run: { background: "#22c55e", border: "#16a34a" },
   check: { background: "#f97316", border: "#ea580c" },
@@ -28,8 +28,10 @@ export const Graph: Component<{
   physics: boolean;
   reset: number;
   focus: string | null;
+  highlight: string | null;
+  zoom: Accessor<{ dir: "in" | "out" } | null>;
   onSelect: (node: SelectedNode | null) => void;
-  onReady: (counts: { nodes: number; edges: number }) => void;
+  onReady: (data: GraphData) => void;
 }> = (props) => {
   let container: HTMLDivElement;
   let network: any;
@@ -42,7 +44,7 @@ export const Graph: Component<{
     setRaw(data);
     const nodes = data.nodes.map((n) => ({
       ...n,
-      color: colors[n.group] || colors.default,
+      color: groupColors[n.group] || groupColors.default,
     }));
     setColored({ nodes, edges: data.edges });
 
@@ -80,7 +82,7 @@ export const Graph: Component<{
     network.on("click", (params: any) => {
       if (params.nodes.length === 0) props.onSelect(null);
     });
-    props.onReady({ nodes: data.nodes.length, edges: data.edges.length });
+    props.onReady(data);
   });
 
   onCleanup(() => network?.destroy());
@@ -96,8 +98,26 @@ export const Graph: Component<{
     });
     const ids = new Set(visible.map((n) => n.id));
     const visibleEdges = raw()!.edges.filter((e) => ids.has(e.from) && ids.has(e.to));
+
+    const h = props.highlight;
+    const hVisible = h ? ids.has(h) : false;
+    const neighborIds = new Set<string>();
+    if (hVisible) {
+      raw()!.edges.forEach((e) => {
+        if (e.from === h) neighborIds.add(e.to);
+        if (e.to === h) neighborIds.add(e.from);
+      });
+    }
+
+    const styled = visible.map((n) => {
+      if (!hVisible) return n;
+      if (n.id === h) return { ...n, size: 14, opacity: 1 };
+      if (neighborIds.has(n.id)) return { ...n, opacity: 1 };
+      return { ...n, opacity: 0.3 };
+    });
+
     network.setData({
-      nodes: new window.vis.DataSet(visible),
+      nodes: new window.vis.DataSet(styled),
       edges: new window.vis.DataSet(visibleEdges),
     });
   });
@@ -126,6 +146,15 @@ export const Graph: Component<{
   createEffect(() => {
     if (!network || !props.focus) return;
     network.focus(props.focus, { scale: 1.2, animation: true });
+  });
+
+  createEffect(() => {
+    if (!network) return;
+    const z = props.zoom();
+    if (!z) return;
+    const current = network.getScale() || 1;
+    const next = current * (z.dir === "in" ? 1.2 : 0.8);
+    network.moveTo({ scale: Math.max(0.2, Math.min(next, 4)), animation: true });
   });
 
   return <div ref={(el) => (container = el)} class="graph-canvas" />;
