@@ -12,6 +12,10 @@ triggers:
   - user
   - model
 related:
+  - entry
+  - interfaces
+  - project
+  - self-contained
 ---
 
 ## Goal

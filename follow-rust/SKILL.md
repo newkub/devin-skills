@@ -13,11 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-cargo
-  - follow-clean-architecture
-  - follow-test
-  - follow-mutants-rs
-  - follow-clippy
+  - CD
 ---
 
 ## Goal

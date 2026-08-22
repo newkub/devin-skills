@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - loop-until-complete
   - resolve-errors
-  - follow-moonrepo
 ---
 
 ## Goal

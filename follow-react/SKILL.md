@@ -12,7 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-unocss
+  - features
+  - ui
 ---
 
 ## Goal

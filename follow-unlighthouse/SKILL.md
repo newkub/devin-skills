@@ -12,6 +12,7 @@ triggers:
   - user
   - model
 related:
+  - CD
 ---
 
 ## Goal

@@ -13,6 +13,8 @@ triggers:
   - user
   - model
 related:
+  - PR
+  - fields
 ---
 
 ## Goal

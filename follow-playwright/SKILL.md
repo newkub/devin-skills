@@ -12,6 +12,9 @@ triggers:
   - user
   - model
 related:
+  - CD
+  - teardown
+  - text
 ---
 
 ## Goal

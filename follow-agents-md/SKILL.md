@@ -11,8 +11,7 @@ triggers:
   - user
   - model
 related:
-  - read-related-skills
-  - update-agents-md
+  - skills
 ---
 
 ## Goal

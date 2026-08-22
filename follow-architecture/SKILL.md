@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - refactor-codebase
-  - follow-vue
-  - follow-clean-architecture
-  - follow-monorepo
-  - learn-from-web
 ---
 
 ## Goal

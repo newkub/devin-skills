@@ -13,11 +13,6 @@ triggers:
   - user
   - model
 related:
-  - run-test
-  - run-build
-  - follow-playwright
-  - follow-root-cause-analysis
-  - run-typecheck
 ---
 
 ## Goal

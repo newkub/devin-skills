@@ -12,8 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-github-actions
-  - analyze-project
+  - CD
+  - Discord
+  - TypeScript
 ---
 
 ## Goal

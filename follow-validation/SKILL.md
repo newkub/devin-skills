@@ -11,9 +11,9 @@ triggers:
   - user
   - model
 related:
-  - write-test
-  - follow-functional-programming
-  - follow-zod
+  - O
+  - catch
+  - output
 ---
 
 ## Goal

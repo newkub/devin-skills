@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - update-reference
-  - relocation
 ---
 
 ## Goal

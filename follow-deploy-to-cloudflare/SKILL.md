@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-wrangler-cli
-  - follow-cloudflare-worker
-  - run-build
-  - watch-browser
 ---
 
 ## Goal

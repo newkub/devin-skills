@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - released
+  - tag
 ---
 
 ## Goal

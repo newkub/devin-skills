@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-solid-tanstack-architecture
-  - follow-typescript
-  - follow-vitest
 ---
 
 ## Goal

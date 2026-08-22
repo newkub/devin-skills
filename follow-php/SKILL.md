@@ -11,6 +11,11 @@ triggers:
   - user
   - model
 related:
+  - 2
+  - CD
+  - php-cs-fixer
+  - phpstan
+  - phpunit
 ---
 
 ## Goal

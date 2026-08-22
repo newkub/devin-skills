@@ -12,10 +12,6 @@ triggers:
   - user
   - model
 related:
-  - deep-plan
-  - loop-until-complete
-  - improve-context-rot
-  - suggest-next-action
 ---
 
 ## Goal

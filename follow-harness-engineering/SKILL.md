@@ -12,10 +12,7 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - validate
-  - follow-context-engineering
-  - run-test
+  - output
 ---
 
 ## Goal

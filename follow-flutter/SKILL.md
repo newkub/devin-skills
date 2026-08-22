@@ -13,8 +13,7 @@ triggers:
   - user
   - model
 related:
-  - run-test-unit
-  - follow-config
+  - O
 ---
 
 ## Goal

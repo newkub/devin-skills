@@ -14,10 +14,7 @@ triggers:
   - user
   - model
 related:
-  - follow-biome
-  - follow-mise
-  - run-check
-  - validate
+  - tests
 ---
 
 ## Goal

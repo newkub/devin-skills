@@ -13,9 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-typescript
-  - follow-github-actions
-  - follow-tasks
+  - CD
 ---
 
 ## Goal

@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-open-github-secrets
-  - open-env-website
 ---
 
 ## Goal

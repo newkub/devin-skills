@@ -11,7 +11,7 @@ triggers:
   - user
   - model
 related:
-  - check-long-files
+  - Cargo
 ---
 
 ## Goal

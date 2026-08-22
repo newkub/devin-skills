@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - O
+  - format
 ---
 
 ## Goal

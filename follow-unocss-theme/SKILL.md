@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-unocss
-  - follow-create-biome-plugins
+  - dark
 ---
 
 ## Goal

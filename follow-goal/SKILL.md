@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - pondering
-  - read-related-skills
 ---
 
 ## Goal

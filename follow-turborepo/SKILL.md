@@ -13,9 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-monorepo
-  - follow-tasks
-  - follow-package-manifest
 ---
 
 ## Goal

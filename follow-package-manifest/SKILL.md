@@ -13,9 +13,8 @@ triggers:
   - user
   - model
 related:
-  - run-verify
-  - follow-hk
-  - ship
+  - CD
+  - tooling
 ---
 
 ## Goal

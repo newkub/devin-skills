@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-drizzle
-  - write-test
+  - output
 ---
 
 ## Goal

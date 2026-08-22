@@ -13,9 +13,8 @@ triggers:
   - user
   - model
 related:
-  - watch-browser
-  - resolve-errors
-  - loop-until-complete
+  - CD
+  - edge
 ---
 
 ## Goal

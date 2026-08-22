@@ -13,8 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-package-manifest
-  - validate
 ---
 
 ## Goal

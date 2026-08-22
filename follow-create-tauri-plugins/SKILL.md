@@ -12,7 +12,8 @@ triggers:
   - user
   - model
 related:
-  - ship
+  - TypeScript
+  - cli
 ---
 
 ## Goal

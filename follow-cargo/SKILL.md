@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - run-verify
-  - analyze-project
 ---
 
 ## Goal

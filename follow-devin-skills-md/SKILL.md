@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - validate
-  - check-reference
-  - update-reference
-  - follow-content-quality
 ---
 
 ## Goal

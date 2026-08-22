@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - validate
-  - follow-typescript
+  - JavaScript
+  - composables
 ---
 
 ## Goal

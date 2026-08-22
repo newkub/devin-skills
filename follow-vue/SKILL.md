@@ -12,6 +12,9 @@ triggers:
   - user
   - model
 related:
+  - branch-level
+  - domains
+  - inject
 ---
 
 ## Goal

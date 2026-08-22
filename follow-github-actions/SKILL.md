@@ -12,8 +12,7 @@ triggers:
   - user
   - model
 related:
-  - renovate
-  - follow-release-it
+  - CD
 ---
 
 ## Goal

@@ -13,8 +13,6 @@ triggers:
   - user
   - model
 related:
-  - learn-from-web
-  - deep-research
 ---
 
 ## Goal

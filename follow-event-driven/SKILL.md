@@ -12,9 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-modular-monolith
-  - follow-microservices-architecture
-  - follow-clean-architecture
+  - Sub
+  - deserialization
 ---
 
 ## Goal

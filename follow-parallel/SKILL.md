@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - deep-plan
-  - check-unused-deps
-  - report-plan
-  - run-check
-  - report-table
 ---
 
 ## Goal

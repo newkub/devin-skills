@@ -13,6 +13,11 @@ triggers:
   - user
   - model
 related:
+  - Store
+  - client
+  - signals
+  - table
+  - test
 ---
 
 ## Goal

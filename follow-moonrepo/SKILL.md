@@ -12,10 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-tasks
-  - follow-package-manifest
-  - follow-config
-  - validate
 ---
 
 ## Goal

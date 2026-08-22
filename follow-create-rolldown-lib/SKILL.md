@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-tsdown
-  - ship
+  - TypeScript
+  - Vite
 ---
 
 ## Goal

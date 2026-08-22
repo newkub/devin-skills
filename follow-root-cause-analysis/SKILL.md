@@ -13,9 +13,7 @@ triggers:
   - user
   - model
 related:
-  - use-bun-shell
-  - debug-issue
-  - resolve-errors
+  - alerting
 ---
 
 ## Goal

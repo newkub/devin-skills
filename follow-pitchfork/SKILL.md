@@ -12,8 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-mise
-  - run-dev
+  - leave
+  - stop
+  - trailing
 ---
 
 ## Goal

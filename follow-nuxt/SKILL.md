@@ -13,8 +13,7 @@ triggers:
   - user
   - model
 related:
-  - follow-vue
-  - follow-vite
+  - 4
 ---
 
 ## Goal

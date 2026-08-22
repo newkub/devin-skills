@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-gitignore
-  - follow-typescript
-  - follow-unocss
 ---
 
 ## Goal

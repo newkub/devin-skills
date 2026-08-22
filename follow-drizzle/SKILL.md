@@ -13,9 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-typescript
-  - run-test-unit
-  - follow-biome
 ---
 
 ## Goal

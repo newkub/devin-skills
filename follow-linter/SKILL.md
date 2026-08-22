@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-biome
-  - resolve-errors
-  - follow-oxlint
+  - JavaScript
 ---
 
 ## Goal

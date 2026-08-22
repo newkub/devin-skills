@@ -11,8 +11,7 @@ triggers:
   - user
   - model
 related:
-  - debug-issue
-  - resolve-errors
+  - Medium
 ---
 
 ## Goal

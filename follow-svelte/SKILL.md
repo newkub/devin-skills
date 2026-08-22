@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-svelte-kit
-  - follow-unocss
-  - refactor
 ---
 
 ## Goal

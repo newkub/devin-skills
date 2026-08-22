@@ -12,6 +12,11 @@ triggers:
   - user
   - model
 related:
+  - Network
+  - Repository
+  - UseCases
+  - await
+  - integration
 ---
 
 ## Goal

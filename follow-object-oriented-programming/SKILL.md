@@ -11,6 +11,8 @@ triggers:
   - user
   - model
 related:
+  - intersection
+  - setters
 ---
 
 ## Goal

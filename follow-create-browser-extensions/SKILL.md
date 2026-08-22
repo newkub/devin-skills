@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-wxt
-  - ship
 ---
 
 ## Goal

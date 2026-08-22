@@ -12,9 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-ast-grep
-  - run-test
-  - git-commit
 ---
 
 ## Goal

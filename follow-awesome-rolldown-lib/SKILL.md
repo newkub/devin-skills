@@ -12,7 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-rolldown
+  - agents
+  - rolldown-vite
 ---
 
 ## Goal

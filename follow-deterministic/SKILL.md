@@ -11,6 +11,8 @@ triggers:
   - user
   - model
 related:
+  - clock
+  - output
 ---
 
 ## Goal

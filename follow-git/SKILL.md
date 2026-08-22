@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - validate
-  - ask-me
-  - merge
+  - remote
 ---
 
 ## Goal

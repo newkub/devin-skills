@@ -11,6 +11,7 @@ triggers:
   - user
   - model
 related:
+  - await
 ---
 
 ## Goal

@@ -12,6 +12,9 @@ triggers:
   - user
   - model
 related:
+  - resize
+  - search
+  - size
 ---
 
 ## Goal

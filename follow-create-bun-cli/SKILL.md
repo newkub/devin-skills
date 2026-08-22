@@ -12,11 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-clean-architecture
-  - follow-bunup
-  - follow-tasks
-  - use-bun-native-api
-  - ship
 ---
 
 ## Goal

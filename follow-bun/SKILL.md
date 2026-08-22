@@ -13,6 +13,9 @@ triggers:
   - user
   - model
 related:
+  - MySQL
+  - O
+  - decompression
 ---
 
 ## Goal

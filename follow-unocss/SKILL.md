@@ -12,6 +12,10 @@ triggers:
   - user
   - model
 related:
+  - astro
+  - mdi
+  - nuxt
+  - postcss
 ---
 
 ## Goal

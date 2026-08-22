@@ -12,9 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-better-auth
-  - follow-config
-  - validate
+  - Dsync
+  - groups
 ---
 
 ## Goal

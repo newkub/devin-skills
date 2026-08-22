@@ -12,7 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-workos
+  - permissions
 ---
 
 ## Goal

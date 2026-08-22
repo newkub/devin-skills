@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - CD
+  - e2e
 ---
 
 ## Goal

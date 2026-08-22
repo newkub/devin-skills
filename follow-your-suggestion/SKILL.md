@@ -11,11 +11,6 @@ triggers:
   - user
   - model
 related:
-  - prioritize
-  - dont-over-engineer
-  - read-related-skills
-  - realize-implementation
-  - no-use-ignore
 ---
 
 ## Goal

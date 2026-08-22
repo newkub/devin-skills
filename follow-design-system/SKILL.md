@@ -12,9 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-unocss-theme
-  - follow-web-design
-  - review-codebase
+  - em
+  - screen
 ---
 
 ## Goal

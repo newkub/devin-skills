@@ -11,9 +11,6 @@ triggers:
   - user
   - model
 related:
-  - review-codebase
-  - suggest-next-action
-  - refactor
 ---
 
 ## Goal

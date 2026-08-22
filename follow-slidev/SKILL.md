@@ -12,6 +12,8 @@ triggers:
   - user
   - model
 related:
+  - backward
+  - leave
 ---
 
 ## Goal

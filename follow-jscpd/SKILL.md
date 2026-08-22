@@ -12,9 +12,8 @@ triggers:
   - user
   - model
 related:
-  - report-table
-  - use-scripts
-  - refactor
+  - integrations
+  - src
 ---
 
 ## Goal

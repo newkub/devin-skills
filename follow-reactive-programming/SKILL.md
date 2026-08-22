@@ -13,6 +13,7 @@ triggers:
   - model
 related:
   - merge
+  - throttle
 ---
 
 ## Goal

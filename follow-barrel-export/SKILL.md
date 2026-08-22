@@ -13,9 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-code-quality
-  - improve-consistency
-  - check-circular-dependencies
 ---
 
 ## Goal

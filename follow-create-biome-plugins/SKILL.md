@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-biome
-  - ship
 ---
 
 ## Goal

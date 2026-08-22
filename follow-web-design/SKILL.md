@@ -13,10 +13,6 @@ triggers:
   - user
   - model
 related:
-  - follow-design-system
-  - follow-unocss
-  - follow-unocss-theme
-  - review-codebase
 ---
 
 ## Goal

@@ -12,8 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-bun
-  - follow-nuxt
 ---
 
 ## Goal

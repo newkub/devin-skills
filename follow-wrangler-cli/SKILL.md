@@ -12,11 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-deploy-to-cloudflare
-  - follow-config
-  - validate
-  - follow-best-practice
-  - use-scripts
+  - CD
 ---
 
 ## Goal

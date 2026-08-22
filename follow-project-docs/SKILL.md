@@ -12,8 +12,9 @@ triggers:
   - user
   - model
 related:
-  - follow-vitepress
-  - follow-unocss
+  - UI
+  - collapse
+  - fail
 ---
 
 ## Goal

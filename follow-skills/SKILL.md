@@ -11,8 +11,6 @@ triggers:
   - user
   - model
 related:
-  - check-reference
-  - read-related-skills
 ---
 
 ## Goal

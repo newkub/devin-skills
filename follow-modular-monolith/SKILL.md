@@ -12,9 +12,7 @@ triggers:
   - user
   - model
 related:
-  - follow-clean-architecture
-  - follow-event-driven
-  - follow-microservices-architecture
+  - module
 ---
 
 ## Goal

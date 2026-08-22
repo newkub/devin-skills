@@ -12,8 +12,9 @@ triggers:
   - user
   - model
 related:
-  - write-test
-  - follow-vite
+  - CD
+  - JavaScript
+  - teardown
 ---
 
 ## Goal
