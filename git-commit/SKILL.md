@@ -14,6 +14,7 @@ triggers:
   - model
 related:
   - lint
+  - report-git-log
 ---
 
 ## Goal
@@ -119,7 +120,17 @@ Split Commit:
 2. ตรวจสอบผลลัพธ์ — ถ้ามี error: แก้ไขแล้วลองอีกครั้ง
 3. Stage ประเภทถัดไปแล้ว commit ทำซ้ำจนครบทุกประเภท
 
-### 8. Verify Commits
+### 8. Report Git Log
+
+> Goal: รายงาน git log หลัง commit สำเร็จ
+> Goal: ผู้ใช้เห็นประวัติ commits ล่าสุดทันที
+
+1. หลังจาก `git commit` สำเร็จทุกกลุ่ม ทำ `/report-git-log` เพื่อสรุป commits ล่าสุด
+2. ใช้ range default `HEAD~5..HEAD` หรือช่วงทีเพิ่ม commit ในครั้งนี้
+3. ตรวจสอบว่า commit messages ตรงกับ conventional commits
+4. ถ้ามีหลายกลุ่ม commits → report แยกตามกลุ่ม
+
+### 9. Verify Commits
 
 > Goal: ตรวจสอบความถูกต้องของ commits
 > Goal: commits ถูกต้องและ working directory สะอาด
