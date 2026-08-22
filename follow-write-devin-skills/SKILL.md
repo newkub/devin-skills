@@ -13,9 +13,18 @@ triggers:
   - user
   - model
 related:
-  - UX
-  - directory
-  - unused
+  - prepare-skills-context
+  - follow-devin-skills-md
+  - use-scripts
+  - follow-create-bun-cli
+  - follow-create-cli
+  - follow-web-design
+  - visualize-in-web
+  - validate
+  - review-devin-global-skills
+  - check-circular-dependencies
+  - update-reference
+  - suggest-next-action
 ---
 
 ## Goal
@@ -33,7 +42,7 @@ related:
 เตรียม context ก่อนเขียน skill
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
-1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
+1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, `references/file-structure.md`, related skills, และเลือก template ตาม prefix
 2. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 3. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
 4. ถ้ามี dependencies จำเป็น → install พร้อมเขียน references ลง `references/`
@@ -61,7 +70,7 @@ related:
 สร้างหรือปรับปรุง `SKILL.md` โดยใช้ `/follow-devin-skills-md`
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
-1. ทำ `/follow-devin-skills-md` หรือ `/write-skills-md` เพื่อเขียน frontmatter และ prompt body
+1. ทำ `/follow-devin-skills-md` เพื่อเขียน frontmatter และ prompt body
 2. ตรวจสอบว่า `name` ตรงกับ directory name
 3. กำหนด `description` ไม่เกิน 100 ตัวอักษร
 4. ตั้งค่า `allowed-tools` และ `permissions` ตามความเหมาะสม

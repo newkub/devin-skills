@@ -13,7 +13,6 @@ triggers:
   - user
   - model
 related:
-  - write-skills-md
   - follow-write-devin-skills
   - validate
   - check-reference

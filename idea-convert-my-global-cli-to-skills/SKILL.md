@@ -85,7 +85,7 @@ related:
 > Goal: เขียน draft skill สำหรับ candidates ที่เลือก
 > Goal: ได้ draft skills ทีพร้อม review
 
-1. ใช้ `/follow-write-devin-skills` หรือ `/write-skills-md` สำหรับแต่ละ skill
+1. ใช้ `/follow-write-devin-skills` สำหรับแต่ละ skill
 2. ใน draft ต้องระบุ:
    - `name` ทีสื่อความหมาย
    - `description` ≤100 ตัวอักษร
