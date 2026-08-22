@@ -16,6 +16,7 @@ related:
   - follow-write-devin-skills
   - visualize-in-web
   - follow-uxui
+  - follow-web-design
   - follow-solid-tanstack
   - use-lib-effective
   - check-circular-dependencies
@@ -63,14 +64,15 @@ related:
 3. ใช้ force-directed layout สำหรับกลุ่มใหญ่
 4. เพิ่ม side panel แสดง `description` และ `related` ของ node ทีเลือก
 
-### 5. Generate Web Graph
-> Goal: สร้างไฟล์ web ทีแสดง graph
+### 5. Generate Web in `web/`
+> Goal: สร้าง web project ถาวรใน `web/` ของ workspace
 
-1. ทำตาม `/visualize-in-web` สร้างไฟล์ HTML ชั่วคราวใน OS temp directory
-2. โหลด `skills-graph.json` และ render nodes/edges
-3. เพิ่ม controls: search, filter by prefix, reset zoom, toggle dark mode
-4. แสดง edges ทิศทางจาก skill → related skill
-5. ใช้ labels กระชับ ไม่ต้อง hover ก็เข้าใจ
+1. สร้าง `web/` directory ใน project root
+2. ใช้ `/follow-web-design` ออกแบบ UI/UX และ `/follow-vite` สร้าง scaffold
+3. สร้าง entry file (`web/index.html` หรือ `web/src/App.tsx`) โหลด `skills-graph.json`
+4. ใช้ graph library เช่น `vis-network`, `d3`, `cytoscape` หรือ `force-graph` render nodes/edges
+5. เพิ่ม controls: search, filter by prefix, reset zoom, toggle dark mode
+6. รันทดสอบด้วย `bunx serve web/` หรือ `/open-web`
 
 ### 6. Add Drag/Select Interaction
 > Goal: ผูกการลาก/เลือก node กับ action
@@ -92,9 +94,9 @@ related:
 
 ### 1. Output Location
 
-- สร้างไฟล์ใน OS temp directory เท่านั้น
-- Windows: `$env:TEMP\visualize-devin-global-skills.html`
-- macOS/Linux: `tmp/visualize-devin-global-skills.html`
+- สร้างไฟล์ถาวรใน `web/` directory ของ project
+- เก็บ `skills-graph.json` ใน `web/public/` หรือ `web/src/` ตาม scaffold
+- ถ้า user ต้องการชั่วคราวเท่านั้น → ใช้ `/visualize-in-web` แทน
 - ไม่เขียนไฟล์ in project source โดยไม่ได้รับอนุญาต
 
 ### 2. Graph UX
@@ -124,4 +126,4 @@ related:
 - Relations ชัดเจน พร้อม color coding และ search/filter
 - สามารถลาก/เลือก node เพื่อทำ `/follow-write-devin-skills`
 - ไม่มี circular dependencies ซ่อนอยู่
-- ไฟล์ชั่วคราวใน OS temp directory พร้อมเปิดใน browser
+- `web/` directory พร้อม entry file, graph data, และ build/serve script

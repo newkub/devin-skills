@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devin Global Skills Graph</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; display: flex; height: 100vh; overflow: hidden; }
+    #sidebar { width: 280px; padding: 16px; border-right: 1px solid #334155; display: flex; flex-direction: column; gap: 8px; background: #1e293b; }
+    #mynetwork { flex: 1; position: relative; }
+    input, select, button { padding: 8px; border-radius: 6px; border: 1px solid #475569; background: #334155; color: #e2e8f0; }
+    button { cursor: pointer; }
+    #detail { margin-top: 12px; padding: 12px; background: #0f172a; border-radius: 6px; word-break: break-word; }
+    #legend { margin-top: auto; font-size: 12px; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>Devin Skills</h2>
+    <input id="search" type="text" placeholder="search..." />
+    <select id="prefix">
+      <option value="all">all prefixes</option>
+      <option value="follow">follow</option>
+      <option value="run">run</option>
+      <option value="check">check</option>
+      <option value="report">report</option>
+      <option value="idea">idea</option>
+    </select>
+    <button id="reset">reset zoom</button>
+    <div id="detail">select a node to see details</div>
+    <div id="legend">
+      <span class="dot" style="background:#6366f1"></span>follow<br/>
+      <span class="dot" style="background:#22c55e"></span>run<br/>
+      <span class="dot" style="background:#f97316"></span>check<br/>
+      <span class="dot" style="background:#06b6d4"></span>report<br/>
+      <span class="dot" style="background:#ec4899"></span>idea
+    </div>
+  </div>
+  <div id="mynetwork"></div>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
