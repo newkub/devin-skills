@@ -18,14 +18,15 @@ related:
   - prepare-skills-context
   - follow-create-bun-cli
   - follow-create-cli
-  - follow-web-design
-  - visualize-in-web
   - use-scripts
   - validate
   - review-devin-global-skills
   - check-circular-dependencies
   - update-reference
   - suggest-next-action
+  - follow-web-design
+  - visualize-in-web
+  - open-web
 ---
 
 ## Goal
@@ -173,10 +174,17 @@ related:
 - ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 
-### 7. Skill Type File Structure
+### 7. Web Support
+
+- ถ้า skill ต้องการ web → เรียก `/follow-web-design` ก่อนสร้าง `web/`
+- ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry
+- ตรวจสอบว่า `bunx serve web/` หรือ `/open-web` ทำงานได้
+- รักษา package structure ที่ไม่เกิน 250 บรรทัด
+
+### 8. Skill Type File Structure
 
 - ใช้ `references/skill-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
-- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`
+- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`, `web/`
 - directory structure ต้องสอดคล้องกับ template ที่เลือก ไม่เพิ่ม/ลดโดยไม่มีเหตุผล
 
 ## Expected Outcome
