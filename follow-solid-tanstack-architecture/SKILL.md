@@ -16,7 +16,7 @@ related:
   - refactor-packages
   - follow-monorepo
   - follow-solidjs
-  - follow-tanstack
+  - follow-tanstack-ecosystem
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 > Goal: ตั้งค่า entry points สำหรับ TanStack Start
 > Goal: มี router configuration และ root route พร้อม SSR setup
 
-1. ทำ `/follow-tanstack` เพื่อตั้งค่า TanStack Start entry points
+1. ทำ `/follow-tanstack-ecosystem` เพื่อตั้งค่า TanStack Start entry points
 2. ทำ `/follow-vite` เพื่อตั้งค่า `vite.config.ts` ด้วย `tanstackStart` plugin
 3. ตั้งค่า `src/router.tsx` ด้วย `createRouter` และ `routeTree`
 4. ตั้งค่า `src/routes/__root.tsx` สำหรับ HTML document shell
@@ -59,7 +59,7 @@ related:
 > Goal: ใช้ TanStack Router file-based routing conventions
 > Goal: ใช้ routing conventions ครบถ้วน พร้อม code splitting อัตโนมัติ
 
-1. ทำ `/follow-tanstack` เพื่อใช้ file-based routing conventions
+1. ทำ `/follow-tanstack-ecosystem` เพื่อใช้ file-based routing conventions
 2. สร้าง routes ใน `src/routes/` ด้วย `createFileRoute`
 3. ใช้ `index.tsx` สำหรับ index routes
 4. ใช้ `$param.tsx` สำหรับ dynamic segments
@@ -74,8 +74,8 @@ related:
 > Goal: แต่ละ module มี single responsibility, boundaries ชัดเจน
 
 1. ทำ `/follow-solidjs` เพื่อใช้ component patterns และ reactivity
-2. ทำ `/follow-tanstack` สำหรับ data fetching patterns ใน modules
-3. ทำ `/follow-tanstack` สำหรับ state management ใน modules
+2. ทำ `/follow-tanstack-ecosystem` สำหรับ data fetching patterns ใน modules
+3. ทำ `/follow-tanstack-ecosystem` สำหรับ state management ใน modules
 4. สร้าง `src/modules/<feature>/` สำหรับแต่ละ domain feature
 5. แต่ละ module ประกอบด้วย: `components/`, `hooks/`, `schemas/`, `utils/`, `types/`
 6. สร้าง `src/modules/<feature>/index.ts` เป็น barrel export สำหรับ public API

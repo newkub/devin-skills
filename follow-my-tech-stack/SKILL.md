@@ -12,7 +12,7 @@ related:
   - deep-analyze-by-use-scripts
   - follow-monorepo
   - follow-uxui
-  - follow-tanstack
+  - follow-tanstack-ecosystem
   - follow-hk
 ---
 
@@ -99,7 +99,7 @@ related:
 | Async Runtime | - | `Tokio` |
 | HTTP Client | - | `reqwest` |
 | Logging | `pino` | `tracing` |
-| AI | `TanStack AI` (ดู `/follow-tanstack`), `Workers AI` | - |
+| AI | `TanStack AI` (ดู `/follow-tanstack-ecosystem`), `Workers AI` | - |
 | MCP Server | `@modelcontextprotocol/sdk` | `rmcp` |
 | Web Scraping | `fastCRW` | `scraper` |
 | Linter | `Biome` | `Clippy` |
@@ -135,7 +135,7 @@ related:
 - ถ้าเป็น web app: เพิ่ม Router, State Management, Styling, UI Library, Data Fetching
 - ถ้าเป็น API: เพิ่ม API Schema, HTTP Client, Auth
 - ถ้าเป็น monorepo: เพิ่ม Build System, Documentation
-- ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack`)
+- ถ้ามี AI: เพิ่ม `TanStack AI` (ดู `/follow-tanstack-ecosystem`)
 - ถ้ามี desktop: เพิ่ม `Tauri`
 - ถ้ามี mobile: เพิ่ม `Capacitor`
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-pitchfork`)

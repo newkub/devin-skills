@@ -16,7 +16,8 @@ related:
   - follow-elysia
   - follow-unocss
   - follow-zod
-  - follow-tanstack
+  - follow-tanstack-ecosystem
+  - follow-effect-ts
   - follow-typescript
   - follow-bun
   - follow-vitest
@@ -130,7 +131,7 @@ related:
 1. ใช้ `createFileRoute` สำหรับ file-based routing
 2. ใช้ server functions ผ่าน `server.handlers` ถ้าจำเป็น
 3. ใช้ `HydrationScript` สำหรับ client-side hydration
-4. ทำตาม `/follow-tanstack`
+4. ทำตาม `/follow-tanstack-ecosystem`
 
 ### 8. Setup Elysia Server
 

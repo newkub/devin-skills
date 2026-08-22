@@ -1,6 +1,6 @@
 ---
-name: follow-tanstack
-description: เลือกและใช้งาน TanStack libraries ใน project
+name: follow-tanstack-ecosystem
+description: เลือกและใช้งาน TanStack libraries ใน project ตาม use case
 allowed-tools:
   - read
   - edit
@@ -8,12 +8,11 @@ allowed-tools:
   - glob
   - exec
   - write
+  - ask_user_question
 triggers:
   - user
   - model
 related:
-  - validate
-  - ask-me
 ---
 
 ## Goal
