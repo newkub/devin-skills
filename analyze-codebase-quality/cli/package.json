@@ -1,0 +1,39 @@
+{
+  "name": "analyze-codebase-quality",
+  "version": "0.1.0",
+  "description": "Analyze codebase quality across all dimensions - structure, foundation, runtime, UX, localization, features, errors, and missing implementation",
+  "keywords": [
+    "codebase",
+    "analysis",
+    "quality",
+    "cli",
+    "ast-grep",
+    "static-analysis"
+  ],
+  "author": "Wrikka",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.3.14",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "turbo run format",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "verify": "turbo run verify",
+    "ci": "turbo run ci"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0",
+    "bun-types": "^1.3.0"
+  }
+}

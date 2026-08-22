@@ -1,0 +1,10 @@
+node_modules
+dist
+.output
+.vinxi
+.turbo
+*.log
+.env
+.env.local
+.DS_Store
+vite.config.timestamp_*.js
