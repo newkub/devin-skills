@@ -45,7 +45,7 @@ related:
 > Goal: ตรวจสอบความถูกต้องตามมาตรฐาน
 > Goal: skill ผ่านเกณฑ์ structure, frontmatter, references ก่อนปรับปรุง
 
-1. parallel: ทำตาม `/check-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจสอบ circular references ใน target
+1. parallel: ทำตาม `/improve-correctness` เพื่อตรวจสอบ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจสอบ references ที่อ้างถึง ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจสอบ circular references ใน target
 2. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
 
 ### 3. Research Best Practices
@@ -90,7 +90,7 @@ related:
 > Goal: ปรับปรุงเนื้อหาตาม findings
 > Goal: เนื้อหาครอบคลุม ชัดเจน และตรงตาม best practices
 
-1. แก้ไข issues ตาม priority จาก `/check-correctness` (Critical ก่อน)
+1. แก้ไข issues ตาม priority จาก `/improve-correctness` (Critical ก่อน)
 2. ทำ `/review-codebase` สำหรับ issues ด้านเนื้อหาและ structure
 3. ปรับปรุง content ตาม `/follow-content-quality` (clarity, completeness, consistency)
 4. อัปเดตเนื้อหาตาม best practices ที่ research ได้
@@ -110,7 +110,7 @@ related:
 > Goal: ตรวจสอบผลการปรับปรุง
 > Goal: skill ผ่าน validation และมีรายงานสรุป
 
-1. parallel: ทำตาม `/check-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ทำตาม `/check-circular-dependencies` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
+1. parallel: ทำตาม `/improve-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ทำตาม `/check-circular-dependencies` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 2. ทำ `/validate`
 3. ทำ `/report` เพื่อสรุปการปรับปรุง
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
@@ -164,7 +164,7 @@ related:
 
 ### 7. Verification
 
-- ทำ `/check-correctness` อีกครั้งหลังแก้ไข
+- ทำ `/improve-correctness` อีกครั้งหลังแก้ไข
 - ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 - ทำ `/check-reference` เพื่อยืนยัน references ถูกต้อง
 - ทำ `/report` เพื่อสรุปการปรับปรุง

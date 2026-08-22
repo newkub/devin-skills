@@ -1,6 +1,6 @@
 ---
 name: improve-correctness
-description: ตรวจสอบและปรับปรุงความถูกต้องของ code, config, rules, หรือ skills
+description: ตรวจสอบและปรับปรุงความถูกต้องของ code, config, rules, หรือ skills ตามที่ผู้ใช้ระบุ
 allowed-tools:
   - read
   - write
@@ -15,6 +15,7 @@ triggers:
   - user
   - model
 related:
+  - suggest-next-action
 ---
 
 ## Goal
@@ -89,7 +90,7 @@ related:
 
 1. ใช้ `/report-table` สรุป issues ทีพบและแก้ไข
 2. ระบุ issues ทียังเหลือ (ถ้ามี) พร้อมเหตุผล
-3. แนะนำ next action ถ้าจำเป็น
+3. ทำ `/suggest-next-action` เพื่อแนะนำ next action ถ้าจำเป็น
 
 ## Rules
 

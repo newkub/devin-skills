@@ -1,134 +1,90 @@
 ---
 name: ask-requirement
-description: ถามความต้องการโปรเจกต์ผ่าน CLI และ MCP server สร้าง custom data อัตโนมัติ
+description: ถาม requirements ผ่าน ask-me/ask_user_question แล้วสรุปเป็นข้อกำหนด
 allowed-tools:
   - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
   - ask_user_question
+  - write
+  - exec
 triggers:
   - user
   - model
 related:
-  - 4
-  - cli
-  - web
+  - ask-me
+  - use-lib-better
+  - deep-plan
+  - follow-goal
+  - update-agents-md
 ---
 
 ## Goal
 
-ถามความต้องการโปรเจกต์ผ่าน CLI ที่เรียก MCP server สร้าง custom data พร้อม icons อัตโนมัติ
+ถาม requirements ที่จำเป็นก่อนเริ่มโปรเจกต์ โดยไม่ต้องเปิด Web UI
 
 ## Scope
 
-ใช้สำหรับเริ่มต้นโปรเจกต์ใหม่ หรือวิเคราะห์ความต้องการก่อนวางแผนงาน มีทั้ง CLI และ Web UI
+ใช้ตอนเริ่มโปรเจกต์ใหม่ หรือเมื่อ context ไม่ชัด ก่อนทำ plan
 
 ## Execute
 
-### 1. Run CLI
-> Goal: Run CLI
+### 1. Inspect Existing Context
+> Goal: รู้ context ก่อนถาม
+1. อ่าน `AGENTS.md` ถ้ามี
+2. อ่าน `.devin/rules/*.md` ถ้ามี
+3. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest สำคัญ
+4. ถ้าไม่มี `AGENTS.md` → ทำ `/update-agents-md` ก่อน
 
-รัน CLI เพื่อถามความต้องการแบบ interactive
+### 2. Ask Interfaces And Users
+> Goal: รู้ว่า target คืออะไร
+1. ถามผ่าน `ask_user_question` หรือ `/ask-me`:
+   - ระบบ interfaces ที่เกี่ยวข้อง (desktop, CLI, web, SDK, library, API, mobile, ฯลฯ)
+   - ผู้ใช้เป็นใคร (end users, developers, business, partners, enterprise, ฯลฯ)
 
-1. รัน `bun --filter @ask-requirement/cli dev` หรือ `ask-requirement` ถ้า release แล้ว
-2. CLI ถามครบ 7 หัวข้อ: Platform, Integrations, Features, Target Users, Competitors, Project Level, Custom Data
-3. CLI ส่งข้อมูลไป MCP server เพื่อ generate summary
-4. MCP server ส่ง markdown และ JSON กลับมา
-5. CLI แสดงผลและถามจะบันทึกไฟล์หรือไม่
+### 3. Ask Libraries And Product Context
+> Goal: รู้ว่าใช้ tech/stack อะไร
+1. ถามว่าควรใช้ `/use-lib-better` หรือไม่
+2. ถ้า library ที่ต้องการไม่มี ให้ถามว่าควรแนะนำตัวไหน
+3. ถาม product/domain context และ functional/non-functional requirements
 
-### 2. Use Web UI
-> Goal: Use Web UI
+### 4. Ask Scale And Constraints
+> Goal: รู้ boundaries
+1. ถาม scale, traffic, performance targets
+2. ถาม security, privacy, compliance, data residency
+3. ถาม integration, deployment constraints, compatibility
+4. ถาม testing, observability, rollback/recovery, definition of done
 
-เปิด Web UI สำหรับกรอกผ่าน browser
+### 5. Synthesize
+> Goal: สรุป requirements เป็นข้อกำหนด
+1. รวมคำตอบเป็น bullet หรือ `requirement-summary.md`
+2. ถ้าต้องการเลือก library → ทำ `/use-lib-better`
+3. ถ้าต้องการ plan ต่อ → ทำ `/deep-plan`
+4. ถ้าต้องการตั้งเป้า → ทำ `/follow-goal`
+5. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ด้วย requirements
 
-1. รัน `bun --filter @ask-requirement/web dev`
-2. เปิด browser ที่ `http://localhost:3000`
-3. 2-column layout: ซ้าย 3/4 ฟอร์ม, ขวา 1/4 สรุป
-4. มี icons จาก Iconify MDI สำหรับทุก option
-5. กด Copy Summary เพื่อคัดลอกผลลัพธ์
-
-### 3. Form Sections
-> Goal: Form Sections
-
-ทั้ง CLI และ Web มี 7 หัวข้อ:
-
-1. Platform - เลือก platform (web, desktop, cli, tui, sdk, mobile, api, extension, bot)
-2. Integrations - เลือก integrations (payment, auth, email, sms, push, storage, ai, analytics, maps, calendar, chat, video, social)
-3. Features - กรอก features ที่ต้องการ พร้อมเพิ่ม/ลบได้
-4. Target Users - กรอก target user และจำนวนผู้ใช้ที่คาดการณ์
-5. Competitors - กรอกคู่แข่งหรือโปรเจกต์ที่คล้ายกัน
-6. Project Level - เลือกระดับโปรเจกต์ (landing, basic-saas, enterprise)
-7. Custom Data - เพิ่ม key-value pairs พร้อม icon สำหรับ AI consumption
-
-### 4. MCP Server
-> Goal: MCP Server
-
-MCP server ให้ 5 tools:
-
-1. `get-platforms` - ดึง platform options ทั้งหมด
-2. `get-integrations` - ดึง integration options ทั้งหมด
-3. `get-project-levels` - ดึง project level options ทั้งหมด
-4. `generate-requirement` - สร้าง summary จาก form data (markdown + JSON)
-5. `generate-markdown-only` - สร้าง markdown only (lightweight)
-
-### 5. Process Results
-> Goal: Process Results
-
-หลังจากได้ผลลัพธ์:
-
-1. วิเคราะห์ความต้องการที่ได้รับ
-2. ทำ `/deep-plan` เพื่อวางแผนงานตามความต้องการ
-3. ทำ `/follow-goal` เพื่อตั้งเป้าหมาย
-4. ถ้าต้องการเปรียบเทียบคู่แข่ง ทำ `/bench-competitors`
-5. ถ้าต้องการไอเดีย features เพิ่ม ทำ `/compare-and-idea-features`
+### 6. Confirm
+> Goal: ยืนยันก่อนใช้
+1. ทำ `/ask-me` ให้ user ยืนยันว่าสรุปถูกต้อง
+2. ถ้าไม่ถูก → ถามซ้ำเฉพาะส่วนที่ไม่ชัด
+3. บันทึก `requirement-summary.md` ใน project root
 
 ## Rules
 
-### 1. Architecture
+### 1. No Web UI
 
-- Turborepo monorepo ที่ `D:\newkub\ask-requirement`
-- `packages/shared` - types, schemas, data, generator
-- `apps/web` - SolidStart + UnoCSS Web UI
-- `apps/mcp-server` - MCP server with stdio transport
-- `apps/cli` - Interactive CLI ที่เรียก MCP server
+- ไม่เปิด Web UI
+- ไม่รัน `bun --filter` CLI
+- ใช้ `ask_user_question` หรือ `/ask-me` แทน
 
-### 2. Platform Options
+### 2. Ask Only Missing
 
-- ตัวเลือก: `web`, `desktop`, `cli`, `tui`, `sdk`, `mobile`, `api`, `extension`, `bot`
-- แต่ละ option มี icon (MDI) และ description
-- สามารถเลือกได้หลาย platform
-
-### 3. Integration Options
-
-- ตัวเลือก: `payment`, `auth`, `email`, `sms`, `push`, `storage`, `ai`, `analytics`, `maps`, `calendar`, `chat`, `video`, `social`
-- แต่ละ option มี icon (MDI) และ description
-- สามารถเลือกได้หลาย integrations
-
-### 4. Project Level Definitions
-
-- Landing: ไม่มี auth, เน้น content และ conversion
-- Basic SaaS: มี auth, core features ใช้งานได้จริง
-- Enterprise: มี auth + multi-tenant, RBAC, audit log, compliance
-
-### 5. Custom Data
-
-- แต่ละ field มี `key`, `value`, และ `icon` (optional, default `mdi-tag`)
-- Icons ดึงจาก Iconify JSON MDI collection
-- Custom data สำหรับ AI consumption เพิ่มเติมจาก 6 หัวข้อหลัก
-
-### 6. Output Format
-
-- ผลลัพธ์เป็น markdown และ JSON
-- CLI สามารถบันทึกไฟล์ได้
-- Web UI มี Copy to Clipboard
+- อ่าน existing ก่อนถาม
+- ถามทีละ batch ไม่เกิน 4 คำถาม
+- ถามเฉพาะคำถามที่ยังไม่มีคำตอบ
+- ถ้าไม่แน่ใจ → ทำ `/ask-me` อีกครั้ง
 
 ## Expected Outcome
 
-- CLI ที่เรียก MCP server สร้าง requirement summary อัตโนมัติ
-- Web UI 2-column layout พร้อม icons และ live summary
-- MCP server 5 tools สำหรับ AI integration
-- Custom data พร้อม icons สำหรับ AI consumption
-- นำผลลัพธ์ไปวางแผนงานด้วย `/deep-plan` และ `/follow-goal`
+- ได้ `requirement-summary.md` หรือสรุปใน `AGENTS.md`
+- รู้ interfaces, users, tech, scale, constraints, compliance, definition of done
+- `AGENTS.md` อัปเดตตาม requirements
+- พร้อมทำ `/deep-plan` หรือ `/follow-goal` ต่อ

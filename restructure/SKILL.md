@@ -33,7 +33,7 @@ related:
 
 1. ทำ `/deep-review` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
 2. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
-3. ทำ `/improve-folder-quality` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
+3. ทำ `/follow-folder-quality` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
 4. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Improve File Naming

@@ -26,6 +26,7 @@ description: โครงสร้างไฟล์และ directory สำ�
 - `guide/` สำหรับขยายเอกสาร
 - `examples/` สำหรับตัวอย่าง
 - `web/` สำหรับ web app ถ้า skill ต้องการ
+- `.devin/rules/` สำหรับ project rules ที่ skill ship
 - `src/presentation/cli.ts` ถ้า skill มี CLI
 
 ## Skill Type Files

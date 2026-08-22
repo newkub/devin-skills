@@ -13,6 +13,11 @@ triggers:
   - user
   - model
 related:
+  - follow-skills-map
+  - follow-write-devin-skills
+  - improve-codebase
+  - optimize-codebase
+  - ask-requirement
 ---
 
 ## Goal
@@ -36,7 +41,10 @@ related:
 4. ทำ `/follow-devin-skills-md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
-7. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+7. ทำ `/follow-skills-map` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
+8. เพิ่ม `/improve-codebase`, `/optimize-codebase`, และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
+9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
+8. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 
 ### 2. Follow Lib
 

@@ -23,6 +23,8 @@ related:
   - validate
   - review-devin-global-skills
   - check-circular-dependencies
+  - update-dot-devin
+  - improve-rules
   - update-reference
   - suggest-next-action
 ---
@@ -85,7 +87,8 @@ related:
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
 4. ถ้าต้องการ Devin workflows → สร้าง `workflows/`
-5. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+5. ถ้าต้องการ project rules → ทำ `/update-dot-devin` เพื่อสร้าง `.devin/rules/`
+6. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
 ### 5. Create CLI (if needed)
 
@@ -118,7 +121,8 @@ related:
 1. ทำตาม `/validate` เพื่อตรวจความถูกต้อง
 2. ทำตาม `/review-devin-global-skills` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
-4. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
+4. ถ้ามี `.devin/rules/` → ทำ `/improve-rules` เพื่อตรวจคุณภาพ rules
+5. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 
 ### 8. Update References
 
@@ -141,7 +145,7 @@ related:
 ### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก
-- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/`, `web/` ตามความจำเป็น
+- สามารถมี `references/`, `scripts/`, `workflows/`, `guide/`, `examples/`, `web/`, `.devin/rules/` ตามความจำเป็น
 - ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point
 - directory name ต้องตรงกับ `name` ใน frontmatter
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -182,7 +186,7 @@ related:
 ### 8. Skill Type File Structure
 
 - ใช้ `references/skill-type-<prefix>.md` เป็น canonical pattern สำหรับแต่ละประเภท
-- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`, `web/`
+- แต่ละ template ระบุไฟล์/directory ที่ควรมี เช่น `references/`, `scripts/`, `workflows/`, `src/presentation/cli.ts`, `guide/`, `examples/`, `web/`, `.devin/rules/`
 - directory structure ต้องสอดคล้องกับ template ที่เลือก ไม่เพิ่ม/ลดโดยไม่มีเหตุผล
 
 ## Expected Outcome
@@ -193,5 +197,6 @@ related:
 - Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว
 - ถ้าต้องการ web จะมี `web/` directory ที่ทดสอบผ่านแล้ว
+- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว
 - `related` ถูกต้อง ไม่มี missing/unused
 - references อัปเดตครบถ้วน
