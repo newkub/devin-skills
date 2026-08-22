@@ -26,6 +26,7 @@ export const Graph: Component<{
   prefix: string;
   dark: boolean;
   physics: boolean;
+  showLabels: boolean;
   reset: number;
   focus: string | null;
   highlight: string | null;
@@ -44,15 +45,22 @@ export const Graph: Component<{
     try {
       const data = await orpc.skillsGraph();
       setRaw(data);
+      props.onData(data);
+
+      const degree = new Map(data.nodes.map((n) => [n.id, 0]));
+      data.edges.forEach((e) => {
+        degree.set(e.from, (degree.get(e.from) ?? 0) + 1);
+        degree.set(e.to, (degree.get(e.to) ?? 0) + 1);
+      });
+
       const nodes = data.nodes.map((n) => ({
         ...n,
         color: groupColors[n.group] || groupColors.default,
+        value: degree.get(n.id) ?? 0,
       }));
       setColored({ nodes, edges: data.edges });
-      props.onData(data);
 
       const fontColor = props.dark ? "#e2e8f0" : "#1e293b";
-      const edgeColor = props.dark ? "#64748b" : "#94a3b8";
 
       const ds = {
         nodes: new window.vis.DataSet(nodes),
@@ -61,14 +69,14 @@ export const Graph: Component<{
       network = new window.vis.Network(container, ds, {
         nodes: {
           shape: "dot",
-          size: 9,
-          font: { color: fontColor, size: 12 },
+          font: { color: fontColor, size: props.showLabels ? 11 : 0 },
           borderWidth: 2,
+          scaling: { min: 6, max: 20, label: { enabled: false } },
         },
         edges: {
           arrows: { to: { enabled: true, scaleFactor: 0.4 } },
-          width: 0.8,
-          color: { color: edgeColor },
+          width: 0.6,
+          color: { opacity: 0.35 },
         },
         physics: { enabled: props.physics, stabilization: { iterations: 80 } },
         interaction: { hover: true, tooltipDelay: 200 },
@@ -85,6 +93,11 @@ export const Graph: Component<{
       network.on("click", (params: any) => {
         if (params.nodes.length === 0) props.onSelect(null);
       });
+      network.on("dragEnd", (params: any) => {
+        const updates = params.nodes.map((id: string) => ({ id, fixed: { x: true, y: true } }));
+        network.body.data.nodes.update(updates);
+      });
+
       let ready = false;
       const markReady = () => {
         if (ready) return;
@@ -110,7 +123,7 @@ export const Graph: Component<{
       return matchSearch && matchPrefix;
     });
     const ids = new Set(visible.map((n) => n.id));
-    const visibleEdges = raw()!.edges.filter((e) => ids.has(e.from) && ids.has(e.to));
+    const groupById = new Map(visible.map((n) => [n.id, n.group]));
 
     const h = props.highlight;
     const hVisible = h ? ids.has(h) : false;
@@ -124,10 +137,19 @@ export const Graph: Component<{
 
     const styled = visible.map((n) => {
       if (!hVisible) return n;
-      if (n.id === h) return { ...n, size: 14, opacity: 1 };
+      if (n.id === h) return { ...n, size: 16, opacity: 1 };
       if (neighborIds.has(n.id)) return { ...n, opacity: 1 };
-      return { ...n, opacity: 0.3 };
+      return { ...n, opacity: 0.25 };
     });
+
+    const visibleEdges = raw()!
+      .edges
+      .filter((e) => ids.has(e.from) && ids.has(e.to))
+      .map((e) => {
+        const g = groupById.get(e.from) || "default";
+        const c = groupColors[g] || groupColors.default;
+        return { ...e, color: { color: c.border, opacity: 0.35 }, width: 0.6 };
+      });
 
     network.setData({
       nodes: new window.vis.DataSet(styled),
@@ -138,10 +160,8 @@ export const Graph: Component<{
   createEffect(() => {
     if (!network) return;
     const fontColor = props.dark ? "#e2e8f0" : "#1e293b";
-    const edgeColor = props.dark ? "#64748b" : "#94a3b8";
     network.setOptions({
-      nodes: { font: { color: fontColor } },
-      edges: { color: { color: edgeColor } },
+      nodes: { font: { color: fontColor, size: props.showLabels ? 11 : 0 } },
     });
   });
 
