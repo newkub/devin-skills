@@ -1,0 +1,101 @@
+---
+name: ship-code
+description: Ship code โดย commit โดยไม่ถาม release หรือ push ทำตาม AGENTS.md ก่อน
+allowed-tools:
+  - read
+  - edit
+  - write
+  - grep
+  - glob
+  - exec
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - update-agents-md
+  - follow-agents-md
+  - run-check
+  - validate
+  - git-commit
+  - report
+  - suggest-next-action
+  - resolve-errors
+---
+
+## Goal
+
+Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใน `AGENTS.md` ตรวจสอบแล้ว commit โดยไม่ถามเรื่อง push หรือ release
+
+## Scope
+
+ใช้เมื่องานเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release
+
+## Execute
+
+### 1. Update AGENTS.md
+
+> Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
+
+1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md`
+2. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
+3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
+
+### 2. Follow AGENTS.md
+
+> Goal: ทำตาม workflows ใน `AGENTS.md`
+
+1. ทำ `/follow-agents-md` เพื่อ execute workflows/skills ที่ระบุ
+2. ถ้าพบ error ให้ทำ `/resolve-errors` แล้วทำ `/follow-agents-md` ซ้ำจนกว่าจะผ่าน
+3. ยืนยันว่า `## Expected Outcome` ของแต่ละ sub-workflow บรรลุแล้ว
+
+### 3. Verify
+
+> Goal: ตรวจสอบความพร้อมก่อน commit
+
+1. ทำ `/run-check` เพื่อรัน lint, typecheck, format
+2. ทำ `/validate` เพื่อ validate ผลลัพธ์
+3. ถ้า check ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-3 จนกว่าจะผ่าน
+
+### 4. Commit
+
+> Goal: commit การเปลี่ยนแปลง
+
+1. ทำ `/git-commit` เพื่อ commit การเปลี่ยนแปลงทั้งหมด
+2. ถ้า commit ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
+
+### 5. Report
+
+> Goal: รายงานผล ship-code
+
+1. ทำ `/report` พร้อม `/report-table` สรุปสิ่งทีทำ
+2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+
+## Rules
+
+### 1. AGENTS.md First
+
+- `/update-agents-md` ต้องทำก่อนเสมอ
+- `/follow-agents-md` ต้องทำหลัง `AGENTS.md` อัปเดต
+- ห้าม duplicate รายละเอียดที่มีอยู่ใน `AGENTS.md`
+
+### 2. No Push Or Release
+
+- `ship-code` ไม่ทำ push หรือ release
+- ถ้า user ต้องการ push → ใช้ `/ship-and-push`
+- ถ้า user ต้องการ release → ใช้ `/ship-and-release`
+- ไม่ถาม user ว่าจะ push/release หรือไม่ใน `/ship-code`
+
+### 3. Sub-Workflow Discipline
+
+- ทุก `/command` ต้องอ่าน `SKILL.md` จริงก่อนทำ
+- ทำตาม `## Execute` ของแต่ละ skill จนครบ
+- ก่อน mark `completed` ต้อง verify `## Expected Outcome` ของ sub-workflow นั้น
+
+## Expected Outcome
+
+- `AGENTS.md` อัปเดตและถูกต้อง
+- Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
+- Code ผ่าน `/run-check` และ `/validate`
+- Commit สำเร็จ
+- รายงานผลลัพธ์ครบถ้วน

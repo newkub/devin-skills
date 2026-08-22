@@ -10,7 +10,7 @@ triggers:
   - user
 related:
 argument-hint: <title>
-  - ship
+  - ship-code
 ---
 
 ## Goal

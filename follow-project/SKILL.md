@@ -1,5 +1,5 @@
 ---
-name: update-project
+name: follow-project
 description: อัปเดต project documentation, config, rules, และ tooling ให้ครบถ้วนและสอดคล้องกัน
 allowed-tools:
   - read
@@ -13,6 +13,7 @@ triggers:
   - user
   - model
 related:
+  - follow-ci-cd
 ---
 
 ## Goal
@@ -40,8 +41,9 @@ related:
 > Goal: รัน update ตามลำดับ
 > Goal: docs, rules, และ tooling อัปเดตครบ
 
-1. `/update-dot-devin`
-2. `/cleanup-files-in-project` (ถ้าจำเป็น)
+1. `/follow-ci-cd` (ถ้าต้องการตรวจสอบหรือตั้งค่า CI/CD)
+2. `/update-dot-devin`
+3. `/cleanup-files-in-project` (ถ้าจำเป็น)
 3. `/update-readme`
 4. `/update-agents-md`
 5. `/update-docs` (ถ้ามี `docs/`)
@@ -81,7 +83,7 @@ related:
 
 ### 1. Idempotency
 
-- รัน update-project ซ้ำได้โดยไม่เกิด side effects
+- รัน follow-project ซ้ำได้โดยไม่เกิด side effects
 - ไม่ลบหรือ overwrite โดยไม่ dry run
 
 ### 2. Conditionality
@@ -102,4 +104,4 @@ related:
 
 ## Addendum
 
-- `/update-project` ต้องเรียก `/follow-monorepo` ก่อนเสมอ (Step 1) เพื่อ detect monorepo และเรียงลำดับ workspace ก่อนเริ่ม update
+- `/follow-project` ต้องเรียก `/follow-monorepo` ก่อนเสมอ (Step 1) เพื่อ detect monorepo และเรียงลำดับ workspace ก่อนเริ่ม update

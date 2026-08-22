@@ -13,7 +13,7 @@ triggers:
   - user
   - model
 related:
-  - ship
+  - ship-code
 ---
 
 ## Goal

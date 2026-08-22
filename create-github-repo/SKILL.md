@@ -9,7 +9,7 @@ triggers:
   - user
 related:
 argument-hint: <repo-name> [--public|--private|--internal]
-  - ship
+  - ship-code
 ---
 
 ## Goal

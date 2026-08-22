@@ -13,6 +13,7 @@ triggers:
   - model
 related:
   - improve-codebase
+  - follow-ci-cd
 ---
 
 ## Goal
@@ -33,7 +34,8 @@ related:
 
 ### 2. Improve
 > Goal: ปรับปรุง ci-cd
-1. ใช้ /follow-best-practice หรือ /learn-from-web หา best practices
+1. ทำ /follow-ci-cd ถ้า pipeline ยังไม่มีหรือต้องสร้างใหม่
+2. ใช้ /follow-best-practice หรือ /learn-from-web หา best practices
 2. แก้ไขปัญหาตาม priority
 3. ถ้าแก้ >10 ไฟล์ -> ทำ /use-scripts
 

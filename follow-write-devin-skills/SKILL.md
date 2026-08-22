@@ -86,7 +86,7 @@ related:
 1. ถ้าต้องการ external references หรือ dependencies → สร้าง `references/` และพยายามเขียน references ให้ครบถ้วน
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
-4. ถ้าต้องการ Devin workflows → สร้าง `workflows/`
+4. ถ้าต้องการ Devin workflows → สร้าง `workflows/` โดยใช้ชื่อ `setup-*`, `update-*`, `improve-*`, `optimize-*`, `follow-*`, `use-*`, `review-*`, `write-*` ตามลักษณะงาน
 5. ถ้าต้องการ project rules → ทำ `/update-dot-devin` เพื่อสร้าง `.devin/rules/`
 6. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 
