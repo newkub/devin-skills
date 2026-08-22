@@ -41,7 +41,7 @@ related:
 > Goal: สร้าง subagents ตาม subtasks
 > Goal: ทุก subtask มี agent ทำงาน
 
-1. ทำ `/spawn-subagents` เพื่อสร้าง agent ตาม subtask
+1. ทำ `/run-parallel-via-spawn-subagents` เพื่อสร้าง agent ตาม subtask พร้อม merge, review, validate, verify
 2. ส่ง prompt ทีชัดเจนให้แต่ละ agent
 3. ระบุ deliverable และ constraints
 
