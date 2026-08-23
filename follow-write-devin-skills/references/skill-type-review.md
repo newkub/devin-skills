@@ -43,7 +43,7 @@ Template สำหรับสร้าง `review-*` skills ที่วิเ�
 2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules ใน `rules/` ด้วย
 3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยกเพื่อให้แน่ใจว่า rules ครอบคลุม
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ตรวจสอบทีละ dimension ตาม criteria จาก review CLI output
 7. จับ findings เป็น list พร้อม evidence (file, line, code snippet)
 8. ตรวจสอบทั้ง positive และ negative aspects

@@ -205,8 +205,8 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 
 || Task | Bun |
 ||------|-----|
-|| review | un --filter @booking/tools-review review |
-|| review:json | un --filter @booking/tools-review review:json |
+|| review | un --filter tools-review review |
+|| review:json | un --filter tools-review review:json |
 
 ถ้า project ใช้ 	ools/review ให้เพิ่ม scripts นี้ใน package.json เมื่อตั้งค่า scripts ตาม /follow-tasks
 

@@ -30,7 +30,7 @@ related: []
 ## Scope
 
 - ใช้กับ monorepo ที่มีหรือกำลังสร้าง `tools/review`
-- แยก `analyze` ออกจาก `review` ให้เป็น `@booking/tools-analyze`
+- แยก `analyze` ออกจาก `review` ให้เป็น `tools-analyze`
 - ไม่แก้ไข source ของ `apps/` หรือ `packages/`
 - ใช้ Bun, TypeScript strict, Clean Architecture
 
@@ -58,12 +58,12 @@ related: []
 ### 3. Create Workspace Package
 
 สร้าง `tools/analyze` package
-> Goal: มี workspace `@booking/tools-analyze` พร้อมใช้
+> Goal: มี workspace `tools-analyze` พร้อมใช้
 
 1. สร้าง directory `tools/analyze/`
-2. เขียน `tools/analyze/package.json` กำหนด `name: "@booking/tools-analyze"`, `type: "module"`, scripts `analyze`, `analyze:json`, `lint`, `typecheck`
+2. เขียน `tools/analyze/package.json` กำหนด `name: "tools-analyze"`, `type: "module"`, scripts `analyze`, `analyze:json`, `lint`, `typecheck`
 3. เขียน `tools/analyze/tsconfig.json`, `biome.jsonc`, `moon.yml`, `README.md`
-4. เพิ่ม `@booking/tools-analyze` เข้า `package.json` workspaces ถ้ายังไม่มี
+4. เพิ่ม `tools-analyze` เข้า `package.json` workspaces ถ้ายังไม่มี
 
 ### 4. Setup Clean Architecture Structure
 
@@ -90,7 +90,7 @@ related: []
 ### 6. Expose Workspace API
 
 ทำให้ `tools/review` import analyzers ได้
-> Goal: `tools/review` ใช้ `@booking/tools-analyze` ผ่าน workspace
+> Goal: `tools/review` ใช้ `tools-analyze` ผ่าน workspace
 
 1. เพิ่ม `exports` ใน `tools/analyze/package.json`
 2. สร้าง `src/index.ts` export `runAllAnalyzers`, `createAnalyzePorts`
@@ -98,12 +98,12 @@ related: []
 
 ### 7. Update tools/review To Consume Analyze
 
-แก้ `tools/review` ให้ import จาก `@booking/tools-analyze`
+แก้ `tools/review` ให้ import จาก `tools-analyze`
 > Goal: review CLI รวม analyze results
 
 1. แก้ `tools/review/src/domain/analyzers/health-adapter.ts` หรือสร้าง `analyze-adapter.ts` ใหม่
-2. เปลี่ยน dynamic imports จาก local `src/health` เป็น `@booking/tools-analyze`
-3. เพิ่ม `@booking/tools-analyze` เป็น dependency ของ `tools/review`
+2. เปลี่ยน dynamic imports จาก local `src/health` เป็น `tools-analyze`
+3. เพิ่ม `tools-analyze` เป็น dependency ของ `tools/review`
 4. ลบ analyzer code ที่ duplicate ออกจาก `tools/review/src/health` ถ้ามี
 
 ### 8. Update Package Scripts
@@ -112,7 +112,7 @@ related: []
 > Goal: เรียกใช้งานได้สะดวก
 
 1. ใน `tools/analyze/package.json` เพิ่ม `analyze`, `analyze:json`
-2. ใน root `package.json` เพิ่ม `analyze: bun --filter @booking/tools-analyze analyze`
+2. ใน root `package.json` เพิ่ม `analyze: bun --filter tools-analyze analyze`
 3. อัปเดต `bun.lock` ด้วย `bun install`
 
 ### 9. Validate
@@ -120,10 +120,10 @@ related: []
 ตรวจสอบว่า CLI ทั้งสองรันได้
 > Goal: ไม่มี regression
 
-1. รัน `bun --filter @booking/tools-analyze typecheck`
-2. รัน `bun --filter @booking/tools-analyze lint`
-3. รัน `bun --filter @booking/tools-analyze analyze`
-4. รัน `bun --filter @booking/tools-review review`
+1. รัน `bun --filter tools-analyze typecheck`
+2. รัน `bun --filter tools-analyze lint`
+3. รัน `bun --filter tools-analyze analyze`
+4. รัน `bun --filter tools-review review`
 5. ถ้า fail ให้ทำ `/resolve-errors` แล้ว re-validate (max 3)
 
 ### 10. Report
@@ -156,7 +156,7 @@ related: []
 
 ## Expected Outcome
 
-- `tools/analyze` เป็น workspace `@booking/tools-analyze` ที่รัน standalone ได้
-- `tools/review` import `@booking/tools-analyze` ผ่าน workspace
+- `tools/analyze` เป็น workspace `tools-analyze` ที่รัน standalone ได้
+- `tools/review` import `tools-analyze` ผ่าน workspace
 - `/deep-analyze-by-use-scripts` แก้ไข analyzer logic ใน `tools/analyze`
-- `bun --filter @booking/tools-review review` ครอบคลุม analyze categories
+- `bun --filter tools-review review` ครอบคลุม analyze categories

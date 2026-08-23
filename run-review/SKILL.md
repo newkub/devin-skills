@@ -38,8 +38,8 @@ related: []
 > Goal: รัน review CLI เพื่อวิเคราะห์ project review
 > Goal: ได้ review report พร้อม score, findings และ action items
 
-1. รัน `bun --filter @booking/tools-review review` สำหรับ table output
-2. รัน `bun --filter @booking/tools-review review:json` สำหรับ JSON output (ถ้าต้องการ parse)
+1. รัน `bun --filter tools-review review` สำหรับ table output
+2. รัน `bun --filter tools-review review:json` สำหรับ JSON output (ถ้าต้องการ parse)
 3. ถ้า CLI error → ทำ `/update-create-review-cli` Step 5 เพื่อ validate และ fix
 
 ### 3. Analyze Results
@@ -65,9 +65,9 @@ related: []
 
 ### 1. CLI Commands
 
-- ใช้ `bun --filter @booking/tools-review review` สำหรับ table output
-- ใช้ `bun --filter @booking/tools-review review:json` สำหรับ JSON output
-- ใช้ `bun --filter @booking/tools-review review -- --output report.txt` สำหรับเขียนลงไฟล์
+- ใช้ `bun --filter tools-review review` สำหรับ table output
+- ใช้ `bun --filter tools-review review:json` สำหรับ JSON output
+- ใช้ `bun --filter tools-review review -- --output report.txt` สำหรับเขียนลงไฟล์
 - ถ้า CLI ไม่มี → ทำ `/update-create-review-cli` ก่อน
 
 ### 2. Output Interpretation

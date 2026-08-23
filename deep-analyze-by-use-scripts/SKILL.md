@@ -57,8 +57,8 @@ related: []
 > Goal: รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
 > Goal: มี metrics และ AST analysis ครบสำหรับ deep report
 
-1. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report เป็น JSON
-2. รัน `bun --filter @booking/tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
+1. รัน `bun --filter tools-review review:json` เพื่อดึง review report เป็น JSON
+2. รัน `bun --filter tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
 3. ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis ใน scripts — Bun auto-install บน `import`
 4. รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`, `@ast-grep/napi`
 5. รัน review CLI และ analyze CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer แล้ว process results
@@ -99,7 +99,7 @@ related: []
 
 - ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-create-review-cli` ก่อนรัน `/run-review`
 - ถ้า review CLI ไม่มี → ทำ `/update-create-review-cli` ก่อนเสมอ
-- ถ้า review CLI มีอยู่ → รัน `bun --filter @booking/tools-review review:json` ได้เลย
+- ถ้า review CLI มีอยู่ → รัน `bun --filter tools-review review:json` ได้เลย
 - รัน review CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
 
 ### 2. Analyze CLI Integration

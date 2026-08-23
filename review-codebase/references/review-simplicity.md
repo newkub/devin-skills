@@ -53,7 +53,7 @@ Review simplicity ของ codebase ตรวจจับ over-engineering, unn
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม simplicity categories ล่าสุด
-3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+3. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจจับ unnecessary abstractions: interfaces ที่มี implementor เดียว, abstract classes ที่มี subclass เดียว, generic functions ที่ใช้กับ type เดียว, wrapper classes ที่ไม่เพิ่ม value
 6. Analyzer ตรวจจับ YAGNI violations: unused config options, unused parameters, unused exports ด้วย `knip`, extension points ที่ไม่มี extension, features ที่ปิดอยู่หรือไม่ได้ใช้

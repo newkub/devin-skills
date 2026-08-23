@@ -34,7 +34,7 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-sid
 2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
 ### 2. Mobile Review

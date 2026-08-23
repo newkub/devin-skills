@@ -33,7 +33,7 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 > Goal: พบทุก issue พร้อม evidence และ review score
 
 1. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-2. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+2. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 3. ตรวจสอบ `tsconfig.json`: compiler options (target, module, strict, isolatedModules), path aliases (`~/*` → `./src/*`), project references, `tsc` usage
 4. ตรวจสอบ `vite.config.ts`: plugins (tanstackStart, viteSolid, UnoCSS, tsconfigPaths), build options (manualChunks, minify, sourcemap), dev server, optimizeDeps, SPA config ถ้ามี
 5. ตรวจสอบ `biome.jsonc`: enabled domains (drizzle, turborepo, types, solid, test), format rules, `vcs` enabled, ไม่มี `biome-ignore` โดยไม่จำเป็น, workspace-specific configs ไม่ขัดแย้ง root

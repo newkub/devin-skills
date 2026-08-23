@@ -100,8 +100,8 @@ related: []
 
 1. ทำ `/use-scripts` สำหรับ script ที่จำเป็น:
    - `review` → `bun run src/presentation/cli.ts` ใน `tools/review/package.json`
-   - `review` → `bun --filter @booking/tools-review review` ใน root `package.json`
-   - `review:json` → `bun --filter @booking/tools-review review:json` ใน root `package.json`
+   - `review` → `bun --filter tools-review review` ใน root `package.json`
+   - `review:json` → `bun --filter tools-review review:json` ใน root `package.json`
 2. ทำ `/follow-tasks` เพื่อเพิ่ม `review` และ `review:json` ใน package scripts ตาม tech stack (ดู section 11 Review CLI Scripts ใน `/follow-tasks`)
 3. ถ้ามี script ใหม่ที่ต้อง orchestration → register task ใน `turbo.json`
 4. ถ้า script มีอยู่และถูกต้อง → ข้าม
@@ -120,8 +120,8 @@ related: []
 > Goal: ตรวจสอบว่า CLI รันได้และ output ถูกต้อง
 > Goal: CLI ผ่าน typecheck, lint และ output ถูกต้อง
 
-1. รัน `bun --filter @booking/tools-review lint` สำหรับ typecheck และ lint
-2. รัน review CLI ด้วย `bun --filter @booking/tools-review review`
+1. รัน `bun --filter tools-review lint` สำหรับ typecheck และ lint
+2. รัน review CLI ด้วย `bun --filter tools-review review`
 3. ตรวจสอบ output ว่าอยู่ใน expected format (table และ json)
 4. รัน `bunx biome check tools/review` เพื่อตรวจ lint และ format
 5. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
@@ -233,6 +233,6 @@ related: []
 
 1. ทำตาม `/update-create-analyze-cli` เพื่อสร้างหรืออัปเดต `tools/analyze`
 2. ย้าย analyzer logic ที่ซับซ้อนหรือต้องการ deep analysis ออกจาก `tools/review/src/health` หรือ `tools/review/src/domain/analyzers` ไปยัง `tools/analyze/src/domain/analyzers`
-3. ให้ `tools/review` นำเข้า analyzers จาก `@booking/tools-analyze` ผ่าน Bun workspace แทนการเก็บ code ซ้ำ
-4. อัปเดต `tools/review/src/domain/analyzers/health-adapter.ts` หรือสร้าง `analyze-adapter.ts` ให้ `import("@booking/tools-analyze/src/domain/analyzers")` และ `import("@booking/tools-analyze/src/adapters")`
-5. รัน `bun --filter @booking/tools-analyze typecheck`, `lint`, `analyze` แล้วจึงรัน `bun --filter @booking/tools-review review`
+3. ให้ `tools/review` นำเข้า analyzers จาก `tools-analyze` ผ่าน Bun workspace แทนการเก็บ code ซ้ำ
+4. อัปเดต `tools/review/src/domain/analyzers/health-adapter.ts` หรือสร้าง `analyze-adapter.ts` ให้ `import("tools-analyze/src/domain/analyzers")` และ `import("tools-analyze/src/adapters")`
+5. รัน `bun --filter tools-analyze typecheck`, `lint`, `analyze` แล้วจึงรัน `bun --filter tools-review review`

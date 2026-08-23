@@ -31,7 +31,7 @@ Review refactor opportunities และรายงาน findings พร้อ�
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter @booking/tools-review review:json` เพื่อดึง review report พร้อม metrics
+3. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer ตรวจสอบ SRP violations: mixed concerns, God modules, multiple reasons to change
 6. Analyzer ตรวจสอบ code duplication ด้วย `jscpd` และระบุ duplicate blocks

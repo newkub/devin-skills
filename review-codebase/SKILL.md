@@ -42,7 +42,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 > Goal: ได้ review report ทีครอบคลุม พร้อม score, findings และ metrics
 
 1. ทำ `/run-review` สำหรับ table output
-2. รัน `bun --filter @booking/tools-review review:json` หรือ `bun run --filter @booking/tools-review review -- --output report.json` เพื่อดึง JSON
+2. รัน `bun --filter tools-review review:json` หรือ `bun run --filter tools-review review -- --output report.json` เพื่อดึง JSON
 3. บันทึก before score, grade, domain breakdown, category coverage, findings count
 4. ถ้า CLI error → ทำ `/update-create-review-cli` Step 5 แล้วกลับมา Step 2
 
