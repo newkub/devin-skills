@@ -1,1 +1,16 @@
-{\n  "compilerOptions": {\n    "target": "ESNext",\n    "module": "ESNext",\n    "moduleResolution": "bundler",\n    "strict": true,\n    "declaration": true,\n    "isolatedDeclarations": false,\n    "esModuleInterop": true,\n    "skipLibCheck": true,\n    "allowImportingTsExtensions": true,\n    "types": ["bun"],\n    "outDir": "dist"\n  },\n  "include": ["cli/**/*.ts", "src/**/*.ts"]\n}\n
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "declaration": true,
+    "isolatedDeclarations": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "types": ["bun"],
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"]
+}

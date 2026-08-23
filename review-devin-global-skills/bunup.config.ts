@@ -1,1 +1,9 @@
-import { defineConfig } from "bunup";\n\nexport default defineConfig({\n  dts: { splitting: true },\n});\n
+import { defineConfig } from "bunup";
+
+export default defineConfig({
+  entry: ["src/index.ts", "src/presentation/cli.ts"],
+  outDir: "dist",
+  format: "esm",
+  sourceBase: "src",
+  dts: { splitting: true },
+});

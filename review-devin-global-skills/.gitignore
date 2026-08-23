@@ -1,1 +1,7 @@
-node_modules\ndist\nbuild\n*.log\nbun.lockb\n
+node_modules
+dist
+build
+*.log
+bun.lockb
+bun.lock
+coverage
