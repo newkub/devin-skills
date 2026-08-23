@@ -12,7 +12,6 @@ triggers:
   - user
   - model
 related:
-  - follow-svelte
   - follow-typescript
   - validate
 ---
