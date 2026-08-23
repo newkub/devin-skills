@@ -1,0 +1,1 @@
+import { defineConfig } from "bunup";\n\nexport default defineConfig({\n  dts: { splitting: true },\n});\n
