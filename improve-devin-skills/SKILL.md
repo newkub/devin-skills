@@ -1,6 +1,6 @@
 ---
-name: improve-skills
-description: ปรับปรุง skill หนึ่งหรือกลุ่มย่อยให้ถูกต้อง ครอบคลุม สอดคล้อง และตาม best practices
+name: improve-devin-skills
+description: ปรับปรุง skill หนึ่งหรือกลุ่มย่อยตาม /follow-devin-skills-md และ /follow-write-devin-skills
 allowed-tools:
   - read
   - edit
@@ -27,6 +27,7 @@ related:
   - write-explicit
   - consider-use-in-another-skills
   - follow-devin-skills-md
+  - follow-write-devin-skills
   - read-related-skills
   - scan-codebase
   - suggest-next-action
@@ -54,12 +55,13 @@ related:
 4. ทำ `/scan-codebase` เพื่อหา: ไฟล์เกิน 250 บรรทัด, broken references, directory structure ผิด, missing sections
 5. บันทึก issues เป็นรายการพร้อม priority: `Critical`, `High`, `Medium`, `Low`
 
-### 2. Check Correctness
+### 2. Check Correctness And Structure
 
-> Goal: skill ผ่านเกณฑ์พื้นฐานก่อนแก้ไข
+> Goal: skill ผ่านเกณฑ์ frontmatter, structure, และ directory ก่อนแก้ไข
 
-1. parallel: ทำตาม `/improve-correctness` เพื่อตรวจ structure, frontmatter, sections ∥ ทำตาม `/check-reference` เพื่อตรวจ broken references ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจ circular references
-2. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ directory structure ตาม `/follow-devin-skills-md`
+1. parallel: ทำตาม `/improve-correctness` เพื่อตรวจ structure, frontmatter, sections ∥ ทำตาม `/follow-devin-skills-md` เพื่อตรวจมาตรฐาน `SKILL.md` ∥ ทำตาม `/follow-write-devin-skills` เพื่อตรวจ directory structure, references, subskills, และ templates
+2. parallel: ทำตาม `/check-reference` เพื่อตรวจ broken references ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจ circular references
+3. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ `name` ตรงกับ directory name
 
 ### 3. Research Best Practices
 

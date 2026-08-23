@@ -23,7 +23,7 @@ related:
 
 ใช้กับ `SKILL.md` และไฟล์ใน skill directories (`guide/`, `references/`, `workflows/` ฯลฯ) ทั้งใน global skills และ project workspace
 
-ไม่รวมการแก้ไขเนื้อหาเชิงลึกหรือ best practices (ใช้ `/improve-skills`)
+ไม่รวมการแก้ไขเนื้อหาเชิงลึกหรือ best practices (ใช้ `/improve-devin-skills`)
 
 ## Execute
 

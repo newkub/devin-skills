@@ -15,7 +15,7 @@ triggers:
 related:
   - write-explicit
   - follow-write-devin-skills
-  - improve-skills
+  - improve-devin-skills
   - validate
   - check-reference
 ---

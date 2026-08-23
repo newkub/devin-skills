@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ปรับปรุงทุก `.md` ไฟล์ใน skill directories ทั้งใน `skills/` และ workspace รวมถึง `AGENTS.md` โดยใช้ `/improve-skills` เป็นหลักและทำ cross-skill checks
+ปรับปรุงทุก `.md` ไฟล์ใน skill directories ทั้งใน `skills/` และ workspace รวมถึง `AGENTS.md` โดยใช้ `/improve-devin-skills` เป็นหลักและทำ cross-skill checks
 
 ## Execute
 
@@ -44,10 +44,10 @@ related:
 
 ### 3. Improve Each Skill
 
-> Goal: ปรับปรุงทีละ skill โดยใช้ `/improve-skills`
+> Goal: ปรับปรุงทีละ skill โดยใช้ `/improve-devin-skills`
 > Goal: ทุก skill ได้รับการปรับปรุงตามมาตรฐานเดียวกัน
 
-1. สำหรับแต่ละ skill เรียก `/improve-skills` พร้อมระบุ target directory
+1. สำหรับแต่ละ skill เรียก `/improve-devin-skills` พร้อมระบุ target directory
 2. ติดตาม progress ต่อ skill
 3. ถ้าพบ error ให้ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 
@@ -72,10 +72,10 @@ related:
 
 ### 1. Delegate To Sub-Skills
 
-- ใช้ `/improve-skills` สำหรับปรับปรุงแต่ละ skill
+- ใช้ `/improve-devin-skills` สำหรับปรับปรุงแต่ละ skill
 - ใช้ `/improve-consistency` สำหรับข้าม skill consistency
 - ใช้ `/improve-redundancy` สำหรับลด redundancy ข้าม skill
-- ไม่ duplicate เนื้อหาที่มีอยู่แล้วใน `/improve-skills`
+- ไม่ duplicate เนื้อหาที่มีอยู่แล้วใน `/improve-devin-skills`
 
 ### 2. Batch Execution
 
@@ -98,7 +98,7 @@ related:
 ### 5. Scope Boundary
 
 - ไม่แก้ไข source code ของ project โดยตรง
-- ถ้าพบว่าต้องแก้ไข project ให้หยุดและแนะนำให้ใช้ `/improve-skills` ใน project workspace
+- ถ้าพบว่าต้องแก้ไข project ให้หยุดและแนะนำให้ใช้ `/improve-devin-skills` ใน project workspace
 
 ## Expected Outcome
 

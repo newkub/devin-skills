@@ -23,7 +23,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ใช้สำหรับ refactor โครงสร้าง skill files ทั้งใน `%APPDATA%\devin\skills\`, `.devin/skills/`, และ `.windsurf/skills/`
 
-ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/improve-skills`)
+ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/improve-devin-skills`)
 
 ## Execute
 
@@ -113,7 +113,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 1. Structural Focus
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate
-- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-skills`)
+- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-devin-skills`)
 - ไม่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
 - รักษา skill intent เดิม
 
