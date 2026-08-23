@@ -1,154 +1,124 @@
 ---
 name: improve-database-design
-description: Review and improve an existing or proposed database design to achieve better performance,
+description: ปรับปรุง database design, schema, index, query, integrity และ migration plan
 allowed-tools:
   - read
   - edit
+  - write
   - grep
   - glob
   - exec
-  - write
 triggers:
   - user
   - model
 related:
-  - DML
-  - after
-  - columns
-  - denormalization
-  - sharding
-  - write
+  - improve-codebase
+  - optimize-database
+  - optimize-query
+  - run-test-integration
+  - validate
 ---
 
 ## Goal
 
-Review and improve an existing or proposed database design to achieve better performance, integrity, maintainability, and scalability
+Review and improve database design เพื่อให้ได้ performance, integrity, maintainability, scalability ทีดีขึ้น
 
 ## Scope
 
-Use with relational or NoSQL databases when schema, queries, indexing, normalization, constraints, or data integrity need improvement. Covers review, diagnosis, recommendation, migration planning, and validation
+ใช้กับ relational หรือ NoSQL database เมื่อต้องการปรับปรุง schema, queries, indexing, normalization, constraints, integrity, หรือ migration plan
 
 ## Execute
 
 ### 1. Assess Current Design
-
-> Goal: Understand the database and its context
-> Goal: identify database type, schema, workload, and pain points
-
-1. identify database engine (PostgreSQL, MySQL, MongoDB, Redis, etc.)
-2. gather schema, ER diagrams, migration files, and ORM models
-3. collect workload profile: read/write ratio, query patterns, peak load
-4. identify reported issues: slow queries, data anomalies, lock contention, storage growth
-5. document assumptions, constraints, and non-functional requirements
-6. if schema is missing or outdated → stop and ask for source files
+> Goal: เข้าใจ database context และปัญหา
+1. ระบุ database engine เช่น PostgreSQL, MySQL, MongoDB, Redis
+2. รวบรวม schema, ER diagrams, migration files, ORM models
+3. รวบรวม workload profile: read/write ratio, query patterns, peak load
+4. ระบุปัญหา: slow queries, data anomalies, lock contention, storage growth
+5. ถ้า schema ไม่มีหรือ outdated → stop และถามหา source files
 
 ### 2. Diagnose Schema Issues
-
-> Goal: Find structural problems
-> Goal: list schema-level issues with severity
-
-1. review normalization (1NF–3NF) and denormalization needs
-2. check for missing, redundant, or misnamed tables/columns
-3. verify primary keys, foreign keys, and unique constraints
-4. identify implicit relationships or orphan risks
-5. check data types for precision, storage, and compatibility
-6. flag duplicate data, multivalued columns, and EAV misuse
+> Goal: หา structural problems
+1. ตรวจสอบ normalization (1NF–3NF) และ denormalization needs
+2. ตรวจ missing, redundant, หรือ misnamed tables/columns
+3. ตรวจ primary keys, foreign keys, unique constraints
+4. ระบุ implicit relationships หรือ orphan risks
+5. ตรวจ data types สำหรับ precision, storage, compatibility
+6. ตรวจ multivalued columns, EAV misuse, duplicate data
 
 ### 3. Diagnose Query And Index Performance
+> Goal: หา runtime inefficiencies
+1. รวบรวม slow query logs, `EXPLAIN ANALYZE`, query frequency
+2. ระบุ missing indexes, unused indexes, composite index opportunities
+3. ตรวจ full table scans, nested loop inefficiency, sorting costs
+4. ตรวจ N+1 queries, heavy joins, aggregation patterns
+5. ประเมิน transaction boundaries และ lock contention
+6. ระบุ hot spots และ partition/sharding candidates
 
-> Goal: Find runtime inefficiencies
-> Goal: list query and index issues with evidence
-
-1. collect slow query logs, `EXPLAIN ANALYZE`, and query frequency
-2. identify missing indexes, unused indexes, and composite index opportunities
-3. check for full table scans, nested loop inefficiency, and sorting costs
-4. review N+1 queries, heavy joins, and aggregation patterns
-5. assess transaction boundaries and lock contention
-6. measure hot spots and partition/sharding candidates
-
-### 4. Diagnose Integrity And Security
-
-> Goal: Ensure data correctness and safety
-> Goal: list integrity and security gaps
-
-1. verify constraints, triggers, and check rules
-2. review soft delete, audit trail, and change data capture
-3. check for SQL injection risks and access control
-4. identify sensitive data exposure and encryption needs
-5. assess backup, restore, and disaster recovery strategy
-6. review compliance requirements (GDPR, HIPAA, etc.) if applicable
+### 4. Diagnose Integrity And Constraints
+> Goal: ปรับปรุง data integrity และ constraints
+1. ตรวจ constraints, triggers, check rules
+2. ตรวจ soft delete, audit trail, change data capture
+3. ตรวจ foreign key consistency และ orphaned rows
+4. ระบุ sensitive data exposure และ encryption needs
+5. ประเมิน backup, restore, disaster recovery strategy
+6. ใช้ /improve-reliability ถ้าพบ recoverability issues
 
 ### 5. Prioritize Improvements
-
-> Goal: Rank issues by impact and effort
-> Goal: produce an actionable improvement plan
-
-1. classify issues by severity: critical, high, medium, low
-2. estimate effort and risk for each improvement
-3. prioritize by impact on performance, integrity, and maintainability
-4. group quick wins and foundational changes
-5. define success metrics: query time, storage, error rate, test coverage
+> Goal: จัดลำดับตาม impact และ effort
+1. จัดประเภท issues ตาม severity: critical, high, medium, low
+2. ประเมิน effort และ risk ของแต่ละ improvement
+3. จัดลำดับตาม impact: performance, integrity, maintainability
+4. กลุ่ม quick wins และ foundational changes
+5. กำหนด success metrics: query time, storage, error rate, test coverage
 
 ### 6. Plan Migration
-
-> Goal: Design safe schema or query changes
-> Goal: have a reversible, tested migration plan
-
-1. choose migration strategy: online, batched, blue/green, feature flag
-2. write DDL/DML scripts with rollback steps
-3. plan data backfill, validation, and consistency checks
-4. schedule maintenance windows if downtime is required
-5. prepare monitoring and alerting for the migration
+> Goal: ออกแบบ migration ทีปลอดภัยและย้อนกลับได้
+1. เลือก migration strategy: online, batched, blue/green, feature flag
+2. เขียน DDL/DML scripts พร้อม rollback steps
+3. วางแผน data backfill, validation, consistency checks
+4. กำหนด maintenance window ถ้าต้อง downtime
+5. เตรียม monitoring และ alerting สำหรับ migration
 
 ### 7. Apply And Validate
-
-> Goal: Implement improvements and verify
-> Goal: database design improved without regression
-
-1. apply schema changes in a non-production environment first
-2. rebuild or create indexes, update statistics
-3. rewrite queries, views, or ORM mappings
-4. run load tests, unit tests, and integration tests
-5. verify query plans and performance metrics
-6. compare before/after results and report
+> Goal: ปรับปรุงและยืนยันว่าไม่มี regression
+1. นำ schema changes ไปใช้ใน non-production environment ก่อน
+2. rebuild หรือสร้าง indexes, update statistics
+3. rewrite queries, views, ORM mappings
+4. รัน load tests, unit tests, integration tests
+5. ตรวจสอบ query plans และ performance metrics
+6. เปรียบเทียบ before/after และรายงาน
 
 ## Rules
-
 ### 1. Start With Evidence
-
-- do not redesign without measured symptoms
-- use query plans and metrics instead of assumptions
-- preserve existing behavior unless explicitly approved
+- ไม่ redesign โดยไม่มี measured symptoms
+- ใช้ query plans และ metrics แทน assumptions
+- รักษา existing behavior เว้นแต่ได้รับการ approve
 
 ### 2. Prefer Minimal Changes
-
-- one logical change per migration
-- avoid big-bang rewrites; prefer iterative improvements
-- keep backward compatibility when possible
+- หนึ่ง logical change ต่อ migration
+- หลีกเลี่ยง big-bang rewrite โดย iterative improvements
+- รักษา backward compatibility เมื่อปลอดภัย
 
 ### 3. Maintain Integrity
-
-- never disable foreign keys or constraints without a documented reason
-- validate data after migrations with reproducible checks
-- use transactions for schema and data changes
+- ไม่ disable foreign keys หรือ constraints โดยไม่มีเหตุผล
+- validate data หลัง migration ด้วย reproducible checks
+- ใช้ transactions สำหรับ schema และ data changes
 
 ### 4. Document Decisions
-
-- record why normalization/denormalization was chosen
-- document indexes with justification
-- keep migration scripts under version control
+- บันทึกเหตุผลของ normalization/denormalization
+- อธิบาย indexes ที่เลือก
+- เก็บ migration scripts ไว้ใน version control
 
 ### 5. Test Performance
-
-- benchmark before and after on realistic data volume
-- test concurrency, not just single-query speed
-- monitor for regressions after deployment
+- benchmark before/after บน realistic data volume
+- ทดสอบ concurrency ไม่ใช่แค่ single-query speed
+- monitor หา regressions หลัง deployment
 
 ## Expected Outcome
-
-- documented review of current database design
-- prioritized list of improvements with severity and effort
-- migration plan with rollback and validation steps
-- improved query performance, schema integrity, or security
-- no data loss or broken references
-- evidence-backed before/after metrics
+- รายงาน review ของ database design ปัจจุบัน
+- รายการ improvements ทีจัดลำดับตาม severity และ effort
+- migration plan พร้อม rollback และ validation
+- query performance, schema integrity หรือ security ดีขึ้น
+- ไม่มี data loss หรือ broken references
+- before/after metrics ทีมี evidence

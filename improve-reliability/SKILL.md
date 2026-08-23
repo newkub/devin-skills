@@ -1,6 +1,6 @@
 ---
 name: improve-reliability
-description: ปรับปรุง reliability ของ project
+description: ปรับปรุง reliability, resilience และ recoverability ของ project
 allowed-tools:
   - read
   - edit
@@ -17,27 +17,44 @@ related:
 
 ## Goal
 
-ปรับปรุง reliability ของ project ให้ดีขึ้น
+ปรับปรุงระบบให้ทำงานเสถียร รับมือความล้มเหลวได้ดีขึ้น และฟื้นตัวกลับมาได้เร็ว
 
 ## Scope
 
-ใช้กับ reliability ใน project หรือ workspace ที่ต้องการปรับปรุง
+ใช้กับ project หรือ workspace ที่ต้องการปรับปรุง reliability, resilience, หรือ recoverability
 
 ## Execute
 
 ### 1. Analyze
-> Goal: วิเคราะห์สถานะปัจจุบัน
+> Goal: วิเคราะห์สถานะปัจจุบันและจุดเสี่ยง
 1. ทำ /scan-codebase เพื่อหา issues ที่เกี่ยวข้อง
 2. ทำ /review-codebase เพื่อรายละเอียดเพิ่ม
-3. ถ้าไม่พบ issues -> stop และ report
+3. ระบุ failure points, retry policy, circuit breaker, fallback, backup/restore และ monitoring
+4. ถ้าไม่พบ issues -> stop และ report
 
-### 2. Improve
-> Goal: ปรับปรุง reliability
-1. ใช้ /follow-best-practice หรือ /learn-from-web หา best practices
-2. แก้ไขปัญหาตาม priority
-3. ถ้าแก้ >10 ไฟล์ -> ทำ /use-scripts
+### 2. Improve Reliability
+> Goal: ลดความล้มเหลวและผลกระทบ
+1. ลบ single points of failure ด้วย redundancy หรือ graceful degradation
+2. เพิ่ม timeout, retries, และ idempotency
+3. ใช้ /improve-correctness หรือ /validate เพื่อลด bugs
+4. ตรวจสอบ health checks, readiness, liveness probes
+5. ใช้ /follow-best-practice หรือ /learn-from-web หา best practices เฉพาะ runtime
 
-### 3. Validate
+### 3. Improve Resilience
+> Goal: รับมือ failure โดยไม่ทำระบบล้มทั้งหมด
+1. ใช้ circuit breaker, bulkhead, หรือ retry with exponential backoff
+2. เพิ่ม fallback/default behavior สำหรับ dependency สำคัญ
+3. ตรวจสอบ rate-limiting, load balancing, queue, backpressure
+4. ใช้ /improve-rate-limiting ถ้า load หรือ rate เป็นปัญหา
+
+### 4. Improve Recoverability
+> Goal: ฟื้นตัวกลับมาเร็วหลังเกิด failure
+1. ใช้ /improve-disaster-recovery หรือ /improve-backup สำหรับ backup/restore
+2. ตรวจสอบ rollback procedures, database transaction, migration safety
+3. เพิ่ม self-healing, restart policies, หรือ automated recovery
+4. บันทึก runbook หรือ incident response steps ลง `docs/runbooks/`
+
+### 5. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น
 1. ทำ /validate หรือ /run-check
 2. ถ้าไม่ผ่าน -> ทำ /resolve-errors แล้ว retry (max 3)
@@ -50,6 +67,6 @@ related:
 - ถ้าไม่แน่ใจ -> stop และ /ask-me
 
 ## Expected Outcome
-- reliability ดีขึ้นตาม criteria
+- reliability, resilience, recoverability ดีขึ้นตาม criteria
 - ไม่มี regression
 - รายงานสรุปผล

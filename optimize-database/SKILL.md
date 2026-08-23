@@ -16,7 +16,6 @@ related:
   - optimize-codebase
   - optimize-query
   - improve-database-design
-  - improve-data-integrity
   - follow-orm
   - follow-drizzle
   - run-test-integration
@@ -45,7 +44,7 @@ related:
 > Goal: หาสาเหตุที่ทำให้ database ช้าหรือไม่ปลอดภัย
 1. ทำ `/optimize-query` เพื่อตรวจ slow queries หรือ N+1
 2. ทำ `/improve-database-design` เพื่อ review schema, index, normalization
-3. ทำ `/improve-data-integrity` ถ้าพบ integrity หรือ constraint issues
+3. ทำ `/improve-database-design` สำหรับ schema, index, normalization, และ integrity/constraint issues
 4. ตรวจ connection pool, timeout, retry strategy
 5. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
 6. ถ้าไม่พบ issues → stop และ report
