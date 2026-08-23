@@ -60,7 +60,7 @@ related:
 1. เรียง steps ตาม: foundation → validation → high impact → dependencies → report/cleanup
 2. ย้าย context/reference/requirement checks ไปต้นเพื่อ fail-fast
 3. ทำ `/follow-parallel` เพื่อรวม independent reads/scans/searches เป็น parallel batch
-4. ใช้ `parallel:` และ `∥` ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism` สำหรับ independent operations
+4. ใช้ `/follow-subagents` หรือ sequential steps สำหรับ independent operations ตาม `/follow-write-devin-skills` Rule `Flow And Parallelism`
 5. ถ้า step ใหญ่เกินไปหรือมีหลายหน้าที่ → ทำ `/plan` เพื่อแยกเป็น sub-workflows
 6. ทำ `/follow-deterministic` เพื่อตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
@@ -106,7 +106,7 @@ related:
 
 - อ่าน/scan/search/check อิสระ → รวมเป็น parallel batch
 - สร้าง/แก้ไข/ลบไฟล์เดียวกันหรือ state เดียวกัน → sequential
-- ใช้ `parallel:` และ `∥` ใน Execute numbered list ตาม `/follow-write-devin-skills`
+- ไม่ใช้ `parallel:` หรือ `∥` ใน Execute numbered list ตาม `/follow-write-devin-skills`
 - parallel operation ต้องไม่แชร์ mutable state หรือ resource ที่ไม่ปลอดภัย
 
 ### 4. Deterministic
@@ -128,7 +128,7 @@ related:
 - ทำ `/improve-correctness` และ `/check-reference` ก่อนและหลังแก้ flow
 - ตรวจสอบ workflow ไม่เกิน 250 บรรทัด และ steps ไม่เกิน 10
 - ห้ามใช้ `**` (bold markers) ใน workflow
-- ใช้ backticks สำหรับ `tools`, `commands`, `workflow-name`, `parallel:`, `∥`
+- ใช้ backticks สำหรับ `tools`, `commands`, `workflow-name`, และ transition markers
 
 ## Expected Outcome
 
