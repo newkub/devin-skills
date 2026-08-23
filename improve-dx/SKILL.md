@@ -51,7 +51,7 @@ related:
 1. ตรวจสอบ error messages ให้บอกสาเหตุและวิธีแก้
 2. ใช้ /improve-ux-writing สำหรับ CLI messages หรือ logs
 3. ตรวจสอบ type check, lint, test runtime
-4. ใช้ /improve-telemetry ถ้าขาด insights สำหรับ debugging
+4. ใช้ /improve-observability ถ้าขาด insights สำหรับ debugging
 
 ### 5. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น
