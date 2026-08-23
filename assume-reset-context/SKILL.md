@@ -42,7 +42,8 @@ related:
 1. อ่านไฟล์เป้าหมายทั้งไฟล์ ไม่ข้ามบรรทัด
 2. อ่าน `imports` และ dependencies ที่ไฟล์เรียกใช้
 3. อ่านไฟล์ที่ import ไฟล์เป้าหมาย (reverse dependencies)
-4. parallel: ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด ∥ ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
+4. ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด
+   - ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
 5. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 
 ### 3. Analyze From Scratch
@@ -54,7 +55,8 @@ related:
 2. ระบุว่าไฟล์นี้ทำหน้าที่อะไร รับผิดชอบอะไร
 3. ระบุ dependencies และ relationships กับไฟล์อื่น
 4. ระบุ issues, bugs, หรือ improvements จากการอ่านจริง
-5. parallel: ทำ `/follow-best-practice` ∥ ทำ `/follow-layered-architecture` เพื่อเทียบกับมาตรฐาน
+5. ทำ `/follow-best-practice`
+   - ทำ `/follow-layered-architecture` เพื่อเทียบกับมาตรฐาน
 
 ### 4. Plan Fresh
 

@@ -10,8 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 Follow Cloudflare Nitro

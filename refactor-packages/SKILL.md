@@ -91,7 +91,9 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
 > Goal: ไม่มี regression, circular dependencies, หรือ broken references
 
-1. parallel: ทำ `/run-check` ∥ ทำ `/run-test` ∥ ทำ `/run-typecheck`
+1. ทำ `/run-check`
+   - ทำ `/run-test`
+   - ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/improve-code-duplication`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)

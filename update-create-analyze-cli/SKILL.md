@@ -21,8 +21,8 @@ permissions:
     - Write(packages/)
 triggers:
   - user
+related: []
 ---
-
 ## Goal
 
 สร้างหรืออัปเดต `tools/analyze` CLI ให้เป็น deep-analysis engine อิสระ แล้วให้ `tools/review` นำมาใช้ผ่าน Bun workspace เมื่อใช้ `/deep-analyze-by-use-scripts` ให้แก้ไข analyzer logic ใน `tools/analyze` ไม่ใช้ใน `tools/review`

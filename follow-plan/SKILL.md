@@ -13,8 +13,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 อ่านแผน (plan) จาก `AGENTS.md`, ไฟล์ plan หรือ context แล้วทำตามทีละ step จนครบ พร้อม track ความคืบหน้าใน todo list

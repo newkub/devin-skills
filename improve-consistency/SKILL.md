@@ -33,7 +33,8 @@ related:
 > Goal: รู้ scope ของการตรวจสอบและ patterns ที่มีอยู่
 
 1. ทำตาม `/scan-codebase` รวบรวม skill files ทั้งหมด
-2. parallel: อ่าน frontmatter ของแต่ละ `SKILL.md` ∥ ตรวจสอบ directory structure ของแต่ละ skill
+2. อ่าน frontmatter ของแต่ละ `SKILL.md`
+   - ตรวจสอบ directory structure ของแต่ละ skill
 3. ระบุ conventions ที่ใช้ร่วมกัน เช่น heading style, bullet language, backtick usage
 
 ### 2. Check Structure Consistency
@@ -81,7 +82,8 @@ related:
 > Goal: ตรวจสอบผลลัพธ์
 > Goal: ไม่มี inconsistency เหลือและไม่มี broken references
 
-1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate`
+1. ทำตาม `/check-reference`
+   - ทำตาม `/validate`
 2. ทำ `/report` สรุปรายการที่แก้ไข
 
 ## Rules

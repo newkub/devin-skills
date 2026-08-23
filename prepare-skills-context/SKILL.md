@@ -56,7 +56,8 @@ related:
 > Goal: อ่าน context ของ skills ที่เกี่ยวข้อง
 > Goal: ไม่ duplicate ขั้นตอนที่ skills อื่นทำอยู่แล้ว
 
-1. parallel: `/read-related-skills` ∥ `/check-reference`
+1. `/read-related-skills`
+   - `/check-reference`
 2. ถ้า skill เกี่ยวกับ `tools` หรือ `libraries` → เพิ่ม `/follow-best-practice` เข้าไปในชุด parallel
 3. สรุป dependencies และ skills ที่จะถูกเรียกโดยตรง
 

@@ -1,5 +1,5 @@
 ---
-name: check-accessibility
+name: improve-web-accessibility
 description: ตรวจสอบ accessibility ตามมาตรฐาน WCAG
 allowed-tools:
   - read
@@ -13,7 +13,6 @@ triggers:
 related:
   - AAA
 ---
-
 ## Goal
 
 ตรวจสอบ accessibility ตามมาตรฐาน WCAG เพื่อให้ทุกคนใช้งานได้

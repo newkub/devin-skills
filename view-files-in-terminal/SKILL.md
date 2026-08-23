@@ -10,8 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 แสดงเนื้อหาไฟล์ใน terminal ด้วย `bat` เพื่อ syntax highlighting, line numbers, และ theme support

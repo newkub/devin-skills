@@ -9,10 +9,9 @@ allowed-tools:
 triggers:
   - user
 related:
-argument-hint: <title>
   - ship-code
+argument-hint: <title>
 ---
-
 ## Goal
 
 สร้างแผนงานละเอียดจาก request ของผู้ใช้ บันทึกลง `.devin/plan/<title-date>.md` และลบออกเมื่องานเสร็จ

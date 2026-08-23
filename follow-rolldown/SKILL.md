@@ -11,8 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 ใช้งาน Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง

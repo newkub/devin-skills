@@ -29,7 +29,8 @@ related:
 > Goal: ระบุ target paths และ Zed CLI ที่ถูกต้อง
 
 1. ระบุ target paths จากลำดับความสำคัญ: path ที่ user ระบุไว้ ไฟล์ที่เปิดอยู่ใน IDE หรือ current working directory
-2. parallel: ตรวจสอบ OS ∥ ตรวจสอบ Zed binary ใน PATH
+2. ตรวจสอบ OS
+   - ตรวจสอบ Zed binary ใน PATH
 3. ถ้าไม่พบ Zed CLI ให้แจ้ง user พร้อมคำแนะนำติดตั้ง แล้ว stop
 4. ถ้า target path ไม่มีอยู่จริง ให้แจ้ง user และ stop
 

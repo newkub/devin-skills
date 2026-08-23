@@ -59,15 +59,20 @@ related:
 
 > Goal: skill ผ่านเกณฑ์ frontmatter, structure, และ directory ก่อนแก้ไข
 
-1. parallel: ทำตาม `/improve-correctness` เพื่อตรวจ structure, frontmatter, sections ∥ ทำตาม `/follow-devin-skills-md` เพื่อตรวจมาตรฐาน `SKILL.md` ∥ ทำตาม `/follow-write-devin-skills` เพื่อตรวจ directory structure, references, subskills, และ templates
-2. parallel: ทำตาม `/check-reference` เพื่อตรวจ broken references ∥ ทำตาม `/check-circular-dependencies` เพื่อตรวจ circular references
-3. parallel: ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ `name` ตรงกับ directory name
+1. ทำตาม `/improve-correctness` เพื่อตรวจ structure, frontmatter, sections
+   - ทำตาม `/follow-devin-skills-md` เพื่อตรวจมาตรฐาน `SKILL.md`
+   - ทำตาม `/follow-write-devin-skills` เพื่อตรวจ directory structure, references, subskills, และ templates
+2. ทำตาม `/check-reference` เพื่อตรวจ broken references
+   - ทำตาม `/check-circular-dependencies` เพื่อตรวจ circular references
+3. ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
+   - ตรวจสอบ `name` ตรงกับ directory name
 
 ### 3. Research Best Practices
 
 > Goal: ข้อมูลถูกต้องและทันสมัย
 
-1. parallel: ทำตาม `/deep-research` สำหรับ tools/libraries ที่ skill เกี่ยวข้อง ∥ ทำตาม `/follow-best-practice` สำหรับ context
+1. ทำตาม `/deep-research` สำหรับ tools/libraries ที่ skill เกี่ยวข้อง
+   - ทำตาม `/follow-best-practice` สำหรับ context
 2. ตรวจสอบ official documentation และ versions ที่ระบุ
 3. บันทึก patterns ที่แนะนำไว้เป็น bullet points
 
@@ -100,7 +105,7 @@ related:
 
 > Goal: ภาษา รูปแบบ และ terminology สม่ำเสมอ
 
-1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, headings, backticks, `parallel:` markers
+1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, headings, backticks, heading conventions และ backticks
 2. ปรับ `## Execute` headings เป็น English Title Case
 3. ตรวจ `related` ให้ครบถ้วนและไม่มี invalid
 
@@ -126,7 +131,10 @@ related:
 
 > Goal: skill ผ่าน validation และมีรายงาน
 
-1. parallel: ทำตาม `/improve-correctness` อีกครั้ง ∥ ทำตาม `/check-reference` ∥ ทำตาม `/check-circular-dependencies` ∥ ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
+1. ทำตาม `/improve-correctness` อีกครั้ง
+   - ทำตาม `/check-reference`
+   - ทำตาม `/check-circular-dependencies`
+   - ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 2. ทำ `/validate`
 3. ทำ `/report` เพื่อสรุปการปรับปรุง
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป

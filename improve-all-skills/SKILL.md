@@ -28,7 +28,8 @@ related:
 > Goal: วิเคราะห์สถานะปัจจุบันของทุก `.md` ไฟล์ใน skills
 > Goal: รู้ไฟล์ที่ต้องปรับปรุงและจัดลำดับความสำคัญ
 
-1. parallel: ทำตาม `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด ∥ ทำตาม `/check-reference` ตรวจ broken references
+1. ทำตาม `/scan-codebase` หา skill directories และ `AGENTS.md` ทั้งหมด
+   - ทำตาม `/check-reference` ตรวจ broken references
 2. ตรวจสอบไฟล์เกิน 250 บรรทัด, description เกิน 100 ตัวอักษร, หรือ heading ผิด
 3. จัดลำดับตาม impact (skills ที่ใช้บ่อย, มี broken references, หรือไฟล์ยาวก่อน)
 4. ถ้าไม่มี skills directory ให้ stop และ report
@@ -65,7 +66,10 @@ related:
 > Goal: ตรวจสอบผลลัพธ์และสรุป
 > Goal: ทุก skills ผ่าน validation พร้อมรายงาน
 
-1. parallel: ทำตาม `/check-reference` ∥ ทำตาม `/validate` ∥ ทำตาม `/follow-devin-skills-md` กับทุก `SKILL.md` ∥ ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`
+1. ทำตาม `/check-reference`
+   - ทำตาม `/validate`
+   - ทำตาม `/follow-devin-skills-md` กับทุก `SKILL.md`
+   - ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`
 2. ทำ `/report` เพื่อสรุปผล
 
 ## Rules

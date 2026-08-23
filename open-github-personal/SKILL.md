@@ -8,11 +8,10 @@ allowed-tools:
 triggers:
   - user
 related:
+  - <username>
   - Linux
 argument-hint:
-  - <username>
 ---
-
 ## Goal
 
 เปิดหน้า GitHub profile ของผู้ใช้ใน browser

@@ -10,8 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 เรียงลำดับรายการให้เหมาะสมตามหลัก Order Theory เพื่อให้ค้นหาและอ่านง่าย

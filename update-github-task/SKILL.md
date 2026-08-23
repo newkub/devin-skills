@@ -11,8 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 Update task status, priority, assignee, or custom fields

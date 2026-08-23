@@ -40,7 +40,8 @@ related:
 1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-only`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
-4. parallel: ทำ `/list-system-env` เพื่อดู paths หลัก ∥ ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
+4. ทำ `/list-system-env` เพื่อดู paths หลัก
+   - ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
 
 ### 2. Scan System Caches And Temp Files
 

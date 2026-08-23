@@ -10,10 +10,9 @@ allowed-tools:
 triggers:
   - user
 related:
-argument-hint:
   - <plan-path-or-title>
+argument-hint:
 ---
-
 ## Goal
 
 อ่านแผนจาก `.devin/plan/<title-date>.md` ดำเนินการให้ครบถ้วน แล้วลบไฟล์แผน

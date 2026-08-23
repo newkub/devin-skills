@@ -154,7 +154,7 @@ related:
 ### 3. Flow And Parallelism
 
 - เรียง Foundation → Dependencies → High impact → High-risk เพื่อ fail fast
-- ใช้คำนำหน้า `parallel:` และคั่นด้วย `∥` ใน `## Execute` สำหรับรายการที่รันพร้อมกันได้
+- ไม่ใช้ `parallel:` หรือ `∥` ใน `## Execute`; ใช้ sequential steps หรือ `/follow-subagents` สำหรับงานขนาน
 - ทุก skill ที่เรียกต้องนำหน้าด้วย `ทำตาม`
 
 ### 4. Safety

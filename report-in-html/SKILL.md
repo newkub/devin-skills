@@ -1,6 +1,6 @@
 ---
 name: report-in-html
-description: Create a single interactive HTML file for browser-based reports with tables, dropdowns, sort/filter/group/search
+description: Create a single interactive HTML file for browser-based reports with tables, dropdowns, sort/filt...
 allowed-tools:
   - read
   - write
@@ -22,7 +22,6 @@ related:
   - pills
   - sort
 ---
-
 ## Goal
 
 Create a single HTML file that presents project findings, analysis, or feature plans in a browser. The report supports interactive tables with sort, filter, group, search, and per-row dropdowns, plus theme toggle and sticky navigation.

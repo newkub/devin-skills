@@ -32,7 +32,8 @@ Refactor โครงสร้าง skill files และ directories เพื
 > Goal: วิเคราะห์ skill ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
 > Goal: รู้ว่า skill ไหนควร refactor และทำไม
 
-1. parallel: ทำตาม `/scan-codebase` ∥ ทำตาม `/read-related-skills`
+1. ทำตาม `/scan-codebase`
+   - ทำตาม `/read-related-skills`
 2. ระบุ skill ที่มีหลาย responsibility หรือไฟล์เกิน 250 บรรทัด
 3. ระบุ skill ที่มี scope ซ้อนทับกันหรือเนื้อหาซ้ำซ้อน
 4. บันทึก issues พร้อม priority
@@ -104,8 +105,10 @@ Refactor โครงสร้าง skill files และ directories เพื
 > Goal: ตรวจสอบคุณภาพหลัง refactor
 > Goal: skill ผ่าน validation หลัง refactor
 
-1. parallel: ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด ∥ ตรวจสอบ sections ครบ
-2. parallel: ทำตาม `/refactor-to-srp` ∥ ทำตาม `/deep-review`
+1. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
+   - ตรวจสอบ sections ครบ
+2. ทำตาม `/refactor-to-srp`
+   - ทำตาม `/deep-review`
 3. ทำ `/report` เพื่อสรุป
 
 ## Rules

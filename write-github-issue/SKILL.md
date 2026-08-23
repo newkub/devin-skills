@@ -11,8 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
+related: []
 ---
-
 ## Goal
 
 Edit issue title, body, labels, assignees, and other metadata
