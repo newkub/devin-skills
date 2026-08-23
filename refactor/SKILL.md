@@ -17,6 +17,7 @@ related:
   - exports
   - imports
   - module
+  - run-verify
 ---
 
 ## Goal
@@ -63,9 +64,9 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 3. ถ้ามี broken references → ทำ `/resolve-errors`
 
 ### 5. Verify
-> Goal: code ผ่าน lint/typecheck/test
+> Goal: code ผ่าน lint/typecheck/test/build
 
-1. ทำ `/run-check`, `/run-test`
+1. ทำ `/run-verify` เพื่อรัน scan, lint, typecheck, test, build
 2. ทำ `/check-code-structure` เปรียบเทียบ baseline
 3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
 
@@ -109,7 +110,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 ### 4. Verification
 
-- ต้องผ่าน `/run-check` และ `/run-test`
+- ต้องผ่าน `/run-verify`
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 
@@ -118,5 +119,5 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - Codebase มี SRP ชัดเจน
 - ไฟล์และ packages มีขนาดเหมาะสม
 - imports/exports สะอาด
-- ผ่าน lint/typecheck/test
+- ผ่าน lint/typecheck/test/build
 - รายงาน before/after merge ใน `/report`
