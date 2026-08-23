@@ -1,6 +1,6 @@
 ---
-name: use-in-another-skills
-description: ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill เพื่อลดซ้ำซ้อนและส่งต่องาน
+name: consider-use-in-another-skills
+description: พิจารณาใช้หรืออ้างอิง skill อื่นก่อนสร้าง/duplicate
 allowed-tools:
   - read
   - write
@@ -13,8 +13,12 @@ triggers:
   - user
   - model
 related:
-  - AI
-  - unused
+  - list-skills
+  - ask-me
+  - check-circular-dependencies
+  - check-reference
+  - update-reference
+  - validate
 ---
 
 ## Goal
