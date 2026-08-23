@@ -22,7 +22,7 @@ description: โครงสร้างไฟล์และ directory สำ�
   - `skill-me.md` เนื้อหาหลักของ skill เมื่อต้องการแยกออกจาก `SKILL.md`
   - `file-structure.md` เอกสารโครงสร้างไฟล์ (this file)
   - `references/api/` สำหรับ API references ของ lib
-  - `references/cli/` สำหรับ CLI references ของ lib
+  - `references/cli.md` สำหรับ CLI references ของ lib
   - `references/components/` สำหรับ component/usage examples ของ lib
 - `scripts/` สำหรับ helper scripts
 - `subskills/<domain>/<subskill>/SKILL.md` สำหรับ Devin subskills โดย `name` หน้า frontmatter เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`

@@ -19,8 +19,7 @@ description: Canonical pattern สำหรับ skills ทีเป็น inst
 
 - `references/api/` สำหรับ API references: methods, types, options, examples
   - แยกตาม module หรือ category เช่น `core.md`, `config.md`, `errors.md`
-- `references/cli/` สำหรับ CLI commands ของ library
-  - เช่น `commands.md`, `flags.md`
+- `references/cli.md` สำหรับ CLI commands ของ library
 - `references/components/` สำหรับ components, hooks, widgets, หรือ usage patterns
   - เช่น `button.md`, `form.md`
 - `references/comparison.md` สำหรับ compare กับ alternatives
@@ -65,8 +64,8 @@ description: Canonical pattern สำหรับ skills ทีเป็น inst
 
 ### 1. References
 
-- ทุก lib skill ต้องมี `references/api/`, `references/cli/`, `references/components/` ถ้า library มีส่วนนั้น
-- ถ้าไม่มี CLI ให้ละ `references/cli/` ได้ แต่ระบุเหตุผลใน `## Scope`
+- ทุก lib skill ต้องมี `references/api/`, `references/cli.md`, `references/components/` ถ้า library มีส่วนนั้น
+- ถ้าไม่มี CLI ให้ละ `references/cli.md` ได้ แต่ระบุเหตุผลใน `## Scope`
 - references แยกไฟล์ตาม topic ไม่รวมทุกอย่างไว้ใน `SKILL.md`
 
 ### 2. Subskills
