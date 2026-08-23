@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - exports
-  - references
+related: []
 ---
-
 ## Goal
 
 ลบ source files ที่ไม่จำเป็นใน project เช่น ไฟล์ที่ไม่ถูกใช้ ซ้ำซ้อน หรือ dead code โดยไม่แตะ build artifacts หรือ dependency caches

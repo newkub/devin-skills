@@ -11,13 +11,11 @@ triggers:
   - user
   - model
 related:
-  - follow-global-workflows
   - git-commit
   - run-build
   - run-lint
   - run-test
 ---
-
 ## Goal
 
 Run Review\References\Run Review

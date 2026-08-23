@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - tasks
+related: []
 ---
-
 ## Goal
 
 Create draft items/tasks in a GitHub Project via gh project

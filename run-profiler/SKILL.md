@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - O
+related: []
 ---
-
 ## Goal
 
 Profile performance เพื่อหา bottlenecks และ optimize

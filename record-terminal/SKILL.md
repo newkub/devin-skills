@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - GIF
+related: []
 ---
-
 ## Goal
 
 บันทึก terminal session เป็นวิดีโอหรือ text-based format สำหรับ CLI testing, demo และ documentation

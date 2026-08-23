@@ -13,14 +13,11 @@ triggers:
   - user
   - model
 related:
-  - after
   - analyze-project
   - check-unused-deps
   - report-table
   - run-clean
-  - under-configure
 ---
-
 ## Goal
 
 ปรับปรุง build configuration และลดขนาด output เพื่อให้ build เร็วขึ้นและ output เล็กลง

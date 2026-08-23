@@ -11,15 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TS
-  - TypeScript
-  - files
-  - render
-  - script
-  - transformation
+related: []
 ---
-
 ## Goal
 
 สร้าง scripts เพื่อ automate งานและประมวลผลไฟล์ ด้วย Bun native APIs, nushell, pwsh, หรือ ast-grep ตามความเหมาะสม

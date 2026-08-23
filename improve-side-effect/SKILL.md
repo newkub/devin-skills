@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Either
-  - O
-  - impure
-  - output
+related: []
 ---
-
 ## Goal
 
 ปรับปรุงการจัดการ side effects ด้วย functional programming patterns เพื่อให้โค้ด test ได้ง่าย, maintain ได้ง่าย, และ predictable

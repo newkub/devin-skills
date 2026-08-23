@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - O
-  - UI
-  - teardown
+related: []
 ---
-
 ## Goal
 
 ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย

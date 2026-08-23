@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Solves
+related: []
 ---
-
 ## Goal
 
 สร้างตารางไอเดียปรับปรุง naming conventions ทั้ง code, API, database, files, CSS พร้อม continuous numbering และ scope ที่ชัดเจน

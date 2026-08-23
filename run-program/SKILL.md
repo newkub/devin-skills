@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Bun
-  - stderr
-  - warnings
+related: []
 ---
-
 ## Goal
 
 รันโปรแกรมหลักและทำให้ทำงานได้จริง

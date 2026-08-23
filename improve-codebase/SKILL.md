@@ -35,7 +35,6 @@ related:
   - improve-governance
   - improve-compatibility
   - improve-docs
-  - improve-onboarding
   - improve-api
 ---
 

@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - hard
-  - side
-  - type
+related: []
 ---
-
 ## Goal
 
 รักษามาตรฐานคุณภาพโค้ดด้วย separation of concerns, type safety, error handling, และ code organization ที่ดี

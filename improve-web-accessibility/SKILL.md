@@ -10,9 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - AAA
+related: []
 ---
+
 ## Goal
 
 ตรวจสอบ accessibility ตามมาตรฐาน WCAG เพื่อให้ทุกคนใช้งานได้

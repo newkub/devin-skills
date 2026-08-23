@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - flags
+related: []
 ---
-
 ## Goal
 
 สำรวจ CLI tool ให้รู้ว่ามี subcommands, options, flags, และ output อย่างไรก่อนใช้งาน

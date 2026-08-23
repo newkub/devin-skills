@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Packages
-  - modules
-  - package
-  - packages
+related: []
 ---
-
 ## Goal
 
 Refactor modules/packages ให้มี single responsibility, high cohesion, low coupling และแนะนำ packages/modules จาก workspace ที่ควรนำมาใช้
@@ -37,7 +32,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
 4. ทำ `/scan-codebase` ∥ `/check-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
-5. ทำ `/improve-code-duplication` และ `/check-circular-dependencies`
+5. ทำ `/improve-redundancy` และ `/check-circular-dependencies`
 6. ถ้าเป็น monorepo → ทำ `/follow-monorepo`
 
 ### 2. Evaluate Refactor Necessity
@@ -94,7 +89,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 1. ทำ `/run-check`
    - ทำ `/run-test`
    - ทำ `/run-typecheck`
-2. ทำ `/check-circular-dependencies` และ `/improve-code-duplication`
+2. ทำ `/check-circular-dependencies` และ `/improve-redundancy`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
 5. ทำ `/update-reference` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน

@@ -13,12 +13,8 @@ triggers:
   - user
   - model
 related:
-  - ASCII
-  - UI
   - open-web
-  - preview
 ---
-
 ## Goal
 
 Generate new and extended feature ideas for a project and produce a markdown documentation page under `docs/roadmap/idea-features.md` via `/update-docs`.

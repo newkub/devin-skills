@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - UI
+related: []
 ---
-
 ## Goal
 
 แสดงโครงสร้างไฟล์และโฟลเดอร์พร้อม metadata สถิติ และคำแนะนำ ให้ชัดเจนและอ่านง่าย

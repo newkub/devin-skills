@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO, MOCK, FAKE, STUB, placeholder เป็น production code

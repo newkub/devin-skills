@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - fail
-  - localStorage
-  - teardown
+related: []
 ---
-
 ## Goal
 
 รัน E2E tests สำหรับ browser testing ด้วย Playwright หรือ Cypress

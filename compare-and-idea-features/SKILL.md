@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - New
+related: []
 ---
-
 ## Goal
 
 เปรียบเทียบกับ competitors และสร้าง 60 ไอเดีย features (40 enhancements + 20 new features) พร้อม continuous numbering

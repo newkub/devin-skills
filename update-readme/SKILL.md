@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
-  - in
-  - out
-  - package-name
+related: []
 ---
-
 ## Goal
 
 สร้าง `README.md` ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์ สำหรับ root และ workspaces ใน monorepo

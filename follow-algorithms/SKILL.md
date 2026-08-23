@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - output
-  - space
+related: []
 ---
-
 ## Goal
 
 เลือกและ implement algorithm ทีเหมาะสมกับปัญหา ด้วยการวิเคราะห์ complexity อย่างถูกต้อง

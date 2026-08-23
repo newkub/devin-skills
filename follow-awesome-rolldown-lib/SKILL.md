@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - agents
-  - rolldown-vite
+related: []
 ---
-
 ## Goal
 
 สรุป libraries ที่สร้างด้วย Rolldown bundler เพื่อเป็น reference

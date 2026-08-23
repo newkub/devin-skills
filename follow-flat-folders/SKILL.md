@@ -15,13 +15,10 @@ triggers:
 related:
   - relocation
   - restructure
-  - cleanup-files-in-projec
-  - follow-barrel-expor
   - validate
   - report-table
   - ask-me
 ---
-
 ## Goal
 
 แปลงไฟล์ที่กระจายอยู่ใน nested directories ให้รวมอยู่ใน directory เดียว (flat structure) โดยเก็บความหมายของ path ไว้ใน filename พร้อมอัปเดท imports, exports, barrel, และ references

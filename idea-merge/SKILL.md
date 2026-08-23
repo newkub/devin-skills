@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - team
+related: []
 ---
-
 ## Goal
 
 เสนอไอเดียและกลยุทธ์การ merge ที่เหมาะสมกับสถานการณ์ของ project

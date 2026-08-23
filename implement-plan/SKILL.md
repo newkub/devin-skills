@@ -9,10 +9,10 @@ allowed-tools:
   - ask_user_question
 triggers:
   - user
-related:
-  - <plan-path-or-title>
+related: []
 argument-hint:
 ---
+
 ## Goal
 
 อ่านแผนจาก `.devin/plan/<title-date>.md` ดำเนินการให้ครบถ้วน แล้วลบไฟล์แผน

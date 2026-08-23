@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - private
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและใช้งาน Phase.dev สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย

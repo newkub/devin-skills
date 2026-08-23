@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - dark
+related: []
 ---
-
 ## Goal
 
 สร้าง theme colors สำหรับ UnoCSS ด้วย HSL CSS variables พร้อมรองรับ light/dark mode และ validator

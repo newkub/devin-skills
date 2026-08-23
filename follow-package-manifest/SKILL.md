@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - tooling
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า `package.json` scripts ให้ครบถ้วน สอดคล้องกับ tech stack และรองรับทั้ง local development และ CI/CD

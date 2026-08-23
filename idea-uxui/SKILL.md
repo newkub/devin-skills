@@ -12,12 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Category
-  - Solves
-  - UI
+related: []
 ---
-
 ## Goal
 
 สร้างตาราง UX/UI improvements 40 รายการ (Extends + New) พร้อม continuous numbering และ scope ที่ชัดเจน

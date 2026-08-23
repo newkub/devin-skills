@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Client
-  - shared
+related: []
 ---
-
 ## Goal
 
 จัดโครงสร้างโปรเจกต์ Next.js ตาม best practices พร้อม App Router patterns, modules/ และ monorepo support

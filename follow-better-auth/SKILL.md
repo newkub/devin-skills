@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - permissions
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า Better Auth สำหรับ type-safe auth ใน TypeScript projects

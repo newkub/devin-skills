@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - files
+related: []
 ---
-
 ## Goal
 
 กู้คืนข้อมูลหรือทำความเข้าใจว่าเกิดอะไรขึ้นก่อนไฟล์เสียหาย เมื่อง git ไม่สามารถ restore ได้แล้ว โดยอ่านประวัติ Devin CLI session

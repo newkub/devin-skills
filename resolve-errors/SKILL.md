@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - quotes
+related: []
 ---
-
 ## Goal
 
 แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate การแก้ไข และ verify ครบถ้วน

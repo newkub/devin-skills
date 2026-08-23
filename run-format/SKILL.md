@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - warnings
+related: []
 ---
-
 ## Goal
 
 ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter ให้ผ่านทั้งหมด

@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - follow-skills-map
+related: []
 ---
-
 ## Goal
 
 อ่านและใช้ skills ที่มีอยู่ตามที่เหมาะสมกับ task ปัจจุบัน

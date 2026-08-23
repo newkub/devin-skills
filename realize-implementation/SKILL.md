@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
-  - output
-  - queries
-  - warnings
+related: []
 ---
-
 ## Goal
 
 แปลงทุกอย่างเป็น production code จริงที่ใช้งานได้จริง ครบทุกมิติ

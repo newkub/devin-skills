@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - shell
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและใช้งาน mise สำหรับจัดการ dev tools, env vars, และ tasks ตาม best practices

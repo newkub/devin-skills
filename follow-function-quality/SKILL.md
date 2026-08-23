@@ -13,12 +13,8 @@ triggers:
   - user
   - model
 related:
-  - after
   - rename
-  - return
-  - undefined
 ---
-
 ## Goal
 
 ตรวจสอบและปรับปรุงคุณภาพของ functions ให้มี single responsibility, naming ชัดเจน, ลด side effects, ลด complexity, และ promote pure functions

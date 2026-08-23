@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - progress
-  - structure
+related: []
 ---
-
 ## Goal
 
 รายงานสถานะปัจจุบันของ workspace โดยไม่แก้ไขไฟล์ใดๆ

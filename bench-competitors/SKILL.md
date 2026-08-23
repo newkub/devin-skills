@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ

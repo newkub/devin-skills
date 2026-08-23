@@ -9,13 +9,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - progress
-  - roadmap
-  - uncommitted
-  - unpushed
+related: []
 ---
-
 ## Goal
 
 รายงานสถานะของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จแล้วหรือไม่ อะไรยังค้างอยู่ และต้องทำอะไรต่อ

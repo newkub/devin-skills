@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices

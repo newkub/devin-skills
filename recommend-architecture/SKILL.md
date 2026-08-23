@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - folder
+related: []
 ---
-
 ## Goal
 
 แนะนำ architecture และ file structure ที่เหมาะสมสำหรับโปรเจกต์ พร้อม comment ด้านหลังและตาราง file pattern

@@ -8,12 +8,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - JavaScript
-  - interactive
+related: []
 ---
-
 ## Goal
 
 สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem เพื่อให้เห็นภาพรวมและง่ายต่อการอ้างอิง

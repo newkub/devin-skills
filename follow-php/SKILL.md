@@ -10,14 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - 2
-  - CD
-  - php-cs-fixer
-  - phpstan
-  - phpunit
+related: []
 ---
-
 ## Goal
 
 กำหนดแนวทางการพัฒนา PHP applications ตาม PSR standards และ modern best practices

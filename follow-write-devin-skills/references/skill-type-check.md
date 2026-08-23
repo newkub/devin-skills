@@ -18,7 +18,7 @@ Template สำหรับสร้าง `check-*` skills ที่ scan codeb
 
 ## Scope
 
-ใช้สำหรับ skills ที่ตรวจสอบ เช่น `improve-code-duplication`, `check-unused-deps`, `follow-config`
+ใช้สำหรับ skills ที่ตรวจสอบ เช่น `improve-redundancy`, `check-unused-deps`, `follow-config`
 
 ## Execute
 

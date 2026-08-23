@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - GitLab
+related: []
 ---
-
 ## Goal
 
 ใช้งาน Release It สำหรับ automate versioning และ package publishing

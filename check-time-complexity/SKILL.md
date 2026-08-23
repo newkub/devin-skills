@@ -13,9 +13,7 @@ triggers:
   - model
 related:
   - delete
-  - max
 ---
-
 ## Goal
 
 วิเคราะห์และควบคุม time complexity ของ code ให้เหมาะสมกับ input size และใช้ data structures ที่ถูกต้อง

@@ -12,16 +12,8 @@ triggers:
   - user
   - model
 related:
-  - Balanced
-  - DFS
-  - Set
-  - Stack
-  - Vector
   - delete
-  - graph
-  - type
 ---
-
 ## Goal
 
 เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements

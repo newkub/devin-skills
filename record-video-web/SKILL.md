@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - VP9
+related: []
 ---
-
 ## Goal
 
 บันทึกวิดีโอ WebM จากหน้าเว็บด้วย `agent-browser` CLI สำหรับ demo, documentation และ testing

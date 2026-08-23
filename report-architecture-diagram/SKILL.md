@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 วาด architecture diagram ด้วย ANSI box-drawing characters ในแชท เพื่อ visualize system structure, data flow, และ component relationships จาก codebase จริง

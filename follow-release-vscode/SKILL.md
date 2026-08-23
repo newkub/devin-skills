@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - vsce
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า VS Code extensions สำหรับ automated releases ไปยัง VS Code Marketplace

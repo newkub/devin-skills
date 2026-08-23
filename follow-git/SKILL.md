@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - remote
+related: []
 ---
-
 ## Goal
 
 ใช้งาน git ใน project ให้ถูกต้องและเหมาะสมกับสถานการณ์

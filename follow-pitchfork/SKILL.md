@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - leave
-  - stop
-  - trailing
+related: []
 ---
-
 ## Goal
 
 จัดการ background daemons ด้วย pitchfork สำหรับ development workflows

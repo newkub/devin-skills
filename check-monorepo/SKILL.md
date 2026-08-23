@@ -9,10 +9,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - pnpm
+related: []
 ---
-
 ## Goal
 
 ตรวจสอบว่า project เป็น monorepo หรือไม่ เพื่อกำหนด structure ที่เหมาะสม

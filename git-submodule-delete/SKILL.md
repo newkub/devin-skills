@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Linux
+related: []
 ---
-
 ## Goal
 
 ลบ git submodule ออกจาก repository อย่างสมบูรณ์ ทั้งจาก `.gitmodules`, `.git/modules`, และ working tree

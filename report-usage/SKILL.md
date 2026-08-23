@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - deprecated
-  - imports
-  - progress
-  - workspaces
+related: []
 ---
-
 ## Goal
 
 สร้างรายงาน usage statistics ของ APIs, functions, skills หรือ dependencies ใน project

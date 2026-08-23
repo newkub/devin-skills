@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - code
+related: []
 ---
-
 ## Goal
 
 หา root cause ของปัญหาที่เกี่ยวกับ git โดยใช้ git debugging tools (bisect, blame, reflog, log, diff) อย่างเป็นระบบ

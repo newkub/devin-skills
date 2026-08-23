@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Medium
+related: []
 ---
-
 ## Goal
 
 จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสมตามความรุนแรงและผลกระทบ

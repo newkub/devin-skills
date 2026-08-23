@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - ML
-  - line
+related: []
 ---
-
 ## Goal
 
 จำลองเป็นคู่แข่งที่กำลังวิเคราะห์ project ของเราจาก source code เพื่อหาจุดอ่อน ช่องโหว่ และโอกาสที่คู่แข่งสามารถเอาชนะได้ โดยไม่รันโปรแกรมจริง

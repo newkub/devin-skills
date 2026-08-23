@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TS
-  - TypeScript
+related: []
 ---
-
 ## Goal
 
 ตรวจจับและระบุ dependencies ที่ไม่ได้ใช้ในโปรเจกต์ และแก้ไขหรือลบออก

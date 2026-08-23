@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - backward
-  - leave
+related: []
 ---
-
 ## Goal
 
 สร้างและพัฒนา presentation slides ด้วย Slidev ใน drive D

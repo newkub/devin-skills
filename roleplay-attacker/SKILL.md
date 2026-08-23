@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - line
+related: []
 ---
-
 ## Goal
 
 รับบทเป็น attacker อ่าน source code แล้วคิดเป็น attack chains เพื่อหา vulnerabilities, attack surfaces, และ exploit paths ที่ใช้โจมตีระบบได้จริง โดยไม่รันอะไรจริง

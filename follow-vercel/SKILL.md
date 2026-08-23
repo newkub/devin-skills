@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - edge
+related: []
 ---
-
 ## Goal
 
 Deploy applications บน Vercel platform พร้อม auto-build, preview deployments, serverless functions และ edge functions

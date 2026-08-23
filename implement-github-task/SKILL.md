@@ -12,15 +12,12 @@ triggers:
   - user
   - model
 related:
-  - PR
   - create-plan
   - realize-implementation
   - refactor
   - run-check
   - run-test
-  - task
 ---
-
 ## Goal
 
 Read a GitHub issue or project task and implement the work

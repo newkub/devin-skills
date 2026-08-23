@@ -13,11 +13,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - options
-  - output
+related: []
 ---
-
 ## Goal
 
 สร้างไอเดียและ draft สำหรับแปลง CLI tools ที่ติดตั้งบนเครื่อง หรือ CLI ที่ระบุ เป็น Devin skills ตามมาตรฐาน

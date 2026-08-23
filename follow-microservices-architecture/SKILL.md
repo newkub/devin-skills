@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - response
+related: []
 ---
-
 ## Goal
 
 กำหนดโครงสร้างโปรเจกต์ด้วย Microservices Architecture สำหรับ distributed systems ที่ต้องการ scalability, independence และ fault tolerance

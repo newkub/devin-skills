@@ -12,14 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Node
-  - Report
-  - fail
-  - response
-  - rollback
+related: []
 ---
-
 ## Goal
 
 รัน API tests โดยเรียก endpoints จริงหรือ mocked แล้วตรวจสอบ responses เพื่อ verify contracts และ behavior

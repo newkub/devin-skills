@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด สรุป findings ทุก dimension พร้อม severity ratings และ actionable recommendations

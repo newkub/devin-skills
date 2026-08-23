@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - negatives
+related: []
 ---
-
 ## Goal
 
 เขียน ast-grep rules ที่ครอบคลุมและถูกต้องตาม `.devin/rules` และ official documentation

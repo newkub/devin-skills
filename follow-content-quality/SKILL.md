@@ -11,16 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - alt
-  - anchor
-  - clear
-  - consistent
-  - formatting
-  - keywords
-  - object
+related: []
 ---
-
 ## Goal
 
 สร้างเนื้อหาที่มีคุณภาพสูง อ่านง่าย สอดคล้องกัน และไม่ซ้ำซ้อน ครบทุกมิติ

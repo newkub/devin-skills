@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - O
+related: []
 ---
-
 ## Goal
 
 พัฒนา Kotlin project ด้วย Clean Architecture, Compose, Coroutines, Koin และ Arrow

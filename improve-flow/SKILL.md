@@ -13,13 +13,8 @@ triggers:
   - user
   - model
 related:
-  - cleanup
-  - conditions
-  - confirm
-  - ref
   - report
 ---
-
 ## Goal
 
 ปรับปรุง flow ของ workflow file ให้ fail-fast ชัดเจน ลด bottleneck และ parallel ได้เมื่องปลอดภัย โดยรักษา deterministic และ intent เดิม

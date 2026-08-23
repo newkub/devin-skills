@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TSDoc
+related: []
 ---
-
 ## Goal
 
 พัฒนาโปรเจกต์ TypeScript ด้วย type safety สูงสุดและ code quality best practices

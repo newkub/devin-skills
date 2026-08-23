@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - PR
+related: []
 ---
-
 ## Goal
 
 Review งานตาม context โดยเลือก review skill ที่เหมาะสม

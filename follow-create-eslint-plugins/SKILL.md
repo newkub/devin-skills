@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TypeScript
-  - confusing
+related: []
 ---
-
 ## Goal
 
 สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์

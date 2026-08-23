@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - -
-  - deletions
+related: []
 ---
-
 ## Goal
 
 แสดงรายการ git stashes ทั้งหมดพร้อม metadata และสถานะการใช้งาน

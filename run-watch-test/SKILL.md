@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 รัน tests แบบ watch mode เพื่อตรวจสอบ test failures อย่างต่อเนื่อง

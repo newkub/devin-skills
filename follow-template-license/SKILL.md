@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - or
+related: []
 ---
-
 ## Goal
 
 ใช้ license ที่เหมาะสมกับประเภทโปรเจกต์ ตาม template มาตรฐาน

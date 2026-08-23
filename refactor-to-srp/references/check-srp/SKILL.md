@@ -12,13 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - aggregate
-  - dependencies
-  - index
-  - type
+related: []
 ---
-
 ## Goal
 
 ตรวจสอบ SRP violations ใน code units (files, classes, functions) โดยใช้ `ast-grep outline` และ `deep-analyze-by-use-scripts` พร้อมรายงานครอบคลุม

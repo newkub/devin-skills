@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - Pages
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า deployment configuration และ CI/CD pipeline สำหรับ automated deployment

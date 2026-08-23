@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Node
-  - e2e
-  - integration
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและใช้งาน testing strategies ครบวงจรตาม test pyramid principle

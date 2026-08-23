@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
-  - after
+related: []
 ---
-
 ## Goal
 
 อธิบายแผนการทำงานก่อนดำเนินการ และแสดง before-after ให้เหมาะสมโดยไม่แก้ไขจริง

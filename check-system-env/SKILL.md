@@ -10,11 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - USERPROFILE
-  - Zsh
+related: []
 ---
-
 ## Goal
 
 ตรวจสอบ system environment ของ Windsurf รวมถึง OS, shell, environment variables และ global root paths

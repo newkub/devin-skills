@@ -12,18 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - D
-  - MIR
-  - S
-  - T
-  - deny
-  - directories
-  - files
-  - junction
-  - scope
+related: []
 ---
-
 ## Goal
 
 คัดลอก global skills directory ไปยัง project `.devin/skills` ในโหมด read-only เพื่อให้ project ดู skill ได้ แต่ไม่สามารถแก้ไข source ของ global skills โดยบังเอิญ

@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - inconsistent
-  - values
+related: []
 ---
-
 ## Goal
 
 สร้างรายงานเกี่ยวกับ configuration files ใน project พบ drift ระหว่าง environments และ default values

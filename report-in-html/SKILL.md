@@ -12,16 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CSS
-  - UI
-  - collapse
-  - desc
-  - export
-  - light
-  - pills
-  - sort
+related: []
 ---
+
 ## Goal
 
 Create a single HTML file that presents project findings, analysis, or feature plans in a browser. The report supports interactive tables with sort, filter, group, search, and per-row dropdowns, plus theme toggle and sticky navigation.

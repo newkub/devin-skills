@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 รายงาน git diff ในรูปแบบที่อ่านง่าย พร้อมสรุปการเปลี่ยนแปลง สถิติ และ insights โดยไม่แก้ไขไฟล์

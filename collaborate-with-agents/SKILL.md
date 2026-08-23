@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - outputs
+related: []
 ---
-
 ## Goal
 
 ประสานงาน subagents หลายตัวให้ทำงานบน subtasks ทีแยกกันได้ และรวมผลลัพธ์กลับมา

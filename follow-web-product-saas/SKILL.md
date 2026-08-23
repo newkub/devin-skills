@@ -12,13 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - B
-  - UI
-  - payments
-  - subscription
+related: []
 ---
-
 ## Goal
 
 ปรับปรุง web SaaS product ครบวงจรเพื่อให้มีประสิทธิภาพ ใช้งานง่าย และ scalable

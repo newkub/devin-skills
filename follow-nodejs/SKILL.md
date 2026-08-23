@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TypeScript
-  - await
+related: []
 ---
-
 ## Goal
 
 ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem ที่ใหญ่ที่สุด

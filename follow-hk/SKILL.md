@@ -13,10 +13,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - tests
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า hk เป็น Git hook manager แทน Lefthook ด้วย Pkl config ที type-safe และเร็ว

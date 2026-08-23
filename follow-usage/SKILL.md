@@ -12,13 +12,8 @@ triggers:
   - user
   - model
 related:
-  - alias
   - cli
-  - docs
-  - long
-  - manpages
 ---
-
 ## Goal
 
 ใช้ usage spec (KDL) กำหนด CLI แล้ว generate completions, docs, manpages, และ type-safe SDK

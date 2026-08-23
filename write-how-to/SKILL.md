@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - after
+related: []
 ---
-
 ## Goal
 
 เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ ด้วยโครงสร้างที่ชัดเจนและเนื้อหาที่เข้าใจง่าย

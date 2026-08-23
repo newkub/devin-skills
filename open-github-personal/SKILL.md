@@ -7,11 +7,10 @@ allowed-tools:
   - ask_user_question
 triggers:
   - user
-related:
-  - <username>
-  - Linux
+related: []
 argument-hint:
 ---
+
 ## Goal
 
 เปิดหน้า GitHub profile ของผู้ใช้ใน browser

@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและใช้งาน Infisical สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย

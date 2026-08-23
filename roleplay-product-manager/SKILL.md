@@ -12,12 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - B
-  - line
-  - paid
+related: []
 ---
-
 ## Goal
 
 รับบทเป็น Product Manager อ่าน source code แล้วประเมินว่า features ครบไหม, priority ถูกไหม, MVP ใช้ได้ไหม, และขาดอะไรที่ user ต้องการจริง จากมุมมอง product ไม่ใช่ technical

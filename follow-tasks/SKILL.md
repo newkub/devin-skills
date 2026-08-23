@@ -13,19 +13,9 @@ triggers:
   - user
   - model
 related:
-  - Bun
-  - CD
-  - deployment
-  - e2e
   - follow-tasks
-  - integration
-  - migrate
   - review
-  - seed
-  - tooling
-  - tools-review
 ---
-
 ## Goal
 
 ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete

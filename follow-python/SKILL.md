@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - O
-  - format
+related: []
 ---
-
 ## Goal
 
 พัฒนา Python project ด้วย best practices และ Clean Architecture

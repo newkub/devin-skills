@@ -12,15 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - commercial
-  - complaint-driven
-  - docs
-  - financial
-  - line
-  - workers
+related: []
 ---
-
 ## Goal
 
 จำลองเป็นหน่วยงานภาครัฐที่ตรวจสอบ platform จาก source code และเอกสาร เพื่อหาช่องโหว่กฎหมาย/ compliance gaps ที่อาจถูกยกเป็นเหตุเอาผิด ดำเนินการ หรือสั่งแก้ไข แล้วรายงานพร้อมหลักฐาน

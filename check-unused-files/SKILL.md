@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TS
-  - TypeScript
+related: []
 ---
-
 ## Goal
 
 ตรวจจับและระบุไฟล์ที่ไม่ได้ใช้ในโปรเจกต์ และลบหรือนำไปใช้

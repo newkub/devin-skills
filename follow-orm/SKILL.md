@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - output
+related: []
 ---
-
 ## Goal
 
 กำหนด ORM และ data access patterns ที่แยก database logic ออกจาก business logic เพื่อให้ code testable และ maintainable

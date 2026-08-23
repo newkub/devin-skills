@@ -11,14 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Network
-  - Repository
-  - UseCases
-  - await
-  - integration
+related: []
 ---
-
 ## Goal
 
 พัฒนา Swift applications ด้วย Clean Architecture และ SwiftUI ตาม best practices

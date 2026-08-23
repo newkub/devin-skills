@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - unused
+related: []
 ---
-
 ## Goal
 
 สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-devin-skills-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure

@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - push
+related: []
 ---
-
 ## Goal
 
 Deploy application ไปยัง platform ที่กำหนด พร้อม post-deploy validation, commit/push และ watch browser จนกว่า deployment จะ live

@@ -13,10 +13,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - tools-review
+related: []
 ---
-
 ## Goal
 
 Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension โดย run `/run-review` วิเคราะห์ metrics แล้วเรียก `/update-create-review-cli` อัตโนมัติเมื่อ metrics บ่งชี้ว่า CLI ต้องปรับปรุง

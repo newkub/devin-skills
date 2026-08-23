@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า Cargo สำหรับ automated releases ไปยัง crates.io ด้วย semantic versioning

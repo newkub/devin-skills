@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TS
-  - TypeScript
-  - attributes
-  - warnings
+related: []
 ---
-
 ## Goal
 
 ป้องกันการใช้ ignore comments/attributes, ignore files, และ ignore config ทุกประเภท แก้ปัญหาที่ source แทนการ suppress

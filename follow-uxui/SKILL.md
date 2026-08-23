@@ -13,15 +13,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - 3D
-  - UI
-  - data
-  - elements
-  - timeline
-  - viewer
+related: []
 ---
-
 ## Goal
 
 เลือกและใช้งาน UX/UI patterns ตาม dimension ทีเหมาะสมกับสถานการณ์

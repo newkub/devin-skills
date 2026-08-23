@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - O
+related: []
 ---
-
 ## Goal
 
 แยก business logic จาก side effects เพื่อให้ code สามารถ test ได้ง่ายขึ้นและ maintain ได้ดีขึ้น

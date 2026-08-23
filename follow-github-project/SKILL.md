@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - PR
-  - fields
+related: []
 ---
-
 ## Goal
 
 ใช้ `gh project` สร้าง ดู แก้ไข และจัดการ items/fields ใน GitHub Projects ผ่าน CLI โดยใช้โหมด interactive หรือ flags ตามสถานการณ์

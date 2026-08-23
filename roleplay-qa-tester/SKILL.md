@@ -12,11 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - flows
-  - line
+related: []
 ---
-
 ## Goal
 
 รับบทเป็น QA engineer อ่าน source code แล้วคิด edge cases, boundary conditions, และ test scenarios ที่ dev อาจมองข้าม เพื่อหาจุดที่ระบบอาจทำงานผิดพลาด

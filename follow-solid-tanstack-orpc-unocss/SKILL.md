@@ -11,18 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - catch
-  - client
-  - context
-  - eden
-  - mdi
-  - node
-  - server
-  - solid-router
-  - solid-start
+related: []
 ---
-
 ## Goal
 
 ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS), Elysia และ oRPC แบบ type-safe

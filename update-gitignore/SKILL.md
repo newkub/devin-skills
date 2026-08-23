@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Tauri
+related: []
 ---
-
 ## Goal
 
 อัปเดต `.gitignore` ใน root และ workspaces ให้ครอบคลุม dependencies, build outputs, IDE, secrets, และ environment artifacts

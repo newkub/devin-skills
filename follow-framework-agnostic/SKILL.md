@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - JavaScript
-  - composables
+related: []
 ---
-
 ## Goal
 
 พัฒนาโค้ดที่ทำงานได้บน multiple frameworks โดยไม่ผูกติดกับ framework ใด framework หนึ่ง

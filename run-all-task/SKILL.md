@@ -12,13 +12,11 @@ triggers:
   - user
   - model
 related:
-  - created
   - resolve-errors
   - run-check
   - run-test
   - suggest-next-action
 ---
-
 ## Goal
 
 Execute all pending tasks from a task queue without manual intervention

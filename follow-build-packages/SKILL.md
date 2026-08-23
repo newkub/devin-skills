@@ -11,13 +11,11 @@ triggers:
   - user
   - model
 related:
-  - examples
   - follow-functional-programming
   - follow-tsdown
   - follow-turborepo
   - follow-vitest
 ---
-
 ## Goal
 
 Setup

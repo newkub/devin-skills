@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - docs
+related: []
 ---
-
 ## Goal
 
 ปรับปรุงคุณภาพการเขียนเอกสารทั่ว project ให้ชัดเจน กระชับ สม่ำเสมอ และสื่อสารได้ตรงประเด็น

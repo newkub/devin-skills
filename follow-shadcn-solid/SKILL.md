@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - ui
+related: []
 ---
-
 ## Goal
 
 ใช้ shadcn/ui สำหรับ SolidJS component library ด้วย copy-to-own pattern และ accessible components

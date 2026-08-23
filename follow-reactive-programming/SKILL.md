@@ -13,9 +13,7 @@ triggers:
   - model
 related:
   - merge
-  - throttle
 ---
-
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย reactive programming เพื่อจัดการ data ที่เปลี่ยนแปลงตามเวลาอย่างมีประสิทธิภาพ

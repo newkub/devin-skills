@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 รัน build แบบ watch mode เพื่อตรวจสอบ build errors อย่างต่อเนื่อง

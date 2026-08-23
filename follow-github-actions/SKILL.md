@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน พร้อม security, testing, deployment, monitoring

@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
+related: []
 ---
-
 ## Goal
 
 ใช้งาน Supabase CLI สำหรับ local development, database migrations, และ deploy ไปยัง Supabase Platform

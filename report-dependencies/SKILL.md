@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 รายงานสถานะ dependencies ของโปรเจกต์: versions, outdated, unused, vulnerabilities, licenses และ insights

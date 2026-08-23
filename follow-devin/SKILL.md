@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Cascade
+related: []
 ---
-
 ## Goal
 
 ใช้ skill นี้เพื่อเข้าใจและใช้งาน Devin/Cascade AI coding assistant สำหรับ autonomous software development, code generation, debugging, และ testing

@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - module
+related: []
 ---
-
 ## Goal
 
 Implement Modular Monolith architecture ที่แยก modules ชัดเจน แต่ deploy เป็น single unit

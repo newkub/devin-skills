@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - astro
-  - mdi
-  - nuxt
-  - postcss
+related: []
 ---
-
 ## Goal
 
 สร้าง UnoCSS configuration ที่พร้อมใช้งานด้วย presetWind4, transformers และรองรับทุก framework

@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - skill-name
+related: []
 ---
-
 ## Goal
 
 Review and improve the global Devin skills repository so every skill has valid structure, consistent conventions, correct references, and high-quality actionable content

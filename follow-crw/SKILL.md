@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - XPath
+related: []
 ---
-
 ## Goal
 
 ใช้ CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving อย่างมีประสิทธิภาพสูงสุด เร็วที่สุด และลด AI token

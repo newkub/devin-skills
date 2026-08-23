@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - description
-  - percentage
+related: []
 ---
-
 ## Goal
 
 แปลง code หรือ description ที่ผู้ใช้ให้มาให้เป็นสูตรคณิตศาสตร์ (math formula) ที่กระชับ เข้าใจง่าย และนำไปใช้ได้จริง

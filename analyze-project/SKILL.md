@@ -66,7 +66,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 ### 6. Quality And Security
 > Goal: Quality And Security
 
-1. ทำ `/improve-code-duplication`, `/check-unused-files`, `/check-unused-deps` แบบ parallel
+1. ทำ `/improve-redundancy`, `/check-unused-files`, `/check-unused-deps` แบบ parallel
 2. ทำ `/run-audit` ตรวจสอบ security
 3. ทำ `/scan-codebase` ตรวจหา hardcoded secrets
 

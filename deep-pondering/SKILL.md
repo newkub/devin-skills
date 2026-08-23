@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - cons
+related: []
 ---
-
 ## Goal
 
 ครุ่นคิดและทบทวนอย่างลึกซึ้งก่อนตัดสินใจหรือดำเนินการในงานที่ซับซ้อนสูง พร้อมระบุ trade-offs, uncertainties, และ goal alignment

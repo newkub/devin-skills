@@ -14,17 +14,8 @@ triggers:
   - user
   - model
 related:
-  - cleanup
-  - environment
-  - features
-  - malicious
-  - max
-  - ports
   - report
-  - result
-  - undefined
 ---
-
 ## Goal
 
 เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language

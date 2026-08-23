@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 รวบรวมและสรุปข่าวสารและอัปเดตของ CLI tools ที่ติดตั้งในเครื่อง (mise, scoop, winget) ประจำสัปดาห์ เพื่อให้ผู้ใช้ติดตามการเปลี่ยนแปลงและอัปเดตที่สำคัญ

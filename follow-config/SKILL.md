@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - apps
-  - file
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า configuration ตาม dependencies และ tech stack ที่ใช้ใน project

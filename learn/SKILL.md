@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - library
+related: []
 ---
-
 ## Goal
 
 เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ โดยใช้ research และ practice เพื่อให้เข้าใจอย่างลึกซึ้ง

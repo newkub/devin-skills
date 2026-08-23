@@ -17,8 +17,6 @@ triggers:
   - user
   - model
 related:
-  - webfetch
-  - web_search
   - learn-from-web
   - follow-write-devin-skills
   - follow-devin-skills-md
@@ -28,7 +26,6 @@ related:
   - git-commit
   - report
 ---
-
 ## Goal
 
 สร้าง skill ใหม่หรือกลุ่ม subskills จาก URL หรือ domain ที user ให้มา โดยดึงเนื้อหา วิเคราะห์ จัดกลุ่ม และเขียน skill ตามมาตรฐาน

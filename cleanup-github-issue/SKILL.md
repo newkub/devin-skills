@@ -12,10 +12,8 @@ triggers:
   - user
   - model
 related:
-  - deleted
   - suggest-next-action
 ---
-
 ## Goal
 
 Clean up stale, duplicate, or resolved issues via gh CLI

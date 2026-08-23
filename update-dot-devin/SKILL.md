@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - hooks
-  - rules
+related: []
 ---
-
 ## Goal
 
 สร้าง `.devin` structure ครบถ้วนสำหรับ project workspace รวม rules และ hooks โดยไม่มี `workflows/` directory

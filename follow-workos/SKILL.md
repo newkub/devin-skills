@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Dsync
-  - groups
+related: []
 ---
-
 ## Goal
 
 กำหนดค่าและใช้งาน WorkOS APIs สำหรับ authentication และ identity management

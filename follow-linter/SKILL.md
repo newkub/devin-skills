@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - JavaScript
+related: []
 ---
-
 ## Goal
 
 ตั้งค่า linter สำหรับ project

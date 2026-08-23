@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - undefined
+related: []
 ---
-
 ## Goal
 
 วิเคราะห์ test coverage gaps และเพิ่ม tests ที่ขาดให้ครอบคลุมทุก critical paths, edge cases, และ error paths

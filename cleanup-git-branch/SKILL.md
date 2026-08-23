@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - hotfix
+related: []
 ---
-
 ## Goal
 
 ทำความสะอาด branches เก่าออกจาก repository

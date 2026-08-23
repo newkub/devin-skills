@@ -10,13 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - dependencies
-  - module
-  - modules
-  - signature
+related: []
 ---
-
 ## Goal
 
 ใช้งาน ast-grep outline เพื่อ explore code structure และ navigation อย่างรวดเร็ว โดยไม่ต้อง build index

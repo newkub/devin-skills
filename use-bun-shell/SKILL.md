@@ -11,13 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - TypeScript
-  - await
-  - stderr
-  - writing
+related: []
 ---
-
 ## Goal
 
 ใช้ Bun shell runtime สำหรับ execute commands และ shell operations ด้วย `bun -e` แทนการใช้ shell โดยตรง

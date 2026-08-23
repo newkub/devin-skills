@@ -11,11 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - e2e
+related: []
 ---
-
 ## Goal
 
 ตรวจสอบว่าการเปลี่ยนแปลงใหม่ไม่ได้ทำลายฟีเจอร์ที่มีอยู่เดิม

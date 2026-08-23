@@ -13,11 +13,8 @@ triggers:
   - user
   - model
 related:
-  - Review
   - review
-  - type
 ---
-
 ## Goal
 
 รัน test suite อย่างเป็นระบบ ตรวจหา failures แล้ว validate/review เพื่อกำหนดว่าควรแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ

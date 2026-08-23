@@ -12,14 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - IDE
-  - UI
-  - browser
-  - cache
-  - zsh
+related: []
 ---
-
 ## Goal
 
 วิเคราะห์และรายงานไฟล์/โฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้ เพื่อช่วยตัดสินใจก่อน cleanup จริง

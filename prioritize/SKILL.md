@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Low
+related: []
 ---
-
 ## Goal
 
 จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort เพื่อให้ทำงานได้อย่างมีประสิทธิภาพ

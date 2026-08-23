@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - starred
+related: []
 ---
-
 ## Goal
 
 แสดง 50 starred repositories ล่าสุดของ authenticated user บน GitHub

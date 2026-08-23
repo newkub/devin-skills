@@ -11,10 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - result
+related: []
 ---
-
 ## Goal
 
 เรียก global CLI tools ที่ติดตั้งไว้ให้ถูกต้องตาม context

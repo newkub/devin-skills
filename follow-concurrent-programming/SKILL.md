@@ -10,10 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - await
+related: []
 ---
-
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย concurrent programming เพื่อเพิ่ม performance และ responsiveness

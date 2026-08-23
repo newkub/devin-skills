@@ -10,11 +10,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - clock
-  - output
+related: []
 ---
-
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย deterministic programming เพื่อให้โค้ดให้ผลลัพธ์เหมือนกันเสมอเมื่อ input เดิม

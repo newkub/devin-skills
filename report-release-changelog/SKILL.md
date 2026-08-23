@@ -9,11 +9,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Security
-  - UI
+related: []
 ---
-
 ## Goal
 
 รับข้อมูล release diff จาก `/check-release-changelog` หรือ GitHub API แล้วจัดรูปแบบเป็น report changelog ที่อ่านง่าย

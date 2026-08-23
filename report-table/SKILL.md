@@ -12,10 +12,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - UI
+related: []
 ---
-
 ## Goal
 
 จัดรูปแบบ structured data output (ตาราง, สรุป, metrics) ให้สอดคล้องและอ่านง่าย

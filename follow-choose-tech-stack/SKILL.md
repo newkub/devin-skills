@@ -11,14 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - Echo
-  - Fastify
-  - Kotlin
-  - TUI
-  - prototype
+related: []
 ---
-
 ## Goal
 
 เลือก tech stack ที่เหมาะสมสำหรับ project โดยพิจารณาจาก requirements, constraints, และ best practices

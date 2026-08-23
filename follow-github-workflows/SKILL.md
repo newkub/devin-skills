@@ -11,12 +11,8 @@ allowed-tools:
 triggers:
   - user
   - model
-related:
-  - CD
-  - Discord
-  - TypeScript
+related: []
 ---
-
 ## Goal
 
 วิเคราะหาและเขียน GitHub workflows ที่ควรมีตามที่ควรจะเป็นให้เหมาะสม
