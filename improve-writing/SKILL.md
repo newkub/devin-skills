@@ -55,7 +55,7 @@ related:
 1. ทำ `/improve-comment` สำหรับ comments ที่ขาดหายไปใน complex logic
 2. ลบ comments ที่ไม่จำเป็น: obvious comments, commented-out code, noise comments
 3. ปรับปรุง comments ที่มี: เปลี่ยนจาก what → why, อธิบาย intent ไม่ใช่ implementation
-4. ตรวจสอบ TODO/FIXME: มี context, มี owner, มี deadline หรือ clear action
+4. ตรวจสอบ TODO/FIXME ว่า มี context, owner, deadline หรือ clear action
 5. ปรับปรุง JSDoc/TSDoc: ครอบคลุม params, returns, throws, examples — ใช้ active voice
 
 ### 4. Improve Commit Messages And Changelogs
