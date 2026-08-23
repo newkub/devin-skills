@@ -1,7 +1,8 @@
 ---
 name: review-code-quality
-description: Review code quality ครอบคลุม static analysis, architecture, types, naming, readability, hardcode, refactor, testability, techstack, dependencies, consistency พร้อม review score
+description: Review code quality ครอบคลุม static analysis, architecture, types, naming, readability, hardcode,...
 ---
+
 
 ## Goal
 

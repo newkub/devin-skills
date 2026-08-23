@@ -1,19 +1,25 @@
 ---
 name: review-dx
-description: Review developer experience ครอบคลุม build, errors, tools, HMR, onboarding พร้อม review score
+description: Review developer experience ด้าน tooling, onboarding, docs, และ feedback loops พร้อม review score
+auto_execution_mode: 3
 related:
   - scan-codebase
-  - suggest-next-action
   - review-codebase
+  - validate
+  - report
+  - report-table
+  - suggest-next-action
+
 ---
+
 
 ## Goal
 
-Review developer experience ครอบคลุม build performance, error messages, development tools, HMR, onboarding, local development พร้อม review score
+Review developer experience ด้าน tooling, onboarding, docs, และ feedback loops พร้อม review score
 
 ## Scope
 
-DX review สำหรับ: build times, error messages clarity, development tools, HMR setup, onboarding documentation, local development experience — ไม่รวมการ fix
+DX review สำหรับ: package scripts, dev server, build, lint, test, README, setup guide, contributing guide, documentation, error messages, HMR, pre-commit hooks, และ feedback loops — ไม่รวมการ fix
 
 ## Execute
 
@@ -21,56 +27,77 @@ DX review สำหรับ: build times, error messages clarity, development t
 
 > Goal: เข้าใจ DX ปัจจุบันของ project
 
-1. ทำ `/scan-codebase`, ตรวจสอบ build configuration และ scripts
-2. ตรวจสอบ error messages ใน build และ dev tools
-3. ตรวจสอบ development tools setup (IDE, linting, formatting, pre-commit hooks)
-4. ตรวจสอบ HMR configuration
-5. ตรวจสอบ onboarding documentation (README, setup guide, contribution guide)
+1. ทำ `/scan-codebase` เพื่อหา project structure, tech stack, และ config files
+2. ระบุ package manager, dev server, build scripts, test commands, lint commands
+3. อ่าน `README`, `CONTRIBUTING`, `docs/onboarding.md`, `.devin/onboarding.md` ถ้ามี
+4. ระบุ tooling ที่มี: IDE setup, formatter, linter, type checker, pre-commit hooks
 
-### 2. Analyze Build Performance
+### 2. Review Checklist For Developer Experience
 
-> Goal: รู้ว่า build และ dev startup เร็วพอหรือไม่
+> Goal: ตรวจสอบทุก dimension ของ developer experience ผ่าน review checks
 
-1. ตรวจสอบ build times (< 1 นาที target)
-2. ตรวจสอบ incremental builds และ cache usage
-3. ตรวจสอบ parallel build tasks
-4. ตรวจสอบ bundle size
-5. ระบุ bottlenecks ใน build process
+#### 2.1 Tooling
 
-### 3. Analyze Error Messages And Tools
+> Goal: build, dev, lint, test, และ IDE ทำงานราบรื่น
 
-> Goal: รู้ว่า error messages และ tools ช่วย developer ได้พอหรือไม่
+1. ตรวจสอบ package scripts (`dev`, `build`, `test`, `lint`, `typecheck`) ใช้งานได้และไม่ซ้ำซ้อน
+2. ตรวจสอบ dev server startup time และ hot reload / HMR
+3. ตรวจสอบ build time, incremental build, และ cache usage
+4. ตรวจสอบ lint, format, type check runtime เร็วพอ
+5. ตรวจสอบ IDE integrations, extensions, และ editor config (`editorconfig`, `.vscode/settings.json`)
+6. ตรวจสอบ pre-commit hooks ไม่ช้าและไม่ block
 
-1. ตรวจสอบ error messages มี suggestions สำหรับ fix
-2. ตรวจสอบ error codes สำหรับ easy reference
-3. ตรวจสอบ stack traces ที่ readable
-4. ตรวจสอบ IDE integrations และ extensions
-5. ตรวจสอบ linting และ formatting อัตโนมัติ
-6. ตรวจสอบ pre-commit hooks
+#### 2.2 Onboarding
 
-### 4. Analyze HMR And Onboarding
+> Goal: developer ใหม่เริ่มต้นได้เร็ว
 
-> Goal: รู้ว่า HMR และ onboarding ราบรื่นหรือไม่
+1. ตรวจสอบ README มี overview, installation, usage, contributing
+2. ตรวจสอบ setup guide เป็น step-by-step บน clean environment
+3. ตรวจสอบ prerequisites, env vars, และ secrets setup
+4. ตรวจสอบ one-command setup เช่น `bun install && bun dev`
+5. ตรวจสอบ troubleshooting guide สำหรับข้อผิดพลาดทั่วไป
 
-1. ตรวจสอบ HMR ทำงานได้อย่างราบรื่น
-2. ตรวจสอบ state preservation ระหว่าง HMR
-3. ตรวจสอบ fast refresh setup
-4. ตรวจสอบ README ครบถ้วน
-5. ตรวจสอบ setup guide เป็น step-by-step
-6. ตรวจสอบ troubleshooting guide
+#### 2.3 Docs
 
-### 5. Score And Report
+> Goal: documentation ถูกต้อง ครบถ้วน และทันสมัย
 
-> Goal: Report ชัดเจน  actionable สอดคล้อง Goal
+1. ตรวจสอบ API docs / `JSDoc` / `TSDoc` ครอบคลุม public API
+2. ตรวจสอบ examples runnable และ up-to-date
+3. ตรวจสอบ changelog / migration guide ถ้ามี breaking changes
+4. ตรวจสอบ doc tools (`VitePress`, `Docusaurus`, `Storybook`) ตรงกับ code
+5. ตรวจสอบ docs ไม่มี broken links, missing pages, stale screenshots
 
-1. ให้ score ตาม DX dimensions: build performance, error messages, tools, HMR, onboarding
-2. จำแนก severity: critical (build > 5 นาที), high (no HMR), medium (poor error messages), low (missing docs)
-3. รายงานเป็นตาราง: dimension | issues found | severity | action item
-4. ทำ `/suggest-next-action` สำหรับขั้นตอนถัดไป
+#### 2.4 Feedback Loops
+
+> Goal: ลดเวลารอและข้อผิดพลาด
+
+1. ตรวจสอบ error messages บอกสาเหตุ, วิธีแก้, และตำแหน่ง
+2. ตรวจสอบ stack traces อ่านง่ายและมี context
+3. ตรวจสอบ test feedback loop เร็ว (unit, integration, watch mode)
+4. ตรวจสอบ lint / type check feedback ใน IDE และ CI
+5. ตรวจสอบ observability สำหรับ debug: logs, metrics, tracing
+6. ตรวจสอบ build / deploy error feedback ชัดเจน
+
+### 3. Validate And Report
+
+> Goal: report ชัดเจน actionable สอดคล้อง Goal
+
+1. ทำ `/validate` เพื่อตรวจสอบ findings
+2. ทำ `/report` พร้อม `/report-table`
+3. ให้ score ตาม DX dimensions: tooling, onboarding, docs, feedback loops
+4. จำแนก severity: critical (ไม่สามารถ run dev/build ได้), high (no HMR / slow build > 1 นาที), medium (poor error messages / missing docs), low (cosmetic)
+5. สร้างตาราง: dimension | issues found | severity | action item
+6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 
-### 1. Fast Feedback Loops
+### 1. Review Only And No Deletions
+
+- ทำ review เท่านั้น ไม่ fix, ไม่ลบ, และไม่แก้ไข code ระหว่าง review
+- แยก review process จาก fix process
+- ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง review
+
+### 2. Fast Feedback Loops
 
 - Build ควรใช้เวลา < 1 นาที
 - Tests ควรรันเร็ว
@@ -78,22 +105,33 @@ DX review สำหรับ: build times, error messages clarity, development t
 - HMR ควร instant
 - ไม่ block developers ด้วย slow processes
 
-### 2. Clear Error Messages
+### 3. Clear Error Messages
 
 - บอกสิ่งที่ผิด
 - บอกวิธีแก้
 - บอกที่มาของ error
 - ใช้ภาษาที่เข้าใจง่าย
 
-### 3. Non-Redundancy
+### 4. Evidence-Based
+
+- ทุก finding ต้องมี file path, line number, หรือ doc URL
+- ใช้ tools สำหรับ verification
+- ไม่เดา
+
+### 5. Non-Redundancy
 
 - รายละเอียด config review อยู่ใน `/review-codebase` แล้ว
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 
-### 4. High Impact Content
+### 6. High Impact Content
 
-- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
+- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ระบุเป็น low หรือไม่รวมใน report หลัก
 - ห้าม TODO, MOCK, placeholder
+
+### 7. Formatting
+
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

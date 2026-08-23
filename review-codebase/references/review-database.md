@@ -1,62 +1,87 @@
 ---
 name: review-database
-description: Review database schema, migrations, data integrity, query patterns, N+1, connection, search indexing
+description: Review database schema, query, index, integrity, connection, and migrations
 ---
+
 
 ## Goal
 
-Review database ครอบคลุม schema design, migration safety, data integrity, query patterns, search พร้อม review score
+Review database ครอบคลุม schema design, query patterns, index coverage, data integrity, connection management, migration safety พร้อม review score
 
 ## Scope
 
-database review สำหรับ: schema design, index coverage, relation integrity, migration safety, rollback capability, data integrity, constraints, query patterns, N+1 queries, connection management, search indexing, relevance scoring
+database review สำหรับ relational หรือ NoSQL database ใน project: schema design, query patterns, index coverage, data integrity, connection management, migration safety
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare and Scan
 
-> Goal: เข้าใจ database structure และ ORM ที่ใช้
+> Goal: เข้าใจ database structure, stack, และ workload
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ database structure
-2. ระบุ database driver, ORM, migration tool, seed strategy ที่ใช้
+1. ทำ `/scan-codebase` เพื่อรวบรวม schema, migrations, ORM models, query files
+2. ระบุ database engine เช่น PostgreSQL, MySQL, SQLite, MongoDB, Redis
+3. ระบุ database driver, ORM, migration tool, seed strategy ที่ใช้
+4. รวบรวม workload profile: read/write ratio, query patterns, peak load
+5. ถ้า project ไม่มี database → stop และ report
 
-### 2. Deep Analyze
+### 2. Schema Review
 
-> Goal: ครอบคลุมทุก database dimension พร้อม review score
+> Goal: ตรวจสอบ schema design และ structural quality
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ database patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
+1. ตรวจสอบ table structure, data types, column naming, normalization level
+2. ตรวจสอบ primary keys, foreign keys, unique constraints, check constraints
+3. ตรวจสอบ relation integrity, relation cardinality, implicit relationships, orphan risks
+4. ตรวจสอบ multivalued columns, EAV misuse, duplicate data, misnamed tables/columns
+5. ตรวจสอบ data types สำหรับ precision, storage, compatibility
+6. Critical: missing primary key, missing foreign key constraint, orphaned record risk
+7. High: suboptimal schema, missing unique constraint, missing check constraint, unsafe cascade delete
 
-### 3. Schema Design And Index Review
+### 3. Query and Index Review
 
-> Goal: ครอบคลุม schema, index, relation integrity
+> Goal: ตรวจสอบ query patterns และ index coverage
 
-1. ตรวจสอบ schema design: table structure, data types, column naming, relation integrity, normalization level
-2. ตรวจสอบ index coverage: index on hot queries, composite indexes, partial indexes, unique indexes, index bloat, unused indexes
-3. ตรวจสอบ relation integrity: foreign key constraints, cascade rules, orphaned record risk, relation cardinality
+1. ตรวจสอบ slow queries, full table scans, missing indexes, unused indexes ด้วย EXPLAIN ANALYZE หรือ query plans
+2. ตรวจสอบ N+1 queries, heavy joins, aggregation patterns, batch operations
+3. ตรวจสอบ index coverage: hot queries, composite indexes, partial indexes, unique indexes, index bloat
+4. ตรวจสอบ transaction boundaries, lock contention, hot spots
+5. Critical: unbounded query ที่ crash หรือ load สูง, missing index บน hot query
+6. High: N+1 query ใน hot path, poor query optimization, missing composite index opportunity
 
-### 4. Migration Safety And Data Integrity Review
+### 4. Integrity Review
 
-> Goal: ครอบคลุม migrations, data integrity, constraints
+> Goal: ตรวจสอบ data integrity และ constraints
 
-1. ตรวจสอบ migration safety: destructive operations, locking, data loss risk, rollback capability, down scripts completeness, reversibility, data preservation (default values, nullable columns, data backfill), migration ordering, dependency chain, migration conflicts
-2. ตรวจสอบ data integrity: primary key constraints, foreign key constraints, cascade rules, unique constraints, composite unique, partial unique indexes, check constraints, orphaned record risk, transaction integrity, atomic operations, isolation level
-3. Critical: data loss risk, missing migration rollback, destructive operation without safeguard, missing foreign key constraint, orphaned record risk, no transaction integrity
-4. High: missing index on hot query, relation integrity issue, data quality gap, missing down script, non-reversible migration, unsafe locking, missing unique constraint, missing check constraint, unsafe cascade delete
+1. ตรวจสอบ primary key constraints, foreign key constraints, cascade rules
+2. ตรวจสอบ unique constraints, composite unique, partial unique indexes, check constraints
+3. ตรวจสอบ orphaned record risk, transaction integrity, atomic operations, isolation level
+4. ตรวจสอบ soft delete, audit trail, change data capture
+5. ตรวจสอบ sensitive data exposure และ encryption needs
+6. Critical: data loss risk, missing foreign key constraint, orphaned record risk, no transaction integrity
+7. High: missing unique constraint, missing check constraint, unsafe cascade delete, data quality gap
 
-### 5. Query Patterns And Search Review
+### 5. Connection Review
 
-> Goal: ครอบคลุม query optimization และ search
+> Goal: ตรวจสอบ connection management และ concurrency
 
-1. ตรวจสอบ query patterns: N+1 queries, unbounded queries, connection management, query optimization, batch operations, transaction scope
-2. ตรวจสอบ search: search indexing, index coverage, index freshness, relevance scoring, filtering logic, sort options, autocomplete, search UX, search result rendering
-3. Critical: broken search, missing index, incorrect search results, unbounded query ที่ crash ที่โหลดสูง
-4. High: N+1 query ใน hot path, missing connection pool, poor relevance, missing filter, broken autocomplete
+1. ตรวจสอบ connection pool size, timeout, retry strategy
+2. ตรวจสอบ connection leaks, long-running transactions, connection exhaustion
+3. ตรวจสอบ read/write split, load balancing, failover configuration
+4. ตรวจสอบ concurrency handling, peak load, lock contention
+5. Critical: missing connection pool, connection leak ที่ทำให้ crash
+6. High: connection timeout ต่ำ/สูงเกินไป, ไม่มี retry strategy
 
-### 6. Validate, Rate And Report
+### 6. Migration Review
+
+> Goal: ตรวจสอบ migration safety และ rollback capability
+
+1. ตรวจสอบ destructive operations, locking, data loss risk, rollback capability
+2. ตรวจสอบ down scripts completeness, reversibility, data preservation
+3. ตรวจสอบ default values, nullable columns, data backfill, migration ordering, dependency chain
+4. ตรวจสอบ migration conflicts, strategy: online, batched, blue/green, feature flag
+5. Critical: missing migration rollback, destructive operation without safeguard, non-reversible migration
+6. High: missing down script, unsafe locking, data preservation gap, migration conflict
+
+### 7. Validate and Report
 
 > Goal: Issues ถูก validate และรายงานเป็นตาราง
 
@@ -72,26 +97,35 @@ database review สำหรับ: schema design, index coverage, relation inte
 ### 1. Skip Conditions
 
 - ถ้า project ไม่มี database → ข้ามทั้งหมด
-- ถ้า project ไม่มี migrations → ข้าม Step 4 item 1
-- ถ้า project ไม่มี search functionality → ข้าม Step 5 item 2
+- ถ้า project ไม่มี migrations → ข้าม Step 6
+- ถ้า project ไม่มี connection pool → ข้าม connection pool items
 
 ### 2. Severity Classification
 
-- Critical: data loss risk, missing migration rollback, destructive operation without safeguard, missing foreign key constraint, orphaned record risk, no transaction integrity, broken search, unbounded query ที่ crash
-- High: missing index on hot query, N+1 query ใน hot path, missing unique constraint, missing check constraint, unsafe cascade delete, missing connection pool
-- Medium: suboptimal schema, minor schema drift, missing batch operations, poor relevance scoring
+- Critical: data loss risk, missing migration rollback, destructive operation without safeguard, missing foreign key constraint, orphaned record risk, no transaction integrity, unbounded query ที่ crash, missing connection pool
+- High: missing index on hot query, N+1 query ใน hot path, missing unique constraint, missing check constraint, unsafe cascade delete, missing down script, poor connection config
+- Medium: suboptimal schema, minor schema drift, missing batch operations, missing composite index opportunity
 - Low: cosmetic, naming convention, documentation gap
 
 ### 3. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number
-- ระบุ table, column, migration file, หรือ query ที่เกี่ยวข้อง
+- ระบุ table, column, migration file, query, หรือ config ที่เกี่ยวข้อง
+- ใช้ query plans, EXPLAIN ANALYZE, หรือ metrics แทน assumptions
 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ไม่สั่งให้ `drop table`, `drop index`, `delete data`, หรือรัน `destructive migration` ใน review phase
+- ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
-### 5. Formatting
+### 5. No Deletions
+
+- ห้ามรวม instruction ที่สั่งให้ลบ table, index, column, data, หรือ migration ใน review
+- ห้ามใช้ `DROP`, `DELETE`, `TRUNCATE` เป็นคำสั่งใน review phase
+- ทุก finding บันทึกเป็น evidence สำหรับ improvement ต่อไป
+
+### 6. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`

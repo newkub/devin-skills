@@ -1,118 +1,97 @@
 ---
 name: review-security
-description: Security review ครอบคลุม browser data protection infrastructure compliance พร้อม review score
+description: Review security ครอบคลุม auth, secrets, injection, dependencies, permissions พร้อม review score
 ---
+
 
 ## Goal
 
-Review security ครอบคลุมทุก dimension ของ security พร้อม aggregate findings และ review score
+Review security ครอบคลุม auth, secrets, injection, dependencies, permissions พร้อม aggregate findings และ review score
 
 ## Scope
 
-security review สำหรับ: core security (hardcoded secrets, input validation, dependency vulnerabilities), browser security (CSP, CORS, XSS, CSRF, headers, cookies), data protection (data leak, privacy/GDPR, compliance, audit trail, secrets management), infrastructure security (rate limiting, webhooks, file upload, zero trust) — auth flows, RBAC, session, token อยู่ใน `/review-codebase`
+security review สำหรับ: auth (auth flows, session, token, MFA), secrets (hardcoded secrets, storage, rotation), injection (SQL, command, path traversal, XSS, CSRF, deserialization), dependencies (vulnerabilities, outdated, supply chain), permissions (RBAC, guards, enforcement, least privilege)
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Analyze
 
-เตรียม context ก่อนเริ่ม review
+> Goal: เข้าใจ security structure และ tooling ใน codebase
 
-> Goal: เข้าใจ security structure ใน codebase
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ security structure
-2. ระบุ auth provider, security tools, validation library, และ session/token management ที่ใช้
+1. ทำ `/scan-codebase` เพื่อหา security issues
+2. ระบุ auth provider, security tools, validation library, dependency manager, และ session/token management ที่ใช้
 3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
+4. ถ้าไม่พบ issues → stop และ report
 
-### 2. Deep Analyze Core
+### 2. Review
 
-วิเคราะห์ security core อย่างลึกซึ้ง
+> Goal: ตรวจสอบ auth, secrets, injection, dependencies, permissions
 
-> Goal: ครอบคลุมทุก security dimension พร้อม review score
+#### 2.1 Auth
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
-4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-5. Analyzer ตรวจสอบ hardcoded secrets, input validation, sanitization, และ dependency vulnerabilities
-6. Review CLI คำนวณ security review score จาก review report
+- ตรวจสอบ auth flows: login, logout, MFA, OAuth, SSO, password reset, email verification
+- ตรวจสอบ session/token management: secure cookie, `HttpOnly`, `SameSite`, expiry, rotation, revocation
+- ตรวจสอบ password policy, brute force protection, account lockout
+- ตรวจสอบ JWT: signing algorithm, verification, issuer/audience, expiry, key rotation
 
-### 3. Browser And Input Security Review
+#### 2.2 Secrets
 
-Review browser security, CSP, input sanitization และ file upload
+- ตรวจสอบ hardcoded secrets, API keys, credentials ใน source
+- ตรวจสอบ secret storage: env vars, vault, CI/CD secrets, masking
+- ตรวจสอบ secret rotation policy, lifecycle, access logging
+- ตรวจสอบ pre-commit hooks และ CI scanning สำหรับ secrets
 
-> Goal: ครอบคลุม browser security, CSP, input sanitization, file upload
+#### 2.3 Injection
 
-1. ตรวจสอบ CSP: directives (default-src, script-src, style-src, img-src, connect-src), source allowlists, unsafe-inline, unsafe-eval, nonce/hash usage, inline script handling, violation reporting, report-only mode
-2. ตรวจสอบ CORS: origin validation, credentials configuration, wildcard origins
-3. ตรวจสอบ XSS prevention: DOM manipulation, innerHTML, dangerouslySetInnerHTML, missing sanitization, HTML escaping, DOMPurify usage
-4. ตรวจสอบ CSRF protection: token validation, SameSite cookies, origin checking
-5. ตรวจสอบ security headers: X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, HSTS, subresource integrity, mixed content, clickjacking prevention
-6. ตรวจสอบ cookie security: HttpOnly, Secure, SameSite attributes, cookie expiration
-7. ตรวจสอบ input sanitization: SQL injection (parameterized queries, raw SQL), command injection (shell execution, argument escaping), path traversal (file path construction), deserialization (JSON.parse safety, prototype pollution), missing Zod schemas, unvalidated API inputs
-8. ตรวจสอบ file upload: file size validation, MIME type checking, file name sanitization, storage strategy, virus scan, upload error handling
-9. Critical: XSS vulnerability, missing CSP, wildcard CORS with credentials, no CSRF protection, SQL injection, command injection, path traversal, no file type validation, secrets in client cookies, unsafe-inline in script-src
-10. High: missing security headers, unsafe-inline CSP, missing SameSite cookies, innerHTML without sanitization, missing Zod schema on API input, unsafe deserialization, missing virus scan, no size limit
+- ตรวจสอบ SQL injection: parameterized queries, raw SQL, ORM usage
+- ตรวจสอบ command injection: shell execution, argument escaping
+- ตรวจสอบ path traversal: file path construction, sanitization
+- ตรวจสอบ deserialization, prototype pollution, unsafe `JSON.parse`
+- ตรวจสอบ XSS: `innerHTML`, `dangerouslySetInnerHTML`, DOMPurify, HTML escaping
+- ตรวจสอบ CSRF: token validation, `SameSite` cookies, origin checking
 
-### 4. Data Protection Review
+#### 2.4 Dependencies
 
-Review data leak prevention, privacy, compliance, audit trail และ secrets management
+- ตรวจสอบ dependency vulnerabilities: `npm audit`, `bun audit`, Snyk, Dependabot
+- ตรวจสอบ outdated packages, EOL libraries, supply chain risks
+- ตรวจสอบ lockfile integrity, package source, signed packages
+- ตรวจสอบ dependency permission/license risks
 
-> Goal: ครอบคลุม data leak, privacy, compliance, audit, secrets
+#### 2.5 Permissions
 
-1. ตรวจสอบ data leak: API responses ที่ expose sensitive fields, log statements ที่ contain PII/secrets, error messages ที่ reveal internal state, server-side secrets ที่ leak ไป client bundle, database queries ที่ return sensitive columns
-2. ตรวจสอบ privacy/GDPR: PII handling, data classification, consent management, consent withdrawal, data deletion rights, right-to-be-forgotten, data export, data retention policies
-3. ตรวจสอบ compliance: GDPR (consent, right to access, erasure, portability, breach notification), CCPA (opt-out, data sale disclosure), HIPAA (PHI handling, encryption), PCI-DSS (cardholder data, payment flow isolation), SOC2 (access controls, incident response), data residency, compliance documentation
-4. ตรวจสอบ audit trail: audit log coverage สำหรับ sensitive actions, user attribution (user_id, session_id, IP), timestamp integrity, immutability (append-only, tamper detection), audit log retention
-5. ตรวจสอบ secrets management: hardcoded secrets, secret storage (env vars, vault integration), rotation policies, secret scanning (pre-commit hooks, CI scanning), access patterns (least privilege, access logging), CI/CD secrets (GitHub secrets, masking), secret lifecycle
-6. Critical: secrets in client bundle, PII in API response without authorization, hardcoded credentials, unencrypted PII, no consent management, no data deletion path, PHI exposure without encryption, cardholder data stored, missing audit log for sensitive action, mutable audit log, hardcoded secret in source, secret committed to git
-7. High: PII in logs, error messages revealing internal state, missing GDPR compliance, no retention policy, incomplete audit coverage, missing rotation policy, secret in plaintext config, no vault integration, cross-border transfer without safeguards
-8. ทำ `/review-codebase` เพื่อ compliance audit เฉพาะทาง
+- ตรวจสอบ RBAC: roles, permissions, guards, enforcement
+- ตรวจสอบ route/API guards, server-side permission checks
+- ตรวจสอบ permission escalation: horizontal, vertical, debug tooling
+- ตรวจสอบ least privilege: service account permissions, CI/CD permissions
 
-### 5. Infrastructure Security Review
+### 3. Validate And Report
 
-Review rate limiting, webhook security และ zero trust architecture
+> Goal: Issues ถูก validate ครบถ้วน จัดลำดับตาม severity และรายงานผล
 
-> Goal: ครอบคลุม rate limiting, webhooks, zero trust
-
-1. ตรวจสอบ rate limiting: middleware config, threshold values, window configuration, bypass protection, whitelist safety, distributed rate limiting, race condition prevention, rate limit headers, error response format, client retry guidance
-2. ตรวจสอบ webhook security: signature verification, timestamp validation, replay attack prevention, idempotency handling, event deduplication, retry logic, backoff strategy, dead letter queue, payload validation, webhook secret management
-3. ตรวจสอบ zero trust: service-to-service auth (mTLS, service tokens), network segmentation (VPC, security groups, network policies), identity verification (service identity, SPIFFE/SPIRE), continuous access validation, trust boundary enforcement, token propagation across services
-4. Critical: no rate limiting on critical endpoint, bypassable rate limit, missing signature verification, no idempotency, webhook secret exposed, unauthenticated internal service, no network segmentation
-5. High: missing rate limit headers, incorrect threshold, missing retry logic, no payload validation, missing mTLS, no continuous validation, trust boundary bypass
-
-### 6. Validate, Rate And Report
-
-ตรวจสอบ findings ให้คะแนน severity และรายงานผล
-
-> Goal: Issues ถูก validate ครบถ้วน จัดลำดับตาม severity และรายงานเป็นตาราง
-
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
+1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review — ถ้าพบ incomplete implementations → เพิ่มเป็น findings
-6. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings จากทุก section
-7. ทำ `/suggest-next-action`
+5. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี web browser → ข้าม Step 3
-- ถ้า project ไม่มี sensitive data หรือ PII → ข้าม Step 4 items 1-2
-- ถ้า project ไม่มี audit logging → ข้าม Step 4 item 4
-- ถ้า project ไม่มี rate limiting → ข้าม Step 5 item 1
-- ถ้า project ไม่มี webhooks → ข้าม Step 5 item 2
-- ถ้า project ไม่มี file upload → ข้าม Step 3 item 8
-- ถ้า project ไม่มี regulatory requirements → ข้าม Step 4 item 3
-- ถ้า project ไม่มี service-to-service communication → ข้าม Step 5 item 3
+- ถ้า project ไม่มี auth flows → ข้าม Auth
+- ถ้า project ไม่มี secrets/secrets management → ข้าม Secrets
+- ถ้า project ไม่มี database/external input → ข้าม Injection สำหรับ SQL/command/path traversal
+- ถ้า project ไม่มี dependencies → ข้าม Dependencies
+- ถ้า project ไม่มี RBAC/permissions → ข้าม Permissions
+- ถ้า project ไม่มี web browser → ข้าม XSS/CSRF items
 
 ### 2. Severity Classification
 
-- Critical: hardcoded secrets, SQL injection, command injection, path traversal, XSS vulnerability, missing CSP, secrets in client bundle, PII exposure without authorization, PHI exposure without encryption, cardholder data stored, no rate limiting on critical endpoint, missing signature verification, unauthenticated internal service
-- High: missing input validation, missing security headers, missing Zod schema on API input, PII in logs, missing GDPR compliance, no retention policy, missing rotation policy, missing rate limit headers, missing mTLS, trust boundary bypass
-- Medium: missing rate limiting, inconsistent log format, missing compliance field, suboptimal CSP directive
-- Low: documentation gap, minor improvement, naming convention
+- Critical: authentication bypass, hardcoded secrets, SQL injection, command injection, path traversal, XSS vulnerability, secrets in client bundle, missing permission check, dependency with known exploit
+- High: missing MFA enforcement, weak password policy, PII/secrets in logs, missing input validation, missing CSRF protection, outdated dependency, inconsistent RBAC mapping
+- Medium: suboptimal CSP, missing rate limiting, suboptimal session timeout, missing secret rotation
+- Low: documentation gap, minor config improvement, naming convention
 
 ### 3. Evidence-Based Findings
 
@@ -123,6 +102,7 @@ Review rate limiting, webhook security และ zero trust architecture
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
 
 ### 5. Health Score
 

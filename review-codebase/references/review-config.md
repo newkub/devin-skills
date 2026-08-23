@@ -1,116 +1,125 @@
 ---
 name: review-config
-description: Review config files ครอบคลุม tsconfig vite biome drizzle vitest turbo env พร้อม review score
+description: ตรวจสอบ config files ทั้ง root และทุก workspace พร้อมรายงาน findings และ health score
+related:
+  - review-codebase
+  - scan-codebase
+  - validate
+  - report-table
+  - suggest-next-action
+  - follow-config
+  - optimize-build
+  - run-check
+
 ---
+
 
 ## Goal
 
-Review config files ครอบคลุมทุก dimension ของ configuration พร้อม aggregate findings และ review score
+ตรวจสอบ config files ทั้ง root และทุก workspace ให้ครบถ้วน ถูกต้อง และสอดคล้องกับ tech stack พร้อม health score
 
 ## Scope
 
-config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, lefthook, turbo, package.json scripts, env vars, config consistency, config security, config optimization, config drift detection
+ใช้กับ project ที่มี `package.json` และ config files ใน root หรือ monorepo ครอบคลุม scripts, build config, shared config, lint, format, git hooks, CI/CD, env vars และ config consistency
 
 ## Execute
 
 ### 1. Prepare And Scan
 
-เตรียม context ก่อนเริ่ม review
+> Goal: เข้าใจ project structure, tech stack และ config files ทั้งหมด
 
-> Goal: เข้าใจ config setup และทุก config files ใน codebase
+1. ตรวจสอบ project structure และ config files ด้วย `/scan-codebase`
+2. ระบุ `package.json` ของ root และทุก workspace (ถ้าเป็น monorepo)
+3. ระบุ package manager, build tool, framework, monorepo tool ที่ใช้
+4. ระบุ config files ที่เกี่ยวข้อง: `tsconfig.json`, `vite.config.ts`, `biome.jsonc`, `uno.config.ts`, `drizzle.config.ts`, `vitest.config.ts`, `lefthook.yml`, `turbo.json`, `.env.example`, `.gitignore`, `knip.json`, `sgconfig.yml`
+5. ระบุ config files ที่ขาดหรือล้าสมัยในแต่ละ workspace
+6. ถ้าเป็น monorepo ให้ระบุ workspace boundaries, shared packages, และ config overrides
+7. จัดลำดับ priority สำหรับ review: foundation (root) → shared packages → apps
+8. บันทึก baseline ของ build time, output size, และ config state เพื่อเปรียบเทียบ
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure และ config files
-2. ระบุ config files ทั้งหมด: `tsconfig.json`, `vite.config.ts`, `biome.jsonc`, `uno.config.ts`, `drizzle.config.ts`, `vitest.config.ts`, `lefthook.yml`, `turbo.json`, `package.json`, `.env.example`, `knip.json`, `sgconfig.yml`
-3. ระบุว่าเป็น monorepo หรือ single project — ถ้า monorepo ให้ระบุ config files ในแต่ละ workspace
-4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
-5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+### 2. Review Tasks And Scripts
 
-### 2. Analyze Config Files
+> Goal: ประเมินความถูกต้องและ consistency ของ scripts ใน package manifest
 
-วิเคราะห์ทุก config file พร้อมรวบรวม findings
+1. ตรวจสอบ scripts หลักใน root และทุก workspace: `dev`, `build`, `typecheck`, `lint`, `format`, `test`, `scan`, `check`, `verify`, `ci`
+2. ระบุ package manager commands ที่ใช้: `bun`/`bunx`, `pnpm`, `npm`, `yarn` และความสอดคล้องกัน
+3. ประเมินความสอดคล้องของ scripts ข้าม workspaces: ชื่อ, ลำดับ, และ dependencies
+4. ตรวจสอบ `prepare`, `preinstall`, `postinstall` scripts ว่าไม่ทำลาย config หรือสร้าง side effect ที่ไม่ต้องการ
+5. ตรวจสอบ `turbo.json` tasks: tasks ครบ, `dependsOn`, `outputs`, `inputs`, `globalEnv`, `globalDependencies`
+6. ตรวจสอบ `lefthook.yml`: `assert_lefthook_installed`, pre-commit, pre-push, pre-merge-commit, `stage_fixed`, `fail_text`, glob/exclude patterns
+7. ประเมิน CI/CD workflow หรือ GitHub Actions ว่ารัน `/run-check` หรือ `/validate` ก่อน merge
 
-> Goal: พบทุก issue พร้อม evidence และ review score
+### 3. Review Build Configuration
 
-1. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-2. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
-3. ตรวจสอบ `tsconfig.json`: compiler options (target, module, strict, isolatedModules), path aliases (`~/*` → `./src/*`), project references, `tsc` usage
-4. ตรวจสอบ `vite.config.ts`: plugins (tanstackStart, viteSolid, UnoCSS, tsconfigPaths), build options (manualChunks, minify, sourcemap), dev server, optimizeDeps, SPA config ถ้ามี
-5. ตรวจสอบ `biome.jsonc`: enabled domains (drizzle, turborepo, types, solid, test), format rules, `vcs` enabled, ไม่มี `biome-ignore` โดยไม่จำเป็น, workspace-specific configs ไม่ขัดแย้ง root
-6. ตรวจสอบ `uno.config.ts`: presets (presetWind4, presetIcons), theme colors (HSL variables, color tokens, variants), transformers, shortcuts, safelist
-7. ตรวจสอบ `drizzle.config.ts`: schema path, output directory, dialect (`postgresql`), connection (`DATABASE_URL` env var ไม่ hardcode)
-8. ตรวจสอบ `vitest.config.ts`: environment (jsdom/node), coverage (v8 provider, reporters), aliases (tsconfigPaths), setup file, `vite-plugin-solid` `hot: false`
-9. ตรวจสอบ `lefthook.yml`: `assert_lefthook_installed`, pre-commit (Biome lint/format, `stage_fixed: true`), pre-push (typecheck + test parallel), pre-merge-commit (typecheck), glob patterns, exclude patterns, `fail_text`
-10. ตรวจสอบ `turbo.json`: tasks ครบ, `dependsOn` (`^build`), cached tasks มี outputs, non-cached tasks, task inputs, `globalEnv` ครบ, `globalDependencies`
-11. ตรวจสอบ `package.json` scripts: dev, build, test, lint, typecheck, format, verify, ci, clean — `bun`/`bunx` usage, `tsc` usage, workspace-specific scripts, `prepare` script
-12. ตรวจสอบ env vars: validation, parity (dev/staging/prod), `.env.example` completeness, exposure (client vs server, `VITE_` prefix), type safety, secret management (Infisical, ไม่ hardcode)
-13. จับ findings พร้อม evidence (file, line, code snippet) — ตรวจสอบทั้ง positive และ negative aspects
+> Goal: ประเมินความเหมาะสมและ optimization ของ build config
 
-### 3. Review Consistency And Security
+1. ตรวจสอบ `vite.config.ts`: plugins, `manualChunks`, `minify`, `sourcemap`, `optimizeDeps`, `target`, dev server, SPA/SSR config
+2. ตรวจสอบ `tsconfig.json`: `target`, `module`, `strict`, `isolatedModules`, path aliases, project references, `tsc` usage
+3. ระบุค่า `minify`, `sourcemap`, `external`, `tree-shaking`, `target` ใน build config แต่ละ workspace
+4. ตรวจสอบ build metrics ที่มี: build time, output size, chunk distribution; เปรียบเทียบกับ baseline
+5. ประเมินว่า build config ครอบคลุม optimization ตามเกณฑ์ของ `/optimize-build` หรือไม่
+6. ระบุปัญหาที่อาจส่งผลต่อ build speed หรือ output size โดยไม่ทำลาย functionality
 
-ตรวจสอบ consistency ข้าม workspaces และ security ของ configs
+### 4. Review Shared Configuration
 
-> Goal: ครอบคลุม consistency, security, documentation, optimization
+> Goal: ประเมินความถูกต้องและ consistency ของ shared config
 
-1. ตรวจสอบ cross-workspace config consistency: `tsconfig.json`, `vite.config.ts`, `biome.jsonc`, `vitest.config.ts` — ใช้ shared config จาก root, alias consistency, ไม่มี redundant configs
-2. ตรวจสอบ config security: secrets ไม่อยู่ใน committed configs, `.gitignore` ครอบคลุม, ไม่มี secret exposure ใน client bundle, Infisical config ไม่ถูก commit
-3. ตรวจสอบ config documentation: non-obvious options มี comment, `.env.example` มี description, มี config template สำหรับ new workspace
-4. ตรวจสอบ config optimization: `tsconfig.json` target/module เหมาะสม, `vite.config.ts` manualChunks/optimizeDeps, `turbo.json` caching strategy, `biome.jsonc` ไม่มี unnecessary rules, `uno.config.ts` safelist กระชับ
-5. ถ้ามีหลาย environments → ทำ `/report-config-files` เพื่อเปรียบเทียบ config drift
+1. ตรวจสอบ root-level shared config: `biome.jsonc`, `tsconfig.json`, `turbo.json`, `lefthook.yml`, `.gitignore`, `.editorconfig`
+2. ตรวจสอบว่า workspace-specific config extends หรือ override root ได้ถูกต้อง
+3. ตรวจสอบ consistency ของ path aliases ระหว่าง `tsconfig.json`, `vite.config.ts`, `vitest.config.ts`
+4. ตรวจสอบ `biome.jsonc`: enabled domains, format rules, `vcs`, biome-ignore ที่ไม่จำเป็น, workspace-specific configs ไม่ขัดแย้ง root
+5. ตรวจสอบ `uno.config.ts`: presets, theme colors, transformers, shortcuts, safelist
+6. ตรวจสอบ `vitest.config.ts`: environment, coverage provider/reporters, aliases, setup file, `hot: false` ถ้าใช้ `vite-plugin-solid`
+7. ตรวจสอบ `drizzle.config.ts`: schema path, output directory, dialect, connection ผ่าน env var ไม่ hardcode
+8. ประเมินว่า shared config ครอบคลุมตามเกณฑ์ของ `/follow-config` ตาม tech stack หรือไม่
+9. ตรวจสอบ `.vscode` และ `.github` config ถ้ามี
 
-### 4. Validate Findings
+### 5. Review Consistency And Security
 
-ตรวจสอบและ validate issues จากทุก section
+> Goal: ประเมิน consistency ข้าม workspace และ security ของ config
 
-> Goal: Issues ถูกต้องและจัดลำดับตาม severity
+1. ตรวจสอบ cross-workspace config consistency: `tsconfig.json`, `vite.config.ts`, `biome.jsonc`, `vitest.config.ts`, `package.json` scripts
+2. ระบุ redundant configs หรือ configs ที่ควรย้ายไป root/shared
+3. ตรวจสอบ config security: ไม่มี secrets ใน committed configs, `.gitignore` ครอบคลุม `.env` และ output dirs, ไม่มี secret exposure ใน client bundle
+4. ตรวจสอบ env vars: validation, parity dev/staging/prod, `.env.example` ครบถ้วน, client vs server prefix, type safety, secret management
+5. ตรวจสอบ config documentation: comments สำหรับ non-obvious options, `.env.example` มี description, config template สำหรับ new workspace
+6. ตรวจสอบ config optimization: `tsconfig.json` target/module, `vite.config.ts` manualChunks/optimizeDeps, `turbo.json` caching, `biome.jsonc` unnecessary rules, `uno.config.ts` safelist
+7. ถ้ามีหลาย environments ให้ระบุ config drift ระหว่าง dev/staging/prod
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-4. ระบุ false positives ที่พบ
+### 6. Validate Findings
 
-### 5. Rate Severity And Health Score
+> Goal: ยืนยันว่า findings ถูกต้อง มี evidence และจัดลำดับตาม severity
 
-ให้คะแนน severity และคำนวณ review score
+1. ตรวจสอบ findings ด้วย `/validate`
+2. ตรวจสอบ cross-reference ข้าม config files, type safety, runtime, security, compliance
+3. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low → Info
+4. ระบุ false positives และข้อจำกัดของข้อมูลที่ใช้
+5. รวบรวม evidence เพิ่มเติมด้วย `/run-check` จาก lint, typecheck, scan ถ้าจำเป็น
 
-> Goal: รู้ลำดับความสำคัญและ overall health
+### 7. Rate And Report
 
-1. ให้ severity: Critical, High, Medium, Low, Info
-2. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-3. จัดลำดับ findings ตาม severity
+> Goal: ให้คะแนน severity, health score และรายงานผล
 
-### 6. Report
-
-รายงานผล review ในรูปแบบตาราง
-
-> Goal: รายงาน aggregate findings พร้อม actionable recommendations
-
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง aggregate findings จากทุก section
-3. ทำ `/suggest-next-action`
-
-### 7. Implement All
-
-ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
-
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
-
-1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
-2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
+1. ให้ severity ตามกฎ Severity Classification
+2. คำนวณ health score: (Critical=0, High=25, Medium=50, Low=75, Info=100) weighted average
+3. แสดง health score ราย dimension และ overall score
+4. สร้างตาราง findings ด้วย `/report-table`
+5. รายงาน recommended actions พร้อม priority
+6. แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี TypeScript → ข้าม Step 2 item 3
-- ถ้า project ไม่มี Vite → ข้าม Step 2 item 4
-- ถ้า project ไม่มี Biome → ข้าม Step 2 item 5
-- ถ้า project ไม่มี UnoCSS → ข้าม Step 2 item 6
-- ถ้า project ไม่มี Drizzle → ข้าม Step 2 item 7
-- ถ้า project ไม่มี Vitest → ข้าม Step 2 item 8
-- ถ้า project ไม่มี Lefthook → ข้าม Step 2 item 9
-- ถ้า project ไม่ใช่ monorepo → ข้าม Step 2 item 10
-- ถ้า project ไม่มี env vars → ข้าม Step 2 item 12
+- ถ้า project ไม่มี TypeScript → ข้าม `tsconfig.json` checks
+- ถ้า project ไม่มี Vite → ข้าม `vite.config.ts` checks
+- ถ้า project ไม่มี Biome → ข้าม `biome.jsonc` checks
+- ถ้า project ไม่มี UnoCSS → ข้าม `uno.config.ts` checks
+- ถ้า project ไม่มี Drizzle → ข้าม `drizzle.config.ts` checks
+- ถ้า project ไม่มี Vitest → ข้าม `vitest.config.ts` checks
+- ถ้า project ไม่มี Lefthook → ข้าม `lefthook.yml` checks
+- ถ้า project ไม่ใช่ monorepo → ข้าม cross-workspace consistency checks
+- ถ้า project ไม่มี env vars → ข้าม env checks
 
 ### 2. Severity Classification
 
@@ -123,27 +132,32 @@ config review สำหรับ: tsconfig, vite, biome, uno, drizzle, vitest, l
 
 - ทุก finding ต้องมี file path และ line number
 - ไม่เดา ใช้ tools สำหรับ verification
+- อ้างอิง code snippet หรือ config value จริง
 
 ### 4. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
+- ไม่สั่ง edit/apply fixes หรือ commit ในกระบวนการ review
+- ถ้าพบปัญหาที่ต้องแก้ ให้รายงานเป็น findings แล้วเสนอผ่าน `/suggest-next-action`
 
 ### 5. Health Score
 
-- คำนวณ review score เป็น percentage (0-100)
+- คำนวณ health score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
 ### 6. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ double-asterisk bold markers สำหรับ emphasis
+- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill references`
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงาน findings เป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก config section
 - รายงาน recommended actions พร้อม priority
-- Review score ต่อ dimension และ overall
+- Health score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- ไม่มีการแก้ไข code หรือ config ในกระบวนการ review

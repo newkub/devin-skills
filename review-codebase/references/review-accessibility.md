@@ -1,96 +1,144 @@
 ---
 name: review-accessibility
-description: Review ARIA attributes, semantic HTML, heading hierarchy, keyboard navigation, focus management, tab order, keyboard traps, color contrast, alt texts, screen reader, WCAG compliance
+description: Review accessibility ตาม WCAG ครอบคลุม keyboard, screen reader, contrast, forms, media
+related:
+  - review-codebase
+  - scan-codebase
+  - check-accessibility
+  - validate
+  - deep-validate
+  - report
+  - report-table
+  - suggest-next-action
+
 ---
+
 
 ## Goal
 
-Review accessibility ครอบคลุม ARIA, semantic HTML, keyboard navigation, WCAG compliance พร้อม review score
+Review accessibility ของ project ตาม WCAG 2.1 AA/AAA ครอบคลุม keyboard navigation, screen reader, color contrast, forms, media พร้อม findings, severity, และ review score
 
 ## Scope
 
-accessibility review สำหรับ: ARIA attributes, semantic HTML, heading hierarchy, keyboard navigation, focus management, tab order, keyboard traps, color contrast, image alt texts, screen reader compatibility, WCAG compliance level, automated scan results, accessible naming, landmark roles, live regions, skip links
+ใช้สำหรับ web project ที่มี UI — เน้น review เท่านั้น ไม่แก้ไข code ระหว่าง review
 
 ## Execute
 
 ### 1. Prepare And Scan
 
-> Goal: เข้าใจ accessibility setup และ testing tools
+เตรียม context และ scan หา UI components
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ accessibility structure
-2. ระบุ accessibility tools (axe-core, Lighthouse, WAVE), ARIA usage patterns, semantic HTML usage ที่ใช้
-3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
+> Goal: เข้าใจ frontend stack และ scope ของ UI
 
-### 2. Deep Analyze
+1. ทำ `/scan-codebase` เพื่อหา frontend files, components, pages
+2. ระบุ framework/library และ rendering mode (CSR, SSR, static)
+3. ระบุ accessibility tools ที่มี: `axe-core`, `Lighthouse`, `playwright`, `jest-axe`
+4. ถ้าไม่มี UI → stop และ report
 
-> Goal: ครอบคลุมทุก accessibility dimension พร้อม review score
+### 2. Review Keyboard Navigation
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ accessibility patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
-6. ทำ `/check-accessibility` เพื่อรัน automated accessibility scan
+ตรวจสอบ keyboard navigation
 
-### 3. ARIA And Semantic HTML Review
+> Goal: ทุก interaction ใช้ keyboard ได้
 
-> Goal: ครอบคลุม ARIA, semantic HTML, heading hierarchy
+1. ตรวจสอบ tab order เป็น logical order และ visible
+2. ตรวจสอบ focus indicators ชัดเจน
+3. ตรวจสอบ interactive elements สามารถ activate ด้วย Enter/Space
+4. ตรวจสอบ skip links สำหรับ repetitive content
+5. ตรวจสอบไม่มี keyboard traps
 
-1. ตรวจสอบ ARIA attributes: correct ARIA roles, aria-label, aria-labelledby, aria-describedby, aria-hidden, aria-live, aria-expanded, aria-selected, aria-checked, aria-disabled, ARIA on interactive elements
-2. ตรวจสอบ semantic HTML: semantic tags (article, section, nav, header, footer, main, aside, figure, figcaption), button vs link correctness, list semantics, table semantics, form semantics
-3. ตรวจสอบ heading hierarchy: H1 uniqueness per page, heading order (H1→H2→H3), no skipped levels, heading text quality, multiple H1 check
-4. ตรวจสอบ landmark roles: banner, main, navigation, contentinfo, search, complementary, proper landmark usage, redundant landmarks
-5. ตรวจสอบ accessible naming: accessible name for interactive elements, aria-label quality, button text clarity, link text descriptiveness, icon-only button naming
-6. Critical: missing ARIA on critical interaction, incorrect ARIA role ที่ก่อให้เกิด error, no semantic HTML on critical content, broken heading hierarchy ที่ break screen reader, missing accessible name on icon-only button
-7. High: missing ARIA, inconsistent ARIA, redundant ARIA, missing semantic tag, skipped heading level, poor accessible naming
+### 3. Review Screen Reader Support
 
-### 4. Keyboard, Focus And Visual Accessibility Review
+ตรวจสอบ screen reader experience
 
-> Goal: ครอบคลุม keyboard nav, focus, contrast, alt texts
+> Goal: screen reader อ่าน content ได้ถูกต้อง
 
-1. ตรวจสอบ keyboard navigation: tab order, logical tab sequence, keyboard trap detection, tab navigation on interactive elements, Enter/Space activation, Escape key handling, arrow key navigation
-2. ตรวจสอบ focus management: visible focus indicator, focus ring consistency, focus trap in modals, focus restoration, focus order in dynamic content, skip-to-content link
-3. ตรวจสอบ color contrast: WCAG AA (4.5:1 normal text, 3:1 large text), WCAG AAA (7:1), contrast in both light และ dark mode, automated contrast check, text on images
-4. ตรวจสอบ image alt texts: decorative image alt (empty alt), informative image alt quality, alt text descriptiveness, missing alt, alt text duplication, complex image long description
-5. ตรวจสอบ screen reader compatibility: live regions (aria-live), status messages, dynamic content announcements, screen reader testing results, NVDA/JAWS/VoiceOver compatibility
-6. ตรวจสอบ motion และ sensory: prefers-reduced-motion support, no motion-only instructions, no color-only instructions, no sensory-only instructions (shape, size, position, sound)
-7. Critical: keyboard trap, no keyboard navigation on critical interaction, no focus indicator, no screen reader support, blocking accessibility violation, insufficient contrast ที่อ่านไม่ได้
-8. High: broken focus management, missing skip link, missing alt text on informative image, contrast below WCAG AA, missing live region for dynamic content, color-only instructions
+1. ตรวจสอบ semantic HTML: headings, lists, landmarks, buttons, links
+2. ตรวจสอบ ARIA labels, roles, states ใช้ถูกต้อง
+3. ตรวจสอบ alt text สำหรับ images, icons, charts
+4. ตรวจสอบ live regions และ status announcements
+5. ตรวจสอบ decorative elements ไม่ถูกอ่าน
 
-### 5. Validate, Rate And Report
+### 4. Review Color And Visual
 
-> Goal: Issues ถูก validate และรายงานเป็นตาราง
+ตรวจสอบ color contrast และ visual accessibility
 
-1. ทำ `/deep-validate` เพื่อ validate findings
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-table`
-6. ทำ `/suggest-next-action`
+> Goal: ทุกคนมองเห็นและแยกแยะได้
+
+1. ตรวจสอบ contrast ratio ระหว่าง text กับ background (WCAG AA 4.5:1, AAA 7:1)
+2. ตรวจสอบว่าไม่ใช้สีเพียงอย่างเดียวสื่อความหมาย
+3. ตรวจสอบ text resize ถึง 200% ไม่ทำให้เสีย function
+4. ตรวจสอบ focus contrast และ focus visible
+
+### 5. Review Forms And Interactive
+
+ตรวจสอบ forms และ interactive components
+
+> Goal: forms ใช้งานได้กับทุก assistive technology
+
+1. ตรวจสอบ form labels ผูกกับ controls ถูกต้อง
+2. ตรวจสอบ error messages สื่อสารชัดเจน
+3. ตรวจสอบ validation feedback อ่านได้ด้วย screen reader
+4. ตรวจสอบ dropdown, modal, dialog มี focus management
+
+### 6. Review Media And Motion
+
+ตรวจสอบ media และ motion
+
+> Goal: ลด barrier จาก media และ animation
+
+1. ตรวจสอบ captions/ transcripts สำหรับ videos
+2. ตรวจสอบ audio descriptions ถ้าจำเป็น
+3. ตรวจสอบ autoplay ไม่รบกวน และสามารถ pause/stop ได้
+4. ตรวจสอบ `prefers-reduced-motion` ไม่ขาด
+
+### 7. Run Automated And Manual Checks
+
+รัน automated tools และ manual verification
+
+> Goal: หา violations พร้อม evidence
+
+1. รัน automated accessibility audit: `axe-core`, `Lighthouse`, `jest-axe`
+2. ตรวจสอบ automated findings ด้วย manual review
+3. บันทึก violations พร้อม file path, element selector, WCAG guideline
+
+### 8. Validate And Report
+
+ตรวจสอบและรายงาน
+
+> Goal: findings ถูกต้องและ actionable
+
+1. ทำ `/deep-validate` และ `/validate`
+2. ให้ severity: Critical, High, Medium, Low, Info
+3. คำนวณ review score
+4. ทำ `/report` พร้อม `/report-table`
+5. ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Skip Conditions
+### 1. WCAG Compliance
 
-- ถ้า project ไม่ใช่ web app → ข้ามทั้งหมด
-- ถ้า project ไม่มี images → ข้าม Step 4 item 4
-- ถ้า project ไม่มี dynamic content → ข้าม Step 4 item 5
+- ใช้ WCAG 2.1 AA เป็น baseline
+- พิจารณา AAA สำหรับ critical flows
+- ตรวจสอบ Perceivable, Operable, Understandable, Robust
 
 ### 2. Severity Classification
 
-- Critical: keyboard trap, no keyboard navigation on critical interaction, no focus indicator, no screen reader support, blocking accessibility violation, insufficient contrast ที่อ่านไม่ได้, missing ARIA on critical interaction, broken heading hierarchy ที่ break screen reader
-- High: broken focus management, missing skip link, missing alt text, contrast below WCAG AA, missing live region, color-only instructions, missing semantic tag, skipped heading level
-- Medium: minor ARIA issue, minor contrast issue, inconsistent focus ring, missing landmark, poor alt text quality
-- Low: cosmetic, minor ARIA improvement, documentation gap
+- Critical: blocking user flow, keyboard trap, missing labels บน critical form, no alt text บน informative image
+- High: contrast fail บน large text, missing focus indicator, ARIA misuse บน critical component
+- Medium: contrast fail บน UI icons, redundant ARIA, minor heading hierarchy
+- Low: best practices, cosmetic ARIA, minor alt text improvement
 
 ### 3. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
-- ระบุ element, ARIA attribute, หรือ page ที่เกี่ยวข้อง
+- ทุก finding ต้องมี file path, line number, selector หรือ screenshot
+- ระบุ WCAG success criterion ที่เกี่ยวข้อง
+- ใช้ automated tools เป็น evidence
 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ถ้าต้องแก้ไข → แนะนำ `check-accessibility` หรือ `improve-web-accessibility` หลัง report
 
 ### 5. Formatting
 
@@ -99,6 +147,7 @@ accessibility review สำหรับ: ARIA attributes, semantic HTML, heading
 
 ## Expected Outcome
 
-- รายงานตาราง aggregate findings จากทุก accessibility section
-- Review score ต่อ dimension และ overall
+- รายงาน findings ตาม WCAG ตัวบ่งชี้
+- Review score และ grade
+- Recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

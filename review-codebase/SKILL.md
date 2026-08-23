@@ -59,7 +59,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 4. `analyzerErrors` > 0
 5. `falsePositiveRate` สูงกว่า 20%
 6. findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-7. `reviewWorkflow` field ไม่ map ไปยัง `?review-codebase/references/<dimension>.md`? ที่มีอยู่
+7. `reviewWorkflow` field ไม่ map ไปยัง `?review-codebase/references/review-<dimension>.md`? ที่มีอยู่
 8. `tools/review/package.json` หรือ `tools/review/src/presentation/cli.ts` ไม่อยู่
 
 ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → ไป Step 4
@@ -119,7 +119,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 - ทุก finding ต้องมี evidence: file path, line number, code snippet
-- แต่ละ finding ต้อง map ไปยัง `?review-codebase/references/<dimension>.md`? ผ่าน `reviewWorkflow` field
+- แต่ละ finding ต้อง map ไปยัง `?review-codebase/references/review-<dimension>.md`? ผ่าน `reviewWorkflow` field
 
 ### 5. Formatting
 

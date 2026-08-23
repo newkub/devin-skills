@@ -3,6 +3,7 @@ name: review-performance
 description: Performance review ครอบคลุม bundler, caching, time complexity, Core Web Vitals, bottlenecks
 ---
 
+
 ## Goal
 
 Review performance ครอบคลุมทุก dimension ของ performance พร้อม aggregate findings และ review score
@@ -39,7 +40,18 @@ performance review สำหรับ: bundler config, caching strategy, time co
 9. Analyzer ตรวจสอบ Core Web Vitals: LCP, INP, CLS, FCP, TBT, Speed Index
 10. Review CLI คำนวณ performance review score จาก review report
 
-### 3. Bundler Review
+### 3. Runtime Network And IO Review
+
+Review runtime, network, และ I/O โดยใช้ references เฉพาะทาง
+
+> Goal: ระบุ bottlenecks บน runtime, network, และ I/O
+
+1. ตรวจสอบ CPU, memory, GC, event loop, concurrency, startup, throughput
+2. ตรวจสอบ DNS, connection, bandwidth, latency, payload, caching ด้วย `references/review-network.md`
+3. ตรวจสอบ file I/O, storage, serialization, database I/O ด้วย `references/review-io.md`
+4. บันทึก findings พร้อม metrics และ evidence
+
+### 4. Bundler Review
 
 Review bundler/build tool config ครอบคลุม chunk splitting, tree shaking, minification, source maps, plugins
 
