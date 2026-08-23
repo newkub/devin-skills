@@ -15,9 +15,6 @@ triggers:
 related:
   - optimize-codebase
   - senior-frontend
-  - optimize-assets
-  - optimize-hydration
-  - optimize-rendering
   - optimize-latency
   - optimize-caching
   - optimize-payload
@@ -39,41 +36,58 @@ related:
 > Goal: เข้าใจ tech stack และ pain points ของ frontend
 1. อ่าน `package.json`, `vite.config.*`, `next.config.*`, `nuxt.config.*`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ framework/library เช่น React, Vue, Svelte, Solid, Angular
-3. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้องกับ frontend
-4. ทำ `/senior-frontend` เพื่อวิเคราะห์ UI/UX และ architecture
-5. ถ้า context ไม่ชัด → ทำ `/ask-me`
+3. ทำ /scan-codebase เพื่อหา issues ที่เกี่ยวข้องกับ frontend
+4. ทำ /senior-frontend เพื่อวิเคราะห์ UI/UX และ architecture
+5. ถ้า context ไม่ชัด → ทำ /ask-me
 
 ### 2. Analyze Performance
 > Goal: หาส่วนที่ควรปรับปรุง
-1. ทำ `/check-web-performance` เพื่อดู Core Web Vitals หรือ Lighthouse metrics
+1. ทำ /check-web-performance เพื่อดู Core Web Vitals หรือ Lighthouse metrics
 2. ตรวจ bundle size, critical rendering path, และ asset loading
-3. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
+3. ทำ /review-codebase เพื่อรายละเอียดเพิ่ม
 4. ถ้าไม่พบ issues → stop และ report
 
-### 3. Optimize By Area
-> Goal: แก้ไขตามลักษณะปัญหา
-1. ทำ `/optimize-assets` ถ้า images/fonts/static files เป็นปัญหา
-2. ทำ `/optimize-hydration` ถ้า SSR/CSR hydration ช้า
-3. ทำ `/optimize-rendering` ถ้า re-render หรือ render time สูง
-4. ทำ `/optimize-latency` ถ้า interactions หรือ API calls ช้า
-5. ทำ `/optimize-caching` ถ้า cache policy ไม่เหมาะสม
-6. ทำ `/optimize-payload` ถ้า bundle/API payload ใหญ่
-7. ทำ `/follow-<framework>` ตาม stack เมื่อจำเป็น เช่น `/follow-react`, `/follow-vue`, `/follow-svelte`
-8. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+### 3. Optimize Assets
+> Goal: ลดขนาดและเพิ่มประสิทธิภาพของ assets
+1. ตรวจหา images/fonts/static files ที่ขนาดใหญ่หรือไม่ได้ใช้
+2. ใช้ modern formats (WebP, AVIF), lazy loading, responsive images
+3. ลบ unused assets, optimize icons และ font subsets
+4. ใช้ CDN ถ้าเหมาะสม
 
-### 4. Validate And Report
+### 4. Optimize Hydration
+> Goal: ลด hydration time สำหรับ SSR/CSR
+1. ตรวจสอบ server-side rendering settings และ hydration boundaries
+2. ใช้ streaming, progressive hydration, หรือ partial hydration ตาม framework
+3. ลด JavaScript ที่รันใน hydration phase
+4. ใช้ /follow-<framework> ถ้าจำเป็น เช่น /follow-nextjs, /follow-nuxt
+
+### 5. Optimize Rendering
+> Goal: ลด re-render และ render time
+1. ใช้ memoization, virtual list, หรือ component splitting
+2. ตรวจสอบ avoidable re-renders ด้วย React DevTools หรือ profiler
+3. ใช้ code splitting, dynamic imports, route-based lazy loading
+4. optimize CSS layout/paint/composite (containment, will-change)
+
+### 6. Optimize Network And Payload
+> Goal: ลด latency และขนาดข้อมูล
+1. ทำ /optimize-latency ถ้า interactions หรือ API calls ช้า
+2. ทำ /optimize-caching ถ้า cache policy ไม่เหมาะสม
+3. ทำ /optimize-payload ถ้า bundle/API payload ใหญ่
+4. ถ้าแก้ >10 ไฟล์ → ทำ /use-scripts
+
+### 7. Validate And Report
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น
-1. ทำ `/validate` และ `/run-check`
-2. ทำ `/check-web-performance` อีกครั้งเพื่อ compare before/after
-3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
-4. สรุปผลด้วย `/report` และ `/suggest-next-action`
+1. ทำ /validate และ /run-check
+2. ทำ /check-web-performance อีกครั้งเพื่อ compare before/after
+3. ถ้าไม่ผ่าน → ทำ /resolve-errors แล้ว retry (max 3)
+4. สรุปผลด้วย /report และ /suggest-next-action
 
 ## Rules
 
 ### 1. Minimal Changes
 - แก้เฉพาะสิ่งที่วัดผลได้ว่าดีขึ้น
 - ไม่เปลี่ยน framework ทั้งหมด ยกเว้นได้รับการยืนยัน
-- ถ้าไม่แน่ใจ → ทำ `/ask-me`
+- ถ้าไม่แน่ใจ → ทำ /ask-me
 
 ### 2. Prioritize User Experience
 - แก้ไขตาม impact ก่อน effort

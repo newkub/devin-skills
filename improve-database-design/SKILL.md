@@ -14,7 +14,6 @@ triggers:
 related:
   - improve-codebase
   - optimize-database
-  - optimize-query
   - run-test-integration
   - validate
 ---

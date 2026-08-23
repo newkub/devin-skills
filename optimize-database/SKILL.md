@@ -14,7 +14,6 @@ triggers:
   - model
 related:
   - optimize-codebase
-  - optimize-query
   - improve-database-design
   - follow-orm
   - follow-drizzle
@@ -37,31 +36,36 @@ related:
 1. อ่าน `package.json`, `Cargo.toml`, หรือ manifest ที่ระบุ database driver/ORM
 2. ระบุ database engine เช่น PostgreSQL, MySQL, SQLite, MongoDB, Redis
 3. รวบรวม schema, migrations, ORM models, และ query files
-4. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้อง
+4. ทำ /scan-codebase เพื่อหา issues ที่เกี่ยวข้อง
 5. ถ้า schema หรือ migrations ไม่มี → stop และ report
 
 ### 2. Analyze Database Health
 > Goal: หาสาเหตุที่ทำให้ database ช้าหรือไม่ปลอดภัย
-1. ทำ `/optimize-query` เพื่อตรวจ slow queries หรือ N+1
-2. ทำ `/improve-database-design` เพื่อ review schema, index, normalization
-3. ทำ `/improve-database-design` สำหรับ schema, index, normalization, และ integrity/constraint issues
-4. ตรวจ connection pool, timeout, retry strategy
-5. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
-6. ถ้าไม่พบ issues → stop และ report
+1. ทำ /improve-database-design เพื่อ review schema, index, normalization, integrity
+2. ตรวจ connection pool, timeout, retry strategy
+3. ทำ /review-codebase เพื่อรายละเอียดเพิ่ม
+4. ถ้าไม่พบ issues → stop และ report
 
-### 3. Optimize
+### 3. Optimize Query
+> Goal: ลด query time และ N+1
+1. ใช้ EXPLAIN ANALYZE หา slow queries, full table scans, missing indexes
+2. ตรวจจับ N+1 queries, heavy joins, aggregation ที่ผิดพลาด
+3. ใช้ /follow-orm หรือ /follow-drizzle สำหรับ ORM-specific tuning
+4. เพิ่ม/ลบ indexes ตาม workload: reads vs writes
+5. ใช้ query builder หรือ raw SQL ทีเหมาะสม
+
+### 4. Optimize
 > Goal: แก้ไขปัญหา database ตาม priority
-1. ทำ `/follow-orm` หรือ `/follow-drizzle` ตาม ORM ที่ใช้
-2. แก้ไข schema, index, query, connection config ตาม findings
-3. ถ้าต้อง migration → สร้าง migration scripts พร้อม rollback
-4. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+1. แก้ไข schema, index, query, connection config ตาม findings
+2. ถ้าต้อง migration → สร้าง migration scripts พร้อม rollback
+3. ถ้าแก้ >10 ไฟล์ → ทำ /use-scripts
 
-### 4. Validate
+### 5. Validate
 > Goal: ยืนยันว่า database ปรับปรุงแล้วดีขึ้น
-1. รัน test ด้วย `/run-test-integration`
-2. ทำ `/validate` และ `/run-check`
-3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
-4. สรุปผลด้วย `/report` และ `/suggest-next-action`
+1. รัน test ด้วย /run-test-integration
+2. ทำ /validate และ /run-check
+3. ถ้าไม่ผ่าน → ทำ /resolve-errors แล้ว retry (max 3)
+4. สรุปผลด้วย /report และ /suggest-next-action
 
 ## Rules
 
@@ -73,7 +77,7 @@ related:
 ### 2. Safety First
 - ทำ dry run กับ migration ก่อน production
 - มี rollback plan สำหรับ schema changes
-- ถ้าไม่แน่ใจ → ทำ `/ask-me`
+- ถ้าไม่แน่ใจ → ทำ /ask-me
 
 ### 3. Evidence Based
 - ใช้ query plans, EXPLAIN, หรือ metrics ก่อน/หลัง
