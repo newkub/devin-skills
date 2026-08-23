@@ -18,7 +18,6 @@ related:
   - follow-svelte-kit
   - validate
   - refactor-skills
-  - svelte-follow-migrate
 ---
 
 ## Goal
