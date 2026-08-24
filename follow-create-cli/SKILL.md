@@ -28,7 +28,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง layers ให้ชัดเจน
+3. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่อวางโครงสร้าง layers ให้ชัดเจน
 4. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 3. Review CLI

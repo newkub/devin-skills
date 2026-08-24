@@ -216,5 +216,5 @@ Design Issues
 ## Guide
 
 - ทำ `/follow-modular-monolith` สำหรับ base architecture
-- ทำ `/follow-microservices-architecture` สำหรับ distributed event-driven systems
-- ทำ `/follow-clean-architecture` สำหรับ event handler structure
+- ทำ `/follow-architecture` (Microservices pattern: `references/patterns/microservices-architecture.md`) สำหรับ distributed event-driven systems
+- ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) สำหรับ event handler structure

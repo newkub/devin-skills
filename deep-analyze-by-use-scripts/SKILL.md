@@ -26,7 +26,7 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 > Goal: สร้าง `tools/analyze` CLI สำหรับ AST-based analysis
 
 1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
-2. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
+2. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
 3. เลือก stack: Rust ถ้าต้องการ binary performance, Bun ถ้าทีมใช้ TypeScript
 4. ทำ `/review-codebase` เพื่อตรวจสอบคุณภาพก่อน integrate
 5. ผสาน CLI เข้ากับ package manifest ด้วย `/follow-tasks`
@@ -89,7 +89,7 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 
 - ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบ `tools/analyze/` ด้วย
 - ถ้า `tools/analyze/` ไม่มี → ทำ `/follow-create-cli` ก่อนเสมอ
-- `tools/analyze/` ต้อง follow `/follow-clean-architecture`
+- `tools/analyze/` ต้อง follow `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`)
 - ทำ `/review-codebase` ก่อนใช้งาน
 
 ### 3. Ast-Grep NAPI Usage

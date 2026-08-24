@@ -34,7 +34,7 @@ description: อัปเดต project documentation, config, rules, และ 
 5. `/update-docs` (ถ้ามี `docs/`)
 6. `/update-ast-grep-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
 7. `/update-create-review-cli` (ถ้ามี `tools/review/`)
-8. `/update-vscode`
+8. `/follow-dot-vscode`
 9. `/update-contributing-md`
 
 ### 3. Coordinate Config

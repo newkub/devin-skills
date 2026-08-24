@@ -28,7 +28,7 @@ description: สร้างไอเดียตาม user context วิเ�
 สร้างไอเดียตาม context:
 
 1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
-2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/idea-uxui` สร้างไอเดีย UX/UI improvements
+2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/follow-uxui` สร้างไอเดีย UX/UI improvements
 3. สร้างไอเดียปรับปรุงจากเดิม (Extends)
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
 5. ระบุ problem ที่แต่ละไอเดียจะ solve

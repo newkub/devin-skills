@@ -36,7 +36,7 @@ description: ปรับปรุงคุณภาพการเขียน�
 
 > Goal: ปรับปรุง code comments ให้มีคุณค่า
 
-1. ทำ `/review-comment` สำหรับ comments ที่ขาดหายไปใน complex logic
+1. ตรวจ comments ที่ขาดหายไปใน complex logic
 2. ลบ comments ที่ไม่จำเป็น: obvious comments, commented-out code, noise comments
 3. ปรับปรุง comments ที่มี: เปลี่ยนจาก what → why, อธิบาย intent ไม่ใช่ implementation
 4. ตรวจสอบ TODO/FIXME ว่า มี context, owner, deadline หรือ clear action

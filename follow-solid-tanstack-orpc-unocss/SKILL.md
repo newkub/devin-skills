@@ -70,7 +70,7 @@ description: ตั้งค่าและพัฒนา full-stack app ด้
 2. Rsbuild:
    - ใช้ `@tanstack/solid-start/plugin/rsbuild`
    - ใช้ `@rsbuild/plugin-solid`
-3. ทำตาม `/follow-vite` หรือ `/follow-rsbuild` ตามทีเลือก
+3. ทำตาม `/follow-vite`
 
 ### 4. Configure TypeScript
 

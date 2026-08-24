@@ -30,7 +30,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 1. ระบุ engine: `docker`, `podman`, `buildah` หรือ `nerdctl`
 2. เลือก base image ที่เล็ก เช่น `alpine`, `distroless`, `debian:slim`
 3. ใช้ image digest แทน tag ถ้าต้องการ reproducible builds
-4. ตรวจสอบ license ของ base image ด้วย `/follow-LICENSE` ถ้าจำเป็น
+4. ตรวจสอบ license ของ base image ด้วย `/follow-license-md` ถ้าจำเป็น
 
 ### 3. Configure Multi-Stage Build
 
@@ -103,7 +103,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 - เลือก base image ที่เล็กและได้รับการดูแล เช่น `alpine`, `distroless`, `debian:slim`
 - หลีกเลี่ยง `latest` tag สำหรับ production
 - ใช้ image digest เมื่อต้องการ reproducible build
-- ตรวจ license ของ base image ด้วย `/follow-LICENSE` ถ้าจำเป็น
+- ตรวจ license ของ base image ด้วย `/follow-license-md` ถ้าจำเป็น
 
 ### 2. Multi-Stage Build
 

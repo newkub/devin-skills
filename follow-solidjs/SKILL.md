@@ -201,7 +201,7 @@ description: พัฒนา Solid.js applications ด้วย fine-grained rea
 
 เชื่อมโยงกับ workflows ที่เกี่ยวข้อง:
 
-- ทำ `/follow-solid-tanstack-architecture` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-architecture` (SolidJS/TanStack pattern: `references/patterns/solid-tanstack-architecture.md`) สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-vitest` สำหรับ testing configuration
 

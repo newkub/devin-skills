@@ -12,12 +12,11 @@ description: Define and run the review script in package.json.
 
 ## Execute
 
-1. /follow-global-workflows
-2. /run-lint
-3. /run-build
-4. /run-test
-5. run review ใน package.json
-6. /git-commit
+1. /run-lint
+2. /run-build
+3. /run-test
+4. run review ใน package.json
+5. /git-commit
 
 ## Rules
 

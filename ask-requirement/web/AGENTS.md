@@ -41,10 +41,9 @@
 - Follow `/follow-typescript`
 - Follow `/follow-vite`
 - Follow `/follow-solidjs`
-- Follow `/follow-solid-start-architecture`
+- Follow `/follow-architecture` (SolidJS/TanStack pattern: `references/patterns/solid-tanstack-architecture.md`)
 - Follow `/follow-unocss`
 - Follow `/follow-zod`
-- Follow `/follow-mcp-builder`
 - Follow `/follow-monorepo`
 
 ## Skills

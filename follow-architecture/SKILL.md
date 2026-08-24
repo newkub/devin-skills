@@ -27,16 +27,18 @@ description: เลือก architecture pattern ตาม package manifest
 > Goal: เลือก architecture pattern ตาม Detection Rules ในส่วน Rules
 
 1. ตรวจสอบ Detection Rules ตามลำดับ priority ใน Rules section
-2. เลือก architecture workflow ที่ตรงกับ project type
-3. ถ้าไม่ตรดเงื่อนไขใด → ใช้ `/follow-clean-architecture` เป็น default
+2. เลือก architecture pattern ที่ตรงกับ project type
+3. อ่าน reference file ของ pattern ที่เลือกจาก `references/patterns/`
+4. ถ้าไม่ตรดเงื่อนไขใด → ใช้ Clean Architecture (`references/patterns/clean-architecture.md`) เป็น default
 
 ### 3. Learn Architecture Pattern
 
-> Goal: เรียนรู้ architecture pattern ที่เลือกจาก official sources
+> Goal: เรียนรู้ architecture pattern ที่เลือกจาก reference files และ official sources
 
-1. ทำ `/learn-from-web` เพื่อศึกษา architecture pattern ที่เลือกจาก official documentation
-2. อ่าน best practices และ anti-patterns ของ pattern นั้น
-3. บันทึก code structure examples และ configuration examples
+1. อ่าน reference file ของ pattern ที่เลือกใน `references/patterns/<pattern>.md`
+2. ทำ `/learn-from-web` เพื่อศึกษา architecture pattern ที่เลือกจาก official documentation เพิ่มเติม
+3. อ่าน best practices และ anti-patterns ของ pattern นั้น
+4. บันทึก code structure examples และ configuration examples
 
 ### 4. Setup Base Structure
 
@@ -55,16 +57,16 @@ description: เลือก architecture pattern ตาม package manifest
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
 | Nuxt | `nuxt` in dependencies | `/follow-nuxt` |
-| Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
+| Next.js | `next` in dependencies | `references/patterns/nextjs-architecture.md` |
 | Vue.js | `vue` in dependencies | `/follow-vue` |
-| SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack-architecture` |
+| SolidJS | `solid-js` in dependencies | `references/patterns/solid-tanstack-architecture.md` |
 | Svelte | `svelte` in dependencies | `/follow-svelte-kit` |
-| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `/follow-layered-architecture` |
-| Rust | `Cargo.toml` exists | `/follow-clean-architecture` |
-| Bun | `bun` in dependencies | `/follow-clean-architecture` |
+| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `references/patterns/layered-architecture.md` |
+| Rust | `Cargo.toml` exists | `references/patterns/clean-architecture.md` |
+| Bun | `bun` in dependencies | `references/patterns/clean-architecture.md` |
 | Monorepo | `workspaces` in `package.json` | `/follow-monorepo` |
 | Medium scale | 3-5 devs, moderate complexity | `/follow-modular-monolith` |
-| Microservices | distributed system | `/follow-microservices-architecture` |
+| Microservices | distributed system | `references/patterns/microservices-architecture.md` |
 
 ### 2. Priority Rules
 

@@ -9,7 +9,7 @@ Review governance ของ project ครอบคลุง governance structur
 
 ## Scope
 
-governance review สำหรับ: governance structure (decision making, roles, responsibilities, escalation), ownership (code ownership, module ownership, CODEOWNERS, accountability), policies (coding standards, security, compliance, data, release, branching, contribution), review process (code review, approval, CI checks, merge criteria, review cadence)
+governance review สำหรับ: governance structure (decision making, roles, responsibilities, escalation), ownership (code ownership, module ownership, CODEOWNERS, accountability), policies (coding standards, security, compliance, data, release, branching, contribution), review process (code review, approval, CI checks, merge criteria, review cadence), maintenance (dependency updates, technical debt, refactoring planning, legacy code, deprecation, system health, alert response, audit trails, risk assessment)
 
 ## Execute
 
@@ -92,23 +92,25 @@ governance review สำหรับ: governance structure (decision making, rol
 
 ### 7. Improve
 
-> Goal: ปรับปรุง governance, compliance, policies และ standards ตาม findings
+> Goal: ปรับปรุง governance, compliance, policies, maintenance และ standards ตาม findings
 
 1. เพิ่มหรือปรับปรุง policies, guidelines, และ standards ที่ขาด
 2. ระบุ owner และ review cadence สำหรับแต่ละ policy
 3. ระบุ compliance requirements: security, data privacy, accessibility, licenses, regulations
-4. แก้ไข gaps ตาม priority โดยใช้ `/follow-best-practice` หรือ `/learn-from-web`
-5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
-6. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+4. จัดการ maintenance: อัพเดท dependencies อย่างสม่ำเสมอ, วางแผนลด technical debt, จัดการ legacy code, deprecate features อย่างถูกต้อง, ตรวจสอบ system health, ตอบสนอง alerts
+5. รักษา audit trails และประเมินความเสี่ยงอย่างสม่ำเสมอ
+6. แก้ไข gaps ตาม priority โดยใช้ `/follow-best-practice` หรือ `/learn-from-web`
+7. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+8. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
 
 ### 1. Severity Classification
 
-- Critical: no governance for critical decisions, missing security / compliance / data policy, no code review requirement, no ownership for critical path, no CI in critical path
-- High: unclear roles, incomplete ownership, missing coding standards, no CHANGELOG, missing PR template, single reviewer for critical code, missing status checks
-- Medium: outdated owner, informal decision process, policy gaps, inconsistent policy enforcement, stale PR handling missing
-- Low: documentation gap, naming convention, minor process improvement
+- Critical: no governance for critical decisions, missing security / compliance / data policy, no code review requirement, no ownership for critical path, no CI in critical path, no audit trail for critical systems, no alert response process
+- High: unclear roles, incomplete ownership, missing coding standards, no CHANGELOG, missing PR template, single reviewer for critical code, missing status checks, no dependency update process, no technical debt tracking
+- Medium: outdated owner, informal decision process, policy gaps, inconsistent policy enforcement, stale PR handling missing, no deprecation process, no system health monitoring
+- Low: documentation gap, naming convention, minor process improvement, no risk assessment cadence
 
 ### 2. Evidence-Based Findings
 

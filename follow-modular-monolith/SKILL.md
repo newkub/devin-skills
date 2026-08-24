@@ -35,7 +35,7 @@ Implement Modular Monolith architecture ที่แยก modules ชัดเ�
 2. สร้าง `src/shared/{infrastructure,kernel}` สำหรับ shared concerns
 3. สร้าง module exports สำหรับ public APIs
 4. กำหนด module interfaces และ contracts
-5. ทำ `/follow-clean-architecture` ภายในแต่ละ module
+5. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) ภายในแต่ละ module
 
 ### 3. Implement Inter-Module Communication
 
@@ -134,7 +134,7 @@ From Modular Monolith to Microservices
 2. เปลี่ยน in-process calls เป็น network calls
 3. Implement distributed tracing
 4. Add service discovery
-5. ทำ `/follow-microservices-architecture` สำหรับรายละเอียด
+5. ทำ `/follow-architecture` (Microservices pattern: `references/patterns/microservices-architecture.md`) สำหรับรายละเอียด
 
 ## Expected Outcome
 
@@ -146,6 +146,6 @@ From Modular Monolith to Microservices
 
 ## Guide
 
-- ทำ `/follow-clean-architecture` เพื่อ implement architecture ภายในแต่ละ module
+- ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่อ implement architecture ภายในแต่ละ module
 - ทำ `/follow-event-driven` หากใช้ async communication
-- ทำ `/follow-microservices-architecture` สำหรับ migration path ถัดไป
+- ทำ `/follow-architecture` (Microservices pattern: `references/patterns/microservices-architecture.md`) สำหรับ migration path ถัดไป

@@ -31,7 +31,7 @@ description: สร้างหรือปรับปรุง Rust project �
 3. สร้าง `tests/` สำหรับ integration tests
 4. สร้าง `benches/` สำหรับ benchmarks
 5. สร้าง `examples/` สำหรับ usage examples
-6. ถ้า project มี Clean Architecture: ทำ `/follow-clean-architecture`
+6. ถ้า project มี Clean Architecture: ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`)
 
 ### 3. Configuration
 > Goal: Configuration
