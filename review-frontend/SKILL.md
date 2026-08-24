@@ -159,7 +159,7 @@ Review frontend ของ project ครอบคลุม performance, assets, 
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - แยก review process จาก fix process
-- ถ้าต้องแก้ไข → แนะนำ `/senior-frontend` หรือ `optimize-frontend` หลัง report
+- ถ้าต้องแก้ไข → แนะนำ `/senior-frontend` หรือ `improve-frontend` หลัง report
 
 ### 5. Formatting
 

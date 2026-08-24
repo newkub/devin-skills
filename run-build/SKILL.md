@@ -12,7 +12,7 @@ triggers:
   - user
   - model
 related:
-  - optimize-build
+  - improve-efficiency
   - resolve-errors
   - run-clean
   - run-typecheck
@@ -33,8 +33,8 @@ related:
 > Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
 > Goal: build config และ dependencies พร้อมสำหรับ build ที่เร็วและเล็ก
 
-1. ทำ `/optimize-build` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-2. ถ้า `/optimize-build` ล้มเหลว → stop และ report
+1. ทำ `/improve-efficiency` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
+2. ถ้า `/improve-efficiency` ล้มเหลว → stop และ report
 
 ### 2. Typecheck
 
@@ -88,7 +88,7 @@ related:
 
 ### 1. Build Order
 
-- Optimize: ทำ `/optimize-build` ก่อนเริ่ม
+- Optimize: ทำ `/improve-efficiency` ก่อนเริ่ม
 - Typecheck: ทำ `/run-typecheck` ก่อน build
 - Install: ติดตั้ง dependencies
 - Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า
@@ -122,7 +122,7 @@ title: Run Build
 description: รัน build process สำหรับ production-ready artifacts
 auto_execution_mode: 3
 related:
-  - /optimize-build
+  - /improve-efficiency
   - /run-typecheck
   - /run-clean
   - /resolve-errors
@@ -141,7 +141,7 @@ related:
 ### 1. Optimize Build
 > Goal: build config พร้อม
 
-1. ทำ `/optimize-build`
+1. ทำ `/improve-efficiency`
 
 ### 2. Typecheck
 > Goal: ไม่มี type errors

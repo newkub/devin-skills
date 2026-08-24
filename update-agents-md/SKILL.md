@@ -15,7 +15,6 @@ triggers:
 related:
   - follow-write-devin-skills
   - improve-codebase
-  - optimize-codebase
   - ask-requirement
 ---
 ## Goal
@@ -36,11 +35,11 @@ related:
 1. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
 2. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
 3. ทำ `/all-workspaces` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
-4. ทำ `/follow-devin-skills-md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
+4. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
 7. ทำ `/follow-skills-map` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
-8. เพิ่ม `/improve-codebase`, `/optimize-codebase`, และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
+8. เพิ่ม `/improve-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
 9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
 8. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 
@@ -85,7 +84,7 @@ related:
 
 ### 1. AGENTS.md Format
 
-- ใช้ format ตาม `/follow-devin-skills-md` (frontmatter `name`, `description`, `related`)
+- ใช้ format ตาม `follow-write-devin-skills/references/skill-md.md` (frontmatter `name`, `description`, `related`)
 - มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ไม่มี `## Workflows` หรือ `### Workflows`
 - ไฟล์ไม่เกิน 250 บรรทัด

@@ -14,7 +14,7 @@ triggers:
 related:
   - review-docs
   - improve-writing
-  - optimize-build
+  - improve-efficiency
   - run-check
   - follow-config
   - improve-reliability
@@ -29,7 +29,7 @@ related:
 
 ## Scope
 
-ใช้กับ project หรือ workspace ที่ต้องการปรับปรุง documentation, comments, onboarding, DX, และ feedback — ไม่รวม UX writing สำหรับ user-facing copy (ใช้ `/improve-uxui`)
+ใช้กับ project หรือ workspace ที่ต้องการปรับปรุง documentation, comments, onboarding, DX, และ feedback — ไม่รวม UX writing สำหรับ user-facing copy (ใช้ `/improve-frontend`)
 
 ## Execute
 
@@ -57,7 +57,7 @@ related:
 ### 4. Improve Tooling
 > Goal: เครื่องมือทำงานราบรื่น
 1. ตรวจสอบ package scripts, dev server, hot reload, build, lint, test commands
-2. ใช้ `/optimize-build` ถ้า build ช้า
+2. ใช้ `/improve-efficiency` ถ้า build ช้า
 3. ใช้ `/run-check` เพื่อตรวจสอบ quality pipeline
 4. ใช้ `/follow-config` ถ้า config ซับซ้อนหรือไม่สม่ำเสมอ
 

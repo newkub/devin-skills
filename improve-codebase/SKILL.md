@@ -19,13 +19,15 @@ related:
   - scan-codebase
   - improve-correctness
   - improve-reliability
-  - improve-uxui
+  - improve-frontend
+  - improve-performance
+  - improve-efficiency
+  - improve-database
   - improve-resilience
   - improve-docs
   - improve-governance
   - improve-security
   - improve-api
-  - improve-resilience
   - check-reference
   - update-reference
   - validate
@@ -67,16 +69,18 @@ related:
 
 ### 4. Run Improve Skills
 > Goal: ปรับปรุงแต่ละส่วนครบถ้วนตาม priority
-1. ทำ `/improve-uxui` ถ้า UX/UI เป็นปัญหา
+1. ทำ `/improve-frontend` ถ้า UX/UI, accessibility, SEO หรือ frontend เป็นปัญหา
 2. ทำ `/improve-correctness` ถ้า correctness, type safety, หรือ tests เป็นปัญหา
 3. ทำ `/improve-reliability` ถ้า reliability, observability, หรือ recovery เป็นปัญหา
 4. ทำ `/improve-resilience` ถ้า modularity, isolation, หรือ side effects เป็นปัญหา
-5. ทำ `/improve-docs` ถ้า docs, comments, หรือ DX เป็นปัญหา
-6. ทำ `/improve-governance` ถ้า governance หรือ compliance เป็นปัญหา
-7. ทำ `/improve-security` ถ้า security เป็นปัญหา
-8. ทำ `/improve-api` ถ้า API เป็นปัญหา
-9. ทำ `/improve-resilience` ถ้า load หรือ rate เป็นปัญหา
-10. เลือก skills อื่นๆ ตาม findings และ AGENTS.md
+5. ทำ `/improve-performance` ถ้า network, latency, caching, runtime, io เป็นปัญหา
+6. ทำ `/improve-efficiency` ถ้า build, payload, cost เป็นปัญหา
+7. ทำ `/improve-database` ถ้า database เป็นปัญหา
+8. ทำ `/improve-docs` ถ้า docs, comments, หรือ DX เป็นปัญหา
+9. ทำ `/improve-governance` ถ้า governance หรือ compliance เป็นปัญหา
+10. ทำ `/improve-security` ถ้า security เป็นปัญหา
+11. ทำ `/improve-api` ถ้า API เป็นปัญหา
+12. เลือก skills อื่นๆ ตาม findings และ AGENTS.md
 
 ### 5. Validate And Report
 > Goal: ยืนยันว่าปรับปรุงครบและไม่มี regression

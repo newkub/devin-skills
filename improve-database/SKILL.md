@@ -13,7 +13,6 @@ triggers:
   - model
 related:
   - improve-codebase
-  - optimize-database
   - run-test-integration
   - validate
 ---
@@ -46,13 +45,15 @@ Review and improve database design เพื่อให้ได้ performance
 6. ตรวจ multivalued columns, EAV misuse, duplicate data
 
 ### 3. Diagnose Query And Index Performance
-> Goal: หา runtime inefficiencies
+> Goal: หา runtime inefficiencies และ query issues
 1. รวบรวม slow query logs, `EXPLAIN ANALYZE`, query frequency
 2. ระบุ missing indexes, unused indexes, composite index opportunities
 3. ตรวจ full table scans, nested loop inefficiency, sorting costs
 4. ตรวจ N+1 queries, heavy joins, aggregation patterns
 5. ประเมิน transaction boundaries และ lock contention
 6. ระบุ hot spots และ partition/sharding candidates
+7. ใช้ `/follow-orm` หรือ `/follow-drizzle` สำหรับ ORM-specific tuning
+8. ตรวจ connection pool, timeout, retry strategy และ lock contention
 
 ### 4. Diagnose Integrity And Constraints
 > Goal: ปรับปรุง data integrity และ constraints

@@ -61,7 +61,7 @@ related:
 2. ตรวจสอบ `tsconfig.json`: `target`, `module`, `strict`, `isolatedModules`, path aliases, project references, `tsc` usage
 3. ระบุค่า `minify`, `sourcemap`, `external`, `tree-shaking`, `target` ใน build config แต่ละ workspace
 4. ตรวจสอบ build metrics ที่มี: build time, output size, chunk distribution; เปรียบเทียบกับ baseline
-5. ประเมินว่า build config ครอบคลุม optimization ตามเกณฑ์ของ `/optimize-build` หรือไม่
+5. ประเมินว่า build config ครอบคลุม optimization ตามเกณฑ์ของ `/improve-efficiency` หรือไม่
 6. ระบุปัญหาที่อาจส่งผลต่อ build speed หรือ output size โดยไม่ทำลาย functionality
 
 ### 4. Review Shared Configuration

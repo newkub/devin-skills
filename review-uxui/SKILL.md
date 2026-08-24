@@ -24,7 +24,7 @@ Review UX/UI ครอบคลุม UX writing, accessibility, และ visua
 
 ## Scope
 
-UX/UI review สำหรับ user flows, interaction design, visual hierarchy, typography, color theory, spacing system, layout principles, micro-interactions, UX writing, accessibility, design system compliance, responsive UX, animation UX, brand consistency, usability heuristics, cognitive load, และ error prevention โดยอ้างอิง `improve-uxui`, `improve-ux-writing`, และ `improve-web-accessibility` — ไม่รวม component internals และ reactivity (อยู่ใน `/review-codebase`)
+UX/UI review สำหรับ user flows, interaction design, visual hierarchy, typography, color theory, spacing system, layout principles, micro-interactions, UX writing, accessibility, design system compliance, responsive UX, animation UX, brand consistency, usability heuristics, cognitive load, และ error prevention โดยอ้างอิง `improve-frontend` และ `improve-writing` — ไม่รวม component internals และ reactivity (อยู่ใน `/review-codebase`)
 
 ## Execute
 

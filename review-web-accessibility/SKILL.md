@@ -142,7 +142,7 @@ Review accessibility ของ project ตาม WCAG 2.1 AA/AAA ครอบค
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ถ้าต้องแก้ไข → แนะนำ `check-accessibility` หรือ `improve-web-accessibility` หลัง report
+- ถ้าต้องแก้ไข → แนะนำ `check-accessibility` หรือ `improve-frontend` หลัง report
 
 ### 5. Formatting
 

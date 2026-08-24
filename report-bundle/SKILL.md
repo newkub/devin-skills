@@ -20,7 +20,7 @@ related: []
 
 ## Scope
 
-ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/optimize-build` สำหรับ optimization)
+ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/improve-efficiency` สำหรับ optimization)
 
 ## Execute
 
@@ -103,7 +103,7 @@ related: []
 2. ระบุ chunks ที่ใหญ่เกิน threshold (เช่น > 100KB)
 3. ระบุ dependencies ที่ควรเป็น dynamic import
 4. ระบุ modules ที่มี side effects
-5. แนะนำ next steps: `/optimize-build` สำหรับ optimization
+5. แนะนำ next steps: `/improve-efficiency` สำหรับ optimization
 
 ## Rules
 
@@ -120,7 +120,7 @@ related: []
 ### Read-Only Report
 
 - ไม่ optimize ไม่แก้ไข build config — รายงานเท่านั้น
-- ใช้ `/optimize-build` สำหรับ optimization
+- ใช้ `/improve-efficiency` สำหรับ optimization
 - ใช้ `/run-build` สำหรับการ build
 
 ### Output Format
@@ -146,7 +146,7 @@ related: []
 
 ### Non-Redundancy
 
-- การ optimize build อยู่ใน `/optimize-build` แล้ว
+- การ optimize build อยู่ใน `/improve-efficiency` แล้ว
 - การ build อยู่ใน `/run-build` แล้ว
 
 ## Expected Outcome

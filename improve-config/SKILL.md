@@ -1,6 +1,6 @@
 ---
 name: improve-config
-description: ปรับปรุง project config ครบถ้วนด้วย follow-tasks, optimize-build, follow-config
+description: ปรับปรุง project config ครบถ้วนด้วย follow-tasks, improve-efficiency, follow-config
 allowed-tools:
   - read
   - edit
@@ -58,7 +58,7 @@ related: []
 > Goal: ปรับปรุง build configuration
 > Goal: build เร็วขึ้น output เล็กลง โดยไม่ทำลาย functionality
 
-1. ทำ `/optimize-build` สำหรับ build config แต่ละ workspace
+1. ทำ `/improve-efficiency` สำหรับ build config แต่ละ workspace
 2. ตรวจสอบ `minify`, `sourcemap`, `external`, `tree-shaking`, `target`
 3. บันทึก before/after metrics สำหรับ build time และ output size
 
