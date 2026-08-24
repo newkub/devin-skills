@@ -1,17 +1,6 @@
 ---
 name: visualize-in-web
 description: สร้าง visual แบบ Web ใน browser บน OS temp directory
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

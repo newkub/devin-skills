@@ -1,16 +1,6 @@
 ---
 name: follow-js-delivr
 description: ใช้ jsDelivr CDN สำหรับโหลด bun packages และ GitHub repositories บน web pages
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

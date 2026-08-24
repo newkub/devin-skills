@@ -1,20 +1,6 @@
 ---
 name: review-isolation
 description: Review isolation ของ project ครอบคลุง boundaries, dependencies, coupling, state isolation, enviro...
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: no-use-ignore
 description: ป้องกันการใช้ ignore comments/attributes และ ignore files ทุกประเภท แก้ปัญหาที่ source
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

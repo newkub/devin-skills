@@ -1,17 +1,6 @@
 ---
 name: list-github-branch
 description: แสดง branches ทั้งหมดของ repo ที่ระบุบน GitHub
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - report-table
 ---
 
 ## Goal

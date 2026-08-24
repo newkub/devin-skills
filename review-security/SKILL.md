@@ -1,27 +1,6 @@
 ---
 name: review-security
 description: Review security: auth, secrets, injection, dependencies, permissions, and compliance
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-frontend
-  - review-infrastructure
-  - review-performance
-  - review-quality
-  - review-reliability
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

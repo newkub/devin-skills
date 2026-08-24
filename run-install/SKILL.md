@@ -1,18 +1,6 @@
 ---
 name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

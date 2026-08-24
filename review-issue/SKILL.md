@@ -1,18 +1,6 @@
 ---
 name: review-issue
 description: Review any issue for clarity, scope, acceptance criteria, and readiness
-allowed-tools:
-  - read
-  - exec
-  - ask_user_question
-  - grep
-triggers:
-  - user
-  - model
-related:
-  - review-and-fix
-  - review-github-issue
-  - suggest-next-action
 ---
 
 ## Goal

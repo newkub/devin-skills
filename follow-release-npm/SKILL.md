@@ -1,18 +1,6 @@
 ---
 name: follow-release-npm
 description: ตั้งค่า Auto สำหรับ automated releases ไปยัง npm
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-pkg-new
 ---
 
 ## Goal

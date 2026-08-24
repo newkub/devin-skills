@@ -1,16 +1,6 @@
 ---
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

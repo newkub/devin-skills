@@ -1,20 +1,6 @@
 ---
 name: review-seo
 description: SEO review checklist for meta, structured data, performance, and sitemap
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

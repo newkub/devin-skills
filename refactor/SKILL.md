@@ -1,19 +1,6 @@
 ---
 name: refactor
 description: Refactor codebase ครบวงจร — SRP, boundaries, code styles, maintainability
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - run-verify
 ---
 
 ## Goal

@@ -1,20 +1,6 @@
 ---
 name: review-governance
 description: Governance review ครอบคลุง governance ownership policies review process พร้อม review score
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

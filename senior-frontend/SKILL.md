@@ -1,22 +1,6 @@
 ---
 name: senior-frontend
 description: รับบท Senior Frontend Engineer วิเคราะห์และแก้ไขด้าน UI, UX, performance
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - follow-unocss
-  - follow-web-design
-  - validate
 ---
 
 ## Goal

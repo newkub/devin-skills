@@ -1,16 +1,6 @@
 ---
 name: follow-design-pattern
 description: ให้ผู้ใช้เข้าใจและสามารถใช้ design patterns ได้อย่างมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

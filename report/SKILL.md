@@ -1,17 +1,6 @@
 ---
 name: report
 description: ตอบในแชทเป็นตารางพร้อม numbered columns, grouping, sorting
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-release-it
 description: ตั้งค่า release-it สำหรับ automated releases
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

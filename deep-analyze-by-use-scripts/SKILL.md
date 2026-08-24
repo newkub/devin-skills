@@ -1,17 +1,6 @@
 ---
 name: deep-analyze-by-use-scripts
 description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย tools/review CLI, tools/analyze CLI, @ast-grep/napi และ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

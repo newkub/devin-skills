@@ -1,27 +1,6 @@
 ---
 name: review-performance
 description: Review performance: network, bundler, memory, and I/O patterns
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-frontend
-  - review-infrastructure
-  - review-quality
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

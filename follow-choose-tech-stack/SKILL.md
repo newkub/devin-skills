@@ -1,17 +1,6 @@
 ---
 name: follow-choose-tech-stack
 description: เลือก tech stack ที่เหมาะสมสำหรับ project ตาม requirements และ constraints
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

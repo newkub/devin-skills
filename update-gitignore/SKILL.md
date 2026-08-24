@@ -1,18 +1,6 @@
 ---
 name: update-gitignore
 description: อัปเดต .gitignore ให้ครบถ้วนตาม stack และ artifacts ทีใช้
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

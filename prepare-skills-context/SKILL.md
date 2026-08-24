@@ -1,18 +1,6 @@
 ---
 name: prepare-skills-context
 description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน skill
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - find_file_by_name
-  - skill
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

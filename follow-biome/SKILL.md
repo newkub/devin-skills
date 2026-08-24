@@ -1,17 +1,6 @@
 ---
 name: follow-biome
 description: ตั้งค่าและใช้งาน Biome สำหรับ linting และ formatting แทน ESLint/Prettier
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

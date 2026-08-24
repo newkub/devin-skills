@@ -1,18 +1,6 @@
 ---
 name: list-github-pr
 description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - report-table
 ---
 
 ## Goal

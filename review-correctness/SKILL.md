@@ -1,27 +1,6 @@
 ---
 name: review-correctness
 description: Review correctness including type safety, test coverage, tests, formal verification, and side effect
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - model
-  - user
-related:
-  - review-codebase
-  - review-docs
-  - review-frontend
-  - review-infrastructure
-  - review-performance
-  - review-quality
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

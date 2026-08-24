@@ -1,18 +1,6 @@
 ---
 name: roleplay-user
 description: รับบทเป็น user อ่าน code แล้วคิดผ่าน user journey เพื่อ review usage และ UX/UI แบบไม่รันอะไรจริง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

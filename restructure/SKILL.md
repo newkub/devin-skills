@@ -1,18 +1,6 @@
 ---
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

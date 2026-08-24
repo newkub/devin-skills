@@ -1,17 +1,6 @@
 ---
 name: follow-release-docker
 description: ตั้งค่า Docker images สำหรับ automated releases
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

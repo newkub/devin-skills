@@ -1,14 +1,6 @@
 ---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
-allowed-tools:
-  - read
-  - skill
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

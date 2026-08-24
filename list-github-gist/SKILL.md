@@ -1,13 +1,6 @@
 ---
 name: list-github-gist
 description: แสดงรายการ GitHub gists ของผู้ใช้
-allowed-tools:
-  - exec
-  - ask_user_question
-triggers:
-  - user
-related:
-argument-hint: [--limit <n>] [--public|--secret]
 ---
 
 ## Goal

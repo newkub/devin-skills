@@ -1,17 +1,6 @@
 ---
 name: report-usage
 description: Report usage statistics and patterns of APIs, functions, or skills
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

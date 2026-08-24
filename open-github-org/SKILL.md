@@ -1,14 +1,6 @@
 ---
 name: open-github-org
 description: เปิดหน้า GitHub organization ที่ระบุใน browser
-allowed-tools:
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-related:
-argument-hint: <org-name>
 ---
 
 ## Goal

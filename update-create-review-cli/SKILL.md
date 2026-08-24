@@ -1,18 +1,6 @@
 ---
 name: update-create-review-cli
 description: สร้างและอัปเดท codebase review CLI ใน tools/review
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

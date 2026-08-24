@@ -1,18 +1,6 @@
 ---
 name: report-bundle
 description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

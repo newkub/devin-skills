@@ -1,31 +1,6 @@
 ---
 name: follow-instantdb
 description: ติดตั้งและใช้งาน InstantDB เป็น real-time backend สำหรับ frontend apps
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - find_file_by_name
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - follow-config
-  - follow-create-bun-cli
-  - follow-nextjs
-  - follow-python
-  - follow-react
-  - follow-solidjs
-  - follow-svelte
-  - follow-svelte-kit
-  - follow-tanstack-ecosystem
-  - follow-vue
-  - learn-from-web
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-css
 description: เขียน CSS ตาม best practices และ modern features
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-reactive-programming
 description: พัฒนาโปรเจกต์ด้วย reactive programming พร้อม streams, observables, operators และ data flow
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - merge
 ---
 
 ## Goal

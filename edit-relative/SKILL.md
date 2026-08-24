@@ -1,17 +1,6 @@
 ---
 name: edit-relative
 description: อัปเดท references ทั้งหมดเมื่อแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่ง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

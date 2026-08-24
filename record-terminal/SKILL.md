@@ -1,18 +1,6 @@
 ---
 name: record-terminal
 description: บันทึกวิดีโอและ session จาก terminal สำหรับ CLI testing
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

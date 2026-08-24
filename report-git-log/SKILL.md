@@ -1,17 +1,6 @@
 ---
 name: report-git-log
 description: รายงาน git log สรุป commits, สถิติ, และ insights ในรูปแบบที่อ่านง่าย
-allowed-tools:
-  - read
-  - exec
-  - grep
-  - glob
-  - find_file_by_name
-triggers:
-  - user
-  - model
-related:
-  - git-commit
 ---
 
 ## Goal

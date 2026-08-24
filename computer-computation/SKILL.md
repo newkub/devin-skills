@@ -1,17 +1,6 @@
 ---
 name: computer-computation
 description: ให้ผู้ใช้เข้าใจและสามารถประยุกต์ใช้ theory of computation ได้อย่างมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-bunup
 description: ตั้งค่า Bunup สำหรับ bundle TypeScript libraries ด้วย ESM, CJS, และ dts
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

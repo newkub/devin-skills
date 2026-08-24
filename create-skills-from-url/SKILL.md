@@ -1,30 +1,6 @@
 ---
 name: create-skills-from-url
 description: สร้าง Devin skills จาก URL หรือ domain โดยดึงเนื้อหา จัดกลุ่ม และสร้าง subskills
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - webfetch
-  - web_search
-  - run_subagent
-  - read_subagent
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - git-commit
-  - learn-from-web
-  - report
-  - use-scripts
-  - validate
 ---
 
 ## Goal

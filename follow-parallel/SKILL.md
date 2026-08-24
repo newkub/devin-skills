@@ -1,17 +1,6 @@
 ---
 name: follow-parallel
 description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

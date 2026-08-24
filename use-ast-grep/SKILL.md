@@ -1,20 +1,6 @@
 ---
 name: use-ast-grep
 description: ใช้งาน ast-grep สำหรับ code search, linting และ transformation ด้วย AST-based pattern matching
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-write-devin-skills
-  - update-ast-grep-rules
-  - use-ast-grep-outline
 ---
 
 ## Goal

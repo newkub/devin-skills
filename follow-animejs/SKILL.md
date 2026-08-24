@@ -1,17 +1,6 @@
 ---
 name: follow-animejs
 description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่าย
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

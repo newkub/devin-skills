@@ -1,17 +1,6 @@
 ---
 name: search-skills
 description: ค้นหา skills ด้วย command `skills find <keyword>` อย่างมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

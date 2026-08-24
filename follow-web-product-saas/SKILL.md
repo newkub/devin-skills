@@ -1,18 +1,6 @@
 ---
 name: follow-web-product-saas
 description: ปรับปรุง web SaaS product ครบวงจรเพื่อความสมบูรณ์และ scalability
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

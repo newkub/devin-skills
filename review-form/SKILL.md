@@ -1,20 +1,6 @@
 ---
 name: review-form
 description: Review form validation, field rules, error messages, state, submit, loading, accessibility, UX
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

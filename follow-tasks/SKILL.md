@@ -1,20 +1,6 @@
 ---
 name: follow-tasks
 description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-tasks
-  - review
 ---
 
 ## Goal

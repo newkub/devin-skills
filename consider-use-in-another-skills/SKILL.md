@@ -1,24 +1,6 @@
 ---
 name: consider-use-in-another-skills
 description: พิจารณาใช้หรืออ้างอิง skill อื่นก่อนสร้าง/duplicate
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - check-circular-dependencies
-  - check-reference
-  - list-skills
-  - update-reference
-  - validate
 ---
 
 ## Goal

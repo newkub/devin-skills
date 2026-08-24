@@ -1,17 +1,6 @@
 ---
 name: follow-vitepress
 description: ตั้งค่า VitePress ด้วย UnoCSS, Shiki Twoslash, Group Icons
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

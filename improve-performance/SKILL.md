@@ -1,26 +1,6 @@
 ---
 name: improve-performance
 description: ปรับปรุง performance ด้าน network, latency, caching, runtime, io และ resource ใช้งาน
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - improve-codebase
-  - improve-database
-  - improve-frontend
-  - improve-reliability
-  - improve-resilience
-  - run-check
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

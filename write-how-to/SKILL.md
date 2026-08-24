@@ -1,17 +1,6 @@
 ---
 name: write-how-to
 description: เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

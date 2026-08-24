@@ -1,17 +1,6 @@
 ---
 name: follow-ultracite
 description: ตั้งค่า Ultracite กับ Biome สำหรับ zero-config linting และ formatting
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

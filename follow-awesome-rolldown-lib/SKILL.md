@@ -1,17 +1,6 @@
 ---
 name: follow-awesome-rolldown-lib
 description: สรุป libraries ที่สร้างด้วย Rolldown bundler
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

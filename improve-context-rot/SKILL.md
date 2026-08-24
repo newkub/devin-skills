@@ -1,17 +1,6 @@
 ---
 name: improve-context-rot
 description: ลด context rot ใน AI conversation เพื่อรักษาคุณภาพการทำงานตลอด long-horizon tasks
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

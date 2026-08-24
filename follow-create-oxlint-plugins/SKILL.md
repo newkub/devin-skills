@@ -1,18 +1,6 @@
 ---
 name: follow-create-oxlint-plugins
 description: ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - ship-code
 ---
 
 ## Goal

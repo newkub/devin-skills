@@ -1,17 +1,6 @@
 ---
 name: follow-usage
 description: สร้าง CLI spec ด้วย usage เพื่อ generate completions/docs/SDK
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - webfetch
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

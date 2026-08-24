@@ -1,17 +1,6 @@
 ---
 name: follow-unocss-theme
 description: ตั้งค่า theme colors และ Design System ด้วย UnoCSS แบบ HSL variables
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

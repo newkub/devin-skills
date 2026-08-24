@@ -1,18 +1,6 @@
 ---
 name: report-table
 description: จัดรูปแบบตาราง สรุปข้อมูล และ metrics สำหรับรายงาน
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

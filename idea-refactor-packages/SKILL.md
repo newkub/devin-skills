@@ -1,19 +1,6 @@
 ---
 name: idea-refactor-packages
 description: สร้างไอเดียการสร้างหรือ refactor packages ใหม่พร้อม continuous numbering
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - refactor
 ---
 
 ## Goal

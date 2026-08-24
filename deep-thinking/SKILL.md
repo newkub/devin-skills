@@ -1,18 +1,6 @@
 ---
 name: deep-thinking
 description: คิดวิเคราะห์ปัญหาอย่างเป็นระบบก่อนทำงาน โดยไม่ใช้ external tools
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

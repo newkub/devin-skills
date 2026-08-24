@@ -1,17 +1,6 @@
 ---
 name: follow-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

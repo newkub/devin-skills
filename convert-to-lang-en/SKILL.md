@@ -1,17 +1,6 @@
 ---
 name: convert-to-lang-en
 description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

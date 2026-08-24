@@ -1,18 +1,6 @@
 ---
 name: follow-github-project
 description: ใช้ `gh project` จัดการ GitHub Projects ผ่าน CLI แบบ interactive และ scripted
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: review-and-fix
 description: Review แล้วแก้ไขตาม context โดยขอ user confirm
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

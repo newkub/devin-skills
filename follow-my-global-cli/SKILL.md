@@ -1,17 +1,6 @@
 ---
 name: follow-my-global-cli
 description: Run installed global CLI tools correctly based on context and environment
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

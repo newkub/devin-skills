@@ -1,20 +1,6 @@
 ---
 name: review-components
 description: Review component structure, props, events, reactivity, composition, reusability, testing, isolation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

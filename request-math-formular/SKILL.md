@@ -1,17 +1,6 @@
 ---
 name: request-math-formular
 description: แปลง code หรือ description ให้เป็นสูตรคณิตศาสตร์ที่กระชับและเข้าใจง่าย
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

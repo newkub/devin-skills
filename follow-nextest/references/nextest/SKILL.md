@@ -1,17 +1,6 @@
 ---
 name: nextest
 description: Next-generation test runner for Rust with faster execution, per-test isolation, and CI support
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

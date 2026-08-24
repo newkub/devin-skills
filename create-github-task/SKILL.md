@@ -1,17 +1,6 @@
 ---
 name: create-github-task
 description: Create draft tasks in GitHub Projects
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,30 +1,6 @@
 ---
 name: run-parallel-via-spawn-subagents
 description: ทำงานแบ่ง subagents ขนานกัน รวมผล merge, review, validate, verify ครบวงจร
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - run_subagent
-  - read_subagent
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - deep-plan
-  - deep-validate
-  - deep-verify
-  - follow-deep
-  - merge
-  - read-related-skills
-  - report
-  - review-and-fix
-  - suggest-next-action
 ---
 
 ## Goal

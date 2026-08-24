@@ -1,17 +1,6 @@
 ---
 name: follow-playwright
 description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

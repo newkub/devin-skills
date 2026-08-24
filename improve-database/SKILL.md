@@ -1,20 +1,6 @@
 ---
 name: improve-database
 description: ปรับปรุง database design, schema, index, query, integrity, migration และ optimization
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - improve-codebase
-  - run-test-integration
-  - validate
 ---
 
 ## Goal

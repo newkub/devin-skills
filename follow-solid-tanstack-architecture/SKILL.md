@@ -1,17 +1,6 @@
 ---
 name: follow-solid-tanstack-architecture
 description: จัดโครงสร้าง TanStack Start + SolidJS app พร้อม modules/, monorepo และ file-based routing
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

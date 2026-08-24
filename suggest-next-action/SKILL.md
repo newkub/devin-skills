@@ -1,17 +1,6 @@
 ---
 name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

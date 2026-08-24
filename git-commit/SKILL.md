@@ -1,19 +1,6 @@
 ---
 name: git-commit
 description: Commit ไฟล์ที่เปลี่ยนแปลงตามมาตรฐาน conventional commits รองรับ split commit
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - report-git-log
 ---
 
 ## Goal

@@ -1,19 +1,6 @@
 ---
 name: git-workflows
 description: Switch to a workflow branch for git operations
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - refactor
 ---
 
 ## Goal

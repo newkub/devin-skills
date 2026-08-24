@@ -1,18 +1,6 @@
 ---
 name: report-workspace-graph
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

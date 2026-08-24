@@ -1,22 +1,6 @@
 ---
 name: follow-run-on
 description: ติดตั้ง กำหนดค่า และ validate self-hosted GitHub Actions runners บน AWS ด้วย RunsOn
-allowed-tools:
-  - read
-  - exec
-  - write
-  - edit
-  - ask_user_question
-  - webfetch
-  - learn-from-web
-triggers:
-  - user
-  - model
-related:
-  - follow-config
-  - git-commit
-  - learn-from-web
-  - validate
 ---
 
 ## Goal

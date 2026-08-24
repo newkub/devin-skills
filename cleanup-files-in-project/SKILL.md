@@ -1,18 +1,6 @@
 ---
 name: cleanup-files-in-project
 description: Clean up unnecessary source files in the project, not build artifacts or dependency caches
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

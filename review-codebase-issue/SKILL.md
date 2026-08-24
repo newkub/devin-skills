@@ -1,20 +1,6 @@
 ---
 name: review-codebase-issue
 description: Review codebase สำหรับระบุ issues พร้อม severity และ actionable recommendations
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

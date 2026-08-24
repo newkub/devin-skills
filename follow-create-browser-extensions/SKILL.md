@@ -1,17 +1,6 @@
 ---
 name: follow-create-browser-extensions
 description: สร้าง browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-auto-it
 description: ตั้งค่า Auto สำหรับ automated releases ด้วย conventional commits
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

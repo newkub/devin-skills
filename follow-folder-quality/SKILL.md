@@ -1,19 +1,6 @@
 ---
 name: follow-folder-quality
 description: ตรวจสอบคุณภาพของโฟลเดอร์ ทั้งจำนวนไฟล์ โครงสร้าง domain และ imports
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - use-ast-grep-outline
 ---
 
 ## Goal

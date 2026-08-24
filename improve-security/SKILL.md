@@ -1,18 +1,6 @@
 ---
 name: improve-security
 description: ปรับปรุง security ของ project
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - improve-codebase
 ---
 
 ## Goal

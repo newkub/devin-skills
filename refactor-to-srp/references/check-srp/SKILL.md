@@ -1,18 +1,6 @@
 ---
 name: check-srp
 description: ตรวจสอบ SRP violations ด้วย ast-grep outline และ deep analysis พร้อมรายงานครอบคลุม
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related: []
 ---
 ## Goal
 

@@ -1,18 +1,6 @@
 ---
 name: use-bun-native-api
 description: ใช้ Bun native APIs แทน Node.js libraries เพื่อ performance และ simplicity
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-bun
 ---
 
 ## Goal

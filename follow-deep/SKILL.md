@@ -1,19 +1,6 @@
 ---
 name: follow-deep
 description: พิจารณาและเรียก deep- workflows ที่เกี่ยวข้องตาม context ของ task
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review
 ---
 
 ## Goal

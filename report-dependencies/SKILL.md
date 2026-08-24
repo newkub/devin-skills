@@ -1,16 +1,6 @@
 ---
 name: report-dependencies
 description: สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

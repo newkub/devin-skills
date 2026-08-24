@@ -1,22 +1,6 @@
 ---
 name: follow-capacitor
 description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-bun
-  - follow-config
-  - follow-deploy
-  - follow-vite
-  - learn-from-web
 ---
 
 ## Goal

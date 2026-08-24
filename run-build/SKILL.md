@@ -1,21 +1,6 @@
 ---
 name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - improve-efficiency
-  - resolve-errors
-  - run-clean
-  - run-typecheck
 ---
 
 ## Goal

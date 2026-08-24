@@ -1,17 +1,6 @@
 ---
 name: follow-kotlin
 description: พัฒนา Kotlin applications ด้วย Clean Architecture และ Compose
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

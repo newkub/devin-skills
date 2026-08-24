@@ -1,18 +1,6 @@
 ---
 name: git-push
 description: Push commits ทั้ง root และ git submodules ไปยัง remote
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: refactor-all-workspace
 description: Deep refactoring ทุก workspace ใน monorepo ด้วย comprehensive analysis และ safety measures
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

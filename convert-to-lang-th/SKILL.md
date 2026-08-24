@@ -1,17 +1,6 @@
 ---
 name: convert-to-lang-th
 description: ใช้ภาษาไทยในการสื่อสารและทำงาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

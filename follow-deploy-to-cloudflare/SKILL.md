@@ -1,18 +1,6 @@
 ---
 name: follow-deploy-to-cloudflare
 description: Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangler จนกว่าจะ live สำเร็จ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

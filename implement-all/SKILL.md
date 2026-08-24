@@ -1,17 +1,6 @@
 ---
 name: implement-all
 description: ตรวจสอบ implementation completeness ของ areas ที่ review พบ และแปลง TODO, MOCK, FAKE, STUB,
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

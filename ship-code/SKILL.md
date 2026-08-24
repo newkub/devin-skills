@@ -1,26 +1,6 @@
 ---
 name: ship-code
 description: Ship code โดย commit โดยไม่ถาม release หรือ push ทำตาม AGENTS.md ก่อน
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-agents-md
-  - git-commit
-  - report
-  - resolve-errors
-  - run-check
-  - suggest-next-action
-  - update-agents-md
-  - validate
 ---
 
 ## Goal

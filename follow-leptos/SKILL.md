@@ -1,17 +1,6 @@
 ---
 name: follow-leptos
 description: สร้าง reactive web applications ด้วย Rust พร้อม SSR และ CSR support
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,19 +1,6 @@
 ---
 name: update-docs
 description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - find_file_by_name
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

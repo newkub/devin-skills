@@ -1,18 +1,6 @@
 ---
 name: run-profiler
 description: Profile performance เพื่อหา bottlenecks และ optimize
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

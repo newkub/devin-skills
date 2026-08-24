@@ -1,20 +1,6 @@
 ---
 name: review-discoverability
 description: Review discoverability of code, docs, and features with a checklist, score, and action items
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,22 +1,6 @@
 ---
 name: staff-devops
 description: รับบท Staff DevOps/SRE วิเคราะห์ CI/CD, infra, observability, และ deployment
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-ci-cd
-  - follow-signoz
-  - ship-code
-  - validate
 ---
 
 ## Goal

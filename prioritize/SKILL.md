@@ -1,17 +1,6 @@
 ---
 name: prioritize
 description: จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

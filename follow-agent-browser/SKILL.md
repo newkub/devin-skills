@@ -1,18 +1,6 @@
 ---
 name: follow-agent-browser
 description: ใช้ agent-browser CLI สำหรับ browser automation และ web testing อย่างครบถ้วน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - resolve-errors
 ---
 
 ## Goal

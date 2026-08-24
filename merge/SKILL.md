@@ -1,18 +1,6 @@
 ---
 name: merge
 description: merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - deep-analyze
-  - deep-validate
 ---
 
 ## Goal

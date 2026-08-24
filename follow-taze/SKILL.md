@@ -1,17 +1,6 @@
 ---
 name: follow-taze
 description: ตั้งค่า Taze สำหรับจัดการ dependencies อัตโนมัติใน monorepos
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

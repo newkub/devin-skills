@@ -1,20 +1,6 @@
 ---
 name: review-data
 description: Review data flow lineage, API-to-database and API-to-client mapping, schema consistency, impact
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

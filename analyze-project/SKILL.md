@@ -1,18 +1,6 @@
 ---
 name: analyze-project
 description: วิเคราะห์โปรเจกต์พื้นฐานด้วยเลือกใช้ tools ที่เหมาะสมกับงาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - suggest-next-action
 ---
 
 ## Goal

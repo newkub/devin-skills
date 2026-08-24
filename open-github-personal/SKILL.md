@@ -1,13 +1,6 @@
 ---
 name: open-github-personal
 description: เปิดหน้า GitHub profile ของผู้ใช้ใน browser
-allowed-tools:
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-related:
 ---
 
 ## Goal

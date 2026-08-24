@@ -1,17 +1,6 @@
 ---
 name: convert-oop-to-functional
 description: แปลง OOP code เป็น functional programming patterns
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

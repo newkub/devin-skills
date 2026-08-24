@@ -1,16 +1,6 @@
 ---
 name: follow-deterministic
 description: พัฒนาโปรเจกต์ด้วย deterministic programming พร้อม predictable outputs, no randomness
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-renovate
 description: ตั้งค่า Renovate สำหรับ auto update dependencies
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - renovate
 ---
 
 ## Goal

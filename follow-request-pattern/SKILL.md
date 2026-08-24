@@ -1,18 +1,6 @@
 ---
 name: follow-request-pattern
 description: เขียน pattern rules จากข้อมูลที่ให้มา
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

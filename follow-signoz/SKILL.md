@@ -1,20 +1,6 @@
 ---
 name: follow-signoz
 description: ติดตั้งและตั้งค่า SigNoz สำหรับ Node/Bun/TypeScript ด้วย OpenTelemetry
-allowed-tools:
-  - read
-  - exec
-  - write
-  - edit
-  - ask_user_question
-  - webfetch
-triggers:
-  - user
-  - model
-related:
-  - follow-config
-  - learn-from-web
-  - validate
 ---
 
 ## Goal

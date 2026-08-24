@@ -1,16 +1,6 @@
 ---
 name: follow-php
 description: แนวทางการพัฒนาโปรเจกต์ PHP ด้วย PSR standards และ best practices
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

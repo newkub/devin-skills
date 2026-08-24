@@ -1,17 +1,6 @@
 ---
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

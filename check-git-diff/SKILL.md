@@ -1,16 +1,6 @@
 ---
 name: check-git-diff
 description: ตรวจสอบความแตกต่างของ git refs หรือ working tree ด้วย git diff
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

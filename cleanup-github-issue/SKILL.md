@@ -1,18 +1,6 @@
 ---
 name: cleanup-github-issue
 description: Close, delete, or organize stale GitHub issues
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - suggest-next-action
 ---
 
 ## Goal

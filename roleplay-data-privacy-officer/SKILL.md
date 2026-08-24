@@ -1,18 +1,6 @@
 ---
 name: roleplay-data-privacy-officer
 description: รับบทเป็น Data Privacy Officer (DPO) อ่าน source code แล้วประเมินว่า PII handled ถูกไหม, มี data
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

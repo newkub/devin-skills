@@ -1,15 +1,6 @@
 ---
 name: save-to-github-gist
 description: สร้าง GitHub gist จากไฟล์หรือข้อความที่ระบุ
-allowed-tools:
-  - exec
-  - read
-  - write
-  - ask_user_question
-triggers:
-  - user
-related:
-argument-hint: <file-or-content> [--public|--secret]
 ---
 
 ## Goal

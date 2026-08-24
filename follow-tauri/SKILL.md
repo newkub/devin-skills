@@ -1,18 +1,6 @@
 ---
 name: follow-tauri
 description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

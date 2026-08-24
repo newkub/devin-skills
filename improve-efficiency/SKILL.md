@@ -1,25 +1,6 @@
 ---
 name: improve-efficiency
 description: ปรับปรุง build configuration, build time, output size, และ cost ของ project
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - improve-codebase
-  - improve-database
-  - improve-governance
-  - improve-performance
-  - run-check
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: implement-features-to-mvp
 description: Implement features ที่จำเป็นสำหรับ MVP เท่านั้น หยุดเมื่อครบถ้วน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

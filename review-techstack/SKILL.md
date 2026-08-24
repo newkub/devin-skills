@@ -1,20 +1,6 @@
 ---
 name: review-techstack
 description: Review tech stack และ dependencies ครอบคลุม framework, library, runtime, versions, security, unus...
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

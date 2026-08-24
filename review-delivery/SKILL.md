@@ -1,20 +1,6 @@
 ---
 name: review-delivery
 description: Review delivery ครอบคลุม docs, SEO, DX, analytics, testing, PR, logging, versioning, git hygiene
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

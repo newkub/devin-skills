@@ -1,17 +1,6 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจรตามมาตรฐาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

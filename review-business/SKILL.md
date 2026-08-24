@@ -1,20 +1,6 @@
 ---
 name: review-business
 description: Review business logic ครอบคลุม payment, subscription, multi-tenancy, feature flags, realtime, email
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

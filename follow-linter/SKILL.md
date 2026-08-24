@@ -1,17 +1,6 @@
 ---
 name: follow-linter
 description: ตั้งค่า linter สำหรับ project
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

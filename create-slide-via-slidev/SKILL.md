@@ -1,18 +1,6 @@
 ---
 name: create-slide-via-slidev
 description: สร้าง standalone Slidev project ด้วย CLI ในตำแหน่งใดก็ได้ พร้อม package.json ของตัวเอง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

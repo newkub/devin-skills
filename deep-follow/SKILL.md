@@ -1,19 +1,6 @@
 ---
 name: deep-follow
 description: ติดตามและ execute deep workflows ซ้อนลึกแบบ recursive ตาม context จนครบถ้วน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-  - skill
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

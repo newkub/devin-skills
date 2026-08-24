@@ -1,17 +1,6 @@
 ---
 name: mise
 description: Mise - Development environment manager สำหรับ manage tools และ versions ต่างๆ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

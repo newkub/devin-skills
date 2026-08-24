@@ -1,23 +1,6 @@
 ---
 name: follow-flat-folders
 description: แปลงไฟล์ใน nested directories ให้เป็น flat structure ภายใน scope เดียว พร้อมอัปเดท references
-allowed-tools:
-  - read
-  - edi
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - relocation
-  - report-table
-  - restructure
-  - validate
 ---
 
 ## Goal

@@ -1,27 +1,6 @@
 ---
 name: review-infrastructure
 description: Review infrastructure: workers, queues, webhooks, scalability, cost, and migration
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-frontend
-  - review-performance
-  - review-quality
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

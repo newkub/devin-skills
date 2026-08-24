@@ -1,18 +1,6 @@
 ---
 name: follow-turborepo
 description: แนวทางการพัฒนา monorepo ด้วย Turborepo v2.x
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

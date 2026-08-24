@@ -1,24 +1,6 @@
 ---
 name: all-folders
 description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - find_file_by_name
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - analyze-project
-  - report
-  - resolve-errors
-  - scan-codebase
-  - validate
 ---
 
 ## Goal

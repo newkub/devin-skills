@@ -1,17 +1,6 @@
 ---
 name: follow-create-rolldown-lib
 description: ตั้งค่าและใช้งาน Rolldown bundler สำหรับ libraries
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

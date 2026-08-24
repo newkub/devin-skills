@@ -1,27 +1,6 @@
 ---
 name: follow-ci-cd
 description: ตั้งค่าและติดตาม CI/CD pipeline ตาม project context
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-config
-  - git-commit
-  - learn-from-web
-  - report
-  - run-check
-  - ship-code
-  - suggest-next-action
-  - use-scripts
-  - validate
 ---
 
 ## Goal

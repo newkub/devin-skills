@@ -1,17 +1,6 @@
 ---
 name: write-solutions
 description: เขียน solution documents และ problem-solving workflows
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

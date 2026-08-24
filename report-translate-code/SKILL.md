@@ -1,17 +1,6 @@
 ---
 name: report-translate-code
 description: แปล function และ code เป็นประโยคที่เข้าใจง่าย
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

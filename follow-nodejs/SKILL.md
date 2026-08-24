@@ -1,17 +1,6 @@
 ---
 name: follow-nodejs
 description: ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

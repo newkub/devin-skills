@@ -1,17 +1,6 @@
 ---
 name: check-should-update
 description: ตรวจสอบ changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,21 +1,6 @@
 ---
 name: run-all-task
 description: Run all pending tasks from queue in order
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - resolve-errors
-  - run-check
-  - run-test
-  - suggest-next-action
 ---
 
 ## Goal

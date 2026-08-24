@@ -1,17 +1,6 @@
 ---
 name: list-alternative
 description: List alternatives ที่ดีกว่าสำหรับ libraries, tools, frameworks หรือ patterns
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

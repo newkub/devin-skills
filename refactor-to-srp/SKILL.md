@@ -1,18 +1,6 @@
 ---
 name: refactor-to-srp
 description: Refactor code ให้เป็น SRP โดยวิเคราะห์ structure และอัปเดท references
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

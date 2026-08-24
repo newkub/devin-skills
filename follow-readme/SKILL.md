@@ -1,17 +1,6 @@
 ---
 name: follow-readme
 description: <div align="center">
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

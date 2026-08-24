@@ -1,27 +1,6 @@
 ---
 name: review-frontend
 description: Review frontend quality including UX/UI, accessibility, responsive, rendering, images, browser compa
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - model
-  - user
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-infrastructure
-  - review-performance
-  - review-quality
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

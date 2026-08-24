@@ -1,22 +1,6 @@
 ---
 name: follow-flat-files
 description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file `<name>.md`
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-write-devin-skills
-  - update-reference
-  - validate
 ---
 
 ## Goal

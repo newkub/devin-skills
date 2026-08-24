@@ -1,17 +1,6 @@
 ---
 name: follow-ratatui
 description: สร้าง TUI ด้วย Ratatui library สำหรับ Rust
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

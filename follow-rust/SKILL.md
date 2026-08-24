@@ -1,18 +1,6 @@
 ---
 name: follow-rust
 description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

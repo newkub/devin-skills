@@ -1,17 +1,6 @@
 ---
 name: follow-rmux
 description: ใช้งาน RMUX สำหรับ terminal multiplexer และ automation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

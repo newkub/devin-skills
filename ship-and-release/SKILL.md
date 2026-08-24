@@ -1,24 +1,6 @@
 ---
 name: ship-and-release
 description: Ship code, push, และ release ไปยัง platform โดยยืนยันก่อน release
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - report
-  - resolve-errors
-  - run-release
-  - ship-code
-  - suggest-next-action
 ---
 
 ## Goal

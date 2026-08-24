@@ -1,25 +1,6 @@
 ---
 name: review-devin-global-skills
 description: Review global Devin skill packages for structure, references, and content
-allowed-tools:
-  - read
-  - edit
-  - find_file_by_name
-  - grep
-  - exec
-  - skill
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-circular-dependencies
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - report
-  - review-issue
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

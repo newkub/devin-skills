@@ -1,18 +1,6 @@
 ---
 name: report-my-cli-update
 description: รายงานอัปเดต CLI tools ที่ติดตั้งในเครื่องรายสัปดาห์
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

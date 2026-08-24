@@ -1,18 +1,6 @@
 ---
 name: follow-cloudflare-worker
 description: Setup build และ deploy applications บน Cloudflare Workers พร้อม Wrangler
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

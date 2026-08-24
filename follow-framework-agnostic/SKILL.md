@@ -1,17 +1,6 @@
 ---
 name: follow-framework-agnostic
 description: พัฒนา libraries ที่ใช้ได้บน multiple frameworks โดยไม่ผูกติด framework ใด
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

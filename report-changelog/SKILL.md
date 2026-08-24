@@ -1,18 +1,6 @@
 ---
 name: report-changelog
 description: สร้าง changelog รายงานจาก git log ระหว่าง tags หรือ releases
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

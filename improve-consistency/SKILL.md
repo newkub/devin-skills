@@ -1,18 +1,6 @@
 ---
 name: improve-consistency
 description: ตรวจสอบและปรับปรุงความสอดคล้องของ skill files ทั้งภายในและข้าม skill
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

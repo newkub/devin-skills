@@ -1,20 +1,6 @@
 ---
 name: review-bug-prone
 description: Review bug-prone code patterns พร้อม review score และ actionable findings
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

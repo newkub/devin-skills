@@ -1,18 +1,6 @@
 ---
 name: update-contributing-md
 description: อัปเดต CONTRIBUTING.md ให้สอดคล้องกับ project workflows และ conventions
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

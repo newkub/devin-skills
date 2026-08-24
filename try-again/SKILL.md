@@ -1,17 +1,6 @@
 ---
 name: try-again
 description: ทำตาม user prompt ล่าสุดอีกครั้ง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

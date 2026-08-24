@@ -1,24 +1,6 @@
 ---
 name: delete
 description: ลบไฟล์หรือ folder พร้อมอัพเดท references ทั้งหมดในโปรเจกต์
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-barrel-export
-  - scan-codebase
-  - ship-code
-  - update-reference
-  - validate
 ---
 
 ## Goal

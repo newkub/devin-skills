@@ -1,19 +1,6 @@
 ---
 name: watch-all-task
 description: Watch task files and auto run pending tasks on changes
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - implement-queue-md
-  - run-all-task
 ---
 
 ## Goal

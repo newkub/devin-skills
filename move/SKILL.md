@@ -1,17 +1,6 @@
 ---
 name: move
 description: ย้ายไฟล์และอัพเดท reference
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - update-reference
 ---
 
 ## Goal

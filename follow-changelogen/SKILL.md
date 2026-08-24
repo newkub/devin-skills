@@ -1,17 +1,6 @@
 ---
 name: follow-changelogen
 description: สร้าง changelog และจัดการ releases ด้วย changelogen
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

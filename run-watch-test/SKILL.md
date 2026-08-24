@@ -1,18 +1,6 @@
 ---
 name: run-watch-test
 description: รัน tests แบบ watch mode เพื่อตรวจสอบ test failures อย่างต่อเนื่อง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

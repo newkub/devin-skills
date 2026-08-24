@@ -1,26 +1,6 @@
 ---
 name: improve-docs
 description: ปรับปรุง docs, comments, และ developer experience ด้านเอกสาร
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-config
-  - improve-efficiency
-  - improve-reliability
-  - improve-writing
-  - resolve-errors
-  - review-docs
-  - run-check
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: improve-config
 description: ปรับปรุง project config ครบถ้วนด้วย follow-tasks, improve-efficiency, follow-config
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

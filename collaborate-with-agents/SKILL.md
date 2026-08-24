@@ -1,18 +1,6 @@
 ---
 name: collaborate-with-agents
 description: Coordinate multiple subagents to work on independent subtasks and merge results
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - ask_user_question
-  - run_subagent
-  - read_subagent
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-content-quality
 description: จัดรูปแบบและคุณภาพเนื้อหาให้ถูกต้อง อ่านง่าย สอดคล้องกัน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-scalar
 description: แนวทางการใช้งาน Scalar API Designer สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร GraphQL APIs แบบครบวงจร
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

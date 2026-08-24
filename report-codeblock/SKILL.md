@@ -1,18 +1,6 @@
 ---
 name: report-codeblock
 description: จัดรูปแบบ code blocks, diffs, JSON และ markdown documents
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

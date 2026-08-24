@@ -1,17 +1,6 @@
 ---
 name: follow-supabase-cli
 description: ใช้งาน Supabase CLI สำหรับ local development และ database management
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

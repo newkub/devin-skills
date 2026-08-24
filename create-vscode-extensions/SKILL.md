@@ -1,18 +1,6 @@
 ---
 name: create-vscode-extensions
 description: สร้าง VS Code extensions ด้วย TypeScript และ VS Code API
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - ship-code
 ---
 
 ## Goal

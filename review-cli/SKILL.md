@@ -1,20 +1,6 @@
 ---
 name: review-cli
 description: Review CLI apps for design, UX, errors, tests, build, distribution, and config
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

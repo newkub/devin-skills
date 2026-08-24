@@ -1,16 +1,6 @@
 ---
 name: follow-browser-extensions
 description: Follow Browser Extensions
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

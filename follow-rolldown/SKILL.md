@@ -1,17 +1,6 @@
 ---
 name: follow-rolldown
 description: Fast JavaScript bundler ที่เขียนด้วย Rust ใช้ Rollup-compatible API
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

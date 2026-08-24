@@ -1,17 +1,6 @@
 ---
 name: check-reference
 description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

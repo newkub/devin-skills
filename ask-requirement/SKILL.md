@@ -1,20 +1,6 @@
 ---
 name: ask-requirement
 description: ถาม requirements ผ่าน ask-me/ask_user_question แล้วสรุปเป็นข้อกำหนด
-allowed-tools:
-  - read
-  - ask_user_question
-  - write
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - deep-plan
-  - follow-goal
-  - update-agents-md
-  - use-lib-better
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: learn-with-slide
 description: เรียนรู้และสร้าง Slidev presentation สรุปความรู้ใน D:/newkub/slides/learn/
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

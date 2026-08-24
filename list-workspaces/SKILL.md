@@ -1,18 +1,6 @@
 ---
 name: list-workspaces
 description: แสดงรายการ workspaces ทั้งหมดใน monorepo พร้อม dependencies graph
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - report-table
 ---
 
 ## Goal

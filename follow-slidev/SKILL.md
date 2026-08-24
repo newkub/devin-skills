@@ -1,17 +1,6 @@
 ---
 name: follow-slidev
 description: ตั้งค่าและพัฒนา presentation slides ด้วย Slidev framework
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

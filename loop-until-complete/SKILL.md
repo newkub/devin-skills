@@ -1,19 +1,6 @@
 ---
 name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - try-again
 ---
 
 ## Goal

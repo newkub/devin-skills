@@ -1,17 +1,6 @@
 ---
 name: report-config-files
 description: Report configuration files, defaults, and drift in the project
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

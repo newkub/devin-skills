@@ -1,17 +1,6 @@
 ---
 name: follow-supabase
 description: ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, และ Realtime
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,20 +1,6 @@
 ---
 name: review-error-handling
 description: Review error boundaries, try-catch, unhandled rejections, messages, codes, recovery, degradation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

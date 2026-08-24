@@ -1,20 +1,6 @@
 ---
 name: review-integration
 description: Review API client design, timeout, retry, circuit breaker, vendor lock-in, abstraction, fallback
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

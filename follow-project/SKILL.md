@@ -1,19 +1,6 @@
 ---
 name: follow-project
 description: อัปเดต project documentation, config, rules, และ tooling ให้ครบถ้วนและสอดคล้องกัน
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-ci-cd
 ---
 
 ## Goal

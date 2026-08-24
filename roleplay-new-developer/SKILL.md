@@ -1,18 +1,6 @@
 ---
 name: roleplay-new-developer
 description: รับบทเป็น dev ใหม่ที่เพิ่ง join พยายาม onboard ผ่าน codebase หาสิ่งที่งง ขาด docs ไม่มี context
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

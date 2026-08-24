@@ -1,18 +1,6 @@
 ---
 name: follow-clippy
 description: ตั้งค่า Clippy lint rules และ error handling standards
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: review
 description: Review ตาม context โดยเลือก review skill ที่เหมาะสม
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

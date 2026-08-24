@@ -1,19 +1,6 @@
 ---
 name: test-usage
 description: ทดสอบ usage examples จาก README และ docs เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - report
 ---
 
 ## Goal

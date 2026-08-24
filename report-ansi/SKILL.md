@@ -1,16 +1,6 @@
 ---
 name: report-ansi
 description: Format terminal reports with ANSI colors, progress bars, and status indicators
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-devin
 description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

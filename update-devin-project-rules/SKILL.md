@@ -1,18 +1,6 @@
 ---
 name: update-devin-project-rules
 description: อัพเดท .devin/rules ตาม project analysis และ dependencies
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

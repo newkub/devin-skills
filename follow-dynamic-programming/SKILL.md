@@ -1,17 +1,6 @@
 ---
 name: follow-dynamic-programming
 description: แก้ปัญหาที่ซับซ้อนด้วย dynamic programming พร้อม memoization, tabulation, optimization
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

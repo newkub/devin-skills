@@ -1,18 +1,6 @@
 ---
 name: follow-create-nvim-plugins
 description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - ship-code
 ---
 
 ## Goal

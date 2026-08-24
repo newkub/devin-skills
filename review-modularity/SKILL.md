@@ -1,20 +1,6 @@
 ---
 name: review-modularity
 description: Review modularity ครอบคลุม module boundaries, cohesion, coupling, and responsibilities
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,20 +1,6 @@
 ---
 name: review-debugging
 description: Review debuggability ครอบคลุม logging, error messages, naming, complexity พร้อม review score
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

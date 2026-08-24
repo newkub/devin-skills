@@ -1,15 +1,6 @@
 ---
 name: implement-plan
 description: อ่านแผนใน .devin/plan/<title-date>.md ทำงานให้ครบ แล้วลบแผน
-allowed-tools:
-  - read
-  - edit
-  - write
-  - exec
-  - ask_user_question
-triggers:
-  - user
-related:
 ---
 
 ## Goal

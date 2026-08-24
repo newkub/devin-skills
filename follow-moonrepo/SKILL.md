@@ -1,17 +1,6 @@
 ---
 name: follow-moonrepo
 description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project graph
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

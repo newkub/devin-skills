@@ -1,18 +1,6 @@
 ---
 name: follow-data-structures
 description: เลือกและใช้งาน data structures ตามลักษณะข้อมูลและ operations
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - delete
 ---
 
 ## Goal

@@ -1,28 +1,6 @@
 ---
 name: follow-subagents
 description: ใช้ subagents ตาม job roles สำหรับงานทีแบ่งเป็นส่วนและทำขนานกันได้
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - run_subagent
-  - read_subagent
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - deep-verify
-  - report
-  - run-parallel-via-spawn-subagents
-  - senior-backend
-  - senior-frontend
-  - staff-devops
-  - staff-qa
-  - validate
 ---
 
 ## Goal

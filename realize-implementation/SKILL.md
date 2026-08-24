@@ -1,17 +1,6 @@
 ---
 name: realize-implementation
 description: แปลงทุกอย่างเป็น production code จริง ครบทุกมิติ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

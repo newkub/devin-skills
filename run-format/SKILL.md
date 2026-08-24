@@ -1,18 +1,6 @@
 ---
 name: run-format
 description: ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

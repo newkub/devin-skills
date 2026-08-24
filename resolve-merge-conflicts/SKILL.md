@@ -1,22 +1,6 @@
 ---
 name: resolve-merge-conflicts
 description: แก้ไข git merge conflicts อย่างปลอดภัย ไม่สูญเสีย changes
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - edit-this-repo
-  - git-commit
-  - run-check
-  - ship-code
-  - validate
 ---
 
 ## Goal

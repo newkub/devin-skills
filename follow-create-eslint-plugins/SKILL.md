@@ -1,17 +1,6 @@
 ---
 name: follow-create-eslint-plugins
 description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

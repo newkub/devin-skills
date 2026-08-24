@@ -1,18 +1,6 @@
 ---
 name: read-all-files
 description: อ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะห์
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - update-reference
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: git-commit-at-devin-skills-global
 description: Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ตามมาตรฐาน conventional commits
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

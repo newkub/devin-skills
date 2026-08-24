@@ -1,16 +1,6 @@
 ---
 name: check-web-performance
 description: ติดตั้งและตรวจสอบ web performance ด้วย Core Web Vitals และ Lighthouse
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

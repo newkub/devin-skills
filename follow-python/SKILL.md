@@ -1,17 +1,6 @@
 ---
 name: follow-python
 description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

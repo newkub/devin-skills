@@ -1,17 +1,6 @@
 ---
 name: renovate
 description: Automated dependency update tool ที่สร้าง pull requests อัตโนมัติสำหรับ update dependencies
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

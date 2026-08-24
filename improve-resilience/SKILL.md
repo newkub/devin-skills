@@ -1,28 +1,6 @@
 ---
 name: improve-resilience
 description: ปรับปรุง resilience, modularity, isolation, side effects, flow, และ rate limiting
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - follow-deterministic
-  - follow-functional-programming
-  - follow-parallel
-  - improve-codebase
-  - learn-from-web
-  - resolve-errors
-  - run-check
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

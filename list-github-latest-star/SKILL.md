@@ -1,16 +1,6 @@
 ---
 name: list-github-latest-star
 description: แสดง 50 starred repositories ล่าสุดของ authenticated user
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

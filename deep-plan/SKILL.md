@@ -1,18 +1,6 @@
 ---
 name: deep-plan
 description: วางแผนละเอียดหลายมิติ ครอบคลุม risk, dependencies, alternatives, timeline
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: refactor-skills
 description: Refactor โครงสร้าง skill files และ directories เพื่อ SRP และลด redundancy
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-debugging
 description: หลักการ debug อย่างเป็นระบบ ตั้งแต่ reproduce ถึง fix และ prevent
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

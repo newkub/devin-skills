@@ -1,16 +1,6 @@
 ---
 name: computer-arhitecture
 description: ให้ผู้ใช้เข้าใจและสามารถประยุกต์ใช้ computer architecture ได้อย่างมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

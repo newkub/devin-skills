@@ -1,17 +1,6 @@
 ---
 name: follow-cargo
 description: ตั้งค่า Cargo lint rules และ workspace lint configuration
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

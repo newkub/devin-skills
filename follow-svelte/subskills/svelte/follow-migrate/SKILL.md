@@ -1,19 +1,6 @@
 ---
 name: svelte-follow-migrate
 description: Migrate Svelte 4 project ไป Svelte 5
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-typescript
-  - validate
 ---
 
 ## Goal

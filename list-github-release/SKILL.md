@@ -1,18 +1,6 @@
 ---
 name: list-github-release
 description: แสดง releases ทั้งหมดของ repo ที่ระบุบน GitHub
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - report-table
 ---
 
 ## Goal

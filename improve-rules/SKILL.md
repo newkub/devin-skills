@@ -1,18 +1,6 @@
 ---
 name: improve-rules
 description: ปรับปรุงคุณภาพ .devin/rules และ ast-grep rules ให้ถูกต้อง ครบถ้วน และไม่ซ้ำซ้อน
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

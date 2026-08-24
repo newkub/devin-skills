@@ -1,22 +1,6 @@
 ---
 name: senior-backend
 description: รับบท Senior Backend Engineer วิเคราะห์ API, DB, security, และ scalability
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - follow-drizzle
-  - follow-elysia
-  - validate
 ---
 
 ## Goal

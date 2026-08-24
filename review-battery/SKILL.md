@@ -1,20 +1,6 @@
 ---
 name: review-battery
 description: Review battery/energy usage ครอบคลุม polling, sensors, network, background, rendering, wake locks
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-release
 description: เลือกและตั้งค่า release strategy สำหรับ project ครอบคลุมทุก platform
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

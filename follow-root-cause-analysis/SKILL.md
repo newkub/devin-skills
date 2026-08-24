@@ -1,18 +1,6 @@
 ---
 name: follow-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

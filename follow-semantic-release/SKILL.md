@@ -1,16 +1,6 @@
 ---
 name: follow-semantic-release
 description: ใช้งาน Semantic Release สำหรับ automated version management และ package publishing
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

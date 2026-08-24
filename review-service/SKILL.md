@@ -1,20 +1,6 @@
 ---
 name: review-service
 description: Review service layer organization, boundaries, business logic, transactions, testability, DI
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

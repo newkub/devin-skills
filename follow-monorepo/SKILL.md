@@ -1,17 +1,6 @@
 ---
 name: follow-monorepo
 description: Implement Monorepo Architecture for large-scale projects with multiple packages or applications
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

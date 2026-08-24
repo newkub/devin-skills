@@ -1,17 +1,6 @@
 ---
 name: follow-git
 description: ใช้งาน git commands ตามสถานการณ์
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

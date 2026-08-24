@@ -1,24 +1,6 @@
 ---
 name: improve-governance
 description: ปรับปรุง governance และ compliance ของ project
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - improve-codebase
-  - learn-from-web
-  - resolve-errors
-  - suggest-next-action
-  - use-scripts
-  - validate
 ---
 
 ## Goal

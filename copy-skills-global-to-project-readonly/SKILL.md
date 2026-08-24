@@ -1,18 +1,6 @@
 ---
 name: copy-skills-global-to-project-readonly
 description: คัดลอก global skills ไปยัง project ในโหมด read-only โดยไม่กระทบ source จริง
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

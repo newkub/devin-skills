@@ -1,20 +1,6 @@
 ---
 name: review-data-validation
 description: Review Zod schemas, input/output validation, data contracts, transformation safety, type coercion
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

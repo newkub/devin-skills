@@ -1,21 +1,6 @@
 ---
 name: staff-qa
 description: รับบท Staff QA วิเคราะห์ test coverage, edge cases, และ test quality
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-tdd
-  - update-test
-  - validate
 ---
 
 ## Goal

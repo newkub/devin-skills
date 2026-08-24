@@ -1,17 +1,6 @@
 ---
 name: write-github-issue
 description: Write or update GitHub issue title, body, and metadata
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

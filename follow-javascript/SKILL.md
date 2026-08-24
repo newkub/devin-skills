@@ -1,17 +1,6 @@
 ---
 name: follow-javascript
 description: เขียน JavaScript ตาม modern best practices และ ES2024+
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

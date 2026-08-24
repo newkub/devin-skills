@@ -1,14 +1,6 @@
 ---
 name: read-related
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
-allowed-tools:
-  - read
-  - skill
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

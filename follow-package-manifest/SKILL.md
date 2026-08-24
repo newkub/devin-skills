@@ -1,18 +1,6 @@
 ---
 name: follow-package-manifest
 description: ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,26 +1,6 @@
 ---
 name: improve-frontend
 description: ปรับปรุง frontend ด้าน UX/UI, accessibility, SEO, rendering, assets, payload และ battery
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-accessibility
-  - improve-performance
-  - improve-writing
-  - resolve-errors
-  - review-frontend
-  - senior-frontend
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

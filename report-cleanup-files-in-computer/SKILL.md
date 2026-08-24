@@ -1,18 +1,6 @@
 ---
 name: report-cleanup-files-in-computer
 description: รายงานไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้ โดยไม่ลบอัตโนมัติ
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

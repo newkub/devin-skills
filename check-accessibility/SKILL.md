@@ -1,16 +1,6 @@
 ---
 name: check-accessibility
 description: ตรวจสอบ accessibility ตามมาตรฐาน WCAG
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

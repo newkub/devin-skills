@@ -1,22 +1,6 @@
 ---
 name: implement-github-task
 description: Implement a task from a GitHub issue or project item
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - create-plan
-  - realize-implementation
-  - refactor
-  - run-check
-  - run-test
 ---
 
 ## Goal

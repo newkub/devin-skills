@@ -1,20 +1,6 @@
 ---
 name: review-codebase
 description: Review ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
-argument-hint: optional workspace path or name
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-quality
 ---
 
 ## Goal

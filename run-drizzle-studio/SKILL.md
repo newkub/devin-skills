@@ -1,17 +1,6 @@
 ---
 name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

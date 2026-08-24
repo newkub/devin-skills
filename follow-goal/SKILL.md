@@ -1,17 +1,6 @@
 ---
 name: follow-goal
 description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,16 +1,6 @@
 ---
 name: run-test-unit
 description: รัน unit tests สำหรับ pure functions และ business logic
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

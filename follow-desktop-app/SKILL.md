@@ -1,19 +1,6 @@
 ---
 name: follow-desktop-app
 description: สร้าง Desktop Applications ด้วย Tauri, SolidStart, และ UnoCSS
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - refactor-all-workspace
 ---
 
 ## Goal

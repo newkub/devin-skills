@@ -1,17 +1,6 @@
 ---
 name: follow-zaidian-ui
 description: ใช้ Zaidian UI สำหรับ UI components สำหรับ SolidJS ด้วย accessible, customizable components ที่
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

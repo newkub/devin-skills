@@ -1,19 +1,6 @@
 ---
 name: run-test
 description: รัน test suite ตรวจหา failures แล้ว validate/review เพื่อระบุว่าควรแก้ source หรือ test
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review
 ---
 
 ## Goal

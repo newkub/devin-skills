@@ -1,18 +1,6 @@
 ---
 name: capture-terminal
 description: Capture ภาพจาก terminal output สำหรับ documentation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

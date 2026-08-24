@@ -1,17 +1,6 @@
 ---
 name: update-release-md
 description: สร้าง RELEASE.md ด้วย Bun Shell
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

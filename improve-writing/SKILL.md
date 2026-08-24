@@ -1,18 +1,6 @@
 ---
 name: improve-writing
 description: ปรับปรุงคุณภาพการเขียนเอกสาร, comments, commit messages, changelogs ให้ชัดเจน กระชับ สม่ำเสมอ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

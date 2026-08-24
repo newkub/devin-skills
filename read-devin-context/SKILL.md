@@ -1,17 +1,6 @@
 ---
 name: read-devin-context
 description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
-allowed-tools:
-  - read
-  - glob
-  - exec
-  - grep
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

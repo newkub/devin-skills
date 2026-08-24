@@ -1,20 +1,6 @@
 ---
 name: idea-features
 description: Generate feature ideas and write them into VitePress docs as markdown via /update-docs
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - deep-research-dependencies
-  - open-web
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-github-issue
 description: ใช้ `gh issue` สร้าง ดู แก้ไข และจัดการ issues ของ repository ผ่าน CLI
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

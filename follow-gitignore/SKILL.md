@@ -1,17 +1,6 @@
 ---
 name: follow-gitignore
 description: สร้างและจัดการ .gitignore ที่ root และ workspace โดยแจกจ่าย patterns ตาม responsibility
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

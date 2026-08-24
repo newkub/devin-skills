@@ -1,27 +1,6 @@
 ---
 name: review-reliability
 description: Review reliability: observability, disaster recovery, rate limiting, predictability, concurrency
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-frontend
-  - review-infrastructure
-  - review-performance
-  - review-quality
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

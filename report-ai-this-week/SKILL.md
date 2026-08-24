@@ -1,18 +1,6 @@
 ---
 name: report-ai-this-week
 description: รายงานข่าว AI และ open source projects รายสัปดาห์ด้วย deep research
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

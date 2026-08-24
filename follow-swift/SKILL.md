@@ -1,17 +1,6 @@
 ---
 name: follow-swift
 description: แนวทางการพัฒนา Swift applications ตาม Clean Architecture และ SwiftUI
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

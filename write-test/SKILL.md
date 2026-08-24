@@ -1,20 +1,6 @@
 ---
 name: write-test
 description: เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - find_file_by_name
-  - exec
-  - skill
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - report
 ---
 
 ## Goal

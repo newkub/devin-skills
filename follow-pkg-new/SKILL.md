@@ -1,17 +1,6 @@
 ---
 name: follow-pkg-new
 description: ตั้งค่า pkg.pr.new สำหรับ continuous preview releases
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,24 +1,6 @@
 ---
 name: analyze-codebase-quality
 description: วิเคราะห์คุณภาพของ codebase ด้วย analyze-codebase-quality CLI
-allowed-tools:
-  - read
-  - exec
-  - grep
-  - glob
-  - scan-codebase
-  - report-table
-  - suggest-next-action
-  - validate
-triggers:
-  - user
-  - model
-related:
-  - follow-write-devin-skills
-  - report-table
-  - scan-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: report-only
 description: Report current state without making any changes
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

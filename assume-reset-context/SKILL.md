@@ -1,18 +1,6 @@
 ---
 name: assume-reset-context
 description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - find_file_by_name
-  - skill
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

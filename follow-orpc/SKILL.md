@@ -1,18 +1,6 @@
 ---
 name: follow-orpc
 description: แนวทางการพัฒนา API ด้วย oRPC แบบ type-safe ตาม official best practices
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-zod
 ---
 
 ## Goal

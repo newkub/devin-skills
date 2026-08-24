@@ -1,24 +1,6 @@
 ---
 name: edit-this-repo
 description: แก้ไข files ใน repository ปัจจุบันอย่างปลอดภัย minimal และ validate
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - git-commit
-  - ship-code
-  - validate
 ---
 
 ## Goal

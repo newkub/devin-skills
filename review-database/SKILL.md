@@ -1,20 +1,6 @@
 ---
 name: review-database
 description: Review database schema, query, index, integrity, connection, and migrations
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

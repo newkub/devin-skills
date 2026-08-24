@@ -1,18 +1,6 @@
 ---
 name: follow-moon-format
 description: Format code ด้วย moonrepo และแก้ไข errors จนไม่มีเหลือ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - resolve-errors
 ---
 
 ## Goal

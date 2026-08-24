@@ -1,18 +1,6 @@
 ---
 name: report-and-fix
 description: Report findings and apply fixes with user confirmation
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

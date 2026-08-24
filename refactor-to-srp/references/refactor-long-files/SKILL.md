@@ -1,17 +1,6 @@
 ---
 name: refactor-long-files
 description: ตรวจหาและ refactor ไฟล์ที่ยาวกว่า threshold ให้มีขนาดเหมาะสม
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

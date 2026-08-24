@@ -1,16 +1,6 @@
 ---
 name: learn-from-cli
 description: เรียนรู้ command structure, subcommands, options, และ output ของ CLI tool ใดก็ได้
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

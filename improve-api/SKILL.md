@@ -1,18 +1,6 @@
 ---
 name: improve-api
 description: ปรับปรุง api ของ project
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - improve-codebase
 ---
 
 ## Goal

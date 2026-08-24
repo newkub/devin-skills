@@ -1,16 +1,6 @@
 ---
 name: use-lib-better
 description: เปรียบเทียบ dependencies ปัจจุบัน และสรุปว่าควรใช้ dependency อะไร
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

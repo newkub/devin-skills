@@ -1,17 +1,6 @@
 ---
 name: follow-zig
 description: เขียน Zig ตาม best practices และ language conventions
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

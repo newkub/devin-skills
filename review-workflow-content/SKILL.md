@@ -1,20 +1,6 @@
 ---
 name: review-workflow-content
 description: Review คุณภาพเนื้อหา workflow ลด noise ซ้ำซ้อน และกรอง high-impact content
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

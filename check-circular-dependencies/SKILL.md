@@ -1,17 +1,6 @@
 ---
 name: check-circular-dependencies
 description: ตรวจจับและรายงาน circular dependencies ใน codebase และ skills directory
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

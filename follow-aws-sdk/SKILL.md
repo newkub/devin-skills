@@ -1,16 +1,6 @@
 ---
 name: follow-aws-sdk
 description: ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

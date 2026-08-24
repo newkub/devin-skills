@@ -1,16 +1,6 @@
 ---
 name: add-to-queue
 description: รับ request จากผู้ใช้ และเพิ่มลง QUEUE.md ใน project root พร้อมชี้แนะ next step
-argument-hint: <title> <request>
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - ask_user_question
-triggers:
-  - user
-related:
 ---
 
 ## Goal

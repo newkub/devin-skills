@@ -1,19 +1,6 @@
 ---
 name: summarize-this-chat-session
 description: สรุป chat session ทีคุยในครังนี้
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - memorize
-  - report-table
 ---
 
 ---

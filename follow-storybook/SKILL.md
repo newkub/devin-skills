@@ -1,17 +1,6 @@
 ---
 name: follow-storybook
 description: ตั้งค่าและใช้ Storybook สำหรับ component development และ documentation
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

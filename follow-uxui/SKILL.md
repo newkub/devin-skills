@@ -1,19 +1,6 @@
 ---
 name: follow-uxui
 description: เลือกและใช้งาน UX/UI patterns ตาม dimension ทีเหมาะสม
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - skill
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

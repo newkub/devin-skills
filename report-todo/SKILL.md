@@ -1,18 +1,6 @@
 ---
 name: report-todo
 description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อมตำแหน่งและความสำคัญ
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

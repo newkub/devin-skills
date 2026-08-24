@@ -1,19 +1,6 @@
 ---
 name: cli
 description: รัน analyze-codebase-quality CLI บน project ทีระบุ
-argument-hint: [path] [options]
-allowed-tools:
-  - read
-  - exec
-  - glob
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - analyze-codebase-quality
-  - validate
-  - run-check
 ---
 
 ## Goal

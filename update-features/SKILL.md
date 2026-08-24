@@ -1,18 +1,6 @@
 ---
 name: update-features
 description: วิเคราะห์ features ที่มีอยู่ใน project และ delegate documentation ให้ /update-docs
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - update-docs
 ---
 
 ## Goal

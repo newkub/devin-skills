@@ -1,20 +1,6 @@
 ---
 name: follow-effect-ts
 description: แนวทางการพัฒนาด้วย Effect-TS v3.x สำหรับ functional programming และ type-safe effects
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - follow-bun
-  - follow-typescript
-  - follow-vitest
 ---
 
 ## Goal

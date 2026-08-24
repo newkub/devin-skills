@@ -1,17 +1,6 @@
 ---
 name: add-more
 description: วิเคราะห์ gaps และเพิ่มสิ่งที่ขาดหายไปตาม context
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

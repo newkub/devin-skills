@@ -1,18 +1,6 @@
 ---
 name: roleplay-qa-tester
 description: รับบทเป็น QA engineer คิด edge cases boundary conditions และ test scenarios จาก code
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

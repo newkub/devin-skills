@@ -1,17 +1,6 @@
 ---
 name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

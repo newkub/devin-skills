@@ -1,17 +1,6 @@
 ---
 name: review-agents-md
 description: Review AGENTS.md for structure, valid references, and workspace coverage
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

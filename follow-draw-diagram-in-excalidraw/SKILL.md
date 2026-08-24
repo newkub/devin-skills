@@ -1,17 +1,6 @@
 ---
 name: follow-draw-diagram-in-excalidraw
 description: วาด diagram ด้วย Excalidraw สำหรับ architecture และ flows
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

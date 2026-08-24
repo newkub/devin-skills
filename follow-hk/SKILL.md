@@ -1,19 +1,6 @@
 ---
 name: follow-hk
 description: ตั้งค่าและใช้งาน hk สำหรับ Git hooks แทน Lefthook/pre-commit
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - grep
-  - glob
-  - webfetch
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

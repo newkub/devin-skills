@@ -1,18 +1,6 @@
 ---
 name: follow-vercel
 description: Deploy applications บน Vercel พร้อม serverless และ edge functions
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

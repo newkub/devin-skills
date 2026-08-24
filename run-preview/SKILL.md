@@ -1,17 +1,6 @@
 ---
 name: run-preview
 description: รัน preview build เพื่อทดสอบก่อน deploy จริง
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

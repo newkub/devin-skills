@@ -1,17 +1,6 @@
 ---
 name: follow-oop-to-composables
 description: แปลง OOP เป็น composables function style
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

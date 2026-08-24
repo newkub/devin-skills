@@ -1,20 +1,6 @@
 ---
 name: review-dx
 description: Review developer experience ด้าน tooling, onboarding, docs, และ feedback loops พร้อม review score
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

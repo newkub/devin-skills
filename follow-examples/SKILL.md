@@ -1,16 +1,6 @@
 ---
 name: follow-examples
 description: Guide for Examples
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

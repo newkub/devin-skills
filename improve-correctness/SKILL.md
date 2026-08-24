@@ -1,25 +1,6 @@
 ---
 name: improve-correctness
 description: ตรวจสอบและปรับปรุงความถูกต้อง, type safety, และ test coverage ของ code, config, rules, หรือ skills
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - find_file_by_name
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - report-table
-  - resolve-errors
-  - suggest-next-action
-  - use-scripts
-  - validate
 ---
 
 ## Goal

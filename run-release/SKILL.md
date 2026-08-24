@@ -1,17 +1,6 @@
 ---
 name: run-release
 description: Auto-detect platforms และ release ไปยัง external platforms อัตโนมัติ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

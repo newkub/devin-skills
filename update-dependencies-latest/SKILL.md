@@ -1,17 +1,6 @@
 ---
 name: update-dependencies-latest
 description: อัพเดท dependencies ในทุก workspace ให้เป็น latest version ทั้ง major, minor, patch
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

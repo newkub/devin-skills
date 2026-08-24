@@ -1,20 +1,6 @@
 ---
 name: run-review-reference
 description: Define and run the review script in package.json.
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - git-commit
-  - run-build
-  - run-lint
-  - run-test
 ---
 ## Goal
 

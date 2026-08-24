@@ -1,15 +1,6 @@
 ---
 name: implement-queue-md
 description: อ่าน QUEUE.md ทำงานทั้งหมดให้ครบด้วย deep-plan และ realize-implementation
-allowed-tools:
-  - read
-  - write
-  - edit
-  - exec
-  - ask_user_question
-triggers:
-  - user
-related:
 ---
 
 ## Goal

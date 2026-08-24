@@ -1,27 +1,6 @@
 ---
 name: review-docs
 description: Review documentation quality including README, setup, API docs, examples, guides, changelogs, and co
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - model
-  - user
-related:
-  - review-codebase
-  - review-correctness
-  - review-frontend
-  - review-infrastructure
-  - review-performance
-  - review-quality
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

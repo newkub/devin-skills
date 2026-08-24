@@ -1,18 +1,6 @@
 ---
 name: report-git-diff
 description: รายงาน git diff พร้อมสรุปการเปลี่ยนแปลง สถิติ และ insights ในรูปแบบที่อ่านง่าย
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

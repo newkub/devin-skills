@@ -1,18 +1,6 @@
 ---
 name: update-changelog-md
 description: สร้าง changelog ด้วย Bun Shell
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - git-commit
 ---
 
 ## Goal

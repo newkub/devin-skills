@@ -1,18 +1,6 @@
 ---
 name: search-project-in-drive-d
 description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern ที่ระบุ
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

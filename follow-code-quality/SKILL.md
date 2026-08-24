@@ -1,17 +1,6 @@
 ---
 name: follow-code-quality
 description: รักษามาตรฐานคุณภาพโค้ดด้วย separation of concerns, type safety, error handling
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,40 +1,6 @@
 ---
 name: improve-codebase
 description: ปรับปรุง codebase โดยรวมด้วย improve-* skills และลด redundancy ตาม AGENTS.md
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - ask-me
-  - ask-requirement
-  - check-reference
-  - improve-api
-  - improve-correctness
-  - improve-database
-  - improve-docs
-  - improve-efficiency
-  - improve-frontend
-  - improve-governance
-  - improve-performance
-  - improve-reliability
-  - improve-resilience
-  - improve-security
-  - report
-  - review-quality
-  - run-check
-  - scan-codebase
-  - suggest-next-action
-  - update-agents-md
-  - update-reference
-  - validate
 ---
 
 ## Goal

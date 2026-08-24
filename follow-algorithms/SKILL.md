@@ -1,18 +1,6 @@
 ---
 name: follow-algorithms
 description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

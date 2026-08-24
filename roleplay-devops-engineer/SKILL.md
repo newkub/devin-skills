@@ -1,18 +1,6 @@
 ---
 name: roleplay-devops-engineer
 description: รับบทเป็น DevOps/SRE มอง code ว่า deploy ง่ายไหม monitor ได้ไหม rollback ได้ไหม observability พอไหม
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

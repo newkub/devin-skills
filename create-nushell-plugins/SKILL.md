@@ -1,17 +1,6 @@
 ---
 name: create-nushell-plugins
 description: สร้าง NuShell plugin ด้วย Rust ตาม official contributor guide
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

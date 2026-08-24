@@ -1,35 +1,6 @@
 ---
 name: improve-devin-skills
 description: ปรับปรุง skill หนึ่งหรือกลุ่มย่อยตาม /follow-devin-skills-md และ /follow-write-devin-skills
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-circular-dependencies
-  - check-reference
-  - consider-use-in-another-skills
-  - deep-research
-  - follow-best-practice
-  - follow-devin-skills-md
-  - follow-write-devin-skills
-  - improve-consistency
-  - improve-correctness
-  - read-related-skills
-  - refactor-skills
-  - report
-  - review-codebase
-  - scan-codebase
-  - suggest-next-action
-  - validate
-  - write-explicit
 ---
 
 ## Goal

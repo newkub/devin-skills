@@ -1,17 +1,6 @@
 ---
 name: run-bench
 description: รัน benchmark tests เพื่อวัดประสิทธิภาพและเปรียบเทียบ performance
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

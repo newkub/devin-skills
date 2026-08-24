@@ -1,17 +1,6 @@
 ---
 name: implement-comment-todo
 description: แปลง TODO, FIXME, HACK เป็น production code แบบ edit-only
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

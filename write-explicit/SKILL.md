@@ -1,22 +1,6 @@
 ---
 name: write-explicit
 description: เขียนหรือแก้ instructions ให้ชัดเจน วัดผลได้ และมี single responsibility
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - consider-use-in-another-skills
-  - follow-write-devin-skills
-  - improve-devin-skills
-  - validate
 ---
 
 ## Goal

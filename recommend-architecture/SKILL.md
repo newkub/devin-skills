@@ -1,18 +1,6 @@
 ---
 name: recommend-architecture
 description: แนะนำ architecture และ file structure ที่เหมาะสมสำหรับโปรเจกต์ พร้อม comment และตาราง file pattern
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

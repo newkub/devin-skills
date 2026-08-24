@@ -1,20 +1,6 @@
 ---
 name: review-architecture
 description: Review architecture ครอบคลุม patterns, boundaries, coupling, design principles, design pattern co...
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: report-my-tech-stack-update
 description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

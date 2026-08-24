@@ -1,16 +1,6 @@
 ---
 name: idea-merge
 description: สร้างไอเดียการ merge branches ตามสถานการณ์
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

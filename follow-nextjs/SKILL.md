@@ -1,17 +1,6 @@
 ---
 name: follow-nextjs
 description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 15 applications
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

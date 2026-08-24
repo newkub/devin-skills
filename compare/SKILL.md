@@ -1,16 +1,6 @@
 ---
 name: compare
 description: เปรียบเทียบ options, tools, หรือ solutions เพื่อตัดสินใจ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-open-web-dependencies
 description: เปิด website ของ dependencies จาก package manifest
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

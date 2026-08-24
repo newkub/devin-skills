@@ -1,16 +1,6 @@
 ---
 name: improve-all-skills
 description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

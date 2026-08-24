@@ -1,27 +1,6 @@
 ---
 name: review-quality
 description: Review code quality: simplicity, redundancy, naming, consistency, and refactor readiness
-allowed-tools:
-  - ask_user_question
-  - edit
-  - exec
-  - glob
-  - grep
-  - read
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - review-correctness
-  - review-docs
-  - review-frontend
-  - review-infrastructure
-  - review-performance
-  - review-reliability
-  - review-security
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

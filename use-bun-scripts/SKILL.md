@@ -1,18 +1,6 @@
 ---
 name: use-bun-scripts
 description: สร้าง Bun scripts สำหรับ automate งาน
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-write-devin-skills
 ---
 
 ## Goal

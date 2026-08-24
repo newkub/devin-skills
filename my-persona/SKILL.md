@@ -1,18 +1,6 @@
 ---
 name: my-persona
 description: กำหนดและจัดการ personal persona สำหรับ AI assistant interaction
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

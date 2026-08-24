@@ -1,20 +1,6 @@
 ---
 name: review-event-handling
 description: Review listener cleanup, event delegation, memory leak prevention, passive listeners, debounce/th...
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

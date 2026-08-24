@@ -1,18 +1,6 @@
 ---
 name: follow-best-practice
 description: เขียนตาม best practices จาก context นั้นๆ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

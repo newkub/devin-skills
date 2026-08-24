@@ -1,21 +1,6 @@
 ---
 name: ship-and-push
 description: Ship code แล้ว push ขึ้น remote โดยเรียก ship-code แล้ว git push
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - report
-  - ship-code
-  - suggest-next-action
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: read-related-skills
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive ทุกระดับ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,23 +1,6 @@
 ---
 name: generalize
 description: แปลง how-to หรือ instructions เป็น solution patterns ทั่วไปที่ใช้ซ้ำได้
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-write-devin-skills
-  - improve-devin-skills
-  - validate
-  - write-explicit
 ---
 
 ## Goal

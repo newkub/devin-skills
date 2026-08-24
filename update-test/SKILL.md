@@ -1,27 +1,6 @@
 ---
 name: update-test
 description: อัปเดต test suite ให้ครอบคลุม มีคุณภาพ และตรง conventions
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - follow-content-quality
-  - follow-tdd
-  - follow-vitest
-  - resolve-merge-conflicts
-  - review-codebase
-  - run-check
-  - update-spec-md
-  - validate
 ---
 
 ## Goal

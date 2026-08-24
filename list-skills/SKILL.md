@@ -1,16 +1,6 @@
 ---
 name: list-skills
 description: แสดงรายการ Windsurf skills ทั้งหมดพร้อมคำอธิบาย
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

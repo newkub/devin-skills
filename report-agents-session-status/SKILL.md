@@ -1,15 +1,6 @@
 ---
 name: report-agents-session-status
 description: รายงานสถานะของ agent session ปัจจุบัน รวมงานทีเสร็จ งานค้าง และ next actions
-allowed-tools:
-  - read
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

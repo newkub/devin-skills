@@ -1,23 +1,6 @@
 ---
 name: update-spec-md
 description: อัปเดต spec/SPEC.md ให้สอดคล้องกับ tests และ code ปัจจุบัน
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - follow-content-quality
-  - update-test
-  - validate
-  - write-explicit
 ---
 
 ## Goal

@@ -1,20 +1,6 @@
 ---
 name: follow-build-packages
 description: Setup
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - follow-functional-programming
-  - follow-tsdown
-  - follow-turborepo
-  - follow-vitest
 ---
 
 ## Goal

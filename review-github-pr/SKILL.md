@@ -1,26 +1,6 @@
 ---
 name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
-allowed-tools:
-  - read
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-  - mcp_call_tool
-  - write
-triggers:
-  - user
-  - model
-related:
-  - deep-validate
-  - report
-  - report-table
-  - review-codebase
-  - run-check
-  - suggest-next-action
-  - validate
-argument-hint: optional PR number or branch
 ---
 
 ## Goal

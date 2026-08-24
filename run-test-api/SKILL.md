@@ -1,18 +1,6 @@
 ---
 name: run-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

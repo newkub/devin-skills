@@ -1,18 +1,6 @@
 ---
 name: follow-create-rust-cli
 description: สร้าง CLI applications ด้วย Rust ตาม best practices
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - ship-code
 ---
 
 ## Goal

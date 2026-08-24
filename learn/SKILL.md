@@ -1,18 +1,6 @@
 ---
 name: learn
 description: เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ ด้วย research และ practice
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

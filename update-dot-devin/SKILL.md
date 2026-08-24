@@ -1,17 +1,6 @@
 ---
 name: update-dot-devin
 description: สร้าง .devin structure ครบถ้วนรวม rules และ hooks โดยไม่มี workflows directory
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

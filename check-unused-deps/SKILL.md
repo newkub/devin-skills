@@ -1,17 +1,6 @@
 ---
 name: check-unused-deps
 description: Detect and remove unused dependencies using Knip and ecosystem-specific tools
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

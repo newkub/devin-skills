@@ -1,17 +1,6 @@
 ---
 name: follow-remotion
 description: Framework สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งโดยใช้ React
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

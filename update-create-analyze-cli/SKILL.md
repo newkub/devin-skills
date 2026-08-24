@@ -1,18 +1,6 @@
 ---
 name: update-create-analyze-cli
 description: สร้างหรืออัปเดต tools/analyze CLI สำหรับ deep codebase analysis
-allowed-tools:
-  - read
-  - edit
-  - write
-  - exec
-  - grep
-  - find_file_by_name
-  - skill
-permissions: {'allow': ['Exec(bun)', 'Exec(moon)', 'Write(tools/analyze)', 'Write(package.json)', 'Write(bun.lock)'], 'ask': ['Write(apps/)', 'Write(packages/)']}
-triggers:
-  - user
-related:
 ---
 
 ## Goal

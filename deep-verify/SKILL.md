@@ -1,25 +1,6 @@
 ---
 name: deep-verify
 description: Verify ละเอียดหลัง merge/parallel ทำงาน โดยรวม checks, tests, references, และ runtime
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - check-reference
-  - deep-validate
-  - report
-  - run-check
-  - run-test
-  - scan-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

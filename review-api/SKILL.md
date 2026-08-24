@@ -1,20 +1,6 @@
 ---
 name: review-api
 description: Review API design, versioning, docs, errors, and rate limiting
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

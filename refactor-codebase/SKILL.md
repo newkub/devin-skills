@@ -1,17 +1,6 @@
 ---
 name: refactor-codebase
 description: Refactor codebase ครบวงจร — SRP, long files, imports, architecture, packages, code styles
-allowed-tools:
-  - read
-  - edit
-  - write
-  - exec
-  - grep
-  - glob
-  - ask_user_question
-triggers:
-  - user
-related:
 ---
 
 ## Goal

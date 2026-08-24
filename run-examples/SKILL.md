@@ -1,17 +1,6 @@
 ---
 name: run-examples
 description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

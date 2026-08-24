@@ -1,17 +1,6 @@
 ---
 name: tauri
 description: สร้าง cross-platform desktop และ mobile applications ด้วย Rust backend และ web technologies frontend
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: plan
 description: วางแผนงานและ architecture อย่างเป็นระบบก่อนเริ่ม implement
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

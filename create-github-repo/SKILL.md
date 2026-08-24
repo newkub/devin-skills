@@ -1,15 +1,6 @@
 ---
 name: create-github-repo
 description: สร้าง GitHub repository ใหม่ผ่าน gh CLI ด้วยชื่อและ visibility ที่ระบุ
-allowed-tools:
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-related:
-  - ship-code
-argument-hint: <repo-name> [--public|--private|--internal]
 ---
 
 ## Goal

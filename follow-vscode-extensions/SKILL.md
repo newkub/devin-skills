@@ -1,17 +1,6 @@
 ---
 name: follow-vscode-extensions
 description: สร้าง VSCode extension ด้วย reactive-vscode
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,17 +1,6 @@
 ---
 name: follow-gritql
 description: ตั้งค่าและใช้งาน GritQL สำหรับ code search, transformation และ linting ใน Biome
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: follow-clean-architecture
 description: Ultra Minimal Clean Architecture - Production-Ready Guidelines for Teams
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

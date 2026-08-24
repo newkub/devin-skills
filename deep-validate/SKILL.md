@@ -1,18 +1,6 @@
 ---
 name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

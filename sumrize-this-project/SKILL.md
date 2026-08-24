@@ -1,17 +1,6 @@
 ---
 name: sumrize-this-project
 description: สรุป project ปัจจุบัน features และ solutions
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

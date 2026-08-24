@@ -1,17 +1,6 @@
 ---
 name: compare-and-idea-features
 description: เปรียบเทียบกับ competitors และสร้างไอเดีย features พร้อม continuous numbering
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

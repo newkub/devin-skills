@@ -1,17 +1,6 @@
 ---
 name: run-check
 description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

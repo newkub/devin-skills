@@ -1,17 +1,6 @@
 ---
 name: cleanup-github-task
 description: Archive or delete tasks in GitHub Projects
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

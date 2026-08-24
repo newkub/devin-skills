@@ -1,18 +1,6 @@
 ---
 name: improve-content-coverage
 description: เขียน content ครอบคลุมทุก features, APIs, และ use cases
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - follow-content-quality
 ---
 
 ## Goal

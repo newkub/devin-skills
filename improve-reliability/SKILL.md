@@ -1,25 +1,6 @@
 ---
 name: improve-reliability
 description: ปรับปรุง reliability, predictability, resilience, observability, และ recoverability ของ project
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
-  - follow-best-practice
-  - improve-correctness
-  - improve-resilience
-  - improve-security
-  - learn-from-web
-  - resolve-errors
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

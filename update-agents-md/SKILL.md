@@ -1,21 +1,6 @@
 ---
 name: update-agents-md
 description: Create or update AGENTS.md with architecture, lib mapping, ship readiness, and workspace rules
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - ask-requirement
-  - follow-write-devin-skills
-  - improve-codebase
 ---
 
 ## Goal

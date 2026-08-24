@@ -1,17 +1,6 @@
 ---
 name: follow-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

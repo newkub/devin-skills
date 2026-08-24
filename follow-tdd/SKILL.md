@@ -1,23 +1,6 @@
 ---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
-allowed-tools:
-  - read
-  - edit
-  - write
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - consider-use-in-another-skills
-  - follow-best-practice
-  - follow-vitest
-  - run-check
-  - validate
 ---
 
 ## Goal

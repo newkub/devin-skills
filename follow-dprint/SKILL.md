@@ -1,17 +1,6 @@
 ---
 name: follow-dprint
 description: ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

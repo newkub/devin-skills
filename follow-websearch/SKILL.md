@@ -1,16 +1,6 @@
 ---
 name: follow-websearch
 description: ใช้ crw สำหรับ web search และ scrape อย่างรวดเร็วและมีประสิทธิภาพ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

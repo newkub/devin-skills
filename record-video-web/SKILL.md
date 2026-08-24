@@ -1,17 +1,6 @@
 ---
 name: record-video-web
 description: บันทึกวิดีโอจากหน้าเว็บด้วย agent-browser CLI
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

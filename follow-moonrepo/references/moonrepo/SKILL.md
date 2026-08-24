@@ -1,17 +1,6 @@
 ---
 name: moonrepo
 description: แนวทางการใช้งาน moonrepo สำหรับ monorepo management และ task running
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,18 +1,6 @@
 ---
 name: report-file-structure
 description: แสดงโครงสร้างไฟล์ โฟลเดอร์ พร้อม metadata สถิติ และคำแนะนำ
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

@@ -1,19 +1,6 @@
 ---
 name: ask-me
 description: ถามผู้ใช้คำถามพร้อมตัวเลือกและคำแนะนำเพื่อขอคำยืนยันหรือตัดสินใจ
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - deep-plan
 ---
 
 ## Goal

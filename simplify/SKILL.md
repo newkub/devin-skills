@@ -1,17 +1,6 @@
 ---
 name: simplify
 description: ลดความซับซ้อนของ content code architecture และ workflows
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-triggers:
-  - user
-  - model
-related:
-  - update-reference
 ---
 
 ## Goal

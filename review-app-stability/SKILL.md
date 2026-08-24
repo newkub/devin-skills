@@ -1,20 +1,6 @@
 ---
 name: review-app-stability
 description: Review ความเสถียรของ application ครอบคลุม crashes, errors, recovery, monitoring
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal

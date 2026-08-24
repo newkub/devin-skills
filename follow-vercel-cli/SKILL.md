@@ -1,17 +1,6 @@
 ---
 name: follow-vercel-cli
 description: ใช้งาน Vercel CLI สำหรับ deploy และ manage projects บน Vercel
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

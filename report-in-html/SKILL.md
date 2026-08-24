@@ -1,18 +1,6 @@
 ---
 name: report-in-html
 description: Create a single interactive HTML file for browser-based reports with tables, dropdowns, sort/filt...
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

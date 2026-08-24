@@ -1,17 +1,6 @@
 ---
 name: use-markdown
 description: ใช้ Markdown formatting และ structure ที่เป็นมาตรฐานสำหรับเขียนเอกสาร
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - write
-triggers:
-  - user
-  - model
-related:
 ---
 
 ## Goal

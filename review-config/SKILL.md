@@ -1,20 +1,6 @@
 ---
 name: review-config
 description: ตรวจสอบ config files ทั้ง root และทุก workspace พร้อมรายงาน findings และ health score
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
-related:
-  - review-codebase
-  - suggest-next-action
-  - validate
 ---
 
 ## Goal
