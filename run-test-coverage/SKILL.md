@@ -12,7 +12,6 @@ triggers:
   - user
   - model
 related:
-  - improve-test-coverage
 ---
 
 ## Goal

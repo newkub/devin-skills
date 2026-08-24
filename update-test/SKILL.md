@@ -19,7 +19,6 @@ related:
   - follow-vitest
   - validate
   - run-check
-  - improve-test-coverage
   - review-codebase
   - follow-best-practice
   - follow-content-quality

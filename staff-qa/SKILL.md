@@ -15,7 +15,6 @@ triggers:
 related:
   - update-test
   - follow-tdd
-  - improve-test-coverage
   - validate
 ---
 

@@ -16,7 +16,6 @@ related:
   - follow-best-practice
   - validate
   - run-check
-  - improve-test-coverage
   - follow-vitest
   - consider-use-in-another-skills
 ---

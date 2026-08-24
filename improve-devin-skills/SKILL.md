@@ -19,7 +19,6 @@ related:
   - check-circular-dependencies
   - deep-research
   - follow-best-practice
-  - improve-redundancy
   - improve-consistency
   - review-codebase
   - validate
