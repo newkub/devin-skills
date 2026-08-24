@@ -133,6 +133,7 @@ description: สร้างหรือปรับปรุง skill package �
 4. ถ้าต้องการ Devin subskills → สร้าง `subskills/<domain>/<subskill>/SKILL.md` โดยตั้ง `name` เป็น `<domain>-<subskill>` แล้วให้ parent skill `<domain>-subskills/SKILL.md` อ้างถึง
 5. ถ้าต้องการ project rules → ทำ `/update-dot-devin` เพื่อสร้าง `.devin/rules/`
 6. ตรวจสอบว่าไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+7. ทุกไฟล์ใน file structure ต่างๆ (`references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `web/`, `.devin/rules/`) ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์มีหน้าที่เดียวชัดเจน ไม่ผสมหลาย responsibilities ในไฟล์เดียว
 
 ### 5. Create CLI (if needed)
 
@@ -179,6 +180,7 @@ description: สร้างหรือปรับปรุง skill package �
 - `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด. สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `web/`, `.devin/rules/` ตามความจำเป็น
 - ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point. directory name ต้องตรงกับ `name` ใน frontmatter. ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 - ถ้า `references/` มี nested directories → ใช้ `/follow-flat-files`. ถ้า flat ทั้ง skill package → ใช้ `/follow-flat-folders`
+- ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์รับผิดชอบหน้าที่เดียวชัดเจน ถ้าไฟล์รวมหลาย responsibilities → แยกเป็นไฟล์ย่อย
 
 ### 3. Safety
 
@@ -227,26 +229,20 @@ allowed-tools: [read, grep, glob, exec]
 permissions: { allow: [Exec(git diff), Exec(git log)] }
 triggers: [user]
 ---
-
 ## Goal
 Review the current git diff and provide feedback
-
 ## Scope
 ใช้ก่อน commit เพื่อตรวจสอบความถูกต้อง
-
 ## Execute
 ### 1. Get Diff
 > Goal: รู้สิ่งที่เปลี่ยนแปลง
 1. รัน `git diff --staged` หรือ `git diff` ถ้ายังไม่ได้ stage. บันทึก files ที่เปลี่ยน
-
 ### 2. Review Changes
 > Goal: หาปัญหาที่อาจเกิดขึ้น
 1. ตรวจ logic errors, security issues, style inconsistencies. สรุป findings พร้อม line references
-
 ## Rules
 ### 1. Review Focus
 - ตรวจ correctness, security, performance, style. ให้ specific line references. ไม่แก้ source โดยไม่ได้รับอนุญาต
-
 ## Expected Outcome
 - สรุป findings พร้อม specific line references. แนะนำ improvements ที่ actionable
 ```
