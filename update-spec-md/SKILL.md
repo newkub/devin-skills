@@ -1,5 +1,5 @@
 ---
-name: improve-update-spec-md
+name: update-spec-md
 description: อัปเดต spec/SPEC.md ให้สอดคล้องกับ tests และ code ปัจจุบัน
 allowed-tools:
   - read

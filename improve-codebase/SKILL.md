@@ -20,12 +20,12 @@ related:
   - improve-correctness
   - improve-reliability
   - improve-uxui
-  - improve-modularity
+  - improve-resilience
   - improve-docs
   - improve-governance
   - improve-security
   - improve-api
-  - improve-rate-limiting
+  - improve-resilience
   - check-reference
   - update-reference
   - validate
@@ -70,12 +70,12 @@ related:
 1. ทำ `/improve-uxui` ถ้า UX/UI เป็นปัญหา
 2. ทำ `/improve-correctness` ถ้า correctness, type safety, หรือ tests เป็นปัญหา
 3. ทำ `/improve-reliability` ถ้า reliability, observability, หรือ recovery เป็นปัญหา
-4. ทำ `/improve-modularity` ถ้า modularity, isolation, หรือ side effects เป็นปัญหา
+4. ทำ `/improve-resilience` ถ้า modularity, isolation, หรือ side effects เป็นปัญหา
 5. ทำ `/improve-docs` ถ้า docs, comments, หรือ DX เป็นปัญหา
 6. ทำ `/improve-governance` ถ้า governance หรือ compliance เป็นปัญหา
 7. ทำ `/improve-security` ถ้า security เป็นปัญหา
 8. ทำ `/improve-api` ถ้า API เป็นปัญหา
-9. ทำ `/improve-rate-limiting` ถ้า load หรือ rate เป็นปัญหา
+9. ทำ `/improve-resilience` ถ้า load หรือ rate เป็นปัญหา
 10. เลือก skills อื่นๆ ตาม findings และ AGENTS.md
 
 ### 5. Validate And Report

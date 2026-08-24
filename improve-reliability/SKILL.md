@@ -15,7 +15,7 @@ related:
   - follow-best-practice
   - learn-from-web
   - improve-correctness
-  - improve-rate-limiting
+  - improve-resilience
   - improve-security
   - validate
   - resolve-errors
@@ -59,7 +59,7 @@ related:
 1. ใช้ circuit breaker, bulkhead, หรือ retry with exponential backoff
 2. เพิ่ม fallback/default behavior สำหรับ dependency สำคัญ
 3. ตรวจสอบ rate-limiting, load balancing, queue, backpressure
-4. ใช้ `/improve-rate-limiting` ถ้า load หรือ rate เป็นปัญหา
+4. ใช้ `/improve-resilience` ถ้า load หรือ rate เป็นปัญหา
 
 ### 5. Improve Observability
 > Goal: มองเห็นระบบและตรวจสอบย้อนหลังได้

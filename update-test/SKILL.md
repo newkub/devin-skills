@@ -13,7 +13,7 @@ triggers:
   - user
   - model
 related:
-  - improve-update-spec-md
+  - update-spec-md
   - resolve-merge-conflicts
   - follow-tdd
   - follow-vitest
@@ -145,7 +145,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 > Goal: SPEC.md และ references ครบถ้วน
 
 1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
-2. ทำ `/improve-update-spec-md` เพื่อตรวจความสอดคล้อง
+2. ทำ `/update-spec-md` เพื่อตรวจความสอดคล้อง
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules

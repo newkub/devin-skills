@@ -14,7 +14,7 @@ triggers:
   - model
 related:
   - optimize-codebase
-  - improve-database-design
+  - improve-database
   - follow-orm
   - follow-drizzle
   - run-test-integration

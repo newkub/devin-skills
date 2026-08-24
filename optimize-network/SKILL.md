@@ -17,7 +17,7 @@ related:
   - optimize-latency
   - optimize-caching
   - optimize-payload
-  - improve-rate-limiting
+  - improve-resilience
   - validate
 ---
 

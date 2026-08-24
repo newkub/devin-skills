@@ -1,6 +1,6 @@
 ---
-name: improve-modularity
-description: ปรับปรุง modularity, isolation, side effect management, และ flow ของ project
+name: improve-resilience
+description: ปรับปรุง resilience, modularity, isolation, side effects, flow, และ rate limiting
 allowed-tools:
   - read
   - edit
@@ -13,6 +13,7 @@ triggers:
   - user
   - model
 related:
+  - improve-codebase
   - follow-best-practice
   - learn-from-web
   - follow-functional-programming
@@ -26,19 +27,19 @@ related:
 
 ## Goal
 
-ปรับปรุง modularity, isolation, separation of concerns, และ flow ของ project ให้ maintainable, testable, และ predictable
+ปรับปรุง resilience ของ project ให้ maintainable, testable, predictable และสามารถจัดการ load ได้ดีขึ้น
 
 ## Scope
 
-ใช้กับ project หรือ workspace ที่ต้องการปรับปรุง modularity, isolation, side effect management, workflow flow, และ dependencies — ไม่รวมการ refactor ลึกซึ้ง (ใช้ `/refactor`)
+ใช้กับ project หรือ workspace ที่ต้องการปรับปรุง modularity, isolation, side effects, workflow flow, และ rate limiting — ไม่รวมการ refactor ลึกซึ้ง (ใช้ `/refactor`)
 
 ## Execute
 
 ### 1. Analyze
-> Goal: วิเคราะห์สถานะ modularity, isolation, และ side effects
+> Goal: วิเคราะห์สถานะ modularity, isolation, side effects, และ rate limiting
 1. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้อง
 2. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
-3. ระบุ modules ที่ tightly coupled, ขาด isolation, และ side effects
+3. ระบุ modules ที่ tightly coupled, ขาด isolation, side effects ที่กระจัดกระจาย, และ rate limiting ที่ไม่เหมาะสม
 4. ถ้าไม่พบ issues → stop และ report
 
 ### 2. Improve Isolation
@@ -74,7 +75,14 @@ related:
 6. ใช้ `/follow-parallel` สำหรับ independent reads/scans/searches
 7. ทำ `/follow-deterministic` เพื่อตรวจสอบว่า parallel ไม่เปลี่ยนผลลัพธ์
 
-### 6. Validate
+### 6. Improve Rate Limiting
+> Goal: ปรับปรุง rate limiting ให้ควบคุม load ได้
+1. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา patterns สำหรับ rate limit
+2. ระบุจุดที่ควรใช้ token bucket, sliding window, หรือ leaky bucket
+3. แก้ไขปัญหาตาม priority: ระดับ API, middleware, service
+4. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+
+### 7. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น
 1. ทำ `/run-check` เพื่อตรวจ quality pipeline
 2. ทำ `/validate`
@@ -96,7 +104,7 @@ related:
 ### 3. Flow Quality
 - fail fast: validation และ reference checks อยู่ต้น
 - dependencies ชัดเจน ไม่ซ่อน ordering ด้วยคำกำกวม
-- parallel ต้องไม่แชร้ mutable state
+- parallel ต้องไม่แชร์ mutable state
 - ระบุ retry limit (max 3 → stop/report) สำหรับ recoverable failures
 
 ### 4. Deterministic
@@ -104,9 +112,15 @@ related:
 - ไม่พึ่ง execution order ของ parallel results
 - ใช้ key หรือ label ระบุผลลัพธ์
 
+### 5. Rate Limiting
+- ระบุ limit ที่ชัดเจน: requests/time window/ผู้ใช้
+- คง backward compatibility เมื่อปลอดภัย
+- หลีกเลี่ยงการ block legitimate traffic โดยไม่จำเป็น
+
 ## Expected Outcome
 - modularity, isolation ดีขึ้น
 - pure functions สำหรับ business logic และ side effects ถูกจัดการ
 - workflow flow fail-fast ชัดเจน ลด bottleneck
+- rate limiting ดีขึ้นตาม criteria
 - ไม่มี regression
 - รายงานสรุปผล

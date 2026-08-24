@@ -1,6 +1,6 @@
 ---
-name: improve-database-design
-description: ปรับปรุง database design, schema, index, query, integrity และ migration plan
+name: improve-database
+description: ปรับปรุง database design, schema, index, query, integrity, migration และ optimization
 allowed-tools:
   - read
   - edit
