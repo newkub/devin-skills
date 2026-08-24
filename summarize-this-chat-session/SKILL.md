@@ -25,7 +25,6 @@ related:
 ### 1. Collect Session Activity
 
 > Goal: รวบรวมกิจกรรมที่ทำใน session นี้
-> Goal: มีข้อมูลครบสำหรับการสรุป
 
 1. ระบุ tasks ที่ทำใน session นี้จาก conversation context
 2. ระบุไฟล์ที่สร้าง, แก้ไข, ลบ จาก tool calls
@@ -35,7 +34,6 @@ related:
 ### 2. Categorize Changes
 
 > Goal: จัดประเภทการเปลี่ยนแปลงที่ทำ
-> Goal: การเปลี่ยนแปลงจัดประเภทชัดเจน
 
 1. จัดประเภทตาม action:
    - Created: ไฟล์ที่สร้างใหม่
@@ -53,7 +51,6 @@ related:
 ### 3. Identify Decisions
 
 > Goal: ระบุการตัดสินใจที่ทำใน session
-> Goal: เข้าใจเหตุผลของการเปลี่ยนแปลง
 
 1. ระบุ design decisions ที่ทำ
 2. ระบุ trade-offs ที่เลือก
@@ -63,7 +60,6 @@ related:
 ### 4. Identify Issues
 
 > Goal: ระบุปัญหาที่พบและแก้ไข
-> Goal: เข้าใจปัญหาและการแก้ไข
 
 1. ระบุ errors ที่พบและแก้ไข
 2. ระบุ warnings ที่พบ
@@ -73,7 +69,6 @@ related:
 ### 5. Format Summary
 
 > Goal: จัดรูปแบบสรุปให้อ่านง่าย
-> Goal: สรุปกระชับ ครบข้อมูล อ่านง่าย
 
 1. ทำ `/report-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
 2. แสดงผลตามลำดับ: Summary → Files Changed → Decisions → Issues → Next Steps
@@ -88,7 +83,6 @@ related:
 ### 6. Save Important Context
 
 > Goal: บันทึก context สำคัญจาก session
-> Goal: context สำคัญไม่หายไป
 
 1. ทำ `/memorize` สำหรับ decisions และ preferences ที่สำคัญ
 2. ระบุ context ที่ควรบันทึก: architecture decisions, user preferences, lessons learned

@@ -9,7 +9,7 @@ Format code ด้วย moonrepo และแก้ไข errors อัตโ�
 
 ## Scope
 
-Use `follow-moon-format` for the specific tasks and workflows it covers
+ใช้ `follow-moon-format` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

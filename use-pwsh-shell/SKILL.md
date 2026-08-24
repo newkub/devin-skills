@@ -16,7 +16,6 @@ description: ใช้ PowerShell สำหรับ shell commands, scripting, 
 ### 1. Check Pwsh Installation
 
 > Goal: ตรวจสอบและติดตั้ง pwsh
-> Goal: ยื่นยันว่ามี pwsh พร้อมใช้
 
 1. รัน `pwsh --version` เพื่อตรวจสอบ PowerShell Core
 2. ถ้าไม่มา ให้ติดตั้ง:
@@ -28,7 +27,6 @@ description: ใช้ PowerShell สำหรับ shell commands, scripting, 
 ### 2. Run Commands With Pwsh
 
 > Goal: รันคำสั่งด้วย pwsh
-> Goal: execute commands อย่างถูกต้อง
 
 1. คำสั่งเดี่ยว: `pwsh -Command '<command>'`
 2. สคริปต์: `pwsh -File script.ps1`
@@ -39,7 +37,6 @@ description: ใช้ PowerShell สำหรับ shell commands, scripting, 
 ### 3. Use Pwsh For File Operations
 
 > Goal: จัดการไฟล์และโฟลเดอร
-> Goal: file operations ปลอดภัยและ cross-platform
 
 1. สร้าง directory: `New-Item -ItemType Directory -Path <path>`
 2. คัดลอกไฟล์: `Copy-Item -Path <src> -Destination <dst>`
@@ -52,7 +49,6 @@ description: ใช้ PowerShell สำหรับ shell commands, scripting, 
 ### 4. Write Pwsh Scripts
 
 > Goal: เขียนสคริปต์สำหรับ automation
-> Goal: scripts reusable และ maintainable
 
 1. ใช้ `param` block สำหรับ parameters
 2. ใช้ `try/catch/finally` สำหรับ error handling
@@ -65,7 +61,6 @@ description: ใช้ PowerShell สำหรับ shell commands, scripting, 
 ### 5. Integrate With Use Scripts
 
 > Goal: เชื่อมต่อกับ `/use-scripts`
-> Goal: scripts ทำงานร่วมกับ automation pipeline ได้
 
 1. ใช้ pwsh สำหรับ Windows-specific หรือ .NET integration
 2. ตั้ง `dryRun` option ในทุก script

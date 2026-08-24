@@ -16,7 +16,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 1. Identify Validation Types
 
 > Goal: ระบุประเภท validation ที่ project ต้องการ
-> Goal: รู้ว่าต้อง validate อะไรและที่ไหน
 
 1. Input validation - ตรวจข้อมูลจากผู้ใช้: HTTP request body, query params, CLI args, form input
 2. Business rule validation - ตรวจ business constraints: invariants, policies, domain rules
@@ -27,7 +26,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 2. Implement Business Rule Validation
 
 > Goal: เขียน business rule validators เป็น pure functions
-> Goal: Business rules เป็น pure functions ที่ test ได้โดยไม่ต้อง mock
 
 1. เขียน validation เป็น pure functions ที่ return `Result<T, ValidationError>`
 2. ใช้ `readonly` input types
@@ -39,7 +37,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 3. Implement Input Validation
 
 > Goal: เขียน input schemas โดยใช้ schema library
-> Goal: Input จากภายนอกถูก validate ก่อนเข้าระบบ
 
 1. ทำ `/follow-zod` ถ้า project ใช้ Zod (หรือ schema library ที่ตรวจพบ)
 2. กำหนด schemas ในที่เหมาะสมตาม project structure
@@ -51,7 +48,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 4. Implement Output Validation
 
 > Goal: เขียน output validation สำหรับ external data
-> Goal: ข้อมูลจากภายนอกถูก validate ก่อนนำไปใช้
 
 1. กำหนด response schemas สำหรับ external API responses
 2. ใช้ `.safeParse()` สำหรับ external data — ไม่ trust external input
@@ -62,7 +58,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 5. Compose Validation Pipeline
 
 > Goal: เรียงลำดับ validation จากนอกเข้าใน
-> Goal: Validation flow ชัดเจน ไม่ซ้ำซ้อน
 
 1. Input validation → กรอง malformed data ก่อนเข้าระบบ
 2. Business rule validation → ตรวจ business constraints ก่อน execute logic
@@ -73,7 +68,6 @@ description: กำหนด validation strategy ด้วย pure functions แ
 ### 6. Test Validation Logic
 
 > Goal: ทำ `/write-test` เพื่อทดสอบ validation ทุกประเภท
-> Goal: Validation logic มี test coverage ครบ
 
 1. Unit tests สำหรับ business rule validators — test pure functions โดยตรง
 2. Unit tests สำหรับ schema validation — test valid/invalid/edge cases

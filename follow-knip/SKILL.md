@@ -16,7 +16,6 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 ### 1. Install And Create Config
 
 > Goal: ติดตั้ง Knip และสร้าง config file ใน root directory
-> Goal: Knip ติดตั้งและมี config file พร้อมใช้งาน
 
 1. รัน `bun add -D knip`
 2. สร้าง `knip.json` ใน root directory สำหรับ monorepo หรือ single project
@@ -26,7 +25,6 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 ### 2. Configure Workspaces
 
 > Goal: กำหนด entry points และ project patterns สำหรับแต่ละ workspace
-> Goal: ทุก workspace มี entry และ project patterns ที่ถูกต้อง ไม่มี redundant patterns
 
 1. Knip อ่าน workspaces จาก `package.json#workspaces`, `pnpm-workspace.yaml`, หรือ `knip.json#workspaces` อัตโนมัติ
 2. แต่ละ workspace ต้องมี `package.json` — ถ้าไม่มี → เพิ่ม path ลงใน `workspaces` object ของ `knip.json`
@@ -38,7 +36,6 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 ### 3. Configure Advanced Options
 
 > Goal: เพิ่ม options ที่เพิ่มความแม่นยำในการตรวจจับ
-> Goal: Config มี advanced options ที่ลด false positives และบังคับใช้ config ที่ถูกต้อง
 
 1. เพิ่ม `ignoreExportsUsedInFile` เพื่อ ignore exports ที่ใช้เฉพาะภายในไฟล์ — แนะนำ `{ "interface": true, "type": true }`
 2. เพิ่ม `includeEntryExports: true` ในแต่ละ workspace ที่เป็น private package เพื่อตรวจสอบ unused exports ใน entry files
@@ -49,7 +46,6 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 ### 4. Configure Package.json Scripts
 
 > Goal: เพิ่ม scripts สำหรับรัน Knip ใน `package.json`
-> Goal: Scripts ครบสำหรับ default, production, และ strict mode
 
 1. เพิ่ม `"knip": "knip"` สำหรับ default analysis
 2. เพิ่ม `"knip:prod": "knip --production"` สำหรับ production-only analysis (exclude tests, devDependencies)
@@ -59,7 +55,6 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 ### 5. Run And Fix Issues
 
 > Goal: รัน Knip และแก้ไข issues ตามลำดับความสำคัญ
-> Goal: ไม่มี config hints และ unused code ถูกแก้ไขหรือ ignore อย่างถูกต้อง
 
 1. รัน `bunx knip` ครั้งแรกเพื่อดู config hints — แก้ config hints ก่อนเสมอ
 2. หลัง config hints หมด → รัน `bunx knip` อีกครั้งเพื่อดู actual issues

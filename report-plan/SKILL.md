@@ -16,7 +16,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 1. Summarize Plan
 
 > Goal: สรุปแผนงานเป็น bullet points สั้นๆ
-> Goal: ผู้ใช้เข้าใจภาพรวมของงานทันที
 
 1. ระบุ goal และ scope ของงาน
 2. ระบุจำนวน tasks และประเภท (create, modify, delete)
@@ -26,7 +25,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 2. Report Task Table
 
 > Goal: แสดงตาราง tasks ตาม `/report-table`
-> Goal: ผู้ใช้เห็นรายการงานและ priority ได้ชัดเจน
 
 1. คอลัมน์ (# | Task | Type | Priority | Effort | Impact | Risk | Status)
 2. Type: Create, Modify, Delete
@@ -39,7 +37,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 3. Report Task Bullets with Before-After
 
 > Goal: แสดง bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after
-> Goal: ผู้ใช้เห็นรายละเอียดและผลกระทบของแต่ละงาน
 
 1. ต่อจากตาราง tasks ให้แสดงรายการ task เป็นข้อๆ
 2. แต่ละข้อต้องระบุ: ชื่อ task, ไฟล์/โฟลเดอร์ที่เกี่ยวข้อง, สิ่งที่จะเปลี่ยนแปลง
@@ -49,7 +46,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 4. Report File Structure
 
 > Goal: แสดง file structure ตาม `/report-file-structure`
-> Goal: ผู้ใช้เห็นไฟล์ที่จะสร้าง/แก้ไข/ลบได้ชัดเจน
 
 1. แสดง tree diagram ของไฟล์ที่จะสร้าง/แก้ไข/ลบ
 2. ระบุ file pattern และ naming convention
@@ -58,7 +54,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 5. Report Execution Order
 
 > Goal: ระบุลำดับการทำงาน
-> Goal: ผู้ใช้รู้ว่าจะเริ่มจากอะไร ทำพร้อมกันได้ตรงไหน
 
 1. จัดกลุ่ม tasks เป็น phases: Foundation → Core → Polish → Test
 2. ระบุ critical path: tasks ที่ต้องทำตามลำดับ
@@ -69,7 +64,6 @@ description: รายงานแผนงานในแชทก่อนล�
 ### 6. Continue Execution
 
 > Goal: ดำเนินการต่อหลัง report
-> Goal: ทำงานต่อได้เลยหรือถามก่อนถ้าจำเป็น
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 2. ถ้างานไม่เสี่ยง → เริ่ม implement ตาม execution order ได้เลย

@@ -11,14 +11,13 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ใช้สำหรับ refactor โครงสร้าง skill files ทั้งใน `%APPDATA%\devin\skills\`, `.devin/skills/`, และ `.windsurf/skills/`
 
-ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/improve-devin-skills`)
+ครอบคลุมการแยก รวม ย้าย และลดเนื้อหาซ้ำซ้อน ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพ (ใช้ `/validate`)
 
 ## Execute
 
 ### 1. Analyze Skills
 
 > Goal: วิเคราะห์ skill ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
-> Goal: รู้ว่า skill ไหนควร refactor และทำไม
 
 1. ทำตาม `/scan-codebase`
    - ทำตาม `/read-related-skills`
@@ -29,7 +28,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 2. Plan Refactor
 
 > Goal: วางแผนการ refactor ตาม findings
-> Goal: มีแผนชัดเจนก่อนลงมือ
 
 1. จัดกลุ่ม issues เป็น categories: Split, Merge, Restructure, Deduplicate
 2. กำหนด action สำหรับแต่ละ category
@@ -39,7 +37,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 3. Split Large Skills
 
 > Goal: แยก skill ที่ใหญ่เกินไปหรือมีหลาย responsibilities
-> Goal: แต่ละ skill มี SRP ชัดเจน
 
 1. ระบุ skill ที่เกิน 250 บรรทัดหรือมีหลาย responsibilities
 2. ใช้ `/refactor-to-srp` เพื่อแยก responsibilities ออกมา
@@ -50,7 +47,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 4. Merge Redundant Skills
 
 > Goal: รวม skill ที่ซ้ำซ้อนกัน
-> Goal: ลดจำนวน skill ที่มี scope ซ้อนทับ
 
 1. ระบุ skill คู่ที่มี scope ซ้อนทับหรือเนื้อหาซ้ำกัน
 2. ทำ `/merge` เพื่อรวมเนื้อหาเป็น skill เดียว
@@ -61,7 +57,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 5. Restructure Content
 
 > Goal: จัดระเบียบ sections ใน `SKILL.md`
-> Goal: ลำดับ sections และ steps เป็นระบบ
 
 1. ตรวจสอบลำดับ: Foundation → Dependencies → High impact → High risk
 2. รวม steps ที่เกี่ยวข้องและแยก steps ที่ไม่เกี่ยวข้อง
@@ -71,7 +66,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 6. Deduplicate Content
 
 > Goal: ลดเนื้อหาซ้ำซ้อนภายในและระหว่าง skill
-> Goal: เป็น single source of truth
 
 1. ระบุเนื้อหาที่ซ้ำกันระหว่าง skill หรือระหว่าง Execute และ Rules
 2. แทนที่เนื้อหาซ้ำด้วย references ไปยัง skill ต้นทาง
@@ -81,7 +75,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 7. Update References And Sort
 
 > Goal: อัปเดต references และจัดเรียง skill
-> Goal: references ถูกต้องและจัดหมวดหมู่ชัดเจน
 
 1. ทำ `/update-reference` เพื่ออัปเดต references ทั้งหมด
 2. ทำ `/check-reference` เพื่อยืนยัน
@@ -91,7 +84,6 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 8. Verify Quality
 
 > Goal: ตรวจสอบคุณภาพหลัง refactor
-> Goal: skill ผ่าน validation หลัง refactor
 
 1. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
    - ตรวจสอบ sections ครบ
@@ -104,7 +96,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 ### 1. Structural Focus
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate
-- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/improve-devin-skills`)
+- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/validate`)
 - ไม่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
 - รักษา skill intent เดิม
 

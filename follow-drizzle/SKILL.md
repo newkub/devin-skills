@@ -21,7 +21,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 1. Check Precondition
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
-> Goal: มี Bun, database server, และ package.json พร้อม
 
 1. ยืนยันว่า Bun ติดตั้งแล้ว โดยรัน `bun --version`
 2. ยืนยันว่ามี database server (PostgreSQL หรือ MySQL) หรือ SQLite file ที่กำหนดใช้งานได้
@@ -31,7 +30,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 2. Setup
 
 > Goal: ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
-> Goal: project มี dependencies ครบถ้วนตาม runtime
 
 1. รัน `bun add drizzle-orm`
 2. ติดตั้ง driver ตาม runtime และ database:
@@ -46,7 +44,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 3. Configure
 
 > Goal: สร้าง `drizzle.config.ts` และเลือก driver
-> Goal: Drizzle Kit สามารถ connect และ generate migrations ได้
 
 1. สร้าง `drizzle.config.ts` ด้วย `defineConfig`:
    - `schema`: path ของ schema files (เช่น `./src/db/schema.ts` หรือ glob `./src/db/**/*.ts`)
@@ -60,7 +57,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 4. Define Schema
 
 > Goal: สร้าง database schema ด้วย type-safe columns
-> Goal: schema ถูกต้องและสอดคล้องกับ business requirements
 
 1. สร้าง `src/db/schema.ts` หรือแยกเป็นไฟล์ใน `src/db/schema/`
 2. นิยาม tables, columns, indexes, และ relations
@@ -71,7 +67,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 5. Create Client
 
 > Goal: สร้าง database client สำหรับ runtime ทีใช้
-> Goal: สามารถ query database ได้จาก application
 
 1. สร้าง `src/db/index.ts` ตาม runtime:
    - Bun + SQLite: `import { drizzle } from 'drizzle-orm/bun-sqlite'`
@@ -84,7 +79,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 6. Manage Migrations
 
 > Goal: เลือก migration strategy และรัน migrations
-> Goal: database schema sync กับโค้ดอย่างปลอดภัย
 
 1. เลือก strategy ตาม use case:
    - Rapid prototyping: `bunx drizzle-kit push`
@@ -98,7 +92,6 @@ description: ตั้งค่าและใช้งาน Drizzle ORM สำ
 ### 7. Query Data
 
 > Goal: ใช้งาน type-safe queries
-> Goal: CRUD operations ทำงานได้และ type-safe
 
 1. import `db` และ schema จาก `src/db`
 2. ใช้ `db.insert(table).values(...).returning()` สำหรับ create

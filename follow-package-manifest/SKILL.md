@@ -21,7 +21,6 @@ description: ตั้งค่า scripts สำหรับ packages และ
 ### 1. Check Prerequisites
 
 > Goal: ตรวจสอบ project ก่อนตั้งค่า scripts
-> Goal: มี project structure พร้อมสำหรับกำหนด scripts
 
 1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
 2. ตรวจสอบว่ามี `package.json` หรือ `Cargo.toml`
@@ -31,7 +30,6 @@ description: ตั้งค่า scripts สำหรับ packages และ
 ### 2. Select Template Level
 
 > Goal: ประเมินและเลือกระดับ template
-> Goal: เลือก scripts ชุดทีเหมาะสมกับขนาด project
 
 1. ประเมินขนาดและความซับซ้อนของโปรเจกต์
 2. เลือกระดับตามความเหมาะสม:
@@ -42,7 +40,6 @@ description: ตั้งค่า scripts สำหรับ packages และ
 ### 3. Apply Scripts Template
 
 > Goal: เลือกและเขียน scripts ตาม template
-> Goal: `package.json` มี scripts ครบตาม template ทีเลือก
 
 1. ดูตัวอย่าง `package.json` ใน `references/package-json-examples.md`
 2. เลือกระดับ Minimal, Standard, หรือ Complete
@@ -56,7 +53,6 @@ description: ตั้งค่า scripts สำหรับ packages และ
 ### 4. Validate Scripts
 
 > Goal: ตรวจสอบว่า scripts ทำงานได้
-> Goal: ทุก script ผ่าน syntax และทำงานได้จริง
 
 1. ตรวจสอบว่า scripts ถูกต้องตาม syntax
 2. ยืนยันว่า commands ทำงานได้จริง

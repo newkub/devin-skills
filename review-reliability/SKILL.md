@@ -1,6 +1,6 @@
 ---
 name: review-reliability
-description: Review reliability: observability, disaster recovery, rate limiting, predictability, concurrency
+description: Review และปรับปรุง reliability: observability, disaster recovery, rate limiting, predictability, concurrency
 ---
 
 ## Goal
@@ -104,6 +104,17 @@ description: Review reliability: observability, disaster recovery, rate limiting
 3. คำนวณ review score เป็น percentage ต่อ dimension และ overall
 4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
+### 10. Improve
+
+> Goal: ปรับปรุง reliability, predictability, resilience, observability และ recoverability ตาม findings
+
+1. ลด non-determinism: dependency injection สำหรับ `Date`, `Math.random`, ลด race conditions
+2. ลด single points of failure ด้วย redundancy, timeout, retries, idempotency, health checks
+3. เพิ่ม circuit breaker, bulkhead, fallback/default behavior สำหรับ dependency สำคัญ
+4. ปรับปรุง observability: structured logging, metrics, dashboards, alerts, SLOs, distributed tracing
+5. ปรับปรุง DR: backup/restore procedures, runbooks, restart policies, recovery drills
+6. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+
 ## Rules
 
 ### 1. Severity
@@ -150,6 +161,7 @@ description: Review reliability: observability, disaster recovery, rate limiting
 - คะแนน review ต่อ dimension: SPOF, retries, circuit breakers, fallback, observability, rate limiting, predictability, concurrency
 - คะแนน overall reliability score
 - ตารางสรุป findings ด้วย `/report-table`
+- ปรับปรุง reliability, resilience, observability โดยไม่มี regression
 - ข้อเสนอแนะ action ถัดไป
 
 *Merged from source review-* skills.*

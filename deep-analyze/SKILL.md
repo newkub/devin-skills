@@ -35,7 +35,6 @@ description: วิเคราะห์โปรเจกต์อย่าง�
 ### 2. Quick Scan Phase
 
 > Goal: ทำ `/analyze-project` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์พื้นฐานและลึกด้วย scripts
-> Goal: มี foundation สำหรับ deep analysis ทั้งแบบ manual และ script-based
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์อย่างครบถ้วน
 2. ถ้าต้องการ analysis ด้วย review CLI และ scripts → ทำ `/deep-analyze-by-use-scripts`

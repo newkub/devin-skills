@@ -5,11 +5,11 @@ description: หา libraries ตามที่บอกหรือคล้�
 
 ## Goal
 
-Search Npm Libraries
+ค้นหา Npm Libraries
 
 ## Scope
 
-Use `search-npm-libraries` for the specific tasks and workflows it covers
+ใช้ `search-npm-libraries` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

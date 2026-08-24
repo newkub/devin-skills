@@ -16,7 +16,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 1. Installation
 
 > Goal: ติดตั้ง Python และ dependencies
-> Goal: มี Python environment พร้อมใช้งาน
 
 1. ติดตั้ง Python 3.11+ จาก `https://python.org`
 2. ใช้ `pyproject.toml` เป็น single source of truth
@@ -25,7 +24,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 2. Configuration
 
 > Goal: ตั้งค่า `pyproject.toml`
-> Goal: มี config ครบสำหรับ Python project
 
 1. กำหนด dependencies ใน `[project.dependencies]`
 2. กำหนด dev dependencies ใน `[project.optional-dependencies]`
@@ -35,7 +33,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 3. Project Structure
 
 > Goal: จัดโครงสร้างตาม Clean Architecture
-> Goal: โครงสร้าง project เป็น Clean Architecture
 
 1. แบ่งเป็น `domain/`, `application/`, `adapters/`, `presentation/`
 2. `domain/` มี pure business logic ไม่มี side effects
@@ -46,7 +43,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 4. Core Principles
 
 > Goal: เขียน Python ตาม best practices
-> Goal: โค้ดเป็นไปตาม Python best practices
 
 1. ใช้ type hints ทุก function
 2. ใช้ `ruff` สำหรับ lint และ format
@@ -56,7 +52,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 5. Folder Rules
 
 > Goal: จัดโครงสร้าง folders อย่างเป็นระบบ
-> Goal: folders แบ่งตาม responsibility ชัดเจน
 
 1. แยก modules ตาม domain
 2. ใช้ `__init__.py` สำหรับทุก package
@@ -65,7 +60,6 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 ### 6. Import Rules
 
 > Goal: จัดลำดับ imports อย่างเป็นระบบ
-> Goal: imports เรียงลำดับชัดเจน
 
 1. เรียง: stdlib → third-party → local
 2. แบ่ง groups ด้วยบรรทัดว่าง

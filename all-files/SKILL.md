@@ -9,7 +9,7 @@ description: ทำงานกับแต่ละ file ใน project จน�
 
 ## Scope
 
-Use `all-files` for the specific tasks and workflows it covers
+ใช้ `all-files` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

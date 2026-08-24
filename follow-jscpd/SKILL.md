@@ -16,7 +16,6 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 ### 1. Setup Configuration
 
 > Goal: สร้าง `.jscpd.json` สำหรับ config ระดับ project
-> Goal: Config ครบ สอดคล้อง monorepo
 
 1. สร้าง `.jscpd.json` ที่ project root พร้อม `ignore` patterns สำหรับ `node_modules`, `dist`, `.turbo`, `coverage`
 2. ตั้งค่า `minLines: 5`, `minTokens: 50`, `threshold: 0` (report ทั้งหมด ไม่ exit error)
@@ -26,7 +25,6 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 ### 2. Run Duplication Detection
 
 > Goal: รัน jscpd เพื่อตรวจจับ duplication
-> Goal: ได้ผลลัพธ์ duplication report ชัดเจน
 
 1. รัน `bunx jscpd . --reporters console,json --output report`
 2. ถ้า project ใหญ่ → ระบุ paths: `bunx jscpd ./src ./integrations --reporters console,json`
@@ -36,7 +34,6 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 ### 3. Analyze Results
 
 > Goal: วิเคราะห์ผลจาก `report/jscpd-report.json`
-> Goal: ระบุ files, patterns, และ priority สำหรับ refactor
 
 1. อ่าน `report/jscpd-report.json` เพื่อดู `duplicates` array
 2. จัดกลุ่ม duplicates ตาม file และ pattern
@@ -47,7 +44,6 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 ### 4. Plan Refactor
 
 > Goal: วางแผน refactor ตามผล duplication
-> Goal: มี priority list สำหรับ refactor แต่ละ item
 
 1. ลำดับที่ 1: core logic ที่ซ้ำและมีผลกระทบสูง
 2. ลำดับที่ 2: shared utilities ที่ใช้ในหลาย workspace

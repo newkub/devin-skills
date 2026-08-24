@@ -9,7 +9,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 
 ## Scope
 
-Use `follow-php` for the specific tasks and workflows it covers
+ใช้ `follow-php` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

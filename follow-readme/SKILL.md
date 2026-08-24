@@ -5,11 +5,11 @@ description: <div align="center">
 
 ## Goal
 
-Global Workflows
+Workflows ระดับ Global
 
 ## Scope
 
-Use `follow-readme` for the specific tasks and workflows it covers
+ใช้ `follow-readme` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

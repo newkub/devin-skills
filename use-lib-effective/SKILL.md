@@ -16,7 +16,6 @@ description: วิเคราะห์ dependencies และใช้งา�
 ### 1. Deep Analyze
 
 > Goal: วิเคราะห์ dependencies และ usage แบบลึกซึ้งครบทุกมิติ
-> Goal: รู้ dependencies ทั้งหมด, usage patterns, และ custom implementations ที่ library ทำให้แล้ว
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์โปรเจกต์อย่างลึกซึ้ง ครอบคลุม architecture, code quality, dependencies และ tech stack
 2. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ usage patterns เฉพาะส่วน
@@ -28,7 +27,6 @@ description: วิเคราะห์ dependencies และใช้งา�
 ### 2. Research Capabilities Via Web
 
 > Goal: ศึกษา capabilities ของ libraries ที่มี จาก official documentation และเอกสารภายนอก
-> Goal: รู้ features ที่ library มีแต่ยังไม่ได้ใช้ และ best practices สำหรับการใช้งาน
 
 1. ทำ `/learn-from-web` เพื่อศึกษา documentation และ features ของ libraries ที่ใช้
    - ใช้ DeepWiki สำหรับ GitHub repositories ของ libraries
@@ -43,7 +41,6 @@ description: วิเคราะห์ dependencies และใช้งา�
 ### 3. Analyze Type Declarations
 
 > Goal: วิเคราะห์ type declarations เพื่อรู้ APIs ที่พร้อมใช้งาน
-> Goal: รู้ APIs ที่พร้อมใช้งานจาก dependencies ที่ยังไม่ได้ใช้
 
 1. ทำ `/check-type-declarations` เพื่อค้นหาและวิเคราะห์ d.ts files
 2. ค้นหา d.ts files ใน project และ node_modules
@@ -54,7 +51,6 @@ description: วิเคราะห์ dependencies และใช้งา�
 ### 4. Maximize Library Coverage
 
 > Goal: ใช้ libraries ให้ครบและครอบคลุม ไม่ reinvent
-> Goal: แทนที่ custom implementations ด้วย library functions ทุกที่ที่เป็นไปได้
 
 1. แทนที่ custom implementation ด้วย library functions ทุกที่ที่เป็นไปได้
 2. ระบุ custom code ที่ library มี feature ทำให้แล้ว และแทนที่
@@ -66,7 +62,6 @@ description: วิเคราะห์ dependencies และใช้งา�
 ### 5. Document Patterns
 
 > Goal: บันทึก patterns การใช้งาน
-> Goal: มี documentation สำหรับการใช้งาน library ที่ซับซ้อน
 
 1. สร้าง examples สำหรับการใช้งานที่ซับซ้อน
 2. เขียน best practices สำหรับทีม

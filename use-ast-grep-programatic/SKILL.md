@@ -16,7 +16,6 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 1. Prepare Context
 
 > Goal: อ่าน context และเตรียม environment ก่อนเขียน scripts
-> Goal: เข้าใจ ast-grep API, review CLI structure, และ rules ที่ต้องใช้
 
 1. ทำ `/use-ast-grep`, ทำ `/follow-bun`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
 2. อ่าน `tools/review/` directory เพื่อเข้าใจ analyzer structure ที่มีอยู่
@@ -26,7 +25,6 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 2. Create Programmatic Script
 
 > Goal: สร้าง Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
-> Goal: script ที่รัน ast-grep analysis ผ่าน API และ integrate กับ review CLI
 
 1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `temp/`
 2. เลือก ast-grep interface:
@@ -43,7 +41,6 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 3. Run Analysis
 
 > Goal: รัน programmatic analysis และ integrate ผลลัพธ์กับ review CLI
-> Goal: ได้ review report พร้อม ast-grep findings ที่ครอบคลุมและ accurate
 
 1. รัน script ใน dry run mode เพื่อดูผลลัพธ์ก่อน
 2. ถ้า dry run ผ่าน → รันจริง
@@ -53,7 +50,6 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 4. Validate And Report
 
 > Goal: ตรวจสอบ findings และรายงานผล
-> Goal: findings ถูก validate และรายงานเป็นตาราง
 
 1. ทำ `/validate` สำหรับ validate issues จาก ast-grep analysis
 2. จัดลำดับตาม severity: Critical → High → Medium → Low

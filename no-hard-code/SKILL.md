@@ -9,7 +9,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 
 ## Scope
 
-Use `no-hard-code` for the specific tasks and workflows it covers
+ใช้ `no-hard-code` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

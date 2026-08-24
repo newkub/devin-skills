@@ -1,6 +1,6 @@
 ---
 name: review-database
-description: Review database schema, query, index, integrity, connection, and migrations
+description: Review และปรับปรุง database schema, query, index, integrity, connection, and migrations
 ---
 
 ## Goal
@@ -91,6 +91,17 @@ database review สำหรับ relational หรือ NoSQL database ใน
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
+### 8. Improve
+
+> Goal: ปรับปรุง database design, schema, query, index, และ migration ตาม findings
+
+1. จัดลำดับ issues ตาม severity และประเมิน effort และ risk
+2. แก้ schema issues: normalization, missing/redundant tables, constraints, data types
+3. แก้ query/index issues: เพิ่ม missing indexes, แก้ N+1 queries, rewrite slow queries
+4. เลือก migration strategy (online, batched, blue/green) พร้อม rollback steps
+5. นำ schema changes ไปใช้ใน non-production ก่อน, rebuild indexes, update statistics
+6. รัน load tests, unit tests, integration tests — เปรียบเทียบ before/after metrics
+
 ## Rules
 
 ### 1. Skip Conditions
@@ -133,4 +144,5 @@ database review สำหรับ relational หรือ NoSQL database ใน
 
 - รายงานตาราง aggregate findings จากทุก database section
 - Review score ต่อ dimension และ overall
+- ปรับปรุง database design, schema, query, index โดยไม่มี data loss หรือ regression
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

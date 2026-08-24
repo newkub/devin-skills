@@ -16,7 +16,6 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 ### 1. List Tags
 
 > Goal: ดู tags ทั้งหมดในเครื่อง
-> Goal: รู้ tags ที่มีและจำนวน
 
 1. รัน `git tag` เพื่อดู tags ทั้งหมด
 2. รัน `git tag -l --sort=-version:refname` เพื่อเรียงตาม version ล่าสุดก่อน
@@ -26,7 +25,6 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 ### 2. Collect Tag Details
 
 > Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ tag
-> Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git show <tag> --no-patch --format="%H|%ci|%an|%s"` สำหรับแต่ละ tag
 2. ระบุ tag type: annotated (มี tagger info) หรือ lightweight
@@ -36,7 +34,6 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 ### 3. Analyze Semantic Versioning
 
 > Goal: วิเคราะห์ tags ตาม semantic versioning
-> Goal: รู้ versioning status และ patterns
 
 1. ระบุ tags ที่เป็น semantic version (เริ่มด้วย `v` + MAJOR.MINOR.PATCH)
 2. ระบุ tags ที่ไม่ใช่ semantic version
@@ -47,7 +44,6 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 ### 4. Format Output
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
-> Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:

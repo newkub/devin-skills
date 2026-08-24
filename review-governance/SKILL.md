@@ -1,6 +1,6 @@
 ---
 name: review-governance
-description: Governance review ครอบคลุง governance ownership policies review process พร้อม review score
+description: Governance review และปรับปรุง ownership policies review process พร้อม review score
 ---
 
 ## Goal
@@ -90,6 +90,17 @@ governance review สำหรับ: governance structure (decision making, rol
 6. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings จากทุก section
 7. ทำ `/suggest-next-action`
 
+### 7. Improve
+
+> Goal: ปรับปรุง governance, compliance, policies และ standards ตาม findings
+
+1. เพิ่มหรือปรับปรุง policies, guidelines, และ standards ที่ขาด
+2. ระบุ owner และ review cadence สำหรับแต่ละ policy
+3. ระบุ compliance requirements: security, data privacy, accessibility, licenses, regulations
+4. แก้ไข gaps ตาม priority โดยใช้ `/follow-best-practice` หรือ `/learn-from-web`
+5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+6. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+
 ## Rules
 
 ### 1. Severity Classification
@@ -135,4 +146,5 @@ governance review สำหรับ: governance structure (decision making, rol
 - รายงานตาราง findings ครอบคลุม governance, ownership, policies, review process
 - รายงาน recommended actions พร้อม priority
 - Review score ต่อ dimension และ overall
+- ปรับปรุง governance และ compliance โดยไม่มี regression
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

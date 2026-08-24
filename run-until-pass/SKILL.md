@@ -9,7 +9,7 @@ run command จนกว่าจะผ่าน ถ้าเจอ error ให
 
 ## Scope
 
-Use `run-until-pass` for the specific tasks and workflows it covers
+ใช้ `run-until-pass` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

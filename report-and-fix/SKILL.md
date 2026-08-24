@@ -16,7 +16,6 @@ description: Report findings and apply fixes with user confirmation
 ### 1. Report Current State
 
 > Goal: สร้าง report ก่อน fix
-> Goal: user เห็นภาพรวมก่อนแก้ไข
 
 1. ทำ `/report-only` เพื่อสร้าง report เริ่มต้น
 2. ทำ `/analyze-project` และ `/scan-codebase`
@@ -25,7 +24,6 @@ description: Report findings and apply fixes with user confirmation
 ### 2. Plan Fixes
 
 > Goal: วางแผนการแก้ไข
-> Goal: มีแผนชัดเจนก่อนลงมือ
 
 1. ทำ `/deep-report` หรือ `/report-plan`
 2. จัดลำดับ fixes ตาม impact ก่อน effort
@@ -34,7 +32,6 @@ description: Report findings and apply fixes with user confirmation
 ### 3. Confirm With User
 
 > Goal: ขอ user confirm ก่อน fix
-> Goal: ไม่แก้ไขโดยไม่ได้รับอนุญาต
 
 1. ทำ `/report-table` สรุป issues, severity, suggested fix
 2. ใช้ `/ask-me` หรือ `ask_user_question` ขอ approval
@@ -43,7 +40,6 @@ description: Report findings and apply fixes with user confirmation
 ### 4. Apply Fixes
 
 > Goal: แก้ไขตามแผน
-> Goal: issues ถูกแก้ไข
 
 1. ใช้ `edit` หรือ `write` แก้ไขไฟล์
 2. ทำซ้ำตามลำดับทีวางไว้
@@ -52,7 +48,6 @@ description: Report findings and apply fixes with user confirmation
 ### 5. Verify
 
 > Goal: ตรวจสอบผลหลัง fix
-> Goal: ไม่มี regression
 
 1. รัน tests/build/typecheck ตาม ecosystem
 2. ทำ `/report-before-after` เพื่อแสดง before/after

@@ -9,7 +9,7 @@ description: ตั้งค่า VS Code extensions สำหรับ automat
 
 ## Scope
 
-Use `follow-release-vscode` for the specific tasks and workflows it covers
+ใช้ `follow-release-vscode` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

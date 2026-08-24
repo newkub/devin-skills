@@ -9,7 +9,7 @@ description: Setup Node Modules Inspector for interactive node modules inspectio
 
 ## Scope
 
-Use `follow-node-modules-inspector` for the specific tasks and workflows it covers
+ใช้ `follow-node-modules-inspector` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

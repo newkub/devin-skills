@@ -16,7 +16,6 @@ description: ใช้งาน git commands ตามสถานการณ�
 ### 1. Setup Repository
 
 > Goal: เตรียม repo ให้พร้อมใช้งาน
-> Goal: repo พร้อมสำหรับการพัฒนา
 
 1. ใช้ `git clone` สำหรับ repo ทีมีอยู่
 2. ใช้ `git init` สำหรับ project ใหม่
@@ -26,7 +25,6 @@ description: ใช้งาน git commands ตามสถานการณ�
 ### 2. Daily Workflow
 
 > Goal: ทำงานประจำวันกับ branch และ commit
-> Goal: สร้าง commit ทีสะอาดและ branch ทีชัดเจน
 
 1. ใช้ `git branch` หรือ `git switch -c` สร้าง feature branch
 2. ตรวจสอบ `git status` และ `git diff` ก่อน commit
@@ -37,7 +35,6 @@ description: ใช้งาน git commands ตามสถานการณ�
 ### 3. History And Inspection
 
 > Goal: สำรวจประวัติและหาต้นตอของปัญหา
-> Goal: เข้าใจ history และหา answers จาก git
 
 1. ใช้ `git log` ดูประวัติ commit
 2. ใช้ `git blame` หาว่าใครแก้บรรทัดไหน
@@ -47,7 +44,6 @@ description: ใช้งาน git commands ตามสถานการณ�
 ### 4. Collaboration And Integration
 
 > Goal: ทำงานร่วมกับทีมและรวมงาน
-> Goal: รวมงานโดยไม่ทำลาย history ของผู้อื่น
 
 1. ใช้ `git rebase` ปรับ history ให้เป็นเส้นตรง
 2. ใช้ `git merge` รวม branch
@@ -58,7 +54,6 @@ description: ใช้งาน git commands ตามสถานการณ�
 ### 5. Advanced Operations
 
 > Goal: ใช้งาน git ขั้นสูงตามจำเป็น
-> Goal: จัดการ repo ขนาดใหญ่และ edge cases
 
 1. ใช้ `git submodules` สำหรับ external dependencies
 2. ใช้ `git lfs` สำหรับไฟล์ใหญ่

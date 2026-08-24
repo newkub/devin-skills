@@ -1,25 +1,25 @@
 ---
 name: follow-browser-extensions
-description: Follow Browser Extensions
+description: ทำตาม Browser Extensions
 ---
 
 ## Goal
 
-Follow Browser Extensions
+ทำตาม Browser Extensions
 
 ## Scope
 
-Use `follow-browser-extensions` for the specific tasks and workflows it covers
+ใช้ `follow-browser-extensions` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
-1. /follow-reactive-vscode
+1. `/follow-reactive-vscode`
 
 ## Rules
 
-- Follow the project conventions and global rules
-- Use the allowed tools only when needed
+- ทำตาม project conventions และ global rules
+- ใช้ tools ที่อนุญาตเฉพาะเมื่อจำเป็น
 
 ## Expected Outcome
 
-Completed `follow-browser-extensions` workflow with correct output
+เสร็จสิ้น `follow-browser-extensions` workflow พร้อม output ที่ถูกต้อง

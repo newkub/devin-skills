@@ -9,14 +9,13 @@ description: ติดตั้งและตรวจสอบ web performance
 
 ## Scope
 
-Use `check-web-performance` for the specific tasks and workflows it covers
+ใช้ `check-web-performance` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 
 ### 1. Install Tools
 
 > Goal: ติดตั้ง tools สำหรับตรวจสอบ performance
-> Goal: เครื่องมือพร้อมใช้งาน
 
 1. รัน `bun add -D lighthouse` หรือ `npm install -D lighthouse`
 2. ติดตั้ง Chrome DevTools (มากับ Chrome/Chromium)

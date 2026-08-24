@@ -1,6 +1,6 @@
 ---
 name: review-correctness
-description: Review correctness including type safety, test coverage, tests, formal verification, and side effect
+description: Review และปรับปรุง correctness: type safety, test coverage, tests, formal verification, side effects
 ---
 
 ## Goal
@@ -164,6 +164,17 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 
 
 
+### 4. Improve
+
+> Goal: ปรับปรุง correctness, type safety, และ test coverage ตาม findings
+
+1. แก้ไข issues ตาม priority: Critical → High → Medium → Low
+2. แทน `any` ด้วย `unknown` + type narrowing; ลด `as` assertions, `@ts-ignore`, `@ts-expect-error`
+3. เพิ่ม `tsconfig.json` strict options ทีละ option พร้อมแก้ errors ก่อนเพิ่มถัดไป
+4. เขียน tests สำหรับ critical paths, error paths, และ edge cases ที่ขาด
+5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+6. ทำ `/validate` และ `/check-reference` — ถ้ายังพบ issues → retry (max 3)
+
 ## Rules
 
 ### 1. Evidence First
@@ -224,4 +235,10 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 
-*Some details from merged source skills were condensed to keep the skill under 250 lines.*
+## Expected Outcome
+
+- รายงาน findings พร้อม evidence: file, line, severity
+- ครอบคลุม correctness, logic, edge cases, validation
+- ครอบคลุม type safety, test coverage, formal verification, side effects
+- review score คำนวณจาก severity weighted average
+- ปรับปรุง correctness, type safety, และ test coverage โดยไม่มี regression

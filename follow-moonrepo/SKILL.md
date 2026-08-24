@@ -16,7 +16,6 @@ description: ใช้ moonrepo จัดการ monorepo build, tasks, แล
 ### 1. Identify Workspace
 
 > Goal: ระบุว่า project ใช้ moonrepo
-> Goal: รู้ scope ของ moonrepo workspace
 
 1. ตรวจสอบ `.moon/workspace.yml` หรือ `moon.yml`
 2. อ่าน root `package.json` scripts
@@ -26,7 +25,6 @@ description: ใช้ moonrepo จัดการ monorepo build, tasks, แล
 ### 2. Configure Workspace
 
 > Goal: ตั้งค่า moonrepo workspace
-> Goal: `.moon/` config ครบถ้วน
 
 1. สร้าง/อัปเดต `.moon/workspace.yml` ด้วย project globs
 2. สร้าง/อัปเดต `.moon/toolchains.yml` ตาม stack (Bun, Rust, Node)
@@ -36,7 +34,6 @@ description: ใช้ moonrepo จัดการ monorepo build, tasks, แล
 ### 3. Define Tasks
 
 > Goal: กำหนด tasks ใน moonrepo
-> Goal: tasks ทำงานสอดคล้องกันระหว่าง projects
 
 1. ใช้ชื่อ task เดียวกันกับ package scripts (build, dev, test, lint, typecheck, scan)
 2. กำหนด `deps` (`^build`) ให้ถูกต้อง
@@ -46,7 +43,6 @@ description: ใช้ moonrepo จัดการ monorepo build, tasks, แล
 ### 4. Migrate From Turborepo
 
 > Goal: ย้ายจาก turborepo ไป moonrepo
-> Goal: ไม่มี turborepo dependency เหลือ
 
 1. ลบ `turbo.json`
 2. ลบ `turbo` ออกจาก `package.json` devDependencies
@@ -57,7 +53,6 @@ description: ใช้ moonrepo จัดการ monorepo build, tasks, แล
 ### 5. Verify
 
 > Goal: ตรวจสอบว่า moonrepo ทำงานได้
-> Goal: workspace พร้อมใช้งานและผ่าน validation
 
 1. รัน `moon check` หรือ `moon run :check`
 2. รัน `moon run :build` เพื่อตรวจ project graph

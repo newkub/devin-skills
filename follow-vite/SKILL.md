@@ -18,7 +18,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 1. Installation
 
 > Goal: ติดตั้ง Vite และตรวจสอบ environment
-> Goal: มา Vite 7+ environment ทีพร้อมใช้งาน
 
 1. ติดตั้ง Vite ด้วย `bun add -D vite`
 2. ตรวจสอบ Node.js version >= 20.19+ หรือ 22.12+ (Vite 7 เป็น ESM-only)
@@ -27,7 +26,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 2. Configuration
 
 > Goal: สร้างและกำหนด `vite.config.ts`
-> Goal: config รองรับ dev, build, และ frameworks ทีใช้
 
 1. สร้าง `vite.config.ts` ด้วย `defineConfig` สำหรับ IntelliSense
 2. ใช้ conditional config ผ่าน function signature `defineConfig(({ command, mode }) => ({...}))`
@@ -41,7 +39,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 3. Development
 
 > Goal: ตั้งค่า dev server และ development workflow
-> Goal: dev server เร็วและ stable พร้อม HMR
 
 1. รัน dev server ด้วย `bunx vite` หรือ `bun run dev`
 2. ใช้ HMR สำหรับ fast refresh โดยไม่ต้อง reload ทั้งหน้า
@@ -55,7 +52,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 4. Build
 
 > Goal: Build สำหรับ production
-> Goal: production build optimized ตาม target และ performance
 
 1. รัน build ด้วย `bunx vite build`
 2. ใช้ `build.target: 'baseline-widely-available'` (Vite 7 default) สำหรับ browser compatibility
@@ -71,7 +67,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 5. Performance Optimization
 
 > Goal: ปรับแต่ง performance
-> Goal: ลด resolve/transform time และ bundle size
 
 1. ทำ plugin selection, audit, และประเมิน performance impact
 2. Reduce resolve operations: ใช้ explicit import paths เช่น `import './Component.jsx'` แทน `import './Component'`
@@ -85,7 +80,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 6. Monorepo Setup
 
 > Goal: ตั้งค่า Vite สำหรับ monorepo
-> Goal: linked packages และ workspace aliases ทำงานถูกต้อง
 
 1. Vite ตรวจจับ linked packages อัตโนมัติและ treat เป็น source code
 2. หาก linked dependency ไม่ใช่ ESM ให้เพิ่มใน `optimizeDeps.include`
@@ -96,7 +90,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 7. SSR Considerations
 
 > Goal: ตั้งค่า SSR ถ้าต้องการ
-> Goal: SSR build และ runtime ทำงานถูกต้อง
 
 1. ใช้ `import.meta.env.SSR` สำหรับ conditional logic
 2. Dependencies ถูก externalize โดย default สำหรับ SSR
@@ -107,7 +100,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 8. Testing Setup
 
 > Goal: ตั้งค่า Vitest สำหรับ testing
-> Goal: test setup integrate กับ Vite config
 
 1. ใช้ Vitest สำหรับ unit/integration testing (ทำ `/follow-vitest`)
 2. Vitest ใช้ Vite config โดยตรง ไม่ต้อง config ซ้ำ
@@ -117,7 +109,6 @@ description: แนวทางการพัฒนาด้วย Vite 7+ buil
 ### 9. Deployment
 
 > Goal: เตรียมสำหรับ deploy
-> Goal: deployment ready พร้อม caching และ error handling
 
 1. ตั้งค่า `base` สำหรับ public base path
 2. ใช้ relative base สำหรับ deploy ได้หลายที่โดยไม่ต้อง rebuild

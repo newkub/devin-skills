@@ -21,7 +21,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 1. Setup Project
 
 > Goal: ติดตั้ง Flutter project และ dependencies
-> Goal: มี Flutter project พร้อม dependencies ทีใช้
 
 1. ตรวจสอบ Flutter SDK (`flutter doctor`)
 2. สร้าง project ด้วย `flutter create` หรือเปิด project มีอยู่
@@ -35,7 +34,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 2. Create Project Structure
 
 > Goal: สร้างโฟลเดอร์ตาม Clean Architecture
-> Goal: โครงสร้าง project รองรับ data, domain, presentation layers
 
 1. สร้าง `lib/src/core/` สำหรับ error, typedefs, network
 2. สร้าง `lib/src/data/datasources/`, `models/`, `repositories/`
@@ -46,7 +44,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 3. Implement Data Layer
 
 > Goal: สร้าง models และ repositories
-> Goal: data layer จัดการ I/O และแปลงข้อมูลไป domain layer
 
 1. สร้าง DTOs ด้วย `freezed` ใน `lib/src/data/models/`
 2. สร้าง data sources (remote/local)
@@ -57,7 +54,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 4. Implement Domain Layer
 
 > Goal: สร้าง domain models, repository interfaces, และ use cases
-> Goal: domain layer มี pure business logic
 
 1. สร้าง domain models ใน `lib/src/domain/models/`
 2. สร้าง repository interfaces ใน `lib/src/domain/repositories/`
@@ -67,7 +63,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 5. Implement Presentation Layer
 
 > Goal: สร้าง providers และ screens ด้วย Riverpod
-> Goal: UI ตอบสนอง state และทำงานถูกต้อง
 
 1. สร้าง providers ด้วย `riverpod_generator` หรือ `StateNotifier`
 2. สร้าง screens ใน `lib/src/presentation/screens/`
@@ -77,7 +72,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 6. Setup Navigation
 
 > Goal: ตั้งค่า GoRouter สำหรับ navigation
-> Goal: navigation ทำงานได้ทุก screen
 
 1. สร้าง router ใน `lib/src/core/router/` หรือ `lib/main.dart`
 2. กำหนด routes และ parameters
@@ -87,7 +81,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 7. Setup Error Handling
 
 > Goal: ใช้ `fpdart` สำหรับ functional error handling
-> Goal: error handling เป็น type-safe และทำงานทุก layer
 
 1. สร้าง `Failure` classes ใน `lib/src/core/error/`
 2. ใช้ `Either<Failure, Success>` สำหรับ operations ทีอาจ fail
@@ -97,7 +90,6 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 ### 8. Setup Testing
 
 > Goal: เขียน unit tests สำหรับแต่ละ layer
-> Goal: มี tests ครอบคลุม repository และ use cases
 
 1. เพิ่ม `flutter_test`, `mocktail` ใน dev dependencies
 2. เขียน tests สำหรับ repositories

@@ -16,7 +16,6 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 1. Detect AI Tool
 
 > Goal: ตรวจจับ AI tool และ directory เป้าหมาย
-> Goal: รู้ target AI tool และ skills directory ก่อนอ่าน context
 
 1. ตรวจจับ AI tool จาก directory:
    - Windsurf → `~/.codeium/windsurf/skills/` หรือ `%APPDATA%\Codeium\Windsurf\skills\`
@@ -31,7 +30,6 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 2. Read Global Rules
 
 > Goal: อ่าน global rules ของ AI tool ถ้ามี
-> Goal: ไม่ซ้ำซ้อนกับ global rules
 
 1. อ่าน `global_rules.md` ของ AI tool ถ้ามี (อยู่ใน parent directory ของ skills directory ที่ตรวจจับได้)
 2. ระบุ rules หรือขั้นตอนที่ global rules ครอบคลุมอยู่แล้ว
@@ -40,7 +38,6 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 3. Read Related Skills And References
 
 > Goal: อ่าน context ของ skills ที่เกี่ยวข้อง
-> Goal: ไม่ duplicate ขั้นตอนที่ skills อื่นทำอยู่แล้ว
 
 1. `/read-related-skills`
    - `/check-reference`
@@ -50,7 +47,6 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 4. Select Template By Prefix
 
 > Goal: เลือก template ตามชนิดของ skill
-> Goal: ได้ template หรือ structure เริ่มต้นที่เหมาะสม
 
 1. เลือก template ตาม prefix:
    - `run-*` → `follow-write-devin-skills/references/skill-type-run.md`
@@ -69,7 +65,6 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 5. Confirm Context
 
 > Goal: ตรวจสอบว่าพร้อมเขียนหรือยัง
-> Goal: ไม่ฝืนเขียนเมื่อ context ไม่ชัด
 
 1. ตรวจสอบว่ามี: AI tool, directory, template/structure, dependencies
 2. ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report

@@ -41,7 +41,6 @@ description: รัน test suite ตรวจหา failures แล้ว valid
 ### 4. Run Unit Tests
 
 > Goal: รัน unit tests สำหรับ pure functions และ business logic
-> Goal: Unit tests ผ่านทั้งหมด ไม่มี logic errors
 
 1. ทำ `/run-test-unit` เพื่อรัน unit tests
 2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
@@ -50,7 +49,6 @@ description: รัน test suite ตรวจหา failures แล้ว valid
 ### 5. Run Integration Tests
 
 > Goal: รัน integration tests สำหรับ module interactions และ data flow
-> Goal: Integration tests ผ่านทั้งหมด ไม่มี integration issues
 
 1. ทำ `/run-test-integration` เพื่อรัน integration tests
 2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
@@ -59,7 +57,6 @@ description: รัน test suite ตรวจหา failures แล้ว valid
 ### 6. Run E2E Tests (Conditional)
 
 > Goal: รัน E2E tests ถ้า project มี web frontend
-> Goal: E2E tests ผ่าน critical paths ทั้งหมด
 
 1. ถ้ามี web frontend: ทำ `/run-test-e2e` เพื่อรัน E2E tests ด้วย Playwright หรือ Cypress
 2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail

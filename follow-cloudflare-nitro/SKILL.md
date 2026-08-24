@@ -5,11 +5,11 @@ description: กำหนดใน nuxt.config.ts
 
 ## Goal
 
-Follow Cloudflare Nitro
+ทำตามแนวทาง Cloudflare Nitro
 
 ## Scope
 
-Use `follow-cloudflare-nitro` for the specific tasks and workflows it covers
+ใช้ `follow-cloudflare-nitro` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

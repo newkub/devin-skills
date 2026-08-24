@@ -16,7 +16,6 @@ description: ดึง GitHub release diff ระหว่างสอง tags �
 ### 1. Identify Repo And Tags
 
 > Goal: ระบุ repository และ tags ที่ต้องเปรียบเทียบ
-> Goal: รู้ `owner/repo` และ `from...to` tags ที่ชัดเจน
 
 1. ถ้า user ให้ compare URL เช่น `https://github.com/moonrepo/moon/compare/v2.4.5...v2.4.6` → แยก `owner/repo`, `from`, `to`
 2. ถ้า user ให้ `owner/repo` อย่างเดียว → หา latest release และก่อนหน้าผ่าน GitHub API
@@ -25,7 +24,6 @@ description: ดึง GitHub release diff ระหว่างสอง tags �
 ### 2. Fetch Compare Data
 
 > Goal: ดึงข้อมูล diff ระหว่าง tags
-> Goal: มี commit list, PR list, และ release notes ดิบ
 
 1. ทำ `mcp_call_tool` บน `github-mcp-server` เพื่อ compare ระหว่าง tags
 2. ถ้าไม่มี GitHub MCP → ใช้ `curl`/`Invoke-RestMethod` กับ GitHub REST API: `GET /repos/{owner}/{repo}/compare/{from}...{to}`
@@ -35,7 +33,6 @@ description: ดึง GitHub release diff ระหว่างสอง tags �
 ### 3. Categorize Changes
 
 > Goal: จัดประเภท changes จาก commits
-> Goal: แยกประเภทเพื่อ report อ่านง่าย
 
 1. อ่าน commit messages ทั้งหมด และ pull request titles
 2. จัดกลุ่มตาม conventional commits:
@@ -51,7 +48,6 @@ description: ดึง GitHub release diff ระหว่างสอง tags �
 ### 4. Pass To Report
 
 > Goal: ส่งข้อมูลไป format
-> Goal: ให้ `/report-release-changelog` จัดรูปแบบ report
 
 1. ทำ `/report-release-changelog` พร้อม raw data:
    - `repo`, `from`, `to`, `compareUrl`

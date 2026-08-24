@@ -16,7 +16,6 @@ description: สร้าง VSCode extension ด้วย reactive-vscode
 ### 1. Setup
 
 > Goal: ติดตั้ง dependency และสร้างโครงสร้างไฟล์
-> Goal: มี dependency และโครงสร้างไฟล์ที่ถูกต้อง
 
 1. ติดตั้ง: `bun add -d reactive-vscode`
 2. สร้างโครงสร้างไฟล์:
@@ -36,7 +35,6 @@ packages/
 ### 2. Configure Package
 
 > Goal: เพิ่ม scripts สำหรับ package และ publish
-> Goal: package.json มี scripts ครบ
 
 1. เพิ่ม `"package": "vsce package"` ใน scripts
 2. เพิ่ม `"publish": "vsce publish"` ใน scripts
@@ -44,7 +42,6 @@ packages/
 ### 3. Follow Related
 
 > Goal: ทำตาม workflows ที่เกี่ยวข้อง
-> Goal: ใช้งานร่วมกับ workflows อื่นได้
 
 1. ทำ `/follow-bun` สำหรับ runtime
 2. ทำ `/follow-nuxt` ถ้าต้องใช้

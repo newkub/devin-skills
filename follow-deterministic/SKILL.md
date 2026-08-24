@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ## Scope
 
-Use `follow-deterministic` for the specific tasks and workflows it covers
+ใช้ `follow-deterministic` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

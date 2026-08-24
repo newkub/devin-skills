@@ -16,7 +16,6 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 ### 1. Decide CLI Stack
 
 > Goal: พิจารณาเลือก stack ที่เหมาะสม
-> Goal: เลือก Rust หรือ Bun ให้เหมาะกับ context
 
 1. วิเคราะห์ requirements: performance, distribution, ecosystem, team skill
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency
@@ -26,7 +25,6 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 ### 2. Create CLI Project
 
 > Goal: สร้างโครงสร้างตาม stack ที่เลือก
-> Goal: มี project structure ที่ถูกต้อง
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
@@ -36,7 +34,6 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 ### 3. Review CLI
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
-> Goal: CLI ผ่าน review ก่อนใช้งาน
 
 1. ทำ `/review-codebase` เพื่อตรวจสอบ design, structure, UX, error handling
 2. แก้ไขตาม findings ที่ `/review-codebase` ระบุ
@@ -45,7 +42,6 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 ### 4. Integrate Into Workspace
 
 > Goal: ผสาน CLI เข้ากับ workspace
-> Goal: CLI ใช้งานได้ใน project
 
 1. เพิ่ม scripts ใน package manifest หรือ task runner ตาม `/follow-tasks`
 2. ถ้าเป็น monorepo → ทำ `/follow-monorepo` เพื่อกำหนด workspace และ dependencies

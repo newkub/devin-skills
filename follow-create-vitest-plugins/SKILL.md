@@ -16,7 +16,6 @@ description: สร้างและใช้งาน Vitest plugins ตาม
 ### 1. Understand Plugin API
 
 > Goal: ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
-> Goal: เข้าใจ lifecycle และ hooks ของ Vitest plugin
 
 1. ศึกษา Plugin API 3.1.0+ จาก official docs
 2. เข้าใจ `configureVitest` hook
@@ -26,7 +25,6 @@ description: สร้างและใช้งาน Vitest plugins ตาม
 ### 2. Create Plugin
 
 > Goal: สร้าง plugin ด้วย `configureVitest` method
-> Goal: มี Vitest plugin ที่ทำงานได้
 
 1. สร้าง plugin ด้วย `configureVitest` method
 2. รับ context parameter
@@ -51,7 +49,6 @@ export function myPlugin(options: PluginOptions) {
 ### 3. Use Context Properties
 
 > Goal: ใช้ context properties ตามจุดประสงค์
-> Goal: ใช้ context อย่างถูกต้อง
 
 1. ใช้ `project` เข้าถึง test project ปัจจุบัน
 2. ใช้ `vitest` เข้าถึง global Vitest instance
@@ -61,7 +58,6 @@ export function myPlugin(options: PluginOptions) {
 ### 4. Implement Cache Key Generator
 
 > Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
-> Goal: caching ทำงานถูกต้องกับ plugin options
 
 1. ใช้ `experimental_defineCacheKeyGenerator` (4.0.11+)
 2. Return unique string จาก plugin options
@@ -80,7 +76,6 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 ### 5. Test Plugin
 
 > Goal: สร้าง test project เพื่อทดสอบ plugin
-> Goal: plugin ทำงานได้ในสถานการณ์จริง
 
 1. สร้าง test project สำหรับทดสอบ plugin
 2. Verify plugin ทำงานได้

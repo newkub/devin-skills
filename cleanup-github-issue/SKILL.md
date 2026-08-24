@@ -1,49 +1,49 @@
 ---
 name: cleanup-github-issue
-description: Close, delete, or organize stale GitHub issues
+description: ปิด ลบ หรือจัดระเบียบ GitHub issues ที่ค้างอยู่
 ---
 
 ## Goal
 
-Clean up stale, duplicate, or resolved issues via gh CLI
+ทำความสะอาด issues ที่ค้างอยู่ ซ้ำกัน หรือแก้ไขแล้ว ผ่าน `gh` CLI
 
 ## Scope
 
-Use for issue backlog maintenance
+ใช้สำหรับดูแล issue backlog
 
 ## Execute
 
 ### 1. Identify targets
-> Goal: identify targets
+> Goal: ระบุเป้าหมาย
 
-1. List open issues with filters
-1. Find duplicates or stale issues
+1. แสดงรายการ open issues พร้อม filters
+1. ค้นหา issues ที่ซ้ำกันหรือค้างอยู่
 
 ### 2. Confirm
-> Goal: confirm
+> Goal: ยืนยัน
 
-1. Ask user before close or delete
-1. Prefer close over delete
+1. ถาม user ก่อนปิดหรือลบ
+1. เลือกปิดมากกว่าลบ
 
 ### 3. Execute
-> Goal: execute
+> Goal: ดำเนินการ
 
-1. Run gh issue close or gh issue delete
-1. Add closing comment if needed
+1. รัน `gh issue close` หรือ `gh issue delete`
+1. เพิ่ม closing comment ถ้าจำเป็น
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Summary of closed/deleted issues
-1. Call /suggest-next-action
+1. สรุป issues ที่ปิด/ลบ
+1. เรียก `/suggest-next-action`
 
 ## Rules
 
-- Never delete issues without explicit user confirmation
-- Close with comment explaining reason
-- Do not mass-close without approval
+- ห้ามลบ issues โดยไม่มีการยืนยันจาก user อย่างชัดเจน
+- ปิดพร้อม comment อธิบายเหตุผล
+- ห้าม mass-close โดยไม่ได้รับอนุมัติ
 
 ## Expected Outcome
 
-- Stale issues closed or deleted
-- Backlog cleaned with log
+- Issues ที่ค้างอยู่ถูกปิดหรือลบ
+- Backlog สะอาดพร้อม log

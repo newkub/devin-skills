@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 
 ## Scope
 
-Use `follow-functional-programming` for the specific tasks and workflows it covers
+ใช้ `follow-functional-programming` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

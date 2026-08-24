@@ -16,7 +16,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 1. Setup Design System
 
 > Goal: กำหนด foundation ของ design system
-> Goal: มี design tokens และ theme ที่ใช้ร่วมกันทั้ง project
 
 1. ทำ `/follow-design-system` สำหรับ universal design tokens
 2. ถ้า project ใช้ UnoCSS ทำ `/follow-unocss` และ `/follow-unocss-theme`
@@ -25,7 +24,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 2. Design Layout
 
 > Goal: ออกแบบโครงสร้างหน้าเว็บ
-> Goal: มี layout ที่ responsive, semantic และ maintainable
 
 1. ใช้ semantic HTML (`<header>`, `<nav>`, `<main>`, `<footer>`, `<aside>`)
 2. ใช้ CSS Grid หรือ Flexbox สำหรับ layouts
@@ -35,7 +33,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 3. Design Typography
 
 > Goal: กำหนดระบบตัวอักษร
-> Goal: ตัวอักษรอ่านง่ายและ responsive
 
 1. เลือก font families ที่เหมาะสม (system fonts เป็น default)
 2. กำหนด font scale ด้วย `clamp()` สำหรับ fluid responsive
@@ -45,7 +42,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 4. Design Colors
 
 > Goal: กำหนดระบบสีและ theme
-> Goal: สีสม่ำเสมอ, รองรับ dark mode และ accessibility
 
 1. ใช้ color palette ที่สม่ำเสมอผ่าน CSS variables
 2. กำหนด semantic colors (success, warning, error, info)
@@ -55,7 +51,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 5. Design Components
 
 > Goal: ออกแบบ component library
-> Goal: มี reusable components ที่เป็นระบบ
 
 1. สร้าง reusable components ด้วย atomic design principles
 2. ใช้ design tokens จาก `/follow-design-system`
@@ -65,7 +60,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 6. Design UX States
 
 > Goal: ออกแบบสถานะ UI ที่ครบถ้วน
-> Goal: ผู้ใช้เข้าใจสถานะของระบบในทุก scenarios
 
 1. Loading states: skeleton screens, shimmer, progressive loading
 2. Empty states: onboarding, no-data, first-use พร้อม CTA
@@ -75,7 +69,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 7. Design Responsive
 
 > Goal: ออกแบบ responsive บนทุก devices
-> Goal: ประสบการณ์ใช้งานดีบนทุกขนาดหน้าจอ
 
 1. Mobile-first approach
 2. ใช้ relative units (rem, em, %, vw, vh)
@@ -86,7 +79,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 8. Design Accessibility
 
 > Goal: ออกแบบสำหรับทุกคน
-> Goal: ผู้ใช้ทุกกลุ่มเข้าถึงและใช้งานได้
 
 1. ทำตาม WCAG 2.1 AA guidelines
 2. รองรับ keyboard navigation ครบทุก interactive elements
@@ -97,7 +89,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 9. Design Animation
 
 > Goal: ออกแบบ animation ที่ smooth และ accessible
-> Goal: การเคลื่อนไหวเพิ่ม UX โดยไม่รบกวนการใช้งาน
 
 1. ใช้ CSS transitions สำหรับ microinteractions (hover, focus)
 2. ใช้ `prefers-reduced-motion` สำหรับ accessibility
@@ -107,7 +98,6 @@ description: ออกแบบ web interfaces ด้วย design system princi
 ### 10. Optimize Performance
 
 > Goal: ตรวจสอบและปรับปรุง performance
-> Goal: หน้าเว็บโหลดและทำงานได้เร็ว
 
 1. ทำ `/review-codebase` สำหรับ Core Web Vitals
 2. Optimize images ด้วย modern formats (WebP, AVIF)

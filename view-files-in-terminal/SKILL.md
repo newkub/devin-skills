@@ -16,7 +16,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 1. Check Bat Installation
 
 > Goal: ตรวจสอบว่า `bat` ติดตั้งแล้ว
-> Goal: ใช้ `bat` ได้หรือ fallback ถูกต้อง
 
 1. รัน `where bat` หรือ `Get-Command bat`
 2. ถ้าไม่พบ ให้ติดตั้งด้วย `mise use -g bat` หรือ `scoop install bat`
@@ -25,7 +24,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 2. View Single File
 
 > Goal: แสดงไฟล์เดียวด้วย `bat`
-> Goal: ดูเนื้อหาไฟล์แบบ highlight
 
 1. รัน `bat <file>`
 2. ตรวจสอบว่า syntax highlighting ถูกต้องตาม file extension
@@ -35,7 +33,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 3. View Multiple Files
 
 > Goal: แสดงหลายไฟล์พร้อมกัน
-> Goal: เปรียบเทียบหรืออ่านหลายไฟล์ต่อเนื่อง
 
 1. รัน `bat <file1> <file2> <file3>`
 2. ตรวจสอบว่าไฟล์แต่ละอันแสดง header แยกกัน
@@ -45,7 +42,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 4. Adjust Output Style
 
 > Goal: ปรับ style ของ output ให้เหมาะสม
-> Goal: output อ่านง่ายและ copy ได้
 
 1. ใช้ `bat --plain <file>` เพื่อ output แบบไม่มี line numbers หรือ borders
 2. ใช้ `bat --style numbers <file>` เพื่อแสดง line numbers เท่านั้น
@@ -55,7 +51,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 5. Handle Large And Binary Files
 
 > Goal: จัดการไฟล์ขนาดใหญ่หรือ binary
-> Goal: ไม่ทำ terminal lag หรือแสดง binary garbage
 
 1. ตรวจสอบ file type ก่อนด้วย `file <file>` ถ้ามี
 2. ถ้าไฟล์ใหญ่เกินไป ให้ใช้ `bat <file> | less` หรือ `bat --paging never` ถ้าไม่ต้องการ pager
@@ -65,7 +60,6 @@ description: แสดงเนื้อหาไฟล์ใน terminal ด้
 ### 6. Integration And Aliases
 
 > Goal: เพิ่ม productivity ด้วย aliases
-> Goal: ใช้งาน `bat` ได้เร็วขึ้น
 
 1. เพิ่ม alias `cat=bat` หรือ `catp=bat --plain` ตาม shell
 2. ตั้ง `BAT_THEME` environment variable สำหรับ default theme

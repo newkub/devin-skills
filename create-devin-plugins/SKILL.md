@@ -16,7 +16,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 1. Plan Plugin Scope
 
 > Goal: วางแผนว่า plugin ทำอะไร
-> Goal: plugin มี purpose ชัดเจน และไม่ซ้ำซ้อนกับ existing plugins
 
 1. ระบุ problem ที่ plugin แก้หรือช่องว่างที่เติม
 2. ตั้งชื่อ plugin ให้ unique และสื่อความหมาย
@@ -27,7 +26,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 2. Create Plugin Directory
 
 > Goal: สร้างโครงสร้าง plugin
-> Goal: plugin structure ถูกต้องตาม Devin CLI spec
 
 1. สร้าง root directory `<plugin-name>/`
 2. สร้าง `.devin-plugin/plugin.json` สำหรับ manifest
@@ -41,7 +39,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 3. Write Plugin Manifest
 
 > Goal: เขียน `.devin-plugin/plugin.json`
-> Goal: manifest valid และครบถ้วน
 
 1. ใส่ `name` ที่ unique (จำเป็น) เป็น namespace สำหรับ `/<name>:<skill>`
 2. ใส่ `version` ตาม semantic versioning
@@ -55,7 +52,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 4. Create Skills
 
 > Goal: สร้าง skills ภายใน plugin
-> Goal: skills ทำงานได้จริงและติดตั้งผ่าน plugin ได้
 
 1. ทำตาม `/follow-devin-skills-md` สำหรับแต่ละ skill
 2. วาง `SKILL.md` ใน `skills/<skill-name>/SKILL.md`
@@ -65,7 +61,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 5. Add Rules And Agents
 
 > Goal: เพิ่ม rules และ custom subagents ถ้าจำเป็น
-> Goal: rules และ agents ถูกต้องตาม spec
 
 1. เขียน `AGENTS.md` เป็น always-on rule ถ้าต้องการ
 2. สร้าง `rules/<rule-name>.md` สำหรับ triggered rules พร้อม `trigger` frontmatter
@@ -75,7 +70,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 6. Add Hooks And MCP
 
 > Goal: เพิ่ม lifecycle hooks และ MCP servers
-> Goal: hooks และ MCP ประกาศถูกต้อง
 
 1. สร้าง `hooks.json` สำหรับ lifecycle hooks ถ้าจำเป็น
 2. สร้าง `mcp_config.json` สำหรับ MCP servers ด้วย `mcpServers` map
@@ -84,7 +78,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 7. Test Plugin Locally
 
 > Goal: ทดสอบ plugin ก่อน publish
-> Goal: plugin ติดตั้งและทำงานได้
 
 1. รัน `devin plugins install ./<plugin-name>` จาก local path
 2. รัน `devin plugins list` เพื่อตรวจสอบว่าติดตั้งสำเร็จ
@@ -95,7 +88,6 @@ description: สร้าง Devin CLI plugin ที่รวม skills, rules, 
 ### 8. Publish And Manage
 
 > Goal: publish plugin และจัดการ versions
-> Goal: plugin พร้อมใช้งานและ maintain ได้
 
 1. push plugin repository ไปยัง GitHub หรือ git host
 2. ติดตั้งจาก remote ด้วย `devin plugins install owner/repo`

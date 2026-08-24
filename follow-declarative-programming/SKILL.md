@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 
 ## Scope
 
-Use `follow-declarative-programming` for the specific tasks and workflows it covers
+ใช้ `follow-declarative-programming` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

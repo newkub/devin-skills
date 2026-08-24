@@ -15,7 +15,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 
 ### 1. Prepare
 > Goal: เตรียมข้อมูลก่อนเขียน README
-> Goal: รู้ project type และมี changelog พร้อม
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ก่อน — ถ้าไม่มี changes → skip และ report
 2. `/update-changelog-md`, `/update-release-md` ถ้ามี tag release
@@ -25,7 +24,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 ### 2. Write Root README
 
 > Goal: เขียน README หลักของ monorepo
-> Goal: Root README ครบถ้วนตาม template ใช้ข้อมูลจริง
 
 1. ทำ `/analyze-project` เพื่อเก็บข้อมูล root
 2. อ่าน `manifest files`, `source code`, `config files`
@@ -35,7 +33,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 ### 3. Generate UI Sketch
 
 > Goal: สร้าง UX/UI sketch สำหรับ README
-> Goal: มี sketch แสดง layout หลักของ workspace
 
 1. ทำ `/report-uxui-sketch` เพื่อวาด layout หลักของ workspace
 2. วาดเฉพาะหน้าหลักหรือหน้าที่สำคัญที่สุดของ workspace
@@ -45,7 +42,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 ### 4. Update Workspaces READMEs
 
 > Goal: อัปเดต README ทุก workspace ใน monorepo
-> Goal: ทุก workspace มี README ครบถ้วนตาม template
 
 1. ทำ `/all-workspaces` เพื่อ update README ทุก workspaces
 2. ไม่ต้องมี `License` section (ใช้ของ root)
@@ -54,7 +50,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 ### 5. Validate
 
 > Goal: ตรวจสอบคุณภาพและอัปเดต references
-> Goal: README ผ่าน quality check และ references ถูกต้อง
 
 1. `/follow-content-quality`, `/update-reference` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
 2. ถ้า validation ไม่ผ่าน → revise และ recheck (max 3 ครั้ง → stop/report)

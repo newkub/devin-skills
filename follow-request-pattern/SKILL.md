@@ -9,7 +9,7 @@ description: เขียน pattern rules จากข้อมูลที่�
 
 ## Scope
 
-Use `follow-request-pattern` for the specific tasks and workflows it covers
+ใช้ `follow-request-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

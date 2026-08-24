@@ -9,7 +9,7 @@ description: เรียนรู้ command structure, subcommands, options, �
 
 ## Scope
 
-Use `learn-from-cli` for the specific tasks and workflows it covers
+ใช้ `learn-from-cli` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

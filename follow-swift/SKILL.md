@@ -9,7 +9,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ## Scope
 
-Use `follow-swift` for the specific tasks and workflows it covers
+ใช้ `follow-swift` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

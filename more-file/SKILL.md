@@ -5,11 +5,11 @@ description: Add more files
 
 ## Goal
 
-More File
+เพิ่มไฟล์เพิ่มเติม
 
 ## Scope
 
-Use `more-file` for the specific tasks and workflows it covers
+ใช้ `more-file` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

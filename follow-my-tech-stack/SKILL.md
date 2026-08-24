@@ -16,7 +16,6 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 ### 1. Identify Tech Stack
 
 > Goal: ระบุ tools และ frameworks ที่ใช้
-> Goal: รู้ภาพรวม tech stack ของ project
 
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ tools ที่ใช้
 2. ระบุ ecosystem: TypeScript/JavaScript หรือ Rust หรือทั้งสองอย่าง
@@ -30,7 +29,6 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 ### 2. Document Tech Stack
 
 > Goal: สร้างรายการสรุปเป็นตารางเดียวโดยใช้ ecosystem เป็น columns
-> Goal: สรุป tech stack ครบถ้วนและอัปเดต
 
 1. ใช้ตาราง `Category | TypeScript | Rust` ใน Rules
 2. จัดกลุ่มตาม domain: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services

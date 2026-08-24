@@ -16,14 +16,12 @@ description: แปลงทุกอย่างเป็น production code �
 ### 1. Review Codebase Everything
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่ม implement
-> Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือแปลงเป็น production code
 
 1. ทำ `/review-codebase` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Analyze And Verify Infrastructure
 
 > Goal: วิเคราะห์สิ่งที่ขาดหายไปและตรวจสอบ infrastructure ก่อนเริ่ม implement
-> Goal: รู้สิ่งที่ขาด จัดลำดับ critical path และ infrastructure พร้อม
 
 1. ถ้ามี `.devin/plan/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
 2. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/review-codebase` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
@@ -35,7 +33,6 @@ description: แปลงทุกอย่างเป็น production code �
 ### 3. Implement Schema And Data Layer
 
 > Goal: Implement schema, validation schemas, types และ data layer ให้สมบูรณ์
-> Goal: Schema สมบูรณ์ และ data queries ใช้งานจริง
 
 1. เพิ่ม schema สำหรับ data models ที่ขาด, สร้าง validation schemas สำหรับ API input/output, สร้าง types จาก schema
 2. ตรวจสอบ type flow: schema → validation schema → API types → UI types
@@ -47,7 +44,6 @@ description: แปลงทุกอย่างเป็น production code �
 ### 4. Implement API And UX/UI Layer
 
 > Goal: Implement API handlers และเชื่อม UX/UI components กับ real API
-> Goal: API เชื่อม data source จริง และ UX/UI ใช้ real API calls
 
 1. Implement API handlers ที่ query data source จริง — เพิ่ม validation สำหรับ input/output ทุก endpoint
 2. Implement auth middleware สำหรับ protected endpoints, rate limiting สำหรับ public endpoints, structured error responses
@@ -61,7 +57,6 @@ description: แปลงทุกอย่างเป็น production code �
 ### 5. Convert TODO And Use Libraries
 
 > Goal: แปลง TODO/FIXME/HACK และ missing features เป็น production code และใช้ libraries ให้ครบ
-> Goal: ไม่มี TODO/MOCK/placeholder เหลือ และใช้ libraries ครบ
 
 1. ทำ `/implement-comment-todo`, `/implement-features-to-mvp` — แปลง TODO comments และ implement MVP features
 2. ทำ `/implement-all` เพื่อตรวจสอบและแปลง TODO/MOCK/FAKE/STUB/placeholder ทั้งหมดใน scope ที่ review ครอบคลุม
@@ -71,7 +66,6 @@ description: แปลงทุกอย่างเป็น production code �
 ### 6. Refactor And Verify
 
 > Goal: ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
-> Goal: โค้ดมีคุณภาพสูง ไม่มี unused code ผ่าน lint
 
 1. ทำ `/refactor`, `/update-reference`, `/review-codebase`, `/review-correctness`, `/review-codebase` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ

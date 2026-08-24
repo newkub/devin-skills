@@ -17,7 +17,6 @@ description: เลือก architecture pattern ตาม package manifest
 ### 1. Analyze Project Type
 
 > Goal: ตรวจสอบประเภทของโปรเจกต์
-> Goal: รู้ประเภทโปรเจกต์ framework และ runtime
 
 1. ตรวจสอบ package manifest (`package.json`, `Cargo.toml`)
 2. ระบุประเภทของโปรเจกต์จาก dependencies
@@ -26,7 +25,6 @@ description: เลือก architecture pattern ตาม package manifest
 ### 2. Select Architecture Pattern
 
 > Goal: เลือก architecture pattern ตาม Detection Rules ในส่วน Rules
-> Goal: เลือก architecture pattern ที่เหมาะสมกับ project type
 
 1. ตรวจสอบ Detection Rules ตามลำดับ priority ใน Rules section
 2. เลือก architecture workflow ที่ตรงกับ project type
@@ -35,7 +33,6 @@ description: เลือก architecture pattern ตาม package manifest
 ### 3. Learn Architecture Pattern
 
 > Goal: เรียนรู้ architecture pattern ที่เลือกจาก official sources
-> Goal: เข้าใจ pattern ที่เลือกอย่างลึกซึ้งก่อนนำไปใช้
 
 1. ทำ `/learn-from-web` เพื่อศึกษา architecture pattern ที่เลือกจาก official documentation
 2. อ่าน best practices และ anti-patterns ของ pattern นั้น
@@ -44,7 +41,6 @@ description: เลือก architecture pattern ตาม package manifest
 ### 4. Setup Base Structure
 
 > Goal: ตั้งค่าโครงสร้างพื้นฐาน
-> Goal: มีโครงสร้างพื้นฐานพร้อมใช้งานตาม pattern ที่เลือก
 
 1. สร้างโครงสร้างพื้นฐานตาม pattern ที่เลือก
 2. ตั้งค่า configuration files

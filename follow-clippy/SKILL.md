@@ -9,7 +9,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 
 ## Scope
 
-Use `follow-clippy` for the specific tasks and workflows it covers
+ใช้ `follow-clippy` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

@@ -14,82 +14,98 @@ description: สร้าง cross-platform desktop และ mobile application
 ## Execute
 
 ### 1. Installation
+
 > Goal: Installation
 
 อ่าน `guide/installation.md` สำหรับการติดตั้งและ setup
 
 ### 2. Quick Start
+
 > Goal: Quick Start
 
 อ่าน `guide/quick-start.md` สำหรับเริ่มต้นใช้งาน
 
 ### 3. Architecture
+
 > Goal: Architecture
 
 อ่าน `guide/architecture.md` สำหรับ multi-process architecture (Core process, WebView processes)
 
 ### 4. Key Concepts
+
 > Goal: Key Concepts
 
 อ่าน `key-concepts/` สำหรับแนวคิดเฉพาะทาง (IPC, Commands, Events, ACL, Capabilities, WebView, System APIs)
 
 ### 5. Configuration
+
 > Goal: Configuration
 
 อ่าน `guide/configuration.md` สำหรับการตั้งค่า
 อ่าน `references/configuration.md` สำหรับ configuration reference (tauri.conf.json, Capabilities, ACL)
 
 ### 6. Security
+
 > Goal: Security
 
 อ่าน `guide/security.md` สำหรับ ACL system และ security best practices
 
 ### 7. Features
+
 > Goal: Features
 
 อ่าน `guide/features.md` สำหรับ features ที่มี (mobile support, multi-webview, system tray, updater)
 
 ### 8. Principles
+
 > Goal: Principles
 
 อ่าน `principles/` สำหรับหลักการพัฒนา (separation of concerns, async programming, type safety)
 
 ### 9. Best Practices
+
 > Goal: Best Practices
 
 อ่าน `guide/best-practices.md` สำหรับ best practices
 
 ### 10. Integration
+
 > Goal: Integration
 
 อ่าน `guide/integration.md` สำหรับ framework integration
 
 ### 11. Testing
+
 > Goal: Testing
 
 อ่าน `guide/testing.md` สำหรับ testing strategies
 
 ### 12. Performance
+
 > Goal: Performance
 
 อ่าน `guide/performance.md` สำหรับ performance optimization
 
 ### 13. Ecosystem
+
 > Goal: Ecosystem
 
 อ่าน `guide/ecosystem.md` สำหรับ Tauri ecosystem และ plugins
 
 ### 14. CLI
+
 > Goal: CLI
 
 อ่าน `references/cli.md` สำหรับ CLI documentation (init, dev, build, mobile)
 
 ### 15. API
+
 > Goal: API
 
 อ่าน `references/api.md` สำหรับ API reference (Core APIs, Plugin APIs)
 
 ### 16. Resources
+
 > Goal: Resources
 
 อ่าน `references/website.md` สำหรับ resources (official docs, plugins, community)

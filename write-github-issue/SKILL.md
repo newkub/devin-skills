@@ -1,50 +1,50 @@
 ---
 name: write-github-issue
-description: Write or update GitHub issue title, body, and metadata
+description: เขียนหรืออัปเดต title, body และ metadata ของ GitHub issue
 ---
 
 ## Goal
 
-Edit issue title, body, labels, assignees, and other metadata
+แก้ไข title, body, labels, assignees และ metadata อื่นๆ ของ issue
 
 ## Scope
 
-Use when an existing issue needs content or metadata updates
+ใช้เมื่อ issue ที่มีอยู่ต้องอัปเดตเนื้อหาหรือ metadata
 
 ## Execute
 
 ### 1. Identify issue
-> Goal: identify issue
+> Goal: ระบุ issue
 
-1. Run gh issue view <number>
-1. Confirm issue number and repo
+1. รัน `gh issue view <number>`
+1. ยืนยัน issue number และ repo
 
 ### 2. Update content
-> Goal: update content
+> Goal: อัปเดตเนื้อหา
 
-1. Edit title and body with gh issue edit
-1. Add or remove labels and assignees
-1. Update milestone or project
+1. แก้ไข title และ body ด้วย `gh issue edit`
+1. เพิ่มหรือลบ labels และ assignees
+1. อัปเดต milestone หรือ project
 
 ### 3. Verify
-> Goal: verify
+> Goal: ตรวจสอบ
 
-1. View issue again to confirm changes
-1. Check linked PRs or sub-issues
+1. ดู issue อีกครั้งเพื่อยืนยันการเปลี่ยนแปลง
+1. ตรวจสอบ PR หรือ sub-issues ที่เชื่อมโยง
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Summarize changes
-1. Return issue URL
+1. สรุปการเปลี่ยนแปลง
+1. ส่ง issue URL กลับ
 
 ## Rules
 
-- Do not overwrite body without user confirmation if it has comments
-- Use --add-label and --remove-label to manage labels
-- Keep edits focused and minimal
+- ห้ามเขียนทับ body โดยไม่ได้รับการยืนยันจากผู้ใช้ หากมี comments
+- ใช้ `--add-label` และ `--remove-label` เพื่อจัดการ labels
+- แก้ไขให้กระชับและน้อยที่สุด
 
 ## Expected Outcome
 
-- Issue content and metadata updated
-- Changes verified
+- เนื้อหาและ metadata ของ issue ถูกอัปเดต
+- การเปลี่ยนแปลงผ่านการตรวจสอบ

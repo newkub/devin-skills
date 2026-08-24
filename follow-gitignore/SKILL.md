@@ -16,7 +16,6 @@ description: สร้างและจัดการ .gitignore ที่ roo
 ### 1. Read All Gitignore Files
 
 > Goal: อ่าน .gitignore ทั้งหมดที่มีอยู่เพื่อเข้าใจสถานะปัจจุบันก่อนแก้ไข
-> Goal: รู้ patterns ที่มีอยู่ในทุก .gitignore ทุกระดับ
 
 1. ค้นหาไฟล์ .gitignore ทั้งหมดใน project (root + workspace + subdirectories)
 2. อ่าน .gitignore ทุกไฟล์พร้อมกัน
@@ -25,7 +24,6 @@ description: สร้างและจัดการ .gitignore ที่ roo
 ### 2. Analyze Project
 
 > Goal: วิเคราะห์ tools และ workspaces เพื่อระบุ patterns ที่จำเป็น
-> Goal: รู้ประเภทโปรเจกต์ tools และ workspace ที่ต้องมี .gitignore
 
 1. ตรวจสอบ manifest files (package.json, Cargo.toml, go.mod, pyproject.toml)
 2. ระบุ tools ที่ใช้จริงในแต่ละ workspace
@@ -34,7 +32,6 @@ description: สร้างและจัดการ .gitignore ที่ roo
 ### 3. Distribute Patterns
 
 > Goal: แจกจ่าย patterns ระหว่าง root และ workspace ตามหลักการ `/relocation` — shared ไป root, specific ไป workspace
-> Goal: แต่ละ pattern อยู่ใน .gitignore ที่เหมาะสม ไม่ซ้ำกัน
 
 1. ระบุ shared patterns (ใช้กับหลาย workspace) → ใส่ใน root .gitignore
 2. ระบุ workspace-specific patterns (ใช้กับ workspace เดียว) → ย้ายไป .gitignore ของ workspace นั้น (ทำ `/relocation`)
@@ -45,7 +42,6 @@ description: สร้างและจัดการ .gitignore ที่ roo
 ### 4. Validate
 
 > Goal: ตรวจสอบว่า patterns ทำงานถูกต้องและไม่มีไฟล์ที่ไม่ควร commit ถูกติดตาม
-> Goal: ทุก pattern ทำงานถูกต้อง ไม่มีไฟล์รั่ว
 
 1. ตรวจสอบว่าไม่มี patterns ซ้ำกันระหว่าง root และ workspace
 2. ทดสอบด้วย `git check-ignore <file>` สำหรับไฟล์ที่ควรถูก ignore

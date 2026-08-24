@@ -1,25 +1,25 @@
 ---
 name: follow-renovate-json
-description: Guide for Renovate Json
+description: คู่มือสำหรับ Renovate Json
 ---
 
 ## Goal
 
-Follow Renovate Json
+ทำตาม Renovate Json
 
 ## Scope
 
-Use `follow-renovate-json` for the specific tasks and workflows it covers
+ใช้ `follow-renovate-json` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
-Follow the steps and rules below to execute this skill
+ทำตาม steps และ rules ด้านล่างเพื่อ execute skill นี้
 
 ## Rules
 
-- Follow the project conventions and global rules
-- Use the allowed tools only when needed
+- ทำตาม project conventions และ global rules
+- ใช้ allowed tools เฉพาะเมื่อจำเป็น
 
 ## Expected Outcome
 
-Completed `follow-renovate-json` workflow with correct output
+`follow-renovate-json` workflow เสร็จสมบูรณ์พร้อม output ที่ถูกต้อง

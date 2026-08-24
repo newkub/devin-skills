@@ -20,7 +20,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 1. Define News Categories
 
 > Goal: กำหนดหมวดข่าวที่ต้องการติดตาม
-> Goal: รู้หมวดข่าวและ keywords สำหรับค้นหา
 
 1. ระบุหมวดข่าว AI: models, frameworks, tools, research papers, industry news
 2. ระบุหมวดข่าว Open Source: new releases, major updates, trending repositories, community news
@@ -30,7 +29,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 2. Research AI News
 
 > Goal: ทำ `/deep-research` สำหรับข่าว AI
-> Goal: ได้ข่าว AI ล่าสุดตาม time range
 
 1. ทำ `/deep-research` ด้วย keywords: `AI news this week`, `AI latest releases`, `AI breakthroughs`
 2. ค้นหาด้วย `search_web` ใช้ query ที่ระบุปีและสัปดาห์ เช่น `AI news July 2026 week 2`
@@ -42,7 +40,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 3. Research Open Source News
 
 > Goal: ทำ `/deep-research` สำหรับข่าว open source
-> Goal: ได้ข่าว open source ล่าสุดตาม time range
 
 1. ทำ `/deep-research` ด้วย keywords: `open source releases this week`, `trending GitHub repositories`
 2. ค้นหา trending repositories ด้วย `mcp7_search_repositories` ใช้ query `stars:>1000 sort:updated`
@@ -54,7 +51,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 4. Research AI Research Papers
 
 > Goal: ค้นหา AI research papers ล่าสุด
-> Goal: ได้ papers ล่าสุดที่มี impact สูง
 
 1. ค้นหาด้วย `search_web` ใช้ query `AI research papers latest`, `machine learning breakthroughs`
 2. ค้นหาจาก `arxiv.org` ด้วย `search_web` ใช้ query `arxiv AI latest`
@@ -64,7 +60,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 5. Verify And Cross-Reference
 
 > Goal: ตรวจสอบความถูกต้องและความใหม่ของข่าว
-> Goal: ข่าวผ่านการตรวจสอบความถูกต้องและ freshness
 
 1. เปรียบเทียบข่าวจาก multiple sources เพื่อยืนยันความถูกต้อง
 2. ตรวจสอบ publish dates และ release dates ของทุก item
@@ -74,7 +69,6 @@ description: รายงานข่าว AI และ open source projects �
 ### 6. Compile Report
 
 > Goal: สร้างรายงานข่าวรายสัปดาห์
-> Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางข่าว
 2. กำหนด columns: No., Category, Title, Source, Date, Impact, Summary

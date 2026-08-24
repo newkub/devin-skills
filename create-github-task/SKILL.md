@@ -5,11 +5,11 @@ description: Create draft tasks in GitHub Projects
 
 ## Goal
 
-Create draft items/tasks in a GitHub Project via gh project
+สร้าง draft items/tasks ใน GitHub Project ผ่าน `gh project`
 
 ## Scope
 
-Use when adding work items to a GitHub Project without an issue or PR
+ใช้เมื่อเพิ่ม work items ใน GitHub Project โดยไม่มี issue หรือ PR
 
 ## Execute
 

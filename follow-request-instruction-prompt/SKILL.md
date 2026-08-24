@@ -9,7 +9,7 @@ description: สรุปการสนทนาเป็น instruction prompt
 
 ## Scope
 
-Use `follow-request-instruction-prompt` for the specific tasks and workflows it covers
+ใช้ `follow-request-instruction-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

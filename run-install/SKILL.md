@@ -9,7 +9,7 @@ description: ติดตั้ง dependencies และแก้ไขปั�
 
 ## Scope
 
-Use `run-install` for the specific tasks and workflows it covers
+ใช้ `run-install` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

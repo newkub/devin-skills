@@ -18,7 +18,6 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ### 1. Plan And Confirm Scope
 
 > Goal: เตรียมขอบเขตและความปลอดภัยก่อนเริ่ม
-> Goal: รู้ว่าจะ scan อะไร scan ที่ไหน และไม่ลบอัตโนมัติ
 
 1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-only`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
@@ -29,7 +28,6 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ### 2. Scan System Caches And Temp Files
 
 > Goal: รวบรวม candidates ตามระบบและเครื่องมือที่ติดตั้ง
-> Goal: มีรายการไฟล์/โฟลเดอร์พร้อมขนาดและความปลอดภัย
 
 1. ค้นหา directories ใหญ่ใน home:
    - `~/.cache`, `~/.cargo`, `~/.bun/install/cache`, `~/.pnpm-store`, `~/.npm`
@@ -47,7 +45,6 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ### 3. Analyze And Classify
 
 > Goal: จัดกลุ่มและประเมินความปลอดภัยของแต่ละ candidate
-> Goal: รู้ว่าอะไรลบได้ปลอดภัย อะไรต้อง review
 
 1. จัดกลุ่มตาม category: package cache, temp, logs, editor cache, browser cache, old artifacts
 2. คำนวณขนาดโดยประมาณของแต่ละ group
@@ -61,7 +58,6 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ### 4. Format Report
 
 > Goal: จัดรูปแบบ report ให้เห็นภาพรวมและรายละเอียด
-> Goal: ผู้ใช้อ่าน report แล้วตัดสินใจลบได้
 
 1. ทำ `/report-table` ด้วย columns:
    - `#`, `Category`, `Path/Pattern`, `Estimated Size`, `Safety`, `Suggested Command`, `Notes`
@@ -75,7 +71,6 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ### 5. Suggest Next Actions
 
 > Goal: นำเสนอทางเลือกถัดไป
-> Goal: ผู้ใช้รู้ว่าควรทำอะไรต่อ
 
 1. ทำ `/suggest-next-action` จากรายงาน
 2. แนะนำ workflows ที่เหมาะสม:

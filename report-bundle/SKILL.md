@@ -9,14 +9,13 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 
 ## Scope
 
-ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/improve-efficiency` สำหรับ optimization)
+ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/review-efficiency` สำหรับ optimization)
 
 ## Execute
 
 ### 1. Build Project
 
 > Goal: Build โปรเจกต์เพื่อสร้าง bundle
-> Goal: มี build output สำหรับวิเคราะห์
 
 1. ทำ `/run-build` เพื่อ build โปรเจกต์
 2. ระบุ output directory จาก build config (`dist/`, `.output/`, `build/`)
@@ -25,7 +24,6 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 2. Collect Bundle Statistics
 
 > Goal: รวบรวมสถิติของ bundle
-> Goal: มีสถิติครบสำหรับการวิเคราะห์
 
 1. รัน `du -sh <output-dir>` เพื่อดูขนาดรวม
 2. รัน `du -sh <output-dir>/*` เพื่อดูขนาดต่อ subdirectory
@@ -36,7 +34,6 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 3. Analyze Chunks
 
 > Goal: วิเคราะห์ chunks ของ bundle
-> Goal: เข้าใจการกระจายขนาดในแต่ละ chunk
 
 1. ระบุ vendor chunks และ sizes (เช่น `solid-vendor.js`, `tanstack-router.js`)
 2. ระบุ application chunks และ sizes
@@ -48,7 +45,6 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 4. Analyze Dependencies
 
 > Goal: วิเคราะห์ dependencies ที่มีผลต่อ bundle size
-> Goal: รู้ dependencies ที่ทำให้ bundle ใหญ่
 
 1. ระบุ dependencies ที่อยู่ใน vendor chunks
 2. ประเมินขนาดของแต่ละ dependency ใน bundle
@@ -59,7 +55,6 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 5. Check Tree-Shaking
 
 > Goal: ตรวจสอบ tree-shaking effectiveness
-> Goal: รู้ว่า tree-shaking ทำงานได้ดีแค่ไหน
 
 1. ตรวจสอบ `sideEffects` ใน `package.json`
 2. ระบุ modules ที่มี side effects ทำให้ tree-shaking ไม่ทำงาน
@@ -70,7 +65,6 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 6. Format Report
 
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
-> Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. แสดงผลตามลำดับ: Summary → Chunks → Dependencies → Tree-Shaking → Recommendations
@@ -86,13 +80,12 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### 7. Provide Insights
 
 > Goal: ให้ insights และ recommendations
-> Goal: ผู้อ่านรู้ว่าต้องทำอะไรเพื่อลด bundle size
 
 1. สรุปขนาด bundle รวมและสัดส่วนตามประเภท
 2. ระบุ chunks ที่ใหญ่เกิน threshold (เช่น > 100KB)
 3. ระบุ dependencies ที่ควรเป็น dynamic import
 4. ระบุ modules ที่มี side effects
-5. แนะนำ next steps: `/improve-efficiency` สำหรับ optimization
+5. แนะนำ next steps: `/review-efficiency` สำหรับ optimization
 
 ## Rules
 
@@ -109,7 +102,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### Read-Only Report
 
 - ไม่ optimize ไม่แก้ไข build config — รายงานเท่านั้น
-- ใช้ `/improve-efficiency` สำหรับ optimization
+- ใช้ `/review-efficiency` สำหรับ optimization
 - ใช้ `/run-build` สำหรับการ build
 
 ### Output Format
@@ -135,7 +128,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 
 ### Non-Redundancy
 
-- การ optimize build อยู่ใน `/improve-efficiency` แล้ว
+- การ optimize build อยู่ใน `/review-efficiency` แล้ว
 - การ build อยู่ใน `/run-build` แล้ว
 
 ## Expected Outcome

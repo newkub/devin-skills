@@ -16,7 +16,6 @@ description: รัน API tests โดยเรียก endpoints และต
 ### 1. Prepare API Test Context
 
 > Goal: เตรียม context ก่อนรัน API tests
-> Goal: รู้ endpoints, schemas, auth, และ environment ที่ต้องทดสอบ
 
 1. ตรวจสอบ `package.json` หรือ config เพื่อหา test framework และ scripts
 2. ระบุ API endpoints จาก codebase, OpenAPI, หรือ tests ที่มีอยู่
@@ -27,7 +26,6 @@ description: รัน API tests โดยเรียก endpoints และต
 ### 2. Create API Test Script
 
 > Goal: สร้าง script สำหรับรัน API tests
-> Goal: มี script ที่รัน requests และตรวจ responses ได้
 
 1. ทำ `/use-scripts` เพื่อเลือก shell และ location
 2. เลือกภาษา/เครื่องมือ: Bun/Node สำหรับ `fetch`, `ofetch`, `ky`
@@ -38,7 +36,6 @@ description: รัน API tests โดยเรียก endpoints และต
 ### 3. Run API Tests
 
 > Goal: รัน script และบันทึกผล
-> Goal: ทราบว่า API endpoints ตอบสนองตาม expectations
 
 1. รัน script ใน `dryRun` mode ก่อน
 2. ถ้า dry run ผ่าน → รันจริง
@@ -49,7 +46,6 @@ description: รัน API tests โดยเรียก endpoints และต
 ### 4. Validate And Report
 
 > Goal: ตรวจสอบผลและรายงาน
-> Goal: ระบุสาเหตุของ failures และ action items
 
 1. ทำ `/validate` กับ source ที่เกี่ยวข้องเมื่อ API test fail
 2. สรุปผลด้วย `/report-table`: endpoint, status, latency, pass/fail

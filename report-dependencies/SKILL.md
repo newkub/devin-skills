@@ -16,7 +16,6 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 ### 1. Gather Data
 
 > Goal: รวบรวม dependencies และตรวจสอบสถานะทั้งหมด
-> Goal: มี inventory และ status ครบสำหรับการวิเคราะห์
 
 1. ทำ `/list-dependencies` เพื่อดู dependencies ทั้งหมด แยกตามประเภท: `dependencies`, `devDependencies`, `peerDependencies`
 2. รัน `bun outdated` เพื่อระบุ dependencies ที่ล้าสมัย — จัดประเภท: safe to update (patch/minor) vs breaking (major)
@@ -27,7 +26,6 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 ### 2. Analyze
 
 > Goal: วิเคราะห์ข้อมูลที่รวบรวม
-> Goal: เข้าใจ patterns และ priority ของ issues
 
 1. จัดกลุ่ม dependencies ตามสถานะ: latest, outdated, unused, vulnerable, license issue
 2. ระบุ dependencies ที่มี vulnerabilities และมี fix available vs ไม่มี fix
@@ -37,7 +35,6 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 ### 3. Format
 
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
-> Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. แสดงผลตามลำดับ: Summary → Outdated → Unused → Vulnerabilities → Licenses
@@ -47,7 +44,6 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 ### 4. Present
 
 > Goal: นำเสนอ report พร้อม insights และ recommendations
-> Goal: ผู้อ่านรู้ว่าต้องทำอะไรต่อ
 
 1. สรุปจำนวน dependencies ทั้งหมดแยกตามประเภท
 2. ระบุ priority actions: critical vulnerabilities ก่อน, จากนั้น unused, จากนั้น outdated

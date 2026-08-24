@@ -16,7 +16,6 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ### 1. Gather Project Context
 
 > Goal: รวบรวมข้อมูล project
-> Goal: รู้ project setup, stack, และ conventions
 
 1. อ่าน `package.json`, `README.md`, `AGENTS.md`
 2. อ่าน `.devin/rules` หรือ project rules
@@ -26,7 +25,6 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ### 2. Identify Contributing Sections
 
 > Goal: ระบุ sections
-> Goal: CONTRIBUTING ครอบคลุมทุกสิ่งที contributor ต้องรู้ ทีต้องมี
 
 1. Prerequisites (tools, versions)
 2. Setup / installation
@@ -40,7 +38,6 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ### 3. Write Or Update
 
 > Goal: เขียนหรืออัปเดต `CONTRIBUTING.md`
-> Goal: `CONTRIBUTING.md` ครบถ้วนและถูกต้อง
 
 1. ใช้ข้อมูลจริงจาก project ไม่ใส่ placeholder
 2. ใช้ bullet points และตัวอย่าง commands
@@ -50,7 +47,6 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ### 4. Coordinate With Other Files
 
 > Goal: ประสานงานกับเอกสารอื่น
-> Goal: เอกสารทีเกี่ยวข้องสอดคล้องกัน
 
 1. ตรวจสอบว่า conventions สอดคล้องกับ `AGENTS.md`
 2. ตรวจสอบว่า scripts ตรงกับ `package.json`
@@ -59,7 +55,6 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ### 5. Validate
 
 > Goal: ตรวจสอบคุณภาพ
-> Goal: `CONTRIBUTING.md` ผ่าน validation
 
 1. ทำ `/validate` เพื่อตรวจ Markdown quality
 2. ทำ `git diff --check` เพื่อหา whitespace errors

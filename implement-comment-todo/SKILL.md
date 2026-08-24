@@ -9,7 +9,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ## Scope
 
-Use `implement-comment-todo` for the specific tasks and workflows it covers
+ใช้ `implement-comment-todo` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

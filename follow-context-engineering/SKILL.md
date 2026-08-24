@@ -45,7 +45,7 @@ description: จัดการ context ของ AI agent อย่างมี
 2. ทิ้ง: redundant tool outputs, verbose error messages, ข้อมูลที่ไม่เกี่ยวข้อง
 3. ใช้ tool result clearing: ลบ raw tool results เก่าที่ไม่จำเป็นต้องดูซ้ำ
 4. หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + 5 files ล่าสุดที่เกี่ยวข้อง
-5. ทำ `/review-context-rot` เมื่อตรวจพบสัญญาณ context degradation
+5. ทำ `/follow-context-rot` เมื่อตรวจพบสัญญาณ context degradation
 
 ### 4. Use Structured Note-Taking
 > Goal: Use Structured Note-Taking
@@ -100,7 +100,7 @@ description: จัดการ context ของ AI agent อย่างมี
 - ทิ้ง: redundant tool outputs, verbose messages
 - ใช้ tool result clearing สำหรับ lightest compaction
 - หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + recent files
-- ทำ `/review-context-rot` เมื่อตรวจพบ context degradation
+- ทำ `/follow-context-rot` เมื่อตรวจพบ context degradation
 
 ### 3. Persistent Memory
 
@@ -137,3 +137,4 @@ description: จัดการ context ของ AI agent อย่างมี
 - Progress ถูก preserve ข้าม session ผ่าน structured notes
 - Long-horizon tasks ถูกแบ่งเป็น sub-tasks ที่จัดการได้
 - Goal alignment รักษาไว้ตลอด conversation
+

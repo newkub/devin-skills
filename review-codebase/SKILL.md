@@ -1,6 +1,6 @@
 ---
 name: review-codebase
-description: Review ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
+description: Review และปรับปรุง ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
 ---
 
 ## Goal
@@ -16,7 +16,6 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 1. Prepare And Read Context
 
 > Goal: ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
-> Goal: Codebase ผ่าน pre-check และเข้าใจ review dimensions
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
 2. ทำ `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
@@ -27,7 +26,6 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 2. Run Review CLI And Capture Metrics
 
 > Goal: รัน review CLI ทั้ง table และ JSON output เพื่อวิเคราะห์ metrics
-> Goal: ได้ review report ทีครอบคลุม พร้อม score, findings และ metrics
 
 1. ทำ `/run-review` สำหรับ table output
 2. รัน `bun --filter tools-review review:json` หรือ `bun run --filter tools-review review -- --output report.json` เพื่อดึง JSON
@@ -37,7 +35,6 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 3. Decide Update CLI From Metrics
 
 > Goal: ตัดสินใจให้ `/update-create-review-cli` อัตโนมัติตาม metrics
-> Goal: CLI ครอบคลุม categories ล่าสุดและให้ผลถูกต้อง
 
 ถ้า metrics ตรงเงื่อนไขใดข้างล่าง → ทำ `/update-create-review-cli` แล้วกลับไป Step 2 (ทำซ้ำไม่เกิน 3 รอบ):
 
@@ -55,15 +52,13 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 4. Run PR And Global Reviews
 
 > Goal: รัน review เฉพาะทางถ้าจำเป็น
-> Goal: ครอบคลุม PR และ global skills ถ้ามี
 
 1. ถ้ามี PR ที่กำลัง review → ทำ `/review-github-pr`
-2. ถ้าต้องการ review global Devin skills → ทำ `/review-devin-global-skills`
+2. ถ้าต้องการ review global Devin skills → ทำ `/review-all-skills`
 
 ### 5. Validate Findings
 
 > Goal: ตรวจสอบและ validate issues ที่ review CLI พบ
-> Goal: Issues ถูก validate ครบถ้วนตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
@@ -73,12 +68,21 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 6. Report And Verify
 
 > Goal: รายงานผลและวัด after review score
-> Goal: รายงาน before-after review score และสรุปผล
 
 1. ทำ `/run-review` เพื่อวัด after score
 2. ทำ `/report-ansi`, `/report-table`
 3. ทำ `/report` เพื่อสรุปผล
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+
+### 7. Improve
+
+> Goal: ปรับปรุง codebase ตาม findings และลด redundancy
+
+1. อ่าน `AGENTS.md` และทำ `/scan-codebase` เพื่อหา issues ทั่วไป
+2. รัน `bunx jscpd`, `bunx knip`, `bunx madge --circular` สำหรับ code duplication, unused exports, circular dependencies
+3. จัดลำดับ priority ตาม impact ก่อน effort
+4. ทำ review-* skills ตาม findings เพื่อ review และปรับปรุง: `/review-frontend`, `/review-correctness`, `/review-reliability`, `/review-performance`, `/review-security`, `/review-database`, `/review-docs`, `/review-api` ตาม context
+5. ทำ `/validate` และ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
 
@@ -137,7 +141,7 @@ Skill รีวิวทุก dimension:
 - `review-config`
 - `review-quality`
 - `review-docs`
-- `review-context-rot`
+- `follow-context-rot`
 - `review-correctness`
 - `review-infrastructure`
 - `review-correctness`
@@ -202,7 +206,7 @@ Skill รีวิวทุก dimension:
 - `review-workflow-content`
 - `review-workspace`
 - Pull request: `review-github-pr`
-- Global skills: `review-devin-global-skills`
+- Global skills: `review-all-skills`
 
 ## Expected Outcome
 
@@ -211,4 +215,6 @@ Skill รีวิวทุก dimension:
 - `/update-create-review-cli` ถูกเรียกอัตโนมัติเมื่อ metrics บ่งชี้
 - Before-after review score ผ่าน `/run-review`
 - Issues ถูก validate และจัดลำดับตาม severity
+- Codebase ปรับปรุงตาม findings และลด redundancy โดยไม่มี regression
 - รายงานในแชทเป็นตารางพร้อม action ถัดไป
+

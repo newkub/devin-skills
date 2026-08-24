@@ -17,7 +17,6 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ### 1. Identify Target Files
 
 > Goal: ระบุไฟล์ที่ต้องการ restore จาก context หรือถามผู้ใช้
-> Goal: ทราบไฟล์ที่ต้องการ restore และ path ที่ชัดเจน
 
 1. ระบุไฟล์ที่ต้องการ restore จาก context
 2. ถ้า context ไม่ชัด → ถามผู้ใช้ด้วย `/ask-me`
@@ -26,7 +25,6 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ### 2. Check Latest Commit
 
 > Goal: ดู commit ล่าสุดว่ามีไฟล์ที่ต้องการหรือไม่
-> Goal: ทราบว่า commit ล่าสุดมีไฟล์เป้าหมายหรือไม่
 
 1. รัน `git log -1 --name-status` เพื่อดูไฟล์ที่เปลี่ยนแปลงใน commit ล่าสุด
 2. รัน `git show HEAD:<file-path>` เพื่อตรวจสอบว่าไฟล์มีอยู่ใน commit ล่าสุดหรือไม่
@@ -36,7 +34,6 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ### 3. Walk Back Through Log
 
 > Goal: เดินกลับไปใน git log ทีละ commit จนกว่าจะพบไฟล์ที่ต้องการ
-> Goal: พบ commit ที่มีไฟล์เป้าหมาย พร้อมระบุ commit hash
 
 1. รัน `git log --oneline --all -- <file-path>` เพื่อดู commits ที่แก้ไฟล์เป้าหมาย
 2. ถ้าไม่พบ commit ใด → ไฟล์อาจไม่เคยอยู่ใน git → stop และ report
@@ -46,7 +43,6 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ### 4. Restore Files
 
 > Goal: กู้คืนไฟล์จาก commit ที่พบ
-> Goal: ไฟล์ถูก restore กลับไปยัง working directory
 
 1. รัน `git restore --source=<commit-hash> <file-path>` เพื่อ restore ไฟล์จาก commit ที่พบ
 2. ถ้า restore หลายไฟล์ → รัน `git restore --source=<commit-hash> <file-1> <file-2> ...`
@@ -55,7 +51,6 @@ description: กู้คืนไฟล์จาก git history โดยเร
 ### 5. Verify Restoration
 
 > Goal: ตรวจสอบความถูกต้องของไฟล์ที่ restore
-> Goal: ไฟล์ที่ restore ถูกต้องและใช้งานได้
 
 1. รัน `git diff <file-path>` เพื่อดูสิ่งที่เปลี่ยนแปลงหลัง restore
 2. ตรวจสอบเนื้อหาไฟล์ว่าถูกต้อง

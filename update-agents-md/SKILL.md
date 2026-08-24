@@ -16,7 +16,6 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 ### 1. Update Project
 
 > Goal: วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
-> Goal: root `AGENTS.md` ครอบคลุม project
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
 2. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
@@ -25,14 +24,13 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
 7. ทำ `/follow-skills-map` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
-8. เพิ่ม `/improve-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
+8. เพิ่ม `/review-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
 9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
 8. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 
 ### 2. Follow Lib
 
 > Goal: Map libraries และ dependencies ไปยัง follow skills
-> Goal: `### Architecture` ใน `AGENTS.md` ระบุ `tech: /follow-<tech>` ครบถ้วน
 
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ทีใช้
@@ -43,7 +41,6 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 ### 3. Ship
 
 > Goal: Validate และ commit การเปลี่ยนแปลง `AGENTS.md`
-> Goal: `AGENTS.md` ผ่าน validation และถูก commit
 
 1. ทำ `/review-agents-md` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
@@ -54,7 +51,6 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 ### 4. Monorepo Workspace Rules
 
 > Goal: สร้าง/อัปเดท `AGENTS.md` สำหรับแต่ละ workspace ถ้าเป็น monorepo
-> Goal: ทุก workspace มี `AGENTS.md` ที่ระบุ dependencies ระหว่าง workspaces
 
 1. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure
 2. สำหรับแต่ละ workspace ระบุ:

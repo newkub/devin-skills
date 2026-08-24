@@ -9,7 +9,7 @@ description: แยก pure functions จาก side effects เพื่อเ�
 
 ## Scope
 
-Use `follow-manage-side-effect` for the specific tasks and workflows it covers
+ใช้ `follow-manage-side-effect` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

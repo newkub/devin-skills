@@ -16,7 +16,6 @@ description: แสดงรายการ subagents ทั้งหมดใ�
 ### 1. Scan Agents Directory
 
 > Goal: หา subagents ทั้งหมด
-> Goal: รายการ subagents ครบถ้วน
 
 1. สแกน `%APPDATA%\devin\agents` หา subdirectories ที่มี `AGENT.md`
 2. ข้าม `.backup/` directory
@@ -25,7 +24,6 @@ description: แสดงรายการ subagents ทั้งหมดใ�
 ### 2. Extract Metadata
 
 > Goal: ดึง metadata จากแต่ละ subagent
-> Goal: ข้อมูล subagent ครบถ้วน
 
 1. อ่าน `AGENT.md` ของแต่ละ subagent
 2. ดึง frontmatter: `name`, `description`, `model`, `allowed-tools`, `permissions`
@@ -34,7 +32,6 @@ description: แสดงรายการ subagents ทั้งหมดใ�
 ### 3. Report
 
 > Goal: นำเสนอรายการ subagents
-> Goal: ผู้ใช้ทราบ subagents ทั้งหมด
 
 1. นำเสนอเป็นตาราง: name, description, model, allowed-tools
 2. จัดเรียงตามชื่อ

@@ -16,7 +16,6 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ### 1. เตรียมความพร้อม
 
 > Goal: ตรวจสอบ requirements ก่อนเริ่ม
-> Goal: มี requirements ครบก่อนเริ่ม
 
 1. ติดตั้ง Neovim 0.9+
 2. ติดตั้ง Git
@@ -25,7 +24,6 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ### 2. Config Structure
 
 > Goal: สร้างโครงสร้าง config สำหรับ lazy.nvim
-> Goal: มีโครงสร้าง config ที่ถูกต้อง
 
 1. สร้าง `lua/plugins/` directory สำหรับ plugin specs
 2. แยก plugin specs เป็นไฟล์ต่างๆ ตามหมวด
@@ -34,7 +32,6 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ### 3. Bootstrap lazy.nvim
 
 > Goal: ติดตั้ง lazy.nvim ใน `init.lua`
-> Goal: lazy.nvim ติดตั้งและทำงานได้
 
 1. Bootstrap lazy.nvim ใน `init.lua`
 2. ตั้งค่า `lazy.nvim` พร้อม plugin specs
@@ -43,7 +40,6 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ### 4. Plugin Specs
 
 > Goal: กำหนด plugin specs
-> Goal: plugin specs ชัดเจนและ lazy load ถูกต้อง
 
 1. กำหนด plugin ด้วย URL (เช่น `github.com/user/plugin`)
 2. ใช้ `lazy = true` เป็น default
@@ -54,7 +50,6 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ### 5. Performance
 
 > Goal: เพิ่มประสิทธิภาพ Neovim startup
-> Goal: Neovim startup < 50ms
 
 1. ใช้ lazy loading สำหรับทุก plugin
 2. หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น

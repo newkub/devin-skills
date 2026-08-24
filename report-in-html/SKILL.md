@@ -1,210 +1,210 @@
 ---
 name: report-in-html
-description: Create a single interactive HTML file for browser-based reports with tables, dropdowns, sort/filt...
+description: สร้างไฟล์ HTML ไฟล์เดียวแบบโต้ตอบได้สำหรับรายงานบนเบราว์เซอร์ พร้อมตาราง, dropdown, sort/filt...
 ---
 
 ## Goal
 
-Create a single HTML file that presents project findings, analysis, or feature plans in a browser. The report supports interactive tables with sort, filter, group, search, and per-row dropdowns, plus theme toggle and sticky navigation.
+สร้างไฟล์ HTML ไฟล์เดียวที่นำเสนอผลการวิเคราะห์โปรเจกต์, การวิเคราะห์ หรือแผนฟีเจอร์บนเบราว์เซอร์ รายงานรองรับตารางแบบโต้ตอบได้ พร้อม sort, filter, group, search และ dropdown รายแถว รวมถึงการสลับธีมและเมนูนำทางแบบ sticky
 
 ## Scope
 
-- Generate one self-contained `.html` file with no build step
-- Use Tailwind CSS via CDN and optionally Vue 3 for interactivity
-- Include tables that can be sorted, filtered, grouped, and searched
-- Each table row can expand into a dropdown with extra columns
-- Report body is in English; table cell content may use the project language
+- สร้างไฟล์ `.html` ไฟล์เดียวที่พึ่งพาตัวเองได้ โดยไม่ต้อง build
+- ใช้ Tailwind CSS ผ่าน CDN และอาจใช้ Vue 3 สำหรับการโต้ตอบ
+- รวมตารางที่สามารถ sort, filter, group และ search ได้
+- แต่ละแถวของตารางสามารถขยายเป็น dropdown พร้อมคอลัมน์เพิ่มเติมได้
+- เนื้อหาเนื้อหารายงานเป็นภาษาอังกฤษ; เนื้อหาในเซลล์ตารางอาจใช้ภาษาของโปรเจกต์
 
 ## Execute
 
 ### 1. Prepare Data
 
-> Goal: Have clean, structured data before rendering
+> Goal: มีข้อมูลที่สะอาดและมีโครงสร้างก่อนเรนเดอร์
 
-1. Run `/analyze-project` or the parent skill that produced the data (e.g., `/idea-features`)
-2. Convert results into a JavaScript array of objects or 2D arrays
-3. Ensure each row has a unique `id` and all required fields
-4. Add computed fields for `group` and `searchText` if needed
+1. รัน `/analyze-project` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea-features`)
+2. แปลงผลลัพธ์เป็น JavaScript array ของ objects หรือ 2D arrays
+3. ตรวจสอบให้แต่ละแถวมี `id` ที่ไม่ซ้ำและครบทุกฟิลด์ที่จำเป็น
+4. เพิ่มฟิลด์คำนวณสำหรับ `group` และ `searchText` หากจำเป็น
 
 ### 2. Build HTML Shell
 
-> Goal: Single file with all assets loaded from CDN
+> Goal: ไฟล์เดียวที่โหลด assets ทั้งหมดจาก CDN
 
-1. Use `<!DOCTYPE html>`, `<html lang="en">`, `<meta charset="UTF-8">`
-2. Load Tailwind CSS: `https://cdn.tailwindcss.com`
-3. For interactive mode, load Vue 3: `https://unpkg.com/vue@3/dist/vue.global.js`
-4. Set `tailwind.config = { darkMode: 'class' }`
-5. Create `<div id="app">` and a `<script>` block using `Vue.createApp`
+1. ใช้ `<!DOCTYPE html>`, `<html lang="en">`, `<meta charset="UTF-8">`
+2. โหลด Tailwind CSS: `https://cdn.tailwindcss.com`
+3. สำหรับโหมดโต้ตอบ โหลด Vue 3: `https://unpkg.com/vue@3/dist/vue.global.js`
+4. ตั้งค่า `tailwind.config = { darkMode: 'class' }`
+5. สร้าง `<div id="app">` และบล็อก `<script>` โดยใช้ `Vue.createApp`
 
 ### 3. Add Header And Theme Toggle
 
-> Goal: Clear header with dark/light mode
+> Goal: ส่วนหัวชัดเจนพร้อมโหมดมืด/สว่าง
 
-1. Show report title and short subtitle
-2. Add a theme toggle button that toggles `dark` class on `<html>`
-3. Persist preference in `localStorage`
-4. Read `prefers-color-scheme` on load
-5. Use a clear status indicator (e.g., badge or icon) for report type
+1. แสดงชื่อรายงานและคำบรรยายสั้นๆ
+2. เพิ่มปุ่มสลับธีมที่สลับคลาส `dark` บน `<html>`
+3. บันทึกการตั้งค่าใน `localStorage`
+4. อ่าน `prefers-color-scheme` เมื่อโหลด
+5. ใช้ตัวบ่งชี้สถานะที่ชัดเจน (เช่น badge หรือ icon) สำหรับประเภทรายงาน
 
 ### 4. Add Sticky Tabs And Key Findings
 
-> Goal: Top-level navigation and summary
+> Goal: เมนูนำทางระดับบนและสรุป
 
-1. Create a sticky tab bar with `position: sticky; top: 0`
-2. Use `backdrop-blur` and a contrasting background
-3. First tab shows `Key Findings` cards in a responsive grid
-4. Each tab gets a badge with item count
-5. Use clear visual hierarchy: title > subtitle > key findings > tabs
+1. สร้างแถบแท็บแบบ sticky ด้วย `position: sticky; top: 0`
+2. ใช้ `backdrop-blur` และพื้นหลังที่ตัดกัน
+3. แท็บแรกแสดงการ์ด `Key Findings` ในกริดแบบ responsive
+4. แต่ละแท็บมี badge แสดงจำนวนรายการ
+5. ใช้ลำดับชั้นภาพที่ชัดเจน: title > subtitle > key findings > tabs
 
 ### 5. Build Interactive Table
 
-> Goal: Table supports rich interaction
+> Goal: ตารางรองรับการโต้ตอบที่หลากหลาย
 
-1. Render table from data array using `v-for`
-2. Add search input bound with `v-model`
-3. Add filter chips for `Priority`, `Impact`, `Phase`, `Effort`
-4. Add sort controls on column headers (click to toggle asc/desc)
-5. Add group by selector (e.g., group by `Phase` or `Priority`)
-6. Add a `Clear` button when any filter is active
-7. Show a `No results` empty state when filters return zero rows
-8. Use computed `filteredRows` for sort/filter/group/search
+1. เรนเดอร์ตารางจาก data array โดยใช้ `v-for`
+2. เพิ่มช่อง search ผูกด้วย `v-model`
+3. เพิ่ม filter chips สำหรับ `Priority`, `Impact`, `Phase`, `Effort`
+4. เพิ่มตัวควบคุม sort บนส่วนหัวคอลัมน์ (คลิกเพื่อสลับ asc/desc)
+5. เพิ่มตัวเลือก group by (เช่น group by `Phase` หรือ `Priority`)
+6. เพิ่มปุ่ม `Clear` เมื่อมี filter ที่ใช้งานอยู่
+7. แสดงสถานะว่าง `No results` เมื่อ filter ส่งกลับศูนย์แถว
+8. ใช้ computed `filteredRows` สำหรับ sort/filter/group/search
 
 ### 6. Add Per-Row Dropdown
 
-> Goal: Each row can expand to show extra detail
+> Goal: แต่ละแถวสามารถขยายเพื่อแสดงรายละเอียดเพิ่มเติมได้
 
-1. Add an expand/collapse arrow on each row
-2. When expanded, show a dropdown panel below the row
-3. Dropdown has at least two columns (e.g., `UX/UI Sketch` and `Plan`)
-4. Keep content concise; use `pre` or `ul` for sketches and plans
-5. Only one row may be expanded at a time if it improves UX
+1. เพิ่มลูกศรขยาย/ยุบบนแต่ละแถว
+2. เมื่อขยาย ให้แสดงพาเนล dropdown ด้านล่างแถว
+3. Dropdown มีอย่างน้อยสองคอลัมน์ (เช่น `UX/UI Sketch` และ `Plan`)
+4. เนื้อหากระชับ; ใช้ `pre` หรือ `ul` สำหรับ sketches และ plans
+5. ขยายได้ครั้งละหนึ่งแถวหากช่วยให้ UX ดีขึ้น
 
 ### 7. Add Summary And Diagrams
 
-> Goal: Non-table findings are also visible
+> Goal: ผลการวิเคราะห์ที่ไม่ใช่ตารางก็มองเห็นได้
 
-1. Add summary sections for DB/Files, API/Functions, Components
-2. Add text-based UX/UI sketch and architecture diagram
-3. Keep diagrams in `<pre>` blocks with monospaced font
-4. Use cards and grids for summary, not just plain lists
+1. เพิ่มส่วนสรุปสำหรับ DB/Files, API/Functions, Components
+2. เพิ่ม UX/UI sketch และ architecture diagram แบบข้อความ
+3. เก็บ diagrams ในบล็อก `<pre>` พร้อมฟอนต์ monospace
+4. ใช้การ์ดและกริดสำหรับสรุป ไม่ใช่แค่ลิสต์ธรรมดา
 
 ### 8. Add Next Action
 
-> Goal: Report ends with a clear recommendation
+> Goal: รายงานจบด้วยข้อแนะนำที่ชัดเจน
 
-1. Add a `Next Action` section at the bottom
-2. Use numbered or bullet list
-3. Reference the top-priority items by `#`
-4. Style the next action with a distinct background or border
+1. เพิ่มส่วน `Next Action` ที่ด้านล่าง
+2. ใช้ลิสต์แบบลำดับเลขหรือ bullet
+3. อ้างอิงรายการที่มีความสำคัญสูงสุดด้วย `#`
+4. ตกแต่ง next action ด้วยพื้นหลังหรือขอบที่โดดเด่น
 
 ### 9. Open In Browser
 
-> Goal: Verify the report renders correctly
+> Goal: ตรวจสอบว่ารายงานเรนเดอร์ถูกต้อง
 
-1. Save the file under `reports/<report-name>.html` or `.devin/reports/<report-name>.html`
-2. Run `/open-web` or `Start-Process <path>` to open in browser
-3. Confirm tabs, theme, sort, filter, dropdowns work
+1. บันทึกไฟล์ใน `reports/<report-name>.html` หรือ `.devin/reports/<report-name>.html`
+2. รัน `/open-web` หรือ `Start-Process <path>` เพื่อเปิดในเบราว์เซอร์
+3. ยืนยันว่าแท็บ, ธีม, sort, filter, dropdown ทำงานได้
 
 ## Rules
 
 ### 1. Single Self-Contained File
 
-- No build step, no external package installation
-- All JS/CSS loaded from CDN
-- Data embedded inside `<script>`
-- File size under 500 KB if possible
+- ไม่มี build step ไม่มีการติดตั้ง package ภายนอก
+- JS/CSS ทั้งหมดโหลดจาก CDN
+- ข้อมูลฝังอยู่ใน `<script>`
+- ขนาดไฟล์ต่ำกว่า 500 KB หากเป็นไปได้
 
 ### 2. Report Body Language
 
-- Header, findings, summary, diagrams, and next action are in English
-- Table cell content may be in the project language (e.g., Thai)
-- Do not mix languages within the same paragraph
+- ส่วนหัว, ผลการวิเคราะห์, สรุป, diagrams และ next action เป็นภาษาอังกฤษ
+- เนื้อหาในเซลล์ตารางอาจเป็นภาษาของโปรเจกต์ (เช่น ไทย)
+- ห้ามผสมภาษาในย่อหน้าเดียวกัน
 
 ### 3. Table Interactivity
 
-- Search by text across all visible columns
-- Filter by `Priority`, `Impact`, `Phase`, `Effort`, `Difficult`
-- Sort by any column (asc/desc toggle)
-- Group rows by a selected column
-- Clear filters button
-- Highlight active filter/sort state
-- Show empty state when no rows match
+- ค้นหาด้วยข้อความในทุกคอลัมน์ที่มองเห็น
+- Filter ตาม `Priority`, `Impact`, `Phase`, `Effort`, `Difficult`
+- Sort ตามคอลัมน์ใดก็ได้ (สลับ asc/desc)
+- จัดกลุ่มแถวตามคอลัมน์ที่เลือก
+- ปุ่มล้าง filters
+- ไฮไลต์สถานะ filter/sort ที่ใช้งานอยู่
+- แสดงสถานะว่างเมื่อไม่มีแถวที่ตรง
 
 ### 4. Per-Row Dropdown
 
-- Each row has an expand button or clickable row
-- Expanded panel has at least two labeled columns
-- For `/idea-features` output, columns should be `UX/UI Sketch` and `Plan`
-- Dropdown content uses concise text or code blocks
+- แต่ละแถวมีปุ่มขยายหรือแถวที่คลิกได้
+- พาเนลที่ขยายมีอย่างน้อยสองคอลัมน์ที่มีป้ายกำกับ
+- สำหรับผลลัพธ์ของ `/idea-features` คอลัมน์ควรเป็น `UX/UI Sketch` และ `Plan`
+- เนื้อหา dropdown ใช้ข้อความกระชับหรือ code blocks
 
 ### 5. Design Tokens And Visual Hierarchy
 
-- Define a small design token set with CSS variables for brand, success, warning, danger, and neutral colors
-- Use consistent spacing scale: `4`, `8`, `12`, `16`, `24`, `32`, `48`
-- Keep font stack: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
-- Use `text-sm` for tables, `text-base` for body, `text-2xl` for page title
-- Avoid more than 6 accent colors
+- กำหนดชุด design token เล็กๆ ด้วย CSS variables สำหรับสี brand, success, warning, danger และ neutral
+- ใช้สเกลระยะห่างที่สม่ำเสมอ: `4`, `8`, `12`, `16`, `24`, `32`, `48`
+- รักษา font stack: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+- ใช้ `text-sm` สำหรับตาราง, `text-base` สำหรับเนื้อหา, `text-2xl` สำหรับชื่อหน้า
+- หลีกเลี่ยงใช้สี accent เกิน 6 สี
 
 ### 6. UX/UI Improvements
 
-- Rounded corners (`rounded-lg` for cards, `rounded` for buttons/badges)
-- Subtle shadows (`shadow-sm` for cards, `shadow` for sticky headers)
-- Sticky tab bar with `backdrop-blur`
-- Sticky table headers (`sticky top-0 z-10`) on wide tables
-- Row hover state with `hover:bg-gray-50 dark:hover:bg-gray-700/50`
-- Alternating row colors optional, but keep contrast
-- Status colors: red for high/danger, yellow for medium/warning, green for low/success, blue for info
-- Use badges/pills for `Priority`, `Phase`, `Impact`, `Effort`
-- Group headers distinct from rows (background + bold)
-- Summary cards in responsive grid (`grid-cols-1 md:grid-cols-3`)
+- มุมโค้งมน (`rounded-lg` สำหรับการ์ด, `rounded` สำหรับปุ่ม/badges)
+- เงาเล็กน้อย (`shadow-sm` สำหรับการ์ด, `shadow` สำหรับส่วนหัว sticky)
+- แถบแท็บ sticky พร้อม `backdrop-blur`
+- ส่วนหัวตาราง sticky (`sticky top-0 z-10`) บนตารางกว้าง
+- สถานะ hover ของแถวด้วย `hover:bg-gray-50 dark:hover:bg-gray-700/50`
+- สีแถวสลับเป็นทางเลือก แต่ต้องรักษาความตัดกัน
+- สีสถานะ: แดงสำหรับ high/danger, เหลืองสำหรับ medium/warning, เขียวสำหรับ low/success, น้ำเงินสำหรับ info
+- ใช้ badges/pills สำหรับ `Priority`, `Phase`, `Impact`, `Effort`
+- ส่วนหัวกลุ่มแตกต่างจากแถว (พื้นหลัง + ตัวหนา)
+- การ์ดสรุปในกริดแบบ responsive (`grid-cols-1 md:grid-cols-3`)
 
 ### 7. Responsive And Accessible
 
-- Horizontal scroll for wide tables (`overflow-x-auto`)
-- On small screens, stack filters and tabs vertically
-- Use `focus:outline-none focus:ring-2 focus:ring-blue-500` for focusable elements
-- Do not use color alone to convey meaning; add text or icon
-- Use `aria-label` for icon-only buttons
-- Respect `prefers-reduced-motion`
-- Ensure sufficient color contrast in both light and dark mode
+- เลื่อนแนวนอนสำหรับตารางกว้าง (`overflow-x-auto`)
+- บนหน้าจอเล็ก ให้เรียง filters และแท็บในแนวตั้ง
+- ใช้ `focus:outline-none focus:ring-2 focus:ring-blue-500` สำหรับองค์ประกอบที่โฟกัสได้
+- ห้ามใช้สีเพียงอย่างเดียวเพื่อสื่อความหมาย; เพิ่มข้อความหรือ icon
+- ใช้ `aria-label` สำหรับปุ่มที่มีเฉพาะ icon
+- เคารพ `prefers-reduced-motion`
+- รับประกันความตัดกันของสีที่เพียงพอทั้งในโหมดสว่างและโหมดมืด
 
 ### 8. Empty, Loading, And Error States
 
-- Show a friendly `No results` message when filters match nothing
-- Show a `Loading...` fallback while Vue initializes (use `v-cloak`)
-- Provide a `Reset filters` button in empty state
-- If data is missing, show a clear message instead of a broken table
+- แสดงข้อความ `No results` ที่เป็นมิตรเมื่อ filter ไม่ตรงเลย
+- แสดง fallback `Loading...` ขณะ Vue เริ่มต้น (ใช้ `v-cloak`)
+- จัดปุ่ม `Reset filters` ในสถานะว่าง
+- หากข้อมูลหาย ให้แสดงข้อความชัดเจนแทนตารางที่เสีย
 
 ### 9. Micro-Interactions
 
-- Highlight the active sort column
-- Show a count badge on the active tab
-- Animate row expansion with a simple `max-height` transition (respect `prefers-reduced-motion`)
-- Use subtle hover transitions for buttons and rows
-- Show `Copied` or `Saved` feedback for any copy/export actions
+- ไฮไลต์คอลัมน์ sort ที่ใช้งานอยู่
+- แสดง count badge บนแท็บที่ใช้งานอยู่
+- เคลื่อนไหวการขยายแถวด้วย transition `max-height` แบบง่าย (เคารพ `prefers-reduced-motion`)
+- ใช้ hover transitions เล็กน้อยสำหรับปุ่มและแถว
+- แสดง feedback `Copied` หรือ `Saved` สำหรับการ copy/export ใดๆ
 
 ### 10. Print And Share
 
-- Add a print-friendly CSS block:
-  - Hide sticky tab bar, theme toggle, and filters
-  - Expand all dropdown rows automatically
-  - Use black text on white background
-- Keep URLs and code blocks readable when printed
+- เพิ่มบล็อก CSS ที่เหมาะสำหรับการพิมพ์:
+  - ซ่อนแถบแท็บ sticky, สลับธีม และ filters
+  - ขยายแถว dropdown ทั้งหมดอัตโนมัติ
+  - ใช้ข้อความสีดำบนพื้นหลังสีขาว
+- รักษา URL และ code blocks ให้อ่านได้เมื่อพิมพ์
 
 ### 11. Safety
 
-- No secrets, credentials, or hardcoded sensitive paths
-- Use relative paths for project files
-- Sanitize any user-provided content before injecting into HTML
-- Use `DOMPurify` if rendering HTML from untrusted sources
+- ห้ามมี secrets, credentials หรือ paths ที่ละเอียดอ่อนที่ hardcode ไว้
+- ใช้ relative paths สำหรับไฟล์โปรเจกต์
+- ทำความสะอาดเนื้อหาที่ผู้ใช้ให้มาก่อนฉีดเข้า HTML
+- ใช้ `DOMPurify` หากเรนเดอร์ HTML จากแหล่งที่ไม่น่าเชื่อถือ
 
 ## Expected Outcome
 
-- A single `.html` file saved in the project
-- Report body in English, table cells in the project language if needed
-- Interactive table with sort, filter, group, search, and sticky headers
-- Per-row dropdown with two columns
-- Theme toggle, sticky tabs, key findings, summary, diagrams, next action
-- Responsive, accessible, and print-friendly
-- Clear empty/loading/error states
-- File opens in browser and renders correctly
+- ไฟล์ `.html` ไฟล์เดียวที่บันทึกในโปรเจกต์
+- เนื้อหารายงานเป็นภาษาอังกฤษ, เซลล์ตารางเป็นภาษาของโปรเจกต์หากจำเป็น
+- ตารางโต้ตอบได้พร้อม sort, filter, group, search และส่วนหัว sticky
+- Dropdown รายแถวพร้อมสองคอลัมน์
+- สลับธีม, แท็บ sticky, key findings, สรุป, diagrams, next action
+- Responsive, accessible และเหมาะสำหรับการพิมพ์
+- สถานะว่าง/loading/error ที่ชัดเจน
+- ไฟล์เปิดในเบราว์เซอร์และเรนเดอร์ถูกต้อง

@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 
 ## Scope
 
-Use `follow-create-rolldown-lib` for the specific tasks and workflows it covers
+ใช้ `follow-create-rolldown-lib` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -16,7 +16,6 @@ description: ครุ่นคิดเชิงลึกก่อนตัด�
 ### 1. Pause And Define Decision
 
 > Goal: หยุดและระบุสิ่งที่ต้องตัดสินใจ
-> Goal: รู้ว่าต้องพิจารณาอะไร
 
 1. ระบุ decision หรือ action ที่กำลังจะทำ
 2. ระบุ context และ constraints
@@ -25,7 +24,6 @@ description: ครุ่นคิดเชิงลึกก่อนตัด�
 ### 2. Consider Perspectives
 
 > Goal: พิจารณาจากหลายมุมมอง
-> Goal: ครอบคลุมผลกระทบทุกด้าน
 
 1. มุมมองผู้ใช้ — needs, UX, expectations
 2. มุมมองระบบ — architecture, performance, security
@@ -35,7 +33,6 @@ description: ครุ่นคิดเชิงลึกก่อนตัด�
 ### 3. Weigh Trade-Offs
 
 > Goal: ชั่งน้ำหนัก trade-offs
-> Goal: ตัดสินใจด้วยข้อมูลครบ
 
 1. ระบุทางเลือกที่เป็นไปได้อย่างน้อย 2 ทาง
 2. เปรียบเทียบ pros/cons ของแต่ละทาง
@@ -45,7 +42,6 @@ description: ครุ่นคิดเชิงลึกก่อนตัด�
 ### 4. Surface Uncertainties
 
 > Goal: ระบุความไม่แน่นอนและความเสี่ยง
-> Goal: ไม่ซ่อน unknowns
 
 1. ระบุ known unknowns และ unknown unknowns
 2. ประเมินความสำคัญของแต่ละ uncertainty
@@ -55,7 +51,6 @@ description: ครุ่นคิดเชิงลึกก่อนตัด�
 ### 5. Reach Conclusion
 
 > Goal: สรุปผลการครุ่นคิด
-> Goal: ได้ข้อสรุปชัดเจน
 
 1. เลือกแนวทางที่เหมาะสมที่สุดพร้อมเหตุผล
 2. ระบุข้อจำกัดและสิ่งที่ยอมรับได้

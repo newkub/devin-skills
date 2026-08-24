@@ -16,7 +16,6 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 ### 1. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม Clean Architecture
-> Goal: แยก concerns ชัดเจนตาม Clean Architecture layers
 
 1. ทำ `/follow-clean-architecture` เพื่อสร้างโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
 2. สร้าง entry points: `src/presentation/cli.ts` (CLI entry) และ `src/index.ts` (library entry)
@@ -25,7 +24,6 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 ### 2. Configure Build Tools
 
 > Goal: ตั้งค่า build tools สำหรับ production
-> Goal: Build ได้เร็ว มี type declarations ครบ
 
 1. ติดตั้ง `bunup` ด้วย `bun add -d bunup`
 2. สร้าง `bunup.config.ts` พร้อม `dts.splitting: true`
@@ -36,7 +34,6 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 ### 3. Setup Scripts
 
 > Goal: ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
-> Goal: Scripts ครบ สอดคล้อง monorepo standards
 
 1. เพิ่ม `dev`: `bun run src/presentation/cli.ts`
 2. เพิ่ม `build`: `bunx bunup`
@@ -56,7 +53,6 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 ### 5. Development Workflow
 
 > Goal: ใช้ development workflow ที่มีประสิทธิภาพ
-> Goal: รันได้เร็ว แก้ไขได้ทันที
 
 1. ใช้ `bun run dev` สำหรับ run CLI โดยตรง
 2. ใช้ `bun run build:watch` สำหรับ watch build mode

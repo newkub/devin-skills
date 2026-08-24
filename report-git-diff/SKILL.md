@@ -16,7 +16,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 1. Determine Diff Scope
 
 > Goal: ระบุขอบเขตของ diff ที่ต้องการรายงาน
-> Goal: รู้ว่าจะรายงาน diff แบบไหน
 
 1. ถามผู้ใช้หรืออนุมานจาก context ว่าต้องการ diff แบบใด:
    - Unstaged: `git diff`
@@ -31,7 +30,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 2. Collect Diff Statistics
 
 > Goal: รวบรวมสถิติของการเปลี่ยนแปลง
-> Goal: มีสถิติครบสำหรับการรายงาน
 
 1. รัน `git diff --stat` เพื่อดูสถิติต่อไฟล์ (additions, deletions)
 2. รัน `git diff --shortstat` เพื่อดูสถิติรวม
@@ -41,7 +39,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 3. Categorize Changes
 
 > Goal: จัดกลุ่มไฟล์ที่เปลี่ยนแปลงตามประเภท
-> Goal: การเปลี่ยนแปลงจัดกลุ่มชัดเจน อ่านง่าย
 
 1. จัดกลุ่มตาม change type:
    - Added (A): ไฟล์ใหม่
@@ -59,7 +56,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 4. Format Diff Report
 
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
-> Goal: รายงานอ่านง่าย ครบข้อมูล ไม่ noise
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบสถิติเป็นตาราง
 2. ทำ `/report-codeblock` เพื่อจัดรูปแบบ diff blocks
@@ -69,7 +65,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 5. Highlight Key Changes
 
 > Goal: ชี้เน้นการเปลี่ยนแปลงที่สำคัญ
-> Goal: ผู้อ่านเห็นสิ่งสำคัญก่อน
 
 1. ระบุไฟล์ที่มีการเปลี่ยนแปลงมากที่สุด (top 5 by lines changed)
 2. ระบุ breaking changes หรือสิ่งที่กระทบ API, schema, หรือ config
@@ -80,7 +75,6 @@ description: รายงาน git diff พร้อมสรุปการเ
 ### 6. Provide Insights
 
 > Goal: ให้ insights ของการเปลี่ยนแปลง
-> Goal: ผู้อ่านเข้าใจผลกระทบของการเปลี่ยนแปลง
 
 1. สรุปว่าการเปลี่ยนแปลงนี้เป็นประเภทใด (feature, fix, refactor, config, docs)
 2. ระบุผลกระทบต่อส่วนต่างๆ ของระบบ

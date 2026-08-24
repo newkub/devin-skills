@@ -1,55 +1,55 @@
 ---
 name: watch-all-task
-description: Watch task files and auto run pending tasks on changes
+description: เฝ้าติดตามไฟล์งานและรันงานที่ค้างอยู่อัตโนมัติเมื่อมีการเปลี่ยนแปลง
 ---
 
 ## Goal
 
-Monitor task queue files and run pending tasks automatically when changes are detected
+ติดตามไฟล์คิวงานและรันงานที่ค้างอยู่อัตโนมัติเมื่อตรวจพบการเปลี่ยนแปลง
 
 ## Scope
 
-Use for workspaces with task queues or QUEUE.md that need continuous execution
+ใช้กับ workspace ที่มีคิวงานหรือ `QUEUE.md` ที่ต้องทำงานต่อเนื่อง
 
 ## Execute
 
 ### 1. Read task queue
-> Goal: read task queue
+> Goal: อ่านคิวงาน
 
-1. Read QUEUE.md or task list
-1. Identify pending tasks
-1. Sort by priority
+1. อ่าน `QUEUE.md` หรือรายการงาน
+1. ระบุงานที่ค้างอยู่
+1. เรียงตาม priority
 
 ### 2. Watch for changes
-> Goal: watch for changes
+> Goal: เฝ้าติดตามการเปลี่ยนแปลง
 
-1. Watch task queue file with file watcher
-1. Detect new or modified tasks
-1. Debounce rapid changes
+1. เฝ้าไฟล์คิวงานด้วย file watcher
+1. ตรวจจับงานใหม่หรืองานที่แก้ไข
+1. debounce การเปลี่ยนแปลงที่เร็วติดต่อกัน
 
 ### 3. Run pending tasks
-> Goal: run pending tasks
+> Goal: รันงานที่ค้างอยู่
 
-1. Call /run-all-task or /implement-queue-md
-1. Execute tasks in order
-1. Stop on error or ask user
+1. เรียก `/run-all-task` หรือ `/implement-queue-md`
+1. รันงานตามลำดับ
+1. หยุดเมื่อเกิด error หรือถามผู้ใช้
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Log completed and failed tasks
-1. Update QUEUE.md status
-1. Suggest next action
+1. บันทึกงานที่เสร็จและล้มเหลว
+1. อัปเดตสถานะใน `QUEUE.md`
+1. แนะนำ action ถัดไป
 
 ## Rules
 
-- Do not run destructive tasks without user confirmation
-- Use polling or native file watcher based on environment
-- Keep one watcher instance per queue file
-- Retry failed tasks at most 3 times before stopping
+- ห้ามรันงานที่ทำลายล้างโดยไม่ได้รับการยืนยันจากผู้ใช้
+- ใช้ polling หรือ native file watcher ตาม environment
+- มี watcher instance เดียวต่อไฟล์คิว
+- ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้งก่อนหยุด
 
 ## Expected Outcome
 
-- Task queue is continuously monitored
-- Pending tasks are executed automatically
-- Status in queue file is up to date
+- คิวงานถูกติดตามอย่างต่อเนื่อง
+- งานที่ค้างอยู่ถูกรันอัตโนมัติ
+- สถานะในไฟล์คิวเป็นปัจจุบัน

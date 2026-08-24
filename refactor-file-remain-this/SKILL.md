@@ -5,11 +5,11 @@ description: Refactor into smaller files, keeping this one as is.
 
 ## Goal
 
-Refactor File Remain This
+แยกไฟล์ย่อยโดยเหลือไฟล์นี้ไว้เหมือนเดิม
 
 ## Scope
 
-Use `refactor-file-remain-this` for the specific tasks and workflows it covers
+ใช้ `refactor-file-remain-this` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

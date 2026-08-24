@@ -16,7 +16,6 @@ description: พิจารณาและเรียก deep- workflows ท�
 ### 1. Identify Task Context
 
 > Goal: ระบุ context ของ task ปัจจุบันเพื่อพิจารณา deep- workflows ที่เกี่ยวข้อง
-> Goal: รู้ว่า task ต้องการ deep analysis ในมิติใดบ้าง
 
 1. ระบุประเภทของ task: analyze, review, plan, refactor, test, validate, secure, optimize, research
 2. ระบุความซับซ้อน: low, medium, high
@@ -26,7 +25,6 @@ description: พิจารณาและเรียก deep- workflows ท�
 ### 2. Select Deep Workflows
 
 > Goal: เลือก deep- workflows ที่เกี่ยวข้องกับ task context
-> Goal: เลือก deep- workflows ที่จำเป็นและเกี่ยวข้องจริง
 
 1. Analysis → `deep-analyze` หรือ `deep-analyze-by-use-scripts` (ถ้าต้อง scripts/review CLI)
 2. Review → `deep-review` (comprehensive) หรือ `/review-*` (specific dimension)
@@ -42,7 +40,6 @@ description: พิจารณาและเรียก deep- workflows ท�
 ### 3. Execute Selected Workflows
 
 > Goal: ทำตาม deep- workflows ที่เลือก ใช้ parallel execution เมื่อเป็นไปได้
-> Goal: deep- workflows ถูก execute อย่างมีประสิทธิภาพ
 
 1. ถ้าเลือกหลาย workflows และเป็น independent → ใช้ `follow-parallel` สำหรับ parallel execution
 2. ถ้าเลือกหลาย workflows และมี dependency → ทำตามลำดับ
@@ -52,7 +49,6 @@ description: พิจารณาและเรียก deep- workflows ท�
 ### 4. Apply Deep Follow If Needed
 
 > Goal: ถ้า task ต้องการการทำตามแบบ recursive ใช้ `deep-follow`
-> Goal: ทุก step ของ deep- workflows ถูก execute และ verify ครบถ้วน
 
 1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `deep-follow`
 2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `deep-follow`

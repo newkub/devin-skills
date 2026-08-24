@@ -16,7 +16,6 @@ description: เลือกและ implement algorithms ตามปัญห
 ### 1. Understand The Problem
 
 > Goal: วิเคราะห์ปัญหาก่อนเลือก algorithm
-> Goal: ระบุ requirements ชัดเจน
 
 1. ระบุ input/output ทีต้องการ
 2. ระบุ constraints (time, space, data size)
@@ -26,7 +25,6 @@ description: เลือกและ implement algorithms ตามปัญห
 ### 2. Choose Algorithm
 
 > Goal: เลือก algorithm ตาม characteristics
-> Goal: ได้ algorithm ทีตอบโจทย์
 
 1. ค้นหา algorithm ทั่วไปสำหรับปัญหาประเภทนี้ (sorting, searching, graph, DP, greedy)
 2. เปรียบเทียบ time/space complexity
@@ -36,7 +34,6 @@ description: เลือกและ implement algorithms ตามปัญห
 ### 3. Analyze Complexity
 
 > Goal: วิเคราะห์ก่อน implement
-> Goal: ยืนยันว่า algorithm ผ่าน constraints
 
 1. คำนวณ best/average/worst time complexity
 2. คำนวณ space complexity
@@ -46,7 +43,6 @@ description: เลือกและ implement algorithms ตามปัญห
 ### 4. Implement
 
 > Goal: เขียน algorithm ให้ถูกต้องและอ่านง่าย
-> Goal: โค้ดทำงานได้และ maintain ได้
 
 1. ใช้ชื่อตัวแปรและฟังก์ชันทีสื่อความหมาย
 2. แบ่งเป็น helper functions ถ้าซับซ้อน
@@ -56,7 +52,6 @@ description: เลือกและ implement algorithms ตามปัญห
 ### 5. Optimize If Needed
 
 > Goal: ปรับปรุงเมื่อจำเป็น
-> Goal: ได้ performance ทีดีพอ
 
 1. Profile ก่อน optimize
 2. พิจารณา trade-off ระหว่าง time/space

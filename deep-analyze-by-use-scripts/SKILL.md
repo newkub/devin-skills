@@ -16,7 +16,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 1. Analyze Project
 
 > Goal: วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
-> Goal: มี foundation สำหรับ deep analysis
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
 2. รัน `bunx ast-grep outline <path>` เพื่อสร้าง structural overview ของ source files
@@ -25,7 +24,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 2. Setup Analyze CLI
 
 > Goal: สร้าง `tools/analyze` CLI สำหรับ AST-based analysis
-> Goal: มี `tools/analyze` CLI ที่ maintainable และผ่าน review
 
 1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
 2. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
@@ -36,7 +34,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 3. Ensure Review CLI Ready
 
 > Goal: ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
-> Goal: Review CLI พร้อมรันและครอบคลุม categories ล่าสุด
 
 1. ทำ `/update-create-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
 2. ถ้า review CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
@@ -45,7 +42,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 4. Run Review CLI And NAPI Analysis
 
 > Goal: รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
-> Goal: มี metrics และ AST analysis ครบสำหรับ deep report
 
 1. รัน `bun --filter tools-review review:json` เพื่อดึง review report เป็น JSON
 2. รัน `bun --filter tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
@@ -56,7 +52,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 5. Deep Report Findings
 
 > Goal: จัดรูปแบบผลลัพธ์เป็น deep report ตาราง 7 columns พร้อม deep summary
-> Goal: Deep report ที่ actionable และตรวจสอบได้
 
 1. ทำ `/deep-report` เพื่อจัดรูปแบบผลลัพธ์เป็นตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
 2. จัดกลุ่มตาม `reviewWorkflow` และเรียงลำดับตาม severity: Critical > High > Medium > Low
@@ -66,7 +61,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 6. Analyze Cross-References
 
 > Goal: ระบุ workflows และ skills ที่ควรอ้างอิงจากผล deep analysis
-> Goal: รู้ว่า findings จาก deep analysis ควรถูกอ้างอิงในไฟล์ใดบ้าง
 
 1. ระบุ workflow หรือ skill ที่เกี่ยวข้องกับ findings จาก step 5
 2. ทำ `/scan-codebase` เพื่อค้นหา references ปัจจุบัน
@@ -76,7 +70,6 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ### 7. Apply References And Report
 
 > Goal: เพิ่ม references ที่ขาดและรายงานผลลัพธ์
-> Goal: References ครบถ้วน ไม่มี broken references
 
 1. ทำ `/update-reference` เพื่อเพิ่ม references ในไฟล์ที่ขาด
 2. ทำ `/check-reference` เพื่อตรวจสอบว่า references มีอยู่จริง

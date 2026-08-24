@@ -16,7 +16,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 1. Verify Prerequisites
 
 > Goal: ตรวจสอบว่า project พร้อมรัน Drizzle Studio
-> Goal: ไม่พลาดเพราะ config หรือ dependencies ขาด
 
 1. ตรวจสอบว่ามีไฟล์ `drizzle.config.ts` หรือ `drizzle.config.js`
 2. อ่าน `drizzle.config.ts` เพื่อดู `schema`, `dialect`, และ `dbCredentials`
@@ -27,7 +26,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 2. Check Database Connection
 
 > Goal: ตรวจสอบว่า database พร้อมใช้งาน
-> Goal: รัน studio ได้โดยไม่ติด connection error
 
 1. ดึง `DATABASE_URL` จาก `.env` หรือ environment
 2. ใช้ database client หรือ `drizzle-kit push --dry-run` เช็คว่าเชื่อมต่อได้
@@ -37,7 +35,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 3. Start Drizzle Studio
 
 > Goal: รัน Drizzle Studio ด้วยคำสั่งที่ถูกต้อง
-> Goal: Studio process รันอยู่บน port ทีกำหนด
 
 1. เลือกคำสั่งตาม package manager:
    - `bunx drizzle-kit studio`
@@ -51,7 +48,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 4. Open Browser
 
 > Goal: เปิด browser เพื่อเข้าใช้งาน Studio
-> Goal: User เข้าถึง GUI ได้ทันที
 
 1. ใช้ `open-web` หรือ platform equivalent เพื่อเปิด `http://localhost:<port>`
 2. default port คือ `4983`
@@ -61,7 +57,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 5. Handle Errors
 
 > Goal: แก้ไขปัญหาทั่วไประหว่างรัน
-> Goal: studio รันผ่านโดยไม่มี error
 
 1. ถ้า `drizzle-kit: command not found` → รัน `bun add -D drizzle-kit`
 2. ถ้า `database connection failed` → ตรวจ `DATABASE_URL` และสิทธิ์การเข้าถึง
@@ -72,7 +67,6 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 ### 6. Stop Studio
 
 > Goal: หยุด process อย่างถูกต้อง
-> Goal: ไม่ทิ้ง process ค้าง
 
 1. บันทึกว่าจะหยุดเมื่อไหร่ตาม user request
 2. ใช้ `Ctrl+C` บน process ที่รันอยู่

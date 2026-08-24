@@ -16,7 +16,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 ### 1. Identify Candidates
 
 > Goal: หา source files ที่ไม่จำเป็น
-> Goal: มีรายการ files ที่ควรลบ
 
 1. ทำ `/check-unused-files` เพื่อหาไฟล์ที่ไม่ถูกใช้
 2. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ต้องใช้
@@ -26,7 +25,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 ### 2. Analyze Impact
 
 > Goal: ประเมินผลกระทบก่อนลบ
-> Goal: ลบได้ปลอดภัย
 
 1. ใช้ `grep` ค้นหา imports หรือ references ของแต่ละ file
 2. ตรวจสอบว่าไฟล์อยู่ใน `.gitignore` หรือไม่
@@ -36,7 +34,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 ### 3. Confirm With User
 
 > Goal: ขอ explicit confirmation ก่อนลบ
-> Goal: ไม่มีการลบอัตโนมัติ
 
 1. ทำ `/report-table` รายงาน candidates พร้อมเหตุผลและ path
 2. ทำ `/report-file-structure` แสดง top-level files ที่จะลบ
@@ -45,7 +42,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 ### 4. Remove Source Files
 
 > Goal: ลบเฉพาะไฟล์ที่ได้รับ approval
-> Goal: source files ไม่จำเป็นถูกลบ
 
 1. ลบทีละไฟล์ด้วย `Remove-Item` หรือ `rm`
 2. อัปเดท imports/references ที่ใช้ไฟล์นั้นด้วย `edit`
@@ -54,7 +50,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 ### 5. Validate
 
 > Goal: ตรวจสอบหลังลบ
-> Goal: ไม่มี broken references
 
 1. รัน `git status` เพื่อดู files ที่ถูกลบ
 2. ทำ `/check-reference` เพื่อตรวจ broken references

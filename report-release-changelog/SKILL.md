@@ -16,7 +16,6 @@ description: จัดรูปแบบ release changelog จากข้อม
 ### 1. Receive Data
 
 > Goal: รับข้อมูล diff ดิบ
-> Goal: มีข้อมูลครบสำหรับเขียน report
 
 1. ถ้าได้รับจาก `/check-release-changelog` → อ่าน `repo`, `from`, `to`, `compareUrl`, `releaseNotes`, `commits`, `filesChanged`
 2. ถ้า user ให้ URL หรือ tag โดยตรง → ทำ `/check-release-changelog` ก่อน
@@ -25,7 +24,6 @@ description: จัดรูปแบบ release changelog จากข้อม
 ### 2. Format Changelog
 
 > Goal: จัดรูปแบบ report
-> Goal: report อ่านง่าย มี highlights
 
 1. Header: release version, compare URL, release date
 2. Summary: จำนวน commits, files changed, additions, deletions, จำนวน PRs
@@ -40,7 +38,6 @@ description: จัดรูปแบบ release changelog จากข้อม
 ### 3. Output
 
 > Goal: นำเสนอ report
-> Goal: user ได้รับ report พร้อม next action
 
 1. ใช้ `/report-table` สำหรับตารางสรุป
 2. เก็บ report เป็น markdown ถ้า user ต้องการไฟล์

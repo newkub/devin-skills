@@ -16,7 +16,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 1. Analyze Project And Structure
 
 > Goal: วิเคราะห์โปรเจกต์และโครงสร้าง modules/packages
-> Goal: เข้าใจ current structure, responsibilities, coupling, duplication
 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
 2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
@@ -28,7 +27,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 2. Evaluate Refactor Necessity
 
 > Goal: ประเมินว่าควร refactor หรือไม่
-> Goal: ตัดสินใจ refactor อย่างมีหลักฐาน
 
 1. วิเคราะห์ change patterns: เปลี่ยนพร้อมกัน, maintain โดยทีมเดียวกัน, release lifecycle
 2. ประเมิน signals:
@@ -39,7 +37,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 3. Plan Refactor
 
 > Goal: วางแผนการ split/merge/relocate modules/packages
-> Goal: แผน minimal ที่กระทบน้อยที่สุด
 
 1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
 2. ระบุ module/package boundaries ตาม domain, reason to change, cohesion
@@ -50,7 +47,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 4. Scan And Recommend Workspace Modules/Packages
 
 > Goal: สำรวจ workspace และแนะนำ modules/packages
-> Goal: รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
 
 1. สำรวจโครงสร้าง workspace และอ่าน manifest ของแต่ละ module/package
 2. จัดกลุ่ม: UI, Utilities, Frameworks, Libraries, Tools, Integrations
@@ -63,7 +59,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 5. Execute Refactor
 
 > Goal: ดำเนินการ refactor ตามแผน
-> Goal: Refactor ตามแผน ผ่าน tests ไม่ทำลาย consumers
 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
 2. ใช้ `/restructure` หรือ `/relocation` สำหรับ file operations
@@ -74,7 +69,6 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 ### 6. Verify Impact And Update References
 
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
-> Goal: ไม่มี regression, circular dependencies, หรือ broken references
 
 1. ทำ `/run-check`
    - ทำ `/run-test`

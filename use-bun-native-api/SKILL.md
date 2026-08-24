@@ -9,7 +9,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 
 ## Scope
 
-Use `use-bun-native-api` for the specific tasks and workflows it covers
+ใช้ `use-bun-native-api` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

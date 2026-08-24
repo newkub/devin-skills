@@ -16,7 +16,6 @@ description: รัน review CLI วิเคราะห์ผล และแ
 ### 1. Verify CLI Exists
 
 > Goal: ตรวจสอบว่า review CLI มีอยู่และพร้อมรัน
-> Goal: ยืนยันว่า CLI พร้อมรัน
 
 1. ตรวจสอบว่า `tools/review/package.json` มีอยู่ที่ project root
 2. ถ้าไม่มี → ทำ `/update-create-review-cli` เพื่อสร้าง CLI ก่อน แล้วกลับมาทำ step ถัดไป
@@ -25,7 +24,6 @@ description: รัน review CLI วิเคราะห์ผล และแ
 ### 2. Run Review CLI
 
 > Goal: รัน review CLI เพื่อวิเคราะห์ project review
-> Goal: ได้ review report พร้อม score, findings และ action items
 
 1. รัน `bun --filter tools-review review` สำหรับ table output
 2. รัน `bun --filter tools-review review:json` สำหรับ JSON output (ถ้าต้องการ parse)
@@ -34,7 +32,6 @@ description: รัน review CLI วิเคราะห์ผล และแ
 ### 3. Analyze Results
 
 > Goal: วิเคราะห์ผลลัพธ์จาก review report เพื่อระบุปัญหาและจัดลำดับ
-> Goal: เข้าใจ findings และจัดลำดับตาม severity
 
 1. อ่าน review score และ grade จาก summary
 2. ระบุ findings ที่เป็น Critical และ High severity
@@ -44,7 +41,6 @@ description: รัน review CLI วิเคราะห์ผล และแ
 ### 4. Suggest Actions
 
 > Goal: แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
-> Goal: รู้ action ถัดไปที่ควรทำตาม priority
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. ทำ `/report-table` แสดง summary: domain scores, top findings, recommended workflows

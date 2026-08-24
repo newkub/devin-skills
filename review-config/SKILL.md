@@ -1,6 +1,6 @@
 ---
 name: review-config
-description: ตรวจสอบ config files ทั้ง root และทุก workspace พร้อมรายงาน findings และ health score
+description: ตรวจสอบ และปรับปรุง config files ทั้ง root และทุก workspace พร้อมรายงาน findings และ health score
 ---
 
 ## Goal
@@ -46,7 +46,7 @@ description: ตรวจสอบ config files ทั้ง root และท�
 2. ตรวจสอบ `tsconfig.json`: `target`, `module`, `strict`, `isolatedModules`, path aliases, project references, `tsc` usage
 3. ระบุค่า `minify`, `sourcemap`, `external`, `tree-shaking`, `target` ใน build config แต่ละ workspace
 4. ตรวจสอบ build metrics ที่มี: build time, output size, chunk distribution; เปรียบเทียบกับ baseline
-5. ประเมินว่า build config ครอบคลุม optimization ตามเกณฑ์ของ `/improve-efficiency` หรือไม่
+5. ประเมินว่า build config ครอบคลุม optimization ตามเกณฑ์ของ `/review-efficiency` หรือไม่
 6. ระบุปัญหาที่อาจส่งผลต่อ build speed หรือ output size โดยไม่ทำลาย functionality
 
 ### 4. Review Shared Configuration
@@ -95,6 +95,17 @@ description: ตรวจสอบ config files ทั้ง root และท�
 4. สร้างตาราง findings ด้วย `/report-table`
 5. รายงาน recommended actions พร้อม priority
 6. แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+
+### 8. Improve
+
+> Goal: ปรับปรุง config ตาม findings
+
+1. ทำ `/follow-monorepo` และ `/all-workspaces` เพื่อจัดระเบียบ monorepo ถ้าเป็น monorepo
+2. ทำ `/follow-tasks` สำหรับ root และแต่ละ workspace เพื่อปรับปรุง scripts
+3. ทำ `/review-efficiency` สำหรับ build config แต่ละ workspace พร้อมบันทึก before/after metrics
+4. ทำ `/follow-config` ตาม tech stack ที่ detect ได้
+5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+6. ทำ `/run-check` และ `/run-verify` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
 
@@ -148,5 +159,5 @@ description: ตรวจสอบ config files ทั้ง root และท�
 - รายงานตาราง aggregate findings จากทุก config section
 - รายงาน recommended actions พร้อม priority
 - Health score ต่อ dimension และ overall
+- Config ปรับปรุงตาม findings โดยไม่มี regression
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-- ไม่มีการแก้ไข code หรือ config ในกระบวนการ review

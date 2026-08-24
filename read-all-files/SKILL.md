@@ -9,7 +9,7 @@ description: อ่านไฟล์ทั้งหมดในโปรเจ�
 
 ## Scope
 
-Use `read-all-files` for the specific tasks and workflows it covers
+ใช้ `read-all-files` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

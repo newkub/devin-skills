@@ -16,7 +16,6 @@ Commit ไฟล์และ push ไปยัง remote repository
 ### 1. Commit Changes
 
 > Goal: สร้าง commit สำหรับไฟล์ที่มีการเปลี่ยนแปลง
-> Goal: commit ถูกสร้างถูกต้องตาม conventional commits
 
 1. ทำตาม `/git-commit`
 2. ตรวจสอบด้วย `git log --oneline -3` ว่า commit ถูกสร้างถูกต้อง
@@ -24,7 +23,6 @@ Commit ไฟล์และ push ไปยัง remote repository
 ### 2. Push Changes
 
 > Goal: Push commits ไปยัง remote repository
-> Goal: commits ถูก push ไปยัง remote สำเร็จ
 
 1. ทำตาม `/git-push`
 2. ตรวจสอบด้วย `git status` ว่า local และ remote sync กัน
@@ -32,7 +30,6 @@ Commit ไฟล์และ push ไปยัง remote repository
 ### 3. Update References
 
 > Goal: อัปเดท references ทั้งหมดที่เกี่ยวข้อง
-> Goal: references อัปเดตครบถ้วน
 
 1. ทำตาม `/update-reference`
 

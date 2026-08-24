@@ -21,7 +21,6 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 ### 1. Discover Installed CLI Tools
 
 > Goal: หา CLI tools ที่ติดตั้งทั้งหมด
-> Goal: มีรายการ tools พร้อม version และ package manager
 
 1. เช็ค tools ที่ติดตั้งด้วย `mise list`, `scoop list`, `winget list`, `bun --version`
 2. รวบรวมรายการ tools เป็นตาราง (tool, version, manager)
@@ -29,7 +28,6 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 ### 2. Learn Commands
 
 > Goal: สำรวจ commands และ options ของแต่ละ tool
-> Goal: รู้จัก commands ทั้งหมดและลักษณะของแต่ละ command
 
 1. ทำ `/learn-from-cli` สำหรับแต่ละ tool เพื่อดู subcommands, options, output
 2. บันทึก commands, flags, argument types และ exit codes
@@ -37,7 +35,6 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 ### 3. Evaluate Conversion Candidates
 
 > Goal: ประเมินว่า command ไหนเหมาะแปลงเป็น skill
-> Goal: ระบุ commands ที่ควร convert เป็น skills ตาม criteria
 
 1. ระบุ criteria:
    - ใช้บ่อยหรือมี pattern ซ้ำ
@@ -50,7 +47,6 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 ### 4. Suggest Next Action
 
 > Goal: นำเสนอทิศทางถัดไป
-> Goal: ผู้ใช้ทราบว่าควรทำอะไรต่อ
 
 1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
 2. ถ้าข้อมูลไม่พอ → ทำ `/follow-my-global-cli` อีกรอบหรือ `/learn-from-cli` เพิ่มเติม

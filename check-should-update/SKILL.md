@@ -16,7 +16,6 @@ description: ตรวจสอบ changes เพื่อตัดสินใ�
 ### 1. Check Changes
 
 > Goal: ตรวจสอบ changes ของ target paths ที่เกี่ยวข้อง
-> Goal: รู้ว่า target ต้องอัปเดทตาม code changes หรือไม่ ไม่เสียเวลาอัปเดทถ้าไม่มีอะไรเปลี่ยน
 
 1. ระบุ target paths ที่ต้องเช็คจาก calling workflow
 2. ถ้า target อยู่ใน git repo → ทำ `/check-git-diff` โดยระบุ `<project-root>` และ refs `HEAD~1...HEAD`

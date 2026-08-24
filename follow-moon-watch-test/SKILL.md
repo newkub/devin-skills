@@ -9,7 +9,7 @@ Watch test tasks ด้วย moonrepo และแก้ไข errors อัต
 
 ## Scope
 
-Use `follow-moon-watch-test` for the specific tasks and workflows it covers
+ใช้ `follow-moon-watch-test` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

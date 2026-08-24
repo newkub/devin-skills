@@ -23,7 +23,6 @@ description: รันโปรแกรมหลักและทำให้�
 ### 1. Prepare
 
 > Goal: เตรียม dependencies, build, และ environment ก่อนรัน
-> Goal: โปรเจกต์พร้อมรัน
 
 1. รัน `/run-install` เพื่อติดตั้ง dependencies
 2. รัน `/run-build` ถ้าต้อง build
@@ -33,7 +32,6 @@ description: รันโปรแกรมหลักและทำให้�
 ### 2. Execute
 
 > Goal: รันโปรแกรมหลัก
-> Goal: โปรแกรมเริ่มทำงาน
 
 1. เลือก command ตาม project type:
    - Node/Bun: `bun run start` หรือ `bun src/index.ts`
@@ -45,7 +43,6 @@ description: รันโปรแกรมหลักและทำให้�
 ### 3. Monitor
 
 > Goal: ติดตาม output และ verify ฟังก์ชัน
-> Goal: โปรแกรมทำงานถูกต้อง
 
 1. ติดตาม stdout/stderr และ logs
 2. ระบุ errors/warnings
@@ -55,7 +52,6 @@ description: รันโปรแกรมหลักและทำให้�
 ### 4. Fix Issues
 
 > Goal: แก้ไขปัญหาที่พบ
-> Goal: โปรแกรมรันสำเร็จโดยไม่มี errors ที่ block
 
 1. อ่าน error messages และระบุ root cause
 2. จัดลำดับความสำคัญ

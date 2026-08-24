@@ -9,7 +9,7 @@ description: เปิดหน้า GitHub Secrets สำหรับตั้
 
 ## Scope
 
-Use `follow-open-github-secrets` for the specific tasks and workflows it covers
+ใช้ `follow-open-github-secrets` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

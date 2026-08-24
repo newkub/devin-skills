@@ -16,7 +16,6 @@ description: เลือกและใช้งาน TanStack libraries ใ�
 ### 1. Identify Needs
 
 > Goal: ระบุว่าต้องการ library ตัวไหนของ TanStack
-> Goal: เลือก library ทีตรงกับปัญหา
 
 1. ทำ `analyze-project` เพื่อเข้าใจ state, data flow, routing, form needs
 2. ดูว่า project ต้องการ:
@@ -34,7 +33,6 @@ description: เลือกและใช้งาน TanStack libraries ใ�
 ### 2. Install And Configure
 
 > Goal: ติดตั้ง library ทีเลือก
-> Goal: library พร้อมใช้งานใน project
 
 1. ใช้ package manager ที project ใช้ (`npm`, `pnpm`, `bun`, `yarn`)
 2. ติดตั้ง core package และ adapters ตาม framework (React, Vue, Solid, Svelte)
@@ -44,7 +42,6 @@ description: เลือกและใช้งาน TanStack libraries ใ�
 ### 3. Implement Feature
 
 > Goal: ใช้งาน library ในฟีเจอร์จริง
-> Goal: ฟีเจอร์ทำงานได้ถูกต้อง
 
 1. Query: สร้าง query keys, fetchers, caching, invalidation
 2. Form: สร้าง schema, fields, validation, submission
@@ -58,7 +55,6 @@ description: เลือกและใช้งาน TanStack libraries ใ�
 ### 4. Test And Optimize
 
 > Goal: ตรวจสอบว่า integration ทำงานได้ดี
-> Goal: ไม่มี regression และ performance ทีเหมาะสม
 
 1. รัน `run-test` และ `run-typecheck`
 2. ตรวจสอบ caching behavior ของ Query/Store

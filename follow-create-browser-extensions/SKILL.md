@@ -16,7 +16,6 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 ### 1. Create Project
 
 > Goal: เริ่มต้น project ด้วย WXT หรือ scaffolding tool
-> Goal: มี project structure สำหรับ browser extension
 
 1. ทำ `/follow-wxt` ถ้าใช้ WXT
 2. สร้าง `manifest.json` ตาม Manifest V3
@@ -26,7 +25,6 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 ### 2. Configure Manifest
 
 > Goal: ตั้งค่า `manifest.json` ตาม Manifest V3
-> Goal: manifest ถูกต้องและมีสิทธิ์เฉพาะทีจำเป็น
 
 1. ตั้งค่า `manifest_version: 3`
 2. กำหนด `name`, `version`, `description`
@@ -36,7 +34,6 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 ### 3. Implement Features
 
 > Goal: พัฒนา background, content, และ popup scripts
-> Goal: extension ทำงานตาม requirements บนทุก target browsers
 
 1. สร้าง background service worker สำหรับ events
 2. สร้าง content script สำหรับ web page integration
@@ -46,7 +43,6 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 ### 4. Test
 
 > Goal: Test บน browsers ที่ต้องการ support
-> Goal: extension ทำงานถูกต้องและปลอดภัยบนทุก browsers
 
 1. โหลด extension ใน Chrome developer mode
 2. ทดสอบบน Firefox ด้วย temporary add-on

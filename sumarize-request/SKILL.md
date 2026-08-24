@@ -18,7 +18,6 @@ description: สรุป request และแสดงผลเป็นตา�
 ### 1. Analyze Request
 
 > Goal: อ่านและวิเคราะห์ request จากผู้ใช้
-> Goal: เข้าใจ request อย่างละเอียด
 
 1. ระบุประเภทของ request (feature, bug fix, refactor, new project)
 2. ดึงข้อมูลหลัก (context, requirements, constraints)
@@ -28,7 +27,6 @@ description: สรุป request และแสดงผลเป็นตา�
 ### 2. Prepare Context
 
 > Goal: เตรียม context สำหรับ `/idea-features`
-> Goal: context ครบสำหรับสร้างตาราง features
 
 1. ระบุ project context และ current state
 2. ระบุ features ที่มีอยู่แล้ว
@@ -38,7 +36,6 @@ description: สรุป request และแสดงผลเป็นตา�
 ### 3. Call /idea-features
 
 > Goal: เรียกใช้ `/idea-features` เพื่อสร้างตาราง features
-> Goal: ได้ตาราง features ที่ครบถ้วน
 
 1. ใช้ `/idea-features` สำหรับสร้างตาราง
 2. ตารางมี columns: #, Feature, Description, Problem/Solves, How To, Dependencies, Parent/Category, Type, Difficult, Impact
@@ -49,7 +46,6 @@ description: สรุป request และแสดงผลเป็นตา�
 ### 4. Present Summary
 
 > Goal: นำเสนอสรุปพร้อมภาพรวมและขั้นตอนต่อไป
-> Goal: ผู้ใช้ได้ภาพรวมและทราบขั้นตอนต่อไป
 
 1. แสดงสรุปภาพรวมของ request ด้านบน
 2. แสดงตาราง features จาก `/idea-features`

@@ -16,7 +16,6 @@ description: สร้าง subagent ใหม่ใน devin agents repo ต�
 ### 1. Identify New Subagent
 
 > Goal: ระบุชื่อและวัตถุประสงค์ของ subagent
-> Goal: subagent ใหม่มีชื่อและ scope ชัดเจน
 
 1. รับชื่อ subagent และสิ่งที่ต้องการทำจาก user
 2. ตรวจสอบว่า subagent name ใช้ lowercase, คั่นด้วย `-` และไม่มีอักขระพิเศษ
@@ -26,7 +25,6 @@ description: สร้าง subagent ใหม่ใน devin agents repo ต�
 ### 2. Check Existing Subagents
 
 > Goal: ตรวจสอบว่าไม่ซ้ำซ้อน
-> Goal: ไม่สร้าง subagent ซ้ำ
 
 1. ทำ `/list-devin-subagents` เพื่อดู subagents ที่มีอยู่
 2. ตรวจสอบว่า subagent name ซ้ำกับ existing subagents หรือไม่
@@ -36,7 +34,6 @@ description: สร้าง subagent ใหม่ใน devin agents repo ต�
 ### 3. Create Directory And AGENT.md
 
 > Goal: สร้าง directory และ `AGENT.md`
-> Goal: subagent package ถูกต้องและครบถ้วน
 
 1. สร้าง `%APPDATA%\devin\agents\<subagent-name>\`
 2. สร้าง `AGENT.md` ภายใน directory ด้วยโครงสร้าง:
@@ -50,7 +47,6 @@ description: สร้าง subagent ใหม่ใน devin agents repo ต�
 ### 4. Validate Subagent
 
 > Goal: ตรวจสอบคุณภาพ
-> Goal: subagent พร้อมใช้งาน
 
 1. ตรวจสอบว่า `AGENT.md` ไม่เกิน 250 บรรทัด
 2. ตรวจสอบว่า frontmatter มี `name`, `description`, `model`, `allowed-tools` ครบ

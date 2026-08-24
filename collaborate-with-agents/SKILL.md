@@ -16,7 +16,6 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 ### 1. Decompose Task
 
 > Goal: แบ่งงานออกเป็น subtasks
-> Goal: แต่ละ subtask ชัดเจนและ independent
 
 1. ทำ `/deep-plan` ถ้างานซับซ้อน
 2. ระบุ subtasks ทีทำขนานกันได้
@@ -26,7 +25,6 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 ### 2. Spawn Subagents
 
 > Goal: สร้าง subagents ตาม subtasks
-> Goal: ทุก subtask มี agent ทำงาน
 
 1. ทำ `/run-parallel-via-spawn-subagents` เพื่อสร้าง agent ตาม subtask พร้อม merge, review, validate, verify
 2. ส่ง prompt ทีชัดเจนให้แต่ละ agent
@@ -35,7 +33,6 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 ### 3. Collect Results
 
 > Goal: รอและรวบรวมผลลัพธ์
-> Goal: ได้ผลลัพธ์จากทุก agent
 
 1. ใช้ `read_subagent` เพื่อติดตาม progress
 2. รวบรวม results จากทุก agent
@@ -44,7 +41,6 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 ### 4. Merge And Report
 
 > Goal: รวมผลลัพธ์และรายงาน
-> Goal: ส่งมอบผลลัพธ์รวม
 
 1. แก้ไข conflicts ถ้ามี
 2. ทำ `/report-table` สรุป status แต่ละ agent

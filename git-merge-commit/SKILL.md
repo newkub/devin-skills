@@ -9,7 +9,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 
 ## Scope
 
-Use `git-merge-commit` for the specific tasks and workflows it covers
+ใช้ `git-merge-commit` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

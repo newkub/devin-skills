@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 
 ## Scope
 
-Use `follow-imperative-programming` for the specific tasks and workflows it covers
+ใช้ `follow-imperative-programming` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

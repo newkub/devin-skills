@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ## Scope
 
-Use `follow-storybook` for the specific tasks and workflows it covers
+ใช้ `follow-storybook` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -5,11 +5,11 @@ description: แทนที่เนื้อหาในไฟล์หรื�
 
 ## Goal
 
-Replace Content
+แทนที่เนื้อหา
 
 ## Scope
 
-Use `replace` for the specific tasks and workflows it covers
+ใช้ `replace` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

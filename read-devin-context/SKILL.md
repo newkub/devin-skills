@@ -16,7 +16,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 1. Discover Context Paths
 
 > Goal: หา context directories ใน environment
-> Goal: รู้ตำแหน่ง context ทั้งหมด
 
 1. ตรวจหา global context:
    - Windows: `%APPDATA%\devin` เช่น `C:\Users\<user>\AppData\Roaming\devin`
@@ -31,7 +30,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 2. Read Global Rules
 
 > Goal: อ่าน global rules
-> Goal: เข้าใจกฎ global ที่ใช้กับทุก task
 
 1. อ่าน `global_rules.md` จาก windsurf memories หรือ project `.devin/rules/`
 2. สรุปลำดับ steps, restrictions, และ required references
@@ -40,7 +38,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 3. Read Skills
 
 > Goal: อ่าน skills context
-> Goal: รู้ว่ามี skills อะไรบ้างและตัวไหนเกี่ยวข้อง
 
 1. list skills ใน `%APPDATA%\devin\skills` (global skills)
 2. list skills ใน `C:\Users\<user>\.codeium\windsurf\skills` (windsurf skills)
@@ -50,7 +47,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 4. Read MCP Config
 
 > Goal: อ่าน mcp configuration
-> Goal: รู้ MCP servers ที่มี และสถานะ disabled/enabled
 
 1. อ่าน `%APPDATA%\devin\mcp_config.json`
 2. ตรวจหา `.mcp.json` หรือ `mcp/` ใน project
@@ -60,7 +56,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 5. Read Hooks
 
 > Goal: อ่าน hooks ที่อาจมีผลต่อการทำงาน
-> Goal: รู้ hooks ที่ active หรือ custom
 
 1. list ไฟล์ใน `%APPDATA%\devin\hooks`
 2. list ไฟล์ใน `cli/plugins/*/hooks/` หรือ `cli/plugins/cache/*/hooks/`
@@ -70,7 +65,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 6. Read Plugins
 
 > Goal: อ่าน plugins/ extensions
-> Goal: รู้ plugins ที่ติดตั้งหรือ cache ไว้
 
 1. list ไฟล์/โฟลเดอร์ใน `%APPDATA%\devin\cli\plugins\cache`
 2. list `.devin/extensions` หรือ `plugins/` ใน project
@@ -79,7 +73,6 @@ description: อ่านและสรุป devin context ทั้งหม�
 ### 7. Summarize Context
 
 > Goal: สรุป context เพื่อใช้งาน
-> Goal: ได้ภาพรวม context ทั้งหมด
 
 1. สร้างตารางสรุป: context type | location | status | key points
 2. ระบุ context ที่ขาดหายหรืออาจล้าสมัย

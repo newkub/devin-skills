@@ -16,7 +16,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 1. Define Repository Interfaces
 
 > Goal: กำหนด repository interfaces เพื่อ abstract data access
-> Goal: Business logic ไม่รู้จัก ORM หรือ database implementation
 
 1. กำหนด `Repository<T>` interface โดยใช้ domain types ไม่ใช่ ORM types
 2. ระบุ methods: `findById`, `findMany`, `create`, `update`, `delete` ตามที่ต้องการ
@@ -28,7 +27,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 2. Implement Repository Adapters
 
 > Goal: เขียน repository implementations โดยใช้ ORM
-> Goal: Database operations ถูก isolate ใน data access layer เท่านั้น
 
 1. ทำ `/follow-drizzle` ถ้า project ใช้ Drizzle (หรือ ORM ที่ตรวจพบ)
 2. สร้าง repository implementations ที่ implement interfaces
@@ -40,7 +38,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 3. Map Business Models To ORM Schemas
 
 > Goal: แยก business models จาก ORM table definitions
-> Goal: Business models ไม่ผูกกับ database schema
 
 1. กำหนด ORM table definitions โดยใช้ ORM API
 2. กำหนด business models เป็น `readonly` types แยกจาก ORM
@@ -52,7 +49,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 4. Implement Query Specifications
 
 > Goal: สร้าง query specification pattern สำหรับ complex queries
-> Goal: Business logic ส่ง query spec ได้โดยไม่รู้จัก ORM query builder
 
 1. กำหนด `QuerySpec<T>` type เป็น plain object
 2. ระบุ fields: `filter`, `sort`, `pagination`, `select`
@@ -63,7 +59,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 5. Manage Transactions
 
 > Goal: จัดการ transactions โดยใช้ unit of work pattern
-> Goal: Transaction boundaries ชัดเจน ไม่กระทบ business logic
 
 1. กำหนด `UnitOfWork` interface สำหรับ multi-step operations
 2. Implement `UnitOfWork` โดยใช้ ORM transaction API
@@ -74,7 +69,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 6. Handle Migrations
 
 > Goal: ทำ `/follow-drizzle` สำหรับ migration strategy
-> Goal: Migrations จัดการโดยไม่กระทบ business logic
 
 1. กำหนด migration strategy: `push` (dev) หรือ `generate + migrate` (production)
 2. Schema changes อยู่ใน migration files เท่านั้น
@@ -85,7 +79,6 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 ### 7. Test Data Access
 
 > Goal: ทำ `/write-test` เพื่อทดสอบ repository implementations
-> Goal: Repository implementations มี test coverage ครบ
 
 1. Integration tests สำหรับ repository implementations กับ test database
 2. Unit tests สำหรับ mapper functions — test pure transformation

@@ -16,7 +16,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 0. Report Current State
 
 > Goal: รายงานสถานะปัจจุบันก่อนเริ่ม benchmark features
-> Goal: ผู้ใช้ทราบสถานะปัจจุบันและสิ่งที่จะเปรียบเทียบก่อนเริ่มงาน
 
 1. ระบุ competitors ที่จะ benchmark และ scope ของการเปรียบเทียบ
 2. ดำเนินการต่อทันทีหลัง report โดยไม่หยุดรอ
@@ -24,7 +23,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 1. Research Competitor Features
 
 > Goal: เก็บข้อมูล features ของคู่แข่ง
-> Goal: รู้ feature set ของ competitor แต่ละราย
 
 1. ทำ `/deep-research` เพื่อหาข้อมูล features ของคู่แข่ง
 2. ระบุ direct / indirect competitors 1-5 ราย
@@ -34,7 +32,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 2. Compare Features (ตอบในแชท — ภาษาไทย)
 
 > Goal: สร้างตารางเปรียบเทียบ features และไอเดียเพิ่มเติม ตอบในแชทเหมือน `/idea-features`
-> Goal: เห็น gaps ในมิติ features ชัดเจน และตอบกระชับในแชท
 
 1. ทำ `/compare-and-idea-features` เพื่อสร้าง feature ideas จาก gaps
 2. ตอบตารางเปรียบเทียบในแชท — แถวเป็น feature หลัก, คอลัมน์เป็น competitor + เรา
@@ -44,7 +41,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 3. Build Feature Roadmap
 
 > Goal: จัดลำดับ features ที่ต้องปรับปรุง/เพิ่ม
-> Goal: ได้ roadmap ที่ actionable
 
 1. รวม gaps จากตารางเปรียบเทียบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ด้วย priority: Critical, High, Medium, Nice-to-have
@@ -54,7 +50,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 4. Implement Feature Improvements
 
 > Goal: ทำให้ features ดีกว่าคู่แข่ง
-> Goal: ปิด gap และสร้าง differentiation
 
 1. ทำ `/ship` เพื่อ implement features ตาม roadmap
 2. ทำ `/review-codebase` เพื่อตรวจสอบ completeness
@@ -63,7 +58,6 @@ description: เปรียบเทียบ features กับคู่แข
 ### 5. Update Feature Comparison (ตอบในแชท — ภาษาไทย)
 
 > Goal: อัปเดตรายงานหลัง implement ตอบในแชท
-> Goal: รายงาน reflect สถานะล่าสุดในแชท
 
 1. ตอบตารางเปรียบเทียบที่อัปเดตแล้วในแชท
 2. อัปเดต status ในตารางเปรียบเทียบ

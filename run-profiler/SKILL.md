@@ -16,7 +16,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 1. Setup Profiling
 
 > Goal: เลือก profiling tool และตั้งค่า environment
-> Goal: รู้ tool, environment, และ scope ของ profiling
 
 1. เลือก profiling tool ที่เหมาะสม (Chrome DevTools, Node.js profiler, Bun profiler)
 2. ตั้งค่า profiling environment
@@ -25,7 +24,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 2. Capture Profile
 
 > Goal: เริ่ม profiling session และบันทึกข้อมูล
-> Goal: ได้ profile data ที่สมบูรณ์
 
 1. เริ่ม profiling session
 2. ทำงานที่ต้อง profile (user flow, API call, etc.)
@@ -34,7 +32,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 3. Analyze Profile
 
 > Goal: วิเคราะห์ profile data
-> Goal: ระบุ functions ที่ช้าและ memory issues
 
 1. วิเคราะห์ call tree และ flame graph
 2. ระบุ functions ที่ใช้เวลานาน
@@ -44,7 +41,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 4. Identify Bottlenecks
 
 > Goal: ระบุ hot paths และ inefficient code
-> Goal: รู้ bottlenecks ที่ impact สูง
 
 1. ระบุ hot paths ใน code
 2. ตรวจสอบ unnecessary computations
@@ -54,7 +50,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 5. Optimize
 
 > Goal: ปรับปรุง performance ตาม findings
-> Goal: Bottlenecks ถูก optimize และ verify ผล
 
 1. ทำ `/review-codebase` เพื่อปรับปรุง
 2. ใช้ caching ที่เหมาะสม
@@ -64,7 +59,6 @@ Profile performance เพื่อหา bottlenecks และ optimize
 ### 6. Verify Improvements
 
 > Goal: วัดผลหลัง optimize
-> Goal: ยืนยันว่า performance ดีขึ้น
 
 1. Profile อีกครั้งหลัง optimize
 2. เปรียบเทียบกับ profile เดิม

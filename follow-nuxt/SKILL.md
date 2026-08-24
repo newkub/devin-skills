@@ -16,7 +16,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 1. Setup
 
 > Goal: วางแผน project architecture
-> Goal: ระบุ version, rendering mode, และ stack ทีเหมาะสม
 
 1. ระบุ project location ใน monorepo เช่น `apps/web/`
 2. เลือก Nuxt Version ระหว่าง 3.x หรือ 4.x (default: 4.x)
@@ -28,7 +27,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 2. Directory Structure
 
 > Goal: สร้างโครงสร้างโฟลเดอร์
-> Goal: มา project structure ที scale ได้
 
 1. ใช้ `app/` directory สำหรับ Nuxt 4
 2. สร้าง `layers/` สำหรับ feature-based architecture
@@ -39,7 +37,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 3. Configuration
 
 > Goal: ตั้งค่า config และ scripts
-> Goal: config รองรับ dev, build, typecheck, lint, test
 
 1. ตั้งค่า `nuxt.config.ts` (extends, modules, nitro, typescript)
 2. ตั้งค่า `package.json` scripts (build, dev, generate, lint, format, test)
@@ -50,7 +47,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 4. Code Standards
 
 > Goal: กำหนด coding standards
-> Goal: code มี type safety และ consistency
 
 1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template
 2. Composables: ชื่อขึ้นต้นด้วย `use`, อยู่ใน `composables/` หรือ `layers/[feature]/composables/`
@@ -66,7 +62,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 5. Development
 
 > Goal: พัฒนา base project
-> Goal: project พร้อมพัฒนา features
 
 1. สร้าง directory structure ตามที่วางแปลง
 2. ติดตั้ง dependencies ด้วย `bun add`
@@ -77,7 +72,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 6. Performance
 
 > Goal: ปรับแต่ง performance
-> Goal: ลด TTI และ bundle size
 
 1. Lazy Loading Components — ใช้ `Lazy` prefix สำหรับ components ที่ไม่จำเป็นต้องโหลดทันที
    ```vue
@@ -119,7 +113,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 7. Plugins Best Practices
 
 > Goal: ตั้งค่า Nuxt plugins
-> Goal: plugins initialize เร็วและไม่กระทบ performance
 
 1. Avoid costly plugin setup - หลีกเลี่ยง plugins ที่มีการคำนวณหนักหรือใช้เวลา initialize นาน
 2. Use Composition whenever possible - ใช้ composables แทน plugins เมื่อเป็นไปได้
@@ -136,7 +129,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 8. Assets Management
 
 > Goal: จัดการ assets
-> Goal: assets ถูกประมวลผลหรือ static ได้ถูกต้อง
 
 1. ใช้ `~/assets` สำหรับไฟล์ที่ต้อง processing
    ```typescript
@@ -151,7 +143,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 9. Error Handling
 
 > Goal: ตั้งค่า error boundaries
-> Goal: errors ถูก handle อย่างถูกต้อง
 
 1. ใช้ `NuxtErrorBoundary` สำหรับ handle errors ในส่วนต่างๆ ของ app
    ```vue
@@ -167,7 +158,6 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 ### 10. Verification
 
 > Goal: ตรวจสอบ quality
-> Goal: project build และ test ผ่าน
 
 1. รัน `nuxt typecheck` ตรวจสอบ TypeScript errors
 2. รัน Biome และ oxlint ตรวจสอบ code quality

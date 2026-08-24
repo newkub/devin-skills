@@ -16,7 +16,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 1. Check Should Update
 
 > Goal: ตรวจสอบว่า CLI ต้องอัปเดทหรือไม่ โดยเช็ค git changes ที่เกี่ยวข้อง
-> Goal: รู้ว่า CLI ต้องอัปเดทตาม code changes หรือไม่ ก่อนเริ่มงาน ไม่เสียเวลาอัปเดทถ้าไม่มีอะไรเปลี่ยน
 
 1. ทำ `/check-should-update` โดยระบุ target paths: `tools/review/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
 2. ถ้าผลเป็น `skip` → ข้ามไป Step 8 (Validate CLI) เพื่อรัน CLI ที่มีอยู่
@@ -26,7 +25,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 2. Check AGENTS.md Freshness
 
 > Goal: ตรวจสอบว่า AGENTS.md ต้องอัปเดทก่อนหรือไม่ เพื่อให้ reviewWorkflow mapping ถูกต้อง
-> Goal: AGENTS.md เป็นปัจจุบันก่อนอัปเดท analyzers เพราะ analyzers อ้างอิง review workflow จาก AGENTS.md
 
 1. อ่าน `AGENTS.md` ที่ root และ workspace level
 2. เช็คว่า `## Workflows`, `## Review`, และ `## Skills` section ครอบคลุม dependencies ใน `package.json` ทั้งหมด
@@ -36,7 +34,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 3. Read Context
 
 > Goal: อ่าน context ก่อนเริ่มงานเพื่อเข้าใจ categories และ CLI ที่มีอยู่
-> Goal: เข้าใจ categories ทั้งหมด CLI structure ที่มีอยู่ และ architecture guidelines
 
 1. ทำ `/run-review` เพื่อดูรายการ 60+ categories จัดกลุ่มตาม 5 domains
 2. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ project แบบ recursive
@@ -49,7 +46,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 4. Build Analyzer Inventory
 
 > Goal: สร้าง mapping ระหว่าง categories และ analyzer modules เพื่อระบุสิ่งที่ต้องทำ
-> Goal: รู้ analyzers ที่ต้องสร้าง อัปเดท และลบ — โดย map กับ 8+1 category orchestrators จาก `/review-codebase`
 
 1. สร้าง mapping จาก run-review categories เป็น analyzer module:
    - แต่ละ domain มี analyzer file ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
@@ -62,7 +58,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 5. Create Or Update Analyzers
 
 > Goal: สร้างหรืออัปเดท analyzer แต่ละตัวตาม category ใน `/run-review`
-> Goal: ทุก category มี analyzer ที่ทำงานได้และสอดคล้องกับ `/run-review`
 
 1. สำหรับแต่ละ category ใน `/run-review`:
    1. อ่าน `/run-review` Step 7 สำหรับรายการ categories ในแต่ละ domain
@@ -85,7 +80,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 6. Update Package Manifest
 
 > Goal: ตรวจสอบและอัปเดท scripts ใน `package.json` ของ workspace และ root ให้สอดคล้องกับ CLI ที่อัปเดท
-> Goal: scripts ใน `package.json` ครบถ้วนและรันได้ก่อน validate
 
 1. ทำ `/use-scripts` สำหรับ script ที่จำเป็น:
    - `review` → `bun run src/presentation/cli.ts` ใน `tools/review/package.json`
@@ -98,7 +92,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 7. Restructure Analyzers
 
 > Goal: ปรับโครงสร้างไฟล์ถ้าเกิน 250 บรรทัดและอัปเดท references
-> Goal: ไฟล์ไม่เกิน 250 บรรทัด และ references ถูกต้อง
 
 1. ทำ `/restructure` สำหรับ `src/domain/analyzers/` ถ้ามีไฟล์ที่ยาวกว่า 250 บรรทัด
 2. จัดกลุ่ม analyzers ตาม domain เดียวใน file เดียว
@@ -107,7 +100,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 8. Validate CLI
 
 > Goal: ตรวจสอบว่า CLI รันได้และ output ถูกต้อง
-> Goal: CLI ผ่าน typecheck, lint และ output ถูกต้อง
 
 1. รัน `bun --filter tools-review lint` สำหรับ typecheck และ lint
 2. รัน review CLI ด้วย `bun --filter tools-review review`
@@ -118,7 +110,6 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 ### 9. Deep Report
 
 > Goal: สร้าง deep report ตาม `/deep-report` พร้อมตารางละเอียดและสรุปครบทุกมิติ
-> Goal: deep report ที่ละเอียด actionable และครบทุกมิติ
 
 1. ทำ `/deep-report` เพื่อสร้าง deep report ตาม format ที่กำหนด
 2. แสดงตาราง deep report ด้วย 7 columns ตาม Rules section 7 (Deep Report Table)

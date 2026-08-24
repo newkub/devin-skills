@@ -16,7 +16,6 @@ description: Design system principles พื้นฐานที่ใช้ไ
 ### 1. Define Design Tokens
 
 > Goal: กำหนด visual, interaction, และ language tokens
-> Goal: มี design tokens ทีใช้ได้ทั่วทั้ง project
 
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
 2. กำหนด interaction tokens: transitions, animations, cursors
@@ -26,7 +25,6 @@ description: Design system principles พื้นฐานที่ใช้ไ
 ### 2. Create Component Guidelines
 
 > Goal: สร้างและ document reusable components
-> Goal: component library มี patterns และ variants ชัดเจน
 
 1. สร้าง reusable components ด้วย atomic design (atoms → molecules → organisms)
 2. ใช้ design tokens สำหรับทุก component
@@ -36,7 +34,6 @@ description: Design system principles พื้นฐานที่ใช้ไ
 ### 3. Apply To Platforms
 
 > Goal: แปลง tokens และ guidelines ตาม platform
-> Goal: design system ใช้ได้ทุก platform ทีต้องการ
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/follow-web-design` สำหรับ web-specific guidelines
@@ -46,7 +43,6 @@ description: Design system principles พื้นฐานที่ใช้ไ
 ### 4. Ensure Accessibility
 
 > Goal: ตรวจสอบและ implement accessibility สำหรับทุก platform
-> Goal: ผ่าน WCAG และรองรับ keyboard/screen reader
 
 1. ทำตาม WCAG guidelines สำหรับทุก platform
 2. รองรับ keyboard navigation
@@ -56,7 +52,6 @@ description: Design system principles พื้นฐานที่ใช้ไ
 ### 5. Test And Validate
 
 > Goal: ทดสอบ design system บนทุก platform
-> Goal: design system consistent, accessible, และ reusable
 
 1. ทดสอบ visual consistency ทุก platform
 2. ทดสอบ component reusability

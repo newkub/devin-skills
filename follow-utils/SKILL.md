@@ -16,7 +16,6 @@ description: แนวทางการเขียนและจัดโค�
 ### 1. Folder Rules
 
 > Goal: จัดโครงสร้าง utils เป็น subfolders ตามหมวดหมู่
-> Goal: utils แบ่งตามหมวดหมู่ชัดเจน
 
 1. แบ่ง subfolders: `format`, `validation`, `conversion`, `math`, `string`, `array`, `date`
 2. ใช้ชื่อ folder ที่สื่อความหมายเป็นภาษาอังกฤษ
@@ -24,7 +23,6 @@ description: แนวทางการเขียนและจัดโค�
 ### 2. Import Rules
 
 > Goal: จัดลำดับ imports อย่างเป็นระบบ
-> Goal: imports เรียงลำดับชัดเจน
 
 1. เรียง: external libraries → internal modules → relative imports
 2. แบ่ง groups ด้วยบรรทัดว่าง
@@ -33,7 +31,6 @@ description: แนวทางการเขียนและจัดโค�
 ### 3. Function Rules
 
 > Goal: เขียน functions ตาม Pure FP principles
-> Goal: functions เป็น pure, type-safe, และ testable
 
 1. เขียน pure functions — no side effects, no state mutation, deterministic
 2. ตั้งชื่อด้วย verb หรือ verb+noun (เช่น `formatDate`, `validateEmail`)
@@ -47,7 +44,6 @@ description: แนวทางการเขียนและจัดโค�
 ### 4. Export Rules
 
 > Goal: จัดการ exports อย่างเป็นระบบ
-> Goal: exports ใช้ named exports และมี index file
 
 1. ใช้ named exports เป็นหลัก
 2. สร้าง `index.ts` เพื่อรวบรวม exports ในแต่ละ folder
@@ -56,7 +52,6 @@ description: แนวทางการเขียนและจัดโค�
 ### 5. Performance
 
 > Goal: ใช้ optimization เมื่อจำเป็น
-> Goal: functions มี performance ที่เหมาะสม
 
 1. ใช้ memoization สำหรับ functions ที่คำนวณซ้ำ
 2. ใช้ lazy evaluation สำหรับข้อมูลจำนวนมาก

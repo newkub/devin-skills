@@ -1,50 +1,50 @@
 ---
 name: review-github-issue
-description: Review GitHub issue content, labels, and readiness
+description: ตรวจสอบเนื้อหา, labels และความพร้อมของ GitHub issue
 ---
 
 ## Goal
 
-Review issue quality, clarity, and completeness before work starts
+ตรวจสอบคุณภาพ, ความชัดเจน และความครบถ้วนของ issue ก่อนเริ่มงาน
 
 ## Scope
 
-Use before implementing or assigning an issue
+ใช้ก่อน implement หรือ assign issue
 
 ## Execute
 
 ### 1. Read issue
-> Goal: read issue
+> Goal: อ่าน issue
 
-1. Run gh issue view <number>
-1. Read title, body, comments, linked PRs
+1. รัน gh issue view <number>
+1. อ่าน title, body, comments, linked PRs
 
 ### 2. Check metadata
-> Goal: check metadata
+> Goal: ตรวจสอบ metadata
 
-1. Verify labels, assignee, milestone, project
-1. Check sub-issues or dependencies
+1. ยืนยัน labels, assignee, milestone, project
+1. ตรวจ sub-issues หรือ dependencies
 
 ### 3. Assess quality
-> Goal: assess quality
+> Goal: ประเมินคุณภาพ
 
-1. Check for clear goal and scope
-1. Identify missing information
-1. Suggest improvements
+1. ตรวจว่ามี goal และ scope ที่ชัดเจน
+1. ระบุข้อมูลที่ขาดหาย
+1. แนะนำการปรับปรุง
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Summarize review findings
-1. Return actionable recommendations
+1. สรุปผลการตรวจสอบ
+1. ส่งคืนข้อแนะนำที่นำไปปฏิบัติได้
 
 ## Rules
 
-- Do not edit issue unless asked
-- Focus on clarity and feasibility
-- Mention missing acceptance criteria
+- ห้ามแก้ไข issue เว้นแต่ได้รับการร้องขอ
+- เน้นที่ความชัดเจนและความเป็นไปได้
+- ระบุ acceptance criteria ที่ขาดหาย
 
 ## Expected Outcome
 
-- Issue review report
-- List of strengths, gaps, and recommendations
+- รายงานการตรวจสอบ issue
+- รายการจุดแข็ง, ช่องว่าง และข้อแนะนำ

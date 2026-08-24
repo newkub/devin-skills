@@ -9,7 +9,7 @@ description: ตั้งค่า Docker images สำหรับ automated re
 
 ## Scope
 
-Use `follow-release-docker` for the specific tasks and workflows it covers
+ใช้ `follow-release-docker` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

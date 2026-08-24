@@ -16,7 +16,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 1. Research Competitors
 
 > Goal: วิจัยคู่แข่งที่ relevant
-> Goal: รู้ competitor landscape และ best practices
 
 1. ทำ `/deep-research` เพื่อรวบรวมข้อมูลคู่แข่ง
 2. ระบุ competitors ที่เป็น direct และ indirect
@@ -26,7 +25,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 2. Benchmark Features
 
 > Goal: เปรียบเทียบและปรับปรุงมิติ features
-> Goal: ให้ features ดีกว่าคู่แข่ง
 
 1. ทำ `/bench-features` เพื่อ benchmark มิติ features
 2. รับผลเป็น section หรือไฟล์ `comparison-features.md`
@@ -35,7 +33,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 3. Benchmark Other Dimensions
 
 > Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
-> Goal: ครอบคลุม performance, UX/UI, architecture, DX, security, business
 
 1. ทำ `/review-codebase` สำหรับ performance
 2. ทำ `/review-codebase` สำหรับ UX/UI
@@ -45,7 +42,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 4. Plan Improvements
 
 > Goal: วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
-> Goal: ได้ roadmap ครอบทุกมิติ
 
 1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
@@ -55,7 +51,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 5. Implement Improvements
 
 > Goal: ปรับปรุง project ตาม roadmap
-> Goal: ดีกว่าคู่แข่งในทุกมิติ
 
 1. ทำ `/ship` เพื่อ implement improvements
 2. ทำ `/review-codebase` สำหรับ performance improvements
@@ -65,7 +60,6 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 ### 6. Update Report
 
 > Goal: อัปเดตรายงานเปรียบเทียบ
-> Goal: รายงาน reflect สถานะล่าสุด
 
 1. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
 2. อัปเดต status ในตารางเปรียบเทียบ

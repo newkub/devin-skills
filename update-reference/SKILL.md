@@ -9,7 +9,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 
 ## Scope
 
-Use `update-reference` for the specific tasks and workflows it covers
+ใช้ `update-reference` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

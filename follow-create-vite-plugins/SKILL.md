@@ -9,7 +9,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ## Scope
 
-Use `follow-create-vite-plugins` for the specific tasks and workflows it covers
+ใช้ `follow-create-vite-plugins` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

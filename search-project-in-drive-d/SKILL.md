@@ -16,7 +16,6 @@ description: ค้นหา project ใน drive D ที่ตรงกับ 
 ### 1. Get Search Criteria
 
 > Goal: ระบุ keyword หรือ pattern ที่ต้องการค้นหา
-> Goal: ทราบสิ่งที่ต้องค้นหาอย่างชัดเจน
 
 1. ถาม user สำหรับ keyword หรือ pattern ถ้ายังไม่ได้ระบุ
 2. รองรับ wildcard patterns เช่น `*foo*`, `new*`, `*kub*`
@@ -25,7 +24,6 @@ description: ค้นหา project ใน drive D ที่ตรงกับ 
 ### 2. Search Git Projects
 
 > Goal: ค้นหา projects ใน drive D ที่ตรงกับ criteria
-> Goal: ได้รายการ projects ที่ตรงเงื่อนไข
 
 1. ใช้ `Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3` เพื่อ scan directories
 2. กรอง directories ที่มี `.git` ด้วย `Test-Path (Join-Path $_.FullName ".git")`
@@ -35,7 +33,6 @@ description: ค้นหา project ใน drive D ที่ตรงกับ 
 ### 3. Format Output
 
 > Goal: จัดรูปแบบผลลัพธ์ให้อ่านง่าย
-> Goal: แสดงผลในรูปแบบที่เข้าใจง่าย
 
 1. ใช้ `report-table` เพื่อสร้างตาราง
 2. จัดเรียง columns: No., Project Name, Path, Match Type
@@ -45,7 +42,6 @@ description: ค้นหา project ใน drive D ที่ตรงกับ 
 ### 4. Return Results
 
 > Goal: ส่งมอบผลการค้นหา
-> Goal: user ได้รับข้อมูลครบถ้วน
 
 1. แสดงตาราง projects ที่ตรงกับ keyword
 2. แสดง summary (จำนวน projects, keyword ที่ใช้)

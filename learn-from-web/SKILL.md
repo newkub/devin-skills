@@ -16,7 +16,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 1. Research Strategy
 
 > Goal: กำหนดลำดับความสำคัญของแหล่งข้อมูลก่อนเริ่มค้นหา
-> Goal: รู้ลำดับแหล่งข้อมูลและใช้แหล่งที่เหมาะสมก่อน
 
 1. กำหนดลำดับความสำคัญของแหล่งข้อมูล
 2. ใช้ Official Documentation เป็นแหล่งหลักเสมอ (priority สูงสุด)
@@ -27,7 +26,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 2. Official Website Research
 
 > Goal: อ่าน documentation โดยตรงจาก official website ของ tool, library หรือ framework
-> Goal: ได้ข้อมูลจากแหล่งหลักที่ถูกต้องและเป็นปัจจุบันที่สุด
 
 1. ระบุ official website ของ tool, library หรือ framework ที่ต้องการเรียนรู้
 2. ใช้ `read_url_content` เพื่ออ่านหน้า documentation โดยตรง
@@ -41,7 +39,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 3. DeepWiki Research
 
 > Goal: ใช้ DeepWiki สำหรับ GitHub repositories เพื่อดู topics และถามคำถามเฉพาะเจาะจง
-> Goal: เข้าใจ repository structure และได้คำตอบเฉพาะเจาะจง
 
 1. ใช้ `read_wiki_structure` เพื่อดู topics ทั้งหมด
 2. ใช้ `read_wiki_contents` เพื่ออ่านเนื้อหาของ topic ที่เลือก
@@ -54,7 +51,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 4. Context7 Research
 
 > Goal: ใช้ Context7 สำหรับ libraries และ frameworks ที่มี documentation ในระบบ
-> Goal: ได้ documentation และ code examples ที่ตรงกับ library version
 
 1. ใช้ `resolve-library-id` เพื่อหา library ID ที่ถูกต้อง
 2. ใช้ `query-docs` สำหรับ documentation ที่ต้องการ
@@ -68,7 +64,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 5. Web Search Research
 
 > Goal: ใช้ Web Search เป็น fallback เมื่อไม่มีข้อมูลจากแหล่งอื่น
-> Goal: ได้ข้อมูลเพิ่มเติมเมื่อแหล่งหลักไม่เพียงพอ
 
 1. ใช้ `search_web` เมื่อไม่มีข้อมูลจาก DeepWiki หรือ Context7
 2. กำหนด query ที่ชัดเจนและเฉพาะเจาะจง
@@ -79,7 +74,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 6. Knowledge Extraction
 
 > Goal: สกัดและบันทึกความรู้ที่ได้จากทุกแหล่งข้อมูล
-> Goal: มีความรู้ที่จดบันทึกและจัดระเบียบไว้ใช้งาน
 
 1. จดบันทึกหลักการที่สำคัญและ core concepts
 2. ระบุ features และ capabilities หลักทั้งหมด
@@ -92,7 +86,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 7. Validation
 
 > Goal: ตรวจสอบความถูกต้องของข้อมูลและ code examples ที่ได้จากการเรียนรู้
-> Goal: ยืนยันว่าข้อมูลและ code ทำงานได้จริง
 
 1. ทดลองใช้งานตามที่เรียนรู้
 2. สร้างโปรเจกต์ตัวอย่างเพื่อทดสอบ
@@ -104,7 +97,6 @@ description: เรียนรู้จากเว็บไซต์หลั�
 ### 8. Application
 
 > Goal: นำความรู้ที่ได้ไปใช้ในโปรเจกต์จริงและแชร์กับทีม
-> Goal: ความรู้ถูกนำไปใช้และแชร์อย่างมีประสิทธิภาพ
 
 1. นำความรู้ไปใช้ในโปรเจกต์จริง
 2. สร้าง examples หรือ tutorials สำหรับทีม
@@ -112,6 +104,19 @@ description: เรียนรู้จากเว็บไซต์หลั�
 4. สร้าง learning loop สำหรับพัฒนาตนเอง
 5. บันทึก lessons learned สำหรับ future reference
 6. แชร์ความรู้กับทีมผ่าน documentation
+
+### 9. Write References
+
+> Goal: เขียน reference files จริงเมื่อถูกเรียกเพื่อ dependency ของ skill (บังคับ ห้ามข้าม)
+
+1. ตรวจ context การเรียก: ถ้าถูกเรียกจาก `/follow-write-devin-skills` หรือ skill ที่มี dependencies → ต้องเขียน reference files จริง ไม่ใช่แค่ research
+2. ระบุ target `references/` directory ของ skill ที่เรียก (เช่น `<skill-dir>/references/<dep>.md`)
+3. เขียน reference file สำหรับทุก dependency ที่ research ครอบคลุม โดยแต่ละไฟล์ต้องมีอย่างน้อย: install command จริง, version ที่ stable, peer dependencies, configuration examples, code examples จาก official docs, และ source URL
+4. ใช้ข้อมูลจาก section 6 (Knowledge Extraction) เป็นเนื้อหา reference. ห้ามใช้ placeholder หรือ TODO. ทุก code example ต้องมาจาก official docs จริง
+5. ตรวจว่าทุกไฟล์ไม่เกิน 250 บรรทัด. ถ้าเกิน → แบ่งเป็น sub-files (เช่น `references/<dep>/api.md`, `references/<dep>/config.md`)
+6. ถ้า library มี CLI → เขียน `references/<dep>/cli.md` แยก. ถ้ามี components/API หลายส่วน → เขียน `references/<dep>/api/` แยกตามส่วน
+7. หลังเขียน → ทำ `/check-reference` เพื่อยืนยันว่า reference มีอยู่จริงและเนื้อหาครบถ้วน
+8. ถ้าเขียน reference ไม่สำเร็จ → stop และ report ไม่ผ่านการ validate ของ `/follow-write-devin-skills`
 
 ## Rules
 
@@ -148,3 +153,4 @@ description: เรียนรู้จากเว็บไซต์หลั�
 - Code examples และ best practices ที่บันทึกไว้
 - การนำความรู้ไปใช้งานจริง
 - การทดสอบและ validation ที่ครบถ้วน
+- ถ้าถูกเรียกเพื่อ dependency ของ skill → ต้องมี reference files จริงใน `references/` ของ skill ที่เรียก ครบทุก dependency ไม่มี placeholder

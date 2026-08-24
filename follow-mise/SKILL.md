@@ -16,7 +16,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 1. Check And Install Mise
 
 > Goal: ตรวจสอบและติดตั้ง mise
-> Goal: ยื่นยันว่า mise พร้อมใช้
 
 1. รัน `mise --version` เพื่อตรวจสอบ installation
 2. ถ้าไม่มา ให้ติดตั้ง:
@@ -29,7 +28,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 2. Initialize Mise Configuration
 
 > Goal: สร้าง `mise.toml` สำหรับ project
-> Goal: project มี mise config ที่ถูกต้อง
 
 1. สร้าง `mise.toml` ที่ project root
 2. กำหนด tools ใน ` [tools]`: `node = "24"`, `python = "3.13"`, `bun = "latest"` เป็นต้น
@@ -40,7 +38,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 3. Manage Tool Versions
 
 > Goal: จัดการ versions ของ tools
-> Goal: tool versions ตรงกับ config
 
 1. รัน `mise use <tool>@<version>` เพื่อเปลี่ยน version
 2. รัน `mise install` เพื่อติดตั้ง version ใหม่
@@ -51,7 +48,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 4. Configure Environment Variables
 
 > Goal: ตั้งค่า env vars ใน mise
-> Goal: env vars ถูกต้องและ load อัตโนมัติ
 
 1. เพิ่ม `[env]` section ใน `mise.toml`
 2. ใช้ `_.file = ".env.local"` เพื่อ load จาก .env file
@@ -62,7 +58,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 5. Define Tasks
 
 > Goal: สร้าง tasks ใน mise
-> Goal: tasks อยู่ใน config และรันได้
 
 1. เพิ่ม `[tasks.<name>]` ใน `mise.toml`
 2. กำหนด `run = "<command>"` สำหรับแต่ละ task
@@ -74,7 +69,6 @@ description: ตั้งค่าและใช้งาน mise สำหร�
 ### 6. Integrate With Project Scripts
 
 > Goal: เชื่อม mise เข้ากับ scripts
-> Goal: scripts ใช้ tools จาก mise ได้
 
 1. ใช้ `mise exec -- <script>` เพื่อรัน scripts ใน mise env
 2. ใช้ `mise run` สำหรับ task automation

@@ -5,18 +5,17 @@ description: Switch to a workflow branch for git operations
 
 ## Goal
 
-Switch to the correct git branch for a named workflow (restructure, dev, fix, review)
+สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ (restructure, dev, fix, review)
 
 ## Scope
 
-Use `git-workflows` when the user wants to move the working tree to a workflow-specific branch before executing a workflow
+ใช้ `git-workflows` เมื่อ user ต้องการย้าย working tree ไปยัง workflow-specific branch ก่อนดำเนินการ workflow
 
 ## Execute
 
 ### 1. Identify Workflow
 
 > Goal: Determine which workflow branch to use
-> Goal: know the correct branch name and current git state
 
 1. ถามหรือวิเคราะห์ว่า user ต้องการ workflow ใด: `restructure`, `dev`, `fix`, `review`
 2. รัน `git status --short` เพื่อตรวจสถานะปัจจุบัน
@@ -25,7 +24,6 @@ Use `git-workflows` when the user wants to move the working tree to a workflow-s
 ### 2. Switch Branch
 
 > Goal: Move to the workflow branch
-> Goal: working tree อยู่บน branch ทีถูกต้อง
 
 1. รัน `git branch --list` เพื่อตรวจว่า branch มีอยู่หรือไม่
 2. ถ้า branch ไม่มี → สร้างด้วย `git checkout -b <workflow>`
@@ -35,7 +33,6 @@ Use `git-workflows` when the user wants to move the working tree to a workflow-s
 ### 3. Confirm Context
 
 > Goal: Report the new branch and next action
-> Goal: ยืนยันกับ user ว่าอยู่บน branch ทีถูกต้อง
 
 1. แสดง branch ปัจจุบัน
 2. ถ้า user ต้องการทำงานต่อ เช่น restructure, dev, fix, review ให้แนะนำ skill ถัดไป

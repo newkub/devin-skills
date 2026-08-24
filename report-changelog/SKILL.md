@@ -16,7 +16,6 @@ description: สร้าง changelog รายงานจาก git log ร�
 ### 1. Determine Version Range
 
 > Goal: ระบุช่วงของ changelog ที่ต้องการ
-> Goal: รู้ว่าจะรายงาน changelog ช่วงใด
 
 1. ระบุ range ที่ต้องการ:
    - Between tags: `git log <tag-old>..<tag-new>`
@@ -29,7 +28,6 @@ description: สร้าง changelog รายงานจาก git log ร�
 ### 2. Collect Commits
 
 > Goal: รวบรวม commits ในช่วงที่กำหนด
-> Goal: มี commits ครบสำหรับการจัดหมวดหมู่
 
 1. รัน `git log <range> --oneline` เพื่อดู commits ทั้งหมด
 2. รัน `git log <range> --format="%H|%s|%an|%ai|%b"` เพื่อเก็บ metadata ครบ
@@ -39,7 +37,6 @@ description: สร้าง changelog รายงานจาก git log ร�
 ### 3. Categorize Commits
 
 > Goal: จัดหมวดหมู่ commits ตาม conventional commits
-> Goal: Changelog จัดหมวดหมู่ชัดเจน อ่านง่าย
 
 1. จัดกลุ่มตาม commit type:
    - Features (`feat`): ฟีเจอร์ใหม่
@@ -57,7 +54,6 @@ description: สร้าง changelog รายงานจาก git log ร�
 ### 4. Format Changelog
 
 > Goal: จัดรูปแบบ changelog ให้อ่านง่าย
-> Goal: Changelog อ่านง่าย ครบข้อมูล มีมาตรฐาน
 
 1. ทำ `/report-table` สำหรับสรุปสถิติ
 2. แสดงผลตามลำดับ: Summary → Breaking Changes → Features → Bug Fixes → Other
@@ -79,7 +75,6 @@ description: สร้าง changelog รายงานจาก git log ร�
 ### 5. Provide Insights
 
 > Goal: ให้ insights ของ changelog
-> Goal: ผู้อ่านเข้าใจการเปลี่ยนแปลงโดยรวม
 
 1. สรุปจำนวน commits แยกตามประเภท
 2. ระบุ contributors และจำนวน commits ต่อคน

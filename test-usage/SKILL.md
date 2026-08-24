@@ -16,7 +16,6 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 ### 1. Discover Usage Examples
 
 > Goal: ค้นหา usage examples ทั้งหมด
-> Goal: รู้ code blocks และ commands ที่ต้อง test
 
 1. หา `README.md` ทั้งหมดใน project (root และ workspaces)
 2. ดึง code blocks จาก `## Usage` และ `### Usage via ...` sections
@@ -26,7 +25,6 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 ### 2. Test CLI Commands
 
 > Goal: ทดสอบ CLI commands ที่ไม่ทำลายข้อมูล
-> Goal: ยืนยันว่า CLI commands ทำงานได่
 
 1. ทดสอบ commands ที่ปลอดภัย (`--help`, `--version`, `help`, `version`)
 2. ถ้ามี custom directory → ทดสอบด้วย directory ที่มี markdown files อยู่จริง
@@ -36,7 +34,6 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 ### 3. Test SDK Examples
 
 > Goal: ทดสอบ SDK code examples
-> Goal: ยืนยันว่า imports และ function calls ทำงานได่
 
 1. สร้างไฟล์ชั่วคราว (`tmp/test-usage-<ts|js>`) จาก code example
 2. แก้ไข relative paths ให้ตรงกับ test environment
@@ -47,7 +44,6 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 ### 4. Test Package Scripts
 
 > Goal: ทดสอบ package.json scripts ที่เกี่ยวข้องกับ usage
-> Goal: ยืนยันว่า scripts ที่อ้างถึงใน docs ทำงานได่
 
 1. ระบุ scripts ที่มีอยู่ใน `package.json` (root และ workspaces)
 2. ทดสอบ scripts ที่ไม่เสี่ยง: `build`, `typecheck`, `lint`, `test`
@@ -57,7 +53,6 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 ### 5. Report And Fix
 
 > Goal: รายงานผลและจัดการ issues
-> Goal: ไม่มี broken usage examples ก่อน ship
 
 1. รวบรวมผลการทดสอบเป็นตาราง (example, expected, actual, status)
 2. ถ้ามี failures → แสดงรายการและถาม user ว่าจะ fix หรือ skip

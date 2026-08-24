@@ -16,7 +16,6 @@ description: ตั้งค่าและใช้งาน cargo-nextest ส�
 ### 1. Installation
 
 > Goal: ติดตั้ง cargo-nextest บน environment
-> Goal: cargo-nextest พร้อมใช้งาน
 
 ติดตั้งด้วย `cargo-binstall`:
 
@@ -53,7 +52,6 @@ winget install nextest.cargo-nextest
 ### 2. Run Tests
 
 > Goal: รัน tests ด้วย cargo-nextest
-> Goal: tests รันสำเร็จและแสดงผลลัพธ์
 
 ```bash
 cargo nextest run
@@ -68,7 +66,6 @@ cargo test --doc
 ### 3. Configuration
 
 > Goal: สร้าง `.config/nextest.toml` สำหรับ configuration
-> Goal: config สำหรับ local และ CI ครบถ้วน
 
 ```toml
 [profile.ci]
@@ -85,7 +82,6 @@ cargo nextest run --profile ci
 ### 4. List Tests
 
 > Goal: แสดงรายการ tests ทั้งหมด
-> Goal: รู้ scope และชื่อ tests ทีรัน
 
 ```bash
 cargo nextest list
@@ -94,7 +90,6 @@ cargo nextest list
 ### 5. Profiles
 
 > Goal: ใช้ profiles สำหรับ local และ CI runs
-> Goal: แยก config ตาม environment ได้ถูกต้อง
 
 - default: สำหรับ local development
 - ci: สำหรับ CI (fail-fast = false)
@@ -110,7 +105,6 @@ test-threads = 4
 ### 6. CI Integration
 
 > Goal: เพิ่ม cargo-nextest ใน CI pipeline
-> Goal: CI รัน tests ด้วย nextest อย่างมีประสิทธิภาพ
 
 ```yaml
 - name: Run tests

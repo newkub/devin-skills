@@ -16,7 +16,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 1. Detect Workspace Structure
 
 > Goal: ตรวจพบโครงสร้าง workspaces ใน project
-> Goal: รู้ว่า project มี workspaces อะไรบ้าง
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบว่าเป็น monorepo หรือไม่
 2. อ่าน `package.json` ที่ root ดู `workspaces` หรือ `pnpm-workspace.yaml` หรือ `turbo.json`
@@ -26,7 +25,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 2. Collect Workspace Metadata
 
 > Goal: รวบรวมข้อมูลพื้นฐานของแต่ละ workspace
-> Goal: มี metadata ครบสำหรับวิเคราะห์ relations
 
 1. อ่าน `package.json` ของแต่ละ workspace
 2. บันทึก `name`, `version`, `dependencies`, `devDependencies`, `peerDependencies`
@@ -36,7 +34,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 3. Analyze Internal Dependencies
 
 > Goal: วิเคราะห์ dependencies ภายใน monorepo
-> Goal: รู้ว่า workspace ไหนพึ่งพา workspace ไหน
 
 1. ค้นหา `workspace:*` หรือชื่อ workspace อื่นใน `dependencies` และ `devDependencies`
 2. สร้าง directed graph ของ internal dependencies
@@ -46,7 +43,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 4. Analyze External References
 
 > Goal: วิเคราะห์การ import หรืออ้างอิงระหว่าง workspaces ผ่าน source code
-> Goal: รู้ว่า workspace ไหนใช้ code ของ workspace ไหน
 
 1. ใช้ `grep` ค้นหา `from '<workspace-name>'` หรือ `from '<workspace-path>'`
 2. นับจำนวน imports ระหว่าง workspaces
@@ -56,7 +52,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 5. Identify Shared Dependencies
 
 > Goal: หา dependencies ที่หลาย workspace ใช้ร่วมกัน
-> Goal: รู้ว่า dependencies ภายนอกถูก share อย่างไร
 
 1. เปรียบเทียบ dependencies ระหว่าง workspaces
 2. ระบุ dependencies ที่มี version ต่างกัน
@@ -66,7 +61,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 6. Detect Circular Dependencies
 
 > Goal: ตรวจหา circular dependencies ระหว่าง workspaces
-> Goal: ไม่มี circular dependencies ระหว่าง workspaces
 
 1. ทำ `/check-circular-dependencies` ระหว่าง workspaces
 2. ระบุวงจรทั้งหมดถ้ามี
@@ -76,7 +70,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 7. Categorize Relations
 
 > Goal: จัดประเภทความสัมพันธ์ระหว่าง workspaces
-> Goal: รายงานอ่านง่ายและ actionable
 
 1. จัดกลุ่มตาม relation type: `depends-on`, `imports-from`, `shared-dep`, `peer`, `circular`
 2. จัดกลุ่มตามทิศทาง: `inbound`, `outbound`, `bidirectional`
@@ -86,7 +79,6 @@ description: รายงานความสัมพันธ์ระหว�
 ### 8. Format Report
 
 > Goal: จัดรูปแบบรายงาน
-> Goal: output ชัดเจน อ่านง่าย
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. กำหนด columns: `No`, `Source`, `Target`, `Relation`, `Strength`, `Files`, `Notes`

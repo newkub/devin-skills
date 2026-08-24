@@ -16,7 +16,6 @@ description: จัดโครงสร้างโปรเจกต์ Next.j
 ### 1. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์พื้นฐาน
-> Goal: มีโครงสร้างโฟลเดอร์หลักครบถ้วน
 
 1. สร้าง `app/` สำหรับ App Router (pages, layouts, templates)
 2. สร้าง `modules/` สำหรับ feature-based organization
@@ -29,7 +28,6 @@ description: จัดโครงสร้างโปรเจกต์ Next.j
 ### 2. Configure Next.js
 
 > Goal: ตั้งค่า Next.js และ build tools
-> Goal: มี Next.js config และ TypeScript config พร้อมใช้งาน
 
 1. ทำ `/follow-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
 2. ทำ `/follow-vite` เพื่อตั้งค่า build tooling
@@ -40,7 +38,6 @@ description: จัดโครงสร้างโปรเจกต์ Next.j
 ### 3. Implement App Router Patterns
 
 > Goal: ใช้ App Router patterns ของ Next.js
-> Goal: ใช้ App Router conventions ครบถ้วน
 
 1. ใช้ `app/` directory สำหรับ routing
 2. ใช้ `layout.tsx` สำหรับ shared layouts
@@ -53,7 +50,6 @@ description: จัดโครงสร้างโปรเจกต์ Next.j
 ### 4. Data Fetching
 
 > Goal: จัดการ data fetching อย่างมีประสิทธิภาพ
-> Goal: data fetching มีประสิทธิภาพและใช้ caching อย่างเหมาะสม
 
 1. ใช้ `async/await` ใน Server Components
 2. ใช้ `fetch` พร้อม `cache` options
@@ -65,7 +61,6 @@ description: จัดโครงสร้างโปรเจกต์ Next.j
 ### 5. State Management
 
 > Goal: จัดการ state อย่างมีประสิทธิภาพ
-> Goal: state management แยก Server/Client Components ชัดเจน
 
 1. ใช้ Server Components สำหรับ data fetching
 2. ใช้ Client Components สำหรับ interactivity

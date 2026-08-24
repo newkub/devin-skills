@@ -16,7 +16,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 1. Verify Devin Structure
 
 > Goal: ตรวจสอบว่า `.devin` structure มีอยู่แล้ว
-> Goal: ยืนยันว่า .devin/rules/ พร้อม subdirectories ครบถ้วน
 
 1. ตรวจสอบว่า `.devin/rules/` directory ที่ root มีอยู่พร้อม subdirectories: `always-on/`, `model_decision/`, `glob/`
 2. ถ้าไม่มี ให้ทำ `/update-dot-devin` ก่อนเพื่อสร้าง structure ครบถ้วน
@@ -26,7 +25,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 2. Analyze Project
 
 > Goal: วิเคราะห์ project เพื่อระบุ rules ที่ต้องอัพเดท
-> Goal: รู้ tools, domains, และ file patterns ที่ต้องมี rules
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ codebase, tech stack, และ patterns
 2. อ่าน `package.json` ทั้ง root และ workspace เพื่อดู dependencies ทั้งหมด — rules เขียนเฉพาะที่ root `.devin/rules/`
@@ -37,7 +35,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 3. Update Always-On Rules
 
 > Goal: อัพเดท rules ใน `.devin/rules/always-on/` โดยจัดกลุ่มเป็น 3 subdirectories: `libs/`, `code-quality/`, `architecture/`
-> Goal: Always-on rules ครอบคลุม tools ทั้งหมด จัดกลุ่มเป็น libs, code-quality, architecture
 
 1. สร้าง subdirectories ใน `.devin/rules/always-on/`: `libs/`, `code-quality/`, `architecture/`
 2. ย้าย rule files ที่มีอยู่เข้ากลุ่มที่เหมาะสม
@@ -64,7 +61,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 4. Check Library Release Changelogs
 
 > Goal: ตรวจสอบ release changelogs ของ dependencies ที่มีการเปลี่ยนแปลง
-> Goal: รู้ breaking changes, features, และ fixes ของ libraries ก่อนเขียน rules
 
 1. ระบุ dependencies ที่มี version เปลี่ยนแปลงหรือเพิ่มใหม่จาก `package.json`
 2. ทำ `/check-release-changelog` โดยระบุ repo และ tags (from → to) ของแต่ละ dependency
@@ -74,7 +70,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 5. Update Model Decision Rules
 
 > Goal: อัพเดท rules ใน `.devin/rules/model_decision/` สำหรับ domain patterns
-> Goal: Model decision rules ครอบคลุม domain patterns ที่มีใน project
 
 1. ระบุ domain patterns ที่ต้องมี model decision rules จาก project structure และ codebase analysis
 2. สแกน codebase เพื่อหา domain patterns เพิ่มเติม (เช่น `api`, `auth`, `database`, `payment`, `deployment`, `mobile`, `testing`, `solidjs`, `mcp`, `ai`, `i18n`, `realtime`, `seo`, `security`, `performance`)
@@ -86,7 +81,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 6. Update Glob Rules
 
 > Goal: อัพเดท rules ใน `.devin/rules/glob/` สำหรับ file patterns
-> Goal: Glob rules ครอบคลุม file patterns ที่สำคัญใน project
 
 1. ระบุ file patterns ที่ต้องมี glob rules จาก project structure และ directory analysis
 2. สแกน directory structure เพื่อหา file patterns เพิ่มเติม
@@ -98,7 +92,6 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 ### 7. Validate And Finalize
 
 > Goal: ตรวจสอบและ finalize rules ทั้งหมด
-> Goal: Rules ทั้งหมดถูกต้อง สอดคล้องกับ dependencies ไม่ซ้ำซ้อน
 
 1. ตรวจสอบว่า rules สอดคล้องกับ dependencies ใน `package.json`
 2. ตรวจสอบว่าไม่มี rules ที่ซ้ำซ้อนกัน

@@ -1,6 +1,6 @@
 ---
 name: review-security
-description: Review security: auth, secrets, injection, dependencies, permissions, and compliance
+description: Review และปรับปรุง security: auth, secrets, injection, dependencies, permissions, and compliance
 ---
 
 ## Goal
@@ -88,6 +88,17 @@ description: Review security: auth, secrets, injection, dependencies, permission
 3. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) weighted average
 4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
+### 8. Improve
+
+> Goal: ปรับปรุง security ตาม findings
+
+1. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา security best practices
+2. แก้ไขปัญหาตาม priority: Critical → High → Medium → Low
+3. แก้ hardcoded secrets, injection vulnerabilities, missing auth checks, missing input validation
+4. อัปเดต outdated dependencies, ลด supply chain risks
+5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+6. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+
 ## Rules
 
 ### 1. Scope
@@ -132,6 +143,7 @@ description: Review security: auth, secrets, injection, dependencies, permission
 - คะแนน review ต่อ dimension: auth, secrets, injection, dependencies, permissions, upload, compliance
 - คะแนน overall security score
 - ตารางสรุป findings ด้วย `/report-table`
+- ปรับปรุง security โดยไม่มี regression
 - ข้อเสนอแนะ action ถัดไป
 
 *Merged from source review-* skills.*

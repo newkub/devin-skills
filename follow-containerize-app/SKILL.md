@@ -16,7 +16,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 1. Analyze Project
 
 > Goal: วิเคราะห์ project structure, manifest และ build tool
-> Goal: รู้ว่าเป็น monorepo หรือ single repo และใช้ build tool อะไร
 
 1. ทำตาม `/check-monorepo` เพื่อตรวจสอบ monorepo
 2. อ่าน `package.json`, `Cargo.toml` หรือ manifest ที่เหมาะสม
@@ -27,7 +26,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 2. Select Engine and Base Image
 
 > Goal: เลือก container engine และ base image ที่เหมาะสม
-> Goal: engine และ base image ตรงกับ environment ที่ใช้
 
 1. ระบุ engine: `docker`, `podman`, `buildah` หรือ `nerdctl`
 2. เลือก base image ที่เล็ก เช่น `alpine`, `distroless`, `debian:slim`
@@ -37,11 +35,10 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 3. Configure Multi-Stage Build
 
 > Goal: ออกแบบ multi-stage build เพื่อแยก build environment กับ runtime
-> Goal: image สุดท้ายมีเฉพาะ artifacts ที่จำเป็น
 
 1. สร้าง `builder` stage ด้วย full toolchain
 2. ทำตาม `/follow-mise` เพื่อติดตั้ง tool versions ใน builder stage
-3. ทำตาม `/improve-efficiency` เพื่อลด build output และขนาด image
+3. ทำตาม `/review-efficiency` เพื่อลด build output และขนาด image
 4. สร้าง `runtime` stage จาก base image ที่เล็ก
 5. คัดลอกเฉพาะ build artifacts จาก builder ไป runtime
 6. ใช้ non-root user ใน runtime stage
@@ -49,7 +46,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 4. Optimize Build Context
 
 > Goal: ลด build context ด้วย `.dockerignore` หรือ `.containerignore`
-> Goal: context มีเฉพาะไฟล์ที่ build ต้องการ
 
 1. ทำตาม `/follow-gitignore` เพื่อหา patterns ที่ควร ignore
 2. สร้าง `.dockerignore` หรือ `.containerignore` ที่ root
@@ -60,7 +56,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 5. Create Containerfile
 
 > Goal: เขียน `Dockerfile` หรือ `Containerfile` ตาม best practices
-> Goal: Containerfile valid, cache friendly และ secure
 
 1. เรียงคำสั่งจาก least-frequent เปลี่ยน ไป frequent เพื่อ layer caching
 2. copy dependency manifests ก่อนแล้ว install ก่อน copy source
@@ -74,7 +69,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 6. Handle Monorepo Context
 
 > Goal: จัดการ build context สำหรับ monorepo
-> Goal: copy เฉพาะ workspace ที่ต้องการ build
 
 1. ทำตาม `/follow-monorepo` เพื่อเลือก workspace ที่เกี่ยวข้อง
 2. ใช้ build arguments หรือ Dockerfile หลายไฟล์ (`apps/<name>/Dockerfile`) ถ้าจำเป็น
@@ -85,7 +79,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 7. Build and Verify Image
 
 > Goal: build image และตรวจสอบ
-> Goal: image build สำเร็จและทำงานได้
 
 1. รัน `docker build -t <image>:<tag> .` หรือ `podman build -t <image>:<tag> .`
 2. ถ้าใช้ buildah: `buildah bud -t <image>:<tag> .`
@@ -97,7 +90,6 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 8. Publish Image
 
 > Goal: publish ด้วย `/follow-release-docker`
-> Goal: image พร้อม release
 
 1. ทำตาม `/follow-release-docker` เพื่อตั้งค่า registry, tag และ pipeline
 2. ใช้ CI workflow สำหรับ build และ push
@@ -117,7 +109,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 
 - แยก `builder` stage กับ `runtime` stage
 - ไม่ copy toolchains หรือ build cache ไป runtime
-- ทำตาม `/improve-efficiency` เพื่อลด output
+- ทำตาม `/review-efficiency` เพื่อลด output
 
 ### 3. Security
 

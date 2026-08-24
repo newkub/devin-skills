@@ -16,7 +16,6 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 ### 1. Select Pattern
 
 > Goal: เลือก pattern ตาม Pattern Selection ในส่วน Rules
-> Goal: เลือก pattern ที่เหมาะสมกับ project size และ team
 
 1. ประเมิน project size และ team experience
 2. เลือก pattern: traditional layered, feature-based, 4-layer, หรือ hybrid
@@ -26,7 +25,6 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 ### 2. Create Structure
 
 > Goal: สร้าง folder structure ตาม pattern ที่เลือก
-> Goal: มี folder structure ตาม pattern ที่เลือก
 
 Traditional Layered (โปรเจกต์ขนาดเล็ก หรือ classic):
 
@@ -91,7 +89,6 @@ src/
 ### 3. Enforce Dependencies And Public APIs
 
 > Goal: ดู Dependency Discipline แลง Public API Rules ในส่วน Rules
-> Goal: dependency rules ถูก enforce ผ่าน aliases และ lint
 
 1. ใช้ path aliases (`@/domain/...`, `@/application/...`) เพื่อให้ layer transitions ชัดเจน
 2. ถ้า project มี `Biome` → เพิ่ม restricted import rules
@@ -101,7 +98,6 @@ src/
 ### 4. Align Tests With Layers
 
 > Goal: จัดเรียง tests ตาม layers
-> Goal: tests จัดเรียงตาม layers และใช้ fake repositories
 
 1. `Domain` tests: pure functions และ policies
 2. `Application` tests: use cases กับ fake repositories
@@ -111,7 +107,6 @@ src/
 
 ### 5. Setup And Migrate
 
-> Goal: ย้าย code ทีละ feature และมี migration path ชัดเจน
 > Goal: ย้าย code ทีละ feature และมี migration path ชัดเจน
 
 1. สร้าง folder structure ตาม pattern ที่เลือก

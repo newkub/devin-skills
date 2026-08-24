@@ -16,7 +16,6 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 ### 1. Detect Ecosystem
 
 > Goal: ระบุ ecosystem และ package manager ที่ใช้
-> Goal: รู้ ecosystem และ tool ที่จะใช้ตรวจสอบ
 
 1. ตรวจสอบ `package.json` → JavaScript/TypeScript ใช้ `knip`
 2. ตรวจสอบ `Cargo.toml` → Rust ใช้ `cargo-udeps`
@@ -27,7 +26,6 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 ### 2. Run Dependency Analysis
 
 > Goal: รัน tool ตรวจสอบ unused dependencies
-> Goal: ได้รายการ unused dependencies จาก tool
 
 1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include dependencies`
 2. ถ้าเป็น Rust → รัน `cargo +nightly udeps`
@@ -38,7 +36,6 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 ### 3. Verify Results
 
 > Goal: ตรวจสอบผลลัพธ์เพื่อแยก false positives
-> Goal: รายการ unused dependencies ที่ยืนยันแล้ว
 
 1. ตรวจสอบ implicit usage — เช่น plugins, runtime config, framework conventions
 2. ตรวจสอบ type-only packages — เช่น `@types/*` ที่อาจไม่ปรากฏใน imports โดยตรง
@@ -49,7 +46,6 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 ### 4. Fix Or Remove
 
 > Goal: แก้ไขหรือลบ unused dependencies
-> Goal: ไม่มี unused dependencies เหลือในโปรเจกต์
 
 1. ลบ dependency ออกจาก `package.json` หรือ manifest file
 2. รัน `bun install` หรือคำสั่งเทียบเท่าเพื่อ update lockfile

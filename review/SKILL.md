@@ -29,7 +29,7 @@ Review งานตาม context โดยเลือก review skill ที�
 2. ถ้า `AGENTS.md` หรือ docs → ทำ `/review-agents-md`
 3. ถ้า GitHub issue → ทำ `/review-github-issue`
 4. ถ้า GitHub PR → ทำ `/review-github-pr`
-5. ถ้า devin skills → ทำ `/review-devin-global-skills`
+5. ถ้า devin skills → ทำ `/review-all-skills`
 6. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-only` ก่อน แล้วถาม user
 
 ### 3. Report

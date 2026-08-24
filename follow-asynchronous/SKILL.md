@@ -16,7 +16,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 ### 1. Identify Async Pattern
 
 > Goal: ระบุลักษณะของงานทีต้องทำ
-> Goal: เลือก pattern ทีเหมาะสม
 
 1. ดูว่า tasks เป็น sequential, parallel หรือ race condition
 2. ตรวจสอบ dependencies ระหว่าง tasks
@@ -26,7 +25,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 ### 2. Choose The Right Primitive
 
 > Goal: เลือก API ทีเหมาะสมกับงาน
-> Goal: ใช้ primitive ทีถูกต้อง
 
 1. `async/await` สำหรับ sequential flow ทั่วไป
 2. `Promise.all` เมื่อต้องการ parallel และทุก task ต้องสำเร็จ
@@ -37,7 +35,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 ### 3. Implement Error Handling
 
 > Goal: จัดการ error ใน async flow
-> Goal: ไม่มี unhandled rejection และ error สามารถ trace ได้
 
 1. ใช้ `try/catch` รอบ `await` หรือ `.catch()` สำหรับ Promise
 2. สร้าง custom error class ถ้าต้องการ context เพิ่ม
@@ -47,7 +44,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 ### 4. Optimize Concurrency
 
 > Goal: ควบคุมจำนวน concurrent operations
-> Goal: ได้ประสิทธิภาพทีเหมาะสม
 
 1. ใช้ `p-limit` หรือ `AsyncPool` ถ้าต้องการ limit concurrency
 2. ใช้ queues สำหรับ backpressure
@@ -57,7 +53,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 ### 5. Test Async Code
 
 > Goal: เขียน test สำหรับ async flow
-> Goal: มั่นใจว่า async code ทำงานถูกต้อง
 
 1. ใช้ `async/await` ใน test
 2. Mock timers ถ้าต้องทดสอบ timeout/debounce

@@ -16,7 +16,6 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 ### 1. Identify Target Subagent
 
 > Goal: ระบุ subagent ที่ต้องอัปเดต
-> Goal: target ชัดเจน
 
 1. รับชื่อ subagent ที่ต้องอัปเดตจาก user
 2. ทำ `/list-devin-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
@@ -26,7 +25,6 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 ### 2. Identify Changes
 
 > Goal: ระบุสิ่งที่ต้องเปลี่ยน
-> Goal: การเปลี่ยนแปลงชัดเจน
 
 1. รับรายการการเปลี่ยนแปลงจาก user
 2. ระบุว่าเป็นการเปลี่ยน: frontmatter, prompt body, หรือทั้งสองส่วน
@@ -35,7 +33,6 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 ### 3. Apply Changes
 
 > Goal: แก้ไข `AGENT.md`
-> Goal: การเปลี่ยนแปลงถูกต้อง
 
 1. สำรองไฟล์เดิมถ้าจำเป็น
 2. แก้ไข frontmatter ตามที่กำหนด
@@ -46,7 +43,6 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 ### 4. Validate
 
 > Goal: ตรวจสอบคุณภาพ
-> Goal: subagent ยังถูกต้องหลังอัปเดต
 
 1. ตรวจสอบว่า `AGENT.md` ไม่เกิน 250 บรรทัด
 2. ตรวจสอบว่า frontmatter มี `name`, `description`, `model`, `allowed-tools` ครบ

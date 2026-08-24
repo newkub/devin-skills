@@ -21,7 +21,6 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 ### 1. Initialize Project
 
 > Goal: เริ่มต้น WXT project ด้วย template ทีเหมาะสม
-> Goal: มี project structure พร้อม dependencies
 
 1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐาน
 2. รัน `bunx wxt init` เพื่อเริ่มต้นโปรเจกต์
@@ -32,7 +31,6 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 ### 2. Configure WXT
 
 > Goal: กำหนดค่า `wxt.config.ts` และ manifest
-> Goal: WXT build ถูกต้องตาม requirements
 
 1. แก้ไข `wxt.config.ts` ตาม requirements
 2. กำหนด manifest permissions และ host permissions
@@ -43,7 +41,6 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 ### 3. Structure Extension
 
 > Goal: สร้างโครงสร้าง extension ทีแยก concerns ชัดเจน
-> Goal: code อ่านง่าย ทดสอบได้ และ maintain ได้
 
 1. สร้าง `src/background.ts` สำหรับ background script
 2. สร้าง `src/content.ts` สำหรับ content script
@@ -55,7 +52,6 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 ### 4. Setup CI/CD
 
 > Goal: ตั้งค่า GitHub Actions สำหรับ build และ release
-> Goal: สามารถ release extension ไป Chrome Web Store อัตโนมัติ
 
 1. ทำ `/follow-github-actions` เพื่อตั้งค่า CI/CD
 2. ติดตั้ง `chrome-webstore-upload-cli` ด้วย `bun add -D`
@@ -66,7 +62,6 @@ description: ตั้งค่าและพัฒนา Web Extensions ด้
 ### 5. Build And Release
 
 > Goal: Build production และ release
-> Goal: extension พร้อมใช้งานบน Chrome Web Store
 
 1. รัน `bun run build` เพื่อ build production
 2. ตรวจสอบ `dist/` directory

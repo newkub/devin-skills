@@ -9,7 +9,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 ## Scope
 
-Use `write-examples` for the specific tasks and workflows it covers
+ใช้ `write-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

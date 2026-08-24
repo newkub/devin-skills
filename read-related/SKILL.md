@@ -16,14 +16,12 @@ description: อ่านและสรุป skills ที่เกี่ย�
 ### 1. Read Related Skills
 
 > Goal: อ่าน skills ที่เกี่ยวข้อง
-> Goal: รู้ dependencies และขั้นตอนของ skills ทั้งหมด
 
 1. ทำ `/read-related-skills` เพื่อสร้าง dependency graph และสรุป skills
 
 ### 2. Synthesize And Report
 
 > Goal: รวมผลลัพธ์และรายงาน
-> Goal: ผู้ใช้ได้ภาพรวมของ related context พร้อมดำเนินการต่อ
 
 1. รวบรวม guidelines และ instructions จาก skills ที่อ่าน
 2. ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้งกัน

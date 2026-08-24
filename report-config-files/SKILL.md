@@ -16,7 +16,6 @@ description: Report configuration files, defaults, and drift in the project
 ### 1. Discover Config Files
 
 > Goal: หา config files ทั้งหมด
-> Goal: รู้ว่ามี config files อะไรบ้าง
 
 1. ใช้ `glob` หา `**/*.{json,yaml,yml,toml,ini,conf,config,env,env.*}`
 2. แยกตาม environment (`dev`, `test`, `prod`, `staging`)
@@ -25,7 +24,6 @@ description: Report configuration files, defaults, and drift in the project
 ### 2. Compare Environments
 
 > Goal: เปรียบเทียบ config drift
-> Goal: พบ config drift
 
 1. จับคู่ไฟล์ config ตาม environment
 2. เปรียบเทียบ keys/values
@@ -35,7 +33,6 @@ description: Report configuration files, defaults, and drift in the project
 ### 3. Report Findings
 
 > Goal: สร้าง report
-> Goal: config drift อ่านง่าย
 
 1. ทำ `/report-table` สำหรับ drift ระหว่าง environments
 2. ทำ `/report-file-structure` สำหรับ tree ของ config files

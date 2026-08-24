@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ## Scope
 
-Use `follow-reactive-programming` for the specific tasks and workflows it covers
+ใช้ `follow-reactive-programming` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

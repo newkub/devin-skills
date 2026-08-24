@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 
 ## Scope
 
-Use `follow-biome` for the specific tasks and workflows it covers
+ใช้ `follow-biome` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

@@ -4,11 +4,11 @@ description: Define and run the review script in package.json.
 ---
 ## Goal
 
-Run Review\References\Run Review
+รัน Review\References\Run Review
 
 ## Scope
 
-Use `run-review\references\run-review` for the specific tasks and workflows it covers
+ใช้ `run-review\references\run-review` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

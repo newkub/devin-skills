@@ -16,7 +16,6 @@ description: รัน integration tests สำหรับ module interactions 
 ### 1. Detect Test Framework
 
 > Goal: ตรวจสอบ integration test framework ที่ project ใช้
-> Goal: รู้ framework, config, และ test file patterns
 
 1. ตรวจสอบ `package.json` สำหรับ test dependencies
 2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`)
@@ -26,7 +25,6 @@ description: รัน integration tests สำหรับ module interactions 
 ### 2. Setup Integration Environment
 
 > Goal: เตรียม environment สำหรับ integration tests
-> Goal: Environment พร้อมสำหรับ integration tests
 
 1. ตรวจสอบ test database setup (SQLite, PostgreSQL test instance)
 2. ตรวจสอบ mock servers หรือ test containers
@@ -36,7 +34,6 @@ description: รัน integration tests สำหรับ module interactions 
 ### 3. Run Integration Tests
 
 > Goal: รัน integration tests ตาม framework
-> Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. รัน `bun run test:integration` ถ้ามี script
 2. ถ้าไม่มี script รัน `bunx vitest run --config vitest.config.ts test/integration/`
@@ -46,7 +43,6 @@ description: รัน integration tests สำหรับ module interactions 
 ### 4. Review Test Results
 
 > Goal: ตรวจสอบผลลัพธ์
-> Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework
 2. ตรวจสอบ failed tests และ error messages

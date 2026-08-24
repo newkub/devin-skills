@@ -16,7 +16,6 @@ description: ตรวจสอบว่าไฟล์ match กับ software
 ### 1. Identify Principle From Filename
 
 > Goal: ระบุ principle และ category จาก file name
-> Goal: รู้ว่าไฟล์เข้ากับ principle ใดและ expected behavior เป็นอย่างไร
 
 1. ระบุ principle จาก file name (เช่น `single-responsibility.ts` → SRP)
 2. ระบุ category ของ principle: SOLID, General, Architecture, Functional
@@ -26,7 +25,6 @@ description: ตรวจสอบว่าไฟล์ match กับ software
 ### 2. Check File Matches Principle
 
 > Goal: อ่านไฟล์และตรวจสอบ structure, logic, และ naming
-> Goal: รู้ว่าไฟล์ match หรือไม่ match กับ principle ในส่วนใดบ้าง
 
 1. อ่านไฟล์เป้าหมายทั้งหมด
 2. ตรวจสอบ structure, logic, และ naming match กับ principle หรือไม่
@@ -35,7 +33,6 @@ description: ตรวจสอบว่าไฟล์ match กับ software
 ### 3. Analyze Violations
 
 > Goal: ระบุและจัดลำดับ violations ตามความรุนแรง
-> Goal: รายงาน violations พร้อม severity และส่วนที่ match/ไม่ match
 
 1. ระบุ violations ของ principle ที่พบในไฟล์
 2. จัดลำดับ severity: Critical (ทำลาย principle อย่างสิ้นเชิง), High (สำคัญแต่ยังทำงานได้), Medium (ควรแก้), Low (minor)
@@ -44,7 +41,6 @@ description: ตรวจสอบว่าไฟล์ match กับ software
 ### 4. Provide Recommendations
 
 > Goal: แนะนำการแก้ไขและ patterns ที่ match กับ principle
-> Goal: มี actionable recommendations สำหรับทำให้ไฟล์ match กับ principle
 
 1. แนะนำการแก้ไข violations แต่ละข้อ
 2. แนะนำ patterns ที่ match กับ principle

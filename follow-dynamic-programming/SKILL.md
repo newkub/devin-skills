@@ -9,7 +9,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ## Scope
 
-Use `follow-dynamic-programming` for the specific tasks and workflows it covers
+ใช้ `follow-dynamic-programming` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -18,7 +18,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 1. Analyze Code Structure
 
 > Goal: วิเคราะห์ structure ก่อน refactor
-> Goal: ระบุ SRP violations และสิ่งที่ต้องแก้ไข
 
 1. ทำ `/check-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
 2. อ่าน `references/check-srp/SKILL.md` เพื่อระบุ SRP violations ด้วย ast-grep outline
@@ -33,7 +32,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 2. Plan Refactor
 
 > Goal: วางแผนการแก้ไข
-> Goal: แผน minimal ที่กระทบน้อยที่สุด
 
 1. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขต
 2. ทำ `/plan` เพื่อวางแผน split/extract/rename
@@ -43,7 +41,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 3. Refactor To Single Responsibility
 
 > Goal: แยก/ extract units ให้ทำหน้าที่เดียว
-> Goal: ทุก unit มี SRP ชัดเจน
 
 1. แยก multi-responsibility functions ออกเป็น functions ย่อย
 2. แยก multi-responsibility classes/types ออกเป็น types ย่อยด้วย composition
@@ -56,7 +53,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 4. Update References
 
 > Goal: อัปเดท references ทั้งหมดหลังการเปลี่ยนแปลง
-> Goal: ไม่มี broken imports หรือ references ค้าง
 
 1. ทำ `/edit-relative` เพื่ออัปเดท relative paths, imports, exports, และ references ทั้งหมด
 2. ทำ `/update-reference` เพื่ออัปเดท references ใน global workflows/skills, AGENTS.md, .devin/rules, และ codebase
@@ -66,7 +62,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 5. Verify
 
 > Goal: ตรวจสอบว่า refactor สำเร็จและไม่มี regression
-> Goal: code ผ่าน lint, typecheck, test และ structure ดีขึ้น
 
 1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
 2. ทำ `/run-check` สำหรับ lint, typecheck, scan
@@ -77,7 +72,6 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 6. Report
 
 > Goal: รายงานผล refactor
-> Goal: สื่อสารสิ่งที่เปลี่ยนและสถานะ
 
 1. สร้างตาราง Before/After: file, top-level symbols, public members, SRP status
 2. รายงาน actions ที่ทำ: split, extract, rename, move, reference updates

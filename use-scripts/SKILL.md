@@ -16,7 +16,6 @@ description: สร้าง scripts สำหรับ automate งานด้
 ### 1. Choose Shell And Type
 
 > Goal: เลือก shell/script type ให้เหมาะสม
-> Goal: เลือก tool ที่เหมาะสมที่สุดกับ task
 
 1. ค่าเริ่มต้น: ใช้ `/use-bun-scripts` / `/use-bun-shell` เมื่อ:
    - ต้องการ Bun native APIs สำหรับ automate งาน
@@ -42,7 +41,6 @@ description: สร้าง scripts สำหรับ automate งานด้
 ### 2. Choose Script Location
 
 > Goal: เลือก location สำหรับ script
-> Goal: script อยู่ใน location ที่ถูกต้อง
 
 1. `temp/` — scripts ชั่วคราวที่ workspace root (throwaway, gitignored)
 2. `.devin/scripts/` — scripts ถาวร (committed, เก็บไว้ใช้ซ้ำ)
@@ -52,7 +50,6 @@ description: สร้าง scripts สำหรับ automate งานด้
 ### 3. Create Script
 
 > Goal: เขียน script ตาม standards
-> Goal: เขียน script ที่ reusable และ maintainable
 
 1. เขียนแบบ composable: `createScript()` return state + actions
 2. ใช้ Bun native APIs สำหรับ `.ts` scripts (ดู `/use-bun-shell`, `/follow-bun`)
@@ -65,7 +62,6 @@ description: สร้าง scripts สำหรับ automate งานด้
 ### 4. Test And Execute
 
 > Goal: ทดสอบและรัน script อย่างปลอดภัย
-> Goal: script รันได้โดยไม่เกิด regression
 
 1. รัน script ใน dry run mode เพื่อดูผลลัพธ์
 2. แก้ไข errors ก่อนรันจริง

@@ -9,7 +9,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ## Scope
 
-Use `follow-object-oriented-programming` for the specific tasks and workflows it covers
+ใช้ `follow-object-oriented-programming` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

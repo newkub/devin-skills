@@ -1,6 +1,6 @@
 ---
 name: review-performance
-description: Review performance: network, bundler, memory, and I/O patterns
+description: Review และปรับปรุง performance: network, bundler, memory, and I/O patterns
 ---
 
 ## Goal
@@ -85,6 +85,17 @@ description: Review performance: network, bundler, memory, and I/O patterns
 3. คำนวณ review score เป็น percentage ต่อ dimension และ overall
 4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
+### 8. Improve
+
+> Goal: ปรับปรุง performance ตาม findings
+
+1. ลด network latency: DNS prefetch/preconnect, HTTP/2/HTTP/3, keep-alive, batch requests, ลด payload
+2. Optimize caching: cache headers, TTL, CDN, browser cache, service worker, cache consistency
+3. Optimize runtime: ลด unnecessary computation ใน hot paths, efficient algorithms, code splitting, lazy init
+4. Optimize I/O: streaming แทน loading ทั้งหมด, connection pooling, batching, async I/O
+5. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+6. ทำ `/validate` และ `/run-check` — benchmark before/after — retry (max 3)
+
 ## Rules
 
 ### 1. Skip Conditions
@@ -136,6 +147,7 @@ description: Review performance: network, bundler, memory, and I/O patterns
 - คะแนน review ต่อ dimension: network, bundler, memory, I/O, caching, complexity
 - คะแนน overall performance score
 - ตารางสรุป findings ด้วย `/report-table`
+- ปรับปรุง performance โดยไม่มี regression พร้อม before/after metrics
 - ข้อเสนอแนะ action ถัดไป
 
 *Merged from source review-* skills.*

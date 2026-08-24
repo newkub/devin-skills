@@ -1,76 +1,76 @@
 ---
 name: review-issue
-description: Review any issue for clarity, scope, acceptance criteria, and readiness
+description: ตรวจสอบ issue ใดๆ เพื่อดูความชัดเจน, scope, acceptance criteria และความพร้อม
 ---
 
 ## Goal
 
-Review an issue (file, chat, or external tracker) for quality, clarity, completeness, and readiness before implementation
+ตรวจสอบ issue (ไฟล์, chat หรือ external tracker) เพื่อดูคุณภาพ, ความชัดเจน, ความครบถ้วน และความพร้อมก่อน implementation
 
 ## Scope
 
-Use for any issue source, not just GitHub. Covers title, description, acceptance criteria, scope, dependencies, risks, and actionable next steps. Does not edit the issue unless asked.
+ใช้สำหรับ issue source ใดๆ ไม่ใช่แค่ GitHub ครอบคลุม title, description, acceptance criteria, scope, dependencies, risks และ next steps ที่นำไปปฏิบัติได้ ไม่แก้ไข issue เว้นแต่ได้รับการร้องขอ
 
 ## Execute
 
 ### 1. Collect Issue Content
-> Goal: get the full issue text and context
+> Goal: รับข้อความและ context ของ issue แบบเต็ม
 
-1. if the user provides an issue file or path, `read` it
-2. if the user provides an issue number or URL, use the relevant tool or `ask_user_question` for details
-3. if no issue is provided, `ask_user_question` for the title, body, and source
-4. record the source, author, and any linked PRs or tasks
+1. หากผู้ใช้ให้ไฟล์หรือ path ของ issue ให้ `read` มัน
+2. หากผู้ใช้ให้หมายเลขหรือ URL ของ issue ให้ใช้ tool ที่เกี่ยวข้องหรือ `ask_user_question` เพื่อขอรายละเอียด
+3. หากไม่มี issue ให้ `ask_user_question` เพื่อขอ title, body และ source
+4. บันทึก source, author และ linked PRs หรือ tasks ใดๆ
 
 ### 2. Check Completeness
-> Goal: confirm the issue has enough information to start work
+> Goal: ยืนยันว่า issue มีข้อมูลเพียงพอที่จะเริ่มงานได้
 
-1. title is concise and describes the problem or goal
-2. a clear `## Goal` or goal statement is present
-3. `## Scope` or boundaries are explicit
-4. acceptance criteria are listed and testable
-5. dependencies, blockers, and related skills are named
-6. environment, version, or context is included if relevant
+1. title กระชับและอธิบายปัญหาหรือเป้าหมาย
+2. มี `## Goal` หรือ goal statement ที่ชัดเจน
+3. `## Scope` หรือขอบเขตระบุชัดเจน
+4. acceptance criteria ระบุเป็นลิสต์และตรวจสอบได้
+5. dependencies, blockers และ related skills ระบุชื่อ
+6. environment, version หรือ context รวมอยู่หากเกี่ยวข้อง
 
 ### 3. Assess Quality
-> Goal: identify clarity and feasibility issues
+> Goal: ระบุปัญหาด้านความชัดเจนและความเป็นไปได้
 
-1. flag vague instructions such as "do the right thing" or "improve" without specifics
-2. flag missing evidence, logs, screenshots, or file references
-3. flag scope creep or multiple unrelated requests in one issue
-4. flag TODO, MOCK, placeholder text that should be implementation-ready
-5. identify duplicate or overlapping issues if known
-6. check that the issue fits the project conventions and global rules
+1. ทำเครื่องหมายคำสั่งที่กำกวม เช่น "do the right thing" หรือ "improve" โดยไม่ระบุรายละเอียด
+2. ทำเครื่องหมาย evidence, logs, screenshots หรือ file references ที่ขาดหาย
+3. ทำเครื่องหมาย scope creep หรือคำขอที่ไม่เกี่ยวข้องกันหลายรายการใน issue เดียว
+4. ทำเครื่องหมายข้อความ TODO, MOCK, placeholder ที่ควรพร้อม implement
+5. ระบุ issues ที่ซ้ำซ้อนหรือทับซ้อนหากทราบ
+6. ตรวจว่า issue สอดคล้องกับ conventions และ global rules ของโปรเจกต์
 
 ### 4. Rate Severity And Recommend
-> Goal: produce an actionable review report
+> Goal: สร้างรายงานการตรวจสอบที่นำไปปฏิบัติได้
 
-1. assign severity: Critical, High, Medium, Low, Info
-2. group findings by severity with quote or reference evidence
-3. recommend next action for each finding: ask for details, split issue, proceed, or use a specific skill
-4. use `report-table` or `report-review` to summarize
-5. run `suggest-next-action`
+1. กำหนด severity: Critical, High, Medium, Low, Info
+2. จัดกลุ่มผลการตรวจตาม severity พร้อม quote หรือ reference evidence
+3. แนะนำ next action สำหรับแต่ละผลการตรวจ: ขอรายละเอียด, แยก issue, ดำเนินการ หรือใช้ skill เฉพาะ
+4. ใช้ `report-table` หรือ `report-review` เพื่อสรุป
+5. รัน `suggest-next-action`
 
 ## Rules
 
 ### 1. Neutrality
-- rate the issue, not the author
-- every finding must include a quote or reference from the issue text
+- ประเมิน issue ไม่ใช่ผู้เขียน
+- ทุกผลการตรวจต้องมี quote หรือ reference จากข้อความ issue
 
 ### 2. No Hidden Edits
-- do not modify the original issue unless the user explicitly asks
-- if suggesting edits, present them as a draft first
+- ห้ามแก้ไข issue ต้นฉบับ เว้นแต่ผู้ใช้ร้องขออย่างชัดเจน
+- หากแนะนำการแก้ไข ให้นำเสนอเป็น draft ก่อน
 
 ### 3. Scope Boundaries
-- if the issue contains multiple unrelated requests, recommend splitting
-- do not add work outside the stated scope
+- หาก issue มีคำขอที่ไม่เกี่ยวข้องกันหลายรายการ ให้แนะนำการแยก
+- ห้ามเพิ่มงานนอกเหนือ scope ที่ระบุ
 
 ### 4. Actionable Output
-- every finding must have a concrete recommendation
-- output must include overall readiness: Ready, Needs Clarification, Blocked, or Not Ready
+- ทุกผลการตรวจต้องมีข้อแนะนำที่เป็นรูปธรรม
+- ผลลัพธ์ต้องระบุความพร้อมโดยรวม: Ready, Needs Clarification, Blocked หรือ Not Ready
 
 ## Expected Outcome
 
-- Issue review report with severity, evidence, and recommendations
-- Clear statement of readiness
-- List of missing information or blockers
-- Suggested next action or skill to use
+- รายงานการตรวจสอบ issue พร้อม severity, evidence และข้อแนะนำ
+- ระบุความพร้อมอย่างชัดเจน
+- รายการข้อมูลที่ขาดหายหรือ blockers
+- next action หรือ skill ที่แนะนำให้ใช้

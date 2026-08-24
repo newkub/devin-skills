@@ -9,7 +9,7 @@ description: ตั้งค่า tsdown เป็น library bundler สำห
 
 ## Scope
 
-Use `follow-tsdown` for the specific tasks and workflows it covers
+ใช้ `follow-tsdown` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

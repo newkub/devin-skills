@@ -16,7 +16,6 @@ description: วิเคราะห์และควบคุม time complex
 ### 1. Identify Critical Paths
 
 > Goal: ระบุ code paths ที่ต้องวิเคราะห์ time complexity
-> Goal: รู้ว่าต้องวิเคราะห์ฟังก์ชันใดบ้าง
 
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อหา hot paths และ functions ที่รับ input ขนาด variable
 2. ระบุ functions ที่ process collections: loops, recursion, nested iterations, sorting, searching
@@ -26,7 +25,6 @@ description: วิเคราะห์และควบคุม time complex
 ### 2. Classify Complexity
 
 > Goal: วิเคราะห์ Big O ของแต่ละ critical path
-> Goal: รู้ time complexity ของทุก critical path
 
 1. วิเคราะห์ loops: single loop = O(n), nested loop = O(n²), binary search = O(log n)
 2. วิเคราะห์ recursion: ใช้ Master Theorem หรือ tree method — ถ้าไม่ชัด → ทำ `/deep-review`
@@ -37,7 +35,6 @@ description: วิเคราะห์และควบคุม time complex
 ### 3. Validate Against Input Bounds
 
 > Goal: ตรวจสอบว่า complexity รับได้กับ input size จริง
-> Goal: ยืนยันว่า code ทำงานได้ภายใน time budget ที่กำหนด
 
 1. ระบุ input size สูงสุดจาก production data หรือ requirements
 2. คำนวณ worst-case operations: input size × complexity factor
@@ -48,7 +45,6 @@ description: วิเคราะห์และควบคุม time complex
 ### 4. Optimize Complexity
 
 > Goal: ลด time complexity ของ paths ที่เกิน budget
-> Goal: ทุก critical path อยู่ใน time budget
 
 1. เปลี่ยน data structure: array → hash map (O(n) → O(1) lookup), array → sorted array (O(n) → O(log n) search)
 2. ลด nested loops: ใช้ hash map แทน inner loop, ใช้ two-pointer technique, ใช้ sliding window
@@ -60,7 +56,6 @@ description: วิเคราะห์และควบคุม time complex
 ### 5. Verify With Benchmarks
 
 > Goal: ทดสอบว่า complexity จริงตรงกับการวิเคราะห์
-> Goal: ยืนยัน empirical performance ตรงกับ theoretical complexity
 
 1. ทำ `/run-bench` กับ input sizes หลายระดับ: small, medium, large, worst-case
 2. ตรวจว่า execution time เติบโตตาม complexity ที่วิเคราะห์ — เช่น O(n²) ต้องเติบโต 4× เมื่อ input 2×

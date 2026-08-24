@@ -16,7 +16,6 @@ description: Format terminal reports with ANSI colors, progress bars, and status
 ### 1. Collect Status
 
 > Goal: รวบรวมข้อมูลทีต้องรายงาน
-> Goal: มีข้อมูลสถานะครบ
 
 1. อ่าน logs หรือ status จาก file/stdout
 2. ระบุ categories ของข้อมูล
@@ -25,7 +24,6 @@ description: Format terminal reports with ANSI colors, progress bars, and status
 ### 2. Format With ANSI
 
 > Goal: จัดรูปแบบด้วย ANSI escape codes
-> Goal: terminal output ชัดเจน
 
 1. ใช้สี green สำหรับ success, red สำหรับ error, yellow สำหรับ warning, blue สำหรับ info
 2. ใช้ bold สำหรับ headers
@@ -35,7 +33,6 @@ description: Format terminal reports with ANSI colors, progress bars, and status
 ### 3. Render Summary
 
 > Goal: แสดงสรุปด้านบน
-> Goal: user เห็นภาพรวมก่อนรายละเอียด
 
 1. สรุปจำนวนรายการตาม status
 2. แสดง key findings สั้นๆ

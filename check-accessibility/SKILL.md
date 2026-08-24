@@ -9,7 +9,7 @@ description: ตรวจสอบ accessibility ตามมาตรฐาน 
 
 ## Scope
 
-Use `check-accessibility` for the specific tasks and workflows it covers
+ใช้ `check-accessibility` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

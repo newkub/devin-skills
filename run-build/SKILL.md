@@ -16,15 +16,13 @@ description: รัน build process อย่างเป็นระบบเ�
 ### 1. Optimize Build
 
 > Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
-> Goal: build config และ dependencies พร้อมสำหรับ build ที่เร็วและเล็ก
 
-1. ทำ `/improve-efficiency` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-2. ถ้า `/improve-efficiency` ล้มเหลว → stop และ report
+1. ทำ `/review-efficiency` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
+2. ถ้า `/review-efficiency` ล้มเหลว → stop และ report
 
 ### 2. Typecheck
 
 > Goal: ตรวจสอบ TypeScript types ก่อน build
-> Goal: ไม่ให้ build fail จาก type errors
 
 1. ทำ `/run-typecheck` เพื่อตรวจสอบ TypeScript types
 2. ถ้ามี type errors → ทำ `/resolve-errors` แล้ว retry ตั้งแต่ `/run-typecheck` (max 3 → stop)
@@ -32,7 +30,6 @@ description: รัน build process อย่างเป็นระบบเ�
 ### 3. Install Dependencies
 
 > Goal: ติดตั้ง dependencies ที่จำเป็น
-> Goal: dependencies พร้อมสำหรับ build
 
 1. รัน `bun install`
 2. ตรวจสอบว่า dependencies ติดตั้งครบถ้วน
@@ -40,14 +37,12 @@ description: รัน build process อย่างเป็นระบบเ�
 ### 4. Clean Build Artifacts
 
 > Goal: ลบ artifacts เก่าเพื่อ build ใหม่
-> Goal: build ไม่มี artifacts หรือ cache เก่าปะปน
 
 1. ทำ `/run-clean` เพื่อลบ build artifacts และ cache เก่า
 
 ### 5. Execute Build
 
 > Goal: รัน build command ตาม package manifest
-> Goal: build สำเร็จหรือได้ error ที่ชัดเจน
 
 1. รัน `bun run build` หรือ build script ที่กำหนด
 2. บันทึกเวลาที่ใช้
@@ -56,7 +51,6 @@ description: รัน build process อย่างเป็นระบบเ�
 ### 6. Verify Output
 
 > Goal: ตรวจสอบ build artifacts
-> Goal: output ถูกต้องและพร้อมใช้
 
 1. ตรวจสอบว่า build artifacts ถูกสร้าง
 2. ตรวจสอบ file size และจำนวน output files ที่เหมาะสม
@@ -64,7 +58,6 @@ description: รัน build process อย่างเป็นระบบเ�
 ### 7. Report
 
 > Goal: สรุปผล build
-> Goal: ผู้ใช้รู้ผลลัพธ์และ next action
 
 1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
 2. รัน `/report-ansi` เพื่อแสดงสรุปผลลัพธ์
@@ -73,7 +66,7 @@ description: รัน build process อย่างเป็นระบบเ�
 
 ### 1. Build Order
 
-- Optimize: ทำ `/improve-efficiency` ก่อนเริ่ม
+- Optimize: ทำ `/review-efficiency` ก่อนเริ่ม
 - Typecheck: ทำ `/run-typecheck` ก่อน build
 - Install: ติดตั้ง dependencies
 - Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า
@@ -107,7 +100,7 @@ title: Run Build
 description: รัน build process สำหรับ production-ready artifacts
 auto_execution_mode: 3
 related:
-  - /improve-efficiency
+  - /review-efficiency
   - /run-typecheck
   - /run-clean
   - /resolve-errors
@@ -126,7 +119,7 @@ related:
 ### 1. Optimize Build
 > Goal: build config พร้อม
 
-1. ทำ `/improve-efficiency`
+1. ทำ `/review-efficiency`
 
 ### 2. Typecheck
 > Goal: ไม่มี type errors

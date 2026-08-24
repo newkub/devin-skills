@@ -9,7 +9,7 @@ description: ตั้งค่า Cargo สำหรับ automated releases �
 
 ## Scope
 
-Use `follow-release-crates` for the specific tasks and workflows it covers
+ใช้ `follow-release-crates` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

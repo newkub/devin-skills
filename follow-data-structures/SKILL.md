@@ -16,7 +16,6 @@ description: เลือกและใช้งาน data structures ตา�
 ### 1. Analyze Data Access Patterns
 
 > Goal: เข้าใจวิธีทีข้อมูลถูกใช้
-> Goal: ระบุ operations หลัก
 
 1. ระบุ operations ทีต้องทำบ่อย (insert, delete, search, access, traverse)
 2. ระบุ order ของข้อมูล (sorted, random, LIFO, FIFO)
@@ -26,7 +25,6 @@ description: เลือกและใช้งาน data structures ตา�
 ### 2. Choose Data Structure
 
 > Goal: เลือก data structure ตาม complexity ของ operations
-> Goal: ได้ structure ทีมี cost ต่ำสำหรับ use case
 
 1. ใช้ Array/Vector สำหรับ random access บ่อย
 2. ใช้ Linked List ถ้า insert/delete บ่อยตรงกลาง
@@ -38,7 +36,6 @@ description: เลือกและใช้งาน data structures ตา�
 ### 3. Consider Language And Libraries
 
 > Goal: ใช้สิ่งที ecosystem มีให้
-> Goal: ไม่ implement ซ้ำ
 
 1. ใช้ built-in types ก่อน (array, map, set, list)
 2. ใช้ libraries เชื่อถือได้สำหรับ tree/graph
@@ -48,7 +45,6 @@ description: เลือกและใช้งาน data structures ตา�
 ### 4. Implement And Encapsulate
 
 > Goal: สร้าง abstraction ที่เหมาะสม
-> Goal: โค้ดใช้งานง่ายและปลอดภัย
 
 1. สร้าง class/type ทีซ่อน internal representation
 2. ให้ methods ชัดเจนตาม operations ทีต้องการ
@@ -58,7 +54,6 @@ description: เลือกและใช้งาน data structures ตา�
 ### 5. Profile And Refactor
 
 > Goal: ตรวจสอบว่า structure ตอบสนองต่อ use case
-> Goal: ไม่มี bottleneck
 
 1. วัด time ของ operations หลัก
 2. เปรียบเทียบกับ alternative structure ถ้าสงสัย

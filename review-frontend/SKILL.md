@@ -1,6 +1,6 @@
 ---
 name: review-frontend
-description: Review frontend quality including UX/UI, accessibility, responsive, rendering, images, browser compa
+description: Review และปรับปรุง frontend: UX/UI, accessibility, responsive, rendering, images, browser compat
 ---
 
 ## Goal
@@ -84,7 +84,6 @@ Review frontend ของ project ครอบคลุม performance, assets, 
 3. ถ้าเป็น web project → ใช้ `/run-dev` เพื่อ verify dev server ก่อน review
 4. ใช้ `/follow-uxui` เพื่ออ้างอิง UX/UI best practices
 
-
 Review visual hierarchy, typography, color theory, spacing system, และ layout principles
 
 > Goal: ครอบคลุม visual design ตาม `/review-frontend` และ `/follow-uxui`
@@ -102,7 +101,6 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 3. ระบุ accessibility tools ที่มี: `axe-core`, `Lighthouse`, `playwright`, `jest-axe`
 4. ถ้าไม่มี UI → stop และ report
 
-
 ตรวจสอบ keyboard navigation
 
 > Goal: ทุก interaction ใช้ keyboard ได้
@@ -116,14 +114,12 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 1. ทำ `/scan-codebase` เพื่อเข้าใจ responsive structure
 2. ระบุ CSS framework, breakpoint config, responsive utilities, container query support ที่ใช้
 
-
 > Goal: ครอบคลุมทุก responsive dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ responsive patterns
 2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
 3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-
 
 > Goal: ครอบคลุม viewport, breakpoints, mobile-first
 
@@ -133,7 +129,6 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ rendering structure
 2. ระบุ rendering mode (SSR, SSG, CSR, ISR, universal), hydration strategy, rendering framework ที่ใช้
-
 
 > Goal: ครอบคลุมทุก rendering dimension พร้อม review score
 
@@ -201,21 +196,12 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 
 ### Ux Writing Deep Checks
 
-> Goal: เข้าใจ UX copy ทั้งหมดใน codebase
+> Goal: เข้าใจและตรวจสอบ UX copy ทั้งหมดใน codebase
 
 1. ทำ `/scan-codebase` เพื่อหา UX copy ใน components, pages, routes, translation files, และ content files
 2. ระบุ copy sources: hardcoded strings, translation keys, CMS content, design system tokens
 3. จัดประเภท copy ตามฟังก์ชัน: navigation, action, feedback, guidance, error
-4. บันทึกจุดสัมผัส (touchpoints) ที่มีข้อความและ context การใช้งาน
-
-
-> Goal: ตรวจสอบ voice และ tone สม่ำเสมอ
-
-1. ตรวจสอบ brand personality ที่กำหนดไว้: friendly, professional, playful, authoritative
-2. ตรวจสอบ tone ตาม context: success, error, warning, informational, onboarding
-3. ตรวจสอบ voice guidelines: active voice, พูดกับผู้ใช้โดยตรง, หลีกเลี่ยงศัพท์เทคนิค
-4. ตรวจสอบ tone matrix สำหรับแต่ละ context
-
+4. ตรวจสอบ voice และ tone สม่ำเสมอ: brand personality, tone matrix ตาม context, active voice, หลีกเลี่ยงศัพท์เทคนิค
 
 ### Design System Deep Checks
 
@@ -224,4 +210,40 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 1. ทำ `/scan-codebase` เพื่อเข้าใจ design system structure
 2. ระบุ CSS framework, design token system (CSS variables, Tailwind theme, UnoCSS theme), dark mode strategy, component library ที่ใช้
 
-*Some details from merged source skills were condensed to keep the skill under 250 lines.*
+### 6. Improve
+
+> Goal: ปรับปรุง frontend ตาม findings
+
+1. ปรับ UX writing, accessibility (WCAG 2.1 AA), SEO, visual design, responsive ตาม findings
+2. Optimize assets (modern formats, lazy loading), rendering (memoization, code splitting), battery
+3. ทำ `/validate` และ `/run-check` — ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry (max 3)
+
+## Rules
+
+### 1. Evidence First
+
+- ทุก finding ต้องมี file path และ line number
+- ห้ามเดา issues โดยไม่มี evidence
+- ใช้ tools หรือ scripts ก่อน manual inspection
+
+### 2. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- แยก review process จาก fix process
+
+### 3. Scope Control
+
+- review เฉพาะ frontend scope ที่ระบุ
+- ถ้าพบ issues นอก scope → รายงาน ไม่แก้
+
+### 4. Formatting
+
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- รายงานเป็นตารางด้วย `/report-table`
+
+## Expected Outcome
+
+- รายงาน findings พร้อม evidence: file, line, severity
+- ครอบคลุม performance, assets, hydration, rendering, UX/UI, accessibility, responsive, browser compat, CSS, UX writing, design system
+- review score คำนวณจาก severity weighted average
+- ปรับปรุง frontend ตาม findings โดยไม่มี regression

@@ -5,11 +5,11 @@ description: Setup
 
 ## Goal
 
-Setup
+ตั้งค่า
 
 ## Scope
 
-Use `follow-build-packages` for the specific tasks and workflows it covers
+ใช้ `follow-build-packages` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

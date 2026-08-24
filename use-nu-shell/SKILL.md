@@ -16,7 +16,6 @@ description: ใช้ Nushell สำหรับ shell commands, structured dat
 ### 1. Check Nushell Installation
 
 > Goal: ตรวจสอบและติดตั้ง `nu`
-> Goal: ยื่นยันว่ามี `nu` พร้อมใช้
 
 1. รัน `nu --version`
 2. ถ้าไม่มา ให้ติดตั้ง:
@@ -29,7 +28,6 @@ description: ใช้ Nushell สำหรับ shell commands, structured dat
 ### 2. Run Commands With Nushell
 
 > Goal: รันคำสั่งด้วย `nu`
-> Goal: execute commands อย่างถูกต้อง
 
 1. คำสั่งเดี่ยว: `nu -c '<command>'`
 2. สคริปต์: `nu script.nu`
@@ -41,7 +39,6 @@ description: ใช้ Nushell สำหรับ shell commands, structured dat
 ### 3. Use Pipelines And Filters
 
 > Goal: ใช้ pipeline และ filters ของ `nu`
-> Goal: ประมวลผล data อย่างมีประสิทธิภาพ
 
 1. pipeline: `<input> | <filter> | <output>` เช่น `ls | where size > 10kb | sort-by size`
 2. `$in` สำหรับ pipeline input
@@ -52,7 +49,6 @@ description: ใช้ Nushell สำหรับ shell commands, structured dat
 ### 4. Write Nushell Scripts
 
 > Goal: เขียนสคริปต์สำหรับ automation
-> Goal: scripts reusable และ maintainable
 
 1. ใช้ `def` สำหรับ custom commands
 2. ใช้ `let` สำหรับ immutable variables และ `mut` สำหรับ mutable
@@ -64,7 +60,6 @@ description: ใช้ Nushell สำหรับ shell commands, structured dat
 ### 5. Integrate With Use Scripts
 
 > Goal: เชื่อมต่อกับ `/use-scripts`
-> Goal: scripts ทำงานร่วมกับ automation pipeline ได้
 
 1. ใช้ `nu` สำหรับ structured data pipelines
 2. ตั้ง `dryRun` option ในทุก script

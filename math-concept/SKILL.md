@@ -16,7 +16,6 @@ description: คู่มือคณิตศาสตร์สำหรับ 
 ### 1. Explore Concepts
 
 > Goal: เรียนรู้ concepts ที่เกี่ยวข้อง
-> Goal: เข้าใจพื้นฐานคณิตศาสตร์สำหรับ software
 
 1. อ่านเอกสารหรือ resources ที่เชื่อถือได้สำหรับ concepts ที่เกี่ยวข้อง
 2. สรุป concepts: discrete math, linear algebra, information theory, set theory, algorithm complexity
@@ -25,7 +24,6 @@ description: คู่มือคณิตศาสตร์สำหรับ 
 ### 2. Apply Mathematics
 
 > Goal: ประยุกต์ใช้คณิตศาสตร์กับปัญหา
-> Goal: นำ concepts ไปใช้จริงใน code
 
 1. ระบุ domain ที่ต้องการแก้ไข
 2. เลือก concepts ที่เหมาะสม

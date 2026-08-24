@@ -16,7 +16,6 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 ### 1. Assess Git State
 
 > Goal: ตรวจสอบ git state ก่อน
-> Goal: ยืนยันว่า git ใช้ไม่ได้จริง
 
 1. รัน `git status` ใน repo ที่เสียหาย
 2. ดู `git log -1 --format='%H %ci %s'` เพื่อรู้ last commit time
@@ -26,7 +25,6 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 ### 2. Inspect Devin Session History
 
 > Goal: อ่านประวัติ Devin CLI
-> Goal: รู้ว้า agent ทำอะไรไปก่อนเสียหาย
 
 1. ดูโฟลเดอร์ `C:\Users\Veerapong\AppData\Roaming\devin\cli\summaries`
 2. หาไฟล์ `history_*.md` ล่าสุด (เรียงตามชื่อหรือ modified time)
@@ -38,7 +36,6 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 ### 3. Correlate With Last Commit
 
 > Goal: เทียบเวลา
-> Goal: รู้ช่องโหว่ระหว่าง last commit กับช่วงทีเสียหาย
 
 1. บันทึก last commit time จาก step 1
 2. บันทึกเวลาของไฟล์เสียหาย (`ls -la` หรือ `Get-ChildItem`)
@@ -48,7 +45,6 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 ### 4. Report Findings
 
 > Goal: รายงานสิ่งที่พบ
-> Goal: ผู้ใช้ทราบว่าเกิดอะไรขึ้นและทางเลือกกู้คืน
 
 1. สรุปไฟล์ที่เสียหายและสาเหตุทีคาดการณ์
 2. ระบุ last commit time และสถานะ git
@@ -59,7 +55,6 @@ description: กู้คืนไฟล์ที่เสียหายรุ�
 ### 5. Ask Next Step
 
 > Goal: ถาม user ว่าจะทำต่ออย่างไร
-> Goal: ไม่ทำ action เสี่ยงโดยไม่ได้รับอนุญาต
 
 1. ใช้ `ask-me` skill เพื่อถาม user ด้วยตัวเลือกชัดเจน
 2. ตัวเลือกเช่น:

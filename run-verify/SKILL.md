@@ -16,7 +16,6 @@ description: รัน verify task เพื่อตรวจสอบคุณ
 ### 1. Setup Tasks
 
 > Goal: ตั้งค่า scripts และ config ก่อนรัน verify
-> Goal: มี verify script และ config พร้อมรัน
 
 1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐานใน package manifest
 2. ถ้า project ยังไม่มี verify script ให้สร้างตามมาตรฐาน
@@ -26,7 +25,6 @@ description: รัน verify task เพื่อตรวจสอบคุณ
 ### 2. Run Checks
 
 > Goal: รัน scan, lint, typecheck และ test แบบ parallel เพื่อตรวจสอบคุณภาพโค้ด
-> Goal: ไม่มี scan, lint, typecheck หรือ test errors
 
 1. `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-test`
 2. ถ้า step ใด fail ให้เก็บ errors ทั้งหมดก่อนแก้ เพื่อลด rework
@@ -35,7 +33,6 @@ description: รัน verify task เพื่อตรวจสอบคุณ
 ### 3. Fix Errors
 
 > Goal: แก้ไขข้อผิดพลาดจนกว่าจะผ่านทั้งหมด
-> Goal: ไม่มี errors เหลือ
 
 1. ทำ `/resolve-errors` เพื่อแก้ไขข้อผิดพลาดทั้งหมดที่พบจาก Step 2
 2. รัน verify ซ้ำ — retry max 3 → stop/report
@@ -43,7 +40,6 @@ description: รัน verify task เพื่อตรวจสอบคุณ
 ### 4. Run Build
 
 > Goal: รัน build เพื่อสร้าง production-ready artifacts
-> Goal: Build สำเร็จไม่มี errors
 
 1. ทำ `/run-build` เพื่อสร้าง production-ready artifacts
 2. ถ้าพบ build errors ให้ทำ `/resolve-errors` แล้วรันซ้ำ — retry max 3 → stop/report

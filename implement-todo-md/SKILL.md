@@ -9,7 +9,7 @@ description: แปลง TODO ในไฟล์ Markdown เป็น producti
 
 ## Scope
 
-Use `implement-todo-md` for the specific tasks and workflows it covers
+ใช้ `implement-todo-md` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

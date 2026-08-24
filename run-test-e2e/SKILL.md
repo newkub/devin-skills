@@ -16,7 +16,6 @@ description: รัน E2E tests ด้วย Playwright หรือ Cypress
 ### 1. Check Test Framework
 
 > Goal: ตรวจสอบ E2E test framework ที่ใช้
-> Goal: รู้ framework, config, และ test files
 
 1. ตรวจสอบ `playwright.config.ts` สำหรับ Playwright
 2. ตรวจสอบ `cypress.config.ts` สำหรับ Cypress
@@ -26,7 +25,6 @@ description: รัน E2E tests ด้วย Playwright หรือ Cypress
 ### 2. Install Browser Dependencies
 
 > Goal: ติดตั้ง browser dependencies ถ้าจำเป็น
-> Goal: Browsers พร้อมสำหรับรัน tests
 
 1. รัน `bunx playwright install` สำหรับ Playwright
 2. รัน `bunx playwright install-deps` สำหรับ system dependencies
@@ -35,7 +33,6 @@ description: รัน E2E tests ด้วย Playwright หรือ Cypress
 ### 3. Run E2E Tests
 
 > Goal: รัน E2E tests ตาม framework
-> Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. ถ้าใช้ Playwright: รัน `bunx playwright test`
 2. ถ้าใช้ Cypress: รัน `bunx cypress run`
@@ -45,7 +42,6 @@ description: รัน E2E tests ด้วย Playwright หรือ Cypress
 ### 4. Review Test Results
 
 > Goal: ตรวจสอบผลลัพธ์จากการทดสอบ
-> Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework
 2. ตรวจสอบ failed tests

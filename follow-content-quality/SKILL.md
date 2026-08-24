@@ -16,7 +16,6 @@ description: จัดรูปแบบและคุณภาพเนื้�
 ### 1. Simplify And Remove Redundancy
 
 > Goal: ทำเนื้อหาให้กระชับ ลบความซ้ำซ้อน และรวมส่วนที่เหมือนกัน
-> Goal: เนื้อหากระชับ ไม่ซ้ำซ้อน เก็บ context ครบ
 
 1. ทำ `/simplify` เพื่อลดความซับซ้อนโดยไม่สูญเสีย context — ลบ sections ที่ไม่จำเป็น รวม sections ที่คล้ายกัน
 2. ลบข้อมูลที่ซ้ำซ้อนระหว่าง Execute และ Rules — ใช้ references แทนการเขียนซ้ำ — รวบรวมรายละเอียดที่เหมือนกันไว้ที่เดียว
@@ -25,7 +24,6 @@ description: จัดรูปแบบและคุณภาพเนื้�
 ### 2. Make Content Explicit
 
 > Goal: เขียน content ให้ชัดเจน explicit มากกว่า implicit
-> Goal: ทุกประโยคตีความได้ทางเดียว ไม่กำกวม
 
 1. ตรวจสอบ active voice, ระบุ subject/object ชัดเจน, หลีกเลี่ยงคำกำกวม (should, could, might) — เปลี่ยนเป็นคำเฉพาะเจาะจง
 2. ให้ตัวอย่าง concrete แทน abstract, ระบุ exceptions และ edge cases, อธิบาย "why" ไม่ใช่แค่ "what"
@@ -35,7 +33,6 @@ description: จัดรูปแบบและคุณภาพเนื้�
 ### 3. Improve Content Dimensions
 
 > Goal: ปรับปรุง content ครบทุกมิติ
-> Goal: ครอบคลุม readability, completeness, correctness, accessibility, maintainability, relevance, actionability
 
 1. ตรวจสอบ Readability, Completeness, Correctness — explanations ชัดเจน/formatting เหมาะสม, รวม use cases/examples/edge cases, ตรวจสอบ structure/flow/assumptions
 2. ตรวจสอบ Accessibility, Maintainability, Relevance, Actionability — screen reader friendly/alt text, organized structure/consistent patterns, address audience needs, actionable steps/clear instructions
@@ -46,7 +43,6 @@ description: จัดรูปแบบและคุณภาพเนื้�
 ### 4. Validate Structure And Format
 
 > Goal: ตรวจสอบโครงสร้างและรูปแบบให้สม่ำเสมอ
-> Goal: โครงสร้างสม่ำเสมอ hierarchy ชัดเจน format ถูกต้อง
 
 1. ตรวจสอบ spacing/indentation/headings สม่ำเสมอ, หัวขอ่ม Title Case ภาษาอังกฤษ รายการภาษาไทย, grouping และ hierarchy logical
 2. ถ้า format ไม่ผ่าน → fix และ recheck (max 3 → stop/report)

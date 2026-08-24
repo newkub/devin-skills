@@ -16,7 +16,6 @@ description: สร้าง standalone Slidev project ด้วย CLI ใน�
 ### 1. Define Project
 
 > Goal: กำหนดชื่อและตำแหน่ง project
-> Goal: รู้ชื่อและตำแหน่งที่จะสร้าง
 
 1. รับชื่อ project และตำแหน่งที่ต้องการสร้างจากผู้ใช้
 2. ตรวจสอบว่าตำแหน่งนั้นว่างหรือไม่ — ถ้ามีอยู่แล้ว → ถามผู้ใช้ก่อนดำเนินการ
@@ -25,7 +24,6 @@ description: สร้าง standalone Slidev project ด้วย CLI ใน�
 ### 2. Scaffold Project
 
 > Goal: สร้าง Slidev project ด้วย CLI
-> Goal: project structure สร้างสำเร็จพร้อม dependencies
 
 1. รัน `bun create slidev@latest {project-name}` ที่ตำแหน่งที่กำหนด
 2. เลือก template เมื่อ CLI ถาม (default, seriph, apple-basic, bricks, academic)
@@ -35,7 +33,6 @@ description: สร้าง standalone Slidev project ด้วย CLI ใน�
 ### 3. Configure Headmatter
 
 > Goal: ตั้งค่า headmatter ใน `slides.md`
-> Goal: headmatter มีค่าที่เหมาะสมสำหรับ presentation
 
 1. ตั้ง `theme` ตาม template ที่เลือก
 2. ตั้ง `title` และ `info` ให้สื่อเนื้อหา
@@ -52,7 +49,6 @@ description: สร้าง standalone Slidev project ด้วย CLI ใน�
 ### 4. Write Slide Content
 
 > Goal: เขียนเนื้อหา slides ตามต้องการ
-> Goal: slides มีโครงสร้างชัดเจน เริ่มต้นด้วย cover จบด้วย end
 
 1. สร้าง title slide ด้วย `layout: cover`
 2. เขียน content slides แต่ละ slide หนึ่ง concept

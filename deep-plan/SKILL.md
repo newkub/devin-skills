@@ -20,14 +20,12 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. Review Codebase Everything
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
-> Goal: เข้าใจสถานะปัจจุบันของ codebase ครบทุกมิติก่อนลงมือวางแผน
 
 1. ทำ `/review-codebase` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Deep Analysis And Thinking
 
 > Goal: ทำ `/deep-analyze`, `/deep-thinking`, `/deep-pondering`, `/deep-validate`, และ `/deep-research` เพื่อเตรียมการวางแผน
-> Goal: เข้าใจปัญหาหลายมิติก่อนวางแผน
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ปัจจุบันหลายมิติ: architecture, quality, dependencies, risks
 2. ทำ `/deep-thinking` เพื่อวางแผนการวางแผนอย่างเป็นระบบ
@@ -113,7 +111,6 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 ### 9. Validate And Report
 
 > Goal: ตรวจสอบแผนและรายงาน
-> Goal: แผนผ่าน validation และพร้อม implement
 
 1. ยืนยัน dependencies ไม่ conflict กับ existing versions
 2. ตรวจสอบทุก task มี single responsibility และ test ได้

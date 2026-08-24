@@ -9,7 +9,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 
 ## Scope
 
-Use `use-bun-scripts` for the specific tasks and workflows it covers
+ใช้ `use-bun-scripts` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

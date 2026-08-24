@@ -16,7 +16,6 @@ description: ตรวจสอบและรายงานไฟล์ที�
 ### 1. Create Script
 
 > Goal: สร้าง script PowerShell สำหรับตรวจสอบไฟล์ยาว
-> Goal: สร้าง script ที่สามารถรันซ้ำได้
 
 1. ตรวจสอบว่ามี `scripts/check-long-files.ps1` อยู่แล้วหรือไม่
 2. ถ้าไม่มี ให้สร้าง script ด้วยเนื้อหาด้านล่าง
@@ -25,7 +24,6 @@ description: ตรวจสอบและรายงานไฟล์ที�
 ### 2. Run Script
 
 > Goal: รัน script ที่สร้างไว้
-> Goal: รายงานไฟล์ที่ยาวกว่า threshold ที่กำหนด
 
 1. รันคำสั่ง `pwsh -NoProfile -File scripts/check-long-files.ps1`
 2. รับผลลัพธ์: รายการไฟล์ที่เกิน threshold เรียงจากมากไปน้อย

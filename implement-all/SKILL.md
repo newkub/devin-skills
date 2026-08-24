@@ -16,7 +16,6 @@ description: ตรวจสอบ implementation completeness ของ areas �
 ### 1. Identify Incomplete Implementations
 
 > Goal: ระบุ TODO, MOCK, FAKE, STUB, placeholder ใน areas ที่ review
-> Goal: รู้ว่ามี incomplete implementations อะไรบ้างใน scope ที่ review
 
 1. รวบรวม findings จาก review ที่ระบุ incomplete implementations
 2. ทำ `/scan-codebase`, ทำ `/deep-analyze` — ค้นหา TODO, MOCK, FAKE, STUB, placeholder ใน scope ที่ review
@@ -25,7 +24,6 @@ description: ตรวจสอบ implementation completeness ของ areas �
 ### 2. Convert Incomplete To Production
 
 > Goal: แปลง incomplete implementations เป็น production code
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่ใน scope ที่ review
 
 1. ทำ `/implement-comment-todo`, `/implement-mock`, `/implement-todo-md` — แปลง TODO comments, mock implementations, และ TODO markdown เป็น production code
 2. ถ้าพบ missing features → ทำ `/implement-features-to-mvp` เพื่อ implement MVP features
@@ -34,7 +32,6 @@ description: ตรวจสอบ implementation completeness ของ areas �
 ### 3. Verify And Report
 
 > Goal: ตรวจสอบว่าไม่มี incomplete implementations เหลือ และรายงานผล
-> Goal: ยืนยัน implementation completeness และรายงาน
 
 1. ทำ `/review-codebase` เพื่อ verify ว่าไม่มี incomplete implementations เหลือใน scope
 2. ถ้าพบ incomplete implementations ใหม่ → กลับไปทำ Step 2 (max 3 → stop/report)

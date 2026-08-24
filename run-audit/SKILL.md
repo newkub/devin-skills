@@ -9,7 +9,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 
 ## Scope
 
-Use `run-audit` for the specific tasks and workflows it covers
+ใช้ `run-audit` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

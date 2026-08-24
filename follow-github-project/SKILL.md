@@ -16,7 +16,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 1. Verify Authentication And Scope
 
 > Goal: ตรวจสอบสิทธิ์ก่อนใช้ `gh project`
-> Goal: ยืนยันว่า token มี scope `project` พร้อมใช้งาน
 
 1. รัน `gh auth status` เพื่อตรวจสอบ scopes ปัจจุบัน
 2. ถ้าไม่มี `project` scope ให้รัน `gh auth refresh -s project`
@@ -25,7 +24,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 2. List And View Projects
 
 > Goal: ค้นหาและดูรายละเอียด project
-> Goal: ระบุ project ที่ต้องการทำงาน
 
 1. รัน `gh project list --owner "@me"` เพื่อดู projects ของตัวเอง
 2. รัน `gh project list --owner <org>` เพื่อดู projects ขององค์กร
@@ -35,7 +33,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 3. Create And Edit Projects
 
 > Goal: สร้างหรือปรับแต่ง project
-> Goal: จัดการ project ด้วย CLI
 
 1. รัน `gh project create --title "<title>" --owner "@me"` เพื่อสร้าง project
 2. ถ้าอยู่บน TTY และไม่ได้ระบุ flags ที่จำเป็น `gh` จะถามแบบ interactive
@@ -47,7 +44,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 4. Manage Project Items
 
 > Goal: เพิ่ม ลบ หรือแก้ไข items ใน project
-> Goal: จัดการ issues, PRs และ draft items ใน project
 
 1. รัน `gh project item-list <number> --owner "@me"` เพื่อดู items
 2. รัน `gh project item-list <number> --query "assignee:@me is:open"` เพื่อกรอง items
@@ -60,7 +56,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 5. Inspect And Create Fields
 
 > Goal: ดูหรือสร้าง custom fields
-> Goal: ทำงานกับ custom fields ของ project
 
 1. รัน `gh project field-list <number> --owner "@me"` เพื่อดู fields และ field IDs
 2. รัน `gh project field-create <number> --name "<name>" --data-type "TEXT"` เพื่อสร้าง field
@@ -69,7 +64,6 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 ### 6. Use Output And Automation
 
 > Goal: ใช้ output ของ `gh project` กับ scripts
-> Goal: นำ output ไปใช้ต่อใน pipeline หรือ scripts
 
 1. ใช้ `--json` หรือ `--jq <expression>` เพื่อรับ output เป็น JSON
 2. ใช้ `--template "<go-template>"` เพื่อจัดรูปแบบ output

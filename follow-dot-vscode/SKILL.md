@@ -38,7 +38,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 1. Analyze Existing .vscode
 
 > Goal: อ่านและวิเคราะห์ `.vscode` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
-> Goal: รู้ไฟล์ที่มี ไฟล์ที่ขาด และไฟล์ที่ต้องอัปเดต
 
 1. อ่าน `.vscode/` directory ทั้งหมด
 2. จัดทำรายการไฟล์ที่มีอยู่และไฟล์ที่ขาด
@@ -49,7 +48,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 2. Analyze Project
 
 > Goal: วิเคราะห์ project เพื่อกำหนด settings ที่จำเป็น
-> Goal: รู้ project type, tech stack, package manager, และ settings ที่ต้องมี
 
 1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
 2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
@@ -62,7 +60,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 3. Setup Settings.json
 
 > Goal: สร้างหรืออัปเดต `settings.json` ตาม tech stack ของ project
-> Goal: Workspace settings ตรง tech stack และเพิ่ม productivity
 
 1. ทำ `/learn-from-web` จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
 2. กำหนด formatter settings:
@@ -96,7 +93,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 4. Setup Extensions.json
 
 > Goal: สร้างหรืออัปเดต `extensions.json` พร้อม recommended extensions
-> Goal: Extensions ครบตาม tech stack ช่วยเพิ่ม productivity
 
 1. ระบุ extensions ตาม tech stack:
    - Formatter/Linter: `biomejs.biome` (Biome) หรือ `dbaeumer.vscode-eslint` (ESLint)
@@ -114,7 +110,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 5. Setup Launch.json
 
 > Goal: สร้างหรืออัปเดต `launch.json` สำหรับ debug configurations
-> Goal: Debug configs ครบสำหรับแต่ละ app ใน project
 
 1. สร้าง debug config สำหรับ browser app (SolidJS/Vue/React):
    - URL: `http://localhost:3000` (หรือ port ตาม app)
@@ -129,7 +124,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 6. Setup Tasks.json
 
 > Goal: สร้างหรืออัปเดต `tasks.json` สำหรับ task configurations
-> Goal: Tasks ครบสำหรับ build, dev, test, lint, typecheck
 
 1. สร้าง task สำหรับ `dev` (รัน dev server)
 2. สร้าง task สำหรับ `build` (production build)
@@ -144,7 +138,6 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 7. Validate And Update References
 
 > Goal: ตรวจสอบความถูกต้องและอัปเดต references
-> Goal: ทุกไฟล์ถูกต้อง ไม่มี broken references
 
 1. ตรวจสอบ JSON syntax ของทุกไฟล์ใน `.vscode/`
 2. ตรวจสอบว่า settings ไม่ขัดแยงกับ `biome.jsonc`, `tsconfig.json`, และ `turbo.json`

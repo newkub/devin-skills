@@ -9,7 +9,7 @@ description: ขอสูตรคณิตศาสตร์ที่กระ�
 
 ## Scope
 
-Use `follow-request-math-formular` for the specific tasks and workflows it covers
+ใช้ `follow-request-math-formular` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

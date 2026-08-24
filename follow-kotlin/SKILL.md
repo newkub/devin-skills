@@ -16,7 +16,6 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 ### 1. Setup
 
 > Goal: ติดตั้ง dependencies และตั้งค่า project
-> Goal: มี dependencies และ config ครบ
 
 1. ติดตั้ง: Compose Multiplatform, Coroutines, Koin, Ktor, Arrow
 2. ตั้งค่า `build.gradle.kts` พร้อม Kotlin plugin
@@ -25,7 +24,6 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 ### 2. Project Structure
 
 > Goal: จัดโครงสร้างตาม Clean Architecture
-> Goal: โครงสร้าง project เป็น Clean Architecture
 
 1. แบ่งเป็น `data/`, `domain/`, `presentation/`
 2. `domain/` มี pure business logic ไม่มี side effects
@@ -35,7 +33,6 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 ### 3. Core Principles
 
 > Goal: เขียน Kotlin ตาม best practices
-> Goal: โค้ดเป็นไปตาม Kotlin best practices
 
 1. ใช้ Coroutines สำหรับ async operations
 2. ใช้ Koin สำหรับ dependency injection
@@ -46,7 +43,6 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 ### 4. Error Handling
 
 > Goal: จัดการ error ด้วย Arrow Either pattern
-> Goal: error handling เป็น type-safe
 
 1. ใช้ `Either<Error, Success>` สำหรับ operations ที่อาจ fail
 2. ใช้ `Either.catch` สำหรับ exception handling
@@ -55,7 +51,6 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 ### 5. Testing
 
 > Goal: เขียน tests สำหรับทุก layer
-> Goal: มี unit tests ครอบคลุม
 
 1. ใช้ `kotlin.test` หรือ `JUnit 5`
 2. เขียน tests สำหรับ domain layer (pure functions)

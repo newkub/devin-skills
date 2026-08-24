@@ -16,7 +16,6 @@ description: ตั้งค่าและจัดการ license สำห�
 ### 1. Choose License
 
 > Goal: เลือก license ที่เหมาะสมกับ project
-> Goal: รู้ประเภท license ที่จะใช้
 
 1. เลือกจาก common licenses: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause
 2. ดูรายละเอียดที่ `https://choosealicense.com`
@@ -25,7 +24,6 @@ description: ตั้งค่าและจัดการ license สำห�
 ### 2. Create License File
 
 > Goal: สร้าง `LICENSE` file ที่ root directory
-> Goal: มี license file ที่ root directory
 
 1. สร้างไฟล์ `LICENSE` (ไม่มี extension) ที่ root
 2. ระบุ copyright holder และปี
@@ -58,7 +56,6 @@ SOFTWARE.
 ### 3. Update Package Manifest
 
 > Goal: ระบุ license ใน `package.json` หรือ `pyproject.toml`
-> Goal: license ถูกระบุใน package manifest
 
 1. เพิ่ม `"license": "MIT"` ใน `package.json`
 2. หรือ `license = { text = "MIT" }` ใน `pyproject.toml`

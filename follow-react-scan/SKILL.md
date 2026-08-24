@@ -9,7 +9,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ## Scope
 
-Use `follow-react-scan` for the specific tasks and workflows it covers
+ใช้ `follow-react-scan` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

@@ -16,7 +16,6 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 ### 1. List Stashes
 
 > Goal: ดู stashes ทั้งหมดในเครื่อง
-> Goal: รู้ stashes ที่มีและ metadata
 
 1. รัน `git stash list` เพื่อดู stashes ทั้งหมด
 2. ถ้าไม่มี stash → รายงาน "No stashes found" และจบ
@@ -25,7 +24,6 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 ### 2. Collect Stash Details
 
 > Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ stash
-> Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git stash show stash@{n}` สำหรับแต่ละ stash เพื่อดูไฟล์ที่เก็บ
 2. รัน `git stash show stash@{n} --stat` เพื่อดูสถิติ additions/deletions
@@ -35,7 +33,6 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 ### 3. Analyze Stash Content
 
 > Goal: วิเคราะห์เนื้อหาของแต่ละ stash
-> Goal: เข้าใจสิ่งที่เก็บในแต่ละ stash
 
 1. ระบุจำนวนไฟล์ในแต่ละ stash
 2. ระบุ categories ของไฟล์: code, config, docs, test
@@ -45,7 +42,6 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 ### 4. Format Output
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
-> Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:

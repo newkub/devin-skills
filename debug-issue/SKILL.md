@@ -17,7 +17,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 1. Triage And Define Problem
 
 > Goal: จัดลำดับความสำคัญและเขียนปัญหาให้ชัดเจน
-> Goal: ทราบ priority และปัญหาที่ชัดเจน พร้อม expected/actual/scope
 
 1. ทำ `/follow-incident-triage` เพื่อจัดลำดับความสำคัญและกำหนด action plan
 2. เขียนปัญหาให้ชัดเจน ระบุ: Expected (สิ่งที่ควรเกิด), Actual (สิ่งที่เกิดจริง), Scope (VSCode / OS / app / API)
@@ -26,7 +25,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 2. List Possible Causes
 
 > Goal: สร้าง hypothesis list 3–5 ข้อ
-> Goal: มี hypothesis list ที่ครอบคลุมและไม่เดา
 
 1. สร้าง hypothesis list H = {H₁, H₂, ..., Hₙ} 3–5 ข้อ เช่น: config issue, environment (PATH / runtime), dependency / package, tool version mismatch, user mistake
 2. ถ้าปัญหาเกี่ยวกับ git → ทำ `/git-debug` แทน
@@ -34,7 +32,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 3. Rank By Probability
 
 > Goal: ใช้ Bayesian Inference เพื่อจัดลำดับความเป็นไปได้
-> Goal: พบ top 1–2 hypotheses ที่น่าจะเป็นสาเหตุมากที่สุด
 
 1. กำหนด prior probability P(H) สำหรับแต่ละ hypothesis (0.1–0.9)
 2. ประเมิน likelihood P(E|H) ความน่าจะเป็นที่ evidence เกิดขึ้นถ้า H เป็นจริง
@@ -44,7 +41,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 4. Eliminate Fast
 
 > Goal: ใช้ Information Theory เพื่อเลือก test ที่ให้ข้อมูลมากที่สุด
-> Goal: ตัด hypothesis ที่ไม่ใช่ออกอย่างมีประสิทธิภาพ
 
 1. คำนวณ entropy H(H) = -Σ P(Hᵢ) log₂ P(Hᵢ) ของ hypotheses ปัจจุบัน
 2. สำหรับแต่ละ test T คำนวณ conditional entropy H(H|T)
@@ -57,7 +53,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 5. Isolate Variable
 
 > Goal: เปลี่ยนทีละอย่างเท่านั้นเพื่อยืนยันสาเหตุ
-> Goal: ยืนยันว่า hypothesis ที่เหลือเป็นสาเหตุจริง
 
 1. เปลี่ยนทีละอย่าง: ปิด extension, เปลี่ยน PATH, ใช้ clean terminal, run bare command
 2. ไล่จากบนลงล่าง: UI (VSCode) → Terminal → Shell (pwsh / powershell) → Runtime → OS
@@ -66,7 +61,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 6. Confirm Root Cause
 
 > Goal: ยืนยัน root cause ด้วย 3 เงื่อนไข
-> Goal: ยืนยันได้ว่านี่คือ root cause จริง
 
 1. Reproduce ได้ — สร้างปัญหาซ้ำได้
 2. Fix แล้วหาย — แก้แล้วปัญหาหาย
@@ -75,7 +69,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 7. Perform Root Cause Analysis
 
 > Goal: วิเคราะห์หาสาเหตุหลักอย่างละเอียด
-> Goal: เข้าใจ root cause ในระดับ process
 
 1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
 2. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
@@ -83,7 +76,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 8. Fix And Write Regression Tests
 
 > Goal: แก้ปัญหาที่ root cause และสร้าง regression tests
-> Goal: ปัญหาถูกแก้และมี test ป้องกันการเกิดซ้ำ
 
 1. ทำ `/resolve-errors` เพื่อแก้ปัญหาที่ root cause อย่างเป็นระบบ ใช้ scripts automate เมื่อมีหลายไฟล์
 2. ทำ `/write-test` เพื่อสร้าง regression tests จาก reproduction steps
@@ -93,7 +85,6 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ### 9. Prevent Recurrence
 
 > Goal: ป้องกันการเกิดปัญหาซ้ำ
-> Goal: มี preventive measures สำหรับ future
 
 1. แนะนำ preventive measures: linter rules, type constraints, code review checklist
 2. ทำ `/memorize` เพื่อบันทึก root cause และ prevention สำหรับ future reference

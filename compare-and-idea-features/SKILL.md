@@ -9,7 +9,7 @@ description: เปรียบเทียบกับ competitors และส
 
 ## Scope
 
-Use `compare-and-idea-features` for the specific tasks and workflows it covers
+ใช้ `compare-and-idea-features` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

@@ -9,7 +9,7 @@ description: ใช้ Bun shell สำหรับ execute commands ด้ว�
 
 ## Scope
 
-Use `use-bun-shell` for the specific tasks and workflows it covers
+ใช้ `use-bun-shell` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

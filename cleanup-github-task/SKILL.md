@@ -1,47 +1,47 @@
 ---
 name: cleanup-github-task
-description: Archive or delete tasks in GitHub Projects
+description: เก็บถาวรหรือลบ tasks ใน GitHub Projects
 ---
 
 ## Goal
 
-Remove or archive completed/stale tasks in GitHub Projects
+ลบหรือเก็บถาวร tasks ที่เสร็จแล้ว/ค้างอยู่ใน GitHub Projects
 
 ## Scope
 
-Use for project board cleanup
+ใช้สำหรับทำความสะอาด project board
 
 ## Execute
 
 ### 1. List tasks
-> Goal: list tasks
+> Goal: แสดงรายการ tasks
 
-1. Run gh project item-list with filters
-1. Identify stale or done tasks
+1. รัน `gh project item-list` พร้อม filters
+1. ระบุ tasks ที่ค้างอยู่หรือเสร็จแล้ว
 
 ### 2. Confirm
-> Goal: confirm
+> Goal: ยืนยัน
 
-1. Ask user before archive or delete
+1. ถาม user ก่อนเก็บถาวรหรือลบ
 
 ### 3. Execute
-> Goal: execute
+> Goal: ดำเนินการ
 
-1. Run gh project item-archive or item-delete
-1. Verify with item-list
+1. รัน `gh project item-archive` หรือ `item-delete`
+1. ตรวจสอบด้วย `item-list`
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Summary of cleaned tasks
+1. สรุป tasks ที่ทำความสะอาดแล้ว
 
 ## Rules
 
-- Archive preferred over delete
-- Confirm destructive actions
-- Do not archive in-progress tasks without reason
+- เลือกเก็บถาวรมากกว่าลบ
+- ยืนยัน actions ที่ทำลายข้อมูล
+- ห้ามเก็บถาวร tasks ที่กำลังดำเนินการโดยไม่มีเหตุผล
 
 ## Expected Outcome
 
-- Project board cleaned
-- Archived/deleted tasks reported
+- Project board สะอาด
+- Tasks ที่เก็บถาวร/ลบถูกรายงาน

@@ -20,7 +20,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. Deep Thinking Phase
 
 > Goal: วางแผน debug อย่างเป็นระบบก่อนเริ่ม investigate
-> Goal: มี debug strategy ชัดเจนพร้อม objectives และ dimensions
 
 1. ทำ `/deep-thinking` เพื่อกำหนด debug objectives: อาการ, ความถี่, ผลกระทบ
 2. ระบุ debug dimensions ที่เกี่ยวข้อง: runtime, network, database, UI, config
@@ -30,7 +29,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 2. Reproduce And Define
 
 > Goal: Reproduce ปัญหาและนิยามให้ชัดเจน
-> Goal: reproduce ได้และมีนิยามปัญหาที่ชัดเจน
 
 1. ทำ `/follow-debugging` เพื่อ reproduce ปัญหา ถ้า reproduce ไม่ได้ให้หาเงื่อนไขที่ทำให้เกิด
 2. เขียนนิยามปัญหา: Expected, Actual, Scope, Frequency
@@ -40,7 +38,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 3. Hypothesis Generation
 
 > Goal: สร้าง hypothesis list 3-5 ข้อพร้อม prior probability
-> Goal: มี hypothesis list ที่ครอบคลุมพร้อม probability
 
 1. สร้าง hypothesis H = {H₁, H₂, ..., Hₙ} จากอาการและ environment
 2. กำหนด prior probability P(H) สำหรับแต่ละ hypothesis (0.1-0.9)
@@ -50,7 +47,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 4. Systematic Elimination
 
 > Goal: ใช้ Bayesian Inference และ Information Theory เพื่อตัด hypothesis
-> Goal: เหลือ hypothesis เดียวที่ P(H|E) → 1.0
 
 1. คำนวณ Information Gain สำหรับแต่ละ test ที่ทำได้
 2. เลือก test ที่ให้ Information Gain สูงสุดก่อน
@@ -62,7 +58,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 5. Isolate And Confirm Root Cause
 
 > Goal: ยืนยัน root cause ด้วยการ isolate variable
-> Goal: ยืนยัน root cause ผ่าน 3 เงื่อนไข
 
 1. เปลี่ยนทีละอย่างเท่านั้น: config, dependency, runtime, code
 2. ไล่จากบนลงล่าง: UI → Terminal → Shell → Runtime → OS
@@ -73,7 +68,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 6. Fix At Root Cause
 
 > Goal: แก้ปัญหาที่ root cause ด้วย minimal changes
-> Goal: ปัญหาถูกแก้ที่ root cause ไม่ใช่ symptoms
 
 1. แก้ปัญหาที่ root cause ไม่ใช่ symptoms ใช้ minimal changes ที่สุด
 2. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-reference` อัปเดท references
@@ -83,7 +77,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 7. Regression Tests
 
 > Goal: สร้าง regression tests จาก reproduction steps
-> Goal: มี regression test ที่ fail ก่อน fix และ pass หลัง fix
 
 1. ทำ `/write-test` เพื่อสร้าง test จาก reproduction steps ใน Step 2
 2. ทดสอบว่า test fail ก่อน fix และ pass หลัง fix
@@ -94,7 +87,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 8. Verify And Prevent
 
 > Goal: Verify จนกว่าจะผ่านทุกเงื่อนไขและป้องกันการเกิดซ้ำ
-> Goal: ผ่านทุก check และมี preventive measures
 
 1. ทำ `/loop-until-complete` เพื่อรัน test suite ทั้งหมดจนกว่าจะผ่าน 100%
 2. ทำ `/run-check` เพื่อตรวจสอบ lint และ typecheck ผ่าน
@@ -106,7 +98,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 9. Report
 
 > Goal: สร้างตารางสรุปผลและแนะนำขั้นต่อไป
-> Goal: มีตารางสรุปผลและ next action
 
 1. ทำ `/report-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
 2. สรุป root cause, fix, regression tests, preventive measures

@@ -16,7 +16,6 @@ description: อัปเดต project documentation, config, rules, และ 
 ### 1. Detect Project Structure
 
 > Goal: ตรวจสอบ project ก่อน update
-> Goal: รู้ structure, docs, config, และ tools
 
 1. อ่าน root `package.json`
 2. อ่าน `AGENTS.md` ถ้ามี
@@ -26,7 +25,6 @@ description: อัปเดต project documentation, config, rules, และ 
 ### 2. Run Updates In Order
 
 > Goal: รัน update ตามลำดับ
-> Goal: docs, rules, และ tooling อัปเดตครบ
 
 1. `/follow-ci-cd` (ถ้าต้องการตรวจสอบหรือตั้งค่า CI/CD)
 2. `/update-dot-devin`
@@ -42,7 +40,6 @@ description: อัปเดต project documentation, config, rules, และ 
 ### 3. Coordinate Config
 
 > Goal: ตรวจสอบ config files
-> Goal: config, gitignore, และ scripts sync กัน
 
 1. ทำ `/follow-config` เพื่อ sync config ทั้งหมด
 2. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
@@ -51,7 +48,6 @@ description: อัปเดต project documentation, config, rules, และ 
 ### 4. Validate
 
 > Goal: ตรวจสอบผลลัพธ์
-> Goal: ผ่าน validation โดยไม่มี side effects
 
 1. ทำ `/validate`
 2. รัน `git diff --check`
@@ -60,7 +56,6 @@ description: อัปเดต project documentation, config, rules, และ 
 ### 5. Report
 
 > Goal: สรุปผล
-> Goal: รายงานผลและ next actions
 
 1. รายงาน files ทีเปลี่ยน
 2. รายงาน checks ทีผ่าน/ไม่ผ่าน

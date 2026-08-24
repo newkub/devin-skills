@@ -47,7 +47,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 1. Analyze Existing .github
 
 > Goal: อ่านและวิเคราะห์ `.github` directory ที่มีอยู่เพื่อเข้าใจสถานะปัจจุบัน
-> Goal: รู้ไฟล์ที่มี ไฟล์ที่ขาด และไฟล์ที่ต้องอัปเดต
 
 1. อ่าน `.github/` directory ทั้งหมด
 2. จัดทำรายการไฟล์ที่มีอยู่และไฟล์ที่ขาด
@@ -58,7 +57,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 2. Analyze Project
 
 > Goal: วิเคราะห์ project เพื่อกำหนดไฟล์ที่จำเป็น
-> Goal: รู้ project type, tech stack, และ community files ที่ต้องมี
 
 1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
 2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
@@ -69,7 +67,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 3. Setup CI/CD Workflows
 
 > Goal: จัดการ CI/CD workflows โดยอ้างอิง workflows เฉพาะทาง
-> Goal: CI/CD workflows ครบถ้วนไม่ทับซ้อนกับ specialized workflows
 
 1. ทำ `/follow-github-actions` เพื่อเลือก workflows ที่เหมาะสม
 2. ทำ `/follow-github-workflows` เพื่อเขียน workflow YAML
@@ -80,7 +77,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 4. Setup Issue Templates
 
 > Goal: สร้าง issue templates สำหรับ bug reports, feature requests และ config
-> Goal: Issue templates ครบถ้วนช่วยให้ contributors ให้ข้อมูลที่จำเป็น
 
 1. สร้าง `.github/ISSUE_TEMPLATE/bug_report.yml` พร้อมฟิลด์: description, steps to reproduce, expected behavior, environment
 2. สร้าง `.github/ISSUE_TEMPLATE/feature_request.yml` พร้อมฟิลด์: problem, proposed solution, alternatives
@@ -91,7 +87,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 5. Setup PR Template
 
 > Goal: สร้าง pull request template เพื่อ guide contributors
-> Goal: PR template ช่วยให้ PR มีข้อมูลครบและตรงมาตรฐาน
 
 1. สร้าง `.github/PULL_REQUEST_TEMPLATE.md`
 2. รวม sections: Summary, Changes, Type, Testing, Checklist
@@ -102,7 +97,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 6. Setup CODEOWNERS
 
 > Goal: สร้าง CODEOWNERS เพื่อกำหนด code owners ตาม directory structure
-> Goal: PR reviews ไปถึงคนที่รู้เรื่องนั้นๆ อัตโนมัติ
 
 1. สร้าง `.github/CODEOWNERS`
 2. กำหนด owners ตาม directory structure ของ project
@@ -113,7 +107,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 7. Setup Dependabot
 
 > Goal: สร้าง `dependabot.yml` เพื่อ automated dependency updates
-> Goal: Dependencies อัปเดตอัตโนมัติปลอดภัยและควบคุมได้
 
 1. สร้าง `.github/dependabot.yml`
 2. กำหนด `package-ecosystem` ตาม package manager ที่ใช้ (npm, github-actions, etc.)
@@ -127,7 +120,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 8. Setup Community Files
 
 > Goal: สร้าง community files ตามประเภท project
-> Goal: Project มี community guidelines และ security policy ที่ชัดเจน
 
 1. สร้าง `.github/SECURITY.md` พร้อมวิธีรายงาน vulnerabilities และ response timeline
 2. สร้าง `.github/CONTRIBUTING.md` ถ้าเป็น open source หรือมี contributors หลายคน
@@ -138,7 +130,6 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ### 9. Validate And Update References
 
 > Goal: ตรวจสอบความถูกต้องและอัปเดต references
-> Goal: ทุกไฟล์ถูกต้อง ไม่มี broken references
 
 1. ตรวจสอบ YAML syntax ของทุก `.yml`/`.yaml` ไฟล์
 2. ตรวจสอบ Markdown syntax ของทุก `.md` ไฟล์

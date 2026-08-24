@@ -17,7 +17,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 1. Identify Git Problem
 
 > Goal: ระบุปัญหา git ที่ต้อง debug
-> Goal: ทราบปัญหา git และประเภทของการ debug ที่ต้องการ
 
 1. ระบุอาการของปัญหา: bug ที่เกิดหลัง commit ใด, ไฟล์หาย, commit หาย, conflict ไม่คาดคิด
 2. จัดประเภทปัญหา:
@@ -30,7 +29,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 2. Find Bug Commit With Bisect
 
 > Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
-> Goal: พบ commit ที่ทำให้เกิด bug พร้อมระบุ commit hash
 
 1. ทำ `/follow-git` เพื่อรัน bisect workflow
 2. ระบุ commit ล่าสุดที่รู้ว่า good และ commit แรกที่รู้ว่า bad
@@ -42,7 +40,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 3. Trace Change With Blame
 
 > Goal: ใช้ git blame และ log เพื่อดูประวัติการเปลี่ยนแปลง
-> Goal: ทราบใครเปลี่ยนบรรทัดใด เมื่อไหร่ และทำไม
 
 1. ทำ `/follow-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
 2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
@@ -52,7 +49,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 4. Recover Lost Commit With Reflog
 
 > Goal: ใช้ git reflog เพื่อกู้คืน commit ที่หายไป
-> Goal: กู้คืน commit ที่หายไปกลับมาได้
 
 1. ทำ `/follow-git` เพื่อดู reflog และหา commit ที่หาย
 2. ระบุ commit hash ที่ต้องการกู้คืนจาก reflog
@@ -62,7 +58,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 5. Restore Lost File
 
 > Goal: กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
-> Goal: ไฟล์ที่หายไปถูก restore กลับมา
 
 1. ทำ `/git-restore-file` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
 2. ถ้าไม่พบ → รัน `git log --all --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
@@ -72,7 +67,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 6. Investigate Unknown Cause
 
 > Goal: สำรวจปัญหาที่ไม่ทราบสาเหตุโดยใช้ git tools หลายตัว
-> Goal: พบสาเหตุของปัญหาโดยใช้ git investigation tools
 
 1. รัน `git status` เพื่อดูสถานะ working directory
 2. รัน `git log --oneline -20` เพื่อดู commits ล่าสุด
@@ -84,7 +78,6 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ### 7. Apply Fix
 
 > Goal: แก้ไขปัญหาที่พบ
-> Goal: ปัญหาถูกแก้ไขและป้องกันการเกิดซ้ำ
 
 1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-git` เพื่อ revert commit นั้น
 2. ถ้าไฟล์ถูก restore → ทำ `/git-commit` เพื่อ commit ไฟล์ที่ restore

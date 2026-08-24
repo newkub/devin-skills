@@ -9,7 +9,7 @@ description: ตั้งค่า Ultracite กับ Biome สำหรับ 
 
 ## Scope
 
-Use `follow-ultracite` for the specific tasks and workflows it covers
+ใช้ `follow-ultracite` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

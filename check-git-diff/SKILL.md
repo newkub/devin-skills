@@ -16,7 +16,6 @@ description: ตรวจสอบความแตกต่างของ git
 ### 1. Identify Refs
 
 > Goal: ระบุ refs ที่ต้องเปรียบเทียบ
-> Goal: รู้ว่าเปรียบเทียบอะไรกับอะไร
 
 1. รับ target paths และ refs จาก user เช่น `HEAD`, `HEAD~1`, `<branch>`, `staged`, `unstaged`
 2. ถ้าไม่ระบุ → ใช้ `HEAD` กับ `HEAD~1`
@@ -25,7 +24,6 @@ description: ตรวจสอบความแตกต่างของ git
 ### 2. Run Git Diff
 
 > Goal: รัน `git diff` ตามรูปแบบที่ต้องการ
-> Goal: ได้ diff output ที่เหมาะสม
 
 1. ถ้าเปรียบเทียบสอง refs → `git diff <from>..<to> -- <paths>`
 2. ถ้าเฉพาะ working tree กับ index → `git diff -- <paths>`
@@ -35,7 +33,6 @@ description: ตรวจสอบความแตกต่างของ git
 ### 3. Analyze Diff
 
 > Goal: วิเคราะห์ changes
-> Goal: สรุปสิ่งที่เปลี่ยน
 
 1. ดู `--stat` เพื่อรู้จำนวน file/insert/delete
 2. อ่าน hunks ของแต่ละ file เพื่อหา nature of changes
@@ -44,7 +41,6 @@ description: ตรวจสอบความแตกต่างของ git
 ### 4. Report
 
 > Goal: สรุปผล
-> Goal: ผู้ใช้เข้าใจ diff
 
 1. สรุปจำนวน files, insertions, deletions
 2. รายการไฟล์ที่เปลี่ยนแยกตามประเภท: added, modified, deleted

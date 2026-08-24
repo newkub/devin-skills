@@ -9,7 +9,7 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 
 ## Scope
 
-Use `follow-cargo` for the specific tasks and workflows it covers
+ใช้ `follow-cargo` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

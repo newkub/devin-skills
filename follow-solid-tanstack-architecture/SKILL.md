@@ -16,7 +16,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 1. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์พื้นฐาน
-> Goal: มีโครงสร้างโฟลเดอร์หลักครบถ้วนพร้อม modules/
 
 1. สร้าง `public/` สำหรับ static assets
 2. สร้าง `src/routes/` สำหรับ file-based routing
@@ -29,7 +28,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 2. Configure Entry Points
 
 > Goal: ตั้งค่า entry points สำหรับ TanStack Start
-> Goal: มี router configuration และ root route พร้อม SSR setup
 
 1. ทำ `/follow-tanstack-ecosystem` เพื่อตั้งค่า TanStack Start entry points
 2. ทำ `/follow-vite` เพื่อตั้งค่า `vite.config.ts` ด้วย `tanstackStart` plugin
@@ -41,7 +39,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 3. Implement File-Based Routing
 
 > Goal: ใช้ TanStack Router file-based routing conventions
-> Goal: ใช้ routing conventions ครบถ้วน พร้อม code splitting อัตโนมัติ
 
 1. ทำ `/follow-tanstack-ecosystem` เพื่อใช้ file-based routing conventions
 2. สร้าง routes ใน `src/routes/` ด้วย `createFileRoute`
@@ -55,7 +52,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 4. Organize Modules
 
 > Goal: จัดระเบียบ feature-based modules ใน `src/modules/`
-> Goal: แต่ละ module มี single responsibility, boundaries ชัดเจน
 
 1. ทำ `/follow-solidjs` เพื่อใช้ component patterns และ reactivity
 2. ทำ `/follow-tanstack-ecosystem` สำหรับ data fetching patterns ใน modules
@@ -70,7 +66,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 5. Implement Server Functions
 
 > Goal: ใช้ server functions สำหรับ client-server communication
-> Goal: server functions type-safe พร้อม validation และ error handling
 
 1. ใช้ `createServerFn` จาก `@tanstack/solid-start`
 2. ใช้ `.validator()` สำหรับ input validation (Zod, Valibot, หรือ validator อื่น)
@@ -82,7 +77,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 6. Configure Rendering Modes
 
 > Goal: ตั้งค่า rendering modes ตามความต้องการ
-> Goal: rendering modes ตั้งค่าตาม use case และมี performance ที่เหมาะสม
 
 1. ตั้งค่า SSR mode (default) ใน `vite.config.ts`
 2. ใช้ `ssr: false` สำหรับ SPA mode
@@ -93,7 +87,6 @@ description: จัดโครงสร้าง TanStack Start + SolidJS app �
 ### 7. Setup Monorepo Structure
 
 > Goal: ตั้งค่า monorepo สำหรับ shared packages และ multiple apps
-> Goal: shared packages ใช้ได้หลาย apps โดย route tree แยก per app
 
 1. สร้าง `packages/shared/` สำหรับ shared code (components, utils, types, schemas)
 2. สร้าง `packages/shared/src/modules/` สำหรับ shared feature modules

@@ -68,7 +68,7 @@ description: "แนวทางการพัฒนา Vue.js 3.5+ ตาม b
 ใช้ workflows สำหรับ tasks เฉพาะ:
 - `workflows/setup-project.md` สำหรับ setup project
 - `workflows/create-component.md` สำหรับสร้าง component
-- `workflows/improve-performance.md` สำหรับ performance optimization
+- `workflows/review-performance.md` สำหรับ performance optimization
 
 
 ## Rules

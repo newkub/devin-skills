@@ -16,7 +16,6 @@ description: Detect and remove unused files in project using Knip and reference 
 ### 1. Detect Ecosystem
 
 > Goal: ระบุ ecosystem และ tool ที่จะใช้
-> Goal: รู้ ecosystem และ tool ที่จะใช้ตรวจสอบ
 
 1. ตรวจสอบ `package.json` → JavaScript/TypeScript ใช้ `knip`
 2. ตรวจสอบ `Cargo.toml` → Rust ใช้ `cargo-udeps`
@@ -27,7 +26,6 @@ description: Detect and remove unused files in project using Knip and reference 
 ### 2. Run File Analysis
 
 > Goal: รัน tool ตรวจสอบ unused files
-> Goal: ได้รายการ unused files จาก tool
 
 1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include files`
 2. ถ้าเป็น Rust → รัน `cargo +nightly udeps`
@@ -38,7 +36,6 @@ description: Detect and remove unused files in project using Knip and reference 
 ### 3. Verify Results
 
 > Goal: ตรวจสอบผลลัพธ์เพื่อแยก false positives
-> Goal: รายการ unused files ที่ยืนยันแล้ว
 
 1. ตรวจสอบ dynamic imports — `import()` ที่อาจไม่ detect โดย static analysis
 2. ตรวจสอบ configuration references — ไฟล์ที่อ้างอิงจาก config ไม่ใช่จาก code
@@ -49,7 +46,6 @@ description: Detect and remove unused files in project using Knip and reference 
 ### 4. Remove Or Implement
 
 > Goal: ลบไฟล์ที่ไม่ได้ใช้หรือนำไปใช้งาน
-> Goal: ไม่มี unused files เหลือในโปรเจกต์
 
 1. ลบไฟล์ที่ยืนยันว่าไม่ได้ใช้
 2. ถ้าไฟล์ควรใช้งาน → implement หรือ import ในที่ที่ควรใช้

@@ -9,7 +9,7 @@ description: ตั้งค่า Auto สำหรับ automated releases �
 
 ## Scope
 
-Use `follow-release-npm` for the specific tasks and workflows it covers
+ใช้ `follow-release-npm` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

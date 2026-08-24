@@ -9,7 +9,7 @@ description: แนวทางการใช้งาน CRW (fastCRW) สำ�
 
 ## Scope
 
-Use `follow-crw` for the specific tasks and workflows it covers
+ใช้ `follow-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

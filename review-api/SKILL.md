@@ -1,6 +1,6 @@
 ---
 name: review-api
-description: Review API design, versioning, docs, errors, and rate limiting
+description: Review และปรับปรุง API design, versioning, docs, errors, and rate limiting
 ---
 
 ## Goal
@@ -56,6 +56,15 @@ API review สำหรับ: API design, endpoint patterns, HTTP methods, REST
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
+### 4. Improve
+
+> Goal: ปรับปรุง API ตาม findings
+
+1. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา best practices
+2. แก้ไขปัญหาตาม priority: Critical → High → Medium → Low
+3. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
+4. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+
 ## Rules
 
 ### 1. Skip Conditions
@@ -92,4 +101,5 @@ API review สำหรับ: API design, endpoint patterns, HTTP methods, REST
 
 - รายงานตาราง aggregate findings จากทุก API section
 - Review score ต่อ dimension และ overall
+- ปรับปรุง API ตาม findings โดยไม่มี regression
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

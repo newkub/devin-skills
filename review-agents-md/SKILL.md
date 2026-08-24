@@ -1,107 +1,101 @@
 ---
 name: review-agents-md
-description: Review AGENTS.md for structure, valid references, and workspace coverage
+description: ตรวจสอบ AGENTS.md เพื่อดูโครงสร้าง, references ที่ถูกต้อง และความครอบคลุมของ workspace
 ---
 
 ## Goal
 
-Review `AGENTS.md` files to ensure they follow the correct format, reference valid skills, and cover all workspaces in monorepo
+ตรวจสอบไฟล์ `AGENTS.md` เพื่อให้แน่ใจว่าเป็นไปตามรูปแบบที่ถูกต้อง, อ้างอิง skills ที่ถูกต้อง และครอบคลุมทุก workspace ใน monorepo
 
 ## Scope
 
-Review root and workspace `AGENTS.md` files in `.devin/` or project root. Does not modify source code logic
+ตรวจสอบไฟล์ `AGENTS.md` ระดับ root และ workspace ใน `.devin/` หรือ root ของโปรเจกต์ ไม่แก้ไข logic ของ source code
 
 ## Execute
 
 ### 1. Locate AGENTS.md
 
-> Goal: Find all `AGENTS.md` files in the project
-> Goal: know which files to review
+> Goal: ค้นหาไฟล์ `AGENTS.md` ทั้งหมดในโปรเจกต์
 
-1. use `glob` to find `**/AGENTS.md`
-2. identify root `AGENTS.md` and workspace-level files
-3. if no `AGENTS.md` exists, stop and report
+1. ใช้ `glob` เพื่อค้นหา `**/AGENTS.md`
+2. ระบุไฟล์ `AGENTS.md` ระดับ root และระดับ workspace
+3. หากไม่มี `AGENTS.md` ให้หยุดและรายงาน
 
 ### 2. Validate Frontmatter
 
-> Goal: Check frontmatter for each `AGENTS.md`
-> Goal: frontmatter is complete and consistent
+> Goal: ตรวจสอบ frontmatter ของแต่ละ `AGENTS.md`
 
-1. check `name` matches workspace or project
-2. check `description` is present and concise
-3. check `related` contains only existing skills
-4. check `auto_execution_mode` if present
+1. ตรวจว่า `name` ตรงกับ workspace หรือโปรเจกต์
+2. ตรวจว่า `description` มีอยู่และกระชับ
+3. ตรวจว่า `related` มีเฉพาะ skills ที่มีอยู่จริง
+4. ตรวจ `auto_execution_mode` หากมี
 
 ### 3. Validate Sections
 
-> Goal: Ensure required sections exist in correct order
-> Goal: `AGENTS.md` follows the standard structure
+> Goal: ตรวจสอบว่ามี sections ที่จำเป็นในลำดับที่ถูกต้อง
 
-1. verify `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-2. verify `## Rules` has `### Architecture` with `tech: /follow-<tech>`
-3. verify `### Skills` maps `skill-name: /skill-name`
-4. verify no `## Workflows` or `### Workflows` section
+1. ยืนยัน `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
+2. ยืนยันว่า `## Rules` มี `### Architecture` พร้อม `tech: /follow-<tech>`
+3. ยืนยันว่า `### Skills` map `skill-name: /skill-name`
+4. ยืนยันว่าไม่มี section `## Workflows` หรือ `### Workflows`
 
 ### 4. Check References
 
-> Goal: Validate all skill references in `AGENTS.md`
-> Goal: no broken skill slash commands
+> Goal: ตรวจสอบ skill references ทั้งหมดใน `AGENTS.md`
 
-1. extract all `skill-name` references
-2. verify each target skill directory exists
-3. check `tech: /follow-<tech>` and `skill-name: /skill-name` mappings
-4. report missing or invalid references
+1. ดึง references `skill-name` ทั้งหมด
+2. ยืนยันว่า directory ของแต่ละ skill เป้าหมายมีอยู่
+3. ตรวจ mappings `tech: /follow-<tech>` และ `skill-name: /skill-name`
+4. รายงาน references ที่หายไปหรือไม่ถูกต้อง
 
 ### 5. Check Workspace Coverage
 
-> Goal: For monorepo, verify each workspace has an `AGENTS.md`
-> Goal: every workspace is covered
+> Goal: สำหรับ monorepo ตรวจสอบว่าแต่ละ workspace มี `AGENTS.md`
 
-1. use `/check-monorepo` to confirm workspace list
-2. compare workspace directories against `AGENTS.md` locations
-3. for each workspace `AGENTS.md`, verify it references used workspaces
-4. ensure workspace-level `AGENTS.md` does not duplicate root content
+1. ใช้ `/check-monorepo` เพื่อยืนยันรายการ workspace
+2. เปรียบเทียบ directories ของ workspace กับตำแหน่ง `AGENTS.md`
+3. สำหรับแต่ละ `AGENTS.md` ของ workspace ตรวจว่าอ้างอิง workspaces ที่ใช้
+4. ตรวจให้แน่ใจว่า `AGENTS.md` ระดับ workspace ไม่ซ้ำเนื้อหาของ root
 
 ### 6. Report Findings
 
-> Goal: Summarize review results
-> Goal: actionable report with severity
+> Goal: สรุปผลการตรวจสอบ
 
-1. use `/report-table` for issues
-2. group issues by severity: critical, high, medium, low
-3. include file path and line number for each finding
-4. suggest next action
+1. ใช้ `/report-table` สำหรับปัญหา
+2. จัดกลุ่มปัญหาตามความรุนแรง: critical, high, medium, low
+3. ระบุ file path และ line number สำหรับแต่ละผลการตรวจ
+4. แนะนำ next action
 
 ## Rules
 
 ### 1. Format Compliance
 
-- `AGENTS.md` must follow `/follow-devin-skills-md` format
-- frontmatter `name`, `description`, `related` required
-- sections in order: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-- no `## Workflows` section
+- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-devin-skills-md`
+- frontmatter `name`, `description`, `related` จำเป็นต้องมี
+- sections ตามลำดับ: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+- ห้ามมี section `## Workflows`
 
 ### 2. Reference Validity
 
-- all `skill-name` must be existing skills
-- `tech: /follow-<tech>` should map to a real `follow-*` skill if possible
-- `skill-name: /skill-name` should map to a real skill
+- `skill-name` ทั้งหมดต้องเป็น skills ที่มีอยู่จริง
+- `tech: /follow-<tech>` ควร map ไปยัง skill `follow-*` จริงหากเป็นไปได้
+- `skill-name: /skill-name` ควร map ไปยัง skill จริง
 
 ### 3. Workspace Rules
 
-- root `AGENTS.md` must have `### Workspaces` listing each workspace
-- each workspace `AGENTS.md` must reference the workspaces it uses
-- workspace `AGENTS.md` must not duplicate root conventions
+- `AGENTS.md` ระดับ root ต้องมี `### Workspaces` ที่ระบุแต่ละ workspace
+- `AGENTS.md` ของแต่ละ workspace ต้องอ้างอิง workspaces ที่ใช้
+- `AGENTS.md` ของ workspace ต้องไม่ซ้ำ conventions ของ root
 
 ### 4. High Impact
 
-- report only issues that affect execution or correctness
-- avoid style-only nitpicks unless they break parsing
-- include evidence with file path and line number
+- รายงานเฉพาะปัญหาที่กระทบการทำงานหรือความถูกต้อง
+- หลีกเลี่ยงการติเรื่อง style เพียงอย่างเดียว เว้นแต่ทำให้ parsing เสีย
+- ระบุ evidence พร้อม file path และ line number
 
 ## Expected Outcome
 
-- `AGENTS.md` files follow the standard format
-- all skill references are valid
-- every workspace has a workspace-level `AGENTS.md` in monorepo
-- report with findings and next actions
+- ไฟล์ `AGENTS.md` เป็นไปตามรูปแบบมาตรฐาน
+- skill references ทั้งหมดถูกต้อง
+- ทุก workspace มี `AGENTS.md` ระดับ workspace ใน monorepo
+- รายงานพร้อมผลการตรวจและ next actions

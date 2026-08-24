@@ -9,7 +9,7 @@ description: เปิด website ของ dependencies จาก package manif
 
 ## Scope
 
-Use `follow-open-web-dependencies` for the specific tasks and workflows it covers
+ใช้ `follow-open-web-dependencies` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

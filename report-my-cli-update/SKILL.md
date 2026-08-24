@@ -20,7 +20,6 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 ### 1. Check Installed CLI Tools
 
 > Goal: ตรวจสอบ CLI tools ที่ติดตั้งในเครื่อง
-> Goal: รู้ tools ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
 
 1. ทำ `/follow-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
 2. รัน `mise list` เพื่อดู tools ที่ติดตั้งด้วย mise
@@ -31,7 +30,6 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 ### 2. Check For Updates
 
 > Goal: ตรวจสอบอัปเดตที่มีอยู่
-> Goal: รู้ tools ที่มีอัปเดตพร้อมเวอร์ชันใหม่
 
 1. รัน `mise outdated` เพื่อเช็ค mise tools ที่มีอัปเดต
 2. รัน `scoop status` เพื่อเช็ค scoop packages ที่มีอัปเดต
@@ -41,7 +39,6 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 ### 3. Research Release Notes
 
 > Goal: ค้นหา release notes และ changelogs
-> Goal: รู้ breaking changes และ features ใหม่ของ tools ที่มีอัปเดต
 
 1. ทำ `/deep-research` สำหรับ tools ที่มีอัปเดตสำคัญ
 2. ค้นหา release notes ด้วย `search_web` ใช้ query `<tool-name> release notes <version>`
@@ -52,7 +49,6 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 ### 4. Categorize Updates
 
 > Goal: จัดกลุ่มอัปเดตตามประเภท
-> Goal: อัปเดตจัดกลุ่มและจัดลำดับตาม impact
 
 1. จัดกลุ่มตาม package manager: mise, scoop, winget
 2. จัดลำดับตาม impact: Breaking Changes, New Features, Bug Fixes, Security
@@ -62,7 +58,6 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 ### 5. Compile Report
 
 > Goal: สร้างรายงานอัปเดตรายสัปดาห์
-> Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางอัปเดต
 2. กำหนด columns: No., Tool, Manager, Current Version, Latest Version, Impact, Summary

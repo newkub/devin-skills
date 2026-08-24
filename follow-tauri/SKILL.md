@@ -23,7 +23,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 1. Setup Environment
 
 > Goal: ตรวจสอบ prerequisites สำหรับ Tauri development
-> Goal: environment พร้อมสำหรับ Tauri development
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
 2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
@@ -32,7 +31,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 2. Install Dependencies
 
 > Goal: ติดตั้ง dependencies สำหรับ Tauri app
-> Goal: dependencies พร้อมสำหรับ Tauri runtime และ CLI
 
 1. รัน `bun install`
 2. ติดตั้ง Tauri API: `bun add @tauri-apps/api`
@@ -41,7 +39,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 3. Configure Vite
 
 > Goal: ตั้งค่า `vite.config.ts` ให้เข้ากับ Tauri dev server
-> Goal: Vite dev server ทำงานร่วมกับ Tauri ได้
 
 1. ตั้งค่า port 5173
 2. ตั้งค่า `server.fs.deny` หรือ ignore `src-tauri/`
@@ -50,7 +47,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 4. Configure Tauri
 
 > Goal: ตั้งค่า `tauri.conf.json` และ capabilities
-> Goal: Tauri configuration ถูกต้องและปลอดภัย
 
 1. แก้ไข `src-tauri/tauri.conf.json`: ตั้ง `productName`, `identifier`, `devUrl: http://localhost:5173`, `beforeDevCommand: bun run dev`, `beforeBuildCommand: bun run build`
 2. กำหนด capabilities ใน `src-tauri/capabilities/default.json`: `["core:default", "fs:allow-read-file", "dialog:allow-open"]`
@@ -58,7 +54,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 5. Develop IPC Commands
 
 > Goal: สร้าง Rust commands และเรียกใช้จาก frontend
-> Goal: frontend และ backend เชื่อมต่อกันผ่าน IPC
 
 1. สร้าง Rust command ใน `src-tauri/src/lib.rs`
 2. Register command ด้วย `tauri::Builder::default().invoke_handler(...)`
@@ -67,7 +62,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 6. Add Plugins
 
 > Goal: ติดตั้ง official หรือ community plugins ตามต้องการ
-> Goal: เพิ่ม capabilities จาก plugins โดยไม่เปิดสิทธิ์เกินความจำเป็น
 
 1. ติดตั้ง official plugins ด้วย `bun run tauri add <plugin-name>`
 2. ติดตั้ง community plugins ด้วย `bun add @tauri-apps/plugin-<plugin-name>`
@@ -76,7 +70,6 @@ description: สร้าง Desktop Applications ด้วย Tauri, Vite, Reac
 ### 7. Build And Test
 
 > Goal: Build และ test Tauri app
-> Goal: application รันและ build สำเร็จบน target platforms
 
 1. Development mode: `bun run tauri dev`
 2. Production build: `bun run tauri build`

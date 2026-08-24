@@ -16,7 +16,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 1. Read Context
 
 > Goal: อ่าน workflows และ skills ที่เกี่ยวข้องกับ dependencies และ libraries
-> Goal: เข้าใจมาตรฐานและ patterns ก่อนเริ่มวิเคราะห์ dependencies
 
 1. ทำ `/follow-skills` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
 2. ทำ `/follow-skills` เพื่ออ่าน skills ที่เกี่ยวข้องกับ libraries และ dependencies
@@ -24,7 +23,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 2. Snapshot Current Dependencies
 
 > Goal: รวบรวม dependencies ปัจจุบันทั้งหมด
-> Goal: รู้ dependencies ปัจจุบันทั้งหมดพร้อม version และสถานะ
 
 1. ทำ `/follow-my-tech-stack` เพื่อดู tech stack ทั้งหมด
 2. อ่าน `package.json` หรือ manifest ที่เกี่ยวข้อง
@@ -33,7 +31,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 3. Analyze Usage
 
 > Goal: ตรวจสอบการใช้งานจริงของแต่ละ package
-> Goal: รู้ว่า package ไหนใช้จริง และ package ไหนเป็น candidate สำหรับ replace
 
 1. ค้นหา imports ของแต่ละ package ใน codebase
 2. ตรวจสอบว่า package ถูกใช้จริงหรือเป็น dead dependency
@@ -42,7 +39,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 4. Research Alternatives
 
 > Goal: ค้นหาและศึกษา alternatives จาก official sources
-> Goal: รู้ alternatives ที่ดีกว่าพร้อมข้อมูลเปรียบเทียบจาก official sources
 
 1. ใช้ `/deep-research` เพื่อหา dependencies ทางเลือกที่ดีกว่า
 2. ทำ `/learn-from-web` เพื่อศึกษา documentation และ features ของ alternatives
@@ -52,7 +48,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 5. Evaluate Candidates
 
 > Goal: ให้คะแนนแต่ละ candidate ตามเกณฑ์ที่กำหนด
-> Goal: มี scoring ชัดเจนสำหรับแต่ละ candidate
 
 1. ให้คะแนนแต่ละ candidate ตามเกณฑ์ (1-5 points):
    - Modern: ใช้ latest standards, APIs, patterns
@@ -68,7 +63,6 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 ### 6. Recommend Dependencies
 
 > Goal: สรุป dependencies ที่ควรใช้พร้อม priority
-> Goal: รายการ deps ที่ควรใช้พร้อม priority และเหตุผล
 
 1. ตอบแบบ list "ควรใช้อะไร" แยกตาม category (framework, ui, database, testing, tooling)
 2. ระบุ priority สำหรับแต่ละ dep:

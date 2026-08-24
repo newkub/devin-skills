@@ -9,7 +9,7 @@ description: อ่าน .env files แล้วเปิด URL เพื่�
 
 ## Scope
 
-Use `follow-open-web-from-env` for the specific tasks and workflows it covers
+ใช้ `follow-open-web-from-env` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

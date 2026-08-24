@@ -16,7 +16,6 @@ description: พิจารณาใช้หรืออ้างอิง ski
 ### 1. Identify Reusable Skill
 
 > Goal: ระบุ skill ที่จะใช้งาน
-> Goal: ไม่ reinvent เนื้อหาที่มีอยู่
 
 1. ทำ `/list-skills` เพื่อหา skill ที่เกี่ยวข้อง
 2. อ่าน `SKILL.md` ของ skill เป้าหมาย
@@ -26,7 +25,6 @@ description: พิจารณาใช้หรืออ้างอิง ski
 ### 2. Add To Related
 
 > Goal: เพิ่ม reference ใน frontmatter
-> Goal: skill ของเราลิงก์ไป skill เป้าหมายอย่างถูกต้อง
 
 1. เปิด `SKILL.md` ของเรา
 2. เพิ่มชื่อ skill เป้าหมายใน `related` ถ้ายังไม่มี
@@ -36,7 +34,6 @@ description: พิจารณาใช้หรืออ้างอิง ski
 ### 3. Reference In Prompt Body
 
 > Goal: อ้างอิง skill ในเนื้อหา
-> Goal: บอกว่าต้องเรียก skill เป้าหมายเมื่อใด
 
 1. ใช้ backticks สำหรับ `skill-name` เช่น ทำตาม `/follow-containerize-app`
 2. ระบุ condition ก่อนเรียก เช่น "ถ้าเป็น production → ทำ `/follow-release-docker`"
@@ -46,7 +43,6 @@ description: พิจารณาใช้หรืออ้างอิง ski
 ### 4. Verify Circular References
 
 > Goal: ตรวจสอบ references ไม่วนกลับ
-> Goal: ไม่เกิด infinite loop หรือ circular dependency
 
 1. ทำ `/check-circular-dependencies` หรือ `/check-reference`
 2. ตรวจว่า skill เป้าหมายไม่ได้อ้างอิงกลับมาที่เรา
@@ -55,7 +51,6 @@ description: พิจารณาใช้หรืออ้างอิง ski
 ### 5. Update And Validate
 
 > Goal: อัปเดท references และ validate
-> Goal: ทุก reference ใช้งานได้จริง
 
 1. ทำ `/update-reference` เพื่อ sync references
 2. ทำ `/validate` เพื่อตรวจความถูกต้อง

@@ -16,7 +16,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 1. Check Prerequisites
 
 > Goal: ตรวจสอบ project structure และ tools ก่อนเริ่มตั้งค่า scripts
-> Goal: ทราบ project type, package manager, และ tools ที่ติดตั้งแล้ว
 
 1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
 2. ตรวจสอบ monorepo (หลาย `package.json`, workspace config, git submodules) — ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
@@ -26,7 +25,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 2. Update Dependencies
 
 > Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
-> Goal: dependencies อัปเดตล่าสุดก่อนตั้งค่า scripts
 
 1. ตรวจสอบ package manager (`bun`, `npm`, `pnm`, `yarn`, `cargo`, `pip`, `go`)
 2. สำหรับ Node.js/Bun → ทำ `/follow-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
@@ -38,7 +36,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 3. Select Template Level
 
 > Goal: เลือกระดับ scripts ตามขนาดและความซับซ้อนของโปรเจกต์
-> Goal: เลือกระดับที่เหมาะสม — Minimal (Default), Standard, หรือ Complete
 
 1. ประเมินขนาดโปรเจกต์และความต้องการ testing/deployment
 2. เลือกระดับตาม Rules section 1: Minimal (ทุกโปรเจกต์), Standard (testing + deps management), Complete (infra/tooling team)
@@ -47,7 +44,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 4. Apply Scripts
 
 > Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
-> Goal: ตั้งค่า scripts ในทุก workspace ให้สอดคล้องกับ tech stack และ template level ที่เลือก
 
 1. ทำ `/use-scripts` ตาม tech stack จากตาราง Rules — Single workspace: แก้ไข `package.json` หรือ `Cargo.toml` โดยตรง
 2. Multiple workspaces: ทำ `/follow-monorepo` ก่อน แล้วใช้ `/use-bun-scripts` สำหรับ batch update
@@ -57,7 +53,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 5. Setup Config And Secrets
 
 > Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
-> Goal: config files ครบและ secrets injection พร้อมใช้งาน
 
 1. `/follow-config` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
 2. ถ้ามี `.infisical.json` หรือใช้ Infisical → ทำ `/follow-infisical` เพื่อตั้งค่า secrets scripts
@@ -68,7 +63,6 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 ### 6. Validate
 
 > Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
-> Goal: scripts ทำงานได้จริง `verify` และ `ci` pipeline ถูกต้อง
 
 1. ตรวจสอบ scripts syntax ใน `package.json` หรือ `Cargo.toml` — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
 2. ยืนยัน `check` script = `lint && typecheck && scan` และ `verify` = `check && test`

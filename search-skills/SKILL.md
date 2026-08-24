@@ -9,7 +9,7 @@ description: ค้นหา skills ด้วย command `skills find <keyword>`
 
 ## Scope
 
-Use `search-skills` for the specific tasks and workflows it covers
+ใช้ `search-skills` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

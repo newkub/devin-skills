@@ -16,7 +16,6 @@ description: วาด diagram ด้วย Excalidraw สำหรับ archit
 ### 1. When to Use
 
 > Goal: ใช้ Excalidraw เมื่อต้องวาด diagram
-> Goal: รู้ว่าเมื่อไหร่ควรใช้ Excalidraw
 
 1. วาด architecture diagrams
 2. วาด process flows
@@ -26,7 +25,6 @@ description: วาด diagram ด้วย Excalidraw สำหรับ archit
 ### 2. Quick Start
 
 > Goal: เริ่มวาด diagram อย่างรวดเร็ว
-> Goal: สร้าง diagram ได้อย่างรวดเร็ว
 
 1. เปิด Excalidraw ที่ `https://excalidraw.com`
 2. เลือก shapes จาก toolbar
@@ -36,7 +34,6 @@ description: วาด diagram ด้วย Excalidraw สำหรับ archit
 ### 3. Diagram Elements
 
 > Goal: ใช้ elements ต่างประเภทใน diagram
-> Goal: รู้วิธีใช้ elements ต่างประเภท
 
 1. ใช้ rectangles สำหรับ components/boxes
 2. ใช้ diamonds สำหรับ decisions
@@ -46,7 +43,6 @@ description: วาด diagram ด้วย Excalidraw สำหรับ archit
 ### 4. Styling
 
 > Goal: จัดรูปแบบ diagram ให้อ่านง่าย
-> Goal: diagram อ่านง่ายและสื่อความหมาย
 
 1. ใช้ colors สำหรับแยก layers หรือ types
 2. ใช้ stroke styles (solid, dashed, dotted) สำหรับแยกประเภท connections
@@ -55,7 +51,6 @@ description: วาด diagram ด้วย Excalidraw สำหรับ archit
 ### 5. Verification
 
 > Goal: ตรวจสอบ diagram ก่อนใช้งาน
-> Goal: diagram ถูกต้องและสื่อความหมายชัดเจน
 
 1. ตรวจสอบว่าทุก component มี label
 2. ตรวจสอบว่า arrows ชี้ทิศทางถูกต้อง

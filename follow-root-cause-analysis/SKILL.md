@@ -9,7 +9,7 @@ description: วิเคราะห์หาสาเหตุหลักข�
 
 ## Scope
 
-Use `follow-root-cause-analysis` for the specific tasks and workflows it covers
+ใช้ `follow-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

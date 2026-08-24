@@ -9,7 +9,7 @@ description: ดูแลรักษาโปรเจกต์ด้วย com
 
 ## Scope
 
-Use `follow-maintain-project` for the specific tasks and workflows it covers
+ใช้ `follow-maintain-project` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -5,18 +5,17 @@ description: Search Raindrop.io bookmarks via raindrop CLI with filters, output 
 
 ## Goal
 
-Search and retrieve Raindrop.io bookmarks quickly and accurately using the raindrop CLI
+ค้นหาและดึง bookmarks จาก Raindrop.io อย่างรวดเร็วและแม่นยำโดยใช้ raindrop CLI
 
 ## Scope
 
-Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, query syntax, filters, output formats, and result parsing
+ใช้กับ `jvm/raindrop-cli` สำหรับค้นหา Raindrop.io เท่านั้น ครอบคลุม authentication, query syntax, filters, output formats และ result parsing
 
 ## Execute
 
 ### 1. Ensure CLI Is Ready
 
 > Goal: Set up raindrop CLI and confirm authentication before searching
-> Goal: `raindrop` command is installed and authenticated
 
 1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
 2. รัน `raindrop auth status`
@@ -27,7 +26,6 @@ Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, 
 ### 2. Search Bookmarks
 
 > Goal: Run search queries against Raindrop.io
-> Goal: get the exact bookmarks that match the query
 
 1. รัน `raindrop bookmark search "<query>"` สำหรับ full-text search
 2. ใช้ `raindrop bookmark search "<query>" --collection <id>` เพื่อจำกัด collection
@@ -39,7 +37,6 @@ Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, 
 ### 3. Use Search Filters
 
 > Goal: Apply Raindrop search operators
-> Goal: narrow results with precise filters
 
 1. tag filter: `tag:<tag>` เช่น `tag:typescript`
 2. type filter: `type:article|image|video|document|audio`
@@ -52,7 +49,6 @@ Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, 
 ### 4. Format And Parse Results
 
 > Goal: Present search results in a useful format
-> Goal: output is readable and easy to act on
 
 1. default JSON: `raindrop bookmark search "<query>"`
 2. human-readable table: `raindrop bookmark search "<query>" --human` ถ้า CLI รองรับ
@@ -67,7 +63,6 @@ Use with `jvm/raindrop-cli` for Raindrop.io search only. Covers authentication, 
 ### 5. Handle Empty Or Unexpected Results
 
 > Goal: Verify search outcomes and troubleshoot
-> Goal: no silent failures
 
 1. ถ้า results ว่าง → ตรวจสอบว่า query ถูกต้อง, collection id ถูกต้อง, auth ยัง valid
 2. รัน `raindrop bookmark search "<query>" --verbose` เพื่อ debug query

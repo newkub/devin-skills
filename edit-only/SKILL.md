@@ -14,16 +14,19 @@ description: แก้ไขโค้ดโดยไม่ต้องรัน 
 ## Execute
 
 ### 1. Task Identification
+
 > Goal: Task Identification
 
 ทำ `/follow-import-export` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
 
 ### 2. Code Modification
+
 > Goal: Code Modification
 
 ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไขไฟล์ และ `write_to_file` สำหรับการสร้างไฟล์ใหม่ จากนั้นทำ `/update-reference` เพื่ออัพเดท references ทั้งหมม
 
 ### 3. Validation
+
 > Goal: Validation
 
 ตรวจสอบว่าไม่มี `run_command` ถูกเรียก ไม่มี background process ถูกรัน และไม่มี browser preview ถูกเปิด

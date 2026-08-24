@@ -5,10 +5,9 @@ related:
   - update-agents-md
   - follow-agents-md
   - follow-write-devin-skills
-  - follow-devin-skills-md
   - validate
   - review-agents-md
-  - review-devin-global-skills
+  - review-all-skills
   - git-commit
   - ship-code
   - report
@@ -32,7 +31,7 @@ related:
 1. ทำตาม `/update-agents-md` ก่อนเริ่มงานทุกครั้ง
 2. ทำตาม `/follow-agents-md` เพื่ออ่านและทำตาม `AGENTS.md`
 3. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-4. อ่าน `/follow-devin-skills-md` และ `/follow-write-devin-skills` เมื่อแก้ไข skill
+4. อ่าน `/follow-write-devin-skills` เมื่อแก้ไข skill
 
 ### 2. Maintain AGENTS.md
 
@@ -49,7 +48,7 @@ related:
 > Goal: ตรวจสอบและ commit การเปลี่ยนแปลง
 
 1. ทำตาม `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
-2. ทำตาม `/review-devin-global-skills` เมื่อแก้ไข skills
+2. ทำตาม `/review-all-skills` เมื่อแก้ไข skills
 3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
 4. ทำตาม `/git-commit` หรือ `/ship-code` เพื่อ commit การเปลี่ยนแปลง
 5. ทำตาม `/report` เพื่อสรุปผล
@@ -65,18 +64,16 @@ related:
 
 ### 2. Architecture
 
-- `devin-cli-skills: /follow-devin-skills-md`
-- `write-devin-skills: /follow-write-devin-skills`
+- `devin-cli-skills: /follow-write-devin-skills`
 
 ### 3. Skills
 
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `follow-write-devin-skills: /follow-write-devin-skills`
-- `follow-devin-skills-md: /follow-devin-skills-md`
 - `validate: /validate`
 - `review-agents-md: /review-agents-md`
-- `review-devin-global-skills: /review-devin-global-skills`
+- `review-all-skills: /review-all-skills`
 - `git-commit: /git-commit`
 - `ship-code: /ship-code`
 - `report: /report`

@@ -16,7 +16,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 1. Setup Project
 
 > Goal: สร้างโครงสร้าง project สำหรับ NuShell plugin
-> Goal: มา Rust project สำหรับ NuShell plugin
 
 1. สร้าง project ด้วย `cargo new nu_plugin_<name>`
 2. แก้ไข `Cargo.toml` เพื่อเพิ่ม dependencies:
@@ -28,7 +27,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 2. Implement Plugin Trait
 
 > Goal: สร้าง struct ที่ implement `Plugin` trait
-> Goal: plugin มี commands และ version ถูกต้อง
 
 1. สร้าง unit struct สำหรับ plugin (เช่น `LenPlugin`)
 2. implement `Plugin` trait:
@@ -39,7 +37,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 3. Implement Command
 
 > Goal: สร้าง command ด้วย `SimplePluginCommand` หรือ `PluginCommand`
-> Goal: command มี signature และ run logic ถูกต้อง
 
 1. สร้าง unit struct สำหรับแต่ละ command (เช่น `Len`)
 2. implement `SimplePluginCommand` (หรือ `PluginCommand` ถ้าต้อง handle streams):
@@ -53,7 +50,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 4. Wire Main Entry Point
 
 > Goal: ต่อเข้ากับ NuShell plugin runtime
-> Goal: plugin สื่อสารกับ NuShell ได้
 
 1. ใน `main()` เรียก `serve_plugin(&YourPlugin, JsonSerializer)` หรือ `MsgPackSerializer`
 2. ใช้ `MsgPackSerializer` สำหรับ production เพราะเร็วกว่า
@@ -62,7 +58,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 5. Build And Register Plugin
 
 > Goal: ติดตั้งและ register plugin กับ NuShell
-> Goal: plugin พร้อมใช้ใน NuShell
 
 1. สร้าง release build ด้วย `cargo install --path . --locked`
 2. ใน NuShell register plugin ด้วย `plugin add <path/to/nu_plugin_name>` (เติม `.exe` บน Windows)
@@ -72,7 +67,6 @@ description: สร้าง NuShell plugin ด้วย Rust ตาม official
 ### 6. Development Workflow
 
 > Goal: พัฒนาและทดสอบ plugin
-> Goal: plugin ผ่าน quality checks และทดสอบ
 
 1. ใช้ `cargo build` และ `cargo run` ใน development
 2. ใช้ `cargo clippy` และ `cargo fmt` สำหรับ code quality

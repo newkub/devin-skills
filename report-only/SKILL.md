@@ -16,7 +16,6 @@ description: Report current state without making any changes
 ### 1. Gather Context
 
 > Goal: รวบรวมข้อมูลสถานะปัจจุบัน
-> Goal: มีข้อมูลพร้อมสร้าง report
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์ structure
 2. ทำ `/scan-codebase` เพื่อหา patterns หลัก
@@ -26,7 +25,6 @@ description: Report current state without making any changes
 ### 2. Build Report
 
 > Goal: สร้าง report ทีอ่านง่าย
-> Goal: สรุปข้อมูลสำคัญให้ user
 
 1. ทำ `/deep-report` ถ้าต้องการ report ละเอียด
 2. ใช้ `/report-table` สำหรับตารางหลาย columns
@@ -36,7 +34,6 @@ description: Report current state without making any changes
 ### 3. Suggest Next Action
 
 > Goal: เสนอทิศทางถัดไปโดยไม่ดำเนินการเอง
-> Goal: user ตัดสินใจเอง
 
 1. สรุป findings พร้อม evidence
 2. ทำ `/suggest-next-action`

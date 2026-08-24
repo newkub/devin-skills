@@ -16,7 +16,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 1. Install Prerequisites
 
 > Goal: ติดตั้ง tools สำหรับสร้าง VS Code extension
-> Goal: environment พร้อมสำหรับ development
 
 1. ติดตั้ง `yo` และ `generator-code`:
    ```bash
@@ -30,7 +29,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 2. Generate Extension
 
 > Goal: สร้างโครงสร้าง extension
-> Goal: มา project template สำหรับ VS Code extension
 
 1. รัน `yo code`
 2. เลือกประเภท:
@@ -45,7 +43,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 3. Configure package.json
 
 > Goal: กำหนด manifest และ contribution points
-> Goal: `package.json` ถูกต้องและพร้อม activate
 
 1. ตั้งชื่อ extension, version, publisher
 2. กำหนด `activationEvents` (เช่น `onCommand`)
@@ -55,7 +52,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 4. Implement Extension Logic
 
 > Goal: เขียน TypeScript code สำหรับ extension
-> Goal: features ทำงานตาม requirement
 
 1. สร้าง `src/extension.ts` หรือ `src/extension.js`
 2. implement `activate(context: vscode.ExtensionContext)`
@@ -65,7 +61,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 5. Test Locally
 
 > Goal: ทดสอบ extension ใน VS Code
-> Goal: extension ทำงานถูกต้องบน development host
 
 1. เปิด project ใน VS Code
 2. กด `F5` เพื่อเปิด Extension Development Host
@@ -75,7 +70,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 6. Build And Package
 
 > Goal: Build สำหรับ production
-> Goal: ได้ไฟล์ `.vsix` พร้อม publish
 
 1. รัน `bun run compile` เพื่อ compile TypeScript
 2. รัน `vsce package` เพื่อสร้าง `.vsix`
@@ -84,7 +78,6 @@ description: สร้าง VS Code extensions ด้วย TypeScript แล�
 ### 7. Publish To Marketplace
 
 > Goal: Publish extension ไปยัง VS Code Marketplace
-> Goal: extension ใช้ได้ผ่าน VS Code Marketplace
 
 1. สร้าง publisher ใน Marketplace
 2. รัน `vsce publish`

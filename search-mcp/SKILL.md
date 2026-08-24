@@ -9,7 +9,7 @@ description: ค้นหา MCP และ internet ที่เกี่ยว�
 
 ## Scope
 
-Use `search-mcp` for the specific tasks and workflows it covers
+ใช้ `search-mcp` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -16,7 +16,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 1. Search For Markers
 
 > Goal: ค้นหา TODO/FIXME/HACK markers ทั้งหมดใน codebase
-> Goal: มี markers ครบสำหรับการวิเคราะห์
 
 1. ทำ `/scan-codebase` เพื่อค้นหา `TODO`, `FIXME`, `HACK`, `NOTE`, `XXX`, `BUG` ใน source files
 2. ค้นหาในไฟล์: `*.ts`, `*.tsx`, `*.js`, `*.jsx`, `*.vue`, `*.py`, `*.rs`, `*.go`, `*.java`
@@ -26,7 +25,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 2. Categorize Markers
 
 > Goal: จัดประเภท markers ตามชนิด
-> Goal: Markers จัดประเภทชัดเจน
 
 1. จัดประเภทตาม marker type:
    - TODO: สิ่งที่ต้องทำในอนาคต
@@ -41,7 +39,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 3. Collect Context
 
 > Goal: รวบรวมบริบทของแต่ละ marker
-> Goal: เข้าใจสิ่งที่ marker อ้างถึง
 
 1. อ่านบรรทัดรอบๆ marker เพื่อเข้าใจ context
 2. ระบุ function หรือ class ที่ marker อยู่
@@ -51,7 +48,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 4. Assess Priority
 
 > Goal: ประเมินความสำคัญของแต่ละ marker
-> Goal: รู้ว่า marker ใดต้องจัดการก่อน
 
 1. จัด priority ตาม marker type:
    - FIXME/BUG: high priority (ต้องแก้)
@@ -64,7 +60,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 5. Format Report
 
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
-> Goal: รายงานครบ อ่านง่าย มี insights
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. แสดงผลตามลำดับ: Summary → By Type → By Priority → Stale Markers
@@ -82,7 +77,6 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### 6. Provide Insights
 
 > Goal: ให้ insights และ recommendations
-> Goal: ผู้อ่านรู้ว่าต้องจัดการอะไรก่อน
 
 1. สรุปจำนวน markers แยกตาม type และ priority
 2. ระบุ markers ที่ต้องจัดการด่วน (FIXME/BUG high priority)

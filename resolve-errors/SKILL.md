@@ -20,7 +20,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. Prepare Context
 
 > Goal: เตรียม context ก่อนเริ่มแก้ไข error
-> Goal: เข้าใจ codebase structure, conventions และ dependencies
 
 1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ทำ `/scan-codebase` เพื่อทำความเข้าใจ structure ของไฟล์ที่มี error
@@ -30,7 +29,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 2. Capture And Triage Errors
 
 > Goal: เก็บ error ทั้งหมด จัดประเภท จัดกลุ่ม และจัดลำดับการแก้ไข
-> Goal: มี error list ที่จัดประเภท จัดกลุ่ม และจัดลำดับแล้ว
 
 1. รัน command ที่ทำให้เกิด error อีกครั้งเพื่อ capture output ทั้งหมด
 2. ถ้า error มีจำนวนมาก → ใช้ `/use-scripts` เพื่อ capture และ parse error output เป็น structured data (เช่น `bunx biome lint --reporter=json` แล้ว group by `file:rule`)
@@ -43,7 +41,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 3. Identify Root Cause
 
 > Goal: ระบุสาเหตุที่แท้จริงของ error อย่างแม่นยำ
-> Goal: รู้ว่าต้องแก้อะไรที่จุดไหน อย่างแน่นอน
 
 1. อ่าน error message ทั้งหมดรวม stack trace และ error code
 2. ระบุไฟล์และบรรทัดที่เกิด error อย่างแม่นยำ — ดู context ±20 บรรทัด
@@ -56,7 +53,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 4. Apply Minimal Fix
 
 > Goal: แก้ไขที่ root cause ด้วยการเปลี่ยนแปลงน้อยที่สุด — รวม parallel fix สำหรับ independent errors
-> Goal: แก้ถูกจุด แก้น้อย แก้ได้ผล
 
 1. แก้ไขที่จุดเดียวที่เป็น root cause จริง — single-line change เมื่อเป็นไปได้
 2. ถ้า error มีจำนวนมาก → ใช้ `/use-scripts` เพื่อ automate:
@@ -70,7 +66,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 5. Verify Fix
 
 > Goal: ตรวจสอบว่าการแก้ไขถูกต้อง ไม่สร้าง side effects และไม่มี ignore patterns
-> Goal: ยืนยันด้วยการรัน ไม่ใช่คาดการณ์
 
 1. รัน command เดียวกับที่ทำให้เกิด error เพื่อยืนยันว่า error หายไป
 2. รัน `bun run check` เพื่อตรวจสอบรวม (lint + typecheck + scan) หรือรันเฉพาะเจาะจง: `bunx biome lint` | `tsc --noEmit` | `bun test` | `bun run build`
@@ -82,7 +77,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 6. Document And Prevent
 
 > Goal: บันทึกการแก้ไขและป้องกัน regression
-> Goal: ป้องกันปัญหาซ้ำ และมี reference สำหรับอนาคต
 
 1. เขียน comment อธิบายสาเหตุของการแก้ไขถ้าไม่ชัดเจน
 2. พิจารณาเพิ่ม test case เพื่อป้องกัน regression — ทำ `/write-test`

@@ -20,7 +20,6 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 ### 1. Setup Prerequisites
 
 > Goal: ตรวจสอบและตั้งค่า prerequisites ก่อน commit
-> Goal: มี .gitignore, Git hooks และ config พร้อมก่อน commit
 
 1. ทำตาม `/follow-gitignore` สำหรับ .gitignore
 2. ทำตาม `/follow-hk` สำหรับ Git hooks
@@ -29,7 +28,6 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 ### 2. Categorize Changes
 
 > Goal: จัดกลุ่มไฟล์ที่มีการเปลี่ยนแปลง แยกระหว่าง task files และ other files แล้วจัดตามประเภท
-> Goal: ไฟล์ถูกแยก task files vs other files และจัดกลุ่มตามประเภท
 
 1. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการแก้ไขทั้งหมด
 2. ระบุไฟล์ที่ task แก้ไปจาก context (task files)
@@ -44,7 +42,6 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 ### 3. Choose Commit Mode
 
 > Goal: เลือกโหมดการ commit โดยพิจารณา task files และ other files อัตโนมัติ
-> Goal: เลือกโหมดการ commit ที่เหมาะสมโดยไม่ต้องถามผู้ใช้
 
 1. ถ้ามีเฉพาะ task files (ไม่มี other files) → ใช้ Single Commit (task files)
 2. ถ้ามี other files และ task files → ใช้ Split Commit (by category) เพื่อแยก commit ตามประเภท
@@ -54,7 +51,6 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 ### 4. Review File Changes
 
 > Goal: ดู actual changes ของไฟล์ที่จะ commit เพื่อให้ commit message ตรงมากขึ้น
-> Goal: เข้าใจ changes จริงก่อนเขียน commit message
 
 1. รัน `git diff` เพื่อดู changes ที่ยังไม่ได้ commit
 2. รัน `git diff --cached` เพื่อดู changes ที่ staged แล้ว
@@ -64,7 +60,6 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 ### 5. Stage Changes By Mode
 
 > Goal: Stage ไฟล์ตามโหมดที่เลือก
-> Goal: ไฟล์ถูก stage ถูกต้องตามโหมดที่เลือก
 
 Single Commit (task files):
 1. ใช้ `git add <files>` เพื่อ stage เฉพาะไฟล์ที่ task แก้ไป
@@ -85,7 +80,6 @@ Split Commit (by category):
 ### 6. Write Commit Message(s)
 
 > Goal: เลือก commit type และเขียน commit message ตาม conventional commits format
-> Goal: commit message(s) สอดคล้อง conventional commits
 
 1. เลือก commit type ตาม Rules ส่วน Commit Types
 2. เขียน commit message ตาม Rules ส่วน Commit Message Format และ Body
@@ -94,7 +88,6 @@ Split Commit (by category):
 ### 7. Execute Commit
 
 > Goal: ดำเนินการ commit ตามโหมดที่เลือก
-> Goal: commit สำเร็จไม่มี error
 
 Single Commit และ Commit All:
 1. รัน `git commit -m "<message>"` หรือ `git commit`
@@ -109,7 +102,6 @@ Split Commit:
 ### 8. Report Git Log
 
 > Goal: รายงาน git log หลัง commit สำเร็จ
-> Goal: ผู้ใช้เห็นประวัติ commits ล่าสุดทันที
 
 1. หลังจาก `git commit` สำเร็จทุกกลุ่ม ทำ `/report-git-log` เพื่อสรุป commits ล่าสุด
 2. ใช้ range default `HEAD~5..HEAD` หรือช่วงทีเพิ่ม commit ในครั้งนี้
@@ -119,7 +111,6 @@ Split Commit:
 ### 9. Verify Commits
 
 > Goal: ตรวจสอบความถูกต้องของ commits
-> Goal: commits ถูกต้องและ working directory สะอาด
 
 1. รัน `git log --oneline -5` เพื่อดู commits ล่าสุด
 2. ตรวจสอบว่า commit messages สอดคล้องกับ conventional commits

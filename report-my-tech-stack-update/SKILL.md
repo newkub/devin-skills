@@ -20,7 +20,6 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 ### 1. Identify Current Tech Stack
 
 > Goal: ระบุ tech stack ปัจจุบัน
-> Goal: รู้ dependencies ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
 
 1. ทำ `/follow-my-tech-stack` เพื่อระบุ tech stack ทั้งหมด
 2. อ่าน `package.json`, `Cargo.toml`, `go.mod` เพื่อดู dependencies ปัจจุบัน
@@ -30,7 +29,6 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 ### 2. Check For Updates
 
 > Goal: ตรวจสอบอัปเดตที่มีอยู่
-> Goal: รู้ dependencies ที่มีอัปเดตพร้อมเวอร์ชันใหม่
 
 1. รัน `bun outdated` เพื่อเช็ค npm packages ที่มีอัปเดต
 2. รัน `cargo outdated` เพื่อเช็ค Rust crates ที่มีอัปเดต (ถ้ามี Rust project)
@@ -41,7 +39,6 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 ### 3. Research Release Notes
 
 > Goal: ค้นหา release notes และ changelogs
-> Goal: รู้ breaking changes และ migration guides ของ dependencies ที่มีอัปเดต
 
 1. ทำ `/deep-research` สำหรับ libraries ที่มีอัปเดตสำคัญ
 2. ใช้ `mcp7_list_releases` สำหรับ GitHub release tracking
@@ -52,7 +49,6 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 ### 4. Categorize Updates
 
 > Goal: จัดกลุ่มอัปเดตตามประเภท
-> Goal: อัปเดตจัดกลุ่มและจัดลำดับตาม impact
 
 1. จัดกลุ่มตาม category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
 2. จัดลำดับตาม impact: Breaking Changes, New Features, Bug Fixes, Security
@@ -62,7 +58,6 @@ description: รายงานอัปเดต tech stack ที่ใช้�
 ### 5. Compile Report
 
 > Goal: สร้างรายงานอัปเดตรายสัปดาห์
-> Goal: รายงานพร้อมตารางและ executive summary
 
 1. ทำ `/report-table` สร้างตารางอัปเดต
 2. กำหนด columns: No., Library, Category, Current Version, Latest Version, Impact, Summary

@@ -9,7 +9,7 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 ## Scope
 
-Use `follow-pkg-new` for the specific tasks and workflows it covers
+ใช้ `follow-pkg-new` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

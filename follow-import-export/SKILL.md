@@ -19,7 +19,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 1. Analyze Module Structure And Import Landscape
 
 > Goal: วิเคราะห์โครงสร้าง module และ import patterns ที่มีอยู่
-> Goal: เข้าใจโครงสร้าง module, import patterns ปัจจุบัน และปัญหา
 
 1. อ่าน configuration files หลัก (`package.json`, `tsconfig.json`, `vite.config.ts`, `biome.jsonc`)
 2. ระบุ files ทั้งหมดใน module ที่มี exports
@@ -31,7 +30,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 2. Configure Import Aliases
 
 > Goal: ตั้งค่า import aliases ใน configuration files
-> Goal: Import aliases สอดคล้องกันทุก config
 
 1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-typescript`)
 2. ตั้งค่า `resolve.alias` ใน `vite.config.ts` สำหรับ Vite
@@ -43,7 +41,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 3. Create Or Update Barrel File
 
 > Goal: สร้างหรืออัปเดต barrel export file และเลือก export strategy
-> Goal: Barrel file รวบรวม public API ชัดเจน ซ่อน internal symbols
 
 1. สร้าง `index.ts` ที่ root ของ module (ถ้ายังไม่มี)
 2. Export เฉพาะ public API ที่ consumers ต้องการใช้
@@ -56,7 +53,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 4. Replace Relative Imports And Enforce Ordering
 
 > Goal: แทนที่ relative paths ที่ซับซ้อนด้วย import aliases และจัดเรียง imports ให้สม่ำเสมอ
-> Goal: Import paths สั้น อ่านง่าย สม่ำเสมอ ใช้ barrel exports
 
 1. ค้นหา relative imports ที่ซับซ้อน (`../../../`)
 2. แทนที่ด้วย import alias ที่ตั้งค่าไว้
@@ -71,7 +67,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 5. Detect Circular Dependencies
 
 > Goal: ตรวจจับและแก้ไข circular dependencies
-> Goal: ไม่มี circular dependencies
 
 1. ทำ `/check-circular-dependencies` เพื่อตรวจจับและแก้ไข circular dependencies
 2. รัน `madge --circular --extensions ts,tsx` เพื่อตรวจสอบ
@@ -80,7 +75,6 @@ description: จัดการ import strategy และ barrel exports สำ�
 ### 6. Verify And Optimize
 
 > Goal: ตรวจสอบว่า import และ export strategy ทำงานได้ถูกต้องและมีประสิทธิภาพ
-> Goal: Import และ export strategy ทำงานได้ ไม่มี errors และไม่มี waste
 
 1. รัน `/run-typecheck` เพื่อตรวจสอบ type safety
 2. รัน `/run-lint` เพื่อตรวจสอบ code quality และ unused imports

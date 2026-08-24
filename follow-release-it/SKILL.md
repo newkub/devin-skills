@@ -16,7 +16,6 @@ description: ตั้งค่า release-it สำหรับ automated relea
 ### 1. Setup Package Scripts
 
 > Goal: เพิ่ม release script ใน `package.json`
-> Goal: สามารถรัน `bun run release` ได้
 
 1. เพิ่ม script ใน `package.json`
 
@@ -31,7 +30,6 @@ description: ตั้งค่า release-it สำหรับ automated relea
 ### 2. Create Release-it Config
 
 > Goal: สร้างไฟล์ config สำหรับ release-it
-> Goal: config ตั้งค่า git, npm, GitHub, และ hooks ถูกต้อง
 
 1. สร้างไฟล์ `.releaseit.json`
 
@@ -68,7 +66,6 @@ description: ตั้งค่า release-it สำหรับ automated relea
 ### 3. Create GitHub Workflow
 
 > Goal: สร้าง GitHub Actions workflow สำหรับ auto release
-> Goal: release อัตโนมัติเมื่อ push ไป main
 
 1. สร้างไฟล์ `.github/workflows/release-it.yml`
 
@@ -95,7 +92,6 @@ jobs:
 ### 4. Setup GitHub Secrets
 
 > Goal: ตั้งค่า secrets สำหรับ npm และ GitHub
-> Goal: GitHub Actions มีสิทธิ์ release และ publish package
 
 1. ทำ `/follow-open-github-secrets`
 2. ทำ `/open-env-website`

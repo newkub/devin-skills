@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้งาน Oxlint plugins ท
 
 ## Scope
 
-Use `follow-create-oxlint-plugins` for the specific tasks and workflows it covers
+ใช้ `follow-create-oxlint-plugins` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

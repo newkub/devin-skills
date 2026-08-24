@@ -16,7 +16,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 1. Check Project Type
 
 > Goal: ตรวจสอบประเภท project เพื่อกำหนด structure
-> Goal: ระบุว่า project เป็น monorepo หรือ single project
 
 1. ทำ `/check-monorepo` เพื่อตรวจสอบว่า project เป็น monorepo หรือไม่
 2. ถ้าเป็น monorepo ให้ทำตาม Monorepo section ด้านล่าง
@@ -25,7 +24,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 2. Analyze Project
 
 > Goal: วิเคราะห์ project เพื่อดู tech stack, structure, และ patterns
-> Goal: ระบุ tech stack, structure, และ dependencies ทั้งหมด
 
 1. ทำ `/analyze-project` เพื่อดู tech stack, structure, และ patterns
 2. อ่าน `package.json` ทั้ง root และ workspace เพื่อดู dependencies ทั้งหมด
@@ -33,7 +31,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 3. Setup Root Rules And Hooks
 
 > Goal: สร้าง root `.devin` structure สำหรับ shared rules และ hooks
-> Goal: สร้าง .devin/rules directory และ rules ตาม dependencies
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/rules เพื่อเข้าใจ rules
 2. สร้าง `.devin/rules` directory พร้อม subdirectories: `always-on/`, `model_decision/`, `glob/`
@@ -44,7 +41,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 4. Setup Hooks
 
 > Goal: สร้าง hooks สำหรับ Cascade
-> Goal: สร้าง .devin/hooks directory และ hook scripts
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/hooks/overview เพื่อเข้าใจ hooks
 2. สร้าง `.devin/hooks` directory
@@ -55,7 +51,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 5. Setup Workspace AGENTS.md (Monorepo Only)
 
 > Goal: ถ้าเป็น monorepo ให้สร้าง `AGENTS.md` สำหรับแต่ละ workspace โดยไม่สร้าง `.devin/` ใน sub-workspace
-> Goal: สร้าง AGENTS.md สำหรับทุก workspace และ root
 
 1. ระบุ workspaces ทั้งหมดจาก root `package.json` `workspaces` field
 2. สำหรับแต่ละ workspace:
@@ -67,7 +62,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 6. Setup Skills And MCP (Optional)
 
 > Goal: ตั้งค่า skills และ MCP servers (ถ้า project มีความต้องการเฉพาะ)
-> Goal: ตั้งค่า skills และ MCP servers ตามความจำเป็น
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/skills/overview เพื่อเข้าใจ skills
 2. อ่าน https://docs.devin.ai/cli/extensibility/mcp/overview เพื่อเข้าใจ MCP
@@ -76,7 +70,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 7. Update Ast-Grep Rules
 
 > Goal: เขียน ast-grep rules ใน `rules/` directory ที่ project root ตาม devin rules ที่สร้างขึ้น
-> Goal: สร้าง ast-grep rules และตั้งค่า sgconfig.yml
 
 1. ทำ `/update-ast-grep-rules` เพื่อแปลง devin rules เป็น ast-grep YAML format
 2. สร้าง ast-grep rules ใน `rules/always-on/`, `rules/model_decision/`, และ `rules/glob/` ที่ project root (แยกจาก `.devin/rules/` ที่เก็บ devin rules เป็น Markdown)
@@ -89,7 +82,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 8. Remove Workflows Directory
 
 > Goal: ลบ `.devin/workflows/` directory ถ้ามีอยู่
-> Goal: ลบ .devin/workflows/ directory ถ้ามีอยู่
 
 1. ตรวจสอบว่า `.devin/workflows/` directory มีอยู่หรือไม่
 2. ถ้ามี ให้ลบทิ้งทั้ง directory
@@ -97,7 +89,6 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 9. Test And Validate
 
 > Goal: ทดสอบและตรวจสอบ
-> Goal: ตรวจสอบว่าทุกอย่างทำงานได้ถูกต้อง
 
 1. ทดสอบ hooks ด้วยการแก้ไข code
 2. ตรวจสอบ exit codes และ output

@@ -16,7 +16,6 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 ### 1. Identify Target
 
 > Goal: ระบุ target ที่จะตั้งค่า config
-> Goal: ทราบ scope ว่าทำ root, workspace เดียว หรือทุก workspace
 
 1. ถ้ามี target จาก context หรือ argument ให้ใช้ target นั้น
 2. ถ้ามี argument workspace/file path → ทำเฉพาะ workspace นั้น
@@ -26,7 +25,6 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 ### 2. Analyze Dependencies
 
 > Goal: ตรวจสอบ dependencies และ config files ใน target
-> Goal: รู้ dependencies, config files ที่มี และ tech stack ที่ใช้
 
 1. อ่าน `package.json` ใน root และ target workspaces
 2. ตรวจสอบ config files ที่มีอยู่ (`biome.jsonc`, `tsconfig.json`, `moon.yml`, `lefthook.yml`)
@@ -35,7 +33,6 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 ### 3. Check Workflows And Skills
 
 > Goal: ตรวจสอบ global workflows และ skills ที่เกี่ยวข้อง
-> Goal: รู้ workflows และ skills ที่ต้องรันตาม stack
 
 1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-biome`)
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
@@ -44,7 +41,6 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 ### 4. Run Required Workflows
 
 > Goal: รัน workflows ที่จำเป็นตาม stack ที่ใช้
-> Goal: Config files ถูกต้องครบถ้วนสอดคล้องกับ tech stack
 
 1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
 2. รัน workflows ตาม tech stack (เช่น `/follow-biome`, `/follow-moonrepo`, `/follow-typescript`)
@@ -56,7 +52,6 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 ### 5. Coordinate With Build And Tasks
 
 > Goal: ประสานงานกับ build และ task configuration
-> Goal: config สอดคล้องกับ scripts และ build config
 
 1. ถ้ายังไม่ได้รัน → ทำ `/follow-tasks` สำหรับ target workspaces
 2. ถ้ามี build config ให้รัน build script จาก `package.json` หรือทำ `/follow-package-manifest`

@@ -9,7 +9,7 @@ description: แนวทางการใช้งาน Aube package manager 
 
 ## Scope
 
-Use `follow-aube` for the specific tasks and workflows it covers
+ใช้ `follow-aube` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

@@ -16,7 +16,6 @@ description: เลือกและใช้งาน UX/UI patterns ตาม
 ### 1. Detect UX/UI Dimension
 
 > Goal: ระบุ dimension ทีเหมาะสมกับสิ่งที่ต้องทำ
-> Goal: ได้ approach ทีถูกต้อง
 
 1. ถ้าเป็น micro-interaction, hover, focus, loading, toggle, feedback → ใช้ interaction patterns
 2. ถ้าเป็น animation visual/timeline → ใช้ animation best practices
@@ -28,7 +27,6 @@ description: เลือกและใช้งาน UX/UI patterns ตาม
 ### 2. Apply Pattern
 
 > Goal: นำ dimension ทีเลือกไปใช้งานจริง
-> Goal: เกิดผลลัพธ์ทีใช้งานได้
 
 1. ระบุ components/elements ทีได้รับผลกระทบ
 2. เลือก pattern ทีตอบโจทย์ user need

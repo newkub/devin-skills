@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้งาน Zod สำหร�
 
 ## Scope
 
-Use `follow-zod` for the specific tasks and workflows it covers
+ใช้ `follow-zod` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

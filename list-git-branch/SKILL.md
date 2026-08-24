@@ -16,7 +16,6 @@ description: แสดง branches ในเครื่องและ remote �
 ### 1. List Local Branches
 
 > Goal: ดู branches ในเครื่อง
-> Goal: รู้ branches ในเครื่องและ metadata
 
 1. รัน `git branch -v` เพื่อดู local branches พร้อม last commit
 2. รัน `git branch -vv` เพื่อดู local branches พร้อม upstream tracking
@@ -25,7 +24,6 @@ description: แสดง branches ในเครื่องและ remote �
 ### 2. List Remote Branches
 
 > Goal: ดู branches บน remote
-> Goal: รู้ remote branches ที่มี
 
 1. รัน `git branch -r` เพื่อดู remote branches
 2. รัน `git fetch --prune` ก่อนถ้าต้องการข้อมูลล่าสุด
@@ -34,7 +32,6 @@ description: แสดง branches ในเครื่องและ remote �
 ### 3. List All Branches
 
 > Goal: ดู branches ทั้งหมด
-> Goal: เห็นภาพรวมทั้ง local และ remote
 
 1. รัน `git branch -a` เพื่อดู branches ทั้งหมด
 2. รัน `git branch -a -v` เพื่อดูพร้อม last commit
@@ -43,7 +40,6 @@ description: แสดง branches ในเครื่องและ remote �
 ### 4. Collect Branch Metadata
 
 > Goal: รวบรวมข้อมูลเพิ่มเติมของแต่ละ branch
-> Goal: มีข้อมูลครบสำหรับรายงาน
 
 1. รัน `git log <branch> -1 --format="%H|%ci|%an|%s"` สำหรับแต่ละ branch เพื่อดู last commit info
 2. ระบุ branches ที่ไม่ได้ merge กับ current branch ด้วย `git branch --no-merged`
@@ -53,7 +49,6 @@ description: แสดง branches ในเครื่องและ remote �
 ### 5. Format Output
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
-> Goal: รายงานอ่านง่าย ครบข้อมูล
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:

@@ -1,25 +1,25 @@
 ---
 name: follow-examples
-description: Guide for Examples
+description: คู่มือสำหรับ Examples
 ---
 
 ## Goal
 
-Follow Examples
+ทำตาม Examples
 
 ## Scope
 
-Use `follow-examples` for the specific tasks and workflows it covers
+ใช้ `follow-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
-Follow the steps and rules below to execute this skill
+ทำตาม steps และ rules ด้านล่างเพื่อดำเนินการ skill นี้
 
 ## Rules
 
-- Follow the project conventions and global rules
-- Use the allowed tools only when needed
+- ทำตาม project conventions และ global rules
+- ใช้ tools ที่อนุญาตเฉพาะเมื่อจำเป็น
 
 ## Expected Outcome
 
-Completed `follow-examples` workflow with correct output
+เสร็จสิ้น `follow-examples` workflow พร้อม output ที่ถูกต้อง

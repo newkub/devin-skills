@@ -15,7 +15,6 @@ description: ตรวจสอบ SRP violations ด้วย ast-grep outline 
 ### 1. Determine Scope And Threshold
 
 > Goal: กำหนดเป้าหมายและเกณฑ์ SRP
-> Goal: มี scope และ threshold ชัดเจอก่อน analyze
 
 1. รับ target path หรือ file จาก user (default = ทั้ง project)
 2. ค่าเริ่มต้น threshold:
@@ -27,7 +26,6 @@ description: ตรวจสอบ SRP violations ด้วย ast-grep outline 
 ### 2. Run Ast-Grep Outline
 
 > Goal: ใช้ `ast-grep outline` สรุป top-level symbols และ members
-> Goal: มี structural overview ของ target files
 
 1. ทำ `/use-ast-grep-outline` เพื่อรัน `sg outline <path> --json`
 2. ดู top-level items (functions, classes, interfaces, types, exports)
@@ -37,7 +35,6 @@ description: ตรวจสอบ SRP violations ด้วย ast-grep outline 
 ### 3. Calculate SRP Metrics
 
 > Goal: ประมวลผล metrics จาก outline output
-> Goal: ระบุ units ที่ violate SRP
 
 1. ใช้ `/use-scripts` สร้าง script นับ top-level symbols ต่อไฟล์
 2. นับ public members ต่อ class/type
@@ -47,7 +44,6 @@ description: ตรวจสอบ SRP violations ด้วย ast-grep outline 
 ### 4. Deep Analyze With Use Scripts
 
 > Goal: ทำ deep analysis สำหรับ findings ที่พบ
-> Goal: ได้รายงานลึกซึ้งครอบคลุม
 
 1. ทำ `/deep-analyze-by-use-scripts` บน findings จาก Step 3
 2. รวบรวม metrics: file count, symbols, members, imports, cross-references
@@ -56,7 +52,6 @@ description: ตรวจสอบ SRP violations ด้วย ast-grep outline 
 ### 5. Generate Comprehensive Report
 
 > Goal: สร้างรายงาน SRP ครอบคลุม
-> Goal: รายงานสามารถใช้ตัดสินใจ refactor ได้
 
 1. สร้างตาราง: file, unit, top-level symbols, public members, cohesion score, srp status, severity, recommended action
 2. ใช้ format 7 columns จาก `/deep-analyze-by-use-scripts`: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence

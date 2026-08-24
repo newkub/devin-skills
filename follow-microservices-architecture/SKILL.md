@@ -16,7 +16,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 1. Analyze Domain Boundaries
 
 > Goal: วิเคราะห์ domain boundaries และ data ownership
-> Goal: รู้ service boundaries และ data ownership ชัดเจน
 
 1. ระบุ business capabilities และ bounded contexts
 2. แยก concerns ตาม domain-driven design
@@ -26,7 +25,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 2. Design Service Boundaries
 
 > Goal: ออกแบบ service boundaries และ contracts
-> Goal: มี service boundaries และ API contracts ชัดเจน
 
 1. กำหนด service boundaries ชัดเจน
 2. ระบุ APIs และ contracts ระหว่าง services
@@ -36,7 +34,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 3. Implement API Gateway
 
 > Goal: สร้าง API Gateway สำหรับ routing และ cross-cutting concerns
-> Goal: มี API Gateway ที่จัดการ routing, auth และ rate limiting
 
 1. สร้าง API Gateway สำหรับ routing
 2. กำหนด authentication และ authorization — ทำ `/follow-validation` สำหรับ input validation
@@ -46,7 +43,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 4. Implement Service Discovery
 
 > Goal: ตั้งค่า service discovery และ health checks
-> Goal: services ค้นพบกันได้อัตโนมัติและมี health monitoring
 
 1. ติดตั้ง service registry (Consul, Eureka, etcd)
 2. ตั้งค่า service registration
@@ -56,7 +52,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 5. Implement Communication
 
 > Goal: เลือกและตั้งค่า communication patterns ระหว่าง services
-> Goal: services สื่อสารกันได้อย่าง reliable และ fault-tolerant
 
 1. เลือก communication pattern: REST, gRPC, message queues
 2. ตั้งค่า inter-service communication
@@ -66,7 +61,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 6. Implement Data Isolation
 
 > Goal: กำหนด data isolation strategy สำหรับแต่ละ service
-> Goal: แต่ละ service มี database อิสระและมี consistency strategy ชัดเจน
 
 1. กำหนด database per service — ทำ `/follow-orm` สำหรับ data access patterns
 2. ตั้งค่า data replication ถ้าจำเป็น
@@ -76,7 +70,6 @@ description: พัฒนา distributed systems ด้วย Microservices Arch
 ### 7. Validate Architecture
 
 > Goal: ตรวจสอบ architecture หลัง implement
-> Goal: ยืนยัน service independence, fault tolerance และ scalability
 
 1. ตรวจสอบ service independence
 2. ทดสอบ fault tolerance แล resilience

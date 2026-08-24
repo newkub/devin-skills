@@ -21,7 +21,6 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 ### 1. Check Precondition
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
-> Goal: มี Rust toolchain พร้อมสำหรับ Dioxus
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว (`rustc --version`)
 2. ตรวจสอบ Cargo ติดตั้งแล้ว (`cargo --version`)
@@ -30,7 +29,6 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 ### 2. Setup
 
 > Goal: ติดตั้ง Dioxus CLI และสร้างโปรเจกต์
-> Goal: มี project structure เริ่มต้นพร้อมพัฒนา
 
 1. ติดตั้ง Dioxus CLI: `cargo install dioxus-cli`
 2. ตรวจสอบ `dx --version`
@@ -40,7 +38,6 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 ### 3. Configure
 
 > Goal: กำหนดค่า `Cargo.toml` และ `Dioxus.toml`
-> Goal: project สามารถ build ได้ทุก target
 
 1. ระบุ `dioxus` dependency ใน `Cargo.toml` พร้อม feature ตาม target
 2. สร้าง `Dioxus.toml` กำหนด `default_platform`, `out_dir`, `asset_dir`
@@ -50,7 +47,6 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 ### 4. Develop
 
 > Goal: พัฒนา components และรัน development server
-> Goal: UI ทำงานได้ และ development server รันได้
 
 1. สร้าง `src/main.rs` ด้วย `launch(app)` และ component tree
 2. ใช้ `use_signal` สำหรับ state
@@ -60,7 +56,6 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 ### 5. Build
 
 > Goal: Build สำหรับ production
-> Goal: ได้ executable หรือ static files พร้อม deploy
 
 1. Desktop: `dx build --release`
 2. Web: `dx build --release --platform web`

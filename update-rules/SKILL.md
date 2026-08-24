@@ -27,7 +27,6 @@ description: อัพเดท rules ทั้ง .devin/rules และ ast-gr
 ### 2. Update Ast-Grep Rules
 
 > Goal: อัพเดท `rules/` directory ที่ project root ให้ครอบคลุมทุก devin rules ที่อัพเดทใน step 1 และสอดคล้องกับ official documentation
-> Goal: ast-grep rules ครอบคลุมทุก devin rules ที่แปลงได้ ไม่มี devin rule ใดที่ขาด ast-grep counterpart
 
 1. ทำ `/update-ast-grep-rules` เพื่อแปลง devin rules ทั้งหมดจาก step 1 เป็น ast-grep YAML format
 2. ตรวจสอบ coverage ทุก devin rule: สำหรับทุกไฟล์ใน `.devin/rules/always-on/`, `.devin/rules/model_decision/`, `.devin/rules/glob/` ต้องมี ast-grep rule ที่เกี่ยวข้อง ถ้าแปลงไม่ได้ ให้ระบุเหตุผลและใช้ `/use-scripts` แทน
@@ -52,7 +51,7 @@ ImprovVdat
 > Goal: Validate And Finalize
 ปรับปรุงและ
 
-1.ำ `/improve-rules` เพื่อปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
+1.ำ `/review-rules` เพื่อปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
 2
 3. รัน `bun run scan` เพื่อตรวจสอบ ast-grep rules ทำงานได้
 4. รัน `bun run typecheck` เพื่อตรวจสอบไม่มี type errors จากการเปลี่ยนแปลง

@@ -9,7 +9,7 @@ description: แสดง template shell script list projects ใน drive D ท
 
 ## Scope
 
-Use `list-project-in-drive-d` for the specific tasks and workflows it covers
+ใช้ `list-project-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

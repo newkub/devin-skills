@@ -9,7 +9,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 
 ## Scope
 
-Use `run-clean` for the specific tasks and workflows it covers
+ใช้ `run-clean` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

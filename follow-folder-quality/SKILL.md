@@ -24,7 +24,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 1. Determine Threshold
 
 > Goal: กำหนดเกณฑ์สำหรับ "โฟลเดอร์มีไฟล์มาก"
-> Goal: มีเกณฑ์ชัดเจนก่อน scan
 
 1. ค่าเริ่มต้น: โฟลเดอร์ที่มีไฟล์มากกว่า `20` ไฟล์ (ไม่รวม test หรือ generated)
 2. ถ้ามี argument จาก user → ใช้ค่าที่ user ระบุ
@@ -33,7 +32,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 2. Scan Folder Structure
 
 > Goal: หาไฟล์ทั้งหมดใน target path
-> Goal: มีรายการไฟล์ครบถ้วนพร้อม path
 
 1. ทำ `/scan-codebase` เพื่อ list ไฟล์ใน target path
 2. กรองไฟล์ที่ไม่ต้องนับ: `*.test.*`, `*.spec.*`, `node_modules/`, `.git/`, `dist/`, `build/`, `temp/`, `coverage/`
@@ -42,7 +40,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 3. Count Files Per Folder
 
 > Goal: นับจำนวนไฟล์ในแต่ละโฟลเดอร์
-> Goal: ระบุโฟลเดอร์ที่เกิน threshold
 
 1. ใช้ `/use-scripts` สร้าง script นับไฟล์ต่อโฟลเดอร์ด้วย `Bun.Glob`
 2. รายงานเฉพาะโฟลเดอร์ที่เกิน threshold
@@ -51,7 +48,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 4. Assess Folder Quality
 
 > Goal: ประเมินหลายมิติของคุณภาพโฟลเดอร์
-> Goal: ระบุปัญหาคุณภาพนอกเหนือจากจำนวนไฟล์
 
 1. ตรวจสอบ domain cohesion: ไฟล์ในโฟลเดอร์เกี่ยวข้องกันหรือไม่ ดูจาก filenames และ imports
 2. ตรวจสอบ naming consistency: ชื่อไฟล์และโฟลเดอร์สะท้อน responsibility หรือไม่ ใช้ `/review-codebase` ถ้าจำเป็น
@@ -63,7 +59,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 5. Identify Restructure Candidates
 
 > Goal: วิเคราะห์ว่าโฟลเดอร์ใดควร restructure
-> Goal: ไม่ทุกโฟลเดอร์ที่มีไฟล์เยอะจำเป็นต้อง restructure
 
 1. รวมผลจาก Step 3 และ Step 4 เป็น quality score หรือ priority
 2. ถ้าพบหลายปัญหา (bloat + low cohesion + cross-boundary imports) → mark เป็น high-priority candidate
@@ -72,7 +67,6 @@ description: ตรวจสอบคุณภาพของโฟลเดอ�
 ### 6. Report
 
 > Goal: สรุปผลการตรวจสอบ
-> Goal: ผู้ใช้ได้รับ report ที่ใช้ตัดสินใจได้
 
 1. สร้างตาราง: folder | file count | quality issues | restructure candidate | priority
 2. ระบุ recommended next action: `/restructure`, `/refactor-packages`, หรือ none

@@ -16,7 +16,6 @@ description: Report usage statistics and patterns of APIs, functions, or skills
 ### 1. Identify Targets
 
 > Goal: ระบุสิ่งทีต้องวัด usage
-> Goal: scope ของ report ชัดเจน
 
 1. ถาม user หรือ detect จาก request
 2. ระบุ API endpoints, functions, classes, skills หรือ dependencies
@@ -25,7 +24,6 @@ description: Report usage statistics and patterns of APIs, functions, or skills
 ### 2. Collect Usage Data
 
 > Goal: รวบรวมข้อมูลการใช้งาน
-> Goal: มี metrics ครบ
 
 1. นับจำนวน call sites/imports
 2. ระบุ files/workspaces ทีใช้
@@ -35,7 +33,6 @@ description: Report usage statistics and patterns of APIs, functions, or skills
 ### 3. Report Usage
 
 > Goal: สร้างรายงาน
-> Goal: usage patterns เข้าใจง่าย
 
 1. ทำ `/report-table` สำหรับ top consumers, frequency, versions
 2. ทำ `/report-file-structure` สำหรับ caller tree

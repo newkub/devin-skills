@@ -9,7 +9,7 @@ description: จัดลำดับความสำคัญของ incide
 
 ## Scope
 
-Use `follow-incident-triage` for the specific tasks and workflows it covers
+ใช้ `follow-incident-triage` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

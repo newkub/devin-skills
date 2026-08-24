@@ -16,7 +16,6 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 ### 1. Identify New Skill
 
 > Goal: ระบุชื่อและวัตถุประสงค์ของ skill
-> Goal: skill ใหม่มีชื่อและ scope ชัดเจน
 
 1. รับชื่อ skill และสิ่งที่ต้องการทำจาก user
 2. ตรวจสอบว่า skill name ใช้ lowercase, คั่นด้วย `-` และไม่มีอักขระพิเศษ
@@ -26,7 +25,6 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 ### 2. Check Existing Skills
 
 > Goal: ตรวจสอบว่าไม่ซ้ำซ้อน
-> Goal: ไม่สร้าง skill ซ้ำ
 
 1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
 2. ตรวจสอบว่า skill name ซ้ำกับ existing skills หรือไม่
@@ -36,7 +34,6 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 ### 3. Create Directory
 
 > Goal: สร้าง directory สำหรับ skill
-> Goal: โครงสร้าง skill ถูกต้อง
 
 1. สร้าง `%APPDATA%\devin\skills\<skill-name>\`
 2. สร้าง `SKILL.md` เปล่าภายใน directory
@@ -45,7 +42,6 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 ### 4. Write SKILL.md And Directory
 
 > Goal: สร้าง `SKILL.md` และ directory contents
-> Goal: skill package ถูกต้องและครบถ้วน
 
 1. ทำ `/follow-write-devin-skills` เพื่อเลือก template, เขียน `SKILL.md` (frontmatter + prompt body), และจัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
 2. กำหนด `name` ให้ตรงกับ directory name
@@ -54,10 +50,9 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 ### 5. Validate And Update References
 
 > Goal: ตรวจสอบคุณภาพและ references
-> Goal: skill พร้อมใช้งาน
 
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/review-devin-global-skills` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำ `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
 4. ทำ `/follow-content-quality` เพื่อตรวจสอบความชัดเจน
 5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
@@ -93,7 +88,7 @@ description: สร้าง skill ใหม่ใน devin skills repo ตา�
 
 - skill ใหม่ถูกสร้างที่ `%APPDATA%\devin\skills\<skill-name>\` พร้อม `SKILL.md` ถูกต้อง
 - directory name ตรงกับ `name` ใน frontmatter
-- `SKILL.md` ผ่าน `/validate` และ `/review-devin-global-skills` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- `SKILL.md` ผ่าน `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - `related` references ครบถ้วน ไม่มี missing/unused
 - directory structure ครบถ้วนตาม `/follow-write-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
 - ไม่ซ้ำกับ skills ที่มีอยู่ หรือได้รับการยืนยันให้ extend หรือ rename

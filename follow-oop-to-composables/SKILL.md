@@ -9,7 +9,7 @@ description: แปลง OOP เป็น composables function style
 
 ## Scope
 
-Use `follow-oop-to-composables` for the specific tasks and workflows it covers
+ใช้ `follow-oop-to-composables` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

@@ -16,7 +16,6 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 ### 1. Identify Rename Target
 
 > Goal: ระบุ identifier ที่จะ rename และ scope ของการเปลี่ยนแปลง
-> Goal: รู้ชื่อเดิม ชื่อใหม่ ประเภท identifier และภาษา
 
 1. ระบุ identifier เดิมและชื่อใหม่ที่ต้องการ
 2. ระบุประเภท: variable, function, type, class, interface, enum, property
@@ -27,7 +26,6 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 ### 2. Search All References
 
 > Goal: ค้นหา references ทั้งหมดของ identifier เดิมก่อน rename
-> Goal: รู้จำนวนและตำแหน่ง references ทั้งหมด
 
 1. ใช้ `ast-grep run -p '$OLD_NAME' --lang <lang> <path>` เพื่อค้นหาทุก occurrence
 2. ใช้ `grep_search` สำหรับค้นหาใน config files, markdown, และ non-code files
@@ -38,7 +36,6 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 ### 3. Rename With Ast-grep
 
 > Goal: ใช้ ast-grep สำหรับ rename identifier ทั้ง definition และ usage
-> Goal: ทุก occurrence ของ identifier เดิมถูกแทนที่ด้วยชื่อใหม่
 
 1. ใช้ `--rewrite` flag สำหรับ ad-hoc rename แบบเร็ว:
    ```sh
@@ -76,7 +73,6 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 ### 4. Update Non-Code References
 
 > Goal: อัปเดท references ในไฟล์ที่ ast-grep ไม่ครอบคลุม
-> Goal: ไม่มี broken references ในทุกประเภทไฟล์
 
 1. ทำ `/update-reference` เพื่ออัปเดท references ใน config files, markdown, JSON, YAML
 2. ค้นหาด้วย `grep_search` อีกครั้งเพื่อยืนยันว่าไม่มีชื่อเดิมเหลือ
@@ -87,7 +83,6 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 ### 5. Validate Changes
 
 > Goal: ตรวจสอบว่า rename สมบูรณ์และไม่ทำลาย code
-> Goal: Code ทำงานได้ ไม่มี broken references
 
 1. รัน `grep_search` ค้นหาชื่อเดิมอีกครั้ง → ต้องไม่พบ (ยกเว้นใน git history หรือ comments ที่ไม่เกี่ยวข้อง)
 2. รัน typecheck: `tsc --noEmit` หรือ `bun run typecheck`

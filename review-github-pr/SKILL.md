@@ -16,7 +16,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ### 1. Fetch PR Context
 
 > Goal: รวบรวมข้อมูล PR ทั้งหมด
-> Goal: เข้าใจ scope, changes และ context ของ PR
 
 1. ถ้ามี PR number → รัน `gh pr view <pr>` และ `gh pr diff <pr>` — ถ้าไม่มี → รัน `git diff <base>..<head>` และ `git log --oneline <base>..<head>`
 2. บันทึกข้อมูล: title, description, author, base branch, commits, files changed, additions/deletions, labels, checks
@@ -26,7 +25,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ### 2. Review PR Metadata
 
 > Goal: ตรวจสอบ metadata ของ PR
-> Goal: PR พร้อม merge จาก high-level
 
 1. ตรวจ title ตาม conventional commit format (`<type>: <subject>`)
 2. ตรวจ description มี context, linked issue, และ changes summary
@@ -38,7 +36,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ### 3. Review Code Changes
 
 > Goal: ตรวจสอบ code changes ของ PR
-> Goal: หา issues ใน diff ทั้ง quality, security, test, architecture
 
 1. ทำ /run-check เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
 2. ทำ /review-codebase บน files ที่เปลี่ยนแปลง
@@ -53,7 +50,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ### 4. Validate Findings
 
 > Goal: ตรวจสอบ findings ก่อน report
-> Goal: Findings ถูกต้องและจัดลำดับชัดเจน
 
 1. ทำ /deep-validate เพื่อ validate findings หลายมิติ
 2. ทำ /validate เพื่อ validate issues แต่ละอย่าง
@@ -63,7 +59,6 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ### 5. Report And Recommend
 
 > Goal: สร้างรายงานและแนะนำ action
-> Goal: รายงานผล review พร้อม recommendation
 
 1. ทำ /report พร้อม /report-table
 2. สร้างตาราง PR Checklist: Title, Description, Size, Conflicts, Conventional Commits, Tests, CI

@@ -5,11 +5,11 @@ description: Run Cleanup
 
 ## Goal
 
-Run Cleanup
+รันการทำความสะอาด
 
 ## Scope
 
-Use `run-cleanup` for the specific tasks and workflows it covers
+ใช้ `run-cleanup` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

@@ -1,6 +1,6 @@
 ---
 name: review-docs
-description: Review documentation quality including README, setup, API docs, examples, guides, changelogs, and co
+description: Review และปรับปรุง documentation quality including README, setup, API docs, examples, guides, changelogs
 ---
 
 ## Goal
@@ -92,6 +92,17 @@ Review documentation ของ project ครอบคลุม README, setup gu
 
 
 
+### 7. Improve
+
+> Goal: ปรับปรุง docs, comments, และ DX ตาม findings
+
+1. สร้างหรือปรับปรุง README, CONTRIBUTING, setup guide และ onboarding docs ที่ขาด
+2. ระบุ one-command setup เช่น `bun install && bun dev`
+3. เพิ่ม comments สำหรับ why ไม่ใช่ what; ลด comments ที่ซ้ำซ้อนหรือล้าหลัง
+4. ปรับปรุง error messages ให้บอกสาเหตุและวิธีแก้
+5. ใช้ `/review-efficiency` ถ้า build ช้า; ใช้ `/follow-config` ถ้า config ซับซ้อน
+6. ทำ `/validate` หรือ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+
 ## Rules
 
 ### 1. Severity Classification
@@ -151,6 +162,7 @@ Review documentation ของ project ครอบคลุม README, setup gu
 - รายงาน findings ตาม doc category
 - Review score
 - Recommendations
+- ปรับปรุง docs, comments, และ DX โดยไม่มี regression
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 
 - ตาราง: category | coverage % | gaps found | severity | action item

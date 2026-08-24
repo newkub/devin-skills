@@ -9,7 +9,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 
 ## Scope
 
-Use `follow-create-eslint-plugins` for the specific tasks and workflows it covers
+ใช้ `follow-create-eslint-plugins` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

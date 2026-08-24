@@ -9,7 +9,7 @@ description: รัน lint, typecheck และ scan เพื่อตรว�
 
 ## Scope
 
-Use `run-check` for the specific tasks and workflows it covers
+ใช้ `run-check` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

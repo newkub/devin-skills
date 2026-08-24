@@ -1,25 +1,25 @@
 ---
 name: publish-package-to-npm
-description: Publish Package To Npm
+description: เผยแพร่ Package ไปยัง Npm
 ---
 
 ## Goal
 
-Publish Package To Npm
+เผยแพร่ Package ไปยัง Npm
 
 ## Scope
 
-Use `publish-package-to-npm` for the specific tasks and workflows it covers
+ใช้ `publish-package-to-npm` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
-Follow the steps and rules below to execute this skill
+ทำตาม steps และ rules ด้านล่างเพื่อ execute skill นี้
 
 ## Rules
 
-- Follow the project conventions and global rules
-- Use the allowed tools only when needed
+- ทำตาม project conventions และ global rules
+- ใช้ allowed tools เฉพาะเมื่อจำเป็น
 
 ## Expected Outcome
 
-Completed `publish-package-to-npm` workflow with correct output
+`publish-package-to-npm` workflow เสร็จสมบูรณ์พร้อม output ที่ถูกต้อง

@@ -32,7 +32,6 @@ description: สร้าง Slidev project ใน D:/newkub/slides และเ
 ### 3. Create Slides File
 
 > Goal: สร้าง `slides.md` ด้วย headmatter และ per-slide frontmatter มาตรฐาน
-> Goal: `slides.md` มี headmatter และ per-slide frontmatter ครบถ้วน
 
 1. เขียน headmatter (first `---` block) สำหรับ global config
 2. เขียน per-slide frontmatter สำหรับแต่ละ slide
@@ -68,7 +67,6 @@ transition: fade-out
 ### 4. Use Built-in Layouts
 
 > Goal: เลือก layout ตามเนื้อหา
-> Goal: ใช้ layout ที่เหมาะสมกับเนื้อหาแต่ละ slide
 
 - `cover` — title slide หน้าแรก
 - `center` — content กึ่งกลาง
@@ -83,7 +81,6 @@ transition: fade-out
 ### 5. Add Code Blocks
 
 > Goal: ใช้ Shiki syntax highlighting พร้อม features
-> Goal: code blocks มี syntax highlighting และ interactive features
 
 - ใช้ `{2|4-6|all}` สำหรับ line highlighting
 - ใช้ `[filename.rs]` สำหรับ filename label
@@ -96,7 +93,6 @@ transition: fade-out
 ### 6. Add Diagrams And Animations
 
 > Goal: เพิ่ม diagrams และ animations ตามต้องการ
-> Goal: slides มี diagrams และ animations ที่ช่วยอธิบายเนื้อหา
 
 1. ใช้ Mermaid สำหรับ diagrams:
 

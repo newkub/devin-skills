@@ -9,7 +9,7 @@ description: ย้ายไฟล์และอัพเดท reference
 
 ## Scope
 
-Use `move` for the specific tasks and workflows it covers
+ใช้ `move` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

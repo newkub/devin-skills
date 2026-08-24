@@ -127,7 +127,7 @@ description: ปรับปรุง web SaaS product ครบวงจรเ�
 
 ### 1. SaaS-Specific Requirements
 
-ข้อกำหนดเฉพาะของ SaaS products ที่ไม่ครอบคลุมโดย `/improve-*` workflows
+ข้อกำหนดเฉพาะของ SaaS products ที่ไม่ครอบคลุมโดย `/review-*` workflows
 
 - Billing: integrate payment gateways, subscription management, usage tracking, handle payment failures gracefully
 - Data Privacy: GDPR compliance, data retention policies, data export/deletion, consent management

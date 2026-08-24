@@ -9,7 +9,7 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 
 ## Scope
 
-Use `follow-phase-dev` for the specific tasks and workflows it covers
+ใช้ `follow-phase-dev` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

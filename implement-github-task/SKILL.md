@@ -1,55 +1,55 @@
 ---
 name: implement-github-task
-description: Implement a task from a GitHub issue or project item
+description: นำ task จาก GitHub issue หรือ project item ไป implement
 ---
 
 ## Goal
 
-Read a GitHub issue or project task and implement the work
+อ่าน GitHub issue หรือ project task แล้ว implement งานนั้น
 
 ## Scope
 
-Use to convert issue/task into code or documentation changes
+ใช้เพื่อแปลง issue/task เป็นการเปลี่ยนแปลง code หรือ documentation
 
 ## Execute
 
 ### 1. Read task
-> Goal: read task
+> Goal: อ่าน task
 
-1. Run gh issue view or gh project item-list
-1. Extract title, body, acceptance criteria
+1. รัน gh issue view หรือ gh project item-list
+1. ดึง title, body, acceptance criteria
 
 ### 2. Plan
-> Goal: plan
+> Goal: วางแผน
 
-1. Call /create-plan if complex
-1. Identify files and skills needed
+1. เรียก /create-plan ถ้าซับซ้อน
+1. ระบุ files และ skills ที่จำเป็น
 
 ### 3. Implement
 > Goal: implement
 
-1. Make changes according to task
-1. Call /realize-implementation or /refactor
+1. ทำการเปลี่ยนแปลงตาม task
+1. เรียก /realize-implementation หรือ /refactor
 
 ### 4. Verify
-> Goal: verify
+> Goal: ตรวจสอบ
 
-1. Run /run-check and /run-test
-1. Update project status or close issue
+1. รัน /run-check และ /run-test
+1. อัปเดต project status หรือปิด issue
 
 ### 5. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Summarize changes and link to issue/PR
+1. สรุปการเปลี่ยนแปลงและลิงก์ไปยัง issue/PR
 
 ## Rules
 
-- Ask user before destructive changes
-- Close issue only after verification
-- Update project status when done
+- ถาม user ก่อนทำการเปลี่ยนแปลงที่ทำลายล้าง
+- ปิด issue เฉพาะหลังตรวจสอบแล้ว
+- อัปเดต project status เมื่อเสร็จ
 
 ## Expected Outcome
 
-- Task implemented
-- Issue closed or project status updated
-- Verification passes
+- Task ถูก implement แล้ว
+- Issue ถูกปิดหรือ project status ถูกอัปเดต
+- การตรวจสอบผ่าน

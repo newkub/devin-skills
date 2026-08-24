@@ -1,48 +1,48 @@
 ---
 name: update-github-task
-description: Update fields and status of GitHub Project tasks
+description: อัปเดต fields และสถานะของงานใน GitHub Project
 ---
 
 ## Goal
 
-Update task status, priority, assignee, or custom fields
+อัปเดตสถานะงาน, priority, assignee, หรือ custom fields
 
 ## Scope
 
-Use when a project task needs metadata changes
+ใช้เมื่องานใน project ต้องเปลี่ยน metadata
 
 ## Execute
 
 ### 1. Find task
-> Goal: find task
+> Goal: ค้นหางาน
 
-1. Run gh project item-list
-1. Get item ID
+1. รัน `gh project item-list`
+1. รับ item ID
 
 ### 2. Edit fields
-> Goal: edit fields
+> Goal: แก้ไข fields
 
-1. Run gh project item-edit with field-id and value
-1. Update status, priority, assignee
+1. รัน `gh project item-edit` พร้อม field-id และ value
+1. อัปเดต status, priority, assignee
 
 ### 3. Verify
-> Goal: verify
+> Goal: ตรวจสอบ
 
-1. Run gh project item-list again
-1. Confirm changes
+1. รัน `gh project item-list` อีกครั้ง
+1. ยืนยันการเปลี่ยนแปลง
 
 ### 4. Report
-> Goal: report
+> Goal: รายงาน
 
-1. Return updated task summary
+1. ส่งสรุปงานที่อัปเดตแล้วกลับ
 
 ## Rules
 
-- Use --json to get field and item IDs
-- Specify owner and project number
-- Do not change status without context
+- ใช้ `--json` เพื่อรับ field และ item IDs
+- ระบุ owner และ project number
+- ห้ามเปลี่ยนสถานะโดยไม่มี context
 
 ## Expected Outcome
 
-- Task fields updated
-- Project reflects new state
+- fields ของงานถูกอัปเดต
+- Project สะท้อนสถานะใหม่

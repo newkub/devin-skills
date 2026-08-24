@@ -5,11 +5,11 @@ description: Steps to delete a git submodule
 
 ## Goal
 
-Delete Submodules
+ลบ Submodules
 
 ## Scope
 
-Use `delete-submodules` for the specific tasks and workflows it covers
+ใช้ `delete-submodules` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

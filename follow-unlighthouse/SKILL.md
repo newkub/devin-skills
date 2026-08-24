@@ -9,7 +9,7 @@ description: ตั้งค่า Unlighthouse CLI และ CI สำหรั
 
 ## Scope
 
-Use `follow-unlighthouse` for the specific tasks and workflows it covers
+ใช้ `follow-unlighthouse` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

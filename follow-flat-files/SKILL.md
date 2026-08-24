@@ -16,7 +16,6 @@ description: แปลง references directory จากโครงสร้า
 ### 1. Identify Target Directories
 
 > Goal: หา directories ที่ต้องแปลง
-> Goal: รู้จำนวนไฟล์และตำแหน่งที่ต้องแปลง
 
 1. ระบุ `references/` หรือ target directory ที่ต้องการแปลง
 2. ใช้ `glob` หา `*/SKILL.md` ภายใต้ target directory
@@ -26,7 +25,6 @@ description: แปลง references directory จากโครงสร้า
 ### 2. Convert To Flat Files
 
 > Goal: ย้าย `SKILL.md` จากแต่ละ directory ออกมาเป็น flat file
-> Goal: ไม่มี nested directories เหลืออยู่
 
 1. สำหรับแต่ละ `<name>/SKILL.md`:
    - อ่านเนื้อหาทั้งหมด
@@ -38,7 +36,6 @@ description: แปลง references directory จากโครงสร้า
 ### 3. Update Path References
 
 > Goal: อัปเดท paths ใน active skill files หรือ references อื่นที่อ้างอิงถึง directories เดิม
-> Goal: ไม่มี broken references
 
 1. ใช้ `grep` ค้นหา `references/<name>/` หรือ `references/<name>/SKILL.md` ทั่ว target skill
 2. แทนที่ด้วย `references/<name>.md`
@@ -48,7 +45,6 @@ description: แปลง references directory จากโครงสร้า
 ### 4. Validate
 
 > Goal: ตรวจสอบว่าโครงสร้าง flat ถูกต้อง
-> Goal: active skill ยังเรียก references ได้
 
 1. ตรวจสอบ active skill ยังเรียก references ได้
 2. ทำ `/update-reference` กับ active skill หลัก

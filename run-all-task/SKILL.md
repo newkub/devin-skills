@@ -1,55 +1,55 @@
 ---
 name: run-all-task
-description: Run all pending tasks from queue in order
+description: รันงานที่ค้างอยู่ทั้งหมดจากคิวตามลำดับ
 ---
 
 ## Goal
 
-Execute all pending tasks from a task queue without manual intervention
+รันงานที่ค้างอยู่ทั้งหมดจากคิวงานโดยไม่ต้องแทรกแซงด้วยมือ
 
 ## Scope
 
-Use when there are multiple queued tasks to complete in one pass
+ใช้เมื่อมีงานในคิวหลายงานที่ต้องทำให้เสร็จในรอบเดียว
 
 ## Execute
 
 ### 1. Read queue
-> Goal: read queue
+> Goal: อ่านคิว
 
-1. Read QUEUE.md or task list
-1. Filter status: pending
-1. Sort by priority/created
+1. อ่าน `QUEUE.md` หรือรายการงาน
+1. กรองสถานะ: pending
+1. เรียงตาม priority/created
 
 ### 2. Execute tasks
-> Goal: execute tasks
+> Goal: รันงาน
 
-1. Run each task with appropriate skill
-1. Update status to in-progress
-1. Handle errors with /resolve-errors
+1. รันแต่ละงานด้วย skill ที่เหมาะสม
+1. อัปเดตสถานะเป็น in-progress
+1. จัดการ error ด้วย `/resolve-errors`
 
 ### 3. Verify
-> Goal: verify
+> Goal: ตรวจสอบ
 
-1. Run /run-check and /run-test after tasks
-1. Compare results with expected
-1. Retry failed tasks up to 3 times
+1. รัน `/run-check` และ `/run-test` หลังทำงานเสร็จ
+1. เปรียบเทียบผลลัพธ์กับที่คาดหวัง
+1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
 
 ### 4. Update and report
-> Goal: update and report
+> Goal: อัปเดตและรายงาน
 
-1. Mark completed tasks in queue
-1. Report summary
-1. Call /suggest-next-action
+1. ทำเครื่องหมายงานที่เสร็จในคิว
+1. รายงานสรุปผล
+1. เรียก `/suggest-next-action`
 
 ## Rules
 
-- Run one task at a time unless tasks are independent
-- Ask user before destructive actions
-- Stop and report if a task fails after max retries
-- Update queue status after each task
+- รันทีละงาน เว้นแต่งานเป็นอิสระต่อกัน
+- ถามผู้ใช้ก่อนทำ action ที่ทำลายล้าง
+- หยุดและรายงานหากงานล้มเหลวหลังจากลองใหม่ครบจำนวนสูงสุด
+- อัปเดตสถานะคิวหลังจบแต่ละงาน
 
 ## Expected Outcome
 
-- All pending tasks are executed
-- Queue status reflects results
-- Verification passes
+- งานที่ค้างอยู่ทั้งหมดถูกรันแล้ว
+- สถานะคิวสะท้อนผลลัพธ์
+- การตรวจสอบผ่าน

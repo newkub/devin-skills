@@ -9,7 +9,7 @@ merge ไฟล์เข้าด้วยกันและลบไฟล์�
 
 ## Scope
 
-Use `merge` for the specific tasks and workflows it covers
+ใช้ `merge` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

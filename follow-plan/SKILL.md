@@ -16,7 +16,6 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 ### 1. Load Plan
 
 > Goal: โหลด plan เข้ามา
-> Goal: รู้ steps ทั้งหมดที่ต้องทำ
 
 1. อ่าน `AGENTS.md` ใน project root
 2. ถ้าไม่พบ plan ใน `AGENTS.md` → ค้นหาไฟล์ `PLAN.md`, `plan.md`, `TODO.md` หรือ context ที่ผู้ใช้ให้มา
@@ -26,7 +25,6 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 ### 2. Parse Steps
 
 > Goal: แยก plan ออกเป็น executable steps
-> Goal: ทุก step ต้องระบุ action ชัดเจน
 
 1. แปลงแต่ละ step เป็นหนึ่งใน:
    - workflow: ชื่อ workflow เช่น `report`
@@ -39,7 +37,6 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 ### 3. Execute Steps
 
 > Goal: ทำตาม plan ทีละ step
-> Goal: ทุก step ทำเสร็จและผ่าน expected outcome
 
 1. สร้าง todo list จาก steps ทั้งหมด
 2. ทำ step แรก → mark `in_progress`
@@ -51,7 +48,6 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 ### 4. Handle Failures
 
 > Goal: จัดการ step ทีไม่ผ่าน
-> Goal: ไม่ข้าม failures โดยไม่ได้รับการอนุมัติ
 
 1. ถ้า step ไม่ผ่าน → ทำ `resolve-errors` หรือถาม user
 2. ทำซ้ำ step นั้น (max 3 ครั้ง)
@@ -61,7 +57,6 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 ### 5. Validate And Report
 
 > Goal: ตรวจสอบและรายงานผล
-> Goal: ผู้ใช้ทราบสถานะ plan ทั้งหมด
 
 1. ตรวจสอบว่าทุก step เป็น `completed` หรือ `ข้าม`
 2. รวบรวมผลลัพธ์เป็น table

@@ -16,7 +16,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 1. Install Vercel CLI
 
 > Goal: ติดตั้งและ authenticate Vercel CLI
-> Goal: Vercel CLI ติดตั้งและ authenticate สำเร็จ
 
 1. รัน `bun add -D vercel`
 2. หรือใช้ `bunx vercel` โดยไม่ต้องติดตั้ง
@@ -25,7 +24,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 2. Link Project
 
 > Goal: เชื่อมต่อ project กับ Vercel
-> Goal: Project เชื่อมต่อกับ Vercel ได้
 
 1. รัน `bunx vercel link` ใน project directory
 2. ยืนยัน project settings
@@ -34,7 +32,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 3. Configure vercel.json
 
 > Goal: กำหนด configuration สำหรับ deployment
-> Goal: `vercel.json` ตั้งค่าถูกต้องตาม project
 
 `vercel.json`:
 ```json
@@ -58,7 +55,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 4. Framework Presets
 
 > Goal: Vercel รองรับ auto-detection สำหรับ frameworks
-> Goal: ระบุ framework preset ที่เหมาะสม
 
 - Next.js: ใช้ `next` preset อัตโนมัติ
 - Nuxt: ใช้ `nuxt` preset พร้อม SSR
@@ -70,7 +66,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 5. Build And Deploy
 
 > Goal: Build และ deploy application
-> Goal: Application build และ deploy สำเร็จ
 
 1. รัน `bun run build` หรือ `nitro build` สำหรับ Nitro projects
 2. ตรวจสอบว่า build สำเร็จและ output พร้อม
@@ -81,7 +76,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 6. Environment Variables
 
 > Goal: ตั้งค่า environment variables
-> Goal: Environment variables ถูกต้องและ sync กับ Vercel
 
 1. รัน `bunx vercel env add KEY_NAME`
 2. หรือใช้ dashboard สำหรับ manage variables
@@ -91,7 +85,6 @@ Deploy applications บน Vercel platform พร้อม auto-build, preview d
 ### 7. Serverless Functions
 
 > Goal: สร้าง serverless functions ใน `api/` directory
-> Goal: Serverless functions ทำงานได้บน Vercel
 
 `api/hello.ts`:
 ```typescript
@@ -105,7 +98,6 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 ### 8. Edge Functions
 
 > Goal: สร้าง edge functions สำหรับ edge deployment
-> Goal: Edge functions ทำงานได้ถูกต้อง
 
 `api/edge.ts`:
 ```typescript
@@ -121,7 +113,6 @@ export default async function handler(req: Request) {
 ### 9. Watch Deployment
 
 > Goal: ตรวจสอบ deployment ด้วย browser preview
-> Goal: Deployment ทำงานถูกต้องไม่มี errors
 
 1. ทำ `/watch-browser` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
@@ -132,7 +123,6 @@ export default async function handler(req: Request) {
 ### 10. CI/CD Deployment
 
 > Goal: ตั้งค่า automated deployment
-> Goal: CI/CD deploy อัตโนมัติทั้ง preview และ production
 
 `.github/workflows/deploy.yml`:
 ```yaml

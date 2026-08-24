@@ -9,7 +9,7 @@ description: เปิด website ด้วย open command
 
 ## Scope
 
-Use `open-web` for the specific tasks and workflows it covers
+ใช้ `open-web` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

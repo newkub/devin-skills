@@ -16,7 +16,6 @@ description: รัน unit tests สำหรับ pure functions และ bu
 ### 1. Detect Test Framework
 
 > Goal: ตรวจสอบ unit test framework ที่ project ใช้
-> Goal: รู้ framework, config, และ test file patterns
 
 1. ตรวจสอบ `package.json` สำหรับ test dependencies (`vitest`, `jest`, `mocha`, `pytest`, `go test`)
 2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
@@ -26,7 +25,6 @@ description: รัน unit tests สำหรับ pure functions และ bu
 ### 2. Run Unit Tests
 
 > Goal: รัน unit tests ตาม framework
-> Goal: Tests รันเสร็จพร้อมผลลัพธ์
 
 1. รัน `bun run test:unit` หรือ `bun test` ถ้ามี script
 2. ถ้าไม่มี script รัน `bunx vitest run` สำหรับ Vitest
@@ -37,7 +35,6 @@ description: รัน unit tests สำหรับ pure functions และ bu
 ### 3. Review Test Results
 
 > Goal: ตรวจสอบผลลัพธ์
-> Goal: รู้ pass/fail และสาเหตุของ failures
 
 1. ดู test report จาก framework
 2. ตรวจสอบ failed tests และ error messages

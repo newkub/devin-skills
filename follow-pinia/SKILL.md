@@ -9,7 +9,7 @@ description: แนวทางการใช้งาน Pinia สำหรั
 
 ## Scope
 
-Use `follow-pinia` for the specific tasks and workflows it covers
+ใช้ `follow-pinia` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
 
 ## Execute
 

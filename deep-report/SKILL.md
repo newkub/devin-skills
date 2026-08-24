@@ -16,7 +16,6 @@ description: สร้าง deep report ละเอียดครบทุก
 ### 1. Gather Data
 
 > Goal: รวบรวมข้อมูลจาก review workflows และ codebase analysis
-> Goal: มีข้อมูลครบสำหรับสร้าง deep report
 
 1. ทำ `/deep-review` เพื่อวิเคราะห์ codebase ครบทุกด้าน
 2. ทำ `/deep-analyze` เพื่อวิเคราะห์เชิงลึกถ้าต้องการข้อมูลเพิ่มเติม
@@ -26,7 +25,6 @@ description: สร้าง deep report ละเอียดครบทุก
 ### 2. Classify Findings
 
 > Goal: จำแนก findings เพื่อเตรียมข้อมูลสำหรับตาราง
-> Goal: แต่ละ finding มีข้อมูลครบ 7 columns
 
 1. สำหรับแต่ละ finding จาก review results:
    1. กำหนด Scope: `Domain > Category` (เช่น `Code & Architecture > Completeness`)
@@ -43,7 +41,6 @@ description: สร้าง deep report ละเอียดครบทุก
 ### 3. Build Report Table
 
 > Goal: สร้างตาราง deep report ตาม format 7 columns
-> Goal: ตารางที่ actionable และตรวจสอบได้
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. สร้างตารางด้วย 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
@@ -56,7 +53,6 @@ description: สร้าง deep report ละเอียดครบทุก
 ### 4. Build Deep Summary
 
 > Goal: สร้างสรุปละเอียดครบทุกมิติท้าย report
-> Goal: สรุปที่ครบทุกมิติและนำไป action ได้
 
 1. Domain Breakdown — score และ status ของทุก domain:
    - User-Facing, Security & Compliance, Backend & Data, Infrastructure, Code & Architecture
@@ -77,7 +73,6 @@ description: สร้าง deep report ละเอียดครบทุก
 ### 5. Suggest Next Actions
 
 > Goal: แนะนำ action ถัดไปตาม findings
-> Goal: รู้ action ถัดไปที่ควรทำตาม priority
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. แนะนำ `/review-*` workflow สำหรับแต่ละ finding ตาม `reviewWorkflow` field

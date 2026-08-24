@@ -16,7 +16,6 @@ description: ค้นหาและวิเคราะห์ d.ts files ท�
 ### 1. Find DTS Files In Project
 
 > Goal: ค้นหา `.d.ts` files ใน project
-> Goal: รู้ internal d.ts files ทั้งหมด
 
 1. ใช้ `fd` หรือ `find` เพื่อค้นหาไฟล์ `.d.ts` ใน project
 2. ค้นหาใน `src/`, `types/`, `@types/` directories
@@ -26,7 +25,6 @@ description: ค้นหาและวิเคราะห์ d.ts files ท�
 ### 2. Find DTS Files In Node Modules
 
 > Goal: ค้นหา `.d.ts` files ใน dependencies
-> Goal: รู้ external d.ts files ทั้งหมด
 
 1. ค้นหาใน `node_modules/@types/` สำหรับ DefinitelyTyped
 2. ค้นหาใน `node_modules/package-name/dist/*.d.ts`
@@ -36,7 +34,6 @@ description: ค้นหาและวิเคราะห์ d.ts files ท�
 ### 3. Analyze Internal Types
 
 > Goal: วิเคราะห์ d.ts files ใน project
-> Goal: เข้าใจ custom types และ exports
 
 1. อ่าน d.ts files ใน project
 2. ระบุ interfaces, types, enums ที่สำคัญ
@@ -46,7 +43,6 @@ description: ค้นหาและวิเคราะห์ d.ts files ท�
 ### 4. Analyze External Types
 
 > Goal: วิเคราะห์ d.ts files จาก dependencies
-> Goal: เข้าใจ APIs จาก dependencies
 
 1. อ่าน d.ts files จาก dependencies
 2. ระบุ functions, classes, interfaces ที่ใช้ได้
@@ -56,7 +52,6 @@ description: ค้นหาและวิเคราะห์ d.ts files ท�
 ### 5. Document Findings
 
 > Goal: สร้าง summary ของ types
-> Goal: มีรายงาน types ทั้งหมด พร้อม recommendations
 
 1. สร้าง summary ของ types ทั้งหมด
 2. จัดกลุ่มตาม functionality

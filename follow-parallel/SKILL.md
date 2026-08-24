@@ -16,7 +16,6 @@ description: รวม independent operations เป็น parallel execution �
 ### 1. Identify Parallelizable Operations
 
 > Goal: วิเคราะห์ operations ที่สามารถทำ parallel ได้
-> Goal: รู้ว่า operations ไหนทำ parallel ได้และไหนต้อง sequential
 
 1. จัดกลุ่ม operations เป็น independent sets — แต่ละ set ไม่มี data dependency กัน
 2. ระบุ dependencies: ถ้า operation B ต้องใช้ผลจาก operation A → sequential
@@ -27,7 +26,6 @@ description: รวม independent operations เป็น parallel execution �
 ### 2. Batch Tool Calls
 
 > Goal: รวม independent tool calls เป็น parallel batch
-> Goal: ลดจำนวนรอบและ context accumulation
 
 1. รวม independent `read_file` calls เป็น batch เดียว — อ่านหลายไฟล์พร้อมกัน
 2. รวม independent `grep_search` calls เป็น batch เดียว — ค้นหาหลาย patterns พร้อมกัน
@@ -38,7 +36,6 @@ description: รวม independent operations เป็น parallel execution �
 ### 3. Parallel Script Execution
 
 > Goal: ใช้ `Promise.all` และ `Promise.allSettled` ใน scripts สำหรับ parallel data processing
-> Goal: Script ประมวลผลข้อมูลหลาย sources พร้อมกัน
 
 1. ใช้ `Promise.all` เมื่อทุก operation ต้องสำเร็จ — ถ้าตัวใดตัวหนึ่ง fail ทั้งหมด fail
 2. ใช้ `Promise.allSettled` เมื่อต้องเก็บผลทั้งสำเร็จและ fail — แต่ละ operation อิสระ
@@ -49,7 +46,6 @@ description: รวม independent operations เป็น parallel execution �
 ### 4. Parallel Workflow Orchestration
 
 > Goal: รัน independent workflows แบบ parallel ใน orchestrator workflows
-> Goal: Orchestrator รัน sub-workflows ที่ independent พร้อมกัน
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
 2. รัน independent sub-workflows พร้อมกัน เช่น `/review-quality`, `/check-unused-files`, `/check-unused-deps`
@@ -60,7 +56,6 @@ description: รวม independent operations เป็น parallel execution �
 ### 5. Verify And Report
 
 > Goal: ตรวจสอบผลลัพธ์และรายงาน
-> Goal: ผลลัพธ์ครบถ้วน ถูกต้อง ไม่มี missing results
 
 1. ตรวจว่าทุก parallel operation มีผลลัพธ์ครบ — ไม่มี operation ที่หายไป
 2. ตรวจ errors จาก `Promise.allSettled` — แยก fulfilled และ rejected

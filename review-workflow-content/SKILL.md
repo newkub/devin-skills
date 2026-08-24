@@ -55,7 +55,7 @@ description: Review คุณภาพเนื้อหา workflow ลด nois
 1. ตรวจ `parallel:` และ `∥` ใช้เฉพาะใน `Execute` numbered list
 2. ตรวจว่าไม่ใช้ `∥` ใน validation checklist, Rules bullets, หรือ Expected Outcome
 3. ถ้า data processing ซับซ้อนหรือ operations > 10 ไฟล์ → ใช้ `/use-scripts`
-4. ถ้า workflow มี > 5 steps หรือ high-risk actions → อ่าน `review-context-rot` เพื่อ review context rot แล้วทำ `/follow-harness-engineering` ∥ `/review-codebase`
+4. ถ้า workflow มี > 5 steps หรือ high-risk actions → อ่าน `follow-context-rot` เพื่อ review context rot แล้วทำ `/follow-harness-engineering` ∥ `/review-codebase`
 
 ### 5. Finalize Review
 
@@ -81,3 +81,4 @@ description: Review คุณภาพเนื้อหา workflow ลด nois
 - ไม่มี TODO/MOCK/placeholder
 - `parallel:` / `∥` ใช้ถูกต้อง
 - พร้อมไป `/run-review`
+

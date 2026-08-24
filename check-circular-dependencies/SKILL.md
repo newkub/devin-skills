@@ -19,7 +19,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 1. Define Scope
 
 > Goal: กำหนด target และประเภท circular dependencies
-> Goal: รู้ target และรูปแบบ circular dependencies ที่ต้องตรวจ
 
 1. ระบุ target: workspace, directory, หรือทั้ง project
 2. ระบุ target type: `code`, `skills`, หรือ `all`
@@ -30,7 +29,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 2. Scan Code Dependencies
 
 > Goal: สแกน circular dependencies จาก module imports
-> Goal: พบ cycles ใน source code
 
 1. รัน tool ตามภาษา:
    - JavaScript/TypeScript: `bunx madge --circular --extensions ts,tsx`
@@ -43,7 +41,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 3. Scan Skill Reference Cycles
 
 > Goal: สแกน circular references ใน skills directory
-> Goal: พบ cycles ระหว่าง `related` references ใน `SKILL.md`
 
 1. ระบุ skills directory: global `%APPDATA%\devin\skills\` หรือ project `.devin\skills\` / `.windsurf\skills\`
 2. อ่าน `SKILL.md` ทุกไฟล์และ parse frontmatter `related`
@@ -55,7 +52,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 4. Scan Markdown Reference Cycles
 
 > Goal: ตรวจ circular references ใน markdown project docs
-> Goal: พบ cycles ใน `AGENTS.md` และ markdown references
 
 1. หา `AGENTS.md` และ markdown files ที่มี references ซ้อนกัน
 2. ตรวจสอบ links/mentions ระหว่างไฟล์
@@ -64,7 +60,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 5. Analyze Findings
 
 > Goal: วิเคราะห์ severity และ root cause
-> Goal: เข้าใจ impact และสาเหตุของแต่ละ cycle
 
 1. จัดประเภท findings:
    - Critical: cycles ที่ทำให้ build ล้มเหลวหรือ runtime error
@@ -77,7 +72,6 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 6. Report And Act
 
 > Goal: รายงานผลและแนะนำ next action
-> Goal: ผู้ใช้รู้ issues และวิธีแก้
 
 1. สร้าง report เป็นตาราง: cycle, modules/files, severity, root cause, recommendation
 2. ถ้ามี critical issues → แนะนำ `/resolve-errors`, `/refactor-packages`, หรือ `/update-reference`

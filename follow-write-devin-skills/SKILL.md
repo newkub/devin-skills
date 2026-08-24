@@ -22,7 +22,7 @@ description: สร้างหรือปรับปรุง skill package �
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 4. ทำ `/learn-from-web` จาก Devin CLI docs เมื่อต้องการ verify spec
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
-6. ถ้ามี dependencies จำเป็น → ทำ `/learn-from-web` จาก official docs ของ dependency เสมอ เพื่อยืนยัน version ล่าสุด, install command ที่ถูกต้อง, และ compatibility. จากนั้น install พร้อมเขียน references ลง `references/`
+6. ทุก skill ที่มี dependencies (จำเป็นหรือ optional) ต้องมี `references/` เสมอ → ทำ `/learn-from-web` จาก official docs ของทุก dependency เสมอ เพื่อยืนยัน version ล่าสุด, install command ที่ถูกต้อง, และ compatibility. จากนั้น install พร้อมเขียน references จริงลง `references/` (บังคับ ห้ามข้าม). ถ้า `/learn-from-web` ไม่เขียน references จริง → stop และ report
 
 ### 2. Select Template
 
@@ -76,7 +76,7 @@ description: สร้างหรือปรับปรุง skill package �
 #### deep-* Template
 
 - ระบุ target, dimensions (architecture, performance, security, maintainability), criteria. ถ้า target ไม่ชัด → ทำ `/ask-me`. ทำ `/deep-research`, `/learn-from-web`, `/check-reference`. ถ้าข้อมูลไม่พอ → ระบุความไม่แน่นอน
-- ทำ `/deep-analyze` สำหรับแต่ละ dimension. จับ findings พร้อม evidence (file, line, code, metric). ระบุ root cause. ถ้า analysis ยาว → ทำ `/improve-context-rot`. หา findings ที่ซ้ำซ้อนระหว่าง dimensions. หา root causes ที่ส่งผลต่อหลาย dimensions. จัดกลุ่ม. ระบุ dependencies ระหว่าง issues
+- ทำ `/deep-analyze` สำหรับแต่ละ dimension. จับ findings พร้อม evidence (file, line, code, metric). ระบุ root cause. ถ้า analysis ยาว → ทำ `/follow-context-rot`. หา findings ที่ซ้ำซ้อนระหว่าง dimensions. หา root causes ที่ส่งผลต่อหลาย dimensions. จัดกลุ่ม. ระบุ dependencies ระหว่าง issues
 - ทำ `/report-table`. จัดลำดับตาม impact และ effort. ระบุ immediate และ long-term actions. ทำ `/suggest-next-action`. วิเคราะห์ให้ลึก. ถ้าไม่แน่ใจ → ค้นคว้าเพิ่ม. ระบุ assumptions. ทุก finding ต้องมี evidence. ถ้าเป็น opinion → ระบุ. ครบทุก dimensions. ถ้า dimension ไม่มี findings → ระบุ "no issues". ไม่ข้าม dimensions
 
 #### review-* Template
@@ -127,7 +127,7 @@ description: สร้างหรือปรับปรุง skill package �
 
 > Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
-1. ถ้าต้องการ external references หรือ dependencies → สร้าง `references/` และพยายามเขียน references ให้ครบถ้วน
+1. ถ้าต้องการ external references → สร้าง `references/` และเขียน references ให้ครบถ้วน. ถ้า skill มี dependencies (จำเป็นหรือ optional) → ต้องมี `references/` เสมอ และทุก dependency ต้องมี reference file ของตัวเอง (บังคับ ห้ามข้าม)
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
 4. ถ้าต้องการ Devin subskills → สร้าง `subskills/<domain>/<subskill>/SKILL.md` โดยตั้ง `name` เป็น `<domain>-<subskill>` แล้วให้ parent skill `<domain>-subskills/SKILL.md` อ้างถึง
@@ -153,9 +153,9 @@ description: สร้างหรือปรับปรุง skill package �
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
 1. ทำตาม `/validate` เพื่อตรวจความถูกต้อง
-2. ทำตาม `/review-devin-global-skills` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำตาม `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
-4. ถ้ามี `.devin/rules/` → ทำ `/improve-rules` เพื่อตรวจคุณภาพ rules
+4. ถ้ามี `.devin/rules/` → ทำ `/review-rules` เพื่อตรวจคุณภาพ rules
 5. ถ้าพบ issue → แก้และ revalidate (max 3 → stop/report)
 
 ### 8. Update References
@@ -204,8 +204,10 @@ description: สร้างหรือปรับปรุง skill package �
 
 ### 8. Dependencies
 
-- ทุกการติดตั้ง dependencies ต้องทำ `/learn-from-web` จาก official docs เสมอ ก่อน install. ยืนยัน: install command ล่าสุด, version ที่ stable (ตีพิมพ์ ≥7 วัน), peer dependencies, และ compatibility กับ ecosystem ปัจจุบัน
+- ทุก skill ที่มี dependencies (จำเป็นหรือ optional) ต้องมี `references/` เสมอ. ทุก dependency ต้องมี reference file ของตัวเองใน `references/` ที่เขียนจริงโดย `/learn-from-web` (บังคับ ห้ามข้าม ห้ามมีแค่ placeholder)
+- ทุกการติดตั้ง dependencies ต้องทำ `/learn-from-web` จาก official docs เสมอ ก่อน install และต้องเขียน references จริง. ยืนยัน: install command ล่าสุด, version ที่ stable (ตีพิมพ์ ≥7 วัน), peer dependencies, และ compatibility กับ ecosystem ปัจจุบัน
 - หลีกเลี่ยง floating ranges (`latest`, `*`, unbounded `>=`) ที่ auto-resolve เป็น brand-new releases. บันทึก version ที่ติดตั้งจริง. ถ้ามี breaking changes → ระบุ migration steps. ถ้า optional → ถามผู้ใช้ก่อน install
+- ถ้า `/learn-from-web` ถูกเรียกเพื่อ dependency แต่ไม่เขียน reference file จริง → ถือว่า task ล้มเหลว ให้ stop และ report
 
 ## Expected Outcome
 
@@ -213,6 +215,7 @@ description: สร้างหรือปรับปรุง skill package �
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `web/` directory ที่ทดสอบผ่านแล้ว
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. `related` ถูกต้อง ไม่มี missing/unused. references อัปเดตครบถ้วน
+- ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
 
 ## Examples
 
@@ -247,3 +250,4 @@ Review the current git diff and provide feedback
 ## Expected Outcome
 - สรุป findings พร้อม specific line references. แนะนำ improvements ที่ actionable
 ```
+

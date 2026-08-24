@@ -16,7 +16,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 1. Verify Repository
 
 > Goal: ตรวจสอบ repository เป้าหมายก่อนใช้ `gh issue`
-> Goal: ยืนยันว่า `gh` ชี้ไปยัง repository ถูกต้อง
 
 1. รัน `gh repo view` เพื่อดู repository ปัจจุบัน
 2. ถ้าไม่อยู่ใน repo หรือต้องการ repo อื่น ให้ใช้ `--repo [HOST/]OWNER/REPO`
@@ -25,7 +24,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 2. List And View Issues
 
 > Goal: ค้นหาและดูรายละเอียด issue
-> Goal: หา issue ที่ต้องการทำงาน
 
 1. รัน `gh issue list` เพื่อดู open issues เริ่มต้น
 2. รัน `gh issue list --state all --limit 50` เพื่อดูทั้ง open/closed
@@ -38,7 +36,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 3. Create Issues
 
 > Goal: สร้าง issue ใหม่
-> Goal: สร้าง issue โดยใช้ interactive หรือ flags
 
 1. รัน `gh issue create` เพื่อสร้างแบบ interactive (ถาม title/body ถ้าขาด)
 2. รัน `gh issue create --title "<title>" --body "<body>"` เพื่อสร้างแบบ non-interactive
@@ -50,7 +47,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 4. Edit Issues
 
 > Goal: แก้ไข metadata และเนื้อหาของ issue
-> Goal: ปรับ title, body, labels, assignees, projects ของ issue
 
 1. รัน `gh issue edit <number> --title "<title>" --body "<body>"`
 2. รัน `gh issue edit <number> --add-label bug --remove-label duplicate`
@@ -62,7 +58,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 5. Manage Issue Lifecycle
 
 > Goal: ปิด เปิด คอมเมนต์ ย้าย ลบ issue
-> Goal: เปลี่ยนสถานะหรือสื่อสารบน issue
 
 1. รัน `gh issue close <number>` หรือ `gh issue reopen <number>`
 2. รัน `gh issue comment <number> --body "<comment>"` เพื่อแสดงความคิดเห็น
@@ -74,7 +69,6 @@ description: ใช้ `gh issue` สร้าง ดู แก้ไข แล�
 ### 6. Use Output And Automation
 
 > Goal: ใช้ output ของ `gh issue` กับ scripts
-> Goal: นำ output ไปใช้ใน pipeline หรือ automation
 
 1. ใช้ `--json` หรือ `--jq <expression>` เพื่อรับ output เป็น JSON
 2. ใช้ `--template "<go-template>"` เพื่อจัดรูปแบบ output
