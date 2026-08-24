@@ -1,6 +1,6 @@
 ---
 name: review-infrastructure
-description: Review infrastructure including workers, queues, webhooks, scalability, cost, and migration
+description: Review infrastructure: workers, queues, webhooks, scalability, cost, and migration
 allowed-tools:
   - ask_user_question
   - edit
@@ -9,8 +9,8 @@ allowed-tools:
   - grep
   - read
 triggers:
-  - model
   - user
+  - model
 related:
   - review-codebase
   - review-correctness
@@ -26,223 +26,138 @@ related:
 
 ## Goal
 
-Review infrastructure ครอบคลุมทุก dimension ของ infrastructure พร้อม aggregate findings และ review score Review background workers ครอบคลุม job lifecycle, cron jobs, scheduling, health monitoring, scaling พร้อม review score Review queue system ครอบคลุม job processing, idempotency, retry, backpres...
+ตรวจสอบ infrastructure, deployment, background workers, queues, webhooks, scalability, cost และ migration พร้อมคะแนน review
 
 ## Scope
 
-infrastructure review สำหรับ: deployment, CI/CD, config files, monitoring, tracing, disaster recovery, backup, caching, cost optimization, resilience, environment, observability, health endpoints, upgrade safety workers review สำหรับ: job lifecycle, job error handling, cron jobs, schedule configuration, timezone handling, task dependencies, worker health monitoring, restart strategy, worker sca...
+- ครอบคลุม workers: job lifecycle, cron, scheduling, error handling, health monitoring
+- ครอบคลุม queues: job processing, idempotency, retry, backpressure, dead letter queue
+- ครอบคลุม webhooks: signature, secret management, idempotency, provider integration
+- ครอบคลุม scalability: stateless design, horizontal scaling, caching, database scaling
+- ครอบคลุม deployment, CI/CD, config files, monitoring, tracing, observability
+- ครอบคลุม cost: instance sizing, auto-scaling, idle resources, reserved capacity
+- ครอบคลุม migration: schema, data, framework, versioning, rollback
+- ไม่ครอบคลุม `review-security`, `review-quality`, `review-correctness`
 
 ## Execute
 
-### 1. Prepare And Scan
-
-เตรียม context ก่อนเริ่ม review
+### 1. Prepare and Scan
 
 > Goal: เข้าใจ infrastructure setup และ platform ใน codebase
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ infrastructure setup
-2. ระบุ deployment platform, CI/CD tools, monitoring tools, และ cloud providers ที่ใช้
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
-6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure, deployment, CI/CD, cloud providers
+2. ระบุ worker framework, queue system, webhook providers, migration tools และ monitoring tools
+3. ระบุ critical paths, config files และ environments: dev, staging, prod
+4. ถ้าไม่มี infrastructure concerns → stop และ report
 
-### 2. Deployment And CI/CD Review
+### 2. Workers and Queues Review
 
-Review deployment, CI/CD pipeline, rollback, zero-downtime, env vars, post-deploy validation
+> Goal: ตรวจสอบ background workers และ queue system
 
-> Goal: ครอบคลุมทุก deployment และ CI/CD dimension
+1. ตรวจสอบ worker lifecycle: scheduling, cron, timezone, task dependencies, restart strategy
+2. ตรวจสอบ job processing: idempotency, retry, backpressure, dead letter queue
+3. ระบุ worker framework, queue system: `BullMQ`, `SQS`, `RabbitMQ`, `Redis`, custom
+4. ถ้าไม่มี background workers หรือ queues → ข้ามส่วนที่ไม่มี
 
-1. ตรวจสอบ CI/CD pipeline, workflow structure, job dependencies, execution order, และ deployment steps
-2. ตรวจสอบ rollback strategy, zero-downtime config, post-deploy validation, และ environment promotion
-3. ตรวจสอบ env var coverage, missing config, hardcoded values, และ secrets management
-4. ตรวจสอบ caching strategy, artifact management, build optimization, และ parallel job efficiency
-5. ตรวจสอบ secrets handling, environment variables, permissions, test automation, และ conditional execution
-6. Critical: no rollback strategy, no post-deploy validation, hardcoded secrets, exposed secrets, broken pipeline, no test gate, missing required env var, missing required workflow
-7. High: missing CI/CD step, no zero-downtime, inconsistent config, missing caching, slow pipeline, no artifact retention, broken job dependency
+### 3. Webhooks Review
 
-### 3. Config Files Review
+> Goal: ตรวจสอบ webhook integration
 
-Review config files ครอบคลุม tsconfig, vite, biome, env-specific configs, consistency
+1. ระบุ webhook providers: Stripe, GitHub, Slack, custom
+2. ตรวจสอบ signature scheme, secret management, idempotency, replay protection
+3. ตรวจสอบ error handling, retry, timeout และ provider contract
+4. ถ้าไม่มี webhooks → ข้าม step นี้
 
-> Goal: ครอบคลุมทุก config dimension
+### 4. Scalability and Cost Review
 
-1. ตรวจสอบ tsconfig, compiler options, path aliases, และ project references
-2. ตรวจสอบ vite config, build options, plugin configuration, และ dev server settings
-3. ตรวจสอบ biome config, lint rules, format rules, และ ignore patterns
-4. ตรวจสอบ config consistency across workspaces, config documentation, และ config duplication
-5. Critical: broken config, conflicting settings, missing required config
-6. High: inconsistent config across workspaces, missing path alias, suboptimal compiler option
+> Goal: ตรวจสอบ scalability และ cost
 
-### 4. Monitoring, Tracing And Observability Review
+1. ตรวจสอบ deployment strategy: single instance, multi-instance, serverless
+2. ตรวจสอบ stateless design, horizontal scaling, shared state, caching layers
+3. ตรวจสอบ database scaling, read replicas, sharding, connection pooling
+4. ตรวจสอบ compute spend: CPU, memory, over-provisioning, right-sizing, auto-scaling
+5. ระบุ idle resources และ reserved capacity opportunities
 
-Health monitoring, distributed tracing และ observability stack ครอบคลุม metrics, alerts, dashboards, span propagation, correlation IDs, incident response
+### 5. Deployment and CI/CD Review
 
-> Goal: ครอบคลุมทุก monitoring, tracing และ observability dimension
+> Goal: ตรวจสอบ deployment pipeline
 
-1. ตรวจสอบ metrics collection, custom metrics, metric labeling, และ metric aggregation
-2. ตรวจสอบ alert configuration, threshold tuning, alert routing, และ alert correlation with dashboards
-3. ตรวจสอบ dashboard design, metric visualization, data freshness, และ service health coverage
-4. ตรวจสอบ trace context propagation: W3C Trace Context, B3 propagation, header forwarding
-5. ตรวจสอบ span creation, span attributes, span events, span coverage บน database queries, external API calls, background jobs, error paths
-6. ตรวจสอบ trace sampling, cross-service correlation, log-trace-metric correlation, และ trace visualization
-7. ตรวจสอบ instrumentation coverage, structured logging, log levels, log retention, และ observability tooling SDK initialization
-8. ตรวจสอบ incident response readiness, runbook availability, และ escalation paths
-9. Critical: no monitoring on critical path, missing alert for critical metric, no trace context propagation, missing span บน critical path, no error tracing, no observability on critical path, no correlation between signals, broken dashboard
-10. High: missing key metric, alert fatigue, no runbook, missing trace sampling, no cross-service correlation, incomplete instrumentation, missing dashboard for core service, no trace-log correlation
-11. ทำ `/review-codebase` เพื่อ observability deep dive เฉพาะทาง
+1. ตรวจสอบ CI/CD workflow, job dependencies, deployment steps, environment promotion
+2. ตรวจสอบ rollback strategy, zero-downtime config, post-deploy validation
+3. ตรวจสอบ env var coverage, missing config, hardcoded values, secrets management
+4. ตรวจสอบ build optimization, caching, artifact management, parallel job efficiency
 
-### 5. Disaster Recovery And Backup Review
+### 6. Configuration and Observability Review
 
-### Workers Deep Checks
+> Goal: ตรวจสอบ config files และ observability
 
-> Goal: เข้าใจ worker structure และ scheduling patterns
+1. ตรวจสอบ `tsconfig.json`, `vite.config.ts`, `biome.json`, environment-specific configs
+2. ตรวจสอบ config consistency ข้าม workspaces, path aliases, compiler options
+3. ตรวจสอบ metrics, logs, traces, alerts, dashboards, SLOs
+4. ตรวจสอบ trace context propagation, span coverage, log-trace-metric correlation
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ worker structure
-2. ระบุ worker framework, cron scheduler, job patterns, worker deployment strategy ที่ใช้
-3. ถ้า project ไม่มี background workers → stop และ report
+### 7. Disaster Recovery and Migration Review
 
+> Goal: ตรวจสอบ DR และ migration
 
-> Goal: ครอบคลุมทุก worker dimension พร้อม review score
+1. ตรวจสอบ DR plan, RPO/RTO targets, backup schedules, restore procedures
+2. ตรวจสอบ runbooks, incident response, escalation paths
+3. ตรวจสอบ migration files: ordering, version control, rollback strategy
+4. ระบุ migration tools: `Drizzle`, `Prisma`, `TypeORM`, custom scripts
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ worker patterns
-2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+### 8. Validate and Report
 
+> Goal: สรุป findings พร้อมคะแนนและส่งต่อ action ถัดไป
 
-
-### Queue Deep Checks
-
-> Goal: เข้าใจ queue system และ job patterns
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ queue structure
-2. ระบุ queue system (BullMQ, Redis Queue, SQS, RabbitMQ, custom), job patterns, retry config, dead letter queue strategy ที่ใช้
-3. ถ้า project ไม่มี queue system → stop และ report
-
-
-> Goal: ครอบคลุมทุก queue dimension พร้อม review score
-
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ queue patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-
-
-
-### Webhook Deep Checks
-
-> Goal: เข้าใจ webhook structure และ providers
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ webhook structure
-2. ระบุ webhook providers (Stripe, GitHub, Slack, custom), signature scheme, secret management strategy ที่ใช้
-3. ถ้า project ไม่มี webhooks → stop และ report
-
-
-> Goal: ครอบคลุมทุก webhook dimension พร้อม review score
-
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ webhook patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-
-
-
-### Scalability Deep Checks
-
-> Goal: เข้าใจ scalability patterns และ deployment setup
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ scalability structure
-2. ระบุ deployment strategy (single instance, multi-instance, serverless), caching layers, database scaling approach, queue design ที่ใช้
-
-
-> Goal: ครอบคลุมทุก scalability dimension พร้อม review score
-
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ scalability patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-
-
-> Goal: ครอบคลุม stateless design, horizontal scaling, shared state
-
-### Cost Deep Checks
-
-เตรียม context ก่อนเริ่ม review
-
-> Goal: เข้าใจ cost drivers และ infrastructure spend ใน codebase
-
-1. ทำ `/scan-codebase` เพื่อหา cloud config, infra-as-code, deployment config, และ cost-related settings
-2. ระบุ cloud providers, services, pricing models, และ resource types ที่ใช้
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-
-
-Review compute spend ครอบคลุม instance sizing, auto-scaling, idle resources, reserved capacity
-
-> Goal: ครอบคลุมทุก compute cost dimension
-
-1. ตรวจสอบ instance / container sizing: CPU, memory, over-provisioning, right-sizing opportunities
-
-### Migration Deep Checks
-
-รวบรวม context ก่อน review migrations
-
-> Goal: เข้าใจ migration history, tools, และ patterns
-
-1. ทำ `/scan-codebase` เพื่อหา migration files, scripts, versioning
-2. ระบุ migration tools: `Drizzle`, `Prisma`, `TypeORM`, custom scripts
-3. ระบุ environments: dev, staging, prod
-
-
-หา migrations ทั้งหมด
-
-> Goal: มี inventory ครบ
-
-1. ตรวจสอบ migration files ทั้งหมด: database, schema, framework, data
-2. ตรวจสอบ migration ordering, version control
-
+1. ทำ `/validate` สำหรับ findings ทุกรายการ
+2. จัดลำดับ severity: Critical → High → Medium → Low → Info
+3. คำนวณ review score เป็น percentage ต่อ dimension และ overall
+4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
 ## Rules
 
-### 1. Skip Conditions
+### 1. Scope
 
-- ถ้า project ไม่มี deployment setup หรือ CI/CD → ข้าม Section 2
-- ถ้า project ไม่มี config files → ข้าม Section 3
-- ถ้า project ไม่มี monitoring, tracing หรือ observability → ข้าม Section 4
-- ถ้า project ไม่มี DR plan หรือ backup → ข้าม Section 5
-- ถ้า project ไม่มี caching → ข้าม Section 6
+- ทำ review เท่านั้น ไม่แก้ไข infrastructure หรือ config ระหว่าง review
+- ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
+- ไม่เปลี่ยนแปลง production settings
 
-### 2. Severity Classification
+### 2. Severity
 
-- Critical: no rollback strategy, exposed secrets, no monitoring on critical path, no backup, no failover, cache poisoning, no circuit breaker บน critical service, secret exposed to client, no health endpoint, no rollback plan for critical dependency
-- High: missing CI/CD step, no zero-downtime, missing key metric, missing RPO/RTO, missing TTL, missing fallback, env parity gap, incomplete instrumentation, missing readiness probe, missing migration script
-- Medium: suboptimal deployment config, suboptimal parallelization, suboptimal alert threshold, inconsistent backup, suboptimal TTL, inconsistent timeout, inconsistent default values, inconsistent metric naming, inconsistent response format, incomplete migration coverage
-- Low: minor deployment improvement, minor workflow improvement, minor config improvement, minor metric improvement, minor backup improvement, minor cache improvement, minor cost optimization, minor pattern improvement, naming convention, documentation gap
+- Critical: no rollback strategy, exposed secrets, no monitoring on critical path, no backup/failover, no circuit breaker บน critical service, no health endpoint
+- High: missing CI/CD step, no zero-downtime, missing key metric, missing RPO/RTO, missing TTL/fallback, env parity gap
+- Medium: suboptimal deployment, suboptimal alert threshold, inconsistent backup, suboptimal TTL, incomplete migration coverage
+- Low: minor deployment improvement, minor workflow improvement, minor config improvement, naming convention, documentation gap
 
-### 3. Evidence-Based Findings
+### 3. Evidence
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path, line number หรือ config/dashboard link
 - ไม่เดา ใช้ tools สำหรับ verification
+- ระบุ impact ต่อ critical paths และ users
 
 ### 4. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code หรือ config
+- ไม่ apply fixes ไม่ merge ไม่ย้ายเนื้อหา
 
-### 5. Health Score
+### 5. Formatting
 
-- คำนวณ review score เป็น percentage (0-100)
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
-
-### 6. Formatting
-
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ double-asterisk markers สำหรับเน้นข้อความ — ใช้ backticks สำหรับ `tools`, `commands`, paths และ skill references
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
-### 1. Skip Conditions
+### 6. Health Score
 
+- คำนวณ review score เป็น percentage (0-100)
+- แสดง score ต่อ dimension และ overall score
+- ใช้ score เปรียบเทียบ before/after
 
-*Some details from merged source skills were condensed to keep the skill under 250 lines.*
+## Expected Outcome
+
+- รายงาน infrastructure findings พร้อม evidence, severity, file path หรือ config
+- คะแนน review ต่อ dimension: workers, queues, webhooks, scalability, cost, deployment, DR, migration
+- คะแนน overall infrastructure score
+- ตารางสรุป findings ด้วย `/report-table`
+- ข้อเสนอแนะ action ถัดไป
+
+*Merged from source review-* skills.*

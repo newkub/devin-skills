@@ -1,6 +1,6 @@
 ---
 name: review-security
-description: Review security including auth, file upload, and compliance
+description: Review security: auth, secrets, injection, dependencies, permissions, and compliance
 allowed-tools:
   - ask_user_question
   - edit
@@ -9,8 +9,8 @@ allowed-tools:
   - grep
   - read
 triggers:
-  - model
   - user
+  - model
 related:
   - review-codebase
   - review-correctness
@@ -26,223 +26,133 @@ related:
 
 ## Goal
 
-Review security ครอบคลุม auth, secrets, injection, dependencies, permissions พร้อม aggregate findings และ review score Review authentication และ authorization ครอบคลุมทุก dimension พร้อม aggregate findings และ review score Review file upload ครอบคลุม validation, sanitization, storage, access cont...
+ตรวจสอบความปลอดภัยของระบบ ครอบคลุม auth, secrets, injection, dependencies, permissions, file upload และ compliance พร้อมคะแนน review
 
 ## Scope
 
-security review สำหรับ: auth (auth flows, session, token, MFA), secrets (hardcoded secrets, storage, rotation), injection (SQL, command, path traversal, XSS, CSRF, deserialization), dependencies (vulnerabilities, outdated, supply chain), permissions (RBAC, guards, enforcement, least privilege) auth review สำหรับ: RBAC (roles, permissions, guards, enforcement), auth flows (login, logout, MFA, OA...
+- ครอบคลุม auth flows, session/token management, RBAC และ least privilege
+- ครอบคลุม secrets storage, rotation, masking และ hardcoded secrets
+- ครอบคลุม injection: SQL, command, path traversal, XSS, CSRF, deserialization
+- ครอบคลุม dependency vulnerabilities, outdated packages, supply chain risks
+- ครอบคลุม file upload validation, sanitization, storage และ access control
+- ครอบคลุม GDPR/CCPA/HIPAA/PCI-DSS/SOC2 controls, PII, data retention
+- ไม่ครอบคลุม `review-performance`, `review-infrastructure`, `review-quality` หรือ `review-correctness`
 
 ## Execute
 
-### 1. Analyze
+### 1. Prepare and Scan
 
 > Goal: เข้าใจ security structure และ tooling ใน codebase
 
-1. ทำ `/scan-codebase` เพื่อหา security issues
-2. ระบุ auth provider, security tools, validation library, dependency manager, และ session/token management ที่ใช้
-3. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
-4. ถ้าไม่พบ issues → stop และ report
+1. ทำ `/scan-codebase` เพื่อหา security patterns, auth provider, validation library และ dependency manager
+2. ระบุ auth provider, session/token management, RBAC setup และ security tools
+3. ถ้า project เป็น web → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
+4. ถ้าไม่พบ security concerns → stop และ report
 
-### 2. Review
+### 2. Auth Review
 
-> Goal: ตรวจสอบ auth, secrets, injection, dependencies, permissions
+> Goal: ตรวจสอบ authentication และ authorization
 
-#### 2.1 Auth
+1. ตรวจสอบ auth flows: login, logout, MFA, OAuth, SSO, password reset, email verification
+2. ตรวจสอบ session/token management: secure cookie, `HttpOnly`, `SameSite`, expiry, rotation, revocation
+3. ตรวจสอบ password policy, brute force protection, account lockout
+4. ตรวจสอบ JWT: signing algorithm, verification, issuer/audience, expiry, key rotation
+5. ตรวจสอบ RBAC enforcement: roles, permissions, guards, route/API guards
 
-- ตรวจสอบ auth flows: login, logout, MFA, OAuth, SSO, password reset, email verification
-- ตรวจสอบ session/token management: secure cookie, `HttpOnly`, `SameSite`, expiry, rotation, revocation
-- ตรวจสอบ password policy, brute force protection, account lockout
-- ตรวจสอบ JWT: signing algorithm, verification, issuer/audience, expiry, key rotation
+### 3. Secrets and Injection Review
 
-#### 2.2 Secrets
+> Goal: ระบุ secrets exposure และ injection vulnerabilities
 
-- ตรวจสอบ hardcoded secrets, API keys, credentials ใน source
-- ตรวจสอบ secret storage: env vars, vault, CI/CD secrets, masking
-- ตรวจสอบ secret rotation policy, lifecycle, access logging
-- ตรวจสอบ pre-commit hooks และ CI scanning สำหรับ secrets
+1. ตรวจสอบ hardcoded secrets, API keys, credentials ใน source, logs และ config
+2. ตรวจสอบ secret storage: env vars, vault, CI/CD secrets, masking
+3. ตรวจสอบ SQL injection: parameterized queries, raw SQL, ORM usage
+4. ตรวจสอบ command injection, path traversal, deserialization, prototype pollution
+5. ตรวจสอบ XSS: `innerHTML`, `dangerouslySetInnerHTML`, DOMPurify, HTML escaping
+6. ตรวจสอบ CSRF: token validation, `SameSite` cookies, origin checking
 
-#### 2.3 Injection
+### 4. Dependency and Permission Review
 
-- ตรวจสอบ SQL injection: parameterized queries, raw SQL, ORM usage
-- ตรวจสอบ command injection: shell execution, argument escaping
-- ตรวจสอบ path traversal: file path construction, sanitization
-- ตรวจสอบ deserialization, prototype pollution, unsafe `JSON.parse`
-- ตรวจสอบ XSS: `innerHTML`, `dangerouslySetInnerHTML`, DOMPurify, HTML escaping
-- ตรวจสอบ CSRF: token validation, `SameSite` cookies, origin checking
+> Goal: ตรวจสอบ dependencies และ permission model
 
-#### 2.4 Dependencies
+1. ตรวจสอบ dependency vulnerabilities ด้วย `npm audit`, `bun audit`, Snyk หรือ Dependabot
+2. ตรวจสอบ outdated packages, EOL libraries, lockfile integrity และ supply chain risks
+3. ตรวจสอบ RBAC: roles, permissions, guards, enforcement
+4. ตรวจสอบ permission escalation: horizontal, vertical, debug tooling
+5. ตรวจสอบ least privilege: service account, CI/CD permissions
 
-- ตรวจสอบ dependency vulnerabilities: `npm audit`, `bun audit`, Snyk, Dependabot
-- ตรวจสอบ outdated packages, EOL libraries, supply chain risks
-- ตรวจสอบ lockfile integrity, package source, signed packages
-- ตรวจสอบ dependency permission/license risks
+### 5. File Upload Review
 
-#### 2.5 Permissions
+> Goal: ตรวจสอบความปลอดภัยของ file upload
 
-- ตรวจสอบ RBAC: roles, permissions, guards, enforcement
-- ตรวจสอบ route/API guards, server-side permission checks
-- ตรวจสอบ permission escalation: horizontal, vertical, debug tooling
-- ตรวจสอบ least privilege: service account permissions, CI/CD permissions
+1. ตรวจสอบ file type validation, MIME check, extension validation, magic number
+2. ตรวจสอบ file size limit, filename sanitization, path traversal protection
+3. ตรวจสอบ storage: S3, R2, GCS, local, signed URL, access control
+4. ตรวจสอบ virus scan, CDN usage, upload progress handling
+5. ถ้า project ไม่มี file upload → ข้าม step นี้
 
-### 3. Validate And Report
+### 6. Compliance Review
 
-> Goal: Issues ถูก validate ครบถ้วน จัดลำดับตาม severity และรายงานผล
+> Goal: ตรวจสอบ compliance controls
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-4. ให้ severity: Critical, High, Medium, Low, Info — คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-table` สร้างตาราง aggregate findings
-6. ทำ `/suggest-next-action`
-### Auth Deep Checks
+1. ระบุ regulations ที่บังคับใช้: GDPR, CCPA, HIPAA, PCI-DSS, SOC2
+2. ตรวจสอบ PII, PHI, payment data, sensitive data handling
+3. ตรวจสอบ data residency, cross-border transfer, consent, data retention
+4. ตรวจสอบ compliance documentation, DPO contact, internal policies
+5. ตรวจสอบว่า policies ถูก implement ใน code, config และ process
 
-เตรียม context ก่อนเริ่ม review
+### 7. Validate and Report
 
-> Goal: เข้าใจ auth structure, provider, และ RBAC setup ใน codebase
+> Goal: สรุป findings พร้อมคะแนนและส่งต่อ action ถัดไป
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ auth structure และ RBAC setup
-2. ระบุ auth provider (Supabase, Auth0, custom), JWT library (`jose`), validation library (`Zod`), และ session/token management ที่ใช้
-3. ระบุ role definitions, permission lists, และ guard locations
-4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server ก่อน review
-
-
-วิเคราะห์ auth core อย่างลึกซึ้ง
-
-> Goal: ครอบคลุมทุก auth dimension พร้อม review score
-
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-
-### File Upload Deep Checks
-
-> Goal: เข้าใจ file upload patterns และ storage setup
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ file upload structure
-2. ระบุ storage provider (S3, R2, local, GCS), upload patterns, validation strategy, access control approach ที่ใช้
-3. ถ้า project ไม่มี file upload → stop และ report
-
-
-> Goal: ครอบคลุมทุก file upload dimension พร้อม review score
-
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ file upload patterns
-2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-
-
-
-### Compliance Deep Checks
-
-> Goal: วิเคราะห์สถานะปัจจุบันของ compliance
-
-1. ทำ `/scan-codebase` เพื่อหา issues ที่เกียวข้องกับ PII, consent, data retention, และ policies
-2. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
-3. ระบุ regulations ที่บังคับใช้: GDPR, CCPA, HIPAA, PCI-DSS, SOC2
-4. ระบุ data types: PII, PHI, payment data, sensitive data
-
-
-> Goal: ตรวจสอบ compliance ตาม regulations, policies, audit, data handling — convert action to review
-
-
-1. ตรวจสอบ GDPR/CCPA/HIPAA/PCI-DSS/SOC2 controls
-2. ตรวจสอบ data residency, cross-border transfer
-3. ตรวจสอบ compliance documentation, DPO contact, และ internal policies
-4. ตรวจสอบว่า policies (retention, access, classification) ถูก implement ใน code, config, และ process
-
+1. ทำ `/deep-validate` และ `/validate` สำหรับ findings
+2. จัดลำดับ severity: Critical → High → Medium → Low → Info
+3. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) weighted average
+4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
 ## Rules
 
-### 1. Skip Conditions
+### 1. Scope
 
-- ถ้า project ไม่มี auth flows → ข้าม Auth
-- ถ้า project ไม่มี secrets/secrets management → ข้าม Secrets
-- ถ้า project ไม่มี database/external input → ข้าม Injection สำหรับ SQL/command/path traversal
-- ถ้า project ไม่มี dependencies → ข้าม Dependencies
-- ถ้า project ไม่มี RBAC/permissions → ข้าม Permissions
+- ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
+- ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
+- อ้างอิง `/review-codebase` ถ้า issue ซ้อนทับกับ security นอก scope
 
-### 2. Severity Classification
+### 2. Severity
 
-- Critical: authentication bypass, hardcoded secrets, SQL injection, command injection, path traversal, XSS vulnerability, secrets in client bundle, missing permission check, dependency with known exploit
-- High: missing MFA enforcement, weak password policy, PII/secrets in logs, missing input validation, missing CSRF protection, outdated dependency, inconsistent RBAC mapping
+- Critical: authentication bypass, hardcoded secrets, SQL/command/path traversal injection, XSS, missing permission check, dependency with known exploit
+- High: missing MFA, weak password policy, PII/secrets in logs, missing input validation, missing CSRF, outdated dependency
 - Medium: suboptimal CSP, missing rate limiting, suboptimal session timeout, missing secret rotation
 - Low: documentation gap, minor config improvement, naming convention
 
-### 3. Evidence-Based Findings
+### 3. Evidence
 
 - ทุก finding ต้องมี file path และ line number
-- ไม่เดา ใช้ tools สำหรับ verification
 - ระบุ attack vector, data type, หรือ trust boundary ที่เกี่ยวข้อง
+- ใช้ tools สำหรับ verification ไม่เดา
 
 ### 4. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
+- ทำ review เท่านั้น ไม่ apply fixes
+- ไม่เปลี่ยนแปลง environment หรือ production settings
 
-### 5. Health Score
+### 5. Formatting
 
-- คำนวณ review score เป็น percentage (0-100)
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
-
-### 6. Formatting
-
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ double-asterisk markers สำหรับเน้นข้อความ — ใช้ backticks สำหรับ `tools`, `commands`, paths และ skill references
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
-### 1. Skip Conditions
-
-- ถ้า project ไม่มี RBAC → ข้าม Step 3
-- ถ้า project ไม่มี auth flows → ข้าม Step 4
-- ถ้า project ไม่มี session management → ข้าม Step 5 items 1-7
-- ถ้า project ไม่มี JWT tokens → ข้าม Step 5 items 8-11
-- ถ้า project ไม่มี MFA → ข้าม Step 4 item 3
-
-### 2. Severity Classification
-
-- Critical: authentication bypass, unprotected admin route, missing server-side permission check, role bypass, permission escalation, no RBAC enforcement on critical API, password reset token reuse, OAuth state parameter missing, MFA bypass, service role key in client, no session timeout, session ID in URL, no token expiry, signing key exposed, HS256 in multi-service
-- High: inconsistent role-permission mapping, missing route guard, missing MFA enforcement for admin, weak password policy, missing email verification, no account lockout, no session revocation, missing concurrent session limit, insecure cookie config, no refresh rotation, missing key rotation, token in localStorage, insufficient RBAC test coverage
-- Medium: suboptimal session timeout, suboptimal token TTL, missing refresh window, inconsistent guard pattern, missing account linking, weak password policy for non-admin
-- Low: documentation gap, minor guard improvement, naming convention, minor session config improvement
-
-### 3. Evidence-Based Findings
-
-- ทุก finding ต้องมี file path และ line number
-- ไม่เดา ใช้ tools สำหรับ verification
-- ระบุ role, permission, หรือ auth flow ที่เกี่ยวข้อง
-
-### 4. Review Independence
-
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ถ้าพบ security issue ที่นอก scope auth → อ้างอิง `/review-codebase`
-
-### 5. Health Score
+### 6. Health Score
 
 - คำนวณ review score เป็น percentage (0-100)
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ใช้ score เปรียบเทียบ before/after
 
-### 6. Formatting
+## Expected Outcome
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงาน security findings พร้อม evidence, severity, attack vector
+- คะแนน review ต่อ dimension: auth, secrets, injection, dependencies, permissions, upload, compliance
+- คะแนน overall security score
+- ตารางสรุป findings ด้วย `/report-table`
+- ข้อเสนอแนะ action ถัดไป
 
-### 1. Skip Conditions
-
-- ถ้า project ไม่มี file upload → ข้ามทั้งหมด
-- ถ้า project ไม่มี CDN → ข้าม Step 4 item 3
-- ถ้า project ไม่มี virus scan → ข้าม Step 4 item 4
-
-### 2. Severity Classification
-
-- Critical: no file type validation, path traversal vulnerability, no size limit ที่ก่อให้เกิด DoS, missing magic number verification, no sanitization ที่ก่อให้เกิด XSS, insecure storage ที่ก่อให้เกิด data leak, no access control on private files, missing virus scan on user uploads
-- High: missing MIME type check, missing extension validation, missing file name sanitization, weak size limit, missing CDN, missing signed URL, missing upload progress, weak access control
-- Medium: suboptimal storage path, missing upload retry, minor access control gap, missing upload preview, suboptimal CDN config
-- Low: cosmetic, minor upload UX, documentation gap
-
-### 3. Evidence-Based Findings
-
-
-*Some details from merged source skills were condensed to keep the skill under 250 lines.*
+*Merged from source review-* skills.*
