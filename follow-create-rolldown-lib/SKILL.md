@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้ Rolldown bundler สำหรับสร้าง JavaScript/TypeScript libraries ด้วยความเร็วสูง

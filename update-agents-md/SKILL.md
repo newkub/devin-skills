@@ -13,10 +13,11 @@ triggers:
   - user
   - model
 related:
+  - ask-requirement
   - follow-write-devin-skills
   - improve-codebase
-  - ask-requirement
 ---
+
 ## Goal
 
 สร้างหรืออัปเดท `AGENTS.md` ด้วย architecture, library mapping, ship readiness และ monorepo workspace rules

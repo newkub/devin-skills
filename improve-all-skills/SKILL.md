@@ -57,8 +57,8 @@ related:
 > Goal: ตรวจสอบความสอดคล้องและลด redundancy ข้าม skill
 > Goal: ทุก skill สอดคล้องกันและไม่ซ้ำซ้อน
 
-1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
-2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
+1. ทำ `/review-quality` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
+2. ทำ `/review-quality` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
 3. ทำ `/update-reference` หลังการรวม/แยก/ย้าย skill หรือ sections
 
 ### 5. Validate And Report
@@ -77,8 +77,8 @@ related:
 ### 1. Delegate To Sub-Skills
 
 - ใช้ `/improve-devin-skills` สำหรับปรับปรุงแต่ละ skill
-- ใช้ `/review-consistency` สำหรับข้าม skill consistency
-- ใช้ `/review-redundancy` สำหรับลด redundancy ข้าม skill
+- ใช้ `/review-quality` สำหรับข้าม skill consistency
+- ใช้ `/review-quality` สำหรับลด redundancy ข้าม skill
 - ไม่ duplicate เนื้อหาที่มีอยู่แล้วใน `/improve-devin-skills`
 
 ### 2. Batch Execution

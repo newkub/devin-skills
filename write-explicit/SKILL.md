@@ -14,8 +14,8 @@ triggers:
   - model
 related:
   - consider-use-in-another-skills
-  - improve-devin-skills
   - follow-write-devin-skills
+  - improve-devin-skills
   - validate
 ---
 

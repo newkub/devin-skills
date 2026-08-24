@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo เพื่อให้เห็นการพึ่งพาอาศัยกัน imports และ shared dependencies

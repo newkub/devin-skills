@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่า Neovim configuration ที่ modular, performant, และ testable ด้วย `lazy.nvim`

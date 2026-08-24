@@ -11,6 +11,7 @@ related:
   - ship-code
 argument-hint: <repo-name> [--public|--private|--internal]
 ---
+
 ## Goal
 
 สร้าง GitHub repository ใหม่ด้วย metadata ครบถ้วน

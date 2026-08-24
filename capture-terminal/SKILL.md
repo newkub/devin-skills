@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Capture ภาพ (screenshot) จาก terminal output สำหรับ documentation, README และ test reports

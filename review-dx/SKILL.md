@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -144,4 +143,3 @@ DX review สำหรับ: package scripts, dev server, build, lint, test, RE
 - DX gaps ถูกระบุและจัดลำดับ
 - Review score สำหรับ developer experience
 - Action items ชัดเจนสำหรับขั้นตอนถัดไป
-

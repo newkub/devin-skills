@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน Vercel CLI สำหรับ deploy, manage และ monitor projects บน Vercel platform

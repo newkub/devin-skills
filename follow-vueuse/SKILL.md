@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน VueUse v14 composables สำหรับ Vue 3 applications อย่างมีประสิทธิภาพ

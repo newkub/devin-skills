@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 เลือกและตั้งค่า release strategy ที่เหมาะสมกับ project ครอบคลุม npm, crates, Docker, VSCode, preview และ monorepo versioning

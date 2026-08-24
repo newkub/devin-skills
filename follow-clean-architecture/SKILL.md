@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Implement Clean Architecture ด้วย Vertical Slice Modules, Functional Core และ Ports & Adapters สำหรับ production-grade applications

@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -159,4 +158,3 @@ Review CLI applications ครอบคลุม design, UX, error handling, tes
 - Review score ต่อ dimension และ overall
 - Action items สำหรับ CLI improvements
 - CLI ที่ผ่าน review criteria หรือมี roadmap ชัดเจน
-

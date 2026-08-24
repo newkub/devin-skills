@@ -1,20 +1,5 @@
 ---
-name: review-i18n
-description: Review i18n: translation completeness, missing keys, locale coverage, formatting, RTL, fallback
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
 related:
-  - review-codebase
-  - validate
-  - suggest-next-action
 ---
 
 ## Goal
@@ -112,4 +97,3 @@ i18n review สำหรับ: translation completeness, missing keys, locale c
 - รายงานตาราง aggregate findings จากทุก i18n section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

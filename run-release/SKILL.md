@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Auto-detect platforms ที่ project รองรับจาก configuration files และ release ไปยัง external platforms อัตโนมัติ

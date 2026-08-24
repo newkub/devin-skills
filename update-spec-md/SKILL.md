@@ -13,10 +13,10 @@ triggers:
   - user
   - model
 related:
-  - update-test
-  - follow-content-quality
-  - validate
   - check-reference
+  - follow-content-quality
+  - update-test
+  - validate
   - write-explicit
 ---
 

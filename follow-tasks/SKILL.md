@@ -16,6 +16,7 @@ related:
   - follow-tasks
   - review
 ---
+
 ## Goal
 
 ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete

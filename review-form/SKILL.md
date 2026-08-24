@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -111,4 +111,3 @@ form review สำหรับ: validation schemas, field rules, error message q
 - รายงานตาราง aggregate findings จากทุก form section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม backup, rollback และ validation ครบทุกด้าน

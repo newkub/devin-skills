@@ -43,7 +43,7 @@ related:
 ### 1. Orchestration Only
 
 - เป็น orchestrator เรียก `/read-related-skills` โดยตรง — ไม่ทำงานซ้ำ
-- ไม่ใช้ `/review-redundancy` เพราะจะซ้ำซ้อนกับการอ่าน related context
+- ไม่ใช้ `/review-quality` เพราะจะซ้ำซ้อนกับการอ่าน related context
 - ไม่ duplicate เนื้อหาของ `/read-related-skills`
 
 ### 2. Output

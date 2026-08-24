@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้ structured thinking เพื่อวิเคราะห์ปัญหาอย่างเป็นระบบ ก่อนดำเนินการใดๆ โดย AI คิดเอง

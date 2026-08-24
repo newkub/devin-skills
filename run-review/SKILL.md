@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน `tools/review` CLI เพื่อวิเคราะห์ project review และแนะนำ action items ตาม findings

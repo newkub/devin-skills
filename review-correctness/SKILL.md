@@ -1,26 +1,32 @@
 ---
 name: review-correctness
-description: Review correctness, logic, edge cases, and validation for code, config, rules, workflows, and skills
+description: Review correctness including type safety, test coverage, tests, formal verification, and side effect
 allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
   - ask_user_question
+  - edit
+  - exec
+  - glob
+  - grep
+  - read
 triggers:
-  - user
   - model
+  - user
 related:
   - review-codebase
-  - validate
+  - review-docs
+  - review-frontend
+  - review-infrastructure
+  - review-performance
+  - review-quality
+  - review-reliability
+  - review-security
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
-Review ความถูกต้องของ code, configuration, rule files, workflows, หรือ skills ตาม criteria, standards, และ requirements ที่ระบุ โดยเน้น correctness, logic, edge cases, และ validation พร้อมรายงาน findings และ review score
+Review ความถูกต้องของ code, configuration, rule files, workflows, หรือ skills ตาม criteria, standards, และ requirements ที่ระบุ โดยเน้น correctness, logic, edge cases, และ validation พร้อมรายงาน findings และ review score Review type design, type safety, generics, type inference, narrowing, discri...
 
 ## Scope
 
@@ -29,9 +35,7 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 - correctness: การทำงานตาม requirements, calculations, transformations
 - logic: control flow, conditions, type safety, ordering
 - edge cases: null, empty, boundary, concurrency, unexpected states
-- validation: input, output, schema, sanitization, error handling
-
-ทำ review เท่านั้น ไม่แก้ไข code โดยไม่ได้รับอนุญาต
+- validation: input, output, schema, sanitization, error handling...
 
 ## Execute
 
@@ -90,6 +94,96 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
+### Type Safety Deep Checks
+
+> Goal: เข้าใจ type system และ TypeScript config
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ type patterns
+2. ระบุ TypeScript version, tsconfig strictness, type utility libraries (`type-fest`, `ts-toolbelt`) ที่ใช้
+3. ถ้า project ไม่มี่ TypeScript → stop และ report
+
+
+> Goal: รวบรวม findings จากทุก type dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ type patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+
+### Test Coverage Deep Checks
+
+เตรียม context และ scan หา test setup
+
+> Goal: เข้าใจ test framework, structure, และ coverage tools
+
+1. ทำ `/scan-codebase` เพื่อหา test files, config coverage, และ test runner
+2. ระบุ test framework: `vitest`, `jest`, `mocha`, `playwright`, `cypress`, หรืออื่น
+3. ตรวจสอบ coverage config: provider, thresholds, reporters
+4. ทำ `/run-test-coverage` เพื่อดึง coverage report ล่าสุด
+
+
+ตรวจสอบ coverage ของ business logic สำคัญ
+
+> Goal: ทุก critical path มี test ครอบคลุงหรือระบุ gaps
+
+1. ระบุ business logic functions/classes ทีสำคัญ
+
+### Test Deep Checks
+
+รวบรวม context ก่อน review
+
+> Goal: เข้าใจ test structure, framework, และ coverage ปัจจุบัน
+
+1. ระบุ test target: unit tests, integration tests, E2E tests
+2. อ่าน test configs, อ่าน test dependencies, ทำ `/scan-codebase`
+3. ระบุ test framework และ runner: `Vitest`, `Jest`, `Playwright`, `Cypress`
+4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
+
+
+วิเคราะห์ test quality ด้วย review CLI และ rules
+
+> Goal: พบทุก issue พร้อม root cause และ review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ test patterns หลายมิติ
+
+### Formal Verification Deep Checks
+
+> Goal: เข้าใจ formal verification tools และ patterns ที่ใช้
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ verification structure
+2. ระบุ verification tools: property-based testing libraries (`fast-check`, `Hypothesis`, `QuickCheck`), assertion libraries, SMT solvers (`Z3`), static analyzers, runtime verification tools ที่ใช้
+3. ระบุ verification patterns: assertions, invariants, contracts, property tests, exhaustive checks ที่มีใน codebase
+4. ถ้าเป็น web project → เพิ่ม `/run-dev` เพื่อ verify dev server
+
+
+> Goal: ครอบคลุมทุก formal verification dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ verification patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+### Side Effects Deep Checks
+
+> Goal: เข้าใจ side effects patterns ใน codebase
+
+1. ทำ `/scan-codebase` เพื่อหา side effects
+2. ระบุ patterns: database, logging, time, randomness, external APIs, file I/O, browser storage, timers, environment, global state mutations
+3. ถ้า project ไม่มี side effects → stop และ report
+
+
+> Goal: ครอบคลุมทุก side effect dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ side effects
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+
 
 ## Rules
 
@@ -120,9 +214,35 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
-## Expected Outcome
+### 1. Type Safety Principles
 
-- รายงาน findings ครอบคลุม correctness, logic, edge cases, validation
-- Review score ต่อ dimension และ overall
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- ไม่ควรมี่ `any` ใน production code — ใช้ `unknown` + type narrowing แทน
+- ใช้ type inference จาก schema ไม่ประกาศ type ซ้ำ — ใช้ `satisfies` เมื่อต้องการ type check โดยไม่ lose inference
+- ไม่ใช้ `as` assertions โดยไม่จำเป็น — ใช้ type guards, `instanceof`, หรือ proper type definitions แทน
+- ไม่ใช้ `@ts-ignore` หรือ `@ts-expect-error` — ระบุ root cause แทนการ suppress
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 
+### 2. Severity Classification
+
+- Critical: `any` ใน critical path, type safety bypass ใน critical path, unsafe assertion ที่ก่อให้เกิด runtime error, `@ts-ignore` ใน critical path
+- High: missing type constraint, poor generic design, missing discriminated union, unnecessary assertion, missing branded type for IDs, missing exhaustive check
+- Medium: suboptimal inference, missing `as const`, missing `readonly`, minor `any` usage ใน non-critical path, missing type predicate
+- Low: cosmetic, minor type improvement, documentation gap
+
+### 3. Skip Conditions
+
+- ถ้า project ไม่มี่ TypeScript → ข้ามทั้งหมด
+- ถ้า project ไม่มี่ generics → ข้าม Step 4
+- ถ้า project ไม่มี่ discriminated unions → ข้าม Step 5 item 1
+- ถ้า project ไม่มี่ branded types/opaque types → ข้าม Step 5 item 3
+
+### 4. Evidence-Based Findings
+
+- ทุก finding ต้องมี่ file path และ line number
+- ระบุ type, function, หรือ interface ที่เกี่ยวข้อง
+
+### 5. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+
+*Some details from merged source skills were condensed to keep the skill under 250 lines.*

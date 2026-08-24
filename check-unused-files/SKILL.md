@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตรวจจับและระบุไฟล์ที่ไม่ได้ใช้ในโปรเจกต์ และลบหรือนำไปใช้

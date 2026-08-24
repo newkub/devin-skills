@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะห์และปรับปรุง features ให้ดีกว่าคู่แข่งในมิติ features โดยเฉพาะ

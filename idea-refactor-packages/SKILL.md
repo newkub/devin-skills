@@ -15,6 +15,7 @@ triggers:
 related:
   - refactor
 ---
+
 ## Goal
 
 สร้างไอเดียการสร้างหรือ refactor packages ใหม่ให้เหมาะสมกับ project structure พร้อม continuous numbering

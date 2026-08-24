@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -149,4 +148,3 @@ database review สำหรับ relational หรือ NoSQL database ใน
 - รายงานตาราง aggregate findings จากทุก database section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

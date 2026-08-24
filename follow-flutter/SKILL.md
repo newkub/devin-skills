@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 พัฒนา Flutter applications ด้วย Clean Architecture, Riverpod สำหรับ state management และ GoRouter สำหรับ navigation

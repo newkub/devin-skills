@@ -13,8 +13,10 @@ triggers:
   - user
   - model
 related:
+  - deep-research-dependencies
   - open-web
 ---
+
 ## Goal
 
 Generate new and extended feature ideas for a project and produce a markdown documentation page under `docs/roadmap/idea-features.md` via `/update-docs`.
@@ -39,6 +41,7 @@ Generate new and extended feature ideas for a project and produce a markdown doc
 4. Generate `Extends` and `New` feature ideas (silent)
 5. Rank by RICE and compute MVP Score 1-10 (silent)
 6. If project access fails, stop and report
+7. Run `/deep-research-dependencies` to analyze the dependencies landscape and identify library gaps that could inform feature ideas (silent)
 
 ### 2. Define Feature Rows
 

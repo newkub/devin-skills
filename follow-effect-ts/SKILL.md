@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - follow-typescript
   - follow-bun
+  - follow-typescript
   - follow-vitest
 ---
 
@@ -127,5 +127,3 @@ related:
 - ใช้ Effect.gen, Data.TaggedError, Context.Tag, Layer, Schedule
 - Testing ด้วย vitest + tstyche
 - Import dependencies ถูกต้องตามกฎ
-
-

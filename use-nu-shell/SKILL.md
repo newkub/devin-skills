@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้ `nushell` (`nu`) สำหรับ shell commands, structured data pipelines, และ cross-platform scripting

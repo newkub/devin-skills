@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่าและใช้งาน cargo-nextest สำหรับ test runner ที่รวดเร็วและมีประสิทธิภาพใน Rust projects

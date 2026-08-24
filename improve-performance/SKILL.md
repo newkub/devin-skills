@@ -13,14 +13,14 @@ triggers:
   - user
   - model
 related:
-  - improve-frontend
-  - improve-database
   - improve-codebase
+  - improve-database
+  - improve-frontend
   - improve-reliability
   - improve-resilience
-  - validate
   - run-check
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -43,7 +43,7 @@ related:
 
 ### 2. Analyze Network And Latency
 > Goal: ลด response time และ round trips
-1. ทำ `/check-web-performance` หรือ `/review-network` ถ้ามี API endpoints
+1. ทำ `/check-web-performance` หรือ `/review-performance` ถ้ามี API endpoints
 2. ระบุ slow endpoints, DNS, connection pool, timeout, retry strategy
 3. ใช้ DNS prefetch/preconnect, HTTP/2/HTTP/3, keep-alive ถ้าเหมาะสม
 4. รวม batch requests, ลด unnecessary headers/cookies/payload fields

@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -156,4 +156,3 @@ validate findings และสรุปผล
 - คำแนะนำ `/refactor-packages` ถ้า workspace ใหญ่เกินไป, เล็กเกินไป, หรือทำหลายสิ่ง
 - Review score ต่อ dimension และ overall
 - คำแนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Implement Event-Driven Architecture ที่รองรับ async workflows, scalability, และ loose coupling

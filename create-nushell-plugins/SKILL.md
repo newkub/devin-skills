@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง NuShell plugin ด้วย Rust ที่ทำงานได้จริง ตามมาตรฐานของ official NuShell contributor guide

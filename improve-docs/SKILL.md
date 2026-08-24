@@ -12,15 +12,15 @@ triggers:
   - user
   - model
 related:
-  - review-docs
-  - improve-writing
-  - improve-efficiency
-  - run-check
   - follow-config
+  - improve-efficiency
   - improve-reliability
-  - validate
+  - improve-writing
   - resolve-errors
+  - review-docs
+  - run-check
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

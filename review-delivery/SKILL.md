@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -205,5 +205,3 @@ Review versioning strategy ครอบคลุม semantic versioning, changel
 - รายงานตาราง aggregate findings จากทุก delivery section
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-
-

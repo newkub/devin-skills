@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -161,4 +161,3 @@ bug-prone patterns ที่ยังไม่ถูกครอบคลุม�
 - รายงาน Recommended Actions พร้อม priority และ workflow
 - Bug-prone review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

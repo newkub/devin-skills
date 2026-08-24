@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ติดตั้ง dependencies ทั้งหมดในโปรเจกต์ พร้อมแก้ไขปัญหาที่เกิดขึ้นระหว่าง installation

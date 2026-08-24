@@ -1,30 +1,36 @@
 ---
 name: review-frontend
-description: Review frontend quality ครอบคลุม performance, assets, hydration, rendering, UX/UI, accessibility...
+description: Review frontend quality including UX/UI, accessibility, responsive, rendering, images, browser compa
 allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
   - ask_user_question
+  - edit
+  - exec
+  - glob
+  - grep
+  - read
 triggers:
-  - user
   - model
+  - user
 related:
   - review-codebase
-  - validate
+  - review-correctness
+  - review-docs
+  - review-infrastructure
+  - review-performance
+  - review-quality
+  - review-reliability
+  - review-security
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
-Review frontend ของ project ครอบคลุม performance, assets, hydration, rendering, UX/UI, และ accessibility พร้อม findings, severity, และ review score
+Review frontend ของ project ครอบคลุม performance, assets, hydration, rendering, UX/UI, และ accessibility พร้อม findings, severity, และ review score Review UX/UI ครอบคลุม UX writing, accessibility, และ visual design พร้อม aggregate findings และ review score Review accessibility ของ project ตาม WCA...
 
 ## Scope
 
-ใช้สำหรับ project หรือ workspace ที่มี frontend (web, desktop, mobile web) — ไม่รวม backend หรือ infrastructure review — เน้น review เท่านั้น ไม่แก้ไข code ระหว่าง review
+ใช้สำหรับ project หรือ workspace ที่มี frontend (web, desktop, mobile web) — ไม่รวม backend หรือ infrastructure review — เน้น review เท่านั้น ไม่แก้ไข code ระหว่าง review UX/UI review สำหรับ user flows, interaction design, visual hierarchy, typography, color theory, spacing system, layout principles, micro-interactions, UX writing, accessibility, design system compliance, responsive UX, animati...
 
 ## Execute
 
@@ -88,89 +94,155 @@ Review frontend ของ project ครอบคลุม performance, assets, 
 4. ตรวจสอบ CSS layout/paint/composite: containment, `will-change`, layers
 5. ตรวจสอบ DOM size และ nesting depth
 
-### 6. Review Network And Payload
+### Uxui Deep Checks
 
-ตรวจสอบ network usage และ payload
+เตรียม context ก่อนเริ่ม review
 
-> Goal: ลด latency และขนาดข้อมูล
+> Goal: เข้าใจ UX/UI structure, design system, และ user flows ใน codebase
 
-1. ตรวจสอบ API calls: round trips, batching, unnecessary requests
-2. ตรวจสอบ payload size ของ API responses และ bundle
-3. ตรวจสอบ compression, `gzip`, `brotli`, cache headers
-4. ตรวจสอบ third-party scripts และ origins
-5. ตรวจสอบ prefetch, preconnect, preload, DNS-prefetch usage
+1. ใช้ `/scan-codebase` เพื่อตรวจสอบ frontend structure และ design system
+2. ระบุ UI framework, CSS framework, design tokens, breakpoint config, และ component library ที่ใช้
+3. ถ้าเป็น web project → ใช้ `/run-dev` เพื่อ verify dev server ก่อน review
+4. ใช้ `/follow-uxui` เพื่ออ้างอิง UX/UI best practices
 
-### 7. Review UX And UI
 
-ตรวจสอบ UX/UI, copy, accessibility
+Review visual hierarchy, typography, color theory, spacing system, และ layout principles
 
-> Goal: frontend ใช้งานง่ายและเข้าถึงได้
+> Goal: ครอบคลุม visual design ตาม `/review-frontend` และ `/follow-uxui`
 
-1. ตรวจสอบ UX copy, labels, error messages, notifications
-2. ตรวจสอบ navigation, information hierarchy, visual consistency
-3. ตรวจสอบ responsive breakpoints, touch/pointer targets, viewport handling
-4. ตรวจสอบ accessibility: keyboard navigation, focus management, ARIA, color contrast
-5. ตรวจสอบ component interaction และ feedback (loading, error, empty states)
+1. ตรวจสอบ visual hierarchy: focal point clarity, scan pattern, content priority, visual weight balance, contrast ระหว่าง section, information architecture ที่สะท้อนในภาพ
 
-### 8. Validate Findings
+### Web Accessibility Deep Checks
 
-ตรวจสอบความถูกต้องของ findings
+เตรียม context และ scan หา UI components
 
-> Goal: findings ถูกต้อง ลด false positives
+> Goal: เข้าใจ frontend stack และ scope ของ UI
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-4. ระบุ false positives พร้อมเหตุผล
+1. ทำ `/scan-codebase` เพื่อหา frontend files, components, pages
+2. ระบุ framework/library และ rendering mode (CSR, SSR, static)
+3. ระบุ accessibility tools ที่มี: `axe-core`, `Lighthouse`, `playwright`, `jest-axe`
+4. ถ้าไม่มี UI → stop และ report
 
-### 9. Rate And Report
 
-ให้คะแนนและรายงาน
+ตรวจสอบ keyboard navigation
 
-> Goal: สรุปผล review เป็นตาราง
+> Goal: ทุก interaction ใช้ keyboard ได้
 
-1. ให้ severity: Critical, High, Medium, Low, Info
-2. คำนวณ review score ต่อ dimension และ overall
-3. ทำ `/report` พร้อม `/report-table`
-4. ทำ `/suggest-next-action`
+1. ตรวจสอบ tab order เป็น logical order และ visible
 
-## Rules
+### Responsive Deep Checks
 
-### 1. Skip Conditions
+> Goal: เข้าใจ responsive setup และ breakpoint config
 
-- ถ้า project ไม่มี frontend → stop และ report
-- ถ้า project ไม่ใช้ SSR/CSR → ข้าม Step 4
-- ถ้าไม่มี web project → ข้าม `/run-dev` และ `/check-web-performance`
+1. ทำ `/scan-codebase` เพื่อเข้าใจ responsive structure
+2. ระบุ CSS framework, breakpoint config, responsive utilities, container query support ที่ใช้
 
-### 2. Severity Classification
 
-- Critical: LCP/CLS/INP ทรุด, hydration mismatch ใน production path, bundle ขนาดใหญ่ทำให้ TTI ช้า, hardcoded secrets ใน client bundle, broken accessibility บล็อก user flow
-- High: asset ใหญ่ไม่ optimize, re-render สูงบน critical interaction, missing lazy loading, missing responsive images, API round trips ซ้ำ
-- Medium: font loading ยังไม่ optimal, code splitting ขาด, minor UX copy issues, focus management ไม่สมบูรณ์
-- Low: cosmetic, naming, minor CSS optimization
+> Goal: ครอบคลุมทุก responsive dimension พร้อม review score
 
-### 3. Evidence-Based Findings
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ responsive patterns
+2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 
-- ทุก finding ต้องมี file path และ line number หรือ metrics
-- ใช้ tools สำหรับ verification ไม่เดา
-- บันทึก before/after metrics สำหรับ performance findings
 
-### 4. Review Independence
+> Goal: ครอบคลุม viewport, breakpoints, mobile-first
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- แยก review process จาก fix process
-- ถ้าต้องแก้ไข → แนะนำ `/senior-frontend` หรือ `improve-frontend` หลัง report
+### Rendering Deep Checks
 
-### 5. Formatting
+> Goal: เข้าใจ rendering mode และ framework
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
-- ใช้ heading levels สำหรับ structure
+1. ทำ `/scan-codebase` เพื่อเข้าใจ rendering structure
+2. ระบุ rendering mode (SSR, SSG, CSR, ISR, universal), hydration strategy, rendering framework ที่ใช้
 
-## Expected Outcome
 
-- รายงาน findings ต่อ dimension พร้อม severity, evidence, และ review score
-- ตาราง aggregate findings จากทุก frontend section
-- Recommended actions พร้อม priority
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+> Goal: ครอบคลุมทุก rendering dimension พร้อม review score
 
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ rendering patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+> Goal: ครอบคลุม SSR, hydration, universal rendering
+
+### Images Deep Checks
+
+> Goal: เข้าใจ image usage และ optimization setup
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ image structure
+2. ระบุ image optimization tools, CDN provider, image component patterns, lazy loading strategy ที่ใช้
+3. ถ้า project ไม่มี images → stop และ report
+
+
+> Goal: ครอบคลุมทุก image dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ image patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+
+### Browser Compat Deep Checks
+
+> Goal: เข้าใจ browser support targets และ compatibility strategy
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ browser and device compatibility structure
+2. ระบุ browserslist config, Autoprefixer config, polyfill strategy, CSS reset/normalize approach ที่ใช้
+3. ระบุ responsive breakpoints, touch/pointer event handling, viewport settings ที่ใช้
+
+
+> Goal: ตรวจสอบ compatibility ของ CSS, JS APIs, polyfills, feature detection, และ device support
+
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ compatibility patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+### Css Deep Checks
+
+รวบรวม context ก่อน review CSS
+
+> Goal: เข้าใจ CSS setup, framework, และ conventions
+
+1. ทำ `/scan-codebase` เพื่อหา CSS files, style tags, CSS-in-JS, configuration
+2. ระบุ CSS approach: utility-first, BEM, CSS Modules, scoped, preprocessor
+3. ระบุ conventions: naming, file organization, import patterns
+
+
+วิเคราะห์โครงสร้าง CSS
+
+> Goal: หา architectural issues และ inconsistencies
+
+1. ตรวจสอบ consistency ของ patterns: naming conventions, file structure, import order
+2. ตรวจสอบ CSS-in-JS patterns: dynamic styles, prop-based styles, performance
+
+### Ux Writing Deep Checks
+
+> Goal: เข้าใจ UX copy ทั้งหมดใน codebase
+
+1. ทำ `/scan-codebase` เพื่อหา UX copy ใน components, pages, routes, translation files, และ content files
+2. ระบุ copy sources: hardcoded strings, translation keys, CMS content, design system tokens
+3. จัดประเภท copy ตามฟังก์ชัน: navigation, action, feedback, guidance, error
+4. บันทึกจุดสัมผัส (touchpoints) ที่มีข้อความและ context การใช้งาน
+
+
+> Goal: ตรวจสอบ voice และ tone สม่ำเสมอ
+
+1. ตรวจสอบ brand personality ที่กำหนดไว้: friendly, professional, playful, authoritative
+2. ตรวจสอบ tone ตาม context: success, error, warning, informational, onboarding
+3. ตรวจสอบ voice guidelines: active voice, พูดกับผู้ใช้โดยตรง, หลีกเลี่ยงศัพท์เทคนิค
+4. ตรวจสอบ tone matrix สำหรับแต่ละ context
+
+
+### Design System Deep Checks
+
+> Goal: เข้าใจ design system structure และ token setup
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ design system structure
+2. ระบุ CSS framework, design token system (CSS variables, Tailwind theme, UnoCSS theme), dark mode strategy, component library ที่ใช้
+
+*Some details from merged source skills were condensed to keep the skill under 250 lines.*

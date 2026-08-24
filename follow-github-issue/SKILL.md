@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้ `gh issue` สร้าง ค้นหา ดู แก้ไข ปิด เปิด และจัดการ issues ของ repository ผ่าน CLI โดยใช้โหมด interactive หรือ flags

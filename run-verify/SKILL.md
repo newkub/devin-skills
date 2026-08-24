@@ -14,6 +14,7 @@ triggers:
 related:
   - report
 ---
+
 ## Goal
 
 รัน verify task เพื่อตรวจสอบคุณภาพโค้ดตามที่กำหนดใน package manifest

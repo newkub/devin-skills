@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase`

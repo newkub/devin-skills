@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -96,4 +95,3 @@ related:
 - ไม่มี TODO/MOCK/placeholder
 - `parallel:` / `∥` ใช้ถูกต้อง
 - พร้อมไป `/run-review`
-

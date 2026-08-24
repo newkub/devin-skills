@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนดแนวทางการพัฒนาด้วย Vite 7+ ให้มีประสิทธิภาพสูงสุด ทั้ง dev experience และ production builds

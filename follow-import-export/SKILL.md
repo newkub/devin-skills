@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดการ import และ export strategy สำหรับ TypeScript/JavaScript: barrel exports, import aliases, import ordering, type-only imports, circular dependency detection และ optimization

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 อัพเดท dependencies ในทุก workspace/package ให้เป็น latest version ทั้งหมด ไม่ว่าจะเป็น major, minor หรือ patch updates

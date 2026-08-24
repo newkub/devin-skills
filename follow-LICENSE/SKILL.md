@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่า license file ที่เหมาะสมสำหรับ project และระบุ copyright ถูกต้อง

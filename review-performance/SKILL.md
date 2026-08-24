@@ -1,30 +1,36 @@
 ---
 name: review-performance
-description: Performance review ครอบคลุม bundler, caching, time complexity, Core Web Vitals, bottlenecks
+description: Review performance across network, bundler, memory, and I/O
 allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
   - ask_user_question
+  - edit
+  - exec
+  - glob
+  - grep
+  - read
 triggers:
-  - user
   - model
+  - user
 related:
   - review-codebase
-  - validate
+  - review-correctness
+  - review-docs
+  - review-frontend
+  - review-infrastructure
+  - review-quality
+  - review-reliability
+  - review-security
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
-Review performance ครอบคลุมทุก dimension ของ performance พร้อม aggregate findings และ review score
+Review performance ครอบคลุมทุก dimension ของ performance พร้อม aggregate findings และ review score Review network ครอบคลุม DNS, connection, bandwidth, latency, caching, payload พร้อม review score Review build/bundler configuration ครอบคลุม chunk splitting, tree shaking, minification, sourcemap, p...
 
 ## Scope
 
-performance review สำหรับ: bundler config, caching strategy, time complexity, Core Web Vitals, rendering performance, resource usage
+performance review สำหรับ: bundler config, caching strategy, time complexity, Core Web Vitals, rendering performance, resource usage network review สำหรับ: HTTP requests, API calls, CDN, DNS resolution, connection pooling, compression, cache headers, response time, payload size Bundler review สำหรับ build tool (`bunup`, `tsdown`, `vite`, `tauri`), build config file (`bunup.config.ts`, `tsdown.c...
 
 ## Execute
 
@@ -61,8 +67,8 @@ Review runtime, network, และ I/O โดยใช้ references เฉพ�
 > Goal: ระบุ bottlenecks บน runtime, network, และ I/O
 
 1. ตรวจสอบ CPU, memory, GC, event loop, concurrency, startup, throughput
-2. ตรวจสอบ DNS, connection, bandwidth, latency, payload, caching ด้วย `review-network`
-3. ตรวจสอบ file I/O, storage, serialization, database I/O ด้วย `review-io`
+2. ตรวจสอบ DNS, connection, bandwidth, latency, payload, caching ด้วย `review-performance`
+3. ตรวจสอบ file I/O, storage, serialization, database I/O ด้วย `review-performance`
 4. บันทึก findings พร้อม metrics และ evidence
 
 ### 4. Bundler Review
@@ -79,7 +85,7 @@ Review bundler/build tool config ครอบคลุม chunk splitting, tree 
 6. ตรวจสอบ asset optimization: image compression, font subsetting, SVG optimization
 7. ตรวจสอบ build output: bundle size, chunk count, asset count, gzip size
 
-### 4. Caching Review
+### 5. Caching Review
 
 Review caching strategy ครอบคลุม invalidation, key design, TTL, storage, stale-while-revalidate
 
@@ -88,50 +94,78 @@ Review caching strategy ครอบคลุม invalidation, key design, TTL, 
 1. ตรวจสอบ cache invalidation strategy, key design, และ namespace management
 2. ตรวจสอบ TTL configuration, expiration policy, และ cache eviction
 3. ตรวจสอบ cache storage selection, memory vs persistent, และ distributed cache
-4. ตรวจสอบ stale-while-revalidate patterns, cache warming, และ cache hit ratio
+### Network Deep Checks
 
-### 5. Time Complexity Review
+> Goal: เข้าใจ network stack และ context
 
-Review time complexity ของ critical paths ครอบคลุม Big O analysis, anti-patterns, input bounds
+1. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้อง
+2. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
+3. ระบุ HTTP client, API endpoints, CDN, proxy, load balancer
+4. ถ้า project ไม่มี network layer → stop และ report
 
-> Goal: ครอบคลุมทุก time complexity dimension
 
-1. สแกน codebase เพื่อระบุ functions ที่รับ input ขนาด variable: loops, recursion, nested iteration, sorting, searching
-2. วิเคราะห์ Big O ของแต่ละ critical path: single loop = O(n), nested loop = O(n²), binary search = O(log n)
-3. วิเคราะห์ recursion: ใช้ Master Theorem หรือ tree method
-4. วิเคราะห์ data structure operations: array access = O(1), hash lookup = O(1) avg, tree = O(log n)
-5. วิเคราะห์ composed operations: เช่น sort + binary search = O(n log n)
-6. ตรวจสอบ input bounds: UI = 10³, API = 10⁴, batch = 10⁶, data pipeline = 10⁸
-7. ตรวจหา anti-patterns: nested loop โดยไม่ใช้ hash map, sort ทุกครั้งแทน binary search, recursive โดยไม่ memoize, `array.indexOf` ใน loop
+> Goal: ตรวจสอบ DNS resolution และ routing
 
-### 6. Validate Findings
+1. ตรวจสอบ DNS records, TTL, และจำนวน round-trips
+2. ตรวจสอบการใช้ DNS prefetch/preconnect สำหรับ third-party origins
+3. ตรวจสอบ CDN edge locations และ routing
+4. ตรวจสอบว่า best practices สำหรับ DNS ถูกนำไปใช้
 
-ตรวจสอบและ validate issues จากทุก section และ core analysis
 
-> Goal: Issues ถูกต้องและจัดลำดับตาม severity
+### Bundler Deep Checks
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จากทุก section และ core analysis
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
+> Goal: เข้าใจ bundler setup และ build configuration
 
-### 7. Report
+1. ตรวจสอบ build tool จาก `package.json` และ config file (`bunup.config.ts`, `tsdown.config.ts`, `vite.config.ts`, `tauri.conf.json`)
+2. ระบุ build mode, package manager, entry points, output format, target browser/runtime
+3. ตรวจสอบว่า project มี build step หรือไม่ — ถ้าไม่มีให้ stop และ report
+4. บันทึก baseline build time และ output size ถ้า build ได้
 
-รายงานผล review ในรูปแบบตาราง
 
-> Goal: รายงาน aggregate findings พร้อม actionable recommendations
+> Goal: ประเมิน build config ปัจจุบัน
 
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง aggregate findings จากทุก section และ core analysis
-3. ทำ `/suggest-next-action`
+1. ตรวจสอบ output format และ `target` ตรงกับ runtime ที่รองรับ
+2. ตรวจสอบ `minify` เปิดใน production และ minifier ที่ใช้ (esbuild, terser, swc)
+3. ตรวจสอบ `sourcemap` ใน development และ production — ประเมิน exposure risk
+4. ตรวจสอบ `external` สำหรับ dependencies ที่ไม่ควร bundle
 
-### 8. Implement All
 
-ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
+### Memory Deep Checks
 
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
+เตรียม context และสแกน codebase
 
-1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
-2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
+> Goal: เข้าใจ patterns การใช้ memory และ runtime
+
+1. ทำ `/scan-codebase` เพื่อหา patterns ที่เกี่ยวกับ memory
+2. ระบุ runtime: Node.js, Bun, browser, Rust, หรืออื่น
+3. ตรวจหา memory profiling scripts, heap snapshots, และ monitoring
+4. ระบุ large data processing, streaming, caches, queues
+
+
+วิเคราะห์ memory อย่างลึกซึ้ง
+
+> Goal: พบ root cause ของ memory issues
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
+
+### Io Deep Checks
+
+> Goal: เข้าใจ io stack และปัญหา
+
+1. อ่าน `package.json`, `Cargo.toml`, หรือ manifest ที่เกี่ยวข้อง
+2. ระบุ patterns: file I/O, database I/O, network I/O, cache, queues
+3. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้อง
+4. ถ้าไม่พบ I/O patterns ที่มีความเสี่ยง → stop และ report
+
+
+> Goal: ครอบคลุมทุก io dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ io patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
 
 ## Rules
 
@@ -184,9 +218,31 @@ Review time complexity ของ critical paths ครอบคลุม Big O a
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
-## Expected Outcome
+### 1. Skip Conditions
 
-- รายงานตาราง aggregate findings จากทุก performance section และ core analysis
-- รายงาน recommended actions พร้อม priority
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- ถ้า project ไม่มี network layer → ข้ามทั้งหมด
+- ถ้า project ไม่มี CDN → ข้าม Section 2 item 3
+- ถ้า project ไม่มี third-party origins → ข้าม Section 2 item 2
+- ถ้า project ไม่มี connection pool → ข้าม Section 3 item 1
+- ถ้า project ไม่มี HTTP/2 หรือ HTTP/3 → ข้าม Section 3 item 2
 
+### 2. Severity Classification
+
+- Critical: broken endpoint, no compression บน text responses, missing cache invalidation ทำให้ข้อมูลผิด, broken DNS ทำให้ service down
+- High: high latency บน critical path, missing keep-alive, missing retry strategy, missing cache headers บน static assets, large payload ทำให้ช้า
+- Medium: suboptimal TTL, suboptimal connection pool size, minor cache key issue, unnecessary headers
+- Low: cosmetic, documentation gap, minor naming
+
+### 3. Evidence-Based Findings
+
+- ทุก finding ต้องมี file path และ line number
+- ระบุ endpoint, HTTP method, header, หรือ config ที่เกี่ยวข้อง
+- ใช้ metrics ก่อน/หลัง ยืนยันผลเมื่อได้
+
+### 4. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+
+### 5. Formatting
+
+*Some details from merged source skills were condensed to keep the skill under 250 lines.*

@@ -15,6 +15,7 @@ triggers:
 related:
   - use-ast-grep-outline
 ---
+
 ## Goal
 
 ตรวจสอบคุณภาพของโฟลเดอร์ใน project โดยประเมินหลายมิติ: จำนวนไฟล์, domain cohesion, naming, imports boundaries, nesting depth, และ mixed concerns

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จำลองเป็น user อ่าน source code แล้วคิดผ่าน user journey ทีละขั้นตอน เพื่อ review ว่าใช้งานได้หรือไม่ กดได้หมดหรือไม่ ทำได้หรือไม่ และมีปัญหาอะไรในทุกด้าน UX/UI โดยไม่รันโปรแกรมหรือ server จริง

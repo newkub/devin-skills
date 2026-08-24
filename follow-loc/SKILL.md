@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน `loc` tool สำหรับนับ lines of code แยกตามภาษาและไฟล์ พร้อมกรองไฟล์ตามเงื่อนไข

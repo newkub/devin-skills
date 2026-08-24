@@ -14,12 +14,12 @@ triggers:
   - user
   - model
 related:
-  - use-scripts
   - check-reference
-  - validate
-  - resolve-errors
   - report-table
+  - resolve-errors
   - suggest-next-action
+  - use-scripts
+  - validate
 ---
 
 ## Goal

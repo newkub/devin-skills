@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -179,4 +178,3 @@ code quality review สำหรับ: static analysis (lint, typecheck, code s
 - รายงาน Recommended Actions พร้อม priority และ workflow
 - Review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

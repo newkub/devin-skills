@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน integration tests สำหรับทดสอบการทำงานร่วมกันของ modules, data flow, และ integration points

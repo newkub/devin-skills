@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างและเปิดไฟล์ `README.html` ด้วย Element Plus + Tailwind CSS, tab system 7 tabs พร้อม search, sorting, grouping และ expand/collapse

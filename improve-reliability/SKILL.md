@@ -13,13 +13,13 @@ triggers:
   - model
 related:
   - follow-best-practice
-  - learn-from-web
   - improve-correctness
   - improve-resilience
   - improve-security
-  - validate
+  - learn-from-web
   - resolve-errors
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

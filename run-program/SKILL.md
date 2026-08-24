@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รันโปรแกรมหลักและทำให้ทำงานได้จริง

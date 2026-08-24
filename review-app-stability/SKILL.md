@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -144,4 +144,3 @@ Review ความเสถียรของ application เพื่อหา
 - Error boundaries, recovery patterns, health checks ถูกประเมิน
 - Severity และ recommendations ชัดเจน
 - ไม่ซ้ำซ้อนกับ review skills อื่น
-

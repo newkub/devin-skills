@@ -14,6 +14,7 @@ triggers:
 related:
   - update-docs
 ---
+
 ## Goal
 
 วิเคราะห์ features ที่มีอยู่ใน project และสร้าง documentation ให้ /update-docs เขียนลง docs/project/features.md

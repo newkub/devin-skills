@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รับบทเป็น developer ใหม่ที่เพิ่ง join พยายามเข้าใจและ onboard ผ่าน codebase เพื่อหาสิ่งที่งง ขาด docs ไม่มี context และ friction points ที่ทำให้เริ่มทำงานช้า

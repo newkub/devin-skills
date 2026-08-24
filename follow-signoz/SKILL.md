@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - learn-from-web
   - follow-config
+  - learn-from-web
   - validate
 ---
 

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 เลือกและ integrate TanStack libraries ได้ถูกต้องตาม use case

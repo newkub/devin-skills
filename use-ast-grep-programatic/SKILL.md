@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน ast-grep แบบ programmatic ผ่าน Bun scripts เพื่อ automate code analysis และ integrate กับ review CLI

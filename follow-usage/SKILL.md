@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - cli
 ---
+
 ## Goal
 
 ใช้ usage spec (KDL) กำหนด CLI แล้ว generate completions, docs, manpages, และ type-safe SDK

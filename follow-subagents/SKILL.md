@@ -15,14 +15,14 @@ triggers:
   - user
   - model
 related:
-  - run-parallel-via-spawn-subagents
-  - senior-frontend
-  - senior-backend
-  - staff-qa
-  - staff-devops
-  - validate
-  - report
   - deep-verify
+  - report
+  - run-parallel-via-spawn-subagents
+  - senior-backend
+  - senior-frontend
+  - staff-devops
+  - staff-qa
+  - validate
 ---
 
 ## Goal

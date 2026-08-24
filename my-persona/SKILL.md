@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนด personal persona ของผู้ใช้ เพื่อให้ AI assistant เข้าใจ preferences, working style, และ communication style อย่างชัดเจน

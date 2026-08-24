@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่าและใช้ Unlighthouse CLI และ CI เพื่อ audit performance, accessibility, SEO ของ website ทั้งเว็บไซต์

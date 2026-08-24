@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน กระชับ และนำไปใช้ได้จริง

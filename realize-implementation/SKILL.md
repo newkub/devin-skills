@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แปลงทุกอย่างเป็น production code จริงที่ใช้งานได้จริง ครบทุกมิติ
@@ -83,7 +84,7 @@ related: []
 > Goal: ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
 > Goal: โค้ดมีคุณภาพสูง ไม่มี unused code ผ่าน lint
 
-1. ทำ `/refactor`, `/update-reference`, `/review-codebase`, `/review-type-safety`, `/review-codebase` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
+1. ทำ `/refactor`, `/update-reference`, `/review-codebase`, `/review-correctness`, `/review-codebase` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
 3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
 4. ทำ `/run-verify` เพื่อตรวจสอบ scan, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)

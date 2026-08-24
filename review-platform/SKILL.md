@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -203,5 +203,3 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 - รายงานตาราง aggregate findings จากทุก platform section
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-
-

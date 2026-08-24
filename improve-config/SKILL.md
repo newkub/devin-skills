@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ปรับปรุง configuration ของ project ให้ครบถ้วน ถูกต้อง และสอดคล้องกับ tech stack ทั้ง root และทุก workspace ใน monorepo

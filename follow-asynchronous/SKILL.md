@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน asynchronous operations ใน JavaScript/TypeScript ให้ถูกต้อง อ่านง่าย และ maintain ได้

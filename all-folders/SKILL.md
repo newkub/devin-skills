@@ -15,10 +15,10 @@ triggers:
   - model
 related:
   - analyze-project
+  - report
+  - resolve-errors
   - scan-codebase
   - validate
-  - resolve-errors
-  - report
 ---
 
 ## Goal

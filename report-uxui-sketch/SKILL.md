@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วาด UX/UI sketch ด้วย ANSI box-drawing characters ในแชท เพื่อ visualize component layout, user flow, และ interaction patterns จาก codebase จริง

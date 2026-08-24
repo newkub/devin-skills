@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -160,4 +159,3 @@ modularity review สำหรับ: module boundaries (public API, encapsulati
 - รายงาน Recommended Actions พร้อม priority และ workflow
 - Modularity review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่าและใช้งาน testing strategies ครบวงจรตาม test pyramid principle

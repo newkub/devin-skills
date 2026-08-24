@@ -11,10 +11,10 @@ triggers:
   - model
 related:
   - ask-me
-  - use-lib-better
   - deep-plan
   - follow-goal
   - update-agents-md
+  - use-lib-better
 ---
 
 ## Goal

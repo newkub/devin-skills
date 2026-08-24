@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วาด diagram ด้วย Excalidraw เพื่อสื่อสาร architecture, flows, และโครงสร้างต่างๆ

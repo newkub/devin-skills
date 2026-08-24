@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -165,4 +164,3 @@ related:
 - Health score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 - ไม่มีการแก้ไข code หรือ config ในกระบวนการ review
-

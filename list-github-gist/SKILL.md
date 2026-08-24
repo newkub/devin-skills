@@ -7,7 +7,7 @@ allowed-tools:
 triggers:
   - user
 related:
-argument-hint: "[--limit <n>] [--public|--secret]"
+argument-hint: [--limit <n>] [--public|--secret]
 ---
 
 ## Goal

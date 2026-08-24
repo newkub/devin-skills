@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สกัดความรู้และ reusable patterns จาก code ที่มีอยู่, competitors, หรือ real-world implementations เพื่อนำมาประยุกต์ใช้ใน project

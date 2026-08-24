@@ -13,8 +13,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง documentation site ด้วย VitePress โดยเขียนเนื้อหาเป็น markdown ปกติ มี sidebar/nav ครบ ไม่ใช้ HTML หรือ UX ซับซ้อน

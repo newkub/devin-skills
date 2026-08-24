@@ -15,6 +15,7 @@ triggers:
 related:
   - report-git-log
 ---
+
 ## Goal
 
 Commit ไฟล์ที่มีการเปลี่ยนแปลงตามมาตรฐาน conventional commits โดยรองรับ split commit ตามประเภทของการเปลี่ยนแปลง

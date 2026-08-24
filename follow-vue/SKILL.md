@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนดแนวทางการพัฒนา Vue.js applications ด้วย Vue 3, Composition API, TypeScript และ modern best practices

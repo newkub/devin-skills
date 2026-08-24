@@ -17,15 +17,16 @@ triggers:
   - user
   - model
 related:
-  - learn-from-web
-  - follow-write-devin-skills
+  - check-reference
   - follow-devin-skills-md
+  - follow-write-devin-skills
+  - git-commit
+  - learn-from-web
+  - report
   - use-scripts
   - validate
-  - check-reference
-  - git-commit
-  - report
 ---
+
 ## Goal
 
 สร้าง skill ใหม่หรือกลุ่ม subskills จาก URL หรือ domain ที user ให้มา โดยดึงเนื้อหา วิเคราะห์ จัดกลุ่ม และเขียน skill ตามมาตรฐาน

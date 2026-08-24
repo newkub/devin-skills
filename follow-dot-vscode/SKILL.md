@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดการ `.vscode` directory ให้ครบถ้วนและเป็นระบบ ครอบคลุม workspace settings, recommended extensions, tasks, launch configurations และ file associations

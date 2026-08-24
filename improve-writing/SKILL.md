@@ -12,15 +12,16 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ปรับปรุงคุณภาพการเขียนเอกสารทั่ว project ให้ชัดเจน กระชับ สม่ำเสมอ และสื่อสารได้ตรงประเด็น
 
 ## Scope
 
-ใช้สำหรับปรับปรุงคุณภาพการเขียน: documentation (README, docs, API docs), code comments, commit messages, changelogs, technical writing — ไม่รวม UX copy (อยู่ใน `/review-ux-writing`) และ content coverage (อยู่ใน `/review-content-coverage`)
+ใช้สำหรับปรับปรุงคุณภาพการเขียน: documentation (README, docs, API docs), code comments, commit messages, changelogs, technical writing — ไม่รวม UX copy (อยู่ใน `/review-frontend`) และ content coverage (อยู่ใน `/review-docs`)
 
 ## Execute
 

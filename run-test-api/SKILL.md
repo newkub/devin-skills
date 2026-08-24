@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน API tests โดยเรียก endpoints จริงหรือ mocked แล้วตรวจสอบ responses เพื่อ verify contracts และ behavior

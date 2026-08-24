@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Deploy application ไปยัง Railway ด้วย `railway up` จนกว่า deployment จะ live สำเร็จ

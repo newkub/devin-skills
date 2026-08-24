@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 เปลี่ยนชื่อ identifier (variable, function, type, class, interface, enum) ใน code ด้วย ast-grep และอัปเดท references ทั้งหมดอย่างปลอดภัย

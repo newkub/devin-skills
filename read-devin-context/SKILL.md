@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สรุป devin context (global rules, skills, mcp, hooks, plugins, etc.) เพื่อเตรียม task และลดการตัดสินใจผิด

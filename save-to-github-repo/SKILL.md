@@ -9,7 +9,7 @@ allowed-tools:
 triggers:
   - user
 related:
-argument-hint: "[<repo-name>] [--public|--private]"
+argument-hint: [<repo-name>] [--public|--private]
 ---
 
 ## Goal

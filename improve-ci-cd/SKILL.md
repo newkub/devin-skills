@@ -13,8 +13,8 @@ triggers:
   - user
   - model
 related:
-  - improve-codebase
   - follow-ci-cd
+  - improve-codebase
 ---
 
 ## Goal

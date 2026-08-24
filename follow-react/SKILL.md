@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 พัฒนา React applications ตาม best practices ด้วย React 19, Server Components, และ modern patterns

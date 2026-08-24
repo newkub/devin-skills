@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ดึงข้อมูล release diff ของ GitHub repository ระหว่างสอง tags เพื่อสรุปสิ่งที่เปลี่ยนแปลง

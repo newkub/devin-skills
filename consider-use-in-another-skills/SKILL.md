@@ -13,10 +13,10 @@ triggers:
   - user
   - model
 related:
-  - list-skills
   - ask-me
   - check-circular-dependencies
   - check-reference
+  - list-skills
   - update-reference
   - validate
 ---

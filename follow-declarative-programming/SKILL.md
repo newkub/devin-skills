@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย declarative programming เพื่อเขียน code ที่อ่านง่าย maintain ได้ง่าย

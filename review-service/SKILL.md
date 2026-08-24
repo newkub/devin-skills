@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -114,4 +114,3 @@ service review สำหรับ: service layer organization, single responsibi
 - รายงานตาราง aggregate findings จากทุก service section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

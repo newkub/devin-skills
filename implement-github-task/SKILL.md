@@ -18,6 +18,7 @@ related:
   - run-check
   - run-test
 ---
+
 ## Goal
 
 Read a GitHub issue or project task and implement the work

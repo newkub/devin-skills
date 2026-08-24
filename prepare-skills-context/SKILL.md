@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตรวจจับ AI tool, อ่าน `global_rules.md`, อ่าน related skills, และเลือก template ที่เหมาะสมก่อนเริ่มเขียน skill

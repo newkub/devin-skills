@@ -12,13 +12,13 @@ triggers:
   - user
   - model
 related:
-  - improve-codebase
   - follow-best-practice
+  - improve-codebase
   - learn-from-web
-  - use-scripts
-  - validate
   - resolve-errors
   - suggest-next-action
+  - use-scripts
+  - validate
 ---
 
 ## Goal

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างและปรับปรุง AI agent harness (runtime infrastructure layer) เพื่อ reliability, verifiable execution, และ auditable agent workflows

@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -169,4 +168,3 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 - Context window ใช้อย่างมีประสิทธิภาพ
 - Goal alignment รักษาไว้ตลอด conversation
 - รายงาน findings พร้อม severity, review score, และ action items
-

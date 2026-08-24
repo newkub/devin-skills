@@ -14,8 +14,8 @@ triggers:
   - model
 related:
   - follow-best-practice
-  - follow-elysia
   - follow-drizzle
+  - follow-elysia
   - validate
 ---
 

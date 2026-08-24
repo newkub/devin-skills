@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน `ast-grep scan` เพื่อตรวจสอบ codebase ด้วย AST-based patterns และแก้ไขปัญหาที่พบ

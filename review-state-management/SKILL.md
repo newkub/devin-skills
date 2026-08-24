@@ -1,20 +1,5 @@
 ---
-name: review-state-management
-description: Review state management: store structure, mutations, persistence, sync, derivation, SSR, performance
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
 related:
-  - review-codebase
-  - validate
-  - suggest-next-action
 ---
 
 ## Goal
@@ -123,4 +108,3 @@ state management review สำหรับ: store structure and organization, st
 - รายงานตาราง aggregate findings จากทุก state management section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

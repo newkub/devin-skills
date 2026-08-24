@@ -12,14 +12,14 @@ triggers:
   - user
   - model
 related:
-  - validate
-  - deep-validate
-  - run-test
-  - run-check
   - check-reference
-  - scan-codebase
+  - deep-validate
   - report
+  - run-check
+  - run-test
+  - scan-codebase
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

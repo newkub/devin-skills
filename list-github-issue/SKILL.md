@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ

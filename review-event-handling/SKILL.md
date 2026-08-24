@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -113,4 +113,3 @@ event handling review สำหรับ: listener cleanup (addEventListener/rem
 - รายงานตาราง aggregate findings จากทุก event handling section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

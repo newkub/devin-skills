@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน typecheck ตามที่กำหนดใน package manifest พร้อมตรวจสอบ config

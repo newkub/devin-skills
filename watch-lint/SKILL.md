@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตรวจสอบและ monitor linting ในโปรเจกต์อย่างต่อเนื่อง

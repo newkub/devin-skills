@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -111,4 +111,3 @@ error handling review สำหรับ: error boundaries, try-catch coverage, 
 - รายงานตาราง aggregate findings จากทุก error handling section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย functional programming principles เพื่อลดความซับซ้อน เพิ่มความปลอดภัย และทำให้โค้ด test ได้ง่ายขึ้น

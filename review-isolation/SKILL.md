@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -136,4 +135,3 @@ isolation review สำหรับ: module boundaries, package boundaries, depe
 - รายงานตาราง findings จากทุก isolation, boundaries, dependencies section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง changelog รายงานจาก git log ระหว่าง tags หรือ releases ในรูปแบบที่อ่านง่าย

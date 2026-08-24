@@ -12,11 +12,11 @@ triggers:
   - user
   - model
 related:
-  - git-commit
-  - validate
-  - run-check
   - edit-this-repo
+  - git-commit
+  - run-check
   - ship-code
+  - validate
 ---
 
 ## Goal

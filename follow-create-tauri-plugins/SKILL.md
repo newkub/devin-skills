@@ -12,8 +12,8 @@ triggers:
   - user
   - model
 related:
-  - cli
 ---
+
 ## Goal
 
 สร้าง custom Tauri plugins เพื่อขยายความสามารถของ Tauri applications ด้วย Rust backend และ JavaScript API

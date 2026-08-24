@@ -14,6 +14,7 @@ triggers:
 related:
   - suggest-next-action
 ---
+
 ## Goal
 
 Clean up stale, duplicate, or resolved issues via gh CLI

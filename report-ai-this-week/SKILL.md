@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รวบรวมและสรุปข่าวสารล่าสุดเกี่ยวกับ AI และ open source projects ประจำสัปดาห์ เพื่อให้ผู้ใช้ติดตามเทรนด์และการเปลี่ยนแปลงที่สำคัญ

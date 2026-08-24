@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบเพื่อป้องกันปัญหาซ้ำ

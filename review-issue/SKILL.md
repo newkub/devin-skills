@@ -10,8 +10,8 @@ triggers:
   - user
   - model
 related:
-  - review-github-issue
   - review-and-fix
+  - review-github-issue
   - suggest-next-action
 ---
 

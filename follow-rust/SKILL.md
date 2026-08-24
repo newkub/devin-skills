@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนดแนวทางการพัฒนา Rust applications ให้มีประสิทธิภาพสูงสุด

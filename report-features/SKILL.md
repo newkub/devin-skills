@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงาน features ทั้งหมดใน project เป็นตารางในแชท โดยอ่านจาก `.devin/features/` TypeScript files

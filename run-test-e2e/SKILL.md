@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน E2E tests สำหรับ browser testing ด้วย Playwright หรือ Cypress

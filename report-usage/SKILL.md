@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างรายงาน usage statistics ของ APIs, functions, skills หรือ dependencies ใน project

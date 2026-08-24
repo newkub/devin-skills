@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะห์และปรับปรุง code structure ระดับ micro ด้วย `sg outline` เพื่อแก้ไข top-level symbols, exports, members, SRP violations, และ cohesion issues

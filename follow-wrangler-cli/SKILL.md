@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้งาน Wrangler CLI สำหรับ develop, deploy และ manage Cloudflare Workers และ Developer Platform products

@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -86,4 +86,3 @@ Orchestrate backend review ครอบคลุม 14 sub-review workflows แ�
 - Review score ต่อ dimension และ overall
 - รายงานในแชทเป็นตารางตาม `/report-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

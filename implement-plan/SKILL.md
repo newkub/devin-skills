@@ -9,8 +9,7 @@ allowed-tools:
   - ask_user_question
 triggers:
   - user
-related: []
-argument-hint:
+related:
 ---
 
 ## Goal

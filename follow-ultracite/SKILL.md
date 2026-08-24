@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ติดตั้งและตั้งค่า Ultracite กับ Biome สำหรับ linting และ formatting

@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รันและตรวจสอบ GitHub Actions จนกว่าจะผ่านทั้งหมม

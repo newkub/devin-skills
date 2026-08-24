@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -109,4 +109,3 @@ debuggability review สำหรับ: logging statements, error messages, nam
 - Debuggability gaps ถูกระบุและจัดลำดับ
 - Review score สำหรับ debuggability
 - Action items ชัดเจนสำหรับขั้นตอนถัดไป
-

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รับบทเป็น UX/UI designer อ่าน source code แล้ววิจารณ์ design quality, consistency, design system compliance, และ visual polish จากมุมมองคนทำ design ไม่ใช่ developer

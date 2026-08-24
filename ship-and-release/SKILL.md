@@ -13,12 +13,12 @@ triggers:
   - user
   - model
 related:
-  - ship-code
   - ask-me
-  - run-release
   - report
-  - suggest-next-action
   - resolve-errors
+  - run-release
+  - ship-code
+  - suggest-next-action
 ---
 
 ## Goal

@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -179,4 +178,3 @@ Review การคำนวณและ algorithm ทีใช้พลัง�
 - Review score ต่อ dimension และ overall
 - Before/after battery/energy metrics ถ้ามี
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

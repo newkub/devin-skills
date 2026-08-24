@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนดค่าและใช้งาน WorkOS APIs สำหรับ authentication และ identity management

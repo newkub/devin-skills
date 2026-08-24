@@ -8,8 +8,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงาน CLI tools ที่ติดตั้งในเครื่องและ commands ที่มี เพื่อประเมินความเหมาะสมในการแปลงเป็น devin skills

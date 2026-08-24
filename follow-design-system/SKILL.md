@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้ design system principles ที่ universal ใช้ได้กับทุก platform เพื่อ consistency และ maintainability

@@ -1,20 +1,5 @@
 ---
-name: review-lib
-description: Review library design: API surface, bundle size, tree-shaking, peer deps, semver, compatibility
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
 related:
-  - review-codebase
-  - validate
-  - suggest-next-action
 ---
 
 ## Goal
@@ -110,4 +95,3 @@ library review สำหรับ: library API design, public API surface, expor
 - รายงานตาราง aggregate findings จากทุก library section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

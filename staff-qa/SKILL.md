@@ -13,8 +13,8 @@ triggers:
   - user
   - model
 related:
-  - update-test
   - follow-tdd
+  - update-test
   - validate
 ---
 

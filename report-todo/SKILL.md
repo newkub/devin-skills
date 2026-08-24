@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รวบรวมและรายงาน TODO, FIXME, HACK, NOTE และ comment markers อื่นๆ จาก codebase พร้อมตำแหน่งและความสำคัญ

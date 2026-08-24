@@ -13,15 +13,15 @@ triggers:
   - user
   - model
 related:
-  - learn-from-web
   - follow-config
+  - git-commit
+  - learn-from-web
+  - report
+  - run-check
+  - ship-code
+  - suggest-next-action
   - use-scripts
   - validate
-  - run-check
-  - git-commit
-  - ship-code
-  - report
-  - suggest-next-action
 ---
 
 ## Goal

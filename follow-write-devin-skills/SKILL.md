@@ -13,20 +13,20 @@ triggers:
   - user
   - model
 related:
-  - prepare-skills-context
-  - follow-devin-skills-md
-  - use-scripts
+  - check-circular-dependencies
   - follow-create-bun-cli
   - follow-create-cli
+  - follow-devin-skills-md
   - follow-web-design
-  - visualize-in-web
-  - validate
-  - review-devin-global-skills
-  - check-circular-dependencies
-  - update-dot-devin
   - improve-rules
-  - update-reference
+  - prepare-skills-context
+  - review-devin-global-skills
   - suggest-next-action
+  - update-dot-devin
+  - update-reference
+  - use-scripts
+  - validate
+  - visualize-in-web
 ---
 
 ## Goal

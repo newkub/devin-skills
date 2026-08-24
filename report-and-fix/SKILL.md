@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงานปัญหาและแก้ไขไฟล์ตามที่ user ตกลง

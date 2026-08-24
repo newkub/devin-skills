@@ -7,9 +7,10 @@ allowed-tools:
   - ask_user_question
 triggers:
   - user
-related: []
+related:
 argument-hint: <org-name>
 ---
+
 ## Goal
 
 เปิดหน้า GitHub organization ที่ระบุใน browser

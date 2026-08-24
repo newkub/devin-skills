@@ -13,10 +13,10 @@ triggers:
   - user
   - model
 related:
-  - learn-from-web
   - follow-config
-  - validate
   - git-commit
+  - learn-from-web
+  - validate
 ---
 
 ## Goal

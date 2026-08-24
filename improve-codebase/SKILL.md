@@ -13,27 +13,28 @@ triggers:
   - user
   - model
 related:
-  - update-agents-md
-  - ask-requirement
   - ask-me
-  - scan-codebase
-  - improve-correctness
-  - improve-reliability
-  - improve-frontend
-  - improve-performance
-  - improve-efficiency
-  - improve-database
-  - improve-resilience
-  - improve-docs
-  - improve-governance
-  - improve-security
-  - improve-api
+  - ask-requirement
   - check-reference
+  - improve-api
+  - improve-correctness
+  - improve-database
+  - improve-docs
+  - improve-efficiency
+  - improve-frontend
+  - improve-governance
+  - improve-performance
+  - improve-reliability
+  - improve-resilience
+  - improve-security
+  - report
+  - review-quality
+  - run-check
+  - scan-codebase
+  - suggest-next-action
+  - update-agents-md
   - update-reference
   - validate
-  - run-check
-  - report
-  - suggest-next-action
 ---
 
 ## Goal

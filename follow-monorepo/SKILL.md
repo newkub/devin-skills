@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications

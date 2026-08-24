@@ -13,14 +13,14 @@ triggers:
   - user
   - model
 related:
-  - improve-writing
   - check-accessibility
-  - senior-frontend
-  - review-frontend
   - improve-performance
-  - validate
+  - improve-writing
   - resolve-errors
+  - review-frontend
+  - senior-frontend
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

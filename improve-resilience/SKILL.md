@@ -13,16 +13,16 @@ triggers:
   - user
   - model
 related:
-  - improve-codebase
   - follow-best-practice
-  - learn-from-web
+  - follow-deterministic
   - follow-functional-programming
   - follow-parallel
-  - follow-deterministic
-  - run-check
-  - validate
+  - improve-codebase
+  - learn-from-web
   - resolve-errors
+  - run-check
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

@@ -1,30 +1,36 @@
 ---
 name: review-docs
-description: Review documentation quality ครอบคลุม README, setup, API docs, examples, guides, changelogs พร้อม...
+description: Review documentation quality including README, setup, API docs, examples, guides, changelogs, and co
 allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
   - ask_user_question
+  - edit
+  - exec
+  - glob
+  - grep
+  - read
 triggers:
-  - user
   - model
+  - user
 related:
   - review-codebase
-  - validate
+  - review-correctness
+  - review-frontend
+  - review-infrastructure
+  - review-performance
+  - review-quality
+  - review-reliability
+  - review-security
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
-Review documentation ของ project ครอบคลุม README, setup guide, API docs, examples, guides, changelogs พร้อม findings, severity, และ review score
+Review documentation ของ project ครอบคลุม README, setup guide, API docs, examples, guides, changelogs พร้อม findings, severity, และ review score Review content coverage ครอบคลุมทุก features, APIs, use cases โดย research จากแหล่งข้อมูลหลายชั้น พร้อมระบุ gaps และ score
 
 ## Scope
 
-ใช้สำหรับ review documentation ใน project — ไม่รวม SEO review หรือ code quality review — เน้น review เท่านั้น ไม่แก้ไข docs ระหว่าง review
+ใช้สำหรับ review documentation ใน project — ไม่รวม SEO review หรือ code quality review — เน้น review เท่านั้น ไม่แก้ไข docs ระหว่าง review ใช้สำหรับ review content coverage ของ skill, project, หรือ documentation — วิเคราะห์ gaps ระหว่าง inventory และ coverage surface โดยไม่เขียนหรือลบ content
 
 ## Execute
 
@@ -88,11 +94,24 @@ Review documentation ของ project ครอบคลุม README, setup gu
 ให้คะแนนและรายงาน
 
 > Goal: สรุปผล review เป็นตาราง
+### Content Coverage Deep Checks
 
-1. ให้ severity: Critical, High, Medium, Low, Info
-2. คำนวณ review score
-3. ทำ `/report` พร้อม `/report-table`
-4. ทำ `/suggest-next-action`
+> Goal: เข้าใจ content structure และ coverage surface
+
+1. ทำ `/scan-codebase` อ่านทุกไฟล์ content ใน target directory
+2. ระบุ content inventory: guides, examples, references, key-concepts, principles, index files
+3. ระบุ coverage surface: features, APIs, use cases, concepts, best practices
+4. ถ้า target directory ไม่มี → stop และ report
+
+
+> Goal: ตรวจสอบว่า research sources ครอบคลุม
+
+1. ตรวจสอบการใช้ `DeepWiki` สำหรับ GitHub repositories
+2. ตรวจสอบการใช้ `Context7` สำหรับ libraries และ frameworks
+3. ตรวจสอบ `Official Documentation` ถูกอ้างอิง
+4. ตรวจสอบ `Web Search` ใช้เฉพาะ fallback
+
+
 
 ## Rules
 
@@ -118,6 +137,36 @@ Review documentation ของ project ครอบคลุม README, setup gu
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
+### 1. Review Only
+
+- เป็น review reference เท่านั้น ไม่แก้ไข ไม่ลบ ไม่สร้าง content ใหม่
+- ห้ามลบไฟล์หรือ content ที่มีอยู่
+
+### 2. Coverage Surface
+
+- ทุก features ต้องมี guide
+- ทุก APIs ต้องมี examples
+- ทุก use cases ต้องมี documentation
+- ทุก concepts ต้องมี explanations
+- ทุก best practices ต้องมี guidelines
+
+### 3. Source Priority
+
+- ลำดับแหล่งข้อมูล: `DeepWiki` → `Context7` → `Web Search` → `Official Docs`
+- ใช้ `DeepWiki` ก่อนถ้าเป็น GitHub repository
+- ใช้ `Context7` สำหรับ libraries และ frameworks
+- อ้างอิง `Official Documentation` เสมอ
+
+### 4. High Impact Content
+
+- ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
+- ห้าม TODO, MOCK, placeholder, generic filler
+
+### 5. Formatting
+
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- รายงานเป็นตารางด้วย `/report-table`
+
 ## Expected Outcome
 
 - รายงาน findings ตาม doc category
@@ -125,3 +174,4 @@ Review documentation ของ project ครอบคลุม README, setup gu
 - Recommendations
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 
+- ตาราง: category | coverage % | gaps found | severity | action item

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดโครงสร้าง TanStack Start + SolidJS application ตาม best practices ที่รองรับ SSR, CSR, server functions, modules/ สำหรับ feature-based organization และ monorepo shared packages โดยไม่ผูกกับ styling หรือ API layer เฉพาะ

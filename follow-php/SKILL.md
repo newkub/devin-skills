@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนดแนวทางการพัฒนา PHP applications ตาม PSR standards และ modern best practices

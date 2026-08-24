@@ -11,9 +11,9 @@ triggers:
   - user
   - model
 related:
-  - update-agents-md
   - read-related-skills
   - run-parallel-via-spawn-subagents
+  - update-agents-md
 ---
 
 ## Goal

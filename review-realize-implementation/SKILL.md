@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -150,4 +150,3 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - รายงาน Recommended Implementations พร้อม priority และ workflow
 - Implementation completeness score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

@@ -13,13 +13,13 @@ triggers:
   - user
   - model
 related:
+  - check-circular-dependencies
   - follow-devin-skills-md
   - follow-write-devin-skills
-  - review-issue
-  - check-circular-dependencies
-  - validate
   - report
+  - review-issue
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

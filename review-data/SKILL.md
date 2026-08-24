@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -108,4 +108,3 @@ data review สำหรับ: data flow lineage, API input/output schemas, dat
 - รายงานตาราง aggregate findings จากทุก data flow section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

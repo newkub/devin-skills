@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างเนื้อหาที่มีคุณภาพสูง อ่านง่าย สอดคล้องกัน และไม่ซ้ำซ้อน ครบทุกมิติ

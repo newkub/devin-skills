@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แปล code และ functions เป็นประโยคภาษาไทยที่เข้าใจง่าย พร้อมอธิบาย input/output และ logic

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดการ `.github` directory ให้ครบถ้วนและเป็นระบบ ครอบคลุม CI/CD workflows, issue/PR templates, community files, automation config และ security policies

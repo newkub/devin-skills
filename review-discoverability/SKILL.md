@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -40,7 +39,7 @@ discoverability review สำหรับ: code discoverability (naming, file/fo
 
 > Goal: ตรวจสอบว่า code ค้นหาและเข้าใจได้ง่าย
 
-1. ตรวจสอบ naming conventions: variable, function, class, file, directory, API, database (ใช้ `/review-naming` ถ้าต้องการละเอียด)
+1. ตรวจสอบ naming conventions: variable, function, class, file, directory, API, database (ใช้ `/review-quality` ถ้าต้องการละเอียด)
 2. ตรวจสอบ file/folder structure: logical grouping, kebab-case/PascalCase consistency, barrel exports, index files
 3. ตรวจสอบ searchability: ไม่มีชื่อกำกวม, ไม่ใช้ `data`/`temp`/`info`, ไม่ใช้ single-letter นอก loop, consistent terminology across layers
 4. ตรวจสอบ `JSDoc`/`TSDoc` บน public API, module exports, top-level functions
@@ -92,7 +91,7 @@ discoverability review สำหรับ: code discoverability (naming, file/fo
 
 - ไม่ review SEO — ใช้ `/review-seo`
 - ไม่ review code quality — ใช้ `/review-code-quality`
-- ไม่ review naming โดยละเอียด — ใช้ `/review-naming`
+- ไม่ review naming โดยละเอียด — ใช้ `/review-quality`
 - ไม่ review docs โดยละเอียด — ใช้ `/review-docs`
 - อยู่ภายใต้ `/review-codebase` เมื่อ review delivery ทั้งหมด
 
@@ -124,4 +123,3 @@ discoverability review สำหรับ: code discoverability (naming, file/fo
 - Review score พร้อม severity
 - Recommended actions
 - Next actions
-

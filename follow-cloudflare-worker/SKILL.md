@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 Setup build แบบ auto และ deploy applications บน Cloudflare Workers platform พร้อม auto-configuration และ bindings

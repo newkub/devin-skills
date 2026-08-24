@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง visual แบบ Web (HTML) ใน browser ให้เข้าใจข้อมูล โครงสร้าง หรือ concept ได้ง่าย

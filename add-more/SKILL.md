@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะห์ gaps ของสิ่งที่มีอยู่และเพิ่มสิ่งที่ขาดหายไปตาม context ที่กำหนด

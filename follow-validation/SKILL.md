@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 กำหนด validation strategy ที่ type-safe ทั้ง runtime และ compile-time โดยแยก business rule validation จาก input/output validation

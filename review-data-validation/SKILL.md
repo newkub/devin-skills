@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -107,4 +107,3 @@ data validation review สำหรับ: Zod schemas, input validation gaps, o
 - รายงานตาราง aggregate findings จากทุก validation section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

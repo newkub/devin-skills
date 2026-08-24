@@ -13,12 +13,12 @@ triggers:
   - user
   - model
 related:
-  - scan-codebase
   - check-reference
+  - follow-barrel-export
+  - scan-codebase
+  - ship-code
   - update-reference
   - validate
-  - follow-barrel-export
-  - ship-code
 ---
 
 ## Goal

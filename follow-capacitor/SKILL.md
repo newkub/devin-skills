@@ -14,9 +14,9 @@ triggers:
 related:
   - follow-bun
   - follow-config
+  - follow-deploy
   - follow-vite
   - learn-from-web
-  - follow-deploy
 ---
 
 ## Goal

@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS), Elysia และ oRPC แบบ type-safe

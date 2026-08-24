@@ -1,29 +1,36 @@
 ---
 name: review-infrastructure
-description: Review infrastructure ครอบคลุม deployment, CI/CD, config files, monitoring, tracing, disaster rec...
+description: Review infrastructure including workers, queues, webhooks, scalability, cost, and migration
 allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
   - ask_user_question
+  - edit
+  - exec
+  - glob
+  - grep
+  - read
 triggers:
-  - user
   - model
+  - user
 related:
   - review-codebase
-  - validate
+  - review-correctness
+  - review-docs
+  - review-frontend
+  - review-performance
+  - review-quality
+  - review-reliability
+  - review-security
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
 
-Review infrastructure ครอบคลุมทุก dimension ของ infrastructure พร้อม aggregate findings และ review score
+Review infrastructure ครอบคลุมทุก dimension ของ infrastructure พร้อม aggregate findings และ review score Review background workers ครอบคลุม job lifecycle, cron jobs, scheduling, health monitoring, scaling พร้อม review score Review queue system ครอบคลุม job processing, idempotency, retry, backpres...
 
 ## Scope
 
-infrastructure review สำหรับ: deployment, CI/CD, config files, monitoring, tracing, disaster recovery, backup, caching, cost optimization, resilience, environment, observability, health endpoints, upgrade safety
+infrastructure review สำหรับ: deployment, CI/CD, config files, monitoring, tracing, disaster recovery, backup, caching, cost optimization, resilience, environment, observability, health endpoints, upgrade safety workers review สำหรับ: job lifecycle, job error handling, cron jobs, schedule configuration, timezone handling, task dependencies, worker health monitoring, restart strategy, worker sca...
 
 ## Execute
 
@@ -87,94 +94,114 @@ Health monitoring, distributed tracing และ observability stack ครอ�
 
 ### 5. Disaster Recovery And Backup Review
 
-Review DR plan และ backup ครอบคลุม RPO/RTO, failover, data backup, recovery procedures, restore testing
+### Workers Deep Checks
 
-> Goal: ครอบคลุมทุก DR และ backup dimension
+> Goal: เข้าใจ worker structure และ scheduling patterns
 
-1. ตรวจสอบ RPO/RTO targets: definition per service, measurement method, compliance status
-2. ตรวจสอบ failover strategy: active-passive vs active-active, failover trigger, failback procedure
-3. ตรวจสอบ data backup: backup frequency, backup type, backup storage, backup encryption, และ retention policy
-4. ตรวจสอบ recovery procedures: recovery steps, recovery time estimation, recovery validation, และ restore testing
-5. ตรวจสอบ DR testing: test frequency, test scope, test documentation, automated DR test
-6. ตรวจสอบ DR documentation: runbook, contact list, escalation procedure, dependency map
-7. ตรวจสอบ single points of failure: redundant services, data replication, geographic distribution
-8. Critical: no backup, no failover, single point of failure บน critical service, untested restore, RPO/RTO non-compliance
-9. High: missing RPO/RTO, no DR testing, missing recovery procedure, missing restore test, inconsistent backup, no retention policy
+1. ทำ `/scan-codebase` เพื่อเข้าใจ worker structure
+2. ระบุ worker framework, cron scheduler, job patterns, worker deployment strategy ที่ใช้
+3. ถ้า project ไม่มี background workers → stop และ report
 
-### 6. Caching Review
 
-Review caching strategy ครอบคลุม invalidation, key design, TTL, storage, stale-while-revalidate
+> Goal: ครอบคลุมทุก worker dimension พร้อม review score
 
-> Goal: ครอบคลุมทุก caching dimension
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ worker patterns
+2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 
-1. ตรวจสอบ cache invalidation strategy, key design, และ namespace management
-2. ตรวจสอบ TTL configuration, expiration policy, และ cache eviction
-3. ตรวจสอบ cache storage selection, memory vs persistent, และ distributed cache
-4. ตรวจสอบ stale-while-revalidate patterns, cache warming, และ cache hit ratio
-5. Critical: cache poisoning, no invalidation on data change, cache stampede
-6. High: missing TTL, inconsistent cache key, no cache warming
 
-### 7. Cost Review
 
-Review cloud cost optimization ครอบคลุม resource usage, billing, waste elimination
+### Queue Deep Checks
 
-> Goal: ครอบคลุมทุก cost dimension
+> Goal: เข้าใจ queue system และ job patterns
 
-1. ตรวจสอบ compute cost: server sizing, auto-scaling config, idle resource detection
-2. ตรวจสอบ storage cost: storage volume, retention policy, duplicate data, orphaned storage
-3. ตรวจสอบ bandwidth cost: CDN usage, image optimization, response compression, caching headers
-4. ตรวจสอบ third-party API cost: API call volume, caching strategy, batch API usage, free tier utilization
-5. ตรวจสอบ database cost: query efficiency, index bloat, connection pool sizing, read replica necessity
-6. ตรวจสอบ cost monitoring: cost alerts, budget limits, cost attribution, cost dashboard
-7. ตรวจสอบ waste elimination: unused resources, over-provisioned resources, zombie processes
-8. Critical: significant waste, no cost monitoring, unbounded resource scaling
-9. High: missing caching strategy, over-provisioned resources, no cost alerts
+1. ทำ `/scan-codebase` เพื่อเข้าใจ queue structure
+2. ระบุ queue system (BullMQ, Redis Queue, SQS, RabbitMQ, custom), job patterns, retry config, dead letter queue strategy ที่ใช้
+3. ถ้า project ไม่มี queue system → stop และ report
 
-### 8. Resilience Review
 
-Review resilience patterns ครอบคลุม circuit breakers, fallbacks, graceful degradation, retry strategies
+> Goal: ครอบคลุมทุก queue dimension พร้อม review score
 
-> Goal: ครอบคลุมทุก resilience dimension
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ queue patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 
-1. ตรวจสอบ circuit breaker: threshold config, open/half-open/closed states, fallback on open
-2. ตรวจสอบ fallback mechanisms: default responses, cached data fallback, static fallback
-3. ตรวจสอบ graceful degradation: partial feature disable, read-only mode, queue-based degradation
-4. ตรวจสอบ retry strategies: max retries, backoff strategy, jitter, retry budget
-5. ตรวจสอบ bulkhead patterns: resource isolation, connection pool limits, concurrent request limits
-6. ตรวจสอบ timeout management: request timeouts, circuit breaker timeouts, overall deadline
-7. Critical: no circuit breaker บน critical service, no timeout, cascading failure risk
-8. High: missing fallback, no retry strategy, no bulkhead isolation
 
-### 9. Environment Review
 
-Review environment config ครอบคลุม env var validation, parity, secret rotation, documentation, env safety
+### Webhook Deep Checks
 
-> Goal: ครอบคลุมทุก environment dimension
+> Goal: เข้าใจ webhook structure และ providers
 
-1. ตรวจสอบ env var validation: required vars, type validation, default values, missing var handling
-2. ตรวจสอบ env parity: dev vs staging vs prod, missing vars per environment, extra vars per environment
-3. ตรวจสอบ secret rotation: rotation schedule, rotation evidence, stale secrets
-4. ตรวจสอบ env documentation: .env.example completeness, env var descriptions, setup guide
-5. ตรวจสอบ env var exposure: client-side vs server-side, VITE_ prefix, secret leakage to client
-6. ตรวจสอบ env var type safety: string vs number vs boolean, parsing logic, invalid value handling
-7. ตรวจสอบ env migration safety: removed vars, renamed vars, backward compatibility
-8. Critical: secret exposed to client, missing required env var in prod, no validation on critical env var
-9. High: env parity gap, missing .env.example, no secret rotation, missing env documentation
+1. ทำ `/scan-codebase` เพื่อเข้าใจ webhook structure
+2. ระบุ webhook providers (Stripe, GitHub, Slack, custom), signature scheme, secret management strategy ที่ใช้
+3. ถ้า project ไม่มี webhooks → stop และ report
 
-### 10. Health Endpoint Review
 
-Review health and readiness endpoints ครอบคลุม liveness, readiness probes, dependency checks, graceful shutdown
+> Goal: ครอบคลุมทุก webhook dimension พร้อม review score
 
-> Goal: ครอบคลุมทุก health endpoint dimension
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ webhook patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 
-1. ตรวจสอบ liveness probe: endpoint path, response format, status codes, no dependency checks
-2. ตรวจสอบ readiness probe: endpoint path, dependency checks, response format, status codes
-3. ตรวจสอบ dependency health checks: database connectivity, cache availability, external service reachability
-4. ตรวจสอบ graceful shutdown: SIGTERM handling, connection draining, in-flight request completion
-5. ตรวจสอบ health endpoint security: public vs internal, authentication, rate limiting
-6. ตรวจสอบ response format: structured JSON, status enum, dependency details, version info
-7. Critical: no health endpoint, liveness checks dependencies, no graceful shutdown, health endpoint exposes secrets
-8. High: missing readiness probe, no dependency check, incomplete shutdown, missing health endpoint auth
+
+
+### Scalability Deep Checks
+
+> Goal: เข้าใจ scalability patterns และ deployment setup
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ scalability structure
+2. ระบุ deployment strategy (single instance, multi-instance, serverless), caching layers, database scaling approach, queue design ที่ใช้
+
+
+> Goal: ครอบคลุมทุก scalability dimension พร้อม review score
+
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ scalability patterns
+2. ทำ `/update-create-review-cli` — `/update-create-review-cli` เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
+
+
+> Goal: ครอบคลุม stateless design, horizontal scaling, shared state
+
+### Cost Deep Checks
+
+เตรียม context ก่อนเริ่ม review
+
+> Goal: เข้าใจ cost drivers และ infrastructure spend ใน codebase
+
+1. ทำ `/scan-codebase` เพื่อหา cloud config, infra-as-code, deployment config, และ cost-related settings
+2. ระบุ cloud providers, services, pricing models, และ resource types ที่ใช้
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
+4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+
+
+Review compute spend ครอบคลุม instance sizing, auto-scaling, idle resources, reserved capacity
+
+> Goal: ครอบคลุมทุก compute cost dimension
+
+1. ตรวจสอบ instance / container sizing: CPU, memory, over-provisioning, right-sizing opportunities
+
+### Migration Deep Checks
+
+รวบรวม context ก่อน review migrations
+
+> Goal: เข้าใจ migration history, tools, และ patterns
+
+1. ทำ `/scan-codebase` เพื่อหา migration files, scripts, versioning
+2. ระบุ migration tools: `Drizzle`, `Prisma`, `TypeORM`, custom scripts
+3. ระบุ environments: dev, staging, prod
+
+
+หา migrations ทั้งหมด
+
+> Goal: มี inventory ครบ
+
+1. ตรวจสอบ migration files ทั้งหมด: database, schema, framework, data
+2. ตรวจสอบ migration ordering, version control
+
 
 ## Rules
 
@@ -185,11 +212,6 @@ Review health and readiness endpoints ครอบคลุม liveness, readine
 - ถ้า project ไม่มี monitoring, tracing หรือ observability → ข้าม Section 4
 - ถ้า project ไม่มี DR plan หรือ backup → ข้าม Section 5
 - ถ้า project ไม่มี caching → ข้าม Section 6
-- ถ้า project ไม่มี cloud resources → ข้าม Section 7
-- ถ้า project ไม่มี external dependencies → ข้าม Section 8
-- ถ้า project ไม่มี environment config → ข้าม Section 9
-- ถ้า project ไม่มี health endpoints → ข้าม Section 10
-- ถ้า project ไม่มี dependencies → ข้าม Section 11
 
 ### 2. Severity Classification
 
@@ -220,10 +242,7 @@ Review health and readiness endpoints ครอบคลุม liveness, readine
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
-## Expected Outcome
-
-- รายงานตาราง aggregate findings จากทุก infrastructure section
-- รายงาน recommended actions พร้อม priority
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+### 1. Skip Conditions
 
 
+*Some details from merged source skills were condensed to keep the skill under 250 lines.*

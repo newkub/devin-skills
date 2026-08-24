@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -200,4 +200,3 @@ Review email ครอบคลุม template rendering, validation, unsubscrib
 - รายงานตาราง aggregate findings จากทุก business section
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

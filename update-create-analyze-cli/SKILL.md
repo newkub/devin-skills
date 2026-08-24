@@ -9,20 +9,12 @@ allowed-tools:
   - grep
   - find_file_by_name
   - skill
-permissions:
-  allow:
-    - Exec(bun)
-    - Exec(moon)
-    - Write(tools/analyze)
-    - Write(package.json)
-    - Write(bun.lock)
-  ask:
-    - Write(apps/)
-    - Write(packages/)
+permissions: {'allow': ['Exec(bun)', 'Exec(moon)', 'Write(tools/analyze)', 'Write(package.json)', 'Write(bun.lock)'], 'ask': ['Write(apps/)', 'Write(packages/)']}
 triggers:
   - user
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างหรืออัปเดต `tools/analyze` CLI ให้เป็น deep-analysis engine อิสระ แล้วให้ `tools/review` นำมาใช้ผ่าน Bun workspace เมื่อใช้ `/deep-analyze-by-use-scripts` ให้แก้ไข analyzer logic ใน `tools/analyze` ไม่ใช้ใน `tools/review`

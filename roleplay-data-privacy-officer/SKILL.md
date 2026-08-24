@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รับบทเป็น Data Privacy Officer (DPO) อ่าน source code แล้วประเมินว่า PII handled ถูกไหม, มี data retention ไหม, consent management ไหม, และ GDPR/CCPA compliant ไหม จากมุมมองคนดูแล privacy compliance

@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 พัฒนาโปรเจกต์ด้วย object-oriented programming principles เพื่อเพิ่มความสามารถในการ reuse, maintainability และ scalability

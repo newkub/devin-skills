@@ -13,11 +13,11 @@ triggers:
   - user
   - model
 related:
-  - follow-best-practice
-  - validate
-  - run-check
-  - follow-vitest
   - consider-use-in-another-skills
+  - follow-best-practice
+  - follow-vitest
+  - run-check
+  - validate
 ---
 
 ## Goal

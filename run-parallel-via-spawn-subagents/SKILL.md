@@ -15,16 +15,16 @@ triggers:
   - user
   - model
 related:
-  - read-related-skills
-  - follow-deep
+  - ask-me
   - deep-plan
-  - merge
-  - review-and-fix
   - deep-validate
   - deep-verify
+  - follow-deep
+  - merge
+  - read-related-skills
   - report
+  - review-and-fix
   - suggest-next-action
-  - ask-me
 ---
 
 ## Goal

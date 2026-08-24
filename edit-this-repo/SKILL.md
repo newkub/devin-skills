@@ -13,12 +13,12 @@ triggers:
   - user
   - model
 related:
-  - follow-write-devin-skills
-  - follow-devin-skills-md
-  - validate
   - check-reference
+  - follow-devin-skills-md
+  - follow-write-devin-skills
   - git-commit
   - ship-code
+  - validate
 ---
 
 ## Goal

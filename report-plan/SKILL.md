@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงานแผนงานในแชทก่อนลงมือ implement เพื่อให้ผู้ใช้เห็นภาพรวมและตัดสินใจได้

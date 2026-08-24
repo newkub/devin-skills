@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดรูปแบบ code/text output (codeblocks, diffs, JSON, markdown) ให้สวยงามและอ่านง่าย

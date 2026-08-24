@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -139,4 +139,3 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 - รายงานตาราง findings พร้อม severity และ location
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

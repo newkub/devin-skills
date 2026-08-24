@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตรวจจับ circular dependencies ใน codebase และ skills directory พร้อมรายงาน findings และ recommendations

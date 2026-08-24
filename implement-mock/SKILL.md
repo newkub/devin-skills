@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แปลง mock implementations ทั้งหมดให้เป็น production code ที่เชื่อมต่อกับ infrastructure จริง ไม่ใช้ mock data หรือ simulation

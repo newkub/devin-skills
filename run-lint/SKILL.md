@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และจัดการ unused variables ตามเหมาะสม โดยห้ามแก้ไข config ไฟล์

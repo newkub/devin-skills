@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะหาและเขียน GitHub workflows ที่ควรมีตามที่ควรจะเป็นให้เหมาะสม

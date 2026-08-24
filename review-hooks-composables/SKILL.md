@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -110,4 +110,3 @@ hooks/composables review สำหรับ: function design, parameter validati
 - รายงานตาราง aggregate findings จากทุก hooks/composables section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

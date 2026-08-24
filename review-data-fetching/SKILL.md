@@ -1,20 +1,5 @@
 ---
-name: review-data-fetching
-description: Review data fetching: loading/error states, cache, optimistic updates, pagination, race conditions
-allowed-tools:
-  - read
-  - edit
-  - grep
-  - glob
-  - exec
-  - ask_user_question
-triggers:
-  - user
-  - model
 related:
-  - review-codebase
-  - validate
-  - suggest-next-action
 ---
 
 ## Goal
@@ -111,4 +96,3 @@ data fetching review สำหรับ: loading states (indicators, skeleton sc
 - รายงานตาราง aggregate findings จากทุก data fetching section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

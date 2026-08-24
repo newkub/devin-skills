@@ -13,23 +13,23 @@ triggers:
   - user
   - model
 related:
-  - refactor-skills
-  - improve-correctness
-  - check-reference
   - check-circular-dependencies
+  - check-reference
+  - consider-use-in-another-skills
   - deep-research
   - follow-best-practice
-  - improve-consistency
-  - review-codebase
-  - validate
-  - report
-  - write-explicit
-  - consider-use-in-another-skills
   - follow-devin-skills-md
   - follow-write-devin-skills
+  - improve-consistency
+  - improve-correctness
   - read-related-skills
+  - refactor-skills
+  - report
+  - review-codebase
   - scan-codebase
   - suggest-next-action
+  - validate
+  - write-explicit
 ---
 
 ## Goal
@@ -96,7 +96,7 @@ related:
 
 > Goal: ไม่มีเนื้อหาซ้ำซ้อน
 
-1. ทำ `/review-redundancy` เพื่อตรวจ duplicate ระหว่าง files/sections
+1. ทำ `/review-quality` เพื่อตรวจ duplicate ระหว่าง files/sections
 2. ใช้ `references/` หรืออ้างอิง skill อื่นแทนการคัดลอก
 3. ตรวจว่า `## Execute` กับ `## Rules` ไม่ซ้ำกัน
 
@@ -104,7 +104,7 @@ related:
 
 > Goal: ภาษา รูปแบบ และ terminology สม่ำเสมอ
 
-1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, headings, backticks, heading conventions และ backticks
+1. ทำ `/review-quality` เพื่อตรวจภาษา, format, headings, backticks, heading conventions และ backticks
 2. ปรับ `## Execute` headings เป็น English Title Case
 3. ตรวจ `related` ให้ครบถ้วนและไม่มี invalid
 
@@ -159,8 +159,8 @@ related:
 ### 3. Refactor And Consistency
 
 - ทำ `/refactor-skills` ก่อนแก้ไขเนื้อหาเมื่อโครงสร้างมีปัญหา
-- ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อน
-- ทำ `/review-consistency` เพื่อให้ภาษาและ format สม่ำเสมอ
+- ทำ `/review-quality` เพื่อลบเนื้อหาซ้ำซ้อน
+- ทำ `/review-quality` เพื่อให้ภาษาและ format สม่ำเสมอ
 - ใช้ `references/` แทนการ duplicate เนื้อหา
 
 ### 4. Coverage Quality

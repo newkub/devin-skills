@@ -14,8 +14,8 @@ triggers:
   - model
 related:
   - follow-best-practice
-  - follow-web-design
   - follow-unocss
+  - follow-web-design
   - validate
 ---
 

@@ -14,17 +14,17 @@ triggers:
   - user
   - model
 related:
-  - follow-react
+  - follow-best-practice
+  - follow-config
+  - follow-create-bun-cli
   - follow-nextjs
+  - follow-python
+  - follow-react
   - follow-solidjs
   - follow-svelte
   - follow-svelte-kit
-  - follow-vue
   - follow-tanstack-ecosystem
-  - follow-python
-  - follow-create-bun-cli
-  - follow-config
-  - follow-best-practice
+  - follow-vue
   - learn-from-web
 ---
 

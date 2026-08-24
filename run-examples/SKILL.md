@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 เขียน examples ครอบคลุมทุก API ในโปรเจกต์

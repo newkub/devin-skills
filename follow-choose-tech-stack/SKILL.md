@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 เลือก tech stack ที่เหมาะสมสำหรับ project โดยพิจารณาจาก requirements, constraints, และ best practices

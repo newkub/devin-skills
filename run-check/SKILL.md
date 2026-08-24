@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ

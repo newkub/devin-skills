@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง project documentation site ที่ใช้ Vue components และ Bun shell ดึงข้อมูลจริงจาก project แทนการเขียน markdown ธรรมดา

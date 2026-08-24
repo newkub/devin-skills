@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 แสดงรายการ repositories ทั้งหมดที่ผู้ใช้สร้างบน GitHub พร้อมข้อมูลสำคัญ

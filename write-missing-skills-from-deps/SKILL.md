@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global

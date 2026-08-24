@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงานขนาด bundle ของโปรเจกต์: ต่อ chunk, ต่อ dependency, tree-shaking effectiveness และ insights

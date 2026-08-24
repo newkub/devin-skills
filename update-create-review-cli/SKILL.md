@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างและอัปเดท codebase review CLI ใน `tools/review` ที่ project root ให้ครอบคลุม 60+ categories ตาม `/run-review` พร้อม review score, action items, และ production readiness

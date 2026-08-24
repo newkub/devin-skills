@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน benchmark tests เพื่อวัดประสิทธิภาพของ code และเปรียบเทียบ performance ระหว่าง implementations

@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รับบทเป็น DevOps/SRE engineer อ่าน source code แล้วประเมินว่า deploy ง่ายไหม, monitor ได้ไหม, rollback ได้ไหม, มี observability พอไหม, และ incident response พร้อมไหม

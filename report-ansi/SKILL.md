@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols และ summary สำหรับ logs, status และ progress

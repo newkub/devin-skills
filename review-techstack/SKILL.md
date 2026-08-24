@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -120,4 +120,3 @@ framework selection, library versions, runtime compatibility, build tools, packa
 - รายงานตาราง findings พร้อม severity และ location
 - รายงาน recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

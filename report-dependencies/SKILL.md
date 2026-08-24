@@ -1,6 +1,6 @@
 ---
 name: report-dependencies
-description: "สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses"
+description: สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses
 allowed-tools:
   - read
   - grep
@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รายงานสถานะ dependencies ของโปรเจกต์: versions, outdated, unused, vulnerabilities, licenses และ insights

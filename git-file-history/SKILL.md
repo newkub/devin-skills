@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ดู git file history ของไฟล์ที่ระบุผ่าน `@wrikka/git-cli` package ที่ release แล้ว โดยใช้คำสั่ง `git-ai file-history <file>` ซึ่งจะ generate HTML viewer พร้อม split-screen timeline, commit type badges, diff view, และ keyboard navigation อัตโนมัติ

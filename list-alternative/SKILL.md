@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ค้นหาและแนะนำ alternatives ที่ดีกว่าสำหรับสิ่งที่ user ระบุ

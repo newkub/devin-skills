@@ -13,8 +13,8 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
 
 ## Goal
@@ -139,4 +139,3 @@ Review codebase อย่างเป็นระบบ ระบุ issues พ�
 - รายงานในแชทเป็นตารางตาม `/report`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 - แยก review จาก fix process
-

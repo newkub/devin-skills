@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 จัดการ git branches อย่างเป็นระบบ (list, switch, rename, merge, delete)

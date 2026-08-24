@@ -13,8 +13,8 @@ triggers:
   - user
   - model
 related:
-  - ship-code
   - report
+  - ship-code
   - suggest-next-action
 ---
 

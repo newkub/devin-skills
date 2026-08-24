@@ -15,6 +15,7 @@ triggers:
 related:
   - rename
 ---
+
 ## Goal
 
 ตรวจสอบและปรับปรุงคุณภาพของ functions ให้มี single responsibility, naming ชัดเจน, ลด side effects, ลด complexity, และ promote pure functions

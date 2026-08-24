@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 สร้างหรืออัปเดต `CONTRIBUTING.md` ให้สะท้อนวิธีพัฒนา, conventions, และ validation workflows ของ project

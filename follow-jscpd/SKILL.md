@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ตั้งค่าและรัน jscpd เพื่อตรวจจับ code duplication และจัดลำดับการ refactor

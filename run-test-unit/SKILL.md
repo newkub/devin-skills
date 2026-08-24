@@ -10,8 +10,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 รัน unit tests สำหรับ pure functions, business logic, และ utility functions เพื่อตรวจสอบความถูกต้องของ logic ระดับฟังก์ชัน

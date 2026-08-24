@@ -12,8 +12,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ Web-standard APIs ที่ Bun รองรับ

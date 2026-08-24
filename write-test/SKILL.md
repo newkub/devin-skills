@@ -16,6 +16,7 @@ triggers:
 related:
   - report
 ---
+
 ## Goal
 
 เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language
@@ -129,7 +130,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 1. ทำ `/review-codebase` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
-3. ถ้าพบ gaps ให้ทำ `/review-test-coverage` เพื่อเขียน tests ที่ขาด
+3. ถ้าพบ gaps ให้ทำ `/review-correctness` เพื่อเขียน tests ที่ขาด
 
 ### 8. Sync And Verify
 

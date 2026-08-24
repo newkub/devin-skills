@@ -13,13 +13,13 @@ triggers:
   - user
   - model
 related:
-  - improve-performance
   - improve-codebase
-  - improve-governance
   - improve-database
-  - validate
+  - improve-governance
+  - improve-performance
   - run-check
   - suggest-next-action
+  - validate
 ---
 
 ## Goal

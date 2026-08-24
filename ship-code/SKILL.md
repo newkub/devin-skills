@@ -13,14 +13,14 @@ triggers:
   - user
   - model
 related:
-  - update-agents-md
   - follow-agents-md
-  - run-check
-  - validate
   - git-commit
   - report
-  - suggest-next-action
   - resolve-errors
+  - run-check
+  - suggest-next-action
+  - update-agents-md
+  - validate
 ---
 
 ## Goal

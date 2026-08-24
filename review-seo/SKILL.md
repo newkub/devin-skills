@@ -13,10 +13,9 @@ triggers:
   - model
 related:
   - review-codebase
-  - validate
   - suggest-next-action
+  - validate
 ---
-
 
 ## Goal
 
@@ -153,4 +152,3 @@ SEO review สำหรับ: meta tags, Open Graph, Twitter Cards, structured 
 - รายงานตาราง aggregate findings จากทุก SEO section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-

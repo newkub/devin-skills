@@ -11,8 +11,9 @@ allowed-tools:
 triggers:
   - user
   - model
-related: []
+related:
 ---
+
 ## Goal
 
 วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-create-review-cli` และ `/run-review`

@@ -15,8 +15,8 @@ triggers:
   - model
 related:
   - follow-write-devin-skills
-  - scan-codebase
   - report-table
+  - scan-codebase
   - suggest-next-action
   - validate
 ---
