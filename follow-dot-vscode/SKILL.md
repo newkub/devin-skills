@@ -81,14 +81,8 @@ related:
    - `editor.formatOnSave` → `true`
    - `[language]` overrides ถ้าจำเป็น
 3. กำหนด editor associations (`workbench.editorAssociations`):
-   - `README.md` → `vscode.markdown.preview.editor`
-   - `/spec//*.md` → `vscode.markdown.preview.editor`
-   - `/docs//*.md` → `vscode.markdown.preview.editor`
-   - `/release//*.md` → `vscode.markdown.preview.editor`
-   - `**/CHANGELOG.md` → `vscode.markdown.preview.editor`
-   - `**/CONTRIBUTING.md` → `vscode.markdown.preview.editor`
-   - `**/SECURITY.md` → `vscode.markdown.preview.editor`
-   - ไฟล์ markdown อื่นๆ ไม่ใส่ → เปิดเป็น text editor เพื่อให้แก้ไขได้
+   - `*.md` → `vscode.markdown.preview.editor` (เปิด markdown ทุกไฟล์เป็น preview โดย default)
+   - ผู้ใช้สามารถกด `Ctrl+Shift+V` เพื่อสลับไป text editor ถ้าต้องการแก้ไข
 4. กำหนด file associations (`files.associations`):
    - `*.jsonc` → `jsonc` (ถ้าใช้ JSONC config files)
    - `biome.jsonc` → `jsonc`
@@ -189,9 +183,8 @@ related:
 ### 3. Editor Associations
 
 - `workbench.editorAssociations` ควบคุม default editor สำหรับ file patterns
-- ใช้ glob patterns ที่ specific ไม่กว้างเกินไป — `**/*.md` จะบังคับ preview ทุก markdown ทำให้แก้ไขยาก
-- แนะนำ: เฉพาะ `README.md`, `/docs//*.md`, `/spec//*.md`, `/release//*.md`, `**/CHANGELOG.md`
-- ไฟล์ markdown อื่นๆ ควรเปิดเป็น text editor เพื่อให้แก้ไขได้
+- ใช้ `*.md` → `vscode.markdown.preview.editor` เพื่อเปิด markdown ทุกไฟล์เป็น preview โดย default
+- ผู้ใช้สามารถสลับไป text editor ด้วย `Ctrl+Shift+V` หรือ `Ctrl+K V` เพื่อแก้ไข
 - ใช้ `default` เป็นค่าเริ่มต้น ถ้าไม่ต้องการ custom editor
 
 ### 4. Monorepo Guidelines
@@ -230,7 +223,7 @@ related:
 
 - `.vscode/` directory มีไฟล์ครบ: `settings.json`, `extensions.json`, `launch.json`, `tasks.json`
 - `settings.json` ตรง tech stack: formatter, TypeScript, search exclude, file associations
-- `workbench.editorAssociations` กำหนด markdown preview สำหรับ README, docs, spec, release, CHANGELOG
+- `workbench.editorAssociations` กำหนด `*.md` → `vscode.markdown.preview.editor` เปิด markdown ทุกไฟล์เป็น preview
 - `extensions.json` แนะนำ extensions ครบตาม tech stack
 - `launch.json` มี debug configs สำหรับแต่ละ app (ถ้ามี)
 - `tasks.json` มี tasks สำหรับ build, dev, test, lint, typecheck
