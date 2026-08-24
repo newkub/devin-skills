@@ -1,0 +1,101 @@
+---
+name: follow-devin-subagents
+description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ subagents ตาม job roles ทำขนานกัน
+---
+
+## Goal
+
+แบ่งงานซับซ้อนออกเป็น subtasks แล้วใช้ subagents ตาม job roles เพื่อทำงานขนานกัน รวมผล และส่งมอบครบ
+
+## Scope
+
+ใช้เมื่องานมีหลายด้าน เช่น frontend + backend + QA + DevOps หรือต้องการมุมมองจากหลาย roles พร้อมกัน
+
+## Execute
+
+### 1. Decompose Task
+
+> Goal: แบ่งงานออกเป็น subtasks ที่อิสระจากกัน
+
+1. วิเคราะห์งานหลักและระบุด้านที่ต้องทำ
+2. แบ่งเป็น subtasks ตาม layers: frontend, backend, qa, devops, security, architecture
+3. แต่ละ subtask ต้องมี input, expected output, และ success criteria ชัดเจน
+4. ถ้า subtasks dependent กัน → จัดลำดับก่อนหลัง
+
+### 2. Select Subagents By Role
+
+> Goal: เลือก subagents ที่ตรงกับ subtasks
+
+1. ทำ `/list-devin-subagents` เพื่อดู subagent pool ที่มี
+2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือ `/create-devin-subagents`
+4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
+
+### 3. Spawn Subagents
+
+> Goal: ส่งงานให้ subagents ทำขนานกัน
+
+1. ใช้ `/run-parallel-via-spawn-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
+2. ส่ง context ครบ: task, constraints, files, expected output
+3. กำหนด timeout หรือรอบการทำงาน
+4. ห้ามส่ง subtask ซ้ำซ้อนกัน
+
+### 4. Merge Results
+
+> Goal: รวมผลจาก subagents เป็นงานเดียว
+
+1. รวบรวม output จากทุก subagent
+2. แก้ไข conflicts หรือข้อขัดแย้งกันด้วย `/resolve-errors`
+3. จัดเรียงลำดับผลลัพธ์ตาม impact
+4. ยกเว้น recommendation ที่ขัดแย้งกันให้ชัดเจน
+
+### 5. Review And Fix
+
+> Goal: ตรวจสอบคุณภาพของผลรวม
+
+1. ทำ `/review-and-fix` กับ output ที่ได้
+2. ถ้ามี gaps ให้ spawn subagent เพิ่ม
+3. ตรวจสอบว่าผลลัพธ์ตอบ scope เดิม
+
+### 6. Validate And Ship
+
+> Goal: ส่งมอบผลลัพธ์ที่ผ่าน validation
+
+1. ทำ `/validate`
+2. ทำ `/deep-validate` ถ้างานเสี่ยงสูง
+3. ทำ `/ship-code` ถ้ามีการเปลี่ยนแปลง
+4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
+
+## Rules
+
+### 1. One Role Per Subtask
+
+- แต่ละ subagent รับบทเดียว ไม่ผสมหลาย roles
+- ถ้าต้องการหลาย roles ให้ spawn หลาย subagents
+
+### 2. Clear Context
+
+- ทุก subagent ต้องได้รับ context ที่ชัดเจน
+- ระบุ input, expected output, constraints
+
+### 3. No Duplication
+
+- ไม่แบ่ง subtasks ซ้ำซ้อนกัน
+- ถ้า 2 subagents ทำงานคล้ายกัน ให้ merge หรือเลือกเดียว
+
+### 4. Merge Before Final
+
+- ต้อง merge ผลจากทุก subagent ก่อนส่งมอบ
+- ไม่ส่ง output ของ subagent ใด subagent หนึ่งงานเดียวโดยไม่ merge
+
+### 5. Validate Parallel Work
+
+- ตรวจสอบ references และ circular dependencies
+- รัน check/test หลัง merge
+
+## Expected Outcome
+
+- งานถูกแบ่งและทำขนานกันโดย subagents
+- ผลลัพธ์ถูก merge และ review แล้ว
+- ผ่าน `/validate` และ `/deep-validate`
+- มีรายงานสรุปจากแต่ละ role
