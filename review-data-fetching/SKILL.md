@@ -1,5 +1,6 @@
 ---
-related:
+name: review-data-fetching
+description: Review data fetching ครอบคลุม loading, cache, optimistic, pagination, race conditions
 ---
 
 ## Goal

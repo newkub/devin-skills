@@ -1,5 +1,6 @@
 ---
-related:
+name: review-i18n
+description: Review i18n และ localization ครอบคลุม translation, locale, RTL, cultural adaptation
 ---
 
 ## Goal

@@ -1,5 +1,6 @@
 ---
-related:
+name: review-lib
+description: Review library design ครอบคลุม API, bundle size, tree-shaking, peer deps, semver
 ---
 
 ## Goal

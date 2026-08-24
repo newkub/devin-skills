@@ -1,5 +1,6 @@
 ---
-related:
+name: review-state-management
+description: Review state management ครอบคลุม store, mutation, persistence, sync, SSR, performance
 ---
 
 ## Goal
