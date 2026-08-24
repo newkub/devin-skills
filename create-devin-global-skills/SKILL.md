@@ -5,7 +5,7 @@ description: สร้าง skill ใหม่ใน devin global skills โด
 
 ## Goal
 
-สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-devin-skills-md` สำหรับ `SKILL.md` และ `/follow-write-devin-skills` สำหรับ directory structure
+สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-write-devin-skills` สำหรับ `SKILL.md` และ directory structure
 
 ## Scope
 
@@ -43,7 +43,7 @@ description: สร้าง skill ใหม่ใน devin global skills โด
 
 > Goal: สร้าง `SKILL.md` และ directory contents
 
-1. ทำ `/follow-devin-skills-md` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
+1. ทำ `/follow-write-devin-skills` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
 2. ทำ `/follow-write-devin-skills` เพื่อเลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
 3. กำหนด `name` ให้ตรงกับ directory name
 4. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
@@ -75,7 +75,7 @@ description: สร้าง skill ใหม่ใน devin global skills โด
 
 ### 2. Content Standard
 
-- ทำตาม `/follow-devin-skills-md` สำหรับการเขียน `SKILL.md`
+- ทำตาม `/follow-write-devin-skills` สำหรับการเขียน `SKILL.md`
 - ทำตาม `/follow-write-devin-skills` สำหรับ directory structure และ templates
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`

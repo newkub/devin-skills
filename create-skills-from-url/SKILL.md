@@ -98,6 +98,6 @@ description: สร้าง Devin skills จาก URL หรือ domain โ�
 
 - parent skill `<domain>-subskills/SKILL.md` ถูกสร้าง
 - subskills อยู่ใน `subskills/<domain>/<subskill>/SKILL.md`
-- ทุก skill ผ่าน `/follow-devin-skills-md`
+- ทุก skill ผ่าน `/follow-write-devin-skills`
 - `related` ถูกต้อง ไม่มี broken references
 - commit สำเร็จพร้อม report

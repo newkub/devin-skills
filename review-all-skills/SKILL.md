@@ -53,7 +53,7 @@ description: ปรับปรุง skills ทั้ง global และ proje
 
 1. ทำตาม `/check-reference`
    - ทำตาม `/validate`
-   - ทำตาม `/follow-devin-skills-md` กับทุก `SKILL.md`
+   - ทำตาม `/follow-write-devin-skills` กับทุก `SKILL.md`
    - ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`
 2. ทำ `/report` เพื่อสรุปผล
 
@@ -91,7 +91,7 @@ description: ปรับปรุง skills ทั้ง global และ proje
 
 ## Expected Outcome
 
-- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/follow-devin-skills-md`
+- ทุก `.md` ไฟล์มี structure สม่ำเสมอ ผ่าน `/follow-write-devin-skills`
 - Content ครอบคลุมทุก features, APIs, และ use cases
 - ไม่มี broken references
 - ทุก skill สอดคล้องกันในเรื่องภาษา, format, terminology

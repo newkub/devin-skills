@@ -41,7 +41,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 1. ระบุ skill ที่เกิน 250 บรรทัดหรือมีหลาย responsibilities
 2. ใช้ `/refactor-to-srp` เพื่อแยก responsibilities ออกมา
 3. สร้าง orchestrator skill ที่อ้างอึง sub-skills ผ่าน `related`
-4. ทำ `/follow-devin-skills-md` สำหรับ sub-skills ใหม่
+4. ทำ `/follow-write-devin-skills` สำหรับ sub-skills ใหม่
 5. ทำ `/update-reference` อัปเดต references
 
 ### 4. Merge Redundant Skills

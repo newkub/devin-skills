@@ -9,7 +9,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 
 ## Scope
 
-ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (`/follow-devin-skills-md`) หรือการ validate (`/validate`)
+ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (`/follow-write-devin-skills`) หรือการ validate (`/validate`)
 
 ## Execute
 
@@ -60,7 +60,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
    - ใช้ relative path `follow-write-devin-skills/references/skill-type-<prefix>.md`
-3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
+3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills`
 
 ### 5. Confirm Context
 
@@ -113,7 +113,7 @@ description: ตรวจจับ AI tool อ่าน global rules related ski
 ### 5. Fail Fast
 
 - ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
-- ถ้า template ไม่ตรง → ให้ `/suggest-next-action` แนะนำ next step เช่น `/follow-write-devin-skills` หรือ `/follow-devin-skills-md`
+- ถ้า template ไม่ตรง → ให้ `/suggest-next-action` แนะนำ next step เช่น `/follow-write-devin-skills`
 
 ## Expected Outcome
 

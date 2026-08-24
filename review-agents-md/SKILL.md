@@ -70,7 +70,7 @@ description: ตรวจสอบ AGENTS.md เพื่อดูโครง�
 
 ### 1. Format Compliance
 
-- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-devin-skills-md`
+- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-write-devin-skills`
 - frontmatter `name`, `description`, `related` จำเป็นต้องมี
 - sections ตามลำดับ: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ห้ามมี section `## Workflows`
