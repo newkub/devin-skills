@@ -1,7 +1,6 @@
 ---
 name: review-correctness
 description: Review correctness, logic, edge cases, and validation for code, config, rules, workflows, and skills
-auto_execution_mode: 3
 allowed-tools:
   - read
   - edit
@@ -14,13 +13,10 @@ triggers:
   - model
 related:
   - review-codebase
-  - scan-codebase
   - validate
-  - deep-validate
-  - report
-  - report-table
   - suggest-next-action
 ---
+
 
 ## Goal
 
@@ -95,19 +91,6 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
-### 4. Fix
-
-> Goal: แก้ไข issues ที review พบ
-
-1. เรียงลำดับตาม severity Critical → High → Medium → Low
-2. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา pattern ทีเหมาะสม
-3. แก้ไขปัญหาแต่ละข้อด้วย `edit` หรือ `write` ด้วย minimal changes
-4. ทดสอบแก้ไขด้วยคำสั่งหรือ script ทีเหมาะสม
-5. ทำ `/validate` และ `/run-check` หลังแก้
-6. ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-7. ถ้าพบปัญหาใหม่ระหว่างแก้ → บันทึกและจัดลำดับใหม่
-8. ทำ `/suggest-next-action` หลังผ่าน
-
 ## Rules
 
 ### 1. Evidence First
@@ -137,15 +120,9 @@ correctness review สำหรับ: code, configuration, rule files, workflow
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
-### 6. Fix Rules
-
-- ใช้ minimal changes
-- ไม่แก้นอก scope
-- ทำ dry run ก่อน destructive changes
-- ถ้าไม่แน่ใจ → stop และ `/ask-me`
-
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม correctness, logic, edge cases, validation
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

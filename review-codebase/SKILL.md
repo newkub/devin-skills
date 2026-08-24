@@ -128,17 +128,93 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ## Review Catalog
 
-CLI ครอบคลุมทุก dimension ด้านล่าง ถ้าขาด category ใดให้ `/update-create-review-cli`
-
-- Group orchestrators: `?references/review-frontend.md`?, `?references/review-backend.md`?, `?references/review-code-quality.md`?
-- Foundation and code quality: `?references/review-architecture.md`?, `?references/review-bug-prone.md`?, `?references/review-codebase-issue.md`?, `?references/review-formal-verification.md`?, `?references/review-naming.md`?, `?references/review-realize-implementation.md`?, `?references/review-refactor.md`?, `?references/review-simplicity.md`?, `?references/review-types.md`?
-- Frontend and UX: `?references/review-accessibility.md`?, `?references/review-browser-compat.md`?, `?references/review-bundler.md`?, `?references/review-components.md`?, `?references/review-css.md`?, `?references/review-data-fetching.md`?, `?references/review-design-system.md`?, `?references/review-event-handling.md`?, `?references/review-form.md`?, `?references/review-hooks-composables.md`?, `references/review-i18n/`, `?references/review-images.md`?, `?references/review-rendering.md`?, `?references/review-responsive.md`?, `?references/review-seo.md`?, `?references/review-state-management.md`?, `?references/review-uxui.md`?
-- Backend and data: `?references/review-api.md`?, `?references/review-concurrency.md`?, `?references/review-data.md`?, `?references/review-data-validation.md`?, `?references/review-database.md`?, `?references/review-error-handling.md`?, `?references/review-file-upload.md`?, `?references/review-integration.md`?, `?references/review-migration.md`?, `?references/review-queue.md`?, `?references/review-scalability.md`?, `?references/review-service.md`?, `?references/review-webhook.md`?, `?references/review-workers.md`?
-- Security and compliance: `?references/review-auth.md`?, `?references/review-compliance.md`?, `?references/review-security.md`?
-- Infrastructure and operations: `?references/review-app-stability.md`?, `?references/review-cli.md`?, `?references/review-config.md`?, `?references/review-dx.md`?, `?references/review-infrastructure.md`?, `?references/review-memory.md`?, `?references/review-observability.md`?, `?references/review-performance.md`?, `?references/review-platform.md`?
-- Business and delivery: `?references/review-business.md`?, `?references/review-coverage.md`?, `?references/review-debugging.md`?, `?references/review-delivery.md`?, `?references/review-docs.md`?, `?references/review-lib.md`?, `?references/review-techstack.md`?, `?references/review-test.md`?, `?references/review-workflow-content.md`?, `?references/review-workspace.md`?
-- Pull request: `/review-github-pr`
-- Global skills: `/review-devin-global-skills`
+Skill รีวิวทุก dimension:
+- `review-web-accessibility`
+- `review-api`
+- `review-app-stability`
+- `review-architecture`
+- `review-auth`
+- `review-backend`
+- `review-battery`
+- `review-browser-compat`
+- `review-bug-prone`
+- `review-bundler`
+- `review-business`
+- `review-cli`
+- `review-code-quality`
+- `review-codebase-issue`
+- `review-compliance`
+- `review-components`
+- `review-concurrency`
+- `review-config`
+- `review-consistency`
+- `review-content-coverage`
+- `review-context-rot`
+- `review-correctness`
+- `review-cost`
+- `review-test-coverage`
+- `review-css`
+- `review-data-fetching`
+- `review-data-validation`
+- `review-data`
+- `review-database`
+- `review-debugging`
+- `review-delivery`
+- `review-design-system`
+- `review-disaster-recovery`
+- `review-discoverability`
+- `review-docs`
+- `review-dx`
+- `review-error-handling`
+- `review-event-handling`
+- `review-file-upload`
+- `review-form`
+- `review-formal-verification`
+- `review-frontend`
+- `review-governance`
+- `review-hooks-composables`
+- `review-i18n`
+- `review-images`
+- `review-infrastructure`
+- `review-integration`
+- `review-io`
+- `review-isolation`
+- `review-lib`
+- `review-memory`
+- `review-migration`
+- `review-modularity`
+- `review-naming`
+- `review-network`
+- `review-observability`
+- `review-performance`
+- `review-platform`
+- `review-predictability`
+- `review-queue`
+- `review-rate-limiting`
+- `review-realize-implementation`
+- `review-redundancy`
+- `review-refactor`
+- `review-reliability`
+- `review-rendering`
+- `review-responsive`
+- `review-scalability`
+- `review-security`
+- `review-seo`
+- `review-service`
+- `review-side-effects`
+- `review-simplicity`
+- `review-state-management`
+- `review-techstack`
+- `review-test`
+- `review-type-safety`
+- `review-ux-writing`
+- `review-uxui`
+- `review-webhook`
+- `review-workers`
+- `review-workflow-content`
+- `review-workspace`
+- Pull request: `review-github-pr`
+- Global skills: `review-devin-global-skills`
 
 ## Expected Outcome
 

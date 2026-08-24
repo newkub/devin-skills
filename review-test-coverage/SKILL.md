@@ -1,6 +1,6 @@
 ---
 name: review-test-coverage
-description: Review test-coverage
+description: Review test coverage ครอบคลุม critical paths, error paths, edge cases, และ test quality พร้อม rev...
 allowed-tools:
   - read
   - edit
@@ -109,17 +109,6 @@ Review test coverage ของ project ครอบคลุม critical paths, 
 4. ทำ `/report` พร้อม `/report-table`
 5. ทำ `/suggest-next-action`
 
-
-### 8. Fix
-
-> Goal: ปรับปรุงตามประเด็นที review พบ
-
-1. เรียงลำดับตาม severity Critical → High → Medium → Low
-2. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา pattern ทีเหมาะสม
-3. แก้ไขทีละประเด็น ใช้ minimal changes
-4. ทำ `/validate` และ `/run-check` หลังแก้
-5. ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-6. ทำ `/suggest-next-action` หลังผ่าน
 ## Rules
 
 ### 1. Skip Conditions
@@ -150,11 +139,6 @@ Review test coverage ของ project ครอบคลุม critical paths, 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
-
-### Fix Rules
-- ใช้ minimal changes
-- ไม่แก้นอก scope
-- ถ้าไม่แน่ใจ → stop และ `/ask-me`
 ## Expected Outcome
 
 - รายงาน coverage gaps ตาม category พร้อม severity
@@ -162,3 +146,4 @@ Review test coverage ของ project ครอบคลุม critical paths, 
 - Review score สำหรับ test coverage
 - Recommended actions พร้อม priority
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

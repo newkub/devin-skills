@@ -1,6 +1,6 @@
 ---
 name: optimize-runtime
-description: ปรับปรุง runtime ของ project ด้าน cpu, memory, concurrency, garbage collection, event loop และ startup
+description: ปรับปรุง project runtime ด้าน cpu, memory, concurrency, event loop, GC และ startup
 allowed-tools:
   - read
   - edit

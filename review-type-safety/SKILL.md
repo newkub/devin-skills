@@ -1,6 +1,6 @@
 ---
 name: review-type-safety
-description: Review type-safety
+description: Review type safety, generics, inference, narrowing, branded types, and discriminated unions
 allowed-tools:
   - read
   - edit
@@ -104,17 +104,6 @@ type review สำหรับ: `any` usage, `as` assertions, non-null assertion
 7. ทำ `/report` พร้อม `/report-table`
 8. ทำ `/suggest-next-action`
 
-
-### 7. Fix
-
-> Goal: ปรับปรุงตามประเด็นที review พบ
-
-1. เรียงลำดับตาม severity Critical → High → Medium → Low
-2. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา pattern ทีเหมาะสม
-3. แก้ไขทีละประเด็น ใช้ minimal changes
-4. ทำ `/validate` และ `/run-check` หลังแก้
-5. ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-6. ทำ `/suggest-next-action` หลังผ่าน
 ## Rules
 
 ### 1. Type Safety Principles
@@ -159,14 +148,10 @@ type review สำหรับ: `any` usage, `as` assertions, non-null assertion
 - ทุก instruction ต้องระบุ action, condition หรือ expected result ที่ตีความได้ทางเดียว
 - ห้ามใช้ placeholder, generic filler, mock หรือ TODO ที่ไม่จำเป็น
 
-
-### Fix Rules
-- ใช้ minimal changes
-- ไม่แก้นอก scope
-- ถ้าไม่แน่ใจ → stop และ `/ask-me`
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก type section
 - Review score ต่อ dimension และ overall
 - ตาราง metrics: `any` count, `as` count, non-null assertion count, `@ts-ignore` count, `@ts-expect-error` count
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

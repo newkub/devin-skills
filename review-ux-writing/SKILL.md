@@ -1,6 +1,6 @@
 ---
 name: review-ux-writing
-description: Review ux-writing
+description: Review UX writing quality for copy, labels, error messages, voice, tone, localization readiness
 allowed-tools:
   - read
   - edit
@@ -125,6 +125,16 @@ UX writing review สำหรับ: microcopy, button labels, link text, menu 
 4. ตรวจสอบ placeholders ชัดเจน เช่น `{name}` ไม่ใช่ `{}`
 5. ตรวจสอบ locale-aware error messages และ validation messages
 
+### 10. Validate and Report
+
+> Goal: ตรวจสอบ findings และรายงานผล
+
+1. ทำ `/deep-validate` เพื่อ validate findings
+2. ทำ `/validate` สำหรับ validate issues จากทุก section
+3. จัดลำดับตาม severity: Critical → High → Medium → Low
+4. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
+5. ทำ `/report` พร้อม `/report-table`
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -158,13 +168,9 @@ UX writing review สำหรับ: microcopy, button labels, link text, menu 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
-
-### Fix Rules
-- ใช้ minimal changes
-- ไม่แก้นอก scope
-- ถ้าไม่แน่ใจ → stop และ `/ask-me`
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก UX writing section
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

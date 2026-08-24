@@ -1,7 +1,6 @@
 ---
 name: review-redundancy
-description: Review redundancy across files, sections, and modules with evidence, severity, and score
-auto_execution_mode: 3
+description: Review redundancy ของ content/code ด้วย tools พร้อม evidence, severity และ score
 allowed-tools:
   - read
   - edit
@@ -14,12 +13,10 @@ triggers:
   - model
 related:
   - review-codebase
-  - scan-codebase
   - validate
-  - report
-  - report-table
   - suggest-next-action
 ---
+
 
 ## Goal
 
@@ -27,7 +24,7 @@ related:
 
 ## Scope
 
-ใช้กับเนื้อหาทุกประเภท: workflow files, documentation, code, configs — ตรวจจับ duplication ระหว่างไฟล์และภายในไฟล์ — ไม่รวม code refactoring เชิงลึก (อยู่ใน `review-refactor`) — เน้นรายงาน findings ไม่ใช่การลบหรือ merge
+ใช้กับเนื้อหาทุกประเภท: workflow files, documentation, code, configs — ตรวจจับ duplication ระหว่างไฟล์และภายในไฟล์ — ไม่รวม code refactoring เชิงลึก (อยู่ใน `/refactor`) — เน้นรายงาน findings ไม่ใช่การลบหรือ merge
 
 ## Execute
 
@@ -37,7 +34,7 @@ related:
 
 > Goal: เข้าใจ structure และรวบรวม candidate duplication ก่อน review
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure และ identify scope ของการ review
+1. ตรวจสอบว่าทำ `/scan-codebase` เพื่อเข้าใจ project structure และ identify scope ของการ review
 2. ตรวจสอบว่า code duplication tools ถูกรัน: `jscpd`, `knip`, `madge --circular`, `ast-grep`
 3. ตรวจสอบการหา content duplication ใน markdown/docs ด้วย `grep` และ manual review
 4. ตรวจสอบรายการผลลัพธ์มี file path, line range และ duplicate target
@@ -79,21 +76,6 @@ related:
 4. รายงานสรุปจำนวน duplication, categories, false positives
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
-### 5. Fix
-
-> Goal: ลบ/merge redundancy ที review พบ
-
-1. เรียงลำดับตาม severity Critical → High → Medium → Low
-2. รัน `bunx jscpd`, `bunx knip`, `bunx madge --circular`, `bunx ast-grep scan` เพื่อ detect ก่อนแก้
-3. จัดประเภท: exact duplicate → ลบสำเนา, near-duplicate → merge รักษา context, partial overlap → extract shared, reference-only → แทนด้วย reference
-4. แสดง dry run preview ก่อนลบ หรือขอ `/ask-me`
-5. ใช้ `/validate` หลังลบ/merge
-6. ทำ `/update-reference` ถ้า references เปลี่ยน
-7. ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
-8. ทำ `/run-check` หลังแก้
-9. ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-10. ทำ `/suggest-next-action` หลังผ่าน
-
 ## Rules
 
 ### 1. Severity Classification
@@ -114,7 +96,7 @@ related:
 
 - ทำ review เท่านั้น ไม่แก้ไข code หรือเนื้อหาระหว่าง review
 - ไม่ apply fixes ไม่ลบ ไม่ merge ไม่ย้ายเนื้อหาภายใน review reference นี้
-- ถ้าต้องการแก้ไข ให้ทำ `improve-redundancy` หรือ `/resolve-errors` หลัง review
+- ถ้าต้องการแก้ไข ให้ทำ `/improve-redundancy` หรือ `/resolve-errors` หลัง review
 
 ### 4. Formatting
 
@@ -122,15 +104,6 @@ related:
 - รายงานเป็นตารางด้วย `/report-table`
 - ใช้ heading levels สำหรับ structure
 - ใช้ backticks สำหรับ `tools`, `commands`, file paths, skill references
-
-### 5. Fix Rules
-
-- ใช้ dry run preview ก่อนลบ
-- ถ้าลบแล้วทำให้ context ขาด → ยกเลิก
-- รักษา single source of truth
-- ไม่ refactor code ลึกซึ้ง (อยู่ใน `/refactor`)
-- ไม่แก้นอก scope
-- ถ้าไม่แน่ใจ → stop และ `/ask-me`
 
 ## Expected Outcome
 
@@ -140,3 +113,4 @@ related:
 - review score พร้อม grade และ progress bar
 - รายงานเป็นตารางผ่าน `/report-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+
