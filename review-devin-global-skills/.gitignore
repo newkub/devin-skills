@@ -1,7 +1,0 @@
-node_modules
-dist
-build
-*.log
-bun.lockb
-bun.lock
-coverage

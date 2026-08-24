@@ -1,72 +1,97 @@
 ---
 name: review-devin-global-skills
-description: Review global Devin skills with a Clean Architecture Bun CLI
+description: Review global Devin skill packages for structure, references, and content
 allowed-tools:
   - read
-  - write
   - edit
   - find_file_by_name
   - grep
   - exec
+  - skill
   - ask_user_question
 triggers:
   - user
   - model
 related:
-  - follow-create-bun-cli
-  - follow-clean-architecture
   - follow-devin-skills-md
+  - follow-write-devin-skills
   - review-issue
   - check-circular-dependencies
+  - validate
+  - report
   - suggest-next-action
 ---
 
 ## Goal
 
-Review the global Devin skills repository for structural, reference, and content issues using automated checks, then create manual review issues for anything that requires human judgment.
+Review all `SKILL.md` packages under the global Devin skills repository for structural, reference, and content issues, then deliver actionable findings or create review issues.
 
 ## Scope
 
-All `SKILL.md` files and subdirectories under the skills repository. Covers frontmatter, section structure, directory and file naming, file length, missing skill references, and overall content quality.
+All skill directories under the target skills root. Covers frontmatter, section order, file length, directory naming, `related` references, duplicate names, placeholder content, and overall clarity. Does not modify skills unless explicitly asked.
 
 ## Execute
 
-### 1. Run Automated Checks
-> Goal: Find structural and reference issues automatically
+### 1. Discover Skills
+> Goal: Build the inventory of skill packages to review
 
-1. record the target skills directory (default: the parent `skills/` directory)
-2. run `bun run src/presentation/cli.ts all` to run every check at once
-3. run `bun run src/presentation/cli.ts frontmatter` to validate frontmatter
-4. run `bun run src/presentation/cli.ts content-structure` to validate section structure
-5. run `bun run src/presentation/cli.ts file-structure` to validate package structure
-6. run `bun run src/presentation/cli.ts long-files` to find files over 250 lines
-7. run `bun run src/presentation/cli.ts missing-skills` to find broken skill references
-8. group findings by severity and fix safe issues in priority order: Critical → High → Medium → Low
-9. re-run all checks until no Critical or High issues remain
+1. run `find_file_by_name **/SKILL.md` in the target skills directory
+2. record `name`, `description`, `related`, and `source` of each `SKILL.md`
+3. flag duplicate `name` values or mismatched directory names
 
-### 2. Review Issues Manually
-> Goal: Catch quality gaps that scripts miss
+### 2. Validate Structure
+> Goal: Find structural and frontmatter violations
 
-1. run `find_file_by_name **/SKILL.md` to list all skill definitions
-2. read every `SKILL.md` or a representative sample and compare against `follow-devin-skills-md`
-3. identify duplicates, missing context, outdated references, and unclear instructions
-4. create review issues with `review-issue` for findings that need human judgment
+1. ทำตาม `validate` เพื่อตรวจ frontmatter `name`, `description`, `allowed-tools`, `related`
+2. run `exec` to count lines with `grep -c . <path>` or `wc -l <path>` and flag files over 250 lines
+3. run `grep` to verify required sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+4. run `grep` to detect `TODO`, `MOCK`, `STUB`, `FAKE`, `PLACEHOLDER`, or `FIXME`
+5. collect findings with format `file:line: message`
+
+### 3. Check References
+> Goal: Detect missing or circular skill references
+
+1. ทำตาม `check-circular-dependencies`
+2. for each `related` skill, run `find_file_by_name <skill-name>/SKILL.md` to confirm it exists
+3. flag `related` entries that are not used in the prompt body
+4. record any `related` skill with mismatched `name` in its frontmatter
+
+### 4. Review Content
+> Goal: Catch quality gaps that require human judgment
+
+1. ทำตาม `follow-devin-skills-md` เพื่อเปรียบเทียบ structure กับ spec
+2. ทำตาม `follow-write-devin-skills` เพื่อตรวจ package structure
+3. read a representative sample or every `SKILL.md`
+4. identify unclear `## Execute` steps, vague `description`, duplicates, or inconsistent terminology
+5. flag `improve-*` or `optimize-*` skills that should be merged or removed
+
+### 5. Report Findings
+> Goal: Deliver actionable review results
+
+1. group findings by severity: Critical, High, Medium, Low
+2. ทำตาม `report` เพื่อสรุป findings เป็นตาราง
+3. include `file:line: message` for every finding
+4. ทำตาม `review-issue` เพื่อสร้าง issue สำหรับ high-risk หรือ judgment-based findings
+5. ทำตาม `suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules
 
-- Checker logic lives in `src/modules/review/domain/operations/`; each operation is a pure function under 250 lines
-- Application use cases live in `src/modules/review/application/`
-- Adapters live in `src/adapters/` and implement the ports in `src/modules/review/ports.ts`
-- The CLI entry point is `src/presentation/cli.ts`
-- The public library API is exported from `src/index.ts`
-- Default review root is the parent `skills/` directory; override with `--root <path>`
-- All checks must report `file:line: message` for every finding
-- Do not delete or rename the original `improve-*` or `optimize-*` skills unless explicitly asked
-- Keep `SKILL.md` files under 250 lines
+### 1. Review Focus
+- ตรวจ structure, frontmatter, references, content clarity
+- ไม่แก้ source โดยไม่ได้รับอนุญาตจาก user
+- เก็บ `SKILL.md` ไม่เกิน 250 บรรทัด
+
+### 2. Deterministic Output
+- รัน check ซ้ำด้วย input เดิมต้องได้ output เดิม
+- เก็บ findings ด้วย format `file:line: message`
+
+### 3. Safety
+- ถ้าจะลบหรือแก้ไฟล์ skill → ถาม user ก่อน
+- ไม่เปลี่ยน `improve-*` หรือ `optimize-*` skills โดยไม่มีคำสั่งเฉพาะ
 
 ## Expected Outcome
 
-- A repeatable, validated review of the skills repository
-- Clean Architecture source tree with domain, application, adapter, and presentation layers
-- Actionable issue reports with file paths and line numbers
-- Manual review issues created for high-risk or judgment-based findings
+- รายงาน findings แบ่งตาม severity
+- ระบุ `file:line` ทีละ issue
+- สร้าง `review-issue` สำหรับ findings ทีต้องตัดสินใจโดยคน
+- คำแนะนำถัดไปผ่าน `suggest-next-action`
