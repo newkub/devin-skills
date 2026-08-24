@@ -82,7 +82,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
 2. ทำ `/run-check` สำหรับ lint, typecheck, scan
 3. ทำ `/run-test` สำหรับ regression
-4. ทำ `/check-circular-dependencies` และ `/improve-redundancy`
+4. ทำ `/check-circular-dependencies` และ `/review-redundancy`
 5. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-4 (สูงสุด 3 ครั้ง → stop/report)
 
 ### 6. Report

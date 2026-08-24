@@ -159,7 +159,7 @@ reliability review สำหรับ: single points of failure, graceful degrad
 
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
 - ไม่ apply fixes, ไม่ลบ, ไม่ merge, ไม่ย้ายเนื้อหาใน review reference นี้
-- ถ้าต้องการแก้ไข ให้ทำ `/improve-reliability` หรือ `/resolve-errors` หลัง review
+- ถ้าต้องการแก้ไข ให้ทำ `/review-reliability` หรือ `/resolve-errors` หลัง review
 
 ### 4. Formatting
 

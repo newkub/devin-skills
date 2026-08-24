@@ -138,7 +138,7 @@ modularity review สำหรับ: module boundaries (public API, encapsulati
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - แยก review process จาก improvement process
-- ถ้าต้องปรับปรุง modularity ให้ทำ `/improve-modularity` หลัง review
+- ถ้าต้องปรับปรุง modularity ให้ทำ `/review-modularity` หลัง review
 
 ### 4. Health Score Formula
 

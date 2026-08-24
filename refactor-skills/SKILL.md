@@ -87,7 +87,7 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 1. ระบุเนื้อหาที่ซ้ำกันระหว่าง skill หรือระหว่าง Execute และ Rules
 2. แทนที่เนื้อหาซ้ำด้วย references ไปยัง skill ต้นทาง
-3. ทำ `/improve-redundancy` เพื่อ verify
+3. ทำ `/review-redundancy` เพื่อ verify
 4. ใช้ `related` สำหรับ dependencies
 
 ### 7. Update References And Sort

@@ -63,11 +63,11 @@ related:
 
 ### 3. Run Skills
 > Goal: ปรับปรุงแต่ละส่วนครบถ้วน
-ทำ /improve-uxui ถ้า UX/UI เป็นปัญหา
-ทำ /improve-seo ถ้า SEO เป็นปัญหา
-ทำ /improve-security ถ้า security เป็นปัญหา
-ทำ /improve-api ถ้า API เป็นปัญหา
-ทำ /improve-dx ถ้า DX เป็นปัญหา
+ทำ /review-uxui ถ้า UX/UI เป็นปัญหา
+ทำ /review-seo ถ้า SEO เป็นปัญหา
+ทำ /review-security ถ้า security เป็นปัญหา
+ทำ /review-api ถ้า API เป็นปัญหา
+ทำ /review-dx ถ้า DX เป็นปัญหา
 6. เลือก skills อื่นๆ ตาม findings และ AGENTS.md
 
 ### 4. Validate And Report

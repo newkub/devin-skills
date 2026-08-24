@@ -52,8 +52,8 @@ related:
 ### 4. Optimize Network And Database IO
 > Goal: ลด round trips และ blocking
 1. ใช้ connection pooling, keep-alive, batching
-2. ใช้ /optimize-database ถ้า database เป็นปัญหา
-3. ใช้ /optimize-network ถ้า API/network เป็นปัญหา
+2. ใช้ /review-database ถ้า database เป็นปัญหา
+3. ใช้ /review-network ถ้า API/network เป็นปัญหา
 4. แบ่งงานหนักออกเป็น async/streaming
 
 ### 5. Validate

@@ -161,7 +161,7 @@ UX writing review สำหรับ: microcopy, button labels, link text, menu 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ถ้าพบ issue ที่เกี่ยวกับ implementation → อ้างอิง `/improve-ux-writing`
+- ถ้าพบ issue ที่เกี่ยวกับ implementation → อ้างอิง `/review-ux-writing`
 
 ### 5. Formatting
 

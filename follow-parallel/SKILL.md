@@ -63,7 +63,7 @@ related:
 > Goal: Orchestrator รัน sub-workflows ที่ independent พร้อมกัน
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
-2. รัน independent sub-workflows พร้อมกัน เช่น `/improve-redundancy`, `/check-unused-files`, `/check-unused-deps`
+2. รัน independent sub-workflows พร้อมกัน เช่น `/review-redundancy`, `/check-unused-files`, `/check-unused-deps`
 3. รัน dependent sub-workflows แบบ sequential เช่น `/validate` หลัง `/review-*`
 4. รวบรวม results จากทุก sub-workflow ก่อน aggregate report
 5. ถ้า sub-workflow หนึ่งพบ critical issue → หยุดและ validate ก่อนดำเนินต่อ

@@ -112,7 +112,7 @@ related:
 - ใช้รูปแบบ barrel export สม่ำเสมอทั่วทั้ง project
 - จัดเรียง exports ตามตัวอักษรของ source file
 - ใช้ naming conventions สม่ำเสมอ
-- ทำ `/improve-consistency` เพื่อตรวจสอบ
+- ทำ `/review-consistency` เพื่อตรวจสอบ
 
 ## Expected Outcome
 

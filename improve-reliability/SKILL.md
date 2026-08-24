@@ -36,7 +36,7 @@ related:
 > Goal: ลดความล้มเหลวและผลกระทบ
 1. ลบ single points of failure ด้วย redundancy หรือ graceful degradation
 2. เพิ่ม timeout, retries, และ idempotency
-3. ใช้ /improve-correctness หรือ /validate เพื่อลด bugs
+3. ใช้ /review-correctness หรือ /validate เพื่อลด bugs
 4. ตรวจสอบ health checks, readiness, liveness probes
 5. ใช้ /follow-best-practice หรือ /learn-from-web หา best practices เฉพาะ runtime
 
@@ -45,11 +45,11 @@ related:
 1. ใช้ circuit breaker, bulkhead, หรือ retry with exponential backoff
 2. เพิ่ม fallback/default behavior สำหรับ dependency สำคัญ
 3. ตรวจสอบ rate-limiting, load balancing, queue, backpressure
-4. ใช้ /improve-rate-limiting ถ้า load หรือ rate เป็นปัญหา
+4. ใช้ /review-rate-limiting ถ้า load หรือ rate เป็นปัญหา
 
 ### 4. Improve Recoverability
 > Goal: ฟื้นตัวกลับมาเร็วหลังเกิด failure
-1. ใช้ /improve-disaster-recovery หรือ /improve-backup สำหรับ backup/restore
+1. ใช้ /review-disaster-recovery หรือ /improve-backup สำหรับ backup/restore
 2. ตรวจสอบ rollback procedures, database transaction, migration safety
 3. เพิ่ม self-healing, restart policies, หรือ automated recovery
 4. บันทึก runbook หรือ incident response steps ลง `docs/runbooks/`

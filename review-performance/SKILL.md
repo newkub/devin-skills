@@ -61,8 +61,8 @@ Review runtime, network, และ I/O โดยใช้ references เฉพ�
 > Goal: ระบุ bottlenecks บน runtime, network, และ I/O
 
 1. ตรวจสอบ CPU, memory, GC, event loop, concurrency, startup, throughput
-2. ตรวจสอบ DNS, connection, bandwidth, latency, payload, caching ด้วย `references/review-network.md`
-3. ตรวจสอบ file I/O, storage, serialization, database I/O ด้วย `references/review-io.md`
+2. ตรวจสอบ DNS, connection, bandwidth, latency, payload, caching ด้วย `review-network`
+3. ตรวจสอบ file I/O, storage, serialization, database I/O ด้วย `review-io`
 4. บันทึก findings พร้อม metrics และ evidence
 
 ### 4. Bundler Review

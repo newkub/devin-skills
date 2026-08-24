@@ -96,7 +96,7 @@ related:
 
 - ทำ review เท่านั้น ไม่แก้ไข code หรือเนื้อหาระหว่าง review
 - ไม่ apply fixes ไม่ลบ ไม่ merge ไม่ย้ายเนื้อหาภายใน review reference นี้
-- ถ้าต้องการแก้ไข ให้ทำ `/improve-redundancy` หรือ `/resolve-errors` หลัง review
+- ถ้าต้องการแก้ไข ให้ทำ `/review-redundancy` หรือ `/resolve-errors` หลัง review
 
 ### 4. Formatting
 

@@ -47,7 +47,7 @@ related:
 1. ตรวจสอบ memory leaks ด้วย heap snapshot หรือ profiler
 2. ลด object allocations ใน hot paths
 3. ใช้ object pooling, buffer reuse, lazy loading
-4. ใช้ /improve-reliability ถ้าพบ OOM หรือ crash
+4. ใช้ /review-reliability ถ้าพบ OOM หรือ crash
 
 ### 4. Optimize Garbage Collection And Event Loop
 > Goal: ลด GC pauses และ event loop blocking
@@ -61,7 +61,7 @@ related:
 1. ตรวจสอบ thread pool, worker count, async patterns
 2. หลีกเลี่ยง contention, deadlocks, race conditions
 3. ใช้ queues, backpressure, throttling ที่เหมาะสม
-4. ใช้ /improve-rate-limiting ถ้า throughput ลดลง
+4. ใช้ /review-rate-limiting ถ้า throughput ลดลง
 
 ### 6. Optimize Startup
 > Goal: ลด cold start time

@@ -44,7 +44,7 @@ related:
 1. ทำ /optimize-latency ถ้า response time สูง
 2. ทำ /optimize-payload ถ้า request/response body ใหญ่
 3. ทำ /optimize-caching ถ้า cache headers ไม่เหมาะสม
-4. ทำ /improve-rate-limiting ถ้ามี rate limit หรือ retry issues
+4. ทำ /review-rate-limiting ถ้ามี rate limit หรือ retry issues
 
 ### 3. Optimize DNS
 > Goal: ลด DNS resolution time

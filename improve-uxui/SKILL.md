@@ -38,18 +38,18 @@ related:
 
 ### 2. Improve UX Writing
 > Goal: ข้อความชัดเจนและสนับสนุน user journey
-1. ทำ /improve-ux-writing ถ้าพบ issues ด้าน copy, labels, error messages, notifications
+1. ทำ /review-ux-writing ถ้าพบ issues ด้าน copy, labels, error messages, notifications
 2. ทำ /improve-writing ถ้า documentation หรือ comments เกี่ยวข้อง
 
 ### 3. Improve Accessibility
 > Goal: ใช้งานได้กับทุกคน
 1. ทำ /check-accessibility เพื่อหา WCAG issues
-2. ทำ /improve-web-accessibility สำหรับการแก้ไข accessibility
+2. ทำ /review-web-accessibility สำหรับการแก้ไข accessibility
 
 ### 4. Improve UI And Frontend
 > Goal: visual design, layout, components, interaction ดีขึ้น
 1. ทำ /senior-frontend ถ้ามี issues ด้าน UI, performance, component design
-2. ทำ /optimize-frontend ถ้า frontend performance เป็นปัญหา
+2. ทำ /review-frontend ถ้า frontend performance เป็นปัญหา
 
 ### 5. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น

@@ -21,7 +21,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ## Scope
 
-ใช้สำหรับ comprehensive codebase review ผ่าน `tools/review` CLI — รัน CLI parse JSON output ตัดสินใจ update analyzers ตาม metrics แล้วรันใหม่ ถ้าต้องการดู dimension เฉพาะให้อ่าน `references/review-<dimension>/SKILL.md`
+ใช้สำหรับ comprehensive codebase review ผ่าน `tools/review` CLI — รัน CLI parse JSON output ตัดสินใจ update analyzers ตาม metrics แล้วรันใหม่ ถ้าต้องการดู dimension เฉพาะให้อ่าน `review-<dimension>/SKILL.md`
 
 ## Execute
 
@@ -59,7 +59,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 4. `analyzerErrors` > 0
 5. `falsePositiveRate` สูงกว่า 20%
 6. findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
-7. `reviewWorkflow` field ไม่ map ไปยัง `?review-codebase/references/review-<dimension>.md`? ที่มีอยู่
+7. `reviewWorkflow` field ไม่ map ไปยัง `?review-codebase/review-<dimension>`? ที่มีอยู่
 8. `tools/review/package.json` หรือ `tools/review/src/presentation/cli.ts` ไม่อยู่
 
 ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → ไป Step 4
@@ -97,7 +97,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 ### 1. CLI-Driven Review
 
 - ใช้ `/run-review` และ `tools/review` CLI เป็นแหล่งหลักของ findings
-- ไม่ manual อ่าน `references/review-<dimension>/SKILL.md` ทีละตัว — อ่านเฉพาะเมื่อ CLI output ไม่ชัดเจนหรือต้องการ deep-dive
+- ไม่ manual อ่าน `review-<dimension>/SKILL.md` ทีละตัว — อ่านเฉพาะเมื่อ CLI output ไม่ชัดเจนหรือต้องการ deep-dive
 - ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ `/update-create-review-cli` ก่อนรีวิวต่อ
 
 ### 2. Metric Triggers
@@ -119,7 +119,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 - ทุก finding ต้องมี evidence: file path, line number, code snippet
-- แต่ละ finding ต้อง map ไปยัง `?review-codebase/references/review-<dimension>.md`? ผ่าน `reviewWorkflow` field
+- แต่ละ finding ต้อง map ไปยัง `?review-codebase/review-<dimension>`? ผ่าน `reviewWorkflow` field
 
 ### 5. Formatting
 

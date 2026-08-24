@@ -24,7 +24,7 @@ Review test coverage ของ project ครอบคลุม critical paths, 
 
 ## Scope
 
-ใช้สำหรับ review test coverage ของ unit tests, integration tests, E2E tests — เน้นรายงาน gaps และ test quality ไม่แก้ไข code ระหว่าง review — ถ้าต้องการเพิ่ม tests ให้ทำ `/improve-test-coverage` หลัง report
+ใช้สำหรับ review test coverage ของ unit tests, integration tests, E2E tests — เน้นรายงาน gaps และ test quality ไม่แก้ไข code ระหว่าง review — ถ้าต้องการเพิ่ม tests ให้ทำ `/review-test-coverage` หลัง report
 
 ## Execute
 
@@ -132,7 +132,7 @@ Review test coverage ของ project ครอบคลุม critical paths, 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ tests ระหว่าง review
-- ถ้าต้องการเพิ่ม tests → แนะนำ `/improve-test-coverage` หลัง report
+- ถ้าต้องการเพิ่ม tests → แนะนำ `/review-test-coverage` หลัง report
 
 ### 5. Formatting
 

@@ -30,7 +30,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 > Goal: เข้าใจ codebase ก่อน refactor
 
 1. ทำ `/review-codebase` สำหรับ deep review
-2. ทำ `/check-code-structure`, `/improve-redundancy`, `/check-long-files`
+2. ทำ `/check-code-structure`, `/review-redundancy`, `/check-long-files`
 3. บันทึก baseline: files, symbols, responsibilities
 
 ### 2. Create Plan If Large
@@ -48,7 +48,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 4. ถ้ามี imports/exports ซับซ้อน → ทำ `/follow-import-export`
 5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
 6. ถ้ามี package/module ปัญหา → ทำ `/refactor-packages`
-7. ถ้ามี inconsistencies ใน naming, patterns, structure, หรือ style → ทำ `/improve-consistency`
+7. ถ้ามี inconsistencies ใน naming, patterns, structure, หรือ style → ทำ `/review-consistency`
 
 ### 4. Update References
 > Goal: ไม่มี broken references
@@ -92,7 +92,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 ### 2. Consistency
 
-- ทำ `/improve-consistency` เมื่อพบ inconsistencies ใน naming, patterns, structure, หรือ style
+- ทำ `/review-consistency` เมื่อพบ inconsistencies ใน naming, patterns, structure, หรือ style
 - รักษา conventions เดียวกันทั้ง codebase
 - อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
 

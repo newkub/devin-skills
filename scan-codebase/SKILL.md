@@ -79,7 +79,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 > Goal: ตรวจสอบคุณภาพโค้ด
 
-1. ทำ `/improve-redundancy` หา duplicate code
+1. ทำ `/review-redundancy` หา duplicate code
 2. ทำ `Grep` หา anti-patterns (`any`, `console.log`, nested ternary)
 3. ตรวจสอบ biome/gritql config ถ้ามี
 4. รัน biome/gritql ถ้ามี config
@@ -132,7 +132,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 - Phase 2: `Grep` สำหรับ pattern matching
 - Phase 3: `/use-scripts` + ast-grep สำหรับ structural analysis
 - Phase 4: `ast-grep outline` สำหรับ structure navigation
-- Phase 5: `/improve-redundancy`, `biome/gritql` สำหรับ quality
+- Phase 5: `/review-redundancy`, `biome/gritql` สำหรับ quality
 - Phase 6: `/use-scripts` สำหรับ structured data generation
 - Phase 7: AI สำหรับ summarization
 - ทำ `/update-ast-grep-rules` สำหรับสร้าง ast-grep rules

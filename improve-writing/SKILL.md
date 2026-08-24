@@ -20,7 +20,7 @@ related: []
 
 ## Scope
 
-ใช้สำหรับปรับปรุงคุณภาพการเขียน: documentation (README, docs, API docs), code comments, commit messages, changelogs, technical writing — ไม่รวม UX copy (อยู่ใน `/improve-ux-writing`) และ content coverage (อยู่ใน `/improve-content-coverage`)
+ใช้สำหรับปรับปรุงคุณภาพการเขียน: documentation (README, docs, API docs), code comments, commit messages, changelogs, technical writing — ไม่รวม UX copy (อยู่ใน `/review-ux-writing`) และ content coverage (อยู่ใน `/review-content-coverage`)
 
 ## Execute
 

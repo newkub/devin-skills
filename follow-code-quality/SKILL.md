@@ -37,7 +37,7 @@ related: []
 > Goal: แก้ไข issues ทั้งหมดตาม priority
 
 1. ทำ `/no-hard-code` เพื่อลบ hard code — ถ้าพบ sensitive data exposure → แก้ก่อนเป็น priority สูงสุด
-2. ทำ `/review-codebase`, `/improve-type-safety`, `/review-codebase` — naming conventions/type safety, side effects management, debuggability, type safety improvements, config optimization
+2. ทำ `/review-codebase`, `/review-type-safety`, `/review-codebase` — naming conventions/type safety, side effects management, debuggability, type safety improvements, config optimization
 3. แก้ไข issues ที่เหลือตามลำดับความสำคัญ — ถ้าแก้ไม่ได้ → ทำ `/resolve-errors` ก่อนดำเนินต่อ
 
 ### 3. Verify Quality

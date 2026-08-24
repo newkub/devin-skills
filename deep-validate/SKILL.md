@@ -43,7 +43,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 2. Check Correctness
 > Goal: Check Correctness
 
-ทำ `/improve-correctness` เพื่อตรวจสอบความถูกต้อง
+ทำ `/review-correctness` เพื่อตรวจสอบความถูกต้อง
 
 - ตรวจสอบความถูกต้องตาม principle หรือ standard
 - ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors

@@ -32,7 +32,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 > Goal: เข้าใจ codebase ก่อน refactor
 
 1. ทำ `/review-codebase` สำหรับ deep review
-2. ทำ `/check-code-structure`, `/improve-redundancy`, `/check-long-files`
+2. ทำ `/check-code-structure`, `/review-redundancy`, `/check-long-files`
 3. บันทึก baseline: files, symbols, responsibilities
 
 ### 2. Create Plan If Large

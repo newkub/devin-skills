@@ -56,11 +56,11 @@ related:
 
 ### 3. Run Skills
 > Goal: ปรับปรุงแต่ละส่วนครบถ้วน
-1. ทำ /optimize-frontend ถ้า frontend เป็นปัญหา
-2. ทำ /optimize-network ถ้า network เป็นปัญหา
-3. ทำ /optimize-database ถ้า database เป็นปัญหา
+1. ทำ /review-frontend ถ้า frontend เป็นปัญหา
+2. ทำ /review-network ถ้า network เป็นปัญหา
+3. ทำ /review-database ถ้า database เป็นปัญหา
 4. ทำ /optimize-runtime ถ้า CPU/memory/GC/startup เป็นปัญหา
-5. ทำ /optimize-io ถ้า I/O/storage/serialization เป็นปัญหา
+5. ทำ /review-io ถ้า I/O/storage/serialization เป็นปัญหา
 6. ทำ /optimize-build ถ้า build เป็นปัญหา
 7. ทำ /improve-ci-cd ถ้า pipeline เป็นปัญหา
 8. ทำ /optimize-latency, /optimize-caching, หรือ /optimize-payload ถ้าเป็นปัญหาเฉพาะ

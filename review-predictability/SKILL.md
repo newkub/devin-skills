@@ -79,7 +79,7 @@ Review predictability ของ project ครอบคลุม predictable beh
 2. จัดลำดับตาม severity: Critical -> High -> Medium -> Low
 3. คำนวณ review score: (Critical=0, High=25, Medium=50, Low=75, Info=100) -> weighted average
 4. ทำ `/report` พร้อม `/report-table`
-5. ถ้าพบปัญหา -> ระบุ priority และแนะนำ `/improve-predictability`
+5. ถ้าพบปัญหา -> ระบุ priority และแนะนำ `/review-predictability`
 6. ถ้าไม่พบ issues -> report ตาม evidence
 7. ทำ `/suggest-next-action`
 

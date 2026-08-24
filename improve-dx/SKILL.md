@@ -43,15 +43,15 @@ related:
 > Goal: developer ใหม่เริ่มได้เร็ว
 1. ตรวจสอบ README, CONTRIBUTING, setup guide, local env instructions
 2. สร้างหรือปรับปรุง `docs/onboarding.md` หรือ `.devin/onboarding.md`
-3. ใช้ /improve-docs ถ้า documentation ขาดหรือล้าหลัง
+3. ใช้ /review-docs ถ้า documentation ขาดหรือล้าหลัง
 4. ระบุ one-command setup เช่น `bun install && bun dev`
 
 ### 4. Improve Feedback Loops
 > Goal: ลดเวลารอและข้อผิดพลาด
 1. ตรวจสอบ error messages ให้บอกสาเหตุและวิธีแก้
-2. ใช้ /improve-ux-writing สำหรับ CLI messages หรือ logs
+2. ใช้ /review-ux-writing สำหรับ CLI messages หรือ logs
 3. ตรวจสอบ type check, lint, test runtime
-4. ใช้ /improve-observability ถ้าขาด insights สำหรับ debugging
+4. ใช้ /review-observability ถ้าขาด insights สำหรับ debugging
 
 ### 5. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น

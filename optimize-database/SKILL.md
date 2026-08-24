@@ -41,7 +41,7 @@ related:
 
 ### 2. Analyze Database Health
 > Goal: หาสาเหตุที่ทำให้ database ช้าหรือไม่ปลอดภัย
-1. ทำ /improve-database-design เพื่อ review schema, index, normalization, integrity
+1. ทำ /review-database เพื่อ review schema, index, normalization, integrity
 2. ตรวจ connection pool, timeout, retry strategy
 3. ทำ /review-codebase เพื่อรายละเอียดเพิ่ม
 4. ถ้าไม่พบ issues → stop และ report

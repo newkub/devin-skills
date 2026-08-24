@@ -49,13 +49,13 @@ related:
 > Goal: ติดตาม request ข้าม service
 1. ตรวจสอบ distributed tracing: trace IDs, spans, baggage
 2. เพิ่ม instrumentation สำหรับ critical paths
-3. ใช้ /improve-reliability ถ้าพบ failure propagation
+3. ใช้ /review-reliability ถ้าพบ failure propagation
 
 ### 5. Improve Auditability
 > Goal: ตรวจสอบย้อนหลังได้
 1. ระบุ events ทีต้อง audit: user actions, data changes, security events
 2. ตรวจสอบ audit logs มี timestamp, actor, action, result
-3. ใช้ /improve-security ถ้าพบ sensitive data logging
+3. ใช้ /review-security ถ้าพบ sensitive data logging
 
 ### 6. Validate
 > Goal: ยืนยันว่าปรับปรุงแล้วดีขึ้น

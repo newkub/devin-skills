@@ -50,7 +50,7 @@ related:
 
 ### 4. Improve Reliability
 > Goal: pipeline น่าเชื่อถือ
-1. ใช้ /improve-reliability สำหรับ retry, timeout, idempotency
+1. ใช้ /review-reliability สำหรับ retry, timeout, idempotency
 2. ตรวจสอบ secrets, environment variables, permission
 3. ใช้ dry run ก่อน deployment ทีสำคัญ
 

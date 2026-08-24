@@ -111,7 +111,7 @@ Review documentation ของ project ครอบคลุม README, setup gu
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
-- ถ้าต้องแก้ไข → แนะนำ `/improve-docs` หลัง report
+- ถ้าต้องแก้ไข → แนะนำ `/review-docs` หลัง report
 
 ### 4. Formatting
 

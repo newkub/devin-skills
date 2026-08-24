@@ -61,7 +61,7 @@ Review and improve database design เพื่อให้ได้ performance
 3. ตรวจ foreign key consistency และ orphaned rows
 4. ระบุ sensitive data exposure และ encryption needs
 5. ประเมิน backup, restore, disaster recovery strategy
-6. ใช้ /improve-reliability ถ้าพบ recoverability issues
+6. ใช้ /review-reliability ถ้าพบ recoverability issues
 
 ### 5. Prioritize Improvements
 > Goal: จัดลำดับตาม impact และ effort

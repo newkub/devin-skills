@@ -44,7 +44,7 @@ UX/UI review สำหรับ user flows, interaction design, visual hierarchy
 
 Review visual hierarchy, typography, color theory, spacing system, และ layout principles
 
-> Goal: ครอบคลุม visual design ตาม `/improve-uxui` และ `/follow-uxui`
+> Goal: ครอบคลุม visual design ตาม `/review-uxui` และ `/follow-uxui`
 
 1. ตรวจสอบ visual hierarchy: focal point clarity, scan pattern, content priority, visual weight balance, contrast ระหว่าง section, information architecture ที่สะท้อนในภาพ
 2. ตรวจสอบ typography: font scale, line height, letter spacing, font pairing, font loading, responsive typography
@@ -56,7 +56,7 @@ Review visual hierarchy, typography, color theory, spacing system, และ lay
 
 ### 3. UX Writing Review
 
-Review UX writing, microcopy, และ content strategy ตาม `/improve-ux-writing`
+Review UX writing, microcopy, และ content strategy ตาม `/review-ux-writing`
 
 > Goal: ครอบคลุม UX writing ทุกจุดสัมผัส
 
@@ -75,7 +75,7 @@ Review UX writing, microcopy, และ content strategy ตาม `/improve-ux-
 
 ### 4. Accessibility Review
 
-Review accessibility ตาม WCAG และ `/improve-web-accessibility`
+Review accessibility ตาม WCAG และ `/review-web-accessibility`
 
 > Goal: ครอบคลุม keyboard, screen reader, contrast, forms, และ media
 

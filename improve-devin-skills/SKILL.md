@@ -59,7 +59,7 @@ related:
 
 > Goal: skill ผ่านเกณฑ์ frontmatter, structure, และ directory ก่อนแก้ไข
 
-1. ทำตาม `/improve-correctness` เพื่อตรวจ structure, frontmatter, sections
+1. ทำตาม `/review-correctness` เพื่อตรวจ structure, frontmatter, sections
    - ทำตาม `/follow-devin-skills-md` เพื่อตรวจมาตรฐาน `SKILL.md`
    - ทำตาม `/follow-write-devin-skills` เพื่อตรวจ directory structure, references, subskills, และ templates
 2. ทำตาม `/check-reference` เพื่อตรวจ broken references
@@ -97,7 +97,7 @@ related:
 
 > Goal: ไม่มีเนื้อหาซ้ำซ้อน
 
-1. ทำ `/improve-redundancy` เพื่อตรวจ duplicate ระหว่าง files/sections
+1. ทำ `/review-redundancy` เพื่อตรวจ duplicate ระหว่าง files/sections
 2. ใช้ `references/` หรืออ้างอิง skill อื่นแทนการคัดลอก
 3. ตรวจว่า `## Execute` กับ `## Rules` ไม่ซ้ำกัน
 
@@ -105,7 +105,7 @@ related:
 
 > Goal: ภาษา รูปแบบ และ terminology สม่ำเสมอ
 
-1. ทำ `/improve-consistency` เพื่อตรวจภาษา, format, headings, backticks, heading conventions และ backticks
+1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, headings, backticks, heading conventions และ backticks
 2. ปรับ `## Execute` headings เป็น English Title Case
 3. ตรวจ `related` ให้ครบถ้วนและไม่มี invalid
 
@@ -114,7 +114,7 @@ related:
 > Goal: เนื้อหาชัดเจน ไม่ต้องตีความ
 
 1. ทำ `/write-explicit` กับ instructions ที่ยังคลุมเครือ
-2. แก้ไข issues ตาม priority จาก `/improve-correctness` เริ่มจาก `Critical`
+2. แก้ไข issues ตาม priority จาก `/review-correctness` เริ่มจาก `Critical`
 3. ทำ `/review-codebase` สำหรับ issues เนื้อหาและ structure
 4. อัปเดตเนื้อหาตาม best practices ที่ research ได้
 5. เพิ่ม edge cases และ conditional execution ที่ขาด
@@ -131,7 +131,7 @@ related:
 
 > Goal: skill ผ่าน validation และมีรายงาน
 
-1. ทำตาม `/improve-correctness` อีกครั้ง
+1. ทำตาม `/review-correctness` อีกครั้ง
    - ทำตาม `/check-reference`
    - ทำตาม `/check-circular-dependencies`
    - ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -160,8 +160,8 @@ related:
 ### 3. Refactor And Consistency
 
 - ทำ `/refactor-skills` ก่อนแก้ไขเนื้อหาเมื่อโครงสร้างมีปัญหา
-- ทำ `/improve-redundancy` เพื่อลบเนื้อหาซ้ำซ้อน
-- ทำ `/improve-consistency` เพื่อให้ภาษาและ format สม่ำเสมอ
+- ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อน
+- ทำ `/review-consistency` เพื่อให้ภาษาและ format สม่ำเสมอ
 - ใช้ `references/` แทนการ duplicate เนื้อหา
 
 ### 4. Coverage Quality
@@ -187,7 +187,7 @@ related:
 
 ### 7. Verification
 
-- ทำ `/improve-correctness` อีกครั้งหลังแก้ไข
+- ทำ `/review-correctness` อีกครั้งหลังแก้ไข
 - ตรวจสอบทุกไฟล์ไม่เกิน 250 บรรทัด
 - ทำ `/check-reference` เพื่อยืนยัน references ถูกต้อง
 - ทำ `/report` เพื่อสรุปการปรับปรุง
