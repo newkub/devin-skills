@@ -13,7 +13,7 @@ description: ทำตาม Browser Extensions
 
 ## Execute
 
-1. `/follow-reactive-vscode`
+1. `/follow-vscode-extensions`
 
 ## Rules
 

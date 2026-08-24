@@ -23,7 +23,7 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 4. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
-7. ทำ `/follow-skills-map` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
+7. ทำ `/follow-skills` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
 8. เพิ่ม `/review-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
 9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
 8. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
