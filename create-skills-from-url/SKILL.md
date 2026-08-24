@@ -58,7 +58,7 @@ related:
 > Goal: จัดกลุ่มเนื้อหาเป็น subskills
 
 1. อ่าน `subskills/<domain>/<subskill>/SKILL.md` pattern จาก `/follow-write-devin-skills`
-2. จัดกลุ่ม topics ตามลักษณะงาน: `setup-*`, `update-*`, `improve-*`, `optimize-*`, `follow-*`, `use-*`, `review-*`, `write-*`
+2. จัดกลุ่ม topics ตามลักษณะงาน: `setup-*`, `update-*`, `improve-*`, `follow-*`, `use-*`, `review-*`, `write-*`
 3. ตั้งชื่อ subskill เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`
 4. สร้าง parent skill `<domain>-subskills` โดยมี `related` ชี้ทุก subskill
 

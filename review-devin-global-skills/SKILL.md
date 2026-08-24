@@ -63,7 +63,7 @@ All skill directories under the target skills root. Covers frontmatter, section 
 2. ทำตาม `follow-write-devin-skills` เพื่อตรวจ package structure
 3. read a representative sample or every `SKILL.md`
 4. identify unclear `## Execute` steps, vague `description`, duplicates, or inconsistent terminology
-5. flag `improve-*` or `optimize-*` skills that should be merged or removed
+5. flag `improve-*` skills that should be merged or removed
 
 ### 5. Report Findings
 > Goal: Deliver actionable review results
@@ -87,7 +87,7 @@ All skill directories under the target skills root. Covers frontmatter, section 
 
 ### 3. Safety
 - ถ้าจะลบหรือแก้ไฟล์ skill → ถาม user ก่อน
-- ไม่เปลี่ยน `improve-*` หรือ `optimize-*` skills โดยไม่มีคำสั่งเฉพาะ
+- ไม่เปลี่ยน `improve-*` skills โดยไม่มีคำสั่งเฉพาะ
 
 ## Expected Outcome
 
