@@ -1,6 +1,13 @@
 ---
 name: review-realize-implementation
 description: Review implementation completeness หา TODO, MOCK, STUB, placeholder, flows ขาด UX/UI ที่มี API แล้ว
+argument-hint: "[skill-name]"
+related:
+  - review-refactor
+  - review-restructure
+  - review-update
+  - implement-all
+  - review-codebase-everything
 ---
 
 ## Goal
