@@ -1,15 +1,15 @@
 ---
 name: review-codebase
-description: Review และปรับปรุง ครบทุกมิติของ codebase ด้วย review CLI ไม่ manual ทีละ dimension โดยอัปเดต CLI ตาม metrics
+description: Review และปรับปรุง codebase ครบทุกมิติ ระบุ issues พร้อม severity ผ่าน review CLI
 ---
 
 ## Goal
 
-Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension โดย run `/run-review` วิเคราะห์ metrics แล้วเรียก `/update-create-review-cli` อัตโนมัติเมื่อ metrics บ่งชี้ว่า CLI ต้องปรับปรุง
+Review codebase ครบทุกมิติโดยใช้ review CLI แทนการ manual อ่าน references ทีละ dimension ระบุ issues พร้อม severity และ actionable recommendations แล้วอัปเดต CLI ตาม metrics โดยอัตโนมัติ
 
 ## Scope
 
-ใช้สำหรับ comprehensive codebase review ผ่าน `tools/review` CLI — รัน CLI parse JSON output ตัดสินใจ update analyzers ตาม metrics แล้วรันใหม่ ถ้าต้องการดู dimension เฉพาะให้อ่าน `review-<dimension>/SKILL.md`
+ใช้สำหรับ comprehensive codebase review ผ่าน `tools/review` CLI — รัน CLI parse JSON output ตัดสินใจ update analyzers ตาม metrics ระบุ issues พร้อม severity และ recommendations แล้วรันใหม่ ครอบคลุม code, content, documentation, configuration, workflows, skills ถ้าต้องการ comprehensive quality gate ให้ใช้ `/deep-review` ถ้าต้องการดู dimension เฉพาะให้อ่าน `review-<dimension>/SKILL.md`
 
 ## Execute
 
@@ -20,8 +20,9 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
 2. ทำ `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
 3. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
-4. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)
-5. ทำ `/run-review` Step 1 เพื่อ verify CLI มีอยู่
+4. ระบุสิ่งที่จะ review (code file, content, docs, config, workflow, ฯลฯ) และ scope: ไฟล์ที่เกี่ยวข้อง, modules, sections
+5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)
+6. ทำ `/run-review` Step 1 เพื่อ verify CLI มีอยู่
 
 ### 2. Run Review CLI And Capture Metrics
 
@@ -49,39 +50,56 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 ถ้าทุก metrics ผ่านหรือไม่มีการเปลี่ยนแปลงหลัง 3 รอบ → ไป Step 4
 
-### 4. Run PR And Global Reviews
+### 4. Review Against Criteria And Detect Issues
+
+> Goal: ทุก finding มี evidence และ severity rating
+
+1. ตรวจสอบความถูกต้อง: logic, syntax, facts, หรือ content accuracy
+2. ตรวจสอบคุณภาพ: readability, consistency, completeness, best practices
+3. ตรวจสอบความเหมาะสม: สอดคล้องกับ context, requirements, และ constraints
+4. ใช้ `Grep` หรือ `ast-grep` สำหรับ pattern-based checks ถ้าเกี่ยวข้อง
+5. บันทึกทุก finding พร้อม evidence (file path, line number, code snippet, หรือ section)
+6. ระบุ severity ของแต่ละ finding: Critical → High → Medium → Low
+7. ระบุ root cause และ false positives ที่พบ
+
+### 5. Run PR And Global Reviews
 
 > Goal: รัน review เฉพาะทางถ้าจำเป็น
 
 1. ถ้ามี PR ที่กำลัง review → ทำ `/review-github-pr`
 2. ถ้าต้องการ review global Devin skills → ทำ `/review-all-skills`
 
-### 5. Validate Findings
+### 6. Validate Findings And Provide Recommendations
 
-> Goal: ตรวจสอบและ validate issues ที่ review CLI พบ
+> Goal: validate issues และให้ recommendations ที่ concrete และจัดลำดับตาม priority
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. ทำ `/implement-all` สำหรับ issues ที่ต้องการ refactor
+3. ให้ recommendation ที่ concrete และ actionable สำหรับทุก finding
+4. จัดลำดับ recommendations ตาม severity และ impact
+5. ระบุ quick wins และ strategic fixes
+6. ถ้า finding ต้องแก้ไข ให้ชี้ไปยัง `/resolve-errors` หรือ workflow ที่เกี่ยวข้อง
+7. ทำ `/implement-all` สำหรับ issues ที่ต้องการ refactor
 
-### 6. Report And Verify
+### 7. Report And Verify
 
 > Goal: รายงานผลและวัด after review score
 
 1. ทำ `/run-review` เพื่อวัด after score
 2. ทำ `/report-ansi`, `/report-table`
-3. ทำ `/report` เพื่อสรุปผล
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+3. ทำ `/report` เพื่อสร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
+4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
+5. สรุป overall assessment และ health indicator
+6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
-### 7. Improve
+### 8. Improve
 
 > Goal: ปรับปรุง codebase ตาม findings และลด redundancy
 
 1. อ่าน `AGENTS.md` และทำ `/scan-codebase` เพื่อหา issues ทั่วไป
 2. รัน `bunx jscpd`, `bunx knip`, `bunx madge --circular` สำหรับ code duplication, unused exports, circular dependencies
 3. จัดลำดับ priority ตาม impact ก่อน effort
-4. ทำ review-* skills ตาม findings เพื่อ review และปรับปรุง: `/review-frontend`, `/review-correctness`, `/review-reliability`, `/review-performance`, `/review-security`, `/review-database`, `/review-docs`, `/review-api` ตาม context
+4. ทำ review-* skills ตาม findings เพื่อ review และปรับปรุงตาม context
 5. ทำ `/validate` และ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
@@ -107,114 +125,34 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 - ทำ `/update-reference` หลังจากแก้ไขไฟล์
 - รัน tests หลังแต่ละ improvement
 
-### 4. Severity And Evidence
+### 4. Evidence-Based Findings
 
+- ทุก finding ต้องมี evidence (file path, line number, code snippet, หรือ section)
+- ไม่เดา ใช้ tools สำหรับ verification
+- อ้างอิง standards หรือ best practices ที่ตรวจสอบได้
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
-- ทุก finding ต้องมี evidence: file path, line number, code snippet
 - แต่ละ finding ต้อง map ไปยัง `?review-codebase/review-<dimension>`? ผ่าน `reviewWorkflow` field
 
-### 5. Formatting
+### 5. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไขระหว่าง review
+- แยก review process จาก fix process
+- ใช้ `/deep-review` สำหรับ comprehensive quality gate review
+- ใช้ `/validate` สำหรับ general validation
+
+### 6. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
-
-## Review Catalog
-
-Skill รีวิวทุก dimension:
-- `review-frontend`
-- `review-api`
-- `review-app-stability`
-- `review-architecture`
-- `review-security`
-- `review-backend`
-- `review-battery`
-- `review-frontend`
-- `review-bug-prone`
-- `review-performance`
-- `review-business`
-- `review-cli`
-- `review-code-quality`
-- `review-codebase-issue`
-- `review-security`
-- `review-components`
-- `review-reliability`
-- `review-config`
-- `review-quality`
-- `review-docs`
-- `follow-context-rot`
-- `review-correctness`
-- `review-infrastructure`
-- `review-correctness`
-- `review-frontend`
-- `review-data-fetching`
-- `review-data-validation`
-- `review-data`
-- `review-database`
-- `review-debugging`
-- `review-delivery`
-- `review-frontend`
-- `review-reliability`
-- `review-discoverability`
-- `review-docs`
-- `review-dx`
-- `review-error-handling`
-- `review-event-handling`
-- `review-security`
-- `review-form`
-- `review-correctness`
-- `review-frontend`
-- `review-governance`
-- `review-hooks-composables`
-- `review-i18n`
-- `review-frontend`
-- `review-infrastructure`
-- `review-integration`
-- `review-performance`
-- `review-isolation`
-- `review-lib`
-- `review-performance`
-- `review-infrastructure`
-- `review-modularity`
-- `review-quality`
-- `review-performance`
-- `review-reliability`
-- `review-performance`
-- `review-platform`
-- `review-reliability`
-- `review-infrastructure`
-- `review-reliability`
-- `review-realize-implementation`
-- `review-quality`
-- `review-quality`
-- `review-reliability`
-- `review-frontend`
-- `review-frontend`
-- `review-infrastructure`
-- `review-security`
-- `review-seo`
-- `review-service`
-- `review-correctness`
-- `review-quality`
-- `review-state-management`
-- `review-techstack`
-- `review-correctness`
-- `review-correctness`
-- `review-frontend`
-- `review-frontend`
-- `review-infrastructure`
-- `review-infrastructure`
-- `review-workflow-content`
-- `review-workspace`
-- Pull request: `review-github-pr`
-- Global skills: `review-all-skills`
 
 ## Expected Outcome
 
 - Review ทำงานผ่าน `tools/review` CLI ไม่ manual อ่าน references ทีละ dimension
 - Findings จาก CLI ครอบคลุม 60+ categories พร้อม evidence และ severity
+- ทุก finding มี severity rating, root cause และ actionable recommendation
 - `/update-create-review-cli` ถูกเรียกอัตโนมัติเมื่อ metrics บ่งชี้
 - Before-after review score ผ่าน `/run-review`
 - Issues ถูก validate และจัดลำดับตาม severity
 - Codebase ปรับปรุงตาม findings และลด redundancy โดยไม่มี regression
 - รายงานในแชทเป็นตารางพร้อม action ถัดไป
-

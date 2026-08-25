@@ -1,6 +1,6 @@
 ---
 name: review-platform
-description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, state management, routing, PWA
+description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, battery, compatibility
 ---
 
 ## Goal
@@ -9,7 +9,7 @@ Review platform ครอบคลุมทุก dimension ของ platform �
 
 ## Scope
 
-platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-side rendering, state management, routing, PWA
+platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-side rendering, state management, routing, PWA, i18n และ localization, SEO, battery/energy usage, browser/platform compatibility
 
 ## Execute
 
@@ -20,108 +20,110 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-sid
 > Goal: เข้าใจ platform setup ใน codebase
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ platform setup
-2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup
+2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup, i18n library, SEO strategy, battery-sensitive components, compatibility targets
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
-### 2. Mobile Review
+### 2. Mobile And Desktop Review
 
-Review mobile app ครอบคลุม Capacitor plugins, platform-specific code, offline support, native bridge patterns
+Review mobile และ desktop app — ดูรายละเอียดใน `references/mobile-desktop.md`
 
-> Goal: ครอบคลุมทุก mobile dimension
+> Goal: ครอบคลุมทุก mobile และ desktop dimension
 
-1. ตรวจสอบ Capacitor plugin usage, platform detection, และ native bridge patterns
-2. ตรวจสอบ offline support, push notification handling, และ biometric auth
-3. ตรวจสอบ mobile UX: touch targets, safe area, และ responsive layout
-4. Critical: native bridge พัง, plugin ที่จำเป็นหายไป, app crash บน platform
-5. High: ไม่มี offline support, push notification พัง, ไม่มี platform detection
+1. ตรวจสอบ Capacitor plugin usage, platform detection, native bridge patterns
+2. ตรวจสอบ offline support, push notification handling, biometric auth
+3. ตรวจสอบ mobile UX: touch targets, safe area, responsive layout
+4. ตรวจสอบ native API usage, IPC patterns, security boundaries ระหว่าง main/renderer processes
+5. ตรวจสอบ window management, auto-update mechanism, file system access, sandbox restrictions
+6. ตรวจสอบ desktop UX: system tray, notifications, keyboard shortcuts, clipboard integration
+7. Critical: native bridge พัง, IPC ไม่มี validation, file system access ไม่จำกัด, app crash บน platform
+8. High: ไม่มี offline support, ไม่มี platform-specific handling, auto-update ไม่ verify, ไม่มี offline fallback
 
-### 3. Desktop Review
+### 3. CLI And TUI Review
 
-Review desktop app ครอบคลุม Tauri/Electron patterns, native APIs, auto-update, IPC security, platform compatibility
-
-> Goal: ครอบคลุมทุก desktop dimension
-
-1. ตรวจสอบ native API usage, IPC patterns, และ security boundaries ระหว่าง main/renderer processes
-2. ตรวจสอบ window management, multi-window patterns, และ window state persistence
-3. ตรวจสอบ auto-update mechanism, update signature verification, และ rollback capability
-4. ตรวจสอบ file system access, path validation, และ sandbox restrictions
-5. ตรวจสอบ platform-specific code, conditional compilation, และ platform feature detection
-6. ตรวจสอบ offline support, local data persistence, และ sync conflict resolution
-7. ตรวจสอบ desktop UX: system tray, notifications, keyboard shortcuts, clipboard integration
-8. Critical: IPC ไม่มี validation, file system access ไม่จำกัด, ไม่มี sandbox, auto-update ไม่ verify
-9. High: ไม่มี platform-specific handling, native integration พัง, ไม่มี auto-update rollback, ไม่มี offline fallback
-
-### 4. CLI Review
-
-Review CLI และ TUI tools ครอบคลุม commands, options, help text, terminal UI, user experience
+Review CLI และ TUI tools — ดูรายละเอียดใน `references/cli-tui.md`
 
 > Goal: ครอบคลุมทุก CLI/TUI dimension
 
-1. ตรวจสอบ command structure, options, flags, และ argument parsing
-2. ตรวจสอบ help text completeness, error messages, และ exit codes
-3. ตรวจสอบ interactive mode, autocomplete, และ configuration file support
-4. ตรวจสอบ TUI layout, component composition, resize handling, และ focus management
-5. ตรวจสอบ TUI color support, terminal compatibility, และ rendering performance
-6. Critical: command พัง, command ที่จำเป็นหายไป, exit code ผิด, TUI layout พัง, input ไม่ถูกจัดการ, terminal crash
-7. High: ไม่มี help text, error message สับสน, ไม่มี required option, rendering glitch, ไม่รองรับ resize, focus พัง
+1. ตรวจสอบ command structure, options, flags, argument parsing
+2. ตรวจสอบ help text completeness, error messages, exit codes
+3. ตรวจสอบ interactive mode, autocomplete, configuration file support
+4. ตรวจสอบ TUI layout, component composition, resize handling, focus management
+5. ตรวจสอบ build configuration, cross-compilation, packaging, distribution channels
+6. ตรวจสอบ config consistency ระหว่าง root และ CLI workspace
+7. Critical: command พัง, exit code ผิด, TUI layout พัง, input ไม่ถูกจัดการ, terminal crash
+8. High: ไม่มี help text, error message สับสน, rendering glitch, ไม่รองรับ resize, build suboptimal
 
-### 5. SSR Review
+### 4. SSR, State Management, Routing, PWA Review
 
-Review server-side rendering ครอบคลุม SSR implementation, hydration, SSR-compatible code, streaming
+Review SSR, state management, routing, PWA compliance
 
-> Goal: ครอบคลุมทุก SSR dimension
+> Goal: ครอบคลุมทุก SSR, state, routing, PWA dimension
 
-1. ตรวจสอบ SSR implementation, server entry, และ render-to-string patterns
-2. ตรวจสอบ hydration correctness, hydration mismatch, และ client takeover
-3. ตรวจสอบ SSR-compatible code, browser API guards, และ server-only imports
-4. ตรวจสอบ streaming SSR, suspense boundaries, และ SSR error handling
-5. Critical: hydration mismatch, SSR พัง, server-only code ใน client bundle
-6. High: ไม่มี hydration, ไม่มี SSR error handling, browser API ไม่มี guard
+1. ตรวจสอบ SSR implementation, hydration correctness, SSR-compatible code, streaming SSR
+2. ตรวจสอบ store organization, reactivity patterns, side effect management, state persistence
+3. ตรวจสอบ route definitions, navigation guards, lazy loading, params validation
+4. ตรวจสอบ service worker, web manifest, offline support, install prompt, background sync, push notifications
+5. Critical: hydration mismatch, SSR พัง, state corruption, ไม่มี auth guard, ไม่มี service worker บน production
+6. High: ไม่มี hydration, unnecessary re-render, ไม่มี lazy load, cache เก่าหลัง update, ไม่มี offline fallback
 
-### 6. State Management Review
+### 5. I18n And Localization Review
 
-Review state management ครอบคลุม store organization, reactivity, data flow
+Review i18n และ localization — ดูรายละเอียดใน `references/i18n.md`
 
-> Goal: ครอบคลุมทุก state management dimension
+> Goal: ครอบคลุมทุก i18n dimension
 
-1. ตรวจสอบ store organization, state shape, และ store boundaries
-2. ตรวจสอบ reactivity patterns, unnecessary re-renders, และ derived state
-3. ตรวจสอบ side effect management, state synchronization, และ persistence
-4. Critical: state corruption, race condition, data loss จาก state mutation
-5. High: unnecessary re-render บน hot path, ไม่มี store boundary, reactivity พัง
+1. ตรวจสอบ translation completeness, missing keys, locale coverage, fallback strategy
+2. ตรวจสอบ locale formatting: date, number, currency, pluralization, relative time
+3. ตรวจสอบ RTL support, logical properties, text direction handling, bidirectional text
+4. ตรวจสอบ cultural adaptation: address, name, phone, postal code, calendar system
+5. ตรวจสอบ locale-specific validation, locale-aware error messages
+6. Critical: missing locale entirely, broken translation key ใน critical path, no fallback, broken RTL layout
+7. High: missing translation keys, incomplete locale coverage, missing RTL support, incorrect locale formatting
 
-### 7. Routing Review
+### 6. SEO Review
 
-Review routing ครอบคลุม route definitions, navigation guards, lazy loading, params validation
+Review SEO — ดูรายละเอียดใน `references/seo.md`
 
-> Goal: ครอบคลุมทุก routing dimension
+> Goal: ครอบคลุมทุก SEO dimension
 
-1. ตรวจสอบ route definitions, route structure, และ route naming conventions
-2. ตรวจสอบ navigation guards, auth checks, และ permission enforcement
-3. ตรวจสอบ lazy loading, code splitting, และ route-level loading states
-4. ตรวจสอบ route params validation, type safety, และ route middleware patterns
-5. Critical: ไม่มี auth guard, route พัง, ไม่มี params validation
-6. High: ไม่มี lazy load, guard ไม่สอดคล้อง, ไม่มี loading state
+1. ตรวจสอบ meta tags, Open Graph, Twitter Cards, canonical URLs
+2. ตรวจสอบ structured data: JSON-LD schema validity, schema type coverage
+3. ตรวจสอบ Core Web Vitals for SEO: LCP, FID/INP, CLS, FCP, TBT, Speed Index
+4. ตรวจสอบ sitemap, robots.txt, URL structure, internal linking, heading hierarchy
+5. ตรวจสอบ SSR/SSG SEO, international SEO (hreflang), semantic HTML for SEO
+6. Critical: missing title tag, missing meta description, no sitemap, blocking important pages, SPA ที่ search engine อ่านไม่ได้
+7. High: missing Open Graph, missing structured data, broken heading hierarchy, missing hreflang, slow LCP
 
-### 8. PWA Review
+### 7. Battery And Energy Review
 
-Review PWA compliance ครอบคลุม service worker, web manifest, offline support, install prompt, background sync
+Review battery/energy usage — ดูรายละเอียดใน `references/battery.md`
 
-> Goal: ครอบคลุมทุก PWA dimension
+> Goal: ครอบคลุมทุก battery/energy dimension
 
-1. ตรวจสอบ service worker: registration, lifecycle, update strategy, cache versioning
-2. ตรวจสอบ web manifest: manifest fields, icons, theme color, display mode, start URL
-3. ตรวจสอบ offline support: offline fallback page, cache strategy, offline data sync
-4. ตรวจสอบ install prompt: beforeinstallprompt event, install button UX, install criteria
-5. ตรวจสอบ background sync: sync registration, sync event handling, retry logic
-6. ตรวจสอบ push notifications: permission flow, notification display, action handling
-7. ตรวจสอบ PWA-to-native bridge: Capacitor plugin usage, platform-specific code, native feature access
-8. ตรวจสอบ PWA performance: load time on mobile, cache hit ratio, service worker overhead
-9. Critical: ไม่มี service worker บน production, offline experience พัง, ไม่มี web manifest
-10. High: cache เก่าหลัง update, ไม่มี offline fallback, ไม่จัดการ push notification permission
+1. ตรวจสอบ polling และ timers: `setInterval`, `setTimeout`, cron jobs, redundant polling
+2. ตรวจสอบ sensors และ hardware: GPS, accelerometer, camera, Bluetooth, wake locks
+3. ตรวจสอบ network และ sync: frequent requests, retries ไม่มี backoff, background sync
+4. ตรวจสอบ background services, push notifications, periodic tasks, start-up tasks
+5. ตรวจสอบ UI rendering: animations ไม่หยุด, layout thrashing, re-renders, heavy canvas/WebGL
+6. ตรวจสอบ compute: heavy computations บน main thread, nested loops, repeated parsing
+7. Critical: wake lock ค้าง, GPS track ต่อเนื่อง, high-frequency polling บน hot path
+8. High: network retries ไม่มี backoff, sensors ไม่ปิด, animations ไม่หยุด, heavy compute บน main thread
+
+### 8. Compatibility Review
+
+Review browser/platform compatibility — ดูรายละเอียดใน `references/compatibility.md`
+
+> Goal: ครอบคลุมทุก compatibility dimension
+
+1. ตรวจสอบ browser support: target browsers, polyfills, feature detection, transpilation config
+2. ตรวจสอบ platform compatibility: OS versions, Node.js versions, runtime requirements
+3. ตรวจสอบ API compatibility: deprecated APIs, vendor prefixes, browser-specific behavior
+4. ตรวจสอบ CSS compatibility: flexbox, grid, custom properties, `backdrop-filter`, vendor prefixes
+5. Critical: ใช้ API ที่ browser หลักไม่รองรับ, broken บน target platform, ไม่มี fallback
+6. High: missing polyfill สำหรับ feature สำคัญ, inconsistent behavior ข้าม browsers
 
 ### 9. Validate Findings
 
@@ -141,39 +143,43 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง aggregate findings จากทุก section
-3. ทำ `/suggest-next-action`
+3. คำนวณ review score — ดูสูตรใน `references/scoring.md`
+4. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี mobile app ให้ข้าม Section 2
-- ถ้า project ไม่มี desktop app ให้ข้าม Section 3
-- ถ้า project ไม่มี CLI หรือ TUI ให้ข้าม Section 4
-- ถ้า project ไม่มี SSR ให้ข้าม Section 5
-- ถ้า project ไม่มี state management ให้ข้าม Section 6
-- ถ้า project ไม่มี routing ให้ข้าม Section 7
-- ถ้า project ไม่มี PWA setup ให้ข้าม Section 8
+- ถ้า project ไม่มี mobile app ให้ข้าม Section 2 mobile parts
+- ถ้า project ไม่มี desktop app ให้ข้าม Section 2 desktop parts
+- ถ้า project ไม่มี CLI หรือ TUI ให้ข้าม Section 3
+- ถ้า project ไม่มี SSR ให้ข้าม Section 4 SSR items
+- ถ้า project ไม่มี i18n ให้ข้าม Section 5
+- ถ้า project ไม่ใช่ web app ให้ข้าม Section 6
+- ถ้า project ไม่มี battery-sensitive dimension ให้ข้าม Section 7
+- ถ้า project ไม่มี compatibility concern ให้ข้าม Section 8
 
 ### 2. Severity Classification
 
-- Critical: ระบบพัง, data loss, security hole — ดูรายละเอียดในแต่ละ section
-- High: ฟังก์ชันหลักพัง, ขาด feature สำคัญ — ดูรายละเอียดในแต่ละ section
-- Medium: inconsistent UX pattern, missing safe area, inconsistent flag naming, suboptimal streaming, inconsistent state pattern, suboptimal code splitting, incomplete manifest fields
-- Low: cosmetic improvement, naming convention, minor layout issue, minor routing improvement, minor manifest improvement
+- Critical: ระบบพัง, data loss, security hole — ดูรายละเอียดในแต่ละ section และ reference files
+- High: ฟังก์ชันหลักพัง, ขาด feature สำคัญ — ดูรายละเอียดในแต่ละ section และ reference files
+- Medium: inconsistent UX pattern, suboptimal config, missing safe area, incomplete manifest, suboptimal polling
+- Low: cosmetic improvement, naming convention, minor layout issue, documentation gap
 
 ### 3. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number
 - ไม่เดา ใช้ tools สำหรับ verification
+- ระบุ locale, translation key, URL, meta tag, หรือ formatting function ที่เกี่ยวข้อง
 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ไม่ลบไฟล์หรือส่วนประกอบใดๆ ในระหว่าง review
 
 ### 5. Health Score
 
-- คำนวณ review score เป็น percentage (0-100)
+- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
@@ -188,4 +194,5 @@ Review PWA compliance ครอบคลุม service worker, web manifest, off
 
 - รายงานตาราง aggregate findings จากทุก platform section
 - รายงาน recommended actions พร้อม priority
+- Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

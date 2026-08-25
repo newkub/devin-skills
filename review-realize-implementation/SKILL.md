@@ -23,6 +23,8 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - Missing supporting features, missing integrations, missing operational readiness
 - Missing compliance, security, privacy, audit controls
 
+ใช้ร่วมกับ `review-refactor`, `review-restructure`, `review-update` เพื่อ review ก่อน refactor, restructure, หรือ update
+
 ## Execute
 
 ### 1. Prepare
@@ -42,9 +44,9 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context
+4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context ตาม [references/implementation-gaps.md](references/implementation-gaps.md)
 5. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
-6. Analyzer ตรวจหา incomplete flows, dead-ends, missing success/error branches, missing recovery path
+6. Analyzer ตรวจหา incomplete flows, dead-ends, missing success/error branches, missing recovery path ตาม [references/missing-flows.md](references/missing-flows.md)
 7. Analyzer ตรวจหา missing features: API endpoints ที่ไม่มี corresponding UI action, database tables/columns ที่ไม่มี UX จัดการ, backend flows ที่ขาด user-facing steps, features ที่มี partial UX (มี list แต่ไม่มี create/edit, มี create แต่ไม่มี delete), features ที่มี admin/staff flow แต่ไม่มี customer-facing counterpart, feature flags/config ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
 8. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
 9. Review CLI คำนวณ implementation completeness score จาก review report
@@ -84,6 +86,8 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 ## Rules
 
 ### 1. Severity Classification
+
+ระบุ severity ตาม [references/severity.md](references/severity.md)
 
 - Critical: MOCK/FAKE/STUB ใน production path, core feature ไม่สมบูรณ์, missing critical schema/data, missing critical API, TODO ใน critical path, incomplete flow ที่อาจก่อให้เกิดความเสียหายทางกฎหมาย/ข้อมูล/การเงิน, ฟีเจอร์หลักที่ API/database มีแล้วแต่ไม่มี UX ทำให้ user ไม่สามารถใช้งานได้เลย
 - High: STUB ที่ถูกเรียกใช้, error handling ไม่สมบูรณ์, hardcoded data ที่ควรมาจาก source, missing type ใน critical path, missing supporting feature ใน flow, ฟีเจอร์สำคัญที่ UX ไม่สมบูรณ์ (ขาด create/edit/delete, ขาด error/loading state, ขาด confirmation)

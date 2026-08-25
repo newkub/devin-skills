@@ -1,15 +1,15 @@
 ---
 name: review-architecture
-description: Review architecture ครอบคลุม patterns, boundaries, coupling, design principles, design pattern co...
+description: Review architecture, modularity, isolation, resilience, reliability, governance
 ---
 
 ## Goal
 
-Review architecture ระดับ macro ครอบคลุม design patterns, module boundaries, dependency directions, coupling, SOLID principles, design pattern correctness, anti-patterns, และ pattern appropriateness
+Review architecture ระดับ macro ครอบคลุม design patterns, module boundaries, dependency directions, coupling, SOLID principles, design pattern correctness, anti-patterns, modularity, isolation, resilience, reliability, และ governance พร้อม review score
 
 ## Scope
 
-architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, creational patterns (Factory, Builder, Singleton, Prototype), structural patterns (Adapter, Decorator, Facade, Proxy, Composite), behavioral patterns (Strategy, Observer, Command, Iterator, State), functional patterns (composition over inheritance, pure functions, immutability), anti-patterns (God object, singleton abuse, factory overuse, callback hell, premature abstraction), และ pattern appropriateness
+architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, creational patterns (Factory, Builder, Singleton, Prototype), structural patterns (Adapter, Decorator, Facade, Proxy, Composite), behavioral patterns (Strategy, Observer, Command, Iterator, State), functional patterns (composition over inheritance, pure functions, immutability), anti-patterns (God object, singleton abuse, factory overuse, callback hell, premature abstraction), pattern appropriateness, modularity (cohesion, coupling, single responsibility, barrel exports, feature-based folders, vertical slices, package by feature), isolation (state isolation, environment separation, test isolation, data isolation, leaky abstractions, namespace boundaries, interface boundaries, API boundaries), resilience (side effects, flow, rate limiting, retries, timeouts, circuit breakers, fallback, graceful degradation), reliability (failure points, redundancy, idempotency, observability, disaster recovery, predictability, concurrency), และ governance (ownership, policies, review process, maintenance)
 
 ## Execute
 
@@ -17,11 +17,12 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 สแกน codebase เพื่อเข้าใจ architecture ปัจจุบัน
 
-> Goal: เข้าใจ architecture และ patterns ใน codebase
+> Goal: เข้าใจ architecture, patterns, module structure, dependency graph และ governance
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ architecture
-2. ระบุ architectural patterns ที่ใช้
-3. ถ้าสแกนไม่ได้ → stop และ report
+1. ทำ `/scan-codebase` เพื่อเข้าใจ architecture และ module layout
+2. รัน `madge` เพื่อสร้าง dependency graph และหา circular dependencies
+3. ระบุ architectural patterns, module/package boundaries, shared state, test strategy, environment separation, และ governance structure ที่ใช้
+4. ถ้าสแกนไม่ได้ → stop และ report
 
 ### 2. Deep Analyze
 
@@ -33,19 +34,14 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-5. Analyzer ตรวจสอบ:
-   - Module boundaries และ import directions
-   - Dependency graph และ circular dependencies
-   - SOLID principles
-   - Scalability และ concurrency issues
-6. Analyzer ตรวจสอบ creational patterns: Singleton abuse, Factory ที่ไม่จำเป็น, Builder ที่ over-engineer
-7. Analyzer ตรวจสอบ structural patterns: Adapter ที่ไม่จำเป็น, Decorator chain ยาวเกินไป, Facade ที่ซ่อน complexity มากเกินไป
-8. Analyzer ตรวจสอบ behavioral patterns: Strategy ที่ไม่มี shared interface, Observer ที่ไม่ cleanup, Command ที่ไม่ support undo
-9. Analyzer ตรวจสอบ anti-patterns: God object, singleton abuse, callback hell, premature abstraction, magic numbers ใน pattern logic
-10. Analyzer ตรวจสอบ pattern appropriateness: pattern ที่ over-engineer สำหรับ use case ง่าย หรือ under-engineer สำหรับ use case ซับซ้อน
-11. Analyzer ตรวจสอบ functional patterns: composition over inheritance, pure functions, immutability ที่ควรใช้แทน OOP patterns
-12. Review CLI คำนวณ architecture review score จาก review report
-13. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+5. ดู `references/patterns-boundaries.md` สำหรับ architecture patterns และ boundaries checks
+6. ดู `references/modularity.md` สำหรับ modularity checks
+7. ดู `references/isolation.md` สำหรับ isolation checks
+8. ดู `references/resilience.md` สำหรับ resilience checks
+9. ดู `references/reliability.md` สำหรับ reliability checks
+10. ดู `references/governance.md` สำหรับ governance checks
+11. Review CLI คำนวณ architecture review score จาก review report (ดู `references/scoring.md`)
+12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -55,8 +51,9 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
-3. จัดลำดับการ validate ตาม severity
-4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
+3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
+4. ระบุ false positives ที่พบ
+5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
 ### 4. Report
 
@@ -66,8 +63,9 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
-3. จัดกลุ่ม findings ตาม category และเรียงตาม severity
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+3. สร้างตาราง Metrics Summary ตาม dimension พร้อม status indicators และ score
+4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
+5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ### 5. Implement All
 
@@ -82,15 +80,16 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ### 1. Severity Classification
 
-- Critical: broken architecture, circular dependency ระหว่าง modules, God object ที่ทำทุกอย่าง, Singleton abuse ที่ทำให้ test ไม่ได้, anti-pattern ใน critical path ที่ก่อน bugs
-- High: violated SOLID principle, tight coupling, pattern ที่ใช้ผิด intent, Factory overuse ในที่ไม่จำเป็น, Observer ที่ไม่ cleanup ทำให้ memory leak, premature abstraction
-- Medium: inconsistent pattern, missing abstraction, Decorator chain ยาวเกินไป, Facade ที่ซ่อน complexity มากเกินไป, pattern ที่ over-engineer สำหรับ use case ง่าย
-- Low: minor pattern improvement, pattern ที่สามารถ simplify ได้, cosmetic
+- Critical: broken architecture, circular dependency ระหว่าง core modules, God object/module ที่ทำทุกอย่าง, Singleton abuse ที่ทำให้ test ไม่ได้, anti-pattern ใน critical path ที่ก่อน bugs, global mutable state ใน critical path, no environment separation ระหว่าง prod กับ non-prod, no timeout/retries บน critical external call, no fallback สำหรับ critical dependency, SPOF โดยไม่มี redundancy, no governance for critical decisions, missing security/compliance policy, no code review requirement, no CI in critical path
+- High: violated SOLID principle, tight coupling, pattern ที่ใช้ผิด intent, Factory overuse, Observer ที่ไม่ cleanup, premature abstraction, SRP violation ใน module หลัก, missing dependency inversion, missing boundaries ระหว่าง layers, leaky abstraction, missing retry/timeout/fallback/circuit breaker, incomplete ownership, missing coding standards, single reviewer for critical code
+- Medium: inconsistent pattern, missing abstraction, Decorator chain ยาวเกินไป, Facade ที่ซ่อน complexity มากเกินไป, pattern ที่ over-engineer, mixed concerns, unclear public API, minor side effect leak, suboptimal retry/backoff, policy gaps, outdated owner, informal decision process
+- Low: minor pattern improvement, pattern ที่ simplify ได้, cosmetic, documentation gap, minor naming improvement
 
 ### 2. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number
-- ไม่เดา ใช้ tools สำหรับ verification
+- ไม่เดา ใช้ tools สำหรับ verification (`madge`, `knip`, `ast-grep`)
+- ระบุ module, package, boundary, dependency, policy, owner ที่เกี่ยวข้อง
 - ระบุ false positives ที่พบ
 
 ### 3. Review Independence
@@ -98,23 +97,34 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ใช้ `/review-codebase` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
+- ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
 
 ### 4. Scope Boundaries
 
 - ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 - ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
 - ไม่ review refactor opportunities ลึกที่ `/review-codebase` ทำ
-- focus ที่ system-level: patterns, boundaries, coupling, SOLID, scalability, design pattern correctness และ appropriateness
-- สำหรับ drill-down ระดับไฟล์ ทำ `/check-code-structure`
+- ไม่ review deployment / CI/CD — ใช้ `/review-infrastructure`
+- ไม่ review security controls — ใช้ `/review-security`
+- ไม่ review code quality — ใช้ `/review-quality`
+- focus ที่ system-level: patterns, boundaries, coupling, SOLID, scalability, modularity, isolation, resilience, reliability, governance
 
-### 5. Health Score
+### 5. Skip Conditions
+
+- ถ้า project ไม่มี module/package structure → ข้าม package boundaries checks
+- ถ้า project ไม่มี tests → ข้าม test isolation checks
+- ถ้า project ไม่มี container/process separation → ข้าม environment isolation checks
+- ถ้า project ไม่มี async operations → ข้าม concurrency checks
+
+### 6. Health Score
 
 - คำนวณ review score เป็น percentage (0-100)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
+- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
-### 6. Formatting
+### 7. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
@@ -123,5 +133,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location
+- รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
 - รายงาน recommended actions พร้อม priority
+- Architecture review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

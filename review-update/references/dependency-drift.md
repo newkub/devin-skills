@@ -1,0 +1,44 @@
+# Dependency Version Drift Checks
+
+## Checks
+
+### Version Drift
+
+- รัน `bunx taze -r` หรือ `npm outdated` เพื่อดู outdated dependencies
+- แยกตามประเภท: major, minor, patch
+- ตรวจสอบ breaking changes จาก changelogs ของแต่ละ package
+
+### Security Vulnerabilities
+
+- รัน `bun audit` หรือ `npm audit` เพื่อตรวจสอบ vulnerabilities
+- ระบุ dependencies ที่มี known vulnerabilities
+- ระบุ severity: critical, high, moderate, low
+
+### Version Consistency (Monorepo)
+
+- ตรวจสอบว่า dependencies ที่ใช้ในหลาย workspace มี version เดียวกัน
+- ระบุ version conflicts ระหว่าง workspaces
+- ตรวจสอบ workspace protocol (`workspace:*`) usage
+
+### Peer Dependencies
+
+- ตรวจสอบว่า peerDependencies ยัง compatible หรือไม่
+- ระบุ peer dependency conflicts
+
+### Lock File
+
+- ตรวจสอบว่า lock file (`bun.lock`, `package-lock.json`) สอดคล้องกับ `package.json`
+- ระบุ lock file drift
+
+## Drift Severity
+
+- Critical: security vulnerability, lock file conflict
+- High: major version drift, breaking changes
+- Medium: minor version drift, version inconsistency
+- Low: patch version drift, minor peer dependency issue
+
+## Recommended Update Skills
+
+- `update-dependencies-latest` สำหรับ update dependencies เป็น latest
+- `update-dot-devin` ถ้า dependency changes กระทบ `.devin` structure
+- `update-rules` ถ้า dependency changes กระทบ rules

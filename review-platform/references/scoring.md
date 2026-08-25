@@ -1,0 +1,46 @@
+# Platform Review Score Formula
+
+## Score Calculation
+
+คำนวณ review score เป็น percentage (0-100)
+
+### Weighted Average Formula
+
+```
+score = sum(severity_weight[finding] for all findings) / total_findings
+```
+
+### Severity Weights
+
+| Severity | Weight |
+|----------|--------|
+| Critical | 0      |
+| High     | 25     |
+| Medium   | 50     |
+| Low      | 75     |
+| Info     | 100    |
+
+### Interpretation
+
+- `0` = ทุก finding เป็น Critical
+- `100` = ไม่มี finding
+- คะแนนระหว่าง 0-100 คือ weighted average ของ severity weights ทั้งหมด
+
+## Per-Dimension Score
+
+1. คำนวณ score ต่อ dimension: mobile, desktop, CLI/TUI, SSR, state management, routing, PWA, i18n, SEO, battery, compatibility
+2. แต่ละ dimension ใช้สูตรเดียวกัน — เฉพาะ findings ใน dimension นั้น
+3. ถ้า dimension ถูกข้าม (skip condition) → ไม่นับใน overall score
+
+## Overall Score
+
+```
+overall = sum(dimension_score[dimension] for non-skipped dimensions) / non_skipped_dimension_count
+```
+
+## Usage
+
+- แสดง score ต่อ dimension และ overall score ใน report
+- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ถ้า Critical/High พบ → แนะนำ `/resolve-errors` เป็น action ถัดไป
+- ทำ review ซ้ำหลังแก้ไขสูงสุด 3 รอบ
