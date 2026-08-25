@@ -98,6 +98,7 @@ related:
 - `review-writing: /review-writing`
 - `review-codebase: /review-codebase`
 - `review-gaps: /review-gaps`
+- `review-dot-devin: /review-dot-devin`
 
 ### 4. Workspaces
 
