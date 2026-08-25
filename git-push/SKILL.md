@@ -43,18 +43,15 @@ Push commits จาก local repository และ git submodules ไปยัง
 - ทำ `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repo ไหม
 - ถ้ามี ให้ทำ `/watch-github-actions` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
 
-### 5. Setup GitHub Repo Metadata
+### 5. Update GitHub Repo Metadata
 
-> Goal: Setup GitHub Repo Metadata
+> Goal: Update GitHub Repo Metadata
 
-ตั้งค่า repository metadata ให้ครบถ้วนหลังสร้าง repo หรือ push ครั้งแรก
+อัปเดต repository metadata ให้สะท้อน project จริง ใช้ `/update-github-metadata` เป็น canonical workflow
 
-1. ทำ `gh repo edit --description "<description>"` เพื่อตั้ง repo description
-2. ทำ `gh repo edit --homepage "<homepage-url>"` เพื่อตั้ง homepage link
-3. ทำ `gh repo edit --add-topic <topic>` เพื่อเพิ่ม topics (เช่น `typescript`, `bun`, `monorepo`, `solidjs`, `mcp`)
-4. ตรวจสอบว่า `package.json` มี `repository`, `homepage`, `bugs`, `license` fields ครบ
-5. ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false` (ใช้ docs แทน)
-6. ทำ `gh repo edit --default-branch main` เพื่อตั้ง default branch
+1. ทำ `/update-github-metadata` เพื่ออัปเดต description, homepage, topics, default branch
+2. ตรวจสอบว่า `package.json` มี `repository`, `homepage`, `bugs`, `license` fields ครบ
+3. ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false` (ใช้ docs แทน)
 
 ### 6. Open Repo
 
@@ -96,12 +93,10 @@ Push commits จาก local repository และ git submodules ไปยัง
 
 ### 4. GitHub Repo Metadata
 
+- ใช้ `/update-github-metadata` เป็น canonical workflow สำหรับ metadata
 - ตั้งค่า metadata ทุกครั้งหลังสร้าง repo ใหม่หรือ push ครั้งแรก
-- ใช้ `gh repo edit` สำหรับทุก metadata operation
 - ตรวจสอบ `package.json` มี `repository`, `homepage`, `bugs`, `license` ครบ
-- ใช้ topics ที่เกี่ยวข้องกับ tech stack จริง (ไม่ใส่ generic topics)
 - ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false`
-- ตั้ง default branch เป็น `main` เสมอ
 
 ## Expected Outcome
 

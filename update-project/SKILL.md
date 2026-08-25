@@ -18,7 +18,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
 > Goal: เช็ค git log ล่าสุดของทุก workspace
 
 1. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status
-2. ทำ `/analyze-all-workspace` เพื่อระบุทุก workspace
+2. ทำ `/all-workspace` เพื่อระบุทุก workspace
 3. สำหรับแต่ละ workspace:
    - รัน `git log --oneline -5` เพื่อดู commit ล่าสุด
    - รัน `git diff HEAD~1 --stat` เพื่อดูไฟล์ที่เปลี่ยน
@@ -55,7 +55,14 @@ description: อัปเดต root project โดยเช็ค git log ล�
 2. ตรวจว่า skills ที่สร้างผ่าน `/validate`
 3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 
-### 5. Validate And Report
+### 5. Update GitHub Metadata
+
+> Goal: GitHub repo metadata สะท้อน project จริง
+
+1. ทำ `/update-github-metadata` เพื่อ sync description, homepage, topics กับ `README.md` และ `package.json`
+2. ยืนยันว่า metadata ตรงกับเนื้อหาล่าสุด
+
+### 6. Validate And Report
 
 > Goal: root project ผ่าน validation
 
@@ -65,6 +72,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
    - ข้อมูลที่ restore มา
    - root docs ที่อัปเดต
    - project skills ที่สร้างหรืออัปเดต
+   - GitHub metadata ที่อัปเดต
 
 ## Rules
 
@@ -92,5 +100,6 @@ description: อัปเดต root project โดยเช็ค git log ล�
 - ข้อมูลที่เปลี่ยนแปลงถูก restore มาอัปเดต root docs
 - root `AGENTS.md` และ `README.md` อัปเดต
 - project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
+- GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
 - root project ผ่าน `/validate`
-- รายงานสรุป workspace commits, root updates และ project skills ครบถ้วน
+- รายงานสรุป workspace commits, root updates, project skills และ GitHub metadata ครบถ้วน
