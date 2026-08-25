@@ -1,4 +1,4 @@
----
+﻿---
 name: create-nushell-plugins
 description: สร้าง NuShell plugin ด้วย Rust ตาม official contributor guide
 argument-hint: "[plugin-name]"
@@ -78,7 +78,7 @@ argument-hint: "[plugin-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

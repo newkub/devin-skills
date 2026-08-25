@@ -1,4 +1,4 @@
----
+﻿---
 name: create-plan
 description: สร้างแผนงานละเอียดใน .devin/plan/<title-date>.md ด้วย /deep-plan และ /report-plan
 argument-hint: "[title]"
@@ -55,7 +55,7 @@ argument-hint: "[title]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

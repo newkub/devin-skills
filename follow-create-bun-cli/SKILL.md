@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
 ---
@@ -65,7 +65,7 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

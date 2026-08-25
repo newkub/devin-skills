@@ -1,4 +1,4 @@
----
+﻿---
 name: create-devin-global-skills
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
 argument-hint: "[skill-name]"
@@ -63,7 +63,7 @@ argument-hint: "[skill-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-vitest-plugins
 description: สร้างและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 3.1.0+)
 ---
@@ -86,7 +86,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

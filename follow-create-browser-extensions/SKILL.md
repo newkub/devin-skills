@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-browser-extensions
 description: สร้าง browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
 ---
@@ -53,7 +53,7 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

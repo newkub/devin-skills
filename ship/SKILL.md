@@ -1,5 +1,5 @@
 ﻿---
-name: ship-code
+name: ship
 description: Ship workspace หรือ skills repo โดย commit ทำตาม AGENTS.md รองรับ submodules ไม่มี push หรือ release
 ---
 
@@ -9,7 +9,7 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 ## Scope
 
-ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship-code` แต่ละ workspace ตามลำดับ dependency
+ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship` แต่ละ workspace ตามลำดับ dependency
 
 ## Execute
 
@@ -86,9 +86,9 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 ### 2. No Push Or Release
 
-- `ship-code` ไม่ทำ push หรือ release
-- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship-code`
-- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship-code`
+- `ship` ไม่ทำ push หรือ release
+- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship`
+- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
 ### 3. Use Run-Verify

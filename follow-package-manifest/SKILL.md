@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-package-manifest
 description: ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo
 ---
@@ -22,7 +22,7 @@ description: ตั้งค่า scripts สำหรับ packages และ
 
 > Goal: ตรวจสอบ project ก่อนตั้งค่า scripts
 
-1. รัน `/ship-code` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
+1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
 2. ตรวจสอบว่ามี `package.json` หรือ `Cargo.toml`
 3. ยืนยันว่า tools จำเป็นติดตั้งแล้ว (`biome`, `vitest`)
 4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify`

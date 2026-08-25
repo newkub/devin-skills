@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-rolldown-lib
 description: ตั้งค่าและใช้งาน Rolldown bundler สำหรับ libraries
 ---
@@ -71,7 +71,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

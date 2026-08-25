@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-cli
 description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack ที่เหมาะสม
 ---
@@ -53,7 +53,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

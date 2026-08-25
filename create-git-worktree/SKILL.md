@@ -1,4 +1,4 @@
----
+﻿---
 name: create-git-worktree
 description: สร้าง git worktree ใน worktree/ ของ project เพื่อทำงานหลาย branches พร้อมกัน
 argument-hint: "[branch-name]"
@@ -50,7 +50,7 @@ argument-hint: "[branch-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

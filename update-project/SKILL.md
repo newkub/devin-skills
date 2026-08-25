@@ -1,4 +1,4 @@
----
+﻿---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log ล่าสุดและ restore ข้อมูลจาก commits
 ---
@@ -78,13 +78,13 @@ description: อัปเดต root project โดยเช็ค git log ล�
 
 - แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`)
 - ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-code` ใน workspace นั้น
+- ถ้า workspace docs ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
 
 ### 3. No Commit
 
 - `update-project` ไม่ commit การเปลี่ยนแปลง
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
-- ถ้าใช้ใน monorepo → เรียก `/ship-code` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
+- ถ้าใช้ใน monorepo → เรียก `/ship` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
 ## Expected Outcome
 

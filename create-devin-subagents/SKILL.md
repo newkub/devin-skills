@@ -1,4 +1,4 @@
----
+﻿---
 name: create-devin-subagents
 description: สร้าง subagent ใหม่ใน devin agents repo ตามมาตรฐาน AGENT.md
 argument-hint: "[agent-name]"
@@ -59,7 +59,7 @@ argument-hint: "[agent-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

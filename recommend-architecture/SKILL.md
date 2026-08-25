@@ -1,4 +1,4 @@
----
+﻿---
 name: recommend-architecture
 description: แนะนำ architecture และ file structure ที่เหมาะสมสำหรับโปรเจกต์ พร้อม comment และตาราง file pattern
 ---
@@ -91,7 +91,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 
 ทำงานอัตโนมัติโดยไม่หยุดถาม
 
-- ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/ship-code` เลย
+- ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/ship` เลย
 - ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
 - ทำงานอัตโนมัติโดยไม่หยุดถาม
 

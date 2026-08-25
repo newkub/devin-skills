@@ -54,7 +54,7 @@ description: ทำตามมาตรฐาน browser extension development 
 
 1. ทำ `/validate` เพื่อตรวจ syntax และ config
 2. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
-3. ทำ `/ship-code` เพื่อส่งมอบงาน
+3. ทำ `/ship` เพื่อส่งมอบงาน
 
 ## Rules
 

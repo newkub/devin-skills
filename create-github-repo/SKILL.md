@@ -1,4 +1,4 @@
----
+﻿---
 name: create-github-repo
 description: สร้าง GitHub repository ใหม่ผ่าน gh CLI ด้วยชื่อและ visibility ที่ระบุ
 argument-hint: "[repo-name]"
@@ -45,7 +45,7 @@ argument-hint: "[repo-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

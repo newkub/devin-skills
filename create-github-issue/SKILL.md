@@ -1,4 +1,4 @@
----
+﻿---
 name: create-github-issue
 description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, และ milestones
 argument-hint: "[title]"
@@ -63,7 +63,7 @@ argument-hint: "[title]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

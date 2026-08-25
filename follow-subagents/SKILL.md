@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-subagents
 description: ใช้ subagents ตาม job roles สำหรับงานทีแบ่งเป็นส่วนและทำขนานกันได้
 argument-hint: "[task]"
@@ -64,7 +64,7 @@ argument-hint: "[task]"
 
 1. ทำ `/validate`
 2. ทำ `/deep-verify` ถ้างานเสี่ยงสูง
-3. ทำ `/ship-code` ถ้ามีการเปลี่ยนแปลง
+3. ทำ `/ship` ถ้ามีการเปลี่ยนแปลง
 4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
 
 ## Rules

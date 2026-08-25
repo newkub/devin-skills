@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-readability
 description: สร้าง skill ใหม่ใน devin skills repo ตามมาตรฐาน ไม่ซ้ำซ้อนกับ skills ที่มีอยู่
 argument-hint: "[skill-name]"
@@ -62,7 +62,7 @@ argument-hint: "[skill-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

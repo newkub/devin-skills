@@ -1,4 +1,4 @@
----
+﻿---
 name: update-devin-subagents
 description: อัปเดต subagent ที่มีอยู่ใน devin agents repo ตามมาตรฐาน AGENT.md
 ---
@@ -54,7 +54,7 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

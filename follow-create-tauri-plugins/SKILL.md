@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-tauri-plugins
 description: สร้าง custom Tauri plugins ด้วย Rust และ JavaScript API
 ---
@@ -92,7 +92,7 @@ export async function myCommand() {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-code`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
