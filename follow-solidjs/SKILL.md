@@ -91,10 +91,12 @@ related:
 - `Suspense` → `Loading`, `ErrorBoundary` → `Errored`
 - `createResource` → async `createMemo` + `Loading` boundary
 - `<Index>` ถูก removed ใช้ `<For keyed={false}>` แทน
-- `SuspenseList` → `Reveal` พร้อม `order` prop
+- `SuspenseList` → `Reveal` พร้อม `order` prop (`sequential`, `together`) และ `collapsed`
 - `batch` → default microtask batching ใช้ `flush()` แทน
-- `onMount` → `onSettled`, `mergeProps`/`splitProps` → `merge`/`omit`, `unwrap` → `snapshot`
-- ใหม่: `action()`, `createOptimistic`, `isPending()`, `latest()`, `refresh()`, `deep()`
+- `onMount` → `onSettled` (รองรับ cleanup return), `mergeProps`/`splitProps` → `merge`/`omit`, `unwrap` → `snapshot`
+- `createMemo` เปลี่ยน signature: second arg เป็น options ไม่ใช่ initial value
+- `onError` ถูก deprecated → ใช้ `catchError` แทน
+- ใหม่: `action()`, `createOptimisticStore`, `isPending()`, `latest()`, `refresh()`, `deep()`
 
 ### 4. Related Workflows
 

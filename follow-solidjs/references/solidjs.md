@@ -1,31 +1,6 @@
 # SolidJS Reference
 
-## Install
-
-```bash
-# With Vite (recommended)
-bun create vite@latest my-app --template solid-ts
-
-# Manual install
-bun add solid-js
-bun add -D babel-preset-solid
-```
-
-## Version Info
-
-- Latest stable: `1.9.x` (as of 2026)
-- Solid 2.0 in beta/rc (not yet stable)
-- No Virtual DOM — fine-grained reactivity
-- Components run once (render-once mental model)
-- Peer dependency: `babel-preset-solid` for JSX
-
-## CLI Commands (Vite-based)
-
-```bash
-bun dev         # Start dev server
-bun run build   # Build for production
-bun run preview # Preview production build
-```
+> Install, CLI, and version info: see [install-and-cli.md](install-and-cli.md)
 
 ## createSignal
 
@@ -245,3 +220,17 @@ function App() {
 - https://docs.solidjs.com/reference/store-utilities/create-store
 - https://docs.solidjs.com/reference/basic-reactivity/create-resource
 - https://docs.solidjs.com/guides/fetching-data
+
+## Solid 2.0 Migration Notes
+
+- `Suspense` → `Loading`, `ErrorBoundary` → `Errored`
+- `createResource` → async `createMemo` + `Loading` boundary
+- `<Index>` removed → use `<For keyed={false}>`
+- `SuspenseList` → `Reveal` with `order` (`sequential`, `together`) and `collapsed`
+- `batch` → default microtask batching, use `flush()` to force sync
+- `onMount` → `onSettled` (supports cleanup return)
+- `mergeProps`/`splitProps` → `merge`/`omit`
+- `unwrap` → `snapshot`
+- `createMemo` second arg is now options, not initial value
+- `onError` deprecated → use `catchError`
+- New: `action()`, `createOptimisticStore`, `isPending()`, `latest()`, `refresh()`, `deep()`
