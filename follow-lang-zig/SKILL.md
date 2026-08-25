@@ -79,7 +79,7 @@ description: เขียน Zig ตาม best practices และ language con
 - ใช้ `error unions` (`!T`, `?T`, `try`)
 - ใช้ `errdefer` สำหรับ cleanup on error
 - ใช้ `orelse` สำหรับ early returns
-- ใช้ `unwrap` อย่างระมัดระวัง
+- ใช้ `orelse` สำหรับ optional unwrapping อย่างระมัดระวัง
 - ใช้ meaningful error messages
 
 ### 3. Memory Safety
@@ -90,7 +90,7 @@ description: เขียน Zig ตาม best practices และ language con
 - ใช้ `defer` สำหรับ guaranteed cleanup
 - ตรวจสอบ bounds สำหรับ arrays
 - ใช้ `@ptrCast` อย่างระมัดระวัง
-- ใช้ `@safety` สำหรับ safety checks
+- ใช้ `@setRuntimeSafety` สำหรับ safety checks
 
 ### 4. Performance
 
@@ -98,15 +98,16 @@ description: เขียน Zig ตาม best practices และ language con
 
 - ใช้ `comptime` สำหรับ compile-time evaluation
 - ใช้ `inline` สำหรับ hot paths
-- ใช้ `@vectorCall` สำหรับ SIMD
-- ใช้ `@optimize` สำหรับ optimization hints
+- ใช้ `@Vector` สำหรับ SIMD vector types
+- ใช้ `@call` กับ `.auto`/`.no_async` options สำหรับ call optimization
+- ใช้ build mode `--release=fast` สำหรับ release optimization
 - ตรวจสอบ assembly output
 
 ### 5. Interop
 
 ใช้ Zig interop features
 
-- ใช้ `@cInclude` สำหรับ C interop
+- ใช้ `@cInclude` สำหรับ C interop (ใช้ `@cImport` (deprecated ใน 0.16.0, ย้ายไป `b.addTranslateC` ใน build system))
 - ใช้ `@cDefine` สำหรับ C macros
 - ใช้ `extern` สำหรับ C functions
 - ใช้ `@import` สำหรับ library imports

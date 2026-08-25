@@ -18,8 +18,8 @@ description: ใช้ Node.js JavaScript runtime สำหรับพัฒน
 > Goal: ตั้งค่าโปรเจกต์ Node.js
 
 1. ทำตาม `workflows/setup-project.md` สำหรับตั้งค่าโปรเจกต์
-2. ใช้ `bun` สำหรับ package management
-3. ใช้ TypeScript เสมอ
+2. ใช้ `npm`, `pnpm`, หรือ `yarn` สำหรับ package management (เลือกตาม project)
+3. ใช้ TypeScript หรือ JavaScript ตาม project requirements (แนะนำ TypeScript สำหรับ large projects)
 
 ### 2. Understand Core Concepts
 
@@ -44,10 +44,10 @@ description: ใช้ Node.js JavaScript runtime สำหรับพัฒน
 
 ## Rules
 
-- ใช้ `bun` สำหรับ package management
-- ใช้ `npx` สำหรับ run packages
+- ใช้ `npm`, `pnpm`, หรือ `yarn` สำหรับ package management
+- ใช้ `npx` หรือ `pnpm dlx` สำหรับ run packages แบบ one-off
 - ใช้ CommonJS หรือ ES Modules ตามความเหมาะสม
-- ใช้ TypeScript เสมอ
+- แนะนำ TypeScript สำหรับ large projects, JavaScript สำหรับ scripts/prototyping
 - ใช้ proper error handling
 - ใช้ async/await สำหรับ async operations
 
@@ -55,4 +55,4 @@ description: ใช้ Node.js JavaScript runtime สำหรับพัฒน
 
 - Projects ที่ compatible กับ ecosystem ที่ใหญ่
 - Development ที่ stable ด้วย mature runtime
-- Integration ที่ smooth กับ bun ecosystem
+- Integration ที่ smooth กับ Node.js ecosystem

@@ -35,6 +35,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 4. `Domain/` - Models (entities), Repositories (protocols), UseCases
 5. `Presentation/` - Components, Screens, ViewModels
 6. `Resources/` - Assets, Color sets
+- ดูรายละเอียดใน `references/swift-architecture.md`
 
 ### 3. Core Principles
 
@@ -46,6 +47,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 2. Swift Concurrency - ใช้ async/await สำหรับ asynchronous operations
 3. MVVM Architecture - ViewModel เป็นตัวกลางระหว่าง View และ Model
 4. Dependency Injection - ใช้ Factory สำหรับ decoupling
+- ดู best practices ใน `references/swift.md`
 
 ### 4. Folder Rules
 
@@ -83,7 +85,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ## Rules
 
-### Component Structure
+### 1. Component Structure
 
 - ใช้ Single-File Components (SFC) สำหรับ SwiftUI Views
 - ใช้ struct สำหรับ Views
@@ -91,14 +93,14 @@ description: แนวทางการพัฒนา Swift applications ต�
 - ใช้ private สำหรับ internal state
 - ทำให้ View มีขนาดเล็กและรับผิดชอบหน้าที่เดียว
 
-### Data Flow
+### 2. Data Flow
 
 - ใช้ Property Wrappers อย่างถูกต้อง (`@State`, `@StateObject`, `@ObservedObject`, `@EnvironmentObject`)
 - ViewModel ใช้ `@Published` สำหรับ properties ที่ต้อง notify
 - ใช้ async/await สำหรับ asynchronous operations
 - หลีกเลี่ยง direct dependencies ระหว่าง Layers
 
-### Code Quality
+### 3. Code Quality
 
 - ใช้ struct สำหรับ data models (immutable เมื่อเป็นไปได้)
 - ใช้ protocol สำหรับ interfaces

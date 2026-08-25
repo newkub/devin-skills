@@ -38,6 +38,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 6. ตั้งค่า `php.ini` สำหรับ environment:
    - Development: `display_errors = On`, `error_reporting = E_ALL`
    - Production: `display_errors = Off`, `error_reporting = E_ALL & ~E_DEPRECATED`
+7. ดูรายละเอียดใน `references/php-composer.md`
 
 ### 3. Project Structure
 
@@ -58,6 +59,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 5. ตั้งชื่อ classes ด้วย PascalCase
 6. ตั้งชื่อ methods ด้วย studlyCaps
 7. ตั้งชื่อ functions ด้วย snake_case
+8. ดู PSR standards และ code style ใน `references/php-psr-standards.md`
 
 ### 5. Dependency Management
 
@@ -85,6 +87,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 3. รัน PHPUnit: `vendor/bin/phpunit`
 4. ใช้ Psalm สำหรับ additional static analysis
 5. ตั้งค่า CI/CD สำหรับ automated checks
+6. ดู tools และ commands ใน `references/php-quality-tools.md`
 
 ## Rules
 

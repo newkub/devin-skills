@@ -32,7 +32,7 @@ Priority = drift severity × update urgency × dependency order
 9. `update-features` — features doc หลัง source code stable
 10. `update-gitignore` — gitignore หลัง stack changes
 11. `update-devin-subagents` — subagents หลัง skills stable
-12. `update-devin-global-skills` — skills repo หลังทุกอย่าง stable
+12. `update-all-devin-global-skills` — skills repo หลังทุกอย่าง stable
 
 ## Priority Tiers
 

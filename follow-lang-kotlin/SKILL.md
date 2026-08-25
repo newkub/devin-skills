@@ -29,6 +29,7 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 2. `domain/` มี pure business logic ไม่มี side effects
 3. `data/` มี I/O layer (API, database)
 4. `presentation/` มี UI layer (Compose)
+5. ดูรายละเอียดใน `references/project-structure.md`
 
 ### 3. Core Principles
 
@@ -47,6 +48,7 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 1. ใช้ `Either<Error, Success>` สำหรับ operations ที่อาจ fail
 2. ใช้ `Either.catch` สำหรับ exception handling
 3. หลีกเลี่ยง throwing exceptions โดยตรง
+4. ดูรายละเอียดใน `references/error-handling.md`
 
 ### 5. Testing
 
@@ -55,16 +57,26 @@ description: พัฒนา Kotlin applications ด้วย Clean Architecture
 1. ใช้ `kotlin.test` หรือ `JUnit 5`
 2. เขียน tests สำหรับ domain layer (pure functions)
 3. เขียน tests สำหรับ data layer (mock API)
+4. ดูรายละเอียดใน `references/testing.md`
 
 ## Rules
 
-- ใช้ Clean Architecture แบ่งเป็น data, domain, presentation layers
+### 1. Architecture
+
+- ใช้ Clean Architecture แบ่งเป็น `data/`, `domain/`, `presentation/` layers
 - ใช้ Compose Multiplatform สำหรับ UI
+
+### 2. Async And DI
+
 - ใช้ Coroutines สำหรับ async operations
 - ใช้ Koin สำหรับ dependency injection
 - ใช้ Ktor สำหรับ HTTP client
-- ใช้ Arrow สำหรับ functional error handling
+
+### 3. Error Handling
+
+- ใช้ Arrow สำหรับ functional error handling (Either pattern)
 - ใช้ `data class` สำหรับ immutable data models
+- ดูรายละเอียดใน `references/error-handling.md`
 
 ## Expected Outcome
 

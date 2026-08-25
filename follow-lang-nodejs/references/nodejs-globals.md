@@ -78,7 +78,7 @@ clearImmediate(id)
 Install Node.js types:
 
 ```bash
-bun install -D @types/node
+npm install -D @types/node
 ```
 
 ---

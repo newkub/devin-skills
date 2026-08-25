@@ -45,7 +45,9 @@
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| bun | https://www.bunjs.com | Package registry |
+| npm | https://www.npmjs.com | Package registry |
+| pnpm | https://pnpm.io | Fast, disk-efficient package manager |
+| yarn | https://yarnpkg.com | Alternative package manager |
 | npx | https://nodejs.org/api/npx.html | Package executor |
 | Core Modules | https://nodejs.org/api | Built-in modules |
 

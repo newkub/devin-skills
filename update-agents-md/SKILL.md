@@ -17,7 +17,7 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 
 > Goal: วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
 
-1. ทำ `/update-devin-global-skills` เพื่อดูแล skills repo ให้ครบถ้วนสอดคล้องกันก่อน
+1. ทำ `/update-all-devin-global-skills` เพื่อดูแล skills repo ให้ครบถ้วนสอดคล้องกันก่อน
 2. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
 3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
 4. ทำ `/analyze-all-workspace` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
@@ -96,4 +96,4 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
 - ผ่าน `/review-rules` และ `/validate`
-- มี commit พร้อม next action ทำตาม `/update-devin-global-skills`
+- มี commit พร้อม next action ทำตาม `/update-all-devin-global-skills`

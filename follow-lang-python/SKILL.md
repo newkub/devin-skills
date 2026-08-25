@@ -29,6 +29,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 2. กำหนด dev dependencies ใน `[project.optional-dependencies]`
 3. กำหนด ruff config ใน `[tool.ruff]`
 4. กำหนด pyright config ใน `[tool.pyright]`
+5. ดูรายละเอียดใน `references/python.md`
 
 ### 3. Project Structure
 
@@ -48,6 +49,7 @@ description: แนวทางการพัฒนาโปรเจกต์ 
 2. ใช้ `ruff` สำหรับ lint และ format
 3. ใช้ `pyright` สำหรับ type checking
 4. ใช้ `dataclass` หรือ `pydantic` สำหรับ data models
+5. ดู best practices และ examples ใน `references/python.md`
 
 ### 5. Folder Rules
 

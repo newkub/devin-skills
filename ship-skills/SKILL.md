@@ -18,7 +18,7 @@ Ship skills ที่มี `.git` (submodules) โดย review ทุก skill
 > Goal: ทุก skill ผ่าน review ก่อน ship
 
 1. ทำ `/review-devin-global-skills` เพื่อ review ทุก skill package
-2. ถ้ามี findings ที่ต้องแก้ → ทำ `/update-devin-global-skills` ก่อน
+2. ถ้ามี findings ที่ต้องแก้ → ทำ `/update-all-devin-global-skills` ก่อน
 3. ยืนยันว่าทุก skill ผ่าน `/validate`
 
 ### 2. Update Docs

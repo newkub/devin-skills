@@ -1,7 +1,3 @@
-# cli
-
-## index.md
-
 # CLI Reference - Node.js
 
 ## node
@@ -13,32 +9,53 @@ node --watch file.js      # Watch mode
 node --inspect file.js    # Debug mode
 ```
 
-## bun
+## npm
 
 ```bash
-bun init                   # Initialize project
-bun install                # Install deps
-bun install <pkg>          # Add package
-bun install -D <pkg>       # Dev dependency
-bun test                   # Run tests
-bun run <script>           # Run script
+npm init -y                   # Initialize project
+npm install                   # Install deps
+npm install <pkg>             # Add package
+npm install -D <pkg>          # Dev dependency
+npm test                      # Run tests
+npm run <script>              # Run script
 ```
 
-## bunx
+## npx
 
 ```bash
-bunx prettier .
-bunx create-react-app
+npx prettier .
+npx create-react-app my-app
+```
+
+## pnpm
+
+```bash
+pnpm init                     # Initialize project
+pnpm install                  # Install deps
+pnpm add <pkg>                # Add package
+pnpm add -D <pkg>             # Dev dependency
+pnpm test                     # Run tests
+pnpm <script>                 # Run script
+```
+
+## yarn
+
+```bash
+yarn init -y                  # Initialize project
+yarn                          # Install deps
+yarn add <pkg>                # Add package
+yarn add -D <pkg>             # Dev dependency
+yarn test                     # Run tests
+yarn <script>                 # Run script
 ```
 
 ## Core Commands
 
 | Command | Description |
 |---------|-------------|
-| `node -v` | Version |
-| `bun -v` | bun Version |
-| `bun init -y` | Quick init |
-| `bun install` | Install deps |
-
-
----
+| `node -v` | Node.js version |
+| `npm -v` | npm version |
+| `pnpm -v` | pnpm version |
+| `yarn -v` | yarn version |
+| `npm init -y` | Quick init |
+| `npm install` | Install deps |

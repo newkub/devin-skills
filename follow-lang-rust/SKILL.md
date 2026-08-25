@@ -82,142 +82,18 @@ description: สร้างหรือปรับปรุง Rust project �
 
 ## Rules
 
-### 1. Project Structure
+ดูรายละเอียดเพิ่มเติมใน `references/` directory
 
-ใช้ Clean Architecture และ workspace patterns เพื่อ maintainability
-
-- ใช้ workspace สำหรับ multi-crate projects
-- แยก concerns ตาม layers: domain, application, infrastructure
-- ใช้ `crates/` สำหรับ workspace members
-- ตั้งชื่อไฟล์ด้วย snake_case
-- ตั้งชื่อ types ด้วย PascalCase
-- ใช้ `mod.rs` เป็น barrel exports เท่านั้น
-
-### 2. Configuration
-
-ตั้งค่า configuration files ให้ถูกต้อง
-
-- ตั้งค่า `Cargo.toml` สำหรับ workspace หรือ single crate
-- ตั้งค่า `.cargo/config.toml` ด้วย `[build] jobs = 4`
-- ตั้งค่า `[profile.dev]` มี `debug = "line-tables-only"` และ `incremental = true`
-- ตั้งค่า `[profile.dev.package."*"]` มี `debug = false`
-- ตั้งค่า `[profile.release]` มี `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
-- ตั้งค่า `rust-toolchain.toml` สำหรับ lock Rust version
-- ตั้งค่า `rust-version` ใน workspace package
-- สร้าง `justfile` สำหรับ development scripts
-- ตั้งค่า sccache สำหรับ shared compilation cache
-
-### 3. Code Standards
-
-ทำตาม Rust API Guidelines และ naming conventions
-
-- ทำตาม Rust naming conventions (RFC 430)
-- Implement common traits: Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug, Display, Default
-- ใช้ traits สำหรับ abstraction
-- จัดเรียง imports: std, external, internal
-- ใช้ `crate::` สำหรับ internal imports
-- ไม่ใช้ `unwrap()` ใน production code
-- ใช้ `?` แทน `unwrap()` หรือ `try!`
-- ตั้งค่า `forbid unsafe_code` ใน workspace
-- ใช้ builder pattern สำหรับ complex constructors
-- ใช้ newtype pattern สำหรับ domain-specific types
-- ใช้ `clippy::correctness` เป็น `deny`, `clippy::perf` เป็น `deny`
-- ใช้ `clippy::style`, `clippy::suspicious` เป็น `warn`
-- ตั้งค่า `dbg_macro`, `todo`, `print_stdout`, `print_stderr` เป็น `warn` (deny ใน CI)
-
-### 4. Error Handling
-
-ใช้ error handling patterns ที่เหมาะสมกับ context
-
-- ใช้ `thiserror` สำหรับ library errors
-- ใช้ `anyhow` สำหรับ application errors
-- กำหนด error types ชัดเจนด้วย `#[from]`
-- เพิ่ม context ด้วย `.context()`
-- Error types ควร implement `std::error::Error`
-
-### 5. Documentation
-
-เขียน documentation ครบถ้วนสำหรับ public API
-
-- ใช้ `//!` สำหรับ crate-level documentation
-- ใช้ `#![warn(missing_docs)]` หรือ `#![deny(missing_docs)]` สำหรับ crate-level enforcement
-- Public API ทุกอย่างควรมี documentation
-- Examples ใช้ `?` ไม่ใช่ `unwrap` หรือ `try!`
-- Function docs ควร include error, panic, safety considerations
-- ใช้ `# Errors`, `# Panics`, `# Safety` sections ตามความเหมาะสม
-- ตั้งค่า `RUSTDOCFLAGS="-D rustdoc::all"` ใน CI
-
-### 6. CI/CD
-
-ตั้งค่า CI/CD pipeline สำหรับ quality assurance
-
-- ใช้ GitHub Actions สำหรับ CI
-- รัน linting, formatting, tests แบบ parallel
-- ทดสอบกับ stable, beta, nightly, และ MSRV
-- ทดสอบ cross-platform (ARM, WASM)
-- ใช้ `cargo-deny` สำหรับ dependency checks
-- ใช้ `cargo-nextest` สำหรับ parallel test execution
-- ใช้ `cargo-llvm-cov` สำหรับ coverage reporting
-- ใช้ Miri สำหรับ undefined behavior detection
-- ใช้ `taiki-e/install-action` สำหรับ install CI tools
-- ตรวจสอบ dependencies sorted
-
-### 7. Testing
-
-เขียน tests ที่ครอบคลุมและเชื่อถือได้
-
-- ใช้ `#[cfg(test)]` สำหรับ unit tests inline กับ source code
-- ใช้ `tests/` สำหรับ integration tests
-- ใช้ `proptest` สำหรับ property-based testing
-- รัน `cargo test --doc` แยกจาก `cargo nextest run`
-- ใช้ `assert!`, `assert_eq!`, `assert_ne!` สำหรับ assertions
-- ใช้ `#[should_panic]` สำหรับ testing panic conditions
-
-### 8. Performance
-
-ปรับปรุง performance ด้วย zero-cost abstractions
-
-- ใช้ `criterion` สำหรับ benchmarking ใน `benches/`
-- ใช้ `cargo flamegraph` สำหรับ profiling
-- หลีกเลี่ยง allocations ใน hot paths
-- ใช้ `&str` แทน `String` เมื่อไม่ต้องการ ownership
-- ใช้ `Cow<T>` สำหรับ conditional ownership
-- ใช้ `SmallVec` สำหรับ small collections
-- ตั้งค่า `[profile.release]` ด้วย `lto = true` และ `codegen-units = 1`
-
-### 9. Security
-
-ตั้งค่า security สำหรับ production
-
-- ใช้ `cargo-audit` สำหรับ vulnerability scanning
-- ใช้ `cargo-deny` สำหรับ license และ advisory checks
-- ตั้งค่า `forbid unsafe_code` ใน workspace
-- ตรวจสอบ dependencies ก่อนเพิ่มใหม่
-- ใช้ `RUSTSEC` advisory database
-- หลีกเลี่ยง `unsafe` blocks ถ้าไม่จำเป็น
-
-### 10. Dependency Management
-
-จัดการ dependencies อย่างมีระบบ
-
-- กำหนด `rust-version` (MSRV) ใน `Cargo.toml`
-- ใช้ feature flags สำหรับ optional functionality
-- ลด dependencies ให้น้อยที่สุดที่จำเป็น
-- ใช้ `[workspace.dependencies]` สำหรับ shared dependency versions
-- ตรวจสอบ dependencies sorted ด้วย `cargo sort`
-- ใช้ `cargo outdated` สำหรับตรวจสอบ outdated dependencies
-
-### 11. Async Patterns
-
-ใช้ async patterns ที่ถูกต้องและ safe
-
-- ใช้ `tokio` เป็น default async runtime
-- ใช้ structured concurrency ด้วย `tokio::task::JoinSet`
-- จัดการ cancellation ด้วย `CancellationToken`
-- ใช้ `Send + Sync` bounds สำหรับ shared state
-- หลีกเลี่ยง `block_on` ใน async context
-- ใช้ `tokio::select!` สำหรับ concurrent operations
-- ใช้ `Arc<T>` สำหรับ shared ownership ข้าม tasks
+- Project Structure และ Configuration: ใช้ Clean Architecture, workspace patterns, `Cargo.toml`, `.cargo/config.toml`, profiles, `rust-toolchain.toml`, `justfile`, sccache — ดู `references/rust-project-structure.md`
+- Code Standards: ทำตาม Rust API Guidelines, naming conventions, common traits, imports, builder/newtype patterns, clippy lints — ดู `references/rust-code-standards.md`
+- Error Handling: ใช้ `thiserror` สำหรับ library, `anyhow` สำหรับ application, `#[from]`, `.context()` — ดู `references/rust-error-handling.md`
+- Documentation: ใช้ `//!`, `#![warn(missing_docs)]`, `# Errors`/`# Panics`/`# Safety` sections, `RUSTDOCFLAGS` — ดู `references/rust-documentation.md`
+- CI/CD: ใช้ GitHub Actions, ทดสอบ stable/beta/nightly/MSRV, `cargo-deny`, `cargo-nextest`, `cargo-llvm-cov`, Miri — ดู `references/rust-ci-cd.md`
+- Testing: ใช้ `#[cfg(test)]`, `tests/`, `proptest`, doctests, assert macros, `#[should_panic]` — ดู `references/rust-testing.md`
+- Performance: ใช้ `criterion`, `cargo flamegraph`, `&str` vs `String`, `Cow<T>`, `SmallVec`, release profile — ดู `references/rust-performance.md`
+- Security: ใช้ `cargo-audit`, `cargo-deny`, `forbid unsafe_code`, `RUSTSEC` advisory database — ดู `references/rust-security.md`
+- Dependency Management: กำหนด `rust-version`/MSRV, feature flags, `[workspace.dependencies]`, `cargo sort`, `cargo outdated` — ดู `references/rust-dependency-management.md`
+- Async Patterns: ใช้ `tokio`, `JoinSet`, `CancellationToken`, `Send + Sync` bounds, `block_on`, `tokio::select!`, `Arc<T>` — ดู `references/rust-async.md`
 
 ## Expected Outcome
 

@@ -6,11 +6,11 @@ auto_execution_mode: 3
 
 ## Goal
 
-Review, refactor และตรวจ cross-skill consistency ของ devin skills repo ก่อนเรียก `update-devin-global-skills` เพื่อยืนยันทุก skill ผ่านเกณฑ์มาตรฐาน มี SRP ชัดเจน ไม่ซ้ำซ้อน และสอดคล้องกัน
+Review, refactor และตรวจ cross-skill consistency ของ devin skills repo ก่อนเรียก `update-all-devin-global-skills` เพื่อยืนยันทุก skill ผ่านเกณฑ์มาตรฐาน มี SRP ชัดเจน ไม่ซ้ำซ้อน และสอดคล้องกัน
 
 ## Scope
 
-ใช้ก่อนเรียก `update-devin-global-skills` — ครอบคลุม 3 งาน:
+ใช้ก่อนเรียก `update-all-devin-global-skills` — ครอบคลุม 3 งาน:
 
 - `review` — ตรวจ skill package แต่ละตัวตามมาตรฐาน `follow-write-devin-skills` (frontmatter, sections, line count, references, template, style, content quality)
 - `refactor` — split, merge, restructure, deduplicate, relocate skills ที่มีปัญหาโครงสร้าง
@@ -177,7 +177,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-devin-global-skills` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-all-devin-global-skills` ก่อนดำเนินการ
 
 ### 8. Formatting
 
