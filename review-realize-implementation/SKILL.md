@@ -15,8 +15,9 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - MOCK, FAKE, STUB, placeholder implementations
 - Unfinished features, unimplemented interfaces, missing types
 - Incomplete flows, missing steps, dead-ends, missing branches
-- API endpoints ที่ไม่มี UI เรียกใช้
-- Database schema/tables ที่ไม่มี UX จัดการ
+- API endpoints ที่ไม่มี UI เรียกใช้ (missing UI)
+- UI components ที่เรียก API ที่ไม่มี (missing API)
+- Database schema/tables ที่ไม่มี UX จัดการ (missing database)
 - Backend services ที่ไม่มี user-facing flow
 - Features ที่มี admin/staff flow แต่ไม่มี customer/user flow
 - Feature flags ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
@@ -47,10 +48,12 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context ตาม [references/implementation-gaps.md](references/implementation-gaps.md)
 5. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
 6. Analyzer ตรวจหา incomplete flows, dead-ends, missing success/error branches, missing recovery path ตาม [references/missing-flows.md](references/missing-flows.md)
-7. Analyzer ตรวจหา missing features: API endpoints ที่ไม่มี corresponding UI action, database tables/columns ที่ไม่มี UX จัดการ, backend flows ที่ขาด user-facing steps, features ที่มี partial UX (มี list แต่ไม่มี create/edit, มี create แต่ไม่มี delete), features ที่มี admin/staff flow แต่ไม่มี customer-facing counterpart, feature flags/config ที่เปิดใช้แล้วแต่ไม่มี UI รองรับ
-8. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
-9. Review CLI คำนวณ implementation completeness score จาก review report
-10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+7. Analyzer ตรวจหา missing UI: API endpoints ที่ไม่มี UI เรียกใช้, database tables/columns ที่ไม่มี UX จัดการ, missing UI states (loading, error, empty), partial UX ตาม [references/missing-ui.md](references/missing-ui.md)
+8. Analyzer ตรวจหา missing API: UI ที่เรียก endpoint ที่ไม่มี, database tables ที่ไม่มี CRUD endpoint, missing API methods, missing validation ตาม [references/missing-api.md](references/missing-api.md)
+9. Analyzer ตรวจหา missing database: API/UI ที่ไม่มี table รองรับ, missing schema, missing migrations, missing data integrity ตาม [references/missing-database.md](references/missing-database.md)
+10. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
+11. Review CLI คำนวณ implementation completeness score จาก review report
+12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -68,7 +71,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 > Goal: รายงาน implementation gaps พร้อม actionable recommendations
 
 1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง Implementation Metrics Summary: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing features
+2. สร้างตาราง Implementation Metrics Summary: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing UI, missing API, missing database, missing features
 3. สร้างตาราง Findings by Critical Path: Layer, Finding, Severity, Location, Evidence, Recommendation
 4. สร้างตาราง Recommended Implementations: Priority, Action, Impact, Effort, Workflow
 5. แสดง implementation completeness score พร้อม grade และ progress bar
@@ -114,7 +117,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 คำนวณ score ตาม [references/scoring.md](references/scoring.md)
 
-- Metrics หลัก: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing features
+- Metrics หลัก: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing UI, missing API, missing database, missing features
 - คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
 - Review score = (total score / total metrics) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
