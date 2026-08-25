@@ -59,7 +59,7 @@ argument-hint: "[target]"
 1. ตรวจสอบว่า `SKILL.md` ไม่เกิน 250 บรรทัด
 2. ทำ `/validate` เพื่อตรวจความถูกต้อง
 3. ทำ `/validate` เพื่อตรวจ: sections ครบ, ไม่มี TODO/MOCK/placeholder
-4. ทำ `/ship`
+4. ทำ `/ship-workspace`
 
 ## Rules
 

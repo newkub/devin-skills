@@ -50,7 +50,7 @@ related:
 1. ทำตาม `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
 2. ทำตาม `/review-all-skills` เมื่อแก้ไข skills
 3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
-4. ทำตาม `/git-commit` หรือ `/ship` เพื่อ commit การเปลี่ยนแปลง
+4. ทำตาม `/git-commit` หรือ `/ship-workspace` เพื่อ commit การเปลี่ยนแปลง
 5. ทำตาม `/report` เพื่อสรุปผล
 
 ## Rules
@@ -75,11 +75,13 @@ related:
 - `review-rules: /review-rules`
 - `review-all-skills: /review-all-skills`
 - `git-commit: /git-commit`
-- `ship: /ship`
+- `ship-workspace: /ship-workspace`
+- `ship-skills: /ship-skills`
+- `ship-repo: /ship-repo`
+- `update-project: /update-project`
 - `report: /report`
 - `use-markdown: /use-markdown`
 - `review-refactor: /review-refactor`
-- `review-restructure: /review-restructure`
 - `review-update: /review-update`
 - `review-implement: /review-implement`
 - `review-plan: /review-plan`
@@ -105,6 +107,11 @@ related:
 - `review-create-analyze-cli: /review-create-analyze-cli`
 - `review-create-review-cli: /review-create-review-cli`
 - `review-readme: /review-readme`
+- `review-agents-md: /review-agents-md`
+- `review-references: /review-references`
+- `review-dependencies: /review-dependencies`
+- `gen-release: /gen-release`
+- `update-dependencies: /update-dependencies`
 
 ### 4. Workspaces
 

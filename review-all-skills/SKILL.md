@@ -1,6 +1,15 @@
 ---
 name: review-all-skills
 description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
+related:
+  - validate
+  - follow-write-devin-skills
+  - update-agents-md
+  - update-readme
+  - check-reference
+  - review-quality
+  - update-reference
+  - report
 ---
 
 ## Goal
@@ -55,6 +64,7 @@ description: ปรับปรุง skills ทั้ง global และ proje
    - ทำตาม `/validate`
    - ทำตาม `/follow-write-devin-skills` กับทุก `SKILL.md`
    - ทำตาม `/update-agents-md` สำหรับ `AGENTS.md`
+   - ทำตาม `/update-readme` สำหรับ `README.md`
 2. ทำ `/report` เพื่อสรุปผล
 
 ## Rules
@@ -97,4 +107,5 @@ description: ปรับปรุง skills ทั้ง global และ proje
 - ทุก skill สอดคล้องกันในเรื่องภาษา, format, terminology
 - ไม่มี redundancy ข้าม skill
 - `AGENTS.md` ผ่าน `/update-agents-md`
+- `README.md` ผ่าน `/update-readme`
 - รายงานสรุปผลชัดเจน

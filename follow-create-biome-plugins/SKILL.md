@@ -64,7 +64,7 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-workspace`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -1,15 +1,22 @@
 ---
-name: ship
-description: Ship code โดย commit ทำตาม AGENTS.md ก่อน ไม่มี push หรือ release
+name: ship-workspace
+description: Ship workspace ที่เลือก โดย commit ทำตาม AGENTS.md ไม่มี push หรือ release
+related:
+  - update-agents-md
+  - follow-agents-md
+  - run-verify
+  - validate
+  - git-commit
+  - report
 ---
 
 ## Goal
 
-Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใน `AGENTS.md` ตรวจสอบแล้ว commit
+Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` ทำตาม workflows ตรวจสอบด้วย `/run-verify` แล้ว commit
 
 ## Scope
 
-ใช้เมื่องานเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release
+ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release ไม่รวมการ ship หลาย workspace (ใช้ `ship-repo` แทน)
 
 ## Execute
 
@@ -33,9 +40,9 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
-1. ทำ `/run-check` เพื่อรัน lint, typecheck, format
+1. ทำ `/run-verify` เพื่อรัน scan, lint, typecheck, test และ build
 2. ทำ `/validate` เพื่อ validate ผลลัพธ์
-3. ถ้า check ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-3 จนกว่าจะผ่าน
+3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-3 จนกว่าจะผ่าน
 
 ### 4. Commit
 
@@ -48,7 +55,7 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 > Goal: รายงานผล ship
 
-1. ทำ `/report` พร้อม `/report-table` สรุปสิ่งทีทำ
+1. ทำ `/report` พร้อม `/report-table` สรุปสิ่งที่ทำ
 2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
@@ -61,12 +68,17 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 ### 2. No Push Or Release
 
-- `ship` ไม่ทำ push หรือ release
-- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship`
-- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
-- ไม่ถาม user ว่าจะ push/release หรือไม่ใน `/ship`
+- `ship-workspace` ไม่ทำ push หรือ release
+- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship-workspace`
+- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship-workspace`
+- ไม่ถาม user ว่าจะ push/release หรือไม่
 
-### 3. Sub-Workflow Discipline
+### 3. Use Run-Verify
+
+- ใช้ `/run-verify` แทน `/run-check` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
+- ถ้า workspace ไม่มี verify script → ทำ `/follow-tasks` ก่อน
+
+### 4. Sub-Workflow Discipline
 
 - ทุก `/command` ต้องอ่าน `SKILL.md` จริงก่อนทำ
 - ทำตาม `## Execute` ของแต่ละ skill จนครบ
@@ -76,6 +88,6 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-check` และ `/validate`
+- Code ผ่าน `/run-verify` และ `/validate`
 - Commit สำเร็จ
 - รายงานผลลัพธ์ครบถ้วน

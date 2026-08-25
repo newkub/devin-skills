@@ -1,6 +1,11 @@
----
+﻿---
 name: update-test
 description: อัปเดต test suite ให้ครอบคลุม มีคุณภาพ และตรง conventions
+related:
+  - follow-write-devin-skills
+  - follow-vitest
+  - resolve-errors
+  - validate
 ---
 
 ## Goal
@@ -9,13 +14,15 @@ description: อัปเดต test suite ให้ครอบคลุม ม
 
 ## Scope
 
-เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/follow-content-quality` เพื่อคุณภาพเนื้อหา
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/follow-content-quality` เพื่อคุณภาพเนื้อหา ทำตาม `/follow-write-devin-skills` สำหรับ structure และ conventions
 
 ## Execute
 
 ### 1. Detect Test Framework And Define Strategy
 
 > Goal: ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
+
+1. ทำ `/follow-write-devin-skills` เพื่อทราบ conventions และ structure มาตรฐาน
 
 1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
 2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
@@ -116,7 +123,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 > Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
 
 1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
-2. ทำ `/update-spec-md` เพื่อตรวจความสอดคล้อง
+2. ทำ `/update-test` เพื่อตรวจความสอดคล้อง
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules

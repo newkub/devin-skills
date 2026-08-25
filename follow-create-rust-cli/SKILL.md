@@ -72,7 +72,7 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-workspace`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
