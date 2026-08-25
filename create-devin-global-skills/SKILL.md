@@ -6,7 +6,6 @@ related:
   - follow-write-devin-skills
   - follow-coverage
   - learn-from-references
-  - update-devin-global-skills
   - scan-codebase
   - validate
   - check-reference
@@ -109,4 +108,4 @@ related:
 - ไม่ซ้ำกับ skills ที่มีอยู่ หรือได้รับการยืนยันให้ extend หรือ rename
 - `follow-coverage` ครอบคลุมทุก features, APIs, use cases, references และ edge cases
 - `learn-from-references` ดึงความรู้จาก `references/` พร้อมทำ `/follow-coverage`
-- `update-devin-global-skills` ดูแล skills repo โดยใช้ `/follow-write-devin-skills`, `/learn-from-references` และอื่นๆ ตามเหมาะสม
+- `update-skills` ดูแล skills repo โดยใช้ `/follow-write-devin-skills`, `/learn-from-references`, `/review-redundancy` และอื่นๆ ตามเหมาะสม

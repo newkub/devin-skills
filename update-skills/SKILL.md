@@ -1,6 +1,6 @@
 ---
-name: update-devin-global-skills
-description: อัปเดตและดูแล devin global skills repo ให้ครบถ้วนและสอดคล้องกัน
+name: update-skills
+description: อัปเดตและดูแล devin skills repo ให้ครบถ้วนและสอดคล้องกัน
 related:
   - follow-write-devin-skills
   - learn-from-references
@@ -8,6 +8,7 @@ related:
   - idea-new-devin-skills-global
   - follow-coverage
   - review-all-skills
+  - review-redundancy
   - check-reference
   - update-reference
   - validate
@@ -17,11 +18,11 @@ related:
 
 ## Goal
 
-อัปเดตและดูแล devin global skills repo ใน `%APPDATA%\devin\skills` ให้ครบถ้วน สอดคล้องกัน และเป็นปัจจุบัน โดยใช้ `/follow-write-devin-skills`, `/learn-from-references` และ skills อื่นๆ ตามเหมาะสม
+อัปเดตและดูแล devin skills repo ใน `%APPDATA%\devin\skills` ให้ครบถ้วน สอดคล้องกัน และเป็นปัจจุบัน โดยใช้ `/follow-write-devin-skills`, `/learn-from-references` และ skills อื่นๆ ตามเหมาะสม
 
 ## Scope
 
-ใช้เมื่อต้องการ update, maintain, หรือ audit devin global skills repo ทั้งหมด ครอบคลุม validation, references, coverage, และ consistency ระหว่าง skills ไม่ใช่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
+ใช้เมื่อต้องการ update, maintain, หรือ audit devin skills repo ทั้งหมด ครอบคลุม validation, references, coverage, redundancy และ consistency ระหว่าง skills ไม่ใช่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
 
 ## Execute
 
@@ -61,9 +62,10 @@ related:
 
 1. ทำ `/follow-coverage` สำหรับ skills ที่ content ไม่ครอบคลุม
 2. ทำ `/review-all-skills` เพื่อตรวจสอบ consistency ระหว่าง skills
-3. ทำ `/idea-new-devin-skills-global` เพื่อวิเคราะห์ gaps และแนะนำ skills ใหม่
-4. ตรวจ `related` ทุก skill ไม่มี missing/unused และไม่มี circular dependencies
-5. ทำ `/update-reference` สำหรับการเปลี่ยนแปลงชื่อหรือเพิ่ม skills ใหม่
+3. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
+4. ทำ `/idea-new-devin-skills-global` เพื่อวิเคราะห์ gaps และแนะนำ skills ใหม่
+5. ตรวจ `related` ทุก skill ไม่มี missing/unused และไม่มี circular dependencies
+6. ทำ `/update-reference` สำหรับการเปลี่ยนแปลงชื่อหรือเพิ่ม skills ใหม่
 
 ### 5. Update Cross-References
 
@@ -116,7 +118,7 @@ related:
 
 ## Expected Outcome
 
-- devin global skills repo ครบถ้วน สอดคล้องกัน และเป็นปัจจุบัน
+- devin skills repo ครบถ้วน สอดคล้องกัน และเป็นปัจจุบัน
 - ทุก skill ผ่าน `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - `related` references ครบถ้วน ไม่มี missing/unused และไม่มี circular dependencies
 - skills ที่มี dependencies มี `references/` ครบผ่าน `/learn-from-references`

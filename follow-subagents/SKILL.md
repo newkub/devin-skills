@@ -5,7 +5,6 @@ argument-hint: "[task]"
 auto_execution_mode: 3
 related:
   - use-subagents
-  - follow-parallel
 ---
 
 ## Goal

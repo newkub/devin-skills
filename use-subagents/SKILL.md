@@ -4,8 +4,6 @@ description: แบ่งงานเป็น subagents sync หรือ async
 argument-hint: "[task]"
 auto_execution_mode: 3
 related:
-  - follow-subagents
-  - follow-parallel
   - follow-write-devin-skills
 ---
 
