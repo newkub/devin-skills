@@ -1,6 +1,10 @@
 ---
 name: follow-solidjs
 description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
+related:
+  - follow-architecture
+  - follow-typescript
+  - follow-vitest
 ---
 
 ## Goal

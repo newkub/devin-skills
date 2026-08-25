@@ -1,6 +1,7 @@
 ---
 name: follow-readability
 description: สร้าง skill ใหม่ใน devin skills repo ตามมาตรฐาน ไม่ซ้ำซ้อนกับ skills ที่มีอยู่
+argument-hint: "[skill-name]"
 ---
 
 ## Goal

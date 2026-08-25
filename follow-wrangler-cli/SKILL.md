@@ -57,14 +57,14 @@ Deploy Workers และ resources ไปยัง Cloudflare
 
 ### 5. Manage Bindings
 
-จัดการ bindings สำหรับ Workers
+จัดการ bindings สำหรับ Workers (ดู `references/bindings.md`)
 > Goal: Manage Bindings
 
 1. สร้าง D1 database ด้วย `wrangler d1 create`
-2. สร้าง KV namespace ด้วย `wrangler kv:namespace create`
+2. สร้าง KV namespace ด้วย `wrangler kv namespace create`
 3. สร้าง R2 bucket ด้วย `wrangler r2 bucket create`
-4. เพิ่ม bindings ใน `wrangler.toml`
-5. Link bindings ด้วย `wrangler d1 execute` หรือ `wrangler kv:key put`
+4. เพิ่ม bindings ใน `wrangler.jsonc` หรือ `wrangler.toml`
+5. ใช้ D1 migrations สำหรับ schema changes (ดู `references/d1-migrations.md`)
 
 ### 6. Manage Secrets
 
@@ -77,20 +77,21 @@ Deploy Workers และ resources ไปยัง Cloudflare
 4. ใช้ environment-specific secrets ด้วย `--env`
 5. ห้าม commit secrets ไปยัง git
 
-### 7. Manage Workers
+### 7. Manage Workers And Versions
 
-จัดการ Workers และ configurations
-> Goal: Manage Workers
+จัดการ Workers, versions และ rollbacks (ดู `references/versions-and-rollback.md`)
+> Goal: Manage Workers And Versions
 
-1. List workers ด้วย `wrangler workers list`
+1. List deployments ด้วย `wrangler deployments list`
 2. Delete worker ด้วย `wrangler delete`
-3. Tail logs ด้วย `wrangler tail`
-4. Trigger cron schedules ด้วย `wrangler triggers secret`
-5. Manage subrequests และ limits
+3. Tail logs ด้วย `wrangler tail` (ดู `references/tail-and-logs.md`)
+4. ใช้ `wrangler versions upload` และ `wrangler versions deploy` สำหรับ gradual rollouts
+5. ใช้ `wrangler rollback` สำหรับ emergency rollback
+6. ใช้ `wrangler triggers deploy` สำหรับ cron schedules (ดู `references/triggers-and-cron.md`)
 
 ### 8. Advanced Features
 
-ใช้งาน features ขั้นสูง
+ใช้งาน features ขั้นสูง (ดู `references/commands.md` และ `references/pages.md`)
 > Goal: Advanced Features
 
 1. ใช้ `wrangler pages deploy` สำหรับ Pages projects
@@ -98,6 +99,17 @@ Deploy Workers และ resources ไปยัง Cloudflare
 3. ใช้ `wrangler workflows` สำหรับ workflows
 4. ใช้ `wrangler hyperdrive` สำหรับ database connections
 5. ใช้ `wrangler vectorize` สำหรับ vector embeddings
+
+### 9. Troubleshoot
+
+แก้ปัญหาและ debug (ดู `references/troubleshooting.md`)
+> Goal: Troubleshoot
+
+1. ใช้ `WRANGLER_LOG=debug` สำหรับ verbose logging
+2. ใช้ `wrangler tail --status error` สำหรับ production debugging
+3. ตรวจสอบ Node.js version >= 22.0.0
+4. ตรวจสอบ API token permissions
+5. ดู error codes ใน `references/troubleshooting.md`
 
 ## Rules
 
@@ -180,9 +192,11 @@ Deploy Workers และ resources ไปยัง Cloudflare
 
 ## Expected Outcome
 
-- Wrangler CLI installและกำหนดค่าอย่างถูกต้อง
-- Workers deploy ได้อย่างราบรื่น
+- Wrangler CLI install และกำหนดค่าอย่างถูกต้อง
+- Workers deploy ได้อย่างราบรื่น พร้อม gradual rollouts และ rollback
 - Bindings และ secrets จัดการอย่างปลอดภัย
-- Development workflow มีประสิทธิภาพ
+- D1 migrations ทำงานได้ทั้ง local และ remote
+- Development workflow มีประสิทธิภาพ พร้อม tail debugging
 - CI/CD integration ทำงานได้อัตโนมัติ
-- Performance monitoring และ optimization
+- Cron triggers ตั้งค่าและ test ได้
+- แก้ปัญหาได้จาก troubleshooting guide

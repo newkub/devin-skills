@@ -1,6 +1,7 @@
 ---
 name: idea
 description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
+argument-hint: "[topic]"
 ---
 
 ## Goal

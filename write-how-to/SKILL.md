@@ -1,6 +1,7 @@
 ---
 name: write-how-to
 description: เขียน how-to guides และ tutorials อย่างมีประสิทธิภาพ
+argument-hint: "[topic]"
 ---
 
 ## Goal

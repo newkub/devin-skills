@@ -1,6 +1,8 @@
 ---
 name: follow-mise
 description: ตั้งค่าและใช้งาน mise สำหรับจัดการ dev tools, env vars, และ tasks
+related:
+  - use-scripts
 ---
 
 ## Goal

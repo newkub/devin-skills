@@ -1,6 +1,7 @@
 ---
 name: idea-merge
 description: สร้างไอเดียการ merge branches ตามสถานการณ์
+argument-hint: "[branches]"
 ---
 
 ## Goal

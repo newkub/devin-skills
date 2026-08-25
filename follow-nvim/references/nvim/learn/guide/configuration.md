@@ -116,5 +116,5 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 ## See Also
 
 - [Installation](./installation.md) - Installation guide
-- [CLI](../references/cli.md) - CLI commands
-- [API](../references/api.md) - Lua API
+- [CLI](../references/nvim-cli.md) - CLI commands
+- [API](../references/nvim-api.md) - Lua API

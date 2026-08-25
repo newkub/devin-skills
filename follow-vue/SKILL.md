@@ -173,5 +173,5 @@ Component ต้อง follow standards:
 เอกสารอ้างอิงเฉพาะทางสำหรับ Vue:
 
 - `references/vue.md` — Vue.js 3.5+ overview และ best practices
-- `references/follow-vue-components.md` — รายละเอียด component-level guidelines
-- `references/follow-vue-design-system-best-practics.md` — รายละเอียด design system, stores, และ composables
+- `references/vue-components.md` — รายละเอียด component-level guidelines
+- `references/vue-design-system.md` — รายละเอียด design system, stores, และ composables

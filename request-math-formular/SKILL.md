@@ -1,6 +1,7 @@
 ---
 name: request-math-formular
 description: แปลง code หรือ description ให้เป็นสูตรคณิตศาสตร์ที่กระชับและเข้าใจง่าย
+argument-hint: "[target]"
 ---
 
 ## Goal

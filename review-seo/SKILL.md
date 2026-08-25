@@ -1,6 +1,7 @@
 ---
 name: review-seo
 description: SEO review checklist for meta, structured data, performance, and sitemap
+argument-hint: "[url]"
 ---
 
 ## Goal

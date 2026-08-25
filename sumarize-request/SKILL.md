@@ -1,6 +1,7 @@
 ---
 name: sumarize-request
 description: สรุป request และแสดงผลเป็นตารางครบถ้วนโดยใช้ /idea-features
+argument-hint: "[target]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: open-github-org
 description: เปิดหน้า GitHub organization ที่ระบุใน browser
+argument-hint: "[org-name]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: edit-by-use-scripts
 description: แก้ไขไฟล์ผ่าน scripts ที่สร้างด้วย /use-scripts เพื่อ automate การแก้ไขแบบ reproducible
+argument-hint: "[target]"
 ---
 
 ## Goal

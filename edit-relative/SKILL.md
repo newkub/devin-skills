@@ -1,6 +1,7 @@
 ---
 name: edit-relative
 description: อัปเดท references ทั้งหมดเมื่อแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่ง
+argument-hint: "[target]"
 ---
 
 ## Goal

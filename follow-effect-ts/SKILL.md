@@ -28,7 +28,7 @@ description: แนวทางการพัฒนาด้วย Effect-TS v3
 > Goal: ติดตั้ง dependencies ของ Effect-TS ตามความจำเป็น
 
 1. รัน `bun add effect` สำหรับ core library
-2. รัน `bun add @effect/schema` สำหรับ data validation
+2. `Schema` รวมอยู่ใน core `effect` ตั้งแต่ v3.x (ไม่ต้องติดตั้ง `@effect/schema` แยก)
 3. รัน `bun add @effect/platform` ถ้าต้องการ platform abstractions
 4. รัน `bun add @effect/platform-bun` สำหรับ Bun runtime
 5. รัน `bun add -D vitest` สำหรับ testing
@@ -57,7 +57,7 @@ description: แนวทางการพัฒนาด้วย Effect-TS v3
 2. ใช้ `Data.TaggedError` สำหรับ type-safe errors
 3. ใช้ `Context.Tag` + `Layer` สำหรับ dependency injection
 4. ใช้ `Schedule` สำหรับ retry/backoff policies
-5. ใช้ `@effect/schema` สำหรับ data validation
+5. ใช้ `Schema` จาก core `effect` สำหรับ data validation
 6. ใช้ `Layer.mock` สำหรับ testing (v3.17.0+)
 
 ### 5. Write Tests
@@ -80,7 +80,7 @@ description: แนวทางการพัฒนาด้วย Effect-TS v3
 ### 2. Core Libraries
 
 - ใช้ `effect` (v3.x) เป็น core library
-- ใช้ `@effect/schema` สำหรับ data validation
+- ใช้ `Schema` จาก core `effect` สำหรับ data validation (`@effect/schema` เป็น legacy)
 - ใช้ `@effect/platform` สำหรับ platform abstractions (ถ้าจำเป็น)
 
 ### 3. Code Patterns

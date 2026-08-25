@@ -1,6 +1,7 @@
 ---
 name: check-accessibility
 description: ตรวจสอบ accessibility ตามมาตรฐาน WCAG
+argument-hint: "[url]"
 ---
 
 ## Goal

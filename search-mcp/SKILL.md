@@ -1,6 +1,7 @@
 ---
 name: search-mcp
 description: ค้นหา MCP และ internet ที่เกี่ยวข้องและน่าสนใจ
+argument-hint: "[query]"
 ---
 
 ## Goal

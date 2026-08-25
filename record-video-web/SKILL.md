@@ -1,6 +1,7 @@
 ---
 name: record-video-web
 description: บันทึกวิดีโอจากหน้าเว็บด้วย agent-browser CLI
+argument-hint: "[url]"
 ---
 
 ## Goal

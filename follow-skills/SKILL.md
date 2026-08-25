@@ -1,6 +1,7 @@
 ---
 name: follow-skills
 description: อ่านและใช้ skills ที่มีอยู่ตามที่เหมาะสม
+argument-hint: "[skill-name]"
 ---
 
 ## Goal

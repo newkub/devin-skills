@@ -1,6 +1,7 @@
 ---
 name: open-github-personal
 description: เปิดหน้า GitHub profile ของผู้ใช้ใน browser
+argument-hint: "[username]"
 ---
 
 ## Goal

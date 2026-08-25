@@ -1,6 +1,7 @@
 ---
 name: compare-and-idea-features
 description: เปรียบเทียบกับ competitors และสร้างไอเดีย features พร้อม continuous numbering
+argument-hint: "[target]"
 ---
 
 ## Goal

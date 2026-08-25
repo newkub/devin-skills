@@ -1,6 +1,7 @@
 ---
 name: list-github-issue
 description: แสดงรายการ issues ของ repository ที่ระบุบน GitHub
+argument-hint: "[repo]"
 ---
 
 ## Goal

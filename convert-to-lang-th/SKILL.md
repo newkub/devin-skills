@@ -1,6 +1,7 @@
 ---
 name: convert-to-lang-th
 description: ใช้ภาษาไทยในการสื่อสารและทำงาน
+argument-hint: "[target]"
 ---
 
 ## Goal

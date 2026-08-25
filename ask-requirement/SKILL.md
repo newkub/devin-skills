@@ -1,6 +1,7 @@
 ---
 name: ask-requirement
 description: ถาม requirements ผ่าน ask-me/ask_user_question แล้วสรุปเป็นข้อกำหนด
+argument-hint: "[topic]"
 ---
 
 ## Goal

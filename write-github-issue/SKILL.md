@@ -1,6 +1,7 @@
 ---
 name: write-github-issue
 description: เขียนหรืออัปเดต title, body และ metadata ของ GitHub issue
+argument-hint: "[title]"
 ---
 
 ## Goal

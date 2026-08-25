@@ -144,12 +144,9 @@ A task is either a `command` or `script`, not both:
 
 ```yaml
 tasks:
-  # Command: single binary execution
   build:
     command: 'tsc'
     args: ['--outDir', 'dist']
-
-  # Script: shell execution with pipes/redirects
   deploy:
     script: 'npm run build && npm run deploy'
 ```
@@ -236,6 +233,8 @@ moon run <project>:<task>    # Run task in specific project
 moon check                   # Run all check-like tasks
 moon run :build              # Run build in all projects
 moon run :test               # Run test in all projects
+moon run <task> --affected   # Run only in affected projects
+moon run <task> --project <group>  # Run by project group
 moon task                    # List all tasks
 moon upgrade                 # Upgrade moon binary
 ```
@@ -245,3 +244,4 @@ moon upgrade                 # Upgrade moon binary
 - Docs: https://moonrepo.dev/docs
 - GitHub: https://github.com/moonrepo/moon
 - npm: https://www.npmjs.com/package/@moonrepo/cli
+- Advanced features: [moonrepo-advanced.md](moonrepo-advanced.md)

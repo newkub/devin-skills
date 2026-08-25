@@ -1,6 +1,7 @@
 ---
 name: view-files-in-terminal
 description: แสดงเนื้อหาไฟล์ใน terminal ด้วย bat พร้อม syntax highlighting
+argument-hint: "[file]"
 ---
 
 ## Goal

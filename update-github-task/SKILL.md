@@ -1,6 +1,7 @@
 ---
 name: update-github-task
 description: อัปเดต fields และสถานะของงานใน GitHub Project
+argument-hint: "[task-id]"
 ---
 
 ## Goal

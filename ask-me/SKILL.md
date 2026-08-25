@@ -1,6 +1,7 @@
 ---
 name: ask-me
 description: ถามผู้ใช้คำถามพร้อมตัวเลือกและคำแนะนำเพื่อขอคำยืนยันหรือตัดสินใจ
+argument-hint: "[question]"
 ---
 
 ## Goal

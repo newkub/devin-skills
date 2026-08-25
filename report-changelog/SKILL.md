@@ -1,6 +1,7 @@
 ---
 name: report-changelog
 description: สร้าง changelog รายงานจาก git log ระหว่าง tags หรือ releases
+argument-hint: "[range]"
 ---
 
 ## Goal

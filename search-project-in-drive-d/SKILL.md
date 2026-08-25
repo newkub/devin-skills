@@ -1,6 +1,7 @@
 ---
 name: search-project-in-drive-d
 description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern ที่ระบุ
+argument-hint: "[keyword]"
 ---
 
 ## Goal

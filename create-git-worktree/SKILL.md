@@ -1,6 +1,7 @@
 ---
 name: create-git-worktree
 description: สร้าง git worktree ใน worktree/ ของ project เพื่อทำงานหลาย branches พร้อมกัน
+argument-hint: "[branch-name]"
 ---
 
 ## Goal

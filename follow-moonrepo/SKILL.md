@@ -1,6 +1,10 @@
 ---
 name: follow-moonrepo
 description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project graph
+related:
+  - follow-monorepo
+  - follow-turborepo
+  - validate
 ---
 
 ## Goal

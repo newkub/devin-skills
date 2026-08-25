@@ -1,6 +1,7 @@
 ---
 name: deep-pondering
 description: ครุ่นคิดเชิงลึกก่อนตัดสินใจสำหรับงานซับซ้อน ระบุ trade-offs และ uncertainties
+argument-hint: "[topic]"
 ---
 
 ## Goal

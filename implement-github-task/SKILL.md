@@ -1,6 +1,7 @@
 ---
 name: implement-github-task
 description: นำ task จาก GitHub issue หรือ project item ไป implement
+argument-hint: "[task-id]"
 ---
 
 ## Goal

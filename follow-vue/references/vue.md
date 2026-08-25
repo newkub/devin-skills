@@ -1,6 +1,6 @@
 ---
 name: vue-overview
-description: "แนวทางการพัฒนา Vue.js 3.5+ ตาม best practices สำหรับ progressive framework ที่มี Composition..."
+description: "แนวทางการพัฒนา Vue.js 3.5+ ตาม best practices สำหรับ Composition API และ Vapor Mode"
 ---
 ## Goal
 
@@ -111,6 +111,104 @@ description: "แนวทางการพัฒนา Vue.js 3.5+ ตาม b
 - ใช้ `createVaporApp()` (3.6 beta) สำหรับ Vapor-only apps
 - ใช้ `vaporInteropPlugin` (3.6 beta) สำหรับ mixing Vapor and VDOM components
 
+
+## API Examples
+
+### Script Setup With TypeScript
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+
+interface Props {
+  title: string
+  count?: number
+}
+
+const props = withDefaults(defineProps<Props>(), { count: 0 })
+const emit = defineEmits<{
+  update: [value: number]
+}>()
+
+const doubled = computed(() => props.count * 2)
+
+function increment() {
+  emit('update', props.count + 1)
+}
+</script>
+
+<template>
+  <button @click="increment">{{ props.title }}: {{ doubled }}</button>
+</template>
+```
+
+### Composition API Reactivity
+
+```ts
+import { ref, reactive, computed, shallowRef, watch } from 'vue'
+
+// Primitive values
+const count = ref(0)
+count.value++
+
+// Object state with deep reactivity
+const state = reactive({ name: 'Vue', version: 3.5 })
+
+// Derived values
+const double = computed(() => count.value * 2)
+
+// Large immutable data — use shallowRef for memory efficiency
+const bigList = shallowRef<number[]>([])
+bigList.value = Array.from({ length: 10000 }, (_, i) => i)
+
+// Explicit dependency watch
+watch(count, (newVal, oldVal) => {
+  console.log(`count: ${oldVal} -> ${newVal}`)
+})
+```
+
+### Composable Pattern
+
+```ts
+import { ref, onScopeDispose, type Ref } from 'vue'
+
+export function useCounter(initial = 0): { count: Ref<number>; increment: () => void } {
+  const count = ref(initial)
+
+  function increment() {
+    count.value++
+  }
+
+  onScopeDispose(() => {
+    console.log('counter scope disposed')
+  })
+
+  return { count, increment }
+}
+```
+
+### DefineModel Two-Way Binding
+
+```vue
+<!-- Parent: <ChildInput v-model="value" /> -->
+<script setup lang="ts">
+const model = defineModel<string>({ required: true })
+</script>
+
+<template>
+  <input v-model="model" />
+</template>
+```
+
+## Source Links
+
+- Vue.js Official Docs: https://vuejs.org/
+- Vue.js API Reference: https://vuejs.org/api/
+- Vue Router Docs: https://router.vuejs.org/
+- Pinia Docs: https://pinia.vuejs.org/
+- Vue 3.5 Release Notes: https://blog.vuejs.org/posts/vue-3-5
+- Vapor Mode RFC: https://github.com/vuejs/core/pull/10650
+- VueUse Composables: https://vueuse.org/
 
 ## Expected Outcome
 

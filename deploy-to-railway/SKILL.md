@@ -1,6 +1,7 @@
 ---
 name: deploy-to-railway
 description: Deploy application ไปยัง Railway ด้วย railway up จนกว่าจะ live สำเร็จ
+argument-hint: "[target]"
 ---
 
 ## Goal

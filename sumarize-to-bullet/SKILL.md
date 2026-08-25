@@ -1,6 +1,7 @@
 ---
 name: sumarize-to-bullet
 description: สรุปเนื้อหาให้อยู่ในรูปแบบ bullet points
+argument-hint: "[target]"
 ---
 
 ## Goal

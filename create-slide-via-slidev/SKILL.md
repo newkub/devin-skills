@@ -1,6 +1,7 @@
 ---
 name: create-slide-via-slidev
 description: สร้าง standalone Slidev project ด้วย CLI ในตำแหน่งใดก็ได้ พร้อม package.json ของตัวเอง
+argument-hint: "[title]"
 ---
 
 ## Goal

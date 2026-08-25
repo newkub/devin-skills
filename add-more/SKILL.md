@@ -1,6 +1,7 @@
 ---
 name: add-more
 description: วิเคราะห์ gaps และเพิ่มสิ่งที่ขาดหายไปตาม context
+argument-hint: "[target]"
 ---
 
 ## Goal

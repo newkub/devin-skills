@@ -1,6 +1,7 @@
 ---
 name: sumrize-this-project
 description: สรุป project ปัจจุบัน features และ solutions
+argument-hint: "[target]"
 ---
 
 ## Goal

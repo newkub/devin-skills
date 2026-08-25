@@ -1,6 +1,7 @@
 ---
 name: follow-request-pattern
 description: เขียน pattern rules จากข้อมูลที่ให้มา
+argument-hint: "[pattern]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: enhance-prompt
 description: สรุป prompt เป็น numbered แต่ละข้อคือหน่วยงานเดียว (single responsibility)
+argument-hint: "[prompt]"
 ---
 
 ## Goal

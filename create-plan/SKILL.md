@@ -1,6 +1,7 @@
 ---
 name: create-plan
 description: สร้างแผนงานละเอียดใน .devin/plan/<title-date>.md ด้วย /deep-plan และ /report-plan
+argument-hint: "[title]"
 ---
 
 ## Goal

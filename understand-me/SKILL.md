@@ -1,6 +1,7 @@
 ---
 name: understand-me
 description: คิดถามผู้ใช้เพื่อเข้าใจ preferences และ style การทำงาน
+argument-hint: "[topic]"
 ---
 
 ## Goal

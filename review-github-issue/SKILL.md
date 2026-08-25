@@ -1,6 +1,7 @@
 ---
 name: review-github-issue
 description: ตรวจสอบเนื้อหา, labels และความพร้อมของ GitHub issue
+argument-hint: "[issue-number]"
 ---
 
 ## Goal

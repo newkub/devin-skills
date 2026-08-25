@@ -1,6 +1,7 @@
 ---
 name: learn
 description: เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ ด้วย research และ practice
+argument-hint: "[topic]"
 ---
 
 ## Goal
@@ -57,7 +58,7 @@ description: เรียนรู้ concept, tool, หรือ library อย
 ### 5. Learn From Code Patterns
 > Goal: Learn From Code Patterns
 
-ทำ `/learn-from-code-pattern` เพื่อสกัด reusable patterns
+ทำ `/learn-from-pattern` เพื่อสกัด reusable patterns
 
 1. ค้นหา code patterns จาก real-world projects
 2. วิเคราะห์ patterns ที่ใช้ใน production codebases

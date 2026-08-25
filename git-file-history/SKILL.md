@@ -1,6 +1,7 @@
 ---
 name: git-file-history
 description: ดู git file history ของไฟล์ที่ระบุผ่าน @wrikka/git-cli package ที่ release แล้ว โดยใช้คำสั่ง
+argument-hint: "[file]"
 ---
 
 ## Goal

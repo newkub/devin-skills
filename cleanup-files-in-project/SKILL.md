@@ -1,6 +1,7 @@
 ---
 name: cleanup-files-in-project
 description: Clean up unnecessary source files in the project, not build artifacts or dependency caches
+argument-hint: "[target]"
 ---
 
 ## Goal

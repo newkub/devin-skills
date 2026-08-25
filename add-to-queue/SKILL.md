@@ -1,6 +1,7 @@
 ---
 name: add-to-queue
 description: รับ request จากผู้ใช้ และเพิ่มลง QUEUE.md ใน project root พร้อมชี้แนะ next step
+argument-hint: "[task]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: deep-thinking
 description: คิดวิเคราะห์ปัญหาอย่างเป็นระบบก่อนทำงาน โดยไม่ใช้ external tools
+argument-hint: "[topic]"
 ---
 
 ## Goal

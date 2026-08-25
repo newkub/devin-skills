@@ -1,6 +1,7 @@
 ---
 name: create-devin-subagents
 description: สร้าง subagent ใหม่ใน devin agents repo ตามมาตรฐาน AGENT.md
+argument-hint: "[agent-name]"
 ---
 
 ## Goal

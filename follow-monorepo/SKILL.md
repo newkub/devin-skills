@@ -1,6 +1,14 @@
 ---
 name: follow-monorepo
-description: Implement Monorepo Architecture for large-scale projects with multiple packages or applications
+description: สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications
+related:
+  - follow-architecture
+  - follow-turborepo
+  - follow-moonrepo
+  - follow-package-manifest
+  - run-verify
+  - run-test
+  - update-readme
 ---
 
 ## Goal

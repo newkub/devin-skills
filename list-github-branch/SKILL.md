@@ -1,6 +1,7 @@
 ---
 name: list-github-branch
 description: แสดง branches ทั้งหมดของ repo ที่ระบุบน GitHub
+argument-hint: "[repo]"
 ---
 
 ## Goal

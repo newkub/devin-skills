@@ -1,6 +1,7 @@
 ---
 name: prepare-skills-context
 description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน skill
+argument-hint: "[skill-name]"
 ---
 
 ## Goal

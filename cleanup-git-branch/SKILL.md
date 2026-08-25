@@ -1,6 +1,7 @@
 ---
 name: cleanup-git-branch
 description: ลบ git branches เก่าที merge แล้วหรือไม่ใช้แล้ว
+argument-hint: "[filter]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: delete-submodules
 description: Steps to delete a git submodule
+argument-hint: "[path]"
 ---
 
 ## Goal

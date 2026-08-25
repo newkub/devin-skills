@@ -1,6 +1,7 @@
 ---
 name: watch-browser-console
 description: Watch browser console อย่างต่อเนื่อง จัดการ errors อัตโนมัติด้วย agent-browser
+argument-hint: "[url]"
 ---
 
 ## Goal

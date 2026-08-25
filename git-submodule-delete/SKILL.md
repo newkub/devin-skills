@@ -1,6 +1,7 @@
 ---
 name: git-submodule-delete
 description: ลบ git submodule ออกจาก repository อย่างสมบูรณ์
+argument-hint: "[path]"
 ---
 
 ## Goal

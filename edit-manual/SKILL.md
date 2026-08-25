@@ -1,6 +1,7 @@
 ---
 name: edit-manual
 description: แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม rollback
+argument-hint: "[file]"
 ---
 
 ## Goal

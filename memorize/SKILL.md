@@ -1,6 +1,7 @@
 ---
 name: memorize
 description: จดจำสิ่งสำคัญ เช่น การตัดสินใจ ข้อค้นพบ บทเรียน และ context เพื่อใช้ในอนาคต
+argument-hint: "[content]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: check-git-diff
 description: ตรวจสอบความแตกต่างของ git refs หรือ working tree ด้วย git diff
+argument-hint: "[ref]"
 ---
 
 ## Goal

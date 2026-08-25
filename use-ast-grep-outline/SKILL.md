@@ -1,6 +1,7 @@
 ---
 name: use-ast-grep-outline
 description: ใช้งาน ast-grep outline สำหรับ code navigation โดยไม่ต้อง build index
+argument-hint: "[file]"
 ---
 
 ## Goal

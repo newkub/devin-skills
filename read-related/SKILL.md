@@ -1,6 +1,7 @@
 ---
 name: read-related
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
+argument-hint: "[skill-name]"
 ---
 
 ## Goal

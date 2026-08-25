@@ -1,6 +1,14 @@
 ---
 name: refactor-skills
 description: Refactor โครงสร้าง skill files และ directories เพื่อ SRP และลด redundancy
+auto_execution_mode: 3
+related:
+  - scan-codebase
+  - refactor-to-srp
+  - update-reference
+  - check-reference
+  - follow-ordering
+  - follow-write-devin-skills
 ---
 
 ## Goal
@@ -19,11 +27,9 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 > Goal: วิเคราะห์ skill ปัจจุบันเพื่อระบุปัญหาโครงสร้าง
 
-1. ทำตาม `/scan-codebase`
-   - ทำตาม `/read-related-skills`
-2. ระบุ skill ที่มีหลาย responsibility หรือไฟล์เกิน 250 บรรทัด
-3. ระบุ skill ที่มี scope ซ้อนทับกันหรือเนื้อหาซ้ำซ้อน
-4. บันทึก issues พร้อม priority
+1. สแกน skills directory หา: ไฟล์เกิน 250 บรรทัด, หลาย responsibility, scope ซ้อนทับ, เนื้อหาซ้ำซ้อน
+2. อ่าน `SKILL.md` ของ skills ที่น่าสงสัยเพื่อยืนยันปัญหา
+3. บันทึก issues พร้อม priority: High (redundancy มาก, ไฟล์ใหญ่, broken structure), Medium, Low
 
 ### 2. Plan Refactor
 
@@ -32,64 +38,35 @@ Refactor โครงสร้าง skill files และ directories เพื
 1. จัดกลุ่ม issues เป็น categories: Split, Merge, Restructure, Deduplicate
 2. กำหนด action สำหรับแต่ละ category
 3. จัดลำดับตาม impact: High redundancy ก่อน, Large files ก่อน, Broken structure ก่อน
-4. ทำ `/dont-over-engineer` เพื่อให้ไม่ over-refactor
+4. พิจารณา change frequency และ usage patterns ก่อนตัดสินใจ — ไม่ over-refactor
 
-### 3. Split Large Skills
+### 3. Execute Refactor
 
-> Goal: แยก skill ที่ใหญ่เกินไปหรือมีหลาย responsibilities
+> Goal: ทำ split, merge, restructure, deduplicate ตาม plan
 
-1. ระบุ skill ที่เกิน 250 บรรทัดหรือมีหลาย responsibilities
-2. ใช้ `/refactor-to-srp` เพื่อแยก responsibilities ออกมา
-3. สร้าง orchestrator skill ที่อ้างอึง sub-skills ผ่าน `related`
-4. ทำ `/follow-write-devin-skills` สำหรับ sub-skills ใหม่
-5. ทำ `/update-reference` อัปเดต references
+1. **Split**: ถ้า skill เกิน 250 บรรทัดหรือหลาย responsibilities → แยกเป็น sub-skills แต่ละ skill มี SRP ชัดเจน สร้าง orchestrator skill ที่อ้างอึง sub-skills ผ่าน `related`
+2. **Merge**: ถ้า skill คู่มี scope ซ้อนทับหรือเนื้อหาซ้ำ → รวมเป็น skill เดียว รักษา intent เดิม ลบ skill ที่ถูกรวม
+3. **Restructure**: ตรวจลำดับ sections (Foundation → Dependencies → High impact → High risk) รวม steps ที่เกี่ยวข้อง ลด steps ไม่เกิน 10
+4. **Deduplicate**: แทนที่เนื้อหาซ้ำด้วย references ไปยัง skill ต้นทาง ใช้ `related` สำหรับ dependencies
+5. ถ้าสร้าง sub-skills ใหม่ → ทำ `/follow-write-devin-skills` สำหรับแต่ละ sub-skill
 
-### 4. Merge Redundant Skills
+### 4. Update References And Sort
 
-> Goal: รวม skill ที่ซ้ำซ้อนกัน
+> Goal: อัปเดต references และจัดเรียง skills หลัง refactor
 
-1. ระบุ skill คู่ที่มี scope ซ้อนทับหรือเนื้อหาซ้ำกัน
-2. ทำ `/merge` เพื่อรวมเนื้อหาเป็น skill เดียว
-3. รักษา skill intent เดิม ไม่สูญเสียข้อมูล
-4. ลบ skill ที่ถูกรวมแล้ว
-5. ทำ `/update-reference` อัปเดต references
+1. อัปเดต `related` ในทุก skill ที่ได้รับผลกระทบ
+2. ตรวจ bidirectional references — ถ้า A `related` B → B ต้อง `related` A
+3. ตรวไม่มี broken references โดยยืนยันทุก skill ที่อ้างถึงมีอยู่จริง
+4. จัดเรียง skills ตาม prefix และ alphabetical
 
-### 5. Restructure Content
-
-> Goal: จัดระเบียบ sections ใน `SKILL.md`
-
-1. ตรวจสอบลำดับ: Foundation → Dependencies → High impact → High risk
-2. รวม steps ที่เกี่ยวข้องและแยก steps ที่ไม่เกี่ยวข้อง
-3. ตรวจสอบว่าแต่ละ step มีเงื่อนไขการเสร็จชัดเจน
-4. ลดจำนวน steps ไม่เกิน 10
-
-### 6. Deduplicate Content
-
-> Goal: ลดเนื้อหาซ้ำซ้อนภายในและระหว่าง skill
-
-1. ระบุเนื้อหาที่ซ้ำกันระหว่าง skill หรือระหว่าง Execute และ Rules
-2. แทนที่เนื้อหาซ้ำด้วย references ไปยัง skill ต้นทาง
-3. ทำ `/review-quality` เพื่อ verify
-4. ใช้ `related` สำหรับ dependencies
-
-### 7. Update References And Sort
-
-> Goal: อัปเดต references และจัดเรียง skill
-
-1. ทำ `/update-reference` เพื่ออัปเดต references ทั้งหมด
-2. ทำ `/check-reference` เพื่อยืนยัน
-3. ทำ `/follow-ordering` เพื่อจัดเรียง skills ตาม prefix และ alphabetical
-4. ตรวจสอบ bidirectional references
-
-### 8. Verify Quality
+### 5. Verify And Report
 
 > Goal: ตรวจสอบคุณภาพหลัง refactor
 
-1. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
-   - ตรวจสอบ sections ครบ
-2. ทำตาม `/refactor-to-srp`
-   - ทำตาม `/deep-review`
-3. ทำ `/report` เพื่อสรุป
+1. ตรวจทุกไฟล์ไม่เกิน 250 บรรทัด
+2. ตรวจ sections ครบ: `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
+3. ตรวไม่มี broken references และ bidirectional references ครบ
+4. สรุปด้วยตาราง: skill, action (split/merge/restructure/deduplicate), status, ไฟล์ที่เปลี่ยน
 
 ## Rules
 
@@ -109,14 +86,12 @@ Refactor โครงสร้าง skill files และ directories เพื
 
 ### 3. Safety Measures
 
-- ทำ `/deep-review` ก่อนเริ่ม refactor เสมอ
 - สร้าง commit checkpoint ก่อน refactor เพื่อ rollback ได้
-- ทำ `/update-reference` หลังทุกการ split, merge, หรือ restructure
-- ทำ `/check-reference` เพื่อยืนยันไม่มี broken references
+- อัปเดต `related` หลังทุกการ split, merge, หรือ restructure
+- ยืนยันไม่มี broken references หลัง refactor
 
 ### 4. Avoid Over-Refactoring
 
-- ทำ `/dont-over-engineer` เพื่อให้ไม่ over-refactor
 - ไม่แยก skill เล็กเกินไป (micro-skills)
 - ไม่รวม skill ที่มี responsibilities ต่างกัน
 - พิจารณา change frequency และ usage patterns ก่อนตัดสินใจ
@@ -134,5 +109,4 @@ Refactor โครงสร้าง skill files และ directories เพื
 - ไฟล์ไม่เกิน 250 บรรทัด
 - Execute steps ไม่เกิน 10 และเป็นระบบ
 - ไม่มี broken references
-- Skills จัดเรียงตาม `/follow-ordering`
-- ผ่าน `/deep-review` หลัง refactor
+- Skills จัดเรียงตาม prefix และ alphabetical

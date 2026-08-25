@@ -1,6 +1,7 @@
 ---
 name: follow-request-instruction-prompt
 description: สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน
+argument-hint: "[target]"
 ---
 
 ## Goal

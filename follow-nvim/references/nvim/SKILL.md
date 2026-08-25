@@ -161,19 +161,19 @@ description: แนวทางการใช้งาน Neovim - Modern, exte
 
 > Goal: Lua API
 
-อ่าน `references/api.md` สำหรับ Lua API
+อ่าน `references/nvim-api.md` สำหรับ Lua API
 
 ### 26. CLI Commands
 
 > Goal: CLI Commands
 
-อ่าน `references/cli.md` สำหรับ CLI commands
+อ่าน `references/nvim-cli.md` สำหรับ CLI commands
 
 ### 27. Configuration Options
 
 > Goal: Configuration Options
 
-อ่าน `references/configuration.md` สำหรับ configuration options
+อ่าน `references/nvim-config.md` สำหรับ configuration options
 
 ### 28. RPC API
 
@@ -197,7 +197,7 @@ description: แนวทางการใช้งาน Neovim - Modern, exte
 
 > Goal: Official Website
 
-อ่าน `references/website.md` สำหรับ official website
+อ่าน `references/nvim-resources.md` สำหรับ official website
 
 ## Rules
 

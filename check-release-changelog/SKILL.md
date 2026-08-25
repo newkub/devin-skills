@@ -1,6 +1,7 @@
 ---
 name: check-release-changelog
 description: ดึง GitHub release diff ระหว่างสอง tags และสรุป changelog ดิบ
+argument-hint: "[range]"
 ---
 
 ## Goal

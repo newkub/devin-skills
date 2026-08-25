@@ -1,6 +1,7 @@
 ---
 name: compare
 description: เปรียบเทียบ options, tools, หรือ solutions เพื่อตัดสินใจ
+argument-hint: "[a] [b]"
 ---
 
 ## Goal

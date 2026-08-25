@@ -1,6 +1,7 @@
 ---
 name: create-skills-from-url
 description: สร้าง Devin skills จาก URL หรือ domain โดยดึงเนื้อหา จัดกลุ่ม และสร้าง subskills
+argument-hint: "[url]"
 ---
 
 ## Goal

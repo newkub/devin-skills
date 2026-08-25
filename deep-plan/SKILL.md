@@ -1,6 +1,7 @@
 ---
 name: deep-plan
 description: วางแผนละเอียดหลายมิติ ครอบคลุม risk, dependencies, alternatives, timeline
+argument-hint: "[topic]"
 ---
 
 ## Goal

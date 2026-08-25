@@ -1,6 +1,7 @@
 ---
 name: follow-open-web-from-env
 description: อ่าน .env files แล้วเปิด URL เพื่อไปเอา API keys หรือ secrets
+argument-hint: "[env-file]"
 ---
 
 ## Goal

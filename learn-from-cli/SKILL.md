@@ -1,6 +1,7 @@
 ---
 name: learn-from-cli
 description: เรียนรู้ command structure, subcommands, options, และ output ของ CLI tool ใดก็ได้
+argument-hint: "[command]"
 ---
 
 ## Goal

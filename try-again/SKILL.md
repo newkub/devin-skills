@@ -1,6 +1,7 @@
 ---
 name: try-again
 description: ทำตาม user prompt ล่าสุดอีกครั้ง
+argument-hint: "[prompt]"
 ---
 
 ## Goal

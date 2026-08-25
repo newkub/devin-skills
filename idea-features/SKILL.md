@@ -1,6 +1,7 @@
 ---
 name: idea-features
 description: สร้างไอเดียฟีเจอร์ใหม่และขยายจากของเดิม รายงานใน chat กระชับอ่านง่าย
+argument-hint: "[topic]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: watch-github-actions
 description: รันและตรวจสอบ GitHub Actions จนกว่าจะผ่าน
+argument-hint: "[run-id]"
 ---
 
 ## Goal

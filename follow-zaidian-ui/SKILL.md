@@ -1,6 +1,8 @@
 ---
 name: follow-zaidian-ui
-description: ใช้ Zaidian UI สำหรับ UI components สำหรับ SolidJS ด้วย accessible, customizable components ที่
+description: ใช้ Zaidian UI สำหรับ SolidJS UI components ด้วย Kobalte, Corvu และ Tailwind CSS
+related:
+  - follow-solidjs
 ---
 
 ## Goal

@@ -1,6 +1,8 @@
 ---
 name: follow-nuxt
 description: สร้างหรือปรับปรุง Nuxt 3/4 project ด้วย Universal Rendering และ Nitro
+related:
+  - follow-vue
 ---
 
 ## Goal
@@ -48,7 +50,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 
 > Goal: กำหนด coding standards
 
-1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template
+1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template (ดู `/follow-vue` สำหรับ Vue standards)
 2. Composables: ชื่อขึ้นต้นด้วย `use`, อยู่ใน `composables/` หรือ `layers/[feature]/composables/`
 3. Server API: ใช้ `defineEventHandler` หรือ `defineNitroPlugin`
 4. Types: ไม่ใช้ `any`, กำหนด types ชัดเจนใน `shared/types/`

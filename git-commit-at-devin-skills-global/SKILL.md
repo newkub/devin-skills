@@ -1,6 +1,7 @@
 ---
 name: git-commit-at-devin-skills-global
 description: Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ตามมาตรฐาน conventional commits
+argument-hint: "[target]"
 ---
 
 ## Goal

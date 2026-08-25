@@ -162,7 +162,7 @@ src/
 ### 6. Migration Path
 
 - ถ้า project โตขึ้น (3+ devs, high testability) → migrate ไป Clean Architecture (`references/patterns/clean-architecture.md`)
-- ถ้า project ต้องการ modular boundaries → migrate ไป `/follow-modular-monolith`
+- ถ้า project ต้องการ modular boundaries → ใช้ module structure ใน `src/modules/<feature>/` ตาม `/follow-architecture`
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 
 ## Expected Outcome

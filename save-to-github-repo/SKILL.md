@@ -1,6 +1,7 @@
 ---
 name: save-to-github-repo
 description: บันทึก local project ใหม่ขึ้น GitHub ด้วย git init, create repo, และ /git-commit-and-push
+argument-hint: "[path]"
 ---
 
 ## Goal

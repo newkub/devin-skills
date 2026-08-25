@@ -1,6 +1,7 @@
 ---
 name: report-release-changelog
 description: จัดรูปแบบ release changelog จากข้อมูล diff ระหว่าง GitHub tags
+argument-hint: "[range]"
 ---
 
 ## Goal

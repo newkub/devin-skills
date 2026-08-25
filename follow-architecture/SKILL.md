@@ -65,7 +65,6 @@ description: เลือก architecture pattern ตาม package manifest
 | Rust | `Cargo.toml` exists | `references/patterns/clean-architecture.md` |
 | Bun | `bun` in dependencies | `references/patterns/clean-architecture.md` |
 | Monorepo | `workspaces` in `package.json` | `/follow-monorepo` |
-| Medium scale | 3-5 devs, moderate complexity | `/follow-modular-monolith` |
 | Microservices | distributed system | `references/patterns/microservices-architecture.md` |
 
 ### 2. Priority Rules

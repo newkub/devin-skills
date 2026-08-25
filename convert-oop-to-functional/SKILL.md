@@ -1,6 +1,7 @@
 ---
 name: convert-oop-to-functional
 description: แปลง OOP code เป็น functional programming patterns
+argument-hint: "[target]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: copy-skills-global-to-project-readonly
 description: คัดลอก global skills ไปยัง project ในโหมด read-only โดยไม่กระทบ source จริง
+argument-hint: "[target]"
 ---
 
 ## Goal

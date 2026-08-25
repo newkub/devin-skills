@@ -42,7 +42,7 @@ description: สร้าง cross-platform desktop และ mobile application
 > Goal: Configuration
 
 อ่าน `guide/configuration.md` สำหรับการตั้งค่า
-อ่าน `references/configuration.md` สำหรับ configuration reference (tauri.conf.json, Capabilities, ACL)
+อ่าน `references/tauri-config.md` สำหรับ configuration reference (tauri.conf.json, Capabilities, ACL)
 
 ### 6. Security
 
@@ -96,19 +96,19 @@ description: สร้าง cross-platform desktop และ mobile application
 
 > Goal: CLI
 
-อ่าน `references/cli.md` สำหรับ CLI documentation (init, dev, build, mobile)
+อ่าน `references/tauri-cli.md` สำหรับ CLI documentation (init, dev, build, mobile)
 
 ### 15. API
 
 > Goal: API
 
-อ่าน `references/api.md` สำหรับ API reference (Core APIs, Plugin APIs)
+อ่าน `references/tauri-api.md` สำหรับ API reference (Core APIs, Plugin APIs)
 
 ### 16. Resources
 
 > Goal: Resources
 
-อ่าน `references/website.md` สำหรับ resources (official docs, plugins, community)
+อ่าน `references/tauri-resources.md` สำหรับ resources (official docs, plugins, community)
 
 ## Rules
 

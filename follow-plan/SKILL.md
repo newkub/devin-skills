@@ -1,6 +1,7 @@
 ---
 name: follow-plan
 description: อ่านแผนจาก AGENTS.md หรือเอกสาร plan แล้วทำตามทีละ step จนครบ พร้อม track ใน todo list
+argument-hint: "[plan-file]"
 ---
 
 ## Goal

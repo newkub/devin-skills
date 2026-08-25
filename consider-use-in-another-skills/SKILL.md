@@ -1,6 +1,7 @@
 ---
 name: consider-use-in-another-skills
 description: พิจารณาใช้หรืออ้างอิง skill อื่นก่อนสร้าง/duplicate
+argument-hint: "[skill-name]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: follow-open-github-secrets
 description: เปิดหน้า GitHub Secrets สำหรับตั้งค่า
+argument-hint: "[repo]"
 ---
 
 ## Goal

@@ -6,8 +6,8 @@
 # Core library
 bun add effect
 
-# Data validation
-bun add @effect/schema
+# Data validation (legacy — Schema is included in core `effect` since v3.x)
+# bun add @effect/schema  # only if using the standalone package
 
 # Platform abstractions
 bun add @effect/platform
@@ -179,10 +179,12 @@ const program = Effect.fail("error").pipe(
 )
 ```
 
-## @effect/schema
+## Schema (core `effect` package)
+
+`Schema` is part of core `effect` in v3.x — no separate install needed:
 
 ```ts
-import { Schema } from "@effect/schema"
+import { Schema } from "effect"
 
 const UserSchema = Schema.Struct({
   id: Schema.Number,
@@ -195,6 +197,8 @@ type User = Schema.Schema.Type<typeof UserSchema>
 const decode = Schema.decodeUnknownSync(UserSchema)
 const user = decode({ id: 1, name: "Alice", email: "alice@example.com" })
 ```
+
+> `@effect/schema` (v0.75.x) is the legacy standalone package; prefer `import { Schema } from "effect"` for v3.x
 
 ## Running Effects
 
@@ -211,4 +215,5 @@ Effect.runFork(program)       // Fork as a fiber
 - https://effect.website/docs/error-management/yieldable-errors/
 - https://effect.website/docs/error-management/expected-errors/
 - https://effect.website/docs/requirements-management/managing-layers/
+- https://effect.website/docs/schema/getting-started/
 - https://www.npmjs.com/package/effect

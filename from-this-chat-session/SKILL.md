@@ -1,6 +1,7 @@
 ---
 name: from-this-chat-session
 description: สกัดการทำงานจาก chat session นี้ไปสร้างเป็น skill ใหม่ใน repo
+argument-hint: "[target]"
 ---
 
 ## Goal

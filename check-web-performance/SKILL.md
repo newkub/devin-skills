@@ -1,6 +1,7 @@
 ---
 name: check-web-performance
 description: ติดตั้งและตรวจสอบ web performance ด้วย Core Web Vitals และ Lighthouse
+argument-hint: "[url]"
 ---
 
 ## Goal

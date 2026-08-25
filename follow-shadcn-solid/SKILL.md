@@ -1,6 +1,8 @@
 ---
 name: follow-shadcn-solid
 description: shadcn/ui port สำหรับ SolidJS - accessible, customizable components ที่ copy-paste ได้
+related:
+  - follow-solidjs
 ---
 
 ## Goal

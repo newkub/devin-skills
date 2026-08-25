@@ -52,6 +52,13 @@ mise tasks ls               # list tasks
 mise tasks add <name>       # add a task
 mise config                 # show loaded config files
 mise cfg                    # alias for config
+mise plugins                # list installed plugins
+mise plugins install <name> # install a plugin
+mise plugins update         # update plugins
+mise settings               # show settings
+mise settings set <k> <v>   # set a setting
+mise current                # show current tool versions
+mise upgrade <tool>         # upgrade tool to new version
 ```
 
 ## Configuration File
@@ -183,6 +190,9 @@ echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
 
 # fish
 echo 'mise activate fish | source' >> ~/.config/fish/config.fish
+
+# PowerShell
+Invoke-Expression (&mise activate powershell)
 ```
 
 ## Global Tools
@@ -196,6 +206,35 @@ mise list                 # check installed tools
 ## Environment-Specific Config
 
 Set `MISE_ENV=development` to load `mise.development.toml`. Platform-specific: `mise.windows.toml`, `mise.macos-arm64.toml`.
+
+## Settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `legacy_version_file` | boolean | `true` | Support `.tool-versions` |
+| `plugin_autoload` | boolean | `true` | Auto-load plugins |
+| `quiet` | boolean | `false` | Suppress output |
+| `ci` | boolean | `false` | CI mode |
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `MISE_CONFIG_FILE` | Config file path |
+| `MISE_DATA_DIR` | Data directory (`~/.local/share/mise`) |
+| `MISE_CONFIG_DIR` | Config directory (`~/.config/mise`) |
+| `MISE_CACHE_DIR` | Cache directory |
+| `MISE_DEBUG` | Enable debug output |
+| `MISE_ENV` | Environment name (e.g. `development`)
+
+## CI Integration
+
+```sh
+curl https://mise.run | sh     # install mise
+mise install                   # install all tools from mise.toml
+mise run -- bun test           # run with specific tools
+mise exec -- node --version    # use exec in CI
+```
 
 ## Source
 

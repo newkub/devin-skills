@@ -1,6 +1,7 @@
 ---
 name: list-github-release
 description: แสดง releases ทั้งหมดของ repo ที่ระบุบน GitHub
+argument-hint: "[repo]"
 ---
 
 ## Goal

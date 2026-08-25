@@ -1,6 +1,7 @@
 ---
 name: follow-principles-engineering
 description: ตรวจสอบว่าไฟล์ match กับ software engineering principles ตาม file name
+argument-hint: "[file]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: open-env-website
 description: อ่าน .env.example แล้วเปิด external services websites เพื่อกรอก API keys
+argument-hint: "[env-file]"
 ---
 
 ## Goal

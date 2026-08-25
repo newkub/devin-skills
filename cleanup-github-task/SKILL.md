@@ -1,6 +1,7 @@
 ---
 name: cleanup-github-task
 description: เก็บถาวรหรือลบ tasks ใน GitHub Projects
+argument-hint: "[target]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: run-all-task
 description: รันงานที่ค้างอยู่ทั้งหมดจากคิวตามลำดับ
+argument-hint: "[target]"
 ---
 
 ## Goal

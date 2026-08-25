@@ -1,6 +1,7 @@
 ---
 name: follow-context-rot
 description: Review และปรับปรุง context rot controls in long analysis and multi-session workflows
+argument-hint: "[session-id]"
 ---
 
 ## Goal

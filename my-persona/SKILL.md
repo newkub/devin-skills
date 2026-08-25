@@ -1,6 +1,7 @@
 ---
 name: my-persona
 description: กำหนดและจัดการ personal persona สำหรับ AI assistant interaction
+argument-hint: "[action]"
 ---
 
 ## Goal

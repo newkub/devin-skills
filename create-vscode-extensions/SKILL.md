@@ -1,6 +1,7 @@
 ---
 name: create-vscode-extensions
 description: สร้าง VS Code extensions ด้วย TypeScript และ VS Code API
+argument-hint: "[extension-name]"
 ---
 
 ## Goal

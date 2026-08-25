@@ -1,6 +1,7 @@
 ---
 name: pondering
 description: ครุ่นคิดและทบทวนอย่างลึกซึ้งก่อนตัดสินใจหรือดำเนินการ
+argument-hint: "[topic]"
 ---
 
 ## Goal

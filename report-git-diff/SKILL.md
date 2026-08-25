@@ -1,6 +1,7 @@
 ---
 name: report-git-diff
 description: รายงาน git diff พร้อมสรุปการเปลี่ยนแปลง สถิติ และ insights ในรูปแบบที่อ่านง่าย
+argument-hint: "[ref]"
 ---
 
 ## Goal

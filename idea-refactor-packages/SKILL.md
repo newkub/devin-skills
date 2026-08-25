@@ -1,6 +1,7 @@
 ---
 name: idea-refactor-packages
 description: สร้างไอเดียการสร้างหรือ refactor packages ใหม่พร้อม continuous numbering
+argument-hint: "[target]"
 ---
 
 ## Goal

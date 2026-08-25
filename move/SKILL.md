@@ -1,6 +1,7 @@
 ---
 name: move
 description: ย้ายไฟล์และอัพเดท reference
+argument-hint: "[source] [target]"
 ---
 
 ## Goal

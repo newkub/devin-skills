@@ -1,6 +1,7 @@
 ---
 name: git-restore-file
 description: กู้คืนไฟล์จาก git history โดยเริ่มจาก commit ล่าสุดและเดินกลับจนพบ
+argument-hint: "[file]"
 ---
 
 ## Goal

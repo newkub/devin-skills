@@ -54,7 +54,7 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 ### 6. Reference Documentation
 > Goal: Reference Documentation
 
-- อ้างอิง `references/website.md` สำหรับ official documentation
+- อ้างอิง `references/computation-resources.md` สำหรับ official documentation
 - ดู `references/sitemap.md` สำหรับ content map
 - อ้างอิง sources ที่เชื่อถือได้
 - อัปเดต content ให้ทันสมัยตาม version ล่าสุด

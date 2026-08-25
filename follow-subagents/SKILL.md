@@ -1,6 +1,11 @@
 ---
 name: follow-subagents
 description: ใช้ subagents ตาม job roles สำหรับงานทีแบ่งเป็นส่วนและทำขนานกันได้
+argument-hint: "[task]"
+auto_execution_mode: 3
+related:
+  - run-subagents-async-parallel
+  - follow-parallel
 ---
 
 ## Goal
@@ -35,7 +40,7 @@ description: ใช้ subagents ตาม job roles สำหรับงาน
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `/run_subagent` หรือ `/run-parallel-via-spawn-subagents`
+1. ใช้ `/run_subagent` หรือ `/run-subagents-async-parallel`
 2. ส่ง context ครบ: task, constraints, files, expected output
 3. กำหนด timeout หรือรอบการทำงาน
 4. ห้ามส่ง subtask ซ้ำซ้อนกัน

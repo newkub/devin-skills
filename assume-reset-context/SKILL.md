@@ -1,6 +1,7 @@
 ---
 name: assume-reset-context
 description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า
+argument-hint: "[file]"
 ---
 
 ## Goal

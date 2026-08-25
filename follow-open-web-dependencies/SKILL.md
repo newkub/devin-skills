@@ -1,6 +1,7 @@
 ---
 name: follow-open-web-dependencies
 description: เปิด website ของ dependencies จาก package manifest
+argument-hint: "[manifest]"
 ---
 
 ## Goal

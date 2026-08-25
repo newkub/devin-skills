@@ -1,6 +1,7 @@
 ---
 name: follow-write-devin-subagent
 description: สร้างหรือปรับปรุง Devin subagent AGENT.md ให้ถูกต้องตาม spec
+argument-hint: "[agent-name]"
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: follow-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
+argument-hint: "[target]"
 ---
 
 ## Goal

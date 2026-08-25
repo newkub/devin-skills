@@ -1,6 +1,7 @@
 ---
 name: cleanup-github-issue
 description: ปิด ลบ หรือจัดระเบียบ GitHub issues ที่ค้างอยู่
+argument-hint: "[repo]"
 ---
 
 ## Goal

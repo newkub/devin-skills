@@ -1,6 +1,7 @@
 ---
 name: implement-queue-md
 description: อ่าน QUEUE.md ทำงานทั้งหมดให้ครบด้วย deep-plan และ realize-implementation
+argument-hint: "[queue-file]"
 ---
 
 ## Goal

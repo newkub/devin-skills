@@ -1,6 +1,7 @@
 ---
 name: follow-request-math-formular
 description: ขอสูตรคณิตศาสตร์ที่กระชับและเข้าใจง่าย
+argument-hint: "[target]"
 ---
 
 ## Goal
