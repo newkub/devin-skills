@@ -1,6 +1,6 @@
 ---
 name: update-rules
-description: อัพเดท rules ทั้ง .devin/rules (libs/code-quality/architecture grouping) และ ast-grep rules พร้อมแปลงเป็น ast-grep YAML
+description: อัพเดท rules ทั้ง .devin/rules และ ast-grep rules พร้อมแปลงเป็น ast-grep YAML
 ---
 
 ## Goal

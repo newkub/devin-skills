@@ -24,7 +24,7 @@ description: แนวทางการจัดโครงสร้างแ�
 5. สร้าง `app/error.tsx`, `loading.tsx`, `not-found.tsx` สำหรับ error handling
 6. ใช้ `app/api/` สำหรับ API routes
 7. ใช้ route groups `(group)` สำหรับ organize routes โดยไม่กระทบ URL
-8. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
+8. ดูรายละเอียดใน [references/nextjs-core.md](references/nextjs-core.md)
 
 ### 2. Directory Organization
 
@@ -45,7 +45,7 @@ description: แนวทางการจัดโครงสร้างแ�
 3. ตั้งค่า `package.json` scripts (dev, build, start, lint, typecheck)
 4. สร้าง `proxy.ts` สำหรับ auth checks เท่านั้น (ไม่ใช่ database calls) — แทน `middleware.ts`
 5. ใช้ Turbopack สำหรับ dev และ build (stable default ใน Next.js 16)
-6. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
+6. ดูรายละเอียดใน [references/nextjs-core.md](references/nextjs-core.md)
 
 ### 4. Server And Client Components
 
@@ -67,7 +67,7 @@ description: แนวทางการจัดโครงสร้างแ�
 4. ใช้ `'use cache'` directive สำหรับ Cache Components (Next.js 16 — explicit opt-in caching)
 5. ใช้ `generateMetadata` สำหรับ SEO ในทุก page
 6. ใช้ `generateStaticParams` สำหรับ static generation
-7. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
+7. ดูรายละเอียดใน [references/nextjs-advanced.md](references/nextjs-advanced.md)
 
 ### 6. Server Actions
 

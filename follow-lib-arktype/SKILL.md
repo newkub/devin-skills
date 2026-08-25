@@ -39,7 +39,7 @@ description: TypeScript runtime validation ด้วย native type syntax 1:1, 
 3. กำหนด object schemas ด้วย `type({ name: "string", age: "number" })`
 4. ใช้ optional fields ด้วย `"field?"` syntax
 5. ใช้ union และ intersection ด้วย `|` และ `&`
-6. ดูรายละเอียดใน [references/arktype-api.md](references/arktype-api.md)
+6. ดูรายละเอียดใน [references/arktype-api-core.md](references/arktype-api-core.md)
 
 ### 4. Validate Data
 
@@ -49,7 +49,7 @@ description: TypeScript runtime validation ด้วย native type syntax 1:1, 
 2. ใช้ `Schema.assert(data)` สำหรับ throw บน error
 3. ใช้ `Schema.is(data)` หรือ `Schema.can(data)` สำหรับ boolean check
 4. ตรวจ `instanceof ArkErrors` สำหรับ error handling
-5. ดูรายละเอียดใน [references/arktype-api.md](references/arktype-api.md)
+5. ดูรายละเอียดใน [references/arktype-api-core.md](references/arktype-api-core.md)
 
 ### 5. Pattern Matching
 
@@ -77,7 +77,7 @@ description: TypeScript runtime validation ด้วย native type syntax 1:1, 
 1. ใช้ `typeof Schema.t` สำหรับ type inference
 2. ใช้ `type.scope()` สำหรับ grouped type definitions ที่ reference กัน
 3. หลีกเลี่ยง type assertions ที่ไม่จำเป็น — ใช้ inference จาก ArkType
-4. ดูรายละเอียดใน [references/arktype-api.md](references/arktype-api.md)
+4. ดูรายละเอียดใน [references/arktype-api-advanced.md](references/arktype-api-advanced.md)
 
 ### 8. Performance And Integration
 

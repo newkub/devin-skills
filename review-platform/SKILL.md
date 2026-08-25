@@ -1,6 +1,6 @@
 ---
 name: review-platform
-description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, performance, accessibility, battery, compatibility
+description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, performance, accessibility
 ---
 
 ## Goal
