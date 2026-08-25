@@ -80,7 +80,7 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 ### 3. Skills Mapping
 
 - ระบุ skills ด้วย `skill-name: /skill-name`
-- รวมทั้ง skills ทีเรียกโดยตรงและอ้างอิงบ่อย
+- รวมทั้ง skills ที่เรียกโดยตรงและอ้างอิงบ่อย
 
 ### 4. Workspace Rules
 
