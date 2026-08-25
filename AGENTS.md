@@ -64,8 +64,13 @@ related:
 ### 2. Architecture
 
 - `devin-cli-skills: /follow-write-devin-skills`
+- `skill-format: /follow-write-devin-skills/references/skill-md.md`
+- `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+- `submodules: 3 (analyze-codebase-quality, ask-requirement, visualize-devin)`
 
 ### 3. Skills
+
+#### Core
 
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
@@ -76,9 +81,32 @@ related:
 - `review-devin-global-skills: /review-devin-global-skills`
 - `git-commit: /git-commit`
 - `ship: /ship`
+- `report: /report`
+
+#### Update
+
 - `update-project: /update-project`
 - `update-project-skills: /update-project-skills`
-- `report: /report`
+- `update-devin-global-skills: /update-devin-global-skills`
+- `update-all-devin-global-skills: /update-all-devin-global-skills`
+- `update-devin-subagents: /update-devin-subagents`
+- `update-readme: /update-readme`
+- `update-docs: /update-docs`
+- `update-features: /update-features`
+- `update-gitignore: /update-gitignore`
+- `update-dot-devin: /update-dot-devin`
+- `update-contributing-md: /update-contributing-md`
+- `update-rules: /update-rules`
+- `update-test: /update-test`
+- `update-reference: /update-reference`
+- `update-usage: /update-usage`
+- `update-github-metadata: /update-github-metadata`
+- `update-github-task: /update-github-task`
+- `update-dependencies-latest: /update-dependencies-latest`
+- `run-release: /run-release`
+
+#### Review
+
 - `review-refactor: /review-refactor`
 - `review-update: /review-update`
 - `review-implement: /review-implement`
@@ -104,19 +132,32 @@ related:
 - `review-dot-devin: /review-dot-devin`
 - `review-devin-subagents: /review-devin-subagents`
 - `review-features: /review-features`
-- `follow-create-analyze-cli: /follow-create-analyze-cli`
-- `follow-create-review-cli: /follow-create-review-cli`
 - `review-readme: /review-readme`
 - `review-docs: /review-docs`
 - `review-usage: /review-usage`
-- `update-usage: /update-usage`
-- `run-release: /run-release`
-- `update-dependencies-latest: /update-dependencies-latest`
-- `watch-cloudflare-workers: /watch-cloudflare-workers`
+- `review-consistency: /review-consistency`
+- `review-content-coverage: /review-content-coverage`
+- `review-redundancy: /review-redundancy`
+- `review-restructure: /review-restructure`
+- `review-workspace: /review-workspace`
+
+#### Create
+
+- `follow-create-analyze-cli: /follow-create-analyze-cli`
+- `follow-create-review-cli: /follow-create-review-cli`
+
+#### Watch
+
+- `watch-deploy: /watch-deploy`
 - `watch-typecheck: /watch-typecheck`
 - `watch-build: /watch-build`
 - `watch-test: /watch-test`
-- `watch-deploy: /watch-deploy`
+- `watch-lint: /watch-lint`
+- `watch-cloudflare-workers: /watch-cloudflare-workers`
+- `watch-github-actions: /watch-github-actions`
+- `watch-browser: /watch-browser`
+- `watch-browser-console: /watch-browser-console`
+- `watch-terminal: /watch-terminal`
 
 ### 4. Workspaces
 
