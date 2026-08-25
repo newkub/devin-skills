@@ -43,7 +43,7 @@ Step dependencies: ทำตามลำดับ แต่แต่ละ group
 
 1. จัดลำดับตาม dependencies: prerequisites ก่อน
 2. หา groups ที่ independent สำหรับ parallel execution
-3. ถ้ามี independent groups ให้ใช้ `/follow-subagents` หรือ `/follow-parallel` ตามความเหมาะสม
+3. ถ้ามี independent groups ให้ใช้ `/follow-devin-subagents` หรือ `/follow-parallel` ตามความเหมาะสม
 4. กำหนด max recursion depth เพื่อป้องกัน infinite loop
 
 ### 5. Execute Sub-Workflows
