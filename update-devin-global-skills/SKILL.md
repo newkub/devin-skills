@@ -38,7 +38,7 @@ auto_execution_mode: 3
 > Goal: ปรับโครงสร้างและย้าย skills ไปตำแหน่งที่เหมาะสม
 
 1. ทำ `/review-devin-global-skills` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
-2. ทำ `/refactor-to-single-responsibility` สำหรับ skills ที่มี SRP violations
+2. ทำ `/follow-single-responsibility` สำหรับ skills ที่มี SRP violations
 3. ทำ `/relocation` เพื่อย้าย skills ไปยังตำแหน่งที่เหมาะสมตาม prefix
 4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/follow-write-devin-skills`
 5. ถ้ามี skill ที่ prefix ไม่ตรงกับ responsibility → เปลี่ยน prefix และย้าย
