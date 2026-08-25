@@ -1,6 +1,6 @@
 ---
 name: review-usage
-description: ตรวจสอบ usage.kdl CLI spec ก่อน update-usage แก้ไข ครอบคลุม syntax และ coverage
+description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage แก้ไข
 related:
   - update-usage
   - follow-usage
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-Review `usage.kdl` CLI spec ก่อนเรียก `update-usage` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects และ version ครบถ้วนและถูกต้อง
+Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown docs) ก่อนเรียก `update-usage` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects, version และ generated docs ครบถ้วนและถูกต้อง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-usage` — ตรวจ `usage.kdl` structure, syntax, coverage และ consistency ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review
+ใช้ก่อนเรียก `update-usage` — ตรวจ `usage.kdl` structure, syntax, coverage และ `USAGE.md` freshness ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review
 
 ## Execute
 
@@ -76,7 +76,17 @@ Review `usage.kdl` CLI spec ก่อนเรียก `update-usage` เพื
 4. ระบุ missing หรือ extra items
 5. บันทึก findings พร้อม evidence
 
-### 7. Score And Report
+### 7. Check USAGE.md Freshness
+
+> Goal: `USAGE.md` ตรงกับ `usage.kdl`
+
+1. ตรวจว่า `USAGE.md` มีอยู่ ถ้าไม่ → flag เป็น High
+2. รัน `usage generate markdown -f usage.kdl` แล้วเปรียบเทียบกับ `USAGE.md` ที่มี
+3. ถ้า diff → flag เป็น Medium (stale docs)
+4. ตรวจว่า `USAGE.md` ไม่เกิน 250 บรรทัด
+5. บันทึก findings พร้อม evidence
+
+### 8. Score And Report
 
 > Goal: สรุป review score และ findings
 
