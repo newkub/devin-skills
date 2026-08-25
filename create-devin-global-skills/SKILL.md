@@ -1,6 +1,19 @@
 ---
 name: create-devin-global-skills
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
+argument-hint: "[skill-name]"
+related:
+  - follow-write-devin-skills
+  - follow-coverage
+  - learn-from-references
+  - update-devin-global-skills
+  - scan-codebase
+  - validate
+  - check-reference
+  - update-reference
+  - follow-content-quality
+  - ask-me
+  - ship-code
 ---
 
 ## Goal
@@ -94,3 +107,6 @@ description: สร้าง skill ใหม่ใน devin global skills โด
 - `related` references ครบถ้วน ไม่มี missing/unused
 - directory structure ครบถ้วนตาม `/follow-write-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
 - ไม่ซ้ำกับ skills ที่มีอยู่ หรือได้รับการยืนยันให้ extend หรือ rename
+- `follow-coverage` ครอบคลุมทุก features, APIs, use cases, references และ edge cases
+- `learn-from-references` ดึงความรู้จาก `references/` พร้อมทำ `/follow-coverage`
+- `update-devin-global-skills` ดูแล skills repo โดยใช้ `/follow-write-devin-skills`, `/learn-from-references` และอื่นๆ ตามเหมาะสม
