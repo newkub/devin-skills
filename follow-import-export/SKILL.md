@@ -126,7 +126,7 @@ description: จัดการ import strategy และ barrel exports สำ�
 - ast-grep: ใช้ pattern `import { $$$ } from "../../../$$"` rewrite เป็น alias path — ปลอดภัย ไม่ break syntax
 - Bun script: ใช้ `Bun.Glob` scan ไฟล์ + `Bun.file()` + `Bun.write()` สำหรับ batch migration
 - เพิ่ม `dryRun` option สำหรับ preview ก่อน apply
-- เก็บ scripts ใน `.devin/scripts/temp/` และลบหลังใช้งาน
+- เก็บ scripts ใน `$env:TEMP` และลบหลังใช้งาน
 
 ### Identifier Renaming
 

@@ -36,7 +36,7 @@ argument-hint: "[task]"
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `/run-subagents-async-parallel` เพื่อ spawn หลาย subagents พร้อมกัน
+1. ใช้ `/use-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
 2. ส่ง context ครบ: task, constraints, files, expected output
 3. กำหนด timeout หรือรอบการทำงาน
 4. ห้ามส่ง subtask ซ้ำซ้อนกัน

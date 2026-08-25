@@ -56,7 +56,7 @@ argument-hint: "[command]"
 3. ใช้ `print` สำหรับ side-effect logging
 4. จัดการ data types: int, float, string, bool, list, record, table, filesize, duration
 5. ใช้ `into <type>` เพื่อ convert data
-6. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `temp/` ถ้าชั่วคราวตาม `/use-scripts`
+6. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `$env:TEMP` ถ้าชั่วคราวตาม `/use-scripts`
 
 ### 5. Integrate With Use Scripts
 
@@ -107,7 +107,7 @@ argument-hint: "[command]"
 ### 6. Script Location
 
 - ใช้ `.devin/scripts/` สำหรับ permanent scripts
-- ใช้ `temp/` หรือ `.devin/scripts/temp/` สำหรับ throwaway scripts
+- ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.nu` สำหรับ Nushell scripts
 
 ## Expected Outcome

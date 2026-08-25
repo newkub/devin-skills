@@ -57,7 +57,7 @@ argument-hint: "[command]"
 4. ใช้ `Select-String` สำหรับ text search แทน grep บน Windows
 5. ใช้ `Where-Object`, `ForEach-Object`, `Sort-Object` สำหรับ pipelines
 6. ใช้ `ConvertFrom-Json`, `ConvertTo-Json` สำหรับ JSON
-7. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `temp/` ถ้าชั่วคราวตาม `/use-scripts`
+7. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `$env:TEMP` ถ้าชั่วคราวตาม `/use-scripts`
 
 ### 5. Integrate With Use Scripts
 
@@ -96,7 +96,7 @@ argument-hint: "[command]"
 ### 4. Script Location
 
 - ใช้ `.devin/scripts/` สำหรับ permanent scripts
-- ใช้ `temp/` หรือ `.devin/scripts/temp/` สำหรับ throwaway scripts
+- ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.ps1` สำหรับ PowerShell scripts
 
 ## Expected Outcome

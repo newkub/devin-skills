@@ -78,7 +78,7 @@ description: รัน API tests โดยเรียก endpoints และต
 
 - ใช้ Bun native APIs ถ้าใช้ `.ts`
 - ใช้ CDN imports สำหรับ dependencies
-- เก็บ permanent scripts ใน `.devin/scripts/` และ temp scripts ใน `temp/`
+- เก็บ permanent scripts ใน `.devin/scripts/` และ temp scripts ใน `$env:TEMP`
 
 ## Expected Outcome
 

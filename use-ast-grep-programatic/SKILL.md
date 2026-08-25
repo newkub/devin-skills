@@ -26,7 +26,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 
 > Goal: สร้าง Bun script ที่ใช้ ast-grep แบบ programmatic สำหรับ automated analysis
 
-1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `temp/`
+1. ทำ `/use-scripts` เพื่อสร้าง script ใน `.devin/scripts/` หรือ `$env:TEMP`
 2. เลือก ast-grep interface:
    - napi bindings: `import { parse, findPattern } from '@ast-grep/napi'` — สำหรับ in-process analysis
    - CLI wrapper: `Bun.$\`ast-grep scan --json\`` — สำหรับ batch scanning
@@ -64,7 +64,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 - ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/@ast-grep/napi`
 - script ต้องมี `dryRun` option
 - script ต้อง output เป็น JSON สำหรับ machine consumption
-- เก็บ scripts ใน `.devin/scripts/` (permanent) หรือ `temp/` (throwaway)
+- เก็บ scripts ใน `.devin/scripts/` (permanent) หรือ `$env:TEMP` (throwaway)
 
 ### 2. Integration
 

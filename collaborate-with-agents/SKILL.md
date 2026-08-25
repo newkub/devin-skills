@@ -26,7 +26,7 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 
 > Goal: สร้าง subagents ตาม subtasks
 
-1. ทำ `/run-subagents-async-parallel` เพื่อสร้าง agent ตาม subtask พร้อม merge, review, validate, verify
+1. ทำ `/use-subagents` เพื่อสร้าง agent ตาม subtask พร้อม merge, review, validate, verify
 2. ส่ง prompt ทีชัดเจนให้แต่ละ agent
 3. ระบุ deliverable และ constraints
 

@@ -21,7 +21,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 ### 2. Create Script
 > Goal: Create Script
 
-1. สร้างไฟล์ `.ts` ใน `scripts/temp/` ที่ root workspace เท่านั้น
+1. สร้างไฟล์ `.ts` ใน `$env:TEMP` (OS temp directory) เท่านั้น ใช้ `os.tmpdir()` ใน Bun
 2. ไม่ต้องสร้าง scripts ในแต่ละ workspace
 3. เขียนแบบ composable: `createScript()` return state + actions
 4. ใช้ Bun native APIs และ CDN imports
@@ -30,7 +30,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 > Goal: Execute and Cleanup
 
 1. รัน script ด้วย `bun run <script>.ts`
-2. ลบ scripts จาก `scripts/temp/` หลังใช้งาน
+2. ลบ scripts จาก `$env:TEMP` หลังใช้งาน
 3. ลบ scripts ที่สร้างด้วย `/follow-write-devin-skills` หลังใช้งาน
 
 ## Rules
@@ -40,11 +40,11 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 ตำแหน่งไฟล์สำหรับเก็บ scripts
 
 ```
-scripts/temp/    # Global scripts ที่ root workspace เท่านั้น (ลบหลังใช้)
+$env:TEMP/       # OS temp directory (ลบหลังใช้) — ใช้ os.tmpdir() ใน Bun
 ```
 
-- สร้าง scripts เฉพาะใน `scripts/temp/` ที่ root workspace
-- ไม่สร้าง scripts ใน sub-workspaces หรือแต่ละ workspace
+- สร้าง scripts เฉพาะใน `$env:TEMP` (OS temp directory)
+- ไม่สร้าง scripts ใน project workspace หรือ sub-workspaces
 - ใช้ `.ts` เท่านั้น
 - ตั้งชื่อสื่อถึงการทำงาน
 
@@ -125,5 +125,5 @@ await script.run()
 
 - Bun scripts ที่ใช้งานได้จริง
 - ไม่ต้อง install dependencies
-- Scripts ใน `scripts/temp/` ที่ root workspace เท่านั้น
+- Scripts ใน `$env:TEMP` (OS temp directory) เท่านั้น
 - Scripts ที่ใช้แล้วลบออก

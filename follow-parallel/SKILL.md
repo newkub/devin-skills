@@ -3,7 +3,7 @@ name: follow-parallel
 description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
 auto_execution_mode: 3
 related:
-  - run-subagents-async-parallel
+  - use-subagents
   - follow-subagents
 ---
 

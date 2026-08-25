@@ -37,7 +37,7 @@ argument-hint: "[target]"
 > Goal: สร้าง script สำหรับ automate การแก้ไข
 
 1. ทำ `/use-scripts` เพื่อเลือก shell/type ที่เหมาะสม
-2. เขียน script ใน `temp/` หรือ `.devin/scripts/temp/` เท่านั้น
+2. เขียน script ใน `$env:TEMP` (OS temp directory) เท่านั้น
 3. Script ต้องมี dry run mode เพื่อ preview ก่อน execute จริง
 4. Script ต้องมี backup mode: สำเนาไฟล์เดิมก่อนแก้
 5. Script ต้อง validate โครงสร้างไฟล์หลังแก้ (เช่น JSON/YAML/TS syntax)
@@ -66,7 +66,7 @@ argument-hint: "[target]"
 
 > Goal: ลบไฟล์ชั่วคราวและส่งมอบงาน
 
-1. ลบ scripts จาก `temp/` และ `.devin/scripts/temp/`
+1. ลบ scripts จาก `$env:TEMP`
 2. ลบ backup files หลังยืนยันว่าการแก้ไขผ่านทุก validation
 3. ทำ `/ship-code`
 4. ถ้า `ship-code` ไม่ผ่าน → report สถานะ
@@ -83,7 +83,7 @@ argument-hint: "[target]"
 
 ### 2. Script Location
 
-- เก็บ scripts ใน `temp/` หรือ `.devin/scripts/temp/` เท่านั้น
+- เก็บ scripts ใน `$env:TEMP` (OS temp directory) เท่านั้น
 - ลบ scripts หลังใช้งานเสมอ
 - ไม่ commit scripts ชั่วคราวเข้า repository
 

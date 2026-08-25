@@ -22,7 +22,7 @@ argument-hint: "[file]"
 
 1. ตรวจสอบ git working tree สะอาด: รัน `git status --porcelain` ถ้ามี unstaged changes → ถามผู้ใช้ก่อนดำเนินการ (ใช้ `/ask-me`)
 2. บันทึก hash ของไฟล์ก่อนแก้: รัน `git rev-parse HEAD` เพื่อเก็บ commit hash ปัจจุบันสำหรับ rollback
-3. ถ้าไฟล์ยังไม่ถูก track โดย git → สร้างสำเนาสำรองไว้ใน `temp/` ก่อนแก้
+3. ถ้าไฟล์ยังไม่ถูก track โดย git → สร้างสำเนาสำรองไว้ใน `$env:TEMP` ก่อนแก้
 4. ถ้าเป็น monorepo ระบุ workspace ที่ได้รับผลกระทบ
 
 ### 2. Read And Understand
@@ -71,7 +71,7 @@ argument-hint: "[file]"
 
 1. ถ้าเป็น build config → ทดสอบ `bun run build` ว่าผ่าน
 2. ถ้าเป็น CI/CD config → ตรวจสอบว่า pipeline จะไม่ fail จากการเปลี่ยนแปลง
-3. ลบไฟล์สำรองใน `temp/` หลังยืนยันว่าการแก้ไขผ่านทุก validation
+3. ลบไฟล์สำรองใน `$env:TEMP` หลังยืนยันว่าการแก้ไขผ่านทุก validation
 4. ถ้า validation ไม่ผ่านและแก้ไม่ได้ → rollback ด้วย `git checkout <hash> -- <file>` และ report
 5. สรุปการเปลี่ยนแปลง: ไฟล์ที่แก้, ค่าที่เปลี่ยน, impact ที่ตรวจสอบแล้ว
 
@@ -81,7 +81,7 @@ argument-hint: "[file]"
 
 - ตรวจสอบ git working tree สะอาดก่อนแก้เสมอ — ถ้าไม่สะอาด → ถามผู้ใช้ก่อน
 - เก็บ commit hash ก่อนแก้เสมอเพื่อใช้ rollback ด้วย `git checkout <hash> -- <file>`
-- ไฟล์ที่ไม่ถูก track โดย git → สร้างสำเนาใน `temp/` ก่อนแก้
+- ไฟล์ที่ไม่ถูก track โดย git → สร้างสำเนาใน `$env:TEMP` ก่อนแก้
 - ถ้า validation ไม่ผ่านภายใน 3 ครั้ง → rollback และ report (ไม่ฝืนแก้ต่อ)
 - ห้ามแก้ไข config หลายไฟล์พร้อมกันโดยไม่มี rollback plan
 
@@ -136,7 +136,7 @@ argument-hint: "[file]"
 - ถ้าต้องแก้ config มากกว่า 5 ไฟล์ → ใช้ `/use-scripts` เพื่อ automate การแก้และ validate
 - Script ต้องมี dry run mode เพื่อ preview ก่อน execute จริง
 - Script ต้อง validate config structure หลังแก้ (เช่น JSON/YAML schema validation)
-- ลบ scripts จาก `temp/` และ `.devin/scripts/temp/` หลังใช้งาน
+- ลบ scripts จาก `$env:TEMP` หลังใช้งาน
 
 ## Expected Outcome
 
@@ -145,4 +145,4 @@ argument-hint: "[file]"
 - การเปลี่ยนแปลงผ่าน validation ครบทุกประเภทตาม Config-Specific Validation table
 - ไม่มี broken references และไม่มี secrets รั่วหลังการแก้ไข
 - Config สอดคล้องกันทั่ว monorepo ถ้ามีการ sync ข้าม workspaces
-- ไฟล์สำรองใน `temp/` ถูกลบหลังยืนยันการแก้ไขสำเร็จ
+- ไฟล์สำรองใน `$env:TEMP` ถูกลบหลังยืนยันการแก้ไขสำเร็จ

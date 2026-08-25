@@ -73,7 +73,7 @@ description: สร้างและจัดการ .gitignore ที่ roo
 - Environment: `.env*`, `!.env.example`, `.dev.vars`, `*.local`
 - Logs: `*.log`, `logs/`
 - OS: `.DS_Store`, `Thumbs.db`, `desktop.ini`
-- Temporary: `*.tmp`, `*.temp`, `.cache/`, `./temp/`, `/scripts/temp/`
+- Temporary: `*.tmp`, `*.temp`, `.cache/`
 - IDE: `.vscode/`, `.idea/`, `*.sublime-*`, `*.swp`, `*.swo`
 
 ### 4. Monorepo Guidelines

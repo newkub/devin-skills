@@ -9,7 +9,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 ## Scope
 
-ใช้สำหรับ verification ทีลึกซึ้งกว่า `/validate` หลังจาก `/merge` ผลลัพธ์จาก `run-subagents-async-parallel` หรือหลัง implementation ซับซ้อน
+ใช้สำหรับ verification ทีลึกซึ้งกว่า `/validate` หลังจาก `/merge` ผลลัพธ์จาก `use-subagents` หรือหลัง implementation ซับซ้อน
 
 ## Execute
 

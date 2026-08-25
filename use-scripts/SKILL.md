@@ -43,10 +43,10 @@ argument-hint: "[target]"
 
 > Goal: เลือก location สำหรับ script
 
-1. `temp/` — scripts ชั่วคราวที่ workspace root (throwaway, gitignored)
+1. `$env:TEMP` — scripts ชั่วคราวใน OS temp directory (throwaway, ไม่สร้างใน project)
 2. `.devin/scripts/` — scripts ถาวร (committed, เก็บไว้ใช้ซ้ำ)
-3. `.devin/scripts/temp/` — scripts ชั่วคราวใน .devin (default, gitignored)
-4. ทำตาม `/follow-gitignore` เพื่อให้ temp directories ถูก ignore
+3. ไม่สร้าง `temp/` หรือ `.devin/scripts/temp/` ใน project workspace
+4. ใช้ `$env:TEMP` บน Windows, `$TMPDIR` บน Unix, `os.tmpdir()` ใน Bun
 
 ### 3. Create Script
 
@@ -71,7 +71,7 @@ argument-hint: "[target]"
    - `nu <script>.nu` สำหรับ Nushell scripts
    - `pwsh <script>.ps1` สำหรับ PowerShell scripts
    - `ast-grep scan` สำหรับ AST operations
-4. ลบ scripts จาก `temp/` และ `.devin/scripts/temp/` หลังใช้งานเสร็จ
+4. ลบ scripts จาก `$env:TEMP` หลังใช้งานเสร็จ
 
 ## Rules
 
@@ -84,9 +84,8 @@ argument-hint: "[target]"
 
 ### 2. File Locations
 
-- `temp/` — throwaway scripts
-- `.devin/scripts/` — permanent scripts
-- `.devin/scripts/temp/` — default temp location
+- `$env:TEMP` — throwaway scripts (OS temp directory, ไม่สร้างใน project)
+- `.devin/scripts/` — permanent scripts (committed)
 - ใช้ `.ts` สำหรับ Bun, `.nu` สำหรับ Nushell, `.ps1` สำหรับ PowerShell
 
 ### 3. Bun Native API Preference
@@ -121,5 +120,5 @@ import { render } from "https://esm.sh/eta@4.6.0"
 - Dependencies ผ่าน CDN (ไม่ต้อง install)
 - สามารถใช้ `eta` สำหรับ template/render ใน Bun scripts
 - Scripts อยู่ใน location ถูกต้องตาม Rules
-- Temp scripts ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
+- Temp scripts ใน `$env:TEMP` ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
 - Dry run mode สำหรับทดสอบก่อน execute จิง

@@ -4,7 +4,7 @@ description: ใช้ subagents ตาม job roles สำหรับงาน
 argument-hint: "[task]"
 auto_execution_mode: 3
 related:
-  - run-subagents-async-parallel
+  - use-subagents
   - follow-parallel
 ---
 
@@ -40,7 +40,7 @@ related:
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `/run_subagent` หรือ `/run-subagents-async-parallel`
+1. ใช้ `/run_subagent` หรือ `/use-subagents`
 2. ส่ง context ครบ: task, constraints, files, expected output
 3. กำหนด timeout หรือรอบการทำงาน
 4. ห้ามส่ง subtask ซ้ำซ้อนกัน
