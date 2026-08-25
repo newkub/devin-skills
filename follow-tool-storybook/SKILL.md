@@ -15,7 +15,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 1. Install Storybook
 
-> Goal: Install Storybook
+> Goal: ติดตั้ง Storybook ด้วย CLI
 
 1. รัน `bunx storybook@latest create` ใน project root
 2. หรือรัน `bunx storybook@7 create` สำหรับ version 7.x.x
@@ -24,7 +24,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 2. Configure Main File
 
-> Goal: Configure Main File
+> Goal: สร้าง .storybook/main.ts สำหรับ project configuration
 
 1. สร้าง `.storybook/main.ts` ใน project root
 2. ตั้งค่า `framework` สำหรับ framework-specific settings
@@ -34,7 +34,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 3. Configure Preview File
 
-> Goal: Configure Preview File
+> Goal: สร้าง .storybook/preview.ts สำหรับ story rendering
 
 1. สร้าง `.storybook/preview.ts` สำหรับ story rendering
 2. เพิ่ม global decorators สำหรับ component wrapping
@@ -44,7 +44,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 4. Write Stories
 
-> Goal: Write Stories
+> Goal: เขียน stories ตาม component variations
 
 1. สร้าง `.stories.ts` ไฟล์ตาม component
 2. import `Meta` และ `StoryObj` types
@@ -54,7 +54,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 5. Configure Styling
 
-> Goal: Configure Styling
+> Goal: ตั้งค่า CSS tooling สำหรับ Storybook
 
 1. ตั้งค่า CSS tooling สำหรับ Storybook environment
 2. ตั้งค่า Tailwind, Material UI, หรือ Sass ถ้าใช้
@@ -64,7 +64,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 6. Setup Addons
 
-> Goal: Setup Addons
+> Goal: ติดตั้งและตั้งค่า Storybook addons
 
 1. install addons ที่จำเป็นเช่น `@storybook/addon-essentials`
 2. register addons ใน `main.ts` config
@@ -74,7 +74,7 @@ description: ตั้งค่าและใช้ Storybook สำหรั�
 
 ### 7. Configure Testing
 
-> Goal: Configure Testing
+> Goal: ตั้งค่า interaction และ accessibility testing
 
 1. setup interaction testing ด้วย `@storybook/addon-interactions`
 2. setup visual testing ด้วย Chromatic หรือ similar tools

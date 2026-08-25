@@ -15,7 +15,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 1. Understand GritQL Basics
 
-> Goal: Understand GritQL Basics
+> Goal: เข้าใจพื้นฐาน GritQL pattern syntax
 
 1. อ่าน GritQL documentation ที่ `https://biomejs.dev/reference/gritql/`
 2. เรียนรู้ pattern syntax ด้วย code snippets ใน backticks
@@ -24,7 +24,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 2. Set Up Language Target
 
-> Goal: Set Up Language Target
+> Goal: ระบุ target language สำหรับ patterns
 
 1. ระบุ target language ด้วย `language js`, `language css`, หรือ `language json`
 2. ใช้ flavors เช่น `typescript`, `jsx` สำหรับ JavaScript
@@ -33,7 +33,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 3. Write Basic Patterns
 
-> Goal: Write Basic Patterns
+> Goal: เขียน code snippet patterns อย่างถูกต้อง
 
 1. เขียน code snippet patterns ใน backticks เช่น `` `console.log($message)` ``
 2. ใช้ variables สำหรับ flexible matching เช่น `$method`, `$message`
@@ -42,7 +42,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 4. Add Conditions And Filters
 
-> Goal: Add Conditions And Filters
+> Goal: เพิ่ม conditions และ filters ด้วย where clause
 
 1. ใช้ `where` clause สำหรับ conditions
 2. ใช้ pattern matching operator `<:` สำหรับ pattern comparison
@@ -51,7 +51,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 5. Create Analyzer Plugin
 
-> Goal: Create Analyzer Plugin
+> Goal: สร้าง GritQL plugin สำหรับ Biome linter
 
 1. สร้าง GritQL plugin file สำหรับ Biome linter
 2. ใช้ `register_diagnostic()` สำหรับ custom lint rules
@@ -60,7 +60,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 6. Use Biome Search Command
 
-> Goal: Use Biome Search Command
+> Goal: ใช้ biome search สำหรับ structural code search
 
 1. ใช้ `biome search` สำหรับ structural code search
 2. ใช้ single quotes รอบ GritQL patterns เพื่อ avoid shell conflicts
@@ -69,7 +69,7 @@ description: ตั้งค่าและใช้งาน GritQL สำห�
 
 ### 7. Optimize Performance
 
-> Goal: Optimize Performance
+> Goal: ปรับปรุง performance ของ patterns
 
 1. ใช้ anchor kinds สำหรับ efficient matching
 2. หลีกเลี่ยง overly broad patterns

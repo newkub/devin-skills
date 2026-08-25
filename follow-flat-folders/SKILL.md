@@ -17,7 +17,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 
 > Goal: รู้ขอบเขตและข้อจำกัดก่อนแปลง
 
-1. ระบุ target directory ที่ต้องการ fla
+1. ระบุ target directory ที่ต้องการ flatten
 2. ระบุ exclusion patterns: `node_modules`, `.git`, `dist`, `.output`, `target`, `build`, `coverage`, hidden files
 3. ตรวจสอบ `package.json`, `tsconfig.json`, `Cargo.toml` หรือ config อื่นๆ เพื่อดู path alias และ build pipeline
 4. ทำ `/scan-codebase` เพื่อรายการไฟล์ทั้งหมดใน scope
@@ -40,7 +40,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 2. ตรวจสอบว่าไม่ overwrite ไฟล์ที่มีอยู่
 3. แสดง mapping ตัวอย่างให้ user ด้วย `/report-table`
 4. ถ้ามีการลบ/ย้ายจำนวนมาก ให้ขอ user confirmation ด้วย `/ask_user_question` ก่อนดำเนื่อนการจริง
-5. ถ้า user ไม่ยินยัน → stop และ repor
+5. ถ้า user ไม่ยินยัน → stop และ report
 
 ### 4. Move Files And Update References
 
@@ -57,7 +57,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 > Goal: ไม่มี broken references และ build/test ผ่าน
 
 1. ทำ `/validate` เพื่อตรวจสอบ broken references
-2. รัน build / test / lint ตาม projec
+2. รัน build / test / lint ตาม project
 3. ทำ `/report-table` แสดง before/after path mapping
 4. ถ้ามี error → แก้และ re-verify (max 3 ครั้ง → stop/report)
 

@@ -16,7 +16,7 @@ argument-hint: "[pattern]"
 
 ### 1. Analyze Input Data
 
-> Goal: Analyze Input Data
+> Goal: วิเคราะห์ข้อมูลเพื่อระบุประเภทและความสัมพันธ์
 
 1. อ่านและวิเคราะห์ข้อมูลที่ได้รับ
 2. ระบุประเภทของข้อมูล
@@ -25,7 +25,7 @@ argument-hint: "[pattern]"
 
 ### 2. Identify Patterns
 
-> Goal: Identify Patterns
+> Goal: หา pattern ที่เกิดซ้ำและโครงสร้างที่สำคัญ
 
 1. หา pattern ที่เกิดซ้ำในข้อมูล
 2. ระบุโครงสร้างที่สำคัญ
@@ -34,7 +34,7 @@ argument-hint: "[pattern]"
 
 ### 3. Write Pattern Rules
 
-> Goal: Write Pattern Rules
+> Goal: เขียน rules ที่อธิบาย pattern อย่างชัดเจน
 
 1. เขียน rules ที่อธิบาย pattern อย่างชัดเจน
 2. ใช้ภาษาที่เข้าใจง่ายและกระชับ
@@ -43,7 +43,7 @@ argument-hint: "[pattern]"
 
 ### 4. Validate Rules
 
-> Goal: Validate Rules
+> Goal: ตรวจสอบความครบถ้วนและความใช้งานได้จริงของ rules
 
 1. ตรวจสอบว่า rules ครอบคลุมทุกกรณี
 2. ทดสอบ rules กับข้อมูลตัวอย่าง
@@ -51,6 +51,8 @@ argument-hint: "[pattern]"
 4. ยืนยันว่า rules ใช้งานได้จริง
 
 ## Rules
+
+### 1. Pattern Rule Quality
 
 1. Pattern rules ต้องชัดเจนและเข้าใจง่าย
 2. ต้องมีตัวอย่างประกอบทุก rule

@@ -14,7 +14,7 @@ Review ความเสถียรของ application ครอบคลุ
 - `debugging`: logging context, error messages clarity, naming conventions, code complexity, debuggability score
 - `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification, recovery
 
-ไม่รวมการ fix (ใช้ `/review-codebase` สำหรับ fix)
+ไม่รวมการ fix (ใช้ `/review-codebase-everything` สำหรับ fix)
 
 ## Execute
 
@@ -95,9 +95,9 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: ไม่ซ้ำซ้อนกับ review skills อื่น
 
 1. ทำ `/consider-use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
-2. ถ้าพบ performance issues ให้ทำ `/review-codebase`
-3. ถ้าพบ concurrency issues ให้ทำ `/review-codebase`
-4. ถ้าพบ security issues ให้ทำ `/review-codebase`
+2. ถ้าพบ performance issues ให้ทำ `/review-codebase-everything`
+3. ถ้าพบ concurrency issues ให้ทำ `/review-codebase-everything`
+4. ถ้าพบ security issues ให้ทำ `/review-codebase-everything`
 5. ใช้ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Validate, Score And Report
@@ -117,7 +117,7 @@ Review ความเสถียรของ application ครอบคลุ
 ### 1. Scope Boundary
 
 - เน้นความเสถียรของ app โดยรวม ไม่ใช่แค่ app crash
-- ไม่ซ้ำกับ `/review-codebase` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
+- ไม่ซ้ำกับ `/review-codebase-everything` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
 - รายละเอียด debugging principles อยู่ใน `/follow-debugging` แล้ว
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 

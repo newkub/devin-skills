@@ -85,7 +85,7 @@ argument-hint: "[directory]"
 2. ตรวจสอบว่า submodule content ครบถ้วน
 3. ทำ `/validate` เพื่อตรวจ references และ structure
 4. ทำ `/update-reference` ถ้ามี path เปลี่ยนแปลง
-5. ทำ `/ship-skills` เพื่อ commit และ finalize
+5. ทำ `/ship-code` เพื่อ commit และ finalize
 6. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 
 ## Rules
@@ -130,4 +130,4 @@ argument-hint: "[directory]"
 - `git submodule status` แสดง submodule ที่ชี้ไปยัง commit ที่ถูกต้อง
 - clone ใหม่กับ `--recurse-submodules` ทำงานได้
 - ไม่มี broken references หลังการแปลง
-- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/ship-skills`
+- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/ship-code`

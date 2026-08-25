@@ -14,7 +14,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 ## Execute
 ### 1. Install And Verify
 
-> Goal: Install And Verify
+> Goal: ติดตั้งและยืนยัน `agent-browser` พร้อมใช้งาน
 ติดตั้ง `agent-browser` ก่อนใช้งานครั้งแรก
 
 1. ติดตั้งด้วย `bun install -g agent-browser`
@@ -24,7 +24,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 5. ถ้าติดตั้งไม่ได้ ให้ใช้ `playwriter` skill หรือ `browser-preview` tool แทนตาม ## Rules ข้อ 8
 ### 2. Open Browser Session
 
-> Goal: Open Browser Session
+> Goal: เปิด browser session สำหรับใช้งาน
 เปิด browser session ตาม ## Rules ข้อ 1
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
@@ -35,7 +35,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 6. ถ้า daemon error ให้ใช้ `browser-preview` tool แทน
 ### 3. Navigate
 
-> Goal: Navigate
+> Goal: นำทางหน้าเว็บได้ถูกต้อง
 นำทางหน้าเว็บตาม ## Rules ข้อ 2
 
 1. ใช้ `agent-browser open <url>` สำหรับเปิดและ navigate (aliases: `goto`, `navigate`)
@@ -46,7 +46,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 6. ใช้ `agent-browser read [url]` สำหรับอ่าน agent-readable text จากหน้าเว็บ
 ### 4. Snapshot And Interact
 
-> Goal: Snapshot And Interact
+> Goal: ถ่ายภาพ accessibility tree และโต้ตอบกับหน้าเว็บ
 ถ่ายภาพ accessibility tree และโต้ตอบกับหน้าเว็บตาม ## Rules ข้อ 3
 
 1. ใช้ `agent-browser snapshot -i` สำหรับดู interactive elements และ refs (แนะนำ)
@@ -59,7 +59,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 8. ใช้ semantic locators เป็นทางเลือกแทน refs ตาม ## Rules ข้อ 3
 ### 5. Monitor And Debug
 
-> Goal: Monitor And Debug
+> Goal: monitor และ debug หน้าเว็บระหว่างการทำงาน
 Monitor และ debug ตาม ## Rules ข้อ 4
 
 1. ใช้ `agent-browser snapshot -i` สำหรับดู interactive elements และ refs
@@ -71,11 +71,11 @@ Monitor และ debug ตาม ## Rules ข้อ 4
 7. ใช้ `agent-browser inspect` สำหรับเปิด Chrome DevTools
 ### 6. Handle Errors
 
-> Goal: Handle Errors
+> Goal: จัดการ errors ที่เกิดขึ้นอย่างถูกต้อง
 จัดการ errors ที่เกิดขึ้นตาม ## Rules ข้อ 5
 ### 7. Cleanup And Close
 
-> Goal: Cleanup And Close
+> Goal: ปิดและทำความสะอาดหลังใช้งานเสร็จ
 ทำ cleanup หลังจากใช้งานเสร็จ
 
 1. ปิด browser session ด้วย `agent-browser close`

@@ -30,7 +30,7 @@ description: เลือก architecture pattern ตาม package manifest แ
 1. ตรวจสอบ Detection Rules ตามลำดับ priority ใน Rules section
 2. เลือก architecture pattern ที่ตรงกับ project type
 3. อ่าน reference file ของ pattern ที่เลือกจาก `references/patterns/`
-4. ถ้าไม่ตรดเงื่อนไขใด → ใช้ Clean Architecture (`references/patterns/clean-architecture.md`) เป็น default
+4. ถ้าไม่ตรงเงื่อนไขใด → ใช้ Clean Architecture ([references/patterns/clean-architecture.md](references/patterns/clean-architecture.md)) เป็น default
 
 ### 3. Learn Architecture Pattern
 
@@ -69,15 +69,15 @@ description: เลือก architecture pattern ตาม package manifest แ
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
 | Nuxt | `nuxt` in dependencies | `/follow-framework-nuxt` |
-| Next.js | `next` in dependencies | `references/patterns/nextjs-architecture.md` |
-| Vue.js | `vue` in dependencies | `/follow-framework-vue` |
-| SolidJS | `solid-js` in dependencies | `references/patterns/solid-tanstack-architecture.md` |
+| Next.js | `next` in dependencies | [references/patterns/nextjs-architecture.md](references/patterns/nextjs-architecture.md) |
+| Vue.js | `vue` in dependencies | `/follow-lib-vue` |
+| SolidJS | `solid-js` in dependencies | [references/patterns/solid-tanstack-architecture.md](references/patterns/solid-tanstack-architecture.md) |
 | Svelte | `svelte` in dependencies | `/follow-framework-svelte-kit` |
-| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `references/patterns/layered-architecture.md` |
-| Rust | `Cargo.toml` exists | `references/patterns/clean-architecture.md` |
-| Bun | `bun` in dependencies | `references/patterns/clean-architecture.md` |
+| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | [references/patterns/layered-architecture.md](references/patterns/layered-architecture.md) |
+| Rust | `Cargo.toml` exists | [references/patterns/clean-architecture.md](references/patterns/clean-architecture.md) |
+| Bun | `bun` in dependencies | [references/patterns/clean-architecture.md](references/patterns/clean-architecture.md) |
 | Monorepo | `workspaces` in `package.json` | `/follow-monorepo` |
-| Microservices | distributed system | `references/patterns/microservices-architecture.md` |
+| Microservices | distributed system | [references/patterns/microservices-architecture.md](references/patterns/microservices-architecture.md) |
 
 ### 2. Priority Rules
 

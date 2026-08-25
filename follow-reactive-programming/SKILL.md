@@ -15,7 +15,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 1. Use Streams
 
-> Goal: Use Streams
+> Goal: จัดการ data flow ที่ต่อเนื่องด้วย streams
 
 ใช้ streams สำหรับ data flow ที่ต่อเนื่อง
 
@@ -27,7 +27,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 2. Use Observables
 
-> Goal: Use Observables
+> Goal: ตอบสนองต่อการเปลี่ยนแปลงของ data ด้วย observables
 
 ใช้ observables สำหรับ reacting ต่อ data changes
 
@@ -39,7 +39,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 3. Use Operators
 
-> Goal: Use Operators
+> Goal: แปลงและรวม streams ด้วย operators
 
 ใช้ operators สำหรับ transform และ combine streams
 
@@ -52,7 +52,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 4. Manage State
 
-> Goal: Manage State
+> Goal: จัดการ state ด้วย reactive approach
 
 จัดการ state ด้วย reactive approach
 
@@ -64,7 +64,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 5. Handle Side Effects
 
-> Goal: Handle Side Effects
+> Goal: จัดการ side effects ใน reactive context
 
 จัดการ side effects ใน reactive context
 
@@ -76,7 +76,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 6. Error Handling
 
-> Goal: Error Handling
+> Goal: จัดการ errors ใน reactive streams
 
 จัดการ errors ใน reactive streams
 
@@ -88,7 +88,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ### 7. Testing
 
-> Goal: Testing
+> Goal: เขียน tests สำหรับ reactive code
 
 เขียน tests สำหรับ reactive code
 
@@ -100,7 +100,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 
 ## Rules
 
-### Streams
+### 1. Streams
 
 ใช้ streams อย่างถูกต้องสำหรับ data flow
 
@@ -110,7 +110,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Use `cold streams` for independent data
 - Always `unsubscribe` when done
 
-### Observables
+### 2. Observables
 
 ใช้ observables สำหรับ reacting ต่อ data
 
@@ -120,7 +120,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Clean up on `unsubscribe`
 - Use appropriate `observable types`
 
-### Operators
+### 3. Operators
 
 ใช้ operators สำหรับ transform streams
 
@@ -130,7 +130,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Use `combineLatest` for dependent streams
 - Use `debounce`/`throttle` for performance
 
-### State Management
+### 4. State Management
 
 จัดการ state ด้วย reactive patterns
 
@@ -140,7 +140,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Use `state management` for complex cases
 - `Immutable state` updates
 
-### Side Effects
+### 5. Side Effects
 
 จัดการ side effects อย่างเหมาะสม
 
@@ -150,7 +150,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Use `concatMap` for sequential
 - Separate `pure logic` from effects
 
-### Error Handling
+### 6. Error Handling
 
 จัดการ errors ใน reactive context
 
@@ -160,7 +160,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 - Propagate `errors` appropriately
 - Test error scenarios
 
-### Performance
+### 7. Performance
 
 ปรับปรุง performance ของ reactive code
 

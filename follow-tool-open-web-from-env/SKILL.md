@@ -16,7 +16,7 @@ argument-hint: "[env-file]"
 
 ### 1. Parse Env Files
 
-> Goal: Parse Env Files
+> Goal: อ่าน env files และระบุ variables ที่ต้องการ keys
 
 1. อ่าน `.env.example`, `.env.local`, `.env.*` ทั้งหมด
 2. ระบุ variables ที่ต้องการ keys: `*_API_KEY`, `*_SECRET`, `*_TOKEN`, `*_PASSWORD`, หรือ placeholder
@@ -24,7 +24,7 @@ argument-hint: "[env-file]"
 
 ### 2. Map and Open URLs
 
-> Goal: Map and Open URLs
+> Goal: จับคู่ variables กับ service URLs และเปิดในเบราว์เซอร์
 
 1. ใช้หลักการ mapping:
    - `OPENAI_*` → `https://platform.openai.com/api-keys`

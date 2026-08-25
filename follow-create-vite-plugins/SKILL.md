@@ -15,7 +15,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 1. Setup
 
-> Goal: Setup
+> Goal: เตรียมโครงสร้างโฟลเดอร์และ config เริ่มต้น
 
 1. สร้างโครงสร้างโฟลเดอร์ `packages/{plugin-name}/`
 2. สร้าง `package.json` ด้วย dependencies และ scripts
@@ -23,7 +23,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 2. Create Plugin
 
-> Goal: Create Plugin
+> Goal: สร้าง plugin implementation ด้วย hooks ตาม [references/plugin-api.md](references/plugin-api.md)
 
 1. สร้าง `src/index.ts` พร้อม plugin implementation
 2. กำหนด plugin function ที่ return object ด้วย hooks
@@ -31,7 +31,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 3. Configure Build
 
-> Goal: Configure Build
+> Goal: ตั้งค่า library mode build ตาม [references/library-mode.md](references/library-mode.md)
 
 1. สร้าง `vite.config.ts` สำหรับ library mode build
 2. ตั้งค่า build.lib ด้วย entry, name, fileName
@@ -39,7 +39,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 4. Add Examples
 
-> Goal: Add Examples
+> Goal: สร้างตัวอย่างการใช้งานพื้นฐานและขั้นสูง
 
 1. สร้าง `examples/basic/` พร้อมตัวอย่างพื้นฐาน
 2. สร้าง `examples/advanced/` พร้อมตัวอย่างขั้นสูง
@@ -47,13 +47,13 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 5. Add Tests
 
-> Goal: Add Tests
+> Goal: สร้าง unit และ integration tests สำหรับ plugin
 
 1. สร้าง `test/` ด้วย unit และ integration tests
 2. รัน `build` เพื่อตรวจสอบ build process
 3. รัน `test` เพื่อตรวจสอบ functionality
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -70,13 +70,13 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 2. Universal Hooks
 
-- ใช้ Rolldown compatible hooks สำหรับ dev และ build
+- ใช้ Rolldown compatible hooks สำหรับ dev และ build ดู [references/plugin-api.md](references/plugin-api.md)
 - Hooks: options, buildStart, resolveId, load, transform, buildEnd, closeBundle
 - หลีกเลี่ยง `moduleParsed` hook ใน dev mode
 
 ### 3. Vite Specific Hooks
 
-- ใช้ Vite-specific hooks เฉพาะเมื่อจำเป็น
+- ใช้ Vite-specific hooks เฉพาะเมื่อจำเป็น ดู [references/plugin-api.md](references/plugin-api.md)
 - Hooks: config, configResolved, configureServer, transformIndexHtml, handleHotUpdate
 
 ### 4. Plugin Ordering
@@ -93,7 +93,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 
 ### 6. Library Mode
 
-- ใช้ Vite library mode สำหรับ building plugins
+- ใช้ Vite library mode สำหรับ building plugins ดู [references/library-mode.md](references/library-mode.md)
 - ตั้งค่า build.lib ด้วย entry, name, fileName
 - ใช้ formats: ['es', 'cjs']
 - external vite จาก bundle

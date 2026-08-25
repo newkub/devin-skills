@@ -104,44 +104,26 @@ description: ติดตั้งและตั้งค่า Vitest 4 สำ
 2. ใช้ `aroundAll` สำหรับ wrap ทุก suite
 3. ใช้ `beforeAll`, `afterAll` รับ file และ worker contexts จาก fixtures (Vitest 4.1)
 
-### 9. In-Source Testing
+### 9. Mocking And In-Source Testing
 
-> Goal: In-Source Testing
+> Goal: Mocking And In-Source Testing
 
-1. เปิดใช้งาน `includeSource` ใน config
-2. เขียน tests ใน source code ด้วย `if (import.meta.vitest)` block
-3. ใช้สำหรับ test utilities ที่อยู่ใกล้กับ implementation
+1. เปิดใช้งาน `includeSource` ใน config และเขียน tests ใน source code ด้วย `if (import.meta.vitest)` block สำหรับ test utilities ที่อยู่ใกล้กับ implementation
+2. ใช้ `vi.mock` สำหรับ mocking modules และ `vi.fn` สำหรับ creating mock functions
+3. ใช้ `vi.spyOn` สำหรับ spying on methods และ `vi.defineHelper` สำหรับ wrap utility functions เพื่อ stack traces ที่ชี้ไป call site
+4. ใช้ chai-style assertions เช่น `expect(fn).to.have.been.called` สำหรับ migrate จาก Sinon
+5. ใช้ `vi.clearAllMocks` สำหรับ cleanup ระหว่าง tests
 
-### 10. Mocking And Stubbing
+### 10. Coverage Watch And CI
 
-> Goal: Mocking And Stubbing
-
-1. ใช้ `vi.mock` สำหรับ mocking modules
-2. ใช้ `vi.fn` สำหรับ creating mock functions
-3. ใช้ `vi.spyOn` สำหรับ spying on methods
-4. ใช้ `vi.defineHelper` สำหรับ wrap utility functions เพื่อ stack traces ที่ชี้ไป call site
-5. ใช้ chai-style assertions เช่น `expect(fn).to.have.been.called` สำหรับ migrate จาก Sinon
-6. ใช้ `vi.clearAllMocks` สำหรับ cleanup ระหว่าง tests
-
-### 11. Coverage
-
-> Goal: Coverage
+> Goal: Coverage Watch And CI
 
 1. ใช้ `coverage.include` แบบ explicit เพราะ Vitest 4 รายงานเฉพาะ files ที่ loaded ระหว่าง test run
-2. ใช้ `coverage.changed` เพื่อ limit coverage report เฉพาะ changed files
-3. ใช้ `/* v8 ignore start */` และ `/* v8 ignore stop */` สำหรับ ignore specific lines
-4. ตั้งค่า `coverage.htmlDir` สำหรับ custom HTML coverage output
-
-### 12. Watch Mode And CI
-
-> Goal: Watch Mode And CI
-
-1. ตั้งค่า watch mode สำหรับ development
-2. ใช้ `vitest run` สำหรับ CI/CD
-3. ติดตั้ง VS Code extension สำหรับ IDE integration
-4. ตั้งค่า coverage thresholds สำหรับ quality gates
-5. ใช้ `--detect-async-leaks` สำหรับ catch leaked timers และ async resources
-6. ใช้ GitHub Actions Job Summary reporter สำหรับ CI
+2. ใช้ `coverage.changed` เพื่อ limit coverage report เฉพาะ changed files และ `/* v8 ignore start */`/`/* v8 ignore stop */` สำหรับ ignore specific lines
+3. ตั้งค่า `coverage.htmlDir` สำหรับ custom HTML coverage output และ coverage thresholds สำหรับ quality gates
+4. ตั้งค่า watch mode สำหรับ development และใช้ `vitest run` สำหรับ CI/CD
+5. ติดตั้ง VS Code extension สำหรับ IDE integration
+6. ใช้ `--detect-async-leaks` สำหรับ catch leaked timers และ async resources และ GitHub Actions Job Summary reporter สำหรับ CI
 
 ## Rules
 

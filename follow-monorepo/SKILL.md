@@ -15,7 +15,7 @@ description: สร้าง Monorepo Architecture สำหรับโปร�
 
 ### 1. Analyze Requirements
 
-> Goal: Analyze Requirements
+> Goal: วิเคราะห์ความต้องการและเลือก tool
 
 วิเคราะห์ความต้องการ monorepo และเลือก tool ที่เหมาะสม
 
@@ -27,7 +27,7 @@ description: สร้าง Monorepo Architecture สำหรับโปร�
 
 ### 2. Setup Monorepo
 
-> Goal: Setup Monorepo
+> Goal: ตั้งค่า monorepo ด้วย tool ที่เลือก
 
 ตั้งค่า monorepo ด้วย tool ที่เลือก
 
@@ -39,7 +39,7 @@ description: สร้าง Monorepo Architecture สำหรับโปร�
 
 ### 3. Configure Build System
 
-> Goal: Configure Build System
+> Goal: ตั้งค่า build system สำหรับ monorepo
 
 ตั้งค่า build system สำหรับ monorepo
 
@@ -49,7 +49,7 @@ description: สร้าง Monorepo Architecture สำหรับโปร�
 
 ### 4. Setup Shared Configuration
 
-> Goal: Setup Shared Configuration
+> Goal: ตั้งค่า shared configs สำหรับทั้ง monorepo
 
 ตั้งค่า shared configs สำหรับทั้ง monorepo
 

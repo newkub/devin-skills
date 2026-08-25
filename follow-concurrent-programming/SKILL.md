@@ -15,7 +15,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 1. Use Async Await
 
-> Goal: Use Async Await
+> Goal: ใช้ async/await สำหรับ asynchronous operations แทน callback chains
 
 ใช้ async/await สำหรับ asynchronous operations
 
@@ -27,7 +27,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 2. Parallel Execution
 
-> Goal: Parallel Execution
+> Goal: ทำงานหลายอย่างพร้อมกันเพื่อเพิ่ม throughput ของ CPU-intensive tasks
 
 ทำงานหลายอย่างพร้อมกัน
 
@@ -39,7 +39,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 3. Error Handling
 
-> Goal: Error Handling
+> Goal: จัดการ errors ใน concurrent code อย่าง systematic และ propagate ถูกต้อง
 
 จัดการ errors ใน concurrent code
 
@@ -51,7 +51,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 4. Resource Management
 
-> Goal: Resource Management
+> Goal: จัดการ resources อย่างมีประสิทธิภาพและปลอดภัยจาก leaks
 
 จัดการ resources อย่างเหมาะสม
 
@@ -63,7 +63,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 5. Synchronization
 
-> Goal: Synchronization
+> Goal: ซิงโครไนซ์ shared state อย่างปลอดภัยจาก race conditions
 
 ซิงโครไนซ์ shared state อย่างปลอดภัย
 
@@ -75,7 +75,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 6. Performance
 
-> Goal: Performance
+> Goal: ปรับปรุง performance ของ concurrent code โดยลด contention และ bottleneck
 
 ปรับปรุง performance ของ concurrent code
 
@@ -87,7 +87,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ### 7. Testing
 
-> Goal: Testing
+> Goal: ทดสอบ concurrent code ให้ครอบคลุม race conditions และ deadlock scenarios
 
 ทดสอบ concurrent code
 
@@ -99,7 +99,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 
 ## Rules
 
-### Async Await
+### 1. Async Await
 
 ใช้ async/await อย่างถูกต้อง
 
@@ -109,7 +109,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - ใช้ `race condition mechanisms` สำหรับ race conditions
 - ใช้ `multiple result mechanisms` สำหรับ multiple results
 
-### Parallel Execution
+### 2. Parallel Execution
 
 ทำงานหลายอย่างพร้อมกันอย่างเหมาะสม
 
@@ -119,7 +119,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - ใช้ `thread mechanisms` สำหรับ server environments
 - ใช้ `parallel processing libraries`
 
-### Error Handling
+### 3. Error Handling
 
 จัดการ errors อย่าง systematic
 
@@ -129,7 +129,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - Propagate `errors` ถูกต้อง
 - Log `errors` ด้วย context
 
-### Resource Management
+### 4. Resource Management
 
 จัดการ resources อย่างเหมาะสม
 
@@ -139,7 +139,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - จัดการ `timeouts`
 - Cleanup `resources` ถูกต้อง
 
-### Synchronization
+### 5. Synchronization
 
 ซิงโครไนซ์ shared state อย่างปลอดภัย
 
@@ -149,7 +149,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - หลีกเลี่ยง `race conditions`
 - ใช้ `immutable state`
 
-### Performance
+### 6. Performance
 
 ปรับปรุง performance
 
@@ -159,7 +159,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 - ใช้ `efficient data structures`
 - Benchmark และ tune
 
-### Testing
+### 7. Testing
 
 ทดสอบ concurrent code
 

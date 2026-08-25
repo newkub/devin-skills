@@ -1,4 +1,4 @@
-# Next.js 15 Reference
+# Next.js 16 Reference
 
 ## Install
 
@@ -12,20 +12,22 @@ bun add next@latest react@latest react-dom@latest
 
 ## Version Info
 
-- Latest stable: `15.5.x` (as of 2026)
-- Node.js >= 20.9
-- React 19 stable (App Router uses React canary built-in)
-- Turbopack is the default bundler (stable for dev, beta for build)
+- Latest stable: `16.3.2` (as of Aug 2026)
+- Node.js >= 20.9 (Node.js 18 no longer supported)
+- TypeScript >= 5.1
+- React 19.2 stable (View Transitions, `useEffectEvent()`)
+- Turbopack is the stable default bundler for both dev and build
+- React Compiler stable
 - Peer dependencies: `react`, `react-dom`
 
 ## CLI Commands
 
 ```bash
 bun dev              # Start dev server (Turbopack default)
-bun run build        # Build for production
+bun run build        # Build for production (Turbopack default)
 bun run start        # Start production server
 next dev --webpack   # Use Webpack instead of Turbopack
-next build --turbopack # Build with Turbopack (beta)
+next build --webpack # Build with Webpack
 ```
 
 ## package.json Scripts
@@ -180,6 +182,33 @@ fetch(url, { cache: 'force-cache' })
 fetch(url, { cache: 'no-store' })
 ```
 
+### Cache Components (Next.js 16)
+
+Use `'use cache'` directive for explicit opt-in caching:
+
+```tsx
+'use cache'
+
+import { getPost } from '@/lib/data'
+
+export default async function Post({ id }: { id: string }) {
+  const post = await getPost(id)
+  return <h1>{post.title}</h1>
+}
+```
+
+Cache invalidation APIs:
+
+```tsx
+import { updateTag, revalidateTag } from 'next/cache'
+
+// Update and revalidate in one call
+await updateTag('posts')
+
+// Revalidate only
+await revalidateTag('posts')
+```
+
 ## generateMetadata
 
 ```tsx
@@ -223,6 +252,28 @@ export async function submitForm(formData: FormData) {
 }
 ```
 
+## Proxy (formerly Middleware)
+
+Next.js 16 replaces `middleware.ts` with `proxy.ts` to clarify the network boundary:
+
+```tsx
+// proxy.ts
+import { NextResponse } from 'next/server'
+
+export function proxy(request: Request) {
+  // Auth checks only — no database calls
+  const token = request.headers.get('authorization')
+  if (!token) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+  return NextResponse.next()
+}
+```
+
+- Runs on Edge Runtime
+- Use for auth checks only
+- No database calls
+
 ## create-next-app Options
 
 ```bash
@@ -239,5 +290,5 @@ Chrome 111+, Edge 111+, Firefox 111+, Safari 16.4+.
 
 - https://nextjs.org/docs/app/getting-started/installation
 - https://nextjs.org/docs/app/getting-started/server-and-client-components
-- https://nextjs.org/blog/next-15
-- https://nextjs.org/blog/next-15-5
+- https://nextjs.org/blog/next-16
+- https://nextjs.org/blog/next-16-3

@@ -17,7 +17,7 @@ description: สร้างและใช้งาน Vitest plugins ตาม
 
 > Goal: ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
 
-1. ศึกษา Plugin API 3.1.0+ จาก official docs
+1. ศึกษา Plugin API 3.1.0+ จาก [references/plugin-api.md](references/plugin-api.md)
 2. เข้าใจ `configureVitest` hook
 3. รู้จัก context: `project`, `vitest`, `injectTestProjects`
 4. ศึกษา `experimental_defineCacheKeyGenerator` (4.0.11+)
@@ -26,7 +26,7 @@ description: สร้างและใช้งาน Vitest plugins ตาม
 
 > Goal: สร้าง plugin ด้วย `configureVitest` method
 
-1. สร้าง plugin ด้วย `configureVitest` method
+1. สร้าง plugin ด้วย `configureVitest` method — ดูตัวอย่างใน [references/plugin-api.md](references/plugin-api.md)
 2. รับ context parameter
 3. Implement plugin logic ที่ต้องการ
 4. กำหนด `name` ที่ unique
@@ -50,16 +50,16 @@ export function myPlugin(options: PluginOptions) {
 
 > Goal: ใช้ context properties ตามจุดประสงค์
 
-1. ใช้ `project` เข้าถึง test project ปัจจุบัน
+1. ใช้ `project` เข้าถึง test project ปัจจุบัน — ดู [references/test-project.md](references/test-project.md)
 2. ใช้ `vitest` เข้าถึง global Vitest instance
-3. ใช้ `injectTestProjects` เพื่อ inject projects เพิ่มเติม
+3. ใช้ `injectTestProjects` เพื่อ inject projects เพิ่มเติม — ดู [references/test-project.md](references/test-project.md)
 4. แก้ไข `vitest.config` โดยตรงถ้าจำเป็น
 
 ### 4. Implement Cache Key Generator
 
 > Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
 
-1. ใช้ `experimental_defineCacheKeyGenerator` (4.0.11+)
+1. ใช้ `experimental_defineCacheKeyGenerator` (4.0.11+) — ดู [references/plugin-api.md](references/plugin-api.md)
 2. Return unique string จาก plugin options
 3. Handle `false` เพื่อ disable caching
 4. ใช้เมื่อมี `experimental.fsModuleCache`
@@ -82,7 +82,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 3. Test config injection
 4. ตรวจสอบ cache behavior
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -93,13 +93,13 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 
 ### 1. Plugin Structure
 
-- ใช้ `configureVitest` สำหรับ plugin configuration
+- ใช้ `configureVitest` สำหรับ plugin configuration — ดู [references/plugin-api.md](references/plugin-api.md)
 - ตั้งชื่อ `name` ที่ unique
 - Plugin ควรมี interface ที่ชัดเจน
 
 ### 2. Context Usage
 
-- `project`: Test project ปัจจุบันที่ plugin อยู่
+- `project`: Test project ปัจจุบันที่ plugin อยู่ — ดู [references/test-project.md](references/test-project.md)
 - `vitest`: Global Vitest instance - mutate `vitest.config` ได้
 - `injectTestProjects`: Function สำหรับ inject projects เพิ่ม
 - Config ถูก resolved แล้ว - บาง properties อาจมี type ต่างจาก user config
@@ -125,16 +125,12 @@ const newProjects = await injectTestProjects({
 
 ### 4. Cache Key Generator (4.0.11+)
 
-> Goal: Cache Key Generator (4.0.11+)
-
 - Return string สำหรับ cache key hashing
 - Return `false` เพื่อ disable file system caching
 - ใช้เมื่อ plugin registered ด้วย different options
 - ทำงานเมื่อมี `experimental.fsModuleCache`
 
 ### 5. Config Mutations
-
-> Goal: Config Mutations
 
 - แก้ไข `vitest.config` โดยตรงได้
 - Reporters ยังไม่ถูกสร้าง - แก้ไข config แทน

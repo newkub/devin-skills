@@ -16,7 +16,7 @@ argument-hint: "[manifest]"
 
 ### 1. Read Package Manifest
 
-> Goal: Read Package Manifest
+> Goal: อ่าน package manifest เพื่อระบุ dependencies ทั้งหมด
 
 1. อ่าน package.json, Cargo.toml, หรือ manifest อื่นๆ
 2. ระบุ dependencies ทั้งหมดใน project
@@ -24,7 +24,7 @@ argument-hint: "[manifest]"
 
 ### 2. Open Dependencies Websites
 
-> Goal: Open Dependencies Websites
+> Goal: เปิด website ของ dependencies ตามที่ระบุหรือทั้งหมด
 
 1. ถ้าไม่ระบุ dependencies ที่ต้องการ: เปิด website ทุกตัว
 2. ถ้าระบุ dependencies ที่ต้องการ: เปิดเฉพาะตัวนั้นๆ

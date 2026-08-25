@@ -15,7 +15,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 1. Setup Project
 
-> Goal: Setup Project
+> Goal: สร้าง Astro 5 project พร้อม adapter และ TypeScript strict
 
 1. สร้าง Astro 5 project ด้วย `bunx create-astro@latest`
 2. ใช้ `astro.config.mjs` สำหรับ configuration
@@ -26,7 +26,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 2. Rendering Modes
 
-> Goal: Rendering Modes
+> Goal: เลือก rendering mode ระหว่าง static และ SSR อย่างถูกต้อง
 
 1. Astro เป็น static by default
 2. ใช้ `prerender = false` ในหน้าที่ต้องการ SSR
@@ -36,7 +36,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 3. Server Islands
 
-> Goal: Server Islands
+> Goal: ใช้ Server Islands สำหรับ dynamic content บน static pages
 
 1. ใช้ `server:defer` directive สำหรับ components ที่ต้อง render บน server per-request
 2. ใช้ `slot="fallback"` สำหรับ loading content ระหว่างรอ
@@ -47,7 +47,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 4. Content Layer API
 
-> Goal: Content Layer API
+> Goal: ใช้ Content Layer API สำหรับ type-safe content management
 
 1. ใช้ Content Layer แทน Content Collections แบบเดิม
 2. กำหนด schema ด้วย Zod ใน `src/content.config.ts`
@@ -59,7 +59,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 5. Astro Actions
 
-> Goal: Astro Actions
+> Goal: ใช้ Astro Actions สำหรับ type-safe server functions แทน manual API routes
 
 1. ใช้ Astro Actions สำหรับ type-safe server functions
 2. กำหนด actions ใน `src/actions/`
@@ -69,7 +69,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 6. Islands Architecture
 
-> Goal: Islands Architecture
+> Goal: ใช้ islands directives ให้ส่ง JavaScript น้อยที่สุด
 
 1. ใช้ `client:load` สำหรับ hydrate ทันที
 2. ใช้ `client:idle` สำหรับ hydrate เมื่อ browser idle
@@ -80,7 +80,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 7. View Transitions
 
-> Goal: View Transitions
+> Goal: ใช้ View Transitions สำหรับ native page transitions
 
 1. ใช้ `<ViewTransitions />` ใน layout สำหรับ native View Transitions API
 2. ใช้ `transition:animate` สำหรับ animations
@@ -88,7 +88,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 8. Type-Safe Environment Variables
 
-> Goal: Type-Safe Environment Variables
+> Goal: กำหนด env schema สำหรับ type-safe environment variables
 
 1. กำหนด schema ใน `astro.config.mjs` ด้วย `env.schema`
 2. ใช้ `import.meta.env` สำหรับ access variables (type-safe)
@@ -96,7 +96,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 9. i18n
 
-> Goal: i18n
+> Goal: ตั้งค่า built-in i18n routing สำหรับ multi-language support
 
 1. ใช้ built-in i18n routing (stable ใน Astro 5)
 2. กำหนด locales ใน `astro.config.mjs`
@@ -104,7 +104,7 @@ description: พัฒนา Astro 5 applications ด้วย Server Islands, C
 
 ### 10. Styling
 
-> Goal: Styling
+> Goal: ตั้งค่า styling ด้วย UnoCSS และ scoped styles
 
 1. ทำ `/follow-lib-unocss` สำหรับ styling
 2. ใช้ UnoCSS หรือ Tailwind CSS

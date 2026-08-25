@@ -66,7 +66,7 @@ defineStore('counter', () => { ... }, {
   persist: {
     key: 'my-key',
     storage: localStorage,
-    paths: ['count'],
+    pick: ['count'],
   },
 })
 ```
@@ -93,7 +93,7 @@ pinia.use(piniaPluginPersistedstate)
 |--------|------|---------|-------------|
 | `key` | `string` | `store.$id` | localStorage key |
 | `storage` | `Storage` | `localStorage` | Storage type |
-| `paths` | `string[]` | all state | Properties to persist |
+| `pick` | `string[]` | all state | Properties to persist (v4.x) |
 | `serializer` | `object` | `JSON` | Custom serialization |
 | `beforeRestore` | `function` | - | Callback before restore |
 | `afterRestore` | `function` | - | Callback after restore |

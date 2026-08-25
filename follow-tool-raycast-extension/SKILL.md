@@ -15,7 +15,7 @@ description: สร้าง Raycast Extensions ด้วย TypeScript, React �
 
 ### 1. Setup Environment
 
-> Goal: Setup Environment
+> Goal: เตรียม environment สำหรับ Raycast extension development
 
 1. ติดตั้ง Raycast บน macOS และ Sign in
 2. ตรวจสอบ Raycast CLI: `bunx ray --version` และ `bunx ray whoami`
@@ -23,7 +23,7 @@ description: สร้าง Raycast Extensions ด้วย TypeScript, React �
 
 ### 2. Create Extension Project
 
-> Goal: Create Extension Project
+> Goal: สร้าง extension project ด้วย CLI
 
 1. รัน `bunx create-raycast-extension@latest {extension-name}`
 2. เลือก template: `hello-world`, `detail`, `form`, `list`, `ai`, หรือ `menu-bar`
@@ -32,7 +32,7 @@ description: สร้าง Raycast Extensions ด้วย TypeScript, React �
 
 ### 3. Configure Manifest
 
-> Goal: Configure Manifest
+> Goal: กำหนด manifest ใน package.json ตาม Raycast schema
 
 1. แก้ไข `package.json` ตาม Raycast schema:
 
@@ -58,7 +58,7 @@ description: สร้าง Raycast Extensions ด้วย TypeScript, React �
 
 ### 4. Develop Commands
 
-> Goal: Develop Commands
+> Goal: พัฒนา commands ด้วย Raycast API
 1. List Command:
 
 ```tsx
@@ -95,14 +95,14 @@ export default function Command() {
 
 ### 5. Test Extension
 
-> Goal: Test Extension
+> Goal: ทดสอบ extension ด้วย develop, lint และ build
 1. รัน `bunx ray develop`
 2. รัน `bunx ray lint`
 3. รัน `bunx ray build`
 
 ### 6. Publish Extension
 
-> Goal: Publish Extension
+> Goal: เตรียม extension สำหรับ publish สู่ Raycast Store
 1. สร้าง screenshots ใน `metadata/`
 2. อัปเดต `CHANGELOG.md`
 3. Fork https://github.com/raycast/extensions

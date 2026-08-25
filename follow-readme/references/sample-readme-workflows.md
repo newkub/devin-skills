@@ -7,7 +7,7 @@
 
 | Category | Workflows |
 |----------|-----------|
-| Project Analysis | `/analyze-project`, `/deep-analyze`, `/review-codebase` |
+| Project Analysis | `/analyze-project`, `/deep-analyze`, `/review-codebase-everything` |
 | Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
 | Deployment | `/follow-deploy`, `/follow-service-deploy-to-cloudflare`, `/follow-service-vercel` |
@@ -26,7 +26,7 @@
 
 | Framework | Workflows |
 |-----------|-----------|
-| Vue | `/follow-framework-vue`, `/follow-framework-nuxt`, `/follow-lib-vueuse` |
+| Vue | `/follow-lib-vue`, `/follow-framework-nuxt`, `/follow-lib-vueuse` |
 | React | `/follow-framework-react`, `/follow-framework-nextjs` |
 | Rust | `/follow-lang-rust` |
 | Bun | `/follow-lang-bun`, `/use-bun-native-api` |

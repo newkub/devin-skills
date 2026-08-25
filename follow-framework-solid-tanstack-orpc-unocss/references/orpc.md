@@ -2,14 +2,14 @@
 
 ## Source
 
-- Official Docs: https://orpc.unnoq.com/docs/getting-started
+- Official Docs: https://orpc.dev/docs/getting-started
 - GitHub: https://github.com/unnoq/orpc
 - npm: https://www.npmjs.com/package/@orpc/server
 
 ## Version
 
-- `@orpc/server`: `1.15.0` (latest stable)
-- `@orpc/client`: `1.15.0` (latest stable)
+- `@orpc/server`: `1.14.1` (latest stable, May 2026)
+- `@orpc/client`: `1.14.0` (latest stable, Apr 2026)
 - Peer: `zod` for schema validation (also supports Valibot, ArkType, any Standard Schema library)
 
 ## Installation

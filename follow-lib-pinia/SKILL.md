@@ -9,40 +9,43 @@ description: แนวทางการใช้งาน Pinia สำหรั
 
 ## Scope
 
-ใช้ `follow-lib-pinia` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
+ใช้สำหรับ Vue 3 projects ที่ต้องการ state management ด้วย Pinia ครอบคลุม setup stores, getters, actions, persistence และ testing
 
 ## Execute
 
 ### 1. Setup Pinia Store
 
-> Goal: Setup Pinia Store
+> Goal: ติดตั้ง Pinia และสร้าง store structure ใน Vue หรือ Nuxt project
 
 1. ติดตั้ง Pinia dependency ด้วย `bun add pinia @pinia/nuxt`
 2. สร้าง stores directory ที่ `stores/`
 3. กำหนด main store file `stores/index.ts`
 4. Setup Pinia module ใน `nuxt.config.ts`
+5. ดูรายละเอียดใน [references/pinia-config.md](references/pinia-config.md)
 
 ### 2. Define Store Structure
 
-> Goal: Define Store Structure
+> Goal: ออกแบบ stores ด้วย Composition API style ตาม domain/feature
 
 1. ใช้ Composition API style (setup stores) เท่านั้น
 2. กำหนด state, getters, actions อย่างชัดเจน
 3. ใช้ proper naming conventions ตาม feature/domain
 4. แยก stores ตาม domain/feature ไม่ใช่ generic names
+5. ดูรายละเอียดใน [references/pinia-api.md](references/pinia-api.md)
 
 ### 3. Implement State Management
 
-> Goal: Implement State Management
+> Goal: ใช้ ref/reactive, computed getters และ actions สำหรับ mutations
 
 1. ใช้ `ref`/`reactive` สำหรับ state
 2. สร้าง getters ด้วย `computed`
 3. implement actions สำหรับ mutations
 4. ใช้ `$reset` สำหรับ resetting state
+5. ดูรายละเอียดใน [references/pinia-api.md](references/pinia-api.md)
 
 ### 4. Use Stores in Components
 
-> Goal: Use Stores in Components
+> Goal: เข้าถึง stores ใน components โดยรักษา reactivity
 
 1. ใช้ `storeToRefs` สำหรับ destructuring
 2. Access stores ใน `<script setup>` components
@@ -51,21 +54,23 @@ description: แนวทางการใช้งาน Pinia สำหรั
 
 ### 5. Add Persistence (Optional)
 
-> Goal: Add Persistence (Optional)
+> Goal: ตั้งค่า persisted state plugin สำหรับเก็บ state ข้าม sessions
 
 1. ติดตั้ง `pinia-plugin-persistedstate`
-2. กำหนด persist strategies
+2. กำหนด persist strategies ด้วย `pick` option
 3. เลือก fields ที่จะ persist
 4. Handle serialization
+5. ดูรายละเอียดใน [references/pinia-config.md](references/pinia-config.md)
 
 ### 6. Test Stores
 
-> Goal: Test Stores
+> Goal: ทดสอบ stores ด้วย Vitest และ `setActivePinia`
 
 1. เขียน unit tests สำหรับ stores ด้วย Vitest
 2. Test actions และ state changes
 3. Mock external dependencies
 4. Test edge cases
+5. ดูรายละเอียดใน [references/pinia-api.md](references/pinia-api.md)
 
 ## Rules
 

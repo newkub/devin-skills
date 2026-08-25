@@ -50,8 +50,8 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 1. สร้าง mapping จาก run-review categories เป็น analyzer module:
    - แต่ละ domain มี analyzer file ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
    - แต่ละ category เป็น `Analyzer` object ใน domain file
-2. Map analyzers ไปยัง category orchestrators จาก `review-codebase`:
-   - `review-codebase` → รวม 8+1 domain analyzers: Code & Architecture, Security & Compliance, User-Facing, Backend & Data, Infrastructure, Business, Delivery, Platform, Performance
+2. Map analyzers ไปยัง category orchestrators จาก `review-codebase-everything`:
+   - `review-codebase-everything` → รวม 8+1 domain analyzers: Code & Architecture, Security & Compliance, User-Facing, Backend & Data, Infrastructure, Business, Delivery, Platform, Performance
 3. ระบุ analyzers ที่มีอยู่แล้ว, ที่ต้องสร้างใหม่, และที่ต้องอัปเดท
 4. ระบุ analyzers ที่ไม่มี category สอดคล้องแล้วเพื่อพิจารณาลบ
 
@@ -70,7 +70,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 3. แต่ละ analyzer ต้องมี:
    - `name` ตรงกับ category name ใน `run-review`
    - `domain` ตรงกับ domain ใน `run-review`
-   - `reviewWorkflow` ตรงกับ `review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
+   - `reviewWorkflow` ตรงกับ `review-codebase-everything` หรือ `review-codebase-everything/references/<dimension>.md` จาก AGENTS.md
    - `analyze()` ที่ return `CategoryResult` พร้อม `status`, `score`, `findings`
 4. ใส่ specific checks ตาม scope ของแต่ละ category
 5. ถ้า analyzer ไม่สามารถ implement ทั้งหมดได้ ให้ comment `// TODO` พร้อมรายละเอียดสิ่งที่ต้องทำ
@@ -127,7 +127,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 - Entry point: `src/presentation/cli.ts` และ `src/index.ts`
 - ใช้ Bun native APIs: `Bun.file`, `Bun.spawn`, `Bun.write`
 - ทุก analyzer ต้อง return `CategoryResult` พร้อม `status`, `score`, `findings`
-- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
+- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `review-codebase-everything` หรือ `review-codebase-everything/references/<dimension>.md` จาก AGENTS.md
 - ใช้ shared utilities จาก `src/adapters/` แทนการ duplicate code
 - Output เป็น table และ JSON ตาม `--format` flag
 
@@ -179,7 +179,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 | Cause | สาเหตุรากของปัญหา (root cause) | `Case-insensitive 'placeholder' matches HTML attributes` |
 | Solutions | วิธีแก้ที่ actionable และเฉพาะเจาะจง | `Use case-sensitive search for MOCK/STUB/FAKE markers only` |
 | Severity | ระดับความรุนแรง: Critical > High > Medium > Low | `High` |
-| Review Workflow | review workflow ที่แนะนำจาก AGENTS.md | `review-codebase` |
+| Review Workflow | review workflow ที่แนะนำจาก AGENTS.md | `review-codebase-everything` |
 | Evidence | code snippet หรือ pattern ที่ trigger finding | `grep -i 'placeholder' → 947 matches in <input placeholder=...>` |
 
 - จัดเรียงตาม severity: Critical ก่อน, High รองลงมา

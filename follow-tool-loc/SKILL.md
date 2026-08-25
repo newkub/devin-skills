@@ -15,7 +15,7 @@ description: ใช้งาน loc tool สำหรับนับ lines of co
 
 ### 1. Check Prerequisites
 
-> Goal: Check Prerequisites
+> Goal: ยืนยันว่า `loc` ติดตั้งพร้อมใช้งาน
 
 1. ตรวจสอบว่ามี `loc` ติดตั้งหรือไม่: `loc --version`
 2. ถ้าไม่มี → ติดตั้งด้วย `cargo install loc` หรือดาวน์โหลด binary จาก https://github.com/cgag/loc/releases
@@ -23,7 +23,7 @@ description: ใช้งาน loc tool สำหรับนับ lines of co
 
 ### 2. Count Lines Of Code
 
-> Goal: Count Lines Of Code
+> Goal: นับ lines of code แยกตามภาษาและ path
 
 1. รัน `loc` เพื่อนับ lines of code ทั้ง project: `loc`
 2. ระบุ path เฉพาะ: `loc src/` หรือ `loc ci benches`
@@ -31,7 +31,7 @@ description: ใช้งาน loc tool สำหรับนับ lines of co
 
 ### 3. Show Per-File Statistics
 
-> Goal: Show Per-File Statistics
+> Goal: แสดงสถิติระดับไฟล์และเรียงลำดับได้
 
 1. รัน `loc --files` เพื่อแสดงสถิติระดับไฟล์
 2. ใช้ `--sort` สำหรับเรียงลำดับ:

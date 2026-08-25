@@ -87,7 +87,7 @@ src/
 
 ### 3. Enforce Dependencies And Public APIs
 
-> Goal: ดู Dependency Discipline แลง Public API Rules ในส่วน Rules
+> Goal: ดู Dependency Discipline และ Public API Rules ในส่วน Rules
 
 1. ใช้ path aliases (`@/domain/...`, `@/application/...`) เพื่อให้ layer transitions ชัดเจน
 2. ถ้า project มี `Biome` → เพิ่ม restricted import rules
@@ -113,7 +113,7 @@ src/
 3. ย้าย code ทีละ feature เพื่อลด risk
 4. ถ้า project มี `Nuxt Layers` → ใช้ `extends` ใน `nuxt.config.ts`
 5. ทำ `/refactor` หลังจากเสร็จ
-6. ถ้า project โตขึ้น (3+ devs) → migrate ไป Clean Architecture (`references/patterns/clean-architecture.md`)
+6. ถ้า project โตขึ้น (3+ devs) → migrate ไป Clean Architecture ([clean-architecture.md](clean-architecture.md))
 
 ## Rules
 
@@ -161,7 +161,7 @@ src/
 
 ### 6. Migration Path
 
-- ถ้า project โตขึ้น (3+ devs, high testability) → migrate ไป Clean Architecture (`references/patterns/clean-architecture.md`)
+- ถ้า project โตขึ้น (3+ devs, high testability) → migrate ไป Clean Architecture ([clean-architecture.md](clean-architecture.md))
 - ถ้า project ต้องการ modular boundaries → ใช้ module structure ใน `src/modules/<feature>/` ตาม `/follow-architecture`
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 

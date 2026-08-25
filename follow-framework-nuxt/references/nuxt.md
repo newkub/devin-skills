@@ -11,7 +11,12 @@ Nuxt is a free and open-source framework for building type-safe, production-grad
 
 ## Versions
 
-- Nuxt 3.x: stable, uses root-level `pages/`, `components/`, `composables/` directories
+- `nuxt`: `4.5.0` (latest stable, Jul 2026)
+- `nuxt`: `3.21.11` (latest 3.x — EOL July 31, 2026, use Nuxt 4 for new projects)
+- License: MIT
+- Vue requirement: `3.5+`
+- Nuxt 4.5 ships Vite 8, Rspack 2, experimental SSR streaming, `useLayout` composable, named views
+- Nuxt 3.x: EOL July 2026, uses root-level `pages/`, `components/`, `composables/` directories
 - Nuxt 4.x: default, uses `app/` directory for application code (`app/pages/`, `app/components/`, `app/composables/`)
 - Both versions share the same core APIs and Nitro server engine
 

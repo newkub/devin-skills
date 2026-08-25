@@ -15,7 +15,7 @@ description: เขียน CSS ตาม best practices และ modern featu
 
 ### 1. Analyze CSS Setup
 
-> Goal: Analyze CSS Setup
+> Goal: วิเคราะห์ CSS setup ปัจจุบัน
 
 วิเคราะห์ CSS setup ปัจจุบัน
 
@@ -26,7 +26,7 @@ description: เขียน CSS ตาม best practices และ modern featu
 
 ### 2. Apply Modern CSS Features
 
-> Goal: Apply Modern CSS Features
+> Goal: ใช้ modern CSS features ที่เหมาะสม
 
 ใช้ modern CSS features ที่เหมาะสม
 
@@ -39,7 +39,7 @@ description: เขียน CSS ตาม best practices และ modern featu
 
 ### 3. Optimize Performance
 
-> Goal: Optimize Performance
+> Goal: ปรับปรุง performance ของ CSS
 
 ปรับปรุง performance ของ CSS
 
@@ -52,7 +52,7 @@ description: เขียน CSS ตาม best practices และ modern featu
 
 ### 4. Ensure Accessibility
 
-> Goal: Ensure Accessibility
+> Goal: ตรวจสอบ accessibility ของ CSS
 
 ตรวจสอบ accessibility
 

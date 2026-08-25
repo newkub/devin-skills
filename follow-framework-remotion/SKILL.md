@@ -20,7 +20,7 @@ description: Framework สำหรับสร้างวิดีโอแบ
 
 ### 1. Create Project
 
-> Goal: Create Project
+> Goal: สร้างโปรเจกต์ Remotion ใหม่ด้วย `create-video`
 
 สร้างโปรเจกต์ใหม่:
 ```bash

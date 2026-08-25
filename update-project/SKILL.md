@@ -47,7 +47,15 @@ description: อัปเดต root project โดยเช็ค git log ล�
 4. ทำ `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
 5. ตรวจว่า root docs ครบถ้วนและถูกต้อง
 
-### 4. Validate And Report
+### 4. Update Project Skills
+
+> Goal: project skills ใน `.devin/skills/` เป็นปัจจุบัน
+
+1. ทำ `/update-project-skills` เพื่อสร้างหรืออัปเดต skills ใน `.devin/skills/`
+2. ตรวจว่า skills ที่สร้างผ่าน `/validate`
+3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
+
+### 5. Validate And Report
 
 > Goal: root project ผ่าน validation
 
@@ -56,6 +64,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
    - workspace commits ที่ตรวจพบ
    - ข้อมูลที่ restore มา
    - root docs ที่อัปเดต
+   - project skills ที่สร้างหรืออัปเดต
 
 ## Rules
 
@@ -82,5 +91,6 @@ description: อัปเดต root project โดยเช็ค git log ล�
 - git log ของทุก workspace ถูกตรวจและบันทึก
 - ข้อมูลที่เปลี่ยนแปลงถูก restore มาอัปเดต root docs
 - root `AGENTS.md` และ `README.md` อัปเดต
+- project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
 - root project ผ่าน `/validate`
-- รายงานสรุป workspace commits และ root updates ครบถ้วน
+- รายงานสรุป workspace commits, root updates และ project skills ครบถ้วน

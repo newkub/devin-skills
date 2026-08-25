@@ -115,10 +115,10 @@ description: ใช้งาน Supabase สำหรับ build backend ด้
 
 > Goal: อ่าน configuration และ API reference
 
-1. อ่าน `references/supabase-cli.md` สำหรับ CLI commands
-2. อ่าน `references/supabase-config.md` สำหรับ configuration reference
-3. อ่าน `references/supabase-client-api.md` สำหรับ Client SDK API reference
-4. อ่าน `references/official-resources.md` สำหรับ official links และ resources
+1. อ่าน [references/supabase-cli.md](references/supabase-cli.md) สำหรับ CLI commands
+2. อ่าน [references/supabase-config.md](references/supabase-config.md) สำหรับ configuration reference
+3. อ่าน [references/supabase-client-api.md](references/supabase-client-api.md) สำหรับ Client SDK API reference
+4. อ่าน [references/official-resources.md](references/official-resources.md) สำหรับ official links และ resources
 
 ## Rules
 

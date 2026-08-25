@@ -15,7 +15,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ### 1. Setup Configuration
 
-> Goal: Setup Configuration
+> Goal: ตั้งค่า Swift Package Manager และ dependencies
 
 ตั้งค่า Swift Package Manager และ dependencies
 
@@ -25,7 +25,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ### 2. Project Structure
 
-> Goal: Project Structure
+> Goal: จัดโครงสร้างโปรเจกต์ตาม Clean Architecture
 
 จัดโครงสร้างโปรเจกต์ตาม Clean Architecture
 
@@ -35,11 +35,11 @@ description: แนวทางการพัฒนา Swift applications ต�
 4. `Domain/` - Models (entities), Repositories (protocols), UseCases
 5. `Presentation/` - Components, Screens, ViewModels
 6. `Resources/` - Assets, Color sets
-- ดูรายละเอียดใน `references/swift-architecture.md`
+- ดูรายละเอียดใน [references/swift-architecture.md](references/swift-architecture.md)
 
 ### 3. Core Principles
 
-> Goal: Core Principles
+> Goal: ใช้หลักการสำคัญในการพัฒนา
 
 ใช้หลักการสำคัญในการพัฒนา
 
@@ -47,11 +47,11 @@ description: แนวทางการพัฒนา Swift applications ต�
 2. Swift Concurrency - ใช้ async/await สำหรับ asynchronous operations
 3. MVVM Architecture - ViewModel เป็นตัวกลางระหว่าง View และ Model
 4. Dependency Injection - ใช้ Factory สำหรับ decoupling
-- ดู best practices ใน `references/swift.md`
+- ดู best practices ใน [references/swift.md](references/swift.md)
 
 ### 4. Folder Rules
 
-> Goal: Folder Rules
+> Goal: จัดระเบียบโครงสร้างตาม Layer
 
 จัดระเบียบโครงสร้างตาม Layer
 
@@ -63,7 +63,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ### 5. Import Rules
 
-> Goal: Import Rules
+> Goal: กำหนด dependencies ระหว่าง Layers
 
 กำหนด dependencies ระหว่าง Layers
 
@@ -75,7 +75,7 @@ description: แนวทางการพัฒนา Swift applications ต�
 
 ### 6. Testing
 
-> Goal: Testing
+> Goal: ทดสอบโปรเจกต์อย่างมีประสิทธิภาพ
 
 ทดสอบโปรเจกต์อย่างมีประสิทธิภาพ
 

@@ -32,4 +32,13 @@ Official documentation and resources for Pinia.
 | Package | URL |
 |--------|-----|
 | **@pinia/nuxt** | https://pinia.vuejs.org/ssr/nuxt.html |
-| **pinia-plugin-persistedstate** | https://pinia.esm.dev/plugins/persist.html |
+| **pinia-plugin-persistedstate** | https://praz.codeberg.page/pinia-plugin-persistedstate |
+
+## Version Info
+
+- `pinia`: `4.0.3` (latest stable, Aug 2026)
+- `@pinia/nuxt`: `1.0.2` (latest stable)
+- `@pinia/testing`: `2.0.1` (latest stable)
+- `pinia-plugin-persistedstate`: `4.7.1` (latest stable)
+- License: MIT
+- Vue requirement: Vue 3.x |

@@ -15,7 +15,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 1. Use Encapsulation
 
-> Goal: Use Encapsulation
+> Goal: ซ่อน implementation details ด้วย encapsulation
 
 ใช้ encapsulation เพื่อซ่อน implementation details
 
@@ -28,7 +28,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 2. Use Inheritance
 
-> Goal: Use Inheritance
+> Goal: ใช้ inheritance สำหรับ code reuse และ hierarchy
 
 ใช้ inheritance สำหรับ code reuse และ hierarchy
 
@@ -42,7 +42,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 3. Use Polymorphism
 
-> Goal: Use Polymorphism
+> Goal: ใช้ polymorphism สำหรับ flexible behavior
 
 ใช้ polymorphism สำหรับ flexible behavior
 
@@ -55,7 +55,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 4. Design Classes
 
-> Goal: Design Classes
+> Goal: ออกแบบ classes ตาม OOP principles
 
 ออกแบบ classes ตาม OOP principles
 
@@ -68,7 +68,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 5. Manage State
 
-> Goal: Manage State
+> Goal: จัดการ state ใน objects อย่างปลอดภัย
 
 จัดการ state ใน objects
 
@@ -81,7 +81,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 
 ### 6. Use Composition
 
-> Goal: Use Composition
+> Goal: ใช้ composition เมื่อเหมาะสมกว่า inheritance
 
 ใช้ composition เมื่อเหมาะสมกว่า inheritance
 

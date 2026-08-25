@@ -15,7 +15,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 1. Assessment And Planning
 
-> Goal: Assessment And Planning
+> Goal: ประเมิน scope และวางแผน migration
 
 1. ระบุสิ่งที่ต้อง migration (dependencies, frameworks, databases)
 2. วิเคราะห์ impact และ dependencies ที่เกี่ยวข้อง
@@ -26,7 +26,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 2. Preparation
 
-> Goal: Preparation
+> Goal: เตรียม environment และ migration scripts
 
 1. สร้าง feature branch สำหรับ migration
 2. ติดตั้ง dependencies ใหม่หรือ setup environment ใหม่
@@ -37,7 +37,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 3. Code Transformation
 
-> Goal: Code Transformation
+> Goal: transform code ด้วย automated tools
 
 1. ใช้ `/follow-tool-ast-grep` หรือ `/follow-tool-ast-grep` สำหรับ automated code changes
 2. อัพเดท imports และ API calls
@@ -46,7 +46,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 4. Testing
 
-> Goal: Testing
+> Goal: ทดสอบอย่างครอบคลุมก่อน deployment
 
 1. รัน unit tests สำหรับ changed code
 2. รัน integration tests สำหรับ affected flows
@@ -58,7 +58,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 5. Deployment
 
-> Goal: Deployment
+> Goal: deploy อย่างปลอดภัยพร้อม rollback plan
 
 1. ทำ deployment แบบ phased หรือ canary
 2. ใช้ blue-green deployment สำหรับ zero-downtime
@@ -69,7 +69,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 6. Cleanup
 
-> Goal: Cleanup
+> Goal: ลบ dependencies เก่าและอัพเดท documentation
 
 1. ลบ dependencies ที่ไม่ได้ใช้แล้ว
 2. อัพเดท documentation
@@ -78,7 +78,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 ### 7. Commit Changes
 
-> Goal: Commit Changes
+> Goal: commit migration changes ด้วย conventional format
 
 1. ทำตาม `/git-commit` เพื่อ commit migration changes
 2. ใช้ conventional commit format (เช่น `feat(migration): migrate from X to Y`)

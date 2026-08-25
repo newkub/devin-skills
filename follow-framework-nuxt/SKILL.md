@@ -1,15 +1,15 @@
 ﻿---
 name: follow-framework-nuxt
-description: สร้างหรือปรับปรุง Nuxt 3/4 project ด้วย Universal Rendering และ Nitro
+description: สร้างหรือปรับปรุง Nuxt 4 project ด้วย Universal Rendering และ Nitro
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Nuxt 3/4 applications ให้มีประสิทธิภาพสูงสุด
+กำหนดแนวทางการพัฒนา Nuxt 4 applications ให้มีประสิทธิภาพสูงสุด
 
 ## Scope
 
-ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 3/4 projects
+ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
 ## Execute
 
@@ -18,11 +18,12 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 > Goal: วางแผน project architecture
 
 1. ระบุ project location ใน monorepo เช่น `apps/web/`
-2. เลือก Nuxt Version ระหว่าง 3.x หรือ 4.x (default: 4.x)
+2. ใช้ Nuxt 4.x (Nuxt 3 EOL July 2026 — ใช้ Nuxt 4 เท่านั้นสำหรับ projects ใหม่)
 3. กำหนด Rendering Mode: SSR, SSG, CSR, หรือ Hybrid
 4. ตัดสินใจใช้ Database หรือไม่ (เช่น Drizzle ORM)
 5. เลือก UI Framework: UnoCSS, Tailwind, หรืออื่นๆ
 6. กำหนด Architecture: ใช้ Layers และ Modules หรือไม่
+7. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
 
 ### 2. Directory Structure
 
@@ -33,6 +34,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 3. จัดกลุ่ม components, composables ตาม feature ในแต่ละ layer
 4. ใช้ auto-imports สำหรับ components และ composables
 5. แยก business logic เป็น services และ repositories ใน `server/`
+6. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
 
 ### 3. Configuration
 
@@ -48,7 +50,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 
 > Goal: กำหนด coding standards
 
-1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template (ดู `/follow-framework-vue` สำหรับ Vue standards)
+1. Vue components: ใช้ `script setup lang="ts"`, script อยู่บน template (ดู `/follow-lib-vue` สำหรับ Vue standards)
 2. Composables: ชื่อขึ้นต้นด้วย `use`, อยู่ใน `composables/` หรือ `layers/[feature]/composables/`
 3. Server API: ใช้ `defineEventHandler` หรือ `defineNitroPlugin`
 4. Types: ไม่ใช้ `any`, กำหนด types ชัดเจนใน `shared/types/`
@@ -109,6 +111,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
    const storage = useStorage()
    await storage.setItem('session:token', sessionToken)
    ```
+7. ดูรายละเอียดใน [references/nuxt.md](references/nuxt.md)
 
 ### 7. Plugins Best Practices
 
@@ -202,7 +205,7 @@ description: สร้างหรือปรับปรุง Nuxt 3/4 projec
 
 ## Expected Outcome
 
-- Nuxt 3/4 project ที่มีโครงสร้างถูกต้อง
+- Nuxt 4 project ที่มีโครงสร้างถูกต้อง
 - Layers และ Modules ที่จัดระเบียบดี
 - Code ที่มี type safety ด้วย TypeScript
 - Performance ที่ดีขึ้น

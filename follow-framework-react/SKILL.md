@@ -15,7 +15,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 1. Setup Project Structure
 
-> Goal: Setup Project Structure
+> Goal: สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน React 19
 
 สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน
 
@@ -27,7 +27,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 2. Configure Core Principles
 
-> Goal: Configure Core Principles
+> Goal: ตั้งค่าหลักการพื้นฐานของ React 19 อย่างถูกต้อง
 
 ตั้งค่าหลักการพื้นฐานของ React 19
 
@@ -40,7 +40,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 3. React 19 Hooks And APIs
 
-> Goal: React 19 Hooks And APIs
+> Goal: ใช้ hooks ใหม่ของ React 19 อย่างถูกต้องตาม use case
 
 ใช้ hooks ใหม่ของ React 19
 
@@ -53,7 +53,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 4. Implement Folder Rules
 
-> Goal: Implement Folder Rules
+> Goal: ใช้ rules สำหรับแต่ละ folder อย่างชัดเจน
 
 ใช้ rules สำหรับแต่ละ folder
 
@@ -64,7 +64,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 5. Setup Import Rules
 
-> Goal: Setup Import Rules
+> Goal: ตั้งค่า import dependencies ตามลำดับชั้นที่ถูกต้อง
 
 ตั้งค่า import dependencies ตามลำดับ
 
@@ -77,7 +77,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 6. Server Components Patterns
 
-> Goal: Server Components Patterns
+> Goal: ใช้ Server Components เป็น default และ Client Components เฉพาะจำเป็น
 
 ใช้ Server Components อย่างถูกต้อง
 
@@ -90,7 +90,7 @@ description: พัฒนา React 19 applications ตาม best practices 2026
 
 ### 7. Optimize Performance
 
-> Goal: Optimize Performance
+> Goal: ตั้งค่า performance optimization โดยใช้ React Compiler
 
 ตั้งค่า performance optimization
 

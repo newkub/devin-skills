@@ -29,7 +29,7 @@ argument-hint: "[file]"
 
 1. อ่านไฟล์เป้าหมายทั้งหมด
 2. ตรวจสอบ structure, logic, และ naming match กับ principle หรือไม่
-3. ทำ `/review-codebase` สำหรับปรับปรุง naming ให้ match กับ principle
+3. ทำ `/review-codebase-everything` สำหรับปรับปรุง naming ให้ match กับ principle
 
 ### 3. Analyze Violations
 

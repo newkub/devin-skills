@@ -15,7 +15,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 1. Identify DP Problems
 
-> Goal: Identify DP Problems
+> Goal: ระบุปัญหาที่มี overlapping subproblems และ optimal substructure
 
 ระบุปัญหาที่เหมาะกับ dynamic programming
 
@@ -27,7 +27,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 2. Design Recurrence
 
-> Goal: Design Recurrence
+> Goal: ออกแบบ recurrence relation ที่ถูกต้องและวิเคราะห์ complexity
 
 ออกแบบ recurrence relation
 
@@ -39,7 +39,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 3. Choose Approach
 
-> Goal: Choose Approach
+> Goal: เลือก approach ที่เหมาะสมระหว่าง memoization และ tabulation
 
 เลือก approach ที่เหมาะสม
 
@@ -51,7 +51,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 4. Implement Memoization
 
-> Goal: Implement Memoization
+> Goal: ใช้ memoization สำหรับ top-down approach ให้ cache ทำงานถูกต้อง
 
 ใช้ memoization สำหรับ top-down approach
 
@@ -63,7 +63,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 5. Implement Tabulation
 
-> Goal: Implement Tabulation
+> Goal: ใช้ tabulation สำหรับ bottom-up approach ให้ table ถูกต้อง
 
 ใช้ tabulation สำหรับ bottom-up approach
 
@@ -75,7 +75,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 6. Optimize
 
-> Goal: Optimize
+> Goal: ปรับปรุง performance ด้วยการลด state space และ space optimization
 
 ปรับปรุง performance
 
@@ -87,7 +87,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ### 7. Test
 
-> Goal: Test
+> Goal: ยืนยันความถูกต้องของ solution ผ่าน edge cases และ large inputs
 
 ทดสอบ solution
 
@@ -99,7 +99,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 
 ## Rules
 
-### Problem Identification
+### 1. Problem Identification
 
 ระบุปัญหาที่เหมาะกับ DP อย่างถูกต้อง
 
@@ -109,7 +109,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - ต้องมี recurrence relation
 - ต้องมี repeated calculations
 
-### Recurrence Design
+### 2. Recurrence Design
 
 ออกแบบ recurrence ที่ถูกต้อง
 
@@ -119,7 +119,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - ตรวจสอบ correctness
 - วิเคราะห์ complexity
 
-### Approach Selection
+### 3. Approach Selection
 
 เลือก approach ที่เหมาะสม
 
@@ -129,7 +129,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - พิจารณา time complexity
 - เลือก data structure ที่เหมาะสม
 
-### Memoization
+### 4. Memoization
 
 ใช้ memoization อย่างถูกต้อง
 
@@ -139,7 +139,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - จัดการ cache size
 - หลีกเลี่ยง cache misses
 
-### Tabulation
+### 5. Tabulation
 
 ใช้ tabulation อย่างถูกต้อง
 
@@ -149,7 +149,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - return final result
 - หลีกเลี่ยง out of bounds
 
-### Optimization
+### 6. Optimization
 
 ปรับปรุง performance
 
@@ -159,7 +159,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 - ใช้ bitwise operations
 - profile และ benchmark
 
-### Testing
+### 7. Testing
 
 ทดสอบ solution อย่างครบถ้วน
 

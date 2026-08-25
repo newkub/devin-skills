@@ -15,21 +15,18 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 
 ### 1. Setup VueUse
 
-> Goal: Setup VueUse
-
-ตั้งค่า VueUse ใน project
+> Goal: ติดตั้งและตั้งค่า VueUse ใน Vue หรือ Nuxt project
 
 1. ติดตั้ง `@vueuse/core` v14+ (ต้องการ Vue 3.5+)
 2. ติดตั้ง `@vueuse/nuxt` สำหรับ Nuxt projects
 3. ตั้งค่า Nuxt module ใน `nuxt.config.ts`
 4. ใช้ auto-imports สำหรับ VueUse composables
 5. กำหนด imports ที่ต้องการใช้
+6. ดูรายละเอียดใน [references/vueuse.md](references/vueuse.md)
 
 ### 2. Use VueUse Composables
 
-> Goal: Use VueUse Composables
-
-ใช้ VueUse composables ตาม use case
+> Goal: เลือก composables ตาม use case จาก categories หลักของ VueUse
 
 1. State: `useLocalStorage`, `useSessionStorage`, `useAsyncState`, `useStorage`
 2. Elements: `useElementBounding`, `useWindowSize`, `useScroll`, `useIntersectionObserver`
@@ -37,12 +34,11 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 4. Sensors: `useMouse`, `useGeolocation`, `useNetwork`, `useDraggable`, `useDropZone`
 5. Animation: `useInterval`, `useTimeout`, `useTransition`, `useRafFn`
 6. Utilities: `useSortable`, `useWebSocket`, `useElementVisibility`
+7. ดูรายละเอียดใน [references/vueuse.md](references/vueuse.md)
 
 ### 3. VueUse v14 New Features
 
-> Goal: VueUse v14 New Features
-
-ใช้ features ใหม่ของ VueUse v14
+> Goal: ใช้ features ใหม่ของ VueUse v14 ที่ปรับปรุงจากเวอร์ชันก่อนหน้า
 
 1. `useIntersectionObserver` รองรับ reactive `rootMargin` (ไม่ต้อง recreate observer)
 2. `useDraggable` มี auto-scroll ใน scrollable containers
@@ -51,12 +47,11 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 5. `useCssSupports` สำหรับ reactive CSS feature detection (ใหม่ใน v14)
 6. `useWebSocket` รองรับ function support สำหรับ `autoConnect.delay`
 7. `useElementVisibility` มี `initialValue` option
+8. Custom scheduler system จาก v14.1.0 สำหรับ time-based composables
 
 ### 4. Integrate With Components
 
-> Goal: Integrate With Components
-
-ใช้ VueUse ใน components
+> Goal: ใช้ VueUse ใน components อย่างเป็นระบบและ testable
 
 1. ใช้ VueUse ใน `<script setup>` components
 2. แยก logic ที่ซับซ้อนออกเป็น composables
@@ -66,9 +61,7 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 
 ### 5. Optimize Performance
 
-> Goal: Optimize Performance
-
-ปรับปรุง performance
+> Goal: ลด re-renders และ side-effects ด้วย VueUse utilities
 
 1. ใช้ `useThrottle` สำหรับ scroll/resize events
 2. ใช้ `useDebounce` สำหรับ input/search
@@ -81,16 +74,12 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 
 ### 1. Import Conventions
 
-กำหนดการ import
-
 - ใช้ auto-imports สำหรับ VueUse composables
 - ใช้ named imports สำหรับ composables ที่ไม่ได้ configure
 - ไม่ import VueUse ที่ไม่ได้ใช้ (tree-shaking)
 - VueUse v14 ต้องการ Vue 3.5+
 
 ### 2. Usage Patterns
-
-รูปแบบการใช้งาน
 
 - ใช้ VueUse ใน `<script setup>` เท่านั้น
 - แยก logic ที่ซับซ้อนออกเป็น composables
@@ -100,8 +89,6 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 - ใช้ TypeScript types จาก VueUse
 
 ### 3. Authoring Guidelines
-
-หลักการเขียน composables ตาม VueUse guidelines
 
 - Import Vue APIs จาก `"vue"`
 - ใช้ `ref` แทน `reactive` เมื่อเป็นไปได้
@@ -114,8 +101,6 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 
 ### 4. Performance
 
-ปรับปรุง performance
-
 - ใช้ `useThrottle` สำหรับ events
 - ใช้ `useDebounce` สำหรับ inputs
 - หลีกเลี่ยงการเรียก VueUse ใน loops
@@ -123,8 +108,6 @@ description: ใช้งาน VueUse v14 composables ตาม best practices 
 - ใช้ `shallowRef` สำหรับ large data
 
 ### 5. Testing
-
-ทดสอบ VueUse composables
 
 - Mock VueUse composables ใน unit tests
 - ใช้ `flushPromises` สำหรับ async composables

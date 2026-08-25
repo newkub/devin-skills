@@ -189,7 +189,7 @@ Review frontend ครอบคลุม components, forms, hooks/composables, s
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - แยก review process จาก fix process
-- ถ้า issue ซ้อนทับกับ `/review-codebase` → อ้างอิงแทน ไม่ duplicate
+- ถ้า issue ซ้อนทับกับ `/review-codebase-everything` → อ้างอิงแทน ไม่ duplicate
 
 ### 5. Scope Control
 

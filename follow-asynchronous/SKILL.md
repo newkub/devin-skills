@@ -9,22 +9,22 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 
 ## Scope
 
-ใช้กับโค้ด JS/TS ทีต้องจัดการ async/await, Promises, callbacks, event loop และ concurrency
+ใช้กับโค้ด JS/TS ที่ต้องจัดการ async/await, Promises, callbacks, event loop และ concurrency
 
 ## Execute
 
 ### 1. Identify Async Pattern
 
-> Goal: ระบุลักษณะของงานทีต้องทำ
+> Goal: ระบุลักษณะของงานที่ต้องทำ
 
 1. ดูว่า tasks เป็น sequential, parallel หรือ race condition
 2. ตรวจสอบ dependencies ระหว่าง tasks
-3. ระบุว่าจำเป็นต้อง cancel/retry/timeout หรือไม
+3. ระบุว่าจำเป็นต้อง cancel/retry/timeout หรือไม่
 4. ถ้าไม่ชัดให้ `ask-me`
 
 ### 2. Choose The Right Primitive
 
-> Goal: เลือก API ทีเหมาะสมกับงาน
+> Goal: เลือก API ที่เหมาะสมกับงาน
 
 1. `async/await` สำหรับ sequential flow ทั่วไป
 2. `Promise.all` เมื่อต้องการ parallel และทุก task ต้องสำเร็จ
@@ -48,7 +48,7 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 1. ใช้ `p-limit` หรือ `AsyncPool` ถ้าต้องการ limit concurrency
 2. ใช้ queues สำหรับ backpressure
 3. ระวัง connection pool / rate limits
-4. ใช้ `Promise.all` เฉพาะทีจำเป็นจริงๆ
+4. ใช้ `Promise.all` เฉพาะที่จำเป็นจริงๆ
 
 ### 5. Test Async Code
 
@@ -71,13 +71,13 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 
 - ทุก Promise ต้องมี `.catch()` หรือ `try/catch`
 - ไม่ปล่อย unhandled promise rejection
-- Log error ที่จุดทีถูกต้อง
+- Log error ที่จุดที่ถูกต้อง
 
 ### 3. Be Explicit About Concurrency
 
 - ระบุว่า operations ทำงาน sequential หรือ parallel
 - ใช้ `Promise.all` อย่างระมัดระวังกับ I/O ที่มากเกินไป
-- Document สาเหตุทีเลือก pattern นัน
+- Document สาเหตุที่เลือก pattern นั้น
 
 ## Expected Outcome
 

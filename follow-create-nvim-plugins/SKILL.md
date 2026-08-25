@@ -13,12 +13,12 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 
 ## Execute
 
-### 1. เตรียมความพร้อม
+### 1. Prepare
 
 > Goal: ตรวจสอบ requirements ก่อนเริ่ม
 
-1. ติดตั้ง Neovim 0.9+
-2. ติดตั้ง Git
+1. ติดตั้ง Neovim >= 0.8.0 (build ด้วย LuaJIT)
+2. ติดตั้ง Git >= 2.19.0
 3. มี `init.lua` สำหรับ entry point
 
 ### 2. Config Structure
@@ -26,14 +26,14 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 > Goal: สร้างโครงสร้าง config สำหรับ lazy.nvim
 
 1. สร้าง `lua/plugins/` directory สำหรับ plugin specs
-2. แยก plugin specs เป็นไฟล์ต่างๆ ตามหมวด
+2. แยก plugin specs เป็นไฟล์ต่างๆ ตามหมวด — ดู [references/plugin-configuration.md](references/plugin-configuration.md)
 3. ใช้ `return {}` สำหรับแต่ละ plugin spec
 
 ### 3. Bootstrap lazy.nvim
 
 > Goal: ติดตั้ง lazy.nvim ใน `init.lua`
 
-1. Bootstrap lazy.nvim ใน `init.lua`
+1. Bootstrap lazy.nvim ใน `init.lua` — ดู [references/lazy-nvim-setup.md](references/lazy-nvim-setup.md)
 2. ตั้งค่า `lazy.nvim` พร้อม plugin specs
 3. ใช้ `require('lazy').setup(specs)`
 
@@ -51,11 +51,11 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 
 > Goal: เพิ่มประสิทธิภาพ Neovim startup
 
-1. ใช้ lazy loading สำหรับทุก plugin
+1. ใช้ lazy loading สำหรับทุก plugin — ดู [references/plugin-management.md](references/plugin-management.md)
 2. หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น
 3. ใช้ `priority` สำหรับ plugins ที่ต้องโหลดก่อน
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -64,12 +64,18 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 
 ## Rules
 
-- ใช้ `lazy.nvim` สำหรับ plugin management
+### 1. Plugin Management
+
+- ใช้ `lazy.nvim` สำหรับ plugin management — ดู [references/lazy-nvim-setup.md](references/lazy-nvim-setup.md)
 - ทุก plugin lazy load เป็น default
-- แยก plugin specs เป็นไฟล์ต่างๆ ใน `lua/plugins/`
-- ใช้ `ft`, `cmd`, `keys`, `event` สำหรับ lazy loading triggers
+- แยก plugin specs เป็นไฟล์ต่างๆ ใน `lua/plugins/` — ดู [references/plugin-configuration.md](references/plugin-configuration.md)
 - ใช้ `lockfile` สำหรับ lock plugin versions
-- Neovim startup time < 50ms
+
+### 2. Performance
+
+- ใช้ `ft`, `cmd`, `keys`, `event` สำหรับ lazy loading triggers — ดู [references/plugin-configuration.md](references/plugin-configuration.md)
+- หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น
+- Neovim startup time < 50ms — ดู [references/plugin-management.md](references/plugin-management.md)
 
 ## Expected Outcome
 
@@ -78,27 +84,3 @@ description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 - Plugin specs แยกเป็นไฟล์ใน `lua/plugins/`
 - Neovim startup < 50ms
 - มี lockfile สำหรับ lock plugin versions
-
-### 1. เตรียมความพร้อม
-
-### 1.1 ตรวจสอบ requirements
-
-- Neovim >= 0.8.0 (ต้อง build ด้วย LuaJIT)
-- Git >= 2.19.0 (สำหรับ partial clones)
-- Nerd Font (optional)
-
-### 1.2 สร้าง config structure
-
-```text
-~/.config/nvim/
-├── init.lua
-├── lua/
-│   ├── config/
-│   │   ├── lazy.lua
-│   │   ├── options.lua
-│   │   └── keymaps.lua
-│   └── plugins/
-│       ├── core.lua
-│       ├── ui.lua
-│       └── lsp.lua
-```

@@ -95,7 +95,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase-everything` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
 - ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
 
@@ -103,7 +103,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 - ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 - ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
-- ไม่ review refactor opportunities ลึกที่ `/review-codebase` ทำ
+- ไม่ review refactor opportunities ลึกที่ `/review-codebase-everything` ทำ
 - ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
 - ไม่ review security controls — ใช้ `/review-delivery`
 - ไม่ review code quality — ใช้ `/review-quality`

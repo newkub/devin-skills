@@ -15,9 +15,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 1. Analyze Requirements
 
-> Goal: Analyze Requirements
-
-วิเคราะห์ requirements ของ project
+> Goal: เข้าใจ requirements และ constraints ของ project ครบถ้วน
 
 1. ระบุ functional requirements: ประเภท application, features หลัก, scale, real-time needs
 2. ระบุ non-functional requirements: performance, security, availability, maintainability, time-to-market
@@ -26,9 +24,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 2. Choose Programming Language
 
-> Goal: Choose Programming Language
-
-เลือกภาษาตามประเภท application
+> Goal: เลือกภาษาที่เหมาะสมกับประเภท application และ team expertise
 
 1. Web Applications: TypeScript (default), Rust (high performance), Go (simple backend), Python (AI/ML)
 2. Mobile Applications: React Native (cross-platform), Flutter (performance), Swift/Kotlin (native)
@@ -38,9 +34,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 3. Choose Frameworks And Libraries
 
-> Goal: Choose Frameworks And Libraries
-
-เลือก frameworks และ libraries ตามภาษา
+> Goal: เลือก frameworks และ libraries ที่เข้ากับภาษาและ ecosystem
 
 1. Web Frontend: Next.js (React), Nuxt (Vue), SvelteKit (Svelte), Vite (build tool)
 2. Web Backend: Nitro (universal), Express/Fastify (Node.js), Axum (Rust), Gin/Echo (Go)
@@ -49,9 +43,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 4. Choose Build Tools
 
-> Goal: Choose Build Tools
-
-เลือก build tools ตามภาษา
+> Goal: เลือก build tools ที่รองรับภาษาและเพิ่มความเร็วในการพัฒนา
 
 1. JavaScript/TypeScript: Vite, Rolldown, SWC
 2. Rust: Cargo, Moon (monorepo)
@@ -59,9 +51,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 5. Choose Deployment Platform
 
-> Goal: Choose Deployment Platform
-
-เลือก deployment platform ตาม requirements
+> Goal: เลือก deployment platform ที่เหมาะกับ scale และ budget
 
 1. Serverless: Cloudflare Workers, Vercel, AWS Lambda
 2. Containers: Docker, Kubernetes
@@ -69,9 +59,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 6. Create Decision Matrix
 
-> Goal: Create Decision Matrix
-
-สร้างตารางเปรียบเทียบ tech options
+> Goal: สร้างตารางเปรียบเทียบ tech options อย่างเป็นระบบ
 
 1. กำหนด criteria: development speed, performance, scalability, ecosystem maturity, learning curve, cost, maintenance
 2. ให้คะแนนแต่ละ criterion (0-10)
@@ -80,9 +68,7 @@ description: เลือก tech stack ที่เหมาะสมสำห�
 
 ### 7. Test And Validate
 
-> Goal: Test And Validate
-
-ทดสอบและ validate decision
+> Goal: ยืนยันว่า tech stack ที่เลือกใช้งานได้จริง
 
 1. Build MVP/prototype ด้วย tech stack ที่เลือก
 2. Measure performance จริง

@@ -15,9 +15,9 @@ description: สร้าง custom Tauri plugins ด้วย Rust และ Ja
 
 ### 1. Initialize Plugin Project
 
-> Goal: Initialize Plugin Project
+> Goal: สร้าง plugin project ใหม่ด้วย Tauri CLI พร้อมโครงสร้างมาตรฐาน
 
-สร้าง plugin ใหม่ด้วย Tauri CLI
+สร้าง plugin ใหม่ด้วย Tauri CLI — ดู CLI options ใน [references/tauri-cli.md](references/tauri-cli.md)
 
 1. รัน `bunx @tauri-apps/cli plugin new <name>` สำหรับสร้าง plugin ใหม่
 2. ใช้ `--no-api` หากไม่ต้องการ NPM package
@@ -26,9 +26,9 @@ description: สร้าง custom Tauri plugins ด้วย Rust และ Ja
 
 ### 2. Configure Plugin
 
-> Goal: Configure Plugin
+> Goal: กำหนด configuration ของ plugin ผ่าน Builder และ Config struct
 
-กำหนด configuration ของ plugin
+กำหนด configuration ของ plugin — ดู Builder API ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
 
 1. กำหนด plugin configuration ใน `tauri.conf.json`
 2. กำหนด Config struct ใน Rust code
@@ -36,9 +36,9 @@ description: สร้าง custom Tauri plugins ด้วย Rust และ Ja
 
 ### 3. Define Commands
 
-> Goal: Define Commands
+> Goal: สร้าง commands สำหรับให้ webview เรียกใช้ผ่าน invoke handler
 
-สร้าง commands สำหรับ webview เรียกใช้
+สร้าง commands สำหรับ webview เรียกใช้ — ดู commands macro ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
 
 1. สร้าง commands ใน `src/commands.rs` ด้วย `#[tauri::command]` macro
 2. Register commands ใน `src/lib.rs` ผ่าน `invoke_handler(tauri::generate_handler![commands::my_command])`
@@ -46,9 +46,9 @@ description: สร้าง custom Tauri plugins ด้วย Rust และ Ja
 
 ### 4. Implement Lifecycle Events
 
-> Goal: Implement Lifecycle Events
+> Goal: เชื่อม lifecycle hooks ของ plugin เพื่อจัดการ state และ events
 
-Hook ลง lifecycle events ของ plugin
+Hook ลง lifecycle events ของ plugin — ดู lifecycle hooks ใน [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
 
 1. Implement lifecycle hooks: `setup`, `on_navigation`, `on_page_load`, `on_webview_ready`, `on_event`, `on_drop`
 2. จัดการ state ใน `setup` hook ผ่าน `app.manage()`
@@ -56,9 +56,9 @@ Hook ลง lifecycle events ของ plugin
 
 ### 5. Create JavaScript API
 
-> Goal: Create JavaScript API
+> Goal: สร้าง JavaScript/TypeScript bindings สำหรับเรียก commands จาก frontend
 
-สร้าง bindings สำหรับ JavaScript/TypeScript
+สร้าง bindings สำหรับ JavaScript/TypeScript — ดู JavaScript API build ใน [references/tauri-cli.md](references/tauri-cli.md)
 
 1. สร้าง bindings ใน `webview-src/index.ts`:
 
@@ -88,7 +88,7 @@ export async function myCommand() {
 2. Build plugin: `cargo build`
 3. Publish ไป crates.io และ NPM
 
-### Ship
+### 8. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -125,7 +125,7 @@ tauri-plugin-<name>/
 
 ### 3. Command Permissions
 
-- Commands จะถูก generate permissions อัตโนมัติใน `permissions/`
+- Commands จะถูก generate permissions อัตโนมัติใน `permissions/` — ดู [references/tauri-plugin-api.md](references/tauri-plugin-api.md)
 - Define permissions ใน `tauri.conf.json > capabilities`
 - ใช้ `allow-<command-name>` สำหรับ grant access
 

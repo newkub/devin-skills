@@ -15,7 +15,7 @@ description: วิเคราะหาและเขียน GitHub workflow
 
 ### 1. Analyze Project
 
-> Goal: Analyze Project
+> Goal: วิเคราะห์โครงสร้างและ dependencies ของ project
 
 วิเคราะหาโปรเจกต์เพื่อเข้าใจความต้องการ
 
@@ -26,7 +26,7 @@ description: วิเคราะหาและเขียน GitHub workflow
 
 ### 2. Analyze Existing Workflows
 
-> Goal: Analyze Existing Workflows
+> Goal: ตรวจสอบ workflows ที่มีอยู่และระบุช่องว่าง
 
 วิเคราะหา GitHub workflows ที่มีอยู่แล้ว
 

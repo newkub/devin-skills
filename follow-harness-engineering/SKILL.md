@@ -23,7 +23,7 @@ description: สร้างและปรับปรุง AI agent harness �
 2. ตรวจสอบ Tool interface: tool definitions, input/output schemas, error handling, token efficiency
 3. ตรวจสอบ Context management: context selection, compaction, memory ทำ `/follow-context-engineering`
 4. ตรวจสอบ Lifecycle/Orchestration: agent loop, state management, retry logic, recovery
-5. ตรวจสอบ Observability: logging, tracing, metrics, execution traces ทำ `/review-codebase`
+5. ตรวจสอบ Observability: logging, tracing, metrics, execution traces ทำ `/review-codebase-everything`
 6. ตรวจสอบ Verification: test harness, requirement checks, output validation ทำ `/validate`
 7. ตรวจสอบ Governance: permissions, access control, audit trail, intervention recording
 
@@ -62,7 +62,7 @@ description: สร้างและปรับปรุง AI agent harness �
 2. ใช้ structured logging สำหรับทุก tool call และ agent decision
 3. บันทึก intervention: เมื่อมี human intervention ให้บันทึก context และ reason
 4. ตรวจสอบ entropy: บันทึก unrelated changes ที่ agent ทำเกินจำเป็น
-5. ทำ `/review-codebase` สำหรับ comprehensive observability improvements
+5. ทำ `/review-codebase-everything` สำหรับ comprehensive observability improvements
 
 ### 5. Implement Verification
 

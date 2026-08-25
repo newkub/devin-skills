@@ -15,7 +15,7 @@ Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangle
 
 ### 1. Setup Nitro Config
 
-> Goal: Setup Nitro Config
+> Goal: ตั้งค่า Nitro configuration สำหรับ Cloudflare Workers
 
 ตั้งค่า Nitro configuration สำหรับ Cloudflare Workers
 
@@ -27,7 +27,7 @@ Deploy Nitro application ไปยัง Cloudflare Workers ด้วย wrangle
 
 ### 2. Build Application
 
-> Goal: Build Application
+> Goal: Build application สำหรับ deployment
 
 Build application สำหรับ deployment
 
@@ -38,7 +38,7 @@ Build application สำหรับ deployment
 
 ### 3. Deploy To Cloudflare Workers
 
-> Goal: Deploy To Cloudflare Workers
+> Goal: Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 
 Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 
@@ -49,7 +49,7 @@ Deploy ไปยัง Cloudflare Workers ด้วย wrangler
 
 ### 4. Watch Deployment
 
-> Goal: Watch Deployment
+> Goal: ตรวจสอบ deployment ด้วย browser preview
 
 Watch deployment ด้วย browser preview
 
@@ -60,7 +60,7 @@ Watch deployment ด้วย browser preview
 
 ### 5. Fix Errors
 
-> Goal: Fix Errors
+> Goal: แก้ไข errors ที่พบหลัง deploy
 
 แก้ไข errors ที่พบ
 
@@ -71,7 +71,7 @@ Watch deployment ด้วย browser preview
 
 ### 6. Loop Until Live
 
-> Goal: Loop Until Live
+> Goal: ทำซ้ำจนกว่า deployment live สำเร็จ
 
 ทำซ้ำจนกว่า deployment live สำเร็จ
 

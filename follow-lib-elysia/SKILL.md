@@ -15,7 +15,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 1. Install And Setup
 
-> Goal: Install And Setup
+> Goal: ติดตั้ง Elysia และ setup บน Bun runtime
 
 1. ติดตั้ง `bun add elysia`
 2. ถ้าต้องการ end-to-end type safety ติดตั้ง `bun add @elysia/eden`
@@ -24,7 +24,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 2. Define Routes
 
-> Goal: Define Routes
+> Goal: กำหนด routes ด้วย HTTP verb methods และ path parameters
 
 1. ใช้ HTTP verb methods: `.get()`, `.post()`, `.put()`, `.patch()`, `.delete()`
 2. ใช้ dynamic path parameters: `/users/:id`, `/posts/:category/:slug`
@@ -34,7 +34,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 3. Handle Context
 
-> Goal: Handle Context
+> Goal: จัดการ request context และ response headers
 
 1. ใช้ `context.body`, `context.query`, `context.params`, `context.headers`, `context.cookie`
 2. ใช้ `context.store` สำหรับ global mutable state
@@ -44,7 +44,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 4. Validate With Schema
 
-> Goal: Validate With Schema
+> Goal: ตรวจสอบ input ด้วย schema validation
 
 1. ใช้ `Elysia.t` (TypeBox) สำหรับ schema validation แบบ built-in
 2. ใช้ Standard Schema (Zod, Valibot, ArkType) ได้โดย import แล้วส่งให้ route handler
@@ -55,7 +55,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 5. Use Lifecycle Hooks
 
-> Goal: Use Lifecycle Hooks
+> Goal: ใช้ lifecycle hooks สำหรับ request/response pipeline
 
 1. ใช้ `.onRequest()` สำหรับ notify new request
 2. ใช้ `.parse()` สำหรับ custom body parsing
@@ -68,7 +68,7 @@ description: แนวทางการพัฒนา API ด้วย Elysia 
 
 ### 6. Use Plugins
 
-> Goal: Use Plugins
+> Goal: ใช้ plugins สำหรับ modular architecture
 
 1. ใช้ `.use(plugin)` สำหรับ register plugin
 2. ประกาศ dependency อย่างชัดเจน: main instance ต้อง `.use(auth)` ก่อนใช้ `Auth`

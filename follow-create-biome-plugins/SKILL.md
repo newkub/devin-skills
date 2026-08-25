@@ -32,6 +32,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 5. ใช้ `register_diagnostic()` เพื่อรายงาน diagnostics
 6. ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
 
+ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ pattern syntax เต็ม
+
 ### 3. Configure Plugin
 
 > Goal: ตั้งค่า plugin ใน `biome.jsonc`
@@ -40,6 +42,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 2. ใช้ relative path จาก root ของโปรเจกต์
 3. ใช้ `includes` เพื่อจำกัดไฟล์ที่ plugin ทำงาน (optional)
 4. ตรวจสอบว่า plugin ถูก load อย่างถูกต้อง
+
+ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration options เต็ม
 
 ### 4. Discover CST Node Names
 
@@ -60,7 +64,7 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 3. ทดสอบ edge cases และ false positives
 4. ทดสอบ rewrites (`=>`) สำหรับ fixable diagnostics
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -105,6 +109,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 - Rewrites: ใช้ `=>` operator เช่น `` `console.log($msg)` => `console.warn($msg)` ``
 - Multiple rules: ใช้ `or` block สำหรับรวมหลาย rules ในไฟล์เดียว
 
+ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับตัวอย่าง patterns ทั้งหมด
+
 ### 5. Configuration
 
 - กำหนด plugin ผ่าน `plugins` array ใน `biome.jsonc`
@@ -114,6 +120,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 - `includes` ใช้ glob patterns และรองรับ negation (`!`)
 - Plugins สามารถกำหนดใน root `biome.jsonc` และ extended โดย child configs
 
+ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration format เต็ม
+
 ### 6. Common CST Node Names
 
 - JavaScript: `JsIfStatement`, `JsCallExpression`, `JsArrowFunctionExpression`, `JsVariableDeclaration`, `JsxElement`, `JsxAttribute`
@@ -121,6 +129,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 - CSS: `CssDeclarationWithSemicolon`, `CssComplexSelector`, `CssDeclarationImportant`
 - JSON: `JsonMember`, `JsonMemberName`, `JsonObjectValue`, `JsonArrayValue`
 - ตรวจสอบ node names ใน [Biome Playground](https://biomejs.dev/playground/) เสมอ
+
+ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ CST node matching syntax
 
 ## Expected Outcome
 

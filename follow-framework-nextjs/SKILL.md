@@ -1,21 +1,21 @@
 ---
 name: follow-framework-nextjs
-description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 15 applications
+description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 16 applications
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Next.js 15 applications ให้มีประสิทธิภาพสูงสุด
+กำหนดแนวทางการพัฒนา Next.js 16 applications ให้มีประสิทธิภาพสูงสุด
 
 ## Scope
 
-จัดโครงสร้างและพัฒนา Next.js 15 applications ด้วย App Router, React 19, และ TypeScript
+จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.2, Cache Components และ TypeScript
 
 ## Execute
 
 ### 1. Project Structure
 
-> Goal: Project Structure
+> Goal: สร้างโครงสร้าง App Router ด้วย `app/` directory
 
 1. ใช้ App Router ด้วย `app/` directory
 2. สร้าง `app/layout.tsx` สำหรับ root layout
@@ -24,10 +24,11 @@ description: แนวทางการจัดโครงสร้างแ�
 5. สร้าง `app/error.tsx`, `loading.tsx`, `not-found.tsx` สำหรับ error handling
 6. ใช้ `app/api/` สำหรับ API routes
 7. ใช้ route groups `(group)` สำหรับ organize routes โดยไม่กระทบ URL
+8. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
 
 ### 2. Directory Organization
 
-> Goal: Directory Organization
+> Goal: จัดระเบียบ supporting directories นอก `app/`
 
 1. ใช้ `components/` สำหรับ React components (ui, features)
 2. ใช้ `hooks/` สำหรับ custom React hooks
@@ -37,17 +38,18 @@ description: แนวทางการจัดโครงสร้างแ�
 
 ### 3. Configuration
 
-> Goal: Configuration
+> Goal: ตั้งค่า Next.js 16 config และ scripts
 
 1. ตั้งค่า `next.config.ts` สำหรับ Next.js config
-2. ตั้งค่า `tsconfig.json` ด้วย strict mode
+2. ตั้งค่า `tsconfig.json` ด้วย strict mode (TypeScript 5.1+)
 3. ตั้งค่า `package.json` scripts (dev, build, start, lint, typecheck)
-4. สร้าง `middleware.ts` สำหรับ auth checks เท่านั้น (ไม่ใช่ database calls)
-5. ใช้ Turbopack สำหรับ dev และ build (stable ใน Next.js 15)
+4. สร้าง `proxy.ts` สำหรับ auth checks เท่านั้น (ไม่ใช่ database calls) — แทน `middleware.ts`
+5. ใช้ Turbopack สำหรับ dev และ build (stable default ใน Next.js 16)
+6. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
 
 ### 4. Server And Client Components
 
-> Goal: Server And Client Components
+> Goal: แยก Server และ Client Components อย่างถูกต้อง
 
 1. Server Components เป็น default (ไม่ใช้ `useState`, `useEffect`)
 2. Client Components เฉพาะเมื่อต้องการ interactivity (`'use client'`)
@@ -55,20 +57,21 @@ description: แนวทางการจัดโครงสร้างแ�
 4. ส่ง Server Components เป็น `children` ของ Client Components
 5. หลีกเลี่ยง non-serializable props จาก Server → Client (functions, dates)
 
-### 5. Data Fetching
+### 5. Data Fetching And Cache Components
 
-> Goal: Data Fetching
+> Goal: ใช้ Server Components สำหรับ data fetching และ Cache Components สำหรับ explicit caching
 
 1. ใช้ Server Components สำหรับ data fetching (ไม่ใช้ `useEffect`)
 2. ใช้ `Promise.all` สำหรับ parallel data fetching (หลีกเลี่ยง waterfalls)
 3. `params` และ `searchParams` เป็น `Promise` ใน Next.js 15+ ต้อง `await`
-4. ใช้ `fetch()` พร้อม explicit `revalidate` หรือ `cache` option
+4. ใช้ `'use cache'` directive สำหรับ Cache Components (Next.js 16 — explicit opt-in caching)
 5. ใช้ `generateMetadata` สำหรับ SEO ในทุก page
 6. ใช้ `generateStaticParams` สำหรับ static generation
+7. ดูรายละเอียดใน [references/nextjs.md](references/nextjs.md)
 
 ### 6. Server Actions
 
-> Goal: Server Actions
+> Goal: ใช้ Server Actions สำหรับ form handling และ mutations
 
 1. ใช้ Server Actions สำหรับ form handling และ mutations
 2. Validate inputs ด้วย Zod schemas
@@ -78,30 +81,31 @@ description: แนวทางการจัดโครงสร้างแ�
 
 ### 7. Performance
 
-> Goal: Performance
+> Goal: ปรับแต่ง performance ด้วย Turbopack, React Compiler และ PPR
 
 1. ใช้ `next/image` สำหรับ image optimization
 2. ใช้ `next/link` สำหรับ navigation
 3. ใช้ dynamic imports สำหรับ code splitting
 4. ใช้ Suspense boundaries สำหรับ streaming (แทน `loading.tsx` เมื่อต้องการ granular control)
 5. ใช้ Partial Prerendering (PPR) สำหรับ static shell + dynamic islands
-6. ใช้ React Compiler แทน manual `memo`/`useMemo`/`useCallback`
+6. ใช้ React Compiler แทน manual `memo`/`useMemo`/`useCallback` (stable ใน Next.js 16)
+7. ใช้ React 19.2 features: View Transitions, `useEffectEvent()`
 
 ### 8. Caching Strategy
 
-> Goal: Caching Strategy
+> Goal: ใช้ explicit caching APIs ของ Next.js 16
 
 1. `fetch()` ไม่ cached by default ใน Next.js 15+
-2. ใช้ `next: { revalidate: seconds }` สำหรับ time-based revalidation
-3. ใช้ `next: { tags: ['tag'] }` สำหรับ tag-based revalidation
-4. ใช้ `cache: 'force-cache'` สำหรับ static data
-5. ใช้ `cache: 'no-store'` สำหรับ always-fresh data
+2. ใช้ `'use cache'` directive สำหรับ Cache Components (Next.js 16)
+3. ใช้ `next: { revalidate: seconds }` สำหรับ time-based revalidation
+4. ใช้ `next: { tags: ['tag'] }` สำหรับ tag-based revalidation
+5. ใช้ `updateTag()` และ `revalidateTag()` สำหรับ cache invalidation
+6. ใช้ `cache: 'force-cache'` สำหรับ static data
+7. ใช้ `cache: 'no-store'` สำหรับ always-fresh data
 
 ## Rules
 
 ### 1. Directory Structure
-
-โครงสร้างที่ถูกต้อง:
 
 - ใช้ `app/` directory สำหรับ App Router
 - ใช้ route groups `(group)` สำหรับ organize routes
@@ -112,27 +116,22 @@ description: แนวทางการจัดโครงสร้างแ�
 
 ### 2. Server And Client Components
 
-ใช้ components อย่างถูกต้อง:
-
 - Server Components เป็น default
 - `'use client'` เฉพาะเมื่อต้องการ interactivity, state, หรือ browser APIs
 - Push `'use client'` ให้ลึกที่สุดใน tree
 - ส่ง Server Components เป็น `children` ของ Client Components
 - หลีกเลี่ยง `useEffect` สำหรับ data fetching ใช้ Server Components แทน
 
-### 3. Data Fetching
-
-ใช้ data fetching อย่างถูกต้อง:
+### 3. Data Fetching And Caching
 
 - ใช้ Server Components สำหรับ data fetching
 - ใช้ `Promise.all` สำหรับ parallel fetches
 - `params` และ `searchParams` เป็น `Promise` ต้อง `await`
+- ใช้ `'use cache'` directive สำหรับ explicit caching (Next.js 16)
 - ใช้ explicit `revalidate` หรือ `cache` ในทุก `fetch()`
 - ใช้ `generateMetadata` ในทุก page
 
 ### 4. Server Actions
-
-ใช้ Server Actions อย่างถูกต้อง:
 
 - Validate inputs ด้วย Zod
 - Return typed error objects
@@ -141,8 +140,6 @@ description: แนวทางการจัดโครงสร้างแ�
 
 ### 5. Performance
 
-ตั้งค่า performance:
-
 - ใช้ `next/image` สำหรับ images
 - ใช้ `next/link` สำหรับ navigation
 - ใช้ Suspense boundaries สำหรับ streaming
@@ -150,19 +147,18 @@ description: แนวทางการจัดโครงสร้างแ�
 - ใช้ React Compiler แทน manual memoization
 - ใช้ dynamic imports สำหรับ heavy components
 
-### 6. Middleware
+### 6. Proxy (formerly Middleware)
 
-ใช้ middleware อย่างถูกต้อง:
-
+- ใช้ `proxy.ts` แทน `middleware.ts` (Next.js 16)
 - ใช้สำหรับ auth checks เท่านั้น
-- ห้ามทำ database calls ใน middleware
+- ห้ามทำ database calls ใน proxy
 - รันบน Edge Runtime
 
 ## Expected Outcome
 
-- Next.js 15 project ที่มีโครงสร้างถูกต้อง
+- Next.js 16 project ที่มีโครงสร้างถูกต้อง
 - Server Components เป็น default, Client Components เฉพาะเมื่อจำเป็น
-- App Router พร้อม streaming และ PPR
+- App Router พร้อม streaming, PPR และ Cache Components
 - TypeScript strict mode
-- Performance ที่ดีขึ้นด้วย React Compiler และ Suspense
+- Performance ที่ดีขึ้นด้วย Turbopack, React Compiler และ Suspense
 - Server Actions สำหรับ mutations

@@ -7,7 +7,10 @@
 - [TanStack Router](https://tanstack.com/router/latest)
 - [TanStack Form](https://tanstack.com/form/latest)
 - [TanStack Store](https://tanstack.com/store/latest)
+- [TanStack Virtual](https://tanstack.com/virtual/latest)
 - [TanStack Start](https://tanstack.com/start/latest)
+- [TanStack DB](https://tanstack.com/db/latest)
+- [TanStack AI](https://tanstack.com/ai/latest)
 
 ## GitHub
 
@@ -16,7 +19,10 @@
 - [TanStack Router GitHub](https://github.com/TanStack/router)
 - [TanStack Form GitHub](https://github.com/TanStack/form)
 - [TanStack Store GitHub](https://github.com/TanStack/store)
+- [TanStack Virtual GitHub](https://github.com/TanStack/virtual)
 - [TanStack Start GitHub](https://github.com/TanStack/start)
+- [TanStack DB GitHub](https://github.com/TanStack/db)
+- [TanStack AI GitHub](https://github.com/TanStack/ai)
 
 ## Community
 

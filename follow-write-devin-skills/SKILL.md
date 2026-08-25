@@ -59,7 +59,7 @@ argument-hint: "[skill-name]"
 2. ใช้ `src/presentation/cli.ts` เป็น entry point สำหรับ CLI
 3. ใช้ `src/` เก็บ web app code สำหรับ web-based skills
 4. ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระ
-5. ถ้า skill มี `src/` → ทำ `/ship-skills` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
+5. ถ้า skill มี `src/` → ทำ `/ship-code` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
 ### 6. Validate Skill
 
@@ -91,9 +91,9 @@ argument-hint: "[skill-name]"
 | Prefix | สำหรับ | ตัวอย่าง |
 |--------|--------|----------|
 | `follow-lang-` | programming language / runtime | `follow-lang-rust`, `follow-lang-python`, `follow-lang-typescript` |
-| `follow-framework-` | meta-framework / app framework | `follow-framework-nuxt`, `follow-framework-vue`, `follow-framework-tauri` |
+| `follow-framework-` | meta-framework / app framework | `follow-framework-nuxt`, `follow-framework-tauri` |
 | `follow-service-` | external service / cloud platform | `follow-service-supabase`, `follow-service-vercel`, `follow-service-aws-sdk` |
-| `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia` |
+| `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia`, `follow-lib-vue` |
 | `follow-tool-` | CLI tool / dev tool / build tool | `follow-tool-biome`, `follow-tool-vite`, `follow-tool-ast-grep` |
 | `follow-create-` | สร้าง plugins / extensions / CLI / lib | `follow-create-bun-cli`, `follow-create-eslint-plugins` |
 | `follow-` (คงเดิม) | concept / practice / workflow / process | `follow-architecture`, `follow-tdd`, `follow-deploy`, `follow-plan` |
@@ -124,7 +124,7 @@ argument-hint: "[skill-name]"
 - ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 - ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
-- ถ้า skill มี `src/` → ทำ `/ship-skills` เลยหลัง validation ผ่าน ไม่ต้องถาม user
+- ถ้า skill มี `src/` → ทำ `/ship-code` เลยหลัง validation ผ่าน ไม่ต้องถาม user
 
 ### 6. Subagent And Model
 
@@ -146,7 +146,7 @@ argument-hint: "[skill-name]"
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
-- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship-skills` เลย
+- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship-code` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
 

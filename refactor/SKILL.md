@@ -20,7 +20,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: เข้าใจ codebase ก่อน refactor
 
-1. ทำ `/review-codebase` สำหรับ deep review
+1. ทำ `/review-codebase-everything` สำหรับ deep review
 2. ทำ `/check-code-structure`, `/review-quality`, `/check-long-files`
 3. บันทึก baseline: files, symbols, responsibilities
 

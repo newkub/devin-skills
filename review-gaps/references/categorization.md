@@ -7,7 +7,7 @@
 | Category | Description | Typical Sources |
 |----------|-------------|-----------------|
 | missing features | ฟีเจอร์ที่ควรมีแต่ยังไม่มี | `review-realize-implementation`, `review-frontend`, `review-backend` |
-| quality gaps | code quality, bug-prone, correctness | `review-quality`, `review-codebase` |
+| quality gaps | code quality, bug-prone, correctness | `review-quality`, `review-codebase-everything` |
 | implementation gaps | TODO, MOCK, STUB, incomplete flows | `review-realize-implementation` |
 | DX gaps | onboarding, tooling, feedback loops | `review-delivery` |
 | performance gaps | network, bundler, memory, I/O | `review-delivery`, `review-stability` |

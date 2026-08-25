@@ -25,7 +25,7 @@ cargo --version
 
 ## Version Info
 
-- Latest stable: `1.98.0` (as of 2025)
+- Latest stable: `1.98.0` (as of Aug 2026)
 - Rust has a 6-week rapid release process
 - Channels: `stable`, `beta`, `nightly`
 - Tools installed to `~/.cargo/bin` (Unix) or `%USERPROFILE%\.cargo\bin` (Windows)

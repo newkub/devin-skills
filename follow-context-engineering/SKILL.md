@@ -15,9 +15,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 1. Curate System Context
 
-> Goal: Curate System Context
-
-คัดเลือก context เริ่มต้นให้มี high-signal tokens น้อยที่สุดเท่าที่จำเป็น
+> Goal: คัดเลือก context เริ่มต้นให้มี high-signal tokens น้อยที่สุดเท่าที่จำเป็น
 
 1. เขียน system instructions ที่ชัดเจน ใช้ภาษาตรงประเด็น ไม่กำกวม
 2. จัดระเบียบ instructions เป็น sections ชัดเจน (background, instructions, tool guidance, output description)
@@ -27,9 +25,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 2. Optimize Tool Usage
 
-> Goal: Optimize Tool Usage
-
-ใช้ tools อย่างมีประสิทธิภาพเพื่อลด context consumption
+> Goal: ใช้ tools อย่างมีประสิทธิภาพเพื่อลด context consumption
 
 1. ใช้ tools ที่ return ข้อมูลกระชับ ไม่ bloated output
 2. หลีกเลี่ยง tools ที่มี functionality ซ้ำซ้อนกัน
@@ -40,9 +36,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 3. Apply Compaction
 
-> Goal: Apply Compaction
-
-ใช้ compaction เมื่อ context ใกล้เต็ม เพื่อรักษา conversational flow
+> Goal: ใช้ compaction เมื่อ context ใกล้เต็มเพื่อรักษา conversational flow
 
 1. สรุป message history โดย preserve: architectural decisions, unresolved bugs, implementation details
 2. ทิ้ง: redundant tool outputs, verbose error messages, ข้อมูลที่ไม่เกี่ยวข้อง
@@ -52,9 +46,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 4. Use Structured Note-Taking
 
-> Goal: Use Structured Note-Taking
-
-ใช้ agentic memory เพื่อ maintain progress นอก context window
+> Goal: ใช้ agentic memory เพื่อ maintain progress นอก context window
 
 1. สร้างและอัปเดต `progress.txt` หรือ `NOTES.md` สำหรับ track progress ข้าม session
 2. บันทึก: goal หลัก, sub-tasks ที่เสร็จ, decisions สำคัญ, dependencies, ปัญหาที่เจอ
@@ -64,9 +56,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 5. Decompose With Sub-Agent Pattern
 
-> Goal: Decompose With Sub-Agent Pattern
-
-แบ่งงานใหญ่เป็น sub-tasks เพื่อจำกัด context ของแต่ละส่วน
+> Goal: แบ่งงานใหญ่เป็น sub-tasks เพื่อจำกัด context ของแต่ละส่วน
 
 1. แบ่ง task ใหญ่เป็น sub-tasks ที่มี context แยกอิสระ
 2. แต่ละ sub-task ทำงานใน context สะอาด ไม่สะสม context จาก sub-task อื่น
@@ -76,9 +66,7 @@ description: จัดการ context ของ AI agent อย่างมี
 
 ### 6. Manage Context Lifecycle
 
-> Goal: Manage Context Lifecycle
-
-จัดการ context ตลอด conversation lifecycle
+> Goal: จัดการ context ตลอด conversation lifecycle
 
 1. เริ่มต้น: คัดเลือก minimal context ที่จำเป็นต่อ task
 2. ระหว่างทำงาน: ย้ำ goal ทุก 5-10 tool calls เพื่อรักษา goal alignment

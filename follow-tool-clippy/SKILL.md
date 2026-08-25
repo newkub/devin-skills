@@ -15,7 +15,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 
 ### 1. Analyze Project
 
-> Goal: Analyze Project
+> Goal: ตรวจสอบโครงสร้าง project และ config ที่มีอยู่
 
 1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
@@ -24,7 +24,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 
 ### 2. Setup Clippy Configuration
 
-> Goal: Setup Clippy Configuration
+> Goal: สร้าง `clippy.toml` พร้อม lint categories และ thresholds
 
 1. สร้าง `clippy.toml` ที่ root ของ workspace หรือ crate
 2. ตั้งค่า lint categories ที่เหมาะสม:
@@ -45,7 +45,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 
 ### 3. Setup Error Handling Standards
 
-> Goal: Setup Error Handling Standards
+> Goal: กำหนดมาตรฐาน error handling สำหรับ Rust code
 
 1. สร้าง error type ที่เป็นมาตรฐาน (ใช้ `thiserror` หรือ `anyhow`)
 2. ใช้ `Result<T, E>` แทนการ unwrap ใน production code
@@ -57,7 +57,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 
 ### 4. Verify Configuration
 
-> Goal: Verify Configuration
+> Goal: รัน verification เพื่อยืนยัน lint rules ทำงานถูกต้อง
 
 1. รัน `cargo clippy --all-targets -- -D warnings`
 2. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง

@@ -15,7 +15,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 1. Install And Authenticate
 
-> Goal: Install And Authenticate
+> Goal: ติดตั้ง Infisical CLI และ authenticate ด้วย machine identity
 
 ติดตั้ง Infisical CLI และ authenticate ด้วย machine identity strategies
 
@@ -29,7 +29,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 2. Initialize Project
 
-> Goal: Initialize Project
+> Goal: ตั้งค่า Infisical สำหรับ project และ commit configuration
 
 ตั้งค่า Infisical สำหรับ project และ commit configuration
 
@@ -40,7 +40,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 3. Configure .infisical.json
 
-> Goal: Configure .infisical.json
+> Goal: ตั้งค่า workspace ID, default environment และ environment mapping
 
 ตั้งค่า workspace ID, default environment, และ environment mapping
 
@@ -51,7 +51,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 4. Manage Secrets
 
-> Goal: Manage Secrets
+> Goal: จัดการ secrets ผ่าน CLI และ dashboard
 
 จัดการ secrets ผ่าน CLI และ dashboard
 
@@ -65,7 +65,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 5. Inject Secrets In Local Development
 
-> Goal: Inject Secrets In Local Development
+> Goal: inject secrets เป็น environment variables สำหรับ local development
 
 ใช้ `infisical run` เพื่อ inject secrets เป็น environment variables
 
@@ -79,7 +79,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ### 6. Export Secrets For CI/CD
 
-> Goal: Export Secrets For CI/CD
+> Goal: Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
@@ -93,7 +93,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 ### 7. Use SDK For Programmatic Access
 
-> Goal: Use SDK For Programmatic Access
+> Goal: ใช้ `@infisical/sdk` สำหรับ programmatic access ใน production
 
 ใช้ `@infisical/sdk` สำหรับ programmatic access ใน production
 
@@ -107,7 +107,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 ### 8. Configure Platform Integrations
 
-> Goal: Configure Platform Integrations
+> Goal: ตั้งค่า Infisical สำหรับ platforms ต่างๆ
 
 ตั้งค่า Infisical สำหรับ platforms ต่างๆ
 

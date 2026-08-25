@@ -15,7 +15,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 1. Environment Setup
 
-> Goal: Environment Setup
+> Goal: ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
 ตรวจสอบและเตรียม environment ก่อนเริ่มพัฒนา
 
 1. ตรวจสอบ Node.js >= 22 (Capacitor 8 requirement)
@@ -28,7 +28,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 2. Project Configuration
 
-> Goal: Project Configuration
+> Goal: ตั้งค่า `capacitor.config.ts` อย่างถูกต้องตาม best practices
 ตั้งค่า Capacitor config อย่างถูกต้อง
 
 1. สร้าง `capacitor.config.ts` ด้วย `CapacitorConfig` type จาก `@capacitor/cli`
@@ -44,7 +44,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 3. SPA Integration
 
-> Goal: SPA Integration
+> Goal: เชื่อมต่อ web app เข้ากับ Capacitor native container อย่างถูกต้อง
 เชื่อมต่อ web app เข้ากับ Capacitor native container
 
 1. ทำ `/follow-tool-vite` สำหรับ SPA build configuration
@@ -57,7 +57,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 4. Plugin Management
 
-> Goal: Plugin Management
+> Goal: จัดการ Capacitor plugins อย่างเป็นระบบและเข้ากันกับเวอร์ชัน 8
 จัดการ Capacitor plugins อย่างเป็นระบบ
 
 1. ติดตั้ง plugins ด้วย `bun add @capacitor/<plugin-name>`
@@ -71,7 +71,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 5. Platform Development
 
-> Goal: Platform Development
+> Goal: พัฒนาและทดสอบบน native platforms อย่างถูกต้อง
 พัฒนาและทดสอบบน native platforms
 
 1. เพิ่ม platform ด้วย `cap add ios` หรือ `cap add android`
@@ -85,7 +85,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 6. Platform-Specific Code
 
-> Goal: Platform-Specific Code
+> Goal: จัดการ platform-specific code อย่างถูกต้องด้วย feature detection
 จัดการ platform-specific code อย่างถูกต้อง
 
 1. ใช้ `Capacitor.platform` สำหรับตรวจจับ platform (`ios`, `android`, `web`)
@@ -98,7 +98,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 
 ### 7. Build And Deployment
 
-> Goal: Build And Deployment
+> Goal: Build และ deploy ไปยัง app stores อย่างปลอดภัย
 Build และ deploy ไปยัง app stores
 
 1. ทำ `/follow-deploy` สำหรับ deployment strategy
@@ -112,7 +112,7 @@ Build และ deploy ไปยัง app stores
 
 ### 8. OTA Updates
 
-> Goal: OTA Updates
+> Goal: จัดการ over-the-air updates สำหรับ web bundle อย่างปลอดภัย
 จัดการ over-the-air updates สำหรับ web bundle
 
 1. ติดตั้ง `@capgo/capacitor-updater` สำหรับ OTA update support
@@ -123,7 +123,7 @@ Build และ deploy ไปยัง app stores
 
 ### 9. Security
 
-> Goal: Security
+> Goal: ทำตาม security best practices สำหรับ Capacitor apps
 ทำตาม security best practices สำหรับ Capacitor apps
 
 1. ไม่ embed secrets ใน app code ใช้ server-side สำหรับ sensitive operations

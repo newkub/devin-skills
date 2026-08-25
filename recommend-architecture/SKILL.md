@@ -33,7 +33,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 
 ตรวจสอบโครงสร้างไฟล์และ folders
 
-- ทำ `/review-codebase` เพื่อตรวจสอบโครงสร้าง
+- ทำ `/review-codebase-everything` เพื่อตรวจสอบโครงสร้าง
 - ระบุ architecture patterns ที่ใช้
 - ตรวจสอบ consistency ของโครงสร้าง
 

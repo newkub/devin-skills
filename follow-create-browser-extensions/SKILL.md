@@ -49,7 +49,7 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 3. ตรวจสอบ console errors และ permissions
 4. ทดสอบ cross-browser compatibility
 
-### Ship
+### 5. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -58,19 +58,19 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 
 ## Rules
 
-### Manifest V3
+### 1. Manifest V3
 
 - ใช้ Manifest V3 standard
 - ใช้ service workers แทน background pages
 - Configure permissions อย่างเหมาะสม
 
-### Security
+### 2. Security
 
 - ไม่ hardcode API keys
 - ใช้ content security policy
 - Validate user inputs
 
-### Best Practices
+### 3. Best Practices
 
 - ใช้ TypeScript สำหรับ type safety
 - Test บนหลาย browsers

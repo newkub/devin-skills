@@ -116,7 +116,7 @@ Infrastructure:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/review-codebase` หรือ `/run-build`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/review-codebase-everything` หรือ `/run-build`
 
 ### 2. Think Like A DevOps Engineer
 
@@ -151,9 +151,9 @@ Infrastructure:
 
 - ถ้า operational review ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan deployment จริง ให้ใช้ `/review-codebase`
-- ถ้าต้องการ scan CI/CD จริง ให้ใช้ `/review-codebase`
-- ถ้าต้องการ scan monitoring จริง ให้ใช้ `/review-codebase`
+- ถ้าต้องการ scan deployment จริง ให้ใช้ `/review-codebase-everything`
+- ถ้าต้องการ scan CI/CD จริง ให้ใช้ `/review-codebase-everything`
+- ถ้าต้องการ scan monitoring จริง ให้ใช้ `/review-codebase-everything`
 - ถ้าต้องการ build จริง ให้ใช้ `/run-build`
 
 ### 7. Output

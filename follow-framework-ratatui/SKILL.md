@@ -15,18 +15,14 @@ description: สร้าง TUI ด้วย Ratatui library สำหรับ
 
 ### 1. Install Dependencies
 
-> Goal: Install Dependencies
-
-ติดตั้ง Ratatui และ dependencies ที่จำเป็น
+> Goal: ติดตั้ง Ratatui และ dependencies ที่จำเป็น
 
 1. เพิ่ม `ratatui` และ `crossterm` ใน `Cargo.toml`
 2. เพิ่ม dependencies เสริมตามความต้องการ
 
 ### 2. Setup Terminal
 
-> Goal: Setup Terminal
-
-ตั้งค่า terminal สำหรับ TUI
+> Goal: ตั้งค่า terminal สำหรับ TUI
 
 1. สร้าง `Terminal` instance ด้วย `crossterm`
 2. ตั้งค่า `alternate screen` และ `raw mode`
@@ -34,9 +30,7 @@ description: สร้าง TUI ด้วย Ratatui library สำหรับ
 
 ### 3. Create Layout
 
-> Goal: Create Layout
-
-สร้าง layout สำหรับ UI components
+> Goal: สร้าง layout สำหรับ UI components
 
 1. ใช้ `Layout` และ `Constraint` จาก `ratatui::layout`
 2. กำหนด directions (horizontal, vertical)
@@ -44,7 +38,7 @@ description: สร้าง TUI ด้วย Ratatui library สำหรับ
 
 ### 4. Build Components
 
-> Goal: Build Components
+> Goal: สร้าง UI components ต่างๆ ด้วย Ratatui widgets
 
 สร้าง UI components ต่างๆ
 
@@ -55,7 +49,7 @@ description: สร้าง TUI ด้วย Ratatui library สำหรับ
 
 ### 5. Handle Events
 
-> Goal: Handle Events
+> Goal: จัดการ keyboard และ terminal events อย่างเสถียร
 
 จัดการ keyboard และ terminal events
 
@@ -65,7 +59,7 @@ description: สร้าง TUI ด้วย Ratatui library สำหรับ
 
 ### 6. Render Loop
 
-> Goal: Render Loop
+> Goal: สร้าง render loop สำหรับ update UI อย่างมีประสิทธิภาพ
 
 สร้าง render loop สำหรับ update UI
 

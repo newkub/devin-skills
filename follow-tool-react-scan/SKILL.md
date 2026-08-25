@@ -15,7 +15,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 1. Prepare
 
-> Goal: Prepare
+> Goal: เตรียม references และศึกษา react-scan APIs
 
 1. รัน `/check-reference` เก็บ reference จากทุก sources
 2. ใช้ `/learn-from-web` ศึกษา react-scan APIs และ integration methods
@@ -23,7 +23,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 2. Select Integration Method
 
-> Goal: Select Integration Method
+> Goal: เลือกวิธี integrate react-sscan ตามประเภท project
 
 1. Script tag สำหรับ quick testing หรือ legacy apps ไม่ต้อง build
 2. NPM package สำหรับ production apps ต้องการ control และ TypeScript
@@ -32,7 +32,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 3. Install React Scan
 
-> Goal: Install React Scan
+> Goal: ติดตั้ง react-scan ตามวิธีที่เลือก
 
 1. Script tag: ใส่ script ใน `index.html` ก่อน React
    ```html
@@ -58,7 +58,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 4. Configure Options
 
-> Goal: Configure Options
+> Goal: กำหนด options สำหรับ scanning behavior
 1. ตั้ง `enabled` ตาม environment (`process.env.NODE_ENV === 'development'`)
 2. เปิด `trackUnnecessaryRenders` เพื่อหา renders ที่ไม่มี DOM changes
 3. ตั้งค่า `showToolbar`, `showFPS`, `animationSpeed` ตามต้องการ
@@ -67,7 +67,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 5. Initialize Scanning
 
-> Goal: Initialize Scanning
+> Goal: เริ่ม scanning ใน client-side และ SSR apps
 1. Import `scan` หรือ `useScan` ก่อน React และ React DOM
 2. เรียก `scan(options)` ทันทีสำหรับ client-side apps
 3. ใช้ `useScan` hook ใน `useEffect` สำหรับ SSR apps หลัง hydration
@@ -75,7 +75,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 6. Interpret Visual Cues
 
-> Goal: Interpret Visual Cues
+> Goal: ตีความ visual cues จาก react-scan
 1. Component มี outline = มี render เกิดขึ้น
 2. สีและความหนาของ outline = ความรุนแรงของปัญหา
 3. ตัวเลข render count = จำนวนครั้งที่ render
@@ -83,7 +83,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 7. Analyze Performance Data
 
-> Goal: Analyze Performance Data
+> Goal: วิเคราะห์ performance data จาก reports และ callbacks
 1. ดู FPS meter (`showFPS: true`) เช็ค performance โดยรวม
 2. ใช้ notification count (`showNotificationCount: true`) ดู slowdown alerts
 3. เรียก `getReport()` เพื่อดู render report แบบละเอียด
@@ -91,7 +91,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 8. Optimize Components
 
-> Goal: Optimize Components
+> Goal: แก้ไข components ที่ re-render บ่อยโดยไม่จำเป็น
 1. หา components ที่ re-render บ่อยโดยไม่จำเป็น
 2. ใช้ `React.memo` สำหรับ components ที่มี props เหมือนเดิม
 3. ใช้ `useMemo`/`useCallback` สำหรับ expensive computations และ callbacks
@@ -100,7 +100,7 @@ description: ตรวจจับและแก้ไข React performance iss
 
 ### 9. Disable in Production
 
-> Goal: Disable in Production
+> Goal: ปิด react-scan ใน production build
 1. ตั้ง `enabled: false` ใน production build
 2. หลีกเลี่ยง `dangerouslyForceRunInProduction` ยกเว้น debugging จำเป็น
 3. ใช้ build tool plugins เพื่อ strip code ออกใน production

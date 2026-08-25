@@ -16,7 +16,7 @@ argument-hint: "[topic]"
 
 ### 1. Analyze Context
 
-> Goal: Analyze Context
+> Goal: ระบุ context และ tech stack ของงานที่จะนำ best practices มาใช้
 
 1. ระบุ context ของงานที่ทำ (code, workflow, config, documentation, ฯลฯ)
 2. ถ้าเป็น code: อ่าน `package.json`, `Cargo.toml`, หรือ package manifest ที่เกี่ยวข้อง
@@ -25,7 +25,7 @@ argument-hint: "[topic]"
 
 ### 2. Research Best Practices
 
-> Goal: Research Best Practices
+> Goal: ค้นคว้า best practices ที่เป็นปัจจุบันจากแหล่งน่าเชื่อถือ
 
 1. ระบุ library, framework หรือ tool ที่ต้องการเรียนรู้ best practices
 2. ทำตาม `/learn-from-web` สำหรับ systematic learning จาก web sources
@@ -34,7 +34,7 @@ argument-hint: "[topic]"
 
 ### 3. Apply Best Practices
 
-> Goal: Apply Best Practices
+> Goal: นำ best practices ที่เรียนรู้มาปรับปรุงไฟล์ตาม context
 
 1. อ่านไฟล์ที่ต้องปรับปรุงทั้งหมด
 2. วิเคราะห์ว่าไฟล์เหล่านี้ต้องการปรับปรุงอะไรตาม best practices ของ context นั้นๆ
@@ -45,7 +45,7 @@ argument-hint: "[topic]"
 
 ### 4. Verify Implementation
 
-> Goal: Verify Implementation
+> Goal: ยืนยันการนำ best practices ไปใช้ครบถ้วน ไม่มี regression
 
 1. รัน linter และ typecheck เพื่อตรวจสอบ
 2. รัน tests เพื่อยืนยันว่าไม่มี regression

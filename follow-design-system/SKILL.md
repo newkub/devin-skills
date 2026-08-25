@@ -37,14 +37,14 @@ description: Design system principles พื้นฐานที่ใช้ไ
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/review-codebase`
-4. ถ้า project มี TUI ทำ `/review-codebase`
+3. ถ้า project มี mobile ทำ `/review-codebase-everything`
+4. ถ้า project มี TUI ทำ `/review-codebase-everything`
 
 ### 4. Ensure Accessibility
 
 > Goal: ตรวจสอบและ implement accessibility สำหรับทุก platform
 
-1. ทำตาม WCAG guidelines สำหรับทุก platform
+1. ทำตาม WCAG 2.2 guidelines สำหรับทุก platform
 2. รองรับ keyboard navigation
 3. รองรับ screen readers
 4. ตรวจสอบ color contrast ratio
@@ -74,7 +74,7 @@ description: Design system principles พื้นฐานที่ใช้ไ
 
 ### 3. Accessibility
 
-- WCAG compliance: ทำตามมาตรฐาน accessibility
+- WCAG compliance: ทำตามมาตรฐาน WCAG 2.2 accessibility
 - Keyboard navigation: รองรับ keyboard
 - Screen reader support: รองรับ screen readers
 - Color contrast: contrast ratio ถูกต้อง
@@ -107,4 +107,4 @@ description: Design system principles พื้นฐานที่ใช้ไ
 
 - [Design Systems](https://www.designsystems.com/)
 - [Atomic Design](http://atomicdesign.bradfrost.com/)
-- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)

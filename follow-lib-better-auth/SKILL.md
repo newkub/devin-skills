@@ -15,7 +15,7 @@ description: ใช้งาน Better Auth สำหรับ authentication �
 
 ### 1. Install
 
-> Goal: Install
+> Goal: ติดตั้ง Better Auth และ database adapter
 
 1. ติดตั้ง `better-auth`
 2. ติดตั้ง adapter สำหรับ database (`prisma`, `drizzle`, `mongodb`, etc.)
@@ -23,7 +23,7 @@ description: ใช้งาน Better Auth สำหรับ authentication �
 
 ### 2. Configure
 
-> Goal: Configure
+> Goal: สร้าง auth config พร้อม plugins และ session settings
 
 1. สร้าง `auth.ts` พร้อม `betterAuth()` config
 2. กำหนด plugins (`email`, `oauth`, `passkey`, `admin`)
@@ -32,7 +32,7 @@ description: ใช้งาน Better Auth สำหรับ authentication �
 
 ### 3. Integrate
 
-> Goal: Integrate
+> Goal: เชื่อมต่อ auth กับ frontend และ backend routes
 
 1. สร้าง API route สำหรับ auth handler
 2. ใช้ client ใน frontend (`useSession`, `signIn`, `signUp`, `signOut`)
@@ -40,7 +40,7 @@ description: ใช้งาน Better Auth สำหรับ authentication �
 
 ### 4. Test
 
-> Goal: Test
+> Goal: ทดสอบ auth flows และ protected routes
 
 1. ทดสอบ sign in / sign up
 2. ทดสอบ protected routes
@@ -48,10 +48,16 @@ description: ใช้งาน Better Auth สำหรับ authentication �
 
 ## Rules
 
+### 1. Security
+
 - ใช้ environment variables สำหรับ secrets
 - กำหนด trusted origins อย่างเข้มงวด
 - ไม่ expose admin endpoints โดยไม่จำเป็น
+
+### 2. Type Safety
+
 - ใช้ type-safe client
+- กำหนด session ให้ปลอดภัย
 
 ## Expected Outcome
 

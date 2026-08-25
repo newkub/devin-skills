@@ -15,7 +15,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 1. Prepare
 
-> Goal: Prepare
+> Goal: ตรวจสอบ UnoCSS และระบุตำแหน่ง theme.css
 
 1. ตรวจสอบว่า UnoCSS ติดตั้งแล้วโดยทำ `/follow-lib-unocss`
 2. อ่าน `uno.config.ts` ที่มีอยู่
@@ -26,7 +26,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 2. Update Configuration
 
-> Goal: Update Configuration
+> Goal: เพิ่ม theme colors ใน uno.config.ts
 
 1. เพิ่ม theme colors ใน `uno.config.ts` ด้วย HSL variables
 2. กำหนด colors: primary, secondary, success, warning, destructive, background, foreground, surface, muted, accent, border, focus, overlay, skeleton
@@ -34,7 +34,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 3. Create Theme CSS
 
-> Goal: Create Theme CSS
+> Goal: สร้าง theme.css พร้อม HSL variables
 
 1. สร้างไฟล์ `theme.css` พร้อม HSL variables สำหรับ light/dark mode
 2. กำหนด CSS variables ใน `:root` และ `.dark` selector
@@ -42,7 +42,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 4. Import Theme CSS
 
-> Goal: Import Theme CSS
+> Goal: import theme.css ตาม framework
 
 1. Nuxt: ใน `app.vue` import `./assets/theme.css`
 2. Next.js: ใน `app/layout.tsx` import `./theme.css`
@@ -50,7 +50,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 5. Create Biome Validator Plugin
 
-> Goal: Create Biome Validator Plugin
+> Goal: สร้าง GritQL validator สำหรับ theme variables
 
 1. ทำ `/follow-create-biome-plugins` สำหรับสร้าง GritQL plugin
 2. สร้างไฟล์ `theme-validator.grit` ที่ root ของโปรเจกต์
@@ -63,7 +63,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ### 6. Verify
 
-> Goal: Verify
+> Goal: ทดสอบ theme classes และ dark mode
 
 1. ทดสอบ theme classes เช่น `bg-primary`, `text-foreground`
 2. ทดสอบ dark mode ด้วย class `.dark` บน html element
@@ -71,7 +71,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 
 ## Rules
 
-### Color Format
+### 1. Color Format
 
 กำหนดรูปแบบ CSS variables สำหรับ theme colors
 
@@ -79,7 +79,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 - ตั้งชื่อ variables เป็น `--color-{name}`
 - มี states ครบ: `DEFAULT`, `hover`, `active`, `foreground`
 
-### Dark Mode
+### 2. Dark Mode
 
 กำหนดการทำงานของ dark mode
 
@@ -87,7 +87,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 - สร้าง variables สำหรับ dark mode ใน `.dark` selector
 - ทุก color ที่มีใน `:root` ต้องมีใน `.dark` ด้วย
 
-### Required Colors
+### 3. Required Colors
 
 กำหนด colors ที่จำเป็นต้องมี
 
@@ -95,7 +95,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 - background, foreground, surface, muted, accent
 - border, focus, overlay, skeleton
 
-### Validator
+### 4. Validator
 
 กำหนดการตรวจสอบด้วย Biome plugin
 
@@ -106,7 +106,7 @@ description: ตั้งค่า theme colors และ Design System ด้�
 - กำหนด plugin ใน `biome.jsonc` ผ่าน `plugins` array
 - รัน `bunx biome lint` เพื่อตรวจสอบ
 
-### Example Variables
+### 5. Example Variables
 
 ตัวอย่าง CSS variables สำหรับ theme colors
 

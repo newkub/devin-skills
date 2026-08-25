@@ -15,16 +15,17 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 
 ### 1. Prepare
 
-> Goal: Prepare
+> Goal: ตรวจสอบ framework และ environment ก่อนติดตั้ง
 
 1. ตรวจสอบ framework ที่ใช้ (Next.js, Nuxt, Vite, Astro, HTML)
 2. อ่าน config ที่มีอยู่แล้ว
 3. ระบุตำแหน่ง CSS entry point
 4. ตรวจสอบ UnoCSS version (ต้องเป็น v66+)
+5. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)
 
 ### 2. Install Dependencies
 
-> Goal: Install Dependencies
+> Goal: ติดตั้ง UnoCSS และ framework-specific packages
 
 1. ติดตั้ง UnoCSS:
 
@@ -58,7 +59,7 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 
 ### 3. Configure
 
-> Goal: ตั้งค่า UnoCSS config พื้นฐาน
+> Goal: สร้าง `uno.config.ts` พร้อม presetWind4 และ transformers
 
 1. สร้าง `uno.config.ts` พื้นฐาน:
 
@@ -93,13 +94,17 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
    content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
    ```
 
+4. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)
+
 ### 4. Setup Framework Integration
 
-> Goal: Setup Framework Integration
+> Goal: เชื่อมต่อ UnoCSS เข้ากับ framework ที่ใช้
+
 1. Next.js: สร้าง `postcss.config.mjs` และเพิ่ม `@unocss all;` ใน `app/globals.css`
 2. Nuxt: เพิ่ม `@unocss/nuxt` module ใน `nuxt.config.ts`
 3. Vite: เพิ่ม UnoCSS plugin ใน `vite.config.ts` และ `@unocss all;` ใน `src/style.css`
 4. Astro: เพิ่ม UnoCSS integration ใน `astro.config.mjs`
+5. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)
 
 ### 5. Use presetWind4 Features
 
@@ -111,6 +116,7 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 4. ใช้ `supports-*` variants สำหรับ feature queries
 5. ใช้ enhanced border utilities พร้อม color และ size options ใหม่
 6. Dark mode ทำงานผ่าน CSS custom properties อัตโนมัติ
+7. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)
 
 ### 6. Use Transformers
 
@@ -119,6 +125,7 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 1. `transformerVariantGroup`: Group utilities (เช่น `hover:(bg-gray-400 font-medium)`)
 2. `transformerDirectives`: ใช้ `@apply`, `@screen`, `theme()` directives
 3. `transformerAttributifyJsx`: สำหรับ JSX attributify (ใช้ oxc parser ใหม่)
+4. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)
 
 ### 7. Use Additional Presets (Optional)
 
@@ -132,13 +139,15 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 
 ### 8. Setup Language Server (Optional)
 
-> Goal: Setup Language Server (Optional)
+> Goal: ตั้งค่า IDE support และ TypeScript integration (optional)
+
 1. ใช้ `@unocss/language-server` สำหรับ IDE support
 2. ใช้ `@unocss/twoslash` สำหรับ TypeScript twoslash integration
 
 ### 9. Verify
 
-> Goal: Verify
+> Goal: ตรวจสอบว่า UnoCSS ทำงานได้ถูกต้อง
+
 1. รัน dev server และทดสอบใช้ utilities เช่น `flex`, `bg-blue-500`, `i-mdi-home`
 2. ตรวจสอบ CSS custom properties generate ถูกต้อง
 3. ตรวจสอบ dark mode ทำงานผ่าน CSS variables

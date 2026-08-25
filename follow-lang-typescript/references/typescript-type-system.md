@@ -1,5 +1,14 @@
 # TypeScript Type System
 
+## Version Info
+
+- `typescript`: `7.0.2` (latest stable, Aug 2026)
+- Native Go compiler (8-12x faster than TS 6.0)
+- `strict` and `esnext` are defaults in TS 7.0
+- Compatibility package: `@typescript/typescript6` (provides `tsc6` binary)
+- New flags: `--checkers`, `--builders`, `--singleThreaded`
+- Note: No stable programmatic API yet (coming in 7.1) — tools like typescript-eslint should use `@typescript/typescript6`
+
 ## Strict Mode Options
 
 เปิดใช้งานใน `tsconfig.json` เพื่อ type safety สูงสุด

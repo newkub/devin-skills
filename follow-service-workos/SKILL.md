@@ -16,7 +16,7 @@ description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, �
 ### 1. Install SDK
 
 เตรียม SDK สำหรับ WorkOS
-> Goal: Install SDK
+> Goal: ติดตั้ง SDK และเตรียม credentials ให้พร้อมใช้งาน
 
 1. install package ตาม runtime (`@workos-inc/node`, `workos-python`, etc.)
 2. สร้าง API key จาก WorkOS Dashboard
@@ -25,7 +25,7 @@ description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, �
 ### 2. Configure WorkOS
 
 กำหนดค่า WorkOS ให้พร้อมใช้งาน
-> Goal: Configure WorkOS
+> Goal: กำหนดค่า environment, redirect URI และ organization
 
 1. กำหนด `WORKOS_API_KEY` และ `WORKOS_CLIENT_ID`
 2. กำหนด redirect URI และ allowed origins
@@ -34,7 +34,7 @@ description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, �
 ### 3. Implement SSO
 
 ใช้งาน SSO ด้วย WorkOS APIs
-> Goal: Implement SSO
+> Goal: สร้าง authorization flow และจัดการ user session
 
 1. สร้าง `authorization_url` ด้วย `workos.sso.getAuthorizationURL`
 2. รับ `code` callback และเรียก `workos.sso.getProfileAndToken`

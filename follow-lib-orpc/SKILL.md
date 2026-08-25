@@ -15,7 +15,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 1. Install Packages
 
-> Goal: Install Packages
+> Goal: ติดตั้ง oRPC packages และ dependencies
 
 1. ติดตั้ง `bun add @orpc/server @orpc/client`
 2. ถ้าใช้ TanStack Query ติดตั้ง `bun add @orpc/tanstack-query`
@@ -24,7 +24,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 2. Define Procedures
 
-> Goal: Define Procedures
+> Goal: สร้าง procedures พร้อม input validation และ error handling
 
 1. สร้าง `os` builder พร้อม initial context ด้วย `.$context<{ headers: Headers }>()`
 2. ใช้ `.input(zodSchema)` สำหรับ input validation
@@ -35,7 +35,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 3. Setup Middleware
 
-> Goal: Setup Middleware
+> Goal: ตั้งค่า middleware สำหรับ auth และ resource injection
 
 1. ใช้ `.$context<{ ... }>()` ก่อน `.middleware()` เพื่อระบุ dependent context
 2. ใช้ `next({ context: { ... } })` สำหรับ inject execution context (auth, db, etc.)
@@ -45,7 +45,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 4. Setup Server Handler
 
-> Goal: Setup Server Handler
+> Goal: ตั้งค่า server handler สำหรับ runtime
 
 1. ใช้ `RPCHandler` จาก `@orpc/server/fetch` (หรือ `@orpc/server/node` สำหรับ Node.js)
 2. ตั้งค่า `interceptors: [onError((error) => console.error(error))]`
@@ -55,7 +55,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 5. Create Client
 
-> Goal: Create Client
+> Goal: สร้าง type-safe client สำหรับเรียก procedures
 
 1. ใช้ `RPCLink` จาก `@orpc/client/fetch` สำหรับ create link
 2. ใช้ `createORPCClient(link)` พร้อม `RouterClient<typeof router>` type
@@ -65,7 +65,7 @@ description: แนวทางการพัฒนา API ด้วย oRPC �
 
 ### 6. Handle Errors
 
-> Goal: Handle Errors
+> Goal: จัดการ errors แบบ type-safe ด้วย safe() และ isDefinedError
 
 1. ใช้ `.errors()` ใน procedure สำหรับ define type-safe errors
 2. ใช้ `safe()` จาก `@orpc/client` แทน try/catch สำหรับ tuple/object destructuring

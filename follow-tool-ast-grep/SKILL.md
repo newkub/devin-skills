@@ -15,7 +15,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 1. Install Or Use ast-grep
 
-> Goal: Install Or Use ast-grep
+> Goal: ติดตั้งหรือเรียกใช้ ast-grep ได้ถูกต้อง
 
 1. ถ้า project มี `@ast-grep/cli` ใน `devDependencies` ให้ใช้ `bunx ast-grep`
 2. ถ้าไม่มี ใช้ `bunx ast-grep` ได้โดยตรงโดยไม่ต้องติดตั้ง
@@ -23,7 +23,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 2. Configure sgconfig.yml
 
-> Goal: Configure sgconfig.yml
+> Goal: สร้าง `sgconfig.yml` พร้อม fields ที่จำเป็น
 
 1. สร้างไฟล์ `sgconfig.yml` ที่ root directory ด้วยเนื้อหาตาม ## Rules ข้อ 2
 2. ถ้า project มีหลาย workspace ให้เพิ่ม `devPaths` สำหรับแต่ละ workspace
@@ -34,7 +34,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 3. Setup Project Structure
 
-> Goal: Setup Project Structure
+> Goal: สร้างโครงสร้าง directories สำหรับ rules และ tests
 
 1. สร้าง ast-grep rules ใน `rules/` directory ที่ project root (แยกจาก `.devin/rules/` ที่เก็บ devin rules แบบ markdown)
 2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที่ project root
@@ -43,7 +43,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 4. Add Scan Script
 
-> Goal: Add Scan Script
+> Goal: เพิ่ม scan script ใน `package.json`
 
 1. เพิ่ม script ใน `package.json`:
 
@@ -59,7 +59,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 5. Scan And Run
 
-> Goal: Scan And Run
+> Goal: รัน scan และค้นหาด้วย ast-grep ได้ถูกต้อง
 1. รัน `bun run scan` สำหรับ scan ทั้ง project
 2. รัน `bunx ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
 3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output

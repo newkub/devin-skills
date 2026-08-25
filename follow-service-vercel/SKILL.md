@@ -196,5 +196,5 @@ jobs:
 
 อ้างอิงเพิ่มเติม:
 
-- `references/vercel-overview.md` — overview ของ Vercel platform
-- `references/website.md` — links หลักของ Vercel
+- [references/vercel-overview.md](references/vercel-overview.md) — overview ของ Vercel platform
+- [references/website.md](references/website.md) — links หลักของ Vercel

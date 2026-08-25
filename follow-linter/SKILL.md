@@ -15,7 +15,7 @@ description: ตั้งค่า linter สำหรับ project
 
 ### 1. Select Linter
 
-> Goal: Select Linter
+> Goal: เลือก linter ตาม tech stack ของ project
 
 1. ตรวจสอบ tech stack ของ project
 2. เลือก linter ตามความเหมาะสม:
@@ -26,7 +26,7 @@ description: ตั้งค่า linter สำหรับ project
 
 ### 2. Setup Linter
 
-> Goal: Setup Linter
+> Goal: ติดตั้งและตั้งค่า linter
 
 1. รัน `/follow-tool-biome` สำหรับ TypeScript/JavaScript
 2. รัน `/follow-tool-oxlint` สำหรับ TypeScript/JavaScript
@@ -34,14 +34,19 @@ description: ตั้งค่า linter สำหรับ project
 
 ### 3. Validate
 
-> Goal: Validate
+> Goal: ทดสอบ linter และตรวจสอบ configuration
 
 1. รัน linter เพื่อทดสอบ
 2. ตรวจสอบ configuration
 
 ## Rules
 
+### 1. Linter Selection
+
 - เลือก linter ตาม tech stack
+
+### 2. Error Handling
+
 - ใช้ `/resolve-errors` เมื่อพบ error
 
 ## Expected Outcome

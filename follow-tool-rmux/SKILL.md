@@ -19,7 +19,7 @@ description: ใช้งาน RMUX สำหรับ terminal multiplexer แ
 
 ### 1. Create Session
 
-> Goal: Create Session
+> Goal: สร้าง session ใหม่ด้วย rmux
 
 สร้าง session:
 ```bash

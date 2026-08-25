@@ -15,21 +15,21 @@ description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ
 
 ### 1. Install Core Dependencies
 
-> Goal: Install Core Dependencies
+> Goal: ติดตั้ง ESLint core dependencies
 
 1. รัน `bun add -D eslint @eslint/js typescript-eslint`
 2. รัน `bun add -D eslint-config-prettier`
 
 ### 2. Install Vue/Nuxt Plugins
 
-> Goal: Install Vue/Nuxt Plugins
+> Goal: ติดตั้ง Vue และ Nuxt ESLint plugins
 
 1. รัน `bun add -D eslint-plugin-vue @vue/eslint-config-typescript`
 2. รัน `bun add -D @nuxt/eslint-config`
 
 ### 3. Install Code Quality Plugins
 
-> Goal: Install Code Quality Plugins
+> Goal: ติดตั้ง plugins สำหรับ code quality และ security
 
 1. รัน `bun add -D eslint-plugin-import eslint-plugin-unused-imports`
 2. รัน `bun add -D eslint-plugin-no-secrets eslint-plugin-regexp`
@@ -37,13 +37,13 @@ description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ
 
 ### 4. Install Testing/A11y Plugins
 
-> Goal: Install Testing/A11y Plugins
+> Goal: ติดตั้ง plugins สำหรับ testing และ accessibility
 
 1. รัน `bun add -D eslint-plugin-vitest eslint-plugin-vue-a11y`
 
 ### 5. Create Flat Config
 
-> Goal: Create Flat Config
+> Goal: สร้าง `eslint.config.ts` ด้วย flat config format
 
 สร้าง `eslint.config.ts` ด้วย flat config format
 

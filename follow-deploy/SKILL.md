@@ -15,20 +15,20 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 
 ### 1. Select Platform
 
-> Goal: Select Platform
+> Goal: เลือก platform ที่เหมาะสมกับ project type และ requirements
 
 เลือก platform ที่เหมาะสมกับ project
 
 1. ตรวจสอบ project type และ requirements
 2. เลือก platform ที่เหมาะสม:
-   - Cloudflare Workers/Pages: ทำ `/follow-service-cloudflare` และ `/follow-service-cloudflare`
+   - Cloudflare Workers/Pages: ทำ `/follow-service-cloudflare` และ `/follow-service-cloudflare-cli`
    - Vercel: ทำ `/follow-service-vercel` และ `/follow-service-vercel-cli`
    - Railway: ทำ `/deploy-to-railway`
 3. ตรวจสอบว่า platform configuration พร้อม
 
 ### 2. Setup Environment Variables
 
-> Goal: Setup Environment Variables
+> Goal: ตั้งค่า environment variables ครบถ้วนสำหรับ deployment
 
 ตั้งค่า environment variables สำหรับ deployment
 
@@ -41,7 +41,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 
 ### 3. Setup CI/CD
 
-> Goal: Setup CI/CD
+> Goal: ตั้งค่า GitHub Actions สำหรับ automated deployment
 
 ตั้งค่า GitHub Actions สำหรับ automated deployment
 
@@ -55,7 +55,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 
 ### 4. Setup Platform-Specific Configuration
 
-> Goal: Setup Platform-Specific Configuration
+> Goal: ตั้งค่า configuration ไฟล์ตาม platform ที่เลือก
 
 ตั้งค่า configuration ตาม platform ที่เลือก
 
@@ -65,7 +65,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 
 ### 5. Test Deployment
 
-> Goal: Test Deployment
+> Goal: ทดสอบ deployment ใน staging environment ก่อน production
 
 ทดสอบ deployment ใน staging environment
 

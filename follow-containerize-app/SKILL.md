@@ -57,6 +57,8 @@ description: สร้าง container images ด้วย Docker, Podman แล
 
 > Goal: เขียน `Dockerfile` หรือ `Containerfile` ตาม best practices
 
+ดู Dockerfile syntax และ supported instructions ใน [references/docker.md](references/docker.md)
+
 1. เรียงคำสั่งจาก least-frequent เปลี่ยน ไป frequent เพื่อ layer caching
 2. copy dependency manifests ก่อนแล้ว install ก่อน copy source
 3. รวม `RUN` layers ที่เกี่ยวข้อง แต่แยก cache layers ที่เปลี่ยนบ่อย
@@ -79,6 +81,8 @@ description: สร้าง container images ด้วย Docker, Podman แล
 ### 7. Build and Verify Image
 
 > Goal: build image และตรวจสอบ
+
+ดู CLI commands สำหรับแต่ละ engine ใน [references/docker.md](references/docker.md)
 
 1. รัน `docker build -t <image>:<tag> .` หรือ `podman build -t <image>:<tag> .`
 2. ถ้าใช้ buildah: `buildah bud -t <image>:<tag> .`
@@ -126,6 +130,8 @@ description: สร้าง container images ด้วย Docker, Podman แล
 - ใช้ build cache mount เช่น `--mount=type=cache` ถ้า engine รองรับ
 
 ### 5. Container Engine Support
+
+ดู engine equivalence table ใน [references/docker.md](references/docker.md)
 
 - รองรับ Docker, Podman, buildah, nerdctl
 - ใช้คำสั่ง equivalent ตาม engine

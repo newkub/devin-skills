@@ -96,6 +96,8 @@ new Elysia()
     })
     if (matched) return response
     return new Response('Not found', { status: 404 })
+  }, {
+    parse: 'none', // Disable Elysia body parser to prevent "body already used" error
   })
   .listen(3000)
 ```

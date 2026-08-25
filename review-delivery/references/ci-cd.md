@@ -13,7 +13,7 @@
 ### Analyze
 
 1. ทำ `/scan-codebase` เพื่อหา issues ที่เกี่ยวข้อง
-2. ทำ `/review-codebase` เพื่อรายละเอียดเพิ่ม
+2. ทำ `/review-codebase-everything` เพื่อรายละเอียดเพิ่ม
 3. ระบุ CI/CD platform: GitHub Actions, GitLab CI, Azure DevOps, Jenkins
 4. ถ้าไม่พบ issues → stop และ report
 

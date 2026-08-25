@@ -5,17 +5,17 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 
 ## Goal
 
-ตั้งค่า Cargo lint rules และ workspace lint configuration ใน Cargo.toml
+ตั้งค่า Cargo lint rules และ workspace lint configuration ใน `Cargo.toml`
 
 ## Scope
 
-ใช้ `follow-tool-cargo` สำหรับ tasks และ workflows เฉพาะที่กำหนด
+ใช้สำหรับตั้งค่า Cargo lint rules ใน Rust projects ทั้ง single crate และ workspace (Rust 1.98+)
 
 ## Execute
 
 ### 1. Analyze Project
 
-> Goal: Analyze Project
+> Goal: ตรวจสอบโครงสร้าง project เพื่อระบุ single crate หรือ workspace
 
 1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
@@ -24,7 +24,7 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 
 ### 2. Configure Cargo.toml Lint Rules
 
-> Goal: Configure Cargo.toml Lint Rules
+> Goal: เพิ่ม lint attributes ใน `[lints]` section สำหรับ Rust และ Clippy
 
 1. เพิ่ม lint attributes ใน `[lints]` section:
    ```toml
@@ -56,9 +56,11 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
    pedantic = "warn"
    ```
 
+4. ดูรายละเอียดใน [references/cargo.md](references/cargo.md)
+
 ### 3. Configure Workspace Lints
 
-> Goal: Configure Workspace Lints
+> Goal: ตั้งค่า workspace-level lint rules และ inheritance สำหรับ member crates
 
 1. ตั้งค่า workspace-level lint rules ใน `Cargo.toml` หลัก
 2. ใช้ `[workspace.lints]` สำหรับ shared lint rules
@@ -67,10 +69,12 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
    [lints]
    workspace = true
    ```
+4. ดูรายละเอียดใน [references/cargo.md](references/cargo.md)
 
 ### 4. Setup Pre-commit Hooks
 
-> Goal: Setup Pre-commit Hooks
+> Goal: ติดตั้ง pre-commit hooks สำหรับตรวจสอบ lint rules อัตโนมัติ
+
 1. ติดตั้ง `lefthook` หรือ `pre-commit`
 2. เพิ่ม hooks สำหรับ:
    - `cargo check --all-targets`
@@ -91,7 +95,8 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 
 ### 5. Verify Configuration
 
-> Goal: Verify Configuration
+> Goal: รัน verification commands เพื่อยืนยัน lint rules ทำงานถูกต้อง
+
 1. รัน `cargo check --all-targets`
 2. รัน `cargo clippy --all-targets -- -D warnings`
 3. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
@@ -101,17 +106,19 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 
 ### 1. Rust Lint Categories
 
-- unused_extern_crates: warn (unused external crates)
-- unused_import_braces: warn (unused import braces)
-- unused_qualifications: warn (unused type qualifications)
-- variant_size_differences: warn (enum variant size differences)
-- missing_docs: warn (missing documentation)
+- `unused_extern_crates`: warn (unused external crates)
+- `unused_import_braces`: warn (unused import braces)
+- `unused_qualifications`: warn (unused type qualifications)
+- `variant_size_differences`: warn (enum variant size differences)
+- `missing_docs`: warn (missing documentation)
+- ดู [references/cargo.md](references/cargo.md)
 
 ### 2. Clippy Lint Categories
 
-- all: warn (all clippy lints)
-- pedantic: warn (pedantic lints)
-- nursery: warn (experimental lints)
+- `all`: warn (all clippy lints)
+- `pedantic`: warn (pedantic lints)
+- `nursery`: warn (experimental lints)
+- ดู [references/cargo.md](references/cargo.md)
 
 ### 3. Workspace Configuration
 
@@ -119,6 +126,7 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 - ใช้ `[workspace.lints]` สำหรับ shared lint rules
 - แต่ละ crate สามารถ inherit ด้วย `workspace = true`
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
+- ดู [references/cargo.md](references/cargo.md)
 
 ## Expected Outcome
 

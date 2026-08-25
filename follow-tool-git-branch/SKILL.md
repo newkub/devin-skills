@@ -15,7 +15,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ### 1. List Branches
 
-> Goal: List Branches
+> Goal: แสดงรายการ branches ทั้ง local และ remote
 
 1. `git branch` สำหรับ local
 2. `git branch -r` สำหรับ remote
@@ -24,7 +24,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ### 2. Switch Branch
 
-> Goal: Switch Branch
+> Goal: สลับ branch อย่างปลอดภัย
 
 1. `git switch <branch>` หรือ `git checkout <branch>`
 2. ตรวจสอบ working tree สะอาด
@@ -32,7 +32,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ### 3. Rename Branch
 
-> Goal: Rename Branch
+> Goal: เปลี่ยนชื่อ branch ทั้ง local และ remote
 
 1. `git branch -m <old> <new>` สำหรับ local
 2. `git branch -m <new>` สำหรับ current
@@ -41,7 +41,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ### 4. Delete Branch
 
-> Goal: Delete Branch
+> Goal: ลบ branch ที่ไม่จำเป็นอย่างปลอดภัย
 
 1. `git branch -d <branch>` ลบหลัง merge
 2. `git branch -D <branch>` บังคับลบ
@@ -49,7 +49,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ### 5. Merge Branch
 
-> Goal: Merge Branch
+> Goal: รวม branch และแก้ไข conflicts
 
 1. switch ไป target branch
 2. `git merge <source>`
@@ -58,10 +58,16 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 ## Rules
 
+### 1. Safety
+
 - ไม่ลบ main/master โดยไม่ได้ตั้งใจ
 - ตรวจสอบว่า branch ถูก merge ก่อนลบ
 - ใช้ `switch` แทน `checkout` เมื่อเป็นไปได้
+
+### 2. Naming
+
 - เก็บชื่อ branch สื่อความหมาย
+- ใช้ kebab-case สำหรับ branch names
 
 ## Expected Outcome
 

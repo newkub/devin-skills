@@ -15,7 +15,7 @@ description: แนวทางการสร้างและจัดกา�
 
 ### 1. Analyze Module Structure
 
-> Goal: Analyze Module Structure
+> Goal: เข้าใจโครงสร้าง module และ exports ที่มีอยู่ก่อนสร้าง barrel
 
 วิเคราะห์โครงสร้าง module ก่อนสร้าง barrel export
 
@@ -26,7 +26,7 @@ description: แนวทางการสร้างและจัดกา�
 
 ### 2. Create Or Update Barrel File
 
-> Goal: Create Or Update Barrel File
+> Goal: สร้างหรืออัปเดต barrel file ให้รวบรวม public API อย่างถูกต้อง
 
 สร้างหรืออัปเดต barrel export file
 
@@ -39,7 +39,7 @@ description: แนวทางการสร้างและจัดกา�
 
 ### 3. Choose Export Strategy
 
-> Goal: Choose Export Strategy
+> Goal: เลือก export strategy ที่เหมาะสมกับ context ของ module
 
 เลือก export strategy ตาม context
 
@@ -49,7 +49,7 @@ description: แนวทางการสร้างและจัดกา�
 
 ### 4. Update Imports
 
-> Goal: Update Imports
+> Goal: ปรับ imports ของ consumers ให้ใช้ barrel export แทน deep imports
 
 อัปเดต imports ใน consumers ให้ใช้ barrel export
 
@@ -60,7 +60,7 @@ description: แนวทางการสร้างและจัดกา�
 
 ### 5. Verify
 
-> Goal: Verify
+> Goal: ยืนยัน barrel export ทำงานถูกต้อง ไม่มี circular dependency หรือ side effects
 
 ตรวจสอบ barrel export ทำงานถูกต้อง
 

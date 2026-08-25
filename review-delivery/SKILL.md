@@ -35,7 +35,7 @@ Review documentation ครอบคลุม README, API docs, examples, guides
 3. ตรวจสอบ content accuracy, broken links, และ missing documentation
 4. ตรวจสอบ JSDoc/TSDoc completeness บน public API
 5. ตรวจสอบ stale documentation: docs ที่ไม่ตรงกับ code ปัจจุบัน
-6. ทำ `/review-codebase` เพื่อ deep documentation review เฉพาะทาง
+6. ทำ `/review-codebase-everything` เพื่อ deep documentation review เฉพาะทาง
 
 ### 3. SEO Review
 

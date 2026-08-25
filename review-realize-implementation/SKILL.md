@@ -104,7 +104,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/review-codebase` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase-everything` สำหรับระบุ issues ใน code
 - ถ้าต้อง refactor ก่อน implement → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure ก่อน implement → ทำ `review-restructure` ก่อน `restructure`
 - ถ้าต้อง update docs/config ก่อน implement → ทำ `review-update` ก่อน `update-*`
@@ -127,7 +127,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 - ทำ `/roleplay-user` เพื่อจำลอง user journey และตรวจสอบ flow ที่ไม่สมบูรณ์
 - ตรวจสอบ missing features ภายใน workflow นี้ (API/database มีแล้วแต่ UX/UI ยังไม่สมบูรณ์)
-- ทำ `/review-codebase` ถ้าพบ gaps ในแต่ละด้าน
+- ทำ `/review-codebase-everything` ถ้าพบ gaps ในแต่ละด้าน
 - ตรวจสอบว่า flow หลักมี happy path, error path, recovery, rollback, undo, confirmation
 - ตรวจสอบว่า feature หลักมี supporting features ครบ: validation, auth, audit, notifications, rate limiting, tests, docs
 

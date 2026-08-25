@@ -15,7 +15,7 @@ description: ตั้งค่า tsdown เป็น library bundler สำห
 
 ### 1. Analyze Project
 
-> Goal: Analyze Project
+> Goal: เข้าใจโครงสร้างและความต้องการของโปรเจกต์ก่อนตั้งค่า
 
 วิเคราะห์โปรเจกต์และความต้องการ
 
@@ -27,7 +27,7 @@ description: ตั้งค่า tsdown เป็น library bundler สำห
 
 ### 2. Setup Tsdown
 
-> Goal: Setup Tsdown
+> Goal: ติดตั้งและสร้าง config สำหรับ tsdown ให้พร้อมใช้งาน
 
 ดำเนินการตั้งค่า tsdown
 
@@ -40,7 +40,7 @@ description: ตั้งค่า tsdown เป็น library bundler สำห
 
 ### 3. Validate Setup
 
-> Goal: Validate Setup
+> Goal: ตรวจสอบความถูกต้องและยืนยันว่าพร้อมใช้งาน
 
 ตรวจสอบความถูกต้องและยืนยันว่าพร้อมใช้งาน
 

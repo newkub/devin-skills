@@ -59,6 +59,6 @@ criteria สำหรับตรวจจับรูปแบบโค้ด�
 
 ## Scope Boundaries
 
-- ไม่ซ้ำกับ `review-codebase` สำหรับ race condition, deadlock, parallel execution
-- ไม่ซ้ำกับ `review-codebase` สำหรับ error boundaries, error messages, graceful degradation
-- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/review-codebase`
+- ไม่ซ้ำกับ `review-codebase-everything` สำหรับ race condition, deadlock, parallel execution
+- ไม่ซ้ำกับ `review-codebase-everything` สำหรับ error boundaries, error messages, graceful degradation
+- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/review-codebase-everything`

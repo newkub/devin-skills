@@ -17,7 +17,7 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม Clean Architecture
 
-1. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่อสร้างโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
+1. ทำ `/follow-architecture` เพื่อสร้างโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
 2. สร้าง entry points: `src/presentation/cli.ts` (CLI entry) และ `src/index.ts` (library entry)
 3. สร้าง `src/shared/` สำหรับ common types และ utilities
 
@@ -50,6 +50,8 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 3. ใช้ `cac` สำหรับ argument parsing และ command structure
 4. หลีกเลี่ยง `chalk`, `commander` และ `node:fs`/`node:child_process` ถ้ามี Bun native equivalent
 
+ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ CLI libraries เต็ม
+
 ### 5. Development Workflow
 
 > Goal: ใช้ development workflow ที่มีประสิทธิภาพ
@@ -59,7 +61,7 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 3. ใช้ `bun run build` สำหรับ production build
 4. รัน lint และ typecheck ก่อน commit
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -95,6 +97,8 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 - ใช้ `cac` แทน `commander`
 - ใช้ Bun native APIs (`Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob`) แทน `node:*` modules
 - bundle dependencies ด้วย `bunup` เพื่อลด runtime dependencies ถ้าเหมาะสม
+
+ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ library versions
 
 ## Expected Outcome
 
@@ -145,7 +149,7 @@ export default defineConfig({
 
 ## Guide
 
-- `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) — Clean Architecture structure
+- `/follow-architecture` — Clean Architecture structure
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards
 - `/use-bun-native-api` — Bun native APIs แทน Node.js

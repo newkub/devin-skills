@@ -15,7 +15,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 1. Installation
 
-> Goal: Installation
+> Goal: ติดตั้ง Playwright และ browsers
 
 1. ติดตั้ง Playwright ด้วย `bun add -D @playwright/test`
 2. รัน `bunx playwright install` เพื่อติดตั้ง browsers
@@ -26,7 +26,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 2. Configuration
 
-> Goal: Configuration
+> Goal: สร้าง playwright.config.ts พร้อม browsers และ options
 
 1. สร้าง `playwright.config.ts` ที่ root
 2. ตั้งค่า browsers (chromium, firefox, webkit) ผ่าน `projects`
@@ -42,7 +42,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 3. Monorepo Setup
 
-> Goal: Monorepo Setup
+> Goal: ตั้งค่า Playwright สำหรับ monorepo workspaces
 
 1. ตั้งค่า `testDir` สำหรับแต่ละ workspace
 2. ใช้ workspace protocol สำหรับ internal dependencies
@@ -52,7 +52,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 4. Writing Tests
 
-> Goal: Writing Tests
+> Goal: เขียน E2E tests ตาม best practices
 
 1. ใช้ `test` จาก `@playwright/test`
 2. ใช้ `page` fixture สำหรับ browser automation
@@ -64,7 +64,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 5. Page Object Model
 
-> Goal: Page Object Model
+> Goal: ใช้ Page Object Model สำหรับ reusable code
 
 1. สร้าง Page Object classes สำหรับแต่ละ page
 2. แยก selectors และ actions ออกจาก test files
@@ -74,7 +74,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 6. Locators Strategy
 
-> Goal: Locators Strategy
+> Goal: เลือก locators ที่ resilient และ maintainable
 
 1. ใช้ `getByRole()` สำหรับ role-based selectors (preferred)
 2. ใช้ `getByText()` สำหรับ text-based selectors
@@ -86,7 +86,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 7. Assertions And Matchers
 
-> Goal: Assertions And Matchers
+> Goal: ใช้ web-first assertions ที่ auto-wait
 
 1. ใช้ `expect(page).toHaveURL()` สำหรับ URL assertions
 2. ใช้ `expect(locator).toBeVisible()` สำหรับ visibility
@@ -97,7 +97,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 8. Authentication Setup
 
-> Goal: Authentication Setup
+> Goal: ตั้งค่า authentication reuse ผ่าน storageState
 
 1. สร้าง setup project สำหรับ login ครั้งเดียว
 2. บันทึก `storageState` ลง disk
@@ -107,7 +107,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 9. Running Tests
 
-> Goal: Running Tests
+> Goal: รัน tests ด้วย CLI options ต่างๆ
 
 1. รัน tests ด้วย `bunx playwright test`
 2. รัน tests ใน headed mode ด้วย `--headed`
@@ -118,7 +118,7 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 
 ### 10. CI/CD Integration
 
-> Goal: CI/CD Integration
+> Goal: ตั้งค่า Playwright ใน CI/CD pipeline
 
 1. ติดตั้ง browsers ใน CI pipeline ด้วย `bunx playwright install`
 2. ใช้ `--shard=x/y` สำหรับ parallel execution ข้าม machines

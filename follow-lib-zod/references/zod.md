@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- **Package**: `zod` v4.4.3 (published ~3 months ago)
+- **Package**: `zod` v4.4.3 (published Aug 20, 2026)
 - **License**: MIT
 - **Peer Dependencies**: None (zero external dependencies)
 - **TypeScript**: >=5.5.0 (older versions may work but not officially supported)

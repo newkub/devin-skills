@@ -17,14 +17,14 @@ description: ตั้งค่าและติดตาม CI/CD pipeline ต
 
 > Goal: เข้าใจ project ก่อนตั้งค่า CI/CD
 
-1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml` หรือ manifest ทีเกี่ยวข้อง
+1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml` หรือ manifest ที่เกี่ยวข้อง
 2. อ่าน `AGENTS.md` ถ้ามี
 3. ระบุ platform: GitHub, GitLab, Bitbucket, หรืออื่นๆ
-4. ระบุ scripts ทีจำเป็น: build, test, lint, typecheck, release
+4. ระบุ scripts ที่จำเป็น: build, test, lint, typecheck, release
 
 ### 2. Select Pipeline
 
-> Goal: เลือก CI/CD pipeline ทีเหมาะสม
+> Goal: เลือก CI/CD pipeline ที่เหมาะสม
 
 1. ถ้าเป็น GitHub → สร้าง `.github/workflows/ci.yml`
 2. ถ้าเป็น GitLab → สร้าง `.gitlab-ci.yml`
@@ -33,9 +33,9 @@ description: ตั้งค่าและติดตาม CI/CD pipeline ต
 
 ### 3. Write Pipeline
 
-> Goal: เขียน pipeline ทีใช้งานได่
+> Goal: เขียน pipeline ที่ใช้งานได้
 
-1. สร้างไฟล์ pipeline ตาม template ทีเลือก
+1. สร้างไฟล์ pipeline ตาม template ที่เลือก
 2. ระบุ triggers: push, pull_request, release
 3. ระบุ jobs: setup, lint, typecheck, test, build
 4. ถ้า project เป็น monorepo → ใช้ `bun --filter` หรือ `turbo` ตาม ecosystem
@@ -68,7 +68,7 @@ description: ตั้งค่าและติดตาม CI/CD pipeline ต
 
 > Goal: รายงานผล
 
-1. ทำ `/report` พร้อมไฟล์ทีสร้าง
+1. ทำ `/report` พร้อมไฟล์ที่สร้าง
 2. ทำ `/suggest-next-action`
 
 ## Rules

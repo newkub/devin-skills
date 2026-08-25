@@ -15,7 +15,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 1. Reproduce Consistently
 
-> Goal: Reproduce Consistently
+> Goal: สร้าง reproduction case ที่ trigger ปัญหาได้สม่ำเสมอก่อนเริ่ม debug
 
 1. สร้าง minimal reproduction case ที่ trigger ปัญหาได้ทุกครั้ง
 2. ระบุ exact steps, input, environment ที่ทำให้เกิดปัญหา
@@ -24,7 +24,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 2. Define Problem Clearly
 
-> Goal: Define Problem Clearly
+> Goal: กำหนดปัญหาแบบ Expected vs Actual พร้อม scope และ impact ชัดเจน
 
 1. เขียนปัญหาแบบ Expected vs Actual — สิ่งที่ควรเกิด vs สิ่งที่เกิดจริง
 2. ระบุ scope: file, function, module, API endpoint, หรือ system level
@@ -33,7 +33,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 3. Gather Evidence
 
-> Goal: Gather Evidence
+> Goal: เก็บ error messages, logs, และ context ที่เกี่ยวข้องทั้งหมด
 
 1. เก็บ error messages, stack traces, และ logs ทั้งหมด
 2. ใช้ `/run-test` เพื่อดูว่า tests ไหน fail
@@ -43,7 +43,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 4. Form Hypotheses
 
-> Goal: Form Hypotheses
+> Goal: สร้างและจัดลำดับ hypotheses ตาม evidence ไม่ใช่ความรู้สึก
 
 1. สร้าง 3-5 hypotheses ที่เป็นไปได้ — อ้างอิง evidence ไม่ใช่ความรู้สึก
 2. จัดลำดับตาม probability และ ease of testing
@@ -52,7 +52,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 5. Test And Eliminate
 
-> Goal: Test And Eliminate
+> Goal: ทดสอบทีละ hypothesis เปลี่ยนทีละ variable เพื่อตัดที่ไม่ใช่
 
 1. ทดสอบทีละ hypothesis — เปลี่ยนทีละ variable เท่านั้น
 2. ใช้ `/use-bun-shell` เพื่อ execute test แต่ละ hypothesis
@@ -62,7 +62,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 6. Isolate Root Cause
 
-> Goal: Isolate Root Cause
+> Goal: ยืนยัน root cause ที่ reproduce ได้ แก้แล้วหาย ถอนแล้วกลับมา
 
 1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
 2. ใช้ 5 Whys เพื่อ trace จาก symptom ไป root cause
@@ -71,7 +71,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 7. Fix And Verify
 
-> Goal: Fix And Verify
+> Goal: แก้น้อยที่สุดที่จบ root cause แล้ว verify ว่าไม่ทำลายอย่างอื่น
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
 2. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
@@ -81,10 +81,10 @@ description: หลักการ debug อย่างเป็นระบบ
 
 ### 8. Prevent Recurrence
 
-> Goal: Prevent Recurrence
+> Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
 
 1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
-2. ทำ `/review-codebase` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
+2. ทำ `/review-codebase-everything` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
 3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
 4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
 
@@ -112,7 +112,7 @@ description: หลักการ debug อย่างเป็นระบบ
 - ใส่ context: function name, input values, state
 - ใช้ log levels: `debug`, `info`, `warn`, `error`
 - หลัง fix ให้ลบ debug logging ที่ไม่จำเป็น
-- รายละเอียดเพิ่มเติมอยู่ใน `/review-codebase`
+- รายละเอียดเพิ่มเติมอยู่ใน `/review-codebase-everything`
 
 ### 4. Tool Selection
 
@@ -128,7 +128,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 - รายละเอียด Bayesian approach อยู่ใน `/debug-issue` แล้ว
 - รายละเอียด causal analysis อยู่ใน `/follow-root-cause-analysis` แล้ว
-- รายละเอียด improving debuggability อยู่ใน `/review-codebase` แล้ว
+- รายละเอียด improving debuggability อยู่ใน `/review-codebase-everything` แล้ว
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 

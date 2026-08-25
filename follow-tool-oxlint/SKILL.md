@@ -15,7 +15,7 @@ description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast 
 
 ### 1. Install Dependencies
 
-> Goal: Install Dependencies
+> Goal: ติดตั้ง oxlint และ eslint-plugin-oxlint
 
 1. ติดตั้ง oxlint และ eslint-plugin-oxlint
 
@@ -25,7 +25,7 @@ bun add -D oxlint@latest eslint-plugin-oxlint
 
 ### 2. Configure Oxlint
 
-> Goal: Configure Oxlint
+> Goal: สร้าง oxlint config สำหรับ project
 1. สร้าง `oxlint.config.ts`:
 
 ```ts
@@ -42,7 +42,7 @@ export default defineConfig({
 
 ### 3. Configure ESLint
 
-> Goal: Configure ESLint
+> Goal: ตั้งค่า ESLint flat config ใช้ร่วมกับ oxlint
 1. สร้างหรือแก้ไข eslint.config.js ที่ root
 
 ```javascript
@@ -67,7 +67,7 @@ export default [
 
 ### 4. Add Scripts
 
-> Goal: Add Scripts
+> Goal: เพิ่ม lint scripts ใน package.json
 1. เพิ่ม scripts ใน package.json
 
 ```json
@@ -81,7 +81,7 @@ export default [
 
 ### 5. Verify
 
-> Goal: Verify
+> Goal: ตรวจสอบว่า oxlint และ ESLint integration ทำงานได้
 1. รัน bun run lint เพื่อทดสอบการทำงาน
 2. ตรวจสอบว่า oxlint rules ทำงานถูกต้อง
 3. ตรวจสอบว่า ESLint integration ทำงานได้

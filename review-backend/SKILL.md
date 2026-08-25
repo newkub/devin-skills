@@ -41,13 +41,13 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 > Goal: ครอบคลุมทุก backend dimension ผ่าน 14 sub-review workflows
 
-1. ทำ `/review-codebase` สำหรับ API review (อ้างอิง `references/api.md`)
-2. ทำ `/review-codebase` สำหรับ service layer review (อ้างอิง `references/service.md`)
-3. ทำ `/review-codebase` สำหรับ database review (อ้างอิง `references/database.md`)
-4. ทำ `/review-codebase` สำหรับ data flow review (อ้างอิง `references/data-flow.md`)
-5. ทำ `/review-codebase` สำหรับ data fetching review (อ้างอิง `references/data-fetching.md`)
-6. ทำ `/review-codebase` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
-7. ทำ `/review-codebase` สำหรับ integration review (อ้างอิง `references/integration.md`)
+1. ทำ `/review-codebase-everything` สำหรับ API review (อ้างอิง `references/api.md`)
+2. ทำ `/review-codebase-everything` สำหรับ service layer review (อ้างอิง `references/service.md`)
+3. ทำ `/review-codebase-everything` สำหรับ database review (อ้างอิง `references/database.md`)
+4. ทำ `/review-codebase-everything` สำหรับ data flow review (อ้างอิง `references/data-flow.md`)
+5. ทำ `/review-codebase-everything` สำหรับ data fetching review (อ้างอิง `references/data-fetching.md`)
+6. ทำ `/review-codebase-everything` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
+7. ทำ `/review-codebase-everything` สำหรับ integration review (อ้างอิง `references/integration.md`)
 8. ถ้า sub-review ไม่เกี่ยวข้องกับ project → ข้าม sub-review นั้น
 9. ถ้าพบ critical issues → หยุดและทำ `/validate` ก่อนดำเนินต่อ
 

@@ -57,7 +57,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 5. Implement Adapters And Presentation
 
-> Goal: ทำ `/follow-architecture` อ้างอิง `references/patterns/layered-architecture.md` เพื่อวางโครงสร้าง adapters และ presentation layers ตาม layered pattern
+> Goal: ทำ `/follow-architecture` อ้างอิง [references/patterns/layered-architecture.md](layered-architecture.md) เพื่อวางโครงสร้าง adapters และ presentation layers ตาม layered pattern
 
 1. `adapters/db/` - Database implementations — ทำ `/follow-orm`
 2. `adapters/http/` - HTTP clients, `adapters/external/` - External services

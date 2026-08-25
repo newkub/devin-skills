@@ -15,7 +15,7 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 ### 1. Install GitHub Application
 
-> Goal: Install GitHub Application
+> Goal: ติดตั้ง GitHub Application บน repository
 
 1. ไปที่ https://github.com/apps/pkg-pr-new
 2. Install application บน repository
@@ -23,14 +23,14 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 ### 2. Install Package
 
-> Goal: Install Package
+> Goal: ติดตั้ง pkg-pr-new package ใน project
 
 1. รัน `bun add -D pkg-pr-new`
 2. หรือใช้ `bunx pkg-pr-new publish` โดยตรง
 
 ### 3. Configure Workflow
 
-> Goal: Configure Workflow
+> Goal: สร้าง GitHub Actions workflow สำหรับ publish
 
 1. สร้างไฟล์ `.github/workflows/publish.yml`
 
@@ -72,7 +72,7 @@ on:
 
 ### 4. Configure Options
 
-> Goal: Configure Options
+> Goal: กำหนด options สำหรับ templates, CLI และ comments
 
 1. สำหรับ templates
 

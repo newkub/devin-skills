@@ -18,8 +18,9 @@ description: ติดตั้งและตั้งค่า SigNoz สำ�
 
 ### 1. Assess Project And Prepare SigNoz
 
-ประเมินโปรเจกต์และเตรียม backend ก่อนลงมือตั้งค่า
 > Goal: ระบุ runtime, endpoint และ ingestion key ที่ถูกต้อง
+
+ประเมินโปรเจกต์และเตรียม backend ก่อนลงมือตั้งค่า
 
 1. อ่าน `package.json` เพื่อตรวจสอบ runtime ว่าเป็น `bun`, `node` หรือ TypeScript
 2. ถามผู้ใช้ว่าต้องการ `SigNoz Cloud` หรือ `self-hosted`
@@ -33,8 +34,9 @@ description: ติดตั้งและตั้งค่า SigNoz สำ�
 
 ### 2. Instrument The Application
 
-ติดตั้ง OpenTelemetry instrumentation ในโปรเจกต์
 > Goal: ทำให้แอปส่ง telemetry ไปยัง SigNoz โดยอัตโนมัติ
+
+ติดตั้ง OpenTelemetry instrumentation ในโปรเจกต์
 
 1. ติดตั้ง package ที่จำเป็น:
    - `npm install --save @opentelemetry/api @opentelemetry/auto-instrumentations-node`
@@ -52,8 +54,9 @@ description: ติดตั้งและตั้งค่า SigNoz สำ�
 
 ### 3. Send Logs, Metrics, And Traces
 
-ส่ง telemetry ให้ครบทั้งสามประเภท
 > Goal: ให้ traces, logs, metrics แสดงใน SigNoz UI
+
+ส่ง telemetry ให้ครบทั้งสามประเภท
 
 1. ใช้ `webfetch` อ่าน `https://signoz.io/docs/instrumentation/opentelemetry-nodejs/` เพื่อยืนยัน environment variables ล่าสุด
 2. ตั้งค่า `OTEL_METRICS_EXPORTER=otlp` เพื่อส่ง metrics
@@ -63,8 +66,9 @@ description: ติดตั้งและตั้งค่า SigNoz สำ�
 
 ### 4. Verify Data In SigNoz
 
-ตรวจสอบว่า telemetry เข้า SigNoz แล้ว
 > Goal: ยืนยันการส่งข้อมูลสำเร็จ
+
+ตรวจสอบว่า telemetry เข้า SigNoz แล้ว
 
 1. เปิด UI ที่ `http://localhost:8080` หรือ URL ของ SigNoz Cloud
 2. ตรวจสอบ service name ในหน้า Services และ Traces
@@ -74,8 +78,9 @@ description: ติดตั้งและตั้งค่า SigNoz สำ�
 
 ### 5. Configure Dashboards And Alerts
 
-สร้าง dashboard และ alert พื้นฐาน
 > Goal: ให้สามารถ monitor และแจ้งเตือนได้
+
+สร้าง dashboard และ alert พื้นฐาน
 
 1. ใช้ `webfetch` อ่าน `https://signoz.io/docs/userguide/alerts-management/`
 2. สร้าง dashboard ที่มี panels สำหรับ request rate, latency, error rate

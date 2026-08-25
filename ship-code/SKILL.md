@@ -1,15 +1,15 @@
 ﻿---
 name: ship-code
-description: Ship workspace ที่เลือก โดย commit ทำตาม AGENTS.md ไม่มี push หรือ release
+description: Ship workspace หรือ skills repo โดย commit ทำตาม AGENTS.md รองรับ submodules ไม่มี push หรือ release
 ---
 
 ## Goal
 
-Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` ทำตาม workflows ตรวจสอบด้วย `/run-verify` แล้ว commit
+Ship workspace ที่เลือก หรือ skills repo ที่มี submodules โดยอัปเดต `AGENTS.md` ทำตาม workflows ตรวจสอบด้วย `/run-verify` แล้ว commit ทั้ง submodule และ root
 
 ## Scope
 
-ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship-code` แต่ละ workspace ตามลำดับ dependency
+ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship-code` แต่ละ workspace ตามลำดับ dependency
 
 ## Execute
 
@@ -37,19 +37,44 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 2. ทำ `/validate` เพื่อ validate ผลลัพธ์
 3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-3 จนกว่าจะผ่าน
 
-### 4. Commit
+### 4. Identify Submodules
 
-> Goal: commit การเปลี่ยนแปลง
+> Goal: ระบุ submodules ที่มี `.git` ทั้งหมดก่อน commit
 
-1. ทำ `/git-commit` เพื่อ commit การเปลี่ยนแปลงทั้งหมด
+1. รัน `git submodule status` เพื่อดู submodules ทั้งหมด
+2. ถ้าไม่มี submodules → ข้ามไป Step 6 (Commit) โดย commit ที่ root โดยตรง
+3. สำหรับแต่ละ submodule ตรวจ `git status` และ `git diff` เพื่อหาการเปลี่ยนแปลง
+4. จัดรายการ submodules ที่มี changes ต้อง commit
+
+### 5. Commit Submodules
+
+> Goal: commit ในแต่ละ submodule ที่มี changes ก่อน root
+
+1. สำหรับแต่ละ submodule ที่มี changes:
+   - `cd` เข้า submodule directory
+   - ตรวจ `git status` และ `git diff`
+   - ทำ `/git-commit` ใน submodule
 2. ถ้า commit ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
+3. บันทึก commit hash ของแต่ละ submodule
 
-### 5. Report
+### 6. Commit Root
 
-> Goal: รายงานผล ship
+> Goal: commit การเปลี่ยนแปลงที่ root พร้อม update submodule pointers
 
-1. ทำ `/report` พร้อม `/report-table` สรุปสิ่งที่ทำ
-2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+1. กลับมาที่ root repo
+2. ตรวจ `git status` — ถ้ามี submodules ควรเห็น submodule pointers เปลี่ยน
+3. ทำ `/git-commit` ที่ root พร้อมระบุ submodule pointer updates ถ้ามี
+4. ถ้า root มี changes อื่น (docs, skills, code) → commit รวมในครั้งเดียว
+5. ถ้า commit ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
+
+### 7. Validate And Report
+
+> Goal: ยืนยันการ ship สมบูรณ์
+
+1. ทำ `/validate` เพื่อตรวจ references และ structure
+2. ถ้ามี submodules → รัน `git submodule status` เพื่อยืนยัน pointers ถูกต้อง
+3. ทำ `/report` พร้อม `/report-table` สรุป submodule commits (ถ้ามี) และ root commit
+4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
 
@@ -71,7 +96,14 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 - ใช้ `/run-verify` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
 - ถ้า workspace ไม่มี verify script → ทำ `/follow-tasks` ก่อน
 
-### 4. Sub-Workflow Discipline
+### 4. Submodule First
+
+- commit ใน submodule ก่อนเสมอ แล้วจึง update root pointer
+- ห้าม commit root pointer โดยที่ submodule ยังไม่ commit
+- บันทึก submodule commit hash ก่อน update root
+- ถ้าไม่มี submodules → commit ที่ root โดยตรง
+
+### 5. Sub-Workflow Discipline
 
 - ทุก command ต้องอ่าน `SKILL.md` จริงก่อนทำ
 - ทำตาม `## Execute` ของแต่ละ skill จนครบ
@@ -82,5 +114,7 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
 - Code ผ่าน `/run-verify` และ `/validate`
-- Commit สำเร็จ
-- รายงานผลลัพธ์ครบถ้วน
+- ทุก submodule ที่มี changes ถูก commit ก่อน root
+- Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
+- Root commit สำเร็จ
+- รายงาน submodule commits และ root commit ครบถ้วน

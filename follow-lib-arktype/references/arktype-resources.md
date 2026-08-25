@@ -31,4 +31,8 @@
 
 ## Version
 
-Current stable version: Check [bun](https://www.bunjs.com/package/arktype) for latest
+- Latest stable: `arktype` v2.2.3 (published Jul 7, 2026)
+- License: MIT
+- Zero external dependencies
+- TypeScript >= 5.0 required
+- Runtime: Node.js, Bun, and all modern browsers

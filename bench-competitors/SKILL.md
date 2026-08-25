@@ -34,8 +34,8 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 
 > Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
 
-1. ทำ `/review-codebase` สำหรับ performance
-2. ทำ `/review-codebase` สำหรับ UX/UI
+1. ทำ `/review-codebase-everything` สำหรับ performance
+2. ทำ `/review-codebase-everything` สำหรับ UX/UI
 3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
 4. บันทึกผลใน `docs/project.md`
 
@@ -53,8 +53,8 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 > Goal: ปรับปรุง project ตาม roadmap
 
 1. ทำ `/ship-code` เพื่อ implement improvements
-2. ทำ `/review-codebase` สำหรับ performance improvements
-3. ทำ `/review-codebase` สำหรับ UX/UI improvements
+2. ทำ `/review-codebase-everything` สำหรับ performance improvements
+3. ทำ `/review-codebase-everything` สำหรับ UX/UI improvements
 4. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
 
 ### 6. Update Report

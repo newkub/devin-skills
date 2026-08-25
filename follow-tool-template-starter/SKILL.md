@@ -15,7 +15,7 @@ description: ใช้ templates จาก template-starter repository ด้ว
 
 ### 1. Check Repository
 
-> Goal: Check Repository
+> Goal: ตรวจสอบ repository และ templates ที่มี
 
 ตรวจสอบ repository และ templates ที่มี
 
@@ -26,7 +26,7 @@ description: ใช้ templates จาก template-starter repository ด้ว
 
 ### 2. Clone Template With Degit
 
-> Goal: Clone Template With Degit
+> Goal: clone template ด้วย bunx degit
 
 Clone template ด้วย `bunx degit`
 
@@ -37,7 +37,7 @@ Clone template ด้วย `bunx degit`
 
 ### 3. Setup Template
 
-> Goal: Setup Template
+> Goal: ตั้งค่า template หลัง clone
 
 ตั้งค่า template หลัง clone
 
@@ -48,7 +48,7 @@ Clone template ด้วย `bunx degit`
 
 ### 4. Verify Template
 
-> Goal: Verify Template
+> Goal: ตรวจสอบว่า template ทำงานได้
 
 ตรวจสอบว่า template ทำงานได้
 

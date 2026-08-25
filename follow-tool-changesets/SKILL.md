@@ -15,14 +15,14 @@ description: ตั้งค่า Changesets สำหรับ versioning แ�
 
 ### 1. Install Changesets
 
-> Goal: Install Changesets
+> Goal: ติดตั้ง Changesets CLI และ init config
 
 1. รัน `bun add -D @changesets/cli`
 2. รัน `bunx changeset init`
 
 ### 2. Configure Changesets
 
-> Goal: Configure Changesets
+> Goal: ตั้งค่า `.changeset/config.json` ให้เหมาะสม
 
 1. แก้ไข `.changeset/config.json`
 2. ตั้งค่า base branch, access, และ updateInternalDependencies
@@ -44,7 +44,7 @@ description: ตั้งค่า Changesets สำหรับ versioning แ�
 
 ### 3. Setup GitHub Actions
 
-> Goal: Setup GitHub Actions
+> Goal: สร้าง GitHub Actions workflow สำหรับ release
 1. สร้าง `.github/workflows/release.yml`
 2. กำหนดค่า GITHUB_TOKEN และ NPM_TOKEN
 3. ตั้งค่า version และ publish commands
@@ -78,14 +78,14 @@ jobs:
 
 ### 4. Create Changesets
 
-> Goal: Create Changesets
+> Goal: สร้าง changeset file สำหรับการเปลี่ยนแปลง
 1. รัน `bunx changeset` เพื่อสร้าง changeset file
 2. เลือก packages และระบุ changeset type (major, minor, patch)
 3. เขียน description สำหรับ changelog
 
 ### 5. Publish
 
-> Goal: Publish
+> Goal: publish packages ผ่าน Changesets
 1. Merge release PR ที่สร้างโดย GitHub Actions
 2. หรือรัน `bunx changeset publish` ด้วยตนเอง
 3. Changesets จะ version และ publish packages อัตโนมัติ

@@ -15,7 +15,7 @@ description: แนวทางการใช้งาน Aube package manager 
 
 ### 1. Installation
 
-> Goal: Installation
+> Goal: ติดตั้ง Aube และตรวจสอบ version
 
 1. ติดตั้ง Aube ด้วย `mise use aube` หรือดูวิธีอื่นๆ ที่ https://aube.en.dev/installation
 2. ตรวจสอบ version ด้วย `aube --version`
@@ -23,7 +23,7 @@ description: แนวทางการใช้งาน Aube package manager 
 
 ### 2. First Run
 
-> Goal: First Run
+> Goal: รันครั้งแรกโดยใช้ lockfiles ที่มีอยู่
 
 1. Aube จะอ่านและเขียน lockfiles ที่มีอยู่แล้ว (yarn.lock, pnpm-lock.yaml, package-lock.json)
 2. ไม่ต้อง migrate lockfiles ทีละคน - Aube รองรับทั้งหมด
@@ -31,7 +31,7 @@ description: แนวทางการใช้งาน Aube package manager 
 
 ### 3. Daily Commands
 
-> Goal: Daily Commands
+> Goal: ใช้คำสั่ง `aubr` และ `aubx` ได้ถูกต้องตาม use case
 
 ใช้ `aubr` สำหรับ run scripts ที่ต้องการ dependencies:
 
@@ -61,7 +61,7 @@ aube update             # update dependencies within package.json ranges
 
 ### 5. Security Configuration
 
-> Goal: Security Configuration
+> Goal: เพิ่ม ลบ และอัปเดต dependencies ด้วย Aube
 
 Aube มี security defaults ที่เหมาะสมที่สุด:
 - Trust downgrades fail at resolve

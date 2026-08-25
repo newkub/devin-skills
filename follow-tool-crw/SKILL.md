@@ -15,7 +15,7 @@ description: แนวทางการใช้งาน CRW (fastCRW) สำ�
 
 ### 1. Web Search
 
-> Goal: Web Search
+> Goal: ใช้ `crw search` สำหรับ web search ผ่าน SearXNG
 
 ใช้ `crw search` สำหรับ web search ผ่าน SearXNG:
 
@@ -68,7 +68,7 @@ crw crawl example.com --depth 2 --format json
 
 ### 4. URL Discovery
 
-> Goal: URL Discovery
+> Goal: ใช้ `crw map` สำหรับ discover URLs บนเว็บไซต์
 
 ใช้ `crw map` สำหรับ discover URLs บนเว็บไซต์:
 
@@ -118,7 +118,7 @@ Options สำหรับ LLM:
 
 ### 7. MCP Server
 
-> Goal: MCP Server
+> Goal: ใช้ `crw mcp` สำหรับ start MCP server
 
 ใช้ `crw mcp` สำหรับ start MCP server:
 

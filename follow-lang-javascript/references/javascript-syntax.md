@@ -1,6 +1,11 @@
 # JavaScript Modern Syntax
 
-ES2024+ modern syntax features สำหรับเขียน JavaScript ที่กระชับและปลอดภัย
+ES2025+ modern syntax features สำหรับเขียน JavaScript ที่กระชับและปลอดภัย
+
+## Version Info
+
+- Current standard: ES2025 (16th edition, June 2025)
+- Source: https://262.ecma-international.org/16.0/
 
 ## Variable Declarations
 
@@ -36,3 +41,12 @@ ES2024+ modern syntax features สำหรับเขียน JavaScript ท�
 - ใช้ `toSpliced()` สำหรับ immutable splice
 - ใช้ `with()` สำหรับ immutable element replacement
 - ใช้ `findLast()` และ `findLastIndex()` สำหรับ reverse search
+
+## ES2025 Features
+
+- ใช้ `Iterator` global พร้อม helpers (`map`, `filter`, `take`, `drop`, `reduce`)
+- ใช้ `Set` methods: `union()`, `intersection()`, `difference()`, `symmetricDifference()`, `isSubsetOf()`, `isSupersetOf()`, `isDisjointFrom()`
+- ใช้ `Promise.try()` สำหรับ wrapping sync/async code ใน Promise
+- ใช้ `RegExp.escape()` สำหรับ escape string ก่อนใช้ใน regex
+- ใช้ import attributes สำหรับ JSON modules: `import data from './data.json' with { type: 'json' }`
+- ใช้ inline modifier flags ใน regular expressions: `/(?i)pattern/`

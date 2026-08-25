@@ -36,7 +36,7 @@
 
 1. สร้าง API Gateway สำหรับ routing
 2. กำหนด authentication และ authorization — ทำ `/review-quality` สำหรับ input validation
-3. ตั้งค่า rate limiting แล load balancing
+3. ตั้งค่า rate limiting และload balancing
 4. กำหนด request/response transformation
 
 ### 4. Implement Service Discovery
@@ -54,7 +54,7 @@
 
 1. เลือก communication pattern: REST, gRPC, message queues
 2. ตั้งค่า inter-service communication
-3. กำหนด retry logic แล circuit breakers
+3. กำหนด retry logic และcircuit breakers
 4. ทำ `/follow-event-driven` สำหรับ async communication
 
 ### 6. Implement Data Isolation
@@ -71,7 +71,7 @@
 > Goal: ตรวจสอบ architecture หลัง implement
 
 1. ตรวจสอบ service independence
-2. ทดสอบ fault tolerance แล resilience
+2. ทดสอบ fault tolerance และresilience
 3. ตรวจสอบ scalability
 4. ทำ `/restructure` หลังจาก implement เสร็จ
 
@@ -161,7 +161,7 @@ services/
 ## Expected Outcome
 
 - Microservices Architecture ที่ loosely coupled
-- Services ที่ independent แล scalable
+- Services ที่ independent และscalable
 - API Gateway สำหรับ unified entry point
-- Communication ที่ reliable แล fault-tolerant
+- Communication ที่ reliable และfault-tolerant
 - Data isolation ที่ชัดเจน

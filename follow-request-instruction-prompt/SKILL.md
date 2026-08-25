@@ -16,7 +16,7 @@ argument-hint: "[target]"
 
 ### 1. Analyze Conversation
 
-> Goal: Analyze Conversation
+> Goal: วิเคราะห์การสนทนาเพื่อระบุจุดประสงค์หลัก
 
 1. อ่านและวิเคราะห์การสนทนาทั้งหมด
 2. ระบุจุดประสงค์หลักของการสนทนา
@@ -25,7 +25,7 @@ argument-hint: "[target]"
 
 ### 2. Extract Key Information
 
-> Goal: Extract Key Information
+> Goal: สกัดคำสั่งและข้อกำหนดที่ชัดเจน
 
 1. สรุปคำสั่งและข้อกำหนดที่ชัดเจน
 2. ระบุ input และ output ที่คาดหวัง
@@ -34,7 +34,7 @@ argument-hint: "[target]"
 
 ### 3. Write Instruction Prompt
 
-> Goal: Write Instruction Prompt
+> Goal: เขียน prompt ที่กระชับและเป็นระบบ
 
 1. เขียน prompt ที่กระชับและชัดเจน
 2. จัดลำดับขั้นตอนอย่างเป็นระบบ
@@ -43,7 +43,7 @@ argument-hint: "[target]"
 
 ### 4. Validate Prompt
 
-> Goal: Validate Prompt
+> Goal: ตรวจสอบความครบถ้วนและความชัดเจนของ prompt
 
 1. ตรวจสอบว่า prompt ครอบคลุมทุกจุดสำคัญ
 2. ทดสอบ prompt กับกรณีตัวอย่าง
@@ -51,6 +51,8 @@ argument-hint: "[target]"
 4. ยืนยันว่า prompt นำไปใช้ได้จริง
 
 ## Rules
+
+### 1. Prompt Quality
 
 1. Instruction prompt ต้องกระชับและชัดเจน
 2. ต้องระบุ input/output อย่างชัดเจน

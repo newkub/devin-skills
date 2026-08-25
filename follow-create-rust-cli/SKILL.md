@@ -15,9 +15,9 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 ### 1. Setup Project Structure
 
-> Goal: Setup Project Structure
+> Goal: สร้างโครงสร้างโปรเจกต์ที่แยก concerns ชัดเจนตามมาตรฐาน
 
-สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน
+สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน — ดู template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. สร้าง project ด้วย `cargo new --name <project> <path>`
 2. สร้าง directories: `src/cli/`, `src/services/`, `src/types/`, `src/utils/`
@@ -27,9 +27,9 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 ### 2. Configure Dependencies
 
-> Goal: Configure Dependencies
+> Goal: เพิ่ม dependencies ที่จำเป็นสำหรับ CLI ใน `Cargo.toml`
 
-ตั้งค่า dependencies ใน `Cargo.toml`
+ตั้งค่า dependencies ใน `Cargo.toml` — ดูตัวอย่างใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. เพิ่ม CLI dependencies: `clap` (argument parsing), `serde` (serialization), `serde_json` (JSON)
 2. เพิ่ม logging: `tracing`, `tracing-subscriber`
@@ -42,9 +42,9 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 ### 3. Configure Build Profiles
 
-> Goal: Configure Build Profiles
+> Goal: ตั้งค่า build profiles สำหรับ development และ production
 
-ตั้งค่า build profiles สำหรับ development และ production
+ตั้งค่า build profiles สำหรับ development และ production — ดูตัวอย่างใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. ตั้งค่า `[profile.dev]` ด้วย `debug = "line-tables-only"` และ `incremental = true`
 2. ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
@@ -52,9 +52,9 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 ### 4. Setup Scripts
 
-> Goal: Setup Scripts
+> Goal: สร้าง justfile สำหรับ development scripts ที่ใช้ซ้ำได้
 
-ตั้งค่า development scripts ใน `justfile`
+ตั้งค่า development scripts ใน `justfile` — ดู template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. เพิ่ม `dev` recipe: `cargo watch -x run`
 2. เพิ่ม `build` recipe: `cargo build --release`
@@ -64,7 +64,7 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 
 ### 5. Development Workflow
 
-> Goal: Development Workflow
+> Goal: ใช้ workflow ที่มี watch mode, lint และ format อัตโนมัติ
 
 ใช้ development workflow ที่มีประสิทธิภาพ
 
@@ -73,7 +73,7 @@ description: สร้าง CLI applications ด้วย Rust ตาม best p
 3. ใช้ `cargo clippy -- -D warnings` สำหรับ code quality checks
 4. ใช้ `cargo fmt` สำหรับ formatting
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 

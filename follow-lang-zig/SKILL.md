@@ -15,7 +15,7 @@ description: เขียน Zig ตาม best practices และ language con
 
 ### 1. Setup Project
 
-> Goal: Setup Project
+> Goal: ตั้งค่า Zig project และ build configuration
 
 ตั้งค่า Zig project
 
@@ -26,7 +26,7 @@ description: เขียน Zig ตาม best practices และ language con
 
 ### 2. Write Zig Code
 
-> Goal: Write Zig Code
+> Goal: เขียน Zig code ตาม language conventions
 
 เขียน Zig code ตาม conventions
 
@@ -38,7 +38,7 @@ description: เขียน Zig ตาม best practices และ language con
 
 ### 3. Memory Management
 
-> Goal: Memory Management
+> Goal: จัดการ memory อย่างเหมาะสมและปลอดภัย
 
 จัดการ memory อย่างเหมาะสม
 
@@ -50,7 +50,7 @@ description: เขียน Zig ตาม best practices และ language con
 
 ### 4. Optimize Performance
 
-> Goal: Optimize Performance
+> Goal: ปรับปรุง performance ด้วย compile-time และ SIMD
 
 ปรับปรุง performance
 

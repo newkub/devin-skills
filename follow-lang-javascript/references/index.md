@@ -1,15 +1,9 @@
-# JavaScript Skill References
+# follow-lang-javascript References Index
 
-รายละเอียดแต่ละด้านของ modern JavaScript best practices และ ES2024+
-
-## Files
-
-- `javascript-syntax.md` — ES2024+ modern syntax features
-- `javascript-async.md` — async patterns และ error handling
-- `javascript-quality.md` — code quality, naming, functional programming, SOLID
-- `javascript-testing.md` — testing ด้วย `vitest`
-- `javascript-security.md` — security practices
-
-## Usage
-
-อ้างอิงไฟล์ที่เกี่ยวข้องจาก `SKILL.md` เมื่อต้องการรายละเอียดเพิ่มเติมในแต่ละด้าน
+| File | Responsibility |
+|---|---|
+| [javascript-syntax.md](javascript-syntax.md) | ES2025+ modern syntax features, version info |
+| [javascript-async.md](javascript-async.md) | Async patterns, error handling, Promise combinators |
+| [javascript-quality.md](javascript-quality.md) | Code quality, naming, functional programming, SOLID, performance |
+| [javascript-testing.md](javascript-testing.md) | Testing with vitest, mocking, TDD |
+| [javascript-security.md](javascript-security.md) | Security practices, input handling, CSP/HTTPS |

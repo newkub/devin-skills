@@ -24,13 +24,13 @@ System requirements: PHP 7.2.5+ (latest version), 2.2.x LTS for PHP 5.3.2+.
     "description": "A sample project",
     "type": "project",
     "require": {
-        "php": "^8.2",
+        "php": "^8.5",
         "monolog/monolog": "^3.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^11.0"
     },
     "autoload": {
         "psr-4": {

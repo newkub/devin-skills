@@ -15,7 +15,7 @@ description: สร้าง changelog และจัดการ releases ด�
 
 ### 1. Configure Changelogen
 
-> Goal: Configure Changelogen
+> Goal: สร้าง `changelogen.config.ts` สำหรับ project
 
 ตั้งค่า changelogen สำหรับ project
 
@@ -26,7 +26,7 @@ description: สร้าง changelog และจัดการ releases ด�
 
 ### 2. Setup Package Scripts
 
-> Goal: Setup Package Scripts
+> Goal: เพิ่ม scripts สำหรับ changelog ใน `package.json`
 
 เพิ่ม scripts ลงใน `package.json`
 
@@ -36,7 +36,7 @@ description: สร้าง changelog และจัดการ releases ด�
 
 ### 3. Generate Changelog
 
-> Goal: Generate Changelog
+> Goal: สร้าง changelog จาก git commits
 
 สร้าง changelog จาก git commits
 
@@ -47,7 +47,7 @@ description: สร้าง changelog และจัดการ releases ด�
 
 ### 4. Review And Commit
 
-> Goal: Review And Commit
+> Goal: ตรวจสอบและ commit changelog ที่สร้าง
 
 ตรวจสอบและ commit changelog
 

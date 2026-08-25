@@ -15,7 +15,7 @@ description: ตั้งค่า Taze สำหรับจัดการ dep
 
 ### 1. Use Taze
 
-> Goal: Use Taze
+> Goal: รัน Taze ผ่าน bunx โดยไม่ต้องติดตั้ง
 
 ใช้ Taze ผ่าน bunx โดยไม่ต้องติดตั้ง
 
@@ -24,7 +24,7 @@ description: ตั้งค่า Taze สำหรับจัดการ dep
 
 ### 2. Configure Package.json
 
-> Goal: Configure Package.json
+> Goal: เพิ่ม prepare script สำหรับ automated dependency updates
 
 1. เพิ่ม `prepare` script ใน `package.json`
 2. ใช้ `bunx taze latest -w -r -i` สำหรับ update latest, write, recursive, install

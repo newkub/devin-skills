@@ -19,7 +19,7 @@ description: สร้าง Desktop Applications ด้วย Tauri, SolidStart
 
 ### 1. Setup Environment
 
-> Goal: Setup Environment
+> Goal: ตรวจสอบ Rust, Bun, และ WebView2 ก่อนเริ่มโปรเจกต์
 
 1. ตรวจสอบ Rust ติดตั้งแล้ว: `rustc --version`
 2. ตรวจสอบ Bun ติดตั้งแล้ว: `bun --version`
@@ -27,7 +27,7 @@ description: สร้าง Desktop Applications ด้วย Tauri, SolidStart
 
 ### 2. Initialize Project
 
-> Goal: Initialize Project
+> Goal: สร้าง SolidStart project ใหม่ด้วย starter template
 
 สร้าง SolidStart project ใหม่ด้วย starter
 
@@ -56,7 +56,7 @@ description: สร้าง Desktop Applications ด้วย Tauri, SolidStart
 
 ### 5. Configure UnoCSS
 
-> Goal: Configure UnoCSS
+> Goal: กำหนด UnoCSS configuration สำหรับ styling
 
 สร้าง `uno.config.ts`:
 
@@ -97,7 +97,7 @@ export default defineConfig({
 
 ### 7. Develop IPC Commands
 
-> Goal: Develop IPC Commands
+> Goal: สร้าง Rust IPC commands และเรียกใช้จาก frontend
 1. สร้าง Rust command ใน `src-tauri/src/lib.rs`:
 
 ```rust
@@ -134,14 +134,14 @@ const response = await invoke('greet', { name: 'World' })
 
 ### 9. Build And Test
 
-> Goal: Build And Test
+> Goal: Build และ test Tauri desktop app บน target platforms
 1. Development mode: `bun run tauri dev`
 2. Production build: `bun run tauri build`
 3. Platform specific: `bun run tauri build --target x86_64-apple-darwin`
 
 ## Rules
 
-### Configuration Standards
+### 1. Configuration Standards
 
 - ใช้ `bun` สำหรับทุก commands
 - Vite port ตรงกับ `tauri.conf.json` (default: 5173)
@@ -150,7 +150,7 @@ const response = await invoke('greet', { name: 'World' })
 - UnoCSS: `presetWind4`, `presetIcons`, `transformerVariantGroup`, `transformerDirectives`
 - Tauri: กำหนด capabilities ใน `tauri.conf.json`
 
-### Development Standards
+### 2. Development Standards
 
 - ใช้ `.tsx` สำหรับ components
 - กำหนด types สำหรับ props อย่างชัดเจน

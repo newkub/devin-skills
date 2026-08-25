@@ -19,7 +19,7 @@ description: ใช้งาน Semantic Release สำหรับ automated ve
 
 ### 1. Install Semantic Release
 
-> Goal: Install Semantic Release
+> Goal: ติดตั้ง semantic-release ใน project
 
 ติดตั้ง Semantic Release:
 ```bash
@@ -35,14 +35,14 @@ bunx semantic-release
 
 ### 3. Dry Run
 
-> Goal: Dry run
+> Goal: ทดสอบ release โดยไม่ publish จริง
 ```bash
 bunx semantic-release --dry-run
 ```
 
 ### 4. Debug Mode
 
-> Goal: Debug Mode
+> Goal: รันใน debug mode เพื่อ troubleshoot
 
 Debug mode:
 ```bash

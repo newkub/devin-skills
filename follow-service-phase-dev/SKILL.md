@@ -13,25 +13,20 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 
 ## Execute
 
-### 1. Prepare
+### 1. Prepare And Setup Account
 
-> Goal: Prepare
+> Goal: ศึกษา Phase.dev docs และสร้าง organization กับ app
 
 1. ศึกษา Phase.dev documentation จาก DeepWiki (phasehq/console), Official Docs (docs.phase.dev), และ Web Search
 2. อ่าน workflows ที่คล้ายกันเพื่อดู patterns และ conventions
+3. เข้าไปที่ https://phase.dev/
+4. Login หรือสมัครสมาชิก (รองรับ Google, GitHub, GitLab OAuth)
+5. สร้าง Organization ใหม่
+6. สร้าง App ภายใน Organization
 
-### 2. Account Setup
+### 2. Authentication
 
-> Goal: Account Setup
-
-1. เข้าไปที่ https://phase.dev/
-2. Login หรือสมัครสมาชิก (รองรับ Google, GitHub, GitLab OAuth)
-3. สร้าง Organization ใหม่
-4. สร้าง App ภายใน Organization
-
-### 3. Authentication
-
-> Goal: Authentication
+> Goal: authenticate กับ Phase Cloud หรือ self-hosted ด้วยวิธีที่เหมาะสม
 
 1. Authenticate กับ Phase Cloud: `phase auth` (default mode: webauth)
 2. สำหรับ self-hosted: `phase auth --mode token`
@@ -41,9 +36,9 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
    - Phase Cloud: `PHASE_HOST=https://console.phase.dev`, `PHASE_TOKEN=<token>`
    - Self-hosted: `PHASE_HOST=http://localhost`, `PHASE_TOKEN=<token>`
 
-### 4. Project Initialization
+### 3. Project Initialization
 
-> Goal: Project Initialization
+> Goal: เชื่อมโยง project กับ Phase และ import existing secrets
 
 1. Navigate ไปยัง project directory
 2. Run `phase init` เพื่อเชื่อมโยง project กับ Phase
@@ -51,9 +46,9 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 4. สำหรับ monorepo: `phase init --monorepo`
 5. Import existing secrets (optional): `phase secrets import .env`
 
-### 5. Secret Management
+### 4. Secret Management
 
-> Goal: Secret Management
+> Goal: จัดการ secrets ผ่าน CLI และ Console รวมถึง referencing และ organization
 
 1. สร้าง secrets: `phase secrets create KEY "value" --env production`
 2. ดึง secrets: `phase secrets get KEY --env production`
@@ -70,36 +65,31 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 10. เพิ่ม tags และ comments เพื่อจัดระเบียบ
 11. จัดระเบียบ secrets ด้วย folders สำหรับจำนวน secrets ที่มาก
 
-### 6. Encryption and Security
+### 5. Encryption And Bulk Operations
 
-> Goal: Encryption and Security
+> Goal: รักษาความปลอดภัยด้วย E2EE และจัดการ bulk secret operations
 
 1. Phase ใช้ end-to-end encryption (E2EE) ด้วย `libsodium` asymmetric encryption
 2. Secrets encrypt ด้วย environment-specific `public/private keys`
 3. Frontend encrypt key, value, comment ก่อนส่งไป backend
 4. Backend ใช้ server-side key retrieval ด้วย `master keypair`
 5. Validate secret references ก่อน save เพื่อป้องกัน broken references
+6. ใช้ bulk operations สำหรับ create, update, delete secrets ใน transaction เดียว
+7. Track `unsaved changes` ใน UI component
+8. ใช้ `BulkProcessSecrets` mutation สำหรับ operations หลายตัวพร้อมกัน
 
-### 7. Bulk Operations
+### 6. Sync Configuration
 
-> Goal: Bulk Operations
-
-1. ใช้ bulk operations สำหรับ create, update, delete secrets ใน transaction เดียว
-2. Track `unsaved changes` ใน UI component
-3. ใช้ `BulkProcessSecrets` mutation สำหรับ operations หลายตัวพร้อมกัน
-
-### 8. Sync Configuration
-
-> Goal: Sync Configuration
+> Goal: ตั้งค่า sync ไปยัง external services
 
 1. ตั้งค่า sync ไปยัง external services (`AWS Secrets Manager`, `GitHub Actions`, `Vercel`, `Railway`)
 2. สร้าง sync configuration: `phase sync create aws-secrets-manager --env production --region us-east-1`
 3. ตั้งค่า automatic sync ใน `.phase/config.yaml`
 4. Trigger sync manually: `phase sync trigger --env production`
 
-### 9. Platform Integration
+### 7. Platform Integration
 
-> Goal: Platform Integration
+> Goal: ตั้งค่า Phase สำหรับ platforms ต่างๆ
 
 1. Docker: ใช้ Phase SDK หรือ CLI injection
 2. Kubernetes: ใช้ Phase Agent หรือ sync ไป Kubernetes secrets
@@ -109,18 +99,18 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 6. Hashicorp Nomad: ใช้ Phase integration
 7. Cloudflare Pages: ใช้ Phase integration
 
-### 10. Dynamic Secrets
+### 8. Dynamic Secrets
 
-> Goal: Dynamic Secrets
+> Goal: จัดการ dynamic secrets และ leases
 
 1. List dynamic secrets: `phase dynamic-secrets list`
 2. Manage leases: `phase dynamic-secrets lease`
 3. Generate leases สำหรับ dynamic secrets ด้วย `phase run --generate-leases`
 4. Set lease TTL ด้วย `phase run --lease-ttl <seconds>`
 
-### 11. Application Integration
+### 9. Application Integration
 
-> Goal: Application Integration
+> Goal: inject secrets เข้า application ด้วย CLI หรือ SDK
 
 1. Inject secrets ด้วย CLI: `phase run --env production -- npm run dev`
 2. ใช้ flags สำหรับ `phase run`:
@@ -134,9 +124,9 @@ description: ตั้งค่าและใช้งาน Phase.dev สำ�
 4. ตั้งค่า environment variables ใน application config
 5. Test secrets injection ใน staging environment ก่อน production
 
-### 12. Monitoring and Audit
+### 10. Monitoring And Audit
 
-> Goal: Monitoring and Audit
+> Goal: ตรวจสอบ audit logs และ monitor sync status
 
 1. ตรวจสอบ audit logs อย่างสม่ำเสมอ (`CREATE`, `UPDATE`, `READ`, `DELETE` events)
 2. Monitor sync status เพื่อให้แน่ใจว่า secrets sync สำเร็จ

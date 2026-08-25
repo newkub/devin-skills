@@ -127,7 +127,7 @@ Goal reminder: จำลองหน่วยงานภาครัฐเพ�
 
 ### 6. Integration
 
-- ถ้าต้องการ scan ทางเทคนิคลึก ให้ใช้ `/review-codebase`
+- ถ้าต้องการ scan ทางเทคนิคลึก ให้ใช้ `/review-codebase-everything`
 - ถ้าต้องการ audit dependencies ให้ใช้ `/run-audit`
 - ถ้าต้องการวิเคราะห์เชิงลึก ให้ใช้ `/deep-thinking`
 - ถ้าต้องการทบทวนมุมมอง ให้ใช้ `/pondering`

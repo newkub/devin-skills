@@ -33,7 +33,7 @@ description: ตรวจสอบ implementation completeness ของ areas �
 
 > Goal: ตรวจสอบว่าไม่มี incomplete implementations เหลือ และรายงานผล
 
-1. ทำ `/review-codebase` เพื่อ verify ว่าไม่มี incomplete implementations เหลือใน scope
+1. ทำ `/review-codebase-everything` เพื่อ verify ว่าไม่มี incomplete implementations เหลือใน scope
 2. ถ้าพบ incomplete implementations ใหม่ → กลับไปทำ Step 2 (max 3 → stop/report)
 3. ทำ `/report-table` เพื่อรายงาน items ที่แปลงเป็น production code
 4. ทำ `/suggest-next-action`

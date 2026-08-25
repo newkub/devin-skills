@@ -15,14 +15,14 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 
 ### 1. Setup
 
-> Goal: Setup
+> Goal: ติดตั้ง Biome CLI ใน project
 
 1. ติดตั้ง Biome CLI ด้วย `bun add -D @biomejs/biome`
 2. ตรวจสอบว่ามี `package.json` อยู่แล้ว
 
 ### 2. Configure
 
-> Goal: Configure
+> Goal: สร้าง `biome.jsonc` พร้อม scripts ใน `package.json`
 
 1. สร้าง `biome.jsonc` ที่ root พร้อม VCS integration และ recommended rules
 
@@ -68,7 +68,7 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 
 ### 3. Monorepo
 
-> Goal: Monorepo
+> Goal: ตั้งค่า Biome สำหรับ monorepo workspaces
 1. ในแต่ละ workspace สร้าง `biome.jsonc` ด้วย `root: false` และ `extends: ["../../biome.jsonc"]`
 
 ```json [biome.jsonc]
@@ -80,7 +80,7 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 
 ### 4. Optional Domains
 
-> Goal: Optional Domains
+> Goal: เพิ่ม linter domains ตาม tech stack
 1. เลือก domains ที่เกี่ยวข้องกับโปรเจกต์
 2. เพิ่ม domains ใน `biome.jsonc` ผ่าน `linter.domains`
 
@@ -101,13 +101,13 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 
 ### 5. Verify
 
-> Goal: Verify
+> Goal: ตรวจสอบว่า lint และ format ทำงานได้
 1. รัน `bun run lint`
 2. รัน `bun run format`
 
 ### 6. GitHub Actions CI
 
-> Goal: GitHub Actions CI
+> Goal: สร้าง GitHub Actions workflow สำหรับ Biome CI
 1. สร้าง `.github/workflows/biome.yml` สำหรับ CI/CD
 
 ```yaml [.github/workflows/biome.yml]

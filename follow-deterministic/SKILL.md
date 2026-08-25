@@ -15,7 +15,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 1. Use Pure Functions
 
-> Goal: Use Pure Functions
+> Goal: ฟังก์ชันให้ผลลัพธ์เดิมเสมอเมื่อ input เดิมไม่มี randomness
 
 เขียนฟังก์ชันที่ deterministic เสมอ
 
@@ -27,7 +27,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 2. Manage External State
 
-> Goal: Manage External State
+> Goal: ควบคุม external state ผ่าน dependency injection ไม่ให้กระทบ determinism
 
 จัดการ external state อย่างเหมาะสม
 
@@ -39,7 +39,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 3. Control Time Dependencies
 
-> Goal: Control Time Dependencies
+> Goal: ควบคุม time-dependent operations ให้ reproducible ในทุกการรัน
 
 จัดการ time-dependent operations
 
@@ -51,7 +51,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 4. Handle Concurrency
 
-> Goal: Handle Concurrency
+> Goal: จัดการ concurrent operations ให้ลำดับผลลัพธ์คงที่ทุกครั้ง
 
 จัดการ concurrent operations อย่าง deterministic
 
@@ -63,7 +63,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 5. Input Validation
 
-> Goal: Input Validation
+> Goal: ตรวจสอบ inputs ก่อน processing เพื่อให้ผลลัพธ์คาดเดาได้
 
 ตรวจสอบ inputs อย่างเข้มงวด
 
@@ -75,7 +75,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 6. Error Handling
 
-> Goal: Error Handling
+> Goal: จัดการ errors อย่าง consistent และคาดเดาได้ทุกครั้ง
 
 จัดการ errors อย่าง deterministic
 
@@ -87,7 +87,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ### 7. Testing
 
-> Goal: Testing
+> Goal: ยืนยันว่าฟังก์ชันให้ผลลัพธ์เดิมเสมอผ่าน test cases
 
 เขียน tests สำหรับ deterministic behavior
 
@@ -99,7 +99,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 
 ## Rules
 
-### Pure Functions
+### 1. Pure Functions
 
 ฟังก์ชันต้อง deterministic เมื่อเป็นไปได้
 
@@ -109,7 +109,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 - Isolate `non-deterministic` operations
 - ใช้ `seeded random` เมื่อจำเป็น
 
-### External State
+### 2. External State
 
 จัดการ external state อย่างเหมาะสม
 
@@ -119,7 +119,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 - Document `dependencies`
 - Isolate `non-deterministic` code
 
-### Time Dependencies
+### 3. Time Dependencies
 
 จัดการ time-dependent operations
 
@@ -129,7 +129,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 - Use `virtual time`
 - Document `time dependencies`
 
-### Concurrency
+### 4. Concurrency
 
 จัดการ concurrent operations อย่าง deterministic
 
@@ -139,7 +139,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 - Test `concurrent` scenarios
 - Document `concurrency` assumptions
 
-### Input Validation
+### 5. Input Validation
 
 ตรวจสอบ inputs อย่างเข้มงวด
 
@@ -149,7 +149,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 - Document `requirements`
 - Return `predictable errors`
 
-### Error Handling
+### 6. Error Handling
 
 จัดการ errors อย่าง deterministic
 

@@ -35,7 +35,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 1. อ่าน review score และ grade จาก summary
 2. ระบุ findings ที่เป็น Critical และ High severity
-3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`?
+3. จัดกลุ่ม findings ตาม `reviewWorkflow` โดย map ไปยัง `/review-codebase-everything` หรือ `?review-codebase-everything/references/<dimension>.md`?
 4. ถ้า score < 70, categories < 60, หรือ `analyzerErrors` > 0 → พิจารณาทำ `/update-create-review-cli` เพื่อปรับปรุง analyzers
 
 ### 4. Suggest Actions
@@ -44,7 +44,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
 2. ทำ `/report-table` แสดง summary: domain scores, top findings, recommended workflows
-3. แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละ finding ตาม `reviewWorkflow` field
+3. แนะนำ `/review-codebase-everything` หรือ `?review-codebase-everything/references/<dimension>.md`? สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 
 ## Rules
 
@@ -61,7 +61,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 - Status: ✅ pass, ⚠️ warn, ❌ fail
 - Severity order: Critical > High > Medium > Low
 - จัดลำดับ action items ตาม severity: Critical ก่อน, High รองลงมง
-- แต่ละ finding map ไปยัง `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? ผ่าน `reviewWorkflow` field
+- แต่ละ finding map ไปยัง `/review-codebase-everything` หรือ `?review-codebase-everything/references/<dimension>.md`? ผ่าน `reviewWorkflow` field
 
 ### 3. When To Update CLI
 
@@ -73,7 +73,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 - Review report พร้อม score, grade, domain breakdown และ findings
 - ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
-- แนะนำ `/review-codebase` หรือ `?review-codebase/references/<dimension>.md`? สำหรับแต่ละปัญหา
+- แนะนำ `/review-codebase-everything` หรือ `?review-codebase-everything/references/<dimension>.md`? สำหรับแต่ละปัญหา
 - แนะนำ `/update-create-review-cli` ถ้า CLI ต้องปรับปรุง
 
 ## References

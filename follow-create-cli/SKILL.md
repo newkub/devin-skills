@@ -5,7 +5,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase-everything`
 
 ## Scope
 
@@ -22,21 +22,23 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 3. เลือก Bun ถ้า: ทีมใช้ TypeScript, ต้องการ rapid development, มี Bun runtime ติดตั้ง
 4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/compare` ก่อน
 
+ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ stack comparison และ framework examples
+
 ### 2. Create CLI Project
 
 > Goal: สร้างโครงสร้างตาม stack ที่เลือก
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่อวางโครงสร้าง layers ให้ชัดเจน
+3. ทำ `/follow-architecture` เพื่อวางโครงสร้าง layers ให้ชัดเจน
 4. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 3. Review CLI
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
-1. ทำ `/review-codebase` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/review-codebase` ระบุ
+1. ทำ `/review-codebase-everything` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/review-codebase-everything` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 4. Integrate Into Workspace
@@ -47,7 +49,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 2. ถ้าเป็น monorepo → ทำ `/follow-monorepo` เพื่อกำหนด workspace และ dependencies
 3. อัปเดต references ใน `README.md` และ `AGENTS.md` ถ้าจำเป็น
 
-### Ship
+### 5. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -63,6 +65,8 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 - ไม่ force ใช้ stack ที่ไม่เหมาะกับ context
 - บันทึกเหตุผลที่เลือก stack ใน `README.md` หรือ plan
 
+ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ framework details และ stack selection guide
+
 ### 2. Clean Architecture
 
 - ทุก CLI ต้องแยก concerns ชัดเจน
@@ -72,7 +76,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ### 3. Review Before Ship
 
-- ทำ `/review-codebase` ก่อน commit
+- ทำ `/review-codebase-everything` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -81,5 +85,5 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม Clean Architecture
-- ผ่าน `/review-codebase`
+- ผ่าน `/review-codebase-everything`
 - ผสานเข้ากับ workspace ได้
