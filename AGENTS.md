@@ -97,6 +97,7 @@ related:
 - `review-techstack: /review-techstack`
 - `review-writing: /review-writing`
 - `review-codebase: /review-codebase`
+- `review-gaps: /review-gaps`
 
 ### 4. Workspaces
 
