@@ -14,6 +14,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 ## Execute
 
 ### 1. Identify DP Problems
+
 > Goal: Identify DP Problems
 
 ระบุปัญหาที่เหมาะกับ dynamic programming
@@ -25,6 +26,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. ตรวจสอบว่ามี repeated calculations
 
 ### 2. Design Recurrence
+
 > Goal: Design Recurrence
 
 ออกแบบ recurrence relation
@@ -36,6 +38,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. วิเคราะห์ complexity
 
 ### 3. Choose Approach
+
 > Goal: Choose Approach
 
 เลือก approach ที่เหมาะสม
@@ -47,6 +50,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. เลือก data structure ที่เหมาะสม
 
 ### 4. Implement Memoization
+
 > Goal: Implement Memoization
 
 ใช้ memoization สำหรับ top-down approach
@@ -58,6 +62,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. จัดการ cache size
 
 ### 5. Implement Tabulation
+
 > Goal: Implement Tabulation
 
 ใช้ tabulation สำหรับ bottom-up approach
@@ -69,6 +74,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. return final result
 
 ### 6. Optimize
+
 > Goal: Optimize
 
 ปรับปรุง performance
@@ -80,6 +86,7 @@ description: แก้ปัญหาที่ซับซ้อนด้วย 
 5. profile และ benchmark
 
 ### 7. Test
+
 > Goal: Test
 
 ทดสอบ solution

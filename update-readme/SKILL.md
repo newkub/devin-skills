@@ -1,23 +1,24 @@
 ---
 name: update-readme
-description: สร้าง README.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
+description: สร้าง README.md และ LICENSE.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
 ---
 
 ## Goal
 
-สร้าง `README.md` ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์ สำหรับ root และ workspaces ใน monorepo
+สร้าง `README.md` และ `LICENSE.md` ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์ สำหรับ root และ workspaces ใน monorepo
 
 ## Scope
 
-ครอบคลุมการสร้าง `README.md` สำหรับ root และทุก workspace ใน monorepo — idempotent: รันซ้ำได้โดยไม่เกิด side effects
+ครอบคลุมการสร้าง `README.md` สำหรับ root และทุก workspace ใน monorepo และการตั้งค่า `LICENSE.md` พร้อม package manifest license field — idempotent: รันซ้ำได้โดยไม่เกิด side effects
 
 ## Execute
 
 ### 1. Prepare
+
 > Goal: เตรียมข้อมูลก่อนเขียน README
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ก่อน — ถ้าไม่มี changes → skip และ report
-2. `/update-changelog-md`, `/update-release-md` ถ้ามี tag release
+2. `/update-changelog-md`, `/run-release` ถ้ามี tag release
 3. อ่าน `package.json` ตรวจสอบ project type: `cli-sdk` หรือ `app`
 4. ถ้าอ่าน `package.json` ไม่ได้ → stop และ report
 
@@ -47,7 +48,17 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 2. ไม่ต้องมี `License` section (ใช้ของ root)
 3. ถ้า workspace ไม่มี `package.json` → skip และ report — ถ้า update fail → retry (max 3 → stop/report)
 
-### 5. Validate
+### 5. Setup License
+
+> Goal: ตั้งค่า LICENSE.md และ package manifest license field สำหรับ root
+
+1. ตรวจสอบไฟล์ `LICENSE.md` ที่มีอยู่และระบุประเภท license ปัจจุบัน
+2. เลือก license ตามประเภทโปรเจกต์ตาม Rule `License Selection` — ตรวจความเหมาะสมกับ business model และ dependencies
+3. ใช้ template มาตรฐานตามประเภท license ตาม Rule `License Templates` — อัปเดตชื่อผู้ถือลิขสิทธิ์ ตรวจความถูกต้อง บันทึก `LICENSE.md`
+4. อัปเดต `license` field ใน `package.json` หรือ `Cargo.toml` ให้ตรงกับ `LICENSE.md` โดยใช้ SPDX identifier ที่ถูกต้อง
+5. ถ้า workspace ไม่มี `LICENSE.md` → ใช้ของ root (อย่าสร้างซ้ำใน workspace)
+
+### 6. Validate
 
 > Goal: ตรวจสอบคุณภาพและอัปเดต references
 
@@ -114,6 +125,25 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 - แนวทางสี: `1976d2` (ฟ้า/core), `388e3c` (เขียว/in scope), `d32f2f` (แดง/out scope), `f57c00` (ส้ม/warning), `7b1fa2` (ม่วง/UI), `c2185b` (ชมพู/features), `303f9f` (คราม/concepts), `0097a7` (ฟ้าขี้ม้า/CLI), `00796b` (เขียวเข้ม/build), `ffa000` (ทอง/content)
 - ห้ามใช้ ANSI codeblock ใน README ทั้งหมด
 
+### 7. License Selection
+
+เลือก license ตามประเภทโปรเจกต์:
+
+- MIT: สำหรับ libraries และ templates ที่ต้องการความเรียบง่าย
+- Apache-2.0: สำหรับ projects ที่ต้องการ patent protection
+- BSD-3-Clause: สำหรับ projects ที่ต้องการความยืดหยุ่น
+- Proprietary: สำหรับ commercial products ที่ไม่เปิด source
+- CC-BY-4.0: สำหรับ documentation
+
+### 8. License Templates And Manifest
+
+- ใช้ template มาตรฐานตาม SPDX identifier ของ license ที่เลือก (ภาษาอังกฤษ ไม่ต้องมีปี)
+- MIT template สั้น: `MIT License\n\nCopyright (c) [COPYRIGHT HOLDER]\n\nPermission is hereby granted...` (ดู full text ได้จาก https://spdx.org/licenses/MIT)
+- ไม่ระบุปีใน copyright — ระบุชื่อ organization หรือผู้ถือลิขสิทธิ์ชัดเจน
+- `package.json`: `"license": "MIT"` หรือ SPDX identifier อื่นๆ
+- `Cargo.toml`: `license = "MIT"` หรือ SPDX identifier อื่นๆ
+- ใช้ SPDX identifier ที่ถูกต้องเสมอ ตรงกับ `LICENSE.md`
+
 ## Example Template
 
 ````markdown
@@ -125,8 +155,6 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 │  [×]  Package Name                │
 ├──────────┬────────────────────────┤
 │  Sidebar │  Main Content          │
-│  [Item]  │  ┌──────────────┐      │
-│  └───────┘  │  Component   │      │
 └───────────────────────────────────┘
 ```
 
@@ -141,6 +169,7 @@ description: สร้าง README.md ครบถ้วนด้วย templat
    import { func } from '@wrikka/package-name';
    func();
    ```
+<!-- Continue with more steps as needed -->
 
 ## Features
 | Icon | Feature | Description | Benefit | Usage |
@@ -157,8 +186,7 @@ Open the app at `http://localhost:3000`. Navigate to the sidebar and click on th
 
 ```typescript
 import { createClient } from '@wrikka/package-name/client';
-const client = createClient({ url: 'https://api.wrikka.app' });
-await client.func('hello');
+await createClient({ url: 'https://api.wrikka.app' }).func('hello');
 ```
 
 ### Usage via CLI
@@ -167,12 +195,15 @@ await client.func('hello');
 bunx @wrikka/package-name hello
 ```
 
+## License
+
+MIT License — see [LICENSE.md](LICENSE.md)
+
 ## Project
 <details><summary>Goal</summary>
 | Icon | Goal | Status | Description |
 |:---:|------|--------|-------------|
 | ![icon](https://api.iconify.design/mdi:target.svg?color=%23388e3c&width=20) | Goal item | ✓ Goal | Desc |
-| ![icon](https://api.iconify.design/mdi:close.svg?color=%23d32f2f&width=20) | Non-goal | ✗ Not Goal | Desc |
 </details>
 <!-- Scope, When To Use, Key Concepts, Core Principles, Best Practices: same pattern -->
 
@@ -188,20 +219,10 @@ bunx @wrikka/package-name hello
 | Layer | Technology | Version | Description |
 |-------|-------------|---------|-------------|
 | Runtime | Bun | >= 1.3.10 | JavaScript runtime |
-| Language | TypeScript | 6.0.3 | Type-safe development |
 </details>
 <details><summary>How It Work</summary>
 ```text
-┌─────────┐    ┌─────────┐    ┌─────────┐
-│ Input   │ ─▶ │ Process │ ─▶ │ Output  │
-└─────────┘    └─────────┘    └─────────┘
-```
-</details>
-<details><summary>Architecture</summary>
-```
-src/
-├── modules/
-└── index.ts
+Input ─▶ Process ─▶ Output
 ```
 </details>
 <details><summary>Scripts</summary>
@@ -216,8 +237,7 @@ src/
 }
 ```
 </details>
-<!-- Workflows, Skills: file structure codeblock with # comments -->
-
+<!-- Architecture, Workflows, Skills: file structure codeblock with # comments -->
 ````
 
 ## Expected Outcome
@@ -227,3 +247,5 @@ src/
 - `## Usage` ครอบคลุมทุก access methods — ใช้ `### Usage via ...` heading สำหรับแต่ละ method
 - Features: row กระชับ ครอบคลุมทุก feature เขียน business value
 - ตารางทั้งหมดใช้ colored icon จาก iconify CDN คอลัมน์ Icon จัดกึ่งกลาง — ไม่มี ANSI codeblock — ภาษาอังกฤษตาม `/convert-to-lang-en`
+- `LICENSE.md` ถูกต้องและครบถ้วน ใช้ template มาตรฐานตามประเภทโปรเจกต์
+- License ใน package manifest ตรงกับ `LICENSE.md` ใช้ SPDX identifier ที่ถูกต้อง

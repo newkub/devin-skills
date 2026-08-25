@@ -14,6 +14,7 @@ description: สร้างและปรับปรุง AI agent harness �
 ## Execute
 
 ### 1. Assess Harness Components
+
 > Goal: Assess Harness Components
 
 ประเมิน harness components ตาม ETCLOVG taxonomy
@@ -27,6 +28,7 @@ description: สร้างและปรับปรุง AI agent harness �
 7. ตรวจสอบ Governance: permissions, access control, audit trail, intervention recording
 
 ### 2. Optimize Tool Interface
+
 > Goal: Optimize Tool Interface
 
 ปรับปรุง tool interface ให้มีประสิทธิภาพ
@@ -39,6 +41,7 @@ description: สร้างและปรับปรุง AI agent harness �
 6. ถ้าเป็น MCP server ให้ทำตาม `mcp-builder` skill
 
 ### 3. Strengthen Lifecycle And Orchestration
+
 > Goal: Strengthen Lifecycle And Orchestration
 
 ปรับปรุง agent lifecycle และ orchestration
@@ -50,6 +53,7 @@ description: สร้างและปรับปรุง AI agent harness �
 5. ถ้ามี multi-agent orchestration: ตรวจสอบ coordination, message passing, และ error propagation
 
 ### 4. Improve Observability
+
 > Goal: Improve Observability
 
 เพิ่ม observability สำหรับ auditable execution
@@ -61,6 +65,7 @@ description: สร้างและปรับปรุง AI agent harness �
 5. ทำ `/review-codebase` สำหรับ comprehensive observability improvements
 
 ### 5. Implement Verification
+
 > Goal: Implement Verification
 
 สร้าง verification layer สำหรับ verifiable execution
@@ -72,6 +77,7 @@ description: สร้างและปรับปรุง AI agent harness �
 5. ทำ `/run-test` และ `/validate` สำหรับ comprehensive verification
 
 ### 6. Apply Harness Ladder
+
 > Goal: Apply Harness Ladder
 
 ประเมินและปรับปรุง harness level ตาม H0-H3 ladder
@@ -83,6 +89,7 @@ description: สร้างและปรับปรุง AI agent harness �
 5. วางแผนการยกระดับจาก level ปัจจุบันไปสู่ level ที่สูงขึ้น
 
 ### 7. Evaluate Harness Quality
+
 > Goal: Evaluate Harness Quality
 
 ประเมิน harness quality ผ่าน trace-based evaluation

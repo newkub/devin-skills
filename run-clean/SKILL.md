@@ -14,6 +14,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 ## Execute
 
 ### 1. Clean Build Artifacts
+
 > Goal: Clean Build Artifacts
 
 1. ลบโฟลเดอร์ `dist`, `build`, `out`
@@ -21,6 +22,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 3. ลบ compiled files ทั้งหมด
 
 ### 2. Clean Cache
+
 > Goal: Clean Cache
 
 1. ลบ `node_modules/.cache`
@@ -29,6 +31,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 4. ลบ TypeScript cache
 
 ### 3. Clean Dependencies
+
 > Goal: Clean Dependencies
 
 1. ลบ `node_modules` ถ้าจำเป็น
@@ -36,6 +39,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 3. ลบ package manager cache
 
 ### 4. Clean Temporary Files
+
 > Goal: Clean Temporary Files
 
 1. ลบ `.DS_Store`, `Thumbs.db`
@@ -44,6 +48,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 4. ลบ coverage reports เก่า
 
 ### 5. Clean Git
+
 > Goal: Clean Git
 
 1. รัน `git clean -fdx` เพื่อลบ untracked files
@@ -51,6 +56,7 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 3. ลบ stale branches ถ้าจำเป็น
 
 ### 6. Reinstall Dependencies
+
 > Goal: Reinstall Dependencies
 
 1. รัน `bun install` หรือ package manager ที่ใช้

@@ -14,6 +14,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 ## Execute
 
 ### 1. Use Runtime APIs
+
 > Goal: Use Runtime APIs
 
 ใช้ Bun native APIs แทน Node.js libraries
@@ -30,6 +31,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 10. ใช้ `Bun.sleep`, `Bun.nanoseconds`, `Bun.deepEquals` สำหรับ utilities
 
 ### 2. Use Environment Variables
+
 > Goal: Use Environment Variables
 
 ใช้ environment variables ของ Bun
@@ -47,6 +49,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 11. ตั้งค่า `BUN_OPTIONS` สำหรับ default CLI options
 
 ### 3. Use TypeScript Support
+
 > Goal: Use TypeScript Support
 
 ใช้ TypeScript features ของ Bun
@@ -59,6 +62,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 6. ตรวจสอบ TypeScript compatibility กับ Bun APIs
 
 ### 4. Use Package Manager
+
 > Goal: Use Package Manager
 
 ใช้ Bun package manager แทน npm/pnpm/yarn
@@ -75,6 +79,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 10. ใช้ `bun pm cache rm` สำหรับ clear cache
 
 ### 5. Use Test Runner
+
 > Goal: Use Test Runner
 
 ใช้ `bun test` แทน Jest/Vitest
@@ -89,6 +94,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 8. ตั้งค่า `bunfig.toml` สำหรับ test configuration
 
 ### 6. Use Bundler
+
 > Goal: Use Bundler
 
 ใช้ `bun build` แทน webpack/rollup/esbuild
@@ -103,6 +109,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 8. ตั้งค่า `bunfig.toml` สำหรับ build configuration
 
 ### 7. Use Advanced APIs
+
 > Goal: Use Advanced APIs
 
 ใช้ advanced Bun APIs
@@ -120,6 +127,7 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 11. ใช้ `Bun.Image` สำหรับ image processing
 
 ### 8. Use Configuration
+
 > Goal: Use Configuration
 
 ตั้งค่า Bun configuration

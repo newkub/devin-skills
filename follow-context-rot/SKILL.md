@@ -15,6 +15,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 ## Execute
 
 ### 1. Review Context Rot Detection
+
 > Goal: ตรวจสอบว่ามีการตรวจจับ context rot ใน session ปัจจุบัน
 
 1. ตรวจสอบว่ามีการตรวจสอบสัญญาณเตือนเข้าของ context rot: การตอบซ้ำ, ลืม context เดิม, หลุดจาก goal, คุณภาพตอบลดลง
@@ -23,6 +24,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 4. ถ้าพบสัญญาณ context rot ให้บันทึกเป็น finding
 
 ### 2. Review Context Preservation
+
 > Goal: ตรวจสอบว่ามีการสรุปและ preserve context สำคัญ
 
 1. ตรวจสอบว่ามีการสรุป goal หลัก, progress ปัจจุบัน, และ tasks ที่เหลือ
@@ -32,6 +34,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 5. ตรวจสอบว่ามีการใช้ `create_memory` สำหรับบันทึก context สำคัญข้าม session
 
 ### 3. Review Context Reset Practices
+
 > Goal: ตรวจสอบว่ามีการ reset context ทันเวลา
 
 1. ตรวจสอบว่ามีการแนะนำให้เริ่ม conversation ใหม่เมื่อ context ใหญ่เกินไป
@@ -40,6 +43,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 4. ตรวจสอบว่ามีการใช้ goal reminder แทนเมื่อไม่สามารถ reset ได้
 
 ### 4. Review Goal Reminder Usage
+
 > Goal: ตรวจสอบว่ามีการใช้ goal reminders เพื่อลด context drift
 
 1. ตรวจสอบว่ามีการย้ำ goal หลักของ task ก่อนดำเนินการต่อ
@@ -49,6 +53,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 5. ตรวจสอบว่ามีการใช้ `/deep-plan` เมื่อ goal เปลี่ยนหรือไม่ชัดเจน
 
 ### 5. Review Task Decomposition
+
 > Goal: ตรวจสอบว่า long-horizon tasks ถูกแบ่งเป็น chunks เล็กลง
 
 1. ตรวจสอบว่า task ใหญ่ถูกแบ่งเป็น sub-tasks ที่ทำเสร็จใน 5-10 tool calls
@@ -58,6 +63,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 5. ตรวจสอบว่ามีการสรุปผลแต่ละ sub-task ก่อนไปต่อ
 
 ### 6. Review Context Window Management
+
 > Goal: ตรวจสอบว่ามีการจัดการ context window อย่างมีประสิทธิภาพ
 
 1. ตรวจสอบว่ามีการหลีกเลี่ยงการอ่านไฟล์ใหญ่ทั้งไฟล์ โดยใช้ `offset` และ `limit`
@@ -67,6 +73,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 5. ตรวจสอบว่ามีการพิจารณา reset context เมื่อ tool calls มากกว่า 20 รอบ
 
 ### 7. Validate Findings
+
 > Goal: ตรวจสอบความถูกต้องของ findings
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
@@ -75,6 +82,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 4. ระบุ false positives ที่พบ
 
 ### 8. Report
+
 > Goal: รายงานผล review
 
 1. ทำ `/report` พร้อม `/report-table`
@@ -167,4 +175,3 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 - Goal alignment รักษาไว้ตลอด conversation
 - การจัดการ context rot ปรับปรุงโดยไม่มี regression
 - รายงาน findings พร้อม severity, review score, และ action items
-

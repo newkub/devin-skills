@@ -1,13 +1,6 @@
----
+﻿---
 name: ship-workspace
 description: Ship workspace ที่เลือก โดย commit ทำตาม AGENTS.md ไม่มี push หรือ release
-related:
-  - update-agents-md
-  - follow-agents-md
-  - run-verify
-  - validate
-  - git-commit
-  - report
 ---
 
 ## Goal

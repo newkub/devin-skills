@@ -17,6 +17,7 @@ argument-hint: "[task]"
 ## Execute
 
 ### 1. Capture Request
+
 > Goal: มี title และ request ที่ชัดเจน
 
 1. รับ `<title>` และ request content จาก argument
@@ -25,6 +26,7 @@ argument-hint: "[task]"
 4. ถ้า title ไม่ถูกต้อง ให้ถามใหม่หรือ normalize
 
 ### 2. Append To QUEUE.md
+
 > Goal: บันทึก request ลงไฟล์ queue เดียว
 
 1. ใช้ date ปัจจุบัน `YYYYMMDD`
@@ -40,6 +42,7 @@ argument-hint: "[task]"
 5. รายงาน path `QUEUE.md`
 
 ### 3. Suggest Next Steps
+
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
 1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`

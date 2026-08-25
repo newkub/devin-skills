@@ -30,7 +30,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
 
-1. ทำ `/follow-git` เพื่อรัน bisect workflow
+1. ทำ `/follow-tool-git` เพื่อรัน bisect workflow
 2. ระบุ commit ล่าสุดที่รู้ว่า good และ commit แรกที่รู้ว่า bad
 3. ให้ bisect หา commit ที่ทำให้เกิด bug อัตโนมัติ
 4. บันทึก commit hash ที่พบ
@@ -41,7 +41,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ใช้ git blame และ log เพื่อดูประวัติการเปลี่ยนแปลง
 
-1. ทำ `/follow-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
+1. ทำ `/follow-tool-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
 2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
 3. ทำ `/git-file-history` เพื่อดู file history แบบ interactive
 4. วิเคราะห์เหตุผลของการเปลี่ยนแปลงจาก commit message และ diff
@@ -50,7 +50,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ใช้ git reflog เพื่อกู้คืน commit ที่หายไป
 
-1. ทำ `/follow-git` เพื่อดู reflog และหา commit ที่หาย
+1. ทำ `/follow-tool-git` เพื่อดู reflog และหา commit ที่หาย
 2. ระบุ commit hash ที่ต้องการกู้คืนจาก reflog
 3. รัน `git cherry-pick <commit-hash>` เพื่อนำ commit กลับมา หรือ `git reset --hard <commit-hash>` ถ้าต้องการ reset HEAD
 4. ตรวจสอบด้วย `git log --oneline -5` ว่า commit กลับมาแล้ว
@@ -79,7 +79,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: แก้ไขปัญหาที่พบ
 
-1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-git` เพื่อ revert commit นั้น
+1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-tool-git` เพื่อ revert commit นั้น
 2. ถ้าไฟล์ถูก restore → ทำ `/git-commit` เพื่อ commit ไฟล์ที่ restore
 3. ถ้า commit ถูกกู้คืน → ตรวจสอบว่า code ทำงานได้ก่อน push
 4. ทำ `/write-test` เพื่อสร้าง regression test สำหรับปัญหาที่พบ
@@ -87,6 +87,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 ## Rules
 
 ### Debug Strategy
+
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - เริ่มจากการระบุปัญหาให้ชัดเจนก่อนใช้ git tools
@@ -96,6 +97,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 - ถ้าไม่ทราบสาเหตุ → ใช้ Step 6 Investigate Unknown Cause
 
 ### Safety
+
 > Goal: debug โดยไม่ทำลาย working directory
 
 - สำรอง working directory ด้วย `git stash` ก่อน debug ถ้ามี uncommitted changes
@@ -104,6 +106,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 - หลัง debug → ตรวจสอบ `git status` ว่า working directory สะอาด
 
 ### Tool Selection
+
 > Goal: เลือก git tool ที่เหมาะสมกับปัญหา
 
 - bug introduced by commit → `git bisect`

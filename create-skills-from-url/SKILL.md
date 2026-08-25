@@ -1,4 +1,4 @@
----
+﻿---
 name: create-skills-from-url
 description: สร้าง Devin skills จาก URL หรือ domain โดยดึงเนื้อหา จัดกลุ่ม และสร้าง subskills
 argument-hint: "[url]"
@@ -85,7 +85,7 @@ argument-hint: "[url]"
 
 ### 3. Crawl Discipline
 
-- ถ้าไม่มี `/follow-crw` ให้ใช้ `/web_search` + `/webfetch` แทน
+- ถ้าไม่มี `/follow-tool-crw` ให้ใช้ `/web_search` + `/webfetch` แทน
 - ไม่ crawl เกิน 20 URLs ต่อ batch ถ้าไม่จำเป็น
 - ถ้า crawl ล้มเหลว → รายงานและหยุด
 

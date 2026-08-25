@@ -17,6 +17,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Prepare Questions
+
 > Goal: Prepare Questions
 
 เตรียมคำถามสำหรับสัมภาษณ์
@@ -27,6 +28,7 @@ argument-hint: "[topic]"
 4. เตรียม `follow-up questions` สำหรับคำตอบที่น่าสนใจ
 
 ### 2. Conduct Interview
+
 > Goal: Conduct Interview
 
 ดำเนินการสัมภาษณ์ผู้ใช้โดยใช้ `ask_user_question` tool
@@ -37,6 +39,7 @@ argument-hint: "[topic]"
 4. วิเคราะห์คำตอบจาก `ask_user_question` response
 
 ### 3. Analyze Responses
+
 > Goal: Analyze Responses
 
 1. จัดกลุ่มคำตอบตาม patterns
@@ -45,6 +48,7 @@ argument-hint: "[topic]"
 4. สรุป key insights ที่พบ
 
 ### 4. Save To Memory
+
 > Goal: Save To Memory
 
 บันทึกข้อมูลลงใน `memory system`
@@ -55,6 +59,7 @@ argument-hint: "[topic]"
 4. อัปเดท `existing memories` หากมีข้อมูลใหม่
 
 ### 5. Update Context
+
 > Goal: Update Context
 
 อัปเดท `context` ตามข้อมูลที่ได้

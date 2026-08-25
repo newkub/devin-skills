@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Define Purpose
+
 > Goal: Define Purpose
 
 ทำ `write-content-explicit` เพื่อกำหนดวัตถุประสงค์และ audience ของ how-to guide
@@ -25,6 +26,7 @@ argument-hint: "[topic]"
 4. ตั้งความคาดหวังสำหรับผลลัพธ์
 
 ### 2. Structure Content
+
 > Goal: Structure Content
 
 จัดโครงสร้าง content ตาม logical flow ที่เข้าใจง่าย
@@ -35,6 +37,7 @@ argument-hint: "[topic]"
 4. เพิ่ม table of contents สำหรับ long guides
 
 ### 3. Write Steps
+
 > Goal: Write Steps
 
 เขียน steps ด้วยคำสั่งที่ชัดเจนและเข้าใจง่าย
@@ -45,6 +48,7 @@ argument-hint: "[topic]"
 4. อธิบาย reasoning หลังจากแต่ละขั้นตอน
 
 ### 4. Add Examples
+
 > Goal: Add Examples
 
 เพิ่ม examples และ visual aids เพื่อช่วยให้เข้าใจ content ได้ดีขึ้น
@@ -55,6 +59,7 @@ argument-hint: "[topic]"
 4. ให้ multiple approaches สำหรับ problems ที่ซับซ้อน
 
 ### 5. Include Troubleshooting
+
 > Goal: Include Troubleshooting
 
 เพิ่ม troubleshooting และ resources สำหรับการแก้ปัญหา
@@ -65,6 +70,7 @@ argument-hint: "[topic]"
 4. เพิ่ม links ไปยัง related documentation
 
 ### 6. Review And Refine
+
 > Goal: Review And Refine
 
 ทดสอบและปรับปรุง content จนกว่าจะเสร็จสมบูรณ์

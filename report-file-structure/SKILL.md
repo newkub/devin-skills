@@ -18,6 +18,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 ## Execute
 
 ### 1. Scan Project Structure
+
 > Goal: Scan Project Structure
 
 1. ทำ `/scan-codebase` เพื่อสแกนไฟล์ทั้งหมด
@@ -26,6 +27,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 4. กรองไฟล์ที่ไม่จำเป็น (`node_modules`, `.git`, `dist`, `build`)
 
 ### 2. Format Tree
+
 > Goal: Format Tree
 
 1. ใช้ tree characters (`├──`, `└──`, `│`) สำหรับ hierarchy
@@ -34,6 +36,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 4. ใช้ depth limits สำหรับ large projects (default: 3 levels)
 
 ### 3. Calculate Statistics
+
 > Goal: Calculate Statistics
 
 1. นับจำนวน files และ directories ทั้งหมด
@@ -43,6 +46,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 5. ถ้า project มีมากกว่า 10 directories ให้ทำ `/use-scripts` สำหรับ aggregation
 
 ### 4. Analyze Organization
+
 > Goal: Analyze Organization
 
 1. ตรวจสอบว่า structure สอดคล้องกับ project type:
@@ -53,6 +57,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 4. ระบุ files ที่อยู่ผิดที่ (out of convention)
 
 ### 5. Highlight Important Files
+
 > Goal: Highlight Important Files
 
 1. ระบุ entry points (`package.json`, `tsconfig.json`, `AGENTS.md`)
@@ -62,6 +67,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 5. ใช้ markers สำหรับ highlight
 
 ### 6. Add Metadata
+
 > Goal: Add Metadata
 
 1. เพิ่ม file sizes สำหรับ large files
@@ -70,6 +76,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 4. แสดงจำนวนไฟล์ที่กรองในสรุป
 
 ### 7. Report Output
+
 > Goal: Report Output
 
 1. แสดง tree view พร้อม icons และ hierarchy
@@ -81,6 +88,7 @@ description: แสดงโครงสร้างไฟล์ โฟลเด
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

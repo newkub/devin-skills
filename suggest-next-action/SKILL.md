@@ -15,6 +15,7 @@ argument-hint: "[context]"
 ## Execute
 
 ### 1. Analyze Current State
+
 > Goal: Analyze Current State
 
 วิเคราะห์สถานการณ์ปัจจุบัน
@@ -27,6 +28,7 @@ argument-hint: "[context]"
 6. ดู documentation ที่อาจต้องอัปเดท
 
 ### 2. Identify Context
+
 > Goal: Identify Context
 
 ระบุ context ของสถานการณ์
@@ -39,6 +41,7 @@ argument-hint: "[context]"
 - เป็นการ learning หรือ research
 
 ### 3. Evaluate Priority
+
 > Goal: Evaluate Priority
 
 ประเมินความสำคัญของ actions ที่อาจทำ
@@ -51,6 +54,7 @@ argument-hint: "[context]"
 - Time sensitivity
 
 ### 4. Suggest Actions
+
 > Goal: Suggest Actions
 
 แนะนำ actions ที่ควรทำถัดไป
@@ -65,6 +69,7 @@ argument-hint: "[context]"
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 
 ### 5. Present Options
+
 > Goal: Present Options
 
 นำเสนอ options ให้ผู้ใช้ตัดสินใจ

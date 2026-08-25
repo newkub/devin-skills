@@ -14,6 +14,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 ## Execute
 
 ### 1. Identify Scope
+
 > Goal: รู้ว่าจะ review และ fix อะไร
 
 1. ระบุ target files หรือ area
@@ -21,6 +22,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 3. บันทึก findings พร้อม severity
 
 ### 2. Plan Fixes
+
 > Goal: วางแผนการแก้ไข
 
 1. จัดลำดับ fixes ตาม severity ก่อน effort
@@ -28,6 +30,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 3. ทำ `/report-only` สรุปแผนก่อนลงมือ
 
 ### 3. Confirm
+
 > Goal: ขอ approval ก่อน fix
 
 1. ใช้ `ask_user_question` ถาม user ว่าตกลงแก้ไขหรือไม่
@@ -35,6 +38,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 3. ถ้า user ตกลง → ทำต่อ
 
 ### 4. Apply Fixes
+
 > Goal: แก้ไข issues ตามแผน
 
 1. ใช้ `edit` หรือ `write` แก้ไฟล์ทีละ step
@@ -42,6 +46,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 3. ถ้าเกิด error → ทำ `/resolve-errors`
 
 ### 5. Verify
+
 > Goal: ตรวจสอบผลหลัง fix
 
 1. รัน tests/build/typecheck ตาม ecosystem

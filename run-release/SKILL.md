@@ -1,19 +1,20 @@
 ---
 name: run-release
-description: Auto-detect platforms และ release ไปยัง external platforms อัตโนมัติ
+description: Auto-detect platforms, release ไปยัง external platforms และ gen RELEASE.md อัตโนมัติ
 ---
 
 ## Goal
 
-Auto-detect platforms ที่ project รองรับจาก configuration files และ release ไปยัง external platforms อัตโนมัติ
+Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `RELEASE.md` จาก git tags ด้วย Bun Shell
 
 ## Scope
 
-Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub
+Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `RELEASE.md` จาก git tags
 
 ## Execute
 
 ### 1. Detect Platforms
+
 > Goal: Detect Platforms
 
 ตรวจสอบ platforms ที่ project รองรับจาก configuration files
@@ -25,6 +26,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. ตรวจสอบ `Dockerfile` มีอยู่ → รองรับ `docker`
 
 ### 2. Check Configuration
+
 > Goal: Check Configuration
 
 ตรวจสอบ configuration ครบถ้วนก่อน release ตาม platforms ที่ detect ได้
@@ -36,6 +38,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `docker`: ตรวจสอบ `Dockerfile` มี FROM, WORKDIR, COPY, RUN และ `.dockerignore` มีการ exclude files
 
 ### 3. Setup Authentication
+
 > Goal: Setup Authentication
 
 ตั้งค่า authentication สำหรับ platforms ที่ detect ได้
@@ -47,6 +50,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `docker`: ตั้งค่า `DOCKER_USERNAME`, `DOCKER_PASSWORD` ใน GitHub Secrets
 
 ### 4. Run Verify
+
 > Goal: Run Verify
 
 ตรวจสอบคุณภาพโค้ดก่อน release
@@ -55,17 +59,19 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 2. ถ้า verify ไม่ผ่าน ให้แก้ไขก่อนดำเนินการต่อ
 
 ### 5. Setup Release Tool
+
 > Goal: Setup Release Tool
 
 ตั้งค่า release tool ตาม platforms ที่ detect ได้
 
 1. `npm`: ทำ `/publish-package-to-npm` เพื่อตั้งค่า release tool
-2. `crates`: ทำ `/follow-release-crates` เพื่อตั้งค่า release tool
+2. `crates`: ทำ `/follow-release` เพื่อตั้งค่า release tool
 3. `vscode`: ทำ `/create-vscode-extensions` เพื่อตั้งค่า release tool
 4. `webstore`: ทำ `/follow-create-browser-extensions` เพื่อตั้งค่า release tool
-5. `docker`: ทำ `/follow-release-docker` เพื่อตั้งค่า release tool
+5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
 
 ### 6. Run Release
+
 > Goal: Run Release
 
 รัน release ตาม platforms ที่ detect ได้
@@ -76,6 +82,17 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 4. `webstore`: รัน `chrome-webstore-upload`
 5. `docker`: รัน `docker build` และ `docker push`
 6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
+
+### 7. Generate RELEASE.md
+
+> Goal: Gen RELEASE.md จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ
+
+1. รัน script ด้านล่างเพื่อ gen `RELEASE.md` จาก `git tag --sort=-version:refname`:
+```bash
+bun -e 'const { stdout: tags } = await Bun.$`git tag --sort=-version:refname`.quiet(); const tagsStr = String(tags).trim(); if (!tagsStr) { const { stdout: date } = await Bun.$`git log -1 --format=%ad --date=short`.quiet(); const dateStr = String(date).trim(); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: v0.0.0 (${dateStr})\n\n## All Releases\n\nNo releases yet.\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); } else { const { stdout: latestTag } = await Bun.$`git describe --tags --abbrev=0`.quiet(); const latestTagStr = String(latestTag).trim(); const { stdout: tagDate } = await Bun.$`git log -1 --format=%ad --date=short ${latestTagStr}`.quiet(); const lines = tagsStr.split("\n").slice(0, 10); let table = "| Version |\n|---------|\n"; lines.forEach(tag => { table += `| ${tag} |\n`; }); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: ${latestTagStr} (${tagDate.trim()})\n\n## All Releases\n\n${table}\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); }'
+```
+2. อ่าน `RELEASE.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
+3. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `RELEASE.md` ด้วยมือ
 
 ## Rules
 
@@ -112,6 +129,14 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - รัน `chrome-webstore-upload validate` ก่อน publish สำหรับ webstore
 - รัน `docker build --no-cache` สำหรับ build ใหม่ทั้งหมด
 
+### 5. RELEASE.md Generation
+
+- `RELEASE.md` เกิดจากการ gen ด้วย Bun Shell จาก `git tag --sort=-version:refname` เท่านั้น
+- ห้ามแก้ไข `RELEASE.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
+- ใช้ `Bun.$` สำหรับ shell commands และ `Bun.write()` สำหรับ write file
+- ใช้ semantic versioning format: `vX.Y.Z` (เช่น `v1.0.0`, `v1.2.3`)
+- ใช้ annotated tags สำหรับ releases
+
 ## Expected Outcome
 
 - Platforms ถูก detect อัตโนมัติจาก project configuration
@@ -119,3 +144,4 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - Version ถูก bump อัตโนมัติ
 - Changelog ถูกสร้างอัตโนมัติ
 - Git tags ถูกสร้างอัตโนมัติ
+- `RELEASE.md` ถูก gen จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ

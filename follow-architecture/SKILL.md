@@ -1,16 +1,17 @@
----
+﻿---
 name: follow-architecture
-description: เลือก architecture pattern ตาม package manifest
+description: เลือก architecture pattern ตาม package manifest และจัดเรียงส่วนประกอบตาม Order Theory
 ---
 
 ## Goal
 
-เลือก architecture pattern ที่เหมาะสมกับโปรเจกต์ตาม package manifest
+เลือก architecture pattern ที่เหมาะสมกับโปรเจกต์ตาม package manifest และจัดเรียงส่วนประกอบตามหลัก Order Theory
 
 ## Scope
 
 - ใช้สำหรับเลือก architecture pattern ตาม framework, language, และ scale ของโปรเจกต์
 - ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
+- ใช้สำหรับจัดเรียงรายการ ไฟล์ หรือ tasks ใน project ให้เป็นระบบตาม Order Theory
 
 ## Execute
 
@@ -48,6 +49,17 @@ description: เลือก architecture pattern ตาม package manifest
 2. ตั้งค่า configuration files
 3. รัน `/restructure` เพื่อ reorganize code
 
+### 5. Order Components And Tasks
+
+> Goal: จัดเรียงส่วนประกอบและ tasks ตาม Order Theory
+
+1. กำหนดรายการทั้งหมดที่ต้องเรียงลำดับ (Set) และความสัมพันธ์สำหรับการเปรียบเทียบ (Order Relation)
+2. ตรวจสอบว่าความสัมพันธ์เป็น order relation (Reflexive, Antisymmetric, Transitive)
+3. เลือก Total Order (ทุกรายการเปรียบเทียบได้) หรือ Partial Order (บางรายการเปรียบเทียบไม่ได้)
+4. ใช้ Topological Order สำหรับความสัมพันธ์ขึ้นต่อกัน (dependencies)
+5. ใช้ primary relation ถ้าเท่ากัน ใช้ secondary relation
+6. ตรวจสอบว่าลำดับสอดคล้องกับ relation อ่านง่าย และค้นหาได้ง่าย
+
 ## Rules
 
 ### 1. Detection Rules
@@ -56,11 +68,11 @@ description: เลือก architecture pattern ตาม package manifest
 
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
-| Nuxt | `nuxt` in dependencies | `/follow-nuxt` |
+| Nuxt | `nuxt` in dependencies | `/follow-framework-nuxt` |
 | Next.js | `next` in dependencies | `references/patterns/nextjs-architecture.md` |
-| Vue.js | `vue` in dependencies | `/follow-vue` |
+| Vue.js | `vue` in dependencies | `/follow-framework-vue` |
 | SolidJS | `solid-js` in dependencies | `references/patterns/solid-tanstack-architecture.md` |
-| Svelte | `svelte` in dependencies | `/follow-svelte-kit` |
+| Svelte | `svelte` in dependencies | `/follow-framework-svelte-kit` |
 | Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `references/patterns/layered-architecture.md` |
 | Rust | `Cargo.toml` exists | `references/patterns/clean-architecture.md` |
 | Bun | `bun` in dependencies | `references/patterns/clean-architecture.md` |
@@ -88,9 +100,20 @@ description: เลือก architecture pattern ตาม package manifest
 | Large (5+ devs) | Complex | Monorepo + Modular Monolith + Clean |
 | Enterprise | High | Microservices + Clean |
 
+### 4. Ordering Principles
+
+หลักการจัดเรียงส่วนประกอบตาม Order Theory:
+
+- ใช้ alphabetical order เป็น default เมื่อไม่มีลำดับที่ชัดเจน
+- ใช้ Topological Order สำหรับ dependencies (dependency ก่อน dependent)
+- ตรวจสอบ Reflexive, Antisymmetric, Transitive ของ order relation
+- เลือก Total Order สำหรับรายการที่เปรียบเทียบได้ทั้งหมด, Partial Order สำหรับบางรายการ
+- ลำดับต้องอ่านง่าย ค้นหาได้ง่าย และสอดคล้องกับวัตถุประสงค์
+
 ## Expected Outcome
 
 - Architecture pattern ที่เหมาะสมกับโปรเจกต์
 - โครงสร้างพื้นฐานที่ถูกต้อง
 - Configuration files ที่สมบูรณ์
 - Code organization ตามมาตรฐาน
+- ส่วนประกอบและ tasks เรียงลำดับตาม Order Theory อ่านง่ายและค้นหาได้ง่าย

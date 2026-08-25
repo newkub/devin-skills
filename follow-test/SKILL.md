@@ -1,6 +1,6 @@
 ---
 name: follow-test
-description: ตั้งค่าและใช้งาน testing strategies ครบวงจรตามมาตรฐาน
+description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
 ---
 
 ## Goal
@@ -14,6 +14,7 @@ description: ตั้งค่าและใช้งาน testing strategies
 ## Execute
 
 ### 1. Check Prerequisites
+
 > Goal: Check Prerequisites
 
 - ตรวจสอบ `package.json` หรือ `Cargo.toml`
@@ -22,19 +23,22 @@ description: ตั้งค่าและใช้งาน testing strategies
 - ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
 
 ### 2. Select Test Strategy Level
+
 > Goal: Select Test Strategy Level
 
 เลือกระดับตาม Rules section 1
 
 ### 3. Setup Test Configurations
+
 > Goal: Setup Test Configurations
 
-- ทำ `/follow-vitest` สำหรับ framework testing
-- ทำ `/follow-playwright` สำหรับ E2E testing
+- ทำ `/follow-tool-vitest` สำหรับ framework testing
+- ทำ `/follow-tool-playwright` สำหรับ E2E testing
 - ทำ `/follow-package-manifest` สำหรับ test scripts
 - ตั้งค่า config files ตาม tech stack
 
 ### 4. Apply Test Scripts
+
 > Goal: Apply Test Scripts
 
 - ทำ `/use-scripts` ตาม tech stack จาก Rules section 3
@@ -43,6 +47,7 @@ description: ตั้งค่าและใช้งาน testing strategies
 - Multiple workspaces: ทำ `/follow-monorepo` ก่อน
 
 ### 5. Setup Test Directories
+
 > Goal: Setup Test Directories
 
 - สร้าง directory structure ตาม Rules section 4
@@ -50,6 +55,7 @@ description: ตั้งค่าและใช้งาน testing strategies
 - ตั้งค่า test fixtures และ helpers
 
 ### 6. Write Tests
+
 > Goal: Write Tests
 
 - ทำ `/write-test` สำหรับเขียน unit tests และ coverage
@@ -57,6 +63,7 @@ description: ตั้งค่าและใช้งาน testing strategies
 - ทำ `/run-test-api` สำหรับ API tests และ contract tests ถ้า project มี API
 
 ### 7. Validate
+
 > Goal: Validate
 
 - รัน test scripts ตามระดับที่เลือก
@@ -136,7 +143,18 @@ tests/
 - CI Integration: Run tests ใน CI pipeline
 - Test Documentation: Tests เป็น documentation ของ code
 
-### 7. Advanced Testing (Optional)
+### 7. Regression Testing
+
+> Goal: ตรวจสอบว่าการเปลี่ยนแปลงใหม่ไม่ได้ทำลายฟีเจอร์ที่มีอยู่เดิม
+
+1. ระบุ files และ modules ที่ถูกเปลี่ยนแปลงด้วย `git diff`
+2. วิเคราะห์ dependencies และ downstream effects ระบุ critical paths และ integration points
+3. เลือก test cases ที่ครอบคลุม changed code, critical paths และ edge cases ที่เกี่ยวข้อง
+4. รัน unit tests สำหรับ modules ที่เปลี่ยนแปลง, integration tests สำหรับ affected flows, e2e tests สำหรับ critical user journeys
+5. วิเคราะห์ failures จัดกลุ่มตาม root cause ระบุ regressions จากการเปลี่ยนแปลงใหม่ ตรวจ flaky tests
+6. แก้ไข regressions เพิ่ม test cases ใหม่หากจำเป็น รัน tests ซ้ำจนผ่านทั้งหมด
+
+### 8. Advanced Testing (Optional)
 
 สำหรับ Complete level เพิ่ม advanced testing:
 - Mutation Testing: Verify test quality ด้วย code mutation
@@ -146,6 +164,16 @@ tests/
 - Security Testing: Scan vulnerabilities ใน dependencies และ code
 - Load Testing: Test system ภายใต้ high load scenarios
 
+### 8. Regression Testing
+
+วิเคราะห์ผลกระทบและป้องกัน regressions:
+- ใช้ `git diff` เพื่อดูการเปลี่ยนแปลงและ dependency graph สำหรับ downstream effects
+- รัน tests ที่ cover changed lines ก่อน รวม smoke tests สำหรับ critical functionality
+- ใช้ CI/CD pipeline สำหรับ automated regression รันบน environment ที่ใกล้เคียง production
+- จัดกลุ่ม failures ตาม error patterns ระบุว่าเป็น regression หรือ pre-existing bug
+- เพิ่ม test cases สำหรับ bugs ที่พบ ใช้ mutation testing สำหรับ critical code
+- ห้ามข้าม regression testing เพื่อ save time หรือรันเฉพาะ unit tests และข้าม integration/e2e
+
 ## Expected Outcome
 
 - Test scripts ตั้งค่าครบถ้วนใน `package.json`
@@ -153,3 +181,4 @@ tests/
 - Test configurations ตั้งค่าตาม tech stack
 - Coverage บรรลุเป้าหมายตามระดับที่เลือก
 - Tests ทำงานได้ใน CI pipeline
+- Regression testing ครอบคลุม changed code และ critical paths

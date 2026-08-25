@@ -15,12 +15,14 @@ argument-hint: "[title]"
 ## Execute
 
 ### 1. Identify issue
+
 > Goal: ระบุ issue
 
 1. รัน `gh issue view <number>`
 1. ยืนยัน issue number และ repo
 
 ### 2. Update content
+
 > Goal: อัปเดตเนื้อหา
 
 1. แก้ไข title และ body ด้วย `gh issue edit`
@@ -28,12 +30,14 @@ argument-hint: "[title]"
 1. อัปเดต milestone หรือ project
 
 ### 3. Verify
+
 > Goal: ตรวจสอบ
 
 1. ดู issue อีกครั้งเพื่อยืนยันการเปลี่ยนแปลง
 1. ตรวจสอบ PR หรือ sub-issues ที่เชื่อมโยง
 
 ### 4. Report
+
 > Goal: รายงาน
 
 1. สรุปการเปลี่ยนแปลง

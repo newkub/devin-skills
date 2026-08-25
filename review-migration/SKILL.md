@@ -1,4 +1,4 @@
----
+﻿---
 name: review-migration
 description: Review migration plan ก่อน execution
 ---
@@ -9,7 +9,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Scope
 
-ใช้ก่อนเรียก `follow-migration`, `follow-renovate`, หรือ `update-dependencies-latest` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependency, framework, infrastructure, feature flag แล้วสรุป migration risk score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `follow-migration`, `follow-tool-renovate`, หรือ `update-dependencies-latest` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependency, framework, infrastructure, feature flag แล้วสรุป migration risk score พร้อม go/no-go recommendation
 
 ## Execute
 

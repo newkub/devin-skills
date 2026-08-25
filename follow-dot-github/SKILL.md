@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-dot-github
 description: จัดการ .github directory ครบถ้วน ทั้ง workflows, templates, policies, และ automation config
 ---
@@ -9,7 +9,7 @@ description: จัดการ .github directory ครบถ้วน ทั�
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.github` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-github-actions` (เลือก workflows) และ `/follow-github-workflows` (เขียน workflow YAML)
+ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.github` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-tool-github-actions` (เลือก workflows) และ `/follow-tool-github-workflows` (เขียน workflow YAML)
 
 ### Standard Project
 
@@ -68,8 +68,8 @@ description: จัดการ .github directory ครบถ้วน ทั�
 
 > Goal: จัดการ CI/CD workflows โดยอ้างอิง workflows เฉพาะทาง
 
-1. ทำ `/follow-github-actions` เพื่อเลือก workflows ที่เหมาะสม
-2. ทำ `/follow-github-workflows` เพื่อเขียน workflow YAML
+1. ทำ `/follow-tool-github-actions` เพื่อเลือก workflows ที่เหมาะสม
+2. ทำ `/follow-tool-github-workflows` เพื่อเขียน workflow YAML
 3. ตรวจสอบว่า workflows ใช้ actions เวอร์ชันล่าสุด
 4. ตรวจสอบ `permissions` และ `concurrency` settings
 5. ถ้า workflows ที่มีอยู่ถูกต้องครบถ้วน → skip step นี้
@@ -143,8 +143,8 @@ description: จัดการ .github directory ครบถ้วน ทั�
 
 ### 1. No Overlap With Specialized Workflows
 
-- ใช้ `/follow-github-actions` สำหรับเลือก CI/CD workflows
-- ใช้ `/follow-github-workflows` สำหรับเขียน workflow YAML
+- ใช้ `/follow-tool-github-actions` สำหรับเลือก CI/CD workflows
+- ใช้ `/follow-tool-github-workflows` สำหรับเขียน workflow YAML
 - `follow-dot-github` จัดการไฟล์อื่นใน `.github/` และ coordinate การเรียก specialized workflows
 
 ### 2. File Format Standards
@@ -186,7 +186,7 @@ description: จัดการ .github directory ครบถ้วน ทั�
 ## Expected Outcome
 
 - `.github/` directory มีไฟล์ครบตามประเภท project — ไม่มีไฟล์ขาด ไม่มีไฟล์เกิน
-- CI/CD workflows ครบถ้วน (delegated to `/follow-github-actions` และ `/follow-github-workflows`)
+- CI/CD workflows ครบถ้วน (delegated to `/follow-tool-github-actions` และ `/follow-tool-github-workflows`)
 - Issue templates ใช้ GitHub Forms syntax (YAML) ครบ 3 ไฟล์
 - PR template มี sections ครบ: Summary, Changes, Type, Testing, Checklist
 - CODEOWNERS กำหนด reviewers อัตโนมัติตาม directory (ถ้ามี contributors)

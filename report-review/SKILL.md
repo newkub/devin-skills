@@ -14,6 +14,7 @@ description: รายงานผล review ครบทุกมิติอ�
 ## Execute
 
 ### 1. Collect Review Results
+
 > Goal: Collect Review Results
 
 รวบรวมผลลัพธ์จากการ review ทุกมิติ
@@ -24,6 +25,7 @@ description: รายงานผล review ครบทุกมิติอ�
 4. ระบุ issues ที่แก้ไขแล้วและยังเหลืออยู่
 
 ### 2. Format Review Report
+
 > Goal: Format Review Report
 
 จัดรูปแบบรายงานตามประเภทข้อมูล
@@ -33,6 +35,7 @@ description: รายงานผล review ครบทุกมิติอ�
 3. ใช้ `/report-ansi` สำหรับความคืบหน้ารวม
 
 ### 3. Report Dimension Findings
+
 > Goal: Report Dimension Findings
 
 แสดง findings ของแต่ละมิติอย่างละเอียด
@@ -43,6 +46,7 @@ description: รายงานผล review ครบทุกมิติอ�
 4. ให้ recommendations ที่ actionable และ concrete
 
 ### 4. Report Executive Summary
+
 > Goal: Report Executive Summary
 
 แสดงสรุปภาพรวมของการ review
@@ -54,6 +58,7 @@ description: รายงานผล review ครบทุกมิติอ�
 5. ระบุ confidence level ของการ review
 
 ### 5. Report Fix Status
+
 > Goal: Report Fix Status
 
 แสดงสถานะการแก้ไข issues
@@ -64,6 +69,7 @@ description: รายงานผล review ครบทุกมิติอ�
 4. จัดลำดับ issues ที่เหลือตาม priority
 
 ### 6. Report Recommendations
+
 > Goal: Report Recommendations
 
 แสดงคำแนะนำและ action ถัดไป
@@ -76,6 +82,7 @@ description: รายงานผล review ครบทุกมิติอ�
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

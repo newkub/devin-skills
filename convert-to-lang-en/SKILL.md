@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Set Language Context
+
 > Goal: Set Language Context
 
 ตั้งค่าใช้ภาษาอังกฤษเป็นหลัก:
@@ -25,6 +26,7 @@ argument-hint: "[target]"
 4. ใช้ professional tone
 
 ### 2. Communicate In English
+
 > Goal: Communicate In English
 
 สื่อสารเป็นภาษาอังกฤษ:
@@ -35,6 +37,7 @@ argument-hint: "[target]"
 4. รักษา consistency
 
 ### 3. Documentation
+
 > Goal: Documentation
 
 เขียน documentation เป็นภาษาอังกฤษ:

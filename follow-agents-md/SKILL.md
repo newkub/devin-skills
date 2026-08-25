@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Update AGENTS.md
+
 > Goal: Update AGENTS.md
 
 ทำ `/update-agents-md` ก่อนเสมอ ก่อนทำอย่างอื่นใด
@@ -24,6 +25,7 @@ argument-hint: "[target]"
 - ห้ามข้ามขั้นตอนนี้ไม่ว่ากรณีใดๆ
 
 ### 2. Read And Summarize Related
+
 > Goal: รู้ว่าจะทำอะไรบ้าง
 
 1. ทำ `/read-related-skills` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
@@ -31,6 +33,7 @@ argument-hint: "[target]"
 3. ถ้ามีหลาย workflows ที independent → บันทึกไว้สำหรับ `/use-subagents`
 
 ### 3. Execute AGENTS.md
+
 > Goal: Execute ทั้งหมดตาม `AGENTS.md`
 
 1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
@@ -40,6 +43,7 @@ argument-hint: "[target]"
 5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
 
 ### 4. Verify Execution
+
 > Goal: Verify Execution
 
 ตรวจสอบว่า workflows และ skills ถูก execute ครบถ้วน

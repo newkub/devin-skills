@@ -14,6 +14,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 ## Execute
 
 ### 1. Identify Hard Code
+
 > Goal: Identify Hard Code
 
 ค้นหา hard code ใน codebase
@@ -26,6 +27,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ใช้ `Grep` เพื่อค้นหา business rules ที่ hardcoded
 
 ### 2. Replace Magic Values
+
 > Goal: Replace Magic Values
 
 แทนที่ magic values ด้วย named constants
@@ -37,6 +39,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ทำ `/update-reference` เพื่อแทนที่ magic values ด้วย constants
 
 ### 3. Extract Configuration
+
 > Goal: Extract Configuration
 
 แยก configuration ออกจาก code
@@ -48,6 +51,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ใช้ type-safe config ด้วย TypeScript
 
 ### 4. Externalize Business Rules
+
 > Goal: Externalize Business Rules
 
 ทำให้ business rules เป็น configurable
@@ -59,6 +63,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ทำ `/update-docs` เพื่อ Document business rules อย่างชัดเจน
 
 ### 5. Externalize URLs and Paths
+
 > Goal: Externalize URLs and Paths
 
 แยก URLs และ paths ออกจาก code
@@ -70,6 +75,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ทำ `/update-reference` เพื่อใช้ relative paths แทน absolute เมื่อเป็นไปได้
 
 ### 6. Secure Secrets
+
 > Goal: Secure Secrets
 
 จัดการ secrets อย่างปลอดภัย
@@ -81,6 +87,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - Rotate secrets เป็นประจำ
 
 ### 7. Validate
+
 > Goal: Validate
 
 ตรวจสอบว่าไม่มี hard code เหลืออยู่

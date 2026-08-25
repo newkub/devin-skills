@@ -20,7 +20,7 @@ description: Design system principles พื้นฐานที่ใช้ไ
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
 2. กำหนด interaction tokens: transitions, animations, cursors
 3. กำหนด language tokens: terminology, tone of voice, iconography
-4. ถ้า project ใช้ UnoCSS ทำ `/follow-unocss-theme` สำหรับ HSL theme variables
+4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss-theme` สำหรับ HSL theme variables
 
 ### 2. Create Component Guidelines
 
@@ -36,7 +36,7 @@ description: Design system principles พื้นฐานที่ใช้ไ
 > Goal: แปลง tokens และ guidelines ตาม platform
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
-2. ถ้า project เป็น web ทำ `/follow-web-design` สำหรับ web-specific guidelines
+2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
 3. ถ้า project มี mobile ทำ `/review-codebase`
 4. ถ้า project มี TUI ทำ `/review-codebase`
 

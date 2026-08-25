@@ -14,6 +14,7 @@ description: สร้าง skills ที่ขาดจาก dependencies ใ
 ## Execute
 
 ### 1. Read Package Manifest
+
 > Goal: Read Package Manifest
 
 1. อ่าน `package.json` หรือ `Cargo.toml` จาก workspace
@@ -21,6 +22,7 @@ description: สร้าง skills ที่ขาดจาก dependencies ใ
 3. กรองเฉพาะ dependencies ที่มี official skills
 
 ### 2. Check Skills In Global
+
 > Goal: Check Skills In Global
 
 1. อ่านรายการ skills ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
@@ -28,6 +30,7 @@ description: สร้าง skills ที่ขาดจาก dependencies ใ
 3. ระบุ skills ที่ยังไม่มีใน global
 
 ### 3. Create Missing Skills
+
 > Goal: Create Missing Skills
 
 1. ทำ `/follow-write-devin-skills` สำหรับแต่ละ skill ที่ขาด
@@ -36,6 +39,7 @@ description: สร้าง skills ที่ขาดจาก dependencies ใ
 4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
 
 ### 4. Validate And Finalize
+
 > Goal: Validate And Finalize
 
 1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ

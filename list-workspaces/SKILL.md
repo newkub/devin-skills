@@ -14,6 +14,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 ## Execute
 
 ### 1. Discover Workspaces
+
 > Goal: Discover Workspaces
 
 ค้นหา workspaces ทั้งหมดใน monorepo
@@ -24,6 +25,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 4. ตรวจสอบ workspaces ที่ไม่มี package.json (orphaned)
 
 ### 2. Analyze Dependencies
+
 > Goal: Analyze Dependencies
 
 วิเคราะห์ dependencies ระหว่าง workspaces
@@ -34,6 +36,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 4. ระบุ circular dependencies ถ้ามี
 
 ### 3. Categorize Workspaces
+
 > Goal: Categorize Workspaces
 
 จัดกลุ่ม workspaces ตามประเภท
@@ -44,6 +47,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 4. ระบุ workspaces ที่เป็น CLI tools (มี bin)
 
 ### 4. Identify Issues
+
 > Goal: Identify Issues
 
 ระบุปัญหาใน workspaces

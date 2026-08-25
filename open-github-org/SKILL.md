@@ -17,6 +17,7 @@ argument-hint: "[org-name]"
 ## Execute
 
 ### 1. Get Organization
+
 > Goal: ได้ชื่อ org ที่ถูกต้อง
 
 1. รับ `org-name` จาก argument
@@ -24,6 +25,7 @@ argument-hint: "[org-name]"
 3. ตัด `@` ออกถ้ามี
 
 ### 2. Open Organization
+
 > Goal: เปิดหน้า org ใน browser
 
 1. สร้าง URL `https://github.com/<org-name>`

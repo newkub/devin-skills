@@ -15,6 +15,7 @@ argument-hint: "[prompt]"
 ## Execute
 
 ### 1. Analyze And Research
+
 > Goal: Analyze And Research
 
 1. ทำ `analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
@@ -24,6 +25,7 @@ argument-hint: "[prompt]"
 5. บันทึก library ที่เลือกพร้อมเหตุผล (modern, type safety, performance, DX, maintenance)
 
 ### 2. Define Implementation Path
+
 > Goal: Define Implementation Path
 
 1. ทำ `prioritize` เพื่อจัดลำดับ tasks ตาม impact และ effort
@@ -34,6 +36,7 @@ argument-hint: "[prompt]"
 6. คำนวณ planning metrics (ดู Metrics section)
 
 ### 3. Plan Architecture
+
 > Goal: Plan Architecture
 
 1. ทำ `pondering` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
@@ -45,6 +48,7 @@ argument-hint: "[prompt]"
 7. วางแผน error handling, caching strategy, และ data validation points
 
 ### 4. Plan Test Strategy
+
 > Goal: Plan Test Strategy
 
 1. ออกแบบ test case ที่ครอบคลุม: unit, integration, e2e
@@ -52,6 +56,7 @@ argument-hint: "[prompt]"
 3. วางแผน regression test strategy
 
 ### 5. Create Documents
+
 > Goal: Create Documents
 
 1. ถ้า tasks > 10 ให้สร้าง `.devin/tasks/<name>-DD-MM-YYYY.md` พร้อม tasks ทั้งหมด
@@ -61,6 +66,7 @@ argument-hint: "[prompt]"
 5. ทำ `update-dot-devin` ถ้ามีการเปลี่ยนแปลง package manifest
 
 ### 6. Stress-Test Plan
+
 > Goal: Stress-Test Plan
 
 ตรวจสอบแผนอย่างละเอียดสำหรับงานที่ซับซ้อนสูง
@@ -73,6 +79,7 @@ argument-hint: "[prompt]"
 6. ถ้างานซับซ้อนสูง: ทำ `deep-thinking` ก่อน step นี้
 
 ### 7. Validate And Report
+
 > Goal: Validate And Report
 
 1. ยืนยัน dependencies ไม่ conflict กับ existing versions

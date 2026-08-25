@@ -1,8 +1,0 @@
-# Release It References Index
-
-| File | Responsibility |
-|---|---|
-| [release-it-api.md](release-it-api.md) | Programmatic API reference for using Release It in code |
-| [release-it-cli.md](release-it-cli.md) | Command-line interface reference for Release It |
-| [release-it-config.md](release-it-config.md) | Configuration options reference for Release It |
-| [release-it-resources.md](release-it-resources.md) | Official links and resources for Release It |

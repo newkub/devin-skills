@@ -18,6 +18,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ (Step N ขึ้นกับ Step N-1)
 
 ### 1. Define Validation Scope
+
 > Goal: Define Validation Scope
 
 กำหนดขอบเขตการ validate ตามสิ่งที่ต้องตรวจสอบ
@@ -29,6 +30,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้าไม่ทราบ scope ให้ถามผู้ใช้
 
 ### 2. Check Correctness
+
 > Goal: Check Correctness
 
 ทำ `/review-quality` เพื่อตรวจสอบความถูกต้อง
@@ -40,6 +42,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - บันทึก findings พร้อม severity
 
 ### 3. Check Type Safety
+
 > Goal: Check Type Safety
 
 ตรวจสอบ type safety อย่างละเอียด
@@ -52,6 +55,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - บันทึก findings พร้อม severity
 
 ### 4. Check Quality
+
 > Goal: Check Quality
 
 ตรวจสอบคุณภาพโดยรวม
@@ -64,6 +68,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - บันทึก findings พร้อม severity
 
 ### 5. Check Security
+
 > Goal: Check Security
 
 ตรวจสอบ security อย่างละเอียด
@@ -76,6 +81,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - บันทึก findings พร้อม severity
 
 ### 6. Check Compliance
+
 > Goal: Check Compliance
 
 ตรวจสอบความสอดคล้องกับ standards และ constraints
@@ -90,6 +96,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 - บันทึก findings พร้อม severity
 
 ### 7. Cross-Reference Validation
+
 > Goal: Cross-Reference Validation
 
 ตรวจสอบ cross-references ทั้งหมด
@@ -102,6 +109,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 - บันทึก findings พร้อม severity
 
 ### 8. Report And Suggest
+
 > Goal: Report And Suggest
 
 ทำ `/report-table` เพื่อสร้างตารางสรุปผล

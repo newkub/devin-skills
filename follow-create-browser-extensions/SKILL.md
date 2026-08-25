@@ -17,7 +17,7 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 
 > Goal: เริ่มต้น project ด้วย WXT หรือ scaffolding tool
 
-1. ทำ `/follow-wxt` ถ้าใช้ WXT
+1. ทำ `/follow-framework-wxt` ถ้าใช้ WXT
 2. สร้าง `manifest.json` ตาม Manifest V3
 3. สร้างโครงสร้าง: `src/background.ts`, `src/content.ts`, `src/popup/`
 4. ติดตั้ง dependencies ด้วย `bun install`

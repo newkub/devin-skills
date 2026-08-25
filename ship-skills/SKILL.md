@@ -1,14 +1,6 @@
 ---
 name: ship-skills
 description: Ship skills ที่มี .git โดย review, update docs, commit submodules และ root pointer
-related:
-  - review-all-skills
-  - update-agents-md
-  - update-readme
-  - convert-to-submodule
-  - git-commit
-  - validate
-  - report
 ---
 
 ## Goal
@@ -26,7 +18,7 @@ Ship skills ที่มี `.git` (submodules) โดย review ทุก skill
 > Goal: ทุก skill ผ่าน review ก่อน ship
 
 1. ทำ `/review-all-skills` เพื่อ review ทุก skill package
-2. ถ้ามี findings ที่ต้องแก้ → ทำ `/update-skills` ก่อน
+2. ถ้ามี findings ที่ต้องแก้ → ทำ `/update-devin-global-skills` ก่อน
 3. ยืนยันว่าทุก skill ผ่าน `/validate`
 
 ### 2. Update Docs

@@ -14,6 +14,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 ## Execute
 
 ### 1. Setup
+
 > Goal: Setup
 
 1. สร้างโครงสร้างโฟลเดอร์ `packages/{plugin-name}/`
@@ -21,6 +22,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 3. สร้าง `tsconfig.json` สำหรับ TypeScript configuration
 
 ### 2. Create Plugin
+
 > Goal: Create Plugin
 
 1. สร้าง `src/index.ts` พร้อม plugin implementation
@@ -28,6 +30,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 3. ใช้ TypeScript สำหรับ type safety
 
 ### 3. Configure Build
+
 > Goal: Configure Build
 
 1. สร้าง `vite.config.ts` สำหรับ library mode build
@@ -35,6 +38,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 3. external vite จาก bundle
 
 ### 4. Add Examples
+
 > Goal: Add Examples
 
 1. สร้าง `examples/basic/` พร้อมตัวอย่างพื้นฐาน
@@ -42,6 +46,7 @@ description: สร้าง Vite plugins ด้วย Plugin API มาตร�
 3. ทดสอบ examples ว่าทำงานได้จริง
 
 ### 5. Add Tests
+
 > Goal: Add Tests
 
 1. สร้าง `test/` ด้วย unit และ integration tests

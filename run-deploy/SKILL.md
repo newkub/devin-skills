@@ -14,6 +14,7 @@ Deploy application ไปยัง platform ที่กำหนด พร้�
 ## Execute
 
 ### 1. Verify
+
 > Goal: Verify
 
 ตรวจสอบคุณภาพโค้ดก่อน deploy
@@ -23,6 +24,7 @@ Deploy application ไปยัง platform ที่กำหนด พร้�
 3. ตรวจสอบว่าไม่มี error หรือ warning ที่สำคัญ
 
 ### 2. Build Application
+
 > Goal: Build Application
 
 Build application สำหรับ deployment
@@ -32,17 +34,19 @@ Build application สำหรับ deployment
 3. ตรวจสอบ artifacts ที่สร้าง
 
 ### 3. Deploy
+
 > Goal: Deploy
 
 Deploy application ตาม platform ที่ใช้
 
-1. สำหรับ Vercel: ทำ `/follow-vercel`
-2. สำหรับ Cloudflare: ทำ `/follow-cloudflare-worker`
+1. สำหรับ Vercel: ทำ `/follow-service-vercel`
+2. สำหรับ Cloudflare: ทำ `/follow-service-cloudflare`
 3. สำหรับ Railway: ทำ `/deploy-to-railway`
 4. สำหรับ platform อื่น: ทำตาม workflow ที่เกี่ยวข้อง
 5. ตรวจสอบว่า deploy สำเร็จ
 
 ### 4. Commit And Push
+
 > Goal: Commit And Push
 
 Commit และ push changes ไปยัง repository
@@ -51,6 +55,7 @@ Commit และ push changes ไปยัง repository
 2. ทำ `/git-push`
 
 ### 5. Verify Deployment
+
 > Goal: Verify Deployment
 
 ตรวจสอบว่า deployment ทำงานได้
@@ -61,6 +66,7 @@ Commit และ push changes ไปยัง repository
 4. ทำ `/watch-browser` ถ้ามี URL
 
 ### 6. Watch Until Live
+
 > Goal: Watch Until Live
 
 Watch deployment ด้วย browser จนกว่าจะ live
@@ -72,6 +78,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 5. ทำ `/loop-until-complete` จนกว่า deployment live สำเร็จ
 
 ### 7. Post-Deploy Validation
+
 > Goal: Post-Deploy Validation
 
 ตรวจสอบ deployment อย่างละเอียดหลัง deploy
@@ -82,6 +89,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 4. ถ้าพบ critical errors ให้ทำ rollback ทันที และทำ `/resolve-errors`
 
 ### 8. Rollback And Recovery
+
 > Goal: Rollback And Recovery
 
 เตรียม rollback procedure และตรวจสอบ backup

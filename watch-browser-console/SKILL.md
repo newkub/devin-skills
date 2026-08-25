@@ -15,22 +15,25 @@ Watch browser console อย่างต่อเนื่องเพื่อ�
 ## Execute
 
 ### 1. Open Browser
+
 > Goal: Open Browser
 
-เปิด browser และ navigate ไปยัง URL ตาม `/follow-agent-browser` ข้อ 2
+เปิด browser และ navigate ไปยัง URL ตาม `/follow-tool-agent-browser` ข้อ 2
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
-2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทนตาม `/follow-agent-browser` ข้อ 8
+2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทนตาม `/follow-tool-agent-browser` ข้อ 8
 
 ### 2. Clear Console
+
 > Goal: Clear Console
 
-เคลียร์ console ก่อนเริ่ม watch ตาม `/follow-agent-browser` ข้อ 4
+เคลียร์ console ก่อนเริ่ม watch ตาม `/follow-tool-agent-browser` ข้อ 4
 
 1. ใช้ `agent-browser console --clear` เพื่อ clear console messages
 2. ใช้ `agent-browser errors --clear` เพื่อ clear page errors
 
 ### 3. Watch Console
+
 > Goal: Watch Console
 
 Monitor console อย่างต่อเนื่องตาม ## Rules ข้อ 1
@@ -41,6 +44,7 @@ Monitor console อย่างต่อเนื่องตาม ## Rules ข
 4. ถ้าเจอ error ใหม่ ให้ไปขั้นตอนที่ 4
 
 ### 4. Resolve Errors
+
 > Goal: Resolve Errors
 
 แก้ไข errors ที่พบตาม `/resolve-errors`
@@ -51,9 +55,10 @@ Monitor console อย่างต่อเนื่องตาม ## Rules ข
 4. กลับไปขั้นตอนที่ 2 เพื่อ clear console และ watch ต่อ
 
 ### 5. Cleanup
+
 > Goal: Cleanup
 
-ทำ cleanup หลังจากใช้งานเสร็จตาม `/follow-agent-browser` ข้อ 7
+ทำ cleanup หลังจากใช้งานเสร็จตาม `/follow-tool-agent-browser` ข้อ 7
 
 1. ปิด browser session ด้วย `agent-browser close`
 2. สรุปผลลัพธ์และ errors ที่พบและแก้ไขแล้ว
@@ -62,7 +67,7 @@ Monitor console อย่างต่อเนื่องตาม ## Rules ข
 
 ### 1. Continuous Console Monitoring
 
-Monitor console อย่างต่อเนื่อง ดูคำสั่งเต็มที่ `/follow-agent-browser` ข้อ 4
+Monitor console อย่างต่อเนื่อง ดูคำสั่งเต็มที่ `/follow-tool-agent-browser` ข้อ 4
 
 - ใช้ `agent-browser console` สำหรับดู console messages
 - ใช้ `agent-browser errors` สำหรับดู page errors
@@ -73,7 +78,7 @@ Monitor console อย่างต่อเนื่อง ดูคำสั่
 
 ### 2. Error Handling
 
-จัดการ errors ตาม `/follow-agent-browser` ข้อ 5
+จัดการ errors ตาม `/follow-tool-agent-browser` ข้อ 5
 
 - เมื่อเจอ error ต้องเรียก `/resolve-errors` ทันที
 - ถ้า `daemon` error ให้ใช้ `browser-preview` tool แทน
@@ -85,7 +90,7 @@ Monitor console อย่างต่อเนื่อง ดูคำสั่
 
 - ใช้ `/watch-browser` สำหรับ monitoring ที่ครอบคลุมทั้ง snapshot และ console
 - ใช้ `/watch-browser-console` เฉพาะเมื่อต้องการ focus ที่ console errors เท่านั้น
-- ทั้งสอง workflow ใช้ `/follow-agent-browser` เป็น base
+- ทั้งสอง workflow ใช้ `/follow-tool-agent-browser` เป็น base
 
 ## Expected Outcome
 

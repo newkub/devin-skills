@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 ## Execute
 
 ### 1. Use Encapsulation
+
 > Goal: Use Encapsulation
 
 ใช้ encapsulation เพื่อซ่อน implementation details
@@ -26,6 +27,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 6. ใช้ utility types: Pick, Omit, Readonly, NonNullable
 
 ### 2. Use Inheritance
+
 > Goal: Use Inheritance
 
 ใช้ inheritance สำหรับ code reuse และ hierarchy
@@ -39,6 +41,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 7. ใช้ type guards สำหรับ narrowing
 
 ### 3. Use Polymorphism
+
 > Goal: Use Polymorphism
 
 ใช้ polymorphism สำหรับ flexible behavior
@@ -51,6 +54,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 6. ใช้ Partial สำหรับ optional properties
 
 ### 4. Design Classes
+
 > Goal: Design Classes
 
 ออกแบบ classes ตาม OOP principles
@@ -63,6 +67,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 6. ใช้ static members สำหรับ class-level data
 
 ### 5. Manage State
+
 > Goal: Manage State
 
 จัดการ state ใน objects
@@ -75,6 +80,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 6. Avoid shared mutable state
 
 ### 6. Use Composition
+
 > Goal: Use Composition
 
 ใช้ composition เมื่อเหมาะสมกว่า inheritance
@@ -86,6 +92,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 5. หลีกเลี่ยง deep inheritance hierarchies
 
 ### 7. Type Safety
+
 > Goal: Type Safety
 
 ใช้ TypeScript เพื่อเพิ่มความปลอดภัยของ OOP
@@ -98,6 +105,7 @@ description: พัฒนาโปรเจกต์ด้วย OOP principles 
 6. Avoid any และ unknown
 
 ### 8. Testing
+
 > Goal: Testing
 
 เขียน tests สำหรับ OOP code

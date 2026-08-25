@@ -85,6 +85,7 @@ argument-hint: "[ref]"
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
@@ -124,7 +125,7 @@ argument-hint: "[ref]"
 ### Non-Redundancy
 
 - การ commit และ stage อยู่ใน `/git-commit` แล้ว
-- การดู file history อยู่ใน `/follow-git` แล้ว
+- การดู file history อยู่ใน `/follow-tool-git` แล้ว
 - การจัดรูปแบบ code blocks อยู่ใน `/report-codeblock` แล้ว
 - การจัดรูปแบบตารางอยู่ใน `/report-table` แล้ว
 

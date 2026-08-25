@@ -14,6 +14,7 @@ description: แสดงรายการการใช้งาน dependenc
 ## Execute
 
 ### 1. Scan Codebase
+
 > Goal: Scan Codebase
 
 สแกน codebase เพื่อหาการใช้งาน
@@ -24,6 +25,7 @@ description: แสดงรายการการใช้งาน dependenc
 4. สแกน dependencies จาก package.json
 
 ### 2. Analyze Dependencies Usage
+
 > Goal: Analyze Dependencies Usage
 
 วิเคราะห์การใช้งาน dependencies
@@ -34,6 +36,7 @@ description: แสดงรายการการใช้งาน dependenc
 4. ตรวจสอบ dependencies ที่ใช้บางส่วนเท่านั้น (tree-shaking opportunity)
 
 ### 3. Analyze Functions Usage
+
 > Goal: Analyze Functions Usage
 
 วิเคราะห์การใช้งาน functions
@@ -44,6 +47,7 @@ description: แสดงรายการการใช้งาน dependenc
 4. ตรวจสอบ functions ที่ควร export แต่ยังไม่ได้
 
 ### 4. Analyze Exports Usage
+
 > Goal: Analyze Exports Usage
 
 วิเคราะห์การใช้งาน exports

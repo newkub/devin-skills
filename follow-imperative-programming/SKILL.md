@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 ## Execute
 
 ### 1. Use Control Structures
+
 > Goal: Use Control Structures
 
 ใช้ control structures อย่างเหมาะสม
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. ใช้ error handling mechanisms สำหรับ error handling
 
 ### 2. Sequential Execution
+
 > Goal: Sequential Execution
 
 เขียน code แบบ sequential
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. ใช้ guard clauses สำหรับ validation
 
 ### 3. Variable Management
+
 > Goal: Variable Management
 
 จัดการ variables อย่างเหมาะสม
@@ -47,6 +50,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. ใช้ meaningful names
 
 ### 4. Loop Optimization
+
 > Goal: Loop Optimization
 
 ปรับปรุง loops
@@ -58,6 +62,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. ใช้ flow control statements อย่างระมัดระวัง
 
 ### 5. Error Handling
+
 > Goal: Error Handling
 
 จัดการ errors อย่าง systematic
@@ -69,6 +74,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. Propagate errors อย่างเหมาะสม
 
 ### 6. State Mutation
+
 > Goal: State Mutation
 
 จัดการ state mutations อย่างปลอดภัย
@@ -80,6 +86,7 @@ description: พัฒนาโปรเจกต์ด้วย imperative prog
 5. Test mutations อย่างครบถ้วน
 
 ### 7. Performance
+
 > Goal: Performance
 
 ปรับปรุง performance

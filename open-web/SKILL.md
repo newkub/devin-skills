@@ -14,6 +14,7 @@ description: เปิด website ด้วย open command
 ## Execute
 
 ### 1. Open Website
+
 > Goal: Open Website
 
 เปิด website ด้วย open command

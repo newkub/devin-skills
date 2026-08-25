@@ -1,4 +1,4 @@
----
+﻿---
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
 ---
@@ -9,7 +9,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 
 ## Scope
 
-ใช้สำหรับดู tags ใน local repository และ remote — ไม่รวมการ create, delete, push (ใช้ `/follow-git` สำหรับ tag operations)
+ใช้สำหรับดู tags ใน local repository และ remote — ไม่รวมการ create, delete, push (ใช้ `/follow-tool-git` สำหรับ tag operations)
 
 ## Execute
 
@@ -61,7 +61,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 
 ### Read-Only
 
-- ไม่ create, delete, push tags — ใช้ `/follow-git` สำหรับ tag operations
+- ไม่ create, delete, push tags — ใช้ `/follow-tool-git` สำหรับ tag operations
 - ไม่แก้ไข repository state
 - รายงานเท่านั้น — read-only operation
 
@@ -80,7 +80,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 
 ### Non-Redundancy
 
-- Tag operations อยู่ใน `/follow-git` แล้ว
+- Tag operations อยู่ใน `/follow-tool-git` แล้ว
 - GitHub releases อยู่ใน `/list-github-release` แล้ว
 - Branch listing อยู่ใน `/list-git-branch` แล้ว
 

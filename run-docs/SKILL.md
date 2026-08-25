@@ -14,22 +14,25 @@ description: รัน documentation site และแก้ไขข้อผ�
 ## Execute
 
 ### 1. Check Documentation Setup
+
 > Goal: Check Documentation Setup
 
 1. ตรวจสอบว่ามี documentation config หรือไม่ (VitePress, Docus, ฯลฯ)
-2. ถ้าเป็น VitePress ให้ทำ `/follow-vitepress` เพื่อตรวจสอบ configuration
+2. ถ้าเป็น VitePress ให้ทำ `/follow-tool-vitepress` เพื่อตรวจสอบ configuration
 3. ตรวจสอบ package manifest สำหรับ dev script
 4. ตรวจสอบว่า dependencies ที่จำเป็นถูกติดตั้งแล้ว
 5. ตรวจสอบว่า content structure ครบถ้วน
 
 ### 2. Update Documentation
+
 > Goal: Update Documentation
 
-1. ทำ `/follow-project-docs` เพื่อสร้างและอัพเดทเอกสาร
+1. ทำ `/follow-tool-vitepress` เพื่อสร้างและอัพเดทเอกสาร
 2. ทำ `/review-codebase` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
 ### 3. Run Dev Server
+
 > Goal: Run Dev Server
 
 1. ดำเนินการรัน dev server ด้วยคำสั่งที่เหมาะสมตาม documentation framework
@@ -41,6 +44,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 5. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
 
 ### 4. Open Browser and Watch (ถ้าจำเป็น)
+
 > Goal: Open Browser and Watch (ถ้าจำเป็น)
 
 1. ถ้าต้องเปิด URL ให้เลือก:
@@ -51,6 +55,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 3. ทดสอบเข้าถึง documentation site และตรวจสอบว่า features หลักทำงานได้
 
 ### 5. Verify
+
 > Goal: Verify
 
 1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
@@ -59,6 +64,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 4. ตรวจสอบว่า styling และ theme ทำงานได้
 
 ### 6. Report
+
 > Goal: Report
 
 1. รัน `/report-ansi` เพื่อวาด terminal output ด้วย ANSI codes
@@ -70,7 +76,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 - ใช้คำสั่งที่เหมาะสมกับ documentation framework
 - ติดตามและแก้ไขข้อผิดพลาดทันทีจนกว่าจะผ่าน
 - ตรวจสอบว่า dev server เริ่มต้นสำเร็จก่อนเปิด browser
-- ต้องทำ `/follow-project-docs` ก่อนเพื่อสร้างและอัพเดทเอกสาร
+- ต้องทำ `/follow-tool-vitepress` ก่อนเพื่อสร้างและอัพเดทเอกสาร
 
 ## Expected Outcome
 

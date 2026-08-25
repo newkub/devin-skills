@@ -14,6 +14,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 ## Execute
 
 ### 1. Audit Dependencies
+
 > Goal: Audit Dependencies
 
 1. รัน `npm audit` หรือ `bun audit`
@@ -21,6 +22,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 3. ดู severity levels ของ vulnerabilities
 
 ### 2. Audit Licenses
+
 > Goal: Audit Licenses
 
 1. ตรวจสอบ licenses ของ dependencies
@@ -28,6 +30,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 3. ตรวจสอบ compliance requirements
 
 ### 3. Audit Code
+
 > Goal: Audit Code
 
 1. สแกน code หา security vulnerabilities
@@ -35,6 +38,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 3. ตรวจสอบ insecure patterns
 
 ### 4. Review Findings
+
 > Goal: Review Findings
 
 1. จัดลำดับ priorities ของ issues
@@ -42,6 +46,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 3. กำหนด action items
 
 ### 5. Fix Issues
+
 > Goal: Fix Issues
 
 1. อัพเดท dependencies ที่มี vulnerabilities
@@ -49,6 +54,7 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 3. ทดสอบหลังแก้ไข
 
 ### 6. Generate Report
+
 > Goal: Generate Report
 
 1. สร้าง audit report

@@ -16,6 +16,7 @@ description: รายงาน features ทั้งหมดใน project เ
 ## Execute
 
 ### 1. Ensure Features Generated
+
 > Goal: Ensure Features Generated
 
 ตรวจสอบว่า features files มีอยู่และเป็นปัจจุบัน
@@ -25,6 +26,7 @@ description: รายงาน features ทั้งหมดใน project เ
 3. ถ้ามีแล้ว ให้ข้ามไป Step 2
 
 ### 2. Read Feature Files
+
 > Goal: Read Feature Files
 
 อ่าน feature files จากทุก workspace
@@ -35,6 +37,7 @@ description: รายงาน features ทั้งหมดใน project เ
 4. รวบรวม features จากทุก workspace ไว้ใน list เดียว
 
 ### 3. Format Report Table
+
 > Goal: Format Report Table
 
 จัดรูปแบบ features เป็นตารางในแชท
@@ -45,6 +48,7 @@ description: รายงาน features ทั้งหมดใน project เ
 4. เรียงลำดับ features ตาม module และ status (`active` ก่อน, `partial` ทีหลัง, `deprecated` สุดท้าย)
 
 ### 4. Report Summary
+
 > Goal: Report Summary
 
 สรุปสถานะ features ทั้งหมด
@@ -57,6 +61,7 @@ description: รายงาน features ทั้งหมดใน project เ
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

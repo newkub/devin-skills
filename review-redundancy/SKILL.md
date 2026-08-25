@@ -1,17 +1,7 @@
----
+﻿---
 name: review-redundancy
 description: ตรวจหา skills ที่ซ้ำซ้อนกันใน devin skills repo
 argument-hint: "[scope]"
-related:
-  - scan-codebase
-  - review-all-skills
-  - review-consistency
-  - refactor-skills
-  - report-table
-  - check-reference
-  - update-reference
-  - ask-me
-  - suggest-next-action
 ---
 
 ## Goal
@@ -85,7 +75,7 @@ related:
 > Goal: ดำเนินการตาม recommendations หลัง user ยืนยัน
 
 1. ทำ `/ask-me` เพื่อยืนยัน actions ก่อนดำเนินการ
-2. สำหรับ merge → ทำ `/refactor-skills`
+2. สำหรับ merge → ทำ `/refactor-devin-skills`
 3. สำหรับ rename → ทำ `/rename` แล้ว `/update-reference`
 4. สำหรับ remove → ทำ `/delete` แล้ว `/update-reference`
 5. ทำ `/validate` หลังจบทุก action

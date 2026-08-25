@@ -49,12 +49,13 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 > Goal: นำเสนอทิศทางถัดไป
 
 1. ถ้ามี High priority commands → ทำ `/idea-convert-my-global-cli-to-skills` เพื่อเริ่ม convert
-2. ถ้าข้อมูลไม่พอ → ทำ `/follow-my-global-cli` อีกรอบหรือ `/learn-from-cli` เพิ่มเติม
+2. ถ้าข้อมูลไม่พอ → ทำ `/follow-tool-my-global-cli` อีกรอบหรือ `/learn-from-cli` เพิ่มเติม
 3. ถ้าไม่มี candidates → ทำ `/suggest-next-action` เพื่อหาทิศทางอื่น
 
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
@@ -74,7 +75,7 @@ description: รายงาน CLI tools ที่ติดตั้งแล�
 
 - บันทึก command, subcommand, options ทั้งหมด
 - ระบุ flags ที่สำคัญสำหรับ common workflows
-- ไม่ duplicate ข้อมูลจาก `/follow-my-global-cli` หรือ `/learn-from-cli`
+- ไม่ duplicate ข้อมูลจาก `/follow-tool-my-global-cli` หรือ `/learn-from-cli`
 
 ### 3. Conversion Criteria
 

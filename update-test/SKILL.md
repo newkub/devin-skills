@@ -1,11 +1,7 @@
 ﻿---
 name: update-test
 description: อัปเดต test suite ให้ครอบคลุม มีคุณภาพ และตรง conventions
-related:
-  - follow-write-devin-skills
-  - follow-vitest
-  - resolve-errors
-  - validate
+auto_execution_mode: 3
 ---
 
 ## Goal
@@ -23,17 +19,16 @@ related:
 > Goal: ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
 
 1. ทำ `/follow-write-devin-skills` เพื่อทราบ conventions และ structure มาตรฐาน
-
-1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
-2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
-3. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
-4. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
-5. กำหนด test types ที่จำเป็น (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual regression)
-6. กำหนด coverage targets สำหรับแต่ละ test type
-7. กำหนด test priorities ตาม criticality
-8. กำหนด test environments (local, staging, production)
-9. กำหนด test data strategy: `factories` สำหรับ dynamic data, `fixtures` สำหรับ static data, `builders` สำหรับ complex objects
-10. กำหนด mock strategy: mock external dependencies (DB, API, email) แต่ใช้ real implementations สำหรับ internal pure functions
+2. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
+3. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
+4. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
+5. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
+6. กำหนด test types ที่จำเป็น (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual regression)
+7. กำหนด coverage targets สำหรับแต่ละ test type
+8. กำหนด test priorities ตาม criticality
+9. กำหนด test environments (local, staging, production)
+10. กำหนด test data strategy: `factories` สำหรับ dynamic data, `fixtures` สำหรับ static data, `builders` สำหรับ complex objects
+11. กำหนด mock strategy: mock external dependencies (DB, API, email) แต่ใช้ real implementations สำหรับ internal pure functions
 
 ### 2. Analyze Source Code
 

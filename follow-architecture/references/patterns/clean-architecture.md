@@ -38,12 +38,12 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 3. Implement Functional Core
 
-> Goal: เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection)
+> Goal: เขียน business logic ใน `modules/*/domain/` ด้วย pure functions (ถ้า project ใช้ TypeScript ให้ทำ `/follow-lib-effect-ts` ก่อนเพื่อใช้ Effect สำหรับ type-safe effects, error handling และ dependency injection)
 
 1. ใช้ `pure functions` เท่านั้น, Immutable data structures (`readonly`)
 2. ไม่มี side effects, ไม่พึ่ง infrastructure
-3. ทำ `/follow-validation` เพื่อกำหนด validation strategy ข้าม layers
-4. ทำ `/follow-zod` สำหรับ schema validation ใน `modules/*/schemas/`
+3. ทำ `/review-quality` เพื่อกำหนด validation strategy ข้าม layers
+4. ทำ `/follow-lib-zod` สำหรับ schema validation ใน `modules/*/schemas/`
 
 ### 4. Implement Application Layer
 
@@ -79,7 +79,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 > Goal: ทำ `/write-test` เพื่อจัดการ tests ตาม Clean Architecture
 
-1. ทำ `/follow-vitest` สำหรับ testing framework setup
+1. ทำ `/follow-tool-vitest` สำหรับ testing framework setup
 2. Unit tests - Pure function tests ใน `test/modules/*/domain/` (AAA pattern)
 3. Integration tests - Adapter tests ใน `test/adapters/` (mock ports)
 4. E2E tests - Full workflow tests ใน `test/e2e/` (critical flows)

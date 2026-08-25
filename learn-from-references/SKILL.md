@@ -1,15 +1,6 @@
----
+﻿---
 name: learn-from-references
 description: เรียนรู้จาก references directory และ external sources เพื่อเขียน content ครอบคลุม
-related:
-  - follow-coverage
-  - review-content-coverage
-  - check-reference
-  - update-reference
-  - learn-from-web
-  - follow-write-devin-skills
-  - follow-content-quality
-  - report-table
 ---
 
 ## Goal

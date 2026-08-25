@@ -14,6 +14,7 @@ description: รับบทเป็น dev ใหม่ที่เพิ่�
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อเข้าใจ project structure
@@ -23,6 +24,7 @@ description: รับบทเป็น dev ใหม่ที่เพิ่�
 5. ถ้าไม่มี docs เลย ให้บันทึกเป็น finding ทันที
 
 ### 2. Identify New Developer Profile
+
 > Goal: Identify New Developer Profile
 
 1. ระบุ dev level (junior, mid, senior, staff)
@@ -32,6 +34,7 @@ description: รับบทเป็น dev ใหม่ที่เพิ่�
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Onboarding Journey
+
 > Goal: Simulate Onboarding Journey
 
 Goal reminder: คิดเหมือน dev ใหม่จริงที่งง ไม่ใช่ dev เดิมที่คุ้นเคย
@@ -43,6 +46,7 @@ Goal reminder: คิดเหมือน dev ใหม่จริงที่
 5. ประเมินเวลาที่ใช้ onboard โดยประมาณ
 
 ### 4. Analyze Every Onboarding Dimension
+
 > Goal: Analyze Every Onboarding Dimension
 
 Documentation and Context:
@@ -84,6 +88,7 @@ Domain Knowledge:
 23. Data model: เข้าใจ schema ไหม, มี ERD ไหม, มี data dictionary ไหม
 
 ### 5. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -93,6 +98,7 @@ Domain Knowledge:
 5. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate Onboarding Report
+
 > Goal: Generate Onboarding Report
 
 1. ทำ `/report` ด้วย `/report-table`

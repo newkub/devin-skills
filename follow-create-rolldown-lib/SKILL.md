@@ -14,6 +14,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 ## Execute
 
 ### 1. Install Rolldown
+
 > Goal: Install Rolldown
 
 1. ติดตั้งด้วย `bun add -D rolldown`
@@ -21,6 +22,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 3. ตรวจสอบ CLI options ด้วย `rolldown --help`
 
 ### 2. Create Config File
+
 > Goal: Create Config File
 
 1. สร้าง config file (.js, .cjs, .mjs, .ts, .mts, หรือ .cts)
@@ -29,6 +31,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 4. เพิ่ม config ลงใน npm scripts ด้วย `rolldown -c`
 
 ### 3. Configure Build Options
+
 > Goal: Configure Build Options
 
 1. ตั้งค่า `external` สำหรับ dependencies
@@ -38,6 +41,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 5. ตั้งค่า `declaration` สำหรับ TypeScript types
 
 ### 4. Use Native Plugins
+
 > Goal: Use Native Plugins
 
 1. ใช้ `BundleAnalyzerPlugin` สำหรับ analyze bundle size
@@ -46,6 +50,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 4. ใช้ Vite compatibility plugins ถ้าจำเป็น
 
 ### 5. Build and Bundle
+
 > Goal: Build and Bundle
 
 1. รัน `bun run build` สำหรับ production builds
@@ -54,6 +59,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 4. ตรวจสอบ type declarations ถ้ามี
 
 ### 6. Optimize Performance
+
 > Goal: Optimize Performance
 
 1. ใช้ `@rolldown/browser` สำหรับ WASM builds
@@ -96,7 +102,7 @@ description: ตั้งค่าและใช้งาน Rolldown bundler �
 
 ### Related Workflows
 
-สำหรับ library bundling ที่ง่ายกว่า ใช้ `/follow-tsdown`
+สำหรับ library bundling ที่ง่ายกว่า ใช้ `/follow-tool-tsdown`
 
 ## Expected Outcome
 

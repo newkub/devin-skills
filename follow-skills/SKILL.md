@@ -15,6 +15,7 @@ argument-hint: "[skill-name]"
 ## Execute
 
 ### 1. Read Available Skills
+
 > Goal: Read Available Skills
 
 อ่าน skills ที่มีอยู่ทั้งหมด
@@ -25,6 +26,7 @@ argument-hint: "[skill-name]"
 - ตรวจสอบว่า skills มีอยู่จริง
 
 ### 2. Check References
+
 > Goal: Check References
 
 ตรวจสอบ references ก่อนเริ่มใช้ skills
@@ -34,6 +36,7 @@ argument-hint: "[skill-name]"
 - ตรวจสอบ dependencies ของ skills มีอยู่จริง
 
 ### 3. Use Skills
+
 > Goal: Use Skills
 
 ใช้ skills ที่เลือกตามที่เหมาะสม

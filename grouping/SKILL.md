@@ -14,6 +14,7 @@ description: จัดกลุ่ม items ตามหมวดหมู่ห
 ## Execute
 
 ### 1. Identify Groups
+
 > Goal: Identify Groups
 
 ระบุหมวดหมู่ที่เหมาะสม
@@ -23,6 +24,7 @@ description: จัดกลุ่ม items ตามหมวดหมู่ห
 3. กำหนด criteria สำหรับการจัดกลุ่ม
 
 ### 2. Create Groups
+
 > Goal: Create Groups
 
 สร้าง groups ตาม criteria
@@ -32,6 +34,7 @@ description: จัดกลุ่ม items ตามหมวดหมู่ห
 3. จัดเรียง items ภายในแต่ละ group
 
 ### 3. Organize Structure
+
 > Goal: Organize Structure
 
 จัดโครงสร้างตาม groups

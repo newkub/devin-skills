@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Analyze Conversation
+
 > Goal: Analyze Conversation
 
 1. อ่านและวิเคราะห์การสนทนาทั้งหมด
@@ -23,6 +24,7 @@ argument-hint: "[target]"
 4. ระบุขั้นตอนและเงื่อนไขที่สำคัญ
 
 ### 2. Extract Key Information
+
 > Goal: Extract Key Information
 
 1. สรุปคำสั่งและข้อกำหนดที่ชัดเจน
@@ -31,6 +33,7 @@ argument-hint: "[target]"
 4. ระบุ edge cases และข้อยกเว้น
 
 ### 3. Write Instruction Prompt
+
 > Goal: Write Instruction Prompt
 
 1. เขียน prompt ที่กระชับและชัดเจน
@@ -39,6 +42,7 @@ argument-hint: "[target]"
 4. ใส่ constraints และ edge cases
 
 ### 4. Validate Prompt
+
 > Goal: Validate Prompt
 
 1. ตรวจสอบว่า prompt ครอบคลุมทุกจุดสำคัญ

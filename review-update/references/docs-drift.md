@@ -51,5 +51,5 @@
 - `update-agents-md` สำหรับ `AGENTS.md`
 - `update-contributing-md` สำหรับ `CONTRIBUTING.md`
 - `update-changelog-md` สำหรับ `CHANGELOG.md`
-- `update-release-md` สำหรับ `RELEASE.md`
+- `run-release` สำหรับ `RELEASE.md`
 - `update-spec-md` สำหรับ `spec/SPEC.md`

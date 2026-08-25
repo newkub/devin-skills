@@ -14,11 +14,13 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 ## Execute
 
 ### 1. Prepare
+
 > Goal: Prepare
 
 1. ทำตาม `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 
 ### 2. Create Script
+
 > Goal: Create Script
 
 1. สร้างไฟล์ `.ts` ใน `$env:TEMP` (OS temp directory) เท่านั้น ใช้ `os.tmpdir()` ใน Bun
@@ -27,6 +29,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 4. ใช้ Bun native APIs และ CDN imports
 
 ### 3. Execute and Cleanup
+
 > Goal: Execute and Cleanup
 
 1. รัน script ด้วย `bun run <script>.ts`

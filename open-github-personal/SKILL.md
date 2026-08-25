@@ -17,6 +17,7 @@ argument-hint: "[username]"
 ## Execute
 
 ### 1. Get Username
+
 > Goal: ได้ username ที่ถูกต้อง
 
 1. ถ้ามี argument ให้ใช้ username จาก argument
@@ -24,6 +25,7 @@ argument-hint: "[username]"
 3. ถ้า `gh` ไม่ได้ login ให้ถาม user
 
 ### 2. Open Profile
+
 > Goal: เปิดหน้า profile ใน browser
 
 1. ตัด `@` ออกถ้ามี

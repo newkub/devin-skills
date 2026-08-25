@@ -14,6 +14,7 @@ description: อ่านไฟล์ทั้งหมดในโปรเจ�
 ## Execute
 
 ### 1. Prepare
+
 > Goal: Prepare
 
 1. ใช้ `/update-reference` เพื่อเก็บ reference
@@ -21,6 +22,7 @@ description: อ่านไฟล์ทั้งหมดในโปรเจ�
 3. กำหนดลำดับความสำคัญของไฟล์
 
 ### 2. Read Files
+
 > Goal: Read Files
 
 1. อ่านไฟล์ที่สำคัญก่อน (config, index, main)
@@ -29,6 +31,7 @@ description: อ่านไฟล์ทั้งหมดในโปรเจ�
 4. อ่านไฟล์ใน directory structure ตามลำดับ
 
 ### 3. Analyze
+
 > Goal: Analyze
 
 1. วิเคราะห์โครงสร้างโปรเจกต์

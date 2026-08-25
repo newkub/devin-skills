@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Gather Evidence
+
 > Goal: Gather Evidence
 
 รวบรวมข้อมูลและ evidence ทั้งหมดที่เกี่ยวข้องกับปัญหา
@@ -26,6 +27,7 @@ argument-hint: "[target]"
 5. เก็บ environment information (version, config, dependencies)
 
 ### 2. Construct Causal Graph (Graph Theory)
+
 > Goal: Construct Causal Graph (Graph Theory)
 
 สร้าง Directed Acyclic Graph (DAG) ของ causal relationships:
@@ -40,6 +42,7 @@ argument-hint: "[target]"
 5. ระบุ root nodes (nodes ที่ไม่มี incoming edges) เป็น potential root causes
 
 ### 3. Use 5 Whys (Causal Inference)
+
 > Goal: Use 5 Whys (Causal Inference)
 
 ใช้เทคนิค 5 Whys ร่วมกับ Causal Inference:
@@ -63,6 +66,7 @@ argument-hint: "[target]"
 - Root Cause: Deployment script ไม่มี shutdown handler
 
 ### 4. Analyze Causal Paths (Graph Theory)
+
 > Goal: Analyze Causal Paths (Graph Theory)
 
 วิเคราะห์ causal paths ใน DAG:
@@ -77,6 +81,7 @@ argument-hint: "[target]"
 5. เลือก root node ที่มี causal paths สั้นและ strong ที่สุด
 
 ### 5. Validate Causal Hypothesis (Causal Inference)
+
 > Goal: Validate Causal Hypothesis (Causal Inference)
 
 ตรวจสอบ causal hypothesis ด้วย intervention:
@@ -91,6 +96,7 @@ argument-hint: "[target]"
 5. ตรวจสอบว่าไม่มี confounding variables ที่ซ่อนอยู่
 
 ### 6. Document Root Cause
+
 > Goal: Document Root Cause
 
 บันทึก root cause และการวิเคราะห์อย่างละเอียด
@@ -102,6 +108,7 @@ argument-hint: "[target]"
 5. ระบุ action items สำหรับ prevention
 
 ### 7. Define Preventive Actions
+
 > Goal: Define Preventive Actions
 
 กำหนด action สำหรับป้องกันปัญหาซ้ำ

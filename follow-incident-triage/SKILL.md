@@ -14,6 +14,7 @@ description: จัดลำดับความสำคัญของ incide
 ## Execute
 
 ### 1. Assess Severity
+
 > Goal: Assess Severity
 
 ประเมินความรุนแรงของ incident ตามผลกระทบต่อผู้ใช้และระบบ
@@ -24,6 +25,7 @@ description: จัดลำดับความสำคัญของ incide
 - Low: UI glitch หรือปัญหาเล็กน้อยที่ไม่กระทบการใช้งานหลัก
 
 ### 2. Determine Impact
+
 > Goal: Determine Impact
 
 ประเมินผลกระทบต่อผู้ใช้และธุรกิจ
@@ -33,6 +35,7 @@ description: จัดลำดับความสำคัญของ incide
 - ผลกระทบทางธุรกิจ (revenue, reputation, compliance)
 
 ### 3. Assign Priority
+
 > Goal: Assign Priority
 
 กำหนด priority ตาม severity และ impact
@@ -48,6 +51,7 @@ description: จัดลำดับความสำคัญของ incide
 | Low      | Any     | P3       | 24 hours      |
 
 ### 4. Assign Owner
+
 > Goal: Assign Owner
 
 มอบหมายผู้รับผิดชอบตามประเภทของ incident
@@ -57,6 +61,7 @@ description: จัดลำดับความสำคัญของ incide
 - P3: ทีมที่เกี่ยวข้องสามารถจัดการได้
 
 ### 5. Define Action Plan
+
 > Goal: Define Action Plan
 
 กำหนด action plan ตาม priority
@@ -67,6 +72,7 @@ description: จัดลำดับความสำคัญของ incide
 - P3: ทำ `/debug-issue` ภายใน 24 ชั่วโมง
 
 ### 6. Communicate
+
 > Goal: Communicate
 
 สื่อสารสถานะแก่ stakeholder ตาม priority

@@ -1,4 +1,4 @@
----
+﻿---
 name: use-scripts
 description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
 argument-hint: "[target]"
@@ -53,11 +53,11 @@ argument-hint: "[target]"
 > Goal: เขียน script ตาม standards
 
 1. เขียนแบบ composable: `createScript()` return state + actions
-2. ใช้ Bun native APIs สำหรับ `.ts` scripts (ดู `/use-bun-shell`, `/follow-bun`)
+2. ใช้ Bun native APIs สำหรับ `.ts` scripts (ดู `/use-bun-shell`, `/follow-lang-bun`)
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
 5. ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/<name>`
-6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (ดู `/follow-esm-sh` สำหรับ CDN convention)
+6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (ดู `/follow-lib-esm-sh` สำหรับ CDN convention)
 7. เพิ่ม `dryRun` option สำหรับ testing
 
 ### 4. Test And Execute

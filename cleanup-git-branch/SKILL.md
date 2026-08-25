@@ -15,6 +15,7 @@ argument-hint: "[filter]"
 ## Execute
 
 ### 1. Identify Candidates
+
 > Goal: Identify Candidates
 
 1. `git branch --merged main` สำหรับ local
@@ -23,6 +24,7 @@ argument-hint: "[filter]"
 4. ยกเว้น `main`, `master`, `develop`, release branches
 
 ### 2. Confirm With Team
+
 > Goal: Confirm With Team
 
 1. ถ้า shared repo ให้ confirm ก่อนลบ
@@ -30,6 +32,7 @@ argument-hint: "[filter]"
 3. สำรอง ref ถ้ามีความเสี่ยง
 
 ### 3. Delete
+
 > Goal: Delete
 
 1. `git branch -d <branch>` สำหรับ local (merged)

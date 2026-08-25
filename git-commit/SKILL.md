@@ -22,7 +22,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 > Goal: ตรวจสอบและตั้งค่า prerequisites ก่อน commit
 
 1. ทำตาม `/follow-gitignore` สำหรับ .gitignore
-2. ทำตาม `/follow-hk` สำหรับ Git hooks
+2. ทำตาม `/follow-tool-hk` สำหรับ Git hooks
 3. ทำตาม `/follow-config` สำหรับ configuration
 
 ### 2. Categorize Changes
@@ -120,6 +120,7 @@ Split Commit:
 ## Rules
 
 ### Commit Message Format
+
 > Goal: commit message มีรูปแบบมาตรฐาน
 
 ใช้รูปแบบ conventional commits
@@ -131,6 +132,7 @@ Split Commit:
 - ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
 
 ### Commit Types
+
 > Goal: เลือก type ที่เหมาะสมกับการเปลี่ยนแปลง
 
 - feat: ฟีเจอร์ใหม่
@@ -143,12 +145,14 @@ Split Commit:
 - chore: เปลี่ยนแปลง build process, dependencies
 
 ### Scope
+
 > Goal: ระบุส่วนของโปรเจกต์ที่ถูกแก้ไข
 
 - ระบุส่วนของโปรเจกต์ที่ถูกแก้ไข
 - เช่น: api, ui, db, config, deps, auth, test, docs, ci
 
 ### Body
+
 > Goal: อธิบายเหตุผลและ context เพิ่มเติม
 
 - อธิบายเหตุผลและ context
@@ -165,4 +169,4 @@ Split Commit:
 
 ## Addendum
 
-- ก่อนรัน `git commit` จริง `/git-commit` ต้องเรียก `/follow-hk` เพื่อให้ pre-commit hooks รันและ format/lint ผ่านก่อนเสมอ
+- ก่อนรัน `git commit` จริง `/git-commit` ต้องเรียก `/follow-tool-hk` เพื่อให้ pre-commit hooks รันและ format/lint ผ่านก่อนเสมอ

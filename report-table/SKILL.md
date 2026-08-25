@@ -17,6 +17,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 ## Execute
 
 ### 1. Define Table Structure
+
 > Goal: Define Table Structure
 
 1. กำหนด columns ที่จำเป็นสำหรับตาราง
@@ -25,6 +26,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 4. จัดเรียง columns ตามความสำคัญ
 
 ### 2. Format Table Content
+
 > Goal: Format Table Content
 
 1. ใช้ markdown table format มาตรฐาน
@@ -33,6 +35,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 4. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status indicators
 
 ### 3. Format Summary
+
 > Goal: Format Summary
 
 1. ระบุ key metrics และ critical issues
@@ -41,6 +44,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 4. ใช้ action-oriented phrasing สำหรับ next steps
 
 ### 4. Format Metrics
+
 > Goal: Format Metrics
 
 1. จัดกลุ่ม metrics ตาม categories
@@ -49,6 +53,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 4. เพิ่ม thresholds และ trends สำหรับ context
 
 ### 5. Group And Sort
+
 > Goal: Group And Sort
 
 1. จัดกลุ่มข้อมูลตาม category ที่เกี่ยวข้อง
@@ -57,6 +62,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 4. ใช้ separators สำหรับแยกกลุ่ม
 
 ### 6. Validate Readability
+
 > Goal: Validate Readability
 
 1. ตรวจสอบว่าตารางอ่านง่ายบนทุก device
@@ -67,6 +73,7 @@ description: จัดรูปแบบตาราง สรุปข้อม
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Read queue
+
 > Goal: อ่านคิว
 
 1. อ่าน `QUEUE.md` หรือรายการงาน
@@ -22,6 +23,7 @@ argument-hint: "[target]"
 1. เรียงตาม priority/created
 
 ### 2. Execute tasks
+
 > Goal: รันงาน
 
 1. รันแต่ละงานด้วย skill ที่เหมาะสม
@@ -29,6 +31,7 @@ argument-hint: "[target]"
 1. จัดการ error ด้วย `/resolve-errors`
 
 ### 3. Verify
+
 > Goal: ตรวจสอบ
 
 1. รัน `/run-check` และ `/run-test` หลังทำงานเสร็จ
@@ -36,6 +39,7 @@ argument-hint: "[target]"
 1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
 
 ### 4. Update and report
+
 > Goal: อัปเดตและรายงาน
 
 1. ทำเครื่องหมายงานที่เสร็จในคิว

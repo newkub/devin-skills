@@ -14,6 +14,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 ## Execute
 
 ### 1. Discovery And Inventory
+
 > Goal: Discovery And Inventory
 
 ค้นหาและรวบรวมทุกสิ่งที่ต้อง implement จริง
@@ -24,6 +25,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 4. จัดกลุ่มตาม priority และ dependencies
 
 ### 2. Code Modification
+
 > Goal: Code Modification
 
 แก้ไข code ด้วย file editing tools เท่านั้น
@@ -35,6 +37,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 5. ทำ `/update-reference` เพื่ออัพเดท references ทั้งหมด
 
 ### 3. Validation
+
 > Goal: Validation
 
 ตรวจสอบว่าไม่มี TODO เหลือและ code ใช้งานได้จริง

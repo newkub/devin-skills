@@ -1,4 +1,4 @@
-# Layered Architecture
+﻿# Layered Architecture
 
 > Reference pattern for `/follow-architecture` — Implement Layered Architecture สำหรับ Frontend projects ขนาดเล็ก-กลาง
 
@@ -19,7 +19,7 @@ Implement Layered Architecture สำหรับ Frontend projects โดยแ
 1. ประเมิน project size และ team experience
 2. เลือก pattern: traditional layered, feature-based, 4-layer, หรือ hybrid
 3. พิจารณา project lifecycle และ migration path
-4. ทำ `/follow-vite` สำหรับ build tooling setup
+4. ทำ `/follow-tool-vite` สำหรับ build tooling setup
 
 ### 2. Create Structure
 
@@ -102,7 +102,7 @@ src/
 2. `Application` tests: use cases กับ fake repositories
 3. `Infrastructure` tests: adapters และ mapping (contract tests)
 4. `Presentation` tests: behavior และ composition
-5. ถ้า project มี `Vitest` → ทำตาม `/follow-vitest`
+5. ถ้า project มี `Vitest` → ทำตาม `/follow-tool-vitest`
 
 ### 5. Setup And Migrate
 

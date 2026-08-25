@@ -14,6 +14,7 @@ description: จัดการ context ของ AI agent อย่างมี
 ## Execute
 
 ### 1. Curate System Context
+
 > Goal: Curate System Context
 
 คัดเลือก context เริ่มต้นให้มี high-signal tokens น้อยที่สุดเท่าที่จำเป็น
@@ -25,6 +26,7 @@ description: จัดการ context ของ AI agent อย่างมี
 5. คัดเลือกเฉพาะข้อมูลที่จำเป็นต่อ task ปัจจุบัน ไม่ใส่ข้อมูลที่ไม่เกี่ยวข้อง
 
 ### 2. Optimize Tool Usage
+
 > Goal: Optimize Tool Usage
 
 ใช้ tools อย่างมีประสิทธิภาพเพื่อลด context consumption
@@ -37,6 +39,7 @@ description: จัดการ context ของ AI agent อย่างมี
 6. ใช้ `offset` และ `limit` เพื่ออ่านเฉพาะส่วนไฟล์ที่จำเป็น
 
 ### 3. Apply Compaction
+
 > Goal: Apply Compaction
 
 ใช้ compaction เมื่อ context ใกล้เต็ม เพื่อรักษา conversational flow
@@ -48,6 +51,7 @@ description: จัดการ context ของ AI agent อย่างมี
 5. ทำ `/follow-context-rot` เมื่อตรวจพบสัญญาณ context degradation
 
 ### 4. Use Structured Note-Taking
+
 > Goal: Use Structured Note-Taking
 
 ใช้ agentic memory เพื่อ maintain progress นอก context window
@@ -59,6 +63,7 @@ description: จัดการ context ของ AI agent อย่างมี
 5. อัปเดต notes ทุกครั้งหลังเสร็จ sub-task สำคัญ
 
 ### 5. Decompose With Sub-Agent Pattern
+
 > Goal: Decompose With Sub-Agent Pattern
 
 แบ่งงานใหญ่เป็น sub-tasks เพื่อจำกัด context ของแต่ละส่วน
@@ -70,6 +75,7 @@ description: จัดการ context ของ AI agent อย่างมี
 5. ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
 
 ### 6. Manage Context Lifecycle
+
 > Goal: Manage Context Lifecycle
 
 จัดการ context ตลอด conversation lifecycle
@@ -137,4 +143,3 @@ description: จัดการ context ของ AI agent อย่างมี
 - Progress ถูก preserve ข้าม session ผ่าน structured notes
 - Long-horizon tasks ถูกแบ่งเป็น sub-tasks ที่จัดการได้
 - Goal alignment รักษาไว้ตลอด conversation
-

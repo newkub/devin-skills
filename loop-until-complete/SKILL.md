@@ -14,6 +14,7 @@ description: ทำซ้ำงานจนกว่าจะเสร็จส�
 ## Execute
 
 ### 1. Define Loop Condition
+
 > Goal: Define Loop Condition
 
 กำหนดเงื่อนไขสำหรับการทำซ้ำ
@@ -23,6 +24,7 @@ description: ทำซ้ำงานจนกว่าจะเสร็จส�
 3. ตั้งค่าจำนวนรอบสูงสุดถ้าจำเป็น
 
 ### 2. Execute Loop
+
 > Goal: Execute Loop
 
 ทำงานซ้ำตามเงื่อนไข
@@ -34,6 +36,7 @@ description: ทำซ้ำงานจนกว่าจะเสร็จส�
 5. หยุดเมื่อบรรลุเงื่อนไข
 
 ### 3. Verify Completion
+
 > Goal: Verify Completion
 
 ตรวจสอบว่างานเสร็จสมบูรณ์

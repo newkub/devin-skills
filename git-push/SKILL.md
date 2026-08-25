@@ -14,6 +14,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 ## Execute
 
 ### 1. Check Status And Commits
+
 > Goal: Check Status And Commits
 
 - ทำ `git branch --show-current`, `git status`, และ `git submodule status` เพื่อดูสถานะปัจจุบัน
@@ -21,6 +22,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 - พิจารณา `/refactor-commit` ก่อน push เสมอ — ตรวจสอบว่า commits มีขนาดเหมาะสม message ชัดเจน และ logical order — ถ้า commits ใหญ่เกินไป หรือ message ไม่ชัด ให้ทำ `/refactor-commit` ก่อน push
 
 ### 2. Push
+
 > Goal: Push
 
 - ทำ `git push origin <branch>` และ `git submodule foreach --recursive git push origin <branch>` — ห้ามใช้ `--no-verify` หรือ flag ที่ข้าม git hooks ทุกประเภท
@@ -28,18 +30,21 @@ Push commits จาก local repository และ git submodules ไปยัง
 - ถ้า push ถูก reject ให้หยุดและแจ้งผู้ใช้ ไม่ force push
 
 ### 3. Validate
+
 > Goal: Validate
 
 - ทำ `git log --oneline origin/<branch> -5` เพื่อยืนยันว่า commits ปรากฏบน remote แล้ว
 - ทำ `git status` เพื่อยืนยันว่า local และ remote sync กัน
 
 ### 4. Check GitHub Actions
+
 > Goal: Check GitHub Actions
 
 - ทำ `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repo ไหม
 - ถ้ามี ให้ทำ `/watch-github-actions` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
 
 ### 5. Setup GitHub Repo Metadata
+
 > Goal: Setup GitHub Repo Metadata
 
 ตั้งค่า repository metadata ให้ครบถ้วนหลังสร้าง repo หรือ push ครั้งแรก
@@ -52,12 +57,14 @@ Push commits จาก local repository และ git submodules ไปยัง
 6. ทำ `gh repo edit --default-branch main` เพื่อตั้ง default branch
 
 ### 6. Open Repo
+
 > Goal: Open Repo
 
 - ทำ `git remote get-url origin` เพื่อดู remote URL
 - แปลง SSH URL เป็น HTTPS URL แล้วทำ `/open-web` เพื่อเปิด repo ใน browser
 
 ### 7. Ensure Repository Ready (Optional)
+
 > Goal: Ensure Repository Ready (Optional)
 
 ทำเฉพาะเมื่อ `git` แจ้ง error ว่าไม่มี repository หรือไม่มี remote

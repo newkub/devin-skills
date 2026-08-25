@@ -14,14 +14,16 @@ description: รัน ast-grep scan เพื่อตรวจสอบ codeba
 ## Execute
 
 ### 1. Setup And Write Rules
+
 > Goal: Setup And Write Rules
 
-1. ทำ `/follow-ast-grep` เพื่อติดตั้งและตั้งค่า `ast-grep`
+1. ทำ `/follow-tool-ast-grep` เพื่อติดตั้งและตั้งค่า `ast-grep`
 2. ตรวจสอบ `sgconfig.yml` มี `ruleDirs: rules` และมี `scan` script ใน `package.json`
 3. ถ้ายังไม่มี rules ให้ทำ `/update-ast-grep-rules` เพื่อสร้าง rules ใน `rules/` directory
 4. ทำ `/update-ast-grep-rules` เพื่อตรวจสอบ rules ก่อนรัน scan
 
 ### 2. Run Scan
+
 > Goal: Run Scan
 
 1. รัน `bun run scan` หรือ `ast-grep scan`
@@ -30,6 +32,7 @@ description: รัน ast-grep scan เพื่อตรวจสอบ codeba
 4. แก้ไข code ตาม suggestions ที่เหมาะสม หรือใช้ `--interactive` mode สำหรับ selective apply
 
 ### 3. Verify
+
 > Goal: Verify
 
 1. ทำ `/loop-until-complete` เพื่อรัน scan ซ้ำจนกว่าจะไม่มี issues

@@ -14,6 +14,7 @@ Capture ภาพ (screenshot) จาก terminal output สำหรับ docu
 ## Execute
 
 ### 1. Analyze Requirements
+
 > Goal: Analyze Requirements
 
 วิเคราะห์ความต้องการก่อนเลือก tool
@@ -24,6 +25,7 @@ Capture ภาพ (screenshot) จาก terminal output สำหรับ docu
 4. ต้องการใช้ใน CI/CD หรือเฉพาะ local
 
 ### 2. Select Tool
+
 > Goal: Select Tool
 
 เลือก tool ตาม use case ตาม ## Rules ข้อ 1
@@ -34,6 +36,7 @@ Capture ภาพ (screenshot) จาก terminal output สำหรับ docu
 4. Windows Snipping Tool: screenshot ด่วนด้วย `Win + Shift + S`
 
 ### 3. Install Tool
+
 > Goal: Install Tool
 
 ติดตั้ง tool ที่เลือก
@@ -44,6 +47,7 @@ Capture ภาพ (screenshot) จาก terminal output สำหรับ docu
 4. Windows Snipping Tool: มีอยู่แล้วใน Windows
 
 ### 4. Capture Screenshot
+
 > Goal: Capture Screenshot
 
 Capture terminal output ตาม tool ที่เลือก
@@ -54,6 +58,7 @@ Capture terminal output ตาม tool ที่เลือก
 4. ใช้ Windows Snipping Tool: กด `Win + Shift + S` แล้วเลือกพื้นที่
 
 ### 5. Configure Output
+
 > Goal: Configure Output
 
 ตั้งค่า output ตาม ## Rules ข้อ 2
@@ -64,6 +69,7 @@ Capture terminal output ตาม tool ที่เลือก
 4. ตั้งค่า window chrome, title, subtitle ถ้าต้องการ
 
 ### 6. Verify Output
+
 > Goal: Verify Output
 
 ตรวจสอบไฟล์ที่ capture

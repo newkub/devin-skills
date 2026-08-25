@@ -1,4 +1,4 @@
----
+﻿---
 name: check-unused-files
 description: Detect and remove unused files in project using Knip and reference analysis
 ---
@@ -9,7 +9,7 @@ description: Detect and remove unused files in project using Knip and reference 
 
 ## Scope
 
-ใช้กับทุกโปรเจกต์ — รองรับทั้ง single project และ monorepo — ไม่รวมการตรวจสอบ unused dependencies (ใช้ `/check-unused-deps` แทน) หรือ unused exports (ใช้ `/follow-knip` แทน)
+ใช้กับทุกโปรเจกต์ — รองรับทั้ง single project และ monorepo — ไม่รวมการตรวจสอบ unused dependencies (ใช้ `/check-unused-deps` แทน) หรือ unused exports (ใช้ `/follow-tool-knip` แทน)
 
 ## Execute
 
@@ -27,7 +27,7 @@ description: Detect and remove unused files in project using Knip and reference 
 
 > Goal: รัน tool ตรวจสอบ unused files
 
-1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include files`
+1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-tool-knip` แล้วรัน `bunx knip --include files`
 2. ถ้าเป็น Rust → รัน `cargo +nightly udeps`
 3. ถ้าเป็น Go → รัน `go mod tidy -v`
 4. ถ้าไม่มี tool เฉพาะ → ใช้ `find_by_name` รวบรวมไฟล์ และ `grep_search` ตรวจสอบ references

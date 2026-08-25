@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. วิจัย Competitors
+
 > Goal: วิจัย Competitors
 
 วิจัย competitors โดยใช้ deep research methods
@@ -24,6 +25,7 @@ argument-hint: "[target]"
 3. บันทึก differentiation opportunities
 
 ### 2. สร้างไอเดีย Features
+
 > Goal: สร้างไอเดีย Features
 
 สร้างไอเดีย features ตามผลวิจัย

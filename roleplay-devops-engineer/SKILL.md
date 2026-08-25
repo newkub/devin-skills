@@ -14,6 +14,7 @@ description: รับบทเป็น DevOps/SRE มอง code ว่า dep
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา infra/deploy code
@@ -23,6 +24,7 @@ description: รับบทเป็น DevOps/SRE มอง code ว่า dep
 5. ถ้าหา infra code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify DevOps Profile
+
 > Goal: Identify DevOps Profile
 
 1. ระบุ DevOps role (DevOps engineer, SRE, platform engineer, infra engineer)
@@ -32,6 +34,7 @@ description: รับบทเป็น DevOps/SRE มอง code ว่า dep
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Operational Scenarios
+
 > Goal: Simulate Operational Scenarios
 
 Goal reminder: คิดเหมือน DevOps ที่ต้องรับผิดชอบระบบจริง ไม่ใช่ dev ที่สนแค่ code ทำงาน
@@ -43,6 +46,7 @@ Goal reminder: คิดเหมือน DevOps ที่ต้องรับ
 5. ประเมิน MTTR (Mean Time To Recovery) โดยประมาณ
 
 ### 4. Analyze Every DevOps Dimension
+
 > Goal: Analyze Every DevOps Dimension
 
 Deployment:
@@ -86,6 +90,7 @@ Infrastructure:
 25. Backup and recovery: มี backups ไหม, มี restore testing ไหม, มี RPO/RTO ชัดไหม
 
 ### 5. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -95,6 +100,7 @@ Infrastructure:
 5. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate DevOps Review Report
+
 > Goal: Generate DevOps Review Report
 
 1. ทำ `/report` ด้วย `/report-table`

@@ -14,6 +14,7 @@ description: เขียน solution documents และ problem-solving workfl
 ## Execute
 
 ### 1. Analyze Problem
+
 > Goal: Analyze Problem
 
 วิเคราะห์ปัญหาอย่างละเอียด
@@ -23,6 +24,7 @@ description: เขียน solution documents และ problem-solving workfl
 3. รวบรวม context และ constraints
 
 ### 2. Research Solutions
+
 > Goal: Research Solutions
 
 ค้นหาแนวทางแก้ไขที่เหมาะสม
@@ -32,6 +34,7 @@ description: เขียน solution documents และ problem-solving workfl
 3. ศึกษา solutions ที่ใช้ใน projects อื่น
 
 ### 3. Design Solution
+
 > Goal: Design Solution
 
 ออกแบบ solution ที่เหมาะสมกับ context
@@ -41,6 +44,7 @@ description: เขียน solution documents และ problem-solving workfl
 3. ตั้งค่า success criteria ชัดเจน
 
 ### 4. Write Solution Document
+
 > Goal: Write Solution Document
 
 เขียน solution document ตามมาตรฐาน
@@ -50,6 +54,7 @@ description: เขียน solution documents และ problem-solving workfl
 3. เพิ่ม examples และ edge cases
 
 ### 5. Validate And Refine
+
 > Goal: Validate And Refine
 
 ตรวจสอบและปรับปรุง solution

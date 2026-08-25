@@ -1,18 +1,7 @@
----
+﻿---
 name: convert-to-submodule
 description: แปลง directory ใน repo เป็น git submodule พร้อม push และ add กลับ
 argument-hint: "[directory]"
-related:
-  - create-github-repo
-  - git-push
-  - git-submodule-delete
-  - git-commit
-  - update-reference
-  - update-gitignore
-  - validate
-  - ask-me
-  - ship
-  - suggest-next-action
 ---
 
 ## Goal

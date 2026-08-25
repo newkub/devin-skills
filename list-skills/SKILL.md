@@ -14,6 +14,7 @@ description: แสดงรายการ Windsurf skills ทั้งหม�
 ## Execute
 
 ### 1. List Skill Directories
+
 > Goal: List Skill Directories
 
 อ่านไดเรกทอรีทั้งหมดใน `skills` directory
@@ -23,6 +24,7 @@ description: แสดงรายการ Windsurf skills ทั้งหม�
 3. อ่าน frontmatter ของแต่ละ `SKILL.md` เพื่อดู `title` และ `description`
 
 ### 2. Categorize Skills
+
 > Goal: Categorize Skills
 
 จัดกลุ่ม skills ตามประเภท
@@ -31,6 +33,7 @@ description: แสดงรายการ Windsurf skills ทั้งหม�
 2. แสดงจำนวน skills ในแต่ละกลุ่ม
 
 ### 3. Report Skills
+
 > Goal: Report Skills
 
 แสดงรายการ skills ทั้งหมด

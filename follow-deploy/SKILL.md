@@ -14,18 +14,20 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 ## Execute
 
 ### 1. Select Platform
+
 > Goal: Select Platform
 
 เลือก platform ที่เหมาะสมกับ project
 
 1. ตรวจสอบ project type และ requirements
 2. เลือก platform ที่เหมาะสม:
-   - Cloudflare Workers/Pages: ทำ `/follow-cloudflare-worker` และ `/follow-wrangler-cli`
-   - Vercel: ทำ `/follow-vercel` และ `/follow-vercel-cli`
+   - Cloudflare Workers/Pages: ทำ `/follow-service-cloudflare` และ `/follow-service-cloudflare`
+   - Vercel: ทำ `/follow-service-vercel` และ `/follow-service-vercel-cli`
    - Railway: ทำ `/deploy-to-railway`
 3. ตรวจสอบว่า platform configuration พร้อม
 
 ### 2. Setup Environment Variables
+
 > Goal: Setup Environment Variables
 
 ตั้งค่า environment variables สำหรับ deployment
@@ -38,11 +40,12 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 3. ตรวจสอบว่า environment variables ครบถ้วนและถูกต้อง
 
 ### 3. Setup CI/CD
+
 > Goal: Setup CI/CD
 
 ตั้งค่า GitHub Actions สำหรับ automated deployment
 
-1. ทำ `/follow-github-actions` เพื่อตั้งค่า GitHub Actions
+1. ทำ `/follow-tool-github-actions` เพื่อตั้งค่า GitHub Actions
 2. เลือก workflows ตามความต้องการ:
    - Base CI/CD: `ci.yml` (lint, typecheck, test)
    - Deployment: `deploy-staging.yml`, `deploy-production.yml`
@@ -51,6 +54,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 4. ตั้งค่า Release-it สำหรับ automated releases (ถ้าจำเป็น)
 
 ### 4. Setup Platform-Specific Configuration
+
 > Goal: Setup Platform-Specific Configuration
 
 ตั้งค่า configuration ตาม platform ที่เลือก
@@ -60,6 +64,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 - Railway: ตั้งค่า `railway.json` หรือ environment variables
 
 ### 5. Test Deployment
+
 > Goal: Test Deployment
 
 ทดสอบ deployment ใน staging environment

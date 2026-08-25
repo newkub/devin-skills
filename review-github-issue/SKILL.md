@@ -15,18 +15,21 @@ argument-hint: "[issue-number]"
 ## Execute
 
 ### 1. Read issue
+
 > Goal: อ่าน issue
 
 1. รัน gh issue view <number>
 1. อ่าน title, body, comments, linked PRs
 
 ### 2. Check metadata
+
 > Goal: ตรวจสอบ metadata
 
 1. ยืนยัน labels, assignee, milestone, project
 1. ตรวจ sub-issues หรือ dependencies
 
 ### 3. Assess quality
+
 > Goal: ประเมินคุณภาพ
 
 1. ตรวจว่ามี goal และ scope ที่ชัดเจน
@@ -34,6 +37,7 @@ argument-hint: "[issue-number]"
 1. แนะนำการปรับปรุง
 
 ### 4. Report
+
 > Goal: รายงาน
 
 1. สรุปผลการตรวจสอบ

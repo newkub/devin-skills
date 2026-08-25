@@ -14,6 +14,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 ## Execute
 
 ### 1. Define MVP Requirements
+
 > Goal: Define MVP Requirements
 
 1. ทำ `/analyze-project` เพื่อดู features ทั้งหมด
@@ -23,6 +24,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 5. ตรวจสอบว่า requirements สอดคล้องกับ timeframe
 
 ### 2. Prioritize MVP Features
+
 > Goal: Prioritize MVP Features
 
 1. จัดลำดับ features ตามความจำเป็นสำหรับ MVP:
@@ -33,6 +35,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 3. เลือก features ที่ให้คุณค่าสูงสุดต่อ effort
 
 ### 3. Implement MVP Features
+
 > Goal: Implement MVP Features
 
 1. ทำ `/realize-implementation` สำหรับ must-have features
@@ -41,6 +44,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 4. ไม่ทำ optional features หรือ enhancements
 
 ### 4. Validate MVP Completeness
+
 > Goal: Validate MVP Completeness
 
 1. ตรวจสอบว่า must-have features ครบถ้วน
@@ -49,6 +53,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 4. หยุดทำเมื่อ MVP requirements ครบถ้วน
 
 ### 5. Report Results
+
 > Goal: Report Results
 
 1. ทำ `/report` สรุปผลลัพธ์การ implement MVP features

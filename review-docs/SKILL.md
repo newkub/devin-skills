@@ -1,15 +1,6 @@
----
+﻿---
 name: review-docs
 description: ตรวจสอบ docs structure ก่อน update-docs แก้ไข ครอบคลุม VitePress config และ content
-related:
-  - update-docs
-  - update-features
-  - follow-vitepress
-  - follow-content-quality
-  - validate
-  - check-reference
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

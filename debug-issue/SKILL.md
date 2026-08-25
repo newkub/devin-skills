@@ -92,6 +92,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 ## Rules
 
 ### 1. Core Principles
+
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - ห้ามแก้หลายอย่างพร้อมกัน
@@ -100,6 +101,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 - ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
 
 ### 2. Heuristic Cheatsheet
+
 > Goal: เริ่ม debug ได้เร็วด้วย common patterns
 
 | Symptom                 | Likely Cause                         |
@@ -115,6 +117,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 | runtime crash           | null / undefined / async timing      |
 
 ### 3. Mental Model
+
 > Goal: มีกรอบการคิดที่เป็นระบบ
 
 Debug = Bayesian Search in Hypothesis Space
@@ -128,11 +131,13 @@ Debug = Bayesian Search in Hypothesis Space
 - Optimal test = maximizes Information Gain
 
 ### 4. Fast Debug Loop
+
 > Goal: debug loop ที่รวดเร็วและซ้ำได้
 
 1. Observe → 2. List 3–5 causes → 3. Pick top 1–2 → 4. Test one change at a time → 5. Eliminate → 6. Repeat
 
 ### 5. Regression Safety
+
 > Goal: ทุก bug fix ต้องมี regression test
 
 - ทุก bug fix ต้องมี regression test
@@ -140,6 +145,7 @@ Debug = Bayesian Search in Hypothesis Space
 - รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression
 
 ### 6. Time Budget And Escalation
+
 > Goal: ไม่ใช้เวลานานเกินไปกับปัญหาเดียว
 
 - ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที

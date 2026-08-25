@@ -14,6 +14,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 ## Execute
 
 ### 1. Pre-Check
+
 > Goal: Pre-Check
 
 ตรวจสอบสถานะ project:
@@ -24,6 +25,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 4. ตรวจสอบว่า development server รันอยู่
 
 ### 2. Start Watch
+
 > Goal: Start Watch
 
 เริ่ม watch terminal:
@@ -34,6 +36,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 4. รอ 5 วินาทีแล้วอ่านซ้ำ
 
 ### 3. Handle Errors
+
 > Goal: Handle Errors
 
 จัดการ errors ที่พบ:
@@ -44,6 +47,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 4. กลับไป watch terminal ต่อ
 
 ### 4. Verify
+
 > Goal: Verify
 
 ตรวจสอบความถูกต้อง:

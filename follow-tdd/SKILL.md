@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
 ---
@@ -19,7 +19,7 @@ description: พัฒนา feature ด้วย Test-Driven Development red-gr
 
 1. อ่าน spec, issue, หรือ user requirement
 2. ตรวจสอบ existing tests และ test framework ที project ใช้
-3. ถ้าไม่มี test framework → ทำ `/consider-use-in-another-skills` เพื่อหา follow-vitest, follow-jest, follow-test-api
+3. ถ้าไม่มี test framework → ทำ `/consider-use-in-another-skills` เพื่อหา follow-tool-vitest, follow-jest, follow-test-api
 4. ระบุ smallest behavior ทีต้อง test ก่อน
 
 ### 2. Write Failing Test

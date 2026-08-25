@@ -15,6 +15,7 @@ argument-hint: "[url]"
 ## Execute
 
 ### 1. Check Keyboard Navigation
+
 > Goal: Check Keyboard Navigation
 
 1. ทดสอบ navigation ด้วย keyboard เท่านั้น
@@ -23,6 +24,7 @@ argument-hint: "[url]"
 4. ทดสอบ keyboard shortcuts
 
 ### 2. Check Screen Reader
+
 > Goal: Check Screen Reader
 
 1. ทดสอบด้วย screen reader (NVDA, JAWS, VoiceOver)
@@ -31,6 +33,7 @@ argument-hint: "[url]"
 4. ตรวจสอบ semantic HTML
 
 ### 3. Check Color Contrast
+
 > Goal: Check Color Contrast
 
 1. ตรวจสอบ contrast ratio ตาม WCAG AA/AAA
@@ -39,6 +42,7 @@ argument-hint: "[url]"
 4. ตรวจสอบ text กับ background contrast
 
 ### 4. Check Forms
+
 > Goal: Check Forms
 
 1. ตรวจสอบ form labels ชัดเจน
@@ -47,6 +51,7 @@ argument-hint: "[url]"
 4. ตรวจสอบ form controls สามารถใช้ keyboard ได้
 
 ### 5. Check Media
+
 > Goal: Check Media
 
 1. ตรวจสอบ captions สำหรับ videos
@@ -55,6 +60,7 @@ argument-hint: "[url]"
 4. ตรวจสอบ controls สามารถ pause ได้
 
 ### 6. Run Automated Tests
+
 > Goal: Run Automated Tests
 
 1. รัน accessibility audit tools

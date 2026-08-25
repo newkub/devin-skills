@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Define Learning Target
+
 > Goal: Define Learning Target
 
 กำหนดเป้าหมายการเรียนรู้:
@@ -25,6 +26,7 @@ argument-hint: "[topic]"
 4. กำหนดเวลาและขอบเขตการเรียนรู้
 
 ### 2. Deep Research
+
 > Goal: Deep Research
 
 ทำ `/deep-research` เพื่อค้นหาข้อมูลลึก:
@@ -36,6 +38,7 @@ argument-hint: "[topic]"
 5. ตรวจสอบ version compatibility กับ project
 
 ### 3. Learn From Web
+
 > Goal: Learn From Web
 
 ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก:
@@ -46,6 +49,7 @@ argument-hint: "[topic]"
 4. บันทึก code examples และ configuration examples
 
 ### 4. Apply Best Practices
+
 > Goal: Apply Best Practices
 
 ทำ `/follow-best-practice` เพื่อนำความรู้ไปใช้:
@@ -56,6 +60,7 @@ argument-hint: "[topic]"
 4. ปรับปรุงตาม feedback
 
 ### 5. Learn From Code Patterns
+
 > Goal: Learn From Code Patterns
 
 ทำ `/learn-from-pattern` เพื่อสกัด reusable patterns
@@ -66,6 +71,7 @@ argument-hint: "[topic]"
 4. บันทึก patterns พร้อม use cases
 
 ### 6. Hands-On Practice
+
 > Goal: Hands-On Practice
 
 ฝึกปฏิบัติจริงเพื่อยืนยันความเข้าใจ

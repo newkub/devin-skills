@@ -19,6 +19,7 @@ argument-hint: "[session-id]"
 ## Execute
 
 ### 1. Assess Current State
+
 > Goal: Assess Current State
 
 1. ตรวจสอบสถานะปัจจุบันของงานที่กำลังทำ
@@ -27,6 +28,7 @@ argument-hint: "[session-id]"
 4. ตรวจสอบว่ามีการแนะนำ action ถัดไปหรือไม่ (จาก `/suggest-next-action` หรือ suggestion อื่นๆ)
 
 ### 2. Continue Incomplete Tasks
+
 > Goal: Continue Incomplete Tasks
 
 1. ทำงานที่ค้างอยู่ให้เสร็จสมบูรณ์
@@ -34,6 +36,7 @@ argument-hint: "[session-id]"
 3. แก้ไข errors หรือ issues ที่พบระหว่างทำงาน
 
 ### 3. Verify Completion
+
 > Goal: Verify Completion
 
 1. ตรวจสอบว่างานทั้งหมมเสร็จสมบูรณ์ตามที่ร้องขอ
@@ -41,6 +44,7 @@ argument-hint: "[session-id]"
 3. ตรวจสอบว่าไม่มีงานค้างหรือลืมทำ
 
 ### 4. Finalize
+
 > Goal: Finalize
 
 1. สรุปงานที่ทำเสร็จแล้วเป็นตาราง

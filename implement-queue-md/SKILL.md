@@ -17,6 +17,7 @@ argument-hint: "[queue-file]"
 ## Execute
 
 ### 1. Discover Requests
+
 > Goal: รู้ว่ามี request อะไรบ้าง
 
 1. อ่าน `QUEUE.md` ที่ project root
@@ -26,6 +27,7 @@ argument-hint: "[queue-file]"
 5. ถ้าไม่มี request pending → รายงานและหยุด
 
 ### 2. Plan Each Request
+
 > Goal: ทุก request มีแผนครบ
 
 1. อ่าน title และ description ของ request ถัดไป
@@ -34,6 +36,7 @@ argument-hint: "[queue-file]"
 4. อัปเดท status ของ request เป็น `in-progress`
 
 ### 3. Implement Each Request
+
 > Goal: ทำงานให้ครบตามแผน
 
 1. ทำ `/realize-implementation` ตามแผน
@@ -41,6 +44,7 @@ argument-hint: "[queue-file]"
 3. ถ้าเกิด error → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ### 4. Verify And Complete
+
 > Goal: ทุก request ผ่าน verification
 
 1. ทำ `/run-verify` เพื่อตรวจสอบคุณภาพ

@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-package-manifest
 description: ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo
 ---
@@ -124,7 +124,7 @@ description: ตั้งค่า scripts สำหรับ packages และ
 - ใช้ `bun run ci` สำหรับ task ที่ต้องการ build ด้วย
 - ใช้ `bun turbo run verify --filter=...[origin/main]` สำหรับการตรวจสอบเฉพาะที่เปลี่ยนแปลงใน monorepo
 - Execution Order: pre-commit (`lint`), pre-push (`verify`), CI (`ci`), Local dev (`dev`)
-- hk hooks จะรันอัตโนมัติก่อน commit, push, rebase (ต้องรัน `/follow-hk` ก่อน)
+- hk hooks จะรันอัตโนมัติก่อน commit, push, rebase (ต้องรัน `/follow-tool-hk` ก่อน)
 - ลำดับการทำงาน: Prepare → Update Dependencies → Setup Verify → Setup hk → Scan → Lint → Format → Build → Test → Dev → Verify
 - สำหรับ monorepo ขนาดใหญ่ พิจารณาใช้ turbo, justfile, หรือ makefile สำหรับ reuse และ scale
 

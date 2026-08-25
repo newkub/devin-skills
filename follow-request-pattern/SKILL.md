@@ -15,6 +15,7 @@ argument-hint: "[pattern]"
 ## Execute
 
 ### 1. Analyze Input Data
+
 > Goal: Analyze Input Data
 
 1. อ่านและวิเคราะห์ข้อมูลที่ได้รับ
@@ -23,6 +24,7 @@ argument-hint: "[pattern]"
 4. ระบุลักษณะเฉพาะและความซ้ำซ้อน
 
 ### 2. Identify Patterns
+
 > Goal: Identify Patterns
 
 1. หา pattern ที่เกิดซ้ำในข้อมูล
@@ -31,6 +33,7 @@ argument-hint: "[pattern]"
 4. จัดกลุ่ม pattern ที่คล้ายกัน
 
 ### 3. Write Pattern Rules
+
 > Goal: Write Pattern Rules
 
 1. เขียน rules ที่อธิบาย pattern อย่างชัดเจน
@@ -39,6 +42,7 @@ argument-hint: "[pattern]"
 4. ระบุเงื่อนไขและข้อจำกัด
 
 ### 4. Validate Rules
+
 > Goal: Validate Rules
 
 1. ตรวจสอบว่า rules ครอบคลุมทุกกรณี

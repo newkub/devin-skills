@@ -14,6 +14,7 @@ description: ทำงานกับทุก workspace ใน monorepo จน�
 ## Execute
 
 ### 1. Discover Workspaces
+
 > Goal: Discover Workspaces
 
 ค้นหาและระบุ workspaces ทั้งหมดใน monorepo
@@ -23,6 +24,7 @@ description: ทำงานกับทุก workspace ใน monorepo จน�
 3. จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน, applications ทีหลัง)
 
 ### 2. Process Each Workspace
+
 > Goal: Process Each Workspace
 
 ทำงานกับแต่ละ workspace ตามลำดับ
@@ -32,6 +34,7 @@ description: ทำงานกับทุก workspace ใน monorepo จน�
 3. หลีกเลี่ยง circular dependencies ระหว่าง workspaces
 
 ### 3. Verify Completion
+
 > Goal: Verify Completion
 
 ตรวจสอบว่าทุก workspace ได้รับการประมวลผลครบถ้วน

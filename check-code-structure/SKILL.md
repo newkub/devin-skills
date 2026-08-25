@@ -14,6 +14,7 @@ description: วิเคราะห์และปรับปรุง code s
 ## Execute
 
 ### 1. Review And Inventory
+
 > Goal: Review And Inventory
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
@@ -24,6 +25,7 @@ description: วิเคราะห์และปรับปรุง code s
 6. ถ้า `sg outline` ไม่พร้อมใช้ → stop และ report
 
 ### 2. Analyze Code Structure
+
 > Goal: Analyze Code Structure
 
 1. ทำ `/use-ast-grep-outline` เพื่อเลือก flags ที่เหมาะสมกับ scope
@@ -36,6 +38,7 @@ description: วิเคราะห์และปรับปรุง code s
 5. ถ้า analyze ไม่ผ่าน → re-run ถ้าไม่ผ่านหลัง 3 ครั้ง → stop และ report
 
 ### 3. Identify Structure Issues
+
 > Goal: Identify Structure Issues
 
 Goal: ระบุ structure issues จาก `sg outline` output ก่อนเริ่มปรับปรุง
@@ -50,6 +53,7 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/review-codebase` แยก
 
 ### 4. Validate Findings
+
 > Goal: Validate Findings
 
 1. ทำ `/validate` สำหรับ validate findings
@@ -58,6 +62,7 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 4. ถ้าไม่มี issues ที่ต้อง improve → stop และ report
 
 ### 5. Improve Code Structure
+
 > Goal: Improve Code Structure
 
 Goal reminder: ปรับปรุง code structure ตาม findings จาก Step 3
@@ -71,6 +76,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 7. ถ้าต้องปรับ physical structure ให้ทำ `/restructure`
 
 ### 6. Verify
+
 > Goal: Verify
 
 1. ทำ `/use-ast-grep-outline` เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
@@ -81,6 +87,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 6. ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 7. Report
+
 > Goal: Report
 
 1. ทำ `/report` พร้อม `/report-table`

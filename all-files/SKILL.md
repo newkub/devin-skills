@@ -14,12 +14,14 @@ description: ทำงานกับแต่ละ file ใน project จน�
 ## Execute
 
 ### 1. Discover Files
+
 > Goal: Discover Files
 
 1. ทำ `/analyze-project` เพื่อดูโครงสร้าง
 2. ใช้ `find_by_name` หรือ `list_dir` เพื่อค้นหา files ตาม pattern
 
 ### 2. Process Each File
+
 > Goal: Process Each File
 
 1. อ่าน files แบบ parallel ด้วย `read_file`
@@ -27,6 +29,7 @@ description: ทำงานกับแต่ละ file ใน project จน�
 3. ทำตาม workflow ที่เกี่ยวข้องกับแต่ละ file
 
 ### 3. Verify
+
 > Goal: Verify
 
 1. ตรวจสอบว่าทุก file ได้รับการประมวลผลแล้ว

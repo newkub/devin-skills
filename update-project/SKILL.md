@@ -1,14 +1,6 @@
----
+﻿---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log ล่าสุดและ restore ข้อมูลจาก commits
-related:
-  - update-agents-md
-  - update-readme
-  - update-usage
-  - scan-codebase
-  - check-monorepo
-  - validate
-  - report
 ---
 
 ## Goal

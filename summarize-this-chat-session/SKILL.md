@@ -8,9 +8,6 @@ argument-hint: "[target]"
 title: Summarize This Chat Session
 description: สรุปสิ่งที่ทำใน chat session นี้: ไฟล์ที่แก้, การตัดสินใจ, ปัญหาที่พบ
 auto_execution_mode: 3
-related:
-  - /report-table
-  - /memorize
 ---
 
 ## Goal

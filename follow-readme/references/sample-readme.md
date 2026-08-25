@@ -1,4 +1,4 @@
-
+﻿
 # Global Workflows
 
 <div align="center">
@@ -61,7 +61,7 @@
 | Project Analysis | `/analyze-project`, `/deep-analyze`, `/review-codebase` |
 | Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
-| Deployment | `/follow-deploy`, `/follow-deploy-to-cloudflare`, `/follow-vercel` |
+| Deployment | `/follow-deploy`, `/follow-service-deploy-to-cloudflare`, `/follow-service-vercel` |
 | Maintenance | `/update-dependencies-latest`, `/run-cleanup`, `/refactor` |
 
 ### Architecture Workflows
@@ -71,22 +71,22 @@
 | Clean Architecture | `/follow-architecture` (Clean pattern) |
 | DDD | `/follow-design-pattern` |
 | Microservices | `/follow-architecture` (Microservices pattern) |
-| Monorepo | `/follow-monorepo`, `/follow-turborepo`, `/follow-moonrepo` |
+| Monorepo | `/follow-monorepo`, `/follow-tool-turborepo`, `/follow-tool-moonrepo` |
 
 ### Framework Workflows
 
 | Framework | Workflows |
 |-----------|-----------|
-| Vue | `/follow-vue`, `/follow-nuxt`, `/follow-vueuse` |
-| React | `/follow-react`, `/follow-nextjs` |
-| Rust | `/follow-rust` |
-| Bun | `/follow-bun`, `/use-bun-native-api` |
+| Vue | `/follow-framework-vue`, `/follow-framework-nuxt`, `/follow-lib-vueuse` |
+| React | `/follow-framework-react`, `/follow-framework-nextjs` |
+| Rust | `/follow-lang-rust` |
+| Bun | `/follow-lang-bun`, `/use-bun-native-api` |
 
 ### Utility Workflows
 
 | Category | Workflows |
 |----------|-----------|
-| Git | `/follow-git-branch`, `/follow-git` |
+| Git | `/follow-tool-git-branch`, `/follow-tool-git` |
 | Testing | `/run-test`, `/run-test-e2e`, `/run-test-integration` |
 | Documentation | `/update-readme`, `/update-docs` |
 

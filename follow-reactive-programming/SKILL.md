@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 ## Execute
 
 ### 1. Use Streams
+
 > Goal: Use Streams
 
 ใช้ streams สำหรับ data flow ที่ต่อเนื่อง
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 5. ใช้ hot vs cold streams ตาม use case
 
 ### 2. Use Observables
+
 > Goal: Use Observables
 
 ใช้ observables สำหรับ reacting ต่อ data changes
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 5. จัดการ cleanup เมื่อ unsubscribe
 
 ### 3. Use Operators
+
 > Goal: Use Operators
 
 ใช้ operators สำหรับ transform และ combine streams
@@ -48,6 +51,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 6. ใช้ catchError สำหรับ error handling
 
 ### 4. Manage State
+
 > Goal: Manage State
 
 จัดการ state ด้วย reactive approach
@@ -59,6 +63,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 5. แยก state จาก UI updates
 
 ### 5. Handle Side Effects
+
 > Goal: Handle Side Effects
 
 จัดการ side effects ใน reactive context
@@ -70,6 +75,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 5. แยก pure logic จาก side effects
 
 ### 6. Error Handling
+
 > Goal: Error Handling
 
 จัดการ errors ใน reactive streams
@@ -81,6 +87,7 @@ description: พัฒนาโปรเจกต์ด้วย reactive progra
 5. ใช finalize สำหรับ cleanup ทุกกรณี
 
 ### 7. Testing
+
 > Goal: Testing
 
 เขียน tests สำหรับ reactive code

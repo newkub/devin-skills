@@ -14,6 +14,7 @@ description: เฝ้าติดตามไฟล์งานและรั�
 ## Execute
 
 ### 1. Read task queue
+
 > Goal: อ่านคิวงาน
 
 1. อ่าน `QUEUE.md` หรือรายการงาน
@@ -21,6 +22,7 @@ description: เฝ้าติดตามไฟล์งานและรั�
 1. เรียงตาม priority
 
 ### 2. Watch for changes
+
 > Goal: เฝ้าติดตามการเปลี่ยนแปลง
 
 1. เฝ้าไฟล์คิวงานด้วย file watcher
@@ -28,6 +30,7 @@ description: เฝ้าติดตามไฟล์งานและรั�
 1. debounce การเปลี่ยนแปลงที่เร็วติดต่อกัน
 
 ### 3. Run pending tasks
+
 > Goal: รันงานที่ค้างอยู่
 
 1. เรียก `/run-all-task` หรือ `/implement-queue-md`
@@ -35,6 +38,7 @@ description: เฝ้าติดตามไฟล์งานและรั�
 1. หยุดเมื่อเกิด error หรือถามผู้ใช้
 
 ### 4. Report
+
 > Goal: รายงาน
 
 1. บันทึกงานที่เสร็จและล้มเหลว

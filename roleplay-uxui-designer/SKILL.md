@@ -14,6 +14,7 @@ description: รับบทเป็น UX/UI designer อ่าน source code
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา UI code
@@ -23,6 +24,7 @@ description: รับบทเป็น UX/UI designer อ่าน source code
 5. ถ้าหา UI code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify Designer Profile
+
 > Goal: Identify Designer Profile
 
 1. ระบุ designer level (junior, mid, senior, principal/staff)
@@ -32,6 +34,7 @@ description: รับบทเป็น UX/UI designer อ่าน source code
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Design Review
+
 > Goal: Simulate Design Review
 
 Goal reminder: คิดเหมือน designer ที่วิจารณ์ design quality ไม่ใช่ developer ที่เช็คว่าทำงานไหม
@@ -43,6 +46,7 @@ Goal reminder: คิดเหมือน designer ที่วิจารณ�
 5. ประเมิน design maturity: ad-hoc, emerging, established, mature
 
 ### 4. Analyze Every Design Dimension
+
 > Goal: Analyze Every Design Dimension
 
 Design System:
@@ -86,6 +90,7 @@ Design-Dev Handoff:
 25. Cross-browser: มี vendor prefixes ไหม, มี fallbacks ไหม, มี browser-specific hacks ไหม
 
 ### 5. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -95,6 +100,7 @@ Design-Dev Handoff:
 5. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
 ### 6. Generate Design Review Report
+
 > Goal: Generate Design Review Report
 
 1. ทำ `/report` ด้วย `/report-table`

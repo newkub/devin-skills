@@ -14,6 +14,7 @@ description: ออกแบบและเขียน software ที่ test 
 ## Execute
 
 ### 1. Design Testable & Scalable Architecture
+
 > Goal: Design Testable & Scalable Architecture
 
 ออกแบบ architecture ที่ test ง่ายและ scale ง่าย
@@ -28,6 +29,7 @@ description: ออกแบบและเขียน software ที่ test 
 8. ใช้ async patterns สำหรับ I/O operations
 
 ### 2. Write Debuggable & Testable Code
+
 > Goal: Write Debuggable & Testable Code
 
 เขียน code ที่ debug ง่ายและ test ง่าย
@@ -42,11 +44,12 @@ description: ออกแบบและเขียน software ที่ test 
 8. เพิ่ม observability (metrics, traces, health checks)
 
 ### 3. Design for Usability
+
 > Goal: Design for Usability
 
 ออกแบบให้ใช้งานง่าย
 
-1. ทำ `/follow-web-design` สำหรับ design system principles
+1. ทำ `/review-frontend` สำหรับ design system principles
 2. ออกแบบ API ที่ intuitive และ consistent
 3. ใช้ sensible defaults
 4. เพิ่ม auto-completion และ discoverability
@@ -56,6 +59,7 @@ description: ออกแบบและเขียน software ที่ test 
 8. เพิ่ม feedback ที่ immediate และ clear
 
 ### 4. Create Clear Boundaries
+
 > Goal: Create Clear Boundaries
 
 สร้าง boundaries ที่ชัดเจนระหว่าง layers
@@ -67,6 +71,7 @@ description: ออกแบบและเขียน software ที่ test 
 5. แยก presentation logic จาก business logic
 
 ### 5. Implement Testing Strategy
+
 > Goal: Implement Testing Strategy
 
 จัดการ testing อย่าง systematic
@@ -80,6 +85,7 @@ description: ออกแบบและเขียน software ที่ test 
 7. ตั้งเป้าหมาย coverage ที่สูง
 
 ### 6. Add Documentation
+
 > Goal: Add Documentation
 
 เพิ่ม documentation อย่างสมบูรณ์

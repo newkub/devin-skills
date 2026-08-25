@@ -14,6 +14,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 ## Execute
 
 ### 1. Define Loop Purpose
+
 > Goal: กำหนดเป้าหมายและขอบเขตของ loop
 1. ระบุ goal หลักที loop ต้องบรรลุ
 2. เลือก trigger: cron, git event, issue, notification, หรือ manual
@@ -21,6 +22,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. กำหนด max iterations หรือ budget เพื่อป้องกัน infinite loop
 
 ### 2. Design Work Discovery
+
 > Goal: หางานเข้ามาใน loop อย่างครอบคลุม
 1. อ่าน/scan source ของงาน: git diff, issues, PR comments, logs, metrics
 2. ใช้ `scan-codebase`, `grep`, `code_search` หา pattern ทีต้องแก้
@@ -28,6 +30,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. ถ้าไม่มีงาน → loop หยุดและ report
 
 ### 3. Triage and Isolate
+
 > Goal: แบ่งงานและแยก context ไม่ให้ปนกัน
 1. จัดหมวดหมู่งาน: bug, refactor, test, docs, security
 2. สร้าง isolated context สำหรับแต่ละงาน: worktree, branch, หรือ workspace
@@ -35,6 +38,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. บันทึก state ของงานลง `STATE.md` หรือไฟล์บันทึก
 
 ### 4. Implement and Verify
+
 > Goal: ให้ agent ทำงานและ verify อิสระ
 1. มอบหมายงานให้ implementer agent พร้อม context ที่จำเป็น
 2. ให้ verifier agent ตรวจผลโดยไม่ขึ้นกับ implementer
@@ -42,6 +46,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. ถ้าไม่ผ่าน → ส่งกลับไปแก้ไขหรือข้ามไปงานถัดไป
 
 ### 5. Persist State
+
 > Goal: บันทึกสถานะและผลลัพธ์ที loop ทำ
 1. อัปเดต `STATE.md` ด้วย: งาน, ผล, การตัดสินใจ, รอบถัดไป
 2. เก็บ log, diff, test result, PR link
@@ -49,6 +54,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. ทำให้ state สามารถตรวจสอบย้อนกลับได้
 
 ### 6. Human Gates
+
 > Goal: กำหนดจุดหยุดสำหรับคนตัดสินใจ
 1. ระบุ actions ทีเสี่ยงหรือย้อนกลับไม่ได้: publish, merge, push, delete, deploy
 2. สรุปผลและข้อเสนอก่อนถาม user
@@ -56,6 +62,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 4. ถ้า user ไม่อนุมัติ → บันทึกเหตุผลและหยุด หรือข้าม
 
 ### 7. Monitor and Iterate
+
 > Goal: ปรับปรุง loop จากผลการทำงาน
 1. ติดตาม success rate, cost, review burden, จำนวน human gate
 2. หา loop ทีสร้าง noise หรือใช้ cost สูงเกินไป

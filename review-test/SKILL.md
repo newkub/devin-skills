@@ -9,7 +9,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ## Scope
 
-ใช้ก่อนเรียก `run-test`, `write-test`, `follow-test`, `follow-tdd`, `update-test`, `run-test-coverage`, หรือ `follow-regression-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression แล้วสรุป test quality score พร้อม coverage gap report
+ใช้ก่อนเรียก `run-test`, `write-test`, `follow-test`, `follow-tdd`, `update-test`, `run-test-coverage`, หรือ `follow-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression แล้วสรุป test quality score พร้อม coverage gap report
 
 ## Execute
 

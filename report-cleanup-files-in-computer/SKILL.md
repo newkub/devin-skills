@@ -23,7 +23,7 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
 4. ทำ `/list-system-env` เพื่อดู paths หลัก
-   - ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
+   - ทำ `/follow-tool-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
 
 ### 2. Scan System Caches And Temp Files
 
@@ -81,6 +81,7 @@ description: รายงานไฟล์และโฟลเดอร์ใ�
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

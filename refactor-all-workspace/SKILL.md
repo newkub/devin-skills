@@ -14,6 +14,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 ## Execute
 
 ### 0. Foundation And Safety
+
 > Goal: Foundation And Safety
 
 เตรียมความพร้อมและ safety measures ก่อนเริ่ม refactor
@@ -23,6 +24,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - สร้าง commit checkpoint สำหรับ rollback หากจำเป็น
 
 ### 1. Discover Workspaces
+
 > Goal: Discover Workspaces
 
 ค้นหาและระบุ workspaces ทั้งหมดใน monorepo
@@ -31,6 +33,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน, applications ทีหลัง)
 
 ### 2. Deep Analysis
+
 > Goal: Deep Analysis
 
 วิเคราะหา codebase เชิงลึกเพื่อระบุ issues ทั้งหมด
@@ -47,6 +50,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - สรุป findings และ prioritize issues
 
 ### 3. Strategic Planning
+
 > Goal: Strategic Planning
 
 วางแผน refactoring อย่าง systematic และ risk-aware
@@ -60,6 +64,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - ประมาณการ effort และ timeline สำหรับแต่ละ phase
 
 ### 4. Process Each Workspace
+
 > Goal: Process Each Workspace
 
 ทำ deep refactoring ในแต่ละ workspace ตามลำดับที่กำหนด
@@ -70,6 +75,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - สร้าง commit checkpoint หลังแต่ละ workspace
 
 ### 5. Comprehensive Validation
+
 > Goal: Comprehensive Validation
 
 ตรวจสอบทุกด้านเพื่อความปลอดภัย
@@ -82,6 +88,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - ตรวจสอบว่า success criteria ทั้งหมดผ่าน
 
 ### 6. Documentation And Cleanup
+
 > Goal: Documentation And Cleanup
 
 อัปเดท documentation และ cleanup

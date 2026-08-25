@@ -15,6 +15,7 @@ argument-hint: "[command]"
 ## Execute
 
 ### 1. Basic Discovery
+
 > Goal: Basic Discovery
 
 1. รัน `<cli> --version` เพื่อดู version
@@ -23,6 +24,7 @@ argument-hint: "[command]"
 4. รัน `<cli> <subcommand> --help` เพื่อดู options ของแต่ละ subcommand
 
 ### 2. Machine-Readable Context
+
 > Goal: Machine-Readable Context
 
 ถ้า CLI รองรับ machine-readable metadata:
@@ -31,6 +33,7 @@ argument-hint: "[command]"
 3. บันทึก command list, flags, และ argument types
 
 ### 3. Document
+
 > Goal: Document
 
 สรุปทีได้:

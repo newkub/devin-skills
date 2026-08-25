@@ -14,6 +14,7 @@ description: รับบทเป็น QA engineer คิด edge cases bounda
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา testable code
@@ -23,6 +24,7 @@ description: รับบทเป็น QA engineer คิด edge cases bounda
 5. ถ้าหา testable code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify QA Profile
+
 > Goal: Identify QA Profile
 
 1. ระบุ QA level (junior, mid, senior, lead)
@@ -32,6 +34,7 @@ description: รับบทเป็น QA engineer คิด edge cases bounda
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Simulate Test Planning
+
 > Goal: Simulate Test Planning
 
 Goal reminder: คิดเหมือน QA จริงที่หา bug ไม่ใช่ dev ที่เชื่อว่า code ทำงานถูก
@@ -43,6 +46,7 @@ Goal reminder: คิดเหมือน QA จริงที่หา bug �
 5. ประเมิน risk ของแต่ละ area: High, Medium, Low
 
 ### 4. Analyze Every Testing Dimension
+
 > Goal: Analyze Every Testing Dimension
 
 Functional Edge Cases:
@@ -84,6 +88,7 @@ Non-Functional:
 23. Security from QA angle: unauthorized access, permission bypass, data leak in UI, error message leak
 
 ### 5. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -94,6 +99,7 @@ Non-Functional:
 6. ถ้าไม่มี evidence ให้ระบุเป็น assumption
 
 ### 6. Generate QA Report
+
 > Goal: Generate QA Report
 
 1. ทำ `/report` ด้วย `/report-table`

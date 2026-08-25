@@ -15,12 +15,14 @@ argument-hint: "[repo]"
 ## Execute
 
 ### 1. Get Authenticated User
+
 > Goal: Get Authenticated User
 
 1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
 2. รับชื่อ repository ที่ต้องการดู PRs จากผู้ใช้
 
 ### 2. List Pull Requests
+
 > Goal: List Pull Requests
 
 1. ทำ `mcp7_list_pull_requests` ด้วย `owner` และ `repo` parameters
@@ -29,6 +31,7 @@ argument-hint: "[repo]"
 4. ใช้ `perPage: 100` สำหรับ pagination
 
 ### 3. Format Output
+
 > Goal: Format Output
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

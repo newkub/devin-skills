@@ -1,13 +1,6 @@
----
+﻿---
 name: review-readme
 description: ตรวจสอบ README.md ก่อน update-readme แก้ไข ครอบคลุม section order และ format
-related:
-  - update-readme
-  - follow-write-devin-skills
-  - validate
-  - check-reference
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

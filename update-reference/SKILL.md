@@ -14,6 +14,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 ## Execute
 
 ### 1. Determine Context
+
 > Goal: Determine Context
 
 ตรวจสอบว่าแก้ไขไฟล์ที่ไหนเพื่อกำหนด scope ของการค้นหา references
@@ -23,6 +24,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 3. ตรวจสอบ workspace ที่ใช้งานปัจจุบัน
 
 ### 2. Update Project References
+
 > Goal: Update Project References
 
 เมื่อแก้ไขไฟล์ใน project ให้ค้นหาและอัพเดท references ภายใน project
@@ -33,6 +35,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยังไฟล์เดิม
 
 ### 3. Update Workflow References
+
 > Goal: Update Workflow References
 
 เมื่อแก้ไขไฟล์ใน workflows ให้ค้นหาและอัพเดท references ใน workflows และ skills
@@ -44,6 +47,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 5. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง workflow เดิม
 
 ### 4. Update Skill References
+
 > Goal: Update Skill References
 
 เมื่อแก้ไขไฟล์ใน skills ให้ค้นหาและอัพเดท references ภายใน skills

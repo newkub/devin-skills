@@ -14,6 +14,7 @@ description: รัน benchmark tests เพื่อวัดประสิ�
 ## Execute
 
 ### 1. Setup Environment
+
 > Goal: Setup Environment
 
 1. ทำ `/run-install` เพื่อติดตั้ง dependencies และ benchmark libraries (เช่น `vitest bench`, `tinybench`)
@@ -22,6 +23,7 @@ description: รัน benchmark tests เพื่อวัดประสิ�
 4. ถ้ามี baseline results ให้บันทึกไว้สำหรับการเปรียบเทียบ
 
 ### 2. Run Benchmarks
+
 > Goal: Run Benchmarks
 
 1. รัน `bun run bench` หรือ script ที่กำหนดใน `package.json`
@@ -30,6 +32,7 @@ description: รัน benchmark tests เพื่อวัดประสิ�
 4. ทำ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 3. Analyze Results
+
 > Goal: Analyze Results
 
 1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
@@ -39,6 +42,7 @@ description: รัน benchmark tests เพื่อวัดประสิ�
 5. ถ้ามี variance สูง ให้รันซ้ำเพื่อยืนยันผลลัพธ์
 
 ### 4. Compare With Baseline
+
 > Goal: Compare With Baseline
 
 1. เปรียบเทียบผลลัพธ์กับ baseline ถ้ามี

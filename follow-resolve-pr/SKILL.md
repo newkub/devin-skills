@@ -18,6 +18,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 ## Execute
 
 ### 1. Verify PR Readiness
+
 > Goal: Verify PR Readiness
 
 1. ตรวจสอบว่า CI checks ผ่านทั้งหมด
@@ -27,6 +28,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 5. ตรวจสอบว่า branch ปัจจุบัน sync กับ remote
 
 ### 2. Review Changes
+
 > Goal: Review Changes
 
 1. อ่าน diff ของ PR อย่างละเอียด
@@ -36,6 +38,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 5. ตรวจสอบว่า tests ครอบคลุม
 
 ### 3. Choose Merge Method
+
 > Goal: Choose Merge Method
 
 เลือก merge method ตาม project conventions:
@@ -45,6 +48,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 - Rebase: สำหรับ linear history และ avoiding merge commits
 
 ### 4. Merge PR With MCP Tool
+
 > Goal: Merge PR With MCP Tool
 
 1. ใช้ `mcp3_merge_pull_request`
@@ -54,6 +58,7 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 5. ตรวจสอบว่า merge สำเร็จ
 
 ### 5. Post-Merge Actions
+
 > Goal: Post-Merge Actions
 
 1. ตรวจสอบว่า issue ถูกปิดอัตโนมัติ (ถ้ามี `Closes #issue`)

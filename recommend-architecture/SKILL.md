@@ -18,6 +18,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 ## Execute
 
 ### 1. Deep Analyze
+
 > Goal: Deep Analyze
 
 วิเคราะห์โปรเจกต์อย่างละเอียด
@@ -27,6 +28,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 - บันทึก findings และ recommendations
 
 ### 2. Check Architecture
+
 > Goal: Check Architecture
 
 ตรวจสอบโครงสร้างไฟล์และ folders
@@ -36,6 +38,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 - ตรวจสอบ consistency ของโครงสร้าง
 
 ### 3. Recommend Architecture
+
 > Goal: Recommend Architecture
 
 แนะนำ architecture ที่เหมาะสม
@@ -46,6 +49,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 - มี comment ด้านหลังแต่ละ file/folder
 
 ### 4. Create File Pattern Table
+
 > Goal: Create File Pattern Table
 
 สร้างตาราง file pattern

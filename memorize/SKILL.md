@@ -15,6 +15,7 @@ argument-hint: "[content]"
 ## Execute
 
 ### 1. Identify What To Memorize
+
 > Goal: Identify What To Memorize
 
 ระบุสิ่งที่ควรจดจำ:
@@ -30,6 +31,7 @@ argument-hint: "[content]"
 3. ถ้าคำตอบคือใช่ ให้ดำเนินการจดจำ
 
 ### 2. Capture Key Information
+
 > Goal: Capture Key Information
 
 บันทึกข้อมูลสำคัญ:
@@ -41,6 +43,7 @@ argument-hint: "[content]"
 5. ถ้ามีตัวเลขหรือ facts เฉพาะ ให้บันทึกพร้อม source
 
 ### 3. Categorize And Tag
+
 > Goal: Categorize And Tag
 
 จัดหมวดและ tag:
@@ -51,6 +54,7 @@ argument-hint: "[content]"
 4. ระบุ scope: global, project, workspace, task
 
 ### 4. Store Memory
+
 > Goal: Store Memory
 
 จัดเก็บความจำ:
@@ -63,6 +67,7 @@ argument-hint: "[content]"
 6. ตรวจสอบว่าไม่ซ้ำกับ memory ที่มีอยู่ — ถ้าซ้ำให้ update แทน
 
 ### 5. Verify Memory
+
 > Goal: Verify Memory
 
 ตรวจสอบความถูกต้อง:

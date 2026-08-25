@@ -1,13 +1,6 @@
----
+﻿---
 name: review-create-review-cli
 description: ตรวจสอบ tools/review CLI ก่อน update-create-review-cli แก้ไข
-related:
-  - update-create-review-cli
-  - review-create-analyze-cli
-  - follow-create-bun-cli
-  - validate
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

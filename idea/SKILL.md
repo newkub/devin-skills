@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Analyze Context
+
 > Goal: Analyze Context
 
 วิเคราะห์ context จาก user request:
@@ -24,18 +25,20 @@ argument-hint: "[topic]"
 3. ระบุ pain points และ gaps จาก context
 
 ### 2. Generate Ideas
+
 > Goal: Generate Ideas
 
 สร้างไอเดียตาม context:
 
 1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
-2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/follow-uxui` สร้างไอเดีย UX/UI improvements
+2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/review-frontend` สร้างไอเดีย UX/UI improvements
 3. สร้างไอเดียปรับปรุงจากเดิม (Extends)
 4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
 5. ระบุ problem ที่แต่ละไอเดียจะ solve
 6. จัดกลุ่มตาม topics
 
 ### 3. Prioritize And Report
+
 > Goal: Prioritize And Report
 
 จัดลำดับและรายงาน:

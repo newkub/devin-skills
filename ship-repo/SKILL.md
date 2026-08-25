@@ -1,13 +1,6 @@
----
+﻿---
 name: ship-repo
 description: Ship ทุก workspace ใน repo และ update-project ที่ root
-related:
-  - ship-workspace
-  - update-project
-  - update-agents-md
-  - validate
-  - git-commit
-  - report
 ---
 
 ## Goal

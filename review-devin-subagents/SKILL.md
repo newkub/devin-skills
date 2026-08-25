@@ -1,11 +1,6 @@
----
+﻿---
 name: review-devin-subagents
 description: ตรวจสอบ subagent ก่อน update-devin-subagents แก้ไข ครอบคลุม format
-related:
-  - update-devin-subagents
-  - validate
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

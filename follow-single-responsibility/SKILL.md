@@ -14,6 +14,7 @@ description: แยก task หรือ prompt ออกเป็นหน่�
 ## Execute
 
 ### 1. Parse Input
+
 > Goal: เข้าใจความต้องการที user ระบุ
 1. อ่าน prompt ล่าสุดและ context ทีเกี่ยวข้อง
 2. ระบุ goal หลัก, ขอบเขต, และ expected outcome
@@ -21,6 +22,7 @@ description: แยก task หรือ prompt ออกเป็นหน่�
 4. ถ้า input ไม่ชัดเจน → ทำ `/ask-me` ก่อนดำเนินการ
 
 ### 2. Decompose
+
 > Goal: แยกงานออกเป็นหน่วยย่อยทีละอย่าง
 1. แยกแต่ละคำสั่ง/คำขอออกจากกัน
 2. ตรวจสอบว่าแต่ละข้อทำสิ่งเดียวเท่านั้น
@@ -28,12 +30,14 @@ description: แยก task หรือ prompt ออกเป็นหน่�
 4. เรียงลำดับตาม dependency หรือลำดับการทำงานทีเหมาะสม
 
 ### 3. Format
+
 > Goal: นำเสนอผลลัพธ์ในรูปแบบเข้าใจง่าย
 1. สรุปแต่ละข้อด้วยประโยคสั้น กระชับ ชัดเจน
 2. ใช้รูปแบบ `N. <responsibility> — <short detail>`
 3. จัดลำดับตาม prepare → read → research → analyze → write → validate → report ถ้าเป็นไปได้
 
 ### 4. Hand Off
+
 > Goal: พร้อมให้ step ถัดไปรับผิดชอบ
 1. แสดง numbered list ในแชททันที
 2. ไม่ลงมือ implement หรือแก้ไขไฟล์ใดๆ ในขั้นตอนนี้

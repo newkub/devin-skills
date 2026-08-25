@@ -14,6 +14,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 ## Execute
 
 ### 1. Setup
+
 > Goal: Setup
 
 1. สร้าง project directory สำหรับ plugin
@@ -21,6 +22,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 3. ติดตั้ง dependencies ที่จำเป็น
 
 ### 2. Create Plugin Entry
+
 > Goal: Create Plugin Entry
 
 1. สร้าง entry file ที่ export plugin object
@@ -28,6 +30,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 3. Export สำหรับ ESM หรือ CommonJS
 
 ### 3. Create Custom Rules
+
 > Goal: Create Custom Rules
 
 1. สร้าง rule files ใน rules directory
@@ -35,6 +38,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 3. Implement create function สำหรับ rule logic
 
 ### 4. Configure Rule Metadata
+
 > Goal: Configure Rule Metadata
 
 1. กำหนด type: problem, suggestion, หรือ layout
@@ -43,6 +47,7 @@ description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeS
 4. กำหนด schema ถ้า rule มี options
 
 ### 5. Test Plugin
+
 > Goal: Test Plugin
 
 1. สร้าง test files สำหรับ rules

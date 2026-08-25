@@ -4,6 +4,6 @@
 [submodule "ask-requirement/src"]
 	path = ask-requirement/src
 	url = https://github.com/newkub/ask-requirement.git
-[submodule "visulize-devin"]
-	path = visulize-devin
-	url = git@github.com:newkub/visulize-devin.git
+[submodule "visualize-devin"]
+	path = visualize-devin
+	url = git@github.com:newkub/visualize-devin.git

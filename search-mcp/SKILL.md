@@ -15,6 +15,7 @@ argument-hint: "[query]"
 ## Execute
 
 ### 1. Search MCP
+
 > Goal: Search MCP
 
 ค้นหา MCP ที่เกี่ยวข้อง

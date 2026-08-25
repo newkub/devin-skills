@@ -124,6 +124,7 @@ const newProjects = await injectTestProjects({
 - Filter อาจมีผล - อัปเดท `vitest.config.project` ถ้าจำเป็น
 
 ### 4. Cache Key Generator (4.0.11+)
+
 > Goal: Cache Key Generator (4.0.11+)
 
 - Return string สำหรับ cache key hashing
@@ -132,6 +133,7 @@ const newProjects = await injectTestProjects({
 - ทำงานเมื่อมี `experimental.fsModuleCache`
 
 ### 5. Config Mutations
+
 > Goal: Config Mutations
 
 - แก้ไข `vitest.config` โดยตรงได้

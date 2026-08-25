@@ -15,6 +15,7 @@ argument-hint: "[pattern]"
 ## Execute
 
 ### 1. Prepare
+
 > Goal: Prepare
 
 - ทำ `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
@@ -23,6 +24,7 @@ argument-hint: "[pattern]"
 - สร้าง folder `rules/` สำหรับเก็บ rule files
 
 ### 2. Create Rule
+
 > Goal: Create Rule
 
 - สร้าง rule YAML file ใน `rules/`
@@ -32,6 +34,7 @@ argument-hint: "[pattern]"
 - ทำ `/update-ast-grep-rules` สำหรับเขียน rules ที่ซับซ้อน
 
 ### 3. Advanced Rules
+
 > Goal: Advanced Rules
 
 - ใช้ relational rules: inside, has, precedes, follows
@@ -40,6 +43,7 @@ argument-hint: "[pattern]"
 - ใช้ transform สำหรับ complex transformations
 
 ### 4. Test Rules
+
 > Goal: Test Rules
 
 - สร้าง test cases (valid และ invalid)
@@ -48,6 +52,7 @@ argument-hint: "[pattern]"
 - รัน `ast-grep scan` เพื่อ test กับ codebase
 
 ### 5. Usage
+
 > Goal: Usage
 
 - ใช้ `ast-grep run -p 'pattern'` สำหรับ ad-hoc search
@@ -56,6 +61,7 @@ argument-hint: "[pattern]"
 - ตรวจสอบ output และ tune rules
 
 ### 6. Outline Command
+
 > Goal: Outline Command
 
 ใช้ `sg outline` สำหรับ explore code structure และ navigation

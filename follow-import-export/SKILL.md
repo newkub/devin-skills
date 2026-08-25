@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-import-export
 description: จัดการ import strategy และ barrel exports สำหรับ module public API
 ---
@@ -31,7 +31,7 @@ description: จัดการ import strategy และ barrel exports สำ�
 
 > Goal: ตั้งค่า import aliases ใน configuration files
 
-1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-typescript`)
+1. ตั้งค่า `paths` ใน `tsconfig.json` สำหรับ TypeScript (ทำ `/follow-lang-typescript`)
 2. ตั้งค่า `resolve.alias` ใน `vite.config.ts` สำหรับ Vite
 3. ตั้งค่า `imports` ใน `package.json` สำหรับ Bun
 4. ตั้งค่า framework-specific aliases (Next.js, Nuxt, Solid, etc.)

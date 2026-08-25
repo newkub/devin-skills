@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Analyze Problem
+
 > Goal: Analyze Problem
 
 1. วิเคราะห์ปัญหาที่ต้องการสูตรคณิตศาสตร์
@@ -23,6 +24,7 @@ argument-hint: "[target]"
 4. เข้าใจบริบทและขอบเขตของปัญหา
 
 ### 2. Request Formula
+
 > Goal: Request Formula
 
 1. ขอสูตรคณิตศาสตร์ที่กระชับที่สุด
@@ -31,6 +33,7 @@ argument-hint: "[target]"
 4. ขอเงื่อนไขการใช้งานและข้อจำกัด
 
 ### 3. Validate Formula
+
 > Goal: Validate Formula
 
 1. ตรวจสอบว่าสูตรตรงกับปัญหาที่ต้องการ

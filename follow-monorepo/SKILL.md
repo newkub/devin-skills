@@ -1,14 +1,6 @@
 ---
 name: follow-monorepo
 description: สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications
-related:
-  - follow-architecture
-  - follow-turborepo
-  - follow-moonrepo
-  - follow-package-manifest
-  - run-verify
-  - run-test
-  - update-readme
 ---
 
 ## Goal
@@ -22,6 +14,7 @@ related:
 ## Execute
 
 ### 1. Analyze Requirements
+
 > Goal: Analyze Requirements
 
 วิเคราะห์ความต้องการ monorepo และเลือก tool ที่เหมาะสม
@@ -33,17 +26,19 @@ related:
 5. ตรวจสอบ criteria สำหรับ monorepo adoption
 
 ### 2. Setup Monorepo
+
 > Goal: Setup Monorepo
 
 ตั้งค่า monorepo ด้วย tool ที่เลือก
 
-1. ทำ `/follow-turborepo` หรือ `/follow-moonrepo` สำหรับ tool setup
+1. ทำ `/follow-tool-turborepo` หรือ `/follow-tool-moonrepo` สำหรับ tool setup
 2. แยก packages ตาม concerns
 3. ตั้งค่า workspace protocol
 4. ตั้งค่า dependency catalog ใน root (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) สำหรับ shared versions
 5. รัน `/run-verify` เพื่อตรวจสอบ
 
 ### 3. Configure Build System
+
 > Goal: Configure Build System
 
 ตั้งค่า build system สำหรับ monorepo
@@ -53,6 +48,7 @@ related:
 3. ตั้งค่า outputs สำหรับ cache invalidation
 
 ### 4. Setup Shared Configuration
+
 > Goal: Setup Shared Configuration
 
 ตั้งค่า shared configs สำหรับทั้ง monorepo

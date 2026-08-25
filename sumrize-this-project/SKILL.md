@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Analyze Project Structure
+
 > Goal: Analyze Project Structure
 
 วิเคราะห์โครงสร้าง project
@@ -25,6 +26,7 @@ argument-hint: "[target]"
 4. ดู configuration files
 
 ### 2. Identify Features
+
 > Goal: Identify Features
 
 ระบุ features หลักของ project
@@ -35,6 +37,7 @@ argument-hint: "[target]"
 4. ระบุ integrations กับ external services
 
 ### 3. Identify Solutions
+
 > Goal: Identify Solutions
 
 ระบุ solutions ที่ตอบโจทย์
@@ -45,6 +48,7 @@ argument-hint: "[target]"
 4. ดู competitive advantages
 
 ### 4. Summarize Findings
+
 > Goal: Summarize Findings
 
 สรุปผลการวิเคราะห์

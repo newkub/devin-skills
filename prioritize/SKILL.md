@@ -14,6 +14,7 @@ description: จัดลำดับความสำคัญของ tasks 
 ## Execute
 
 ### 1. Assess Impact
+
 > Goal: Assess Impact
 
 ประเมินผลกระทบของ task
@@ -24,6 +25,7 @@ description: จัดลำดับความสำคัญของ tasks 
 4. ประเมิน `urgency`: deadline, dependencies, blocking issues
 
 ### 2. Estimate Effort
+
 > Goal: Estimate Effort
 
 ประเมินความยากและเวลาที่ต้องใช้
@@ -34,6 +36,7 @@ description: จัดลำดับความสำคัญของ tasks 
 4. ประเมิน `risk`: ความเสี่ยงของการทำงาน
 
 ### 3. Calculate Priority
+
 > Goal: Calculate Priority
 
 คำนวณ priority จาก impact และ effort
@@ -53,6 +56,7 @@ description: จัดลำดับความสำคัญของ tasks 
 | Low    | High   | P4       | Defer or skip |
 
 ### 4. Consider Dependencies
+
 > Goal: Consider Dependencies
 
 พิจารณา dependencies ระหว่าง tasks
@@ -63,6 +67,7 @@ description: จัดลำดับความสำคัญของ tasks 
 4. จัดลำดับ tasks ที่เป็น prerequisites ก่อน
 
 ### 5. Validate With Stakeholders
+
 > Goal: Validate With Stakeholders
 
 ตรวจสอบ priority กับ stakeholders

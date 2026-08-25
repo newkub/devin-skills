@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 ## Execute
 
 ### 1. Use Pure Functions
+
 > Goal: Use Pure Functions
 
 เขียนฟังก์ชันที่ pure เสมอเมื่อเป็นไปได้
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. ใช้ `impure functions` เฉพาะใน imperative shell
 
 ### 2. Enforce Immutability
+
 > Goal: Enforce Immutability
 
 ทำตาม `/follow-declarative-programming` เพื่อใช้ immutability
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. ใช้ `array methods` ที่ไม่ mutate: `map`, `filter`, `reduce`
 
 ### 3. Function Composition
+
 > Goal: Function Composition
 
 ทำตาม `/follow-declarative-programming` เพื่อใช้ composition
@@ -47,9 +50,10 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. ใช้ `generics` สำหรับ reusable composition
 
 ### 4. Type Safety
+
 > Goal: Type Safety
 
-ทำตาม `/follow-typescript` เพื่อเพิ่มความปลอดภัย
+ทำตาม `/follow-lang-typescript` เพื่อเพิ่มความปลอดภัย
 
 1. ใช้ `function types` อย่างชัดเจน
 2. ใช้ `generics` สำหรับ reusable functions
@@ -58,6 +62,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. ใช้ `discriminated unions` สำหรับ complex state
 
 ### 5. Separate Core and Shell
+
 > Goal: Separate Core and Shell
 
 แยก functional core จาก imperative shell
@@ -70,6 +75,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 6. ทำ `/review-codebase` เพื่อจัดการ side effects
 
 ### 6. Avoid Mutable State
+
 > Goal: Avoid Mutable State
 
 หลีกเลี่ยง mutable state ที่ไม่จำเป็น
@@ -81,6 +87,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. ใช้ `message passing` แทน shared state
 
 ### 7. Error Handling
+
 > Goal: Error Handling
 
 จัดการ errors ด้วย functional approach
@@ -92,6 +99,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 5. Handle errors อย่าง explicit
 
 ### 8. Testing
+
 > Goal: Testing
 
 เขียน tests สำหรับ pure functions
@@ -136,7 +144,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 
 ### Type Safety
 
-ทำตาม `/follow-typescript` เพื่อความปลอดภัย
+ทำตาม `/follow-lang-typescript` เพื่อความปลอดภัย
 
 - Explicit `function types`
 - `Generics` สำหรับ reusability

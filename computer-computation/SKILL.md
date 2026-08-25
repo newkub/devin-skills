@@ -14,6 +14,7 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 ## Execute
 
 ### 1. Study The Fundamentals
+
 > Goal: Study The Fundamentals
 
 - อ่าน `guide/quick-start.md` เพื่อเริ่มต้นเรียนรู้
@@ -25,6 +26,7 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 - ศึกษา `guide/key-concept-church-turing.md` เพื่อเข้าใจ Church-Turing Thesis
 
 ### 2. Learn Architecture And Design
+
 > Goal: Learn Architecture And Design
 
 - อ่าน `guide/architecture.md` เพื่อเข้าใจ computational models
@@ -32,12 +34,14 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 - อ่าน `guide/integration.md` เพื่อเข้าใจการเชื่อมโยง
 
 ### 3. Understand How It Works
+
 > Goal: Understand How It Works
 
 - อ่าน `guide/how-it-works-computation-models.md` เพื่อเข้าใจการทำงานของ computation models
 - อ่าน `guide/how-it-works-complexity.md` เพื่อเข้าใจ complexity analysis
 
 ### 4. Apply Best Practices
+
 > Goal: Apply Best Practices
 
 - อ่าน `guide/best-practices.md` เพื่อเรียนรู้ best practices
@@ -45,6 +49,7 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 - ติดตั้งตาม `guide/installation.md`
 
 ### 5. Use Workflows
+
 > Goal: Use Workflows
 
 - ปฏิบัติตาม `workflows/study-computation.md` สำหรับการศึกษา
@@ -52,6 +57,7 @@ description: ให้ผู้ใช้เข้าใจและสามา�
 - ให้ examples ที่ชัดเจนและใช้งานได้จริง
 
 ### 6. Reference Documentation
+
 > Goal: Reference Documentation
 
 - อ้างอิง `references/computation-resources.md` สำหรับ official documentation

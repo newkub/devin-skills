@@ -1,4 +1,4 @@
----
+﻿---
 name: search-in-raindrop
 description: Search Raindrop.io bookmarks via raindrop CLI with filters, output formats, and result parsing
 argument-hint: "[query]"
@@ -18,7 +18,7 @@ argument-hint: "[query]"
 
 > Goal: Set up raindrop CLI and confirm authentication before searching
 
-1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
+1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-tool-my-global-cli` เพื่อติดตั้ง
 2. รัน `raindrop auth status`
 3. ถ้ายังไม่ authenticated → รัน `printf '%s' "$RAINDROP_ACCESS_TOKEN" | raindrop auth login --token-stdin`
 4. รัน `raindrop doctor` เพื่อ verify config, auth, และ API connectivity

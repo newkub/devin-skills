@@ -27,7 +27,7 @@ argument-hint: "[title]"
 > Goal: ยืนยันว่า root dependencies พร้อมใช้งาน
 
 1. ตรวจสอบว่า `D:/newkub/slides/package.json` มีอยู่แล้ว
-2. ถ้าไม่มี ให้ทำ `/follow-slidev` เพื่อสร้าง root setup
+2. ถ้าไม่มี ให้ทำ `/follow-framework-slidev` เพื่อสร้าง root setup
 3. ไม่ต้องสร้าง `package.json` ของ project — dependencies อยู่ที่ root
 
 ### 3. Create Slides File

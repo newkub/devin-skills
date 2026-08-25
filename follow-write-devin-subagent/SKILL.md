@@ -15,6 +15,7 @@ argument-hint: "[agent-name]"
 ## Execute
 
 ### 1. Prepare
+
 > Goal: รู้บทบาทและตำแหน่งของ agent
 1. รับชื่อ agent และบทบาทจาก user
 2. ตรวจสอบว่า agent ยังไม่มีอยู่ หรือแก้ไข agent เดิม
@@ -22,6 +23,7 @@ argument-hint: "[agent-name]"
 4. ถ้าชื่อซ้ำหรือไม่ชัด → ทำ `/ask-me`
 
 ### 2. Select Archetype
+
 > Goal: เลือกโครงสร้างสิทธิ์ตามบทบาท
 1. **Read-only auditor**: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
 2. **Builder/Implementer**: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` สำหรับ test/lint/build
@@ -29,6 +31,7 @@ argument-hint: "[agent-name]"
 4. **Executor/Operator**: `test-runner`, `release`, `deployment-specialist` — allow รันคำสั่งทีเกี่ยวข้อง
 
 ### 3. Write Frontmatter
+
 > Goal: frontmatter ถูกต้องตาม Devin spec
 1. `name`: lowercase, คั่นด้วย `-`, ตรงกับ directory name
 2. `description`: กระชับ ≤100 ตัวอักษร
@@ -39,6 +42,7 @@ argument-hint: "[agent-name]"
    - `deny`: `write`, `edit` สำหรับ read-only; หรือ `exec` ถ้าไม่ต้องการให้รัน terminal
 
 ### 4. Write Prompt Body
+
 > Goal: prompt สอดคล้องกับบทบาทและ spec
 1. `## Goal`: ประโยคเดียวชัดเจน
 2. `## Scope`: ขอบเขตงานและ focus areas
@@ -49,6 +53,7 @@ argument-hint: "[agent-name]"
 7. ห้ามใช้ `**` bold markers
 
 ### 5. Validate
+
 > Goal: AGENT.md พร้อมใช้งาน
 1. ตรวจว่ามี frontmatter `---` ครบท้งสองฝั่ง
 2. ตรวจ required fields: `name`, `description`, `model`, `allowed-tools`
@@ -59,6 +64,7 @@ argument-hint: "[agent-name]"
 7. ถ้ามีปัญหา → แก้ไขและ revalidate จนผ่าน
 
 ### 6. Update References
+
 > Goal: รักษาความสอดคล้องกับ catalog
 1. ถ้ามี agent อื่นเกี่ยวข้อง → อัปเดต `related` หรือ cross-reference
 2. ถ้ามี skill ที agent ควรใช้ → เพิ่มลงใน `## Execute` หรือ `## Rules`

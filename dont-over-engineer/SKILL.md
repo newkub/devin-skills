@@ -14,6 +14,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 ## Execute
 
 ### 1. Analyze Problem
+
 > Goal: Analyze Problem
 
 วิเคราะห์ปัญหาเพื่อหา root cause
@@ -23,6 +24,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 3. ไม่สร้าง abstraction ที่ไม่จำเป็น
 
 ### 2. Apply Minimal Fix
+
 > Goal: Apply Minimal Fix
 
 ใช้ minimal changes ที่เป็นไปได้
@@ -32,6 +34,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 3. ไม่สร้าง generic solution สำหรับปัญหาเฉพาะ
 
 ### 3. Verify Solution
+
 > Goal: Verify Solution
 
 ตรวจสอบว่าแก้ปัญหาได้จริง

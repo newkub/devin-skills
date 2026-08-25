@@ -15,22 +15,25 @@ Capture ภาพหน้าเว็บ (screenshot, PDF) ด้วย `agent-
 ## Execute
 
 ### 1. Install And Verify
+
 > Goal: Install And Verify
 
-ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-agent-browser` ข้อ 1
+ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-tool-agent-browser` ข้อ 1
 
 1. ตรวจสอบด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun install -g agent-browser` แล้ว `agent-browser install`
 
 ### 2. Open Browser
+
 > Goal: Open Browser
 
-เปิด browser ไปยัง URL ที่ต้องการ capture ตาม `/follow-agent-browser` ข้อ 2
+เปิด browser ไปยัง URL ที่ต้องการ capture ตาม `/follow-tool-agent-browser` ข้อ 2
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser
 2. รอให้ page load เสร็จด้วย `agent-browser wait --load networkidle`
 
 ### 3. Take Screenshot
+
 > Goal: Take Screenshot
 
 ถ่ายภาพหน้าเว็บตาม ## Rules ข้อ 1
@@ -41,6 +44,7 @@ Capture ภาพหน้าเว็บ (screenshot, PDF) ด้วย `agent-
 4. ใช้ `agent-browser screenshot --annotate` สำหรับ annotated screenshot พร้อม element labels
 
 ### 4. Save As PDF
+
 > Goal: Save As PDF
 
 Save หน้าเว็บเป็น PDF
@@ -49,6 +53,7 @@ Save หน้าเว็บเป็น PDF
 2. ระบุ path ชัดเจน เช่น `./docs/page.pdf`
 
 ### 5. Annotated Screenshot For Debugging
+
 > Goal: Annotated Screenshot For Debugging
 
 ใช้ annotated screenshot สำหรับ debugging และ AI analysis
@@ -58,6 +63,7 @@ Save หน้าเว็บเป็น PDF
 3. ใช้ `agent-browser snapshot -i` ควบคู่กันเพื่อดู refs ใน text format
 
 ### 6. Configure Screenshot Options
+
 > Goal: Configure Screenshot Options
 
 ตั้งค่า screenshot options ตาม ## Rules ข้อ 2
@@ -67,6 +73,7 @@ Save หน้าเว็บเป็น PDF
 3. ใช้ `--screenshot-quality <0-100>` สำหรับ JPEG quality (default: 80)
 
 ### 7. Cleanup And Close
+
 > Goal: Cleanup And Close
 
 ทำ cleanup หลัง capture เสร็จ
@@ -114,7 +121,7 @@ Save หน้าเว็บเป็น PDF
 
 ### 6. Error Handling
 
-- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/follow-agent-browser` ข้อ 8 (fallback)
+- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/follow-tool-agent-browser` ข้อ 8 (fallback)
 - ถ้า screenshot ไม่ออก ให้ตรวจสอบว่า browser เปิดอยู่
 - เรียก `/resolve-errors` เมื่อเจอ error
 - ใช้ `agent-browser wait --load networkidle` ก่อน screenshot เพื่อให้ page load สมบูรณ์

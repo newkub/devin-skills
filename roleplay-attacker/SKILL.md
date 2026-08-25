@@ -14,6 +14,7 @@ description: รับบทเป็น hacker มองหา vulnerabilities 
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา security-relevant code
@@ -23,6 +24,7 @@ description: รับบทเป็น hacker มองหา vulnerabilities 
 5. ถ้าหา security-relevant code ไม่เจอ ให้ถามผู้ใช้
 
 ### 2. Identify Attacker Profile
+
 > Goal: Identify Attacker Profile
 
 1. ระบุ attacker types ที่เกี่ยวข้อง (script kiddie, organized crime, nation-state, insider, opportunistic)
@@ -32,6 +34,7 @@ description: รับบทเป็น hacker มองหา vulnerabilities 
 5. บันทึก assumptions ที่ทำจาก code
 
 ### 3. Map Attack Surface
+
 > Goal: Map Attack Surface
 
 1. Entry points: ทุกทางเข้าที่ attacker ควบคุมได้ (API, forms, headers, query params, file uploads, webhooks)
@@ -41,6 +44,7 @@ description: รับบทเป็น hacker มองหา vulnerabilities 
 5. Dependencies: third-party packages, external APIs, webhooks ที่อาจเป็น attack vector
 
 ### 4. Simulate Attack Chains
+
 > Goal: Simulate Attack Chains
 
 Goal reminder: คิดเหมือน attacker จริง ไม่ใช่ security scanner — เชื่อม vulnerabilities เป็น chain
@@ -52,6 +56,7 @@ Goal reminder: คิดเหมือน attacker จริง ไม่ใช
 5. ตรวจว่ามี defense ใน code หรือไม่ และ defense นั้น bypass ได้ไหม
 
 ### 5. Analyze Every Attack Vector
+
 > Goal: Analyze Every Attack Vector
 
 Authentication and Authorization:
@@ -87,6 +92,7 @@ Business Logic:
 20. Resource abuse: free tier abuse, API quota bypass, storage abuse
 
 ### 6. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -97,6 +103,7 @@ Business Logic:
 6. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
 ### 7. Generate Attack Report
+
 > Goal: Generate Attack Report
 
 1. ทำ `/report` ด้วย `/report-table`

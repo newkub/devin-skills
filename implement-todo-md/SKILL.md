@@ -14,6 +14,7 @@ description: แปลง TODO ในไฟล์ Markdown เป็น producti
 ## Execute
 
 ### 1. Discovery And Inventory
+
 > Goal: Discovery And Inventory
 
 ค้นหาและรวบรวม TODO จากไฟล์ Markdown
@@ -24,6 +25,7 @@ description: แปลง TODO ในไฟล์ Markdown เป็น producti
 4. สร้าง plan สำหรับการ implement แต่ละ item
 
 ### 2. Implementation
+
 > Goal: Implementation
 
 Implement production code ตาม TODO items ใน Markdown
@@ -36,6 +38,7 @@ Implement production code ตาม TODO items ใน Markdown
 6. ลบ TODO items ที่ implement เสร็จแล้ว
 
 ### 3. Verification
+
 > Goal: Verification
 
 ตรวจสอบว่าไม่มี TODO เหลือในไฟล์ Markdown

@@ -15,6 +15,7 @@ argument-hint: "[keyword]"
 ## Execute
 
 ### 1. Define Search Keyword
+
 > Goal: Define Search Keyword
 
 ระบุ keyword สำหรับการค้นหา skills
@@ -24,6 +25,7 @@ argument-hint: "[keyword]"
 3. กำหนด scope ของการค้นหา (specific หรือ general)
 
 ### 2. Execute Skills Find
+
 > Goal: Execute Skills Find
 
 ค้นหา skills ด้วย `skills find` command
@@ -33,6 +35,7 @@ argument-hint: "[keyword]"
 3. บันทึก skills ที่พบพร้อมรายละเอียด
 
 ### 3. Analyze Results
+
 > Goal: Analyze Results
 
 วิเคราะห์และจัดกลุ่ม skills ที่พบ
@@ -43,6 +46,7 @@ argument-hint: "[keyword]"
 4. ตรวจสอบว่า skills มีความเกี่ยวข้องกับงานปัจจุบันหรือไม่
 
 ### 4. Summarize Findings
+
 > Goal: Summarize Findings
 
 สรุปผลลัพธ์ในรูปแบบตาราง

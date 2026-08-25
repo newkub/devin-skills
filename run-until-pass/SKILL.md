@@ -15,6 +15,7 @@ run command จนกว่าจะผ่าน ถ้าเจอ error ให
 ## Execute
 
 ### 1. Run Command
+
 > Goal: Run Command
 
 run command และตรวจสอบผล
@@ -24,6 +25,7 @@ run command และตรวจสอบผล
 3. ถ้าไม่ผ่าน ให้ดำเนินการต่อ
 
 ### 2. Fix Errors
+
 > Goal: Fix Errors
 
 แก้ไข errors ทั้งหมด

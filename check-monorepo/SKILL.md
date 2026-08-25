@@ -14,6 +14,7 @@ description: ตรวจสอบว่า project เป็น monorepo หร
 ## Execute
 
 ### 1. Check Package Manifests
+
 > Goal: Check Package Manifests
 
 ตรวจสอบ root `package.json` และ package manager workspace files เพื่อดู workspaces configuration
@@ -25,6 +26,7 @@ description: ตรวจสอบว่า project เป็น monorepo หร
 5. ถ้าไม่มี ให้ไป Step 3 ตรวจ monorepo tools อื่นๆ เช่น Moonrepo ก่อนรายงานผล
 
 ### 2. Check Workspace Directories
+
 > Goal: Check Workspace Directories
 
 ตรวจสอบว่า workspace directories มีอยู่จริง ทั้ง package workspaces และ Moonrepo projects
@@ -35,6 +37,7 @@ description: ตรวจสอบว่า project เป็น monorepo หร
 4. ระบุ workspaces ทั้งหมดที่พบ
 
 ### 3. Check Monorepo Tools
+
 > Goal: Check Monorepo Tools
 
 ตรวจสอบ monorepo management tools ทั้ง package-workspace based และ tool-based
@@ -47,6 +50,7 @@ description: ตรวจสอบว่า project เป็น monorepo หร
 6. ถ้าไม่มี `workspaces` field ใน `package.json` แต่มี `.moon/` ให้ถือว่าเป็น monorepo
 
 ### 4. Report Result
+
 > Goal: Report Result
 
 รายงาบผลการตรวจสอบพร้อม run command ที่เหมาะสม

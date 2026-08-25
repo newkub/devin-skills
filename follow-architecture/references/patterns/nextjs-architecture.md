@@ -1,4 +1,4 @@
-# Next.js Architecture
+﻿# Next.js Architecture
 
 > Reference pattern for `/follow-architecture` — จัดโครงสร้างโปรเจกต์ Next.js ตาม best practices
 
@@ -28,8 +28,8 @@
 
 > Goal: ตั้งค่า Next.js และ build tools
 
-1. ทำ `/follow-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
-2. ทำ `/follow-vite` เพื่อตั้งค่า build tooling
+1. ทำ `/follow-framework-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
+2. ทำ `/follow-tool-vite` เพื่อตั้งค่า build tooling
 3. ตั้งค่า `next.config.js` หรือ `next.config.mjs`
 4. ตั้งค่า `tsconfig.json` พร้อม path aliases
 5. ตั้งค่า environment variables ใน `.env.local`
@@ -67,7 +67,7 @@
 4. ใช้ Server Actions สำหรับ mutations
 5. ใช้ `use` hook สำหรับ async resources
 6. ใช้ state management libraries ถ้าจำเป็น
-7. ทำ `/follow-vitest` สำหรับ testing strategy
+7. ทำ `/follow-tool-vitest` สำหรับ testing strategy
 
 ## File Structure
 

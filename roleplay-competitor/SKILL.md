@@ -14,6 +14,7 @@ description: รับบทเป็นคู่แข่งอ่าน code �
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อเข้าใจ project structure
@@ -23,6 +24,7 @@ description: รับบทเป็นคู่แข่งอ่าน code �
 5. ถ้าเข้าใจ project ไม่ได้ ให้ถามผู้ใช้ว่า project นี้ทำอะไร
 
 ### 2. Identify Competitor Profile
+
 > Goal: Identify Competitor Profile
 
 1. ระบุว่าถ้าเป็นคู่แข่ง จะเป็นแบบไหน (startup, enterprise, niche player, open source)
@@ -31,6 +33,7 @@ description: รับบทเป็นคู่แข่งอ่าน code �
 4. บันทึก assumptions ที่ทำจาก code ไว้ชัดเจน
 
 ### 3. Simulate Competitor Analysis
+
 > Goal: Simulate Competitor Analysis
 
 Goal reminder: คิดเหมือนคู่แข่งที่จะเอาชนะ project นี้ ไม่ใช่ developer ที่รัก project
@@ -41,6 +44,7 @@ Goal reminder: คิดเหมือนคู่แข่งที่จะ�
 4. ระบุว่าคู่แข่งจะใช้จุดอ่อนนั้นอย่างไรให้ได้เปรียบ
 
 ### 4. Analyze Every Competitive Dimension
+
 > Goal: Analyze Every Competitive Dimension
 
 Product and Features:
@@ -81,6 +85,7 @@ Ecosystem and Partnerships:
 22. Platform vs product: เป็น product หรือ platform คู่แข่งเปลี่ยน model ได้ไหม
 
 ### 5. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -90,6 +95,7 @@ Ecosystem and Partnerships:
 5. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
 ### 6. Generate Competitive Intelligence Report
+
 > Goal: Generate Competitive Intelligence Report
 
 1. ทำ `/report` ด้วย `/report-table`

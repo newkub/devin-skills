@@ -15,6 +15,7 @@ argument-hint: "[branch-name]"
 ## Execute
 
 ### 1. Determine Base
+
 > Goal: Determine Base
 
 1. ระบุ default branch (main/master)
@@ -22,6 +23,7 @@ argument-hint: "[branch-name]"
 3. ถ้าจำเป็นให้ pull ล่าสุดก่อน
 
 ### 2. Choose Naming
+
 > Goal: Choose Naming
 
 1. `feature/<ticket>-description`
@@ -31,6 +33,7 @@ argument-hint: "[branch-name]"
 5. ใช้ lowercase คั่นด้วย `-`
 
 ### 3. Create And Switch
+
 > Goal: Create And Switch
 
 1. `git switch -c <branch>` สำหรับ modern git

@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Pause And Reflect
+
 > Goal: Pause And Reflect
 
 หยุดและทบทวนก่อนดำเนินการ:
@@ -25,6 +26,7 @@ argument-hint: "[topic]"
 4. ถ้ามีความเสี่ยง ซับซ้อน หรือไม่แน่ใจ ให้ดำเนินการ ponder
 
 ### 2. Consider Multiple Perspectives
+
 > Goal: Consider Multiple Perspectives
 
 พิจารณาจากหลายมุมมอง:
@@ -35,6 +37,7 @@ argument-hint: "[topic]"
 4. มุมมองของ trade-offs — อะไรได้และอะไรเสียจากแต่ละทางเลือก
 
 ### 3. Weigh Implications
+
 > Goal: Weigh Implications
 
 ชั่งน้ำหนักผลกระทบของแต่ละทางเลือก:
@@ -46,6 +49,7 @@ argument-hint: "[topic]"
 5. ถ้า irreversible ให้คิดให้รอบคอบเป็นพิเศษ
 
 ### 4. Surface Uncertainties
+
 > Goal: Surface Uncertainties
 
 ระบุสิ่งที่ไม่แน่ใจ:
@@ -56,6 +60,7 @@ argument-hint: "[topic]"
 4. ถ้าจำเป็น ให้ใช้ `/ask-me` เพื่อถามผู้ใช้ หรือ `/deep-research` เพื่อค้นหาข้อมูล
 
 ### 5. Reach Conclusion
+
 > Goal: Reach Conclusion
 
 สรุปผลการครุ่นคิด:

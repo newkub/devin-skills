@@ -1,15 +1,6 @@
----
+﻿---
 name: review-all-skills
 description: ปรับปรุง skills ทั้ง global และ project ให้สมบูรณ์และสอดคล้องกัน
-related:
-  - validate
-  - follow-write-devin-skills
-  - update-agents-md
-  - update-readme
-  - check-reference
-  - review-quality
-  - update-reference
-  - report
 ---
 
 ## Goal

@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Define Learning Target
+
 > Goal: Define Learning Target
 
 กำหนดเป้าหมายการเรียนรู้และชื่อ slide:
@@ -25,6 +26,7 @@ argument-hint: "[topic]"
 4. ระบุคำถามหลักที่ต้องการคำตอบ
 
 ### 2. Deep Research
+
 > Goal: Deep Research
 
 ทำ `/learn` เพื่อเรียนรู้และรวบรวมข้อมูล:
@@ -34,6 +36,7 @@ argument-hint: "[topic]"
 3. ระบุ key points ที่จะนำไปทำ slides
 
 ### 3. Create Slide Project
+
 > Goal: Create Slide Project
 
 ทำ `/create-slide-in-newkub-slides` สำหรับสร้าง Slidev project:
@@ -44,6 +47,7 @@ argument-hint: "[topic]"
 4. ทำ `/convert-to-lang-th` — เนื้อหา slides เป็นภาษาไทย
 
 ### 4. Write Slide Content
+
 > Goal: Write Slide Content
 
 เขียน content จากข้อมูลที่เรียนรู้:
@@ -57,6 +61,7 @@ argument-hint: "[topic]"
 7. เพิ่ม `v-click` และ `v-motion` สำหรับ animations ตามต้องการ
 
 ### 5. Run And Open
+
 > Goal: Run And Open
 
 รัน dev server และเปิด browser:
@@ -84,7 +89,7 @@ argument-hint: "[topic]"
 
 ### 3. Slide Quality
 
-- ทำ `/follow-slidev` สำหรับ Slidev best practices
+- ทำ `/follow-framework-slidev` สำหรับ Slidev best practices
 - ใช้ `v-click` สำหรับ step-by-step reveals
 - ใช้ transition สำหรับ slide transitions
 - ไม่เกิน 5 bullet points ต่อ slide

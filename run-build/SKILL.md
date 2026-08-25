@@ -117,23 +117,27 @@ related:
 ## Execute
 
 ### 1. Optimize Build
+
 > Goal: build config พร้อม
 
 1. ทำ `/review-delivery`
 
 ### 2. Typecheck
+
 > Goal: ไม่มี type errors
 
 1. ทำ `/run-typecheck`
 2. ถ้ามี errors → ทำ `/resolve-errors`
 
 ### 3. Build
+
 > Goal: build สำเร็จ
 
 1. ทำ `/run-clean`
 2. รัน build command
 
 ### 4. Report
+
 > Goal: สรุปผล
 
 1. ทำ `/report-table`

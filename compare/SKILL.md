@@ -15,6 +15,7 @@ argument-hint: "[a] [b]"
 ## Execute
 
 ### 1. Identify Comparison Criteria
+
 > Goal: Identify Comparison Criteria
 
 1. ระบุ criteria ที่สำคัญสำหรับการตัดสินใจ
@@ -22,6 +23,7 @@ argument-hint: "[a] [b]"
 3. จัดลำดับ criteria ตามความสำคัญ
 
 ### 2. Gather Information
+
 > Goal: Gather Information
 
 1. ทำ `/deep-research` สำหรับ options ที่ต้องการเปรียบเทียบ
@@ -30,6 +32,7 @@ argument-hint: "[a] [b]"
 4. รวบรวม pricing, licensing, และ maintenance status
 
 ### 3. Create Comparison Table
+
 > Goal: Create Comparison Table
 
 1. ทำ `/report-table` สำหรับจัดรูปแบบตาราง
@@ -37,6 +40,7 @@ argument-hint: "[a] [b]"
 3. เติมข้อมูลสำหรับแต่ละ option ในแต่ละ row
 
 ### 4. Analyze Trade-offs
+
 > Goal: Analyze Trade-offs
 
 1. วิเคราะห์ pros และ cons ของแต่ละ option
@@ -45,6 +49,7 @@ argument-hint: "[a] [b]"
 4. ประเมิน impact ระยะยาว
 
 ### 5. Provide Recommendation
+
 > Goal: Provide Recommendation
 
 1. ทำ `/pondering` เพื่อทบทวน trade-offs และผลกระทบก่อนแนะนำ

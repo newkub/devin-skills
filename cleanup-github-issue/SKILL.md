@@ -15,24 +15,28 @@ argument-hint: "[repo]"
 ## Execute
 
 ### 1. Identify targets
+
 > Goal: ระบุเป้าหมาย
 
 1. แสดงรายการ open issues พร้อม filters
 1. ค้นหา issues ที่ซ้ำกันหรือค้างอยู่
 
 ### 2. Confirm
+
 > Goal: ยืนยัน
 
 1. ถาม user ก่อนปิดหรือลบ
 1. เลือกปิดมากกว่าลบ
 
 ### 3. Execute
+
 > Goal: ดำเนินการ
 
 1. รัน `gh issue close` หรือ `gh issue delete`
 1. เพิ่ม closing comment ถ้าจำเป็น
 
 ### 4. Report
+
 > Goal: รายงาน
 
 1. สรุป issues ที่ปิด/ลบ

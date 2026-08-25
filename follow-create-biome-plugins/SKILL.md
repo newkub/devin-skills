@@ -17,7 +17,7 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 
 > Goal: ตรวจสอบ Biome และ project prerequisites
 
-1. ตรวจสอบว่ามี Biome ติดตั้งแล้วโดยทำ `/follow-biome`
+1. ตรวจสอบว่ามี Biome ติดตั้งแล้วโดยทำ `/follow-tool-biome`
 2. ตรวจสอบว่ามี `biome.jsonc` อยู่แล้ว
 3. ระบุ target language และ rules ที่ต้องการตรวจสอบ
 

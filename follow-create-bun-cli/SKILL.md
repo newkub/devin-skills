@@ -9,7 +9,7 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 
 ## Scope
 
-ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-bunup`)
+ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`)
 
 ## Execute
 
@@ -77,7 +77,7 @@ description: สร้าง CLI applications ด้วย Bun runtime ตาม
 
 ### 2. Build Configuration
 
-- ใช้ `bunup` สำหรับ building — ดู `/follow-bunup` สำหรับ config options
+- ใช้ `bunup` สำหรับ building — ดู `/follow-tool-bunup` สำหรับ config options
 - ตั้งค่า `dts.splitting: true` สำหรับ type declarations
 - TypeScript: `declaration: true`, `isolatedDeclarations: true`
 - ตั้งค่า `packages: "bundle"` ใน `bunup.config.ts` ถ้าต้องการ zero runtime dependencies
@@ -146,7 +146,7 @@ export default defineConfig({
 ## Guide
 
 - `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) — Clean Architecture structure
-- `/follow-bunup` — Bunup bundler configuration
+- `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards
 - `/use-bun-native-api` — Bun native APIs แทน Node.js
 - [Bun Documentation](https://bun.sh/docs)

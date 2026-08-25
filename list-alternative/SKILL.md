@@ -14,6 +14,7 @@ description: List alternatives ที่ดีกว่าสำหรับ lib
 ## Execute
 
 ### 1. Identify Subject
+
 > Goal: Identify Subject
 
 1. ระบุสิ่งที่ user ถาม (library, tool, framework, pattern)
@@ -21,6 +22,7 @@ description: List alternatives ที่ดีกว่าสำหรับ lib
 3. กำหนด context และ use case
 
 ### 2. Deep Research
+
 > Goal: Deep Research
 
 1. ทำ `/deep-research` เพื่อค้นหาข้อมูลจาก multiple sources
@@ -29,6 +31,7 @@ description: List alternatives ที่ดีกว่าสำหรับ lib
 4. ใช้ DeepWiki และ Context7 สำหรับ documentation
 
 ### 3. Compare Alternatives
+
 > Goal: Compare Alternatives
 
 1. รวบรวม alternatives ที่เกี่ยวข้อง
@@ -37,6 +40,7 @@ description: List alternatives ที่ดีกว่าสำหรับ lib
 4. ตรวจสอบ community support และ ecosystem
 
 ### 4. Recommend Best Option
+
 > Goal: Recommend Best Option
 
 1. แนะนำตัวเลือกที่เหมาะสมที่สุด

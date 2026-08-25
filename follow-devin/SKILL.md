@@ -20,6 +20,7 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 ## Execute
 
 ### 1. เริ่มต้นใช้งาน
+
 > Goal: เริ่มต้นใช้งาน
 
 อ่าน `guide/getting-started.md` เพื่อเรียนรู้:
@@ -30,6 +31,7 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 - การเขียน prompt แรกของคุณ
 
 ### 2. เข้าใจ Core Concepts
+
 > Goal: เข้าใจ Core Concepts
 
 อ่าน `key-concepts/` เพื่อเข้าใจ:
@@ -41,6 +43,7 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 - `Context Awareness`: Fast Context และ context retrieval
 
 ### 3. ปฏิบัติตาม Best Practices
+
 > Goal: ปฏิบัติตาม Best Practices
 
 อ่าน `principles/` เพื่อเรียนรู้:
@@ -51,6 +54,7 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 - Performance optimization
 
 ### 4. ใช้ Workflows
+
 > Goal: ใช้ Workflows
 
 ใช้ `workflows/` สำหรับ tasks เฉพาะ:

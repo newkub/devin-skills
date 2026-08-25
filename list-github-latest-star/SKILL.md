@@ -15,18 +15,21 @@ argument-hint: "[count]"
 ## Execute
 
 ### 1. Get Authenticated User
+
 > Goal: Get Authenticated User
 
 1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
 2. บันทึก username สำหรับใช้ใน step ถัดไป
 
 ### 2. List Starred Repositories
+
 > Goal: List Starred Repositories
 
 1. รัน `gh api user/starred --paginate --jq '.[0:50] | sort_by(.pushed_at) | reverse'` สำหรับดู 50 อันล่าสุด
 2. ถ้าไม่มี `gh` CLI ให้ใช้ `mcp7_search_repositories` ด้วย `user:{username} stars:>0 sort:updated` เป็น fallback
 
 ### 3. Format Output
+
 > Goal: Format Output
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

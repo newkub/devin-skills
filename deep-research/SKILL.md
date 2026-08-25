@@ -15,6 +15,7 @@ argument-hint: "[query]"
 ## Execute
 
 ### 1. Identify Research Topic
+
 > Goal: Identify Research Topic
 
 ระบุหัวข้อและ scope ให้ชัดเจน:
@@ -26,6 +27,7 @@ argument-hint: "[query]"
 5. ระบุ constraints: เวอร์ชัน, ปี, ภาษา, framework
 
 ### 2. Select Sources By Topic Type
+
 > Goal: Select Sources By Topic Type
 
 เลือก sources ตามประเภทของข้อมูลที่ต้องการ:
@@ -39,6 +41,7 @@ argument-hint: "[query]"
 7. เลือกอย่างน้อย 2-3 sources เพื่อ cross-reference
 
 ### 3. Search Package And Code Sources
+
 > Goal: Search Package And Code Sources
 
 ค้นหาจาก package registries และ code repositories:
@@ -50,6 +53,7 @@ argument-hint: "[query]"
 5. บันทึก package names, versions, และ URLs ที่พบ
 
 ### 4. Use AI Documentation Tools
+
 > Goal: Use AI Documentation Tools
 
 ใช้ AI tools สำหรับ documentation ที่มี MCP integration:
@@ -61,6 +65,7 @@ argument-hint: "[query]"
 5. บันทึก key findings จากแต่ละ tool
 
 ### 5. Use CRW For Official Documentation
+
 > Goal: Use CRW For Official Documentation
 
 ใช้ CRW สำหรับ crawl official documentation:
@@ -69,9 +74,10 @@ argument-hint: "[query]"
 2. ใช้ `crw crawl <domain> --depth <n>` เพื่อ crawl และอ่านทุกหน้า
 3. ใช้ `--format markdown` สำหรับ output ที่ LLM อ่านง่าย
 4. ใช้ `--output <file>` เพื่อบันทึกผลลัพธ์
-5. ทำตาม `/follow-crw` สำหรับการใช้งาน CRW อย่างเต็มประสิทธิภาพ
+5. ทำตาม `/follow-tool-crw` สำหรับการใช้งาน CRW อย่างเต็มประสิทธิภาพ
 
 ### 6. Use Windsurf WebSearch
+
 > Goal: Use Windsurf WebSearch
 
 ใช้ Windsurf WebSearch สำหรับ sources ที่ไม่มี MCP integration:
@@ -83,6 +89,7 @@ argument-hint: "[query]"
 5. กรองผลลัพธ์จาก credible sources เท่านั้น
 
 ### 7. Find Latest Year
+
 > Goal: Find Latest Year
 
 ค้นหาปีล่าสุดเพื่อให้ได้ข้อมูลที่ current ที่สุด:
@@ -95,6 +102,7 @@ argument-hint: "[query]"
 6. เลือกข้อมูลที่มีปีล่าสุดเป็น primary source
 
 ### 8. Cross-Reference And Validate
+
 > Goal: Cross-Reference And Validate
 
 ตรวจสอบความถูกต้องโดย cross-reference:
@@ -106,6 +114,7 @@ argument-hint: "[query]"
 5. ระบุข้อมูลที่ยังไม่แน่ใจและต้องตรวจสอบเพิ่ม
 
 ### 9. Synthesize Findings
+
 > Goal: Synthesize Findings
 
 รวบรวมและสรุปผลการค้นหา:
@@ -177,7 +186,7 @@ argument-hint: "[query]"
 - ใช้ `crw crawl <domain> --depth <n>` เพื่อ crawl และอ่านทุกหน้า
 - ใช้ `--format markdown` สำหรับ output ที่ LLM อ่านง่าย
 - ใช้ `--output <file>` เพื่อบันทึกผลลัพธ์
-- ทำตาม `/follow-crw` สำหรับการใช้งาน CRW อย่างเต็มประสิทธิภาพ
+- ทำตาม `/follow-tool-crw` สำหรับการใช้งาน CRW อย่างเต็มประสิทธิภาพ
 
 ### 7. Windsurf WebSearch Usage
 
@@ -213,7 +222,7 @@ argument-hint: "[query]"
 - ทำ `/pondering` ก่อน research เพื่อทบทวน scope
 - ทำ `/learn-from-web` สำหรับการเรียนรู้เร็วๆ
 - ทำ `/follow-best-practice` หลัง research เพื่อ apply ที่พบ
-- ทำ `/follow-crw` สำหรับการใช้ CRW อย่างเต็มประสิทธิภาพ
+- ทำ `/follow-tool-crw` สำหรับการใช้ CRW อย่างเต็มประสิทธิภาพ
 - ทำ `/check-reference` เพื่อตรวจสอบ references ที่พบ
 - ทำ `/ask-me` ถ้า research แล้วยังไม่ชัดเจน
 

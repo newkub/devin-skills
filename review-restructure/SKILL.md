@@ -66,7 +66,7 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 
 1. ตรวจสอบ nesting depth ของ directory tree
 2. ประเมินตาม `/follow-flat-folders` ว่าควร flatten บางส่วนหรือไม่
-3. ประเมินตาม `/follow-ordering` ว่าการจัดเรียงไฟล์ใน folder เหมาะสมหรือไม่
+3. ประเมินตาม `/follow-architecture` ว่าการจัดเรียงไฟล์ใน folder เหมาะสมหรือไม่
 4. บันทึก: directory, current depth, recommended depth, flatten/keep
 
 ### 7. Calculate Structure Health Score

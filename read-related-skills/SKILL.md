@@ -15,6 +15,7 @@ argument-hint: "[skill-name]"
 ## Execute
 
 ### 1. Read Current Skill
+
 > Goal: Read Current Skill
 
 อ่าน skill ปัจจุบันที่กำลังทำงาน
@@ -23,6 +24,7 @@ argument-hint: "[skill-name]"
 2. ระบุ skills ที่ถูกอ้างอิงใน skill นี้จาก patterns เช่น `skill-name`
 
 ### 2. Build Dependency Graph
+
 > Goal: Build Dependency Graph
 
 สร้าง dependency graph ของ skills ทั้งหมด
@@ -32,6 +34,7 @@ argument-hint: "[skill-name]"
 3. สร้าง dependency graph แบบ tree structure
 
 ### 3. Read All Related Skills
+
 > Goal: Read All Related Skills
 
 อ่าน skills ทั้งหมดใน dependency graph
@@ -41,6 +44,7 @@ argument-hint: "[skill-name]"
 3. ใช้ `read_file` tool สำหรับอ่าน skill files
 
 ### 4. Summarize Tasks
+
 > Goal: Summarize Tasks
 
 สรุป tasks ที่ต้องทำจากทุก skill
@@ -51,6 +55,7 @@ argument-hint: "[skill-name]"
 4. จัดลำดับความสำคัญของ tasks ตาม dependency graph
 
 ### 5. Generate Summary
+
 > Goal: Generate Summary
 
 สร้าง summary ที่อ่านง่าย

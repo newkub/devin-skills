@@ -1,10 +1,8 @@
----
+﻿---
 name: use-subagents
 description: แบ่งงานเป็น subagents sync หรือ async ตามความเหมาะสม พร้อม verify รอบเดียวจบ
 argument-hint: "[task]"
 auto_execution_mode: 3
-related:
-  - follow-write-devin-skills
 ---
 
 ## Goal

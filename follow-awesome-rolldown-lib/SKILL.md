@@ -14,9 +14,11 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 ## Execute
 
 ### 1. Libraries
+
 > Goal: Libraries
 
 ### 1. tsdown (rolldown/tsdown)
+
 > Goal: tsdown (rolldown/tsdown)
 
 - Description: The elegant bundler for libraries powered by Rolldown
@@ -25,6 +27,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - Use Case: Library bundling for TypeScript projects
 
 ### 2. rolldphobia (ssssota/rolldphobia)
+
 > Goal: rolldphobia (ssssota/rolldphobia)
 
 - Description: A modern bundle size analyzer powered by Rolldown and esm.sh
@@ -32,6 +35,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - Use Case: Bundle size analysis tools
 
 ### 3. vitejs/rolldown-vite
+
 > Goal: vitejs/rolldown-vite
 
 - Description: Vite with Rolldown as bundler (WIP)
@@ -39,6 +43,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - Use Case: Testing Rolldown with Vite
 
 ### 4. cloudflare/agents
+
 > Goal: cloudflare/agents
 
 - Description: Cloudflare Agents project using tsdown
@@ -46,6 +51,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - Use Case: Production application
 
 ### 5. Rolldown Official Packages
+
 > Goal: Rolldown Official Packages
 
 - `rolldown` - Main bundler package
@@ -55,6 +61,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - `@rolldown/binding-*` - Platform-specific native bindings (15+ packages)
 
 ### 6. rolldown-require
+
 > Goal: rolldown-require
 
 - Description: Load configuration files of any format for Rolldown
@@ -62,12 +69,14 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 - Use Case: Configuration file loading
 
 ### 7. Built-in Plugins
+
 > Goal: Built-in Plugins
 
 - General: BundleAnalyzerPlugin, ReplacePlugin, IsolatedDeclarationPlugin, EsmExternalRequirePlugin
 - Vite Compatibility: ViteResolvePlugin, ViteJsonPlugin, ViteManifestPlugin, ViteReporterPlugin, ViteAliasPlugin, ViteImportGlobPlugin
 
 ### 8. Community Plugins
+
 > Goal: Community Plugins
 
 - rolldown-plugin-dts (sxzz/rolldown-plugin-dts) - Plugin สำหรับ generate type definitions
@@ -82,7 +91,7 @@ description: สรุป libraries ที่สร้างด้วย Rolldow
 3. จัดเรียงตาม popularity และ relevance
 4. รวมเฉพาะ libraries ที่มี public repositories
 5. อัพเดท list เป็นระยะ
-6. เชื่อมโยงกับ `/follow-rolldown`
+6. เชื่อมโยงกับ `/follow-tool-rolldown`
 
 ## Expected Outcome
 

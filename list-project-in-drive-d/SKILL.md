@@ -15,6 +15,7 @@ argument-hint: "[filter]"
 ## Execute
 
 ### 1. Create Shell Script Template
+
 > Goal: Create Shell Script Template
 
 1. สร้าง shell script สำหรับ list projects
@@ -23,6 +24,7 @@ argument-hint: "[filter]"
 4. แสดงผลเป็น list พร้อม path
 
 ### 2. Script Options
+
 > Goal: Script Options
 
 1. รองรับ PowerShell (Windows)
@@ -31,6 +33,7 @@ argument-hint: "[filter]"
 4. แสดงผลในรูปแบบที่อ่านง่าย
 
 ### 3. Save Template
+
 > Goal: Save Template
 
 1. บันทึก script template ไว้ใน workspace

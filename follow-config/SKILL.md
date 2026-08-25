@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-config
 description: ตั้งค่า configuration ตาม dependencies และ tech stack ที่ใช้
 ---
@@ -34,17 +34,17 @@ description: ตั้งค่า configuration ตาม dependencies แล�
 
 > Goal: ตรวจสอบ global workflows และ skills ที่เกี่ยวข้อง
 
-1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-biome`)
+1. อ่าน `related` ของ skills ที่เกี่ยวข้องกับ config (เช่น `/follow-package-manifest`, `/follow-tool-biome`)
 2. ตรวจสอบ skills ที่เกี่ยวข้องกับ stack ที่ใช้
-3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-biome`, `/follow-moonrepo`, `/follow-typescript`)
+3. ระบุ workflows ที่ต้องรันตาม stack (เช่น `/follow-tool-biome`, `/follow-tool-moonrepo`, `/follow-lang-typescript`)
 
 ### 4. Run Required Workflows
 
 > Goal: รัน workflows ที่จำเป็นตาม stack ที่ใช้
 
 1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
-2. รัน workflows ตาม tech stack (เช่น `/follow-biome`, `/follow-moonrepo`, `/follow-typescript`)
-3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-hk`, `/follow-ast-grep`)
+2. รัน workflows ตาม tech stack (เช่น `/follow-tool-biome`, `/follow-tool-moonrepo`, `/follow-lang-typescript`)
+3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-tool-hk`, `/follow-tool-ast-grep`)
 4. รัน `/follow-dot-vscode` สำหรับ `.vscode/` directory setup
 5. รัน `/follow-dot-github` สำหรับ `.github/` directory setup
 6. ตรวจสอบว่า config files ถูกต้องและสอดคล้องกัน

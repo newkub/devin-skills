@@ -15,12 +15,14 @@ argument-hint: "[repo]"
 ## Execute
 
 ### 1. Get Authenticated User
+
 > Goal: Get Authenticated User
 
 1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
 2. รับชื่อ repository ที่ต้องการดู issues จากผู้ใช้
 
 ### 2. List Issues
+
 > Goal: List Issues
 
 1. ทำ `mcp7_list_issues` ด้วย `owner` และ `repo` parameters
@@ -33,6 +35,7 @@ argument-hint: "[repo]"
 5. ใช้ `labels` parameter ถ้าต้องการกรองตาม label
 
 ### 3. Format Output
+
 > Goal: Format Output
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง

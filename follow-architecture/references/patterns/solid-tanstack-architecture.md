@@ -1,4 +1,4 @@
-# Solid + TanStack Architecture
+﻿# Solid + TanStack Architecture
 
 > Reference pattern for `/follow-architecture` — จัดโครงสร้าง TanStack Start + SolidJS app พร้อม modules/, monorepo และ file-based routing
 
@@ -28,8 +28,8 @@
 
 > Goal: ตั้งค่า entry points สำหรับ TanStack Start
 
-1. ทำ `/follow-tanstack-ecosystem` เพื่อตั้งค่า TanStack Start entry points
-2. ทำ `/follow-vite` เพื่อตั้งค่า `vite.config.ts` ด้วย `tanstackStart` plugin
+1. ทำ `/follow-lib-tanstack-ecosystem` เพื่อตั้งค่า TanStack Start entry points
+2. ทำ `/follow-tool-vite` เพื่อตั้งค่า `vite.config.ts` ด้วย `tanstackStart` plugin
 3. ตั้งค่า `src/router.tsx` ด้วย `createRouter` และ `routeTree`
 4. ตั้งค่า `src/routes/__root.tsx` สำหรับ HTML document shell
 5. ใช้ `HeadContent`, `Scripts`, `Outlet` จาก `@tanstack/solid-router`
@@ -39,7 +39,7 @@
 
 > Goal: ใช้ TanStack Router file-based routing conventions
 
-1. ทำ `/follow-tanstack-ecosystem` เพื่อใช้ file-based routing conventions
+1. ทำ `/follow-lib-tanstack-ecosystem` เพื่อใช้ file-based routing conventions
 2. สร้าง routes ใน `src/routes/` ด้วย `createFileRoute`
 3. ใช้ `index.tsx` สำหรับ index routes
 4. ใช้ `$param.tsx` สำหรับ dynamic segments
@@ -52,9 +52,9 @@
 
 > Goal: จัดระเบียบ feature-based modules ใน `src/modules/`
 
-1. ทำ `/follow-solidjs` เพื่อใช้ component patterns และ reactivity
-2. ทำ `/follow-tanstack-ecosystem` สำหรับ data fetching patterns ใน modules
-3. ทำ `/follow-tanstack-ecosystem` สำหรับ state management ใน modules
+1. ทำ `/follow-framework-solidjs` เพื่อใช้ component patterns และ reactivity
+2. ทำ `/follow-lib-tanstack-ecosystem` สำหรับ data fetching patterns ใน modules
+3. ทำ `/follow-lib-tanstack-ecosystem` สำหรับ state management ใน modules
 4. สร้าง `src/modules/<feature>/` สำหรับแต่ละ domain feature
 5. แต่ละ module ประกอบด้วย: `components/`, `hooks/`, `schemas/`, `utils/`, `types/`
 6. สร้าง `src/modules/<feature>/index.ts` เป็น barrel export สำหรับ public API
@@ -194,7 +194,7 @@ apps/
 - ตั้งค่า `srcDirectory: 'src'` และ `generatedRouteTree: 'src/routeTree.gen.ts'`
 - ใช้ `vite-plugin-solid` สำหรับ SolidJS JSX transformation
 - ถ้าใช้ UnoCSS → เพิ่ม `@unocss/vite` plugin
-- ทำ `/follow-vitest` สำหรับ testing strategy
+- ทำ `/follow-tool-vitest` สำหรับ testing strategy
 
 ## Expected Outcome
 

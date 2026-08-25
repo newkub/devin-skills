@@ -78,7 +78,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 
 ## References
 
-- package.json review script reference: `references/run-review-reference/`
+- ไม่มี nested references (ใช้ `tools/review/package.json` ที่ project root แทน)
 
 ## Addendum
 

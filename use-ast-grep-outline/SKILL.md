@@ -20,6 +20,7 @@ argument-hint: "[file]"
 ## Execute
 
 ### 1. Basic Usage
+
 > Goal: Basic Usage
 
 รัน ast-grep outline เพื่อ explore code structure:
@@ -36,6 +37,7 @@ sg outline src/parser.ts src/rule.ts
 ```
 
 ### 2. Filter Items
+
 > Goal: เลือก top-level items ที่ต้องการดู
 
 ```bash
@@ -53,6 +55,7 @@ sg outline src/parser.ts --items structure
 ```
 
 ### 3. Filter By Type
+
 > Goal: กรอง symbols ตาม type
 
 ```bash
@@ -67,6 +70,7 @@ sg outline src --type interface
 ```
 
 ### 4. Filter By Pattern
+
 > Goal: Filter By Pattern
 
 กรอง symbols ด้วย regex:
@@ -83,6 +87,7 @@ sg outline src --match "^use"
 ```
 
 ### 5. Select View
+
 > Goal: เลือก presentation level
 
 ```bash
@@ -100,6 +105,7 @@ sg outline src --view expanded
 ```
 
 ### 6. Expand Specific Symbol
+
 > Goal: Expand symbol เฉพาะเจาะจง
 
 ```bash
@@ -111,6 +117,7 @@ sg outline src/parser.ts --match parseRule --type function --view expanded
 ```
 
 ### 7. Public Members Only
+
 > Goal: Public Members Only
 
 ดูเฉพาะ public members:

@@ -14,6 +14,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 ## Execute
 
 ### 1. Assessment And Planning
+
 > Goal: Assessment And Planning
 
 1. ระบุสิ่งที่ต้อง migration (dependencies, frameworks, databases)
@@ -24,6 +25,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. สร้าง migration plan พร้อม timeline และ rollback strategy
 
 ### 2. Preparation
+
 > Goal: Preparation
 
 1. สร้าง feature branch สำหรับ migration
@@ -34,14 +36,16 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. ตั้งค่า automated monitoring และ alerts
 
 ### 3. Code Transformation
+
 > Goal: Code Transformation
 
-1. ใช้ `/follow-ast-grep` หรือ `/follow-ast-grep` สำหรับ automated code changes
+1. ใช้ `/follow-tool-ast-grep` หรือ `/follow-tool-ast-grep` สำหรับ automated code changes
 2. อัพเดท imports และ API calls
 3. แก้ไข breaking changes ใน code
 4. อัพเดท configuration files
 
 ### 4. Testing
+
 > Goal: Testing
 
 1. รัน unit tests สำหรับ changed code
@@ -53,6 +57,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 7. ทดสอบ rollback plan บน staging environment
 
 ### 5. Deployment
+
 > Goal: Deployment
 
 1. ทำ deployment แบบ phased หรือ canary
@@ -63,6 +68,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 6. ตรวจสอบว่า migration สำเร็จ
 
 ### 6. Cleanup
+
 > Goal: Cleanup
 
 1. ลบ dependencies ที่ไม่ได้ใช้แล้ว
@@ -71,6 +77,7 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 4. สรุป lessons learned
 
 ### 7. Commit Changes
+
 > Goal: Commit Changes
 
 1. ทำตาม `/git-commit` เพื่อ commit migration changes
@@ -97,8 +104,8 @@ Migration ทุกประเภท: dependencies, frameworks, databases, APIs
 
 เลือก tools ที่เหมาะสมสำหรับ code changes:
 
-- ใช้ `/follow-ast-grep` สำหรับ Biome projects และ custom linting
-- ใช้ `/follow-ast-grep` สำหรับ complex codemods และ multi-language support
+- ใช้ `/follow-tool-ast-grep` สำหรับ Biome projects และ custom linting
+- ใช้ `/follow-tool-ast-grep` สำหรับ complex codemods และ multi-language support
 - ใช้ official codemods หากมีให้
 - ใช้ automated tools แทน manual changes เมื่อเป็นไปได้
 

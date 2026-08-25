@@ -20,8 +20,8 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 > Goal: วิเคราะห์ structure ก่อน refactor
 
 1. ทำ `/check-code-structure` เพื่อดู top-level symbols, exports, members, imports, และ cohesion
-2. อ่าน `references/check-srp/SKILL.md` เพื่อระบุ SRP violations ด้วย ast-grep outline
-3. ระบุ units ที่ violate SRP จาก thresholds ใน `references/check-srp/SKILL.md`:
+2. ระบุ SRP violations ด้วย ast-grep outline ผ่าน `/check-code-structure`
+3. ระบุ units ที่ violate SRP จาก thresholds:
    - ไฟล์มี top-level symbols เกิน 5 อันที่ไม่เกี่ยวข้องกัน
    - function/class มี public members เกิน 10 หรือทำหลายหน้าที่
    - imports ข้าม boundary หรือ layer
@@ -112,5 +112,4 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ## References
 
-- `refactor-long-files` content: `references/refactor-long-files/`
-- `check-srp` content: `references/check-srp/`
+- ไม่มี nested references (ใช้ `/check-code-structure` และ `/check-long-files` แทน)

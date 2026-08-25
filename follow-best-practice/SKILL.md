@@ -15,6 +15,7 @@ argument-hint: "[topic]"
 ## Execute
 
 ### 1. Analyze Context
+
 > Goal: Analyze Context
 
 1. ระบุ context ของงานที่ทำ (code, workflow, config, documentation, ฯลฯ)
@@ -23,6 +24,7 @@ argument-hint: "[topic]"
 4. สรุป tech stack หรือ tools ที่เกี่ยวข้องกับ context นั้นๆ
 
 ### 2. Research Best Practices
+
 > Goal: Research Best Practices
 
 1. ระบุ library, framework หรือ tool ที่ต้องการเรียนรู้ best practices
@@ -31,6 +33,7 @@ argument-hint: "[topic]"
 4. ตรวจสอบว่าข้อมูลเป็นปัจจุบัน
 
 ### 3. Apply Best Practices
+
 > Goal: Apply Best Practices
 
 1. อ่านไฟล์ที่ต้องปรับปรุงทั้งหมด
@@ -41,6 +44,7 @@ argument-hint: "[topic]"
 6. ระบุ patterns และ conventions ที่แนะนำ
 
 ### 4. Verify Implementation
+
 > Goal: Verify Implementation
 
 1. รัน linter และ typecheck เพื่อตรวจสอบ

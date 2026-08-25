@@ -14,6 +14,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 ## Execute
 
 ### 1. Prepare
+
 > Goal: Prepare
 
 1. ตรวจสอบ commits ที่ต้องการรวมด้วย `git log --oneline -n <n>`
@@ -22,6 +23,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 4. ตรวจสอบจำนวน commits ที่ต้องการรวม
 
 ### 2. Start Interactive Rebase
+
 > Goal: Start Interactive Rebase
 
 1. เริ่ม interactive rebase ด้วย `git rebase -i HEAD~<n>`
@@ -29,6 +31,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 3. editor จะเปิดขึ้นมาแสดงรายการ commits
 
 ### 3. Choose Merge Method
+
 > Goal: Choose Merge Method
 
 1. `pick` - ใช้ commit นี้เป็น commit หลัก
@@ -36,6 +39,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 3. `fixup` - รวม commit นี้เข้ากับ commit ก่อนหน้า (ไม่แก้ message)
 
 ### 4. Squash Commits
+
 > Goal: Squash Commits
 
 1. เก็บ `pick` สำหรับ commit แรกที่ต้องการเป็น commit หลัก
@@ -45,6 +49,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 5. บันทึกและปิด editor
 
 ### 5. Fixup Commits
+
 > Goal: Fixup Commits
 
 1. เก็บ `pick` สำหรับ commit แรกที่ต้องการเป็น commit หลัก
@@ -53,6 +58,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 4. commit message จะใช้จาก commit หลัก
 
 ### 6. Auto-Squash
+
 > Goal: Auto-Squash
 
 1. สร้าง fixup commits ด้วย `git commit --fixup <commit-hash>`
@@ -60,6 +66,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 3. fixup commits จะถูกจัดเรียงอัตโนมัติให้อยู่ใต้ commit หลัก
 
 ### 7. Handle Conflicts
+
 > Goal: Handle Conflicts
 
 1. ใช้ `git status` เพื่อดูไฟล์ที่มี conflict
@@ -69,6 +76,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 5. หรือใช้ `git rebase --abort` เพื่อยกเลิก rebase
 
 ### 8. Verify Results
+
 > Goal: Verify Results
 
 1. ใช้ `git log --oneline` เพื่อดู commits ที่รวมแล้ว
@@ -77,6 +85,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 4. ใช้ `git diff backup-branch` เพื่อดูความแตกต่าง
 
 ### 9. Force Push
+
 > Goal: Force Push
 
 1. ตรวจสอบว่าจำเป็นต้อง force push จริงๆ
@@ -85,6 +94,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 4. แจ้งทีมให้ทราบก่อนทำ force push
 
 ### 10. Rollback
+
 > Goal: Rollback
 
 1. ใช้ `git reflog` เพื่อดูประวัติการทำงาน
@@ -93,6 +103,7 @@ description: รวม commits หลายตัวเป็น commit เด�
 4. ใช้ `git branch -D backup-branch` เมื่อตรวจสอบแล้วถูกต้อง
 
 ### 11. Update References
+
 > Goal: Update References
 
 อัปเดท references ทั้งหมดที่เกี่ยวข้อง

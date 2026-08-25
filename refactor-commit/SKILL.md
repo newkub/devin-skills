@@ -21,6 +21,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 ## Execute
 
 ### 1. Check Status
+
 > Goal: Check Status
 
 ตรวจสอบสถานะก่อน refactor
@@ -31,6 +32,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 4. ทำ `git log --oneline origin/<branch>..HEAD` เพื่อดู commits ที่ยังไม่ได้ push
 
 ### 2. Check Shared Status
+
 > Goal: Check Shared Status
 
 ตรวจสอบว่า branch ไม่ได้ถูก shared กับทีม
@@ -41,6 +43,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 4. แนะนำให้ใช้ branch ส่วนตัวสำหรับ refactor
 
 ### 3. Backup Branch
+
 > Goal: Backup Branch
 
 สร้าง backup branch ก่อน refactor
@@ -51,6 +54,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 4. ทำ `git reflog` เพื่อยืนยันว่า reflog มีข้อมูลสำหรับ recovery
 
 ### 4. Choose Rebase Mode
+
 > Goal: Choose Rebase Mode
 
 เลือก rebase mode ตามความต้องการ
@@ -60,6 +64,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 3. ถ้าต้อง squash commits ด้วย fixup ใช้ Autosquash (step 7)
 
 ### 5. Interactive Rebase
+
 > Goal: Interactive Rebase
 
 เริ่ม interactive rebase สำหรับ break down หรือ edit commits
@@ -73,6 +78,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 3. Save และ close editor
 
 ### 6. Non-Interactive Rebase
+
 > Goal: Non-Interactive Rebase
 
 เริ่ม non-interactive rebase สำหรับ rebase ไปยัง upstream โดยอัตโนมัติ
@@ -84,6 +90,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 5. ถ้าต้องการ abort, ทำ `git rebase --abort` และ restore จาก backup branch
 
 ### 7. Autosquash Rebase
+
 > Goal: Autosquash Rebase
 
 ใช้ fixup commits และ autosquash สำหรับการจัดการ commits ที่ซับซ้อน
@@ -94,6 +101,7 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 4. Save และ close editor
 
 ### 8. Break Down Commits
+
 > Goal: Break Down Commits
 
 Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
@@ -105,6 +113,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 4. ทำ `git rebase --continue` เมื่อ break down เสร็จ
 
 ### 9. Validate Refactor
+
 > Goal: Validate Refactor
 
 ตรวจสอบว่า refactor สำเร็จ
@@ -115,6 +124,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 4. รัน tests ถ้ามีเพื่อยืนยันว่าไม่มี regression
 
 ### 10. Handle Conflicts
+
 > Goal: Handle Conflicts
 
 แก้ไข conflicts ถ้าเกิดขึ้น

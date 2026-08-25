@@ -15,6 +15,7 @@ argument-hint: "[target]"
 ## Execute
 
 ### 1. Identify Context
+
 > Goal: Identify Context
 
 1. ระบุ context ของสิ่งที่ต้องการเพิ่ม (features, files, tests, configs, docs, modules, ฯลฯ)
@@ -24,6 +25,7 @@ argument-hint: "[target]"
 5. บันทึกสิ่งที่มีอยู่ปัจจุบันเป็น baseline
 
 ### 2. Analyze Gaps
+
 > Goal: Analyze Gaps
 
 1. ระบุสิ่งที่มีอยู่ปัจจุบันใน context ที่กำหนด
@@ -33,6 +35,7 @@ argument-hint: "[target]"
 5. ถ้ามี gaps มากกว่า 10 รายการ ให้ใช้ `/use-scripts` สำหรับ batch analysis
 
 ### 3. Prioritize
+
 > Goal: Prioritize
 
 1. จัดลำดับตาม impact (สิ่งที่มีผลกระทบมากก่อน)
@@ -41,6 +44,7 @@ argument-hint: "[target]"
 4. จัดลำดับตาม effort (สิ่งที่ทำง่ายและมี impact มากก่อน)
 
 ### 4. Add Missing Items
+
 > Goal: Add Missing Items
 
 1. สร้างเพิ่มทีละรายการตามลำดับความสำคัญ
@@ -50,6 +54,7 @@ argument-hint: "[target]"
 5. อัพเดท references ที่เกี่ยวข้องทุกครั้งที่เพิ่ม item ใหม่
 
 ### 5. Validate
+
 > Goal: Validate
 
 1. ตรวจสอบว่าสิ่งที่เพิ่มใหม่ทำงานได้ถูกต้อง
@@ -58,6 +63,7 @@ argument-hint: "[target]"
 4. รัน verify หรือ test ตาม context (เช่น `/run-verify`, `/run-test`, `/run-build`)
 
 ### 6. Report
+
 > Goal: Report
 
 1. รัน `/report-table` เพื่อแสดง before/after ของสิ่งที่เพิ่มขึ้น

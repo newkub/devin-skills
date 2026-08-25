@@ -14,6 +14,7 @@ Review งานตาม context โดยเลือก review skill ที�
 ## Execute
 
 ### 1. Detect Context
+
 > Goal: รู้ context ก่อนเลือก review skill
 
 1. ตรวจ workspace files: `package.json`, `AGENTS.md`, `SKILL.md`, `git status`
@@ -23,6 +24,7 @@ Review งานตาม context โดยเลือก review skill ที�
 5. ถ้า user ระบุ issue/PR number หรือ `github` → น่าจะเป็น GitHub
 
 ### 2. Route To Review Skill
+
 > Goal: เรียก review skill ที่ถูกต้อง
 
 1. ถ้า code → ทำ `/review-codebase`
@@ -33,6 +35,7 @@ Review งานตาม context โดยเลือก review skill ที�
 6. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-only` ก่อน แล้วถาม user
 
 ### 3. Report
+
 > Goal: สรุปผล review
 
 1. สรุป findings พร้อม severity

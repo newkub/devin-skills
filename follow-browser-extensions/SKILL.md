@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-browser-extensions
 description: ทำตาม Browser Extensions
 ---
@@ -13,7 +13,7 @@ description: ทำตาม Browser Extensions
 
 ## Execute
 
-1. `/follow-vscode-extensions`
+1. `/follow-tool-vscode-extensions`
 
 ## Rules
 

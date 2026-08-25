@@ -14,6 +14,7 @@ description: แปลง MOCK, FAKE, STUB implementations เป็น producti
 ## Execute
 
 ### 1. Search Mock Implementations
+
 > Goal: Search Mock Implementations
 
 ค้นหาและจัดกลุ่ม mock implementations ทั้งหมดใน codebase
@@ -23,6 +24,7 @@ description: แปลง MOCK, FAKE, STUB implementations เป็น producti
 3. วิเคราะห์ dependencies และ features ที่จำเป็นสำหรับการ implement
 
 ### 2. Implement Real Database
+
 > Goal: Implement Real Database
 
 แทนที่ InMemory/Stub database ด้วย real database connections
@@ -34,6 +36,7 @@ description: แปลง MOCK, FAKE, STUB implementations เป็น producti
 5. ทำ `/run-test` เพื่อทดสอบ
 
 ### 3. Implement Real API Calls
+
 > Goal: Implement Real API Calls
 
 แทนที่ mock API responses ด้วย real HTTP calls
@@ -44,6 +47,7 @@ description: แปลง MOCK, FAKE, STUB implementations เป็น producti
 4. ทำ `/run-test` เพื่อทดสอบ
 
 ### 4. Implement Real External Services
+
 > Goal: Implement Real External Services
 
 แทนที่ mock external services ด้วย real integrations
@@ -54,6 +58,7 @@ description: แปลง MOCK, FAKE, STUB implementations เป็น producti
 4. ทำ `/run-test` เพื่อทดสอบ
 
 ### 5. Verify No Mocks Remain
+
 > Goal: Verify No Mocks Remain
 
 ตรวจสอบและยืนยันว่าไม่มี mock implementations เหลือ

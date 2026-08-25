@@ -14,6 +14,7 @@ description: รัน development server และแก้ไขข้อผ�
 ## Execute
 
 ### 1. Check Configuration
+
 > Goal: Check Configuration
 
 1. ตรวจสอบ main config และ dev script ว่ามีการกำหนดไว้หรือไม่
@@ -22,6 +23,7 @@ description: รัน development server และแก้ไขข้อผ�
 4. ตรวจสอบว่า environment variables ที่จำเป็นถูกกำหนดแล้ว
 
 ### 2. Run Dev Server
+
 > Goal: Run Dev Server
 
 1. รัน dev server ด้วยคำสั่งที่เหมาะสม (bun dev, npm run dev, cargo run)
@@ -30,6 +32,7 @@ description: รัน development server และแก้ไขข้อผ�
 4. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ
 
 ### 3. Watch Terminal
+
 > Goal: Watch Terminal
 
 1. ทำ `/watch-terminal` เพื่อ watch terminal ทุก 5 วินาที
@@ -37,12 +40,14 @@ description: รัน development server และแก้ไขข้อผ�
 3. ถ้าพบ errors ให้ทำ `/resolve-errors` ทันที
 
 ### 4. Open Web (ถ้าเป็น web)
+
 > Goal: Open Web (ถ้าเป็น web)
 
 1. ถ้าเป็น web project ให้ทำ `/open-web` เพื่อเปิด browser ที่ dev server URL
 2. ตรวจสอบว่า website เปิดได้และแสดงผลถูกต้อง
 
 ### 5. Watch Browser (ถ้าเป็น web)
+
 > Goal: Watch Browser (ถ้าเป็น web)
 
 1. ถ้าเป็น web project ให้ทำ `/watch-browser` เพื่อตรวจสอบ browser
@@ -50,6 +55,7 @@ description: รัน development server และแก้ไขข้อผ�
 3. ทดสอบ features หลักทำงานได้
 
 ### 6. Verify
+
 > Goal: Verify
 
 1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
@@ -57,6 +63,7 @@ description: รัน development server และแก้ไขข้อผ�
 3. ยืนยันว่าไม่มี runtime errors ใน console
 
 ### 7. Report
+
 > Goal: Report
 
 1. ทำ `/report-ansi` เพื่อแสดง terminal output

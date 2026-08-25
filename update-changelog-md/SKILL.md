@@ -14,6 +14,7 @@ description: สร้าง changelog ด้วย Bun Shell
 ## Execute
 
 ### 1. Generate Changelog
+
 > Goal: Generate Changelog
 
 สร้าง changelog จาก commits ด้วย Bun Shell และ format เป็น table (2 columns, 10 commits ล่าสุด, no grouping, no emoji)
@@ -22,6 +23,7 @@ description: สร้าง changelog ด้วย Bun Shell
 2. ตรวจสอบ output จาก command
 
 ### 2. Review Changelog
+
 > Goal: Review Changelog
 
 ตรวจสอบ changelog ที่สร้าง
@@ -32,6 +34,7 @@ description: สร้าง changelog ด้วย Bun Shell
 4. ตรวจสอบ dates ถูกต้อง
 
 ### 3. Commit Changelog
+
 > Goal: Commit Changelog
 
 Commit changelog ที่สร้าง

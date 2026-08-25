@@ -14,6 +14,7 @@ description: ตรวจสอบ issue ใดๆ เพื่อดูคว�
 ## Execute
 
 ### 1. Collect Issue Content
+
 > Goal: รับข้อความและ context ของ issue แบบเต็ม
 
 1. หากผู้ใช้ให้ไฟล์หรือ path ของ issue ให้ `read` มัน
@@ -22,6 +23,7 @@ description: ตรวจสอบ issue ใดๆ เพื่อดูคว�
 4. บันทึก source, author และ linked PRs หรือ tasks ใดๆ
 
 ### 2. Check Completeness
+
 > Goal: ยืนยันว่า issue มีข้อมูลเพียงพอที่จะเริ่มงานได้
 
 1. title กระชับและอธิบายปัญหาหรือเป้าหมาย
@@ -32,6 +34,7 @@ description: ตรวจสอบ issue ใดๆ เพื่อดูคว�
 6. environment, version หรือ context รวมอยู่หากเกี่ยวข้อง
 
 ### 3. Assess Quality
+
 > Goal: ระบุปัญหาด้านความชัดเจนและความเป็นไปได้
 
 1. ทำเครื่องหมายคำสั่งที่กำกวม เช่น "do the right thing" หรือ "improve" โดยไม่ระบุรายละเอียด
@@ -42,6 +45,7 @@ description: ตรวจสอบ issue ใดๆ เพื่อดูคว�
 6. ตรวจว่า issue สอดคล้องกับ conventions และ global rules ของโปรเจกต์
 
 ### 4. Rate Severity And Recommend
+
 > Goal: สร้างรายงานการตรวจสอบที่นำไปปฏิบัติได้
 
 1. กำหนด severity: Critical, High, Medium, Low, Info

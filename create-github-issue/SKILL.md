@@ -17,6 +17,7 @@ argument-hint: "[title]"
 ## Execute
 
 ### 1. Prepare Issue Information
+
 > Goal: Prepare Issue Information
 
 1. รวบรวมข้อมูล issue: title, description, priority, type
@@ -26,6 +27,7 @@ argument-hint: "[title]"
 5. เชื่อมโยงกับ milestones หากมี roadmap
 
 ### 2. Write Issue Template
+
 > Goal: Write Issue Template
 
 1. ใช้ issue template ตาม project standards
@@ -39,6 +41,7 @@ argument-hint: "[title]"
 4. เพิ่ม screenshots หรือ logs หากจำเป็น
 
 ### 3. Create Issue With MCP Tool
+
 > Goal: Create Issue With MCP Tool
 
 1. ใช้ `mcp8_issue_write` ด้วย method `create`
@@ -48,6 +51,7 @@ argument-hint: "[title]"
 5. ตั้งค่า priority และ state
 
 ### 4. Verify Issue Creation
+
 > Goal: Verify Issue Creation
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ

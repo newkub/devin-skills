@@ -15,6 +15,7 @@ argument-hint: "[run-id]"
 ## Execute
 
 ### 1. Check Workflows
+
 > Goal: Check Workflows
 
 1. ทำตาม `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repository ไหม
@@ -22,11 +23,12 @@ argument-hint: "[run-id]"
 3. ทำตาม `gh run list --limit 5` เพื่อดู recent workflow runs
 
 ### 2. Watch And Fix
+
 > Goal: Watch And Fix
 
 1. ทำตาม `gh run list --limit 1` เพื่อดู recent workflow run
 2. ทำตาม `gh run watch <run-id>` เพื่อติดตาม real-time
-3. ถ้า workflow ล้มเหลว ให้ทำ `/follow-github-actions` เพื่อแก้ไข
+3. ถ้า workflow ล้มเหลว ให้ทำ `/follow-tool-github-actions` เพื่อแก้ไข
 4. ทำตาม `gh run list` เพื่อดูสถานะ runs ทั้งหมด
 5. ทำซ้ำจนกว่าทุก workflow ผ่าน
 
@@ -43,7 +45,7 @@ argument-hint: "[run-id]"
 
 แก้ไข workflow ที่ล้มเหลว:
 
-- ใช้ `/follow-github-actions` เพื่อแก้ไข workflow ที่ล้มเหลว
+- ใช้ `/follow-tool-github-actions` เพื่อแก้ไข workflow ที่ล้มเหลว
 - อ่าน logs อย่างละเอียดเพื่อหา root cause
 - แก้ไขและ push ใหม่จนกว่าจะผ่าน
 

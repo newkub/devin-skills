@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 ## Execute
 
 ### 1. Describe What Not How
+
 > Goal: Describe What Not How
 
 เขียน code ที่บอกว่าอะไรต้องทำ ไม่ใช่วิธีทำ
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. หลีกเลี่ยง manual state management
 
 ### 2. Use Immutability
+
 > Goal: Use Immutability
 
 ใช้ immutability เพื่อลด side effects
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. ใช้ runtime immutability mechanisms สำหรับ runtime immutability
 
 ### 3. Use Composition
+
 > Goal: Use Composition
 
 รวม functions หรือ components เข้าด้วยกัน
@@ -47,6 +50,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. ใช้ function composition utilities
 
 ### 4. Use Declarative APIs
+
 > Goal: Use Declarative APIs
 
 ใช้ APIs ที่เป็น declarative
@@ -58,6 +62,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. ใช routing libraries สำหรับ routing
 
 ### 5. Data Transformation
+
 > Goal: Data Transformation
 
 แปลง data อย่าง declarative
@@ -69,6 +74,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. ใช้ serializers สำหรับ data serialization
 
 ### 6. Configuration
+
 > Goal: Configuration
 
 ใช้ configuration แทน hardcoded logic
@@ -80,6 +86,7 @@ description: พัฒนาโปรเจกต์ด้วย declarative pro
 5. Document configuration อย่างชัดเจน
 
 ### 7. Testing
+
 > Goal: Testing
 
 เขียน tests สำหรับ declarative code

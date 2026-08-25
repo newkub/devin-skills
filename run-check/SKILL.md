@@ -14,6 +14,7 @@ description: รัน lint, typecheck และ scan เพื่อตรว�
 ## Execute
 
 ### 1. Run Lint
+
 > Goal: Run Lint
 
 1. ทำ `/run-lint` เพื่อตรวจสอบ code style
@@ -21,6 +22,7 @@ description: รัน lint, typecheck และ scan เพื่อตรว�
 3. ยืนยันว่า lint ผ่าน
 
 ### 2. Run Typecheck
+
 > Goal: Run Typecheck
 
 1. ทำ `/run-typecheck` เพื่อตรวจสอบ types
@@ -28,6 +30,7 @@ description: รัน lint, typecheck และ scan เพื่อตรว�
 3. ยืนยันว่า typecheck ผ่าน
 
 ### 3. Run Scan
+
 > Goal: Run Scan
 
 1. ทำ `/run-scan` เพื่อตรวจสอบ code patterns

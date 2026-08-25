@@ -14,6 +14,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 ## Execute
 
 ### 1. Read File References
+
 > Goal: Read File References
 
 1. อ่าน reference จากไฟล์ใน project
@@ -21,6 +22,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 3. เปรียบเทียบกับ implementation จริง
 
 ### 2. Read Web References
+
 > Goal: Read Web References
 
 1. ค้นหาข้อมูลจาก official documentation
@@ -28,6 +30,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 3. ตรวจสอบว่าเป็น version ล่าสุด
 
 ### 3. Read CLI Help
+
 > Goal: Read CLI Help
 
 1. รัน `--help` หรือ `-h` สำหรับ CLI tools
@@ -35,6 +38,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 3. ตรวจสอบ examples ใน help
 
 ### 4. Read GitHub References
+
 > Goal: Read GitHub References
 
 1. อ่าน README.md จาก GitHub repositories
@@ -42,6 +46,7 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 3. ตรวจสอบ changelog และ releases
 
 ### 5. Read Package Registry
+
 > Goal: Read Package Registry
 
 1. ตรวจสอบ package information จาก npm, crates.io, PyPI

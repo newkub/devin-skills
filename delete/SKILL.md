@@ -2,6 +2,7 @@
 name: delete
 description: ลบไฟล์หรือ folder พร้อมอัพเดท references ทั้งหมดในโปรเจกต์
 argument-hint: "[target]"
+auto_execution_mode: 3
 ---
 
 ## Goal

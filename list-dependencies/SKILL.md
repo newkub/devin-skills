@@ -14,6 +14,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 ## Execute
 
 ### 1. Read Package Manifest
+
 > Goal: Read Package Manifest
 
 อ่าน package manifest เพื่อดู dependencies ทั้งหมด
@@ -24,6 +25,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 4. ถ้าเป็น monorepo อ่านทุก workspace
 
 ### 2. Categorize Dependencies
+
 > Goal: Categorize Dependencies
 
 จัดกลุ่ม dependencies ตาม purpose
@@ -34,6 +36,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 4. แยก `production` และ `development` dependencies
 
 ### 3. Analyze Usage
+
 > Goal: Analyze Usage
 
 วิเคราะห์การใช้งาน dependencies
@@ -44,6 +47,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 4. ดู dependencies ที่มี version เก่ากว่า latest
 
 ### 4. Suggest Improvements
+
 > Goal: Suggest Improvements
 
 แนะนำ improvements สำหรับ dependencies
@@ -87,7 +91,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 แนะนำ improvements ที่เป็นประโยชน์
 
 - ใช้ `/use-lib-better` เพื่อเปรียบเทียบกับ alternatives
-- แนะนำ dependencies ที่ควร update ด้วย `/follow-taze`
+- แนะนำ dependencies ที่ควร update ด้วย `/follow-tool-taze`
 - แนะนำ dependencies ที่ควรลบ
 - แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า
 

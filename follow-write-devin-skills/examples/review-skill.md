@@ -19,10 +19,12 @@ Review the current git diff and provide feedback
 
 ## Execute
 ### 1. Get Diff
+
 > Goal: รู้สิ่งที่เปลี่ยนแปลง
 1. รัน `git diff --staged` หรือ `git diff` ถ้ายังไม่ได้ stage. บันทึก files ที่เปลี่ยน
 
 ### 2. Review Changes
+
 > Goal: หาปัญหาที่อาจเกิดขึ้น
 1. ตรวจ logic errors, security issues, style inconsistencies. สรุป findings พร้อม line references
 

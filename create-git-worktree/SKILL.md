@@ -15,6 +15,7 @@ argument-hint: "[branch-name]"
 ## Execute
 
 ### 1. Prepare Worktree Directory
+
 > Goal: Prepare Worktree Directory
 
 1. ตรวจสอบว่า `worktree/` directory มีอยู่ใน project root
@@ -22,6 +23,7 @@ argument-hint: "[branch-name]"
 3. ตรวจสอบว่า `worktree/` ไม่ได้อยู่ใน `.gitignore`
 
 ### 2. Check Current Branch
+
 > Goal: Check Current Branch
 
 1. รัน `git branch --show-current` เพื่อดู branch ปัจจุบัน
@@ -29,6 +31,7 @@ argument-hint: "[branch-name]"
 3. ถ้ามี uncommitted changes ให้ commit หรือ stash ก่อน
 
 ### 3. Create Worktree
+
 > Goal: Create Worktree
 
 1. รัน `git worktree add worktree/<branch-name> -b <branch-name>` เพื่อสร้าง worktree พร้อม branch ใหม่เสมอ
@@ -36,6 +39,7 @@ argument-hint: "[branch-name]"
 3. รัน `cd worktree/<branch-name>` เพื่อเข้าไปทำงานใน worktree
 
 ### 4. Verify Worktree
+
 > Goal: Verify Worktree
 
 1. ตรวจสอบว่า worktree directory มีไฟล์ครบถ้วน

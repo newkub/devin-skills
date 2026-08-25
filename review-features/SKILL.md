@@ -1,12 +1,6 @@
----
+﻿---
 name: review-features
 description: ตรวจสอบ features documentation ก่อน update-features แก้ไข
-related:
-  - update-features
-  - update-docs
-  - validate
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

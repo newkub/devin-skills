@@ -18,6 +18,7 @@ argument-hint: "[title]"
 ## Execute
 
 ### 1. Prepare Branch
+
 > Goal: Prepare Branch
 
 1. ตรวจสอบว่า branch ปัจจุบันสะอาดและ sync กับ remote
@@ -27,6 +28,7 @@ argument-hint: "[title]"
 5. Commit changes ด้วย conventional commit format
 
 ### 2. Link To Issue
+
 > Goal: Link To Issue
 
 1. ระบุ issue ที่เกี่ยวข้อง (ถ้ามี)
@@ -34,6 +36,7 @@ argument-hint: "[title]"
 3. อัปเดต issue ด้วย link ไปยัง PR
 
 ### 3. Write PR Description
+
 > Goal: Write PR Description
 
 1. ใช้ PR template ตาม project standards
@@ -47,6 +50,7 @@ argument-hint: "[title]"
 4. เพิ่ม checklist สำหรับ review
 
 ### 4. Create PR With MCP Tool
+
 > Goal: Create PR With MCP Tool
 
 1. ใช้ `mcp3_create_pull_request`
@@ -56,6 +60,7 @@ argument-hint: "[title]"
 5. ตั้งค่า draft mode หากยังไม่พร้อม review
 
 ### 5. Verify PR Creation
+
 > Goal: Verify PR Creation
 
 1. ตรวจสอบว่า PR ถูกสร้างสำเร็จ

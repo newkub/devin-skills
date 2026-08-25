@@ -14,6 +14,7 @@ description: แนวทางการสร้างและจัดกา�
 ## Execute
 
 ### 1. Analyze Module Structure
+
 > Goal: Analyze Module Structure
 
 วิเคราะห์โครงสร้าง module ก่อนสร้าง barrel export
@@ -24,6 +25,7 @@ description: แนวทางการสร้างและจัดกา�
 4. ระบุ consumers ที่ import จาก module นี้
 
 ### 2. Create Or Update Barrel File
+
 > Goal: Create Or Update Barrel File
 
 สร้างหรืออัปเดต barrel export file
@@ -36,6 +38,7 @@ description: แนวทางการสร้างและจัดกา�
 6. จัดเรียง exports ตาม source file ตามตัวอักษร
 
 ### 3. Choose Export Strategy
+
 > Goal: Choose Export Strategy
 
 เลือก export strategy ตาม context
@@ -45,6 +48,7 @@ description: แนวทางการสร้างและจัดกา�
 3. `Mixed` — ใช้ `export *` สำหรับกลุ่มหนึ่ง และ named exports สำหรับอีกกลุ่ม เมื่อต้องการซ่อนบางส่วน
 
 ### 4. Update Imports
+
 > Goal: Update Imports
 
 อัปเดต imports ใน consumers ให้ใช้ barrel export
@@ -55,6 +59,7 @@ description: แนวทางการสร้างและจัดกา�
 4. ตรวจสอบว่าไม่มี deep imports ที่ข้าม module boundary
 
 ### 5. Verify
+
 > Goal: Verify
 
 ตรวจสอบ barrel export ทำงานถูกต้อง

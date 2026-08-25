@@ -9,7 +9,7 @@ skill ที่ระบุ CLI หรือ web มี `src/` directory พร�
 ## Steps
 
 1. สำหรับ CLI: ใช้ `/follow-create-bun-cli` หรือ `/follow-create-cli` เลือก framework. ใช้ `/use-scripts` สำหรับ helper scripts
-2. สำหรับ web: ใช้ `/follow-web-design` เพื่อออกแบบ UI/UX. ใช้ `/visualize-in-web` สร้างไฟล์ HTML entry
+2. สำหรับ web: ใช้ `/review-frontend` เพื่อออกแบบ UI/UX. ใช้ `/visualize-in-web` สร้างไฟล์ HTML entry
 3. วาง entry point ที่ `src/presentation/cli.ts` สำหรับ CLI. เก็บ web app code ใน `src/`
 4. รันทดสอบด้วย `bun run dev` หรือ `bunx serve src/`. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
 5. ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
@@ -17,7 +17,7 @@ skill ที่ระบุ CLI หรือ web มี `src/` directory พร�
 ## Rules
 
 - ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation
-- ถ้า skill ต้องการ web → เรียก `/follow-web-design` ก่อนสร้าง `src/`
+- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`
 - ใช้ `src/presentation/cli.ts` เป็น entry point สำหรับ CLI
 - ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry สำหรับ web
 - ตรวจสอบว่า `bun run dev`, `bun run build` และ `bunx serve src/` ทำงานได้

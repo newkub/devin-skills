@@ -1,4 +1,4 @@
----
+﻿---
 name: list-git-branch
 description: แสดง branches ในเครื่องและ remote พร้อมข้อมูลล่าสุด
 ---
@@ -66,7 +66,7 @@ description: แสดง branches ในเครื่องและ remote �
 
 ### Read-Only
 
-- ไม่สร้าง ไม่ลบ ไม่ switch branch — ใช้ `/follow-git` สำหรับ branch operations
+- ไม่สร้าง ไม่ลบ ไม่ switch branch — ใช้ `/follow-tool-git` สำหรับ branch operations
 - ไม่รัน `git fetch` โดย default — แค่อ่านข้อมูลที่มี
 - ถ้าผู้ใช้ต้องการข้อมูลล่าสุด → ถามก่อน fetch
 
@@ -86,7 +86,7 @@ description: แสดง branches ในเครื่องและ remote �
 ### Non-Redundancy
 
 - GitHub branches อยู่ใน `/list-github-branch` แล้ว
-- Branch operations อยู่ใน `/follow-git` แล้ว
+- Branch operations อยู่ใน `/follow-tool-git` แล้ว
 - Stash listing อยู่ใน `/list-git-stash` แล้ว
 
 ## Expected Outcome

@@ -14,6 +14,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 ## Execute
 
 ### 1. Detect Test Framework
+
 > Goal: Detect Test Framework
 
 ตรวจสอบ test framework ที่ project ใช้
@@ -25,6 +26,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 5. บันทึก test framework และ coverage tools ที่ใช้
 
 ### 2. Setup Coverage Config
+
 > Goal: Setup Coverage Config
 
 ตั้งค่า coverage ตาม framework ที่ตรวจพบ
@@ -36,6 +38,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 5. ตรวจสอบ coverage excludes สำหรับ test files และ config
 
 ### 3. Run Coverage Analysis
+
 > Goal: Run Coverage Analysis
 
 รัน coverage analysis ตาม framework ที่ใช้
@@ -47,6 +50,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 5. บันทึก report location
 
 ### 4. Verify 100% Coverage
+
 > Goal: Verify 100% Coverage
 
 ตรวจสอบว่า coverage ถึง 100% ทุกประเภท

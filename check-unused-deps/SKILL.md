@@ -1,4 +1,4 @@
----
+﻿---
 name: check-unused-deps
 description: Detect and remove unused dependencies using Knip and ecosystem-specific tools
 ---
@@ -9,7 +9,7 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 
 ## Scope
 
-ใช้กับทุกโปรเจกต์ที่มี package manifest — รองรับทั้ง single project และ monorepo — ไม่รวมการตรวจสอบ unused files หรือ unused exports (ใช้ `/check-unused-files` และ `/follow-knip` แทน)
+ใช้กับทุกโปรเจกต์ที่มี package manifest — รองรับทั้ง single project และ monorepo — ไม่รวมการตรวจสอบ unused files หรือ unused exports (ใช้ `/check-unused-files` และ `/follow-tool-knip` แทน)
 
 ## Execute
 
@@ -27,7 +27,7 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 
 > Goal: รัน tool ตรวจสอบ unused dependencies
 
-1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-knip` แล้วรัน `bunx knip --include dependencies`
+1. ถ้าเป็น JavaScript/TypeScript → ทำ `/follow-tool-knip` แล้วรัน `bunx knip --include dependencies`
 2. ถ้าเป็น Rust → รัน `cargo +nightly udeps`
 3. ถ้าเป็น Python → รัน `ruff` หรือ `pip-autoremove`
 4. ถ้าเป็น Go → รัน `go mod tidy -v`

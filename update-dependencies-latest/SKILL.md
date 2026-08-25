@@ -14,6 +14,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 ## Execute
 
 ### 1. Pre-Update Analysis
+
 > Goal: Pre-Update Analysis
 
 1. รัน `bunx taze -r` หรือ `npm outdated` เพื่อดู dependencies ที่ต้องอัพเดททั้งหมด
@@ -22,6 +23,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 4. สร้าง backup หรือ branch ใหม่ก่อนอัพเดท (แนะนำ)
 
 ### 2. Update Root Dependencies
+
 > Goal: Update Root Dependencies
 
 1. รัน `bunx taze -w -i` สำหรับ root package.json
@@ -29,6 +31,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 3. รัน `bun update --latest` สำหรับ update ทั้งหมดเป็น latest version
 
 ### 3. Update Workspace Dependencies
+
 > Goal: Update Workspace Dependencies
 
 1. รัน `bunx taze -r -w -i` ในแต่ละ workspace folder
@@ -36,6 +39,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 3. ตรวจสอบว่า peerDependencies ยัง compatible หรือไม่
 
 ### 4. Handle Major Version Updates
+
 > Goal: Handle Major Version Updates
 
 1. รัน `bunx taze major -w -i` สำหรับ major updates เท่านั้น
@@ -44,6 +48,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 4. ทดสอบ breaking changes ด้วยการรัน tests
 
 ### 5. Handle Minor/Patch Updates
+
 > Goal: Handle Minor/Patch Updates
 
 1. รัน `bunx taze minor -w -i` สำหรับ minor updates
@@ -51,6 +56,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 3. หรือรัน `bunx taze -w -i` สำหรับทั้ง minor และ patch
 
 ### 6. Update Lock File
+
 > Goal: Update Lock File
 
 1. รัน `bun install` เพื่อ update bun.lock file
@@ -58,6 +64,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 3. ตรวจสอบว่า lock file ไม่มี conflicts
 
 ### 7. Post-Update Verification
+
 > Goal: Post-Update Verification
 
 1. รัน `bun audit` เพื่อตรวจสอบว่าไม่มี new vulnerabilities
@@ -66,6 +73,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 4. รัน `bun run test` เพื่อตรวจสอบว่า tests ยังผ่าน
 
 ### 8. Version Consistency Check
+
 > Goal: Version Consistency Check
 
 1. ตรวจสอบว่า dependencies ที่ใช้ในหลาย workspace มี version เดียวกัน

@@ -15,13 +15,15 @@ argument-hint: "[command]"
 ## Execute
 
 ### 1. Prepare Bun Shell Environment
+
 > Goal: Prepare Bun Shell Environment
 
-1. ทำ `/follow-bun` เพื่อ setup Bun environment
+1. ทำ `/follow-lang-bun` เพื่อ setup Bun environment
 2. ตรวจสอบว่า Bun ติดตั้งและพร้อมใช้งาน
 3. ตั้งค่า environment variables ที่จำเป็นสำหรับ Bun
 
 ### 2. Execute Commands With Bun
+
 > Goal: Execute Commands With Bun
 
 1. ใช้ `bun -e "console.log('command')"` สำหรับ simple commands
@@ -30,6 +32,7 @@ argument-hint: "[command]"
 4. ใช้ `bun -e` สำหรับ JavaScript/TypeScript code execution
 
 ### 3. Handle File Operations
+
 > Goal: Handle File Operations
 
 1. ใช้ `Bun.file()` สำหรับ file reading/writing
@@ -38,6 +41,7 @@ argument-hint: "[command]"
 4. ใช้ `Bun.glob()` สำหรับ file pattern matching
 
 ### 4. Process Management
+
 > Goal: Process Management
 
 1. ใช้ `Bun.spawn()` สำหรับ background processes

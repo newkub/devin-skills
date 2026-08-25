@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 ## Execute
 
 ### 1. Use Pure Functions
+
 > Goal: Use Pure Functions
 
 เขียนฟังก์ชันที่ deterministic เสมอ
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Isolate non-deterministic operations
 
 ### 2. Manage External State
+
 > Goal: Manage External State
 
 จัดการ external state อย่างเหมาะสม
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Document external dependencies อย่างชัดเจน
 
 ### 3. Control Time Dependencies
+
 > Goal: Control Time Dependencies
 
 จัดการ time-dependent operations
@@ -47,6 +50,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Document time dependencies อย่างชัดเจน
 
 ### 4. Handle Concurrency
+
 > Goal: Handle Concurrency
 
 จัดการ concurrent operations อย่าง deterministic
@@ -58,6 +62,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Document concurrency assumptions
 
 ### 5. Input Validation
+
 > Goal: Input Validation
 
 ตรวจสอบ inputs อย่างเข้มงวด
@@ -69,6 +74,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Return predictable errors สำหรับ invalid inputs
 
 ### 6. Error Handling
+
 > Goal: Error Handling
 
 จัดการ errors อย่าง deterministic
@@ -80,6 +86,7 @@ description: พัฒนาโปรเจกต์ด้วย deterministic p
 5. Test error paths อย่างครบถ้วน
 
 ### 7. Testing
+
 > Goal: Testing
 
 เขียน tests สำหรับ deterministic behavior

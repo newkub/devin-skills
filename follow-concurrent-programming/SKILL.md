@@ -14,6 +14,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 ## Execute
 
 ### 1. Use Async Await
+
 > Goal: Use Async Await
 
 ใช้ async/await สำหรับ asynchronous operations
@@ -25,6 +26,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. ใช้ multiple result mechanisms สำหรับ multiple results
 
 ### 2. Parallel Execution
+
 > Goal: Parallel Execution
 
 ทำงานหลายอย่างพร้อมกัน
@@ -36,6 +38,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. ใช้ parallel processing libraries
 
 ### 3. Error Handling
+
 > Goal: Error Handling
 
 จัดการ errors ใน concurrent code
@@ -47,6 +50,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. Log errors ด้วย context
 
 ### 4. Resource Management
+
 > Goal: Resource Management
 
 จัดการ resources อย่างเหมาะสม
@@ -58,6 +62,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. Cleanup resources อย่างถูกต้อง
 
 ### 5. Synchronization
+
 > Goal: Synchronization
 
 ซิงโครไนซ์ shared state อย่างปลอดภัย
@@ -69,6 +74,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. ใช้ immutable state
 
 ### 6. Performance
+
 > Goal: Performance
 
 ปรับปรุง performance ของ concurrent code
@@ -80,6 +86,7 @@ description: พัฒนาโปรเจกต์ด้วย concurrent prog
 5. Benchmark และ tune
 
 ### 7. Testing
+
 > Goal: Testing
 
 ทดสอบ concurrent code

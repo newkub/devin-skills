@@ -2,15 +2,6 @@
 name: follow-write-devin-skills
 description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
 argument-hint: "[skill-name]"
-related:
-  - follow-single-responsibility
-  - validate
-  - update-reference
-  - update-agents-md
-  - convert-to-submodule
-  - learn-from-web
-  - use-scripts
-  - ask-me
 ---
 
 ## Goal
@@ -93,6 +84,23 @@ related:
 - ถ้าไม่ตรง template → ใช้โครงสร้างมาตรฐาน `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 
+### 1.1. Follow Prefixes
+
+`follow-*` skills แบ่งตาม nature ของเป้าหมาย:
+
+| Prefix | สำหรับ | ตัวอย่าง |
+|--------|--------|----------|
+| `follow-lang-` | programming language / runtime | `follow-lang-rust`, `follow-lang-python`, `follow-lang-typescript` |
+| `follow-framework-` | meta-framework / app framework | `follow-framework-nuxt`, `follow-framework-vue`, `follow-framework-tauri` |
+| `follow-service-` | external service / cloud platform | `follow-service-supabase`, `follow-service-vercel`, `follow-service-aws-sdk` |
+| `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia` |
+| `follow-tool-` | CLI tool / dev tool / build tool | `follow-tool-biome`, `follow-tool-vite`, `follow-tool-ast-grep` |
+| `follow-create-` | สร้าง plugins / extensions / CLI / lib | `follow-create-bun-cli`, `follow-create-eslint-plugins` |
+| `follow-` (คงเดิม) | concept / practice / workflow / process | `follow-architecture`, `follow-tdd`, `follow-deploy`, `follow-plan` |
+
+- ถ้า skill ไม่ตรง prefix ใด → ใช้ `follow-` คงเดิม
+- ถ้า skill ครอบคลุมหลาย category → เลือก prefix ตาม primary responsibility
+
 ### 2. Package Structure
 
 - `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด. สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `src/`, `.devin/rules/` ตามความจำเป็น
@@ -113,7 +121,7 @@ related:
 ### 5. Src Support
 
 - ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation. ใช้ `src/presentation/cli.ts` เป็น entry point. ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
-- ถ้า skill ต้องการ web → เรียก `/follow-web-design` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
+- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 - ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 - ถ้า skill มี `src/` → ทำ `/ship-skills` เลยหลัง validation ผ่าน ไม่ต้องถาม user
@@ -126,13 +134,20 @@ related:
 
 - ดูรายละเอียดใน [references/dependencies.md](references/dependencies.md)
 
+### 9. Update And Review Pairs
+
+- ทุก `update-*` skill ต้องมี `review-*` skill คู่กัน — review ก่อน update เสมอ
+- ถ้ายังไม่มี `review-*` สำหรับ `update-*` นั้น → สร้าง `review-*` ก่อน โดยใช้ `/follow-write-devin-skills`
+- ชื่อ `review-*` ไม่จำเป็นต้องตรงกับ `update-*` ทุกตัว แต่ต้องอ้างถึงกันผ่าน `## Execute` ของ `update-*` ที่เรียก `review-*` ก่อนดำเนินการ
+- ตัวอย่าง: `update-devin-global-skills` เรียก `review-devin-skills` ก่อน, `update-docs` เรียก `review-docs` ก่อน, `update-readme` เรียก `review-readme` ก่อน
+
 ## Expected Outcome
 
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
 - ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship-skills` เลย
-- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. `related` ถูกต้อง ไม่มี missing/unused. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
+- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
 
 ## Examples

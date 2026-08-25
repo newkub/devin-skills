@@ -14,6 +14,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 ## Execute
 
 ### 1. Analyze System Structure
+
 > Goal: Analyze System Structure
 
 1. ทำ `/scan-codebase` เพื่อหา modules, services, และ entry points
@@ -23,6 +24,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 5. จดกลุ่มของ components ตาม domain (auth, booking, payment, etc.)
 
 ### 2. Define Diagram Scope
+
 > Goal: Define Diagram Scope
 
 1. เลือกระดับ abstraction: system overview, module-level, หรือ feature-level
@@ -31,6 +33,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 4. กำหนดความกว้างสูงสุดไม่เกิน 80 characters สำหรับ chat readability
 
 ### 3. Draw System Overview
+
 > Goal: Draw System Overview
 
 1. วาด outer container ด้วย double-line borders (`╔═╗║╚═╝`)
@@ -40,6 +43,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 5. ใส่ labels สั้นๆ ในแต่ละ box: ชื่อ layer และ key components
 
 ### 4. Draw Module Dependencies
+
 > Goal: Draw Module Dependencies
 
 1. วาด modules เป็น boxes ในระดับเดียวกัน
@@ -49,6 +53,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 5. วาด database schema groups เป็น nested boxes
 
 ### 5. Draw Data Flow
+
 > Goal: Draw Data Flow
 
 1. ระบุ entry points: routes, API endpoints, server functions
@@ -58,6 +63,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 5. แสดง error paths ด้วย `✗` และ success paths ด้วย `✓`
 
 ### 6. Add Annotations
+
 > Goal: Add Annotations
 
 1. ใช้ `//` สำหรับ inline comments
@@ -67,6 +73,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 5. เพิ่ม legend ด้านล่างถ้าใช้ symbols หลายชนิด
 
 ### 7. Validate And Present
+
 > Goal: Validate And Present
 
 1. ตรวจสอบว่าทุก box มี label ชัดเจน
@@ -78,6 +85,7 @@ description: วาด architecture diagram ด้วย ANSI box-drawing charac
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

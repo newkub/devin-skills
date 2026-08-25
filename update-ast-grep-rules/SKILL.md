@@ -1,4 +1,4 @@
----
+﻿---
 name: update-ast-grep-rules
 description: อัปเดต ast-grep rules ตามไฟล์ที่มีใน .devin/rules ให้ครอบคลุมและถูกต้อง
 ---
@@ -27,7 +27,7 @@ description: อัปเดต ast-grep rules ตามไฟล์ที่ม
 
 > Goal: ตั้งค่า project structure และ `sgconfig.yml`
 
-1. ทำ `/follow-ast-grep` สำหรับการตั้งค่า `sgconfig.yml` และ project structure
+1. ทำ `/follow-tool-ast-grep` สำหรับการตั้งค่า `sgconfig.yml` และ project structure
 2. สร้าง `rules/always-on/`, `rules/model_decision/`, `rules/glob/` ที่ project root
 3. ตั้งค่า `sgconfig.yml`: `ruleDirs` ชี้ทั้ง 3 directories, `languageAliases` (`ts`/`tsx` → `TypeScript`, `js`/`jsx` → `JavaScript`), `devPaths` สำหรับ source directories, `testConfigs` สำหรับ `rule-tests/`
 
@@ -35,7 +35,7 @@ description: อัปเดต ast-grep rules ตามไฟล์ที่ม
 
 > Goal: แปลง devin rules เป็น ast-grep YAML
 
-1. ทำ `/follow-ast-grep` สำหรับ rule structure และ pattern syntax
+1. ทำ `/follow-tool-ast-grep` สำหรับ rule structure และ pattern syntax
 2. แปลง atomic rules: `pattern`, `kind`, `regex` (ใช้ `kind` ร่วม `pattern` เพื่อ match แม่นยำ)
 3. แปลง relational rules: `inside`, `has`, `precedes`, `follows` (พร้อม `stopBy`, `field`)
 4. แปลง composite rules: `all`, `any`, `not`, `matches`
@@ -77,7 +77,7 @@ description: อัปเดต ast-grep rules ตามไฟล์ที่ม
 - `regex` ต้องใช้กับ `kind` หรือ `pattern` เสมอ
 - rule object เป็น unordered `all` โดยปริยาย — ถ้าไม่ได้ผลให้ใช้ `all` เพื่อระบุ order
 - `$ARG` (single), `$$$ARGS` (multiple) — `constraints` ใช้กับ `$ARG` เท่านั้น
-- ดูรายละเอียดที่ `/use-ast-grep` และ `/follow-ast-grep`
+- ดูรายละเอียดที่ `/use-ast-grep` และ `/follow-tool-ast-grep`
 
 ### 3. Scope And Fix
 

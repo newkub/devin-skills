@@ -1,4 +1,4 @@
----
+﻿---
 name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
 ---
@@ -21,7 +21,7 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 2. อ่าน `drizzle.config.ts` เพื่อดู `schema`, `dialect`, และ `dbCredentials`
 3. ตรวจสอบว่ามี `drizzle-kit` ใน `package.json` dependencies
 4. ตรวจสอบว่ามี environment variable ที่จำเป็น เช่น `DATABASE_URL`
-5. ถ้า config ขาด → ทำ `/follow-drizzle` ก่อนแล้ว stop
+5. ถ้า config ขาด → ทำ `/follow-lib-drizzle` ก่อนแล้ว stop
 
 ### 2. Check Database Connection
 
@@ -101,7 +101,7 @@ description: รัน Drizzle Studio สำหรับจัดการ datab
 
 ### 5. Non-Redundancy
 
-- ไม่ซ้ำกับ `/follow-drizzle` ที่เน้น development guide
+- ไม่ซ้ำกับ `/follow-lib-drizzle` ที่เน้น development guide
 - ใช้ขั้นตอนนี้เฉพาะเมื่อต้องการรัน studio จริง
 
 ## Expected Outcome

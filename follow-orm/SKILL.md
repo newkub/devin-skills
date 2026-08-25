@@ -28,7 +28,7 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 
 > Goal: เขียน repository implementations โดยใช้ ORM
 
-1. ทำ `/follow-drizzle` ถ้า project ใช้ Drizzle (หรือ ORM ที่ตรวจพบ)
+1. ทำ `/follow-lib-drizzle` ถ้า project ใช้ Drizzle (หรือ ORM ที่ตรวจพบ)
 2. สร้าง repository implementations ที่ implement interfaces
 3. แปลง ORM row types เป็น business model types ที่ boundary
 4. จัดการ connection และ transaction ใน repository เท่านั้น
@@ -68,7 +68,7 @@ description: กำหนด ORM และ data access patterns ด้วย rep
 
 ### 6. Handle Migrations
 
-> Goal: ทำ `/follow-drizzle` สำหรับ migration strategy
+> Goal: ทำ `/follow-lib-drizzle` สำหรับ migration strategy
 
 1. กำหนด migration strategy: `push` (dev) หรือ `generate + migrate` (production)
 2. Schema changes อยู่ใน migration files เท่านั้น

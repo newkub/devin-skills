@@ -15,6 +15,7 @@ argument-hint: "[query]"
 ## Execute
 
 ### 1. Search Repositories By Stars
+
 > Goal: Search Repositories By Stars
 
 ค้นหา repositories ด้วย `gh search` command
@@ -26,6 +27,7 @@ argument-hint: "[query]"
 5. ใช้ qualifiers: `language:`, `topic:`, `user:`, `org:`
 
 ### 2. Filter Results
+
 > Goal: Filter Results
 
 กรองผลลัพธ์ตามเงื่อนไข
@@ -37,6 +39,7 @@ argument-hint: "[query]"
 5. กรองตาม license ด้วย `license:<license>`
 
 ### 3. Parse Output
+
 > Goal: Parse Output
 
 แปลง output จาก `gh` CLI

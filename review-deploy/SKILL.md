@@ -1,4 +1,4 @@
----
+﻿---
 name: review-deploy
 description: Review deployment readiness ก่อน deploy
 ---
@@ -9,7 +9,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 
 ## Scope
 
-ใช้ก่อนเรียก `run-deploy`, `deploy-to-railway`, `follow-deploy-to-cloudflare`, `follow-vercel`, `follow-vercel-cli`, `follow-deploy`, หรือ `run-preview` — ตรวจ deployment readiness ครอบคลุม env, secrets, build, health, rollback, DNS, SSL, migration, zero-downtime แล้วสรุป deploy readiness score พร้อม go/no-go checklist
+ใช้ก่อนเรียก `run-deploy`, `deploy-to-railway`, `follow-service-deploy-to-cloudflare`, `follow-service-vercel`, `follow-service-vercel-cli`, `follow-deploy`, หรือ `run-preview` — ตรวจ deployment readiness ครอบคลุม env, secrets, build, health, rollback, DNS, SSL, migration, zero-downtime แล้วสรุป deploy readiness score พร้อม go/no-go checklist
 
 ## Execute
 

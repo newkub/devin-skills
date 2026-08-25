@@ -35,7 +35,7 @@
 > Goal: สร้าง API Gateway สำหรับ routing และ cross-cutting concerns
 
 1. สร้าง API Gateway สำหรับ routing
-2. กำหนด authentication และ authorization — ทำ `/follow-validation` สำหรับ input validation
+2. กำหนด authentication และ authorization — ทำ `/review-quality` สำหรับ input validation
 3. ตั้งค่า rate limiting แล load balancing
 4. กำหนด request/response transformation
 

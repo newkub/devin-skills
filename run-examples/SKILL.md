@@ -14,18 +14,21 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 ## Execute
 
 ### 1. Prepare
+
 > Goal: Prepare
 
-1. ใช้ `/follow-project-docs` เพื่อเก็บ reference
+1. ใช้ `/follow-tool-vitepress` เพื่อเก็บ reference
 2. รัน `/analyze-project` เพื่อดูภาพรวม
 
 ### 2. Analyze APIs
+
 > Goal: Analyze APIs
 
 1. อ่าน entry point และ index files ในแต่ละ module
 2. ระบุ API ทั้งหมดจาก source code
 
 ### 3. Create Structure
+
 > Goal: Create Structure
 
 1. สร้าง `examples/` directory หรือใช้ `apps/examples` สำหรับ monorepo
@@ -33,6 +36,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. สร้าง `README.md` อธิบายโครงสร้าง
 
 ### 4. Write Examples per Module
+
 > Goal: Write Examples per Module
 
 1. เขียน examples สำหรับทุก module ครอบคลุมทุก API
@@ -41,6 +45,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 4. เขียน edge cases และ error handling
 
 ### 5. Write Integration Examples
+
 > Goal: Write Integration Examples
 
 1. End-to-end use case flows
@@ -48,6 +53,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. Error handling flows
 
 ### 6. Validate
+
 > Goal: Validate
 
 1. รัน examples เพื่อตรวจสอบว่าทำงานได้จริง
@@ -55,6 +61,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. ตรวจสอบว่า code ถูกต้องและ runnable
 
 ### 7. Update Documentation
+
 > Goal: Update Documentation
 
 1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
@@ -62,6 +69,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
 
 ### 8. Update Reference
+
 > Goal: Update Reference
 
 1. ใช้ `/update-reference` เพื่ออัพเดท references

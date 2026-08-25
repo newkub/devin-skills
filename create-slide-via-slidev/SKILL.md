@@ -1,4 +1,4 @@
----
+﻿---
 name: create-slide-via-slidev
 description: สร้าง standalone Slidev project ด้วย CLI ในตำแหน่งใดก็ได้ พร้อม package.json ของตัวเอง
 argument-hint: "[title]"
@@ -98,9 +98,9 @@ argument-hint: "[title]"
 
 ### 4. Non-Redundancy
 
-- รายละเอียด Slidev syntax และ features อยู่ใน `/follow-slidev` แล้ว
+- รายละเอียด Slidev syntax และ features อยู่ใน `/follow-framework-slidev` แล้ว
 - รายละเอียดการสร้างใน `D:/newkub/slides` อยู่ใน `/create-slide-in-newkub-slides` แล้ว
-- ใช้ `/follow-slidev` สำหรับ best practices ของ Slidev
+- ใช้ `/follow-framework-slidev` สำหรับ best practices ของ Slidev
 
 ## Expected Outcome
 

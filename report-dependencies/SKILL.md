@@ -53,6 +53,7 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

@@ -14,6 +14,7 @@ description: รับบทเป็น user อ่าน code แล้วค�
 ## Execute
 
 ### 1. Read Code Context
+
 > Goal: Read Code Context
 
 1. ทำ `/scan-codebase` หรือใช้ `read_file`, `grep_search`, `find_by_name`, `list_dir` เพื่อหา user-facing code
@@ -22,6 +23,7 @@ description: รับบทเป็น user อ่าน code แล้วค�
 4. ถ้าหา user-facing code ไม่เจอ ให้ถามผู้ใช้ว่าต้องการ review ส่วนไหน
 
 ### 2. Identify User Personas And Goals
+
 > Goal: Identify User Personas And Goals
 
 1. ระบุ user types จาก code (guest, logged-in, admin, provider, customer, etc.)
@@ -30,6 +32,7 @@ description: รับบทเป็น user อ่าน code แล้วค�
 4. บันทึก assumptions ที่ทำจาก code ไว้ชัดเจน
 
 ### 3. Simulate User Journey
+
 > Goal: Simulate User Journey
 
 1. เลือก 3-5 ใช้งานหลัก แต่ละ persona จาก code ที่อ่าน
@@ -38,6 +41,7 @@ description: รับบทเป็น user อ่าน code แล้วค�
 4. ตรวจ happy path และ error path ที่อ่านได้จาก code
 
 ### 4. Review Clickability And Doability
+
 > Goal: Review Clickability And Doability
 
 1. สำหรับแต่ละ step ถาม: "user กดได้ไหม?", "user รู้จะกดตรงไหนไหม?", "มี CTA ชัดเจนไหม?"
@@ -46,6 +50,7 @@ description: รับบทเป็น user อ่าน code แล้วค�
 4. บันทึก dead-end, missing action, หรือ unreachable state
 
 ### 5. Review Every UX UI Aspect
+
 > Goal: Review Every UX UI Aspect
 
 Goal reminder: จำลอง user แล้วหาปัญหา UX/UI ในทุกมิติ ไม่ใช่แค่ visual
@@ -89,6 +94,7 @@ Platform and Environment:
 23. Edge cases: empty, error, loading, unauthorized, no network, expired session, concurrent editing, large datasets
 
 ### 6. Map Findings To Code
+
 > Goal: Map Findings To Code
 
 1. แต่ละ finding ต้องมี file path และ line number หรือ code snippet
@@ -97,6 +103,7 @@ Platform and Environment:
 4. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
 ### 7. Generate Report
+
 > Goal: Generate Report
 
 1. ทำ `/report` ด้วย `/report-table`

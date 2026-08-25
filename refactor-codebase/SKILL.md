@@ -17,6 +17,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 ## Execute
 
 ### 1. Review And Baseline
+
 > Goal: เข้าใจ codebase ก่อน refactor
 
 1. ทำ `/review-codebase` สำหรับ deep review
@@ -24,12 +25,14 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 3. บันทึก baseline: files, symbols, responsibilities
 
 ### 2. Create Plan If Large
+
 > Goal: มีแผนก่อน refactor ขนาดใหญ่
 
 1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan`
 2. ถ้างานเล็ก → ข้ามไป Step 3
 
 ### 3. Refactor By Concern
+
 > Goal: แก้ไขปัญหาเฉพาะทีละเรื่อง
 
 1. ถ้ามี SRP violations → ทำ `/refactor-to-srp`
@@ -41,6 +44,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 7. ถ้ามี inconsistencies ใน naming, patterns, structure, หรือ style → ทำ `/review-quality`
 
 ### 4. Update References
+
 > Goal: ไม่มี broken references
 
 1. ทำ `/edit-relative` สำหรับ relative paths/imports
@@ -48,6 +52,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 3. ถ้ามี broken references → ทำ `/resolve-errors`
 
 ### 5. Verify
+
 > Goal: code ผ่าน lint/typecheck/test
 
 1. ทำ `/run-check`, `/run-test`
@@ -55,12 +60,14 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
 
 ### 6. Implement Plan
+
 > Goal: ทำงานตามแผนจนครบและลบแผน
 
 1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
 2. ถ้าไม่มีแผน → รายงานผล
 
 ### 7. Report
+
 > Goal: สื่อสารผล refactor
 
 1. ทำ `/report` สรุป before/after

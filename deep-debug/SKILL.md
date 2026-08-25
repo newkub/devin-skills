@@ -106,6 +106,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ## Rules
 
 ### 1. Systematic Approach
+
 > Goal: debug อย่างเป็นระบบ ไม่เดา
 
 - ห้ามเดา ต้องมี hypothesis และ evidence
@@ -115,6 +116,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
 
 ### 2. Bayesian Method
+
 > Goal: ใช้ Bayesian Inference อย่างถูกต้อง
 
 - กำหนด prior probability สำหรับทุก hypothesis
@@ -123,6 +125,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้าทุก hypothesis ถูกตัด ให้สร้าง hypothesis ใหม่
 
 ### 3. Regression Safety
+
 > Goal: ทุก bug fix ต้องมี regression test
 
 - ทุก bug fix ต้องมี regression test
@@ -131,6 +134,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้ามี regression ให้กลับไปแก้ fix
 
 ### 4. Error Handling
+
 > Goal: หยุดเมื่อไม่สามารถดำเนินต่อได้อย่างปลอดภัย
 
 - ถ้า reproduce ไม่ได้ → stop และ report
@@ -139,6 +143,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ถ้าซับซ้อนมาก → ทำ `/deep-thinking` ก่อน debug
 
 ### 5. Prevention
+
 > Goal: ป้องกันการเกิดปัญหาซ้ำ
 
 - ระบุ root cause ในระดับ process ไม่ใช่แค่ code

@@ -1,12 +1,6 @@
----
+﻿---
 name: update-usage
 description: อัปเดต usage.kdl spec และ generate USAGE.md และ completions
-related:
-  - review-usage
-  - follow-usage
-  - follow-create-bun-cli
-  - validate
-  - suggest-next-action
 ---
 
 ## Goal
@@ -15,7 +9,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ CLI มีการเปลี่ยนแปลง (เพิ่ม/ลบ/แก้ flags, args, commands) และต้องการอัปเดต `usage.kdl` และ `USAGE.md` — `usage.kdl` เป็น KDL source (single source of truth) `USAGE.md` เป็น markdown output ที่ generate จาก spec ไม่รวมการสร้าง `usage.kdl` จาก scratch (ใช้ `follow-usage` แทน)
+ใช้เมื่อ CLI มีการเปลี่ยนแปลง (เพิ่ม/ลบ/แก้ flags, args, commands) และต้องการอัปเดต `usage.kdl` และ `USAGE.md` — `usage.kdl` เป็น KDL source (single source of truth) `USAGE.md` เป็น markdown output ที่ generate จาก spec ไม่รวมการสร้าง `usage.kdl` จาก scratch (ใช้ `follow-tool-usage` แทน)
 
 ## Execute
 
@@ -24,7 +18,7 @@ related:
 > Goal: เข้าใจสถานะปัจจุบันของ `usage.kdl`
 
 1. ทำ `/review-usage` เพื่อตรวจ `usage.kdl` ก่อนอัปเดต
-2. ถ้าไม่มี `usage.kdl` → ทำ `/follow-usage` แทน
+2. ถ้าไม่มี `usage.kdl` → ทำ `/follow-tool-usage` แทน
 3. บันทึก findings จาก review
 
 ### 2. Detect CLI Changes

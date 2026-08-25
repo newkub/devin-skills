@@ -17,6 +17,7 @@ argument-hint: "[repo-name]"
 ## Execute
 
 ### 1. Prepare Repo Metadata
+
 > Goal: มีชื่อ repository และ visibility ที่ถูกต้อง
 
 1. รับ `repo-name` จาก argument หรือถามผู้ใช้ถ้าขาด
@@ -25,6 +26,7 @@ argument-hint: "[repo-name]"
 4. รับ visibility จาก argument (ค่าเริ่มต้น `--private`)
 
 ### 2. Create Repository
+
 > Goal: repository ถูกสร้างบน GitHub
 
 1. รัน `gh repo create <repo-name> --<visibility>`
@@ -32,6 +34,7 @@ argument-hint: "[repo-name]"
 3. บันทึก URL จาก output
 
 ### 3. Open And Report
+
 > Goal: แสดงผล URL และเปิดหน้า repo
 
 1. รัน `gh repo view <repo-name> --json url --jq .url` เพื่อเอา URL

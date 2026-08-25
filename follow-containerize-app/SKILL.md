@@ -30,14 +30,14 @@ description: สร้าง container images ด้วย Docker, Podman แล
 1. ระบุ engine: `docker`, `podman`, `buildah` หรือ `nerdctl`
 2. เลือก base image ที่เล็ก เช่น `alpine`, `distroless`, `debian:slim`
 3. ใช้ image digest แทน tag ถ้าต้องการ reproducible builds
-4. ตรวจสอบ license ของ base image ด้วย `/follow-license-md` ถ้าจำเป็น
+4. ตรวจสอบ license ของ base image ด้วย `/follow-lib-license-md` ถ้าจำเป็น
 
 ### 3. Configure Multi-Stage Build
 
 > Goal: ออกแบบ multi-stage build เพื่อแยก build environment กับ runtime
 
 1. สร้าง `builder` stage ด้วย full toolchain
-2. ทำตาม `/follow-mise` เพื่อติดตั้ง tool versions ใน builder stage
+2. ทำตาม `/follow-tool-mise` เพื่อติดตั้ง tool versions ใน builder stage
 3. ทำตาม `/review-delivery` เพื่อลด build output และขนาด image
 4. สร้าง `runtime` stage จาก base image ที่เล็ก
 5. คัดลอกเฉพาะ build artifacts จาก builder ไป runtime
@@ -89,9 +89,9 @@ description: สร้าง container images ด้วย Docker, Podman แล
 
 ### 8. Publish Image
 
-> Goal: publish ด้วย `/follow-release-docker`
+> Goal: publish ด้วย `/follow-release`
 
-1. ทำตาม `/follow-release-docker` เพื่อตั้งค่า registry, tag และ pipeline
+1. ทำตาม `/follow-release` เพื่อตั้งค่า registry, tag และ pipeline
 2. ใช้ CI workflow สำหรับ build และ push
 3. ใช้ image digest หรือ semver tag
 4. ตรวจสอบ image บน registry หลัง push
@@ -103,7 +103,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 - เลือก base image ที่เล็กและได้รับการดูแล เช่น `alpine`, `distroless`, `debian:slim`
 - หลีกเลี่ยง `latest` tag สำหรับ production
 - ใช้ image digest เมื่อต้องการ reproducible build
-- ตรวจ license ของ base image ด้วย `/follow-license-md` ถ้าจำเป็น
+- ตรวจ license ของ base image ด้วย `/follow-lib-license-md` ถ้าจำเป็น
 
 ### 2. Multi-Stage Build
 
@@ -149,4 +149,4 @@ description: สร้าง container images ด้วย Docker, Podman แล
 - Image เล็กลง, build เร็วขึ้น, ปลอดภัยด้วย non-root user
 - `.dockerignore` หรือ `.containerignore` ลด build context
 - Image ผ่านการ build, health check และทดสอบรัน
-- พร้อม publish ด้วย `/follow-release-docker`
+- พร้อม publish ด้วย `/follow-release`

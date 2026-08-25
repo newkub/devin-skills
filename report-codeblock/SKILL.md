@@ -18,6 +18,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 ## Execute
 
 ### 1. Format Code Blocks
+
 > Goal: Format Code Blocks
 
 1. ระบุ programming language สำหรับ syntax highlighting
@@ -26,6 +27,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 4. เพิ่ม comments สำหรับ code ที่ซับซ้อน
 
 ### 2. Format Diffs
+
 > Goal: Format Diffs
 
 1. ใช้ standard unified diff format (`+`, `-`, context)
@@ -34,6 +36,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 4. ใช้ context lines สำหรับ readability
 
 ### 3. Format JSON
+
 > Goal: Format JSON
 
 1. ใช้ pretty print ด้วย indentation 2 spaces
@@ -42,6 +45,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 4. เพิ่ม metadata: `timestamp`, `version`, `status`
 
 ### 4. Format Markdown
+
 > Goal: Format Markdown
 
 1. ใช้ hierarchy ของ headings (H1-H6) อย่างเหมาะสม
@@ -50,6 +54,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 4. ไม่ข้าม heading levels
 
 ### 5. Add Metadata
+
 > Goal: Add Metadata
 
 1. เพิ่ม filename หรือ path ด้านบน code block
@@ -58,6 +63,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 4. เพิ่ม timestamp สำหรับ JSON output
 
 ### 6. Highlight Key Parts
+
 > Goal: Highlight Key Parts
 
 1. ใช้ bold สำหรับ keywords สำคัญ
@@ -68,6 +74,7 @@ description: จัดรูปแบบ code blocks, diffs, JSON และ mark
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

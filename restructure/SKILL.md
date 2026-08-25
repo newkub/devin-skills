@@ -14,6 +14,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 ## Execute
 
 ### 1. Analyze Current Structure
+
 > Goal: Analyze Current Structure
 
 วิเคราะห์โครงสร้างปัจจุบันเพื่อระบุปัญหาก่อนเปลี่ยนแปลง
@@ -24,6 +25,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 4. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Improve File Naming
+
 > Goal: Improve File Naming
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
@@ -33,6 +35,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 
 ### 3. Split Files With Multiple Responsibilities
+
 > Goal: Split Files With Multiple Responsibilities
 
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
@@ -44,17 +47,19 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 > Goal reminder: เป้าหมายคือทุกไฟล์มี single responsibility ไม่เกิน 250 บรรทัด
 
 ### 4. Relocate And Group By Domain
+
 > Goal: Relocate And Group By Domain
 
 ย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ domain — high-risk action
 
 1. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
 2. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
-3. ทำ `/follow-ordering` เพื่อจัดกลุ่มไฟล์ตาม domain
+3. ทำ `/follow-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
 4. ทำ `/update-reference` เพื่ออัปเดต imports
 5. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 
 ### 5. Refactor Imports And Exports
+
 > Goal: Refactor Imports And Exports
 
 ปรับปรุง barrel exports, import aliases และ import paths ให้ใช้ alias แทน relative paths ที่ซับซ้อน
@@ -63,6 +68,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 2. ถ้า barrel files และ import aliases ไม่ต้องปรับ → skip ไป Step 6
 
 ### 6. Validate Single Responsibility
+
 > Goal: Validate Single Responsibility
 
 ตรวจสอบว่าผลลัพธ์เป็นไปตามเป้าหมาย

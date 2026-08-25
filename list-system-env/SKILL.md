@@ -23,6 +23,7 @@ description: แสดงรายการ OS, shell, environment variables แ
 ## Execute
 
 ### 1. List Operating System
+
 > Goal: List Operating System
 
 แสดงข้อมูล OS ที่ใช้:
@@ -37,6 +38,7 @@ $PSVersionTable.OS
 ```
 
 ### 2. List Shell Information
+
 > Goal: แสดงข้อมูล shell type และ version
 
 1. รัน `$PSVersionTable.PSVersion` เพื่อแสดง PowerShell version
@@ -51,6 +53,7 @@ $PSVersionTable.PSEdition
 ```
 
 ### 3. List Environment Variables
+
 > Goal: แสดง environment variables ที่สำคัญ
 
 1. รัน `$env:PATH -split ';'` เพื่อแสดง PATH
@@ -73,6 +76,7 @@ $env:WINDSURF_HOME
 ```
 
 ### 4. List Global Root Paths
+
 > Goal: List Global Root Paths
 
 แสดง global root paths ของ Windsurf:
@@ -97,6 +101,7 @@ $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 ```
 
 ### 5. List MCP Configuration
+
 > Goal: แสดง MCP configuration
 
 1. รัน `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` เพื่อแสดง MCP config
@@ -107,6 +112,7 @@ Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 ```
 
 ### 6. List Global Workflows
+
 > Goal: แสดงรายการ global workflows ที่มี
 
 1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"` เพื่อแสดงรายการ workflows
@@ -117,6 +123,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"
 ```
 
 ### 7. List Global Skills
+
 > Goal: List Global Skills
 
 แสดงรายการ global skills ที่มี:
@@ -129,6 +136,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"
 ```
 
 ### 8. List Global Rules
+
 > Goal: แสดงรายการ global rules ที่มี
 
 1. รัน `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"` เพื่อแสดงรายการ rules
@@ -139,6 +147,7 @@ Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"
 ```
 
 ### 9. List CLI Programs Inventory
+
 > Goal: แสดง CLI programs ที่มีในเครื่อง
 
 1. รัน `Get-Command git, npm, bun, pnpm, yarn, docker, node, python, rust, go, cargo -ErrorAction SilentlyContinue` เพื่อแสดง CLI tools ที่สำคัญ
@@ -165,6 +174,7 @@ pip list 2>$null
 ```
 
 ### 10. List Browser History Analysis
+
 > Goal: List Browser History Analysis
 
 แสดง browser history paths และสถานะ:

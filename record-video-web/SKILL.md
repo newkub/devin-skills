@@ -15,22 +15,25 @@ argument-hint: "[url]"
 ## Execute
 
 ### 1. Install And Verify
+
 > Goal: Install And Verify
 
-ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-agent-browser` ข้อ 1
+ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-tool-agent-browser` ข้อ 1
 
 1. ตรวจสอบด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun install -g agent-browser` แล้ว `agent-browser install`
 
 ### 2. Open Browser
+
 > Goal: Open Browser
 
-เปิด browser ไปยัง URL ที่ต้องงานบันทึก ตาม `/follow-agent-browser` ข้อ 2
+เปิด browser ไปยัง URL ที่ต้องงานบันทึก ตาม `/follow-tool-agent-browser` ข้อ 2
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
 2. รอให้ page load เสร็จด้วย `agent-browser wait --load networkidle`
 
 ### 3. Start Recording
+
 > Goal: Start Recording
 
 เริ่มบันทึกวิดีโอ
@@ -40,9 +43,10 @@ argument-hint: "[url]"
 3. ถ้าต้องการบันทึกพร้อมเปิด URL ใหม่ ใช้ `agent-browser record start <path>.webm <url>`
 
 ### 4. Perform Actions
+
 > Goal: Perform Actions
 
-ทำ actions ที่ต้องการบันทึก ตาม `/follow-agent-browser` ข้อ 4
+ทำ actions ที่ต้องการบันทึก ตาม `/follow-tool-agent-browser` ข้อ 4
 
 1. ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements และ refs
 2. ใช้ `agent-browser click @e1` สำหรับคลิก
@@ -51,6 +55,7 @@ argument-hint: "[url]"
 5. ใช้ `agent-browser wait 2000` ถ้าต้องการหน่วงเวลาระหว่าง actions
 
 ### 5. Stop Recording
+
 > Goal: Stop Recording
 
 หยุดบันทึกและบันทึกไฟล์
@@ -59,6 +64,7 @@ argument-hint: "[url]"
 2. ตรวจสอบว่าไฟล์ถูกสร้างที่ path ที่ระบุ
 
 ### 6. Restart Recording (Optional)
+
 > Goal: Restart Recording (Optional)
 
 ถ้าต้องการบันทึกใหม่อีกครั้ง
@@ -68,6 +74,7 @@ argument-hint: "[url]"
 3. ใช้ `agent-browser record stop` เพื่อหยุด
 
 ### 7. Cleanup And Close
+
 > Goal: Cleanup And Close
 
 ทำ cleanup หลังบันทึกเสร็จ
@@ -102,7 +109,7 @@ argument-hint: "[url]"
 
 ### 4. Error Handling
 
-- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/follow-agent-browser` ข้อ 8 (fallback)
+- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/follow-tool-agent-browser` ข้อ 8 (fallback)
 - ถ้า recording ไม่ทำงาน ให้ตรวจสอบว่า browser เปิดอยู่
 - เรียก `/resolve-errors` เมื่อเจอ error
 - ตรวจสอบ disk space ก่อนบันทึก

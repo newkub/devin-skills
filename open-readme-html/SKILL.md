@@ -14,6 +14,7 @@ argument-hint: "[file]"
 
 ## Execute
 ### 1. Setup HTML Structure
+
 > Goal: Setup HTML Structure
 1. ทำตาม `/html` เพื่อ setup HTML structure พื้นฐาน
 2. สร้างไฟล์ `README.html` ใน project root
@@ -21,12 +22,14 @@ argument-hint: "[file]"
 4. ใช้ Element Plus CSS (base + dark mode)
 5. ใช้ Tailwind CSS CDN
 ### 2. Create Tab System
+
 > Goal: Create Tab System
 1. สร้าง 7 tabs: Features, Dependencies, Architecture, API Endpoints, Database Schema, Environment Variables, Getting Started
 2. ใช้ Element Plus `<el-tabs>` component สำหรับ tab navigation
 3. ใช้ `<el-tab-pane>` สำหรับแต่ละ tab content
 4. เพิ่ม active state สำหรับ tab ที่เลือก
 ### 3. Add Features Tab
+
 > Goal: Add Features Tab
 1. จัดกลุ่ม features ตาม category
 2. ใช้ Element Plus `<el-collapse>` สำหรับ expand/collapse แต่ละ category
@@ -36,6 +39,7 @@ argument-hint: "[file]"
 6. เพิ่ม search functionality ด้วย `<el-input>`
 7. ใช้ `<el-tag>` สำหรับ status และ priority
 ### 4. Add Dependencies Tab
+
 > Goal: Add Dependencies Tab
 1. จัดกลุ่ม dependencies ตาม category
 2. ใช้ `<el-table>` สำหรับแสดง dependencies
@@ -44,12 +48,14 @@ argument-hint: "[file]"
 5. เพิ่ม search functionality ด้วย `<el-input>`
 6. ใช้ `<el-link>` สำหรับ library links
 ### 5. Add Architecture Tab
+
 > Goal: Add Architecture Tab
 1. แสดงโครงสร้างโปรเจกต์แบบ tree view
 2. จัดกลุ่มตาม layers (Domain, Application, Infrastructure, Adapters, Presentation)
 3. ใช้ `<el-collapse>` สำหรับ expand/collapse แต่ละ layer
 4. ใช้ `<el-tree>` หรือ nested `<el-collapse-item>` สำหรับ tree structure
 ### 6. Add API Endpoints Tab
+
 > Goal: Add API Endpoints Tab
 1. จัดกลุ่ม API endpoints ตาม module
 2. ใช้ `<el-card>` สำหรับแต่ละ endpoint
@@ -57,6 +63,7 @@ argument-hint: "[file]"
 4. เพิ่ม search functionality ด้วย `<el-input>`
 5. ใช้ `<el-tag>` สำหรับ HTTP methods พร้อม color coding
 ### 7. Add Database Schema Tab
+
 > Goal: Add Database Schema Tab
 1. จัดกลุ่ม tables ตาม module
 2. ใช้ `<el-collapse>` สำหรับ expand/collapse แต่ละ table
@@ -64,6 +71,7 @@ argument-hint: "[file]"
 4. แสดง table name, columns, types, relationships
 5. เพิ่ม search functionality ด้วย `<el-input>`
 ### 8. Add Environment Variables Tab
+
 > Goal: Add Environment Variables Tab
 1. จัดกลุ่ม env vars ตาม category
 2. ใช้ `<el-card>` สำหรับแต่ละ variable
@@ -71,6 +79,7 @@ argument-hint: "[file]"
 4. เพิ่ม search functionality ด้วย `<el-input>`
 5. ใช้ `<el-tag>` สำหรับ required/optional
 ### 9. Add Getting Started Tab
+
 > Goal: Add Getting Started Tab
 1. แสดงขั้นตอนการติดตั้ง
 2. ใช้ `<el-steps>` สำหรับแสดง steps
@@ -78,6 +87,7 @@ argument-hint: "[file]"
 4. ใช้ `<el-code-block>` หรือ `<pre>` สำหรับ commands
 5. ใช้ `<el-table>` สำหรับ scripts
 ### 10. Open HTML in Browser
+
 > Goal: Open HTML in Browser
 1. ทำตาม `/open-web` เพื่อเปิด README.html ใน browser
 2. ใช้ `start README.html` (Windows) หรือ `open README.html` (macOS/Linux)

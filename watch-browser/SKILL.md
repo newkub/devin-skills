@@ -15,14 +15,16 @@ argument-hint: "[url]"
 ## Execute
 
 ### 1. Run Typecheck
+
 > Goal: Run Typecheck
 
 ทำ `/run-typecheck` ก่อนเริ่ม watch browser เพื่อให้แน่ใจว่าโค้ดผ่าน type check
 
 ### 2. Install And Verify Agent Browser
+
 > Goal: Install And Verify Agent Browser
 
-ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-agent-browser` ข้อ 1
+ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-tool-agent-browser` ข้อ 1
 
 1. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `npm install -g agent-browser`
@@ -30,14 +32,16 @@ argument-hint: "[url]"
 4. ถ้าติดตั้งไม่ได้ ให้ใช้ `playwriter` skill หรือ `browser-preview` tool แทน
 
 ### 3. Open Browser
+
 > Goal: Open Browser
 
-เปิด browser และ navigate ไปยัง URL ที่ต้องการ watch ตาม `/follow-agent-browser` ข้อ 2
+เปิด browser และ navigate ไปยัง URL ที่ต้องการ watch ตาม `/follow-tool-agent-browser` ข้อ 2
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
 2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
 
 ### 4. Watch And Monitor
+
 > Goal: Watch And Monitor
 
 Monitor ตาม ## Rules ข้อ 1 และจัดการ errors ตาม ## Rules ข้อ 2
@@ -50,7 +54,7 @@ Monitor ตาม ## Rules ข้อ 1 และจัดการ errors ตา
 
 ### 1. Continuous Monitoring
 
-Monitor อย่างต่อเนื่องและมีประสิทธิภาพ ดูคำสั่งเต็มที่ `/follow-agent-browser` ข้อ 4
+Monitor อย่างต่อเนื่องและมีประสิทธิภาพ ดูคำสั่งเต็มที่ `/follow-tool-agent-browser` ข้อ 4
 
 - ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements และ refs อย่างต่อเนื่อง
 - ใช้ `agent-browser snapshot` เพื่อดู full accessibility tree
@@ -62,7 +66,7 @@ Monitor อย่างต่อเนื่องและมีประสิ
 
 ### 2. Error Handling
 
-จัดการ errors ตาม `/follow-agent-browser` ข้อ 5
+จัดการ errors ตาม `/follow-tool-agent-browser` ข้อ 5
 
 - เมื่อเจอ error ต้องเรียก `/resolve-errors` ทันที
 - ถ้า `daemon` error ให้ใช้ `browser-preview` tool แทน

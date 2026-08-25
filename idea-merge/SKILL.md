@@ -15,6 +15,7 @@ argument-hint: "[branches]"
 ## Execute
 
 ### 1. Assess Context
+
 > Goal: Assess Context
 
 1. ตรวจสอบ branch ปัจจุบันและ target
@@ -23,6 +24,7 @@ argument-hint: "[branches]"
 4. ระบุข้อกำหนดของ project/team
 
 ### 2. Evaluate Strategies
+
 > Goal: Evaluate Strategies
 
 1. `Fast-forward`: branch ไม่มีคนแตะ, ประวัติตรง
@@ -31,6 +33,7 @@ argument-hint: "[branches]"
 4. `Rebase`: ต้องการ history เป็นเส้นตรงและ clean
 
 ### 3. Recommend
+
 > Goal: Recommend
 
 1. เลือก strategy ตามความเสี่ยงและ conventions

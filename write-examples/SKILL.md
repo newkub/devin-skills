@@ -14,6 +14,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 ## Execute
 
 ### 1. Analyze APIs
+
 > Goal: Analyze APIs
 
 1. รัน `/analyze-project` เพื่อดูภาพรวม
@@ -21,6 +22,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. ระบุ API ทั้งหมดจาก source code
 
 ### 2. Create Structure
+
 > Goal: Create Structure
 
 1. สร้าง `examples/` directory
@@ -29,6 +31,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 4. สร้าง `README.md` อธิบายโครงสร้าง
 
 ### 3. Write Examples per Module
+
 > Goal: Write Examples per Module
 
 1. เขียน examples สำหรับทุก module ครอบคล้วทุก API
@@ -38,6 +41,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 5. เขียน `src/index.ts` ที่เมื่อ run example แล้ว ต้องแสดงทั้งหมดแบบ reactive ว่ามีอะไรบ้าง เพื่อให้เห็นภาพรวม
 
 ### 4. Write Integration Examples
+
 > Goal: Write Integration Examples
 
 1. End-to-end use case flows
@@ -45,6 +49,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. Error handling flows
 
 ### 5. Validate
+
 > Goal: Validate
 
 1. รัน examples เพื่อตรวจสอบว่าทำงานได้จริง
@@ -52,6 +57,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 3. ตรวจสอบว่า code ถูกต้องและ runnable
 
 ### 6. Update Documentation
+
 > Goal: Update Documentation
 
 1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md

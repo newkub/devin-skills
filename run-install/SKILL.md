@@ -14,12 +14,14 @@ description: ติดตั้ง dependencies และแก้ไขปั�
 ## Execute
 
 ### 1. Update Dependencies
+
 > Goal: Update Dependencies
 
 1. ทำ `/update-dependencies-latest` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
 2. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
 
 ### 2. Determine Package Manager
+
 > Goal: Determine Package Manager
 
 1. ตรวจสอบ lockfile และ manifest ทั้งหมด:
@@ -32,6 +34,7 @@ description: ติดตั้ง dependencies และแก้ไขปั�
 4. ใช้ cargo สำหรับ Rust projects
 
 ### 3. Clean Install (ถ้าต้องการ)
+
 > Goal: Clean Install (ถ้าต้องการ)
 
 JavaScript/TypeScript:
@@ -50,6 +53,7 @@ Python:
 3. ลบ *.pyc files
 
 ### 4. Install Dependencies
+
 > Goal: Install Dependencies
 
 JavaScript/TypeScript:
@@ -68,6 +72,7 @@ Python:
 3. ติดตาม progress และ errors
 
 ### 5. Fix Issues
+
 > Goal: Fix Issues
 
 JavaScript/TypeScript:

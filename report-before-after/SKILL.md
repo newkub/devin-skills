@@ -14,6 +14,7 @@ description: รายงานแผนการทำงานก่อนด�
 ## Execute
 
 ### 1. Analyze Request
+
 > Goal: Analyze Request
 
 วิเคราะห์สิ่งที่ผู้ใช้ต้องการ
@@ -23,6 +24,7 @@ description: รายงานแผนการทำงานก่อนด�
 3. ทำ `/plan` เพื่อวางแผนการทำงาน
 
 ### 2. Explain Plan
+
 > Goal: Explain Plan
 
 ตอบว่าจะทำอะไร ทำอย่างไร
@@ -32,6 +34,7 @@ description: รายงานแผนการทำงานก่อนด�
 3. ใช้ `/report-before-after` format สำหรับการแสดง
 
 ### 3. Show Before After
+
 > Goal: Show Before After
 
 แสดง before-after comparison
@@ -41,6 +44,7 @@ description: รายงานแผนการทำงานก่อนด�
 3. อธิบายเหตุผลและประโยชน์ที่จะได้รับ
 
 ### 4. Confirm With User
+
 > Goal: Confirm With User
 
 ถามผู้ใช้ยืนยันก่อนดำเนินการ
@@ -52,6 +56,7 @@ description: รายงานแผนการทำงานก่อนด�
 ## Rules
 
 ### Report UX/UI
+
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด

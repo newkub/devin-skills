@@ -14,6 +14,7 @@ description: หลักการ debug อย่างเป็นระบบ
 ## Execute
 
 ### 1. Reproduce Consistently
+
 > Goal: Reproduce Consistently
 
 1. สร้าง minimal reproduction case ที่ trigger ปัญหาได้ทุกครั้ง
@@ -22,6 +23,7 @@ description: หลักการ debug อย่างเป็นระบบ
 4. ใช้ `/use-bun-shell` เพื่อรัน reproduction script ซ้ำจนกว่าจะ stable
 
 ### 2. Define Problem Clearly
+
 > Goal: Define Problem Clearly
 
 1. เขียนปัญหาแบบ Expected vs Actual — สิ่งที่ควรเกิด vs สิ่งที่เกิดจริง
@@ -30,6 +32,7 @@ description: หลักการ debug อย่างเป็นระบบ
 4. ระบุ impact: blocking, degraded, หรือ cosmetic
 
 ### 3. Gather Evidence
+
 > Goal: Gather Evidence
 
 1. เก็บ error messages, stack traces, และ logs ทั้งหมด
@@ -39,6 +42,7 @@ description: หลักการ debug อย่างเป็นระบบ
 5. ถ้ามี monitoring ให้เก็บ metrics และ traces ด้วย
 
 ### 4. Form Hypotheses
+
 > Goal: Form Hypotheses
 
 1. สร้าง 3-5 hypotheses ที่เป็นไปได้ — อ้างอิง evidence ไม่ใช่ความรู้สึก
@@ -47,6 +51,7 @@ description: หลักการ debug อย่างเป็นระบบ
 4. เลือก top 1-2 hypotheses ที่ test ง่ายและมี probability สูงสุด
 
 ### 5. Test And Eliminate
+
 > Goal: Test And Eliminate
 
 1. ทดสอบทีละ hypothesis — เปลี่ยนทีละ variable เท่านั้น
@@ -56,6 +61,7 @@ description: หลักการ debug อย่างเป็นระบบ
 5. ถ้าทดสอบหมดแล้วไม่ตรง ให้กลับไปสร้าง hypotheses ใหม่
 
 ### 6. Isolate Root Cause
+
 > Goal: Isolate Root Cause
 
 1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
@@ -64,6 +70,7 @@ description: หลักการ debug อย่างเป็นระบบ
 4. ตรวจสอบว่าไม่ใช่ symptom ของปัญหาที่ลึกกว่า
 
 ### 7. Fix And Verify
+
 > Goal: Fix And Verify
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
@@ -73,9 +80,10 @@ description: หลักการ debug อย่างเป็นระบบ
 5. ทำ `/run-lint` และ `/run-typecheck` เพื่อตรวจสอบ code quality
 
 ### 8. Prevent Recurrence
+
 > Goal: Prevent Recurrence
 
-1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-vitest` หรือ `/follow-playwright`
+1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
 2. ทำ `/review-codebase` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
 3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
 4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
@@ -94,7 +102,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 - ไล่จากบนลงล่าง: UI → API → Database → Infrastructure
 - ไล่จาก narrow ไป broad: specific function → module → system
-- ใช้ binary search สำหรับ large codebase — ทำ `/follow-git`
+- ใช้ binary search สำหรับ large codebase — ทำ `/follow-tool-git`
 - ถ้า intermittent ให้เก็บ log ทุกครั้งจนกว่าจะ pattern ชัด
 - ถ้า environment-specific ให้เปรียบเทียบ working vs broken environment
 
@@ -109,12 +117,12 @@ description: หลักการ debug อย่างเป็นระบบ
 ### 4. Tool Selection
 
 - Runtime errors → `/debug-issue` + `/resolve-errors`
-- Test failures → `/run-test` + `/follow-vitest`
-- E2E failures → `/follow-playwright`
+- Test failures → `/run-test` + `/follow-tool-vitest`
+- E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
-- Type errors → `/run-typecheck` + `/follow-typescript`
+- Type errors → `/run-typecheck` + `/follow-lang-typescript`
 - Performance → `/run-profiler` + `/deep-review`
-- Git issues → `/follow-git` + `/follow-git`
+- Git issues → `/follow-tool-git` + `/follow-tool-git`
 
 ### 5. Non-Redundancy
 

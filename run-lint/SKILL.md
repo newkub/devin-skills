@@ -14,6 +14,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 ## Execute
 
 ### 1. Run Lint
+
 > Goal: Run Lint
 
 1. ตรวจสอบ project type และ lint config ก่อนรัน
@@ -23,6 +24,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 3. รอให้ lint เสร็จสิ้นก่อนดำเนินการต่อ
 
 ### 2. Analyze Errors
+
 > Goal: Analyze Errors
 
 1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก lint
@@ -34,6 +36,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
    - style violations
 
 ### 3. Fix Code Issues
+
 > Goal: Fix Code Issues
 
 1. แก้ code-related errors ตามลำดับความสำคัญ
@@ -45,6 +48,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 4. สำหรับ style violations ให้แก้ตาม conventions
 
 ### 4. Verify
+
 > Goal: Verify
 
 1. รัน lint อีกครั้งเพื่อยืนยัน

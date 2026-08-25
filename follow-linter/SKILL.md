@@ -14,6 +14,7 @@ description: ตั้งค่า linter สำหรับ project
 ## Execute
 
 ### 1. Select Linter
+
 > Goal: Select Linter
 
 1. ตรวจสอบ tech stack ของ project
@@ -24,13 +25,15 @@ description: ตั้งค่า linter สำหรับ project
    - Python: ruff
 
 ### 2. Setup Linter
+
 > Goal: Setup Linter
 
-1. รัน `/follow-biome` สำหรับ TypeScript/JavaScript
-2. รัน `/follow-oxlint` สำหรับ TypeScript/JavaScript
+1. รัน `/follow-tool-biome` สำหรับ TypeScript/JavaScript
+2. รัน `/follow-tool-oxlint` สำหรับ TypeScript/JavaScript
 3. รัน `clippy` สำหรับ Rust
 
 ### 3. Validate
+
 > Goal: Validate
 
 1. รัน linter เพื่อทดสอบ

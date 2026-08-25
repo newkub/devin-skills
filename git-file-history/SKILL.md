@@ -15,6 +15,7 @@ argument-hint: "[file]"
 ## Execute
 
 ### 1. Install @wrikka/git-cli
+
 > Goal: Install @wrikka/git-cli
 
 1. ตรวจสอบว่าติดตั้ง `@wrikka/git-cli` แล้ว:
@@ -24,6 +25,7 @@ argument-hint: "[file]"
 2. ตรวจสอบว่ามี `OPENAI_API_KEY` environment variable ถ้าต้องการ AI features
 
 ### 2. Run file-history Command
+
 > Goal: Run file-history Command
 
 1. ระบุไฟล์ที่ต้องการดู history (จาก active document หรือที่ผู้ใช้ระบุ)
@@ -37,6 +39,7 @@ argument-hint: "[file]"
 4. ถ้าไม่ต้องการเปิด browser อัตโนมัติ ใช้ `--no-open` flag
 
 ### 3. UI Components
+
 > Goal: UI Components
 
 1. Header - glassmorphism bar แสดง file path, commit count, view toggle, keyboard hints
@@ -56,6 +59,7 @@ argument-hint: "[file]"
 7. Copy Button - copy file content to clipboard
 
 ### 4. Keyboard Navigation
+
 > Goal: Keyboard Navigation
 
 1. `ArrowLeft` - ไป commit ก่อนหน้า (older)
@@ -64,6 +68,7 @@ argument-hint: "[file]"
 4. แสดง keyboard hint ที่ header
 
 ### 5. Transition Animations
+
 > Goal: Transition Animations
 
 1. ใช้ Vue `<transition>` component กับ `mode="out-in"`

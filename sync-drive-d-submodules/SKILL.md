@@ -14,6 +14,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 ## Execute
 
 ### 1. Scan Drive D For Submodules
+
 > Goal: Scan Drive D For Submodules
 
 ค้นหา repositories ทั้งหมดใน drive D ที่มี git submodules
@@ -24,6 +25,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 4. สร้าง list ของ repositories ที่ต้องการ update
 
 ### 2. Validate Submodule Status
+
 > Goal: Validate Submodule Status
 
 ตรวจสอบสถานะปัจจุบันของ submodules แต่ละอัน
@@ -34,6 +36,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 4. บันทึกสถานะก่อน update เพื่อ rollback ถ้าจำเป็น
 
 ### 3. Find Matching Submodules
+
 > Goal: Find Matching Submodules
 
 หา submodules ที่เหมือนกันใน multiple repos ใน D drive
@@ -43,6 +46,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 3. ระบุ submodules ที่ต้อง sync และมี matching URLs
 
 ### 4. Update Submodules Remote
+
 > Goal: Update Submodules Remote
 
 อัพเดท submodules ไปยัง latest remote version
@@ -53,6 +57,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 4. ถ้ามี conflicts ให้รายงานและ skip ไปยังอันถัดไป
 
 ### 5. Verify Updates
+
 > Goal: Verify Updates
 
 ตรวจสอบว่า submodules ถูก update ถูกต้อง
@@ -63,6 +68,7 @@ Sync และอัพเดท git submodules ทั้งหมดใน D dr
 4. รายงานผลลัพธ์ของการ update แต่ละ repository
 
 ### 6. Commit Changes
+
 > Goal: Commit Changes
 
 Commit submodule updates ถ้าต้องการ
