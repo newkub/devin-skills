@@ -18,7 +18,7 @@ description: สร้าง README.md และ LICENSE.md ครบถ้ว�
 > Goal: เตรียมข้อมูลก่อนเขียน README
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes ก่อน — ถ้าไม่มี changes → skip และ report
-2. `/update-changelog-md`, `/run-release` ถ้ามี tag release
+2. `/run-release` ถ้ามี tag release (gen RELEASE.md และ CHANGELOG.md อัตโนมัติ)
 3. อ่าน `package.json` ตรวจสอบ project type: `cli-sdk` หรือ `app`
 4. ถ้าอ่าน `package.json` ไม่ได้ → stop และ report
 

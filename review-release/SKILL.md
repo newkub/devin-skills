@@ -9,7 +9,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 ## Scope
 
-ใช้ก่อนเรียก `run-release`, `ship-and-release`, `follow-release`, `follow-tool-semantic-release`, `follow-tool-changelogen`, `follow-tool-changesets`, `follow-tool-release-it`, `follow-release`, `follow-release`, `follow-release`, `follow-release`, `follow-tool-auto-it`, `update-changelog-md`, หรือ `run-release` — ตรวจ release readiness ครอบคลุม version, changelog, breaking changes, platform, rollback, release notes, license แล้วสรุป release readiness score พร้อม go/no-go checklist
+ใช้ก่อนเรียก `run-release`, `ship-and-release`, `follow-release`, `follow-tool-semantic-release`, `follow-tool-changelogen`, `follow-tool-changesets`, `follow-tool-release-it`, `follow-tool-auto-it` หรือ `run-release` — ตรวจ release readiness ครอบคลุม version, changelog, breaking changes, platform, rollback, release notes, license แล้วสรุป release readiness score พร้อม go/no-go checklist
 
 ## Execute
 

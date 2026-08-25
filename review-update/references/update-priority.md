@@ -28,13 +28,12 @@ Priority = drift severity × update urgency × dependency order
 5. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
 6. `update-readme` — README หลัง architecture ชัด
 7. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
-9. `update-changelog-md` — CHANGELOG หลัง code changes
-10. `run-release` — RELEASE หลัง changelog
-11. `update-test` — tests และ spec หลัง source code changes
-12. `update-features` — features doc หลัง source code stable
-13. `update-gitignore` — gitignore หลัง stack changes
-15. `update-devin-subagents` — subagents หลัง skills stable
-16. `update-devin-global-skills` — skills repo หลังทุกอย่าง stable
+8. `run-release` — RELEASE.md และ CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
+9. `update-test` — tests และ spec หลัง source code changes
+10. `update-features` — features doc หลัง source code stable
+11. `update-gitignore` — gitignore หลัง stack changes
+12. `update-devin-subagents` — subagents หลัง skills stable
+13. `update-devin-global-skills` — skills repo หลังทุกอย่าง stable
 
 ## Priority Tiers
 
