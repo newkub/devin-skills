@@ -112,6 +112,11 @@ related:
 - `update-usage: /update-usage`
 - `run-release: /run-release`
 - `update-dependencies-latest: /update-dependencies-latest`
+- `watch-cloudflare-workers: /watch-cloudflare-workers`
+- `watch-typecheck: /watch-typecheck`
+- `watch-build: /watch-build`
+- `watch-test: /watch-test`
+- `watch-deploy: /watch-deploy`
 
 ### 4. Workspaces
 
