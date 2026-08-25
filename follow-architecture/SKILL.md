@@ -17,7 +17,7 @@ related:
 ## Scope
 
 - ใช้สำหรับเลือก architecture pattern ตาม framework, language, และ scale ของโปรเจกต์
-- ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
+- ใช้ภายใต้ `/refactor` เมื่องาน refactor ครบวงจร
 - ใช้สำหรับจัดเรียงรายการ ไฟล์ หรือ tasks ใน project ให้เป็นระบบตาม Order Theory
 
 ## Execute

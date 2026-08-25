@@ -1,16 +1,26 @@
 ---
 name: refactor
-description: Refactor codebase ครบวงจร — SRP, boundaries, code styles, maintainability
+description: Refactor codebase ครบวงจร — SRP, boundaries, code styles, consistency, maintainability
+argument-hint: "[scope]"
+related:
+  - refactor-to-single-responsibility
+  - refactor-packages
+  - review-refactor
+  - review-quality
+  - follow-architecture
+  - follow-import-export
+  - dont-over-engineer
 ---
 
 ## Goal
 
-Refactor codebase ครบวงจรเพื่อปรับปรุง SRP, boundaries, code styles, maintainability
+Refactor codebase ครบวงจรเพื่อปรับปรุง SRP, boundaries, code styles, consistency, และ maintainability
 
 ## Scope
 
 - ใช้กับทุก workspace ที่ต้องการ refactor
 - ครอบคลุม SRP, long files, import/export, architecture, packages, code styles
+- รวม consistency check สำหรับ naming, patterns, structure, และ style
 - ใช้ `/create-plan` สำหรับงานใหญ่
 - ใช้ `/implement-plan` สำหรับ execute แผน
 
@@ -50,7 +60,15 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 2. ทำ `/update-reference` สำหรับ global references
 3. ถ้ามี broken references → ทำ `/resolve-errors`
 
-### 5. Verify
+### 5. Check Consistency
+
+> Goal: naming, patterns, structure, style สอดคล้องกันทั้ง codebase
+
+1. ทำ `/review-quality` เพื่อตรวจ inconsistencies ใน naming, patterns, structure, หรือ style
+2. ถ้าพบ inconsistencies → แก้ตาม findings
+3. อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
+
+### 6. Verify
 
 > Goal: code ผ่าน lint/typecheck/test/build
 
@@ -58,18 +76,18 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 2. ทำ `/check-code-structure` เปรียบเทียบ baseline
 3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
 
-### 6. Implement Plan
+### 7. Implement Plan
 
 > Goal: ทำงานตามแผนจนครบและลบแผน
 
 1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
 2. ถ้าไม่มีแผน → รายงานผล
 
-### 7. Report
+### 8. Report
 
-> Goal: สื่อสารผล refactor
+> Goal: สื่อสารผล refactor และ consistency
 
-1. ทำ `/report` สรุป before/after
+1. ทำ `/report` สรุป before/after รวม refactor และ consistency check
 2. ระบุ TODO ถ้ามี
 
 ## Rules
@@ -92,15 +110,21 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - หลีกเลี่ยง abstraction ที่ไม่จำเป็น
 - รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
 
-### 3. Safety
+### 3. Consistency
+
+- ทำ `/review-quality` เมื่อพบ inconsistencies ใน naming, patterns, structure, หรือ style
+- รักษา conventions เดียวกันทั้ง codebase
+- อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
+
+### 4. Safety
 
 - destructive actions ต้องมี user confirmation
 - ทำ `/update-reference` หลังย้าย/ลบ/แยกไฟล์
 - ไม่ force push
 
-### 4. Verification
+### 5. Verification
 
-- ต้องผ่าน `/run-verify`
+- ต้องผ่าน `/run-verify` และ `/run-test`
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 
@@ -109,5 +133,6 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - Codebase มี SRP ชัดเจน
 - ไฟล์และ packages มีขนาดเหมาะสม
 - imports/exports สะอาด
+- naming, patterns, structure มี consistency ผ่าน `/review-quality`
 - ผ่าน lint/typecheck/test/build
-- รายงาน before/after merge ใน `/report`
+- รายงาน before/after รวม refactor และ consistency

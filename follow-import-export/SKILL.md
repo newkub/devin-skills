@@ -12,7 +12,7 @@ description: จัดการ import strategy และ barrel exports สำ�
 ใช้สำหรับทุก workspace เมื่อสร้าง แก้ไข หรือ review:
 - Barrel export files (`index.ts`, `index.tsx`, `__init__.py` หรือไฟล์ index ตาม convention ของภาษา)
 - Import aliases และ import strategy ทั้งโปรเจกต์
-- ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
+- ใช้ภายใต้ `/refactor` เมื่องาน refactor ครบวงจร
 
 ## Execute
 

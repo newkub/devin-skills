@@ -9,7 +9,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ## Scope
 
-- ใช้ภายใต้ `/refactor-codebase` เมื่องาน refactor ครบวงจร
+- ใช้ภายใต้ `/refactor` เมื่องาน refactor ครบวงจร
 
 - ใช้กับ source code ใน project หรือ workspace ที่พบ SRP violations เช่น ไฟล์/ฟังก์ชัน/class ทำหลายหน้าที่ โดยใช้ `/check-code-structure` เพื่อหา issues และ `/edit-relative` เพื่ออัปเดท references หลังการเปลี่ยนแปลง
 
