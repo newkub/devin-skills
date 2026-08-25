@@ -55,6 +55,4 @@
 
 ## Recommended Update Skills
 
-- `update-rules` สำหรับ update ทั้ง devin rules และ ast-grep rules
-- `update-devin-project-rules` สำหรับ update `.devin/rules/`
-- `update-rules` สำหรับ update `rules/` (ast-grep) พร้อมแปลงจาก devin rules
+- `update-rules` สำหรับ update ทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules พร้อมแปลงจาก devin rules

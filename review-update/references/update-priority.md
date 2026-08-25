@@ -23,17 +23,16 @@ Priority = drift severity × update urgency × dependency order
 
 1. `update-dependencies-latest` — dependency update ก่อน เพราะกระทบ rules, docs, config
 2. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
-3. `update-devin-project-rules` — devin rules ก่อน ast-grep rules
-4. `update-rules` — รวมทั้ง devin และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
-5. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
-6. `update-readme` — README หลัง architecture ชัด
-7. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
-8. `run-release` — RELEASE.md และ CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
-9. `update-test` — tests และ spec หลัง source code changes
-10. `update-features` — features doc หลัง source code stable
-11. `update-gitignore` — gitignore หลัง stack changes
-12. `update-devin-subagents` — subagents หลัง skills stable
-13. `update-devin-global-skills` — skills repo หลังทุกอย่าง stable
+3. `update-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
+4. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
+5. `update-readme` — README หลัง architecture ชัด
+6. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
+7. `run-release` — RELEASE.md และ CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
+8. `update-test` — tests และ spec หลัง source code changes
+9. `update-features` — features doc หลัง source code stable
+10. `update-gitignore` — gitignore หลัง stack changes
+11. `update-devin-subagents` — subagents หลัง skills stable
+12. `update-devin-global-skills` — skills repo หลังทุกอย่าง stable
 
 ## Priority Tiers
 
