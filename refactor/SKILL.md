@@ -35,9 +35,9 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: แก้ไขปัญหาเฉพาะทีละเรื่อง
 
-1. ถ้ามี SRP violations → ทำ `/refactor-to-srp`
+1. ถ้ามี SRP violations → ทำ `/refactor-to-single-responsibility`
 2. ถ้ามี function quality issues (long functions, bad naming, side effects, complex params) → ทำ `/review-refactor`
-3. ถ้ามีไฟล์ยาว >250 บรรทัด → ทำ `/refactor-to-srp`
+3. ถ้ามีไฟล์ยาว >250 บรรทัด → ทำ `/refactor-to-single-responsibility`
 4. ถ้ามี imports/exports ซับซ้อน → ทำ `/follow-import-export`
 5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
 6. ถ้ามี package/module ปัญหา → ทำ `/refactor-packages`

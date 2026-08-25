@@ -17,16 +17,17 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 
 > Goal: วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
 
-1. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
-2. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
-3. ทำ `/all-workspaces` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
-4. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
-5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
-7. ทำ `/follow-skills` เพื่อระบุ skills ที่ควรใส่ใน `### Skills`
-8. เพิ่ม `/review-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
-9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
-10. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+1. ทำ `/update-devin-global-skills` เพื่อดูแล skills repo ให้ครบถ้วนสอดคล้องกันก่อน
+2. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
+3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
+4. ทำ `/all-workspaces` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
+5. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
+6. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+7. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
+8. ทำ `/follow-skills` เพื่อระบุ skills ที่ควรใส่ใน `### Skills`
+9. เพิ่ม `/review-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
+10. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
+11. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 
 ### 2. Follow Lib
 

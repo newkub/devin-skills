@@ -1,5 +1,5 @@
 ---
-name: refactor-to-srp
+name: refactor-to-single-responsibility
 description: Refactor code ให้เป็น SRP โดยวิเคราะห์ structure และอัปเดท references
 ---
 
@@ -45,7 +45,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 1. แยก multi-responsibility functions ออกเป็น functions ย่อย
 2. แยก multi-responsibility classes/types ออกเป็น types ย่อยด้วย composition
 3. แยกไฟล์ที่มีหลาย concerns ออกเป็นไฟล์ย่อยตาม domain
-4. ทำ `/refactor` หรือ `/refactor-file-remain-this` ตามกรณี
+4. ทำ `/refactor` ตามกรณี
 5. ทำ `/restructure` หรือ `/relocation` เมื่อต้องย้ายไฟล์
 6. ทำ `/rename` เมื่อต้องเปลี่ยนชื่อ identifier
 7. ถ้าเป็น monorepo → ทำ `/all-workspaces` หรือ `/refactor-packages` ตามความเหมาะสม

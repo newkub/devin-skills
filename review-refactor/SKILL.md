@@ -9,7 +9,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor-to-srp`, `refactor-packages`, หรือ `refactor-codebase` เพื่อทำความเข้าใจสถานะปัจจุบันและระบุเป้าหมาย refactor ครอบคลุม: SRP violations, long files (>250 lines), function quality (naming, side effects, complexity, params), import/export complexity, package/module boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor-to-single-responsibility`, `refactor-packages`, หรือ `refactor-codebase` เพื่อทำความเข้าใจสถานะปัจจุบันและระบุเป้าหมาย refactor ครอบคลุม: SRP violations, long files (>250 lines), function quality (naming, side effects, complexity, params), import/export complexity, package/module boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -95,7 +95,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 2. ประเมิน effort: low (1 file), medium (2-5 files), high (>5 files)
 3. ประเมิน impact: critical, high, medium, low
 4. จัดลำดับ: high impact + low effort ก่อน → high impact + high effort → low impact
-5. แนะนำ workflow: `refactor-to-srp`, `refactor-packages`, `refactor-codebase`
+5. แนะนำ workflow: `refactor-to-single-responsibility`, `refactor-packages`, `refactor-codebase`
 
 ### 10. Report
 
@@ -113,7 +113,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - แยก review process จาก refactor process
-- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor-to-srp`, `refactor-packages`, หรือ `refactor-codebase` หลัง review
+- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor-to-single-responsibility`, `refactor-packages`, หรือ `refactor-codebase` หลัง review
 
 ### 2. Evidence-Based Findings
 
