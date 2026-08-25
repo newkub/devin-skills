@@ -24,11 +24,10 @@ Priority = drift severity × update urgency × dependency order
 1. `update-dependencies-latest` — dependency update ก่อน เพราะกระทบ rules, docs, config
 2. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
 3. `update-devin-project-rules` — devin rules ก่อน ast-grep rules
-4. `update-ast-grep-rules` — ast-grep rules หลัง devin rules
-5. `update-rules` — รวมทั้ง devin และ ast-grep rules
-6. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
-7. `update-readme` — README หลัง architecture ชัด
-8. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
+4. `update-rules` — รวมทั้ง devin และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
+5. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
+6. `update-readme` — README หลัง architecture ชัด
+7. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
 9. `update-changelog-md` — CHANGELOG หลัง code changes
 10. `run-release` — RELEASE หลัง changelog
 11. `update-test` — tests และ spec หลัง source code changes

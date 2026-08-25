@@ -65,7 +65,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
 4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
 5. ใช้ `--interactive` สำหรับ interactive edit session
-6. ถ้าต้องการเขียน rules ให้ทำ `/update-ast-grep-rules`
+6. ถ้าต้องการเขียน rules ให้ทำ `/update-rules`
 
 ## Rules
 
@@ -101,7 +101,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 ### 4. Rule Writing
 
-- การเขียน rules อยู่ใน `/update-ast-grep-rules` ไม่ใช่ workflow นี้
+- การเขียน rules อยู่ใน `/update-rules` ไม่ใช่ workflow นี้
 
 ## Expected Outcome
 

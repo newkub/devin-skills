@@ -71,7 +71,7 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 
 > Goal: เขียน ast-grep rules ใน `rules/` directory ที่ project root ตาม devin rules ที่สร้างขึ้น
 
-1. ทำ `/update-ast-grep-rules` เพื่อแปลง devin rules เป็น ast-grep YAML format
+1. ทำ `/update-rules` เพื่อแปลง devin rules เป็น ast-grep YAML format
 2. สร้าง ast-grep rules ใน `rules/always-on/`, `rules/model_decision/`, และ `rules/glob/` ที่ project root (แยกจาก `.devin/rules/` ที่เก็บ devin rules เป็น Markdown)
 3. อัพเดท `sgconfig.yml` ให้ `ruleDirs` ชี้ไปที่ `rules/always-on`, `rules/model_decision`, และ `rules/glob`
 4. ตั้งค่า `sgconfig.yml` `languageAliases` สำหรับ TypeScript และ JavaScript file extensions
@@ -145,7 +145,7 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 
 ### 9. Ast-Grep Rules
 
-- ใช้ `/update-ast-grep-rules` สำหรับสร้าง ast-grep rules ใน `rules/` ที่ project root
+- ใช้ `/update-rules` สำหรับสร้าง ast-grep rules ใน `rules/` ที่ project root
 - `sgconfig.yml` ต้องชี้ `ruleDirs` ไปที่ `rules/always-on`, `rules/model_decision`, และ `rules/glob`
 - ast-grep rules (YAML) อยู่ใน `rules/` ที่ project root แยกจาก devin rules (Markdown) ใน `.devin/rules/`
 - `sgconfig.yml` ต้องมี `languageAliases` สำหรับ `ts`, `tsx`, `js`, `jsx`

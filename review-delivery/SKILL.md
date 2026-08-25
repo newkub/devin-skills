@@ -208,8 +208,7 @@ Review security ครอบคลุม auth, secrets, injection, dependencies,
 - ถ้า project ไม่มี config files → ข้าม Section 11
 - ถ้า project ไม่มี CI/CD → ข้าม Section 12
 - ถ้า project ไม่มี infrastructure → ข้าม Section 13
-- ถ้า project ไม่มี performance concerns → ข้าม Section 14
-- ถ้า project ไม่มี security concerns → ข้าม Section 15
+- ถ้า project ไม่มี performance หรือ security concerns → ข้าม Section 14-15
 
 ### 2. Severity Classification
 

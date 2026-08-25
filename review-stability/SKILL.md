@@ -46,7 +46,7 @@ Review ความเสถียรของ application ครอบคลุ
 2. ระบุ components หรือ modules ที่ไม่มี error boundary
 3. ตรวจสอบ graceful fallback UI เมื่อ error
 4. ตรวจสอบ process-level crash handlers สำหรับ backend/CLI
-5. ค้นหา health check endpoints `/health`, `/ready`, `/live`
+5. ค้นหา health check endpoints: `/health`, `/ready`, `/live`
 6. ตรวจสอบว่า health checks ตรวจ dependencies จริง เช่น database, queue
 7. ระบุ health checks ที่ dummy หรือไม่ตรวจอะไร
 8. ตรวจสอบ startup/shutdown hooks

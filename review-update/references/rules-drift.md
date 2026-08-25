@@ -57,4 +57,4 @@
 
 - `update-rules` สำหรับ update ทั้ง devin rules และ ast-grep rules
 - `update-devin-project-rules` สำหรับ update `.devin/rules/`
-- `update-ast-grep-rules` สำหรับ update `rules/` (ast-grep)
+- `update-rules` สำหรับ update `rules/` (ast-grep) พร้อมแปลงจาก devin rules

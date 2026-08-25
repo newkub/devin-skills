@@ -16,7 +16,7 @@ argument-hint: "[file]"
 ### 1. Setup HTML Structure
 
 > Goal: Setup HTML Structure
-1. ทำตาม `/html` เพื่อ setup HTML structure พื้นฐาน
+1. Setup HTML structure พื้นฐานด้วย Vue 3 + Element Plus + Tailwind CSS
 2. สร้างไฟล์ `README.html` ใน project root
 3. ใช้ Vue 3 ผ่าน unpkg CDN (vue.global.js)
 4. ใช้ Element Plus CSS (base + dark mode)

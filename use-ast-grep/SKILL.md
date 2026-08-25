@@ -31,7 +31,7 @@ argument-hint: "[pattern]"
 - กำหนด id, language, rule, fix, message
 - ใช้ meta variables ($VAR) สำหรับ capture nodes
 - ใช้ atomic rules: pattern, kind, regex, nthChild, range
-- ทำ `/update-ast-grep-rules` สำหรับเขียน rules ที่ซับซ้อน
+- ทำ `/update-rules` สำหรับเขียน rules ที่ซับซ้อน
 
 ### 3. Advanced Rules
 

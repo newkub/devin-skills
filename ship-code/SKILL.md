@@ -73,7 +73,7 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 
 ### 4. Sub-Workflow Discipline
 
-- ทุก `/command` ต้องอ่าน `SKILL.md` จริงก่อนทำ
+- ทุก command ต้องอ่าน `SKILL.md` จริงก่อนทำ
 - ทำตาม `## Execute` ของแต่ละ skill จนครบ
 - ก่อน mark `completed` ต้อง verify `## Expected Outcome` ของ sub-workflow นั้น
 
