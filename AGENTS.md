@@ -107,6 +107,7 @@ related:
 - `review-create-analyze-cli: /review-create-analyze-cli`
 - `review-create-review-cli: /review-create-review-cli`
 - `review-readme: /review-readme`
+- `review-docs: /review-docs`
 - `review-agents-md: /review-agents-md`
 - `review-references: /review-references`
 - `review-dependencies: /review-dependencies`
