@@ -33,7 +33,7 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 กำหนดหมวดหมู่การ analyze ที่ `tools/review` ต้องการ
 
-1. ทำตาม `/run-review` หรือ `/review-codebase` เพื่อดู category catalog
+1. ทำตาม `run-review` หรือ `review-codebase` เพื่อดู category catalog
 2. จัดกลุ่มเป็น 5 domains: `user-facing`, `security-compliance`, `backend-data`, `infrastructure`, `code-architecture`
 3. สร้างรายชื่อ analyzer files ที่จะ implement
 
@@ -70,7 +70,7 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อน
 2. ใส่ specific checks ตาม domain ที่กำหนดใน Step 2
 3. ให้แต่ละ analyzer return `CategoryResult` กับ `status`, `score`, `findings`
-4. กำหนด `reviewWorkflow` ให้ตรงกับ `/review-codebase` references
+4. กำหนด `reviewWorkflow` ให้ตรงกับ `review-codebase` references
 
 ### 6. Expose Workspace API
 

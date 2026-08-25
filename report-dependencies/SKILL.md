@@ -47,7 +47,7 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 
 1. สรุปจำนวน dependencies ทั้งหมดแยกตามประเภท
 2. ระบุ priority actions: critical vulnerabilities ก่อน, จากนั้น unused, จากนั้น outdated
-3. แนะนำ next steps: `/run-install` สำหรับอัปเดต, `/delete` สำหรับลบ unused
+3. แนะนำ next steps: `/run-install` สำหรับอัปเดต, `git rm` สำหรับลบ unused แล้ว `/update-reference`
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -68,7 +68,7 @@ description: สรุป dependencies: versions, outdated, unused, vulnerabilit
 - ไม่ติดตั้ง ไม่อัปเดต ไม่ลบ dependencies — รายงานเท่านั้น
 - ใช้ `/run-install` สำหรับการติดตั้ง
 - ใช้ `/update-dependencies-latest` สำหรับการอัปเดต
-- ใช้ `/delete` สำหรับการลบ
+- ใช้ `git rm` สำหรับการลบ แล้ว `/update-reference`
 
 ### Output Format
 

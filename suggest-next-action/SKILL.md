@@ -65,7 +65,7 @@ argument-hint: "[context]"
 4. อธิบาย reason ที่แนะนำ action นั้น
 5. ระบุ dependencies ระหว่าง actions
 6. ให้ estimate effort ถ้าเป็นไปได้
-7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `/delete` พร้อมระบุเหตุผล
+7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-reference`
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 
 ### 5. Present Options

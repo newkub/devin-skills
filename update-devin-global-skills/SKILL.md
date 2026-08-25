@@ -10,7 +10,7 @@ argument-hint: "[skill-name]"
 
 ## Scope
 
-ใช้เมื่อต้องการ update, maintain หรือ refactor skill เดียวใน devin skills repo ครอบคลุม validation, references, coverage, structure refactor ของ skill นั้น ไม่ใช่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) ไม่ใช่ update ทั้ง repo (ใช้ `/update-all-devin-global-skills`)
+ใช้เมื่อต้องการ update, maintain หรือ refactor skill เดียวใน devin skills repo ครอบคลุม validation, references, coverage, structure refactor ของ skill นั้น ไม่ใช่สร้าง skill ใหม่ (ใช้ `create-devin-global-skills`) ไม่ใช่ update ทั้ง repo (ใช้ `update-all-devin-global-skills`)
 
 ## Execute
 

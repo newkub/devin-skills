@@ -33,7 +33,7 @@ description: เปรียบเทียบ features กับคู่แข
 
 > Goal: สร้างตารางเปรียบเทียบ features และไอเดียเพิ่มเติม ตอบในแชทเหมือน `/idea-features`
 
-1. ทำ `/compare-and-idea-features` เพื่อสร้าง feature ideas จาก gaps
+1. ทำ `/idea-features` เพื่อสร้าง feature ideas จาก gaps
 2. ตอบตารางเปรียบเทียบในแชท — แถวเป็น feature หลัก, คอลัมน์เป็น competitor + เรา
 3. ระบุ status: ✅ มี, ⚠️ partial, ❌ ไม่มี, 🚀 unique
 4. ไม่สร้างไฟล์ .md, .html หรือ .json — ตอบในแชทเท่านั้น

@@ -5,11 +5,11 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 
 ## Goal
 
-สร้างและอัปเดท codebase review CLI ใน `tools/review` ที่ project root ให้ครอบคลุม 60+ categories ตาม `/run-review` พร้อม review score, action items, และ production readiness
+สร้างและอัปเดท codebase review CLI ใน `tools/review` ที่ project root ให้ครอบคลุม 60+ categories ตาม `run-review` พร้อม review score, action items, และ production readiness
 
 ## Scope
 
-ใช้สำหรับสร้างและอัปเดท review analysis CLI ใน `tools/review` ที่ project root ครอบคลุม 60+ categories จัดกลุ่มตาม 5 domains ตาม `/run-review`
+ใช้สำหรับสร้างและอัปเดท review analysis CLI ใน `tools/review` ที่ project root ครอบคลุม 60+ categories จัดกลุ่มตาม 5 domains ตาม `run-review`
 
 ## Execute
 
@@ -35,7 +35,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 
 > Goal: อ่าน context ก่อนเริ่มงานเพื่อเข้าใจ categories และ CLI ที่มีอยู่
 
-1. ทำ `/run-review` เพื่อดูรายการ 60+ categories จัดกลุ่มตาม 5 domains
+1. ทำ `run-review` เพื่อดูรายการ 60+ categories จัดกลุ่มตาม 5 domains
 2. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องกับ project แบบ recursive
 3. อ่าน `tools/review/` directory ที่ project root เพื่อดู CLI ที่มีอยู่แล้ว
 4. อ่าน `src/domain/analyzers/` เป็น reference implementation
@@ -50,27 +50,27 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 1. สร้าง mapping จาก run-review categories เป็น analyzer module:
    - แต่ละ domain มี analyzer file ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
    - แต่ละ category เป็น `Analyzer` object ใน domain file
-2. Map analyzers ไปยัง category orchestrators จาก `/review-codebase`:
-   - `/review-codebase` → รวม 8+1 domain analyzers: Code & Architecture, Security & Compliance, User-Facing, Backend & Data, Infrastructure, Business, Delivery, Platform, Performance
+2. Map analyzers ไปยัง category orchestrators จาก `review-codebase`:
+   - `review-codebase` → รวม 8+1 domain analyzers: Code & Architecture, Security & Compliance, User-Facing, Backend & Data, Infrastructure, Business, Delivery, Platform, Performance
 3. ระบุ analyzers ที่มีอยู่แล้ว, ที่ต้องสร้างใหม่, และที่ต้องอัปเดท
 4. ระบุ analyzers ที่ไม่มี category สอดคล้องแล้วเพื่อพิจารณาลบ
 
 ### 5. Create Or Update Analyzers
 
-> Goal: สร้างหรืออัปเดท analyzer แต่ละตัวตาม category ใน `/run-review`
+> Goal: สร้างหรืออัปเดท analyzer แต่ละตัวตาม category ใน `run-review`
 
-1. สำหรับแต่ละ category ใน `/run-review`:
-   1. อ่าน `/run-review` Step 7 สำหรับรายการ categories ในแต่ละ domain
+1. สำหรับแต่ละ category ใน `run-review`:
+   1. อ่าน `run-review` Step 7 สำหรับรายการ categories ในแต่ละ domain
    2. สร้าง `Analyzer` object ใน domain file ที่เกี่ยวข้อง ถ้ายังไม่มี
    3. อัปเดท analyzer ที่มีอยู่แล้วให้สอดคล้องกับ category ปัจจุบัน
-   4. ใช้ `/deep-analyze-by-use-scripts` สำหรับโครงสร้าง analyzer
+   4. ใช้ `deep-analyze-by-use-scripts` สำหรับโครงสร้าง analyzer
 2. ทุก analyzer ต้องใช้ shared utilities จาก `src/adapters/`:
    - `file-utils.ts` สำหรับ `walk`, `readText`, `getRel`
    - `git-grep.ts` สำหรับ `gitGrep`, `gitGrepCount`
 3. แต่ละ analyzer ต้องมี:
-   - `name` ตรงกับ category name ใน `/run-review`
-   - `domain` ตรงกับ domain ใน `/run-review`
-   - `reviewWorkflow` ตรงกับ `/review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
+   - `name` ตรงกับ category name ใน `run-review`
+   - `domain` ตรงกับ domain ใน `run-review`
+   - `reviewWorkflow` ตรงกับ `review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
    - `analyze()` ที่ return `CategoryResult` พร้อม `status`, `score`, `findings`
 4. ใส่ specific checks ตาม scope ของแต่ละ category
 5. ถ้า analyzer ไม่สามารถ implement ทั้งหมดได้ ให้ comment `// TODO` พร้อมรายละเอียดสิ่งที่ต้องทำ
@@ -127,13 +127,13 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 - Entry point: `src/presentation/cli.ts` และ `src/index.ts`
 - ใช้ Bun native APIs: `Bun.file`, `Bun.spawn`, `Bun.write`
 - ทุก analyzer ต้อง return `CategoryResult` พร้อม `status`, `score`, `findings`
-- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `/review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
+- ทุก analyzer ต้องมี `reviewWorkflow` ที่ map ไปยัง `review-codebase` หรือ `review-codebase/references/<dimension>.md` จาก AGENTS.md
 - ใช้ shared utilities จาก `src/adapters/` แทนการ duplicate code
 - Output เป็น table และ JSON ตาม `--format` flag
 
 ### 2. Category Coverage
 
-- ครอบคลุม 60+ categories จาก `/run-review` Step 7
+- ครอบคลุม 60+ categories จาก `run-review` Step 7
 - 5 domains: User-Facing, Security & Compliance, Backend & Data, Infrastructure, Code & Architecture
 - แต่ละ category มี status: ✅ pass, ⚠️ warn, ❌ fail
 - คำนวณ review score: ✅ = 100, ⚠️ = 50, ❌ = 0
@@ -155,7 +155,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 
 ### 5. Specific Checks
 
-- อ่าน `## Execute` และ `## Rules` ของ `/run-review`
+- อ่าน `## Execute` และ `## Rules` ของ `run-review`
 - ใช้ `/use-ast-grep` สำหรับ pattern-based checks ที่ AST จับได้ — แปลง code patterns เป็น ast-grep rules ผ่าน `/update-rules`
 - สำหรับ checks ที่ซับซ้อน ต้องวิเคราะห์ context ข้ามไฟล์ หรือ AST จับไม่ได้ → เขียนเป็น `.ts` logic ใน analyzer โดยตรง ใช้ `/use-scripts` เมื่อต้องประมวลผลข้อมูลซับซ้อน
 - ใช้ `gitGrep` สำหรับ pattern-based search ที่ไม่ต้องการ AST
@@ -179,7 +179,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 | Cause | สาเหตุรากของปัญหา (root cause) | `Case-insensitive 'placeholder' matches HTML attributes` |
 | Solutions | วิธีแก้ที่ actionable และเฉพาะเจาะจง | `Use case-sensitive search for MOCK/STUB/FAKE markers only` |
 | Severity | ระดับความรุนแรง: Critical > High > Medium > Low | `High` |
-| Review Workflow | review workflow ที่แนะนำจาก AGENTS.md | `/review-codebase` |
+| Review Workflow | review workflow ที่แนะนำจาก AGENTS.md | `review-codebase` |
 | Evidence | code snippet หรือ pattern ที่ trigger finding | `grep -i 'placeholder' → 947 matches in <input placeholder=...>` |
 
 - จัดเรียงตาม severity: Critical ก่อน, High รองลงมา
@@ -199,7 +199,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 
 ## Expected Outcome
 
-- `tools/review` มี codebase review CLI ครอบคลุม 60+ categories ตาม `/run-review`
+- `tools/review` มี codebase review CLI ครอบคลุม 60+ categories ตาม `run-review`
 - CLI รันได้ด้วย `bun run review`
 - ไม่มีไฟล์ใดยาวกว่า 250 บรรทัด
 - Deep report แสดงตาราง 7 columns พร้อมสรุปละเอียดครบทุกมิติ
