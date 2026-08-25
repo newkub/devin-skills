@@ -2,6 +2,15 @@
 name: create-devin-global-skills
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
 argument-hint: "[skill-name]"
+related:
+  - follow-write-devin-skills
+  - consider-use-in-another-skills
+  - scan-codebase
+  - validate
+  - check-reference
+  - review-writing
+  - update-reference
+  - ship
 ---
 
 ## Goal
@@ -29,7 +38,7 @@ argument-hint: "[skill-name]"
 
 1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
 2. ตรวจสอบว่า skill name ซ้ำกับ existing skills หรือไม่
-3. ถ้าซ้ำ ให้เสนอ extend หรือ rename ก่อน
+3. ถ้าซ้ำ ให้ทำ `/consider-use-in-another-skills` เพื่อเสนอ extend หรือ rename ก่อน
 4. อ่าน `AGENTS.md` และ `global_rules.md` เพื่อดู conventions
 
 ### 3. Create Directory
@@ -38,28 +47,26 @@ argument-hint: "[skill-name]"
 
 1. สร้าง `%APPDATA%\devin\skills\<skill-name>\`
 2. สร้าง `SKILL.md` เปล่าภายใน directory
-3. ถ้าต้องการ child directories (`guide/`, `references/`, `scripts/`) ให้สร้างตามทีจำเป็น
+3. ถ้าต้องการ child directories (`guide/`, `references/`, `scripts/`) ให้สร้างตามที่จำเป็น
 
 ### 4. Write SKILL.md And Directory
 
 > Goal: สร้าง `SKILL.md` และ directory contents
 
-1. ทำ `/follow-write-devin-skills` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body)
-2. ทำ `/follow-write-devin-skills` เพื่อเลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
-3. กำหนด `name` ให้ตรงกับ directory name
-4. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
+1. ทำ `/follow-write-devin-skills` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body), เลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
+2. กำหนด `name` ให้ตรงกับ directory name
+3. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
 
 ### 5. Validate And Update References
 
 > Goal: ตรวจสอบคุณภาพและ references
 
-1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
-3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
-4. ทำ `/review-writing` เพื่อตรวจสอบความชัดเจน
-5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
+1. ทำ `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
+2. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
+3. ทำ `/review-writing` เพื่อตรวจสอบความชัดเจน
+4. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
 
-### Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -95,6 +102,3 @@ argument-hint: "[skill-name]"
 - `related` references ครบถ้วน ไม่มี missing/unused
 - directory structure ครบถ้วนตาม `/follow-write-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
 - ไม่ซ้ำกับ skills ที่มีอยู่ หรือได้รับการยืนยันให้ extend หรือ rename
-- `follow-coverage` ครอบคลุมทุก features, APIs, use cases, references และ edge cases
-- `learn-from-references` ดึงความรู้จาก `references/` พร้อมทำ `/follow-coverage`
-- `update-all-devin-global-skills` ดูแล skills repo โดยใช้ `/update-devin-global-skills`, `/follow-write-devin-skills`, `/learn-from-references`, `/review-redundancy` และอื่นๆ ตามเหมาะสม

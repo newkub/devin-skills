@@ -6,10 +6,10 @@
 
 | Library | Description | bun |
 |---------|-------------|-----|
-| [simple-git](https://github.com/steveukx/git-js) | Simple Git API | `bun install simple-git` |
-| [ isomorphic-git](https://isomorphic-git.org/) | Pure JS implementation | `bun install isomorphic-git` |
-| [nodegit](https://www.nodegit.org/) | Native Git bindings | `bun install nodegit` |
-| [git-js](https://github.com/steveukx/git-js) | Promise-based Git | `bun install git` |
+| [simple-git](https://github.com/steveukx/git-js) | Simple Git API | `bun add simple-git` |
+| [ isomorphic-git](https://isomorphic-git.org/) | Pure JS implementation | `bun add isomorphic-git` |
+| [nodegit](https://www.nodegit.org/) | Native Git bindings | `bun add nodegit` |
+| [git-js](https://github.com/steveukx/git-js) | Promise-based Git | `bun add git` |
 
 ### simple-git Example
 

@@ -20,9 +20,9 @@
 
 | Package | Command | Description |
 |---------|---------|-------------|
-| API Designer | `bun install @scalar/api-designer` | Main package |
-| CLI | `bun install @scalar/cli` | Command line tool |
-| Vercel | `bun install @scalar/vercel` | Vercel adapter |
+| API Designer | `bun add @scalar/api-designer` | Main package |
+| CLI | `bun add @scalar/cli` | Command line tool |
+| Vercel | `bun add @scalar/vercel` | Vercel adapter |
 
 ## Community Resources
 

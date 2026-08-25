@@ -42,7 +42,7 @@ Capture ภาพ (screenshot) จาก terminal output สำหรับ docu
 ติดตั้ง tool ที่เลือก
 
 1. ติดตั้ง termshot: ดาวน์โหลดจาก GitHub releases ของ `mr-pmillz/termshot`
-2. ติดตั้ง terminal-shot: `bun install -g terminal-shot`
+2. ติดตั้ง terminal-shot: `bun add -g terminal-shot`
 3. ติดตั้ง termframe: `scoop install termframe` หรือดาวน์โหลดจาก GitHub releases ของ `pamburus/termframe`
 4. Windows Snipping Tool: มีอยู่แล้วใน Windows
 

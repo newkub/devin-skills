@@ -18,7 +18,7 @@ The Supabase CLI enables local development, database migrations, type generation
 ### npm (Project Dependency)
 
 ```sh
-npm install supabase --save-dev
+bun add supabase -D
 # or
 pnpm add -D supabase
 # or
@@ -65,7 +65,7 @@ sudo rpm -i supabase-x.y.z.rpm
 ### Beta Channel
 
 ```sh
-npm install supabase@beta --save-dev
+bun add supabase@beta -D
 # or
 brew install supabase/tap/supabase-beta
 brew link --overwrite supabase-beta
@@ -229,7 +229,7 @@ jobs:
 ## Update
 
 ```sh
-npm update supabase --save-dev    # npm
+npm update supabase -D    # npm
 brew upgrade supabase             # Homebrew
 scoop update supabase             # Scoop
 ```

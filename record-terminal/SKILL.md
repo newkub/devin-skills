@@ -41,9 +41,9 @@ description: บันทึกวิดีโอและ session จาก ter
 
 ติดตั้ง tool ที่เลือก
 
-1. ติดตั้ง asciinema ด้วย `bun install -g asciinema`
-2. ติดตั้ง vhs ด้วย `bun install -g vhs`
-3. ติดตั้ง terminalizer ด้วย `bun install -g terminalizer`
+1. ติดตั้ง asciinema ด้วย `bun add -g asciinema`
+2. ติดตั้ง vhs ด้วย `bun add -g vhs`
+3. ติดตั้ง terminalizer ด้วย `bun add -g terminalizer`
 4. ติดตั้ง tuirec ด้วย `go install github.com/gui-cs/tuirec/cmd/tuirec@latest`
 
 ### 4. Record Session

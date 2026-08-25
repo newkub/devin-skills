@@ -1,6 +1,13 @@
 ﻿---
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest และจัดเรียงส่วนประกอบตาม Order Theory
+related:
+  - follow-framework-nuxt
+  - follow-lib-vue
+  - follow-framework-svelte-kit
+  - follow-monorepo
+  - learn-from-web
+  - restructure
 ---
 
 ## Goal
@@ -29,14 +36,14 @@ description: เลือก architecture pattern ตาม package manifest แ
 
 1. ตรวจสอบ Detection Rules ตามลำดับ priority ใน Rules section
 2. เลือก architecture pattern ที่ตรงกับ project type
-3. อ่าน reference file ของ pattern ที่เลือกจาก `references/patterns/`
-4. ถ้าไม่ตรงเงื่อนไขใด → ใช้ Clean Architecture ([references/patterns/clean-architecture.md](references/patterns/clean-architecture.md)) เป็น default
+3. อ่าน reference file ของ pattern ที่เลือกจาก `references/`
+4. ถ้าไม่ตรงเงื่อนไขใด → ใช้ Clean Architecture ([references/clean-architecture.md](references/clean-architecture.md)) เป็น default
 
 ### 3. Learn Architecture Pattern
 
 > Goal: เรียนรู้ architecture pattern ที่เลือกจาก reference files และ official sources
 
-1. อ่าน reference file ของ pattern ที่เลือกใน `references/patterns/<pattern>.md`
+1. อ่าน reference file ของ pattern ที่เลือกใน `references/<pattern>.md`
 2. ทำ `/learn-from-web` เพื่อศึกษา architecture pattern ที่เลือกจาก official documentation เพิ่มเติม
 3. อ่าน best practices และ anti-patterns ของ pattern นั้น
 4. บันทึก code structure examples และ configuration examples
@@ -69,15 +76,15 @@ description: เลือก architecture pattern ตาม package manifest แ
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
 | Nuxt | `nuxt` in dependencies | `/follow-framework-nuxt` |
-| Next.js | `next` in dependencies | [references/patterns/nextjs-architecture.md](references/patterns/nextjs-architecture.md) |
+| Next.js | `next` in dependencies | [references/nextjs-architecture.md](references/nextjs-architecture.md) |
 | Vue.js | `vue` in dependencies | `/follow-lib-vue` |
-| SolidJS | `solid-js` in dependencies | [references/patterns/solid-tanstack-architecture.md](references/patterns/solid-tanstack-architecture.md) |
+| SolidJS | `solid-js` in dependencies | [references/solid-tanstack-architecture.md](references/solid-tanstack-architecture.md) |
 | Svelte | `svelte` in dependencies | `/follow-framework-svelte-kit` |
-| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | [references/patterns/layered-architecture.md](references/patterns/layered-architecture.md) |
-| Rust | `Cargo.toml` exists | [references/patterns/clean-architecture.md](references/patterns/clean-architecture.md) |
-| Bun | `bun` in dependencies | [references/patterns/clean-architecture.md](references/patterns/clean-architecture.md) |
+| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | [references/layered-architecture.md](references/layered-architecture.md) |
+| Rust | `Cargo.toml` exists | [references/clean-architecture.md](references/clean-architecture.md) |
+| Bun | `bun` in dependencies | [references/clean-architecture.md](references/clean-architecture.md) |
 | Monorepo | `workspaces` in `package.json` | `/follow-monorepo` |
-| Microservices | distributed system | [references/patterns/microservices-architecture.md](references/patterns/microservices-architecture.md) |
+| Microservices | distributed system | [references/microservices-architecture.md](references/microservices-architecture.md) |
 
 ### 2. Priority Rules
 

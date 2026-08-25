@@ -24,7 +24,7 @@ Automatically detects your framework, installs `react-scan`, and sets up your pr
 ### Manual Installation
 
 ```bash
-npm install -D react-scan
+bun add -D react-scan
 # or: pnpm add react-scan / yarn add react-scan / bun add react-scan
 ```
 

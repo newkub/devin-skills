@@ -106,6 +106,7 @@ description: อัปเดต devin skills repo ทั้งหมดโดย
 - ทุก skill ต้องผ่าน `/validate` หลังอัปเดต
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
+- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
 
 ### 5. Minimal Changes
 
@@ -117,6 +118,7 @@ description: อัปเดต devin skills repo ทั้งหมดโดย
 
 - devin skills repo ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
 - ทุก skill ผ่าน `/review-devin-global-skills` และ `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
 - skills ที่มี dependencies มี `references/` ครบผ่าน `/learn-from-references`
 - content ครอบคลุมผ่าน `/follow-coverage`

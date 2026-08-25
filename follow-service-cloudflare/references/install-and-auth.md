@@ -5,7 +5,7 @@
 Install locally in your project (Cloudflare recommends this over global install):
 
 ```sh
-npm i -D wrangler@latest
+bun add -D wrangler@latest
 # or
 yarn add -D wrangler@latest
 # or

@@ -24,10 +24,10 @@ argument-hint: "[url]"
 
 > Goal: Install And Verify Agent Browser
 
-ติดตั้งด้วย `npm install -g agent-browser` แล้วรัน `agent-browser install` (ดูรายละเอียดที่ `/follow-tool-agent-browser`)
+ติดตั้งด้วย `bun add -g agent-browser` แล้วรัน `agent-browser install` (ดูรายละเอียดที่ `/follow-tool-agent-browser`)
 
 1. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
-2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `npm install -g agent-browser`
+2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser`
 3. ดาวน์โหลด Chrome ด้วย `agent-browser install`
 4. ถ้าติดตั้งไม่ได้ ให้ใช้ `browser-preview` tool แทน
 

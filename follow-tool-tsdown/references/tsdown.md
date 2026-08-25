@@ -11,7 +11,7 @@ bun add -D tsdown
 Other package managers:
 
 ```sh
-npm install -D tsdown
+bun add -D tsdown
 pnpm add -D tsdown
 yarn add -D tsdown
 ```

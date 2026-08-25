@@ -1,5 +1,5 @@
 ---
-name: analyze-all-files
+name: all-files
 description: ทำงานกับแต่ละ file ใน project จนครบถ้วน
 ---
 
@@ -9,7 +9,7 @@ description: ทำงานกับแต่ละ file ใน project จน�
 
 ## Scope
 
-ใช้ `analyze-all-files` สำหรับ tasks และ workflows เฉพาะที่กำหนด
+ใช้ `all-files` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
 ## Execute
 

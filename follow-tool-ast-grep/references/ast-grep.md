@@ -8,7 +8,7 @@ ast-grep is a structural search, lint, and rewrite tool for many languages using
 
 ```sh
 # npm (global)
-npm i @ast-grep/cli -g
+bun add @ast-grep/cli -g
 
 # bun (ad-hoc, no install needed)
 bunx ast-grep --help

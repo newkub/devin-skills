@@ -17,7 +17,7 @@
 ```bash
 # All package managers
 bun add -D unocss
-# or: pnpm add -D unocss / npm install -D unocss / yarn add -D unocss
+# or: pnpm add -D unocss / bun add -D unocss / yarn add -D unocss
 
 # Standalone preset (if needed separately)
 bun add -D @unocss/preset-wind4

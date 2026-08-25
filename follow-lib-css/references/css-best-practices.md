@@ -13,7 +13,7 @@ CSS is a web standard built into all browsers — no package installation needed
 Optional PostCSS toolchain for vendor prefix fallbacks:
 
 ```bash
-npm install -D postcss autoprefixer
+bun add -D postcss autoprefixer
 ```
 
 ## Modern CSS Features

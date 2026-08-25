@@ -40,7 +40,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 3. อ่าน `tools/review/` directory ที่ project root เพื่อดู CLI ที่มีอยู่แล้ว
 4. อ่าน `src/domain/analyzers/` เป็น reference implementation
 5. ทำ `/follow-create-bun-cli` เพื่ออ่าน Bun CLI best practices
-6. ทำ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`) เพื่ออ่าน Clean Architecture structure สำหรับ CLI
+6. ทำ `/follow-architecture` (Clean pattern: `references/clean-architecture.md`) เพื่ออ่าน Clean Architecture structure สำหรับ CLI
 7. ทำ `/use-ast-grep` เพื่ออ่าน ast-grep patterns และ rules สำหรับ analyzer checks
 
 ### 4. Build Analyzer Inventory
@@ -121,7 +121,7 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 
 ### 1. CLI And Analyzer Structure
 
-- ใช้โครงสร้างจาก `/follow-create-bun-cli` และ `/follow-architecture` (Clean pattern: `references/patterns/clean-architecture.md`)
+- ใช้โครงสร้างจาก `/follow-create-bun-cli` และ `/follow-architecture` (Clean pattern: `references/clean-architecture.md`)
 - แยก concerns ตาม Clean Architecture: `domain/` (pure logic), `application/` (orchestration), `adapters/` (I/O), `presentation/` (CLI entry point)
 - ชื่อไฟล์ใช้ `kebab-case` เสมอ
 - Entry point: `src/presentation/cli.ts` และ `src/index.ts`

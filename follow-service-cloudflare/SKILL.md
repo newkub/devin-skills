@@ -24,7 +24,7 @@ description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ 
 
 > Goal: ติดตั้ง Wrangler CLI และเชื่อมต่อกับ Cloudflare account
 
-1. ติดตั้ง Wrangler ด้วย `bun add -D wrangler` หรือ `npm install -D wrangler`
+1. ติดตั้ง Wrangler ด้วย `bun add -D wrangler` หรือ `bun add -D wrangler`
 2. ตรวจสอบ version ด้วย `wrangler --version` (ต้อง >= 4.0)
 3. Login ด้วย `wrangler login` หรือใช้ `CLOUDFLARE_API_TOKEN` สำหรับ CI
 4. ตรวจสอบ authentication ด้วย `wrangler whoami`

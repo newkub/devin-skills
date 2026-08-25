@@ -16,7 +16,7 @@ Wrangler is the Cloudflare Developer Platform command-line interface (CLI) for m
 ## Migration From v3 To v4
 
 ```sh
-npm i -D wrangler@4
+bun add -D wrangler@4
 ```
 
 Wrangler v4 is a smaller set of changes compared to previous major versions. Existing workflows are unlikely to change.

@@ -67,9 +67,9 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 
 ใช้ Bun package manager แทน npm/pnpm/yarn
 
-1. ใช้ `bun install` แทน `npm install` สำหรับ dependencies
-2. ใช้ `bun add` แทน `npm install` สำหรับ add packages
-3. ใช้ `bun add -d` แทน `npm install -D` สำหรับ dev dependencies
+1. ใช้ `bun install` แทน `npm install` สำหรับ install dependencies จาก lockfile
+2. ใช้ `bun add` แทน `npm install <pkg>` สำหรับ add packages
+3. ใช้ `bun add -d` แทน `npm install -D <pkg>` สำหรับ dev dependencies
 4. ใช้ `bun remove` แทน `npm uninstall` สำหรับ remove packages
 5. ใช้ `bun update` แทน `npm update` สำหรับ update packages
 6. ใช้ `bun run` แทน `npm run` สำหรับ run scripts
@@ -155,8 +155,8 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 
 ใช้ Bun package manager สำหรับทุก operations
 
-- ใช้ `bun install` แทน `npm install`
-- ใช้ `bun add` แทน `npm install <package>`
+- ใช้ `bun install` แทน `npm install` สำหรับ install จาก lockfile
+- ใช้ `bun add` แทน `npm install <package>` สำหรับ add package
 - ใช้ `bunx` แทน `npx`
 - ใช้ `bun.lockb` แทน `package-lock.json`
 

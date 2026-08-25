@@ -15,7 +15,7 @@ Vercel CLI is the command-line interface for the Vercel platform. It allows you 
 ## Install
 
 ```sh
-npm i vercel
+bun add vercel
 # or
 pnpm i vercel
 # or
@@ -27,9 +27,9 @@ bun i vercel
 For global install:
 
 ```sh
-npm i -g vercel
+bun add -g vercel
 # or
-pnpm i -g vercel
+bun add -g vercel
 ```
 
 Verify installation:
@@ -185,7 +185,7 @@ Using `VERCEL_TOKEN` environment variable is recommended over `--token` flag to 
 Native binaries reduce setup where Node.js is unnecessary:
 
 ```sh
-pnpm i -g @vercel/vc-native -f
+bun add -g @vercel/vc-native -f
 ```
 
 The `-f` flag replaces existing global `vercel` and `vc` bin links. Supports macOS, Linux, and Windows on x64 and arm64.

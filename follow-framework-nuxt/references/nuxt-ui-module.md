@@ -57,7 +57,7 @@ yarn add @nuxt/ui tailwindcss
 bun
 
 ```bash
-bun install @nuxt/ui tailwindcss
+bun add @nuxt/ui tailwindcss
 ```
 
 bun

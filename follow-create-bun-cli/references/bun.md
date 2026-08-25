@@ -14,7 +14,7 @@ curl -fsSL https://bun.sh/install | bash
 iex "& {$(irm https://bun.sh/install.ps1)}"
 
 # npm
-npm install -g bun
+bun add -g bun
 
 # Homebrew
 brew install bun
@@ -47,9 +47,9 @@ bun upgrade    # download and install latest stable
 
 ```sh
 bun install                    # install all dependencies
-bun install <pkg>              # add dependency
-bun install <pkg>@1.2.3        # add specific version
-bun install <pkg>@latest       # add latest tag
+bun add <pkg>                  # add dependency
+bun add <pkg>@1.2.3            # add specific version
+bun add <pkg>@latest           # add latest tag
 bun add -d <pkg>               # add devDependency
 bun remove <pkg>               # remove dependency
 bun update                     # update all dependencies

@@ -50,7 +50,7 @@ winget install infisical
 ### npm (Global)
 
 ```sh
-npm install -g @infisical/cli
+bun add -g @infisical/cli
 ```
 
 Update:
@@ -160,7 +160,7 @@ This file is safe to commit — it contains no sensitive data.
 ## Install SDK
 
 ```sh
-npm install @infisical/sdk
+bun add @infisical/sdk
 # or
 bun add @infisical/sdk
 # or

@@ -16,18 +16,18 @@
 npm init stryker@latest
 
 # Manual install
-npm install --save-dev @stryker-mutator/core
+bun add -D @stryker-mutator/core
 
 # Bun
 bun add -D @stryker-mutator/core
 
 # Install test runner plugin
-npm install --save-dev @stryker-mutator/jest-runner
-npm install --save-dev @stryker-mutator/vitest-runner
-npm install --save-dev @stryker-mutator/mocha-runner
+bun add -D @stryker-mutator/jest-runner
+bun add -D @stryker-mutator/vitest-runner
+bun add -D @stryker-mutator/mocha-runner
 
 # TypeScript checker (optional)
-npm install --save-dev @stryker-mutator/typescript-checker
+bun add -D @stryker-mutator/typescript-checker
 ```
 
 ## Configuration

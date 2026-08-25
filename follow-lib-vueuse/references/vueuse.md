@@ -9,13 +9,13 @@ VueUse is a collection of utility functions (composables) based on the Vue Compo
 Install `@vueuse/core` for Vue 3 applications:
 
 ```bash
-npm i @vueuse/core
+bun add @vueuse/core
 ```
 
 For Nuxt projects, install the Nuxt module along with core:
 
 ```bash
-npm i -D @vueuse/nuxt @vueuse/core
+bun add -D @vueuse/nuxt @vueuse/core
 ```
 
 Or use the Nuxt CLI to add the module:

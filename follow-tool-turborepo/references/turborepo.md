@@ -7,7 +7,7 @@
 ```sh
 bun add -D turbo
 # or
-npm install -D turbo
+bun add -D turbo
 pnpm add -D turbo
 yarn add -D turbo
 ```

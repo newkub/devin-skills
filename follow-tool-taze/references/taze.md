@@ -15,7 +15,7 @@ Optional install as dev dependency:
 
 ```sh
 bun add -D taze
-npm install -D taze
+bun add -D taze
 pnpm add -D taze
 ```
 
@@ -99,7 +99,7 @@ export default defineConfig({
   force: true,
   // write to package.json
   write: true,
-  // run `npm install` or `yarn install` right after bumping
+  // run `bun install` or `yarn install` right after bumping
   install: true,
   // ignore paths for looking for package.json in monorepo
   ignorePaths: [

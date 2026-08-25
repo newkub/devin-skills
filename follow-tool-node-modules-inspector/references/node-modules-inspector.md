@@ -16,7 +16,7 @@ npx node-modules-inspector
 bunx node-modules-inspector
 
 # Install locally
-npm install node-modules-inspector
+bun add node-modules-inspector
 pnpm add node-modules-inspector
 bun add node-modules-inspector
 ```

@@ -10,7 +10,7 @@
 
 ```bash
 # Global install via npm
-npm install -g degit
+bun add -g degit
 
 # Run without installing (npx)
 npx degit user/repo

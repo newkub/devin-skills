@@ -7,7 +7,7 @@
 ```sh
 bun add -D @changesets/cli
 # or
-npm install -D @changesets/cli
+bun add -D @changesets/cli
 pnpm add -D @changesets/cli
 yarn add -D @changesets/cli
 ```

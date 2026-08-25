@@ -1,5 +1,5 @@
 ---
-name: analyze-all-workspace
+name: all-workspace
 description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
 ---
 

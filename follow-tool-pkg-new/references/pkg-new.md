@@ -16,9 +16,9 @@ Key features:
 Preview packages are installed via npm-compatible URLs:
 
 ```sh
-npm i https://pkg.pr.new/tinylibs/tinybench/tinybench@a832a55
+bun add https://pkg.pr.new/tinylibs/tinybench/tinybench@a832a55
 
-# npm i https://pkg.pr.new/${owner}/${repo}/${package}@{commit}
+# bun add https://pkg.pr.new/${owner}/${repo}/${package}@{commit}
 ```
 
 ## Install
@@ -34,7 +34,7 @@ bun add -D pkg-pr-new
 Or with npm:
 
 ```bash
-npm install --save-dev pkg-pr-new
+bun add -D pkg-pr-new
 ```
 
 In CI environments, avoid `npx`, `pnpm dlx`, `yarn dlx`, and `bunx`. Install `pkg-pr-new` as a dependency and execute it from the lockfile (`npm exec`, `pnpm exec`, `yarn`, or `bun run`).

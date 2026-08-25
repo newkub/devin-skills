@@ -7,7 +7,7 @@
 ```sh
 bun add -D auto
 # or
-npm install -D auto
+bun add -D auto
 yarn add -D auto
 ```
 

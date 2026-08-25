@@ -1,5 +1,5 @@
 ---
-name: analyze-all-folders
+name: all-folders
 description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
 ---
 

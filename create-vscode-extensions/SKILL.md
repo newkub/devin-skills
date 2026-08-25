@@ -1,125 +1,125 @@
-﻿---
+---
 name: create-vscode-extensions
-description: สร้าง VS Code extensions ด้วย TypeScript และ VS Code API
+description: ????? VS Code extensions ???? TypeScript ??? VS Code API
 argument-hint: "[extension-name]"
 ---
 
 ## Goal
 
-สร้าง VS Code extensions ด้วย TypeScript และ VS Code API
+????? VS Code extensions ???? TypeScript ??? VS Code API
 
 ## Scope
 
-ใช้สำหรับสร้าง extensions ที่ add commands, extend editor functionality, integrate กับ external tools และสร้าง language support
+?????????????? extensions ??? add commands, extend editor functionality, integrate ??? external tools ???????? language support
 
 ## Execute
 
 ### 1. Install Prerequisites
 
-> Goal: ติดตั้ง tools สำหรับสร้าง VS Code extension
+> Goal: ??????? tools ??????????? VS Code extension
 
-1. ติดตั้ง `yo` และ `generator-code`:
+1. ??????? `yo` ??? `generator-code`:
    ```bash
-   bun install -g yo generator-code
+   bun add -g yo generator-code
    ```
-2. ติดตั้ง `vsce` สำหรับ package/publish:
+2. ??????? `vsce` ?????? package/publish:
    ```bash
-   bun install -g vsce
+   bun add -g vsce
    ```
 
 ### 2. Generate Extension
 
-> Goal: สร้างโครงสร้าง extension
+> Goal: ?????????????? extension
 
-1. รัน `yo code`
-2. เลือกประเภท:
+1. ??? `yo code`
+2. ???????????:
    - New Extension
    - Color Theme
    - Language Support
    - Code Snippets
    - Keymap
    - Extension Pack
-3. ตั้งชื่อ extension และกำหนด identifier
+3. ???????? extension ???????? identifier
 
 ### 3. Configure package.json
 
-> Goal: กำหนด manifest และ contribution points
+> Goal: ????? manifest ??? contribution points
 
-1. ตั้งชื่อ extension, version, publisher
-2. กำหนด `activationEvents` (เช่น `onCommand`)
-3. ลงทะเบียน `commands` ใน `contributes`
-4. กำหนด `main` เป็น `out/extension.js` หรือ compiled entry
+1. ???????? extension, version, publisher
+2. ????? `activationEvents` (???? `onCommand`)
+3. ????????? `commands` ?? `contributes`
+4. ????? `main` ???? `out/extension.js` ???? compiled entry
 
 ### 4. Implement Extension Logic
 
-> Goal: เขียน TypeScript code สำหรับ extension
+> Goal: ????? TypeScript code ?????? extension
 
-1. สร้าง `src/extension.ts` หรือ `src/extension.js`
+1. ????? `src/extension.ts` ???? `src/extension.js`
 2. implement `activate(context: vscode.ExtensionContext)`
-3. สร้าง command handlers และ register กับ `vscode.commands`
-4. เพิ่ม UI components, tree view, webview, หรือ language provider ตามประเภท
+3. ????? command handlers ??? register ??? `vscode.commands`
+4. ????? UI components, tree view, webview, ???? language provider ?????????
 
 ### 5. Test Locally
 
-> Goal: ทดสอบ extension ใน VS Code
+> Goal: ????? extension ?? VS Code
 
-1. เปิด project ใน VS Code
-2. กด `F5` เพื่อเปิด Extension Development Host
-3. ทดสอบ commands และ features
-4. ตรวจสอบ console errors
+1. ???? project ?? VS Code
+2. ?? `F5` ????????? Extension Development Host
+3. ????? commands ??? features
+4. ??????? console errors
 
 ### 6. Build And Package
 
-> Goal: Build สำหรับ production
+> Goal: Build ?????? production
 
-1. รัน `bun run compile` เพื่อ compile TypeScript
-2. รัน `vsce package` เพื่อสร้าง `.vsix`
-3. ตรวจสอบว่า package มีไฟล์ครบถ้วน
+1. ??? `bun run compile` ????? compile TypeScript
+2. ??? `vsce package` ?????????? `.vsix`
+3. ?????????? package ?????????????
 
 ### 7. Publish To Marketplace
 
-> Goal: Publish extension ไปยัง VS Code Marketplace
+> Goal: Publish extension ????? VS Code Marketplace
 
-1. สร้าง publisher ใน Marketplace
-2. รัน `vsce publish`
-3. ตรวจสอบว่า extension ปรากฏใน Marketplace
+1. ????? publisher ?? Marketplace
+2. ??? `vsce publish`
+3. ?????????? extension ??????? Marketplace
 
 ### Ship
 
-> Goal: ส่งมอบงาน
+> Goal: ?????????
 
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. ?? `/ship`
+2. ??? `ship` ??????? ? report ?????
 
 ## Rules
 
 ### 1. Project Structure
 
-- ใช้ TypeScript สำหรับ type safety
-- แยก `src/` สำหรับ source, `out/` หรือ `dist/` สำหรับ compiled output
-- ใช้ `package.json` เป็น manifest
-- ใช้ `tsconfig.json` กับ `strict: true`
+- ??? TypeScript ?????? type safety
+- ??? `src/` ?????? source, `out/` ???? `dist/` ?????? compiled output
+- ??? `package.json` ???? manifest
+- ??? `tsconfig.json` ??? `strict: true`
 
 ### 2. Activation
 
-- กำหนด `activationEvents` เฉพาะทีจำเป็น
-- หลีกเลี่ยง activate ทุกครั้งที VS Code เปิด
-- ใช้ `onCommand` ถ้า extension มี commands
+- ????? `activationEvents` ?????????????
+- ?????????? activate ?????????? VS Code ????
+- ??? `onCommand` ??? extension ?? commands
 
 ### 3. Best Practices
 
-- Implement error handling ทุก command
-- ใช้ `context.subscriptions.push` สำหรับ disposables
-- ทดสอบบน multiple VS Code versions
+- Implement error handling ??? command
+- ??? `context.subscriptions.push` ?????? disposables
+- ??????? multiple VS Code versions
 - Follow VS Code API guidelines
 
 ## Expected Outcome
 
-- VS Code extension ที build แล้ว
-- `package.json` กำหนด commands, activation events, contribution points ถูกต้อง
-- Extension ทำงานใน Extension Development Host
-- ได้ไฟล์ `.vsix` สำหรับ distribution
-- Extension publish ไป Marketplace ได้ (ถ้าจำเป็น)
+- VS Code extension ?? build ????
+- `package.json` ????? commands, activation events, contribution points ???????
+- Extension ??????? Extension Development Host
+- ??????? `.vsix` ?????? distribution
+- Extension publish ?? Marketplace ??? (?????????)
 
 ## Examples
 
@@ -141,7 +141,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 ```bash
 code .
-# กด F5 เพื่อเปิด Extension Development Host
+# ?? F5 ????????? Extension Development Host
 ```
 
 ### Build And Package

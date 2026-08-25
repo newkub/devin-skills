@@ -44,13 +44,13 @@ n 20
 
 ```bash
 # อัปเดต npm
-npm install -g npm@latest
+bun add -g npm@latest
 
 # ลบ node_modules และ package-lock.json
 rm -rf node_modules package-lock.json
 
 # ติดตั้ง dependencies ใหม่
-npm install
+bun install
 ```
 
 ### 4. Check Breaking Changes

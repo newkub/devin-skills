@@ -16,7 +16,7 @@ Cloudflare Workers is a serverless execution environment that runs on Cloudflare
 Install Wrangler locally in your project (recommended by Cloudflare):
 
 ```sh
-npm i -D wrangler@latest
+bun add -D wrangler@latest
 # or
 yarn add -D wrangler@latest
 # or
@@ -28,7 +28,7 @@ bun add -d wrangler@latest
 Install TypeScript types:
 
 ```sh
-npm i -D @cloudflare/workers-types
+bun add -D @cloudflare/workers-types
 ```
 
 Verify installation:

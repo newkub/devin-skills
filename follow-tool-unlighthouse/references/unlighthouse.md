@@ -27,14 +27,14 @@ npx unlighthouse --site https://mysite.com
 ### Global Install
 
 ```bash
-npm install -g unlighthouse
+bun add -g unlighthouse
 unlighthouse --site example.com
 ```
 
 ### CI Installation (Requires Puppeteer for Chromium)
 
 ```bash
-npm install -g @unlighthouse/cli puppeteer
+bun add -g @unlighthouse/cli puppeteer
 ```
 
 Puppeteer downloads a compatible Chromium binary automatically.

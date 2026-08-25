@@ -6,7 +6,7 @@ Workflow for creating a Raycast extension.
 
 1. **Install Raycast CLI**
    ```bash
-   bun install -g @raycast/api
+   bun add -g @raycast/api
    ```
 
 2. **Create new extension**

@@ -19,7 +19,7 @@ description: ใช้งาน Infisical สำหรับจัดการ s
 
 ติดตั้ง Infisical CLI และ authenticate ด้วย machine identity strategies
 
-- ติดตั้ง CLI: `npm install -g @infisical/cli` หรือ `brew install infisical` หรือ `scoop install infisical` (Windows)
+- ติดตั้ง CLI: `bun add -g @infisical/cli` หรือ `brew install infisical` หรือ `scoop install infisical` (Windows)
 - Interactive login: `infisical login`
 - CI/CD authentication: ใช้ machine identity กับ `infisical login --method=universal-auth --client-id=<id> --client-secret=<secret> --silent --plain`
 - Machine Identity Strategies ที่รองรับ (9 strategies): `universal-auth`, `kubernetes`, `azure`, `gcp-id-token`, `gcp-iam`, `aws-iam`, `oidc`, `jwt`, `ldap`
@@ -97,7 +97,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 ใช้ `@infisical/sdk` สำหรับ programmatic access ใน production
 
-- ติดตั้ง SDK: `bun add @infisical/sdk` หรือ `npm install @infisical/sdk`
+- ติดตั้ง SDK: `bun add @infisical/sdk` หรือ `bun add @infisical/sdk`
 - Initialize client ด้วย machine identity credentials
 - Authenticate: `client.auth().universalAuth.login({ clientId, clientSecret })`
 - ดึง secrets: `client.secrets().getSecret({ environment, projectId, secretName })`

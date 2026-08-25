@@ -15,7 +15,7 @@ Command-line interface reference สำหรับ Rolldown
 
 ```bash
 # bun
-bun install -D rolldown
+bun add -D rolldown
 
 # bun
 bun add -D rolldown

@@ -57,6 +57,7 @@ argument-hint: "[skill-name]"
 2. ทำ `/simplify` เพื่อกระชับเนื้อหาที่ซ้ำซ้อน
 3. ตรวจไม่มี TODO/MOCK/placeholder
 4. ถ้ามี version info ที่ล้าสมัย → ทำ `/learn-from-web` เพื่อ verify และอัปเดต
+5. ตรวจ install commands ใน `SKILL.md` และ `references/` ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI (เว้นแต่ project ใช้ npm เป็นหลัก)
 
 ### 6. Validate
 
@@ -110,6 +111,7 @@ argument-hint: "[skill-name]"
 - skill ต้องผ่าน `/validate` หลังอัปเดต
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
+- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
 
 ### 5. Minimal Changes
 
@@ -120,6 +122,7 @@ argument-hint: "[skill-name]"
 
 - skill เดียวผ่าน `/review-devin-global-skills` และ `/validate`
 - ไม่เกิน 250 บรรทัดต่อไฟล์ ไม่มี TODO/MOCK/placeholder
+- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
 - ถ้ามี dependencies มี `references/` ครบผ่าน `/learn-from-references`
 - content ครอบคลุมผ่าน `/follow-coverage`

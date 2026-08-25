@@ -29,7 +29,7 @@
 
 | Manager | Package | Command |
 |---------|---------|---------|
-| bun | animejs | `bun install animejs` |
+| bun | animejs | `bun add animejs` |
 | yarn | animejs | `yarn add animejs` |
 | bun | animejs | `bun add animejs` |
 | bun | animejs | `bun add animejs` |

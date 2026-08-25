@@ -19,7 +19,7 @@ Output จะอยู่ใน `storybook-static/` directory
 ### 2. Deploy to GitHub Pages
 
 ```bash
-bun install -D gh-pages
+bun add -D gh-pages
 ```
 
 Add script:
@@ -45,7 +45,7 @@ Push code ไปยัง GitHub และ import project ใน Vercel
 ### 4. Deploy to Netlify
 
 ```bash
-bun install -D netlify-cli
+bun add -D netlify-cli
 ```
 
 Deploy:

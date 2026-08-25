@@ -57,7 +57,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 5. Implement Adapters And Presentation
 
-> Goal: ทำ `/follow-architecture` อ้างอิง [references/patterns/layered-architecture.md](layered-architecture.md) เพื่อวางโครงสร้าง adapters และ presentation layers ตาม layered pattern
+> Goal: วางโครงสร้าง adapters และ presentation layers ตาม dependency direction (presentation → application → adapters → ports)
 
 1. `adapters/db/` - Database implementations — ทำ `/follow-orm`
 2. `adapters/http/` - HTTP clients, `adapters/external/` - External services
@@ -67,7 +67,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 6. Refactor Existing Code
 
-> Goal: ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้าม step นี้)
+> Goal: ถ้ามี existing code: ทำ `/refactor` เพื่อย้าย code เข้า structure ใหม่ (ถ้าไม่มี ให้ข้ามขั้นตอนนี้)
 
 1. ย้าย business logic ไป `modules/*/domain/operations/`
 2. ย้าย data models ไป `modules/*/domain/models/` เป็น `readonly` types

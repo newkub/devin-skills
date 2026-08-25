@@ -9,7 +9,7 @@ Command-line interface for leptos
 ## Installation
 
 ```bash
-bun install -g leptos
+bun add -g leptos
 ```
 
 ## Commands

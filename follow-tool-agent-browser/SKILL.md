@@ -17,7 +17,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 > Goal: ติดตั้งและยืนยัน `agent-browser` พร้อมใช้งาน
 ติดตั้ง `agent-browser` ก่อนใช้งานครั้งแรก
 
-1. ติดตั้งด้วย `bun install -g agent-browser`
+1. ติดตั้งด้วย `bun add -g agent-browser`
 2. ดาวน์โหลด Chrome ด้วย `agent-browser install`
 3. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
 4. ตรวจสอบเวอร์ชันด้วย `agent-browser --version`

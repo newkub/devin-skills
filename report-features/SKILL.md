@@ -31,7 +31,7 @@ description: รายงาน features ทั้งหมดใน project เ
 
 อ่าน feature files จากทุก workspace
 
-1. ทำ `/analyze-all-workspace` เพื่อระบุ workspaces ทั้งหมด
+1. ทำ `/all-workspace` เพื่อระบุ workspaces ทั้งหมด
 2. อ่าน `.devin/features/<workspace>/index.ts` เพื่อรับ manifest และ `allFeatures`
 3. อ่าน `.devin/features/<workspace>/types.ts` เพื่อรับ Feature interface
 4. รวบรวม features จากทุก workspace ไว้ใน list เดียว

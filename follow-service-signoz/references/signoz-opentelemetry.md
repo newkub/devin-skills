@@ -14,7 +14,7 @@
 
 ```bash
 # npm
-npm install --save @opentelemetry/api @opentelemetry/auto-instrumentations-node
+bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node
 
 # Bun
 bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node
@@ -85,7 +85,7 @@ bun run src/index.ts
 
 ```dockerfile
 # Install OpenTelemetry packages
-RUN npm install @opentelemetry/api@^1.9.0 @opentelemetry/auto-instrumentations-node
+RUN bun add @opentelemetry/api@^1.9.0 @opentelemetry/auto-instrumentations-node
 
 # Set environment variables
 ENV OTEL_TRACES_EXPORTER="otlp"

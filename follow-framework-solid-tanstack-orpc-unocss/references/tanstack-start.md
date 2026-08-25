@@ -26,13 +26,13 @@ You will be prompted to choose package manager and optional add-ons (Tailwind CS
 
 ```bash
 # Core
-npm i @tanstack/solid-start @tanstack/solid-router solid-js
+bun add @tanstack/solid-start @tanstack/solid-router solid-js
 
 # Vite build tool
-npm i -D vite vite-plugin-solid typescript @types/node
+bun add -D vite vite-plugin-solid typescript @types/node
 
 # Rsbuild (alternative)
-npm i -D @rsbuild/core @rsbuild/plugin-babel @rsbuild/plugin-solid
+bun add -D @rsbuild/core @rsbuild/plugin-babel @rsbuild/plugin-solid
 ```
 
 ## TypeScript Configuration

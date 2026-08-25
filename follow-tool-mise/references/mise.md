@@ -18,7 +18,7 @@ scoop install mise
 cargo install mise
 
 # npm
-npm install -g mise
+bun add -g mise
 ```
 
 ## Version

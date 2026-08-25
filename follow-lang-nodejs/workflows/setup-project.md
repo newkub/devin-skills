@@ -22,21 +22,21 @@ npm init -y
 
 ```bash
 npm init -y
-npm install -D typescript @types/node
+bun add -D typescript @types/node
 ```
 
 ### 2. Install Dependencies
 
-ใช้ `npm install` สำหรับ production dependencies:
+ใช้ `bun add` สำหรับ production dependencies:
 
 ```bash
-npm install package-name
+bun add package-name
 ```
 
-ใช้ `npm install -D` สำหรับ dev dependencies:
+ใช้ `bun add -D` สำหรับ dev dependencies:
 
 ```bash
-npm install -D typescript @types/node
+bun add -D typescript @types/node
 ```
 
 ### 3. Configure TypeScript
@@ -95,8 +95,8 @@ npm run dev
 
 ## Rules
 
-- ใช้ `npm install` สำหรับ dependencies
-- ใช้ `npm install -D` สำหรับ dev dependencies
+- ใช้ `bun add` สำหรับ dependencies
+- ใช้ `bun add -D` สำหรับ dev dependencies
 - ใช้ TypeScript strict mode
 - ใช้ `@types/node` สำหรับ type definitions
 - ใช้ `nodemon` สำหรับ development watch mode

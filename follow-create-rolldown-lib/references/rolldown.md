@@ -4,7 +4,7 @@
 
 ```bash
 # Using various package managers
-npm install -D rolldown
+bun add -D rolldown
 pnpm add -D rolldown
 yarn add -D rolldown
 bun add -D rolldown
@@ -209,7 +209,7 @@ await watcher.close();
 For TypeScript libraries, use `tsdown` (built on Rolldown) instead of direct Rolldown:
 
 ```bash
-npm install -D tsdown
+bun add -D tsdown
 ```
 
 See https://tsdown.dev/ for details.

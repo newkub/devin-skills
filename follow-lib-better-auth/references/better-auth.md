@@ -13,7 +13,7 @@
 
 ```bash
 # npm
-npm install better-auth
+bun add better-auth
 
 # Bun
 bun add better-auth

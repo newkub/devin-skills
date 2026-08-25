@@ -19,7 +19,7 @@ description: ใช้งาน Vercel CLI สำหรับ deploy และ m
 
 ติดตั้งและตั้งค่า Vercel CLI
 
-1. ติดตั้ง Vercel CLI ด้วย `bun add -g vercel` หรือ `pnpm i -g vercel`
+1. ติดตั้ง Vercel CLI ด้วย `bun add -g vercel` หรือ `bun add -g vercel`
 2. ตรวจสอบ version ด้วย `vercel --version`
 3. Login ด้วย `vercel login` เพื่อเชื่อมต่อกับ Vercel account
 4. เลือก team และ scope ที่ต้องการ

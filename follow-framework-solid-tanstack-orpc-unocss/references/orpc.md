@@ -16,7 +16,7 @@
 
 ```bash
 # Server and client
-npm install @orpc/server @orpc/client zod
+bun add @orpc/server @orpc/client zod
 
 # With bun
 bun add @orpc/server @orpc/client zod

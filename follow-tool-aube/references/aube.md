@@ -13,7 +13,7 @@ This installs `aube` on your PATH and lets mise manage future upgrades.
 ### From npm
 
 ```bash
-npm install -g --ignore-scripts=false @endevco/aube
+bun add -g --ignore-scripts=false @endevco/aube
 npx --ignore-scripts=false @endevco/aube --version
 ```
 
@@ -106,7 +106,7 @@ aube add react              # add dependency
 aube add -D vitest          # add dev dependency
 aube add -O fsevents        # add optional dependency
 aube add -E typescript      # add exact version
-aube add --save-peer react  # add as peer dependency
+aube add-peer react  # add as peer dependency
 aube add -g cowsay          # add globally
 
 # Specifiers

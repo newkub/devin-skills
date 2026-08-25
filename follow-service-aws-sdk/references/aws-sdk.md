@@ -17,7 +17,7 @@ AWS SDK for JavaScript v3 is a modular rewrite of v2 with first-class TypeScript
 Install only the service clients you need:
 
 ```sh
-npm i @aws-sdk/client-s3
+bun add @aws-sdk/client-s3
 # or
 bun add @aws-sdk/client-s3
 # or
@@ -29,11 +29,11 @@ yarn add @aws-sdk/client-s3
 Other common clients:
 
 ```sh
-npm i @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb
-npm i @aws-sdk/client-lambda
-npm i @aws-sdk/client-sqs
-npm i @aws-sdk/client-ssm
-npm i @aws-sdk/client-secrets-manager
+bun add @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb
+bun add @aws-sdk/client-lambda
+bun add @aws-sdk/client-sqs
+bun add @aws-sdk/client-ssm
+bun add @aws-sdk/client-secrets-manager
 ```
 
 ## Prerequisites

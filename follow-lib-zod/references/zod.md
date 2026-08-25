@@ -14,7 +14,7 @@
 
 ```bash
 # npm
-npm install zod
+bun add zod
 
 # Bun
 bun add zod

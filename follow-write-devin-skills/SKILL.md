@@ -133,6 +133,7 @@ argument-hint: "[skill-name]"
 ### 8. Dependencies
 
 - ดูรายละเอียดใน [references/dependencies.md](references/dependencies.md)
+- install commands ใน `SKILL.md` และ `references/` ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 ## Expected Outcome
 
@@ -142,6 +143,7 @@ argument-hint: "[skill-name]"
 - ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
+- install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 ## Examples
 

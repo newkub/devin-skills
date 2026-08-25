@@ -13,9 +13,9 @@ node --inspect file.js    # Debug mode
 
 ```bash
 npm init -y                   # Initialize project
-npm install                   # Install deps
-npm install <pkg>             # Add package
-npm install -D <pkg>          # Dev dependency
+bun install                   # Install deps
+bun add <pkg>                 # Add package
+bun add -D <pkg>              # Dev dependency
 npm test                      # Run tests
 npm run <script>              # Run script
 ```
@@ -58,4 +58,4 @@ yarn <script>                 # Run script
 | `pnpm -v` | pnpm version |
 | `yarn -v` | yarn version |
 | `npm init -y` | Quick init |
-| `npm install` | Install deps |
+| `bun install` | Install deps |

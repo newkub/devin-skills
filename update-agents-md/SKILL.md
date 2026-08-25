@@ -20,7 +20,7 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 1. ทำ `/update-all-devin-global-skills` เพื่อดูแล skills repo ให้ครบถ้วนสอดคล้องกันก่อน
 2. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
 3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
-4. ทำ `/analyze-all-workspace` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
+4. ทำ `/all-workspace` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
 5. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
 6. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 7. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`

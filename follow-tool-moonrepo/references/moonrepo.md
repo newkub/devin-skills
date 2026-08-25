@@ -7,14 +7,14 @@
 ### Bun
 
 ```sh
-bun install --dev @moonrepo/cli
+bun add -D @moonrepo/cli
 ```
 
 ### npm / pnpm / yarn
 
 ```sh
-npm install --save-dev @moonrepo/cli
-pnpm add --save-dev @moonrepo/cli
+bun add -D @moonrepo/cli
+pnpm add -D @moonrepo/cli
 yarn add --dev @moonrepo/cli
 ```
 

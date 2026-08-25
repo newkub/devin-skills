@@ -11,7 +11,7 @@
 cargo install tauri-cli --version "^2.0.0"
 
 # ผ่าน npm
-npm install -g @tauri-apps/cli
+bun add -g @tauri-apps/cli
 
 # ผ่าน bun (one-off)
 bunx @tauri-apps/cli <command>
@@ -156,7 +156,7 @@ build TypeScript bindings ใน `guest-js/`
 
 ```sh
 # ผ่าน npm
-npm install && npm run build
+bun install && npm run build
 
 # ผ่าน pnpm
 pnpm install && pnpm build
