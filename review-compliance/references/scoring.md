@@ -31,7 +31,7 @@ review score = weighted average ของ findings ทั้งหมด
 
 ## Per-Dimension Score
 
-- คำนวณ score ต่อ dimension (GDPR, CCPA, HIPAA, etc.)
+- คำนวณ score ต่อ dimension (GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA, etc.)
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 

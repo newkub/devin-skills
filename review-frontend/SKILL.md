@@ -1,210 +1,235 @@
 ---
 name: review-frontend
-description: Review frontend: components, forms, hooks, state, events, performance, UX, accessibility
+description: Review frontend code quality, components, state, rendering, type safety, CSS, forms, testing
+related:
+  - review-uxui
+  - review-platform
+  - review-quality
+  - scan-codebase
+  - deep-analyze
+  - run-review
+  - deep-validate
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-Review frontend ครอบคลุม components, forms, hooks/composables, state management, event handling, performance, assets, hydration, rendering, UX/UI, accessibility, responsive, browser compat, CSS, UX writing, design system พร้อม findings, severity, และ review score
+Review frontend code quality ครอบคลุม component architecture, state management, rendering performance, type safety, CSS/styling architecture, form and error handling, และ frontend testing พร้อม severity ratings และ review score
 
 ## Scope
 
-ใช้สำหรับ project หรือ workspace ที่มี frontend (web, desktop, mobile web) — ไม่รวม backend หรือ infrastructure review — เน้น review เท่านั้น ไม่แก้ไข code ระหว่าง review
+frontend code review สำหรับ project ที่มี UI code (React, Vue, Solid, Svelte, Angular) — ตรวจ component patterns, state management, rendering optimization, type safety, CSS architecture, form handling, error boundaries, และ test coverage
 
-ครอบคลุม: component structure, prop design, event emission, reactivity, composition, reusability, testing, isolation — form validation, field rules, error messages, state, submit, loading, accessibility, UX — hooks/composables design, parameter validation, return value, reactivity, effect cleanup — state management: store, mutation, persistence, sync, SSR, performance — event handling: listener cleanup, delegation, memory leak, passive listeners, debounce/throttle — general frontend performance, assets, hydration, rendering, UX/UI, accessibility, responsive, browser compat, CSS, UX writing, design system
+ไม่รวม:
+- design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
+- platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- general code quality, bug-prone patterns → ใช้ `/review-quality`
+- architecture, modularity, boundaries → ใช้ `/review-architecture`
 
 ## Execute
 
 ### 1. Prepare And Scan
 
-เตรียม context และ scan หา frontend scope
+สแกน codebase เพื่อเข้าใจ frontend stack และ structure
 
-> Goal: เข้าใจ tech stack, structure, และ pain points ของ frontend
+> Goal: เข้าใจ frontend framework, component patterns, state management, styling system
 
-1. ทำ `/scan-codebase` เพื่อหา frontend files: `package.json`, `vite.config.*`, `next.config.*`, `nuxt.config.*`, `index.html`, `app.vue`, `app.tsx`
-2. ระบุ framework/library: React, Vue, Svelte, Solid, Angular, หรืออื่น
-3. ระบุ state management library (Pinia, Vuex, Redux, Zustand, Jotai, XState, Nanostores, Svelte stores), form library (TanStack Form, VeeValidate, React Hook Form, Formik), validation library (Zod, Valibot, Yup)
-4. ตรวจสอบ frontend entry points, routes, layout, component tree, composable file patterns (`use-*`), store organization
-5. ถ้าเป็น web project → ทำ `/run-dev` เพื่อ verify dev server ก่อน review
-6. ทำ `/review-platform` อ้างอิง `references/performance.md` สำหรับ Lighthouse metrics เบื้องต้นหากมี
+1. ทำ `/scan-codebase` เพื่อเข้าใจ frontend structure และ stack
+2. ระบุ frontend framework (React, Vue, Solid, Svelte, Angular), state management library, styling system, form library, testing framework
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
+4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
+6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+7. ถ้าสแกนไม่ได้ → stop และ report
 
-### 2. Deep Analyze
+### 2. Component Architecture Review
 
-> Goal: ครอบคลุมทุก frontend dimension พร้อม review score
+Review component architecture — ดูรายละเอียดใน `references/components.md`
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์ frontend patterns
-2. ทำ `/update-create-review-cli` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต `ast-grep` rules
-3. ถ้า `/update-create-review-cli` ข้าม `/update-rules` → ทำ `/update-rules` แยก
-4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
+> Goal: ครอบคลุมทุก component architecture dimension
 
-### 3. Component Review
+1. ตรวจ component composition: compound components, slots, render props, children patterns
+2. ตรวจ component boundaries: single responsibility, prop drilling, coupling
+3. ตรวจ component reusability: reusable vs one-off, abstraction level
+4. ตรวจ component API: prop design, default values, prop types, variant system
+5. ตรวจ component organization: feature-based, atomic design, folder structure
+6. Critical: God component ที่ทำทุกอย่าง, prop drilling ลึก 5+ levels, broken component composition
+7. High: tight coupling ระหว่าง components, missing abstraction, inconsistent component API, no variant system
 
-> Goal: ครอบคลุม structure, props, events, reactivity, reusability, testing, isolation
+### 3. State Management And Hooks Review
 
-ดู `references/components.md` สำหรับ details
+Review state management และ hooks/composables design — ดูรายละเอียดใน `references/state-management.md` และ `references/hooks-composables.md`
 
-1. ตรวจสอบ component structure: file organization, single responsibility, component size, complexity, naming (PascalCase)
-2. ตรวจสอบ prop design: prop naming, types, defaults, validation, prop count (เกิน 4 ต้อง group), required vs optional, prop immutability
-3. ตรวจสอบ event emission: event naming (kebab-case for Vue, camelCase for React), payload typing, documentation, custom vs native event
-4. ตรวจสอบ component composition: slot usage, named slots, scoped slots, HOC, render functions, component injection
-5. ตรวจสอบ reactivity: computed/memo patterns, watch effects, unnecessary re-renders, reactivity dependencies, reactivity leak, effect scope
-6. ตรวจสอบ component reusability: reusability across pages, configurability, extensibility, coupling, shared component patterns
-7. ตรวจสอบ component testing: unit test coverage, snapshot testing, interaction testing, accessibility testing in components
-8. ตรวจสอบ component isolation: isolation from parent, global state, side effects, pure component patterns
+> Goal: ครอบคลุมทุก state management และ hooks/composables dimension
 
-### 4. Form Review
+1. ตรวจ state organization: local, shared, global, server state separation
+2. ตรวจ reactivity patterns: fine-grained, signals, observables, context
+3. ตรวจ side effect management: useEffect, watchers, lifecycle, cleanup
+4. ตรวจ state persistence: localStorage, sessionStorage, URL state, cache
+5. ตรวจ state immutability: immutable updates, mutation prevention
+6. ตรวจ hooks/composables design: single responsibility, parameter validation, return value structure, reusability
+7. ตรวจ effect cleanup: timer, event listener, subscription, AbortController, resource disposal
+8. Critical: global mutable state ที่ทำให้ debug ไม่ได้, state corruption, no cleanup บน unmount, memory leak from missing cleanup, reactivity leak
+9. High: unnecessary re-renders, missing state separation, prop drilling state, no persistence strategy, missing effect disposal, inconsistent return type, stale closure
 
-> Goal: ครอบคลุม validation, field rules, error messages, state, submit, loading, accessibility, UX
+### 4. Rendering Performance And Event Handling Review
 
-ดู `references/forms.md` สำหรับ details
+Review rendering performance และ event handling — ดูรายละเอียดใน `references/rendering-performance.md` และ `references/event-handling.md`
 
-1. ตรวจสอบ validation schemas: schema completeness, field rule coverage, required vs optional, min/max length, pattern, email, phone, URL, date, custom rules
-2. ตรวจสอบ field rules: real-time, blur, submit, debounce, conditional, cross-field, dependent field validation
-3. ตรวจสอบ error message quality: clarity, localization, specificity, field-level vs form-level, display timing, display position
-4. ตรวจสอบ validation UX: inline validation timing, error display on blur vs change, success feedback, error clearing, error focus management
-5. ตรวจสอบ form state: initialization, reset, dirty state tracking, pristine vs dirty, submission state (idle, submitting, success, error)
-6. ตรวจสอบ submit handling: error handling, loading state, success feedback, error feedback, duplicate submit prevention, submit on enter
-7. ตรวจสอบ form accessibility: label association (`for`/`id`), `aria-invalid`, `aria-describedby`, keyboard navigation, tab order, focus management, screen reader announcements
-8. ตรวจสอบ multi-step forms และ dynamic forms ถ้ามี
+> Goal: ครอบคลุมทุก rendering performance และ event handling dimension
 
-### 5. Hooks And Composables Review
+1. ตรวจ unnecessary re-renders: memoization, useMemo, useCallback, React.memo
+2. ตรวจ virtualization: long lists, large datasets, windowing
+3. ตรวจ code splitting: lazy loading, dynamic import, route-based splitting
+4. ตรวจ bundle optimization: tree shaking, dead code elimination, bundle analysis
+5. ตรวจ render bottlenecks: expensive computations, layout thrashing, forced reflow
+6. ตรวจ event listener cleanup: addEventListener/removeEventListener pairs, cleanup on unmount
+7. ตรวจ event performance: passive listeners, debounce, throttle, event delegation
+8. Critical: re-render storm บน hot path, no virtualization บน 1000+ items, no code splitting, listener leak ใน critical path
+9. High: missing memoization, missing lazy loading, expensive computation บน render, missing cleanup on unmount, missing passive listeners, missing debounce/throttle
 
-> Goal: ครอบคลุม design, parameters, return values, reactivity, lifecycle, cleanup
+### 5. Type Safety Review
 
-ดู `references/hooks-composables.md` สำหรับ details
+Review type safety — ดูรายละเอียดใน `references/type-safety.md`
 
-1. ตรวจสอบ function design: single responsibility, pure function where possible, side effect isolation, naming (`use-*` prefix), file organization
-2. ตรวจสอบ parameter validation: types, defaults, validation, options object pattern, required vs optional
-3. ตรวจสอบ return value structure: consistent return type, reactive vs non-reactive, documentation, tuple vs object, stable return reference
-4. ตรวจสอบ composable reusability: reusability across components, configurability, composition, coupling
-5. ตรวจสอบ reactivity: signal/memo patterns, computed/watch, dependencies tracking, leak prevention, stale closure prevention
-6. ตรวจสอบ lifecycle management: `onMount`/`onCleanup`, `onUnmounted`, `onBeforeUnmount`, lifecycle ordering, error handling
-7. ตรวจสอบ effect cleanup: effect disposal, timer cleanup, event listener cleanup, subscription cleanup, `AbortController` usage
-8. ตรวจสอบ resource disposal: WebSocket, IntersectionObserver, ResizeObserver, AbortController, database connection cleanup
-9. ตรวจสอบ Vue/Nuxt specifics ถ้ามี: `ref`/`reactive`, `computed`/`watch`, `provide`/`inject`, effect scope, SSR compatibility, `useFetch`/`useAsyncData`
+> Goal: ครอบคลุมทุก type safety dimension
 
-### 6. State Management Review
+1. ตรวจ `any` usage: explicit `any`, implicit `any`, type assertions
+2. ตรวจ type completeness: props, state, events, refs, context
+3. ตรวจ type inference: explicit types ที่ไม่จำเป็น, missing types ที่จำเป็น
+4. ตรวจ generic usage: generic components, generic hooks, constraints
+5. ตรวจ type compatibility: union types, intersection, discriminated unions
+6. Critical: `any` บน critical path, no types บน public API, type assertions ที่ bypass safety
+7. High: implicit `any` กระจาย, missing prop types, missing event types, no generic constraints
 
-> Goal: ครอบคลุม store, mutation, persistence, sync, derivation, SSR, performance
+### 6. CSS And Styling Review
 
-ดู `references/state-management.md` สำหรับ details
+Review CSS and styling architecture — ดูรายละเอียดใน `references/css-styling.md`
 
-1. ตรวจสอบ store structure: file organization, single responsibility per store, size, naming, registration, modular patterns
-2. ตรวจสอบ state normalization: normalized vs denormalized, nested depth, duplicate state, single source of truth, state shape consistency
-3. ตรวจสอบ mutation patterns: immutability enforcement, direct mutation, action/getter separation, mutation tracking, transactional updates, batch updates
-4. ตรวจสอบ state scoping: global vs local, store module boundaries, state ownership, over-globalization, under-globalization
-5. ตรวจสอบ state persistence: strategy (`localStorage`, `sessionStorage`, `IndexedDB`, cookie), scope, serialization, migration, sensitive data
-6. ตรวจสอบ state synchronization: cross-tab sync, cross-component sync, real-time sync, error handling, conflict resolution, debounced sync
-7. ตรวจสอบ state derivation: selector/getter patterns, computed state, memoized selectors, derived state caching, selector composition, stale derived state
-8. ตรวจสอบ SSR state hydration: dehydration/rehydration correctness, serialization safety, hydration mismatch, server-only/client-only state, transfer payload size
-9. ตรวจสอบ state performance: unnecessary re-renders, large state objects, update frequency, subscription granularity, update batching
+> Goal: ครอบคลุมทุก CSS and styling dimension
 
-### 7. Event Handling Review
+1. ตรวจ styling approach: CSS modules, Tailwind, UnoCSS, styled-components, CSS-in-JS
+2. ตรวจ CSS organization: file structure, naming convention, specificity
+3. ตรวจ CSS specificity: !important, deep selectors, specificity wars
+4. ตรวจ responsive CSS: media queries, container queries, mobile-first
+5. ตรวจ CSS performance: unused CSS, duplicate styles, large CSS bundles
+6. Critical: !important ทั่วทั้ง project, global CSS ที่ leak, broken responsive บน breakpoint หลัก
+7. High: specificity wars, inconsistent styling approach, unused CSS มาก, missing responsive
 
-> Goal: ครอบคลุม listener cleanup, delegation, memory leak, passive listeners, debounce/throttle
+### 7. Form And Error Handling Review
 
-ดู `references/event-handling.md` สำหรับ details
+Review form validation, UX, และ error handling — ดูรายละเอียดใน `references/forms.md`
 
-1. ตรวจสอบ listener cleanup: `addEventListener`/`removeEventListener` pairs, cleanup on unmount, route change, component destroy
-2. ตรวจสอบ memory leak prevention: listener leak detection, closure reference leak, detached DOM element listeners, global listener cleanup, interval/timeout cleanup
-3. ตรวจสอบ event delegation: delegation patterns, delegation vs direct binding, performance, correctness, cleanup
-4. ตรวจสอบ event target correctness: correct target, `target` vs `currentTarget`, bubbling, capturing, delegation target matching
-5. ตรวจสอบ passive listeners: `passive: true` for touch/wheel, scroll passive, performance, missing passive flag detection
-6. ตรวจสอบ debounce: debounce on input/search/resize, time configuration, cleanup, correctness, missing debounce detection
-7. ตรวจสอบ throttle: throttle on scroll/resize/mousemove, time configuration, cleanup, vs debounce selection, missing throttle detection
-8. ตรวจสอบ custom events: typed payload, naming, documentation, `CustomEvent` usage, dispatching patterns
-9. ตรวจสอบ global event listeners: `window`/`document` cleanup, `visibilitychange`, online/offline, `beforeunload`, `popstate`
+> Goal: ครอบคลุมทุก form และ error handling dimension
 
-### 8. Performance, Assets, Hydration, Rendering Review
+1. ตรวจ form validation: schema validation, field rules, real-time/blur/submit validation, cross-field
+2. ตรวจ form state management: initialization, reset, dirty tracking, submission state
+3. ตรวจ submit handling: error handling, loading state, duplicate prevention, success feedback
+4. ตรวจ form accessibility: labels, aria-invalid, aria-describedby, keyboard navigation, focus management
+5. ตรวจ error boundaries: React error boundaries, Vue error handlers, fallback UI
+6. ตรวจ error handling: try/catch, error states, error recovery, error logging
+7. ตรวจ multi-step และ dynamic forms: step validation, state preservation, dynamic field add/remove
+8. Critical: no form validation บน critical form, no error boundary, unhandled errors crash app, inaccessible form, keyboard trap
+9. High: missing async validation, no error fallback UI, missing error logging, no form accessibility, missing duplicate submit prevention
 
-> Goal: หาปัญหา performance ที่มีผลต่อ user
+### 8. Frontend Testing Review
 
-1. ตรวจสอบ Core Web Vitals: LCP, INP, CLS, TTFB, FCP
-2. ตรวจสอบ bundle size และ bundle analysis output
-3. ตรวจสอบ critical rendering path และ render-blocking resources
-4. ตรวจสอบ images ขนาดใหญ่ที่ไม่ optimize หรือไม่ใช้ modern formats (`WebP`, `AVIF`), responsive images, lazy loading, `srcset`, `sizes`
-5. ตรวจสอบ font subsets, `font-display`, preconnect สำหรับ fonts
-6. ตรวจสอบ SSR/CSR hydration: hydration boundaries, streaming, progressive hydration, hydration mismatch, `typeof window` checks
-7. ตรวจสอบ rendering efficiency: avoidable re-renders, memoization, virtual list, code splitting, dynamic imports, CSS layout/paint/composite, DOM size
+Review frontend testing — ดูรายละเอียดใน `references/testing.md`
 
-### 9. UX/UI, Accessibility, Responsive, Browser Compat, CSS, UX Writing, Design System
+> Goal: ครอบคลุมทุก frontend testing dimension
 
-> Goal: ครอบคลุม UX/UI, accessibility, responsive, browser compat, CSS, UX writing, design system
+1. ตรวจ component testing: component test coverage, rendering tests, interaction tests
+2. ตรวจ hook/composable testing: custom hooks, composables, store tests
+3. ตรวจ integration testing: component integration, page integration, flow tests
+4. ตรวจ E2E testing: critical user flows, cross-browser, visual regression
+5. ตรวจ test quality: meaningful assertions, no snapshot-only, test isolation
+6. Critical: no tests บน critical components, no E2E บน critical flow, tests ที่ไม่จับ bugs
+7. High: low coverage บน critical components, missing integration tests, snapshot-only tests
 
-1. ตรวจสอบ visual hierarchy, typography, color theory, spacing system, layout principles, micro-interactions
-2. ตรวจสอบ accessibility: keyboard navigation, tab order, WCAG 2.1 AA compliance, screen reader support
-3. ตรวจสอบ responsive: viewport, breakpoints, mobile-first, container query support
-4. ตรวจสอบ browser compat: browserslist config, Autoprefixer, polyfill strategy, CSS reset/normalize, feature detection
-5. ตรวจสอบ CSS: architecture, naming conventions, CSS-in-JS patterns, file organization, import order
-6. ตรวจสอบ UX writing: voice และ tone consistency, copy clarity, translation keys, error message quality
-7. ตรวจสอบ design system: token system, dark mode strategy, component library compliance
+### 9. Validate Findings
 
-### 10. Improve
+ตรวจสอบและ validate issues จากทุก section
 
-> Goal: ปรับปรุง frontend ตาม findings
+> Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
-1. ปรับ UX writing, accessibility (WCAG 2.1 AA), SEO, visual design, responsive ตาม findings
-2. Optimize assets (modern formats, lazy loading), rendering (memoization, code splitting), battery
-3. ทำ `/validate` และ `/run-verify` — ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry (max 3)
-
-### 11. Validate, Rate And Report
-
-> Goal: Issues ถูก validate และรายงานเป็นตาราง
-
-1. ทำ `/deep-validate` เพื่อ validate findings
+1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ review score ตาม `references/scoring.md`: (Critical=0, High=25, Medium=50, Low=75, Info=100) → weighted average
-5. ทำ `/report` พร้อม `/report-table`
+3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
+4. ระบุ false positives ที่พบ
+5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ section ที่เกี่ยวข้อง
+
+### 10. Report
+
+รายงานผล review ในรูปแบบตาราง
+
+> Goal: รายงาน aggregate findings พร้อม actionable recommendations
+
+1. ทำ `/report` พร้อม `/report-table`
+2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Impact, Recommendation
+3. คำนวณ review score ตามสูตรใน `references/scoring.md`
+4. สร้าง Metrics Summary ตาม dimension พร้อม status indicators และ score
+5. จัดกลุ่ม findings ตาม dimension และเรียงตาม severity
 6. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี components → ข้าม Step 3
-- ถ้า project ไม่มี forms → ข้าม Step 4
-- ถ้า project ไม่มี hooks/composables → ข้าม Step 5
-- ถ้า project ไม่มี state management library → ข้าม Step 6
-- ถ้า project ไม่มี event listeners → ข้าม Step 7
-- ถ้า project ไม่มี SSR → ข้าม hydration และ SSR checks
-- ถ้า project ไม่มี multi-step/dynamic forms → ข้าม relevant form checks
+- ถ้า project ไม่มี UI code → stop และ report
+- ถ้า project ไม่มี state management library → ข้าม state management checks แต่ตรวจ local state
+- ถ้า project ไม่มี forms → ข้าม form checks
+- ถ้า project ไม่มี tests → ข้าม testing checks แต่ flag เป็น High finding
+- ถ้า project ไม่ใช้ TypeScript → ข้าม type safety checks
 
 ### 2. Severity Classification
 
-- Critical: broken component, prop mutation ที่ก่อให้เกิด error, reactivity bug, memory leak, SSR incompatibility, missing validation on critical field, validation bypass, inaccessible form, keyboard trap, broken store, state inconsistency, circular store dependency, infinite update loop, listener ที่ไม่ cleanup, `preventDefault` บน passive listener ที่ไม่ทำงาน
-- High: missing prop validation, poor composition, unnecessary re-render, missing memo, untestable component, missing validation schema, incomplete field rules, poor error messages, missing loading state, missing ARIA, missing effect disposal, inconsistent return type, stale closure, missing immutability, deeply nested state, duplicate state, over-globalization, under-globalization, stale derived state, missing selector memoization, missing passive: true, missing debounce, missing throttle, incorrect event target
-- Medium: inconsistent naming, too many props, suboptimal validation timing, minor accessibility gap, suboptimal reactivity, missing composable documentation, suboptimal store organization, minor serialization issue, suboptimal debounce/throttle time, missing event delegation, missing success feedback
-- Low: cosmetic, minor naming, documentation gap
+- Critical: God component, state corruption, no error boundary, re-render storm, `any` บน critical path, no tests บน critical components
+- High: prop drilling, tight coupling, missing memoization, missing lazy loading, implicit `any`, no form validation, low test coverage
+- Medium: inconsistent component API, missing abstraction, minor re-renders, specificity issues, missing async validation
+- Low: cosmetic, naming, documentation gap, minor CSS cleanup
+- Info: suggestion, best practice recommendation
 
-### 3. Evidence First
+### 3. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number
-- ห้ามเดา issues โดยไม่มี evidence
-- ระบุ component, prop, event, slot, form, field, composable, store, state field, listener, หรือ event type ที่เกี่ยวข้อง
-- ใช้ tools หรือ scripts ก่อน manual inspection
+- ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `knip`, `madge`, React DevTools profiler)
+- ระบุ component, hook, store, page, หรือ CSS rule ที่เกี่ยวข้อง
+- ระบุ false positives ที่พบ
 
 ### 4. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- แยก review process จาก fix process
-- ถ้า issue ซ้อนทับกับ `/review-codebase-everything` → อ้างอิงแทน ไม่ duplicate
+- ไม่ลบไฟล์, โค้ด, components, หรือ configuration ระหว่าง review
+- ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
-### 5. Scope Control
+### 5. Scope Boundaries
 
-- review เฉพาะ frontend scope ที่ระบุ
-- ถ้าพบ issues นอก scope → รายงาน ไม่แก้
+- ไม่ review design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
+- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- ไม่ review general code quality, bug-prone patterns → ใช้ `/review-quality`
+- ไม่ review architecture, modularity, boundaries → ใช้ `/review-architecture`
+- focus ที่ frontend code quality: components, state, rendering, types, CSS, forms, testing
 
-### 6. Formatting
+### 6. Health Score
+
+- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
+- แสดง score ต่อ dimension และ overall score
+- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
+- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+
+### 7. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
-- รายงาน findings พร้อม evidence: file, line, severity
-- ครอบคลุม components, forms, hooks/composables, state management, event handling, performance, assets, hydration, rendering, UX/UI, accessibility, responsive, browser compat, CSS, UX writing, design system
-- review score คำนวณจาก severity weighted average ตาม `references/scoring.md`
-- ปรับปรุง frontend ตาม findings โดยไม่มี regression
+- รายงานตาราง findings จากทุก frontend section พร้อม severity และ location
+- รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
+- รายงาน recommended actions พร้อม priority
+- Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

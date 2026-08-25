@@ -1,6 +1,6 @@
 ---
 name: review-compliance
-description: Review compliance ครอบคลุม GDPR, CCPA, HIPAA, PCI-DSS, SOC2, consent, DSAR, audit, retention
+description: Review compliance ครอบคลุม GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA, consent, DSAR, audit, retention
 ---
 
 ## Goal
@@ -9,7 +9,7 @@ Review compliance ครอบคลุมทุก dimension ของ regulato
 
 ## Scope
 
-compliance review สำหรับ: GDPR, CCPA, HIPAA, PCI-DSS, SOC2, consent management, data subject rights (DSAR), audit trails, data retention, cross-border transfer, privacy by design
+compliance review สำหรับ: GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Thailand), consent management, data subject rights (DSAR), audit trails, data retention, cross-border transfer, privacy by design
 
 ไม่รวม security review (ใช้ `/review-security`) และ business review (ใช้ `/review-business`)
 
@@ -108,7 +108,25 @@ Review SOC2 compliance ครอบคลุม trust services criteria, control
 7. Critical: missing access control, no incident response, no backup, no encryption, no privacy notice
 8. High: missing monitoring, incomplete control documentation, no remediation tracking, missing NDA
 
-### 7. Consent Management Review
+### 7. PDPA Review
+
+Review PDPA (Thailand Personal Data Protection Act พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562) compliance ครอบคลุม data controller/processor, lawful basis, sensitive data, data subject rights, consent, breach notification — ดู `references/pdpa.md`
+
+> Goal: ครอบคลุมทุก PDPA dimension
+
+1. ตรวจสอบ data controller และ data processor: ระบุ role, ระบุ joint controller, มี data processing agreement (DPA) ระหว่าง controller และ processor
+2. ตรวจสอบ lawful basis (Section 24): consent, contract, legal obligation, vital interest, public task, legitimate interest — ทุก processing activity มี lawful basis
+3. ตรวจสอบ sensitive data (Section 26): race, ethnicity, political opinion, religious belief, sexual behavior, health, disability, labor union, genetic, biometric, sex, criminal record — ต้องมี explicit consent หรือ statutory exception
+4. ตรวจสอบ data subject rights (Section 30-37): access, rectification, erasure, portability, objection, restriction — มี process สำหรับทุก right, response ภายใน 30 วัน
+5. ตรวจสอบ consent management (Section 19): explicit consent, withdrawal mechanism, consent record, consent versioning, minor consent (Section 20 — ผู้เยาว์ต้องมีผู้ปกครองให้ consent)
+6. ตรวจสอบ privacy notice (Section 23): มี privacy notice ก่อนหรือขณะเก็บข้อมูล, ระบุ purpose, categories, retention, rights, contact
+7. ตรวจสอบ data breach notification (Section 37): แจ้ง PDPC ภายใน 72 ชม. หลังรู้, แจ้ง data subject ถ้ามี high risk, มี breach record
+8. ตรวจสอบ cross-border transfer (Section 28-29): แจ้ง PDPC และได้รับอนุมัติ, หรือ adequate protection, หรือ SCC, หรือ BCR, หรือ exception
+9. ตรวจสอบ DPO (Section 41): แต่งตั้ง DPO ถ้าเป็น public authority, ประมวลผลข้อมูลจำนวนมาก, เฝ้าระวังข้อมูลเป็นประจำ — มี contact point
+10. Critical: no lawful basis, no consent mechanism, no sensitive data protection, no DSAR process, no breach notification, no privacy notice, cross-border transfer without PDPC approval
+11. High: missing consent withdrawal, no DPA with processor, no DPO when required, incomplete DSAR, no minor protection, missing cross-border safeguard
+
+### 8. Consent Management Review
 
 Review consent management ครอบคลุม collection, withdrawal, record, versioning — ดู `references/consent.md`
 
@@ -123,7 +141,7 @@ Review consent management ครอบคลุม collection, withdrawal, recor
 7. Critical: no consent mechanism, pre-ticked consent, no withdrawal, no consent record, no minor protection
 8. High: missing granular consent, missing versioning, no unsubscribe, inconsistent consent record
 
-### 8. Data Subject Rights (DSAR) Review
+### 9. Data Subject Rights (DSAR) Review
 
 Review DSAR process ครอบคลุม access, deletion, portability, objection — ดู `references/dsar.md`
 
@@ -138,7 +156,7 @@ Review DSAR process ครอบคลุม access, deletion, portability, obje
 7. Critical: no DSAR process, no identity verification, no deletion including backup, no response within timeline
 8. High: missing portability, missing objection, no DSAR tracking, incomplete data export
 
-### 9. Audit Trail Review
+### 10. Audit Trail Review
 
 Review audit trail ครอบคลุม logging, tamper protection, retention, review — ดู `references/audit-trail.md`
 
@@ -153,7 +171,7 @@ Review audit trail ครอบคลุม logging, tamper protection, retentio
 7. Critical: no audit log on data access, no tamper protection, audit log can be modified, no retention
 8. High: incomplete coverage, missing review, no anomaly detection, missing access control
 
-### 10. Data Retention Review
+### 11. Data Retention Review
 
 Review data retention ครอบคลุม policy, schedule, enforcement, disposal — ดู `references/data-retention.md`
 
@@ -168,7 +186,7 @@ Review data retention ครอบคลุม policy, schedule, enforcement, di
 7. Critical: no retention policy, no automated deletion, indefinite retention without basis, no legal hold process
 8. High: incomplete schedule, missing enforcement, no disposal verification, no documentation
 
-### 11. Cross-Border Transfer Review
+### 12. Cross-Border Transfer Review
 
 Review cross-border data transfer ครอบคลุม transfer mechanism, adequacy, safeguard — ดู `references/cross-border.md`
 
@@ -182,7 +200,7 @@ Review cross-border data transfer ครอบคลุม transfer mechanism, a
 6. Critical: no transfer mechanism, no safeguard, no transfer documentation, transfer to non-adequate country without SCC
 7. High: missing transfer mapping, no supplementary measure, no transfer impact assessment
 
-### 12. Validate, Score And Report
+### 13. Validate, Score And Report
 
 ตรวจสอบ findings และรายงานผล
 
@@ -204,13 +222,14 @@ Review cross-border data transfer ครอบคลุม transfer mechanism, a
 - ถ้า project ไม่มี health data → ข้าม Section 4
 - ถ้า project ไม่มี payment processing → ข้าม Section 5
 - ถ้า project ไม่ใช่ SaaS → ข้าม Section 6
-- ถ้า project ไม่มี consent collection → ข้าม Section 7
-- ถ้า project ไม่มี cross-border transfer → ข้าม Section 11
+- ถ้า project ไม่มี Thailand users หรือไม่อยู่ในเขต PDPA → ข้าม Section 7
+- ถ้า project ไม่มี consent collection → ข้าม Section 8
+- ถ้า project ไม่มี cross-border transfer → ข้าม Section 12
 
 ### 2. Severity Classification
 
-- Critical: no lawful basis, no consent mechanism, no DSAR process, CVV storage, unencrypted PHI, no audit log on data access, no retention policy, no transfer mechanism, no breach notification
-- High: missing consent withdrawal, missing MFA for CDE, incomplete DSAR, no DPIA, missing BAA, no anomaly detection, no legal hold, missing SCC
+- Critical: no lawful basis, no consent mechanism, no DSAR process, CVV storage, unencrypted PHI, no audit log on data access, no retention policy, no transfer mechanism, no breach notification, no sensitive data protection (PDPA Section 26), no privacy notice (PDPA Section 23)
+- High: missing consent withdrawal, missing MFA for CDE, incomplete DSAR, no DPIA, missing BAA, no anomaly detection, no legal hold, missing SCC, no DPA with processor (PDPA), no DPO when required (PDPA), no minor protection (PDPA Section 20)
 - Medium: incomplete privacy policy, inconsistent consent record, missing retention documentation, suboptimal audit review
 - Low: cosmetic, documentation gap, minor naming
 

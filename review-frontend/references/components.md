@@ -1,69 +1,54 @@
-# Component Structure And Design Checks
+# Component Architecture Checks
 
-## Component Structure
+## Goal
 
-- file organization: single responsibility, component size, complexity, naming (PascalCase)
-- component file patterns และ component organization ตาม framework (Vue, React, Solid, Svelte)
-- component API design: clear interface, predictable behavior, stable public API
+ตรวจสอบ component composition, boundaries, reusability, API design, และ organization
 
-## Prop Design
+## Checks
 
-- prop naming: consistent convention, descriptive names
-- prop types: typed props, no `any`, proper type annotations
-- prop defaults: sensible defaults, no surprising default values
-- prop validation: runtime validation สำหรับ required props, custom validators
-- prop count: เกิน 4 ต้อง group เป็น options object
-- required vs optional: ระบุชัดเจน, optional ต้องมี default
-- prop immutability: ห้าม mutate props โดยตรง
+### Component Composition
 
-## Event Emission
+1. ใช้ compound components สำหรับ related components ไหม (e.g. `Select.Trigger`, `Select.Content`)
+2. ใช้ slots หรือ render props สำหรับ flexible composition ไหม
+3. ใช้ children patterns ที่ composable ไหม
+4. มี component ที่ composed จาก smaller components ไหม
+5. มี prop drilling ที่ควรเป็น context ไหม
 
-- event naming: kebab-case for Vue, camelCase for React
-- event payload typing: typed payload, no untyped emit
-- event documentation: document emitted events ใน component docs
-- custom event vs native event: ใช้ให้ถูก context
-- event emission on correct lifecycle: emit หลัง state ready
+### Component Boundaries
 
-## Component Composition
+1. แต่ละ component มี single responsibility ไหม
+2. มี prop drilling ลึกเกินไปไหม (5+ levels)
+3. components มี coupling สูงไหม
+4. มี components ที่ import internal ของกันและกันไหม
+5. มี circular dependency ระหว่าง components ไหม
 
-- slot usage: default slot, named slots, scoped slots
-- component composition patterns: HOC, render functions, component injection
-- composition ที่ลด coupling และเพิ่ม reusability
+### Component Reusability
 
-## Reactivity
+1. components reusable ไหม หรือ one-off
+2. abstraction level เหมาะสมไหม (ไม่ over-abstract, ไม่ under-abstract)
+3. มี duplicate components ที่ทำฟังก์ชันเดียวกันไหม
+4. components มี variant system ไหม
+5. components รองรับหลาย use cases ไหม
 
-- computed/memo patterns: ใช้สำหรับ expensive calculations
-- watch effects: watch source stability, immediate flag, deep watch เฉพาะจำเป็น
-- unnecessary re-renders: หา re-render ที่หลีกเลี่ยงได้
-- reactivity dependencies: tracking ถูกต้อง, no reactivity leak
-- effect scope: scope management, cleanup on unmount
+### Component API
 
-## Component Reusability
+1. prop design ชัดเจนไหม (naming, types, defaults)
+2. มี default values ที่ sensible ไหม
+3. prop types ครบถ้วนไหม
+4. มี variant prop ที่ type-safe ไหม
+5. API consistent ระหว่าง components ไหม
 
-- reusability across pages: component ใช้ซ้มได้โดยไม่ต้อง fork
-- configurability: props ครอบคลุม use cases
-- extensibility: extension points (slots, render props)
-- coupling: low coupling กับ parent และ global state
-- shared component patterns: shared library, design system compliance
+### Component Organization
 
-## Component Testing
+1. ใช้ feature-based folders ไหม
+2. ใช้ atomic design ไหม (atoms, molecules, organisms, templates, pages)
+3. folder structure สม่ำเสมอไหม
+4. มี barrel exports สำหรับ components ไหม
+5. มี component documentation ไหม
 
-- unit test coverage: critical logic มี test
-- component testing strategy: testing library, component harness
-- snapshot testing: ใช้เฉพาะ stable components
-- interaction testing: user interaction flows
-- accessibility testing in components: axe-core, jest-axe
+## Severity
 
-## Component Isolation
-
-- isolation from parent: ไม่ depend บน parent internal state
-- isolation from global state: ใช้ props/events แทน global state โดยตรง
-- isolation from side effects: pure component patterns
-- side effect isolation: side effects แยกจาก render logic
-
-## Severity Reference
-
-- Critical: broken component, prop mutation ที่ก่อให้เกิด error, broken slot, reactivity bug ที่ก่อให้เกิด error, memory leak from missing cleanup, reactivity leak, SSR incompatibility
-- High: missing prop validation, poor composition, too many props without grouping, inconsistent event naming, missing event documentation, unnecessary re-render, missing memo on expensive component, untestable component, missing test coverage, high coupling, missing component isolation
-- Medium: inconsistent naming, too many props, minor reactivity issue, missing component documentation
-- Low: cosmetic, minor naming, documentation gap
+- Critical: God component ที่ทำทุกอย่าง, prop drilling ลึก 5+ levels, broken component composition, circular dependency
+- High: tight coupling ระหว่าง components, missing abstraction, inconsistent component API, no variant system, duplicate components
+- Medium: minor prop drilling, inconsistent organization, missing barrel exports, over-abstracted component
+- Low: naming convention, minor API improvement, documentation gap
