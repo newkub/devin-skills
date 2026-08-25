@@ -26,7 +26,7 @@ Review งานตาม context โดยเลือก review skill ที�
 > Goal: เรียก review skill ที่ถูกต้อง
 
 1. ถ้า code → ทำ `/review-codebase`
-2. ถ้า `AGENTS.md` หรือ docs → ทำ `/review-agents-md`
+2. ถ้า `AGENTS.md` หรือ docs → ทำ `/review-rules`
 3. ถ้า GitHub issue → ทำ `/review-github-issue`
 4. ถ้า GitHub PR → ทำ `/review-github-pr`
 5. ถ้า devin skills → ทำ `/review-all-skills`

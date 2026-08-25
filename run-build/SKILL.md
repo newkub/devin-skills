@@ -17,8 +17,8 @@ description: รัน build process อย่างเป็นระบบเ�
 
 > Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
 
-1. ทำ `/review-efficiency` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-2. ถ้า `/review-efficiency` ล้มเหลว → stop และ report
+1. ทำ `/review-delivery` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
+2. ถ้า `/review-delivery` ล้มเหลว → stop และ report
 
 ### 2. Typecheck
 
@@ -66,7 +66,7 @@ description: รัน build process อย่างเป็นระบบเ�
 
 ### 1. Build Order
 
-- Optimize: ทำ `/review-efficiency` ก่อนเริ่ม
+- Optimize: ทำ `/review-delivery` ก่อนเริ่ม
 - Typecheck: ทำ `/run-typecheck` ก่อน build
 - Install: ติดตั้ง dependencies
 - Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า
@@ -100,7 +100,7 @@ title: Run Build
 description: รัน build process สำหรับ production-ready artifacts
 auto_execution_mode: 3
 related:
-  - /review-efficiency
+  - /review-delivery
   - /run-typecheck
   - /run-clean
   - /resolve-errors
@@ -119,7 +119,7 @@ related:
 ### 1. Optimize Build
 > Goal: build config พร้อม
 
-1. ทำ `/review-efficiency`
+1. ทำ `/review-delivery`
 
 ### 2. Typecheck
 > Goal: ไม่มี type errors

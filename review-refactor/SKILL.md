@@ -73,7 +73,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 > Goal: ระบุ code smells, dead code, anti-patterns
 
 1. ทำ `/deep-review` เพื่อระบุ code smells, anti-patterns, dead code
-2. ทำ `/review-code-quality` เพื่อ review ครอบคลุม code smells, duplication, unused code
+2. ทำ `/review-quality` เพื่อ review ครอบคลุม code smells, duplication, unused code
 3. รัน `knip` เพื่อหา unused exports และ dead code
 4. รัน `jscpd` เพื่อหา code duplication
 5. บันทึก: file, smell type, severity, recommended action

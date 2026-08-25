@@ -109,7 +109,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 1. ทำ `/review-codebase` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
-3. ถ้าพบ gaps ให้ทำ `/review-correctness` เพื่อเขียน tests ที่ขาด
+3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
 ### 8. Sync And Verify
 

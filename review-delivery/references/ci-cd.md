@@ -33,7 +33,7 @@
 
 ### Reliability
 
-1. ใช้ `/review-reliability` สำหรับ retry, timeout, idempotency
+1. ใช้ `/review-architecture` สำหรับ retry, timeout, idempotency
 2. ตรวจสอบ secrets, environment variables, permission
 3. ใช้ dry run ก่อน deployment ที่สำคัญ
 

@@ -9,7 +9,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 
 ## Scope
 
-ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/review-efficiency` สำหรับ optimization)
+ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/review-delivery` สำหรับ optimization)
 
 ## Execute
 
@@ -85,7 +85,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 2. ระบุ chunks ที่ใหญ่เกิน threshold (เช่น > 100KB)
 3. ระบุ dependencies ที่ควรเป็น dynamic import
 4. ระบุ modules ที่มี side effects
-5. แนะนำ next steps: `/review-efficiency` สำหรับ optimization
+5. แนะนำ next steps: `/review-delivery` สำหรับ optimization
 
 ## Rules
 
@@ -102,7 +102,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 ### Read-Only Report
 
 - ไม่ optimize ไม่แก้ไข build config — รายงานเท่านั้น
-- ใช้ `/review-efficiency` สำหรับ optimization
+- ใช้ `/review-delivery` สำหรับ optimization
 - ใช้ `/run-build` สำหรับการ build
 
 ### Output Format
@@ -128,7 +128,7 @@ description: สรุปขนาด bundle ต่อ chunk, dependency, tree-s
 
 ### Non-Redundancy
 
-- การ optimize build อยู่ใน `/review-efficiency` แล้ว
+- การ optimize build อยู่ใน `/review-delivery` แล้ว
 - การ build อยู่ใน `/run-build` แล้ว
 
 ## Expected Outcome

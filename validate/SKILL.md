@@ -17,7 +17,7 @@ description: ตรวจสอบความถูกต้อง คุณภ
 
 > Goal: ตรวจสอบความถูกต้องตาม principle, standard, และ criteria ที่ผู้ใช้ระบุ
 
-1. ทำตาม `/review-correctness` ตาม criteria ที่ผู้ใช้ระบุ
+1. ทำตาม `/review-quality` ตาม criteria ที่ผู้ใช้ระบุ
 2. ตรวจสอบว่าทำงานได้ตาม requirement และไม่มี errors
 3. ตรวจสอบ logic และ edge cases ได้รับการจัดการ
 

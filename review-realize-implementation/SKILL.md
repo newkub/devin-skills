@@ -105,9 +105,14 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ใช้ `/review-codebase` สำหรับระบุ issues ใน code
+- ถ้าต้อง refactor ก่อน implement → ทำ `review-refactor` ก่อน `refactor`
+- ถ้าต้อง restructure ก่อน implement → ทำ `review-restructure` ก่อน `restructure`
+- ถ้าต้อง update docs/config ก่อน implement → ทำ `review-update` ก่อน `update-*`
 - ถ้าต้อง implement ให้ใช้ `/implement-all` หลัง review
 
 ### 4. Health Score Formula
+
+คำนวณ score ตาม [references/scoring.md](references/scoring.md)
 
 - Metrics หลัก: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing features
 - คะแนนต่อ metric: ✅ = 1, ⚠️ = 0.5, ❌ = 0
@@ -139,4 +144,5 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - รายงาน Flow And Feature Completeness Gaps
 - รายงาน Recommended Implementations พร้อม priority และ workflow
 - Implementation completeness score พร้อม grade และ progress bar
+- แนะนำ `review-refactor`, `review-restructure`, หรือ `review-update` ถ้า implementation gaps ต้องการ refactor, restructure, หรือ update ก่อน
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

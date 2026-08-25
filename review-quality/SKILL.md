@@ -122,7 +122,7 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 - ทำ review เท่านั้น ไม่แก้ไข code หรือเนื้อหาระหว่าง review
 - ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
 - ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง review
-- ไม่ครอบคลุม `review-security`, `review-performance`, `review-infrastructure`
+- ไม่ครอบคลุม `review-delivery`
 
 ### 2. Severity
 

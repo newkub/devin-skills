@@ -120,7 +120,7 @@ description: ปรับปรุง web SaaS product ครบวงจรเ�
 
 ตรวจสอบผลการปรับปรุง
 
-1. ทำ `/review-correctness` เพื่อ verify การเปลี่ยนแปลง
+1. ทำ `/review-quality` เพื่อ verify การเปลี่ยนแปลง
 2. ทำ `/report` เพื่อสรุปการปรับปรุงครบวงจร
 
 ## Rules

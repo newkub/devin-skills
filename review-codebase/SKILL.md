@@ -18,7 +18,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 > Goal: ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
 
 1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
-2. ทำ `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
+2. ทำ `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
 3. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
 4. ระบุสิ่งที่จะ review (code file, content, docs, config, workflow, ฯลฯ) และ scope: ไฟล์ที่เกี่ยวข้อง, modules, sections
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง (ถ้ามี)

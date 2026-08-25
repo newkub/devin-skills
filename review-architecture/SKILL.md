@@ -104,8 +104,8 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 - ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 - ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
 - ไม่ review refactor opportunities ลึกที่ `/review-codebase` ทำ
-- ไม่ review deployment / CI/CD — ใช้ `/review-infrastructure`
-- ไม่ review security controls — ใช้ `/review-security`
+- ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
+- ไม่ review security controls — ใช้ `/review-delivery`
 - ไม่ review code quality — ใช้ `/review-quality`
 - focus ที่ system-level: patterns, boundaries, coupling, SOLID, scalability, modularity, isolation, resilience, reliability, governance
 

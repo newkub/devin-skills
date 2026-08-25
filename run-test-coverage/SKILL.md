@@ -55,7 +55,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 2. ตรวจสอบ `branches` coverage ถึง 100%
 3. ตรวจสอบ `functions` coverage ถึง 100%
 4. ตรวจสอบ `statements` coverage ถึง 100%
-5. หาก coverage ไม่ถึง 100% ทำ `/review-correctness` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+5. หาก coverage ไม่ถึง 100% ทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
 
 ## Rules
 
@@ -94,7 +94,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 เป้าหมาย coverage ต้องถึง 100% ทุก category โดยไม่มีข้อยกเว้น
 
 - Coverage 100% ทุก category เท่านั้นที่ผ่าน
-- หาก coverage ไม่ถึง 100% ต้องทำ `/review-correctness` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- หาก coverage ไม่ถึง 100% ต้องทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
 - ไม่มีข้อยกเว้นสำหรับ critical code
 - ไม่มีข้อยกเว้นสำหรับ edge cases
 - ไม่มีข้อยกเว้นสำหรับ error paths
@@ -105,4 +105,4 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 - Coverage config ถูกตั้งค่าตาม framework
 - Coverage report ถูกสร้าง
 - Coverage ถึง 100% ทุก category (lines, branches, functions, statements)
-- หากไม่ถึง 100% ทำ `/review-correctness` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- หากไม่ถึง 100% ทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด

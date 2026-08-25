@@ -6,7 +6,7 @@ related:
   - follow-agents-md
   - follow-write-devin-skills
   - validate
-  - review-agents-md
+  - review-rules
   - review-all-skills
   - git-commit
   - ship
@@ -47,7 +47,7 @@ related:
 
 > Goal: ตรวจสอบและ commit การเปลี่ยนแปลง
 
-1. ทำตาม `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
+1. ทำตาม `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
 2. ทำตาม `/review-all-skills` เมื่อแก้ไข skills
 3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
 4. ทำตาม `/git-commit` หรือ `/ship` เพื่อ commit การเปลี่ยนแปลง
@@ -72,12 +72,31 @@ related:
 - `follow-agents-md: /follow-agents-md`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `validate: /validate`
-- `review-agents-md: /review-agents-md`
+- `review-rules: /review-rules`
 - `review-all-skills: /review-all-skills`
 - `git-commit: /git-commit`
 - `ship: /ship`
 - `report: /report`
 - `use-markdown: /use-markdown`
+- `review-refactor: /review-refactor`
+- `review-restructure: /review-restructure`
+- `review-update: /review-update`
+- `review-implement: /review-implement`
+- `review-plan: /review-plan`
+- `review-test: /review-test`
+- `review-deploy: /review-deploy`
+- `review-release: /review-release`
+- `review-migration: /review-migration`
+- `review-quality: /review-quality`
+- `review-frontend: /review-frontend`
+- `review-backend: /review-backend`
+- `review-platform: /review-platform`
+- `review-architecture: /review-architecture`
+- `review-stability: /review-stability`
+- `review-delivery: /review-delivery`
+- `review-techstack: /review-techstack`
+- `review-writing: /review-writing`
+- `review-codebase: /review-codebase`
 
 ### 4. Workspaces
 

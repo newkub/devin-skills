@@ -42,7 +42,7 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 
 > Goal: Validate และ commit การเปลี่ยนแปลง `AGENTS.md`
 
-1. ทำ `/review-agents-md` เพื่อ review `AGENTS.md`
+1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
 4. ทำ `/git-commit` เพื่อ commit การเปลี่ยนแปลง
@@ -60,7 +60,7 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
    - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นทีใช้
 3. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
 4. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
-5. ทำ `/review-agents-md` เพื่อตรวจสอบทุก workspace `AGENTS.md`
+5. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
 ## Rules
 
@@ -94,5 +94,5 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 - `### Architecture` ระบุ `tech: /follow-<tech>` ครบ
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
-- ผ่าน `/review-agents-md` และ `/validate`
+- ผ่าน `/review-rules` และ `/validate`
 - มี commit พร้อม next action

@@ -38,7 +38,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 
 1. สร้าง `builder` stage ด้วย full toolchain
 2. ทำตาม `/follow-mise` เพื่อติดตั้ง tool versions ใน builder stage
-3. ทำตาม `/review-efficiency` เพื่อลด build output และขนาด image
+3. ทำตาม `/review-delivery` เพื่อลด build output และขนาด image
 4. สร้าง `runtime` stage จาก base image ที่เล็ก
 5. คัดลอกเฉพาะ build artifacts จาก builder ไป runtime
 6. ใช้ non-root user ใน runtime stage
@@ -109,7 +109,7 @@ description: สร้าง container images ด้วย Docker, Podman แล
 
 - แยก `builder` stage กับ `runtime` stage
 - ไม่ copy toolchains หรือ build cache ไป runtime
-- ทำตาม `/review-efficiency` เพื่อลด output
+- ทำตาม `/review-delivery` เพื่อลด output
 
 ### 3. Security
 
