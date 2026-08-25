@@ -99,6 +99,12 @@ related:
 - `review-codebase: /review-codebase`
 - `review-gaps: /review-gaps`
 - `review-dot-devin: /review-dot-devin`
+- `review-skills: /review-skills`
+- `review-devin-subagents: /review-devin-subagents`
+- `review-features: /review-features`
+- `review-create-analyze-cli: /review-create-analyze-cli`
+- `review-create-review-cli: /review-create-review-cli`
+- `review-readme: /review-readme`
 
 ### 4. Workspaces
 
