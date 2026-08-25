@@ -70,6 +70,7 @@ related:
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `follow-write-devin-skills: /follow-write-devin-skills`
+- `ask-requirement: /ask-requirement`
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
