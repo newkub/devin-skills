@@ -1,11 +1,11 @@
 ---
 name: refactor-commit
-description: Refactor commits ที่ commit ไปแล้วด้วย interactive rebase (break down, edit, reorganize)
+description: Refactor commits ด้วย rebase (break down, edit, squash, fixup, autosquash, force push, rollback)
 ---
 
 ## Goal
 
-Refactor commits ที่ commit ไปแล้วเพื่อ break down, edit, หรือ reorganize commits ให้เหมาะสม
+Refactor commits ที่ commit ไปแล้วเพื่อ break down, edit, reorganize, squash, fixup และ rollback ให้เหมาะสม
 
 ## Scope
 
@@ -14,9 +14,10 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 - Edit commit messages ตาม conventional commits
 - Reorder commits ตาม logical order
 - Squash commits หลายตัวเป็นตัวเดียว
-- Fix commits ที่ผิดพลาด
+- Fix commits ที่ผิดพลาดด้วย fixup และ autosquash
 - Move commits ระหว่าง branches ด้วย cherry-pick
 - Rebase commits ไปยัง upstream โดยอัตโนมัติ (non-interactive)
+- Force push และ rollback หลัง refactor
 
 ## Execute
 
@@ -136,6 +137,36 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 5. ถ้าต้องการ abort, ทำ `git rebase --abort` และ restore จาก backup branch
 6. ใช้ `git reflog` เพื่อดู history และ recover ถ้าจำเป็น
 
+### 11. Force Push
+
+> Goal: Force Push
+
+Push commits ที่ refactor แล้วไปยัง remote อย่างปลอดภัย
+
+1. ตรวจสอบว่าจำเป็นต้อง force push จริงๆ (commits ถูก rewrite แล้ว)
+2. ตรวจสอบว่าไม่มีคนอื่นดึง commits เดิมไปใช้แล้ว
+3. ใช้ `git push --force-with-lease` เพื่อความปลอดภัยกว่า `--force`
+4. แจ้งทีมให้ทราบก่อนทำ force push
+
+### 12. Rollback
+
+> Goal: Rollback
+
+ย้อนกลับสู่สถานะก่อน refactor ถ้าจำเป็น
+
+1. ใช้ `git reflog` เพื่อดูประวัติการทำงาน
+2. ใช้ `git reset --hard backup-<branch>-<timestamp>` เพื่อย้อนกลับสู่ backup
+3. หรือใช้ `git reset --hard HEAD@{1}` เพื่อย้อนกลับสู่สถานะก่อน rebase
+4. ลบ backup branch ด้วย `git branch -D backup-<branch>-<timestamp>` เมื่อตรวจสอบแล้วถูกต้อง
+
+### 13. Update References
+
+> Goal: Update References
+
+อัปเดท references ทั้งหมดที่เกี่ยวข้อง
+
+1. ทำตาม `@[/update-reference]`
+
 ## Rules
 
 ### 1. Safety
@@ -143,6 +174,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 - สร้าง backup branch ก่อน refactor เสมอ
 - ไม่ refactor commits ที่ถูก push ไป remote แล้ว ถ้าไม่จำเป็น
 - ถ้าต้อง force push หลัง refactor, ต้องแจ้ง team members ก่อน
+- ใช้ `--force-with-lease` แทน `--force` เสมอ
 - ใช้ `git rebase --abort` ถ้าเกิดปัญหาและ restore จาก backup
 
 ### 2. Commit Quality
@@ -171,8 +203,9 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 
 ## Expected Outcome
 
-- Commits ถูก refactor ให้เหมาะสม (break down, edit, reorganize)
+- Commits ถูก refactor ให้เหมาะสม (break down, edit, reorganize, squash, fixup)
 - Commit history สะอาดและเป็นไปตาม best practices
 - ไม่มี conflicts หรือ errors หลัง refactor
 - Tests ผ่านทั้งหมด (ถ้ามี)
+- Force push สำเร็จด้วย `--force-with-lease` (ถ้าจำเป็น)
 - Backup branch พร้อมสำหรับ rollback ถ้าจำเป็น

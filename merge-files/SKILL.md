@@ -1,5 +1,5 @@
 ---
-name: merge
+name: merge-files
 description: merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
 ---
 
