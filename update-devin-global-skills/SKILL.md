@@ -1,7 +1,6 @@
 ---
 name: update-devin-global-skills
 description: อัปเดต skill เดียวใน devin skills repo ตามมาตรฐาน follow-write-devin-skills
-auto_execution_mode: 3
 argument-hint: "[skill-name]"
 ---
 

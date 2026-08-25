@@ -1,7 +1,6 @@
 ---
 name: update-all-devin-global-skills
 description: อัปเดต devin skills repo ทั้งหมดโดย orchestrate update-devin-global-skills ต่อ skill
-auto_execution_mode: 3
 ---
 
 ## Goal

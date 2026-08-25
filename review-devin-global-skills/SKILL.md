@@ -1,7 +1,6 @@
 ---
 name: review-devin-global-skills
 description: Review, refactor และตรวจ cross-skill consistency ของ devin skills repo
-auto_execution_mode: 3
 ---
 
 ## Goal

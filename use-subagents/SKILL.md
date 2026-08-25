@@ -1,8 +1,7 @@
-﻿---
+---
 name: use-subagents
 description: แบ่งงานเป็น subagents sync หรือ async ตามความเหมาะสม พร้อม verify รอบเดียวจบ
 argument-hint: "[task]"
-auto_execution_mode: 3
 ---
 
 ## Goal
@@ -25,11 +24,11 @@ auto_execution_mode: 3
 
 | เงื่อนไข | โหมด | เหตุผล |
 |---|---|---|
-| 1-2 subtasks หรือ dependent กัน | **SYNC** | spawn ไม่คุ้ม overhead |
-| 3+ independent subtasks | **ASYNC** | parallel ได้จริง |
-| Research-heavy (fetch docs, web) | **ASYNC** | I/O bound เหมาะ parallel |
-| File ops ขนานในไฟล์ต่างกัน | **ASYNC** | ไม่มี conflict |
-| งานเล็ก, 1 ไฟล์, sequential | **SYNC** | ทำตรงๆ เร็วกว่า |
+| 1-2 subtasks หรือ dependent กัน | SYNC | spawn ไม่คุ้ม overhead |
+| 3+ independent subtasks | ASYNC | parallel ได้จริง |
+| Research-heavy (fetch docs, web) | ASYNC | I/O bound เหมาะ parallel |
+| File ops ขนานในไฟล์ต่างกัน | ASYNC | ไม่มี conflict |
+| งานเล็ก, 1 ไฟล์, sequential | SYNC | ทำตรงๆ เร็วกว่า |
 
 - ถ้าไม่แน่ใจ → เริ่ม SYNC แล้ว escalate เป็น ASYNC ถ้าพบว่าช้า
 - บันทึกเหตุผลการเลือกใน comment สั้นๆ
@@ -48,7 +47,7 @@ auto_execution_mode: 3
    - `qa`, `staff-qa` สำหรับ testing
    - `security-auditor` สำหรับ security review
    - ถ้าไม่แน่ใจ → `subagent_general`
-5. สร้างไฟล์ plan ใน `.devin/plan/` **เฉพาะ** เมื่อ:
+5. สร้างไฟล์ plan ใน `.devin/plan/` เฉพาะ เมื่อ:
    - subtasks > 5
    - งาน high-risk (destructive, production)
    - ต้อง human gate ระหว่างขั้นตอน

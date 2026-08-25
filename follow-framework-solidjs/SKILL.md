@@ -1,8 +1,7 @@
-﻿---
+---
 name: follow-framework-solidjs
 description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
 argument-hint: "[task]"
-auto_execution_mode: 3
 ---
 
 ## Goal

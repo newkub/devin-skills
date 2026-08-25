@@ -2,5 +2,6 @@
 
 | File | Responsibility |
 |------|---------------|
-| esm-sh-api.md | esm.sh API: URL format, query parameters, data API endpoints, CDN mirrors, headers, error responses, integration examples |
-| esm-sh-website.md | esm.sh official resources: main site, documentation sections, GitHub repository |
+| `esm-sh-api-url-endpoints.md` | esm.sh API: URL format, query parameters, data API endpoints, status, package browser |
+| `esm-sh-api-examples-integration.md` | esm.sh API: example URLs, CDN mirrors, headers, error responses, best practices, integration examples |
+| `esm-sh-website.md` | esm.sh official resources: main site, documentation sections, GitHub repository |

@@ -1,7 +1,6 @@
-﻿---
+---
 name: update-test
 description: อัปเดต test suite และ spec/SPEC.md ให้ครอบคลุม มีคุณภาพ และตรง conventions
-auto_execution_mode: 3
 ---
 
 ## Goal

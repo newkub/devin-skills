@@ -2,7 +2,6 @@
 name: follow-subagents
 description: ใช้ subagents ตาม job roles สำหรับงานทีแบ่งเป็นส่วนและทำขนานกันได้
 argument-hint: "[task]"
-auto_execution_mode: 3
 ---
 
 ## Goal

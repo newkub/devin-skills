@@ -25,10 +25,10 @@ argument-hint: "[agent-name]"
 ### 2. Select Archetype
 
 > Goal: เลือกโครงสร้างสิทธิ์ตามบทบาท
-1. **Read-only auditor**: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
-2. **Builder/Implementer**: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` สำหรับ test/lint/build
-3. **Planner/Designer**: `architect`, `api-designer`, `uxui-designer` — อาจอนุญาตให้เขียน spec/design doc แต่ไม่แก้ source หลัก
-4. **Executor/Operator**: `test-runner`, `release`, `deployment-specialist` — allow รันคำสั่งทีเกี่ยวข้อง
+1. Read-only auditor: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
+2. Builder/Implementer: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` สำหรับ test/lint/build
+3. Planner/Designer: `architect`, `api-designer`, `uxui-designer` — อาจอนุญาตให้เขียน spec/design doc แต่ไม่แก้ source หลัก
+4. Executor/Operator: `test-runner`, `release`, `deployment-specialist` — allow รันคำสั่งทีเกี่ยวข้อง
 
 ### 3. Write Frontmatter
 

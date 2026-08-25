@@ -47,9 +47,9 @@ bunx rolldown
 
 ### Learning Path
 
-1. `Getting Started`: อ่าน [learn/guide/getting-started.md](learn/guide/getting-started.md)
-2. `Key Concepts`: เรียนรู้ [learn/key-concepts/three-stage-pipeline.md](learn/key-concepts/three-stage-pipeline.md)
-3. `Best Practices`: ดู [learn/principles/best-practices.md](learn/principles/best-practices.md)
+1. `Getting Started`: อ่าน [Getting Started](https://rolldown.rs/guide/getting-started)
+2. `Key Concepts`: เรียนรู้ [Three-stage Pipeline](https://rolldown.rs/guide/three-stage-pipeline)
+3. `Best Practices`: ดู [Best Practices](https://rolldown.rs/guide/best-practices)
 4. `Workflows`: ใช้ [workflows/setup-rolldown.md](workflows/setup-rolldown.md)
 
 ## Rules

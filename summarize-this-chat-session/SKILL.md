@@ -4,12 +4,6 @@ description: สรุป chat session ทีคุยในครังนี�
 argument-hint: "[target]"
 ---
 
----
-title: Summarize This Chat Session
-description: สรุปสิ่งที่ทำใน chat session นี้: ไฟล์ที่แก้, การตัดสินใจ, ปัญหาที่พบ
-auto_execution_mode: 3
----
-
 ## Goal
 
 สรุปสิ่งที่ทำใน chat session ปัจจุบัน: ไฟล์ที่แก้, การตัดสินใจ, ปัญหาที่พบ และ next steps
