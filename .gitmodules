@@ -1,9 +1,9 @@
-[submodule "analyze-codebase-quality/src"]
-	path = analyze-codebase-quality/src
-	url = https://github.com/newkub/analyze-codebase-quality.git
-[submodule "ask-requirement/src"]
-	path = ask-requirement/src
-	url = https://github.com/newkub/ask-requirement.git
 [submodule "visualize-devin"]
 	path = visualize-devin
 	url = git@github.com:newkub/visualize-devin.git
+[submodule "analyze-codebase-quality"]
+	path = analyze-codebase-quality
+	url = git@github.com:newkub/analyze-codebase-quality.git
+[submodule "ask-requirement"]
+	path = ask-requirement
+	url = git@github.com:newkub/ask-requirement.git
