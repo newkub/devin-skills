@@ -1,28 +1,56 @@
 ---
 name: report-release-changelog
-description: จัดรูปแบบ release changelog จากข้อมูล diff ระหว่าง GitHub tags
+description: ดึงและจัดรูปแบบ release changelog จาก GitHub diff ระหว่าง tags
 argument-hint: "[range]"
 ---
 
 ## Goal
 
-รับข้อมูล release diff จาก `/check-release-changelog` หรือ GitHub API แล้วจัดรูปแบบเป็น report changelog ที่อ่านง่าย
+ดึงข้อมูล release diff ระหว่าง GitHub tags และจัดรูปแบบเป็น report changelog ที่อ่านง่าย
 
 ## Scope
 
-ใช้สำหรับสร้าง changelog report ของ release ใดๆ จาก raw compare data หรือเมื่อ user ขอ report โดยเฉพาะ
+ใช้กับ public หรือ private GitHub repo ที่ระบุ compare URL หรือ `owner/repo` พร้อม tags เป้าหมาย ครอบคลุมทั้ง fetch diff data และ format report
 
 ## Execute
 
-### 1. Receive Data
+### 1. Identify Repo And Tags
 
-> Goal: รับข้อมูล diff ดิบ
+> Goal: ระบุ repository และ tags ที่ต้องเปรียบเทียบ
 
-1. ถ้าได้รับจาก `/check-release-changelog` → อ่าน `repo`, `from`, `to`, `compareUrl`, `releaseNotes`, `commits`, `filesChanged`
-2. ถ้า user ให้ URL หรือ tag โดยตรง → ทำ `/check-release-changelog` ก่อน
-3. ถ้าไม่มีข้อมูล → `/ask-me`
+1. ถ้า user ให้ compare URL เช่น `https://github.com/moonrepo/moon/compare/v2.4.5...v2.4.6` → แยก `owner/repo`, `from`, `to`
+2. ถ้า user ให้ `owner/repo` อย่างเดียว → หา latest release และก่อนหน้าผ่าน GitHub API
+3. ถ้าไม่ชัด → `/ask-me` ก่อน
+4. ถ้า tag ไม่มีอยู่จริง → report ว่า `tag not found` และ stop
 
-### 2. Format Changelog
+### 2. Fetch Compare Data
+
+> Goal: ดึงข้อมูล diff ระหว่าง tags
+
+1. ทำ `mcp_call_tool` บน `github-mcp-server` เพื่อ compare ระหว่าง tags
+2. ถ้าไม่มี GitHub MCP → ใช้ `curl`/`Invoke-RestMethod` กับ GitHub REST API: `GET /repos/{owner}/{repo}/compare/{from}...{to}`
+3. ดึง release notes ของ `to` tag จาก `GET /repos/{owner}/{repo}/releases/tags/{to}`
+4. เก็บ commits, files changed, additions, deletions, pull request numbers
+5. ถ้า repo private ต้องมี token เหมาะสม ถ้าไม่มี → `/ask-me`
+
+### 3. Categorize Changes
+
+> Goal: จัดประเภท changes จาก commits
+
+1. อ่าน commit messages ทั้งหมด และ pull request titles
+2. จัดกลุ่มตาม conventional commits:
+   - `BREAKING` — `!` หรือ `BREAKING CHANGE` footer
+   - `feat` — features ใหม่
+   - `fix` — bug fixes
+   - `docs` — documentation
+   - `chore` — build, ci, refactor
+   - `perf` — performance
+   - `security` — security fixes
+3. ถ้า commit message ไม่ตรง conventional commits → จัดเป็น `chore`
+4. ดึง PR title มาประกอบถ้า PR number มีอยู่
+5. ระบุ files ที่ impact มากที่สุด (sort ตาม `changes` count)
+
+### 4. Format Changelog
 
 > Goal: จัดรูปแบบ report
 
@@ -36,7 +64,7 @@ argument-hint: "[range]"
 8. Other Changes: รายการ `chore`, `refactor`, `ci`
 9. Files Changed: สรุป top 10 files ตามจำนวน changes
 
-### 3. Output
+### 5. Output
 
 > Goal: นำเสนอ report
 
@@ -72,8 +100,14 @@ argument-hint: "[range]"
 
 - ถ้า commits มากกว่า 50 → แสดงเฉพาะ top 20 ของแต่ละ category พร้อม count
 
+### 4. Data Source
+
+- ใช้ GitHub API เป็นหลัก
+- ถ้า repo private ต้องมี token เหมาะสม ถ้าไม่มี → `/ask-me`
+
 ## Expected Outcome
 
+- ได้ owner/repo, from/to tags, compare URL, release notes, รายการ commits แยกประเภท
 - Report changelog ที่มี header, summary, categories, files changed
 - อ่านง่าย มี highlights
 - มี next action ชัดเจน

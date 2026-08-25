@@ -26,7 +26,7 @@ Review frontend ครอบคลุม components, forms, hooks/composables, s
 3. ระบุ state management library (Pinia, Vuex, Redux, Zustand, Jotai, XState, Nanostores, Svelte stores), form library (TanStack Form, VeeValidate, React Hook Form, Formik), validation library (Zod, Valibot, Yup)
 4. ตรวจสอบ frontend entry points, routes, layout, component tree, composable file patterns (`use-*`), store organization
 5. ถ้าเป็น web project → ทำ `/run-dev` เพื่อ verify dev server ก่อน review
-6. ทำ `/check-web-performance` หรือ Lighthouse metrics เบื้องต้นหากมี
+6. ทำ `/review-platform` อ้างอิง `references/performance.md` สำหรับ Lighthouse metrics เบื้องต้นหากมี
 
 ### 2. Deep Analyze
 

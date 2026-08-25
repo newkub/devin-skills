@@ -44,7 +44,7 @@
 
 1. ตรวจสอบ cache invalidation, key design, TTL, storage, stale-while-revalidate
 2. ตรวจสอบ cache stampede, thundering herd, warming
-3. ทำ `/check-time-complexity` เพื่อวิเคราะห์ time complexity บน critical paths
+3. ทำ `/review-quality` อ้างอิง `references/time-complexity.md` เพื่อวิเคราะห์ time complexity บน critical paths
 4. ตรวจสอบ N+1 queries, missing indexes, anti-patterns ที่ทำให้ช้า
 
 ## Complexity Tiers

@@ -42,7 +42,7 @@ description: วิเคราะห์ dependencies และใช้งา�
 
 > Goal: วิเคราะห์ type declarations เพื่อรู้ APIs ที่พร้อมใช้งาน
 
-1. ทำ `/check-type-declarations` เพื่อค้นหาและวิเคราะห์ d.ts files
+1. ทำ `/review-techstack` อ้างอิง `references/type-declarations.md` เพื่อค้นหาและวิเคราะห์ d.ts files
 2. ค้นหา d.ts files ใน project และ node_modules
 3. วิเคราะห์ internal types และ external types
 4. ระบุ APIs ที่พร้อมใช้งานจาก dependencies

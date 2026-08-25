@@ -53,6 +53,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 1. ตรวจสอบ tech stack และ runtime: framework versions, library alignment, build tools, package manager, runtime requirements — ดู `references/techstack.md`
 2. ตรวจสอบ dependency health: versions, security, unused, circular, license, bundle impact — ดู `references/dependencies.md`
 3. ถ้า project เป็น library → ตรวจสอบ library design: API surface, export strategy, module format, tree-shaking, peer deps, semver, compatibility — ดู `references/lib-design.md`
+4. ตรวจสอบ type declarations: `.d.ts` files ใน project และ `node_modules`, missing declarations, circular type references, `@types` packages — ดู `references/type-declarations.md`
 
 ### 4. Validate Findings
 

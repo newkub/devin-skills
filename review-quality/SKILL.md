@@ -14,9 +14,10 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 - code quality: static analysis (lint, typecheck, code smells, duplication, unused code, circular dependencies, file complexity, SRP violations), architecture (patterns, boundaries, coupling, SOLID, design patterns, anti-patterns), types (generics, inference, discriminated unions, branded types, type narrowing, type safety, `as const`), naming (variable, function, class, file, directory, API endpoint, database), readability (function length, parameter count, nesting depth, cognitive complexity, naming clarity, comment quality), hardcode (magic numbers, hardcoded strings, URLs, paths, secrets, business rules, feature flags)
 - bug-prone patterns: null/undefined safety, type assertions, exhaustive control flow, arithmetic bugs, mutable shared state, async/promise bugs, unsafe parse/regex, resource cleanup, implicit assumptions, unsafe defaults
 - correctness: logic correctness, edge cases, invariant checks, validation, calculations, transformations, data mappings, error handling
+- time complexity: Big O analysis, data structure selection, input bounds validation, benchmark verification
 - general quality: simplicity, redundancy, consistency, refactor readiness, deprecation, techstack alignment
 
-ดูรายละเอียดใน `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, และ `references/scoring.md`
+ดูรายละเอียดใน `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/time-complexity.md`, และ `references/scoring.md`
 
 ## Execute
 

@@ -169,7 +169,7 @@ Review performance ครอบคลุม network, bundler, memory, I/O, cachi
 3. ตรวจสอบ memory: heap, GC, leaks, large data, streaming
 4. ตรวจสอบ I/O: file, database, network I/O, serialization, batching
 5. ตรวจสอบ caching: invalidation, key design, TTL, cache stampede
-6. ทำ `/check-time-complexity` บน critical paths
+6. ทำ `/review-quality` อ้างอิง `references/time-complexity.md` บน critical paths
 
 ### 15. Security Review
 

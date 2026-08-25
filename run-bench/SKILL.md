@@ -36,7 +36,7 @@ description: รัน benchmark tests เพื่อวัดประสิ�
 > Goal: Analyze Results
 
 1. ดูผลลัพธ์ของแต่ละ benchmark และระบุ slow และ fast benchmarks
-2. ทำ `/check-time-complexity` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
+2. ทำ `/review-quality` อ้างอิง `references/time-complexity.md` เพื่อวิเคราะห์ว่า empirical growth ตรงกับ theoretical complexity
 3. หา benchmarks ที่มี variance สูงหรือ outliers
 4. ระบุ potential optimizations สำหรับ slow benchmarks
 5. ถ้ามี variance สูง ให้รันซ้ำเพื่อยืนยันผลลัพธ์

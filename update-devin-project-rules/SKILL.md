@@ -63,8 +63,7 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 > Goal: ตรวจสอบ release changelogs ของ dependencies ที่มีการเปลี่ยนแปลง
 
 1. ระบุ dependencies ที่มี version เปลี่ยนแปลงหรือเพิ่มใหม่จาก `package.json`
-2. ทำ `/check-release-changelog` โดยระบุ repo และ tags (from → to) ของแต่ละ dependency
-3. ทำ `/report-release-changelog` เพื่อสรุปข้อมูลทีสำคัญ
+2. ทำ `/report-release-changelog` โดยระบุ repo และ tags (from → to) ของแต่ละ dependency
 4. นำข้อมูล breaking changes, new features, และ anti-patterns มาปรับปรุง rules ใน `.devin/rules/always-on/libs/`
 
 ### 5. Update Model Decision Rules

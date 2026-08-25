@@ -1,6 +1,6 @@
 ---
 name: review-platform
-description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, battery, compatibility
+description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, performance, accessibility, battery, compatibility
 ---
 
 ## Goal
@@ -9,7 +9,7 @@ Review platform ครอบคลุมทุก dimension ของ platform �
 
 ## Scope
 
-platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-side rendering, state management, routing, PWA, i18n และ localization, SEO, battery/energy usage, browser/platform compatibility
+platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-side rendering, state management, routing, PWA, i18n และ localization, SEO, web performance, accessibility, battery/energy usage, browser/platform compatibility
 
 ## Execute
 
@@ -112,7 +112,37 @@ Review battery/energy usage — ดูรายละเอียดใน `refe
 7. Critical: wake lock ค้าง, GPS track ต่อเนื่อง, high-frequency polling บน hot path
 8. High: network retries ไม่มี backoff, sensors ไม่ปิด, animations ไม่หยุด, heavy compute บน main thread
 
-### 8. Compatibility Review
+### 8. Performance Review
+
+Review web performance — ดูรายละเอียดใน `references/performance.md`
+
+> Goal: ครอบคลุมทุก performance dimension
+
+1. ตรวจ Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1
+2. ตรวจ bundle size: JavaScript < 200KB, CSS < 50KB, total < 1MB
+3. ตรวจ network: render-blocking resources, request count, caching strategy
+4. ตรวจ runtime: long tasks, memory usage, frame rate
+5. ตรวจ loading: FCP, TTI, Speed Index, TTFB
+6. รัน Lighthouse audit ครบทุก category
+7. Critical: LCP > 4s, INP > 500ms, CLS > 0.25, page โหลดไม่ได้
+8. High: LCP > 2.5s, INP > 200ms, CLS > 0.1, Performance Score < 50, bundle > 500KB
+
+### 9. Accessibility Review
+
+Review accessibility ตาม WCAG 2.1 — ดูรายละเอียดใน `references/accessibility.md`
+
+> Goal: ครอบคลุมทุก accessibility dimension
+
+1. ตรวจ keyboard navigation: tab order, focus indicators, skip link
+2. ตรวจ screen reader: ARIA labels, alt text, semantic HTML, heading hierarchy
+3. ตรวจ color contrast: WCAG AA (text ≥ 4.5:1), ไม่ใช้สีเพียงอย่างเดียว
+4. ตรวจ forms: labels, error messages, keyboard accessible controls
+5. ตรวจ media: captions, audio descriptions, autoplay controls
+6. รัน automated audit: axe, Lighthouse, pa11y
+7. Critical: no keyboard access, no alt text บน critical images, contrast < 3:1
+8. High: missing labels, broken heading hierarchy, no focus indicators
+
+### 10. Compatibility Review
 
 Review browser/platform compatibility — ดูรายละเอียดใน `references/compatibility.md`
 
@@ -125,7 +155,7 @@ Review browser/platform compatibility — ดูรายละเอียด�
 5. Critical: ใช้ API ที่ browser หลักไม่รองรับ, broken บน target platform, ไม่มี fallback
 6. High: missing polyfill สำหรับ feature สำคัญ, inconsistent behavior ข้าม browsers
 
-### 9. Validate Findings
+### 11. Validate Findings
 
 ตรวจสอบและ validate issues จากทุก section
 
@@ -135,7 +165,7 @@ Review browser/platform compatibility — ดูรายละเอียด�
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
-### 10. Report
+### 12. Report
 
 รายงานผล review ในรูปแบบตาราง
 
@@ -157,7 +187,9 @@ Review browser/platform compatibility — ดูรายละเอียด�
 - ถ้า project ไม่มี i18n ให้ข้าม Section 5
 - ถ้า project ไม่ใช่ web app ให้ข้าม Section 6
 - ถ้า project ไม่มี battery-sensitive dimension ให้ข้าม Section 7
-- ถ้า project ไม่มี compatibility concern ให้ข้าม Section 8
+- ถ้า project ไม่ใช่ web app ให้ข้าม Section 8 performance
+- ถ้า project ไม่มี UI ให้ข้าม Section 9 accessibility
+- ถ้า project ไม่มี compatibility concern ให้ข้าม Section 10
 
 ### 2. Severity Classification
 
