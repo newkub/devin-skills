@@ -9,7 +9,7 @@ related:
   - review-agents-md
   - review-all-skills
   - git-commit
-  - ship-code
+  - ship
   - report
   - use-markdown
 ---
@@ -50,7 +50,7 @@ related:
 1. ทำตาม `/review-agents-md` เพื่อตรวจสอบ `AGENTS.md`
 2. ทำตาม `/review-all-skills` เมื่อแก้ไข skills
 3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
-4. ทำตาม `/git-commit` หรือ `/ship-code` เพื่อ commit การเปลี่ยนแปลง
+4. ทำตาม `/git-commit` หรือ `/ship` เพื่อ commit การเปลี่ยนแปลง
 5. ทำตาม `/report` เพื่อสรุปผล
 
 ## Rules
@@ -75,7 +75,7 @@ related:
 - `review-agents-md: /review-agents-md`
 - `review-all-skills: /review-all-skills`
 - `git-commit: /git-commit`
-- `ship-code: /ship-code`
+- `ship: /ship`
 - `report: /report`
 - `use-markdown: /use-markdown`
 

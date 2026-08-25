@@ -12,7 +12,7 @@ related:
   - update-reference
   - follow-content-quality
   - ask-me
-  - ship-code
+  - ship
 ---
 
 ## Goal

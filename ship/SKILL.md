@@ -1,11 +1,11 @@
 ---
-name: ship-code
-description: Ship code โดย commit โดยไม่ถาม release หรือ push ทำตาม AGENTS.md ก่อน
+name: ship
+description: Ship code โดย commit ทำตาม AGENTS.md ก่อน ไม่มี push หรือ release
 ---
 
 ## Goal
 
-Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใน `AGENTS.md` ตรวจสอบแล้ว commit โดยไม่ถามเรื่อง push หรือ release
+Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใน `AGENTS.md` ตรวจสอบแล้ว commit
 
 ## Scope
 
@@ -46,7 +46,7 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 ### 5. Report
 
-> Goal: รายงานผล ship-code
+> Goal: รายงานผล ship
 
 1. ทำ `/report` พร้อม `/report-table` สรุปสิ่งทีทำ
 2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
@@ -61,10 +61,10 @@ Ship code โดยอัปเดต `AGENTS.md` ทำตาม workflows ใ�
 
 ### 2. No Push Or Release
 
-- `ship-code` ไม่ทำ push หรือ release
-- ถ้า user ต้องการ push → ใช้ `/ship-and-push`
-- ถ้า user ต้องการ release → ใช้ `/ship-and-release`
-- ไม่ถาม user ว่าจะ push/release หรือไม่ใน `/ship-code`
+- `ship` ไม่ทำ push หรือ release
+- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship`
+- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
+- ไม่ถาม user ว่าจะ push/release หรือไม่ใน `/ship`
 
 ### 3. Sub-Workflow Discipline
 
