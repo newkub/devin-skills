@@ -12,13 +12,12 @@ description: โครงสร้างไฟล์ของ analyze-codebase-q
 - `SKILL.md` ไฟล์หลัก เรียก `references/skill-me`
 - `references/skill-me.md` เนื้อหาหลักของ skill
 - `references/file-structure.md` เอกสารโครงสร้าง (this file)
-- `cli/SKILL.md` สำหรับ build และ run CLI
+- `src/SKILL.md` สำหรับ build และ run CLI
 
 ## Optional Directories
 
-- `cli/apps/cli/` CLI application source
-- `cli/packages/shared/` shared utilities
-- `cli/.devin/` project rules ถ้ามี
+- `src/` CLI/web application source (submodule)
+- `src/.devin/` project rules ถ้ามี
 
 ## Flattening
 
@@ -35,7 +34,7 @@ description: โครงสร้างไฟล์ของ analyze-codebase-q
 ### 2. Size
 
 - `SKILL.md` และ `references/*.md` ไม่เกิน 250 บรรทัด
-- CLI source files อยู่ใน `cli/apps/cli/` ตาม project structure
+- CLI source files อยู่ใน `src/` ตาม project structure (submodule)
 
 ## Expected Outcome
 

@@ -6,6 +6,8 @@ related:
   - follow-single-responsibility
   - validate
   - update-reference
+  - update-agents-md
+  - convert-to-submodule
   - learn-from-web
   - use-scripts
   - ask-me
@@ -17,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง skill ใหม่หรือแก้ไข skill ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยครอบคลุม directory, template selection, validation, references และการสร้าง CLI ถ้าจำเป็น โดยไม่ทำลาย references เดิม
+ใช้สำหรับสร้าง skill ใหม่หรือแก้ไข skill ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยครอบคลุม directory, template selection, validation, references และการสร้าง `src/` สำหรับ CLI หรือ web ถ้าจำเป็น โดยไม่ทำลาย references เดิม
 
 ## Execute
 
@@ -58,31 +60,29 @@ related:
 1. ดูรายละเอียดใน [references/directory-structure.md](references/directory-structure.md)
 2. ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์มีหน้าที่เดียวชัดเจน ไม่ผสมหลาย responsibilities ในไฟล์เดียว
 
-### 5. Create CLI (if needed)
+### 5. Create Src (if needed)
 
-> Goal: skill ที่ระบุ CLI มี entry point และรันผ่าน `bun run dev`
+> Goal: skill ที่ระบุ CLI หรือ web มี `src/` directory พร้อมรัน
 
-1. ดูรายละเอียดใน [references/cli.md](references/cli.md)
+1. ดูรายละเอียดใน [references/src.md](references/src.md)
+2. ใช้ `src/presentation/cli.ts` เป็น entry point สำหรับ CLI
+3. ใช้ `src/` เก็บ web app code สำหรับ web-based skills
+4. ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระ
 
-### 6. Create Web (if needed)
-
-> Goal: skill ที่ระบุ web มี `web/` directory พร้อมรัน
-
-1. ดูรายละเอียดใน [references/web.md](references/web.md)
-
-### 7. Validate Skill
+### 6. Validate Skill
 
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
 1. ดูรายละเอียดใน [references/validation.md](references/validation.md)
 
-### 8. Update References
+### 7. Update References And Agents
 
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 
 1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
-2. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
-3. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
+2. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ของ repo
+3. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
+4. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
 
 ## Rules
 
@@ -94,8 +94,8 @@ related:
 
 ### 2. Package Structure
 
-- `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด. สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `web/`, `.devin/rules/` ตามความจำเป็น
-- ถ้ามี CLI ต้องมี `src/presentation/cli.ts` เป็น entry point. directory name ต้องตรงกับ `name` ใน frontmatter. ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
+- `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด. สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `src/`, `.devin/rules/` ตามความจำเป็น
+- ถ้ามี CLI หรือ web ต้องมี `src/` เป็น root ของ code. CLI entry point ที่ `src/presentation/cli.ts`. directory name ต้องตรงกับ `name` ใน frontmatter. ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 - ถ้า `references/` มี nested directories → ใช้ `/follow-flat-files`. ถ้า flat ทั้ง skill package → ใช้ `/follow-flat-folders`
 - ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์รับผิดชอบหน้าที่เดียวชัดเจน ถ้าไฟล์รวมหลาย responsibilities → แยกเป็นไฟล์ย่อย
 
@@ -109,15 +109,14 @@ related:
 - ถ้า skill ขึ้นต้นด้วย `check-` → พยายามใช้ tools หรือ `/use-scripts` ใน `## Execute`. `allowed-tools` ต้องรวม `exec`, `grep`, `glob`, `find_file_by_name`
 - หลีกเลี่ยงการให้ตรวจด้วยตาเปล่า. ใช้ commands, scripts, หรือ linters. ผลลัพธ์ต้อง reproducible และอ้างอิงไฟล์/บรรทัด
 
-### 5. CLI Support
+### 5. Src Support
 
-- ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation. ใช้ `src/presentation/cli.ts` เป็น entry point. ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้. รักษา package structure ที่ไม่เกิน 250 บรรทัด
+- ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation. ใช้ `src/presentation/cli.ts` เป็น entry point. ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
+- ถ้า skill ต้องการ web → เรียก `/follow-web-design` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
+- รักษา package structure ที่ไม่เกิน 250 บรรทัด
+- ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 
-### 6. Web Support
-
-- ถ้า skill ต้องการ web → เรียก `/follow-web-design` ก่อนสร้าง `web/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve web/` หรือ `/open-web` ทำงานได้. รักษา package structure ที่ไม่เกิน 250 บรรทัด
-
-### 7. Subagent And Model
+### 6. Subagent And Model
 
 - ใช้ `subagent: true` สำหรับงาน focused, self-contained. ใช้ `agent: <profile>` เมื่อต้องการ profile เฉพาะ. ถ้าตั้งทั้ง `agent` และ `subagent` → `agent` มี precedence. skill ที่รันเป็น subagent จะไม่ spawn nested subagents
 
@@ -129,8 +128,9 @@ related:
 
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
-- ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `web/` directory ที่ทดสอบผ่านแล้ว
-- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. `related` ถูกต้อง ไม่มี missing/unused. references อัปเดตครบถ้วน
+- ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
+- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule`
+- ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. `related` ถูกต้อง ไม่มี missing/unused. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
 
 ## Examples

@@ -46,8 +46,8 @@ description: วิเคราะห์คุณภาพของ codebase ด
 
 ### 2. Sub Skill
 
-- ใช้ `cli/SKILL.md` สำหรับ build และ run CLI
-- ถ้าไม่สามารถเรียก `/cli` ได้ → อ่าน `cli/SKILL.md` ด้วย `read` แล้วรันเอง
+- ใช้ `src/SKILL.md` สำหรับ build และ run CLI
+- ถ้าไม่สามารถเรียก `/cli` ได้ → อ่าน `src/SKILL.md` ด้วย `read` แล้วรันเอง
 
 ## Expected Outcome
 
