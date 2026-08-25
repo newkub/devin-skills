@@ -35,10 +35,9 @@ description: สร้าง README.md และ LICENSE.md ครบถ้ว�
 
 > Goal: สร้าง UX/UI sketch สำหรับ README
 
-1. ทำ `/report-uxui-sketch` เพื่อวาด layout หลักของ workspace
-2. วาดเฉพาะหน้าหลักหรือหน้าที่สำคัญที่สุดของ workspace
-3. แปลง sketch เป็น text codeblock (ไม่ใช่ ANSI) สำหรับใส่ใน README
-4. วาง sketch ด้านบน Get Started โดยไม่ต้องมี heading — ถ้า sketch fail → retry (max 3 → stop/report)
+1. ทำ `/report-uxui-sketch` เพื่อวาด layout หลักของ workspace เฉพาะหน้าหลักหรือหน้าที่สำคัญที่สุด
+2. แปลง sketch เป็น text codeblock (ไม่ใช่ ANSI) สำหรับใส่ใน README
+3. วาง sketch ด้านบน Get Started โดยไม่ต้องมี heading — ถ้า sketch fail → retry (max 3 → stop/report)
 
 ### 4. Update Workspaces READMEs
 
@@ -62,7 +61,7 @@ description: สร้าง README.md และ LICENSE.md ครบถ้ว�
 
 > Goal: ตรวจสอบคุณภาพและอัปเดต references
 
-1. `/follow-content-quality`, `/update-reference` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
+1. `/review-writing`, `/update-reference` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
 2. ถ้า validation ไม่ผ่าน → revise และ recheck (max 3 ครั้ง → stop/report)
 
 ## Rules
@@ -144,7 +143,7 @@ description: สร้าง README.md และ LICENSE.md ครบถ้ว�
 - `Cargo.toml`: `license = "MIT"` หรือ SPDX identifier อื่นๆ
 - ใช้ SPDX identifier ที่ถูกต้องเสมอ ตรงกับ `LICENSE.md`
 
-## Example Template
+### 9. Example Template
 
 ````markdown
 # @wrikka/package-name

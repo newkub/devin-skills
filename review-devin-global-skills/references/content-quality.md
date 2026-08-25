@@ -4,7 +4,7 @@
 
 ## Simplify And Remove Redundancy
 
-1. ทำ `/follow-content-quality` ∥ `/simplify` เพื่อกระชับเนื้อหา
+1. ทำ `/review-writing` ∥ `/simplify` เพื่อกระชับเนื้อหา
 2. ตรวจเนื้อหาซ้ำซ้อนระหว่าง `Execute` และ `Rules`
 3. ถ้าเนื้อหาใน `Rules` ซ้ำกับ skill อื่น → แทนที่ด้วย reference
 4. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal

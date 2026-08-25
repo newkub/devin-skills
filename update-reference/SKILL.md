@@ -15,7 +15,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 
 ### 1. Determine Context
 
-> Goal: Determine Context
+> Goal: กำหนด context ของการแก้ไข
 
 ตรวจสอบว่าแก้ไขไฟล์ที่ไหนเพื่อกำหนด scope ของการค้นหา references
 
@@ -25,7 +25,7 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 
 ### 2. Update Project References
 
-> Goal: Update Project References
+> Goal: อัพเดท references ใน project
 
 เมื่อแก้ไขไฟล์ใน project ให้ค้นหาและอัพเดท references ภายใน project
 
@@ -36,23 +36,23 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 
 ### 3. Update Workflow References
 
-> Goal: Update Workflow References
+> Goal: อัพเดท references ใน workflows
 
 เมื่อแก้ไขไฟล์ใน workflows ให้ค้นหาและอัพเดท references ใน workflows และ skills
 
-1. ใช้ search tool ค้นหา references ใน global_workflows directory
-2. ใช้ search tool ค้นหา references ใน skills directory
+1. ใช้ search tool ค้นหา references ใน `global_workflows` directory
+2. ใช้ search tool ค้นหา references ใน `skills` directory
 3. ระบุชื่อ workflow ที่แก้ไขเพื่อค้นหา references
 4. อัพเดท references ที่ตรงกับ workflow ที่แก้ไข
 5. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง workflow เดิม
 
 ### 4. Update Skill References
 
-> Goal: Update Skill References
+> Goal: อัพเดท references ใน skills
 
 เมื่อแก้ไขไฟล์ใน skills ให้ค้นหาและอัพเดท references ภายใน skills
 
-1. ใช้ search tool ค้นหา references ใน skills directory
+1. ใช้ search tool ค้นหา references ใน `skills` directory
 2. ระบุชื่อ skill ที่แก้ไขเพื่อค้นหา references
 3. อัพเดท references ที่ตรงกับ skill ที่แก้ไข
 4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง skill เดิม
@@ -72,8 +72,8 @@ description: อัพเดท references ทั้งหมดเมื่อ�
 ใช้ search strategy ที่เหมาะสมกับ context เพื่อค้นหา references อย่างมีประสิทธิภาพ
 
 - Project: ค้นหาใน project directory โดยใช้ workspace path เป็น base
-- Workflows: ค้นหาใน global_workflows และ skills directories
-- Skills: ค้นหาใน skills directory โดยใช้ pattern matching สำหรับ skill names
+- Workflows: ค้นหาใน `global_workflows` และ `skills` directories
+- Skills: ค้นหาใน `skills` directory โดยใช้ pattern matching สำหรับ skill names
 - ใช้ regex patterns สำหรับการค้นหา references ที่ซับซ้อน
 - ใช้ exact string matching สำหรับ references ที่ชัดเจน
 

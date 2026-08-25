@@ -6,7 +6,7 @@ argument-hint: "[run-id]"
 
 ## Goal
 
-รันและตรวจสอบ GitHub Actions จนกว่าจะผ่านทั้งหมม
+รันและตรวจสอบ GitHub Actions จนกว่าจะผ่านทั้งหมด
 
 ## Scope
 

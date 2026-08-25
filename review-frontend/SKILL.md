@@ -146,7 +146,7 @@ Review frontend ครอบคลุม components, forms, hooks/composables, s
 
 1. ปรับ UX writing, accessibility (WCAG 2.1 AA), SEO, visual design, responsive ตาม findings
 2. Optimize assets (modern formats, lazy loading), rendering (memoization, code splitting), battery
-3. ทำ `/validate` และ `/run-check` — ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry (max 3)
+3. ทำ `/validate` และ `/run-verify` — ถ้าไม่ผ่าน → `/resolve-errors` แล้ว retry (max 3)
 
 ### 11. Validate, Rate And Report
 

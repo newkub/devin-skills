@@ -1,6 +1,6 @@
 ﻿---
 name: follow-release
-description: เลือกและตั้งค่า release strategy สำหรับ project ครอบคลุม npm, crates, Docker, VSCode, preview และ monorepo versioning
+description: เลือกและตั้งค่า release strategy ครอบคลุม npm, crates, Docker, VSCode และ monorepo versioning
 ---
 
 ## Goal

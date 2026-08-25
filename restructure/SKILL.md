@@ -9,24 +9,24 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ## Scope
 
-ครอบคลุม naming, relocation, grouping ของ physical structure สำหรับ logical concern separation ให้ใช้ `/refactor`
+ครอบคลุม naming, relocation, grouping ของ physical structure สำหรับจัดระเบียบไฟล์ตาม domain สำหรับ logical concern separation ให้ใช้ `/refactor`
 
 ## Execute
 
 ### 1. Analyze Current Structure
 
-> Goal: Analyze Current Structure
+> Goal: ระบุปัญหาโครงสร้างปัจจุบันก่อนเปลี่ยนแปลง
 
 วิเคราะห์โครงสร้างปัจจุบันเพื่อระบุปัญหาก่อนเปลี่ยนแปลง
 
 1. ทำ `/deep-review` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
 2. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
-3. ทำ `/follow-folder-quality` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
+3. ทำ `/review-restructure` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
 4. ถ้าไม่พบปัญหา → stop และ report
 
 ### 2. Improve File Naming
 
-> Goal: Improve File Naming
+> Goal: ชื่อไฟล์สะท้อน responsibility ของไฟล์
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
@@ -36,7 +36,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ### 3. Split Files With Multiple Responsibilities
 
-> Goal: Split Files With Multiple Responsibilities
+> Goal: ทุกไฟล์มี single responsibility ไม่เกิน 250 บรรทัด
 
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
 
@@ -48,7 +48,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ### 4. Relocate And Group By Domain
 
-> Goal: Relocate And Group By Domain
+> Goal: ไฟล์อยู่ในโฟลเดอร์ที่สอดคล้องกับ domain
 
 ย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ domain — high-risk action
 
@@ -60,7 +60,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ### 5. Refactor Imports And Exports
 
-> Goal: Refactor Imports And Exports
+> Goal: barrel exports และ import aliases ใช้ alias แทน relative paths ซับซ้อน
 
 ปรับปรุง barrel exports, import aliases และ import paths ให้ใช้ alias แทน relative paths ที่ซับซ้อน
 
@@ -69,7 +69,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ### 6. Validate Single Responsibility
 
-> Goal: Validate Single Responsibility
+> Goal: ยืนยันผลลัพธ์เป็นไปตามเป้าหมาย single responsibility
 
 ตรวจสอบว่าผลลัพธ์เป็นไปตามเป้าหมาย
 

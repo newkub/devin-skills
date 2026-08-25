@@ -11,7 +11,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-สำหรับ validate แบบปกติ ใช้ `/validate`, สำหรับ validate tests ใช้ `/run-test`, สำหรับ validate review ใช้ `/validate`
+สำหรับ validate แบบปกติ ใช้ `/validate`, สำหรับ validate tests ใช้ `/run-test`, สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
 
@@ -60,7 +60,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ตรวจสอบคุณภาพโดยรวม
 
-- ทำ `/follow-code-quality` เพื่อตรวจสอบ code quality
+- ทำ `/review-quality` เพื่อตรวจสอบ code quality
 - ตรวจสอบ readability, completeness, consistency
 - ตรวจสอบมี documentation เพียงพอหรือ clear
 - ตรวจสอบใช้ best practices และไม่มี redundancy

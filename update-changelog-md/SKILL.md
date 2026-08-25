@@ -39,9 +39,9 @@ description: สร้าง changelog ด้วย Bun Shell
 
 Commit changelog ที่สร้าง
 
-1. Add `CHANGELOG.md` ไปยัง git
-2. Commit ด้วย message ที่เหมาะสม
-3. Push ไปยัง remote repository
+1. เพิ่ม `CHANGELOG.md` ไปยัง git
+2. คอมมิตด้วย message ที่เหมาะสม
+3. พุชไปยัง remote repository
 
 ## Rules
 

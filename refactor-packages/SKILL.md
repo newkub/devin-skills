@@ -70,7 +70,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
 
-1. ทำ `/run-check`
+1. ทำ `/run-verify`
    - ทำ `/run-test`
    - ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/review-quality`

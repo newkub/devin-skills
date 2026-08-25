@@ -79,7 +79,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 > Goal: พบ runtime และ build issues ก่อน report
 
-1. ทำ `/run-check` เพื่อรัน lint, typecheck, scan
+1. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan
 2. ถ้ามี scripts ให้รัน `bun run verify` หรือ `bun run ci` ตามลำดับ
 3. ถ้าเป็น Rust ให้รัน `cargo clippy && cargo check && cargo test`
 4. บันทึก errors และ failures พร้อม evidence

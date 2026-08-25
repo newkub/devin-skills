@@ -1,6 +1,6 @@
 ---
 name: update-agents-md
-description: Create or update AGENTS.md with architecture, lib mapping, ship readiness, and workspace rules
+description: สร้างหรืออัปเดต AGENTS.md ด้วย architecture, lib mapping และ workspace rules
 ---
 
 ## Goal
@@ -23,17 +23,17 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 4. ทำ `follow-write-devin-skills/references/skill-md.md` และ `/follow-write-devin-skills` เพื่อใช้ format มาตรฐาน
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
-7. ทำ `/follow-skills` เพื่อระบุ skills ทีควรใส่ใน `### Skills`
+7. ทำ `/follow-skills` เพื่อระบุ skills ที่ควรใส่ใน `### Skills`
 8. เพิ่ม `/review-codebase` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
 9. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
-8. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+10. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 
 ### 2. Follow Lib
 
 > Goal: Map libraries และ dependencies ไปยัง follow skills
 
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
-2. ระบุ libraries, frameworks, runtime, build tools ทีใช้
+2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
 3. map แต่ละ tech ไปยัง `tech: /follow-<tech>` ถ้ามี skill ตรง
 4. ถ้าไม่มี skill ตรง ให้ใช้ `tech: /learn-from-web` หรือ `tech: none`
 5. อัปเดท `### Architecture` ใน root `AGENTS.md`
@@ -56,8 +56,8 @@ description: Create or update AGENTS.md with architecture, lib mapping, ship rea
 2. สำหรับแต่ละ workspace ระบุ:
    - `name` ใน frontmatter ตรงกับชื่อ workspace
    - `### Architecture` ด้วย `tech: /follow-<tech>` ของ workspace
-   - `### Skills` ด้วย `skill-name: /skill-name` ทีใช้
-   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นทีใช้
+   - `### Skills` ด้วย `skill-name: /skill-name` ที่ใช้
+   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้
 3. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
 4. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
 5. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`

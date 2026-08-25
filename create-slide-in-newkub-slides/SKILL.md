@@ -118,7 +118,7 @@ graph LR
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-workspace`
+1. ทำ `/ship-code`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

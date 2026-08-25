@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-slide-via-slidev
 description: สร้าง standalone Slidev project ด้วย CLI ในตำแหน่งใดก็ได้ พร้อม package.json ของตัวเอง
 argument-hint: "[title]"
@@ -69,7 +69,7 @@ argument-hint: "[title]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-workspace`
+1. ทำ `/ship-code`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

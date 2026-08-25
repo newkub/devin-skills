@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
 ---
@@ -64,7 +64,7 @@ description: พัฒนา feature ด้วย Test-Driven Development red-gr
 
 1. รัน test suite ทั้งหมด
 2. รัน lint และ typecheck ถ้ามี
-3. ทำ `/run-check` เพื่อตรวจ project-wide
+3. ทำ `/run-verify` เพื่อตรวจ project-wide
 4. ทำ `/git-commit` ถ้ามีการเปลี่ยนแปลง
 
 ## Rules

@@ -1,5 +1,5 @@
 ﻿---
-name: ship-workspace
+name: ship-code
 description: Ship workspace ที่เลือก โดย commit ทำตาม AGENTS.md ไม่มี push หรือ release
 ---
 
@@ -9,7 +9,7 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 
 ## Scope
 
-ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release ไม่รวมการ ship หลาย workspace (ใช้ `ship-repo` แทน)
+ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit เท่านั้น ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship-code` แต่ละ workspace ตามลำดับ dependency
 
 ## Execute
 
@@ -61,14 +61,14 @@ Ship workspace ที่เลือก โดยอัปเดต `AGENTS.md` 
 
 ### 2. No Push Or Release
 
-- `ship-workspace` ไม่ทำ push หรือ release
-- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship-workspace`
-- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship-workspace`
+- `ship-code` ไม่ทำ push หรือ release
+- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship-code`
+- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship-code`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
 ### 3. Use Run-Verify
 
-- ใช้ `/run-verify` แทน `/run-check` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
+- ใช้ `/run-verify` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
 - ถ้า workspace ไม่มี verify script → ทำ `/follow-tasks` ก่อน
 
 ### 4. Sub-Workflow Discipline

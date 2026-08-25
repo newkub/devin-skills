@@ -1,17 +1,17 @@
 ---
 name: update-features
-description: วิเคราะห์ features ที่มีอยู่ใน project และ delegate documentation ให้ /update-docs
+description: วิเคราะห์ features ที่มีอยู่ใน project และเขียน FEATURES.md ที่ root ของ workspace
 ---
 
 ## Goal
 
-วิเคราะห์ features ที่มีอยู่ใน project และสร้าง documentation ให้ /update-docs เขียนลง docs/project/features.md
+วิเคราะห์ features ที่มีอยู่ใน project และสร้าง `FEATURES.md` ที่ root ของ workspace พร้อมตาราง features
 
 ## Scope
 
 - วิเคราะห์ routes, modules, database schemas, API endpoints
-- ระบุ existing features พร้อม name, description, module
-- ส่งต่อเนื้อหาให้ /update-docs โดยไม่เขียน docs ซ้ำในแต่ละ workspace
+- ระบุ existing features พร้อม name, description, module, domain, status
+- เขียน `FEATURES.md` ที่ root ของ workspace (monorepo ให้สร้างทุก workspace)
 - แสดง existing features สั้นๆ ในแชทเป็นตาราง
 
 ## Execute
@@ -35,44 +35,38 @@ description: วิเคราะห์ features ที่มีอยู่ใ
 5. จัดกลุ่ม features ตาม domain และระบุ name, description, module
 6. ถ้า monorepo เกิน 10 workspaces ให้ใช้ `/use-scripts`
 
-### 3. Prepare Documentation Data
+### 3. Write FEATURES.md
 
-> Goal: สร้างเนื้อหาสำหรับ /update-docs
+> Goal: สร้าง `FEATURES.md` ที่ root ของ workspace
 
-1. สร้าง/อัปเดท `docs/project/features.md` ด้วยตาราง markdown:
+1. สร้าง/อัปเดท `FEATURES.md` ที่ root ของ workspace ด้วยตาราง markdown:
    - `| Feature | Description | Module | Domain | Status |`
 2. กลุ่ม features ตาม domain ด้วย heading `## <domain>`
 3. เขียนรายละเอียดสั้นใต้แต่ละ feature ด้วย bullet
-4. ไม่ต้องสร้าง `.devin/features/`
+4. monorepo ให้สร้าง `FEATURES.md` ที่ root ของทุก workspace ที่มี features
+5. ไม่ต้องสร้าง `.devin/features/` หรือ `docs/project/features.md`
 
-### 4. Delegate To update-docs
-
-> Goal: /update-docs จัดการ sidebar, nav, และ references
-
-1. ทำ `/update-docs` เพื่อตั้งค่า docs site, sidebar, frontmatter
-2. ตรวจให้ `docs/project/features.md` อยู่ใน sidebar
-3. อัปเดท `docs/roadmap/index.md` ลิงก์ไป features
-
-### 5. Report In Chat
+### 4. Report In Chat
 
 > Goal: สรุปผลลัพธ์ให้ user
 
 1. แสดงตาราง existing features ในแชทตาม `/report-table`
-2. ระบุ path `docs/project/features.md` และ action ถัดไป
+2. ระบุ path `FEATURES.md` ที่สร้างและ action ถัดไป
 
 ## Rules
 
 ### 1. Feature Identification
 
 - ระบุ feature จาก: routes, modules, schemas, API endpoints
-- แต่ละ feature ต้องมี name, description, module, domain
+- แต่ละ feature ต้องมี name, description, module, domain, status
 - monorepo วิเคราะห์ทุก workspace
 
-### 2. Documentation Delegation
+### 2. File Location
 
-- ใช้ `/update-docs` สำหรับ docs structure, sidebar, nav, references
-- ไม่สร้าง docs/ ในแต่ละ workspace
+- สร้าง `FEATURES.md` ที่ root ของ workspace เท่านั้น
+- ไม่สร้าง `docs/project/features.md`
 - ไม่สร้างไฟล์ใน `.devin/features/`
+- ไม่ delegate ให้ `/update-docs`
 
 ### 3. Markdown Only
 
@@ -82,7 +76,6 @@ description: วิเคราะห์ features ที่มีอยู่ใ
 
 ## Expected Outcome
 
-- `docs/project/features.md` มีตาราง existing features ครบถ้วน
-- Sidebar/nav อัปเดทผ่าน `/update-docs`
+- `FEATURES.md` ที่ root ของ workspace มีตาราง existing features ครบถ้วน
 - ตาราง existing features แสดงในแชท
 - Features ครอบคลุม routes, modules, schemas, API endpoints

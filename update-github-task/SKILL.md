@@ -14,26 +14,26 @@ argument-hint: "[task-id]"
 
 ## Execute
 
-### 1. Find task
+### 1. Find Task
 
 > Goal: ค้นหางาน
 
 1. รัน `gh project item-list`
-1. รับ item ID
+2. รับ item ID
 
-### 2. Edit fields
+### 2. Edit Fields
 
 > Goal: แก้ไข fields
 
 1. รัน `gh project item-edit` พร้อม field-id และ value
-1. อัปเดต status, priority, assignee
+2. อัปเดต status, priority, assignee
 
 ### 3. Verify
 
 > Goal: ตรวจสอบ
 
 1. รัน `gh project item-list` อีกครั้ง
-1. ยืนยันการเปลี่ยนแปลง
+2. ยืนยันการเปลี่ยนแปลง
 
 ### 4. Report
 

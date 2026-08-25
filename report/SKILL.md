@@ -57,7 +57,7 @@ description: ตอบในแชทเป็นตารางพร้อม 
 1. ตรวจสอบว่าทุก column มี number (ถ้าใช้ตาราง)
 2. ตรวจสอบ grouping และ sorting ที่ถูกต้อง
 3. ตรวจสอบว่าอ่านง่ายบนทุก device
-4. ทำ `/follow-content-quality` เพื่อตรวจสอบคุณภาพเนื้อหา
+4. ทำ `/review-writing` เพื่อตรวจสอบคุณภาพเนื้อหา
 
 ## Rules
 

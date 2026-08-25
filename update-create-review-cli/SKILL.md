@@ -205,14 +205,3 @@ description: สร้างและอัปเดท codebase review CLI ใ�
 - Deep report แสดงตาราง 7 columns พร้อมสรุปละเอียดครบทุกมิติ
 - ตรวจสอบ git changes และ AGENTS.md freshness ก่อนอัปเดท analyzers
 
-## Addendum
-
-### Analyze Extraction Rule
-
-ถ้า `tools/review` ยังไม่ได้แยก analyzer engine ออกเป็น `tools/analyze`:
-
-1. ทำตาม `/update-create-analyze-cli` เพื่อสร้างหรืออัปเดต `tools/analyze`
-2. ย้าย analyzer logic ที่ซับซ้อนหรือต้องการ deep analysis ออกจาก `tools/review/src/health` หรือ `tools/review/src/domain/analyzers` ไปยัง `tools/analyze/src/domain/analyzers`
-3. ให้ `tools/review` นำเข้า analyzers จาก `tools-analyze` ผ่าน Bun workspace แทนการเก็บ code ซ้ำ
-4. อัปเดต `tools/review/src/domain/analyzers/health-adapter.ts` หรือสร้าง `analyze-adapter.ts` ให้ `import("tools-analyze/src/domain/analyzers")` และ `import("tools-analyze/src/adapters")`
-5. รัน `bun --filter tools-analyze typecheck`, `lint`, `analyze` แล้วจึงรัน `bun --filter tools-review review`

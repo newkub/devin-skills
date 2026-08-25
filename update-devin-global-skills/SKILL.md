@@ -18,10 +18,9 @@ auto_execution_mode: 3
 
 > Goal: ตรวจสอบทุก skill ก่อนดำเนินการ
 
-1. ทำ `/review-devin-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-write-devin-skills`
-2. ทำ `/review-all-skills` เพื่อตรวจสอบ consistency ระหว่าง skills
-3. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
-4. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
+1. ทำ `/review-devin-global-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-write-devin-skills` พร้อม refactor และ cross-skill consistency
+2. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
+3. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
 
 ### 2. Inventory All Skills
 
@@ -37,7 +36,7 @@ auto_execution_mode: 3
 
 > Goal: ปรับโครงสร้างและย้าย skills ไปตำแหน่งที่เหมาะสม
 
-1. ทำ `/refactor-devin-skills` เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
+1. ทำ `/review-devin-global-skills` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
 2. ทำ `/relocation` เพื่อย้าย skills ไปยังตำแหน่งที่เหมาะสมตาม prefix
 3. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/follow-write-devin-skills`
 4. ถ้ามี skill ที่ prefix ไม่ตรงกับ responsibility → เปลี่ยน prefix และย้าย
@@ -85,7 +84,7 @@ auto_execution_mode: 3
 
 ### 1. Review Before Update
 
-- ทำ `/review-devin-skills` ก่อนเสมอ ตามมาตรฐาน `follow-write-devin-skills` Rule 9
+- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-write-devin-skills` Rule 9
 - ไม่แก้ไข skill ใดๆ ก่อน review ผ่าน
 - ทุก finding ต้องมี skill name, file path และ evidence
 
@@ -94,7 +93,7 @@ auto_execution_mode: 3
 - ทำ `/follow-write-devin-skills` สำหรับการปรับปรุง skill ใดๆ
 - ทำ `/learn-from-references` สำหรับ skills ที่มี dependencies แต่ขาด references
 - ทำ `/follow-coverage` สำหรับ skills ที่ content ไม่ครอบคลุม
-- ใช้ skills อื่นๆ ตามเหมาะสม เช่น `/review-all-skills`, `/idea-new-devin-skills-global`
+- ใช้ skills อื่นๆ ตามเหมาะสม เช่น `/review-devin-global-skills`, `/idea-new-devin-skills-global`
 
 ### 3. Safety
 
@@ -113,12 +112,12 @@ auto_execution_mode: 3
 
 - Minimal changes เสมอ ไม่ rewrite ทั้งไฟล์ถ้าเปลี่ยนเฉพาะส่วน
 - ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
-- ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/refactor-devin-skills` หลังจบ task
+- ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/review-devin-global-skills` Steps 7-8 หลังจบ task
 
 ## Expected Outcome
 
 - devin skills repo ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
-- ทุก skill ผ่าน `/review-devin-skills` และ `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- ทุก skill ผ่าน `/review-devin-global-skills` และ `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
 - skills ที่มี dependencies มี `references/` ครบผ่าน `/learn-from-references`
 - content ครอบคลุมผ่าน `/follow-coverage`

@@ -39,7 +39,7 @@ argument-hint: "[session-id]"
 
 > Goal: Verify Completion
 
-1. ตรวจสอบว่างานทั้งหมมเสร็จสมบูรณ์ตามที่ร้องขอ
+1. ตรวจสอบว่างานทั้งหมดเสร็จสมบูรณ์ตามที่ร้องขอ
 2. รัน verification commands ถ้ามี (test, build, lint)
 3. ตรวจสอบว่าไม่มีงานค้างหรือลืมทำ
 

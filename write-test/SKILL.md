@@ -9,7 +9,7 @@ description: เขียน test ที่มีคุณภาพสูง ค
 
 ## Scope
 
-เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/follow-content-quality` เพื่อคุณภาพเนื้อหา
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
 ## Execute
 

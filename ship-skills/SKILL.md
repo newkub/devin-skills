@@ -17,7 +17,7 @@ Ship skills ที่มี `.git` (submodules) โดย review ทุก skill
 
 > Goal: ทุก skill ผ่าน review ก่อน ship
 
-1. ทำ `/review-all-skills` เพื่อ review ทุก skill package
+1. ทำ `/review-devin-global-skills` เพื่อ review ทุก skill package
 2. ถ้ามี findings ที่ต้องแก้ → ทำ `/update-devin-global-skills` ก่อน
 3. ยืนยันว่าทุก skill ผ่าน `/validate`
 
@@ -81,13 +81,13 @@ Ship skills ที่มี `.git` (submodules) โดย review ทุก skill
 
 ### 3. Review Before Ship
 
-- ทำ `/review-all-skills` ก่อนเสมอ
+- ทำ `/review-devin-global-skills` ก่อนเสมอ
 - ถ้า findings มี Critical หรือ High → แก้ก่อน ship
 - ทำ `/update-agents-md` และ `/update-readme` ก่อน commit
 
 ## Expected Outcome
 
-- ทุก skill ผ่าน `/review-all-skills` และ `/validate`
+- ทุก skill ผ่าน `/review-devin-global-skills` และ `/validate`
 - `AGENTS.md` และ `README.md` อัปเดต
 - ทุก submodule ที่มี changes ถูก commit
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules

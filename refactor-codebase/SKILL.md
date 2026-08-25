@@ -1,91 +1,48 @@
 ---
 name: refactor-codebase
-description: Refactor codebase ครบวงจร — SRP, long files, imports, architecture, packages, code styles
+description: Thin wrapper ของ /refactor พร้อม consistency check เพิ่มเติม
 ---
 
 ## Goal
 
-Refactor codebase ครบวงจรเพื่อปรับปรุง SRP, boundaries, code styles, maintainability
+Refactor codebase ครบวงจรเหมือน `/refactor` พร้อมเพิ่ม consistency check สำหรับ naming, patterns, structure, และ style
 
 ## Scope
 
-- ใช้กับทุก workspace ที่ต้องการ refactor
-- ครอบคลุม SRP, long files, import/export, architecture, packages, code styles, consistency
-- ใช้ `/create-plan` สำหรับงานใหญ่
-- ใช้ `/implement-plan` สำหรับ execute แผน
+- เป็น thin wrapper ของ `/refactor` — เรียก `/refactor` สำหรับ SRP, long files, import/export, architecture, packages, code styles
+- เพิ่ม consistency check ผ่าน `/review-quality` หลัง refactor ทำสำเร็จ
+- ใช้เมื่อต้องการ refactor แบบครบวงจรพร้อม consistency verification
 
 ## Execute
 
-### 1. Review And Baseline
+### 1. Delegate To Refactor
 
-> Goal: เข้าใจ codebase ก่อน refactor
+> Goal: ทำ refactor ครบวงจรผ่าน `/refactor`
 
-1. ทำ `/review-codebase` สำหรับ deep review
-2. ทำ `/check-code-structure`, `/review-quality`, `/check-long-files`
-3. บันทึก baseline: files, symbols, responsibilities
+1. ทำ `/refactor` สำหรับ deep review, baseline, plan, refactor by concern, update references, verify, report
+2. ถ้า `/refactor` ไม่ผ่าน → หยุดและ report ตามผลของ `/refactor`
 
-### 2. Create Plan If Large
+### 2. Check Consistency
 
-> Goal: มีแผนก่อน refactor ขนาดใหญ่
+> Goal: ตรวจสอบ consistency หลัง refactor
 
-1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan`
-2. ถ้างานเล็ก → ข้ามไป Step 3
+1. ทำ `/review-quality` เพื่อตรวจ inconsistencies ใน naming, patterns, structure, หรือ style
+2. ถ้าพบ inconsistencies → แก้ตาม findings
+3. ทำ `/run-verify`, `/run-test` อีกครั้งหลังแก้ consistency
 
-### 3. Refactor By Concern
+### 3. Report
 
-> Goal: แก้ไขปัญหาเฉพาะทีละเรื่อง
+> Goal: สื่อสารผล refactor และ consistency
 
-1. ถ้ามี SRP violations → ทำ `/refactor-to-srp`
-2. ถ้ามี function quality issues (long functions, bad naming, side effects, complex params) → ทำ `/follow-function-quality`
-3. ถ้ามีไฟล์ยาว >250 บรรทัด → ทำ `/refactor-to-srp`
-4. ถ้ามี imports/exports ซับซ้อน → ทำ `/follow-import-export`
-5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
-6. ถ้ามี package/module ปัญหา → ทำ `/refactor-packages`
-7. ถ้ามี inconsistencies ใน naming, patterns, structure, หรือ style → ทำ `/review-quality`
-
-### 4. Update References
-
-> Goal: ไม่มี broken references
-
-1. ทำ `/edit-relative` สำหรับ relative paths/imports
-2. ทำ `/update-reference` สำหรับ global references
-3. ถ้ามี broken references → ทำ `/resolve-errors`
-
-### 5. Verify
-
-> Goal: code ผ่าน lint/typecheck/test
-
-1. ทำ `/run-check`, `/run-test`
-2. ทำ `/check-code-structure` เปรียบเทียบ baseline
-3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
-
-### 6. Implement Plan
-
-> Goal: ทำงานตามแผนจนครบและลบแผน
-
-1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
-2. ถ้าไม่มีแผน → รายงานผล
-
-### 7. Report
-
-> Goal: สื่อสารผล refactor
-
-1. ทำ `/report` สรุป before/after
+1. ทำ `/report` สรุป before/after จาก `/refactor` และ consistency check
 2. ระบุ TODO ถ้ามี
 
 ## Rules
 
-### 1. Code Style
+### 1. Delegate First
 
-- ทำให้ดีตามที่ควรเป็น
-- ทำให้ type safe
-- ทำให้ maintenance ง่าย
-- ทำให้ test ง่าย
-- ทำให้อ่านง่าย
-- ลด side effect
-- ใช้ naming สม่ำเสมอ
-- ลบ unused imports/exports
-- จัดเรียง imports/exports ตามมาตรฐาน project
+- ทำ `/refactor` ก่อนเสมอ — ไม่ duplicate logic ของ `/refactor`
+- เพิ่มเฉพาะ consistency check ที่ `/refactor` ไม่ครอบคลุม
 
 ### 2. Consistency
 
@@ -93,29 +50,15 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - รักษา conventions เดียวกันทั้ง codebase
 - อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
 
-### 3. Minimal Change
+### 3. Verification
 
-- ทำ `/dont-over-engineer` ก่อน
-- หลีกเลี่ยง abstraction ที่ไม่จำเป็น
-- รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
-
-### 4. Safety
-
-- destructive actions ต้องมี user confirmation
-- ทำ `/update-reference` หลังย้าย/ลบ/แยกไฟล์
-- ไม่ force push
-
-### 5. Verification
-
-- ต้องผ่าน `/run-check` และ `/run-test`
+- ต้องผ่าน `/run-verify` และ `/run-test` หลัง consistency fix
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 
 ## Expected Outcome
 
-- Codebase มี SRP ชัดเจน
-- ไฟล์และ packages มีขนาดเหมาะสม
-- imports/exports สะอาด
-- naming, patterns, structure มี consistency
+- Codebase ผ่าน refactor ครบวงจรจาก `/refactor`
+- naming, patterns, structure มี consistency ผ่าน `/review-quality`
 - ผ่าน lint/typecheck/test
-- รายงาน before/after
+- รายงาน before/after รวม refactor และ consistency

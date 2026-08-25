@@ -43,7 +43,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 > Goal: ระบุ functions ที่มี quality issues
 
-1. ทำ `/follow-function-quality` เพื่อ scan functions
+1. ทำ `/check-code-structure` และ `sg outline --view expanded --type function <paths>` เพื่อ scan functions (กรอง test/spec/generated)
 2. ตรวจสอบ naming, side effects, complexity, parameters ตาม [references/function-quality.md](references/function-quality.md)
 3. ใช้ `sg outline --view expanded --type function --view expanded <paths>` สำหรับ function signatures
 4. บันทึก: file, function, issue type, severity, recommended action
@@ -95,7 +95,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 2. ประเมิน effort: low (1 file), medium (2-5 files), high (>5 files)
 3. ประเมิน impact: critical, high, medium, low
 4. จัดลำดับ: high impact + low effort ก่อน → high impact + high effort → low impact
-5. แนะนำ workflow: `refactor-to-srp`, `refactor-packages`, `refactor-codebase`, `follow-function-quality`
+5. แนะนำ workflow: `refactor-to-srp`, `refactor-packages`, `refactor-codebase`
 
 ### 10. Report
 

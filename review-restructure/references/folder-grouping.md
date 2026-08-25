@@ -40,7 +40,6 @@
 
 ## Detection Tools
 
-- `/follow-folder-quality` สำหรับ comprehensive folder quality scan
 - `/scan-codebase` สำหรับ directory tree
 - `sg outline --items imports <paths>` สำหรับ import boundaries
 

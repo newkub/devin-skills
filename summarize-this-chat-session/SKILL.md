@@ -16,7 +16,7 @@ auto_execution_mode: 3
 
 ## Scope
 
-ใช้สำหรับการสรุป session work ในตอนท้ายของ conversation — ไม่รวมการสรุปโปรเจกต์ทั้งหมด (ใช้ `/sumarize-to-bullet` หรือ `/sumrize-this-project`)
+ใช้สำหรับการสรุป session work ในตอนท้ายของ conversation — ไม่รวมการสรุปโปรเจกต์ทั้งหมด (ใช้ `/summarize-to-bullet` หรือ `/summarize-this-project`)
 
 ## Execute
 
@@ -110,8 +110,8 @@ auto_execution_mode: 3
 
 ### Non-Redundancy
 
-- การสรุปโปรเจกต์ทั้งหมดอยู่ใน `/sumrize-this-project` แล้ว
-- การสรุปเป็น bullet points อยู่ใน `/sumarize-to-bullet` แล้ว
+- การสรุปโปรเจกต์ทั้งหมดอยู่ใน `/summarize-this-project` แล้ว
+- การสรุปเป็น bullet points อยู่ใน `/summarize-to-bullet` แล้ว
 - การบันทึก context อยู่ใน `/memorize` แล้ว
 
 ## Expected Outcome

@@ -18,8 +18,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 1. Check Existing Analyze
 
-ตรวจสอบว่ามี `tools/analyze` หรือ analyze code อยู่หรือไม่
 > Goal: รู้จุดเริ่มต้นก่อนสร้าง
+
+ตรวจสอบว่ามี `tools/analyze` หรือ analyze code อยู่หรือไม่
 
 1. ใช้ `find_file_by_name` หา `tools/analyze/` หรือ analyze scripts ใน `tools/review/`
 2. ใช้ `grep` ค้นหา `analyze` ใน `package.json` workspaces
@@ -28,8 +29,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 2. Plan Analyzer Categories
 
-กำหนดหมวดหมู่การ analyze ที่ `tools/review` ต้องการ
 > Goal: รู้ว่าจะ expose analyzers อะไรบ้าง
+
+กำหนดหมวดหมู่การ analyze ที่ `tools/review` ต้องการ
 
 1. ทำตาม `/run-review` หรือ `/review-codebase` เพื่อดู category catalog
 2. จัดกลุ่มเป็น 5 domains: `user-facing`, `security-compliance`, `backend-data`, `infrastructure`, `code-architecture`
@@ -37,8 +39,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 3. Create Workspace Package
 
-สร้าง `tools/analyze` package
 > Goal: มี workspace `tools-analyze` พร้อมใช้
+
+สร้าง `tools/analyze` package
 
 1. สร้าง directory `tools/analyze/`
 2. เขียน `tools/analyze/package.json` กำหนด `name: "tools-analyze"`, `type: "module"`, scripts `analyze`, `analyze:json`, `lint`, `typecheck`
@@ -47,8 +50,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 4. Setup Clean Architecture Structure
 
-สร้างโครงสร้าง `src/` ของ `tools/analyze`
 > Goal: มีโครงสร้าง Clean Architecture สำหรับ analyzer
+
+สร้างโครงสร้าง `src/` ของ `tools/analyze`
 
 1. `src/adapters/file-utils.ts` - walk, readText
 2. `src/adapters/git-grep.ts` - gitGrep, gitGrepCount
@@ -59,8 +63,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 5. Implement Analyzers With Use-Scripts
 
-สร้าง analyzer logic โดยใช้ `/deep-analyze-by-use-scripts`
 > Goal: มี analyzers ที่ detect ปัญหาได้จริง
+
+สร้าง analyzer logic โดยใช้ `/deep-analyze-by-use-scripts`
 
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อน
 2. ใส่ specific checks ตาม domain ที่กำหนดใน Step 2
@@ -69,8 +74,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 6. Expose Workspace API
 
-ทำให้ `tools/review` import analyzers ได้
 > Goal: `tools/review` ใช้ `tools-analyze` ผ่าน workspace
+
+ทำให้ `tools/review` import analyzers ได้
 
 1. เพิ่ม `exports` ใน `tools/analyze/package.json`
 2. สร้าง `src/index.ts` export `runAllAnalyzers`, `createAnalyzePorts`
@@ -78,8 +84,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 7. Update tools/review To Consume Analyze
 
-แก้ `tools/review` ให้ import จาก `tools-analyze`
 > Goal: review CLI รวม analyze results
+
+แก้ `tools/review` ให้ import จาก `tools-analyze`
 
 1. แก้ `tools/review/src/domain/analyzers/health-adapter.ts` หรือสร้าง `analyze-adapter.ts` ใหม่
 2. เปลี่ยน dynamic imports จาก local `src/health` เป็น `tools-analyze`
@@ -88,8 +95,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 8. Update Package Scripts
 
-เพิ่ม scripts ที่จำเป็น
 > Goal: เรียกใช้งานได้สะดวก
+
+เพิ่ม scripts ที่จำเป็น
 
 1. ใน `tools/analyze/package.json` เพิ่ม `analyze`, `analyze:json`
 2. ใน root `package.json` เพิ่ม `analyze: bun --filter tools-analyze analyze`
@@ -97,8 +105,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 9. Validate
 
-ตรวจสอบว่า CLI ทั้งสองรันได้
 > Goal: ไม่มี regression
+
+ตรวจสอบว่า CLI ทั้งสองรันได้
 
 1. รัน `bun --filter tools-analyze typecheck`
 2. รัน `bun --filter tools-analyze lint`
@@ -108,8 +117,9 @@ description: สร้างหรืออัปเดต tools/analyze CLI ส
 
 ### 10. Report
 
-สรุปผลการทำงาน
 > Goal: user ทราบสถานะ
+
+สรุปผลการทำงาน
 
 1. แสดงไฟล์ที่สร้าง/แก้ไข
 2. รายงาน categories ที่ implement

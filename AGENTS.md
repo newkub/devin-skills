@@ -7,11 +7,10 @@ related:
   - follow-write-devin-skills
   - validate
   - review-rules
-  - review-all-skills
+  - review-devin-global-skills
   - git-commit
   - ship
   - report
-  - use-markdown
 ---
 
 ## Goal
@@ -48,9 +47,9 @@ related:
 > Goal: ตรวจสอบและ commit การเปลี่ยนแปลง
 
 1. ทำตาม `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
-2. ทำตาม `/review-all-skills` เมื่อแก้ไข skills
+2. ทำตาม `/review-devin-global-skills` เมื่อแก้ไข skills
 3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
-4. ทำตาม `/git-commit` หรือ `/ship-workspace` เพื่อ commit การเปลี่ยนแปลง
+4. ทำตาม `/git-commit` หรือ `/ship-code` เพื่อ commit การเปลี่ยนแปลง
 5. ทำตาม `/report` เพื่อสรุปผล
 
 ## Rules
@@ -73,14 +72,12 @@ related:
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `validate: /validate`
 - `review-rules: /review-rules`
-- `review-all-skills: /review-all-skills`
+- `review-devin-global-skills: /review-devin-global-skills`
 - `git-commit: /git-commit`
-- `ship-workspace: /ship-workspace`
+- `ship-code: /ship-code`
 - `ship-skills: /ship-skills`
-- `ship-repo: /ship-repo`
 - `update-project: /update-project`
 - `report: /report`
-- `use-markdown: /use-markdown`
 - `review-refactor: /review-refactor`
 - `review-update: /review-update`
 - `review-implement: /review-implement`
@@ -101,7 +98,6 @@ related:
 - `review-codebase: /review-codebase`
 - `review-gaps: /review-gaps`
 - `review-dot-devin: /review-dot-devin`
-- `review-devin-skills: /review-devin-skills`
 - `review-devin-subagents: /review-devin-subagents`
 - `review-features: /review-features`
 - `review-create-analyze-cli: /review-create-analyze-cli`
@@ -110,15 +106,13 @@ related:
 - `review-docs: /review-docs`
 - `review-usage: /review-usage`
 - `update-usage: /update-usage`
-- `review-agents-md: /review-agents-md`
-- `review-references: /review-references`
-- `review-dependencies: /review-dependencies`
-- `gen-release: /gen-release`
-- `update-dependencies: /update-dependencies`
+- `run-release: /run-release`
+- `update-dependencies-latest: /update-dependencies-latest`
 
 ### 4. Workspaces
 
 - ไม่ใช่ monorepo: workspace เดียวคือ root (`%APPDATA%\devin\skills\`)
+- Submodules: `ask-requirement`, `analyze-codebase-quality`, `visualize-devin`
 
 ### 5. Safety
 

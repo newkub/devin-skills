@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log ล่าสุดและ restore ข้อมูลจาก commits
 ---
@@ -44,7 +44,8 @@ description: อัปเดต root project โดยเช็ค git log ล�
 1. ทำ `/update-agents-md` เพื่ออัปเดต root `AGENTS.md`
 2. ทำ `/update-readme` เพื่ออัปเดต root `README.md`
 3. ทำ `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
-4. ตรวจว่า root docs ครบถ้วนและถูกต้อง
+4. ทำ `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
+5. ตรวจว่า root docs ครบถ้วนและถูกต้อง
 
 ### 4. Validate And Report
 
@@ -68,13 +69,13 @@ description: อัปเดต root project โดยเช็ค git log ล�
 
 - แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`)
 - ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-workspace` ใน workspace นั้น
+- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-code` ใน workspace นั้น
 
 ### 3. No Commit
 
 - `update-project` ไม่ commit การเปลี่ยนแปลง
-- ให้ `/ship-repo` เป็นผู้ commit หลัง `update-project` เสร็จ
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
+- ถ้าใช้ใน monorepo → เรียก `/ship-code` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
 ## Expected Outcome
 

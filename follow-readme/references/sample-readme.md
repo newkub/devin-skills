@@ -272,7 +272,7 @@ git checkout -b feature/my-workflow
 ```
 
 2. Follow `/follow-write-devin-skills` for workflow structure
-3. Follow `/follow-content-quality` for content standards
+3. Follow `/review-writing` for content standards
 4. Test workflows thoroughly before submitting
 5. Commit your changes
 

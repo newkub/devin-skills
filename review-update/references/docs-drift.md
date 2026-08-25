@@ -52,4 +52,4 @@
 - `update-contributing-md` สำหรับ `CONTRIBUTING.md`
 - `update-changelog-md` สำหรับ `CHANGELOG.md`
 - `run-release` สำหรับ `RELEASE.md`
-- `update-spec-md` สำหรับ `spec/SPEC.md`
+- `update-test` สำหรับ `spec/SPEC.md`

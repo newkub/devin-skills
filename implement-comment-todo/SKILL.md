@@ -15,7 +15,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ### 1. Discovery And Inventory
 
-> Goal: Discovery And Inventory
+> Goal: รวบรวมทุกสิ่งที่ต้อง implement จริง
 
 ค้นหาและรวบรวมทุกสิ่งที่ต้อง implement จริง
 
@@ -26,7 +26,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ### 2. Code Modification
 
-> Goal: Code Modification
+> Goal: แก้ไข code ด้วย file editing tools เท่านั้น
 
 แก้ไข code ด้วย file editing tools เท่านั้น
 
@@ -38,7 +38,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ### 3. Validation
 
-> Goal: Validation
+> Goal: ยืนยันไม่มี TODO เหลือและ code ใช้งานได้จริง
 
 ตรวจสอบว่าไม่มี TODO เหลือและ code ใช้งานได้จริง
 
@@ -46,14 +46,9 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ## Rules
 
-### 1. No Execution
+### 1. Edit Only
 
-ห้ามรัน command ใดๆ ทำเฉพาะ file editing operations
-
-- ห้ามรัน `run_command` ใดๆ
-- ห้ามรัน background process
-- ห้ามเปิด `browser_preview`
-- ใช้เฉพาะ `edit`, `multi_edit`, `write_to_file`, `read_file`
+ทำตาม `/edit-only` สำหรับ edit-only constraints ทั้งหมด (ห้ามรัน command, ใช้เฉพาะ file editing tools)
 
 ### 2. No Placeholder Code
 
@@ -66,12 +61,12 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 ### 3. Code Quality
 
-รักษาคุณภาพโค้ดตามมาตรฐาา
+รักษาคุณภาพโค้ดตามมาตรฐาน
 
 - ผ่าน linting rules ทั้งหมด
 - ผ่าน type checking ไม่มี errors
 - ใช้ import และ export strategy ตาม `/follow-import-export`
-- ทำตาม `/follow-code-quality`
+- ทำตาม `/review-quality`
 
 ## Expected Outcome
 

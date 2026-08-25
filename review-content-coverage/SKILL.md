@@ -90,7 +90,7 @@ research ข้อมูลจากแหล่งต่างๆ ตามล�
 
 ### 2. Content Quality
 
-- ทำ `/follow-content-quality` สำหรับจัดรูปแบบและคุณภาพเนื้อหา
+- ทำ `/review-writing` สำหรับจัดรูปแบบและคุณภาพเนื้อหา
 - ใช้ kebab-case สำหรับชื่อไฟล์
 - จัดลำดับ content ตาม logical flow
 - ใช้ index files สำหรับ organization

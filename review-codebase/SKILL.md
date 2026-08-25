@@ -17,7 +17,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 
 > Goal: ตรวจสอบคุณภาพ codebase และอ่าน context ก่อนรัน review
 
-1. ทำ `/run-check` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
+1. ทำ `/run-verify` เพื่อรัน lint, typecheck และ scan — ถ้าพบ errors ให้ทำ `/resolve-errors` ก่อน
 2. ทำ `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
 3. อ่าน `AGENTS.md`, `.devin/rules.md` และ `tools/review/README.md` เพื่อเข้าใจ project context
 4. ระบุสิ่งที่จะ review (code file, content, docs, config, workflow, ฯลฯ) และ scope: ไฟล์ที่เกี่ยวข้อง, modules, sections
@@ -67,7 +67,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 > Goal: รัน review เฉพาะทางถ้าจำเป็น
 
 1. ถ้ามี PR ที่กำลัง review → ทำ `/review-github-pr`
-2. ถ้าต้องการ review global Devin skills → ทำ `/review-all-skills`
+2. ถ้าต้องการ review global Devin skills → ทำ `/review-devin-global-skills`
 
 ### 6. Validate Findings And Provide Recommendations
 
@@ -100,7 +100,7 @@ Review codebase ครบทุกมิติโดยใช้ review CLI แ�
 2. รัน `bunx jscpd`, `bunx knip`, `bunx madge --circular` สำหรับ code duplication, unused exports, circular dependencies
 3. จัดลำดับ priority ตาม impact ก่อน effort
 4. ทำ review-* skills ตาม findings เพื่อ review และปรับปรุงตาม context
-5. ทำ `/validate` และ `/run-check` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+5. ทำ `/validate` และ `/run-verify` — ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules
 

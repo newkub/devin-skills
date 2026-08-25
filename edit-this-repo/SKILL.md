@@ -55,7 +55,7 @@ description: แก้ไข files ใน repository ปัจจุบันอ
 > Goal: เก็บ changes ไว้อย่างชัดเจน
 
 1. ทำ `/git-commit` สำหรับ changes ทีสำคัญ
-2. ใช้ `/ship-workspace` เมื่องานเสร็จ
+2. ใช้ `/ship-code` เมื่องานเสร็จ
 3. ไม่ stage files ที่ไม่เกี่ยวข้อง
 
 ## Rules

@@ -57,7 +57,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
    - เพิ่ม `examples/` สำหรับ APIs ที่ขาด
 3. สำหรับ documentation: เพิ่ม sections ที่ขาด
 4. สำหรับ code: เพิ่ม tests สำหรับ edge cases ที่ขาด
-5. ทำ `/follow-content-quality` สำหรับ content ใหม่ทุกชิ้น
+5. ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
 6. ถ้าต้องเขียน >10 ไฟล์ → ทำ `/use-scripts`
 
 ### 5. Verify Completeness
@@ -94,7 +94,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
 
 ### 3. Content Quality
 
-- ทำ `/follow-content-quality` สำหรับ content ใหม่ทุกชิ้น
+- ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
@@ -109,6 +109,6 @@ description: ทำให้ครอบคลุม ตรวจและเต
 
 - content, skill, หรือ code ครอบคลุมทุก features, APIs, use cases, references, และ edge cases
 - gaps ทั้งหมดถูกเติมให้ครบ พร้อม before-after comparison
-- ไฟล์ใหม่ทุกไฟล์ผ่าน `/follow-content-quality` ไม่เกิน 250 บรรทัด
+- ไฟล์ใหม่ทุกไฟล์ผ่าน `/review-writing` ไม่เกิน 250 บรรทัด
 - references ครบถ้วน ไม่มี missing/unused
 - รายงาน coverage before-after ชัดเจน พร้อม next actions

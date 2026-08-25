@@ -139,7 +139,7 @@ argument-hint: "[skill-name]"
 - ทุก `update-*` skill ต้องมี `review-*` skill คู่กัน — review ก่อน update เสมอ
 - ถ้ายังไม่มี `review-*` สำหรับ `update-*` นั้น → สร้าง `review-*` ก่อน โดยใช้ `/follow-write-devin-skills`
 - ชื่อ `review-*` ไม่จำเป็นต้องตรงกับ `update-*` ทุกตัว แต่ต้องอ้างถึงกันผ่าน `## Execute` ของ `update-*` ที่เรียก `review-*` ก่อนดำเนินการ
-- ตัวอย่าง: `update-devin-global-skills` เรียก `review-devin-skills` ก่อน, `update-docs` เรียก `review-docs` ก่อน, `update-readme` เรียก `review-readme` ก่อน
+- ตัวอย่าง: `update-devin-global-skills` เรียก `review-devin-global-skills` ก่อน, `update-docs` เรียก `review-docs` ก่อน, `update-readme` เรียก `review-readme` ก่อน
 
 ## Expected Outcome
 

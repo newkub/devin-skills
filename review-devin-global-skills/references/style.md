@@ -7,7 +7,7 @@
 - ใช้ backticks สำหรับ `tools` (เช่น `/scan-codebase`, `/validate`)
 - ใช้ backticks สำหรับ `commands` (เช่น `npm run lint`, `bun install`)
 - ใช้ backticks สำหรับ `paths` (เช่น `SKILL.md`, `references/index.md`)
-- ใช้ backticks สำหรับ `skill-name` (เช่น `update-devin-global-skills`, `review-all-skills`)
+- ใช้ backticks สำหรับ `skill-name` (เช่น `update-devin-global-skills`, `review-devin-global-skills`)
 - ถ้าพบ tools/commands/paths/skill-name ที่ไม่มี backticks → flag เป็น Medium
 
 ## Bold Markers

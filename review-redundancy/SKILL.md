@@ -10,7 +10,7 @@ argument-hint: "[scope]"
 
 ## Scope
 
-ใช้เมื่อต้องการ audit redundancy ของ skills ใน `%APPDATA%\devin\skills` ครอบคลุม duplicate purpose, overlapping scope, redundant content และ unused skills ไม่ใช่ review quality ทั่วไป (ใช้ `/review-all-skills`)
+ใช้เมื่อต้องการ audit redundancy ของ skills ใน `%APPDATA%\devin\skills` ครอบคลุม duplicate purpose, overlapping scope, redundant content และ unused skills ไม่ใช่ review quality ทั่วไป (ใช้ `/review-devin-global-skills`)
 
 ## Execute
 
@@ -75,7 +75,7 @@ argument-hint: "[scope]"
 > Goal: ดำเนินการตาม recommendations หลัง user ยืนยัน
 
 1. ทำ `/ask-me` เพื่อยืนยัน actions ก่อนดำเนินการ
-2. สำหรับ merge → ทำ `/refactor-devin-skills`
+2. สำหรับ merge → ทำ `/review-devin-global-skills`
 3. สำหรับ rename → ทำ `/rename` แล้ว `/update-reference`
 4. สำหรับ remove → ทำ `/delete` แล้ว `/update-reference`
 5. ทำ `/validate` หลังจบทุก action
@@ -105,7 +105,7 @@ argument-hint: "[scope]"
 
 ### 4. Scope Boundary
 
-- ไม่รวม review quality ทั่วไป — อยู่ใน `/review-all-skills`
+- ไม่รวม review quality ทั่วไป — อยู่ใน `/review-devin-global-skills`
 - ไม่รวม review consistency — อยู่ใน `/review-consistency`
 - เน้นเฉพาะ redundancy: duplicate, overlap, unused
 

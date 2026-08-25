@@ -63,7 +63,7 @@ description: เรียนรู้จาก references directory และ ex
 3. เขียน API references ครอบคลุม endpoints, methods, parameters, responses
 4. เขียน key-concepts อธิบาย `why` และ `how` นอกจาก `what`
 5. เขียน principles สำหรับ best practices
-6. ทำ `/follow-content-quality` สำหรับ content ใหม่ทุกชิ้น
+6. ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
 7. ถ้าต้องเขียน >10 ไฟล์ → ทำ `/use-scripts`
 
 ### 6. Verify And Update
@@ -93,7 +93,7 @@ description: เรียนรู้จาก references directory และ ex
 
 ### 3. Content Quality
 
-- ทำ `/follow-content-quality` สำหรับ content ใหม่ทุกชิ้น
+- ทำ `/review-writing` สำหรับ content ใหม่ทุกชิ้น
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
@@ -109,6 +109,6 @@ description: เรียนรู้จาก references directory และ ex
 - ความรู้จาก `references/` ถูกสกัดและ cross-check กับ external sources
 - content ครอบคลุมทุก features, APIs, use cases ที่อ้างถึงใน references
 - gaps ทั้งหมดถูกเติมให้ครบผ่าน `/follow-coverage`
-- ไฟล์ใหม่ทุกไฟล์ผ่าน `/follow-content-quality` ไม่เกิน 250 บรรทัด
+- ไฟล์ใหม่ทุกไฟล์ผ่าน `/review-writing` ไม่เกิน 250 บรรทัด
 - references ครบถ้วน ไม่มี missing/unused
 - รายงาน content ที่เขียนและ coverage ที่เพิ่มขึ้นชัดเจน

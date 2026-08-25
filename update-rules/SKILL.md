@@ -15,7 +15,7 @@ description: อัพเดท rules ทั้ง .devin/rules และ ast-gr
 
 ### 1. Update Devin Rules
 
-> Goal: Update Devin Rules
+> Goal: อัพเดท devin rules
 
 อัพเดท `.devin/rules/` ทั้ง 3 subdirectories ตาม project analysis และ dependencies จริง
 
@@ -38,25 +38,23 @@ description: อัพเดท rules ทั้ง .devin/rules และ ast-gr
 
 ### 3. Update AGENTS.md
 
-> Goal: Update AGENTS.md
+> Goal: อัพเดท `AGENTS.md`
 
 อัพเดท `AGENTS.md` ให้สอดคล้องกับ rules ที่อัพเดท
 
 1. ทำ `/update-agents-md` เพื่อเขียน `AGENTS.md` ตาม project analysis และ dependencies ล่าสุด
 2. ตรวจสอบว่า `AGENTS.md` ระบุ workflows และ skills ที่สอดคล้องกับ rules ใหม่
 3. ตรวจสอบว่า root และ workspace `AGENTS.md` อัพเดทครบถ้วน
-ImprovVdat
+
 ### 4. Validate And Finalize
 
-> Goal: Validate And Finalize
-ปรับปรุงและ
+> Goal: ยืนยัน rules ทั้งสองระบบถูกต้องและสอดคล้องกัน
 
-1.ำ `/review-rules` เพื่อปรบปรุ rule files ใ้สบูรณ์ สอค้องกับpojt ไม่ซ้ำซ้อนตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
-2
-3. รัน `bun run scan` เพื่อตรวจสอบ ast-grep rules ทำงานได้
-4. รัน `bun run typecheck` เพื่อตรวจสอบไม่มี type errors จากการเปลี่ยนแปลง
-5. รัน `bun run lint` เพื่อตรวจสอบไม่มี lint errors
-4. ตรวจสอบว่า rules ทั้งสองระบบ (devin และ ast-grep) สอดคล้องกัน
+1. ทำ `/review-rules` เพื่อปรับปรุง rule files ให้สมบูรณ์ สอดคล้องกับ project ไม่ซ้ำซ้อน และตรวจสอบความถูกต้องของ rules ทั้งหมดและ references
+2. รัน `bun run scan` เพื่อตรวจสอบ ast-grep rules ทำงานได้
+3. รัน `bun run typecheck` เพื่อตรวจสอบไม่มี type errors จากการเปลี่ยนแปลง
+4. รัน `bun run lint` เพื่อตรวจสอบไม่มี lint errors
+5. ตรวจสอบว่า rules ทั้งสองระบบ (devin และ ast-grep) สอดคล้องกัน
 
 ## Rules
 

@@ -67,7 +67,7 @@ description: แนวทางการสร้างและจัดกา�
 1. รัน `run-typecheck` เพื่อตรวจสอบ type safety
 2. รัน `run-lint` เพื่อตรวจสอบ code quality
 3. ทำ `/check-circular-dependencies` เพื่อตรวจสอบ circular dependencies
-4. ตรวจสอบว่าไม่มี unused exports โดยใช้ `run-check` หรือ `knip`
+4. ตรวจสอบว่าไม่มี unused exports โดยใช้ `run-verify` หรือ `knip`
 5. ตรวจสอบว่า tree-shaking ยังทำงานได้ (ไม่มี side effects ใน barrel file)
 
 ## Rules

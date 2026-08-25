@@ -35,11 +35,12 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 
 > Goal: ตรวจสอบ folder domain grouping
 
-1. ทำ `/follow-folder-quality` เพื่อประเมิน folder quality
+1. นับไฟล์ต่อโฟลเดอร์ด้วย `/use-scripts` (threshold 20 ไม่รวม test/generated) ระบุ bloat
 2. ตรวจสอบ domain grouping ตาม [references/folder-grouping.md](references/folder-grouping.md)
 3. ตรวจสอบ mixed concerns: logic, test, config, generated ปนกัน
 4. ตรวจสอบ nesting depth: เกิน 5 ระดับ หรือ flat เกินไป
-5. บันทึก: folder, file count, quality issues, restructure candidate, priority
+5. ตรวจสอบ import boundaries ด้วย `sg outline --items imports <paths>`
+6. บันทึก: folder, file count, quality issues, restructure candidate, priority
 
 ### 4. Analyze Long Files
 

@@ -138,7 +138,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/deep-review` — errors มาก ต้องจัดลำดับ
 - `/debug-issue` — ยังไม่พบ root cause
 - `/deep-debug` — error ซับซ้อน ต้องวางแผนแก้และป้องกันซ้ำ
-- `/run-check` — รัน lint + typecheck + scan รวม
+- `/run-verify` — รัน lint + typecheck + scan รวม
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน
 - `/watch-browser-console` — error มาจาก browser console
 - `/update-reference` — fix กระทบ references ในหลายไฟล์

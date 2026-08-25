@@ -55,14 +55,14 @@ argument-hint: "[skill-name]"
 1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
 2. ทำ `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 3. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
-4. ทำ `/follow-content-quality` เพื่อตรวจสอบความชัดเจน
+4. ทำ `/review-writing` เพื่อตรวจสอบความชัดเจน
 5. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
 
 ### 6. Ship
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-workspace`
+1. ทำ `/ship-code`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -1,16 +1,16 @@
 ﻿---
 name: update-test
-description: อัปเดต test suite ให้ครอบคลุม มีคุณภาพ และตรง conventions
+description: อัปเดต test suite และ spec/SPEC.md ให้ครอบคลุม มีคุณภาพ และตรง conventions
 auto_execution_mode: 3
 ---
 
 ## Goal
 
-เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language
+เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language พร้อม sync `spec/SPEC.md` ให้ตรงกับ tests และ code ปัจจุบัน
 
 ## Scope
 
-เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/follow-content-quality` เพื่อคุณภาพเนื้อหา ทำตาม `/follow-write-devin-skills` สำหรับ structure และ conventions
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา ทำตาม `/follow-write-devin-skills` สำหรับ structure และ conventions
 
 ## Execute
 
@@ -113,13 +113,18 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
-### 8. Sync And Verify
+### 8. Sync Spec And Verify
 
-> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
+> Goal: อัพเดท `spec/SPEC.md` ให้สอดคล้องกับ tests และ code ปัจจุบัน
 
-1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
-2. ทำ `/update-test` เพื่อตรวจความสอดคล้อง
-3. ถ้า fail → retry (max 3 → stop/report)
+1. อ่าน `spec/SPEC.md` หรือ `spec/overview.md` และ test files ทั้งหมดใน `tests/`
+2. เพิ่ม test cases ใหม่ที่เขียนแล้ว ลบ test cases ที่เลิกใช้ แก้ status (todo/in-progress/done)
+3. อัปเดต coverage targets ถ้ามีการเปลี่ยน
+4. สรุป test cases แบบกระชับ ไม่คัดลอกเนื้อหา tests มาทั้งหมด
+5. ระบุ test file หรือ test name ที่เกี่ยวข้องด้วย backticks
+6. แยกไฟล์ถ้า `spec/SPEC.md` เกิน 250 บรรทัด
+7. ทำ `/validate` เพื่อตรวจ structure และ `/check-reference` เพื่อยืนยันไฟล์ที่อ้างถึงมีอยู่จริง
+8. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
 
@@ -203,6 +208,13 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Mock dependencies: mock service layer, auth, database, external APIs
 - Test input -> output mapping: ส่ง input ผ่าน handler แล้วตรวจสอบ output
 - Test error fallback: เมื่อ service throw ต้อง return fallback ที่ถูกต้อง
+
+### 10. Spec Sync Rules
+
+- spec ต้องอัปเดตหลัง tests เปลี่ยนเสมอ ไม่อัปเดต spec ก่อน test ลอยๆ
+- ไม่คัดลอกเนื้อหา tests มาทั้งหมด สรุป test cases ในรูปแบบกระชับ
+- `spec/SPEC.md` ไม่เกิน 250 บรรทัด ถ้าใหญ่กว่านั้นแยกเป็นไฟล์ย่อย
+- ระบุ test file หรือ test name ที่เกี่ยวข้องด้วย backticks
 
 ## Expected Outcome
 

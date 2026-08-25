@@ -58,7 +58,7 @@ argument-hint: "[target]"
 
 1. รัน script ใน execute mode
 2. ตรวจสอบ report จาก script
-3. ทำ `/run-check` เพื่อตรวจสอบ lint, typecheck, และ scan
+3. ทำ `/run-verify` เพื่อตรวจสอบ lint, typecheck, และ scan
 4. ถ้ามี errors → ทำ `/resolve-errors` (max 3 ครั้ง → rollback และ report)
 5. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
 
@@ -68,7 +68,7 @@ argument-hint: "[target]"
 
 1. ลบ scripts จาก `$env:TEMP`
 2. ลบ backup files หลังยืนยันว่าการแก้ไขผ่านทุก validation
-3. ทำ `/ship-workspace`
+3. ทำ `/ship-code`
 4. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -103,6 +103,6 @@ argument-hint: "[target]"
 
 - ไฟล์ถูกแก้ไขผ่าน scripts ที่ reproducible และตรวจสอบได้
 - มี dry run และ backup ก่อน execute จริง
-- การแก้ไขผ่าน `/run-check` และ `/update-reference`
+- การแก้ไขผ่าน `/run-verify` และ `/update-reference`
 - Scripts ชั่วคราวถูกลบหลังใช้งาน
 - มี audit trail ของการเปลี่ยนแปลง

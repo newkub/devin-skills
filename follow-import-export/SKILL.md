@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-import-export
 description: จัดการ import strategy และ barrel exports สำหรับ module public API
 ---
@@ -79,7 +79,7 @@ description: จัดการ import strategy และ barrel exports สำ�
 1. รัน `/run-typecheck` เพื่อตรวจสอบ type safety
 2. รัน `/run-lint` เพื่อตรวจสอบ code quality และ unused imports
 3. รัน build ตรวจสอบว่าไม่มี build errors
-4. ตรวจสอบ unused exports โดยใช้ `/run-check` หรือ `knip`
+4. ตรวจสอบ unused exports โดยใช้ `/run-verify` หรือ `knip`
 5. ตรวจสอบ tree-shaking: ไม่มี side effects ใน barrel file และใช้ named imports แทน namespace imports
 6. ถ้าเหมาะสม → ใช้ dynamic imports สำหรับ code splitting และตรวจสอบ bundle size impact
 7. ยืนยันว่า functionality ทั้งหมดยังทำงานได้ปกติ

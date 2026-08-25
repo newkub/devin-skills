@@ -1,5 +1,5 @@
 ---
-name: follow-devin
+name: follow-tool-devin
 description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
 ---
 

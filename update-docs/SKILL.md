@@ -58,7 +58,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 3. sidebar:
    - `/project/` — overview, features, workspaces (monorepo)
    - `/getting-started/` — installation, usage
-   - `/roadmap/` — index, idea-features (ถ้ามี)
+   - `/roadmap/` — index, `idea-features` (ถ้ามี)
    - `/development/` — setup, architecture, workflows, testing
    - `/references/` — index + ตาม distribution type
 4. ใช้ `collapsed: true` เมื่อหมวดมีหลายหน้า
@@ -80,7 +80,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 10. `references/index.md`: สรุป references
 11. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 
-### 5. Integrate update-features
+### 5. Integrate `update-features`
 
 > Goal: หน้า existing features ถูกต้อง
 
@@ -90,7 +90,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
 5. ไม่ต้องมี dropdown ใช้ heading และ bullet ธรรมดา
 
-### 6. Integrate idea-features
+### 6. Integrate `idea-features`
 
 > Goal: หน้า idea features ถูกต้อง
 
@@ -104,7 +104,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 
 > Goal: เนื้อหาอ่านง่าย สม่ำเสมอ ไม่ซ้ำ
 
-1. ทำ `/follow-content-quality`
+1. ทำ `/review-writing`
 2. ตรวจ heading structure, frontmatter, links
 3. แก้ไขซ้ำซ้อนหรือ placeholder
 

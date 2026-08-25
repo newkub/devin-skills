@@ -1,5 +1,5 @@
 ---
-name: sumrize-this-project
+name: summarize-this-project
 description: สรุป project ปัจจุบัน features และ solutions
 argument-hint: "[target]"
 ---

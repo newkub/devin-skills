@@ -31,7 +31,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 
 > Goal: ตรวจสอบและปรับปรุงคุณภาพการเขียน
 
-ดู `references/writing-quality.md` สำหรับรายการตรวจสอบละเอียด
+ดู `references/writing-quality.md` และ `references/content-quality.md` สำหรับรายการตรวจสอบละเอียด
 
 1. ตรวจ documentation: `README`, docs, API docs — structure, heading hierarchy, navigation
 2. ตรวจ code comments: complex logic มี comment ครบ, ลด obvious/stale comments, เปลี่ยน what → why

@@ -52,7 +52,7 @@
 
 - `sg outline --view expanded --type function <paths>` สำหรับ function signatures
 - `sg outline --view signatures --type function <paths>` สำหรับ return types
-- `/follow-function-quality` สำหรับ comprehensive function quality scan
+- `/check-code-structure` สำหรับ top-level function scan
 
 ## Severity
 

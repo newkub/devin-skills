@@ -54,7 +54,7 @@ description: ตั้งค่าและติดตาม CI/CD pipeline ต
 > Goal: ตรวจสอบ pipeline ก่อน commit
 
 1. ทำ `/validate` เพื่อตรวจ syntax และ config
-2. ทำ `/run-check` ถ้า local สามารถรันได้
+2. ทำ `/run-verify` ถ้า local สามารถรันได้
 3. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไป Step 3
 
 ### 6. Commit

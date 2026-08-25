@@ -64,7 +64,7 @@ description: อัพเดท .devin/rules ตาม project analysis แล�
 
 1. ระบุ dependencies ที่มี version เปลี่ยนแปลงหรือเพิ่มใหม่จาก `package.json`
 2. ทำ `/report-release-changelog` โดยระบุ repo และ tags (from → to) ของแต่ละ dependency
-4. นำข้อมูล breaking changes, new features, และ anti-patterns มาปรับปรุง rules ใน `.devin/rules/always-on/libs/`
+3. นำข้อมูล breaking changes, new features, และ anti-patterns มาปรับปรุง rules ใน `.devin/rules/always-on/libs/`
 
 ### 5. Update Model Decision Rules
 

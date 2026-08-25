@@ -36,7 +36,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 > Goal: ระบุ mock/stub/placeholder ที่ต้องแปลงก่อน `implement-mock`
 
-1. ใช้ `Grep` ค้นหา patterns: `MOCK`, `FAKE`, `STUB`, `mock_`, `fake_`, `stub_`, `InMemory`
+1. ทำ `/review-realize-implementation` เพื่อหา MOCK, FAKE, STUB, placeholder ทั้งหมด
 2. จัดกลุ่มตามประเภท: database, API, service, external dependency
 3. ระบุแต่ละ mock มี file path, line number, และ replacement plan
 4. ตรวจสอบว่า mock อยู่ใน production path หรือ test-only
@@ -46,11 +46,10 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 > Goal: ระบุ TODO/FIXME/HACK ที่ต้องแปลงก่อน `implement-comment-todo` และ `implement-todo-md`
 
-1. ใช้ `Grep` ค้นหา `TODO`, `FIXME`, `XXX`, `HACK` ใน source code
-2. ค้นหา TODO items ใน markdown files: `TODO.md`, `ROADMAP.md`, `QUEUE.md`
-3. จัดกลุ่มตาม priority และ dependencies
-4. ระบุแต่ละ TODO มี file path, line number, และ context
-5. ดูรายละเอียดใน [references/todo-inventory.md](references/todo-inventory.md)
+1. ทำ `/review-realize-implementation` เพื่อหา TODO, FIXME, XXX, HACK ทั้งใน source และ markdown
+2. จัดกลุ่มตาม priority และ dependencies
+3. ระบุแต่ละ TODO มี file path, line number, และ context
+4. ดูรายละเอียดใน [references/todo-inventory.md](references/todo-inventory.md)
 
 ### 5. Validate Queue And GitHub Tasks
 
