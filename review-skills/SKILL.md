@@ -4,6 +4,8 @@ description: ตรวจสอบ skill package แต่ละตัวก่�
 related:
   - update-skills
   - follow-write-devin-skills
+  - follow-content-quality
+  - simplify
   - review-all-skills
   - validate
   - check-reference
@@ -95,7 +97,30 @@ Review skill package แต่ละตัวใน devin skills repo ก่อ�
 2. ตรวจ markdown links ใน SKILL.md ชี้ไปยังไฟล์ที่มีอยู่จริง
 3. บันทึก findings พร้อม evidence
 
-### 8. Score And Report
+### 8. Check Content Quality
+
+> Goal: เนื้อหากระชับ ไม่ซ้ำซ้อน ไม่มี noise ทุก bullet มี impact จริง
+
+ดู `references/content-quality.md` สำหรับ simplify, high-impact content และ clarity rules
+
+1. ทำ `/follow-content-quality` ∥ `/simplify` เพื่อกระชับเนื้อหา
+2. ตรวจเนื้อหาซ้ำซ้อนระหว่าง `Execute` และ `Rules`
+3. ตรวจทุก bullet ว่ามี impact จริง — ถ้าไม่มี → ลบ
+4. ตรวจ active voice และ validation criteria ที่ measurable
+5. บันทึก findings พร้อม evidence
+
+### 9. Check Parallel And Script Usage
+
+> Goal: ลด tool calls โดยรักษา safety
+
+ดู `references/parallel-usage.md` สำหรับ parallel markers และ script usage rules
+
+1. ตรวจ `parallel:` และ `∥` ใช้เฉพาะใน `Execute` numbered list
+2. ตรวจว่าไม่ใช้ `∥` ใน validation checklist, Rules bullets หรือ Expected Outcome
+3. ถ้า operations > 10 ไฟล์ → แนะนำ `/use-scripts`
+4. บันทึก findings พร้อม evidence
+
+### 10. Score And Report
 
 > Goal: สรุป review score และ findings
 
