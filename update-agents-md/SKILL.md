@@ -96,4 +96,4 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
 - ผ่าน `/review-rules` และ `/validate`
-- มี commit พร้อม next action
+- มี commit พร้อม next action ทำตาม `/update-devin-global-skills`
