@@ -39,7 +39,7 @@ description: Core workflow for analyze-codebase-quality
 > Goal: ได้ report ทีถูกต้อง
 
 1. อ่าน `src/SKILL.md` เพื่อ build และ run CLI
-2. ถ้า CLI ไม่พร้อม → build เอง: `bun run build` แล้ว `bun run --cwd apps/cli start -- [path] [options]`
+2. ถ้า CLI ไม่พร้อม → build เอง: `bun run --cwd src build` แล้ว `bun run --cwd src start -- [path] [options]`
 3. รอผลลัพธ์และบันทึกไฟล์ถ้ามี `--output`
 
 ### 4. Report

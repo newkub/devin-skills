@@ -1,6 +1,10 @@
 ---
 name: analyze-codebase-quality
 description: วิเคราะห์คุณภาพของ codebase ด้วย analyze-codebase-quality CLI
+related:
+  - validate
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

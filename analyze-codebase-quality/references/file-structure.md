@@ -10,6 +10,7 @@ description: โครงสร้างไฟล์ของ analyze-codebase-q
 ## Required Files
 
 - `SKILL.md` ไฟล์หลัก เรียก `references/skill-me`
+- `references/index.md` ดัชนีรายการ references
 - `references/skill-me.md` เนื้อหาหลักของ skill
 - `references/file-structure.md` เอกสารโครงสร้าง (this file)
 - `src/SKILL.md` สำหรับ build และ run CLI
