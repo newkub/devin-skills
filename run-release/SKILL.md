@@ -1,15 +1,15 @@
 ---
 name: run-release
-description: Auto-detect platforms, release ไปยัง external platforms และ gen RELEASE.md และ CHANGELOG.md อัตโนมัติ
+description: Auto-detect platforms, release ไปยัง external platforms และ gen RELEASE.md อัตโนมัติ
 ---
 
 ## Goal
 
-Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `RELEASE.md` จาก git tags และ `CHANGELOG.md` จาก git commits ด้วย Bun Shell
+Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `RELEASE.md` จาก git tags ด้วย Bun Shell
 
 ## Scope
 
-Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `RELEASE.md` จาก git tags และ `CHANGELOG.md` จาก git commits
+Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `RELEASE.md` จาก git tags
 
 ## Execute
 
@@ -83,20 +83,16 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. `docker`: รัน `docker build` และ `docker push`
 6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
 
-### 7. Generate RELEASE.md And CHANGELOG.md
+### 7. Generate RELEASE.md
 
-> Goal: Gen RELEASE.md และ CHANGELOG.md จาก git tags และ commits ด้วย Bun Shell ไม่แก้ไขด้วยมือ
+> Goal: Gen RELEASE.md จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ
 
 1. รัน script ด้านล่างเพื่อ gen `RELEASE.md` จาก `git tag --sort=-version:refname`:
 ```bash
 bun -e 'const { stdout: tags } = await Bun.$`git tag --sort=-version:refname`.quiet(); const tagsStr = String(tags).trim(); if (!tagsStr) { const { stdout: date } = await Bun.$`git log -1 --format=%ad --date=short`.quiet(); const dateStr = String(date).trim(); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: v0.0.0 (${dateStr})\n\n## All Releases\n\nNo releases yet.\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); } else { const { stdout: latestTag } = await Bun.$`git describe --tags --abbrev=0`.quiet(); const latestTagStr = String(latestTag).trim(); const { stdout: tagDate } = await Bun.$`git log -1 --format=%ad --date=short ${latestTagStr}`.quiet(); const lines = tagsStr.split("\n").slice(0, 10); let table = "| Version |\n|---------|\n"; lines.forEach(tag => { table += `| ${tag} |\n`; }); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: ${latestTagStr} (${tagDate.trim()})\n\n## All Releases\n\n${table}\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); }'
 ```
-2. รัน script ด้านล่างเพื่อ gen `CHANGELOG.md` จาก `git log` (auto-detect GitHub URL จาก `git remote get-url origin`):
-```bash
-bun -e 'const { stdout: remote } = await Bun.$`git remote get-url origin`.quiet(); const remoteStr = String(remote).trim(); const match = remoteStr.match(/github\.com[:/]([^\/]+)\/([^\/\s]+)/); const repo = match ? `${match[1]}/${match[2].replace(/\.git$/, "")}` : "repo/repo"; const { stdout: commits } = await Bun.$`git log --pretty=format:"%h|%s" --no-merges -10`.quiet(); const { stdout: latestTag } = await Bun.$`git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"`.quiet(); const { stdout: date } = await Bun.$`git log -1 --format=%ad --date=short`.quiet(); const lines = String(commits).trim().split("\n"); let table = "| Hash | Change |\n|------|--------|\n"; lines.forEach(line => { const sep = line.indexOf("|"); const hash = line.slice(0, sep); const msg = line.slice(sep + 1); table += `| [${hash}](https://github.com/${repo}/commit/${hash}) | ${msg} |\n`; }); const changelog = `# Changelog\n\n*Generated on ${new Date().toISOString()}*\n\n## ${String(latestTag).trim()} (${String(date).trim()})\n\n${table}\n\n> See full changelog at [GitHub Repository](https://github.com/${repo}/commits/main)\n`; await Bun.write("CHANGELOG.md", changelog); console.log("CHANGELOG.md generated!");'
-```
-3. อ่าน `RELEASE.md` และ `CHANGELOG.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers, commit messages และ dates ถูกต้อง
-4. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `RELEASE.md` หรือ `CHANGELOG.md` ด้วยมือ
+2. อ่าน `RELEASE.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
+3. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `RELEASE.md` ด้วยมือ
 
 ## Rules
 
@@ -133,16 +129,14 @@ bun -e 'const { stdout: remote } = await Bun.$`git remote get-url origin`.quiet(
 - รัน `chrome-webstore-upload validate` ก่อน publish สำหรับ webstore
 - รัน `docker build --no-cache` สำหรับ build ใหม่ทั้งหมด
 
-### 5. RELEASE.md And CHANGELOG.md Generation
+### 5. RELEASE.md Generation
 
-- `RELEASE.md` และ `CHANGELOG.md` เกิดจากการ gen ด้วย Bun Shell เท่านั้น
-- `RELEASE.md` อ่านจาก `git tag --sort=-version:refname`
-- `CHANGELOG.md` อ่านจาก `git log --pretty=format:"%h|%s" --no-merges -10` และ auto-detect GitHub URL จาก `git remote get-url origin`
-- ห้ามแก้ไข `RELEASE.md` หรือ `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
+- `RELEASE.md` เกิดจากการ gen ด้วย Bun Shell จาก `git tag --sort=-version:refname` เท่านั้น
+- ห้ามแก้ไข `RELEASE.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
 - ใช้ `Bun.$` สำหรับ shell commands และ `Bun.write()` สำหรับ write file
 - ใช้ semantic versioning format: `vX.Y.Z` (เช่น `v1.0.0`, `v1.2.3`)
 - ใช้ annotated tags สำหรับ releases
-- สำหรับ projects ที่ต้องการ conventional commits grouping และ monorepo support ให้ใช้ `/follow-tool-changelogen` แทน Bun Shell script
+- สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน Bun Shell script
 
 ## Expected Outcome
 
@@ -152,4 +146,3 @@ bun -e 'const { stdout: remote } = await Bun.$`git remote get-url origin`.quiet(
 - Changelog ถูกสร้างอัตโนมัติ
 - Git tags ถูกสร้างอัตโนมัติ
 - `RELEASE.md` ถูก gen จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ
-- `CHANGELOG.md` ถูก gen จาก git commits ด้วย Bun Shell พร้อม auto-detect GitHub URL ไม่แก้ไขด้วยมือ

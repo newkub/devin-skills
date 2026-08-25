@@ -50,5 +50,6 @@
 - `update-readme` สำหรับ `README.md`
 - `update-agents-md` สำหรับ `AGENTS.md`
 - `update-contributing-md` สำหรับ `CONTRIBUTING.md`
-- `run-release` สำหรับ `RELEASE.md` และ `CHANGELOG.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
+- `run-release` สำหรับ `RELEASE.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
+- `follow-tool-changelogen` สำหรับ `CHANGELOG.md`
 - `update-test` สำหรับ `spec/SPEC.md`

@@ -48,7 +48,7 @@
 
 ## Changelog Checks
 
-- ตรวจ `CHANGELOG.md` ที่ gen โดย `/run-release` สำหรับ format และ grouping
+- ตรวจ `CHANGELOG.md` ที่ gen โดย `/follow-tool-changelogen` สำหรับ format และ grouping
 - จัดกลุ่มตาม category: Features, Bug Fixes, Breaking Changes
 - ใช้ user-facing language
 - ระบุ migration path สำหรับ breaking changes

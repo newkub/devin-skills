@@ -10,7 +10,7 @@ argument-hint: "[range]"
 
 ## Scope
 
-ใช้สำหรับการรายงาน changelog จาก git history — ไม่รวมการสร้างไฟล์ changelog (ใช้ `/run-release` สำหรับสร้าง `CHANGELOG.md` อัตโนมัติเมื่อ release สำเร็จ) และไม่รวมการสร้าง release (ใช้ `/run-release`)
+ใช้สำหรับการรายงาน changelog จาก git history — ไม่รวมการสร้างไฟล์ changelog (ใช้ `/follow-tool-changelogen` สำหรับสร้าง `CHANGELOG.md`) และไม่รวมการสร้าง release (ใช้ `/run-release`)
 
 ## Execute
 
@@ -118,13 +118,13 @@ argument-hint: "[range]"
 
 ### Read-Only
 
-- ไม่สร้างไฟล์ changelog — ใช้ `/run-release` สำหรับสร้าง `CHANGELOG.md` อัตโนมัติเมื่อ release สำเร็จ
+- ไม่สร้างไฟล์ changelog — ใช้ `/follow-tool-changelogen` สำหรับสร้าง `CHANGELOG.md`
 - ไม่สร้าง release — ใช้ `/run-release`
 - รายงานเท่านั้น — read-only operation
 
 ### Non-Redundancy
 
-- การสร้างไฟล์ changelog อยู่ใน `/run-release` แล้ว (gen `CHANGELOG.md` อัตโนมัติเมื่อ release สำเร็จ)
+- การสร้างไฟล์ changelog อยู่ใน `/follow-tool-changelogen` แล้ว
 - การสร้าง release อยู่ใน `/run-release` แล้ว
 - การจัดการ tags อยู่ใน `/follow-tool-git` แล้ว
 

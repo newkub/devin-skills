@@ -27,7 +27,7 @@ Priority = drift severity × update urgency × dependency order
 4. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
 5. `update-readme` — README หลัง architecture ชัด
 6. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
-7. `run-release` — RELEASE.md และ CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
+7. `run-release` — RELEASE.md gen อัตโนมัติหลัง release สำเร็จ
 8. `update-test` — tests และ spec หลัง source code changes
 9. `update-features` — features doc หลัง source code stable
 10. `update-gitignore` — gitignore หลัง stack changes
