@@ -38,7 +38,7 @@ related:
 
 1. ทำตาม `/check-monorepo` เพื่อตรวจสอบ monorepo
 2. ทำตาม `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
-3. ทำตาม `/all-workspaces` ถ้าเป็น monorepo
+3. ทำตาม `/analyze-all-workspace` ถ้าเป็น monorepo
 4. อัปเดท `### Architecture`, `### Skills`, `### Workspaces` ตาม project จริง
 5. เก็บไฟล์ไม่เกิน 250 บรรทัด
 

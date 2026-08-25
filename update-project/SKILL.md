@@ -18,7 +18,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
 > Goal: เช็ค git log ล่าสุดของทุก workspace
 
 1. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status
-2. ทำ `/all-workspaces` เพื่อระบุทุก workspace
+2. ทำ `/analyze-all-workspace` เพื่อระบุทุก workspace
 3. สำหรับแต่ละ workspace:
    - รัน `git log --oneline -5` เพื่อดู commit ล่าสุด
    - รัน `git diff HEAD~1 --stat` เพื่อดูไฟล์ที่เปลี่ยน

@@ -48,7 +48,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 4. ทำ `/refactor` ตามกรณี
 5. ทำ `/restructure` หรือ `/relocation` เมื่อต้องย้ายไฟล์
 6. ทำ `/rename` เมื่อต้องเปลี่ยนชื่อ identifier
-7. ถ้าเป็น monorepo → ทำ `/all-workspaces` หรือ `/refactor-packages` ตามความเหมาะสม
+7. ถ้าเป็น monorepo → ทำ `/analyze-all-workspace` หรือ `/refactor-packages` ตามความเหมาะสม
 
 ### 4. Update References
 

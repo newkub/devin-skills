@@ -43,7 +43,7 @@ description: สร้าง README.md และ LICENSE.md ครบถ้ว�
 
 > Goal: อัปเดต README ทุก workspace ใน monorepo
 
-1. ทำ `/all-workspaces` เพื่อ update README ทุก workspaces
+1. ทำ `/analyze-all-workspace` เพื่อ update README ทุก workspaces
 2. ไม่ต้องมี `License` section (ใช้ของ root)
 3. ถ้า workspace ไม่มี `package.json` → skip และ report — ถ้า update fail → retry (max 3 → stop/report)
 
