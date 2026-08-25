@@ -11,8 +11,10 @@ related:
   - check-reference
   - update-reference
   - follow-content-quality
+  - update-usage
+  - review-usage
   - ask-me
-  - ship
+  - ship-workspace
 ---
 
 ## Goal

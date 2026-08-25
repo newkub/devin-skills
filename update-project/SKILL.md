@@ -4,6 +4,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
 related:
   - update-agents-md
   - update-readme
+  - update-usage
   - scan-codebase
   - check-monorepo
   - validate
@@ -50,7 +51,8 @@ related:
 
 1. ทำ `/update-agents-md` เพื่ออัปเดต root `AGENTS.md`
 2. ทำ `/update-readme` เพื่ออัปเดต root `README.md`
-3. ตรวจว่า root docs ครบถ้วนและถูกต้อง
+3. ทำ `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
+4. ตรวจว่า root docs ครบถ้วนและถูกต้อง
 
 ### 4. Validate And Report
 

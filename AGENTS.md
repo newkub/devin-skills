@@ -108,6 +108,8 @@ related:
 - `review-create-review-cli: /review-create-review-cli`
 - `review-readme: /review-readme`
 - `review-docs: /review-docs`
+- `review-usage: /review-usage`
+- `update-usage: /update-usage`
 - `review-agents-md: /review-agents-md`
 - `review-references: /review-references`
 - `review-dependencies: /review-dependencies`

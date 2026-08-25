@@ -44,7 +44,7 @@ related:
 2. ระบุ inputs, deliverables, success criteria ของแต่ละ subtask
 3. ระบุ dependencies และ execution order
 4. ถ้าเป็น ASYNC → เลือก subagent profile ตาม role:
-   - `senior-frontend`, `senior-backend` สำหรับ code review/implementation
+   - `reviewer`, `senior-frontend`, `senior-backend` สำหรับ code review/implementation
    - `researcher`, `subagent_explore` สำหรับ research/exploration
    - `fixer`, `refactor` สำหรับ bug fixes/refactoring
    - `qa`, `staff-qa` สำหรับ testing
