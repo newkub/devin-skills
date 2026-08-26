@@ -226,6 +226,7 @@ related:
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
 - `list-git-project-in-computer: /list-git-project-in-computer`
+- `list-chezmoi-files: /list-chezmoi-files`
 
 #### Watch
 
