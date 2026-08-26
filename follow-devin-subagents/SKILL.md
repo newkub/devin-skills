@@ -29,7 +29,7 @@ argument-hint: "[task]"
 
 1. ทำ `/list-devin-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
-3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือ `/create-devin-subagents`
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `?follow-devin-subagents/templates/`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
 
 ### 3. Spawn Subagents

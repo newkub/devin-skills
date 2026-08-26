@@ -19,7 +19,7 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 
 1. รับชื่อ subagent ที่ต้องอัปเดตจาก user
 2. ทำ `/list-devin-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
-3. ถ้าไม่พบ → แนะนำ `/create-devin-subagents` แทน
+3. ถ้าไม่พบ → สร้าง subagent ใหม่ตาม `?follow-devin-subagents/templates/` หรือใช้ `/follow-devin-subagents`
 4. อ่าน `AGENT.md` เดิมเพื่อทำความเข้าใจ
 
 ### 2. Identify Changes

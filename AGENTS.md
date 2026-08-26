@@ -105,6 +105,13 @@ related:
 - `update-dependencies-latest: /update-dependencies-latest`
 - `run-release: /run-release`
 
+#### Global Config
+
+- `edit-devin-global-rules: /edit-devin-global-rules`
+- `list-devin-global-mcp: /list-devin-global-mcp`
+- `edit-devin-global-mcp: /edit-devin-global-mcp`
+- `list-devin-global-hooks: /list-devin-global-hooks`
+
 #### Review
 
 - `review-refactor: /review-refactor`
