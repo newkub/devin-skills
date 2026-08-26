@@ -150,6 +150,7 @@ related:
 #### Review
 
 - `review-refactor: /review-refactor`
+- `review-references: /review-references`
 - `review-update: /review-update`
 - `review-implement: /review-implement`
 - `review-plan: /review-plan`

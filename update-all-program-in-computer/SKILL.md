@@ -9,28 +9,30 @@ description: อัปเดต programs ทั้งหมดในเครื
 
 ## Scope
 
-ใช้เมื่อต้องการ update ทุก tool ในเครื่องให้เป้นเวอร์ชันล่าสุด โดยไม่ทำลาย project-specific dependencies
+ใช้เมื่อต้องการ update ทุก tool ในเครื่องให้เป็นเวอร์ชันล่าสุด โดยไม่ทำลาย project-specific dependencies
 
 ## Execute
 
-### 1. Detect Package Managers
+### 1. Detect Package Managers And Global Configs
 
-> Goal: รู้ว่ามี package managers ใดบ้าง
+> Goal: รู้ว่ามี package managers ใดบ้าง และอ่าน global configs
 
 1. รัน `mise --version`
-2. รัน `scoop --version`
-3. รัน `choco --version`
-4. รัน `winget --version`
-5. รัน `brew --version`
-6. รัน `cargo --version`
-7. รัน `npm --version`
-8. บันทึก package managers ทีพร้อมใช้
+2. ถ้า `mise` มีอยู่ → ตรวจหา global config ที่ `~/.config/mise/config.toml` หรือ `~/.mise.toml`
+3. อ่าน `mise` global config เพื่อดู tools ทีจัดการไว้
+4. รัน `scoop --version`
+5. รัน `choco --version`
+6. รัน `winget --version`
+7. รัน `brew --version`
+8. รัน `cargo --version`
+9. รัน `npm --version`
+10. บันทึก package managers ทีพร้อมใช้
 
 ### 2. Update Each Manager
 
 > Goal: อัปเดต programs
 
-1. `mise` → `mise upgrade`
+1. `mise` → `mise up` หรือ `mise upgrade` เพื่ออัปเดตทุก tools ตาม global config
 2. `scoop` → `scoop update` แล้ว `scoop update *`
 3. `choco` → `choco upgrade all -y`
 4. `winget` → `winget upgrade --all --include-unknown`
@@ -43,14 +45,15 @@ description: อัปเดต programs ทั้งหมดในเครื
 
 > Goal: ตรวจสอบว่า update สำเร็จ
 
-1. รัน `mise list` หรือ `mise ls`
-2. รัน `scoop list` หรือ `scoop status`
-3. รัน `choco list --local-only`
-4. รัน `winget list`
-5. รัน `brew list`
-6. รัน `cargo install --list`
-7. รัน `npm list -g --depth=0`
-8. เปรียบเทียบ versions ก่อน/หลัง
+1. รัน `mise ls` หรือ `mise list` เพื่อตรวจ versions ของ tools ใน global config
+2. รัน `mise outdated` เพื่อดู tools ทียังล้าหลัง
+3. รัน `scoop list` หรือ `scoop status`
+4. รัน `choco list --local-only`
+5. รัน `winget list`
+6. รัน `brew list`
+7. รัน `cargo install --list`
+8. รัน `npm list -g --depth=0`
+9. เปรียบเทียบ versions ก่อน/หลัง
 
 ### 4. Report
 

@@ -1,6 +1,11 @@
 ---
 name: update-all-devin-global-skills
 description: อัปเดต devin skills repo ทั้งหมดโดย orchestrate update-devin-global-skills ต่อ skill
+related:
+  - review-references
+  - review-devin-global-skills
+  - review-redundancy
+  - update-reference
 ---
 
 ## Goal
@@ -61,7 +66,15 @@ description: อัปเดต devin skills repo ทั้งหมดโดย
 4. ทำ `/update-convert-active-repo-to-devin-skills` เพื่อสร้าง `at-<repo>` skills จาก active remote repos ทีตรงกับ local projects
 5. ตรวจไม่มี broken references และไม่มี circular dependencies
 
-### 6. Update Cross-References
+### 6. Review References
+
+> Goal: ตรวจสอบ references ก่อนอัปเดต
+
+1. ทำ `/review-references` เพื่อตรวจ AGENTS.md, `related` frontmatter, in-body references, และ circular dependencies
+2. บันทึก missing, stale, broken, circular references
+3. ให้ priority กับ Critical/High
+
+### 7. Update Cross-References
 
 > Goal: references ระหว่าง skills ครบถ้วนและถูกต้อง
 
@@ -71,7 +84,7 @@ description: อัปเดต devin skills repo ทั้งหมดโดย
 4. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
 5. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
 
-### 7. Report And Suggest Next Actions
+### 8. Report And Suggest Next Actions
 
 > Goal: รายงานผลและแนะนำขั้นตอนถัดไป
 
