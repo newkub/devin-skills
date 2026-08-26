@@ -372,6 +372,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `edit-git-commit: /edit-git-commit`
 - `git-commit: /git-commit`
 - `git-commit-and-push: /git-commit-and-push`
+- `git-commit-changed: /git-commit-changed`
+- `git-push: /git-push`
 - `refactor-commit: /refactor-commit`
 - `list-git-commit: /list-git-commit`
 - `list-git-release: /list-git-release`
