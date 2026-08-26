@@ -79,12 +79,12 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ถ้า history ยังไม่สะอาด → ทำ `/refactor-commit` เพื่อ rebase, edit, หรือ squash
 3. ถ้าไม่ต้องการ refactor → ข้ามไป step ถัดไป
 
-### 8. Push Changes (Optional)
+### 8. Push Changes
 
-> Goal: Push commits ไปยัง remote ถ้าต้องการ
+> Goal: Push commits ไปยัง remote โดยอัตโนมัติ
 
-1. ถ้าต้องการ push ทันทีหลัง commit → ทำ `/git-push`
-2. ถ้า user ไม่ต้องการ push → ข้าม step นี้
+1. หลัง commit สำเร็จ → ทำ `/git-push` ทันที โดยไม่ต้องถาม user
+2. ยกเว้น user ระบุก่อนว่า `no-push` → ข้าม step นี้
 3. ถ้า push ถูก reject → หยุดและรายงาน ไม่ force push
 
 ### 9. Verify Commits
@@ -130,6 +130,6 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 - Commit messages ที่สอดคล้องกับ conventional commits
 - Git history ที่อ่านง่ายและติดตามง่าย
-- ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ถูก commit
+- ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ถูก commit และ push ไปยัง remote
 - Working directory สะอาด
-- ถ้าต้องการ push → commits ถูก push ไปยัง remote หรือรายงานสถานะถ้าถูก reject
+- ถ้า push ถูก reject → รายงานสถานะ ไม่ force push
