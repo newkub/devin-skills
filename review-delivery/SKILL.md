@@ -136,6 +136,7 @@ Review config files ทั้ง root และ workspace ครอบคลุ�
 3. ตรวจสอบ shared config: path aliases, compiler options, format rules
 4. ตรวจสอบ config security: secrets, `.gitignore`, env vars validation
 5. ตรวจสอบ cross-workspace config consistency และ config drift
+6. ถ้าต้องสร้าง config ใหม่ → ดู `references/config-setup.md`
 
 ### 7. Infrastructure And Pipeline Review
 
@@ -150,6 +151,7 @@ Review CI/CD pipeline ครอบคลุม job dependencies, caching, parall
 3. ตรวจสอบ caching สำหรับ dependencies, build artifacts
 4. ตรวจสอบ reliability: retry, timeout, idempotency, secrets, permissions
 5. ตรวจสอบ artifact size, retention policy, conditional jobs
+6. ถ้าต้องสร้าง pipeline ใหม่ → ดู `references/ci-cd-setup.md`
 
 #### 7.2 Infrastructure Review
 
@@ -160,6 +162,7 @@ Review infrastructure ครอบคลุม workers, queues, webhooks, scalab
 3. ตรวจสอบ scalability: stateless design, horizontal scaling, caching, database scaling
 4. ตรวจสอบ deployment: rollback strategy, zero-downtime, post-deploy validation
 5. ตรวจสอบ DR plan, RPO/RTO, backup schedules, migration files
+6. ถ้าใช้ containers → ดู `references/containerization.md` และ `references/docker.md`
 
 ### 8. Performance And Security Review
 

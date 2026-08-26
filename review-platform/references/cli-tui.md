@@ -43,7 +43,7 @@
 
 ## Config
 
-1. ทำ `/follow-config` เพื่อตรวจสอบ root และ workspace config
+1. ทำ `/review-delivery` เพื่อตรวจสอบ root และ workspace config
 2. ตรวจสอบ package manifest scripts: `dev`, `build`, `test`, `lint`, `format`, `typecheck`, `check`, `verify`, `ci`
 3. ตรวจสอบ build tool config: `Cargo.toml`, `tsup.config.ts`, `vite.config.ts`, `esbuild`, `webpack`
 4. ตรวจสอบ shared config: `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `turbo.json`, `.gitignore`

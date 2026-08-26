@@ -24,7 +24,7 @@ description: แนวทางการพัฒนา Capacitor 8 cross-platfo
 4. ตรวจสอบ JDK 21 หรือสูงกว่า
 5. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
 6. ทำ `/follow-lang-bun` สำหรับ Bun runtime และ package manager
-7. ทำ `/follow-config` สำหรับ configuration files
+7. ทำ `/review-delivery` สำหรับ configuration files
 
 ### 2. Project Configuration
 

@@ -44,7 +44,15 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 9. Review CLI คำนวณ tech stack review score จาก review report — ดู `references/scoring.md`
 10. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
-### 3. Review Dimensions
+### 3. Tech Stack Selection Review
+
+> Goal: ตรวจสอบ decision process เมื่อเลือก tech stack ใหม่
+
+1. ตรวจสอบ requirements, constraints, team expertise ก่อนเลือก
+2. ตรวจสอบ decision matrix และ trade-offs
+3. ดู `references/choosing.md` สำหรับ selection criteria
+
+### 4. Review Dimensions
 
 ตรวจสอบทุก dimension ตาม reference files
 
@@ -55,7 +63,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 3. ถ้า project เป็น library → ตรวจสอบ library design: API surface, export strategy, module format, tree-shaking, peer deps, semver, compatibility — ดู `references/lib-design.md`
 4. ตรวจสอบ type declarations: `.d.ts` files ใน project และ `node_modules`, missing declarations, circular type references, `@types` packages — ดู `references/type-declarations.md`
 
-### 4. Validate Findings
+### 5. Validate Findings
 
 ตรวจสอบว่า findings แต่ละอย่างถูกต้อง
 
@@ -65,7 +73,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
-### 5. Report
+### 6. Report
 
 รายงานผล review ในรูปแบบตาราง
 

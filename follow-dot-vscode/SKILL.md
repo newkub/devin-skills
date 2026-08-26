@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-dot-vscode
 description: จัดการ .vscode directory ครบถ้วน ทั้ง settings, extensions, tasks, และ launch config
 ---
@@ -9,7 +9,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-tool-vscode-extensions` (สร้าง VSCode extension) และ `/follow-config` (config consistency)
+ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-tool-vscode-extensions` (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
 
 ### Standard Project
 
@@ -152,7 +152,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 1. No Overlap With Specialized Workflows
 
 - ใช้ `/follow-tool-vscode-extensions` สำหรับสร้าง VSCode extension (ไม่ใช่ config)
-- ใช้ `/follow-config` สำหรับ config consistency ทั่วไป
+- ใช้ `/review-delivery` สำหรับ config consistency ทั่วไป
 - `follow-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
 
 ### 2. Settings Priority

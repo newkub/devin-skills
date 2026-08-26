@@ -9,7 +9,7 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 
 ## Scope
 
-ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/follow-config`)
+ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`)
 
 ## Execute
 
@@ -54,7 +54,7 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 
 > Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
 
-1. `/follow-config` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
+1. `/review-delivery` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
 2. ถ้ามี `.infisical.json` หรือใช้ Infisical → ทำ `/follow-service-infisical` เพื่อตั้งค่า secrets scripts
 3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts: `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run`
 4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า

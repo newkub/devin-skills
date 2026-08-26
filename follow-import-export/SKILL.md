@@ -35,7 +35,7 @@ description: จัดการ import strategy และ barrel exports สำ�
 2. ตั้งค่า `resolve.alias` ใน `vite.config.ts` สำหรับ Vite
 3. ตั้งค่า `imports` ใน `package.json` สำหรับ Bun
 4. ตั้งค่า framework-specific aliases (Next.js, Nuxt, Solid, etc.)
-5. ทำ `/follow-config` เพื่อตรวจสอบ consistency ระหว่าง configuration files
+5. ทำ `/review-delivery` เพื่อตรวจสอบ consistency ระหว่าง configuration files
 6. ใช้ naming conventions ที่สม่ำเสมอ: `#` prefix สำหรับ TypeScript, `@/` สำหรับ frameworks
 
 ### 3. Create Or Update Barrel File

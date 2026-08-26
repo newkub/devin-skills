@@ -19,7 +19,7 @@
 
 ### Pipeline Setup
 
-1. ทำ `/follow-ci-cd` ถ้า pipeline ยังไม่มีหรือต้องสร้างใหม่
+1. ถ้า pipeline ยังไม่มีหรือต้องสร้างใหม่ → ดู `references/ci-cd-setup.md`
 2. ใช้ `/follow-best-practice` หรือ `/learn-from-web` หา best practices สำหรับ platform
 3. แก้ไขปัญหาตาม priority
 

@@ -79,7 +79,7 @@ Watch build status อย่างต่อเนื่อง ตรวจจั
 
 - แก้ที่ root cause ไม่ใช่ workaround
 - ถ้า error มาจาก dependency ขาด → ทำ `/run-install`
-- ถ้า error มาจาก config → ทำ `/follow-config`
+- ถ้า error มาจาก config → ทำ `/review-delivery`
 - ถ้า error มาจาก import path → ตรวจสอบ `tsconfig.json` paths และ barrel exports
 
 ### 3. Priority

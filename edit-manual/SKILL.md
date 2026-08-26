@@ -12,7 +12,7 @@ argument-hint: "[file]"
 
 ใช้สำหรับการแก้ไข configuration files ด้วยมือ เช่น `vite.config.ts`, `turbo.json`, `package.json`, `tsconfig.json`, `biome.jsonc`, `lefthook.yml`, `uno.config.ts`, `drizzle.config.ts`, `.github/workflows/*.yml` และ config files อื่นๆ
 
-ไม่ใช้สำหรับการสร้าง configuration ใหม่ทั้งหมด (ใช้ `/follow-config` แทน)
+ไม่ใช้สำหรับการสร้าง configuration ใหม่ทั้งหมด (ใช้ `/review-delivery` แทน)
 
 ## Execute
 

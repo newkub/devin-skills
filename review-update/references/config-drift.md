@@ -55,4 +55,4 @@
 
 - `update-gitignore` สำหรับ `.gitignore`
 - `update-dot-devin` สำหรับ `.devin` structure
-- `follow-config` สำหรับ config consistency
+- `/review-delivery` สำหรับ config consistency

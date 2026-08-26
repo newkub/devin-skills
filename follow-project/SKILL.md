@@ -26,7 +26,7 @@ description: อัปเดต project documentation, config, rules, และ 
 
 > Goal: รัน update ตามลำดับ
 
-1. `/follow-ci-cd` (ถ้าต้องการตรวจสอบหรือตั้งค่า CI/CD)
+1. `/review-delivery` (ถ้าต้องการตรวจสอบหรือตั้งค่า CI/CD)
 2. `/update-dot-devin`
 3. `/cleanup-files-in-project` (ถ้าจำเป็น)
 3. `/update-readme`
@@ -41,7 +41,7 @@ description: อัปเดต project documentation, config, rules, และ 
 
 > Goal: ตรวจสอบ config files
 
-1. ทำ `/follow-config` เพื่อ sync config ทั้งหมด
+1. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
 2. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
 3. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
 

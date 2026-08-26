@@ -19,7 +19,7 @@ description: รัน verify task เพื่อตรวจสอบคุณ
 
 1. ทำ `/follow-tasks` เพื่อตั้งค่า scripts มาตรฐานใน package manifest
 2. ถ้า project ยังไม่มี verify script ให้สร้างตามมาตรฐาน
-3. ทำ `/follow-config` เพื่อตั้งค่า config files ตาม dependencies
+3. ทำ `/review-delivery` เพื่อตั้งค่า config files ตาม dependencies
 4. ทำ `/follow-gitignore` เพื่อตั้งค่า gitignore
 
 ### 2. Run Checks

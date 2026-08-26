@@ -6,9 +6,9 @@ Docker is an open platform for developing, shipping, and running applications in
 
 ## Version Info
 
-- **Docker Engine**: `29.7.2` (latest stable)
-- **Docker Desktop**: Bundled with Docker Engine
-- **License**: Apache 2.0 (Docker Engine); Docker Desktop requires paid subscription for larger enterprises (>250 employees OR >$10M revenue)
+- `Docker Engine`: `29.7.2` (latest stable)
+- `Docker Desktop`: Bundled with Docker Engine
+- `License`: Apache 2.0 (Docker Engine); Docker Desktop requires paid subscription for larger enterprises (>250 employees OR >$10M revenue)
 
 ## Install
 

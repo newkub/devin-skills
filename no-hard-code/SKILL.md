@@ -44,7 +44,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 
 แยก configuration ออกจาก code
 
-- ทำ `/follow-config` เพื่อสร้าง config files สำหรับ environment-specific values
+- ทำ `/review-delivery` เพื่อสร้าง config files สำหรับ environment-specific values
 - ใช้ environment variables สำหรับ secrets
 - ใช้ runtime config สำหรับ dynamic values
 - ใช้ config objects สำหรับ related settings
@@ -80,7 +80,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 
 จัดการ secrets อย่างปลอดภัย
 
-- ทำ `/follow-config` เพื่อใช้ environment variables สำหรับ secrets
+- ทำ `/review-delivery` เพื่อใช้ environment variables สำหรับ secrets
 - ใช้ secret management services
 - ไม่ commit secrets ไปยัง version control
 - ใช้ .env files สำหรับ local development

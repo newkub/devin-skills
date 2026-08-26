@@ -97,7 +97,17 @@ Review application performance ครอบคลุม network, build/runtime, 
 3. ทำ `/review-quality` อ้างอิง `references/time-complexity.md` เพื่อวิเคราะห์ Big O บน critical paths
 4. ตรวจสอบ data structure selection กับ input size
 
-### 8. Validate, Score And Report
+### 8. Concurrency Review
+
+> Goal: ตรวจสอบ concurrent programming ใน application code
+
+1. ตรวจสอบ async/await patterns, parallel execution, error handling
+2. ตรวจสอบ resource management, connection pooling, rate limiting, backpressure
+3. ตรวจสอบ synchronization, shared state, race conditions, locks/channels
+4. ตรวจสอบ performance ของ concurrent code
+5. ดู `references/concurrency.md` สำหรับรายละเอียด
+
+### 9. Validate, Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score
 

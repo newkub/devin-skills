@@ -12,7 +12,7 @@ argument-hint: "[task]"
 
 ใช้เมื่องานสามารถแบ่งเป็น subtasks ได้ ทั้งแบบ independent (async) หรือ dependent (sync)
 
-ครอบคลุมการแบ่งงาน การเลือก subagent ตาม role การ spawn ขนาน การ merge ผล และการ verify — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/follow-concurrent-programming`)
+ครอบคลุมการแบ่งงาน การเลือก subagent ตาม role การ spawn ขนาน การ merge ผล และการ verify — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/review-performance` หรือดู `?review-performance/references/concurrency.md`)
 
 ## Execute
 

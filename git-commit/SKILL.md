@@ -23,7 +23,7 @@ Commit ไฟล์ที่มีการเปลี่ยนแปลงต�
 
 1. ทำตาม `/follow-gitignore` สำหรับ .gitignore
 2. ทำตาม `/follow-tool-hk` สำหรับ Git hooks
-3. ทำตาม `/follow-config` สำหรับ configuration
+3. ทำตาม `/review-delivery` สำหรับ configuration
 
 ### 2. Categorize Changes
 
