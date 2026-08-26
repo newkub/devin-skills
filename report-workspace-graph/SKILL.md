@@ -1,6 +1,17 @@
 ---
 name: report-workspace-graph
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
+related:
+  - check-monorepo
+  - list-workspaces
+  - check-circular-dependencies
+  - refactor-workspace
+  - all-workspace
+  - report-table
+  - report-ansi
+  - suggest-next-action
+  - follow-package-manifest
+  - follow-monorepo
 ---
 
 ## Goal
@@ -128,6 +139,13 @@ description: รายงานความสัมพันธ์ระหว�
 - ไม่ซ้ำกับ `/check-circular-dependencies`
 - ใช้ results จาก skills เหล่านั้นแล้วเพิ่ม relation analysis
 
+### 6. Chat-Only Output
+
+- รายงานทั้งหมดต้องอยู่ใน chat เท่านั้น
+- ห้ามเปิด browser, web preview, หรือ HTML report
+- ไม่เรียก `/open-web`, `/visualize-in-web`, `/visualize-project`, `/visualize-devin`, `/report-html`
+- ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
+
 ## Expected Outcome
 
 - รายงานความสัมพันธ์ระหว่าง workspaces ทั้งหมด
@@ -136,4 +154,5 @@ description: รายงานความสัมพันธ์ระหว�
 - Circular dependencies ถ้ามี พร้อม severity
 - คำแนะนำสำหรับการลด coupling หรือ refactoring
 - Report อ่านง่าย มี key findings ด้านบน
+- รายงานทั้งหมดอยู่ใน chat ไม่เปิด browser หรือ web preview
 - มี next action ชัดเจน
