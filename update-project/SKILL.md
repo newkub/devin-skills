@@ -2,6 +2,7 @@
 name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
 related:
+  - update-config
   - update-dot-devin
   - update-readme-md
   - update-agents-md
@@ -56,6 +57,7 @@ related:
 4. ระบุ orchestration tools (moon, turbo)
 5. รัน updates ตามลำดับ:
    - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ/ตั้งค่า)
+   - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
    - `/update-readme-md`

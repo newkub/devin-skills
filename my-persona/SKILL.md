@@ -37,7 +37,7 @@ argument-hint: "[action]"
 
 > Goal: Define Working Style
 
-1. ระบุ workflow ที่ต้องการให้ AI ทำตามเสมอ (อ้างอิง `/follow-skills`)
+1. ระบุ workflow ที่ต้องการให้ AI ทำตามเสมอ (อ้างอิง `/follow-devin-skills`)
 2. ระบุระดับ automation ที่ต้องการ (manual approval, semi-auto, full-auto)
 3. ระบุว่าต้องการให้ AI commit อัตโนมัติหรือไม่
 4. ระบุว่าต้องการให้ AI รันคำสั่งที่อาจมี side effects อัตโนมัติหรือไม่

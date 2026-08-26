@@ -17,8 +17,8 @@ description: เปรียบเทียบ dependencies ปัจจุบ�
 
 > Goal: อ่าน workflows และ skills ที่เกี่ยวข้องกับ dependencies และ libraries
 
-1. ทำ `/follow-skills` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
-2. ทำ `/follow-skills` เพื่ออ่าน skills ที่เกี่ยวข้องกับ libraries และ dependencies
+1. ทำ `/follow-devin-skills` เพื่ออ่าน global และ project workflows ที่เกี่ยวข้อง
+2. ทำ `/follow-devin-skills` เพื่ออ่าน skills ที่เกี่ยวข้องกับ libraries และ dependencies
 
 ### 2. Snapshot Current Dependencies
 

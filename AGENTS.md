@@ -76,6 +76,7 @@ related:
 - `follow-agents-md: /follow-agents-md`
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
+- `follow-devin-skills: /follow-devin-skills`
 - `follow-principles: /follow-principles`
 - `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
@@ -133,6 +134,7 @@ related:
 #### Update
 
 - `update-project: /update-project`
+- `update-config: /update-config`
 - `update-project-skills: /update-project-skills`
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-all-devin-global-skills: /update-all-devin-global-skills`
@@ -218,6 +220,7 @@ related:
 - `review-naming: /review-naming`
 - `review-flow: /review-flow`
 - `review-workflow: /review-workflow`
+- `review-config: /review-config`
 - `review-readability: /review-readability`
 
 #### Create
