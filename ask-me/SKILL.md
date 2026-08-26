@@ -6,6 +6,7 @@ related:
   - ask-project-requirement
   - understand-me
   - follow-your-suggestion
+  - ask-again
   - dont-ask
   - ship-dont-ask
 ---
@@ -129,7 +130,8 @@ related:
 - ถ้าคำตอบนำไปสู่คำถามใหม่ ให้ถามตามมา
 - หลังได้คำตอบ ให้ดำเนินการทันทีไม่ชะลอ
 - ถ้าผู้ใช้เลือก `Skip` หลายครั้งติดต่อกัน ให้พิจารณาใช้ default แทนการถามต่อ
-- ถ้าผู้ใช้เลือก `Suggest another` ครั้งที่ 2 ให้ถามแบบ open-ended แทน
+- ถ้าผู้ใช้เลือก `Suggest another` ครั้งที่ 2 ให้ใช้ `/ask-again` หรือถามแบบ open-ended
+- ถ้าผู้ใช้บอก "ไม่เข้าใจ", "ถามใหม่", "ask again" → ใช้ `/ask-again` เพื่อ rephrase
 - ถ้าผู้ใช้เลือก `Skip` ทุกคำถาม ให้หยุดถามและดำเนินการด้วย default ทั้งหมด
 
 ## Examples
