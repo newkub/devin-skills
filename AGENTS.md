@@ -279,6 +279,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 #### Search
 
 - `search-files-patterns: /search-files-patterns`
+- `search-files-patterns-in-drive-d: /search-files-patterns-in-drive-d`
 - `search-in-raindrop-io: /search-in-raindrop-io`
 - `list-raindrop-io: /list-raindrop-io`
 - `list-devin-global-skills: /list-devin-global-skills`
