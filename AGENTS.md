@@ -252,6 +252,8 @@ related:
 - `list-cloudflare-project: /list-cloudflare-project`
 - `list-brave-browser-history: /list-brave-browser-history`
 - `list-chezmoi-files: /list-chezmoi-files`
+- `list-devin-user-request-in-this-session: /list-devin-user-request-in-this-session`
+- `list-devin-user-request-all-session: /list-devin-user-request-all-session`
 - `search-similar: /search-similar`
 
 #### At
