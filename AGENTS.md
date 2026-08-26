@@ -348,6 +348,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `list-project-task: /list-project-task`
 - `list-todo-in-drive-d: /list-todo-in-drive-d`
 - `list-project-git-in-computer: /list-project-git-in-computer`
+- `all-remote-repo: /all-remote-repo`
 - `list-github-pull-request: /list-github-pull-request`
 - `list-cloudflare-project: /list-cloudflare-project`
 - `list-brave-browser-history: /list-brave-browser-history`
