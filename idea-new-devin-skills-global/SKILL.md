@@ -2,6 +2,11 @@
 name: idea-new-devin-skills-global
 description: แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้/สร้างต่อจาก skill ปัจจุบัน
 argument-hint: "[skill-name]"
+related:
+  - idea-convert-my-global-cli-to-skills
+  - idea-features
+  - idea-new-files-naming
+  - create-devin-global-skills
 ---
 
 ## Goal
@@ -57,7 +62,8 @@ argument-hint: "[skill-name]"
 2. ระบุประเภทความเกี่ยวข้อง (`direct dependency`, `complementary`, `follow-up`, `alternative`)
 3. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
 4. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-5. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
+5. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
+6. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
 
 ### 5. Update Related Skills
 

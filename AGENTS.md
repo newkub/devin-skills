@@ -181,7 +181,6 @@ related:
 
 #### Create
 
-- `idea-new-files-naming: /idea-new-files-naming`
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`
@@ -214,6 +213,13 @@ related:
 - `watch-browser: /watch-browser`
 - `watch-browser-console: /watch-browser-console`
 - `watch-terminal: /watch-terminal`
+
+#### Idea
+
+- `idea-new-devin-skills-global: /idea-new-devin-skills-global`
+- `idea-convert-my-global-cli-to-skills: /idea-convert-my-global-cli-to-skills`
+- `idea-features: /idea-features`
+- `idea-new-files-naming: /idea-new-files-naming`
 
 ### 4. Workspaces
 
