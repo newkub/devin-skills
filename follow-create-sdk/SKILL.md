@@ -7,6 +7,10 @@ related:
   - follow-create-cli
   - follow-create-rust-cli
   - follow-create-website
+  - follow-create-claude-plugin
+  - follow-create-codex-plugin
+  - follow-create-telegram-bot
+  - follow-create-discord-bot
   - follow-create-mobile-ios
   - follow-create-mobile-android
   - follow-create-mobile-ios-android
