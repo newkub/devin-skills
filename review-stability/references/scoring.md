@@ -32,4 +32,4 @@
 
 - review score ต่อ dimension และ overall
 - จัดลำดับตาม severity: Critical → High → Medium → Low
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`

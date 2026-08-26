@@ -125,7 +125,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. คำนวณ review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
 2. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-3. ทำ `/report-markdown-table` พร้อม findings: Skill, Category, Severity, Finding, Evidence, Action
+3. ทำ `/report-table` พร้อม findings: Skill, Category, Severity, Finding, Evidence, Action
 4. สรุป refactor actions: skill, action (split/merge/restructure/deduplicate/relocate), status, ไฟล์ที่เปลี่ยน
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
@@ -182,7 +182,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

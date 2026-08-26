@@ -7,7 +7,7 @@ related:
   - update-readme-md
   - run-dev
   - validate
-  - report-markdown-table
+  - report-table
   - write-test
   - update-usage-md
   - run-format

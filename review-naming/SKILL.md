@@ -53,7 +53,7 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 > Goal: สรุป findings พร้อม recommendations
 
-1. ทำ `/report` พร้อม `/report-markdown-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง: Name, Type, Issue, Severity, Suggested Name
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
@@ -82,7 +82,7 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

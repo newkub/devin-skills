@@ -76,7 +76,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 > Goal: สรุป migration risk score และ go/no-go recommendation
 
 1. คำนวณ migration risk score จาก [references/migration-risk-score.md](references/migration-risk-score.md)
-2. ทำ `/report` พร้อม `/report-markdown-table`
+2. ทำ `/report` พร้อม `/report-table`
 3. สร้างตาราง Migration Risk Summary: Category, Status, Findings, Risk Level
 4. สร้างตาราง Breaking Changes: Change, Impact, Migration Path, Severity
 5. สร้างตาราง Rollback Plan: Step, Trigger, Action, Verification
@@ -108,7 +108,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

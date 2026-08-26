@@ -98,7 +98,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews (
 
 > Goal: ส่งมอบ roadmap ที่อ่านง่าย พร้อม action skill ต่อ opportunity
 
-1. ทำ `/report` พร้อม `/report-markdown-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Prioritized Roadmap: Rank, Opportunity, Category, Score, Impact, Effort, Criticality, Action Skill, Sources
 3. แนะนำ action skill ต่อ opportunity: `/add-more`, `/idea-features`, `/bench-features`
 4. แสดง dependency chain และ quick wins แยก
@@ -148,7 +148,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews (
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ `tools`, `commands`, paths และ skill references
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 - ตอบในแชทเท่านั้น ไม่สร้างไฟล์แยก
 
 ## Expected Outcome

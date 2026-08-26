@@ -98,7 +98,7 @@ Review ความเสถียรของ application ครอบคลุ
 2. ถ้าพบ performance issues ให้ทำ `/update-review-codebase-cli-and-run`
 3. ถ้าพบ concurrency issues ให้ทำ `/update-review-codebase-cli-and-run`
 4. ถ้าพบ security issues ให้ทำ `/update-review-codebase-cli-and-run`
-5. ใช้ `/report-markdown-table` เพื่อจัดรูปแบบผลลัพธ์
+5. ใช้ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Validate, Score And Report
 
@@ -108,7 +108,7 @@ Review ความเสถียรของ application ครอบคลุ
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-markdown-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
+5. ทำ `/report` พร้อม `/report-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
 6. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
 7. ทำ `/suggest-next-action`
 
@@ -144,7 +144,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ backticks สำหรับ `files`, `functions`, `commands`
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ### 6. High Impact Content
 

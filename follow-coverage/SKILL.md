@@ -28,7 +28,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
 
 1. ทำ `/scan-codebase` ใน target directory
 2. จัดทำรายการ content ที่มีอยู่แบ่งตามประเภท (`features`, `apis`, `use-cases`, `references`, `examples`)
-3. บันทึกเป็นตารางด้วย `/report-markdown-table`: ประเภท, ชื่อ, ไฟล์, สถานะ
+3. บันทึกเป็นตารางด้วย `/report-table`: ประเภท, ชื่อ, ไฟล์, สถานะ
 4. ถ้าเป็น skill ที่มี dependencies → ตรวจว่าทุก dependency มี reference file ใน `references/`
 
 ### 3. Analyze Coverage Gaps
@@ -44,7 +44,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
    - `examples` ที่ไม่ครอบคลุมทุก API
    - `edge-cases` ที่ไม่มีการกล่าวถึง
 3. จัดลำดับ gaps ตาม impact และ priority
-4. ทำ `/report-markdown-table` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
+4. ทำ `/report-table` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
 
 ### 4. Fill Coverage Gaps
 
@@ -74,7 +74,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
 
 > Goal: รายงานผล coverage
 
-1. ทำ `/report-markdown-table` เปรียบเทียบ before-after coverage
+1. ทำ `/report-table` เปรียบเทียบ before-after coverage
 2. สรุปจำนวน gaps ที่เติม, ไฟล์ที่สร้าง, ไฟล์ที่แก้ไข
 3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 

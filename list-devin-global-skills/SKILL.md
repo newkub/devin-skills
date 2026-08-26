@@ -39,14 +39,14 @@ description: แสดงรายการ Devin global skills ทั้งห�
 แสดงรายการ skills ทั้งหมด
 
 1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
-2. ทำ `/report-markdown-table` สำหรับจัดรูปแบบ
+2. ทำ `/report-table` สำหรับจัดรูปแบบ
 
 ## Rules
 
 - อ่านเฉพาะไดเรกทอรีที่มี `SKILL.md` ใน `skills` directory
 - แสดงทุก skill ไม่กรองออก
 - จัดกลุ่มตามประเภทของ skill
-- ใช้ `/report-markdown-table` สำหรับ output
+- ใช้ `/report-table` สำหรับ output
 - ถ้าต้องการค้นหา skills จาก external registry ให้ใช้ `/search-skills`
 
 ## Expected Outcome

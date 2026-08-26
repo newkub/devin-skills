@@ -102,7 +102,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 2. ทำ `/validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
 4. คำนวณ review score ตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-markdown-table`
+5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -139,7 +139,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning
 
 ### 6. High Impact Content

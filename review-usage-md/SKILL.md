@@ -77,7 +77,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 1. ให้ severity: Critical, High, Medium, Low, Info
 2. คำนวณ score จาก findings
-3. ทำ `/report-markdown-table` แสดง Category, Severity, Finding, Evidence, Action
+3. ทำ `/report-table` แสดง Category, Severity, Finding, Evidence, Action
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -109,7 +109,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ file paths, commands, skill names
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

@@ -7,7 +7,7 @@ related:
   - follow-agents-md
   - follow-devin-global-subagents
   - report-before
-  - report-markdown-table
+  - report-table
   - ask-me
   - ship
   - continue
@@ -77,7 +77,7 @@ related:
 5. ระบุ dependencies ระหว่าง actions
 6. ให้ estimate effort ถ้าเป็นไปได้
 7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-references`
-8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-markdown-table`
+8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
 10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
 
@@ -87,18 +87,18 @@ related:
 
 เตรียม options สำหรับนำเสนอ
 
-1. เตรียมข้อมูล actions สำหรับ `/report-markdown-table`: #, Action, Priority, Impact, Effort, Workflow, Reason
+1. เตรียมข้อมูล actions สำหรับ `/report-table`: #, Action, Priority, Impact, Effort, Workflow, Reason
 2. จัดลำดับ actions ที่แนะนำพร้อม priority
 3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context แต่ไม่ตอบสินใจแทน user
-4. เตรียม trade-offs ระหว่าง options สำหรับ `/report-markdown-table`: Option, Pros, Cons, Risk
+4. เตรียม trade-offs ระหว่าง options สำหรับ `/report-table`: Option, Pros, Cons, Risk
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
-6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report-markdown-table`
+6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report-table`
 
 ### 6. Report
 
 > Goal: นำเสนอผลลัพธ์ให้ user เห็นภาพรวม
 
-1. ทำ `/report-markdown-table` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
+1. ทำ `/report-table` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
 2. สรุปคำแนะนำหลัก 1-2 บรรทัดก่อนตาราง
 3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ แต่ไม่ตอบสินใจแทน user
 4. ทำ `/ask-me` เสมอเพื่อถามให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
@@ -180,7 +180,7 @@ related:
 - Workflow ที่เหมาะสมถูกแนะนำ
 - Trade-offs ระหว่าง options ชัดเจน
 - การทำงานมีทิศทางชัดเจน
-- ผลลัพธ์ถูกนำเสนอด้วย `/report-markdown-table` ในรูปแบบตาราง
+- ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
 - สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท

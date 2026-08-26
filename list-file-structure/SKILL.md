@@ -25,8 +25,8 @@ description: สแกนและแสดงรายการโครงส�
 
 > Goal: แสดงผลลัพธ์ให้อ่านง่าย
 
-1. ส่งผลไปยัง `/report-markdown-file-structure` เพื่อจัดรูปแบบ tree, metadata, statistics
-2. ถ้าต้องการสรุปเฉพาะ ใช้ `/report-markdown-table` สำหรับ file counts ตามประเภท
+1. ส่งผลไปยัง `/report-file-structure` เพื่อจัดรูปแบบ tree, metadata, statistics
+2. ถ้าต้องการสรุปเฉพาะ ใช้ `/report-table` สำหรับ file counts ตามประเภท
 
 ## Rules
 

@@ -35,7 +35,7 @@ argument-hint: "[keyword]"
 
 > Goal: จัดรูปแบบผลลัพธ์ให้อ่านง่าย
 
-1. ใช้ `report-markdown-table` เพื่อสร้างตาราง
+1. ใช้ `report-table` เพื่อสร้างตาราง
 2. จัดเรียง columns: No., Project Name, Path, Match Type
 3. แสดง path ด้วย backticks
 4. รวบรวมจำนวน matches และแสดง summary

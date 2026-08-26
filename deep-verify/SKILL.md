@@ -59,7 +59,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 > Goal: รายงานผล verify และแนะนำขั้นต่อไป
 
-1. ทำ `/report` พร้อม `/report-markdown-table` สรุปผล: Check, Status, Evidence, Severity
+1. ทำ `/report` พร้อม `/report-table` สรุปผล: Check, Status, Evidence, Severity
 2. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 3. ถ้าไม่ผ่าน → stop และ report ก่อนปล่อย
 

@@ -5,7 +5,7 @@ related:
   - update-docs
   - update-readme-md
   - update-features-md
-  - report-markdown-table
+  - report-table
   - validate
   - run-format
 ---

@@ -43,7 +43,7 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 
-1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Stash stash@{n}
@@ -64,7 +64,7 @@ description: แสดง stashes ทั้งหมดพร้อมข้อ�
 
 ### Output Format
 
-- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตาม stash index
 - ชี้เน้น stale stashes ที่เก่าเกิน 30 วัน
 - ชี้เน้น stashes ที่มีจำนวนไฟล์มาก

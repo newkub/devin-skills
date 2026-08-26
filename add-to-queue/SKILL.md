@@ -6,7 +6,7 @@ related:
   - deep-plan
   - realize-implementation
   - continue
-  - report-markdown-table
+  - report-table
   - ask-me
 ---
 

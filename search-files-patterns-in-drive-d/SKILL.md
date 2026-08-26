@@ -9,7 +9,7 @@ related:
   - follow-tool-my-global-cli
   - use-subagents
   - update-agents-md
-  - report-markdown-table
+  - report-table
   - ask-me
 ---
 
@@ -84,7 +84,7 @@ Search files, directories, and projects in `D:\` by name pattern, path pattern, 
 
 > Goal: จัดรูปแบบผลลัพธ์
 
-1. ทำ `/report-markdown-table` ด้วย columns: No., Type, Name, Path
+1. ทำ `/report-table` ด้วย columns: No., Type, Name, Path
 2. แสดง full path ด้วย backticks
 3. รวบรวมจำนวน matches แยกตาม type
 

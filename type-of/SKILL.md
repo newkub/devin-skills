@@ -6,7 +6,7 @@ related:
   - follow-math-concepts
   - follow-data-structures
   - follow-programming-paradigm
-  - report-markdown-table
+  - report-table
   - check-reference
   - ask-me
 ---
@@ -56,7 +56,7 @@ related:
 > Goal: นำเสนอผลลัพธ์กระชับ
 
 1. ตอบตรงประเด็น: "<subject> เป็น <type>"
-2. ใช้ `/report-markdown-table` ถ้ามีหลายมิติที่ต้องเปรียบเทียบ (category, language, use case)
+2. ใช้ `/report-table` ถ้ามีหลายมิติที่ต้องเปรียบเทียบ (category, language, use case)
 3. อธิบายสั้น ๆ ว่าทำไมจึงเป็นประเภทนั้น
 4. ให้ตัวอย่างที่เกี่ยวข้องถ้าช่วยให้เข้าใจ
 

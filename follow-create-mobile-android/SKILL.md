@@ -1,5 +1,5 @@
 ---
-name: follow-create-android-mobile-native
+name: follow-create-mobile-android
 description: สร้าง native Android mobile app ด้วย Kotlin และ Jetpack Compose
 argument-hint: "[project-name]"
 related:

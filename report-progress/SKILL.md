@@ -34,7 +34,7 @@ description: รายงานสถานะของ agent session ปัจ�
 1. สรุป commit ล่าสุด ชื่องาน และ files ทีเปลี่ยนแปลง
 2. ตรวจสอบสถานะ working tree ว่าสะอาดหรือมี uncommitted changes
 3. ระบุ checkpoints สำคัญจาก conversation history
-4. ใช้ `/report-markdown-table` แสดง completed work
+4. ใช้ `/report-table` แสดง completed work
 
 ### 3. Identify Pending Work
 
@@ -54,7 +54,7 @@ description: รายงานสถานะของ agent session ปัจ�
 > Goal: report ชัดเจน พร้อม next steps
 
 1. สรุปสถานะโดยรวมของ session
-2. ใช้ `/report-markdown-table` หรือ `/report-markdown-ansi` แสดง completed, pending, blockers
+2. ใช้ `/report-table` หรือ `/report-ansi` แสดง completed, pending, blockers
 3. ระบุ priority ของงานค้าง
 4. ทำ `/suggest-next-action` เพื่อเสนอ next step
 
@@ -77,8 +77,8 @@ description: รายงานสถานะของ agent session ปัจ�
 
 - สรุป key findings ไว้ด้านบนสุด
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
-- ใช้ `/report-markdown-table` สำหรับงานทีต้องการหลาย columns
-- ใช้ `/report-markdown-ansi` สำหรับสถานะ/progress
+- ใช้ `/report-table` สำหรับงานทีต้องการหลาย columns
+- ใช้ `/report-ansi` สำหรับสถานะ/progress
 
 ### 4. Privacy
 

@@ -66,8 +66,8 @@ argument-hint: "[target]"
 
 > Goal: Report
 
-1. รัน `/report-markdown-table` เพื่อแสดง before/after ของสิ่งที่เพิ่มขึ้น
-2. รัน `/report-markdown-ansi` เพื่อแสดงสรุปการเพิ่ม
+1. รัน `/report-table` เพื่อแสดง before/after ของสิ่งที่เพิ่มขึ้น
+2. รัน `/report-ansi` เพื่อแสดงสรุปการเพิ่ม
 
 ## Rules
 

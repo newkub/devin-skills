@@ -1,10 +1,10 @@
 ---
-name: report-markdown-uxui-all-routes
+name: report-uxui-all-routes
 description: สร้างรายงาน routes ทั้งหมดของ app/website ใน markdown table สำหรับ UX/UI
 related:
-  - report-markdown-uxui-sketch
+  - report-uxui-sketch
   - list-website-all-routes
-  - report-markdown-table
+  - report-table
 ---
 
 ## Goal
@@ -16,7 +16,7 @@ related:
 - ใช้สำหรับ app/website ทีมี tab หรือ multi-screen navigation
 - รองรับ file-based routing, config-based routing, หรือ manual route list
 - ระบุ route/screen, tab group, method, purpose, actions, entry points
-- ใช้ร่วมกับ `/report-markdown-uxui-sketch` เพื่อสร้าง wireframe ครบ
+- ใช้ร่วมกับ `/report-uxui-sketch` เพื่อสร้าง wireframe ครบ
 
 ## Execute
 
@@ -51,7 +51,7 @@ related:
 
 > Goal: สรุป routes ในตาราง
 
-1. ใช้ `/report-markdown-table`
+1. ใช้ `/report-table`
 2. คอลัมน์: No, Tab/Screen, Route, Method, Tab Group, Purpose, Primary Actions, Notes
 3. เรียงลำดับตาม Tab Group แล้ว Route
 4. ใช้ symbols `✅` `❌` `⚠️` สำหรับ status
@@ -92,7 +92,7 @@ related:
 ### Report UX/UI
 
 - สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-- ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+- ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
 - ใช้ bullet หรือ numbered list สำหรับสรุป points
 - ใช้ symbols `✅` `❌` `⚠️` สำหรับ status indicators
 - ทำ `/suggest-next-action` ท้าย report เสมอ

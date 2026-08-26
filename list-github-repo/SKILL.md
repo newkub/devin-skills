@@ -32,7 +32,7 @@ description: แสดงรายการ repositories ทั้งหมด�
 
 > Goal: Format Output
 
-1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Name ชื่อ repository
@@ -54,7 +54,7 @@ description: แสดงรายการ repositories ทั้งหมด�
 
 ### 2. Output Format
 
-- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: name, description, language, stars, forks, updated
 

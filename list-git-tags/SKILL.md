@@ -45,7 +45,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 
-1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Tag ชื่อ tag
@@ -67,7 +67,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 
 ### Output Format
 
-- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตาม version ล่าสุดก่อน
 - ชี้เน้น latest stable และ latest pre-release
 - ใช้ symbols: ✅ SemVer compliant, ❌ non-SemVer

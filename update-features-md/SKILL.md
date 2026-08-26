@@ -50,7 +50,7 @@ description: วิเคราะห์ features ที่มีอยู่ใ
 
 > Goal: สรุปผลลัพธ์ให้ user
 
-1. แสดงตาราง existing features ในแชทตาม `/report-markdown-table`
+1. แสดงตาราง existing features ในแชทตาม `/report-table`
 2. ระบุ path `FEATURES.md` ที่สร้างและ action ถัดไป
 
 ## Rules

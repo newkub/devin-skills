@@ -45,7 +45,7 @@ description: แปลงข้อมูล, code, หรือ text ไปย�
 > Goal: ส่งมอบผลลัพธ์
 
 1. ถ้าต้องการไฟล์ → ใช้ `create-files-in-temp` หรือ `write` ตาม path ที user ระบุ
-2. ถ้าต้องการแสดงใน chat → ใช้ `report` หรือ `report-markdown-table`
+2. ถ้าต้องการแสดงใน chat → ใช้ `report` หรือ `report-table`
 3. ตรวจสอบ markdown syntax ก่อนส่ง
 
 ## Rules

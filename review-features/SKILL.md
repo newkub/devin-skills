@@ -79,7 +79,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
 1. ดู `references/scoring.md` สำหรับ scoring formula และ grade thresholds
 2. คำนวณ review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
 3. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-4. ทำ `/report-markdown-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
+4. ทำ `/report-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -108,7 +108,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

@@ -85,7 +85,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 
 > Goal: รายงานผล review
 
-1. ทำ `/report` พร้อม `/report-markdown-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Context Rot Review Findings: Category, Finding, Severity, Location, Recommendation
 3. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
 4. แสดง context rot review score พร้อม progress bar และ grade
@@ -164,7 +164,7 @@ Review context rot detection, preservation, reset practices, goal reminders, tas
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

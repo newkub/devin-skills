@@ -49,7 +49,7 @@ description: อัปเดตทุกอย่างในเครื่อ�
 
 > Goal: ตรวจสอบและสรุป
 
-1. ใช้ `/report-markdown-table` คอลัมน์: Category, Skill, Status, Notes
+1. ใช้ `/report-table` คอลัมน์: Category, Skill, Status, Notes
 2. ตรวจสอบว่าไม่มี errors ค้าง
 3. ทำ `/validate` สำหรับ skills ทีเปลี่ยนแปลง
 4. ทำ `/suggest-next-action`

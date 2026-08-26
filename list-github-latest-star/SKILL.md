@@ -32,7 +32,7 @@ argument-hint: "[count]"
 
 > Goal: Format Output
 
-1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Owner เจ้าของ repo
@@ -53,7 +53,7 @@ argument-hint: "[count]"
 
 ### 2. Output Format
 
-- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - จำกัด 50 อันล่าสุด
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: owner, name, description, language, stars, updated

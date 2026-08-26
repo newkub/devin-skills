@@ -101,8 +101,8 @@ Review ทุก configuration files ใน project ว่ามีอะไร�
 
 > Goal: สรุป findings สำหรับ update
 
-1. ทำ `/report-markdown-table` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
-2. ทำ `/report-markdown-file-structure` สำหรับ config tree
+1. ทำ `/report-table` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
+2. ทำ `/report-file-structure` สำหรับ config tree
 3. สรุป:
    - config ที่ครบ
    - config ที่ขาด

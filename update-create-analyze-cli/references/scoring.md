@@ -44,7 +44,7 @@ score = sum(severity_score[f] for f in findings) / len(findings)
 
 ## Report Format
 
-รายงานผ่าน `/report-markdown-table` พร้อม columns:
+รายงานผ่าน `/report-table` พร้อม columns:
 
 | Column | คำอธิบาย |
 |---|---|

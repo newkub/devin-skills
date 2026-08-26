@@ -71,7 +71,7 @@ description: ระบุและใช้ principles ของ context นั�
 
 > Goal: สรุป principles ทีใช้
 
-1. ใช้ `/report-markdown-table` แสดง: Principle, Source, Priority, Applied
+1. ใช้ `/report-table` แสดง: Principle, Source, Priority, Applied
 2. สรุป principles หลักทีมีผลต่อผลงาน
 3. ทำ `/suggest-next-action`
 

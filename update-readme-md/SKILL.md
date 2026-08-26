@@ -5,7 +5,7 @@ related:
   - review-readme-md
   - analyze-project
   - translate-to-lang-en
-  - report-markdown-table
+  - report-table
   - validate
 ---
 
@@ -79,7 +79,7 @@ related:
 
 - `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น (ดู Rule `Status Callout`)
 - `Hero Section`: `#` Title, Description, Badges (ชิดซ้าย, ไม่รวม License badge) — ไม่มี ANSI ใต้ badges
-- `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report-markdown-ansi` — วางด้านบน Get Started โดยไม่ต้องมี heading
+- `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report-ansi` — วางด้านบน Get Started โดยไม่ต้องมี heading
 - `## Get Started`: numbered steps ตรงๆ ไม่มี `###` subsection — แต่ละ step มี title + codeblock
 - `## Features`: Markdown table 3 columns (Icon, Feature, Description) พร้อม colored icon จาก iconify CDN
 - `## Usage`: `### Usage via ...` heading สำหรับแต่ละ access method (Web, API, CLI, SDK, TUI, etc.) — ครอบคลุมทุก ways ที่ user ใช้งานได้ — ใช้ ANSI drawing แทน image capture (ดู Rule `Usage ANSI Drawing`)

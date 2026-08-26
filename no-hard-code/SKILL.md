@@ -144,7 +144,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 
 ระบุรูปแบบรายงาน
 
-- ทำ `/report-markdown-table` สำหรับสรุปผลลัพธ์
+- ทำ `/report-table` สำหรับสรุปผลลัพธ์
 
 ## Expected Outcome
 

@@ -93,7 +93,7 @@ description: ออกแบบ agentic loop ทีหา, triage, มอบห�
 
 ### 5. Observability
 - loop ต้องทิ้ง audit trail: state, log, decision, ผล
-- รายงานทุกรอบด้วย `/report` หรือ `/report-markdown-table`
+- รายงานทุกรอบด้วย `/report` หรือ `/report-table`
 - ระบุจุดทีต้องให้คนตรวจสอบ
 
 ## Expected Outcome

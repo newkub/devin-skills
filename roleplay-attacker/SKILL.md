@@ -106,7 +106,7 @@ Business Logic:
 
 > Goal: Generate Attack Report
 
-1. ทำ `/report` ด้วย `/report-markdown-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Vector, Location, Vulnerability, Attack Chain, Prerequisites, Impact, Recommendation
 3. สร้าง attack chain diagram: Entry → Pivot → Goal
 4. สรุป top 3-5 critical attack chains ที่ต้อง fix ก่อน

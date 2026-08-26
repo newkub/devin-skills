@@ -96,8 +96,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `at-this-repo: /at-this-repo`
 - `edit-this-repo: /edit-this-repo`
 - `report-usage-md: /report-usage-md`
-- `report-markdown-uxui-sketch: /report-markdown-uxui-sketch`
-- `report-markdown-uxui-all-routes: /report-markdown-uxui-all-routes`
+- `report-uxui-sketch: /report-uxui-sketch`
+- `report-uxui-all-routes: /report-uxui-all-routes`
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
 - `improve: /improve`
@@ -181,7 +181,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-project-rules: /update-project-rules`
 - `update-test: /update-test`
 - `update-references: /update-references`
-- `edit-relative-files: /edit-relative-files`
+- `edit-relative: /edit-relative`
 - `update-github-metadata: /update-github-metadata`
 - `update-convert-active-repo-to-devin-skills: /update-convert-active-repo-to-devin-skills`
 - `update-github-task: /update-github-task`
@@ -262,8 +262,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-create-website: /follow-create-website`
 - `follow-create-raycast-extensions: /follow-create-raycast-extensions`
 - `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
-- `follow-create-android-mobile-native: /follow-create-android-mobile-native`
-- `follow-create-ios-mobile-native: /follow-create-ios-mobile-native`
+- `follow-create-mobile-android: /follow-create-mobile-android`
+- `follow-create-mobile-ios: /follow-create-mobile-ios`
 - `create-github-repo: /create-github-repo`
 - `draw-svg-image: /draw-svg-image`
 - `draw-excalidraw: /draw-excalidraw`
@@ -304,6 +304,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 #### Search
 
+- `search-api-references: /search-api-references`
 - `search-files-patterns: /search-files-patterns`
 - `search-files-patterns-in-drive-d: /search-files-patterns-in-drive-d`
 - `search-in-raindrop-io: /search-in-raindrop-io`

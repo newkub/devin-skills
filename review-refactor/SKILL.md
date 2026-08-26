@@ -101,7 +101,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 > Goal: รายงาน baseline และ refactor targets
 
-1. ทำ `/report` พร้อม `/report-markdown-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Baseline Metrics: metric, count, threshold, status
 3. สร้างตาราง Refactor Targets: target, issue type, effort, impact, priority, recommended workflow
 4. แสดง refactor health score พร้อม grade
@@ -145,7 +145,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

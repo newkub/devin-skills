@@ -1,5 +1,5 @@
 ---
-name: report-markdown-ansi
+name: report-ansi
 description: สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols, และ box-drawing sketches/diagrams
 ---
 
@@ -75,7 +75,7 @@ description: สร้างรายงาน terminal ด้วย ANSI colors
 
 ### 3. Consistency
 
-- ใช้ชุดสีเดียวกันกับ `report-markdown-table`
+- ใช้ชุดสีเดียวกันกับ `report-table`
 - ไม่ผสมหลาย color scheme
 - ใช้ box-drawing characters อย่างสม่ำเสมอ
 

@@ -85,7 +85,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 > Goal: สรุป test quality score และ coverage gap report
 
 1. คำนวณ test quality score จาก [references/test-quality-score.md](references/test-quality-score.md)
-2. ทำ `/report` พร้อม `/report-markdown-table`
+2. ทำ `/report` พร้อม `/report-table`
 3. สร้างตาราง Test Quality Summary: Category, Status, Findings, Score
 4. สร้างตาราง Coverage Gap Report: File, Missing Tests, Coverage Type, Priority
 5. สร้างตาราง Edge Case Gaps: Function, Missing Category, Severity, Action
@@ -116,7 +116,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

@@ -99,7 +99,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: สร้างตารางสรุปผลและแนะนำขั้นต่อไป
 
-1. ทำ `/report-markdown-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
+1. ทำ `/report-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
 2. สรุป root cause, fix, regression tests, preventive measures
 3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 

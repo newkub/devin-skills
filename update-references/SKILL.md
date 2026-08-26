@@ -3,10 +3,10 @@ name: update-references
 description: อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์
 related:
   - consider-use-in-another-skills
-  - edit-relative-files
+  - edit-relative
   - search-files-patterns
   - check-broken-refs
-  - report-markdown-table
+  - report-table
   - validate
 ---
 

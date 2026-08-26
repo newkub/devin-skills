@@ -68,7 +68,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 > Goal: สรุป deploy readiness score และ go/no-go checklist
 
 1. คำนวณ deploy readiness score จาก [references/deploy-readiness-score.md](references/deploy-readiness-score.md)
-2. ทำ `/report` พร้อม `/report-markdown-table`
+2. ทำ `/report` พร้อม `/report-table`
 3. สร้างตาราง Deploy Readiness Summary: Category, Status, Findings, Score
 4. สร้างตาราง Go/No-Go Checklist: Item, Status, Action Required
 5. สร้างตาราง Blockers: Blocker, Severity, Action Required
@@ -100,7 +100,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

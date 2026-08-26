@@ -66,7 +66,7 @@ description: รัน development server และแก้ไขข้อผ�
 
 > Goal: Report
 
-1. ทำ `/report-markdown-ansi` เพื่อแสดง terminal output
+1. ทำ `/report-ansi` เพื่อแสดง terminal output
 2. สรุปสถานะ dev server และ issues ที่เหลือ
 
 ## Rules

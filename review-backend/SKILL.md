@@ -61,7 +61,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 2. ทำ `/validate` สำหรับ validate issues จากทุก sub-review
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตามสูตรใน `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-markdown-table`
+5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -109,12 +109,12 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 ### 7. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
 - Findings และ recommendations จาก 14 backend sub-review workflows
 - Issues ที่พบถูก validate ครบถ้วนตาม severity
 - Review score ต่อ dimension และ overall ตาม `references/scoring.md`
-- รายงานในแชทเป็นตารางตาม `/report-markdown-table`
+- รายงานในแชทเป็นตารางตาม `/report-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

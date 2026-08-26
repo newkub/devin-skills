@@ -51,7 +51,7 @@ description: รายการ git tags และ releases จาก local repo
 
 > Goal: แสดงผลในรูปแบบทีอ่านง่าย
 
-1. ใช้ `/report-markdown-table` คอลัมน์: No, Tag, Commit, Date, Author, Notes Preview
+1. ใช้ `/report-table` คอลัมน์: No, Tag, Commit, Date, Author, Notes Preview
 2. เรียงตามวันทีสร้างจากใหม่ไปเก่า
 3. ระบุ latest release และ upcoming changes จาก `CHANGELOG.md` ถ้ามี
 

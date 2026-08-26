@@ -47,7 +47,7 @@ description: แปลง idea, requirements หรือ sketch เป็น pr
 1. สร้าง `plan.md` หรือ `TODO.md`
 2. สร้าง `README.md` ด้วย overview, setup, usage
 3. ถ้าต้องการ scaffold code → ใช้ `write` สร้างไฟล์เริ่มต้น
-4. ใช้ `/report-markdown-table` สรุป structure
+4. ใช้ `/report-table` สรุป structure
 
 ## Rules
 

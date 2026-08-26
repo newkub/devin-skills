@@ -79,7 +79,7 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 
 > Goal: สรุปการปรับปรุง
 
-1. ใช้ `/report-markdown-table` สำหรับปัญหา
+1. ใช้ `/report-table` สำหรับปัญหา
 2. จัดกลุ่มตามความรุนแรง: critical, high, medium, low
 3. ระบุ file path และ line number สำหรับแต่ละผลการตรวจ
 4. รายงาน rules ที่แก้ไขและที่ยังเหลือ

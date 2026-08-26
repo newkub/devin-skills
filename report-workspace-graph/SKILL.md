@@ -80,7 +80,7 @@ description: รายงานความสัมพันธ์ระหว�
 
 > Goal: จัดรูปแบบรายงาน
 
-1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
 2. กำหนด columns: `No`, `Source`, `Target`, `Relation`, `Strength`, `Files`, `Notes`
 3. แสดง dependency graph ด้วย text หรือ mermaid
 4. แยก section: Internal Relations, Shared Dependencies, Circular, Recommendations
@@ -92,8 +92,8 @@ description: รายงานความสัมพันธ์ระหว�
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -118,7 +118,7 @@ description: รายงานความสัมพันธ์ระหว�
 
 ### 4. Output Format
 
-- ใช้ `/report-markdown-table` สำหรับตาราง
+- ใช้ `/report-table` สำหรับตาราง
 - ใช้ mermaid หรือ text graph สำหรับ relations
 - ใช้ symbols: `➡️` depends, `↔️` circular, `🔗` shared
 

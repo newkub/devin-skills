@@ -140,7 +140,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, commands, skill names
-- รายงานด้วย `/report-markdown-table`
+- รายงานด้วย `/report-table`
 
 ## Expected Outcome
 

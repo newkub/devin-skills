@@ -73,7 +73,7 @@ argument-hint: "[cli-name]"
    - `triggers`, `allowed-tools`, `related`
    - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
-4. ทำ `/report-markdown-table` เพื่อสรุป draft skills ทีสร้าง
+4. ทำ `/report-table` เพื่อสรุป draft skills ทีสร้าง
 
 ### 6. Validate And Suggest
 

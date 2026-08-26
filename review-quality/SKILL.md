@@ -102,7 +102,7 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 
 > Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
 
-1. ทำ `/report` พร้อม `/report-markdown-table`
+1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Quality Metrics Summary: metrics พร้อม count, threshold, status
 3. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
@@ -171,7 +171,7 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ `tools`, `commands`, paths และ skill references
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning
 - ตอบในแชทเท่านั้น ไม่สร้างไฟล์แยก
 

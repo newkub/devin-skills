@@ -4,7 +4,7 @@ description: สร้าง taxonomy หรือจัดหมวดหมู
 argument-hint: "[items-or-domain]"
 related:
   - grouping
-  - report-markdown-table
+  - report-table
   - report
 ---
 

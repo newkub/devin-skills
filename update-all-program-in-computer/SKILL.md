@@ -59,7 +59,7 @@ description: อัปเดต programs ทั้งหมดในเครื
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-markdown-table` คอลัมน์: Manager, Command, Status, Notes
+1. ใช้ `/report-table` คอลัมน์: Manager, Command, Status, Notes
 2. ระบุ manager ใดสำเร็จ ใดมี error
 3. ระบุ programs ทียังไม่อัปเดตและเหตุผล
 4. ทำ `/suggest-next-action`

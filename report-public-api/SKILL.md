@@ -34,7 +34,7 @@ description: รายงาน public API ของ project หรือ librar
 
 > Goal: สร้างรายงาน public API
 
-1. ใช้ `/report-markdown-table` แสดง:
+1. ใช้ `/report-table` แสดง:
    - `| API | Type | Module | Description | Stability |`
 2. กลุ่มตาม domain ด้วย heading `## <domain>`
 3. สรุปจำนวน public API, breaking changes, deprecations
@@ -51,4 +51,4 @@ description: รายงาน public API ของ project หรือ librar
 - ตาราง public API ครบถ้วน
 - จัดกลุ่มตาม domain
 - ระบุ stability และ description
-- ใช้ `/report-markdown-table` เป็นหลัก
+- ใช้ `/report-table` เป็นหลัก

@@ -1,10 +1,10 @@
 ---
-name: report-markdown-uxui-sketch
+name: report-uxui-sketch
 description: สร้างรายงาน UX/UI sketch ใน markdown สำหรับ app/website จาก context ที่ให้มา
 related:
-  - report-markdown-uxui-all-routes
-  - report-markdown-table
-  - report-markdown-diagram
+  - report-uxui-all-routes
+  - report-table
+  - report-architecture-diagram
   - follow-design-system
   - roleplay-uxui-designer
 ---
@@ -64,8 +64,8 @@ related:
 > Goal: สรุป report ให้อ่านง่าย
 
 1. สรุป key findings ด้านบน
-2. ใช้ `/report-markdown-table` สำหรับ screen/tab summary
-3. ใช้ `/report-markdown-diagram` สำหรับ user flow
+2. ใช้ `/report-table` สำหรับ screen/tab summary
+3. ใช้ `/report-architecture-diagram` สำหรับ user flow
 4. ใช้ symbols `✅` `⚠️` สำหรับสถานะ
 5. ทำ `/suggest-next-action` ท้าย report
 
@@ -111,7 +111,7 @@ related:
 ## Expected Outcome
 
 - Markdown UX/UI sketch ครอบคลุมทุก screen/tab
-- Screen summary table ด้วย `/report-markdown-table`
-- User flow หรือ navigation diagram ด้วย `/report-markdown-diagram`
+- Screen summary table ด้วย `/report-table`
+- User flow หรือ navigation diagram ด้วย `/report-architecture-diagram`
 - Clear interactions, loading/empty/error states, และ accessibility notes
 - Next action ชัดเจนท้าย report

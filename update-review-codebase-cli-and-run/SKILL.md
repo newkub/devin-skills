@@ -121,7 +121,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 4. ระบุ root cause และ false positives ที่พบ
 5. ทำ `/deep-validate` เพื่อ validate findings
 6. ทำ `/run-review` เพื่อวัด after score
-7. ทำ `/report-markdown-table` แสดง findings: Category, Finding, Severity, Location, Recommendation
+7. ทำ `/report-table` แสดง findings: Category, Finding, Severity, Location, Recommendation
 8. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -165,7 +165,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

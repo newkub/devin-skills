@@ -51,7 +51,7 @@ description: ตรวจสอบ issue ใดๆ เพื่อดูคว�
 1. กำหนด severity: Critical, High, Medium, Low, Info
 2. จัดกลุ่มผลการตรวจตาม severity พร้อม quote หรือ reference evidence
 3. แนะนำ next action สำหรับแต่ละผลการตรวจ: ขอรายละเอียด, แยก issue, ดำเนินการ หรือใช้ skill เฉพาะ
-4. ใช้ `report-markdown-table` หรือ `report-review` เพื่อสรุป
+4. ใช้ `report-table` หรือ `report-review` เพื่อสรุป
 5. รัน `suggest-next-action`
 
 ## Rules

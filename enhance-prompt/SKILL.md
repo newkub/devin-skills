@@ -1,7 +1,6 @@
 ---
 name: enhance-prompt
-description: สรุป prompt เป็น numbered แต่ละข้อคือหน่วยงานเดียว (single responsibility)
-argument-hint: "[prompt]"
+description: สรุป prompt ของผู้ใช้เป็น numbered list โดยแต่ละข้อมีหน่วยงานเดียว (single responsibility) เพื่อให้ทีมหรือ agent ดำเนินการต่อได้ชัดเจน
 ---
 
 ## Goal
@@ -75,4 +74,4 @@ argument-hint: "[prompt]"
 - Numbered list ทีอ่านง่าย แต่ละข้อมี single responsibility
 - ไฟล์/งานที่เกี่ยวข้องระบุชัดเจน
 - ข้อกำหนดของผู้ใช้ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
-- พร้อมส่งต่อให้ `/report-plan` หรือ `/continue` ต่อไป
+- พร้อมส่งต่อให้ `/report-plan`, `/continue`, หรือ `/follow-devin-skills` ต่อไป

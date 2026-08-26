@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้สำหรับการสรุป session work ในตอนท้ายของ conversation — ไม่รวมการสรุปโปรเจกต์ทั้งหมด (ใช้ `/report-markdown-table` หรือ `/summarize-this-project`)
+ใช้สำหรับการสรุป session work ในตอนท้ายของ conversation — ไม่รวมการสรุปโปรเจกต์ทั้งหมด (ใช้ `/report-table` หรือ `/summarize-this-project`)
 
 ## Execute
 
@@ -62,7 +62,7 @@ argument-hint: "[target]"
 
 > Goal: จัดรูปแบบสรุปให้อ่านง่าย
 
-1. ทำ `/report-markdown-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
+1. ทำ `/report-table` สำหรับสรุปไฟล์ที่เปลี่ยนแปลง
 2. แสดงผลตามลำดับ: Summary → Files Changed → Decisions → Issues → Next Steps
 3. กำหนด columns สำหรับตาราง files:
    - No. ลำดับ
@@ -90,7 +90,7 @@ argument-hint: "[target]"
 
 ### Output Format
 
-- ทำ `/report-markdown-table` สำหรับตารางไฟล์
+- ทำ `/report-table` สำหรับตารางไฟล์
 - ใช้ bullet points สำหรับ decisions, issues, next steps
 - สรุปกระชับ — ไม่เกิน 50 บรรทัด
 - ใช้ symbols: ✅ created, ✏️ modified, ❌ deleted, 📝 renamed
@@ -105,7 +105,7 @@ argument-hint: "[target]"
 ### Non-Redundancy
 
 - การสรุปโปรเจกต์ทั้งหมดอยู่ใน `/summarize-this-project` แล้ว
-- การสรุปเป็น bullet points อยู่ใน `/report-markdown-table` แล้ว
+- การสรุปเป็น bullet points อยู่ใน `/report-table` แล้ว
 - การบันทึก context อยู่ใน `/memorize` แล้ว
 
 ## Expected Outcome

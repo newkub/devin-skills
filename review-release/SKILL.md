@@ -77,7 +77,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 > Goal: สรุป release readiness score และ go/no-go checklist
 
 1. คำนวณ release readiness score จาก [references/release-readiness-score.md](references/release-readiness-score.md)
-2. ทำ `/report` พร้อม `/report-markdown-table`
+2. ทำ `/report` พร้อม `/report-table`
 3. สร้างตาราง Release Readiness Summary: Category, Status, Findings, Score
 4. สร้างตาราง Go/No-Go Checklist: Item, Status, Action Required
 5. สร้างตาราง Breaking Changes: Change, Impact, Migration Notes, Severity
@@ -109,7 +109,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

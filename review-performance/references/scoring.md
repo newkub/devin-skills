@@ -52,7 +52,7 @@ overall_score = sum(dimension_score) / count(dimensions)
 ## Usage
 
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
-- แสดง score ในตารางด้วย `/report-markdown-table`
+- แสดง score ในตารางด้วย `/report-table`
 - รายงาน score ต่อ dimension และ overall score
 - ระบุ dimensions ที่ถูก skip ใน report
 

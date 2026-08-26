@@ -52,7 +52,7 @@ description: เรียนรู้จาก references directory และ ex
 2. ระบุ gaps: features ที่ไม่มี guide, APIs ที่ไม่มี examples, use cases ที่ไม่มี docs
 3. ทำ `/follow-coverage` เพื่อวิเคราะห์และเติม gaps อย่างครอบคลุม
 4. จัดลำดับ gaps ตาม impact และ priority
-5. ทำ `/report-markdown-table` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
+5. ทำ `/report-table` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
 
 ### 5. Write Content From References
 
@@ -74,7 +74,7 @@ description: เรียนรู้จาก references directory และ ex
 2. ทำ `/check-reference` เพื่อตรวจ references ครบถ้วน
 3. ตรวจว่าทุกไฟล์ไม่เกิน 250 บรรทัด
 4. ทำ `/update-references` ถ้ามีการเพิ่มไฟล์ใหม่หรือเปลี่ยนชื่อ
-5. ทำ `/report-markdown-table` สรุป content ที่เขียนและ coverage ที่เพิ่มขึ้น
+5. ทำ `/report-table` สรุป content ที่เขียนและ coverage ที่เพิ่มขึ้น
 
 ## Rules
 

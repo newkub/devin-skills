@@ -43,7 +43,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 > Goal: แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
-2. ทำ `/report-markdown-table` แสดง summary: domain scores, top findings, recommended workflows
+2. ทำ `/report-table` แสดง summary: domain scores, top findings, recommended workflows
 3. แนะนำ `/update-review-codebase-cli-and-run` หรือ `?update-review-codebase-cli-and-run/references/<dimension>.md`? สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 
 ## Rules
@@ -72,7 +72,7 @@ description: รัน review CLI วิเคราะห์ผล และแ
 ## Expected Outcome
 
 - Review report พร้อม score, grade, domain breakdown และ findings
-- ตาราง summary ตาม `/report-markdown-table` แสดง top findings และ recommended actions
+- ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
 - แนะนำ `/update-review-codebase-cli-and-run` หรือ `?update-review-codebase-cli-and-run/references/<dimension>.md`? สำหรับแต่ละปัญหา
 - แนะนำ `/update-review-codebase-cli-and-run` ถ้า CLI ต้องปรับปรุง
 

@@ -59,7 +59,7 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 
 > Goal: สร้างรายงานอัปเดตรายสัปดาห์
 
-1. ทำ `/report-markdown-table` สร้างตารางอัปเดต
+1. ทำ `/report-table` สร้างตารางอัปเดต
 2. กำหนด columns: No., Tool, Manager, Current Version, Latest Version, Impact, Summary
 3. จัดกลุ่มตาม package manager และจัดลำดับตาม impact
 4. เพิ่ม summary สั้นๆ สำหรับแต่ละอัปเดต
@@ -72,8 +72,8 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -103,7 +103,7 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 
 ### 4. Report Format
 
-- ใช้ `/report-markdown-table` สำหรับ structured output
+- ใช้ `/report-table` สำหรับ structured output
 - จัดกลุ่มตาม package manager และจัดลำดับตาม impact
 - ใช้ `/report` สำหรับ executive summary
 - สรุป top 5 highlights ของสัปดาห์

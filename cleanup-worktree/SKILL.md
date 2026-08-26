@@ -52,7 +52,7 @@ description: ลบ git worktree ที่ไม่ใช้ และ prune wor
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-markdown-table` แสดง: Path, Branch, Action, Status
+1. ใช้ `/report-table` แสดง: Path, Branch, Action, Status
 2. ยืนยันว่า main working directory ไม่ได้รับผลกระทบ
 3. ทำ `/suggest-next-action`
 

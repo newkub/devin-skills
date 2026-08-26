@@ -192,7 +192,7 @@ Review security ครอบคลุม auth, secrets, injection, dependencies,
 1. ทำ `/validate` และ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity: Critical → High → Medium → Low → Info
 3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report-markdown-table` และ `/suggest-next-action`
+4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 
 ## Rules
 
@@ -240,7 +240,7 @@ Review security ครอบคลุม auth, secrets, injection, dependencies,
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

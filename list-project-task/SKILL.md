@@ -53,7 +53,7 @@ description: รายการ tasks ทั้งหมดใน project จา
 
 > Goal: แสดงผล tasks ในรูปแบบทีอ่านง่าย
 
-1. ใช้ `/report-markdown-table` คอลัมน์: No, Source, Task, Status, Priority, Assignee, Notes
+1. ใช้ `/report-table` คอลัมน์: No, Source, Task, Status, Priority, Assignee, Notes
 2. เรียงตาม priority แล้ว status
 3. แยก group ตาม source
 4. ระบุจำนวน tasks ทั้งหมด, pending, in-progress, done

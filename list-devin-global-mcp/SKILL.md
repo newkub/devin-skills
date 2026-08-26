@@ -46,7 +46,7 @@ description: List configured global MCP servers and their tools
 
 > Goal: สรุปผล
 
-1. ทำ `/report-markdown-table` แสดง server, command, tools count, status
+1. ทำ `/report-table` แสดง server, command, tools count, status
 2. ถ้าไม่มี server → report ว่า global MCP ยังไม่ถูกตั้งค่า
 3. ทำ `/suggest-next-action` ถ้าต้องแก้ไข
 
@@ -71,7 +71,7 @@ description: List configured global MCP servers and their tools
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ file paths, server names, tool names
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 

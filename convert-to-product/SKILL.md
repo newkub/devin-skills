@@ -49,7 +49,7 @@ description: แปลง idea, requirements หรือ feedback เป็น 
 1. แบ่ง phase: now, next, later
 2. ระบุ dependencies ระหว่าง features
 3. ประเมิน effort แบบ rough (S/M/L)
-4. ใช้ `/report-markdown-table` สรุป roadmap
+4. ใช้ `/report-table` สรุป roadmap
 
 ## Rules
 

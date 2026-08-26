@@ -46,7 +46,7 @@ score = sum(weight of each finding) / count of findings
 
 ## Report Format
 
-รายงานผ่าน `/report-markdown-table` พร้อม columns:
+รายงานผ่าน `/report-table` พร้อม columns:
 
 - Category — หมวด review เช่น Frontmatter, Sections, Style, Safety
 - Severity — Critical, High, Medium, Low, Info

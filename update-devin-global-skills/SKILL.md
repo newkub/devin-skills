@@ -90,7 +90,7 @@ related:
 
 > Goal: รายงานผลและแนะนำขั้นตอนถัดไป
 
-1. ทำ `/report-markdown-table` สรุป before-after: findings, actions, status
+1. ทำ `/report-table` สรุป before-after: findings, actions, status
 2. สรุป issues ที่พบและการแก้ไข
 3. ระบุส่วนที่ยังไม่ได้อัปเดตและเหตุผล
 4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป

@@ -87,7 +87,7 @@ related:
 
 > Goal: สรุป alignment status
 
-1. ทำ `/report-markdown-table` คอลัมน์: Artifact, Before, After, Status
+1. ทำ `/report-table` คอลัมน์: Artifact, Before, After, Status
 2. ระบุสิ่งที่ยังไม่ตรงและเหตุผล
 3. ทำ `/suggest-next-action`
 

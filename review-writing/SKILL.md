@@ -72,7 +72,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 2. คำนวณ review score ตาม `references/scoring.md`
 3. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
 4. ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
-5. ทำ `/report` พร้อม `/report-markdown-table` — ตาราง: area | category | issues found | issues fixed | severity | status
+5. ทำ `/report` พร้อม `/report-table` — ตาราง: area | category | issues found | issues fixed | severity | status
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -110,7 +110,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 ### 5. Output Format
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 - ตาราง naming: ใช้ continuous numbering ไม่เกิน 40 row พร้อม Type (Extends/New) และ impact indicators
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 

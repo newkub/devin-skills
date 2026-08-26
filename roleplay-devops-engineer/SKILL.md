@@ -103,7 +103,7 @@ Infrastructure:
 
 > Goal: Generate DevOps Review Report
 
-1. ทำ `/report` ด้วย `/report-markdown-table`
+1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Operational Impact, Recommendation
 3. สร้าง operational readiness scorecard: 5 dimensions, score 1-5
 4. สรุป top 3-5 operational risks ที่ต้องแก้ก่อน

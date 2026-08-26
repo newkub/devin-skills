@@ -53,4 +53,4 @@
 
 - คัดลอก pattern ที่เหมาะสมไปใช้ใน `grep` หรือ `ast-grep`
 - ปรับ scope ตาม project language และ conventions
-- ใช้ `/report-markdown-table` สำหรับสรุปผล
+- ใช้ `/report-table` สำหรับสรุปผล

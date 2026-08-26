@@ -55,7 +55,7 @@ description: แปลง API, script, หรือ tool เป็น MCP server
 
 1. ใช้ `convert-to-json` ถ้า config ไม่เป็น JSON
 2. บันทึกลง `mcp_config.json` หรือ `mcp_config.json`
-3. ใช้ `/report-markdown-table` แสดง tools, inputs, outputs
+3. ใช้ `/report-table` แสดง tools, inputs, outputs
 
 ## Rules
 

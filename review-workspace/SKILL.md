@@ -93,7 +93,7 @@ validate findings และสรุปผล
 1. ทำ `/validate` เพื่อตรวจสอบ findings
 2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
 3. คำนวณ review score โดย weighted average
-4. ทำ `/report-markdown-table` สำหรับ summary
+4. ทำ `/report-table` สำหรับ summary
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -126,7 +126,7 @@ validate findings และสรุปผล
 
 - ใช้ backticks สำหรับ paths, commands, skill names
 - ไม่ใช้ bold markers `**`
-- รายงานเป็นตารางด้วย `/report-markdown-table`
+- รายงานเป็นตารางด้วย `/report-table`
 
 ### 6. Workspace Size And Responsibility
 

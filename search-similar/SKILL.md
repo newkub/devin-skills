@@ -62,7 +62,7 @@ related:
 
 > Goal: สรุปผล search
 
-1. ใช้ `/report-markdown-table` คอลัมน์: No, Name, Type, SimilarityScore, Why
+1. ใช้ `/report-table` คอลัมน์: No, Name, Type, SimilarityScore, Why
 2. เรียงตาม SimilarityScore จากสูงไปต่ำ
 3. ระบุ top 5 ทีคล้ายกว่าสุด
 4. แนะนำ next action: reuse, extend, หรือ `/create-similar`
