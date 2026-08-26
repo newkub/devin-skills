@@ -249,6 +249,7 @@ related:
 - `list-cloudflare-project: /list-cloudflare-project`
 - `list-brave-browser-history: /list-brave-browser-history`
 - `list-chezmoi-files: /list-chezmoi-files`
+- `search-similar: /search-similar`
 
 #### At
 
