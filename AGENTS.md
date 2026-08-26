@@ -99,6 +99,7 @@ related:
 - `improve: /improve`
 - `delete-files: /delete-files`
 - `delete-project-from-local-remote: /delete-project-from-local-remote`
+- `cleanup-files-in-computer: /cleanup-files-in-computer`
 - `merge-files-in: /merge-files-in`
 - `move-files-in: /move-files-in`
 - `rename-files-to: /rename-files-to`
@@ -288,6 +289,8 @@ related:
 - `list-devin-user-request-in-this-session: /list-devin-user-request-in-this-session`
 - `list-devin-user-request-all-session: /list-devin-user-request-all-session`
 - `search-similar: /search-similar`
+- `search-in-github-star: /search-in-github-star`
+- `list-repo-in-github-star: /list-repo-in-github-star`
 
 #### Script
 

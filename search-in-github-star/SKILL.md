@@ -1,5 +1,5 @@
 ---
-name: search-github-star
+name: search-in-github-star
 description: ค้นหา repositories จาก GitHub stars ด้วย gh CLI
 argument-hint: "[query]"
 ---
