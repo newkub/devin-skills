@@ -223,6 +223,7 @@ related:
 - `follow-lib-react: /follow-lib-react`
 - `follow-lib-tanstack-ecosystem: /follow-lib-tanstack-ecosystem`
 - `follow-lib-effect-ts: /follow-lib-effect-ts`
+- `follow-edgejs: /follow-edgejs`
 - `follow-programming-paradigm: /follow-programming-paradigm`
 - `follow-single-responsibility: /follow-single-responsibility`
 - `follow-tool-rolldown: /follow-tool-rolldown`
