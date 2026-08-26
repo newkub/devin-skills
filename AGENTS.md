@@ -115,6 +115,8 @@ related:
 - `report-workspace-graph: /report-workspace-graph`
 - `from-recent-windows-capture: /from-recent-windows-capture`
 - `taxonomy: /taxonomy`
+- `analyze-image: /analyze-image`
+- `analyze-video: /analyze-video`
 
 #### Request
 
@@ -230,6 +232,15 @@ related:
 - `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
 - `follow-create-android-mobile-native: /follow-create-android-mobile-native`
 - `follow-create-ios-mobile-native: /follow-create-ios-mobile-native`
+- `draw-svg-image: /draw-svg-image`
+- `draw-excalidraw: /draw-excalidraw`
+- `draw-tldraw: /draw-tldraw`
+- `draw-tldraw-diagram: /draw-tldraw-diagram`
+- `gen-ai-images: /gen-ai-images`
+- `gen-ai-videos: /gen-ai-videos`
+- `gen-3d-model: /gen-3d-model`
+- `gen-voice: /gen-voice`
+- `gen-subtitle-video: /gen-subtitle-video`
 - `follow-solid-tanstack: /follow-solid-tanstack`
 - `follow-lib-react: /follow-lib-react`
 - `follow-lib-tanstack-ecosystem: /follow-lib-tanstack-ecosystem`
@@ -249,6 +260,8 @@ related:
 - `convert-to-product: /convert-to-product`
 - `convert-to-docs: /convert-to-docs`
 - `convert-to-mcp: /convert-to-mcp`
+- `convert-to-webp: /convert-to-webp`
+- `convert-to-svg: /convert-to-svg`
 
 #### Summarize
 
