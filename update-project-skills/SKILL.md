@@ -1,6 +1,13 @@
 ---
 name: update-project-skills
 description: สร้างและอัปเดต project skills ใน .devin/skills/ ตามมาตรฐาน follow-write-devin-skills
+related:
+  - analyze-project
+  - list-devin-global-skills
+  - follow-write-devin-skills
+  - check-monorepo
+  - validate
+  - update-agents-md
 ---
 
 ## Goal
@@ -29,11 +36,16 @@ description: สร้างและอัปเดต project skills ใน .d
 
 > Goal: ระบุ skills ที่ project ต้องการ
 
-1. วิเคราะห์ dependencies จาก `package.json`, `Cargo.toml`, `go.mod` หรือ manifest อื่นๆ
-2. ทำ `/write-missing-skills-from-deps` เพื่อระบุ skills ที่ขาดจาก dependencies
-3. วิเคราะห์ project workflows และ conventions ที่ควรเป็น skills
-4. ตรวจ `AGENTS.md` ของ project เพื่อหา workflows ที่ยังไม่มี skill
-5. จัดรายการ skills ที่ต้องสร้างหรืออัปเดต พร้อม priority
+1. วิเคราะห์ dependencies จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` หรือ `requirements.txt`
+2. ดึงรายชื่อ dependencies ที่มี skill pattern ใน Devin ecosystem
+3. ทำ `/list-devin-global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
+4. สำหรับแต่ละ dependency:
+   - ถ้ามี global skill ที่ตรง → อ้างอิง global skill แทน ไม่สร้างใหม่
+   - ถ้าไม่มี global skill และ project ต้องการ → เพิ่มลงรายการ skills ที่ขาด
+5. ข้าม dependencies ที่ไม่มี skill pattern
+6. วิเคราะห์ project workflows และ conventions ที่ควรเป็น skills
+7. ตรวจ `AGENTS.md` ของ project เพื่อหา workflows ที่ยังไม่มี skill
+8. จัดรายการ skills ที่ต้องสร้างหรืออัปเดต พร้อม priority
 
 ### 3. Create Or Update Skills
 
@@ -91,11 +103,12 @@ description: สร้างและอัปเดต project skills ใน .d
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project-skills`
 - ถ้าใช้ใน `/update-project` → commit ตาม workflow ของ `/update-project`
 
-### 4. Analyze Before Create
+### 4. Global Skills First
 
-- วิเคราะห์ project needs ก่อนสร้าง skills
+- ตรวจสอบ global skills ก่อนสร้าง project skill
 - ไม่สร้าง skills ที่ซ้ำซ้อนกับ global skills
 - ถ้ามี global skill ที่ตรง → อ้างอิงแทนการสร้างใหม่
+- ข้าม dependencies ที่ไม่มี skill pattern ทีตรง
 
 ## Expected Outcome
 
