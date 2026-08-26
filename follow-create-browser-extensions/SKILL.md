@@ -1,26 +1,31 @@
 ---
 name: follow-create-browser-extensions
-description: สร้าง browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
+description: สร้างและดูแล browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
 ---
 
 ## Goal
 
-สร้าง browser extensions สำหรับ Chrome, Firefox, Edge และ browsers อื่นๆ ตาม Manifest V3 standard
+สร้างและดูแล browser extensions สำหรับ Chrome, Firefox, Edge และ browsers อื่นๆ ตาม Manifest V3 standard
 
 ## Scope
 
-ใช้สำหรับการสร้าง extensions ที่ modify web pages, add functionality, integrate กับ web services และ automate browser tasks
+ใช้สำหรับการสร้าง extensions ใหม่ หรือแก้ไข extensions ที่มีอยู่แล้ว เช่น modify web pages, add functionality, integrate กับ web services, automate browser tasks, ปรับ permissions หรือ cross-browser compatibility
 
 ## Execute
 
-### 1. Create Project
+### 1. Identify Or Create Extension
 
-> Goal: เริ่มต้น project ด้วย WXT หรือ scaffolding tool
+> Goal: ทราบว่าเป็น extension ใหม่หรือมีอยู่แล้ว และเตรียม project
 
-1. ทำ `/follow-framework-wxt` ถ้าใช้ WXT
-2. สร้าง `manifest.json` ตาม Manifest V3
-3. สร้างโครงสร้าง: `src/background.ts`, `src/content.ts`, `src/popup/`
-4. ติดตั้ง dependencies ด้วย `bun install`
+1. ถ้า extension มีอยู่แล้ว:
+   - อ่าน `manifest.json` เพื่อระบุ `manifest_version`, `permissions`, และ entry points
+   - ระบุ browser target: Chrome, Firefox, Edge หรือ cross-browser
+   - ตรวจสอบ framework ที่ใช้: WXT, Plasmo หรือ vanilla
+2. ถ้าสร้างใหม่:
+   - ทำ `/follow-framework-wxt` ถ้าใช้ WXT
+   - สร้าง `manifest.json` ตาม Manifest V3
+   - สร้างโครงสร้าง: `src/background.ts`, `src/content.ts`, `src/popup/`
+   - ติดตั้ง dependencies ด้วย `bun install`
 
 ### 2. Configure Manifest
 
@@ -40,21 +45,22 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 3. สร้าง popup UI สำหรับ user interaction
 4. แยก pure logic ออกจาก browser API integration
 
-### 4. Test
+### 4. Test Cross-Browser
 
-> Goal: Test บน browsers ที่ต้องการ support
+> Goal: extension ทำงานได้บนทุก browser target
 
 1. โหลด extension ใน Chrome developer mode
 2. ทดสอบบน Firefox ด้วย temporary add-on
-3. ตรวจสอบ console errors และ permissions
+3. ตรวจสอบ console errors และ permission warnings
 4. ทดสอบ cross-browser compatibility
 
-### 5. Ship
+### 5. Validate And Ship
 
-> Goal: ส่งมอบงาน
+> Goal: extension ผ่านเกณฑ์และพร้อมส่งมอบ
 
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. ทำ `/validate` เพื่อตรวจ syntax และ config
+2. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
+3. ทำ `/ship` เพื่อส่งมอบงาน
 
 ## Rules
 
@@ -70,7 +76,13 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 - ใช้ content security policy
 - Validate user inputs
 
-### 3. Best Practices
+### 3. Cross-Browser Compatibility
+
+- ทดสอบบนทุก browser target ก่อน ship
+- ใช้ `browser.*` API แทน `chrome.*` เมื่อต้องการ cross-browser
+- ตรวจสอบ browser-specific permission differences
+
+### 4. Best Practices
 
 - ใช้ TypeScript สำหรับ type safety
 - Test บนหลาย browsers
@@ -81,3 +93,4 @@ description: สร้าง browser extensions ตาม Manifest V3 สำห�
 - Browser extensions ที่ compatible กับ multiple browsers
 - Code ที่ follow Manifest V3 standard
 - Security ที่เหมาะสม
+- ผ่าน `/validate` และ `/run-check`

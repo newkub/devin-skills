@@ -43,14 +43,19 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 11. Review CLI คำนวณ architecture review score จาก review report (ดู `references/scoring.md`)
 12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-codebase-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
-### 3. Review Import And Export
+### 3. Review Import, Export And Barrel Exports
 
-> Goal: ตรวจสอบ import/export strategy ของ module
+> Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
 1. ดู `references/import-export.md` สำหรับ barrel exports, aliases, ordering, circular dependencies
 2. ตรวจสอบว่า public API ซ่อน implementation details
 3. ยืนยันว่าไม่มี circular dependencies และ unused imports
 4. ประเมิน tree-shaking และ bundle size impact
+5. ตรวจ barrel file มีเฉพาะ re-exports ไม่มี logic หรือ side effects
+6. ตรวจใช้ `export ... from` แทน `import` แล้ว `export`
+7. ตรวจ `export type` แยกจาก runtime exports
+8. ตรวจไม่ export default จาก barrel file ใช้ named exports เท่านั้น
+9. ตรวจ exports เรียงตาม source file ตามตัวอักษร
 
 ### 4. Validate Findings
 

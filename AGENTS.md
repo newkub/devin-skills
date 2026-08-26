@@ -182,6 +182,7 @@ related:
 
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
+- `follow-create-browser-extensions: /follow-create-browser-extensions`
 - `follow-create-website: /follow-create-website`
 - `follow-solid-tanstack: /follow-solid-tanstack`
 - `follow-lib-react: /follow-lib-react`
