@@ -39,10 +39,10 @@
 แต่ละหมวดแนะนำ action skill:
 
 - missing features → `/idea-features`, `/bench-features`, `/add-more`
-- quality gaps → `/list-improvements`, `/add-more`
+- quality gaps → `/improve`, `/add-more`
 - implementation gaps → `/add-more`
-- DX gaps → `/list-improvements`, `/add-more`
-- performance gaps → `/list-improvements`, `/add-more`
-- security gaps → `/list-improvements`, `/add-more`
-- architecture gaps → `/list-improvements`, `/add-more`
-- delivery gaps → `/list-improvements`, `/add-more`
+- DX gaps → `/improve`, `/add-more`
+- performance gaps → `/improve`, `/add-more`
+- security gaps → `/improve`, `/add-more`
+- architecture gaps → `/improve`, `/add-more`
+- delivery gaps → `/improve`, `/add-more`

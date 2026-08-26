@@ -100,7 +100,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews (
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Prioritized Roadmap: Rank, Opportunity, Category, Score, Impact, Effort, Criticality, Action Skill, Sources
-3. แนะนำ action skill ต่อ opportunity: `/list-improvements`, `/add-more`, `/idea-features`, `/bench-features`
+3. แนะนำ action skill ต่อ opportunity: `/add-more`, `/idea-features`, `/bench-features`
 4. แสดง dependency chain และ quick wins แยก
 5. ดู format ใน `references/roadmap.md`
 
