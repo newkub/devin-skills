@@ -96,6 +96,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `report-before: /report-before`
 - `report-idea: /report-idea`
 - `report-flow: /report-flow`
+- `report-html: /report-html`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
 - `at-this-repo: /at-this-repo`
 - `edit-this-repo: /edit-this-repo`
@@ -253,6 +254,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `review-workflow: /review-workflow`
 - `review-config: /review-config`
 - `review-readability: /review-readability`
+- `review-diff: /review-diff`
 
 #### Create
 
