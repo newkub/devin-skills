@@ -81,6 +81,7 @@ related:
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-project-requirement: /ask-project-requirement`
 - `follow-enter-dot: /follow-enter-dot`
+- `follow-all-deep: /follow-all-deep`
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
