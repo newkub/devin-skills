@@ -1,6 +1,11 @@
 ---
 name: run-release
-description: Auto-detect platforms, release ไปยัง external platforms และ gen CHANGELOG.md อัตโนมัติ
+description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG.md และ release notes อัตโนมัติ
+related:
+  - ship
+  - gen-changelog-md
+  - watch-release
+  - update-devin-global-skills
 ---
 
 ## Goal
@@ -83,7 +88,18 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. `docker`: รัน `docker build` และ `docker push`
 6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
 
-### 7. Generate CHANGELOG.md
+### 7. Write Release Notes
+
+> Goal: เขียน release notes สรุปสวยงาม อ่านง่าย ก่อน publish
+
+1. ใช้ template จาก `templates/release-note.md`
+2. สรุป changes ตั้งแต่ tag ล่าสุด: ดึง commits ด้วย `git log <last-tag>..HEAD --oneline`
+3. จัดหมวดหมู่: `Breaking Changes`, `Features`, `Bug Fixes`, `Chores`, `Other`
+4. เขียนภาษาสุภาพ กระชับ ไม่ใช้ bullet ยาวเกิน 2 บรรทัด
+5. แนบลิงก์ `CHANGELOG.md`, เอกสาร release, และ migration guide ถ้ามี breaking changes
+6. บันทึกผลลัพธ์เป็น `RELEASE_NOTES.md` หรือใช้เป็น body ของ GitHub Release
+
+### 8. Generate CHANGELOG.md
 
 > Goal: Gen CHANGELOG.md จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
 
@@ -147,3 +163,4 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - Changelog ถูกสร้างอัตโนมัติ
 - Git tags ถูกสร้างอัตโนมัติ
 - `CHANGELOG.md` ถูก gen จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
+- Release notes ถูกเขียนสรุปสวยงาม อ่านง่าย จาก template
