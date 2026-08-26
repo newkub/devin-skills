@@ -5,6 +5,7 @@ related:
   - analyze-project
   - list-devin-global-skills
   - follow-write-devin-skills
+  - update-devin-global-skills
   - check-monorepo
   - validate
   - update-agents-md
@@ -41,7 +42,7 @@ related:
 3. ทำ `/list-devin-global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
 4. สำหรับแต่ละ dependency:
    - ถ้ามี global skill ที่ตรง → อ้างอิง global skill แทน ไม่สร้างใหม่
-   - ถ้าไม่มี global skill และ project ต้องการ → เพิ่มลงรายการ skills ที่ขาด
+   - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → ใช้ `/follow-write-devin-skills` สร้างใน `%APPDATA%\devin\skills\` แล้วอ้างอิงใน project
 5. ข้าม dependencies ที่ไม่มี skill pattern
 6. วิเคราะห์ project workflows และ conventions ที่ควรเป็น skills
 7. ตรวจ `AGENTS.md` ของ project เพื่อหา workflows ที่ยังไม่มี skill
@@ -108,6 +109,7 @@ related:
 - ตรวจสอบ global skills ก่อนสร้าง project skill
 - ไม่สร้าง skills ที่ซ้ำซ้อนกับ global skills
 - ถ้ามี global skill ที่ตรง → อ้างอิงแทนการสร้างใหม่
+- ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → สร้าง global skill ใหม่ด้วย `/follow-write-devin-skills`
 - ข้าม dependencies ที่ไม่มี skill pattern ทีตรง
 
 ## Expected Outcome
@@ -117,3 +119,17 @@ related:
 - ทุก skill ผ่าน `/validate`
 - project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 - รายงานสรุป skills ที่สร้าง/อัปเดตและ next actions
+
+## Common Mistakes
+
+- ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
+- สร้าง skills ที่มีอยู่แล้วใน global
+- ไม่ใช้ `/follow-write-devin-skills` ในการสร้าง
+- ไม่ตรวจสอบ folder structure หลังสร้าง
+
+## Anti-Patterns
+
+- สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
+- สร้าง skills แบบ manual ไม่ตามมาตรฐาน
+- ข้าม `/learn-from-web` ก่อนเขียนเนื้อหา
+- ไม่ตรวจสอบคุณภาพ content
