@@ -95,6 +95,7 @@ related:
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
 - `improve: /improve`
+- `delete-files: /delete-files`
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`
