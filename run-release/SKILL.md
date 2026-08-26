@@ -83,16 +83,17 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. `docker`: รัน `docker build` และ `docker push`
 6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
 
-### 7. Generate RELEASE.md
+### 7. Generate CHANGELOG.md
 
-> Goal: Gen RELEASE.md จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ
+> Goal: Gen CHANGELOG.md จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
 
-1. รัน script ด้านล่างเพื่อ gen `RELEASE.md` จาก `git tag --sort=-version:refname`:
+1. ทำ `/gen-changelog-md` เพื่อ gen `CHANGELOG.md` จาก `git tag --sort=-version:refname`
+2. หรือรัน script โดยตรง:
 ```bash
-bun -e 'const { stdout: tags } = await Bun.$`git tag --sort=-version:refname`.quiet(); const tagsStr = String(tags).trim(); if (!tagsStr) { const { stdout: date } = await Bun.$`git log -1 --format=%ad --date=short`.quiet(); const dateStr = String(date).trim(); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: v0.0.0 (${dateStr})\n\n## All Releases\n\nNo releases yet.\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); } else { const { stdout: latestTag } = await Bun.$`git describe --tags --abbrev=0`.quiet(); const latestTagStr = String(latestTag).trim(); const { stdout: tagDate } = await Bun.$`git log -1 --format=%ad --date=short ${latestTagStr}`.quiet(); const lines = tagsStr.split("\n").slice(0, 10); let table = "| Version |\n|---------|\n"; lines.forEach(tag => { table += `| ${tag} |\n`; }); const release = `# Release\n\n*Generated on ${new Date().toISOString()}*\n\n## Latest Release: ${latestTagStr} (${tagDate.trim()})\n\n## All Releases\n\n${table}\n`; await Bun.write("RELEASE.md", release); console.log("RELEASE.md generated!"); }'
+bun run skills/gen-changelog-md/scripts/gen-release-md
 ```
-2. อ่าน `RELEASE.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
-3. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `RELEASE.md` ด้วยมือ
+3. อ่าน `CHANGELOG.md` ที่ gen แล้วเพื่อตรวจสอบ version numbers และ dates ถูกต้อง
+4. ถ้าต้องการอัปเดต → รัน script ใหม่อีกครั้ง ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ
 
 ## Rules
 
@@ -129,14 +130,14 @@ bun -e 'const { stdout: tags } = await Bun.$`git tag --sort=-version:refname`.qu
 - รัน `chrome-webstore-upload validate` ก่อน publish สำหรับ webstore
 - รัน `docker build --no-cache` สำหรับ build ใหม่ทั้งหมด
 
-### 5. RELEASE.md Generation
+### 5. CHANGELOG.md Generation
 
-- `RELEASE.md` เกิดจากการ gen ด้วย Bun Shell จาก `git tag --sort=-version:refname` เท่านั้น
-- ห้ามแก้ไข `RELEASE.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
-- ใช้ `Bun.$` สำหรับ shell commands และ `Bun.write()` สำหรับ write file
+- `CHANGELOG.md` เกิดจากการ gen ด้วย `gen-changelog-md` skill จาก `git tag --sort=-version:refname` เท่านั้น
+- ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่
+- ใช้ `scripts/gen-release-md` สำหรับ generation logic
 - ใช้ semantic versioning format: `vX.Y.Z` (เช่น `v1.0.0`, `v1.2.3`)
 - ใช้ annotated tags สำหรับ releases
-- สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน Bun Shell script
+- สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน
 
 ## Expected Outcome
 
