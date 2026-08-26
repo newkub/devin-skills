@@ -1,6 +1,6 @@
 ---
-name: git-commit-changed
-description: Commit only selected changed files, not all files, with conventional commits
+name: git-commit-selected-files
+description: Commit selected files from working tree with conventional commits
 argument-hint: "[file-pattern-or-path]"
 related:
   - git-commit
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-Commit only the changed files that are relevant, without using `git add .`
+Commit only selected files, without using `git add .`
 
 ## Scope
 
