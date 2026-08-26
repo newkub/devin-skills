@@ -144,7 +144,6 @@ related:
 - `update-test: /update-test`
 - `update-references: /update-references`
 - `edit-relative-files: /edit-relative-files`
-- `update-usage: /update-usage`
 - `update-github-metadata: /update-github-metadata`
 - `update-convert-active-repo-to-devin-skills: /update-convert-active-repo-to-devin-skills`
 - `update-github-task: /update-github-task`

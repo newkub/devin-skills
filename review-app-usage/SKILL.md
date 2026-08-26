@@ -1,15 +1,15 @@
 ---
 name: review-app-usage
-description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage แก้ไข
+description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage-md แก้ไข
 ---
 
 ## Goal
 
-Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown docs) ก่อนเรียก `update-usage` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects, version และ generated docs ครบถ้วนและถูกต้อง
+Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown docs) ก่อนเรียก `update-usage-md` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects, version และ generated docs ครบถ้วนและถูกต้อง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-usage` — ตรวจ `usage.kdl` structure, syntax, coverage และ `USAGE.md` freshness ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review
+ใช้ก่อนเรียก `update-usage-md` — ตรวจ `usage.kdl` structure, syntax, coverage และ `USAGE.md` freshness ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review
 
 ## Execute
 
@@ -96,7 +96,7 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข `usage.kdl` ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-usage` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `update-usage-md` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
@@ -111,7 +111,7 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-usage` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-usage-md` ก่อนดำเนินการ
 
 ### 4. Formatting
 
