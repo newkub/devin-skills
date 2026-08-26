@@ -1,6 +1,16 @@
 ---
 name: realize-implementation
 description: แปลงทุกอย่างเป็น production code จริง ครบทุกมิติ
+related:
+  - implement-mock
+  - implement-features-to-mvp
+  - update-review-codebase-cli-and-run
+  - deep-analyze-by-use-scripts
+  - use-lib-effective
+  - resolve-errors
+  - refactor
+  - update-reference
+  - run-verify
 ---
 
 ## Goal
@@ -63,7 +73,8 @@ description: แปลงทุกอย่างเป็น production code �
 3. ใช้ `edit` หรือ `write` แทนที่ placeholder ด้วย real implementation — ถ้าต้อง edit-only ให้ทำตาม `/edit-only`
 4. Implement TODO items จาก Markdown/queue ตาม priority และ dependencies
 5. ทำ `/implement-features-to-mvp` เพื่อ implement features ที่ขาด
-6. ทำ `/use-lib-effective` — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า fail ให้ทำ `/resolve-errors`
+6. ทำ `/implement-mock` เพื่อแทนที่ MOCK, FAKE, STUB ด้วย real implementations
+7. ทำ `/use-lib-effective` — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า fail ให้ทำ `/resolve-errors`
 
 ### 6. Refactor And Verify
 

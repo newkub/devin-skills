@@ -93,6 +93,10 @@ related:
 - `report-usage-md: /report-usage-md`
 - `resolve-pr: /resolve-pr`
 - `fix: /fix`
+- `realize-implementation: /realize-implementation`
+- `implement-mock: /implement-mock`
+- `implement-github-issue: /implement-github-issue`
+- `implement-github-task: /implement-github-task`
 
 #### Analyze
 
@@ -305,6 +309,7 @@ related:
 - `list-git-release: /list-git-release`
 - `list-git-submodules: /list-git-submodules`
 - `list-git-worktree: /list-git-worktree`
+- `merge-pr: /merge-pr`
 - `merge-worktree-to-main: /merge-worktree-to-main`
 - `rename-git-commit: /rename-git-commit`
 
