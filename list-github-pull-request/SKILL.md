@@ -1,5 +1,5 @@
 ---
-name: list-github-pr
+name: list-github-pull-request
 description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
 argument-hint: "[repo]"
 ---

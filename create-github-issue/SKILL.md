@@ -4,7 +4,7 @@ description: สร้าง GitHub issue ใหม่พร้อม template, 
 related:
   - follow-github-issue-templates
   - implement-github-issue
-  - create-pr
+  - create-github-pull-request
   - ask-me
 ---
 

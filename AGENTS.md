@@ -91,7 +91,7 @@ related:
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
 - `at-this-repo: /at-this-repo`
 - `report-usage-md: /report-usage-md`
-- `resolve-pr: /resolve-pr`
+- `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
@@ -173,6 +173,7 @@ related:
 - `review-stability: /review-stability`
 - `review-delivery: /review-delivery`
 - `review-performance: /review-performance`
+- `review-github-pull-request: /review-github-pull-request`
 - `review-seo: /review-seo`
 - `review-techstack: /review-techstack`
 - `review-security: /review-security`
@@ -240,6 +241,7 @@ related:
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
 - `list-git-project-in-computer: /list-git-project-in-computer`
+- `list-github-pull-request: /list-github-pull-request`
 - `list-cloudflare-project: /list-cloudflare-project`
 - `list-brave-browser-history: /list-brave-browser-history`
 - `list-chezmoi-files: /list-chezmoi-files`
@@ -299,7 +301,7 @@ related:
 #### Git
 
 - `convert-to-git-submodules: /convert-to-git-submodules`
-- `create-pr: /create-pr`
+- `create-github-pull-request: /create-github-pull-request`
 - `create-worktree-in-project: /create-worktree-in-project`
 - `cleanup-worktree: /cleanup-worktree`
 - `delete-git-branch: /delete-git-branch`
@@ -311,7 +313,7 @@ related:
 - `list-git-release: /list-git-release`
 - `list-git-submodules: /list-git-submodules`
 - `list-git-worktree: /list-git-worktree`
-- `merge-pr: /merge-pr`
+- `merge-github-pull-request: /merge-github-pull-request`
 - `merge-worktree-to-main: /merge-worktree-to-main`
 - `rename-git-commit: /rename-git-commit`
 

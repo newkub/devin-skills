@@ -4,7 +4,7 @@ description: ลบ local หรือ remote git branch อย่างปล�
 related:
   - list-git-commit
   - edit-git-commit
-  - resolve-pr
+  - resolve-github-pull-request
 ---
 
 ## Goal

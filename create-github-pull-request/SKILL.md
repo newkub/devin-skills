@@ -1,12 +1,12 @@
 ---
-name: create-pr
+name: create-github-pull-request
 description: สร้าง pull request จาก current branch พร้อม title, body, labels, reviewers
 related:
   - git-commit
   - git-push
   - run-check
   - run-test
-  - merge-pr
+  - merge-github-pull-request
   - implement-github-issue
 ---
 
@@ -52,10 +52,35 @@ related:
 2. สร้าง body ประกอบด้วย:
    - Summary
    - Changes (bullet points)
-   - Test plan
+   - Type of change (feat, fix, refactor, docs)
+   - Breaking changes (ถ้ามี)
+   - Testing done
    - Issue references (เช่น `Closes #<issue>`)
 3. ถ้ามี project template → อ่าน `.github/pull_request_template.md`
-4. ถ้าไม่ชัด → ทำ `/ask-me`
+4. ใช้ format มาตรฐานถ้าไม่มี template:
+```markdown
+## Summary
+[อธิบาย changes อย่างกระชับ]
+
+## Type of Change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
+- [ ] Documentation
+- [ ] Refactoring
+
+## Testing
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing done
+
+## Checklist
+- [ ] Code follows project style
+- [ ] Self-review completed
+- [ ] Comments added for complex logic
+- [ ] Documentation updated (if needed)
+```
+5. ถ้าไม่ชัด → ทำ `/ask-me`
 
 ### 5. Create PR
 
@@ -81,7 +106,7 @@ related:
 
 1. รายงาน PR number, URL, title
 2. รายงาน status checks และ labels
-3. ถ้าต้องการ merge ต่อ → ทำ `/merge-pr`
+3. ถ้าต้องการ merge ต่อ → ทำ `/merge-github-pull-request`
 
 ## Rules
 

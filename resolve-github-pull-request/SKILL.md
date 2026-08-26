@@ -1,5 +1,5 @@
 ---
-name: resolve-pr
+name: resolve-github-pull-request
 description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
 ---
 

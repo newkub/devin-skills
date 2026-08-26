@@ -1,8 +1,8 @@
 ---
-name: merge-pr
+name: merge-github-pull-request
 description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
 related:
-  - resolve-pr
+  - resolve-github-pull-request
   - edit-git-commit
   - git-commit
   - git-push
@@ -35,7 +35,7 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 2. ตรวจสอบ review approval: `gh pr view <pr> --json reviews`
 3. ตรวจสอบ conflicts: `gh pr view <pr> --json mergeStateStatus`
 4. ถ้า CI ไม่ผ่าน → ทำ `/resolve-errors` ก่อน merge
-5. ถ้ามี conflicts → ทำ `/resolve-pr` หรือ merge base branch
+5. ถ้ามี conflicts → ทำ `/resolve-github-pull-request` หรือ merge base branch
 
 ### 3. Choose Merge Strategy
 
