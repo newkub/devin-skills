@@ -80,7 +80,7 @@ related:
 - `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-project-requirement: /ask-project-requirement`
-- `enter-dot: /enter-dot`
+- `follow-enter-dot: /follow-enter-dot`
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`

@@ -2,6 +2,12 @@
 name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
 argument-hint: "[context]"
+related:
+  - follow-enter-dot
+  - report-before
+  - ask-me
+  - ship
+  - continue
 ---
 
 ## Goal

@@ -1,5 +1,5 @@
 ---
-name: enter-dot
+name: follow-enter-dot
 description: จัดการเมื่อ user ส่ง "." โดยตรวจ state แล้วทำ continue, suggest, ship หรือ ask-me
 related:
   - continue
