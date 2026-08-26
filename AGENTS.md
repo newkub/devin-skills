@@ -96,6 +96,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `at-this-repo: /at-this-repo`
 - `edit-this-repo: /edit-this-repo`
 - `report-usage-md: /report-usage-md`
+- `report-markdown-uxui-sketch: /report-markdown-uxui-sketch`
+- `report-markdown-uxui-all-routes: /report-markdown-uxui-all-routes`
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
 - `improve: /improve`
@@ -146,6 +148,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 #### Request
 
+- `enhance-prompt: /enhance-prompt`
 - `request-prompt: /request-prompt`
 - `request-math-formular: /request-math-formular`
 - `request-pattern: /request-pattern`
