@@ -172,6 +172,7 @@ related:
 - `review-implement: /review-implement`
 - `review-plan: /review-plan`
 - `review-test: /review-test`
+- `review-test-result: /review-test-result`
 - `review-deploy: /review-deploy`
 - `review-release: /review-release`
 - `review-migration: /review-migration`

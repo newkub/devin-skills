@@ -1,6 +1,14 @@
 ---
 name: review-test
 description: Review test strategy และ quality ก่อน run/write test
+related:
+  - review-test-result
+  - update-devin-global-skills
+  - run-test
+  - run-test-coverage
+  - write-test
+  - update-test
+  - follow-test
 ---
 
 ## Goal
@@ -117,3 +125,4 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 - รายงาน Edge Case Gaps พร้อม action required
 - Test quality score พร้อม progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- หลัง run tests แล้วให้ใช้ `/review-test-result` เพื่อวิเคราะห์ผลลัพธ์ และ `/update-devin-global-skills` ถ้าพบ skill gap
