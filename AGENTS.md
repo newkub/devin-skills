@@ -1,6 +1,6 @@
 ---
 name: devin-global-skills
-description: รวบรวม skills สำหรับ Devin CLI ทั้ง global และ project-specific
+description: Index of global and project-specific Devin CLI skills
 related:
   - update-agents-md
   - follow-agents-md
@@ -15,51 +15,51 @@ related:
 
 ## Goal
 
-จัดทำและรักษา `AGENTS.md` และ conventions ของ Devin global skills repository ให้ถูกต้อง ครบถ้วน และพร้อมใช้งาน
+Maintain `AGENTS.md` and conventions for the Devin global skills repository so they are correct, complete, and ready to use
 
 ## Scope
 
-ใช้กับ root workspace `%APPDATA%\devin\skills\` ที่เก็บ skill packages ทั้งหมด ไม่รวมการแก้ไข source code ของแต่ละ skill โดยตรง
+Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packages. Does not include editing skill source code directly
 
 ## Execute
 
 ### 1. Start Every Task
 
-> Goal: ตรวจสอบสถานะ workspace และ references ก่อนลงมือ
+> Goal: Check workspace status and references before starting
 
-1. ทำตาม `/update-agents-md` ก่อนเริ่มงานทุกครั้ง
-2. ทำตาม `/follow-agents-md` เพื่ออ่านและทำตาม `AGENTS.md`
-3. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-4. อ่าน `/follow-write-devin-skills` เมื่อแก้ไข skill
+1. Run `/update-agents-md` before starting every task
+2. Run `/follow-agents-md` to read and follow `AGENTS.md`
+3. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+4. Read `/follow-write-devin-skills` when editing a skill
 
 ### 2. Maintain AGENTS.md
 
-> Goal: ให้ `AGENTS.md` เป็นปัจจุบันและถูกต้อง
+> Goal: Keep `AGENTS.md` up to date and correct
 
-1. ทำตาม `/check-monorepo` เพื่อตรวจสอบ monorepo
-2. ทำตาม `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
-3. ทำตาม `/all-workspace` ถ้าเป็น monorepo
-4. อัปเดท `### Architecture`, `### Skills`, `### Workspaces` ตาม project จริง
-5. เก็บไฟล์ไม่เกิน 250 บรรทัด
+1. Run `/check-monorepo` to verify monorepo status
+2. Run `/analyze-project` to analyze tech stack and structure
+3. Run `/all-workspace` if it is a monorepo
+4. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project
+5. Keep the file under 250 lines
 
 ### 3. Validate And Ship
 
-> Goal: ตรวจสอบและ commit การเปลี่ยนแปลง
+> Goal: Validate and commit changes
 
-1. ทำตาม `/review-rules` เพื่อตรวจสอบ `AGENTS.md`
-2. ทำตาม `/review-devin-global-skills` เมื่อแก้ไข skills
-3. ทำตาม `/validate` เพื่อตรวจสอบความถูกต้อง
-4. ทำตาม `/git-commit` หรือ `/ship` เพื่อ commit การเปลี่ยนแปลง
-5. ทำตาม `/report` เพื่อสรุปผล
+1. Run `/review-rules` to check `AGENTS.md`
+2. Run `/review-devin-global-skills` when editing skills
+3. Run `/validate` to verify correctness
+4. Run `/git-commit` or `/ship` to commit changes
+5. Run `/report` to summarize results
 
 ## Rules
 
 ### 1. Format
 
-- ใช้ frontmatter `name`, `description`, `related`
-- ลำดับ sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-- ไฟล์ไม่เกิน 250 บรรทัด
-- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
+- Use frontmatter `name`, `description`, `related`
+- Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
+- Keep the file under 250 lines
+- Use backticks for `tools`, `commands`, `paths`, and `skill-name`
 
 ### 2. Architecture
 
@@ -94,6 +94,7 @@ related:
 - `report-flow: /report-flow`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
 - `at-this-repo: /at-this-repo`
+- `edit-this-repo: /edit-this-repo`
 - `report-usage-md: /report-usage-md`
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
@@ -390,17 +391,17 @@ related:
 
 ### 4. Workspaces
 
-- ไม่ใช่ monorepo: workspace เดียวคือ root (`%APPDATA%\devin\skills\`)
+- Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
 - Submodules: `ask-project-requirement`, `analyze-codebase-quality`, `visualize-devin`
 
 ### 5. Safety
 
-- ไม่แก้ไข `SKILL.md` ของ skill อื่นโดยไม่ได้รับคำสั่ง
-- ไม่ลบหรือย้าย skill directories โดยไม่มี dry run
-- ทำ dry run ก่อน destructive actions
+- Do not edit another skill's `SKILL.md` without explicit command
+- Do not delete or move skill directories without a dry run
+- Dry run before destructive actions
 
 ## Expected Outcome
 
-- `AGENTS.md` ถูกต้องตาม Devin CLI standards
-- references ทุก skill มีอยู่จริง
-- commit การเปลี่ยนแปลงพร้อม next action
+- `AGENTS.md` follows Devin CLI standards
+- Every skill reference exists
+- Changes are committed with a clear next action
