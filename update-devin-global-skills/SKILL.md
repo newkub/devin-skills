@@ -2,6 +2,12 @@
 name: update-devin-global-skills
 description: อัปเดต skill เดียวใน devin skills repo ตามมาตรฐาน follow-write-devin-skills
 argument-hint: "[skill-name]"
+related:
+  - review-devin-global-skills
+  - follow-write-devin-skills
+  - learn-website-all-routes
+  - follow-coverage
+  - validate
 ---
 
 ## Goal
@@ -45,9 +51,10 @@ argument-hint: "[skill-name]"
 > Goal: references ครบถ้วนและเป็นปัจจุบัน
 
 1. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn-from-references` เพื่อสกัดและเขียน references
-2. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
-3. ทำ `/check-reference` เพื่อยืนยัน `related` references มีอยู่จริง
-4. ถ้ามี broken references → แก้ทันที
+2. ถ้า skill มี dependencies ที่เป็น website framework/library/tool หรือเกี่ยวข้องกับ website routes → ทำ `/learn-website-all-routes` เพื่อสร้าง/อัปเดต `references/routes.md`
+3. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
+4. ทำ `/check-reference` เพื่อยืนยัน `related` references มีอยู่จริง
+5. ถ้ามี broken references → แก้ทันที
 
 ### 5. Update Content
 
@@ -97,6 +104,7 @@ argument-hint: "[skill-name]"
 
 - ทำ `/follow-write-devin-skills` สำหรับการปรับปรุง skill
 - ทำ `/learn-from-references` สำหรับ skills ที่มี dependencies แต่ขาด references
+- ทำ `/learn-website-all-routes` สำหรับ skills ที่มี dependencies เช่น website framework, library หรือ tool ที่เกี่ยวข้องกับ routes
 - ทำ `/follow-coverage` สำหรับ skills ที่ content ไม่ครอบคลุม
 
 ### 3. Safety

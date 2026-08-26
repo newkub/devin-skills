@@ -74,6 +74,7 @@ related:
 
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
+- `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `ask-requirement: /ask-requirement`
 - `validate: /validate`
@@ -197,6 +198,7 @@ related:
 - `search-files-patterns: /search-files-patterns`
 - `search-in-raindrop-io: /search-in-raindrop-io`
 - `use-ast-grep: /use-ast-grep`
+- `list-website-all-routes: /list-website-all-routes`
 
 #### Watch
 
