@@ -253,6 +253,7 @@ related:
 - `idea-convert-my-global-cli-to-skills: /idea-convert-my-global-cli-to-skills`
 - `idea-features: /idea-features`
 - `idea-improve-files-naming: /idea-improve-files-naming`
+- `idea-use-skills-in-another-skills: /idea-use-skills-in-another-skills`
 
 ### 4. Workspaces
 
