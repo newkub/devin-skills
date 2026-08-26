@@ -2,6 +2,12 @@
 name: add-to-queue
 description: รับ request จากผู้ใช้ และเพิ่มลง QUEUE.md ใน project root พร้อมชี้แนะ next step
 argument-hint: "[task]"
+related:
+  - deep-plan
+  - realize-implementation
+  - continue
+  - report-table
+  - ask-me
 ---
 
 ## Goal
@@ -46,8 +52,8 @@ argument-hint: "[task]"
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
 1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`
-2. ถ้าพร้อม implement → ใช้ `/realize-implementation` หรือ `/implement-queue-md`
-3. ถ้ามีหลาย request รออยู่ → ใช้ `/implement-queue-md`
+2. ถ้าพร้อม implement → ใช้ `/realize-implementation`
+3. ถ้ามีหลาย request รออยู่ → ใช้ `/continue` เพื่อทำตามลำดับ
 
 ## Rules
 
@@ -65,7 +71,7 @@ argument-hint: "[task]"
 ### 3. Status
 
 - ค่าเริ่มต้น `pending`
-- อัปเดทเป็น `in-progress` หรือ `completed` โดย `/implement-queue-md`
+- อัปเดทเป็น `in-progress` หรือ `completed` โดย `/continue`
 
 ### 4. No Execution
 
@@ -76,4 +82,4 @@ argument-hint: "[task]"
 
 - `QUEUE.md` มี request ใหมท้ายตาราง
 - Request มี title, description, status, priority, created
-- พร้อมสำหรับ `/deep-plan`, `/realize-implementation`, หรือ `/implement-queue-md` ต่อ
+- พร้อมสำหรับ `/deep-plan`, `/realize-implementation`, หรือ `/continue` ต่อ

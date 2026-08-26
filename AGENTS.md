@@ -148,6 +148,7 @@ related:
 - `gen-changelog-md: /gen-changelog-md`
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
+- `add-to-queue: /add-to-queue`
 
 #### Global Config
 
@@ -292,6 +293,7 @@ related:
 - `watch-cloudflare: /watch-cloudflare`
 - `watch-cloudflare-and-fix-in-computer: /watch-cloudflare-and-fix-in-computer`
 - `watch-vercel: /watch-vercel`
+- `watch-all-task: /watch-all-task`
 - `watch-github-actions: /watch-github-actions`
 - `watch-browser: /watch-browser`
 - `watch-browser-console: /watch-browser-console`
