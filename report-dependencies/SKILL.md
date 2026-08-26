@@ -1,6 +1,6 @@
 ---
 name: report-dependencies
-description: สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses
+description: "สรุป dependencies: versions, outdated, unused, vulnerabilities, licenses"
 ---
 
 ## Goal

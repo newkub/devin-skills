@@ -1,6 +1,6 @@
 ---
 name: review-delivery
-description: Review delivery: docs, DX, efficiency, config, CI/CD, infra, performance, security
+description: "Review delivery: docs, DX, efficiency, config, CI/CD, infra, performance, security"
 related:
   - review-performance
   - review-seo
