@@ -1,0 +1,64 @@
+name: Plan
+description: Propose a plan or roadmap item for a milestone or epic
+title: "[Plan]: "
+labels: ["plan"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose a plan, roadmap, or epic. Be specific about scope and deliverables.
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What is the high-level goal of this plan?
+      placeholder: Describe the objective
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is in scope and what is out of scope?
+      placeholder: |
+        In scope:
+        - ...
+
+        Out of scope:
+        - ...
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: List the concrete deliverables or outcomes
+      placeholder: |
+        - [ ] Deliverable 1
+        - [ ] Deliverable 2
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: List dependencies, blockers, or related issues
+      placeholder: |
+        - Depends on #123
+        - Blocks #456
+    validations:
+      required: false
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and Mitigations
+      description: Identify risks and how to mitigate them
+    validations:
+      required: false
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline
+      description: Proposed start and end dates or milestones
+    validations:
+      required: false

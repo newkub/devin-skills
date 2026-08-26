@@ -1,0 +1,57 @@
+name: Test
+description: Request or report a test scenario, test coverage, or testing infrastructure
+title: "[Test]: "
+labels: ["test"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request or report tests. Include scope, expected result, and reproduction steps.
+  - type: dropdown
+    id: test_type
+    attributes:
+      label: Test Type
+      description: What type of test is this?
+      options:
+        - Unit
+        - Integration
+        - E2E
+        - Performance
+        - Security
+        - Accessibility
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What area or feature should be tested?
+      placeholder: Describe the area under test
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Result
+      description: What should the test verify or produce?
+      placeholder: Describe the expected output or behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: If reporting a test failure, provide steps to reproduce
+      placeholder: |
+        1. Run `...`
+        2. See failure `...`
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Test Environment
+      description: OS, runtime, test runner, and versions
+    validations:
+      required: false

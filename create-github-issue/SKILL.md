@@ -30,15 +30,17 @@ argument-hint: "[title]"
 
 > Goal: Write Issue Template
 
-1. ใช้ issue template ตาม project standards
-2. เขียน title ที่ชัดเจนและกระชับ
-3. เขียน description ด้วยรูปแบบมาตรฐาน:
+1. ถ้า repo ยังไม่มี issue templates → ทำ `/follow-github-issue-templates` ก่อน
+2. ใช้ issue template ตาม project standards หรือ `?follow-github-issue-templates/references/index.md`
+3. เลือกประเภท issue: bug, feature, plan, test, question หรือ agents-task
+4. เขียน title ที่ชัดเจนและกระชับ
+5. เขียน description ด้วยรูปแบบมาตรฐาน:
    - Problem statement
    - Expected behavior
    - Actual behavior
    - Steps to reproduce
    - Environment details
-4. เพิ่ม screenshots หรือ logs หากจำเป็น
+6. เพิ่ม screenshots หรือ logs หากจำเป็น
 
 ### 3. Create Issue With MCP Tool
 

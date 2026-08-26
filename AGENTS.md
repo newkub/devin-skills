@@ -147,6 +147,7 @@ related:
 
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-create-review-cli: /follow-create-review-cli`
+- `follow-github-issue-templates: /follow-github-issue-templates`
 
 #### Watch
 

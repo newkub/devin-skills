@@ -76,13 +76,12 @@ description: จัดการ .github directory ครบถ้วน ทั�
 
 ### 4. Setup Issue Templates
 
-> Goal: สร้าง issue templates สำหรับ bug reports, feature requests และ config
+> Goal: สร้าง issue templates สำหรับ bug reports, feature requests, plans, tests, questions และ agents tasks
 
-1. สร้าง `.github/ISSUE_TEMPLATE/bug_report.yml` พร้อมฟิลด์: description, steps to reproduce, expected behavior, environment
-2. สร้าง `.github/ISSUE_TEMPLATE/feature_request.yml` พร้อมฟิลด์: problem, proposed solution, alternatives
-3. สร้าง `.github/ISSUE_TEMPLATE/config.yml` พร้อม `blank_issues_enabled` และ contact links
-4. ใช้ GitHub Forms syntax (YAML) ไม่ใช่ Markdown templates
-5. ถ้ามี issue templates ที่ถูกต้องอยู่แล้ว → อัปเดตเฉพาะส่วนที่ขาด
+1. ทำ `/follow-github-issue-templates` เพื่อสร้างหรืออัปเดต `.github/ISSUE_TEMPLATE/`
+2. ตรวจสอบว่ามี `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml`
+3. ตรวจสอบ `config.yml` พร้อม `blank_issues_enabled` และ contact links
+4. ถ้า `/follow-github-issue-templates` ไม่พร้อมใช้งาน → สร้าง templates ด้วยตัวเองตาม `?follow-github-issue-templates/references/index.md`
 
 ### 5. Setup PR Template
 

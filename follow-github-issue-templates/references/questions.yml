@@ -1,0 +1,40 @@
+name: Questions
+description: Ask a question or start a discussion
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to ask a question or start a discussion. Provide as much context as possible.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What is your question?
+      placeholder: Ask your question clearly
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide background or context that helps answer the question
+      placeholder: Describe what you are trying to do and what you have tried
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Answer
+      description: What kind of answer are you looking for?
+      placeholder: Describe the information you need
+    validations:
+      required: false
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues and discussions
+        - label: I have read the documentation
