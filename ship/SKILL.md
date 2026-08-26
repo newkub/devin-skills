@@ -1,21 +1,18 @@
 ---
 name: ship
-description: Ship workspace หรือ skills repo โดย commit ทำตาม AGENTS.md รองรับ submodules ไม่มี push หรือ release
+description: Ship workspace ที่เลือก โดยทำตาม AGENTS.md และอัปเดต skills ก่อน commit
 related:
   - update-agents-md
   - follow-agents-md
-  - ask-project-requirement
-  - run-verify
-  - test-all
-  - validate
+  - update-devin-global-skills
+  - update-all-devin-global-skills
   - git-commit
-  - resolve-errors
-  - watch-release
+  - report
 ---
 
 ## Goal
 
-Ship workspace ที่เลือก หรือ skills repo ที่มี submodules โดยอัปเดต `AGENTS.md` ทำตาม workflows ตรวจสอบด้วย `/run-verify` แล้ว commit ทั้ง submodule และ root
+Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` และอัปเดต skills ด้วย `/update-devin-global-skills` ก่อน commit โดยไม่ push หรือ release
 
 ## Scope
 
@@ -27,76 +24,59 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 > Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
 
-1. ถ้า `AGENTS.md` ไม่มี requirements หรือ requirements ไม่ชัด → ทำ `/ask-project-requirement` เพื่อเก็บข้อกำหนดก่อน ship
-2. ทำ `/update-agents-md` ตาม `/ship` เพื่อเขียน `AGENTS.md` ตาม `/ship`
-3. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
-4. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
+1. ถ้า `AGENTS.md` ไม่มีหรือไม่อัปเดต → ทำ `/update-agents-md`
+2. ตรวจสอบว่า `AGENTS.md` มี sections ครบตาม `/follow-write-devin-skills`
+3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
 ### 2. Follow AGENTS.md
 
-> Goal: ทำตาม workflows ใน `AGENTS.md`
+> Goal: ทำตาม workflows ที่ระบุใน `AGENTS.md`
 
-1. ทำ `/follow-agents-md` เพื่อ execute workflows/skills ที่ระบุ
-2. ถ้าพบ error ให้ทำ `/resolve-errors` แล้วทำ `/follow-agents-md` ซ้ำจนกว่าจะผ่าน
-3. ยืนยันว่า `## Expected Outcome` ของแต่ละ sub-workflow บรรลุแล้ว
+1. ทำ `/follow-agents-md` เพื่ออ่าน `AGENTS.md`
+2. ทำตาม `## Execute` ของ `AGENTS.md` ตามลำดับ
+3. ถ้า `AGENTS.md` ไม่ระบุ workflow → ใช้ default: verify → commit → report
 
-### 3. Verify
+### 3. Update Skills
+
+> Goal: อัปเดต skills ให้ผ่านมาตรฐานก่อน ship
+
+1. ถ้า ship ทั้ง skills repo → ทำ `/update-all-devin-global-skills`
+2. ถ้า ship skill เดี่ยว → ทำ `/update-devin-global-skills <skill-name>`
+3. ถ้าไม่ใช่ skills repo → ข้าม
+
+### 4. Verify
 
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
-1. ทำ `/run-verify` เพื่อรัน scan, lint, typecheck, test และ build
-2. ทำ `/test-all` เพื่อรัน unit, integration, e2e, coverage
+1. ทำ `/run-verify` ถ้า `AGENTS.md` หรือ workspace ระบุ
+2. ทำ `/test-all` ถ้ามี test suites
 3. ทำ `/validate` เพื่อ validate ผลลัพธ์
-4. ถ้า verify หรือ test ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-4 จนกว่าจะผ่าน
+4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
 
-### 4. Identify Submodules
+### 5. Commit
 
-> Goal: ระบุ submodules ที่มี `.git` ทั้งหมดก่อน commit
+> Goal: commit การเปลี่ยนแปลง
 
 1. รัน `git submodule status` เพื่อดู submodules ทั้งหมด
-2. ถ้าไม่มี submodules → ข้ามไป Step 6 (Commit) โดย commit ที่ root โดยตรง
-3. สำหรับแต่ละ submodule ตรวจ `git status` และ `git diff` เพื่อหาการเปลี่ยนแปลง
-4. จัดรายการ submodules ที่มี changes ต้อง commit
-
-### 5. Commit Submodules
-
-> Goal: commit ในแต่ละ submodule ที่มี changes ก่อน root
-
-1. สำหรับแต่ละ submodule ที่มี changes:
-   - `cd` เข้า submodule directory
-   - ตรวจ `git status` และ `git diff`
-   - ทำ `/git-commit` ใน submodule
-2. ถ้า commit ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
-3. บันทึก commit hash ของแต่ละ submodule
-
-### 6. Commit Root
-
-> Goal: commit การเปลี่ยนแปลงที่ root พร้อม update submodule pointers
-
-1. กลับมาที่ root repo
-2. ตรวจ `git status` — ถ้ามี submodules ควรเห็น submodule pointers เปลี่ยน
+2. ถ้ามี submodules ที่มี changes → commit ใน submodule ก่อน root
 3. ทำ `/git-commit` ที่ root พร้อมระบุ submodule pointer updates ถ้ามี
-4. ถ้า root มี changes อื่น (docs, skills, code) → commit รวมในครั้งเดียว
-5. ถ้า commit ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry (max 3)
+4. ถ้าไม่มี changes → stop และ report
 
-### 7. Validate And Report
+### 6. Report
 
-> Goal: ยืนยันการ ship สมบูรณ์
+> Goal: สรุปการ ship
 
-1. ทำ `/validate` เพื่อตรวจ references และ structure
-2. ถ้ามี submodules → รัน `git submodule status` เพื่อยืนยัน pointers ถูกต้อง
-3. ทำ `/report` พร้อม `/report-table` สรุป submodule commits (ถ้ามี) และ root commit
-4. ถ้าพบ release tag, version bump, หรือ release config → ทำ `/watch-release` เพื่อตรวจสอบ release status
-5. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+1. ทำ `/report` พร้อม `/report-table`
+2. สรุป commits ทั้ง root และ submodules (ถ้ามี)
+3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
 
 ### 1. AGENTS.md First
 
-- `/update-agents-md` ต้องทำก่อนเสมอและทำตาม `/ship`
-- `AGENTS.md` ถูกเขียนตาม `/ship`
+- `/update-agents-md` ต้องทำก่อนทุกครั้งถ้า `AGENTS.md` ไม่อัปเดต
 - `/follow-agents-md` ต้องทำหลัง `AGENTS.md` อัปเดต
-- ห้าม duplicate รายละเอียดที่มีอยู่ใน `AGENTS.md`
+- ห้าม duplicate เนื้อหาที่มีอยู่ใน `AGENTS.md`
 
 ### 2. No Push Or Release
 
@@ -105,11 +85,11 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 - ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
-### 3. Use Run-Verify And Test-All
+### 3. Update Skills Before Ship
 
-- ใช้ `/run-verify` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
-- ใช้ `/test-all` เพื่อรัน unit, integration, e2e, coverage
-- ถ้า workspace ไม่มี verify script → ทำ `/follow-tasks` ก่อน
+- ทำ `/update-all-devin-global-skills` สำหรับ skills repo
+- ทำ `/update-devin-global-skills` สำหรับ skill เดี่ยว
+- ถ้าไม่ใช่ skills repo → ข้าม
 
 ### 4. Submodule First
 
@@ -128,7 +108,7 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-verify` และ `/validate`
+- Code ผ่าน `/run-verify`, `/test-all` และ `/validate`
 - ทุก submodule ที่มี changes ถูก commit ก่อน root
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ
