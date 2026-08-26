@@ -67,7 +67,15 @@ description: สร้าง at-<repo> skills จาก top active remote repos 
 2. เพิ่ม `- `at-<repo-name>: /at-<repo-name>`` สำหรับแต่ละ repo
 3. ใช้ `/update-agents-md` ถ้ามี
 
-### 6. Validate And Commit
+### 6. Update All Devin Global Skills
+
+> Goal: อัปเดต devin skills repo หลังจากสร้าง at-<repo>
+
+1. ทำ `/update-all-devin-global-skills`
+2. ตรวจสอบ cross-skill consistency สำหรับ `at-<repo>` ใหม่
+3. ถ้ามี redundant skills → ทำ `/review-redundancy`
+
+### 7. Validate And Commit
 
 > Goal: ตรวจสอบและ commit
 

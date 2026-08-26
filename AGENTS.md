@@ -229,6 +229,16 @@ related:
 - `list-git-project-in-computer: /list-git-project-in-computer`
 - `list-chezmoi-files: /list-chezmoi-files`
 
+#### At
+
+- `at-booking-platform: /at-booking-platform`
+- `at-compare-platform: /at-compare-platform`
+- `at-digital-product: /at-digital-product`
+- `at-new-habbit: /at-new-habbit`
+- `at-skills-as-a-services: /at-skills-as-a-services`
+- `at-trading: /at-trading`
+- `at-wrikka-platform: /at-wrikka-platform`
+
 #### Watch
 
 - `watch-deploy: /watch-deploy`
