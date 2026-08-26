@@ -92,6 +92,7 @@ related:
 - `at-this-repo: /at-this-repo`
 - `report-usage-md: /report-usage-md`
 - `resolve-pr: /resolve-pr`
+- `fix: /fix`
 
 #### Analyze
 
@@ -234,6 +235,8 @@ related:
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
 - `list-git-project-in-computer: /list-git-project-in-computer`
+- `list-cloudflare-project: /list-cloudflare-project`
+- `list-brave-browser-history: /list-brave-browser-history`
 - `list-chezmoi-files: /list-chezmoi-files`
 
 #### At
@@ -274,11 +277,19 @@ related:
 - `watch-build: /watch-build`
 - `watch-test: /watch-test`
 - `watch-lint: /watch-lint`
-- `watch-cloudflare-workers: /watch-cloudflare-workers`
+- `watch-cloudflare: /watch-cloudflare`
+- `watch-cloudflare-and-fix-in-computer: /watch-cloudflare-and-fix-in-computer`
+- `watch-vercel: /watch-vercel`
 - `watch-github-actions: /watch-github-actions`
 - `watch-browser: /watch-browser`
 - `watch-browser-console: /watch-browser-console`
 - `watch-terminal: /watch-terminal`
+
+#### Deploy
+
+- `deploy-to-cloudflare: /deploy-to-cloudflare`
+- `deploy-to-vercel: /deploy-to-vercel`
+- `deploy-to-railway: /deploy-to-railway`
 
 #### Git
 

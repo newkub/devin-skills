@@ -1,5 +1,5 @@
 ---
-name: watch-cloudflare-workers
+name: watch-cloudflare
 description: Watch deploy status ของ Cloudflare Workers แล้ว fix จนกว่าจะ deploy ผ่าน
 argument-hint: "[worker-name-or-url]"
 ---

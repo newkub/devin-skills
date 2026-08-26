@@ -39,8 +39,8 @@ Build application สำหรับ deployment
 
 Deploy application ตาม platform ที่ใช้
 
-1. สำหรับ Vercel: ทำ `/follow-service-vercel`
-2. สำหรับ Cloudflare: ทำ `/follow-service-cloudflare` และถ้า project ใช้ Vite ให้ติดตั้ง `@cloudflare/vite-plugin` ก่อน deploy (ดู `references/cloudflare-vite-plugin.md`)
+1. สำหรับ Vercel: ทำ `/deploy-to-vercel`
+2. สำหรับ Cloudflare: ทำ `/deploy-to-cloudflare`
 3. สำหรับ Railway: ทำ `/deploy-to-railway`
 4. สำหรับ platform อื่น: ทำตาม workflow ที่เกี่ยวข้อง
 5. ตรวจสอบว่า deploy สำเร็จ
@@ -114,11 +114,10 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ### 3. Deploy
 
-- ใช้ workflow ที่เหมาะสมกับ platform
+- ใช้ `/deploy-to-<platform>` ตาม platform ที่เลือก
 - ต้อง deploy สำเร็จ
 - ตรวจสอบ deployment status
-- ถ้า deploy ไป Cloudflare และ project ใช้ Vite ต้องติดตั้ง `@cloudflare/vite-plugin` ก่อน deploy
-- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/watch-cloudflare-workers` เพื่อ watch และ fix จนกว่าจะผ่าน
+- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/watch-cloudflare` เพื่อ watch และ fix จนกว่าจะผ่าน
 
 ### 4. Commit And Push
 
