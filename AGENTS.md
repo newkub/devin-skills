@@ -322,6 +322,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `list-chezmoi-files: /list-chezmoi-files`
 - `list-devin-user-request-in-this-session: /list-devin-user-request-in-this-session`
 - `list-devin-user-request-all-session: /list-devin-user-request-all-session`
+- `list-devin-session: /list-devin-session`
 - `search-similar: /search-similar`
 - `search-in-github-star: /search-in-github-star`
 - `list-repo-in-github-star: /list-repo-in-github-star`
