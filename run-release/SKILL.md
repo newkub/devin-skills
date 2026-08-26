@@ -1,15 +1,15 @@
 ---
 name: run-release
-description: Auto-detect platforms, release ไปยัง external platforms และ gen RELEASE.md อัตโนมัติ
+description: Auto-detect platforms, release ไปยัง external platforms และ gen CHANGELOG.md อัตโนมัติ
 ---
 
 ## Goal
 
-Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `RELEASE.md` จาก git tags ด้วย Bun Shell
+Auto-detect platforms ที่ project รองรับจาก configuration files, release ไปยัง external platforms อัตโนมัติ และ gen `CHANGELOG.md` จาก git tags ด้วย `gen-changelog-md`
 
 ## Scope
 
-Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `RELEASE.md` จาก git tags
+Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `CHANGELOG.md` จาก git tags
 
 ## Execute
 

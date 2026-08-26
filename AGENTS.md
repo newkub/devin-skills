@@ -124,6 +124,7 @@ related:
 - `update-dependencies-latest: /update-dependencies-latest`
 - `follow-release: /follow-release`
 - `run-release: /run-release`
+- `gen-changelog-md: /gen-changelog-md`
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
 

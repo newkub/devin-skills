@@ -1,0 +1,215 @@
+#!/usr/bin/env bun
+/**
+ * gen-release-md — Generate CHANGELOG.md from git tags
+ *
+ * Output: CHANGELOG.md (Keep a Changelog format)
+ * Source: git tag --sort=-version:refname
+ *
+ * Usage:
+ *   bun run scripts/gen-release-md           # gen CHANGELOG.md
+ *   bun run scripts/gen-release-md --dry     # print to stdout, no file write
+ *   bun run scripts/gen-release-md --output RELEASE.md  # custom output path
+ *
+ * Rules:
+ *   - Never edit CHANGELOG.md manually — rerun this script instead
+ *   - Uses conventional commits from git log between tags
+ *   - Groups: Breaking Changes, Features, Bug Fixes, Other
+ *   - Shows top 10 releases in detail, rest in table
+ */
+
+const args = process.argv.slice(2);
+const isDryRun = args.includes("--dry");
+const outputIdx = args.indexOf("--output");
+const outputFile = outputIdx !== -1 ? args[outputIdx + 1] : "CHANGELOG.md";
+
+interface TagInfo {
+	tag: string;
+	date: string;
+	commits: CommitInfo[];
+}
+
+interface CommitInfo {
+	hash: string;
+	type: string;
+	scope: string;
+	subject: string;
+	breaking: boolean;
+}
+
+function parseCommit(line: string): CommitInfo | null {
+	// Format: HASH~subject (using ~ to avoid Bun.$ pipe interpretation of |)
+	const parts = line.split("~");
+	if (parts.length < 2) return null;
+	const hash = parts[0].slice(0, 7);
+	const subject = parts.slice(1).join("~");
+
+	// Conventional commit: type(scope): subject  or  type!: subject
+	const match = subject.match(/^(\w+)(?:\(([^)]+)\))?(!)?:\s*(.+)$/);
+	if (!match) {
+		return { hash, type: "other", scope: "", subject, breaking: false };
+	}
+	return {
+		hash,
+		type: match[1],
+		scope: match[2] || "",
+		subject: match[4],
+		breaking: !!match[3],
+	};
+}
+
+function categorize(commits: CommitInfo[]) {
+	const breaking = commits.filter((c) => c.breaking || c.type === "breaking");
+	const features = commits.filter((c) => c.type === "feat" && !c.breaking);
+	const fixes = commits.filter((c) => c.type === "fix" && !c.breaking);
+	const other = commits.filter(
+		(c) =>
+			!c.breaking &&
+			c.type !== "feat" &&
+			c.type !== "fix" &&
+			c.type !== "breaking",
+	);
+	return { breaking, features, fixes, other };
+}
+
+function formatSection(title: string, commits: CommitInfo[]): string {
+	if (commits.length === 0) return "";
+	const lines = [`### ${title}\n`];
+	for (const c of commits) {
+		const scope = c.scope ? `**${c.scope}**: ` : "";
+		lines.push(`- ${scope}${c.subject} (${c.hash})`);
+	}
+	lines.push("");
+	return lines.join("\n");
+}
+
+async function main() {
+	// Get all tags sorted by version (newest first)
+	const { stdout: tagsRaw } = await Bun.$`git tag --sort=-version:refname`.quiet();
+	const tags = String(tagsRaw).trim().split("\n").filter(Boolean);
+
+	if (tags.length === 0) {
+		// No tags — generate empty changelog
+		const { stdout: date } = await Bun.$`git log -1 --format=%ad --date=short`.quiet();
+		const dateStr = String(date).trim();
+		const content = `# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+*Generated on ${new Date().toISOString()}*
+
+## Unreleased
+
+No releases yet. First release will appear here.
+
+## Release History
+
+| Version | Date |
+|---------|------|
+| — | ${dateStr} |
+`;
+		if (isDryRun) {
+			console.log(content);
+		} else {
+			await Bun.write(outputFile, content);
+			console.log(`${outputFile} generated (no tags found)`);
+		}
+		return;
+	}
+
+	// Build tag info with commits between tags
+	const tagInfos: TagInfo[] = [];
+	for (let i = 0; i < tags.length; i++) {
+		const tag = tags[i];
+		const prevTag = tags[i + 1] || "";
+		const range = prevTag ? `${prevTag}..${tag}` : tag;
+
+		const { stdout: dateRaw } = await Bun.$`git log -1 --format=%ad --date=short ${tag}`.quiet();
+		const date = String(dateRaw).trim();
+
+		const { stdout: commitsRaw } = await Bun.$`git log ${range} --format=%H~%s --no-merges`.quiet();
+		const commitLines = String(commitsRaw).trim().split("\n").filter(Boolean);
+		const commits = commitLines.map(parseCommit).filter(Boolean) as CommitInfo[];
+
+		tagInfos.push({ tag, date, commits });
+	}
+
+	// Build CHANGELOG.md
+	const sections: string[] = [];
+	sections.push(`# Changelog`);
+	sections.push("");
+	sections.push(`All notable changes to this project will be documented in this file.`);
+	sections.push("");
+	sections.push(`The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),`);
+	sections.push(`and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).`);
+	sections.push("");
+	sections.push(`*Generated from git tags on ${new Date().toISOString()}*`);
+	sections.push("");
+
+	// Unreleased section
+	const latestTag = tags[0];
+	const { stdout: unreleasedRaw } = await Bun.$`git log ${latestTag}..HEAD --format=%H~%s --no-merges`.quiet();
+	const unreleasedLines = String(unreleasedRaw).trim().split("\n").filter(Boolean);
+	if (unreleasedLines.length > 0) {
+		const unreleasedCommits = unreleasedLines.map(parseCommit).filter(Boolean) as CommitInfo[];
+		const cats = categorize(unreleasedCommits);
+		sections.push(`## Unreleased`);
+		sections.push("");
+		sections.push(formatSection("Breaking Changes", cats.breaking));
+		sections.push(formatSection("Features", cats.features));
+		sections.push(formatSection("Bug Fixes", cats.fixes));
+		if (cats.other.length > 0) {
+			sections.push(formatSection("Other", cats.other));
+		}
+	}
+
+	// Top 10 releases in detail
+	const detailCount = Math.min(10, tagInfos.length);
+	for (let i = 0; i < detailCount; i++) {
+		const info = tagInfos[i];
+		const cats = categorize(info.commits);
+		sections.push(`## ${info.tag} (${info.date})`);
+		sections.push("");
+		sections.push(formatSection("Breaking Changes", cats.breaking));
+		sections.push(formatSection("Features", cats.features));
+		sections.push(formatSection("Bug Fixes", cats.fixes));
+		if (cats.other.length > 0) {
+			const otherByType = new Map<string, CommitInfo[]>();
+			for (const c of cats.other) {
+				const arr = otherByType.get(c.type) || [];
+				arr.push(c);
+				otherByType.set(c.type, arr);
+			}
+			for (const [type, commits] of otherByType) {
+				const title = type.charAt(0).toUpperCase() + type.slice(1);
+				sections.push(formatSection(title, commits));
+			}
+		}
+	}
+
+	// Release history table for all tags
+	sections.push(`## Release History`);
+	sections.push("");
+	sections.push(`| Version | Date |`);
+	sections.push(`|---------|------|`);
+	for (const info of tagInfos) {
+		sections.push(`| ${info.tag} | ${info.date} |`);
+	}
+	sections.push("");
+
+	const content = sections.join("\n");
+
+	if (isDryRun) {
+		console.log(content);
+	} else {
+		await Bun.write(outputFile, content);
+		console.log(`${outputFile} generated (${tagInfos.length} releases)`);
+	}
+}
+
+main().catch((err) => {
+	console.error("Failed to generate changelog:", err);
+	process.exit(1);
+});
