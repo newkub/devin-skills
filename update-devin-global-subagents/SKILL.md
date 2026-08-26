@@ -1,6 +1,10 @@
 ---
-name: update-devin-subagents
-description: อัปเดต subagent ที่มีอยู่ใน devin agents repo ตามมาตรฐาน AGENT.md
+name: update-devin-global-subagents
+description: อัปเดต global subagent ใน devin agents repo ตามมาตรฐาน AGENT.md
+related:
+  - list-devin-global-subagents
+  - review-devin-global-subagents
+  - follow-devin-global-subagents
 ---
 
 ## Goal
@@ -18,8 +22,8 @@ description: อัปเดต subagent ที่มีอยู่ใน devin
 > Goal: ระบุ subagent ที่ต้องอัปเดต
 
 1. รับชื่อ subagent ที่ต้องอัปเดตจาก user
-2. ทำ `/list-devin-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
-3. ถ้าไม่พบ → สร้าง subagent ใหม่ตาม `?follow-devin-subagents/templates/` หรือใช้ `/follow-devin-subagents`
+2. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
+3. ถ้าไม่พบ → สร้าง subagent ใหม่ตาม `/follow-devin-global-subagents/templates/` หรือใช้ `/follow-devin-global-subagents`
 4. อ่าน `AGENT.md` เดิมเพื่อทำความเข้าใจ
 
 ### 2. Identify Changes

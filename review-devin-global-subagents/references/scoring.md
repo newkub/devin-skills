@@ -41,7 +41,7 @@ score = sum(weight of each finding) / count of findings
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-devin-subagents` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-devin-global-subagents` ก่อนดำเนินการ
 - Score >= 70 → ผ่าน review สามารถดำเนินการต่อได้
 
 ## Report Format

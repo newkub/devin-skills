@@ -1,6 +1,6 @@
 ---
-name: follow-devin-subagents
-description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ subagents ตาม job roles ทำขนานกัน
+name: follow-devin-global-subagents
+description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ global subagents ตาม job roles ทำขนานกัน
 argument-hint: "[task]"
 ---
 
@@ -27,9 +27,9 @@ argument-hint: "[task]"
 
 > Goal: เลือก subagents ที่ตรงกับ subtasks
 
-1. ทำ `/list-devin-subagents` เพื่อดู subagent pool ที่มี
+1. ทำ `/list-devin-global-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
-3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `?follow-devin-subagents/templates/`
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
 
 ### 3. Spawn Subagents

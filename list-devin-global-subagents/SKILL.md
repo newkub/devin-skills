@@ -1,25 +1,25 @@
 ---
-name: list-devin-subagents
-description: แสดงรายการ subagents ทั้งหมดใน devin agents repo พร้อมรายละเอียด
+name: list-devin-global-subagents
+description: แสดงรายการ global subagents ทั้งหมดใน devin agents repo พร้อมรายละเอียด
 ---
 
 ## Goal
 
-แสดงรายการ subagents ทั้งหมดใน `%APPDATA%\devin\agents` พร้อม name, description, model และ allowed-tools
+แสดงรายการ global subagents ทั้งหมดใน `%APPDATA%\devin\agents` พร้อม name, description, model และ allowed-tools
 
 ## Scope
 
-ใช้เมื่อต้องการดูรายการ subagents ที่มีอยู่ หรือตรวจสอบว่ามี subagent ใดอยู่แล้วก่อนสร้างใหม่
+ใช้เมื่อต้องการดูรายการ global subagents ที่มีอยู่ หรือตรวจสอบว่ามี subagent ใดอยู่แล้วก่อนสร้างใหม่
 
 ## Execute
 
 ### 1. Scan Agents Directory
 
-> Goal: หา subagents ทั้งหมด
+> Goal: หา global subagents ทั้งหมด
 
 1. สแกน `%APPDATA%\devin\agents` หา subdirectories ที่มี `AGENT.md`
 2. ข้าม `.backup/` directory
-3. ถ้าไม่พบ directory → report ว่าไม่มี subagents
+3. ถ้าไม่พบ directory → report ว่าไม่มี global subagents
 
 ### 2. Extract Metadata
 
@@ -31,11 +31,11 @@ description: แสดงรายการ subagents ทั้งหมดใ�
 
 ### 3. Report
 
-> Goal: นำเสนอรายการ subagents
+> Goal: นำเสนอรายการ global subagents
 
 1. นำเสนอเป็นตาราง: name, description, model, allowed-tools
 2. จัดเรียงตามชื่อ
-3. ระบุจำนวน subagents ทั้งหมด
+3. ระบุจำนวน global subagents ทั้งหมด
 4. ถ้ามี subagent ที่ frontmatter ไม่ครบ → ระบุในส่วนท้าย
 
 ## Rules
@@ -55,11 +55,11 @@ description: แสดงรายการ subagents ทั้งหมดใ�
 ### 3. Completeness
 
 - ตรวจครบทุก subdirectories
-- ระบุ subagents ที่ frontmatter ไม่ครบ
+- ระบุ global subagents ที่ frontmatter ไม่ครบ
 
 ## Expected Outcome
 
-- รายการ subagents ทั้งหมดในตาราง
+- รายการ global subagents ทั้งหมดในตาราง
 - แต่ละรายการมี name, description, model, allowed-tools
-- จำนวน subagents ทั้งหมด
-- ระบุ subagents ที่ frontmatter ไม่ครบ (ถ้ามี)
+- จำนวน global subagents ทั้งหมด
+- ระบุ global subagents ที่ frontmatter ไม่ครบ (ถ้ามี)

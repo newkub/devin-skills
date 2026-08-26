@@ -53,5 +53,5 @@
 ## Recommended Update Skills
 
 - `update-features` สำหรับ update features doc
-- `update-devin-subagents` สำหรับ update subagents
+- `update-devin-global-subagents` สำหรับ update global subagents
 - `update-all-devin-global-skills` สำหรับ update skills repo

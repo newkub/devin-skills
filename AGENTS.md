@@ -77,6 +77,7 @@ related:
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `follow-principles: /follow-principles`
+- `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-requirement: /ask-requirement`
 - `validate: /validate`
 - `review-rules: /review-rules`
@@ -113,10 +114,12 @@ related:
 - `update-project-skills: /update-project-skills`
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-all-devin-global-skills: /update-all-devin-global-skills`
+- `update-devin-harness: /update-devin-harness`
+- `update-devin-global-rules: /update-devin-global-rules`
 - `update-everythink-in-computer: /update-everythink-in-computer`
 - `update-all-program-in-computer: /update-all-program-in-computer`
 - `update-chezmoi: /update-chezmoi`
-- `update-devin-subagents: /update-devin-subagents`
+- `update-devin-global-subagents: /update-devin-global-subagents`
 - `update-readme: /update-readme`
 - `update-docs: /update-docs`
 - `update-features: /update-features`
@@ -171,7 +174,7 @@ related:
 - `update-review-codebase-cli-and-run: /update-review-codebase-cli-and-run`
 - `review-gaps: /review-gaps`
 - `review-dot-devin: /review-dot-devin`
-- `review-devin-subagents: /review-devin-subagents`
+- `review-devin-global-subagents: /review-devin-global-subagents`
 - `review-features: /review-features`
 - `review-readme: /review-readme`
 - `review-docs: /review-docs`
@@ -223,6 +226,7 @@ related:
 - `search-in-raindrop-io: /search-in-raindrop-io`
 - `list-raindrop-io: /list-raindrop-io`
 - `list-devin-global-skills: /list-devin-global-skills`
+- `list-devin-global-subagents: /list-devin-global-subagents`
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`

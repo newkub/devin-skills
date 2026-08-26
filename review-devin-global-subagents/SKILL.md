@@ -1,15 +1,15 @@
 ---
-name: review-devin-subagents
-description: ตรวจสอบ subagent ก่อน update-devin-subagents แก้ไข ครอบคลุม format
+name: review-devin-global-subagents
+description: ตรวจสอบ subagent ก่อน update-devin-global-subagents แก้ไข ครอบคลุม format
 ---
 
 ## Goal
 
-Review devin subagents ก่อนเรียก `update-devin-subagents` เพื่อยืนยันว่า `AGENT.md` ผ่านเกณฑ์มาตรฐาน: frontmatter, sections, line count, style, และ safety
+Review devin subagents ก่อนเรียก `update-devin-global-subagents` เพื่อยืนยันว่า `AGENT.md` ผ่านเกณฑ์มาตรฐาน: frontmatter, sections, line count, style, และ safety
 
 ## Scope
 
-ใช้ก่อนเรียก `update-devin-subagents` — ตรวจ subagent ใน `%APPDATA%\devin\agents` ทำ review เท่านั้น ไม่แก้ไข subagents ระหว่าง review
+ใช้ก่อนเรียก `update-devin-global-subagents` — ตรวจ subagent ใน `%APPDATA%\devin\agents` ทำ review เท่านั้น ไม่แก้ไข subagents ระหว่าง review
 
 ## Execute
 
@@ -17,7 +17,7 @@ Review devin subagents ก่อนเรียก `update-devin-subagents` เ�
 
 > Goal: เข้าใจ subagent target
 
-1. ทำ `/list-devin-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
+1. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
 2. ถ้าไม่พบ → flag เป็น critical
 3. อ่าน `AGENT.md` ของ subagent target
 4. บันทึก subagent name และ directory
@@ -73,7 +73,7 @@ Review devin subagents ก่อนเรียก `update-devin-subagents` เ�
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข subagents ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-devin-subagents` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `update-devin-global-subagents` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
@@ -88,7 +88,7 @@ Review devin subagents ก่อนเรียก `update-devin-subagents` เ�
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-devin-subagents` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-devin-global-subagents` ก่อนดำเนินการ
 
 ### 4. Formatting
 
