@@ -122,6 +122,7 @@ related:
 - `update-github-metadata: /update-github-metadata`
 - `update-github-task: /update-github-task`
 - `update-dependencies-latest: /update-dependencies-latest`
+- `follow-release: /follow-release`
 - `run-release: /run-release`
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
