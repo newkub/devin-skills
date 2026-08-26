@@ -2,6 +2,8 @@
 name: list-devin-user-request-in-this-session
 description: รายการ requests จาก user ใน session ปัจจุบันจาก history summary
 related:
+  - list-devin-user-request-this-repo
+  - list-devin-user-request-all-session
   - report-table
   - summarize
   - search-files-patterns

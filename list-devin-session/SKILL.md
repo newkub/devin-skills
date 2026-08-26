@@ -5,6 +5,7 @@ argument-hint: "[limit] [keyword]"
 related:
   - list-devin-user-request-in-this-session
   - list-devin-user-request-all-session
+  - list-devin-user-request-this-repo
   - list-devin-global-skills
   - report-table
   - search-files-patterns
