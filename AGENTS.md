@@ -205,6 +205,13 @@ related:
 - `convert-to-docs: /convert-to-docs`
 - `convert-to-mcp: /convert-to-mcp`
 
+#### Summarize
+
+- `summarize: /summarize`
+- `summarize-this-project: /summarize-this-project`
+- `summarize-this-chat-session: /summarize-this-chat-session`
+- `report-bullet-numbered: /report-bullet-numbered`
+
 #### Search
 
 - `search-files-patterns: /search-files-patterns`

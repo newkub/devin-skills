@@ -1,6 +1,6 @@
 ---
-name: summarize-to-bullet
-description: สรุปเนื้อหาให้อยู่ในรูปแบบ bullet points
+name: report-bullet-numbered
+description: สรุปเนื้อหาในรูปแบบ bullet/numbered list
 argument-hint: "[target]"
 ---
 
