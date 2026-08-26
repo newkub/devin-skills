@@ -99,7 +99,7 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 
 ### 6. Content Standards
 
-- ทำ `/convert-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
+- ทำ `/translate-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
 - ใช้ข้อมูลจริงจาก `/analyze-project`, code รันได้จริง
 - ไม่ใช้ placeholder ยกเว้น banner image
 - ไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก

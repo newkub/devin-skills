@@ -50,7 +50,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 > Goal: ตรวจ content quality และ language
 
-1. ตรวจว่า content เป็นภาษาอังกฤษ (via `/convert-to-lang-en`)
+1. ตรวจว่า content เป็นภาษาอังกฤษ (via `/translate-to-lang-en`)
 2. ตรวจว่าใช้ข้อมูลจริง ไม่มี placeholder ยกเว้น banner image
 3. ตรวจว่าไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก
 4. ตรวจว่าไม่มี ANSI codeblock ใน README ทั้งหมด

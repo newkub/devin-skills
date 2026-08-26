@@ -1,6 +1,6 @@
 ---
-name: convert-to-lang-th
-description: ใช้ภาษาไทยในการสื่อสารและทำงาน
+name: translate-to-lang-th
+description: ใช้ภาษาไทยเป็นภาษาหลักในการสื่อสารและทำงาน
 argument-hint: "[target]"
 ---
 

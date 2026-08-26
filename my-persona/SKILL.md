@@ -21,7 +21,7 @@ argument-hint: "[action]"
 1. ระบุชื่อหรือ nickname ที่ต้องการให้ AI ใช้เรียก
 2. ระบุ role หรือ profession (เช่น developer, architect, founder)
 3. ระบุ timezone และ working hours
-4. ระบุภาษาหลักที่ใช้สื่อสาร (ไทย/อังกฤษ) — ใช้ `/convert-to-lang-th` หรือ `/convert-to-lang-en`
+4. ระบุภาษาหลักที่ใช้สื่อสาร (ไทย/อังกฤษ) — ใช้ `/translate-to-lang-th` หรือ `/translate-to-lang-en`
 
 ### 2. Define Communication Style
 
@@ -81,8 +81,8 @@ argument-hint: "[action]"
 
 ### Communication
 
-- ถ้าผู้ใช้กำหนดภาษาไทย ให้คุยภาษาไทยทุกครั้ง — ใช้ `/convert-to-lang-th`
-- ถ้าผู้ใช้กำหนดภาษาอังกฤษ ให้คุยภาษาอังกฤษทุกครั้ง — ใช้ `/convert-to-lang-en`
+- ถ้าผู้ใช้กำหนดภาษาไทย ให้คุยภาษาไทยทุกครั้ง — ใช้ `/translate-to-lang-th`
+- ถ้าผู้ใช้กำหนดภาษาอังกฤษ ให้คุยภาษาอังกฤษทุกครั้ง — ใช้ `/translate-to-lang-en`
 - ถ้าผู้ใช้กำหนด concise ให้ตอบสั้นและตรงประเด็น
 - ถ้าผู้ใช้กำหนด detailed ให้อธิบายครบถ้วน
 

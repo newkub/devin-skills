@@ -5,7 +5,7 @@
 ## Language
 
 - content ต้องเป็นภาษาอังกฤษ
-- ถ้าพบ content ที่ไม่ใช่อังกฤษ → แนะนำให้ทำ `/convert-to-lang-en`
+- ถ้าพบ content ที่ไม่ใช่อังกฤษ → แนะนำให้ทำ `/translate-to-lang-en`
 - ถ้า content ผสมหลายภาษาโดยไม่จำเป็น → flag เป็น `High`
 
 ## Real Data No Placeholder

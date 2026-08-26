@@ -97,6 +97,11 @@ related:
 - `request-math-formular-problem: /request-math-formular-problem`
 - `request-pattern: /request-pattern`
 
+#### Language
+
+- `translate-to-lang-th: /translate-to-lang-th`
+- `translate-to-lang-en: /translate-to-lang-en`
+
 #### Update
 
 - `update-project: /update-project`

@@ -1,5 +1,5 @@
 ---
-name: convert-to-lang-en
+name: translate-to-lang-en
 description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
 argument-hint: "[target]"
 ---
