@@ -181,6 +181,7 @@ related:
 
 #### Create
 
+- `idea-new-files-naming: /idea-new-files-naming`
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`
@@ -199,6 +200,7 @@ related:
 - `search-in-raindrop-io: /search-in-raindrop-io`
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
+- `list-project-task: /list-project-task`
 
 #### Watch
 
