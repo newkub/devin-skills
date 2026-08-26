@@ -77,6 +77,7 @@ related:
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `follow-principles: /follow-principles`
+- `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-requirement: /ask-requirement`
 - `validate: /validate`
