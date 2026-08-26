@@ -98,6 +98,9 @@ related:
 - `fix: /fix`
 - `improve: /improve`
 - `delete-files: /delete-files`
+- `merge-files-in: /merge-files-in`
+- `move-files-in: /move-files-in`
+- `rename-files-to: /rename-files-to`
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`

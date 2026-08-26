@@ -76,7 +76,7 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 - ไม่ review naming นอก scope ทีกำหนด
 - ไม่ rename identifier โดยไม่ dry run
-- ถ้า rename กระทบ public API → ทำ `/rename` ด้วย ast-grep
+- ถ้า rename กระทบ public API → ทำ `/rename-files-to` ด้วย ast-grep
 
 ### 4. Formatting
 

@@ -92,7 +92,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 - เปลี่ยนชื่อเมื่อชื่อปัจจุบันสับสน ไม่สื่อความหมาย หรือ inconsistent
 - อ้างอิง official style guides และ community conventions
 - พิจารณา impact ของการเปลี่ยนชื่อต่อ codebase ทั้งหมด
-- ใช้ `/rename` สำหรับ rename code identifiers รายตัวที่ได้จากไอเดีย
+- ใช้ `/rename-files-to` สำหรับ rename code identifiers รายตัวที่ได้จากไอเดีย
 
 ### 3. Discoverability Scope And Severity
 

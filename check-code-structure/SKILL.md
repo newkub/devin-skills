@@ -72,7 +72,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 3. ทำ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
-6. ทำ `/rename` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
+6. ทำ `/rename-files-to` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
 7. ถ้าต้องปรับ physical structure ให้ทำ `/restructure`
 
 ### 6. Verify
@@ -120,7 +120,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 ### 4. Follow Write Standards
 
 - ทำ `/update-references` หลังทุกการ split, rename, หรือย้ายไฟล์
-- ใช้ `/rename` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
+- ใช้ `/rename-files-to` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
 - แต่ละไฟล์ไม่เกิน 250 บรรทัด
 - แต่ละ function/type/class ทำหน้าที่เดียว
 - ใช้ `sg outline` ยืนยัน structure หลัง improve
