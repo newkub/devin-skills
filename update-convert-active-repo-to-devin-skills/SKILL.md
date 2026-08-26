@@ -106,13 +106,13 @@ description: สร้าง at-<repo> skills จาก remote repos ทั้�
 
 ### 2. Multiple Match Sources
 
-- ใช้ `/list-git-project-in-computer` เป้นหลัก
+- ใช้ `/list-git-project-in-computer` เป็นหลัก
 - ใช้ `/list-chezmoi-files` เพื่อหา dotfiles source repo
 - รวม local project จากทุก drive
 
 ### 3. Naming
 
-- ใช้ `at-<repo-name>` โดย `repo-name` เป้น kebab-case
+- ใช้ `at-<repo-name>` โดย `repo-name` เป็น kebab-case
 - ถ้า repo name มี `.` หรือ special char → แทนด้วย `-`
 - ถ้าชื่อซ้ำกับ skill ทีมีอยู่ → ถามก่อน overwrite
 
@@ -137,5 +137,5 @@ description: สร้าง at-<repo> skills จาก remote repos ทั้�
 
 - `at-<repo-name>` skills ถูกสร้าง/อัปเดตสำหรับ remote repos ที match local projects
 - `AGENTS.md` อัปเดตด้วย category `At`
-- `list-git-project-in-computer` และ `list-chezmoi-files` ใช้เป้นข้อมูล match
+- `list-git-project-in-computer` และ `list-chezmoi-files` ใช้เป็นข้อมูล match
 - สามารถ invoke `/at-<repo-name>` เพื่อทำงานใน project path นั้น

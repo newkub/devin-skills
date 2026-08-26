@@ -275,13 +275,20 @@ related:
 
 #### Git
 
+- `convert-to-git-submodules: /convert-to-git-submodules`
+- `create-worktree-in-project: /create-worktree-in-project`
+- `cleanup-worktree: /cleanup-worktree`
+- `delete-git-branch: /delete-git-branch`
+- `delete-git-submodules: /delete-git-submodules`
+- `delete-git-worktree: /delete-git-worktree`
+- `edit-git-commit: /edit-git-commit`
 - `git-commit: /git-commit`
 - `list-git-commit: /list-git-commit`
 - `list-git-release: /list-git-release`
-- `edit-git-commit: /edit-git-commit`
-- `create-worktree-in-project: /create-worktree-in-project`
-- `cleanup-worktree: /cleanup-worktree`
+- `list-git-submodules: /list-git-submodules`
+- `list-git-worktree: /list-git-worktree`
 - `merge-worktree-to-main: /merge-worktree-to-main`
+- `rename-git-commit: /rename-git-commit`
 
 #### Idea
 
