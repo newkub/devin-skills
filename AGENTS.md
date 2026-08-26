@@ -234,6 +234,7 @@ related:
 - `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
 - `follow-create-android-mobile-native: /follow-create-android-mobile-native`
 - `follow-create-ios-mobile-native: /follow-create-ios-mobile-native`
+- `create-github-repo: /create-github-repo`
 - `draw-svg-image: /draw-svg-image`
 - `draw-excalidraw: /draw-excalidraw`
 - `draw-tldraw: /draw-tldraw`

@@ -1,74 +1,92 @@
 ---
 name: create-github-repo
-description: สร้าง GitHub repository ใหม่ผ่าน gh CLI ด้วยชื่อและ visibility ที่ระบุ
+description: บันทึก local project ที่ยังไม่มี remote ขึ้น GitHub repository ใหม่
 argument-hint: "[repo-name]"
+related:
+  - git-commit-and-push
+  - git-push
+  - git-commit
+  - follow-gitignore
+  - open-web
 ---
 
 ## Goal
 
-สร้าง GitHub repository ใหม่ด้วย metadata ครบถ้วน
+บันทึก local project ที่ยังไม่มี remote ขึ้น GitHub repository ใหม่
 
 ## Scope
 
-- ใช้ `gh repo create` เท่านั้น
-- รองรับ public, private, internal
-- ไม่ครอบคลุมการ push local code (ดู `/save-to-github-repo`)
+- ใช้กับ directory ปัจจุบันที่มีหรือยังไม่มี `.git`
+- สร้าง GitHub repo ใหม่, add remote, commit, push
+- ไม่ครอบคลุม repo ที่มี remote อยู่แล้ว (ดู `/git-push`)
 
 ## Execute
 
-### 1. Prepare Repo Metadata
+### 1. Validate Local Directory
 
-> Goal: มีชื่อ repository และ visibility ที่ถูกต้อง
+> Goal: ตรวจสอบสภาพ local repo ก่อนดำเนินการ
 
-1. รับ `repo-name` จาก argument หรือถามผู้ใช้ถ้าขาด
-2. ตรวจสอบ `gh auth status` ว่า login แล้ว
-3. ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
-4. รับ visibility จาก argument (ค่าเริ่มต้น `--private`)
+1. ตรวจสอบว่าอยู่ใน project directory
+2. รัน `git status` ถ้ามี `.git` เพื่อดู state
+3. ถ้ามี remote อยู่แล้วให้หยุดและบอกให้ใช้ `/git-push`
+4. รับ `repo-name` จาก argument หรือใช้ชื่อโฟลเดอร์ปัจจุบัน
+5. รับ visibility จาก argument (ค่าเริ่มต้น `--private`)
 
-### 2. Create Repository
+### 2. Initialize Git Repository
 
-> Goal: repository ถูกสร้างบน GitHub
+> Goal: local directory มี `.git`
 
-1. รัน `gh repo create <repo-name> --<visibility>`
-2. ถ้าต้องการกำหนด description ให้ใช้ `--description "<desc>"`
-3. บันทึก URL จาก output
+1. ถ้าไม่มี `.git` ให้รัน `git init`
+2. ถ้ายังไม่มี `.gitignore` ให้สร้าง `.gitignore` พื้นฐานตาม project type
+3. รัน `git branch -M main`
 
-### 3. Open And Report
+### 3. Create GitHub Repository
 
-> Goal: แสดงผล URL และเปิดหน้า repo
+> Goal: มี remote repository บน GitHub
 
-1. รัน `gh repo view <repo-name> --json url --jq .url` เพื่อเอา URL
-2. ทำ `/open-web` หรือ `start <url>` เพื่อเปิดใน browser
-3. รายงาน URL และ visibility
+1. ตรวจสอบ `gh auth status` ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
+2. รัน `gh repo create <repo-name> --<visibility>`
+3. ดึง URL ของ repo จาก output
+4. รัน `git remote add origin <repo-url>`
 
-### Ship
+### 4. Commit And Push
 
-> Goal: ส่งมอบงาน
+> Goal: โค้ดทั้งหมดถูก commit และ push ไป remote
 
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. ทำตาม `/git-commit-and-push` เพื่อ commit และ push การเปลี่ยนแปลง
+2. ถ้า `git-commit-and-push` ล้มเหลว → ตรวจ `git status`, `git log`, แล้ว retry สูงสุด 1 ครั้ง
+
+### 5. Verify
+
+> Goal: ยืนยันว่า repo พร้อมใช้งาน
+
+1. ตรวจสอบ `git status` ว่า clean
+2. รัน `gh repo view <repo-name> --json url,defaultBranchRef --jq .url`
+3. ทำ `/open-web` เปิด repo URL
 
 ## Rules
 
-### 1. Visibility
+### 1. Repository Name
 
-- ค่าเริ่มต้น `--private`
-- รับ `--public` หรือ `--internal` ผ่าน argument
-- ถ้าไม่ระบุให้ถาม user
+- ใช้ชื่อโฟลเดอร์ปัจจุบันเป็นค่าเริ่มต้น
+- ถ้ามี argument ให้ใช้ argument แทน
+- ไม่ใช้ชื่อที่มีอักขระพิเศษหรือช่องว่าง
 
-### 2. Safety
+### 2. Initial State
+
+- ถ้าไม่มี commit เลย ให้ `git-commit-and-push` จัดการ commit ครั้งแรก
+- ถ้ามีไฟล์ที่ควร ignore ให้แก้ไข `.gitignore` ก่อน stage
+- ไม่ใช้ `git add .` โดยตรง ให้ `git-commit` จัดการ stage
+
+### 3. Safety
 
 - ตรวจสอบ `gh auth status` ก่อน
-- ไม่สร้าง repo ซ้ำชื่องเดิมใน owner เดียวกัน
-- ไม่บังคับ push local code ถ้า user ไม่ได้ขอ
-
-### 3. Output
-
-- รายงาน URL ของ repo ใหม่
-- แจ้ง visibility ที่เลือก
+- ไม่ force push
+- ถ้า repo มี remote อยู่แล้วให้หยุดและบอกให้ใช้ `/git-push`
 
 ## Expected Outcome
 
-- Repository ถูกสร้างบน GitHub
-- URL ถูกต้องและเปิดได้
-- Visibility ตรงกับที่ระบุ
+- Local project มี `.git` และ remote `origin`
+- GitHub repository ถูกสร้างด้วย visibility ที่ระบุ
+- ไฟล์ทั้งหมดถูก commit และ push
+- เปิดหน้า repo ใน browser ได้
