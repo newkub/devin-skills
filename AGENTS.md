@@ -123,6 +123,7 @@ related:
 - `update-reference: /update-reference`
 - `update-usage: /update-usage`
 - `update-github-metadata: /update-github-metadata`
+- `update-convert-active-repo: /update-convert-active-repo`
 - `update-github-task: /update-github-task`
 - `update-dependencies-latest: /update-dependencies-latest`
 - `follow-release: /follow-release`
@@ -221,6 +222,7 @@ related:
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
+- `list-git-project-in-computer: /list-git-project-in-computer`
 
 #### Watch
 
