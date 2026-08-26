@@ -40,8 +40,7 @@ Review drift ระหว่าง current state และ target state เพ�
 2. ตรวจสอบ `README.md` เทียบกับ actual project state
 3. ตรวจสอบ `AGENTS.md` เทียบกับ actual architecture และ skills
 4. ตรวจสอบ `CONTRIBUTING.md` เทียบกับ actual workflows
-5. ตรวจสอบ `CHANGELOG.md` เทียบกับ git commits
-6. ตรวจสอบ `RELEASE.md` เทียบกับ git tags
+5. ตรวจสอบ `CHANGELOG.md` เทียบกับ git commits และ git tags
 7. ตรวจสอบ `spec/SPEC.md` เทียบกับ actual tests
 8. บันทึก: doc file, drift type, severity, recommended update skill
 
