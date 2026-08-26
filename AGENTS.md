@@ -138,6 +138,7 @@ related:
 - `update-gitignore: /update-gitignore`
 - `update-dot-devin: /update-dot-devin`
 - `update-contributing-md: /update-contributing-md`
+- `update-dot-vscode: /update-dot-vscode`
 - `update-project-rules: /update-project-rules`
 - `update-test: /update-test`
 - `update-references: /update-references`

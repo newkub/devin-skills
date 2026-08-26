@@ -1,6 +1,15 @@
 ---
-name: follow-dot-vscode
-description: จัดการ .vscode directory ครบถ้วน ทั้ง settings, extensions, tasks, และ launch config
+name: update-dot-vscode
+description: อัปเดต .vscode สำหรับ workspace settings, extensions, tasks, launch, snippets, editor associations
+related:
+  - follow-tool-vscode-extensions
+  - review-delivery
+  - analyze-project
+  - check-monorepo
+  - learn-from-web
+  - update-references
+  - report-table
+  - validate
 ---
 
 ## Goal
@@ -68,6 +77,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
    - `[language]` overrides ถ้าจำเป็น
 3. กำหนด editor associations (`workbench.editorAssociations`):
    - `*.md` → `vscode.markdown.preview.editor` (เปิด markdown ทุกไฟล์เป็น preview โดย default)
+   - ถ้ามีไฟล์อื่นๆ เช่น `*.svg`, `*.drawio` ให้ใช้ editor associations ตามเหมาะสม
    - ผู้ใช้สามารถกด `Ctrl+Shift+V` เพื่อสลับไป text editor ถ้าต้องการแก้ไข
 4. กำหนด file associations (`files.associations`):
    - `*.jsonc` → `jsonc` (ถ้าใช้ JSONC config files)
@@ -102,7 +112,8 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
    - Rust: `rust-lang.rust-analyzer` ถ้ามี Rust code
    - Test: extensions สำหรับ test runner
    - Markdown: `shd101wyy.markdown-preview-enhanced` ถ้าต้องการ enhanced preview
-   - Database: Drizzle extension ถ้าใช้ (เช่น `bradlc.vscode-tailwindcss` สำหรับ Tailwind ไม่ใช่ Drizzle)
+   - Database: `Drizzle.drizzle` ถ้าใช้ Drizzle
+   - อื่นๆ ตาม requirements
 2. แยก extensions เป็น `recommendations` และ `unwantedRecommendations`
 3. ถ้าเป็น monorepo → รวม extensions ทั้งหมดที่จำเป็นสำหรับทุก workspace
 4. ตรวจสอบว่า extension IDs ถูกต้องจาก VSCode Marketplace
@@ -119,7 +130,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
    - หลีกเลี่ยง `lldb`/`cppvsdbg` เพราะต้องติดตั้ง extension เพิ่มเติม
 3. สร้าง debug config สำหรับ Node.js/Bun scripts ถ้ามี
 4. สำหรับ monorepo → สร้าง compound config ที่รันหลาย apps พร้อมกัน
-5. ถ้าไม่มี debug scenario → skip step นี้
+5. ถ้าไม่มา debug scenario → skip step นี้
 
 ### 6. Setup Tasks.json
 
@@ -133,9 +144,17 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 6. สำหรับ monorepo → ใช้ package manager workspace commands (เช่น `bun run <script>` ที่ root)
 7. กำหนด `group` เป็น `build` สำหรับ build task
 8. กำหนด `isDefault` สำหรับ task ที่ใช้บ่อย
-9. ถ้า project ไม่มี scripts → skip step นี้
+9. ถ้า project ไม่มา scripts → skip step นี้
 
-### 7. Validate And Update References
+### 7. Setup Snippets (Optional)
+
+> Goal: สร้างหรืออัปเดต custom snippets
+
+1. ถ้า project มี patterns ซ้ำ (เช่น React component, SolidJS signal) → สร้าง `snippets/<language>.json`
+2. ตรวจสอบ JSON syntax
+3. อย่าใส่ snippets ที่เป็น personal preference
+
+### 8. Validate And Update References
 
 > Goal: ตรวจสอบความถูกต้องและอัปเดต references
 
@@ -143,8 +162,8 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 2. ตรวจสอบว่า settings ไม่ขัดแยงกับ `biome.jsonc`, `tsconfig.json`, และ `turbo.json`
 3. ตรวจสอบว่า extension IDs ถูกต้อง
 4. ตรวจสอบว่า task commands ตรงกับ scripts ใน `package.json`
-5. ทำ `/update-references` หากมี file operations
-6. อัปเดต `AGENTS.md` ถ้ามีการเพิ่ม `.vscode/` directory ใหม่
+5. ทำ `/update-references` หากมา file operations
+6. อัปเดต `AGENTS.md` ถ้ามาการเพิ่ม `.vscode/` directory ใหม่
 7. ถ้า validation ไม่ผ่าน → แก้และ re-validate (max 3 → stop/report)
 
 ## Rules
@@ -153,11 +172,11 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 
 - ใช้ `/follow-tool-vscode-extensions` สำหรับสร้าง VSCode extension (ไม่ใช่ config)
 - ใช้ `/review-delivery` สำหรับ config consistency ทั่วไป
-- `follow-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
+- `update-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
 
 ### 2. Settings Priority
 
-- Workspace settings (`.vscode/settings.json`) มี priority สูงกว่า user settings
+- Workspace settings (`.vscode/settings.json`) มา priority สูงกว่า user settings
 - ใส่เฉพาะ settings ที่ project-specific — ไม่ใส่ personal preferences
 - ถ้า setting เป็น personal preference (เช่น theme, font size) → ไม่ใส่ใน workspace
 - ใช้ `[language]` overrides สำหรับ language-specific settings
@@ -166,6 +185,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 
 - `workbench.editorAssociations` ควบคุม default editor สำหรับ file patterns
 - ใช้ `*.md` → `vscode.markdown.preview.editor` เพื่อเปิด markdown ทุกไฟล์เป็น preview โดย default
+- ถ้ามีไฟล์ `.svg`, `.drawio`, หรืออื่นๆ ให้ใช้ editor associations ตามเหมาะสม
 - ผู้ใช้สามารถสลับไป text editor ด้วย `Ctrl+Shift+V` หรือ `Ctrl+K V` เพื่อแก้ไข
 - ใช้ `default` เป็นค่าเริ่มต้น ถ้าไม่ต้องการ custom editor
 
@@ -188,7 +208,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 ### 6. High Impact Content
 
 - ใส่เฉพาะ settings ที่ impact จริง — ไม่ใส่ noise
-- ทุก setting ต้องตอบได้ว่า "ถ้าไม่มีแล้ว productivity ลดไหม" — ถ้าไม่ลด → ไม่ใส่
+- ทุก setting ต้องตอบได้ว่า "ถ้าไม่มาแล้ว productivity ลดไหม" — ถ้าไม่ลด → ไม่ใส่
 - ไม่ใส่ settings ที่เป็น default อยู่แล้ว
 - ไม่ใส่ settings ที่เป็น personal preference
 - ตรวจสอบว่าทุก extension ใน `extensions.json` ยัง maintained และ compatible
@@ -199,16 +219,17 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 - ห้าม hardcode absolute paths ใน settings หรือ tasks
 - ใช้ variables เช่น `${workspaceFolder}`, `${command:...}` แทน absolute paths
 - ถ้าไฟล์ที่มีอยู่ถูกต้องแล้ว → ไม่สร้างใหม่ แต่อัปเดตเฉพาะส่วนที่ขาด
-- ถ้ามี user settings ที่ขัดแย้ง → workspace settings จะ override โดยอัตโนมัติ
+- ถ้ามา user settings ที่ขัดแย้ง → workspace settings จะ override โดยอัตโนมัติ
 
 ## Expected Outcome
 
-- `.vscode/` directory มีไฟล์ครบ: `settings.json`, `extensions.json`, `launch.json`, `tasks.json`
+- `.vscode/` directory มาไฟล์ครบ: `settings.json`, `extensions.json`, `launch.json`, `tasks.json`
 - `settings.json` ตรง tech stack: formatter, TypeScript, search exclude, file associations
 - `workbench.editorAssociations` กำหนด `*.md` → `vscode.markdown.preview.editor` เปิด markdown ทุกไฟล์เป็น preview
+- ถ้ามา `.svg`, `.drawio`, หรือไฟล์อื่นๆ จะใช้ editor associations ตามเหมาะสม
 - `extensions.json` แนะนำ extensions ครบตาม tech stack
-- `launch.json` มี debug configs สำหรับแต่ละ app (ถ้ามี)
-- `tasks.json` มี tasks สำหรับ build, dev, test, lint, typecheck
+- `launch.json` มา debug configs สำหรับแต่ละ app (ถ้ามา)
+- `tasks.json` มา tasks สำหรับ build, dev, test, lint, typecheck
 - ทุกไฟล์ผ่าน JSON syntax validation
 - Settings ไม่ขัดแย้งกับ `biome.jsonc`, `tsconfig.json`, `turbo.json`
-- `AGENTS.md` อัปเดตถ้ามีไฟล์ใหม่
+- `AGENTS.md` อัปเดตถ้ามาไฟล์ใหม่

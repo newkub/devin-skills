@@ -71,7 +71,7 @@ related:
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
    - `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
-   - `/follow-dot-vscode`
+   - `/update-dot-vscode`
    - `/update-contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
 7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
