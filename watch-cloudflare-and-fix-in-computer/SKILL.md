@@ -3,14 +3,14 @@ name: watch-cloudflare-and-fix-in-computer
 description: หา Cloudflare project ในเครื่อง แล้ว watch และ fix จน deploy ผ่าน
 related:
   - watch-cloudflare
-  - list-git-project-in-computer
+  - list-project-git-in-computer
   - list-cloudflare-project
   - fix
 ---
 
 ## Goal
 
-หา Cloudflare project ในเครื่องด้วย `list-git-project-in-computer` หรือ `list-cloudflare-project` แล้วทำ `/watch-cloudflare` พร้อม `/fix` จน deploy ผ่าน
+หา Cloudflare project ในเครื่องด้วย `list-project-git-in-computer` หรือ `list-cloudflare-project` แล้วทำ `/watch-cloudflare` พร้อม `/fix` จน deploy ผ่าน
 
 ## Scope
 
@@ -31,7 +31,7 @@ related:
 > Goal: หา project path ในเครื่อง
 
 1. ทำ `/list-cloudflare-project` เพื่อหา local projects ทีมี `wrangler.*`
-2. ถ้าไม่เจอ → ทำ `/list-git-project-in-computer` แล้ว filter ด้วย worker name หรือ remote URL
+2. ถ้าไม่เจอ → ทำ `/list-project-git-in-computer` แล้ว filter ด้วย worker name หรือ remote URL
 3. ถ้ามีหลาย project → ให้ user เลือกด้วย `/ask-me`
 4. ยืนยัน `project-root` ก่อน watch
 

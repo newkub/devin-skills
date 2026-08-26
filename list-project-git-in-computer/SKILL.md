@@ -1,6 +1,11 @@
 ---
-name: list-git-project-in-computer
+name: list-project-git-in-computer
 description: สแกนและรายการ git projects ทั้งหมดในเครื่อง ทุก drive พร้อม status
+related:
+  - update-convert-active-repo-to-devin-skills
+  - list-cloudflare-project
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -31,7 +36,7 @@ description: สแกนและรายการ git projects ทั้ง�
    Get-ChildItem -Path "<drive>:\" -Filter ".git" -Recurse -Directory -Depth 4 -ErrorAction SilentlyContinue
    ```
    หรือถ้าลึกกว่า depth 4 ให้เพิ่ม depth หรือรันเฉพาะ known roots
-2. ถ้า scan ช้า → ใช้ `/list-project-in-drive-d` หรือรันแยกตาม drive
+2. ถ้า scan ช้า → รันเฉพาะ drive ทีรู้ หรือระบุ root path เฉพาะ
 3. บันทึก parent directory ของแต่ละ `.git` เป็น project path
 4. ตัดผลซ้ำและ hidden/system paths ทีไม่ใช่ project
 

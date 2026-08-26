@@ -2,7 +2,7 @@
 name: list-git-submodules
 description: รายการ git submodules ใน repo พร้อม status
 related:
-  - list-git-project-in-computer
+  - list-project-git-in-computer
   - delete-git-submodules
   - convert-to-git-submodules
 ---

@@ -240,7 +240,7 @@ related:
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
-- `list-git-project-in-computer: /list-git-project-in-computer`
+- `list-project-git-in-computer: /list-project-git-in-computer`
 - `list-github-pull-request: /list-github-pull-request`
 - `list-cloudflare-project: /list-cloudflare-project`
 - `list-brave-browser-history: /list-brave-browser-history`

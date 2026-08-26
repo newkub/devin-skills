@@ -50,7 +50,7 @@ Watch Vercel deployment status ด้วย CLI และ URL poll แล้ว 
 > Goal: หา local path ของ Vercel project
 
 1. ใช้ `vercel.json` หรือ `.vercel/project.json` หา project ID
-2. ถ้าไม่รู้ path → ทำ `/list-git-project-in-computer` และ match ชื่อ
+2. ถ้าไม่รู้ path → ทำ `/list-project-git-in-computer` และ match ชื่อ
 3. ยืนยัน path ก่อนแก้
 
 ### 5. Fix Until Live

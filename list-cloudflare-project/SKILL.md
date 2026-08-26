@@ -2,7 +2,7 @@
 name: list-cloudflare-project
 description: รายการ Cloudflare projects ในเครื่อง พร้อม local path, remote match และ status
 related:
-  - list-git-project-in-computer
+  - list-project-git-in-computer
   - list-chezmoi-files
   - update-convert-active-repo-to-devin-skills
 ---
@@ -21,7 +21,7 @@ related:
 
 > Goal: หาไฟล์ config ของ Wrangler
 
-1. ใช้ `/list-git-project-in-computer` เพื่อหา git projects ทั้งหมด
+1. ใช้ `/list-project-git-in-computer` เพื่อหา git projects ทั้งหมด
 2. ในแต่ละ project ตรวจหา:
    - `wrangler.toml`
    - `wrangler.jsonc`

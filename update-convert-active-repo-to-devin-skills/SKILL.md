@@ -2,7 +2,7 @@
 name: update-convert-active-repo-to-devin-skills
 description: สร้าง at-<repo> skills จาก remote repos ทั้งหมดทีตรงกับ local git projects
 related:
-  - list-git-project-in-computer
+  - list-project-git-in-computer
   - list-chezmoi-files
   - at-this-repo
   - update-all-devin-global-skills
@@ -36,7 +36,7 @@ related:
 
 > Goal: หา local git projects ทั้งหมด
 
-1. ทำ `/list-git-project-in-computer`
+1. ทำ `/list-project-git-in-computer`
 2. บันทึกรายการ `Project`, `Path`, `Drive`, `RemoteUrl`
 3. ถ้า scan ช้า → รันเฉพาะ drive ทีรู้
 
@@ -114,7 +114,7 @@ related:
 
 ### 2. Multiple Match Sources
 
-- ใช้ `/list-git-project-in-computer` เป็นหลัก
+- ใช้ `/list-project-git-in-computer` เป็นหลัก
 - ใช้ `/list-chezmoi-files` เพื่อหา dotfiles source repo
 - รวม local project จากทุก drive
 
@@ -159,5 +159,5 @@ related:
 
 - `at-<repo-name>` skills ถูกสร้าง/อัปเดตสำหรับ remote repos ที match local projects
 - `AGENTS.md` อัปเดตด้วย category `At`
-- `list-git-project-in-computer` และ `list-chezmoi-files` ใช้เป็นข้อมูล match
+- `list-project-git-in-computer` และ `list-chezmoi-files` ใช้เป็นข้อมูล match
 - สามารถ invoke `/at-<repo-name>` เพื่อทำงานใน project path นั้น
