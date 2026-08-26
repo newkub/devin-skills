@@ -25,7 +25,7 @@ argument-hint: "[task-id]"
 
 > Goal: วางแผน
 
-1. เรียก /create-plan ถ้าซับซ้อน
+1. เรียก /create-plan-md-in-dot-devin ถ้าซับซ้อน
 1. ระบุ files และ skills ที่จำเป็น
 
 ### 3. Implement

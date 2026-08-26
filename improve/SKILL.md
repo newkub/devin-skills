@@ -47,7 +47,7 @@ related:
 1. แยก gaps ตามประเภท: critical, high, medium, low
 2. เลือกทำ critical และ high ก่อน
 3. ถ้ามี dependencies → ทำ foundation ก่อน
-4. ถ้า gaps เยอะ → ทำ `/create-plan` เพื่อวางแผน
+4. ถ้า gaps เยอะ → ทำ `/create-plan-md-in-dot-devin` เพื่อวางแผน
 
 ### 4. Implement Improvements
 

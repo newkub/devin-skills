@@ -9,7 +9,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ## Scope
 
-ใช้ก่อนเรียก `plan`, `deep-plan`, `create-plan`, `implement-plan`, หรือ `follow-plan` — ตรวจ plan quality ครอบคลุม risk, dependencies, alternatives, timeline, scope, acceptance criteria, rollback, resource requirements แล้วสรุป plan quality score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `plan`, `deep-plan`, `create-plan-md-in-dot-devin`, `implement-plan`, หรือ `follow-plan` — ตรวจ plan quality ครอบคลุม risk, dependencies, alternatives, timeline, scope, acceptance criteria, rollback, resource requirements แล้วสรุป plan quality score พร้อม go/no-go recommendation
 
 ## Execute
 

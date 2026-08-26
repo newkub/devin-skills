@@ -118,7 +118,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 3. ตรวจสอบไม่มี missing tasks หรือ gaps
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ พร้อม risks และ mitigation
 5. ทำ `/deep-validate` เพื่อ validate แผนก่อนบันทึก
-6. ทำ `/create-plan` เพื่อสร้างแผนลง `.devin/plan/<title>-<date>.md`
+6. ทำ `/create-plan-md-in-dot-devin` เพื่อสร้างแผนลง `.devin/plan/<title>-<date>.md`
 7. ทำ `/report-table` สำหรับ tasks และ file structure
 8. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
 9. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป

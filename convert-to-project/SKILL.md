@@ -35,7 +35,7 @@ description: แปลง idea, requirements หรือ sketch เป็น pr
 
 > Goal: แบ่งงานเป็น tasks
 
-1. ใช้ `/create-plan` หรือ `/update-todo-md`
+1. ใช้ `/create-plan-md-in-dot-devin` หรือ `/update-todo-md`
 2. แบ่ง phase: foundation, features, quality, release
 3. ระบุ dependencies ระหว่าง tasks
 4. ระบุ deliverable ของแต่ละ task
