@@ -1,5 +1,5 @@
 ---
-name: idea-new-files-naming
+name: idea-improve-files-naming
 description: สร้างชื่อไฟล์และ directory สำหรับ idea ใหม่ตาม convention ของ project
 ---
 

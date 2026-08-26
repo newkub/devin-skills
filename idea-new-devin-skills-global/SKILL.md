@@ -5,7 +5,7 @@ argument-hint: "[skill-name]"
 related:
   - idea-convert-my-global-cli-to-skills
   - idea-features
-  - idea-new-files-naming
+  - idea-improve-files-naming
   - create-devin-global-skills
 ---
 

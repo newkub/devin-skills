@@ -230,7 +230,7 @@ related:
 - `idea-new-devin-skills-global: /idea-new-devin-skills-global`
 - `idea-convert-my-global-cli-to-skills: /idea-convert-my-global-cli-to-skills`
 - `idea-features: /idea-features`
-- `idea-new-files-naming: /idea-new-files-naming`
+- `idea-improve-files-naming: /idea-improve-files-naming`
 
 ### 4. Workspaces
 
