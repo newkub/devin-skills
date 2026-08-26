@@ -1,15 +1,21 @@
 ---
-name: review-readme
-description: ตรวจสอบ README.md ก่อน update-readme แก้ไข ครอบคลุม section order และ format
+name: review-readme-md
+description: ตรวจสอบ README.md ก่อน update-readme-md แก้ไข ครอบคลุม section order และ format
+related:
+  - update-readme-md
+  - scan-codebase
+  - check-monorepo
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-Review `README.md` ทั้ง root และ workspace ก่อนเรียก `update-readme` เพื่อยืนยันว่า section order, table format, icons, content standards, และ coverage ครบถ้วนและถูกต้อง
+Review `README.md` ทั้ง root และ workspace ก่อนเรียก `update-readme-md` เพื่อยืนยันว่า section order, table format, icons, content standards, และ coverage ครบถ้วนและถูกต้อง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-readme` — ตรวจ `README.md` ทั้ง root และทุก workspace ใน monorepo ทำ review เท่านั้น ไม่แก้ไข `README.md` ระหว่าง review
+ใช้ก่อนเรียก `update-readme-md` — ตรวจ `README.md` ทั้ง root และทุก workspace ใน monorepo ทำ review เท่านั้น ไม่แก้ไข `README.md` ระหว่าง review
 
 ## Execute
 
@@ -108,7 +114,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข `README.md` ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-readme` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `update-readme-md` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
@@ -123,7 +129,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-readme` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-readme-md` ก่อนดำเนินการ
 
 ### 4. Formatting
 

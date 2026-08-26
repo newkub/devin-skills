@@ -37,7 +37,7 @@
 |----------|-----------|
 | Git | `/follow-tool-git-branch`, `/follow-tool-git` |
 | Testing | `/run-test`, `/run-test-e2e`, `/run-test-integration` |
-| Documentation | `/update-readme`, `/update-docs` |
+| Documentation | `/update-readme-md`, `/update-docs` |
 
 ### Configuration
 

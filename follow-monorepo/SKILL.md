@@ -56,7 +56,7 @@ description: สร้าง Monorepo Architecture สำหรับโปร�
 1. Root-level TypeScript config
 2. Shared linting, formatting, git hooks configs
 3. Use extends ใน workspace configs
-4. ทำ `/follow-package-manifest` เพื่อตั้งค่า scripts และ `/update-readme` สำหรับ documentation ทุก workspace
+4. ทำ `/follow-package-manifest` เพื่อตั้งค่า scripts และ `/update-readme-md` สำหรับ documentation ทุก workspace
 
 ## Rules
 

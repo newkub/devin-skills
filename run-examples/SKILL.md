@@ -64,9 +64,9 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 > Goal: Update Documentation
 
-1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
+1. ทำตาม `/update-readme-md` สำหรับการอัพเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
+3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-readme-md`
 
 ### 8. Update Reference
 

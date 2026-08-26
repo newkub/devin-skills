@@ -1,6 +1,12 @@
 ---
-name: update-readme
+name: update-readme-md
 description: สร้าง README.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
+related:
+  - review-readme-md
+  - analyze-project
+  - translate-to-lang-en
+  - report-table
+  - validate
 ---
 
 ## Goal
@@ -19,37 +25,47 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 
 ดู `references/prepare.md`
 
-### 2. Write Root README
+### 2. Read Sample READMEs
+
+> Goal: อ่านตัวอย่าง README ตามมาตรฐาน
+
+1. อ่าน `references/sample-readme-overview.md` เพื่อดูโครงสร้าง README ภาพรวม
+2. อ่าน `references/sample-readme-workflows.md` สำหรับส่วน workflows
+3. อ่าน `references/sample-readme-contribution.md` สำหรับส่วน contribution
+4. อ่าน `references/sample-readme-releases.md` สำหรับส่วน releases
+5. ระบุ sections ที่จำเป็นสำหรับ project ปัจจุบัน
+
+### 3. Write Root README
 
 > Goal: เขียน README หลักของ monorepo
 
 ดู `references/write-readme.md`
 
-### 3. Generate UI Sketch
+### 4. Generate UI Sketch
 
 > Goal: สร้าง UX/UI sketch สำหรับ README
 
 ดู `references/generate-sketch.md`
 
-### 4. Draw Usage ANSI
+### 5. Draw Usage ANSI
 
 > Goal: วาด ANSI ประกอบสำหรับ Usage section แทนการ capture image
 
 ดู `references/capture-images.md`
 
-### 5. Update Workspaces READMEs
+### 6. Update Workspaces READMEs
 
 > Goal: อัปเดต README ทุก workspace ใน monorepo
 
 ดู `references/update-workspaces.md`
 
-### 6. Setup License
+### 7. Setup License
 
 > Goal: ตั้งค่า LICENSE.md และ package manifest license field สำหรับ root
 
 ดู `references/setup-license.md`
 
-### 7. Validate
+### 8. Validate
 
 > Goal: ตรวจสอบคุณภาพและอัปเดต references
 

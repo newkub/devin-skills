@@ -3,7 +3,7 @@ name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
 related:
   - update-dot-devin
-  - update-readme
+  - update-readme-md
   - update-agents-md
   - update-usage-md
   - update-project-rules
@@ -58,7 +58,7 @@ related:
    - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ/ตั้งค่า)
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
-   - `/update-readme`
+   - `/update-readme-md`
    - `/update-agents-md`
    - `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
    - `/update-usage-md` (ถ้ามี `USAGE.md` แบบ manual)

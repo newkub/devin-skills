@@ -3,7 +3,7 @@ name: update-examples
 description: อัปเดต examples ครอบคลุมทุก API ใน project
 related:
   - analyze-project
-  - follow-readme
+  - update-readme-md
   - run-dev
   - validate
   - report-table
@@ -68,9 +68,9 @@ related:
 
 > Goal: Update Documentation
 
-1. ทำตาม `/follow-readme` สำหรับการอัปเดท README.md
+1. ทำตาม `/update-readme-md` สำหรับการอัปเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัปเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
+3. อัปเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/update-readme-md`
 
 ## Rules
 

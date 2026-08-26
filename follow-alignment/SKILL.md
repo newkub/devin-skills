@@ -9,7 +9,7 @@ related:
   - review-references
   - review-consistency
   - update-agents-md
-  - update-readme
+  - update-readme-md
   - update-usage-md
   - follow-architecture
   - check-code-structure
@@ -61,7 +61,7 @@ related:
 > Goal: ทำให้ docs สะท้อนสถานะปัจจุบัน
 
 1. ถ้า `AGENTS.md` ไม่ครอบคลุม skills/workflows → ทำ `/update-agents-md`
-2. ถ้า `README.md` ล้าหลัง → ทำ `/update-readme`
+2. ถ้า `README.md` ล้าหลัง → ทำ `/update-readme-md`
 3. ถ้า `USAGE.md` ล้าหลัง → ทำ `/update-usage-md`
 4. ตรวจ cross-references ระหว่าง docs
 

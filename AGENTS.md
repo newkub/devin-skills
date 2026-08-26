@@ -131,7 +131,7 @@ related:
 - `update-all-program-in-computer: /update-all-program-in-computer`
 - `update-chezmoi: /update-chezmoi`
 - `update-devin-global-subagents: /update-devin-global-subagents`
-- `update-readme: /update-readme`
+- `update-readme-md: /update-readme-md`
 - `update-docs: /update-docs`
 - `update-features: /update-features`
 - `update-gitignore: /update-gitignore`
@@ -150,6 +150,7 @@ related:
 - `gen-changelog-md: /gen-changelog-md`
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
+- `add-to-todo-md: /add-to-todo-md`
 - `add-to-queue: /add-to-queue`
 
 #### Global Config
@@ -190,7 +191,7 @@ related:
 - `review-dot-devin: /review-dot-devin`
 - `review-devin-global-subagents: /review-devin-global-subagents`
 - `review-features: /review-features`
-- `review-readme: /review-readme`
+- `review-readme-md: /review-readme-md`
 - `review-docs: /review-docs`
 - `review-app-usage: /review-app-usage`
 - `review-usage-md: /review-usage-md`

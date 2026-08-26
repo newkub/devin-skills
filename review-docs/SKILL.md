@@ -110,8 +110,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - ตรวจ `docs/` structure, VitePress config, content quality, links
 - ไม่ตรวจ features coverage — ใช้ `review-features` แทน
-- ไม่ตรวจ README format — ใช้ `review-readme` แทน
-- ถ้า findings ซ้อนทับกับ `review-features` หรือ `review-readme` → อ้างอิงแทน ไม่ทำซ้ำ
+- ไม่ตรวจ README format — ใช้ `review-readme-md` แทน
+- ถ้า findings ซ้อนทับกับ `review-features` หรือ `review-readme-md` → อ้างอิงแทน ไม่ทำซ้ำ
 
 ### 3. Severity Ratings
 
