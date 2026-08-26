@@ -77,6 +77,9 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `follow-devin-skills: /follow-devin-skills`
+- `follow-propositional-logic: /follow-propositional-logic`
+- `follow-predicate-logic: /follow-predicate-logic`
+- `follow-set-theory: /follow-set-theory`
 - `follow-principles: /follow-principles`
 - `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
