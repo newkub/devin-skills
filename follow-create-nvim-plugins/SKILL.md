@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-nvim-plugins
 description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 ---

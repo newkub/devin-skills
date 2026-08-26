@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-oxlint
 description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast linting ผ่าน ESLint 9+ flat config
 ---

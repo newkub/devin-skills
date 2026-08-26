@@ -1,4 +1,4 @@
-﻿# follow-lib-effect-ts References Index
+# follow-lib-effect-ts References Index
 
 | File | Responsibility |
 |---|---|

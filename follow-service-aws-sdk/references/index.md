@@ -1,4 +1,4 @@
-﻿# follow-service-aws-sdk References Index
+# follow-service-aws-sdk References Index
 
 | File | Responsibility |
 |---|---|

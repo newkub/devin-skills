@@ -1,5 +1,5 @@
 ---
-name: follow-resolve-pr
+name: resolve-pr
 description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
 ---
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-wxt
 description: ตั้งค่าและพัฒนา Web Extensions ด้วย WXT framework ตาม best practices
 ---

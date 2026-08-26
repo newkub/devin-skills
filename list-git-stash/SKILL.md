@@ -1,4 +1,4 @@
-﻿---
+---
 name: list-git-stash
 description: แสดง stashes ทั้งหมดพร้อมข้อมูลและสถานะ
 ---

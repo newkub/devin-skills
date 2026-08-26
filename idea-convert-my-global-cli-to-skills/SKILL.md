@@ -1,4 +1,4 @@
-﻿---
+---
 name: idea-convert-my-global-cli-to-skills
 description: สร้างไอเดียและ draft แปลง CLI tools ที่ติดตั้งเป็น Devin skills
 argument-hint: "[cli-name]"

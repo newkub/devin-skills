@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-vite
 description: แนวทางการพัฒนาด้วย Vite 7+ build tool สำหรับ modern web applications
 ---

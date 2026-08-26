@@ -64,7 +64,7 @@ description: หลักการ debug อย่างเป็นระบบ
 
 > Goal: ยืนยัน root cause ที่ reproduce ได้ แก้แล้วหาย ถอนแล้วกลับมา
 
-1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
+1. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
 2. ใช้ 5 Whys เพื่อ trace จาก symptom ไป root cause
 3. ยืนยัน root cause ด้วย 3 เงื่อนไข: reproduce ได้, fix แล้วหาย, กลับมาถ้าถอน fix
 4. ตรวจสอบว่าไม่ใช่ symptom ของปัญหาที่ลึกกว่า
@@ -127,7 +127,7 @@ description: หลักการ debug อย่างเป็นระบบ
 ### 5. Non-Redundancy
 
 - รายละเอียด Bayesian approach อยู่ใน `/debug-issue` แล้ว
-- รายละเอียด causal analysis อยู่ใน `/follow-root-cause-analysis` แล้ว
+- รายละเอียด causal analysis อยู่ใน `/analyze-root-cause-analysis` แล้ว
 - รายละเอียด improving debuggability อยู่ใน `/update-review-codebase-cli-and-run` แล้ว
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate

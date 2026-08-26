@@ -1,4 +1,4 @@
-﻿# follow-service-instantdb — Reference Index
+# follow-service-instantdb — Reference Index
 
 | File | Responsibility |
 |------|----------------|

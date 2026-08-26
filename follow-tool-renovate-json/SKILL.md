@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-renovate-json
 description: เขียนและตรวจ renovate.json config สำหรับ Renovate bot auto update dependencies
 ---

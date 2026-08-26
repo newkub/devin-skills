@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lang-python
 description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
 ---

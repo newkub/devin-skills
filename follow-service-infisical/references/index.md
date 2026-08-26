@@ -1,4 +1,4 @@
-﻿# follow-service-infisical References Index
+# follow-service-infisical References Index
 
 | File | Responsibility |
 |---|---|

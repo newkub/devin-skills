@@ -1,4 +1,4 @@
-﻿## Data Fetching
+## Data Fetching
 
 `params` and `searchParams` are `Promise` in Next.js 15+ (must `await`):
 

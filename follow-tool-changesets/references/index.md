@@ -1,4 +1,4 @@
-﻿# follow-tool-changesets References Index
+# follow-tool-changesets References Index
 
 | File | Responsibility |
 |---|---|

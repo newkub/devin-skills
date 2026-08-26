@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-usage
 description: อัปเดต usage.kdl spec และ generate USAGE.md และ completions
 ---

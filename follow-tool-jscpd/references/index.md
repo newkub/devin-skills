@@ -1,4 +1,4 @@
-﻿# follow-tool-jscpd References Index
+# follow-tool-jscpd References Index
 
 | File | Responsibility |
 |---|---|

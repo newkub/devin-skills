@@ -1,4 +1,4 @@
-﻿# follow-tool-storybook Reference Index
+# follow-tool-storybook Reference Index
 
 | File | Responsibility |
 |------|---------------|

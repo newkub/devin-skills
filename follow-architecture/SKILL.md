@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest และจัดเรียงส่วนประกอบตาม Order Theory
 related:

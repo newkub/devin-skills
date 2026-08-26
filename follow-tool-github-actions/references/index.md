@@ -1,4 +1,4 @@
-﻿# follow-tool-github-actions — Reference Index
+# follow-tool-github-actions — Reference Index
 
 | File | Responsibility |
 |------|----------------|

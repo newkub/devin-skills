@@ -1,4 +1,4 @@
-﻿# follow-tool-renovate References Index
+# follow-tool-renovate References Index
 
 | File | Responsibility |
 |---|---|

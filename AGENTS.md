@@ -84,6 +84,18 @@ related:
 - `report: /report`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
 - `report-usage-md: /report-usage-md`
+- `resolve-pr: /resolve-pr`
+
+#### Analyze
+
+- `analyze-root-cause-analysis: /analyze-root-cause-analysis`
+
+#### Request
+
+- `request-instruction-prompt: /request-instruction-prompt`
+- `request-math-formular: /request-math-formular`
+- `request-math-formular-problem: /request-math-formular-problem`
+- `request-pattern: /request-pattern`
 
 #### Update
 
@@ -153,6 +165,8 @@ related:
 - `review-redundancy: /review-redundancy`
 - `review-restructure: /review-restructure`
 - `review-workspace: /review-workspace`
+- `review-naming: /review-naming`
+- `review-readability: /review-readability`
 
 #### Create
 
@@ -160,8 +174,10 @@ related:
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-website: /follow-create-website`
 - `follow-solid-tanstack: /follow-solid-tanstack`
+- `follow-lib-react: /follow-lib-react`
 - `follow-lib-tanstack-ecosystem: /follow-lib-tanstack-ecosystem`
 - `follow-lib-effect-ts: /follow-lib-effect-ts`
+- `follow-programming-paradigm: /follow-programming-paradigm`
 - `follow-single-responsibility: /follow-single-responsibility`
 
 #### Search

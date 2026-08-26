@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-knip
 description: Setup and configure Knip for detecting unused files, dependencies, and exports in monorepos
 ---

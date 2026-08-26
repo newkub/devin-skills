@@ -1,4 +1,4 @@
-﻿# follow-lang-python References Index
+# follow-lang-python References Index
 
 | File | Responsibility |
 |---|---|

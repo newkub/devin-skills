@@ -1,4 +1,4 @@
-﻿# follow-tool-react-scan References Index
+# follow-tool-react-scan References Index
 
 | File | Responsibility |
 |---|---|

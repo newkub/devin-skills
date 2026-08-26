@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-devin-subagents
 description: ตรวจสอบ subagent ก่อน update-devin-subagents แก้ไข ครอบคลุม format
 ---

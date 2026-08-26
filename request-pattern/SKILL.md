@@ -1,5 +1,5 @@
 ---
-name: follow-request-pattern
+name: request-pattern
 description: เขียน pattern rules จากข้อมูลที่ให้มา
 argument-hint: "[pattern]"
 ---
@@ -10,7 +10,7 @@ argument-hint: "[pattern]"
 
 ## Scope
 
-ใช้ `follow-request-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `request-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

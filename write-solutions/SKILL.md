@@ -19,7 +19,7 @@ description: เขียน solution documents และ problem-solving workfl
 
 วิเคราะห์ปัญหาอย่างละเอียด
 
-1. ทำ `/follow-root-cause-analysis` เพื่อหาสาเหตุหลัก
+1. ทำ `/analyze-root-cause-analysis` เพื่อหาสาเหตุหลัก
 2. ระบุ scope และ impact ของปัญหา
 3. รวบรวม context และ constraints
 

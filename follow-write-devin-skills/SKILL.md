@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-write-devin-skills
 description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
 argument-hint: "[skill-name]"

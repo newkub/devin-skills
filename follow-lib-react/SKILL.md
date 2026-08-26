@@ -1,5 +1,5 @@
 ---
-name: follow-framework-react
+name: follow-lib-react
 description: พัฒนา React 19 applications ตาม best practices 2026
 ---
 

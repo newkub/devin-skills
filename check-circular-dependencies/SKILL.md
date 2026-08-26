@@ -97,7 +97,7 @@ description: ตรวจจับและรายงาน circular dependenc
 ### 3. Actionable
 
 - ทุก finding ต้องมี recommendation เช่น: แยก shared types, ใช้ dependency injection, restructure module boundaries
-- ถ้า issue ซับซ้อน → แนะนำ `/refactor-packages`, `/follow-import-export`, หรือ `/update-reference`
+- ถ้า issue ซับซ้อน → แนะนำ `/refactor-packages`, `/review-architecture`, หรือ `/update-reference`
 - ถ้า cycle เกิดจาก barrel exports → แนะนำการแยก barrel file หรือใช้ type-only imports
 - ถ้า cycle เกิดจาก skill references → แก้ไข `related` หรือ links ใน `SKILL.md`
 

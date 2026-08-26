@@ -1,4 +1,4 @@
-﻿# follow-tool-bunup References Index
+# follow-tool-bunup References Index
 
 | File | Responsibility |
 |---|---|

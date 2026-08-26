@@ -1,4 +1,4 @@
-﻿# follow-lang-php References Index
+# follow-lang-php References Index
 
 | File | Responsibility |
 |---|---|

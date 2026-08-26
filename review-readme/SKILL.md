@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-readme
 description: ตรวจสอบ README.md ก่อน update-readme แก้ไข ครอบคลุม section order และ format
 ---

@@ -161,7 +161,7 @@ argument-hint: "[topic]"
 
 - ทำ `/pondering` ก่อน deep thinking เพื่อทบทวนก่อนวิเคราะห์
 - ทำ `/debug-issue` สำหรับปัญหาที่ต้องแก้ไข
-- ทำ `/follow-root-cause-analysis` สำหรับหาสาเหตุหลัก
+- ทำ `/analyze-root-cause-analysis` สำหรับหาสาเหตุหลัก
 - ทำ `/deep-plan` สำหรับวางแผนงานหลังวิเคราะห์
 - ทำ `/ask-me` ถ้าวิเคราะห์แล้วยังไม่ชัดเจน
 - ทำ `/suggest-next-action` หลังวิเคราะห์เพื่อรู้ว่าควรทำอะไรต่อ

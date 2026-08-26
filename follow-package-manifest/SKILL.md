@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-package-manifest
 description: ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo
 ---

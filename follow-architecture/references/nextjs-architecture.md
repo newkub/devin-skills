@@ -1,4 +1,4 @@
-﻿# Next.js Architecture
+# Next.js Architecture
 
 > Reference pattern for `/follow-architecture` — จัดโครงสร้างโปรเจกต์ Next.js ตาม best practices
 
@@ -139,7 +139,7 @@ apps/
 - เก็บ internal code private ไม่ export ออก
 - ใช้ path aliases ใน `tsconfig.json`
 - ไม่มี circular dependencies ระหว่าง modules
-- ทำ `/follow-import-export` สำหรับ barrel export strategy
+- ทำ `/review-architecture` สำหรับ barrel export strategy
 - ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 
 ### 3. Server/Client Components

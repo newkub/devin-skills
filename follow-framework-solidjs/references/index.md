@@ -1,4 +1,4 @@
-﻿# follow-framework-solidjs References Index
+# follow-framework-solidjs References Index
 
 | File | Responsibility |
 |---|---|

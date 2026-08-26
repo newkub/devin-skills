@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
 ---

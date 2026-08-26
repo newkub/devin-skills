@@ -12,7 +12,7 @@ argument-hint: "[target]"
 
 ใช้สำหรับแปลง code, algorithm, หรือ description ที่อธิบายการคำนวณให้เป็น math formula
 
-ไม่รวม: ขอสูตรใหม่จากปัญหา (ใช้ `/follow-request-math-formular`)
+ไม่รวม: ขอสูตรใหม่จากปัญหา (ใช้ `/request-math-formular-problem`)
 
 ## Execute
 

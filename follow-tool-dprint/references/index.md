@@ -1,4 +1,4 @@
-﻿# follow-tool-dprint References Index
+# follow-tool-dprint References Index
 
 | File | Responsibility |
 |---|---|

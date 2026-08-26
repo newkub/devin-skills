@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-devin-subagents
 description: อัปเดต subagent ที่มีอยู่ใน devin agents repo ตามมาตรฐาน AGENT.md
 ---

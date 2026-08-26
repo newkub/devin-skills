@@ -40,7 +40,7 @@ description: เลือกและใช้งาน data structures ตา�
 1. ใช้ built-in types ก่อน (array, map, set, list)
 2. ใช้ libraries เชื่อถือได้สำหรับ tree/graph
 3. พิจารณา immutable structures ถ้า functional style
-4. ทำ `/follow-functional-programming` ถ้าใช้ functional data structures
+4. ทำ `/follow-programming-paradigm` ถ้าใช้ functional data structures
 
 ### 4. Implement And Encapsulate
 

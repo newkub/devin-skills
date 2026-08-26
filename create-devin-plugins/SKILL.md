@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-devin-plugins
 description: สร้าง Devin CLI plugin ที่รวม skills, rules, agents, hooks และ MCP servers
 argument-hint: "[plugin-name]"

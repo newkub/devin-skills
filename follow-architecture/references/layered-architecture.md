@@ -1,4 +1,4 @@
-﻿# Layered Architecture
+# Layered Architecture
 
 > Reference pattern for `/follow-architecture` — Implement Layered Architecture สำหรับ Frontend projects ขนาดเล็ก-กลาง
 
@@ -140,7 +140,7 @@ src/
 
 - แต่ละ layer/feature ต้องมี `index.ts` เป็น public API entry point
 - ห้าม deep imports ข้าม layer (ใช้ `@/domain/order` ไม่ใช่ `@/domain/order/entities/User`)
-- ใช้ barrel export pattern ทั้งหมด — ทำ `/follow-import-export`
+- ใช้ barrel export pattern ทั้งหมด — ทำ `/review-architecture`
 - composables ใช้ prefix `use` เสมอ
 - import ผ่าน alias ไม่ใช้ relative path
 

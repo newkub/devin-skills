@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-browser-extensions
 description: ทำตามมาตรฐาน browser extension development ตาม Manifest V3
 ---

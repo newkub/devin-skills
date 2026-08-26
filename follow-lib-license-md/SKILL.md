@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-license-md
 description: ตั้งค่าและจัดการ license สำหรับ project
 ---

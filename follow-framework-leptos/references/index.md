@@ -1,4 +1,4 @@
-﻿# follow-framework-leptos — Reference Index
+# follow-framework-leptos — Reference Index
 
 | File | Responsibility |
 |------|----------------|

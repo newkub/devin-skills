@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-github-repo
 description: สร้าง GitHub repository ใหม่ผ่าน gh CLI ด้วยชื่อและ visibility ที่ระบุ
 argument-hint: "[repo-name]"

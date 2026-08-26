@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-rolldown-lib
 description: ตั้งค่าและใช้งาน Rolldown bundler สำหรับ libraries
 ---

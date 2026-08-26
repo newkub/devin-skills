@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-scalar
 description: แนวทางการใช้งาน Scalar API Designer สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร GraphQL APIs แบบครบวงจร
 ---

@@ -118,7 +118,7 @@ argument-hint: "[target]"
 
 - ใช้ `/learn` สำหรับเรียนรู้ concept หรือ tool ทั่วไป
 - ใช้ `/learn-from-web` สำหรับเรียนรู้จาก official documentation
-- ใช้ `/follow-request-pattern` สำหรับเขียน pattern rules จากข้อมูลที่ให้มา
+- ใช้ `/request-pattern` สำหรับเขียน pattern rules จากข้อมูลที่ให้มา
 - Workflow นี้เน้นเฉพาะการสกัดและประยุกต์ใช้ patterns จาก real-world code
 
 ## Expected Outcome

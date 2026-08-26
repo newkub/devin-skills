@@ -1,4 +1,4 @@
-﻿# follow-tool-aube References Index
+# follow-tool-aube References Index
 
 | File | Responsibility |
 |---|---|

@@ -1,4 +1,4 @@
-﻿# follow-framework-dioxus References Index
+# follow-framework-dioxus References Index
 
 | File | Responsibility |
 |---|---|

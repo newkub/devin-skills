@@ -1,4 +1,4 @@
-﻿# follow-tool-hk References Index
+# follow-tool-hk References Index
 
 | File | Responsibility |
 |---|---|

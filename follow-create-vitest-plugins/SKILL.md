@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-vitest-plugins
 description: สร้างและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 3.1.0+)
 ---

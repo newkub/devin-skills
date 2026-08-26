@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-crw
 description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
 ---

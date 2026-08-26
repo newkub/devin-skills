@@ -1,4 +1,4 @@
-﻿# follow-tool-oxlint References Index
+# follow-tool-oxlint References Index
 
 | File | Responsibility |
 |---|---|

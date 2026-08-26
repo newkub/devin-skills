@@ -1,4 +1,4 @@
-﻿---
+---
 name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
 ---

@@ -57,7 +57,7 @@
 - `sg outline --items imports <paths>` สำหรับ import patterns
 - `sg outline --items exports <paths>` สำหรับ exported surface
 - `madge --circular --extensions ts,tsx` สำหรับ circular dependencies
-- `/follow-import-export` สำหรับ comprehensive import/export analysis
+- `/review-architecture` สำหรับ comprehensive import/export analysis
 
 ## Severity
 

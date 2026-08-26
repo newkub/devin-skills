@@ -1,4 +1,4 @@
-﻿# follow-tool-eslint References Index
+# follow-tool-eslint References Index
 
 | File | Responsibility |
 |---|---|

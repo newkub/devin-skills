@@ -1,4 +1,4 @@
-﻿---
+---
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
 ---

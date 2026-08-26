@@ -1,4 +1,4 @@
-﻿# follow-tool-clippy References Index
+# follow-tool-clippy References Index
 
 | File | Responsibility |
 |---|---|

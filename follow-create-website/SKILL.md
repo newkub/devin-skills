@@ -31,7 +31,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 > Goal: เลือก stack ทีเหมาะสม
 
 1. ถ้า user ต้องการ SolidJS + TanStack → ทำ `/follow-solid-tanstack`
-2. ถ้าต้องการ React + Next.js → ทำ `/follow-framework-nextjs` หรือ `/follow-framework-react`
+2. ถ้าต้องการ React + Next.js → ทำ `/follow-framework-nextjs` หรือ `/follow-lib-react`
 3. ถ้าต้องการ Vue/Nuxt → ทำ `/follow-framework-vue`
 4. บันทึกเหตุผลทีเลือก stack นั้น
 

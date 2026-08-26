@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-dprint
 description: ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
 ---

@@ -1,4 +1,4 @@
-﻿# follow-lib-animejs Reference Index
+# follow-lib-animejs Reference Index
 
 | File | Responsibility |
 |------|---------------|

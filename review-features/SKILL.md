@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-features
 description: ตรวจสอบ features documentation ก่อน update-features แก้ไข
 ---

@@ -1,4 +1,4 @@
-﻿# Next.js 16 Reference
+# Next.js 16 Reference
 
 ## Install
 

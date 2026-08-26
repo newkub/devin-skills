@@ -1,4 +1,4 @@
-﻿# follow-tool-mutants-rs References Index
+# follow-tool-mutants-rs References Index
 
 | File | Responsibility |
 |---|---|

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-git
 description: ใช้งาน git commands ตามสถานการณ์
 ---

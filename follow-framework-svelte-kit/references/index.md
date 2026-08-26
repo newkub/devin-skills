@@ -1,4 +1,4 @@
-﻿# follow-framework-svelte-kit — Reference Index
+# follow-framework-svelte-kit — Reference Index
 
 | File | Responsibility |
 |------|----------------|

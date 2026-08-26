@@ -1,5 +1,5 @@
 ---
-name: follow-request-math-formular
+name: request-math-formular-problem
 description: ขอสูตรคณิตศาสตร์ที่กระชับและเข้าใจง่าย
 argument-hint: "[target]"
 ---
@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้ `follow-request-math-formular` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `request-math-formular-problem` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

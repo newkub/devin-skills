@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-remotion
 description: Framework สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งโดยใช้ React
 ---

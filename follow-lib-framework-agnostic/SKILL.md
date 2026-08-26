@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-framework-agnostic
 description: พัฒนา libraries ที่ใช้ได้บน multiple frameworks โดยไม่ผูกติด framework ใด
 ---

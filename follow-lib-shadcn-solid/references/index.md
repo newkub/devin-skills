@@ -1,4 +1,4 @@
-﻿# follow-lib-shadcn-solid References Index
+# follow-lib-shadcn-solid References Index
 
 | File | Responsibility |
 |---|---|

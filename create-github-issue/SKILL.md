@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-github-issue
 description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, และ milestones
 argument-hint: "[title]"

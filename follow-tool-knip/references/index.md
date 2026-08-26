@@ -1,4 +1,4 @@
-﻿# follow-tool-knip References Index
+# follow-tool-knip References Index
 
 | File | Responsibility |
 |---|---|

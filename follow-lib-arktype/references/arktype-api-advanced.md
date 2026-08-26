@@ -1,4 +1,4 @@
-﻿## ArkErrors
+## ArkErrors
 
 ### Error Structure
 

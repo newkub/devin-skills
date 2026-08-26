@@ -28,7 +28,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 2. Create Shared Kernel
 
-> Goal: ทำ `/follow-functional-programming` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
+> Goal: ทำ `/follow-programming-paradigm` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
 
 1. `types/` - Common types (`Result`, `Option`)
 2. `utils/` - Pure utility functions

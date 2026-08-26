@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-svelte-kit
 description: สร้าง Svelte applications ด้วย SSR/CSR/Prerendering และ file-based routing ตามมาตรฐาน SvelteKit
 ---

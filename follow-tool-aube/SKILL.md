@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-aube
 description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
 ---

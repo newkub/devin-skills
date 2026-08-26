@@ -26,7 +26,7 @@
 ### Dependencies And Code Splitting
 
 1. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ใช้
-2. ทำ `/follow-import-export` เพื่อตรวจ barrel files และ import paths
+2. ทำ `/review-architecture` เพื่อตรวจ barrel files และ import paths
 3. ใช้ `/scan-codebase` หา unused files, dead code, unused exports
 4. ใช้ dynamic `import()` หรือ route-based lazy loading ถ้าเหมาะสม
 5. ลบหรือ refactor imports ที่ยก module ทั้งหมดมา แต่ใช้บางส่วน

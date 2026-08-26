@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-vite-plugins
 description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
 ---

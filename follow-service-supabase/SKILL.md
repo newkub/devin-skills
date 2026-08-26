@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-service-supabase
 description: ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime และ CLI
 ---

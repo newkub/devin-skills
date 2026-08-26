@@ -16,7 +16,7 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 - ใช้งาน `instant-cli` สำหรับ push/pull schema และ manage apps
 
 ไม่รวม:
-- สร้าง UI component ตาม framework (ให้ใช้ `follow-framework-react`, `follow-framework-nextjs`, ฯลฯ)
+- สร้าง UI component ตาม framework (ให้ใช้ `follow-lib-react`, `follow-framework-nextjs`, ฯลฯ)
 - Self-hosting (ให้ดู official docs)
 
 ## Execute

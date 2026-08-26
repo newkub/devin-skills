@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-desktop-app
 description: สร้าง Desktop Applications ด้วย Tauri, SolidStart, และ UnoCSS
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-stryker-mutator
 description: ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing ใน JavaScript/TypeScript projects
 ---

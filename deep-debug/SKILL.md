@@ -62,7 +62,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 1. เปลี่ยนทีละอย่างเท่านั้น: config, dependency, runtime, code
 2. ไล่จากบนลงล่าง: UI → Terminal → Shell → Runtime → OS
 3. ยืนยัน root cause ด้วย 3 เงื่อนไข: reproduce ได้, fix แล้วหาย, กลับมา error ถ้าถอย fix
-4. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
+4. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
 5. ถ้าไม่ผ่าน 3 เงื่อนไข → กลับไป Step 4
 
 ### 6. Fix At Root Cause

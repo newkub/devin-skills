@@ -1,4 +1,4 @@
-﻿# follow-tool-cargo References Index
+# follow-tool-cargo References Index
 
 | File | Responsibility |
 |---|---|

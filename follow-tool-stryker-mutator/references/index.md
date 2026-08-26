@@ -1,4 +1,4 @@
-﻿# follow-tool-stryker-mutator References Index
+# follow-tool-stryker-mutator References Index
 
 | File | Responsibility |
 |---|---|

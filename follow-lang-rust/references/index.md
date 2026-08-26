@@ -1,4 +1,4 @@
-﻿# follow-lang-rust References Index
+# follow-lang-rust References Index
 
 | File | Responsibility |
 |---|---|

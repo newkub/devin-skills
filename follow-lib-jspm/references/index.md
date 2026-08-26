@@ -1,4 +1,4 @@
-﻿# follow-lib-jspm References
+# follow-lib-jspm References
 
 | File | Responsibility |
 |------|----------------|

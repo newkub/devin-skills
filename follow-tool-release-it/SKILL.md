@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-release-it
 description: ตั้งค่า release-it สำหรับ automated releases
 ---

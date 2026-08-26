@@ -1,4 +1,4 @@
-﻿# follow-tool-auto-it References Index
+# follow-tool-auto-it References Index
 
 | File | Responsibility |
 |---|---|

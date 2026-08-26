@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-flutter
 description: พัฒนา Flutter applications ด้วย Clean Architecture และ Riverpod
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
 ---

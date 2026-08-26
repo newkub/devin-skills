@@ -17,7 +17,7 @@ description: แก้ไขโค้ดโดยไม่ต้องรัน 
 
 > Goal: ยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
 
-ทำ `/follow-import-export` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
+ทำ `/review-architecture` เพื่อตรวจสอบการใช้ import และ export strategy และยืนยันว่า task เป็นการแก้ไขโค้ดเท่านั้น
 
 ### 2. Code Modification
 

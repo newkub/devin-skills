@@ -1,4 +1,4 @@
-﻿# follow-tool-scalar References
+# follow-tool-scalar References
 
 | File | Responsibility |
 |------|----------------|

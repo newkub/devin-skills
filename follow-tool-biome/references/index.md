@@ -1,4 +1,4 @@
-﻿# follow-tool-biome References Index
+# follow-tool-biome References Index
 
 | File | Responsibility |
 |---|---|

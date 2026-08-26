@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-tauri
 description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
 ---

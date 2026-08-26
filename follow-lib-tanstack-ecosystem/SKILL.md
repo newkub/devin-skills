@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-tanstack-ecosystem
 description: เลือกและใช้งาน TanStack libraries ใน project ตาม use case
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-rolldown
 description: Fast JavaScript bundler ที่เขียนด้วย Rust ใช้ Rollup-compatible API
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-tauri-plugins
 description: สร้าง custom Tauri plugins ด้วย Rust และ JavaScript API
 ---

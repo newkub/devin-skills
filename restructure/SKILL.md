@@ -64,7 +64,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ปรับปรุง barrel exports, import aliases และ import paths ให้ใช้ alias แทน relative paths ที่ซับซ้อน
 
-1. ทำ `/follow-import-export` เพื่อ refactor barrel exports และแทนที่ relative paths ที่ซับซ้อนด้วย import aliases
+1. ทำ `/review-architecture` เพื่อ refactor barrel exports และแทนที่ relative paths ที่ซับซ้อนด้วย import aliases
 2. ถ้า barrel files และ import aliases ไม่ต้องปรับ → skip ไป Step 6
 
 ### 6. Validate Single Responsibility

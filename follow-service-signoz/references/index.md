@@ -1,4 +1,4 @@
-﻿# follow-service-signoz References Index
+# follow-service-signoz References Index
 
 | File | Responsibility |
 |---|---|

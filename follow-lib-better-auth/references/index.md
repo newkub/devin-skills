@@ -1,4 +1,4 @@
-﻿# follow-lib-better-auth References Index
+# follow-lib-better-auth References Index
 
 | File | Responsibility |
 |---|---|

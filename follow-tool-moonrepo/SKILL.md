@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-moonrepo
 description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project graph
 ---

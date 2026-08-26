@@ -1,4 +1,4 @@
-﻿# Solid + TanStack Architecture
+# Solid + TanStack Architecture
 
 > Reference pattern for `/follow-architecture` — จัดโครงสร้าง TanStack Start + SolidJS app พร้อม modules/, monorepo และ file-based routing
 
@@ -58,7 +58,7 @@
 4. สร้าง `src/modules/<feature>/` สำหรับแต่ละ domain feature
 5. แต่ละ module ประกอบด้วย: `components/`, `hooks/`, `schemas/`, `utils/`, `types/`
 6. สร้าง `src/modules/<feature>/index.ts` เป็น barrel export สำหรับ public API
-7. ใช้ `/follow-import-export` สำหรับ barrel export strategy
+7. ใช้ `/review-architecture` สำหรับ barrel export strategy
 8. เก็บ internal code ใน private directories ไม่ export ออก
 9. ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
 

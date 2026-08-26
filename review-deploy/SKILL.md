@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-deploy
 description: Review deployment readiness ก่อน deploy
 ---

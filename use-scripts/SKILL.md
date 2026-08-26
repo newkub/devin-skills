@@ -1,4 +1,4 @@
-﻿---
+---
 name: use-scripts
 description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
 argument-hint: "[target]"

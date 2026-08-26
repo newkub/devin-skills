@@ -1,4 +1,4 @@
-﻿# follow-framework-nextjs References Index
+# follow-framework-nextjs References Index
 
 | File | Responsibility |
 |---|---|

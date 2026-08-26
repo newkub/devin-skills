@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-service-workos
 description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, และ Authentication
 ---

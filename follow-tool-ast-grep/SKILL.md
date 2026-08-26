@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-ast-grep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
 ---

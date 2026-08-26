@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-leptos
 description: สร้าง reactive web applications ด้วย Rust พร้อม SSR และ CSR support
 ---

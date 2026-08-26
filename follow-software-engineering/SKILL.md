@@ -34,7 +34,7 @@ description: ออกแบบและเขียน software ที่ test 
 
 เขียน code ที่ debug ง่ายและ test ง่าย
 
-1. ทำ `/follow-functional-programming` เพื่อแยก pure logic จาก side effects
+1. ทำ `/follow-programming-paradigm` เพื่อแยก pure logic จาก side effects
 2. เขียน business logic เป็น pure functions
 3. ใช้ naming ที่ชัดเจนและ meaningful
 4. เขียน functions ที่ small และ focused (max 20-30 lines)

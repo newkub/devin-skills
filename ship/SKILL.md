@@ -1,4 +1,4 @@
-﻿---
+---
 name: ship
 description: Ship workspace หรือ skills repo โดย commit ทำตาม AGENTS.md รองรับ submodules ไม่มี push หรือ release
 ---

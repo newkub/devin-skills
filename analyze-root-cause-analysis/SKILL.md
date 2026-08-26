@@ -1,5 +1,5 @@
 ---
-name: follow-root-cause-analysis
+name: analyze-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
 argument-hint: "[target]"
 ---
@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้ `follow-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `analyze-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

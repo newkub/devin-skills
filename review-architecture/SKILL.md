@@ -43,7 +43,16 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 11. Review CLI คำนวณ architecture review score จาก review report (ดู `references/scoring.md`)
 12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-codebase-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
-### 3. Validate Findings
+### 3. Review Import And Export
+
+> Goal: ตรวจสอบ import/export strategy ของ module
+
+1. ดู `references/import-export.md` สำหรับ barrel exports, aliases, ordering, circular dependencies
+2. ตรวจสอบว่า public API ซ่อน implementation details
+3. ยืนยันว่าไม่มี circular dependencies และ unused imports
+4. ประเมิน tree-shaking และ bundle size impact
+
+### 4. Validate Findings
 
 ตรวจสอบความถูกต้องของ findings ก่อน report
 
@@ -55,7 +64,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
-### 4. Report
+### 5. Report
 
 รายงานผลการ review ในแชท
 
@@ -67,7 +76,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
-### 5. Implement All
+### 6. Implement All
 
 ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
 

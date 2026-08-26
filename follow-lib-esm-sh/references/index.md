@@ -1,4 +1,4 @@
-﻿# follow-lib-esm-sh Reference Index
+# follow-lib-esm-sh Reference Index
 
 | File | Responsibility |
 |------|---------------|

@@ -1,4 +1,4 @@
-﻿# follow-tool-mise References Index
+# follow-tool-mise References Index
 
 | File | Responsibility |
 |---|---|

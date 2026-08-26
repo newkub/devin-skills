@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-js-delivr
 description: ใช้ jsDelivr CDN สำหรับโหลด bun packages และ GitHub repositories บน web pages
 ---

@@ -1,4 +1,4 @@
-﻿# follow-tool-changelogen References Index
+# follow-tool-changelogen References Index
 
 | File | Responsibility |
 |---|---|

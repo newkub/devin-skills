@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
 ---

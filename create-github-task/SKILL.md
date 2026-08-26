@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-github-task
 description: Create draft tasks in GitHub Projects
 argument-hint: "[title]"

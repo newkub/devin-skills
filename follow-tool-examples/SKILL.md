@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-examples
 description: เขียน examples ครอบคลุม API ทุกตัวในโปรเจกต์สำหรับ docs และ onboarding
 ---

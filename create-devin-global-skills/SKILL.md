@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-devin-global-skills
 description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-write-devin-skills
 argument-hint: "[skill-name]"

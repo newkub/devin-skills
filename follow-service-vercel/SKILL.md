@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-service-vercel
 description: Deploy applications บน Vercel พร้อม serverless และ edge functions
 ---

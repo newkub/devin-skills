@@ -69,7 +69,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 1. แยกไฟล์ที่มี top-level symbols เกิน 5 ออกเป็นไฟล์ย่อยตาม domain หรือ responsibility
 2. ลด public members ใน type/class ที่เกิน 10 โดย extract ออกเป็น sub-type หรือ helper
-3. ทำ `/follow-import-export` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
+3. ทำ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
 6. ทำ `/rename` สำหรับ rename identifiers และ `/update-reference` หลังทุกการ split หรือ rename

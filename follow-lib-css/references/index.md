@@ -1,4 +1,4 @@
-﻿# follow-lib-css References Index
+# follow-lib-css References Index
 
 | File | Responsibility |
 |---|---|

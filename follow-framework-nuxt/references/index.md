@@ -1,4 +1,4 @@
-﻿# follow-framework-nuxt References Index
+# follow-framework-nuxt References Index
 
 | File | Responsibility |
 |---|---|

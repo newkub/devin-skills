@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-build-packages
 description: ตั้งค่า build pipeline สำหรับ packages ใน monorepo ด้วย tsdown, vitest, turborepo
 ---
@@ -22,7 +22,7 @@ description: ตั้งค่า build pipeline สำหรับ packages �
 - /follow-tool-turborepo
 - /follow-tool-tsdown
 - /follow-tool-vitest
-- /follow-functional-programming หรือ /follow-functional-programming
+- /follow-programming-paradigm หรือ /follow-programming-paradigm
 
 ## Project Structure
 
@@ -39,8 +39,8 @@ packages/
 
 - เริ่มจาก `/analyze-project` และ `/refactor-packages`
 - เลือก runtime:
-  - Node: `/follow-functional-programming`
-  - Bun: `/follow-functional-programming`
+  - Node: `/follow-programming-paradigm`
+  - Bun: `/follow-programming-paradigm`
 - build/test/lint ต้องรันผ่าน pipeline เดียวกันใน monorepo
 
 ## Folder Rules

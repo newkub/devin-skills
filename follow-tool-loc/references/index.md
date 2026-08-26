@@ -1,4 +1,4 @@
-﻿# follow-tool-loc References Index
+# follow-tool-loc References Index
 
 | File | Responsibility |
 |---|---|

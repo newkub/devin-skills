@@ -1,4 +1,4 @@
-﻿# follow-lib-elysia References Index
+# follow-lib-elysia References Index
 
 | File | Responsibility |
 |---|---|

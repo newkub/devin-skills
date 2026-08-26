@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-biome
 description: ตั้งค่าและใช้งาน Biome สำหรับ linting และ formatting แทน ESLint/Prettier
 ---

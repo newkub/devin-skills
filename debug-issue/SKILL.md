@@ -70,7 +70,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 
 > Goal: วิเคราะห์หาสาเหตุหลักอย่างละเอียด
 
-1. ทำ `/follow-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
+1. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
 2. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
 
 ### 8. Fix And Write Regression Tests

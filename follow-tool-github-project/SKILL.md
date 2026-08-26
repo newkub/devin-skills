@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-tool-github-project
 description: ใช้ `gh project` จัดการ GitHub Projects ผ่าน CLI แบบ interactive และ scripted
 ---

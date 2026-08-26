@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-browser-extensions
 description: สร้าง browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-devin-subagents
 description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ subagents ตาม job roles ทำขนานกัน
 argument-hint: "[task]"

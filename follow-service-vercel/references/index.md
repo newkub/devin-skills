@@ -1,4 +1,4 @@
-﻿# follow-service-vercel — Reference Index
+# follow-service-vercel — Reference Index
 
 | File | Responsibility |
 |------|----------------|

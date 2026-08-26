@@ -1,4 +1,4 @@
-﻿# follow-lib-tanstack-ecosystem References
+# follow-lib-tanstack-ecosystem References
 
 ## References
 

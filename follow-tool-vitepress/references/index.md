@@ -1,4 +1,4 @@
-﻿# follow-tool-vitepress References Index
+# follow-tool-vitepress References Index
 
 | File | Responsibility |
 |---|---|

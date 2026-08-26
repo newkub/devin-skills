@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-docs
 description: ตรวจสอบ docs structure ก่อน update-docs แก้ไข ครอบคลุม VitePress config และ content
 ---

@@ -1,5 +1,5 @@
 ---
-name: follow-request-instruction-prompt
+name: request-instruction-prompt
 description: สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน
 argument-hint: "[target]"
 ---
@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้ `follow-request-instruction-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `request-instruction-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 

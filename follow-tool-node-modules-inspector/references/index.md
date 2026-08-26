@@ -1,4 +1,4 @@
-﻿# follow-tool-node-modules-inspector References Index
+# follow-tool-node-modules-inspector References Index
 
 | File | Responsibility |
 |---|---|

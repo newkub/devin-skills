@@ -1,4 +1,4 @@
-﻿# follow-framework-astro References Index
+# follow-framework-astro References Index
 
 | File | Responsibility |
 |---|---|

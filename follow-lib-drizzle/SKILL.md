@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-drizzle
 description: ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations ด้วย SQL-like syntax
 ---

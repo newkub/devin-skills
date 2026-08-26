@@ -1,4 +1,4 @@
-﻿# follow-lib-orpc References Index
+# follow-lib-orpc References Index
 
 | File | Responsibility |
 |---|---|

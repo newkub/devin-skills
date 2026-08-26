@@ -1,4 +1,4 @@
-﻿# follow-tool-moonrepo References Index
+# follow-tool-moonrepo References Index
 
 | File | Responsibility |
 |---|---|

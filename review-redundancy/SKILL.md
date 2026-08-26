@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-redundancy
 description: ตรวจหา skills ที่ซ้ำซ้อนกันใน devin skills repo
 argument-hint: "[scope]"

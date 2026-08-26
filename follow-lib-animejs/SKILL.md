@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-lib-animejs
 description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่าย
 ---

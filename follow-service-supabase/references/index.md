@@ -1,4 +1,4 @@
-﻿# follow-service-supabase References
+# follow-service-supabase References
 
 | File | Responsibility |
 |------|----------------|

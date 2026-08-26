@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-framework-nuxt
 description: สร้างหรือปรับปรุง Nuxt 4 project ด้วย Universal Rendering และ Nitro
 ---

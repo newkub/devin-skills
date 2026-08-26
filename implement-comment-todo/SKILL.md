@@ -65,7 +65,7 @@ description: แปลง TODO, FIXME, HACK เป็น production code แบ�
 
 - ผ่าน linting rules ทั้งหมด
 - ผ่าน type checking ไม่มี errors
-- ใช้ import และ export strategy ตาม `/follow-import-export`
+- ใช้ import และ export strategy ตาม `/review-architecture`
 - ทำตาม `/review-quality`
 
 ## Expected Outcome

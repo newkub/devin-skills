@@ -1,4 +1,4 @@
-﻿# follow-framework-ratatui References Index
+# follow-framework-ratatui References Index
 
 | File | Responsibility |
 |---|---|

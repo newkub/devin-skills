@@ -1,4 +1,4 @@
-﻿# follow-lib-drizzle References Index
+# follow-lib-drizzle References Index
 
 ## Structure
 

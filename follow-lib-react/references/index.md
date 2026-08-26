@@ -1,4 +1,4 @@
-﻿# follow-framework-react References Index
+# follow-lib-react References Index
 
 | File | Responsibility |
 |---|---|

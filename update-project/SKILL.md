@@ -1,15 +1,15 @@
-﻿---
+---
 name: update-project
-description: อัปเดต root project โดยเช็ค git log ล่าสุดและ restore ข้อมูลจาก commits
+description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
 ---
 
 ## Goal
 
-อัปเดต root project โดยเช็ค git log ล่าสุดของทุก workspace และ restore ข้อมูลที่เกี่ยวข้องมาอัปเดต root docs
+อัปเดต root project โดยเช็ค git log ล่าสุดของทุก workspace และ sync ทุก project docs, config, rules และ tooling
 
 ## Scope
 
-ใช้หลัง ship ทุก workspace เสร็จ — เช็ค git log ล่าสุดของแต่ละ workspace และนำข้อมูลมาอัปเดต root `AGENTS.md`, `README.md` และ docs อื่นๆ ไม่แก้ไข workspace code
+ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code
 
 ## Execute
 
@@ -37,15 +37,30 @@ description: อัปเดต root project โดยเช็ค git log ล�
    - Features changes → อัปเดต `README.md` features table
 3. ถ้า workspace เพิ่ม/ลบ dependency → อัปเดต root mapping
 
-### 3. Update Root Docs
+### 3. Update Project Files
 
-> Goal: root docs สะท้อนการเปลี่ยนแปลงของทุก workspace
+> Goal: อัปเดต project docs, config, rules และ tooling ให้สอดคล้องกัน
 
-1. ทำ `/update-agents-md` เพื่ออัปเดต root `AGENTS.md`
-2. ทำ `/update-readme` เพื่ออัปเดต root `README.md`
-3. ทำ `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
-4. ทำ `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
-5. ตรวจว่า root docs ครบถ้วนและถูกต้อง
+1. อ่าน root `package.json`
+2. อ่าน `AGENTS.md` ถ้ามี
+3. ตรวจสอบ `docs/`, `rules/`, `.devin/`, `.vscode/`
+4. ระบุ orchestration tools (moon, turbo)
+5. รัน updates ตามลำดับ:
+   - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ/ตั้งค่า)
+   - `/update-dot-devin`
+   - `/cleanup-files-in-project` (ถ้าจำเป็น)
+   - `/update-readme`
+   - `/update-agents-md`
+   - `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
+   - `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
+   - `/update-docs` (ถ้ามี `docs/`)
+   - `/update-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+   - `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
+   - `/follow-dot-vscode`
+   - `/update-contributing-md`
+6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
+7. ทำ `/follow-gitignore` เพื่อ sync `.gitignore`
+8. ตรวจสอบว่า scripts ใน `package.json` สอดคล้องกัน
 
 ### 4. Update Project Skills
 
@@ -67,10 +82,12 @@ description: อัปเดต root project โดยเช็ค git log ล�
 > Goal: root project ผ่าน validation
 
 1. ทำ `/validate` เพื่อตรวจ root structure และ references
-2. ทำ `/report` สรุป:
+2. รัน `git diff --check`
+3. รัน checks ตาม project เช่น `bun run scan`, `bun run lint`
+4. ทำ `/report` สรุป:
    - workspace commits ที่ตรวจพบ
    - ข้อมูลที่ restore มา
-   - root docs ที่อัปเดต
+   - project files ที่อัปเดต
    - project skills ที่สร้างหรืออัปเดต
    - GitHub metadata ที่อัปเดต
 
@@ -84,7 +101,7 @@ description: อัปเดต root project โดยเช็ค git log ล�
 
 ### 2. Root Only
 
-- แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`)
+- แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`) และ project config
 - ไม่แก้ไข workspace code หรือ workspace docs
 - ถ้า workspace docs ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
 
@@ -94,12 +111,28 @@ description: อัปเดต root project โดยเช็ค git log ล�
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
 - ถ้าใช้ใน monorepo → เรียก `/ship` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
+### 4. Idempotency
+
+- รัน `update-project` ซ้ำได้โดยไม่เกิด side effects
+- ไม่ลบหรือ overwrite โดยไม่ dry run
+
+### 5. Conditionality
+
+- รัน steps ที่มี conditions ตามที่กำหนด
+- ข้าม steps ที่ไม่จำเป็น
+
+### 6. Validation
+
+- รัน validation หลัง update
+- ไม่อ้างว่า check ผ่าน ถ้า command fail
+
 ## Expected Outcome
 
 - git log ของทุก workspace ถูกตรวจและบันทึก
 - ข้อมูลที่เปลี่ยนแปลงถูก restore มาอัปเดต root docs
 - root `AGENTS.md` และ `README.md` อัปเดต
+- project docs, config, rules, และ tooling sync กัน
 - project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
 - GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
 - root project ผ่าน `/validate`
-- รายงานสรุป workspace commits, root updates, project skills และ GitHub metadata ครบถ้วน
+- รายงานสรุป workspace commits, project files, project skills และ GitHub metadata ครบถ้วน

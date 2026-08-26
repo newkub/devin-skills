@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-github-pr
 description: สร้าง pull request ใหม่จาก branch ปัจจุบัน พร้อม description และ reviewers
 argument-hint: "[title]"
