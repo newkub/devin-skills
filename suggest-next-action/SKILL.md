@@ -4,6 +4,8 @@ description: วิเคราะห์สถานการณ์และแ�
 argument-hint: "[context]"
 related:
   - follow-enter-dot
+  - follow-agents-md
+  - follow-devin-global-subagents
   - report-before
   - report-table
   - ask-me
@@ -33,6 +35,8 @@ related:
 4. ดูสถานะของ dependencies (outdated, vulnerabilities)
 5. ตรวจสอบ test coverage และ test failures
 6. ดู documentation ที่อาจต้องอัปเดท
+7. ตรวจสอบ `AGENTS.md` ว่ามีอยู่และระบุ workflows อะไรบ้าง
+8. ตรวจสอบว่างานถัดไปสามารถแบ่งเป็น subtasks อิสระได้หรือไม่
 
 ### 2. Identify Context
 
@@ -74,6 +78,8 @@ related:
 6. ให้ estimate effort ถ้าเป็นไปได้
 7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-references`
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
+9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
+10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
 
 ### 5. Present Options
 
@@ -147,7 +153,17 @@ related:
 - ระบุ file paths หรือ components ที่เกี่ยวข้อง
 - ให้ examples ถ้าจำเป็น
 
-### 6. Trade-off Awareness
+### 6. Agent And Subagent Discipline
+
+ใช้ `/follow-agents-md` และ subagents อย่างถูกต้อง
+
+- ถ้า `AGENTS.md` มีอยู่ → แนะนำ `/follow-agents-md` ก่อน ไม่แนะนำทำเองโดยตรง
+- ถ้างานต้องใช้หลาย roles/perspectives → แนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents`
+- ห้ามแนะนำ subagent หรือ skill ที่ไม่เกี่ยวข้องกับ task
+- ตรวจสอบ `related` และ `AGENTS.md` ก่อนอ้างอิง workflow หรือ subagent
+- ถ้าไม่แน่ใจว่าควรใช้ subagent ใด → ทำ `/ask-me` ก่อน
+
+### 7. Trade-off Awareness
 
 อธิบาย trade-offs ระหว่าง options
 
@@ -165,3 +181,5 @@ related:
 - Trade-offs ระหว่าง options ชัดเจน
 - การทำงานมีทิศทางชัดเจน
 - ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
+- ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
+- ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
