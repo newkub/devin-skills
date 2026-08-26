@@ -192,6 +192,7 @@ related:
 
 - `search-files-patterns: /search-files-patterns`
 - `search-in-raindrop-io: /search-in-raindrop-io`
+- `use-ast-grep: /use-ast-grep`
 
 #### Watch
 

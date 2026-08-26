@@ -1,192 +1,112 @@
 ---
 name: use-ast-grep
-description: ใช้งาน ast-grep สำหรับ code search, linting และ transformation ด้วย AST-based pattern matching
-argument-hint: "[pattern]"
+description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 ---
 
 ## Goal
 
-ใช้งาน ast-grep เพื่อค้นหา patterns ใน codebase อย่างมีประสิทธิภาพ ด้วย AST-based pattern matching
+ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns ที่แม่นยำกว่า regex
 
 ## Scope
 
-ครอบคลุมการใช้งาน ast-grep สำหรับ code search, linting, และ transformation ด้วย AST-based pattern matching
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-ast-grep`
 
 ## Execute
 
-### 1. Prepare
+### 1. Install Or Use ast-grep
 
-> Goal: Prepare
+> Goal: ติดตั้งหรือเรียกใช้ ast-grep ได้ถูกต้อง
 
-- ทำ `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
-- ติดตั้ง ast-grep CLI: `bun add -g @ast-grep/cli`
-- รัน `ast-grep new` สร้าง project scaffolding (ถ้ายังไม่มี)
-- สร้าง folder `rules/` สำหรับเก็บ rule files
+1. ถ้า project มี `@ast-grep/cli` ใน `devDependencies` ให้ใช้ `bunx ast-grep`
+2. ถ้าไม่มี ใช้ `bunx ast-grep` ได้โดยตรงโดยไม่ต้องติดตั้ง
+3. ถ้าต้องการใช้งานประจำ แนะนำให้เพิ่ม `@ast-grep/cli` ใน `devDependencies`
 
-### 2. Create Rule
+### 2. Configure sgconfig.yml
 
-> Goal: Create Rule
+> Goal: สร้าง `sgconfig.yml` พร้อม fields ที่จำเป็น
 
-- สร้าง rule YAML file ใน `rules/`
-- กำหนด id, language, rule, fix, message
-- ใช้ meta variables ($VAR) สำหรับ capture nodes
-- ใช้ atomic rules: pattern, kind, regex, nthChild, range
-- ทำ `/update-rules` สำหรับเขียน rules ที่ซับซ้อน
+1. สร้างไฟล์ `sgconfig.yml` ที root directory ด้วยเนื้อหาตาม ## Rules ข้อ 2
+2. ถ้า project มีหลาย workspace ให้เพิ่ม `devPaths` สำหรับแต่ละ workspace
+3. ถ้า project มี custom file extensions ให้เพิ่ม `languageGlobs`
+4. ถ้าต้องการ test rules ให้เพิ่ม `testConfigs`
+5. ถ้าต้องการ reusable patterns ให้เพิ่ม `utilDirs`
+6. ตรวจสอบว่า config ถูกต้องด้วย `bunx ast-grep scan --inspect summary`
 
-### 3. Advanced Rules
+### 3. Setup Project Structure
 
-> Goal: Advanced Rules
+> Goal: สร้างโครงสร้าง directories สำหรับ rules และ tests
 
-- ใช้ relational rules: inside, has, precedes, follows
-- ใช้ composite rules: all, any, not, matches
-- เขียน fix template สำหรับ auto-rewrite
-- ใช้ transform สำหรับ complex transformations
+1. สร้าง ast-grep rules ใน `rules/` directory ที project root (แยกจาก `.devin/rules/` ทีเก็บ devin rules แบบ markdown)
+2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที project root
+3. ถ้ามี `utilDirs` ให้สร้าง directory `utils/` ที project root
+4. ใช้ `bunx ast-grep new` สำหรับ scaffold project ใหม่ได้
 
-### 4. Test Rules
+### 4. Add Scan Script
 
-> Goal: Test Rules
+> Goal: เพิ่ม scan script ใน `package.json`
 
-- สร้าง test cases (valid และ invalid)
-- รัน `ast-grep test` เพื่อ verify rules
-- ใช้ snapshot testing สำหรับ complex fixes
-- รัน `ast-grep scan` เพื่อ test กับ codebase
+1. เพิ่ม script ใน `package.json`:
 
-### 5. Usage
+```json
+{
+  "scripts": {
+    "scan": "bunx ast-grep scan"
+  }
+}
+```
 
-> Goal: Usage
+2. ถ้ามี `@ast-grep/cli` ติดตั้งแล้ว ใช้ `ast-grep scan` แทน `bunx ast-grep scan`
 
-- ใช้ `ast-grep run -p 'pattern'` สำหรับ ad-hoc search
-- รัน `ast-grep scan --config sgconfig.yml` สำหรับ routine check
-- ใช้ `--interactive` สำหรับ selective apply
-- ตรวจสอบ output และ tune rules
+### 5. Scan And Run
 
-### 6. Outline Command
-
-> Goal: Outline Command
-
-ใช้ `sg outline` สำหรับ explore code structure และ navigation
-
-- รัน `sg outline <file>` เพื่อดู structure ของ file (default: `--items structure --view digest`)
-- รัน `sg outline <directory>` เพื่อดู exports ของ directory (default: `--items exports --view names`)
-- ใช้ `--items imports` เพื่อดู dependencies
-- ใช้ `--match <regex>` และ `--type <type>` เพื่อ filter symbols
-- ใช้ `--view expanded` เพื่อ expand symbol ดู members ทั้งหมด
-- ใช้ `--json` สำหรับ machine-readable output (pretty/compact/stream)
-- ใช้ `--pub-members` เพื่อดูเฉพาะ public members
-- ใช้ `--outline-rules <file>` เพื่อโหลด custom extraction rules
-- ใช้ `--no-default-outline-rules` เพื่อแทนที่ bundled extractors
-- ใช้ `--color auto|always|ansi|never` ควบคุม ANSI color
-- ใช้ `-c <config>` เพื่อระบุ sgconfig.yml path
-- ดู `/use-ast-grep-outline` สำหรับ detailed usage
+> Goal: รัน scan และค้นหาด้วย ast-grep ได้ถูกต้อง
+1. รัน `bun run scan` สำหรับ scan ทั้ง project
+2. รัน `bunx ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
+3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
+4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
+5. ใช้ `--interactive` สำหรับ interactive edit session
+6. ถ้าต้องการเขียน rules ให้ทำ `/update-rules`
 
 ## Rules
 
-### 1. Rule Structure
+### 1. CLI Reference
 
-โครงสร้างของ ast-grep rule:
+- `bunx ast-grep new` สำหรับ scaffold project ใหม่
+- `bunx ast-grep new rule` สำหรับสร้าง rule ใหม่
+- `bunx ast-grep scan` สำหรับ scan ทั้ง project ด้วย rules ที่กำหนด
+- `bunx ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
+- `bunx ast-grep test` สำหรับ test rules
+- `--config <path>` สำหรับระบุ config path
+- `--json pretty` สำหรับ structured JSON output
+- `--filter 'REGEX'` สำหรับ filter rules by id
+- `--interactive` สำหรับ interactive edit session
+- `--update-all` สำหรับ apply all rewrites
+- `--format github` สำหรับ GitHub Action format output
+- `--inspect summary` สำหรับสรุปผล scan
 
-- Rule เป็น YAML file ที่ define pattern สำหรับ match code
-- ใช้ id, language, rule, fix, message fields
-- Support multiple languages: JavaScript, TypeScript, Python, Rust, Go, Java, etc.
-- เก็บ rules ใน folder `rules/` เท่านั้น
+### 2. Separation From Devin Rules
 
-### 2. Pattern Matching
+- `rules/` เก็บ `.yml` ast-grep rules ที project root
+- `.devin/rules/` เก็บ `.md` devin rules สำหรับ AI agent
+- ไม่ปนกันเพราะต่าง purpose ต่าง format
+- rule files ใช้ `kebab-case` filename
+- ไฟล์ที่ไม่ใช่ rule ใน `rules/` จะถูก ignore
 
-การ match patterns ด้วย AST:
+### 3. Integration With Biome
 
-- ใช้ `$META_VAR` สำหรับ capture nodes (e.g., `$FUNC`, `$NAME`)
-- Pattern based on code syntax เช่น `console.log($ARG)`
-- Support strictness level: smart, ast, cst, relaxed
-- ใช้ kind สำหรับ match specific AST node types
+- ใช้ `ast-grep` สำหรับ structural patterns ที่ `Biome` ไม่สามารถ express ได้
+- `ast-grep` complements `Biome` ไม่ใช่ replace
+- ใช้ `ast-grep` สำหรับ custom lint rules เฉพาะ project
+- ใช้ `Biome` สำหรับ standard lint และ format
 
-### 3. Rule Categories
+### 4. Rule Writing
 
-สามประเภทหลักของ ast-grep rules:
-
-Atomic Rules:
-- pattern, kind, regex, nthChild, range
-
-Relational Rules:
-- inside, has, precedes, follows
-
-Composite Rules:
-- all, any, not, matches
-
-### 4. Meta Variables
-
-การใช้ meta variables:
-
-- ใช้ `$NAME` สำหรับ capture AST nodes
-- Pattern ต้องเป็น valid code syntax
-- Meta variables ใช้ใน fix template: `fix: console.warn($ARG)`
-
-### 5. Rule Configuration
-
-การตั้งค่า rule:
-
-- id: unique identifier สำหรับ rule
-- language: target programming language
-- severity: error, warning, info, hint
-- message: description ที่แสดงเมื่อ match
-- fix: automatic rewrite pattern
-- files/ignores: glob patterns สำหรับ include/exclude
-
-### 6. Transform and Fix
-
-การใช้ transform และ fix:
-
-- ใช้ fix สำหรับ simple string replacement
-- ใช้ transform สำหรับ complex transformations
-- Support rewriters สำหรับ reusable transformation logic
-
-### 7. Testing
-
-การทดสอบ rules:
-
-- ทุก rule ต้องมี valid และ invalid test cases
-- ตรวจสอบว่า fix ไม่ทำให้ code เสีย
-- ใช้ snapshot testing สำหรับ complex rewrites
-
-### 8. Best Practices
-
-แนวทางการเขียน rules:
-
-- Atomic First: เริ่มจาก atomic rules (pattern, kind) ก่อน
-- Compose Rules: ใช้ all, any, not สำหรับ combine multiple conditions
-- Test Driven: เขียน test cases ก่อนเขียน rules
-- Incremental: เริ่มจาก simple patterns แล้วค่อยเพิ่มความซับซ้อน
-- Document: เขียน message ที่ชัดเจนสำหรับแต่ละ rule
-
-### 9. Outline Usage
-
-การใช้ `sg outline` สำหรับ code navigation:
-
-Use Cases:
-- ดู structure ของ file ก่อนอ่าน implementation
-- ดู exports ของ directory เพื่อ understand module surface
-- ตรวจสอบ dependencies ด้วย `--items imports`
-- Expand symbol ด้วย `--view expanded` เพื่อดู members โดยไม่ต้องอ่านทั้ง file
-- Filter symbols ด้วย `--match` และ `--type` เพื่อ narrow down search
-- ใช้ `--pub-members` เพื่อดูเฉพาะ public members
-- ใช้ `--json` สำหรับ machine-readable output (pretty/compact/stream)
-- ใช้ `--outline-rules` สำหรับ custom extraction rules
-
-Design Principles:
-- Parse on demand: ไม่ build index แต่ parse files เมื่อต้องการ
-- Stay local: ไม่ analyze cross-file relationships
-- Declarative extraction: ใช้ rules สำหรับ define extraction logic
-- Fast and deterministic: ไม่มี global knowledge แต่เร็วและ predictable
-
-Output Format:
-- Outline entry ประกอบด้วย: name, symbol type, source range, signature, AST kind, flags
-- Top-level entries เรียกว่า items
-- Direct children เรียกว่า members
-- Support JSON output สำหรับ machine-readable consumption
-- Exit codes: 0 = completed, 2 = fatal error
+- การเขียน rules อยู่ใน `/update-rules` ไม่ใช่ workflow นี้
 
 ## Expected Outcome
 
-- ast-grep rules ที่ใช้งานได้จริง
-- Code search ที่มีประสิทธิภาพด้วย AST-based matching
-- Custom lint rules สำหรับ project
-- Automatic code transformation และ refactoring
+- `sgconfig.yml` ตั้งค่าเรียบร้อยครบทุก fields ที่จำเป็น
+- Project structure สร้างเรียบร้อย (`rules/`, `rule-tests/`, `utils/`)
+- Scan script เพิ่มใน `package.json` และทำงานได้
+- `ast-grep scan` ทำงานได้ถูกต้องและ report ผลลัพธ์
+- ใช้ร่วมกับ `Biome` ได้โดยไม่ขัดแย้ง
