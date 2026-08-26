@@ -1,6 +1,6 @@
 ---
 name: update-test
-description: อัปเดต test suite และ spec/SPEC.md ให้ครอบคลุม มีคุณภาพ และตรง conventions
+description: เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
 related:
   - review-writing
   - run-test-coverage
@@ -82,7 +82,7 @@ Conditional categories (เมื่อมี logic ที่เกี่ยว�
 
 6. Permission/RBAC: user ไม่มี permission -> deny
 7. IDOR/Ownership: user เข้าถึง resource ของ user อื่น -> deny
-8. Sanitization: user input ที่มี่ malicious content -> sanitized output
+8. Sanitization: user input ที่มี malicious content -> sanitized output
 9. userId injection: ตรวจสอบว่า userId มาจาก auth ไม่ใช่จาก input (security)
 10. Empty results: query return empty array/undefined -> handle ถูกต้อง
 11. Boundary values: ค่า min/max ของ numeric input
@@ -131,7 +131,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 - ตั้งชื่อ test: `should [expected behavior] when [condition]`
 - Follow `AAA` pattern (`Arrange`, `Act`, `Assert`)
-- Test แค่สิ่งเดียว�่อ test case (`Single Responsibility`)
+- Test แค่สิ่งเดียวต่อ test case (`Single Responsibility`)
 - ไม่แชร์ state ระหว่าง tests (`isolated`)
 - Test ทั้ง `happy path`, `edge cases`, `error cases`, `boundary conditions`
 - ใช้ `parameterized tests` สำหรับกรณีที่ test ซ้ำๆ กันหลายค่า
@@ -148,7 +148,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Test utilities: ใน `tests/utils/` (helpers, mocks, setup, assertions)
 - Test data: ใน `tests/fixtures/` (data, factories, snapshots)
 - Follow existing pattern: ถ้า project มี colocated tests อยู่แล้ว ให้ตาม pattern นั้น
-- Don’t mix: อย่ามีทั้ง colocated และ separate สำหรับ unit tests ในหลายระดับ
+- Don't mix: อย่ามีทั้ง colocated และ separate สำหรับ unit tests ในหลายระดับ
 
 ### 4. Naming And Data
 
@@ -214,6 +214,6 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Tests ครอบคลุมทุก category และ test type (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility)
 - Tests รันผ่านทั้งหมด ไม่มี false positive
 - Coverage 100% ผ่าน `/update-review-codebase-cli-and-run` และ `/run-test-coverage`
-- Test code มี่คุณภาพ (DRY, readable, typed helpers, no type casting)
+- Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
 - Test data ใช้ factories/fixtures/builders ตาม strategy
 - `spec/SPEC.md` หรือเอกสาร test plan ถูกอัพเดทด้วย test cases ที่เขียนแล้ว
