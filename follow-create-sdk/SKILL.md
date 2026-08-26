@@ -6,16 +6,23 @@ related:
   - follow-create-bun-cli
   - follow-create-cli
   - follow-create-rust-cli
+  - follow-create-rust-crate
   - follow-create-website
   - follow-create-claude-plugin
   - follow-create-codex-plugin
   - follow-create-telegram-bot
   - follow-create-discord-bot
+  - follow-create-line-bot
+  - follow-create-obsidian-plugin
+  - follow-create-vscode-extensions
+  - follow-create-zed-extensions
   - follow-create-mobile-ios
   - follow-create-mobile-android
   - follow-create-mobile-ios-android
   - follow-create-browser-extensions
   - follow-create-raycast-extensions
+  - follow-create-elysia-plugin
+  - follow-create-nitro-plugin
   - follow-create-vite-plugins
   - follow-create-vitest-plugins
   - follow-create-tauri-plugins
@@ -23,7 +30,8 @@ related:
   - follow-create-biome-plugins
   - follow-create-oxlint-plugins
   - follow-create-eslint-plugins
-  - follow-create-rolldown-lib
+  - follow-create-rolldown-plugins
+  - follow-create-github-action
   - ask-me
   - search-skills
   - search-files-patterns

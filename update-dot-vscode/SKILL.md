@@ -2,7 +2,7 @@
 name: update-dot-vscode
 description: อัปเดต .vscode สำหรับ workspace settings, extensions, tasks, launch, snippets, editor associations
 related:
-  - follow-tool-vscode-extensions
+  - follow-create-vscode-extensions
   - review-delivery
   - analyze-project
   - check-monorepo
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-tool-vscode-extensions` (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
+ใช้สำหรับสร้าง ปรับปรุง และตรวจสอบ `.vscode` directory ทั้งหมด ไม่ทับซ้อนกับ `/follow-create-vscode-extensions` (สร้าง VSCode extension) และ `/review-delivery` (config consistency)
 
 ### Standard Project
 
@@ -170,7 +170,7 @@ related:
 
 ### 1. No Overlap With Specialized Workflows
 
-- ใช้ `/follow-tool-vscode-extensions` สำหรับสร้าง VSCode extension (ไม่ใช่ config)
+- ใช้ `/follow-create-vscode-extensions` สำหรับสร้าง VSCode extension (ไม่ใช่ config)
 - ใช้ `/review-delivery` สำหรับ config consistency ทั่วไป
 - `update-dot-vscode` จัดการไฟล์ใน `.vscode/` directory เท่านั้น
 
