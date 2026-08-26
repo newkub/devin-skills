@@ -123,6 +123,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `taxonomy: /taxonomy`
 - `analyze-image: /analyze-image`
 - `analyze-video: /analyze-video`
+- `alternative: /alternative`
+- `type-of: /type-of`
 
 #### Request
 
