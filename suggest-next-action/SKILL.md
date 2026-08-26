@@ -5,6 +5,7 @@ argument-hint: "[context]"
 related:
   - follow-enter-dot
   - report-before
+  - report-table
   - ask-me
   - ship
   - continue
@@ -78,14 +79,23 @@ related:
 
 > Goal: Present Options
 
-นำเสนอ options ให้ผู้ใช้ตัดสินใจ
+เตรียม options สำหรับนำเสนอ
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบ actions เป็นตาราง: #, Action, Priority, Impact, Effort, Workflow, Reason
-2. แสดง actions ที่แนะนำพร้อม priority ในรูปแบบตาราง
-3. ให้ผู้ใช้เลือก action ที่ต้องการ
-4. อธิบาย trade-offs ระหว่าง options เป็นตาราง: Option, Pros, Cons, Risk
+1. เตรียมข้อมูล actions สำหรับ `/report-table`: #, Action, Priority, Impact, Effort, Workflow, Reason
+2. จัดลำดับ actions ที่แนะนำพร้อม priority
+3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context
+4. เตรียม trade-offs ระหว่าง options สำหรับ `/report-table`: Option, Pros, Cons, Risk
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
-6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → ทำ `/ask-me` พร้อม recommend action ที่เหมาะสมที่สุด
+6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report-table`
+
+### 6. Report
+
+> Goal: นำเสนอผลลัพธ์ให้ user เห็นภาพรวม
+
+1. ทำ `/report-table` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
+2. สรุปคำแนะนำหลัก 1-2 บรรทัดก่อนตาราง
+3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ
+4. ถ้าต้องการ user confirmation ก่อนดำเนินการ → ทำ `/ask-me` หลังตาราง
 
 ## Rules
 
@@ -154,3 +164,4 @@ related:
 - Workflow ที่เหมาะสมถูกแนะนำ
 - Trade-offs ระหว่าง options ชัดเจน
 - การทำงานมีทิศทางชัดเจน
+- ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
