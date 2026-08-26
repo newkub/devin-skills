@@ -1,6 +1,9 @@
 ---
 name: follow-tool-knip
 description: Setup and configure Knip for detecting unused files, dependencies, and exports in monorepos
+related:
+  - follow-math-set-theory
+  - follow-math-information-theory
 ---
 
 ## Goal

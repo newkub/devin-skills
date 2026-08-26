@@ -1,6 +1,9 @@
 ---
 name: follow-programming-paradigm
 description: เลือกใช้ programming paradigm ทีเหมาะสมกับปัญหา
+related:
+  - follow-math-category-theory
+  - follow-math-propositional-logic
 ---
 
 ## Goal

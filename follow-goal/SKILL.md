@@ -1,6 +1,10 @@
 ---
 name: follow-goal
 description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
+related:
+  - follow-math-optimization
+  - follow-math-probability
+  - follow-math-game-theory
 ---
 
 ## Goal

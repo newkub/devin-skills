@@ -1,6 +1,9 @@
 ---
 name: follow-deterministic
 description: พัฒนาโปรเจกต์ด้วย deterministic programming พร้อม predictable outputs, no randomness
+related:
+  - follow-math-propositional-logic
+  - follow-math-proofs
 ---
 
 ## Goal

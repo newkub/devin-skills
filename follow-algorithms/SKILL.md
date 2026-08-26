@@ -1,6 +1,12 @@
 ---
 name: follow-algorithms
 description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
+related:
+  - follow-math-combinatorics
+  - follow-math-graph-theory
+  - follow-math-algorithm-complexity
+  - follow-math-discrete-math
+  - follow-math-proofs
 ---
 
 ## Goal

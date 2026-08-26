@@ -2,6 +2,8 @@
 name: follow-tool-open-github-secrets
 description: เปิดหน้า GitHub Secrets สำหรับตั้งค่า
 argument-hint: "[repo]"
+related:
+  - follow-math-cryptography
 ---
 
 ## Goal

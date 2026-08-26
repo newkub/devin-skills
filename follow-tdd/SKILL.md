@@ -1,6 +1,9 @@
 ---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
+related:
+  - follow-math-proofs
+  - follow-math-propositional-logic
 ---
 
 ## Goal

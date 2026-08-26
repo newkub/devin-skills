@@ -1,6 +1,10 @@
 ---
 name: follow-lib-zod
 description: ตั้งค่าและใช้งาน Zod สำหรับ TypeScript-first schema validation ด้วย static type inference
+related:
+  - follow-math-predicate-logic
+  - follow-math-propositional-logic
+  - follow-math-set-theory
 ---
 
 ## Goal

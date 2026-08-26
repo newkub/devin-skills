@@ -77,9 +77,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
 - `follow-devin-skills: /follow-devin-skills`
-- `follow-math-propositional-logic: /follow-math-propositional-logic`
-- `follow-math-predicate-logic: /follow-math-predicate-logic`
-- `follow-math-set-theory: /follow-math-set-theory`
 - `follow-principles: /follow-principles`
 - `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
@@ -114,6 +111,28 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `implement-todo-md: /implement-todo-md`
 - `implement-github-issue: /implement-github-issue`
 - `implement-github-task: /implement-github-task`
+
+#### Math
+
+- `follow-math-concepts: /follow-math-concepts`
+- `follow-math-propositional-logic: /follow-math-propositional-logic`
+- `follow-math-predicate-logic: /follow-math-predicate-logic`
+- `follow-math-set-theory: /follow-math-set-theory`
+- `follow-math-boolean-algebra: /follow-math-boolean-algebra`
+- `follow-math-combinatorics: /follow-math-combinatorics`
+- `follow-math-probability: /follow-math-probability`
+- `follow-math-statistics: /follow-math-statistics`
+- `follow-math-graph-theory: /follow-math-graph-theory`
+- `follow-math-linear-algebra: /follow-math-linear-algebra`
+- `follow-math-discrete-math: /follow-math-discrete-math`
+- `follow-math-algorithm-complexity: /follow-math-algorithm-complexity`
+- `follow-math-numerical-methods: /follow-math-numerical-methods`
+- `follow-math-optimization: /follow-math-optimization`
+- `follow-math-information-theory: /follow-math-information-theory`
+- `follow-math-category-theory: /follow-math-category-theory`
+- `follow-math-cryptography: /follow-math-cryptography`
+- `follow-math-proofs: /follow-math-proofs`
+- `follow-math-game-theory: /follow-math-game-theory`
 
 #### Analyze
 

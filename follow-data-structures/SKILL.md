@@ -1,6 +1,10 @@
 ---
 name: follow-data-structures
 description: เลือกและใช้งาน data structures ตามลักษณะข้อมูลและ operations
+related:
+  - follow-math-graph-theory
+  - follow-math-set-theory
+  - follow-math-linear-algebra
 ---
 
 ## Goal

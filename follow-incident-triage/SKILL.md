@@ -1,6 +1,9 @@
 ---
 name: follow-incident-triage
 description: จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสม
+related:
+  - follow-math-probability
+  - follow-math-statistics
 ---
 
 ## Goal

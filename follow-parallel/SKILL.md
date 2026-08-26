@@ -1,6 +1,10 @@
 ---
 name: follow-parallel
 description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
+related:
+  - follow-math-graph-theory
+  - follow-math-optimization
+  - follow-math-game-theory
 ---
 
 ## Goal

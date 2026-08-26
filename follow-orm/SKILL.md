@@ -1,6 +1,9 @@
 ---
 name: follow-orm
 description: กำหนด ORM และ data access patterns ด้วย repository pattern และ type-safe mappings
+related:
+  - follow-math-predicate-logic
+  - follow-math-set-theory
 ---
 
 ## Goal

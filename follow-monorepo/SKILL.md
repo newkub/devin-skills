@@ -1,6 +1,8 @@
 ---
 name: follow-monorepo
 description: สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications
+related:
+  - follow-math-graph-theory
 ---
 
 ## Goal

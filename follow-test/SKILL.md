@@ -1,6 +1,13 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
+related:
+  - follow-math-combinatorics
+  - follow-math-probability
+  - follow-math-statistics
+  - follow-math-proofs
+  - follow-math-numerical-methods
+  - follow-math-algorithm-complexity
 ---
 
 ## Goal

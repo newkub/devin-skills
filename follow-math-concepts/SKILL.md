@@ -6,6 +6,21 @@ related:
   - follow-math-propositional-logic
   - follow-math-predicate-logic
   - follow-math-set-theory
+  - follow-math-boolean-algebra
+  - follow-math-combinatorics
+  - follow-math-probability
+  - follow-math-statistics
+  - follow-math-graph-theory
+  - follow-math-linear-algebra
+  - follow-math-discrete-math
+  - follow-math-algorithm-complexity
+  - follow-math-numerical-methods
+  - follow-math-optimization
+  - follow-math-information-theory
+  - follow-math-category-theory
+  - follow-math-cryptography
+  - follow-math-proofs
+  - follow-math-game-theory
 ---
 
 ## Goal

@@ -1,6 +1,12 @@
 ---
 name: follow-debugging
 description: หลักการ debug อย่างเป็นระบบ ตั้งแต่ reproduce ถึง fix และ prevent
+related:
+  - follow-math-propositional-logic
+  - follow-math-boolean-algebra
+  - follow-math-probability
+  - follow-math-statistics
+  - follow-math-numerical-methods
 ---
 
 ## Goal

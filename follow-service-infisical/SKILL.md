@@ -1,6 +1,8 @@
 ---
 name: follow-service-infisical
 description: ใช้งาน Infisical สำหรับจัดการ secrets และ environment variables อย่างปลอดภัย
+related:
+  - follow-math-cryptography
 ---
 
 ## Goal

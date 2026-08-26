@@ -1,6 +1,9 @@
 ---
 name: follow-design-pattern
 description: ให้ผู้ใช้เข้าใจและสามารถใช้ design patterns ได้อย่างมีประสิทธิภาพ
+related:
+  - follow-math-set-theory
+  - follow-math-category-theory
 ---
 
 ## Goal
