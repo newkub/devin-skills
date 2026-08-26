@@ -15,3 +15,5 @@ Thumbs.db
 
 # Temp / scratch
 temp/
+_tmp_*.py
+
