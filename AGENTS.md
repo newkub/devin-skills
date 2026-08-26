@@ -259,6 +259,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`
+- `follow-create-sdk: /follow-create-sdk`
 - `follow-create-website: /follow-create-website`
 - `follow-create-raycast-extensions: /follow-create-raycast-extensions`
 - `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
