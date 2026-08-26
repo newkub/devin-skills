@@ -7,6 +7,7 @@ related:
   - follow-tool-hk
   - list-git-commit
   - refactor-commit
+  - ship
 ---
 
 ## Goal
@@ -23,12 +24,16 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 > Goal: Navigate To Global Devin Skills
 
+เปลี่ยน directory ไปยัง global devin skills
+
 1. เปลี่ยน directory ไปยัง `C:\Users\Veerapong\AppData\Roaming\devin\skills`
 2. ตรวจสอบว่าอยู่ใน directory ที่ถูกต้องด้วย `pwd`
 
 ### 2. Check Git Status
 
 > Goal: Check Git Status
+
+ตรวจสอบสถานะของ repository
 
 1. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการแก้ไขทั้งหมด
 2. ตรวจสอบว่าอยู่ใน repository ที่ถูกต้อง
@@ -37,12 +42,16 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 > Goal: Stage All Changes
 
+Stage ทุกไฟล์ที่มีการเปลี่ยนแปลง
+
 1. รัน `git add .` เพื่อ stage ทุกไฟล์
 2. ตรวจสอบด้วย `git diff --cached` ว่าไฟล์ที่ stage ถูกต้อง
 
 ### 4. Determine Commit Type
 
 > Goal: Determine Commit Type
+
+เลือก conventional commit type ที่เหมาะสม
 
 1. ดู Rules ส่วน Commit Types
 2. เลือก type ตามการเปลี่ยนแปลง:
@@ -56,6 +65,8 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 > Goal: Write Commit Message
 
+เขียน commit message ตาม conventional commits format
+
 1. ดู Rules ส่วน Commit Message Format และ Body
 2. ใช้รูปแบบ `<type>: <subject>`
 3. subject สั้นกระชับไม่เกิน 72 ตัวอักษร
@@ -66,21 +77,17 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 > Goal: Execute Commit
 
+ดำเนินการ commit
+
 1. รัน `git commit -m "<message>"` หรือ `git commit`
 2. ตรวจสอบผลลัพธ์จาก git commit
 3. ถ้ามี error: แก้ไขแล้วลองอีกครั้ง
 
-### 7. Refactor Commits (Optional)
-
-> Goal: ปรับปรุง commit history ถ้าจำเป็น
-
-1. ถ้า commit ล่าสุดยังไม่ push หรือต้อง break down/squash → ใช้ `git commit --amend` หรือ `/refactor-commit`
-2. ถ้า history ยังไม่สะอาด → ทำ `/refactor-commit` เพื่อ rebase, edit, หรือ squash
-3. ถ้าไม่ต้องการ refactor → ข้ามไป step ถัดไป
-
-### 8. Verify Commits
+### 7. Verify Commits
 
 > Goal: Verify Commits
+
+ตรวจสอบความถูกต้องของ commits
 
 1. รัน `git log --oneline -5` เพื่อดู commits ล่าสุด
 2. ตรวจสอบว่า commit messages สอดคล้องกับ conventional commits
