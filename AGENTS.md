@@ -83,7 +83,7 @@ related:
 - `ship: /ship`
 - `report: /report`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
-- `edit-this-repo: /edit-this-repo`
+- `at-this-repo: /at-this-repo`
 - `report-usage-md: /report-usage-md`
 - `resolve-pr: /resolve-pr`
 
