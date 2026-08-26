@@ -89,4 +89,4 @@ description: รายการ tasks ทั้งหมดใน project จา
 - ตาราง tasks ทั้งหมดใน project พร้อม status
 - รายการแยกตาม source และ priority
 - ไม่มี missing tasks จาก sources ทั่วไป
-- Tasks ที่ duplicate หรือไม่ชัดถูกระบุ
+- Tasks ที่ duplicate หรือไม่ชัดถูกระบุ ลบออก
