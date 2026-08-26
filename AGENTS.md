@@ -197,6 +197,7 @@ related:
 
 - `search-files-patterns: /search-files-patterns`
 - `search-in-raindrop-io: /search-in-raindrop-io`
+- `list-raindrop-io: /list-raindrop-io`
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
