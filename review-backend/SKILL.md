@@ -30,8 +30,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
 2. ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points ที่ใช้
-3. ทำ `/update-review-codebase-cli-and-run` — `/update-review-codebase-cli-and-run` เรียก `/update-rules` ภายในเพื่ออัปเดต ast-grep rules
-4. ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+3. ทำ `/update-review-codebase-cli-and-run` — `/update-review-codebase-cli-and-run` เรียก `/update-project-rules` ภายในเพื่ออัปเดต ast-grep rules
+4. ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 5. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 6. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
@@ -103,8 +103,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ### 6. Update Before Run
 
-- ทำ `/update-review-codebase-cli-and-run` ก่อนรัน sub-reviews เสมอ — `/update-review-codebase-cli-and-run` เรียก `/update-rules` ภายใน
-- ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+- ทำ `/update-review-codebase-cli-and-run` ก่อนรัน sub-reviews เสมอ — `/update-review-codebase-cli-and-run` เรียก `/update-project-rules` ภายใน
+- ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 
 ### 7. Formatting
 

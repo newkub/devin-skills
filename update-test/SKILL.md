@@ -56,7 +56,7 @@ description: อัปเดต test suite และ spec/SPEC.md ให้ค�
 
 1. อ่าน test files ทั้งหมดใน `tests/`
 2. สร้าง `spec/overview.md` ระบุ framework, coverage threshold และ structure
-3. แยก spec เป้นไฟล์ย่อยๆ ตาม modules/features
+3. แยก spec เป็นไฟล์ย่อยๆ ตาม modules/features
 4. บันทึก test cases ทั้งหมดแบบกระชับ พร้อม status tracking
 5. แต่ละ spec file ไม่เกิน 250 บรรทัด — ถ้าเกินให้ refactor แยกไฟล์
 

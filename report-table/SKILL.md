@@ -46,7 +46,7 @@ description: จัดรูปแบบตาราง, bullet, numbered list, 
 
 ### 4. Format As Bullet Or Numbered List
 
-> Goal: สรุปเนื้อหาเป้น bullet หรือ numbered list
+> Goal: สรุปเนื้อหาเป็น bullet หรือ numbered list
 
 1. อ่านเนื้อหาต้นฉบับ
 2. ระบุ main points และ key takeaways

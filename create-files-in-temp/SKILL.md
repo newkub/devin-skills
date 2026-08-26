@@ -28,7 +28,7 @@ description: สร้างไฟล์หรือ directory ชั่วค�
 
 1. สร้าง directory ด้วย `New-Item -ItemType Directory -Path <path>` หรือ `mkdir -p <path>`
 2. สร้างไฟล์ด้วย `write` หรือ `New-Item -ItemType File -Path <path>`
-3. ใช้ชื่อไฟล์ที่สื่อความหมาย พร้อม prefix หรือ suffix ที่บ่งบอกว่าเป้น temp
+3. ใช้ชื่อไฟล์ที่สื่อความหมาย พร้อม prefix หรือ suffix ที่บ่งบอกว่าเป็น temp
 4. ถ้าต้องการหลายไฟล์ → สร้างใน temp directory เดียวกัน
 
 ### 3. Use Temp Files

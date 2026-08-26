@@ -21,7 +21,7 @@ argument-hint: "[plan-file]"
 
 > Goal: ระบุไฟล์แผน
 
-1. ถ้ามี argument ให้ใช้เป้น plan path หรือ title
+1. ถ้ามี argument ให้ใช้เป็น plan path หรือ title
 2. ถ้าไม่มี ให้ list ไฟล์ใน `.devin/plan/` แล้วถาม user เลือก
 3. อ่านไฟล์ด้วย `read`
 
@@ -39,7 +39,7 @@ argument-hint: "[plan-file]"
 
 1. ทำตาม task ทีละข้อ เริ่มจาก critical path
 2. ถ้างานซับซ้อน → ทำ `/deep-plan` หรือ `/report-plan` ซ้ำก่อนลงมือ
-3. อัปเดต status ในไฟล์แผนเป้น `in-progress` หรือ `completed` ตามความเหมาะสม
+3. อัปเดต status ในไฟล์แผนเป็น `in-progress` หรือ `completed` ตามความเหมาะสม
 4. ถ้าพบปัญหา → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 
 ### 4. Verify And Delete Plan

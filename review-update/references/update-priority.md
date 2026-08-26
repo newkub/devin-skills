@@ -23,7 +23,7 @@ Priority = drift severity × update urgency × dependency order
 
 1. `update-dependencies-latest` — dependency update ก่อน เพราะกระทบ rules, docs, config
 2. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
-3. `update-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
+3. `update-project-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
 4. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
 5. `update-readme` — README หลัง architecture ชัด
 6. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
@@ -48,7 +48,7 @@ Priority = drift severity × update urgency × dependency order
 | Priority | Update Skill | Drift Area | Effort | Impact |
 |----------|-------------|-----------|--------|--------|
 | 1 | `update-dependencies-latest` | Security vulnerability | medium | critical |
-| 2 | `update-rules` | Rules missing coverage | high | high |
+| 2 | `update-project-rules` | Rules missing coverage | high | high |
 
 ## Update Health Score
 

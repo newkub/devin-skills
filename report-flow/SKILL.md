@@ -81,7 +81,7 @@ description: สรุปขั้นตอน workflow หรือกระบ
 
 ## Expected Outcome
 
-- กระบวนการถูกสรุปเป้น steps ต่อเนื่อง
+- กระบวนการถูกสรุปเป็น steps ต่อเนื่อง
 - แต่ละ step มี action, input, output ชัดเจน
 - ระบุ branches, loops, decision points
 - report สวยงาม อ่านง่าย พร้อม next action

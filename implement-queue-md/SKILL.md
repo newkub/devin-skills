@@ -49,7 +49,7 @@ argument-hint: "[queue-file]"
 
 1. ทำ `/run-verify` เพื่อตรวจสอบคุณภาพ
 2. ถ้าไม่ผ่าน → แก้ไขและรันซ้ำ (max 3)
-3. อัปเดท `QUEUE.md` status ของ request เป้น `completed`
+3. อัปเดท `QUEUE.md` status ของ request เป็น `completed`
 4. ถ้าต้องการลบ completed ออกจาก queue → ใช้ `/report` หรือ `/suggest-next-action`
 
 ## Rules

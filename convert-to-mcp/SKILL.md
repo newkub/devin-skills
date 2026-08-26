@@ -1,11 +1,11 @@
 ---
 name: convert-to-mcp
-description: แปลง API, script, หรือ tool เป้น MCP server configuration
+description: แปลง API, script, หรือ tool เป็น MCP server configuration
 ---
 
 ## Goal
 
-แปลง API, script, CLI tool, หรือ service เป้น MCP server configuration พร้อม tools และ metadata
+แปลง API, script, CLI tool, หรือ service เป็น MCP server configuration พร้อม tools และ metadata
 
 ## Scope
 
@@ -24,9 +24,9 @@ description: แปลง API, script, หรือ tool เป้น MCP server
 
 ### 2. Map To MCP Tools
 
-> Goal: แปลง operations เป้น MCP tools
+> Goal: แปลง operations เป็น MCP tools
 
-1. แต่ละ operation เป้น `tool` ใน MCP
+1. แต่ละ operation เป็น `tool` ใน MCP
 2. กำหนด `name`, `description`, `inputSchema`
 3. `inputSchema` ใช้ JSON Schema สำหรับ parameters
 4. ระบุ `output` format
@@ -35,7 +35,7 @@ description: แปลง API, script, หรือ tool เป้น MCP server
 
 > Goal: สร้าง mcp_config หรือ server package
 
-1. ใช้ `edit-devin-global-mcp` ถ้าเป้น global MCP
+1. ใช้ `edit-devin-global-mcp` ถ้าเป็น global MCP
 2. สร้าง `mcp_config.json` หรือ `mcp-server/` ใน project
 3. ระบุ `command`, `args`, `env` สำหรับ server
 4. ระบุ `tools` array พร้อม schemas
@@ -53,7 +53,7 @@ description: แปลง API, script, หรือ tool เป้น MCP server
 
 > Goal: ส่งมอบ MCP configuration
 
-1. ใช้ `convert-to-json` ถ้า config ไม่เป้น JSON
+1. ใช้ `convert-to-json` ถ้า config ไม่เป็น JSON
 2. บันทึกลง `mcp_config.json` หรือ `mcp_config.json`
 3. ใช้ `/report-table` แสดง tools, inputs, outputs
 

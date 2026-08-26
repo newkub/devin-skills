@@ -33,8 +33,8 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: ครอบคลุมทุก stability dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ stability, error handling, debuggability patterns
-2. ทำ `/update-review-codebase-cli-and-run` — เรียก `/update-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
-3. ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-rules` → ทำ `/update-rules` แยก
+2. ทำ `/update-review-codebase-cli-and-run` — เรียก `/update-project-rules` ภายในตัวเองเพื่ออัปเดต ast-grep rules
+3. ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 

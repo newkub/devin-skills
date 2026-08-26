@@ -32,7 +32,7 @@ description: สแกนและรายการ git projects ทั้ง�
    ```
    หรือถ้าลึกกว่า depth 4 ให้เพิ่ม depth หรือรันเฉพาะ known roots
 2. ถ้า scan ช้า → ใช้ `/list-project-in-drive-d` หรือรันแยกตาม drive
-3. บันทึก parent directory ของแต่ละ `.git` เป้น project path
+3. บันทึก parent directory ของแต่ละ `.git` เป็น project path
 4. ตัดผลซ้ำและ hidden/system paths ทีไม่ใช่ project
 
 ### 3. Collect Per-Project Info

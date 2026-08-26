@@ -125,7 +125,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 - Phase 5: `/review-quality`, `biome/gritql` สำหรับ quality
 - Phase 6: `/use-scripts` สำหรับ structured data generation
 - Phase 7: AI สำหรับ summarization
-- ทำ `/update-rules` สำหรับสร้าง ast-grep rules
+- ทำ `/update-project-rules` สำหรับสร้าง ast-grep rules
 
 ### 3. AI Token Minimization
 

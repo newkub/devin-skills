@@ -55,7 +55,7 @@ description: อัปเดต root project โดยเช็ค git log แ�
    - `/update-usage-md` (ถ้ามี `USAGE.md` แบบ manual)
    - `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
-   - `/update-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+   - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-test` เพื่ออัปเดต test setup
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-reference` เพื่อ sync references

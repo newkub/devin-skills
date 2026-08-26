@@ -126,7 +126,7 @@ related:
 - `update-gitignore: /update-gitignore`
 - `update-dot-devin: /update-dot-devin`
 - `update-contributing-md: /update-contributing-md`
-- `update-rules: /update-rules`
+- `update-project-rules: /update-project-rules`
 - `update-test: /update-test`
 - `update-reference: /update-reference`
 - `update-usage: /update-usage`

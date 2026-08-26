@@ -65,7 +65,7 @@ argument-hint: "[task]"
 ### 3. Status
 
 - ค่าเริ่มต้น `pending`
-- อัปเดทเป้น `in-progress` หรือ `completed` โดย `/implement-queue-md`
+- อัปเดทเป็น `in-progress` หรือ `completed` โดย `/implement-queue-md`
 
 ### 4. No Execution
 

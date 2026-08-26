@@ -47,7 +47,7 @@ argument-hint: "[title]"
 
 > Goal: ลบแผนเมื่องานเสร็จ
 
-1. ถ้าผู้ใช้หรืองานอื่นแจ้งว่าทำตามแผนเสร็จแล้ว → อัปเดต `status` เป้น `completed`
+1. ถ้าผู้ใช้หรืองานอื่นแจ้งว่าทำตามแผนเสร็จแล้ว → อัปเดต `status` เป็น `completed`
 2. ลบไฟล์ `.devin/plan/<title>-<date>.md`
 3. รายงานว่าแผนถูกลบ
 
@@ -63,7 +63,7 @@ argument-hint: "[title]"
 ### 1. File Location
 
 - ไฟล์ต้องอยู่ใน `.devin/plan/`
-- ชื่อไฟล์ format `<title>-<date>.md` โดย title เป้น kebab-case
+- ชื่อไฟล์ format `<title>-<date>.md` โดย title เป็น kebab-case
 - สร้าง directory ถ้ายังไม่มี
 
 ### 2. Content

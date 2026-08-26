@@ -1,11 +1,11 @@
 ---
 name: convert-to-docs
-description: แปลง code, comments, meeting notes หรือ outline เป้น documentation
+description: แปลง code, comments, meeting notes หรือ outline เป็น documentation
 ---
 
 ## Goal
 
-แปลง code, inline comments, meeting notes, หรือ outline เป้น documentation ที structure ชัดเจนและนำไปใช้ได้
+แปลง code, inline comments, meeting notes, หรือ outline เป็น documentation ที structure ชัดเจนและนำไปใช้ได้
 
 ## Scope
 

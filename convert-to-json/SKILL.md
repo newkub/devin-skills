@@ -9,7 +9,7 @@ description: แปลง CSV, YAML, TOML, หรือ text ไปยัง JSO
 
 ## Scope
 
-ใช้สำหรับแปลง structured data จาก file หรือ text เป้น JSON สำหรับ API, config, หรือ processing
+ใช้สำหรับแปลง structured data จาก file หรือ text เป็น JSON สำหรับ API, config, หรือ processing
 
 ## Execute
 
@@ -23,18 +23,18 @@ description: แปลง CSV, YAML, TOML, หรือ text ไปยัง JSO
 
 ### 2. Parse Input
 
-> Goal: แปลง input เป้น data structure
+> Goal: แปลง input เป็น data structure
 
-1. CSV: ใช้ header เป้น keys, แต่ละ row เป้น object
+1. CSV: ใช้ header เป็น keys, แต่ละ row เป็น object
 2. YAML/TOML: parse ด้วย library เช่น `js-yaml`, `@iarna/toml`
 3. Text ทั่วไป: ระบุ delimiter หรือ pattern
-4. Markdown table: แปลงแถวเป้น objects
+4. Markdown table: แปลงแถวเป็น objects
 
 ### 3. Convert To JSON
 
 > Goal: สร้าง JSON output
 
-1. จัดโครงสร้างข้อมูลเป้น object หรือ array
+1. จัดโครงสร้างข้อมูลเป็น object หรือ array
 2. ใช้ `JSON.stringify(data, null, 2)` สำหรับ pretty print
 3. ตรวจสอบ type consistency
 4. ถ้ามี nested data → ใช้ arrays/objects ซ้อน

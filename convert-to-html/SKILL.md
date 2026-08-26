@@ -1,6 +1,6 @@
 ---
 name: convert-to-html
-description: แปลง Markdown, text หรือข้อมูลเป้น HTML
+description: แปลง Markdown, text หรือข้อมูลเป็น HTML
 ---
 
 ## Goal
@@ -9,7 +9,7 @@ description: แปลง Markdown, text หรือข้อมูลเป้
 
 ## Scope
 
-ใช้สำหรับแปลง markdown docs, reports, หรือ structured text เป้น HTML โดยไม่ใช้ frameworks
+ใช้สำหรับแปลง markdown docs, reports, หรือ structured text เป็น HTML โดยไม่ใช้ frameworks
 
 ## Execute
 

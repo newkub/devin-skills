@@ -23,13 +23,13 @@ description: แปลงข้อมูล, code, หรือ text ไปย�
 
 ### 2. Convert To Markdown
 
-> Goal: แปลงเป้น markdown
+> Goal: แปลงเป็น markdown
 
 1. หัวข้อ: ใช้ `#` `##` `###` ตามลำดับ
 2. Code block: ใช้ ` ```<lang>` สำหรับ code
 3. ตาราง: ใช้ `| col1 | col2 |` กับ `|---|---|`
 4. List: ใช้ `-` หรือ `1.`
-5. ถ้า input เป้น json/csv → แปลงเป้นตารางหรือ list ตามความเหมาะสม
+5. ถ้า input เป็น json/csv → แปลงเป็นตารางหรือ list ตามความเหมาะสม
 
 ### 3. Format And Refine
 
@@ -37,7 +37,7 @@ description: แปลงข้อมูล, code, หรือ text ไปย�
 
 1. ใช้ backticks สำหรับชื่อตัวแปร, commands, paths
 2. ใช้ bold/italic น้อย เน้นกระชับ
-3. ระบุ `## Goal`, `## Scope`, `## Execute` ถ้าเป้น document
+3. ระบุ `## Goal`, `## Scope`, `## Execute` ถ้าเป็น document
 4. ตรวจ headings ไม่ขาดตอน
 
 ### 4. Output

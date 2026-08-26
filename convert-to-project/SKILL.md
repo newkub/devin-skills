@@ -1,11 +1,11 @@
 ---
 name: convert-to-project
-description: แปลง idea, requirements หรือ sketch เป้น project plan และ structure
+description: แปลง idea, requirements หรือ sketch เป็น project plan และ structure
 ---
 
 ## Goal
 
-แปลง idea, requirements, หรือ sketch ที user ให้มาเป้น project plan, structure, และ actionable tasks
+แปลง idea, requirements, หรือ sketch ที user ให้มาเป็น project plan, structure, และ actionable tasks
 
 ## Scope
 
@@ -33,7 +33,7 @@ description: แปลง idea, requirements หรือ sketch เป้น pr
 
 ### 3. Create Plan
 
-> Goal: แบ่งงานเป้น tasks
+> Goal: แบ่งงานเป็น tasks
 
 1. ใช้ `/create-plan` หรือ `/update-todo-md`
 2. แบ่ง phase: foundation, features, quality, release
@@ -66,7 +66,7 @@ description: แปลง idea, requirements หรือ sketch เป้น pr
 ### 3. Reusability
 
 - ใช้ conventions ของ project/team
-- อ้างอิง `follow-write-devin-skills` ถ้าเป้น devin skills project
+- อ้างอิง `follow-write-devin-skills` ถ้าเป็น devin skills project
 - ใช้ `AGENTS.md` หรือ `global_rules.md` ถ้ามี
 
 ## Expected Outcome

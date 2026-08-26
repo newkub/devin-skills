@@ -1,11 +1,11 @@
 ---
 name: convert-to-product
-description: แปลง idea, requirements หรือ feedback เป้น product spec และ roadmap
+description: แปลง idea, requirements หรือ feedback เป็น product spec และ roadmap
 ---
 
 ## Goal
 
-แปลง idea, requirements, หรือ user feedback เป้น product specification, roadmap, และ user stories ทีชัดเจน
+แปลง idea, requirements, หรือ user feedback เป็น product specification, roadmap, และ user stories ทีชัดเจน
 
 ## Scope
 

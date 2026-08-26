@@ -47,7 +47,7 @@ description: ระบุและใช้ principles ของ context นั�
    - `process` — workflow, review, commit, release
    - `communication` — naming, docs, reports
 3. ระบุ principles ที conflict กัน
-4. สรุปเป้น bullet points ทีกระทำได้
+4. สรุปเป็น bullet points ทีกระทำได้
 
 ### 4. Prioritize For Current Task
 
@@ -92,7 +92,7 @@ description: ระบุและใช้ principles ของ context นั�
 
 - ใช้เฉพาะ principles ทีมีผลตับ task ปัจจุบัน
 - บันทึก decision ทีอ้างอิง principle
-- ไม่ใช้ principles เป้น excuses เพื่อ over-engineer
+- ไม่ใช้ principles เป็น excuses เพื่อ over-engineer
 
 ### 4. Safety
 

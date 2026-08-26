@@ -41,4 +41,4 @@
 
 - `update-dependencies-latest` สำหรับ update dependencies เป็น latest
 - `update-dot-devin` ถ้า dependency changes กระทบ `.devin` structure
-- `update-rules` ถ้า dependency changes กระทบ rules
+- `update-project-rules` ถ้า dependency changes กระทบ rules
