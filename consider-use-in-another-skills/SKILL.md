@@ -18,7 +18,7 @@ argument-hint: "[skill-name]"
 
 > Goal: ระบุ skill ที่จะใช้งาน
 
-1. ทำ `/list-skills` เพื่อหา skill ที่เกี่ยวข้อง
+1. ทำ `/list-devin-global-skills` เพื่อหา skill ที่เกี่ยวข้อง
 2. อ่าน `SKILL.md` ของ skill เป้าหมาย
 3. ตรวจสอบ Goal, Scope, Execute ว่าเหมาะกับงานของเรา
 4. ถ้าไม่มี skill ที่เหมาะ → ทำ `/ask-me` ก่อนสร้างใหม่

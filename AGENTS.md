@@ -169,7 +169,7 @@ related:
 - `review-features: /review-features`
 - `review-readme: /review-readme`
 - `review-docs: /review-docs`
-- `review-usage: /review-usage`
+- `review-app-usage: /review-app-usage`
 - `review-usage-md: /review-usage-md`
 - `review-consistency: /review-consistency`
 - `review-content-coverage: /review-content-coverage`
@@ -198,6 +198,7 @@ related:
 - `search-files-patterns: /search-files-patterns`
 - `search-in-raindrop-io: /search-in-raindrop-io`
 - `list-raindrop-io: /list-raindrop-io`
+- `list-devin-global-skills: /list-devin-global-skills`
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`

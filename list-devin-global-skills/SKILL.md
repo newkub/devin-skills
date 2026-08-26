@@ -1,6 +1,6 @@
 ---
-name: list-skills
-description: แสดงรายการ Windsurf skills ทั้งหมดพร้อมคำอธิบาย
+name: list-devin-global-skills
+description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
 ---
 
 ## Goal

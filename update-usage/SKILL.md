@@ -17,7 +17,7 @@ description: อัปเดต usage.kdl spec และ generate USAGE.md แ�
 
 > Goal: เข้าใจสถานะปัจจุบันของ `usage.kdl`
 
-1. ทำ `/review-usage` เพื่อตรวจ `usage.kdl` ก่อนอัปเดต
+1. ทำ `/review-app-usage` เพื่อตรวจ `usage.kdl` ก่อนอัปเดต
 2. ถ้าไม่มี `usage.kdl` → ทำ `/follow-tool-usage` แทน
 3. บันทึก findings จาก review
 

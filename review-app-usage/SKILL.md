@@ -1,5 +1,5 @@
 ---
-name: review-usage
+name: review-app-usage
 description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage แก้ไข
 ---
 

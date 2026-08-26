@@ -21,7 +21,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 > Goal: ตรวจสอบว่ามี skill อื่นเหมาะสมกว่าหรือไม่
 
 1. ทำ `/consider-use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
-2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-usage` แทน
+2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-app-usage` แทน
 3. ถ้า `USAGE.md` ไม่มี → แนะนำ `/update-usage-md` หรือ `/report-usage-md`
 4. ถ้าไม่มี skill อื่นเหมาะสมกว่า → ดำเนินการ review
 
@@ -103,7 +103,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 ### 4. Scope
 
 - Review `USAGE.md` แบบ manual เท่านั้น
-- ถ้า generate จาก `usage.kdl` → ใช้ `/review-usage` แทน
+- ถ้า generate จาก `usage.kdl` → ใช้ `/review-app-usage` แทน
 
 ### 5. Formatting
 
