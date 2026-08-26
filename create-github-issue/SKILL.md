@@ -1,6 +1,6 @@
 ---
 name: create-github-issue
-description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, milestones
+description: สร้างหรืออัปเดต GitHub issue พร้อม template, labels, assignees, milestones
 related:
   - follow-github-issue-templates
   - implement-github-issue
@@ -67,7 +67,19 @@ related:
 5. ถ้าเป็น project item → ใช้ `gh project item-add <project-id>`
 6. ถ้ามี MCP tool ที่ใช้งานได้ → ใช้ `mcp8_issue_write` หรือ equivalent
 
-### 5. Verify And Ship
+### 5. Update Existing Issue
+
+> Goal: อัปเดต issue ที่มีอยู่
+
+1. ถ้าต้องอัปเดต issue ที่มีอยู่ → รัน `gh issue view <number>` เพื่อยืนยัน repo และ issue number
+2. แก้ไข title และ body ด้วย `gh issue edit <number>`
+3. จัดการ labels ด้วย `--add-label` และ `--remove-label`
+4. จัดการ assignees ด้วย `--add-assignee` และ `--remove-assignee`
+5. อัปเดต milestone หรือ project ถ้าจำเป็น
+6. ถ้ามี comments ใน body → ไม่เขียนทับโดยไม่ขอ user ยืนยันก่อน
+7. ตรวจสอบ issue อีกครั้งด้วย `gh issue view <number>`
+
+### 6. Verify And Ship
 
 > Goal: ยืนยันและส่งมอบ
 
@@ -132,12 +144,21 @@ related:
 - หลีกเลี่ยง assign หลายคนเว้นจำเป็น
 - ใช้ username ที่ถูกต้องใน GitHub
 
+### 6. Update Existing Issues
+
+- ห้ามเขียนทับ body โดยไม่ได้รับการยืนยันจากผู้ใช้ หากมี comments
+- ใช้ `--add-label` และ `--remove-label` เพื่อจัดการ labels
+- ใช้ `--add-assignee` และ `--remove-assignee` เพื่อจัดการ assignees
+- แก้ไขให้กระชับและน้อยที่สุด
+- ตรวจสอบ issue อีกครั้งหลังอัปเดต
+
 ## Expected Outcome
 
-- Issue ถูกสร้างด้วยข้อมูลครบถ้วน
+- Issue ถูกสร้างหรืออัปเดตด้วยข้อมูลครบถ้วน
 - Title และ description ชัดเจนและเป็นมาตรฐาน
 - Labels, assignees, milestones ถูกตั้งค่าอย่างถูกต้อง
 - Issue เชื่อมโยงกับ issues ที่เกี่ยวข้อง
+- การเปลี่ยนแปลง issue ผ่านการตรวจสอบและส่ง URL กลับ
 - Team สามารถเข้าใจและดำเนินการได้ทันที
 
 ## Common Mistakes
