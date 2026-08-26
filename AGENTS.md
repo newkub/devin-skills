@@ -83,12 +83,14 @@ related:
 - `ship: /ship`
 - `report: /report`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
+- `edit-this-repo: /edit-this-repo`
 - `report-usage-md: /report-usage-md`
 - `resolve-pr: /resolve-pr`
 
 #### Analyze
 
 - `analyze-root-cause-analysis: /analyze-root-cause-analysis`
+- `report-workspace-graph: /report-workspace-graph`
 
 #### Request
 

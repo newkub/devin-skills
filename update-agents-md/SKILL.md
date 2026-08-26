@@ -1,6 +1,11 @@
 ---
 name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ด้วย architecture, lib mapping และ workspace rules
+related:
+  - ship
+  - report-workspace-graph
+  - follow-monorepo
+  - follow-agents-md
 ---
 
 ## Goal
@@ -53,15 +58,16 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 
 > Goal: สร้าง/อัปเดท `AGENTS.md` สำหรับแต่ละ workspace ถ้าเป็น monorepo
 
-1. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure
-2. สำหรับแต่ละ workspace ระบุ:
+1. ทำ `/report-workspace-graph` เพื่อวิเคราะห์ dependencies ระหว่าง workspaces ก่อน
+2. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure
+3. สำหรับแต่ละ workspace ระบุ:
    - `name` ใน frontmatter ตรงกับชื่อ workspace
    - `### Architecture` ด้วย `tech: /follow-<tech>` ของ workspace
    - `### Skills` ด้วย `skill-name: /skill-name` ที่ใช้
-   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้
-3. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
-4. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
-5. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`
+   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้ ด้วยรูปแบบ `<package> use <other-package>` เช่น `core: use db, web`
+4. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
+5. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
+6. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
 ## Rules
 
@@ -87,6 +93,8 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 
 - root `AGENTS.md` ต้องมี `### Workspaces` ระบุทุก workspace
 - workspace `AGENTS.md` ต้องระบุ `uses:` หรือ `### Workspaces` ว่าใช้ workspace อื่นใดบ้าง
+- ใช้รูปแบบ `<package> use <other-package>` เช่น `core: use db, web`
+- ก่อนเขียน workspace section ใน monorepo ต้องทำ `/report-workspace-graph` ก่อน
 - ไม่ duplicate root conventions
 
 ## Expected Outcome

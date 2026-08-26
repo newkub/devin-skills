@@ -65,6 +65,7 @@ description: แก้ไข files ใน repository ปัจจุบันอ
 - ไม่ลบ ย้าย หรือ overwrite ถ้าไม่ได้รับ confirmation
 - ตรวจสอบ `git status` ก่อนและหลังแก้ไข
 - ถ้า action เสี่ยง → ทำ dry run ก่อน
+- ถ้าแก้ไข `AGENTS.md` → ทำ `/update-agents-md` ตาม `/ship`
 
 ### 2. Minimal Scope
 

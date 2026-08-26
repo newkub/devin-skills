@@ -17,7 +17,7 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 > Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
 
-1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md`
+1. ทำ `/update-agents-md` ตาม `/ship` เพื่อเขียน `AGENTS.md` ตาม `/ship`
 2. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
 3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
@@ -80,7 +80,8 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 ### 1. AGENTS.md First
 
-- `/update-agents-md` ต้องทำก่อนเสมอ
+- `/update-agents-md` ต้องทำก่อนเสมอและทำตาม `/ship`
+- `AGENTS.md` ถูกเขียนตาม `/ship`
 - `/follow-agents-md` ต้องทำหลัง `AGENTS.md` อัปเดต
 - ห้าม duplicate รายละเอียดที่มีอยู่ใน `AGENTS.md`
 
