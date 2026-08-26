@@ -31,7 +31,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. ดู `references/patterns-boundaries.md` สำหรับ architecture patterns และ boundaries checks
@@ -41,7 +41,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 9. ดู `references/reliability.md` สำหรับ reliability checks
 10. ดู `references/governance.md` สำหรับ governance checks
 11. Review CLI คำนวณ architecture review score จาก review report (ดู `references/scoring.md`)
-12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-codebase-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -95,7 +95,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/update-review-cli-and-run` สำหรับระบุ issues ใน code
+- ใช้ `/update-review-codebase-cli-and-run` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
 - ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
 
@@ -103,7 +103,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 - ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 - ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
-- ไม่ review refactor opportunities ลึกที่ `/update-review-cli-and-run` ทำ
+- ไม่ review refactor opportunities ลึกที่ `/update-review-codebase-cli-and-run` ทำ
 - ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
 - ไม่ review security controls — ใช้ `/review-delivery`
 - ไม่ review code quality — ใช้ `/review-quality`

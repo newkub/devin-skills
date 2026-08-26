@@ -35,7 +35,7 @@
 ## Detection Tools
 
 - `/scan-codebase` สำหรับ list ไฟล์ทั้งหมด
-- `/update-review-cli-and-run` สำหรับ naming conventions review
+- `/update-review-codebase-cli-and-run` สำหรับ naming conventions review
 - `Get-ChildItem -Recurse -File` สำหรับ file discovery
 
 ## Exclusions

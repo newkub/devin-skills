@@ -26,7 +26,7 @@ description: สร้าง GitHub issue templates สำหรับ bug, feat
 > Goal: มี templates ครบ 6 ประเภท
 
 1. เลือก templates ตามประเภท project: `bug-report`, `feature-request`, `plan`, `test`, `questions`, `agents-task`
-2. คัดลอกเนื้อหา YAML จาก `references/` ไปยัง `.github/ISSUE_TEMPLATE/`
+2. คัดลอกเนื้อหา YAML จาก `templates/` ไปยัง `.github/ISSUE_TEMPLATE/`
 3. ตรวจสอบชื่อไฟล์:
    - `bug_report.yml`
    - `feature_request.yml`

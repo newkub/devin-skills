@@ -26,7 +26,7 @@ compliance review สำหรับ: GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Th
 3. ระบุ data classification: PII, PHI, payment data, sensitive data, public data
 4. ระบุ consent management tool, data retention policy, audit logging setup
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+6. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 8. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 

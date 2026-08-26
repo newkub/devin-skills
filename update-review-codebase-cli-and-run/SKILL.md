@@ -1,5 +1,5 @@
 ---
-name: update-review-cli-and-run
+name: update-review-codebase-cli-and-run
 description: สร้างและอัปเดต tools/review-codebase CLI แล้วรัน review จนได้ผล
 ---
 
@@ -22,6 +22,8 @@ description: สร้างและอัปเดต tools/review-codebase CL
 3. ถ้าผลเป็น `skip` → ไป Step 8 (Run Review CLI)
 4. ถ้าผลเป็น `update` หรือ `create` → ไป Step 2
 5. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
+6. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` เพื่อตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, และ evidence
+7. ถ้า pre-review score < 70 → ทำ Step 2-7 ก่อน Step 8
 
 ### 2. Plan Analyzer Categories
 
@@ -60,7 +62,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อนใน `tools/analyze` ไม่ใช่ใน `tools/review-codebase`
 2. import `runAllAnalyzers` จาก `tools-analyze` ใน `src/application/review.ts`
 3. แปลงผล `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
-4. กำหนด `reviewWorkflow` map ไปยัง `update-review-cli-and-run/references/<dimension>.md` หรือ review skills ที่เกี่ยวข้อง
+4. กำหนด `reviewWorkflow` map ไปยัง `update-review-codebase-cli-and-run/references/<dimension>.md` หรือ review skills ที่เกี่ยวข้อง
 5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียดใน `tools/analyze`
 
 ### 6. Update Package Scripts

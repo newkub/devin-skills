@@ -26,7 +26,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 3. ระบุ APM tool (Datadog, New Relic, Sentry, AppSignal, Honeycomb), alerting platform (PagerDuty, Opsgenie, Slack)
 4. ระบุ dashboard tool (Grafana, Datadog dashboards, Kibana), SLO/SLI definitions
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+6. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 8. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 

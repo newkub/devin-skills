@@ -33,7 +33,7 @@ description: อัปเดต project documentation, config, rules, และ 
 4. `/update-agents-md`
 5. `/update-docs` (ถ้ามี `docs/`)
 6. `/update-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
-7. `/update-review-cli-and-run` (ถ้ามี `tools/review-codebase/`)
+7. `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
 8. `/follow-dot-vscode`
 9. `/update-contributing-md`
 

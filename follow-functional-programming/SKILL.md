@@ -72,7 +72,7 @@ description: พัฒนาโปรเจกต์ด้วย functional prog
 3. ใช้ `dependency injection` สำหรับ impure dependencies
 4. ทำ `I/O` ใน imperative shell เท่านั้น
 5. ทำ validation ใน pure functions
-6. ทำ `/update-review-cli-and-run` เพื่อจัดการ side effects
+6. ทำ `/update-review-codebase-cli-and-run` เพื่อจัดการ side effects
 
 ### 6. Avoid Mutable State
 

@@ -25,7 +25,7 @@ description: สร้างหรืออัปเดต AGENTS.md ด้ว�
 6. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 7. สร้าง/อัปเดท root `AGENTS.md` ด้วย `name`, `description`, `related`
 8. ทำ `/follow-skills` เพื่อระบุ skills ที่ควรใส่ใน `### Skills`
-9. เพิ่ม `/update-review-cli-and-run` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
+9. เพิ่ม `/update-review-codebase-cli-and-run` และ `/ask-requirement` ใน `### Skills` ของ `AGENTS.md`
 10. ถ้า `context` ไม่ชัดหรือไม่แน่ใจ → ทำ `/ask-requirement` ก่อน
 11. เขียน sections `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 

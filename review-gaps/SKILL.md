@@ -5,7 +5,7 @@ description: Meta-review aggregate findings จาก dimensional reviews เป
 
 ## Goal
 
-Meta-review ที่รวบรวม findings จาก dimensional reviews (`review-quality`, `review-realize-implementation`, `review-delivery`, `review-frontend`, `review-backend`, `review-platform`, `review-architecture`, `review-stability`, `review-techstack`, `review-writing`, `review-rules`, `update-review-cli-and-run`) มา deduplicate, cross-reference, score, และ prioritize เป็น improvement roadmap
+Meta-review ที่รวบรวม findings จาก dimensional reviews (`review-quality`, `review-realize-implementation`, `review-delivery`, `review-frontend`, `review-backend`, `review-platform`, `review-architecture`, `review-stability`, `review-techstack`, `review-writing`, `review-rules`, `update-review-codebase-cli-and-run`) มา deduplicate, cross-reference, score, และ prioritize เป็น improvement roadmap
 
 ## Scope
 
@@ -39,7 +39,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews (
 1. ทำ `/review-quality`, `/review-realize-implementation`, `/review-delivery` ตาม context
 2. ทำ `/review-frontend`, `/review-backend`, `/review-platform` ถ้ามีส่วนที่เกี่ยว
 3. ทำ `/review-architecture`, `/review-stability`, `/review-techstack` ถ้าจำเป็น
-4. ทำ `/review-writing`, `/review-rules`, `/update-review-cli-and-run` ถ้าจำเป็น
+4. ทำ `/review-writing`, `/review-rules`, `/update-review-codebase-cli-and-run` ถ้าจำเป็น
 5. ข้าม dimension ที่ไม่เกี่ยวข้องกับ project
 6. เก็บ reports ทุก dimension ไว้สำหรับ aggregation
 

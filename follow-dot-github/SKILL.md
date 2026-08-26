@@ -81,7 +81,7 @@ description: จัดการ .github directory ครบถ้วน ทั�
 1. ทำ `/follow-github-issue-templates` เพื่อสร้างหรืออัปเดต `.github/ISSUE_TEMPLATE/`
 2. ตรวจสอบว่ามี `bug_report.yml`, `feature_request.yml`, `plan.yml`, `test.yml`, `questions.yml`, `agents_task.yml`
 3. ตรวจสอบ `config.yml` พร้อม `blank_issues_enabled` และ contact links
-4. ถ้า `/follow-github-issue-templates` ไม่พร้อมใช้งาน → สร้าง templates ด้วยตัวเองตาม `?follow-github-issue-templates/references/index.md`
+4. ถ้า `/follow-github-issue-templates` ไม่พร้อมใช้งาน → สร้าง templates ด้วยตัวเองตาม `?follow-github-issue-templates/templates/index.md`
 
 ### 5. Setup PR Template
 

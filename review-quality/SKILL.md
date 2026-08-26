@@ -35,13 +35,13 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 > Goal: รวบรวม findings ด้าน static analysis, architecture, types, naming, readability, hardcode
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 5. Analyzer รัน static analysis tools แบบ lint, typecheck, `ast-grep` scan, `knip`, `jscpd`, `madge`
-6. ทำ `/update-review-cli-and-run` เพื่อ review patterns, boundaries, coupling, design patterns, anti-patterns, SOLID
-7. ทำ `/update-review-cli-and-run` เพื่อ review type design: generics, type inference, discriminated unions, type narrowing, branded types, type safety, `as const`, exhaustive checks, `any` usage, type assertions
-8. ทำ `/update-review-cli-and-run` เพื่อ review naming conventions: variable, function, class, file, directory, API endpoint, database naming, cross-layer consistency
+6. ทำ `/update-review-codebase-cli-and-run` เพื่อ review patterns, boundaries, coupling, design patterns, anti-patterns, SOLID
+7. ทำ `/update-review-codebase-cli-and-run` เพื่อ review type design: generics, type inference, discriminated unions, type narrowing, branded types, type safety, `as const`, exhaustive checks, `any` usage, type assertions
+8. ทำ `/update-review-codebase-cli-and-run` เพื่อ review naming conventions: variable, function, class, file, directory, API endpoint, database naming, cross-layer consistency
 9. Analyzer ตรวจสอบ readability: function length เกิน 50 บรรทัด, parameter count เกิน 4, nesting depth เกิน 3 ระดับ, cognitive complexity, naming clarity, comment quality
 10. Analyzer ตรวจสอบ hardcode: magic numbers, hardcoded strings, URLs, file paths, secrets, business rules, feature flags
 11. ตรวจสอบ simplicity: over-engineering, YAGNI, premature optimization, unnecessary abstraction

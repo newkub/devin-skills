@@ -9,7 +9,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 
 ## Scope
 
-ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-ast-grep`) — ไม่รวมการอัปเดต rules (ดู `/update-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli-and-run`)
+ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-ast-grep`) — ไม่รวมการอัปเดต rules (ดู `/update-rules`) หรืออัปเดต review CLI (ดู `/update-review-codebase-cli-and-run`)
 
 ## Execute
 
@@ -76,7 +76,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 3. Scope Boundary
 
 - ไม่รวมการอัปเดต rules — อยู่ใน `/update-rules`
-- ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/update-review-cli-and-run`
+- ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/update-review-codebase-cli-and-run`
 - เน้นเฉพาะการใช้ ast-grep แบบ programmatic ผ่าน scripts
 
 ### 4. Formatting

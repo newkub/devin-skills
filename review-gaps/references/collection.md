@@ -17,7 +17,7 @@ dimensional reviews ที่รวมได้:
 - `review-techstack` — tech stack alignment gaps
 - `review-writing` — documentation and writing gaps
 - `review-rules` — rules and conventions gaps
-- `update-review-cli-and-run` — general codebase gaps
+- `update-review-codebase-cli-and-run` — general codebase gaps
 
 ## Finding Fields
 

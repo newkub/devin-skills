@@ -27,7 +27,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup, project structure, tech stack
 2. ระบุ delivery channels, documentation tools, versioning strategy, build tool, CI/CD platform, infrastructure, security tools
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-review-cli-and-run` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
+4. ทำ `/update-review-codebase-cli-and-run` แล้วทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 2. Documentation And Web Presence Review
 
@@ -42,7 +42,7 @@ Review documentation ครอบคลุม README, API docs, examples, guides
 3. ตรวจสอบ content accuracy, broken links, และ missing documentation
 4. ตรวจสอบ JSDoc/TSDoc completeness บน public API
 5. ตรวจสอบ stale documentation: docs ที่ไม่ตรงกับ code ปัจจุบัน
-6. ทำ `/update-review-cli-and-run` เพื่อ deep documentation review เฉพาะทาง
+6. ทำ `/update-review-codebase-cli-and-run` เพื่อ deep documentation review เฉพาะทาง
 
 #### 2.2 SEO Review
 

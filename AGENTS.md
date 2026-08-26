@@ -129,7 +129,7 @@ related:
 - `review-observability: /review-observability`
 - `review-compliance: /review-compliance`
 - `review-writing: /review-writing`
-- `update-review-cli-and-run: /update-review-cli-and-run`
+- `update-review-codebase-cli-and-run: /update-review-codebase-cli-and-run`
 - `review-gaps: /review-gaps`
 - `review-dot-devin: /review-dot-devin`
 - `review-devin-subagents: /review-devin-subagents`
@@ -146,8 +146,12 @@ related:
 #### Create
 
 - `update-create-analyze-cli: /update-create-analyze-cli`
-- `follow-create-review-cli: /follow-create-review-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
+
+#### Search
+
+- `search-files-patterns: /search-files-patterns`
+- `search-in-raindrop-io: /search-in-raindrop-io`
 
 #### Watch
 

@@ -117,7 +117,7 @@ Platform and Environment:
 
 - ไม่รัน dev server, test, build, browser, emulator, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-cli-and-run`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-codebase-cli-and-run`
 
 ### 2. Simulate From Real User
 
@@ -152,8 +152,8 @@ Platform and Environment:
 - ถ้า journey ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม simulate
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
 - ถ้าต้องการวาด flow ช่วย visualize ให้ทำ `/report-uxui-sketch`
-- ถ้าต้องการ scan จริงด้วย scripts ให้ใช้ `/update-review-cli-and-run`
-- ถ้าต้องการ review cross-domain impact ให้ใช้ `/update-review-cli-and-run`
+- ถ้าต้องการ scan จริงด้วย scripts ให้ใช้ `/update-review-codebase-cli-and-run`
+- ถ้าต้องการ review cross-domain impact ให้ใช้ `/update-review-codebase-cli-and-run`
 
 ### 7. Output
 

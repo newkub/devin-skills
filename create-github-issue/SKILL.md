@@ -31,7 +31,7 @@ argument-hint: "[title]"
 > Goal: Write Issue Template
 
 1. ถ้า repo ยังไม่มี issue templates → ทำ `/follow-github-issue-templates` ก่อน
-2. ใช้ issue template ตาม project standards หรือ `?follow-github-issue-templates/references/index.md`
+2. ใช้ issue template ตาม project standards หรือ `?follow-github-issue-templates/templates/index.md`
 3. เลือกประเภท issue: bug, feature, plan, test, question หรือ agents-task
 4. เขียน title ที่ชัดเจนและกระชับ
 5. เขียน description ด้วยรูปแบบมาตรฐาน:

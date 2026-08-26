@@ -123,7 +123,7 @@ Privacy by Design:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-cli-and-run`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-codebase-cli-and-run`
 
 ### 2. Think Like A DPO
 
@@ -159,7 +159,7 @@ Privacy by Design:
 
 - ถ้า privacy audit ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan privacy หรือ data leak จริง ให้ใช้ `/update-review-cli-and-run`
+- ถ้าต้องการ scan privacy หรือ data leak จริง ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการมุมมอง regulator ให้ใช้ `/roleplay-regulator`
 
 ### 7. Output
