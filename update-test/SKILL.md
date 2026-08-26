@@ -1,15 +1,22 @@
 ---
 name: update-test
 description: อัปเดต test suite และ spec/SPEC.md ให้ครอบคลุม มีคุณภาพ และตรง conventions
+related:
+  - review-writing
+  - run-test-coverage
+  - update-review-codebase-cli-and-run
+  - review-quality
+  - validate
+  - check-reference
 ---
 
 ## Goal
 
-เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language พร้อม sync `spec/SPEC.md` ให้ตรงกับ tests และ code ปัจจุบัน
+เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language
 
 ## Scope
 
-เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา ทำตาม `/follow-write-devin-skills` สำหรับ structure และ conventions
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
 ## Execute
 
@@ -17,17 +24,16 @@ description: อัปเดต test suite และ spec/SPEC.md ให้ค�
 
 > Goal: ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
 
-1. ทำ `/follow-write-devin-skills` เพื่อทราบ conventions และ structure มาตรฐาน
-2. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
-3. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
-4. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
-5. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
-6. กำหนด test types ที่จำเป็น (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual regression)
-7. กำหนด coverage targets สำหรับแต่ละ test type
-8. กำหนด test priorities ตาม criticality
-9. กำหนด test environments (local, staging, production)
-10. กำหนด test data strategy: `factories` สำหรับ dynamic data, `fixtures` สำหรับ static data, `builders` สำหรับ complex objects
-11. กำหนด mock strategy: mock external dependencies (DB, API, email) แต่ใช้ real implementations สำหรับ internal pure functions
+1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
+2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
+3. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
+4. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
+5. กำหนด test types ที่จำเป็น (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual regression)
+6. กำหนด coverage targets สำหรับแต่ละ test type
+7. กำหนด test priorities ตาม criticality
+8. กำหนด test environments (local, staging, production)
+9. กำหนด test data strategy: `factories` สำหรับ dynamic data, `fixtures` สำหรับ static data, `builders` สำหรับ complex objects
+10. กำหนด mock strategy: mock external dependencies (DB, API, email) แต่ใช้ real implementations สำหรับ internal pure functions
 
 ### 2. Analyze Source Code
 
@@ -112,18 +118,12 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
-### 8. Sync Spec And Verify
+### 8. Sync And Verify
 
-> Goal: อัพเดท `spec/SPEC.md` ให้สอดคล้องกับ tests และ code ปัจจุบัน
+> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
 
-1. อ่าน `spec/SPEC.md` หรือ `spec/overview.md` และ test files ทั้งหมดใน `tests/`
-2. เพิ่ม test cases ใหม่ที่เขียนแล้ว ลบ test cases ที่เลิกใช้ แก้ status (todo/in-progress/done)
-3. อัปเดต coverage targets ถ้ามีการเปลี่ยน
-4. สรุป test cases แบบกระชับ ไม่คัดลอกเนื้อหา tests มาทั้งหมด
-5. ระบุ test file หรือ test name ที่เกี่ยวข้องด้วย backticks
-6. แยกไฟล์ถ้า `spec/SPEC.md` เกิน 250 บรรทัด
-7. ทำ `/validate` เพื่อตรวจ structure และ `/check-reference` เพื่อยืนยันไฟล์ที่อ้างถึงมีอยู่จริง
-8. ถ้า fail → retry (max 3 → stop/report)
+1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
+2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
 
@@ -131,7 +131,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 - ตั้งชื่อ test: `should [expected behavior] when [condition]`
 - Follow `AAA` pattern (`Arrange`, `Act`, `Assert`)
-- Test แค่สิ่งเดียวต่อ test case (`Single Responsibility`)
+- Test แค่สิ่งเดียว�่อ test case (`Single Responsibility`)
 - ไม่แชร์ state ระหว่าง tests (`isolated`)
 - Test ทั้ง `happy path`, `edge cases`, `error cases`, `boundary conditions`
 - ใช้ `parameterized tests` สำหรับกรณีที่ test ซ้ำๆ กันหลายค่า
@@ -207,13 +207,6 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Mock dependencies: mock service layer, auth, database, external APIs
 - Test input -> output mapping: ส่ง input ผ่าน handler แล้วตรวจสอบ output
 - Test error fallback: เมื่อ service throw ต้อง return fallback ที่ถูกต้อง
-
-### 10. Spec Sync Rules
-
-- spec ต้องอัปเดตหลัง tests เปลี่ยนเสมอ ไม่อัปเดต spec ก่อน test ลอยๆ
-- ไม่คัดลอกเนื้อหา tests มาทั้งหมด สรุป test cases ในรูปแบบกระชับ
-- `spec/SPEC.md` ไม่เกิน 250 บรรทัด ถ้าใหญ่กว่านั้นแยกเป็นไฟล์ย่อย
-- ระบุ test file หรือ test name ที่เกี่ยวข้องด้วย backticks
 
 ## Expected Outcome
 
