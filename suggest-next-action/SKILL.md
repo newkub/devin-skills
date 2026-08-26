@@ -89,7 +89,7 @@ related:
 
 1. เตรียมข้อมูล actions สำหรับ `/report-table`: #, Action, Priority, Impact, Effort, Workflow, Reason
 2. จัดลำดับ actions ที่แนะนำพร้อม priority
-3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context
+3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context แต่ไม่ตอบสินใจแทน user
 4. เตรียม trade-offs ระหว่าง options สำหรับ `/report-table`: Option, Pros, Cons, Risk
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
 6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report-table`
@@ -100,8 +100,8 @@ related:
 
 1. ทำ `/report-table` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
 2. สรุปคำแนะนำหลัก 1-2 บรรทัดก่อนตาราง
-3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ
-4. ถ้าต้องการ user confirmation ก่อนดำเนินการ → ทำ `/ask-me` หลังตาราง
+3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ แต่ไม่ตอบสินใจแทน user
+4. ทำ `/ask-me` เสมอเพื่อถามให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
 
 ## Rules
 
@@ -183,3 +183,4 @@ related:
 - ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
+- สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
