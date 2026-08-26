@@ -71,7 +71,7 @@ allowed-tools:
 
 > Goal: รายงานผลเป็นตาราง
 
-1. ทำ `/report-table` สรุป: skill, reference, type (body/related), status (broken/ok)
+1. ทำ `/report-markdown-table` สรุป: skill, reference, type (body/related), status (broken/ok)
 2. จัดลำดับตาม severity:
    - Critical: broken `related` reference
    - Warning: broken body reference

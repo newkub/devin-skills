@@ -33,7 +33,7 @@ description: Report findings and apply fixes with user confirmation
 
 > Goal: ขอ user confirm ก่อน fix
 
-1. ทำ `/report-table` สรุป issues, severity, suggested fix
+1. ทำ `/report-markdown-table` สรุป issues, severity, suggested fix
 2. ใช้ `/ask-me` หรือ `ask_user_question` ขอ approval
 3. ถ้า user ปฏิเสธ → หยุดและ report สถานะ
 

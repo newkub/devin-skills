@@ -56,7 +56,7 @@ argument-hint: "[range]"
 
 > Goal: จัดรูปแบบ changelog ให้อ่านง่าย
 
-1. ทำ `/report-table` สำหรับสรุปสถิติ
+1. ทำ `/report-markdown-table` สำหรับสรุปสถิติ
 2. แสดงผลตามลำดับ: Summary → Breaking Changes → Features → Bug Fixes → Other
 3. ใช้ format ตาม Keep a Changelog:
    ```markdown
@@ -89,8 +89,8 @@ argument-hint: "[range]"
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -104,7 +104,7 @@ argument-hint: "[range]"
 
 ### Output Format
 
-- ทำ `/report-table` สำหรับสรุปสถิติ
+- ทำ `/report-markdown-table` สำหรับสรุปสถิติ
 - ใช้ Keep a Changelog format สำหรับรายละเอียด
 - เรียงตามลำดับ: Breaking Changes → Features → Bug Fixes → Other
 - แสดง version และ date ใน header

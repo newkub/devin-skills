@@ -53,7 +53,7 @@ description: รายการไฟล์ทีถูก chezmoi จัดก�
 
 > Goal: นำเสนอรายการไฟล์
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report-markdown-table` คอลัมน์:
    - No
    - Managed File (destination path)
    - Source Path

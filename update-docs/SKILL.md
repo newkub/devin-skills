@@ -12,7 +12,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 - ตั้งค่า `docs/` สำหรับ single project และ monorepo
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
-- รองรับ `update-features` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
+- รองรับ `update-features-md` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
 
 ## Execute
 
@@ -70,7 +70,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 
 1. `index.md`: title, tagline, features list, quick start link, actions
 2. `project/overview.md`: สรุป project, architecture, tech stack, key concepts
-3. `project/features.md`: รายการ features ทั้งหมดจาก `update-features` หรือ analyze
+3. `project/features.md`: รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
 4. `getting-started/installation.md`: ขั้นตอนติดตั้ง ตรวจ dependencies
 5. `getting-started/usage.md`: ตัวอย่างใช้งานจริง
 6. `development/setup.md`: ตั้งค่า dev environment
@@ -80,11 +80,11 @@ description: สร้าง documentation สำหรับ project ด้ว�
 10. `references/index.md`: สรุป references
 11. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 
-### 5. Integrate `update-features`
+### 5. Integrate `update-features-md`
 
 > Goal: หน้า existing features ถูกต้อง
 
-1. ถ้า `/update-features` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
+1. ถ้า `/update-features-md` เรียกมา จะมีข้อมูล features จาก routes/modules/schemas/API
 2. เขียน `docs/project/features.md` ด้วยตาราง markdown
 3. แต่ละ row มี name, description, module, status
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
@@ -172,7 +172,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 
 - `docs/` directory ที่ root มี VitePress config, nav, sidebar
 - Markdown files สมบูรณ์: index, project, features, getting-started, roadmap, development, references
-- `docs/project/features.md` มีตาราง features จาก `update-features`
+- `docs/project/features.md` มีตาราง features จาก `update-features-md`
 - `docs/roadmap/idea-features.md` มีตาราง `Extends` และ `New` จาก `idea-features`
 - ทุกไฟล์มี frontmatter
 - ไม่มี HTML/UX ซับซ้อน

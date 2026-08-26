@@ -6,7 +6,7 @@ related:
   - edit-relative-files
   - search-files-patterns
   - check-broken-refs
-  - report-table
+  - report-markdown-table
   - validate
 ---
 

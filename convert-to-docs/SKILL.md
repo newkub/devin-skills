@@ -29,7 +29,7 @@ description: แปลง code, comments, meeting notes หรือ outline เ
 1. ตรวจ sections: Installation, Quick Start, Usage, Examples, API, Configuration, Troubleshooting
 2. ระบุ sections ทีขาดหรือ stale
 3. ระบุ code samples ทีควรเพิ่ม
-4. ใช้ `/report-table` สรุป gaps
+4. ใช้ `/report-markdown-table` สรุป gaps
 
 ### 3. Write Docs
 

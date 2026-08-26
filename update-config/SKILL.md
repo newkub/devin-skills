@@ -164,7 +164,7 @@ related:
    - `prettier --check .` (Prettier)
    - `knip` (unused)
 3. ทำ `/report-config-files` อีกครั้งเพื่อ verify
-4. ทำ `/report-table` สรุป changes
+4. ทำ `/report-markdown-table` สรุป changes
 
 ## Rules
 

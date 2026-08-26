@@ -38,7 +38,7 @@ argument-hint: "[repo]"
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. เลข issue
    - Title ชื่อ issue
@@ -60,7 +60,7 @@ argument-hint: "[repo]"
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: number, title, labels, state, author, comments, updated
 

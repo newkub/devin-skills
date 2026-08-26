@@ -1,113 +1,101 @@
 ---
 name: taxonomy
-description: แนะนำ devin global skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่จาก skill ปัจจุบัน
-argument-hint: "[skill-name]"
+description: สร้าง taxonomy หรือจัดหมวดหมู่ items ตาม context ปัจจุบัน
+argument-hint: "[items-or-domain]"
 related:
-  - review-devin-global-skills
-  - update-references
-  - check-circular-dependencies
+  - grouping
+  - report-markdown-table
+  - report
 ---
 
 ## Goal
 
-แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก skill ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+สร้าง taxonomy ที่ชัดเจนและครอบคลุมสำหรับ items, concepts, หรือ domain ที่กำหนด
 
 ## Scope
 
-ใช้หลังจากเขียนหรือแก้ไข `SKILL.md` เสร็จ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
+ใช้เมื่อต้องการจัดกลุ่ม, จัดลำดับ, หรือสร้างโครงสร้างหมวดหมู่จากรายการ items, concepts, หรือข้อมูลที่มีอยู่
 
 ## Execute
 
-### 1. Analyze Current Skill
+### 1. Define Taxonomy Purpose
 
-> Goal: Analyze Current Skill
+> Goal: ระบุ purpose และ scope ของ taxonomy
 
-วิเคราะห์ skill ปัจจุบันเพื่อเข้าใจ context และ purpose
+1. ระบุ domain หรือชุด items ทีต้องการจัดหมวดหมู่
+2. ระบุ audience และวัตถุประสงค์ของ taxonomy
+3. กำหนดระดับความลึก (flattened, 1-level, multi-level)
+4. เลือก criteria หลักสำหรับการแบ่งหมวดหมู่
 
-1. อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ skill ปัจจุบัน
-2. ระบุ `related` skills ที่มีอยู่แล้ว
-3. วิเคราะห์ `Execute` steps และ `Rules` เพื่อเข้าใจการใช้งาน
-4. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
+### 2. Collect And Inspect Items
 
-### 2. List Available Skills
+> Goal: รวบรวมและตรวจสอบ items ที่จะจัด taxonomy
 
-> Goal: List Available Skills
+1. ลิสต์ items ที่มีอยู่ทั้งหมด
+2. ระบุ attributes สำคัญของแต่ละ item
+3. ตรวจหา items ทีอาจซ้ำซ้อนหรือขาดหาย
+4. บันทึก source ของข้อมูล
 
-รวบรวม devin global skills ทั้งหมดที่มีอยู่
+### 3. Group Items
 
-1. อ่านไฟล์ `SKILL.md` ทั้งหมดใน `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
-2. ดู `name` และ `description` ของแต่ละ skill
-3. จัดกลุ่มตาม category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
-4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว
+> Goal: จัดกลุ่ม items ตาม criteria
 
-### 3. Match Related Skills
+1. วิเคราะห์ attributes และ relationships
+2. สร้าง categories ตาม criteria ที่เลือก
+3. ตั้งชื่อ category ให้ชัดเจนและไม่ซ้อนทับ
+4. จัด items ให้อยู่ใน category ที่เหมาะสม (อนุญาต cross-category ถ้าจำเป็น)
 
-> Goal: Match Related Skills
+### 4. Build Hierarchy
 
-จับคู่ skills ที่เกี่ยวข้องกับ skill ปัจจุบัน
+> Goal: สร้างโครงสร้างลำดับชั้น
 
-1. วิเคราะห์ความเกี่ยวข้องจาก `Goal`, `Scope`, และ `Execute`
-2. จัดลำดับความเกี่ยวข้อง: `direct dependency`, `complementary`, `follow-up`, `alternative`
-3. ตรวจสอบว่า skills ที่แนะนำมีอยู่จริงใน `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
-4. กรอง skills ที่ไม่เกี่ยวข้องออก
+1. ระบุ top-level categories
+2. แบ่ง sub-categories ถ้ามีความจำเป็น
+3. วาง items ใน leaf nodes
+4. ระบุ relationships ระหว่าง categories (parent-child, sibling, dependency)
 
-### 4. Suggest Skills And New Ideas
+### 5. Label And Document
 
-> Goal: Suggest Skills And New Ideas
+> Goal: ทำให้ taxonomy ใช้งานได้ง่าย
 
-แนะนำ skills พร้อมเหตุผลและไอเดียใหม่
+1. เขียน label และ description ให้แต่ละ category
+2. เลือกรูปแบบ output: tree, table, tags, หรือ markdown list
+3. ระบุ examples สำหรับ category ที่สำคัญ
+4. บันทึก conventions สำหรับการเพิ่ม item ใหม่
 
-1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลว่าทำไมควรใช้
-2. ระบุประเภทความเกี่ยวข้องในวงเล็บ (`direct dependency`, `complementary`, `follow-up`, `alternative`)
-3. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
-4. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-5. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
-6. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
+### 6. Validate And Refine
 
-### 5. Update Related Skills
+> Goal: ตรวจสอบความสมบูรณ์
 
-> Goal: Update Related Skills
-
-อัปเดต `related` ในไฟล์ skill ปัจจุบัน
-
-1. เพิ่ม skills ที่แนะนำเข้าไปใน `related` ของ skill ปัจจุบัน
-2. ตรวจสอบว่าไม่ซ้ำซ้อนกับที่มีอยู่แล้ว
-3. ทำ `/update-references` เพื่ออัปเดต references ในไฟล์อื่นที่เกี่ยวข้อง
+1. ตรวจว่าทุก item ถูกจัดอยู่ใน category
+2. ตรวจว่า categories ไม่ซ้อนทับกันมากเกินไป
+3. ตรวจความสอดคล้องกับ purpose
+4. ปรับ refine taxonomy จาก feedback หรือ gaps ทีพบ
 
 ## Rules
 
-### 1. Relevance Analysis
+### 1. Clarity And Non-Overlap
 
-- วิเคราะห์จาก `Goal`, `Scope`, และ `Execute` ไม่ใช่แค่ `name` หรือ `description`
-- พิจารณาทั้ง input และ output ของ skill
-- ตรวจสอบว่า skills สามารถใช้ร่วมกันได้จริง
-- ไม่แนะนำ skill ที่ทำหน้าที่ซ้ำซ้อน
+- Taxonomy ต้องชัดเจน, ไม่ซ้ำซ้อน, ครอบคลุม
+- ใช้ criteria ทีวัดผลได้ในการแบ่งหมวดหมู่
+- หลีกเลี่ยง categories ทีกว้างเกินไปหรือ narrow เกินไป
 
-### 2. Suggestion Format
+### 2. Flexibility
 
-- ระบุชื่อ skill ด้วย backticks เช่น `skill-name`
-- ระบุเหตุผลสั้นกระชับ
-- ระบุประเภทความเกี่ยวข้องในวงเล็บ
-- สำหรับไอเดียใหม่ ระบุชื่อ proposed skill และ rationale
-- จัดลำดับจากมากไปน้อย
+- รองรับ multi-parent หรือ cross-cutting ถ้าจำเป็น
+- เอกสาร label, description, และ examples ให้ครบ
+- ทำ version หรือ timestamp ถ้า taxonomy เปลี่ยนแปลงบ่อย
 
-### 3. Validation
+### 3. Output Quality
 
-- ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
-- ตรวจสอบว่าไม่แนะนำ skill ตัวเอง
-- ตรวจสอบว่าไม่ซ้ำซ้อนกับ `related` ที่มีอยู่
-- ทำ `/check-reference` เพื่อยื่นยัน references มีอยู่จริง
-
-### 4. Cross-Reference Update
-
-- อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
-- ใช้ `/update-references` สำหรับการอัปเดต
-- ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
+- Output ต้องอ่านง่ายและนำไปใช้ต่อได้
+- ระบุรูปแบบ output ตามความเหมาะสมของ audience
+- รายงาน gaps หรือ items ที่ยังจัดหมวดหมู่ไม่สมบูรณ์
 
 ## Expected Outcome
 
-- Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน
-- ไอเดีย skills ใหม่ที่ควรสร้างถูกระบุพร้อม rationale
-- `related` ใน frontmatter อัปเดตครบถ้วน
-- การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
-- ลดการพลาด skills ที่ควรใช้ร่วมกัน
+- Taxonomy ทีสมบูรณ์และใช้งานได้
+- Items ทุกตัวถูกจัดอยู่ใน category ที่เหมาะสม
+- Categories มี labels และ descriptions ชัดเจน
+- Output อยู่ในรูปแบบที่เลือก (tree, table, tags, markdown)
+- มี guidance สำหรับเพิ่ม/แก้ไข item ในอนาคต

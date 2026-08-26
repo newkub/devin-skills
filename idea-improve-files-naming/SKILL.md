@@ -54,7 +54,7 @@ description: สร้างชื่อไฟล์และ directory สำ�
 
 > Goal: สรุปผลให้ user เลือก
 
-1. ใช้ `/report-table` แสดง: Type, Suggested Name, Convention, Notes
+1. ใช้ `/report-markdown-table` แสดง: Type, Suggested Name, Convention, Notes
 2. แยกเป็น groups: directories, source files, tests, docs
 3. ถ้ามีหลายทางเลือกให้เรียงตาม preference
 

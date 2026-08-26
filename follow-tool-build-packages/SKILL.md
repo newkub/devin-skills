@@ -37,7 +37,7 @@ packages/
 
 ## Core Principles
 
-- เริ่มจาก `/analyze-project` และ `/refactor-packages`
+- เริ่มจาก `/analyze-project` และ `/refactor-workspace`
 - เลือก runtime:
   - Node: `/follow-programming-paradigm`
   - Bun: `/follow-programming-paradigm`

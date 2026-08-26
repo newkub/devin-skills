@@ -5,7 +5,7 @@ related:
   - update-readme-md
   - scan-codebase
   - check-monorepo
-  - report-table
+  - report-markdown-table
   - suggest-next-action
 ---
 
@@ -104,7 +104,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 1. คำนวณ review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
 2. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-3. ทำ `/report-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
+3. ทำ `/report-markdown-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 > ดู `references/scoring.md` สำหรับ scoring formula และ grade thresholds
@@ -135,7 +135,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

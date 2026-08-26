@@ -17,7 +17,7 @@ related:
   - edit-manual
   - deep-review
   - report
-  - report-table
+  - report-markdown-table
   - suggest-next-action
 ---
 
@@ -136,7 +136,7 @@ related:
 > Goal: Report
 
 1. ทำ `/report` สรุปผลลัพธ์
-2. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
+2. ใช้ `/report-markdown-table` สำหรับ test results, coverage metrics, และ action items
 3. ทำ `/suggest-next-action` หากยังมี issues
 
 ## Rules

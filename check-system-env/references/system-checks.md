@@ -44,9 +44,9 @@ Test-Path "$env:USERPROFILE\.vscode\settings.json"
 
 ### 13. Generate Report
 
-รวบรวมข้อมูลทั้งหมดและรายงานในรูปแบบตารางตาม `/report-table`:
+รวบรวมข้อมูลทั้งหมดและรายงานในรูปแบบตารางตาม `/report-markdown-table`:
 
 1. รวบรวมข้อมูลจากทุก steps
-2. จัดรูปแบบตารางตาม `/report-table`
+2. จัดรูปแบบตารางตาม `/report-markdown-table`
 3. ใช้ numbered columns, headers ชัดเจน, alignment ที่เหมาะสม
 4. ใช้ symbols (✅, ❌, ⚠️) สำหรับ status

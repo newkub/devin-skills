@@ -43,8 +43,8 @@ description: Coordinate multiple subagents to work on independent subtasks and m
 > Goal: รวมผลลัพธ์และรายงาน
 
 1. แก้ไข conflicts ถ้ามี
-2. ทำ `/report-table` สรุป status แต่ละ agent
-3. ทำ `/report-ansi` สำหรับ progress
+2. ทำ `/report-markdown-table` สรุป status แต่ละ agent
+3. ทำ `/report-markdown-ansi` สำหรับ progress
 4. ทำ `/suggest-next-action`
 
 ## Rules

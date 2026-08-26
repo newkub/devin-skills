@@ -11,7 +11,7 @@ description: รายงาน features ทั้งหมดใน project เ
 
 อ่านและแสดงผล features จาก generated TypeScript files ใน `.devin/features/<workspace>/` เป็นตารางในแชทเท่านั้น
 
-ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
+ไม่รวม: สแกนและสร้าง feature files (ใช้ `/update-features-md`), วิเคราะห์และ review features (ใช้ `/deep-review`), ตรวจสอบ coverage (ใช้ `/deep-review`)
 
 ## Execute
 
@@ -22,7 +22,7 @@ description: รายงาน features ทั้งหมดใน project เ
 ตรวจสอบว่า features files มีอยู่และเป็นปัจจุบัน
 
 1. ตรวจสอบ `.devin/features/<workspace>/index.ts` มีอยู่หรือไม่
-2. ถ้าไม่มีหรือ outdated ให้ทำ `/update-features` เพื่อสแกนและสร้าง feature files
+2. ถ้าไม่มีหรือ outdated ให้ทำ `/update-features-md` เพื่อสแกนและสร้าง feature files
 3. ถ้ามีแล้ว ให้ข้ามไป Step 2
 
 ### 2. Read Feature Files
@@ -42,7 +42,7 @@ description: รายงาน features ทั้งหมดใน project เ
 
 จัดรูปแบบ features เป็นตารางในแชท
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบตาราง
 2. คอลัมน์: # | Workspace | Feature | Description | Why | Solutions | Module | Route | API | DB | Topics | Status
 3. จัดกลุ่มตาม workspace แล้วตาม module
 4. เรียงลำดับ features ตาม module และ status (`active` ก่อน, `partial` ทีหลัง, `deprecated` สุดท้าย)
@@ -65,8 +65,8 @@ description: รายงาน features ทั้งหมดใน project เ
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -74,8 +74,8 @@ description: รายงาน features ทั้งหมดใน project เ
 ### 1. Read-Only Action
 
 - อ่าน feature files เท่านั้น ไม่แก้ไข code หรือ feature files
-- ถ้า feature files ไม่มีอยู่ ให้ทำ `/update-features` แทนการสร้างเอง
-- ถ้า feature files outdated ให้ทำ `/update-features` เพื่อ refresh
+- ถ้า feature files ไม่มีอยู่ ให้ทำ `/update-features-md` แทนการสร้างเอง
+- ถ้า feature files outdated ให้ทำ `/update-features-md` เพื่อ refresh
 
 ### 2. Table Format
 
@@ -88,14 +88,14 @@ description: รายงาน features ทั้งหมดใน project เ
 ### 3. Data Source
 
 - อ่านจาก `.devin/features/<workspace>/index.ts` เท่านั้น
-- ไม่สแกน codebase โดยตรง — ใช้ `/update-features` สำหรับการสแกน
+- ไม่สแกน codebase โดยตรง — ใช้ `/update-features-md` สำหรับการสแกน
 - ถ้า workspace ไม่มี feature files ให้ข้ามและ report ใน summary
 
 ### 4. Completeness
 
 - รายงาน features จากทุก workspace ที่มี feature files
 - ระบุ workspace ที่ไม่มี feature files ใน summary
-- ถ้าไม่มี feature files เลย ให้ทำ `/update-features` ก่อน
+- ถ้าไม่มี feature files เลย ให้ทำ `/update-features-md` ก่อน
 
 ## Expected Outcome
 

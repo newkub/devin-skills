@@ -55,7 +55,7 @@ description: อัปเดต dotfiles ด้วย chezmoi รวมถึง
 
 1. รัน `chezmoi git status` หรือ `chezmoi cd` แล้ว `git status`
 2. ทำ `/git-commit` ถ้ามี source dir repo
-3. ใช้ `/report-table` แสดง: File, Action, Status
+3. ใช้ `/report-markdown-table` แสดง: File, Action, Status
 4. ทำ `/suggest-next-action`
 
 ## Rules

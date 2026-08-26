@@ -6,7 +6,7 @@ related:
   - deep-plan
   - realize-implementation
   - continue
-  - report-table
+  - report-markdown-table
   - ask-me
 ---
 
@@ -84,3 +84,4 @@ related:
 - `TODO.md` มี task ใหมท้ายตาราง
 - Task มี title, description, status, priority, created
 - พร้อมสำหรับ `/deep-plan`, `/realize-implementation`, `/update-todo-md` หรือ `/continue` ต่อ
+- ถ้าเป็น monorepo ให้ใส่ task ลง `TODO.md` แค่ project root ไม่ใช่ของแต่ละ workspace

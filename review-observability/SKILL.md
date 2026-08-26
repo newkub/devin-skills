@@ -164,7 +164,7 @@ Review incident response readiness ครอบคลุม runbook, on-call, po
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-table`
+5. ทำ `/report` พร้อม `/report-markdown-table`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -209,7 +209,7 @@ Review incident response readiness ครอบคลุม runbook, on-call, po
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

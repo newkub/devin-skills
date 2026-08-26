@@ -1,150 +1,91 @@
 ---
 name: use-subagents
-description: แบ่งงานเป็น subagents sync หรือ async ตามความเหมาะสม พร้อม verify รอบเดียวจบ
+description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles พร้อม deep context จาก /follow-deep
 argument-hint: "[task]"
+related:
+  - follow-devin-global-subagents
+  - follow-deep
+  - list-devin-global-subagents
+  - validate
+  - ship
+  - report
 ---
 
 ## Goal
 
-แบ่งงานซับซ้อนเป็น subtasks ทำขนานกัน โดยตัดสินใจ sync หรือ async อัตโนมัติ พร้อม verify รอบเดียวจบ ประหยัด token และเร็ว
+แบ่งงานออกเป็น subtasks แล้ว spawn subagents ตาม roles พร้อมกัน โดยรวบรวม deep context ก่อนส่งงาน
 
 ## Scope
 
-ใช้เมื่องานสามารถแบ่งเป็น subtasks ได้ ทั้งแบบ independent (async) หรือ dependent (sync)
-
-ครอบคลุมการแบ่งงาน การเลือก subagent ตาม role การ spawn ขนาน การ merge ผล และการ verify — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/review-performance` หรือดู `?review-performance/references/concurrency.md`)
+ใช้เมื่องานมีหลายไฟล์/หลาย package/หลายด้าน ต้องการมุมมองจากหลาย roles หรือทำงานขนานเพื่อเร็วขึ้น
 
 ## Execute
 
-### 1. Classify Sync Or Async
+### 1. Deep Context First
 
-> Goal: เลือกโหมด execution ตามลักษณะงาน
+> Goal: รวบรวม context ลึกก่อน spawn subagents
 
-ตัดสินใจตาม decision tree:
+1. ทำ `/follow-deep` เพื่อวิเคราะห์ root cause, impact, consumers และ dependencies
+2. บันทึก context สำคัญ: paths, conventions, ไฟล์ที่เกี่ยวข้อง, ข้อจำกัด
+3. ถ้าไม่แน่ใจ scope → ทำ `/ask-me` ก่อน
 
-| เงื่อนไข | โหมด | เหตุผล |
-|---|---|---|
-| 1-2 subtasks หรือ dependent กัน | SYNC | spawn ไม่คุ้ม overhead |
-| 3+ independent subtasks | ASYNC | parallel ได้จริง |
-| Research-heavy (fetch docs, web) | ASYNC | I/O bound เหมาะ parallel |
-| File ops ขนานในไฟล์ต่างกัน | ASYNC | ไม่มี conflict |
-| งานเล็ก, 1 ไฟล์, sequential | SYNC | ทำตรงๆ เร็วกว่า |
+### 2. Decompose Task
 
-- ถ้าไม่แน่ใจ → เริ่ม SYNC แล้ว escalate เป็น ASYNC ถ้าพบว่าช้า
-- บันทึกเหตุผลการเลือกใน comment สั้นๆ
+> Goal: แบ่งงานออกเป็น subtasks ที่ชัดเจน
 
-### 2. Plan Inline
+1. อ่านผลจาก `/follow-deep`
+2. แบ่ง subtasks ตาม package, layer, หรือ role
+3. แต่ละ subtask ต้องมี: input, expected output, success criteria, files ที่ต้องแก้
+4. ระบุ dependencies ระหว่าง subtasks ถ้ามี
 
-> Goal: มีแผนชัดเวลา spawn โดยไม่ต้องสร้างไฟล์ถ้าไม่จำเป็น
+### 3. Select Subagents
 
-1. แบ่ง subtasks ตาม responsibility ให้ independent
-2. ระบุ inputs, deliverables, success criteria ของแต่ละ subtask
-3. ระบุ dependencies และ execution order
-4. ถ้าเป็น ASYNC → เลือก subagent profile ตาม role:
-   - `reviewer`, `senior-frontend`, `senior-backend` สำหรับ code review/implementation
-   - `researcher`, `subagent_explore` สำหรับ research/exploration
-   - `fixer`, `refactor` สำหรับ bug fixes/refactoring
-   - `qa`, `staff-qa` สำหรับ testing
-   - `security-auditor` สำหรับ security review
-   - ถ้าไม่แน่ใจ → `subagent_general`
-5. สร้างไฟล์ plan ใน `.devin/plan/` เฉพาะ เมื่อ:
-   - subtasks > 5
-   - งาน high-risk (destructive, production)
-   - ต้อง human gate ระหว่างขั้นตอน
-6. ถ้าไม่ตรงข้อ 5 → plan inline ใน context พอ
+> Goal: เลือก role ที่ตรงกับแต่ละ subtask
 
-### 3. Execute
+1. ทำ `/list-devin-global-subagents` เพื่อดู roles ทีม
+2. เลือก profile เช่น fixer, debugger, refactor, qa, security, architect
+3. ถ้าไม่มี role ที่ต้องการ → ใช้ `subagent_general` หรือ `subagent_explore`
+4. ระบุ context ให้ครบใน prompt
 
-> Goal: ทำ subtasks ตามโหมดที่เลือก
+### 4. Spawn Subagents
 
-#### SYNC Mode
+> Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ทำ subtasks ตามลำดับตรงๆ ด้วย tools ปกติ
-2. รวบรวมผลลัพธ์ทุก subtask
-3. ไปขั้นตอนที่ 4
+1. ใช้ `run_subagent` แบบ `is_background=true` เพื่อรัน parallel
+2. ห้ามส่ง subtasks ซ้ำซ้อนหรือทับซ้อนกัน
+3. รอผลด้วย `read_subagent` หรือ continue ทำงานอื่นไป
+4. ถ้า subagent ติด error → ทำ `resolve-errors` ก่อน spawn ตัวใหม่
 
-#### ASYNC Mode
+### 5. Merge And Fix
 
-1. ใช้ `run_subagent` ด้วย `is_background=true` สำหรับแต่ละ subtask
-2. prompt ต้องระบุ: context, deliverable, constraints, success criteria
-3. บันทึก agent ids ทั้งหมด
-4. ไม่เกิน 10 subagents ต่อ batch — ถ้ามากกว่าแบ่ง batch
-5. spawn ทุกตัวใน batch เดียวพร้อมกัน
-6. รอ `<subagent_completion_notification>` อัตโนมัติ — ไม่ต้อง poll
-7. ถ้า agent ล้มเหลว → retry ครั้งเดียว ถ้ายัง fail → escalate
-8. รวบรวม results จากทุก agent
+> Goal: รวมผลและแก้ conflicts
 
-### 4. Verify
+1. รวบรวม output จากทุก subagent
+2. ตรวจ conflicts ระหว่างการแก้ไข
+3. ใช้ `/resolve-errors` สูงสุด 3 รอบ
+4. ถ้ายังไม่ผ่าน → ทำ `/ask-me`
 
-> Goal: review + validate + verify รวบยอดรอบเดียว
+### 6. Validate And Ship
 
-1. ตรวจผลรวม: correctness, completeness, consistency
-2. แก้ conflicts ระหว่าง subagents ถ้ามี — ถ้า 2 agents แก้ไฟล์เดียวกัน → เลือกผลที่ถูกต้องและ merge manually
-3. รัน checks ที่เกี่ยวข้อง: lint, typecheck, build, tests (ถ้ามี)
-4. ตรวจ cross-references ถ้าเปลี่ยนชื่อไฟล์
-5. ถ้าพบ issues:
-   - Critical/High → แก้ทันที → verify ซ้ำ (max 3 รอบ)
-   - Low → บันทึกไว้ report แล้วจบ
-6. ถ้าเกิน 3 รอบ → stop และ report พร้อมสาเหตุ
+> Goal: ส่งมอบงานทีผ่าน check
 
-### 5. Report
-
-> Goal: รายงานผลกระชับ
-
-1. สรุปด้วยตาราง: subtask, status, result
-2. ระบุสิ่งที่ค้าง ถ้ามี
-3. แนะนำขั้นต่อไป 1-2 บรรทัด
-4. ลบไฟล์ plan ถ้าสร้างไว้
-5. ถ้ามี orphan agents → kill และ report
+1. รัน `run-check` ตาม ecosystem ทีตรวจพบ
+2. ถ้าผ่าน → ทำ `/ship`
+3. ถ้าไม่ผ่าน → report สถานะและขั้นตอนถัดไป
+4. ทำ `/report` สรุปสิ่งทีแต่ละ subagent ทำ
 
 ## Rules
 
-### 1. Auto Sync Async
-
-- ตัดสินใจ sync/async อัตโนมัติตามขั้นตอนที่ 1
-- SYNC เป็นค่าเริ่มต้นเมื่อไม่แน่ใจ
-- บันทึกเหตุผลการเลือกสั้นๆ
-
-### 2. Task Isolation
-
-- แต่ละ subtask ต้อง independent และมี scope ชัดเจน
-- ห้ามหลาย agent แก้ไขไฟล์เดียวกันใน async mode
-- กำหนด timeout แต่ละ agent ถ้าเป็น async
-
-### 3. Clear Prompts
-
-- prompt ต้องระบุ deliverable, constraints, success criteria
-- ห้ามสั่งให้ agent ตัดสินใจเรื่องเสี่ยงเอง
-- แนบ context ที่จำเป็นเท่านั้น
-
-### 4. No Orphan Agents
-
-- บันทึกทุก agent id
-- รอ completion notification อัตโนมัติ
-- ถ้า agent ค้างเกิน timeout → kill และ report
-
-### 5. Verify Once Fix Loop
-
-- review + validate + verify รวบยอดรอบเดียว
-- ถ้า fail → fix → verify ซ้ำ (max 3 รอบ)
-- ถ้าเกิน 3 รอบ → stop และ report
-
-### 6. Plan Only When Needed
-
-- plan inline เป็นค่าเริ่มต้น
-- สร้างไฟล์ plan เฉพาะ > 5 subtasks หรือ high-risk
-- ลบไฟล์ plan หลังงานเสร็จ
-
-### 7. Token Efficiency
-
-- ไม่เรียก skill ย่อยถ้าไม่จำเป็น — ทำตรงๆ
-- ใช้ `read_subagent` เฉพาะตอนรอผลจำเป็น
-- รอ `<subagent_completion_notification>` อัตโนมัติแทนการ poll
+1. **Always /follow-deep first** — ห้าม spawn subagents โดยไม่มี deep context
+2. **One role per subtask** — ไม่ผสมหลาย roles ใน subagent เดียว
+3. **No overlapping edits** — แต่ละ subagent ต้องทำงานคนละชุดไฟล์ เว้นเสียแต่กำหนดชัดเจน
+4. **Merge before ship** — ต้องรวมผลก่อน push หรือ final report
+5. **Run checks after merge** — ไม่ส่งมอบโดยไม่ validate
+6. **Stop on 3 failures** — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
 
 ## Expected Outcome
 
-- ตัดสินใจ sync/async อัตโนมัติตามลักษณะงาน
-- งานเล็ก 2 steps (classify + execute), งานใหญ่ 5 steps
-- ประหยัด 60-80% tokens เทียบ flow เดิม
-- ผลลัพธ์ผ่าน verify รอบเดียว ถ้าไม่มี issues
-- รายงาน status ของทุก subtask พร้อม next action
+- งานถูกแบ่งและทำขนานกันโดย subagents
+- มี deep context ก่อนเริ่มแก้
+- ผลลัพธ์ถูก merge และผ่าน `run-check`
+- มีรายงานสรุปสั้นและชัดเจน

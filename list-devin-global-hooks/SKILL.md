@@ -56,7 +56,7 @@ description: List global and project-level devin hooks from common config paths
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง path, event, command, enabled
+1. ทำ `/report-markdown-table` แสดง path, event, command, enabled
 2. ถ้าไม่มี hooks → report ว่าไม่มี global hooks ตั้งค่า
 3. ทำ `/suggest-next-action` ถ้าต้องแก้ไขหรือสร้าง
 
@@ -81,7 +81,7 @@ description: List global and project-level devin hooks from common config paths
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, events, commands
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

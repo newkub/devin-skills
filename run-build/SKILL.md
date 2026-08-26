@@ -59,8 +59,8 @@ description: รัน build process อย่างเป็นระบบเ�
 
 > Goal: สรุปผล build
 
-1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
-2. รัน `/report-ansi` เพื่อแสดงสรุปผลลัพธ์
+1. รัน `/report-markdown-table` เพื่อแสดง build metrics (time, size, files)
+2. รัน `/report-markdown-ansi` เพื่อแสดงสรุปผลลัพธ์
 
 ## Rules
 
@@ -81,8 +81,8 @@ description: รัน build process อย่างเป็นระบบเ�
 
 ### 3. Reporting
 
-- ใช้ `/report-table` สำหรับ metrics
-- ใช้ `/report-ansi` สำหรับสรุปข้อความ
+- ใช้ `/report-markdown-table` สำหรับ metrics
+- ใช้ `/report-markdown-ansi` สำหรับสรุปข้อความ
 - ไม่รายงานซ้ำซ้อน
 
 ## Expected Outcome
@@ -140,8 +140,8 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table`
-2. ทำ `/report-ansi`
+1. ทำ `/report-markdown-table`
+2. ทำ `/report-markdown-ansi`
 
 ## Rules
 

@@ -112,7 +112,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 > Goal: Report And Suggest
 
-ทำ `/report-table` เพื่อสร้างตารางสรุปผล
+ทำ `/report-markdown-table` เพื่อสร้างตารางสรุปผล
 
 - ตาราง: Dimension, Finding, Severity, Location, Recommendation
 - จัดกลุ่ม findings ตาม dimension

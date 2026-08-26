@@ -70,7 +70,7 @@ argument-hint: "[target]"
 
 > Goal: รายงานไอเดียและ next action
 
-1. ทำ `/report-table`
+1. ทำ `/report-markdown-table`
 2. คอลัมน์: number, source(s), target, issue, idea, action, scope, impact, effort
 3. จัดลำดับตาม impact/effort ratio
 4. ทำ `/suggest-next-action`
@@ -112,5 +112,5 @@ argument-hint: "[target]"
 
 - รายการไอเดีย merge แบบ continuous numbering
 - ทุกไอเดียมี source, target, action, scope, impact, effort
-- ตาราง `report-table` พร้อม next action
+- ตาราง `report-markdown-table` พร้อม next action
 - ไอเดียพร้อม execute ด้วย `/merge`

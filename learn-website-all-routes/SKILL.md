@@ -49,7 +49,7 @@ related:
 1. สร้าง `references/routes.md` ใน project หรือ skill directory
 2. ใช้ template จาก `references/output-template.md`
 3. ใส่ sections: `## Page Routes`, `## API Routes`, `## Dynamic Patterns`, `## Authentication Required`
-4. ใช้ `/report-table` สำหรับ route tables
+4. ใช้ `/report-markdown-table` สำหรับ route tables
 
 ### 5. Update Cross-References
 

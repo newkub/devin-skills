@@ -101,7 +101,7 @@ Domain Knowledge:
 
 > Goal: Generate Onboarding Report
 
-1. ทำ `/report` ด้วย `/report-table`
+1. ทำ `/report` ด้วย `/report-markdown-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, New Dev Impact, Recommendation
 3. สร้าง onboarding timeline estimate: setup, first bug fix, first feature, full productivity
 4. สรุป top 3-5 friction points ที่ต้องแก้ก่อน

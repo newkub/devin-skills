@@ -57,7 +57,7 @@ related:
    - url: `| jq -r '.items[].link'`
    - created: `| jq -r '.items[].created'`
    - tags: `| jq -r '.items[].tags[]'`
-3. ใช้ `/report-table` เพื่อสร้างตาราง: No, Title, Link, Tags, Created
+3. ใช้ `/report-markdown-table` เพื่อสร้างตาราง: No, Title, Link, Tags, Created
 4. บันทึกลงไฟล์: `raindrop bookmark search "" --sort created > raindrop-latest.json`
 
 ### 5. Handle Pagination And Empty Results

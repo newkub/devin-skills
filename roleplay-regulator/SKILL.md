@@ -87,7 +87,7 @@ Goal reminder: จำลองหน่วยงานภาครัฐเพ�
 
 > Goal: Generate Report
 
-1. ทำ `/report` ด้วย `/report-table`
+1. ทำ `/report` ด้วย `/report-markdown-table`
 2. สรุป top 5-10 ประเด็นที่มีความเสี่ยงสูงสุด
 3. ใส่ disclaimer "ไม่ใช่คำปรึกษาทางกฎหมาย ให้ปรึกษาทนาย/ที่ปรึกษากฎหมาย"
 4. ทำ `/suggest-next-action`

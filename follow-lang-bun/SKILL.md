@@ -64,6 +64,7 @@ description: พัฒนาโปรเจกต์ด้วย Bun native APIs
 - FFI & Low-level: `references/bun-ffi.md`
 - Other Bun APIs: `references/bun-other.md`
 - Web-standard APIs: `references/bun-web-apis.md`
+- Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `follow-runtime-bun`
 
 ## Expected Outcome
 

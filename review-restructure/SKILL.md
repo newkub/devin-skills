@@ -95,7 +95,7 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 
 > Goal: รายงาน structure health และ relocation plan
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง Structure Health Metrics: metric, count, threshold, status
 3. สร้างตาราง Relocation Plan: file, old path, new path, reason, priority
 4. แสดง dry-run preview ของ structure before/after
@@ -140,7 +140,7 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

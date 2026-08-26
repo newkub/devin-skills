@@ -34,9 +34,9 @@ description: Report usage statistics and patterns of APIs, functions, or skills
 
 > Goal: สร้างรายงาน
 
-1. ทำ `/report-table` สำหรับ top consumers, frequency, versions
-2. ทำ `/report-file-structure` สำหรับ caller tree
-3. ทำ `/report-ansi` สำหรับ status/progress
+1. ทำ `/report-markdown-table` สำหรับ top consumers, frequency, versions
+2. ทำ `/report-markdown-file-structure` สำหรับ caller tree
+3. ทำ `/report-markdown-ansi` สำหรับ status/progress
 4. สรุป unused, overused, deprecated usages
 
 ## Rules

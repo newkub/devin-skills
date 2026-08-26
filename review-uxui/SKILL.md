@@ -10,7 +10,7 @@ related:
   - run-review
   - deep-validate
   - report
-  - report-table
+  - report-markdown-table
   - suggest-next-action
 ---
 
@@ -134,7 +134,7 @@ Review design-dev handoff — ดูรายละเอียดใน `refere
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง design maturity scorecard: 5 dimensions, score 1-5
@@ -194,7 +194,7 @@ Review design-dev handoff — ดูรายละเอียดใน `refere
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

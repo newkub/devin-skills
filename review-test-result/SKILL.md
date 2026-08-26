@@ -82,7 +82,7 @@ Review ผลลัพธ์จากการ run tests (pass/fail, coverage, f
 
 > Goal: สรุปผลและ action ถัดไป
 
-1. ทำ `/report-table` ด้วยคอลัมน์: Test, Status, Category, Root Cause, Action
+1. ทำ `/report-markdown-table` ด้วยคอลัมน์: Test, Status, Category, Root Cause, Action
 2. ทำ Coverage Delta Report: File, Before, After, Gap, Priority
 3. ทำ Flaky Report: Test, Run 1, Run 2, Run 3, Suspected Cause
 4. ทำ `/suggest-next-action` ตาม priority

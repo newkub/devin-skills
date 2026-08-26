@@ -97,7 +97,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 
 ### 5. Report Formatting
 
-จัดรูปแบบ output ตาม `/report-table`
+จัดรูปแบบ output ตาม `/report-markdown-table`
 
 1. กำหนด table structure ด้วย numbered columns (No, Name, Path, Type, Dependencies, Status)
 2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน

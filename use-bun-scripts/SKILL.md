@@ -17,7 +17,8 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 
 > Goal: Prepare
 
-1. ทำตาม `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
+1. ทำ `/follow-runtime-bun` เพื่อ setup Bun runtime ก่อนสร้าง scripts
+2. ทำตาม `/follow-write-devin-skills` เมื่อสร้างหรือแก้ไข workflow
 
 ### 2. Create Script
 

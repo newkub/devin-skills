@@ -84,7 +84,7 @@ score = sum(severity_weight * count) / total_findings
 
 ## Report Format
 
-รายงานผลด้วย `/report-table`:
+รายงานผลด้วย `/report-markdown-table`:
 
 | Category | Severity | Finding | Evidence | Action |
 |----------|----------|---------|----------|--------|

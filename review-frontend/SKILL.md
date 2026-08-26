@@ -10,7 +10,7 @@ related:
   - run-review
   - deep-validate
   - report
-  - report-table
+  - report-markdown-table
   - suggest-next-action
 ---
 
@@ -167,7 +167,7 @@ Review frontend testing — ดูรายละเอียดใน `referenc
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง Metrics Summary ตาม dimension พร้อม status indicators และ score
@@ -226,7 +226,7 @@ Review frontend testing — ดูรายละเอียดใน `referenc
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

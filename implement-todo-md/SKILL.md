@@ -5,7 +5,7 @@ related:
   - update-todo-md
   - realize-implementation
   - continue
-  - report-table
+  - report-markdown-table
   - validate
   - ship
 ---
@@ -77,7 +77,7 @@ related:
 1. ทำ `/validate` เพื่อตรวจ references และ structure
 2. ทำ `/run-verify` ถ้ามี
 3. ทำ `/ship`
-4. ใช้ `/report-table` สรุป tasks ทั้งหมด
+4. ใช้ `/report-markdown-table` สรุป tasks ทั้งหมด
 
 ## Rules
 

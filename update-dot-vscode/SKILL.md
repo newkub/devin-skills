@@ -8,7 +8,7 @@ related:
   - check-monorepo
   - learn-from-web
   - update-references
-  - report-table
+  - report-markdown-table
   - validate
 ---
 

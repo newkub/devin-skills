@@ -1,7 +1,7 @@
 ---
 name: idea-new-devin-skills-global
-description: แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้/สร้างต่อจาก skill ปัจจุบัน
-argument-hint: "[skill-name]"
+description: แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก context ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+argument-hint: "[context]"
 related:
   - idea-convert-my-global-cli-to-skills
   - idea-features
@@ -11,24 +11,25 @@ related:
 
 ## Goal
 
-แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก skill ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก context ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
 
 ## Scope
 
-ใช้หลังจากเขียนหรือแก้ไข `SKILL.md` เสร็จ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
+ใช้หลังจากวิเคราะห์หรือทำงานกับ skill, task, file, หรือ project ใดๆ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
 
 ## Execute
 
-### 1. Analyze Current Skill
+### 1. Analyze Current Context
 
-> Goal: Analyze Current Skill
+> Goal: Analyze Current Context
 
-วิเคราะห์ skill ปัจจุบันเพื่อเข้าใจ context และ purpose
+วิเคราะห์ context ปัจจุบันเพื่อเข้าใจ purpose และ input
 
-1. อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ skill ปัจจุบัน
-2. ระบุ `related` skills ที่มีอยู่แล้ว
-3. วิเคราะห์ `Execute` steps และ `Rules` เพื่อเข้าใจการใช้งาน
-4. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
+1. ถ้าเป็น skill → อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ `SKILL.md`
+2. ถ้าเป็น task, file, หรือ project → อ่านไฟล์ที่เกี่ยวข้องและระบุ requirements, patterns, technologies
+3. ระบุ `related` skills ที่มีอยู่แล้ว
+4. วิเคราะห์ `Execute` steps, `Rules`, หรือ requirements เพื่อเข้าใจการใช้งาน
+5. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 
 ### 2. List Available Skills
 
@@ -45,7 +46,7 @@ related:
 
 > Goal: Match Related Skills
 
-จับคู่ skills ที่เกี่ยวข้องกับ skill ปัจจุบัน
+จับคู่ skills ที่เกี่ยวข้องกับ context ปัจจุบัน
 
 1. วิเคราะห์ความเกี่ยวข้องจาก `Goal`, `Scope`, และ `Execute`
 2. จัดลำดับความเกี่ยวข้อง: `direct dependency`, `complementary`, `follow-up`, `alternative`
@@ -59,19 +60,19 @@ related:
 แนะนำ skills พร้อมเหตุผลและไอเดียใหม่
 
 1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลว่าทำไมควรใช้
-2. ระบุประเภทความเกี่ยวข้อง (`direct dependency`, `complementary`, `follow-up`, `alternative`)
+2. ระบุประเภทความเกี่ยวข้องในวงเล็บ (`direct dependency`, `complementary`, `follow-up`, `alternative`)
 3. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
 4. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-5. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
+5. ถ้า context ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
 6. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
 
 ### 5. Update Related Skills
 
 > Goal: Update Related Skills
 
-อัปเดต `related` ในไฟล์ skill ปัจจุบัน
+อัปเดต `related` ใน skill ปัจจุบัน (ถ้ามี)
 
-1. เพิ่ม skills ที่แนะนำเข้าไปใน `related` ของ skill ปัจจุบัน
+1. ถ้า context เป็น skill → เพิ่ม skills ที่แนะนำเข้าไปใน `related` ของ `SKILL.md`
 2. ตรวจสอบว่าไม่ซ้ำซ้อนกับที่มีอยู่แล้ว
 3. ทำ `/update-references` เพื่ออัปเดต references ในไฟล์อื่นที่เกี่ยวข้อง
 
@@ -80,7 +81,7 @@ related:
 ### 1. Relevance Analysis
 
 - วิเคราะห์จาก `Goal`, `Scope`, และ `Execute` ไม่ใช่แค่ `name` หรือ `description`
-- พิจารณาทั้ง input และ output ของ skill
+- พิจารณาทั้ง input และ output ของ context
 - ตรวจสอบว่า skills สามารถใช้ร่วมกันได้จริง
 - ไม่แนะนำ skill ที่ทำหน้าที่ซ้ำซ้อน
 

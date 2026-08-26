@@ -192,6 +192,13 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 - ตรวจสอบ compatibility กับ Web standards
 - ใช้ Bun APIs เฉพาะสำหรับ server-side tasks
 
+### 7. Bun Runtime Setup
+
+ทำ `/follow-runtime-bun` เพื่อ setup Bun runtime ก่อนใช้ Bun native APIs
+
+- ใช้ `/follow-runtime-bun` สำหรับ install, verify, `bunfig.toml`, `bun run`, `bun test`, `bun build`
+- ใช้ `/follow-lang-bun` สำหรับ Bun APIs and Web-standard APIs ใน code
+
 ## Expected Outcome
 
 - Code ที่เร็วขึ้นด้วย native performance

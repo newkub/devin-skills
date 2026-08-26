@@ -79,7 +79,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง Tech Stack Metrics Summary: framework versions, library alignment, build tools, security vulnerabilities, unused packages, duplicate packages พร้อม status
 3. สร้างตาราง Dependency Health: dependency, version, issue, severity, recommendation
 4. สร้างตาราง Library Design: API surface, export strategy, bundle size, peer deps, semver, severity
@@ -134,7 +134,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

@@ -86,7 +86,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 > Goal: สรุป readiness score และ prioritized implementation order
 
 1. คำนวณ implementation readiness score จาก [references/readiness-score.md](references/readiness-score.md)
-2. ทำ `/report` พร้อม `/report-table`
+2. ทำ `/report` พร้อม `/report-markdown-table`
 3. สร้างตาราง Readiness Summary: Category, Status, Findings, Score
 4. สร้างตาราง Prioritized Implementation Order: Priority, Skill, Target, Blockers, Effort
 5. สร้างตาราง Blockers: Blocker, Severity, Action Required, Skill
@@ -117,7 +117,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

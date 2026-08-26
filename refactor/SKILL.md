@@ -4,7 +4,7 @@ description: Refactor codebase ครบวงจร — SRP, boundaries, code s
 argument-hint: "[scope]"
 related:
   - refactor-to-single-responsibility
-  - refactor-packages
+  - refactor-workspace
   - review-refactor
   - review-quality
   - follow-architecture
@@ -50,7 +50,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 3. ถ้ามีไฟล์ยาว >250 บรรทัด → ทำ `/refactor-to-single-responsibility`
 4. ถ้ามี imports/exports ซับซ้อน → ทำ `/review-architecture`
 5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
-6. ถ้ามี package/module ปัญหา → ทำ `/refactor-packages`
+6. ถ้ามี package/module ปัญหา → ทำ `/refactor-workspace`
 
 ### 4. Update References
 

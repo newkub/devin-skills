@@ -75,7 +75,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
 3. สร้างตาราง Metrics Summary ตาม dimension พร้อม status indicators และ score
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
@@ -142,7 +142,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

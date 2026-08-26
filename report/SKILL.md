@@ -30,12 +30,12 @@ description: ตอบในแชทเป็นตารางพร้อม 
 
 > Goal: ข้อมูลถูกจัดรูปแบบในรูปแบบที่อ่านง่ายที่สุด
 
-1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-table`
-2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-table` พร้อม numbered columns
+1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-markdown-table`
+2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-markdown-table` พร้อม numbered columns
 3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
-4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-ansi`
-5. ถ้าเป็นรายงานสถานะ ใช้ `/report-agents-session-status`
-6. ถ้าเป็นรายงาน error ใช้ `/report-ansi`
+4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-markdown-ansi`
+5. ถ้าเป็นรายงานสถานะ ใช้ `/report-progress`
+6. ถ้าเป็นรายงาน error ใช้ `/report-markdown-ansi`
 
 ### 3. Apply Grouping And Sorting
 

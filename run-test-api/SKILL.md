@@ -48,7 +48,7 @@ description: รัน API tests โดยเรียก endpoints และต
 > Goal: ตรวจสอบผลและรายงาน
 
 1. ทำ `/validate` กับ source ที่เกี่ยวข้องเมื่อ API test fail
-2. สรุปผลด้วย `/report-table`: endpoint, status, latency, pass/fail
+2. สรุปผลด้วย `/report-markdown-table`: endpoint, status, latency, pass/fail
 3. ถ้า source ผิด → แนะนำ `/resolve-errors` หรือ `/edit`
 4. ถ้า test ผิด → แนะนำ `/edit` กับ test script
 5. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป

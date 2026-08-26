@@ -103,7 +103,7 @@ Design-Dev Handoff:
 
 > Goal: Generate Design Review Report
 
-1. ทำ `/report` ด้วย `/report-table`
+1. ทำ `/report` ด้วย `/report-markdown-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Design Impact, Recommendation
 3. สร้าง design maturity scorecard: 5 dimensions, score 1-5
 4. สรุป top 3-5 design issues ที่ต้องแก้ก่อน
@@ -151,7 +151,7 @@ Design-Dev Handoff:
 
 - ถ้า design review ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการวาด sketch ช่วย visualize ให้ทำ `/report-uxui-sketch`
+- ถ้าต้องการวาด sketch ช่วย visualize ให้ทำ `/report-markdown-ansi`
 - ถ้าต้องการ scan UX/UI patterns จริง ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการ scan components ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการ scan accessibility จริง ให้ใช้ `/update-review-codebase-cli-and-run`

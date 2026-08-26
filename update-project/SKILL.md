@@ -64,7 +64,7 @@ related:
    - `/update-agents-md`
    - `/update-usage-md` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
    - `/update-usage-md` (ถ้ามี `USAGE.md` แบบ manual)
-   - `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
+   - `/update-features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)

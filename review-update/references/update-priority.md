@@ -29,7 +29,7 @@ Priority = drift severity × update urgency × dependency order
 6. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
 7. `run-release` — CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
 8. `update-test` — tests และ spec หลัง source code changes
-9. `update-features` — features doc หลัง source code stable
+9. `update-features-md` — features doc หลัง source code stable
 10. `update-gitignore` — gitignore หลัง stack changes
 11. `update-devin-global-subagents` — global subagents หลัง skills stable
 12. `update-all-devin-global-skills` — skills repo หลังทุกอย่าง stable

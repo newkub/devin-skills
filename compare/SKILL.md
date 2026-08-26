@@ -35,7 +35,7 @@ argument-hint: "[a] [b]"
 
 > Goal: Create Comparison Table
 
-1. ทำ `/report-table` สำหรับจัดรูปแบบตาราง
+1. ทำ `/report-markdown-table` สำหรับจัดรูปแบบตาราง
 2. กำหนด columns สำหรับ comparison criteria
 3. เติมข้อมูลสำหรับแต่ละ option ในแต่ละ row
 

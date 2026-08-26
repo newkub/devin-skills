@@ -34,8 +34,8 @@ description: Report configuration files, defaults, and drift in the project
 
 > Goal: สร้าง report
 
-1. ทำ `/report-table` สำหรับ drift ระหว่าง environments
-2. ทำ `/report-file-structure` สำหรับ tree ของ config files
+1. ทำ `/report-markdown-table` สำหรับ drift ระหว่าง environments
+2. ทำ `/report-markdown-file-structure` สำหรับ tree ของ config files
 3. สรุป missing keys, inconsistent values, default drift
 
 ## Rules

@@ -58,7 +58,7 @@ description: สร้างไอเดียการนำ skill หน่ว
 
 > Goal: นำเสนอไอเดียในรูปแบบตาราง
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report-markdown-table` คอลัมน์:
    - No
    - Source Skill
    - Target Skill

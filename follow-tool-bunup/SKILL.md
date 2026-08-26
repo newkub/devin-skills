@@ -9,7 +9,7 @@ description: ตั้งค่า Bunup สำหรับ bundle TypeScript li
 
 ## Scope
 
-ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler
+ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/follow-runtime-bun` สำหรับ setup Bun runtime
 
 ## Execute
 

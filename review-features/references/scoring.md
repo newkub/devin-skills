@@ -3,7 +3,7 @@ title: Scoring Formula
 description: สูตรคำนวณ review score และ grade สำหรับ review-features
 related:
   - review-features
-  - report-table
+  - report-markdown-table
   - suggest-next-action
 ---
 
@@ -46,7 +46,7 @@ related:
 
 ## Action Threshold
 
-- Score < 70 → แนะนำให้เรียก `update-features` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-features-md` ก่อนดำเนินการ
 - Score >= 70 → features documentation ผ่าน review สามารถดำเนินการต่อได้
 
 ## Reporting Steps
@@ -56,7 +56,7 @@ related:
 3. แปลง severity เป็น score ตาม Severity To Score Mapping
 4. คำนวณ review score ด้วย Scoring Formula
 5. กำหนด grade ตาม Grade Thresholds
-6. ทำ `/report-table` พร้อม columns: `Category`, `Severity`, `Finding`, `Evidence`, `Action`
+6. ทำ `/report-markdown-table` พร้อม columns: `Category`, `Severity`, `Finding`, `Evidence`, `Action`
 7. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Report Table Columns
@@ -67,10 +67,10 @@ related:
 - `Severity` — `Critical`, `High`, `Medium`, `Low`, `Info`
 - `Finding` — คำอธิบายปัญหา
 - `Evidence` — file path และบรรทัดที่เกี่ยวข้อง
-- `Action` — action ที่ต้องทำ เช่น `update-features`, `update-docs`
+- `Action` — action ที่ต้องทำ เช่น `update-features-md`, `update-docs`
 
 ## Expected Outcome
 
 - review score และ grade ถูกคำนวณจาก findings ทั้งหมด
-- รายงาน findings ผ่าน `/report-table`
+- รายงาน findings ผ่าน `/report-markdown-table`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

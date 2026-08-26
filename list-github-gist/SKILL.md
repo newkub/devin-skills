@@ -34,14 +34,14 @@ description: แสดงรายการ GitHub gists ของผู้ใ�
 
 > Goal: แสดงผลในรูปแบบอ่านง่าย
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบ
+1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบ
 2. แสดง columns: ID, Description, Visibility, Updated, URL
 
 ## Rules
 
 ### 1. Output
 
-- ใช้ `/report-table` ถ้ามีข้อมูลมาก
+- ใช้ `/report-markdown-table` ถ้ามีข้อมูลมาก
 - หรือแสดงเป็น markdown table ก็ได้
 - เรียงตาม updated ล่าสุด (default จาก `gh gist list`)
 

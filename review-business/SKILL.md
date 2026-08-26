@@ -128,7 +128,7 @@ Review email ครอบคลุม template rendering, validation, unsubscrib
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง aggregate findings จากทุก section
 3. ทำ `/suggest-next-action`
 
@@ -179,7 +179,7 @@ Review email ครอบคลุม template rendering, validation, unsubscrib
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

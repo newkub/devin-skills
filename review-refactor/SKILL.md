@@ -9,7 +9,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-packages` เพื่อทำความเข้าใจสถานะปัจจุบันและระบุเป้าหมาย refactor ครอบคลุม: SRP violations, long files (>250 lines), function quality (naming, side effects, complexity, params), import/export complexity, package/module boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-workspace` เพื่อทำความเข้าใจสถานะปัจจุบันและระบุเป้าหมาย refactor ครอบคลุม: SRP violations, long files (>250 lines), function quality (naming, side effects, complexity, params), import/export complexity, package/module boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -95,13 +95,13 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 2. ประเมิน effort: low (1 file), medium (2-5 files), high (>5 files)
 3. ประเมิน impact: critical, high, medium, low
 4. จัดลำดับ: high impact + low effort ก่อน → high impact + high effort → low impact
-5. แนะนำ workflow: `refactor-to-single-responsibility`, `refactor-packages`, `refactor`
+5. แนะนำ workflow: `refactor-to-single-responsibility`, `refactor-workspace`, `refactor`
 
 ### 10. Report
 
 > Goal: รายงาน baseline และ refactor targets
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง Baseline Metrics: metric, count, threshold, status
 3. สร้างตาราง Refactor Targets: target, issue type, effort, impact, priority, recommended workflow
 4. แสดง refactor health score พร้อม grade
@@ -113,7 +113,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - แยก review process จาก refactor process
-- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-packages` หลัง review
+- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-workspace` หลัง review
 
 ### 2. Evidence-Based Findings
 
@@ -145,7 +145,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

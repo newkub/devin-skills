@@ -33,7 +33,7 @@ argument-hint: "[repo]"
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Branch ชื่อ branch
@@ -50,7 +50,7 @@ argument-hint: "[repo]"
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report-markdown-table` สำหรับจัดรูปแบบผลลัพธ์
 - แสดงข้อมูลสำคัญ: branch name, last commit SHA, protected status
 
 ## Expected Outcome

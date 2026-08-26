@@ -1,15 +1,15 @@
 ---
 name: review-features
-description: ตรวจสอบ features documentation ก่อน update-features แก้ไข
+description: ตรวจสอบ features documentation ก่อน update-features-md แก้ไข
 ---
 
 ## Goal
 
-Review features documentation ก่อนเรียก `update-features` เพื่อยืนยันว่า `docs/project/features.md` ครอบคลุมทุก features จาก source code, format ถูกต้อง, และไม่ซ้ำซ้อน
+Review features documentation ก่อนเรียก `update-features-md` เพื่อยืนยันว่า `docs/project/features.md` ครอบคลุมทุก features จาก source code, format ถูกต้อง, และไม่ซ้ำซ้อน
 
 ## Scope
 
-ใช้ก่อนเรียก `update-features` — ตรวจ `docs/project/features.md` และ features coverage ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
+ใช้ก่อนเรียก `update-features-md` — ตรวจ `docs/project/features.md` และ features coverage ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
 
 ## Execute
 
@@ -79,7 +79,7 @@ Review features documentation ก่อนเรียก `update-features` เ�
 1. ดู `references/scoring.md` สำหรับ scoring formula และ grade thresholds
 2. คำนวณ review score = weighted average (Critical=0, High=25, Medium=50, Low=75, Info=100)
 3. กำหนด grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-4. ทำ `/report-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
+4. ทำ `/report-markdown-table` พร้อม findings: Category, Severity, Finding, Evidence, Action
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -87,7 +87,7 @@ Review features documentation ก่อนเรียก `update-features` เ�
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-features` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `update-features-md` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
@@ -102,13 +102,13 @@ Review features documentation ก่อนเรียก `update-features` เ�
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-features` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-features-md` ก่อนดำเนินการ
 
 ### 4. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

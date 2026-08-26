@@ -19,3 +19,7 @@
 - `bun-ffi.md` - FFI & Low-level APIs (`bun:ffi`, `bun:jsc`, `Bun.mmap`, `Bun.gc`)
 - `bun-other.md` - Other Bun APIs (`bun:test`, `Bun.env`, `Bun.version`, `Bun.resolveSync()`)
 - `bun-web-apis.md` - Web-standard APIs (`fetch`, `Worker`, `ReadableStream`, `crypto`, etc.)
+
+## Related Skills
+
+- `follow-runtime-bun` - Bun runtime CLI (run, install, test, build, config)

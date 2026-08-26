@@ -54,7 +54,7 @@ Review code และ text ให้อ่านง่าย ลด cognitive lo
 
 > Goal: สรุป findings พร้อม recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง: File, Section, Issue, Severity, Recommendation
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
@@ -80,7 +80,7 @@ Review code และ text ให้อ่านง่าย ลด cognitive lo
 - ใช้ backticks สำหรับ code, tools, paths, skill references
 - ห้ามใช้ `**` (bold markers)
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ### 4. Review Independence
 

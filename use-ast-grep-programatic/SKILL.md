@@ -82,7 +82,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ### 4. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

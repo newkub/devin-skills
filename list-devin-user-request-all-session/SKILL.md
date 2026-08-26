@@ -2,7 +2,7 @@
 name: list-devin-user-request-all-session
 description: รายการ requests จาก user ทังหมด sessions จาก history summaries
 related:
-  - report-table
+  - report-markdown-table
   - summarize
   - search-files-patterns
 ---
@@ -40,7 +40,7 @@ related:
 
 > Goal: สรุปเป็น table
 
-1. ทำ `/report-table` คอลัมน์: No, Session, Request, Type, Length
+1. ทำ `/report-markdown-table` คอลัมน์: No, Session, Request, Type, Length
 2. ถ้า request ยาว > 80 ตัวอักษร ตัดเหลือ 80 ตัวแล้วเติม `...`
 3. เรียงตาม session (ใหม่ไปเก่า) แล้ว message number
 4. ระบุสถิติ: จำนวน sessions, จำนวน requests

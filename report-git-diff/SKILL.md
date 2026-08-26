@@ -58,8 +58,8 @@ argument-hint: "[ref]"
 
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบสถิติเป็นตาราง
-2. ทำ `/report-codeblock` เพื่อจัดรูปแบบ diff blocks
+1. ทำ `/report-markdown-table` เพื่อจัดรูปแบบสถิติเป็นตาราง
+2. ทำ `/report-markdown-codeblock` เพื่อจัดรูปแบบ diff blocks
 3. แสดงผลตามลำดับ: Summary → Statistics Table → Changes by Category → Key Diffs
 4. ใช้ `diff` language tag สำหรับ diff code blocks
 
@@ -89,8 +89,8 @@ argument-hint: "[ref]"
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -126,8 +126,8 @@ argument-hint: "[ref]"
 
 - การ commit และ stage อยู่ใน `/git-commit` แล้ว
 - การดู file history อยู่ใน `/follow-tool-git` แล้ว
-- การจัดรูปแบบ code blocks อยู่ใน `/report-codeblock` แล้ว
-- การจัดรูปแบบตารางอยู่ใน `/report-table` แล้ว
+- การจัดรูปแบบ code blocks อยู่ใน `/report-markdown-codeblock` แล้ว
+- การจัดรูปแบบตารางอยู่ใน `/report-markdown-table` แล้ว
 
 ## Expected Outcome
 

@@ -51,7 +51,7 @@ columns:
 
 ## Report Steps
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. แสดง Prioritized Roadmap table
 3. แสดง Quick Wins section
 4. แสดง Dependency Chain section

@@ -86,7 +86,7 @@ argument-hint: "[prompt]"
 2. ตรวจสอบทุก task มี single responsibility และ test ได้
 3. ตรวจสอบไม่มี missing tasks หรือ gaps
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ และ risks พร้อม mitigation
-5. จัดรูปแบบตาราง tasks ตาม `report-table` และ file structure ตาม `report-file-structure`
+5. จัดรูปแบบตาราง tasks ตาม `report-markdown-table` และ file structure ตาม `report-markdown-file-structure`
 6. ทำ `report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ แล้วทำงานต่อได้เลย
 
 ## Metrics

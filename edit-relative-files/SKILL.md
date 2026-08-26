@@ -8,7 +8,7 @@ related:
   - use-ast-grep
   - deep-analyze-by-use-scripts
   - edit-manual
-  - report-table
+  - report-markdown-table
 ---
 
 ## Goal
@@ -69,7 +69,7 @@ related:
 1. ค้นหาชื่อเก่า / path เก่าซ้ำอีกครั้ง
 2. รัน `git diff` ตรวจทุกไฟล์
 3. ถ้ามี lint/typecheck/test → รัน
-4. ใช้ `/report-table` สรุปไฟล์ที่แก้
+4. ใช้ `/report-markdown-table` สรุปไฟล์ที่แก้
 
 ## Rules
 

@@ -88,7 +88,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
    }
    ```
 2. รัน script ใน dry run mode ก่อนเพื่อตรวจสอบผลลัพธ์
-3. รัน script จริงและทำ `/report-table` สร้าง table summary
+3. รัน script จริงและทำ `/report-markdown-table` สร้าง table summary
 4. ลบ script หลังใช้งาน
 
 ### 7. AI Summarization (Minimal Token)

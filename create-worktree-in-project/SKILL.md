@@ -64,7 +64,7 @@ description: สร้าง git worktree ใหม่ใน root ของ work
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` แสดง: Worktree Path, Branch, Base, Status
+1. ใช้ `/report-markdown-table` แสดง: Worktree Path, Branch, Base, Status
 2. ระบุคำสั่งทีใช้สร้าง
 3. ทำ `/suggest-next-action`
 

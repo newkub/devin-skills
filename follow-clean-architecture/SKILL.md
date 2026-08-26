@@ -99,7 +99,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 8. Split Modules When Too Large
 
-> Goal: ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-packages`
+> Goal: ถ้า module โตเกินเกณฑ์ ให้ทำ `/refactor-workspace`
 
 1. วัด module size: module เกิน 15 ไฟล์, ไฟล์ใน `domain/operations/` เกิน 300 บรรทัด, usecases ใน `application/usecases/` เกิน 5 ตัว
 2. เลือก pattern: sub-module (ยังเกี่ยวข้อง parent), sibling module (อิสระ), shared module (ใช้ร่วม)

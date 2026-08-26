@@ -59,9 +59,9 @@ description: รายงานไอเดียไฟล์และโฟล�
 
 > Goal: จัดรูปแบบ report ให้เห็นภาพรวมและรายละเอียด
 
-1. ทำ `/report-table` ด้วย columns:
+1. ทำ `/report-markdown-table` ด้วย columns:
    - `#`, `Category`, `Path/Pattern`, `Estimated Size`, `Safety`, `Suggested Command`, `Notes`
-2. ทำ `/report-file-structure` สำหรับ top 10 directories ที่ใหญ่ที่สุด
+2. ทำ `/report-markdown-file-structure` สำหรับ top 10 directories ที่ใหญ่ที่สุด
 3. สรุป:
    - จำนวน candidates
    - ขนาดรวมที่ประหยัดได้
@@ -85,8 +85,8 @@ description: รายงานไอเดียไฟล์และโฟล�
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ

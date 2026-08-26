@@ -44,7 +44,7 @@ argument-hint: "[ref]"
 
 > Goal: นำเสนอ git log ในรูปแบบเข้าใจง่าย
 
-1. ใช้ `/report-table` สร้างตาราง commits (# | Hash | Author | Date | Type | Subject)
+1. ใช้ `/report-markdown-table` สร้างตาราง commits (# | Hash | Author | Date | Type | Subject)
 2. แสดงสถิติรวม: จำนวน commits, จำนวน files เปลี่ยนแปลง (ถ้ามี `--stat`), ประเภททีมากทีสุด
 3. สรุป insights: breaking changes, recurring scopes, แนวโน้มของช่วง commit
 

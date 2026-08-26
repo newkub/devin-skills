@@ -24,7 +24,7 @@ description: รายงานแผนงานในแชทก่อนล�
 
 ### 2. Report Task Table
 
-> Goal: แสดงตาราง tasks ตาม `/report-table`
+> Goal: แสดงตาราง tasks ตาม `/report-markdown-table`
 
 1. คอลัมน์ (# | Task | Type | Priority | Effort | Impact | Risk | Status)
 2. Type: Create, Modify, Delete
@@ -45,7 +45,7 @@ description: รายงานแผนงานในแชทก่อนล�
 
 ### 4. Report File Structure
 
-> Goal: แสดง file structure ตาม `/report-file-structure`
+> Goal: แสดง file structure ตาม `/report-markdown-file-structure`
 
 1. แสดง tree diagram ของไฟล์ที่จะสร้าง/แก้ไข/ลบ
 2. ระบุ file pattern และ naming convention
@@ -76,8 +76,8 @@ description: รายงานแผนงานในแชทก่อนล�
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+2. ใช้ `/report-markdown-table` สำหรับตารางเปรียบเทียบหลาย columns
+3. ใช้ `/report-markdown-ansi` สำหรับรายงานสถานะ/progress/logs
 4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -102,8 +102,8 @@ description: รายงานแผนงานในแชทก่อนล�
 
 ### 4. Format
 
-- ใช้ `/report-table` สำหรับ task table
-- ใช้ `/report-file-structure` สำหรับ file tree
+- ใช้ `/report-markdown-table` สำหรับ task table
+- ใช้ `/report-markdown-file-structure` สำหรับ file tree
 - ใช้ table หรือ code block สำหรับ before-after comparison
 
 ## Expected Outcome

@@ -199,7 +199,7 @@ description: วิเคราะห์โปรเจกต์อย่าง�
 - ให้ recommendations ตาม priority และ impact
 - ระบุ action items ที่ชัดเจน
 - สร้าง roadmap สำหรับ improvements
-- ใช้ `/report-table` สำหรับ structured output
+- ใช้ `/report-markdown-table` สำหรับ structured output
 
 ## Expected Outcome
 

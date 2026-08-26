@@ -54,7 +54,7 @@ related:
 
 1. สำหรับ rules ทีซ้ำหรือควรเป็น global → สรุป draft สำหรับ `global_rules.md`
 2. ระบุ skills/subagents ทีต้องลบหรืออ้างอิงแทน
-3. ทำ `/report-table` คอลัมน์: Rule, Source, Target, Risk, Action
+3. ทำ `/report-markdown-table` คอลัมน์: Rule, Source, Target, Risk, Action
 4. ถ้าต้องสร้าง rule ใหม่ → ทำ `/report-idea`
 
 ### 5. Apply Changes
@@ -79,7 +79,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` คอลัมน์: Layer, Status, Changes
+1. ทำ `/report-markdown-table` คอลัมน์: Layer, Status, Changes
 2. ระบุ rules ทีย้าย, ลบ, หรือเพิ่ม
 3. ทำ `/suggest-next-action`
 

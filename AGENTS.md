@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-project-requirement: /ask-project-requirement`
 - `follow-enter-dot: /follow-enter-dot`
-- `follow-all-deep: /follow-all-deep`
+- `follow-deep: /follow-deep`
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
@@ -170,7 +170,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-devin-global-subagents: /update-devin-global-subagents`
 - `update-readme-md: /update-readme-md`
 - `update-docs: /update-docs`
-- `update-features: /update-features`
+- `update-features-md: /update-features-md`
 - `update-gitignore: /update-gitignore`
 - `update-dot-devin: /update-dot-devin`
 - `update-contributing-md: /update-contributing-md`

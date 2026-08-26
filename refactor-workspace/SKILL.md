@@ -1,21 +1,21 @@
 ---
-name: refactor-packages
-description: Refactor modules/packages ให้มี SRP, แนะนำ packages/modules จาก workspace, และอัปเดท references
+name: refactor-workspace
+description: Refactor workspace members (packages, crates, modules) ให้มี SRP, แนะนำ workspace members จาก workspace, และอัปเดท references
 ---
 
 ## Goal
 
-Refactor modules/packages ให้มี single responsibility, high cohesion, low coupling และแนะนำ packages/modules จาก workspace ที่ควรนำมาใช้
+Refactor workspace members (packages, crates, modules) ให้มี single responsibility, high cohesion, low coupling และแนะนำ workspace members จาก workspace ที่ควรนำมาใช้
 
 ## Scope
 
-ใช้กับ project หรือ monorepo ที่ต้อง split/merge/relocate modules หรือ packages หรือแนะนำ packages/modules จาก workspace
+ใช้กับ project หรือ monorepo ที่ต้อง split/merge/relocate workspace members หรือแนะนำ workspace members จาก workspace
 
 ## Execute
 
 ### 1. Analyze Project And Structure
 
-> Goal: วิเคราะห์โปรเจกต์และโครงสร้าง modules/packages
+> Goal: วิเคราะห์โปรเจกต์และโครงสร้าง workspace members
 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
 2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
@@ -30,25 +30,25 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 1. วิเคราะห์ change patterns: เปลี่ยนพร้อมกัน, maintain โดยทีมเดียวกัน, release lifecycle
 2. ประเมิน signals:
-   - Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม modules/packages
+   - Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม workspace members
    - ไม่ refactor: single responsibility ชัด, cohesive สูง, เปลี่ยนด้วยกัน, deploy ด้วยกัน
 3. ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขต minimal
 
 ### 3. Plan Refactor
 
-> Goal: วางแผนการ split/merge/relocate modules/packages
+> Goal: วางแผนการ split/merge/relocate workspace members
 
 1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
-2. ระบุ module/package boundaries ตาม domain, reason to change, cohesion
+2. ระบุ workspace member boundaries ตาม domain, reason to change, cohesion
 3. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
 4. จัดลำดับตาม dependency direction (foundation ก่อน)
 5. ทำ `/report-plan` ก่อนลงมือ execute
 
-### 4. Scan And Recommend Workspace Modules/Packages
+### 4. Scan And Recommend Workspace Members
 
-> Goal: สำรวจ workspace และแนะนำ modules/packages
+> Goal: สำรวจ workspace และแนะนำ workspace members
 
-1. สำรวจโครงสร้าง workspace และอ่าน manifest ของแต่ละ module/package
+1. สำรวจโครงสร้าง workspace และอ่าน manifest ของแต่ละ workspace member
 2. จัดกลุ่ม: UI, Utilities, Frameworks, Libraries, Tools, Integrations
 3. ประเมิน: compatibility, benefit, stability, maintenance, docs
 4. สร้างรายงานแบ่งตาม priority:
@@ -88,39 +88,39 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 ### 2. When To Refactor Vs Not
 
-- Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม modules/packages
+- Refactor: หลาย reasons to change, test ยาก, coupling สูง, ไม่ reusable, dependencies ไม่จำเป็น, duplication ข้าม workspace members
 - ไม่ refactor: single responsibility ชัด, cohesive สูง, เปลี่ยนด้วยกัน, deploy ด้วยกัน
 - ถ้า refactor ทำลาย stability หรือเพิ่ม fragmentation → อย่า refactor
 
 ### 3. Dependency Direction
 
-- Foundation modules/packages ไม่มี dependency กับอื่น
-- High-level modules/packages พึ่งพา low-level modules/packages เท่านั้น
+- Foundation workspace members ไม่มี dependency กับอื่น
+- High-level workspace members พึ่งพา low-level workspace members เท่านั้น
 - ไม่มี circular dependencies
 - จัดลำดับการทำงานตาม dependency direction
 
 ### 4. Public API And Boundaries
 
-- แต่ละ module/package มี barrel file (`index.ts`) เป็น public API
+- แต่ละ workspace member มี barrel file (`index.ts`) เป็น public API
 - เก็บ internal code private
-- ห้าม import ลึกเข้าไปใน module/package
+- ห้าม import ลึกเข้าไปใน workspace member
 - ใช้ barrel exports กำหนด public surface
 
 ### 5. Safety And Minimal Changes
 
-- ทำ `/dont-over-engineer` — ไม่สร้าง micro-modules/packages
+- ทำ `/dont-over-engineer` — ไม่สร้าง micro-workspace members
 - ไม่สร้าง abstraction ที่ไม่จำเป็น
 - ทำ `/update-references` หลังทุกการย้าย code
 - ถ้า broken references → ทำ `/resolve-errors`
 
 ## Expected Outcome
 
-- Modules/packages มี single responsibility, high cohesion, low coupling
+- Workspace members มี single responsibility, high cohesion, low coupling
 - ไม่ over-refactor หรือ fragmentation
-- รายงาน modules/packages ที่ควรใช้แบ่งตาม priority
+- รายงาน workspace members ที่ควรใช้แบ่งตาม priority
 - Code ผ่าน tests, lint, typecheck
 - ไม่มี circular dependencies, broken references, regression
 
 ## Guide
 
-- `references/use-packages.md` — วิธีวิเคราะห์และแนะนำ packages จาก workspace
+- `references/use-workspace-members.md` — วิธีวิเคราะห์และแนะนำ workspace members จาก workspace

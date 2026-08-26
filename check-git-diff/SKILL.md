@@ -62,7 +62,7 @@ argument-hint: "[ref]"
 
 ### 3. Output
 
-- ใช้ `/report-table` สำหรับสรุป stat
+- ใช้ `/report-markdown-table` สำหรับสรุป stat
 - ระบุ file paths เป็น relative จาก repo root
 
 ## Expected Outcome

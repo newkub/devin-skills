@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` คอลัมน์: Path, URL, Branch, Commit, Status
+1. ทำ `/report-markdown-table` คอลัมน์: Path, URL, Branch, Commit, Status
 2. หรือสร้าง bullet list ถ้าจำนวนน้อย
 
 ## Rules

@@ -1,6 +1,6 @@
 ---
-name: follow-all-deep
-description: พิจารณาและเรียก deep-* workflows ทั้งหมดที่เกี่ยวข้องตาม context ของ task
+name: follow-deep
+description: พิจารณาและเรียก deep-* workflows ที่เกี่ยวข้องตาม context ของ task
 ---
 
 ## Goal

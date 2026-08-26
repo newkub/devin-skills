@@ -69,7 +69,7 @@ related:
 6. สร้าง `src/modules/<feature>/index.ts` เป็น barrel export สำหรับ public API
 7. ใช้ `/review-architecture` สำหรับ barrel export strategy
 8. เก็บ internal code ใน private directories ไม่ export ออก
-9. ถ้า module ใหญ่เกินไป → ทำ `/refactor-packages`
+9. ถ้า module ใหญ่เกินไป → ทำ `/refactor-workspace`
 
 ### 5. Implement Server Functions
 

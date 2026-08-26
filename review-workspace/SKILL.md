@@ -48,7 +48,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 3. ตรวจสอบว่ามี `README.md`, `LICENSE`, `.gitignore` หรือไม่
 4. ตรวจสอบ file size เกิน 250 บรรทัดหรือไม่
 5. ระบุ files ที่ไม่มีการใช้งานหรือ orphan files
-6. ตรวจสอบว่า workspace มีขนาดเหมาะสมและ single responsibility — ถ้าใหญ่เกินไป, เล็กเกินไป, ทำหลายสิ่ง, หรือไม่มีเหตุผลชัดเจนที่แยกเป็น workspace ให้พิจารณา `/refactor-packages`
+6. ตรวจสอบว่า workspace มีขนาดเหมาะสมและ single responsibility — ถ้าใหญ่เกินไป, เล็กเกินไป, ทำหลายสิ่ง, หรือไม่มีเหตุผลชัดเจนที่แยกเป็น workspace ให้พิจารณา `/refactor-workspace`
 
 ### 4. Review Dependencies
 
@@ -93,7 +93,7 @@ validate findings และสรุปผล
 1. ทำ `/validate` เพื่อตรวจสอบ findings
 2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
 3. คำนวณ review score โดย weighted average
-4. ทำ `/report-table` สำหรับ summary
+4. ทำ `/report-markdown-table` สำหรับ summary
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -126,19 +126,19 @@ validate findings และสรุปผล
 
 - ใช้ backticks สำหรับ paths, commands, skill names
 - ไม่ใช้ bold markers `**`
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ### 6. Workspace Size And Responsibility
 
 - single responsibility คือรวม code ที่เปลี่ยนด้วยกัน, deploy ด้วยกัน, test ด้วยกัน
 - ถ้า workspace ทับซ้อนกับ workspace อื่น ให้พิจารณา merge หรือลบ
-- ใช้ `/refactor-packages` เมื่อต้อง split, merge, หรือ relocate packages/modules
+- ใช้ `/refactor-workspace` เมื่อต้อง split, merge, หรือ relocate packages/modules
 
 ## Expected Outcome
 
 - Review report ของ single workspace พร้อม review score
 - Findings ที่มี severity, evidence, และ recommendations
 - รายการ config drift, dependency issues, script gaps, และ SRP/size issues
-- คำแนะนำ `/refactor-packages` ถ้า workspace ใหญ่เกินไป, เล็กเกินไป, หรือทำหลายสิ่ง
+- คำแนะนำ `/refactor-workspace` ถ้า workspace ใหญ่เกินไป, เล็กเกินไป, หรือทำหลายสิ่ง
 - Review score ต่อ dimension และ overall
 - คำแนะนำ action ถัดไปผ่าน `/suggest-next-action`

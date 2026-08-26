@@ -76,7 +76,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 > Goal: สรุป plan quality score และ go/no-go recommendation
 
 1. คำนวณ plan quality score จาก [references/plan-quality-score.md](references/plan-quality-score.md)
-2. ทำ `/report` พร้อม `/report-table`
+2. ทำ `/report` พร้อม `/report-markdown-table`
 3. สร้างตาราง Plan Quality Summary: Category, Status, Findings, Score
 4. สร้างตาราง Risk Assessment: Risk, Probability, Impact, Severity, Mitigation
 5. สร้างตาราง Dependency Map: Task, Dependencies, Critical Path, Parallelizable
@@ -108,7 +108,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

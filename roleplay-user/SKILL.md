@@ -106,7 +106,7 @@ Platform and Environment:
 
 > Goal: Generate Report
 
-1. ทำ `/report` ด้วย `/report-table`
+1. ทำ `/report` ด้วย `/report-markdown-table`
 2. สร้างตาราง: Severity, Aspect, Location, Issue, User Impact, Recommendation
 3. สรุป top 3-5 issues ที่ควรแก้ก่อน
 4. ทำ `/suggest-next-action`
@@ -151,7 +151,7 @@ Platform and Environment:
 
 - ถ้า journey ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม simulate
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการวาด flow ช่วย visualize ให้ทำ `/report-uxui-sketch`
+- ถ้าต้องการวาด flow ช่วย visualize ให้ทำ `/report-markdown-ansi`
 - ถ้าต้องการ scan จริงด้วย scripts ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการ review cross-domain impact ให้ใช้ `/update-review-codebase-cli-and-run`
 

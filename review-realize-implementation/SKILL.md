@@ -77,7 +77,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 > Goal: รายงาน implementation gaps พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report-markdown-table`
 2. สร้างตาราง Implementation Metrics Summary: TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder, unfinished features, missing types, incomplete flows, missing UI, missing API, missing database, missing features
 3. สร้างตาราง Findings by Critical Path: Layer, Finding, Severity, Location, Evidence, Recommendation
 4. สร้างตาราง Recommended Implementations: Priority, Action, Impact, Effort, Workflow
@@ -145,7 +145,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

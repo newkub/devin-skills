@@ -56,7 +56,7 @@ description: Report the status and coverage of USAGE.md in workspace
 
 > Goal: รายงานสถานะ
 
-1. ทำ `/report-table` แสดง: Section, Status, Evidence
+1. ทำ `/report-markdown-table` แสดง: Section, Status, Evidence
 2. ระบุ `missing`, `present`, `stale`, `needs-update`
 3. ทำ `/suggest-next-action` สำหรับ `/update-usage-md` หรือ `/review-usage-md`
 
@@ -82,7 +82,7 @@ description: Report the status and coverage of USAGE.md in workspace
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, section names, skill names
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report-markdown-table`
 
 ## Expected Outcome
 

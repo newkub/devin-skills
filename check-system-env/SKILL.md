@@ -224,7 +224,7 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 
 ### 4. Report Format
 
-รายงานในรูปแบบตารางตาม `/report-table`:
+รายงานในรูปแบบตารางตาม `/report-markdown-table`:
 - ใช้ numbered columns
 - ใช้ headers ชัดเจน
 - ใช้ alignment ที่เหมาะสม

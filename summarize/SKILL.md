@@ -29,7 +29,7 @@ argument-hint: "<context>"
 
 1. ถ้า `project` → ทำ `/summarize-this-project`
 2. ถ้า `chat` หรือ `conversation` → ทำ `/summarize-this-chat-session`
-3. ถ้าต้องการ bullet/numbered list → ทำ `/report-table`
+3. ถ้าต้องการ bullet/numbered list → ทำ `/report-markdown-table`
 4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
 5. ถ้า `file` → อ่านไฟล์แล้วสรุป
 6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/git-diff`
@@ -52,7 +52,7 @@ argument-hint: "<context>"
 > Goal: นำเสนอสรุป
 
 1. ใช้รูปแบบตามที user ต้องการ (bullet, paragraph, table)
-2. ใช้ `/report-table` ถ้ามีหลายหมวด
+2. ใช้ `/report-markdown-table` ถ้ามีหลายหมวด
 3. ระบุสิ่งทีขาดหรือต้องทำต่อ
 4. ทำ `/suggest-next-action`
 

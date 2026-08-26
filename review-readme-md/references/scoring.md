@@ -42,7 +42,7 @@ review score = sum(severity_score) / count(findings)
 
 ## Report Format
 
-รายงานผ่าน `/report-table` พร้อม columns:
+รายงานผ่าน `/report-markdown-table` พร้อม columns:
 
 | Category | Severity | Finding | Evidence | Action |
 |---|---|---|---|---|
