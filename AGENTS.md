@@ -83,6 +83,7 @@ related:
 - `review-devin-global-skills: /review-devin-global-skills`
 - `ship: /ship`
 - `report: /report`
+- `report-flow: /report-flow`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
 - `at-this-repo: /at-this-repo`
 - `report-usage-md: /report-usage-md`
@@ -95,9 +96,8 @@ related:
 
 #### Request
 
-- `request-instruction-prompt: /request-instruction-prompt`
+- `request-prompt: /request-prompt`
 - `request-math-formular: /request-math-formular`
-- `request-math-formular-problem: /request-math-formular-problem`
 - `request-pattern: /request-pattern`
 
 #### Language
@@ -181,6 +181,7 @@ related:
 
 #### Create
 
+- `create-files-in-temp: /create-files-in-temp`
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`
@@ -192,6 +193,17 @@ related:
 - `follow-programming-paradigm: /follow-programming-paradigm`
 - `follow-single-responsibility: /follow-single-responsibility`
 - `follow-tool-rolldown: /follow-tool-rolldown`
+
+#### Convert
+
+- `convert-to: /convert-to`
+- `convert-to-markdown: /convert-to-markdown`
+- `convert-to-html: /convert-to-html`
+- `convert-to-json: /convert-to-json`
+- `convert-to-project: /convert-to-project`
+- `convert-to-product: /convert-to-product`
+- `convert-to-docs: /convert-to-docs`
+- `convert-to-mcp: /convert-to-mcp`
 
 #### Search
 

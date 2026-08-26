@@ -1,16 +1,16 @@
 ---
-name: request-instruction-prompt
-description: สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน
+name: request-prompt
+description: สรุปการสนทนาเป็น prompt ที่ชัดเจน
 argument-hint: "[target]"
 ---
 
 ## Goal
 
-สรุปการสนทนาเป็น instruction prompt ที่ชัดเจน กระชับ และนำไปใช้ได้จริง
+สรุปการสนทนาหรือข้อมูลที่ได้รับเป็น prompt ที่ชัดเจน กระชับ และนำไปใช้ได้จริง
 
 ## Scope
 
-ใช้ `request-instruction-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `request-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
