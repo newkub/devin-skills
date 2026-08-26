@@ -95,7 +95,7 @@ argument-hint: "[task]"
 
 ### 4. Related Workflows
 
-- ทำ `/follow-architecture` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-solid-tanstack-architecture` สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 

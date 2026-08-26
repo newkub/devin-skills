@@ -42,7 +42,7 @@ argument-hint: "[file]"
 3. ระบุ dependencies และ relationships กับไฟล์อื่น
 4. ระบุ issues, bugs, หรือ improvements จากการอ่านจริง
 5. ทำ `/follow-best-practice`
-   - ทำ `/follow-architecture` (Layered pattern: `references/layered-architecture.md`) เพื่อเทียบกับมาตรฐาน
+   - ทำ `/follow-layered-architecture` เพื่อเทียบกับมาตรฐาน
 
 ### 4. Plan Fresh
 

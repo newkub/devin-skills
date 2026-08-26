@@ -1,6 +1,15 @@
-# Solid + TanStack Architecture
-
-> Reference pattern for `/follow-architecture` — จัดโครงสร้าง TanStack Start + SolidJS app พร้อม modules/, monorepo และ file-based routing
+---
+name: follow-solid-tanstack-architecture
+description: จัดโครงสร้าง TanStack Start + SolidJS apps ด้วย file-based routing, modules และ monorepo
+related:
+  - follow-solid-tanstack
+  - follow-lib-tanstack-ecosystem
+  - follow-framework-solidjs
+  - follow-tool-vite
+  - follow-tool-vitest
+  - follow-monorepo
+  - review-architecture
+---
 
 ## Goal
 

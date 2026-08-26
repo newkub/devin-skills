@@ -1,6 +1,17 @@
-# Layered Architecture
-
-> Reference pattern for `/follow-architecture` — Implement Layered Architecture สำหรับ Frontend projects ขนาดเล็ก-กลาง
+---
+name: follow-layered-architecture
+description: จัดโครงสร้าง Frontend projects ด้วย Layered, Feature-based หรือ 4-layer architecture
+related:
+  - follow-tool-vite
+  - follow-tool-vitest
+  - follow-lib-vue
+  - follow-framework-nuxt
+  - follow-framework-svelte-kit
+  - follow-framework-nextjs
+  - follow-lib-react
+  - follow-clean-architecture
+  - review-architecture
+---
 
 ## Goal
 
@@ -113,7 +124,7 @@ src/
 3. ย้าย code ทีละ feature เพื่อลด risk
 4. ถ้า project มี `Nuxt Layers` → ใช้ `extends` ใน `nuxt.config.ts`
 5. ทำ `/refactor` หลังจากเสร็จ
-6. ถ้า project โตขึ้น (3+ devs) → migrate ไป Clean Architecture ([clean-architecture.md](clean-architecture.md))
+6. ถ้า project โตขึ้น (3+ devs) → migrate ไป Clean Architecture (/follow-clean-architecture)
 
 ## Rules
 
@@ -161,8 +172,8 @@ src/
 
 ### 6. Migration Path
 
-- ถ้า project โตขึ้น (3+ devs, high testability) → migrate ไป Clean Architecture ([clean-architecture.md](clean-architecture.md))
-- ถ้า project ต้องการ modular boundaries → ใช้ module structure ใน `src/modules/<feature>/` ตาม `/follow-architecture`
+- ถ้า project โตขึ้น (3+ devs, high testability) → migrate ไป Clean Architecture (/follow-clean-architecture)
+- ถ้า project ต้องการ modular boundaries → ใช้ module structure ใน `src/modules/<feature>/` ตาม `/follow-clean-architecture`
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 
 ## Expected Outcome

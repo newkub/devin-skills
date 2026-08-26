@@ -24,7 +24,7 @@ related:
 
 ออกแบบ architecture ที่ test ง่ายและ scale ง่าย
 
-1. ทำ `/follow-architecture` (Clean pattern: `references/clean-architecture.md`) สำหรับโครงสร้างพื้นฐาน
+1. ทำ `/follow-clean-architecture` สำหรับโครงสร้างพื้นฐาน
 2. แยก business logic จาก infrastructure
 3. ใช้ dependency injection สำหรับ external dependencies
 4. สร้าง interfaces สำหรับ external services
@@ -69,7 +69,7 @@ related:
 
 สร้าง boundaries ที่ชัดเจนระหว่าง layers
 
-1. ทำ `/follow-architecture` (Layered pattern: `references/layered-architecture.md`) สำหรับแยก layers
+1. ทำ `/follow-layered-architecture` สำหรับแยก layers
 2. กำหนด interfaces ระหว่าง layers
 3. ใช้ ports และ adapters pattern
 4. แยก domain logic จาก application logic

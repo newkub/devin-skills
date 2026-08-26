@@ -215,6 +215,6 @@ Design Issues
 
 ## Guide
 
-- ทำ `/follow-architecture` (Layered pattern: `references/layered-architecture.md`) สำหรับ base architecture
-- ทำ `/follow-architecture` (Microservices pattern: `references/microservices-architecture.md`) สำหรับ distributed event-driven systems
-- ทำ `/follow-architecture` (Clean pattern: `references/clean-architecture.md`) สำหรับ event handler structure
+- ทำ `/follow-layered-architecture` สำหรับ base architecture
+- ทำ `/follow-microservices-architecture` สำหรับ distributed event-driven systems
+- ทำ `/follow-clean-architecture` สำหรับ event handler structure

@@ -1,6 +1,14 @@
-# Next.js Architecture
-
-> Reference pattern for `/follow-architecture` — จัดโครงสร้างโปรเจกต์ Next.js ตาม best practices
+---
+name: follow-nextjs-architecture
+description: จัดโครงสร้าง Next.js App Router projects ด้วย modules, monorepo และ server/client patterns
+related:
+  - follow-framework-nextjs
+  - follow-tool-vite
+  - follow-tool-vitest
+  - follow-lib-react
+  - follow-monorepo
+  - review-architecture
+---
 
 ## Goal
 

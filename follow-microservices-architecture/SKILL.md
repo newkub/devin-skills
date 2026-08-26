@@ -1,6 +1,15 @@
-# Microservices Architecture
-
-> Reference pattern for `/follow-architecture` — พัฒนา distributed systems ด้วย Microservices Architecture สำหรับ scalability และ independence
+---
+name: follow-microservices-architecture
+description: ออกแบบ distributed systems ด้วย Microservices, API Gateway, service discovery และ event-driven
+related:
+  - follow-event-driven
+  - follow-orm
+  - follow-tool-vitest
+  - follow-tool-vite
+  - follow-monorepo
+  - follow-clean-architecture
+  - review-architecture
+---
 
 ## Goal
 
@@ -28,7 +37,7 @@
 1. กำหนด service boundaries ชัดเจน
 2. ระบุ APIs และ contracts ระหว่าง services
 3. กำหนด data isolation strategy
-4. ทำ `/follow-architecture` สำหรับแต่ละ service
+4. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้างพื้นฐานของแต่ละ service
 
 ### 3. Implement API Gateway
 

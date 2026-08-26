@@ -1,22 +1,28 @@
 ---
 name: follow-architecture
-description: เลือก architecture pattern ตาม package manifest และจัดเรียงส่วนประกอบตาม Order Theory
+description: เลือก architecture pattern ตาม package manifest แล้วส่งต่อไปยัง follow-*-architecture skill ที่เหมาะสม
 related:
-  - follow-framework-nuxt
-  - follow-lib-vue
-  - follow-framework-svelte-kit
+  - follow-clean-architecture
+  - follow-layered-architecture
+  - follow-microservices-architecture
+  - follow-nextjs-architecture
+  - follow-solid-tanstack-architecture
   - follow-monorepo
-  - learn-from-web
+  - follow-framework-nuxt
+  - follow-framework-svelte-kit
+  - follow-lib-vue
   - restructure
+  - learn-from-web
 ---
 
 ## Goal
 
-เลือก architecture pattern ที่เหมาะสมกับโปรเจกต์ตาม package manifest และจัดเรียงส่วนประกอบตามหลัก Order Theory
+เลือก architecture pattern ที่เหมาะสมกับโปรเจกต์ตาม package manifest แล้วส่งต่อไปยัง `follow-*-architecture` skill ที่เหมาะสม พร้อมจัดเรียงส่วนประกอบตามหลัก Order Theory
 
 ## Scope
 
-- ใช้สำหรับเลือก architecture pattern ตาม framework, language, และ scale ของโปรเจกต์
+- ใช้สำหรับเลือก architecture pattern ตาม framework, language, scale ของโปรเจกต์
+- ส่งต่อไปยัง `follow-*-architecture` skill เพื่อ implement pattern จริง
 - ใช้ภายใต้ `/refactor` เมื่องาน refactor ครบวงจร
 - ใช้สำหรับจัดเรียงรายการ ไฟล์ หรือ tasks ใน project ให้เป็นระบบตาม Order Theory
 
@@ -32,31 +38,14 @@ related:
 
 ### 2. Select Architecture Pattern
 
-> Goal: เลือก architecture pattern ตาม Detection Rules ในส่วน Rules
+> Goal: เลือก architecture pattern ตาม Detection Rules
 
 1. ตรวจสอบ Detection Rules ตามลำดับ priority ใน Rules section
 2. เลือก architecture pattern ที่ตรงกับ project type
-3. อ่าน reference file ของ pattern ที่เลือกจาก `references/`
-4. ถ้าไม่ตรงเงื่อนไขใด → ใช้ Clean Architecture ([references/clean-architecture.md](references/clean-architecture.md)) เป็น default
+3. ส่งต่อไปยัง `follow-*-architecture` skill ที่เลือก
+4. ถ้าไม่ตรงเงื่อนไขใด → ใช้ `/follow-clean-architecture` เป็น default
 
-### 3. Learn Architecture Pattern
-
-> Goal: เรียนรู้ architecture pattern ที่เลือกจาก reference files และ official sources
-
-1. อ่าน reference file ของ pattern ที่เลือกใน `references/<pattern>.md`
-2. ทำ `/learn-from-web` เพื่อศึกษา architecture pattern ที่เลือกจาก official documentation เพิ่มเติม
-3. อ่าน best practices และ anti-patterns ของ pattern นั้น
-4. บันทึก code structure examples และ configuration examples
-
-### 4. Setup Base Structure
-
-> Goal: ตั้งค่าโครงสร้างพื้นฐาน
-
-1. สร้างโครงสร้างพื้นฐานตาม pattern ที่เลือก
-2. ตั้งค่า configuration files
-3. รัน `/restructure` เพื่อ reorganize code
-
-### 5. Order Components And Tasks
+### 3. Order Components And Tasks
 
 > Goal: จัดเรียงส่วนประกอบและ tasks ตาม Order Theory
 
@@ -76,15 +65,15 @@ related:
 | Detection | Method | Architecture |
 |-----------|--------|--------------|
 | Nuxt | `nuxt` in dependencies | `/follow-framework-nuxt` |
-| Next.js | `next` in dependencies | [references/nextjs-architecture.md](references/nextjs-architecture.md) |
+| Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
 | Vue.js | `vue` in dependencies | `/follow-lib-vue` |
-| SolidJS | `solid-js` in dependencies | [references/solid-tanstack-architecture.md](references/solid-tanstack-architecture.md) |
+| SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack-architecture` |
 | Svelte | `svelte` in dependencies | `/follow-framework-svelte-kit` |
-| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | [references/layered-architecture.md](references/layered-architecture.md) |
-| Rust | `Cargo.toml` exists | [references/clean-architecture.md](references/clean-architecture.md) |
-| Bun | `bun` in dependencies | [references/clean-architecture.md](references/clean-architecture.md) |
+| Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `/follow-layered-architecture` |
+| Rust | `Cargo.toml` exists | `/follow-clean-architecture` |
+| Bun | `bun` in dependencies | `/follow-clean-architecture` |
 | Monorepo | `workspaces` in `package.json` | `/follow-monorepo` |
-| Microservices | distributed system | [references/microservices-architecture.md](references/microservices-architecture.md) |
+| Microservices | distributed system | `/follow-microservices-architecture` |
 
 ### 2. Priority Rules
 
@@ -94,7 +83,7 @@ related:
 - Frontend small-medium (Layered Architecture)
 - Language-specific patterns (Rust, Bun)
 - Scale patterns (Monorepo, Modular Monolith, Microservices)
-- Default: Clean Architecture
+- Default: `/follow-clean-architecture`
 
 ### 3. Decision Matrix
 
@@ -120,7 +109,5 @@ related:
 ## Expected Outcome
 
 - Architecture pattern ที่เหมาะสมกับโปรเจกต์
-- โครงสร้างพื้นฐานที่ถูกต้อง
-- Configuration files ที่สมบูรณ์
-- Code organization ตามมาตรฐาน
+- ส่งต่อไปยัง `follow-*-architecture` skill ที่ถูกต้อง
 - ส่วนประกอบและ tasks เรียงลำดับตาม Order Theory อ่านง่ายและค้นหาได้ง่าย

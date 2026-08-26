@@ -19,7 +19,7 @@
 อ้างถึง reference file ใน SKILL.md Execute steps:
 
 - Step 1 ตรวจ workspace package → `references/workspace-package.md`
-- Step 1 ตรวจ Clean Architecture → `references/clean-architecture.md`
+- Step 1 ตรวจ Clean Architecture → `/follow-clean-architecture`
 - Step 1 ตรวจ analyzers → `references/analyzers.md`
 - Step 1 ตรวจ review integration → `references/review-integration.md`
 - Step 6 ตรวจ exports → `references/exports.md`

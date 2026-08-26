@@ -1,6 +1,18 @@
-# Clean Architecture
-
-> Reference pattern for `/follow-architecture` — Ultra Minimal Clean Architecture, Production-Ready Guidelines for Teams
+---
+name: follow-clean-architecture
+description: สร้างโครงสร้าง Clean Architecture ด้วย modules, ports, adapters และ pure domain
+related:
+  - follow-programming-paradigm
+  - follow-lib-effect-ts
+  - follow-lib-zod
+  - follow-orm
+  - follow-tool-vitest
+  - follow-tool-vite
+  - follow-lang-typescript
+  - follow-lang-rust
+  - follow-create-bun-cli
+  - review-architecture
+---
 
 ## Goal
 
