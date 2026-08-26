@@ -186,6 +186,7 @@ related:
 - `follow-lib-effect-ts: /follow-lib-effect-ts`
 - `follow-programming-paradigm: /follow-programming-paradigm`
 - `follow-single-responsibility: /follow-single-responsibility`
+- `follow-tool-rolldown: /follow-tool-rolldown`
 
 #### Search
 
