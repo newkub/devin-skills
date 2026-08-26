@@ -1,116 +1,125 @@
 ---
 name: update-reference
-description: อัพเดท references ทั้งหมดเมื่อแก้ไขไฟล์
+description: อัปเดท references ทั้งหมดเมื่อมีการแก้ไข ย้าย เปลี่ยนชื่อ หรือลบไฟล์
 ---
 
 ## Goal
 
-อัพเดท references ทั้งหมดเมื่อมีการแก้ไขไฟล์ใน project, workflows, หรือ skills
+อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่งที่เก็บ references
 
 ## Scope
 
-ใช้ `update-reference` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้เมื่อ:
+- แก้ไขไฟล์ที่ถูกอ้างอิงจากไฟล์อื่น
+- ย้ายไฟล์ไปยังตำแหน่งใหม่
+- เปลี่ยนชื่อไฟล์
+- ลบไฟล์ที่ถูกอ้างอิง
+- เปลี่ยนชื่อ workflow หรือ skill
+
+ครอบคลุม:
+- Global workflows (`~/.codeium/windsurf/global_workflows/`)
+- Global skills (`%APPDATA%\devin\skills\` หรือ `~/.codeium/windsurf/skills/`)
+- Project codebase (source code, configs, docs)
+- `.devin/rules/` ในแต่ละ workspace
+- `AGENTS.md` ในแต่ละ workspace
+- Workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
 
 ## Execute
 
-### 1. Determine Context
+### 1. Identify Changed Files
 
-> Goal: กำหนด context ของการแก้ไข
+> Goal: ระบุไฟล์ที่มีการเปลี่ยนแปลง
 
-ตรวจสอบว่าแก้ไขไฟล์ที่ไหนเพื่อกำหนด scope ของการค้นหา references
+1. ระบุไฟล์ที่ถูกแก้ไข ย้าย เปลี่ยนชื่อ หรือลบจาก task ปัจจุบัน
+2. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการเปลี่ยนแปลงทั้งหมด
+3. ระบุประเภทการเปลี่ยนแปลง: ย้าย เปลี่ยนชื่อ ลบ หรือแก้ไขเนื้อหา
 
-1. ตรวจสอบ path ของไฟล์ที่แก้ไข
-2. ระบุว่าอยู่ใน project, workflows, หรือ skills
-3. ตรวจสอบ workspace ที่ใช้งานปัจจุบัน
+### 2. Search For References
 
-### 2. Update Project References
+> Goal: ค้นหา references ทั้งหมดที่เกี่ยวข้อง
 
-> Goal: อัพเดท references ใน project
+1. ค้นหาใน global workflows ด้วย `findstr` หรือ `Grep`
+2. ค้นหาใน global skills ด้วย `findstr` หรือ `Grep`
+3. ค้นหาใน project codebase ด้วย `Grep` หรือ `ast-grep`
+4. ค้นหาใน `.devin/rules/` ของทุก workspace
+5. ค้นหาใน `AGENTS.md` ของทุก workspace
+6. ค้นหาใน workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
+7. ค้นหาชื่อไฟล์เก่า เส้นทางเก่า import statements และ workflow references
 
-เมื่อแก้ไขไฟล์ใน project ให้ค้นหาและอัพเดท references ภายใน project
+### 3. Update References
 
-1. ใช้ search tool ค้นหา references ใน project directory
-2. ระบุชื่อไฟล์หรือ path ที่แก้ไขเพื่อค้นหา references
-3. อัพเดท references ที่ตรงกับไฟล์ที่แก้ไข
-4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยังไฟล์เดิม
+> Goal: อัปเดท references ทั้งหมดตามประเภทการเปลี่ยนแปลง
 
-### 3. Update Workflow References
+#### 3.1 Move File
 
-> Goal: อัพเดท references ใน workflows
+1. อัปเดท import paths ทั้งหมดใน codebase
+2. อัปเดท file path references ทั้งหมดใน global workflows และ skills
+3. อัปเดท workflow references ทั้งหมด
 
-เมื่อแก้ไขไฟล์ใน workflows ให้ค้นหาและอัพเดท references ใน workflows และ skills
+#### 3.2 Rename File
 
-1. ใช้ search tool ค้นหา references ใน `global_workflows` directory
-2. ใช้ search tool ค้นหา references ใน `skills` directory
-3. ระบุชื่อ workflow ที่แก้ไขเพื่อค้นหา references
-4. อัพเดท references ที่ตรงกับ workflow ที่แก้ไข
-5. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง workflow เดิม
+1. อัปเดท import statements ทั้งหมดใน codebase
+2. อัปเดท file name references ทั้งหมดใน global workflows และ skills
+3. อัปเดท workflow references ทั้งหมด
 
-### 4. Update Skill References
+#### 3.3 Delete File
 
-> Goal: อัพเดท references ใน skills
+1. ลบ import statements ที่อ้างถึงไฟล์ที่ถูกลบ
+2. ลบ references ทั้งหมดใน global workflows และ skills
+3. แก้ไข code ที่ใช้ไฟล์ที่ถูกลบ
 
-เมื่อแก้ไขไฟล์ใน skills ให้ค้นหาและอัพเดท references ภายใน skills
+#### 3.4 Rename Workflow Or Skill
 
-1. ใช้ search tool ค้นหา references ใน `skills` directory
-2. ระบุชื่อ skill ที่แก้ไขเพื่อค้นหา references
-3. อัพเดท references ที่ตรงกับ skill ที่แก้ไข
-4. ตรวจสอบว่าไม่มี references ที่เสียหายหรือชี้ไปยัง skill เดิม
+1. อัปเดท references ใน global workflows (`old-name` → `new-name`)
+2. อัปเดท references ใน global skills
+3. อัปเดท references ใน `AGENTS.md` ของทุก workspace
+4. อัปเดท references ใน `.devin/rules/` ของทุก workspace
+5. อัปเดท references ใน workspace workflows
+6. อัปเดท references ใน project codebase
+
+### 4. Verify Updates
+
+> Goal: ตรวจสอบความถูกต้องของ updates
+
+1. ค้นหา references เก่าอีกครั้งในทุกตำแหน่งเพื่อยืนยันว่าไม่มีเหลือ
+2. รัน linting ถ้ามี
+3. รัน typecheck ถ้ามี
+4. รัน test ถ้ามี
 
 ## Rules
 
-### 1. Context Detection
+### 1. Search Strategy
 
-ตรวจสอบ context ก่อนอัพเดท references
+ค้นหา references อย่างครอบคลุม:
 
-- ต้องระบุว่าแก้ไขใน project, workflows, หรือ skills
-- ใช้ path เพื่อระบุ context
-- ตรวจสอบ workspace ที่ใช้งาน
+- ค้นหาทั้ง absolute paths และ relative paths
+- ค้นหาทั้งชื่อไฟล์และ extension
+- ค้นหาทั้ง import statements และ string references
+- ค้นหาในทุก file types (.ts, .js, .md, .json, .yml, .jsonc)
+- ค้นหาใน global workflows, global skills, codebase, `.devin/rules/`, `AGENTS.md`, workspace workflows
 
-### 2. Search Strategy
+### 2. Update Strategy
 
-ใช้ search strategy ที่เหมาะสมกับ context เพื่อค้นหา references อย่างมีประสิทธิภาพ
+อัปเดท references อย่างถูกต้อง:
 
-- Project: ค้นหาใน project directory โดยใช้ workspace path เป็น base
-- Workflows: ค้นหาใน `global_workflows` และ `skills` directories
-- Skills: ค้นหาใน `skills` directory โดยใช้ pattern matching สำหรับ skill names
-- ใช้ regex patterns สำหรับการค้นหา references ที่ซับซ้อน
-- ใช้ exact string matching สำหรับ references ที่ชัดเจน
+- อัปเดททุก references ที่พบ ไม่เว้นแม้แต่ reference เดียว
+- รักษาความสม่ำเสมอของ import style
+- รักษาความสม่ำเสมอของ path format
+- ตรวจสอบว่า updates ไม่ทำให้เกิด syntax errors
+- ถ้าเปลี่ยนชื่อ workflow ให้อัปเดททั้ง `title` และ `related_workflows` ในไฟล์ที่อ้างถึง
 
-### 3. Reference Update
+### 3. Verification
 
-อัพเดท references อย่างถูกต้องและครบถ้วน
+ตรวจสอบความถูกต้อง:
 
-- ใช้ exact string matching สำหรับ references ที่ชัดเจน
-- ใช้ regex replacement สำหรับ references ที่มี pattern ซับซ้อน
-- ตรวจสอบว่า references ที่อัพเดทถูกต้องทั้งหมด
-- อัพเดททุก references ที่เกี่ยวข้อง ไม่ว่าจะอยู่ในไฟล์ใด
-- รักษา formatting และ indentation ของไฟล์หลังอัพเดท
-
-### 4. Validation
-
-ตรวจสอบผลลัพธ์หลังอัพเดทเพื่อให้แน่ใจว่า references ถูกต้องทั้งหมด
-
-- ค้นหา references ที่เสียหายหรือชี้ไปยังไฟล์เดิม
-- ตรวจสอบว่า references ที่อัพเดทถูกต้องและสอดคล้องกับการเปลี่ยนแปลง
-- ตรวจสอบว่าไม่มี references ที่ซ้ำซ้อนหรือไม่จำเป็น
-- ทำการ test หรือ verify ว่า references ที่อัพเดททำงานได้จริง
-- ตรวจสอบว่าไม่มี syntax errors หรือ formatting issues หลังอัพเดท
+- ตรวจสอบว่า references เก่าไม่มีเหลือในทุกตำแหน่ง
+- ตรวจสอบว่า references ใหม่ถูกต้อง
+- ตรวจสอบว่า code ยังทำงานได้
+- ตรวจสอบว่าไม่มี broken imports
 
 ## Expected Outcome
 
-### Project Context
-
-- References ใน project ถูกอัพเดททั้งหมด
-- ไม่มี references ที่เสียหายใน project
-
-### Workflow Context
-
-- References ใน workflows ถูกอัพเดททั้งหมด
-- References ใน skills ถูกอัพเดททั้งหมด
-- ไม่มี references ที่เสียหายใน workflows และ skills
-
-### Skill Context
-
-- References ใน skills ถูกอัพเดททั้งหมด
-- ไม่มี references ที่เสียหายใน skills
+- References ทั้งหมดถูกอัปเดทครบถ้วนในทุกตำแหน่ง
+- ไม่มี references เก่าเหลืออยู่
+- Code ยังทำงานได้หลังจาก updates
+- ไม่มี linting หรือ type errors
