@@ -30,7 +30,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
-1. ทำ `/review-codebase-everything` เพื่อปรับปรุง naming
+1. ทำ `/update-review-cli-and-run` เพื่อปรับปรุง naming
 2. ทำ `/update-reference` เพื่ออัปเดต import paths
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 

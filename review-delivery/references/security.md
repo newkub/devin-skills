@@ -62,7 +62,7 @@
 
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
 - ถ้าพบ issue นอก scope → ระบุเป็น info เท่านั้น
-- อ้างอิง `/review-codebase-everything` ถ้า issue ซ้อนทับกับ security นอก scope
+- อ้างอิง `/update-review-cli-and-run` ถ้า issue ซ้อนทับกับ security นอก scope
 - ทุก finding ต้องมี file path และ line number
 - ระบุ attack vector, data type, หรือ trust boundary ที่เกี่ยวข้อง
 - ใช้ tools สำหรับ verification ไม่เดา

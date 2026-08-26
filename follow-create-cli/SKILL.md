@@ -1,15 +1,15 @@
-﻿---
+---
 name: follow-create-cli
 description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack ที่เหมาะสม
 ---
 
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase-everything`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/update-review-cli-and-run`
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review`, `tools/analyze`) — เลือกระหว่าง `/follow-create-rust-cli` และ `/follow-create-bun-cli` ตาม performance, distribution, ecosystem
+ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — เลือกระหว่าง `/follow-create-rust-cli` และ `/follow-create-bun-cli` ตาม performance, distribution, ecosystem
 
 ## Execute
 
@@ -37,8 +37,8 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
-1. ทำ `/review-codebase-everything` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/review-codebase-everything` ระบุ
+1. ทำ `/update-review-cli-and-run` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/update-review-cli-and-run` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 4. Integrate Into Workspace
@@ -76,7 +76,7 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 ### 3. Review Before Ship
 
-- ทำ `/review-codebase-everything` ก่อน commit
+- ทำ `/update-review-cli-and-run` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -85,5 +85,5 @@ description: สร้าง CLI applications ด้วย Rust หรือ Bun
 
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม Clean Architecture
-- ผ่าน `/review-codebase-everything`
+- ผ่าน `/update-review-cli-and-run`
 - ผสานเข้ากับ workspace ได้

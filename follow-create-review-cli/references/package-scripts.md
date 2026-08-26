@@ -2,18 +2,18 @@
 
 ## Tools Review Scripts
 
-ตรวจว่า `tools/review/package.json` มี scripts ครบ:
+ตรวจว่า `tools/review-codebase/package.json` มี scripts ครบ:
 
-- `review` — รัน review ใน table format
-- `review:json` — รัน review ใน JSON format
+- `review-codebase` — รัน review ใน table format
+- `review-codebase:json` — รัน review ใน JSON format
 
 ตัวอย่าง:
 
 ```json
 {
   "scripts": {
-    "review": "bun run src/index.ts",
-    "review:json": "bun run src/index.ts --format JSON"
+    "review-codebase": "bun run src/index.ts",
+    "review-codebase:json": "bun run src/index.ts --format JSON"
   }
 }
 ```
@@ -24,16 +24,16 @@
 
 ตรวจว่า root `package.json` มี filter commands:
 
-- `review` — `bun --filter tools-review review`
-- `review:json` — `bun --filter tools-review review:json`
+- `review-codebase` — `bun --filter tools-review-codebase review-codebase`
+- `review-codebase:json` — `bun --filter tools-review-codebase review-codebase:json`
 
 ตัวอย่าง:
 
 ```json
 {
   "scripts": {
-    "review": "bun --filter tools-review review",
-    "review:json": "bun --filter tools-review review:json"
+    "review-codebase": "bun --filter tools-review-codebase review-codebase",
+    "review-codebase:json": "bun --filter tools-review-codebase review-codebase:json"
   }
 }
 ```
@@ -44,8 +44,8 @@
 
 ตรวจว่า scripts สอดคล้องกัน:
 
-- ชื่อ script ใน root ตรงกับใน `tools/review`
-- filter command ใช้ workspace name ที่ถูกต้อง (`tools-review`)
+- ชื่อ script ใน root ตรงกับใน `tools/review-codebase` (`review-codebase`, `review-codebase:json`)
+- filter command ใช้ workspace name ที่ถูกต้อง (`tools-review-codebase`)
 - ไม่มี script ที่ชี้ไปยัง path ผิด
 
 ถ้าพบ inconsistency → flag เป็น `Low` severity
@@ -54,8 +54,8 @@
 
 ตรวจว่า scripts รันได้จริง:
 
-- รัน `bun --filter tools-review review` และตรวจ exit code
-- รัน `bun --filter tools-review review:json` และตรวจ output format
+- รัน `bun --filter tools-review-codebase review-codebase` และตรวจ exit code
+- รัน `bun --filter tools-review-codebase review-codebase:json` และตรวจ output format
 
 ถ้า script รันไม่ได้ → flag เป็น `High` severity
 
@@ -63,6 +63,6 @@
 
 ทุก finding ต้องมี:
 
-- file path เช่น `tools/review/package.json` หรือ root `package.json`
+- file path เช่น `tools/review-codebase/package.json` หรือ root `package.json`
 - line number
 - code snippet ที่เป็นปัญหา

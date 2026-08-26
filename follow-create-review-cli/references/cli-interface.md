@@ -53,6 +53,6 @@
 
 ทุก finding ต้องมี:
 
-- file path เช่น `tools/review/src/presentation/cli.ts`
+- file path เช่น `tools/review-codebase/src/presentation/cli.ts`
 - line number
 - code snippet ที่เป็นปัญหา

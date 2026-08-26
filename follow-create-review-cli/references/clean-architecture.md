@@ -2,7 +2,7 @@
 
 ## Required Directories
 
-ตรวจว่า `tools/review/` มี directories ครบทั้ง 4 ชั้น:
+ตรวจว่า `tools/review-codebase/` มี directories ครบทั้ง 4 ชั้น:
 
 - `src/domain/` — business logic, analyzers, types
 - `src/application/` — use cases, orchestration
@@ -53,6 +53,6 @@
 
 ทุก finding ต้องมี:
 
-- file path เช่น `tools/review/src/domain/analyzers/security.ts`
+- file path เช่น `tools/review-codebase/src/domain/analyzers/security.ts`
 - line number
 - code snippet ที่เป็นปัญหา

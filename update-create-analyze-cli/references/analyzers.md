@@ -16,12 +16,12 @@
 
 ## ReviewWorkflow Map
 
-ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/review-codebase-everything` reference:
+ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/update-review-cli-and-run` reference:
 
 ```typescript
 const reviewWorkflow: Record<string, string> = {
-  "missing-eslint": "review-codebase-everything/lint-rules",
-  "no-tests": "review-codebase-everything/test-coverage",
+  "missing-eslint": "update-review-cli-and-run/lint-rules",
+  "no-tests": "update-review-cli-and-run/test-coverage",
 };
 ```
 

@@ -9,7 +9,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Scope
 
-ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/review-codebase-everything`
+ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/update-review-cli-and-run`
 
 ## Execute
 
@@ -68,7 +68,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 > Goal: config files สอดคล้องกับ root workspace และ project standards
 
-1. ทำ `/review-codebase-everything` สำหรับ tsconfig, vite, biome, eslint, prettier, lefthook, turbo
+1. ทำ `/update-review-cli-and-run` สำหรับ tsconfig, vite, biome, eslint, prettier, lefthook, turbo
 2. เปรียบเทียบ config กับ root workspace ถ้ามี
 3. ตรวจสอบ `.env.example`, `.env.local` ว่ามีหรือไม่
 4. ตรวจสอบ config drift ระหว่าง workspaces ถ้าเป็น monorepo
@@ -101,7 +101,7 @@ validate findings และสรุปผล
 ### 1. Scope Boundary
 
 - review หนึ่ง workspace ต่อการเรียก
-- ไม่ duplicate กับ `/review-codebase-everything`
+- ไม่ duplicate กับ `/update-review-cli-and-run`
 - ถ้าพบ issues นอก scope ให้ระบุเป็น Info และอ้างอิง skill ที่เหมาะสม
 
 ### 2. Evidence Quality

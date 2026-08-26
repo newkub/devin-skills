@@ -7,7 +7,7 @@ related:
   - review-restructure
   - review-update
   - implement-all
-  - review-codebase-everything
+  - update-review-cli-and-run
 ---
 
 ## Goal
@@ -50,7 +50,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 > Goal: หา implementation ที่ไม่สมบูรณ์ในทุกมิติ
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 3. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 4. Analyzer สแกนหา TODO, FIXME, HACK, MOCK, FAKE, STUB, placeholder patterns พร้อม context ตาม [references/implementation-gaps.md](references/implementation-gaps.md)
 5. Analyzer ตรวจหา unfinished features, unimplemented interfaces, missing error handling
@@ -60,7 +60,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 9. Analyzer ตรวจหา missing database: API/UI ที่ไม่มี table รองรับ, missing schema, missing migrations, missing data integrity ตาม [references/missing-database.md](references/missing-database.md)
 10. Analyzer ตรวจหา missing supporting features, missing integrations, missing operational readiness, missing compliance
 11. Review CLI คำนวณ implementation completeness score จาก review report
-12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-create-review-cli` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ### 3. Validate Findings
 
@@ -114,7 +114,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/review-codebase-everything` สำหรับระบุ issues ใน code
+- ใช้ `/update-review-cli-and-run` สำหรับระบุ issues ใน code
 - ถ้าต้อง refactor ก่อน implement → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure ก่อน implement → ทำ `review-restructure` ก่อน `restructure`
 - ถ้าต้อง update docs/config ก่อน implement → ทำ `review-update` ก่อน `update-*`
@@ -137,7 +137,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 - ทำ `/roleplay-user` เพื่อจำลอง user journey และตรวจสอบ flow ที่ไม่สมบูรณ์
 - ตรวจสอบ missing features ภายใน workflow นี้ (API/database มีแล้วแต่ UX/UI ยังไม่สมบูรณ์)
-- ทำ `/review-codebase-everything` ถ้าพบ gaps ในแต่ละด้าน
+- ทำ `/update-review-cli-and-run` ถ้าพบ gaps ในแต่ละด้าน
 - ตรวจสอบว่า flow หลักมี happy path, error path, recovery, rollback, undo, confirmation
 - ตรวจสอบว่า feature หลักมี supporting features ครบ: validation, auth, audit, notifications, rate limiting, tests, docs
 

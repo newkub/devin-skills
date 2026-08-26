@@ -23,7 +23,7 @@
 
 ## Pattern-Based Checks
 
-ใช้ `Grep` หรือ `ast-grep` สำหรับ pattern-based checks เมื่อเกี่ยวข้อง:
+ใช้ `grep` หรือ `ast-grep` สำหรับ pattern-based checks เมื่อเกี่ยวข้อง:
 
 - ค้นหา anti-patterns ที่รู้จัก
 - ตรวจสอบ convention compliance
@@ -53,7 +53,7 @@
 
 - ระบุ root cause ของแต่ละ finding ถ้าเป็นไปได้
 - ระบุ false positives ที่พบ
-- แต่ละ finding ต้อง map ไปยัง `?review-codebase-everything/review-<dimension>`? ผ่าน `reviewWorkflow` field
+- แต่ละ finding ต้อง map ไปยัง review workflow ที่เหมาะสม
 
 ## Recommendations
 

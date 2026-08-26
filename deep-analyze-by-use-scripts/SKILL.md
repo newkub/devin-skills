@@ -1,11 +1,11 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย tools/review CLI, tools/analyze CLI, @ast-grep/napi และ
+description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย tools/review-codebase CLI, tools/analyze CLI, @ast-grep/napi และ
 ---
 
 ## Goal
 
-วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-create-review-cli` และ `/run-review`
+วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review-codebase` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/update-review-cli-and-run` และ `/run-review`
 
 ## Scope
 
@@ -28,22 +28,22 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
 2. ทำ `/follow-architecture` (Clean pattern: `references/clean-architecture.md`) เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
 3. เลือก stack: Rust ถ้าต้องการ binary performance, Bun ถ้าทีมใช้ TypeScript
-4. ทำ `/review-codebase-everything` เพื่อตรวจสอบคุณภาพก่อน integrate
+4. ทำ `/update-review-cli-and-run` เพื่อตรวจสอบคุณภาพก่อน integrate
 5. ผสาน CLI เข้ากับ package manifest ด้วย `/follow-tasks`
 
 ### 3. Ensure Review CLI Ready
 
 > Goal: ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
 
-1. ทำ `/update-create-review-cli` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
+1. ทำ `/update-review-cli-and-run` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
 2. ถ้า review CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
-3. ถ้าต้องสร้างใหม่ → ทำ `/update-create-review-cli` ก่อน แล้วกลับมาทำ Step 4
+3. ถ้าต้องสร้างใหม่ → ทำ `/update-review-cli-and-run` ก่อน แล้วกลับมาทำ Step 4
 
 ### 4. Run Review CLI And NAPI Analysis
 
 > Goal: รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
 
-1. รัน `bun --filter tools-review review:json` เพื่อดึง review report เป็น JSON
+1. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report เป็น JSON
 2. รัน `bun --filter tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
 3. ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis ใน scripts — Bun auto-install บน `import`
 4. รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`, `@ast-grep/napi`
@@ -80,9 +80,9 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 
 ### 1. Review CLI Integration
 
-- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-create-review-cli` ก่อนรัน `/run-review`
-- ถ้า review CLI ไม่มี → ทำ `/update-create-review-cli` ก่อนเสมอ
-- ถ้า review CLI มีอยู่ → รัน `bun --filter tools-review review:json` ได้เลย
+- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/update-review-cli-and-run` ก่อนรัน `/run-review`
+- ถ้า review CLI ไม่มี → ทำ `/update-review-cli-and-run` ก่อนเสมอ
+- ถ้า review CLI มีอยู่ → รัน `bun --filter tools-review-codebase review-codebase:json` ได้เลย
 - รัน review CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
 
 ### 2. Analyze CLI Integration
@@ -90,7 +90,7 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 - ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบ `tools/analyze/` ด้วย
 - ถ้า `tools/analyze/` ไม่มี → ทำ `/follow-create-cli` ก่อนเสมอ
 - `tools/analyze/` ต้อง follow `/follow-architecture` (Clean pattern: `references/clean-architecture.md`)
-- ทำ `/review-codebase-everything` ก่อนใช้งาน
+- ทำ `/update-review-cli-and-run` ก่อนใช้งาน
 
 ### 3. Ast-Grep NAPI Usage
 
@@ -127,7 +127,7 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 ## Expected Outcome
 
 - Review CLI JSON report พร้อม metrics ครบถ้วน
-- `tools/analyze` CLI พร้อมใช้งานและผ่าน `/review-codebase-everything`
+- `tools/analyze` CLI พร้อมใช้งานและผ่าน `/update-review-cli-and-run`
 - Structural overview ด้วย `ast-grep outline`
 - Deep report ตาราง 7 columns พร้อม evidence ที่ตรวจสอบได้
 - Deep summary 5 ส่วน: Domain Breakdown, Severity Distribution, Analyzer Changes, False Positive Analysis, Recommended Actions

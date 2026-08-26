@@ -14,7 +14,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 - `naming` — naming conventions สำหรับ variables, functions, files, components, types, API endpoints, database tables/columns, CSS classes, constants
 - `discoverability` — code, docs, features discoverability พร้อม checklist และ review score
 
-ไม่รวม UX copy (ใช้ `/review-frontend`), content coverage (ใช้ `/review-delivery`), SEO (ใช้ `/review-seo`), code quality (ใช้ `/review-quality`) — อยู่ภายใต้ `/review-codebase-everything` เมื่อ review delivery ทั้งหมด
+ไม่รวม UX copy (ใช้ `/review-frontend`), content coverage (ใช้ `/review-delivery`), SEO (ใช้ `/review-seo`), code quality (ใช้ `/review-quality`) — อยู่ภายใต้ `/update-review-cli-and-run` เมื่อ review delivery ทั้งหมด
 
 ## Execute
 

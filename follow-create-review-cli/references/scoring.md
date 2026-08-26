@@ -37,7 +37,7 @@ score = sum(severity_weight * count) / total_findings
 
 ถ้า score < 70:
 
-- แนะนำให้เรียก `update-create-review-cli` ก่อนดำเนินการ
+- แนะนำให้เรียก `update-review-cli-and-run` ก่อนดำเนินการ
 - ระบุ findings ที่ต้องแก้ไข
 - ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 

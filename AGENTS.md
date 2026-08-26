@@ -1,4 +1,4 @@
-﻿---
+---
 name: devin-global-skills
 description: รวบรวม skills สำหรับ Devin CLI ทั้ง global และ project-specific
 related:
@@ -129,7 +129,7 @@ related:
 - `review-observability: /review-observability`
 - `review-compliance: /review-compliance`
 - `review-writing: /review-writing`
-- `review-codebase-everything: /review-codebase-everything`
+- `update-review-cli-and-run: /update-review-cli-and-run`
 - `review-gaps: /review-gaps`
 - `review-dot-devin: /review-dot-devin`
 - `review-devin-subagents: /review-devin-subagents`
@@ -145,7 +145,7 @@ related:
 
 #### Create
 
-- `follow-create-analyze-cli: /follow-create-analyze-cli`
+- `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-create-review-cli: /follow-create-review-cli`
 
 #### Watch

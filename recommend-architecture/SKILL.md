@@ -1,4 +1,4 @@
-﻿---
+---
 name: recommend-architecture
 description: แนะนำ architecture และ file structure ที่เหมาะสมสำหรับโปรเจกต์ พร้อม comment และตาราง file pattern
 ---
@@ -33,7 +33,7 @@ description: แนะนำ architecture และ file structure ที่เ�
 
 ตรวจสอบโครงสร้างไฟล์และ folders
 
-- ทำ `/review-codebase-everything` เพื่อตรวจสอบโครงสร้าง
+- ทำ `/update-review-cli-and-run` เพื่อตรวจสอบโครงสร้าง
 - ระบุ architecture patterns ที่ใช้
 - ตรวจสอบ consistency ของโครงสร้าง
 

@@ -1,25 +1,25 @@
 ---
 name: follow-create-review-cli
-description: ตรวจสอบ tools/review CLI ก่อน update-create-review-cli แก้ไข
+description: ตรวจสอบ tools/review-codebase CLI ก่อน update-review-cli-and-run แก้ไข
 ---
 
 ## Goal
 
-Review `tools/review` CLI ก่อนเรียก `update-create-review-cli` เพื่อยืนยันว่า Clean Architecture, analyzer structure, category coverage, CLI interface, และ workspace integration ครบถ้วนและถูกต้อง
+Review `tools/review-codebase` CLI ก่อนเรียก `update-review-cli-and-run` เพื่อยืนยันว่า Clean Architecture, analyzer structure, category coverage, CLI interface, และ workspace integration ครบถ้วนและถูกต้อง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-create-review-cli` — ตรวจ `tools/review` CLI ทำ review เท่านั้น ไม่แก้ไข CLI code ระหว่าง review
+ใช้ก่อนเรียก `update-review-cli-and-run` — ตรวจ `tools/review-codebase` CLI ทำ review เท่านั้น ไม่แก้ไข CLI code ระหว่าง review
 
 ## Execute
 
 ### 1. Prepare Context
 
-> Goal: เข้าใจ tools/review structure
+> Goal: เข้าใจ tools/review-codebase structure
 
-1. ทำ `/scan-codebase` ใน `tools/review/`
-2. ตรวจว่า `tools/review/` มีอยู่ ถ้าไม่ → flag เป็น critical
-3. อ่าน `package.json` ของ `tools/review`
+1. ทำ `/scan-codebase` ใน `tools/review-codebase/`
+2. ตรวจว่า `tools/review-codebase/` มีอยู่ ถ้าไม่ → flag เป็น critical
+3. อ่าน `package.json` ของ `tools/review-codebase`
 4. อ่าน `run-review` เพื่อทราบ 60+ categories และ 5 domains
 
 ### 2. Check Clean Architecture
@@ -42,7 +42,7 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 
 1. ตรวจ analyzer files ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
 2. ตรวจว่าทุก analyzer return `CategoryResult` พร้อม `status`, `score`, `findings`
-3. ตรวจว่าทุก analyzer มี `reviewWorkflow` map ไปยัง `/review-codebase-everything` หรือ references
+3. ตรวจว่าทุก analyzer มี `reviewWorkflow` map ไปยัง `/update-review-cli-and-run` หรือ references
 4. ตรวจว่าใช้ shared utilities จาก `src/adapters/` ไม่ duplicate code
 5. ตรวจ category coverage: 60+ categories จาก `/run-review`, 5 domains
 6. บันทึก findings พร้อม evidence
@@ -65,9 +65,9 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 
 > ดู [references/analyze-integration.md](references/analyze-integration.md) สำหรับ integration validation rules
 
-1. ตรวจว่า `tools/review` imports analyzers จาก `tools-analyze` ผ่าน workspace
-2. ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review/src/health`
-3. ตรวจ `tools-analyze` เป็น dependency ของ `tools/review`
+1. ตรวจว่า `tools/review-codebase` imports analyzers จาก `tools-analyze` ผ่าน workspace
+2. ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review-codebase/src/health`
+3. ตรวจ `tools-analyze` เป็น dependency ของ `tools/review-codebase`
 4. บันทึก findings พร้อม evidence
 
 ### 6. Check Package Scripts
@@ -76,9 +76,9 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 
 > ดู [references/package-scripts.md](references/package-scripts.md) สำหรับ package scripts validation rules
 
-1. ตรวจ `tools/review/package.json` มี `review`, `review:json` scripts
-2. ตรวจ root `package.json` มี `review: bun --filter tools-review review`
-3. ตรวจ root `package.json` มี `review:json: bun --filter tools-review review:json`
+1. ตรวจ `tools/review-codebase/package.json` มี `review-codebase`, `review-codebase:json` scripts
+2. ตรวจ root `package.json` มี `review: bun --filter tools-review-codebase review-codebase`
+3. ตรวจ root `package.json` มี `review-codebase:json: bun --filter tools-review-codebase review-codebase:json`
 4. บันทึก findings พร้อม evidence
 
 ### 7. Check Line Count And Evidence
@@ -105,12 +105,12 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข CLI code ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-create-review-cli` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `update-review-cli-and-run` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
 
-- `Critical`: ไม่มี tools/review, ขาด entry point, analyzers ไม่ทำงาน
+- `Critical`: ไม่มี tools/review-codebase, ขาด entry point, analyzers ไม่ทำงาน
 - `High`: ขาด Clean Architecture, analyzer ไม่ return CategoryResult, ไม่มี --help
 - `Medium`: category coverage ไม่ครบ, scripts ขาด, duplicated code
 - `Low`: file names ไม่ kebab-case, line count เกิน
@@ -120,7 +120,7 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `update-create-review-cli` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `update-review-cli-and-run` ก่อนดำเนินการ
 
 ### 4. Formatting
 
@@ -130,7 +130,7 @@ Review `tools/review` CLI ก่อนเรียก `update-create-review-cli`
 
 ## Expected Outcome
 
-- รายงาน tools/review CLI Review พร้อม score และ grade
+- รายงาน tools/review-codebase CLI Review พร้อม score และ grade
 - รายงาน findings พร้อม severity, evidence และ action required
 - ยืนยัน Clean Architecture, analyzer coverage, CLI interface ครบถ้วน
 - ยืนยัน integration กับ `tools-analyze` ไม่มี duplicated logic

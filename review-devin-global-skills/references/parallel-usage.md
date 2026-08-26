@@ -12,7 +12,7 @@
 
 1. ถ้า data processing ซับซ้อนหรือ operations > 10 ไฟล์ → ใช้ `/use-scripts`
 2. ถ้า workflow มี > 5 steps หรือ high-risk actions → อ่าน `follow-context-rot` เพื่อ review context rot
-3. ถ้าต้อง review context rot → ทำ `/follow-harness-engineering` ∥ `/review-codebase-everything`
+3. ถ้าต้อง review context rot → ทำ `/follow-harness-engineering` ∥ `/update-review-cli-and-run`
 
 ## Goal
 

@@ -53,4 +53,4 @@ import { runAllAnalyzers, createAnalyzePorts } from "tools-analyze";
 
 ถ้า import ไม่ได้ → flag เป็น `High`
 
-ดู `references/review-integration.md` สำหรับการใช้งานใน `tools/review`
+ดู `references/review-integration.md` สำหรับการใช้งานใน `tools/review-codebase`

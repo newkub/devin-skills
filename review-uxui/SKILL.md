@@ -39,8 +39,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 1. ทำ `/scan-codebase` เพื่อเข้าใจ UI structure และ styling system
 2. ระบุ design token system, component library, CSS framework (UnoCSS, Tailwind, CSS modules), theme config, icon set, typography setup
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
+4. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 7. ถ้าสแกนไม่ได้ → stop และ report
 

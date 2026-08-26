@@ -39,14 +39,14 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: ตรวจสอบ code changes ของ PR
 
 1. ทำ /run-verify เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
-2. ทำ /review-codebase-everything บน files ที่เปลี่ยนแปลง
-3. ทำ /review-codebase-everything สำหรับ security-sensitive changes
-4. ทำ /review-codebase-everything สำหรับ test coverage และ test quality
-5. ทำ /review-codebase-everything สำหรับ docs, changelog, versioning, git hygiene
-6. ถ้า PR เป็น frontend → ทำ /review-codebase-everything
-7. ถ้า PR เป็น backend → ทำ /review-codebase-everything
-8. ถ้า PR เป็น API → ทำ /review-codebase-everything
-9. ถ้า PR เป็น auth → ทำ /review-codebase-everything
+2. ทำ /update-review-cli-and-run บน files ที่เปลี่ยนแปลง
+3. ทำ /update-review-cli-and-run สำหรับ security-sensitive changes
+4. ทำ /update-review-cli-and-run สำหรับ test coverage และ test quality
+5. ทำ /update-review-cli-and-run สำหรับ docs, changelog, versioning, git hygiene
+6. ถ้า PR เป็น frontend → ทำ /update-review-cli-and-run
+7. ถ้า PR เป็น backend → ทำ /update-review-cli-and-run
+8. ถ้า PR เป็น API → ทำ /update-review-cli-and-run
+9. ถ้า PR เป็น auth → ทำ /update-review-cli-and-run
 
 ### 4. Validate Findings
 

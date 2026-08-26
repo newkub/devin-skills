@@ -2,17 +2,17 @@
 
 ## Workspace Imports
 
-ตรวจว่า `tools/review` imports analyzers จาก `tools-analyze` ผ่าน workspace:
+ตรวจว่า `tools/review-codebase` imports analyzers จาก `tools-analyze` ผ่าน workspace:
 
 - ใช้ workspace protocol เช่น `"tools-analyze": "workspace:*"`
 - import จาก `tools-analyze` ไม่ใช่ copy code มาใหม่
-- ตรวจใน `package.json` ของ `tools/review`
+- ตรวจใน `package.json` ของ `tools/review-codebase`
 
 ถ้าไม่มี workspace import → flag เป็น `High` severity
 
 ## No Duplicated Logic
 
-ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review/src/`:
+ตรวจว่าไม่มี duplicated analyzer logic ใน `tools/review-codebase/src/`:
 
 - ห้าม copy analyzer functions จาก `tools-analyze`
 - ห้าม re-implement logic ที่มีใน `tools-analyze` แล้ว
@@ -22,9 +22,9 @@
 
 ## Dependency Check
 
-ตรวจว่า `tools-analyze` เป็น dependency ของ `tools/review`:
+ตรวจว่า `tools-analyze` เป็น dependency ของ `tools/review-codebase`:
 
-- อ่าน `tools/review/package.json`
+- อ่าน `tools/review-codebase/package.json`
 - ตรวจ `dependencies` มี `tools-analyze`
 - ตรวจ version ใช้ `workspace:*` protocol
 
@@ -44,6 +44,6 @@
 
 ทุก finding ต้องมี:
 
-- file path เช่น `tools/review/package.json`
+- file path เช่น `tools/review-codebase/package.json`
 - line number
 - code snippet ที่เป็นปัญหา

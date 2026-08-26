@@ -26,8 +26,8 @@ security review สำหรับ: authentication, authorization, OWASP Top 10,
 3. ระบุ API framework, CORS config, CSP headers, rate limiting library
 4. ระบุ encryption library, secret management (Infisical, Phase.dev, Doppler, AWS Secrets Manager)
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/update-create-review-cli` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-7. รัน `bun --filter tools-review review:json` เพื่อดึง review report พร้อม metrics
+6. ทำ `/update-review-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 8. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
 ### 2. Authentication Review

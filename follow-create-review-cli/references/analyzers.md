@@ -26,7 +26,7 @@
 
 ตรวจว่าทุก analyzer มี `reviewWorkflow` map:
 
-- map จาก category ไปยัง `/review-codebase-everything` หรือ references
+- map จาก category ไปยัง `/update-review-cli-and-run` หรือ references
 - ระบุ action ที่ต้องทำเมื่อพบ issue
 
 ถ้าขาด `reviewWorkflow` → flag เป็น `Medium` severity
@@ -65,6 +65,6 @@
 
 ทุก finding ต้องมี:
 
-- file path เช่น `tools/review/src/domain/analyzers/security.ts`
+- file path เช่น `tools/review-codebase/src/domain/analyzers/security.ts`
 - line number
 - code snippet ที่เป็นปัญหา

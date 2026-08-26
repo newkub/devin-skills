@@ -34,7 +34,7 @@
 
 1. บันทึก before score ก่อนรัน improvement
 2. ทำ improvement ตาม findings
-3. รัน `/run-review` เพื่อวัด after score
+3. รัน `bun run review-codebase` เพื่อวัด after score
 4. เปรียบเทียบ delta เพื่อวัดผลการปรับปรุง
 
 ## Category Coverage
@@ -42,7 +42,7 @@
 `categories` metric วัดความครอบคลุมของ review:
 
 - target: `categories >= 60`
-- ถ้าต่ำกว่า 60 → ทำ `/update-create-review-cli` เพื่อเพิ่ม categories
+- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `update-review-cli-and-run` เพื่อ integrate
 
 ## Health Indicator
 

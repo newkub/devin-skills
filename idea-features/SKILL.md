@@ -89,7 +89,7 @@ argument-hint: "[topic]"
 
 - ถ้า user บอก "do ... now" → ทำ `/refactor` และ `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอร์เฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/review-codebase-everything`
+- ถ้า user ขอ implement ทั้งหมด → ทำ `/update-review-cli-and-run`
 
 ## Expected Outcome
 

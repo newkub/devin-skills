@@ -1,4 +1,4 @@
-﻿---
+---
 name: bench-features
 description: เปรียบเทียบ features กับคู่แข่ง หา gaps แล้วสร้าง roadmap ให้ดีกว่า
 ---
@@ -52,7 +52,7 @@ description: เปรียบเทียบ features กับคู่แข
 > Goal: ทำให้ features ดีกว่าคู่แข่ง
 
 1. ทำ `/ship` เพื่อ implement features ตาม roadmap
-2. ทำ `/review-codebase-everything` เพื่อตรวจสอบ completeness
+2. ทำ `/update-review-cli-and-run` เพื่อตรวจสอบ completeness
 3. หยุดเมื่อ features ดีกว่าคู่แข่งทั้งหมด
 
 ### 5. Update Feature Comparison (ตอบในแชท — ภาษาไทย)

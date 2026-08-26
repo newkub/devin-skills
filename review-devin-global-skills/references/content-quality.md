@@ -14,7 +14,7 @@
 1. ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 2. ห้าม TODO, MOCK, placeholder, generic filler หรือคำสวยแต่ไม่ actionable
 3. การ simplify ต้องเก็บ context ครบ ไม่ลบข้อมูลสำคัญ
-4. ถ้าพบ gaps ใน coverage → ทำ `/review-codebase-everything`
+4. ถ้าพบ gaps ใน coverage → ทำ `/update-review-cli-and-run`
 
 ## Clarity And Determinism
 
