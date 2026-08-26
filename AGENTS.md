@@ -214,7 +214,6 @@ related:
 - `summarize: /summarize`
 - `summarize-this-project: /summarize-this-project`
 - `summarize-this-chat-session: /summarize-this-chat-session`
-- `report-bullet-numbered: /report-bullet-numbered`
 
 #### Search
 

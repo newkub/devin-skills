@@ -29,7 +29,7 @@ argument-hint: "<context>"
 
 1. ถ้า `project` → ทำ `/summarize-this-project`
 2. ถ้า `chat` หรือ `conversation` → ทำ `/summarize-this-chat-session`
-3. ถ้าต้องการ bullet/numbered list → ทำ `/report-bullet-numbered`
+3. ถ้าต้องการ bullet/numbered list → ทำ `/report-table`
 4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
 5. ถ้า `file` → อ่านไฟล์แล้วสรุป
 6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/git-diff`
