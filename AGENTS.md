@@ -193,6 +193,7 @@ related:
 #### Create
 
 - `create-files-in-temp: /create-files-in-temp`
+- `write-examples: /write-examples`
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`

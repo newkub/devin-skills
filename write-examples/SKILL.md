@@ -1,6 +1,14 @@
 ---
 name: write-examples
-description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+description: เขียน examples ครอบคลุมทุก API ใน project ลงใน examples/<title>/ ของ workspace
+related:
+  - analyze-project
+  - follow-readme
+  - run-dev
+  - validate
+  - report-table
+  - write-test
+  - update-usage-md
 ---
 
 ## Goal
@@ -9,7 +17,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 ## Scope
 
-ใช้ `write-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `write-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม โดยสร้าง examples ใน `examples/<title>/` ภายใน workspace นั้นๆ
 
 ## Execute
 
@@ -25,7 +33,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 > Goal: Create Structure
 
-1. สร้าง `examples/` directory
+1. สร้าง `examples/<title>/` directory ใน workspace
 2. สร้าง subdirectories ตาม project organization
 3. สร้าง `src/` directory ในแต่ละ example subdirectory
 4. สร้าง `README.md` อธิบายโครงสร้าง
@@ -34,7 +42,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 > Goal: Write Examples per Module
 
-1. เขียน examples สำหรับทุก module ครอบคล้วทุก API
+1. เขียน examples สำหรับทุก module ครอบคลุมทุก API
 2. เขียน basic usage สำหรับแต่ละ API
 3. เขียน advanced usage สำหรับ use cases ที่ซับซ้อน
 4. เขียน edge cases และ error handling
@@ -60,9 +68,9 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 > Goal: Update Documentation
 
-1. ทำตาม `/follow-readme` สำหรับการอัพเดท README.md
+1. ทำตาม `/follow-readme` สำหรับการอัปเดท README.md
 2. เพิ่ม examples ที่เขียนไว้ลงใน README.md ในส่วน Usage
-3. อัพเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
+3. อัปเดท API Reference ด้วยตารางครบถ้วนตามรูปแบบที่กำหนดใน `/follow-readme`
 
 ## Rules
 
@@ -78,7 +86,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 ### 3. Coverage
 
-- ครอบคล้วทุก public API
+- ครอบคลุมทุก public API
 - ทั้ง basic และ advanced usage
 
 ### 4. Documentation
@@ -91,6 +99,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 ## Expected Outcome
 
-มี examples ครอบคลุมทุก API
-ทุก example runnable ได้จริง
-ผู้ใช้ copy-paste และใช้งานได้ทันที
+- มี examples ครอบคลุมทุก API
+- ทุก example runnable ได้จริง
+- ผู้ใช้ copy-paste และใช้งานได้ทันที
+- examples ถูกสร้างใน `examples/<title>/` ของ workspace นั้นๆ
