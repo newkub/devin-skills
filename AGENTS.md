@@ -154,6 +154,11 @@ related:
 
 - `update-create-analyze-cli: /update-create-analyze-cli`
 - `follow-github-issue-templates: /follow-github-issue-templates`
+- `follow-create-website: /follow-create-website`
+- `follow-solid-tanstack: /follow-solid-tanstack`
+- `follow-lib-tanstack-ecosystem: /follow-lib-tanstack-ecosystem`
+- `follow-lib-effect-ts: /follow-lib-effect-ts`
+- `follow-single-responsibility: /follow-single-responsibility`
 
 #### Search
 

@@ -1,5 +1,5 @@
 ---
-name: follow-framework-solid-tanstack-orpc-unocss
+name: follow-solid-tanstack
 description: ตั้งค่าและพัฒนา full-stack app ด้วย TanStack Start (SolidJS), oRPC, Elysia และ UnoCSS
 ---
 
@@ -124,7 +124,15 @@ description: ตั้งค่าและพัฒนา full-stack app ด้
 5. ใช้ `.listen(port)` สำหรับ Bun server
 6. ทำตาม `/follow-lib-elysia` เพื่อ routes, validation, lifecycle
 
-### 9. Build And Deploy
+### 9. Optional Effect-TS And Single Responsibility
+
+> Goal: ใช้ Effect-TS และตรวจสอบ single responsibility
+
+1. ถ้ามี complex effects หรือต้องการ dependency injection → ทำ `/follow-lib-effect-ts`
+2. ทำ `/follow-single-responsibility` เพื่อตรวจสอบ modules, components, procedures
+3. ตรวจสอบว่า business logic แยกจาก UI และ routes ชัดเจน
+
+### 10. Build And Deploy
 
 > Goal: รัน build และ deploy
 
