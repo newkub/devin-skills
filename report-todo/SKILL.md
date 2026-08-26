@@ -9,7 +9,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/add-to-queue`) และไม่รวมการ implement TODO (ใช้ `/implement-comment-todo`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/add-to-queue`) และไม่รวมการ implement TODO (ใช้ `/realize-implementation`)
 
 ## Execute
 
@@ -81,7 +81,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 1. สรุปจำนวน markers แยกตาม type และ priority
 2. ระบุ markers ที่ต้องจัดการด่วน (FIXME/BUG high priority)
 3. ระบุ stale markers ที่เก่าเกิน 6 เดือน
-4. แนะนำ next steps: `/implement-comment-todo` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
+4. แนะนำ next steps: `/realize-implementation` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
 
 ## Rules
 
@@ -100,7 +100,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
 - ใช้ `/add-to-queue` สำหรับเพิ่ม TODO
-- ใช้ `/implement-comment-todo` สำหรับ implement TODO
+- ใช้ `/realize-implementation` สำหรับ implement TODO
 
 ### Output Format
 
@@ -118,7 +118,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### Non-Redundancy
 
 - การเพิ่ม TODO อยู่ใน `/add-to-queue` แล้ว
-- การ implement TODO อยู่ใน `/implement-comment-todo` แล้ว
+- การ implement TODO อยู่ใน `/realize-implementation` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 
 ## Expected Outcome

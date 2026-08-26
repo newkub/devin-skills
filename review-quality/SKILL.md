@@ -113,7 +113,7 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
+1. ทำ `/realize-implementation` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
 
 ## Rules

@@ -40,7 +40,7 @@ argument-hint: "[queue-file]"
 > Goal: ทำงานให้ครบตามแผน
 
 1. ทำ `/realize-implementation` ตามแผน
-2. ถ้าพบ TODO/MOCK/STUB → ทำ `/implement-all`
+2. ถ้าพบ TODO/MOCK/STUB → ทำ `/realize-implementation`
 3. ถ้าเกิด error → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ### 4. Verify And Complete

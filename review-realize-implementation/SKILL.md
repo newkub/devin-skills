@@ -6,7 +6,7 @@ related:
   - review-refactor
   - review-restructure
   - review-update
-  - implement-all
+  - realize-implementation
   - update-review-codebase-cli-and-run
 ---
 
@@ -90,7 +90,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. ทำ `/implement-all` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
+1. ทำ `/realize-implementation` เพื่อตรวจสอบและแก้ไข implementation completeness ของ areas ที่ review
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
 
 ## Rules
@@ -118,7 +118,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - ถ้าต้อง refactor ก่อน implement → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure ก่อน implement → ทำ `review-restructure` ก่อน `restructure`
 - ถ้าต้อง update docs/config ก่อน implement → ทำ `review-update` ก่อน `update-*`
-- ถ้าต้อง implement ให้ใช้ `/implement-all` หลัง review
+- ถ้าต้อง implement ให้ใช้ `/realize-implementation` หลัง review
 
 ### 4. Health Score Formula
 

@@ -54,14 +54,16 @@ description: แปลงทุกอย่างเป็น production code �
 
 > Reminder: workflow goal คือแปลงทุกอย่างเป็น production code จริง — schema และ data layer เป็น foundation ก่อน API และ UX/UI
 
-### 5. Convert TODO And Use Libraries
+### 5. Convert TODOs, Markdown TODOs, And Use Libraries
 
-> Goal: แปลง TODO/FIXME/HACK และ missing features เป็น production code และใช้ libraries ให้ครบ
+> Goal: แปลง TODO/FIXME/HACK, TODO.md, และ missing features เป็น production code
 
-1. ทำ `/implement-comment-todo`, `/implement-features-to-mvp` — แปลง TODO comments และ implement MVP features
-2. ทำ `/implement-all` เพื่อตรวจสอบและแปลง TODO/MOCK/FAKE/STUB/placeholder ทั้งหมดใน scope ที่ review ครอบคลุม
-3. ระบุและ implement missing features ที่เหลือจาก requirements
-4. ทำ `/use-lib-effective` เพื่อวิเคราะห์และใช้งาน libraries ให้เต็มประสิทธิภาพ — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า implementation fail ให้ทำ `/resolve-errors`
+1. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK` comments, placeholder functions, mock data, hard-coded values ด้วย `grep`
+2. ค้นหา TODO.md, ROADMAP.md, และ queue files ใน project
+3. ใช้ `edit` หรือ `write` แทนที่ placeholder ด้วย real implementation — ถ้าต้อง edit-only ให้ทำตาม `/edit-only`
+4. Implement TODO items จาก Markdown/queue ตาม priority และ dependencies
+5. ทำ `/implement-features-to-mvp` เพื่อ implement features ที่ขาด
+6. ทำ `/use-lib-effective` — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า fail ให้ทำ `/resolve-errors`
 
 ### 6. Refactor And Verify
 
@@ -102,11 +104,10 @@ description: แปลงทุกอย่างเป็น production code �
 ## Expected Outcome
 
 - ทุกอย่างเป็น production code จริง ใช้งานได้จริง — ไม่มี TODO/MOCK/placeholder เหลือ
-- `/implement-all` ถูกรันเพื่อตรวจสอบ completeness
+- TODO comments, TODO.md items, queue items ถูก implement ครบ
 - Schema, validation schemas, TypeScript types สมบูรณ์และเชื่อมต่อกัน
 - API handlers เชื่อม data source จริง — UX/UI components เชื่อม API จริง
 - Type flow ครบ: schema → validation → API → UI
 - Infrastructure พร้อมสำหรับ production — security, error handling, observability ครบถ้วน
 - Unused dependencies และ files ได้รับการพิจารณา — code ผ่าน lint โดยไม่มี errors/warnings
 - `/run-verify` ผ่าน: scan, typecheck, test, build ไม่มี errors
-- ทุก step มี `, ` markers สำหรับ parallel execution

@@ -2,7 +2,7 @@
 
 ## Goal
 
-ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `implement-comment-todo` และ `implement-todo-md`
+ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `realize-implementation`
 
 ## Search Patterns
 

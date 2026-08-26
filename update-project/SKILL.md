@@ -52,9 +52,14 @@ description: อัปเดต root project โดยเช็ค git log แ�
    - `/update-readme`
    - `/update-agents-md`
    - `/update-usage` เพื่ออัปเดต `usage.kdl` CLI spec ถ้ามี
+   - `/update-usage-md` (ถ้ามี `USAGE.md` แบบ manual)
    - `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+   - `/update-test` เพื่ออัปเดต test setup
+   - `/update-todo-md` (ถ้ามี `TODO.md`)
+   - `/update-reference` เพื่อ sync references
+   - `/update-gitignore` เพื่อ sync `.gitignore`
    - `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
    - `/follow-dot-vscode`
    - `/update-contributing-md`

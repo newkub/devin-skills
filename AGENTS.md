@@ -119,6 +119,7 @@ related:
 - `update-dependencies-latest: /update-dependencies-latest`
 - `run-release: /run-release`
 - `update-usage-md: /update-usage-md`
+- `update-todo-md: /update-todo-md`
 
 #### Global Config
 

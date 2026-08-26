@@ -9,7 +9,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `implement-all`, `implement-plan`, `implement-mock`, `implement-comment-todo`, `implement-todo-md`, `implement-queue-md`, `implement-github-task`, `implement-features-to-mvp`, หรือ `realize-implementation` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `realize-implementation`, `implement-plan`, `implement-mock`, `implement-queue-md`, `implement-github-task`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -44,7 +44,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ### 4. Inventory TODOs And FIXMEs
 
-> Goal: ระบุ TODO/FIXME/HACK ที่ต้องแปลงก่อน `implement-comment-todo` และ `implement-todo-md`
+> Goal: ระบุ TODO/FIXME/HACK ที่ต้องแปลงก่อน `realize-implementation`
 
 1. ทำ `/review-realize-implementation` เพื่อหา TODO, FIXME, XXX, HACK ทั้งใน source และ markdown
 2. จัดกลุ่มตาม priority และ dependencies
