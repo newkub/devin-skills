@@ -159,6 +159,7 @@ related:
 
 #### Global Config
 
+- `align-global-rules: /align-global-rules`
 - `edit-devin-global-rules: /edit-devin-global-rules`
 - `list-devin-global-mcp: /list-devin-global-mcp`
 - `edit-devin-global-mcp: /edit-devin-global-mcp`
