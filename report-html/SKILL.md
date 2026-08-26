@@ -1,6 +1,10 @@
 ---
-name: report-in-html
+name: report-html
 description: สร้างไฟล์ HTML ไฟล์เดียวแบบโต้ตอบได้สำหรับรายงานบนเบราว์เซอร์ พร้อมตาราง, dropdown, sort/filt...
+related:
+  - visualize-in-web
+  - visualize-project
+  - open-web
 ---
 
 ## Goal

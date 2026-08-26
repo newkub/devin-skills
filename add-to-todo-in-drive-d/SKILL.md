@@ -28,9 +28,11 @@ related:
 > Goal: มี title และ request ทีชัดเจน
 
 1. รับ `<title>` และ request content จาก argument
-2. ถ้าขาด ให้ถาม user
-3. ตรวจสอบ title เป็น kebab-case, ไม่มีอักขระพิเศษ
-4. ถ้า title ไม่ถูกต้อง ให้ถามใหม่หรือ normalize
+2. ระบุ `<path>` ที่ task หมายถึงจาก request, context, หรือ workspace ปัจจุบัน
+3. ถ้า path ไม่ชัด → ถาม user ว่าหมายถึง path ไหนก่อน append
+4. ถ้าขาด `<title>`, `<path>`, หรือ request content ให้ถาม user
+5. ตรวจสอบ title เป็น kebab-case, ไม่มีอักขระพิเศษ
+6. ถ้า title ไม่ถูกต้อง ให้ถามใหม่หรือ normalize
 
 ### 2. Append To d:/TODO.md
 
@@ -40,13 +42,14 @@ related:
 2. ตรวจสอบ `d:/TODO.md`:
    - ถ้าไม่มี → สร้างด้วย `# TODO` และ table header:
      ```
-     | Title | Description | Status | Priority | Created |
-     |---|---|---|---|---|
+     | Title | Description | Path | Status | Priority | Created |
+     |---|---|---|---|---|---|
      ```
 3. เพิ่ม row ใหม่ท้ายตาราง:
-   - `| <title> | <request> | pending | medium | <date> |`
-4. ถ้า request ซ้ำ title เดิม → อัปเดท description แทน append
-5. รายงาน path `d:/TODO.md`
+   - `| <title> | <request> | <path> | pending | medium | <date> |`
+4. ถ้าไม่มี `<path>` → หยุดและถาม user ก่อน append
+5. ถ้า request ซ้ำ title เดิม → อัปเดท description แทน append
+6. รายงาน path `d:/TODO.md`
 
 ### 3. Suggest Next Steps
 
@@ -70,7 +73,13 @@ related:
 - ต้องอยู่ใน `d:/TODO.md`
 - ไม่สร้างไฟล์ย่อยใน `.devin/todo/`
 
-### 3. Status
+### 3. Path
+
+- ทุก row ต้องมี `Path` ที่ชี้ target ของ task
+- ถ้า path ไม่ชัดให้ถาม user ก่อน append
+- ถ้า user ไม่ระบุ path ให้ใช้ current workspace หรือ `d:/` เป็น fallback แล้วรายงาน
+
+### 4. Status
 
 - ค่าเริ่มต้น `pending`
 - อัปเดทเป็น `in-progress` หรือ `completed` โดย `/continue`
@@ -83,5 +92,6 @@ related:
 ## Expected Outcome
 
 - `d:/TODO.md` มี task ใหมท้ายตาราง
-- Task มี title, description, status, priority, created
+- Task มี title, description, path, status, priority, created
+- ทุก task มี path ที่ชัดเจน
 - พร้อมสำหรับ `/deep-plan`, `/realize-implementation`, `/update-todo-md` หรือ `/continue` ต่อ
