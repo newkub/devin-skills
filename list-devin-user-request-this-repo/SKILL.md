@@ -77,6 +77,7 @@ related:
 
 - ไม่แก้ไข history summaries
 - เปิดอ่านไฟล์เท่านั้น
+- ใช้ regex ที match `=== MESSAGE N - User ===` เฉพาะต้นบรรทัด เพื่อหลีกเลี่ยง match ข้อความทีอยู่ใน metadata
 - ใช้ `limit` default ถ้า user ไม่ระบุ
 - ลบ metadata ก่อน deduplicate
 - ใช้ path เป้น absolute เสมอ
