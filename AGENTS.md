@@ -80,7 +80,6 @@ related:
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
-- `git-commit: /git-commit`
 - `ship: /ship`
 - `report: /report`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
@@ -215,6 +214,16 @@ related:
 - `watch-browser: /watch-browser`
 - `watch-browser-console: /watch-browser-console`
 - `watch-terminal: /watch-terminal`
+
+#### Git
+
+- `git-commit: /git-commit`
+- `list-git-commit: /list-git-commit`
+- `list-git-release: /list-git-release`
+- `edit-git-commit: /edit-git-commit`
+- `create-worktree-in-project: /create-worktree-in-project`
+- `cleanup-worktree: /cleanup-worktree`
+- `merge-worktree-to-main: /merge-worktree-to-main`
 
 #### Idea
 
