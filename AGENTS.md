@@ -93,6 +93,7 @@ related:
 - `report-usage-md: /report-usage-md`
 - `resolve-pr: /resolve-pr`
 - `fix: /fix`
+- `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`
 - `implement-github-issue: /implement-github-issue`
@@ -298,6 +299,7 @@ related:
 #### Git
 
 - `convert-to-git-submodules: /convert-to-git-submodules`
+- `create-pr: /create-pr`
 - `create-worktree-in-project: /create-worktree-in-project`
 - `cleanup-worktree: /cleanup-worktree`
 - `delete-git-branch: /delete-git-branch`

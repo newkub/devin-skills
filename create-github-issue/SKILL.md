@@ -1,7 +1,11 @@
 ---
 name: create-github-issue
-description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, และ milestones
-argument-hint: "[title]"
+description: สร้าง GitHub issue ใหม่พร้อม template, labels, assignees, milestones
+related:
+  - follow-github-issue-templates
+  - implement-github-issue
+  - create-pr
+  - ask-me
 ---
 
 ## Goal
@@ -18,69 +22,70 @@ argument-hint: "[title]"
 
 ### 1. Prepare Issue Information
 
-> Goal: Prepare Issue Information
+> Goal: รวบรวมข้อมูล issue
 
 1. รวบรวมข้อมูล issue: title, description, priority, type
 2. ระบุ repository และ branch ที่เกี่ยวข้อง
 3. กำหนด labels ตาม project conventions (bug, feature, enhancement, documentation)
 4. ระบุ assignees หากมีผู้รับผิดชอบ
 5. เชื่อมโยงกับ milestones หากมี roadmap
+6. ถ้าไม่มีข้อมูลพอ → ทำ `/ask-me`
 
-### 2. Write Issue Template
+### 2. Check Duplicates
 
-> Goal: Write Issue Template
+> Goal: ตรวจสอบ issue ซ้ำ
+
+1. รัน `gh issue list --search "<title>" --limit 10`
+2. ถ้ามี issue ซ้ำ → อัปเดต issue เดิมแทนการสร้างใหม่
+3. ระบุ relation `duplicateOf` ถ้าเกี่ยวข้อง
+
+### 3. Use Issue Template
+
+> Goal: เขียน body ตามมาตรฐาน
 
 1. ถ้า repo ยังไม่มี issue templates → ทำ `/follow-github-issue-templates` ก่อน
-2. ใช้ issue template ตาม project standards หรือ `?follow-github-issue-templates/templates/index.md`
-3. เลือกประเภท issue: bug, feature, plan, test, question หรือ agents-task
+2. อ่าน `.github/ISSUE_TEMPLATE/*.md`
+3. เลือกประเภท issue: bug, feature, plan, test, question, agents-task
 4. เขียน title ที่ชัดเจนและกระชับ
-5. เขียน description ด้วยรูปแบบมาตรฐาน:
+5. เขียน description ประกอบด้วย:
    - Problem statement
    - Expected behavior
    - Actual behavior
    - Steps to reproduce
    - Environment details
-6. เพิ่ม screenshots หรือ logs หากจำเป็น
+   - Acceptance criteria
+6. เพิ่ม screenshots หรือ logs ถ้าจำเป็น
 
-### 3. Create Issue With MCP Tool
+### 4. Create Issue
 
-> Goal: Create Issue With MCP Tool
+> Goal: สร้าง issue บน GitHub
 
-1. ใช้ `mcp8_issue_write` ด้วย method `create`
-2. ระบุ owner, repo, title, body
-3. ตั้งค่า labels, assignees, milestones
-4. เชื่อมโยงกับ issues อื่น (blockedBy, blocks, relatedTo, duplicateOf)
-5. ตั้งค่า priority และ state
+1. รัน `gh issue create --title "<title>" --body "<body>"`
+2. เพิ่ม labels ด้วย `--label "<label>"`
+3. เพิ่ม assignees ด้วย `--assignee <user>`
+4. เพิ่ม milestone ด้วย `--milestone <milestone>`
+5. ถ้าเป็น project item → ใช้ `gh project item-add <project-id>`
+6. ถ้ามี MCP tool ที่ใช้งานได้ → ใช้ `mcp8_issue_write` หรือ equivalent
 
-### 4. Verify Issue Creation
+### 5. Verify And Ship
 
-> Goal: Verify Issue Creation
+> Goal: ยืนยันและส่งมอบ
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
-2. ยืนยันว่า metadata ถูกต้อง (labels, assignees, milestones)
-3. ตรวจสอบความสมบูรณ์ของ description
-4. ทดสอบการเชื่อมโยงกับ issues อื่น
-
-### Ship
-
-> Goal: ส่งมอบงาน
-
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+2. ยืนยัน metadata ถูกต้อง
+3. ทำ `/ship`
 
 ## Rules
 
 ### 1. Issue Title
 
-- ใช้ภาษาอังกฤษเสมอ
+- ใช้ภาษาอังกฤษหรือตาม project conventions
 - เริ่มต้นด้วยประเภท issue (Bug, Feature, Enhancement, Docs)
 - ใช้ Title Case
 - ไม่เกิน 80 ตัวอักษร
 - ตัวอย่าง: `Bug: Login fails after timeout`
 
 ### 2. Issue Description
-
-ใช้ template มาตรฐาน:
 
 ```markdown
 ## Problem
@@ -95,16 +100,17 @@ argument-hint: "[title]"
 ## Steps to Reproduce
 1. [step 1]
 2. [step 2]
-3. [step 3]
 
 ## Environment
 - OS: [version]
 - Version: [version]
+
+## Acceptance Criteria
+- [ ] criterion 1
+- [ ] criterion 2
 ```
 
 ### 3. Labels Convention
-
-ใช้ labels ตามประเภท:
 
 | Category | Labels |
 |----------|--------|
@@ -114,8 +120,6 @@ argument-hint: "[title]"
 | Component | frontend, backend, database, api, ui |
 
 ### 4. Issue Relations
-
-ใช้ relations อย่างเหมาะสม:
 
 - `blockedBy`: issue ที่ต้องแก้ก่อน
 - `blocks`: issue ที่ถูกบล็อกโดย issue นี้
