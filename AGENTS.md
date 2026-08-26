@@ -113,6 +113,7 @@ related:
 - `analyze-root-cause-analysis: /analyze-root-cause-analysis`
 - `report-workspace-graph: /report-workspace-graph`
 - `from-recent-windows-capture: /from-recent-windows-capture`
+- `taxonomy: /taxonomy`
 
 #### Request
 
