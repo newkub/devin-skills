@@ -1,6 +1,6 @@
 ---
-name: report-cleanup-files-in-computer
-description: รายงานไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้ โดยไม่ลบอัตโนมัติ
+name: report-idea-cleanup-files-in-computer
+description: รายงานไอเดียไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้
 ---
 
 ## Goal
