@@ -1,10 +1,10 @@
 ---
-name: follow-set-theory
+name: follow-math-set-theory
 description: เข้าใจ set theory, operations, Venn diagrams และประยุกต์ใช้ใน programming
 argument-hint: "[topic]"
 related:
-  - follow-predicate-logic
-  - follow-propositional-logic
+  - follow-math-predicate-logic
+  - follow-math-propositional-logic
   - follow-math-concepts
   - debug
 ---

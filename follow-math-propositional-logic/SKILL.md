@@ -1,9 +1,9 @@
 ---
-name: follow-propositional-logic
+name: follow-math-propositional-logic
 description: เข้าใจและใช้ตรรกศาสตร์ประพจน์ truth tables tautology boolean algebra ใน programming และ prompts
 argument-hint: "[topic]"
 related:
-  - follow-predicate-logic
+  - follow-math-predicate-logic
   - follow-math-concepts
   - debug
   - ask-me
@@ -19,7 +19,7 @@ related:
 - ครอบคลุม operators: NOT, AND, OR, XOR, IMPLIES, IFF
 - ครอบคลุม truth tables, tautology, contradiction, contingency
 - แนะนำ De Morgan's laws, distributive, associative, commutative laws
-- ไม่ลงลึก quantifiers (ดู `/follow-predicate-logic`)
+- ไม่ลงลึก quantifiers (ดู `/follow-math-predicate-logic`)
 
 ## Execute
 
@@ -91,7 +91,7 @@ related:
 ### 1. Truth Values Only
 
 - ตัวแปรต้องมีค่า true/false เท่านั้น
-- ไม่ใช้ quantifiers ในวิชานี้ (ใช้ `/follow-predicate-logic`)
+- ไม่ใช้ quantifiers ในวิชานี้ (ใช้ `/follow-math-predicate-logic`)
 - ห้ามเข้าใจผิดระหว่าง implication กับ causation
 
 ### 2. Operator Precedence

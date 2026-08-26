@@ -1,7 +1,7 @@
 ---
 name: alternative
-description: แนะนำ alternatives ของ <x> และสรุปผลลัพธ์ด้วย /report-table
-argument-hint: "<x>"
+description: แนะนำ alternatives ของ <exact-name> และสรุปผลลัพธ์ด้วย /report-table
+argument-hint: "<exact-name>"
 related:
   - list-alternative
   - report-table
@@ -13,31 +13,31 @@ related:
 
 ## Goal
 
-เมื่อผู้ใช้ถาม `<x> alternative` หรือขอ alternatives ของสิ่งใดสิ่งหนึ่ง ให้ค้นหา เปรียบเทียบ และนำเสนอผลลัพธ์ในรูปแบบตาราง (`/report-table`) พร้อม recommendation
+เมื่อผู้ใช้ถาม `<exact-name> alternative` หรือขอ alternatives ของสิ่งใดสิ่งหนึ่ง ให้ค้นหา เปรียบเทียบ และนำเสนอผลลัพธ์ในรูปแบบตาราง (`/report-table`) พร้อม recommendation
 
 ## Scope
 
 ใช้กับ:
-- คำสั่ง `<x> alternative` หรือ `alternative to <x>`
-- คำถาม "มีอะไรแทน <x>" หรือ "compare <x> alternatives"
+- คำสั่ง `<exact-name> alternative` หรือ `alternative to <exact-name>`
+- คำถาม "มีอะไรแทน <exact-name>" หรือ "compare <exact-name> alternatives"
 - libraries, tools, frameworks, patterns, services, languages, build tools
 
 ## Execute
 
 ### 1. Identify Subject And Context
 
-> Goal: ระบุ <x> และ context
+> Goal: ระบุ <exact-name> (ชื่อตรงตัว) และ context
 
-1. ดึง <x> จากคำถาม (library, tool, framework, pattern, service)
+1. ใช้ชื่อตรงตัวที่ user ระบุเป็น <exact-name> จาก prompt เช่น `Bun alternative` → <exact-name> = `Bun`
 2. ระบุ context หรือ tech stack หลักจาก conversation
-3. ถ้า <x> ไม่ชัดเจน ให้ถามด้วย `/ask-me` ก่อน
+3. ถ้า user ไม่ได้ระบุชื่อ <exact-name> ให้ถามด้วย `/ask-me`
 4. ระบุสิ่งที่ user ต้องการเปรียบเทียบ (features, performance, DX, ecosystem)
 
 ### 2. Research Alternatives
 
 > Goal: หาตัวเลือกที่เหมาะสม
 
-1. ใช้ `/list-alternative` เพื่อค้นหา alternatives ของ <x>
+1. ใช้ `/list-alternative` เพื่อค้นหา alternatives ของ <exact-name>
 2. ถ้าต้องการข้อมูลลึก ให้ใช้ `/deep-research`
 3. รวบรวมอย่างน้อย 3 alternatives รวมตัวเดิม
 4. บันทึกแหล่งอ้างอิงที่น่าเชื่อถือ
@@ -46,7 +46,7 @@ related:
 
 > Goal: เปรียบเทียบด้วย criteria ชัดเจน
 
-1. เลือก criteria ที่เหมาะสมกับ <x> เช่น:
+1. เลือก criteria ที่เหมาะสมกับ <exact-name> เช่น:
    - สำหรับ library: bundle size, type safety, maintenance, ecosystem
    - สำหรับ tool: speed, config, plugins, CI/CD
    - สำหรับ framework: rendering, state, DX, deployment
@@ -75,8 +75,9 @@ related:
 
 ### 1. Trigger Patterns
 
-- `<x> alternative` หรือ `alternative to <x>` หรือ `<x> vs ...`
+- `<exact-name> alternative` หรือ `alternative to <exact-name>` หรือ `<exact-name> vs ...`
 - รองรับคำถามภาษาไทยและอังกฤษ
+- ใช้ชื่อตรงตัวที่ user ระบุเป็น <exact-name> ไม่ดึงหรือแปลงเป็นคำอื่น
 
 ### 2. Output Format
 

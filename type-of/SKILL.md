@@ -1,7 +1,7 @@
 ---
 name: type-of
-description: ระบุประเภทหรือชนิดของ <x> ใน context ที่ถูกต้อง
-argument-hint: "<x>"
+description: ระบุประเภทหรือชนิดของ <exact-name> ใน context ที่ถูกต้อง
+argument-hint: "<exact-name>"
 related:
   - follow-math-concepts
   - follow-data-structures
@@ -13,29 +13,29 @@ related:
 
 ## Goal
 
-เมื่อผู้ใช้ถาม `type of <x>` หรือ `typeof <x>` หรือ "สิ่งนี้เป็นประเภทอะไร" ให้ระบุประเภท/ชนิดของ <x> และอธิบายอย่างกระชับ
+เมื่อผู้ใช้ถาม `type of <exact-name>` หรือ `typeof <exact-name>` หรือ "สิ่งนี้เป็นประเภทอะไร" ให้ระบุประเภท/ชนิดของ <exact-name> และอธิบายอย่างกระชับ
 
 ## Scope
 
 ใช้กับ:
-- `type of <x>` หรือ `typeof <x>`
-- คำถาม "ประเภทของ <x>" หรือ "ชนิดของ <x>" หรือ "<x> คืออะไร"
+- `type of <exact-name>` หรือ `typeof <exact-name>`
+- คำถาม "ประเภทของ <exact-name>" หรือ "ชนิดของ <exact-name>" หรือ "<exact-name> คืออะไร"
 - libraries, tools, frameworks, languages, data structures, patterns, services, types ในโค้ด
 
 ## Execute
 
-### 1. Identify <x> And Context
+### 1. Identify <exact-name> And Context
 
 > Goal: เข้าใจว่าถามเรื่องอะไร
 
-1. ดึง <x> จากคำถาม
+1. ใช้ชื่อตรงตัวที่ user ระบุเป็น <exact-name> จาก prompt เช่น `type of Bun` → <exact-name> = `Bun`
 2. ระบุ context: คณิตศาสตร์, programming language, runtime, data, architecture
-3. ถ้า <x> ไม่ชัดหรือมีหลายความหมาย ให้ถามด้วย `/ask-me`
+3. ถ้า user ไม่ได้ระบุชื่อ <exact-name> ให้ถามด้วย `/ask-me`
 4. ระบุว่าเป็น type ในแง่ใด (category, runtime type, TS type, set/category)
 
 ### 2. Classify
 
-> Goal: จัดประเภทของ <x>
+> Goal: จัดประเภทของ <exact-name>
 
 1. ถ้าเป็น code/value: ใช้ TypeScript/JavaScript type หรือ runtime type ที่เหมาะสม
 2. ถ้าเป็น tool/library: ระบุ category เช่น linter, bundler, ORM, runtime, framework
@@ -55,7 +55,7 @@ related:
 
 > Goal: นำเสนอผลลัพธ์กระชับ
 
-1. ตอบตรงประเด็น: "<x> เป็น <type>"
+1. ตอบตรงประเด็น: "<exact-name> เป็น <type>"
 2. ใช้ `/report-table` ถ้ามีหลายมิติที่ต้องเปรียบเทียบ (category, language, use case)
 3. อธิบายสั้น ๆ ว่าทำไมจึงเป็นประเภทนั้น
 4. ให้ตัวอย่างที่เกี่ยวข้องถ้าช่วยให้เข้าใจ
@@ -65,21 +65,22 @@ related:
 > Goal: แนะนำ action ถัดไป
 
 1. ถ้าเป็น type ในโค้ด แนะนำ skill ที่เกี่ยวข้อง เช่น `/follow-lang-typescript`
-2. ถ้าเป็น library/tool แนะนำ `/follow-lib-<x>` หรือ `/follow-tool-<x>` หรือ `/follow-framework-<x>`
+2. ถ้าเป็น library/tool แนะนำ `/follow-lib-<exact-name>` หรือ `/follow-tool-<exact-name>` หรือ `/follow-framework-<exact-name>`
 3. ทำ `/suggest-next-action` เสมอ
 
 ## Rules
 
 ### 1. Trigger Patterns
 
-- `type of <x>` หรือ `typeof <x>` หรือ "ประเภทของ <x>"
+- `type of <exact-name>` หรือ `typeof <exact-name>` หรือ "ประเภทของ <exact-name>"
 - รองรับคำถามภาษาไทยและอังกฤษ
+- ใช้ชื่อตรงตัวที่ user ระบุเป็น <exact-name> ไม่ดึงหรือแปลงเป็นคำอื่น
 
 ### 2. Be Precise
 
 - ไม่เดา type ถ้าไม่แน่ใจ
 - แยกแยะระหว่าง runtime type, static type, category, domain
-- ระบุหลายประเภทได้ถ้า <x> มีลักษณะทับซ้อนกัน
+- ระบุหลายประเภทได้ถ้า <exact-name> มีลักษณะทับซ้อนกัน
 
 ### 3. Output
 
@@ -94,7 +95,7 @@ related:
 
 ## Expected Outcome
 
-- ระบุ type/category ของ <x> ได้อย่างชัดเจน
+- ระบุ type/category ของ <exact-name> ได้อย่างชัดเจน
 - อธิบายเหตุผลสั้น ๆ
 - ใช้ตารางได้ถ้ามีหลายมิติ
 - แนะนำ next action/skill ที่เหมาะสม

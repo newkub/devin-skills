@@ -2,6 +2,10 @@
 name: follow-math-concepts
 description: คู่มือคณิตศาสตร์สำหรับ software development
 argument-hint: "[topic]"
+related:
+  - follow-math-propositional-logic
+  - follow-math-predicate-logic
+  - follow-math-set-theory
 ---
 
 ## Goal
