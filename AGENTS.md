@@ -93,6 +93,7 @@ related:
 - `report-usage-md: /report-usage-md`
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
+- `improve: /improve`
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`
