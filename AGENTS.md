@@ -82,6 +82,8 @@ related:
 - `git-commit: /git-commit`
 - `ship: /ship`
 - `report: /report`
+- `consider-use-in-another-skills: /consider-use-in-another-skills`
+- `report-usage-md: /report-usage-md`
 
 #### Update
 
@@ -104,6 +106,7 @@ related:
 - `update-github-task: /update-github-task`
 - `update-dependencies-latest: /update-dependencies-latest`
 - `run-release: /run-release`
+- `update-usage-md: /update-usage-md`
 
 #### Global Config
 
@@ -144,6 +147,7 @@ related:
 - `review-readme: /review-readme`
 - `review-docs: /review-docs`
 - `review-usage: /review-usage`
+- `review-usage-md: /review-usage-md`
 - `review-consistency: /review-consistency`
 - `review-content-coverage: /review-content-coverage`
 - `review-redundancy: /review-redundancy`
