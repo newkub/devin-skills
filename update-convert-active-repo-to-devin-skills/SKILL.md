@@ -1,5 +1,5 @@
 ---
-name: update-convert-active-repo
+name: update-convert-active-repo-to-devin-skills
 description: สร้าง at-<repo> skills จาก top active remote repos ทีตรงกับ local git projects
 ---
 

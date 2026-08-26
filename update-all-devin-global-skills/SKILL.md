@@ -58,7 +58,8 @@ description: อัปเดต devin skills repo ทั้งหมดโดย
 1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
 2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
 3. ทำ `/idea-new-devin-skills-global` เพื่อวิเคราะห์ gaps และแนะนำ skills ใหม่
-4. ตรวจไม่มี broken references และไม่มี circular dependencies
+4. ทำ `/update-convert-active-repo-to-devin-skills` เพื่อสร้าง `at-<repo>` skills จาก active remote repos ทีตรงกับ local projects
+5. ตรวจไม่มี broken references และไม่มี circular dependencies
 
 ### 6. Update Cross-References
 

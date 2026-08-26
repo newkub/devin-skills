@@ -111,6 +111,9 @@ related:
 - `update-project-skills: /update-project-skills`
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-all-devin-global-skills: /update-all-devin-global-skills`
+- `update-everythink-in-computer: /update-everythink-in-computer`
+- `update-all-program-in-computer: /update-all-program-in-computer`
+- `update-chezmoi: /update-chezmoi`
 - `update-devin-subagents: /update-devin-subagents`
 - `update-readme: /update-readme`
 - `update-docs: /update-docs`
@@ -123,7 +126,7 @@ related:
 - `update-reference: /update-reference`
 - `update-usage: /update-usage`
 - `update-github-metadata: /update-github-metadata`
-- `update-convert-active-repo: /update-convert-active-repo`
+- `update-convert-active-repo-to-devin-skills: /update-convert-active-repo-to-devin-skills`
 - `update-github-task: /update-github-task`
 - `update-dependencies-latest: /update-dependencies-latest`
 - `follow-release: /follow-release`
