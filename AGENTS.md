@@ -343,6 +343,8 @@ related:
 - `delete-git-worktree: /delete-git-worktree`
 - `edit-git-commit: /edit-git-commit`
 - `git-commit: /git-commit`
+- `git-commit-and-push: /git-commit-and-push`
+- `refactor-commit: /refactor-commit`
 - `list-git-commit: /list-git-commit`
 - `list-git-release: /list-git-release`
 - `list-git-submodules: /list-git-submodules`

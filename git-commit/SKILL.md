@@ -7,6 +7,7 @@ related:
   - git-push
   - follow-tool-hk
   - list-git-commit
+  - refactor-commit
 ---
 
 ## Goal
@@ -70,7 +71,15 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ตรวจสอบผลลัพธ์จาก git commit
 3. ถ้ามี error: แก้ไขแล้วลองอีกครั้ง
 
-### 7. Verify Commits
+### 7. Refactor Commits (Optional)
+
+> Goal: ปรับปรุง commit history ถ้าจำเป็น
+
+1. ถ้า commit ล่าสุดยังไม่ push หรือต้อง break down/squash → ใช้ `git commit --amend` หรือ `/refactor-commit`
+2. ถ้า history ยังไม่สะอาด → ทำ `/refactor-commit` เพื่อ rebase, edit, หรือ squash
+3. ถ้าไม่ต้องการ refactor → ข้ามไป step ถัดไป
+
+### 8. Verify Commits
 
 > Goal: Verify Commits
 

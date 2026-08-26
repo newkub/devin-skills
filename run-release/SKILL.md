@@ -75,7 +75,18 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 4. `webstore`: ทำ `/follow-create-browser-extensions` เพื่อตั้งค่า release tool
 5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
 
-### 6. Run Release
+### 6. Run Prerelease
+
+> Goal: รัน prerelease ก่อน publish จริง
+
+1. `npm`: รัน `bun run build` หรือ `npm run build`
+2. `crates`: รัน `cargo build` หรือ `cargo build --release`
+3. `vscode`: รัน `vsce package` เพื่อสร้าง `.vsix`
+4. `webstore`: รัน `chrome-webstore-upload validate` เพื่อ validate ก่อน publish
+5. `docker`: รัน `docker build --no-cache` เพื่อ build image
+6. ถ้า prerelease ไม่ผ่าน → แก้ไขและรันใหม่
+
+### 7. Run Release
 
 > Goal: Run Release
 
@@ -88,7 +99,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. `docker`: รัน `docker build` และ `docker push`
 6. ถ้า release ไม่สำเร็จ ให้แก้ไขแล้วรันใหม่จนกว่าจะผ่าน
 
-### 7. Write Release Notes
+### 8. Write Release Notes
 
 > Goal: เขียน release notes สรุปสวยงาม อ่านง่าย ก่อน publish
 
@@ -99,7 +110,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 5. แนบลิงก์ `CHANGELOG.md`, เอกสาร release, และ migration guide ถ้ามี breaking changes
 6. บันทึกผลลัพธ์เป็น `RELEASE_NOTES.md` หรือใช้เป็น body ของ GitHub Release
 
-### 8. Generate CHANGELOG.md
+### 9. Generate CHANGELOG.md
 
 > Goal: Gen CHANGELOG.md จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ
 
