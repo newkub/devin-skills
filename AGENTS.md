@@ -98,6 +98,7 @@ related:
 - `fix: /fix`
 - `improve: /improve`
 - `delete-files: /delete-files`
+- `delete-project-from-local-remote: /delete-project-from-local-remote`
 - `merge-files-in: /merge-files-in`
 - `move-files-in: /move-files-in`
 - `rename-files-to: /rename-files-to`
@@ -159,6 +160,7 @@ related:
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
 - `add-to-todo-md: /add-to-todo-md`
+- `add-to-todo-in-drive-d: /add-to-todo-in-drive-d`
 - `add-to-queue: /add-to-queue`
 
 #### Global Config
@@ -224,6 +226,10 @@ related:
 - `follow-github-issue-templates: /follow-github-issue-templates`
 - `follow-create-browser-extensions: /follow-create-browser-extensions`
 - `follow-create-website: /follow-create-website`
+- `follow-create-raycast-extensions: /follow-create-raycast-extensions`
+- `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
+- `follow-create-android-mobile-native: /follow-create-android-mobile-native`
+- `follow-create-ios-mobile-native: /follow-create-ios-mobile-native`
 - `follow-solid-tanstack: /follow-solid-tanstack`
 - `follow-lib-react: /follow-lib-react`
 - `follow-lib-tanstack-ecosystem: /follow-lib-tanstack-ecosystem`
@@ -260,6 +266,7 @@ related:
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
+- `list-todo-in-drive-d: /list-todo-in-drive-d`
 - `list-project-git-in-computer: /list-project-git-in-computer`
 - `list-github-pull-request: /list-github-pull-request`
 - `list-cloudflare-project: /list-cloudflare-project`
