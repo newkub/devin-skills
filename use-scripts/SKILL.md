@@ -131,3 +131,4 @@ import { render } from "https://esm.sh/eta@4.6.0"
 - Scripts อยู่ใน location ถูกต้องตาม Rules
 - Temp scripts ใน `$env:TEMP` ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
 - Dry run mode สำหรับทดสอบก่อน execute จิง
+- สามารถใช้ /use-pwsh-shell /use-bun-shell /use-bun-scripts /use-ast-grep-programatic ได้ ตามเหมาะสม
