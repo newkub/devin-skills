@@ -1,16 +1,24 @@
 ---
 name: ask-me
-description: ถามผู้ใช้คำถามพร้อมตัวเลือกและคำแนะนำเพื่อขอคำยืนยันหรือตัดสินใจ รองรับ multi-select และ multi-step
+description: ถามผู้ใช้ด้วยตัวเลือกและคำแนะนำ รองรับ multi-select, multi-step, tech stack
 argument-hint: "[question]"
+related:
+  - ask-project-requirement
+  - understand-me
+  - follow-your-suggestion
+  - dont-ask
+  - ship-dont-ask
 ---
 
 ## Goal
 
-ถามผู้ใช้คำถามพร้อมตัวเลือกที่กำหนดไว้และมีคำแนะนำ (recommended) เพื่อขอคำยืนยัน ตัดสินใจเลือกทางเลือก หรือขอข้อมูลเพิ่มเติม รองรับทั้ง single-select, multi-select และ multi-step flow
+ถามผู้ใช้คำถามพร้อมตัวเลือกที่กำหนดไว้และมีคำแนะนำ (recommended) เพื่อขอคำยืนยัน ตัดสินใจเลือกทางเลือก หรือขอข้อมูลเพิ่มเติม รองรับทั้ง single-select, multi-select, multi-step flow และ tech stack questions
 
 ## Scope
 
 ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-project-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/understand-me`)
+
+รองรับคำถามเกี่ยวกับ tech stack เช่น runtime, language, framework, library, database, test tool, deploy target, CI tool และ package manager
 
 ใช้ `ask_user_question` tool เท่านั้น ห้ามใช้วิธีอื่นในการถามผู้ใช้
 
@@ -66,6 +74,16 @@ argument-hint: "[question]"
 8. ถ้าเสร็จสิ้น multi-step → สรุปคำตอบทั้งหมดและดำเนินการ
 9. ไม่ถามซ้ำคำถามที่ผู้ใช้ตอบแล้ว
 
+### 5. Tech Stack And Tool Questions
+
+> Goal: รองรับคำถามเกี่ยวกับ tech stack, runtime, framework, library และ tool
+
+1. วิเคราะห์ว่าคำถามเกี่ยวกับ technology ประเภทใด: `runtime`, `language`, `framework`, `library`, `database`, `test-tool`, `deploy-target`, `ci-tool`, `package-manager`
+2. ใช้ `follow-lang-*`, `follow-framework-*`, `follow-tool-*`, `follow-lib-*`, `follow-service-*` เพื่อสร้างตัวเลือกและคำแนะนำ
+3. อ้างอิง project manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) และ conventions เพื่อระบุ default และ recommended
+4. ถ้า tech stack ซับซ้อน → แบ่งเป็น multi-step: `runtime` → `language` → `framework` → `library` → `deploy-target`
+5. ตัวเลือกแนะนำต้องระบุเหตุผลเชิงเทคนิค เช่น "Bun ใช้ native APIs ได้เร็วกว่า Node.js ในโปรเจกต์นี้"
+
 ## Rules
 
 ### 1. When To Ask
@@ -85,6 +103,7 @@ argument-hint: "[question]"
 - เป็นการเก็บ requirements (ใช้ `/ask-project-requirement`)
 - เป็นการสัมภาษณ์ preferences (ใช้ `/understand-me`)
 - เป็น low-risk action ที่ทำได้เลย
+- ผู้ใช้หรือ workflow ระบุ `/dont-ask`
 
 ### 3. Question Design
 
@@ -113,10 +132,24 @@ argument-hint: "[question]"
 - ถ้าผู้ใช้เลือก `Suggest another` ครั้งที่ 2 ให้ถามแบบ open-ended แทน
 - ถ้าผู้ใช้เลือก `Skip` ทุกคำถาม ให้หยุดถามและดำเนินการด้วย default ทั้งหมด
 
+## Examples
+
+### Question Categories
+
+- `runtime`: "เลือก runtime สำหรับ backend" — `Bun`, `Node.js`, `Deno`, `Rust`, `Go`
+- `language`: "เลือกภาษาสำหรับ CLI" — `TypeScript/Bun`, `Rust`, `Zig`, `Python`
+- `framework`: "เลือก framework สำหรับ web app" — `Next.js`, `Nuxt`, `SolidStart`, `SvelteKit`, `Astro`
+- `library`: "เลือก validation library" — `Zod`, `ArkType`, `Valibot`
+- `database`: "เลือก database" — `PostgreSQL`, `SQLite`, `Turso`, `Supabase`
+- `test-tool`: "เลือก test runner" — `Vitest`, `Playwright`, `Cypress`
+- `deploy-target`: "เลือก deploy platform" — `Vercel`, `Cloudflare`, `Railway`
+- `ci-tool`: "เลือก CI tool" — `GitHub Actions`, `Renovate`, `Changesets`
+
 ## Expected Outcome
 
 - ผู้ใช้ตัดสินใจได้ง่ายจากตัวเลือกที่ชัดเจนและมีคำแนะนำ
 - รองรับ multi-select และ multi-step flow
+- รองรับ tech stack questions ทั้ง runtime, language, framework, library, tool
 - ลดการคาดเดาของ AI
 - การทำงานสอดคล้องกับความต้องการของผู้ใช้
 - ผู้ใช้สามารถข้ามหรือขอตัวเลือกอื่นได้ตลอดการสนทนา
