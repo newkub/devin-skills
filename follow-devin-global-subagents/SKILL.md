@@ -2,6 +2,14 @@
 name: follow-devin-global-subagents
 description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ global subagents ตาม job roles ทำขนานกัน
 argument-hint: "[task]"
+related:
+  - review-workflow
+  - list-devin-global-subagents
+  - use-subagents
+  - review-and-fix
+  - validate
+  - ship
+  - report
 ---
 
 ## Goal
@@ -55,8 +63,9 @@ argument-hint: "[task]"
 > Goal: ตรวจสอบคุณภาพของผลรวม
 
 1. ทำ `/review-and-fix` กับ output ที่ได้
-2. ถ้ามี gaps ให้ spawn subagent เพิ่ม
-3. ตรวจสอบว่าผลลัพธ์ตอบ scope เดิม
+2. ถ้า subtask ใดมี workflow หรือ flow ที่ซับซ้อน ให้ทำ `/review-workflow` เพิ่มเติม
+3. ถ้ามี gaps ให้ spawn subagent เพิ่ม
+4. ตรวจสอบว่าผลลัพธ์ตอบ scope เดิม
 
 ### 6. Validate And Ship
 

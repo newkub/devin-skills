@@ -4,6 +4,7 @@ description: Review workflow ให้เร็ว ปลอดภัย ใช�
 argument-hint: "[workflow-or-skill]"
 related:
   - update-devin-global-skills
+  - follow-devin-global-subagents
   - review-devin-global-skills
   - follow-write-devin-skills
   - simplify
