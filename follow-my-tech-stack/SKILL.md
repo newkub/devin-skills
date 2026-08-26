@@ -111,6 +111,8 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 | Feature Flags | `PostHog`, `Vercel Flags` | - |
 | Error Monitoring | `Sentry` | `Sentry` |
 | Image Optimization | `Cloudflare Images` | - |
+| Bookmarking | `raindrop-cli` (Raindrop.io) | - |
+| JSON Processing | `jq` | - |
 
 ### 2. Default Must-Have Libraries
 
