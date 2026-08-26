@@ -1,6 +1,14 @@
 ---
 name: ship
 description: Ship workspace หรือ skills repo โดย commit ทำตาม AGENTS.md รองรับ submodules ไม่มี push หรือ release
+related:
+  - update-agents-md
+  - follow-agents-md
+  - run-verify
+  - test-all
+  - validate
+  - git-commit
+  - resolve-errors
 ---
 
 ## Goal
@@ -34,8 +42,9 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
 1. ทำ `/run-verify` เพื่อรัน scan, lint, typecheck, test และ build
-2. ทำ `/validate` เพื่อ validate ผลลัพธ์
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-3 จนกว่าจะผ่าน
+2. ทำ `/test-all` เพื่อรัน unit, integration, e2e, coverage
+3. ทำ `/validate` เพื่อ validate ผลลัพธ์
+4. ถ้า verify หรือ test ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไปทำ Step 2-4 จนกว่าจะผ่าน
 
 ### 4. Identify Submodules
 
@@ -92,9 +101,10 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 - ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
-### 3. Use Run-Verify
+### 3. Use Run-Verify And Test-All
 
 - ใช้ `/run-verify` เพื่อตรวจสอบครบทั้ง scan, lint, typecheck, test และ build
+- ใช้ `/test-all` เพื่อรัน unit, integration, e2e, coverage
 - ถ้า workspace ไม่มี verify script → ทำ `/follow-tasks` ก่อน
 
 ### 4. Submodule First

@@ -85,6 +85,7 @@ related:
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
 - `ship: /ship`
+- `test-all: /test-all`
 - `report: /report`
 - `report-before: /report-before`
 - `report-idea: /report-idea`
