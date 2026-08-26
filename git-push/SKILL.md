@@ -1,6 +1,14 @@
 ---
 name: git-push
-description: Push commits ทั้ง root และ git submodules ไปยัง remote
+description: Push commits จาก local repository และ git submodules ไปยัง remote repository อย่างปลอดภัย
+related:
+  - git-commit
+  - git-commit-and-push
+  - refactor-commit
+  - update-github-metadata
+  - watch-github-actions
+  - resolve-errors
+  - open-web
 ---
 
 ## Goal
@@ -105,3 +113,4 @@ Push commits จาก local repository และ git submodules ไปยัง
 - Local และ remote sync กัน
 - GitHub Actions ผ่านทั้งหมด
 - Repo เปิดใน browser อัตโนมัติหลัง push สำเร็จ
+- แสดง URL commit บน remote ที่กดแล้วเปิดได้
