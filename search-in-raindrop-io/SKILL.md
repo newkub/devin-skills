@@ -2,6 +2,11 @@
 name: search-in-raindrop-io
 description: Search Raindrop.io bookmarks via raindrop CLI with filters, output formats, and result parsing
 argument-hint: "[query]"
+related:
+  - list-raindrop-io
+  - follow-my-tech-stack
+  - follow-tool-my-global-cli
+  - use-scripts
 ---
 
 ## Goal

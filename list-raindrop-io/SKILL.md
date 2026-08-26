@@ -1,6 +1,11 @@
 ---
 name: list-raindrop-io
 description: รายการ bookmarks จาก Raindrop.io เรียงตามล่าสุด
+related:
+  - search-in-raindrop-io
+  - follow-my-tech-stack
+  - follow-tool-my-global-cli
+  - use-scripts
 ---
 
 ## Goal
