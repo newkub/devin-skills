@@ -1,12 +1,12 @@
 ---
 name: at-animal-dance
-project-root: "D:\newkub\web-side-projects\animal-dance"
+project-root: D:/newkub/web-side-projects/animal-dance
 description: แก้ไข files ใน project animal-dance
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\web-side-projects\animal-dance` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/web-side-projects/animal-dance` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project animal-dance
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\web-side-projects\animal-dance`
-2. ใช้ `workdir = `D:\newkub\web-side-projects\animal-dance`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/web-side-projects/animal-dance`
+2. ใช้ `workdir = D:/newkub/web-side-projects/animal-dance` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project animal-dance
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\web-side-projects\animal-dance`` เสมอ
+- ใช้ `workdir = D:/newkub/web-side-projects/animal-dance` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

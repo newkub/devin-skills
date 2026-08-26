@@ -1,12 +1,12 @@
 ---
 name: at-create-skills
-project-root: "D:\newkub\create-skills"
+project-root: D:/newkub/create-skills
 description: แก้ไข files ใน project create-skills
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\create-skills` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/create-skills` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project create-skills
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\create-skills`
-2. ใช้ `workdir = `D:\newkub\create-skills`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/create-skills`
+2. ใช้ `workdir = D:/newkub/create-skills` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project create-skills
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\create-skills`` เสมอ
+- ใช้ `workdir = D:/newkub/create-skills` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

@@ -1,12 +1,12 @@
 ---
 name: at-typing-racer
-project-root: "D:\newkub\web-side-projects\typing-racer"
+project-root: D:/newkub/web-side-projects/typing-racer
 description: แก้ไข files ใน project typing-racer
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\web-side-projects\typing-racer` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/web-side-projects/typing-racer` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project typing-racer
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\web-side-projects\typing-racer`
-2. ใช้ `workdir = `D:\newkub\web-side-projects\typing-racer`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/web-side-projects/typing-racer`
+2. ใช้ `workdir = D:/newkub/web-side-projects/typing-racer` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project typing-racer
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\web-side-projects\typing-racer`` เสมอ
+- ใช้ `workdir = D:/newkub/web-side-projects/typing-racer` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

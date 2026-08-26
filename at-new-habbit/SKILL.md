@@ -1,12 +1,12 @@
 ---
 name: at-new-habbit
-project-root: "D:\saas\new-habbit"
+project-root: D:/saas/new-habbit
 description: แก้ไข files ใน project new-habbit
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\new-habbit` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/new-habbit` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project new-habbit
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\new-habbit`
-2. ใช้ `workdir = D:\saas\new-habbit` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/new-habbit`
+2. ใช้ `workdir = D:/saas/new-habbit` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project new-habbit
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\new-habbit` เสมอ
+- ใช้ `workdir = D:/saas/new-habbit` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

@@ -1,12 +1,12 @@
 ---
 name: at-trading
-project-root: "D:\saas\trading"
+project-root: D:/saas/trading
 description: แก้ไข files ใน project trading
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\trading` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/trading` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project trading
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\trading`
-2. ใช้ `workdir = D:\saas\trading` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/trading`
+2. ใช้ `workdir = D:/saas/trading` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project trading
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\trading` เสมอ
+- ใช้ `workdir = D:/saas/trading` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

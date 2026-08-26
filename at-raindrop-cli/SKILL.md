@@ -1,12 +1,12 @@
 ---
 name: at-raindrop-cli
-project-root: "E:\newkub\raindrop-cli"
+project-root: E:/newkub/raindrop-cli
 description: แก้ไข files ใน project raindrop-cli
 ---
 
 ## Goal
 
-แก้ไข files ใน project `E:\newkub\raindrop-cli` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `E:/newkub/raindrop-cli` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project raindrop-cli
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: E:\newkub\raindrop-cli`
-2. ใช้ `workdir = `E:\newkub\raindrop-cli`` สำหรับทุก command
+1. ตรวจสอบ `project-root: E:/newkub/raindrop-cli`
+2. ใช้ `workdir = E:/newkub/raindrop-cli` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project raindrop-cli
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `E:\newkub\raindrop-cli`` เสมอ
+- ใช้ `workdir = E:/newkub/raindrop-cli` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

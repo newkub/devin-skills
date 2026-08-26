@@ -1,12 +1,12 @@
 ---
 name: at-compare-platform
-project-root: "D:\saas\compare-platform"
+project-root: D:/saas/compare-platform
 description: แก้ไข files ใน project compare-platform
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\compare-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/compare-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project compare-platform
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\compare-platform`
-2. ใช้ `workdir = D:\saas\compare-platform` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/compare-platform`
+2. ใช้ `workdir = D:/saas/compare-platform` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project compare-platform
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\compare-platform` เสมอ
+- ใช้ `workdir = D:/saas/compare-platform` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

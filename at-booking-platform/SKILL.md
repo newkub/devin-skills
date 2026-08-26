@@ -1,16 +1,16 @@
 ---
 name: at-booking-platform
-project-root: "D:\saas\booking-platform"
+project-root: D:/saas/booking-platform
 description: แก้ไข files ใน project booking-platform
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\booking-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/booking-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
-ใช้เมื่องานต้องแก้ไข source code, config, docs, หรือ skills ใน `booking-platform`
+ใช้เมื่องานต้องแก้ไข source code, config, docs ใน `booking-platform`
 
 ## Execute
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project booking-platform
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\booking-platform`
-2. ใช้ `workdir = D:\saas\booking-platform` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/booking-platform`
+2. ใช้ `workdir = D:/saas/booking-platform` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -30,7 +30,6 @@ description: แก้ไข files ใน project booking-platform
 1. อ่าน target files ทั้งหมดก่อนแก้ไข
 2. อ่าน related files หรือ tests
 3. ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/refactor` ก่อน
-4. บันทึก intent เดิม
 
 ### 3. Edit Minimally
 
@@ -39,7 +38,6 @@ description: แก้ไข files ใน project booking-platform
 1. ใช้ `edit` สำหรับการเปลี่ยนแปลงเฉพาะจุด
 2. หลีกเลี่ยง `write` ทั้งไฟล์ถ้าไม่จำเป็น
 3. รักษา style, formatting, encoding เดิม
-4. แก้เฉพาะส่วนที่ user ขอ
 
 ### 4. Validate Changes
 
@@ -47,8 +45,7 @@ description: แก้ไข files ใน project booking-platform
 
 1. รัน `git diff`
 2. รัน `git diff --check`
-3. ถ้ามี tests/lint → รัน
-4. ถ้ามี build/typecheck → รันตาม ecosystem
+3. ถ้ามี tests/lint/build → รัน
 
 ### 5. Commit
 
@@ -61,21 +58,18 @@ description: แก้ไข files ใน project booking-platform
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\booking-platform` เสมอ
+- ใช้ `workdir = D:/saas/booking-platform` เสมอ
 - ไม่แก้ไข files นอก project root
-- ถ้า action เสี่ยง → ทำ dry run ก่อน
 
 ### 2. Minimal Scope
 
 - แก้เฉพาะสิ่งที่ user ขอ
 - ไม่ refactor นอก scope
-- ไม่เพิ่ม features ถ้าไม่จำเป็น
 
 ### 3. Verify
 
 - ตรวจ diff ก่อน `git add`
 - รัน lint/test/build ถ้ามี
-- ห้าม commit untracked files ทีไม่เกี่ยวข้อง
 
 ## Expected Outcome
 

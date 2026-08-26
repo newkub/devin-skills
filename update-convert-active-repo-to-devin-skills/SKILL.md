@@ -61,7 +61,7 @@ description: สร้าง at-<repo> skills จาก remote repos ทั้�
 1. สำหรับแต่ละ match:
    - สร้าง directory `%APPDATA%\devin\skills\at-<repo-name>\`
    - สร้าง `SKILL.md` ด้วย template จาก `at-this-repo`
-   - ใส่ `project-root: <local-path>` ใน frontmatter
+   - ใส่ `project-root: <local-path>` ใน frontmatter โดย path ใช้ `/` แทน `\` หรือ `\\` เพื่อหลีกเลี่ยง YAML escape error
    - ใส่ `name: at-<repo-name>`
    - ใส่ `description: แก้ไข files ใน <local-path>`
 2. ใน `SKILL.md`:

@@ -1,12 +1,12 @@
 ---
 name: at-dept-saw
-project-root: "D:\newkub\products\dept-saw"
+project-root: D:/newkub/products/dept-saw
 description: แก้ไข files ใน project dept-saw
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\products\dept-saw` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/products/dept-saw` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project dept-saw
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\products\dept-saw`
-2. ใช้ `workdir = `D:\newkub\products\dept-saw`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/products/dept-saw`
+2. ใช้ `workdir = D:/newkub/products/dept-saw` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project dept-saw
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\products\dept-saw`` เสมอ
+- ใช้ `workdir = D:/newkub/products/dept-saw` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

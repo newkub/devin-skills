@@ -1,12 +1,12 @@
 ---
 name: at-wpackages
-project-root: "D:\newkub\wpackages"
+project-root: D:/newkub/wpackages
 description: แก้ไข files ใน project wpackages
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\wpackages` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/wpackages` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project wpackages
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\wpackages`
-2. ใช้ `workdir = `D:\newkub\wpackages`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/wpackages`
+2. ใช้ `workdir = D:/newkub/wpackages` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project wpackages
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\wpackages`` เสมอ
+- ใช้ `workdir = D:/newkub/wpackages` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

@@ -1,12 +1,12 @@
 ---
 name: at-dotfiles
-project-root: "C:\Users\Veerapong\.local\share\chezmoi"
+project-root: C:/Users/Veerapong/.local/share/chezmoi
 description: แก้ไข files ใน project dotfiles
 ---
 
 ## Goal
 
-แก้ไข files ใน project `C:\Users\Veerapong\.local\share\chezmoi` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `C:/Users/Veerapong/.local/share/chezmoi` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project dotfiles
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: C:\Users\Veerapong\.local\share\chezmoi`
-2. ใช้ `workdir = `C:\Users\Veerapong\.local\share\chezmoi`` สำหรับทุก command
+1. ตรวจสอบ `project-root: C:/Users/Veerapong/.local/share/chezmoi`
+2. ใช้ `workdir = C:/Users/Veerapong/.local/share/chezmoi` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project dotfiles
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `C:\Users\Veerapong\.local\share\chezmoi`` เสมอ
+- ใช้ `workdir = C:/Users/Veerapong/.local/share/chezmoi` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

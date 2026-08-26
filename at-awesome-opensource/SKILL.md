@@ -1,12 +1,12 @@
 ---
 name: at-awesome-opensource
-project-root: "D:\newkub\web-side-projects\awesome-opensource-new"
+project-root: D:/newkub/web-side-projects/awesome-opensource-new
 description: แก้ไข files ใน project awesome-opensource
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\web-side-projects\awesome-opensource-new` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/web-side-projects/awesome-opensource-new` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project awesome-opensource
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\web-side-projects\awesome-opensource-new`
-2. ใช้ `workdir = `D:\newkub\web-side-projects\awesome-opensource-new`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/web-side-projects/awesome-opensource-new`
+2. ใช้ `workdir = D:/newkub/web-side-projects/awesome-opensource-new` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project awesome-opensource
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\web-side-projects\awesome-opensource-new`` เสมอ
+- ใช้ `workdir = D:/newkub/web-side-projects/awesome-opensource-new` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

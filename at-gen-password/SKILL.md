@@ -1,12 +1,12 @@
 ---
 name: at-gen-password
-project-root: "D:\newkub\web-side-projects\gen-password"
+project-root: D:/newkub/web-side-projects/gen-password
 description: แก้ไข files ใน project gen-password
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\web-side-projects\gen-password` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/web-side-projects/gen-password` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project gen-password
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\web-side-projects\gen-password`
-2. ใช้ `workdir = `D:\newkub\web-side-projects\gen-password`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/web-side-projects/gen-password`
+2. ใช้ `workdir = D:/newkub/web-side-projects/gen-password` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project gen-password
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\web-side-projects\gen-password`` เสมอ
+- ใช้ `workdir = D:/newkub/web-side-projects/gen-password` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

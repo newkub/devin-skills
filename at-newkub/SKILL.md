@@ -1,12 +1,12 @@
 ---
 name: at-newkub
-project-root: "D:\newkub\newkub"
+project-root: D:/newkub/newkub
 description: แก้ไข files ใน project newkub
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\newkub` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/newkub` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project newkub
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\newkub`
-2. ใช้ `workdir = `D:\newkub\newkub`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/newkub`
+2. ใช้ `workdir = D:/newkub/newkub` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project newkub
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\newkub`` เสมอ
+- ใช้ `workdir = D:/newkub/newkub` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

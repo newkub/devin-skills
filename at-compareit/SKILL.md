@@ -1,12 +1,12 @@
 ---
 name: at-compareit
-project-root: "D:\newkub\web-side-projects\compareit"
+project-root: D:/newkub/web-side-projects/compareit
 description: แก้ไข files ใน project compareit
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\web-side-projects\compareit` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/web-side-projects/compareit` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project compareit
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\web-side-projects\compareit`
-2. ใช้ `workdir = `D:\newkub\web-side-projects\compareit`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/web-side-projects/compareit`
+2. ใช้ `workdir = D:/newkub/web-side-projects/compareit` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project compareit
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\web-side-projects\compareit`` เสมอ
+- ใช้ `workdir = D:/newkub/web-side-projects/compareit` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

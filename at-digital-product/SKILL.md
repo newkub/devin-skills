@@ -1,12 +1,12 @@
 ---
 name: at-digital-product
-project-root: "D:\saas\digital-product"
+project-root: D:/saas/digital-product
 description: แก้ไข files ใน project digital-product
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\digital-product` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/digital-product` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project digital-product
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\digital-product`
-2. ใช้ `workdir = D:\saas\digital-product` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/digital-product`
+2. ใช้ `workdir = D:/saas/digital-product` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project digital-product
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\digital-product` เสมอ
+- ใช้ `workdir = D:/saas/digital-product` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

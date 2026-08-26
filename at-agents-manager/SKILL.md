@@ -1,12 +1,12 @@
 ---
 name: at-agents-manager
-project-root: "D:\newkub\products\agents-manager"
+project-root: D:/newkub/products/agents-manager
 description: แก้ไข files ใน project agents-manager
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\products\agents-manager` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/products/agents-manager` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project agents-manager
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\products\agents-manager`
-2. ใช้ `workdir = `D:\newkub\products\agents-manager`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/products/agents-manager`
+2. ใช้ `workdir = D:/newkub/products/agents-manager` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project agents-manager
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\products\agents-manager`` เสมอ
+- ใช้ `workdir = D:/newkub/products/agents-manager` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

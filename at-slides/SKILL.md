@@ -1,12 +1,12 @@
 ---
 name: at-slides
-project-root: "D:\newkub\slides"
+project-root: D:/newkub/slides
 description: แก้ไข files ใน project slides
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\slides` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/slides` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project slides
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\slides`
-2. ใช้ `workdir = `D:\newkub\slides`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/slides`
+2. ใช้ `workdir = D:/newkub/slides` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project slides
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\slides`` เสมอ
+- ใช้ `workdir = D:/newkub/slides` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

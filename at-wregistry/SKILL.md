@@ -1,12 +1,12 @@
 ---
 name: at-wregistry
-project-root: "D:\newkub\products\wregistry"
+project-root: D:/newkub/products/wregistry
 description: แก้ไข files ใน project wregistry
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\products\wregistry` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/products/wregistry` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project wregistry
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\products\wregistry`
-2. ใช้ `workdir = `D:\newkub\products\wregistry`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/products/wregistry`
+2. ใช้ `workdir = D:/newkub/products/wregistry` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project wregistry
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\products\wregistry`` เสมอ
+- ใช้ `workdir = D:/newkub/products/wregistry` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

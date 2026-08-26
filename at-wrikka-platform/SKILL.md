@@ -1,12 +1,12 @@
 ---
 name: at-wrikka-platform
-project-root: "D:\saas\wrikka-platform"
+project-root: D:/saas/wrikka-platform
 description: แก้ไข files ใน project wrikka-platform
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\wrikka-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/wrikka-platform` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project wrikka-platform
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\wrikka-platform`
-2. ใช้ `workdir = D:\saas\wrikka-platform` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/wrikka-platform`
+2. ใช้ `workdir = D:/saas/wrikka-platform` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project wrikka-platform
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\wrikka-platform` เสมอ
+- ใช้ `workdir = D:/saas/wrikka-platform` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

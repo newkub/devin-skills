@@ -1,12 +1,12 @@
 ---
 name: at-skills-as-a-services
-project-root: "D:\saas\skills-as-a-services"
+project-root: D:/saas/skills-as-a-services
 description: แก้ไข files ใน project skills-as-a-services
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\saas\skills-as-a-services` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/saas/skills-as-a-services` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project skills-as-a-services
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\saas\skills-as-a-services`
-2. ใช้ `workdir = D:\saas\skills-as-a-services` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/saas/skills-as-a-services`
+2. ใช้ `workdir = D:/saas/skills-as-a-services` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project skills-as-a-services
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = D:\saas\skills-as-a-services` เสมอ
+- ใช้ `workdir = D:/saas/skills-as-a-services` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope

@@ -1,12 +1,12 @@
 ---
 name: at-explore-opensource
-project-root: "D:\newkub\products\explore-opensource"
+project-root: D:/newkub/products/explore-opensource
 description: แก้ไข files ใน project explore-opensource
 ---
 
 ## Goal
 
-แก้ไข files ใน project `D:\newkub\products\explore-opensource` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
+แก้ไข files ใน project `D:/newkub/products/explore-opensource` อย่างปลอดภัย มีขอบเขตชัดเจน และ validate
 
 ## Scope
 
@@ -18,8 +18,8 @@ description: แก้ไข files ใน project explore-opensource
 
 > Goal: ทำงานใน project path
 
-1. ตรวจสอบ `project-root: D:\newkub\products\explore-opensource`
-2. ใช้ `workdir = `D:\newkub\products\explore-opensource`` สำหรับทุก command
+1. ตรวจสอบ `project-root: D:/newkub/products/explore-opensource`
+2. ใช้ `workdir = D:/newkub/products/explore-opensource` สำหรับทุก command
 3. รัน `git status` ใน project root
 4. ระบุ files เป้าหมาย
 
@@ -58,7 +58,7 @@ description: แก้ไข files ใน project explore-opensource
 
 ### 1. Stay In Project Root
 
-- ใช้ `workdir = `D:\newkub\products\explore-opensource`` เสมอ
+- ใช้ `workdir = D:/newkub/products/explore-opensource` เสมอ
 - ไม่แก้ไข files นอก project root
 
 ### 2. Minimal Scope
