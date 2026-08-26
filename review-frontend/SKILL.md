@@ -24,7 +24,8 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 
 ไม่รวม:
 - design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
-- platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- SEO → ใช้ `/review-seo`
 - general code quality, bug-prone patterns → ใช้ `/review-quality`
 - architecture, modularity, boundaries → ใช้ `/review-architecture`
 
@@ -207,7 +208,8 @@ Review frontend testing — ดูรายละเอียดใน `referenc
 ### 5. Scope Boundaries
 
 - ไม่ review design quality, design system, visual, accessibility (design perspective) → ใช้ `/review-uxui`
-- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- ไม่ review SEO → ใช้ `/review-seo`
 - ไม่ review general code quality, bug-prone patterns → ใช้ `/review-quality`
 - ไม่ review architecture, modularity, boundaries → ใช้ `/review-architecture`
 - focus ที่ frontend code quality: components, state, rendering, types, CSS, forms, testing

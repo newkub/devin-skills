@@ -24,7 +24,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ไม่รวม:
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
-- platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- SEO → ใช้ `/review-seo`
 - roleplay/simulation จากมุมมอง designer → ใช้ `/roleplay-uxui-designer`
 
 ## Execute
@@ -176,7 +177,8 @@ Review design-dev handoff — ดูรายละเอียดใน `refere
 ### 5. Scope Boundaries
 
 - ไม่ review frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
-- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, SEO, web vitals) → ใช้ `/review-platform`
+- ไม่ review platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
+- ไม่ review SEO → ใช้ `/review-seo`
 - ไม่ review code quality, bug-prone patterns → ใช้ `/review-quality`
 - focus ที่ design quality: design system, visual, interaction, accessibility, handoff
 

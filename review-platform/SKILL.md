@@ -1,6 +1,8 @@
 ---
 name: review-platform
 description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, performance, accessibility
+related:
+  - review-seo
 ---
 
 ## Goal
@@ -89,13 +91,9 @@ Review SEO — ดูรายละเอียดใน `references/seo.md`
 
 > Goal: ครอบคลุมทุก SEO dimension
 
-1. ตรวจสอบ meta tags, Open Graph, Twitter Cards, canonical URLs
-2. ตรวจสอบ structured data: JSON-LD schema validity, schema type coverage
-3. ตรวจสอบ Core Web Vitals for SEO: LCP, FID/INP, CLS, FCP, TBT, Speed Index
-4. ตรวจสอบ sitemap, robots.txt, URL structure, internal linking, heading hierarchy
-5. ตรวจสอบ SSR/SSG SEO, international SEO (hreflang), semantic HTML for SEO
-6. Critical: missing title tag, missing meta description, no sitemap, blocking important pages, SPA ที่ search engine อ่านไม่ได้
-7. High: missing Open Graph, missing structured data, broken heading hierarchy, missing hreflang, slow LCP
+1. ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ
+2. รับ findings, severity และ score จาก `/review-seo` มารวมใน aggregate report
+3. ถ้า project ไม่ใช่ web app → ข้าม section นี้
 
 ### 7. Battery And Energy Review
 

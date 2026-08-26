@@ -3,6 +3,7 @@ name: review-delivery
 description: Review delivery: docs, DX, efficiency, config, CI/CD, infra, performance, security
 related:
   - review-performance
+  - review-seo
   - review-security
   - review-quality
 ---
@@ -45,10 +46,8 @@ Review documentation ครอบคลุม README, API docs, examples, guides
 
 #### 2.2 SEO Review
 
-1. ตรวจสอบ meta tags, Open Graph, Twitter Cards, canonical URLs, structured data (JSON-LD), sitemap, robots.txt
-2. ตรวจสอบ semantic HTML, heading hierarchy, image alt texts
-3. Critical: missing meta tags on key pages, no sitemap, blocked indexing
-4. High: missing structured data, broken canonical, missing Open Graph
+1. ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ
+2. รับ findings, severity และ score จาก `/review-seo` มารวมใน aggregate report
 
 ### 3. Experience And Insights Review
 

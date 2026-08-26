@@ -123,6 +123,7 @@ related:
 - `review-stability: /review-stability`
 - `review-delivery: /review-delivery`
 - `review-performance: /review-performance`
+- `review-seo: /review-seo`
 - `review-techstack: /review-techstack`
 - `review-security: /review-security`
 - `review-observability: /review-observability`
