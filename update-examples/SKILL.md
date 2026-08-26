@@ -1,6 +1,6 @@
 ---
-name: write-examples
-description: เขียน examples ครอบคลุมทุก API ใน project ลงใน examples/<title>/ ของ workspace
+name: update-examples
+description: อัปเดต examples ครอบคลุมทุก API ใน project
 related:
   - analyze-project
   - follow-readme
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้ `write-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม โดยสร้าง examples ใน `examples/<title>/` ภายใน workspace นั้นๆ
+ใช้ `/update-examples` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
@@ -33,7 +33,7 @@ related:
 
 > Goal: Create Structure
 
-1. สร้าง `examples/<title>/` directory ใน workspace
+1. สร้าง `examples/` directory
 2. สร้าง subdirectories ตาม project organization
 3. สร้าง `src/` directory ในแต่ละ example subdirectory
 4. สร้าง `README.md` อธิบายโครงสร้าง
@@ -99,7 +99,6 @@ related:
 
 ## Expected Outcome
 
-- มี examples ครอบคลุมทุก API
-- ทุก example runnable ได้จริง
-- ผู้ใช้ copy-paste และใช้งานได้ทันที
-- examples ถูกสร้างใน `examples/<title>/` ของ workspace นั้นๆ
+มี examples ครอบคลุมทุก API
+ทุก example runnable ได้จริง
+ผู้ใช้ copy-paste และใช้งานได้ทันที

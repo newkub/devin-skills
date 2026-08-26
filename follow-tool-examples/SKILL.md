@@ -75,7 +75,7 @@ description: เขียน examples ครอบคลุม API ทุกต�
 
 - อัปเดต examples เมื่อ API เปลี่ยน
 - รัน examples ใน CI เพื่อ catch breaking changes
-- ใช้ `/write-examples` สำหรับสร้างใหม่
+- ใช้ `/update-examples` สำหรับสร้างใหม่
 
 ## Expected Outcome
 

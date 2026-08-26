@@ -80,7 +80,7 @@ argument-hint: "[topic]"
 2. ทดลอง edge cases และ error handling
 3. ทดลอง integration กับ existing code
 4. เปรียบเทียบผลลัพธ์กับที่เรียนรู้มา
-5. ทำ `/write-examples` เพื่อสร้าง examples ครอบคลุม
+5. ทำ `/update-examples` เพื่อสร้าง examples ครอบคลุม
 6. บันทึก lessons learned และ cheat sheet สำหรับ future reference
 
 ## Rules

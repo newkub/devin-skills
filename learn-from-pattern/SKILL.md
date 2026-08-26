@@ -80,7 +80,7 @@ argument-hint: "[target]"
 จัดทำเอกสารและแชร์ความรู้:
 
 1. สร้าง pattern documentation ใน `docs/development/patterns/`
-2. เขียน examples สำหรับแต่ละ pattern โดยทำ `/write-examples`
+2. เขียน examples สำหรับแต่ละ pattern โดยทำ `/update-examples`
 3. อัปเดท `AGENTS.md` ถ้า pattern เป็น project-wide convention
 4. แชร์กับทีมผ่าน documentation หรือ code review
 

@@ -1,6 +1,15 @@
 ---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
+related:
+  - update-dot-devin
+  - update-readme
+  - update-agents-md
+  - update-usage-md
+  - update-project-rules
+  - update-examples
+  - update-project-skills
+  - update-github-metadata
 ---
 
 ## Goal
@@ -56,6 +65,7 @@ description: อัปเดต root project โดยเช็ค git log แ�
    - `/update-features` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
+   - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
    - `/update-test` เพื่ออัปเดต test setup
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-reference` เพื่อ sync references
