@@ -100,6 +100,7 @@ related:
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`
+- `implement-todo-md: /implement-todo-md`
 - `implement-github-issue: /implement-github-issue`
 - `implement-github-task: /implement-github-task`
 
