@@ -34,7 +34,6 @@ related:
 
 1. สร้าง root `extension.toml` ด้วย `id`, `name`, `version`, `schema_version`, `authors`, `description`, `repository`
 2. ระบุ `themes`, `languages`, `snippets`, `lib` ตาม feature
-3. ดู schema ใน `references/zed-extension.md`
 
 ### 3. Add Rust/WASM Code (If Needed)
 
@@ -53,7 +52,6 @@ related:
 1. สร้าง `languages/{language}/config.toml`
 2. สร้าง `languages/{language}/highlights.scm`
 3. ระบุ `path_suffixes`, `line_comments`, `tab_size`
-4. ดูตัวอย่างใน `references/zed-extension.md`
 
 ### 5. Add Themes
 
@@ -89,7 +87,6 @@ related:
 - Rust code ต้อง target `wasm32-wasip2`
 - ใช้ `zed_extension_api::current_platform()` แทน `std::env::var`
 - หลีกเลี่ยง `std::fs` ใน WASM; ใช้ `Worktree` methods
-- ดู `references/zed-extension.md` สำหรับ manifest, Rust API, และ examples
 
 ## Expected Outcome
 

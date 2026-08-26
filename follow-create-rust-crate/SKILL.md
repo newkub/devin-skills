@@ -97,7 +97,6 @@ related:
 - ไม่ใช้ `unwrap()` ใน library code
 - ระบุ `edition = "2024"`
 - `crate-type` เป้น `["lib"]` ยกเว้นต้องใช้ FFI
-- ดู `references/rust-crate.md` สำหรับ Cargo, rustdoc, publishing
 
 ## Expected Outcome
 

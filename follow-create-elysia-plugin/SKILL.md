@@ -86,7 +86,6 @@ related:
 - ตั้งชื่อ plugin ด้วย `elysia-{name}`
 - ใช้ lifecycle hooks สำหรับ cross-cutting concerns
 - ทดสอบด้วย `app.handle()` โดยไม่ต้อง listen port
-- ดู `references/elysia-plugin.md` สำหรับ plugin API
 
 ## Expected Outcome
 

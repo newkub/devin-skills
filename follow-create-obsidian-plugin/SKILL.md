@@ -39,7 +39,6 @@ related:
    - `minAppVersion`: Obsidian version ต่ำสุด
    - `isDesktopOnly`: `false` ถ้ารองรับ mobile
 2. แก้ `versions.json` ให้ map version กับ `minAppVersion`
-3. ดู schema ใน `references/obsidian-plugin.md`
 
 ### 3. Implement Plugin Class
 
@@ -93,7 +92,6 @@ related:
 - ใช้ `external: ['obsidian']` ใน esbuild ไม่ bundle `obsidian`
 - ใช้ `loadData` / `saveData` สำหรับ settings ไม่เขียนไฟล์เอง
 - ระบุ `minAppVersion` ให้ถูกต้องทุก release
-- ดู `references/obsidian-plugin.md` สำหรับ official docs
 
 ## Expected Outcome
 

@@ -46,7 +46,6 @@ related:
 2. ระบุ `inputs` พร้อม `required`, `default`, `description`
 3. ระบุ `outputs` สำหรับผลลัพธ์
 4. ระบุ `runs.using` เป้น `node20`, `composite`, หรือ `docker`
-5. ดูตัวอย่างใน `references/github-action.md`
 
 ### 4. Implement Logic
 
@@ -92,7 +91,6 @@ related:
 - ตั้ง `branding.icon` และ `branding.color` ใน `action.yml`
 - ใช้ major version tags (`v1`) สำหรับ consumers
 - ทดสอบ action บน GitHub runner ก่อน release
-- ดู `references/github-action.md` สำหรับ action.yml spec และ toolkit
 
 ## Expected Outcome
 

@@ -35,7 +35,6 @@ related:
 
 1. สร้าง `src/index.ts` ด้วย factory function
 2. return object ด้วย `name` ที่ required
-3. เพิ่ม hooks ตาม `references/rolldown-plugins.md`
 4. ใช้ hook filters สำหรับลด overhead
 
 ### 3. Add Hooks
@@ -55,7 +54,6 @@ related:
 
 1. ใช้ `filter: { id: regex }` ใน `resolveId`, `load`, `transform`
 2. คืน `null` เร็วถ้าไม่ match
-3. ดูตัวอย่างใน `references/rolldown-plugins.md`
 
 ### 5. Build Package
 
@@ -98,7 +96,6 @@ related:
 - หลีกเลี่ยง `moduleParsed` hook ใน dev mode
 - ใช้ hook filters สำหรับ `resolveId`, `load`, `transform`
 - external `rolldown` และ `vite` ใน build
-- ดู `references/rolldown-plugins.md` สำหรับ hook API
 
 ## Expected Outcome
 

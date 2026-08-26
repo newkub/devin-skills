@@ -95,7 +95,6 @@ related:
 - ไม่ทำ side effects เป้น global นอก callback
 - ใช้ `useRuntimeConfig()` ภายใน hooks ไม่ใช้ใน plugin body
 - ระบุ `nitropack` เป็น peer dependency
-- ดู `references/nitro-plugin.md` สำหรับ hooks และ runtime types
 
 ## Expected Outcome
 

@@ -48,7 +48,6 @@ related:
 1. ติดตั้ง SDK: `bun add @line/bot-sdk`
 2. ติดตั้ง web server: `bun add hono` (default) หรือ `express`
 3. ติดตั้ง dev tools: `bun add -D @types/bun bun-types typescript`
-4. ดูตัวอย่าง webhook handler ใน `references/line-bot.md`
 
 ### 4. Configure Bot And Webhook
 
@@ -104,7 +103,6 @@ related:
 - Validate `x-line-signature` ทุกครั้งก่อน parse events
 - ไม่ commit `.env`
 - ใช้ TypeScript first ตาม `/follow-lang-typescript`
-- ดู `references/line-bot.md` สำหรับ official docs และตัวอย่าง
 
 ## Expected Outcome
 

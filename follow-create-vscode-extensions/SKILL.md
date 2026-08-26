@@ -84,7 +84,6 @@ related:
 - ไม่ hardcode secrets หรือ absolute paths
 - `activationEvents` ต้องตรงกับ command หรือ event จริง
 - ใช้ `vsce` สำหรับ package และ publish
-- ดู `references/vscode-extension.md` สำหรับ manifest, API, publishing
 
 ## Expected Outcome
 
