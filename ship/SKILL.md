@@ -4,6 +4,7 @@ description: Ship workspace หรือ skills repo โดย commit ทำต�
 related:
   - update-agents-md
   - follow-agents-md
+  - ask-project-requirement
   - run-verify
   - test-all
   - validate
@@ -26,9 +27,10 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 
 > Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
 
-1. ทำ `/update-agents-md` ตาม `/ship` เพื่อเขียน `AGENTS.md` ตาม `/ship`
-2. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
-3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
+1. ถ้า `AGENTS.md` ไม่มี requirements หรือ requirements ไม่ชัด → ทำ `/ask-project-requirement` เพื่อเก็บข้อกำหนดก่อน ship
+2. ทำ `/update-agents-md` ตาม `/ship` เพื่อเขียน `AGENTS.md` ตาม `/ship`
+3. ตรวจสอบว่า `AGENTS.md` ถูกต้องและครบถ้วน
+4. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
 ### 2. Follow AGENTS.md
 
@@ -132,3 +134,4 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 - Root commit สำเร็จ
 - รายงาน submodule commits และ root commit ครบถ้วน
 - ถ้ามี release → ตรวจสอบด้วย `/watch-release`
+- ถ้า requirements ไม่ชัด → ถามด้วย `/ask-project-requirement` ก่อน ship
