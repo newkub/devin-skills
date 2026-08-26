@@ -32,7 +32,7 @@ Review งานตาม context โดยเลือก review skill ที�
 3. ถ้า GitHub issue → ทำ `/review-github-issue`
 4. ถ้า GitHub PR → ทำ `/review-github-pr`
 5. ถ้า devin skills → ทำ `/review-devin-global-skills`
-6. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-only` ก่อน แล้วถาม user
+6. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-before` ก่อน แล้วถาม user
 
 ### 3. Report
 

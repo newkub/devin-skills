@@ -27,7 +27,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 
 1. จัดลำดับ fixes ตาม severity ก่อน effort
 2. ระบุ files ที่ต้องแก้
-3. ทำ `/report-only` สรุปแผนก่อนลงมือ
+3. ทำ `/report-before` สรุปแผนก่อนลงมือ
 
 ### 3. Confirm
 

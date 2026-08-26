@@ -10,7 +10,7 @@ description: รายงานไอเดียไฟล์และโฟล�
 ## Scope
 
 ใช้กับ computer ของผู้ใช้ทั่วไป (ไม่จำกัด workspace) ครอบคลุม package caches, temp files, logs, editor caches, browser caches, และ artifacts เก่า
-- เป็น `report-only` ไม่ลบอัตโนมัติ
+- เป็น `report-before` ไม่ลบอัตโนมัติ
 - ไม่รวมการลบไฟล์ส่วนบุคคล, source code, หรือ secrets
 
 ## Execute
@@ -19,7 +19,7 @@ description: รายงานไอเดียไฟล์และโฟล�
 
 > Goal: เตรียมขอบเขตและความปลอดภัยก่อนเริ่ม
 
-1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-only`
+1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-before`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
 4. ทำ `/list-system-env` เพื่อดู paths หลัก

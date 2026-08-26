@@ -17,7 +17,7 @@ description: Report findings and apply fixes with user confirmation
 
 > Goal: สร้าง report ก่อน fix
 
-1. ทำ `/report-only` เพื่อสร้าง report เริ่มต้น
+1. ทำ `/report-before` เพื่อสร้าง report เริ่มต้น
 2. ทำ `/analyze-project` และ `/scan-codebase`
 3. ระบุ issues พร้อม severity
 
