@@ -76,6 +76,7 @@ related:
 - `follow-agents-md: /follow-agents-md`
 - `learn-website-all-routes: /learn-website-all-routes`
 - `follow-write-devin-skills: /follow-write-devin-skills`
+- `follow-principles: /follow-principles`
 - `ask-requirement: /ask-requirement`
 - `validate: /validate`
 - `review-rules: /review-rules`

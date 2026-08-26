@@ -5,6 +5,7 @@ argument-hint: "[skill-name]"
 related:
   - review-devin-global-skills
   - follow-write-devin-skills
+  - follow-principles
   - learn-website-all-routes
   - follow-coverage
   - validate
@@ -35,7 +36,8 @@ related:
 
 1. ทำ `/review-devin-global-skills` โดย scope เฉพาะ skill นี้ (Steps 2-6)
 2. บันทึก findings เป็นตาราง: category, severity, finding, evidence, action
-3. ถ้า score < 70 → แจ้งผู้ใช้ก่อนดำเนินการ
+3. ทำ `/follow-principles` จาก `follow-write-devin-skills`, `global_rules.md` และ `AGENTS.md` เพื่อตรวจสอบ principles ที skill ควรปฏิบัติ
+4. ถ้า score < 70 → แจ้งผู้ใช้ก่อนดำเนินการ
 
 ### 3. Update Structure
 
@@ -103,6 +105,7 @@ related:
 ### 2. Use Follow-Write-Devin-Skills
 
 - ทำ `/follow-write-devin-skills` สำหรับการปรับปรุง skill
+- ทำ `/follow-principles` เพื่อตรวจและปรับให้สอดคล้อง principles ของ devin skills
 - ทำ `/learn-from-references` สำหรับ skills ที่มี dependencies แต่ขาด references
 - ทำ `/learn-website-all-routes` สำหรับ skills ที่มี dependencies เช่น website framework, library หรือ tool ที่เกี่ยวข้องกับ routes
 - ทำ `/follow-coverage` สำหรับ skills ที่ content ไม่ครอบคลุม
