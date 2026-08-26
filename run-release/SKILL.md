@@ -146,4 +146,4 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - Version ถูก bump อัตโนมัติ
 - Changelog ถูกสร้างอัตโนมัติ
 - Git tags ถูกสร้างอัตโนมัติ
-- `RELEASE.md` ถูก gen จาก git tags ด้วย Bun Shell ไม่แก้ไขด้วยมือ
+- `CHANGELOG.md` ถูก gen จาก git tags ด้วย `gen-changelog-md` ไม่แก้ไขด้วยมือ

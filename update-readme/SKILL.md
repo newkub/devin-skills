@@ -73,8 +73,8 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 ### 2. Status Callout
 
 - ใช้ `>` เฉพาะ status project เท่านั้น — ไม่ใส่ description หรือ emoji อื่น
-- ค่าเริ่มต้น: `in development` (ถ้าไม่มี `RELEASE.md`)
-- ถ้ามี `RELEASE.md` → เปลี่ยนเป็น `active`
+- ค่าเริ่มต้น: `in development` (ถ้าไม่มี `CHANGELOG.md`)
+- ถ้ามี `CHANGELOG.md` → เปลี่ยนเป็น `active`
 - ใช้สี: `in development` = red, `active` = green
 - รูปแบบ: `> ![Status](https://img.shields.io/badge/status-in_development-red)` หรือ `> ![Status](https://img.shields.io/badge/status-active-brightgreen)`
 
