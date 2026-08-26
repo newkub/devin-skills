@@ -10,7 +10,7 @@ argument-hint: "[question]"
 
 ## Scope
 
-ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/understand-me`)
+ใช้สำหรับการถามคำถามทั่วไปที่ต้องการคำตอบแบบเลือกตัวเลือก ไม่ใช่เก็บ requirements (ใช้ `/ask-project-requirement`) และไม่ใช่สัมภาษณ์ preferences (ใช้ `/understand-me`)
 
 ใช้ `ask_user_question` tool เท่านั้น ห้ามใช้วิธีอื่นในการถามผู้ใช้
 
@@ -82,7 +82,7 @@ argument-hint: "[question]"
 ไม่ถามผู้ใช้เมื่อ:
 
 - คำตอบชัดเจนจาก context หรือจาก memory
-- เป็นการเก็บ requirements (ใช้ `/ask-requirement`)
+- เป็นการเก็บ requirements (ใช้ `/ask-project-requirement`)
 - เป็นการสัมภาษณ์ preferences (ใช้ `/understand-me`)
 - เป็น low-risk action ที่ทำได้เลย
 

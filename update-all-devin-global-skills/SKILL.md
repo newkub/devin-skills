@@ -5,6 +5,7 @@ related:
   - review-references
   - review-devin-global-skills
   - review-redundancy
+  - review-flow
   - update-reference
 ---
 
@@ -24,7 +25,8 @@ related:
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-write-devin-skills` พร้อม refactor และ cross-skill consistency
 2. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
-3. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
+3. ทำ `/review-flow` เพื่อตรวจ orchestration flow ของ skill นี้ให้เร็ว ปลอดภัย ไม่ซ้ำซ้อน
+4. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
 
 ### 2. Inventory All Skills
 

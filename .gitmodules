@@ -4,6 +4,6 @@
 [submodule "analyze-codebase-quality"]
 	path = analyze-codebase-quality
 	url = git@github.com:newkub/analyze-codebase-quality.git
-[submodule "ask-requirement"]
-	path = ask-requirement
+[submodule "ask-project-requirement"]
+	path = ask-project-requirement
 	url = git@github.com:newkub/ask-requirement.git

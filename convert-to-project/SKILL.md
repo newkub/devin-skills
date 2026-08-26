@@ -20,7 +20,7 @@ description: แปลง idea, requirements หรือ sketch เป็น pr
 1. อ่าน input ทั้งหมด
 2. ระบุ problem, target user, goals
 3. ระบุ constraints: time, budget, tech, team
-4. ถ้า input ไม่ชัด → ใช้ `/ask-requirement`
+4. ถ้า input ไม่ชัด → ใช้ `/ask-project-requirement`
 
 ### 2. Define Project Structure
 

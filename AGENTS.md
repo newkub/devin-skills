@@ -66,7 +66,7 @@ related:
 - `devin-cli-skills: /follow-write-devin-skills`
 - `skill-format: /follow-write-devin-skills/references/skill-md.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 3 (analyze-codebase-quality, ask-requirement, visualize-devin)`
+- `submodules: 3 (analyze-codebase-quality, ask-project-requirement, visualize-devin)`
 
 ### 3. Skills
 
@@ -79,7 +79,8 @@ related:
 - `follow-principles: /follow-principles`
 - `follow-alignment: /follow-alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
-- `ask-requirement: /ask-requirement`
+- `ask-project-requirement: /ask-project-requirement`
+- `enter-dot: /enter-dot`
 - `validate: /validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
@@ -196,6 +197,7 @@ related:
 - `review-restructure: /review-restructure`
 - `review-workspace: /review-workspace`
 - `review-naming: /review-naming`
+- `review-flow: /review-flow`
 - `review-readability: /review-readability`
 
 #### Create
@@ -330,7 +332,7 @@ related:
 ### 4. Workspaces
 
 - ไม่ใช่ monorepo: workspace เดียวคือ root (`%APPDATA%\devin\skills\`)
-- Submodules: `ask-requirement`, `analyze-codebase-quality`, `visualize-devin`
+- Submodules: `ask-project-requirement`, `analyze-codebase-quality`, `visualize-devin`
 
 ### 5. Safety
 
