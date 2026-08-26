@@ -3,7 +3,7 @@ name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ด้วย architecture, platform, target user, lib mapping และ workspace rules
 related:
   - follow-agents-md
-  - follow-write-devin-skills
+  - follow-create-devin-global-skills
   - report-workspace-graph
   - follow-monorepo
   - review-rules
@@ -54,7 +54,7 @@ related:
 
 > Goal: เขียน `AGENTS.md` ตามมาตรฐาน
 
-1. ใช้ format ตาม `follow-write-devin-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
+1. ใช้ format ตาม `follow-create-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
 2. สร้าง sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 3. เพิ่ม `### Architecture`, `### Platform`, `### Target User`, `### Skills`, `### Workspaces` ถ้าเกี่ยวข้อง
 4. ใช้ `tech: /follow-<tech>` สำหรับ tech mapping
@@ -89,7 +89,7 @@ related:
 
 ### 1. AGENTS.md Format
 
-- ใช้ format ตาม `follow-write-devin-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
+- ใช้ format ตาม `follow-create-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
 - มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ไม่มี `## Workflows` หรือ `### Workflows`
 - ไฟล์ไม่เกิน 250 บรรทัด

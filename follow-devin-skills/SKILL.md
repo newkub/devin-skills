@@ -6,7 +6,7 @@ related:
   - list-devin-global-skills
   - update-project-skills
   - check-reference
-  - follow-write-devin-skills
+  - follow-create-devin-global-skills
   - validate
 ---
 

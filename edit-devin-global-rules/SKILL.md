@@ -84,7 +84,7 @@ description: Edit global_rules.md in Windsurf memories safely with validation
 
 ### 4. Compatibility
 
-- ถ้าแก้ skills หรือ `global_rules.md` → ทำ `/follow-write-devin-skills` และ `/consider-use-in-another-skills`
+- ถ้าแก้ skills หรือ `global_rules.md` → ทำ `/follow-create-devin-global-skills` และ `/consider-use-in-another-skills`
 - อัปเดต skills ที่อ้างอิง `global_rules.md` ถ้าจำเป็น
 
 ## Expected Outcome

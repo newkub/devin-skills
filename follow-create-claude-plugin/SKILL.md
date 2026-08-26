@@ -3,8 +3,8 @@ name: follow-create-claude-plugin
 description: สร้าง Claude Code plugin ด้วย manifest, skills, agents, hooks, และ MCP servers
 related:
   - follow-create-sdk
-  - follow-write-devin-skills
-  - follow-write-devin-subagent
+  - follow-create-devin-global-skills
+  - follow-create-devin-global-subagents
   - ask-me
   - search-skills
   - follow-harness-engineering
@@ -48,8 +48,8 @@ related:
 
 > Goal: สร้างแต่ละ component ตาม convention
 
-1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/follow-write-devin-skills`
-2. สำหรับ `agents/`: สร้าง `AGENT.md` ตามมาตรฐาน `/follow-write-devin-subagent`
+1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/follow-create-devin-global-skills`
+2. สำหรับ `agents/`: สร้าง `AGENT.md` ตามมาตรฐาน `/follow-create-devin-global-subagents`
 3. สำหรับ `hooks/`: สร้าง `hooks.json` และ handler scripts ตาม hook types (pre/post tool use, stop, etc.)
 4. สำหรับ `commands/`: สร้าง `.md` file ด้วย frontmatter และ instructions
 5. สำหรับ `mcpServers`: ระบุ server name, transport, command, args, env ใน `.mcp.json`
@@ -79,7 +79,7 @@ related:
 - ไม่ hardcode secrets หรือ credentials ใน plugin files
 - ใช้ environment variables สำหรับ API keys และ sensitive paths
 - สร้างเฉพาะ directories ทีใช้จริง
-- ใช้ `SKILL.md` format ตาม `/follow-write-devin-skills`
+- ใช้ `SKILL.md` format ตาม `/follow-create-devin-global-skills`
 
 ## Expected Outcome
 
@@ -91,6 +91,6 @@ related:
 ## Guide
 
 - `references/claude-plugin.md` — official docs, manifest schema, component details
-- `/follow-write-devin-skills` — SKILL.md format
-- `/follow-write-devin-subagent` — AGENT.md format
+- `/follow-create-devin-global-skills` — SKILL.md format
+- `/follow-create-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

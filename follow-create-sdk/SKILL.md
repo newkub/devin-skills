@@ -32,10 +32,14 @@ related:
   - follow-create-eslint-plugins
   - follow-create-rolldown-plugins
   - follow-create-github-action
+  - follow-create-devin-global-skills
+  - follow-create-devin-global-subagents
+  - create-devin-plugins
   - ask-me
   - search-skills
   - search-files-patterns
   - report-table
+  - ship
 ---
 
 ## Goal
@@ -44,7 +48,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ user ต้องการสร้าง project/plugin/library/extension/CLI แต่ยังไม่แน่ใจว่าควรใช้ `follow-create-*` ใด
+ใช้เมื่อ user ต้องการสร้าง project/plugin/library/extension/CLI/skills/subagents/MCP/web/mobile แต่ยังไม่แน่ใจว่าควรใช้ `follow-create-*` หรือ skill ทีเหมาะสมใด
 
 ## Execute
 
@@ -53,7 +57,7 @@ related:
 > Goal: ตรวจสอบว่า user ระบุ skill หรือ goal มาหรือไม่
 
 1. ถ้า user ระบุ `skill-name` ทีตรงกับ `follow-create-<name>` ที่มีอยู่ → ส่งต่อไปยัง skill นั้นทันที
-2. ถ้า user ระบุ goal (เช่น `bun cli`, `mobile app`, `vite plugin`) → ใช้เป็นคำใบ้ในการ sort ตัวเลือก
+2. ถ้า user ระบุ goal (เช่น `bun cli`, `mobile app`, `vite plugin`, `skills`, `mcp`, `web`, `mobile`) → ใช้เป็นคำใบ้ในการ sort ตัวเลือก
 3. ถ้าไม่ระบุอะไร → ไปขั้นตอนถัดไป
 
 ### 2. Discover Create Skills
@@ -63,13 +67,18 @@ related:
 1. ใช้ `search-files-patterns` หรือ `exec` ค้นหา `follow-create-*/SKILL.md` ใน `%APPDATA%\devin\skills`
 2. อ่าน frontmatter (`name`, `description`) ของแต่ละ skill
 3. สร้างรายการ: ชื่อ skill, description, category โดยประมาณ
+   - `skills` → `follow-create-devin-global-skills`
+   - `subagents` → `follow-create-devin-global-subagents`
+   - `mcp`/`plugins` → `create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
+   - `web` → `follow-create-website`
+   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`
 4. ใช้ `/report-table` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
 ### 3. Build And Ask Options
 
 > Goal: ถาม user ว่าจะทำตาม follow-create- ไหน
 
-1. เรียง skills ตาม relevance กับ goal/argument ก่อน ถ้าไม่มี goal เรียงตาม category แล้วชื่อ
+1. เรียง skills ตาม relevance กับ goal/argument ก่อน ถ้าไม่มี goal เรียงตาม category (`skills`, `subagents`, `mcp`, `web`, `mobile`, `cli`, `plugin`) แล้วชื่อ
 2. ใช้ `/ask-me` ด้วย `ask_user_question` ทีละชุด ชุดละไม่เกิน 3 skills + ตัวเลือก `More...`
 3. ตัวเลือก `label` ใช้ชื่อ skill สั้นๆ เช่น `follow-create-bun-cli`
 4. `description` ใช้ description จาก frontmatter
@@ -86,6 +95,7 @@ related:
 1. ถ้า user เลือก skill เดียว → เรียก `skill` tool ด้วย `skill: <selected-skill-name>`
 2. ถ้า user เลือกหลาย skills → ยืนยันลำดับกับ user ด้วย `/ask-me` ก่อน แล้วเรียกตามลำดับ
 3. ถ้า user ตอบเอง (custom text) → ใช้ `search-skills` หรือ string match กับ `follow-create-*` แล้ว invoke ถ้าตรง
+4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุ `/ship` → invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 ### 5. Handle Mismatch
 
@@ -103,9 +113,10 @@ related:
 - ไม่เพิ่ม `follow-create-*` ใหม่เองถ้ายังไม่มี
 - หลัง user เลือกต้อง invoke skill ด้วย `skill` tool
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
+- ถ้า user ต้องการ `/ship` ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 ## Expected Outcome
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด
 - User เลือก skill ทีต้องการผ่าน `/ask-me`
-- Skill ทีเลือกถูก invoke เพื่อดำเนินการต่อ
+- Skill ทีเลือกถูก invoke พร้อม `/ship` ถ้าจำเป็น

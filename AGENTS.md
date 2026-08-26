@@ -4,7 +4,7 @@ description: Index of global and project-specific Devin CLI skills
 related:
   - update-agents-md
   - follow-agents-md
-  - follow-write-devin-skills
+  - follow-create-devin-global-skills
   - validate
   - review-rules
   - review-devin-global-skills
@@ -30,7 +30,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/update-agents-md` before starting every task
 2. Run `/follow-agents-md` to read and follow `AGENTS.md`
 3. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-4. Read `/follow-write-devin-skills` when editing a skill
+4. Read `/follow-create-devin-global-skills` when editing a skill
 
 ### 2. Maintain AGENTS.md
 
@@ -63,8 +63,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 2. Architecture
 
-- `devin-cli-skills: /follow-write-devin-skills`
-- `skill-format: /follow-write-devin-skills/references/skill-md.md`
+- `devin-cli-skills: /follow-create-devin-global-skills`
+- `skill-format: /follow-create-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 - `submodules: 3 (analyze-codebase-quality, ask-project-requirement, visualize-devin)`
 
@@ -75,7 +75,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `learn-website-all-routes: /learn-website-all-routes`
-- `follow-write-devin-skills: /follow-write-devin-skills`
+- `follow-create-devin-global-skills: /follow-create-devin-global-skills`
+- `follow-create-devin-global-subagents: /follow-create-devin-global-subagents`
 - `follow-devin-skills: /follow-devin-skills`
 - `follow-principles: /follow-principles`
 - `follow-alignment: /follow-alignment`
@@ -346,6 +347,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `list-chezmoi-files: /list-chezmoi-files`
 - `list-devin-user-request-in-this-session: /list-devin-user-request-in-this-session`
 - `list-devin-user-request-all-session: /list-devin-user-request-all-session`
+- `list-devin-user-request-this-repo: /list-devin-user-request-this-repo`
 - `list-devin-session: /list-devin-session`
 - `search-similar: /search-similar`
 - `search-in-github-star: /search-in-github-star`

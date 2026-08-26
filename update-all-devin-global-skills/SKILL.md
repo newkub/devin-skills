@@ -23,7 +23,7 @@ related:
 
 > Goal: ตรวจสอบทุก skill ก่อนดำเนินการ
 
-1. ทำ `/review-devin-global-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-write-devin-skills` พร้อม refactor และ cross-skill consistency
+1. ทำ `/review-devin-global-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-create-devin-global-skills` พร้อม refactor และ cross-skill consistency
 2. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
 3. ทำ `/review-flow` เพื่อตรวจ orchestration flow ของ skill นี้ให้เร็ว ปลอดภัย ไม่ซ้ำซ้อน
 4. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
@@ -55,7 +55,7 @@ related:
 1. ทำ `/review-devin-global-skills` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
 2. ทำ `/follow-single-responsibility` สำหรับ skills ที่มี SRP violations
 3. ทำ `/relocation` เพื่อย้าย skills ไปยังตำแหน่งที่เหมาะสมตาม prefix
-4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/follow-write-devin-skills`
+4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/follow-create-devin-global-skills`
 5. ถ้ามี skill ที่ prefix ไม่ตรงกับ responsibility → เปลี่ยน prefix และย้าย
 
 ### 5. Ensure Cross-Skill Consistency
@@ -100,7 +100,7 @@ related:
 
 ### 1. Review Before Update
 
-- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-write-devin-skills` Rule 9
+- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-create-devin-global-skills` Rule 9
 - ไม่แก้ไข skill ใดๆ ก่อน review ผ่าน
 - ทุก finding ต้องมี skill name, file path และ evidence
 

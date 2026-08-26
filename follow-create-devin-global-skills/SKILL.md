@@ -1,6 +1,6 @@
 ---
-name: follow-write-devin-skills
-description: สร้างหรือปรับปรุง skill package โดยเลือก template และจัดการ directory
+name: follow-create-devin-global-skills
+description: สร้างหรือปรับปรุง Devin global skill package ตามมาตรฐาน
 argument-hint: "[skill-name]"
 ---
 
@@ -23,7 +23,7 @@ argument-hint: "[skill-name]"
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 4. ทำ `/learn-from-web` จาก Devin CLI docs เมื่อต้องการ verify spec
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
-6. ทุก skill ที่มี dependencies (จำเป็นหรือ optional) ต้องมี `references/` เสมอ → ดู [references/dependencies.md](references/dependencies.md)
+6. ถ้า skill มี dependencies (จำเป็นหรือ optional) จึงสร้าง `references/` → ดู [references/dependencies.md](references/dependencies.md)
 
 ### 2. Select Template
 
@@ -103,7 +103,8 @@ argument-hint: "[skill-name]"
 
 ### 2. Package Structure
 
-- `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด. สามารถมี `references/`, `scripts/`, `subskills/`, `guide/`, `examples/`, `src/`, `.devin/rules/` ตามความจำเป็น
+- `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด โดยค่าเริ่มต้น skill ใหม่มีเฉพาะ `SKILL.md`
+- ถ้า skill มี dependencies, CLI, web, templates, หรือ examples คงทีจำเป็น → จึงเพิ่ม `references/`, `src/`, `templates/`, `examples/`, `scripts/`, `subskills/`, `guide/` หรือ `.devin/rules/` ตามความเหมาะสม แล้ว refactor file structure ให้ SRP ชัดเจน
 - ถ้ามี CLI หรือ web ต้องมี `src/` เป็น root ของ code. CLI entry point ที่ `src/presentation/cli.ts`. directory name ต้องตรงกับ `name` ใน frontmatter. ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
 - ถ้า `references/` มี nested directories → ใช้ `/follow-flat-files`. ถ้า flat ทั้ง skill package → ใช้ `/follow-flat-folders`
 - ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์รับผิดชอบหน้าที่เดียวชัดเจน ถ้าไฟล์รวมหลาย responsibilities → แยกเป็นไฟล์ย่อย
@@ -142,7 +143,7 @@ argument-hint: "[skill-name]"
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
 - ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
-- ทุก skill ที่มี dependencies ต้องมี `references/` ที่เขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder
+- ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 ## Examples

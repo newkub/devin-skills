@@ -10,7 +10,7 @@ argument-hint: "[skill-name]"
 
 ## Scope
 
-ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (`/follow-write-devin-skills`) หรือการ validate (`/validate`)
+ใช้เมื่อจะสร้างหรือปรับปรุง skill files ใน `global skills` หรือ workspace — ไม่ซ้ำกับการเขียนเนื้อหา skill (`/follow-create-devin-global-skills`) หรือการ validate (`/validate`)
 
 ## Execute
 
@@ -50,18 +50,18 @@ argument-hint: "[skill-name]"
 > Goal: เลือก template ตามชนิดของ skill
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `follow-write-devin-skills/references/skill-type-run.md`
-   - `follow-*` → `follow-write-devin-skills/references/skill-type-follow.md` ยกเว้น `follow-*-architecture` → `follow-write-devin-skills/references/skill-type-architecture.md`
-   - `check-*` → `follow-write-devin-skills/references/skill-type-check.md`
-   - `analyze-*` → `follow-write-devin-skills/references/skill-type-analyze.md`
-   - `deep-*` → `follow-write-devin-skills/references/skill-type-deep.md`
-   - `review-*` → `follow-write-devin-skills/references/skill-type-review.md`
-   - `idea-*` → `follow-write-devin-skills/references/skill-type-idea.md`
-   - `report-*` → `follow-write-devin-skills/references/skill-type-report.md`
+   - `run-*` → `follow-create-devin-global-skills/templates/run.md`
+   - `follow-*` → `follow-create-devin-global-skills/templates/follow.md` ยกเว้น `follow-*-architecture` → `follow-create-devin-global-skills/templates/follow-architecture.md`
+   - `check-*` → `follow-create-devin-global-skills/templates/check.md`
+   - `analyze-*` → `follow-create-devin-global-skills/templates/analyze.md`
+   - `deep-*` → `follow-create-devin-global-skills/templates/deep.md`
+   - `review-*` → `follow-create-devin-global-skills/templates/review.md`
+   - `idea-*` → `follow-create-devin-global-skills/templates/idea.md`
+   - `report-*` → `follow-create-devin-global-skills/templates/report.md`
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
-   - ใช้ relative path `follow-write-devin-skills/references/skill-type-<prefix>.md`
-3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-write-devin-skills`
+   - ใช้ relative path `follow-create-devin-global-skills/templates/<prefix>.md`
+3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/follow-create-devin-global-skills`
 
 ### 5. Confirm Context
 
@@ -88,7 +88,7 @@ argument-hint: "[skill-name]"
 ### 3. Template Consistency
 
 - ทุก skill ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
-- ใช้ templates ใน `follow-write-devin-skills/references/skill-type-*.md` เป็น canonical structure
+- ใช้ templates ใน `follow-create-devin-global-skills/templates/*.md` เป็น canonical structure
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 
@@ -103,7 +103,7 @@ argument-hint: "[skill-name]"
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis
 - `refactor-to-*` → ใช้ `follow-*` ที่เกี่ยวข้อง, มี identify → plan → refactor → verify → report
-- `improve-*`/`write-*` → ใช้ `/follow-write-devin-skills` เป็นมาตรฐาน, มี review ก่อน improve
+- `improve-*`/`write-*` → ใช้ `/follow-create-devin-global-skills` เป็นมาตรฐาน, มี review ก่อน improve
 - `create-*`/`add-*`/`delete-*` → มี dry run ก่อน, อัปเดท references ด้วย `/update-references`
 - `update-*` → ตรวจ git changes ก่อน, ใช้ `/check-should-update`
 - `report-*` → ระบุ output format, ใช้ `/report-table`, `/report-file-structure`, `/report-codeblock`, `/report-ansi`
@@ -114,7 +114,7 @@ argument-hint: "[skill-name]"
 ### 5. Fail Fast
 
 - ถ้า context ไม่ชัดหรือ reference ไม่มี → stop และ report
-- ถ้า template ไม่ตรง → ให้ `/suggest-next-action` แนะนำ next step เช่น `/follow-write-devin-skills`
+- ถ้า template ไม่ตรง → ให้ `/suggest-next-action` แนะนำ next step เช่น `/follow-create-devin-global-skills`
 
 ## Expected Outcome
 

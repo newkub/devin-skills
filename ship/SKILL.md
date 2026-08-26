@@ -6,6 +6,7 @@ related:
   - follow-agents-md
   - update-devin-global-skills
   - update-all-devin-global-skills
+  - review-diff
   - git-commit
   - report
 ---
@@ -25,7 +26,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 > Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
 
 1. ถ้า `AGENTS.md` ไม่มีหรือไม่อัปเดต → ทำ `/update-agents-md`
-2. ตรวจสอบว่า `AGENTS.md` มี sections ครบตาม `/follow-write-devin-skills`
+2. ตรวจสอบว่า `AGENTS.md` มี sections ครบตาม `/follow-create-devin-global-skills`
 3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
 ### 2. Follow AGENTS.md

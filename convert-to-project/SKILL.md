@@ -66,7 +66,7 @@ description: แปลง idea, requirements หรือ sketch เป็น pr
 ### 3. Reusability
 
 - ใช้ conventions ของ project/team
-- อ้างอิง `follow-write-devin-skills` ถ้าเป็น devin skills project
+- อ้างอิง `follow-create-devin-global-skills` ถ้าเป็น devin skills project
 - ใช้ `AGENTS.md` หรือ `global_rules.md` ถ้ามี
 
 ## Expected Outcome

@@ -35,7 +35,7 @@ argument-hint: "[url]"
 
 > Goal: จัดกลุ่มเนื้อหาเป็น subskills
 
-1. อ่าน `subskills/<domain>/<subskill>/SKILL.md` pattern จาก `/follow-write-devin-skills`
+1. อ่าน `subskills/<domain>/<subskill>/SKILL.md` pattern จาก `/follow-create-devin-global-skills`
 2. จัดกลุ่ม topics ตามลักษณะงาน: `setup-*`, `update-*`, `improve-*`, `follow-*`, `use-*`, `review-*`, `write-*`
 3. ตั้งชื่อ subskill เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`
 4. สร้าง parent skill `<domain>-subskills` โดยมี `related` ชี้ทุก subskill
@@ -45,7 +45,7 @@ argument-hint: "[url]"
 > Goal: เขียน subskills ตาม content
 
 1. สร้าง directory `subskills/<domain>/<subskill>/` สำหรับแต่ละ group
-2. เขียน `SKILL.md` ในแต่ละ subskill โดยทำตาม `/follow-write-devin-skills`
+2. เขียน `SKILL.md` ในแต่ละ subskill โดยทำตาม `/follow-create-devin-global-skills`
 3. ทุก subskill ต้องมี `name`, `description` ≤100, `allowed-tools`, `related`
 4. ห้ามเกิน 250 บรรทัด ถ้าเกินให้ย่อหรือแยก subskill เพิ่ม
 
@@ -99,6 +99,6 @@ argument-hint: "[url]"
 
 - parent skill `<domain>-subskills/SKILL.md` ถูกสร้าง
 - subskills อยู่ใน `subskills/<domain>/<subskill>/SKILL.md`
-- ทุก skill ผ่าน `/follow-write-devin-skills`
+- ทุก skill ผ่าน `/follow-create-devin-global-skills`
 - `related` ถูกต้อง ไม่มี broken references
 - commit สำเร็จพร้อม report
