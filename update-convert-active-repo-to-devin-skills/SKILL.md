@@ -1,6 +1,14 @@
 ---
 name: update-convert-active-repo-to-devin-skills
 description: สร้าง at-<repo> skills จาก remote repos ทั้งหมดทีตรงกับ local git projects
+related:
+  - list-git-project-in-computer
+  - list-chezmoi-files
+  - at-this-repo
+  - update-all-devin-global-skills
+  - review-redundancy
+  - validate
+  - follow-write-devin-skills
 ---
 
 ## Goal
@@ -30,7 +38,7 @@ description: สร้าง at-<repo> skills จาก remote repos ทั้�
 
 1. ทำ `/list-git-project-in-computer`
 2. บันทึกรายการ `Project`, `Path`, `Drive`, `RemoteUrl`
-3. ถ้า scan ช้า → ใช้ `/list-project-in-drive-d` หรือรันเฉพาะ drive ทีรู้
+3. ถ้า scan ช้า → รันเฉพาะ drive ทีรู้
 
 ### 3. List Chezmoi Source Repo
 
@@ -132,6 +140,20 @@ description: สร้าง at-<repo> skills จาก remote repos ทั้�
 
 - สร้างเฉพาะ repo ที match กับ local project
 - ไม่สร้าง skill สำหรับ repo ทีไม่มี local path
+
+### 7. Common Mistakes
+
+- ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
+- สร้าง skills ที่มีอยู่แล้วใน global
+- ไม่ใช้ `/follow-write-devin-skills` ในการสร้าง
+- ไม่ตรวจสอบ folder structure หลังสร้าง
+
+### 8. Anti-Patterns
+
+- สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
+- สร้าง skills แบบ manual ไม่ตามมาตรฐาน
+- ข้าม `/learn-from-web` ก่อนเขียนเนื้อหา
+- ไม่ตรวจสอบคุณภาพ content
 
 ## Expected Outcome
 
