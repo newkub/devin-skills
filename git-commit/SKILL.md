@@ -7,6 +7,7 @@ related:
   - follow-tool-hk
   - list-git-commit
   - refactor-commit
+  - review-diff
   - ship
 ---
 

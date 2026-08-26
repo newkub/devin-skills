@@ -111,7 +111,7 @@ description: รายงานแผนการทำงานก่อนด�
 
 - ทำ `/plan` เพื่อวางแผน
 - ทำ `/analyze-project` เพื่อวิเคราะห์
-- ทำ `/follow-create-devin-global-skills` เพื่อสร้าง workflow
+- ทำ `/follow-create-devin-skills` เพื่อสร้าง workflow
 
 ## Expected Outcome
 

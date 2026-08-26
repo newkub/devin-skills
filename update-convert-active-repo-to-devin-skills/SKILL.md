@@ -8,7 +8,7 @@ related:
   - update-all-devin-global-skills
   - review-redundancy
   - validate
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
 ---
 
 ## Goal
@@ -145,7 +145,7 @@ related:
 
 - ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
 - สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/follow-create-devin-global-skills` ในการสร้าง
+- ไม่ใช้ `/follow-create-devin-skills` ในการสร้าง
 - ไม่ตรวจสอบ folder structure หลังสร้าง
 
 ### 8. Anti-Patterns

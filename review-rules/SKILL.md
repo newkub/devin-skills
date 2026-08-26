@@ -100,7 +100,7 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 
 ### 3. AGENTS.md Format Compliance
 
-- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-create-devin-global-skills`
+- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-create-devin-skills`
 - frontmatter `name`, `description`, `related` จำเป็นต้องมี
 - sections ตามลำดับ: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ห้ามมี section `## Workflows`

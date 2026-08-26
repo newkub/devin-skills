@@ -32,8 +32,8 @@ related:
   - follow-create-eslint-plugins
   - follow-create-rolldown-plugins
   - follow-create-github-action
-  - follow-create-devin-global-skills
-  - follow-create-devin-global-subagents
+  - follow-create-devin-skills
+  - follow-create-devin-subagents
   - create-devin-plugins
   - ask-me
   - search-skills
@@ -67,8 +67,8 @@ related:
 1. ใช้ `search-files-patterns` หรือ `exec` ค้นหา `follow-create-*/SKILL.md` ใน `%APPDATA%\devin\skills`
 2. อ่าน frontmatter (`name`, `description`) ของแต่ละ skill
 3. สร้างรายการ: ชื่อ skill, description, category โดยประมาณ
-   - `skills` → `follow-create-devin-global-skills`
-   - `subagents` → `follow-create-devin-global-subagents`
+   - `skills` → `follow-create-devin-skills`
+   - `subagents` → `follow-create-devin-subagents`
    - `mcp`/`plugins` → `create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-website`
    - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`

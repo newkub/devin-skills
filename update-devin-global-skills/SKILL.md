@@ -1,11 +1,11 @@
 ---
 name: update-devin-global-skills
-description: อัปเดต skill เดียวใน devin skills repo ตามมาตรฐาน follow-create-devin-global-skills
+description: อัปเดต skill เดียวใน devin skills repo ตามมาตรฐาน follow-create-devin-skills
 argument-hint: "[skill-name]"
 related:
   - review-devin-global-skills
   - review-workflow
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
   - follow-principles
   - learn-website-all-routes
   - follow-coverage
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-อัปเดต ดูแล และ refactor skill เดียวใน `%APPDATA%\devin\skills` ให้ผ่านมาตรฐาน `follow-create-devin-global-skills` เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
+อัปเดต ดูแล และ refactor skill เดียวใน `%APPDATA%\devin\skills` ให้ผ่านมาตรฐาน `follow-create-devin-skills` เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
 
 ## Scope
 
@@ -37,14 +37,14 @@ related:
 
 1. ทำ `/review-devin-global-skills` โดย scope เฉพาะ skill นี้ (Steps 2-6)
 2. บันทึก findings เป็นตาราง: category, severity, finding, evidence, action
-3. ทำ `/follow-principles` จาก `follow-create-devin-global-skills`, `global_rules.md` และ `AGENTS.md` เพื่อตรวจสอบ principles ที skill ควรปฏิบัติ
+3. ทำ `/follow-principles` จาก `follow-create-devin-skills`, `global_rules.md` และ `AGENTS.md` เพื่อตรวจสอบ principles ที skill ควรปฏิบัติ
 4. ถ้า score < 70 → แจ้งผู้ใช้ก่อนดำเนินการ
 
 ### 3. Update Structure
 
 > Goal: ปรับโครงสร้าง skill ให้ตรงมาตรฐาน
 
-1. ทำ `/follow-create-devin-global-skills` เพื่อปรับปรุง `SKILL.md` และ directory structure
+1. ทำ `/follow-create-devin-skills` เพื่อปรับปรุง `SKILL.md` และ directory structure
 2. ตรวจ template selection ตรงกับ prefix ตาม `templates/index.md`
 3. ถ้าไฟล์เกิน 250 บรรทัด → split ออกเป็น `references/` หรือ `subskills/`
 4. ทำ `/follow-single-responsibility` สำหรับไฟล์ที่มี SRP violations
@@ -99,13 +99,13 @@ related:
 
 ### 1. Review Before Update
 
-- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-create-devin-global-skills` Rule 9
+- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-create-devin-skills` Rule 9
 - ไม่แก้ไข skill ก่อน review ผ่าน
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Use Follow-Write-Devin-Skills
 
-- ทำ `/follow-create-devin-global-skills` สำหรับการปรับปรุง skill
+- ทำ `/follow-create-devin-skills` สำหรับการปรับปรุง skill
 - ทำ `/follow-principles` เพื่อตรวจและปรับให้สอดคล้อง principles ของ devin skills
 - ทำ `/learn-from-references` สำหรับ skills ที่มี dependencies แต่ขาด references
 - ทำ `/learn-website-all-routes` สำหรับ skills ที่มี dependencies เช่น website framework, library หรือ tool ที่เกี่ยวข้องกับ routes

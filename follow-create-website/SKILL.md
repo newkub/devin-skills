@@ -109,7 +109,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 
 1. ถ้า project นี้จะเป็น devin global skill → ทำ `/update-devin-global-skills`
 2. อัปเดต `AGENTS.md` และ `README.md`
-3. ทำ `/follow-create-devin-global-skills` เพื่อตรวจสอบ conventions
+3. ทำ `/follow-create-devin-skills` เพื่อตรวจสอบ conventions
 
 ## Rules
 

@@ -1,4 +1,4 @@
-# follow-create-devin-global-skills References Index
+# follow-create-devin-skills References Index
 
 | File | Responsibility |
 |---|---|

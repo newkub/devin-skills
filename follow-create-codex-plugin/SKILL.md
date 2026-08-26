@@ -4,8 +4,8 @@ description: สร้าง Codex plugin ด้วย manifest, skills, MCP ser
 related:
   - follow-create-sdk
   - follow-create-claude-plugin
-  - follow-create-devin-global-skills
-  - follow-create-devin-global-subagents
+  - follow-create-devin-skills
+  - follow-create-devin-subagents
   - ask-me
   - search-skills
   - follow-harness-engineering
@@ -50,7 +50,7 @@ related:
 
 > Goal: สร้างแต่ละ component ตาม convention
 
-1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/follow-create-devin-global-skills`
+1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/follow-create-devin-skills`
 2. สำหรับ `mcpServers`: ระบุ `name`, `command`, `args`, `env` ใน `.mcp.json`
 3. สำหรับ `.app.json`: ระบุ `plugin_asdk_app...` ID ที register ไว้
 4. กำหนด `interface` ใน manifest สำหรับ display name, descriptions, icons, brand color, default prompts
@@ -82,7 +82,7 @@ related:
 - ไม่ hardcode secrets หรือ credentials ใน plugin files
 - ใช้ environment variables สำหรับ API keys และ app IDs
 - สร้างเฉพาะ components ทีใช้จริง
-- ใช้ `SKILL.md` format ตาม `/follow-create-devin-global-skills`
+- ใช้ `SKILL.md` format ตาม `/follow-create-devin-skills`
 
 ## Expected Outcome
 
@@ -94,7 +94,7 @@ related:
 ## Guide
 
 - `references/codex-plugin.md` — official docs, manifest schema, component details
-- `/follow-create-devin-global-skills` — SKILL.md format
-- `/follow-create-devin-global-subagents` — AGENT.md format
+- `/follow-create-devin-skills` — SKILL.md format
+- `/follow-create-devin-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle
 - `/follow-create-claude-plugin` — ถ้าต้องการ port ไป Claude plugin ในอนาคต

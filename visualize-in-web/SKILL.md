@@ -1,36 +1,49 @@
 ---
 name: visualize-in-web
 description: สร้าง visual แบบ Web ใน browser บน OS temp directory
+related:
+  - report-html
+  - open-web
 ---
 
 ## Goal
 
-สร้าง visual แบบ Web (HTML) ใน browser ให้เข้าใจข้อมูล โครงสร้าง หรือ concept ได้ง่าย
+สร้าง visual แบบ Web (HTML) ใน browser ให้เข้าใจข้อมูล โครงสร้าง หรือ concept ได้ง่าย โดยเลือก frontend runtime ตาม user context
 
 ## Scope
 
-ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน ต้องการ interaction, search, filter, tabs โดยสร้างไฟล์ชั่วคราวใน OS temp directory
+- ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน
+- สร้างไฟล์เดียวใน OS temp directory แบบ no-build
+- เลือก runtime ตาม context: `Vue 3`, `solid-js/html`, `Alpine.js`, หรือ `Vanilla JS`
+- ถ้าต้องการ preview `TSX` component หรือ build → ใช้ `/visualize-project`
 
 ## Execute
 
 ### 1. Analyze Content
 
-> Goal: Analyze Content
+> Goal: เข้าใจเนื้อหาที่จะ visualize
 
-วิเคราะห์เนื้อหาที่จะ visualize:
-
-1. ระบุประเภทเนื้อหา (data, structure, flow, concept, comparison)
+1. ระบุประเภทเนื้อหา (`data`, `structure`, `flow`, `concept`, `comparison`)
 2. ระบุความสัมพันธ์และ hierarchy
-3. กำหนด layout ที่เหมาะสม (tables, hierarchies, flows, comparisons, statistics, relationships)
+3. กำหนด layout ที่เหมาะสม (`tables`, `hierarchies`, `flows`, `comparisons`, `statistics`, `relationships`)
 
-### 2. Generate Web Mode
+### 2. Select Runtime
 
-> Goal: Generate Web Mode
+> Goal: เลือก frontend runtime ตาม user context
 
-สร้าง visual แบบ HTML ใน browser:
+1. ดู context ของ user: project stack, active files, หรือ config
+2. ถ้า user ใช้ `Solid` → ใช้ `solid-js/html` หรือ `solid-js/h` จาก CDN
+3. ถ้า user ใช้ `Vue` → ใช้ Vue 3 global build จาก unpkg
+4. ถ้า user ใช้ `Alpine` → ใช้ Alpine.js CDN
+5. ถ้าไม่ชัด → ใช้ Vue 3 เป็น default
+6. ถ้าต้องการ build หรือ `TSX` → เปลี่ยนไปใช้ `/visualize-project`
 
-1. ทำ `/report-in-html` สำหรับ HTML structure พื้นฐาน
-2. ใช้ Vue 3 ผ่าน unpkg CDN
+### 3. Generate Web Mode
+
+> Goal: สร้าง visual แบบ HTML
+
+1. ทำ `/report-html` สำหรับ HTML structure พื้นฐาน
+2. ใช้ runtime ที่เลือกจากข้อ 2
 3. ใช้ Tailwind CSS สำหรับ styling
 4. ถ้าต้องการ tab system ให้อ้างอิง `/open-readme-html`
 5. สร้างไฟล์ใน OS temp directory:
@@ -38,11 +51,9 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
    - macOS/Linux: `tmp/visualize-<name>.html`
 6. ทำ `/open-web` เพื่อเปิดใน browser
 
-### 3. Design Visual Layout
+### 4. Design Visual Layout
 
-> Goal: Design Visual Layout
-
-ออกแบบ layout ตามประเภทเนื้อหา:
+> Goal: ออกแบบ layout ตามประเภทเนื้อหา
 
 1. Data tables: ใช้ `<el-table>` หรือ HTML tables พร้อม sorting
 2. Hierarchies: ใช้ tree structure หรือ nested boxes
@@ -51,11 +62,9 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
 5. Statistics: ใช้ charts หรือ bar graphs
 6. Relationships: ใช้ graph หรือ matrix
 
-### 4. Add Interactivity
+### 5. Add Interactivity
 
-> Goal: Add Interactivity
-
-เพิ่ม interaction สำหรับ Web mode:
+> Goal: เพิ่ม interaction สำหรับ Web mode
 
 1. เพิ่ม search ด้วย `<el-input>` หรือ `<input v-model>`
 2. เพิ่ม filter ด้วย computed properties
@@ -75,13 +84,19 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
 
 ### 2. Web Standards
 
-- ทำตาม `/report-in-html` สำหรับ HTML structure
-- ใช้ Vue 3 ผ่าน unpkg CDN
+- ทำตาม `/report-html` สำหรับ HTML structure
+- เลือก frontend runtime ตาม user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
 - ใช้ Tailwind CSS CDN
 - รองรับ dark mode
 - ถ้าต้องการ Element Plus components ให้อ้างอิง `/open-readme-html`
 
-### 3. Content Clarity
+### 3. No Build
+
+- ไฟล์เดียว ไม่มี build step
+- JS/CSS/Runtime โหลดจาก CDN
+- ถ้าต้องการ `TSX` หรือ build → ใช้ `/visualize-project` แทน
+
+### 4. Content Clarity
 
 - เน้นความเข้าใจง่ายกว่าความสวยงาม
 - ใช้ labels และ annotations ชัดเจน
@@ -94,3 +109,4 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
 - ไฟล์ชั่วคราวใน OS temp directory
 - เปิดใน browser พร้อม interaction
 - ข้อมูลที่ซับซ้อนกลายเป็น visual ที่เข้าใจได้ง่าย
+- ใช้ runtime ตาม context ของ user

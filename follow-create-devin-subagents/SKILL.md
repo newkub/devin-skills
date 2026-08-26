@@ -1,5 +1,5 @@
 ---
-name: follow-create-devin-global-subagents
+name: follow-create-devin-subagents
 description: สร้างหรือปรับปรุง Devin global subagent AGENT.md ให้ถูกต้องตาม spec
 argument-hint: "[agent-name]"
 ---

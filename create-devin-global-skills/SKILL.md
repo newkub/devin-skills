@@ -1,9 +1,9 @@
 ---
 name: create-devin-global-skills
-description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-create-devin-global-skills
+description: สร้าง skill ใหม่ใน devin global skills โดยใช้ follow-create-devin-skills
 argument-hint: "[skill-name]"
 related:
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
   - consider-use-in-another-skills
   - scan-codebase
   - validate
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-create-devin-global-skills` สำหรับ `SKILL.md` และ directory structure
+สร้าง skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน โดยใช้ `/follow-create-devin-skills` สำหรับ `SKILL.md` และ directory structure
 
 ## Scope
 
@@ -53,7 +53,7 @@ related:
 
 > Goal: สร้าง `SKILL.md` และ directory contents
 
-1. ทำ `/follow-create-devin-global-skills` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body), เลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
+1. ทำ `/follow-create-devin-skills` เพื่อเขียน `SKILL.md` หลัก (frontmatter + prompt body), เลือก template, จัดการ directory structure, references, `scripts/`, `guide/`, หรือ `examples/`
 2. กำหนด `name` ให้ตรงกับ directory name
 3. ใส่ `description` กระชับไม่เกิน 100 ตัวอักษร
 
@@ -83,8 +83,8 @@ related:
 
 ### 2. Content Standard
 
-- ทำตาม `/follow-create-devin-global-skills` สำหรับการเขียน `SKILL.md`
-- ทำตาม `/follow-create-devin-global-skills` สำหรับ directory structure และ templates
+- ทำตาม `/follow-create-devin-skills` สำหรับการเขียน `SKILL.md`
+- ทำตาม `/follow-create-devin-skills` สำหรับ directory structure และ templates
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
 - ไม่เกิน 250 บรรทัดต่อไฟล์
@@ -100,5 +100,5 @@ related:
 - directory name ตรงกับ `name` ใน frontmatter
 - `SKILL.md` ผ่าน `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - `related` references ครบถ้วน ไม่มี missing/unused
-- directory structure ครบถ้วนตาม `/follow-create-devin-global-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
+- directory structure ครบถ้วนตาม `/follow-create-devin-skills` พร้อม `references/` `scripts/` `guide/` หรือ `examples/` เมื่อจำเป็น
 - ไม่ซ้ำกับ skills ที่มีอยู่ หรือได้รับการยืนยันให้ extend หรือ rename

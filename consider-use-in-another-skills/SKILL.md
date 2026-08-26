@@ -9,6 +9,7 @@ related:
   - scan-codebase
   - check-reference
   - update-references
+  - review-diff
 ---
 
 ## Goal

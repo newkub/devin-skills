@@ -3,7 +3,7 @@ name: create-similar
 description: สร้างไฟล์ skill หรือ project ใหม่โดยอ้างอิงโครงสร้างจากตัวอย่าง
 related:
   - at-this-repo
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
   - review-naming
   - consider-use-in-another-skills
   - edit-by-use-scripts

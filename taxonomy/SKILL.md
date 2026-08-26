@@ -6,6 +6,7 @@ related:
   - grouping
   - report-table
   - report
+  - visualize-project
 ---
 
 ## Goal

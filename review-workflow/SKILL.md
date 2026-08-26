@@ -6,7 +6,7 @@ related:
   - update-devin-global-skills
   - follow-devin-global-subagents
   - review-devin-global-skills
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
   - simplify
   - review-redundancy
   - review-consistency

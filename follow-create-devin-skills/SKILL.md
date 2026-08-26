@@ -1,5 +1,5 @@
 ---
-name: follow-create-devin-global-skills
+name: follow-create-devin-skills
 description: สร้างหรือปรับปรุง Devin global skill package ตามมาตรฐาน
 argument-hint: "[skill-name]"
 ---

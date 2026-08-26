@@ -6,7 +6,7 @@ argument-hint: "[target]"
 
 ## Goal
 
-สกัด workflow หรือการทำงานที่เกิดขึ้นใน chat session ปัจจุบัน แล้วสร้างเป็น skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน `/follow-create-devin-global-skills`
+สกัด workflow หรือการทำงานที่เกิดขึ้นใน chat session ปัจจุบัน แล้วสร้างเป็น skill ใหม่ใน `%APPDATA%\devin\skills` ตามมาตรฐาน `/follow-create-devin-skills`
 
 ## Scope
 
@@ -27,7 +27,7 @@ argument-hint: "[target]"
 
 > Goal: ระบุชื่อและ prefix ของ skill ใหม่
 
-1. เลือก prefix ตาม `/follow-create-devin-global-skills`: `run-*`, `follow-*`, `check-*`, `review-*`, `report-*`, `idea-*`, `lib-*`
+1. เลือก prefix ตาม `/follow-create-devin-skills`: `run-*`, `follow-*`, `check-*`, `review-*`, `report-*`, `idea-*`, `lib-*`
 2. ตั้งชื่อ skill ให้สื่อถึง workflow ที่สกัดได้
 3. ตรวจสอบว่าชื่อไม่ซ้ำกับ existing skills ด้วย `/scan-codebase`
 4. ถ้าซ้ำ → เสนอ extend หรือ rename
@@ -36,7 +36,7 @@ argument-hint: "[target]"
 
 > Goal: แปลงการทำงานใน session เป็น skill structure
 
-1. แปลง tasks ใน session เป็น `## Execute` steps ตามมาตรฐาน `/follow-create-devin-global-skills`
+1. แปลง tasks ใน session เป็น `## Execute` steps ตามมาตรฐาน `/follow-create-devin-skills`
 2. สกัด rules และ constraints ที่ใช้ใน session เป็น `## Rules`
 3. เขียน `## Goal`, `## Scope`, `## Expected Outcome` ให้สอดคล้อง
 4. เพิ่ม `> Goal:` สำหรับแต่ละ step (อันเดียวต่อ step)
@@ -46,7 +46,7 @@ argument-hint: "[target]"
 
 > Goal: สร้าง skill package ครบถ้วน
 
-1. ทำ `/follow-create-devin-global-skills` เพื่อเลือก template และสร้าง directory structure
+1. ทำ `/follow-create-devin-skills` เพื่อเลือก template และสร้าง directory structure
 2. สร้าง `%APPDATA%\devin\skills\<skill-name>\SKILL.md`
 3. ถ้าต้องการ `references/`, `scripts/`, `guide/` → สร้างตามความจำเป็น
 4. กำหนด `name` ให้ตรงกับ directory name
@@ -71,7 +71,7 @@ argument-hint: "[target]"
 
 ### 2. Content Standard
 
-- ทำตาม `/follow-create-devin-global-skills` สำหรับ structure และ template
+- ทำตาม `/follow-create-devin-skills` สำหรับ structure และ template
 - Frontmatter มีเฉพาะ `name` และ `description`
 - `description` ไม่เกิน 100 ตัวอักษร
 - ใช้ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
@@ -93,6 +93,6 @@ argument-hint: "[target]"
 
 - skill ใหม่ถูกสร้างจาก workflow ใน chat session นี้
 - ชื่อและ prefix ตรงกับประเภทของ workflow
-- `SKILL.md` ถูกต้องตามมาตรฐาน `/follow-create-devin-global-skills` ไม่เกิน 250 บรรทัด
+- `SKILL.md` ถูกต้องตามมาตรฐาน `/follow-create-devin-skills` ไม่เกิน 250 บรรทัด
 - ผ่าน `/validate`
 - ไม่ซ้ำกับ skills ที่มีอยู่

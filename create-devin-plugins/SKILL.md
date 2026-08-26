@@ -30,7 +30,7 @@ argument-hint: "[plugin-name]"
 
 1. สร้าง root directory `<plugin-name>/`
 2. สร้าง `.devin-plugin/plugin.json` สำหรับ manifest
-3. สร้าง `skills/` และ skill ย่อยๆ ตาม `/follow-create-devin-global-skills`
+3. สร้าง `skills/` และ skill ย่อยๆ ตาม `/follow-create-devin-skills`
 4. สร้าง `AGENTS.md` ถ้าต้องการ always-on rules
 5. สร้าง `rules/` ถ้าต้องการ triggered rules
 6. สร้าง `agents/` ถ้าต้องการ custom subagents
@@ -54,7 +54,7 @@ argument-hint: "[plugin-name]"
 
 > Goal: สร้าง skills ภายใน plugin
 
-1. ทำตาม `/follow-create-devin-global-skills` สำหรับแต่ละ skill
+1. ทำตาม `/follow-create-devin-skills` สำหรับแต่ละ skill
 2. วาง `SKILL.md` ใน `skills/<skill-name>/SKILL.md`
 3. ตรวจสอบว่า skill name ไม่ซ้ำภายใน plugin
 4. ทดสอบ invoke ด้วย `/<plugin-name>:<skill-name>`
@@ -108,7 +108,7 @@ argument-hint: "[plugin-name]"
 ### 1. Plugin Structure
 
 - `.devin-plugin/plugin.json` จำเป็น และต้องมี `name` ที่ unique
-- `skills/` วาง skill files ตาม `/follow-create-devin-global-skills`
+- `skills/` วาง skill files ตาม `/follow-create-devin-skills`
 - `AGENTS.md` optional สำหรับ always-on rules
 - `rules/` optional สำหรับ triggered rules
 - `agents/` optional สำหรับ custom subagents (local only)

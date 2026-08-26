@@ -2,7 +2,7 @@
 name: update-project-rules
 description: สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
 related:
-  - follow-create-devin-global-skills
+  - follow-create-devin-skills
   - use-scripts
   - update-references
   - review-writing
@@ -40,7 +40,7 @@ related:
 
 > Goal: Create Missing Skills
 
-1. ทำ `/follow-create-devin-global-skills` สำหรับแต่ละ skill ที่ขาด
+1. ทำ `/follow-create-devin-skills` สำหรับแต่ละ skill ที่ขาด
 2. สร้าง folder structure ตามมาตรฐาน
 3. เขียน SKILL.md index และ content files
 4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
@@ -85,7 +85,7 @@ related:
 สร้าง skills แบบ batch:
 
 - สร้าง skills ที่ขาดทั้งหมดในครั้งเดียว
-- ใช้ `/follow-create-devin-global-skills` สำหรับแต่ละ skill
+- ใช้ `/follow-create-devin-skills` สำหรับแต่ละ skill
 - รักษาความสม่ำเสมอทั้งหมด
 
 ### 5. Error Handling
@@ -107,7 +107,7 @@ related:
 
 - ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
 - สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/follow-create-devin-global-skills` ในการสร้าง
+- ไม่ใช้ `/follow-create-devin-skills` ในการสร้าง
 - ไม่ตรวจสอบ folder structure หลังสร้าง
 
 ## Anti-Patterns
