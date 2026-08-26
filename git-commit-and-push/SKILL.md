@@ -5,6 +5,7 @@ related:
   - git-commit
   - git-push
   - refactor-commit
+  - update-references
 ---
 
 ## Goal
