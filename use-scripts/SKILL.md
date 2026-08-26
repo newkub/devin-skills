@@ -2,6 +2,15 @@
 name: use-scripts
 description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
 argument-hint: "[target]"
+related:
+  - use-bun-scripts
+  - use-bun-shell
+  - use-nu-shell
+  - use-pwsh-shell
+  - use-ast-grep
+  - use-ast-grep-programatic
+  - follow-lang-bun
+  - follow-lib-esm-sh
 ---
 
 ## Goal

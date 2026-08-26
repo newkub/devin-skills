@@ -263,6 +263,17 @@ related:
 - `list-devin-user-request-all-session: /list-devin-user-request-all-session`
 - `search-similar: /search-similar`
 
+#### Script
+
+- `use-scripts: /use-scripts`
+- `use-bun-scripts: /use-bun-scripts`
+- `use-bun-shell: /use-bun-shell`
+- `use-nu-shell: /use-nu-shell`
+- `use-pwsh-shell: /use-pwsh-shell`
+- `use-ast-grep: /use-ast-grep`
+- `use-ast-grep-programatic: /use-ast-grep-programatic`
+- `use-ast-grep-outline: /use-ast-grep-outline`
+
 #### At
 
 - `at-agents-manager: /at-agents-manager`
