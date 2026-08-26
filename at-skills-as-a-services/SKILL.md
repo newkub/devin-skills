@@ -2,6 +2,14 @@
 name: at-skills-as-a-services
 project-root: D:/saas/skills-as-a-services
 description: แก้ไข files ใน project skills-as-a-services
+related:
+  - at-this-repo
+  - report-before
+  - validate
+  - git-commit
+  - ship
+  - run-test
+  - run-build
 ---
 
 ## Goal

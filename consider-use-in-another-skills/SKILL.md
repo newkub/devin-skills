@@ -1,87 +1,107 @@
 ---
 name: consider-use-in-another-skills
-description: พิจารณาใช้หรืออ้างอิง skill อื่นก่อนสร้าง/duplicate
+description: พิจารณา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่สำหรับ skill ปัจจุบัน
 argument-hint: "[skill-name]"
+related:
+  - idea-use-skills-in-another-skills
+  - report-table
+  - list-devin-global-skills
+  - scan-codebase
+  - check-reference
+  - update-reference
 ---
 
 ## Goal
 
-ใช้งานหรืออ้างอิง skill หนึ่งภายในอีก skill โดยปลอดภัย ไม่ซ้ำซ้อน และ references ถูกต้อง
+แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก skill ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
 
 ## Scope
 
-ใช้เมื่อ skill ต้องการ delegate งานไปยัง skill อื่น หรือต้องการให้ user/AI เรียก skill อื่นต่อใน workflow
+ใช้หลังจากเขียนหรือแก้ไข `SKILL.md` เสร็จ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
 
 ## Execute
 
-### 1. Identify Reusable Skill
+### 1. Analyze Current Skill
 
-> Goal: ระบุ skill ที่จะใช้งาน
+> Goal: เข้าใจ skill ปัจจุบัน
 
-1. ทำ `/list-devin-global-skills` เพื่อหา skill ที่เกี่ยวข้อง
-2. อ่าน `SKILL.md` ของ skill เป้าหมาย
-3. ตรวจสอบ Goal, Scope, Execute ว่าเหมาะกับงานของเรา
-4. ถ้าไม่มี skill ที่เหมาะ → ทำ `/ask-me` ก่อนสร้างใหม่
+1. อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ skill ปัจจุบัน
+2. ระบุ `related` skills ที่มีอยู่แล้ว
+3. วิเคราะห์ `Execute` steps และ `Rules` เพื่อเข้าใจการใช้งาน
+4. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 
-### 2. Add To Related
+### 2. List Available Skills
 
-> Goal: เพิ่ม reference ใน frontmatter
+> Goal: รู้ skills ทั้งหมดที่มี
 
-1. เปิด `SKILL.md` ของเรา
-2. เพิ่มชื่อ skill เป้าหมายใน `related` ถ้ายังไม่มี
-3. เรียงลำดับ `related` ตามลำดับการเรียก
-4. ไม่่เพิ่ม skill ที่ไม่ได้ใช้จริง
+1. ทำ `/list-devin-global-skills` หรือ `/scan-codebase`
+2. ดู `name` และ `description` ของแต่ละ skill
+3. จัดกลุ่มตาม category
+4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว
 
-### 3. Reference In Prompt Body
+### 3. Match Related Skills
 
-> Goal: อ้างอิง skill ในเนื้อหา
+> Goal: จับคู่ skills ที่เกี่ยวข้อง
 
-1. ใช้ backticks สำหรับ `skill-name` เช่น ทำตาม `/review-delivery`
-2. ระบุ condition ก่อนเรียก เช่น "ถ้าเป็น production → ทำ `/follow-release`"
-3. ไม่่คัดลอกเนื้อหาของ skill เป้าหมายมาทั้้งหมด
-4. ถ้า skill เป้าหมายหลายตัว ให้ระบุลำดับก่อนหลัง
+1. วิเคราะห์ความเกี่ยวข้องจาก `Goal`, `Scope`, และ `Execute`
+2. จัดลำดับความเกี่ยวข้อง: `direct dependency`, `complementary`, `follow-up`, `alternative`
+3. ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
+4. กรอง skills ที่ไม่เกี่ยวข้องออก
 
-### 4. Verify Circular References
+### 4. Suggest Skills And New Ideas
 
-> Goal: ตรวจสอบ references ไม่วนกลับ
+> Goal: เสนอ skills ใหม่และ existing skills
 
-1. ทำ `/check-circular-dependencies` หรือ `/check-reference`
-2. ตรวจว่า skill เป้าหมายไม่ได้อ้างอิงกลับมาที่เรา
-3. ถ้ามี loop ให้เลือก skill ตัวกลางหรือรวมเนื้อหา
+1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลและประเภทความเกี่ยวข้อง
+2. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
+3. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
+4. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
+5. ใช้ `/idea-use-skills-in-another-skills` เพื่อขยายไอเดียการใช้ร่วม
+6. ใช้ `/report-table` สำหรับนำเสนอผล
 
-### 5. Update And Validate
+### 5. Update Related Skills
 
-> Goal: อัปเดท references และ validate
+> Goal: อัปเดต `related` ใน skill ปัจจุบัน
 
-1. ทำ `/update-reference` เพื่อ sync references
-2. ทำ `/validate` เพื่อตรวจความถูกต้อง
-3. ทำ `/check-reference` เพื่อยื่นยันว่า skill เป้าหมายมีอยู่จริง
+1. เพิ่ม skills ที่แนะนำเข้าไปใน `related`
+2. ตรวจสอบว่าไม่ซ้ำซ้อน
+3. ทำ `/update-reference` เพื่อ sync
+4. ทำ `/check-reference` เพื่อยื่นยัน
 
 ## Rules
 
-### 1. Delegate, Don’t Duplicate
+### 1. Relevance Analysis
 
-- ถ้า skill อื่นครอบคลุมงานอยู่แล้ว ให้อ้างอิงแทนการคัดลอก
-- เก็บเฉพาะ context หรือ steps ที่เฉพาะของ skill เรา
+- วิเคราะห์จาก `Goal`, `Scope`, และ `Execute` ไม่ใช่แค่ `name` หรือ `description`
+- พิจารณาทั้ง input และ output ของ skill
+- ตรวจสอบว่า skills สามารถใช้ร่วมกันได้จริง
+- ไม่แนะนำ skill ที่ทำหน้าที่ซ้ำซ้อน
 
-### 2. Explicit Conditions
+### 2. Suggestion Format
 
-- ระบุว่าเมื่อไหร่ต้องเรียก skill เป้าหมาย
-- อย่าสั่งให้เรียกทุกกรณี ถ้าไม่จำเป็น
+- ระบุชื่อ skill ด้วย backticks เช่น `skill-name`
+- ระบุเหตุผลสั้นกระชับ
+- ระบุประเภทความเกี่ยวข้องในวงเล็บ
+- สำหรับไอเดียใหม่ ระบุชื่อ proposed skill และ rationale
+- จัดลำดับจากมากไปน้อย
 
-### 3. Keep Related Accurate
+### 3. Validation
 
-- `related` ต้องมีเฉพาะ skills ที่เรียกโดยตรง
-- ถ้าเลิกใช้ skill ให้เอาออกจาก `related`
+- ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
+- ตรวจสอบว่าไม่แนะนำ skill ตัวเอง
+- ตรวจสอบว่าไม่ซ้ำซ้อนกับ `related` ที่มีอยู่
+- ทำ `/check-reference` เพื่อยื่นยัน
 
-### 4. No Circular Dependencies
+### 4. Cross-Reference Update
 
-- ไม่ให้ skill A อ้างอิง skill B แล้ว B อ้างอิง A
-- ถ้าจำเป็นทั้งสองทาง ให้รวมเป็น skill เดียวหรือใช้ skill กลาง
+- อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
+- ใช้ `/update-reference` สำหรับการอัปเดต
+- ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
 ## Expected Outcome
 
-- Skill ของเราอ้างอิง skill อื่นได้ถูกต้อง
-- `related` ครบถ้วนและไม่มี missing/unused
-- ไม่มี circular references
-- ผ่าน `/validate` และ `/check-reference`
+- Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน
+- ไอเดีย skills ใหม่ที่ควรสร้างถูกระบุพร้อม rationale
+- `related` ใน frontmatter อัปเดตครบถ้วน
+- การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
+- มี `/idea-use-skills-in-another-skills` และ `/report-table` ใช้ในการวิเคราะห์
