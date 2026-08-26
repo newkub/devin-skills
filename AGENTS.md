@@ -294,6 +294,7 @@ related:
 
 #### Watch
 
+- `watch-release: /watch-release`
 - `watch-deploy: /watch-deploy`
 - `watch-typecheck: /watch-typecheck`
 - `watch-build: /watch-build`

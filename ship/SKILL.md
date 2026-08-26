@@ -9,6 +9,7 @@ related:
   - validate
   - git-commit
   - resolve-errors
+  - watch-release
 ---
 
 ## Goal
@@ -83,7 +84,8 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 1. ทำ `/validate` เพื่อตรวจ references และ structure
 2. ถ้ามี submodules → รัน `git submodule status` เพื่อยืนยัน pointers ถูกต้อง
 3. ทำ `/report` พร้อม `/report-table` สรุป submodule commits (ถ้ามี) และ root commit
-4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+4. ถ้าพบ release tag, version bump, หรือ release config → ทำ `/watch-release` เพื่อตรวจสอบ release status
+5. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
 
@@ -129,3 +131,4 @@ Ship workspace ที่เลือก หรือ skills repo ที่มี
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ
 - รายงาน submodule commits และ root commit ครบถ้วน
+- ถ้ามี release → ตรวจสอบด้วย `/watch-release`
