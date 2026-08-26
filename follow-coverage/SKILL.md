@@ -68,7 +68,7 @@ description: ทำให้ครอบคลุม ตรวจและเต
 2. ทำ `/check-reference` เพื่อตรวจ references ครบถ้วน
 3. ตรวจว่าทุกไฟล์ไม่เกิน 250 บรรทัด
 4. ถ้ายังมี gaps → กลับไปขั้นตอน 4 (max 3 รอบ → stop และ report)
-5. ทำ `/update-reference` ถ้ามีการเพิ่มไฟล์ใหม่
+5. ทำ `/update-references` ถ้ามีการเพิ่มไฟล์ใหม่
 
 ### 6. Report Coverage
 

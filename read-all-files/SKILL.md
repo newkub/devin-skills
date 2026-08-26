@@ -17,7 +17,7 @@ description: อ่านไฟล์ทั้งหมดในโปรเจ�
 
 > Goal: Prepare
 
-1. ใช้ `/update-reference` เพื่อเก็บ reference
+1. ใช้ `/update-references` เพื่อเก็บ reference
 2. ระบุประเภทไฟล์ที่ต้องการอ่าน
 3. กำหนดลำดับความสำคัญของไฟล์
 

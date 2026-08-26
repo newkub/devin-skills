@@ -72,7 +72,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 
 > Goal: Update Reference
 
-1. ใช้ `/update-reference` เพื่ออัพเดท references
+1. ใช้ `/update-references` เพื่ออัพเดท references
 
 ## Rules
 

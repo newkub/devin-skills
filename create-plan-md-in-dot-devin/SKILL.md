@@ -7,7 +7,7 @@ related:
   - report-plan
   - review-plan
   - improve
-  - update-reference
+  - update-references
   - ship
 ---
 
@@ -92,7 +92,7 @@ related:
 
 > Goal: อัปเดต references ทีเกี่ยวข้อง
 
-1. ทำ `/update-reference` กับทุก skill ทีอ้างอิง `create-plan` เก่า
+1. ทำ `/update-references` กับทุก skill ทีอ้างอิง `create-plan` เก่า
 2. เปลี่ยนเป็น `create-plan-md-in-dot-devin` ทีจำเป็น
 3. ถ้ามี `AGENTS.md` → อัปเดต slash command
 

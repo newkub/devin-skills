@@ -143,7 +143,7 @@ description: จัดการ .vscode directory ครบถ้วน ทั�
 2. ตรวจสอบว่า settings ไม่ขัดแยงกับ `biome.jsonc`, `tsconfig.json`, และ `turbo.json`
 3. ตรวจสอบว่า extension IDs ถูกต้อง
 4. ตรวจสอบว่า task commands ตรงกับ scripts ใน `package.json`
-5. ทำ `/update-reference` หากมี file operations
+5. ทำ `/update-references` หากมี file operations
 6. อัปเดต `AGENTS.md` ถ้ามีการเพิ่ม `.vscode/` directory ใหม่
 7. ถ้า validation ไม่ผ่าน → แก้และ re-validate (max 3 → stop/report)
 

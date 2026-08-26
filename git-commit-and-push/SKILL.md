@@ -31,7 +31,7 @@ Commit ไฟล์และ push ไปยัง remote repository
 
 > Goal: อัปเดท references ทั้งหมดที่เกี่ยวข้อง
 
-1. ทำตาม `/update-reference`
+1. ทำตาม `/update-references`
 
 ## Rules
 > Goal: ใช้เป็น orchestrator ปลอดภัยไม่ทำลาย history

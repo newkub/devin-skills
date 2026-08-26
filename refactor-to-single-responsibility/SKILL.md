@@ -55,7 +55,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 > Goal: อัปเดท references ทั้งหมดหลังการเปลี่ยนแปลง
 
 1. ทำ `/edit-relative` เพื่ออัปเดท relative paths, imports, exports, และ references ทั้งหมด
-2. ทำ `/update-reference` เพื่ออัปเดท references ใน global workflows/skills, AGENTS.md, .devin/rules, และ codebase
+2. ทำ `/update-references` เพื่ออัปเดท references ใน global workflows/skills, AGENTS.md, .devin/rules, และ codebase
 3. ค้นหา references เก่าอีกครั้งเพื่อยืนยันว่าไม่เหลือ
 4. ถ้ามี broken references → ทำ `/resolve-errors`
 
@@ -94,7 +94,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 3. Reference Safety
 
-- ทำ `/edit-relative` และ `/update-reference` หลังทุกการ split, rename, ย้าย, หรือลบ
+- ทำ `/edit-relative` และ `/update-references` หลังทุกการ split, rename, ย้าย, หรือลบ
 - ตรวจสอบ imports, barrel exports, path aliases ให้ถูกต้อง
 
 ### 4. Verification

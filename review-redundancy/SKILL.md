@@ -76,8 +76,8 @@ argument-hint: "[scope]"
 
 1. ทำ `/ask-me` เพื่อยืนยัน actions ก่อนดำเนินการ
 2. สำหรับ merge → ทำ `/review-devin-global-skills`
-3. สำหรับ rename → ทำ `/rename` แล้ว `/update-reference`
-4. สำหรับ remove → ใช้ `git rm` แล้ว `/update-reference`
+3. สำหรับ rename → ทำ `/rename` แล้ว `/update-references`
+4. สำหรับ remove → ใช้ `git rm` แล้ว `/update-references`
 5. ทำ `/validate` หลังจบทุก action
 
 ## Rules
@@ -100,7 +100,7 @@ argument-hint: "[scope]"
 
 - ไม่ลบ ไม่ merge โดยไม่มี user confirmation
 - ทำ dry run ก่อน destructive actions
-- ทำ `/update-reference` หลังทุกการเปลี่ยนแปลง
+- ทำ `/update-references` หลังทุกการเปลี่ยนแปลง
 - ไม่ทำลาย `related` references โดยไม่ตรวจสอบ
 
 ### 4. Scope Boundary
@@ -117,4 +117,4 @@ argument-hint: "[scope]"
 - รายงาน unused skills พร้อมประเภทและ recommendations
 - ตารางสรุป recommendations พร้อม priority
 - การดำเนินการผ่าน user confirmation เท่านั้น
-- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/update-reference`
+- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/update-references`

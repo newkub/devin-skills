@@ -81,7 +81,7 @@ related:
 
 > Goal: references ระหว่าง skills ครบถ้วน
 
-1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้องกับ skill นี้
+1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้องกับ skill นี้
 2. ตรวจว่า skills อื่นที่อ้างถึง skill นี้ยังถูกต้อง
 3. ถ้ามีการ rename → อัปเดตทุกจุดที่อ้างถึง
 
@@ -114,7 +114,7 @@ related:
 
 - ไม่ทำลาย references หรับ existing skills
 - ถ้ามีการ overwrite ไฟล์เดิม → dry run และ user confirmation ก่อน
-- ถ้ามีการ rename skill → ทำ `/update-reference` ทันที
+- ถ้ามีการ rename skill → ทำ `/update-references` ทันที
 - ไม่บังคับ upgrade โดยไม่แจ้งผู้ใช้
 
 ### 4. Validation

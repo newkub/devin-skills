@@ -94,7 +94,7 @@ argument-hint: "[plugin-name]"
 2. ติดตั้งจาก remote ด้วย `devin plugins install owner/repo`
 3. รัน `devin plugins update <plugin-name>` เมื่อมีการเปลี่ยนแปลง
 4. รัน `devin plugins remove <plugin-name>` ถ้าต้องการถอนการติดตั้ง
-5. ทำ `/update-reference` ถ้ามี project อ้างอิง plugin
+5. ทำ `/update-references` ถ้ามี project อ้างอิง plugin
 
 ### Ship
 

@@ -114,7 +114,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
 2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
-3. ทำ `/update-reference` หลังการรวม/แยก/ย้าย skill หรือ sections
+3. ทำ `/update-references` หลังการรวม/แยก/ย้าย skill หรือ sections
 4. ตรวไม่มี broken references และ bidirectional references ครบ
 
 ### 10. Score And Report

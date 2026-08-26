@@ -73,7 +73,7 @@ related:
 
 1. เพิ่ม skills ที่แนะนำเข้าไปใน `related` ของ skill ปัจจุบัน
 2. ตรวจสอบว่าไม่ซ้ำซ้อนกับที่มีอยู่แล้ว
-3. ทำ `/update-reference` เพื่ออัปเดต references ในไฟล์อื่นที่เกี่ยวข้อง
+3. ทำ `/update-references` เพื่ออัปเดต references ในไฟล์อื่นที่เกี่ยวข้อง
 
 ## Rules
 
@@ -102,7 +102,7 @@ related:
 ### 4. Cross-Reference Update
 
 - อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
-- ใช้ `/update-reference` สำหรับการอัปเดต
+- ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
 ## Expected Outcome

@@ -57,7 +57,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 > Goal: ไม่มี broken references
 
 1. ทำ `/edit-relative` สำหรับ relative paths/imports
-2. ทำ `/update-reference` สำหรับ global references
+2. ทำ `/update-references` สำหรับ global references
 3. ถ้ามี broken references → ทำ `/resolve-errors`
 
 ### 5. Check Consistency
@@ -119,7 +119,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 ### 4. Safety
 
 - destructive actions ต้องมี user confirmation
-- ทำ `/update-reference` หลังย้าย/ลบ/แยกไฟล์
+- ทำ `/update-references` หลังย้าย/ลบ/แยกไฟล์
 - ไม่ force push
 
 ### 5. Verification

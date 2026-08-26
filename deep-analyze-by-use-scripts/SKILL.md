@@ -71,7 +71,7 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 
 > Goal: เพิ่ม references ที่ขาดและรายงานผลลัพธ์
 
-1. ทำ `/update-reference` เพื่อเพิ่ม references ในไฟล์ที่ขาด
+1. ทำ `/update-references` เพื่อเพิ่ม references ในไฟล์ที่ขาด
 2. ทำ `/check-reference` เพื่อตรวจสอบว่า references มีอยู่จริง
 3. ทำ `/report-table` เพื่อสรุปผลลัพธ์เป็นตาราง
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป

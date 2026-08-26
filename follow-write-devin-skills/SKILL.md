@@ -71,7 +71,7 @@ argument-hint: "[skill-name]"
 
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 
-1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
+1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
 2. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ของ repo
 3. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
 4. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)

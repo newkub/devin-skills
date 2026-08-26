@@ -6,7 +6,7 @@ related:
   - review-devin-global-skills
   - review-redundancy
   - review-flow
-  - update-reference
+  - update-references
 ---
 
 ## Goal
@@ -80,7 +80,7 @@ related:
 
 > Goal: references ระหว่าง skills ครบถ้วนและถูกต้อง
 
-1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้องทั้งหมด
+1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้องทั้งหมด
 2. ตรวจว่าทุก skill ใหม่ถูกอ้างถึงใน skills ที่เกี่ยวข้อง
 3. ตรวจว่าไม่มี skill ที่อ้างถึง skill ที่ไม่มีอยู่
 4. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
@@ -114,7 +114,7 @@ related:
 
 - ไม่ทำลาย references หรือ existing skills
 - ถ้ามีการ overwrite ไฟล์เดิม → dry run และ user confirmation ก่อน
-- ถ้ามีการ rename skill → ทำ `/update-reference` ทันที
+- ถ้ามีการ rename skill → ทำ `/update-references` ทันที
 - ไม่บังคับ upgrade โดยไม่แจ้งผู้ใช้
 
 ### 4. Validation

@@ -36,7 +36,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ตั้งชื่อ constants ให้มีความหมายชัดเจน
 - จัดกลุ่ม constants ตาม context
 - ใช้ const หรือ readonly สำหรับ constants
-- ทำ `/update-reference` เพื่อแทนที่ magic values ด้วย constants
+- ทำ `/update-references` เพื่อแทนที่ magic values ด้วย constants
 
 ### 3. Extract Configuration
 
@@ -72,7 +72,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - ใช้ environment variables สำหรับ API endpoints
 - ใช้ path builders สำหรับ dynamic paths
 - ใช้ config สำหรับ file paths
-- ทำ `/update-reference` เพื่อใช้ relative paths แทน absolute เมื่อเป็นไปได้
+- ทำ `/update-references` เพื่อใช้ relative paths แทน absolute เมื่อเป็นไปได้
 
 ### 6. Secure Secrets
 
@@ -137,7 +137,7 @@ description: ลบ hard code ออกจาก codebase ด้วย environme
 - สร้าง constants files สำหรับ magic values
 - สร้าง config files สำหรับ environment-specific values
 - สร้าง .env.example สำหรับ local development
-- อัพเดท references ด้วย `/update-reference` สำหรับไฟล์ที่ลบ
+- อัพเดท references ด้วย `/update-references` สำหรับไฟล์ที่ลบ
 - Update documentation สำหรับ configuration changes
 
 ### 5. Report Format

@@ -45,7 +45,7 @@ description: สร้าง skills ที่ขาดจาก dependencies ใ
 1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
 2. ใช้ `/review-writing` สำหรับทุกไฟล์
 3. ตรวจสอบ folder structure ถูกต้อง
-4. ใช้ `/update-reference` หากมี file operations
+4. ใช้ `/update-references` หากมี file operations
 
 ## Rules
 

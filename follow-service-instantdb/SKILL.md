@@ -125,7 +125,7 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 > Goal: อัปเดต references และสรุป next action
 
 1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [references/configuration.md](references/configuration.md)
-2. ทำ `update-reference` สำหรับ skills ทีเกี่ยวข้อง
+2. ทำ `update-references` สำหรับ skills ทีเกี่ยวข้อง
 3. ทำ `suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules

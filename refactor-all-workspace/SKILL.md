@@ -93,7 +93,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 
 อัปเดท documentation และ cleanup
 
-- ทำ `/update-reference` เพื่ออัปเดท references ทั้งหมด
+- ทำ `/update-references` เพื่ออัปเดท references ทั้งหมด
 - อัปเดท documentation ที่เกี่ยวข้อง
 - ลบ code ที่ไม่ได้ใช้ (dead code)
 - ลบ comments ที่ไม่จำเป็น

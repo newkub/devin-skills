@@ -144,7 +144,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 ### 3. Execution Governance
 
 - สร้าง/อัปเดต CLI แล้วรัน review ใหม่ ไม่เกิน 3 รอบ
-- ทำ `/update-reference` หลังจากแก้ไขไฟล์
+- ทำ `/update-references` หลังจากแก้ไขไฟล์
 - รัน tests หลังแต่ละ improvement
 
 ### 4. Evidence-Based Findings

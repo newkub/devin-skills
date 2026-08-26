@@ -134,7 +134,7 @@ description: จัดการ .github directory ครบถ้วน ทั�
 2. ตรวจสอบ Markdown syntax ของทุก `.md` ไฟล์
 3. ตรวจสอบ CODEOWNERS format ตาม GitHub spec
 4. ตรวจสอบ dependabot.yml format ตาม GitHub spec
-5. ทำ `/update-reference` หากมี file operations หรือ moves
+5. ทำ `/update-references` หากมี file operations หรือ moves
 6. อัปเดต `AGENTS.md` ถ้ามีการเพิ่มไฟล์ใหม่ที่ project ต้องรู้
 7. ถ้า validation ไม่ผ่าน → แก้และ re-validate (max 3 ครั้ง → stop/report)
 

@@ -62,7 +62,7 @@ argument-hint: "[directory]"
 
 1. ใน parent repo → `git rm -r <directory>`
 2. อัปเดต `.gitignore` ถ้าจำเป็น (ทำ `/update-gitignore`)
-3. ทำ `/update-reference` ถ้ามีไฟล์อื่นอ้างอิง path เดิม
+3. ทำ `/update-references` ถ้ามีไฟล์อื่นอ้างอิง path เดิม
 4. `git commit -m "Remove <directory> before converting to submodule"`
 5. ยืนยันว่าไม่มี broken references หลังลบ
 
@@ -84,7 +84,7 @@ argument-hint: "[directory]"
 1. ทดสอบ clone ใหม่: `git clone --recurse-submodules <parent-url>` ใน `$env:TEMP`
 2. ตรวจสอบว่า submodule content ครบถ้วน
 3. ทำ `/validate` เพื่อตรวจ references และ structure
-4. ทำ `/update-reference` ถ้ามี path เปลี่ยนแปลง
+4. ทำ `/update-references` ถ้ามี path เปลี่ยนแปลง
 5. ทำ `/ship` เพื่อ commit และ finalize
 6. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 

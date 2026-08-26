@@ -50,7 +50,7 @@ description: ย้ายไฟล์และโฟลเดอร์ไปย�
 
 > Goal: Update Import Paths
 
-1. ทำ `/update-reference` เพื่ออัปเดท references ทั้งหมด
+1. ทำ `/update-references` เพื่ออัปเดท references ทั้งหมด
 2. ค้นหา import paths ที่อ้างอิงถึงไฟล์ที่ย้าย
 3. อัปเดต import paths ให้ตรงกับตำแหน่งใหม่
 4. ตรวจสอบว่า import paths ถูกต้องทั้งหมด

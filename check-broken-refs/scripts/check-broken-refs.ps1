@@ -121,9 +121,9 @@ if ($criticalCount -eq 0 -and $warningCount -eq 0) {
 } else {
     Write-Output "=== RECOMMENDED NEXT ACTIONS ==="
     if ($criticalCount -gt 0) {
-        Write-Output "- Run /update-reference to fix broken related: entries"
+        Write-Output "- Run /update-references to fix broken related: entries"
     }
     if ($warningCount -gt 0) {
-        Write-Output "- Run /update-reference to fix broken body /skill-name refs"
+        Write-Output "- Run /update-references to fix broken body /skill-name refs"
     }
 }

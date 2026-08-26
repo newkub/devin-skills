@@ -49,7 +49,7 @@ description: Detect and remove unused files in project using Knip and reference 
 
 1. ลบไฟล์ที่ยืนยันว่าไม่ได้ใช้
 2. ถ้าไฟล์ควรใช้งาน → implement หรือ import ในที่ที่ควรใช้
-3. ทำ `/update-reference` เพื่ออัปเดต references ของไฟล์ที่ลบ
+3. ทำ `/update-references` เพื่ออัปเดต references ของไฟล์ที่ลบ
 4. ทำ `/resolve-errors` ถ้ามี build errors หลังลบ
 5. รัน `bunx knip --include files` อีกครั้งเพื่อยืนยันว่าไม่มี unused เหลือ
 

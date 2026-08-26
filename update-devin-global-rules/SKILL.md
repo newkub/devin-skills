@@ -64,7 +64,7 @@ related:
 1. ใช้ `/edit-devin-global-rules` เพื่อแก้ไข `global_rules.md`
 2. อัปเดต skills ทีมี rules ซ้ำโดยลบหรือเปลี่ยนเป็น reference
 3. อัปเดต subagents ที่จำเป็น
-4. ใช้ `/update-reference` เพื่อ sync
+4. ใช้ `/update-references` เพื่อ sync
 
 ### 6. Validate Alignment
 

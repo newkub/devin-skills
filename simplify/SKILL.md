@@ -31,7 +31,7 @@ description: ลดความซับซ้อนของ content code archi
 1. แบ่ง functions ยาว, ลด nested logic, ใช้ early return
 2. ลด duplication, แยก concerns, ปรับ naming
 3. ลบ code, abstractions และ hard code ที่ไม่จำเป็น
-4. ถ้ามี file operations → ทำ `/update-reference`
+4. ถ้ามี file operations → ทำ `/update-references`
 
 ## Rules
 

@@ -30,7 +30,7 @@ argument-hint: "[source] [target]"
 
 อัพเดท reference
 
-1. รัน `/update-reference`
+1. รัน `/update-references`
 2. ตรวจสอบว่า references ถูกอัพเดท
 
 ## Rules

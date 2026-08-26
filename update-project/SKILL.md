@@ -68,7 +68,7 @@ related:
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
    - `/update-test` เพื่ออัปเดต test setup
    - `/update-todo-md` (ถ้ามี `TODO.md`)
-   - `/update-reference` เพื่อ sync references
+   - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
    - `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
    - `/follow-dot-vscode`

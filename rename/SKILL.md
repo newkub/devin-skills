@@ -75,7 +75,7 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 
 > Goal: อัปเดท references ในไฟล์ที่ ast-grep ไม่ครอบคลุม
 
-1. ทำ `/update-reference` เพื่ออัปเดท references ใน config files, markdown, JSON, YAML
+1. ทำ `/update-references` เพื่ออัปเดท references ใน config files, markdown, JSON, YAML
 2. ค้นหาด้วย `grep_search` อีกครั้งเพื่อยืนยันว่าไม่มีชื่อเดิมเหลือ
 3. อัปเดท documentation ที่อ้างอิง identifier เดิม
 4. อัปเดท test files ที่อ้างอิง identifier เดิม

@@ -70,7 +70,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: แก้ปัญหาที่ root cause ด้วย minimal changes
 
 1. แก้ปัญหาที่ root cause ไม่ใช่ symptoms ใช้ minimal changes ที่สุด
-2. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-reference` อัปเดท references
+2. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-references` อัปเดท references
 3. ถ้า fix มี side effects → ทำ `/resolve-errors` จนกว่าจะไม่มี error ใหม่
 4. ถ้า fix ไม่ได้ → stop และ report
 

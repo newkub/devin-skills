@@ -15,7 +15,7 @@ allowed-tools:
 
 ## Scope
 
-ใช้สำหรับ scan devin skills repo เพื่อหา references ไปยัง skills ที่ไม่มีอยู่ ครอบคลุมทั้ง `/skill-name` patterns ใน prompt body และ `related` fields ใน frontmatter ไม่รวมการแก้ไข (ใช้ `/update-reference` สำหรับแก้)
+ใช้สำหรับ scan devin skills repo เพื่อหา references ไปยัง skills ที่ไม่มีอยู่ ครอบคลุมทั้ง `/skill-name` patterns ใน prompt body และ `related` fields ใน frontmatter ไม่รวมการแก้ไข (ใช้ `/update-references` สำหรับแก้)
 
 ## Execute
 
@@ -76,7 +76,7 @@ allowed-tools:
    - Critical: broken `related` reference
    - Warning: broken body reference
    - Info: skill ไม่มี references เลย
-3. ถ้ามี Critical → แนะนำ `/update-reference` หรือ `/resolve-errors`
+3. ถ้ามี Critical → แนะนำ `/update-references` หรือ `/resolve-errors`
 4. ถ้าไม่พบ → "no broken references found"
 5. สรุปสถิติ: total skills, total references, broken count, false positive count
 
@@ -105,12 +105,12 @@ allowed-tools:
 ### 4. No Auto-Fix
 
 - `check-broken-refs` ตรวจและรายงานเท่านั้น
-- ถ้าต้องการแก้ → ทำ `/update-reference` หลังจากนี้
+- ถ้าต้องการแก้ → ทำ `/update-references` หลังจากนี้
 
 ## Expected Outcome
 
 - รายงาน broken references ครบถ้วน พร้อม skill name, reference, type, severity
 - สถิติ: total skills, total references checked, broken count
 - False positives ถูกกรองออก
-- ถ้ามี Critical → แนะนำ next action (`/update-reference` หรือ `/resolve-errors`)
+- ถ้ามี Critical → แนะนำ next action (`/update-references` หรือ `/resolve-errors`)
 - ถ้าไม่พบ → "no broken references found"

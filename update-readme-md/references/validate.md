@@ -4,7 +4,7 @@
 
 ## Execute
 
-1. `/review-writing`, `/update-reference` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
+1. `/review-writing`, `/update-references` เพื่อตรวจสอบคุณภาพและอัปเดต references ไปพร้อมกัน
 2. ตรวจว่า README มี sections ครบตาม Rule `Section Order And Format`
 3. ตรวจว่า:
    - ไม่มี `>` description ที่ด้านบน (เฉพาะ status badge)

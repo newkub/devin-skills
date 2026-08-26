@@ -63,7 +63,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 1. สร้าง/ย้าย/รวม directory structure ตาม plan
 2. ใช้ `/restructure` หรือ `/relocation` สำหรับ file operations
 3. ใช้ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases
-4. ทำ `/update-reference` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
+4. ทำ `/update-references` หลังทุกการย้าย — ถ้า broken → `/resolve-errors`
 5. ลบ dependencies ที่ไม่จำเป็น
 
 ### 6. Verify Impact And Update References
@@ -76,7 +76,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 2. ทำ `/check-circular-dependencies` และ `/review-quality`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
-5. ทำ `/update-reference` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
+5. ทำ `/update-references` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
 
 ## Rules
 
@@ -110,7 +110,7 @@ Refactor modules/packages ให้มี single responsibility, high cohesion, 
 
 - ทำ `/dont-over-engineer` — ไม่สร้าง micro-modules/packages
 - ไม่สร้าง abstraction ที่ไม่จำเป็น
-- ทำ `/update-reference` หลังทุกการย้าย code
+- ทำ `/update-references` หลังทุกการย้าย code
 - ถ้า broken references → ทำ `/resolve-errors`
 
 ## Expected Outcome

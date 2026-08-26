@@ -31,7 +31,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
 1. ทำ `/update-review-codebase-cli-and-run` เพื่อปรับปรุง naming
-2. ทำ `/update-reference` เพื่ออัปเดต import paths
+2. ทำ `/update-references` เพื่ออัปเดต import paths
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 
 ### 3. Split Files With Multiple Responsibilities
@@ -41,7 +41,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
 
 1. ทำ `/refactor` สำหรับไฟล์ที่ยาวกว่า 250 บรรทัด
-2. ทำ `/update-reference` เพื่ออัปเดต imports
+2. ทำ `/update-references` เพื่ออัปเดต imports
 3. ถ้าไม่มีไฟล์เกิน 250 บรรทัด → skip ไป Step 4
 
 > Goal reminder: เป้าหมายคือทุกไฟล์มี single responsibility ไม่เกิน 250 บรรทัด
@@ -55,7 +55,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 1. ทำ `/relocation` เพื่อย้ายไฟล์ไปยังโฟลเดอร์ที่สอดคล้องกับ responsibility
 2. ก่อนย้ายจริง → แสดง dry run preview และขอ user confirmation
 3. ทำ `/follow-architecture` เพื่อจัดกลุ่มไฟล์ตาม domain
-4. ทำ `/update-reference` เพื่ออัปเดต imports
+4. ทำ `/update-references` เพื่ออัปเดต imports
 5. ถ้าย้ายไม่สำเร็จ → rollback และ stop และ report
 
 ### 5. Refactor Imports And Exports
@@ -95,7 +95,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 
 ### 3. Import Safety
 
-- ทำ `/update-reference` ทุกครั้งหลังย้ายหรือเปลี่ยนชื่อไฟล์
+- ทำ `/update-references` ทุกครั้งหลังย้ายหรือเปลี่ยนชื่อไฟล์
 - ตรวจสอบ import paths ถูกต้องหลังทุกการเปลี่ยนแปลง
 
 ### 4. High-Risk Governance

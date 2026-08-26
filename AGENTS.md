@@ -139,7 +139,8 @@ related:
 - `update-contributing-md: /update-contributing-md`
 - `update-project-rules: /update-project-rules`
 - `update-test: /update-test`
-- `update-reference: /update-reference`
+- `update-references: /update-references`
+- `edit-relative-files: /edit-relative-files`
 - `update-usage: /update-usage`
 - `update-github-metadata: /update-github-metadata`
 - `update-convert-active-repo-to-devin-skills: /update-convert-active-repo-to-devin-skills`

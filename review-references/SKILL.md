@@ -2,7 +2,7 @@
 name: review-references
 description: ตรวจสอบ references ระหว่าง devin global skills และ AGENTS.md ไม่ให้ขาด/ซ้ำ/วน
 related:
-  - update-reference
+  - update-references
   - check-reference
   - list-devin-global-skills
   - scan-codebase
@@ -49,7 +49,7 @@ related:
 
 > Goal: ตรวจอ้างอิงในเนื้อหา
 
-1. ค้นหา backtick references เช่น `/skill-name`, `skill-name`, `update-reference`
+1. ค้นหา backtick references เช่น `/skill-name`, `skill-name`, `update-references`
 2. ระบุ references ทีไม่มี skill ตรงกัน
 3. ตรวจ `/command-name` ว่ามี skill หรือ command จริง
 4. บันทึก false positives (เช่น tools/commands ทั่วไป)
@@ -113,4 +113,4 @@ related:
 - `AGENTS.md` sync กับ skills
 - `related` ใน frontmatter ถูกต้อง
 - ไม่ circular dependencies
-- พร้อม action items สำหรับ `/update-reference`
+- พร้อม action items สำหรับ `/update-references`

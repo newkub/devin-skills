@@ -46,7 +46,7 @@ description: สร้างและจัดการ .gitignore ที่ roo
 1. ตรวจสอบว่าไม่มี patterns ซ้ำกันระหว่าง root และ workspace
 2. ทดสอบด้วย `git check-ignore <file>` สำหรับไฟล์ที่ควรถูก ignore
 3. ตรวจสอบว่าไม่มีไฟล์ที่ไม่ควร commit ถูก tracked โดย Git
-4. ทำ `/update-reference` หากมี file operations
+4. ทำ `/update-references` หากมี file operations
 
 ## Rules
 

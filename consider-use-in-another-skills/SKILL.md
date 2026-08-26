@@ -8,7 +8,7 @@ related:
   - list-devin-global-skills
   - scan-codebase
   - check-reference
-  - update-reference
+  - update-references
 ---
 
 ## Goal
@@ -65,7 +65,7 @@ related:
 
 1. เพิ่ม skills ที่แนะนำเข้าไปใน `related`
 2. ตรวจสอบว่าไม่ซ้ำซ้อน
-3. ทำ `/update-reference` เพื่อ sync
+3. ทำ `/update-references` เพื่อ sync
 4. ทำ `/check-reference` เพื่อยื่นยัน
 
 ## Rules
@@ -95,7 +95,7 @@ related:
 ### 4. Cross-Reference Update
 
 - อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
-- ใช้ `/update-reference` สำหรับการอัปเดต
+- ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
 ## Expected Outcome

@@ -1,6 +1,13 @@
 ---
-name: update-reference
-description: อัปเดท references ทั้งหมดเมื่อมีการแก้ไข ย้าย เปลี่ยนชื่อ หรือลบไฟล์
+name: update-references
+description: อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์
+related:
+  - consider-use-in-another-skills
+  - edit-relative-files
+  - search-files-patterns
+  - check-broken-refs
+  - report-table
+  - validate
 ---
 
 ## Goal

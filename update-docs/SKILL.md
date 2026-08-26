@@ -112,7 +112,7 @@ description: สร้าง documentation สำหรับ project ด้ว�
 
 > Goal: links ไม่เสีย
 
-1. ทำ `/update-reference`
+1. ทำ `/update-references`
 2. ตรวจ internal links, nav, sidebar paths
 3. อัปเดท README ให้ลิงก์ไป docs
 

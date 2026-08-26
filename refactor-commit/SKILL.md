@@ -165,7 +165,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 
 อัปเดท references ทั้งหมดที่เกี่ยวข้อง
 
-1. ทำตาม `@[/update-reference]`
+1. ทำตาม `@[/update-references]`
 
 ## Rules
 

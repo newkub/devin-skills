@@ -59,7 +59,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
    - Batch text replacement — แก้ typo, rename, import path ในหลายไฟล์ด้วย `Bun.Glob` + `Bun.file()` + `Bun.write()` หรือใช้ `/rename` สำหรับ rename code identifiers
    - ast-grep structural fix — แก้ code pattern ที่ต้องเปลี่ยนโครงสร้าง AST
    - Parallel fix — แก้ independent errors ในหลายไฟล์พร้อมกันด้วย `Promise.all` ถ้า errors มี dependency ระหว่างกัน → แก้ตามลำดับแทน
-3. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-reference` อัปเดท references
+3. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-references` อัปเดท references
 4. ถ้า fix สร้าง error ใหม่ → ทำ `/resolve-errors` ซ้ำ (loop) จนกว่าจะไม่มี error ใหม่
 5. ถ้า fix ไม่ได้ → stop และ report พร้อมระบุสาเหตุ
 
@@ -141,7 +141,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/run-verify` — รัน lint + typecheck + scan รวม
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน
 - `/watch-browser-console` — error มาจาก browser console
-- `/update-reference` — fix กระทบ references ในหลายไฟล์
+- `/update-references` — fix กระทบ references ในหลายไฟล์
 - `/rename` — rename code identifiers ที่เป็น root cause ของ error
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน
 - `/memorize` — จดจำบทเรียนจาก error

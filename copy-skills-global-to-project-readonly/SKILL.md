@@ -83,7 +83,7 @@ argument-hint: "[target]"
 
 > Goal: อัปเดต references ที่เกี่ยวข้อง
 
-1. ทำ `/update-reference` สำหรับ skills ที่อ้างอิงถึง `.devin/skills`
+1. ทำ `/update-references` สำหรับ skills ที่อ้างอิงถึง `.devin/skills`
 2. อัปเดต `.gitignore` หรือ `.devinignore` ถ้าจำเป็น (ดู `/follow-gitignore`)
 
 ## Rules

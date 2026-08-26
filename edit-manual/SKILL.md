@@ -52,7 +52,7 @@ argument-hint: "[file]"
 2. แก้ไขเฉพาะจุดที่จำเป็น ไม่เปลี่ยน settings อื่นที่ไม่เกี่ยวข้อง
 3. รักษา indentation และ style เดิมของ config file
 4. ถ้าเกิน 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ automate การแก้และ validate
-5. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
+5. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
 
 ### 5. Post-Edit Validation
 

@@ -2,7 +2,7 @@
 name: delete-files
 description: ลบไฟล์และโฟลเดอร์อย่างปลอดภัย พร้อม dry-run confirm และ update references
 related:
-  - update-reference
+  - update-references
   - check-broken-refs
   - run-check
   - ask-me
@@ -68,7 +68,7 @@ related:
 
 > Goal: แก้ไข references หลังลบ
 
-1. ทำ `/update-reference` เพื่ออัปเดตหรือลบ references ทีชี้มา targets
+1. ทำ `/update-references` เพื่ออัปเดตหรือลบ references ทีชี้มา targets
 2. ทำ `/check-broken-refs` เพื่อตรวจว่าไม่มี broken refs เหลือ
 3. ถ้ามี broken refs → แก้ไขหรือลบ (max 3 รอบ)
 

@@ -9,7 +9,7 @@ related:
   - validate
   - check-reference
   - review-writing
-  - update-reference
+  - update-references
   - ship
 ---
 
@@ -64,7 +64,7 @@ related:
 1. ทำ `/validate` เพื่อตรวจ: ไม่เกิน 250 บรรทัด, sections ครบ, `related` ไม่มี missing/unused, ไม่มี TODO/MOCK/placeholder
 2. ทำ `/check-reference` เพื่อตรวจสอบ `related` references
 3. ทำ `/review-writing` เพื่อตรวจสอบความชัดเจน
-4. ทำ `/update-reference` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
+4. ทำ `/update-references` ถ้ามีการเปลี่ยนแปลงชื่อ หรือเพิ่ม references
 
 ### 6. Ship
 

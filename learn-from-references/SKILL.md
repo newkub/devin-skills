@@ -73,7 +73,7 @@ description: เรียนรู้จาก references directory และ ex
 1. ทำ `/follow-coverage` เพื่อยืนยัน coverage ครบ
 2. ทำ `/check-reference` เพื่อตรวจ references ครบถ้วน
 3. ตรวจว่าทุกไฟล์ไม่เกิน 250 บรรทัด
-4. ทำ `/update-reference` ถ้ามีการเพิ่มไฟล์ใหม่หรือเปลี่ยนชื่อ
+4. ทำ `/update-references` ถ้ามีการเพิ่มไฟล์ใหม่หรือเปลี่ยนชื่อ
 5. ทำ `/report-table` สรุป content ที่เขียนและ coverage ที่เพิ่มขึ้น
 
 ## Rules

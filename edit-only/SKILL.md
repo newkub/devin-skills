@@ -23,7 +23,7 @@ description: แก้ไขโค้ดโดยไม่ต้องรัน 
 
 > Goal: ไฟล์ถูกแก้ไขด้วย file editing tools เท่านั้น
 
-ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไขไฟล์ และ `write_to_file` สำหรับการสร้างไฟล์ใหม่ จากนั้นทำ `/update-reference` เพื่ออัพเดท references ทั้งหมด
+ใช้ `edit` หรือ `multi_edit` สำหรับการแก้ไขไฟล์ และ `write_to_file` สำหรับการสร้างไฟล์ใหม่ จากนั้นทำ `/update-references` เพื่ออัพเดท references ทั้งหมด
 
 ### 3. Validation
 

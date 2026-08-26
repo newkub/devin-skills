@@ -12,6 +12,6 @@ skill package ผ่านเกณฑ์ทั้งหมด
 
 ## Update References
 
-1. ทำ `/update-reference` เพื่ออัปเดต references ที่เกี่ยวข้อง
+1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
 2. ทำ `/suggest-next-action` เพื่อแนะนำ skills ถัดไป
 3. ถ้า reference update ล้มเหลว → retry (max 3 → stop/report)
