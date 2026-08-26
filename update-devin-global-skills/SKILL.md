@@ -4,6 +4,7 @@ description: อัปเดต skill เดียวใน devin skills repo �
 argument-hint: "[skill-name]"
 related:
   - review-devin-global-skills
+  - review-workflow
   - follow-write-devin-skills
   - follow-principles
   - learn-website-all-routes
