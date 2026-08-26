@@ -139,7 +139,7 @@ description: ตั้งค่าและพัฒนา full-stack app ด้
 1. รัน `bun run build`
 2. รัน `bun run start` เพื่อทดสอบ
 3. ตั้งค่า Elysia port และ host ตาม target platform
-4. ถ้า deploy บน Cloudflare Workers หรือ serverless → ทำ `/follow-service-deploy-to-cloudflare`
+4. ถ้า deploy บน Cloudflare Workers หรือ serverless → ทำ `/deploy-to-cloudflare`
 5. ใช้ `bun --hot` สำหรับ development hot reload
 
 ## Rules

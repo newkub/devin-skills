@@ -6,13 +6,13 @@ argument-hint: "[worker-name-or-url]"
 
 ## Goal
 
-Watch deploy status ของ Cloudflare Workers ผ่าน `wrangler tail` และ URL poll แล้ว fix จนกว่าจะ deploy ผ่าน โดยไม่รวมขั้นตอน build/deploy (เป็นหน้าที่ของ `/follow-service-deploy-to-cloudflare`)
+Watch deploy status ของ Cloudflare Workers ผ่าน `wrangler tail` และ URL poll แล้ว fix จนกว่าจะ deploy ผ่าน โดยไม่รวมขั้นตอน build/deploy (เป็นหน้าที่ของ `/deploy-to-cloudflare`)
 
 ## Scope
 
 ใช้เมื่อ Cloudflare Workers deploy ไปแล้วแต่ยังไม่ผ่าน ต้องการ watch สถานะ หา root cause จาก logs และ fix จนกว่าจะ live สำเร็จ ครอบคลุมทุก framework ที่ deploy ไป Cloudflare Workers (Nitro, Hono, Nuxt, raw Workers)
 
-ไม่ครอบคลุม: build, deploy, ตั้งค่า Nitro preset, สร้าง bindings — ใช้ `/follow-service-deploy-to-cloudflare` หรือ `/follow-service-cloudflare` แทน
+ไม่ครอบคลุม: build, deploy, ตั้งค่า Nitro preset, สร้าง bindings — ใช้ `/deploy-to-cloudflare` หรือ `/follow-service-cloudflare` แทน
 
 ## Execute
 
@@ -64,7 +64,7 @@ Watch deploy status ของ Cloudflare Workers ผ่าน `wrangler tail` �
 2. วิเคราะห์ root cause จาก exception stack และ log messages
 3. แก้ไข code น้อยที่สุดตาม root cause
 4. ทำ `/run-check` เพื่อตรวจ lint, typecheck ก่อน deploy ใหม่
-5. ทำ `/follow-service-deploy-to-cloudflare` เพื่อ build และ deploy ใหม่
+5. ทำ `/deploy-to-cloudflare` เพื่อ build และ deploy ใหม่
 6. วนกลับไปขั้นตอน 2 เพื่อ watch อีกครั้ง
 7. ใช้ `/loop-until-complete` จนกว่า URL poll ผ่านและ tail ไม่มี error
 
@@ -81,7 +81,7 @@ Watch deploy status ของ Cloudflare Workers ผ่าน `wrangler tail` �
 ### 1. Scope Boundary
 
 - ทำเฉพาะ watch และ fix จนกว่าจะ deploy ผ่าน
-- ห้าม build หรือ deploy เอง — ใช้ `/follow-service-deploy-to-cloudflare` สำหรับขั้นตอนนั้น
+- ห้าม build หรือ deploy เอง — ใช้ `/deploy-to-cloudflare` สำหรับขั้นตอนนั้น
 - ห้ามตั้งค่า Nitro preset หรือ bindings — ใช้ `/follow-service-cloudflare`
 
 ### 2. Watch Method

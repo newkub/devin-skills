@@ -1,22 +1,23 @@
 ---
 name: deploy-to-cloudflare
-description: Deploy application ไปยัง Cloudflare Workers หรือ Pages จนกว่าจะ live
+description: Deploy Workers, Pages, หรือ Nitro ไปยัง Cloudflare ด้วย wrangler จน live
 related:
   - follow-service-cloudflare
-  - follow-service-deploy-to-cloudflare
   - watch-cloudflare
   - watch-cloudflare-and-fix-in-computer
   - run-build
   - git-commit
+  - resolve-errors
+  - loop-until-complete
 ---
 
 ## Goal
 
-Deploy application ไปยัง Cloudflare Workers หรือ Pages ด้วย Wrangler ตั้งแต่ build, deploy, watch, และ fix จนสำเร็จ
+Deploy application ไปยัง Cloudflare Workers, Pages, หรือ Nitro ด้วย wrangler ตั้งแต่ build, deploy, watch, และ fix จนสำเร็จ
 
 ## Scope
 
-รองรับ Cloudflare Workers, Pages, Nitro preset และ framework ทั่วไป ใช้ Wrangler CLI เป็นหลัก
+รองรับ Cloudflare Workers, Pages, Nitro preset และ framework ทั่วไป ใช้ wrangler CLI เป็นหลัก
 
 ## Execute
 
@@ -34,7 +35,7 @@ Deploy application ไปยัง Cloudflare Workers หรือ Pages ด้�
 > Goal: ตรวจสอบและ build
 
 1. ทำ `/run-verify`
-2. ทำ `/run-build`
+2. ทำ `/run-build` หรือ `bun run build` / `bunx nitro build`
 3. ตรวจสอบ `.output/server` หรือ build output
 
 ### 3. Authenticate
@@ -44,31 +45,41 @@ Deploy application ไปยัง Cloudflare Workers หรือ Pages ด้�
 1. รัน `wrangler whoami`
 2. ถ้ายังไม่ auth → รัน `wrangler login` หรือตั้ง `CLOUDFLARE_API_TOKEN`
 
-### 4. Deploy
+### 4. Setup Nitro Config (if Nitro)
+
+> Goal: ตั้งค่า Nitro สำหรับ Cloudflare Workers
+
+1. สร้างหรืออัปเดต `nitro.config.ts`
+2. ตั้งค่า `preset: "cloudflare_module"`
+3. ตั้งค่า `cloudflare.deployConfig: true` สำหรับ auto-generate wrangler config
+4. ตั้งค่า `cloudflare.nodeCompat: true` ถ้าใช้ Node.js APIs
+5. ตั้งค่า `compatibilityDate` ให้เหมาะสม เช่น `"2024-09-19"`
+
+### 5. Deploy
 
 > Goal: ส่ง deployment ไป Cloudflare
 
-1. Nitro → ใช้ `/follow-service-deploy-to-cloudflare`
+1. Nitro → `wrangler deploy --config .output/server/wrangler.json` หรือ `wrangler deploy`
 2. Workers raw → `wrangler deploy`
 3. Pages → `wrangler pages deploy <output-dir>`
 4. บันทึก deployment URL
 
-### 5. Watch And Fix
+### 6. Watch And Fix
 
 > Goal: ยืนยันว่า live
 
 1. ทำ `/watch-cloudflare` หรือ `/watch-cloudflare-and-fix-in-computer`
-2. ถ้า fail → แก้ไข source และ redeploy
-3. วนซ้ำจนสำเร็จ
+2. ถ้า fail → ใช้ `/resolve-errors` หา root cause แล้วแก้ไข source
+3. ใช้ `/loop-until-complete` วนซ้ำ deploy และ watch จนสำเร็จ
 
-### 6. Commit And Push
+### 7. Commit And Push
 
 > Goal: sync กับ git
 
 1. ทำ `/git-commit`
 2. ทำ `/git-push`
 
-### 7. Report
+### 8. Report
 
 > Goal: สรุปผล
 
@@ -80,6 +91,7 @@ Deploy application ไปยัง Cloudflare Workers หรือ Pages ด้�
 - ตรวจ project type ก่อน deploy
 - build สำเร็จก่อน deploy
 - ใช้ `wrangler` CLI
+- Nitro ใช้ `cloudflare_module` preset และ `compatibilityDate` เหมาะสม
 - หาก fail → ใช้ `/watch-cloudflare` หา root cause แล้ว fix
 - ไม่ commit ก่อน deploy สำเร็จ
 
@@ -88,3 +100,4 @@ Deploy application ไปยัง Cloudflare Workers หรือ Pages ด้�
 - Deploy ไป Cloudflare สำเร็จ
 - Worker/Pages URL ใช้งานได้
 - Git sync เรียบร้อย
+- ไม่มี errors เหลือ
