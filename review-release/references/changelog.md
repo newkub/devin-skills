@@ -15,7 +15,7 @@
 
 ### Release Notes
 
-1. ตรวช `RELEASE.md` มี release notes สำหรับ version ที่จะ release
+1. ตรวช `CHANGELOG.md` มี release history table สำหรับทุก tag
 2. ตรวช release notes มี summary ของ changes
 3. ตรวช release notes มี migration notes สำหรับ breaking changes
 4. ตรวช GitHub Release notes พร้อมสร้าง

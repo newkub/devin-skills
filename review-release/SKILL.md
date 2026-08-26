@@ -40,7 +40,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 1. ตรวจ `CHANGELOG.md` มี entry สำหรับ version ที่จะ release
 2. ตรวจ changelog ครอบคลุมทุก conventional commits ตั้งแต่ last release
 3. ตรวจ changelog format: version, date, categories (feat, fix, breaking)
-4. ตรวจ `RELEASE.md` มี release notes สำหรับ version ที่จะ release
+4. ตรวจ `CHANGELOG.md` มี release history table สำหรับทุก tag
 5. ดูรายละเอียดใน [references/changelog.md](references/changelog.md)
 
 ### 4. Check Breaking Changes

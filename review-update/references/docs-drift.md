@@ -22,15 +22,9 @@
 
 ### CHANGELOG.md Drift
 
-- เปรียบเทียบ `CHANGELOG.md` กับ git commits ล่าสุด
-- ตรวจสอบ: version numbers, commit messages, dates
-- ระบุ commits ที่ยังไม่อยู่ใน changelog
-
-### RELEASE.md Drift
-
-- เปรียบเทียบ `RELEASE.md` กับ git tags
-- ตรวจสอบ: version numbers, release dates, release notes
-- ระบุ tags ที่ยังไม่อยู่ใน release notes
+- เปรียบเทียบ `CHANGELOG.md` กับ git commits และ git tags ล่าสุด
+- ตรวจสอบ: version numbers, commit messages, dates, release history
+- ระบุ commits และ tags ที่ยังไม่อยู่ใน changelog
 
 ### spec/SPEC.md Drift
 
@@ -50,6 +44,7 @@
 - `update-readme` สำหรับ `README.md`
 - `update-agents-md` สำหรับ `AGENTS.md`
 - `update-contributing-md` สำหรับ `CONTRIBUTING.md`
-- `run-release` สำหรับ `RELEASE.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
-- `follow-tool-changelogen` สำหรับ `CHANGELOG.md`
+- `run-release` สำหรับ `CHANGELOG.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
+- `gen-changelog-md` สำหรับ `CHANGELOG.md` (gen จาก git tags)
+- `follow-tool-changelogen` สำหรับ `CHANGELOG.md` (ด้วย changelogen)
 - `update-test` สำหรับ `spec/SPEC.md`
