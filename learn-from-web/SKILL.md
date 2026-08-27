@@ -1,6 +1,8 @@
 ---
 name: learn-from-web
 description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official Documentation
+related:
+  - list-website-all-routes
 ---
 
 ## Goal
@@ -117,6 +119,15 @@ description: เรียนรู้จากเว็บไซต์หลั�
 6. ถ้า library มี CLI → เขียน `references/<dep>/cli.md` แยก. ถ้ามี components/API หลายส่วน → เขียน `references/<dep>/api/` แยกตามส่วน
 7. หลังเขียน → ทำ `/check-reference` เพื่อยืนยันว่า reference มีอยู่จริงและเนื้อหาครบถ้วน
 8. ถ้าเขียน reference ไม่สำเร็จ → stop และ report ไม่ผ่านการ validate ของ `/follow-create-devin-skills`
+
+### 10. Extract Website Routes
+
+> Goal: สร้าง route reference สำหรับ website project เมื่อจำเป็น
+
+1. ถ้า skill หรือ project มี dependencies กับ website framework/library/tool → ทำ `/list-website-all-routes`
+2. ใช้เนื้อหาจาก `references/website-routes.md` เป็น guide
+3. สร้างหรืออัปเดต `references/routes.md` ตาม framework
+4. ทำ `/check-reference` เพื่อตรวจ broken links
 
 ## Rules
 

@@ -7,7 +7,7 @@ related:
   - review-workflow
   - follow-create-devin-skills
   - follow-principles
-  - learn-website-all-routes
+  - learn-from-web
   - follow-coverage
   - validate
 ---
@@ -54,7 +54,7 @@ related:
 > Goal: references ครบถ้วนและเป็นปัจจุบัน
 
 1. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn-from-references` เพื่อสกัดและเขียน references
-2. ถ้า skill มี dependencies ที่เป็น website framework/library/tool หรือเกี่ยวข้องกับ website routes → ทำ `/learn-website-all-routes` เพื่อสร้าง/อัปเดต `references/routes.md`
+2. ถ้า skill มี dependencies ที่เป็น website framework/library/tool หรือเกี่ยวข้องกับ website routes → ทำ `/learn-from-web` เพื่อสร้าง/อัปเดต `references/routes.md` โดยใช้ `references/website-routes.md` เป็น guide
 3. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
 4. ทำ `/check-reference` เพื่อยืนยัน `related` references มีอยู่จริง
 5. ถ้ามี broken references → แก้ทันที
@@ -108,7 +108,7 @@ related:
 - ทำ `/follow-create-devin-skills` สำหรับการปรับปรุง skill
 - ทำ `/follow-principles` เพื่อตรวจและปรับให้สอดคล้อง principles ของ devin skills
 - ทำ `/learn-from-references` สำหรับ skills ที่มี dependencies แต่ขาด references
-- ทำ `/learn-website-all-routes` สำหรับ skills ที่มี dependencies เช่น website framework, library หรือ tool ที่เกี่ยวข้องกับ routes
+- ทำ `/learn-from-web` สำหรับ skills ที่มี dependencies เช่น website framework, library หรือ tool ที่เกี่ยวข้องกับ routes โดยใช้ `references/website-routes.md` เป็น guide
 - ทำ `/follow-coverage` สำหรับ skills ที่ content ไม่ครอบคลุม
 
 ### 3. Safety

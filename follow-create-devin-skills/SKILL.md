@@ -34,7 +34,16 @@ argument-hint: "[skill-name]"
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
 4. สร้าง directory structure ตาม pattern ใน template ที่เลือก
 
-### 3. Write SKILL.md
+### 3. Create From Url (if needed)
+
+> Goal: สร้าง skill จาก URL หรือ domain ถ้า user ระบุ
+
+1. ถ้ามี URL หรือ domain จาก user → ใช้ `references/create-from-url.md` เป็น guide
+2. ทำตามขั้นตอนใน reference เพื่อดึงเนื้อหา จัดกลุ่ม และสร้าง subskills
+3. หลังจากสร้าง parent และ subskills → ดำเนินตาม `### 4. Write SKILL.md`
+4. ถ้าไม่มี URL หรือ domain → ข้าม step นี้
+
+### 4. Write SKILL.md
 
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
@@ -44,14 +53,14 @@ argument-hint: "[skill-name]"
 4. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, หรือ `## Examples` เมื่อต้องการเน้นรูปแบบหรือตัวอย่าง
 5. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`. ห้ามใช้ `**` bold markers
 
-### 4. Add Directory Contents
+### 5. Add Directory Contents
 
 > Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
 1. ดูรายละเอียดใน [references/directory-structure.md](references/directory-structure.md)
 2. ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์มีหน้าที่เดียวชัดเจน ไม่ผสมหลาย responsibilities ในไฟล์เดียว
 
-### 5. Create Src (if needed)
+### 6. Create Src (if needed)
 
 > Goal: skill ที่ระบุ CLI หรือ web มี `src/` directory พร้อมรันและ ship
 
@@ -61,13 +70,13 @@ argument-hint: "[skill-name]"
 4. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระ
 5. ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
-### 6. Validate Skill
+### 7. Validate Skill
 
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
 1. ดูรายละเอียดใน [references/validation.md](references/validation.md)
 
-### 7. Update References And Agents
+### 8. Update References And Agents
 
 > Goal: skill package พร้อมใช้งาน references ครบถ้วน
 

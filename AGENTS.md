@@ -74,7 +74,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
-- `learn-website-all-routes: /learn-website-all-routes`
+- `learn-from-web: /learn-from-web`
 - `follow-create-devin-skills: /follow-create-devin-skills`
 - `follow-create-devin-subagents: /follow-create-devin-subagents`
 - `follow-devin-skills: /follow-devin-skills`
