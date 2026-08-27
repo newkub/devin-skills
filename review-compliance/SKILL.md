@@ -244,7 +244,7 @@ Review cross-border data transfer ครอบคลุม transfer mechanism, a
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ไม่ซ้ำกับ `/review-security` — ใช้ workflow นั้นสำหรับ security controls
 - ไม่ซ้ำกับ `/review-delivery` Section 15 — ใช้ workflow นี้สำหรับ compliance เชิงลึก
-- ใช้ `/roleplay-data-privacy-officer` และ `/roleplay-regulator` สำหรับ perspective-based review
+- ใช้ `/roleplay-compliance-officer` สำหรับ perspective-based review
 
 ### 5. Health Score
 
