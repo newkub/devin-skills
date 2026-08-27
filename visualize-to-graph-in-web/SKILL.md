@@ -10,9 +10,11 @@ allowed-tools:
   - open-web
   - browser_preview
 related:
+  - check-skills-related
   - visualize-in-web
   - visualize-devin-in-web
   - visualize-project
+  - visualize-repo-in-web
   - follow-create-rust-cli
   - follow-framework-solidjs
   - follow-tool-vite
