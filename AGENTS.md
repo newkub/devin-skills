@@ -168,6 +168,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 #### Update
 
 - `update-project: /update-project`
+- `update-project-all-drive-d: /update-project-all-drive-d`
 - `update-config: /update-config`
 - `update-project-skills: /update-project-skills`
 - `update-devin-global-skills: /update-devin-global-skills`
