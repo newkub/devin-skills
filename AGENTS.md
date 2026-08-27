@@ -66,7 +66,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `devin-cli-skills: /follow-create-devin-skills`
 - `skill-format: /follow-create-devin-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 3 (analyze-codebase-quality, ask-project-requirement, visualize-devin)`
+- `submodules: 3 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web)`
 
 ### 3. Skills
 
@@ -344,6 +344,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `summarize-this-project: /summarize-this-project`
 - `summarize-this-chat-session: /summarize-this-chat-session`
 
+#### Visualize
+
+- `visualize-in-markdown-graph: /visualize-in-markdown-graph`
+- `visualize-in-web: /visualize-in-web`
+- `visualize-project: /visualize-project`
+
 #### Search
 
 - `search-api-references: /search-api-references`
@@ -468,7 +474,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 ### 4. Workspaces
 
 - Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
-- Submodules: `ask-project-requirement`, `analyze-codebase-quality`, `visualize-devin`
+- Submodules: `ask-project-requirement`, `analyze-codebase-quality`, `visualize-devin-in-web`
 
 ### 5. Safety
 

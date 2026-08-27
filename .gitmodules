@@ -1,6 +1,6 @@
-[submodule "visualize-devin"]
-	path = visualize-devin
-	url = git@github.com:newkub/visualize-devin.git
+[submodule "visualize-devin-in-web"]
+	path = visualize-devin-in-web
+	url = git@github.com:newkub/visualize-devin-in-web.git
 [submodule "analyze-codebase-quality"]
 	path = analyze-codebase-quality
 	url = git@github.com:newkub/analyze-codebase-quality.git
