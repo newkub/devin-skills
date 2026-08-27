@@ -26,9 +26,9 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 
 > Goal: เปรียบเทียบและปรับปรุงมิติ features
 
-1. ทำ `/bench-features` เพื่อ benchmark มิติ features
+1. ทำ `/deep-research` เพื่อ benchmark มิติ features กับคู่แข่ง
 2. รับผลเป็น section หรือไฟล์ `comparison-features.md`
-3. ถ้า `/bench-features` fail → stop และ report
+3. ถ้า `/deep-research` fail → stop และ report
 
 ### 3. Benchmark Other Dimensions
 
