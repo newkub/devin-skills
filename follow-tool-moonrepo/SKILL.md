@@ -2,11 +2,10 @@
 name: follow-tool-moonrepo
 description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project boundaries สำหรับหลาย stacks
 related:
-  - follow-math-graph-theory
   - follow-monorepo
-  - merge-in
-  - run-lint
+  - follow-tool-mise
   - run-build
+  - run-lint
   - run-test
   - run-verify-fast
 ---
@@ -21,7 +20,22 @@ related:
 
 ## Execute
 
-### 1. Identify Workspace
+### 1. Install moon
+
+> Goal: ติดตั้ง moon CLI บน environment
+
+1. ติดตั้งด้วย package manager ที่เหมาะสม:
+   - Bun: `bun add -D @moonrepo/cli`
+   - npm/pnpm/yarn: `npm install -D @moonrepo/cli` (หรือ `pnpm add -D`, `yarn add --dev`)
+   - PowerShell: `irm https://moonrepo.dev/install/moon.ps1 | iex`
+   - macOS/Linux/WSL: `bash <(curl -fsSL https://moonrepo.dev/install/moon.sh)`
+   - proto: `proto install moon`
+   - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
+2. ตรวจสอบ version ด้วย `moon --version`
+3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (`bun add -D @moonrepo/cli` หรือ `npm install -D @moonrepo/cli`)
+4. ดูรายละเอียดเพิ่มเติมใน [references/moonrepo.md](references/moonrepo.md)
+
+### 2. Identify Workspace
 
 > Goal: ระบุว่า project ใช้ moonrepo
 
@@ -30,7 +44,7 @@ related:
 3. ระบุ projects ใน monorepo จาก `.moon/workspace.yml` globs
 4. บันทึก project list (package = JS/Bun, crate = Rust)
 
-### 2. Configure Workspace
+### 3. Configure Workspace
 
 > Goal: ตั้งค่า moonrepo workspace
 
@@ -41,7 +55,7 @@ related:
 3. สร้าง `.moon/tasks/all.yml` สำหรับ shared task config
 4. ตรวจสอบ `moon.yml` ในแต่ละ project
 
-### 3. Define Tasks
+### 4. Define Tasks
 
 > Goal: กำหนด tasks ใน moonrepo
 
@@ -52,7 +66,7 @@ related:
 5. กำหนด `outputs` สำหรับ build tasks
 6. กำหนด `inputs` และ `options` ตามจำเป็น
 
-### 4. Migrate From Turborepo
+### 5. Migrate From Turborepo
 
 > Goal: ย้ายจาก turborepo ไป moonrepo
 
@@ -62,7 +76,7 @@ related:
 4. อัปเดต README, AGENTS, docs ให้ระบุ moonrepo
 5. อัปเดต `.devin/rules` และ skills ที่อ้างอิงถึง turborepo
 
-### 5. Verify
+### 6. Verify
 
 > Goal: ตรวจสอบว่า moonrepo ทำงานได้
 

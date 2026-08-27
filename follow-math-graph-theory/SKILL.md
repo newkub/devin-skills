@@ -7,7 +7,6 @@ related:
   - follow-algorithms
   - follow-data-structures
   - follow-monorepo
-  - follow-tool-moonrepo
   - follow-math-concepts
 ---
 
