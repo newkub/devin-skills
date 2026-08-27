@@ -302,6 +302,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-create-vitest-plugins: /follow-create-vitest-plugins`
 - `follow-create-vscode-extensions: /follow-create-vscode-extensions`
 - `follow-create-website: /follow-create-website`
+- `follow-create-website-rust: /follow-create-website-rust`
 - `follow-create-zed-extensions: /follow-create-zed-extensions`
 - `create-github-repo: /create-github-repo`
 - `draw-svg-image: /draw-svg-image`
