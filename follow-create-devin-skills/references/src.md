@@ -12,7 +12,7 @@ skill ที่ระบุ CLI หรือ web มี `src/` directory พร�
 2. สำหรับ web: ใช้ `/review-frontend` เพื่อออกแบบ UI/UX. ใช้ `/visualize-in-web` สร้างไฟล์ HTML entry
 3. วาง entry point ที่ `src/presentation/cli.ts` สำหรับ CLI. เก็บ web app code ใน `src/`
 4. รันทดสอบด้วย `bun run dev` หรือ `bunx serve src/`. เก็บ generated files ให้ไม่เกิน 250 บรรทัดต่อไฟล์
-5. ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
+5. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 
 ## Rules
 
@@ -22,4 +22,4 @@ skill ที่ระบุ CLI หรือ web มี `src/` directory พร�
 - ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry สำหรับ web
 - ตรวจสอบว่า `bun run dev`, `bun run build` และ `bunx serve src/` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
-- skill ที่มี `src/` ต้องถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule`
+- skill ที่มี `src/` ต้องถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules`

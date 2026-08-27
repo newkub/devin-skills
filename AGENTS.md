@@ -326,14 +326,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 #### Convert
 
-- `convert-to: /convert-to`
-- `convert-to-markdown: /convert-to-markdown`
-- `convert-to-html: /convert-to-html`
-- `convert-to-json: /convert-to-json`
-- `convert-to-project: /convert-to-project`
 - `convert-to-product: /convert-to-product`
-- `convert-to-docs: /convert-to-docs`
-- `convert-to-mcp: /convert-to-mcp`
 - `convert-to-webp: /convert-to-webp`
 - `convert-to-svg: /convert-to-svg`
 

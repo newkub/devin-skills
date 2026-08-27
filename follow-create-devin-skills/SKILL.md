@@ -58,7 +58,7 @@ argument-hint: "[skill-name]"
 1. ดูรายละเอียดใน [references/src.md](references/src.md)
 2. ใช้ `src/presentation/cli.ts` เป็น entry point สำหรับ CLI
 3. ใช้ `src/` เก็บ web app code สำหรับ web-based skills
-4. ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระ
+4. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระ
 5. ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
 ### 6. Validate Skill
@@ -124,7 +124,7 @@ argument-hint: "[skill-name]"
 - ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation. ใช้ `src/presentation/cli.ts` เป็น entry point. ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
 - ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
-- ถ้า skill มี `src/` → ทำ `/convert-to-submodule` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
+- ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 - ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน ไม่ต้องถาม user
 
 ### 6. Subagent And Model
@@ -141,7 +141,7 @@ argument-hint: "[skill-name]"
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
-- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-submodule` และ ship ผ่าน `/ship` เลย
+- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules` และ ship ผ่าน `/ship` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
