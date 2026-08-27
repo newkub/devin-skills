@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้เมื่อการทำงานใน chat session นี้มีรูปแบบที่ reusable และควรเป็น skill ไม่รวมการสรุป session (ใช้ `/summarize-this-chat-session`) หรือการบันทึก context (ใช้ `/memorize`)
+ใช้เมื่อการทำงานใน chat session นี้มีรูปแบบที่ reusable และควรเป็น skill ไม่รวมการสรุป session (ใช้ `/summarize-this-chat-session`) หรือการบันทึก context ทั่วไป
 
 ## Execute
 
@@ -86,7 +86,6 @@ argument-hint: "[target]"
 ### 4. Non-Redundancy
 
 - การสรุป session อยู่ใน `/summarize-this-chat-session` แล้ว
-- การบันทึก context อยู่ใน `/memorize` แล้ว
 - skill นี้เน้นการสกัด workflow เป็น skill ใหม่เท่านั้น
 
 ## Expected Outcome

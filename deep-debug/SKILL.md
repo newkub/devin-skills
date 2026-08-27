@@ -99,7 +99,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. ทำ `/run-verify-fast` เพื่อตรวจสอบ lint และ typecheck ผ่าน
 3. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
 4. แนะนำ preventive measures: linter rules, type constraints, code review checklist
-5. ทำ `/memorize` เพื่อบันทึก root cause และ prevention สำหรับ future reference
+5. บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
 6. ถ้าเกิน 3 รอบแล้วยังไม่ผ่าน → stop และ report
 
 ### 9. Report
@@ -155,7 +155,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - ระบุ root cause ในระดับ process ไม่ใช่แค่ code
 - แนะนำ preventive measures ที่ actionable
-- บันทึก root cause และ prevention ด้วย `/memorize` สำหรับ future reference
+- บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
 
 ## Expected Outcome
 

@@ -76,7 +76,7 @@ argument-hint: "[target]"
 
 > Goal: บันทึก context สำคัญจาก session
 
-1. ทำ `/memorize` สำหรับ decisions และ preferences ที่สำคัญ
+1. บันทึก decisions และ preferences ที่สำคัญลงไฟล์ context หรือ memory ของ project
 2. ระบุ context ที่ควรบันทึก: architecture decisions, user preferences, lessons learned
 3. ระบุ context ที่ไม่จำเป็นต้องบันทึก: temporary fixes, one-off tasks
 
@@ -106,12 +106,11 @@ argument-hint: "[target]"
 
 - การสรุปโปรเจกต์ทั้งหมดอยู่ใน `/summarize-this-project` แล้ว
 - การสรุปเป็น bullet points อยู่ใน `/report-table` แล้ว
-- การบันทึก context อยู่ใน `/memorize` แล้ว
 
 ## Expected Outcome
 
 - สรุป session work กระชับ ครบข้อมูล
 - ตารางไฟล์ที่เปลี่ยนแปลง: action, category, description
 - ระบุ decisions, issues และ next steps
-- context สำคัญถูกบันทึกด้วย `/memorize`
+- context สำคัญถูกบันทึกลงไฟล์ context หรือ memory ของ project
 - ผู้ใช้เข้าใจสิ่งที่ทำใน session นี้

@@ -87,7 +87,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 > Goal: ป้องกันการเกิดปัญหาซ้ำ
 
 1. แนะนำ preventive measures: linter rules, type constraints, code review checklist
-2. ทำ `/memorize` เพื่อบันทึก root cause และ prevention สำหรับ future reference
+2. บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
 
 ## Rules
 
