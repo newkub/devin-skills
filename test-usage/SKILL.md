@@ -1,6 +1,24 @@
 ---
 name: test-usage
-description: ทดสอบ usage examples จาก README และ docs เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
+description: ทดสอบ usage examples จาก README/docs/package.json เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
+allowed-tools:
+  - read
+  - edit
+  - grep
+  - glob
+  - exec
+  - write
+  - ask_user_question
+triggers:
+  - user
+  - model
+related:
+  - review-correctness
+  - run-test
+  - resolve-errors
+  - review-quality
+  - check-should-update
+  - ship
 ---
 
 ## Goal
@@ -38,7 +56,7 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 1. สร้างไฟล์ชั่วคราว (`tmp/test-usage-<ts|js>`) จาก code example
 2. แก้ไข relative paths ให้ตรงกับ test environment
 3. รันด้วย `bun` หรือ `node`
-4. ถ้าต้องการ build ก่อน → ทำ `resolve-errors` แล้วลอง `build`
+4. ถ้าต้องการ build ก่อน → ทำ `/resolve-errors` แล้วลอง `build`
 5. บันทึกผลลัพธ์
 
 ### 4. Test Package Scripts
@@ -50,14 +68,24 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 3. ถ้า `dev` หรือ server scripts ไม่จำเป็นต้องทดสอบ → skip และบันทึก
 4. บันทึกผลลัพธ์
 
-### 5. Report And Fix
+### 5. Review Correctness
+
+> Goal: ตรวจสอบความถูกต้องก่อน report ผล
+
+1. ทำ `/review-correctness` เพื่อตรวจ logic, types, edge cases, contracts, concurrency, tests ของ examples
+2. ถ้าพบ issues ให้บันทึก severity และ evidence
+3. ถ้า `/review-correctness` พบสิ่งต้องแก้ → ทำ `/resolve-errors` หรือแก้ไข README/code ก่อนดำเนินต่อ
+4. บันทึกผลการ review
+
+### 6. Report And Fix
 
 > Goal: รายงานผลและจัดการ issues
 
 1. รวบรวมผลการทดสอบเป็นตาราง (example, expected, actual, status)
-2. ถ้ามี failures → แสดงรายการและถาม user ว่าจะ fix หรือ skip
-3. ถ้า fix → แก้ไข README หรือ code ตามความเหมาะสม
-4. ทดสอบซ้ำจนกว่าจะผ่าน (max 3 → stop/report)
+2. รวม findings จาก `/review-correctness`
+3. ถ้ามี failures → แสดงรายการและถาม user ว่าจะ fix หรือ skip
+4. ถ้า fix → แก้ไข README หรือ code ตามความเหมาะสม
+5. ทดสอบซ้ำจนกว่าจะผ่าน (max 3 → stop/report)
 
 ## Rules
 
@@ -87,9 +115,16 @@ description: ทดสอบ usage examples จาก README และ docs เ�
 - เก็บ error output ไว้ใช้ debug
 - ถ้าไม่มี examples ให้ report ว่าไม่มีอะไรต้อง test
 
+### 5. Correctness Review
+
+- ทำ `/review-correctness` ก่อน report/final fix เสมอ
+- บันทึก findings จาก review-correctness ใน report
+- ถ้ามี critical/high issues → ถาม user ก่อน ship
+
 ## Expected Outcome
 
 - ทุก usage example ใน docs ถูกทดสอบ
 - ไม่มี broken examples ก่อน ship
 - มี report สรุปสถานะทดสอบ
+- มีการทำ `/review-correctness` เพื่อตรวจความถูกต้องก่อนส่งมอบ
 - ผู้ใช้ทราบก่อน ship หากมี examples ที่ยังไม่ทำงาน
