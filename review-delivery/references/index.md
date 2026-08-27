@@ -13,5 +13,6 @@
 | [efficiency.md](efficiency.md) | Build Efficiency Checks |
 | [infrastructure.md](infrastructure.md) | Infrastructure Checks |
 | [performance.md](performance.md) | Performance Checks |
+| [pr-review.md](pr-review.md) | PR Review Checks |
 | [scoring.md](scoring.md) | Delivery Review Score Formula |
 | [security.md](security.md) | Security Checks |

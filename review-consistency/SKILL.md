@@ -19,54 +19,43 @@ description: ตรวจสอบและปรับปรุงความ�
 
 > Goal: รวบรวม skill files และบันทึก baseline
 
-1. ทำตาม `/scan-codebase` รวบรวม skill files ทั้งหมด
-2. อ่าน frontmatter ของแต่ละ `SKILL.md`
-   - ตรวจสอบ directory structure ของแต่ละ skill
-3. ระบุ conventions ที่ใช้ร่วมกัน เช่น heading style, bullet language, backtick usage
+1. ดูรายละเอียดใน [references/inventory-and-baseline.md](references/inventory-and-baseline.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Check Structure Consistency
 
 > Goal: ตรวจสอบโครงสร้าง skill files
 
-1. ตรวจสอบลำดับ sections (`## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`)
-2. ตรวจสอบ frontmatter มี `name`, `description`, และ `description` ไม่เกิน 100 ตัวอักษร
-3. ตรวจสอบ Execute headings เป็น English Title Case และรายการภาษาไทย
-4. ตรวจสอบไฟล์ไม่เกิน 250 บรรทัด
+1. ดูรายละเอียดใน [references/check-structure-consistency.md](references/check-structure-consistency.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Check Language And Terminology
 
 > Goal: ตรวจสอบภาษาและคำศัพท์
 
-1. ตรวจสอบคำศัพท์สำคัญ (เช่น `skill`, `workflow`, `Execute`, `Rules`) ใช้สม่ำเสมอ
-2. ตรวจสอบภาษาไทย/อังกฤษใน bullet points และ headings ตาม conventions
-3. ตรวจสอบ backticks สำหรับ `tools`, `commands`, `file paths`, `skill-name`
-4. ตรวจสอบการใช้ parallel markers `∥` อยู่ใน Execute numbered list เท่านั้น
+1. ดูรายละเอียดใน [references/check-language-and-terminology.md](references/check-language-and-terminology.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Check Formatting And Style
 
 > Goal: ตรวจสอบรูปแบบและ style
 
-1. ตรวจสอบ spacing, indentation, การเว้นบรรทัด
-2. ตรวจสอบ file naming เป็น kebab-case
-3. ตรวจสอบความยาว `description` ไม่เกิน 100 ตัวอักษร
-4. ตรวจสอบ `related` references มีอยู่จริงและไม่มี unused
+1. ดูรายละเอียดใน [references/check-formatting-and-style.md](references/check-formatting-and-style.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Apply Fixes
 
 > Goal: แก้ไข inconsistency ตามลำดับ priority
 
-1. แก้ไข Critical inconsistencies ก่อน (frontmatter, broken `related`, section order)
-2. ใช้ `/edit-only` ถ้าเป็นไปได้
-3. ใช้ `/update-references` ถ้ามีการเปลี่ยนชื่อหรือย้ายไฟล์
-4. ทำ `/review-writing` เพื่อตรวจคุณภาพหลังแก้ไข
+1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Validate
 
 > Goal: ตรวจสอบผลลัพธ์
 
-1. ทำตาม `/check-reference`
-   - ทำตาม `/validate`
-2. ทำ `/report` สรุปรายการที่แก้ไข
+1. ดูรายละเอียดใน [references/validate.md](references/validate.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

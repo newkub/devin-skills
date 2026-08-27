@@ -50,70 +50,52 @@ Review implementation correctness ของ code, configuration, และ tests
 
 > Goal: ตรวจสอบว่า implementation ตรงกับ requirements และ contracts
 
-1. เปรียบเทียบ expected behavior กับ actual behavior จาก code
-2. ตรวจสอบ API signatures, preconditions, postconditions, invariants
-3. ตรวจสอบ business rules, validation rules, และ state machine transitions
-4. ดู `references/correctness-dimensions.md` สำหรับรายละเอียด
+1. เปรียบเทียบ expected behavior, API signatures, pre/post conditions, invariants, business rules
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 3. Type And Static Correctness
 
 > Goal: ตรวจสอบ type safety และ static correctness
 
-1. รัน `tsc --noEmit` หรือ typecheck ของ project
-2. ตรวจสอบ `any`, `as`, non-null assertions, unsafe narrowing
-3. ตรวจสอบ generic constraints, discriminated unions, exhaustive checks
-4. ทำ `/use-ast-grep` เพื่อหา patterns ทีเสี่ยงต่อ type bugs
+1. รัน typecheck และตรวจ `any`, `as`, non-null assertions, generic constraints, exhaustive checks
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 4. Logic And Edge Case Review
 
 > Goal: ตรวจสอบ logic, calculations, และ edge cases
 
-1. ตรวจสอบ control flow: `if/else`, `switch`, loops ว่าครอบคลุมทุก case
-2. ตรวจสอบ calculations, transformations, data mappings, rounding, floating-point
-3. ตรวจสอบ edge cases: `null`, `undefined`, empty, zero, negative, boundary values
-4. ตรวจสอบ default values, fallback paths, และ error handling
-5. ดู `references/correctness-dimensions.md` สำหรับ edge case checklist
+1. ตรวจ control flow, calculations, edge cases, default values, fallback paths, error handling
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 5. Concurrency And State Correctness
 
 > Goal: ตรวจสอบ concurrency, shared state, และ async correctness
 
-1. ตรวจสอบ race conditions, shared mutable state, และ unsynchronized access
-2. ตรวจสอบ async cancellation, timeout, และ resource cleanup
-3. ตรวจสอบ ordering ของ events, messages, และ side effects
-4. ถ้าไม่มี concurrency → ข้าม step นี้
+1. ตรวจ race conditions, shared state, async cancellation, ordering, side effects
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 6. Data Transformation And Serialization
 
 > Goal: ตรวจสอบ data flow, parsing, mapping, และ serialization
 
-1. ตรวจสอบ schema validation, input sanitization, และ type coercion
-2. ตรวจสอบ serialization/deserialization ระหว่าง layers
-3. ตรวจสอบ data mappings: ORM, DTO, API request/response
-4. ตรวจสอบ idempotency และ consistency ของ transformations
+1. ตรวจ schema validation, input sanitization, serialization, idempotency, consistency
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 7. Test Correctness
 
 > Goal: ตรวจสอบว่า tests ตรวจสิ่งทีต้องการได้จริง
 
-1. ทำ `/review-test` เพื่อดู test strategy
-2. ตรวจสอบว่า tests ไม่ assert ผิด หรือ test happy path อย่างเดียว
-3. ตรวจสอบว่า tests มี regression สำหรับ bugs ทีเคยเกิด
-4. ทำ `/run-test-coverage` เพื่อดู coverage บน critical paths
-5. หลัง run tests ให้ใช้ `/review-test` เพื่อวิเคราะห์ผล
+1. ทำ `/review-test`, ตรวจ assertions, edge cases, regression, coverage
+2. ดูรายละเอียดใน [references/correctness-dimensions.md](references/correctness-dimensions.md)
 
 ### 8. Validate, Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ issues จาก scripts
-3. จัดลำดับ severity: Critical → High → Medium → Low → Info
-4. คำนวณ review score โดย weighted average
-5. ทำ `/report` พร้อม `/report-table` — ตารางทุกใบต้องมี `No.` เป็นคอลัมน์แรก
-6. สร้างตาราง Findings by Category: No., Category, Finding, Severity, Location, Recommendation
-7. สร้างตาราง Recommended Actions: No., Priority, Action, Impact, Effort, Workflow
-8. ทำ `/suggest-next-action`
+1. ทำ `/deep-validate` และ `/validate`
+2. จัดลำดับ severity, คำนวณ review score
+3. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
+4. ดูรายละเอียดใน [references/validate-score-and-report.md](references/validate-score-and-report.md)
 
 ## Rules
 

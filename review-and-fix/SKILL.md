@@ -17,41 +17,36 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 
 > Goal: รู้ว่าจะ review และ fix อะไร
 
-1. ระบุ target files หรือ area
-2. ทำ `/review` เพื่อหา issues
-3. บันทึก findings พร้อม severity
+1. ดูรายละเอียดใน [references/identify-scope.md](references/identify-scope.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Plan Fixes
 
 > Goal: วางแผนการแก้ไข
 
-1. จัดลำดับ fixes ตาม severity ก่อน effort
-2. ระบุ files ที่ต้องแก้
-3. ทำ `/report-before` สรุปแผนก่อนลงมือ
+1. ดูรายละเอียดใน [references/plan-fixes.md](references/plan-fixes.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Confirm
 
 > Goal: ขอ approval ก่อน fix
 
-1. ใช้ `ask_user_question` ถาม user ว่าตกลงแก้ไขหรือไม่
-2. ถ้า user ปฏิเสธ → stop และ report
-3. ถ้า user ตกลง → ทำต่อ
+1. ดูรายละเอียดใน [references/confirm.md](references/confirm.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Apply Fixes
 
 > Goal: แก้ไข issues ตามแผน
 
-1. ใช้ `edit` หรือ `write` แก้ไฟล์ทีละ step
-2. ถ้า issue ซับซ้อน → ทำ `/resolve-errors`
-3. ถ้าเกิด error → ทำ `/resolve-errors`
+1. ดูรายละเอียดใน [references/apply-fixes.md](references/apply-fixes.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Verify
 
 > Goal: ตรวจสอบผลหลัง fix
 
-1. รัน tests/build/typecheck ตาม ecosystem
-2. ทำ `/validate`
-3. ทำ `/suggest-next-action`
+1. ดูรายละเอียดใน [references/verify.md](references/verify.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

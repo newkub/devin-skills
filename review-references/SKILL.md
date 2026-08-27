@@ -23,62 +23,50 @@ related:
 
 > Goal: รวบรวม skills ทีมีอยู่
 
-1. ทำ `/list-devin-global-skills` หรือ `/scan-codebase`
-2. บันทึก `name` และ `directory` ของแต่ละ skill
-3. อ่าน `AGENTS.md` เพื่อดู catalog ปัจจุบัน
+1. ดูรายละเอียดใน [references/inventory-skills.md](references/inventory-skills.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Check AGENTS.md
 
 > Goal: ตรวจ catalog ไม่ให้ขาดหรือล้าหลัง
 
-1. เปรียบเทียบรายการ skills กับ `AGENTS.md`
-2. ระบุ skills ทีไม่อยู่ใน `AGENTS.md`
-3. ระบุ entries ใน `AGENTS.md` ทีไม่มี skill directory ตรงกัน
-4. ตรวจ category ว่าสอดคล้องกับ prefix/name
+1. ดูรายละเอียดใน [references/check-agentsmd.md](references/check-agentsmd.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Check Frontmatter Related
 
 > Goal: ตรวจ `related` ใน frontmatter
 
-1. อ่าน `SKILL.md` แต่ละ skill
-2. ดึง `related` list
-3. ตรวจว่าแต่ละ `related` skill มีอยู่จริง
-4. ระบุ `related` ทีชี้ไปยัง skill ทีไม่มีอยู่
+1. ดูรายละเอียดใน [references/check-frontmatter-related.md](references/check-frontmatter-related.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Check In-Body References
 
 > Goal: ตรวจอ้างอิงในเนื้อหา
 
-1. ค้นหา backtick references เช่น `/skill-name`, `skill-name`, `update-references`
-2. ระบุ references ทีไม่มี skill ตรงกัน
-3. ตรวจ `/command-name` ว่ามี skill หรือ command จริง
-4. บันทึก false positives (เช่น tools/commands ทั่วไป)
+1. ดูรายละเอียดใน [references/check-in-body-references.md](references/check-in-body-references.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Check Circular Dependencies
 
 > Goal: ไม่ให้ skills อ้างอิงกันเป็นวงกลม
 
-1. สร้าง graph จาก `related` และ in-body references
-2. หา cycles (เช่น A → B → A)
-3. หา self-references
-4. รายงาน cycles พร้อม path
+1. ดูรายละเอียดใน [references/check-circular-dependencies.md](references/check-circular-dependencies.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Check Global Rules References
 
 > Goal: ตรวจสอบ global rules
 
-1. อ่าน `global_rules.md`
-2. ระบุ references ไปยัง skills ทีไม่มีอยู่
-3. ระบุ skills ทีอ้างอิง `global_rules.md` แต่ไม่มี rule ตรงกัน
+1. ดูรายละเอียดใน [references/check-global-rules-references.md](references/check-global-rules-references.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Report
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` คอลัมน์: Type, Source, Target, Severity, Suggested Action
-2. เรียงตาม severity: Critical → High → Medium → Low
-3. ระบุ auto-fixable vs manual
-4. ทำ `/suggest-next-action`
+1. ดูรายละเอียดใน [references/report.md](references/report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

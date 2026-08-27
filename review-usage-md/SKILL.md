@@ -20,65 +20,50 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 > Goal: ตรวจสอบว่ามี skill อื่นเหมาะสมกว่าหรือไม่
 
-1. ทำ `/consider-use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
-2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-app-usage` แทน
-3. ถ้า `USAGE.md` ไม่มี → แนะนำ `/update-usage-md` หรือ `/report-usage-md`
-4. ถ้าไม่มี skill อื่นเหมาะสมกว่า → ดำเนินการ review
+1. ดูรายละเอียดใน [references/consider-existing-skills.md](references/consider-existing-skills.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Prepare Context
 
 > Goal: เข้าใจ project และ `USAGE.md`
 
-1. อ่าน `USAGE.md` ถ้ามี
-2. อ่าน `README.md` และ `package.json`
-3. อ่าน `AGENTS.md` หรือ project conventions ถ้ามี
-4. ค้นหา examples ใน `examples/`, `docs/`, tests
+1. ดูรายละเอียดใน [references/prepare-context.md](references/prepare-context.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Check Structure
 
 > Goal: ตรวจโครงสร้าง `USAGE.md`
 
-1. ตรวจ `##` sections: Goal, Installation, Quick Start, Usage, Examples, Configuration, CLI, API, Troubleshooting
-2. ตรวจ section order ตาม user flow
-3. ตรวจ heading levels ถูกต้อง
-4. บันทึก findings หาก section ขาดหรือเรียงผิด
+1. ดูรายละเอียดใน [references/check-structure.md](references/check-structure.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Check Content
 
 > Goal: ตรวจเนื้อหา
 
-1. ตรวจ examples รันได้จริง
-2. ตรวจ commands/options ตรงกับ `package.json` และ CLI จริง
-3. ตรวจ paths ถูกต้อง
-4. ตรวจไม่มี placeholder หรือ generic filler
-5. ตรวจไม่มี `**` (bold markers)
+1. ดูรายละเอียดใน [references/check-content.md](references/check-content.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Check Consistency
 
 > Goal: เปรียบเทียบกับ project
 
-1. เปรียบเทียบ version กับ `package.json`
-2. เปรียบเทียบ bin/scripts กับ `package.json`
-3. เปรียบเทียบ examples กับ test files หรือ `examples/`
-4. เปรียบเทียบ API กับ exports ใน `src/index.ts`
+1. ดูรายละเอียดใน [references/check-consistency.md](references/check-consistency.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Check Formatting
 
 > Goal: ตรวจรูปแบบ
 
-1. ตรวจ `USAGE.md` ไม่เกิน 250 บรรทัด
-2. ตรวจ backticks สำหรับ code, paths, commands
-3. ตรวจ lists ใช้ภาษาไทยหรืออังกฤษสม่ำเสมอ
-4. ตรวจ links ไม่ broken
+1. ดูรายละเอียดใน [references/check-formatting.md](references/check-formatting.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Score And Report
 
 > Goal: สรุป review
 
-1. ให้ severity: Critical, High, Medium, Low, Info
-2. คำนวณ score จาก findings
-3. ทำ `/report-table` แสดง Category, Severity, Finding, Evidence, Action
-4. ทำ `/suggest-next-action`
+1. ดูรายละเอียดใน [references/score-and-report.md](references/score-and-report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

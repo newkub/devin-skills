@@ -31,72 +31,57 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 > Goal: เข้าใจ workflow ปัจจุบัน
 
-1. อ่านไฟล์ workflow หรือ skill ทีต้องการ review
-2. วาด high-level flow จาก `## Execute`
-3. ระบุ input, output, branches, loops, และ decision points
-4. ถ้า flow ยาว > 250 บรรทัด → ทำ `/simplify` ก่อน
+1. ดูรายละเอียดใน [references/read-flow.md](references/read-flow.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Check Speed
 
 > Goal: ลด latency และ unnecessary steps
 
-1. หา steps ทีรัน redundant หรือซ้ำซ้อน
-2. หา steps ทีสามารถรันขนานได้
-3. ลด round-trips หรือ polling ทีไม่จำเป็น
-4. แนะนำให้รวมหรือลบ steps ทีไม่เพิ่มค่า
+1. ดูรายละเอียดใน [references/check-speed.md](references/check-speed.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Check Safety
 
 > Goal: ลด risk ของ workflow
 
-1. ตรวจสอบ dry-run / confirmation สำหรับ destructive actions
-2. ตรวจสอบ error handling ในทุก external call
-3. ตรวจสอบว่าไม่ expose secrets หรือ sensitive data
-4. ตรวจสอบ rollback path
+1. ดูรายละเอียดใน [references/check-safety.md](references/check-safety.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Check Usability
 
 > Goal: ให้ง่ายต่อการเรียกใช้
 
-1. ตรวจสอบชื่อและ descriptions ชัดเจน
-2. ตรวจสอบว่า flow มี state หรือ context ทีเข้าใจง่าย
-3. ตรวจสอบ output format และ report
-4. ตรวจสอบว่า user ไม่ต้องจำ state เอง
+1. ดูรายละเอียดใน [references/check-usability.md](references/check-usability.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Check Efficiency
 
 > Goal: ใช้ resources คุ้มค่า
 
-1. ตรวจสอบการใช้ tool หรือ skill ทีเกินจำเป็น
-2. ตรวจสอบการ loop หรือ retry ที unbounded
-3. แนะนำ tool หรือ skill ทีเหมาะสมกว่า
-4. ลด duplicated logic ระหว่าง steps
+1. ดูรายละเอียดใน [references/check-efficiency.md](references/check-efficiency.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Remove Redundancy
 
 > Goal: ไม่ซ้ำซ้อน
 
-1. ทำ `/review-redundancy` สำหรับ steps ทีซ้ำ
-2. ทำ `/review-consistency` สำหรับ terminology และ format
-3. รวม steps ทีเหมือนกัน หรือแยกเป็น sub-skill ถ้าทำหลายงาน
-4. ลบ placeholder, TODO, MOCK ทีไม่จำเป็น
+1. ดูรายละเอียดใน [references/remove-redundancy.md](references/remove-redundancy.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Report
 
 > Goal: สรุปผลการ review
 
-1. สร้าง table: No., Aspect, Finding, Severity, Recommendation
-2. เรียงลำดับแถว 1, 2, 3, ... ตามลำดับของแถว
-3. Aspects: speed, safety, usability, efficiency, redundancy
-4. ระบุ quick wins และ high-impact changes
-5. ถ้ามีปัญหาใหญ่ → ทำ `/ask-me` ก่อน implement
+1. ดูรายละเอียดใน [references/report.md](references/report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 8. Validate
 
 > Goal: ตรวจสอบความถูกต้องหลัง review
 
-1. ทำ `/validate` เพื่อ validate findings กับ skill structure
-2. ถ้า validation ไม่ผ่าน → แก้ไขแล้ว re-validate
+1. ดูรายละเอียดใน [references/validate.md](references/validate.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

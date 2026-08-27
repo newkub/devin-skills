@@ -38,7 +38,8 @@
 1. ไม่มี unused imports/exports
 2. ไม่มี side effects ใน barrel file
 3. ใช้ named exports แทน `export *` ทั้งหมด
-4. พิจารณา dynamic imports สำหรับ large modules
+4. เรียง exports ตาม source file ตามตัวอักษร
+5. พิจารณา dynamic imports สำหรับ large modules
 
 ## Severity
 

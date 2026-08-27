@@ -21,8 +21,6 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ### 1. Prepare And Scan
 
-เตรียม context ก่อนเริ่ม review
-
 > Goal: เข้าใจ delivery setup และ channels ใน codebase
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup, project structure, tech stack
@@ -36,14 +34,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 #### 2.1 Documentation Review
 
-Review documentation ครอบคลุม README, API docs, examples, guides, JSDoc/TSDoc, VitePress content — ดู `references/docs.md`
-
-1. ตรวจสอบ README completeness, setup guide accuracy, และ API documentation coverage
-2. ตรวจสอบ code examples: runnable, up-to-date, และ consistent with API
-3. ตรวจสอบ content accuracy, broken links, และ missing documentation
-4. ตรวจสอบ JSDoc/TSDoc completeness บน public API
-5. ตรวจสอบ stale documentation: docs ที่ไม่ตรงกับ code ปัจจุบัน
-6. ทำ `/update-review-codebase-cli-and-run` เพื่อ deep documentation review เฉพาะทาง
+ตรวจสอบ README, API docs, examples, guides, JSDoc/TSDoc, VitePress content — ดูรายละเอียดใน [references/docs.md](references/docs.md)
 
 #### 2.2 SEO Review
 
@@ -56,19 +47,12 @@ Review documentation ครอบคลุม README, API docs, examples, guides
 
 #### 3.1 Developer Experience Review
 
-Review developer experience ครอบคลุม onboarding, tooling, documentation usability, feedback loops — ดู `references/dx.md`
-
-1. ตรวจสอบ onboarding flow: setup scripts, prerequisites, first-run experience
-2. ตรวจสอบ development tooling: hot reload, debug tools, development scripts
-3. ตรวจสอบ error message quality, stack traces, และ debuggability
-4. ตรวจสอบ feedback loops: test, lint, type check, build, deploy
-5. Critical: broken setup, no onboarding guide, unrecoverable development error
-6. High: missing debug tooling, unclear error messages, missing contributing guide
+ตรวจ onboarding, tooling, error messages, feedback loops — ดูรายละเอียดใน [references/dx.md](references/dx.md)
 
 #### 3.2 Analytics Review
 
-1. ตรวจสอบ event tracking, naming, schema consistency, conversion funnels, tracking completeness
-2. ตรวจสอบ analytics implementation, data accuracy, tool configuration, consent mode, data retention
+1. ตรวจ event tracking, naming, schema consistency, conversion funnels, tracking completeness
+2. ตรวจ analytics implementation, data accuracy, tool configuration, consent mode, data retention
 3. Critical: broken tracking, no conversion funnel, data accuracy issue
 4. High: missing event tracking, inconsistent naming, no consent mode
 
@@ -85,15 +69,7 @@ Review developer experience ครอบคลุม onboarding, tooling, docume
 
 #### 4.2 PR Review
 
-Review PR ก่อน merge ครอบคลุม CI, code quality, tests, security, breaking changes
-
-1. ตรวจสอบ CI status ของ PR ก่อน review
-2. อ่าน PR diff และ files ที่เปลี่ยน ตรวจสอบว่า changes ตรงกับ PR description
-3. ตรวจสอบไม่มี unintended changes, debug code, TODO/MOCK/placeholder ใน production code
-4. ตรวจสอบไม่มี `console.log` หรือ debug statements
-5. ตรวจสอบมี tests สำหรับ changes ใหม่ และไม่มี breaking changes โดยไม่มี migration guide
-6. Critical: CI fail, secrets in diff, breaking change without migration
-7. High: missing tests for new code, debug code in production, unresolved review comments
+ตรวจ CI status, diff, unintended changes, debug code, tests, breaking changes — ดูรายละเอียดใน [references/pr-review.md](references/pr-review.md)
 
 ### 5. Operations Review
 
@@ -119,25 +95,11 @@ Review PR ก่อน merge ครอบคลุม CI, code quality, tests, s
 
 #### 6.1 Build Efficiency Review
 
-Review build efficiency ครอบคลุม build configuration, build time, output size, cost — ดู `references/efficiency.md`
-
-1. บันทึก build time และ output size baseline
-2. ตรวจสอบ build config: minify, sourcemap, target, external, tree-shaking, `sideEffects: false`
-3. ตรวจสอบ unused dependencies, dead code, barrel files, code splitting
-4. ตรวจสอบ assets ขนาดใหญ่, compression, format conversion
-5. ตรวจสอบ cost: compute, storage, bandwidth, logs, idle resources
-6. รัน build ใหม่และเปรียบเทียบกับ baseline
+บันทึก baseline, ตรวจ build config, dependencies, assets, cost — ดูรายละเอียดใน [references/efficiency.md](references/efficiency.md)
 
 #### 6.2 Config Health Review
 
-Review config files ทั้ง root และ workspace ครอบคลุม scripts, build config, shared config, lint, format, git hooks, env vars — ดู `references/config.md`
-
-1. ระบุ config files ทั้งหมด: `tsconfig.json`, `vite.config.ts`, `biome.jsonc`, `vitest.config.ts`, `lefthook.yml`, `turbo.json`
-2. ตรวจสอบ scripts consistency ข้าม workspaces
-3. ตรวจสอบ shared config: path aliases, compiler options, format rules
-4. ตรวจสอบ config security: secrets, `.gitignore`, env vars validation
-5. ตรวจสอบ cross-workspace config consistency และ config drift
-6. ถ้าต้องสร้าง config ใหม่ → ดู `references/config-setup.md`
+ระบุ config files, ตรวจ scripts, shared config, security, consistency — ดูรายละเอียดใน [references/config.md](references/config.md)
 
 ### 7. Infrastructure And Pipeline Review
 
@@ -145,26 +107,11 @@ Review config files ทั้ง root และ workspace ครอบคลุ�
 
 #### 7.1 CI/CD Pipeline Review
 
-Review CI/CD pipeline ครอบคลุม job dependencies, caching, parallelization, reliability — ดู `references/ci-cd.md`
-
-1. ระบุ CI/CD platform: GitHub Actions, GitLab CI, Azure DevOps, Jenkins
-2. ตรวจสอบ job dependencies และ parallelization
-3. ตรวจสอบ caching สำหรับ dependencies, build artifacts
-4. ตรวจสอบ reliability: retry, timeout, idempotency, secrets, permissions
-5. ตรวจสอบ artifact size, retention policy, conditional jobs
-6. ถ้าต้องสร้าง pipeline ใหม่ → ดู `references/ci-cd-setup.md`
-7. ถ้าพบ CI/CD pipeline ล้มเหลวหรือต้องติดตามจนกว่าจะผ่าน → ใช้ `/watch-ci-cd`
+ระบุ platform, ตรวจ job dependencies, caching, reliability, artifacts — ดูรายละเอียดใน [references/ci-cd.md](references/ci-cd.md)
 
 #### 7.2 Infrastructure Review
 
-Review infrastructure ครอบคลุม workers, queues, webhooks, scalability, cost, deployment, DR, migration — ดู `references/infrastructure.md`
-
-1. ตรวจสอบ worker lifecycle, job processing, idempotency, retry, dead letter queue
-2. ตรวจสอบ webhooks: signature, secret management, idempotency, replay protection
-3. ตรวจสอบ scalability: stateless design, horizontal scaling, caching, database scaling
-4. ตรวจสอบ deployment: rollback strategy, zero-downtime, post-deploy validation
-5. ตรวจสอบ DR plan, RPO/RTO, backup schedules, migration files
-6. ถ้าใช้ containers → ดู `references/containerization.md` และ `references/docker.md`
+ตรวจ workers, webhooks, scalability, deployment, DR, migration — ดูรายละเอียดใน [references/infrastructure.md](references/infrastructure.md)
 
 ### 8. Performance And Security Review
 
@@ -174,18 +121,11 @@ Review infrastructure ครอบคลุม workers, queues, webhooks, scalab
 
 1. ทำ `/review-performance` เพื่อรีวิว performance โดยเฉพาะ
 2. รับ findings, severity และ score จาก `/review-performance` มารวมใน aggregate report
-3. ดูรายละเอียดใน `references/performance.md`
+3. ดูรายละเอียดใน [references/performance.md](references/performance.md)
 
 #### 8.2 Security Review
 
-Review security ครอบคลุม auth, secrets, injection, dependencies, permissions, file upload, compliance — ดู `references/security.md`
-
-1. ตรวจสอบ auth flows, session/token management, RBAC, least privilege
-2. ตรวจสอบ hardcoded secrets, secret storage, masking, rotation
-3. ตรวจสอบ injection: SQL, command, path traversal, XSS, CSRF, deserialization
-4. ตรวจสอบ dependency vulnerabilities, outdated packages, supply chain risks
-5. ตรวจสอบ file upload validation, sanitization, storage, access control
-6. ตรวจสอบ compliance: GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PII, data retention
+ตรวจ auth, secrets, injection, dependencies, permissions, file upload, compliance — ดูรายละเอียดใน [references/security.md](references/security.md)
 
 ### 9. Validate And Report
 

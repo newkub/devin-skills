@@ -17,67 +17,45 @@ description: เขียน content ครอบคลุมทุก features,
 
 > Goal: Research From Multiple Sources
 
-research ข้อมูลจากแหล่งต่างๆ ตามลำดับความสำคัญ
-
-1. ใช้ `DeepWiki` สำหรับ GitHub repositories (`read_wiki_structure` → `read_wiki_contents` → `ask_question`)
-2. ใช้ `Context7` สำหรับ libraries และ frameworks (`resolve-library-id` → `query-docs`)
-3. ใช้ `search_web` เป็น fallback เมื่อไม่มีข้อมูลจากแหล่งอื่น
-4. เข้าถึง Official Documentation เสมอ
-5. ไม่เรียก `Context7` เกิน 3 ครั้งต่อคำถาม
+1. รวบรวมข้อมูลจาก `DeepWiki`, `Context7`, `search_web`, Official Documentation
+2. จำกัด `Context7` ไม่เกิน 3 ครั้งต่อคำถาม
+3. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ### 2. Extract Knowledge
 
 > Goal: Extract Knowledge
 
-บันทึกความรู้จากการ research
-
-1. จดบันทึก core concepts และหลักการที่สำคัญ
-2. ระบุ features และ capabilities หลักทั้งหมด
-3. บันทึก code examples และ configuration examples
-4. บันทึก best practices, edge cases, และ common pitfalls
+1. จด core concepts, features, examples, best practices, edge cases
+2. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ### 3. Analyze Coverage Gaps
 
 > Goal: Analyze Coverage Gaps
 
-วิเคราะห์ features ที่ยังไม่มี content
-
-1. ตรวจสอบ features, APIs, use cases ทั้งหมด
-2. ระบุ content ที่ยังขาด (guides, examples, references, key-concepts, principles)
-3. จัดลำดับ priority ตามความสำคัญและ impact
+1. วิเคราะห์ features, APIs, use cases ทั้งหมด
+2. ระบุ content ที่ขาดและจัดลำดับ priority
+3. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ### 4. Write Missing Content
 
 > Goal: Write Missing Content
 
-เขียน content สำหรับส่วนที่ขาด
-
-1. เขียน guides สำหรับ features ที่ยังไม่มี (Getting Started สำคัญที่สุด)
-2. เขียน examples ที่ใช้งานได้จริง แบบ copy-paste
-3. เขียน API references ครอบคลุม endpoints, methods, parameters, responses
-4. เขียน key-concepts อธิบาย "why" และ "how" นอกจาก "what"
-5. เขียน principles สำหรับ best practices
+1. เขียน guides, examples, API references, key-concepts, principles
+2. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ### 5. Verify Completeness
 
 > Goal: Verify Completeness
 
-ตรวจสอบว่า content ครอบคลุมทุก aspects
-
-1. ตรวจสอบทุก features มี guide
-2. ตรวจสอบทุก APIs มี examples
-3. ตรวจสอบทุก use cases มี documentation
-4. ตรวจสอบทุก concepts มี explanations
+1. ตรวจสอบว่าทุก feature, API, use case, concept มี content
+2. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ### 6. Update Index Files
 
 > Goal: Update Index Files
 
-อัปเดต index files ให้ครบถ้วน
-
-1. อัปเดต `SKILL.md` ให้ครอบคลุมทุก content
-2. อัปเดต sitemap และ references ถ้ามี
-3. ตรวจสอบ links ถูกต้อง
+1. อัปเดต `SKILL.md`, sitemap, references และ links
+2. ดูรายละเอียดใน [references/content-coverage-checklist.md](references/content-coverage-checklist.md)
 
 ## Rules
 

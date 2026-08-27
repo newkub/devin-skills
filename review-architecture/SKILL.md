@@ -5,17 +5,15 @@ description: Review architecture, modularity, isolation, resilience, reliability
 
 ## Goal
 
-Review architecture ระดับ macro ครอบคลุม design patterns, module boundaries, dependency directions, coupling, SOLID principles, design pattern correctness, anti-patterns, modularity, isolation, resilience, reliability, และ governance พร้อม review score
+Review architecture ระดับ macro ครอบคลุม design patterns, module boundaries, dependency directions, coupling, SOLID principles, anti-patterns, modularity, isolation, resilience, reliability, และ governance พร้อม review score
 
 ## Scope
 
-architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, creational patterns (Factory, Builder, Singleton, Prototype), structural patterns (Adapter, Decorator, Facade, Proxy, Composite), behavioral patterns (Strategy, Observer, Command, Iterator, State), functional patterns (composition over inheritance, pure functions, immutability), anti-patterns (God object, singleton abuse, factory overuse, callback hell, premature abstraction), pattern appropriateness, modularity (cohesion, coupling, single responsibility, barrel exports, feature-based folders, vertical slices, package by feature), isolation (state isolation, environment separation, test isolation, data isolation, leaky abstractions, namespace boundaries, interface boundaries, API boundaries), resilience (side effects, flow, rate limiting, retries, timeouts, circuit breakers, fallback, graceful degradation), reliability (failure points, redundancy, idempotency, observability, disaster recovery, predictability, concurrency), และ governance (ownership, policies, review process, maintenance)
+architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, และ governance
 
 ## Execute
 
 ### 1. Prepare
-
-สแกน codebase เพื่อเข้าใจ architecture ปัจจุบัน
 
 > Goal: เข้าใจ architecture, patterns, module structure, dependency graph และ governance
 
@@ -26,40 +24,25 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ### 2. Deep Analyze
 
-วิเคราะห์ architecture อย่างลึกซึ้งด้วย scripts
-
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
+2. ทำ `/update-review-codebase-cli-and-run` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-5. ดู `references/patterns-boundaries.md` สำหรับ architecture patterns และ boundaries checks
-6. ดู `references/modularity.md` สำหรับ modularity checks
-7. ดู `references/isolation.md` สำหรับ isolation checks
-8. ดู `references/resilience.md` สำหรับ resilience checks
-9. ดู `references/reliability.md` สำหรับ reliability checks
-10. ดู `references/governance.md` สำหรับ governance checks
-11. Review CLI คำนวณ architecture review score จาก review report (ดู `references/scoring.md`)
-12. ถ้า review CLI ไม่ผ่าน → ทำ `/update-review-codebase-cli-and-run` แล้ว re-run ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
+4. ดูรายละเอียด dimension checks ใน [references/index.md](references/index.md)
+5. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
 
 ### 3. Review Import, Export And Barrel Exports
 
 > Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
-1. ดู `references/import-export.md` สำหรับ barrel exports, aliases, ordering, circular dependencies
-2. ตรวจสอบว่า public API ซ่อน implementation details
-3. ยืนยันว่าไม่มี circular dependencies และ unused imports
+1. ดูรายละเอียดใน [references/import-export.md](references/import-export.md)
+2. ยืนยัน public API ซ่อน implementation details
+3. ตรวจ circular dependencies และ unused imports
 4. ประเมิน tree-shaking และ bundle size impact
-5. ตรวจ barrel file มีเฉพาะ re-exports ไม่มี logic หรือ side effects
-6. ตรวจใช้ `export ... from` แทน `import` แล้ว `export`
-7. ตรวจ `export type` แยกจาก runtime exports
-8. ตรวจไม่ export default จาก barrel file ใช้ named exports เท่านั้น
-9. ตรวจ exports เรียงตาม source file ตามตัวอักษร
+5. บันทึก findings
 
 ### 4. Validate Findings
-
-ตรวจสอบความถูกต้องของ findings ก่อน report
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
@@ -71,8 +54,6 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ### 5. Report
 
-รายงานผลการ review ในแชท
-
 > Goal: รายงาน findings พร้อม actionable recommendations
 
 1. ทำ `/report` พร้อม `/report-table`
@@ -83,9 +64,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ### 6. Implement All
 
-ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
-
-> Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
+> Goal: ไม่มี implementation gap ค้างหลัง review
 
 1. ทำ `/realize-implementation` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report

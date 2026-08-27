@@ -28,66 +28,31 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-sid
 5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
 
-### 2. Mobile And Desktop Review
-
-Review mobile และ desktop app — ดูรายละเอียดใน `references/mobile-desktop.md`
+#### 1.2 Mobile And Desktop Review
 
 > Goal: ครอบคลุมทุก mobile และ desktop dimension
 
-1. ตรวจสอบ Capacitor plugin usage, platform detection, native bridge patterns
-2. ตรวจสอบ offline support, push notification handling, biometric auth
-3. ตรวจสอบ mobile UX: touch targets, safe area, responsive layout
-4. ตรวจสอบ native API usage, IPC patterns, security boundaries ระหว่าง main/renderer processes
-5. ตรวจสอบ window management, auto-update mechanism, file system access, sandbox restrictions
-6. ตรวจสอบ desktop UX: system tray, notifications, keyboard shortcuts, clipboard integration
-7. Critical: native bridge พัง, IPC ไม่มี validation, file system access ไม่จำกัด, app crash บน platform
-8. High: ไม่มี offline support, ไม่มี platform-specific handling, auto-update ไม่ verify, ไม่มี offline fallback
+Review native bridge, offline support, mobile/desktop UX, IPC, window management, auto-update, and file system access. See [references/mobile-desktop.md](references/mobile-desktop.md).
 
-### 3. CLI And TUI Review
-
-Review CLI และ TUI tools — ดูรายละเอียดใน `references/cli-tui.md`
+### 2. CLI And TUI Review
 
 > Goal: ครอบคลุมทุก CLI/TUI dimension
 
-1. ตรวจสอบ command structure, options, flags, argument parsing
-2. ตรวจสอบ help text completeness, error messages, exit codes
-3. ตรวจสอบ interactive mode, autocomplete, configuration file support
-4. ตรวจสอบ TUI layout, component composition, resize handling, focus management
-5. ตรวจสอบ build configuration, cross-compilation, packaging, distribution channels
-6. ตรวจสอบ config consistency ระหว่าง root และ CLI workspace
-7. Critical: command พัง, exit code ผิด, TUI layout พัง, input ไม่ถูกจัดการ, terminal crash
-8. High: ไม่มี help text, error message สับสน, rendering glitch, ไม่รองรับ resize, build suboptimal
+Review command structure, help/exit codes, interactive mode, TUI layout, build config, and distribution. See [references/cli-tui.md](references/cli-tui.md).
 
-### 4. SSR, State Management, Routing, PWA Review
-
-Review SSR, state management, routing, PWA compliance
+### 3. SSR, State Management, Routing, PWA Review
 
 > Goal: ครอบคลุมทุก SSR, state, routing, PWA dimension
 
-1. ตรวจสอบ SSR implementation, hydration correctness, SSR-compatible code, streaming SSR
-2. ตรวจสอบ store organization, reactivity patterns, side effect management, state persistence
-3. ตรวจสอบ route definitions, navigation guards, lazy loading, params validation
-4. ตรวจสอบ service worker, web manifest, offline support, install prompt, background sync, push notifications
-5. Critical: hydration mismatch, SSR พัง, state corruption, ไม่มี auth guard, ไม่มี service worker บน production
-6. High: ไม่มี hydration, unnecessary re-render, ไม่มี lazy load, cache เก่าหลัง update, ไม่มี offline fallback
+Review SSR/hydration, state management, routing, and PWA compliance. See [references/ssr-state-routing-pwa.md](references/ssr-state-routing-pwa.md).
 
-### 5. I18n And Localization Review
-
-Review i18n และ localization — ดูรายละเอียดใน `references/i18n.md`
+### 4. I18n And Localization Review
 
 > Goal: ครอบคลุมทุก i18n dimension
 
-1. ตรวจสอบ translation completeness, missing keys, locale coverage, fallback strategy
-2. ตรวจสอบ locale formatting: date, number, currency, pluralization, relative time
-3. ตรวจสอบ RTL support, logical properties, text direction handling, bidirectional text
-4. ตรวจสอบ cultural adaptation: address, name, phone, postal code, calendar system
-5. ตรวจสอบ locale-specific validation, locale-aware error messages
-6. Critical: missing locale entirely, broken translation key ใน critical path, no fallback, broken RTL layout
-7. High: missing translation keys, incomplete locale coverage, missing RTL support, incorrect locale formatting
+Review translation completeness, locale formatting, RTL support, cultural adaptation, and locale-specific validation. See [references/i18n.md](references/i18n.md).
 
-### 6. SEO Review
-
-Review SEO — ดูรายละเอียดใน `references/seo.md`
+### 5. SEO Review
 
 > Goal: ครอบคลุมทุก SEO dimension
 
@@ -95,65 +60,31 @@ Review SEO — ดูรายละเอียดใน `references/seo.md`
 2. รับ findings, severity และ score จาก `/review-seo` มารวมใน aggregate report
 3. ถ้า project ไม่ใช่ web app → ข้าม section นี้
 
-### 7. Battery And Energy Review
-
-Review battery/energy usage — ดูรายละเอียดใน `references/battery.md`
+### 6. Battery And Energy Review
 
 > Goal: ครอบคลุมทุก battery/energy dimension
 
-1. ตรวจสอบ polling และ timers: `setInterval`, `setTimeout`, cron jobs, redundant polling
-2. ตรวจสอบ sensors และ hardware: GPS, accelerometer, camera, Bluetooth, wake locks
-3. ตรวจสอบ network และ sync: frequent requests, retries ไม่มี backoff, background sync
-4. ตรวจสอบ background services, push notifications, periodic tasks, start-up tasks
-5. ตรวจสอบ UI rendering: animations ไม่หยุด, layout thrashing, re-renders, heavy canvas/WebGL
-6. ตรวจสอบ compute: heavy computations บน main thread, nested loops, repeated parsing
-7. Critical: wake lock ค้าง, GPS track ต่อเนื่อง, high-frequency polling บน hot path
-8. High: network retries ไม่มี backoff, sensors ไม่ปิด, animations ไม่หยุด, heavy compute บน main thread
+Review polling/timers, sensors, network/sync, background services, UI rendering, and compute for battery impact. See [references/battery.md](references/battery.md).
 
-### 8. Performance Review
-
-Review web performance — ดูรายละเอียดใน `references/performance.md`
+### 7. Performance Review
 
 > Goal: ครอบคลุมทุก performance dimension
 
-1. ตรวจ Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1
-2. ตรวจ bundle size: JavaScript < 200KB, CSS < 50KB, total < 1MB
-3. ตรวจ network: render-blocking resources, request count, caching strategy
-4. ตรวจ runtime: long tasks, memory usage, frame rate
-5. ตรวจ loading: FCP, TTI, Speed Index, TTFB
-6. รัน Lighthouse audit ครบทุก category
-7. Critical: LCP > 4s, INP > 500ms, CLS > 0.25, page โหลดไม่ได้
-8. High: LCP > 2.5s, INP > 200ms, CLS > 0.1, Performance Score < 50, bundle > 500KB
+Review Core Web Vitals, bundle size, network, runtime, loading metrics, and Lighthouse audit. See [references/performance.md](references/performance.md).
 
-### 9. Accessibility Review
-
-Review accessibility ตาม WCAG 2.1 — ดูรายละเอียดใน `references/accessibility.md`
+### 8. Accessibility Review
 
 > Goal: ครอบคลุมทุก accessibility dimension
 
-1. ตรวจ keyboard navigation: tab order, focus indicators, skip link
-2. ตรวจ screen reader: ARIA labels, alt text, semantic HTML, heading hierarchy
-3. ตรวจ color contrast: WCAG AA (text ≥ 4.5:1), ไม่ใช้สีเพียงอย่างเดียว
-4. ตรวจ forms: labels, error messages, keyboard accessible controls
-5. ตรวจ media: captions, audio descriptions, autoplay controls
-6. รัน automated audit: axe, Lighthouse, pa11y
-7. Critical: no keyboard access, no alt text บน critical images, contrast < 3:1
-8. High: missing labels, broken heading hierarchy, no focus indicators
+Review keyboard navigation, screen reader support, color contrast, forms, media, and automated audits against WCAG 2.1. See [references/accessibility.md](references/accessibility.md).
 
-### 10. Compatibility Review
-
-Review browser/platform compatibility — ดูรายละเอียดใน `references/compatibility.md`
+### 9. Compatibility Review
 
 > Goal: ครอบคลุมทุก compatibility dimension
 
-1. ตรวจสอบ browser support: target browsers, polyfills, feature detection, transpilation config
-2. ตรวจสอบ platform compatibility: OS versions, Node.js versions, runtime requirements
-3. ตรวจสอบ API compatibility: deprecated APIs, vendor prefixes, browser-specific behavior
-4. ตรวจสอบ CSS compatibility: flexbox, grid, custom properties, `backdrop-filter`, vendor prefixes
-5. Critical: ใช้ API ที่ browser หลักไม่รองรับ, broken บน target platform, ไม่มี fallback
-6. High: missing polyfill สำหรับ feature สำคัญ, inconsistent behavior ข้าม browsers
+Review browser support, polyfills, feature detection, transpilation, OS/runtime compatibility, and CSS compatibility. See [references/compatibility.md](references/compatibility.md).
 
-### 11. Validate Findings
+### 10. Validate Findings
 
 ตรวจสอบและ validate issues จากทุก section
 
@@ -163,7 +94,7 @@ Review browser/platform compatibility — ดูรายละเอียด�
 2. ทำ `/validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
-### 12. Report
+#### 10.2 Report
 
 รายงานผล review ในรูปแบบตาราง
 
@@ -171,7 +102,7 @@ Review browser/platform compatibility — ดูรายละเอียด�
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง aggregate findings จากทุก section
-3. คำนวณ review score — ดูสูตรใน `references/scoring.md`
+3. คำนวณ review score — ดูสูตรใน [references/scoring.md](references/scoring.md)
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -209,7 +140,7 @@ Review browser/platform compatibility — ดูรายละเอียด�
 
 ### 5. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
+- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน [references/scoring.md](references/scoring.md)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง

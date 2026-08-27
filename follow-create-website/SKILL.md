@@ -103,7 +103,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 3. ตรวจสอบ environment variables และ build config
 4. ทดสอบ production URL
 
-### 11. Register As Devin Skill If Needed
+#### 10.2 Register As Devin Skill If Needed
 
 > Goal: ถ้า website เป็น devin skill ให้ update registry
 

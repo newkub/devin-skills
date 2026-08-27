@@ -113,7 +113,7 @@ description: รัน test suite ตรวจหา failures แล้ว valid
 2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/write-test` เพิ่ม แล้วรัน tests ใหม่
 
-### 11. Report
+#### 10.2 Report
 
 > Goal: Report
 

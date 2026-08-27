@@ -3,3 +3,4 @@
 | File | Responsibility |
 |---|---|
 | [correctness-dimensions.md](correctness-dimensions.md) | Correctness Review Dimensions |
+| [validate-score-and-report.md](validate-score-and-report.md) | Validate, Score And Report Process |

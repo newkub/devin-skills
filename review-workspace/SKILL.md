@@ -29,86 +29,52 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ### 1. Identify Workspace
 
-ระบุ workspace ที่จะ review
-
 > Goal: รู้ว่า review workspace ใด และอยู่ที่ไหน
 
-1. ถ้ามี argument ให้ใช้เป็นค่าเริ่มต้น ถ้าไม่มีให้ใช้ current working directory
-2. ทำ `/check-monorepo` เพื่อตรวจสอบว่าเป็น monorepo หรือไม่
-3. ถ้าเป็น monorepo ให้ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces ทั้งหมด
-4. ระบุ target workspace path และ root workspace path
-5. ถ้า workspace ไม่พบให้ stop และ report
+1. ดูรายละเอียดใน [references/identify-workspace.md](references/identify-workspace.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Analyze Manifest
 
-วิเคราะห์ package manifest ของ workspace
-
 > Goal: ตรวจสอบ manifest quality และ scripts
 
-1. อ่าน `package.json` หรือ `Cargo.toml` ของ workspace
-2. ตรวจสอบ `name`, `version`, `description`, `main`, `types` หรือ `bin`
-3. ตรวจสอบ `scripts` ว่ามี `dev`, `build`, `test`, `lint`, `typecheck`, `verify`, `ci` ตาม `/follow-package-manifest`
-4. ตรวจสอบ `exports`, `files`, `publishConfig` สำหรับ library packages
-5. บันทึก findings พร้อม evidence
+1. ดูรายละเอียดใน [references/analyze-manifest.md](references/analyze-manifest.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Review Structure
 
-ตรวจสอบโครงสร้าง directory ของ workspace
-
 > Goal: โครงสร้าง workspace สอดคล้องกับ tech stack และ conventions
 
-1. ทำ `/scan-codebase` ใน target workspace
-2. ตรวจสอบ source directory, test directory, config directory
-3. ตรวจสอบว่ามี `README.md`, `LICENSE`, `.gitignore` หรือไม่
-4. ตรวจสอบ file size เกิน 250 บรรทัดหรือไม่
-5. ระบุ files ที่ไม่มีการใช้งานหรือ orphan files
-6. ตรวจสอบว่า workspace มีขนาดเหมาะสมและ single responsibility — ถ้าใหญ่เกินไป, เล็กเกินไป, ทำหลายสิ่ง, หรือไม่มีเหตุผลชัดเจนที่แยกเป็น workspace ให้พิจารณา `/refactor-workspace`
+1. ดูรายละเอียดใน [references/review-structure.md](references/review-structure.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Review Dependencies
 
-ตรวจสอบ dependencies ของ workspace
-
 > Goal: dependencies ถูกต้อง ไม่ซ้ำซ้อน ไม่ขาด ไม่เกิน
 
-1. แยก `dependencies`, `devDependencies`, `peerDependencies`, `optionalDependencies`
-2. ระบุ `workspace:*` dependencies และตรวจสอบว่ามีอยู่จริง
-3. ทำ `/check-unused-deps` เพื่อหา unused dependencies
-4. ทำ `/run-audit` เพื่อตรวจ security vulnerabilities
-5. ตรวจสอบ version constraints ระหว่าง workspaces ว่าสอดคล้องกัน
+1. ดูรายละเอียดใน [references/review-dependencies.md](references/review-dependencies.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Review Config Consistency
 
-ตรวจสอบ config files ของ workspace
-
 > Goal: config files สอดคล้องกับ root workspace และ project standards
 
-1. ทำ `/update-review-codebase-cli-and-run` สำหรับ tsconfig, vite, biome, eslint, prettier, lefthook, turbo
-2. เปรียบเทียบ config กับ root workspace ถ้ามี
-3. ตรวจสอบ `.env.example`, `.env.local` ว่ามีหรือไม่
-4. ตรวจสอบ config drift ระหว่าง workspaces ถ้าเป็น monorepo
+1. ดูรายละเอียดใน [references/review-config-consistency.md](references/review-config-consistency.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Run Checks
 
-รัน verification commands เพื่อตรวจสอบ workspace health
-
 > Goal: พบ runtime และ build issues ก่อน report
 
-1. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan
-2. ถ้ามี scripts ให้รัน `bun run verify` หรือ `bun run ci` ตามลำดับ
-3. ถ้าเป็น Rust ให้รัน `cargo clippy && cargo check && cargo test`
-4. บันทึก errors และ failures พร้อม evidence
+1. ดูรายละเอียดใน [references/run-checks.md](references/run-checks.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Validate Findings And Report
 
-validate findings และสรุปผล
-
 > Goal: findings ถูกต้อง พร้อม review score และ recommendations
 
-1. ทำ `/validate` เพื่อตรวจสอบ findings
-2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
-3. คำนวณ review score โดย weighted average
-4. ทำ `/report-table` สำหรับ summary ด้วยคอลัมน์ `No., Category, Finding, Severity, Evidence, Recommendation` โดย `No.` เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว
-5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ดูรายละเอียดใน [references/validate-findings-and-report.md](references/validate-findings-and-report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

@@ -26,50 +26,31 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 > Goal: ตรวจ risk assessment ครบถ้วน
 
-1. ตรวจทุก task มี risk assessment: probability × impact
-2. ตรวจ high-risk tasks มี mitigation plan และ rollback strategy
-3. ตรวจ risks จัดลำดับตาม severity: Critical, High, Medium, Low
-4. ตรวจ worst-case scenario ได้รับการจำลอง
-5. ดูรายละเอียดใน [references/risk-assessment.md](references/risk-assessment.md)
+Assess risk identification, probability, impact, mitigation, rollback, and stress testing. See [references/risk-assessment.md](references/risk-assessment.md).
 
 ### 3. Map Dependencies
 
 > Goal: ตรวจ dependency mapping ถูกต้อง
 
-1. ตรวจ dependencies ระหว่าง tasks ไม่มี circular
-2. ตรวจ critical path ชัดเจนและไม่มี bottlenecks
-3. ตรวจ parallelizable tasks ระบุชัดเจน
-4. ตรวจ module boundaries และ dependency directions
-5. ดูรายละเอียดใน [references/dependency-mapping.md](references/dependency-mapping.md)
+Map task, module, and critical-path dependencies; check circular dependencies and parallelizable tasks. See [references/dependency-mapping.md](references/dependency-mapping.md).
 
 ### 4. Analyze Alternatives
 
 > Goal: ตรวจ alternatives analysis ครบถ้วน
 
-1. ตรวจ architectural decisions มี trade-off analysis
-2. ตรวจมี alternatives ที่ปฏิเสธพร้อมเหตุผล
-3. ตรวจ library choices มีเหตุผล: modern, type safety, performance, DX, maintenance
-4. ตรวจไม่มี premature decisions ที่ข้าม alternatives
-5. ดูรายละเอียดใน [references/alternatives.md](references/alternatives.md)
+Check architectural decisions, library choices, implementation approaches, and trade-off documentation. See [references/alternatives.md](references/alternatives.md).
 
 ### 5. Check Feasibility
 
 > Goal: ตรวจ timeline และ resource feasibility
 
-1. ตรวจ timeline มี milestones พร้อม buffer
-2. ตรวจ effort estimates สมเหตุสมผล: `S`, `M`, `L`, `XL`
-3. ตรวจ resource requirements ระบุชัดเจน
-4. ตรวจ buffer ratio เหมาะสม: `buffer / total`
-5. ดูรายละเอียดใน [references/feasibility.md](references/feasibility.md)
+Check timeline, milestones, effort estimates, resource requirements, and buffer ratio. See [references/feasibility.md](references/feasibility.md).
 
 ### 6. Validate Scope And Acceptance
 
 > Goal: ตรวจ scope clarity และ acceptance criteria
 
-1. ตรวจ scope ชัดเจน ไม่กว้างเกินไป ไม่แคบเกินไป
-2. ตรวจแต่ละ task มี acceptance criteria ที่ testable
-3. ตรวจไม่มี scope creep หรือ missing tasks
-4. ตรวจ rollback plan มีสำหรับ high-risk tasks
+Validate scope clarity, testable acceptance criteria, scope creep, and rollback plans. See [references/scope-acceptance.md](references/scope-acceptance.md).
 
 ### 7. Score And Report
 

@@ -52,70 +52,43 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 > Goal: API calls และ network layer มีประสิทธิภาพ
 
-1. ตรวจสอบ HTTP client, API endpoints, CDN, proxy, load balancer
-2. ตรวจสอบ DNS records, TTL, prefetch/preconnect สำหรับ third-party origins
-3. ตรวจสอบ connection pooling, keep-alive, HTTP/2, HTTP/3, compression
-4. ตรวจสอบ latency, payload size, cache headers, retry strategy
-5. ถ้าไม่มี network layer → ข้าม step นี้
+Review HTTP client, CDN, DNS, connection pooling, latency, payload, compression, and cache headers. See [references/network-and-api.md](references/network-and-api.md).
 
 ### 3. Bundler And Build Performance
 
 > Goal: bundle และ build output มีขนาดเล็ก โหลดเร็ว
 
-1. ระบุ build tool จาก `package.json` และ config: `bunup.config.ts`, `tsdown.config.ts`, `vite.config.ts`
-2. ตรวจสอบ chunk splitting: vendor chunks, route-level chunks, dynamic imports
-3. ตรวจสอบ tree shaking: `sideEffects` in `package.json`, unused exports, dead code
-4. ตรวจสอบ minification, source maps, `external` dependencies
-5. ตรวจสอบ asset optimization: image, font, SVG, gzip size
-6. ถ้าไม่มี build step → ข้าม step นี้
+Review build tool config, chunk splitting, tree shaking, minification, source maps, and asset optimization. See [references/bundler-and-build.md](references/bundler-and-build.md).
 
 ### 4. Runtime And CPU Performance
 
 > Goal: runtime execution ไม่มี hot paths หรือ bottlenecks
 
-1. ตรวจสอบ hot paths ด้วย profiling: `run-profiler`, `bun profile`, Chrome DevTools
-2. ตรวจสอบ event loop blocking, synchronous operations ที่ยาว
-3. ตรวจสอบ main thread work, expensive computations, render bottlenecks
-4. ทำ `/run-profiler` สำหรับ critical user flows
-5. ถ้าเป็น frontend ให้ทำ `/review-frontend` สำหรับ rendering performance
+Review hot paths, event loop blocking, main thread work, and run profilers for critical flows. See [references/runtime-and-cpu.md](references/runtime-and-cpu.md).
 
 ### 5. Memory Performance
 
 > Goal: memory usage อยู่ในเกณฑ์ ไม่มี leaks
 
-1. ตรวจสอบ heap snapshots, GC pressure, large allocations
-2. ตรวจสอบ unbounded collections, caches ที่โตไม่จำกัด, event listeners ที่ไม่ถูก cleanup
-3. ตรวจสอบ streaming และ pagination สำหรับ large data
-4. ทำ `/deep-analyze` เพื่อหา memory hotspots
+Review heap snapshots, GC pressure, unbounded collections, cleanup, and streaming for large data. See [references/memory.md](references/memory.md).
 
 ### 6. I/O And Database Performance
 
 > Goal: I/O operations มีประสิทธิภาพ
 
-1. ตรวจสอบ file I/O, database I/O, network I/O, serialization
-2. ตรวจสอบ batching, async I/O, connection pooling
-3. ตรวจสอบ N+1 queries, missing indexes, slow queries
-4. ตรวจสอบ ORM queries, query builders, raw SQL บน hot paths
-5. ถ้าไม่มี database → ข้าม step นี้
+Review file/database/network I/O, batching, connection pooling, N+1 queries, indexes, and hot-path queries. See [references/io-and-database.md](references/io-and-database.md).
 
 ### 7. Caching And Complexity
 
 > Goal: caching และ algorithms มีประสิทธิภาพ
 
-1. ตรวจสอบ cache invalidation, TTL, key design, storage
-2. ตรวจสอบ cache stampede, thundering herd, warming
-3. ดู `references/time-complexity.md` เพื่อวิเคราะห์ Big O และ data structure บน critical paths
-4. ตรวจสอบ data structure selection กับ input size
+Review cache invalidation, TTL, key design, stampede, and time/space complexity on critical paths. See [references/caching.md](references/caching.md).
 
 ### 8. Concurrency Review
 
 > Goal: ตรวจสอบ concurrent programming ใน application code
 
-1. ตรวจสอบ async/await patterns, parallel execution, error handling
-2. ตรวจสอบ resource management, connection pooling, rate limiting, backpressure
-3. ตรวจสอบ synchronization, shared state, race conditions, locks/channels
-4. ตรวจสอบ performance ของ concurrent code
-5. ดู `references/concurrency.md` สำหรับรายละเอียด
+Review async/await, parallel execution, resource management, synchronization, and race conditions. See [references/concurrency.md](references/concurrency.md).
 
 ### 9. Validate, Score And Report
 
@@ -124,7 +97,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 1. ทำ `/deep-validate` เพื่อ validate findings ทุกรายการ
 2. ทำ `/validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
-4. คำนวณ review score ตาม `references/scoring.md`
+4. คำนวณ review score ตาม [references/scoring.md](references/scoring.md)
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
 

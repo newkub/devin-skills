@@ -50,50 +50,19 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 
 > Goal: รวบรวม findings ด้าน static analysis, architecture, types, naming, readability, hardcode
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-4. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-5. Analyzer รัน static analysis tools แบบ lint, typecheck, `ast-grep` scan, `knip`, `jscpd`, `madge`
-6. ทำ `/update-review-codebase-cli-and-run` เพื่อ review patterns, boundaries, coupling, design patterns, anti-patterns, SOLID
-7. ทำ `/update-review-codebase-cli-and-run` เพื่อ review type design: generics, type inference, discriminated unions, type narrowing, branded types, type safety, `as const`, exhaustive checks, `any` usage, type assertions
-8. ทำ `/update-review-codebase-cli-and-run` เพื่อ review naming conventions: variable, function, class, file, directory, API endpoint, database naming, cross-layer consistency
-9. Analyzer ตรวจสอบ readability: function length เกิน 50 บรรทัด, parameter count เกิน 4, nesting depth เกิน 3 ระดับ, cognitive complexity, naming clarity, comment quality
-10. Analyzer ตรวจสอบ hardcode: magic numbers, hardcoded strings, URLs, file paths, secrets, business rules, feature flags
-11. ตรวจสอบ simplicity: over-engineering, YAGNI, premature optimization, unnecessary abstraction
-12. ตรวจสอบ redundancy: duplicate code, content duplication, unused exports, circular dependencies
-13. ตรวจสอบ consistency: cross-module patterns, coding style, folder structure, import/export patterns
-14. ดู criteria ใน `references/code-quality.md`
+Run deep analysis, review-codebase CLI, and static-analysis tools; then check code against static analysis, architecture, types, naming, readability, hardcode, simplicity, redundancy, and consistency criteria. See [references/code-quality.md](references/code-quality.md).
 
 ### 3. Bug-Prone Review
 
 > Goal: ระบุรูปแบบโค้ดที่มีแนวโน้มก่อให้เกิด bugs
 
-1. Analyzer ตรวจสอบ `null`/`undefined` safety: unsafe access, optional chaining ไม่มี fallback, non-null assertions
-2. Analyzer ตรวจสอบ type assertions, `as`, `any`, และ unsafe narrowing
-3. Analyzer ตรวจสอบ exhaustive handling: `switch`/`if-else` ที่ไม่ครอบคลุมทุก case, missing default branch
-4. Analyzer ตรวจสอบ arithmetic bugs: off-by-one, array indexing, date/time calculation, floating-point, monetary calculation
-5. Analyzer ตรวจสอบ mutable shared state, global state, และ side effects ใน pure functions
-6. Analyzer ตรวจสอบ async/promise bugs: floating promises, missing `await`, `Promise` ใน boolean expression
-7. Analyzer ตรวจสอบ unsafe parse/regex: `JSON.parse` ไม่มี `try-catch`, unsafe `eval`, regex ที่ไม่ validated
-8. Analyzer ตรวจสอบ resource cleanup: event listeners, subscriptions, timers, intervals ที่ไม่ถูก cleanup
-9. Analyzer ตรวจสอบ implicit assumptions และ unsafe defaults
-10. ดู criteria ใน `references/bug-prone.md`
+Run analyzers to detect null/undefined safety, type assertions, exhaustive handling, arithmetic, mutable state, async/promise, parse/regex, and resource cleanup issues. See [references/bug-prone.md](references/bug-prone.md).
 
 ### 4. Correctness Review
 
 > Goal: ตรวจสอบ logic correctness, edge cases, และ invariant checks
 
-1. ตรวจสอบว่า code/config ทำงานตาม requirements และ criteria ที่ระบุ
-2. ตรวจสอบ calculations, transformations, data mappings, serialization
-3. ตรวจสอบ control flow: `if/else`, `switch`, loops ว่า complete และ correct
-4. ตรวจสอบ boolean expressions, conditions, short-circuit, ordering, sequencing
-5. ตรวจสอบ edge cases: `null`/`undefined`, empty, zero, negative, boundary values, unexpected states
-6. ตรวจสอบ concurrency, race conditions, timeouts, async cancellation
-7. ตรวจสอบ input/output validation, schema validation, sanitization, type coercion
-8. ตรวจสอบ error handling, defaults, assumptions, invariants, recovery paths
-9. ตรวจสอบ references, links, และ configuration values
-10. ดู criteria ใน `references/correctness.md`
+Verify requirements, calculations, control flow, edge cases, concurrency, validation, error handling, and invariants. See [references/correctness.md](references/correctness.md).
 
 ### 5. Validate Findings
 

@@ -33,12 +33,7 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 > Goal: ตรวจสอบคุณภาพของชื่อ
 
-1. ชื่อบอก intent ชัดเจน: อ่านแล้วรู้ว่าทำอะไร
-2. ลำดับคำสม่ำเสมอ เช่น `verbNoun` หรือ `nounDescriptor`
-3. ใช้ casing สม่ำเสมอ: `camelCase`, `PascalCase`, `kebab-case`, `UPPER_SNAKE_CASE`
-4. หลีกเลี่ยง abbreviation ทีไม่เข้าใจ ชื่อหลอก หรือคำทั่วไปเกินไป
-5. ความยาวของชื่อพอดี: ไม่สั้นจนไม่บอก intent ไม่ยาวจนอ่านยาก
-6. ชื่อ skill ต้องเป็น lowercase คั่นด้วย `-` ไม่มีอักขระพิเศษ
+Review names against clarity, consistency, casing, abbreviations, length, and skill-name rules. See [references/naming-checklist.md](references/naming-checklist.md).
 
 ### 4. Check Conflicts
 

@@ -113,7 +113,7 @@ related:
 3. ใช้ Xcode Organizer หรือ `xcodebuild -exportArchive` สร้าง `.ipa`
 4. ใช้ App Store Connect หรือ TestFlight สำหรับ distribute
 
-### 11. Validate And Ship
+#### 10.2 Validate And Ship
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

@@ -17,44 +17,36 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 > Goal: ระบุ review reports ที่จะรวม
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure, tech stack, และ scope
-2. ระบุ dimensional reviews ที่เกี่ยวข้องกับ project ตาม context
-3. ตรวจว่ามี review reports อยู่แล้วหรือต้อง run ใหม่
-4. ถ้าไม่มี code หรือ artifacts ให้ review → stop และ report
+1. ดูรายละเอียดใน [references/prepare.md](references/prepare.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Collect
 
 > Goal: รวม findings จากทุก dimensional review
 
-1. ดึง findings จากทุก report ที่ run แล้ว
-2. บันทึก source dimension, severity, location, และ evidence ต่อ finding
-3. ถ้า finding ไม่มี evidence → ข้ามและบันทึกเป็น noise
+1. ดูรายละเอียดใน [references/collect.md](references/collect.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Deduplicate
 
 > Goal: ตัด findings ที่ซ้ำกันข้าม dimensions
 
-1. จับคู่ findings ที่อ้างถึง issue เดียวกัน
-2. รวมเป็น single finding พร้อมระบุทุก source dimensions
-3. ใช้ severity สูงสุดจากทุก source
+1. ดูรายละเอียดใน [references/deduplicate.md](references/deduplicate.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Prioritize
 
 > Goal: จัดลำดับ opportunities ตาม impact และ effort
 
-1. จัด findings เข้าหมวด: missing features, quality, implementation, DX, performance, security, architecture, delivery
-2. ให้คะแนนแต่ละ opportunity ด้วย impact / effort (high impact, low effort = สูง)
-3. คำนึงถึง quick wins และ dependencies ที่ชัดเจน
-4. ทำ `/prioritize` เพื่อยื่นยันลำดับ
+1. ดูรายละเอียดใน [references/prioritize.md](references/prioritize.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Report
 
 > Goal: ส่งมอบ prioritized list พร้อม action skill
 
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง: Rank, Opportunity, Category, Score, Action Skill, Sources
-3. แนะนำ action skill ต่อ opportunity: `/add-more`, `/idea-features`, `/improve`, `/fix`
-4. ทำ `/suggest-next-action` โดยอ้างอิง top opportunities
+1. ดูรายละเอียดใน [references/report.md](references/report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

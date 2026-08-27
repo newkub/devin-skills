@@ -18,67 +18,50 @@ argument-hint: "[scope]"
 
 > Goal: รู้ทุก skill และจัดกลุ่มตาม purpose
 
-1. ทำ `/scan-codebase` ใน `%APPDATA%\devin\skills`
-2. จัดทำรายการ skills ทั้งหมด: `name`, `description`, จำนวนไฟล์, ขนาด
-3. จัดกลุ่มตาม prefix (`run-*`, `follow-*`, `check-*`, `review-*`, `report-*`, `idea-*`, `deep-*`)
-4. สำหรับแต่ละกลุ่ม → อ่าน `description` และ `## Goal` เพื่อสรุป purpose สั้นๆ
+1. ดูรายละเอียดใน [references/inventory-and-group-skills.md](references/inventory-and-group-skills.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Detect Duplicate Purpose
 
 > Goal: หา skills ที่ทำหน้าที่เดียวกัน
 
-1. เปรียบเทียบ `description` และ `## Goal` ของ skills ในกลุ่มเดียวกัน
-2. หา skills ที่มี purpose ซ้อนทับ >70% → ระบุเป็น duplicate candidates
-3. หา skills ที่ prefix ต่างกันแต่ purpose ใกล้กัน (เช่น `check-*` กับ `review-*`)
-4. บันทึก duplicate candidates เป็นตาราง: skill A, skill B, overlap %, recommendation
+1. ดูรายละเอียดใน [references/detect-duplicate-purpose.md](references/detect-duplicate-purpose.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Detect Overlapping Scope
 
 > Goal: หา skills ที่ scope ซ้อนทับกัน
 
-1. อ่าน `## Scope` ของ duplicate candidates จาก step 2
-2. หา skills ที่ scope บอกว่า "ไม่ใช่" แต่จริงๆ ทำเหมือนกัน
-3. หา skills ที่มี `related` อ้างถึงกันและกัน → อาจเป็น overlap แทน
-4. ตรวจ `## Execute` ว่ามี steps ที่เหมือนกันมาก
+1. ดูรายละเอียดใน [references/detect-overlapping-scope.md](references/detect-overlapping-scope.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Detect Redundant Content
 
 > Goal: หา content ที่ซ้ำกันในหลาย skills
 
-1. ใช้ `/use-scripts` สร้าง script ใน `$env:TEMP` เพื่อ hash content ของแต่ละ skill
-2. เปรียบเทียบ `## Rules` และ `## Expected Outcome` ระหว่าง skills
-3. หา blocks ของ text ที่เหมือนกัน >50% ระหว่าง skills
-4. บันทึก redundant content เป็นตาราง: skill A, skill B, duplicated section, line range
+1. ดูรายละเอียดใน [references/detect-redundant-content.md](references/detect-redundant-content.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Detect Unused Skills
 
 > Goal: หา skills ที่ไม่ถูกอ้างถึงโดย skill อื่น
 
-1. ทำ `/check-reference` เพื่อหา skills ที่ไม่มีใครอ้างถึงใน `related`
-2. ตรวจ `AGENTS.md` ว่ามีอ้างถึง skill นั้นไหม
-3. แยก unused skills ออกเป็น: standalone (ใช้เองได้) กับ orphan (ไม่มี context)
-4. บันทึก unused skills เป็นตาราง: skill, type, recommendation
+1. ดูรายละเอียดใน [references/detect-unused-skills.md](references/detect-unused-skills.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Recommend Actions
 
 > Goal: แนะนำการจัดการกับ redundancy
 
-1. สำหรับ duplicate purpose → แนะนำ: merge, rename, หรือ split
-2. สำหรับ overlapping scope → แนะนำ: ปรับ `## Scope` ให้ชัดเจน
-3. สำหรับ redundant content → แนะนำ: ย้ายไป `references/` หรือสร้าง shared reference
-4. สำหรับ unused skills → แนะนำ: keep, document, หรือ remove
-5. ทำ `/report-table` สรุป recommendations: skill, issue, action, priority
-6. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
+1. ดูรายละเอียดใน [references/recommend-actions.md](references/recommend-actions.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Confirm And Execute
 
 > Goal: ดำเนินการตาม recommendations หลัง user ยืนยัน
 
-1. ทำ `/ask-me` เพื่อยืนยัน actions ก่อนดำเนินการ
-2. สำหรับ merge → ทำ `/review-devin-global-skills`
-3. สำหรับ rename → ทำ `/rename-files-to` แล้ว `/update-references`
-4. สำหรับ remove → ใช้ `git rm` แล้ว `/update-references`
-5. ทำ `/validate` หลังจบทุก action
+1. ดูรายละเอียดใน [references/confirm-and-execute.md](references/confirm-and-execute.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 

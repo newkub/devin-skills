@@ -259,6 +259,13 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `review-config: /review-config`
 - `review-readability: /review-readability`
 - `review-diff: /review-diff`
+- `review-and-fix: /review-and-fix`
+- `review-business: /review-business`
+- `review-by-stakeholder: /review-by-stakeholder`
+- `review-github-issue: /review-github-issue`
+- `review-issue: /review-issue`
+- `review-realize-implementation: /review-realize-implementation`
+- `review-uxui: /review-uxui`
 
 #### Create
 

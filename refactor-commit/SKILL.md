@@ -113,7 +113,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
    - `git add <file>` และ `git commit -m "message"` สำหรับแต่ละ commit
 4. ทำ `git rebase --continue` เมื่อ break down เสร็จ
 
-### 9. Validate Refactor
+#### 8.2 Validate Refactor
 
 > Goal: Validate Refactor
 
@@ -124,7 +124,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 3. ทำ `git diff backup-branch HEAD` เพื่อดู changes ที่เกิดขึ้น
 4. รัน tests ถ้ามีเพื่อยืนยันว่าไม่มี regression
 
-### 10. Handle Conflicts
+### 9. Handle Conflicts
 
 > Goal: Handle Conflicts
 
@@ -137,7 +137,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 5. ถ้าต้องการ abort, ทำ `git rebase --abort` และ restore จาก backup branch
 6. ใช้ `git reflog` เพื่อดู history และ recover ถ้าจำเป็น
 
-### 11. Force Push
+#### 9.2 Force Push
 
 > Goal: Force Push
 
@@ -148,7 +148,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 3. ใช้ `git push --force-with-lease` เพื่อความปลอดภัยกว่า `--force`
 4. แจ้งทีมให้ทราบก่อนทำ force push
 
-### 12. Rollback
+### 10. Rollback
 
 > Goal: Rollback
 
@@ -159,7 +159,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 3. หรือใช้ `git reset --hard HEAD@{1}` เพื่อย้อนกลับสู่สถานะก่อน rebase
 4. ลบ backup branch ด้วย `git branch -D backup-<branch>-<timestamp>` เมื่อตรวจสอบแล้วถูกต้อง
 
-### 13. Update References
+#### 10.2 Update References
 
 > Goal: Update References
 

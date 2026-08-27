@@ -46,7 +46,7 @@ Review GDPR compliance ครอบคลุม data subject rights, lawful basi
 8. Critical: no lawful basis, no consent mechanism, no DSAR process, no breach notification, data minimization violation
 9. High: missing consent withdrawal, no DPIA, no privacy by design, incomplete DSAR, no DPO
 
-### 3. CCPA Review
+#### 2.2 CCPA Review
 
 Review CCPA compliance ครอบคลุม consumer rights, opt-out, sale of data, notice — ดู `references/ccpa.md`
 
@@ -61,7 +61,7 @@ Review CCPA compliance ครอบคลุม consumer rights, opt-out, sale o
 7. Critical: no opt-out mechanism, no notice at collection, no consumer right process, selling data without notice
 8. High: missing verification, missing GPC support, incomplete privacy policy, no authorized agent process
 
-### 4. HIPAA Review
+### 3. HIPAA Review
 
 Review HIPAA compliance ครอบคลุม PHI, safeguards, BAAs, access controls — ดู `references/hipaa.md`
 
@@ -77,7 +77,7 @@ Review HIPAA compliance ครอบคลุม PHI, safeguards, BAAs, access c
 8. Critical: no BAA with vendor, unencrypted PHI, no access control, no audit log, no breach notification
 9. High: missing workforce training, incomplete NPP, no de-identification, missing transmission security
 
-### 5. PCI-DSS Review
+#### 3.2 PCI-DSS Review
 
 Review PCI-DSS compliance ครอบคลุม cardholder data, network security, access control, monitoring — ดู `references/pci-dss.md`
 
@@ -93,7 +93,7 @@ Review PCI-DSS compliance ครอบคลุม cardholder data, network secu
 8. Critical: CVV storage, unencrypted PAN, no network segmentation, shared credentials, no audit log
 9. High: missing MFA, weak encryption, missing vulnerability scan, no file integrity monitoring
 
-### 6. SOC2 Review
+### 4. SOC2 Review
 
 Review SOC2 compliance ครอบคลุม trust services criteria, controls, monitoring — ดู `references/soc2.md`
 
@@ -108,7 +108,7 @@ Review SOC2 compliance ครอบคลุม trust services criteria, control
 7. Critical: missing access control, no incident response, no backup, no encryption, no privacy notice
 8. High: missing monitoring, incomplete control documentation, no remediation tracking, missing NDA
 
-### 7. PDPA Review
+#### 4.2 PDPA Review
 
 Review PDPA (Thailand Personal Data Protection Act พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562) compliance ครอบคลุม data controller/processor, lawful basis, sensitive data, data subject rights, consent, breach notification — ดู `references/pdpa.md`
 
@@ -126,7 +126,7 @@ Review PDPA (Thailand Personal Data Protection Act พ.ร.บ. คุ้มค�
 10. Critical: no lawful basis, no consent mechanism, no sensitive data protection, no DSAR process, no breach notification, no privacy notice, cross-border transfer without PDPC approval
 11. High: missing consent withdrawal, no DPA with processor, no DPO when required, incomplete DSAR, no minor protection, missing cross-border safeguard
 
-### 8. Consent Management Review
+### 5. Consent Management Review
 
 Review consent management ครอบคลุม collection, withdrawal, record, versioning — ดู `references/consent.md`
 
@@ -141,7 +141,7 @@ Review consent management ครอบคลุม collection, withdrawal, recor
 7. Critical: no consent mechanism, pre-ticked consent, no withdrawal, no consent record, no minor protection
 8. High: missing granular consent, missing versioning, no unsubscribe, inconsistent consent record
 
-### 9. Data Subject Rights (DSAR) Review
+### 6. Data Subject Rights (DSAR) Review
 
 Review DSAR process ครอบคลุม access, deletion, portability, objection — ดู `references/dsar.md`
 
@@ -156,7 +156,7 @@ Review DSAR process ครอบคลุม access, deletion, portability, obje
 7. Critical: no DSAR process, no identity verification, no deletion including backup, no response within timeline
 8. High: missing portability, missing objection, no DSAR tracking, incomplete data export
 
-### 10. Audit Trail Review
+### 7. Audit Trail Review
 
 Review audit trail ครอบคลุม logging, tamper protection, retention, review — ดู `references/audit-trail.md`
 
@@ -171,7 +171,7 @@ Review audit trail ครอบคลุม logging, tamper protection, retentio
 7. Critical: no audit log on data access, no tamper protection, audit log can be modified, no retention
 8. High: incomplete coverage, missing review, no anomaly detection, missing access control
 
-### 11. Data Retention Review
+### 8. Data Retention Review
 
 Review data retention ครอบคลุม policy, schedule, enforcement, disposal — ดู `references/data-retention.md`
 
@@ -186,7 +186,7 @@ Review data retention ครอบคลุม policy, schedule, enforcement, di
 7. Critical: no retention policy, no automated deletion, indefinite retention without basis, no legal hold process
 8. High: incomplete schedule, missing enforcement, no disposal verification, no documentation
 
-### 12. Cross-Border Transfer Review
+#### 8.2 Cross-Border Transfer Review
 
 Review cross-border data transfer ครอบคลุม transfer mechanism, adequacy, safeguard — ดู `references/cross-border.md`
 
@@ -200,7 +200,7 @@ Review cross-border data transfer ครอบคลุม transfer mechanism, a
 6. Critical: no transfer mechanism, no safeguard, no transfer documentation, transfer to non-adequate country without SCC
 7. High: missing transfer mapping, no supplementary measure, no transfer impact assessment
 
-### 13. Validate, Score And Report
+### 9. Validate, Score And Report
 
 ตรวจสอบ findings และรายงานผล
 
@@ -215,48 +215,11 @@ Review cross-border data transfer ครอบคลุม transfer mechanism, a
 
 ## Rules
 
-### 1. Skip Conditions
-
-- ถ้า project ไม่มี EU users → ข้าม Section 2
-- ถ้า project ไม่มี California users → ข้าม Section 3
-- ถ้า project ไม่มี health data → ข้าม Section 4
-- ถ้า project ไม่มี payment processing → ข้าม Section 5
-- ถ้า project ไม่ใช่ SaaS → ข้าม Section 6
-- ถ้า project ไม่มี Thailand users หรือไม่อยู่ในเขต PDPA → ข้าม Section 7
-- ถ้า project ไม่มี consent collection → ข้าม Section 8
-- ถ้า project ไม่มี cross-border transfer → ข้าม Section 12
-
-### 2. Severity Classification
-
-- Critical: no lawful basis, no consent mechanism, no DSAR process, CVV storage, unencrypted PHI, no audit log on data access, no retention policy, no transfer mechanism, no breach notification, no sensitive data protection (PDPA Section 26), no privacy notice (PDPA Section 23)
-- High: missing consent withdrawal, missing MFA for CDE, incomplete DSAR, no DPIA, missing BAA, no anomaly detection, no legal hold, missing SCC, no DPA with processor (PDPA), no DPO when required (PDPA), no minor protection (PDPA Section 20)
-- Medium: incomplete privacy policy, inconsistent consent record, missing retention documentation, suboptimal audit review
-- Low: cosmetic, documentation gap, minor naming
-
-### 3. Evidence-Based Findings
-
-- ทุก finding ต้องมี file path และ line number
-- ไม่เดา ใช้ tools สำหรับ verification
-- ระบุ regulation, article, control, data category, หรือ process ที่เกี่ยวข้อง
-
-### 4. Review Independence
-
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ไม่ซ้ำกับ `/review-security` — ใช้ workflow นั้นสำหรับ security controls
-- ไม่ซ้ำกับ `/review-delivery` Section 15 — ใช้ workflow นี้สำหรับ compliance เชิงลึก
-- ใช้ `/roleplay-compliance-officer` สำหรับ perspective-based review
-
-### 5. Health Score
-
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
-
-### 6. Formatting
-
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- สร้าง backup branch ก่อน review
+- ใช้ evidence-based findings พร้อม file path และ regulation อ้างอิง
+- ไม่แก้ไข code ระหว่าง review — แยก compliance กับ security/delivery
+- ดูรายละเอียด rules, severity, และ health score ใน [references/rules.md](references/rules.md)
+- รายงานผลด้วย `/report-table` และ `/suggest-next-action`
 
 ## Expected Outcome
 
