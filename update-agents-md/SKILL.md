@@ -7,6 +7,7 @@ related:
   - report-workspace-graph
   - follow-monorepo
   - review-rules
+  - review-by-stakeholder
   - validate
   - ship
 ---
@@ -76,7 +77,17 @@ related:
 5. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
 6. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
-### 6. Validate
+### 6. Review By Stakeholder
+
+> Goal: ตรวจสอบ `AGENTS.md` และ project context จากหลายมุมมอง stakeholder ก่อน validate
+
+1. ทำ `/review-by-stakeholder` เพื่อรับมุมมองจาก roleplay stakeholders ทีเหมาะสมกับ project
+2. บันทึก findings พร้อม severity, stakeholder, และ recommendation
+3. ถ้าพบ issues ทีมีผลต่อ `AGENTS.md` → แก้ไข `AGENTS.md` ก่อนดำเนินต่อ
+4. ถ้า findings สำคัญ → ทำ `/ask-me` เพื่อ confirm trade-offs ก่อนเปลี่ยนแปลงขนาดใหญ่
+5. สรุป stakeholder coverage map และ top findings ในรายงาน
+
+### 7. Validate
 
 > Goal: ตรวจสอบ `AGENTS.md` ก่อนส่งต่อให้ ship
 
@@ -120,6 +131,13 @@ related:
 - ก่อนเขียน workspace section ใน monorepo ต้องทำ `/report-workspace-graph` ก่อน
 - ไม่ duplicate root conventions
 
+### 6. Stakeholder Review
+
+- ทำ `/review-by-stakeholder` หลังจากเขียน `AGENTS.md` ทั้ง root และ workspace แล้ว
+- เลือก stakeholders ตาม context ของ project
+- ไม่ต้องรอผลจากทุก roleplay ถ้า findings ชัดเจน
+- ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/validate`
+
 ## Expected Outcome
 
 - root `AGENTS.md` สมบูรณ์
@@ -127,5 +145,6 @@ related:
 - `### Platform` และ `### Target User` ถูกต้อง
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
+- ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/validate`
 - ผ่าน `/review-rules` และ `/validate`
 - ไม่ commit เอง — รอ `/ship` หรือ `/git-commit` ดำเนินการต่อ
