@@ -409,7 +409,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `check-git-files-history: /check-git-files-history`
 - `convert-to-git-submodules: /convert-to-git-submodules`
 - `create-github-pull-request: /create-github-pull-request`
-- `create-worktree-in-project: /create-worktree-in-project`
+- `create-git-worktree-in-project: /create-git-worktree-in-project`
 - `cleanup-worktree: /cleanup-worktree`
 - `delete-git-branch: /delete-git-branch`
 - `delete-git-submodules: /delete-git-submodules`
