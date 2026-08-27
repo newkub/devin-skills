@@ -24,7 +24,7 @@ argument-hint: "[cli-name]"
 > Goal: ระบุ CLI ทีต้องการ convert
 
 1. ดูรายการจาก `/report-my-global-cli` หรือถาม user
-2. ถ้าไม่มี report ทำ `/follow-tool-my-global-cli` เพื่อ list ทีติดตั้ง
+2. ถ้าไม่มี report ทำ `/follow-my-global-cli` เพื่อ list ทีติดตั้ง
 3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-md-in-dot-devin`
 4. ตรวจสอบ version, installation path และ global availability
 
@@ -82,7 +82,7 @@ argument-hint: "[cli-name]"
 1. ทำ `/deep-validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
 2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
 3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
-4. ถ้าต้องปรับ → ทำ `/follow-tool-my-global-cli` อีกรอบหรือ `/learn-from-cli`
+4. ถ้าต้องปรับ → ทำ `/follow-my-global-cli` อีกรอบหรือ `/learn-from-cli`
 5. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
 
 ## Rules

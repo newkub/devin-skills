@@ -1,5 +1,5 @@
 ---
-name: follow-tool-my-global-cli
+name: follow-my-global-cli
 description: Run installed global CLI tools correctly based on context and environment
 ---
 
@@ -19,7 +19,7 @@ description: Run installed global CLI tools correctly based on context and envir
 
 1. ระบุ tool จาก user request หรือ context
 2. ตรวจสอบว่า tool ติดตั้งด้วย `which`, `where`, หรือ `Get-Command`
-3. ถ้าไม่มีให้ทำ `/follow-tool-my-global-cli` หรือ `/install-*` ก่อน
+3. ถ้าไม่มีให้ทำ `/follow-my-global-cli` หรือ `/install-*` ก่อน
 
 ### 2. Build Command
 

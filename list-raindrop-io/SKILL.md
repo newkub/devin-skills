@@ -4,7 +4,7 @@ description: รายการ bookmarks จาก Raindrop.io เรียง�
 related:
   - search-in-raindrop-io
   - follow-my-tech-stack
-  - follow-tool-my-global-cli
+  - follow-my-global-cli
   - use-scripts
 ---
 
@@ -22,7 +22,7 @@ related:
 
 > Goal: ตรวจสอบ raindrop CLI และ authentication
 
-1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-tool-my-global-cli`
+1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli`
 2. รัน `raindrop auth status`
 3. ถ้ายังไม่ authenticated → รัน `printf '%s' "$RAINDROP_ACCESS_TOKEN" | raindrop auth login --token-stdin`
 4. รัน `raindrop doctor` เพื่อ verify config, auth, และ API connectivity

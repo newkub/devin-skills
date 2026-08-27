@@ -21,7 +21,7 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 
 > Goal: ตรวจสอบ CLI tools ที่ติดตั้งในเครื่อง
 
-1. ทำ `/follow-tool-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
+1. ทำ `/follow-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
 2. รัน `mise list` เพื่อดู tools ที่ติดตั้งด้วย mise
 3. รัน `scoop list` เพื่อดู packages ที่ติดตั้งด้วย scoop
 4. รัน `winget list` เพื่อดู apps ที่ติดตั้งด้วย winget
@@ -92,7 +92,7 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 - ใช้ `search_web` สำหรับค้นหา release notes
 - ใช้ `mcp7_list_releases` สำหรับ GitHub release tracking
 - ใช้ `read_url_content` สำหรับอ่าน full changelogs
-- ทำตาม `/follow-tool-my-global-cli` สำหรับ tool selection rules
+- ทำตาม `/follow-my-global-cli` สำหรับ tool selection rules
 
 ### 3. Freshness Requirements
 

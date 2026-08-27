@@ -6,7 +6,7 @@ allowed-tools: exec
 related:
   - search-project-in-drive-d
   - search-files-patterns
-  - follow-tool-my-global-cli
+  - follow-my-global-cli
   - consider-use-subagents
   - update-agents-md
   - report-table

@@ -19,7 +19,7 @@ description: "อัปเดตทุกอย่างในเครื่อ
 
 1. ทำ `/update-all-program-in-computer`
 2. บันทึก programs ที update สำเร็จ/ล้มเหลว
-3. ถ้ามี programs ทีล้าสมัยมาก → ทำ `/follow-tool-my-global-cli`
+3. ถ้ามี programs ทีล้าสมัยมาก → ทำ `/follow-my-global-cli`
 
 ### 2. Update Dotfiles
 

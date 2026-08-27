@@ -18,7 +18,7 @@ description: อัปเดต dotfiles ด้วย chezmoi รวมถึง
 > Goal: ตรวจสอบ chezmoi
 
 1. รัน `chezmoi --version`
-2. ถ้าไม่มี → ทำ `/follow-tool-my-global-cli` เพื่อติดตั้ง
+2. ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
 3. รัน `chezmoi doctor` เพื่อตรวจสอบสถานะ
 4. ระบุ source directory และ destination directory
 
