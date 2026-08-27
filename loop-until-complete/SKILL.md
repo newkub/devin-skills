@@ -1,6 +1,9 @@
 ---
 name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์
+related:
+  - loop-continuous
+  - run-until-pass
 ---
 
 ## Goal

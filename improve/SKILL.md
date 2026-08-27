@@ -2,6 +2,7 @@
 name: improve
 description: ปรับปรุงสิ่งใดๆ ใน project ตาม context โดยหา gaps แล้วแก้ไข
 related:
+  - loop-continuous
   - review-gaps
   - fix
   - refactor

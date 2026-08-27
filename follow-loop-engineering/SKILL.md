@@ -1,6 +1,10 @@
 ---
 name: follow-loop-engineering
 description: ออกแบบ agentic loop ทีหา, triage, มอบหมาย, verify, และ persist state ได้เอง
+related:
+  - loop-continuous
+  - loop-until-complete
+  - run-until-pass
 ---
 
 ## Goal

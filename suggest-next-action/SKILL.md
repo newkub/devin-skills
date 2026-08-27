@@ -3,6 +3,7 @@ name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
 argument-hint: "[context]"
 related:
+  - loop-continuous
   - follow-enter-dot
   - follow-agents-md
   - follow-devin-global-subagents
