@@ -62,7 +62,7 @@ argument-hint: "[suggestion]"
 
 ### 3. No Ignore Patterns
 
-- ไม่ใช้ ignore patterns แทนการแก้ไขจริง ทำตาม `/no-use-ignore`
+- ไม่ใช้ ignore patterns แทนการแก้ไขจริง แก้ที่ source แทน
 
 ## Expected Outcome
 

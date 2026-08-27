@@ -71,7 +71,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. รัน `bun run check` เพื่อตรวจสอบรวม (lint + typecheck + scan) หรือรันเฉพาะเจาะจง: `bunx biome lint` | `tsc --noEmit` | `bun test` | `bun run build`
 3. ใช้ `/run-until-pass` เพื่อรันจนกว่าจะผ่านทุก check
 4. ตรวจสอบไม่มี side effects: ไม่มี error ใหม่ในไฟล์อื่น, ไม่มี test ที่เคยผ่านแล้ว fail, ไม่มี warning ใหม่
-5. ตรวจสอบว่า fix ไม่ได้เพิ่ม ignore comments (`// biome-ignore`, `// @ts-ignore`, `# type: ignore`, etc.) — ทำตาม `/no-use-ignore` ถ้าพบ → ลบและแก้ที่ source
+5. ตรวจสอบว่า fix ไม่ได้เพิ่ม ignore comments (`// biome-ignore`, `// @ts-ignore`, `# type: ignore`, etc.) ถ้าพบ → ลบและแก้ที่ source แทนการ suppress
 6. ถ้ามี error ใหม่ → กลับไป Step 4 (loop) — ถ้าเกิน 3 รอบ → ทำ `/deep-debug`
 
 ### 6. Document And Prevent
@@ -123,7 +123,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - Upstream over downstream — แก้ต้นน้ำดีกว่าปลายน้ำ (config > dependency > code)
 - Batch over sequential — แก้ errors ที่เกี่ยวข้องเป็น batch
 - Verify before assume — ยืนยันด้วยการรัน
-- No ignore — ห้าม suppress error ด้วย ignore patterns ทำตาม `/no-use-ignore`
+- No ignore — ห้าม suppress error ด้วย ignore patterns แก้ที่ source แทน
 - Loop until clean — ถ้า fix สร้าง error ใหม่ ให้ loop จนกว่าจะไม่มี
 
 ### 5. Time Budget And Loop Limit

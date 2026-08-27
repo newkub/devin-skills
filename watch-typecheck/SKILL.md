@@ -45,7 +45,7 @@ Watch typecheck status อย่างต่อเนื่อง ตรวจ�
 3. ทำ `/resolve-errors` กับ errors ในแต่ละไฟล์
 4. วิเคราะห์ root cause: missing type, incorrect type, missing import, circular dependency
 5. แก้ไข code น้อยที่สุดตาม root cause
-6. ห้ามใช้ `@ts-ignore` หรือ `@ts-expect-error` โดยไม่มีเหตุผล — ใช้ `/no-use-ignore`
+6. ห้ามใช้ `@ts-ignore` หรือ `@ts-expect-error` โดยไม่มีเหตุผล แก้ที่ source แทน
 
 ### 4. Re-run Until Pass
 
@@ -75,7 +75,7 @@ Watch typecheck status อย่างต่อเนื่อง ตรวจ�
 ### 2. Error Handling
 
 - แก้ที่ root cause ไม่ใช่ suppress
-- ห้าม `@ts-ignore`, `@ts-expect-error` โดยไม่มีเหตุผล — ใช้ `/no-use-ignore`
+- ห้าม `@ts-ignore`, `@ts-expect-error` โดยไม่มีเหตุผล แก้ที่ source แทน
 - ห้ามเปลี่ยน type เป็น `any` เพื่อหลีกเลี่ยง error
 - ถ้า error มาจาก third-party types → ทำ `/ask-me` ก่อนแก้
 

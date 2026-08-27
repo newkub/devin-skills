@@ -76,7 +76,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 
 ### 3. Error Resolution
 
-แก้ปัญหาที่ source แทนการ suppress ทำตาม `/no-use-ignore`
+แก้ปัญหาที่ source แทนการ suppress
 
 - แก้ code ให้ผ่าน lint rules
 - หลีกเลี่ยงการใช้ ignore comments/attributes

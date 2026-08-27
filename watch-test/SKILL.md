@@ -80,7 +80,7 @@ Watch test status อย่างต่อเนื่อง ตรวจจั�
 - แก้ source code เป็นหลัก ไม่ใช่ test code (ยกเว้น test เขียนผิด)
 - ถ้า failure มาจาก missing dependency → ทำ `/run-install`
 - ถ้า failure มาจาก environment → ทำ `/ask-me`
-- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure — ใช้ `/no-use-ignore`
+- ห้ามใช้ `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure แก้ที่ source แทน
 
 ### 3. Circuit Breaker
 
