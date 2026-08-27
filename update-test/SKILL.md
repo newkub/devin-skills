@@ -1,6 +1,6 @@
 ---
 name: update-test
-description: เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
+description: เขียนและอัปเดต test ทีมีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
 related:
   - review-writing
   - run-test-coverage
@@ -12,7 +12,7 @@ related:
 
 ## Goal
 
-เขียน test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language
+เขียนและอัปเดต test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language และใช้ `/run-test-coverage` เมื่องานเช็คหรือ verify coverage
 
 ## Scope
 
@@ -118,11 +118,22 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
-### 8. Sync And Verify
+### 8. Update Existing Tests
 
-> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนแล้ว
+> Goal: อัปเดต tests ที่มีอยู่เมื่องานหรือ requirements เปลี่ยน
 
-1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนแล้ว
+1. ตรวจสอบ tests ที่มีอยู่ว่าตรงกับ code ปัจจุบัน
+2. แก้ไข assertions, mocks, fixtures ที่ตกรุ่น
+3. เพิ่ม test cases สำหรับ logic ใหมหรือ branches ใหม่
+4. ลบ tests ที่ซ้ำซ้อนหรือไม่จำเป็น
+5. รัน tests เพื่อยืนยันว่าไม่มี regression
+6. ถ้ามี tests ทีไม่ผ่านเพราะ code เปลี่ยน → ทำ `/resolve-errors` หรือ `/debug-issue` ก่อนอัปเดต
+
+### 9. Sync And Verify
+
+> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
+
+1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
 2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules

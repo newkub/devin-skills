@@ -55,7 +55,7 @@ description: ติดตั้งและตั้งค่า Vitest 4 สำ
 
 > Goal: Writing Tests
 
-1. ทำ `/write-test` เพื่อเขียน test ที่มีคุณภาพ
+1. ทำ `/update-test` เพื่อเขียน test ที่มีคุณภาพ
 2. ใช้ `test` หรือ `it` จาก globals แทนการ import
 3. ใช้ `expect` สำหรับ assertions
 4. จัดระเบียบ test files ตามโครงสร้าง source code

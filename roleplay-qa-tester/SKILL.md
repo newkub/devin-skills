@@ -115,7 +115,7 @@ Non-Functional:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/run-test` หรือ `/write-test`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/run-test` หรือ `/update-test`
 
 ### 2. Think Like A QA Tester
 
@@ -151,7 +151,7 @@ Non-Functional:
 - ถ้า test planning ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
 - ถ้าต้องการ scan test coverage จริง ให้ใช้ `/update-review-codebase-cli-and-run`
-- ถ้าต้องการเขียน test จริง ให้ใช้ `/write-test`
+- ถ้าต้องการเขียน test จริง ให้ใช้ `/update-test`
 - ถ้าต้องการรัน test จริง ให้ใช้ `/run-test`
 
 ### 7. Output

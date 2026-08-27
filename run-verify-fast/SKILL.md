@@ -37,7 +37,7 @@ related:
 
 1. `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-test`
 2. ถ้า step ใด fail ให้เก็บ errors ทั้งหมดก่อนแก้ เพื่อลด rework
-3. ถ้าไม่มี test files หรือ coverage ต่ำ ให้ทำ `/write-test` เพื่อเขียน tests ที่ขาด
+3. ถ้าไม่มี test files หรือ coverage ต่ำ ให้ทำ `/update-test` เพื่อเขียน tests ที่ขาด
 
 ### 3. Fix Errors
 

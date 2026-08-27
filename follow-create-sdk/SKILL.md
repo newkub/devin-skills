@@ -42,7 +42,7 @@ related:
   - update-devin-global-skills
   - update-devin-global-subagents
   - update-references
-  - write-test
+  - update-test
   - ship
 ---
 ## Goal

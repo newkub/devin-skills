@@ -84,7 +84,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: สร้าง regression tests จาก reproduction steps
 
-1. ทำ `/write-test` เพื่อสร้าง test จาก reproduction steps ใน Step 2
+1. ทำ `/update-test` เพื่อสร้าง test จาก reproduction steps ใน Step 2
 2. ทดสอบว่า test fail ก่อน fix และ pass หลัง fix
 3. ครอบคลุม edge cases ที่เกี่ยวข้อง
 4. รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression

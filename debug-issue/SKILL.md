@@ -78,7 +78,7 @@ Debug issues ทั้ง VSCode, terminal, shell, runtime และ OS layers
 > Goal: แก้ปัญหาที่ root cause และสร้าง regression tests
 
 1. ทำ `/resolve-errors` เพื่อแก้ปัญหาที่ root cause อย่างเป็นระบบ ใช้ scripts automate เมื่อมีหลายไฟล์
-2. ทำ `/write-test` เพื่อสร้าง regression tests จาก reproduction steps
+2. ทำ `/update-test` เพื่อสร้าง regression tests จาก reproduction steps
 3. ทดสอบว่า test fail ก่อน fix และ pass หลัง fix
 4. รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression
 

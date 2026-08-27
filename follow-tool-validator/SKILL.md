@@ -4,7 +4,7 @@ description: ใช้งาน validator ใน project สำหรับ data
 related:
   - follow-tool-linter
   - follow-lib-zod
-  - write-test
+  - update-test
 ---
 
 ## Goal
@@ -63,7 +63,7 @@ related:
 
 > Goal: ทดสอบ schemas และ error cases
 
-1. ทำ `/write-test` สำหรับ happy path, invalid type, missing field, edge cases
+1. ทำ `/update-test` สำหรับ happy path, invalid type, missing field, edge cases
 2. ทดสอบ custom error messages
 3. ทดสอบ schema composition/refinement
 4. รัน `/run-test` เพื่อ verify

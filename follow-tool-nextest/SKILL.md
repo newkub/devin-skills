@@ -5,7 +5,7 @@ related:
   - follow-lang-rust
   - follow-tool-cargo
   - follow-test
-  - write-test
+  - update-test
   - follow-tool-mutants-rs
   - run-test
 ---

@@ -9,7 +9,7 @@ related:
   - run-test-e2e
   - run-test-api
   - run-test-coverage
-  - write-test
+  - update-test
   - deep-validate
   - run-test
   - update-review-codebase-cli-and-run
@@ -52,7 +52,7 @@ related:
 
 > Goal: Prepare Tests
 
-1. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ ให้ทำ `/write-test` เพื่อสร้าง tests ที่ขาดหายไป
+1. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ ให้ทำ `/update-test` เพื่อสร้าง tests ที่ขาดหายไป
 2. ตรวจสอบ test files ครอบคลุม happy path, edge cases, error cases
 3. ไม่แก้ไข test assertions หรือ source code เพื่อให้ผ่านในขั้นตอนนี้
 
@@ -109,7 +109,7 @@ related:
 3. ทำ `/update-review-codebase-cli-and-run` เพื่อ review ทั้ง source และ test files
 4. จำแนกผล:
    - ถ้า source ผิด → ระบุไฟล์ source ที่ต้องแก้ แนะนำ `/resolve-errors` หรือ `/edit-manual`
-   - ถ้า test ผิด (assertion, mock, expectation) → ระบุไฟล์ test ที่ต้องแก้ แนะนำ `/write-test` หรือ `/edit-manual`
+   - ถ้า test ผิด (assertion, mock, expectation) → ระบุไฟล์ test ที่ต้องแก้ แนะนำ `/update-test` หรือ `/edit-manual`
    - ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report ก่อนดำเนินการ
 5. ห้ามแก้ source หรือ test โดยไม่มี evidence จาก validate/review
 
@@ -119,7 +119,7 @@ related:
 
 1. ถ้าได้รับการยืนยันและผล validate/review ชัดเจน:
    - ถ้า source ผิด → ทำ `/resolve-errors` กับ source
-   - ถ้า test ผิด → ทำ `/write-test` หรือ `/edit-manual` กับ test
+   - ถ้า test ผิด → ทำ `/update-test` หรือ `/edit-manual` กับ test
 2. รัน tests อีกครั้งหลังแก้ไข
 3. ถ้ายัง fail ให้กลับไปขั้นตอน Validate/Review ไม่แก้ให้ผ่านแบบอัตโนมัติ
 
@@ -129,7 +129,7 @@ related:
 
 1. ทำ `/run-test-coverage` เพื่อวิเคราะห์ coverage
 2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
-3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/write-test` เพิ่ม แล้วรัน tests ใหม่
+3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/update-test` เพิ่ม แล้วรัน tests ใหม่
 
 #### 10.2 Report
 
