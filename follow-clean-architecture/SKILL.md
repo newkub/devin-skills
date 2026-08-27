@@ -5,7 +5,7 @@ related:
   - follow-programming-paradigm
   - follow-lib-effect-ts
   - follow-lib-zod
-  - use-orm
+  - follow-orm
   - follow-tool-vitest
   - follow-tool-vite
   - follow-lang-typescript
@@ -71,7 +71,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 > Goal: วางโครงสร้าง adapters และ presentation layers ตาม dependency direction (presentation → application → adapters → ports)
 
-1. `adapters/db/` - Database implementations — ทำ `/use-orm`
+1. `adapters/db/` - Database implementations — ทำ `/follow-orm`
 2. `adapters/http/` - HTTP clients, `adapters/external/` - External services
 3. `adapters/cache/` - Cache, `adapters/queue/` - Message queues, `adapters/storage/` - File storage
 4. `presentation/http/` - HTTP handlers, `presentation/graphql/` - GraphQL resolvers

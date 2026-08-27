@@ -74,7 +74,7 @@ description: รายงานไอเดียไฟล์และโฟล�
 
 1. ทำ `/suggest-next-action` จากรายงาน
 2. แนะนำ workflows ที่เหมาะสม:
-   - `/remove-unnecessary` สำหรับลบสิ่งที่ไม่จำเป็น
+   - `/cleanup-files-in-project` สำหรับลบ source files ที่ไม่จำเป็น
    - `scoop cleanup *`, `mise prune`, `bun pm cache clean`, `pip cache purge`, `sccache --stop-server` + ลบ cache
 3. ถ้าผู้ใช้ตอบตกลงจึงค่อยรัน cleanup จริง (ใช้ dry-run ก่อน)
 
