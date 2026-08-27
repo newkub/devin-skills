@@ -1,6 +1,23 @@
 ---
 name: review-quality
 description: Review code quality, bug-prone patterns, correctness, and overall quality with score
+related:
+  - review-correctness
+  - validate
+  - deep-validate
+  - scan-codebase
+  - deep-analyze
+  - run-review
+  - update-review-codebase-cli-and-run
+  - use-ast-grep
+  - report-table
+  - suggest-next-action
+  - review-test
+  - review-test-result
+  - review-performance
+  - review-security
+  - review-stability
+  - review-uxui
 ---
 
 ## Goal
