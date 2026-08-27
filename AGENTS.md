@@ -192,7 +192,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-references: /update-references`
 - `edit-relative: /edit-relative`
 - `update-github-metadata: /update-github-metadata`
-- `update-convert-active-repo-to-devin-skills: /update-convert-active-repo-to-devin-skills`
 - `update-github-task: /update-github-task`
 - `update-dependencies-latest: /update-dependencies-latest`
 - `follow-release: /follow-release`
@@ -387,34 +386,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `use-ast-grep: /use-ast-grep`
 - `use-ast-grep-programatic: /use-ast-grep-programatic`
 - `use-ast-grep-outline: /use-ast-grep-outline`
-
-#### At
-
-- `at-agents-manager: /at-agents-manager`
-- `at-animal-dance: /at-animal-dance`
-- `at-awesome-opensource: /at-awesome-opensource`
-- `at-booking-platform: /at-booking-platform`
-- `at-compare-platform: /at-compare-platform`
-- `at-compareit: /at-compareit`
-- `at-create-skills: /at-create-skills`
-- `at-dept-saw: /at-dept-saw`
-- `at-digital-product: /at-digital-product`
-- `at-dotfiles: /at-dotfiles`
-- `at-explore-opensource: /at-explore-opensource`
-- `at-gen-password: /at-gen-password`
-- `at-learn-wrikka-com: /at-learn-wrikka-com`
-- `at-mobile-clock: /at-mobile-clock`
-- `at-newkub: /at-newkub`
-- `at-raindrop-cli: /at-raindrop-cli`
-- `at-skills-as-a-services: /at-skills-as-a-services`
-- `at-slides: /at-slides`
-- `at-template-starter: /at-template-starter`
-- `at-tiermaker: /at-tiermaker`
-- `at-trading: /at-trading`
-- `at-wpackages: /at-wpackages`
-- `at-wregistry: /at-wregistry`
-- `at-wrikka-com: /at-wrikka-com`
-- `at-wrikka-platform: /at-wrikka-platform`
 
 #### Watch
 

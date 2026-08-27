@@ -34,8 +34,7 @@ description: "อัปเดตทุกอย่างในเครื่อ
 > Goal: อัปเดต Devin skills catalog
 
 1. ทำ `/update-all-devin-global-skills`
-2. ถ้าต้องการสร้าง at-<repo> skills จาก active repos → ทำ `/update-convert-active-repo-to-devin-skills`
-3. บันทึก skills ที update/สร้าง/ลบ
+2. บันทึก skills ที update/สร้าง/ลบ
 
 ### 4. Update Project Skills (optional)
 

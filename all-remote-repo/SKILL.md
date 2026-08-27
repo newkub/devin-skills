@@ -58,10 +58,9 @@ related:
 
 > Goal: แนะนำ action ถัดไป
 
-1. ถ้าต้องการ convert repo เป็น skill → ใช้ `/update-convert-active-repo-to-devin-skills`
-2. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-project-git-in-computer`
-3. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-latest-star`
-4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
+1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-project-git-in-computer`
+2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-latest-star`
+3. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules
 

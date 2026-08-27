@@ -2,7 +2,6 @@
 name: list-project-git-in-computer
 description: สแกนและรายการ git projects ทั้งหมดในเครื่อง ทุก drive พร้อม status
 related:
-  - update-convert-active-repo-to-devin-skills
   - list-cloudflare-project
   - report-table
   - suggest-next-action
@@ -76,8 +75,7 @@ related:
 
 1. สร้าง list ของ `Project` name (directory name)
 2. สร้าง list ของ `RemoteUrl` ถ้ามี
-3. ถ้าต้อง match กับ remote top active → ส่ง list ให้ `/update-convert-active-repo-to-devin-skills`
-4. ถ้าไม่ต้องการ match → ทำ `/suggest-next-action`
+3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 
 ## Rules
 

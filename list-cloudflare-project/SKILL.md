@@ -4,7 +4,6 @@ description: รายการ Cloudflare projects ในเครื่อง 
 related:
   - list-project-git-in-computer
   - list-chezmoi-files
-  - update-convert-active-repo-to-devin-skills
 ---
 
 ## Goal
