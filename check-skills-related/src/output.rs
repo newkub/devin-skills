@@ -52,17 +52,34 @@ pub fn run_tree(graph: &Graph, target: &str, depth: usize, include_transitive: b
     println!();
 
     let direct = join_sorted(&graph[target]);
-    let d = graph::max_depth(target, graph, &mut std::collections::HashMap::new(), &mut std::collections::HashSet::new());
+    let d = graph::max_depth(
+        target,
+        graph,
+        &mut std::collections::HashMap::new(),
+        &mut std::collections::HashSet::new(),
+    );
     println!("--- Summary ---");
     println!("direct count:     {}", graph[target].len());
     println!("direct:           {}", direct);
     println!("depth:            {}", d);
 
     if include_transitive {
-        let trans = graph::transitive_closure(target, graph, &mut std::collections::HashMap::new(), &mut std::collections::HashSet::new());
+        let trans = graph::transitive_closure(
+            target,
+            graph,
+            &mut std::collections::HashMap::new(),
+            &mut std::collections::HashSet::new(),
+        );
         let t = sorted_vec(&trans);
         println!("transitive count: {}", t.len());
-        println!("transitive:       {}", if t.is_empty() { "none".to_string() } else { t.join(", ") });
+        println!(
+            "transitive:       {}",
+            if t.is_empty() {
+                "none".to_string()
+            } else {
+                t.join(", ")
+            }
+        );
     }
 
     for scc in graph::tarjan_scc(graph) {
@@ -94,7 +111,11 @@ pub fn run_cycles(graph: &Graph, first_cycle: bool) {
 }
 
 pub fn run_orphans(graph: &Graph) {
-    let mut o: Vec<&String> = graph.iter().filter(|(_, v)| v.is_empty()).map(|(k, _)| k).collect();
+    let mut o: Vec<&String> = graph
+        .iter()
+        .filter(|(_, v)| v.is_empty())
+        .map(|(k, _)| k)
+        .collect();
     o.sort();
     println!("=== ORPHAN SKILLS ===");
     for name in &o {
@@ -121,15 +142,32 @@ pub fn run_full(graph: &Graph, include_transitive: bool) {
     println!("=== SKILL RELATION FULL ===");
     for name in names {
         let direct = join_sorted(&graph[name]);
-        let d = graph::max_depth(name, graph, &mut cache_d, &mut std::collections::HashSet::new());
+        let d = graph::max_depth(
+            name,
+            graph,
+            &mut cache_d,
+            &mut std::collections::HashSet::new(),
+        );
         println!("--- {} ---", name);
         println!("  direct count: {}", graph[name].len());
         println!("  direct:       {}", direct);
         println!("  depth:        {}", d);
         if include_transitive {
-            let trans = graph::transitive_closure(name, graph, &mut std::collections::HashMap::new(), &mut std::collections::HashSet::new());
+            let trans = graph::transitive_closure(
+                name,
+                graph,
+                &mut std::collections::HashMap::new(),
+                &mut std::collections::HashSet::new(),
+            );
             let t = sorted_vec(&trans);
-            println!("  transitive:   {}", if t.is_empty() { "none".to_string() } else { t.join(", ") });
+            println!(
+                "  transitive:   {}",
+                if t.is_empty() {
+                    "none".to_string()
+                } else {
+                    t.join(", ")
+                }
+            );
         }
     }
     let total_relations: usize = graph.values().map(|v| v.len()).sum();

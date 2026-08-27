@@ -76,7 +76,12 @@ fn main() {
     }
     match args.mode.as_str() {
         "Summary" => output::run_summary(&graph, &unknown),
-        "Tree" => output::run_tree(&graph, &args.skill, args.tree_depth, args.include_transitive),
+        "Tree" => output::run_tree(
+            &graph,
+            &args.skill,
+            args.tree_depth,
+            args.include_transitive,
+        ),
         "Cycles" => output::run_cycles(&graph, args.first_cycle),
         "Orphans" => output::run_orphans(&graph),
         "Verify" => std::process::exit(output::run_verify(&graph)),

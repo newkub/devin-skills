@@ -42,15 +42,16 @@ related:
 3. ยืนยันว่า target directory มีอยู่จริง
 4. ถ้าไม่มี → stop และ report
 
-### 2. Run Check Script
+### 2. Run Check Binary
 
 > Goal: สร้าง call graph ด้วย Rust binary
 
-1. รัน `scripts/check-skills-related.ps1` ด้วย `exec`
-2. ถ้ามี target skill → ส่ง `<skill-name>` เป็น argument ตำแหน่งที่ 1 หรือใช้ `-Skill`
-3. ถ้าไม่มี target → รันโดยไม่มี argument เพื่อดู Summary
-4. ใช้ `-Mode <mode>` เลือก mode ทีต้องการ
-5. ตรวจสอบว่า script รันสำเร็จและให้ output
+1. ถ้า binary ยังไม่อยู่ → รัน `cargo build --release` ก่อน
+2. รัน `target/release/check-skills-related.exe` ด้วย `exec`
+3. ถ้ามี target skill → ส่ง `<skill-name>` เป็น argument ตำแหน่งที่ 1 หรือใช้ `-Skill`
+4. ถ้าไม่มี target → รันโดยไม่มี argument เพื่อดู Summary
+5. ใช้ `-Mode <mode>` เลือก mode ทีต้องการ
+6. ตรวจสอบว่า binary รันสำเร็จและให้ output
 
 ### 3. Modes
 
@@ -113,7 +114,7 @@ related:
 ### 3. Reproducible Output
 
 - ใช้ Rust binary จาก `target/release/check-skills-related.exe`
-- PowerShell wrapper `scripts/check-skills-related.ps1` ช่วย build และส่ง argument
+- ถ้า binary ไม่อยู่ ให้ build ด้วย `cargo build --release`
 - ผลลัพธ์ sorted ทุกครั้ง reproducible
 
 ### 4. No Auto-Fix

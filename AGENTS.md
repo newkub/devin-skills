@@ -376,6 +376,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `use-ast-grep: /use-ast-grep`
 - `use-ast-grep-programatic: /use-ast-grep-programatic`
 - `check-code-structure: /check-code-structure`
+- `check-skills-related: /check-skills-related`
 
 #### Watch
 

@@ -78,7 +78,10 @@ fn frontmatter_text(content: &str) -> String {
 fn extract_name(fm: &str) -> Option<String> {
     fm.lines()
         .find(|l| l.trim_start().starts_with("name:"))
-        .map(|l| l.splitn(2, ':').nth(1).unwrap_or("").trim().trim_matches('"').trim_matches('\'').to_string())
+        .and_then(|l| {
+            l.split_once(':')
+                .map(|(_, v)| v.trim().trim_matches('"').trim_matches('\'').to_string())
+        })
 }
 
 fn parse_related(fm: &str) -> Vec<String> {
@@ -133,7 +136,10 @@ fn strip_urls(line: &str) -> String {
     let mut i = 0;
     while i < chars.len() {
         let rest: String = chars[i..].iter().collect();
-        let matched = schemes.iter().find(|&&s| rest.starts_with(s)).map(|s| s.len());
+        let matched = schemes
+            .iter()
+            .find(|&&s| rest.starts_with(s))
+            .map(|s| s.len());
         if let Some(len) = matched {
             let mut end = i + len;
             while end < chars.len() && !chars[end].is_whitespace() {
@@ -199,7 +205,10 @@ fn split_frontmatter(content: &str) -> (String, String) {
     let rest = &content[3..];
     if let Some(end) = rest.find("\n---") {
         let body_start = 3 + end + 4;
-        (rest[..end].to_string(), content[body_start.min(content.len())..].to_string())
+        (
+            rest[..end].to_string(),
+            content[body_start.min(content.len())..].to_string(),
+        )
     } else {
         (String::new(), content.to_string())
     }
