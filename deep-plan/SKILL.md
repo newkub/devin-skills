@@ -63,7 +63,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Plan Architecture
 
-ทำ `/recommend-architecture` เพื่อแนะนำ architecture ที่เหมาะสม
+ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม
 
 - วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
 - สร้าง file pattern table: File Pattern, Description, Naming, Import

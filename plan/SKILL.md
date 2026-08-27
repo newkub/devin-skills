@@ -40,7 +40,7 @@ argument-hint: "[prompt]"
 > Goal: Plan Architecture
 
 1. ทำ `pondering` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
-2. ทำ `recommend-architecture` เพื่อแนะนำ architecture ที่เหมาะสม
+2. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม
 3. วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
 4. สร้าง file pattern table: File Pattern, Description, Naming, Import
 5. กำหนด module boundaries, dependencies (high-level → low-level), และ public APIs
