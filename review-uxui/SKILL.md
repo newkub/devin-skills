@@ -4,7 +4,8 @@ description: Review UX/UI design quality, design system, visual, interaction, ac
 related:
   - review-frontend
   - review-platform
-  - roleplay-uxui-designer
+  - roleplay-ux-researcher
+  - roleplay-ui-designer
   - scan-codebase
   - deep-analyze
   - run-review
@@ -26,7 +27,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
 - platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
 - SEO → ใช้ `/review-seo`
-- roleplay/simulation จากมุมมอง designer → ใช้ `/roleplay-uxui-designer`
+- roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-ui-designer`
+- roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-ux-researcher`
 
 ## Execute
 

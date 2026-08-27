@@ -1,6 +1,11 @@
 ---
 name: roleplay-ux-researcher
 description: รับบทเป็น UX researcher คิด research questions, หา pain points, และ bias จาก code
+related:
+  - roleplay-ui-designer
+  - report-uxui-sketch
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -10,6 +15,8 @@ description: รับบทเป็น UX researcher คิด research questi
 ## Scope
 
 ใช้กับ project ที่ต้องการตรวจจากมุมมอง UX research ครอบคลุม research questions, methods, sampling, bias, empathy, และ actionable insights
+
+สำหรับ UI design review (visual, interaction, design system, accessibility) → ใช้ `/roleplay-ui-designer`
 
 ## Execute
 

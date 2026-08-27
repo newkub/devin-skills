@@ -1,15 +1,24 @@
 ---
-name: roleplay-uxui-designer
-description: รับบทเป็น UX/UI designer อ่าน source code แล้ววิจารณ์ design quality, consistency, design system
+name: roleplay-ui-designer
+description: รับบทเป็น UI designer วิจารณ์ visual, interaction, design system จาก source code
+related:
+  - roleplay-ux-researcher
+  - review-uxui
+  - report-uxui-sketch
+  - follow-design-system
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-รับบทเป็น UX/UI designer อ่าน source code แล้ววิจารณ์ design quality, consistency, design system compliance, และ visual polish จากมุมมองคนทำ design ไม่ใช่ developer
+รับบทเป็น UI designer อ่าน source code แล้ววิจารณ์ design quality, consistency, design system compliance, visual polish, interaction design, accessibility, และ design-dev handoff จากมุมมองคนทำ UI design ไม่ใช่ developer
 
 ## Scope
 
-ใช้กับ project ที่ต้องการตรวจจากมุมมอง UX/UI designer ครอบคลุม design system, visual consistency, interaction design, accessibility, และ design-dev handoff โดย AI รับบทเป็น designer วิจารณ์จากการอ่าน source code
+ใช้กับ project ที่ต้องการตรวจจากมุมมอง UI designer ครอบคลุม design system, visual consistency, interaction design, accessibility, และ design-dev handoff โดย AI รับบทเป็น designer วิจารณ์จากการอ่าน source code
+
+สำหรับ UX research (research questions, pain points, bias, personas) → ใช้ `/roleplay-ux-researcher`
 
 ## Execute
 
@@ -23,9 +32,9 @@ description: รับบทเป็น UX/UI designer อ่าน source code
 4. อ่าน icons, typography, spacing, color usage patterns
 5. ถ้าหา UI code ไม่เจอ ให้ถามผู้ใช้
 
-### 2. Identify Designer Profile
+### 2. Identify UI Designer Profile
 
-> Goal: Identify Designer Profile
+> Goal: Identify UI Designer Profile
 
 1. ระบุ designer level (junior, mid, senior, principal/staff)
 2. ระบุ design focus (visual design, interaction design, design systems, accessibility specialist)
@@ -33,11 +42,11 @@ description: รับบทเป็น UX/UI designer อ่าน source code
 4. ระบุ platform focus (web, mobile, cross-platform, responsive)
 5. บันทึก assumptions ที่ทำจาก code
 
-### 3. Simulate Design Review
+### 3. Simulate UI Design Review
 
-> Goal: Simulate Design Review
+> Goal: Simulate UI Design Review
 
-Goal reminder: คิดเหมือน designer ที่วิจารณ์ design quality ไม่ใช่ developer ที่เช็คว่าทำงานไหม
+Goal reminder: คิดเหมือน UI designer ที่วิจารณ์ design quality ไม่ใช่ developer ที่เช็คว่าทำงานไหม
 
 1. เลือก 3-5 design perspectives ที่แตกต่างกัน (visual designer, interaction designer, accessibility specialist, design systems lead, product designer)
 2. สำหรับแต่ละ perspective จำลอง: "ถ้าเราเป็น designer คนนี้ จะวิจารณ์อะไร?"
@@ -45,9 +54,9 @@ Goal reminder: คิดเหมือน designer ที่วิจารณ�
 4. ระบุ design wins ที่ทำดี
 5. ประเมิน design maturity: ad-hoc, emerging, established, mature
 
-### 4. Analyze Every Design Dimension
+### 4. Analyze Every UI Design Dimension
 
-> Goal: Analyze Every Design Dimension
+> Goal: Analyze Every UI Design Dimension
 
 Design System:
 
@@ -99,9 +108,9 @@ Design-Dev Handoff:
 4. ระบุ designer perspective ที่เห็นจุดนี้
 5. ถ้าไม่มี evidence ใน code ให้ระบุเป็น assumption
 
-### 6. Generate Design Review Report
+### 6. Generate UI Design Review Report
 
-> Goal: Generate Design Review Report
+> Goal: Generate UI Design Review Report
 
 1. ทำ `/report` ด้วย `/report-table`
 2. สร้างตาราง: Severity, Dimension, Location, Issue, Design Impact, Recommendation
@@ -118,13 +127,14 @@ Design-Dev Handoff:
 - อ่าน code ด้วย read-only tools เท่านั้น
 - ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-codebase-cli-and-run`
 
-### 2. Think Like A Designer
+### 2. Think Like A UI Designer
 
-- คิดเหมือน designer ที่วิจารณ์ design quality ไม่ใช่ developer ที่เช็คว่าทำงานไหม
+- คิดเหมือน UI designer ที่วิจารณ์ design quality ไม่ใช่ developer ที่เช็คว่าทำงานไหม
 - ถามตัวเอง "ถ้าเราเป็น designer คนนี้ จะวิจารณ์อะไร?" ทุก dimension
 - พิจารณา designer หลายประเภท (visual, interaction, accessibility, systems, product)
 - ไม่จำกัดแค่ว่าสวยไหม แต่ครอบคลุม consistency, system, accessibility, และ handoff
 - คิดถึง design ที่ professional ไม่ใช่แค่ functional
+- UX research (personas, interviews, bias) → ส่งต่อ `/roleplay-ux-researcher`
 
 ### 3. Evidence-Based Findings
 
@@ -156,6 +166,7 @@ Design-Dev Handoff:
 - ถ้าต้องการ scan components ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการ scan accessibility จริง ให้ใช้ `/update-review-codebase-cli-and-run`
 - ถ้าต้องการมุมมอง user ให้ใช้ `/roleplay-user`
+- ถ้าต้องการมุมมอง UX researcher ให้ใช้ `/roleplay-ux-researcher`
 
 ### 7. Output
 
@@ -166,7 +177,7 @@ Design-Dev Handoff:
 
 ## Expected Outcome
 
-- รายงาน design review จากมุมมอง UX/UI designer ที่จำลองจาก source code
+- รายงาน UI design review จากมุมมอง UI designer ที่จำลองจาก source code
 - ตาราง findings มี Severity, Dimension, Location, Issue, Design Impact, Recommendation
 - design maturity scorecard: 5 dimensions, score 1-5
 - ครอบคลุม 25 dimensions ครบ 5 หมวด (design system, visual, interaction, accessibility, handoff)

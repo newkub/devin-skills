@@ -6,7 +6,7 @@ related:
   - report-table
   - report-architecture-diagram
   - follow-design-system
-  - roleplay-uxui-designer
+  - roleplay-ui-designer
 ---
 
 ## Goal
