@@ -10,6 +10,7 @@ related:
   - follow-tool-mise
   - follow-tool-moonrepo
   - validate
+  - watch-ci-cd
 ---
 
 ## Goal

@@ -8,7 +8,7 @@ related:
   - update-test
   - follow-test
   - follow-tdd
-  - follow-config
+  - update-config
   - update-devin-global-skills
   - report-table
   - suggest-next-action
@@ -16,6 +16,7 @@ related:
   - check-reference
   - deep-debug
   - resolve-errors
+  - watch-ci-cd
 ---
 
 ## Goal
@@ -135,7 +136,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 > Goal: สรุป action ถัดไป อัปเดต skill ถ้าพบ systemic gap และ report
 
 1. ถ้ามี assertion/implementation failure → แนะนำ `update-test` หรือ `deep-debug`
-2. ถ้ามี runtime/setup failure → แนะนำ `resolve-errors` หรือ `follow-config`
+2. ถ้ามี runtime/setup failure → แนะนำ `resolve-errors` หรือ `update-config`
 3. ถ้ามี coverage gap → แนะนำ `write-test` หรือ `update-test`
 4. ถ้ามี flaky → แนะนำ refactor test หรือ `follow-test`
 5. ถ้าผลลัพธ์ทำให้รู้ว่า skill/flow ใดควรปรับปรุง → ใช้ `/update-devin-global-skills`
@@ -155,7 +156,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 - ทำ review strategy และผลลัพธ์เท่านั้น ไม่แก้ไข source/test code ระหว่าง review
 - ถ้าต้องเขียน/แก้ tests → ใช้ `write-test` หรือ `update-test` หลัง review
 - ถ้าต้องแก้ไข source code จาก failure → ส่งต่อให้ `deep-debug` หรือ `resolve-errors`
-- ถ้าต้องแก้ไข config → ส่งต่อให้ `follow-config`
+- ถ้าต้องแก้ไข config → ส่งต่อให้ `update-config`
 
 ### 2. Evidence-Based Findings
 

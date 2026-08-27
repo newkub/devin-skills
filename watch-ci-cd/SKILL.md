@@ -13,6 +13,8 @@ related:
   - follow-tool-github-actions
   - review-delivery
   - review-config
+  - review-deploy
+  - review-test
   - resolve-errors
   - run-check
   - report-table

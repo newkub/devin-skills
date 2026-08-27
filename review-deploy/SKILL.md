@@ -1,6 +1,8 @@
 ---
 name: review-deploy
 description: Review deployment readiness ก่อน deploy
+related:
+  - watch-ci-cd
 ---
 
 ## Goal

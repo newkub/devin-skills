@@ -6,6 +6,7 @@ related:
   - review-seo
   - review-security
   - review-quality
+  - watch-ci-cd
 ---
 
 ## Goal
