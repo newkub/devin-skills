@@ -33,7 +33,7 @@ description: ตั้งค่า GitHub Actions สำหรับ CI/CD ค�
 
 > Goal: Setup พื้นฐาน
 
-1. ทำ `/renovate` เพื่อตั้งค่า dependency updates
+1. ทำ `/follow-tool-renovate` เพื่อตั้งค่า dependency updates
 2. ทำ `/follow-tool-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
 3. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
 

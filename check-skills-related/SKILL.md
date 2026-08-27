@@ -9,7 +9,7 @@ allowed-tools:
   - find_file_by_name
   - read
 related:
-  - check-broken-refs
+  - check-broken-skills-ref
   - check-circular-dependencies
   - review-references
   - use-scripts
