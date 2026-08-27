@@ -1,6 +1,12 @@
 ---
 name: follow-tool-loc
 description: ใช้งาน loc tool สำหรับนับ lines of code แบบเร็ว กรองไฟล์ และวิเคราะห์ขนาดไฟล์
+argument-hint: "[path] [options]"
+related:
+  - check-long-files
+  - report-file-structure
+  - scan-codebase
+  - use-scripts
 ---
 
 ## Goal

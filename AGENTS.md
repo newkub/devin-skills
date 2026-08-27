@@ -339,6 +339,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `visualize-in-markdown-graph: /visualize-in-markdown-graph`
 - `visualize-in-web: /visualize-in-web`
 - `visualize-project: /visualize-project`
+- `visualize-to-graph-in-web: /visualize-to-graph-in-web`
 
 #### Search
 
