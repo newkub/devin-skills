@@ -6,7 +6,7 @@ related:
   - report-git-diff
   - check-git-diff
   - report-table
-  - validate
+  - deep-validate
   - ask-me
 ---
 

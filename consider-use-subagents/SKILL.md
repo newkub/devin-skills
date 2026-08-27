@@ -1,12 +1,12 @@
 ---
-name: use-subagents
+name: consider-use-subagents
 description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles พร้อม deep context จาก /follow-deep
 argument-hint: "[task]"
 related:
   - follow-devin-global-subagents
   - follow-deep
   - list-devin-global-subagents
-  - validate
+  - deep-validate
   - ship
   - report
 ---
@@ -100,7 +100,7 @@ related:
 
 - ตรวจสอบ conflicts ก่อน merge
 - รักษา consistency ของ codebase
-- ทำ validate หลัง merge
+- ทำ `/deep-validate` หลัง merge
 
 ## Expected Outcome
 

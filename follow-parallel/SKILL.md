@@ -53,7 +53,7 @@ related:
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
 2. รัน independent sub-workflows พร้อมกัน เช่น `/review-quality`, `/check-unused-files`, `/check-unused-deps`
-3. รัน dependent sub-workflows แบบ sequential เช่น `/validate` หลัง `/review-*`
+3. รัน dependent sub-workflows แบบ sequential เช่น `/deep-validate` หลัง `/review-*`
 4. รวบรวม results จากทุก sub-workflow ก่อน aggregate report
 5. ถ้า sub-workflow หนึ่งพบ critical issue → หยุดและ validate ก่อนดำเนินต่อ
 
@@ -103,7 +103,7 @@ related:
 
 - รวม independent tool calls เป็น parallel เสมอเมื่อเป็นไปได้ — ลด context accumulation
 - ระบุ parallelizable tasks ใน `/deep-plan` และ `/report-plan`
-- ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
+- ใช้ parallel execution ใน `/run-verify-fast` สำหรับ lint, typecheck, scan
 - ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
 
 ## Expected Outcome

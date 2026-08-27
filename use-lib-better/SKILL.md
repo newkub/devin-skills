@@ -1,6 +1,11 @@
 ---
 name: use-lib-better
 description: เปรียบเทียบ dependencies ปัจจุบัน และสรุปว่าควรใช้ dependency อะไร
+related:
+  - deep-research
+  - learn-from-web
+  - use-lib-effective
+  - follow-my-tech-stack
 ---
 
 ## Goal

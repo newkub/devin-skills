@@ -81,7 +81,7 @@ related:
 > Goal: ยืนยันว่า Bun runtime ทำงานได้จริง
 
 1. รัน `bun --version`, `bun run` และ `bun test` ยืนยันว่าไม่มี error
-2. ทำ `/validate` เพื่อตรวจ skill package
+2. ทำ `/deep-validate` เพื่อตรวจ skill package
 3. ถ้ามี error ให้ทำ `/resolve-errors` และ recheck (max 3 รอบ)
 4. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
 
@@ -102,5 +102,5 @@ related:
 - dependencies ติดตั้งด้วย `bun install` ถูกต้อง
 - tests ผ่านด้วย `bun test` และ build ผ่านด้วย `bun build`
 - `bunfig.toml` ตั้งค่าถูกต้อง
-- skill ผ่าน `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- skill ผ่าน `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - references ครบถ้วน ไม่มี broken links

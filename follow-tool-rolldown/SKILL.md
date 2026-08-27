@@ -1,140 +1,111 @@
 ---
 name: follow-tool-rolldown
-description: ใช้งาน Rolldown bundler และ ecosystem สำหรับ JavaScript/TypeScript
+description: ตั้งค่าและใช้ Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง
+related:
+  - follow-tool-vite
+  - follow-tool-tsdown
+  - follow-tool-build-packages
+  - follow-lang-typescript
 ---
 
 ## Goal
 
-ใช้งาน Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง และอ้างอิง ecosystem ทีเกี่ยวข้อง
+ตั้งค่าและใช้ Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง รองรับ migration จาก Rollup และเลือกใช้ plugins ใน ecosystem ได้อย่างเหมาะสม
 
 ## Scope
 
-ใช้สำหรับ:
-- Bundle JavaScript/TypeScript ด้วยความเร็วสูง
-- Migration จาก Rollup ไปยัง Rust-based bundler
-- Code splitting และ tree-shaking
-- Plugin system ที compatible กับ Rollup
-- เลือก libraries, tools และ plugins ใน Rolldown ecosystem เป็น reference
+ใช้สำหรับ JavaScript/TypeScript projects ที่ต้องการ bundler รวดเร็ว ต้องการ code splitting/tree-shaking หรือ migration จาก Rollup/Vite
 
 ## Execute
 
-### Quick Start
+### 1. Installation
 
-ติดตั้งและเริ่มต้นใช้งาน:
+> Goal: ติดตั้ง Rolldown บน environment
 
-```bash
-bun add -D rolldown
-```
+1. ตรวจสอบ `package.json` และ package manager ที่ project ใช้
+2. ติดตั้ง `rolldown` ด้วย `bun add -D rolldown`
+3. ตรวจสอบ version ด้วย `bunx rolldown --version`
+4. ดูรายละเอียดเพิ่มเติมใน [references/rolldown-commands.md](references/rolldown-commands.md)
 
-สร้าง config file:
+### 2. Project Analysis
 
-```typescript
-import { defineConfig } from 'rolldown'
+> Goal: ประเมิน project และเลือก migration path หรือ setup strategy
 
-export default defineConfig({
-  input: 'src/index.ts',
-  output: {
-    dir: 'dist',
-    format: 'esm',
-  },
-})
-```
+1. ตรวจสอบ existing bundler จาก `package.json` scripts และ config files
+2. ถ้ามี `rollup.config.*` → วิเคราะห์ plugins, input, output ปัจจุบัน
+3. ระบุ entry points, output formats (esm/cjs/iife/umd), และ target environment
+4. ดูรายละเอียด ecosystem และ official resources ใน [references/official-resources.md](references/official-resources.md)
 
-Build project:
+### 3. Configuration
 
-```bash
-bunx rolldown
-```
+> Goal: สร้าง `rolldown.config.ts` ที่ถูกต้อง
 
-### Learning Path
+1. สร้าง `rolldown.config.ts` ที root project
+2. ใช้ `defineConfig` จาก `rolldown` เพื่อ type safety
+3. กำหนด `input`, `output.dir`, `output.format`, `treeshake`, `plugins`
+4. เปิดใช้ `clear: true` สำหรับ production build ถ้าจำเป็น
+5. อ่านตัวเลือก top-level ใน [references/rolldown-config-toplevel.md](references/rolldown-config-toplevel.md)
 
-1. `Getting Started`: อ่าน [Getting Started](https://rolldown.rs/guide/getting-started)
-2. `Key Concepts`: เรียนรู้ [Three-stage Pipeline](https://rolldown.rs/guide/three-stage-pipeline)
-3. `Best Practices`: ดู [Best Practices](https://rolldown.rs/guide/best-practices)
-4. `Workflows`: ใช้ [workflows/setup-rolldown.md](workflows/setup-rolldown.md)
+### 4. Build and Watch
 
-### Ecosystem And References
+> Goal: รัน build และ watch mode แล้วตรวจสอบ output
 
-> Goal: อ้างอิง libraries, tools และ plugins ใน Rolldown ecosystem
+1. รัน build ด้วย `bunx rolldown`
+2. ใช้ `bunx rolldown --watch` สำหรับ development
+3. ตรวจสอบ output ใน `dist/` หรือ `output.dir` ที่กำหนด
+4. รัน `bun run build` ผ่าน package script ถ้ามี
+5. ดูรายละเอียด output options ใน [references/rolldown-config-output.md](references/rolldown-config-output.md)
 
-#### 1. tsdown (rolldown/tsdown)
+### 5. Migration from Rollup
 
-- Description: The elegant bundler for libraries powered by Rolldown
-- Stars: 4.1k
-- Features: Blazing fast build, TypeScript support, plugin ecosystem
-- Use Case: Library bundling for TypeScript projects
+> Goal: ย้ายจาก Rollup ไปยัง Rolldown โดยไม่ทำลาย behavior
 
-#### 2. rolldphobia (ssssota/rolldphobia)
+1. เปรียบเทียบ `rollup.config.*` กับ `rolldown.config.ts`
+2. แทนที่ Rollup plugins ด้วย Rolldown-compatible plugins (`@rolldown/*` หรือ verified Rollup plugins)
+3. ปรับ `output` options, `manualChunks`, `external`, `globals`
+4. รัน build และ test suite เพื่อ verify output
+5. ดูคำแนะนำ migration ใน `workflows/migrate-from-rollup-*.md`
 
-- Description: A modern bundle size analyzer powered by Rolldown and esm.sh
-- Features: Browser-based bundling, real bundle analysis
-- Use Case: Bundle size analysis tools
+### 6. Plugin and Ecosystem Selection
 
-#### 3. vitejs/rolldown-vite
+> Goal: เลือก plugins และ libraries ใน Rolldown ecosystem ที่เหมาะสม
 
-- Description: Vite with Rolldown as bundler (archived)
-- Status: Archived — merged into Vite 8. ใช้สำหรับ migration จาก Vite 7 เป็น Vite 8
-- Use Case: Gradual migration path to Vite 8
-
-#### 4. cloudflare/agents
-
-- Description: Cloudflare Agents project using tsdown
-- Features: Uses tsdown for library bundling
-- Use Case: Production application
-
-#### 5. Rolldown Official Packages
-
-- `rolldown` - Main bundler package
-- `@rolldown/browser` - Browser-compatible WASM distribution
-- `@rolldown/pluginutils` - Shared utilities for plugin development
-- `@rolldown/debug` - Debug utilities
-- `@rolldown/binding-*` - Platform-specific native bindings (15+ packages)
-
-#### 6. rolldown-require
-
-- Description: Load configuration files of any format for Rolldown
-- Features: Support CommonJS, .mjs, TypeScript configs
-- Use Case: Configuration file loading
-
-#### 7. Built-in Plugins
-
-- General: `BundleAnalyzerPlugin`, `ReplacePlugin`, `IsolatedDeclarationPlugin`, `EsmExternalRequirePlugin`
-- Vite Compatibility: `ViteResolvePlugin`, `ViteJsonPlugin`, `ViteManifestPlugin`, `ViteReporterPlugin`, `ViteAliasPlugin`, `ViteImportGlobPlugin`
-
-#### 8. Community Plugins
-
-- `rolldown-plugin-dts` (sxzz/rolldown-plugin-dts) - Plugin สำหรับ generate type definitions
-- `rolldown-plugin-require-cjs` - Plugin สำหรับ CJS require support
-- `rolldown-plugin-node-polyfills` - Polyfill Node.js built-ins for Rolldown
-- `rollup-plugin-bundle-stats` - Analyze Rollup/Vite/Rolldown bundle stats
+1. ตรวจสอบ official plugins: `@rolldown/plugin-commonjs`, `@rolldown/plugin-node-resolve`, `@rolldown/plugin-terser`
+2. ตรวจสอบ community plugins ว่า active และ compatible กับ Rolldown version
+3. ใช้ `rolldown-plugin-dts` ถ้าต้องการ generate type definitions
+4. อัปเดต plugin list เป็นระยะ โดยอ้างอิง official docs
+5. ดู plugin list ใน [references/official-resources.md](references/official-resources.md)
 
 ## Rules
 
-### 1. Usage
+### 1. Installation
 
-- ใช้ `bun add -D rolldown` สำหรับติดตั้ง
-- ใช้ `bunx rolldown` สำหรับ build
-- ใช้ `--watch` สำหรับ watch mode
-- ใช้ `--config` สำหรับ config file
-- ใช้ TypeScript สำหรับ config file (`rolldown.config.ts`)
-- ใช้ `defineConfig` สำหรับ type safety
+- ใช้ `bun add -D rolldown` สำหรับ local install
+- ใช้ `bunx rolldown` สำหรับ one-off build
+- ตรวจสอบ version และ Node.js compatibility ก่อนใช้
 
-### 2. Ecosystem
+### 2. Configuration
 
-- ตรวจสอบว่า library ใช้ Rolldown จริงๆ
-- ตรวจสอบว่า library ยัง active อยู่
-- รวมเฉพาะ libraries ทีมี public repositories
-- จัดเรียงตาม popularity และ relevance
-- อัปเดต list เป็นระยะ
+- ใช้ `rolldown.config.ts` กับ `defineConfig` เสมอ
+- กำหนด `input`, `output.dir`, `output.format` ให้ชัดเจน
+- เปิดใช้ `treeshake` ตามค่าเริ่มต้น เว้นแต่มีเหตุผลเฉพาะ
+
+### 3. Migration
+
+- ไม่ rewrite source code เพื่อ migration
+- เปรียบเทียบ output กับ Rollup build เดิมก่อน deploy
+- ตรวจสอบ sourcemap และ chunking behavior
+
+### 4. Plugins
+
+- ใช้ official plugins ก่อน community plugins
+- ตรวจสอบ maintenance status และ compatibility
+- ไม่ hard-code paths หรือ secrets ใน config
 
 ## Expected Outcome
 
-- JavaScript/TypeScript ที bundled ด้วยความเร็วสูง
-- Migration จาก Rollup ที smooth
-- Code splitting ที efficient
-- Tree-shaking ที effective
-- Plugin system ที compatible
-- Performance ทีดีขึ้น 10-100x
-- List ของ libraries ทีสร้างด้วย Rolldown พร้อม Categorization
-- Reference สำหรับการเลือกใช้ libraries
-- Up-to-date information ตาม maintenance status
+- Rolldown ติดตั้งและ build ได้
+- `rolldown.config.ts` ถูกต้องและ maintainable
+- Migration จาก Rollup smooth
+- Output bundle มี performance ทีดีขึ้น
+- Plugins เลือกใช้อย่างเหมาะสม

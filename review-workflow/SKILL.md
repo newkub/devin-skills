@@ -4,14 +4,14 @@ description: Review workflow ให้เร็ว ปลอดภัย ใช�
 argument-hint: "[workflow-or-skill]"
 related:
   - review-devin-global-skills
-  - follow-create-devin-skills
+  - update-devin-global-skills
   - simplify
   - review-redundancy
   - review-consistency
-  - validate
+  - deep-validate
   - report-table
   - suggest-next-action
-  - use-subagents
+  - consider-use-subagents
   - follow-parallel
 ---
 
@@ -95,4 +95,4 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น
 - ไม่มี redundancy หรือ duplicated steps
 - มี report ชัดเจนพร้อม recommendations
-- ผ่าน `/validate` หลังปรับปรุง
+- ผ่าน `/deep-validate` หลังปรับปรุง

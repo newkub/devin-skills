@@ -83,4 +83,4 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น
 - ไม่มี redundancy หรือ duplicated steps
 - มี report ชัดเจนพร้อม recommendations
-- ผ่าน `/validate` หลังปรับปรุง
+- ผ่าน `/deep-validate` หลังปรับปรุง

@@ -2,17 +2,16 @@
 name: follow-create-line-bot
 description: สร้าง LINE bot ด้วย TypeScript/Bun พร้อม webhook, commands, และ messaging API
 related:
-  - follow-create-sdk
-  - follow-create-bun-cli
-  - follow-create-website
-  - use-bun-native-api
-  - follow-lang-typescript
-  - run-test
   - deploy-to-cloudflare
   - deploy-to-railway
+  - follow-create-bun-cli
+  - follow-create-sdk
+  - follow-create-website
+  - follow-lang-typescript
+  - run-test
+  - use-bun-native-api
   - report-table
 ---
-
 ## Goal
 
 สร้าง LINE bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม webhook signature validation, message event handling, reply/push messages, rich menu, และ deploy

@@ -8,7 +8,7 @@ related:
   - deep-analyze
   - run-review
   - deep-validate
-  - validate
+  - deep-validate
   - report-table
   - suggest-next-action
   - review-frontend
@@ -108,7 +108,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 > Goal: findings ถูกต้อง พร้อม review score
 
 1. ทำ `/deep-validate` เพื่อ validate findings
-2. ทำ `/validate` สำหรับ issues จาก scripts
+2. ทำ `/deep-validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
 4. คำนวณ review score ตาม `references/scoring.md`
 5. ทำ `/report` พร้อม `/report-table` — ตารางทุกใบต้องมี No. เป็นคอลัมน์แรก และเรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว

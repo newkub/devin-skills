@@ -38,7 +38,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 > Goal: ตรวจสอบ code changes ของ PR
 
-1. ทำ /run-verify เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
+1. ทำ /run-verify-fast เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
 2. ทำ /update-review-codebase-cli-and-run บน files ที่เปลี่ยนแปลง
 3. ทำ /update-review-codebase-cli-and-run สำหรับ security-sensitive changes
 4. ทำ /update-review-codebase-cli-and-run สำหรับ test coverage และ test quality
@@ -53,7 +53,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 > Goal: ตรวจสอบ findings ก่อน report
 
 1. ทำ /deep-validate เพื่อ validate findings หลายมิติ
-2. ทำ /validate เพื่อ validate issues แต่ละอย่าง
+2. ทำ /deep-validate เพื่อ validate issues แต่ละอย่าง
 3. จัดลำดับ severity: Critical → High → Medium → Low
 4. ระบุ findings ที่เป็น false positive
 

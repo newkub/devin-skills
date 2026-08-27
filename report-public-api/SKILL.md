@@ -17,7 +17,7 @@ description: รายงาน public API ของ project หรือ librar
 
 > Goal: หา exports ทั้งหมดที่ public
 
-1. ทำ `/scan-codebase` หรือ `/use-ast-grep-outline` เพื่อหา exports
+1. ทำ `/scan-codebase` หรือ `/check-code-structure` เพื่อหา exports
 2. อ่าน barrel files (`index.ts`, `index.js`, `mod.rs`, `lib.rs`)
 3. แยกประเภท: function, class, type, interface, constant, enum, macro
 4. ระบุ module/file ที่ export แต่ละตัว

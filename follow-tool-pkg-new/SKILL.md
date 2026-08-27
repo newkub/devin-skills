@@ -1,6 +1,12 @@
 ---
 name: follow-tool-pkg-new
 description: ตั้งค่า pkg.pr.new สำหรับ continuous preview releases
+related:
+  - follow-tool-github-actions
+  - follow-tool-release-it
+  - follow-tool-semantic-release
+  - follow-tool-renovate
+  - follow-tool-node-modules-inspector
 ---
 
 ## Goal
@@ -9,7 +15,7 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 ## Scope
 
-ใช้ `follow-tool-pkg-new` สำหรับงานเฉพาะและ workflows ที่ครอบคลุม
+ใช้สำหรับ libraries บน GitHub ที่ต้องการ preview packages สำหรับทุก commit และ pull request
 
 ## Execute
 
@@ -17,9 +23,10 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 > Goal: ติดตั้ง GitHub Application บน repository
 
-1. ไปที่ https://github.com/apps/pkg-pr-new
+1. ไปที่ `https://github.com/apps/pkg-pr-new`
 2. Install application บน repository
 3. ตรวจสอบ permissions ที่จำเป็น
+4. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ### 2. Install Package
 
@@ -27,83 +34,34 @@ description: ตั้งค่า pkg.pr.new สำหรับ continuous prev
 
 1. รัน `bun add -D pkg-pr-new`
 2. หรือใช้ `bunx pkg-pr-new publish` โดยตรง
+3. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ### 3. Configure Workflow
 
 > Goal: สร้าง GitHub Actions workflow สำหรับ publish
 
 1. สร้างไฟล์ `.github/workflows/publish.yml`
-
-```yml
-name: Publish
-
-on:
-  push:
-    branches:
-      - "**"
-  pull_request:
-
-permissions: {}
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
-      - run: bun run build
-      - run: bunx pkg-pr-new publish
-```
-
-2. สำหรับ monorepos
-
-```yml
-- run: bunx pkg-pr-new publish './packages/A' './packages/B'
-```
-
-3. สำหรับ approved pull requests เท่านั้น
-
-```yml
-on:
-  pull_request_review:
-    types: [submitted]
-```
+2. trigger บน `push` และ `pull_request`
+3. รัน `bun install`, `bun run build` แล้ว `bunx pkg-pr-new publish`
+4. สำหรับ monorepos ระบุ packages paths เช่น `'./packages/*'`
+5. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ### 4. Configure Options
 
 > Goal: กำหนด options สำหรับ templates, CLI และ comments
 
-1. สำหรับ templates
-
-```bash
-bunx pkg-pr-new publish './packages/A' --template './examples/*'
-```
-
-2. สำหรับ CLI applications
-
-```bash
-bunx pkg-pr-new publish --bin
-```
-
-3. สำหรับ custom comments
-
-```bash
-bunx pkg-pr-new publish --comment=update
-```
-
-4. สำหรับ package manager
-
-```bash
-bunx pkg-pr.new publish --packageManager=bun
-```
+1. ใช้ `--template './examples/*'` สำหรับ StackBlitz templates
+2. ใช้ `--bin` สำหรับ CLI applications
+3. ใช้ `--comment=update` สำหรับ custom comments
+4. ใช้ `--packageManager=bun` สำหรับ package manager ใน comments
+5. ดูรายละเอียดใน [references/pkg-new.md](references/pkg-new.md)
 
 ## Rules
 
 ### 1. Installation
 
 - ต้อง install GitHub Application ก่อนใช้งาน
-- ใช้ bun แทน npm เสมอ
+- ใช้ `bun` แทน `npm` เสมอ
 - รัน command เพียงครั้งเดียวต่อ workflow
 
 ### 2. Configuration
@@ -115,9 +73,9 @@ bunx pkg-pr.new publish --packageManager=bun
 ### 3. Options
 
 - `--template`: สร้าง Stackblitz instances สำหรับ examples
-- `--bin`: แสดง bunx แทน npm i ใน comments
-- `--comment`: update, create, หรือ off
-- `--packageManager`: npm, pnpm, yarn, หรือ bun
+- `--bin`: แสดง `bunx` แทน `npm i` ใน comments
+- `--comment`: `update`, `create` หรือ `off`
+- `--packageManager`: `npm`, `pnpm`, `yarn` หรือ `bun`
 - `--only-templates`: แสดงเฉพาะ templates ใน comments
 
 ### 4. Best Practices

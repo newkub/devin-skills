@@ -1,8 +1,11 @@
 ---
 name: check-monorepo
 description: ตรวจสอบว่า project เป็น monorepo หรือไม่
+related:
+  - follow-monorepo
+  - follow-package-manifest
+  - follow-tool-moonrepo
 ---
-
 ## Goal
 
 ตรวจสอบว่า project เป็น monorepo หรือไม่ เพื่อกำหนด structure ที่เหมาะสม

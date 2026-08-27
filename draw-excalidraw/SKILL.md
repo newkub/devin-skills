@@ -3,7 +3,6 @@ name: draw-excalidraw
 description: สร้างไฟล์ .excalidraw จากคำอธิบาย shapes
 argument-hint: "[description]"
 related:
-  - draw-tldraw
   - draw-svg-image
 ---
 

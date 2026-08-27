@@ -1,8 +1,10 @@
 ---
 name: follow-create-oxlint-plugins
 description: ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript
+related:
+  - follow-create-sdk
+  - follow-tool-oxlint
 ---
-
 ## Goal
 
 ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript plugins สำหรับ linting

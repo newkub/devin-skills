@@ -1,5 +1,5 @@
 ---
-name: move-files-in
+name: move-to
 description: ย้ายไฟล์และอัพเดท reference
 argument-hint: "[source] [target]"
 ---

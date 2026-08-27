@@ -1,112 +1,100 @@
 ---
 name: follow-tool-release-it
-description: ตั้งค่า release-it สำหรับ automated releases
+description: ตั้งค่า release-it สำหรับ automated version bump, tag และ npm publish
+related:
+  - follow-tool-semantic-release
+  - follow-tool-changesets
+  - follow-tool-github-actions
+  - follow-tool-pkg-new
+  - follow-lang-nodejs
 ---
 
 ## Goal
 
-ตั้งค่า release-it สำหรับ automated releases ไปยัง npm
+ตั้งค่า `release-it` สำหรับ automated releases ไปยัง npm และ GitHub
 
 ## Scope
 
-ตั้งค่า release-it สำหรับ packages ที่ต้องการ automated releases
+ใช้สำหรับ Node.js projects ที่ต้องการ version bump, git tag, changelog, npm publish และ GitHub release แบบ automated
 
 ## Execute
 
-### 1. Setup Package Scripts
+### 1. Install
 
-> Goal: เพิ่ม release script ใน `package.json`
+> Goal: ติดตั้ง release-it ใน project
 
-1. เพิ่ม script ใน `package.json`
+1. รัน `bun add -D release-it`
+2. เพิ่ม script ใน `package.json`: `"release": "release-it"`
+3. ยืนยันด้วย `bunx release-it --version`
+4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 
-```json
-{
-  "scripts": {
-    "release": "release-it"
-  }
-}
-```
+### 2. Configure
 
-### 2. Create Release-it Config
+> Goal: สร้าง config สำหรับ release-it
 
-> Goal: สร้างไฟล์ config สำหรับ release-it
+1. สร้าง `.release-it.json` ที่ project root
+2. ตั้งค่า `git`, `npm`, `github` และ `hooks` ตาม project policy
+3. ใช้ `requireCleanWorkingDir: false` เฉพาะเมื่อ CI รันโดยไม่ต้อง clean working dir
+4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 
-1. สร้างไฟล์ `.releaseit.json`
+### 3. Manual Release
 
-```json
-{
-  "git": {
-    "commitMessage": "chore: release v${version}",
-    "tagName": "v${version}",
-    "requireCleanWorkingDir": false,
-    "requireUpstream": false,
-    "push": true,
-    "commit": true,
-    "tag": true
-  },
-  "npm": {
-    "publish": true,
-    "publishPath": "."
-  },
-  "github": {
-    "release": false
-  },
-  "hooks": {
-    "before:init": [
-      "bun run pre-release"
-    ],
-    "after:release": [
-      "echo Successfully released ${name}@${version} to npm!",
-      "echo Install with: bun add ${name}"
-    ]
-  }
-}
-```
+> Goal: รัน release ใน local หรือ CI
 
-### 3. Create GitHub Workflow
+1. รัน `bun run release` สำหรับ interactive mode
+2. รัน `bun run release --ci` สำหรับ non-interactive mode
+3. ใช้ `major`, `minor`, `patch` หรือ `--release-version` เพื่อควบคุม version
+4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 
-> Goal: สร้าง GitHub Actions workflow สำหรับ auto release
+### 4. GitHub Actions Workflow
 
-1. สร้างไฟล์ `.github/workflows/release-it.yml`
+> Goal: รัน release อัตโนมัติเมื่อ push ไป main
 
-```yml
-name: Auto Release Every Push
+1. สร้าง `.github/workflows/release.yml`
+2. ตั้งค่า `NPM_TOKEN` และ `GITHUB_TOKEN` secrets
+3. ใช้ `actions/checkout@v4` และ `oven-sh/setup-bun@v1`
+4. รัน `bun install` แล้ว `bun run release --ci`
+5. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 
-on:
-  push:
-    branches:
-      - main
+### 5. Plugins
 
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: oven-sh/setup-bun@v2
-      - name: Auto Release
-        run: release-it --ci --no-git.requireCleanWorkingDir --npm.publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
+> Goal: ขยาย release-it ด้วย plugins
 
-### 4. Setup GitHub Secrets
-
-> Goal: ตั้งค่า secrets สำหรับ npm และ GitHub
-
-1. ทำ `/follow-tool-open-github-secrets`
-2. ทำ `/open-env-website`
-3. เพิ่ม secrets ที่จำเป็น
+1. ใช้ `@release-it/conventional-changelog` สำหรับ auto changelog
+2. ใช้ `@release-it/bumper` สำหรับ custom manifest files
+3. ใช้ `@release-it/keep-a-changelog` สำหรับ maintain `CHANGELOG.md`
+4. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 
 ## Rules
 
-### 1. Release Rules
+### 1. Safety
 
-- ใช้ `bun` แทน `npm` เสมอ
-- ตรวจสอบว่ามีสิทธิ์ publish ไปยัง npm
-- ตรวจสอบว่า `GITHUB_TOKEN` มีสิทธิ์เพียงพอ
+- ตรวจสอบสิทธิ์ publish ไปยัง npm ก่อนรัน release
+- ใช้ `requireCleanWorkingDir: true` สำหรับ local release
+- ตั้งค่า `NPM_TOKEN` และ `GITHUB_TOKEN` เป็น repository secrets
+
+### 2. CI
+
+- ใช้ `--ci` ใน GitHub Actions เพื่อปิด interactive prompts
+- ใช้ `fetch-depth: 0` ใน `actions/checkout` เพื่อให้มมีประวัติทั้งหมด
+- ไม่รัน release บน pull request
+
+### 3. Versioning
+
+- ใช้ conventional commits หรือ bump type ที่ถูกต้อง
+- ตรวจสอบ `package.json` version ก่อน release
+- ใช้ `--no-npm.publish` สำหรับ test run ถ้าจำเป็น
+
+### 4. Secrets
+
+- ไม่ hard-code tokens ใน config หรือ workflow
+- ใช้ `secrets.NPM_TOKEN` และ `secrets.GITHUB_TOKEN` ผ่าน GitHub Actions
+- ใช้ `gh secret set` สำหรับตั้งค่า secrets ผ่าน CLI
 
 ## Expected Outcome
 
-- release-it ติดตั้งและตั้งค่าเรียบร้อย
-- GitHub workflow สร้างอัตโนมัติเมื่อ push ไป main branch
-- Package release ไปยัง npm อัตโนมัติ
+- `release-it` ติดตั้งและตั้งค่าใน project
+- `bun run release` ทำงานได้ทั้ง local และ CI
+- Version, tag, npm publish และ GitHub release เกิดขึ้นอัตโนมัติ
+- Secrets และ permissions ตั้งค่าถูกต้อง
+- Plugins ทีต้องการทำงานตาม config

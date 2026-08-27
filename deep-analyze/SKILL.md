@@ -51,7 +51,7 @@ description: วิเคราะห์โปรเจกต์อย่าง�
 ทำ `/scan-codebase` เพื่อวิเคราะห์โครงสร้าง
 
 1. รัน tree command ดู directory structure
-2. ทำ `/use-ast-grep-outline` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
+2. ทำ `/check-code-structure` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
 3. รัน `bunx ast-grep outline` ดู structure ภายในไฟล์
 4. วิเคราะหา findings (SRP violations, tight coupling)
 5. ตรวจสอบ file patterns และ naming conventions

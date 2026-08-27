@@ -6,7 +6,7 @@ related:
   - analyze-project
   - translate-to-lang-en
   - report-table
-  - validate
+  - deep-validate
 ---
 
 ## Goal

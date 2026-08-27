@@ -3,11 +3,9 @@ name: delete-git-submodules
 description: ลบ git submodule ออกจาก repo ทั้งจาก .gitmodules, .git/modules และ working tree
 argument-hint: "[submodule-path]"
 related:
-  - list-git-submodules
   - git-commit
   - ship
 ---
-
 ## Goal
 
 ลบ git submodule ออกจาก repository อย่างสมบูรณ์ ทั้งจาก `.gitmodules`, `.git/modules`, และ working tree

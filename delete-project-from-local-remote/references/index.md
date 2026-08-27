@@ -15,7 +15,7 @@
 |---|---|
 | `/follow-service-cloudflare` | Cloudflare services, wrangler, bindings |
 | `/list-cloudflare-project` | Find Cloudflare projects in machine |
-| `/delete-files` | Safe file/folder deletion |
+| `/delete` | Safe file/folder deletion |
 | `/delete-git-branch` | Delete local/remote git branches |
 
 ## Safety

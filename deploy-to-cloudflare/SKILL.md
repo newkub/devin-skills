@@ -34,7 +34,7 @@ Deploy application ไปยัง Cloudflare Workers, Pages, หรือ Nitro
 
 > Goal: ตรวจสอบและ build
 
-1. ทำ `/run-verify`
+1. ทำ `/run-verify-fast`
 2. ทำ `/run-build` หรือ `bun run build` / `bunx nitro build`
 3. ตรวจสอบ `.output/server` หรือ build output
 

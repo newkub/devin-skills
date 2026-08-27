@@ -56,7 +56,7 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 
 > Goal: ตรวจสอบคุณภาพ
 
-1. ทำ `/validate` เพื่อตรวจ Markdown quality
+1. ทำ `/deep-validate` เพื่อตรวจ Markdown quality
 2. ทำ `git diff --check` เพื่อหา whitespace errors
 3. ทำ `/check-reference` เพื่อตรวจ links
 
@@ -80,5 +80,5 @@ description: อัปเดต CONTRIBUTING.md ให้สอดคล้อ�
 ## Expected Outcome
 
 - `CONTRIBUTING.md` ครบถ้วนและสอดคล้องกับ project
-- ผ่าน `/validate` และ `/check-reference`
+- ผ่าน `/deep-validate` และ `/check-reference`
 - ไม่มี whitespace errors

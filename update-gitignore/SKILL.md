@@ -53,7 +53,7 @@ description: อัปเดต .gitignore ให้ครบถ้วนตา�
 
 1. รัน `git status` เพื่อดูว่าไม่มีไฟล์ทีควร ignore
 2. ทำ `git check-ignore` กับตัวอย่างไฟล์
-3. ทำ `/validate` เพื่อ verify
+3. ทำ `/deep-validate` เพื่อ verify
 
 ## Rules
 

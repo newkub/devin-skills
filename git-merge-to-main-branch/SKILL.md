@@ -9,7 +9,7 @@ Merge feature branch เข้า `main` ด้วย `--no-ff` merge commit เ
 
 ## Scope
 
-ใช้เมื่อ feature branch พร้อม merge เข้า `main` — ครอบคลุม pre-merge validation, merge execution, push และ post-merge cleanup ไม่รวม squash merge (ดู `refactor-commit`) หรือ file merge (ดู `merge-files-in`)
+ใช้เมื่อ feature branch พร้อม merge เข้า `main` — ครอบคลุม pre-merge validation, merge execution, push และ post-merge cleanup ไม่รวม squash merge (ดู `refactor-commit`) หรือ file merge (ดู `merge-in`)
 
 ## Execute
 

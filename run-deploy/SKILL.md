@@ -19,7 +19,7 @@ Deploy application ไปยัง platform ที่กำหนด พร้�
 
 ตรวจสอบคุณภาพโค้ดก่อน deploy
 
-1. ทำ `/run-verify` เพื่อตรวจสอบคุณภาพโค้ด
+1. ทำ `/run-verify-fast` เพื่อตรวจสอบคุณภาพโค้ด
 2. ตรวจสอบว่า verify สำเร็จ
 3. ตรวจสอบว่าไม่มี error หรือ warning ที่สำคัญ
 
@@ -103,7 +103,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 ### 1. Verify
 
 - ต้อง verify สำเร็จก่อน build
-- ใช้ `/run-verify` สำหรับ verify
+- ใช้ `/run-verify-fast` สำหรับ verify
 - ไม่มี error หรือ warning ที่สำคัญ
 
 ### 2. Build

@@ -6,7 +6,6 @@ related:
   - follow-math-propositional-logic
   - follow-math-concepts
   - follow-debugging
-  - follow-linter
   - follow-software-engineering
 ---
 

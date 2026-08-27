@@ -90,7 +90,7 @@ description: รัน lint และแก้ code เพื่อให้ผ�
 - รัน tests ทั้งหมด
 - ตรวจสอบว่าไม่มี regressions
 - ทำ `/check-unused-files` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
-- ห้ามใช้ `--unsafe` flag กับ `biome` commands
+- ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
 
 ## Expected Outcome
 

@@ -1,8 +1,11 @@
 ---
 name: follow-create-browser-extensions
 description: สร้างและดูแล browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
+related:
+  - deploy-to-cloudflare
+  - follow-create-website
+  - follow-tool-vite
 ---
-
 ## Goal
 
 สร้างและดูแล browser extensions สำหรับ Chrome, Firefox, Edge และ browsers อื่นๆ ตาม Manifest V3 standard
@@ -58,7 +61,7 @@ description: สร้างและดูแล browser extensions ตาม M
 
 > Goal: extension ผ่านเกณฑ์และพร้อมส่งมอบ
 
-1. ทำ `/validate` เพื่อตรวจ syntax และ config
+1. ทำ `/deep-validate` เพื่อตรวจ syntax และ config
 2. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 3. ทำ `/ship` เพื่อส่งมอบงาน
 
@@ -93,4 +96,4 @@ description: สร้างและดูแล browser extensions ตาม M
 - Browser extensions ที่ compatible กับ multiple browsers
 - Code ที่ follow Manifest V3 standard
 - Security ที่เหมาะสม
-- ผ่าน `/validate` และ `/run-check`
+- ผ่าน `/deep-validate` และ `/run-check`

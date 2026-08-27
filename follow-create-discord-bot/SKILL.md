@@ -2,18 +2,18 @@
 name: follow-create-discord-bot
 description: สร้าง Discord bot ด้วย TypeScript/Bun พร้อม slash commands, events, auto-load, และ modular handlers
 related:
+  - deploy-to-cloudflare
+  - deploy-to-railway
   - follow-create-bun-cli
   - follow-create-cli
   - follow-create-sdk
-  - search-npm-libraries
-  - use-bun-native-api
+  - follow-create-website
   - follow-lang-typescript
   - run-test
-  - deploy-to-cloudflare
-  - deploy-to-railway
+  - search-npm-libraries
+  - use-bun-native-api
   - report-table
 ---
-
 ## Goal
 
 สร้าง Discord bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม slash commands, event handlers, auto-load commands, และ modular architecture

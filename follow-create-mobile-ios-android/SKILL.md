@@ -3,11 +3,11 @@ name: follow-create-mobile-ios-android
 description: สร้าง iOS/Android mobile app ด้วย Capacitor จาก web codebase
 argument-hint: "[project-name]"
 related:
-  - follow-framework-capacitor
   - follow-create-website
+  - follow-framework-capacitor
+  - follow-tool-cargo
   - follow-runtime-bun
 ---
-
 ## Goal
 
 สร้าง cross-platform iOS และ Android mobile app จาก web codebase เดียวด้วย Capacitor

@@ -1,6 +1,11 @@
 ---
 name: git-debug
 description: Debug ปัญหาที่เกี่ยวกับ git โดยใช้ bisect, blame, reflog, log และ diff
+related:
+  - use-git-bisect
+  - check-git-files-history
+  - use-git-search
+  - restore-from-git-log
 ---
 
 ## Goal
@@ -30,7 +35,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
 
-1. ทำ `/follow-tool-git` เพื่อรัน bisect workflow
+1. ทำ `/use-git-bisect` เพื่อรัน bisect workflow
 2. ระบุ commit ล่าสุดที่รู้ว่า good และ commit แรกที่รู้ว่า bad
 3. ให้ bisect หา commit ที่ทำให้เกิด bug อัตโนมัติ
 4. บันทึก commit hash ที่พบ
@@ -43,7 +48,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 1. ทำ `/follow-tool-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
 2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
-3. ทำ `/git-file-history` เพื่อดู file history แบบ interactive
+3. ทำ `/check-git-files-history` เพื่อ trace ไฟล์ใน git log จนกว่าจะเจอเงื่อนไข หรือ `/git-file-history` ถ้าต้องการ UI viewer
 4. วิเคราะห์เหตุผลของการเปลี่ยนแปลงจาก commit message และ diff
 
 ### 4. Recover Lost Commit With Reflog
@@ -59,7 +64,7 @@ description: Debug ปัญหาที่เกี่ยวกับ git โ�
 
 > Goal: กู้คืนไฟล์ที่หายไปจาก commit ในประวัติ
 
-1. ทำ `/git-restore-file` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
+1. ทำ `/restore-from-git-log` เพื่อกู้คืนไฟล์จาก commit ล่าสุดที่มีไฟล์นั้น
 2. ถ้าไม่พบ → รัน `git log --all --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
 3. รัน `git show <commit-hash>^:<file-path>` เพื่อดูเนื้อหาไฟล์ก่อนถูกลบ
 4. รัน `git restore --source=<commit-hash>^ <file-path>` เพื่อ restore ไฟล์

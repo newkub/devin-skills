@@ -52,7 +52,7 @@ description: สร้าง GitHub issue templates สำหรับ bug, feat
 1. ตรวจสอบ YAML syntax ของทุกไฟล์
 2. ตรวจสอบ GitHub issue form syntax
 3. ตรวจสอบ `required` fields
-4. ทำ `/validate` เพื่อ verify templates
+4. ทำ `/deep-validate` เพื่อ verify templates
 
 ### 5. Report
 

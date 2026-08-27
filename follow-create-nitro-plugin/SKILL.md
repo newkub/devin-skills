@@ -9,7 +9,6 @@ related:
   - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง Nitro plugin package สำหรับ Nuxt/Nitro ด้วย `defineNitroPlugin`, hooks, middleware, storage, และ tests

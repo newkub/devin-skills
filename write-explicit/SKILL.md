@@ -47,7 +47,7 @@ description: เขียนหรือแก้ instructions ให้ชั�
 
 1. อ่านทั้งหมดแล้วตอบคำถาม: ทำอะไร? ทำเมื่อไหร่? ผลที่ต้องการคืออะไร?
 2. ถ้ามีข้อใดตอบไม่ได้ → กลับไปแก้ข้อนั้น
-3. ทำ `/validate` เพื่อตรวจ structure และ references
+3. ทำ `/deep-validate` เพื่อตรวจ structure และ references
 
 ## Rules
 
@@ -81,4 +81,4 @@ description: เขียนหรือแก้ instructions ให้ชั�
 - Target สามารถทำตามได้ทันทีโดยไม่ต้องถามเพิ่ม
 - ทุก step มี single responsibility ชัดเจน
 - ไม่มี ambiguous words, filler, หรือ placeholders ที่ไม่จำเป็น
-- ผ่าน `/validate` และ check ด้วยตนเอง
+- ผ่าน `/deep-validate` และ check ด้วยตนเอง

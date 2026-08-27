@@ -66,7 +66,7 @@ description: แปลง how-to หรือ instructions เป็น solution
 
 1. อ่านทั้้ง skill แล้วถาม: "ถ้า tool เปลี่ยน ต้องแก้ไขกี่จุด?" ถ้ามากเกินไป → กลับไป generalize ต่อ
 2. ทำ `/write-explicit` เพื่อตรวจความชัดเจน
-3. ทำ `/validate` เพื่อตรวจ structure และ references
+3. ทำ `/deep-validate` เพื่อตรวจ structure และ references
 4. ทำ `/check-reference` เพื่อยื่นยันว่า `related` ถูกต้อง
 
 ## Rules
@@ -101,4 +101,4 @@ description: แปลง how-to หรือ instructions เป็น solution
 - Skill หรือเอกสารไม่เขียนเป็น how-to อีกต่อไป
 - ทุก section ระบุปัญหา เงื่อนไข ทางเลือก และ criteria ตัดสินใจ
 - สามารถนำไปใช้กับหลาย tool/library โดยปรับเล็กน้อย
-- ผ่าน `/validate` และ `/check-reference`
+- ผ่าน `/deep-validate` และ `/check-reference`

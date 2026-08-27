@@ -1,149 +1,115 @@
 ---
 name: follow-tool-tsdown
-description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations
+description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown
+related:
+  - follow-tool-rolldown
+  - follow-tool-vite
+  - follow-tool-build-packages
+  - follow-lang-typescript
+  - follow-tool-vitest
 ---
 
 ## Goal
 
-ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations generation และ multiple output formats
+ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations และ multiple output formats
 
 ## Scope
 
-ใช้ `follow-tool-tsdown` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
 
 ## Execute
 
-### 1. Analyze Project
+### 1. Project Analysis
 
-> Goal: เข้าใจโครงสร้างและความต้องการของโปรเจกต์ก่อนตั้งค่า
+> Goal: ตรวจสอบว่า project เหมาะกับ tsdown
 
-วิเคราะห์โปรเจกต์และความต้องการ
+1. ยืนยันว่าเป็น TypeScript library project
+2. ตรวจสอบ `package.json` และ Node.js version ไม่ต่ำกว่า 22.18
+3. ระบุ output formats ทีต้องการ
+4. ตรวจสอบ `src/index.ts` หรือ entry files
 
-1. ตรวจสอบว่าเป็น TypeScript library project
-2. ยืนยันว่ามี Bun ติดตั้งแล้ว
-3. ตรวจสอบว่ามี package.json อยู่แล้ว
-4. ระบุ output formats ที่ต้องการ (ESM, CJS, IIFE)
-5. ตรวจสอบ Node.js version requirement (^22.18.0 || >=24.0.0)
+### 2. Installation
 
-### 2. Setup Tsdown
+> Goal: ติดตั้ง tsdown
 
-> Goal: ติดตั้งและสร้าง config สำหรับ tsdown ให้พร้อมใช้งาน
-
-ดำเนินการตั้งค่า tsdown
-
-1. ติดตั้ง tsdown ด้วยคำสั่ง `bun add -D tsdown`
+1. ติดตั้งด้วย `bun add -D tsdown`
 2. ตรวจสอบ version ด้วย `bunx tsdown --version`
-3. ตรวจสอบ CLI options ด้วย `bunx tsdown --help`
-4. สร้างไฟล์ tsdown.config.ts พร้อมกำหนด entry, format, dts generation
-5. เพิ่ม build scripts ใน package.json (build, build:watch)
-6. รัน build เพื่อตรวจสอบว่าทำงานได้ถูกต้อง
+3. ใช้ `bunx tsdown --help` ดู CLI options
+4. ดูรายละเอียดใน [references/tsdown.md](references/tsdown.md)
 
-### 3. Validate Setup
+### 3. Configuration
 
-> Goal: ตรวจสอบความถูกต้องและยืนยันว่าพร้อมใช้งาน
+> Goal: สร้าง `tsdown.config.ts` สำหรับ project
 
-ตรวจสอบความถูกต้องและยืนยันว่าพร้อมใช้งาน
+1. สร้าง `tsdown.config.ts` ที root
+2. ใช้ `defineConfig` จาก `tsdown`
+3. กำหนด `entry`, `format`, `dts`, `outDir`, `clean`
+4. ตั้งค่า `platform` เป็น `node`, `browser`, หรือ `neutral`
+5. ดู config options ใน [references/tsdown.md](references/tsdown.md)
 
-1. ตรวจสอบ output ใน dist/ ว่าสร้างถูกต้อง
-2. ยืนยันว่า type declarations (.d.ts) สร้างครบถ้วน
-3. ทดสอบ build scripts ว่าทำงานได้
-4. ทดสอบ watch mode ด้วย `bunx tsdown --watch`
+### 4. Build Scripts
+
+> Goal: เพิ่ม package scripts สำหรับ build
+
+1. เพิ่ม `"build": "tsdown"` ใน `package.json`
+2. เพิ่ม `"build:watch": "tsdown --watch"`
+3. เพิ่ม `"dev": "tsdown --watch"` ถ้าจำเป็น
+4. ตรวจสอบว่า scripts ทำงานบน Bun
+
+### 5. Plugins and Validation
+
+> Goal: เพิ่ม plugins และ validate package
+
+1. เพิ่ม Rolldown/Rollup/unplugin plugins ใน `plugins` array
+2. เปิดใช้ `publint: true` และ `attw: true` ถ้าต้องการ validate
+3. รัน `bun run build` แล้วตรวจสอบ `dist/`
+4. ตรวจสอบ `.d.ts` files สร้างครบถ้วน
+
+### 6. Validate Output
+
+> Goal: ตรวจสอบ output และ watch mode
+
+1. ตรวจสอบ `dist/*.mjs`, `dist/*.cjs`, `dist/*.d.ts`
+2. รัน `bunx tsdown --watch` เพื่อทดสอบ watch mode
+3. ทดสอบ import output ใน project อื่น
+4. ทำ `/follow-test` เพื่อรัน tests หลัง build
 
 ## Rules
 
-### Installation
+### 1. Installation
 
-ติดตั้ง tsdown อย่างถูกต้อง
+- ใช้ `bun add -D tsdown` สำหรับ local install
+- ตรวจสอบ Node.js version ก่อน
+- ใช้ `bunx tsdown` สำหรับ one-off
 
-- ใช้คำสั่ง `bun add -D tsdown` เท่านั้น
-- ตรวจสอบ Node.js version requirement (^22.18.0 || >=24.0.0)
-- ติดตั้ง unplugin-vue/rolldown หากต้องการ build Vue components
-- ตรวจสอบ installation สำเร็จก่อนดำเนินการต่อ
-- ใช้ `create-tsdown` CLI สำหรับ scaffolding project ใหม่
+### 2. Configuration
 
-### Configuration
+- ใช้ `tsdown.config.ts` และ `defineConfig`
+- ระบุ `entry` เป็น array หรือ string
+- กำหนด `format` เป็น `['esm', 'cjs']` ถ้าต้องการทั้งสอง
 
-ตั้งค่า tsdown.config.ts อย่างถูกต้อง
+### 3. Build
 
-- สร้างไฟล์ `tsdown.config.ts` ใช้ TypeScript format
-- ใช้ `defineConfig` helper สำหรับ type safety
-- ระบุ `entry` เป็น array เช่น `['./src/index.ts']`
-- กำหนด output formats เป็น array เช่น `['esm', 'cjs']`
-- Enable dts generation ด้วย `dts: true` หรือ `dts: { vue: true }`
-- รองรับ config file formats: .ts, .js, .mjs, .cjs, .mts, .cts
+- เปิดใช้ `clean: true`
+- เปิดใช้ `treeshake` ตามค่าเริ่มต้น
+- ตรวจสอบ `dist/` output หลัง build
 
-### Build Scripts
+### 4. Type Declarations
 
-ตั้งค่า scripts ใน package.json
+- เปิดใช้ `dts: true`
+- ใช้ `vue` หรือ `react` dts option ถ้าใช้ framework
+- ตรวจสอบ `.d.ts` สร้างครบ
 
-- เพิ่ม script `"build": "tsdown"` ใน package.json
-- เพิ่ม script `"build:watch": "tsdown --watch"` สำหรับ development
-- เพิ่ม script `"watch": "tsdown --watch"` สำหรับ shortcut
-- เพิ่ม script `"dev": "tsdown --watch"` สำหรับ development mode
+### 5. Migration
 
-### Output Configuration
-
-ตั้งค่า output options
-
-- เปิดใช้ `clean: true` เพื่อล้าง dist ก่อน build
-- เปิดใช้ `treeshake: true` สำหรับ tree shaking (default)
-- เปิดใช้ `minify: true` สำหรับ production build
-- รองรับ unbundle mode ด้วย `bundle: false`
-- รองรับ SEA (Single Executable Archive) ด้วย `exe: true`
-
-### Plugin System
-
-ใช้ plugins อย่างถูกต้อง
-
-- รองรับ Rolldown plugins, Rollup plugins, unplugin, และ Vite plugins
-- เพิ่ม plugins ใน config: `plugins: [SomePlugin()]`
-- ใช้ `rolldown-plugin-dts` สำหรับ DTS generation (built-in)
-- ใช้ `rolldown-plugin-require-cjs` สำหรับ CJS requirement patterns
-- ใช้ internal plugins: ShebangPlugin, DepsPlugin, WatchPlugin
-
-### Framework Plugins
-
-ใช้ plugins สำหรับ frameworks ต่างๆ
-
-- Vue: ใช้ `unplugin-vue/rolldown` พร้อม `dts: { vue: true }` และติดตั้ง `vue-tsc` และ `unplugin-vue`
-- React: ใช้ standard config หรือ `@rolldown/plugin-babel` + `@vitejs/plugin-react` สำหรับ React Compiler
-- Solid: ใช้ `unplugin-solid/rolldown` สำหรับ SolidJS JSX transform และติดตั้ง `unplugin-solid`
-- Svelte: ใช้ `rollup-plugin-svelte` + `svelte-preprocess` แต่แนะนำให้ใช้ source distribution (ไม่ต้อง bundle)
-- ใช้ `create-tsdown -t <framework>` สำหรับ scaffolding project ใหม่ (vue, react, solid, svelte, react-compiler)
-- ตั้งค่า `platform: 'neutral'` สำหรับ compatibility สูงสุดระหว่าง browser และ Node.js
-
-### Validation
-
-ตรวจสอบคุณภาพ package
-
-- ใช้ `publint` สำหรับ lint package.json (built-in support)
-- ใช้ `attw` (Are The Types Wrong) สำหรับ type validation (built-in support)
-- ใช้ `tsnapi` สำหรับ API snapshot comparison
-- เปิดใช้ validation ใน config: `publint: true`, `attw: true`
-
-### Workspace Support
-
-ใช้ใน monorepo
-
-- รองรับ workspace bundling ด้วย workspace config
-- ใช้ `devExports` สำหรับ development mode ใน monorepo
-- รองรับ multiple packages ใน workspace
-- ใช้ `tinyglobby` สำหรับ file discovery
-
-### Migration
-
-Migrate จาก bundlers อื่น
-
-- ใช้ `tsdown-migrate` สำหรับ migrate จาก tsup
-- Compatible กับ tsup options หลักๆ
-- ใช้ `bunx tsdown-migrate` สำหรับ auto-migration
+- ใช้ `bunx tsdown-migrate` สำหรับ migrate จาก `tsup`
+- ตรวจสอบว่า output เหมือนเดิมหลัง migrate
+- แก้ config ที่ incompatible
 
 ## Expected Outcome
 
-- tsdown.config.ts สร้างถูกต้อง
-- package.json มี build scripts ครบถ้วน
-- dist/ มี bundled files (ESM + CJS)
-- dist/*.d.ts มี type declarations ครบถ้วน
-- Watch mode ทำงานได้
-- Plugins ทำงานได้
-- Validation (publint, attw) ผ่าน
+- `tsdown.config.ts` ถูกต้อง
+- package.json มี build scripts
+- `dist/` มี bundled files และ `.d.ts`
+- Watch mode ทำงาน
+- Validation (`publint`, `attw`) ผ่าน

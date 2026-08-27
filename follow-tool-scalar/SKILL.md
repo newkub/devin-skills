@@ -1,63 +1,100 @@
 ---
 name: follow-tool-scalar
-description: แนวทางการใช้งาน Scalar API Designer สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร GraphQL APIs แบบครบวงจร
+description: ใช้ Scalar สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร API แบบครบวงจร
+related:
+  - follow-test
+  - follow-release
+  - follow-deploy
+  - follow-tool-github-actions
 ---
 
 ## Goal
 
-ใช้งาน Scalar API Designer สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร GraphQL APIs แบบครบวงจร
+ใช้ Scalar สำหรับออกแบบ API, ทดสอบ endpoints, สร้าง documentation และ mock server แบบครบวงจร
 
 ## Scope
 
-ใช้สำหรับการทำงานกับ Scalar ทุกประเภท เช่น ออกแบบ GraphQL APIs, ทดสอบ API, จัดทำเอกสาร API, สร้าง API reference, และทำงานร่วมกับทีม
+ใช้สำหรับ projects ที่ต้องการ API documentation, API playground, mock server และ schema validation โดยใช้ Scalar toolchain
 
 ## Execute
 
-- ทำความเข้าใจ GraphQL schema design
-- เรียนรู้ Scalar interface และ features
-- ศึกษา mock server capabilities
-- ทำความเข้าใจ documentation generation
-- ติดตั้ง Scalar CLI หรือ desktop app
-- ตั้งค่า Scalar project
-- เชื่อมต่อกับ Git repository
-- ตั้งค่า integration กับ tools อื่นๆ
-- ใช้ visual editor สำหรับ schema design
-- ใช้ mock server สำหรับ testing
-- ใช้ auto documentation สำหรับ docs
-- ใช้ collaboration features สำหรับ teamwork
-- จัดการ API versions อย่างเหมาะสม
-- ทดสอบ APIs ด้วย built-in playground
-- ตรวจสอบ schema validity
-- deploy documentation
-- monitor API usage
+### 1. Installation
+
+> Goal: ติดตั้ง Scalar CLI หรือ package ที่เหมาะสม
+
+1. ตรวจสอบ project stack ว่าใช้ OpenAPI, AsyncAPI หรือ GraphQL
+2. ติดตั้ง `@scalar/api-designer` หรือ `@scalar/cli` ด้วย `bun add -D <package>`
+3. ตรวจสอบ version ด้วย `bunx @scalar/api-designer --version`
+4. ดูคำสั่ง CLI ใน [references/scalar-cli.md](references/scalar-cli.md)
+
+### 2. Configuration
+
+> Goal: สร้าง Scalar config สำหรับ project
+
+1. สร้าง `scalar.config.json`, `scalar.config.yaml` หรือ `scalar.config.ts`
+2. กำหนด `title`, `description`, `proxyUrl`, `theme`, `layout`
+3. ตั้งค่า environment variables เช่น `SCALAR_PORT`, `SCALAR_API_URL`
+4. ดูตัวเลือก config ใน [references/scalar-config.md](references/scalar-config.md)
+
+### 3. Schema Design
+
+> Goal: ออกแบบ API schema ที่ถูกต้องและเอกสารครบถ้วน
+
+1. ใช้ type system ทีเหมาะสม (OpenAPI/AsyncAPI/GraphQL)
+2. ตั้งชื่อ types, fields, operations ทีชัดเจน
+3. เพิ่ม descriptions, examples, deprecation notes
+4. ใช้ enums สำหรับ fixed values และ input types สำหรับ mutations
+5. ดู API patterns ใน [references/scalar-api.md](references/scalar-api.md)
+
+### 4. Mock and Test
+
+> Goal: ทดสอบ APIs ด้วย mock server และ validation
+
+1. รัน mock server ด้วย `bunx @scalar/api-designer --mock`
+2. ทดสอบ queries, mutations, และ error scenarios
+3. ใช้ `scalar validate` เพื่อตรวจสอบ schema validity
+4. ทำ `/follow-test` เพื่อขยาย test coverage
+
+### 5. Documentation and Deploy
+
+> Goal: publish documentation และ integrate กับ CI
+
+1. สร้าง static docs ด้วย `bunx @scalar/api-designer --build`
+2. ตั้งค่า GitHub Actions หรือ CI/CD pipeline สำหรับ build และ deploy docs
+3. deploy ไปยัง static host เช่น GitHub Pages, Cloudflare Pages
+4. ดู official resources ใน [references/official-resources.md](references/official-resources.md)
 
 ## Rules
 
+### 1. Schema Design
+
 - ใช้ descriptive names สำหรับ types และ fields
-- ใช้ consistent naming conventions
-- ใช้ interfaces สำหรับ shared fields
-- ใช้ enums สำหรับ fixed values
-- ใช้ input types สำหรับ mutations
-- ใช้ descriptions สำหรับทุก types และ fields
-- ใช้ examples สำหรับ complex queries
-- ใช้ deprecation warnings สำหรับ obsolete fields
-- ใช้ custom directives สำหรับ metadata
-- ให้ clear error messages
-- ใช้ mock server สำหรับ development
-- ทดสอบ queries และ mutations
-- ทดสอบ error scenarios
-- ทดสอบ performance
-- ใช้ live playground สำหรับ interactive testing
+- เพิ่ม descriptions สำหรับทุก public types และ fields
+- ใช้ examples สำหรับ complex queries และ mutations
+- mark deprecated fields อย่างชัดเจน
+
+### 2. Mock and Test
+
+- ใช้ mock server สำหรับ development และ manual testing
+- ทดสอบ error scenarios และ performance
 - ใช้ version control สำหรับ schema changes
-- ใช้ code review สำหรับ schema updates
-- ใช้ branching strategy ที่เหมาะสม
-- สื่อสาร changes อย่างชัดเจน
-- ใช้ permissions อย่างเหมาะสม
+
+### 3. Documentation
+
+- สร้าง docs อัตโนมัติจาก schema
+- deploy docs บน static host
+- อัปเดต docs เมื่อ schema เปลี่ยน
+
+### 4. Integration
+
+- ใช้ CI/CD สำหรับ validate และ build docs
+- ไม่ hard-code secrets หรือ API keys
+- ใช้ environment variables สำหรับ config ที environment-specific
 
 ## Expected Outcome
 
-- GraphQL APIs ที่ออกแบบอย่างเป็นระบบ
-- Documentation ที่ครบถ้วนและอัตโนมัติ
-- Mock server ที่ทำงานได้
-- Collaboration ที่มีประสิทธิภาพ
-- APIs ที่ผ่านการทดสอบแล้ว
+- Scalar ติดตั้งและตั้งค่าเสร็จ
+- API schema ถูกต้องและมีเอกสารครบถ้วน
+- Mock server ทำงานได้
+- Documentation publish ได้
+- Tests และ validation ผ่าน

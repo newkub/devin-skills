@@ -1,8 +1,10 @@
 ---
 name: check-unused-deps
 description: Detect and remove unused dependencies using Knip and ecosystem-specific tools
+related:
+  - follow-tool-knip
+  - update-config
 ---
-
 ## Goal
 
 ตรวจจับและระบุ dependencies ที่ไม่ได้ใช้ในโปรเจกต์ และแก้ไขหรือลบออก

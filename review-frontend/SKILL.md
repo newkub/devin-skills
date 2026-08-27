@@ -156,7 +156,7 @@ Review frontend testing — ดูรายละเอียดใน `referenc
 > Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
+2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ section ที่เกี่ยวข้อง

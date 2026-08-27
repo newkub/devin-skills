@@ -11,7 +11,7 @@ description: ตรวจสอบและปรับปรุงความ�
 
 ใช้กับ `SKILL.md` และไฟล์ใน skill directories (`guide/`, `references/`, `workflows/` ฯลฯ) ทั้งใน global skills และ project workspace
 
-ไม่รวมการแก้ไขเนื้อหาเชิงลึกหรือ best practices (ใช้ `/validate`)
+ไม่รวมการแก้ไขเนื้อหาเชิงลึกหรือ best practices (ใช้ `/deep-validate`)
 
 ## Execute
 

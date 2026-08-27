@@ -87,7 +87,7 @@ description: แสดง branches ในเครื่องและ remote �
 
 - GitHub branches อยู่ใน `/list-github-branch` แล้ว
 - Branch operations อยู่ใน `/follow-tool-git` แล้ว
-- Stash listing อยู่ใน `/list-git-stash` แล้ว
+- Stash listing อยู่ใน `/follow-tool-git` แล้ว
 
 ## Expected Outcome
 

@@ -1,47 +1,61 @@
 ---
 name: replace
-description: แทนที่เนื้อหาในไฟล์หรือโค้ด
+description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
+related:
+  - use-ast-grep
+  - use-ast-grep-programatic
+  - update-references
+  - deep-validate
 ---
 
 ## Goal
 
-แทนที่เนื้อหา
+แทนที่เนื้อหาในไฟล์หรือโค้ดให้ถูกต้องและปลอดภัย
 
 ## Scope
 
-ใช้ `replace` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `replace` สำหรับแทนที่เนื้อหาในไฟล์หรือโค้ด โดยเลือกวิธีตามลักษณะงาน:
+
+- Plain text / regex replacement: สำหรับเนื้อหาทั่วไป เช่น docs, config
+- AST-based replacement: สำหรับ code ทีต้องการ precision สูง
 
 ## Execute
 
-# Replace Content
+### 1. Identify Content To Replace
 
-## 1. Identify Content to Replace (ใช้เสมอ)
-
-ระบุเนื้อหาที่ต้องการแทนที่
-
-`IDENTIFY target` : ต้องแทนที่ -> SEARCH และ MARK เนื้อหาที่ต้องการแทนที่
+> Goal: ระบุเนื้อหาที่ต้องการแทนที่
 
 1. SEARCH เนื้อหา x ที่ต้องการแทนที่
 2. MARK ตำแหน่งที่ต้องการแทนที่
 3. PREPARE เนื้อหา y ที่จะนำมาแทนที่
+4. ถ้าเป็น code replacement → ทำ `/use-ast-grep` เพื่อหา patterns ด้วย AST
 
----
+### 2. Execute Replacement
 
-## 2. Execute Replacement (ใช้เสมอ)
+> Goal: ทำการแทนที่เนื้อหา
 
-ทำการแทนที่เนื้อหา
+1. ถ้าเป็น plain text หรือ regex → ใช้ `edit` หรือ `write` แทนที่
+2. ถ้าเป็น code ทีซับซ้อนหรือต้องการ precision → ใช้ `/use-ast-grep` หรือ `/use-ast-grep-programatic` สำหรับ AST-based rewrite
+3. REPLACE x ด้วย y ในไฟล์หรือโค้ดที่ระบุ
+4. VERIFY ว่าการแทนที่ถูกต้อง
+5. CHECK ว่าไม่มีผลข้างเคียงจากการแทนที่
 
-`REPLACE content` : มีเนื้อหา x และ y -> EXECUTE การแทนที่
+### 3. Update References
 
-1. REPLACE x ด้วย y ในไฟล์หรือโค้ดที่ระบุ
-2. VERIFY ว่าการแทนที่ถูกต้อง
-3. CHECK ว่าไม่มีผลข้างเคียงจากการแทนที่
+> Goal: อัปเดต references หลัง replace
+
+1. ถ้าการแทนที่เปลี่ยนชื่อ identifier, path, หรือ skill name → ทำ `/update-references`
+2. รัน `/check-broken-refs` หรือ `/deep-validate` เพื่อตรวจสอบ
 
 ## Rules
 
+- ใช้ `/use-ast-grep` เมื่อ replace ใน source code เพื่อหลีกเลี่ยง false positives
+- ใช้ `/use-ast-grep-programatic` เมื่อต้อง batch replace หลายไฟล์หรือ integrate กับ scripts
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
 ## Expected Outcome
 
-Completed `replace` workflow with correct output
+- เนื้อหาที่ต้องการถูกแทนที่ถูกต้อง
+- ไม่มี broken references
+- ไม่มีผลข้างเคียงที่ไม่ต้องการ

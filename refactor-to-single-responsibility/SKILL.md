@@ -47,7 +47,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 3. แยกไฟล์ที่มีหลาย concerns ออกเป็นไฟล์ย่อยตาม domain
 4. ทำ `/refactor` ตามกรณี
 5. ทำ `/restructure` หรือ `/relocation` เมื่อต้องย้ายไฟล์
-6. ทำ `/rename-files-to` เมื่อต้องเปลี่ยนชื่อ identifier
+6. ทำ `/rename-to` เมื่อต้องเปลี่ยนชื่อ identifier
 7. ถ้าเป็น monorepo → ทำ `/all-workspace` หรือ `/refactor-workspace` ตามความเหมาะสม
 
 ### 4. Update References
@@ -64,7 +64,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 > Goal: ตรวจสอบว่า refactor สำเร็จและไม่มี regression
 
 1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
-2. ทำ `/run-verify` สำหรับ lint, typecheck, scan
+2. ทำ `/run-verify-fast` สำหรับ lint, typecheck, scan
 3. ทำ `/run-test` สำหรับ regression
 4. ทำ `/check-circular-dependencies` และ `/review-quality`
 5. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-4 (สูงสุด 3 ครั้ง → stop/report)
@@ -100,7 +100,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 4. Verification
 
 - ต้องรัน `/check-code-structure` ก่อนและหลัง refactor
-- ต้องผ่าน `/run-verify` และ `/run-test` ก่อนถือว่าเสร็จ
+- ต้องผ่าน `/run-verify-fast` และ `/run-test` ก่อนถือว่าเสร็จ
 
 ## Expected Outcome
 

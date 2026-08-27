@@ -9,7 +9,7 @@ description: List configured global MCP servers and their tools
 
 ## Scope
 
-- อ่าน `C:\Users\Veerapong\.codeium\windsurf\mcp_config.json`
+- อ่าน `%APPDATA%\devin\mcp_config.json`
 - List MCP servers จาก config
 - List tools ของแต่ละ MCP server ด้วย `mcp_list_tools`
 - รายงานสถานะและแหล่งที่มา
@@ -20,7 +20,7 @@ description: List configured global MCP servers and their tools
 
 > Goal: อ่าน config ไฟล์
 
-1. อ่าน `C:\Users\Veerapong\.codeium\windsurf\mcp_config.json`
+1. อ่าน `%APPDATA%\devin\mcp_config.json`
 2. ถ้าไฟล์ไม่มี → report ว่าไม่มี global MCP config
 3. ตรวจ JSON syntax
 4. แยก `mcpServers` object
@@ -55,7 +55,7 @@ description: List configured global MCP servers and their tools
 ### 1. Read-Only
 
 - ไม่แก้ไข `mcp_config.json`
-- ถ้าต้องแก้ → ใช้ `/edit-devin-global-mcp`
+- ถ้าต้องแก้ → ใช้ `/update-devin-global-mcp`
 
 ### 2. Privacy
 

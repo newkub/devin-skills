@@ -7,7 +7,7 @@ related:
   - git-commit-and-push
   - git-push
   - refactor-commit
-  - validate
+  - deep-validate
 ---
 
 ## Goal

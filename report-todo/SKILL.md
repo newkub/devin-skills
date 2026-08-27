@@ -9,7 +9,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/add-to-queue`) และไม่รวมการ implement TODO (ใช้ `/realize-implementation`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/realize-implementation`)
 
 ## Execute
 
@@ -99,7 +99,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 ### Read-Only
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
-- ใช้ `/add-to-queue` สำหรับเพิ่ม TODO
+- ใช้ `/update-todo-md` สำหรับเพิ่ม TODO
 - ใช้ `/realize-implementation` สำหรับ implement TODO
 
 ### Output Format
@@ -117,7 +117,7 @@ description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อ�
 
 ### Non-Redundancy
 
-- การเพิ่ม TODO อยู่ใน `/add-to-queue` แล้ว
+- การเพิ่ม TODO อยู่ใน `/update-todo-md` แล้ว
 - การ implement TODO อยู่ใน `/realize-implementation` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 

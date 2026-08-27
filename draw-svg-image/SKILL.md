@@ -4,10 +4,8 @@ description: สร้าง SVG image จากคำอธิบายหร�
 argument-hint: "[description]"
 related:
   - convert-to-svg
-  - gen-ai-images
   - visualize-in-web
 ---
-
 ## Goal
 
 สร้างไฟล์ `.svg` จากคำอธิบายหรือ prompt ที user ให้มา
@@ -34,7 +32,7 @@ related:
 > Goal: เลือกวิธีสร้าง SVG ทีเหมาะสม
 
 1. ถ้าเป็น simple shapes → สร้าง SVG markup โดยตรง
-2. ถ้า user ต้องการ style สูง หรือ complex scene → ใช้ `/gen-ai-images` แล้ว `/convert-to-svg`
+2. ถ้า user ต้องการ style สูง หรือ complex scene → ใช้ `gen-ai-images` แล้ว `/convert-to-svg`
 3. ถ้าต้องการ animation → ใช้ CSS animation หรือ SMIL ภายใน SVG
 
 ### 3. Generate SVG

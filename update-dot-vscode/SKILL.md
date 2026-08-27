@@ -9,7 +9,7 @@ related:
   - learn-from-web
   - update-references
   - report-table
-  - validate
+  - deep-validate
 ---
 
 ## Goal

@@ -1,6 +1,11 @@
 ---
 name: use-lib-effective
 description: วิเคราะห์ dependencies และใช้งาน libraries ให้ครบและครอบคลุม ไม่ reinvent
+related:
+  - deep-research
+  - learn-from-web
+  - use-lib-better
+  - review-techstack
 ---
 
 ## Goal
@@ -28,7 +33,8 @@ description: วิเคราะห์ dependencies และใช้งา�
 
 > Goal: ศึกษา capabilities ของ libraries ที่มี จาก official documentation และเอกสารภายนอก
 
-1. ทำ `/learn-from-web` เพื่อศึกษา documentation และ features ของ libraries ที่ใช้
+1. ทำ `/deep-research` หรือ `/learn-from-web` เพื่อศึกษา documentation, features, best practices ของ libraries ที่ใช้
+   - ใช้ `/deep-research` ถ้าต้อง cross-check หลายแหล่งหรือเลือกระหว่าง libraries หลายตัว
    - ใช้ DeepWiki สำหรับ GitHub repositories ของ libraries
    - ใช้ Context7 สำหรับ libraries และ frameworks API reference
    - ใช้ Web Search เป็น fallback สำหรับเอกสารเพิ่มเติม

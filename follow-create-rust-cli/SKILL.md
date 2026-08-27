@@ -1,8 +1,10 @@
 ---
 name: follow-create-rust-cli
 description: สร้าง CLI applications ด้วย Rust ตาม best practices
+related:
+  - follow-create-cli
+  - follow-tool-cargo
 ---
-
 ## Goal
 
 สร้าง CLI applications ด้วย Rust ที่มีประสิทธิภาพสูง พร้อม type safety และ zero-cost abstractions

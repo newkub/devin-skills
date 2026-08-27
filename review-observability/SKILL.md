@@ -85,7 +85,7 @@ Review runbook, on-call, incident declaration, communication, postmortem, chaos 
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
+2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตาม [references/scoring.md](references/scoring.md)
 5. ทำ `/report` พร้อม `/report-table`

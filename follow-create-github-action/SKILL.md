@@ -2,14 +2,15 @@
 name: follow-create-github-action
 description: สร้าง GitHub Action ด้วย TypeScript/Composite/Docker
 related:
-  - follow-create-sdk
   - follow-create-bun-cli
+  - follow-create-sdk
+  - follow-create-website
   - follow-dot-github
-  - run-test
   - follow-release
+  - follow-tool-github-workflows
+  - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง GitHub Action ทีสามารถรันใน workflow ได้ รองรับ TypeScript, Composite, และ Docker actions พร้อม `action.yml`, build, tests, และ release

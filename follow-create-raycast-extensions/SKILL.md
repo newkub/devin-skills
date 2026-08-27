@@ -1,8 +1,10 @@
 ---
 name: follow-create-raycast-extensions
 description: สร้าง Raycast Extensions ด้วย TypeScript, React และ Raycast API สำหรับ macOS productivity
+related:
+  - follow-create-sdk
+  - follow-tool-vite
 ---
-
 ## Goal
 
 สร้าง Raycast Extensions ที่ใช้ TypeScript, React และ Raycast API เพื่อเพิ่ม productivity บน macOS ผ่าน command palette และ menu bar

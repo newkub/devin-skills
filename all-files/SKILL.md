@@ -33,7 +33,7 @@ description: ทำงานกับแต่ละ file ใน project จน�
 > Goal: Verify
 
 1. ตรวจสอบว่าทุก file ได้รับการประมวลผลแล้ว
-2. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
+2. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
 
 ## Rules
 

@@ -9,7 +9,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 ## Scope
 
-ใช้สำหรับ verification ทีลึกซึ้งกว่า `/validate` หลังจาก `/merge` ผลลัพธ์จาก `use-subagents` หรือหลัง implementation ซับซ้อน
+ใช้สำหรับ verification ทีลึกซึ้งกว่า `/deep-validate` หลังจาก `/merge` ผลลัพธ์จาก `consider-use-subagents` หรือหลัง implementation ซับซ้อน
 
 ## Execute
 
@@ -26,7 +26,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 > Goal: ตรวจสอบ checks อัตโนมัติผ่านทั้งหมด
 
-1. ทำ `/run-verify` เพื่อรัน lint, format, และ quality checks
+1. ทำ `/run-verify-fast` เพื่อรัน lint, format, และ quality checks
 2. ทำ `/run-test` เพื่อรัน unit/integration tests
 3. ถ้า project มี `package.json` ระบุ typecheck script ให้รัน `bunx tsc --noEmit` หรือคำสั่งทีเหมาะสม
 4. บันทึกผลลัพธ์ของแต่ละ check พร้อม evidence
@@ -51,7 +51,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 > Goal: ตรวจสอบความถูกต้องละเอียด
 
-1. ทำ `/validate` เพื่อตรวจสอบความถูกต้องเบื้องต้น
+1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องเบื้องต้น
 2. ทำ `/deep-validate` เพื่อตรวจสอบ correctness, type safety, security, compliance, และ cross-reference
 3. ถ้าพบ issues ให้บันทึก severity (Critical, High, Medium, Low)
 
@@ -79,7 +79,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 ### 3. Stop On Failure
 
-- ถ้า `/run-test` หรือ `/run-verify` ไม่ผ่าน → หยุดทันที
+- ถ้า `/run-test` หรือ `/run-verify-fast` ไม่ผ่าน → หยุดทันที
 - ถ้า `/deep-validate` พบ Critical หรือ High → หยุดทันที
 - ถ้า `/check-reference` พบ broken references → หยุดทันที
 - ถ้าต้องทำงานต่อ ให้ทำ `/resolve-errors` แล้วทำ `/deep-verify` ซ้ำ

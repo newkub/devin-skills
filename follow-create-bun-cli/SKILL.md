@@ -1,8 +1,11 @@
 ---
 name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
+related:
+  - follow-create-cli
+  - follow-create-website
+  - follow-tool-bunup
 ---
-
 ## Goal
 
 สร้าง CLI applications ด้วย Bun runtime ที่มีประสิทธิภาพสูง โครงสร้างตาม Clean Architecture

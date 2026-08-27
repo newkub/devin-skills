@@ -3,45 +3,48 @@ name: follow-create-sdk
 description: ถามและส่งต่อไปยัง skill follow-create-* ทีเหมาะสมกับงานสร้าง
 argument-hint: "[skill-name-or-goal]"
 related:
+  - ask-me
+  - follow-create-biome-plugins
+  - follow-create-browser-extensions
   - follow-create-bun-cli
+  - follow-create-claude-plugin
   - follow-create-cli
+  - follow-create-codex-plugin
+  - follow-create-devin-plugins
+  - follow-create-discord-bot
+  - follow-create-elysia-plugin
+  - follow-create-eslint-plugins
+  - follow-create-github-action
+  - follow-create-line-bot
+  - follow-create-mobile-android
+  - follow-create-mobile-ios
+  - follow-create-mobile-ios-android
+  - follow-create-nitro-plugin
+  - follow-create-nvim-plugins
+  - follow-create-obsidian-plugin
+  - follow-create-oxlint-plugins
+  - follow-create-raycast-extensions
+  - follow-create-rolldown-plugins
   - follow-create-rust-cli
   - follow-create-rust-crate
-  - follow-create-website
-  - follow-create-claude-plugin
-  - follow-create-codex-plugin
+  - follow-create-tauri-plugins
   - follow-create-telegram-bot
-  - follow-create-discord-bot
-  - follow-create-line-bot
-  - follow-create-obsidian-plugin
-  - follow-create-vscode-extensions
-  - follow-create-zed-extensions
-  - follow-create-mobile-ios
-  - follow-create-mobile-android
-  - follow-create-mobile-ios-android
-  - follow-create-browser-extensions
-  - follow-create-raycast-extensions
-  - follow-create-elysia-plugin
-  - follow-create-nitro-plugin
   - follow-create-vite-plugins
   - follow-create-vitest-plugins
-  - follow-create-tauri-plugins
-  - follow-create-nvim-plugins
-  - follow-create-biome-plugins
-  - follow-create-oxlint-plugins
-  - follow-create-eslint-plugins
-  - follow-create-rolldown-plugins
-  - follow-create-github-action
-  - follow-create-devin-skills
-  - follow-create-devin-subagents
-  - create-devin-plugins
-  - ask-me
-  - search-skills
-  - search-files-patterns
+  - follow-create-vscode-extensions
+  - follow-create-website
+  - follow-create-zed-extensions
   - report-table
+  - run-test
+  - search-files-patterns
+  - search-skills
+  - ship
+  - update-devin-global-skills
+  - update-devin-global-subagents
+  - update-references
+  - write-test
   - ship
 ---
-
 ## Goal
 
 ช่วย user เลือก `follow-create-*` skill ทีเหมาะสมกับงานสร้าง แล้วส่งต่อไปดำเนินการทันที
@@ -67,9 +70,9 @@ related:
 1. ใช้ `search-files-patterns` หรือ `exec` ค้นหา `follow-create-*/SKILL.md` ใน `%APPDATA%\devin\skills`
 2. อ่าน frontmatter (`name`, `description`) ของแต่ละ skill
 3. สร้างรายการ: ชื่อ skill, description, category โดยประมาณ
-   - `skills` → `follow-create-devin-skills`
-   - `subagents` → `follow-create-devin-subagents`
-   - `mcp`/`plugins` → `create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
+   - `skills` → `update-devin-global-skills`
+   - `subagents` → `update-devin-global-subagents`
+   - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-website`
    - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`
 4. ใช้ `/report-table` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม

@@ -6,8 +6,8 @@ related:
   - list-devin-global-skills
   - update-project-skills
   - check-reference
-  - follow-create-devin-skills
-  - validate
+  - update-devin-global-skills
+  - deep-validate
 ---
 
 ## Goal

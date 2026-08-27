@@ -24,7 +24,7 @@ description: สร้างและปรับปรุง AI agent harness �
 3. ตรวจสอบ Context management: context selection, compaction, memory ทำ `/follow-context-engineering`
 4. ตรวจสอบ Lifecycle/Orchestration: agent loop, state management, retry logic, recovery
 5. ตรวจสอบ Observability: logging, tracing, metrics, execution traces ทำ `/update-review-codebase-cli-and-run`
-6. ตรวจสอบ Verification: test harness, requirement checks, output validation ทำ `/validate`
+6. ตรวจสอบ Verification: test harness, requirement checks, output validation ทำ `/deep-validate`
 7. ตรวจสอบ Governance: permissions, access control, audit trail, intervention recording
 
 ### 2. Optimize Tool Interface
@@ -74,7 +74,7 @@ description: สร้างและปรับปรุง AI agent harness �
 2. สร้าง deterministic checks: test suite, type check, lint, build
 3. สร้าง behavioral checks: output format validation, schema compliance
 4. บันทึก verification results เป็น structured reports
-5. ทำ `/run-test` และ `/validate` สำหรับ comprehensive verification
+5. ทำ `/run-test` และ `/deep-validate` สำหรับ comprehensive verification
 
 ### 6. Apply Harness Ladder
 

@@ -2,13 +2,14 @@
 name: follow-create-rust-crate
 description: สร้าง Rust library crate ด้วย Cargo ตาม best practices
 related:
+  - follow-create-cli
   - follow-create-sdk
   - follow-lang-rust
-  - run-test
   - follow-release
+  - follow-tool-cargo
+  - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง Rust library crate ด้วย Cargo ทีมี public API ชัดเจน เอกสารครบ ทดสอบผ่าน และพร้อม publish ไป crates.io

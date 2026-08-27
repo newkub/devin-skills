@@ -1,5 +1,5 @@
 ---
-name: delete-files
+name: delete
 description: ลบไฟล์และโฟลเดอร์อย่างปลอดภัย พร้อม dry-run confirm และ update references
 related:
   - update-references

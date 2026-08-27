@@ -26,7 +26,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 > Goal: `AGENTS.md` เป็นปัจจุบันก่อน ship
 
 1. ถ้า `AGENTS.md` ไม่มีหรือไม่อัปเดต → ทำ `/update-agents-md`
-2. ตรวจสอบว่า `AGENTS.md` มี sections ครบตาม `/follow-create-devin-skills`
+2. ตรวจสอบว่า `AGENTS.md` มี sections ครบตาม `/update-devin-global-skills`
 3. ถ้า `AGENTS.md` ไม่พร้อมใช้ → stop และ report
 
 ### 2. Follow AGENTS.md
@@ -49,9 +49,9 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
-1. ทำ `/run-verify` ถ้า `AGENTS.md` หรือ workspace ระบุ
+1. ทำ `/run-verify-fast` ถ้า `AGENTS.md` หรือ workspace ระบุ
 2. ทำ `/test-all` ถ้ามี test suites
-3. ทำ `/validate` เพื่อ validate ผลลัพธ์
+3. ทำ `/deep-validate` เพื่อ validate ผลลัพธ์
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
 
 ### 5. Commit
@@ -109,7 +109,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-verify`, `/test-all` และ `/validate`
+- Code ผ่าน `/run-verify-fast`, `/test-all` และ `/deep-validate`
 - ทุก submodule ที่มี changes ถูก commit ก่อน root
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ

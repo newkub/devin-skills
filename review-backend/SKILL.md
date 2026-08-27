@@ -49,7 +49,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 6. ทำ `/update-review-codebase-cli-and-run` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
 7. ทำ `/update-review-codebase-cli-and-run` สำหรับ integration review (อ้างอิง `references/integration.md`)
 8. ถ้า sub-review ไม่เกี่ยวข้องกับ project → ข้าม sub-review นั้น
-9. ถ้าพบ critical issues → หยุดและทำ `/validate` ก่อนดำเนินต่อ
+9. ถ้าพบ critical issues → หยุดและทำ `/deep-validate` ก่อนดำเนินต่อ
 
 ### 3. Validate And Report
 
@@ -58,7 +58,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ validate issues จากทุก sub-review
+2. ทำ `/deep-validate` สำหรับ validate issues จากทุก sub-review
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตามสูตรใน `references/scoring.md`
 5. ทำ `/report` พร้อม `/report-table`

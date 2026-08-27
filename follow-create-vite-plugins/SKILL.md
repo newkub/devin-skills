@@ -1,8 +1,10 @@
 ---
 name: follow-create-vite-plugins
 description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
+related:
+  - follow-create-sdk
+  - follow-tool-vite
 ---
-
 ## Goal
 
 สร้าง Vite plugins ด้วย Plugin API มาตรฐาน พร้อมรองรับ Rolldown compatibility

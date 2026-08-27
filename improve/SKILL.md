@@ -6,7 +6,7 @@ related:
   - fix
   - refactor
   - realize-implementation
-  - validate
+  - deep-validate
   - run-check
   - ask-me
 ---
@@ -66,7 +66,7 @@ related:
 
 1. ทำ `/run-check` (lint, typecheck, scan)
 2. ทำ `/run-test` ถ้ามี tests
-3. ทำ `/validate` เพื่อ verify overall
+3. ทำ `/deep-validate` เพื่อ verify overall
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ### 6. Report

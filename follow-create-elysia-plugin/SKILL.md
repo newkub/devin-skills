@@ -2,13 +2,12 @@
 name: follow-create-elysia-plugin
 description: สร้าง Elysia plugin ด้วย TypeScript/Bun พร้อม type safety และ lifecycle hooks
 related:
-  - follow-create-sdk
   - follow-create-bun-cli
+  - follow-create-sdk
   - follow-lang-typescript
   - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง Elysia plugin package ด้วย TypeScript/Bun ทีสามารถ `.use()` ใน Elysia app ได้ พร้อม decorators, state, hooks, routes, และ tests

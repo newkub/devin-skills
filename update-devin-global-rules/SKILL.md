@@ -2,10 +2,10 @@
 name: update-devin-global-rules
 description: ทำให้ global rules สอดคล้องกับ skills และ global subagents ไม่ขัดแย้ง
 related:
-  - edit-devin-global-rules
   - update-all-devin-global-skills
   - update-devin-global-subagents
   - consider-use-in-another-skills
+  - follow-global-rules
   - report-idea
 ---
 
@@ -61,16 +61,18 @@ related:
 
 > Goal: อัปเดต files
 
-1. ใช้ `/edit-devin-global-rules` เพื่อแก้ไข `global_rules.md`
-2. อัปเดต skills ทีมี rules ซ้ำโดยลบหรือเปลี่ยนเป็น reference
-3. อัปเดต subagents ที่จำเป็น
-4. ใช้ `/update-references` เพื่อ sync
+1. สำรอง `global_rules.md` ก่อนแก้ไข
+2. แก้ไข `global_rules.md` โดยใช้ `edit` หรือ `write` ตาม draft
+3. หรือใช้ `/follow-global-rules` เพื่อ sync global rules กับ skills
+4. อัปเดต skills ทีมี rules ซ้ำโดยลบหรือเปลี่ยนเป็น reference
+5. อัปเดต subagents ที่จำเป็น
+6. ใช้ `/update-references` เพื่อ sync
 
 ### 6. Validate Alignment
 
 > Goal: ตรวจสอบว่าทุก layer สอดคล้อง
 
-1. ทำ `/validate` สำหรับ global rules และ skills
+1. ทำ `/deep-validate` สำหรับ global rules และ skills
 2. ตรวจหา circular references
 3. ตรวจ line count ไม่เกิน 250
 4. ตรวจชื่อ skills/subagents ตรง directory

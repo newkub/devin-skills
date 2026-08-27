@@ -91,7 +91,7 @@ Review browser support, polyfills, feature detection, transpilation, OS/runtime 
 > Goal: Issues ถูกต้องและจัดลำดับตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
+2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
 #### 10.2 Report

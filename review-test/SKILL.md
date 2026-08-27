@@ -12,7 +12,7 @@ related:
   - update-devin-global-skills
   - report-table
   - suggest-next-action
-  - validate
+  - deep-validate
   - check-reference
   - deep-debug
   - resolve-errors
@@ -142,7 +142,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 5. ถ้าผลลัพธ์ทำให้รู้ว่า skill/flow ใดควรปรับปรุง → ใช้ `/update-devin-global-skills`
 6. ถ้าพบว่า skill ทีใช้ (เช่น `write-test`, `update-test`, `follow-test`) ยังไม่ครอบคลุมกรณีทีเจอ → บันทึก gap
 7. รัน `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
-8. ทำ `validate` และ `check-reference` หลัง update
+8. ทำ `/deep-validate` และ `/check-reference` หลัง update
 9. ไม่ update skill โดยไม่มี evidence จาก test result
 10. ทำ `/report-table` ด้วยคอลัมน์: No., Test, Status, Category, Root Cause, Action
 11. ทำ Coverage Delta Report: File, Before, After, Gap, Priority

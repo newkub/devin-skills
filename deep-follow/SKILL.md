@@ -33,7 +33,7 @@ Step dependencies: ทำตามลำดับ แต่แต่ละ group
 
 > Goal: หา sub-workflows/skills ทั้งหมดภายใน parent
 
-1. ใช้ `grep` หา references รูปแบบ `/deep-*`, `/follow-*`, `/validate`, `/follow-parallel`
+1. ใช้ `grep` หา references รูปแบบ `/deep-*`, `/follow-*`, `/deep-validate`, `/follow-parallel`
 2. ลบ duplicates และ filter เฉพาะที่ปรากฏใน `## Execute`
 3. ระบุ dependencies จาก `Step dependencies:` หรือลำดับ numbered list
 
@@ -58,7 +58,7 @@ Step dependencies: ทำตามลำดับ แต่แต่ละ group
 
 > Goal: ตรวจสอบว่าทำครบถ้วน
 
-1. ทำ `/validate` เพื่อตรวจสอบผลลัพธ์
+1. ทำ `/deep-validate` เพื่อตรวจสอบผลลัพธ์
 2. ตรวจสอบว่าไม่มี sub-workflow ที่ข้าม
 3. ทำ `/report` สรุปผล พร้อมรายการ step ที่ทำและ next actions
 

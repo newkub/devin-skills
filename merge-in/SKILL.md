@@ -1,48 +1,77 @@
 ---
-name: merge-files-in
-description: merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
+name: merge-in
+description: merge ไฟล์หรือ folder เข้าด้วยกันและลบ source เดิม
+argument-hint: "@files [destination]"
+related:
+  - update-references
+  - deep-validate
 ---
 
 ## Goal
 
-merge ไฟล์เข้าด้วยกันและลบไฟล์เดิม
+merge ไฟล์หรือโฟลเดอร์ต้นทางเข้าด้วยกันเป็นไฟล์หรือโฟลเดอร์ปลายทางเดียว แล้วลบ source เดิม
 
 ## Scope
 
-ใช้ `merge` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้เมื่อต้องรวมเนื้อหาจากหลายไฟล์หรือหลายโฟลเดอร์เข้าด้วยกัน และลบ source หลัง merge
 
 ## Execute
 
-### 1. Merge Files
+### 1. Identify Sources And Destination
 
-> Goal: Merge Files
+> Goal: รู้ว่าอะไรคือ source และ destination
 
-merge ไฟล์เข้าด้วยกัน
+1. รับ `@files` เป็นรายการ source (ไฟล์หรือ folder) จาก argument หรือ context
+2. รับ `destination` จาก prompt หรือ context
+3. source อาจเป็นไฟล์หรือ folder หลายรายการ
+4. destination อาจเป็นไฟล์ใหม่ ไฟล์เดิม หรือ folder เป้าหมาย
+5. ถ้าไม่มี `@files` → ทำ `/ask-me` เพื่อขอรายการ source
+6. ถ้าไม่ชัดเจน → ทำ `/ask-me` ก่อนดำเนินการ
 
-1. ระบุไฟล์ที่ต้อง merge
-2. ทำ `/deep-analyze` ไฟล์ต้นทาง (source) เพื่อเข้าใจโครงสร้างและความสัมพันธ์
-3. ทำ `/deep-analyze` ไฟล์ปลายทาง (destination) เพื่อเข้าใจโครงสร้างและความสัมพันธ์
-4. อ่าน content ของไฟล์ทั้งหมด
-5. merge content เข้าด้วยกัน
+### 2. Analyze Sources
 
-### 2. Delete Old Files
+> Goal: เข้าใจเนื้อหาก่อน merge
 
-> Goal: Delete Old Files
+1. ทำ `/deep-analyze` กับแต่ละ source
+2. ถ้า source เป็นโฟลเดอร์ → อ่านทุก `SKILL.md` หรือไฟล์หลักในโฟลเดอร์
+3. บันทึกโครงสร้าง ความสัมพันธ์ และสิ่งทีซ้ำซ้อน
 
-ลบไฟล์เดิม
+### 3. Merge Content
 
-1. ลบไฟล์เดิมหลังจาก merge
-2. ทำ `/deep-validate` เพื่อตรวจสอบ merge
+> Goal: รวม source เข้าด้วยกันอย่างถูกต้อง
+
+1. ถ้า source เป็นไฟล์ → อ่าน content ทั้งหมดแล้ว merge เข้า destination
+2. ถ้า source เป็นโฟลเดอร์ → รวบรวมไฟล์สำคัญ ลบ redundancy แล้ว merge เนื้อหา
+3. ใช้ `git mv` หรือ `git rm` ถ้าอยู่ใน git repo
+4. ตรวจสอบว่า merge ถูกต้องและไม่มี data loss
+
+### 4. Delete Old Sources
+
+> Goal: ลบ source เดิมหลัง merge
+
+1. ลบไฟล์หรือโฟลเดอร์ source เดิมหลัง merge สำเร็จ
+2. ใช้ `git rm -r` สำหรับโฟลเดอร์ หรือ `git rm` สำหรับไฟล์
+3. ตรวจสอบว่าไม่มี references เก่าเหลือถ้า source ถูก reference
+
+### 5. Validate
+
+> Goal: ตรวจสอบความถูกต้อง
+
+1. ทำ `/deep-validate` เพื่อตรวจ merge
+2. ตรวจหา broken references
+3. ตรวจ data loss
 
 ## Rules
 
-- ตรวจสอบว่า merge ถูกต้องก่อนลบไฟล์เดิม
+- ตรวจสอบ merge ถูกต้องก่อนลบ source
+- รองรับทั้งไฟล์และโฟลเดอร์เป็น source
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
-- ตรวจสอบว่าไม่มี data loss
-- ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก ให้ทำ `/deep-validate` แล้วเลือกสิ่งที่ดีที่สุด
+- ถ้ามี references ชี้ไปยัง source → ทำ `/update-references` ก่อนลบ
+- ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก → ทำ `/deep-validate` แล้วเลือกสิ่งทีดีทีสุด
 
 ## Expected Outcome
 
-- ไฟล์ถูก merge เข้าด้วยกัน
-- ไฟล์เดิมถูกลบ
+- ไฟล์หรือโฟลเดอร์ถูก merge เข้าด้วยกัน
+- source เดิมถูกลบ
 - ไม่มี data loss
+- ไม่มี broken references

@@ -3,7 +3,6 @@ name: analyze-image
 description: วิเคราะห์เนื้อหาในรูปภาพด้วย AI vision ผ่าน bunx CLI
 argument-hint: "[image-path]"
 related:
-  - analyze-video
   - gen-ai-images
 ---
 

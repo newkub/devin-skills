@@ -1,8 +1,10 @@
 ---
 name: check-should-update
 description: ตรวจสอบ changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่
+related:
+  - follow-tool-renovate
+  - update-devin-global-skills
 ---
-
 ## Goal
 
 ตรวจสอบ git changes ของ target paths เพื่อตัดสินใจว่าต้องอัปเดทหรือข้ามไป validate สิ่งที่มีอยู่

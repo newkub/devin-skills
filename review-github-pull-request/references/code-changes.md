@@ -11,7 +11,7 @@ related:
 
 ## Checks
 
-1. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
+1. ทำ `/run-verify-fast` เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
 2. ทำ `/update-review-codebase-cli-and-run` บน files ที่เปลี่ยนแปลง
 3. ทำ `/update-review-codebase-cli-and-run` สำหรับ security-sensitive changes
 4. ทำ `/update-review-codebase-cli-and-run` สำหรับ test coverage และ test quality

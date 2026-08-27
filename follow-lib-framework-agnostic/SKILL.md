@@ -91,7 +91,7 @@ src/
 
 ## Guide
 
-- `/validate` — ตรวจสอบความถูกต้องก่อนเริ่ม
+- `/deep-validate` — ตรวจสอบความถูกต้องก่อนเริ่ม
 - `/follow-lang-typescript` — TypeScript best practices
 
 ## Expected Outcome

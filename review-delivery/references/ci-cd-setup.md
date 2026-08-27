@@ -31,8 +31,8 @@
 3. ทำ `/follow-tasks` เพื่อตั้งค่า scripts ตามมาตรฐาน
 ### 5. Validate
 > Goal: ตรวจสอบ pipeline ก่อน commit
-1. ทำ `/validate` เพื่อตรวจ syntax และ config
-2. ทำ `/run-verify` ถ้า local สามารถรันได้
+1. ทำ `/deep-validate` เพื่อตรวจ syntax และ config
+2. ทำ `/run-verify-fast` ถ้า local สามารถรันได้
 3. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไป Step 3
 ### 6. Commit
 > Goal: commit CI/CD setup
@@ -57,6 +57,6 @@
 ## Expected Outcome
 - CI/CD pipeline ถูกสร้าง/อัปเดต
 - `package.json` scripts sync กับ pipeline
-- Pipeline ผ่าน `/validate`
+- Pipeline ผ่าน `/deep-validate`
 - Commit สำเร็จ
 - รายงานผลลัพธ์ครบถ้วน

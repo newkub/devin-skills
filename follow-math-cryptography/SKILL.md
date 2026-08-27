@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - follow-math-discrete-math
   - follow-service-infisical
-  - follow-tool-open-github-secrets
+  - open-github-secrets
   - follow-math-concepts
 ---
 

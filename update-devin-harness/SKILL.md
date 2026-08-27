@@ -60,7 +60,7 @@ related:
 
 > Goal: ตรวจสอบความสมบูรณ์
 
-1. ทำ `/validate` กับ global rules
+1. ทำ `/deep-validate` กับ global rules
 2. ตรวจ frontmatter ของ skills ทั้งหมด
 3. ตรวจ `AGENT.md` ของ subagents
 4. รัน `/check-reference`

@@ -8,7 +8,7 @@ related:
   - follow-devin-global-subagents
   - follow-tool-mise
   - follow-tool-moonrepo
-  - validate
+  - deep-validate
 ---
 
 ## Goal

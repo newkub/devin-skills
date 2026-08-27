@@ -3,12 +3,12 @@ name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ด้วย architecture, platform, target user, lib mapping และ workspace rules
 related:
   - follow-agents-md
-  - follow-create-devin-skills
+  - update-devin-global-skills
   - report-workspace-graph
   - follow-monorepo
   - review-rules
   - review-by-stakeholder
-  - validate
+  - deep-validate
   - ship
 ---
 
@@ -55,7 +55,7 @@ related:
 
 > Goal: เขียน `AGENTS.md` ตามมาตรฐาน
 
-1. ใช้ format ตาม `follow-create-devin-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
+1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
 2. สร้าง sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 3. เพิ่ม `### Architecture`, `### Platform`, `### Target User`, `### Skills`, `### Workspaces` ถ้าเกี่ยวข้อง
 4. ใช้ `tech: /follow-<tech>` สำหรับ tech mapping
@@ -93,14 +93,14 @@ related:
 
 1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
-3. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
+3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
 4. ถ้าผ่าน → รอ `/ship` หรือ `/git-commit` เพื่อ commit ต่อไป
 
 ## Rules
 
 ### 1. AGENTS.md Format
 
-- ใช้ format ตาม `follow-create-devin-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
+- ใช้ format ตาม `update-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
 - มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ไม่มี `## Workflows` หรือ `### Workflows`
 - ไฟล์ไม่เกิน 250 บรรทัด
@@ -136,7 +136,7 @@ related:
 - ทำ `/review-by-stakeholder` หลังจากเขียน `AGENTS.md` ทั้ง root และ workspace แล้ว
 - เลือก stakeholders ตาม context ของ project
 - ไม่ต้องรอผลจากทุก roleplay ถ้า findings ชัดเจน
-- ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/validate`
+- ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/deep-validate`
 
 ## Expected Outcome
 
@@ -145,6 +145,6 @@ related:
 - `### Platform` และ `### Target User` ถูกต้อง
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
-- ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/validate`
-- ผ่าน `/review-rules` และ `/validate`
+- ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/deep-validate`
+- ผ่าน `/review-rules` และ `/deep-validate`
 - ไม่ commit เอง — รอ `/ship` หรือ `/git-commit` ดำเนินการต่อ

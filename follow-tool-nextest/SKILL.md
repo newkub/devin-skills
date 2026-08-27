@@ -1,6 +1,13 @@
 ---
 name: follow-tool-nextest
 description: ตั้งค่าและใช้งาน cargo-nextest สำหรับ test runner ที่รวดเร็วใน Rust projects
+related:
+  - follow-lang-rust
+  - follow-tool-cargo
+  - follow-test
+  - write-test
+  - follow-tool-mutants-rs
+  - run-test
 ---
 
 ## Goal
@@ -17,7 +24,7 @@ description: ตั้งค่าและใช้งาน cargo-nextest ส�
 
 > Goal: ติดตั้ง cargo-nextest บน environment
 
-1. ติดตั้งด้วย `cargo-binstall cargo-nextest --secure`
+1. ติดตั้งด้วย `cargo binstall cargo-nextest --secure`
 2. หรือติดตั้งจาก pre-built binaries ผ่าน `https://get.nexte.st/latest/{linux,mac,windows}`
 3. Windows สามารถใช้ `winget install nextest.cargo-nextest`
 4. ติดตั้งจาก source ด้วย `cargo install cargo-nextest --locked`
@@ -26,7 +33,7 @@ description: ตั้งค่าและใช้งาน cargo-nextest ส�
 
 ### 2. Run Tests
 
-> Goal: รัน tests ด้วย cargo-nextest แทน cargo test
+> Goal: รัน tests ด้วย cargo-nextest แทน `cargo test`
 
 1. รัน all tests ด้วย `cargo nextest run`
 2. รันเฉพาะ package ด้วย `cargo nextest run -p my-package`
@@ -48,6 +55,7 @@ description: ตั้งค่าและใช้งาน cargo-nextest ส�
 
 1. รัน `cargo nextest list` สำหรับ list all tests
 2. รัน `cargo nextest list --verbose` สำหรับ verbose output (binary paths, skipped tests)
+3. ดูรายละเอียดใน [references/nextest.md](references/nextest.md)
 
 ### 5. Profiles
 
@@ -72,14 +80,14 @@ description: ตั้งค่าและใช้งาน cargo-nextest ส�
 
 ### 1. Test Execution
 
-- ใช้ cargo-nextest แทน cargo test สำหรับ performance ที่ดีกว่า
+- ใช้ `cargo nextest run` แทน `cargo test` สำหรับ performance ที่ดีกว่า
 - รัน doctests แยกจาก cargo-nextest ด้วย `cargo test --doc`
 - ใช้ `cargo nextest run -p <package>` สำหรับรันเฉพาะ package
 
 ### 2. Profiles
 
 - ใช้ `--profile ci` ใน CI เพื่อ run ทุก tests แม้จะ fail
-- ใช้ default profile สำหรับ local development
+- ใช้ `default` profile สำหรับ local development
 - ตั้งค่า `fail-fast = false` ใน CI profile
 - หลีกเลี่ยง naming profiles ที่ขึ้นต้นด้วย `default-`
 - ใช้ `inherits` keyword สำหรับ profile inheritance

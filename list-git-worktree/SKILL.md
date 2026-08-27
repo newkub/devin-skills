@@ -3,7 +3,6 @@ name: list-git-worktree
 description: รายการ git worktrees ใน repo พร้อม branch และ status
 related:
   - create-worktree-in-project
-  - delete-git-worktree
   - cleanup-worktree
   - merge-worktree-to-main
 ---

@@ -47,7 +47,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
+2. ทำ `/deep-validate` สำหรับ validate issues แต่ละอย่าง
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2

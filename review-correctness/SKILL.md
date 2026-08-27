@@ -3,12 +3,12 @@ name: review-correctness
 description: Review implementation ตรวจ logic, types, edge cases, contracts, concurrency, tests
 related:
   - review-quality
-  - validate
+  - deep-validate
   - deep-validate
   - scan-codebase
   - deep-analyze
   - run-review
-  - run-verify
+  - run-verify-fast
   - run-test
   - run-test-coverage
   - use-ast-grep
@@ -92,7 +92,7 @@ Review implementation correctness ของ code, configuration, และ tests
 
 > Goal: findings ถูกต้อง พร้อม review score
 
-1. ทำ `/deep-validate` และ `/validate`
+1. ทำ `/deep-validate`
 2. จัดลำดับ severity, คำนวณ review score
 3. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
 4. ดูรายละเอียดใน [references/validate-score-and-report.md](references/validate-score-and-report.md)

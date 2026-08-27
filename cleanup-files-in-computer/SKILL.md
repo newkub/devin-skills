@@ -6,7 +6,7 @@ related:
   - report-idea-cleanup-files-in-computer
   - follow-tool-mise
   - use-lib-better
-  - delete-files
+  - delete
 ---
 
 ## Goal

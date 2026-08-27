@@ -3,6 +3,12 @@ name: follow-tool-moonrepo
 description: ใช้ moonrepo จัดการ monorepo build, tasks, และ project boundaries สำหรับหลาย stacks
 related:
   - follow-math-graph-theory
+  - follow-monorepo
+  - merge-in
+  - run-lint
+  - run-build
+  - run-test
+  - run-verify-fast
 ---
 
 ## Goal
@@ -63,7 +69,7 @@ related:
 1. รัน `moon check` หรือ `moon run :check`
 2. รัน `moon run :build` เพื่อตรวจ project graph
 3. ตรวจสอบว่าไม่มี `turbo.json` หรือ `turbo` dependencies
-4. ทำ `/validate` เพื่อ verify setup
+4. ทำ `/deep-validate` เพื่อ verify setup
 
 ## Rules
 

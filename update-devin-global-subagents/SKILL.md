@@ -1,60 +1,88 @@
 ---
 name: update-devin-global-subagents
-description: อัปเดต global subagent ใน devin agents repo ตามมาตรฐาน AGENT.md
+description: สร้างหรืออัปเดต global subagent ใน devin agents repo ให้ถูกต้องตาม AGENT.md
+argument-hint: "[agent-name]"
 related:
   - list-devin-global-subagents
   - review-devin-global-subagents
-  - follow-devin-global-subagents
+  - follow-create-devin-plugins
+  - ship
 ---
 
 ## Goal
 
-อัปเดต subagent ที่มีอยู่ใน `%APPDATA%\devin\agents` ให้ตรงมาตรฐาน `AGENT.md` โดยไม่ทำลายของเดิม
+สร้างหรืออัปเดต `AGENT.md` สำหรับ Devin subagent ให้ถูกต้อง ครบถ้วน และใช้งานได้จริง
 
 ## Scope
 
-ใช้เมื่อต้องแก้ไข `AGENT.md` ของ subagent ที่มีอยู่ เช่น เพิ่ม tools, เปลี่ยน model, แก้ description, ปรับ Execute steps
+ใช้เมื่อต้องสร้าง agent ใหม่หรือแก้ไข agent ใน `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, หรือ `%APPDATA%\devin\agents\`
 
 ## Execute
 
 ### 1. Identify Target Subagent
 
-> Goal: ระบุ subagent ที่ต้องอัปเดต
+> Goal: ระบุ subagent ที่ต้องสร้างหรืออัปเดต
 
-1. รับชื่อ subagent ที่ต้องอัปเดตจาก user
-2. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า subagent มีอยู่จริง
-3. ถ้าไม่พบ → สร้าง subagent ใหม่ตาม `/follow-devin-global-subagents/templates/` หรือใช้ `/follow-devin-global-subagents`
-4. อ่าน `AGENT.md` เดิมเพื่อทำความเข้าใจ
+1. รับชื่อ agent และบทบาทจาก user
+2. ทำ `/list-devin-global-subagents` เพื่อยืนยันว่า agent มีอยู่หรือไม่
+3. ระบุ target directory: `<agents-root>/<agent-name>/`
+4. ถ้าชื่อซ้ำหรือไม่ชัด → ทำ `/ask-me`
 
-### 2. Identify Changes
+### 2. Select Archetype
 
-> Goal: ระบุสิ่งที่ต้องเปลี่ยน
+> Goal: เลือกโครงสร้างสิทธิ์ตามบทบาท
 
-1. รับรายการการเปลี่ยนแปลงจาก user
-2. ระบุว่าเป็นการเปลี่ยน: frontmatter, prompt body, หรือทั้งสองส่วน
-3. ถ้าไม่ชัด → ทำ `/ask-me`
+1. Read-only auditor: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
+2. Builder/Implementer: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` สำหรับ test/lint/build
+3. Planner/Designer: `architect`, `api-designer`, `uxui-designer` — อาจอนุญาตให้เขียน spec/design doc แต่ไม่แก้ source หลัก
+4. Executor/Operator: `test-runner`, `release`, `deployment-specialist` — allow รันคำสั่งทีเกี่ยวข้อง
 
-### 3. Apply Changes
+### 3. Write Frontmatter
 
-> Goal: แก้ไข `AGENT.md`
+> Goal: frontmatter ถูกต้องตาม Devin spec
 
-1. สำรองไฟล์เดิมถ้าจำเป็น
-2. แก้ไข frontmatter ตามที่กำหนด
-3. แก้ไข prompt body ตามที่กำหนด
-4. รักษาโครงสร้าง 5 sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-5. ใช้ backticks สำหรับ `tools`, `commands`, `file paths`
+1. `name`: lowercase, คั่นด้วย `-`, ตรงกับ directory name
+2. `description`: กระชับ ≤100 ตัวอักษร
+3. `model`: `sonnet` โดย default
+4. `allowed-tools`: เลือกเฉพาะ tools ทีจำเป็น เช่น `read`, `grep`, `find_file_by_name`, `code_search`, `exec`, `edit`, `write`
+5. `permissions`:
+   - `allow`: คำสั่งปลอดภัย เช่น `Exec(bun run test)`, `Exec(bun run lint)`, `Exec(bun run typecheck)`, `Exec(bun run build)`
+   - `deny`: `write`, `edit` สำหรับ read-only; หรือ `exec` ถ้าไม่ต้องการให้รัน terminal
 
-### 4. Validate
+### 4. Write Prompt Body
 
-> Goal: ตรวจสอบคุณภาพ
+> Goal: prompt สอดคล้องกับบทบาทและ spec
 
-1. ตรวจสอบว่า `AGENT.md` ไม่เกิน 250 บรรทัด
-2. ตรวจสอบว่า frontmatter มี `name`, `description`, `model`, `allowed-tools` ครบ
-3. ตรวจสอบว่า prompt body มี 5 sections ครบ
-4. ตรวจสอบว่าไม่มี TODO/MOCK/placeholder
-5. ทำ `/validate` ถ้ามี
+1. `## Goal`: ประโยคเดียวชัดเจน
+2. `## Scope`: ขอบเขตงานและ focus areas
+3. `## Execute`: แบ่งเป็น steps ไม่เกิน 10 ขั้นตอน ใช้ `### N. Step Name`, `> Goal:`, และ numbered list
+4. `## Rules`: 3-5 กฎเฉพาะบทบาท
+5. `## Expected Outcome`: สิ่งทีต้องได้รับ
+6. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `agent-name`
+7. ห้ามใช้ `**` bold markers
 
-### 5. Ship
+### 5. Validate
+
+> Goal: AGENT.md พร้อมใช้งาน
+
+1. ตรวจว่ามี frontmatter `---` ครบท้งสองฝั่ง
+2. ตรวจ required fields: `name`, `description`, `model`, `allowed-tools`
+3. ตรวจ required sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+4. นับบรรทัด ต้องไม่เกิน 250 บรรทัด
+5. ตรวจหา markers ทีบ่งบอกว่าเนื้อหายังไม่สมบูรณ์
+6. ตรวจว่า `name` ตรงกับ directory name และไม่ซ้ำกับ agent ตัวอื่น
+7. ถ้ามีปัญหา → แก้ไขและ revalidate จนผ่าน
+
+### 6. Update References
+
+> Goal: รักษาความสอดคล้องกับ catalog
+
+1. ถ้ามี agent อื่นเกี่ยวข้อง → อัปเดต `related` หรือ cross-reference
+2. ถ้ามี skill ที agent ควรใช้ → เพิ่มลงใน `## Execute` หรือ `## Rules`
+3. ทำ `/update-references` ถ้ามีชื่อเปลี่ยน
+4. ทำ `/suggest-next-action` เมื่อเสร็จ
+
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -63,35 +91,40 @@ related:
 
 ## Rules
 
-### 1. Target Location
+### 1. Agent Identity
 
-- อัปเดต subagent ใน `%APPDATA%\devin\agents`
-- ห้ามเปลี่ยน directory name ถ้าไม่ได้รับอนุญาต
+- `name` ต้องสะท้อนบทบาทเฉพาะ ไม่ generic เช่น `helper`, `expert`
+- ห้ามซ้ำกับ existing agent ทีมีอยู่
+
+### 2. Permissions
+
+- Read-only agents ต้อง `deny: [write, edit]`
+- Builder agents อนุญาต `edit`, `write` และ `exec` สำหรับ check/test
+- Release/deploy agents ต้อง ask ก่อน remote side effects
+
+### 3. Tool Selection
+
+- `allowed-tools` ต้องเพียงพอต่อบทบาท ไม่มากเกิน
+- อย่าเพิ่ม `glob` ถ้า runtime ไม่รองรับ ให้ใช้ `find_file_by_name` แทน
+
+### 4. Format
+
+- ใช้ heading ภาษาอังกฤษ Title Case หรือตาม convention ของ project
+- รายการภาษาไทยสำหรับรายละเอียด
+- ไฟล์ไม่เกิน 250 บรรทัด
+
+### 5. Safety
+
+- ถ้า overwrite `AGENT.md` เดิม → ทำ dry run ขอ user confirmation ก่อน
+- ไม่แก้ไข agent อื่นโดยไม่จำเป็น
 - ถ้าเปลี่ยน directory name → อัปเดต `name` ใน frontmatter ให้ตรง
-
-### 2. Preserve Existing
-
-- รักษาส่วนที่ไม่เกี่ยวข้องกับการเปลี่ยนแปลง
-- ไม่ทำลาย `allowed-tools` หรือ `permissions` เดิม ถ้าไม่ได้ระบุให้ลบ
-- รักษาโครงสร้าง 5 sections
-
-### 3. Safety
-
-- สำรองไฟล์เดิมก่อนแก้ไขถ้าการเปลี่ยนแปลงใหญ่
-- ถ้ามีการ overwrite ไฟล์เดิม → user confirmation ก่อน
-- ไม่ทำลาย subagents อื่น
-
-### 4. Content Standard
-
-- `description` ไม่เกิน 100 ตัวอักษร
-- ใช้ backticks สำหรับ `tools`, `commands`, `file paths`
-- ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome
 
-- subagent ที่อัปเดตถูกต้องตามมาตรฐาน `AGENT.md`
-- การเปลี่ยนแปลง minimal และตรงตามที่กำหนด
-- `AGENT.md` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
-- frontmatter ครบ: `name`, `description`, `model`, `allowed-tools`
-- prompt body มี 5 sections ครบ
-- ส่วนที่ไม่เกี่ยวข้องยังเหมือนเดิม
+- `AGENT.md` ใหม่หรืออัปเดทที `<agents-root>/<agent-name>/AGENT.md`
+- frontmatter ครบถ้วนและถูกต้อง
+- prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
+- ไฟล์ไม่เกิน 250 บรรทัด ไม่มี markers ทีบ่งบอกว่าเนื้อหายังไม่สมบูรณ์
+- ชื่อ agent ตรงกับ directory name และไม่ซ้ำ
+- `permissions` เหมาะสมกับบทบาท
+- references อัปเดตครบถ้วน

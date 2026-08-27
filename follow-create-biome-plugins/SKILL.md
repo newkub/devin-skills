@@ -1,8 +1,11 @@
 ---
 name: follow-create-biome-plugins
 description: สร้าง custom Biome linter plugins ด้วย GritQL
+related:
+  - follow-create-sdk
+  - follow-tool-biome
+  - follow-tool-formatter
 ---
-
 ## Goal
 
 สร้าง custom Biome linter plugins ด้วย GritQL เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์

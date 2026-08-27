@@ -1,5 +1,5 @@
 ---
-name: follow-alignment
+name: alignment
 description: จัดให้ project artifacts, rules, skills, docs และ code มี alignment สอดคล้องกัน
 related:
   - update-project
@@ -14,7 +14,7 @@ related:
   - follow-architecture
   - check-code-structure
   - run-scan
-  - validate
+  - deep-validate
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ related:
 
 > Goal: ยืนยันว่าทุกอย่างสอดคล้อง
 
-1. ทำ `/validate` สำหรับ project
+1. ทำ `/deep-validate` สำหรับ project
 2. รัน `bun run typecheck`, `bun run lint`, `bun run scan`
 3. ทำ `/run-scan` กับ ast-grep rules
 4. รัน tests ถ้ามี

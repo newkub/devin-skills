@@ -5,9 +5,9 @@ argument-hint: "[task]"
 related:
   - review-workflow
   - list-devin-global-subagents
-  - use-subagents
+  - consider-use-subagents
   - review-and-fix
-  - validate
+  - deep-validate
   - ship
   - report
 ---
@@ -44,7 +44,7 @@ related:
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `/use-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
+1. ใช้ `/consider-use-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
 2. ส่ง context ครบ: task, constraints, files, expected output
 3. กำหนด timeout หรือรอบการทำงาน
 4. ห้ามส่ง subtask ซ้ำซ้อนกัน
@@ -71,7 +71,7 @@ related:
 
 > Goal: ส่งมอบผลลัพธ์ที่ผ่าน validation
 
-1. ทำ `/validate`
+1. ทำ `/deep-validate`
 2. ทำ `/deep-validate` ถ้างานเสี่ยงสูง
 3. ทำ `/ship` ถ้ามีการเปลี่ยนแปลง
 4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
@@ -107,5 +107,5 @@ related:
 
 - งานถูกแบ่งและทำขนานกันโดย subagents
 - ผลลัพธ์ถูก merge และ review แล้ว
-- ผ่าน `/validate` และ `/deep-validate`
+- ผ่าน `/deep-validate`
 - มีรายงานสรุปจากแต่ละ role

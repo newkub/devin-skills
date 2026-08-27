@@ -7,8 +7,11 @@ allowed-tools:
   - glob
   - find_file_by_name
   - read
+related:
+  - check-reference
+  - deep-validate
+  - update-references
 ---
-
 ## Goal
 
 ตรวจหา broken skill references ใน `SKILL.md` ของ devin skills repo โดยเปรียบเทียบ references ที่อ้างถึงกับ skills ที่มีอยู่จริง

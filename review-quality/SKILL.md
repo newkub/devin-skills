@@ -2,7 +2,7 @@
 name: review-quality
 description: Review code quality, bug-prone patterns, correctness, and overall quality with score
 related:
-  - validate
+  - deep-validate
   - deep-validate
   - scan-codebase
   - deep-analyze
@@ -67,7 +67,7 @@ Verify requirements, calculations, control flow, edge cases, concurrency, valida
 > Goal: Findings ถูกต้อง จัดลำดับชัดเจน ไม่มี false positives
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues จาก script และ sub-workflows
+2. ทำ `/deep-validate` สำหรับ validate issues จาก script และ sub-workflows
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2

@@ -91,7 +91,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
+2. ทำ `/deep-validate` สำหรับ validate issues แต่ละอย่าง
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
 ### 7. Report

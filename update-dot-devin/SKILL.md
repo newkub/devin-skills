@@ -35,7 +35,7 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 1. อ่าน https://docs.devin.ai/cli/extensibility/rules เพื่อเข้าใจ rules
 2. สร้าง `.devin/rules` directory พร้อม subdirectories: `always-on/`, `model_decision/`, `glob/`
 3. ทำ `/update-project-rules` เพื่อเขียน rules ตาม dependencies จริง
-4. ทำ `/follow-create-devin-skills` เพื่อสร้าง project-specific workflows
+4. ทำ `/update-devin-global-skills` เพื่อสร้าง project-specific workflows
 5. ทำตาม Rules section ด้านล่างสำหรับ frontmatter และ format
 
 ### 4. Setup Hooks
@@ -122,7 +122,7 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 ### 5. Rules Update
 
 - ใช้ `/update-project-rules` สำหรับเขียนและอัพเดท rules ที่ root เท่านั้น ไม่สร้าง rules ใน sub-workspace
-- ใช้ `/follow-create-devin-skills` สำหรับสร้าง project-specific workflows
+- ใช้ `/update-devin-global-skills` สำหรับสร้าง project-specific workflows
 - Rules ต้องสอดคล้องกับ dependencies ใน `package.json`
 
 ### 6. AGENTS.md Update

@@ -11,7 +11,7 @@
 ## Validate Findings
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/validate` สำหรับ issues จาก scripts
+2. ทำ `/deep-validate` สำหรับ issues จาก scripts
 3. ตรวจสอบ evidence: file path, line number, code snippet
 4. ยืนยันว่าทุก finding ระบุ expected behavior, actual behavior, reproduction ถ้ามี
 

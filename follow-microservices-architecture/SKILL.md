@@ -3,7 +3,7 @@ name: follow-microservices-architecture
 description: ออกแบบ distributed systems ด้วย Microservices, API Gateway, service discovery และ event-driven
 related:
   - follow-event-driven
-  - follow-orm
+  - use-orm
   - follow-tool-vitest
   - follow-tool-vite
   - follow-monorepo
@@ -70,7 +70,7 @@ related:
 
 > Goal: กำหนด data isolation strategy สำหรับแต่ละ service
 
-1. กำหนด database per service — ทำ `/follow-orm` สำหรับ data access patterns
+1. กำหนด database per service — ทำ `/use-orm` สำหรับ data access patterns
 2. ตั้งค่า data replication ถ้าจำเป็น
 3. กำหนด eventual consistency strategy
 4. ตรวจสอบ transaction boundaries

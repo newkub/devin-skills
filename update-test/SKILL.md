@@ -6,7 +6,7 @@ related:
   - run-test-coverage
   - update-review-codebase-cli-and-run
   - review-quality
-  - validate
+  - deep-validate
   - check-reference
 ---
 

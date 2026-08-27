@@ -1,8 +1,11 @@
 ---
 name: follow-create-website
 description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and UnoCSS
+related:
+  - deploy-to-cloudflare
+  - deploy-to-vercel
+  - follow-create-sdk
 ---
-
 ## Goal
 
 สร้าง website project ด้วย stack SolidJS, TanStack Start, oRPC, Elysia และ UnoCSS ตามมาตรฐานที่กำหนด
@@ -90,7 +93,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 > Goal: ตรวจสอบว่า website ทำงานถูกต้อง
 
 1. รัน `bun run build` และ `bun run start`
-2. ทำ `/run-test` สำหรับ unit, integration, e2e
+2. ทำ `/run-test-all` สำหรับ unit, integration, e2e
 3. ทำ `/review-frontend` เพื่อตรวจ accessibility, performance
 4. ทำ `/deep-validate` ถ้ามี complex flows
 
@@ -109,7 +112,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 
 1. ถ้า project นี้จะเป็น devin global skill → ทำ `/update-devin-global-skills`
 2. อัปเดต `AGENTS.md` และ `README.md`
-3. ทำ `/follow-create-devin-skills` เพื่อตรวจสอบ conventions
+3. ทำ `/deep-validate` เพื่อตรวจสอบ conventions
 
 ## Rules
 

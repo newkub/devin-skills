@@ -11,6 +11,7 @@ related:
   - update-examples
   - update-project-skills
   - update-github-metadata
+  - update-todo-md
 ---
 
 ## Goal
@@ -84,7 +85,7 @@ related:
 > Goal: project skills ใน `.devin/skills/` เป็นปัจจุบัน
 
 1. ทำ `/update-project-skills` เพื่อสร้างหรืออัปเดต skills ใน `.devin/skills/`
-2. ตรวจว่า skills ที่สร้างผ่าน `/validate`
+2. ตรวจว่า skills ที่สร้างผ่าน `/deep-validate`
 3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 
 ### 5. Update GitHub Metadata
@@ -98,7 +99,7 @@ related:
 
 > Goal: root project ผ่าน validation
 
-1. ทำ `/validate` เพื่อตรวจ root structure และ references
+1. ทำ `/deep-validate` เพื่อตรวจ root structure และ references
 2. รัน `git diff --check`
 3. รัน checks ตาม project เช่น `bun run scan`, `bun run lint`
 4. ทำ `/report` สรุป:
@@ -151,5 +152,5 @@ related:
 - project docs, config, rules, และ tooling sync กัน
 - project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
 - GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
-- root project ผ่าน `/validate`
+- root project ผ่าน `/deep-validate`
 - รายงานสรุป workspace commits, project files, project skills และ GitHub metadata ครบถ้วน

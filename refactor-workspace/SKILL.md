@@ -70,7 +70,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
 
-1. ทำ `/run-verify`
+1. ทำ `/run-verify-fast`
    - ทำ `/run-test`
    - ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/review-quality`

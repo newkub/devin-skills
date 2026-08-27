@@ -1,6 +1,13 @@
 ---
 name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
+related:
+  - use-ast-grep
+  - use-ast-grep-programatic
+  - review-architecture
+  - restructure
+  - update-review-codebase-cli-and-run
+  - deep-validate
 ---
 
 ## Goal
@@ -19,8 +26,8 @@ description: วิเคราะห์และปรับปรุง code s
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure
 2. ทำ `/update-project-rules` ถ้ามี `ast-grep` rules หรือ `.devin/rules` ที่เกี่ยวข้อง
-3. ทำ `/use-ast-grep-outline` เพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
-4. เลือก `sg outline` flags ตาม scope (ดู Rules section `sg outline Flags`)
+3. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อเข้าใจวิธีใช้งาน `sg outline` และ options ที่มี
+4. เลือก `sg outline` flags ตาม scope (ดู references/sg-outline.md)
 5. ระบุ target paths ที่จะ improve
 6. ถ้า `sg outline` ไม่พร้อมใช้ → stop และ report
 
@@ -28,7 +35,7 @@ description: วิเคราะห์และปรับปรุง code s
 
 > Goal: Analyze Code Structure
 
-1. ทำ `/use-ast-grep-outline` เพื่อเลือก flags ที่เหมาะสมกับ scope
+1. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อเลือก flags ที่เหมาะสมกับ scope
 2. รัน `sg outline` ด้วย flags ที่เลือก:
    - `sg outline --view expanded --items structure <paths>` สำหรับ top-level symbols และ members
    - `sg outline --view signatures --items exports <paths>` สำหรับ exported surface
@@ -56,7 +63,7 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 
 > Goal: Validate Findings
 
-1. ทำ `/validate` สำหรับ validate findings
+1. ทำ `/deep-validate` สำหรับ validate findings
 2. จัดลำดับ severity: Critical → High → Medium → Low
 3. ระบุ false positives ที่พบ
 4. ถ้าไม่มี issues ที่ต้อง improve → stop และ report
@@ -72,17 +79,17 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 3. ทำ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
-6. ทำ `/rename-files-to` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
+6. ทำ `/rename-to` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
 7. ถ้าต้องปรับ physical structure ให้ทำ `/restructure`
 
 ### 6. Verify
 
 > Goal: Verify
 
-1. ทำ `/use-ast-grep-outline` เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
+1. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
 2. รัน `sg outline --items structure <paths>` อีกครั้งเพื่อยืนยันว่า issues ถูกแก้ไข
 3. รัน `sg outline --items exports <paths>` ตรวจสอบว่า public API ไม่เปลี่ยนโดยไม่ตั้งใจ
-4. ทำ `/run-verify` lint และ typecheck
+4. ทำ `/run-verify-fast` lint และ typecheck
 5. ถ้า fail ให้ทำ `/resolve-errors`
 6. ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
@@ -120,30 +127,14 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 ### 4. Follow Write Standards
 
 - ทำ `/update-references` หลังทุกการ split, rename, หรือย้ายไฟล์
-- ใช้ `/rename-files-to` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
+- ใช้ `/rename-to` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
 - แต่ละไฟล์ไม่เกิน 250 บรรทัด
 - แต่ละ function/type/class ทำหน้าที่เดียว
 - ใช้ `sg outline` ยืนยัน structure หลัง improve
 
 ### 5. sg outline Flags
 
-- `--view expanded` สำหรับ top-level symbols พร้อม members
-- `--view signatures` สำหรับ signatures ของ top-level items
-- `--view names` สำหรับ grouped names by symbol type
-- `--items structure` สำหรับ top-level symbols ในไฟล์
-- `--items exports` สำหรับ exported surface
-- `--items imports` สำหรับ imports และ boundary crossing
-- `--items all` สำหรับ imports และ exports รวมกัน
-- `--json compact` สำหรับ structured output (เพิ่มเติม: `--json stream` สำหรับ one file per line)
-- `--type class,interface,enum,function` สำหรับกรอง symbol types (LSP-compatible, lower camel case)
-- `--match <regex>` สำหรับกรองชื่อ symbols (Rust regex, case-sensitive)
-- `--pub-members` สำหรับดูเฉพาะ public members
-- `--globs <pattern>` สำหรับกรองไฟล์ (match .gitignore globs, prefix `!` เพื่อ exclude)
-- `--outline-rules <file>` สำหรับโหลด custom extraction rules
-- `--no-default-outline-rules` สำหรับแทนที่ bundled extractors
-- `--color auto|always|ansi|never` สำหรับควบคุม ANSI color
-- `-c <config>` สำหรับระบุ sgconfig.yml path
-- `--no-ignore hidden|dot|exclude|global|parent|vcs` สำหรับไม่ respect ignore files
+ดูรายละเอียด flags และ options ทั้งหมดใน [references/sg-outline.md](references/sg-outline.md)
 
 ### 6. Scope Boundaries
 

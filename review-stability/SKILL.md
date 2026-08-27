@@ -105,7 +105,7 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: Issues ถูก validate และรายงานเป็นตาราง พร้อม review score
 
 1. ทำ `/deep-validate` เพื่อ validate findings
-2. ทำ `/validate` สำหรับ validate issues จากทุก section
+2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. คำนวณ review score ตาม `references/scoring.md`
 5. ทำ `/report` พร้อม `/report-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`

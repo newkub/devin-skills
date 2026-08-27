@@ -57,7 +57,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 > Goal: สำรวจ structure ด้วย `ast-grep outline` โดยไม่ต้องอ่านทั้งไฟล์
 
-1. ทำ `/use-ast-grep-outline` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
+1. ทำ `/check-code-structure` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
 2. รัน `ast-grep outline <path> --items structure` สำหรับ top-level symbols
 3. รัน `ast-grep outline <path> --items exports` สำหรับ exported surface
 4. รัน `ast-grep outline <path> --items imports` สำหรับ imports และ boundary crossing

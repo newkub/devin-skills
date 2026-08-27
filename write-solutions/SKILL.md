@@ -49,7 +49,7 @@ description: เขียน solution documents และ problem-solving workfl
 
 เขียน solution document ตามมาตรฐาน
 
-1. ทำ `/follow-create-devin-skills` สำหรับ structure
+1. ทำ `/update-devin-global-skills` สำหรับ structure
 2. เขียน problem statement, solution approach, และ implementation plan
 3. เพิ่ม examples และ edge cases
 

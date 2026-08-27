@@ -2,6 +2,8 @@
 name: git-commit-at-devin-skills-global
 description: Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ตามมาตรฐาน conventional commits
 argument-hint: "[target]"
+related:
+  - update-agents-md
 ---
 
 ## Goal
@@ -32,7 +34,17 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 1. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการแก้ไขทั้งหมด
 2. ตรวจสอบว่าอยู่ใน repository ที่ถูกต้อง
 
-### 3. Stage All Changes
+### 3. Update AGENTS.md
+
+> Goal: Update AGENTS.md
+
+อัปเดต `AGENTS.md` ให้สะท้อน skills ปัจจุบันก่อน commit
+
+1. ทำ `/update-agents-md` เพื่อสร้าง/อัปเดต `AGENTS.md`
+2. ตรวจสอบ diff ของ `AGENTS.md` ว่าถูกต้อง
+3. ถ้ามีการเปลี่ยนแปลง → รวมเข้ากับ commit ถัดไป
+
+### 4. Stage All Changes
 
 > Goal: Stage All Changes
 
@@ -41,7 +53,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 1. รัน `git add .` เพื่อ stage ทุกไฟล์
 2. ตรวจสอบด้วย `git diff --cached` ว่าไฟล์ที่ stage ถูกต้อง
 
-### 4. Determine Commit Type
+### 5. Determine Commit Type
 
 > Goal: Determine Commit Type
 
@@ -55,7 +67,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
    - refactor: refactor skill
    - chore: ปรับปรุง configuration หรือ structure
 
-### 5. Write Commit Message
+### 6. Write Commit Message
 
 > Goal: Write Commit Message
 
@@ -67,7 +79,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 4. ใช้ imperative mood (เช่น add ไม่ใช่ added)
 5. ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
 
-### 6. Execute Commit
+### 7. Execute Commit
 
 > Goal: Execute Commit
 
@@ -77,7 +89,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ตรวจสอบผลลัพธ์จาก git commit
 3. ถ้ามี error: แก้ไขแล้วลองอีกครั้ง
 
-### 7. Verify Commits
+### 8. Verify Commits
 
 > Goal: Verify Commits
 
@@ -120,6 +132,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 ## Expected Outcome
 
+- `AGENTS.md` ถูกอัปเดตก่อน commit
 - Commit messages ที่สอดคล้องกับ conventional commits
 - Git history ที่อ่านง่ายและติดตามง่าย
 - ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ถูก commit

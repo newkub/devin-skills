@@ -6,7 +6,7 @@ related:
   - scan-codebase
   - update-readme-md
   - run-dev
-  - validate
+  - deep-validate
   - report-table
   - write-test
   - update-usage-md

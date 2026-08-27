@@ -12,6 +12,6 @@ description: ตรวจสอบผลลัพธ์
 ## Checks
 
 1. ทำตาม `/check-reference`
-   - ทำตาม `/validate`
+   - ทำตาม `/deep-validate`
 2. ทำ `/report` สรุปรายการที่แก้ไข
 

@@ -2,13 +2,12 @@
 name: follow-create-zed-extensions
 description: สร้าง Zed extensions ด้วย Rust/WASM และ extension manifest
 related:
-  - follow-create-sdk
   - follow-create-rust-crate
+  - follow-create-sdk
   - follow-lang-rust
   - open-in-zed
   - report-table
 ---
-
 ## Goal
 
 สร้าง Zed extension project ทีมี `extension.toml` manifest, Rust/WASM code ถ้าจำเป็น, themes, languages, snippets, หรือ language server integration

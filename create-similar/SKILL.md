@@ -3,11 +3,11 @@ name: create-similar
 description: สร้างไฟล์ skill หรือ project ใหม่โดยอ้างอิงโครงสร้างจากตัวอย่าง
 related:
   - at-this-repo
-  - follow-create-devin-skills
+  - update-devin-global-skills
   - review-naming
   - consider-use-in-another-skills
   - edit-by-use-scripts
-  - validate
+  - deep-validate
 ---
 
 ## Goal
@@ -80,7 +80,7 @@ related:
 
 1. ตรวจสอบว่า `name` ตรง directory name
 2. ตรวจสอบว่าไม่มี broken references
-3. ทำ `/validate` สำหรับ skill
+3. ทำ `/deep-validate` สำหรับ skill
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ## Rules

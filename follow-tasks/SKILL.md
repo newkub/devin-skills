@@ -4,7 +4,8 @@ description: ตั้งค่า scripts ใน package.json หรือ Carg
 related:
   - test-all
   - run-check
-  - run-verify
+  - run-verify-fast
+  - run-verify-full
   - use-scripts
   - follow-monorepo
 ---
@@ -108,6 +109,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | check | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | cargo clippy && cargo check | ruff check && mypy | golangci-lint run && go vet |
 | verify | check && test | check && test | check && test | check && test | check && test | check && test | cargo clippy && cargo check && cargo nextest run | ruff check && mypy && pytest | golangci-lint run && go vet && go test |
 | ci | verify && build | verify && build | verify && build | verify && build | verify && build | verify && build | cargo clippy && cargo check && cargo nextest run && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test && go build . |
+| verify:full | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | cargo clippy && cargo check && cargo nextest run && cargo nextest run --test-dir integration && cargo nextest run --test-dir e2e && cargo build | ruff check && mypy && pytest && pytest tests/integration && pytest tests/e2e && python -m build | golangci-lint run && go vet && go test ./... && go test ./tests/integration && go test ./tests/e2e && go build . |
 
 ### 3. Watch Mode Scripts
 

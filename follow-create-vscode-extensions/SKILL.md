@@ -2,14 +2,14 @@
 name: follow-create-vscode-extensions
 description: สร้าง VSCode extensions ด้วย TypeScript, official generator, หรือ reactive-vscode
 related:
-  - follow-create-sdk
   - follow-create-bun-cli
+  - follow-create-sdk
   - follow-lang-typescript
-  - run-test
   - follow-release
+  - follow-tool-vite
+  - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง VSCode extension project ด้วย TypeScript ทีมี `package.json` manifest, commands, activation events, contribution points, build, package, และ publish

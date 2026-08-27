@@ -11,11 +11,11 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ใช้ก่อนเรียก `update-all-devin-global-skills` — ครอบคลุม 3 งาน:
 
-- `review` — ตรวจ skill package แต่ละตัวตามมาตรฐาน `follow-create-devin-skills` (frontmatter, sections, line count, references, template, style, content quality)
+- `review` — ตรวจ skill package แต่ละตัวตามมาตรฐาน `update-devin-global-skills` (frontmatter, sections, line count, references, template, style, content quality)
 - `refactor` — split, merge, restructure, deduplicate, relocate skills ที่มีปัญหาโครงสร้าง
 - `cross-skill consistency` — ตรวจภาษา, format, terminology, frontmatter ข้าม skill และลด redundancy
 
-ไม่รวมการสร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพเชิง code (ใช้ `/validate`)
+ไม่รวมการสร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) หรือปรับปรุงเนื้อหาคุณภาพเชิง code (ใช้ `/deep-validate`)
 
 ## Execute
 
@@ -24,7 +24,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 > Goal: เข้าใจ skills repo และ conventions
 
 1. ทำ `/scan-codebase` ใน skills directory
-2. อ่าน `follow-create-devin-skills` เพื่อทราบมาตรฐาน
+2. อ่าน `update-devin-global-skills` เพื่อทราบมาตรฐาน
 3. จัดทำรายการ skills ทั้งหมด จัดกลุ่มตาม prefix
 4. อ่าน `AGENTS.md` และ `global_rules.md` เพื่อดู conventions ปัจจุบัน
 
@@ -106,7 +106,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 3. Restructure: ตรวจลำดับ sections รวม steps ที่เกี่ยวข้อง ลด steps ไม่เกิน 10
 4. Deduplicate: แทนที่เนื้อหาซ้ำด้วย references ไปยัง skill ต้นทาง ใช้ `related` สำหรับ dependencies
 5. Relocate: ทำ `/relocation` เพื่อย้าย skills ไปยังตำแน่งที่สอดคล้องกับ prefix
-6. ถ้าสร้าง sub-skills ใหม่ → ทำ `/follow-create-devin-skills` สำหรับแต่ละ sub-skill
+6. ถ้าสร้าง sub-skills ใหม่ → ทำ `/update-devin-global-skills` สำหรับแต่ละ sub-skill
 
 ### 9. Cross-Skill Consistency
 
@@ -140,8 +140,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 ### 2. Structural Focus
 
 - เน้น refactor โครงสร้าง: split, merge, restructure, deduplicate, relocate
-- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/validate`)
-- ไม่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`)
+- ไม่แก้ไขเนื้อหาเชิงคุณภาพ (ใช้ `/deep-validate`)
+- ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`)
 - รักษา skill intent เดิม
 
 ### 3. Non-Redundancy

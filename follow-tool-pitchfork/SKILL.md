@@ -1,6 +1,11 @@
 ---
 name: follow-tool-pitchfork
 description: ตั้งค่าและใช้งาน pitchfork สำหรับจัดการ daemons/processes ใน project
+related:
+  - follow-tool-mise
+  - follow-tool-github-actions
+  - follow-tool-cargo
+  - follow-tool-usage
 ---
 
 ## Goal
@@ -9,7 +14,7 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
 
 ## Scope
 
-ครอบคลุม pitchfork.toml, daemon lifecycle, ready checks, shell hooks, และ TUI
+ครอบคลุม `pitchfork.toml`, daemon lifecycle, ready checks, shell hooks, และ TUI
 
 ## Execute
 
@@ -17,10 +22,11 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
 
 > Goal: มี pitchfork CLI พร้อมใช้
 
-1. แนะนำติดตั้งผ่าน mise: `mise use -g pitchfork` หรือ `mise use pitchfork`
+1. แนะนำติดตั้งผ่าน `mise`: `mise use -g pitchfork` หรือ `mise use pitchfork`
 2. ทางเลือก: `cargo install pitchfork-cli`
 3. ถ้า project ไม่มี mise ให้ทำ `/follow-tool-mise` ก่อน
 4. ยืนยันด้วย `pitchfork --version`
+5. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 2. Create Configuration
 
@@ -32,6 +38,7 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
 4. ใช้ `depends` สำหรับ dependency ordering
 5. ใช้ `auto = ["start", "stop"]` สำหรับ shell hook
 6. ใช้ `pitchfork.local.toml` สำหรับ local overrides (ไม่ commit)
+7. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 3. Manage Daemons
 
@@ -44,6 +51,7 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
 5. `pitchfork stop <name>` หรือ `pitchfork stop --all`
 6. `pitchfork start <name> --force` เพื่อ restart
 7. `pitchfork tui` สำหรับ dashboard
+8. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 4. Shell Hook
 
@@ -55,6 +63,7 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
 4. ใช้ `auto = ["start"]` สำหรับ start on enter
 5. ใช้ `auto = ["stop"]` สำหรับ stop on exit
 6. ใช้ `auto = ["start", "stop"]` สำหรับทั้งสอง
+7. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ### 5. Lifecycle Hooks
 
@@ -66,6 +75,7 @@ description: ตั้งค่าและใช้งาน pitchfork สำ�
    - `PITCHFORK_EXIT_CODE`
    - `PITCHFORK_EXIT_REASON`
    - `PITCHFORK_MATCHED_LINE`
+3. ดูรายละเอียดใน [references/pitchfork.md](references/pitchfork.md)
 
 ## Rules
 

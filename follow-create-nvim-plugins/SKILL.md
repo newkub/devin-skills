@@ -1,8 +1,9 @@
 ---
 name: follow-create-nvim-plugins
 description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
+related:
+  - follow-create-sdk
 ---
-
 ## Goal
 
 ตั้งค่าและจัดการ Neovim plugins ด้วย `lazy.nvim` ตาม best practices

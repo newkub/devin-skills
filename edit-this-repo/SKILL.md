@@ -6,7 +6,7 @@ related:
   - at-this-repo
   - update-agents-md
   - git-commit
-  - validate
+  - deep-validate
   - report
   - ask-me
 ---

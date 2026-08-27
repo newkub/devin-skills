@@ -14,7 +14,7 @@ argument-hint: "[cli-name]"
 
 - สำรวจ commands ของ installed CLI tools
 - ประเมิน command ใดควรเป็น skill
-- เขียน draft skill ตาม `/follow-create-devin-skills`
+- เขียน draft skill ตาม `/update-devin-global-skills`
 - รองรับทั้ง single CLI, multiple tools และ global CLI set
 
 ## Execute
@@ -66,7 +66,7 @@ argument-hint: "[cli-name]"
 
 > Goal: เขียน draft skill สำหรับ candidates ที่เลือก
 
-1. ใช้ `/follow-create-devin-skills` สำหรับแต่ละ skill
+1. ใช้ `/update-devin-global-skills` สำหรับแต่ละ skill
 2. ใน draft ต้องระบุ:
    - `name` ทีสื่อความหมาย
    - `description` ≤100 ตัวอักษร
@@ -79,9 +79,9 @@ argument-hint: "[cli-name]"
 
 > Goal: ตรวจสอบและนำเสนอทิศทางถัดไป
 
-1. ทำ `/validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
+1. ทำ `/deep-validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
 2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
-3. ถ้า draft ผ่าน → ทำ `/follow-create-devin-skills` เพื่อ commit หรือบันทึก skills
+3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
 4. ถ้าต้องปรับ → ทำ `/follow-tool-my-global-cli` อีกรอบหรือ `/learn-from-cli`
 5. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
 
@@ -115,4 +115,4 @@ argument-hint: "[cli-name]"
 - กลุ่ม commands ทีจัดเป็น skill เดียวกันและ priority
 - draft skills สำหรับ High priority commands
 - ตารางสรุป commands, draft skill names และ next action
-- ทุก draft ผ่าน `/validate` และไม่มีชื่อซ้ำ
+- ทุก draft ผ่าน `/deep-validate` และไม่มีชื่อซ้ำ

@@ -5,7 +5,7 @@ related:
   - ship
   - dont-ask
   - run-check
-  - validate
+  - deep-validate
   - git-commit
 ---
 
@@ -32,7 +32,7 @@ related:
 > Goal: ตรวจสอบคุณภาพก่อน ship
 
 1. ทำ `/run-check` เพื่อตรวจ lint, typecheck, scan
-2. ทำ `/validate` เพื่อตรวจความถูกต้อง
+2. ทำ `/deep-validate` เพื่อตรวจความถูกต้อง
 3. ถ้าไม่ผ่าน → หยุดและ report โดยไม่ ship
 
 ### 3. Commit
@@ -68,7 +68,7 @@ related:
 
 ### 2. Stop On Failure
 
-- ถ้า `/run-check` หรือ `/validate` ไม่ผ่าน ต้องหยุดและ report
+- ถ้า `/run-check` หรือ `/deep-validate` ไม่ผ่าน ต้องหยุดและ report
 - ถ้าพบ conflicts, broken refs, หรือ destructive action ต้องหยุด
 - ไม่ ship โดยไม่ตรวจ
 
@@ -84,7 +84,7 @@ related:
 
 ## Expected Outcome
 
-- Workspace ผ่าน verify/validate
+- Workspace ผ่าน verify/deep-validate
 - Commit สำเร็จโดยไม่ถาม
 - Report ครบถ้วน
 - ไม่มี push/release โดยไม่ได้รับคำสั่งชัดเจน

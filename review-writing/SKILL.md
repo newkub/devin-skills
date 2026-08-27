@@ -68,9 +68,9 @@ description: Review writing quality, naming conventions, and discoverability acr
 
 ดู `references/scoring.md` สำหรับสูตรคำนวณ score
 
-1. ทำ `/deep-validate` และ `/validate` เพื่อ validate findings
+1. ทำ `/deep-validate` เพื่อ validate findings
 2. คำนวณ review score ตาม `references/scoring.md`
-3. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
+3. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify-fast` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
 4. ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 5. ทำ `/report` พร้อม `/report-table` — ตาราง: area | category | issues found | issues fixed | severity | status
 6. ทำ `/suggest-next-action`
@@ -92,7 +92,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 - เปลี่ยนชื่อเมื่อชื่อปัจจุบันสับสน ไม่สื่อความหมาย หรือ inconsistent
 - อ้างอิง official style guides และ community conventions
 - พิจารณา impact ของการเปลี่ยนชื่อต่อ codebase ทั้งหมด
-- ใช้ `/rename-files-to` สำหรับ rename code identifiers รายตัวที่ได้จากไอเดีย
+- ใช้ `/rename-to` สำหรับ rename code identifiers รายตัวที่ได้จากไอเดีย
 
 ### 3. Discoverability Scope And Severity
 

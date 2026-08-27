@@ -11,7 +11,7 @@ related:
   - update-project
   - update-dot-devin
   - update-gitignore
-  - validate
+  - deep-validate
   - report-idea-cleanup-files-in-computer
 ---
 
@@ -156,7 +156,7 @@ related:
 
 > Goal: ตรวจสอบว่า config ถูกต้อง
 
-1. ทำ `/validate` เพื่อตรวจ structure และ references
+1. ทำ `/deep-validate` เพื่อตรวจ structure และ references
 2. รัน tool validate ตาม ecosystem:
    - `moon check` หรือ `moon run :check` (moonrepo)
    - `tsc --noEmit` หรือ `tsc -b` (TypeScript)
@@ -204,5 +204,5 @@ related:
 - ลด duplication ด้วย shared config / extends / catalog
 - monorepo orchestration ถูกต้อง
 - CI/CD, editor, env, git config sync
-- ผ่าน `/validate` และ tool checks ตาม ecosystem
+- ผ่าน `/deep-validate` และ tool checks ตาม ecosystem
 - รายงาน changes, risks, และ next actions

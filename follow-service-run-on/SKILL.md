@@ -81,7 +81,7 @@ description: ติดตั้ง กำหนดค่า และ validate s
 2. ตรวจสอบ GitHub Actions logs ว่างานรันอยู่บน `runs-on` runner
 3. ดู AWS EC2 console / CloudWatch logs ว่า instance ถูก launch และ terminate ถูกต้อง
 4. ยืนยัน email สำหรับ SNS cost/alert subscription
-5. ถ้า workflow fail ให้ทำ `validate` แล้ว `/ask-me`
+5. ถ้า workflow fail ให้ทำ `/deep-validate` แล้ว `/ask-me`
 
 ## Rules
 

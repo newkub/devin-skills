@@ -1,6 +1,11 @@
 ---
 name: use-ast-grep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
+related:
+  - use-ast-grep-programatic
+  - update-project-rules
+  - check-code-structure
+  - replace
 ---
 
 ## Goal
@@ -65,7 +70,8 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
 4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
 5. ใช้ `--interactive` สำหรับ interactive edit session
-6. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
+6. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-ast-grep-programatic`
+7. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules
 

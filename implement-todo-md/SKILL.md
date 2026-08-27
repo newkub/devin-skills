@@ -6,7 +6,7 @@ related:
   - realize-implementation
   - continue
   - report-table
-  - validate
+  - deep-validate
   - ship
 ---
 
@@ -74,8 +74,8 @@ related:
 
 > Goal: ส่งมอบ
 
-1. ทำ `/validate` เพื่อตรวจ references และ structure
-2. ทำ `/run-verify` ถ้ามี
+1. ทำ `/deep-validate` เพื่อตรวจ references และ structure
+2. ทำ `/run-verify-fast` ถ้ามี
 3. ทำ `/ship`
 4. ใช้ `/report-table` สรุป tasks ทั้งหมด
 

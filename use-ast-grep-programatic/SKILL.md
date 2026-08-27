@@ -51,7 +51,7 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 
 > Goal: ตรวจสอบ findings และรายงานผล
 
-1. ทำ `/validate` สำหรับ validate issues จาก ast-grep analysis
+1. ทำ `/deep-validate` สำหรับ validate issues จาก ast-grep analysis
 2. จัดลำดับตาม severity: Critical → High → Medium → Low
 3. ถ้าพบ false positives → ปรับ rules และรันซ้ำ (max 3 → stop/report)
 4. ทำ `/suggest-next-action`

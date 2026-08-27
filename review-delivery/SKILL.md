@@ -130,7 +130,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 > Goal: สรุป findings พร้อมคะแนนและส่งต่อ action ถัดไป
 
-1. ทำ `/validate` และ `/deep-validate` สำหรับ findings ทุกรายการ
+1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity: Critical → High → Medium → Low → Info
 3. คำนวณ review score ตาม `references/scoring.md`
 4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`

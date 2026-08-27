@@ -31,7 +31,7 @@ description: พิจารณาและเรียก deep-* workflows ท�
 3. Planning → `deep-plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`
-6. Validation → `deep-validate` (comprehensive) หรือ `validate` (simple)
+6. Validation → `deep-validate`
 7. Security → `review-delivery`
 8. Performance → `/update-review-codebase-cli-and-run` (comprehensive) หรือ `review-delivery` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)

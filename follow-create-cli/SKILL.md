@@ -1,8 +1,11 @@
 ---
 name: follow-create-cli
 description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack ที่เหมาะสม
+related:
+  - follow-create-bun-cli
+  - follow-create-rust-cli
+  - ship
 ---
-
 ## Goal
 
 สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/update-review-codebase-cli-and-run`

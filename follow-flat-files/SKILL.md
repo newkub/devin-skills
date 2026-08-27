@@ -48,7 +48,7 @@ description: แปลง references directory จากโครงสร้า
 
 1. ตรวจสอบ active skill ยังเรียก references ได้
 2. ทำ `/update-references` กับ active skill หลัก
-3. ทำ `/validate` เพื่อตรวจความถูกต้องของ flat files
+3. ทำ `/deep-validate` เพื่อตรวจความถูกต้องของ flat files
 4. ถ้ามีปัญหา → แก้ไขและ revalidate (max 3 → stop/report)
 
 ## Rules

@@ -5,7 +5,7 @@ related:
   - create-plan-md-in-dot-devin
   - realize-implementation
   - implement-mock
-  - run-verify
+  - run-verify-fast
   - git-commit
   - git-push
   - merge-github-pull-request
@@ -61,7 +61,7 @@ related:
 
 > Goal: ยืนยันว่า code ถูกต้อง
 
-1. รัน `/run-verify`
+1. รัน `/run-verify-fast`
 2. รัน `/run-test` สำหรับ tests
 3. รัน `git diff --check`
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)

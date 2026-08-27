@@ -1,128 +1,99 @@
 ---
 name: follow-tool-template-starter
 description: ใช้ templates จาก template-starter repository ด้วย degit
+related:
+  - follow-tool-git
+  - follow-package-manifest
+  - follow-lang-typescript
+  - follow-tool-vite
 ---
 
 ## Goal
 
-ใช้ templates จาก `https://github.com/newkub/template-starter` ด้วย `bunx degit` หรือ tools อื่นๆ
+ใช้ templates จาก `newkub/template-starter` repository ด้วย `degit` หรือ `git clone` เพื่อเริ่ม project
 
 ## Scope
 
-ใช้สำหรับ clone templates จาก `https://github.com/newkub/template-starter/tree/main/templates` มาใช้ใน project ปัจจุบัน
+ใช้สำหรับ clone templates จาก `https://github.com/newkub/template-starter/tree/main/templates` มายัง project ปัจจุบัน
 
 ## Execute
 
-### 1. Check Repository
+### 1. Discover Templates
 
-> Goal: ตรวจสอบ repository และ templates ที่มี
+> Goal: ค้นหาและเลือก template ทีเหมาะสม
 
-ตรวจสอบ repository และ templates ที่มี
-
-1. ตรวจสอบ repository ด้วย `gh repo view newkub/template-starter`
+1. รัน `gh repo view newkub/template-starter` เพื่อดู repository
 2. ดู templates ที่มีใน `templates/` directory
-3. ตรวจสอบ template structure และ dependencies
-4. ตรวจสอบ README ของแต่ละ template
+3. ตรวจสอบ README ของแต่ละ template
+4. เลือก template ตาม stack ทีต้องการ
 
-### 2. Clone Template With Degit
+### 2. Clone Template
 
-> Goal: clone template ด้วย bunx degit
-
-Clone template ด้วย `bunx degit`
+> Goal: clone template ด้วย degit โดยไม่รวม git history
 
 1. ใช้ `bunx degit newkub/template-starter/templates/<template-name> <target-dir>`
 2. ใช้ `--mode=git` ถ้าต้องการ preserve git history
-3. ใช้ `--filter` สำหรับ filter files ที่ไม่ต้องการ
-4. ตรวจสอบ cloned files ว่าครบถ้วน
+3. ใช้ `--files` เพื่อ clone เฉพาะไฟล์ทีต้องการ
+4. ใช้ `--force` ด้วยความระมัดระวังถ้า target directory ไม่ว่าง
+5. ดูรายละเอียด degit ใน [references/degit.md](references/degit.md)
 
-### 3. Setup Template
+### 3. Setup Cloned Template
 
 > Goal: ตั้งค่า template หลัง clone
 
-ตั้งค่า template หลัง clone
-
-1. อ่าน `README.md` ของ template สำหรับ setup instructions
-2. รัน `bun install` สำหรับ install dependencies
-3. ตั้งค่า environment variables ตาม template requirements
-4. รัน setup scripts ถ้ามี (เช่น `bun run setup`)
+1. อ่าน `README.md` ของ template
+2. รัน `bun install` เพื่อ install dependencies
+3. ตั้งค่า environment variables ตาม template
+4. รัน setup scripts ถ้ามี เช่น `bun run setup`
+5. ตรวจสอบ `package.json` scripts
 
 ### 4. Verify Template
 
 > Goal: ตรวจสอบว่า template ทำงานได้
 
-ตรวจสอบว่า template ทำงานได้
+1. รัน `bun run dev` เพื่อ start development server
+2. รัน `bun run build` เพื่อตรวจสอบ build
+3. รัน `bun run test` ถ้ามี
+4. รัน `bun run lint` ถ้ามี
 
-1. รัน `bun run dev` สำหรับ start development server
-2. ตรวจสอบ build ด้วย `bun run build`
-3. ตรวจสอบ tests ด้วย `bun run test`
-4. ตรวจสอบ lint ด้วย `bun run lint`
+### 5. Initialize Git and Customize
+
+> Goal: แปลง template ไปยัง project ของตัวเอง
+
+1. ลบ `.git` ของ template ถ้าใช้ degit จะไม่มี
+2. ทำ `/follow-tool-git` เพื่อ init repository
+3. แก้ไขชื่อ project, package name, README
+4. อัปเดต dependencies ถ้าจำเป็น
 
 ## Rules
 
 ### 1. Tool Selection
 
-เลือก tool ที่เหมาะสมสำหรับ clone templates
+- ใช้ `bunx degit` เป็นหลักสำหรับ lightweight clone
+- ใช้ `git clone` ถ้าต้องการ full history
+- ใช้ `gh repo clone` ถ้าใช้ GitHub CLI
 
-- ใช้ `bunx degit` สำหรับ clone ไม่รวม git history (default)
-- ใช้ `bunx degit --mode=git` สำหรับ clone รวม git history
-- ใช้ `git clone` ถ้าต้องการ full repository รวม history
-- ใช้ `gh repo clone` ถ้าต้องการ clone ด้วย GitHub CLI
-- ใช้ `degit` สำหรับ lightweight clone ไม่รวม `.git`
+### 2. Safety
 
-### 2. Template Validation
+- ตรวจสอบ template name ก่อน clone
+- backup ไฟล์สำคัญก่อน clone ถ้า target ไม่ว่าง
+- ใช้ `--force` เฉพาะเมื่อแน่ใจว่าจะ overwrite
 
-ตรวจสอบ template ก่อนใช้งาน
+### 3. Validation
 
-- ตรวจสอบ template name ว่ามีอยู่จริงใน `templates/` directory
-- ตรวจสอบ template dependencies ใน `package.json`
-- ตรวจสอบ template README สำหรับ setup instructions
-- ตรวจสอบ template compatibility กับ current environment
-- ตรวจสอบ template version และ updates
+- ตรวจสอบ `package.json` และ dependencies
+- รัน `bun run dev`, `bun run build`, `bun run test`
+- อ่าน README ของ template ก่อน setup
 
-### 3. Path Handling
+### 4. Customization
 
-จัดการ paths อย่างถูกต้อง
-
-- ใช้ absolute paths สำหรับ target directory
-- ตรวจสอบว่า target directory ไม่มีไฟล์สำคัญอยู่แล้ว
-- ใช้ `--force` flag กับ degit ถ้าต้องการ overwrite
-- Backup existing files ก่อน clone ถ้าจำเป็น
-- ใช้ meaningful directory names สำหรับ templates
-
-### 4. Dependency Management
-
-จัดการ dependencies หลัง clone
-
-- รัน `bun install` หลัง clone template
-- ตรวจสอบ `package.json` สำหรับ scripts ที่จำเป็น
-- ตรวจสอบ environment variables ที่ template ต้องการ
-- ตรวจสอบ peer dependencies และ conflicts
-- รัน `bunx bun-upgrade` สำหรับ update dependencies ถ้าจำเป็น
-
-### 5. Error Handling
-
-จัดการ errors จาก cloning process
-
-- ตรวจสอบ internet connection ก่อน clone
-- จัดการ authentication errors ถ้า repository เป็น private
-- จัดการ permission errors สำหรับ target directory
-- จัดการ template not found errors
-- ตรวจสอบ disk space ก่อน clone
+- แก้ไข project metadata หลัง clone
+- ลบไฟล์ที่ไม่จำเป็น
+- commit หลัง setup เสร็จ
 
 ## Expected Outcome
 
-- Template จาก `template-starter` ถูก clone มาใช้งานได้
-- Dependencies ถูกติดตั้งครบถ้วน
-- Template ทำงานได้ตามที่คาดหวัง
-- Development server สามารถ start ได้
-- Build และ test ผ่านทั้งหมด
-
-## Common Mistakes
-
-ข้อผิดพลาดที่พบบ่อย:
-
-- ไม่ตรวจสอบ template name ว่าถูกต้อง
-- Clone ไปยัง directory ที่มีไฟล์สำคัญอยู่แล้ว
-- ไม่รัน `bun install` หลัง clone
-- ไม่อ่าน README ของ template ก่อน setup
-- ใช้ `git clone` แทน `degit` เมื่อไม่จำเป็นต้องการ history
+- Template ถูก clone มาใช้งาน
+- Dependencies ติดตั้งครบถ้วน
+- Template รัน dev, build, test ผ่าน
+- Project ถูก init และพร้อมพัฒนาต่อ

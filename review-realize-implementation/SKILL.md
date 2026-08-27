@@ -67,7 +67,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity และ critical path
 
 1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
+2. ทำ `/deep-validate` สำหรับ validate issues แต่ละอย่าง
 3. จัดลำดับตาม severity: Critical → High → Medium → Low
 4. จัดกลุ่มตาม critical path: schema → data → API → UI/flow
 5. ระบุ false positives

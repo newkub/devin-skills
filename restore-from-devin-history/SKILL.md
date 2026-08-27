@@ -2,8 +2,10 @@
 name: restore-from-devin-history
 description: กู้คืนไฟล์ที่เสียหายรุนแรงโดยอ่านประวัติ Devin session แทน git restore เมื่อง git ใช้ไม่ได้แล้ว
 argument-hint: "[file]"
+related:
+  - git-debug
+  - restore-from-git-log
 ---
-
 ## Goal
 
 กู้คืนข้อมูลหรือทำความเข้าใจว่าเกิดอะไรขึ้นก่อนไฟล์เสียหาย เมื่อง git ไม่สามารถ restore ได้แล้ว โดยอ่านประวัติ Devin CLI session

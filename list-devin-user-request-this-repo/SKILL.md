@@ -3,9 +3,7 @@ name: list-devin-user-request-this-repo
 description: รวมและแสดง user requests ทีเกิดใน repository ปัจจุบัน แบบไม่ซ้ำ
 argument-hint: "[limit]"
 related:
-  - list-devin-session
   - list-devin-user-request-in-this-session
-  - list-devin-user-request-all-session
   - report-table
   - use-bun-shell
   - search-files-patterns

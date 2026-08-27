@@ -21,7 +21,7 @@
 
 ## Group And Name
 
-1. อ่าน `subskills/<domain>/<subskill>/SKILL.md` pattern จาก `/follow-create-devin-skills`
+1. อ่าน `subskills/<domain>/<subskill>/SKILL.md` pattern จาก `/update-devin-global-skills`
 2. จัดกลุ่ม topics ตามลักษณะงาน: `setup-*`, `update-*`, `improve-*`, `follow-*`, `use-*`, `review-*`, `write-*`
 3. ตั้งชื่อ subskill เป็น `<domain>-<subskill>` เช่น `cloudflare-follow-runtime-api`
 4. สร้าง parent skill `<domain>-subskills` โดยมี `related` ชี้ทุก subskill
@@ -29,7 +29,7 @@
 ## Create Subskills
 
 1. สร้าง directory `subskills/<domain>/<subskill>/` สำหรับแต่ละ group
-2. เขียน `SKILL.md` ในแต่ละ subskill โดยทำตาม `/follow-create-devin-skills`
+2. เขียน `SKILL.md` ในแต่ละ subskill โดยทำตาม `/update-devin-global-skills`
 3. ทุก subskill ต้องมี `name`, `description` ≤100, `related`
 4. ห้ามเกิน 250 บรรทัด ถ้าเกินให้ย่อหรือแยก subskill เพิ่ม
 
@@ -42,7 +42,7 @@
 
 ## Validate And Commit
 
-1. ทำ `/validate` เพื่อตรวจ frontmatter, sections, ความยาว
+1. ทำ `/deep-validate` เพื่อตรวจ frontmatter, sections, ความยาว
 2. ทำ `/check-reference` เพื่อตรวจ `related`
 3. ทำ `/git-commit` เพื่อ commit skills ใหม่
 4. ทำ `/report` พร้อมรายชื่อ skills ที่สร้าง

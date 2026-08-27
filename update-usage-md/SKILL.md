@@ -6,7 +6,7 @@ related:
   - follow-tool-usage
   - report
   - suggest-next-action
-  - validate
+  - deep-validate
 ---
 
 ## Goal

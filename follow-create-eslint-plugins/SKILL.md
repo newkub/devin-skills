@@ -1,8 +1,10 @@
 ---
 name: follow-create-eslint-plugins
 description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
+related:
+  - follow-create-sdk
+  - follow-tool-eslint
 ---
-
 ## Goal
 
 สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript เพื่อเพิ่ม rules ที่เฉพาะทางสำหรับโปรเจกต์

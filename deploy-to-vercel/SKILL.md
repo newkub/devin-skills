@@ -23,7 +23,7 @@ Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่
 
 > Goal: ตรวจสอบและ build
 
-1. ทำ `/run-verify`
+1. ทำ `/run-verify-fast`
 2. ทำ `/run-build`
 3. ตรวจสอบ build artifacts
 

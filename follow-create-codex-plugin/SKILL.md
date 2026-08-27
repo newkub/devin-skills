@@ -2,17 +2,16 @@
 name: follow-create-codex-plugin
 description: สร้าง Codex plugin ด้วย manifest, skills, MCP servers, app wiring, และ marketplace publishing
 related:
-  - follow-create-sdk
-  - follow-create-claude-plugin
-  - follow-create-devin-skills
-  - follow-create-devin-subagents
   - ask-me
-  - search-skills
-  - follow-harness-engineering
   - follow-clean-architecture
+  - follow-create-claude-plugin
+  - follow-create-sdk
+  - follow-harness-engineering
+  - search-skills
+  - update-devin-global-skills
+  - update-devin-global-subagents
   - report-table
 ---
-
 ## Goal
 
 สร้าง Codex (ChatGPT Work / OpenAI Codex) plugin ทีสามารถติดตั้งและใช้งานใน ChatGPT หรือ Codex ได้ โดยมี manifest, skills, MCP servers, app wiring, และ lifecycle hooks
@@ -50,7 +49,7 @@ related:
 
 > Goal: สร้างแต่ละ component ตาม convention
 
-1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/follow-create-devin-skills`
+1. สำหรับ `skills/`: สร้าง `SKILL.md` เป้นหน่วยงานย่อยตาม `/update-devin-global-skills`
 2. สำหรับ `mcpServers`: ระบุ `name`, `command`, `args`, `env` ใน `.mcp.json`
 3. สำหรับ `.app.json`: ระบุ `plugin_asdk_app...` ID ที register ไว้
 4. กำหนด `interface` ใน manifest สำหรับ display name, descriptions, icons, brand color, default prompts
@@ -82,7 +81,7 @@ related:
 - ไม่ hardcode secrets หรือ credentials ใน plugin files
 - ใช้ environment variables สำหรับ API keys และ app IDs
 - สร้างเฉพาะ components ทีใช้จริง
-- ใช้ `SKILL.md` format ตาม `/follow-create-devin-skills`
+- ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
 
 ## Expected Outcome
 
@@ -94,7 +93,7 @@ related:
 ## Guide
 
 - `references/codex-plugin.md` — official docs, manifest schema, component details
-- `/follow-create-devin-skills` — SKILL.md format
-- `/follow-create-devin-subagents` — AGENT.md format
+- `/update-devin-global-skills` — SKILL.md format
+- `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle
 - `/follow-create-claude-plugin` — ถ้าต้องการ port ไป Claude plugin ในอนาคต

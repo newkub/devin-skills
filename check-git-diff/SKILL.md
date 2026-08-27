@@ -2,8 +2,11 @@
 name: check-git-diff
 description: ตรวจสอบความแตกต่างของ git refs หรือ working tree ด้วย git diff
 argument-hint: "[ref]"
+related:
+  - check-git-files-history
+  - git-debug
+  - use-git-search
 ---
-
 ## Goal
 
 ตรวจสอบความแตกต่างระหว่าง git refs, branches, หรือ working tree ด้วย `git diff` และสรุปผล

@@ -5,9 +5,10 @@ related:
   - consider-use-in-another-skills
   - edit-relative
   - search-files-patterns
+  - check-file-relations
   - check-broken-refs
   - report-table
-  - validate
+  - deep-validate
 ---
 
 ## Goal
@@ -40,6 +41,14 @@ related:
 1. ระบุไฟล์ที่ถูกแก้ไข ย้าย เปลี่ยนชื่อ หรือลบจาก task ปัจจุบัน
 2. รัน `git status --porcelain` เพื่อดูไฟล์ที่มีการเปลี่ยนแปลงทั้งหมด
 3. ระบุประเภทการเปลี่ยนแปลง: ย้าย เปลี่ยนชื่อ ลบ หรือแก้ไขเนื้อหา
+
+### 1.5 Check File Relations
+
+> Goal: เข้าใจความสัมพันธ์ของไฟล์ที่เปลี่ยนแปลงก่อน search
+
+1. ทำ `/check-file-relations` กับไฟล์ที่เปลี่ยนแปลง เพื่อหา imports, consumers, และ references
+2. บันทึก relation map: target → consumers → severity
+3. ใช้ผลลัพธ์นี้เป็นพื้นฐานสำหรับ search strategy ใน Step 2
 
 ### 2. Search For References
 

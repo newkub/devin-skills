@@ -4,7 +4,7 @@ description: แก้ไขปัญหาตาม context ทั่วไป�
 related:
   - resolve-errors
   - analyze-root-cause-analysis
-  - validate
+  - deep-validate
   - run-check
 ---
 
@@ -59,7 +59,7 @@ related:
 
 1. รัน `/run-check` (lint, typecheck, scan)
 2. รัน tests ถ้ามี
-3. ทำ `/validate` สำหรับ project
+3. ทำ `/deep-validate` สำหรับ project
 4. ถ้าไม่ผ่าน → ทำซ้ำขั้นตอน 2-4 (max 3 ครั้ง)
 
 ### 6. Report

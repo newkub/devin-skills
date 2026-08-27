@@ -36,7 +36,7 @@ description: ทำงานกับทุก folder ใน project ตาม w
 > Goal: ตรวจสอบว่าทุก folder ประมวลผลครบและถูกต้อง
 
 1. ตรวจสอบว่าทุก folder ใน scope ได้รับการประมวลผลแล้ว
-2. ทำ `/validate`
+2. ทำ `/deep-validate`
 3. ถ้าไม่มี่ errors ให้ทำ `/resolve-errors`
 4. ทำ `/report` สรุปผล
 
@@ -62,5 +62,5 @@ description: ทำงานกับทุก folder ใน project ตาม w
 
 - ทุก folder ใน scope ได้รับการประมวลผลครบถ้วน
 - ไม่มี่ broken references หรือ missing folders
-- ผ่าน `/validate`
+- ผ่าน `/deep-validate`
 - มี่รายงานสรุปผล

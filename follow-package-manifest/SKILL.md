@@ -25,7 +25,7 @@ description: ตั้งค่า scripts สำหรับ packages และ
 1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
 2. ตรวจสอบว่ามี `package.json` หรือ `Cargo.toml`
 3. ยืนยันว่า tools จำเป็นติดตั้งแล้ว (`biome`, `vitest`)
-4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify`
+4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify-fast`
 
 ### 2. Select Template Level
 
@@ -58,7 +58,7 @@ description: ตั้งค่า scripts สำหรับ packages และ
 2. ยืนยันว่า commands ทำงานได้จริง
 3. ทดสอบรัน `bun run verify` เบื้องต้น
 4. ยืนยันว่ามี script `prepare` สำหรับ hk (ใน Complete template)
-5. ตรวจสอบว่า scripts สอดคล้องกับ `run-verify` workflow
+5. ตรวจสอบว่า scripts สอดคล้องกับ `run-verify-fast` workflow
 
 ## Rules
 
@@ -132,7 +132,7 @@ description: ตั้งค่า scripts สำหรับ packages และ
 
 - `package.json` มี scripts ตาม template ที่เลือก (Minimal/Standard/Complete)
 - Scripts สอดคล้องกับ tech stack ของโปรเจกต์
-- Verify pipeline ทำงานได้ถูกต้องตามมาตรฐาน `run-verify` ด้วย fail-fast ordering
+- Verify pipeline ทำงานได้ถูกต้องตามมาตรฐาน `run-verify-fast` ด้วย fail-fast ordering
 - รองรับการทำงานทั้ง local development และ CI/CD
 - Tables sync กับ examples อย่างสมบูรณ์
 - Pragmatic และ production-ready สำหรับโปรเจกต์ส่วนใหญ่

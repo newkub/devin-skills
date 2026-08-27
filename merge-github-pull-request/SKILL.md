@@ -6,7 +6,7 @@ related:
   - edit-git-commit
   - git-commit
   - git-push
-  - validate
+  - deep-validate
 ---
 
 ## Goal

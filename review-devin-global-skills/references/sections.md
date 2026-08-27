@@ -1,6 +1,6 @@
 # Section Order Validation
 
-ตรวจสอบ sections ของ `SKILL.md` ตามมาตรฐาน `follow-create-devin-skills`
+ตรวจสอบ sections ของ `SKILL.md` ตามมาตรฐาน `update-devin-global-skills`
 
 ## Required Section Order
 

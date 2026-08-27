@@ -4,7 +4,7 @@
 
 ## Backticks Usage
 
-- ใช้ backticks สำหรับ `tools` (เช่น `/scan-codebase`, `/validate`)
+- ใช้ backticks สำหรับ `tools` (เช่น `/scan-codebase`, `/deep-validate`)
 - ใช้ backticks สำหรับ `commands` (เช่น `npm run lint`, `bun install`)
 - ใช้ backticks สำหรับ `paths` (เช่น `SKILL.md`, `references/index.md`)
 - ใช้ backticks สำหรับ `skill-name` (เช่น `update-devin-global-skills`, `review-devin-global-skills`)

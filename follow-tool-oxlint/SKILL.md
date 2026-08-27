@@ -2,13 +2,16 @@
 name: follow-tool-oxlint
 description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast linting ผ่าน ESLint 9+ flat config
 related:
-  - follow-math-boolean-algebra
-  - follow-math-propositional-logic
+  - follow-tool-eslint
+  - follow-tool-biome
+  - follow-tool-knip
+  - follow-lang-typescript
+  - follow-lang-javascript
 ---
 
 ## Goal
 
-ติดตั้งและตั้งค่า eslint-plugin-oxlint สำหรับใช้งานร่วมกับ ESLint 9+ (flat config) เพื่อ linting ที่เร็วขึ้นด้วย Rust-based linter
+ติดตั้งและตั้งค่า `eslint-plugin-oxlint` สำหรับใช้งานร่วมกับ ESLint 9+ (flat config) เพื่อ linting ที่เร็วขึ้นด้วย Rust-based linter
 
 ## Scope
 
@@ -20,81 +23,50 @@ related:
 
 > Goal: ติดตั้ง oxlint และ eslint-plugin-oxlint
 
-1. ติดตั้ง oxlint และ eslint-plugin-oxlint
-
-```bash
-bun add -D oxlint@latest eslint-plugin-oxlint
-```
+1. ติดตั้ง oxlint และ `eslint-plugin-oxlint` ด้วย `bun add -D oxlint@latest eslint-plugin-oxlint`
+2. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ### 2. Configure Oxlint
 
 > Goal: สร้าง oxlint config สำหรับ project
-1. สร้าง `oxlint.config.ts`:
 
-```ts
-import { defineConfig } from 'oxlint';
-
-export default defineConfig({
-  plugins: ['eslint', 'typescript', 'unicorn'],
-  options: {
-    typeAware: true,
-    typeCheck: true,
-  },
-});
-```
+1. สร้าง `oxlint.config.ts` หรือ `.oxlintrc.json`
+2. กำหนด categories, rules และ plugins ตาม project
+3. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ### 3. Configure ESLint
 
 > Goal: ตั้งค่า ESLint flat config ใช้ร่วมกับ oxlint
-1. สร้างหรือแก้ไข eslint.config.js ที่ root
 
-```javascript
-import oxlint from 'eslint-plugin-oxlint';
-
-export default [
-  oxlint.configs['flat/recommended'],
-];
-```
-
-2. หรือใช้ buildFromOxlintConfig กับ plugins
-
-```javascript
-import oxlint from 'eslint-plugin-oxlint';
-
-export default [
-  oxlint.buildFromOxlintConfig({
-    plugins: ['react', 'typescript', 'import'],
-  }),
-];
-```
+1. สร้างหรือแก้ไข `eslint.config.js` ที่ root
+2. ใช้ `oxlint.configs['flat/recommended']` หรือ `oxlint.buildFromOxlintConfig({ plugins: ['react', 'typescript', 'import'] })`
+3. วาง oxlint config สุดท้ายใน array
+4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ### 4. Add Scripts
 
 > Goal: เพิ่ม lint scripts ใน package.json
-1. เพิ่ม scripts ใน package.json
 
-```json
-{
-  "scripts": {
-    "lint": "oxlint --type-aware",
-    "lint:fix": "oxlint --type-aware --fix"
-  }
-}
-```
+1. เพิ่ม `lint` script รัน `oxlint --type-aware`
+2. เพิ่ม `lint:fix` script รัน `oxlint --type-aware --fix`
+3. รัน `bun run lint` เพื่อทดสอบ
+4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ### 5. Verify
 
 > Goal: ตรวจสอบว่า oxlint และ ESLint integration ทำงานได้
-1. รัน bun run lint เพื่อทดสอบการทำงาน
+
+1. รัน `bun run lint`
 2. ตรวจสอบว่า oxlint rules ทำงานถูกต้อง
 3. ตรวจสอบว่า ESLint integration ทำงานได้
+4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ bun add -D เท่านั้น
-- ติดตั้ง oxlint@latest และ eslint-plugin-oxlint
+- ใช้ `bun add -D` เท่านั้น
+- ติดตั้ง `oxlint@latest` และ `eslint-plugin-oxlint`
 
 ### 2. Configuration
 
@@ -102,53 +74,25 @@ export default [
 - ไม่รองรับ legacy config (ESLint < 9)
 - oxlint config ต้องอยู่สุดท้ายใน array เพื่อปิด rules ที่ซ้ำกับ ESLint
 
-### 3. Available Configs
+### 3. Scripts
 
-| Config | Description |
-|--------|-------------|
-| flat/recommended | correctness category |
-| flat/all | ทุก rules |
-| flat/eslint | ปิด ESLint rules |
-| flat/import | ปิด import plugin rules |
-| flat/react | ปิด React plugin rules |
-| flat/typescript | ปิด TypeScript plugin rules |
+- ต้องมี script `lint` ที่รัน `oxlint` ก่อน `eslint`
+- ต้องมี script `lint:fix` สำหรับ auto fix
 
-### 4. Scripts
+### 4. Performance
 
-- ต้องมี script lint ที่รัน oxlint ก่อน eslint
-- ต้องมี script lint:fix สำหรับ auto fix
-
-### 5. Performance
-
-- รัน oxlint ก่อน ESLint เสมอ เพราะเร็วกว่ามาก
-- ใช้ --cache flag เมื่อรันบ่อย
+- รัน `oxlint` ก่อน `eslint` เสมอ เพราะเร็วกว่ามาก
+- ใช้ `--cache` flag เมื่อรันบ่อย
 - รันเฉพาะไฟล์ที่เปลี่ยนแปลงใน pre-commit hook
 
-### 6. Plugins
+### 5. Plugins
 
-- ใช้ oxlint built-in plugins ผ่าน eslint-plugin-oxlint configs
-- ใช้ buildFromOxlintConfig กับ plugins array
-
-| Plugin | Built-in | Description |
-|--------|----------|-------------|
-| eslint | Yes | ESLint core rules |
-| typescript | Yes | TypeScript rules from typescript-eslint. Type-aware rules available using type-aware mode |
-| unicorn | Yes | eslint-plugin-unicorn |
-| react | No | eslint-plugin-react, eslint-plugin-react-hooks, eslint-plugin-react-refresh |
-| nextjs | No | @next/eslint-plugin-next |
-| oxc | Yes | Oxc-specific rules and selected rules ported from deepscan |
-| import | No | eslint-plugin-import (equivalent to eslint-plugin-import-x) |
-| jsdoc | No | eslint-plugin-jsdoc |
-| jsx-a11y | No | eslint-plugin-jsx-a11y |
-| node | No | eslint-plugin-n |
-| promise | No | eslint-plugin-promise |
-| jest | No | eslint-plugin-jest |
-| vitest | No | @vitest/eslint-plugin aka eslint-plugin-vitest |
-| vue | No | eslint-plugin-vue rules that work with script tags |
+- ใช้ oxlint built-in plugins ผ่าน `eslint-plugin-oxlint` configs
+- ใช้ `buildFromOxlintConfig` กับ plugins array
 
 ## Expected Outcome
 
-- eslint-plugin-oxlint ติดตั้งและทำงานได้
+- `eslint-plugin-oxlint` ติดตั้งและทำงานได้
 - Oxlint rules ทำงานผ่าน ESLint flat config
-- Scripts lint และ lint:fix พร้อมใช้งาน
+- Scripts `lint` และ `lint:fix` พร้อมใช้งาน
 - สามารถใช้ร่วมกับ ESLint rules อื่นๆ ได้

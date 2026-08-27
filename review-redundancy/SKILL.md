@@ -100,4 +100,4 @@ argument-hint: "[scope]"
 - รายงาน unused skills พร้อมประเภทและ recommendations
 - ตารางสรุป recommendations พร้อม priority
 - การดำเนินการผ่าน user confirmation เท่านั้น
-- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/update-references`
+- ทุกการเปลี่ยนแปลงผ่าน `/deep-validate` และ `/update-references`

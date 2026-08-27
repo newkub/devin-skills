@@ -1,8 +1,11 @@
 ---
 name: check-system-env
 description: ตรวจสอบ OS, shell, environment variables และ global root paths
+related:
+  - check-code-structure
+  - prepare-skills-context
+  - use-lib-better
 ---
-
 ## Goal
 
 ตรวจสอบ system environment ของ Windsurf รวมถึง OS, shell, environment variables และ global root paths

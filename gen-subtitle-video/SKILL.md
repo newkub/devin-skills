@@ -3,7 +3,6 @@ name: gen-subtitle-video
 description: สร้าง subtitle .srt จากวิดีโอด้วย bunx CLI
 argument-hint: "[video-path]"
 related:
-  - analyze-video
   - convert-files-format
   - gen-voice
 ---

@@ -1,163 +1,118 @@
 ---
 name: follow-tool-turborepo
-description: แนวทางการพัฒนา monorepo ด้วย Turborepo v2.x
+description: ตั้งค่าและใช้ Turborepo v2.x สำหรับ monorepo task orchestration
+related:
+  - follow-monorepo
+  - follow-package-manifest
+  - follow-tool-taze
+  - follow-tool-vite
+  - follow-tool-vitest
 ---
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา monorepo ด้วย Turborepo v2.x ให้มีประสิทธิภาพสูงสุด
+ตั้งค่าและใช้ Turborepo v2.x สำหรับ task orchestration, caching และ build pipeline ใน monorepo
 
 ## Scope
 
-ใช้สำหรับ monorepo ที่ใช้ Turborepo สำหรับ task orchestration และ build orchestration
+ใช้สำหรับ monorepos ที่ต้องการ orchestrate tasks, cache outputs, remote cache, package boundaries
 
 ## Execute
 
 ### 1. Repository Structure
 
-> Goal: Repository Structure
+> Goal: จัดโครงสร้าง workspace สำหรับ Turborepo
 
-1. ใช้ workspace configuration ด้วย `bun` (แนะนำ) หรือ pnpm/npm/yarn
-2. ตั้งค่า root `package.json` ให้มี `private`, `packageManager`, `workspaces`
-3. ใช้ package tasks แทน root tasks
-4. สร้าง `turbo.json` ที่ root พร้อม `$schema`
-5. จัดโครงสร้าง directory ด้วย `apps/*`, `packages/*` (ห้าม nested packages เช่น `apps/nested/*`)
-6. แต่ละ package ต้องมี `package.json` พร้อม `exports` สำหรับ entrypoints
-7. หลีกเลี่ยงการเข้าถึง files ข้าม package boundaries (ห้ามใช้ `../`)
+1. ใช้ `bun` หรือ package manager ที project ใช้
+2. ตั้งค่า root `package.json` ด้วย `private`, `packageManager`, `workspaces`
+3. จัด directory ด้วย `apps/*` และ `packages/*`
+4. หลีกเลี่ยง nested packages
+5. ตรวจสอบแต่ละ package มี `package.json` พร้อม `exports`
 
-### 2. Task Configuration
+### 2. Install Turbo
 
-> Goal: Task Configuration
+> Goal: ติดตั้ง turbo CLI
 
-1. กำหนด `inputs` สำหรับ cache invalidation - ใช้ `$TURBO_DEFAULT$` เพื่อ include default inputs พร้อม custom
-2. กำหนด `outputs` สำหรับ caching artifacts (เช่น `dist/`, `.next/`)
-3. ตั้งค่า `dependsOn` สำหรับ task dependencies:
-   - `^task` - task ใน upstream dependencies ต้องทำก่อน
-   - `task` - task ใน same package ต้องทำก่อน
-4. ตั้งค่า `cache: true` สำหรับ tasks ที่มี deterministic output
-5. ตั้งค่า `cache: false` สำหรับ dev servers และ tasks ที่มี side effects
-6. ตั้งค่า `persistent: true` สำหรับ long-running tasks (dev servers, watchers)
-7. ตั้งค่า `interactive: true` สำหรับ tasks ที่รับ stdin (เช่น test watchers)
-8. ตั้งค่า `interruptible: true` สำหรับ persistent tasks ที่ต้อง restart ใน `turbo watch`
-9. ตั้งค่า `env` สำหรับ environment variables ที่ affect cache hash (ไม่ใช้ `$` prefix)
-10. ตั้งค่า `passThroughEnv` สำหรับ env vars ที่ runtime ใช้แต่ไม่ affect hash (เช่น secrets)
-11. ตั้งค่า `outputLogs` เป็น `full`, `new-only`, `errors-only`, หรือ `none`
+1. ติดตั้งด้วย `bun add -D turbo`
+2. ตรวจสอบ version ด้วย `bunx turbo --version`
+3. ดูรายละเอียด CLI ใน [references/turborepo.md](references/turborepo.md)
 
-### 3. Global Configuration
+### 3. Configure turbo.json
 
-> Goal: Global Configuration
+> Goal: สร้าง `turbo.json` ที root
 
-1. เปิดใช้ `futureFlags.globalConfiguration: true` เพื่อใช้ `global` key
-2. `global.inputs` (แทน `globalDependencies`) - files ที่ prepend เข้าทุก task's inputs
-3. `global.env` (แทน `globalEnv`) - env vars ที่ affect hash ของทุก tasks
-4. `global.passThroughEnv` (แทน `globalPassThroughEnv`) - env vars ที่ runtime ใช้แต่ไม่ affect hash
-5. `global.envMode: "strict"` - filter env vars ที่ไม่ได้ declare
-6. `global.cacheDir`, `global.cacheMaxAge`, `global.cacheMaxSize` - cache settings
-7. `global.daemon` - ควบคุม daemon process
-8. แต่ละ task สามารถ exclude global files ด้วย negation globs เมื่อใช้ `globalConfiguration`
+1. สร้าง `turbo.json` ที root พร้อม `$schema`
+2. กำหนด `tasks` สำหรับ build, test, lint, dev
+3. ตั้งค่า `dependsOn`, `inputs`, `outputs`, `cache`
+4. ตั้งค่า `env` และ `passThroughEnv`
+5. เปิดใช้ `futureFlags.globalConfiguration` เพื่อย้าย global keys ไปยัง `global`
+6. ดู config details ใน [references/turborepo.md](references/turborepo.md)
 
-### 4. Package Configurations
+### 4. Package-Level Config
 
-> Goal: Package Configurations
+> Goal: override หรือ extend root config ในแต่ละ package
 
-1. ใช้ package-level `turbo.json` เพื่อ override หรือ extend root config
-2. ใช้ `"extends": ["//"]` เพื่อ inherit จาก root `turbo.json`
-3. ใช้ `$TURBO_EXTENDS$` เป็น element แรกใน array เพื่อ append แทน replace
-4. ใช้ `"extends": false` เพื่อ disable task เฉพาะ package
-5. รองรับ fields: `dependsOn`, `env`, `inputs`, `outputs`, `passThroughEnv`, `with`
+1. สร้าง `turbo.json` ใน package ถ้าต้องการ override
+2. ใช้ `"extends": ["//"]` เพื่อ inherit จาก root
+3. ใช้ `$TURBO_EXTENDS$` เพื่อ append แทน replace
+4. ระบุ `outputs` และ `dependsOn` เฉพาะ package
 
-### 5. Boundaries And Tags (Experimental)
+### 5. Task Filtering and Watch
 
-> Goal: Boundaries And Tags (Experimental)
+> Goal: ใช้ filter และ watch mode
 
-1. ใช้ `turbo boundaries` เพื่อตรวจสอบ package isolation
-2. กำหนด `tags` ใน package-level `turbo.json` สำหรับ labeling packages
-3. กำหนด `boundaries` ใน root `turbo.json` สำหรับ dependency rules:
-   - `allow` - tags ที่อนุญาตให้ depend ได้
-   - `deny` - tags ที่ห้าม depend
-4. รองรับทั้ง `dependencies` และ `dependents` rules
-5. ตรวจสอบ rules ลึกถึง transitive dependencies
+1. รัน `bunx turbo run <task>`
+2. ใช้ `--filter` สำหรับ package เฉพาะ
+3. ใช้ `--affected` สำหรับ changed packages
+4. ใช้ `bunx turbo watch <task>` สำหรับ development
+5. ใช้ `--dry=json` เพื่อ inspect task graph
 
-### 6. Watch Mode
+### 6. Boundaries and Remote Cache
 
-> Goal: Watch Mode
+> Goal: enforce package isolation และ remote cache
 
-1. ใช้ `turbo watch <task>` สำหรับ re-run tasks เมื่อ source changes
-2. Watch mode ตาม Task Graph ใน `turbo.json`
-3. ตั้งค่า `interruptible: true` สำหรับ persistent tasks ที่ต้อง restart
-4. เปิด `futureFlags.watchUsingTaskInputs` เพื่อใช้ task-level `inputs` ใน watch mode
-5. ใช้ `--experimental-write-cache` สำหรับ write cache ใน watch mode
-
-### 7. Usage And Filtering
-
-> Goal: Usage And Filtering
-
-1. รัน `turbo run <task>` สำหรับ task เฉพาะ
-2. ใช้ `--affected` เพื่อรันเฉพาะ changed packages (auto-compares กับ default branch)
-3. ใช้ `--filter` สำหรับ packages เฉพาะ:
-   - `--filter=web` - รันเฉพาะ package `web`
-   - `--filter=./apps/*` - รันทุก packages ใน `apps/`
-   - `--filter=web...` - package และ dependencies
-   - `--filter=...web` - package และ dependents
-4. เปิด `futureFlags.filterUsingTasks` เพื่อ filter ที่ task level แทน package level
-5. ใช้ `turbo prune --docker` สำหรับ Docker builds
-6. ใช้ `--dry=json` สำหรับ inspect task dependencies
-
-### 8. Remote Caching
-
-> Goal: Remote Caching
-
-1. ตั้งค่า `remoteCache` ใน `turbo.json` หรือ `global.remoteCache`
-2. รัน `bunx turbo link --yes` เพื่อเชื่อมต่อ Vercel Remote Cache
-3. ใช้ `TURBO_TOKEN` และ `TURBO_TEAM` สำหรับ authentication
-4. กำหนด `remoteCache.enabled`, `remoteCache.signature`, `remoteCache.timeout`
-5. ตั้งค่า `remoteCache.apiUrl`, `remoteCache.loginUrl` สำหรับ self-hosted
-6. Turborepo แชร์ local cache ระหว่าง Git worktrees อัตโนมัติ
+1. ใช้ `bunx turbo boundaries` เพื่อตรวจ package isolation
+2. กำหนด `tags` และ `boundaries` rules ใน `turbo.json`
+3. ตั้งค่า remote cache ด้วย `bunx turbo link --yes`
+4. ใช้ `TURBO_TOKEN` และ `TURBO_TEAM` สำหรับ authentication
+5. ตั้งค่า `cacheMaxSize` และ `cacheMaxAge`
 
 ## Rules
 
 ### 1. Configuration
 
-ตั้งค่า `turbo.json` ให้ถูกต้องตาม Turborepo v2.x
+- ใช้ `turbo.json` ที root พร้อม `$schema`
+- ใช้ `futureFlags.globalConfiguration: true`
+- กำหนด `inputs` และ `outputs` ให้ชัดเจน
 
-- ต้องมี `turbo.json` ที่ root พร้อม `$schema`
-- ใช้ `futureFlags.globalConfiguration: true` เพื่อย้าย global keys ไปใต้ `global`
-- `global.inputs` เปลี่ยน semantics เป็น per-task hashing แทน global hash
-- กำหนด `inputs` ด้วย pattern ที่ครอบคลุม source files
-- กำหนด `outputs` ด้วย pattern ที่ระบุ build artifacts
-- ใช้ `dependsOn: ["^task"]` สำหรับ upstream dependencies
-- ใช้ workspace protocol สำหรับ internal dependencies
-- ตั้งค่า `persistent: true` สำหรับ dev servers
-- ตั้งค่า `interactive: true` สำหรับ tasks ที่รับ stdin
-- ตั้งค่า `interruptible: true` สำหรับ persistent tasks ใน watch mode
-- ใช้ `env` ไม่มี `$` prefix, แยก `passThroughEnv` สำหรับ secrets
+### 2. Task Dependencies
 
-### 2. Scripts Configuration
+- ใช้ `^task` สำหรับ upstream dependencies
+- ใช้ `task` สำหรับ same package
+- ระบุ `dependsOn` ตาม task graph
 
-- ทุก workspace ต้องมี scripts ที่ตรงกับ turbo tasks
-- ใช้ `turbo run <task>` ใน root scripts
-- ถ้า workspace มี scripts เพิ่มเติมซ้ำกับ root scripts มากกว่า 2 อัน ให้กำหนดใน root `package.json`
-- ทำ `/follow-tasks` และ `/follow-package-manifest`
+### 3. Caching
 
-### 3. Boundaries
+- เปิด `cache: true` สำหรับ deterministic tasks
+- ปิด `cache` สำหรับ dev servers และ side-effect tasks
+- ใช้ `persistent: true` สำหรับ long-running tasks
 
-- ใช้ `turbo boundaries` เพื่อ enforce package isolation
-- กำหนด `tags` ใน package-level `turbo.json`
-- กำหนด `boundaries` rules ใน root `turbo.json`
-- ใช้ `allow` และ `deny` สำหรับ `dependencies` และ `dependents`
+### 4. Environment Variables
 
-### 4. Performance
+- ใช้ `env` สำหรับ variables ที affect cache hash (ไม่มี `$` prefix)
+- ใช้ `passThroughEnv` สำหรับ secrets
+- ไม่ hard-code secrets
 
-- ใช้ `--affected` หรือ `--filter` เพื่อ skip unaffected packages
-- ตั้งค่า Remote Cache สำหรับ production builds
-- ใช้ `turbo watch` สำหรับ development workflow
-- ตรวจสอบ task dependencies ด้วย `--dry=json`
-- ใช้ `cacheMaxSize` และ `cacheMaxAge` สำหรับ cache management
+### 5. Boundaries
+
+- ใช้ `turbo boundaries` ตรวจ package isolation
+- กำหนด `tags` และ `boundaries` rules
+- หลีกเลี่ยง imports ข้าม package boundaries
 
 ## Expected Outcome
 
-- Monorepo ที่มีประสิทธิภาพสูงด้วย Turborepo v2.x
-- Caching ที่ทำงานได้อย่างมีประสิทธิภาพด้วย global configuration
-- Package isolation ด้วย Boundaries และ Tags
-- Development workflow ที่รวดเร็วด้วย Watch Mode
-- Build times ที่ลดลงอย่างมีนัยสำคัญ
+- `turbo.json` ถูกต้อง
+- Tasks รันและ cache ได้
+- Watch mode และ filter ทำงาน
+- Remote cache ตั้งค่าได้
+- Package isolation enforce ด้วย boundaries

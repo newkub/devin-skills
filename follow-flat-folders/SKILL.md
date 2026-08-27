@@ -56,7 +56,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 
 > Goal: ไม่มี broken references และ build/test ผ่าน
 
-1. ทำ `/validate` เพื่อตรวจสอบ broken references
+1. ทำ `/deep-validate` เพื่อตรวจสอบ broken references
 2. รัน build / test / lint ตาม project
 3. ทำ `/report-table` แสดง before/after path mapping
 4. ถ้ามี error → แก้และ re-verify (max 3 ครั้ง → stop/report)

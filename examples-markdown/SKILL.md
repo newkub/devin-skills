@@ -6,7 +6,7 @@ related:
   - update-readme-md
   - update-features-md
   - report-table
-  - validate
+  - deep-validate
   - run-format
 ---
 
@@ -50,7 +50,7 @@ related:
 
 > Goal: ตรวจสอบคุณภาพ markdown
 
-1. ทำ `/validate` เพื่อตรวจ frontmatter, links, heading structure
+1. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, heading structure
 2. ตรวจไม่มี TODO/MOCK/placeholder ทีไม่จำเป็น
 3. ทำ `/run-format` ถ้ามี formatter
 

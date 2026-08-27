@@ -1,19 +1,18 @@
 ---
 name: update-project-skills
-description: สร้างและอัปเดต project skills ใน .devin/skills/ ตามมาตรฐาน follow-create-devin-skills
+description: สร้างและอัปเดต project skills ใน .devin/skills/ ตามมาตรฐาน update-devin-global-skills
 related:
   - analyze-project
   - list-devin-global-skills
-  - follow-create-devin-skills
   - update-devin-global-skills
   - check-monorepo
-  - validate
+  - deep-validate
   - update-agents-md
 ---
 
 ## Goal
 
-สร้างและอัปเดต project-level skills ใน `.devin/skills/` ของ project โดยวิเคราะห์ dependencies, workflows และ gaps แล้วเขียนตาม `/follow-create-devin-skills`
+สร้างและอัปเดต project-level skills ใน `.devin/skills/` ของ project โดยวิเคราะห์ dependencies, workflows และ gaps แล้วเขียนตาม `/update-devin-global-skills`
 
 ## Scope
 
@@ -42,7 +41,7 @@ related:
 3. ทำ `/list-devin-global-skills` หรือ scan `%APPDATA%\devin\skills` เพื่อดู skills ทีมีใน global
 4. สำหรับแต่ละ dependency:
    - ถ้ามี global skill ที่ตรง → อ้างอิง global skill แทน ไม่สร้างใหม่
-   - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → ใช้ `/follow-create-devin-skills` สร้างใน `%APPDATA%\devin\skills\` แล้วอ้างอิงใน project
+   - ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → ใช้ `/update-devin-global-skills` สร้างใน `%APPDATA%\devin\skills\` แล้วอ้างอิงใน project
 5. ข้าม dependencies ที่ไม่มี skill pattern
 6. วิเคราะห์ project workflows และ conventions ที่ควรเป็น skills
 7. ตรวจ `AGENTS.md` ของ project เพื่อหา workflows ที่ยังไม่มี skill
@@ -53,13 +52,13 @@ related:
 > Goal: สร้างหรืออัปเดต skills ใน `.devin/skills/` ตามมาตรฐาน
 
 1. สำหรับแต่ละ skill ในรายการ:
-   - ทำ `/follow-create-devin-skills` เพื่อสร้างหรืออัปเดต skill package
+   - ทำ `/update-devin-global-skills` เพื่อสร้างหรืออัปเดต skill package
    - ใช้ `.devin/skills/<skill-name>/SKILL.md` เป็น target path
    - เลือก template ตาม prefix ของ skill
    - เขียน `SKILL.md` ตามมาตรฐาน `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`
 2. ถ้า skill มี dependencies → สร้าง `references/` ครบถ้วน
 3. ถ้า skill มี CLI หรือ web → สร้าง `src/` directory
-4. ทำ `/validate` สำหรับแต่ละ skill หลังสร้างเสร็จ
+4. ทำ `/deep-validate` สำหรับแต่ละ skill หลังสร้างเสร็จ
 5. ถ้า validation ไม่ผ่าน → แก้และ revalidate (max 3 → stop/report)
 
 ### 4. Update Project AGENTS.md
@@ -75,7 +74,7 @@ related:
 
 > Goal: project skills พร้อมใช้งานและผ่าน validation
 
-1. ทำ `/validate` เพื่อตรวจ `.devin/skills/` structure และ references
+1. ทำ `/deep-validate` เพื่อตรวจ `.devin/skills/` structure และ references
 2. ทำ `/check-circular-dependencies` ถ้ามีการเพิ่ม `related` fields
 3. ทำ `/report` สรุป:
    - skills ที่สร้างใหม่
@@ -87,7 +86,7 @@ related:
 
 ### 1. Follow Write Devin Skills
 
-- ทุก skill ต้องเขียนตาม `/follow-create-devin-skills`
+- ทุก skill ต้องเขียนตาม `/update-devin-global-skills`
 - ใช้ template ตาม prefix ของ skill
 - `SKILL.md` ไม่เกิน 250 บรรทัด
 - ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
@@ -109,14 +108,14 @@ related:
 - ตรวจสอบ global skills ก่อนสร้าง project skill
 - ไม่สร้าง skills ที่ซ้ำซ้อนกับ global skills
 - ถ้ามี global skill ที่ตรง → อ้างอิงแทนการสร้างใหม่
-- ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → สร้าง global skill ใหม่ด้วย `/follow-create-devin-skills`
+- ถ้าไม่มี global skill ที่ตรง และ project ต้องการ → สร้าง global skill ใหม่ด้วย `/update-devin-global-skills`
 - ข้าม dependencies ที่ไม่มี skill pattern ทีตรง
 
 ## Expected Outcome
 
 - `.devin/skills/` directory สร้างขึ้นถ้ายังไม่มี
-- skills ที่จำเป็นถูกสร้างหรืออัปเดตตามมาตรฐาน `/follow-create-devin-skills`
-- ทุก skill ผ่าน `/validate`
+- skills ที่จำเป็นถูกสร้างหรืออัปเดตตามมาตรฐาน `/update-devin-global-skills`
+- ทุก skill ผ่าน `/deep-validate`
 - project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 - รายงานสรุป skills ที่สร้าง/อัปเดตและ next actions
 
@@ -124,7 +123,7 @@ related:
 
 - ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
 - สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/follow-create-devin-skills` ในการสร้าง
+- ไม่ใช้ `/update-devin-global-skills` ในการสร้าง
 - ไม่ตรวจสอบ folder structure หลังสร้าง
 
 ## Anti-Patterns

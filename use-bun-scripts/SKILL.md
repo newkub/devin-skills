@@ -18,7 +18,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 > Goal: Prepare
 
 1. ทำ `/follow-runtime-bun` เพื่อ setup Bun runtime ก่อนสร้าง scripts
-2. ทำตาม `/follow-create-devin-skills` เมื่อสร้างหรือแก้ไข workflow
+2. ทำตาม `/update-devin-global-skills` เมื่อสร้างหรือแก้ไข workflow
 
 ### 2. Create Script
 
@@ -35,7 +35,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 
 1. รัน script ด้วย `bun run <script>.ts`
 2. ลบ scripts จาก `$env:TEMP` หลังใช้งาน
-3. ลบ scripts ที่สร้างด้วย `/follow-create-devin-skills` หลังใช้งาน
+3. ลบ scripts ที่สร้างด้วย `/update-devin-global-skills` หลังใช้งาน
 
 ## Rules
 

@@ -71,7 +71,7 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 > Goal: ตรวจสอบผลลัพธ์และให้คะแนน
 
 1. รัน `ast-grep scan` หรือ `bun run scan`
-2. ทำ `/validate` เพื่อ verify rule files
+2. ทำ `/deep-validate` เพื่อ verify rule files
 3. ทำ `/check-reference` เพื่อตรวจ broken references
 4. คำนวณ score ตาม `references/scoring.md`
 
@@ -100,7 +100,7 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 
 ### 3. AGENTS.md Format Compliance
 
-- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/follow-create-devin-skills`
+- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/update-devin-global-skills`
 - frontmatter `name`, `description`, `related` จำเป็นต้องมี
 - sections ตามลำดับ: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 - ห้ามมี section `## Workflows`

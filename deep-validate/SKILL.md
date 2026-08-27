@@ -11,7 +11,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-สำหรับ validate แบบปกติ ใช้ `/validate`, สำหรับ validate tests ใช้ `/run-test`, สำหรับ validate review ใช้ `/review-quality`
+สำหรับ validate ทั่วไป ใช้ `/deep-validate`; สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
 
@@ -101,7 +101,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 ตรวจสอบ cross-references ทั้งหมด
 
-- ทำ `/validate` เพื่อตรวจสอบ config files และ environment variables
+- ทำ `/deep-validate` เพื่อตรวจสอบ config files และ environment variables
 - ตรวจสอบ references ระหว่าง modules ถูกต้อง
 - ตรวจสอบ API contracts ตรงกับ implementation
 - ตรวจสอบ documentation ตรงกับ code จริง
@@ -153,7 +153,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 ### 5. Independence
 
-- ทำ validate เท่านั้น ไม่แก้ไข code ระหว่าง validate
+- ทำ `/deep-validate` เท่านั้น ไม่แก้ไข code ระหว่างดำเนินการ
 - แยก validation process จาก fix process
 - ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง validate
 

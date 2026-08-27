@@ -2,14 +2,13 @@
 name: follow-create-rolldown-plugins
 description: สร้าง Rolldown plugins ด้วย TypeScript สำหรับ Rust-based bundler
 related:
+  - follow-create-bun-cli
   - follow-create-sdk
   - follow-create-vite-plugins
-  - follow-create-bun-cli
   - follow-lang-typescript
   - run-test
   - report-table
 ---
-
 ## Goal
 
 สร้าง Rolldown plugins ด้วย TypeScript ทีทำงานกับ Rolldown bundler, รองรับ Universal hooks, hook filters, virtual modules, และ build package

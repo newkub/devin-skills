@@ -1,8 +1,11 @@
 ---
 name: check-reference
 description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
+related:
+  - check-broken-refs
+  - check-skills-related
+  - update-references
 ---
-
 ## Goal
 
 อ่านและตรวจสอบ reference จาก sources ต่างๆ เพื่อยืนยันความถูกต้องของข้อมูล

@@ -2,18 +2,18 @@
 name: follow-create-telegram-bot
 description: สร้าง Telegram bot ด้วย TypeScript/Bun พร้อม commands, middleware, error handling, และ webhook
 related:
+  - deploy-to-cloudflare
+  - deploy-to-railway
   - follow-create-bun-cli
   - follow-create-cli
   - follow-create-sdk
-  - search-npm-libraries
-  - use-bun-native-api
+  - follow-create-website
   - follow-lang-typescript
   - run-test
-  - deploy-to-cloudflare
-  - deploy-to-railway
+  - search-npm-libraries
+  - use-bun-native-api
   - report-table
 ---
-
 ## Goal
 
 สร้าง Telegram bot project ด้วย TypeScript/Bun ทีรันได้จริง พร้อม command handling, middleware, sessions, error handling และ webhook/long-polling

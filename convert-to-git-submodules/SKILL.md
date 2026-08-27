@@ -10,7 +10,7 @@ related:
   - delete-git-submodules
   - update-references
   - update-gitignore
-  - validate
+  - deep-validate
   - ship
   - suggest-next-action
   - ask-me
@@ -101,7 +101,7 @@ related:
 
 1. ทดสอบ clone ใหม่: `git clone --recurse-submodules <parent-url>` ใน `$env:TEMP`
 2. ตรวจสอบว่า submodule content ครบถ้วน
-3. ทำ `/validate` เพื่อตรวจ references และ structure
+3. ทำ `/deep-validate` เพื่อตรวจ references และ structure
 4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 
 ## Rules
@@ -149,4 +149,4 @@ related:
 - `git submodule status` แสดง submodule ที่ชี้ไปยัง commit ที่ถูกต้อง
 - clone ใหม่กับ `--recurse-submodules` ทำงานได้
 - ไม่มี broken references หลังการแปลง
-- ทุกการเปลี่ยนแปลงผ่าน `/validate` และ `/ship`
+- ทุกการเปลี่ยนแปลงผ่าน `/deep-validate` และ `/ship`

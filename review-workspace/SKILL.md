@@ -9,8 +9,8 @@ related:
   - check-unused-deps
   - run-audit
   - update-review-codebase-cli-and-run
-  - run-verify
-  - validate
+  - run-verify-fast
+  - deep-validate
   - report-table
   - suggest-next-action
   - refactor-workspace

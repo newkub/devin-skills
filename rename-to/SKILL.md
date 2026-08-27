@@ -1,5 +1,5 @@
 ---
-name: rename-files-to
+name: rename-to
 description: เปลี่ยนชื่อ identifier ใน code ด้วย ast-grep และอัปเดท references ทั้งหมด
 argument-hint: "[old-name] [new-name]"
 ---

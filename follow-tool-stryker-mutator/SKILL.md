@@ -1,129 +1,102 @@
 ---
 name: follow-tool-stryker-mutator
 description: ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing ใน JavaScript/TypeScript projects
+related:
+  - follow-test
+  - write-test
+  - run-test
+  - follow-tool-vitest
+  - follow-lang-typescript
+  - follow-lang-javascript
 ---
 
 ## Goal
 
-ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing เพื่อปรับปรุงคุณภาพของ tests
+ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing เพื่อปรับปรุงคุณภาพของ JavaScript/TypeScript tests
 
 ## Scope
 
-ใช้สำหรับ JavaScript, TypeScript, React, Angular, VueJS, Svelte และ NodeJS projects
+ใช้สำหรับ JavaScript, TypeScript, React, Angular, Vue, Svelte และ Node.js projects ที่มี test runner รองรับ
 
 ## Execute
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Stryker ด้วย Bun
+> Goal: ติดตั้ง Stryker และ test runner plugin
 
-ติดตั้ง Stryker ด้วย Bun:
+1. ตรวจสอบ test runner ปัจจุบัน (jest, vitest, mocha, jasmine)
+2. ติดตั้ง `@stryker-mutator/core` ด้วย `bun add -D @stryker-mutator/core`
+3. ติดตั้ง runner plugin เช่น `bun add -D @stryker-mutator/vitest-runner`
+4. ติดตั้ง TypeScript checker ถ้าใช้ TypeScript: `bun add -D @stryker-mutator/typescript-checker`
+5. ดูรายละเอียดใน [references/stryker-mutator.md](references/stryker-mutator.md)
 
-```bash
-bunx stryker init
-```
+### 2. Initialize and Configure
 
-หรือติดตั้งด้วย Bun:
+> Goal: สร้าง Stryker config
 
-```bash
-bun add -D @stryker-mutator/core
-```
-
-### 2. Configuration
-
-> Goal: ตั้งค่า Stryker สำหรับ project
-
-สร้าง `stryker.config.mjs` หรือใช้ initializer:
-
-```bash
-bunx stryker init
-```
-
-ตั้งค่า test runner และ mutators ใน config file:
-
-```javascript
-export default {
-  testRunner: 'jest', // หรือ 'mocha', 'karma', 'vitest', 'jasmine'
-  mutator: 'javascript', // หรือ 'typescript'
-  reporters: ['html', 'clear-text', 'progress'],
-  coverageAnalysis: 'perTest',
-  tempDirName: '.stryker-tmp',
-}
-```
+1. รัน `bunx stryker init` เพื่อ generate config
+2. ตรวจสอบ `stryker.config.json` หรือ `stryker.config.mjs`
+3. กำหนด `testRunner`, `mutator`, `reporters`, `coverageAnalysis`
+4. ตั้งค่า `mutate` และ `ignorePatterns` glob
+5. ดู config options ใน [references/stryker-mutator.md](references/stryker-mutator.md)
 
 ### 3. Run Mutation Testing
 
-> Goal: รัน mutation testing ด้วย Stryker
+> Goal: รัน mutation testing และตรวจสอบผล
 
-รัน Stryker เพื่อทำ mutation testing:
+1. รัน `bunx stryker run`
+2. ใช้ `bunx stryker run --logLevel trace` ถ้าพบปัญหา
+3. ตรวจสอบรายงานใน `reports/mutation/html/index.html`
+4. ระบุ surviving mutants, `NOT CAUGHT`, `timeout` mutants
 
-```bash
-bunx stryker run
-```
+### 4. Improve Tests
 
-รันด้วย trace logging สำหรับ troubleshooting:
+> Goal: เพิ่ม tests สำหรับ mutants ทีหลุดรอด
 
-```bash
-bunx stryker run --logLevel trace
-```
+1. วิเคราะห์ surviving mutants
+2. เขียน tests เพิ่มเพื่อ catch missing cases
+3. ทำ `/write-test` เพื่อเขียน tests ทีมีคุณภาพ
+4. รัน tests ธรรมดาก่อน แล้วรัน Stryker ซ้ำ
 
-### 4. Supported Mutators
+### 5. CI Integration
 
-> Goal: ระบุ mutators ที Stryker รองรับ
+> Goal: integrate Stryker กับ CI pipeline
 
-Stryker รองรับ mutators มากกว่า 30 ชนิด:
-
-- Arithmetic Operator
-- Array Declaration
-- Assignment Expression
-- Block Statement
-- Boolean Literal
-- Conditional Expression
-- Equality Operator
-- Logical Operator
-- Method Expression
-- Object Literal
-- Optional Chaining
-- Regex
-- String Literal
-- Unary Operator
-- Update Operator
-
-### 5. Reports
-
-> Goal: ตรวจสอบ mutation reports
-
-ตรวจสอบ mutation reports:
-
-- HTML report: `reports/mutation/html/index.html`
-- Dashboard: https://dashboard.stryker-mutator.io
-- Clear text report: terminal output
-
-### 6. CI Integration
-
-> Goal: เพิ่ม Stryker ใน CI pipeline
-
-เพิ่ม Stryker ใน CI pipeline:
-
-```yaml
-- name: Run mutation testing
-  run: bunx stryker run
-```
+1. เพิ่ม step รัน `bunx stryker run` ใน GitHub Actions
+2. ตั้งค่า Stryker Dashboard ถ้าต้องการ track score
+3. ใช้ budget หรือ threshold ถ้ามี
+4. อัปโหลด reports สำหรับ review
 
 ## Rules
 
-- ใช้ StrykerJS สำหรับ JavaScript/TypeScript projects
-- ใช้ Stryker.NET สำหรับ C# projects
-- ใช้ Stryker4s สำหรับ Scala projects
-- ตั้งค่า `coverageAnalysis: 'perTest'` สำหรับ test coverage ที่ดีกว่า
-- ใช้ `--logLevel trace` เมื่อพบปัญหา
-- ตรวจสอบ mutation score และ surviving mutants
+### 1. Test Quality
+
+- ต้องมี tests ที่ stable ก่อนรัน Stryker
+- ไม่รัน Stryker ถ้า tests flaky
+- build ได้บน host platform
+
+### 2. Configuration
+
+- ใช้ `coverageAnalysis: 'perTest'` สำหรับประสิทธิภาพ
+- ระบุ `mutate` ให้ชัดเจน
+- ใช้ `ignorePatterns` สำหรับไฟล์ที่ไม่ต้องการ mutate
+
+### 3. Mutant Handling
+
 - เพิ่ม tests สำหรับ surviving mutants
-- ใช้ Stryker Dashboard สำหรับ tracking mutation scores ข้าม runs
+- ใช้ `// Stryker disable` เฉพาะเมื่อจำเป็น
+- track mutation score ข้าม runs
+
+### 4. Reports
+
+- ดู HTML report หลังรัน
+- ใช้ dashboard สำหรับ trend
+- ตรวจสอบ `timeout` mutants
 
 ## Expected Outcome
 
-- Mutation testing ทำงานได้อัตโนมัติ
-- Test coverage และ quality ดีขึ้น
+- Stryker ติดตั้งและทำงานได้
+- Mutation score ถูก track
 - Surviving mutants ถูกระบุและแก้ไข
-- Mutation score ถูก tracking ใน CI/CD
+- Tests มีคุณภาพดีขึ้น
+- CI รัน mutation testing อัตโนมัติ
