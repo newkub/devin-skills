@@ -4,7 +4,7 @@ description: ตั้งค่า Neovim configuration ด้วย lazy.nvim �
 related:
   - follow-lang-lua
   - follow-tool-formatter
-  - follow-tool-usage
+  - follow-create-nvim-plugins
   - follow-test
 ---
 
@@ -18,7 +18,20 @@ related:
 
 ## Execute
 
-### 1. Bootstrap lazy.nvim
+### 1. Install Neovim
+
+> Goal: ติดตั้ง Neovim ก่อนตั้งค่า lazy.nvim
+
+1. ติดตั้ง Neovim >= 0.8.0 (build ด้วย LuaJIT):
+   - Windows: ดาวน์โหลดจาก [Neovim releases](https://github.com/neovim/neovim/releases) หรือ `scoop install neovim`
+   - macOS: `brew install neovim`
+   - Linux: `sudo apt install neovim` หรือ `sudo pacman -S neovim`
+   - mise: `mise use -g neovim` (ถ้าใช้ mise)
+2. ติดตั้ง Git >= 2.19.0 (lazy.nvim ใช้ partial clones)
+3. ตรวจสอบ `nvim --version` ก่อนดำเนินการต่อ
+4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
+
+### 2. Bootstrap lazy.nvim
 
 > Goal: ติดตั้ง lazy.nvim plugin manager
 
@@ -28,7 +41,7 @@ related:
 4. รัน `:checkhealth lazy` เพื่อตรวจสอบ
 5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
-### 2. Structure Config
+### 3. Structure Config
 
 > Goal: แยกไฟล์ config ตาม responsibility
 
@@ -38,7 +51,7 @@ related:
 4. สร้าง `lua/plugins/*.lua` สำหรับ plugin specs
 5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
-### 3. Add Plugins
+### 4. Add Plugins
 
 > Goal: เพิ่ม plugins ด้วย lazy loading
 
@@ -48,7 +61,7 @@ related:
 4. ใช้ `version`, `tag`, `branch` หรือ `commit` เพื่อ pin version
 5. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
-### 4. Configure LSP and Formatting
+### 5. Configure LSP and Formatting
 
 > Goal: ตั้งค่า LSP, formatter และ linting
 
@@ -57,7 +70,7 @@ related:
 3. ใช้ `stylua` สำหรับ format Lua
 4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
-### 5. Add Tests
+### 6. Add Tests
 
 > Goal: เขียน tests สำหรับ utility functions
 
@@ -66,7 +79,7 @@ related:
 3. รัน `:PlenaryBustedFile %` หรือ `:PlenaryBustedDirectory tests/`
 4. ดูรายละเอียดใน [references/lazy-nvim.md](references/lazy-nvim.md)
 
-### 6. CI and Quality
+### 7. CI and Quality
 
 > Goal: ตั้งค่า automated checks
 
