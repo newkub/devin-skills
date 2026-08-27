@@ -221,6 +221,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `review-test: /review-test`
 - `review-deploy: /review-deploy`
 - `review-release: /review-release`
+- `review-risk: /review-risk`
 - `review-migration: /review-migration`
 - `review-quality: /review-quality`
 - `review-frontend: /review-frontend`
