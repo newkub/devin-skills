@@ -153,6 +153,7 @@ Review CI/CD pipeline ครอบคลุม job dependencies, caching, parall
 4. ตรวจสอบ reliability: retry, timeout, idempotency, secrets, permissions
 5. ตรวจสอบ artifact size, retention policy, conditional jobs
 6. ถ้าต้องสร้าง pipeline ใหม่ → ดู `references/ci-cd-setup.md`
+7. ถ้าพบ CI/CD pipeline ล้มเหลวหรือต้องติดตามจนกว่าจะผ่าน → ใช้ `/watch-ci-cd`
 
 #### 7.2 Infrastructure Review
 

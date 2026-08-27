@@ -88,6 +88,7 @@ Review ทุก configuration files ใน project ว่ามีอะไร�
 2. ตรวจ `.env` files ว่าอยู่ใน `.gitignore` หรือไม่
 3. ตรวจ `package.json` มี `engines` / `trustedDependencies` / `onlyBuiltDependencies` ที่เหมาะสมหรือไม่
 4. ตรวจ CI/CD config มี secret scanning, SLSA, signed commits หรือไม่
+5. ถ้าพบ CI/CD config ผิดหรือ pipeline ต้อง monitor จนผ่าน → ระบุให้ใช้ `/watch-ci-cd`
 
 ### 5. Check Tool Versions And Consistency
 

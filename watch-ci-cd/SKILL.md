@@ -48,7 +48,7 @@ related:
    - Cloudflare Pages: `wrangler.jsonc` หรือ `.github/workflows/*cloudflare*.yml`
    - Vercel: `vercel.json` หรือ `.github/workflows/*vercel*.yml`
 2. ถ้าพบหลาย platform เลือกตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins → Cloudflare → Vercel
-3. ถ้าไม่พบ CI/CD config → ทำ `/ask-me` ถาม user หรือ `/review-delivery` เพื่อตรวจสอบ
+3. ถ้าไม่พบ CI/CD config → ทำ `/ask-me` ถาม user หรือ `/review-delivery`, `/review-config`, `/review-deploy`, `/review-test` เพื่อตรวจสอบ
 
 ### 2. Verify Required CLI
 
@@ -108,7 +108,7 @@ related:
 > Goal: แก้ไข failure แล้ว trigger pipeline ใหม่
 
 1. ทำ `/resolve-errors` ตาม root cause
-2. ถ้า failure มาจาก workflow config → ทำ `/follow-tool-github-actions` หรือ `/review-delivery`
+2. ถ้า failure มาจาก workflow config หรือ CI/CD setup → ทำ `/follow-tool-github-actions`, `/review-delivery`, `/review-config`, `/review-deploy` หรือ `/review-test` ตามลักษณะของ failure
 3. ถ้า failure มาจาก code → ทำ `/watch-build`, `/watch-test` หรือ `/watch-lint`
 4. ถ้า failure มาจาก deployment → ทำ `/watch-deploy`, `/watch-cloudflare` หรือ `/watch-vercel`
 5. แก้ไขน้อยที่สุด ไม่แตะ code ที่ไม่เกี่ยวข้อง
