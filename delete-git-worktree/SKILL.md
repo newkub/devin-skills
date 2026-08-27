@@ -3,7 +3,7 @@ name: delete-git-worktree
 description: ลบ git worktree ทีระบุอย่างปลอดภัย
 related:
   - list-git-worktree
-  - create-git-worktree-in-project
+  - use-git-worktrees
   - cleanup-worktree
 ---
 

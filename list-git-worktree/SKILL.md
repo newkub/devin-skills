@@ -2,9 +2,8 @@
 name: list-git-worktree
 description: รายการ git worktrees ใน repo พร้อม branch และ status
 related:
-  - create-git-worktree-in-project
+  - use-git-worktrees
   - cleanup-worktree
-  - merge-worktree-to-main
 ---
 
 ## Goal
