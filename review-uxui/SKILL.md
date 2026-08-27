@@ -2,10 +2,8 @@
 name: review-uxui
 description: Review UX/UI design quality, design system, visual, interaction, accessibility, handoff
 related:
-  - review-frontend
   - review-platform
   - roleplay-ux-researcher
-  - roleplay-ui-designer
   - scan-codebase
   - deep-analyze
   - run-review

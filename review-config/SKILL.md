@@ -6,11 +6,9 @@ related:
   - report-config-files
   - follow-devin-skills
   - follow-devin-global-subagents
-  - update-config
   - follow-tool-mise
   - follow-tool-moonrepo
   - validate
-  - watch-ci-cd
 ---
 
 ## Goal

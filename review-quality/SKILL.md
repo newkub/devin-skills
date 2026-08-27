@@ -2,7 +2,6 @@
 name: review-quality
 description: Review code quality, bug-prone patterns, correctness, and overall quality with score
 related:
-  - review-correctness
   - validate
   - deep-validate
   - scan-codebase
@@ -13,7 +12,6 @@ related:
   - report-table
   - suggest-next-action
   - review-test
-  - review-performance
   - review-security
   - review-stability
   - review-uxui

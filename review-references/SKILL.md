@@ -6,7 +6,6 @@ related:
   - check-reference
   - list-devin-global-skills
   - scan-codebase
-  - update-all-devin-global-skills
 ---
 
 ## Goal

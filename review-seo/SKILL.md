@@ -13,8 +13,6 @@ related:
   - suggest-next-action
   - review-frontend
   - follow-my-tech-stack
-  - review-platform
-  - review-delivery
 ---
 
 ## Goal

@@ -14,8 +14,6 @@ related:
   - suggest-next-action
   - use-ast-grep
   - follow-my-tech-stack
-  - review-seo
-  - review-delivery
 ---
 
 ## Goal

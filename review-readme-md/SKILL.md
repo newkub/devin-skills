@@ -2,7 +2,6 @@
 name: review-readme-md
 description: ตรวจสอบ README.md ก่อน update-readme-md แก้ไข ครอบคลุม section order และ format
 related:
-  - update-readme-md
   - scan-codebase
   - check-monorepo
   - report-table

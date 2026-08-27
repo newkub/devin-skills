@@ -16,7 +16,6 @@ related:
   - check-reference
   - deep-debug
   - resolve-errors
-  - watch-ci-cd
 ---
 
 ## Goal

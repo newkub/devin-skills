@@ -5,12 +5,9 @@ argument-hint: "[scope]"
 related:
   - report-git-diff
   - check-git-diff
-  - git-commit
-  - ship
   - report-table
   - validate
   - ask-me
-  - consider-use-in-another-skills
 ---
 
 ## Goal
