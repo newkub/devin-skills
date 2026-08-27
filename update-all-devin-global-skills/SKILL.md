@@ -7,6 +7,8 @@ related:
   - review-redundancy
   - review-flow
   - update-references
+  - update-dependencies-latest
+  - follow-tool-mise
 ---
 
 ## Goal
@@ -86,7 +88,17 @@ related:
 4. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
 5. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
 
-### 8. Report And Suggest Next Actions
+### 8. Update Dependencies And Tooling
+
+> Goal: อัปเดต dependencies และ dev tools ที่เกี่ยวข้องกับ skills repo
+
+1. ตรวจหา `package.json`, `mise.toml`, `bun.lock`, `bun.lockb` ใน `%APPDATA%\devin\skills` และ skills ที่มี `src/`
+2. ระบุ dependencies หรือ dev tools ที่ควรย้ายไป `mise project` หรือ `mise.toml`
+3. สำหรับ dependencies ทีเหมาะสมให้ update → ทำ `/update-dependencies-latest`
+4. รัน `/validate` และ `/run-check` หลัง update dependencies
+5. รายงาน dependencies ที่เปลี่ยนแปลงลงใน before-after report
+
+### 9. Report And Suggest Next Actions
 
 > Goal: รายงานผลและแนะนำขั้นตอนถัดไป
 
@@ -122,7 +134,7 @@ related:
 - ทุก skill ต้องผ่าน `/validate` หลังอัปเดต
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
-- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
+- install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
 
 ### 5. Minimal Changes
 
@@ -140,3 +152,4 @@ related:
 - content ครอบคลุมผ่าน `/follow-coverage`
 - ทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ผ่าน `/relocation`
 - รายงาน before-after ชัดเจน พร้อม next actions
+- dependencies หรือ dev tools ที่ควรย้ายไป mise project ถูกระบุ และ deps ทีเหมาะสมถูกสั่ง `/update-dependencies-latest`

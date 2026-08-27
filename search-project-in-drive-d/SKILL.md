@@ -66,7 +66,7 @@ argument-hint: "[keyword]"
 
 ### 3. Output Format
 
-- ใช้ numbered columns สำหรับลำดับ
+- ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
 - แสดง full path ด้วย backticks
 - แสดง project name และ match type
 - สร้าง summary table ท้ายผลลัพธ์

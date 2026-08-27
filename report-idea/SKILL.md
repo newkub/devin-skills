@@ -37,7 +37,7 @@ description: สร้างและรายงานไอเดียตา�
 
 1. เลือก top ideas ไม่เกิน 10 อัน
 2. กำหนด columns:
-   - No
+   - No.
    - Idea
    - Category
    - Impact
@@ -80,13 +80,13 @@ description: สร้างและรายงานไอเดียตา�
 ### 4. Format
 
 - ตอบใน chat ด้วย markdown table
-- ทุกตารางมี numbered columns
+- ทุกตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
 - ใช้ symbols สำหรับ impact/effort/risk
 - จัดกลุ่มตาม category
 
 ## Expected Outcome
 
 - รายการไอเดียทีสอดคล้องกับ context
-- ตารางทีมี numbered columns พร้อม impact, effort, risk, feasibility
+- ตารางทีมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... พร้อม impact, effort, risk, feasibility
 - Top 3 ideas ทีควรทำก่อน
 - Next action ชัดเจน

@@ -1,6 +1,16 @@
 ---
 name: review-techstack
 description: Review tech stack, dependencies และ library design ครอบคลุม versions, security, API, bundle
+related:
+  - update-review-codebase-cli-and-run
+  - follow-my-tech-stack
+  - run-review
+  - deep-analyze
+  - deep-validate
+  - report-table
+  - suggest-next-action
+  - follow-package-manifest
+  - list-dependencies
 ---
 
 ## Goal
@@ -50,9 +60,20 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 1. ตรวจสอบ requirements, constraints, team expertise ก่อนเลือก
 2. ตรวจสอบ decision matrix และ trade-offs
-3. ดู `references/choosing.md` สำหรับ selection criteria
+3. ดู `references/choosing.md` สำหรับ tech stack selection criteria และ `references/cloud-selection.md` สำหรับ cloud selection matrix
 
-### 4. Review Dimensions
+### 4. Cloud And Infrastructure Selection
+
+> Goal: เลือก cloud providers และ deployment targets ให้เหมาะสมกับ workload
+
+1. ระบุ workload pattern: long-running, burst, scale-to-zero, CPU-heavy, edge, stateful, database, static
+2. ระบุ requirements: latency, throughput, scale, persistence, budget, team familiarity, lock-in tolerance
+3. ทำ `/follow-my-tech-stack` เพื่อดู cloud, deployment, storage, auth, database options ที่ใช้งาน
+4. ดู `references/cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
+5. ระบุ trade-offs, avoid conditions, และ alternatives ของแต่ละ scenario
+6. บันทึก recommended cloud providers พร้อมเหตุผล
+
+### 5. Review Dimensions
 
 ตรวจสอบทุก dimension ตาม reference files
 
@@ -63,7 +84,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 3. ถ้า project เป็น library → ตรวจสอบ library design: API surface, export strategy, module format, tree-shaking, peer deps, semver, compatibility — ดู `references/lib-design.md`
 4. ตรวจสอบ type declarations: `.d.ts` files ใน project และ `node_modules`, missing declarations, circular type references, `@types` packages — ดู `references/type-declarations.md`
 
-### 5. Validate Findings
+### 6. Validate Findings
 
 ตรวจสอบว่า findings แต่ละอย่างถูกต้อง
 
@@ -73,7 +94,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 2. ทำ `/validate` สำหรับ validate issues แต่ละอย่าง
 3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
 
-### 6. Report
+### 7. Report
 
 รายงานผล review ในรูปแบบตาราง
 
@@ -85,10 +106,11 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 4. สร้างตาราง Library Design: API surface, export strategy, bundle size, peer deps, semver, severity
 5. สร้างตาราง Findings by Category: Category, Finding, Severity, Location, Recommendation
 6. สร้างตาราง Recommended Actions: Priority, Action, Impact, Effort, Workflow
-7. แสดง tech stack review score พร้อม progress bar และ grade
-8. ทำ `/suggest-next-action`
+7. สร้างตาราง Cloud Selection: scenario, workload, latency, scale, state, best cloud, runtime, why, trade-offs, avoid if, alternatives
+8. แสดง tech stack review score พร้อม progress bar และ grade
+9. ทำ `/suggest-next-action`
 
-### 6. Implement All
+### 8. Implement All
 
 ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
 
@@ -139,7 +161,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location
-- ครอบคลุม tech stack, dependencies, library design และ bundle impact
+- ครอบคลุม tech stack, dependencies, library design, bundle impact, และ cloud/infrastructure selection
 - review score คำนวณจาก severity weighted average
 - รายงาน recommended actions พร้อม priority: security ก่อน, unused สอง, outdated สาม
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

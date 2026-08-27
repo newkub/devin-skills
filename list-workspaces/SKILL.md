@@ -99,7 +99,7 @@ description: แสดงรายการ workspaces ทั้งหมดใ�
 
 จัดรูปแบบ output ตาม `/report-table`
 
-1. กำหนด table structure ด้วย numbered columns (No, Name, Path, Type, Dependencies, Status)
+1. กำหนด table structure ด้วยคอลัมน์ "No." เป็นคอลัมน์แรก (No. | Name | Path | Type | Dependencies | Status)
 2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน
 3. ใช้ alignment ที่เหมาะสม (left สำหรับ text, right สำหรับ numbers)
 4. ใช้ bold สำหรับ headers และ keywords สำคัญ

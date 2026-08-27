@@ -26,7 +26,7 @@ description: รายงานแผนงานในแชทก่อนล�
 
 > Goal: แสดงตาราง tasks ตาม `/report-table`
 
-1. คอลัมน์ (# | Task | Type | Priority | Effort | Impact | Risk | Status)
+1. คอลัมน์ (No. | Task | Type | Priority | Effort | Impact | Risk | Status)
 2. Type: Create, Modify, Delete
 3. Priority: P0 (critical), P1 (high), P2 (medium), P3 (low)
 4. Effort: S, M, L, XL
@@ -78,7 +78,7 @@ description: รายงานแผนงานในแชทก่อนล�
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
-4. ใช้ numbered columns, headers ชัดเจน, จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
 
@@ -109,7 +109,7 @@ description: รายงานแผนงานในแชทก่อนล�
 ## Expected Outcome
 
 - สรุปแผนงานเป็น bullet points ในแชท
-- ตาราง tasks 8 คอลัมน์ (# | Task | Type | Priority | Effort | Impact | Risk | Status)
+- ตาราง tasks 8 คอลัมน์ (No. | Task | Type | Priority | Effort | Impact | Risk | Status)
 - Bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after แต่ละข้อ
 - File structure tree diagram
 - Execution order แบ่งเป็น phases พร้อม critical path

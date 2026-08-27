@@ -22,7 +22,7 @@ description: จัดรูปแบบตาราง, bullet, numbered list, 
 > Goal: กำหนดโครงสร้างตาราง
 
 1. กำหนด columns ที่จำเป็น
-2. ใช้ numbered columns สำหรับลำดับที่ชัดเจน
+2. ทุกตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว
 3. กำหนด data types สำหรับแต่ละ column
 4. จัดเรียง columns ตามความสำคัญ
 
@@ -98,7 +98,7 @@ description: จัดรูปแบบตาราง, bullet, numbered list, 
 
 ### Table Structure
 
-- ใช้ numbered columns สำหรับลำดับที่ชัดเจน
+- ทุกตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว
 - ใช้ headers ชัดเจนสำหรับแต่ละ column
 - จัดเรียง columns ตามความสำคัญ
 - ใช้ alignment ที่เหมาะสมกับ data types

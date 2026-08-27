@@ -30,10 +30,10 @@
 2. Rust: Cargo, Moon (monorepo)
 3. Go: Go build
 ### 5. Choose Deployment Platform
-> Goal: เลือก deployment platform ที่เหมาะกับ scale และ budget
-1. Serverless: Cloudflare Workers, Vercel, AWS Lambda
-2. Containers: Docker, Kubernetes
-3. Traditional: VPS, PaaS (Railway)
+> Goal: เลือก deployment platform ที่เหมาะกับ scale, budget, และ workload pattern
+1. ดู `references/cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
+2. ระบุ deployment pattern: serverless, container, long-running, edge, static
+3. เลือก provider ตาม latency, cost, scale, state, และ team expertise
 ### 6. Create Decision Matrix
 > Goal: สร้างตารางเปรียบเทียบ tech options อย่างเป็นระบบ
 1. กำหนด criteria: development speed, performance, scalability, ecosystem maturity, learning curve, cost, maintenance

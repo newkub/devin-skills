@@ -99,7 +99,7 @@ description: แสดงรายการ dependencies ทั้งหมด�
 
 จัดรูปแบบ output ตาม `/report-table`
 
-1. กำหนด table structure ด้วย numbered columns (No, Name, Version, Type, Purpose, Status)
+1. กำหนด table structure ด้วยคอลัมน์ "No." เป็นคอลัมน์แรก (No. | Name | Version | Type | Purpose | Status)
 2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน
 3. ใช้ alignment ที่เหมาะสม (left สำหรับ text, right สำหรับ version)
 4. ใช้ bold สำหรับ headers และ keywords สำคัญ

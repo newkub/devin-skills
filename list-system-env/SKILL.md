@@ -225,7 +225,7 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 ### 4. Report Format
 
 รายงานในรูปแบบตารางตาม `/report-table`:
-- ใช้ numbered columns
+- ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
 - ใช้ headers ชัดเจน
 - ใช้ alignment ที่เหมาะสม
 - ใช้ symbols (✅, ❌, ⚠️) สำหรับ status

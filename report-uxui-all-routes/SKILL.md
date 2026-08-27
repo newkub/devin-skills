@@ -52,7 +52,7 @@ related:
 > Goal: สรุป routes ในตาราง
 
 1. ใช้ `/report-table`
-2. คอลัมน์: No, Tab/Screen, Route, Method, Tab Group, Purpose, Primary Actions, Notes
+2. คอลัมน์: No., Tab/Screen, Route, Method, Tab Group, Purpose, Primary Actions, Notes
 3. เรียงลำดับตาม Tab Group แล้ว Route
 4. ใช้ symbols `✅` `❌` `⚠️` สำหรับ status
 
@@ -85,7 +85,7 @@ related:
 
 - ใช้ markdown table format มาตรฐาน
 - ใช้ headers ชัดเจน
-- คอลัมน์ `No` เริ่มจาก 1
+- คอลัมน์ `No.` เป็นคอลัมน์แรก เริ่มจาก 1
 - เรียงตาม `Tab Group` แล้ว `Route` ตามตัวอักษร
 - ใช้ backticks สำหรับ `route`, `method`, `paths`
 
