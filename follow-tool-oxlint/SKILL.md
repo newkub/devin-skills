@@ -4,7 +4,6 @@ description: ตั้งค่า eslint-plugin-oxlint สำหรับ fast 
 related:
   - follow-tool-eslint
   - follow-tool-biome
-  - follow-tool-knip
   - follow-lang-typescript
   - follow-lang-javascript
 ---
@@ -23,7 +22,11 @@ related:
 
 > Goal: ติดตั้ง oxlint และ eslint-plugin-oxlint
 
-1. ติดตั้ง oxlint และ `eslint-plugin-oxlint` ด้วย `bun add -D oxlint@latest eslint-plugin-oxlint`
+1. ติดตั้ง oxlint และ `eslint-plugin-oxlint` ด้วย package manager ของ project:
+   - Bun: `bun add -D oxlint@latest eslint-plugin-oxlint`
+   - npm: `npm install -D oxlint@latest eslint-plugin-oxlint`
+   - pnpm: `pnpm add -D oxlint@latest eslint-plugin-oxlint`
+   - yarn: `yarn add -D oxlint@latest eslint-plugin-oxlint`
 2. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
 
 ### 2. Configure Oxlint
@@ -65,8 +68,8 @@ related:
 
 ### 1. Installation
 
-- ใช้ `bun add -D` เท่านั้น
-- ติดตั้ง `oxlint@latest` และ `eslint-plugin-oxlint`
+- ใช้ package manager ของ project: `bun add -D` เป็นค่าเริ่มต้น, ยกเว้น project ใช้ npm เป็นหลักให้ใช้ `npm install -D`
+- ติดตั้ง `oxlint` และ `eslint-plugin-oxlint` ให้เวอร์ชันตรงกัน
 
 ### 2. Configuration
 
