@@ -1,0 +1,12 @@
+[package]
+name = "check-should-update"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+authors = ["Wrikka"]
+description = "ตรวจสอบ git changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
