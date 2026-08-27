@@ -4,6 +4,9 @@ description: จัดการ context ของ AI agent อย่างมี
 related:
   - follow-math-set-theory
   - follow-math-information-theory
+  - deep-validate
+  - report
+  - suggest-next-action
 ---
 
 ## Goal
@@ -45,7 +48,7 @@ related:
 2. ทิ้ง: redundant tool outputs, verbose error messages, ข้อมูลที่ไม่เกี่ยวข้อง
 3. ใช้ tool result clearing: ลบ raw tool results เก่าที่ไม่จำเป็นต้องดูซ้ำ
 4. หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + 5 files ล่าสุดที่เกี่ยวข้อง
-5. ทำ `/follow-context-rot` เมื่อตรวจพบสัญญาณ context degradation
+5. ทำ review และ score ตาม `### 7. Review And Score Context Rot` เมื่อตรวจพบสัญญาณ context degradation
 
 ### 4. Use Structured Note-Taking
 
@@ -76,6 +79,21 @@ related:
 3. ก่อน reset: สรุปและ preserve context สำคัญ
 4. หลัง reset: อ่าน notes และ restore context อย่างรวดเร็ว
 5. ตรวจสอบสัญญาณ context rot ทุก 10 tool calls
+6. ถ้าพบ context degradation ให้ทำ review และ score ตาม `### 7. Review And Score Context Rot`
+
+### 7. Review And Score Context Rot
+
+> Goal: ตรวจสอบ context rot เป็นระบบและให้คะแนน
+
+1. ตรวจสัญญาณ context rot: การตอบซ้ำ ลืม context เดิม หลุดจาก goal คุณภาพตอบลดลง
+2. ตรวจ context preservation: สรุป goal หลัก progress ปัจจุบัน และ tasks ที่เหลือ
+3. ตรวจ context reset practices: แนะนำ reset เมื่อ context ใหญ่เกินไป
+4. ตรวจ goal reminders: ย้ำ goal หลักทุก 5-10 tool calls
+5. ตรวจ task decomposition: sub-tasks ไม่เกิน 10 tool calls
+6. ตรวจ context window management: ใช้ `offset` `limit` `code_search` รวม parallel calls
+7. คำนวณ health score จาก 6 metrics ตาม `### 6. Context Rot Review`
+8. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low
+9. รายงานผลพร้อม review score, severity, และ action items
 
 ## Rules
 
@@ -97,7 +115,7 @@ related:
 - ทิ้ง: redundant tool outputs, verbose messages
 - ใช้ tool result clearing สำหรับ lightest compaction
 - หลัง compaction ให้เริ่ม context ใหม่พร้อม summary + recent files
-- ทำ `/follow-context-rot` เมื่อตรวจพบ context degradation
+- ทำ review และ score ตาม `### 7. Review And Score Context Rot` เมื่อตรวจพบ context degradation
 
 ### 3. Persistent Memory
 
@@ -127,6 +145,23 @@ related:
 - ปรับ goal ถ้า requirements เปลี่ยน
 - ใช้ `/suggest-next-action` เมื่อไม่แน่ใจทิศทาง
 
+### 6. Context Rot Review
+
+ตรวจสอบและให้คะแนน context rot เป็นระบบ
+
+- ตรวจสัญญาณ context rot ทุก 10 tool calls
+- 6 metrics หลัก: Context Rot Detection, Context Preservation, Context Reset Practices, Goal Reminder Usage, Task Decomposition, Context Window Management
+- คะแนนต่อ metric: ผ่าน = 1, มี warning = 0.5, ไม่ผ่าน = 0
+- Review score = (total score / 6) × 100%
+- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
+- Severity:
+  - Critical: สูญเสีย goal หลัก ลืม decisions สำคัญ ทำงานซ้ำโดยไม่จำเป็น หลุดจาก scope อย่างมาก ผลผิดพลาด
+  - High: คุณภาพตอบลดลงชัดเจน ไม่มีการ preserve context ไม่มี goal reminders
+  - Medium: อ่านไฟล์ซ้ำหรืออ่านเกินจำเป็น sub-task ไม่ชัดเจน ไม่มี progress summary
+  - Low: ข้อความ goal reminder ไม่สม่ำเสมอ จัดการ context window ได้ปานกลาง
+- ใช้ `/report-table` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
+- ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+
 ## Expected Outcome
 
 - Context window ใช้อย่างมีประสิทธิภาพ ลด context rot
@@ -134,3 +169,5 @@ related:
 - Progress ถูก preserve ข้าม session ผ่าน structured notes
 - Long-horizon tasks ถูกแบ่งเป็น sub-tasks ที่จัดการได้
 - Goal alignment รักษาไว้ตลอด conversation
+- Context rot ถูก detect, score, และ report เป็นระบบ
+- Findings มี severity, review score, และ action items
