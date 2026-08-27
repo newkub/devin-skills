@@ -1,23 +1,33 @@
 ---
 name: review-test
-description: Review test strategy และ quality ก่อน run/write test
+description: Review test strategy, quality, และผลลัพธ์หลัง run tests พร้อมสรุป action ถัดไป
 related:
-  - review-test-result
-  - update-devin-global-skills
   - run-test
   - run-test-coverage
   - write-test
   - update-test
   - follow-test
+  - follow-tdd
+  - follow-config
+  - update-devin-global-skills
+  - report-table
+  - suggest-next-action
+  - validate
+  - check-reference
+  - deep-debug
+  - resolve-errors
 ---
 
 ## Goal
 
-Review test strategy และ quality ก่อนเริ่ม run หรือ write tests เพื่อยืนยันว่า coverage gaps, edge cases, boundary conditions, test isolation, fixtures, flakiness, test pyramid balance และ regression coverage ครบถ้วน
+Review test strategy และ quality ก่อนเริ่ม run หรือ write tests พร้อม review ผลลัพธ์หลัง run (pass/fail, coverage, flaky) เพื่อสรุป action ถัดไป และอัปเดต skill ผ่าน `/update-devin-global-skills` เมื่อพบ gap
 
 ## Scope
 
-ใช้ก่อนเรียก `run-test`, `write-test`, `follow-test`, `follow-tdd`, `update-test`, `run-test-coverage`, หรือ `follow-test` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression แล้วสรุป test quality score พร้อม coverage gap report
+ใช้ได้ทั้งก่อนและหลังการรัน tests:
+
+- ก่อน: ใช้ก่อน `run-test`, `write-test`, `follow-test`, `follow-tdd`, `update-test`, `run-test-coverage` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
+- หลัง: ใช้หลัง `run-test`, `run-test-coverage`, `write-test`, `follow-tdd`, `update-test`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
 
 ## Execute
 
@@ -80,9 +90,9 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 3. ตรวจ mutation testing สำหรับ critical code (score > 80%)
 4. ตรวจ CI/CD pipeline รัน regression tests อัตโนมัติ
 
-### 7. Score And Report
+### 7. Pre-Run Score And Report
 
-> Goal: สรุป test quality score และ coverage gap report
+> Goal: สรุป test quality score และ coverage gap report ก่อน run
 
 1. คำนวณ test quality score จาก [references/test-quality-score.md](references/test-quality-score.md)
 2. ทำ `/report` พร้อม `/report-table`
@@ -91,17 +101,67 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 5. สร้างตาราง Edge Case Gaps: No., Function, Missing Category, Severity, Action
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
+### 8. Capture Output And Classify Failures
+
+> Goal: เก็บผลลัพธ์และจัดหมวดหมู่ failures หลัง run tests
+
+1. อ่าน stdout/stderr จาก `run-test` หรือ `run-test-coverage`
+2. บันทึกไฟล์ผลลัพธ์: `vitest` → `vitest-output.jsonl`, `cargo test` → `cargo-test-output.txt`
+3. ตรวจสอบ exit code: `0` = pass, `non-zero` = fail
+4. แยก failures เป็น:
+   - `assertion`: test logic ผิดหรือ implementation ผิด
+   - `runtime`: exception, timeout, unhandled rejection
+   - `flaky`: ผ่านบางครั้ง ไม่ผ่านบางครั้ง โดยไม่มีการเปลี่ยน code
+   - `setup`: fixture, mock, database, หรือ environment ผิด
+5. ระบุ file path และ test name สำหรับทุก failure
+6. ตรวจสอบ stack trace แล้วหา root cause
+7. ถ้ามี coverage report → เก็บไฟล์ `coverage/index.html` หรือ `coverage/coverage-summary.json`
+
+### 9. Analyze Coverage Delta And Detect Flakiness
+
+> Goal: ตรวจ coverage หลัง run และหา tests ทีไม่เสถียร
+
+1. เปรียบเทียบ coverage กับ target: Minimal 70%, Standard 85%, Complete 100%
+2. ระบุไฟล์ที coverage ลดลง หรือ source files ทีไม่ถูก test
+3. ใช้ `jq` อ่าน `coverage/coverage-summary.json` เพื่อดูเปอร์เซ็นต์
+4. ระบุ branches/functions/statements ที missing
+5. รัน test ซ้ำ 3 รอบ ถ้า result ไม่ consistent
+6. ตรวจสอบ race condition, shared state, async timing, random data
+7. ตรวจ `beforeEach`/`afterEach` cleanup
+8. ถ้า flaky → คั่นด้วย `tag` และแนะนำให้แก้ก่อน merge
+
+### 10. Decide Actions, Update Skills And Report
+
+> Goal: สรุป action ถัดไป อัปเดต skill ถ้าพบ systemic gap และ report
+
+1. ถ้ามี assertion/implementation failure → แนะนำ `update-test` หรือ `deep-debug`
+2. ถ้ามี runtime/setup failure → แนะนำ `resolve-errors` หรือ `follow-config`
+3. ถ้ามี coverage gap → แนะนำ `write-test` หรือ `update-test`
+4. ถ้ามี flaky → แนะนำ refactor test หรือ `follow-test`
+5. ถ้าผลลัพธ์ทำให้รู้ว่า skill/flow ใดควรปรับปรุง → ใช้ `/update-devin-global-skills`
+6. ถ้าพบว่า skill ทีใช้ (เช่น `write-test`, `update-test`, `follow-test`) ยังไม่ครอบคลุมกรณีทีเจอ → บันทึก gap
+7. รัน `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
+8. ทำ `validate` และ `check-reference` หลัง update
+9. ไม่ update skill โดยไม่มี evidence จาก test result
+10. ทำ `/report-table` ด้วยคอลัมน์: No., Test, Status, Category, Root Cause, Action
+11. ทำ Coverage Delta Report: File, Before, After, Gap, Priority
+12. ทำ Flaky Report: Test, Run 1, Run 2, Run 3, Suspected Cause
+13. ทำ `/suggest-next-action` ตาม priority
+
 ## Rules
 
-### 1. Review Independence
+### 1. Review Only
 
-- ทำ review เท่านั้น ไม่แก้ไข tests ระหว่าง review
-- ถ้าต้องเขียน tests ให้ใช้ `write-test` หรือ `update-test` หลัง review
-- ทุก finding ต้องมี file path และ evidence
+- ทำ review strategy และผลลัพธ์เท่านั้น ไม่แก้ไข source/test code ระหว่าง review
+- ถ้าต้องเขียน/แก้ tests → ใช้ `write-test` หรือ `update-test` หลัง review
+- ถ้าต้องแก้ไข source code จาก failure → ส่งต่อให้ `deep-debug` หรือ `resolve-errors`
+- ถ้าต้องแก้ไข config → ส่งต่อให้ `follow-config`
 
 ### 2. Evidence-Based Findings
 
-- ใช้ `Grep` และ `scan-codebase` สำหรับ verification
+- ทุก finding ต้องมี evidence จาก test output หรือ coverage report
+- ระบุ file path, test name, line number (ถ้ามี)
+- ใช้ `Grep`, `scan-codebase`, `jq`, หรือ `grep` ดึงข้อมูลจาก output ไฟล์
 - ตรวจ source files และ test files แบบ cross-reference
 - จัดลำดับตาม severity: Critical → High → Medium → Low
 
@@ -112,7 +172,19 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - Score < 70 → แนะนำให้เขียน tests เพิ่มก่อน run
 
-### 4. Formatting
+### 4. Skill Update Discipline
+
+- ใช้ `/update-devin-global-skills` เฉพาะเมื่อ test result พบ gap ใน skill ทีมีอยู่จริง
+- ไม่อัปเดต skill เพียงเพราะ project test fail ปกติ
+- ต้องสร้าง issue/หมายเหตุก่อน update skill
+
+### 5. Safety
+
+- ไม่ expose secrets จาก test output หรือ coverage report
+- ไม่รัน destructive commands ระหว่าง review
+- ทำ dry run ถ้าต้อง re-run tests เพื่อ verify flakiness
+
+### 6. Formatting
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
@@ -120,9 +192,12 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ## Expected Outcome
 
-- รายงาน Test Quality Summary พร้อม score และ grade
+- รายงาน Test Quality Summary พร้อม score, grade และ progress bar
 - รายงาน Coverage Gap Report พร้อม priority
 - รายงาน Edge Case Gaps พร้อม action required
-- Test quality score พร้อม progress bar
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-- หลัง run tests แล้วให้ใช้ `/review-test-result` เพื่อวิเคราะห์ผลลัพธ์ และ `/update-devin-global-skills` ถ้าพบ skill gap
+- หลัง run tests ได้ผลลัพธ์ทีสมบูรณ์: failures, coverage, flaky
+- รายการ action ถัดไปเรียงตาม priority
+- Coverage delta report เปรียบเทียบกับ target
+- Flaky test report ถ้ามี
+- Skill ทีเกี่ยวข้องถูกอัปเดตผ่าน `/update-devin-global-skills` เมื่อจำเป็น
+- `/suggest-next-action` แนะนำขั้นตอนถัดไปชัดเจน

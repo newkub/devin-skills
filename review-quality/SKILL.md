@@ -13,7 +13,6 @@ related:
   - report-table
   - suggest-next-action
   - review-test
-  - review-test-result
   - review-performance
   - review-security
   - review-stability

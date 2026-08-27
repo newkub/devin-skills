@@ -15,7 +15,6 @@ related:
   - report-table
   - suggest-next-action
   - review-test
-  - review-test-result
 ---
 
 ## Goal
@@ -101,7 +100,7 @@ Review implementation correctness ของ code, configuration, และ tests
 2. ตรวจสอบว่า tests ไม่ assert ผิด หรือ test happy path อย่างเดียว
 3. ตรวจสอบว่า tests มี regression สำหรับ bugs ทีเคยเกิด
 4. ทำ `/run-test-coverage` เพื่อดู coverage บน critical paths
-5. หลัง run tests ให้ใช้ `/review-test-result` เพื่อวิเคราะห์ผล
+5. หลัง run tests ให้ใช้ `/review-test` เพื่อวิเคราะห์ผล
 
 ### 8. Validate, Score And Report
 
