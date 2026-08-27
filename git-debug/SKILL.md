@@ -3,7 +3,7 @@ name: git-debug
 description: Debug ปัญหาที่เกี่ยวกับ git โดยใช้ bisect, blame, reflog, log และ diff
 related:
   - check-git-files-history
-  - use-git-search
+  - search-in-git
   - restore-from-git-log
 ---
 

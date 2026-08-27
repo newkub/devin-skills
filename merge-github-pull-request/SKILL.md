@@ -3,7 +3,7 @@ name: merge-github-pull-request
 description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
 related:
   - resolve-github-pull-request
-  - edit-git-commit
+  - refactor-commit
   - git-commit
   - git-push
   - deep-validate

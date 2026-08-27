@@ -5,7 +5,7 @@ argument-hint: "[ref]"
 related:
   - check-git-files-history
   - git-debug
-  - use-git-search
+  - search-in-git
 ---
 ## Goal
 

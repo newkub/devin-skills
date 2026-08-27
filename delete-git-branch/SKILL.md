@@ -3,7 +3,7 @@ name: delete-git-branch
 description: ลบ local หรือ remote git branch อย่างปลอดภัย
 related:
   - list-git-commit
-  - edit-git-commit
+  - refactor-commit
   - resolve-github-pull-request
 ---
 

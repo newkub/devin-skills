@@ -4,7 +4,7 @@ description: Debug อย่างละเอียดหลายมิติ 
 related:
   - git-debug
   - check-git-files-history
-  - use-git-search
+  - search-in-git
 ---
 
 ## Goal
@@ -67,7 +67,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. ไล่จากบนลงล่าง: UI → Terminal → Shell → Runtime → OS
 3. ยืนยัน root cause ด้วย 3 เงื่อนไข: reproduce ได้, fix แล้วหาย, กลับมา error ถ้าถอย fix
 4. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
-5. ถ้าต้องค้นหา pattern ใน code หรือ history → ทำ `/use-git-search` เพื่อหา commit/file/line ทีเกี่ยวข้อง
+5. ถ้าต้องค้นหา pattern ใน code หรือ history → ทำ `/search-in-git` เพื่อหา commit/file/line ทีเกี่ยวข้อง
 6. ถ้าสงสัยว่า change ใน git เป็นสาเหตุ → ทำ `/git-debug` เพื่อ trace หา commit ทีทำให้เกิดปัญหา
 7. ถ้าไม่ผ่าน 3 เงื่อนไข → กลับไป Step 4
 

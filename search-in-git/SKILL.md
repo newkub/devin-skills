@@ -1,6 +1,6 @@
 ---
-name: use-git-search
-description: ค้นหา git history, commits, diffs ด้วย log/grep/blame/pickaxe รองรับ local/remote
+name: search-in-git
+description: ค้นหา git history, commits, diffs ด้วย log/grep/blame/pickaxe
 related:
   - git-debug
   - check-git-files-history

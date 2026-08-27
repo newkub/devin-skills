@@ -414,13 +414,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `delete-git-branch: /delete-git-branch`
 - `delete-git-submodules: /delete-git-submodules`
 - `delete-git-worktree: /delete-git-worktree`
-- `edit-git-commit: /edit-git-commit`
 - `git-commit: /git-commit`
 - `git-commit-and-push: /git-commit-and-push`
 - `git-commit-selected-files: /git-commit-selected-files`
 - `git-debug: /git-debug`
 - `git-push: /git-push`
-- `use-git-search: /use-git-search`
+- `search-in-git: /search-in-git`
 - `restore-from-git-log: /restore-from-git-log`
 - `refactor-commit: /refactor-commit`
 - `list-git-commit: /list-git-commit`
@@ -429,7 +428,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `list-git-worktree: /list-git-worktree`
 - `merge-git-branch: /merge-git-branch`
 - `merge-github-pull-request: /merge-github-pull-request`
-- `rename-git-commit: /rename-git-commit`
 
 #### Idea
 

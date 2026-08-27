@@ -167,6 +167,16 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 
 1. ทำตาม `@[/update-references]`
 
+### 11. Quick Amend Or Rename
+
+> Goal: แก้ไข message ของ commit ล่าสุดหรือ commit ก่อนหน้าอย่างรวดเร็ว
+
+1. ถ้า commit ล่าสุดยังไม่ push → รัน `git commit --amend --message="<new-message>"`
+2. ถ้าต้องแก้ message ของ commit ก่อนหน้า → หา N จาก `git log --oneline` แล้ว `git rebase -i HEAD~N`
+3. เปลี่ยน `pick` เป็น `reword` สำหรับ target commit แล้วบันทึก
+4. ถ้า rebase มี conflict → ใช้ `/resolve-merge-conflicts`
+5. ตรวจสอบด้วย `git log --oneline -n 10`
+
 ## Rules
 
 ### 1. Safety
