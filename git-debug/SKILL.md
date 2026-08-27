@@ -2,7 +2,6 @@
 name: git-debug
 description: Debug ปัญหาที่เกี่ยวกับ git โดยใช้ bisect, blame, reflog, log และ diff
 related:
-  - use-git-bisect
   - check-git-files-history
   - use-git-search
   - restore-from-git-log
@@ -35,12 +34,60 @@ related:
 
 > Goal: ใช้ git bisect เพื่อหา commit ที่ทำให้เกิด bug ด้วย binary search
 
-1. ทำ `/use-git-bisect` เพื่อรัน bisect workflow
-2. ระบุ commit ล่าสุดที่รู้ว่า good และ commit แรกที่รู้ว่า bad
-3. ให้ bisect หา commit ที่ทำให้เกิด bug อัตโนมัติ
-4. บันทึก commit hash ที่พบ
-5. รัน `git show <commit-hash>` เพื่อดู changes ของ commit นั้น
-6. วิเคราะห์ว่า change ใดที่ทำให้เกิด bug
+#### 2.1 Prepare
+
+> Goal: ตรวจสอบ repo และสภาพ
+
+1. ถ้าเป็น remote repo → clone ไปยัง temp directory
+2. รัน `git status` เพื่อตรวจ working tree
+3. ถ้ามี uncommitted changes → ถาม user ว่าจะ stash หรือไม่
+4. สำรอง branch ปัจจุบันก่อนเริ่ม bisect
+
+#### 2.2 Identify Range
+
+> Goal: กำหนด good commit และ bad commit
+
+1. รับ bad commit จาก user (default `HEAD`)
+2. รับ good commit จาก user (default หรือ tag)
+3. รัน `git log --oneline <good>..<bad>` เพื่อดู commit ในช่วง
+4. ถ้าไม่ชัดเจน → ทำ `/ask-me` ก่อนเริ่ม
+
+#### 2.3 Start Bisect
+
+> Goal: เริ่ม bisect
+
+1. รัน `git bisect start`
+2. รัน `git bisect bad <bad>`
+3. รัน `git bisect good <good>`
+4. รัน `git bisect run <test-command>` ถ้ามี script ทดสอบอัตโนมัติ
+5. ถ้าไม่มี script → ทำ manual bisect:
+   - รัน `git bisect next` หรือตอบ `git bisect good`/`bad` ตามผลทดสอบ
+
+#### 2.4 Find Bad Commit
+
+> Goal: ระบุ commit ทีทำให้เกิด bug
+
+1. ถ้าใช้ `git bisect run` → รอผลและบันทึก commit hash
+2. ถ้า manual → ทดสอบแต่ละ checkout จนกระทั่ง bisect จบ
+3. รัน `git show <bad-commit>` เพื่อดู changes
+4. บันทึก commit hash, author, date, message
+
+#### 2.5 Reset Bisect
+
+> Goal: กลับสู่สภาพปกติ
+
+1. รัน `git bisect reset`
+2. คืนค่า branch เดิมถ้า detached HEAD
+3. รัน `git status` ยืนยัน
+
+#### 2.6 Report And Analyze
+
+> Goal: สรุปผลและวิเคราะห์
+
+1. ทำ `/report-table` แสดง: Good Commit, Bad Commit, First Bad Commit, Author, Date
+2. แสดง diff ของ first bad commit
+3. วิเคราะห์ว่า change ใดทีทำให้เกิด bug
+4. ทำ `/suggest-next-action` เช่น revert, fix, หรือ test
 
 ### 3. Trace Change With Blame
 

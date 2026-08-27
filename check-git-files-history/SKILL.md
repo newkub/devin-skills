@@ -3,7 +3,6 @@ name: check-git-files-history
 description: ดูประวัติไฟล์ทีระบุจาก git log ไล่เช็คทีละ commit จนกว่าจะเจอเงื่อนไข รองรับ local/remote
 related:
   - git-debug
-  - use-git-bisect
   - restore-from-git-log
 ---
 

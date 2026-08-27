@@ -4,7 +4,6 @@ description: กู้คืนไฟล์จาก git log โดยเริ�
 related:
   - git-debug
   - check-git-files-history
-  - use-git-bisect
 ---
 
 ## Goal

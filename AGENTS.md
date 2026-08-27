@@ -430,7 +430,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `merge-git-branch: /merge-git-branch`
 - `merge-github-pull-request: /merge-github-pull-request`
 - `rename-git-commit: /rename-git-commit`
-- `use-git-bisect: /use-git-bisect`
 
 #### Idea
 
