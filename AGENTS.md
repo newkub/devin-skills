@@ -327,7 +327,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 #### Convert
 
 - `convert-to-product: /convert-to-product`
-- `convert-to-webp: /convert-to-webp`
+- `convert-files-format: /convert-files-format`
 - `convert-to-svg: /convert-to-svg`
 
 #### Summarize

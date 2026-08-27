@@ -125,9 +125,14 @@ related:
 > Goal: สร้าง route reference สำหรับ website project เมื่อจำเป็น
 
 1. ถ้า skill หรือ project มี dependencies กับ website framework/library/tool → ทำ `/list-website-all-routes`
-2. ใช้เนื้อหาจาก `references/website-routes.md` เป็น guide
-3. สร้างหรืออัปเดต `references/routes.md` ตาม framework
-4. ทำ `/check-reference` เพื่อตรวจ broken links
+2. ระบุ framework จาก `package.json` ก่อน
+3. รวบรวม page routes, API routes, redirects, catch-all, dynamic segments, และ auth-required routes
+4. จัดกลุ่ม routes ตาม feature/module (auth, billing, settings, admin)
+5. หา patterns ทีซ้ำ เช่น nested resources `/resource/:id/subresource`
+6. สร้างหรืออัปเดต `references/routes.md` ใน project หรือ skill directory
+7. ใช้ sections: `## Page Routes`, `## API Routes`, `## Dynamic Patterns`, `## Authentication Required`
+8. ไม่รวม test routes หรือ mock routes ยกเว้นระบุชัดเจน
+9. ทำ `/check-reference` เพื่อตรวจ broken links
 
 ## Rules
 

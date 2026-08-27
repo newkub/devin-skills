@@ -4,7 +4,6 @@ description: แปลงรูปภาพ bitmap เป็น SVG ด้วย
 argument-hint: "[input]"
 related:
   - draw-svg-image
-  - convert-to-webp
 ---
 
 ## Goal

@@ -76,16 +76,35 @@ related:
 
 ## Rules
 
+### 1. Discipline
+
 1. `Always /follow-deep first` — ห้าม spawn subagents โดยไม่มี deep context
 2. `One role per subtask` — ไม่ผสมหลาย roles ใน subagent เดียว
 3. `No overlapping edits` — แต่ละ subagent ต้องทำงานคนละชุดไฟล์ เว้นเสียแต่กำหนดชัดเจน
-4. `Merge before ship` — ต้องรวมผลก่อน push หรือ final report
+4. `Merge before ship` — ต้องรวบรวม results, ตรวจ conflicts, และ merge ก่อน push หรือ final report
 5. `Run checks after merge` — ไม่ส่งมอบโดยไม่ validate
 6. `Stop on 3 failures` — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
+
+### 2. Independence
+
+- แต่ละ subtask ต้องไม่พึ่งพากัน
+- ไม่ให้หลาย agent แก้ไขไฟล์เดียวกัน
+- ใช้ `/follow-parallel` สำหรับ parallelization
+
+### 3. Clear Prompts
+
+- แต่ละ agent ต้องได้รับ context ทีเพียงพอ
+- ระบุ deliverable, constraints, success criteria
+
+### 4. Merge Safely
+
+- ตรวจสอบ conflicts ก่อน merge
+- รักษา consistency ของ codebase
+- ทำ validate หลัง merge
 
 ## Expected Outcome
 
 - งานถูกแบ่งและทำขนานกันโดย subagents
 - มี deep context ก่อนเริ่มแก้
-- ผลลัพธ์ถูก merge และผ่าน `run-check`
+- ผลลัพธ์ถูก merge ไม่มี conflicts และผ่าน `run-check`
 - มีรายงานสรุปสั้นและชัดเจน

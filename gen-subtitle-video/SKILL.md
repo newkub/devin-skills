@@ -4,7 +4,7 @@ description: สร้าง subtitle .srt จากวิดีโอด้ว�
 argument-hint: "[video-path]"
 related:
   - analyze-video
-  - convert-to-webp
+  - convert-files-format
   - gen-voice
 ---
 
