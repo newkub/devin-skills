@@ -81,7 +81,7 @@ description: จัดรูปแบบตาราง, bullet, numbered list, 
 1. ตรวจสอบว่าตารางอ่านง่ายบนทุก device
 2. ตรวจสอบ columns/rows ไม่กว้าง/ยาวเกินไป
 3. ตรวจสอบ formatting สอดคล้องกัน
-4. ทำ `/suggest-next-action` ท้าย report
+4. ทำ suggest-next-action ท้าย report
 
 ## Rules
 
@@ -92,9 +92,9 @@ description: จัดรูปแบบตาราง, bullet, numbered list, 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ bullet หรือ numbered list สำหรับสรุป points
-4. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ `report-ansi` สำหรับรายงานสถานะ/progress/logs
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+6. ทำ suggest-next-action ท้าย report เสมอ
 
 ### Table Structure
 

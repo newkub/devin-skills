@@ -17,3 +17,5 @@ Thumbs.db
 temp/
 _tmp_*.py
 
+target/
+
