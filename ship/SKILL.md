@@ -2,6 +2,8 @@
 name: ship
 description: Ship workspace ที่เลือก โดยทำตาม AGENTS.md และอัปเดต skills ก่อน commit
 related:
+  - ship-dont-ask
+  - ship-dont-ask-continuous
   - update-agents-md
   - follow-agents-md
   - update-devin-global-skills

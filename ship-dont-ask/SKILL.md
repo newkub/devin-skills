@@ -3,6 +3,7 @@ name: ship-dont-ask
 description: Ship workspace โดยไม่ถาม confirmation หลัง verify และ validate ผ่าน
 related:
   - ship
+  - ship-dont-ask-continuous
   - dont-ask
   - run-check
   - deep-validate
