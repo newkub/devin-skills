@@ -406,6 +406,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `watch-deploy: /watch-deploy`
 - `watch-typecheck: /watch-typecheck`
 - `watch-build: /watch-build`
+- `watch-ci-cd: /watch-ci-cd`
 - `watch-test: /watch-test`
 - `watch-lint: /watch-lint`
 - `watch-cloudflare: /watch-cloudflare`
