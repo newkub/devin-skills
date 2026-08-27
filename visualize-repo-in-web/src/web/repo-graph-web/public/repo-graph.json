@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    { "id": "node:src", "type": "directory", "label": "src", "metadata": {} },
+    { "id": "node:src/main.rs", "type": "file", "label": "src/main.rs", "metadata": {} },
+    { "id": "node:src/graph.rs", "type": "file", "label": "src/graph.rs", "metadata": {} }
+  ],
+  "edges": [
+    { "source": "node:src", "target": "node:src/main.rs", "type": "contains" },
+    { "source": "node:src", "target": "node:src/graph.rs", "type": "contains" },
+    { "source": "node:src/main.rs", "target": "node:src/graph.rs", "type": "imports" }
+  ]
+}

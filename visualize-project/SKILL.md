@@ -10,6 +10,7 @@ related:
   - follow-tool-vite
   - resolve-errors
   - open-web
+  - visualize-repo-in-web
 ---
 
 ## Goal
