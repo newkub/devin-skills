@@ -66,10 +66,10 @@ related:
 
 > Goal: ตัดสินใจวิธี edit
 
-1. **Direct path reference** → ใช้ `/update-references`
-2. **Relative / partial path** → แก้ด้วย `edit` หรือ `use-ast-grep`
-3. **Semantic / concept** (ชื่อ function, concept, business term) → แก้ตาม context โดยใช้ `edit` ทีละไฟล์
-4. **Pattern duplication** → ใช้ script batch replace ผ่าน `/use-scripts`
+1. `Direct path reference` → ใช้ `/update-references`
+2. `Relative / partial path` → แก้ด้วย `edit` หรือ `use-ast-grep`
+3. `Semantic / concept` (ชื่อ function, concept, business term) → แก้ตาม context โดยใช้ `edit` ทีละไฟล์
+4. `Pattern duplication` → ใช้ script batch replace ผ่าน `/use-scripts`
 
 ### 4. Update References
 

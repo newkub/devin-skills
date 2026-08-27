@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - follow-math-predicate-logic
   - follow-math-concepts
-  - debug
+  - follow-debugging
   - ask-me
 ---
 

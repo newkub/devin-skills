@@ -1,6 +1,6 @@
 ---
 name: update-everythink-in-computer
-description: อัปเดตทุกอย่างในเครื่อง: programs, chezmoi dotfiles, devin global skills
+description: "อัปเดตทุกอย่างในเครื่อง: programs, chezmoi dotfiles, devin global skills"
 ---
 
 ## Goal

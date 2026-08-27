@@ -91,11 +91,11 @@ bunx gen-password generate --length 16
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, conventions, and validation workflows.
+See CONTRIBUTING.md for development setup, conventions, and validation workflows.
 
 ## License
 
-MIT License — see [LICENSE.md](LICENSE.md)
+MIT License — see LICENSE.md
 ````
 
 ## Notes

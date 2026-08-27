@@ -6,7 +6,7 @@ related:
   - follow-math-predicate-logic
   - follow-math-propositional-logic
   - follow-math-concepts
-  - debug
+  - follow-debugging
 ---
 
 ## Goal

@@ -1,6 +1,6 @@
 ---
 name: review-correctness
-description: Review implementation correctness ตรวจ logic, types, edge cases, contracts, invariants, concurrency, tests
+description: Review implementation ตรวจ logic, types, edge cases, contracts, concurrency, tests
 related:
   - review-quality
   - validate

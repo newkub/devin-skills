@@ -4,7 +4,6 @@ description: รายการ repositories ที starred บน GitHub เร
 argument-hint: "[username]"
 related:
   - search-in-github-star
-  - follow-tool-gh
 ---
 
 ## Goal

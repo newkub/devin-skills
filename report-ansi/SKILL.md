@@ -1,6 +1,6 @@
 ---
 name: report-ansi
-description: สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols, และ box-drawing sketches/diagrams
+description: สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols sketches/diagrams
 ---
 
 ## Goal

@@ -58,7 +58,7 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 
 > Goal: สร้าง data model ทีถูกต้องและ type-safe
 
-1. อ่าน [references/api.md](references/api.md) และ [references/configuration.md](references/configuration.md)
+1. อ่าน [references/instantdb-api.md](references/instantdb-api.md) และ [references/instantdb-configuration.md](references/instantdb-configuration.md)
 2. แก้ไข `instant.schema.ts` เพื่อเพิ่ม entities, fields, links, rooms
 3. ใช้ `i.entity({ ... })`, `i.string()`, `i.boolean()`, `i.date()` ตาม docs
 4. ระบุ `unique`, `indexed`, `optional` ตามที่จำเป็น
@@ -89,13 +89,13 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 2. ใช้ `db.transact(db.tx.todos[id()].update({ ... }))` เพื่อ write
 3. ใช้ `db.tx.<entity>[id()].delete()` สำหรับ delete
 4. จัดการ `isLoading`, `error`, `data` จาก `useQuery`
-5. ดู patterns เพิ่มเติมใน [references/api.md](references/api.md)
+5. ดู patterns เพิ่มเติมใน [references/instantdb-api.md](references/instantdb-api.md)
 
 ### 7. Setup Auth And Permissions
 
 > Goal: ป้องกันข้อมูลด้วย auth และ rules
 
-1. ถ้าใช้ built-in auth: อ่าน [references/configuration.md](references/configuration.md) เรื่อง magic codes, OAuth
+1. ถ้าใช้ built-in auth: อ่าน [references/instantdb-configuration.md](references/instantdb-configuration.md) เรื่อง magic codes, OAuth
 2. ตั้งค่า `instant.perms.ts` ด้วย `allow`/`bind` rules
 3. ใช้ `auth.id`, `auth.email` ใน permission rules
 4. รัน `npx instant-cli@latest push perms` เมื่อแก้ permissions
@@ -124,7 +124,7 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 
 > Goal: อัปเดต references และสรุป next action
 
-1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [references/configuration.md](references/configuration.md)
+1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [references/instantdb-configuration.md](references/instantdb-configuration.md)
 2. ทำ `update-references` สำหรับ skills ทีเกี่ยวข้อง
 3. ทำ `suggest-next-action` เพื่อแนะนำ step ถัดไป
 

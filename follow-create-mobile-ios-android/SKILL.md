@@ -5,7 +5,7 @@ argument-hint: "[project-name]"
 related:
   - follow-framework-capacitor
   - follow-create-website
-  - follow-tool-bun
+  - follow-runtime-bun
 ---
 
 ## Goal

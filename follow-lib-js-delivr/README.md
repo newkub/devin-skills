@@ -123,15 +123,15 @@ Add `<script>` or `<link>` tags directly in HTML — no install required.
 
 ## Documentation
 
-- [Overview](intro/intro-overview.md) — Introduction to jsDelivr
-- [Key Concepts](intro/intro-key-concepts.md) — Core concepts
-- [When to Use](intro/intro-when-to-use.md) — Usage guidelines
-- [Installation](setup/setup-installation.md) — Getting started
-- [Configuration](setup/setup-configuration.md) — Configuration
-- [Usage Guide](guide/guide-usage.md) — Usage guide
-- [Best Practices](guide/guide-best-practices.md) — Best practices
-- [API Reference](apis/api-reference.md) — API documentation
-- [API Examples](apis/api-examples.md) — API examples
+- Overview — Introduction to jsDelivr
+- Key Concepts — Core concepts
+- When to Use — Usage guidelines
+- Installation — Getting started
+- Configuration — Configuration
+- Usage Guide — Usage guide
+- Best Practices — Best practices
+- API Reference — API documentation
+- API Examples — API examples
 
 ## License
 

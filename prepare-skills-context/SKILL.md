@@ -97,7 +97,7 @@ argument-hint: "[skill-name]"
 - `run-*` → output ไป OS temp directory, ใช้ `/use-scripts` ก่อน, มี error handling และ verification
 - `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
 - `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
-- `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ `∥` markers
+- `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ parallel markers
 - `review-*`/`analyze-*` → ใช้ `/update-review-codebase-cli-and-run` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-table`
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills

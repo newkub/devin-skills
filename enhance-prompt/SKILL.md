@@ -1,6 +1,6 @@
 ---
 name: enhance-prompt
-description: สรุป prompt ของผู้ใช้เป็น numbered list โดยแต่ละข้อมีหน่วยงานเดียว (single responsibility) เพื่อให้ทีมหรือ agent ดำเนินการต่อได้ชัดเจน
+description: สรุป prompt เป็น numbered list แต่ละข้อ single responsibility เพื่อดำเนินการต่อชัดเจน
 ---
 
 ## Goal

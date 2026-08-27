@@ -2,4 +2,5 @@
 
 | File | Responsibility |
 |---|---|
-| [nextjs.md](nextjs.md) | Next.js 15 framework reference |
+| [nextjs-core.md](nextjs-core.md) | Next.js core framework reference |
+| [nextjs-advanced.md](nextjs-advanced.md) | Next.js advanced patterns reference |

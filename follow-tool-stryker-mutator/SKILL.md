@@ -15,6 +15,8 @@ description: ตั้งค่าและใช้งาน Stryker Mutator �
 
 ### 1. Installation
 
+> Goal: ติดตั้ง Stryker ด้วย Bun
+
 ติดตั้ง Stryker ด้วย Bun:
 
 ```bash
@@ -28,6 +30,8 @@ bun add -D @stryker-mutator/core
 ```
 
 ### 2. Configuration
+
+> Goal: ตั้งค่า Stryker สำหรับ project
 
 สร้าง `stryker.config.mjs` หรือใช้ initializer:
 
@@ -49,6 +53,8 @@ export default {
 
 ### 3. Run Mutation Testing
 
+> Goal: รัน mutation testing ด้วย Stryker
+
 รัน Stryker เพื่อทำ mutation testing:
 
 ```bash
@@ -62,6 +68,8 @@ bunx stryker run --logLevel trace
 ```
 
 ### 4. Supported Mutators
+
+> Goal: ระบุ mutators ที Stryker รองรับ
 
 Stryker รองรับ mutators มากกว่า 30 ชนิด:
 
@@ -83,6 +91,8 @@ Stryker รองรับ mutators มากกว่า 30 ชนิด:
 
 ### 5. Reports
 
+> Goal: ตรวจสอบ mutation reports
+
 ตรวจสอบ mutation reports:
 
 - HTML report: `reports/mutation/html/index.html`
@@ -90,6 +100,8 @@ Stryker รองรับ mutators มากกว่า 30 ชนิด:
 - Clear text report: terminal output
 
 ### 6. CI Integration
+
+> Goal: เพิ่ม Stryker ใน CI pipeline
 
 เพิ่ม Stryker ใน CI pipeline:
 

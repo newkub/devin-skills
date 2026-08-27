@@ -1,6 +1,6 @@
 ---
 name: follow-architecture
-description: เลือก architecture pattern ตาม package manifest แล้วส่งต่อไปยัง follow-*-architecture skill ที่เหมาะสม
+description: เลือก architecture pattern ตาม package manifest แล้วส่งต่อ
 related:
   - follow-clean-architecture
   - follow-layered-architecture

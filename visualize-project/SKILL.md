@@ -1,6 +1,6 @@
 ---
 name: visualize-project
-description: สร้าง Vite + Solid + TanStack project ชั่วคราวใน temp เพื่อ visualize project ตาม taxonomy แบบ 2-col scrollspy
+description: สร้าง Vite + Solid + TanStack project ชั่วคราวใน temp เพื่อ visualize
 argument-hint: "[project-or-items]"
 related:
   - taxonomy

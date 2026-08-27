@@ -1,6 +1,6 @@
 ---
 name: idea-new-devin-skills-global
-description: แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก context ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+description: แนะนำ devin global skills จาก context ปัจจุบัน พร้อมสร้างไอเดียใหม่
 argument-hint: "[context]"
 related:
   - idea-convert-my-global-cli-to-skills

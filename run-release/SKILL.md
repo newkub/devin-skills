@@ -1,6 +1,6 @@
 ---
 name: run-release
-description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG.md และ release notes อัตโนมัติ
+description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
 related:
   - ship
   - gen-changelog-md

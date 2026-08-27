@@ -1,6 +1,6 @@
 ---
 name: refactor-workspace
-description: Refactor workspace members (packages, crates, modules) ให้มี SRP, แนะนำ workspace members จาก workspace, และอัปเดท references
+description: Refactor workspace members ให้มี SRP, แนะนำ workspace layout
 ---
 
 ## Goal

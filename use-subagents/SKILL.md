@@ -76,12 +76,12 @@ related:
 
 ## Rules
 
-1. **Always /follow-deep first** — ห้าม spawn subagents โดยไม่มี deep context
-2. **One role per subtask** — ไม่ผสมหลาย roles ใน subagent เดียว
-3. **No overlapping edits** — แต่ละ subagent ต้องทำงานคนละชุดไฟล์ เว้นเสียแต่กำหนดชัดเจน
-4. **Merge before ship** — ต้องรวมผลก่อน push หรือ final report
-5. **Run checks after merge** — ไม่ส่งมอบโดยไม่ validate
-6. **Stop on 3 failures** — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
+1. `Always /follow-deep first` — ห้าม spawn subagents โดยไม่มี deep context
+2. `One role per subtask` — ไม่ผสมหลาย roles ใน subagent เดียว
+3. `No overlapping edits` — แต่ละ subagent ต้องทำงานคนละชุดไฟล์ เว้นเสียแต่กำหนดชัดเจน
+4. `Merge before ship` — ต้องรวมผลก่อน push หรือ final report
+5. `Run checks after merge` — ไม่ส่งมอบโดยไม่ validate
+6. `Stop on 3 failures` — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
 
 ## Expected Outcome
 

@@ -1,6 +1,6 @@
 ---
 name: create-plan-md-in-dot-devin
-description: สร้างแผนงานละเอียดใน .devin/plan/<title-time>.md ด้วย /deep-plan, /report-plan, /improve, /review-plan
+description: สร้างแผนละเอียดใน .devin/plan/<title-time>.md
 argument-hint: "[title]"
 related:
   - deep-plan

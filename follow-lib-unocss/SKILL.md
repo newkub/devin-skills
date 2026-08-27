@@ -196,7 +196,7 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 - `transformerDirectives`: ใช้ `@apply`, `@screen`, `theme()` directives
 - `transformerAttributifyJsx`: JSX attributify ด้วย oxc parser
 
-### presetWind4 Features
+### PresetWind4 Features
 
 ใช้ features ของ presetWind4:
 
@@ -207,7 +207,7 @@ description: ติดตั้งและตั้งค่า UnoCSS v66 พ�
 - `supports-*` variants สำหรับ feature queries
 - Dark mode ผ่าน CSS variables อัตโนมัติ
 
-### Migration From presetWind3
+### Migration From PresetWind3
 
 Migration จาก presetWind3:
 

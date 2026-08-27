@@ -15,7 +15,7 @@ description: ตั้งค่า build pipeline สำหรับ packages �
 
 ## Setup
 
-### config
+### Configure Build Packages
 
 ### Libraries
 

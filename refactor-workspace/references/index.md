@@ -1,5 +1,5 @@
-# Refactor Packages References Index
+# Refactor Workspace References Index
 
 | File | Responsibility |
 |---|---|
-| [use-packages.md](use-packages.md) | Workspace package analysis and recommendation reference |
+| [use-workspace-members.md](use-workspace-members.md) | Workspace package analysis and recommendation reference |

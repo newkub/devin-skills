@@ -6,7 +6,7 @@ related:
   - follow-math-propositional-logic
   - follow-math-concepts
   - follow-math-set-theory
-  - debug
+  - follow-debugging
   - ask-me
 ---
 

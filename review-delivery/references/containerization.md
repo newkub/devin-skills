@@ -55,7 +55,7 @@
 
 > Goal: เขียน `Dockerfile` หรือ `Containerfile` ตาม best practices
 
-ดู Dockerfile syntax และ supported instructions ใน [references/docker.md](references/docker.md)
+ดู Dockerfile syntax และ supported instructions ใน [docker.md](docker.md)
 
 1. เรียงคำสั่งจาก least-frequent เปลี่ยน ไป frequent เพื่อ layer caching
 2. copy dependency manifests ก่อนแล้ว install ก่อน copy source
@@ -80,7 +80,7 @@
 
 > Goal: build image และตรวจสอบ
 
-ดู CLI commands สำหรับแต่ละ engine ใน [references/docker.md](references/docker.md)
+ดู CLI commands สำหรับแต่ละ engine ใน [docker.md](docker.md)
 
 1. รัน `docker build -t <image>:<tag> .` หรือ `podman build -t <image>:<tag> .`
 2. ถ้าใช้ buildah: `buildah bud -t <image>:<tag> .`
@@ -129,7 +129,7 @@
 
 ### 5. Container Engine Support
 
-ดู engine equivalence table ใน [references/docker.md](references/docker.md)
+ดู engine equivalence table ใน [docker.md](docker.md)
 
 - รองรับ Docker, Podman, buildah, nerdctl
 - ใช้คำสั่ง equivalent ตาม engine
