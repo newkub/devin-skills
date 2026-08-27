@@ -8,6 +8,10 @@ related:
   - update-test
   - follow-test
   - update-devin-global-skills
+  - report-table
+  - suggest-next-action
+  - validate
+  - check-reference
 ---
 
 ## Goal
@@ -74,7 +78,7 @@ Review ผลลัพธ์จากการ run tests (pass/fail, coverage, f
 > Goal: ปรับปรุง skill ถ้าพบ systemic test gap
 
 1. ถ้าพบว่า skill ทีใช้ (เช่น `write-test`, `update-test`, `follow-test`) ยังไม่ครอบคลุมกรณีทีเจอ → บันทึก gap
-2. รัน� `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
+2. รัน `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
 3. ทำ `validate` และ `check-reference` หลัง update
 4. ไม่ update skill โดยไม่มี evidence จาก test result
 
@@ -82,7 +86,7 @@ Review ผลลัพธ์จากการ run tests (pass/fail, coverage, f
 
 > Goal: สรุปผลและ action ถัดไป
 
-1. ทำ `/report-table` ด้วยคอลัมน์: Test, Status, Category, Root Cause, Action
+1. ทำ `/report-table` ด้วยคอลัมน์: No., Test, Status, Category, Root Cause, Action
 2. ทำ Coverage Delta Report: File, Before, After, Gap, Priority
 3. ทำ Flaky Report: Test, Run 1, Run 2, Run 3, Suspected Cause
 4. ทำ `/suggest-next-action` ตาม priority

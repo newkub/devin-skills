@@ -11,6 +11,10 @@ related:
   - review-redundancy
   - review-consistency
   - validate
+  - report-table
+  - suggest-next-action
+  - use-subagents
+  - follow-parallel
 ---
 
 ## Goal
@@ -81,10 +85,18 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 > Goal: สรุปผลการ review
 
-1. สร้าง table: Aspect, Finding, Severity, Recommendation
-2. Aspects: speed, safety, usability, efficiency, redundancy
-3. ระบุ quick wins และ high-impact changes
-4. ถ้ามีปัญหาใหญ่ → ทำ `/ask-me` ก่อน implement
+1. สร้าง table: No., Aspect, Finding, Severity, Recommendation
+2. เรียงลำดับแถว 1, 2, 3, ... ตามลำดับของแถว
+3. Aspects: speed, safety, usability, efficiency, redundancy
+4. ระบุ quick wins และ high-impact changes
+5. ถ้ามีปัญหาใหญ่ → ทำ `/ask-me` ก่อน implement
+
+### 8. Validate
+
+> Goal: ตรวจสอบความถูกต้องหลัง review
+
+1. ทำ `/validate` เพื่อ validate findings กับ skill structure
+2. ถ้า validation ไม่ผ่าน → แก้ไขแล้ว re-validate
 
 ## Rules
 

@@ -6,6 +6,16 @@ related:
   - review-quality
   - run-profiler
   - run-bench
+  - deep-analyze
+  - run-review
+  - deep-validate
+  - validate
+  - report-table
+  - suggest-next-action
+  - use-ast-grep
+  - follow-my-tech-stack
+  - review-seo
+  - review-delivery
 ---
 
 ## Goal
@@ -94,7 +104,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 1. ตรวจสอบ cache invalidation, TTL, key design, storage
 2. ตรวจสอบ cache stampede, thundering herd, warming
-3. ทำ `/review-quality` อ้างอิง `references/time-complexity.md` เพื่อวิเคราะห์ Big O บน critical paths
+3. ดู `references/time-complexity.md` เพื่อวิเคราะห์ Big O และ data structure บน critical paths
 4. ตรวจสอบ data structure selection กับ input size
 
 ### 8. Concurrency Review

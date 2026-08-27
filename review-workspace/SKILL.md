@@ -1,6 +1,20 @@
 ---
 name: review-workspace
 description: Review workspace ใน monorepo หรือ project เดี่ยว ครอบคลุม manifest, dependencies, scripts, config
+related:
+  - check-monorepo
+  - list-workspaces
+  - scan-codebase
+  - follow-package-manifest
+  - check-unused-deps
+  - run-audit
+  - update-review-codebase-cli-and-run
+  - run-verify
+  - validate
+  - report-table
+  - suggest-next-action
+  - refactor-workspace
+  - review-techstack
 ---
 
 ## Goal
@@ -93,7 +107,7 @@ validate findings และสรุปผล
 1. ทำ `/validate` เพื่อตรวจสอบ findings
 2. ให้ severity ต่อ finding: Critical, High, Medium, Low, Info
 3. คำนวณ review score โดย weighted average
-4. ทำ `/report-table` สำหรับ summary
+4. ทำ `/report-table` สำหรับ summary ด้วยคอลัมน์ `No., Category, Finding, Severity, Evidence, Recommendation` โดย `No.` เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules

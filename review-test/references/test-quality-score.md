@@ -19,9 +19,9 @@
 
 แต่ละ category ได้คะแนน:
 
-- ✅ = 1.0 — ผ่านเกณฑ์ ไม่มี critical หรือ high findings
-- ⚠️ = 0.5 — มี medium หรือ low findings ต้องระวัง
-- ❌ = 0.0 — มี critical หรือ high findings ต้องแก้ก่อน
+- ผ่าน = 1.0 — ผ่านเกณฑ์ ไม่มี critical หรือ high findings
+- เตือน = 0.5 — มี medium หรือ low findings ต้องระวัง
+- ไม่ผ่าน = 0.0 — มี critical หรือ high findings ต้องแก้ก่อน
 
 ## Formula
 

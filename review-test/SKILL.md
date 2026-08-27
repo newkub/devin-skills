@@ -86,9 +86,9 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 1. คำนวณ test quality score จาก [references/test-quality-score.md](references/test-quality-score.md)
 2. ทำ `/report` พร้อม `/report-table`
-3. สร้างตาราง Test Quality Summary: Category, Status, Findings, Score
-4. สร้างตาราง Coverage Gap Report: File, Missing Tests, Coverage Type, Priority
-5. สร้างตาราง Edge Case Gaps: Function, Missing Category, Severity, Action
+3. สร้างตาราง Test Quality Summary: No., Category, Status, Findings, Score
+4. สร้างตาราง Coverage Gap Report: No., File, Missing Tests, Coverage Type, Priority
+5. สร้างตาราง Edge Case Gaps: No., Function, Missing Category, Severity, Action
 6. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
@@ -107,7 +107,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ### 3. Scoring
 
-- คะแนนต่อ category: ✅ = 1, ⚠️ = 0.5, ❌ = 0
+- คะแนนต่อ category: ผ่าน = 1, เตือน = 0.5, ไม่ผ่าน = 0
 - Test quality score = (total score / total categories) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - Score < 70 → แนะนำให้เขียน tests เพิ่มก่อน run
