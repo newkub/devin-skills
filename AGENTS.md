@@ -4,8 +4,8 @@ description: Index of global and project-specific Devin CLI skills
 related:
   - update-agents-md
   - follow-agents-md
-  - follow-create-devin-skills
-  - validate
+  - update-devin-global-skills
+  - deep-validate
   - review-rules
   - review-devin-global-skills
   - git-commit
@@ -30,7 +30,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/update-agents-md` before starting every task
 2. Run `/follow-agents-md` to read and follow `AGENTS.md`
 3. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-4. Read `/follow-create-devin-skills` when editing a skill
+4. Read `/update-devin-global-skills` when editing a skill
 
 ### 2. Maintain AGENTS.md
 
@@ -48,7 +48,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 1. Run `/review-rules` to check `AGENTS.md`
 2. Run `/review-devin-global-skills` when editing skills
-3. Run `/validate` to verify correctness
+3. Run `/deep-validate` to verify correctness
 4. Run `/git-commit` or `/ship` to commit changes
 5. Run `/report` to summarize results
 
@@ -63,8 +63,8 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 2. Architecture
 
-- `devin-cli-skills: /follow-create-devin-skills`
-- `skill-format: /follow-create-devin-skills/references/frontmatter.md`
+- `devin-cli-skills: /update-devin-global-skills`
+- `skill-format: /update-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 - `submodules: 3 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web)`
 
@@ -75,11 +75,11 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `update-agents-md: /update-agents-md`
 - `follow-agents-md: /follow-agents-md`
 - `learn-from-web: /learn-from-web`
-- `follow-create-devin-skills: /follow-create-devin-skills`
-- `follow-create-devin-subagents: /follow-create-devin-subagents`
+- `update-devin-global-skills: /update-devin-global-skills`
+- `update-devin-global-subagents: /update-devin-global-subagents`
 - `follow-devin-skills: /follow-devin-skills`
 - `follow-principles: /follow-principles`
-- `follow-alignment: /follow-alignment`
+- `alignment: /alignment`
 - `follow-devin-global-subagents: /follow-devin-global-subagents`
 - `ask-project-requirement: /ask-project-requirement`
 - `ask-me: /ask-me`
@@ -90,7 +90,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-enter-dot: /follow-enter-dot`
 - `follow-deep: /follow-deep`
 - `plan-with-me: /plan-with-me`
-- `validate: /validate`
+- `deep-validate: /deep-validate`
 - `review-rules: /review-rules`
 - `review-devin-global-skills: /review-devin-global-skills`
 - `ship: /ship`
@@ -101,6 +101,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `report-flow: /report-flow`
 - `report-html: /report-html`
 - `consider-use-in-another-skills: /consider-use-in-another-skills`
+- `do-it-all: /do-it-all`
 - `at-this-repo: /at-this-repo`
 - `edit-this-repo: /edit-this-repo`
 - `report-usage-md: /report-usage-md`
@@ -109,12 +110,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `resolve-github-pull-request: /resolve-github-pull-request`
 - `fix: /fix`
 - `improve: /improve`
-- `delete-files: /delete-files`
+- `delete: /delete`
 - `delete-project-from-local-remote: /delete-project-from-local-remote`
 - `cleanup-files-in-computer: /cleanup-files-in-computer`
-- `merge-files-in: /merge-files-in`
-- `move-files-in: /move-files-in`
-- `rename-files-to: /rename-files-to`
+- `merge-in: /merge-in`
+- `move-to: /move-to`
+- `rename-to: /rename-to`
 - `create-github-issue: /create-github-issue`
 - `realize-implementation: /realize-implementation`
 - `implement-mock: /implement-mock`
@@ -199,16 +200,12 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `gen-changelog-md: /gen-changelog-md`
 - `update-usage-md: /update-usage-md`
 - `update-todo-md: /update-todo-md`
-- `add-to-todo-md: /add-to-todo-md`
-- `add-to-todo-in-drive-d: /add-to-todo-in-drive-d`
-- `add-to-queue: /add-to-queue`
 
 #### Global Config
 
-- `align-global-rules: /align-global-rules`
-- `edit-devin-global-rules: /edit-devin-global-rules`
+- `follow-global-rules: /follow-global-rules`
 - `list-devin-global-mcp: /list-devin-global-mcp`
-- `edit-devin-global-mcp: /edit-devin-global-mcp`
+- `update-devin-global-mcp: /update-devin-global-mcp`
 - `list-devin-global-hooks: /list-devin-global-hooks`
 
 #### Review
@@ -286,6 +283,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-create-eslint-plugins: /follow-create-eslint-plugins`
 - `follow-create-github-action: /follow-create-github-action`
 - `follow-create-line-bot: /follow-create-line-bot`
+- `follow-create-mcp: /follow-create-mcp`
 - `follow-create-mobile-android: /follow-create-mobile-android`
 - `follow-create-mobile-ios: /follow-create-mobile-ios`
 - `follow-create-mobile-ios-android: /follow-create-mobile-ios-android`
@@ -354,7 +352,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `use-ast-grep: /use-ast-grep`
 - `list-website-all-routes: /list-website-all-routes`
 - `list-project-task: /list-project-task`
-- `list-todo-in-drive-d: /list-todo-in-drive-d`
 - `list-project-git-in-computer: /list-project-git-in-computer`
 - `all-remote-repo: /all-remote-repo`
 - `list-github-pull-request: /list-github-pull-request`
@@ -378,7 +375,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `use-pwsh-shell: /use-pwsh-shell`
 - `use-ast-grep: /use-ast-grep`
 - `use-ast-grep-programatic: /use-ast-grep-programatic`
-- `use-ast-grep-outline: /use-ast-grep-outline`
+- `check-code-structure: /check-code-structure`
 
 #### Watch
 
@@ -406,6 +403,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 #### Git
 
+- `check-git-files-history: /check-git-files-history`
 - `convert-to-git-submodules: /convert-to-git-submodules`
 - `create-github-pull-request: /create-github-pull-request`
 - `create-worktree-in-project: /create-worktree-in-project`
@@ -417,7 +415,10 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `git-commit: /git-commit`
 - `git-commit-and-push: /git-commit-and-push`
 - `git-commit-selected-files: /git-commit-selected-files`
+- `git-debug: /git-debug`
 - `git-push: /git-push`
+- `use-git-search: /use-git-search`
+- `restore-from-git-log: /restore-from-git-log`
 - `refactor-commit: /refactor-commit`
 - `list-git-commit: /list-git-commit`
 - `list-git-release: /list-git-release`
@@ -426,10 +427,11 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `merge-github-pull-request: /merge-github-pull-request`
 - `merge-worktree-to-main: /merge-worktree-to-main`
 - `rename-git-commit: /rename-git-commit`
+- `use-git-bisect: /use-git-bisect`
 
 #### Idea
 
-- `idea-new-devin-skills-global: /idea-new-devin-skills-global`
+- `idea-create-devin-skills-global: /idea-create-devin-skills-global`
 - `idea-convert-my-global-cli-to-skills: /idea-convert-my-global-cli-to-skills`
 - `idea-features: /idea-features`
 - `idea-improve-files-naming: /idea-improve-files-naming`

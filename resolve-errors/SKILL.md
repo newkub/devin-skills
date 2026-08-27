@@ -21,7 +21,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: เตรียม context ก่อนเริ่มแก้ไข error
 
-1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
+1. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้องแบบ recursive
 2. ทำ `/scan-codebase` เพื่อทำความเข้าใจ structure ของไฟล์ที่มี error
 3. ถ้าไฟล์ยาว >250 บรรทัด → อ่าน `/refactor` ก่อนแก้
 4. ถ้าเข้าถึง workspace ไม่ได้ → stop และ report โดยไม่แก้ไขไฟล์
@@ -56,7 +56,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. แก้ไขที่จุดเดียวที่เป็น root cause จริง — single-line change เมื่อเป็นไปได้
 2. ถ้า error มีจำนวนมาก → ใช้ `/use-scripts` เพื่อ automate:
-   - Batch text replacement — แก้ typo, rename, import path ในหลายไฟล์ด้วย `Bun.Glob` + `Bun.file()` + `Bun.write()` หรือใช้ `/rename-files-to` สำหรับ rename code identifiers
+   - Batch text replacement — แก้ typo, rename, import path ในหลายไฟล์ด้วย `Bun.Glob` + `Bun.file()` + `Bun.write()` หรือใช้ `/rename-to` สำหรับ rename code identifiers
    - ast-grep structural fix — แก้ code pattern ที่ต้องเปลี่ยนโครงสร้าง AST
    - Parallel fix — แก้ independent errors ในหลายไฟล์พร้อมกันด้วย `Promise.all` ถ้า errors มี dependency ระหว่างกัน → แก้ตามลำดับแทน
 3. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-references` อัปเดท references
@@ -138,11 +138,11 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/deep-review` — errors มาก ต้องจัดลำดับ
 - `/debug-issue` — ยังไม่พบ root cause
 - `/deep-debug` — error ซับซ้อน ต้องวางแผนแก้และป้องกันซ้ำ
-- `/run-verify` — รัน lint + typecheck + scan รวม
+- `/run-verify-fast` — รัน lint + typecheck + scan รวม
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน
 - `/watch-browser-console` — error มาจาก browser console
 - `/update-references` — fix กระทบ references ในหลายไฟล์
-- `/rename-files-to` — rename code identifiers ที่เป็น root cause ของ error
+- `/rename-to` — rename code identifiers ที่เป็น root cause ของ error
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน
 - `/memorize` — จดจำบทเรียนจาก error
 

@@ -18,7 +18,7 @@ argument-hint: "[skill-name]"
 
 > Goal: อ่าน skills ที่เกี่ยวข้อง
 
-1. ทำ `/read-related-skills` เพื่อสร้าง dependency graph และสรุป skills
+1. ทำ `/check-skills-related` เพื่อสร้าง dependency graph และสรุป skills
 
 ### 2. Synthesize And Report
 
@@ -33,9 +33,9 @@ argument-hint: "[skill-name]"
 
 ### 1. Orchestration Only
 
-- เป็น orchestrator เรียก `/read-related-skills` โดยตรง — ไม่ทำงานซ้ำ
+- เป็น orchestrator เรียก `/check-skills-related` โดยตรง — ไม่ทำงานซ้ำ
 - ไม่ใช้ `/review-quality` เพราะจะซ้ำซ้อนกับการอ่าน related context
-- ไม่ duplicate เนื้อหาของ `/read-related-skills`
+- ไม่ duplicate เนื้อหาของ `/check-skills-related`
 
 ### 2. Output
 

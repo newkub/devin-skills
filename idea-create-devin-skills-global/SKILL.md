@@ -1,12 +1,12 @@
 ---
-name: idea-new-devin-skills-global
+name: idea-create-devin-skills-global
 description: แนะนำ devin global skills จาก context ปัจจุบัน พร้อมสร้างไอเดียใหม่
 argument-hint: "[context]"
 related:
   - idea-convert-my-global-cli-to-skills
   - idea-features
   - idea-improve-files-naming
-  - create-devin-global-skills
+  - update-devin-global-skills
 ---
 
 ## Goal

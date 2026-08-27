@@ -35,7 +35,7 @@ related:
 
 วิเคราะห์สถานการณ์และ constraints
 
-1. อ่าน `/read-related-skills` เพื่อดู workflows ที่เกี่ยวข้อง
+1. อ่าน `/check-skills-related` เพื่อดู workflows ที่เกี่ยวข้อง
 2. ตรวจสอบ dependencies และ constraints
 3. ประเมิน resources ที่มีอยู่
 4. ระบุ risks และ assumptions

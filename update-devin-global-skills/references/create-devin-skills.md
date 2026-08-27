@@ -1,8 +1,4 @@
----
-name: follow-create-devin-skills
-description: สร้างหรือปรับปรุง Devin global skill package ตามมาตรฐาน
-argument-hint: "[skill-name]"
----
+# Create Devin Skills Reference
 
 ## Goal
 
@@ -19,17 +15,17 @@ argument-hint: "[skill-name]"
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
 1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
-2. ทำ `/read-related-skills` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/consider-use-in-another-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
+2. ทำ `/check-skills-related` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/consider-use-in-another-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 4. ทำ `/learn-from-web` จาก Devin CLI docs เมื่อต้องการ verify spec
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
-6. ถ้า skill มี dependencies (จำเป็นหรือ optional) จึงสร้าง `references/` → ดู [references/dependencies.md](references/dependencies.md)
+6. ถ้า skill มี dependencies (จำเป็นหรือ optional) จึงสร้าง `references/` → ดู [dependencies.md](dependencies.md)
 
 ### 2. Select Template
 
 > Goal: skill มีโครงสร้างเริ่มต้นที่เหมาะสม
 
-1. เลือก template ตาม prefix ดูรายละเอียดใน [templates/index.md](templates/index.md)
+1. เลือก template ตาม prefix ดูรายละเอียดใน [../templates/index.md](../templates/index.md)
 2. ถ้าไม่ตรง template → ใช้โครงสร้างมาตรฐาน `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`
 3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
 4. สร้าง directory structure ตาม pattern ใน template ที่เลือก
@@ -38,7 +34,7 @@ argument-hint: "[skill-name]"
 
 > Goal: สร้าง skill จาก URL หรือ domain ถ้า user ระบุ
 
-1. ถ้ามี URL หรือ domain จาก user → ใช้ `references/create-from-url.md` เป็น guide
+1. ถ้ามี URL หรือ domain จาก user → ใช้ [create-from-url.md](create-from-url.md) เป็น guide
 2. ทำตามขั้นตอนใน reference เพื่อดึงเนื้อหา จัดกลุ่ม และสร้าง subskills
 3. หลังจากสร้าง parent และ subskills → ดำเนินตาม `### 4. Write SKILL.md`
 4. ถ้าไม่มี URL หรือ domain → ข้าม step นี้
@@ -47,7 +43,7 @@ argument-hint: "[skill-name]"
 
 > Goal: `SKILL.md` ถูกต้องตาม Devin CLI spec
 
-1. เขียน YAML frontmatter ตาม [references/frontmatter.md](references/frontmatter.md)
+1. เขียน YAML frontmatter ตาม [frontmatter.md](frontmatter.md)
 2. เขียน prompt body ตามลำดับ: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
 3. `## Execute` แบ่งเป็น steps ไม่เกิน 10 โดยใช้ `### N. Step Name`, description, `> Goal:`, และ numbered list
 4. ใช้ `## Key Concepts`, `## Principles`, `## Guide`, หรือ `## Examples` เมื่อต้องการเน้นรูปแบบหรือตัวอย่าง
@@ -57,16 +53,16 @@ argument-hint: "[skill-name]"
 
 > Goal: skill directory รองรับไฟล์ย่อยโดยไม่ทำให้ `SKILL.md` ยาวเกินไป
 
-1. ดูรายละเอียดใน [references/directory-structure.md](references/directory-structure.md)
+1. ดูรายละเอียดใน [directory-structure.md](directory-structure.md)
 2. ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์มีหน้าที่เดียวชัดเจน ไม่ผสมหลาย responsibilities ในไฟล์เดียว
 
 ### 6. Create Src (if needed)
 
 > Goal: skill ที่ระบุ CLI หรือ web มี `src/` directory พร้อมรันและ ship
 
-1. ดูรายละเอียดใน [references/src.md](references/src.md)
-2. ใช้ `src/presentation/cli.ts` เป็น entry point สำหรับ CLI
-3. ใช้ `src/` เก็บ web app code สำหรับ web-based skills
+1. ดูรายละเอียดใน [src.md](src.md)
+2. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust
+3. ใช้ `src/` เก็บ web app code หรือ MCP server code ตามประเภท
 4. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระ
 5. ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
@@ -74,7 +70,7 @@ argument-hint: "[skill-name]"
 
 > Goal: skill package ผ่านเกณฑ์ทั้งหมด
 
-1. ดูรายละเอียดใน [references/validation.md](references/validation.md)
+1. ดูรายละเอียดใน [validation.md](validation.md)
 
 ### 8. Update References And Agents
 
@@ -130,8 +126,9 @@ argument-hint: "[skill-name]"
 
 ### 5. Src Support
 
-- ถ้า skill ต้องการ CLI → เรียก `/follow-create-bun-cli` หรือ `/follow-create-cli` ก่อน validation. ใช้ `src/presentation/cli.ts` เป็น entry point. ตรวจสอบว่า `bun run dev` และ `bun run build` ทำงานได้
-- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า `bunx serve src/` หรือ `/open-web` ทำงานได้
+- ถ้า skill ต้องการ CLI → เรียก `/follow-create-cli` ก่อน validation. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust. ตรวจสอบว่า dev/build ทำงานได้ด้วยคำสั่งที่เหมาะสม
+- ถ้า skill ต้องการ web → เรียก `/review-frontend` ก่อนสร้าง `src/`. ใช้ `/visualize-in-web` เพื่อสร้าง HTML entry. ตรวจสอบว่า dev server หรือ `/open-web` ทำงานได้
+- ถ้า skill ต้องการ MCP server → เรียก `/follow-create-mcp` (พยายาม Rust ก่อน) แล้วอัปเดต `mcp_config.json`
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 - ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
 - ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน ไม่ต้องถาม user
@@ -140,9 +137,9 @@ argument-hint: "[skill-name]"
 
 - ใช้ `subagent: true` สำหรับงาน focused, self-contained. ใช้ `agent: <profile>` เมื่อต้องการ profile เฉพาะ. ถ้าตั้งทั้ง `agent` และ `subagent` → `agent` มี precedence. skill ที่รันเป็น subagent จะไม่ spawn nested subagents
 
-### 8. Dependencies
+### 7. Dependencies
 
-- ดูรายละเอียดใน [references/dependencies.md](references/dependencies.md)
+- ดูรายละเอียดใน [dependencies.md](dependencies.md)
 - install commands ใน `SKILL.md` และ `references/` ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 ## Expected Outcome
@@ -157,4 +154,4 @@ argument-hint: "[skill-name]"
 
 ## Examples
 
-ดูตัวอย่าง skill ใน [examples/review-skill.md](examples/review-skill.md)
+ดูตัวอย่าง skill ใน [../examples/review-skill.md](../examples/review-skill.md)

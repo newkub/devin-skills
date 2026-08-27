@@ -31,7 +31,7 @@ argument-hint: "[file]"
 3. อ่านไฟล์ที่ import ไฟล์เป้าหมาย (reverse dependencies)
 4. ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด
    - ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
-5. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+5. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 
 ### 3. Analyze From Scratch
 
@@ -64,8 +64,8 @@ argument-hint: "[file]"
 
 > Goal: ตรวจสอบผลลัพธ์ใหม่ทั้งหมด
 
-1. ทำ `/validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan
+1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
+2. ทำ `/run-verify-fast` เพื่อรัน lint, typecheck, scan
 
 ## Rules
 

@@ -1,6 +1,6 @@
 ---
 name: update-all-devin-global-skills
-description: อัปเดต devin skills repo ทั้งหมดโดย orchestrate update-devin-global-skills ต่อ skill
+description: อัปเดต devin skills repo ทั้งหมดหรือเฉพาะที่ระบุโดย orchestrate update-devin-global-skills ต่อ skill
 related:
   - review-references
   - review-devin-global-skills
@@ -9,28 +9,32 @@ related:
   - update-references
   - update-dependencies-latest
   - follow-tool-mise
+  - deep-validate
+  - review-issue
+  - follow-global-rules
 ---
 
 ## Goal
 
-อัปเดต ดูแล และ refactor devin skills repo ทั้งหมดใน `%APPDATA%\devin\skills` ให้ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน โดย orchestrate `update-devin-global-skills` สำหรับ skill แต่ละตัว พร้อม cross-skill consistency และ relocation
+อัปเดต ดูแล และ refactor devin skills repo ทั้งหมดหรือเฉพาะที่ระบุใน `%APPDATA%\devin\skills` ให้ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน โดย orchestrate `update-devin-global-skills` สำหรับ skill แต่ละตัว พร้อม cross-skill consistency และ relocation
 
 ## Scope
 
-ใช้เมื่อต้องการ update, maintain, audit หรือ refactor devin skills repo ทั้งหมด ครอบคลุม inventory, per-skill update, cross-skill consistency, redundancy, relocation และ reporting ไม่ใช่สร้าง skill ใหม่ (ใช้ `/create-devin-global-skills`) ไม่ใช่ update skill เดียว (ใช้ `/update-devin-global-skills`)
+ใช้เมื่อต้องการ update, maintain, audit หรือ refactor devin skills repo ครอบคลุม inventory, per-skill update, cross-skill consistency, redundancy, relocation และ reporting
 
 ## Execute
 
-### 1. Review All Skills
+### 1. Review Targets
 
-> Goal: ตรวจสอบทุก skill ก่อนดำเนินการ
+> Goal: ตรวจสอบเป้าหมายก่อนดำเนินการ
 
-1. ทำ `/review-devin-global-skills` เพื่อตรวจสอบ skill package แต่ละตัวตามมาตรฐาน `follow-create-devin-skills` พร้อม refactor และ cross-skill consistency
-2. ทำ `/review-redundancy` เพื่อตรวจหา skills ที่ซ้ำซ้อนกัน
-3. ทำ `/review-flow` เพื่อตรวจ orchestration flow ของ skill นี้ให้เร็ว ปลอดภัย ไม่ซ้ำซ้อน
-4. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
+1. รับ `@files...` จาก argument หรือ context
+2. ถ้าไม่มี `@files` → scope เป็น devin skills repo ทั้งหมด
+3. ถ้ามี `@files` → scope จำกัดเฉพาะ skill ที่ระบุ
+4. ทำ `/review-devin-global-skills` ตาม scope ที่กำหนด
+5. บันทึก findings เป็นตาราง: skill, issue, severity, recommendation
 
-### 2. Inventory All Skills
+### 2. Inventory Skills
 
 > Goal: รู้สิ่งที่มีอยู่ใน repo
 
@@ -44,11 +48,12 @@ related:
 
 > Goal: อัปเดต skill แต่ละตัวผ่าน workhorse
 
-1. สำหรับ skill ที่ไม่ผ่าน review → ทำ `/update-devin-global-skills <skill-name>`
-2. จัดลำดับตาม severity: Critical ก่อน, High ตาม, Medium/Low ทีหลัง
-3. ถ้าจำนวน skills ที่ต้องอัปเดต > 10 → ทำ `/follow-parallel` เพื่ออัปเดตขนาน
-4. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn-from-references`
-5. ถ้า skill มี content ไม่ครอบคลุม → ทำ `/follow-coverage`
+1. ถ้ามี `@files` → ทำ `/update-devin-global-skills @files`
+2. ถ้าไม่มี `@files` → ทำ `/update-devin-global-skills` สำหรับ skill ที่ไม่ผ่าน review ทั้งหมด
+3. จัดลำดับตาม severity: Critical ก่อน, High ตาม, Medium/Low ทีหลัง
+4. ถ้าจำนวน skills ที่ต้องอัปเดต > 10 → ทำ `/follow-parallel` เพื่ออัปเดตขนาน
+5. ถ้า skill มี dependencies แต่ขาด `references/` → ทำ `/learn-from-references`
+6. ถ้า skill มี content ไม่ครอบคลุม → ทำ `/follow-coverage`
 
 ### 4. Refactor And Relocate Skills
 
@@ -57,7 +62,7 @@ related:
 1. ทำ `/review-devin-global-skills` Steps 7-8 เพื่อ split, merge, restructure, deduplicate skills ที่มีปัญหาโครงสร้าง
 2. ทำ `/follow-single-responsibility` สำหรับ skills ที่มี SRP violations
 3. ทำ `/relocation` เพื่อย้าย skills ไปยังตำแหน่งที่เหมาะสมตาม prefix
-4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/follow-create-devin-skills`
+4. ตรวจว่าทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ตามมาตรฐานใน `/update-devin-global-skills`
 5. ถ้ามี skill ที่ prefix ไม่ตรงกับ responsibility → เปลี่ยน prefix และย้าย
 
 ### 5. Ensure Cross-Skill Consistency
@@ -66,7 +71,7 @@ related:
 
 1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
 2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
-3. ทำ `/idea-new-devin-skills-global` เพื่อวิเคราะห์ gaps และแนะนำ skills ใหม่
+3. ทำ `/idea-create-devin-skills-global` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
 4. ตรวจไม่มี broken references และไม่มี circular dependencies
 
 ### 6. Review References
@@ -84,8 +89,9 @@ related:
 1. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้องทั้งหมด
 2. ตรวจว่าทุก skill ใหม่ถูกอ้างถึงใน skills ที่เกี่ยวข้อง
 3. ตรวจว่าไม่มี skill ที่อ้างถึง skill ที่ไม่มีอยู่
-4. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
-5. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
+4. ถ้ามี skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/follow-global-rules`
+5. ทำ `/check-circular-dependencies` อีกครั้งหลังอัปเดต
+6. ถ้ามี issue → แก้และ recheck (max 3 รอบ → stop และ report)
 
 ### 8. Update Dependencies And Tooling
 
@@ -94,7 +100,7 @@ related:
 1. ตรวจหา `package.json`, `mise.toml`, `bun.lock`, `bun.lockb` ใน `%APPDATA%\devin\skills` และ skills ที่มี `src/`
 2. ระบุ dependencies หรือ dev tools ที่ควรย้ายไป `mise project` หรือ `mise.toml`
 3. สำหรับ dependencies ทีเหมาะสมให้ update → ทำ `/update-dependencies-latest`
-4. รัน `/validate` และ `/run-check` หลัง update dependencies
+4. รัน `/deep-validate` และ `/run-check` หลัง update dependencies
 5. รายงาน dependencies ที่เปลี่ยนแปลงลงใน before-after report
 
 ### 9. Report And Suggest Next Actions
@@ -104,20 +110,22 @@ related:
 1. ทำ `/report-table` สรุป before-after: จำนวน skills, จำนวนที่ผ่าน validation, จำนวนที่อัปเดต, จำนวนที่ refactor
 2. สรุป issues ที่พบและการแก้ไข
 3. ระบุ skills ที่ยังไม่ได้อัปเดตและเหตุผล
-4. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
-5. ถ้ามี high-risk changes → ทำ `/ask-me` ก่อนดำเนินการ
+4. ถ้ามี issues ที่ต้อง review หรือ track → ทำ `/review-issue`
+5. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
+6. ถ้ามี high-risk changes → ทำ `/ask-me` ก่อนดำเนินการ
 
 ## Rules
 
 ### 1. Review Before Update
 
-- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `follow-create-devin-skills` Rule 9
+- ทำ `/review-devin-global-skills` ก่อนเสมอ ตามมาตรฐาน `update-devin-global-skills` Rule 9
 - ไม่แก้ไข skill ใดๆ ก่อน review ผ่าน
 - ทุก finding ต้องมี skill name, file path และ evidence
 
 ### 2. Orchestrate Per-Skill Updates
 
-- เรียก `/update-devin-global-skills <skill-name>` สำหรับ skill แต่ละตัวที่ต้องอัปเดต
+- เรียก `/update-devin-global-skills` สำหรับ skill แต่ละตัวที่ต้องอัปเดต
+- ถ้ามี `@files` → pass `@files` ให้ `/update-devin-global-skills`
 - ไม่ duplicate งาน per-skill update ใน skill นี้ — delegate ให้ workhorse
 - ถ้าจำนวน skills > 10 → ทำ `/follow-parallel`
 
@@ -130,7 +138,7 @@ related:
 
 ### 4. Validation
 
-- ทุก skill ต้องผ่าน `/validate` หลังอัปเดต
+- ทุก skill ต้องผ่าน `/deep-validate` หลังอัปเดต
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ไม่มี TODO/MOCK/placeholder
 - install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
@@ -144,7 +152,7 @@ related:
 ## Expected Outcome
 
 - devin skills repo ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน
-- ทุก skill ผ่าน `/review-devin-global-skills` และ `/validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
+- ทุก skill ผ่าน `/review-devin-global-skills` และ `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - install commands ใช้ `bun add` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI
 - references ครบถ้วน ไม่มี broken references และไม่มี circular dependencies
 - skills ที่มี dependencies มี `references/` ครบผ่าน `/learn-from-references`

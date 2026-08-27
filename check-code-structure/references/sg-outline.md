@@ -1,29 +1,20 @@
----
-name: use-ast-grep-outline
-description: ใช้งาน ast-grep outline สำหรับ code navigation โดยไม่ต้อง build index
-argument-hint: "[file]"
----
+# ast-grep outline Reference
 
 ## Goal
 
-ใช้งาน ast-grep outline เพื่อ explore code structure และ navigation อย่างรวดเร็ว โดยไม่ต้อง build index
+ใช้งาน `ast-grep outline` (`sg outline`) เพื่อ explore code structure และ navigation อย่างรวดเร็ว โดยไม่ต้อง build index
 
 ## Scope
 
 ครอบคลุมการใช้งาน ast-grep outline สำหรับ:
+
 - ดู structure ของ file ก่อนอ่าน implementation
 - ดู exports ของ directory/module
 - ตรวจสอบ dependencies และ imports
 - Expand symbols เพื่อดู members โดยไม่ต้องอ่านทั้ง file
 - Filter symbols ด้วย pattern และ type
 
-## Execute
-
-### 1. Basic Usage
-
-> Goal: Basic Usage
-
-รัน ast-grep outline เพื่อ explore code structure:
+## Basic Usage
 
 ```bash
 # ดู structure ของ file เดียว (default: digest view)
@@ -36,9 +27,7 @@ sg outline src
 sg outline src/parser.ts src/rule.ts
 ```
 
-### 2. Filter Items
-
-> Goal: เลือก top-level items ที่ต้องการดู
+## Filter Items
 
 ```bash
 # ดู imports/dependencies ของ file
@@ -54,9 +43,7 @@ sg outline src/parser.ts --items all
 sg outline src/parser.ts --items structure
 ```
 
-### 3. Filter By Type
-
-> Goal: กรอง symbols ตาม type
+## Filter By Type
 
 ```bash
 # ดูเฉพาะ classes และ enums
@@ -69,9 +56,7 @@ sg outline src --type function
 sg outline src --type interface
 ```
 
-### 4. Filter By Pattern
-
-> Goal: Filter By Pattern
+## Filter By Pattern
 
 กรอง symbols ด้วย regex:
 
@@ -86,9 +71,7 @@ sg outline src --items imports --match ast-grep-core
 sg outline src --match "^use"
 ```
 
-### 5. Select View
-
-> Goal: เลือก presentation level
+## Select View
 
 ```bash
 # ดูเฉพาะ names (grouped by symbol type)
@@ -104,9 +87,7 @@ sg outline src --view digest
 sg outline src --view expanded
 ```
 
-### 6. Expand Specific Symbol
-
-> Goal: Expand symbol เฉพาะเจาะจง
+## Expand Specific Symbol
 
 ```bash
 # Expand class Parser ดู members ทั้งหมด
@@ -116,9 +97,7 @@ sg outline src/parser.ts --match Parser --type class --view expanded
 sg outline src/parser.ts --match parseRule --type function --view expanded
 ```
 
-### 7. Public Members Only
-
-> Goal: Public Members Only
+## Public Members Only
 
 ดูเฉพาะ public members:
 
@@ -126,9 +105,7 @@ sg outline src/parser.ts --match parseRule --type function --view expanded
 sg outline src --view expanded --pub-members
 ```
 
-## Rules
-
-### 1. When To Use Outline
+## When To Use Outline
 
 ใช้ ast-grep outline เมื่อ:
 
@@ -139,7 +116,7 @@ sg outline src --view expanded --pub-members
 - ต้องการ filter symbols ด้วย pattern หรือ type
 - ต้องการ machine-readable output สำหรับ scripts
 
-### 2. When Not To Use Outline
+## When Not To Use Outline
 
 ไม่ใช้ outline เมื่อ:
 
@@ -149,7 +126,7 @@ sg outline src --view expanded --pub-members
 - ต้องการ semantic relationships (outline ไม่ normalize extends/implements)
 - ต้องการ full AST analysis (outline เป็น summary เท่านั้น)
 
-### 3. Default Behavior
+## Default Behavior
 
 ค่า default ของ outline:
 
@@ -157,7 +134,7 @@ sg outline src --view expanded --pub-members
 - Directory input: `--items auto` → `exports`, `--view auto` → `names`
 - Stdin input: ต้องระบุ `--lang` เสมอ
 
-### 4. Items Options
+## Items Options
 
 ค่าที่เลือกได้สำหรับ `--items`:
 
@@ -167,7 +144,7 @@ sg outline src --view expanded --pub-members
 - `imports`: Top-level items ที่ import จาก files/modules อื่น
 - `all`: ทั้ง imports และ exports
 
-### 5. View Options
+## View Options
 
 ค่าที่เลือกได้สำหรับ `--view`:
 
@@ -177,7 +154,7 @@ sg outline src --view expanded --pub-members
 - `digest`: Signatures + compact member name digests
 - `expanded`: Signatures + one source/signature line per direct member
 
-### 6. Symbol Types
+## Symbol Types
 
 Types ที่รองรับสำหรับ `--type` (LSP-compatible `DocumentSymbol.kind`):
 
@@ -188,7 +165,7 @@ Types ที่รองรับสำหรับ `--type` (LSP-compatible `Do
 - ใช้ lower camel case เช่น `enumMember`, `typeParameter`
 - Multiple values คั่นด้วย comma ทำงานเป็น OR filter
 
-### 7. Design Principles
+## Design Principles
 
 หลักการออกแบบของ outline:
 
@@ -197,7 +174,7 @@ Types ที่รองรับสำหรับ `--type` (LSP-compatible `Do
 - Declarative extraction: ใช้ rules สำหรับ define extraction logic
 - Fast and deterministic: ไม่มี global knowledge แต่เร็วและ predictable
 
-### 8. Output Structure
+## Output Structure
 
 Outline entry ประกอบด้วย:
 
@@ -208,13 +185,13 @@ Outline entry ประกอบด้วย:
 - AST kind: ประเภท AST node
 - Flags: import/export/public member flags
 
-### 9. Items vs Members
+## Items vs Members
 
 - Items: Top-level entries (class, function, interface, ฯลฯ)
 - Members: Direct children ของ items (methods, fields, variants)
 - Flat source ยังคง flat: Go receiver methods และ Rust impl blocks เป็น top-level entries
 
-### 10. Outline Extraction Rules
+## Outline Extraction Rules
 
 ast-grep outline ใช้ extraction rules สำหรับแปลง source code เป็น outline entries:
 
@@ -228,7 +205,7 @@ ast-grep outline ใช้ extraction rules สำหรับแปลง sourc
 - Member rules ใช้ `parentRuleIds` สำหรับ attach ไปยัง item ที่ contain มัน
 - ใช้ `transform` และ `rewriters` สำหรับ signature generation
 
-### 11. Exit Codes
+## Exit Codes
 
 - `0`: command completed (รวม empty outline)
 - `2`: fatal read, parse, หรือ configuration error

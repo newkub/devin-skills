@@ -69,10 +69,10 @@ src/lib.rs:485: replace copy_symlink -> Result<()> with Ok(Default::default()) .
 
 ## Mutant Outcomes
 
-- **caught**: A test failed with this mutant applied. Good sign about test coverage.
-- **missed**: No test failed with this mutation applied. Indicates a gap in test coverage.
-- **unviable**: The attempted mutation does not compile. Inconclusive, no action needed.
-- **timeout**: The mutation caused the test suite to hang. Investigate or skip the function.
+- `caught`: A test failed with this mutant applied. Good sign about test coverage.
+- `missed`: No test failed with this mutation applied. Indicates a gap in test coverage.
+- `unviable`: The attempted mutation does not compile. Inconclusive, no action needed.
+- `timeout`: The mutation caused the test suite to hang. Investigate or skip the function.
 
 By default only missed mutants and timeouts are printed to stdout. Show others with:
 

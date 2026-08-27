@@ -42,7 +42,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 1. อ่าน target files ทั้งไฟล์
 2. อ่าน imports, exports, และ dependencies
 3. อ่าน reverse dependencies
-4. ทำ `read-related-skills` สำหรับ workflows ที่เกี่ยวข้อง
+4. ทำ `check-skills-related` สำหรับ workflows ที่เกี่ยวข้อง
 
 ### 4. Analyze Requirements
 
@@ -73,8 +73,8 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 ตรวจสอบผลลัพธ์
 
-1. ทำ `validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `run-verify` เพื่อรัน lint, typecheck, scan
+1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
+2. ทำ `run-verify-fast` เพื่อรัน lint, typecheck, scan
 3. อ่านไฟล์ใหม่อีกครั้งเพื่อ verify
 
 ## Rules
@@ -107,12 +107,12 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 - ไฟล์ทั้งหมดต้องสมบูรณ์ ไม่มี TODO, MOCK, STUB ที่ไม่จำเป็น
 - ตรวจสอบว่า references ทั้งหมดมีอยู่จริง
-- ทำ `run-verify` ก่อนส่งมอบ
+- ทำ `run-verify-fast` ก่อนส่งมอบ
 
 ## Expected Outcome
 
 - ไฟล์เป้าหมายถูก rewrite ใหม่ทั้งหมด
 - ไม่มี context เก่าหลงเหลือในการตัดสินใจ
 - เนื้อหาใหม่สอดคล้องกับ requirement ปัจจุบัน
-- ผ่าน validation และ run-verify
+- ผ่าน validation และ run-verify-fast
 - references ทั้งหมดอัปเดทถูกต้อง

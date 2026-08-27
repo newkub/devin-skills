@@ -26,9 +26,9 @@ argument-hint: "[target]"
 
 > Goal: รู้ว่าจะทำอะไรบ้าง
 
-1. ทำ `/read-related-skills` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
+1. ทำ `/check-skills-related` เพื่ออ่าน workflows/skills ที่เกี่ยวข้อง
 2. สรุปรายการสิ่งที่จะทำ: workflows, skills, ลำดับ, dependencies
-3. ถ้ามีหลาย workflows ที่ independent → บันทึกไว้สำหรับ `/use-subagents`
+3. ถ้ามีหลาย workflows ที่ independent → บันทึกไว้สำหรับ `/consider-use-subagents`
 
 ### 3. Execute AGENTS.md
 
@@ -37,7 +37,7 @@ argument-hint: "[target]"
 1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
 2. วิเคราะห์ workflows และ skills ที่ระบุ
 3. ถ้ามี workflow เดียว ทำตามโดยตรง
-4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/use-subagents`
+4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/consider-use-subagents`
 5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
 
 ### 4. Verify Execution

@@ -20,7 +20,7 @@ argument-hint: "[suggestion]"
 
 จัดลำดับ suggestions ตาม impact และ effort
 
-1. ทำ `/read-related-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+1. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 2. ทำ `/prioritize` เพื่อจัดลำดับตาม priority: `security` > `type errors` > `performance` > `code quality`
 3. ตรวจสอบ context และ relevance ของแต่ละ suggestion ก่อน apply
 
