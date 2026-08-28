@@ -1,138 +1,126 @@
 ---
 name: follow-package-manifest
 description: ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo
+argument-hint: "[target]"
+related:
+  - review-delivery
+  - follow-monorepo
+  - follow-tool-taze
+  - use-scripts
+  - use-bun-scripts
+  - test-all
+  - follow-secret-manager
+  - open-web-for-config-secret
+  - update-review-codebase-cli-and-run
+  - follow-tool-hk
+  - use-ast-grep
 ---
 
 ## Goal
 
-ตั้งค่า `package.json` scripts ให้ครบถ้วน สอดคล้องกับ tech stack และรองรับทั้ง local development และ CI/CD
+ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete
 
 ## Scope
 
-ใช้สำหรับสร้างหรือปรับปรุง `package.json` scripts ใน single project หรือ monorepo ตาม template Minimal, Standard, หรือ Complete
-
-- ประเมินขนาดและความซับซ้อนของโปรเจกต์
-- เลือก template level (Minimal/Standard/Complete)
-- กำหนด scripts ตาม tech stack (Bun, Nuxt, Vite-React, Rust)
-- ตรวจสอบว่า scripts ทำงานได้จริง
+ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`)
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจสอบ project ก่อนตั้งค่า scripts
+> Goal: ตรวจสอบ project structure และ tools ก่อนเริ่มตั้งค่า scripts
 
-1. รัน `/ship` เพื่อตรวจสอบและจัดโครงสร้างโปรเจกต์ให้ถูกต้อง
-2. ตรวจสอบว่ามี `package.json` หรือ `Cargo.toml`
-3. ยืนยันว่า tools จำเป็นติดตั้งแล้ว (`biome`, `vitest`)
-4. ตรวจสอบว่า project structure เหมาะสมสำหรับการรัน `run-verify-fast`
+1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
+2. ตรวจสอบ monorepo (หลาย `package.json`, workspace config, git submodules) — ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
+3. ยืนยัน tools ติดตั้งแล้ว: Node.js/Bun (`biome`, `vitest`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
+4. ถ้า tool จำเป็นไม่มี → stop และ report
 
-### 2. Select Template Level
+### 2. Update Dependencies
 
-> Goal: ประเมินและเลือกระดับ template
+> Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
 
-1. ประเมินขนาดและความซับซ้อนของโปรเจกต์
-2. เลือกระดับตามความเหมาะสม:
-   - Minimal (Default): โปรเจกต์ส่วนใหญ่, เน้น pragmatic
-   - Standard: ต้องการ testing และ dependency management เพิ่มเติม
-   - Complete: เฉพาะ infra/tooling team, ต้องการ benchmark และ performance testing
+1. ตรวจสอบ package manager (`bun`, `npm`, `pnm`, `yarn`, `cargo`, `pip`, `go`)
+2. สำหรับ Node.js/Bun → ทำ `/follow-tool-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
+3. สำหรับ tools ที่จัดการด้วย mise → รัน `mise upgrade` เพื่ออัปเดต dev tools (เช่น `bun`, `gitleaks`, `hk`); ถ้าต้องการ bump version ใน `mise.toml` ด้วย → ใช้ `mise upgrade --bump`
+4. Update ตาม ecosystem: Node.js/Bun ใช้ `taze` (Root Only), Rust ใช้ `cargo update`, Python ใช้ `pip install -U`, Go ใช้ `go get -u ./... && go mod tidy`
+5. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
+6. ถ้า update fail → retry (max 3 → stop/report)
 
-### 3. Apply Scripts Template
+### 3. Select Template Level
 
-> Goal: เลือกและเขียน scripts ตาม template
+> Goal: เลือกระดับ scripts ตามขนาดและความซับซ้อนของโปรเจกต์
 
-1. ดูตัวอย่าง `package.json` ใน `references/package-json-examples.md`
-2. เลือกระดับ Minimal, Standard, หรือ Complete
-3. กำหนด scripts ตาม tech stack:
-   - Minimal: `dev`, `build`, `typecheck`, `lint`, `format`, `test`, `verify`, `ci`
-   - Standard: Minimal + `test:watch`, `test:coverage`, `deps:analyze`, `clean`
-   - Complete: Standard + `prepare`, `build:watch`, `typecheck:watch`, `test:integration`, `test:e2e`, `bench`, `prerelease`, `release`
-4. ใช้ `prepare` สำหรับ `hk install` ถ้าใช้ hk hooks
-5. แก้ไข `package.json` ด้วย `edit` หรือ `write`
+1. ประเมินขนาดโปรเจกต์และความต้องการ testing/deployment
+2. เลือกระดับตาม Rules section 1: Minimal (ทุกโปรเจกต์), Standard (testing + deps management), Complete (infra/tooling team)
+3. ถ้าไม่แน่ใจ → เริ่มด้วย Minimal และขยายภายหลัง
 
-### 4. Validate Scripts
+### 4. Apply Scripts
 
-> Goal: ตรวจสอบว่า scripts ทำงานได้
+> Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
 
-1. ตรวจสอบว่า scripts ถูกต้องตาม syntax
-2. ยืนยันว่า commands ทำงานได้จริง
-3. ทดสอบรัน `bun run verify` เบื้องต้น
-4. ยืนยันว่ามี script `prepare` สำหรับ hk (ใน Complete template)
-5. ตรวจสอบว่า scripts สอดคล้องกับ `run-verify-fast` workflow
+1. ทำ `/use-scripts` ตาม tech stack จากตาราง Rules — Single workspace: แก้ไข `package.json` หรือ `Cargo.toml` โดยตรง
+2. Multiple workspaces: ทำ `/follow-monorepo` ก่อน แล้วใช้ `/use-bun-scripts` สำหรับ batch update
+3. ถ้า operations > 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ batch update
+4. ถ้า apply fail → retry (max 3 → stop/report)
+
+### 5. Setup Config And Secrets
+
+> Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
+
+1. `/review-delivery` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
+2. ถ้ามี `.infisical.json` หรือใช้ secret manager → ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets scripts
+3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts: `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run`
+4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า
+5. รันเฉพาะ workflows ที่จำเป็น ไม่รันทุก workflow — ถ้า config fail → retry (max 3 → stop/report)
+
+### 6. Validate
+
+> Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
+
+1. ตรวจสอบ scripts syntax ใน `package.json` หรือ `Cargo.toml` — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
+2. ยืนยัน `check` script = `lint && typecheck && scan` และ `verify` = `check && test`
+3. ทำ `/test-all` เพื่อรัน unit, integration, e2e, coverage
+4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
+5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/update-review-codebase-cli-and-run` เพื่อสร้าง/อัปเดต CLI แล้ว retry
 
 ## Rules
 
-### 1. Template Selection
+### 1. Scripts Levels And Root Only
 
-- เลือกระดับ template ตามขนาดและความซับซ้อนของโปรเจกต์
-- Minimal ใช้สำหรับโปรเจกต์ทั่วไป
-- Standard ใช้เมื่อต้องการ testing และ dependency management เพิ่ม
-- Complete ใช้สำหรับ infra/tooling team
+เลือกระดับตามขนาดและความซับซ้อนของโปรเจกต์
+- Minimal (Default): dev, build, typecheck, lint, format, test, scan, check, verify, ci
+- Standard: Minimal + test:watch, test:coverage, deps:analyze, clean, security, db scripts, predeploy, deploy:staging
+- Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, release, db:studio
 
-### 2. Scripts Levels
+สำหรับ monorepo ที่ใช้ Bun:
+- `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` เท่านั้น
+- Workspace packages ไม่มี `prepare` script
+- Root `package.json`: `"prepare": "bunx taze -r -w -i && bunx lefthook install"`
 
-- Minimal (Default): `dev`, `build`, `typecheck`, `lint`, `format`, `test`, `verify`, `ci`
-- Standard: Minimal + `test:watch`, `test:coverage`, `deps:analyze`, `clean`
-- Complete: Standard + `prepare`, `build:watch`, `typecheck:watch`, `test:integration`, `test:e2e`, `bench`, `prerelease`, `release`
+### 2. Script Tables
 
-### 3. Core Scripts Table
+คำสั่ง scripts สำหรับแต่ละ tech stack ดูได้ใน:
+- [references/scripts-tables.md](references/scripts-tables.md) — Required, Watch, Testing, Dependency, Database, Release, Security, Deployment, Documentation, Review CLI
+- [references/package-json-examples.md](references/package-json-examples.md) — ตัวอย่าง `package.json` สำหรับแต่ละ template
 
-| Task | Bun | Nuxt | Vite-React | Rust |
-|------|-----|------|------------|------|
-| dev | `bun run src/index.ts` | `nuxt dev` | `vite` | `cargo run` |
-| build | `bun build` | `nuxt build` | `vite build` | `cargo build` |
-| typecheck | `tsc --noEmit` | `nuxt typecheck` | `tsc --noEmit` | `cargo check` |
-| format | `biome check --write` | `biome check --write` | `biome check --write` | `cargo fmt` |
-| lint | `biome check` | `biome check` | `biome check` | `cargo clippy` |
-| test | `vitest run` | `vitest run` | `vitest run` | `cargo test` |
-| verify | `lint && typecheck && test` | `lint && typecheck && test` | `lint && typecheck && test` | `cargo clippy && cargo check && cargo test` |
-| ci | `verify && build` | `verify && build` | `verify && build` | `verify && build` |
+### 3. Verify And CI Pipeline
 
-### 4. Advanced Scripts Table
+| Script | Definition |
+|---|---|
+| check | `lint && typecheck && scan` |
+| verify | `check && test` |
+| ci | `verify && build` |
 
-หมายเหตุ: Scripts เหล่านี้ใช้เฉพาะใน Complete template
+### 4. Secrets And Config
 
-| Task | Bun | Nuxt | Vite-React | Rust |
-|------|-----|------|------------|------|
-| build:watch | `bun build --watch` | `nuxt build --watch` | `vite build --watch` | `cargo build --watch` |
-| typecheck:watch | `tsc --noEmit --watch` | `nuxt typecheck --watch` | `tsc --noEmit --watch` | `cargo watch -x check` |
-| test:watch | `vitest` | `vitest` | `vitest` | `cargo test` |
-| test:coverage | `vitest run --coverage` | `vitest run --coverage` | `vitest run --coverage` | `cargo test` |
-| test:integration | `vitest run --config vitest.integration.config.ts` | `vitest run --config vitest.integration.config.ts` | `vitest run --config vitest.integration.config.ts` | `cargo test --test-dir integration` |
-| test:e2e | `vitest run --config vitest.e2e.config.ts` | `vitest run --config vitest.e2e.config.ts` | `vitest run --config vitest.e2e.config.ts` | `cargo test --test-dir e2e` |
-| deps:analyze | `bunx depcheck` | `bunx depcheck` | `bunx depcheck` | `cargo outdated` |
-| clean | `bunx rimraf node_modules` | `bunx rimraf node_modules` | `bunx rimraf node_modules` | `cargo clean` |
-| bench | `bunx mitata` | `bunx mitata` | `bunx mitata` | `cargo bench` |
-| prerelease | `bun run build` | `bun run build` | `bun run build` | `cargo build` |
-| release | `auto-it` | `auto-it` | `auto-it` | `cargo release` |
-
-### 5. Table Consistency
-
-- Script Commands Tables ต้องสอดคล้องกับ `package.json` example เสมอ
-- หากมีการเปลี่ยนแปลงใดๆ ต้องอัปเดตทั้งสองส่วนพร้อมกัน
-
-### 6. Verify Pipeline
-
-| Script | Definition | Note |
-|--------|------------|------|
-| verify | `lint && typecheck && test` | Fail-fast ordering (lint fastest) |
-| ci | `verify && build` | Build gate |
-
-### 7. Execution Guidelines
-
-- ใช้ `bun run verify` ใน GitHub Actions สำหรับการตรวจสอบคุณภาพโค้ด
-- ใช้ `bun run ci` สำหรับ task ที่ต้องการ build ด้วย
-- ใช้ `bun turbo run verify --filter=...[origin/main]` สำหรับการตรวจสอบเฉพาะที่เปลี่ยนแปลงใน monorepo
-- Execution Order: pre-commit (`lint`), pre-push (`verify`), CI (`ci`), Local dev (`dev`)
-- hk hooks จะรันอัตโนมัติก่อน commit, push, rebase (ต้องรัน `/follow-tool-hk` ก่อน)
-- ลำดับการทำงาน: Prepare → Update Dependencies → Setup Verify → Setup hk → Scan → Lint → Format → Build → Test → Dev → Verify
-- สำหรับ monorepo ขนาดใหญ่ พิจารณาใช้ turbo, justfile, หรือ makefile สำหรับ reuse และ scale
+- อย่าเก็บ secret values ใน `package.json` หรือ `Cargo.toml`
+- ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret` เมื่อต้องการ config/secrets
+- scripts ทีต้องการ secrets ให้ใช้ `infisical run -- <command>`
 
 ## Expected Outcome
 
-- `package.json` มี scripts ตาม template ที่เลือก (Minimal/Standard/Complete)
-- Scripts สอดคล้องกับ tech stack ของโปรเจกต์
-- Verify pipeline ทำงานได้ถูกต้องตามมาตรฐาน `run-verify-fast` ด้วย fail-fast ordering
-- รองรับการทำงานทั้ง local development และ CI/CD
-- Tables sync กับ examples อย่างสมบูรณ์
-- Pragmatic และ production-ready สำหรับโปรเจกต์ส่วนใหญ่
+- `package.json` มี scripts ตาม template ที่เลือก (state change)
+- Scripts สอดคล้องกับ tech stack (ตาราง Rules)
+- `verify` และ `ci` pipeline ทำงานได้ถูกต้อง — `bun run verify` ผ่าน
+- ถ้ามี `tools/review-codebase` รัน `bun run review-codebase` ผ่านหรือทราบสาเหตุที่ยังไม่ผ่าน
+- ถ้ามี Infisical: root `package.json` มี `secrets:*` scripts และ `INFISICAL_TOKEN` ตั้งค่าใน CI/CD
