@@ -1,6 +1,20 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase อย่างลึกซึ้งด้วย tools/review-codebase CLI, tools/analyze CLI, @ast-grep/napi และ
+description: วิเคราะห์ codebase ลึกซึ้งด้วย review-codebase CLI, ast-grep napi, Bun scripts และ oxc parser
+related:
+  - use-scripts
+  - use-bun-native-api
+  - create-files-in-os-temp
+  - deep-analyze
+  - deep-report
+  - scan-codebase
+  - follow-clean-architecture
+  - follow-create-cli
+  - update-review-codebase-cli-and-run
+  - run-review
+  - report-table
+  - update-references
+  - check-reference
 ---
 
 ## Goal
@@ -18,8 +32,10 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 > Goal: วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
-2. รัน `bunx ast-grep outline <path>` เพื่อสร้าง structural overview ของ source files
-3. ใช้ผลลัพธ์จาก step 1-2 เป็น foundation สำหรับ deep analysis
+2. ถ้าต้องสร้าง scripts สำหรับ analysis → ทำ `/use-scripts` และ `/use-bun-native-api` เพื่อใช้ Bun native APIs
+3. สร้าง temp directory สำหรับ output ด้วย `/create-files-in-os-temp` ถ้าต้องการไฟล์ชั่วคราว
+4. รัน `bunx ast-grep outline <path>` เพื่อสร้าง structural overview ของ source files
+5. ใช้ผลลัพธ์จาก step 1-4 เป็น foundation สำหรับ deep analysis
 
 ### 2. Setup Analyze CLI
 
@@ -92,10 +108,12 @@ description: วิเคราะห์ codebase อย่างลึกซึ
 - `tools/analyze/` ต้อง follow `/follow-clean-architecture`
 - ทำ `/update-review-codebase-cli-and-run` ก่อนใช้งาน
 
-### 3. Ast-Grep NAPI Usage
+### 3. Ast-Grep NAPI And OXC Parser Usage
 
 - `@ast-grep/napi` เป็น native addon — Bun auto-install บน `import` โดยไม่ต้อง `bun add`
 - `@ast-grep/wasm` เป็น WASM version — ใช้ผ่าน CDN ได้: `import { parse } from 'https://esm.sh/@ast-grep/wasm'`
+- `oxc-parser` เป็น Rust-based JS/TS parser ทีเร็วมาก — ใช้ผ่าน CDN `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser`
+- ถ้าต้องการ AST ละเอียดหรือ speed สูงสุด → ใช้ `oxc-parser` แทน `@ast-grep/napi` หรือใช้คู่กัน
 - `parse(Lang.TypeScript, source)` สร้าง `SgRoot`
 - `root.find('console.log($A)')` ค้นหา pattern แรกที่ match
 - `root.findAll('function $A($$$) { $$$ }')` ค้นหาทุก pattern ที่ match
