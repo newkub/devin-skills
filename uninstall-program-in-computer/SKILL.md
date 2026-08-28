@@ -1,6 +1,6 @@
 ---
 name: uninstall-program-in-computer
-description: ลบ program ออกจากเครื่องโดยใช้ package manager ทีติดตั้งไว้
+description: ลบ program ออกจากเครื่องโดยเลือก package manager ทีเหมาะสม
 argument-hint: "[program-name]"
 related:
   - follow-my-package-manager
