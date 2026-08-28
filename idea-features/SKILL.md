@@ -1,18 +1,25 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอร์ใหม่และขยายจากของเดิม รายงานใน chat กระชับอ่านง่าย
+description: สร้างไอเดียฟีเจอร์ใหม่และขยายจากของเดิม บันทึกลง temp แล้วเปิด app เลือก copy และดู uxui sketch
 argument-hint: "[topic]"
+related:
+  - report-uxui-sketch
+  - enhance-prompt
+  - follow-tool-vite
+  - follow-framework-solidjs
 ---
 
 ## Goal
 
-สร้างไอเดียฟีเจอร์ใหม่และฟีเจอร์ที่ขยายจากของเดิมสำหรับ project แล้วรายงานใน chat กระชับ อ่านง่าย เข้าใจทันที
+สร้างไอเดียฟีเจอร์ใหม่และฟีเจอร์ที่ขยายจากของเดิมสำหรับ project จากนั้นบันทึกลง temp JSON แล้วเปิด web app ให้ user เลือก features, copy ในรูปแบบ enhance-prompt และดู report-uxui-sketch ของแต่ละ feature
 
 ## Scope
 
 - วิเคราะห์ project, packages, ฟีเจอร์ที่มีอยู่ และแนวโน้มตลาด
 - สร้างไอเดียฟีเจอร์จัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- รายงานใน chat เป็นภาษาไทย ไม่สร้างไฟล์
+- บันทึกข้อมูลลงไฟล์ JSON ใน temp directory เท่านั้น
+- เปิด web app ที่อ่าน JSON จาก temp โดยไม่มี backend server
+- ใน app สามารถเลือก features, copy ทีเดียว, ดู uxui sketch แต่ละ feature
 - ห้ามเปรียบเทียบคู่แข่งโดยตรงใน skill นี้
 
 ## Execute
@@ -34,6 +41,7 @@ argument-hint: "[topic]"
 2. จัดลำดับตาม impact: สูง → กลาง → ต่ำ
 3. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
 4. ลำดับเลขต่อเนื่อง: `Extends` เริ่ม 1, `New` ต่อจาก `Extends`
+5. แต่ละ feature ต้องมี `feature, description, reason, how, riskDetail` สั้นๆ
 
 ### 3. Rank And Score
 
@@ -43,19 +51,63 @@ argument-hint: "[topic]"
 2. จัดลำดับตาม MVP Score สูง → ต่ำ
 3. ระบุ Phase: MVP, v2, v3
 4. ระบุ Effort: S, M, L, XL
+5. ระบุ Risk: สูง, กลาง, ต่ำ
 
-### 4. Report In Chat
+### 4. Save Data To Temp
 
-> Goal: รายงานกระชับ อ่านง่าย เข้าใจทันที
+> Goal: เขียน JSON ลง temp สำหรับ app โหลด
 
-1. สรุป Key Findings เป็น bullet points 3-5 ข้อ
-2. แสดงตาราง `Extends` และ `New` แบบ markdown ใน chat
-3. แต่ละไอเดียมีรายละเอียดสั้น: ทำไม, ทำยังไง, ความเสี่ยง
-4. จบด้วย Next Action 3 ข้อแรกที่ควรทำ
+1. สร้าง directory `TEMP/idea-features/` ถ้ายังไม่มี (`TEMP` คือ `%TEMP%` บน Windows หรือ `$TMPDIR`)
+2. ใช้ path จาก env `IDEA_FEATURES_DATA` ถ้ามี ไม่งั้นใช้ `TEMP/idea-features/data.json`
+3. เขียน JSON ด้วยโครงสร้าง:
+   - `generatedAt`: ISO timestamp
+   - `features`: array ของ feature objects
+4. feature object ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
+5. ใช้ `write` tool หรือ script เขียนไฟล์
+
+### 5. Open Web App
+
+> Goal: เปิด app ให้ user เลือก features แทนการตอบใน chat
+
+1. ตรวจสอบว่าอยู่ใน directory `C:\Users\Veerapong\AppData\Roaming\devin\skills\idea-features`
+2. ถ้ายังไม่ได้ติดตั้ม dependencies → รัน `bun install`
+3. รัน `bun run dev` ใน background
+4. รอ dev server ready ที่ `http://localhost:5173`
+5. ทำ `/browser_preview` หรือ `agent-browser open http://localhost:5173` เพื่อเปิดใน browser
+6. รายงาน user ว่า app พร้อมใช้งาน สามารถเลือก features, copy, ดู uxui sketch ได้
+7. เมื่อ user ปิด tab ใน browser dev server จะหยุดอัตโนมัติผ่าน `/close` beacon
+
+### 6. Cleanup
+
+> Goal: จัดการหลังใช้งาน
+
+1. ถ้า user บอกว่าเสร็จแล้ว หรืองานอื่นรับช่วง → ตรวจสอบว่า dev server หยุดแล้ว
+2. ถ้า server ยังรันอยู่ → ทำ `kill` หรือหยุด background shell
+3. ไฟล์ data ใน temp สามารถลบหรือเก็บไว้ดังเดิมตาม context
 
 ## Rules
 
-### 1. Table Columns (8 columns)
+### 1. Data Format
+
+- บันทึกเฉพาะ data JSON ลง temp directory
+- template uxui ของ app อยู่ใน `src/App.tsx` ไม่ต้องเขียน template ลง temp
+- data ต้องมี `features` เป็น array
+
+### 2. Web App Behavior
+
+- app เป็น Solid client-side SPA ไม่มี backend server
+- app โหลด JSON จาก `/api/data` ที Vite plugin serve จาก temp
+- app แสดงผลภาษาไทย สนับสนุนการ filter, select, copy
+- app มี uxui sketch สำหรับแต่ละ feature แบบละเอียด
+- app ส่ง beacon ไป `/close` ตอน `beforeunload` เพื่อหยุด dev server
+
+### 3. Copy Format
+
+- เมื่อ user กด copy ให้สร้าง numbered list ตาม `/enhance-prompt`
+- รูปแบบ: `1. <feature> — <description>`
+- ทีเดียวสำหรับ features ทีเลือกทั้งหมด
+
+### 4. Table Columns For Internal Use
 
 `# | Impact | Feature | Description | Phase | Effort | MVP Score | Risk`
 
@@ -66,26 +118,18 @@ argument-hint: "[topic]"
 - Risk: สูง, กลาง, ต่ำ
 - Description: บรรทัดเดียว ภาษาไทย
 
-### 2. Chat Output
+### 5. No Chat Output By Default
 
-- รายงาใน chat เป็นภาษาไทย
-- ใช้ markdown tables และ bullet points
-- ไม่สร้างไฟล์ ไม่เขียนลง docs
-- สรุปกระชับ ไม่เกิน 60 บรรทัดใน chat
+- ไม่ต้องรายงานผลใน chat โดย default
+- ถ้า user ขอ chat summary → ให้สรุปสั้นๆ แล้วเปิด app
 
-### 3. Feature Details
-
-- แต่ละไอเดียมี 3 บรรทัด: ทำไม, ทำยังไง, ความเสี่ยง
-- ไม่เกิน 5 บรรทัดต่อไอเดีย
-- ใช้ bullet points ไม่ใช้ paragraphs
-
-### 4. Start With MVP
+### 6. Start With MVP
 
 - เริ่มจากเวอร์ชันที่ใช้งานได้น้อยที่สุด
 - กำหนด MVP scope ให้ชัดเจนต่อฟีเจอร์
 - สร้างแบบ iterative ไม่ใช่ big bang
 
-### 5. Direct Execution
+### 7. Direct Execution
 
 - ถ้า user บอก "do ... now" → ทำ `/refactor` และ `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอร์เฉพาะ → ทำ `/implement-features-to-mvp`
@@ -93,8 +137,9 @@ argument-hint: "[topic]"
 
 ## Expected Outcome
 
-- รายงานใน chat กระชับ อ่านง่าย เข้าใจทันที
-- 2 ตาราง `Extends` และ `New` 8 columns พร้อมลำดับเลขต่อเนื่อง
-- แต่ละไอเดียมีรายละเอียดสั้น: ทำไม, ทำยังไง, ความเสี่ยง
-- Key Findings 3-5 ข้อ และ Next Action 3 ข้อแรก
-- ไม่มีไฟล์สร้างขึ้น ทุกอย่างใน chat
+- ไฟล์ JSON ของ features ถูกบันทึกลง temp
+- Web app ทำงานที่ `http://localhost:5173` หลังรัน `bun run dev`
+- สามารถเลือก features, copy ทีเดียวในรูปแบบ `/enhance-prompt`
+- แต่ละ feature มี report-uxui-sketch ละเอียด
+- ปิด tab เพื่อหยุด dev server อัตโนมัติ
+- ไม่ต้องตอบยาวใน chat สรุป path และ url สั้นๆ
