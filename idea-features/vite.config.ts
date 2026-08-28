@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type PreviewServer, type ViteDevServer } from 'vite';
 import solid from 'vite-plugin-solid';
 import UnoCSS from 'unocss/vite';
 import { existsSync, readFileSync } from 'node:fs';
@@ -77,11 +77,72 @@ async function ensureSampleData() {
   await writeFile(dataPath, JSON.stringify(sample, null, 2), 'utf-8');
 }
 
+function setupMiddlewares(server: ViteDevServer | PreviewServer) {
+  const serverStart = Date.now();
+  const closeToken = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+  let dataServed = false;
+
+  function readBody(req: any) {
+    return new Promise<string>((resolve) => {
+      let chunks = '';
+      req.on('data', (chunk: Buffer) => { chunks += chunk.toString(); });
+      req.on('end', () => resolve(chunks));
+      req.on('error', () => resolve(''));
+    });
+  }
+
+  server.middlewares.use('/api/data', (req, res, next) => {
+    if (req.method !== 'GET') return next();
+    res.setHeader('Content-Type', 'application/json');
+    try {
+      if (!existsSync(dataPath)) {
+        res.statusCode = 404;
+        res.end(JSON.stringify({ error: `data file not found: ${dataPath}` }));
+        return;
+      }
+      res.end(readFileSync(dataPath, 'utf-8'));
+    } catch (err) {
+      res.statusCode = 500;
+      res.end(JSON.stringify({ error: String(err) }));
+    }
+    dataServed = true;
+  });
+
+  server.middlewares.use('/token', (req, res, _next) => {
+    if (req.method !== 'GET') {
+      res.statusCode = 405;
+      res.end(JSON.stringify({ error: 'method not allowed' }));
+      return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ token: closeToken }));
+  });
+
+  server.middlewares.use('/close', async (req, res, _next) => {
+    if (req.method !== 'POST') {
+      res.statusCode = 405;
+      res.end(JSON.stringify({ error: 'method not allowed' }));
+      return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ ok: true, closing: true }));
+    const body = await readBody(req);
+    let token = '';
+    try { token = JSON.parse(body || '{}').token || ''; } catch { }
+    if (!dataServed) {
+      console.log('[idea-features] close beacon ignored: no data served yet');
+      return;
+    }
+    if (token !== closeToken) {
+      console.log('[idea-features] close beacon ignored: token mismatch');
+      return;
+    }
+    console.log('[idea-features] close beacon received, stopping dev server...');
+    setTimeout(() => server.close().catch(() => { }), 100);
+  });
+}
+
 export default defineConfig({
-  define: {
-    __BUNDLED_DEV__: 'false',
-    __SERVER_FORWARD_CONSOLE__: 'false',
-  },
   plugins: [
     solid(),
     UnoCSS(),
@@ -89,40 +150,10 @@ export default defineConfig({
       name: 'idea-features-data-and-close',
       async configureServer(server) {
         await ensureSampleData();
-        const serverStart = Date.now();
-
-        server.middlewares.use('/api/data', (req, res, next) => {
-          if (req.method !== 'GET') return next();
-          res.setHeader('Content-Type', 'application/json');
-          try {
-            if (!existsSync(dataPath)) {
-              res.statusCode = 404;
-              res.end(JSON.stringify({ error: `data file not found: ${dataPath}` }));
-              return;
-            }
-            res.end(readFileSync(dataPath, 'utf-8'));
-          } catch (err) {
-            res.statusCode = 500;
-            res.end(JSON.stringify({ error: String(err) }));
-          }
-        });
-
-        server.middlewares.use('/close', (req, res, _next) => {
-          if (req.method !== 'POST') {
-            res.statusCode = 405;
-            res.end(JSON.stringify({ error: 'method not allowed' }));
-            return;
-          }
-          res.setHeader('Content-Type', 'application/json');
-          res.end(JSON.stringify({ ok: true, closing: true }));
-          const uptime = Date.now() - serverStart;
-          if (uptime < 5000) {
-            console.log('[idea-features] close beacon ignored during startup grace period');
-            return;
-          }
-          console.log('[idea-features] close beacon received, stopping dev server...');
-          setTimeout(() => server.close().catch(() => { }), 100);
-        });
+        setupMiddlewares(server);
+      },
+      async configurePreviewServer(server) {
+        setupMiddlewares(server);
       }
     }
   ],
@@ -130,9 +161,8 @@ export default defineConfig({
     target: 'esnext',
     outDir: 'dist'
   },
-  server: {
+  preview: {
     port: 5173,
-    open: false,
-    hmr: false,
+    open: false
   }
 });

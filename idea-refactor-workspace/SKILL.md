@@ -6,6 +6,8 @@ related:
   - follow-single-responsibility
   - refactor-workspace
   - report-table
+  - report-file-structure
+  - report-before-after
   - suggest-next-action
 ---
 
@@ -24,10 +26,12 @@ related:
 > Goal: เข้าใจโครงสร้างและปัญหาของ workspaces
 
 1. ทำ `/analyze-project` เพื่อดู workspace configuration และ package manifest
-2. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
-3. ทำ `/check-circular-dependencies` เพื่อหา circular dependencies ระหว่าง workspaces
-4. ทำ `/check-long-files` และ `/review-quality` เพื่อหา code smells
-5. ระบุ workspaces ที่มีหลาย reasons to change, coupling สูง หรือ cohesion ต่ำ
+2. ทำ `/report-file-structure` เพื่อสแกนโครงสร้างไฟล์, สถิติ, และปัญหาเกี่ยวกับ organization
+3. ทำ `/report-before-after` ใน mode `before` เพื่อบันทึก baseline ก่อน refactor
+4. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
+5. ทำ `/check-circular-dependencies` เพื่อหา circular dependencies ระหว่าง workspaces
+6. ทำ `/check-long-files` และ `/review-quality` เพื่อหา code smells
+7. ระบุ workspaces ที่มีหลาย reasons to change, coupling สูง หรือ cohesion ต่ำ
 
 ### 2. Decompose Responsibilities
 
@@ -74,8 +78,9 @@ related:
 
 1. ถ้า user ต้องการ deep refactor ทั้งหมด → ทำ `/refactor-all-workspace`
 2. ถ้า user ต้องการ refactor ทีละ workspace → ทำ `/refactor-workspace` ตามลำดับทีเลือก
-3. ถ้า user ต้องการ decompose เพิ่ม → ทำ `/follow-single-responsibility` อีกครั้ง
-4. ทำ `/suggest-next-action` เพื่อสรุปขั้นตอนถัดไป
+3. หลัง refactor เสร็จ → ทำ `/report-before-after` อีกครั้งเพื่อเปรียบเทียบผลลัพธ์ (after)
+4. ถ้า user ต้องการ decompose เพิ่ม → ทำ `/follow-single-responsibility` อีกครั้ง
+5. ทำ `/suggest-next-action` เพื่อสรุปขั้นตอนถัดไป
 
 ## Rules
 
@@ -106,6 +111,7 @@ related:
 ## Expected Outcome
 
 - ไอเดีย refactor workspace ทีมี single responsibility, มาจากข้อมูลจริง
+- รายงาน `/report-file-structure` และ `/report-before-after` (before baseline) ก่อนเสนอไอเดีย
 - ตารางเปรียบเทียบ impact, effort, risk พร้อม Top 3
-- แผนการส่งต่อไปยัง `/refactor-all-workspace` หรือ `/refactor-workspace`
+- แผนการส่งต่อไปยัง `/refactor-all-workspace` หรือ `/refactor-workspace` พร้อมเปรียบเทียบ after state ด้วย `/report-before-after`
 - ไม่ over-engineer หรือสร้าง fragmentation

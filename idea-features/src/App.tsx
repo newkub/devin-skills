@@ -1,45 +1,31 @@
 import { Show } from 'solid-js'
 import type { Component } from 'solid-js'
 import { useFeatures } from './hooks/useFeatures'
-import { useFeatureTable } from './hooks/useFeatureTable'
+import { useFeatureApp } from './hooks/useFeatureApp'
 import Header from './Header'
-import Summary from './Summary'
-import Filters from './Filters'
-import FeatureTable from './FeatureTable'
+import FeatureList from './components/FeatureList'
+import SketchPanel from './components/SketchPanel'
+import DetailPanel from './components/DetailPanel'
 
 const App: Component = () => {
   const { features, loading, error, dark, setDark, loadData } = useFeatures()
-  const {
-    table,
-    search,
-    setSearch,
-    activeFilters,
-    setActiveFilters,
-    filterCategories,
-    filteredCount,
-    tab,
-    setTab,
-    clearFilters,
-    copySelected,
-    copied,
-    selectedRows,
-    counts,
-  } = useFeatureTable(features)
+  const app = useFeatureApp(features)
 
   return (
-    <div class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div class="flex h-screen flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <Header
         dark={dark}
         setDark={setDark}
         loading={loading}
         loadData={loadData}
-        table={table}
-        selectedRows={selectedRows}
-        copySelected={copySelected}
-        copied={copied}
+        selectedCount={app.selectedCount}
+        selectAll={app.selectAll}
+        clearSelection={app.clearSelection}
+        copySelected={app.copySelected}
+        copied={app.copied}
       />
 
-      <main class="mx-auto max-w-7xl px-4 py-6">
+      <main class="flex-1 overflow-hidden p-4">
         <Show when={loading()}>
           <div class="py-20 text-center text-gray-500 dark:text-gray-400">กำลังโหลดข้อมูล...</div>
         </Show>
@@ -51,21 +37,40 @@ const App: Component = () => {
         </Show>
 
         <Show when={!loading() && !error()}>
-          <Summary counts={counts} tab={tab} setTab={setTab} />
-          <Filters
-            search={search}
-            setSearch={setSearch}
-            activeFilters={activeFilters}
-            setActiveFilters={setActiveFilters}
-            filterCategories={filterCategories}
-            filteredCount={filteredCount}
-            clearFilters={clearFilters}
-          />
-          <FeatureTable table={table} />
+          <div class="grid h-full grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="h-full overflow-hidden lg:col-span-1">
+              <FeatureList
+                grouped={app.groupedFeatures()}
+                selectedIds={app.selectedIds()}
+                selectedDetailId={app.selectedDetailId()}
+                search={app.search()}
+                setSearch={app.setSearch}
+                groupBy={app.groupBy()}
+                setGroupBy={app.setGroupBy}
+                sortBy={app.sortBy()}
+                setSortBy={app.setSortBy}
+                sortDesc={app.sortDesc()}
+                setSortDesc={app.setSortDesc}
+                activeFilters={app.activeFilters()}
+                filterCategories={app.filterCategories()}
+                toggleFilter={app.toggleFilter}
+                clearFilters={app.clearFilters}
+                toggleSelect={app.toggleSelect}
+                setSelectedDetail={app.setSelectedDetailId}
+                counts={app.counts()}
+              />
+            </div>
+            <div class="h-full overflow-hidden lg:col-span-1 xl:col-span-1">
+              <SketchPanel feature={app.selectedFeature()} />
+            </div>
+            <div class="h-full overflow-hidden lg:col-span-1 xl:col-span-2">
+              <DetailPanel feature={app.selectedFeature()} />
+            </div>
+          </div>
         </Show>
       </main>
 
-      <footer class="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-gray-400 dark:text-gray-500">
+      <footer class="border-t border-gray-200 bg-white px-4 py-2 text-center text-xs text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-500">
         ปิด tab นี้เพื่อหยุด dev server อัตโนมัติ
       </footer>
     </div>
