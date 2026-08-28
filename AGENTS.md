@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **703** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **707** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -118,7 +118,7 @@ Major skill families by current count:
 - `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
 - `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
 - `implement-*` (6): implement tasks and features. Examples: `implement-github-task`, `implement-todo-md`, `implement-features-to-mvp`
-- `idea-*` (6): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`
+- `idea-*` (8): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 

@@ -1,6 +1,13 @@
 ---
 name: refactor-workspace
 description: Refactor workspace members ให้มี SRP, แนะนำ workspace layout
+related:
+  - follow-single-responsibility
+  - restructure
+  - relocation
+  - review-architecture
+  - update-references
+  - run-verify-fast
 ---
 
 ## Goal
@@ -39,10 +46,11 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 > Goal: วางแผนการ split/merge/relocate workspace members
 
 1. ทำ `/plan` เพื่อสร้างแผน split, extract, merge, หรือ relocate
-2. ระบุ workspace member boundaries ตาม domain, reason to change, cohesion
-3. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
-4. จัดลำดับตาม dependency direction (foundation ก่อน)
-5. ทำ `/report-plan` ก่อนลงมือ execute
+2. ทำ `/follow-single-responsibility` เพื่อแยกแผน refactor ออกเป็นรายการ numbered list ทีแต่ละข้อทำงานเดียว
+3. ระบุ workspace member boundaries ตาม domain, reason to change, cohesion
+4. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
+5. จัดลำดับตาม dependency direction (foundation ก่อน)
+6. ทำ `/report-plan` ก่อนลงมือ execute
 
 ### 4. Scan And Recommend Workspace Members
 
