@@ -5,7 +5,8 @@ argument-hint: "[description]"
 related:
   - convert-to-svg
   - analyze-data-flow
-  - visualize-in-web---
+  - visualize-in-web
+---
 ## Goal
 
 สร้างไฟล์ `.svg` จากคำอธิบายหรือ prompt ที user ให้มา

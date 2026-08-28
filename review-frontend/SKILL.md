@@ -12,7 +12,8 @@ related:
   - report
   - report-table
   - analyze-user-flow
-  - suggest-next-action---
+  - suggest-next-action
+---
 
 ## Goal
 

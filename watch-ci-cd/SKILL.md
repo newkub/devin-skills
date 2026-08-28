@@ -19,7 +19,8 @@ related:
   - run-check
   - report-table
   - analyze-error-patterns
-  - suggest-next-action---
+  - suggest-next-action
+---
 
 ## Goal
 

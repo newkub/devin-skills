@@ -5,7 +5,8 @@ related:
   - check-should-update
   - cleanup-files-in-project
   - check-dead-code
-  - delete-project-from-local-remote---
+  - delete-project-from-local-remote
+---
 ## Goal
 
 ตรวจจับและระบุไฟล์ที่ไม่ได้ใช้ในโปรเจกต์ และลบหรือนำไปใช้

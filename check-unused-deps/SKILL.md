@@ -4,7 +4,8 @@ description: Detect and remove unused dependencies using Knip and ecosystem-spec
 related:
   - follow-tool-knip
   - check-dead-code
-  - update-config---
+  - update-config
+---
 ## Goal
 
 ตรวจจับและระบุ dependencies ที่ไม่ได้ใช้ในโปรเจกต์ และแก้ไขหรือลบออก

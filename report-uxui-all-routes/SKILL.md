@@ -5,7 +5,8 @@ related:
   - report-uxui-sketch
   - list-website-all-routes
   - analyze-user-flow
-  - report-table---
+  - report-table
+---
 
 ## Goal
 

@@ -8,7 +8,8 @@ related:
   - use-my-packages-on-registry
   - watch-release
   - check-backward-compatibility
-  - update-devin-global-skills---
+  - update-devin-global-skills
+---
 
 ## Goal
 

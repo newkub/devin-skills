@@ -5,7 +5,8 @@ related:
   - check-broken-skills-references
   - check-skills-related
   - check-secrets-leak
-  - update-references---
+  - update-references
+---
 ## Goal
 
 อ่านและตรวจสอบ reference จาก sources ต่างๆ เพื่อยืนยันความถูกต้องของข้อมูล
