@@ -4,6 +4,7 @@ description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ 
 related:
   - follow-secret-manager
   - open-web-for-config-secret
+  - follow-create-cloudflare-token
   - deploy-to-cloudflare
   - watch-cloudflare
   - follow-tool-mise
