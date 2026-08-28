@@ -2,7 +2,7 @@
 name: visualize-in-web
 description: สร้าง visual แบบ Web ใน browser บน OS temp directory
 related:
-  - report-html
+  - report-in-html
   - open-web
 ---
 
@@ -42,7 +42,7 @@ related:
 
 > Goal: สร้าง visual แบบ HTML
 
-1. ทำ `/report-html` สำหรับ HTML structure พื้นฐาน
+1. ทำ `/report-in-html` สำหรับ HTML structure พื้นฐาน
 2. ใช้ runtime ที่เลือกจากข้อ 2
 3. ใช้ Tailwind CSS สำหรับ styling
 4. ถ้าต้องการ tab system ให้อ้างอิง `/open-readme-html`
@@ -84,7 +84,7 @@ related:
 
 ### 2. Web Standards
 
-- ทำตาม `/report-html` สำหรับ HTML structure
+- ทำตาม `/report-in-html` สำหรับ HTML structure
 - เลือก frontend runtime ตาม user context (`Vue`, `Solid`, `Alpine`, `Vanilla`)
 - ใช้ Tailwind CSS CDN
 - รองรับ dark mode

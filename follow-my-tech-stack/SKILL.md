@@ -27,11 +27,12 @@ related:
 1. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ tools ที่ใช้
 2. ระบุ ecosystem: TypeScript/JavaScript หรือ Rust หรือทั้งสองอย่าง
 3. ระบุ runtime, build tools, frameworks, ORM, และ ecosystem libraries
-4. ถ้าเป็น monorepo: ทำ `/follow-monorepo` เพื่อตรวจสอบ workspace dependencies
-5. ถ้ามี desktop app: ระบุ `Tauri` และ Rust backend
-6. ถ้ามี mobile app: ระบุ `Capacitor` และ native plugins
-7. ถ้ามี AI features: ระบุ `TanStack AI` และ AI providers
-8. ถ้ามี animation/interactive visuals: ระบุ `/review-frontend`
+4. ถ้าไม่พบ tech stack หรือ library ที่ต้องการใน table → ทำ `/deep-research` หรือ `/research-dependencies` เพื่อหาทางเลือกทีเหมาะสม
+5. ถ้าเป็น monorepo: ทำ `/follow-monorepo` เพื่อตรวจสอบ workspace dependencies
+6. ถ้ามี desktop app: ระบุ `Tauri` และ Rust backend
+7. ถ้ามี mobile app: ระบุ `Capacitor` และ native plugins
+8. ถ้ามี AI features: ระบุ `TanStack AI` และ AI providers
+9. ถ้ามี animation/interactive visuals: ระบุ `/review-frontend`
 
 ### 2. Document Tech Stack
 
@@ -136,6 +137,12 @@ related:
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-tool-pitchfork`)
 - ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-tool-usage`)
 - ถ้ามี animation/interactive visuals: เพิ่ม `/review-frontend`
+
+### 4. Missing Stack
+
+- ถ้า library หรือ tool ที่ต้องการไม่อยู่ใน table → ทำ `/deep-research` หรือ `/research-dependencies` เพื่อหาทางเลือก
+- บันทึกผล research ลงใน tech stack table หรือ `references/`
+- ถ้าไม่แน่ใจระหว่างหลายทางเลือก → ใช้ `/ask-me`
 
 ### 3. Fast Parser And Bundler
 

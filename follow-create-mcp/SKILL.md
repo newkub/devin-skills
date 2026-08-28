@@ -36,7 +36,7 @@ related:
 2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/server`
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
-5. ทำ `/follow-clean-architecture` เพื่อแยก handlers, transport, และ domain logic ชัดเจน
+5. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
 
 ### 3. Implement Tools And Resources
 

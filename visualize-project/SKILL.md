@@ -128,7 +128,7 @@ related:
 
 ### 4. No Report-HTML Dependency
 
-- ไม่อ้างอิง `/report-html` หรือใช้ no-build HTML report pattern
+- ไม่อ้างอิง `/report-in-html` หรือใช้ no-build HTML report pattern
 - ใช้ Vite build และ Solid TSX ตาม `/follow-solid-tanstack`
 
 ### 5. Taxonomy First

@@ -5,7 +5,7 @@ argument-hint: "[threshold]"
 related:
   - check-code-structure
   - refactor
-  - report-todo
+  - report-scan-todo
 ---
 ## Goal
 

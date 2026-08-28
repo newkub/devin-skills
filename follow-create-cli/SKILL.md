@@ -6,6 +6,7 @@ related:
   - follow-create-rust-cli
   - follow-architecture
   - follow-flat-folders
+  - follow-my-tech-stack
   - ship
   - rethink
 ---
@@ -38,7 +39,8 @@ related:
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
 3. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
 4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
-5. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
+5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/follow-my-tech-stack` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
+6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 3. Review CLI
 
@@ -82,7 +84,15 @@ related:
 - Adapters จัดการ I/O และ external dependencies
 - Presentation เป็น entry points
 
-### 3. Review Before Ship
+### 3. Library Selection
+
+- ถ้า CLI ต้องแสดงตาราง → ใช้ libraries จาก `/follow-my-tech-stack` เช่น `comfy-table` (Rust) หรือ `TanStack Table` (Bun/TS)
+- ถ้า CLI ต้องรับ command/subcommand → ใช้ `clap` (Rust) หรือ `cac` (Bun/TS)
+- ถ้า CLI ต้อง interactive prompt → ใช้ `dialoguer`/`inquire` (Rust) หรือ `@clack/prompts`/`inquirer` (Bun/TS)
+- ถ้า CLI ต้อง TUI → ใช้ `ratatui` (Rust) หรือ `blessed`/`ink` (Bun/TS)
+- ทำ `/follow-my-tech-stack` ก่อนเลือก libraries ใหม เพื่อไม่ให้ขัดแย้งกับ tech stack ปัจจุบัน
+
+### 4. Review Before Ship
 
 - ทำ `/update-review-codebase-cli-and-run` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน

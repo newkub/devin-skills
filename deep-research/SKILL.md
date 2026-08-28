@@ -4,6 +4,10 @@ description: ค้นหาข้อมูลลึกจาก multiple source
 argument-hint: "[query]"
 related:
   - rethink
+  - research-dependencies
+  - follow-best-practice
+  - learn-from-web
+  - check-reference
 ---
 
 ## Goal
@@ -15,6 +19,15 @@ related:
 ใช้สำหรับงานที่ต้องการข้อมูลลึกจากหลายแหล่ง เช่น เปรียบเทียบ libraries, หา best practices, ตรวจสอบ compatibility ไม่ใช่การค้นหาเร็วๆ (ใช้ `/learn-from-web`) และไม่ใช่การอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
 
 ## Execute
+
+### 0. Dispatch To Focused Research Skill
+
+> Goal: ใช้ research skill เฉพาะทางถ้ามี
+
+1. ถ้าหัวข้อเกี่ยวกับ dependencies/libraries → ใช้ `/research-dependencies` แล้ว stop
+2. ถ้าหัวข้อเกี่ยวกับ architecture patterns → ใช้ `/research-architecture` ถ้ามี หรือทำต่อ
+3. ถ้าหัวข้อเป็น tech stack ทังชุด → ใช้ `/follow-my-tech-stack` หรือ `/research-stack` ถ้ามี
+4. ถ้าไม่มี focused skill ทีตรง → ทำตามขั้นตอนด้านล่าง
 
 ### 1. Identify Research Topic
 

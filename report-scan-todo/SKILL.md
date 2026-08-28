@@ -1,6 +1,6 @@
 ---
-name: report-todo
-description: รวบรวม TODO/FIXME/HACK จาก codebase พร้อมตำแหน่งและความสำคัญ
+name: report-scan-todo
+description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่งและความสำคัญ
 ---
 
 ## Goal

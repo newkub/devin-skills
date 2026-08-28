@@ -1,6 +1,6 @@
 ---
 name: report-plan
-description: รายงานแผนงานในแชทก่อนลงมือ implement เพื่อให้ผู้ใช้เห็นภาพรวมและตัดสินใจได้
+description: รายงานแผนงานในแชทก่อนลงมือ implement โดยแบ่งเป็น sections ตามมาตรฐาน
 ---
 
 ## Goal
@@ -9,110 +9,68 @@ description: รายงานแผนงานในแชทก่อนล�
 
 ## Scope
 
-ใช้หลังจาก `/deep-plan` เสร็จ รายงานแผนเป็นตาราง, bullet points ของ task พร้อม before-after แต่ละข้อ และ file structure ในแชท แล้วทำงานต่อได้เลย
+ใช้หลังจาก `/deep-plan` เสร็จ หรือก่อนเริ่มงานซับซ้อน รายงานต้องมี sections: TODOs, file changes table, file structure, report-ansi (ถ้าจำเป็น) แล้วทำงานต่อได้เลย
 
 ## Execute
 
-### 1. Summarize Plan
+### 1. Generate Plan Sections
 
-> Goal: สรุปแผนงานเป็น bullet points สั้นๆ
+> Goal: สร้างแผนงานเป็น sections ทีครบถ้วน
 
-1. ระบุ goal และ scope ของงาน
-2. ระบุจำนวน tasks และประเภท (create, modify, delete)
-3. ระบุ library choices พร้อมเหตุผล
-4. ระบุ milestones และ timeline
+1. สรุป goal และ scope ของงาน 1-2 ประโยค
+2. สร้างรายการ TODOs แบบ numbered list + bullet points
+3. สร้างตาราง file changes ด้วย columns:
+   - No.
+   - File
+   - How to (create / modify / delete / rename)
+   - Risk (high / medium / low)
+   - Note
+4. แสดง file structure ด้วย `/report-file-structure` ถ้ามีการสร้าง/ย้าย/ลบไฟล์
+5. แสดง report-ansi ถ้ามีสถานะ/progress/logs ที่ควรเห็นภาพ
+6. ทำ `/suggest-next-action` ท้าย report
 
-### 2. Report Task Table
+### 2. Format Output
 
-> Goal: แสดงตาราง tasks ตาม `/report-table`
+> Goal: report อ่านง่ายและกระชับ
 
-1. คอลัมน์ (No. | Task | Type | Priority | Effort | Impact | Risk | Status)
-2. Type: Create, Modify, Delete
-3. Priority: P0 (critical), P1 (high), P2 (medium), P3 (low)
-4. Effort: S, M, L, XL
-5. Impact: 🔴 สูง, 🟡 ปานกลาง, 🟢 ต่ำ
-6. Risk: 🔴 สูง, 🟡 ปานกลาง, 🟢 ต่ำ
-7. Status: ⬜ ยังไม่ทำ, � กำลังทำ, ✅ เสร็จแล้ว
-
-### 3. Report Task Bullets with Before-After
-
-> Goal: แสดง bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after
-
-1. ต่อจากตาราง tasks ให้แสดงรายการ task เป็นข้อๆ
-2. แต่ละข้อต้องระบุ: ชื่อ task, ไฟล์/โฟลเดอร์ที่เกี่ยวข้อง, สิ่งที่จะเปลี่ยนแปลง
-3. แต่ละข้อต้องมี `/report-before-after` โดยแยก `### Before` และ `### After` เปรียบเทียบ
-4. ใช้ code block หรือ table ถ้าช่วยให้เห็นความแตกต่างชัดเจน
-
-### 4. Report File Structure
-
-> Goal: แสดง file structure ตาม `/report-file-structure`
-
-1. แสดง tree diagram ของไฟล์ที่จะสร้าง/แก้ไข/ลบ
-2. ระบุ file pattern และ naming convention
-3. ระบุ module boundaries และ dependencies
-
-### 5. Report Execution Order
-
-> Goal: ระบุลำดับการทำงาน
-
-1. จัดกลุ่ม tasks เป็น phases: Foundation → Core → Polish → Test
-2. ระบุ critical path: tasks ที่ต้องทำตามลำดับ
-3. ระบุ parallelizable tasks: tasks ที่ทำพร้อมกันได้
-4. แสดง execution sequence เป็นลิสต์: Phase 1 → Phase 2 → Phase 3
-5. ระบุ milestones และ deliverables แต่ละ phase
-
-### 6. Continue Execution
-
-> Goal: ดำเนินการต่อหลัง report
-
-1. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-2. ถ้างานไม่เสี่ยง → เริ่ม implement ตาม execution order ได้เลย
-3. ถ้ามีความเสี่ยงสูง ให้ใช้ `/ask-me` ก่อน implement
+1. ขึ้นต้นด้วย summary 1-2 บรรทัด
+2. แสดง section `## TODOs` ด้วย numbered list
+3. แสดง section `## File Changes` ด้วย `/report-table`
+4. แสดง section `## File Structure` (ถ้ามี)
+5. แสดง section `## Report ANSI` (ถ้ามี)
+6. ท้ายด้วย `## Next Action` ชัดเจน
 
 ## Rules
 
-### Report UX/UI
+### 1. Sections Required
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+- ต้องมี `## TODOs` เป็น numbered list + bullets
+- ต้องมี `## File Changes` เป็น table มี columns: No., File, How to, Risk, Note
+- ต้องมี `## File Structure` ถ้ามีการเปลี่ยนโครงสร้างไฟล์
+- ต้องมี `## Report ANSI` ถ้ามีสถานะ/progress/logs
+- ต้องมี `## Next Action` ท้าย report
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
-5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
-6. ทำ `/suggest-next-action` ท้าย report เสมอ
+### 2. Table Columns
 
-### 1. Report Before Implement
+- `No.` เรียงตามลำดับ
+- `File` ระบุ path สั้นๆ
+- `How to` เขียนคร่าวๆ ว่าทำอะไร
+- `Risk` ระบุ high / medium / low
+- `Note` ระบุ dependency หรือข้อควรระวัง
 
-- ต้อง report plan ในแชทก่อนลงมือทำเสมอ
-- รายงานเป็นภาษาไทย กระชับ ตรงประเด็น
-- ใช้ตารางสำหรับ tasks และ file structure
+### 3. Report UX
 
-### 2. Before-After For Every Task
-
-- ทำ `/report-before-after` สำหรับทุก task ใน bullet list
-- งานเล็กก็ยังต้องแสดง before-after อย่างกระชับ
-- ไม่แก้ไขไฟล์จริงใน `/report-before-after`
-
-### 3. Auto Continue
-
-- หลัง report แล้วทำงานต่อได้เลย ไม่ต้องรอยืนยัน
-- ยกเว้นกรณีเสี่ยงสูง ให้ใช้ `/ask-me`
-- ไม่หยุดถามถ้าไม่จำเป็น
-
-### 4. Format
-
-- ใช้ `/report-table` สำหรับ task table
-- ใช้ `/report-file-structure` สำหรับ file tree
-- ใช้ table หรือ code block สำหรับ before-after comparison
+- ใช้ภาษาไทย กระชับ ตรงประเด็น
+- ใช้ `/report-table` สำหรับตาราง
+- ใช้ `/report-file-structure` สำหรับ tree
+- ใช้ `/report-ansi` สำหรับ status/progress/logs
+- ไม่ต้องรอยืนยัน แต่ถ้าเสี่ยงสูง ให้ใช้ `/ask-me`
 
 ## Expected Outcome
 
-- สรุปแผนงานเป็น bullet points ในแชท
-- ตาราง tasks 8 คอลัมน์ (No. | Task | Type | Priority | Effort | Impact | Risk | Status)
-- Bullet points ของแต่ละ task ด้านล่างตาราง พร้อม before-after แต่ละข้อ
-- File structure tree diagram
-- Execution order แบ่งเป็น phases พร้อม critical path
-- ทำงานต่อได้เลยหรือถามก่อนถ้าเสี่ยง
-- Report อ่านง่าย มี key findings ด้านบน
-- มี next action ชัดเจน
+- สรุปแผนงานชัดเจน
+- รายการ TODOs แบบ numbered + bullet
+- ตาราง File Changes ครบ columns
+- File Structure ถ้ามี
+- Report ANSI ถ้ามี
+- Next Action ชัดเจน
