@@ -4,6 +4,7 @@ description: วิเคราะห์เนื้อหาในรูปภ�
 argument-hint: "[image-path]"
 related:
   - gen-ai-images
+  - request-prompt-from-image
 ---
 
 ## Goal
