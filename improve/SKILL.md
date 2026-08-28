@@ -11,6 +11,13 @@ related:
   - run-check
   - ask-me
   - rethink
+  - report-numbered-bullet
+  - follow-single-responsibility
+  - follow-math-concepts
+  - follow-math-probability
+  - follow-math-proofs
+  - follow-math-algorithm-complexity
+  - follow-math-optimization
 ---
 
 ## Goal
@@ -40,7 +47,8 @@ related:
 2. ถ้าเป้าหมายเป็น code → ทำ `/review-quality`, `/review-consistency`, `/review-architecture`
 3. ถ้าเป้าหมายเป็น skill → ทำ `/review-devin-global-skills`
 4. ถ้าเป้าหมายเป็น docs → ทำ `/review-readme-md`, `/review-docs`
-5. บันทึก gaps ทีพร้อมแก้ไข
+5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-probability` หรือ `/follow-math-optimization`
+6. บันทึก gaps ทีพร้อมแก้ไข
 
 ### 3. Prioritize
 
@@ -75,12 +83,27 @@ related:
 
 > Goal: สรุปผลการปรับปรุง
 
-1. รายงาน gaps ทีแก้ไข
-2. รายงานไฟล์/ skill ทีเปลี่ยนแปลง
+1. ใช้ `/report-numbered-bullet` สรุป gaps ทีแก้ไข
+2. รายงานไฟล์/ skill ทีเปลี่ยนแปลง พร้อม references `/<skill-name>`, URLs, paths
 3. รายงานผลการ validate
 4. ถ้ายังมี gaps เหลือ → ระบุและทำ `/suggest-next-action`
 
 ## Rules
+
+### 1. Format
+
+- สรุป gaps และ actions ด้วย `/report-numbered-bullet`
+- ใช้ numbered สำหรับลำดับงาน ใช้ bullet สำหรับรายละเอียด
+- ใส่ references ทุกครั้ง: URLs, `/<skill-name>`, paths
+
+### 2. Math Support
+
+- ถ้ามี performance, complexity, cost → ใช้ `/follow-math-algorithm-complexity`, `/follow-math-optimization`
+- ถ้ามี uncertainty หรือ risk → ใช้ `/follow-math-probability`
+- ถ้ามี invariants หรือ correctness → ใช้ `/follow-math-proofs`
+- ถ้ามี metrics หรือ benchmarks → ใช้ `/follow-math-statistics`
+
+### 3. Scope And Safety
 
 - ไม่ over-engineer แก้เฉพาะ gaps ทีจำเป็น
 - รักษา existing behavior ถ้าไม่จำเป็นอย่าเปลี่ยน

@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **717** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **720** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -105,7 +105,7 @@ Major skill families by current count:
 - `list-*` (41): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-action-fail`, `list-cloudflare-worker-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-full`, `run-test-all`
 - `update-*` (32): repo, skills, docs, config, and dependency maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`
-- `report-*` (31): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`
+- `report-*` (33): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`
 - `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
 - `check-*` (15): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-ref`
 - `deep-*` (19): deep analysis, research, debugging, and validation. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`
@@ -118,7 +118,7 @@ Major skill families by current count:
 - `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
 - `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
 - `implement-*` (6): implement tasks and features. Examples: `implement-github-task`, `implement-todo-md`, `implement-features-to-mvp`
-- `idea-*` (8): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`
+- `idea-*` (9): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`, `idea-refactor-devin-global-skills`
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 

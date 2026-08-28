@@ -1,6 +1,13 @@
 ---
 name: report-plan
 description: รายงานแผนงานในแชทก่อนลงมือ implement โดยแบ่งเป็น sections ตามมาตรฐาน
+related:
+  - report-enhance-prompt
+  - report-numbered-bullet
+  - report-table
+  - report-file-structure
+  - report-ansi
+  - follow-single-responsibility
 ---
 
 ## Goal
@@ -13,12 +20,19 @@ description: รายงานแผนงานในแชทก่อนล�
 
 ## Execute
 
+### 0. Enhance Prompt
+
+> Goal: เข้าใจ prompt ให้ชัดก่อนวางแผน
+
+1. ถ้า prompt ยาว/คลุมเครือ/มีหลายงาน → ทำ `/report-enhance-prompt` ก่อน
+2. ใช้ผลลัพธ์จาก `/report-enhance-prompt` เป็นต้นฉบับ plan
+
 ### 1. Generate Plan Sections
 
 > Goal: สร้างแผนงานเป็น sections ทีครบถ้วน
 
 1. สรุป goal และ scope ของงาน 1-2 ประโยค
-2. สร้างรายการ TODOs แบบ numbered list + bullet points
+2. สร้างรายการ TODOs แบบ numbered list + bullet points ด้วย `/report-numbered-bullet`
 3. สร้างตาราง file changes ด้วย columns:
    - No.
    - File
