@@ -1,86 +1,69 @@
 ---
 name: list-repo-in-github-star
-description: รายการ repositories ที starred บน GitHub เรียงตามล่าสุด
+description: แสดง 50 starred repositories ล่าสุดของ user บน GitHub
 argument-hint: "[username]"
 related:
   - search-in-github-star
+  - report-table
 ---
 
 ## Goal
 
-รายการ repositories ที user (หรือ username ทีระบุ) ได้ star ไว้บน GitHub เรียงลำดับตามวันที star ล่าสุด
+แสดง 50 starred repositories ล่าสุดของ authenticated user บน GitHub
 
 ## Scope
 
-- ใช้ `gh api` เพื่อดึงรายการ starred repositories
-- รองรับทั้ง current authenticated user และ public user
-- เรียงตาม `starred_at` หรือ `created` ล่าสุด
-- รองรับ pagination
+ใช้สำหรับดู starred repositories ล่าสุดเพื่อติดตาม projects ทีสนใจ
 
 ## Execute
 
-### 1. Verify gh CLI
+### 1. Get Authenticated User
 
-> Goal: ตรวจสอบสภาพแวดล้อม
+> Goal: Get Authenticated User
 
-1. รัน `gh --version`
-2. รัน `gh auth status` เพื่อตรวจสอบ login
-3. ถ้าไม่ login → แจ้ง user ให้ `gh auth login`
+1. ทำ `mcp7_get_me` เพื่อรับ GitHub username
+2. บันทึก username สำหรับใช้ใน step ถัดไป
+3. ถ้า user ระบุ `[username]` → ใช้ username ทีระบุแทน
 
-### 2. Identify User
+### 2. List Starred Repositories
 
-> Goal: ระบุ user ทีต้องการดู starred
+> Goal: List Starred Repositories
 
-1. ถ้า user ระบุ username → ใช้ `users/<username>/starred`
-2. ถ้าไม่ระบุ → ใช้ `user/starred` (current auth)
-3. ถ้าต้องการ private starred ของตัวเอง → ต้องใช้ `user/starred` พร้อม auth
+1. รันคำสั่ง `gh api user/starred --paginate --jq '.[0:50] | sort_by(.pushed_at) | reverse'` สำหรับดู 50 อันล่าสุด
+2. ถ้าไม่มี `gh` CLI ให้ใช้ `mcp7_search_repositories` ด้วย `user:{username} stars:>0 sort:updated` เป็น fallback
+3. ถ้าดูของ user อื่น → ใช้ `gh api users/<username>/starred --paginate --jq ...`
 
-### 3. Fetch Starred Repos
+### 3. Format Output
 
-> Goal: ดึงรายการ repo ที star
+> Goal: Format Output
 
-1. ใช้ `gh api --paginate <endpoint>?sort=created&direction=desc&per_page=100`
-   - current user: `gh api --paginate user/starred?sort=created&direction=desc&per_page=100`
-   - public user: `gh api --paginate users/<username>/starred?sort=created&direction=desc&per_page=100`
-2. ถ้า `gh` ไม่รองรับ `sort=created` บาง endpoint → sort ด้วย `--jq` หลังได้ JSON
-3. บันทึก JSON output
-
-### 4. Parse And Sort
-
-> Goal: จัดรูปแบบและเรียงลำดับ
-
-1. ดึง fields:
-   - `full_name`
-   - `html_url`
-   - `description`
-   - `stargazers_count`
-   - `language`
-   - `pushed_at`
-   - `starred_at` (ถ้ามี)
-2. เรียงตาม `starred_at` หรือ `created_at` จากใหม่ไปเก่า
-3. กรองตาม keyword หรือ language ถ้า user ต้องการ
-
-### 5. Report
-
-> Goal: แสดงผลให้อ่านง่าย
-
-1. สร้างตาราง: #, Full Name, Stars, Language, Pushed, Starred At
-2. แสดง summary: จำนวน repo, top languages
-3. ระบุ user ทีตรวจสอบ
+1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+2. กำหนด columns:
+   - No. ลำดับ
+   - Owner เจ้าของ repo
+   - Name ชื่อ repository
+   - Description คำอธิบาย
+   - Language ภาษาหลัก
+   - Stars จำนวน stars ทั้งหมด
+   - Updated วันที่อัปเดตล่าสุด
+3. แสดง summary: จำนวน repo, top languages
 
 ## Rules
 
-### 1. Sorting
+### 1. API Usage
 
-- เรียงตาม latest starred เสมอ
-- ถ้า API ไม่ sort ให้ → sort ด้วย `jq` หรือ script
-- default direction คือ descending
+- ใช้ `gh api user/starred` สำหรับ list starred repos (ไม่มี MCP tool โดยตรง)
+- ใช้ `--paginate` สำหรับดูทั้งหมด
+- ใช้ `--jq` สำหรับ filter และ sort 50 อันล่าสุด
+- Fallback: ใช้ `mcp7_search_repositories` ด้วย `user:{username} stars:>0 sort:updated`
+- ระวัง rate limit GitHub API
 
-### 2. Pagination
+### 2. Output Format
 
-- ใช้ `--paginate` สำหรับ repo มากกว่า 100
-- ถ้า user ต้องการจำกัด → ใช้ `--method GET` พร้อม `per_page` และ `page`
-- ระวัง rate limit (GitHub API limit 5,000 requests/ชม)
+- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- จำกัด 50 อันล่าสุด
+- เรียงตามวันที่อัปเดตล่าสุด
+- แสดงข้อมูลสำคัญ: owner, name, description, language, stars, updated
 
 ### 3. Privacy
 
@@ -90,6 +73,6 @@ related:
 
 ## Expected Outcome
 
-- ตาราง repositories ที starred เรียงตาม latest
-- ระบุจำนวน repo, top languages, user
-- ถ้า fail แสดงสาเหตุและแนวทางแก้ไข
+- รายการ 50 starred repositories ล่าสุด
+- จัดรูปแบบเป็นตารางทีอ่านง่าย
+- ข้อมูลครบถ้วน: owner, name, description, language, stars, updated
