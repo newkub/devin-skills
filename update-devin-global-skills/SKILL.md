@@ -56,6 +56,7 @@ related:
 8. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
 9. ถ้าไฟล์เกิน 250 บรรทัด → แยกออกไปยัง `references/` หรือ `subskills/`
 10. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
+11. วิเคราะห์ file structure ของ skills ที่คล้ายกัน ถ้าพบ pattern ที่ใช้ซ้ำ → สร้าง template ใน `references/` หรือ `templates/` แล้วให้ skill ใหม่อ้างอิง template แทนที่จะเขียนซ้ำ
 
 ### 3. Align With Catalog And Global Rules
 
@@ -135,5 +136,6 @@ related:
 - `related` ครบถ้วน, ไม่มี missing/unused
 - directory structure ครบถ้วนตาม `references/create-devin-skills.md`
 - skill รองรับหลาย ecosystem และสถานการณ์ ไม่ผูกติดกับ stack เดียว
+- ถ้าพบ pattern จาก file structure ของ skills ที่คล้ายกัน มี template ใน `references/` หรือ `templates/`
 - ถ้ามีการสร้าง MCP server → `%APPDATA%\devin\mcp_config.json` ถูกอัปเดตพร้อม register server
 - references อัปเดตครบทั้ง `AGENTS.md`, `global_rules.md`, `/follow-global-rules` และ skills อื่นที่เกี่ยวข้อง
