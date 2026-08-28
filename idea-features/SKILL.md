@@ -62,7 +62,7 @@ related:
 3. เขียน JSON ด้วยโครงสร้าง:
    - `generatedAt`: ISO timestamp
    - `features`: array ของ feature objects
-4. feature object ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
+4. feature object ต้องมี fields หลัก: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail` และอาจเพิ่ม `tags` (array สตริง) / `files` (array path) เพื่อแสดงใน app
 5. ใช้ `write` tool หรือ script เขียนไฟล์
 
 ### 5. Open Web App
@@ -75,7 +75,7 @@ related:
 4. รอ dev server ready ที่ `http://localhost:5173`
 5. ทำ `/browser_preview` หรือ `agent-browser open http://localhost:5173` เพื่อเปิดใน browser
 6. รายงาน user ว่า app พร้อมใช้งาน สามารถเลือก features, copy, ดู uxui sketch ได้
-7. เมื่อ user ปิด tab ใน browser dev server จะหยุดอัตโนมัติผ่าน `/close` beacon
+7. dev server รันไปเรื่อยจนกว่า user จะ kill เองหรือ terminal หยุด
 
 ### 6. Cleanup
 
