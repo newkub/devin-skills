@@ -3,16 +3,15 @@ import type { Component } from 'solid-js'
 import { useFeatures } from './hooks/useFeatures'
 import { useFeatureApp } from './hooks/useFeatureApp'
 import Header from './Header'
-import FeatureList from './components/FeatureList'
-import SketchPanel from './components/SketchPanel'
-import DetailPanel from './components/DetailPanel'
+import Filters from './Filters'
+import FeatureTable from './FeatureTable'
 
 const App: Component = () => {
   const { features, loading, error, dark, setDark, loadData } = useFeatures()
   const app = useFeatureApp(features)
 
   return (
-    <div class="flex h-screen flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <Header
         dark={dark}
         setDark={setDark}
@@ -23,9 +22,10 @@ const App: Component = () => {
         clearSelection={app.clearSelection}
         copySelected={app.copySelected}
         copied={app.copied}
+        counts={app.counts}
       />
 
-      <main class="flex-1 overflow-hidden p-4">
+      <main class="mx-auto max-w-7xl px-4 py-6">
         <Show when={loading()}>
           <div class="py-20 text-center text-gray-500 dark:text-gray-400">กำลังโหลดข้อมูล...</div>
         </Show>
@@ -37,41 +37,13 @@ const App: Component = () => {
         </Show>
 
         <Show when={!loading() && !error()}>
-          <div class="grid h-full grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
-            <div class="h-full overflow-hidden lg:col-span-1">
-              <FeatureList
-                grouped={app.groupedFeatures()}
-                selectedIds={app.selectedIds()}
-                selectedDetailId={app.selectedDetailId()}
-                search={app.search()}
-                setSearch={app.setSearch}
-                groupBy={app.groupBy()}
-                setGroupBy={app.setGroupBy}
-                sortBy={app.sortBy()}
-                setSortBy={app.setSortBy}
-                sortDesc={app.sortDesc()}
-                setSortDesc={app.setSortDesc}
-                activeFilters={app.activeFilters()}
-                filterCategories={app.filterCategories()}
-                toggleFilter={app.toggleFilter}
-                clearFilters={app.clearFilters}
-                toggleSelect={app.toggleSelect}
-                setSelectedDetail={app.setSelectedDetailId}
-                counts={app.counts()}
-              />
-            </div>
-            <div class="h-full overflow-hidden lg:col-span-1 xl:col-span-1">
-              <SketchPanel feature={app.selectedFeature()} />
-            </div>
-            <div class="h-full overflow-hidden lg:col-span-1 xl:col-span-2">
-              <DetailPanel feature={app.selectedFeature()} />
-            </div>
-          </div>
+          <Filters app={app} />
+          <FeatureTable app={app} />
         </Show>
       </main>
 
-      <footer class="border-t border-gray-200 bg-white px-4 py-2 text-center text-xs text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-500">
-        ปิด tab นี้เพื่อหยุด dev server อัตโนมัติ
+      <footer class="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-gray-400 dark:text-gray-500">
+        close tab ไม่หยุด server แล้ว — หยุดเองใน terminal ตามต้องการ
       </footer>
     </div>
   )

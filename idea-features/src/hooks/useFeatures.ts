@@ -1,4 +1,4 @@
-import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
+import { createEffect, createSignal, onMount } from 'solid-js';
 import type { Feature } from '../types';
 
 export const useFeatures = () => {
@@ -27,21 +27,7 @@ export const useFeatures = () => {
     const saved = localStorage.getItem('idea-features-theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setDark(saved === 'dark' || (!saved && prefersDark));
-    fetch('/token')
-      .then(r => r.json())
-      .then(({ token }) => {
-        (window as any).__idea_features_token = token;
-      })
-      .catch(() => { });
-    const noClose = window.location.search.includes('no-close');
-    const handler = () => {
-      if (noClose) return;
-      const token = (window as any).__idea_features_token || '';
-      const body = new Blob([JSON.stringify({ token })], { type: 'application/json' });
-      navigator.sendBeacon('/close', body);
-    };
-    window.addEventListener('beforeunload', handler);
-    onCleanup(() => window.removeEventListener('beforeunload', handler));
+    // no server stop on tab close
   });
 
   createEffect(() => {

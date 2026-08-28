@@ -10,6 +10,7 @@ interface HeaderProps {
   clearSelection: () => void
   copySelected: () => void
   copied: () => boolean
+  counts: () => { all: number; selected: number; mvp: number; high: number }
 }
 
 const Header: Component<HeaderProps> = (props) => (
@@ -17,7 +18,9 @@ const Header: Component<HeaderProps> = (props) => (
     <div class="mx-auto flex max-w-7xl flex-col gap-2 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 class="text-xl font-bold text-gray-900 dark:text-white">Idea Features</h1>
-        <p class="text-xs text-gray-500 dark:text-gray-400">เลือก features แล้ว copy ในรูปแบบ enhance-prompt</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          ทั้งหมด {props.counts().all} · เลือก {props.counts().selected} · MVP {props.counts().mvp} · สูง {props.counts().high}
+        </p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <button

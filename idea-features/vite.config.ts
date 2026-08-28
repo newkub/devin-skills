@@ -77,20 +77,7 @@ async function ensureSampleData() {
   await writeFile(dataPath, JSON.stringify(sample, null, 2), 'utf-8');
 }
 
-function setupMiddlewares(server: ViteDevServer | PreviewServer) {
-  const serverStart = Date.now();
-  const closeToken = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
-  let dataServed = false;
-
-  function readBody(req: any) {
-    return new Promise<string>((resolve) => {
-      let chunks = '';
-      req.on('data', (chunk: Buffer) => { chunks += chunk.toString(); });
-      req.on('end', () => resolve(chunks));
-      req.on('error', () => resolve(''));
-    });
-  }
-
+function setupDataMiddleware(server: ViteDevServer | PreviewServer) {
   server.middlewares.use('/api/data', (req, res, next) => {
     if (req.method !== 'GET') return next();
     res.setHeader('Content-Type', 'application/json');
@@ -105,40 +92,6 @@ function setupMiddlewares(server: ViteDevServer | PreviewServer) {
       res.statusCode = 500;
       res.end(JSON.stringify({ error: String(err) }));
     }
-    dataServed = true;
-  });
-
-  server.middlewares.use('/token', (req, res, _next) => {
-    if (req.method !== 'GET') {
-      res.statusCode = 405;
-      res.end(JSON.stringify({ error: 'method not allowed' }));
-      return;
-    }
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ token: closeToken }));
-  });
-
-  server.middlewares.use('/close', async (req, res, _next) => {
-    if (req.method !== 'POST') {
-      res.statusCode = 405;
-      res.end(JSON.stringify({ error: 'method not allowed' }));
-      return;
-    }
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ ok: true, closing: true }));
-    const body = await readBody(req);
-    let token = '';
-    try { token = JSON.parse(body || '{}').token || ''; } catch { }
-    if (!dataServed) {
-      console.log('[idea-features] close beacon ignored: no data served yet');
-      return;
-    }
-    if (token !== closeToken) {
-      console.log('[idea-features] close beacon ignored: token mismatch');
-      return;
-    }
-    console.log('[idea-features] close beacon received, stopping dev server...');
-    setTimeout(() => server.close().catch(() => { }), 100);
   });
 }
 
@@ -147,19 +100,23 @@ export default defineConfig({
     solid(),
     UnoCSS(),
     {
-      name: 'idea-features-data-and-close',
+      name: 'idea-features-data',
       async configureServer(server) {
         await ensureSampleData();
-        setupMiddlewares(server);
+        setupDataMiddleware(server);
       },
       async configurePreviewServer(server) {
-        setupMiddlewares(server);
+        setupDataMiddleware(server);
       }
     }
   ],
   build: {
     target: 'esnext',
     outDir: 'dist'
+  },
+  server: {
+    port: 5173,
+    open: false
   },
   preview: {
     port: 5173,
