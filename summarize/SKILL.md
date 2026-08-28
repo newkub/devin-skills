@@ -32,7 +32,7 @@ argument-hint: "<context>"
 3. ถ้าต้องการ bullet/numbered list → ทำ `/report-table`
 4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
 5. ถ้า `file` → อ่านไฟล์แล้วสรุป
-6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/git-diff`
+6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/report-git-diff`
 7. ถ้าไม่ตรงกับ skill ย่อย → สรุปตรงจุดด้วย `/report`
 
 ### 3. Summarize

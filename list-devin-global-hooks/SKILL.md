@@ -65,7 +65,7 @@ description: List global and project-level devin hooks from common config paths
 ### 1. Read-Only
 
 - ไม่แก้ไข hook config
-- ถ้าต้องแก้ → ใช้ `/edit-devin-global-hooks` หรือแก้ไฟล์โดยตรงตาม permission
+- ถ้าต้องแก้ → แก้ไฟล์โดยตรงตาม permission
 
 ### 2. Scope
 

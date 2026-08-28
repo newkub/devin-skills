@@ -3,8 +3,6 @@ name: follow-my-package-manager
 description: เลือก package manager ทีเหมาะสมกับ OS, program, และ action
 argument-hint: "[program-name] [install|list|uninstall]"
 related:
-  - use-mise
-  - use-scoop
   - use-pwsh-shell
   - download-program
   - list-program-in-computer

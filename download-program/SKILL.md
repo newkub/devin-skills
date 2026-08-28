@@ -4,8 +4,6 @@ description: ค้นหาและติดตั้ง program บนเค�
 argument-hint: "[program-name]"
 related:
   - follow-my-package-manager
-  - use-mise
-  - use-scoop
   - use-pwsh-shell
   - open-web
   - search-in-github-star

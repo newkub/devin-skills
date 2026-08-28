@@ -35,7 +35,7 @@ related:
 
 1. ถ้า user ต้องการ SolidJS + TanStack → ทำ `/follow-solid-tanstack`
 2. ถ้าต้องการ React + Next.js → ทำ `/follow-framework-nextjs` หรือ `/follow-lib-react`
-3. ถ้าต้องการ Vue/Nuxt → ทำ `/follow-framework-vue`
+3. ถ้าต้องการ Vue → ทำ `/follow-lib-vue` หรือ Nuxt → ทำ `/follow-framework-nuxt`
 4. บันทึกเหตุผลทีเลือก stack นั้น
 
 ### 3. Setup Framework
@@ -102,7 +102,7 @@ related:
 > Goal: deploy website ไปยัง target platform
 
 1. ถ้า Cloudflare → ทำ `/follow-service-cloudflare`
-2. ถ้า Vercel/Netlify → ทำ `/follow-service-vercel` หรือ `/follow-service-netlify`
+2. ถ้า Vercel → ทำ `/follow-service-vercel`
 3. ตรวจสอบ environment variables และ build config
 4. ทดสอบ production URL
 

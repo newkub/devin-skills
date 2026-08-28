@@ -35,9 +35,15 @@ pub fn run(root: PathBuf) {
     let (skill_set, skill_dirs) = collect_skills(&root);
     println!("=== INVENTORY ===\nTotal skills: {}\n", skill_set.len());
 
-    let (body_broken, related_broken, body_checked, related_checked) =
+    let (body_broken, related_broken, body_checked, related_checked, parse_errors) =
         scan_skills(&skill_dirs, &skill_set);
-    report(body_broken, related_broken, body_checked, related_checked);
+    report(
+        body_broken,
+        related_broken,
+        body_checked,
+        related_checked,
+        parse_errors,
+    );
 }
 
 fn collect_skills(root: &PathBuf) -> (BTreeSet<String>, Vec<PathBuf>) {
@@ -91,11 +97,12 @@ fn collect_skills(root: &PathBuf) -> (BTreeSet<String>, Vec<PathBuf>) {
 fn scan_skills(
     skill_dirs: &[PathBuf],
     skill_set: &BTreeSet<String>,
-) -> (SkillMap, SkillMap, usize, usize) {
+) -> (SkillMap, SkillMap, usize, usize, Vec<String>) {
     let mut body_broken: SkillMap = BTreeMap::new();
     let mut related_broken: SkillMap = BTreeMap::new();
     let mut body_checked = 0usize;
     let mut related_checked = 0usize;
+    let mut parse_errors: Vec<String> = Vec::new();
 
     let body_ref_re =
         Regex::new(r"/([a-z][a-z0-9]+(?:-[a-z0-9]+)+)").expect("valid body reference regex");
@@ -148,32 +155,43 @@ fn scan_skills(
         }
 
         if let Some(fm) = frontmatter {
-            if let Ok(parsed) = serde_yaml::from_str::<Frontmatter>(fm) {
-                if let Some(related) = parsed.related {
-                    for rel in related {
-                        let rel = rel
-                            .trim()
-                            .trim_matches(|c| c == '"' || c == '\'')
-                            .to_string();
-                        related_checked += 1;
-                        if !skill_set.contains(&rel) {
-                            related_broken
-                                .entry(skill_name.clone())
-                                .or_default()
-                                .insert(rel);
+            match serde_yaml::from_str::<Frontmatter>(fm) {
+                Ok(parsed) => {
+                    if let Some(related) = parsed.related {
+                        for rel in related {
+                            let rel = rel
+                                .trim()
+                                .trim_matches(|c| c == '"' || c == '\'')
+                                .to_string();
+                            related_checked += 1;
+                            if !skill_set.contains(&rel) {
+                                related_broken
+                                    .entry(skill_name.clone())
+                                    .or_default()
+                                    .insert(rel);
+                            }
                         }
                     }
                 }
-            } else {
-                eprintln!(
-                    "Warning: could not parse frontmatter in {}",
-                    skill_file.display()
-                );
+                Err(e) => {
+                    eprintln!(
+                        "Error: could not parse frontmatter in {}: {}",
+                        skill_file.display(),
+                        e
+                    );
+                    parse_errors.push(format!("{}: {}", skill_name, e));
+                }
             }
         }
     }
 
-    (body_broken, related_broken, body_checked, related_checked)
+    (
+        body_broken,
+        related_broken,
+        body_checked,
+        related_checked,
+        parse_errors,
+    )
 }
 
 fn report(
@@ -181,6 +199,7 @@ fn report(
     related_broken: SkillMap,
     body_checked: usize,
     related_checked: usize,
+    parse_errors: Vec<String>,
 ) {
     let critical: usize = related_broken.values().map(|s| s.len()).sum();
     let warning: usize = body_broken.values().map(|s| s.len()).sum();
@@ -190,8 +209,10 @@ fn report(
         body_checked, related_checked
     );
     println!(
-        "=== BROKEN REFERENCES ===\nCritical (broken related:): {}\nWarning (broken body /ref): {}\n",
-        critical, warning
+        "=== BROKEN REFERENCES ===\nCritical (broken related:): {}\nWarning (broken body /ref): {}\nParse errors: {}\n",
+        critical,
+        warning,
+        parse_errors.len()
     );
 
     if critical > 0 {
@@ -218,7 +239,15 @@ fn report(
         println!();
     }
 
-    if critical == 0 && warning == 0 {
+    if !parse_errors.is_empty() {
+        println!("--- PARSE ERRORS: invalid frontmatter YAML ---");
+        for err in &parse_errors {
+            println!("  {}", err);
+        }
+        println!();
+    }
+
+    if critical == 0 && warning == 0 && parse_errors.is_empty() {
         println!("no broken references found");
     } else {
         println!("=== RECOMMENDED NEXT ACTIONS ===");
@@ -227,6 +256,9 @@ fn report(
         }
         if warning > 0 {
             println!("- Run /update-references to fix broken body /skill-name refs");
+        }
+        if !parse_errors.is_empty() {
+            println!("- Fix invalid YAML frontmatter and scan again");
         }
     }
 }

@@ -75,7 +75,7 @@ related:
 ### 2. Always Use Deep Research
 
 - ต้องเรียก `/deep-research` ในทุกกรณี
-- ไม่ใช้ `/search-web` หรือการค้นหาผิวเดียวแทน `/deep-research`
+- ไม่ใช้ `/follow-tool-websearch` หรือการค้นหาผิวเดียวแทน `/deep-research`
 - ถ้า `/deep-research` ไม่พบข้อมูล ให้รายงาน gaps
 
 ### 3. Credibility

@@ -12,7 +12,7 @@ Watch linting อย่างต่อเนื่อง ตรวจจับ e
 
 ใช้สำหรับ project ที่ต้องการ monitor linting อย่างต่อเนื่องด้วย linter เช่น `biome`, `eslint`, `oxlint` ไม่ใช่การ run lint ครั้งเดียว (ใช้ `run-lint`)
 
-ไม่ครอบคลุม: การรัน lint watch mode อย่างต่อเนื่องขณะพัฒนา — ใช้ `/run-watch-lint` แทน (linter ส่วนใหญ่มี `--watch` flag อยู่แล้ว ใช้ `bunx biome check --watch` หรือ `eslint --watch` โดยตรง)
+ไม่ครอบคลุม: การรัน lint watch mode อย่างต่อเนื่องขณะพัฒนา (linter ส่วนใหญ่มี `--watch` flag อยู่แล้ว ใช้ `bunx biome check --watch` หรือ `eslint --watch` โดยตรง)
 
 ## Execute
 

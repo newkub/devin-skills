@@ -1,6 +1,6 @@
 ---
 name: use-git-worktrees
-description: ใช้ git worktrees ครบวงจร: สร้าง ทำงาน merge กลับ และ cleanup
+description: "ใช้ git worktrees ครบวงจร: สร้าง ทำงาน merge กลับ และ cleanup"
 argument-hint: "[branch-name] [base-branch]"
 related:
   - list-git-worktree
