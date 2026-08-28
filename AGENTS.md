@@ -86,7 +86,6 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `ask-again: /ask-again`
 - `dont-ask: /dont-ask`
 - `dont-understand: /dont-understand`
-- `ship-dont-ask: /ship-dont-ask`
 - `follow-enter-dot: /follow-enter-dot`
 - `follow-deep: /follow-deep`
 - `plan-with-me: /plan-with-me`

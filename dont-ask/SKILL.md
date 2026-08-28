@@ -5,7 +5,6 @@ related:
   - ask-me
   - continue
   - follow-your-suggestion
-  - ship-dont-ask
 ---
 
 ## Goal
@@ -74,7 +73,7 @@ related:
 - ห้ามใช้ `ask_user_question` ใน `/dont-ask` flow
 - ห้ามแสดง prompt ให้เลือกทางเลือก
 - ห้ามเรียก `/follow-your-suggestion` เพื่อขอคำยืนยัน
-- ใช้ `/continue` หรือ `/ship-dont-ask` ถัดไปได้
+- ใช้ `/continue` ถัดไปได้
 
 ### 4. Safety
 

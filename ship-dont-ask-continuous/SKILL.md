@@ -2,7 +2,6 @@
 name: ship-dont-ask-continuous
 description: Ship workspace โดยไม่ถาม วนปรับปรุงจนดีพอ หยุดก่อน over-engineer
 related:
-  - ship-dont-ask
   - ship
   - loop-continuous
   - run-check

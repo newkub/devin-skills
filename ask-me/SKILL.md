@@ -8,7 +8,6 @@ related:
   - follow-your-suggestion
   - ask-again
   - dont-ask
-  - ship-dont-ask
 ---
 
 ## Goal
