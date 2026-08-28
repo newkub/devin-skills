@@ -11,6 +11,7 @@ interface HeaderProps {
   loading: () => boolean
   loadData: () => void
   app: App
+  onCreate: () => void
 }
 
 const Header: Component<HeaderProps> = (props) => {
@@ -56,7 +57,7 @@ const Header: Component<HeaderProps> = (props) => {
             disabled={props.loading()}
             class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
-            {props.loading() ? 'กำลังโหลด...' : 'โหลดใหม่'}
+            {props.loading() ? 'กำลังโหลด...' : 'โหลดใหม'}
           </button>
           <button
             onClick={props.app.selectAll}
@@ -69,6 +70,12 @@ const Header: Component<HeaderProps> = (props) => {
             class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             ล้าง
+          </button>
+          <button
+            onClick={props.onCreate}
+            class="rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:from-emerald-700 hover:to-teal-700"
+          >
+            ➕ สร้าง
           </button>
 
           <div

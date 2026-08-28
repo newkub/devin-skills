@@ -1,23 +1,25 @@
 import { createMemo, createSignal } from 'solid-js';
 import type { Feature } from '../types';
 
-export type SortKey = 'number' | 'feature' | 'mvpScore';
+export type SortKey = 'number' | 'feature' | 'impact' | 'mvpScore';
 
 const filterableKeys: (keyof Feature)[] = ['type', 'impact', 'phase', 'effort', 'risk'];
+
+const impactRank: Record<string, number> = { 'สูง': 3, 'กลาง': 2, 'ต่ำ': 1 };
 
 export const useFeatureApp = (features: () => Feature[]) => {
   const [search, setSearch] = createSignal('');
   const [activeFilters, setActiveFilters] = createSignal<Record<string, Set<string>>>({});
-  const [sortBy, setSortBy] = createSignal<SortKey>('mvpScore');
+  const [sortBy, setSortBy] = createSignal<SortKey>('impact');
   const [sortDesc, setSortDesc] = createSignal(true);
-  const [selectedDetailId, setSelectedDetailId] = createSignal<number | null>(null);
-  const [expandedIds, setExpandedIds] = createSignal<Set<number>>(new Set());
-  const [accordionMode, setAccordionMode] = createSignal(true);
+  const [hoveredId, setHoveredId] = createSignal<number | null>(null);
   const [selectedIds, setSelectedIds] = createSignal<Set<number>>(new Set());
   const [copied, setCopied] = createSignal(false);
   const [enhancing, setEnhancing] = createSignal<number | null>(null);
   const [enhanceNumber, setEnhanceNumber] = createSignal<number | null>(null);
   const [enhanceMessage, setEnhanceMessage] = createSignal<string | null>(null);
+  const [creating, setCreating] = createSignal(false);
+  const [createMessage, setCreateMessage] = createSignal<string | null>(null);
 
   const filterCategories = createMemo(() => {
     const cats: Record<string, Set<string>> = {};
@@ -52,44 +54,22 @@ export const useFeatureApp = (features: () => Feature[]) => {
       let cmp = 0;
       if (key === 'number') cmp = a.number - b.number;
       else if (key === 'feature') cmp = a.feature.localeCompare(b.feature);
+      else if (key === 'impact') cmp = (impactRank[a.impact] || 0) - (impactRank[b.impact] || 0);
       else if (key === 'mvpScore') cmp = a.mvpScore - b.mvpScore;
       return sortDesc() ? -cmp : cmp;
     });
     return list;
   });
 
+  const hoveredFeature = createMemo(() => {
+    const id = hoveredId();
+    return id !== null ? features().find(f => f.number === id) || null : null;
+  });
+
   const selectedFeatures = createMemo(() => {
     const ids = selectedIds();
     return features().filter(f => ids.has(f.number));
   });
-
-  const isExpanded = (id: number) => {
-    if (accordionMode()) return selectedDetailId() === id;
-    return expandedIds().has(id);
-  };
-
-  const toggleExpand = (id: number) => {
-    if (accordionMode()) {
-      setSelectedDetailId(prev => prev === id ? null : id);
-    } else {
-      setExpandedIds(prev => {
-        const next = new Set(prev);
-        if (next.has(id)) next.delete(id);
-        else next.add(id);
-        return next;
-      });
-    }
-  };
-
-  const expandAll = () => {
-    if (accordionMode()) setAccordionMode(false);
-    setExpandedIds(new Set<number>(visibleFeatures().map(f => f.number)));
-  };
-
-  const collapseAll = () => {
-    setExpandedIds(new Set<number>());
-    setSelectedDetailId(null);
-  };
 
   const toggleFilter = (key: string, value: string) => {
     setActiveFilters(prev => {
@@ -158,6 +138,24 @@ export const useFeatureApp = (features: () => Feature[]) => {
     }
   };
 
+  const createFeature = async (draft: Partial<Feature>) => {
+    setCreating(true);
+    try {
+      const res = await fetch('/api/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(draft)
+      });
+      const data = await res.json();
+      setCreateMessage(data.message || 'สร้าง feature สำเร็จ');
+    } catch (e) {
+      setCreateMessage(`สร้าง feature ล้มเหลว: ${e}`);
+    } finally {
+      setCreating(false);
+      setTimeout(() => setCreateMessage(null), 3000);
+    }
+  };
+
   const counts = createMemo(() => {
     const all = features();
     return {
@@ -181,16 +179,9 @@ export const useFeatureApp = (features: () => Feature[]) => {
     setSortDesc,
     filterCategories,
     visibleFeatures,
-    selectedDetailId,
-    setSelectedDetailId,
-    expandedIds,
-    setExpandedIds,
-    accordionMode,
-    setAccordionMode,
-    isExpanded,
-    toggleExpand,
-    expandAll,
-    collapseAll,
+    hoveredId,
+    setHoveredId,
+    hoveredFeature,
     selectedFeatures,
     selectedIds,
     toggleSelect,
@@ -203,6 +194,9 @@ export const useFeatureApp = (features: () => Feature[]) => {
     enhanceNumber,
     enhanceMessage,
     enhanceFeature,
+    creating,
+    createMessage,
+    createFeature,
     counts,
   };
 };

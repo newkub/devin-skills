@@ -1,13 +1,30 @@
-import { For, Show } from 'solid-js'
+import { For, Show, createMemo } from 'solid-js'
 import type { useFeatureApp } from './hooks/useFeatureApp'
 
 type App = ReturnType<typeof useFeatureApp>
 
 const filterLabels: Record<string, string> = { type: 'Type', impact: 'Impact', phase: 'Phase', effort: 'Effort', risk: 'Risk' }
 
-export default function Filters(props: { app: App }) {
-  const activeFilterCount = () =>
+const sortLabel: Record<string, string> = { impact: 'ความสำคัญ', mvpScore: 'MVP Score', number: 'ลำดับ', feature: 'ชื่อ' }
+
+interface FiltersProps {
+  app: App
+  onCreate: () => void
+}
+
+export default function Filters(props: FiltersProps) {
+  const activeFilterCount = createMemo(() =>
     Object.values(props.app.activeFilters()).reduce((sum, set) => sum + set.size, 0)
+  )
+
+  const setSort = (key: string) => {
+    if (props.app.sortBy() === key) {
+      props.app.setSortDesc(!props.app.sortDesc())
+    } else {
+      props.app.setSortBy(key as 'impact' | 'mvpScore' | 'number' | 'feature')
+      props.app.setSortDesc(true)
+    }
+  }
 
   return (
     <div class="mb-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
@@ -28,29 +45,21 @@ export default function Filters(props: { app: App }) {
             แสดง <span class="font-semibold text-slate-900 dark:text-white">{props.app.visibleFeatures().length}</span> รายการ
           </span>
 
-          <button
-            onClick={props.app.expandAll}
-            class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+          <select
+            value={props.app.sortBy()}
+            onInput={e => setSort(e.currentTarget.value)}
+            class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           >
-            ขยายทั้งหมด
-          </button>
+            <For each={Object.entries(sortLabel)}>
+              {([key, label]) => <option value={key}>↕ {label}</option>}
+            </For>
+          </select>
 
           <button
-            onClick={props.app.collapseAll}
-            class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            onClick={props.onCreate}
+            class="rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:from-emerald-700 hover:to-teal-700"
           >
-            ยุบทั้งหมด
-          </button>
-
-          <button
-            onClick={() => props.app.setAccordionMode(!props.app.accordionMode())}
-            class={`rounded-lg border px-2.5 py-1.5 text-xs font-medium transition ${
-              props.app.accordionMode()
-                ? 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-900/50 dark:bg-blue-900/20 dark:text-blue-300'
-                : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
-            }`}
-          >
-            {props.app.accordionMode() ? 'Accordion' : 'Multi expand'}
+            ➕ สร้าง
           </button>
 
           <Show when={activeFilterCount() > 0 || props.app.search()}>

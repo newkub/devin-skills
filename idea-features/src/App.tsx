@@ -1,14 +1,17 @@
-import { Show } from 'solid-js'
+import { Show, createSignal } from 'solid-js'
 import type { Component } from 'solid-js'
 import { useFeatures } from './hooks/useFeatures'
 import { useFeatureApp } from './hooks/useFeatureApp'
 import Header from './Header'
 import Filters from './Filters'
 import FeatureTable from './FeatureTable'
+import PreviewDrawer from './components/PreviewDrawer'
+import CreateFeatureModal from './components/CreateFeatureModal'
 
 const App: Component = () => {
   const { features, loading, error, dark, setDark, loadData } = useFeatures()
   const app = useFeatureApp(features)
+  const [showCreate, setShowCreate] = createSignal(false)
 
   return (
     <div class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
@@ -18,9 +21,13 @@ const App: Component = () => {
         loading={loading}
         loadData={loadData}
         app={app}
+        onCreate={() => setShowCreate(true)}
       />
 
-      <main class="mx-auto max-w-7xl px-4 py-6">
+      <main
+        class="mx-auto max-w-7xl px-4 py-6"
+        onMouseLeave={() => app.setHoveredId(null)}
+      >
         <Show when={loading()}>
           <div class="py-24 text-center">
             <div class="mb-3 inline-block h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600"></div>
@@ -35,9 +42,12 @@ const App: Component = () => {
         </Show>
 
         <Show when={!loading() && !error()}>
-          <Filters app={app} />
+          <Filters app={app} onCreate={() => setShowCreate(true)} />
           <FeatureTable app={app} />
         </Show>
+
+        <PreviewDrawer app={app} />
+        <CreateFeatureModal app={app} open={showCreate} onClose={() => setShowCreate(false)} />
       </main>
 
       <footer class="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-slate-400 dark:text-slate-500">

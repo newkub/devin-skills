@@ -5,10 +5,32 @@ import { existsSync, readFileSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import process from 'node:process';
+import type { IncomingMessage } from 'node:http';
 
 const tempDir = 'D:\\newkub\\temp';
 const defaultDataPath = resolve(tempDir, 'idea-features', 'data.json');
 const dataPath = resolve(process.env.IDEA_FEATURES_DATA || defaultDataPath);
+
+async function getBody(req: IncomingMessage) {
+  return new Promise<string>((res, rej) => {
+    const chunks: Buffer[] = [];
+    req.on('data', c => chunks.push(c));
+    req.on('end', () => res(Buffer.concat(chunks).toString('utf-8')));
+    req.on('error', rej);
+  });
+}
+
+async function readData() {
+  try {
+    return JSON.parse(readFileSync(dataPath, 'utf-8'));
+  } catch {
+    return { generatedAt: new Date().toISOString(), features: [] };
+  }
+}
+
+async function writeData(data: unknown) {
+  await writeFile(dataPath, JSON.stringify(data, null, 2), 'utf-8');
+}
 
 async function ensureSampleData() {
   if (existsSync(dataPath)) return;
@@ -74,7 +96,7 @@ async function ensureSampleData() {
       }
     ]
   };
-  await writeFile(dataPath, JSON.stringify(sample, null, 2), 'utf-8');
+  await writeData(sample);
 }
 
 function setupDataMiddleware(server: ViteDevServer | PreviewServer) {
@@ -109,6 +131,25 @@ function setupDataMiddleware(server: ViteDevServer | PreviewServer) {
       success: true,
       message: 'enhance ถูกส่งไปยัง LLM backend แล้ว (mock response)'
     }));
+  });
+
+  server.middlewares.use('/api/create', async (req, res, next) => {
+    if (req.method !== 'POST') return next();
+    res.setHeader('Content-Type', 'application/json');
+    try {
+      const body = JSON.parse(await getBody(req));
+      const data = await readData();
+      const features = data.features || data || [];
+      const maxNum = Math.max(0, ...features.map((f: { number?: number; }) => f.number || 0));
+      const newFeature = { ...body, number: maxNum + 1 };
+      features.push(newFeature);
+      data.features = features;
+      await writeData(data);
+      res.end(JSON.stringify({ success: true, feature: newFeature }));
+    } catch (err) {
+      res.statusCode = 500;
+      res.end(JSON.stringify({ success: false, error: String(err) }));
+    }
   });
 }
 
