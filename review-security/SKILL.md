@@ -30,7 +30,7 @@ security review สำหรับ: authentication, authorization, OWASP Top 10,
 1. ทำ `/scan-codebase` เพื่อเข้าใจ security setup, auth flows, session management
 2. ระบุ auth framework (Better Auth, NextAuth, Clerk, Auth0, Supabase Auth, WorkOS), session strategy, token storage, RBAC library
 3. ระบุ API framework, CORS config, CSP headers, rate limiting library
-4. ระบุ encryption library, secret management (`Infisical`, Doppler, AWS Secrets Manager)
+4. ระบุ encryption library, secret management (`/follow-secret-manager` โดย default คือ `Infisical`, Doppler, AWS Secrets Manager)
 5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
 6. ทำ `/update-review-codebase-cli-and-run` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
@@ -99,6 +99,7 @@ Review secrets management ครอบคลุม storage, rotation, masking, l
 6. ตรวจสอบ `.gitignore`, `.env.example`, pre-commit hooks for secret scanning
 7. Critical: hardcoded production secret, secret in public repo, secret in logs, no encryption at rest
 8. High: missing rotation policy, secret in error message, missing pre-commit secret scan, weak TLS config
+9. ถ้าต้องปรับปรุง secrets management → ทำ `/follow-secret-manager` หรือ `/open-web-for-config-secret`
 
 ### 6. Injection Prevention Review
 

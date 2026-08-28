@@ -25,7 +25,8 @@ related:
 1. เปิด URL: `https://github.com/{GITHUB_USERNAME}/{GITHUB_REPOSITORY}/settings/secrets/actions`
 2. แทนที่ `{GITHUB_USERNAME}` ด้วย GitHub username ของคุณ
 3. แทนที่ `{GITHUB_REPOSITORY}` ด้วย repository name ของคุณ
-4. เพิ่ม secrets ที่จำเป็น
+4. ก่อนเพิ่ม secrets ให้ทำ `/follow-secret-manager` เพื่อจัดการ secrets อย่างปลอดภัย หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สำหรับสร้าง API keys
+5. เพิ่ม secrets ที่จำเป็น
 
 ## Rules
 

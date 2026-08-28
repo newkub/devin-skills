@@ -48,9 +48,9 @@ related:
 
 > Goal: ตั้งค่า `RENOVATE_TOKEN` สำหรับ authentication
 
-1. สร้าง GitHub Personal Access Token ด้วย `repo` scope
-2. ตั้งค่า secret ด้วย `gh secret set RENOVATE_TOKEN -b "token"`
-3. ตรวจสอบ secret ด้วย `gh secret list`
+1. ใช้ `/follow-secret-manager` เพื่อจัดการ `RENOVATE_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง GitHub PAT ด้วย `repo` scope
+2. ตั้งค่า secret ใน repository โดย user เอง หรือใช้ `gh secret set RENOVATE_TOKEN -b "token"`
+3. ตรวจสอบ secret ด้วย `gh secret list` หรือ secret manager dashboard
 4. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
 
 ### 4. Validate Config
@@ -92,6 +92,7 @@ related:
 
 - ใช้ PAT ด้วย `repo` scope สำหรับ private repos
 - ตั้งค่า `RENOVATE_TOKEN` เป็น repository secret
+- ใช้ `/follow-secret-manager` เพื่อจัดการ `RENOVATE_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง token
 - ใช้ `gh secret set` หรือ GitHub UI สำหรับตั้งค่า
 
 ### 4. Common Mistakes

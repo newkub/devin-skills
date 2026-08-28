@@ -82,7 +82,7 @@ Important: ต้องเพิ่ม `author` ใน package.json หรือ
 
 > Goal: ตั้งค่า GitHub token สำหรับ release automation
 
-1. สร้าง GitHub Personal Access Token
+1. ใช้ `/follow-secret-manager` เพื่อจัดการ `GH_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง GitHub Personal Access Token
 2. เพิ่มเป็น `GH_TOKEN` ใน repository secrets
 3. หรือใช้ `GITHUB_TOKEN` (ถ้าใช้ GitHub Actions)
 
@@ -90,7 +90,7 @@ Important: ต้องเพิ่ม `author` ใน package.json หรือ
 
 > Goal: ตั้งค่า NPM token สำหรับ package publishing
 
-1. สร้าง NPM token จาก https://www.npmjs.com/settings/newkubise/tokens (Automation token)
+1. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` หรือ `/open-web-for-config-secret` เพื่อเปิดหน้าสร้าง NPM token จาก `https://www.npmjs.com/settings/newkubise/tokens` (Automation token)
 2. เพิ่ม NPM_TOKEN ใน GitHub secrets ด้วย:
    ```bash
    gh secret set NPM_TOKEN
@@ -158,7 +158,9 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 
 ### 3. Authentication
 
-- ต้องมี `GH_TOKEN` หรือ `GITHUB_TOKEN`
+- ใช้ `/follow-secret-manager` เพื่อจัดการ `GH_TOKEN` หรือ `NPM_TOKEN`
+- ใช้ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง tokens
+- ต้องมี `GH_TOKEN` หรือ `GITHUB_TOKEN` ใน CI
 - ต้องมี `NPM_TOKEN` สำหรับ npm publish
 
 ### 4. Released Plugin Options

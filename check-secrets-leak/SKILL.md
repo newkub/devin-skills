@@ -50,6 +50,7 @@ related:
 1. สรุป secrets ทีพบพร้อม commit hash, file, line
 2. ระบุ severity: Critical/High/Medium/Low
 3. แนะนำ next action: revoke, rotate, หรือ `git filter-repo`
+4. หลังจากนั้น ใช้ `/follow-secret-manager` เพื่อ rotation และจัดการ secrets ใหม่ หรือ `/open-web-for-config-secret` เพื่อสร้าง API keys ใหม่
 
 ## Rules
 ### 1. No Expose

@@ -52,7 +52,7 @@ related:
 > Goal: รัน release อัตโนมัติเมื่อ push ไป main
 
 1. สร้าง `.github/workflows/release.yml`
-2. ตั้งค่า `NPM_TOKEN` และ `GITHUB_TOKEN` secrets
+2. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN` secrets หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง tokens
 3. ใช้ `actions/checkout@v4` และ `oven-sh/setup-bun@v1`
 4. รัน `bun install` แล้ว `bun run release --ci`
 5. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
@@ -89,8 +89,10 @@ related:
 ### 4. Secrets
 
 - ไม่ hard-code tokens ใน config หรือ workflow
+- ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN`
+- ใช้ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง API keys
 - ใช้ `secrets.NPM_TOKEN` และ `secrets.GITHUB_TOKEN` ผ่าน GitHub Actions
-- ใช้ `gh secret set` สำหรับตั้งค่า secrets ผ่าน CLI
+- ถ้าจำเป็น ใช้ `gh secret set` สำหรับตั้งค่าผ่าน CLI
 
 ## Expected Outcome
 

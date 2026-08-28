@@ -63,7 +63,7 @@ related:
 
 > Goal: ประยุกต์ใน software
 
-1. เก็บ secrets ด้วย secret manager ไม่ hardcode
+1. เก็บ secrets ด้วย `/follow-secret-manager` หรือ `/open-web-for-config-secret` ไม่ hardcode
 2. ใช้ TLS สำหรับทุก network call
 3. ใช้ JWT signature ด้วย HMAC หรือ RSA
 4. ใช้ hashing สำหรับ API key / token
