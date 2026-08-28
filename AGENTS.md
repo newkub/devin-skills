@@ -81,7 +81,9 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository contains hundreds of skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **703** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+
+For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
 Core:
 - `update-agents-md: /update-agents-md`
@@ -96,29 +98,31 @@ Core:
 - `deep-validate: /deep-validate`
 
 By prefix:
-- `follow-*`: language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager: /follow-my-package-manager`, `follow-create-product: /follow-create-product`, `follow-framework-nextjs: /follow-framework-nextjs`
-- `review-*`: code review, architecture, security, performance, and quality. Examples: `review-quality: /review-quality`, `review-frontend: /review-frontend`, `review-rules: /review-rules`
-- `update-*`: repo, skills, docs, config, and dependency maintenance. Examples: `update-all-program-in-computer: /update-all-program-in-computer`, `update-readme-md: /update-readme-md`, `update-dot-devin: /update-dot-devin`
-- `run-*`: test, build, lint, typecheck, format, and deployment runners. Examples: `run-test: /run-test`, `run-build: /run-build`, `run-check: /run-check`
-- `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-social-cover-image: /create-social-cover-image`, `create-github-repo: /create-github-repo`
-- `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
-- `download-*`: download and install tools. Examples: `download-program: /download-program`
-- `uninstall-*`: uninstall tools and apps. Examples: `uninstall-program-in-computer: /uninstall-program-in-computer`
-- `list-*`: inventory, lookup, and listing utilities. Examples: `list-computer-info: /list-computer-info`, `list-program-in-computer: /list-program-in-computer`, `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`, `list-project-uncommit-in-drive-d: /list-project-uncommit-in-drive-d`, `list-my-npm-packages: /list-my-npm-packages`, `list-github-action-fail: /list-github-action-fail`, `list-cloudflare-worker-fail: /list-cloudflare-worker-fail`
-- `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update: /report-my-cli-update`, `report-table: /report-table`, `report-file-structure: /report-file-structure`
-- `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-debug: /deep-debug`, `deep-retro: /deep-retro`, `deep-impact: /deep-impact`, `deep-trace: /deep-trace`, `deep-validate: /deep-validate`
-- `check-*`: verification, structure, and health checks. Examples: `check-size: /check-size`, `check-monorepo: /check-monorepo`, `check-unused-files: /check-unused-files`
-- `use-*`: shell, scripts, and library usage. Examples: `use-scripts: /use-scripts`, `use-ast-grep: /use-ast-grep`
-- `search-*`: search across code, git, files, and the web. Examples: `search-files-patterns: /search-files-patterns`
-- `explore-*`: discover trending, topics, and resources. Examples: `explore-github-trending: /explore-github-trending`
-- `watch-*`: continuous monitoring and watch modes. Examples: `watch-build: /watch-build`
-- `open-*`: browser, editor, and terminal integration. Examples: `open-in-wezterm: /open-in-wezterm`
-- `visualize-*`: diagrams and web visualizations. Examples: `visualize-in-web: /visualize-in-web`
-- `git-*`: git, GitHub, branches, and releases. Examples: `git-commit: /git-commit`, `git-push: /git-push`
-- `roleplay-*`: stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer: /roleplay-staff-engineer`
-- `ask-*`, `plan-*`, `learn-*`, `summarize-*`, `analyze-*`, `implement-*`, `convert-*`, `cleanup-*`, `fix`, `improve`, `refactor`, `ship`, `test-all`, and other utility skills make up the rest.
 
-For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
+Major skill families by current count:
+- `follow-*` (231): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`
+- `review-*` (54): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`
+- `list-*` (42): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-action-fail`, `list-cloudflare-worker-fail`
+- `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-full`, `run-test-all`
+- `update-*` (32): repo, skills, docs, config, and dependency maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`
+- `report-*` (31): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`
+- `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
+- `check-*` (15): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-ref`
+- `deep-*` (15): deep analysis, research, debugging, and validation. Examples: `deep-analyze`, `deep-debug`, `deep-retro`, `deep-impact`, `deep-validate`
+- `watch-*` (15): continuous monitoring and watch modes. Examples: `watch-build`, `watch-ci-cd`, `watch-test`, `watch-vercel`
+- `create-*` (13): project, plugin, and bot scaffolding. Examples: `follow-create-cli`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-mcp`
+- `open-*` (13): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`
+- `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
+- `use-*` (11): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`
+- `git-*` (8): git, GitHub, branches, and releases. Examples: `git-commit`, `git-push`, `git-commit-at-devin-skills-global`, `git-file-history`
+- `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
+- `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
+- `implement-*` (6): implement tasks and features. Examples: `implement-github-task`, `implement-todo-md`, `implement-features-to-mvp`
+- `idea-*` (6): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`
+- `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
+- `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
+
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `publish-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
