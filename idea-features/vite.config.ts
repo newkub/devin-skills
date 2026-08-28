@@ -1,18 +1,18 @@
-import { defineConfig } from 'vite'
-import solid from 'vite-plugin-solid'
-import UnoCSS from 'unocss/vite'
-import { existsSync, readFileSync } from 'node:fs'
-import { mkdir, writeFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
-import process from 'node:process'
+import { defineConfig } from 'vite';
+import solid from 'vite-plugin-solid';
+import UnoCSS from 'unocss/vite';
+import { existsSync, readFileSync } from 'node:fs';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import process from 'node:process';
 
-const tempDir = process.env.TEMP || process.env.TMP || 'D:\\newkub\\temp'
-const defaultDataPath = resolve(tempDir, 'idea-features', 'data.json')
-const dataPath = resolve(process.env.IDEA_FEATURES_DATA || defaultDataPath)
+const tempDir = process.env.TEMP || process.env.TMP || 'D:\\newkub\\temp';
+const defaultDataPath = resolve(tempDir, 'idea-features', 'data.json');
+const dataPath = resolve(process.env.IDEA_FEATURES_DATA || defaultDataPath);
 
 async function ensureSampleData() {
-  if (existsSync(dataPath)) return
-  await mkdir(dirname(dataPath), { recursive: true })
+  if (existsSync(dataPath)) return;
+  await mkdir(dirname(dataPath), { recursive: true });
   const sample = {
     generatedAt: new Date().toISOString(),
     features: [
@@ -73,8 +73,8 @@ async function ensureSampleData() {
         riskDetail: 'ต้องใช้ Vite plugin จัดการ close endpoint'
       }
     ]
-  }
-  await writeFile(dataPath, JSON.stringify(sample, null, 2), 'utf-8')
+  };
+  await writeFile(dataPath, JSON.stringify(sample, null, 2), 'utf-8');
 }
 
 export default defineConfig({
@@ -84,35 +84,35 @@ export default defineConfig({
     {
       name: 'idea-features-data-and-close',
       async configureServer(server) {
-        await ensureSampleData()
+        await ensureSampleData();
 
         server.middlewares.use('/api/data', (req, res, next) => {
-          if (req.method !== 'GET') return next()
-          res.setHeader('Content-Type', 'application/json')
+          if (req.method !== 'GET') return next();
+          res.setHeader('Content-Type', 'application/json');
           try {
             if (!existsSync(dataPath)) {
-              res.statusCode = 404
-              res.end(JSON.stringify({ error: `data file not found: ${dataPath}` }))
-              return
+              res.statusCode = 404;
+              res.end(JSON.stringify({ error: `data file not found: ${dataPath}` }));
+              return;
             }
-            res.end(readFileSync(dataPath, 'utf-8'))
+            res.end(readFileSync(dataPath, 'utf-8'));
           } catch (err) {
-            res.statusCode = 500
-            res.end(JSON.stringify({ error: String(err) }))
+            res.statusCode = 500;
+            res.end(JSON.stringify({ error: String(err) }));
           }
-        })
+        });
 
         server.middlewares.use('/close', (req, res, _next) => {
           if (req.method !== 'POST') {
-            res.statusCode = 405
-            res.end(JSON.stringify({ error: 'method not allowed' }))
-            return
+            res.statusCode = 405;
+            res.end(JSON.stringify({ error: 'method not allowed' }));
+            return;
           }
-          res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify({ ok: true, closing: true }))
-          console.log('[idea-features] close beacon received, stopping dev server...')
-          setTimeout(() => server.close().catch(() => {}), 100)
-        })
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ ok: true, closing: true }));
+          console.log('[idea-features] close beacon received, stopping dev server...');
+          setTimeout(() => server.close().catch(() => { }), 100);
+        });
       }
     }
   ],
@@ -122,6 +122,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    open: false
+    open: false,
+    hmr: false,
   }
-})
+});
