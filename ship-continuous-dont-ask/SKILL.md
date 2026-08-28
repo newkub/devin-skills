@@ -1,5 +1,5 @@
 ---
-name: ship-dont-ask-continuous
+name: ship-continuous-dont-ask
 description: Ship workspace โดยไม่ถาม วนปรับปรุงจนดีพอ หยุดก่อน over-engineer
 related:
   - ship
@@ -119,7 +119,7 @@ related:
 
 ### 5. No Push/Release
 
-- `/ship-dont-ask-continuous` ไม่ push หรือ release อัตโนมัติ
+- `/ship-continuous-dont-ask` ไม่ push หรือ release อัตโนมัติ
 - ถ้าต้องการ push ให้ใช้ `git push` หรือ `/git-push` หลัง ship
 
 ### 6. Measurement And Evidence
