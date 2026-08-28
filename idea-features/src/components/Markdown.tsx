@@ -1,18 +1,18 @@
 import { createMemo } from 'solid-js'
-import { marked } from 'marked'
+import { marked, type Tokens, type RendererObject } from 'marked'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/github-dark.css'
 
-marked.use({
-  renderer: {
-    code({ text, lang }: any) {
-      const language = lang || 'plaintext'
-      const valid = lang && hljs.getLanguage(lang)
-      const html = valid ? hljs.highlight(text, { language: lang }).value : hljs.highlightAuto(text).value
-      return `<pre class="hljs rounded-lg p-3 overflow-x-auto bg-slate-900"><code class="language-${language}">${html}</code></pre>`
-    },
+const renderer: RendererObject = {
+  code({ text, lang }: Tokens.Code) {
+    const language = lang || 'plaintext'
+    const valid = lang && hljs.getLanguage(lang)
+    const html = valid ? hljs.highlight(text, { language: lang }).value : hljs.highlightAuto(text).value
+    return `<pre class="hljs rounded-lg p-3 overflow-x-auto bg-slate-900"><code class="language-${language}">${html}</code></pre>`
   },
-} as any)
+}
+
+marked.use({ renderer })
 
 interface MarkdownProps {
   content: string

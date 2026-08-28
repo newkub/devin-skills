@@ -1,7 +1,6 @@
 import { createMemo, createSignal } from 'solid-js';
 import type { Feature } from '../types';
 
-export type GroupKey = 'none' | 'type' | 'impact' | 'phase' | 'effort' | 'risk';
 export type SortKey = 'number' | 'feature' | 'mvpScore';
 
 const filterableKeys: (keyof Feature)[] = ['type', 'impact', 'phase', 'effort', 'risk'];
@@ -9,12 +8,16 @@ const filterableKeys: (keyof Feature)[] = ['type', 'impact', 'phase', 'effort', 
 export const useFeatureApp = (features: () => Feature[]) => {
   const [search, setSearch] = createSignal('');
   const [activeFilters, setActiveFilters] = createSignal<Record<string, Set<string>>>({});
-  const [groupBy, setGroupBy] = createSignal<GroupKey>('none');
   const [sortBy, setSortBy] = createSignal<SortKey>('mvpScore');
   const [sortDesc, setSortDesc] = createSignal(true);
   const [selectedDetailId, setSelectedDetailId] = createSignal<number | null>(null);
+  const [expandedIds, setExpandedIds] = createSignal<Set<number>>(new Set());
+  const [accordionMode, setAccordionMode] = createSignal(true);
   const [selectedIds, setSelectedIds] = createSignal<Set<number>>(new Set());
   const [copied, setCopied] = createSignal(false);
+  const [enhancing, setEnhancing] = createSignal<number | null>(null);
+  const [enhanceNumber, setEnhanceNumber] = createSignal<number | null>(null);
+  const [enhanceMessage, setEnhanceMessage] = createSignal<string | null>(null);
 
   const filterCategories = createMemo(() => {
     const cats: Record<string, Set<string>> = {};
@@ -55,31 +58,38 @@ export const useFeatureApp = (features: () => Feature[]) => {
     return list;
   });
 
-  const groupedFeatures = createMemo(() => {
-    const list = visibleFeatures();
-    const key = groupBy();
-    if (key === 'none') return [{ key: 'all', label: 'ทั้งหมด', features: list }];
-    const groups = new Map<string, Feature[]>();
-    for (const f of list) {
-      const v = String(f[key as keyof Feature] ?? '-');
-      if (!groups.has(v)) groups.set(v, []);
-      groups.get(v)!.push(f);
-    }
-    return Array.from(groups.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([k, items]) => ({ key: k, label: `${key}: ${k}`, features: items }));
+  const selectedFeatures = createMemo(() => {
+    const ids = selectedIds();
+    return features().filter(f => ids.has(f.number));
   });
 
-  const selectedFeature = createMemo(() => {
-    const list = visibleFeatures();
-    if (list.length === 0) return null;
-    const id = selectedDetailId();
-    if (id !== null) {
-      const found = list.find(f => f.number === id);
-      if (found) return found;
+  const isExpanded = (id: number) => {
+    if (accordionMode()) return selectedDetailId() === id;
+    return expandedIds().has(id);
+  };
+
+  const toggleExpand = (id: number) => {
+    if (accordionMode()) {
+      setSelectedDetailId(prev => prev === id ? null : id);
+    } else {
+      setExpandedIds(prev => {
+        const next = new Set(prev);
+        if (next.has(id)) next.delete(id);
+        else next.add(id);
+        return next;
+      });
     }
-    return list[0];
-  });
+  };
+
+  const expandAll = () => {
+    if (accordionMode()) setAccordionMode(false);
+    setExpandedIds(new Set<number>(visibleFeatures().map(f => f.number)));
+  };
+
+  const collapseAll = () => {
+    setExpandedIds(new Set<number>());
+    setSelectedDetailId(null);
+  };
 
   const toggleFilter = (key: string, value: string) => {
     setActiveFilters(prev => {
@@ -129,6 +139,25 @@ export const useFeatureApp = (features: () => Feature[]) => {
     setTimeout(() => setCopied(false), 1500);
   };
 
+  const enhanceFeature = async (feature: Feature, prompt: string) => {
+    setEnhancing(feature.number);
+    setEnhanceNumber(feature.number);
+    try {
+      const res = await fetch('/api/enhance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ number: feature.number, prompt, feature: feature.feature })
+      });
+      const data = await res.json();
+      setEnhanceMessage(data.message || 'enhance สำเร็จ');
+    } catch (e) {
+      setEnhanceMessage(`enhance ล้มเหลว: ${e}`);
+    } finally {
+      setEnhancing(null);
+      setTimeout(() => { setEnhanceMessage(null); setEnhanceNumber(null); }, 4000);
+    }
+  };
+
   const counts = createMemo(() => {
     const all = features();
     return {
@@ -140,23 +169,29 @@ export const useFeatureApp = (features: () => Feature[]) => {
   });
 
   return {
+    features,
     search,
     setSearch,
     activeFilters,
     toggleFilter,
     clearFilters,
-    groupBy,
-    setGroupBy,
     sortBy,
     setSortBy,
     sortDesc,
     setSortDesc,
     filterCategories,
-    groupedFeatures,
     visibleFeatures,
-    selectedFeature,
     selectedDetailId,
     setSelectedDetailId,
+    expandedIds,
+    setExpandedIds,
+    accordionMode,
+    setAccordionMode,
+    isExpanded,
+    toggleExpand,
+    expandAll,
+    collapseAll,
+    selectedFeatures,
     selectedIds,
     toggleSelect,
     selectAll,
@@ -164,6 +199,10 @@ export const useFeatureApp = (features: () => Feature[]) => {
     selectedCount,
     copySelected,
     copied,
+    enhancing,
+    enhanceNumber,
+    enhanceMessage,
+    enhanceFeature,
     counts,
   };
 };

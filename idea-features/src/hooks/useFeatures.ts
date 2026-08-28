@@ -1,5 +1,7 @@
-import { createEffect, createSignal, onMount } from 'solid-js';
+import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 import type { Feature } from '../types';
+
+const POLL_MS = 3000;
 
 export const useFeatures = () => {
   const [features, setFeatures] = createSignal<Feature[]>([]);
@@ -27,7 +29,15 @@ export const useFeatures = () => {
     const saved = localStorage.getItem('idea-features-theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setDark(saved === 'dark' || (!saved && prefersDark));
-    // no server stop on tab close
+
+    const timer = setInterval(() => {
+      fetch('/api/data')
+        .then(r => r.json())
+        .then(data => setFeatures(Array.isArray(data) ? data : data.features || []))
+        .catch(() => { });
+    }, POLL_MS);
+
+    onCleanup(() => clearInterval(timer));
   });
 
   createEffect(() => {

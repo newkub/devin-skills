@@ -17,12 +17,7 @@ const App: Component = () => {
         setDark={setDark}
         loading={loading}
         loadData={loadData}
-        selectedCount={app.selectedCount}
-        selectAll={app.selectAll}
-        clearSelection={app.clearSelection}
-        copySelected={app.copySelected}
-        copied={app.copied}
-        counts={app.counts}
+        app={app}
       />
 
       <main class="mx-auto max-w-7xl px-4 py-6">

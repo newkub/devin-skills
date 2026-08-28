@@ -6,7 +6,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import process from 'node:process';
 
-const tempDir = process.env.TEMP || process.env.TMP || 'D:\\newkub\\temp';
+const tempDir = 'D:\\newkub\\temp';
 const defaultDataPath = resolve(tempDir, 'idea-features', 'data.json');
 const dataPath = resolve(process.env.IDEA_FEATURES_DATA || defaultDataPath);
 
@@ -93,9 +93,27 @@ function setupDataMiddleware(server: ViteDevServer | PreviewServer) {
       res.end(JSON.stringify({ error: String(err) }));
     }
   });
+
+  server.middlewares.use('/api/enhance', (req, res, next) => {
+    if (req.method !== 'POST') return next();
+    res.setHeader('Content-Type', 'application/json');
+    const llmUrl = process.env.OLLAMA_URL || process.env.OPENAI_BASE_URL;
+    if (!llmUrl) {
+      res.end(JSON.stringify({
+        success: false,
+        message: 'ยังไม่ได้ตั้ง LLM backend กรุณาตั้งค่า OLLAMA_URL หรือ OPENAI_API_KEY'
+      }));
+      return;
+    }
+    res.end(JSON.stringify({
+      success: true,
+      message: 'enhance ถูกส่งไปยัง LLM backend แล้ว (mock response)'
+    }));
+  });
 }
 
 export default defineConfig({
+  cacheDir: resolve(tempDir, 'vite-cache'),
   plugins: [
     solid(),
     UnoCSS(),
