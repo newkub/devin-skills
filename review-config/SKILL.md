@@ -137,10 +137,20 @@ Review ทุก configuration files ใน project ว่ามีอะไร�
 - เรียง severity: security > consistency > duplication > missing
 - ระบุ quick wins และ high-impact changes
 
+### 5. Shared Config And Deduplication
+
+- ถ้า pattern คล้ายกันระหว่าง workspaces ให้ใช้ shared config หรือ `extends`
+- พยายามสร้าง schema สำหรับ config ที่ซับซ้อนเพื่อ validate
+- ไม่เขียน config ที่ซ้ำกับ default config
+- เขียนเฉพาะสิ่งที่ต่างจาก default พร้อม comment อธิบาย default config คืออะไร
+- เก็บเฉพาะ config หลักๆ ที่มีผลต่อ project
+
 ## Expected Outcome
 
 - รายการ config files ทั้งหมดจัดกลุ่มตาม category
 - ตาราง findings ด้วย severity และ recommendation
-- รายการโอกาสใช้ extends config / dependencies catalog
+- รายการโอกาสใช้ extends config / dependencies catalog / shared config
 - รายงาน security risks และ version inconsistencies
+- รายการ config ที่สามารถ deduplicate หรือรวมเป็น shared/extends ได้
+- รายการ config ที่ควรมี schema หรือ comment อธิบาย default
 - input ที่ครบสำหรับ `/update-config`
