@@ -1,85 +1,54 @@
 ---
 name: search-project-in-drive-d
-description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern ที่ระบุ
+description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern
 argument-hint: "[keyword]"
 ---
 
 ## Goal
 
-ค้นหา projects ใน drive D ที่มี `.git` directory ตาม keyword หรือ pattern ที่ user ระบุ และแสดงผลในรูปแบบตาราง
+ค้นหา git projects ใน `D:\` ที่ตรงกับ keyword หรือ pattern ที่ user ระบุ แล้วแสดงผลเป็นตาราง
 
 ## Scope
 
-ใช้เมื่อ user ต้องการค้นหา project ที่มีชื่อหรือ path ตรงกับ keyword ใน drive D โดยไม่ต้อง list ทั้งหมด
+ใช้เมื่อ user ต้องการค้นหา project บน drive D โดยไม่ต้อง list ทั้งหมด
 
 ## Execute
 
-### 1. Get Search Criteria
+### 1. รับ Search Criteria
 
-> Goal: ระบุ keyword หรือ pattern ที่ต้องการค้นหา
+1. ถ้า user ไม่ได้ระบุ keyword → ใช้ `/ask-me` ถาม
+2. รองรับ wildcard `*` และ `?`
+3. scope ค้นหาคือ `D:\` เท่านั้น
 
-1. ถาม user สำหรับ keyword หรือ pattern ถ้ายังไม่ได้ระบุ
-2. รองรับ wildcard patterns เช่น `*foo*`, `new*`, `*kub*`
-3. ระบุ scope ของการค้นหา (drive D เท่านั้น)
+### 2. ค้นหา Git Projects
 
-### 2. Search Git Projects
+รัน PowerShell command:
 
-> Goal: ค้นหา projects ใน drive D ที่ตรงกับ criteria
+```powershell
+Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3 |
+  Where-Object { $_.Name -like "<keyword>" -and (Test-Path (Join-Path $_.FullName ".git")) }
+```
 
-1. ใช้ `Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3` เพื่อ scan directories
-2. กรอง directories ที่มี `.git` ด้วย `Test-Path (Join-Path $_.FullName ".git")`
-3. กรองชื่อ directory ตรงกับ pattern ด้วย `Where-Object { $_.Name -like "<pattern>" }` หรือ path matching
-4. ถ้าไม่พบ ให้แจ้งว่าไม่มี project ที่ตรงกับ criteria
+- ถ้า keyword ต้องการ match ทั่ง path ให้ใช้ `$_.FullName -like "*<keyword>*"`
+- matching แบบ case-insensitive โดย default
+- ถ้า pattern ไม่ถูกต้อง → แจ้ง user และขอ keyword ใหม่
 
-### 3. Format Output
+### 3. แสดงผล
 
-> Goal: จัดรูปแบบผลลัพธ์ให้อ่านง่าย
-
-1. ใช้ `report-table` เพื่อสร้างตาราง
-2. จัดเรียง columns: No., Project Name, Path, Match Type
-3. แสดง path ด้วย backticks
-4. รวบรวมจำนวน matches และแสดง summary
-
-### 4. Return Results
-
-> Goal: ส่งมอบผลการค้นหา
-
-1. แสดงตาราง projects ที่ตรงกับ keyword
-2. แสดง summary (จำนวน projects, keyword ที่ใช้)
-3. ถ้ามีหลาย matches ให้ group ตาม parent directory
+1. ใช้ `/report-table` สร้างตาราง
+2. columns: `No.`, `Project Name`, `Path`, `Match Type`
+3. เรียง `No.` ลำดับ 1, 2, 3, ...
+4. path ใส่ backticks
+5. สรุปจำนวน matches และ keyword ที่ใช้
 
 ## Rules
 
-### 1. Search Criteria
-
-- keyword เป็น `string` ที่ user ระบุ
-- รองรับ wildcard `*` และ `?`
-- ถ้า user ไม่ระบุ → ใช้ `ask-me` ก่อนดำเนินการ
-- ค้นหาเฉพาะใน `D:\` หรือ `/mnt/d` สำหรับ WSL
-
-### 2. Matching Logic
-
-- เปรียบเทียบชื่อ directory กับ keyword โดยใช้ `-like` ใน PowerShell
-- ถ้าต้องการ search ใน path ให้ใช้ `$_.FullName -like "*<keyword>*"`
-- รองรับ case-insensitive matching โดย default
-- ถ้า pattern ไม่ถูกต้อง ให้แจ้ง user และขอ criteria ใหม่
-
-### 3. Output Format
-
-- ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
-- แสดง full path ด้วย backticks
-- แสดง project name และ match type
-- สร้าง summary table ท้ายผลลัพธ์
-
-### 4. Safety
-
-- ไม่เขียนหรือลบไฟล์ใดๆ ใน drive D
-- ไม่เปลี่ยนแปลง state ของ project
-- ใช้ read-only commands เท่านั้น (`Get-ChildItem`, `Test-Path`)
+- อ่านอย่างเดียว ไม่เขียน ไม่ลบ ไม่เปลี่ยน state project
+- ค้นหาเฉพาะ `D:\` หรือ `/mnt/d` สำหรับ WSL
+- ถ้าไม่พบ → แจ้งว่าไม่มี project ที่ตรงกับ criteria
 
 ## Expected Outcome
 
-- ได้รับรายการ projects ใน drive D ที่ตรงกับ keyword
-- Output อยู่ในรูปแบบตารางที่อ่านง่าย
+- ได้ตารางรายการ git projects ใน `D:\` ที่ตรงกับ keyword
 - ไม่มี project ขาดหรือเกินจาก criteria
 - สรุปจำนวน matches และ keyword ที่ใช้
