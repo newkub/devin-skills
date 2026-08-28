@@ -55,6 +55,7 @@ description: วิเคราะห์และแนะนำ workspace membe
 - Critical → High → Medium → Low
 - รายงานต้องมีชื่อ member, version, คำอธิบาย, เหตุผล, วิธี integrate, trade-offs
 - ไม่แนะนำ members ที่ซับซ้อนเกินความจำเป็นหรือไม่ maintain
+- ชื่อ package/folder หรือ category เช่น `lib`, `shared` เป็น option/convention ของแต่ละ project ไม่บังคับ
 
 ## Expected Outcome
 

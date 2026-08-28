@@ -124,3 +124,4 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 ## Guide
 
 - `references/use-workspace-members.md` — วิธีวิเคราะห์และแนะนำ workspace members จาก workspace
+- `lib`/`shared` เป็นชื่อหรือ category ทั่วไป ไม่บังคับ ขึ้นกับ convention ของแต่ละ project
