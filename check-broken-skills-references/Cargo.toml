@@ -1,5 +1,5 @@
 [package]
-name = "check-broken-skills-ref"
+name = "check-broken-skills-references"
 version = "0.1.0"
 edition = "2024"
 

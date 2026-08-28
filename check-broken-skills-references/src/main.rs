@@ -5,7 +5,7 @@ use clap::Parser;
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "check-broken-skills-ref",
+    name = "check-broken-skills-references",
     version,
     about = "Scan devin skills repo for broken skill references in SKILL.md"
 )]
@@ -26,5 +26,5 @@ fn default_root() -> PathBuf {
 
 fn main() {
     let args = Args::parse();
-    check_broken_skills_ref::run(args.root.unwrap_or_else(default_root));
+    check_broken_skills_references::run(args.root.unwrap_or_else(default_root));
 }

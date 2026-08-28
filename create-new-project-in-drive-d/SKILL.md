@@ -7,6 +7,7 @@ related:
   - follow-create-website
   - follow-create-sdk
   - follow-my-tech-stack
+  - follow-your-suggestion
 ---
 
 ## Goal
@@ -26,7 +27,7 @@ related:
 1. ระบุ `project-type` จาก argument หรือ context เช่น `cli`, `website`, `mobile`, `library`, `mcp`, `bot`, `extension`
 2. ระบุ `project-name` จาก argument หรือถาม user
 3. กำหนด target path เริ่มต้นที `D:\newkub\<project-name>` หรือใช้ path ที user ระบุ
-4. ถ้าไม่ชัด → ทำ `/ask-me` เพื่อเลือกประเภทและชื่อ project
+4. ถ้า `project-type` หรือ `project-name` ไม่ระบุ → ทำ `/follow-your-suggestion` เพื่อเลือกประเภทและชื่อ project ตาม context
 
 ### 2. Select Create Skill
 
