@@ -104,7 +104,7 @@ By prefix:
 - `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
 - `download-*`: download and install tools. Examples: `download-program: /download-program`
 - `uninstall-*`: uninstall tools and apps. Examples: `uninstall-program-in-computer: /uninstall-program-in-computer`
-- `list-*`: inventory, lookup, and listing utilities. Examples: `list-program-in-computer: /list-program-in-computer`, `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
+- `list-*`: inventory, lookup, and listing utilities. Examples: `list-computer-info: /list-computer-info`, `list-program-in-computer: /list-program-in-computer`, `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
 - `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update: /report-my-cli-update`, `report-table: /report-table`, `report-file-structure: /report-file-structure`
 - `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-validate: /deep-validate`
 - `check-*`: verification, structure, and health checks. Examples: `check-size: /check-size`, `check-monorepo: /check-monorepo`, `check-unused-files: /check-unused-files`
