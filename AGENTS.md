@@ -66,7 +66,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `devin-cli-skills: /update-devin-global-skills`
 - `skill-format: /update-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 4 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web, open-files-in-web)`
+- `submodules: 5 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web, open-files-in-web, analyze-file-structure)`
 
 ### 3. Platform
 
@@ -102,7 +102,7 @@ By prefix:
 Major skill families by current count:
 - `follow-*` (231): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`
 - `review-*` (54): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`
-- `list-*` (42): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-action-fail`, `list-cloudflare-worker-fail`
+- `list-*` (41): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-action-fail`, `list-cloudflare-worker-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-full`, `run-test-all`
 - `update-*` (32): repo, skills, docs, config, and dependency maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`
 - `report-*` (31): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`
@@ -122,7 +122,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`), `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 

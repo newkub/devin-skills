@@ -10,3 +10,6 @@
 [submodule "open-files-in-web"]
 	path = open-files-in-web
 	url = https://github.com/newkub/open-files-in-web
+[submodule "analyze-file-structure"]
+	path = analyze-file-structure
+	url = https://github.com/newkub/analyze-file-structure
