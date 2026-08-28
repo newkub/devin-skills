@@ -1,10 +1,13 @@
 ---
 name: follow-create-cli
-description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อม review และเลือก stack ที่เหมาะสม
+description: สร้าง CLI applications ด้วย Rust หรือ Bun พร้อมเลือก stack และ architecture ที่เหมาะสม
 related:
   - follow-create-bun-cli
   - follow-create-rust-cli
+  - follow-architecture
+  - follow-flat-folders
   - ship
+  - rethink
 ---
 ## Goal
 
@@ -33,8 +36,9 @@ related:
 
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
-3. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง layers ให้ชัดเจน
-4. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
+3. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
+4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
+5. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
 ### 3. Review CLI
 
@@ -70,10 +74,11 @@ related:
 
 ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ framework details และ stack selection guide
 
-### 2. Clean Architecture
+### 2. Architecture Selection
 
 - ทุก CLI ต้องแยก concerns ชัดเจน
-- Domain layer ต้อง pure ไม่มี side effects
+- ใช้ `/follow-architecture` เลือก architecture ตาม context ไม่บังคับ Clean หรือ Layered
+- Domain layer ต้อง pure ไม่มี side effects เมื่อเหมาะสม
 - Adapters จัดการ I/O และ external dependencies
 - Presentation เป็น entry points
 
@@ -87,6 +92,7 @@ related:
 ## Expected Outcome
 
 - CLI project ที่เลือก stack เหมาะสม
-- โครงสร้างตาม Clean Architecture
+- โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
+- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
 - ผ่าน `/update-review-codebase-cli-and-run`
 - ผสานเข้ากับ workspace ได้

@@ -1,28 +1,36 @@
 ---
 name: follow-create-bun-cli
-description: สร้าง CLI applications ด้วย Bun runtime ตาม Clean Architecture และ best practices
+description: สร้าง CLI applications ด้วย Bun runtime ตาม context และ best practices
 related:
   - follow-create-cli
   - follow-create-website
   - follow-tool-bunup
+  - follow-architecture
+  - follow-flat-folders
+  - rethink
+  - review-architecture
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Bun runtime ที่มีประสิทธิภาพสูง โครงสร้างตาม Clean Architecture
+สร้าง CLI applications ด้วย Bun runtime ที่มีประสิทธิภาพสูง โครงสร้างตาม context
 
 ## Scope
 
-ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`)
+ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`) — ถ้ายังไม่ชัด Bun หรือ Rust ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
 ## Execute
 
 ### 1. Setup Project Structure
 
-> Goal: สร้างโครงสร้างโปรเจกต์ตาม Clean Architecture
+> Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
 
-1. ทำ `/follow-clean-architecture` เพื่อสร้างโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
-2. สร้าง entry points: `src/presentation/cli.ts` (CLI entry) และ `src/index.ts` (library entry)
-3. สร้าง `src/shared/` สำหรับ common types และ utilities
+1. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context
+2. เลือก structure ตามลักษณะงาน:
+   - CLI ง่ายๆ → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
+   - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
+   - มีหลาย adapter ซับซ้อน → `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/presentation/cli.ts`
+3. สร้าง entry points ตาม architecture ที่เลือก เช่น `src/cli.ts`, `src/index.ts`, หรือ `src/presentation/cli.ts`
+4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
 
 ### 2. Configure Build Tools
 
@@ -38,7 +46,7 @@ related:
 
 > Goal: ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
 
-1. เพิ่ม `dev`: `bun run src/presentation/cli.ts`
+1. เพิ่ม `dev`: `bun run <cli-entry>` โดย `<cli-entry>` อาจเป็น `src/cli.ts` หรือ `src/presentation/cli.ts` ตาม architecture ที่เลือก
 2. เพิ่ม `build`: `bunx bunup`
 3. เพิ่ม `build:watch`: `bunx bunup --watch`
 4. เพิ่ม `lint`: `bunx tsc --noEmit && bunx biome lint --write`
@@ -75,9 +83,11 @@ related:
 
 ### 1. Project Structure
 
-- ใช้ Clean Architecture: `domain/`, `application/`, `adapters/`, `presentation/`, `shared/`
-- `domain/` = pure business logic, ไม่มี side effects
-- `presentation/cli.ts` = CLI entry point
+- เลือก architecture ตาม context โดยไม่บังคับ Clean หรือ Layered
+- CLI ง่ายๆ → แยก `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
+- มีหลาย output/consumer → แยก `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
+- มีหลาย adapter ซับซ้อน → ใช้ `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`
+- `presentation/cli.ts` หรือ `src/cli.ts` เป็น CLI entry point ตาม architecture ที่เลือก
 - `src/index.ts` = library entry point
 
 ### 2. Build Configuration
@@ -105,7 +115,8 @@ related:
 
 ## Expected Outcome
 
-- CLI project ที่มีโครงสร้าง Clean Architecture และ maintainable
+- CLI project ที่มีโครงสร้างตาม architecture ที่เลือกและ maintainable
+- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
 - `bun run dev` รัน CLI ได้โดยตรง
 - `bun run build` สร้าง dist/ พร้อม type declarations
 - Scripts สอดคล้องกับ `/follow-tasks`
@@ -115,12 +126,11 @@ related:
 ```text
 project/
 ├── src/
-│   ├── domain/           # Pure business logic
-│   ├── application/      # Orchestration layer
-│   ├── adapters/         # External systems
-│   ├── presentation/     # Entry points
-│   │   └── cli.ts        # CLI entry
-│   ├── shared/           # Common types, utils
+│   ├── cli/              # CLI parsing
+│   ├── commands/         # Command handlers
+│   ├── services/         # Business logic
+│   ├── types/            # Shared types
+│   ├── utils/            # Utilities
 │   └── index.ts          # Library entry
 ├── test/
 ├── package.json
@@ -152,7 +162,7 @@ export default defineConfig({
 
 ## Guide
 
-- `/follow-clean-architecture` — Clean Architecture structure
+- `/follow-architecture` — architecture selection
 - `/follow-runtime-bun` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards

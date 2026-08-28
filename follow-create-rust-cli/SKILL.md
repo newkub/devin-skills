@@ -1,9 +1,13 @@
 ---
 name: follow-create-rust-cli
-description: สร้าง CLI applications ด้วย Rust ตาม best practices
+description: สร้าง CLI applications ด้วย Rust ตาม context และ best practices
 related:
   - follow-create-cli
   - follow-tool-cargo
+  - follow-architecture
+  - follow-flat-folders
+  - rethink
+  - review-architecture
 ---
 ## Goal
 
@@ -11,23 +15,39 @@ related:
 
 ## Scope
 
-ใช้สำหรับสร้าง CLI applications ด้วย Rust runtime
+ใช้สำหรับสร้าง CLI applications ด้วย Rust runtime — ถ้ายังไม่ชัดว่า Rust หรือ Bun ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
 ## Execute
 
-### 1. Setup Project Structure
+### 1. Decide Architecture
 
-> Goal: สร้างโครงสร้างโปรเจกต์ที่แยก concerns ชัดเจนตามมาตรฐาน
+> Goal: เลือก architecture ที่เหมาะสมกับ CLI
 
-สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน — ดู template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
+1. ถ้ายังไม่ชัด Rust หรือ Bun → ทำ `/follow-create-cli` ก่อน
+2. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อประเมิน context
+3. เลือก architecture ตามลักษณะงาน:
+   - CLI ง่ายๆ มี subcommands ไม่กี่ตัว → Command/Handler split
+   - ต้อง support หลาย output modes (TTY/JSON/agent) → Functional Core / Imperative Shell
+   - มีหลาย backend/IO ซับซ้อน ต้อง test สูง → Hexagonal / Ports & Adapters
+4. บันทึกเหตุผลที่เลือก architecture นี้
+
+### 2. Setup Project Structure
+
+> Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เลือก
+
+สร้างโครงสร้างโปรเจกต์ตาม template ใน [references/project-structure-and-config.md](references/project-structure-and-config.md)
 
 1. สร้าง project ด้วย `cargo new --name <project> <path>`
-2. สร้าง directories: `src/cli/`, `src/services/`, `src/types/`, `src/utils/`
-3. แยก concerns: business logic, CLI interface, utilities
+2. สร้าง directories ตาม architecture ที่เลือก:
+   - Command/Handler split: `src/cli/`, `src/commands/`, `src/services/`, `src/output.rs`, `src/config.rs`
+   - Functional Core: `src/core/`, `src/shell/`, `src/cli/`, `src/output.rs`
+   - Hexagonal: `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/commands/`, `src/wiring.rs`
+3. แยก concerns: CLI parsing, business logic, output, external I/O
 4. สร้าง entry point: `src/main.rs` สำหรับ binary, `src/lib.rs` สำหรับ library
 5. ถ้า project มีหลาย binaries: สร้างใน `src/bin/`
+6. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
 
-### 2. Configure Dependencies
+### 3. Configure Dependencies
 
 > Goal: เพิ่ม dependencies ที่จำเป็นสำหรับ CLI ใน `Cargo.toml`
 
@@ -42,7 +62,7 @@ related:
 7. เพิ่ม table output: `comfy-table` หรือ `prettytable-rs`
 8. ตั้งค่า `edition = "2024"` ใน `Cargo.toml`
 
-### 3. Configure Build Profiles
+### 4. Configure Build Profiles
 
 > Goal: ตั้งค่า build profiles สำหรับ development และ production
 
@@ -52,7 +72,7 @@ related:
 2. ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
 3. ตั้งค่า `[profile.dev.package."*"]` ด้วย `debug = false` เพื่อ speed up deps compilation
 
-### 4. Setup Scripts
+### 5. Setup Scripts
 
 > Goal: สร้าง justfile สำหรับ development scripts ที่ใช้ซ้ำได้
 
@@ -64,7 +84,7 @@ related:
 4. เพิ่ม `test` recipe: `cargo nextest run && cargo test --doc`
 5. เพิ่ม `run` recipe: `cargo run --`
 
-### 5. Development Workflow
+### 6. Development Workflow
 
 > Goal: ใช้ workflow ที่มี watch mode, lint และ format อัตโนมัติ
 
@@ -75,7 +95,7 @@ related:
 3. ใช้ `cargo clippy -- -D warnings` สำหรับ code quality checks
 4. ใช้ `cargo fmt` สำหรับ formatting
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 
@@ -88,10 +108,12 @@ related:
 
 โครงสร้างต้องถูกต้อง
 
-- แยก concerns: business logic, CLI interface, utilities
-- ใช้ Clean Architecture หรือ Layered Architecture
-- แยก types ไว้ใน `src/types/`
-- ใช้ `mod.rs` สำหรับ barrel exports
+- แยก concerns: CLI parsing, business logic, output formatting, external I/O
+- เลือก architecture ตาม context โดยไม่บังคับ Clean หรือ Layered
+- ค่าเริ่มต้น CLI ทั่วไป: Command/Handler split ด้วย `src/cli/`, `src/commands/`, `src/services/`, `src/output.rs`, `src/config.rs`
+- ถ้ามีหลาย client (TTY/JSON/agent): Functional Core / Imperative Shell
+- ถ้ามีหลาย backend/IO ซับซ้อน: Hexagonal / Ports & Adapters
+- ใช้ flat modules (`foo.rs` + `foo/`) ตาม Rust 2018+ แทน `mod.rs` เมื่อเหมาะสม
 - ตั้งชื่อไฟล์ด้วย snake_case
 - ตั้งชื่อ types ด้วย PascalCase
 
@@ -151,6 +173,8 @@ related:
 ## Expected Outcome
 
 - CLI project ที่มีโครงสร้างที่ดีและ maintainable
+- Architecture ที่เลือกเหมาะสมกับ context และบันทึกเหตุผล
+- Directory structure ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
 - Development workflow ที่มีประสิทธิภาพ
 - Type-safe CLI application พร้อมสำหรับ production
 - Zero-cost abstractions และ memory safety
