@@ -9,7 +9,7 @@ marked.use({
       const language = lang || 'plaintext'
       const valid = lang && hljs.getLanguage(lang)
       const html = valid ? hljs.highlight(text, { language: lang }).value : hljs.highlightAuto(text).value
-      return `<pre class="hljs rounded p-3 overflow-x-auto"><code class="language-${language}">${html}</code></pre>`
+      return `<pre class="hljs rounded-lg p-3 overflow-x-auto bg-slate-900"><code class="language-${language}">${html}</code></pre>`
     },
   },
 } as any)
@@ -23,7 +23,7 @@ export default function Markdown(props: MarkdownProps) {
   const html = createMemo(() => marked.parse(props.content || '') as string)
   return (
     <div
-      class={`prose prose-sm max-w-none dark:prose-invert ${props.class || ''}`}
+      class={`markdown-body leading-relaxed text-slate-700 dark:text-slate-300 ${props.class || ''}`}
       innerHTML={html()}
     />
   )

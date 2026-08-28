@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
 
 function buildTree(paths: string[]) {
   const root: Record<string, any> = {}
@@ -17,9 +17,9 @@ function TreeNode(props: { name: string; children: Record<string, any> }) {
   const hasChildren = () => Object.keys(props.children).length > 0
   return (
     <li class="my-0.5">
-      <span class="font-mono text-xs text-gray-800 dark:text-gray-200">{props.name}</span>
+      <span class="font-mono text-xs text-slate-700 dark:text-slate-200">{props.name}</span>
       <Show when={hasChildren()}>
-        <ul class="ml-2 border-l border-gray-300 pl-2 dark:border-gray-600">
+        <ul class="ml-3 border-l border-slate-300 pl-2 dark:border-slate-600">
           <For each={Object.keys(props.children).sort()}>
             {key => <TreeNode name={key} children={props.children[key]} />}
           </For>
@@ -29,13 +29,11 @@ function TreeNode(props: { name: string; children: Record<string, any> }) {
   )
 }
 
-import { Show } from 'solid-js'
-
 export default function FileTree(props: { files: string[] }) {
   const tree = () => buildTree(props.files)
   return (
-    <Show when={props.files?.length} fallback={<span class="text-sm text-gray-500">-</span>}>
-      <ul class="rounded border border-gray-200 bg-gray-50 p-2 dark:border-gray-700 dark:bg-gray-900">
+    <Show when={props.files?.length} fallback={<span class="text-sm text-slate-500">-</span>}>
+      <ul class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900">
         <For each={Object.keys(tree()).sort()}>
           {key => <TreeNode name={key} children={tree()[key]} />}
         </For>
