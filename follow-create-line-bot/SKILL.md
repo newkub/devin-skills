@@ -8,6 +8,7 @@ related:
   - follow-create-sdk
   - follow-create-website
   - follow-lang-typescript
+  - follow-service-infisical
   - run-test
   - use-bun-native-api
   - report-table
@@ -96,7 +97,7 @@ related:
 
 ## Rules
 
-- ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ environment variables
+- ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ `/follow-service-infisical` สำหรับจัดการ channel secrets
 - ใช้ `@line/bot-sdk` เป็น default SDK
 - ใช้ `Hono` เป็น default web server บน Bun
 - Validate `x-line-signature` ทุกครั้งก่อน parse events

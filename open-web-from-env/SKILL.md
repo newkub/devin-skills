@@ -2,6 +2,9 @@
 name: open-web-from-env
 description: อ่าน .env files แล้วเปิด URL เพื่อไปเอา API keys หรือ secrets
 argument-hint: "[env-file]"
+related:
+  - follow-service-infisical
+  - open-env-website
 ---
 
 ## Goal
@@ -39,11 +42,11 @@ argument-hint: "[env-file]"
 ## Rules
 
 1. เปิด URL เฉพาะที่จำเป็นตาม env files
-2. เก็บ secrets ใน `.env.local` อย่างปลอดภัย
+2. เก็บ secrets ใน `/follow-service-infisical` ไม่ใช่ `.env.local` ธรรมดา
 3. ห้าม commit secrets ไป git
 
 ## Expected Outcome
 
 - เปิด URLs ของ services ที่ต้องใช้ API keys
 - ผู้ใช้รู้ว่าต้องเอา key อะไรจากที่ไหน
-- กรอกค่าใน `.env.local` ได้ถูกต้อง
+- กรอกค่าใน `/follow-service-infisical` ได้ถูกต้อง

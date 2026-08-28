@@ -2,6 +2,9 @@
 name: open-env-website
 description: อ่าน .env.example แล้วเปิด external services websites เพื่อกรอก API keys
 argument-hint: "[env-file]"
+related:
+  - follow-service-infisical
+  - open-web-from-env
 ---
 
 ## Goal
@@ -60,6 +63,7 @@ Service Mapping:
 1. ใช้ `read_url_content` หรือ `bash` เปิด URLs ใน browser
 2. เปิด websites ที่เป็น external services เท่านั้น
 3. รอให้ user กรอก API keys
+4. หลัง user กรอกเสร็จ ให้ใช้ `/follow-service-infisical` สำหรับเก็บ secrets อย่างปลอดภัย ไม่ใช่ `.env.local` ธรรมดา
 
 ## Rules
 

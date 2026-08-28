@@ -1,6 +1,11 @@
 ---
 name: follow-deploy
 description: ตั้งค่า deployment configuration และ CI/CD ครบถ้วน
+related:
+  - follow-service-infisical
+  - follow-tool-github-actions
+  - follow-service-cloudflare
+  - follow-service-vercel
 ---
 
 ## Goal
@@ -33,7 +38,8 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 ตั้งค่า environment variables สำหรับ deployment
 
 1. สร้าง `.env.example` สำหรับ environment variables ที่จำเป็น
-2. ตั้งค่า environment variables ใน platform:
+2. ใช้ `/follow-service-infisical` สำหรับจัดการ secrets ก่อน deploy ไปยัง platform
+3. ตั้งค่า environment variables ใน platform:
    - Cloudflare: ใช้ `wrangler secret put`
    - Vercel: ใช้ Vercel dashboard หรือ CLI
    - Railway: ใช้ `railway variables set KEY=value` หรือ Railway dashboard
@@ -86,6 +92,7 @@ description: ตั้งค่า deployment configuration และ CI/CD ค�
 ### 2. Environment Variables
 
 - ต้องตั้งค่า environment variables ครบถ้วน
+- ใช้ `/follow-service-infisical` สำหรับจัดการ secrets ทั้งหมดก่อน deploy
 - ใช้ `.env.example` เพื่อ document variables ที่จำเป็น
 - ห้าม hardcode secrets ใน code
 - ใช้ secrets management ของ platform

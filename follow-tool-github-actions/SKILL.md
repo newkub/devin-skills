@@ -1,6 +1,10 @@
 ---
 name: follow-tool-github-actions
 description: ตั้งค่า GitHub Actions สำหรับ CI/CD ครบถ้วน
+related:
+  - follow-service-infisical
+  - follow-deploy
+  - run-deploy
 ---
 
 ## Goal
@@ -33,9 +37,10 @@ description: ตั้งค่า GitHub Actions สำหรับ CI/CD ค�
 
 > Goal: Setup พื้นฐาน
 
-1. ทำ `/follow-tool-renovate` เพื่อตั้งค่า dependency updates
-2. ทำ `/follow-tool-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
-3. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
+1. ทำ `/follow-service-infisical` เพื่อตั้งค่า secrets สำหรับ CI/CD ด้วย OIDC หรือ machine identity
+2. ทำ `/follow-tool-renovate` เพื่อตั้งค่า dependency updates
+3. ทำ `/follow-tool-release-it` เพื่อตั้งค่า automated releases (ถ้าเป็น monorepo)
+4. สร้าง `.github/workflows/ci.yml` สำหรับ lint, typecheck, test
 
 ### 3. เลือกเพิ่ม Workflows ตามความต้องการ
 

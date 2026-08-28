@@ -1,6 +1,10 @@
 ---
 name: follow-service-vercel
 description: Deploy applications บน Vercel พร้อม serverless และ edge functions
+related:
+  - follow-service-infisical
+  - follow-service-vercel-cli
+  - deploy-to-vercel
 ---
 
 ## Goal
@@ -158,6 +162,7 @@ jobs:
 ### 3. Environment Variables
 
 - ใช้ `vercel env` CLI หรือ dashboard
+- ใช้ `/follow-service-infisical` สำหรับจัดการ `VERCEL_TOKEN` และ secrets ก่อน sync ไป Vercel หรือ CI/CD
 - ใช้ `vercel env pull` สำหรับ sync ไป local
 - ไม่ hardcode secrets
 

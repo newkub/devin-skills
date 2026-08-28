@@ -4,6 +4,7 @@ description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and
 related:
   - deploy-to-cloudflare
   - deploy-to-vercel
+  - follow-service-infisical
   - follow-create-sdk
 ---
 ## Goal
@@ -136,7 +137,8 @@ related:
 ### 4. Safety
 
 - ไม่ commit secrets ลง repository
-- ใช้ environment variables สำหรับ API keys, DB URLs
+- ใช้ `/follow-service-infisical` สำหรับจัดการ API keys, DB URLs และ secrets ทั้งหมด
+- ใช้ `environment variables` สำหรับ non-sensitive config
 - ถ้ามี destructive changes → dry run ก่อน
 
 ### 5. Formatting

@@ -3,6 +3,7 @@ name: deploy-to-cloudflare
 description: Deploy Workers, Pages, หรือ Nitro ไปยัง Cloudflare ด้วย wrangler จน live
 related:
   - follow-service-cloudflare
+  - follow-service-infisical
   - watch-cloudflare
   - watch-cloudflare-and-fix-in-computer
   - run-build
@@ -89,6 +90,7 @@ Deploy application ไปยัง Cloudflare Workers, Pages, หรือ Nitro
 ## Rules
 
 - ตรวจ project type ก่อน deploy
+- ใช้ `/follow-service-infisical` สำหรับจัดการ `CLOUDFLARE_API_TOKEN` และ secrets อย่างปลอดภัย ก่อน deploy
 - build สำเร็จก่อน deploy
 - ใช้ `wrangler` CLI
 - Nitro ใช้ `cloudflare_module` preset และ `compatibilityDate` เหมาะสม

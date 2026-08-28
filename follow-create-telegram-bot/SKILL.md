@@ -9,6 +9,7 @@ related:
   - follow-create-sdk
   - follow-create-website
   - follow-lang-typescript
+  - follow-service-infisical
   - run-test
   - search-npm-libraries
   - use-bun-native-api
@@ -83,7 +84,7 @@ related:
 
 ## Rules
 
-- ไม่ hardcode `BOT_TOKEN`; ใช้ environment variable
+- ไม่ hardcode `BOT_TOKEN`; ใช้ `/follow-service-infisical` สำหรับจัดการ token ก่อน inject เข้า app
 - ใช้ `grammy` เป็น default library บน Bun
 - ใช้ long-polling สำหรับ dev, webhook สำหรับ production
 - ไม่ commit `.env`

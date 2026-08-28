@@ -1,6 +1,11 @@
 ---
 name: run-deploy
 description: Deploy application ไปยัง platform ที่กำหนด พร้อม commit, push และ watch จน live
+related:
+  - follow-service-infisical
+  - review-deploy
+  - run-verify-fast
+  - run-build
 ---
 
 ## Goal
@@ -114,6 +119,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ### 3. Deploy
 
+- ใช้ `/follow-service-infisical` สำหรับจัดการ secrets และ API tokens ก่อน deploy
 - ใช้ `/deploy-to-<platform>` ตาม platform ที่เลือก
 - ต้อง deploy สำเร็จ
 - ตรวจสอบ deployment status

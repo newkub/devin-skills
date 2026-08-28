@@ -6,6 +6,7 @@ related:
   - follow-create-website
   - follow-service-workos
   - follow-service-stripe
+  - follow-service-infisical
   - follow-lib-unocss-theme
   - follow-design-system
   - review-uxui
@@ -152,7 +153,7 @@ related:
 ### 4. No Leaks
 
 - ไม่ hardcode API keys, secrets, credentials
-- ใช้ environment variables
+- ใช้ `/follow-service-infisical` สำหรับจัดการ secrets และ environment variables ทั้งหมด
 - ตรวจสอบ webhook signatures
 
 ### 5. UX Quality

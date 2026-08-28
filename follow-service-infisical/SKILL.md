@@ -3,6 +3,13 @@ name: follow-service-infisical
 description: ใช้งาน Infisical สำหรับจัดการ secrets และ environment variables อย่างปลอดภัย
 related:
   - follow-math-cryptography
+  - follow-tool-mise
+  - follow-tasks
+  - deploy-to-cloudflare
+  - follow-service-cloudflare
+  - follow-service-vercel
+  - follow-tool-github-actions
+  - review-security
 ---
 
 ## Goal
@@ -12,6 +19,18 @@ related:
 ## Scope
 
 ใช้สำหรับทุก workspace ที่ต้องการ secrets management ทั้ง local development, CI/CD และ production
+
+## When To Use
+
+ใช้ `/follow-service-infisical` เมื่อ:
+
+- ต้องการแทนที่ `.env` files สำหรับ local development
+- ต้องการ secrets สำหรับ CI/CD ด้วย OIDC หรือ machine identity แทน long-lived token
+- ต้องการ secret rotation, dynamic secrets, หรือ audit logs สำหรับ platform ระยะยาว
+- ต้องการ sync secrets ไปยัง Cloudflare, Vercel, Railway, GitHub Actions, AWS, Kubernetes
+- กำลังสร้าง product/platform ที่มีหลาย environment (dev, staging, prod)
+
+เลือก Infisical แทน `Phase.dev`, Doppler, Vault เมื่อต้องการ ecosystem integrations เยอะ, open-source core, OIDC CI/CD, และ community support
 
 ## Execute
 
@@ -99,7 +118,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 
 ใช้ `@infisical/sdk` สำหรับ programmatic access ใน production
 
-- ติดตั้ง SDK: `bun add @infisical/sdk` หรือ `bun add @infisical/sdk`
+- ติดตั้ง SDK: `bun add @infisical/sdk` หรือ `npm install @infisical/sdk` หรือ `pnpm add @infisical/sdk`
 - Initialize client ด้วย machine identity credentials
 - Authenticate: `client.auth().universalAuth.login({ clientId, clientSecret })`
 - ดึง secrets: `client.secrets().getSecret({ environment, projectId, secretName })`
@@ -142,6 +161,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
   - ใช้ `github/actions-oidc-debugger` ช่วย inspect token claims
   - ทางเลือก: GitHub Secret Syncs สำหรับ one-way sync Infisical → GitHub Secrets
 - Vercel: ใช้ Infisical sync ไป Vercel environment variables
+- Cloudflare Workers / Pages: เก็บ `CLOUDFLARE_API_TOKEN` และ `CLOUDFLARE_ACCOUNT_ID` ใน Infisical แล้ว inject ด้วย `infisical run --env=prod -- wrangler deploy` หรือใช้ `Infisical/secrets-action` ใน GitHub Actions
 - Terraform: ใช้ Infisical Terraform Provider
 - OIDC: ใช้สำหรับ passwordless authentication ใน CI/CD ถ้ารองรับ
 - Gateway & Relay: ใช้สำหรับ secure tunneling ไปยัง internal resources

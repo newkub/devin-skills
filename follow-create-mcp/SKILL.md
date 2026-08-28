@@ -5,6 +5,7 @@ related:
   - follow-create-cli
   - follow-lang-rust
   - follow-lang-typescript
+  - follow-service-infisical
   - update-devin-global-mcp
 ---
 
@@ -93,7 +94,7 @@ related:
 ### 2. Security
 
 - ไม่ hardcode secrets ลง server code
-- ใช้ environment variables สำหรับ API keys และ credentials
+- ใช้ `/follow-service-infisical` สำหรับจัดการ API keys และ credentials แล้ว inject เป็น environment variables
 - ถ้า server รับ input จาก client → validate schema ก่อนประมวลผล
 
 ### 3. Transport

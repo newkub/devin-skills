@@ -9,6 +9,7 @@ related:
   - follow-create-sdk
   - follow-create-website
   - follow-lang-typescript
+  - follow-service-infisical
   - run-test
   - search-npm-libraries
   - use-bun-native-api
@@ -94,7 +95,7 @@ related:
 
 ## Rules
 
-- ไม่ hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; ใช้ environment variables
+- ไม่ hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; ใช้ `/follow-service-infisical` สำหรับจัดการ secrets
 - ใช้ `discord.js` เป็น default library บน Bun
 - ต้องมี `deploy-commands` script สำหรับ register slash commands
 - ไม่ commit `.env`

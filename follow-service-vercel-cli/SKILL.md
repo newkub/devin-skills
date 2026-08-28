@@ -1,6 +1,9 @@
 ---
 name: follow-service-vercel-cli
 description: ใช้งาน Vercel CLI สำหรับ deploy และ manage projects บน Vercel
+related:
+  - follow-service-infisical
+  - follow-service-vercel
 ---
 
 ## Goal
@@ -150,6 +153,7 @@ Monitor และ debug deployments
 รักษาความปลอดภัยของ environment variables
 
 - ไม่ commit secrets ไปยัง version control
+- ใช้ `/follow-service-infisical` สำหรับจัดการ `VERCEL_TOKEN` และ secrets แทนการเก็บใน plain `.env`
 - ใช้ `vercel env add` แทนการแก้ config files
 - ใช้ environment-specific variables สำหรับ isolation
 - Rotate secrets อย่างสม่ำเสมอ
