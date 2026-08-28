@@ -1,6 +1,8 @@
 ---
 name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
+related:
+  - rethink
 ---
 
 ## Goal

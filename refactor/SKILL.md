@@ -10,6 +10,7 @@ related:
   - follow-architecture
   - review-architecture
   - dont-over-engineer
+  - rethink
 ---
 
 ## Goal

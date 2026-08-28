@@ -13,6 +13,7 @@ related:
   - follow-lib-vue
   - restructure
   - learn-from-web
+  - rethink
 ---
 
 ## Goal

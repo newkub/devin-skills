@@ -24,6 +24,7 @@ related:
   - deep-validate
   - all-workspace
   - check-monorepo
+  - rethink
 ---
 
 ## Goal

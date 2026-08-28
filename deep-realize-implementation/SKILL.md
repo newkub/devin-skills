@@ -21,6 +21,7 @@ related:
   - restructure
   - update-references
   - run-verify-full
+  - rethink
 ---
 
 ## Goal

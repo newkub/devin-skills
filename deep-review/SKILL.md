@@ -1,6 +1,8 @@
 ---
 name: deep-review
 description: Review ครบทุกมิติอย่างลึกซึ้ง พร้อม severity ratings และ actionable recommendations
+related:
+  - rethink
 ---
 
 ## Goal

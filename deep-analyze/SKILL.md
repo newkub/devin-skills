@@ -1,6 +1,8 @@
 ---
 name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งด้วยหลายมิติและ external research
+related:
+  - rethink
 ---
 
 ## Goal

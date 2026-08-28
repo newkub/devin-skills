@@ -10,6 +10,7 @@ related:
   - deep-validate
   - run-check
   - ask-me
+  - rethink
 ---
 
 ## Goal

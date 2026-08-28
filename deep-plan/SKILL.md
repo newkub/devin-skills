@@ -2,6 +2,8 @@
 name: deep-plan
 description: วางแผนละเอียดหลายมิติ ครอบคลุม risk, dependencies, alternatives, timeline
 argument-hint: "[topic]"
+related:
+  - rethink
 ---
 
 ## Goal

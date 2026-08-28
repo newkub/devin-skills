@@ -11,6 +11,7 @@ related:
   - ask-me
   - ship
   - continue
+  - rethink
 ---
 ## Goal
 

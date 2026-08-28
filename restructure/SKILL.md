@@ -1,6 +1,9 @@
 ---
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
+related:
+  - rethink
+
 ---
 
 ## Goal

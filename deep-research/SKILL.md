@@ -2,6 +2,8 @@
 name: deep-research
 description: ค้นหาข้อมูลลึกจาก multiple sources เพื่อให้ได้คำตอบที่ครบถ้วนและถูกต้อง
 argument-hint: "[query]"
+related:
+  - rethink
 ---
 
 ## Goal

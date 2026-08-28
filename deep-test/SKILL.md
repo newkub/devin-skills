@@ -19,6 +19,7 @@ related:
   - follow-tool-stryker-mutator
   - follow-tool-mutants-rs
   - run-bench
+  - rethink
 ---
 
 ## Goal
