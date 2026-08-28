@@ -5,11 +5,13 @@ argument-hint: "[target]"
 related:
   - use-bun-scripts
   - use-bun-shell
+  - use-bun-native-api
   - use-nu-shell
   - use-pwsh-shell
   - use-ast-grep
   - use-ast-grep-programatic
   - follow-lang-bun
+  - follow-tool-rolldown
   - follow-lib-esm-sh
 ---
 
@@ -62,12 +64,14 @@ related:
 > Goal: เขียน script ตาม standards
 
 1. เขียนแบบ composable: `createScript()` return state + actions
-2. ใช้ Bun native APIs สำหรับ `.ts` scripts (ดู `/use-bun-shell`, `/follow-lang-bun`)
+2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/use-bun-native-api`, `/follow-lang-bun`)
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
-5. ใช้ CDN imports สำหรับ external dependencies: `https://esm.sh/<name>`
+5. ใช้ CDN imports สำหรับ external dependencies ที Bun native APIs ไม่ครอบคลุม: `https://esm.sh/<name>`
 6. ใช้ `eta` ผ่าน `https://esm.sh/eta@4.6.0` สำหรับ template/render ใน Bun scripts (ดู `/follow-lib-esm-sh` สำหรับ CDN convention)
-7. เพิ่ม `dryRun` option สำหรับ testing
+7. ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ผ่าน `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser`
+8. ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown` (ใช้ `oxc` parser เหมือนกัน)
+9. เพิ่ม `dryRun` option สำหรับ testing
 
 ### 4. Test And Execute
 
@@ -99,8 +103,11 @@ related:
 
 ### 3. Bun Native API Preference
 
-- ใช้ Bun native APIs สำหรับ `.ts` scripts เสมอเมื่อเป็นไปได้
+- เมื่อใช้ Bun ให้ใช้ Bun native APIs เท่านั้นสำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก
 - `Bun.Glob` แทน `fast-glob`, `Bun.$` แทน `execa`, `Bun.file()` + `Bun.write()` แทน `fs-extra`
+- ไม่ import `node:fs` โดยตรงถ้า `Bun.file`/`Bun.write` ทำงานได้
+- ถ้าต้องการ parse JS/TS AST ด้วยความเร็วสูง → ใช้ `oxc-parser` ก่อน `acorn` หรือ `babel`
+- ถ้าต้องการ bundle ด้วยความเร็วสูง → ใช้ `rolldown` ตาม `/follow-tool-rolldown`
 
 ### 4. CDN Libraries
 
@@ -112,6 +119,8 @@ import { render } from "https://esm.sh/eta@4.6.0"
 
 - CLI: `zod`, `cac`, `consola`, `@clack/prompts`, `picocolors`
 - Parsing: `yaml`, `gray-matter`, `jsonc-parser`
+- JS/TS AST: `oxc-parser` สำหรับ parse/transform JS/TS ด้วยความเร็วสูง
+- Bundling: `rolldown` สำหรับ bundle ด้วย `oxc` parser (ดู `/follow-tool-rolldown`)
 - File System: `pretty-bytes`, `env-paths`, `semver`
 - Async: `p-limit`, `p-queue`, `p-map`
 - Template: `eta` สำหรับ generate text/files จาก template

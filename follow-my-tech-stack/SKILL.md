@@ -1,6 +1,13 @@
 ---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
+related:
+  - use-scripts
+  - use-bun-native-api
+  - follow-tool-rolldown
+  - follow-tool-oxlint
+  - follow-lib-esm-sh
+  - use-lib-effective
 ---
 
 ## Goal
@@ -43,8 +50,9 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 |---|---|---|
 | Runtime | `Bun` | `Rust` |
 | Package Manager | `Bun` | `Cargo` |
-| Build Tool | `tsdown`, `Rolldown` | `Cargo` |
-| Bundler | `Vite` (with Rolldown) | - |
+| Build Tool | `tsdown`, `Rolldown` (oxc engine) | `Cargo` |
+| Bundler | `Rolldown`, `Vite` (with Rolldown engine) | - |
+| JS/TS Parser | `oxc-parser` | `oxc_parser` |
 | Type Checker | `tsc` | `rustc` |
 | Web Framework | `ElysiaJS`, `Hono`, `Nitro` | `Axum`, `Actix Web` |
 | Full-stack Framework | `TanStack Start`, `Nuxt 3` | - |
@@ -56,7 +64,7 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 | Database Migration | `drizzle-kit` | `SQLx` migrations |
 | Data Schema | `Drizzle Schema` | `SQLx` migrations |
 | API Schema | `oRPC`, `Zod` | `Serde` + `Axum` extractors |
-| Validator | `Zod` | `Garage`, `Serde` |
+| Validator | `Zod` | `garde`, `Serde` |
 | Serialization | - | `Serde` |
 | Router | `TanStack Router`, `Vue Router` | `Axum` router |
 | State Management | `TanStack Store`, `Pinia` | - |
@@ -128,6 +136,15 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 - ถ้ามี background daemons/processes: เพิ่ม `pitchfork` (ดู `/follow-tool-pitchfork`)
 - ถ้าสร้าง CLI หรือต้องการ completions/docs/manpages: เพิ่ม `usage` (ดู `/follow-tool-usage`)
 - ถ้ามี animation/interactive visuals: เพิ่ม `/review-frontend`
+
+### 3. Fast Parser And Bundler
+
+เลือก parser และ bundler ทีเร็วทีสุดเมื่อเหมาะสม
+
+- ใช้ `oxc-parser` แทน `acorn`, `babel`, `typescript` parser สำหรับ JS/TS AST เมื่อต้องการความเร็วสูง
+- ใช้ `rolldown` แทน `Vite`/`esbuild` สำหรับ bundle ขนาดใหญ่ หรือ `Vite` ก็ยังใช้ Rolldown engine ได้
+- ดู `/follow-tool-rolldown` และ `/follow-tool-oxlint` สำหรับ setup และ best practices
+- ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด
 
 ## Expected Outcome
 
