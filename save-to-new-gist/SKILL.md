@@ -1,7 +1,6 @@
 ---
-name: save-to-github-gist
+name: save-to-new-gist
 description: สร้าง GitHub gist จากไฟล์หรือข้อความที่ระบุ
-argument-hint: "[file]"
 ---
 
 ## Goal

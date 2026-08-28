@@ -1,6 +1,6 @@
 ---
-name: list-github-gist
-description: แสดงรายการ GitHub gists ของผู้ใช้
+name: list-gist
+description: แสดงรายการ gists ของผู้ใช้
 ---
 
 ## Goal
