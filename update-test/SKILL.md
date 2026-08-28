@@ -8,6 +8,7 @@ related:
   - review-quality
   - deep-validate
   - check-reference
+  - deep-test
 ---
 
 ## Goal

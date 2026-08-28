@@ -12,6 +12,7 @@ related:
   - update-project-skills
   - update-github-metadata
   - update-todo-md
+  - deep-update-project
 ---
 
 ## Goal
