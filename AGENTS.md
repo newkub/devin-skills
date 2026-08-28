@@ -102,6 +102,7 @@ By prefix:
 - `run-*`: test, build, lint, typecheck, format, and deployment runners. Examples: `run-test: /run-test`, `run-build: /run-build`, `run-check: /run-check`
 - `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-github-repo: /create-github-repo`
 - `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
+- `download-*`: download and install tools. Examples: `download-program: /download-program`
 - `list-*`: inventory, lookup, and listing utilities. Examples: `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
 - `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-table: /report-table`, `report-file-structure: /report-file-structure`
 - `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-validate: /deep-validate`
