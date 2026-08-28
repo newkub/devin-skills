@@ -4,6 +4,7 @@ description: เข้าใจ hashing, primes, symmetric/asymmetric encryption
 argument-hint: "[topic]"
 related:
   - follow-math-discrete-math
+  - follow-secret-manager
   - follow-service-infisical
   - open-github-secrets
   - follow-math-concepts

@@ -2,7 +2,8 @@
 name: review-deploy
 description: Review deployment readiness ก่อน deploy
 related:
-  - follow-service-infisical
+  - follow-secret-manager
+  - open-web-for-config-secret
   - run-deploy
   - follow-deploy
 ---
@@ -32,7 +33,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 > Goal: ตรวจ env vars และ secrets ครบถ้วน
 
 1. ตรวจ `.env.example` มี variables ที่จำเป็นทั้งหมด
-2. ตรวจ secrets จัดการด้วย `/follow-service-infisical` ก่อน deploy ไป platform
+2. ตรวจ secrets จัดการด้วย `/follow-secret-manager` ก่อน deploy ไป platform
 3. ตรวจ secrets ตั้งค่าใน platform: `NPM_TOKEN`, `DATABASE_URL`, `API_KEY`
 4. ตรวจไม่มี secrets ใน codebase หรือ config files
 4. ตรวจ env vars แยก environment: dev, staging, production

@@ -2,9 +2,10 @@
 name: follow-create-website
 description: Create a website project using SolidJS, TanStack, oRPC, Elysia, and UnoCSS
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - deploy-to-cloudflare
   - deploy-to-vercel
-  - follow-service-infisical
   - follow-create-sdk
 ---
 ## Goal
@@ -137,7 +138,7 @@ related:
 ### 4. Safety
 
 - ไม่ commit secrets ลง repository
-- ใช้ `/follow-service-infisical` สำหรับจัดการ API keys, DB URLs และ secrets ทั้งหมด
+- ใช้ `/follow-secret-manager` สำหรับจัดการ API keys, DB URLs และ secrets ทั้งหมด
 - ใช้ `environment variables` สำหรับ non-sensitive config
 - ถ้ามี destructive changes → dry run ก่อน
 

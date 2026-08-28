@@ -3,10 +3,11 @@ name: follow-create-product
 description: สร้าง product ครบวงจรจาก idea ถึง website พร้อม auth, payments, dashboard และ ship
 argument-hint: "[product-idea]"
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - follow-create-website
   - follow-service-workos
   - follow-service-stripe
-  - follow-service-infisical
   - follow-lib-unocss-theme
   - follow-design-system
   - review-uxui
@@ -153,7 +154,7 @@ related:
 ### 4. No Leaks
 
 - ไม่ hardcode API keys, secrets, credentials
-- ใช้ `/follow-service-infisical` สำหรับจัดการ secrets และ environment variables ทั้งหมด
+- ใช้ `/follow-secret-manager` สำหรับจัดการ secrets และ environment variables ทั้งหมด
 - ตรวจสอบ webhook signatures
 
 ### 5. UX Quality

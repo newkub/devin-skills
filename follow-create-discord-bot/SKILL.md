@@ -2,6 +2,8 @@
 name: follow-create-discord-bot
 description: สร้าง Discord bot ด้วย TypeScript/Bun พร้อม slash commands, events, auto-load, และ modular handlers
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - deploy-to-cloudflare
   - deploy-to-railway
   - follow-create-bun-cli
@@ -9,7 +11,6 @@ related:
   - follow-create-sdk
   - follow-create-website
   - follow-lang-typescript
-  - follow-service-infisical
   - run-test
   - search-npm-libraries
   - use-bun-native-api
@@ -95,7 +96,7 @@ related:
 
 ## Rules
 
-- ไม่ hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; ใช้ `/follow-service-infisical` สำหรับจัดการ secrets
+- ไม่ hardcode `DISCORD_TOKEN`, `APPLICATION_ID`, `GUILD_ID`; ใช้ `/follow-secret-manager` สำหรับจัดการ secrets
 - ใช้ `discord.js` เป็น default library บน Bun
 - ต้องมี `deploy-commands` script สำหรับ register slash commands
 - ไม่ commit `.env`

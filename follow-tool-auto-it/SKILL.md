@@ -1,6 +1,10 @@
 ---
 name: follow-tool-auto-it
 description: ตั้งค่า Auto สำหรับ automated releases ด้วย conventional commits
+related:
+  - follow-secret-manager
+  - follow-tool-release-it
+  - follow-tool-github-actions
 ---
 
 ## Goal

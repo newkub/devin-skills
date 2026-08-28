@@ -3,6 +3,8 @@ name: check-secrets-leak
 description: ตรวจหา secrets หลุดใน git history และไฟล์ด้วย automated scanners
 argument-hint: "[path]"
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - review-security
   - check-broken-skills-references
   - check-reference

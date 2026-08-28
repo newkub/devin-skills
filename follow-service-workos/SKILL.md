@@ -2,7 +2,8 @@
 name: follow-service-workos
 description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, และ Authentication
 related:
-  - follow-service-infisical
+  - follow-secret-manager
+  - open-web-for-config-secret
   - follow-create-product
   - follow-lib-better-auth
 ---
@@ -24,7 +25,7 @@ related:
 
 1. install package ตาม runtime (`@workos-inc/node`, `workos-python`, etc.)
 2. สร้าง API key จาก WorkOS Dashboard
-3. เก็บ `WORKOS_API_KEY` และ `WORKOS_CLIENT_ID` ใน `/follow-service-infisical` แล้ว inject เข้า environment
+3. เก็บ `WORKOS_API_KEY` และ `WORKOS_CLIENT_ID` ใน `/follow-secret-manager` แล้ว inject เข้า environment
 
 ### 2. Configure WorkOS
 
@@ -60,7 +61,7 @@ related:
 ### 1. Security
 
 - ไม่ hardcode API key ใน code
-- เก็บ `WORKOS_API_KEY` ใน `/follow-service-infisical`
+- เก็บ `WORKOS_API_KEY` ใน `/follow-secret-manager`
 - validate webhook signatures ทุกครั้ง
 - จัดการ state อย่างปลอดภัย
 

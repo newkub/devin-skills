@@ -2,8 +2,9 @@
 name: deploy-to-vercel
 description: Deploy application ไปยัง Vercel จนกว่าจะ live สำเร็จ
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - follow-service-vercel
-  - follow-service-infisical
   - watch-vercel
   - run-build
   - git-commit
@@ -69,7 +70,7 @@ Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่
 ## Rules
 
 - ต้อง build สำเร็จก่อน deploy
-- ใช้ `/follow-service-infisical` สำหรับจัดการ `VERCEL_TOKEN` และ secrets ก่อน deploy
+- ใช้ `/follow-secret-manager` สำหรับจัดการ `VERCEL_TOKEN` และ secrets ก่อน deploy
 - ใช้ `bunx vercel` หรือ `vercel` CLI
 - ไม่ commit ก่อนยืนยันว่า deployment live
 - หาก fail → ทำ `/resolve-errors` แล้ว redeploy

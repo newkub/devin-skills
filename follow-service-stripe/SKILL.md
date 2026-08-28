@@ -3,10 +3,11 @@ name: follow-service-stripe
 description: ใช้ Stripe สำหรับ payments, subscriptions, checkout, customer portal และ webhooks
 argument-hint: "[project-path]"
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - follow-create-product
   - follow-create-website
   - follow-service-workos
-  - follow-service-infisical
   - follow-lib-zod
   - follow-lib-unocss-theme
   - deploy-to-vercel
@@ -33,7 +34,7 @@ related:
 1. ติดตั้ง Stripe SDK ด้วย `bun add stripe` สำหรับ server
 2. ติดตั้ง client SDK ด้วย `bun add @stripe/stripe-js`
 3. สร้าง Stripe account และเปิด Developers > API keys
-4. เก็บ `STRIPE_SECRET_KEY` และ `STRIPE_PUBLISHABLE_KEY` ใน `/follow-service-infisical` ไม่ใช่ `.env` จริง
+4. เก็บ `STRIPE_SECRET_KEY` และ `STRIPE_PUBLISHABLE_KEY` ใน `/follow-secret-manager` ไม่ใช่ `.env` จริง
 5. ติดตั้ง Stripe CLI สำหรับ webhook forwarding ด้วย `mise use -g stripe` หรือ `scoop install stripe`
 
 ### 2. Define Products And Prices
@@ -128,7 +129,7 @@ related:
 ### 1. Security
 
 - ไม่ hardcode Stripe keys
-- เก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, และ `STRIPE_WEBHOOK_SECRET` ใน `/follow-service-infisical`
+- เก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, และ `STRIPE_WEBHOOK_SECRET` ใน `/follow-secret-manager`
 - ตรวจสอบ webhook signature ทุกครั้ง
 - ใช้ HTTPS สำหรับ webhooks ใน production
 

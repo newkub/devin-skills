@@ -2,13 +2,14 @@
 name: follow-create-line-bot
 description: สร้าง LINE bot ด้วย TypeScript/Bun พร้อม webhook, commands, และ messaging API
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - deploy-to-cloudflare
   - deploy-to-railway
   - follow-create-bun-cli
   - follow-create-sdk
   - follow-create-website
   - follow-lang-typescript
-  - follow-service-infisical
   - run-test
   - use-bun-native-api
   - report-table
@@ -97,7 +98,7 @@ related:
 
 ## Rules
 
-- ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ `/follow-service-infisical` สำหรับจัดการ channel secrets
+- ไม่ hardcode `LINE_CHANNEL_ACCESS_TOKEN` หรือ `LINE_CHANNEL_SECRET`; ใช้ `/follow-secret-manager` สำหรับจัดการ channel secrets
 - ใช้ `@line/bot-sdk` เป็น default SDK
 - ใช้ `Hono` เป็น default web server บน Bun
 - Validate `x-line-signature` ทุกครั้งก่อน parse events

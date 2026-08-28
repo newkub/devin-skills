@@ -2,10 +2,11 @@
 name: follow-create-mcp
 description: สร้าง MCP server ด้วย Rust หรือ TypeScript พร้อม register ลง mcp_config.json
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - follow-create-cli
   - follow-lang-rust
   - follow-lang-typescript
-  - follow-service-infisical
   - update-devin-global-mcp
 ---
 
@@ -94,7 +95,7 @@ related:
 ### 2. Security
 
 - ไม่ hardcode secrets ลง server code
-- ใช้ `/follow-service-infisical` สำหรับจัดการ API keys และ credentials แล้ว inject เป็น environment variables
+- ใช้ `/follow-secret-manager` สำหรับจัดการ API keys และ credentials แล้ว inject เป็น environment variables
 - ถ้า server รับ input จาก client → validate schema ก่อนประมวลผล
 
 ### 3. Transport

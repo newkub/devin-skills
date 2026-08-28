@@ -113,7 +113,7 @@ related:
 | Release | `Auto` | - |
 | Deployment | `NuxtHub`, `Cloudflare Workers` | - |
 | Storage | `Cloudflare KV`, `Cloudflare R2` | - |
-| Secrets Management | `Infisical` | - |
+| Secrets Management | `/follow-secret-manager` (default: `/follow-service-infisical`) | `/open-web-for-config-secret` |
 | Auth | `Supabase`, `Better Auth`, `WorkOS`, `Auth.js` | `jsonwebtoken` |
 | Payment | `Stripe` | `stripe-rust` |
 | Email | `Resend`, `Nodemailer` | `lettre` |

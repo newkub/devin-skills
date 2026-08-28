@@ -2,6 +2,7 @@
 name: run-release
 description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
 related:
+  - follow-secret-manager
   - ship
   - gen-changelog-md
   - release-package-to-registry
@@ -51,7 +52,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ตั้งค่า authentication สำหรับ platforms ที่ detect ได้
 
-- `npm`: ตั้งค่า `NPM_TOKEN` ใน GitHub Secrets ด้วย `gh secret set NPM_TOKEN` (ใช้ Automation token)
+- `npm`: ใช้ `/follow-secret-manager` จัดการ `NPM_TOKEN` แล้ว sync ไป GitHub Secrets หรือใช้ `gh secret set NPM_TOKEN` แบบ manual
 - `vscode`: ตั้งค่า `VSCE_PAT` ใน GitHub Secrets ด้วย `gh secret set VSCE_PAT`
 - `crates`: ตั้งค่า `CARGO_REGISTRY_TOKEN` ใน GitHub Secrets ด้วย `gh secret set CARGO_REGISTRY_TOKEN`
 - `webstore`: ตั้งค่า `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN` ใน GitHub Secrets

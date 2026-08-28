@@ -2,6 +2,7 @@
 name: release-package-to-registry
 description: Auto-detect registry และ release package ไปยัง npm, crates.io หรือ registry อืน
 related:
+  - follow-secret-manager
   - run-release
   - run-verify-fast
   - gen-changelog-md
@@ -103,7 +104,7 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 - ตรวจสอบ tokens ก่อน release
 - ไม่ expose secrets ใน output
-- ใช้ `gh secret set` หรือ environment variables สำหรับ CI/CD
+- ใช้ `/follow-secret-manager` สำหรับจัดการ tokens แล้ว sync ไป CI/CD หรือใช้ `gh secret set` แบบ manual
 
 ### 5. Scripts
 

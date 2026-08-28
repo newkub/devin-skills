@@ -2,6 +2,8 @@
 name: follow-tool-mise
 description: ตั้งค่าและใช้งาน mise สำหรับจัดการ dev tools, env vars, และ tasks
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - use-scripts
   - follow-service-infisical
 ---
@@ -98,7 +100,7 @@ related:
 
 - ไม่ commit secrets ลง `mise.toml`
 - ใช้ `_.file = ".env.local"` หรือ `_.path = ".env"` สำหรับ non-sensitive env
-- ถ้าต้องการจัดการ secrets อย่างปลอดภัย → ใช้ `/follow-service-infisical`
+- ถ้าต้องการจัดการ secrets อย่างปลอดภัย → ใช้ `/follow-secret-manager`
 - ตรวจสอบ `mise env` ก่อนรัน commands สำคัญ
 
 ### 4. Tasks

@@ -1,6 +1,12 @@
 ---
 name: deploy-to-railway
 description: Deploy application ไปยัง Railway ด้วย railway up จนกว่าจะ live สำเร็จ
+related:
+  - follow-secret-manager
+  - open-web-for-config-secret
+  - deploy-to-cloudflare
+  - deploy-to-vercel
+  - run-deploy
 ---
 
 ## Goal
@@ -44,7 +50,8 @@ Deploy application ไปยัง Railway ด้วย `railway up` จนก�
 
 ตั้งค่า environment variables และ domains
 
-1. ตั้งค่า environment variables ด้วย `railway variables set KEY=value --service <svc>`
+1. ใช้ `/follow-secret-manager` สำหรับจัดการ secrets แล้ว inject ด้วย `infisical run --env=prod -- railway up` ถ้าใช้ Infisical
+2. ถ้ายังไม่ใช้ secret manager: ตั้งค่า environment variables ด้วย `railway variables set KEY=value --service <svc>`
 2. สร้าง `.env.example` เพื่อ document variables ที่จำเป็น
 3. ตั้งค่า custom domain ด้วย `railway domain add <domain>` (ถ้าต้องการ)
 4. ตรวจสอบ variables ด้วย `railway variables list --json`

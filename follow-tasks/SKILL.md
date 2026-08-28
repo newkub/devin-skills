@@ -2,6 +2,8 @@
 name: follow-tasks
 description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
 related:
+  - follow-secret-manager
+  - open-web-for-config-secret
   - test-all
   - run-check
   - run-verify-fast
@@ -62,7 +64,7 @@ related:
 > Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
 
 1. `/review-delivery` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
-2. ถ้ามี `.infisical.json` หรือใช้ Infisical → ทำ `/follow-service-infisical` เพื่อตั้งค่า secrets scripts
+2. ถ้ามี `.infisical.json` หรือใช้ secret manager → ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets scripts
 3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts: `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run`
 4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า
 5. รันเฉพาะ workflows ที่จำเป็น ไม่รันทุก workflow — ถ้า config fail → retry (max 3 → stop/report)

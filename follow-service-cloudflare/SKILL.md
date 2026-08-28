@@ -2,7 +2,8 @@
 name: follow-service-cloudflare
 description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ Nitro ผ่าน Wrangler CLI สำหรับ develop และ deploy
 related:
-  - follow-service-infisical
+  - follow-secret-manager
+  - open-web-for-config-secret
   - deploy-to-cloudflare
   - watch-cloudflare
   - follow-tool-mise
@@ -161,7 +162,7 @@ export default defineNuxtConfig({
 ### 3. Secret Security
 
 - ห้าม commit secrets ไปยัง version control
-- ใช้ `/follow-service-infisical` สำหรับจัดการ `CLOUDFLARE_API_TOKEN` และ secrets ก่อน inject เข้า Wrangler
+- ใช้ `/follow-secret-manager` สำหรับจัดการ `CLOUDFLARE_API_TOKEN` และ secrets ก่อน inject เข้า Wrangler
 - ใช้ `wrangler secret put` แทนการแก้ config files
 - Rotate secrets เป็นระยะ
 - ใช้ environment-specific secrets
