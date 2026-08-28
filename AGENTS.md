@@ -66,7 +66,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `devin-cli-skills: /update-devin-global-skills`
 - `skill-format: /update-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 5 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web, open-files-in-web, analyze-file-structure)`
+- `submodules: 6 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web, open-files-in-web, analyze-file-structure, analyze-dependencies)`
 
 ### 3. Platform
 
@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **716** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **717** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -122,7 +122,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`), `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`), `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
