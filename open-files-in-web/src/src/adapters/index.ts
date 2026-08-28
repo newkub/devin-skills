@@ -1,1 +1,0 @@
-export { createBrowserAdapter } from "./browser";
