@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **725** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **728** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -100,7 +100,7 @@ Core:
 By prefix:
 
 Major skill families by current count:
-- `follow-*` (231): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`
+- `follow-*` (234): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`
 - `review-*` (54): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`
 - `list-*` (43): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-action-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-full`, `run-test-all`
@@ -110,7 +110,7 @@ Major skill families by current count:
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
 - `deep-*` (19): deep analysis, research, debugging, and validation. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`
 - `watch-*` (15): continuous monitoring and watch modes. Examples: `watch-build`, `watch-ci-cd`, `watch-test`, `watch-vercel`
-- `create-*` (14): project, plugin, and bot scaffolding. Examples: `follow-create-cli`, `create-new-project-in-drive-d`, `create-video-story`, `create-social-cover-image`, `create-github-repo`
+- `create-*` (17): project, plugin, and bot scaffolding. Examples: `follow-create-cli`, `create-new-project-in-drive-d`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`
 - `open-*` (14): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`, `open-files-in-web`
 - `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
 - `use-*` (12): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`, `use-my-packages-on-registry`
