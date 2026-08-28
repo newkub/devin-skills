@@ -44,7 +44,7 @@ related:
 > Goal: อัปเดต references หลัง replace
 
 1. ถ้าการแทนที่เปลี่ยนชื่อ identifier, path, หรือ skill name → ทำ `/update-references`
-2. รัน `/check-broken-skills-ref` หรือ `/deep-validate` เพื่อตรวจสอบ
+2. รัน `/check-broken-skills-references` หรือ `/deep-validate` เพื่อตรวจสอบ
 
 ## Rules
 

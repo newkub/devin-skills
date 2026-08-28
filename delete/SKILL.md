@@ -3,7 +3,7 @@ name: delete
 description: ลบไฟล์และโฟลเดอร์อย่างปลอดภัย พร้อม dry-run confirm และ update references
 related:
   - update-references
-  - check-broken-skills-ref
+  - check-broken-skills-references
   - run-check
   - ask-me
   - report-before
@@ -69,7 +69,7 @@ related:
 > Goal: แก้ไข references หลังลบ
 
 1. ทำ `/update-references` เพื่ออัปเดตหรือลบ references ทีชี้มา targets
-2. ทำ `/check-broken-skills-ref` เพื่อตรวจว่าไม่มี broken refs เหลือ
+2. ทำ `/check-broken-skills-references` เพื่อตรวจว่าไม่มี broken refs เหลือ
 3. ถ้ามี broken refs → แก้ไขหรือลบ (max 3 รอบ)
 
 ### 7. Validate
@@ -78,7 +78,7 @@ related:
 
 1. ตรวจสอบว่า targets ถูกลบจริง
 2. ทำ `/run-check` เพื่อ lint, typecheck
-3. ทำ `/check-broken-skills-ref` อีกครั้ง
+3. ทำ `/check-broken-skills-references` อีกครั้ง
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
 
 ### 8. Report
@@ -118,6 +118,6 @@ related:
 
 - Targets ถูกลบตามทีระบุ
 - ไม่มี broken refs ค้าง
-- ผ่าน `/run-check` และ `/check-broken-skills-ref`
+- ผ่าน `/run-check` และ `/check-broken-skills-references`
 - มีรายงานการลบและ references ทีอัปเดต
 - สามารถ rollback ได้ถ้ามี backup

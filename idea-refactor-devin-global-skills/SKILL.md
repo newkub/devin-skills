@@ -27,7 +27,7 @@ related:
 > Goal: เข้าใจสถานะปัจจุบันของ skills repo
 
 1. ทำ `/review-devin-global-skills` สำหรับ quality conventions
-2. ทำ `/check-broken-skills-ref` เพื่อหา broken references
+2. ทำ `/check-broken-skills-references` เพื่อหา broken references
 3. ทำ `/scan-codebase` เพื่อหา duplicated logic หรือ overlapping skills
 4. ทำ `/report-file-structure` เพื่อดูโครงสร้างปัจจุบัน
 

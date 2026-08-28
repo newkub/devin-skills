@@ -2,7 +2,7 @@
 name: check-reference
 description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
 related:
-  - check-broken-skills-ref
+  - check-broken-skills-references
   - check-skills-related
   - update-references
 ---
