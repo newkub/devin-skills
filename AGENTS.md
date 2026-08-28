@@ -122,7 +122,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`), `ask-*` (e.g. `ask-me`, `ask-pick`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`), `ask-*` (e.g. `ask-me`, `pick-better`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
