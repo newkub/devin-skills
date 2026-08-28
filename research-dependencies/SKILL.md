@@ -1,6 +1,6 @@
 ---
 name: research-dependencies
-description: Research dependencies/libraries สำหรับ project โดยเปรียบเทียบ NPM, crates, Go modules, หรือ Python packages
+description: Research dependencies/libraries สำหรับ project โดยเปรียบเทียบ NPM, crates, Go modules, Python
 argument-hint: "[package query]"
 related:
   - deep-research
