@@ -1,6 +1,10 @@
 ---
 name: review-security
 description: Review security ครอบคลุม auth, authorization, OWASP, secrets, injection, supply chain, encryption
+related:
+  - check-secrets-leak
+  - analyze-security-risk
+  - analyze-attack-surface
 ---
 
 ## Goal

@@ -7,8 +7,8 @@ related:
   - release-package-to-registry
   - use-my-packages-on-registry
   - watch-release
-  - update-devin-global-skills
----
+  - check-backward-compatibility
+  - update-devin-global-skills---
 
 ## Goal
 

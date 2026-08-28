@@ -4,8 +4,8 @@ description: อ่าน reference จาก sources ต่างๆ เพื�
 related:
   - check-broken-skills-references
   - check-skills-related
-  - update-references
----
+  - check-secrets-leak
+  - update-references---
 ## Goal
 
 อ่านและตรวจสอบ reference จาก sources ต่างๆ เพื่อยืนยันความถูกต้องของข้อมูล

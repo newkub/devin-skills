@@ -5,8 +5,8 @@ related:
   - update-references
   - check-reference
   - list-devin-global-skills
-  - scan-codebase
----
+  - check-backward-compatibility
+  - scan-codebase---
 
 ## Goal
 

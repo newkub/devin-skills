@@ -1,6 +1,8 @@
 ---
 name: list-website-all-routes
 description: รายการ routes ทั้งหมดใน website project สำหรับหลาย frameworks
+related:
+  - analyze-attack-surface
 ---
 
 ## Goal

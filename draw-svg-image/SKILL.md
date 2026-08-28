@@ -4,8 +4,8 @@ description: สร้าง SVG image จากคำอธิบายหร�
 argument-hint: "[description]"
 related:
   - convert-to-svg
-  - visualize-in-web
----
+  - analyze-data-flow
+  - visualize-in-web---
 ## Goal
 
 สร้างไฟล์ `.svg` จากคำอธิบายหรือ prompt ที user ให้มา

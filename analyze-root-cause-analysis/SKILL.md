@@ -2,6 +2,8 @@
 name: analyze-root-cause-analysis
 description: วิเคราะห์หาสาเหตุหลักของปัญหาด้วยวิธีการเป็นระบบ
 argument-hint: "[target]"
+related:
+  - analyze-error-patterns
 ---
 
 ## Goal

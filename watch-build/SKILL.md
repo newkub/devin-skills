@@ -2,6 +2,8 @@
 name: watch-build
 description: Watch build status และ fix build errors จนกว่าจะผ่าน
 argument-hint: "[file-or-directory]"
+related:
+  - check-bottlenecks
 ---
 
 ## Goal

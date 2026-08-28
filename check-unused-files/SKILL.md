@@ -4,8 +4,8 @@ description: Detect and remove unused files in project using Knip and reference 
 related:
   - check-should-update
   - cleanup-files-in-project
-  - delete-project-from-local-remote
----
+  - check-dead-code
+  - delete-project-from-local-remote---
 ## Goal
 
 ตรวจจับและระบุไฟล์ที่ไม่ได้ใช้ในโปรเจกต์ และลบหรือนำไปใช้

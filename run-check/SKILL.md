@@ -1,6 +1,8 @@
 ---
 name: run-check
 description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
+related:
+  - check-bottlenecks
 ---
 
 ## Goal

@@ -18,8 +18,8 @@ related:
   - resolve-errors
   - run-check
   - report-table
-  - suggest-next-action
----
+  - analyze-error-patterns
+  - suggest-next-action---
 
 ## Goal
 

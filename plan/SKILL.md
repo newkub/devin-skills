@@ -2,6 +2,8 @@
 name: plan
 description: วางแผนงานและ architecture อย่างเป็นระบบก่อนเริ่ม implement
 argument-hint: "[prompt]"
+related:
+  - analyze-cost-impact
 ---
 
 ## Goal

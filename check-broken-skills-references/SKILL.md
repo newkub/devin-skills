@@ -5,8 +5,9 @@ argument-hint: "[path]"
 related:
   - check-reference
   - deep-validate
-  - update-references
----
+  - check-backward-compatibility
+  - analyze-security-risk
+  - update-references---
 ## Goal
 
 ตรวจหา broken skill references ใน `SKILL.md` ของ devin skills repo โดยเปรียบเทียบ references ที่อ้างถึงกับ skills ที่มีอยู่จริง

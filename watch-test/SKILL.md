@@ -2,6 +2,8 @@
 name: watch-test
 description: Watch test status และ fix test failures จนกว่าจะผ่านทั้งหมด
 argument-hint: "[file-or-pattern]"
+related:
+  - analyze-performance-profile
 ---
 
 ## Goal

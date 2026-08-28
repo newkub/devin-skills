@@ -11,8 +11,8 @@ related:
   - deep-validate
   - report
   - report-table
-  - suggest-next-action
----
+  - analyze-user-flow
+  - suggest-next-action---
 
 ## Goal
 
