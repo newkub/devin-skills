@@ -1,6 +1,8 @@
 ---
 name: run-test-e2e
 description: รัน E2E tests ด้วย Playwright หรือ Cypress
+related:
+  - watch-browser-and-test
 ---
 
 ## Goal

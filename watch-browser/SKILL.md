@@ -2,6 +2,8 @@
 name: watch-browser
 description: เปิดเบราว์เซอร์ด้วย agent-browser และ watch หน้าเว็บต่อเนื่อง
 argument-hint: "[url]"
+related:
+  - watch-browser-and-test
 ---
 
 ## Goal
