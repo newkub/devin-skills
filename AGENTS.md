@@ -96,14 +96,15 @@ Core:
 - `deep-validate: /deep-validate`
 
 By prefix:
-- `follow-*`: language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-create-product: /follow-create-product`, `follow-service-stripe: /follow-service-stripe`, `follow-framework-nextjs: /follow-framework-nextjs`
+- `follow-*`: language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager: /follow-my-package-manager`, `follow-create-product: /follow-create-product`, `follow-framework-nextjs: /follow-framework-nextjs`
 - `review-*`: code review, architecture, security, performance, and quality. Examples: `review-quality: /review-quality`, `review-frontend: /review-frontend`, `review-rules: /review-rules`
 - `update-*`: repo, skills, docs, config, and dependency maintenance. Examples: `update-readme-md: /update-readme-md`, `update-dot-devin: /update-dot-devin`
 - `run-*`: test, build, lint, typecheck, format, and deployment runners. Examples: `run-test: /run-test`, `run-build: /run-build`, `run-check: /run-check`
 - `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-github-repo: /create-github-repo`
 - `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
 - `download-*`: download and install tools. Examples: `download-program: /download-program`
-- `list-*`: inventory, lookup, and listing utilities. Examples: `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
+- `uninstall-*`: uninstall tools and apps. Examples: `uninstall-program-in-computer: /uninstall-program-in-computer`
+- `list-*`: inventory, lookup, and listing utilities. Examples: `list-program-in-computer: /list-program-in-computer`, `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
 - `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-table: /report-table`, `report-file-structure: /report-file-structure`
 - `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-validate: /deep-validate`
 - `check-*`: verification, structure, and health checks. Examples: `check-monorepo: /check-monorepo`, `check-unused-files: /check-unused-files`

@@ -10,6 +10,7 @@ related:
   - search-in-github-star
   - search-files-patterns
   - follow-best-practice
+  - follow-my-package-manager
 ---
 
 ## Goal
@@ -33,6 +34,7 @@ related:
 2. ถ้าชื่อกำกวม → ใช้ `/enhance-prompt` หรือ `/ask-me`
 3. ปรับชื่อให้ normalized (lowercase, ไม่มี version ถ้าไม่ระบุ)
 4. ใช้ `/follow-best-practice` เพื่อดูชื่อทางการหรือ alias ของ program
+5. ใช้ `/follow-my-package-manager <program-name> install` เพื่อรับคำแนะนำ package manager ลำดับแรก
 
 ### 2. Check Already Installed
 
