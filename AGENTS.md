@@ -302,6 +302,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `follow-create-website: /follow-create-website`
 - `follow-create-website-rust: /follow-create-website-rust`
 - `follow-create-zed-extensions: /follow-create-zed-extensions`
+- `create-video-story: /create-video-story`
 - `create-github-repo: /create-github-repo`
 - `draw-svg-image: /draw-svg-image`
 - `draw-excalidraw: /draw-excalidraw`
@@ -310,6 +311,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `gen-ai-images: /gen-ai-images`
 - `gen-ai-videos: /gen-ai-videos`
 - `gen-3d-model: /gen-3d-model`
+- `gen-image-character: /gen-image-character`
 - `gen-voice: /gen-voice`
 - `gen-subtitle-video: /gen-subtitle-video`
 - `follow-solid-tanstack: /follow-solid-tanstack`
