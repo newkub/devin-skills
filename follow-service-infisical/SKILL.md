@@ -32,7 +32,7 @@ related:
 - ต้องการ sync secrets ไปยัง Cloudflare, Vercel, Railway, GitHub Actions, AWS, Kubernetes
 - กำลังสร้าง product/platform ที่มีหลาย environment (dev, staging, prod)
 
-ถ้ายังไม่แน่ใจว่าจะเลือก secret manager ใด ให้ทำ `/follow-secret-manager` เพื่อเปรียบเทียบ — ถ้าตัดสินใจใช้ Infisical แทน `Phase.dev`, Doppler, Vault เมื่อต้องการ ecosystem integrations เยอะ, open-source core, OIDC CI/CD, และ community support → ทำ `/follow-service-infisical`
+ถ้ายังไม่แน่ใจว่าจะเลือก secret manager ใด ให้ทำ `/follow-secret-manager` เพื่อเปรียบเทียบ; ถ้าต้องเปิด URLs สร้าง API keys ให้ทำ `/open-web-for-config-secret` — ถ้าตัดสินใจใช้ Infisical แทน `Phase.dev`, Doppler, Vault เมื่อต้องการ ecosystem integrations เยอะ, open-source core, OIDC CI/CD, และ community support → ทำ `/follow-service-infisical`
 
 ## Execute
 
