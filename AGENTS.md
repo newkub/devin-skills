@@ -100,7 +100,8 @@ By prefix:
 - `review-*`: code review, architecture, security, performance, and quality. Examples: `review-quality: /review-quality`, `review-frontend: /review-frontend`, `review-rules: /review-rules`
 - `update-*`: repo, skills, docs, config, and dependency maintenance. Examples: `update-readme-md: /update-readme-md`, `update-dot-devin: /update-dot-devin`
 - `run-*`: test, build, lint, typecheck, format, and deployment runners. Examples: `run-test: /run-test`, `run-build: /run-build`, `run-check: /run-check`
-- `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-github-repo: /create-github-repo`
+- `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-github-repo: /create-github-repo`
+- `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
 - `list-*`: inventory, lookup, and listing utilities. Examples: `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`
 - `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-table: /report-table`, `report-file-structure: /report-file-structure`
 - `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-validate: /deep-validate`
