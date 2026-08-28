@@ -1,8 +1,9 @@
 ---
 name: download-program
-description: ค้นหาและติดตั้ง program บน Windows โดยลองผ่าน mise, scoop, winget ก่อน ถ้าไม่มีให้เปิดหน้า download
+description: ค้นหาและติดตั้ง program บนเครื่องโดยใช้ package manager ทีเหมาะสม ถ้าไม่มีให้เปิดหน้า download
 argument-hint: "[program-name]"
 related:
+  - follow-my-package-manager
   - use-mise
   - use-scoop
   - use-pwsh-shell
@@ -10,17 +11,16 @@ related:
   - search-in-github-star
   - search-files-patterns
   - follow-best-practice
-  - follow-my-package-manager
 ---
 
 ## Goal
 
-ช่วยค้นหาและติดตั้ง program บนเครื่องให้เร็วที่สุด โดยลอง package manager ตามลำดับทีเหมาะสม และ fallback ไปหน้า download ถ้าหาไม่เจอ
+ช่วยค้นหาและติดตั้ง program บนเครื่อง โดยเลือก package manager ทีเหมาะสมผ่าน `/follow-my-package-manager` และ fallback ไปหน้า download ถ้าหาไม่เจอ
 
 ## Scope
 
-- ใช้บน Windows เป็นหลัก (หาก OS อื่นให้ปรับ package manager ตาม context)
-- รองรับ `mise`, `scoop`, `winget` ตามลำดับความเหมาะสม
+- ใช้ได้ทุก OS โดย `/follow-my-package-manager` จะเลือก package manager ตาม OS
+- รองรับ `mise`, `scoop`, `winget` บน Windows และ `mise`, `brew`, `apt`, `pacman`, `yum`, `dnf` บน Unix
 - ถ้าไม่มี package manager ใดที่มี program → เปิดหน้า download หลักให้ user ติดตั้งเอง
 - ไม่รับประกันว่า program ทุกตัวจะติดตั้งได้โดยอัตโนมัติ
 
@@ -34,51 +34,49 @@ related:
 2. ถ้าชื่อกำกวม → ใช้ `/enhance-prompt` หรือ `/ask-me`
 3. ปรับชื่อให้ normalized (lowercase, ไม่มี version ถ้าไม่ระบุ)
 4. ใช้ `/follow-best-practice` เพื่อดูชื่อทางการหรือ alias ของ program
-5. ใช้ `/follow-my-package-manager <program-name> install` เพื่อรับคำแนะนำ package manager ลำดับแรก
 
 ### 2. Check Already Installed
 
 > Goal: ไม่ติดตั้งซ้ำถ้ามีอยู่แล้ว
 
-1. รัน `Get-Command <program>` ใน PowerShell
+1. รัน `Get-Command <program>` ใน PowerShell หรือ `which <program>` บน Unix
 2. ถ้าเจอ → บันทึก path และ version (`<program> --version`)
 3. รายงานว่าติดตั้งแล้ว พร้อม version และ path
 4. ถ้ายังไม่มี → ไปขั้นตอนถัดไป
 
-### 3. Try Mise
+### 3. Select Package Manager
 
-> Goal: ติดตั้งด้วย mise ถ้าเป็นไปได้
+> Goal: รับลำดับ package manager ทีเหมาะสม
 
-1. ตรวจสอบว่า `mise` ติดตั้งแล้วหรือยัง (`Get-Command mise`)
-2. ถ้า `mise` ยังไม่มี → ทำ `/download-program mise` เพื่อติดตั้ง mise ก่อน หรือข้ามไป package manager อื่น
-3. รัน `mise search <program>` หรือ `mise list-all <program>`
-4. ถ้าเจอ → ติดตั้ง global ด้วย `mise use -g <program>`
-5. ตรวจสอบ `Get-Command <program>` หลังติดตั้ง
-6. ถ้าสำเร็จ → รายงาน path และ version
+1. ใช้ `/follow-my-package-manager <program-name> install`
+2. บันทึกลำดับ package manager ทีได้รับ เช่น `[mise, scoop, winget]`
+3. บันทึก command template สำหรับ install ของแต่ละ package manager
+4. ถ้า `follow-my-package-manager` ไม่พบ package manager ใดที่มี program → ข้ามไป fallback
 
-### 4. Try Scoop
+### 4. Install Through Recommended Package Manager
 
-> Goal: ติดตั้งด้วย scoop ถ้า mise ไม่ได้
+> Goal: ติดตั้ง program ตามลำดับทีได้รับ
 
-1. ตรวจสอบว่า `scoop` ติดตั้งแล้วหรือยัง (`Get-Command scoop`)
-2. ถ้า `scoop` ยังไม่มี → ทำ `/download-program scoop` หรือข้ามไป winget
-3. รัน `scoop search <program>`
-4. ถ้าเจอ → ติดตั้งด้วย `scoop install <program>`
-5. ตรวจสอบ `Get-Command <program>` หลังติดตั้ง
-6. ถ้าสำเร็จ → รายงาน path และ version
+1. สำหรับแต่ละ package manager ในลำดับ:
+   - ตรวจสอบว่า package manager ติดตั้งแล้ว (`Get-Command <manager>`)
+   - ถ้ายังไม่มี → ใช้ `/download-program <manager>` ติดตั้ง package manager นั้น หรือข้ามไปตัวถัดไป
+   - ค้นหา program ในบน package manager (ดู command ด้านล่าง)
+   - ถ้าเจอ → ติดตั้งด้วย command ทีถูกต้อง
+   - ตรวจสอบ `Get-Command <program>` หลังติดตั้ง
+   - ถ้าสำเร็จ → รายงาน package manager, path, version
+2. ถ้าทุก package manager ล้มเหลว → ไป fallback
 
-### 5. Try Winget
+#### Install Commands by Manager
 
-> Goal: ติดตั้งด้วย winget ถ้า package manager ก่อนหน้าไม่สำเร็จ
+- `mise`: `mise search <program>` แล้ว `mise use -g <program>`
+- `scoop`: `scoop search <program>` แล้ว `scoop install <program>`
+- `winget`: `winget search <program>` แล้ว `winget install --id <package-id> --accept-package-agreements --accept-source-agreements`
+- `brew`: `brew search <program>` แล้ว `brew install <program>`
+- `apt`: `apt-cache search <program>` แล้ว `sudo apt install <program>`
+- `pacman`: `pacman -Ss <program>` แล้ว `sudo pacman -S <program>`
+- `yum`/`dnf`: `yum search <program>` แล้ว `sudo yum install <program>`
 
-1. ตรวจสอบว่า `winget` ติดตั้งแล้วหรือยัง (`Get-Command winget`)
-2. รัน `winget search <program>`
-3. ถ้าเจอ → เลือก package id ทีถูกต้อง
-4. ติดตั้งด้วย `winget install --id <package-id> --accept-package-agreements --accept-source-agreements`
-5. ตรวจสอบ `Get-Command <program>` หลังติดตั้ง
-6. ถ้าสำเร็จ → รายงาน path และ version
-
-### 6. Fallback to Manual Download
+### 5. Fallback to Manual Download
 
 > Goal: เปิดหน้า download ให้ user ติดตั้งเองถ้า package manager หมดทาง
 
@@ -91,18 +89,17 @@ related:
 
 ## Rules
 
-### 1. Order of Install Methods
+### 1. Delegate Package Manager Selection
 
-- ลอง `mise` ก่อน (เหมาะกับ dev tools และ version management)
-- ลอง `scoop` ถัดมา (เหมาะกับ Windows CLI tools)
-- ลอง `winget` ถัดมา (เหมาะกับ Windows desktop/MSIX apps)
-- เปิดหน้า download ถ้าไม่มี package manager ใดทีมี program
+- ใช้ `/follow-my-package-manager` เพื่อเลือก package manager เสมอ
+- ไม่ hardcode ลำดับ package manager ใน skill
+- ถ้า OS เปลี่ยน ให้ `follow-my-package-manager` จัดการ
 
 ### 2. OS Awareness
 
-- Default เป็น Windows และ PowerShell
-- ถ้า user บน macOS/Linux ให้ปรับไปใช้ `mise`, `brew`, `apt`, `pacman` ตาม context
-- ระบุ OS ทีตรวจพบก่อนเลือก package manager
+- รองรับ Windows, macOS, Linux
+- ใช้ `Get-Command` บน PowerShell, `which` บน Unix
+- ใช้ command ของ package manager ตาม OS ที detect
 
 ### 3. No Untrusted Sources
 
@@ -124,7 +121,7 @@ related:
 
 ## Expected Outcome
 
-- Program ถูกติดตั้งผ่าน `mise`, `scoop` หรือ `winget` ถ้าหาเจอ
+- Program ถูกติดตั้งผ่าน package manager ทีเหมาะสมถ้าหาเจอ
 - ถ้าติดตั้งไม่ได้ จะเปิดหน้า download หลักให้ user ติดตั้งเอง
 - ไม่มีการติดตั้งซ้ำถ้า program มีอยู่แล้ว
 - ได้ report ครบถ้วนว่าใช้วิธีไหน, version เท่าไร, path ไหน หรือเปิด URL อะไร

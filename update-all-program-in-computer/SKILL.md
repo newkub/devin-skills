@@ -1,6 +1,10 @@
 ---
 name: update-all-program-in-computer
 description: อัปเดต programs ทั้งหมดในเครื่องทีติดตั้งผ่าน package managers
+related:
+  - follow-my-package-manager
+  - list-program-in-computer
+  - download-program
 ---
 
 ## Goal
@@ -17,16 +21,17 @@ description: อัปเดต programs ทั้งหมดในเครื
 
 > Goal: รู้ว่ามี package managers ใดบ้าง และอ่าน global configs
 
-1. รัน `mise --version`
-2. ถ้า `mise` มีอยู่ → ตรวจหา global config ที่ `~/.config/mise/config.toml` หรือ `~/.mise.toml`
-3. อ่าน `mise` global config เพื่อดู tools ทีจัดการไว้
-4. รัน `scoop --version`
-5. รัน `choco --version`
-6. รัน `winget --version`
-7. รัน `brew --version`
-8. รัน `cargo --version`
-9. รัน `npm --version`
-10. บันทึก package managers ทีพร้อมใช้
+1. ใช้ `/follow-my-package-manager` เพื่อ detect package manager ที่พร้อมใช้บนเครื่อง
+2. รัน `mise --version`
+3. ถ้า `mise` มีอยู่ → ตรวจหา global config ที่ `~/.config/mise/config.toml` หรือ `~/.mise.toml`
+4. อ่าน `mise` global config เพื่อดู tools ทีจัดการไว้
+5. รัน `scoop --version`
+6. รัน `choco --version`
+7. รัน `winget --version`
+8. รัน `brew --version`
+9. รัน `cargo --version`
+10. รัน `npm --version`
+11. บันทึก package managers ทีพร้อมใช้
 
 ### 2. Update Each Manager
 

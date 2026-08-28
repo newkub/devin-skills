@@ -1,6 +1,10 @@
 ---
 name: report-my-cli-update
 description: รายงานอัปเดต CLI tools ที่ติดตั้งในเครื่องรายสัปดาห์
+related:
+  - follow-my-package-manager
+  - list-program-in-computer
+  - report-my-global-cli
 ---
 
 ## Goal
@@ -21,11 +25,12 @@ description: รายงานอัปเดต CLI tools ที่ติด�
 
 > Goal: ตรวจสอบ CLI tools ที่ติดตั้งในเครื่อง
 
-1. ทำ `/follow-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
-2. รัน `mise list` เพื่อดู tools ที่ติดตั้งด้วย mise
-3. รัน `scoop list` เพื่อดู packages ที่ติดตั้งด้วย scoop
-4. รัน `winget list` เพื่อดู apps ที่ติดตั้งด้วย winget
-5. รวบรวมรายการ tools ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
+1. ทำ `/follow-my-package-manager` เพื่อ detect package manager ที่พร้อมใช้บนเครื่อง
+2. ทำ `/follow-my-global-cli` เพื่อเช็ค tools ที่ติดตั้งทั้งหมด
+3. รัน `mise list` เพื่อดู tools ที่ติดตั้งด้วย mise
+4. รัน `scoop list` เพื่อดู packages ที่ติดตั้งด้วย scoop
+5. รัน `winget list` เพื่อดู apps ที่ติดตั้งด้วย winget
+6. รวบรวมรายการ tools ทั้งหมดพร้อมเวอร์ชันปัจจุบัน
 
 ### 2. Check For Updates
 
