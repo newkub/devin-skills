@@ -78,6 +78,10 @@ async function ensureSampleData() {
 }
 
 export default defineConfig({
+  define: {
+    __BUNDLED_DEV__: 'false',
+    __SERVER_FORWARD_CONSOLE__: 'false',
+  },
   plugins: [
     solid(),
     UnoCSS(),
@@ -85,6 +89,7 @@ export default defineConfig({
       name: 'idea-features-data-and-close',
       async configureServer(server) {
         await ensureSampleData();
+        const serverStart = Date.now();
 
         server.middlewares.use('/api/data', (req, res, next) => {
           if (req.method !== 'GET') return next();
@@ -110,6 +115,11 @@ export default defineConfig({
           }
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify({ ok: true, closing: true }));
+          const uptime = Date.now() - serverStart;
+          if (uptime < 5000) {
+            console.log('[idea-features] close beacon ignored during startup grace period');
+            return;
+          }
           console.log('[idea-features] close beacon received, stopping dev server...');
           setTimeout(() => server.close().catch(() => { }), 100);
         });
