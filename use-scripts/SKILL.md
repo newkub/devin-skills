@@ -6,6 +6,7 @@ related:
   - use-bun-scripts
   - use-bun-shell
   - use-bun-native-api
+  - create-files-in-os-temp
   - use-nu-shell
   - use-pwsh-shell
   - use-ast-grep
@@ -54,10 +55,10 @@ related:
 
 > Goal: เลือก location สำหรับ script
 
-1. `$env:TEMP` — scripts ชั่วคราวใน OS temp directory (throwaway, ไม่สร้างใน project)
+1. ทำ `/create-files-in-os-temp` เพื่อสร้างและจัดการ scripts ชั่วคราวใน OS temp directory (throwaway, ไม่สร้างใน project)
 2. `.devin/scripts/` — scripts ถาวร (committed, เก็บไว้ใช้ซ้ำ)
 3. ไม่สร้าง `temp/` หรือ `.devin/scripts/temp/` ใน project workspace
-4. ใช้ `$env:TEMP` บน Windows, `$TMPDIR` บน Unix, `os.tmpdir()` ใน Bun
+4. ถ้าใช้ Bun native APIs โดยตรง → ใช้ `os.tmpdir()` หรือ `$env:TEMP` เฉพาะกรณีที skill ไม่เหมาะสม
 
 ### 3. Create Script
 
@@ -84,7 +85,7 @@ related:
    - `nu <script>.nu` สำหรับ Nushell scripts
    - `pwsh <script>.ps1` สำหรับ PowerShell scripts
    - `ast-grep scan` สำหรับ AST operations
-4. ลบ scripts จาก `$env:TEMP` หลังใช้งานเสร็จ
+4. ลบ scripts จาก OS temp หลังใช้งานเสร็จ หรือให้ `/create-files-in-os-temp` จัดการ cleanup
 
 ## Rules
 
@@ -97,7 +98,7 @@ related:
 
 ### 2. File Locations
 
-- `$env:TEMP` — throwaway scripts (OS temp directory, ไม่สร้างใน project)
+- ทำ `/create-files-in-os-temp` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - `.devin/scripts/` — permanent scripts (committed)
 - ใช้ `.ts` สำหรับ Bun, `.nu` สำหรับ Nushell, `.ps1` สำหรับ PowerShell
 
