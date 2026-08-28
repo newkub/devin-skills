@@ -100,7 +100,7 @@ By prefix:
 - `review-*`: code review, architecture, security, performance, and quality. Examples: `review-quality: /review-quality`, `review-frontend: /review-frontend`, `review-rules: /review-rules`
 - `update-*`: repo, skills, docs, config, and dependency maintenance. Examples: `update-all-program-in-computer: /update-all-program-in-computer`, `update-readme-md: /update-readme-md`, `update-dot-devin: /update-dot-devin`
 - `run-*`: test, build, lint, typecheck, format, and deployment runners. Examples: `run-test: /run-test`, `run-build: /run-build`, `run-check: /run-check`
-- `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-github-repo: /create-github-repo`
+- `create-*`: project, plugin, and bot scaffolding. Examples: `follow-create-cli: /follow-create-cli`, `create-video-story: /create-video-story`, `create-social-cover-image: /create-social-cover-image`, `create-github-repo: /create-github-repo`
 - `gen-*`: AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character: /gen-image-character`, `gen-ai-images: /gen-ai-images`
 - `download-*`: download and install tools. Examples: `download-program: /download-program`
 - `uninstall-*`: uninstall tools and apps. Examples: `uninstall-program-in-computer: /uninstall-program-in-computer`
