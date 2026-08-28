@@ -14,7 +14,7 @@ related:
 ## Scope
 
 ใช้สำหรับ debug ปัญหาที่เกี่ยวกับ git เช่น หา commit ที่ทำให้เกิด bug, หาว่าใครเปลี่ยนบรรทัดไหน, กู้คืน commit ที่หายไป, หาสาเหตุของ conflict
-ไม่ใช้สำหรับ debug runtime/code logic — ใช้ `/debug-issue` แทน
+ไม่ใช้สำหรับ debug runtime/code logic — ใช้ `/deep-debug` แทน
 
 ## Execute
 
@@ -125,7 +125,7 @@ related:
 3. รัน `git diff HEAD~1` เพื่อดู changes ของ commit ล่าสุด
 4. รัน `git stash list` เพื่อตรวจสอบ stashed changes ที่อาจเกี่ยวข้อง
 5. ถ้ามี stash → รัน `git stash show -p stash@{n}` เพื่อดูเนื้อหา
-6. ถ้ายังไม่พบสาเหตุ → ทำ `/debug-issue` เพื่อ debug แบบ general
+6. ถ้ายังไม่พบสาเหตุ → ทำ `/deep-debug` เพื่อ debug แบบ general
 
 ### 7. Apply Fix
 

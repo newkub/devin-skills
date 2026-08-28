@@ -106,7 +106,7 @@ By prefix:
 - `uninstall-*`: uninstall tools and apps. Examples: `uninstall-program-in-computer: /uninstall-program-in-computer`
 - `list-*`: inventory, lookup, and listing utilities. Examples: `list-computer-info: /list-computer-info`, `list-program-in-computer: /list-program-in-computer`, `list-devin-global-skills: /list-devin-global-skills`, `list-git-branch: /list-git-branch`, `list-project-uncommit-in-drive-d: /list-project-uncommit-in-drive-d`, `list-my-npm-packages: /list-my-npm-packages`, `list-github-action-fail: /list-github-action-fail`, `list-cloudflare-worker-fail: /list-cloudflare-worker-fail`
 - `report-*`: reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update: /report-my-cli-update`, `report-table: /report-table`, `report-file-structure: /report-file-structure`
-- `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-validate: /deep-validate`
+- `deep-*`: deep analysis, research, debugging, and validation. Examples: `deep-analyze: /deep-analyze`, `deep-debug: /deep-debug`, `deep-retro: /deep-retro`, `deep-impact: /deep-impact`, `deep-trace: /deep-trace`, `deep-validate: /deep-validate`
 - `check-*`: verification, structure, and health checks. Examples: `check-size: /check-size`, `check-monorepo: /check-monorepo`, `check-unused-files: /check-unused-files`
 - `use-*`: shell, scripts, and library usage. Examples: `use-scripts: /use-scripts`, `use-ast-grep: /use-ast-grep`
 - `search-*`: search across code, git, files, and the web. Examples: `search-files-patterns: /search-files-patterns`

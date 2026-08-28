@@ -53,7 +53,7 @@ related:
 
 1. สร้าง 3-5 hypotheses ที่เป็นไปได้ — อ้างอิง evidence ไม่ใช่ความรู้สึก
 2. จัดลำดับตาม probability และ ease of testing
-3. ทำ `/debug-issue` เพื่อใช้ Bayesian approach ในการจัดลำดับ
+3. ทำ `/deep-debug` เพื่อใช้ Bayesian approach ในการจัดลำดับ
 4. เลือก top 1-2 hypotheses ที่ test ง่ายและมี probability สูงสุด
 
 ### 5. Test And Eliminate
@@ -122,7 +122,7 @@ related:
 
 ### 4. Tool Selection
 
-- Runtime errors → `/debug-issue` + `/resolve-errors`
+- Runtime errors → `/deep-debug` + `/resolve-errors`
 - Test failures → `/run-test` + `/follow-tool-vitest`
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
@@ -132,7 +132,7 @@ related:
 
 ### 5. Non-Redundancy
 
-- รายละเอียด Bayesian approach อยู่ใน `/debug-issue` แล้ว
+- รายละเอียด Bayesian approach อยู่ใน `/deep-debug` แล้ว
 - รายละเอียด causal analysis อยู่ใน `/analyze-root-cause-analysis` แล้ว
 - รายละเอียด improving debuggability อยู่ใน `/update-review-codebase-cli-and-run` แล้ว
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว

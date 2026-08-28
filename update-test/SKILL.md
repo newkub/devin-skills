@@ -127,7 +127,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 3. เพิ่ม test cases สำหรับ logic ใหมหรือ branches ใหม่
 4. ลบ tests ที่ซ้ำซ้อนหรือไม่จำเป็น
 5. รัน tests เพื่อยืนยันว่าไม่มี regression
-6. ถ้ามี tests ทีไม่ผ่านเพราะ code เปลี่ยน → ทำ `/resolve-errors` หรือ `/debug-issue` ก่อนอัปเดต
+6. ถ้ามี tests ทีไม่ผ่านเพราะ code เปลี่ยน → ทำ `/resolve-errors` หรือ `/deep-debug` ก่อนอัปเดต
 
 ### 9. Sync And Verify
 

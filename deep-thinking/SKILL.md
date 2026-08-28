@@ -160,7 +160,7 @@ argument-hint: "[topic]"
 เชื่อมโยงกับ workflows อื่น:
 
 - ทำ `/pondering` ก่อน deep thinking เพื่อทบทวนก่อนวิเคราะห์
-- ทำ `/debug-issue` สำหรับปัญหาที่ต้องแก้ไข
+- ทำ `/deep-debug` สำหรับปัญหาที่ต้องแก้ไข
 - ทำ `/analyze-root-cause-analysis` สำหรับหาสาเหตุหลัก
 - ทำ `/deep-plan` สำหรับวางแผนงานหลังวิเคราะห์
 - ทำ `/ask-me` ถ้าวิเคราะห์แล้วยังไม่ชัดเจน

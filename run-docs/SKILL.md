@@ -38,7 +38,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 1. ดำเนินการรัน dev server ด้วยคำสั่งที่เหมาะสมตาม documentation framework
 2. ถ้ามี errors ให้รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ
 3. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
-   - ถ้าเป็น cascade issues → `/debug-issue` → `/deep-debug` → `/resolve-errors`
+   - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
    - ถ้าเป็น isolated errors → `/resolve-errors`
 4. ติดตามและแก้ไขข้อผิดพลาดที่เกิดขึ้นทันทีจนกว่าจะผ่าน
 5. ตรวจสอบว่า dev server เริ่มต้นสำเร็จ

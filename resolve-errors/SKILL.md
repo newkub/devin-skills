@@ -11,7 +11,7 @@ description: แก้ไข error อย่างเป็นระบบ ร�
 
 ใช้สำหรับแก้ไข error ที่เกิดจากการรัน commands, linting, type checking, testing, หรือ build ที่สามารถแก้ได้โดยตรง
 
-ไม่ใช่การ debug อย่างเป็นระบบ (ใช้ `/deep-debug`) และไม่ใช่การ debug หาสาเหตุอย่างเดียว (ใช้ `/debug-issue`)
+ไม่ใช่การ debug อย่างเป็นระบบ (ใช้ `/deep-debug`)
 
 ## Execute
 
@@ -48,7 +48,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 4. ถ้า root cause ไม่ชัดเจน:
    - ใช้ `git diff` และ `git log --oneline -5 -- <file>` ตรวจสอบการเปลี่ยนแปลงล่าสุด
    - ใช้ `ast-grep` ค้นหา pattern ที่คล้ายกันใน codebase
-   - ถ้ายังไม่พบ → ทำ `/debug-issue` หรือ `/deep-debug`
+   - ถ้ายังไม่พบ → ทำ `/deep-debug`
 
 ### 4. Apply Minimal Fix
 
@@ -88,8 +88,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. When To Use
 
 - ใช้เมื่อ: error ชัดเจน แก้ได้โดยตรง เกิดจาก lint/typecheck/test/build หรือมีหลายตัวที่ batch fix ได้
-- ไม่ใช้เมื่อ: ซับซ้อนหลายจุด (ใช้ `/deep-debug`) ต้องหาสาเหตุก่อน (ใช้ `/debug-issue`) ต้องจัดลำดับมากมาย (ใช้ `/deep-review`) เป็น race condition (ใช้ `/deep-debug`)
-- `/resolve-errors` = รู้สาเหตุแล้ว แก้น้อยที่สุด ใช้ scripts automate | `/deep-debug` = วางแผนแก้และป้องกันซ้ำ | `/debug-issue` = ยังไม่รู้สาเหตุ
+- ไม่ใช้เมื่อ: ซับซ้อนหลายจุด หรือต้องหาสาเหตุก่อน (ใช้ `/deep-debug`) ต้องจัดลำดับมากมาย (ใช้ `/deep-review`) เป็น race condition (ใช้ `/deep-debug`)
+- `/resolve-errors` = รู้สาเหตุแล้ว แก้น้อยที่สุด ใช้ scripts automate | `/deep-debug` = หา root cause วางแผนแก้และป้องกันซ้ำ
 
 ### 2. Error Classification
 
@@ -131,12 +131,12 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - Error เล็ก: ≤ 2 นาที | กลาง: ≤ 5 นาที | ใหญ่: ≤ 15 นาที | Batch: ≤ 10 นาที
 - ถ้าเกินเวลา → ใช้ `/deep-debug`
 - ถ้า fix แล้วเกิด error ใหม่ซ้ำเกิน 3 รอบ → ทำ `/deep-debug`
-- ถ้า root cause หาไม่ได้หลังพยายาม 3 ครั้ง → ทำ `/debug-issue`
+- ถ้า root cause หาไม่ได้หลังพยายาม 3 ครั้ง → ทำ `/deep-debug`
 
 ### 6. Integration With Other Workflows
 
 - `/deep-review` — errors มาก ต้องจัดลำดับ
-- `/debug-issue` — ยังไม่พบ root cause
+- `/deep-debug` — ยังไม่พบ root cause
 - `/deep-debug` — error ซับซ้อน ต้องวางแผนแก้และป้องกันซ้ำ
 - `/run-verify-fast` — รัน lint + typecheck + scan รวม
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน

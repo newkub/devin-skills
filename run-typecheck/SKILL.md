@@ -33,7 +33,7 @@ description: Run typecheck with config check
 
 1. รัน `/deep-review` เพื่อวิเคราะห์และจัดลำดับ errors ที่เกิดจาก typecheck
 2. `/deep-review` จะตัดสินใจว่าควรไป workflow ไหนต่อ:
-   - ถ้าเป็น cascade issues → `/debug-issue` → `/deep-debug` → `/resolve-errors`
+   - ถ้าเป็น cascade issues → `/deep-debug` → `/resolve-errors`
    - ถ้าเป็น isolated errors → `/resolve-errors`
 
 ## Rules

@@ -19,7 +19,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 
 วิเคราะห์ปัญหาเพื่อหา root cause
 
-1. ทำ `/debug-issue` เพื่อวิเคราะห์ปัญหา
+1. ทำ `/deep-debug` เพื่อวิเคราะห์ปัญหา
 2. หา solution ที่เรียบง่ายที่สุด
 3. ไม่สร้าง abstraction ที่ไม่จำเป็น
 
@@ -58,7 +58,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 
 ต้องเข้าใจ root cause ก่อนแก้
 
-- ทำ `/debug-issue` เพื่อวิเคราะห์ปัญหา
+- ทำ `/deep-debug` เพื่อวิเคราะห์ปัญหา
 - ไม่แก้ symptom โดยไม่รู้สาเหตุ
 - ไม่เดา solution โดยไม่วิเคราะห์
 - ใช้ solution ที่เรียบง่ายที่สุด

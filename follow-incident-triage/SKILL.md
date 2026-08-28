@@ -69,10 +69,10 @@ related:
 
 กำหนด action plan ตาม priority
 
-- P0: ทำ `/debug-issue` ทันที แล้วทำ `/resolve-errors`
-- P1: ทำ `/debug-issue` ภายใน 1 ชั่วโมง
-- P2: ทำ `/debug-issue` ภายใน 4 ชั่วโมง
-- P3: ทำ `/debug-issue` ภายใน 24 ชั่วโมง
+- P0: ทำ `/deep-debug` ทันที แล้วทำ `/resolve-errors`
+- P1: ทำ `/deep-debug` ภายใน 1 ชั่วโมง
+- P2: ทำ `/deep-debug` ภายใน 4 ชั่วโมง
+- P3: ทำ `/deep-debug` ภายใน 24 ชั่วโมง
 
 ### 6. Communicate
 

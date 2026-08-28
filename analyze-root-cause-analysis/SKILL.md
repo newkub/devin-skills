@@ -20,7 +20,7 @@ argument-hint: "[target]"
 
 รวบรวมข้อมูลและ evidence ทั้งหมดที่เกี่ยวข้องกับปัญหา
 
-1. ทำ `/debug-issue` เพื่อเก็บข้อมูลเบื้องต้น
+1. ทำ `/deep-debug` เพื่อเก็บข้อมูลเบื้องต้น
 2. เก็บ logs, metrics, traces ที่เกี่ยวข้อง
 3. เก็บ screenshots, error messages, stack traces
 4. เก็บ timeline ของเหตุการณ์
