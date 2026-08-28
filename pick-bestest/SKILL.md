@@ -1,5 +1,5 @@
 ---
-name: pick-better
+name: pick-bestest
 description: ถาม user เลือกอันดีทีสุดจาก list ตัวเลือก เลือกได้แค่อันเดียว
 argument-hint: "[question] [options...]"
 related:
