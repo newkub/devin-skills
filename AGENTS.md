@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **707** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **708** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -113,7 +113,7 @@ Major skill families by current count:
 - `create-*` (13): project, plugin, and bot scaffolding. Examples: `follow-create-cli`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-mcp`
 - `open-*` (13): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`
 - `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
-- `use-*` (11): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`
+- `use-*` (12): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`, `use-my-packages-on-registry`
 - `git-*` (8): git, GitHub, branches, and releases. Examples: `git-commit`, `git-push`, `git-commit-at-devin-skills-global`, `git-file-history`
 - `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
 - `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
@@ -122,7 +122,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `publish-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explore-*`, `fix`, `from-*`, `grouping`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
