@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **708** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **709** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -108,7 +108,7 @@ Major skill families by current count:
 - `report-*` (31): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`
 - `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
 - `check-*` (15): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-ref`
-- `deep-*` (15): deep analysis, research, debugging, and validation. Examples: `deep-analyze`, `deep-debug`, `deep-retro`, `deep-impact`, `deep-validate`
+- `deep-*` (16): deep analysis, research, debugging, and validation. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`
 - `watch-*` (15): continuous monitoring and watch modes. Examples: `watch-build`, `watch-ci-cd`, `watch-test`, `watch-vercel`
 - `create-*` (13): project, plugin, and bot scaffolding. Examples: `follow-create-cli`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-mcp`
 - `open-*` (13): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`
