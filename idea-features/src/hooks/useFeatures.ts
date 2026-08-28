@@ -7,7 +7,7 @@ export const useFeatures = () => {
   const [features, setFeatures] = createSignal<Feature[]>([]);
   const [loading, setLoading] = createSignal(true);
   const [error, setError] = createSignal<string | null>(null);
-  const [dark, setDark] = createSignal(false);
+  const [dark] = createSignal(true);
 
   const loadData = async () => {
     setLoading(true);
@@ -26,9 +26,6 @@ export const useFeatures = () => {
 
   onMount(() => {
     loadData();
-    const saved = localStorage.getItem('idea-features-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDark(saved === 'dark' || (!saved && prefersDark));
 
     const timer = setInterval(() => {
       fetch('/api/data')
@@ -41,9 +38,8 @@ export const useFeatures = () => {
   });
 
   createEffect(() => {
-    document.documentElement.classList.toggle('dark', dark());
-    localStorage.setItem('idea-features-theme', dark() ? 'dark' : 'light');
+    document.documentElement.classList.add('dark');
   });
 
-  return { features, loading, error, dark, setDark, loadData };
+  return { features, loading, error, loadData };
 };

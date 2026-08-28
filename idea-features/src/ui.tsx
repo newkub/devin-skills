@@ -24,12 +24,6 @@ export const impactColor = (impact: string) => {
   return 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-900/50'
 }
 
-export const impactAccentColor = (impact: string) => {
-  if (impact === 'สูง') return 'border-rose-400 dark:border-rose-500'
-  if (impact === 'กลาง') return 'border-amber-400 dark:border-amber-500'
-  return 'border-emerald-400 dark:border-emerald-500'
-}
-
 export const impactIcon = (impact: string) => {
   if (impact === 'สูง') return '🔥'
   if (impact === 'กลาง') return '⚡'

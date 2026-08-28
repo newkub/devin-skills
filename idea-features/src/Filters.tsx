@@ -5,17 +5,23 @@ type App = ReturnType<typeof useFeatureApp>
 
 const filterLabels: Record<string, string> = { type: 'Type', impact: 'Impact', phase: 'Phase', effort: 'Effort', risk: 'Risk' }
 
-const sortLabel: Record<string, string> = { impact: 'ความสำคัญ', mvpScore: 'MVP Score', number: 'ลำดับ', feature: 'ชื่อ' }
+const sortOptions: { key: 'impact' | 'mvpScore' | 'number' | 'feature'; label: string }[] = [
+  { key: 'impact', label: 'Impact' },
+  { key: 'mvpScore', label: 'MVP' },
+  { key: 'number', label: '#' },
+  { key: 'feature', label: 'Name' },
+]
 
 interface FiltersProps {
   app: App
-  onCreate: () => void
 }
 
 export default function Filters(props: FiltersProps) {
-  const activeFilterCount = createMemo(() =>
+  const activeCount = createMemo(() =>
     Object.values(props.app.activeFilters()).reduce((sum, set) => sum + set.size, 0)
   )
+
+  const isActive = (key: string, value: string) => props.app.activeFilters()[key]?.has(value)
 
   const setSort = (key: string) => {
     if (props.app.sortBy() === key) {
@@ -27,74 +33,59 @@ export default function Filters(props: FiltersProps) {
   }
 
   return (
-    <div class="mb-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-        <div class="relative w-full lg:max-w-md">
-          <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
+    <div class="mb-4 space-y-3">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="relative w-full sm:max-w-sm">
           <input
             type="text"
             value={props.app.search()}
             onInput={e => props.app.setSearch(e.currentTarget.value)}
-            placeholder="ค้นหา features, tags, หรือรายละเอียด..."
-            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-900 dark:text-white dark:focus:bg-slate-900"
+            placeholder="Search features, tags, or details..."
+            class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </div>
 
-        <div class="flex flex-wrap items-center gap-2 text-sm">
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-            แสดง <span class="font-semibold text-slate-900 dark:text-white">{props.app.visibleFeatures().length}</span> รายการ
-          </span>
-
+        <div class="flex items-center gap-2">
           <select
             value={props.app.sortBy()}
             onInput={e => setSort(e.currentTarget.value)}
-            class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            class="rounded-lg border border-slate-200 bg-white px-2 py-2 text-xs text-slate-700 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
           >
-            <For each={Object.entries(sortLabel)}>
-              {([key, label]) => <option value={key}>↕ {label}</option>}
+            <For each={sortOptions}>
+              {opt => <option value={opt.key}>Sort: {opt.label}</option>}
             </For>
           </select>
-
-          <button
-            onClick={props.onCreate}
-            class="rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:from-emerald-700 hover:to-teal-700"
-          >
-            ➕ สร้าง
-          </button>
-
-          <Show when={activeFilterCount() > 0 || props.app.search()}>
+          <span class="rounded-md border border-slate-200 bg-slate-50 px-2 py-1.5 text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+            {props.app.visibleFeatures().length}
+          </span>
+          <Show when={activeCount() > 0 || props.app.search()}>
             <button
               onClick={props.app.clearFilters}
-              class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20"
+              class="text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
             >
-              ล้าง filter ({activeFilterCount() + (props.app.search() ? 1 : 0)})
+              Clear
             </button>
           </Show>
         </div>
       </div>
 
-      <div class="mt-4 flex flex-wrap gap-4 text-xs">
+      <div class="flex flex-wrap items-center gap-3 text-xs">
         <For each={Object.entries(props.app.filterCategories())}>
           {([key, values]) => (
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{filterLabels[key]}</span>
-              <div class="flex flex-wrap gap-1.5">
-                {Array.from(values).map(value => {
-                  const active = props.app.activeFilters()[key]?.has(value)
-                  return (
-                    <button
-                      onClick={() => props.app.toggleFilter(key, value)}
-                      class={`rounded-lg px-2.5 py-1 text-xs font-medium transition ${
-                        active
-                          ? 'bg-blue-600 text-white shadow-sm'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:text-white'
-                      }`}
-                    >
-                      {value}
-                    </button>
-                  )
-                })}
-              </div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-[10px] font-medium uppercase text-slate-400">{filterLabels[key]}</span>
+              {Array.from(values).map(value => (
+                <button
+                  onClick={() => props.app.toggleFilter(key, value)}
+                  class={`rounded-full px-2.5 py-1 text-[10px] font-medium transition ${
+                    isActive(key, value)
+                      ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+                      : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-slate-600'
+                  }`}
+                >
+                  {value}
+                </button>
+              ))}
             </div>
           )}
         </For>
