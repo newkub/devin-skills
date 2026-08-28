@@ -110,6 +110,7 @@ By prefix:
 - `check-*`: verification, structure, and health checks. Examples: `check-size: /check-size`, `check-monorepo: /check-monorepo`, `check-unused-files: /check-unused-files`
 - `use-*`: shell, scripts, and library usage. Examples: `use-scripts: /use-scripts`, `use-ast-grep: /use-ast-grep`
 - `search-*`: search across code, git, files, and the web. Examples: `search-files-patterns: /search-files-patterns`
+- `explore-*`: discover trending, topics, and resources. Examples: `explore-github-trending: /explore-github-trending`
 - `watch-*`: continuous monitoring and watch modes. Examples: `watch-build: /watch-build`
 - `open-*`: browser, editor, and terminal integration. Examples: `open-in-wezterm: /open-in-wezterm`
 - `visualize-*`: diagrams and web visualizations. Examples: `visualize-in-web: /visualize-in-web`
