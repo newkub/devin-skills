@@ -59,7 +59,7 @@ related:
 > Goal: แนะนำ action ถัดไป
 
 1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-project-git-in-computer`
-2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-latest-star`
+2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-star-latest`
 3. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules
