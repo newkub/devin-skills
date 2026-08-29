@@ -4,7 +4,6 @@ description: Continue ship flow จาก state ปัจจุบัน หร�
 argument-hint: "[mode]"
 related:
   - ship
-  - ship-to-cloud
   - ship-github-issue
   - ship-release
   - loop-continuous
@@ -60,7 +59,7 @@ related:
 | State | Next Action |
 |---|---|
 | `UNCOMMITTED` > 0 (ทุก branch) | `/ship` |
-| `CURRENT_BRANCH` = `dev/<n>` และ `AHEAD` ไม่ว่าง | `/ship-to-cloud` |
+| `CURRENT_BRANCH` = `dev/<n>` และ `AHEAD` ไม่ว่าง | `/ship --cloud` |
 | `CURRENT_BRANCH` = `dev/<n>` และ `AHEAD` ว่าง (pushed) | `/ship-release` |
 | `CURRENT_BRANCH` = `dev` | `/ship-release` |
 | `CURRENT_BRANCH` = `main` และ clean | `/ship-release` |

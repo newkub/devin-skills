@@ -6,7 +6,6 @@ related:
   - follow-github
   - update-agents-md
   - ship
-  - ship-to-cloud
   - ship-github-issue
   - ship-release
   - report-table
@@ -56,7 +55,7 @@ related:
    #!/bin/sh
    branch=$(git rev-parse --abbrev-ref HEAD)
    if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-     echo "Do not commit directly on main. Use /ship-github-issue or /ship-to-cloud."
+     echo "Do not commit directly on main. Use /ship-github-issue or /ship --cloud."
      exit 1
    fi
    exit 0
@@ -104,7 +103,7 @@ related:
    - Worktree: `worktrees/dev-<n>/`
    - Local hooks: block `main` commits/pushes
    - GitHub protection: PR + status checks on `main`, status checks on `dev`
-   - Skill mapping: `/ship`, `/ship-to-cloud`, `/ship-github-issue`, `/ship-release`
+   - Skill mapping: `/ship`, `/ship-github-issue`, `/ship-release`, `/ship-continuous`
 3. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
 
 ### 7. Report

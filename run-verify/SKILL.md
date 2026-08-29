@@ -11,7 +11,7 @@ related:
   - check-monorepo
   - setup-ci-cd
   - follow-tasks
-  - ship-to-cloud
+  - ship
   - watch-ci-cd
   - watch-github-actions
   - git-push

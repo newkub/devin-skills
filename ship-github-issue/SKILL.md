@@ -4,7 +4,6 @@ description: ทำงานตาม GitHub issue สร้าง branch worktr
 argument-hint: "[issue-number-or-title]"
 related:
   - ship
-  - ship-to-cloud
   - ship-release
   - create-dev-branch
   - follow-git-flow
@@ -29,7 +28,7 @@ related:
 
 ถ้าต้องการ release/deploy → ใช้ `/ship-release`
 ถ้าต้องการแค่ commit ใน local → ใช้ `/ship`
-ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship-to-cloud`
+ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship --cloud`
 
 ## Execute
 
@@ -78,23 +77,15 @@ related:
 3. รัน `/run-verify` ระหว่างทำงานตามความเหมาะสม
 4. ถ้ามีปัญหาใหญ่ → stop และ report
 
-### 6. Ship Local
+### 6. Ship
 
-> Goal: commit การเปลี่ยนแปลงใน local
+> Goal: commit, push, และ cloud verify
 
-1. ทำ `/ship` ใน worktree
-2. ถ้า `/ship` ไม่ผ่าน → แก้ไขและทำซ้ำจนผ่าน
-3. ถ้าไม่มี changes ให้ commit → report และไปขั้นตอนถัดไป
+1. ทำ `/ship --cloud` ใน worktree
+2. ถ้า `/ship --cloud` ไม่ผ่าน → แก้ไขและทำซ้ำจนผ่าน
+3. ถ้าไม่มี changes ให้ commit → report และไปขั้นตอน Report
 
-### 7. Ship To Cloud
-
-> Goal: push branch ไปยัง remote และ verify
-
-1. ทำ `/ship-to-cloud`
-2. ถ้า cloud verify fail → แก้ไขและทำ `/ship-to-cloud` ซ้ำจนผ่าน
-3. ถ้า cloud verify pass → ไปขั้นตอน Report
-
-### 8. Report
+### 7. Report
 
 > Goal: สรุปผลการทำงาน
 
@@ -118,7 +109,7 @@ related:
 
 ### 3. No Release/Deploy
 
-- `/ship-github-issue` จบที `/ship-to-cloud` เท่านั้น
+- `/ship-github-issue` จบที `/ship --cloud` เท่านั้น
 - ไม่เรียก `/ship-release` โดยอัตโนมัติ
 - ถ้าต้องการ release ให้ user เรียก `/ship-release` เพิ่ม
 

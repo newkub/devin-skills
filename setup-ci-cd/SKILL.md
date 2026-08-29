@@ -9,7 +9,7 @@ related:
   - review-delivery
   - review-config
   - run-verify
-  - ship-to-cloud
+  - ship
   - report-table
   - suggest-next-action
 ---
@@ -22,7 +22,7 @@ related:
 
 ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, release, หรือ deploy
 
-ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-to-cloud` แทน
+ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship --cloud` แทน
 
 ## Execute
 
@@ -149,7 +149,7 @@ jobs:
 
 - `setup-ci-cd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
 - ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
-- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-to-cloud`
+- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship --cloud`
 
 ### 2. Platform First
 

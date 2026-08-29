@@ -123,7 +123,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-attack-surface`, `analyze-root-cause-analysis`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-to-cloud`, `ship-github-issue`, `ship-release`, `ship-continuous`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `report-what-you-do` (e.g. `suggest-me`, `suggest-next-action`), `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-attack-surface`, `analyze-root-cause-analysis`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-github-issue`, `ship-release`, `ship-continuous`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `report-what-you-do` (e.g. `suggest-me`, `suggest-next-action`), `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
@@ -144,7 +144,7 @@ Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` 
 - Flow: `dev/<number>` → `dev` → `main`
 - Local hooks: block direct commit/push on `main`
 - GitHub: branch protection on `main` (PR + status checks) and `dev` (status checks)
-- Skills: `/ship`, `/ship-to-cloud`, `/ship-github-issue`, `/ship-release`, `/ship-continuous`
+- Skills: `/ship`, `/ship-github-issue`, `/ship-release`, `/ship-continuous`
 
 ## Expected Outcome
 

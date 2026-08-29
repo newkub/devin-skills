@@ -4,7 +4,6 @@ description: Release branch ไปสู่ production โดย merge เข้
 argument-hint: "[issue-number]"
 related:
   - ship
-  - ship-to-cloud
   - ship-github-issue
   - create-dev-branch
   - follow-git-flow
@@ -26,7 +25,7 @@ related:
 รองรับการเริ่มจาก `dev/<number>`, `dev` หรือ `main`
 
 ถ้าต้องการแค่ commit ใน local → ใช้ `/ship`
-ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship-to-cloud`
+ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship --cloud`
 ถ้าต้องการทำงานตาม issue ทั่งหมด → ใช้ `/ship-github-issue`
 
 ## Execute
@@ -46,7 +45,7 @@ related:
 
 > Goal: ensure branch ปัจจุบันถูก push และผ่าน cloud verify
 
-1. ทำ `/ship-to-cloud`
+1. ทำ `/ship --cloud`
 2. ถ้า fail → stop และ report
 3. ถ้า `CURRENT_BRANCH` คือ `dev` หรือ `main` → ข้าม merge step และไป step สร้าง PR หรือ release
 4. `cd $REPO_ROOT` เพื่อทำ PR, release และ cleanup จาก main working tree
