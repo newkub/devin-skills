@@ -10,7 +10,7 @@ related:
   - refactor-to-single-responsibility
   - restructure
   - deep-validate
-  - run-verify-on-local
+  - run-verify
   - run-test-all
   - update-references
   - report-before-after
@@ -89,7 +89,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 > Goal: ตรวจสอบว่า refactor สำเร็จและไม่มี regression
 
-1. ทำ `/run-verify-on-local` สำหรับ lint, typecheck, unit test, build
+1. ทำ `/run-verify` สำหรับ lint, typecheck, unit test, build
 2. ทำ `/run-test-all` ถ้ามี test suites ทั้งหมด
 3. ทำ `/deep-validate` เพื่อตรวจ references, structure, public API
 4. ทำ `/check-code-structure` เปรียบเทียบกับ baseline
@@ -132,7 +132,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 ### 5. Verification
 
-- ต้องผ่าน `/run-verify-on-local` และ `/deep-validate` ก่อนถือว่าเสร็จ
+- ต้องผ่าน `/run-verify` และ `/deep-validate` ก่อนถือว่าเสร็จ
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 

@@ -47,7 +47,7 @@ argument-hint: "[plan-file]"
 > Goal: ยืนยันว่างานครบแล้วลบแผน
 
 1. ตรวจสอบว่า tasks ทั้งหมด `status: completed`
-2. รัน `/deep-validate` และ `/run-verify-on-local` ถ้ามี
+2. รัน `/deep-validate` และ `/run-verify` ถ้ามี
 3. ลบไฟล์ `.devin/plan/<title>-<date>.md`
 4. รายงานสรุปผล
 

@@ -4,7 +4,7 @@ description: Auto-detect registry แล้ว publish package ไปยัง n
 related:
   - follow-secret-manager
   - run-release
-  - run-verify-on-local
+  - run-verify
   - gen-changelog-md
   - follow-runtime-bun
   - follow-create-cli
@@ -46,7 +46,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 
 > Goal: ตรวจสอบคุณภาพก่อน publish
 
-1. ทำ `/run-verify-on-local`
+1. ทำ `/run-verify`
 2. ตรวจสอบ version ถูกต้องตาม semver
 3. ทำ `/gen-changelog-md` หรือตรวจสอบ `CHANGELOG.md`
 4. ตรวจสอบ authentication:
@@ -99,7 +99,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 
 ### 2. Verify Before Publish
 
-- ทำ `/run-verify-on-local` เสมอก่อน publish
+- ทำ `/run-verify` เสมอก่อน publish
 - version ต้อง bump ก่อน publish
 - changelog ต้อง gen ด้วย `/gen-changelog-md`
 

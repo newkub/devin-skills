@@ -8,7 +8,7 @@
 | Category | Workflows |
 |----------|-----------|
 | Project Analysis | `/analyze-project`, `/deep-analyze`, `/review-codebase-everythink` |
-| Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify-on-local` |
+| Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
 | Deployment | `/follow-deploy`, `/deploy-to-cloudflare`, `/follow-service-vercel` |
 | Maintenance | `/update-version-latest`, `/update-runtime-latest`, `/update-dependencies-latest`, `/run-cleanup`, `/refactor` |

@@ -7,7 +7,7 @@ related:
   - run-build
   - run-lint
   - run-test
-  - run-verify-on-local
+  - run-verify
 ---
 
 ## Goal
@@ -105,6 +105,11 @@ related:
 - ใช้ moonrepo implicit project detection
 - ไม่ซ้อน project boundaries ซ้ำซ้อน
 - JS/Bun project = package, Rust project = crate (Cargo package)
+
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
 
 ## Expected Outcome
 

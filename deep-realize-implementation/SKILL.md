@@ -20,7 +20,7 @@ related:
   - refactor
   - restructure
   - update-references
-  - run-verify-on-local
+  - run-verify
   - rethink
 ---
 
@@ -115,7 +115,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: ตรวจสอบว่า everything ทำงานได้จริง
 
 1. ทำ `/deep-validate` สำหรับ cross-reference, type, security, compliance
-2. ทำ `/run-verify-on-local` เพื่อ lint, typecheck, test, build
+2. ทำ `/run-verify` เพื่อ lint, typecheck, test, build
 3. ทำ `/run-test-coverage` เพื่อ verify 100% coverage
 4. ทำ `/run-test-e2e` เพื่อ verify end-to-end
 5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
@@ -169,6 +169,6 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - ไม่มี TODO/MOCK/FAKE/STUB/placeholder ใน production code
 - schema, validation, types, API, UX/UI เชื่อมต่อกัน
-- ผ่าน `/deep-validate` และ `/run-verify-on-local`
+- ผ่าน `/deep-validate` และ `/run-verify`
 - ผ่าน test coverage และ e2e
 - รายงาน before/after, risks, next actions

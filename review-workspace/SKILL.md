@@ -9,7 +9,7 @@ related:
   - check-unused-deps
   - run-audit
   - review-codebase-everythink
-  - run-verify-on-local
+  - run-verify
   - deep-validate
   - report-table
   - suggest-next-action

@@ -32,7 +32,7 @@
 ### 5. Validate
 > Goal: ตรวจสอบ pipeline ก่อน commit
 1. ทำ `/deep-validate` เพื่อตรวจ syntax และ config
-2. ทำ `/run-verify-on-local` ถ้า local สามารถรันได้
+2. ทำ `/run-verify` ถ้า local สามารถรันได้
 3. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้วกลับไป Step 3
 ### 6. Commit
 > Goal: commit CI/CD setup

@@ -111,7 +111,7 @@ related:
 > Goal: Verify จนกว่าจะผ่านทุกเงื่อนไขและป้องกันการเกิดซ้ำ
 
 1. ทำ `/loop-until-complete` เพื่อรัน test suite ทั้งหมดจนกว่าจะผ่าน
-2. ทำ `/run-verify-on-local` เพื่อตรวจสอบ lint และ typecheck ผ่าน
+2. ทำ `/run-verify` เพื่อตรวจสอบ lint และ typecheck ผ่าน
 3. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
 4. แนะนำ preventive measures: linter rules, type constraints, code review checklist
 5. บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project

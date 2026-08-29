@@ -8,7 +8,7 @@ related:
   - scan-codebase
   - deep-analyze
   - run-review
-  - run-verify-on-local
+  - run-verify
   - run-test
   - run-test-coverage
   - use-ast-grep

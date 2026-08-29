@@ -5,7 +5,7 @@ related:
   - ship
   - follow-git-flow
   - follow-github
-  - run-verify-on-ci-cd
+  - run-verify
   - setup-ci-cd
   - resolve-errors
   - report-table
@@ -60,7 +60,7 @@ Push branch ปัจจุบันไปยัง remote แล้วรัน
 
 > Goal: รัน verify บน CI/CD
 
-1. ทำ `/run-verify-on-ci-cd`
+1. ทำ `/run-verify --ci`
 2. ถ้าผ่าน → ไปขั้นตอน Report
 3. ถ้า fail → วิเคราะห์ logs แล้วไปขั้นตอนถัดไป
 
@@ -71,7 +71,7 @@ Push branch ปัจจุบันไปยัง remote แล้วรัน
 1. ทำ `/resolve-errors` ตาม root cause จาก cloud logs
 2. ถ้ามี changes หลังแก้ไข → ทำ `/ship` แล้ว `git push`
 3. ถ้าไม่มี changes → ทำ `git push` เพื่อ re-trigger pipeline
-4. ทำ `/run-verify-on-ci-cd` อีกครั้ง
+4. ทำ `/run-verify --ci` อีกครั้ง
 5. วนซ้ำสูงสุด 5 รอบ ถ้ายังไม่ผ่าน → stop และ report
 6. ถ้าผ่าน → ไปขั้นตอน Report
 

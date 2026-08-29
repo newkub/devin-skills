@@ -60,7 +60,7 @@ argument-hint: "[file]"
 
 1. ทำ `/check-reference` เพื่อตรวจสอบไม่มี broken references
 2. สแกน secrets: ตรวจสอบว่าการแก้ไขไม่ได้แนบ secrets, API keys, หรือ credentials เข้าไป — ถ้า config มี sensitive values ให้ใช้ environment variables แทน
-3. ทำ `/run-verify-on-local` เพื่อตรวจสอบ lint, typecheck, และ scan
+3. ทำ `/run-verify` เพื่อตรวจสอบ lint, typecheck, และ scan
 4. ทำ config-specific validation ตามตารางใน Rules section `Config-Specific Validation`
 5. ถ้ามี errors ให้ทำ `/resolve-errors` ก่อน — ถ้าแก้ไม่ได้ภายใน 3 ครั้ง → rollback และ report
 6. ถ้าเป็น `.github/workflows/*.yml` → ตรวจสอบว่า workflow syntax ถูกต้องและ secrets อ้างอิงถูกทุกตัว

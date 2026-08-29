@@ -44,7 +44,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 > Goal: ตรวจสอบ code changes ของ PR
 
-1. ทำ /run-verify-on-local เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
+1. ทำ /run-verify เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
 2. ทำ /review-codebase-everythink บน files ที่เปลี่ยนแปลง
 3. ทำ /review-codebase-everythink สำหรับ security-sensitive changes
 4. ทำ /review-codebase-everythink สำหรับ test coverage และ test quality

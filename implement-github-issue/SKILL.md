@@ -5,7 +5,7 @@ related:
   - create-plan-in-dot-devin
   - realize-implementation
   - implement-mock
-  - run-verify-on-local
+  - run-verify
   - git-commit
   - git-push
   - merge-github-pr
@@ -61,7 +61,7 @@ related:
 
 > Goal: ยืนยันว่า code ถูกต้อง
 
-1. รัน `/run-verify-on-local`
+1. รัน `/run-verify`
 2. รัน `/run-test` สำหรับ tests
 3. รัน `git diff --check`
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)

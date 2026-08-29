@@ -29,7 +29,7 @@
 
 ### Pre-Release Checks
 
-1. ตรวช `run-verify-on-local` ผ่านก่อน release
+1. ตรวช `/run-verify` ผ่านก่อน release
 2. ตรวช `run-build` สำเร็จก่อน release
 3. ตรวช `run-test` ผ่านก่อน release
 4. ตรวช dry run ผ่าน: `semantic-release --dry-run`, `vsce package`

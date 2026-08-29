@@ -5,7 +5,7 @@ related:
   - follow-tool-hk
   - follow-tool-linter
   - follow-tool-formatter
-  - run-verify-on-local
+  - run-verify
   - follow-gitignore
 ---
 
@@ -70,7 +70,7 @@ related:
 1. รัน `git commit --allow-empty -m "test"` ในทดลอง หรือ use manager test command
 2. ทดสอบด้วยไฟล์ทีตั้งใจ fail (ลืม format, type error)
 3. ตรวจสอบว่า hooks ไม่ทำให้ commit ล่มโดยไม่จำเป็น
-4. รัน `/run-verify-on-local` เพื่อ verify lint/typecheck/scan
+4. รัน `/run-verify` เพื่อ verify lint/typecheck/scan
 5. ทำ `/run-test` เพื่อตรวจ tests หลัง config
 
 ## Rules

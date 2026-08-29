@@ -71,7 +71,7 @@ description: ตั้งค่าและใช้งาน hk สำหรั
 3. รัน `hk run pre-merge-commit`
 4. รัน `hk check --all` สำหรับ CI
 5. รัน `hk fix` เพื่อแก้ไขไฟล์
-6. ทำ `/run-verify-on-local` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
+6. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/scan หลังตั้งค่า
 
 ### 7. Migrate from Lefthook
 

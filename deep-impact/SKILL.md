@@ -81,7 +81,7 @@ related:
 1. เลือก strategy: in-place, backward-compatible, feature flag, staged rollout, blue-green
 2. ระบุ breaking changes และทางเลือกทีช่วยลดผลกระทบ
 3. วางแผนการ update references: `/update-references` หรือ `/rename-to`
-4. วางแผนการ test: รัน `/run-test` หรือ `/run-verify-on-local`
+4. วางแผนการ test: รัน `/run-test` หรือ `/run-verify`
 5. ระบุระยะเวลาและ checkpoints
 
 ### 7. Execute Change Safely

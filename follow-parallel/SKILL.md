@@ -103,7 +103,7 @@ related:
 
 - รวม independent tool calls เป็น parallel เสมอเมื่อเป็นไปได้ — ลด context accumulation
 - ระบุ parallelizable tasks ใน `/deep-plan` และ `/report-plan`
-- ใช้ parallel execution ใน `/run-verify-on-local` สำหรับ lint, typecheck, scan
+- ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
 - ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
 
 ## Expected Outcome

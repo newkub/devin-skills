@@ -39,7 +39,7 @@ argument-hint: "[task-id]"
 
 > Goal: ตรวจสอบ
 
-1. รัน /run-verify-on-local และ /run-test
+1. รัน /run-verify และ /run-test
 1. อัปเดต project status หรือปิด issue
 
 ### 5. Report

@@ -5,7 +5,7 @@ related:
   - enhance-prompt
   - report-plan
   - continue
-  - run-verify-on-local
+  - run-verify
   - ship
 ---
 
@@ -44,7 +44,7 @@ Execute the full pipeline สำหรับ task ที user มอบหมา
 
 > Goal: ตรวจสอบความถูกต้อง
 
-1. ทำ `/run-verify-on-local` หรือ `/run-check` สำหรับ lint, typecheck, scan
+1. ทำ `/run-verify` หรือ `/run-check` สำหรับ lint, typecheck, scan
 2. ทำ `/run-test-all` ถ้ามี tests
 3. ถ้ามีการแก้ skill หรือ rules → ทำ `/deep-validate`
 4. ถ้าไม่ผ่าน → กลับไป Step 2 แก้ไข (สูงสุด 3 รอบ)

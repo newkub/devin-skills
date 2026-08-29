@@ -65,7 +65,7 @@ argument-hint: "[file]"
 > Goal: ตรวจสอบผลลัพธ์ใหม่ทั้งหมด
 
 1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/run-verify-on-local` เพื่อรัน lint, typecheck, scan
+2. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan
 
 ## Rules
 

@@ -89,7 +89,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 1. อ่าน [references/sg-outline.md](references/sg-outline.md) เพื่อยืนยันการใช้งาน `sg outline` สำหรับ verify
 2. รัน `sg outline --items structure <paths>` อีกครั้งเพื่อยืนยันว่า issues ถูกแก้ไข
 3. รัน `sg outline --items exports <paths>` ตรวจสอบว่า public API ไม่เปลี่ยนโดยไม่ตั้งใจ
-4. ทำ `/run-verify-on-local` lint และ typecheck
+4. ทำ `/run-verify` lint และ typecheck
 5. ถ้า fail ให้ทำ `/resolve-errors`
 6. ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 

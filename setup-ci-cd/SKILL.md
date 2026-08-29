@@ -8,7 +8,7 @@ related:
   - follow-tasks
   - review-delivery
   - review-config
-  - run-verify-on-ci-cd
+  - run-verify
   - ship-to-cloud
   - report-table
   - suggest-next-action
@@ -22,7 +22,7 @@ related:
 
 ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, release, หรือ deploy
 
-ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify-on-ci-cd` หรือ `/ship-to-cloud` แทน
+ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-to-cloud` แทน
 
 ## Execute
 
@@ -43,12 +43,15 @@ related:
 
 ### 2. Verify Package Scripts
 
-> Goal: มั่นใจว่า package manifest มี scripts ที CI จะเรียก
+> Goal: มั่นใจว่า package manifest มี scripts ที CI จะเรียก ตามขนาด project
 
 1. อ่าน `package.json` หรือ `Cargo.toml` หรือไฟล์ manifest ที่เหมาะสม
-2. ถ้าไม่มี scripts `verify`, `test:all`, `build`, `deploy`, `release` → ทำ `/follow-tasks` เพื่อตั้งค่า
-3. ตรวจว่า `verify` รวม `scan`, `typecheck`, `lint`, `test`, `build` ตามมาตรฐาน
-4. ถ้า project ไม่มี package manifest → ทำ `/review-delivery` เพื่อตั้งค่า
+2. ตรวจสอบขนาด project:
+   - ถ้า project เล็ก (ไม่ monorepo, build/test ไม่หนัก) → `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
+   - ถ้า project ใหญ่ (monorepo หรือ build/test หนัก) → CI/CD pipeline จะรัน full suite แทน; package manifest ต้องมี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
+3. ถ้าไม่มี scripts `verify`, `test:all`, `build` → ทำ `/follow-tasks` เพื่อตั้งค่า
+4. ตรวจว่า `verify` ครบตามขนาด project
+5. ถ้า project ไม่มี package manifest → ทำ `/review-delivery` เพื่อตั้งค่า
 
 ### 3. Setup Secrets
 
@@ -146,7 +149,7 @@ jobs:
 
 - `setup-ci-cd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
 - ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
-- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify-on-ci-cd` หรือ `/ship-to-cloud`
+- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-to-cloud`
 
 ### 2. Platform First
 
@@ -163,7 +166,8 @@ jobs:
 ### 4. Package Scripts
 
 - ต้องมี package scripts ก่อนสร้าง CI workflow
-- `verify` ควรรวม `scan`, `typecheck`, `lint`, `test`, `build`
+- project เล็ก: `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
+- project ใหญ่: CI/CD pipeline รัน full suite; package manifest มี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
 - `test:all` ควรรวม unit, integration, e2e, coverage ตาม project
 
 ### 5. No Auto Commit
