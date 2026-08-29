@@ -3,7 +3,7 @@ name: git-commit
 description: Commit ทุกไฟล์ที่เปลี่ยนแปลงด้วย conventional commits
 related:
   - run-check
-  - run-verify-fast
+  - run-verify-on-local
   - follow-tool-hk
   - list-git-commit
   - refactor-commit

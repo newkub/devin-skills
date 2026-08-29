@@ -7,7 +7,7 @@ related:
   - relocation
   - review-architecture
   - update-references
-  - run-verify-fast
+  - run-verify-on-local
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
 
-1. ทำ `/run-verify-fast`
+1. ทำ `/run-verify-on-local`
    - ทำ `/run-test`
    - ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/review-quality`

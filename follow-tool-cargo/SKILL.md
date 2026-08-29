@@ -100,7 +100,7 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 1. รัน `cargo check --all-targets`
 2. รัน `cargo clippy --all-targets -- -D warnings`
 3. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
-4. รัน `/run-verify-fast` เพื่อยืนยันว่าทุกอย่างทำงานได้
+4. รัน `/run-verify-on-local` เพื่อยืนยันว่าทุกอย่างทำงานได้
 
 ## Rules
 

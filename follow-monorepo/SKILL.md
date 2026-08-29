@@ -37,7 +37,7 @@ related:
 2. แยก packages ตาม concerns
 3. ตั้งค่า workspace protocol
 4. ตั้งค่า dependency catalog ใน root (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) สำหรับ shared versions
-5. รัน `/run-verify-fast` เพื่อตรวจสอบ
+5. รัน `/run-verify-on-local` เพื่อตรวจสอบ
 
 ### 3. Configure Build System
 
@@ -123,7 +123,7 @@ related:
 - อัปเดต dependencies ให้ใช้ `workspace:*`
 - ตั้งค่า shared configs ที่ root level
 - อัปเดต CI/CD pipelines สำหรับ monorepo
-- รัน `/run-verify-fast` เพื่อตรวจสอบ
+- รัน `/run-verify-on-local` เพื่อตรวจสอบ
 
 ### 7. Common Pitfalls
 

@@ -58,7 +58,7 @@ argument-hint: "[target]"
 
 1. รัน script ใน execute mode
 2. ตรวจสอบ report จาก script
-3. ทำ `/run-verify-fast` เพื่อตรวจสอบ lint, typecheck, และ scan
+3. ทำ `/run-verify-on-local` เพื่อตรวจสอบ lint, typecheck, และ scan
 4. ถ้ามี errors → ทำ `/resolve-errors` (max 3 ครั้ง → rollback และ report)
 5. ทำ `/update-references` เพื่ออัปเดต references ที่เกี่ยวข้อง
 
@@ -103,6 +103,6 @@ argument-hint: "[target]"
 
 - ไฟล์ถูกแก้ไขผ่าน scripts ที่ reproducible และตรวจสอบได้
 - มี dry run และ backup ก่อน execute จริง
-- การแก้ไขผ่าน `/run-verify-fast` และ `/update-references`
+- การแก้ไขผ่าน `/run-verify-on-local` และ `/update-references`
 - Scripts ชั่วคราวถูกลบหลังใช้งาน
 - มี audit trail ของการเปลี่ยนแปลง

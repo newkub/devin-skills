@@ -6,8 +6,8 @@ related:
   - open-web-for-config-secret
   - test-all
   - run-check
-  - run-verify-fast
-  - run-verify-full
+  - run-verify-on-local
+  - run-verify-on-ci-cd
   - use-scripts
   - follow-monorepo
 ---

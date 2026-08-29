@@ -7,7 +7,7 @@ related:
   - run-build
   - run-lint
   - run-test
-  - run-verify-fast
+  - run-verify-on-local
 ---
 
 ## Goal

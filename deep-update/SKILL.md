@@ -39,7 +39,8 @@ related:
   - refactor
   - restructure
   - deep-validate
-  - run-verify-full
+  - run-verify-on-local
+  - run-test-all
   - check-broken-skills-references
   - check-circular-dependencies
   - resolve-errors
@@ -139,10 +140,11 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: ตรวจสอบว่า update สมบูรณ์และถูกต้อง
 
 1. ทำ `/deep-validate` เพื่อ validate cross-reference, type, security, compliance
-2. ทำ `/run-verify-full` เพื่อ lint, typecheck, test, build
-3. ทำ `/check-broken-skills-references` ถ้าเป้าหมายเกี่ยวข้องกับ skills
-4. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
-5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
+2. ทำ `/run-verify-on-local` เพื่อ lint, typecheck, unit test, build
+3. ทำ `/run-test-all` เพื่อรัน test suites ทั้งหมดถ้ามี
+4. ทำ `/check-broken-skills-references` ถ้าเป้าหมายเกี่ยวข้องกับ skills
+5. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
+6. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 
 ### 8. Report And Suggest
 
@@ -180,7 +182,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 5. Validation
 
-- ต้องผ่าน `/deep-validate` และ `/run-verify-full` ก่อนถือว่าเสร็จ
+- ต้องผ่าน `/deep-validate` และ `/run-verify-on-local` ก่อนถือว่าเสร็จ
 - ไม่อ้างว่า check ผ่าน ถ้า command fail
 - ถ้า validation ไม่ผ่านหลัง 3 รอบ → stop และ report
 
@@ -190,5 +192,5 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - docs, config, rules, skills, code, tests sync กัน
 - ไม่มี TODO/FIXME/HACK/placeholder เหลือ (หรือบันทึกชัดเจน)
 - cross-references ถูกต้องทั้งหมด
-- ผ่าน `/deep-validate` และ `/run-verify-full`
+- ผ่าน `/deep-validate` และ `/run-verify-on-local`
 - รายงาน before/after, risks, และ next actions ครบถ้วน

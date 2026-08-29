@@ -56,7 +56,7 @@ related:
 1. แยก `format` ออกจาก `lint` (format แก้ไฟล์ ได้, lint ตรวจ)
 2. ใช้ `format --check` หรือ `fmt --check` ใน CI
 3. ถ้าใช้ hk/lefthook → เพิ่ม `pre-commit` step สำหรับ format (fix)
-4. ทำ `/run-verify-fast` เพื่อ verify format + lint + typecheck
+4. ทำ `/run-verify-on-local` เพื่อ verify format + lint + typecheck
 
 ### 5. Editor And Onboarding
 

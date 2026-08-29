@@ -33,7 +33,7 @@ Continue ship flow จาก state ปัจจุบันโดยไม่ต
 1. ทำ `git branch --show-current` → `CURRENT_BRANCH`
 2. ทำ `git status --porcelain`
 3. ทำ `git log --oneline origin/<CURRENT_BRANCH>..HEAD`
-4. ถ้ามี remote branch → ตรวจ CI status ด้วย `gh run list --branch <CURRENT_BRANCH> --limit 1` หรือ `/run-verify-cloud`? No, just check.
+4. ถ้ามี remote branch → ตรวจ CI status ด้วย `gh run list --branch <CURRENT_BRANCH> --limit 1` หรือ `/run-verify-on-ci-cd`? No, just check.
 5. อ่าน `AGENTS.md` ship-flow ถ้ามี
 
 ### 2. Decide Next Action

@@ -4,7 +4,7 @@ description: Auto-detect registry และ release package ไปยัง npm,
 related:
   - follow-secret-manager
   - run-release
-  - run-verify-fast
+  - run-verify-on-local
   - gen-changelog-md
   - follow-runtime-bun
   - follow-create-cli
@@ -38,7 +38,7 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 > Goal: ตรวจสอบคุณภาพก่อน release
 
-1. ทำ `/run-verify-fast`
+1. ทำ `/run-verify-on-local`
 2. ตรวจสอบ version ถูกต้องตาม semver
 3. ทำ `/gen-changelog-md` หรือตรวจสอบ `CHANGELOG.md`
 4. ตรวจสอบ authentication:
@@ -91,7 +91,7 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 ### 2. Verify Before Publish
 
-- ทำ `/run-verify-fast` เสมอก่อน release
+- ทำ `/run-verify-on-local` เสมอก่อน release
 - version ต้อง bump ก่อน publish
 - changelog ต้อง gen ด้วย `/gen-changelog-md`
 

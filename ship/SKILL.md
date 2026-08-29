@@ -62,7 +62,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
-1. ทำ `/run-verify-fast` ถ้า `AGENTS.md` หรือ workspace ระบุ
+1. ทำ `/run-verify-on-local` ถ้า `AGENTS.md` หรือ workspace ระบุ
 2. ทำ `/test-all` ถ้ามี test suites
 3. ทำ `/update-review-codebase-cli-and-run` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
 4. ทำ `/deep-validate` เพื่อ validate ผลลัพธ์
@@ -125,7 +125,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-verify-fast`, `/test-all`, `/update-review-codebase-cli-and-run` (ถ้ามี) และ `/deep-validate`
+- Code ผ่าน `/run-verify-on-local`, `/test-all`, `/update-review-codebase-cli-and-run` (ถ้ามี) และ `/deep-validate`
 - ทุก submodule ที่มี changes ถูก commit ก่อน root
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ

@@ -64,7 +64,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ตรวจสอบคุณภาพโค้ดก่อน release
 
-1. ทำ `/run-verify-fast` เพื่อตรวจสอบคุณภาพโค้ด
+1. ทำ `/run-verify-on-local` เพื่อตรวจสอบคุณภาพโค้ด
 2. ถ้า verify ไม่ผ่าน ให้แก้ไขก่อนดำเนินการต่อ
 
 ### 5. Setup Release Tool

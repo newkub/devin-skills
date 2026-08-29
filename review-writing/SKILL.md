@@ -70,7 +70,7 @@ description: Review writing quality, naming conventions, and discoverability acr
 
 1. ทำ `/deep-validate` เพื่อ validate findings
 2. คำนวณ review score ตาม `references/scoring.md`
-3. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify-fast` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
+3. รัน `tsc --noEmit`, รัน `bunx biome lint`, ทำ `/run-verify-on-local` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
 4. ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3 → stop/report)
 5. ทำ `/report` พร้อม `/report-table` — ตาราง: area | category | issues found | issues fixed | severity | status
 6. ทำ `/suggest-next-action`

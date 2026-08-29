@@ -9,7 +9,7 @@ related:
   - check-unused-deps
   - run-audit
   - update-review-codebase-cli-and-run
-  - run-verify-fast
+  - run-verify-on-local
   - deep-validate
   - report-table
   - suggest-next-action

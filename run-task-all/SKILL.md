@@ -3,7 +3,7 @@ name: run-task-all
 description: รันงานที่ค้างอยู่ทั้งหมดจากคิวตามลำดับ
 argument-hint: "[target]"
 related:
-  - run-verify-fast
+  - run-verify-on-local
   - run-test
   - report-table
   - suggest-next-action
@@ -39,7 +39,7 @@ related:
 
 > Goal: ตรวจสอบ
 
-1. รัน `/run-verify-fast` และ `/run-test` หลังทำงานเสร็จ
+1. รัน `/run-verify-on-local` และ `/run-test` หลังทำงานเสร็จ
 1. เปรียบเทียบผลลัพธ์กับที่คาดหวัง
 1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
 

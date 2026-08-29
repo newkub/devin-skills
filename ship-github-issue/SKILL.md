@@ -75,7 +75,7 @@ related:
 
 1. เปลี่ยน directory ไปยัง `worktrees/dev-<number>/`
 2. ทำงานตาม `/follow-plan` หรือ `/do-it-all`
-3. รัน `/run-verify-fast` ระหว่างทำงานตามความเหมาะสม
+3. รัน `/run-verify-on-local` ระหว่างทำงานตามความเหมาะสม
 4. ถ้ามีปัญหาใหญ่ → stop และ report
 
 ### 6. Ship Local

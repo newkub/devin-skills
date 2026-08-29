@@ -71,7 +71,7 @@ argument-hint: "[target]"
 2. ปรับ pattern ให้เข้ากับ project context และ conventions
 3.  implement ในที่ที่เหมาะสม โดยทำตาม `/follow-architecture`
 4. ถ้าต้องแก้ไขไฟล์มากกว่า 10 ไฟล์ ให้ทำ `/use-scripts` สำหรับ batch transformations
-5. รัน `/run-verify-fast` เพื่อตรวจสอบคุณภาพหลัง implement
+5. รัน `/run-verify-on-local` เพื่อตรวจสอบคุณภาพหลัง implement
 
 ### 6. Document And Share
 
@@ -112,7 +112,7 @@ argument-hint: "[target]"
 - ทำ `/generalize` เพื่อทำให้ reusable และไม่ specific เกินไป
 - ปรับ pattern ให้เข้ากับ project context ไม่ copy ตรงๆ
 - ถ้าต้องแก้ไขไฟล์มากกว่า 10 ไฟล์ ให้ทำ `/use-scripts`
-- รัน `/run-verify-fast` หลัง implement เสมอ
+- รัน `/run-verify-on-local` หลัง implement เสมอ
 
 ### Non-Duplication
 

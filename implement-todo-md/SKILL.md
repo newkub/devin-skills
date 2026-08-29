@@ -75,7 +75,7 @@ related:
 > Goal: ส่งมอบ
 
 1. ทำ `/deep-validate` เพื่อตรวจ references และ structure
-2. ทำ `/run-verify-fast` ถ้ามี
+2. ทำ `/run-verify-on-local` ถ้ามี
 3. ทำ `/ship`
 4. ใช้ `/report-table` สรุป tasks ทั้งหมด
 

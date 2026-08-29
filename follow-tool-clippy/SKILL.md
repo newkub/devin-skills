@@ -62,7 +62,7 @@ description: ตั้งค่า Clippy lint rules และ error handling st
 1. รัน `cargo clippy --all-targets -- -D warnings`
 2. ตรวจสอบว่า lint rules ทำงานได้ถูกต้อง
 3. แก้ไข warnings ที่เกิดขึ้น
-4. รัน `/run-verify-fast` เพื่อยืนยันว่าทุกอย่างทำงานได้
+4. รัน `/run-verify-on-local` เพื่อยืนยันว่าทุกอย่างทำงานได้
 
 ## Rules
 

@@ -67,7 +67,7 @@ related:
 
 1. รัน test suite ทั้งหมด
 2. รัน lint และ typecheck ถ้ามี
-3. ทำ `/run-verify-fast` เพื่อตรวจ project-wide
+3. ทำ `/run-verify-on-local` เพื่อตรวจ project-wide
 4. ทำ `/git-commit` ถ้ามีการเปลี่ยนแปลง
 
 ## Rules

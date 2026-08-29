@@ -73,7 +73,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: code ผ่าน lint/typecheck/test/build
 
-1. ทำ `/run-verify-fast` เพื่อรัน scan, lint, typecheck, test, build
+1. ทำ `/run-verify-on-local` เพื่อรัน scan, lint, typecheck, test, build
 2. ทำ `/check-code-structure` เปรียบเทียบ baseline
 3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
 
@@ -125,7 +125,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 ### 5. Verification
 
-- ต้องผ่าน `/run-verify-fast` และ `/run-test`
+- ต้องผ่าน `/run-verify-on-local` และ `/run-test`
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 
