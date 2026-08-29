@@ -89,6 +89,11 @@ description: ใช้ crw สำหรับ web search และ scrape อย
 - ใช้ `--summary` ร่วมกับ `--llm-provider` เพื่อเลือก AI provider
 - ใช้ `--prompt "hint"` สำหรับกำหนด style ของ summary
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - สามารถค้นหาข้อมูลจากเว็บไซต์ได้อย่างรวดเร็ว

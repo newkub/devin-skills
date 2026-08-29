@@ -6,3 +6,4 @@
 | [git-commands.md](git-commands.md) | Git CLI command reference (setup, branching, merging, rebasing, remote, stashing, history, tagging) |
 | [git-config.md](git-config.md) | Git configuration options (levels, identity, editor, aliases, push/pull/merge settings, credentials) |
 | [official-resources.md](official-resources.md) | Official Git resources, community links, learning materials, and related GUI/CLI tools |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

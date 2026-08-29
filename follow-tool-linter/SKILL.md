@@ -49,6 +49,11 @@ description: ใช้งาน linter ใน project
 
 - ใช้ `/resolve-errors` เมื่อพบ error
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Linter ตั้งค่าเรียบร้อย

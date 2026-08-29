@@ -6,3 +6,4 @@
 | `scalar-cli.md` | Scalar CLI installation, commands, options, and Docker usage |
 | `scalar-config.md` | Scalar configuration file formats (JSON/YAML), options, and environment variables |
 | `official-resources.md` | Official Scalar websites, GitHub repositories, packages, community, learning resources, and version history |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

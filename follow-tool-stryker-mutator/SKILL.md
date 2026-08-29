@@ -93,6 +93,11 @@ related:
 - ใช้ dashboard สำหรับ trend
 - ตรวจสอบ `timeout` mutants
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Stryker ติดตั้งและทำงานได้

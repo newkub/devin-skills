@@ -108,6 +108,11 @@ related:
 - ใช้ byte-level iteration สำหรับความเร็วสูง
 - กรองไฟล์ด้วย `--include`/`--exclude` ก่อนนับเพื่อลดเวลา
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - ทราบจำนวน lines of code แยกตามภาษาและไฟล์

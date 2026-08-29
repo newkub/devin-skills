@@ -99,6 +99,11 @@ related:
 - Personal config ที่ `~/.config/nextest/config.toml`
 - ใช้ `--config-file` สำหรับ override config location
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Test runner ที่รวดเร็วและมีประสิทธิภาพ

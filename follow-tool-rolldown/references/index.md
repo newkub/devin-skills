@@ -10,3 +10,4 @@
 | [rolldown-config-output.md](rolldown-config-output.md) | Configuration: output options (dir, format, sourcemap, minify, chunks, paths) |
 | [rolldown-config-treeshake-env.md](rolldown-config-treeshake-env.md) | Configuration: tree-shake options, file naming, environment variables, TypeScript |
 | [official-resources.md](official-resources.md) | Official Rolldown resources, documentation links, plugins, and community channels |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

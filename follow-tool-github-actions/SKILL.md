@@ -59,6 +59,11 @@ related:
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - เลือก workflows ที่เหมาะสมกับ project

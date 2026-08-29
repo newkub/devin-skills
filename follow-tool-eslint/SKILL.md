@@ -169,6 +169,11 @@ export default defineConfig([
 - ใส่ `prettier` config เป็นตัวสุดท้าย
 - ไม่ใช้ `.eslintignore` ใน ESLint 9
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 1. ESLint 9 พร้อม flat config และ plugins ครบถ้วน

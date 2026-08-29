@@ -91,6 +91,11 @@ related:
 - ลบไฟล์ที่ไม่จำเป็น
 - commit หลัง setup เสร็จ
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Template ถูก clone มาใช้งาน

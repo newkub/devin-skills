@@ -171,6 +171,11 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 - `lockIssues`: lock issues ที่ merged ใน PRs
 - `includeBotPrs`: comment บน PRs จาก bots
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Auto ติดตั้งและทำงานได้

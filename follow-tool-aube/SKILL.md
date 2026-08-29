@@ -139,6 +139,11 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - Share package files ระหว่าง projects
 - node_modules layout ที่ efficient
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Aube ติดตั้งและทำงานได้

@@ -90,6 +90,11 @@ related:
 - ใช้ `ignoreOtherWorkspaces` ถ้าจำเป็น
 - ตรวจสอบ compatibility ข้าม workspace
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Dependencies อัปเดทอัตโนมัติ

@@ -8,3 +8,4 @@
 | [playwright-config-options.md](playwright-config-options.md) | Playwright configuration top-level and use options (testDir, timeout, browser, context, trace, screenshot, video) |
 | [playwright-config-projects.md](playwright-config-projects.md) | Playwright configuration project, reporter, timeout, and CI options (browsers, devices, reporters, sharding) |
 | [official-resources.md](official-resources.md) | Official Playwright resources, documentation links, packages, and community channels |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

@@ -164,6 +164,11 @@ description: ติดตั้งและตั้งค่า Vitest 4 สำ
 - ใช้ `--detect-async-leaks` ขณะ debugging เท่านั้นเพราะมี runtime overhead
 - ใช้ `coverage.changed` สำหรับ limit coverage report ใน CI
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Vitest 4 ติดตั้งและทำงานได้

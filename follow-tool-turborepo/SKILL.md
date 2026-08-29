@@ -109,6 +109,11 @@ related:
 - กำหนด `tags` และ `boundaries` rules
 - หลีกเลี่ยง imports ข้าม package boundaries
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `turbo.json` ถูกต้อง

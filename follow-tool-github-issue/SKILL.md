@@ -114,6 +114,11 @@ related:
 - ตรวจสอบ issue number/repo ก่อนเปลี่ยนสถานะ
 - ใช้ `gh issue close` แทน `delete` ถ้าต้องการปิดเท่านั้น
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - สามารถสร้าง ค้นหา แก้ไข และจัดการ lifecycle ของ issues ผ่าน `gh issue` ได้

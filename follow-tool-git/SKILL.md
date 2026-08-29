@@ -82,6 +82,11 @@ description: ใช้งาน git commands ตามสถานการณ�
 - ตรวจสอบ `git status` ให้สะอาดก่อน push
 - ใช้ `git diff` ตรวจงานก่อน commit
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - สามารถใช้งาน git ได้ตามสถานการณ์ตั้งแต่ daily workflow ถึง advanced operations

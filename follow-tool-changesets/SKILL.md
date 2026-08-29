@@ -114,6 +114,11 @@ jobs:
 - ตั้งค่า version และ publish commands
 - ใช้ concurrency เพื่อป้องกัน conflicts
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Changesets ติดตั้งและทำงานได้

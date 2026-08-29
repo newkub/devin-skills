@@ -218,6 +218,11 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ปิด sessions ที่ไม่ได้ใช้ด้วย `agent-browser close` เพื่อประหยัด resources
 - ใช้ `--json` flag สำหรับ JSON output ที่ parse ง่ายใน scripts
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Browser automation ทำงานได้อย่างมีประสิทธิภาพ

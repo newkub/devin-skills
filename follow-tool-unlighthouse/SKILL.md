@@ -96,6 +96,11 @@ related:
 - ใช้ `--throttle` เพื่อจำลอง real network
 - ใช้ `--samples N` สำหรับ multiple runs
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Unlighthouse scripts พร้อมใช้

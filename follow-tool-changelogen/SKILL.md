@@ -102,6 +102,11 @@ description: สร้าง changelog และจัดการ releases ด�
 - ใช้ `--dry` สำหรับ dry-run mode
 - ตั้งค่า `NPM_TOKEN` สำหรับ NPM publishing
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Changelog สร้างอัตโนมัติจาก conventional commits

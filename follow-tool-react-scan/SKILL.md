@@ -129,6 +129,11 @@ description: ตรวจหาและแก้ไข React performance issues
 - ตรวจสอบว่าไม่ได้ optimize เฉพาะ renders ที่ไม่ได้กระทบ UX
 - ถอดถอนหรือ remove `react-scan` ก่อน deploy production
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - React app หา performance issues ได้ชัดเจนขึ้น

@@ -109,6 +109,11 @@ related:
 - ใช้ decorators สำหรับ context providers
 - รักษา components แบบ isolation
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Storybook ติดตั้งและ start ได้

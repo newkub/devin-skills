@@ -128,6 +128,11 @@ description: ตั้งค่า Cargo lint rules และ workspace lint con
 - แต่ละ crate สามารถ override rules ได้ถ้าจำเป็น
 - ดู [references/cargo.md](references/cargo.md)
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Cargo lint rules ตั้งค่าอัตโนมัติ

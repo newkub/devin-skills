@@ -106,6 +106,11 @@ related:
 - ตรวจสอบว่า output เหมือนเดิมหลัง migrate
 - แก้ config ที่ incompatible
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `tsdown.config.ts` ถูกต้อง

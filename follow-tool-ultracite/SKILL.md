@@ -93,6 +93,11 @@ related:
 - ใช้ Ultracite presets ก่อน
 - ตรวจสอบว่า config ไม่ conflict
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Ultracite ติดตั้งและ init เสร็จ

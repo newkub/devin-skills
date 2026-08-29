@@ -122,6 +122,11 @@ related:
 - ไม่ลบ `.mise` cache โดยไม่รู้ผล
 - ตรวจสอบ exit code ของ `mise run`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `mise.toml` สร้างและถูกต้อง

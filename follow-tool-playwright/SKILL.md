@@ -185,6 +185,11 @@ description: ติดตั้งและตั้งค่า Playwright ส�
 - ใช้ `reuseExistingServer: true` สำหรับ local iteration speed
 - ติดตั้งเฉพาะ browsers ที่จำเป็นใน CI
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Playwright ติดตั้งและทำงานได้

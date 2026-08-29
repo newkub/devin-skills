@@ -103,6 +103,11 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `sgconfig.yml` ตั้งค่าเรียบร้อยครบทุก fields ที่จำเป็น

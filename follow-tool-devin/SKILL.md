@@ -96,6 +96,11 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 - ใช้ environment variables สำหรับ secrets
 - Follow security best practices
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - เข้าใจและใช้งาน Devin/Cascade ได้อย่างมีประสิทธิภาพ

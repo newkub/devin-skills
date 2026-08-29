@@ -88,6 +88,11 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 - ใช้ `--no-tips` เพื่อ suppress ข้อความที่ไม่จำเป็นใน CI output
 - ใช้ `--exit-code 1` เพื่อกำหนด exit code เมื่อพบ duplication
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `.jscpd.json` config ที่ project root

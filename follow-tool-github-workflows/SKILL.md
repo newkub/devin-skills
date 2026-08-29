@@ -115,6 +115,11 @@ description: วิเคราะหาและเขียน GitHub workflow
 - ใช้ `actions/upload-artifact` สำหรับ build artifacts
 - ตั้งค่า status checks สำหรับ PR validation
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - GitHub workflows ที่ครอบคลุม CI/CD

@@ -94,6 +94,11 @@ related:
 - ถ้าต้อง validate ใน business logic → ควรย้ายไป schema layer
 - ห้ามใช้ manual `if (!x) throw` แทน schema validation
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Validator ถูกเลือกและติดตั้งถูกต้องตาม tech stack

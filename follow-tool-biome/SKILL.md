@@ -171,6 +171,11 @@ jobs:
 - Types: สำหรับ type analysis (มีผลต่อ performance)
 - Vue: สำหรับ Vue projects
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Biome ติดตั้งและทำงานได้

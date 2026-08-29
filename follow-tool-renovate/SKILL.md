@@ -102,6 +102,11 @@ related:
 - ลืมตั้งค่า permissions ใน workflow
 - ใช้ `--frozen-lockfile` ทำให้ Renovate ไม่สามารถ update lockfile ได้
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Renovate รันทุกวันหรือ manual trigger

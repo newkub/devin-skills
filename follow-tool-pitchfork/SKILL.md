@@ -125,6 +125,11 @@ on_output = { filter = "connected", run = "echo 'worker ready'" }
 - `pitchfork project enter --pid $$`
 - `pitchfork project leave --pid $$`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - pitchfork ติดตั้งและทำงานผ่าน mise

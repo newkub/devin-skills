@@ -115,6 +115,11 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 - keep `usage.kdl` เป็น single source of truth
 - regenerate completions/docs ใน CI ถ้ามีการเปลี่ยน spec
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - มี `usage.kdl` ที่ครบถ้วน

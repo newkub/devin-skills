@@ -102,6 +102,11 @@ related:
 - ตรวจสอบ maintenance status และ compatibility
 - ไม่ hard-code paths หรือ secrets ใน config
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Rolldown ติดตั้งและ build ได้

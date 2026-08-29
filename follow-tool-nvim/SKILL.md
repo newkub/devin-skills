@@ -114,6 +114,11 @@ related:
 - อัปเดต plugins ผ่าน `:Lazy update`
 - ตรวจ `lazy-lock.json` หลังอัปเดต
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Neovim config เป็น modular และ easy to maintain

@@ -69,6 +69,11 @@ description: จัดการ git branches ทั้งหมดใน reposit
 - เก็บชื่อ branch สื่อความหมาย
 - ใช้ kebab-case สำหรับ branch names
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Branches ถูกจัดการตามต้องการ

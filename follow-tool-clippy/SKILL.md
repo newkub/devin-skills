@@ -105,6 +105,11 @@ allow-mixed-uninlined-format-args = true
 - ใช้ `thiserror` สำหรับ custom error types
 - ใช้ `anyhow` สำหรับ application-level errors
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Clippy lint rules ตั้งค่าอัตโนมัติ

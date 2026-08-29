@@ -106,6 +106,11 @@ related:
 - ตรวจสอบ owner และ project number ก่อนลบ/ปิด
 - ใช้ `gh project close <number> --undo` แทนการลบ ถ้าเป้าหมายคือซ่อนชั่วคราว
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - สามารถสร้าง ดู แก้ไข และจัดการ GitHub Projects ผ่าน `gh project` ได้

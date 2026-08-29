@@ -84,6 +84,11 @@ related:
 - ใช้ outputs สำหรับ E2E tests
 - หลีกเลี่ยง publishing บน tags
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - pkg.pr.new ติดตั้งและทำงานได้

@@ -85,6 +85,11 @@ related:
 - ใช้ `--limit` และ `--depth` เพื่อลดขนาด output
 - สำหรับ CI ให้ใช้ `report` subcommands แทน UI
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `node-modules-inspector` รันได้ทั้ง `bunx` และ package manager ของ project

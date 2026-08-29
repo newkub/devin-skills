@@ -71,6 +71,11 @@ tests/examples <-- src
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 Completed `follow-tool-build-packages` workflow with correct output

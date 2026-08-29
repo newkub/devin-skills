@@ -198,6 +198,11 @@ crw serve --port 3000
 - text: สำหรับ plain text
 - links: สำหรับ URL extraction
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - ใช้ CRW อย่างมีประสิทธิภาพสูงสุด

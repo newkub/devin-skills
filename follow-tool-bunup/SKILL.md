@@ -77,6 +77,11 @@ project/
 └── dist/                 # Output
 ```
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Bunup ติดตั้งและกำหนดค่าใน project

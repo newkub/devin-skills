@@ -105,6 +105,11 @@ related:
 - ไม่ commit hook scripts ที่ generate ทั้งหมด (ยกเว้น native `core.hooksPath`)
 - ระบุ version ของ manager ใน `mise.toml` หรือ package manifest
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Githook manager ติดตั้งและทำงาน

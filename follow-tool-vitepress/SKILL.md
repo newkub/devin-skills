@@ -218,6 +218,11 @@ export default {
 - ทำ `/follow-lang-typescript` สร้าง `docs/tsconfig.json` extends จาก root พร้อม `noEmit: true`, `types: ["vitepress"]`
 - สำหรับ monorepo ให้เพิ่ม `docs` ใน `exclude` ของ root `tsconfig.json`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - VitePress config พร้อมใช้งาน

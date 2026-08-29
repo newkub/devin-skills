@@ -123,6 +123,11 @@ related:
 - ใช้ `--include` หรือ `--exclude` เพื่อ filter issue types เช่น `knip --include files,dependencies`
 - ใช้ `rules` ใน config เพื่อกำหนด severity: `"error"`, `"warn"`, `"off"` เช่น `{ "rules": { "files": "warn", "duplicates": "off" } }`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `knip.json` ตั้งค่าครบถ้วนตาม official best practices

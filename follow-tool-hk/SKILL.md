@@ -211,6 +211,11 @@ hooks {
 - `hk config dump` - ดู effective config
 - `hk builtins` - ดูรายการ builtin linters
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - hk ติดตั้งและทำงานผ่าน mise

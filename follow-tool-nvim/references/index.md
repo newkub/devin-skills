@@ -3,3 +3,4 @@
 | File | Responsibility |
 |---|---|
 | [lazy-nvim.md](lazy-nvim.md) | lazy.nvim plugin manager and stylua formatter reference |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

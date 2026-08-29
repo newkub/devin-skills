@@ -98,6 +98,11 @@ related:
 - ใช้ `timeout` เริ่มต้นที่เหมาะสม เพื่อป้องกัน tests แขวน
 - ไม่ hard-code paths หรือ secrets ใน `mutants.toml`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Mutation testing ทำงานได้อัตโนมัติ

@@ -95,6 +95,11 @@ related:
 - ใช้ `wait-for` หรือ SDK equivalent เพื่อ synchronize ระหว่าง panes
 - ปิด sessions ที่ไม่ใช้งานด้วย `rmux kill-session -t <name>`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - RMUX CLI ติดตั้งและทำงานได้บน target platform

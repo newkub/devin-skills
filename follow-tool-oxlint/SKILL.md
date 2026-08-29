@@ -93,6 +93,11 @@ related:
 - ใช้ oxlint built-in plugins ผ่าน `eslint-plugin-oxlint` configs
 - ใช้ `buildFromOxlintConfig` กับ plugins array
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `eslint-plugin-oxlint` ติดตั้งและทำงานได้

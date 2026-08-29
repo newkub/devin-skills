@@ -114,6 +114,11 @@ related:
 - เพิ่ม linked deps ใน `optimizeDeps.include` ถ้าไม่ใช่ ESM
 - ใช้ absolute paths สำหรับ `resolve.alias`
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Vite 7+ ติดตั้มและทำงาน

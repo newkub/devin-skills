@@ -91,6 +91,11 @@ related:
 - ไม่ hard-code secrets หรือ API keys
 - ใช้ environment variables สำหรับ config ที environment-specific
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Scalar ติดตั้งและตั้งค่าเสร็จ

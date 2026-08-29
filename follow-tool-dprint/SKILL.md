@@ -106,6 +106,11 @@ description: ตั้งค่าและใช้งาน dprint สำห�
 - ต้องใช้ quoteStyle: alwaysSingle สำหรับ TypeScript
 - ต้องใช้ semiColons: asi สำหรับ TypeScript
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - dprint ติดตั้งและกำหนดค่าใน project

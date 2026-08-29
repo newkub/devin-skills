@@ -74,6 +74,11 @@ Renovate ค้นหา config ตามลำดับนี้:
 - ตรวจ `extends` ว่า preset มีอยู่จริง
 - ตรวจ `packageRules` ว่า matchers ถูกต้อง
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `renovate.json` ถูกต้องตาม schema

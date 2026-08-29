@@ -3,3 +3,4 @@
 | File | Responsibility |
 |---|---|
 | [loc.md](loc.md) | loc lines-of-code counter (Rust implementation of cloc) for fast code metrics |
+| [cli.md](cli.md) | CLI commands, default behaviors, and options |

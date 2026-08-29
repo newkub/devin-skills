@@ -93,6 +93,11 @@ related:
 - ห้ามสลับ formatter บ่อย
 - ถ้าเปลี่ยน formatter → ทำ `/update-references` และระบุใน CHANGELOG
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Formatter ถูกเลือกและตั้งค่าถูกต้อง

@@ -93,6 +93,11 @@ related:
 - ตรวจสอบว่า package ผ่าน tests และ lint ก่อน publish
 - ไม่ publish บน branch ทีไม่ได้รับอนุญาต
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - Version management เป็นไปโดยอัตโนมัติ

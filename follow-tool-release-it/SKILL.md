@@ -94,6 +94,11 @@ related:
 - ใช้ `secrets.NPM_TOKEN` และ `secrets.GITHUB_TOKEN` ผ่าน GitHub Actions
 - ถ้าจำเป็น ใช้ `gh secret set` สำหรับตั้งค่าผ่าน CLI
 
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
+
 ## Expected Outcome
 
 - `release-it` ติดตั้งและตั้งค่าใน project
