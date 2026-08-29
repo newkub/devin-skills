@@ -162,6 +162,12 @@ related:
 - ถ้า fix สร้าง failure ใหม่หลัง 3 รอบ → `git revert` กลับไป last green SHA
 - ห้าม force-push หรือ rewrite history โดยไม่มี dry run
 
+### 8. Partial Commit And Push
+
+- ก่อน push fix ให้ stage เฉพาะไฟล์ที่เกี่ยวข้องกับ root cause โดยใช้ `git add -p` หรือ `git add <path>`
+- ไม่ commit/push ไฟล์อื่นที่ไม่เกี่ยวข้อง
+- push ไป branch เดิม ไม่สร้าง PR ใหม่
+
 ## Expected Outcome
 
 - CI pipeline ผ่านสำเร็จโดยไม่มี failure เหลือ
