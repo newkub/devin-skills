@@ -8,7 +8,7 @@ related:
   - deploy-to-railway
   - follow-create-bun-cli
   - follow-create-sdk
-  - follow-create-website
+  - follow-create-web
   - follow-lang-typescript
   - run-test
   - use-bun-native-api

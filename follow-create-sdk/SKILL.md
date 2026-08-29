@@ -32,7 +32,7 @@ related:
   - follow-create-vite-plugins
   - follow-create-vitest-plugins
   - follow-create-vscode-extensions
-  - follow-create-website
+  - follow-create-web
   - follow-create-zed-extensions
   - report-table
   - run-test
@@ -83,7 +83,7 @@ related:
    - `skills` → `update-devin-global-skills`
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
-   - `web` → `follow-create-website`
+   - `web` → `follow-create-web`
    - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`
 4. ใช้ `/report-table` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 

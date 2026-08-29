@@ -6,7 +6,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-create-product
-  - follow-create-website
+  - follow-create-web
   - follow-service-workos
   - follow-lib-zod
   - follow-lib-unocss-theme

@@ -3,7 +3,7 @@ name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม context และ best practices
 related:
   - follow-create-cli
-  - follow-create-website
+  - follow-create-web
   - follow-tool-bunup
   - follow-architecture
   - follow-flat-folders

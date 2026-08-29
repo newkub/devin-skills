@@ -14,7 +14,7 @@ related:
   - review-issue
   - ship
   - follow-create-cli
-  - follow-create-website
+  - follow-create-web
   - follow-create-mcp
   - follow-my-tech-stack
   - review-techstack
@@ -51,7 +51,7 @@ related:
 4. ตรวจ ecosystem ของ target workspace จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `requirements.txt` เพื่อเลือก commands, package manager และ dependencies ที่ถูกต้อง
 5. ถ้า skill ต้องสร้าง app แทน script → เลือก `follow-create-*` ตามประเภท:
    - CLI → `/follow-create-cli` (ใช้ `/follow-my-tech-stack` สำหรับ table/command/prompt/TUI)
-   - Website → `/follow-create-website`
+   - Website → `/follow-create-web`
    - MCP server → `/follow-create-mcp` (พยายามใช้ Rust MCP ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript MCP)
 6. ถ้า skill เป็น `follow-create-*` ให้บังคับมีขั้นตอนนี้ก่อนเขียน `SKILL.md`:
    - ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้

@@ -3,7 +3,7 @@ name: follow-create-mobile-ios
 description: สร้าง native iOS mobile app ด้วย Swift และ SwiftUI
 argument-hint: "[project-name]"
 related:
-  - follow-create-website
+  - follow-create-web
   - follow-lang-swift
   - follow-tool-cargo
   - follow-my-tech-stack

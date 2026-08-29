@@ -9,7 +9,7 @@ related:
   - follow-create-bun-cli
   - follow-create-cli
   - follow-create-sdk
-  - follow-create-website
+  - follow-create-web
   - follow-lang-typescript
   - run-test
   - search-npm-libraries

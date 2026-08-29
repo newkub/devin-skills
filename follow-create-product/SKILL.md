@@ -5,7 +5,7 @@ argument-hint: "[product-idea]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-create-website
+  - follow-create-web
   - follow-service-workos
   - follow-service-stripe
   - follow-lib-unocss-theme
@@ -27,7 +27,7 @@ related:
 
 - ใช้กับ product ทีมี website, user pages, billing, และ dashboard
 - สร้าง product spec, user stories, และ roadmap ก่อนลงมือ build
-- เรียก `/follow-create-website` เพื่อสร้าง website project
+- เรียก `/follow-create-web` เพื่อสร้าง website project
 - เรียก `/follow-service-workos` สำหรับ auth
 - เรียก `/follow-service-stripe` สำหรับ payments, pricing, billing
 - เรียก `/ship` เมื่องานเสร็จ
@@ -96,7 +96,7 @@ related:
 
 > Goal: สร้าง website project
 
-1. เรียก `/follow-create-website` พร้อม product spec และ page list
+1. เรียก `/follow-create-web` พร้อม product spec และ page list
 2. สร้าง routes สำหรับ `/`, `/features`, `/pricing`, `/user`, `/dashboard`
 3. ใช้ `/follow-single-responsibility` ตรวจแต่ละ page/component
 4. ทดสอบ dev server และ build

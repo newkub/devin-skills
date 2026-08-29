@@ -5,7 +5,7 @@ related:
   - follow-secret-manager
   - follow-service-infisical
   - follow-create-product
-  - follow-create-website
+  - follow-create-web
   - follow-deploy
   - deploy-to-cloudflare
   - follow-create-cloudflare-token

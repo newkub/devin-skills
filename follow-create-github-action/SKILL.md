@@ -4,7 +4,7 @@ description: สร้าง GitHub Action ด้วย TypeScript/Composite/Doc
 related:
   - follow-create-bun-cli
   - follow-create-sdk
-  - follow-create-website
+  - follow-create-web
   - follow-dot-github
   - follow-release
   - follow-tool-github-workflows

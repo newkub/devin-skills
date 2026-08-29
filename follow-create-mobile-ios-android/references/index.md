@@ -15,7 +15,7 @@
 | Skill | Responsibility |
 |---|---|
 | `/follow-framework-capacitor` | Capacitor 8 best practices, config, plugins, build |
-| `/follow-create-website` | Web base project setup |
+| `/follow-create-web` | Web base project setup |
 | `/follow-tool-bun` | Bun runtime and scripts |
 
 ## Guides

@@ -3,7 +3,7 @@ name: follow-create-github-bots
 description: สร้าง GitHub bots ด้วย GitHub Apps หรือ Probot พร้อม webhooks และ deployment
 related:
   - follow-create-bun-cli
-  - follow-create-website
+  - follow-create-web
   - follow-service-cloudflare
   - follow-service-vercel
   - follow-my-tech-stack
@@ -35,7 +35,7 @@ related:
 1. ใช้ Probot เมื่องต้องการ framework พร้อม built-in webhook handling และ `context.octokit`
 2. ใช้ `@octokit/app` + `@octokit/webhooks` เมื่องต้องการควบคุมเต็มรูปแบบหรือ deploy serverless
 3. ใช้ `follow-create-bun-cli` ถ้า bot เป็น Bun CLI + server
-4. ใช้ `follow-create-website` ถ้า bot มี dashboard หรือ configuration UI
+4. ใช้ `follow-create-web` ถ้า bot มี dashboard หรือ configuration UI
 
 ### 3. Setup Project
 

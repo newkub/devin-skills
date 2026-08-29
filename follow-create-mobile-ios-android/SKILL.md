@@ -3,7 +3,7 @@ name: follow-create-mobile-ios-android
 description: สร้าง iOS/Android mobile app ด้วย Capacitor จาก web codebase
 argument-hint: "[project-name]"
 related:
-  - follow-create-website
+  - follow-create-web
   - follow-framework-capacitor
   - follow-tool-cargo
   - follow-my-tech-stack
@@ -44,7 +44,7 @@ related:
 
 > Goal: มี web app ที่พร้อมสำหรับ Capacitor
 
-1. ถ้ายังไม่มี web app → ทำ `/follow-create-website` หรือ `/follow-framework-capacitor`
+1. ถ้ายังไม่มี web app → ทำ `/follow-create-web` หรือ `/follow-framework-capacitor`
 2. สร้าง SPA build config แยก (`vite.config.spa.ts`) โดยตั้ง `ssr: false`
 3. ตั้งค่า build output ไปยัง `dist-spa` หรือ `dist-mobile`
 4. รัน `bun run build:spa` เพื่อตรวจสอบว่า `index.html` อยู่ root ของ output

@@ -4,7 +4,7 @@ description: สร้าง project ใหม่บน drive D ด้วย fol
 argument-hint: "<project-type> <project-name>"
 related:
   - follow-create-cli
-  - follow-create-website
+  - follow-create-web
   - follow-create-sdk
   - follow-my-tech-stack
   - follow-your-suggestion
@@ -34,7 +34,7 @@ related:
 > Goal: Select Create Skill
 
 1. `cli` → `/follow-create-cli`
-2. `website` หรือ `web` → `/follow-create-website`
+2. `website` หรือ `web` → `/follow-create-web`
 3. `mobile` → `/follow-create-mobile-ios-android`
 4. `telegram-bot` → `/follow-create-telegram-bot`
 5. `discord-bot` → `/follow-create-discord-bot`

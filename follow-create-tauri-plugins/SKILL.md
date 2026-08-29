@@ -2,7 +2,7 @@
 name: follow-create-tauri-plugins
 description: สร้าง custom Tauri plugins ด้วย Rust และ JavaScript API
 related:
-  - follow-create-website
+  - follow-create-web
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-cargo

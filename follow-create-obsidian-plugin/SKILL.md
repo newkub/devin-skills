@@ -3,7 +3,7 @@ name: follow-create-obsidian-plugin
 description: สร้าง Obsidian plugin ด้วย TypeScript พร้อม manifest, commands, settings
 related:
   - follow-create-sdk
-  - follow-create-website
+  - follow-create-web
   - follow-lang-typescript
   - run-test
   - update-dot-vscode
