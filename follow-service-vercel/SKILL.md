@@ -13,6 +13,7 @@ related:
 Deploy applications บน Vercel platform พร้อม auto-build, preview deployments, serverless functions และ edge functions
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel-cli`, `deploy-to-vercel`
 
 ครอบคลุมการติดตั้ง Vercel CLI, link project, configure, build, deploy, environment variables, serverless/edge functions และ CI/CD
 

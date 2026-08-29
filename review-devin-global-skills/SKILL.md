@@ -38,7 +38,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 2. ตรวจว่า `name` ตรงกับ directory name
 3. ตรวจว่า `description` ไม่เกิน 100 ตัวอักษร
 4. ตรวจ `related` หากมี: ไม่มี missing, ไม่มี unused, ไม่มี circular dependencies
-5. บันทึก findings พร้อม evidence
+5. ตรวจว่า skills ใน `related` ถูกอ้างถึงในเนื้อหา `SKILL.md` หรือไม่ (เช่น `/<skill-name>` หรือชื่อ skill) — ถ้าไม่มีให้บันทึกและแก้ไขให้มีหน่อยใน Scope, Execute, Rules หรือ Expected Outcome
+6. บันทึก findings พร้อม evidence
 
 ### 3. Check Sections And Style
 
@@ -192,5 +193,6 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ยืนยัน style conventions ครบถ้วน
 - ทุก skill มี SRP ชัดเจน ไม่มีเนื้อหาซ้ำซ้อน
 - ไม่มี broken references และ bidirectional references ครบ
+- `related` skills ถูกอ้างถึงในเนื้อหา `SKILL.md`
 - Skills จัดเรียงตาม prefix และ alphabetical
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -19,6 +19,7 @@ related:
 สรุป deployment และ CI/CD failures ทีเกิดขึ้นจาก GitHub Actions และ Cloudflare Workers
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `follow-service-vercel`, `follow-service-cloudflare`, `open-cloudflare-workers`
 
 ใช้สำหรับตรวจสอบ failures ทั้งหมดจาก CI/CD (GitHub Actions) และ cloud deployment (Cloudflare Workers) โดยไม่แก้ไขหรือ re-run อะไร
 

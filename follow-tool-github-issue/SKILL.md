@@ -13,6 +13,7 @@ related:
 ใช้ `gh issue` สร้าง ค้นหา ดู แก้ไข ปิด เปิด และจัดการ issues ของ repository ผ่าน CLI โดยใช้โหมด interactive หรือ flags
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `open-github-pr`, `list-github-issue`, `create-github-issue`
 
 ใช้กับ issues ของ repository ที่ `gh` รู้จัก (จาก current directory หรือ `--repo`) ไม่ครอบคลุม project management โดยตรง
 

@@ -10,6 +10,7 @@ related:
 รัน E2E tests สำหรับ browser testing ด้วย Playwright หรือ Cypress
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-test-all-routes`
 
 ใช้สำหรับรัน browser-based E2E tests ครอบคลุม user flows, critical paths, และ cross-browser compatibility
 

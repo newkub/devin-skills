@@ -16,6 +16,7 @@ related:
 สร้าง GitHub issue ใหม่ด้วยข้อมูลที่ครบถ้วนและเป็นระเบียบ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `implement-github-issue`, `create-github-pull-request`, `open-github-issue`, `open-github-repo-personal`, `open-github-repo-org`
 
 - สร้าง issue ใน repository ที่ระบุ
 - ตั้งค่า metadata (title, body, labels, assignees, milestones)

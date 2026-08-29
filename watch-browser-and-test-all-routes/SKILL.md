@@ -19,6 +19,7 @@ related:
 เปิด browser ด้วย `agent-browser` แล้ว list ทุก route/หน้า ทดสอบ actions ทุกอย่าง (เช่น button, toggle, dropdown, click, autofill, drag and drop) ทุกหน้า และใช้ `/review-by-stakeholder`
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-fix`, `watch-browser-console`, `run-test-e2e`, `follow-tool-agent-browser`
 
 ใช้สำหรับ E2E testing ทุก route ของ website รวมถึงการระบุ actions ทีมีในแต่ละหน้า และทดสอบ interactions อย่างครบถ้วน
 

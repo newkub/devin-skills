@@ -14,6 +14,7 @@ related:
 Deploy application ไปยัง Railway ด้วย `railway up` จนกว่า deployment จะ live สำเร็จ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `deploy-to-cloudflare`, `deploy-to-vercel`, `run-deploy`
 
 ครอบคลุมการติดตั้ง CLI, ตั้งค่า project, deploy, ตรวจสอบ deployment และ fix errors
 

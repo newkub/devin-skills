@@ -19,6 +19,7 @@ related:
 เปิดหน้า GitHub pull request ใน browser ด้วย native OS command
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `follow-tool-github-issue`, `list-github-pull-request`, `create-github-pull-request`, `review-github-pull-request`, `merge-github-pull-request`, `open-github-repo-personal`, `open-github-repo-org`
 
 ใช้เปิด pull request ด้วย `owner/repo` + `pr-number` หรือ URL ทีให้มา โดยไม่แก้ไข pull request
 

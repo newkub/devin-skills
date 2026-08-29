@@ -14,6 +14,7 @@ related:
 ตรวจสอบคุณภาพ, ความชัดเจน และความครบถ้วนของ issue ก่อนเริ่มงาน
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `list-github-issue`, `create-github-issue`, `implement-github-issue`
 
 ใช้ก่อน implement หรือ assign issue
 

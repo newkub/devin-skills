@@ -17,6 +17,7 @@ related:
 เปิดหน้า repositories ของ GitHub profile ส่วนตัวใน browser ด้วย native OS command
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-repo-org`, `open-github-issue`, `open-github-pr`, `list-github-repo`, `list-github-star-latest`, `search-in-github-star`
 
 - เปิด `https://github.com/<username>?tab=repositories`
 - ถ้าไม่ระบุ username ให้ดึงจาก `gh api user`

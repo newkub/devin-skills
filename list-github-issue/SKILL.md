@@ -14,6 +14,7 @@ related:
 แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `create-github-issue`, `review-github-issue`, `list-github-pull-request`
 
 ใช้สำหรับดู issues ของ repository ใดๆ บน GitHub ที่ authenticated user มีสิทธิ์เข้าถึง
 

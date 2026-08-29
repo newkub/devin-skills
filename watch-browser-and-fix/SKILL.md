@@ -17,6 +17,7 @@ related:
 เปิด browser ด้วย `agent-browser` แล้ว capture หน้าเว็บ แก้ไข errors ที่พบ ถ้าแก้ไม่ได้ให้ fallback ไป `/watch-browser-console` และ confirm ว่า web server ทำงานได้
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-test-all-routes`, `watch-browser-and-improve-uxui`, `run-program`, `follow-tool-agent-browser`
 
 ใช้สำหรับ browser automation ทีต้องการ monitor หน้าเว็บ แก้ไข errors ทีเกิดขึ้น และ ensure ว่า web server ยังคงทำงานได้
 

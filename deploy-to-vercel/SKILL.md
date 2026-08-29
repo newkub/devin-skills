@@ -16,6 +16,7 @@ related:
 Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่ build, deploy, commit/push จนถึง post-deploy validation
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel`
 
 ครอบคลุม Vercel CLI, link project, build, deploy, watch, และ fix ถ้าไม่ผ่าน
 

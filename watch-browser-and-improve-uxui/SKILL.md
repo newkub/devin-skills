@@ -16,6 +16,7 @@ related:
 เปิด browser ด้วย `agent-browser` แล้ว capture หน้าเว็บ เพื่อ review และ improve UX/UI ด้วย `/review-by-stakeholder`
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-fix`, `watch-browser-and-test-all-routes`, `follow-tool-agent-browser`
 
 ใช้สำหรับ capture หน้าเว็บจริง วิเคราะห์ UX/UI ผ่าน stakeholder review และ implement การปรับปรุงทีเหมาะสม
 

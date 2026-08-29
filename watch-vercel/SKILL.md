@@ -14,6 +14,7 @@ related:
 Watch Vercel deployment status ด้วย CLI และ URL poll แล้ว fix จน deployment live สำเร็จ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `follow-service-vercel`
 
 ใช้หลัง deploy ไป Vercel แล้วต้องการตรวจสอบสถานะ หา runtime errors และ fix จน URL ใช้งานได้
 

@@ -15,6 +15,7 @@ related:
 แสดงรายการ Cloudflare Workers หรือ Cloudflare Pages functions พร้อมสถานะล่าสุด deployment และข้อผิดพลาดทีอาจเกิดขึ้น
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-deployment-fails`, `list-cloudflare-projects`
 
 ใช้เมื่อต้องการตรวจสอบ workers ที deploy ไม่ผ่านหรือมี runtime errors ใน Cloudflare account ของผู้ใช้ โดยใช้ `wrangler` หรือ Cloudflare API
 

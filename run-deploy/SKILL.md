@@ -14,6 +14,7 @@ related:
 Deploy application ไปยัง platform ที่กำหนด พร้อม post-deploy validation, commit/push และ watch browser จนกว่า deployment จะ live
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `review-deploy`
 
 ครอบคลุมการ verify, build, deploy, commit/push, post-deploy validation, watch until live และ rollback & recovery
 

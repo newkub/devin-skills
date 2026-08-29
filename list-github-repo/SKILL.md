@@ -13,6 +13,7 @@ related:
 แสดงรายการ repositories ทั้งหมดที่ผู้ใช้สร้างบน GitHub พร้อมข้อมูลสำคัญ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-repo-personal`, `open-github-repo-org`, `list-github-project`
 
 ใช้สำหรับดู repositories ทั้งหมดของ authenticated user บน GitHub
 

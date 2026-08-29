@@ -16,6 +16,7 @@ related:
 Merge pull request ด้วยวิธีทีเหมาะสม (merge, squash, rebase) พร้อมตรวจสอบ CI, review approval และ conflicts
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `refactor-commit`, `git-commit`, `git-push`, `deep-validate`, `open-github-pr`, `review-github-pull-request`
 
 ใช้เมื่อ PR พร้อม merge ต้องการเลือก strategy อย่างถูกต้องและ merge อย่างปลอดภัย
 

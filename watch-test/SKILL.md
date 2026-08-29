@@ -12,6 +12,7 @@ related:
 Watch test status อย่างต่อเนื่อง ตรวจจับ test failures และ fix จนกว่าจะผ่านทั้งหมด โดยไม่รวมการรัน test watch mode เป็นเวลานาน (เป็นหน้าที่ของ `/run-watch-test`)
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-test-all-routes`, `analyze-performance-profile`
 
 ใช้เมื่อต้องการ monitor test ของ project ครั้งเดียวจนกว่าจะผ่าน ครอบคลุม Vitest, Jest, pytest, cargo test, go test และ test runner อื่นๆ
 

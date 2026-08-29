@@ -14,6 +14,7 @@ related:
 สรุป GitHub Actions workflow runs ที conclusion=failure หรือ status ล้มเหลว ทั้งหมดที user เข้าถึงบน GitHub
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `list-github-repo`, `list-deployment-fails`
 
 ใช้สำหรับตรวจสอบ CI/CD failures ทั่วทุก personal repositories และ organization repositories ที user เป็นสมาชิก โดยใช้ `gh` CLI
 

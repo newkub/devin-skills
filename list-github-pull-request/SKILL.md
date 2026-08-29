@@ -14,6 +14,7 @@ related:
 แสดงรายการ pull requests ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `open-github-issue`, `create-github-pull-request`, `review-github-pull-request`
 
 ใช้สำหรับดู pull requests ของ repository ใดๆ บน GitHub กรองตาม state ได้
 
