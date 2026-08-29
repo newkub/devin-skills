@@ -6,6 +6,8 @@ related:
   - ship
   - ship-release
   - setup-ci-cd
+  - setup-package
+  - setup-release
   - run-verify
   - watch-ci-and-resolve
   - watch-cd-and-resolve
@@ -64,6 +66,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 - `crates`: ตรวจสอบ `Cargo.toml` มี name, version, description, license, repository, categories, keywords, edition, rust-version
 - `webstore`: ตรวจสอบ `manifest.json` มี name, version, manifest_version, permissions, icons, action
 - `docker`: ตรวจสอบ `Dockerfile` มี FROM, WORKDIR, COPY, RUN และ `.dockerignore` มีการ exclude files
+- ถ้า package manifest หรือ release config ไม่ครบ → ทำ `/setup-package` หรือ `/setup-release` ก่อน แล้วกลับมาทำ `/run-release` ใหม
 
 ### 3. Setup Authentication
 

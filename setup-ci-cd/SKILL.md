@@ -2,6 +2,8 @@
 name: setup-ci-cd
 description: ตรวจจับ platform และตั้งค่า CI/CD config files, secrets และ workflows
 related:
+  - setup-package
+  - setup-release
   - follow-tool-github-actions
   - follow-secret-manager
   - open-github-secrets
@@ -46,12 +48,13 @@ related:
 > Goal: มั่นใจว่า package manifest มี scripts ที CI จะเรียก ตามขนาด project
 
 1. อ่าน `package.json` หรือ `Cargo.toml` หรือไฟล์ manifest ที่เหมาะสม
-2. ตรวจสอบขนาด project:
+2. ถ้า package manifest ขาด fields พื้นฐานสำหรับ publish (`name`, `version`, `description`, `license`, `repository`) → ทำ `/setup-package` ก่อน
+3. ตรวจสอบขนาด project:
    - ถ้า project เล็ก (ไม่ monorepo, build/test ไม่หนัก) → `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
    - ถ้า project ใหญ่ (monorepo หรือ build/test หนัก) → CI/CD pipeline จะรัน full suite แทน; package manifest ต้องมี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
-3. ถ้าไม่มี scripts `verify`, `test:all`, `build` → ทำ `/follow-tasks` เพื่อตั้งค่า
-4. ตรวจว่า `verify` ครบตามขนาด project
-5. ถ้า project ไม่มี package manifest → ทำ `/review-delivery` เพื่อตั้งค่า
+4. ถ้าไม่มี scripts `verify`, `test:all`, `build` → ทำ `/follow-tasks` เพื่อตั้งค่า
+5. ตรวจว่า `verify` ครบตามขนาด project
+6. ถ้า project ไม่มี package manifest → ทำ `/review-delivery` เพื่อตั้งค่า
 
 ### 3. Setup Secrets
 
@@ -107,7 +110,9 @@ jobs:
 
 3. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
 
-4. ถ้าต้องการ release ให้สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
+4. ถ้าต้องการ release:
+   - ถ้ายังไม่มี release tool หรือ release workflow → ทำ `/setup-release` ก่อน
+   - สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
 
 ```yaml
 name: release

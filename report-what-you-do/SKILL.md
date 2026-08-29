@@ -1,6 +1,10 @@
 ---
 name: report-what-you-do
 description: รายงานสิ่งที agent กำลังทำ ทำไม และขั้นตอนถัดไปแบบ real-time
+related:
+  - setup-ci-cd
+  - setup-package
+  - setup-release
 ---
 
 ## Goal

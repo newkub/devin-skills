@@ -4,6 +4,9 @@ description: Review config files หา drift, missing, duplicate, shared config
 argument-hint: "[path]"
 related:
   - report-config-files
+  - setup-ci-cd
+  - setup-package
+  - setup-release
   - follow-devin-skills
   - follow-devin-global-subagents
   - follow-tool-mise
@@ -111,6 +114,9 @@ Review ทุก configuration files ใน project ว่ามีอะไร�
    - security risks
    - version inconsistencies
 4. ระบุ next actions สำหรับ `/update-config`
+   - ถ้า package manifest ขาด fields สำหรับ publish → แนะนำ `/setup-package`
+   - ถ้า release workflow หรือ release tool ขาด → แนะนำ `/setup-release`
+   - ถ้า CI/CD config ขาด/ผิด → แนะนำ `/setup-ci-cd`
 
 ## Rules
 

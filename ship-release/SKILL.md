@@ -8,6 +8,8 @@ related:
   - create-dev-branch
   - follow-git-flow
   - follow-github
+  - setup-package
+  - setup-release
   - run-release
   - run-deploy
   - watch-cd-and-resolve
@@ -120,6 +122,9 @@ related:
 1. ยืนยันว่าอยู่ใน `REPO_ROOT` หรือ worktree ที `main` ถูก checkout
 2. ถ้า `main` ไม่ถูก checkout ที่ไหน → `git switch main` ใน `REPO_ROOT`
 3. ถ้า `main` ถูก checkout ทีอื่น → `cd` ไป worktree นั้น
+4. ตรวจ package manifest และ release config ก่อน release:
+   - ถ้า `package.json`/`Cargo.toml` ขาด fields สำหรับ publish → `/setup-package`
+   - ถ้าไม่มี release workflow หรือ release tool → `/setup-release`
 5. `git pull origin main` เพื่ออัปเดต
 6. รอ `main` CI ผ่านก่อน release/deploy:
    - หา `MAIN_SHA` จาก `git rev-parse main`

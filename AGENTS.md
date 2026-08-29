@@ -106,7 +106,7 @@ Major skill families by current count:
 - `list-*` (47): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-action-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
 - `update-*` (34): repo, skills, docs, config, runtime, and version maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-runtime-latest`, `update-review-cli`
-- `setup-*` (1): one-time setup helpers. Examples: `setup-ci-cd`
+- `setup-*` (3): one-time setup helpers. Examples: `setup-ci-cd`, `setup-package`, `setup-release`
 - `report-*` (35): reporting, diagrams, and visualization helpers. Examples: `report-what-you-do`, `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-task-progress`
 - `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`

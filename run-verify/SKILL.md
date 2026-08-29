@@ -1,6 +1,6 @@
 ---
 name: run-verify
-description: รัน verify แบบครบวงจร (scan, lint, typecheck, test, build) บน local หรือ CI/CD ตามขนาด project
+description: รัน verify แบบครบวงจร (scan, format, lint, typecheck, test, build) บน local หรือ CI/CD ตามขนาด project
 related:
   - run-scan
   - run-lint
@@ -23,7 +23,7 @@ related:
 
 ## Goal
 
-รัน verify แบบครบวงจร scan, lint, typecheck, test, build โดยเลือก local หรือ CI/CD ตามขนาด project
+รัน verify แบบครบวงจร scan, format, lint, typecheck, test, build โดยเลือก local หรือ CI/CD ตามขนาด project
 
 ## Scope
 
@@ -60,8 +60,8 @@ related:
 > Goal: รัน verify บน local ผ่าน package manifest
 
 1. อ่าน package manifest (`package.json`, `Cargo.toml`, etc.)
-2. ถ้าไม่มี script `verify` → ทำ `/follow-tasks` เพื่อสร้าง `verify` = `scan + lint + typecheck + test + build`
-3. ถ้า `verify` ไม่ครบ 5 ส่วน → ทำ `/follow-tasks` เพื่อเติม
+2. ถ้าไม่มี script `verify` → ทำ `/follow-tasks` เพื่อสร้าง `verify` = `scan + format + lint + typecheck + test + build` (format ก่อน lint)
+3. ถ้า `verify` ไม่ครบ 6 ส่วน → ทำ `/follow-tasks` เพื่อเติม
 4. รัน `verify` script บน local (เช่น `bun run verify`)
 5. ถ้า fail → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 
@@ -96,11 +96,11 @@ related:
 - ไม่ hardcode secrets
 
 ### 4. Package Manifest
-- small project ต้องมี `verify` = `scan + lint + typecheck + test + build`
+- small project ต้องมี `verify` = `scan + format + lint + typecheck + test + build` (format ก่อน lint)
 - large project ใช้ CI/CD pipeline รัน full suite
 
 ## Expected Outcome
 
-- small project: code ผ่าน scan, lint, typecheck, test, build บน local
+- small project: code ผ่าน scan, format, lint, typecheck, test, build บน local
 - large project: branch ถูก push, CI/CD pipeline ผ่าน หรือมี root cause + next action ชัดเจน
 - ไม่มี merge/release/deploy โดยอัตโนมัติ

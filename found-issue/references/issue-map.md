@@ -20,6 +20,8 @@
 | long files (>250 บรรทัด) | `/check-long-files`, `/refactor` |
 | code duplication | `/check-code-structure`, `/follow-tool-jscpd` |
 | broken references / skill refs ขาด | `/check-broken-skills-references`, `/update-references` |
+| package manifest ไม่พร้อม publish | `/setup-package` |
+| release workflow/config ขาด | `/setup-release`, `/follow-release` |
 | TODO/MOCK/placeholder เหลือ | `/report-scan-todo`, `/implement-mock` |
 | dependencies outdated | `/update-dependencies-latest`, `/update-version-latest`, `/follow-tool-taze` |
 | ไฟล์/branch/worktree รก | `/run-cleanup`, `/cleanup-files-in-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
