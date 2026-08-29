@@ -7,7 +7,7 @@ related:
   - follow-create-web-paas
   - follow-solid-tanstack
   - follow-lib-unocss
-  - follow-service-auth
+  - follow-lib-better-auth
   - follow-service-stripe
   - review-uxui
   - review-frontend
@@ -65,7 +65,7 @@ related:
 
 > Goal: จัดการ authentication
 
-1. ทำ `/follow-service-auth` เลือก provider
+1. ทำ `/follow-lib-better-auth` เลือก provider
 2. สร้าง `src/routes/login`, `src/routes/register`, `src/routes/dashboard`
 3. ป้องกัน routes ทีต้อง auth ด้วย middleware
 4. ตรวจสอบ session, token, refresh logic

@@ -7,7 +7,7 @@ related:
   - follow-create-web-saas
   - follow-solid-tanstack
   - follow-lib-unocss
-  - follow-service-auth
+  - follow-lib-better-auth
   - follow-service-stripe
   - review-uxui
   - review-frontend
