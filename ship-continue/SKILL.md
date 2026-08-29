@@ -32,8 +32,8 @@ Continue ship flow จาก state ปัจจุบันโดยไม่ต
 
 1. ทำ `git branch --show-current` → `CURRENT_BRANCH`
 2. ทำ `git status --porcelain`
-3. ทำ `git log --oneline origin/<CURRENT_BRANCH>..HEAD`
-4. ถ้ามี remote branch → ตรวจ CI status ด้วย `gh run list --branch <CURRENT_BRANCH> --limit 1` หรือ `/run-verify-on-ci-cd`? No, just check.
+3. ตรวจ upstream ด้วย `git rev-parse --abbrev-ref --symbolic-full-name @{u}`; ถ้ามี → ทำ `git log --oneline origin/<CURRENT_BRANCH>..HEAD` ถ้าไม่มี → ข้าม
+4. ถ้ามี remote branch → ตรวจ CI status ด้วย `gh run list --branch <CURRENT_BRANCH> --limit 1`
 5. อ่าน `AGENTS.md` ship-flow ถ้ามี
 
 ### 2. Decide Next Action
@@ -98,7 +98,9 @@ Continue ship flow จาก state ปัจจุบันโดยไม่ต
 
 ### 5. Safety
 
-- ถ้า `CURRENT_BRANCH` คือ `main` แต่มี uncommitted → ให้ `/ship` ก่อน แล้วถามก่อน release
+- ถ้า `CURRENT_BRANCH` คือ `main` แต่มี uncommitted → ให้ `/ship` ก่อน แล้ว re-evaluate state
+- ถ้า `CURRENT_BRANCH` คือ `main` clean และต้องการ release/deploy → `/ship-release` ได้
+- ถ้า `CURRENT_BRANCH` คือ `main` แต่ไม่มี release/deploy config หรือไม่ชัด → report และหยุด ไม่ release อัตโนมัติ
 - ไม่ release โดยอัตโนมัติถ้าไม่มี evidence ว่า CI ผ่าน
 
 ## Expected Outcome

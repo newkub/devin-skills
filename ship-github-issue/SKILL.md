@@ -11,7 +11,6 @@ related:
   - follow-github
   - open-github-issue
   - create-github-issue
-  - use-git-worktrees
   - delete-git-worktree
   - follow-plan
   - report-table
@@ -61,13 +60,13 @@ related:
 
 > Goal: สร้าง workspace สำหรับทำงานบน issue
 
-1. สร้าง branch `dev/<number>` จาก `dev`:
+1. ตรวจ `git status --porcelain` ใน main working tree ต้องสะอาดหรือ commit ก่อน
+2. สร้าง branch `dev/<number>` และ worktree ในครั้งเดียวกัน:
    ```bash
-   git switch -c dev/<number> dev
+   git worktree add worktrees/dev-<number> -b dev/<number> dev
    ```
-2. ทำ `/use-git-worktrees dev/<number> dev`
-   → สร้าง `worktrees/dev-<number>/`
-3. ทำงานใน worktree ทีสร้างขึ้น
+3. ตรวจ `git worktree list` เพื่อยืนยันว่า worktree ถูกสร้าง
+4. ทำงานใน `worktrees/dev-<number>/`
 
 ### 5. Implement
 

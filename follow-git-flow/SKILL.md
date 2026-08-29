@@ -73,7 +73,9 @@ related:
    exit 0
    ```
 4. ทำ `git config --local core.hooksPath .githooks`
-5. บน Windows อาจต้อง `chmod +x .githooks/pre-commit .githooks/pre-push` ถ้าใช้ Git Bash
+5. ทำ `git config --local core.filemode false` เพื่อไม่ให้ Windows ล็อก executable bit
+6. ทำ `git update-index --chmod=+x .githooks/pre-commit .githooks/pre-push` เพื่อบันทึก executable bit ใน git index
+7. บน Windows ถ้าไม่ใช้ Git Bash ให้ตรวจสอบว่า `sh.exe` จาก Git for Windows อยู่ใน PATH หรือใช้ `.githooks/pre-commit.ps1` / `pre-push.ps1` แทน
 
 ### 4. Setup Worktree Convention
 

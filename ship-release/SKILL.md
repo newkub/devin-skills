@@ -60,13 +60,21 @@ related:
    ```bash
    gh pr create --head dev/<number> --base dev --fill
    ```
-2. รอ CI บน PR ผ่าน
-3. Merge PR:
+2. ดึง PR number ล่าสุด:
    ```bash
-   gh pr merge <pr-number> --merge
+   PR_NUMBER=$(gh pr list --head dev/<number> --base dev --limit 1 --json number --jq '.[0].number')
    ```
-4. ถ้า merge ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry
-5. `git fetch origin dev` เพื่ออัปเดต local `dev`
+3. รอ CI บน PR ผ่าน:
+   ```bash
+   gh pr checks $PR_NUMBER --watch
+   ```
+   ถ้า fail → หยุด และทำ `/resolve-errors` แล้ว retry
+4. Merge PR:
+   ```bash
+   gh pr merge $PR_NUMBER --merge
+   ```
+5. ถ้า merge ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry
+6. `git fetch origin dev` เพื่ออัปเดต local `dev`
 
 ### 4. Promote dev To main
 
@@ -81,13 +89,22 @@ related:
    ```bash
    gh pr create --head dev --base main --fill
    ```
-4. รอ CI + review (ถ้ามี required review)
-5. Merge PR:
+4. ดึง PR number ล่าสุด:
    ```bash
-   gh pr merge <pr-number> --merge
+   PR_NUMBER=$(gh pr list --head dev --base main --limit 1 --json number --jq '.[0].number')
    ```
-6. ถ้า merge ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry
-7. `git fetch origin main` เพื่ออัปเดต local `main`
+5. รอ CI บน PR ผ่าน:
+   ```bash
+   gh pr checks $PR_NUMBER --watch
+   ```
+   ถ้า fail → หยุด และทำ `/resolve-errors` แล้ว retry
+6. ถ้ามี required review ให้ตรวจ review ด้วย `gh pr view $PR_NUMBER --json reviewDecision`
+7. Merge PR:
+   ```bash
+   gh pr merge $PR_NUMBER --merge
+   ```
+8. ถ้า merge ไม่สำเร็จ → ทำ `/resolve-errors` แล้ว retry
+9. `git fetch origin main` เพื่ออัปเดต local `main`
 
 ### 5. Release And Deploy
 
@@ -96,28 +113,40 @@ related:
 1. `git switch main` ใน current worktree ถ้า `main` ไม่ถูก checkout ทีอื่น
 2. ถ้า `main` ถูก checkout ทีอื่น → ทำงานใน worktree นั้น
 3. `git pull origin main` เพื่ออัปเดต
-4. ถ้า project ต้องการ release → ทำ `/run-release`
-5. ถ้า project ต้องการ deploy → ทำ `/run-deploy`
-6. ถ้าไม่ต้องการ release/deploy → report และไป step Cleanup
+4. รอ `main` CI ผ่านก่อน release/deploy:
+   ```bash
+   RUN_ID=$(gh run list --branch main --limit 1 --json databaseId --jq '.[0].databaseId')
+   gh run watch $RUN_ID
+   ```
+   ถ้า fail → หยุด และทำ `/resolve-errors` แล้ว retry
+5. ถ้า project ต้องการ release → ทำ `/run-release`
+6. ถ้า project ต้องการ deploy → ทำ `/run-deploy`
+7. ถ้าไม่ต้องการ release/deploy → report และไป step Cleanup
 
 ### 6. Close Issue And Cleanup
 
 > Goal: ปิด issue และลบ branch/worktree ทีหมดบทบาท
 
 1. ถ้ามี `ISSUE_NUMBER` → `gh issue close <ISSUE_NUMBER>`
-2. ลบ local branch `dev/<number>`:
+2. ตรวจ worktree ก่อนลบ:
    ```bash
-   git branch -D dev/<number>
+   git -C worktrees/dev-<number> status --porcelain
    ```
-3. ลบ remote branch ถ้ายังเหลือ:
+   ถ้ามี uncommitted changes → stop และ report ให้ `/ship` ใน worktree ก่อน
+3. ลบ worktree ถ้ามี:
+   ```bash
+   git worktree remove worktrees/dev-<number>
+   ```
+4. ลบ local branch ถ้ามี (safe delete):
+   ```bash
+   git branch -d dev/<number>
+   ```
+   ถ้า fail เนื่องจากยังไม่ถูก merge → หยุดและ report
+5. ลบ remote branch ถ้ายังเหลือ:
    ```bash
    git push origin --delete dev/<number>
    ```
-4. ลบ worktree ถ้ามี:
-   ```bash
-   /delete-git-worktree dev/<number>
-   ```
-5. `git remote prune origin`
+6. `git remote prune origin`
 
 ### 7. Report
 

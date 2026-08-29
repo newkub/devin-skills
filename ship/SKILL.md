@@ -63,7 +63,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 > Goal: ตรวจสอบความพร้อมก่อน commit
 
 1. ทำ `/run-verify-on-local` ถ้า `AGENTS.md` หรือ workspace ระบุ
-2. ทำ `/test-all` ถ้ามี test suites
+2. ทำ `/run-test-all` ถ้ามี test suites
 3. ทำ `/update-review-codebase-cli-and-run` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
 4. ทำ `/deep-validate` เพื่อ validate ผลลัพธ์
 5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
@@ -121,11 +121,16 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 - ทำตาม `## Execute` ของแต่ละ skill จนครบ
 - ก่อน mark `completed` ต้อง verify `## Expected Outcome` ของ sub-workflow นั้น
 
+### 6. AGENTS.md Discipline
+
+- ถ้า `AGENTS.md` ระบุ `## Execute` ทีสั่นให้เรียก `/ship` ซ้ำ → ข้าม และใช้ default verify → commit → report
+- ไม่ตีความ `/follow-agents-md` เป็นการเรียก `/ship` ซ้ำอัตโนมัติ
+
 ## Expected Outcome
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-verify-on-local`, `/test-all`, `/update-review-codebase-cli-and-run` (ถ้ามี) และ `/deep-validate`
+- Code ผ่าน `/run-verify-on-local`, `/run-test-all`, `/update-review-codebase-cli-and-run` (ถ้ามี) และ `/deep-validate`
 - ทุก submodule ที่มี changes ถูก commit ก่อน root
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ
