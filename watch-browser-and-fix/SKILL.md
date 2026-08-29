@@ -1,108 +1,140 @@
 ---
-name: watch-browser
-description: เปิดเบราว์เซอร์ด้วย agent-browser และ watch หน้าเว็บต่อเนื่อง
+name: watch-browser-and-fix
+description: เปิด browser ด้วย agent-browser แล้ว capture แก้ไข ถ้าแก้ไม่ได้ใช้ /watch-browser-console และ confirm web server ทำงานได้
 argument-hint: "[url]"
 related:
-  - watch-browser-and-test
+  - watch-browser-console
+  - watch-browser-and-test-all-routes
+  - watch-browser-and-improve-uxui
+  - resolve-errors
+  - run-dev
+  - run-program
+  - follow-tool-agent-browser
 ---
 
 ## Goal
 
-เปิดเบราว์เซอร์ด้วย `agent-browser` และ watch หน้าเว็บต่อเนื่อง พร้อมจัดการ errors อัตโนมัติ
+เปิด browser ด้วย `agent-browser` แล้ว capture หน้าเว็บ แก้ไข errors ที่พบ ถ้าแก้ไม่ได้ให้ fallback ไป `/watch-browser-console` และ confirm ว่า web server ทำงานได้
 
 ## Scope
 
-ใช้สำหรับ browser automation และ continuous monitoring ด้วย `agent-browser` CLI
+ใช้สำหรับ browser automation ทีต้องการ monitor หน้าเว็บ แก้ไข errors ทีเกิดขึ้น และ ensure ว่า web server ยังคงทำงานได้
 
 ## Execute
 
-### 1. Run Typecheck
+### 1. Verify Web Server
 
-> Goal: ตรวจสอบ type safety ก่อนเริ่ม watch browser
+> Goal: ตรวจสอบว่า web server ทำงานได้ก่อนเริ่ม watch
 
-ถ้า project ใช้ TypeScript ให้ทำ `/run-typecheck` ก่อนเริ่ม watch browser เพื่อให้แน่ใจว่าโค้ดผ่าน type check
+1. ถ้ามี URL → ใช้ `agent-browser open <url> --headless` หรือ `curl` ตรวจสอบ response
+2. ถ้าไม่มี URL → หา dev server จาก `package.json` `scripts.dev` หรือใช้ `/run-dev`
+3. ถ้า server ไม่ทำงาน → แก้ไขก่อนดำเนินการต่อ
+4. บันทึก health status
 
 ### 2. Install And Verify Agent Browser
 
 > Goal: Install And Verify Agent Browser
-
-ติดตั้งด้วย `bun add -g agent-browser` แล้วรัน `agent-browser install` (ดูรายละเอียดที่ `/follow-tool-agent-browser`)
 
 1. ตรวจสอบการติดตั้งด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser`
 3. ดาวน์โหลด Chrome ด้วย `agent-browser install`
 4. ถ้าติดตั้งไม่ได้ ให้ใช้ `browser-preview` tool แทน
 
-### 3. Open Browser
+### 3. Open Browser And Capture
 
-> Goal: Open Browser
-
-เปิด browser และ navigate ไปยัง URL ที่ต้องการ watch ด้วย `agent-browser open <url> --headed` (ดูรายละเอียดที่ `/follow-tool-agent-browser`)
+> Goal: เปิด browser และ capture หน้าเว็บ
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
 2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
+3. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เพื่อ capture หน้าปัจจุบัน
+4. บันทึกสิ่งที่แสดงในหน้าจอและ interactive elements
 
-### 4. Watch And Monitor
+### 4. Detect And Fix Errors
 
-> Goal: Watch And Monitor
+> Goal: ตรวจหาและแก้ไข errors ทีพบ
 
-Monitor อย่างต่อเนื่องด้วย `agent-browser snapshot -i` และจัดการ errors ด้วย `/resolve-errors` (ดูคำสั่งเต็มที่ `/follow-tool-agent-browser`)
+1. ใช้ `agent-browser console` และ `agent-browser errors` เพื่อดู console/page errors
+2. ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements
+3. ทำ `/resolve-errors` เมื่อพบ error ทีสามารถแก้ไขได้
+4. ถ้า error มาจาก source code → แก้ไข root cause ไม่ใช่ suppress
+5. ถ้า error มาจาก web server หยุดทำงาน → กลับไปขั้นตอน `Verify Web Server`
 
-1. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เพื่อ capture หน้าจอก่อนว่าแสดงอะไร
-2. ถ้าอยากดูเพิ่มหรือต้องการ focus ที่ console errors → ใช้ `/watch-browser-console`
-3. ใช้ `agent-browser snapshot -i` สำหรับ interactive elements และ `agent-browser console` สำหรับ console messages
+### 5. Fallback To Watch Browser Console
 
-### 5. Cleanup
+> Goal: จัดการกรณีแก้ไขไม่ได้ด้วย /watch-browser-console
+
+1. ถ้าแก้ไข error ไม่ได้หลัง 3 รอบ → เรียก `/watch-browser-console`
+2. ใช้ `/watch-browser-console` เพื่อ monitor console errors อย่างละเอียด
+3. บันทึก logs และ stack traces ทียังคงเหลือ
+4. ถ้า error ยังคงเกิดขึ้น → stop และ report พร้อม evidence
+
+### 6. Confirm Web Server Works
+
+> Goal: ยื่นยันว่า web server ยังทำงานได้หลัง fix
+
+1. รีโหลดหน้าเว็บด้วย `agent-browser reload`
+2. ตรวจสอบ response status และ console errors อีกครั้ง
+3. ใช้ `agent-browser screenshot` เพื่อ capture หน้าหลัง fix
+4. ถ้า server ไม่ทำงาน → ทำ `/resolve-errors` หรือ `/run-dev` อีกครั้ง
+
+### 7. Cleanup
 
 > Goal: ปิด browser session อย่างสะอาด
 
 1. ปิด browser session ด้วย `agent-browser close`
-2. สรุปผลลัพธ์และ errors ที่พบ
+2. สรุปผล: errors ที่พบ, fixes ที่แก้, สถานะ web server, fallback ที่ใช้
+3. ใช้ `/report-table` เพื่อแสดงสรุป
 
 ## Rules
 
-### 1. Continuous Monitoring
+### 1. Capture Before Fix
 
-Monitor อย่างต่อเนื่องและมีประสิทธิภาพ ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements และ refs อย่างต่อเนื่อง (ดูคำสั่งเต็มที่ `/follow-tool-agent-browser`)
-
-- ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements และ refs อย่างต่อเนื่อง
-- ใช้ `agent-browser snapshot` เพื่อดู full accessibility tree
-- ใช้ `agent-browser screenshot` เมื่อจำเป็นสำหรับ debugging
-- ใช้ `agent-browser screenshot --annotate` สำหรับ annotated screenshot พร้อม element labels
-- ใช้ `agent-browser console` สำหรับดู console messages
-- ใช้ `agent-browser errors` สำหรับดู page errors
-- ใช้ `/watch-browser-console` สำหรับ continuous console monitoring โดยเฉพาะ
+- ต้อง capture หน้าเว็บก่อนแก้ไขเสมอด้วย `agent-browser screenshot` หรือ `agent-browser snapshot -i`
+- บันทึก interactive elements และ state ก่อน fix
+- ใช้ `agent-browser screenshot --annotate` เมื่อต้องการระบุ element ทีเกิดปัญหา
 
 ### 2. Error Handling
-
-จัดการ errors ด้วย `/resolve-errors` เมื่อเจอ error และใช้ `browser-preview` tool เป็น fallback (ดูรายละเอียดที่ `/follow-tool-agent-browser`)
 
 - เมื่อเจอ error ต้องเรียก `/resolve-errors` ทันที
 - ถ้า `daemon` error ให้ใช้ `browser-preview` tool แทน
 - ถ้า `agent-browser` ไม่ติดตั้ง ให้ใช้ `browser-preview` tool แทน
-- บันทึก error logs ด้วย `agent-browser console` และ `agent-browser errors`
-- ตรวจสอบ element availability ก่อน interact ด้วย `agent-browser wait @e1`
+- ถ้า error เกิดจาก web server หยุดทำงาน → แก้ server ก่อน
 
-### 3. Timeout And Retry Limits
+### 3. Fallback To Console
 
-- `timeout` = `600` วินาที (10 นาที) สำหรับการ watch ทั้งหมด
-- `maxErrors` = `20` ก่อน stop และ report
-- `maxRetries` = `3` สำหรับ `agent-browser` crash recovery
-- ถ้าเกิน timeout หรือ maxErrors → stop และ report สรุป errors ที่พบ
+- ถ้าแก้ error ไม่ได้หลัง `maxRetries` = 3 รอบ → เรียก `/watch-browser-console`
+- ไม่ต้องพยายาม fix ซ้ำเกิน 3 รอบก่อน fallback
+- `/watch-browser-console` ใช้สำหรับ monitor console errors โดยเฉพาะ
 
-### 4. Graceful Shutdown
+### 4. Verify Web Server
+
+- ตรวจสอบ web server health ก่อนและหลัง fix
+- ถ้า server ไม่ทำงาน → หยุด watch และแก้ไข server ก่อน
+- ใช้ `agent-browser open` หรือ `curl` เพื่อ verify
+
+### 5. Timeout And Retry Limits
+
+- `timeout` = 600 วินาที (10 นาที) สำหรับการ watch ทั้งหมด
+- `maxErrors` = 20 ก่อน stop และ report
+- `maxRetries` = 3 สำหรับ fix แต่ละ error ก่อน fallback
+- `crashRecovery` = 3 สำหรับ `agent-browser` crash
+
+### 6. Graceful Shutdown
 
 - หยุดทันทีเมื่อ user กด `Ctrl+C`
 - ปิด browser session ด้วย `agent-browser close` ก่อนหยุด
+- บันทึกสถานะสุดท้ายก่อน cleanup
 
-### 5. Rollback Safety
+### 7. Rollback Safety
 
 - ก่อนแก้ไข code ด้วย `/resolve-errors` ให้สร้าง checkpoint ด้วย `git stash`
 - ถ้า fix สร้าง error ใหม่ → `git stash pop` เพื่อคืนค่า
+- ถ้า web server พังหลัง fix → revert และ `/ask-me`
 
 ## Expected Outcome
 
-- Browser เปิดและ watch URL อย่างต่อเนื่อง
-- Console และ network requests ถูก monitor อย่างต่อเนื่อง
-- Errors ที่เกิดขึ้นถูกแก้ไขอัตโนมัติ
+- Browser เปิดและ capture หน้าเว็บได้
+- Errors ที่พบถูกแก้ไขหรือ fallback ไป `/watch-browser-console` อย่างถูกต้อง
+- Web server ยื่นยันว่าทำงานได้หลัง fix
 - การ watch ทำงานต่อเนื่องโดยไม่ขัดจังหวะ
+- ไม่มี TODO/MOCK/placeholder

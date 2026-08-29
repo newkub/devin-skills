@@ -3,7 +3,7 @@ name: watch-test
 description: Watch test status และ fix test failures จนกว่าจะผ่านทั้งหมด
 argument-hint: "[file-or-pattern]"
 related:
-  - watch-browser-and-test
+  - watch-browser-and-test-all-routes
   - analyze-performance-profile
 ---
 

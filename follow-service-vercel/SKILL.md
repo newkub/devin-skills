@@ -119,7 +119,7 @@ export default async function handler(req: Request) {
 
 > Goal: ตรวจสอบ deployment ด้วย browser preview
 
-1. ทำ `/watch-browser` ด้วย deployment URL
+1. ทำ `/watch-browser-and-fix` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
 4. ทำ `/resolve-errors` เมื่อพบปัญหา
@@ -179,7 +179,7 @@ jobs:
 - ใช้ `bunx vercel deploy` สำหรับ preview
 - ใช้ `bunx vercel deploy --prod` สำหรับ production
 - ตั้งค่า protection rules สำหรับ production deployments
-- ใช้ `/watch-browser` สำหรับ monitoring
+- ใช้ `/watch-browser-and-fix` สำหรับ monitoring
 - ทำ `/loop-until-complete` จนกว่า deployment live
 
 ### 6. Advanced Configuration

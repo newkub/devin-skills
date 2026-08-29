@@ -46,7 +46,7 @@ description: รัน preview build เพื่อทดสอบก่อน 
 ทดสอบ preview ใน browser
 
 1. เปิด preview URL ใน browser
-2. ทำ `/watch-browser` เพื่อตรวจสอบหน้าเว็บต่อเนื่อง
+2. ทำ `/watch-browser-and-fix` เพื่อตรวจสอบหน้าเว็บต่อเนื่อง
 3. ทดสอบ features สำคัญที่เปลี่ยนแปลงล่าสุด
 4. ตรวจสอบ console errors และ warnings
 5. ทำ `/run-test` สำหรับทดสอบแบบละเอียด
@@ -94,7 +94,7 @@ description: รัน preview build เพื่อทดสอบก่อน 
 - ทดสอบ features ที่เปลี่ยนแปลงล่าสุดก่อน
 - ทดสอบ critical user flows ทุกครั้ง
 - ทดสอบ responsive design บนหลาย screen sizes
-- ใช้ `/watch-browser` สำหรับตรวจสอบต่อเนื่อง
+- ใช้ `/watch-browser-and-fix` สำหรับตรวจสอบต่อเนื่อง
 - ใช้ `/run-test` สำหรับทดสอบแบบละเอียด
 - ใช้ `/report-table` สำหรับรายงาน issues
 - Preview server ควรหยุดเมื่อไม่ใช้งาน

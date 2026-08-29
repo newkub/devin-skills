@@ -69,7 +69,7 @@ Commit และ push changes ไปยัง repository
 1. เปิด URL ของ deployment
 2. ตรวจสอบว่า application ทำงานได้
 3. ตรวจสอบ logs ว่าไม่มี error
-4. ทำ `/watch-browser` ถ้ามี URL
+4. ทำ `/watch-browser-and-fix` ถ้ามี URL
 
 ### 6. Watch Until Live
 
@@ -77,7 +77,7 @@ Commit และ push changes ไปยัง repository
 
 Watch deployment ด้วย browser จนกว่าจะ live
 
-1. ทำ `/watch-browser` ด้วย deployment URL
+1. ทำ `/watch-browser-and-fix` ด้วย deployment URL
 2. ตรวจสอบว่า page load สำเร็จ
 3. ตรวจสอบ console errors และ network errors
 4. ทำ `/resolve-errors` ถ้าพบปัญหา
@@ -134,7 +134,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 
 ### 5. Watch Until Live
 
-- ใช้ `/watch-browser` สำหรับ monitoring
+- ใช้ `/watch-browser-and-fix` สำหรับ monitoring
 - ใช้ `/resolve-errors` เมื่อพบปัญหา
 - ตรวจสอบ console และ network errors
 - ทำ `/loop-until-complete` จนกว่า deployment live

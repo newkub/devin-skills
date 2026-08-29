@@ -3,7 +3,8 @@ name: watch-browser-console
 description: Watch browser console อย่างต่อเนื่อง จัดการ errors อัตโนมัติด้วย agent-browser
 argument-hint: "[url]"
 related:
-  - watch-browser-and-test
+  - watch-browser-and-test-all-routes
+  - watch-browser-and-fix
 ---
 
 ## Goal
@@ -90,7 +91,7 @@ Monitor console อย่างต่อเนื่อง
 
 ### 3. Integration With Watch Browser
 
-- ใช้ `/watch-browser` สำหรับ monitoring ที่ครอบคลุมทั้ง snapshot และ console
+- ใช้ `/watch-browser-and-fix` สำหรับ monitoring ที่ครอบคลุมทั้ง snapshot และ console
 - ใช้ `/watch-browser-console` เฉพาะเมื่อต้องการ focus ที่ console errors เท่านั้น
 - ทั้งสอง workflow ใช้ `agent-browser` CLI และ `browser-preview` tool เป็น base
 

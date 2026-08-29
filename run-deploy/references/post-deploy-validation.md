@@ -32,7 +32,7 @@
 ตรวจสอบ error logs หลัง deploy 5-10 นาที:
 
 - ตรวจ platform logs (Cloudflare dashboard, Vercel logs, Railway logs)
-- ตรวจ browser console errors ผ่าน `/watch-browser`
+- ตรวจ browser console errors ผ่าน `/watch-browser-and-fix`
 - ตรวจ network errors ใน browser DevTools
 - ถ้าพบ critical errors → ทำ rollback ทันที และทำ `/resolve-errors`
 

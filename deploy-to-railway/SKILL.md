@@ -78,7 +78,7 @@ Deploy application ไปยัง Railway
 2. รอจนกว่า status เป็น `SUCCESS` (ห้ามรายงานสำเร็จก่อนถึงขั้นนี้)
 3. ถ้า status เป็น `FAILED` หรือ `CRASHED` ให้ทำ `/resolve-errors`
 4. ตรวจสอบ logs ด้วย `railway logs --lines 200`
-5. ทำ `/watch-browser` ด้วย deployment URL ถ้ามี domain
+5. ทำ `/watch-browser-and-fix` ด้วย deployment URL ถ้ามี domain
 
 ### 6. Fix Errors
 

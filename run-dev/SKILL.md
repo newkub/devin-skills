@@ -50,7 +50,7 @@ description: รัน development server และแก้ไขข้อผ�
 
 > Goal: Watch Browser (ถ้าเป็น web)
 
-1. ถ้าเป็น web project ให้ทำ `/watch-browser` เพื่อตรวจสอบ browser
+1. ถ้าเป็น web project ให้ทำ `/watch-browser-and-fix` เพื่อตรวจสอบ browser
 2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
 3. ทดสอบ features หลักทำงานได้
 
@@ -86,7 +86,7 @@ description: รัน development server และแก้ไขข้อผ�
 
 - ทำ `/open-web` เฉพาะ web project เพื่อเปิด browser ที่ dev server URL
 - ทำ `/watch-terminal` สำหรับทุก project
-- ทำ `/watch-browser` เฉพาะ web project
+- ทำ `/watch-browser-and-fix` เฉพาะ web project
 - ถ้าพบ errors ระหว่าง watch ให้ทำ `/resolve-errors` ทันที
 
 ## Expected Outcome

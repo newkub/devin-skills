@@ -5,7 +5,7 @@ related:
   - follow-service-vercel
   - deploy-to-vercel
   - fix
-  - watch-browser
+  - watch-browser-and-fix
   - resolve-errors
 ---
 
@@ -33,7 +33,7 @@ Watch Vercel deployment status ด้วย CLI และ URL poll แล้ว 
 
 1. รัน `bunx vercel inspect <url>` หรือ `bunx vercel deployments ls`
 2. บันทึก status, state, created at, inspector URL
-3. Poll deployment URL ด้วย `/watch-browser` หรือ `curl`
+3. Poll deployment URL ด้วย `/watch-browser-and-fix` หรือ `curl`
 4. ตรวจ logs ด้วย `bunx vercel logs <url>` ถ้ามี error
 
 ### 3. Triage Failure

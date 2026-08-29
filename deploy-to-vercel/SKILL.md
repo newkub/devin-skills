@@ -8,7 +8,7 @@ related:
   - watch-vercel
   - run-build
   - git-commit
-  - watch-browser
+  - watch-browser-and-fix
 ---
 
 ## Goal
@@ -50,7 +50,7 @@ Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่
 > Goal: ยืนยันว่า deployment live
 
 1. ทำ `/watch-vercel` ด้วย preview URL
-2. ทำ `/watch-browser` ด้วย URL
+2. ทำ `/watch-browser-and-fix` ด้วย URL
 3. รอจนสถานะ `READY`
 
 ### 5. Commit And Push
