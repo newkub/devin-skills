@@ -4,7 +4,7 @@ description: รัน verify แบบเร็วใน local ครอบค�
 related:
   - run-verify-full
   - run-verify-cloud
-  - ship-cloud
+  - ship-to-cloud
   - run-task-all
   - run-test
   - run-test-all
@@ -21,7 +21,7 @@ related:
 ## Scope
 
 ตรวจสอบคุณภาพโค้ดด้วย verify script ใน local ที่รวม scan, typecheck, lint, test และ build
-ถ้าต้องการ verify บน cloud/CI ให้ใช้ `/run-verify-cloud` หรือ `/ship-cloud`
+ถ้าต้องการ verify บน cloud/CI ให้ใช้ `/run-verify-cloud` หรือ `/ship-to-cloud`
 
 ## Execute
 

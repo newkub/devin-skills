@@ -2,7 +2,8 @@
 name: run-verify-cloud
 description: Push branch ไปยัง remote และรัน verify บน CI/CD แล้วรายงานผล
 related:
-  - ship-cloud
+  - ship-to-cloud
+  - ship-release
   - setup-ci-cd
   - watch-ci-cd
   - watch-github-actions
@@ -22,7 +23,8 @@ Push branch ไปยัง remote แล้วรัน verify บน CI/CD pip
 ใช้เมื่อต้องการ verify code บน environment จริงของ CI/CD โดยไม่ต้อง merge, release หรือ deploy
 ครอบคลุม GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins, Cloudflare Pages, Vercel
 
-ถ้าต้องการ commit/push/fix/release/deploy ทั่วทั้ง flow ให้ใช้ `/ship-cloud`
+ถ้าต้องการ commit/push/fix บน cloud ให้ใช้ `/ship-to-cloud`
+ถ้าต้องการ full ship flow รวม release/deploy ให้ใช้ `/ship-release`
 
 ## Execute
 
@@ -32,7 +34,7 @@ Push branch ไปยัง remote แล้วรัน verify บน CI/CD pip
 
 1. ทำ `git branch --show-current`, `git status`, และ `git log origin/<branch>..HEAD`
 2. ถ้าไม่มี remote → stop และ report ให้ตั้งค่า remote หรือใช้ `/git-push`
-3. ถ้า working tree มี uncommitted changes → stop และ report ให้ commit ก่อนหรือใช้ `/ship-cloud`
+3. ถ้า working tree มี uncommitted changes → stop และ report ให้ commit ก่อนหรือใช้ `/ship-to-cloud`
 4. ถ้าไม่มี commits ทียังไม่ได้ push → ทำ `/git-push` แล้วไปขั้นตอนถัดไป
 
 ### 2. Detect CI/CD Platform
@@ -40,7 +42,7 @@ Push branch ไปยัง remote แล้วรัน verify บน CI/CD pip
 > Goal: ระบุ platform และตรวจสอบ CI/CD config
 
 1. ค้นหา config files: `.github/workflows/*.{yml,yaml}`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `.circleci/config.yml`, `Jenkinsfile`, `wrangler.toml`, `vercel.json`
-2. ถ้าไม่พบ CI/CD config → stop และ report ให้ใช้ `/setup-ci-cd` หรือ `/ship-cloud` ก่อน
+2. ถ้าไม่พบ CI/CD config → stop และ report ให้ใช้ `/setup-ci-cd` หรือ `/ship-to-cloud` ก่อน
 3. ถ้าพบหลาย platform → เรียงตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins → Cloudflare → Vercel
 
 ### 3. Push And Trigger
@@ -75,7 +77,7 @@ Push branch ไปยัง remote แล้วรัน verify บน CI/CD pip
 > Goal: รายงานผล verify บน cloud
 
 1. ใช้ `/report-table` สรุป: platform, run ID, status, duration, root cause, action
-2. ถ้า fail → ชี้ไปยัง `/resolve-errors` หรือ `/ship-cloud` เพื่อแก้ไข
+2. ถ้า fail → ชี้ไปยัง `/resolve-errors` หรือ `/ship-to-cloud` เพื่อแก้ไข
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -84,13 +86,13 @@ Push branch ไปยัง remote แล้วรัน verify บน CI/CD pip
 
 - `run-verify-cloud` ทำเฉพาะ push branch และ verify บน CI
 - ไม่ commit, ไม่ merge, ไม่ release, ไม่ deploy
-- ถ้าต้องการ full ship flow ให้ใช้ `/ship-cloud`
+- ถ้าต้องการ full ship flow รวม release/deploy ให้ใช้ `/ship-release`
 
 ### 2. No Auto Fix
 
 - ไม่แก้ source หรือ test โดยอัตโนมัติ
-- ถ้า fail → report root cause และส่งต่อไป `/resolve-errors` หรือ `/ship-cloud`
-- ถ้าต้องการ fix loop บน cloud ให้ใช้ `/ship-cloud`
+- ถ้า fail → report root cause และส่งต่อไป `/resolve-errors` หรือ `/ship-to-cloud`
+- ถ้าต้องการ fix loop บน cloud ให้ใช้ `/ship-to-cloud`
 
 ### 3. Safety
 

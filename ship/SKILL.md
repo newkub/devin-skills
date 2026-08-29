@@ -2,7 +2,9 @@
 name: ship
 description: Ship workspace ใน local ที่เลือก โดยทำตาม AGENTS.md และอัปเดต skills ก่อน commit
 related:
-  - ship-cloud
+  - ship-to-cloud
+  - ship-github-issue
+  - ship-release
   - ship-continuous-dont-ask
   - update-agents-md
   - follow-agents-md
@@ -23,7 +25,9 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ใน local ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules
 ไม่รวม push หรือ release
-ถ้าต้องการ ship บน cloud/CI ให้ใช้ `/ship-cloud`
+ถ้าต้องการ ship บน cloud/CI ให้ใช้ `/ship-to-cloud`
+ถ้าต้องการ release/deploy ให้ใช้ `/ship-release`
+ถ้าต้องการทำงานตาม issue ทั่งหมด ให้ใช้ `/ship-github-issue`
 สำหรับหลาย workspace ให้เรียก `/ship` แต่ละ workspace ตามลำดับ dependency
 
 ## Execute
@@ -91,8 +95,9 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 - `ship` สิ้นสุดที root commit ใน local เท่านั้น
 - `ship` ไม่ push, ไม่ release, ไม่ deploy
-- ถ้า user ต้องการ push หรือ cloud verify → ใช้ `/ship-cloud`
-- ถ้า user ต้องการ release เฉพาะ → ทำ `/run-release` หลัง `/ship`
+- ถ้า user ต้องการ push หรือ cloud verify → ใช้ `/ship-to-cloud`
+- ถ้า user ต้องการ release/deploy บน `main` → ใช้ `/ship-release`
+- ถ้า user ต้องการทำงานตาม issue ทั่งหมด → ใช้ `/ship-github-issue`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
 ### 3. Update Skills Before Ship
