@@ -14,13 +14,13 @@ bun add -D taze
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `taze` | Check dependency updates within current semver range | `-r, --recursive`, `--include`, `--exclude`, `--include-locked`, `-l, --show-locked`, `--peer`, `--write`, `--install`, `--json`, `--interactive` |
-| `taze major` | Allow major (breaking) updates | same as above |
-| `taze minor` | Allow minor updates within same major | same as above |
-| `taze patch` | Allow patch updates | same as above |
-| `taze --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `taze` | Check dependency updates within current semver range | — | `-r, --recursive`, `--include`, `--exclude`, `--include-locked`, `-l, --show-locked`, `--peer`, `--write`, `--install`, `--json`, `--interactive` |
+| `taze major` | Allow major (breaking) updates | — | same as above |
+| `taze minor` | Allow minor updates within same major | — | same as above |
+| `taze patch` | Allow patch updates | — | same as above |
+| `taze --help` | Show help | — | (none) |
 
 ## Options
 

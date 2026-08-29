@@ -13,6 +13,7 @@
 || `review-integration.md` | ตรวจ integration กับ `tools/review-codebase`: import จาก `tools-analyze`, ไม่ duplicated logic, dependency check |
 || `scoring.md` | คำนวณ review score และ grade: severity weights, grade thresholds, action threshold |
 || `index.md` | ตาราง mapping reference file กับความรับผิดชอบ (ไฟล์นี้) |
+| [website.md](website.md) | Official resources and links |
 
 ## Usage
 

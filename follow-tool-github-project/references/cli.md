@@ -14,16 +14,16 @@ bun add -D gh
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `gh project create` | Create project | --owner, --title, --closed |
-| `gh project list` | List projects | --owner, --limit |
-| `gh project view <number>` | View project | --owner, --closed |
-| `gh project item-list <number>` | List items | --owner, --limit |
-| `gh project item-add <number>` | Add item | --owner, --content, --url |
-| `gh project item-edit <id>` | Edit item | --owner, --field, --text, --single-select-option |
-| `gh project item-delete <id>` | Delete item | --owner, --project-id, --yes |
-| `gh project field-list <number>` | List fields | --owner |
+| commands | description | default | options |
+|---|---|---|---|
+| `gh project create` | Create project | — | --owner, --title, --closed |
+| `gh project list` | List projects | — | --owner, --limit |
+| `gh project view <number>` | View project | — | --owner, --closed |
+| `gh project item-list <number>` | List items | — | --owner, --limit |
+| `gh project item-add <number>` | Add item | — | --owner, --content, --url |
+| `gh project item-edit <id>` | Edit item | — | --owner, --field, --text, --single-select-option |
+| `gh project item-delete <id>` | Delete item | — | --owner, --project-id, --yes |
+| `gh project field-list <number>` | List fields | — | --owner |
 ## Examples
 
 ```sh

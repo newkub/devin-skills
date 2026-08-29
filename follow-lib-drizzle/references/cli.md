@@ -1,35 +1,27 @@
 # Drizzle Kit CLI
 
+## Install
+
+```sh
+bun add -D drizzle-kit
+```
+
+## Version
+
+- Latest: see `drizzle-kit` on npm
+- Docs: https://orm.drizzle.team/docs/kit-overview
+
 ## Commands
 
-```bash
-# Push schema directly to database (rapid prototyping)
-bunx drizzle-kit push
-
-# Generate migration files from schema diff
-bunx drizzle-kit generate
-
-# Generate with name
-bunx drizzle-kit generate --name=add_users_table
-
-# Apply generated migrations
-bunx drizzle-kit migrate
-
-# Pull schema from existing database (introspection)
-bunx drizzle-kit pull
-
-# Export schema as SQL
-bunx drizzle-kit export
-
-# Check for schema drift between migrations and schema
-bunx drizzle-kit check
-
-# Open Drizzle Studio (GUI for browsing data)
-bunx drizzle-kit studio
-
-# Use custom config file
-bunx drizzle-kit generate --config=drizzle-dev.config.ts
-```
+| commands | description | default | options |
+|---|---|---|---|
+| `drizzle-kit push` | Push schema directly to database | no migration files | `--config`, `--connection-string` |
+| `drizzle-kit generate` | Generate migration files from schema diff | migrations in `./drizzle` | `--name`, `--config` |
+| `drizzle-kit migrate` | Apply generated migrations | run pending migrations | `--config`, `--connection-string` |
+| `drizzle-kit pull` | Pull schema from existing database | introspect into schema file | `--config`, `--connection-string` |
+| `drizzle-kit export` | Export schema as SQL | output SQL file | `--config` |
+| `drizzle-kit check` | Check schema drift between migrations and schema | report drift | `--config` |
+| `drizzle-kit studio` | Open Drizzle Studio GUI | open browser | `--config`, `--port`, `--host` |
 
 ## Migration Strategy
 

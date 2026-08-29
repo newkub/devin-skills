@@ -3,7 +3,7 @@
 ## Core Commands
 
 | Command | Description |
-|---------|-------------|
+|---|---|
 | `storybook dev` | Start development server |
 | `storybook build` | Build static site for production |
 | `storybook test` | Run tests (Vitest addon) |
@@ -13,7 +13,7 @@
 ## Options
 
 | Flag | Description |
-|------|-------------|
+|---|---|
 | `--port` | Set port number |
 | `--no-open` | Don't open browser automatically |
 | `--debug` | Enable debug mode |
@@ -23,7 +23,7 @@
 ## Package Manager Flags
 
 | Flag | Description |
-|------|-------------|
+|---|---|
 | `--package-manager` | Specify package manager (bun, bun, yarn, bun) |
 | `--type` | Specify project type (react, vue, angular, svelte, etc.) |
 

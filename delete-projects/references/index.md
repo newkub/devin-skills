@@ -8,6 +8,7 @@
 | Wrangler | Commands | https://developers.cloudflare.com/workers/wrangler/commands/ |
 | GitHub CLI | `gh repo delete` | https://cli.github.com/manual/gh_repo_delete |
 | Git | `git remote` | https://git-scm.com/docs/git-remote |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

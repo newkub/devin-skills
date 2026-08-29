@@ -12,3 +12,4 @@
 | [scoring.md](scoring.md) | Platform Review Score Formula |
 | [seo.md](seo.md) | SEO Checks |
 | [ssr-state-routing-pwa.md](ssr-state-routing-pwa.md) | SSR, State, Routing, PWA Review |
+| [website.md](website.md) | Official resources and links |

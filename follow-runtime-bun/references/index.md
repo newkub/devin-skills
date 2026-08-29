@@ -12,3 +12,6 @@
 - `use-bun-scripts` — Bun scripts
 - `follow-create-bun-cli` — create CLI with Bun
 - `follow-tool-bunup` — bundle TypeScript libraries with Bunup
+
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

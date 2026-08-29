@@ -10,6 +10,8 @@
 | `index.md` | ไฟล์นี้ — ดัชนีรวมรายการ reference files และหน้าที่ของแต่ละไฟล์ |
 | `oxlint-config.md` | อ้างอิงการกำหนดค่า Oxlint โดยรวม: รูปแบบ config file (`.oxlintrc.json` / `oxlint.config.ts`), ฟิลด์ `plugins` และ `jsPlugins`, `categories` (correctness/suspicious/pedantic/perf/style/restriction/nursery), reserved plugin names และ CLI flags ที่เกี่ยวข้อง |
 | `js-plugins.md` | อ้างอิง JavaScript plugins: การใช้ฟิลด์ `jsPlugins`, รูปแบบ string vs object, การกำหนด alias สำหรับ reserved names, คำเตือนสถานะ alpha พร้อมตัวอย่าง |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## วิธีใช้งาน
 

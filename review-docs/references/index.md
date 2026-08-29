@@ -7,3 +7,4 @@
 | `frontmatter.md` | Frontmatter validation for all markdown files |
 | `content-quality.md` | Content quality, real data, markdown-only, language rules |
 | `scoring.md` | Review score formula and grade mapping |
+| [website.md](website.md) | Official resources and links |

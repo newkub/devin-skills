@@ -19,6 +19,8 @@
 | [triggers-and-cron.md](triggers-and-cron.md) | Cron triggers + scheduled handler |
 | [ci-cd.md](ci-cd.md) | CI/CD integration |
 | [troubleshooting.md](troubleshooting.md) | ปัญหาที่พบบ่อย + error codes + debug |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Source
 

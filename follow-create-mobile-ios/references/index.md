@@ -8,6 +8,7 @@
 | Swift Docs | https://www.swift.org/documentation/ |
 | SwiftUI | https://developer.apple.com/documentation/swiftui |
 | Swift Package Manager | https://www.swift.org/documentation/package-manager/ |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

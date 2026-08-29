@@ -14,10 +14,10 @@ bun add -D @websearch/cli # see docs
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `websearch <query>` | Search the web | --limit, --engine, --json |
-| `websearch --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `websearch <query>` | Search the web | — | --limit, --engine, --json |
+| `websearch --help` | Show help | — | (none) |
 
 ## Notes
 

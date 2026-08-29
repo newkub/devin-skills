@@ -14,11 +14,11 @@ rustup component add clippy
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `cargo clippy` | Run clippy on current package | -- -W clippy::all, -- -D warnings, --all-targets, --all-features |
-| `cargo clippy --fix` | Apply auto-fixable suggestions | --allow-dirty, --allow-staged, --broken-code |
-| `cargo clippy --tests` | Lint tests | -- -D clippy::pedantic |
+| commands | description | default | options |
+|---|---|---|---|
+| `cargo clippy` | Run clippy on current package | — | -- -W clippy::all, -- -D warnings, --all-targets, --all-features |
+| `cargo clippy --fix` | Apply auto-fixable suggestions | — | --allow-dirty, --allow-staged, --broken-code |
+| `cargo clippy --tests` | Lint tests | — | -- -D clippy::pedantic |
 ## Examples
 
 ```sh

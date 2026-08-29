@@ -9,3 +9,4 @@
 | [scoring.md](scoring.md) | Review score formula and grade mapping |
 | [syntax.md](syntax.md) | KDL syntax validation checks |
 | [usage-md-freshness.md](usage-md-freshness.md) | USAGE.md freshness checks |
+| [website.md](website.md) | Official resources and links |

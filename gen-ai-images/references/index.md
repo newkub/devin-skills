@@ -6,6 +6,7 @@
 |---|---|---|
 | Pollinations CLI | `bunx @pollinations/cli gen image` | no API key |
 | flux-replicate-mcp | `bunx flux-replicate-mcp` | needs `REPLICATE_API_TOKEN` |
+| [website.md](website.md) | Official resources and links |
 
 ## Docs
 

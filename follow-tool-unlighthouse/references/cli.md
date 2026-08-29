@@ -14,12 +14,12 @@ bun add -D unlighthouse
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `unlighthouse --site <url>` | Audit site | --output-path, --no-cache, --desktop, --mobile, --samples |
-| `unlighthouse-puppeteer` | Run with puppeteer | --site, --urls, --exclude |
-| `unlighthouse-ci` | CI mode | --site, --budget, --reporter |
-| `unlighthouse --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `unlighthouse --site <url>` | Audit site | — | --output-path, --no-cache, --desktop, --mobile, --samples |
+| `unlighthouse-puppeteer` | Run with puppeteer | — | --site, --urls, --exclude |
+| `unlighthouse-ci` | CI mode | — | --site, --budget, --reporter |
+| `unlighthouse --help` | Show help | — | (none) |
 ## Examples
 
 ```sh

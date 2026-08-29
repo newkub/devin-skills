@@ -1,7 +1,7 @@
 # Instant CLI Reference
 
 | Command | Description |
-|---------|-------------|
+|---|---|
 | `npx instant-cli@latest login` | Authenticate with Instant account |
 | `npx instant-cli@latest logout` | Remove local authentication token |
 | `npx instant-cli@latest init` | Pick/create app and generate `instant.schema.ts` and `instant.perms.ts` |

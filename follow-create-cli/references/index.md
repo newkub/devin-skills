@@ -3,3 +3,4 @@
 | File | Responsibility |
 |---|---|
 | [cli-frameworks.md](cli-frameworks.md) | CLI creation frameworks for Rust (clap) and Bun for building CLI applications |
+| [website.md](website.md) | Official resources and links |

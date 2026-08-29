@@ -14,13 +14,13 @@ bun add -D vitepress
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `vitepress dev [dir]` | Start dev server on port 5173 | --port, --host, --base, --config, --temp |
-| `vitepress build [dir]` | Build docs to `.vitepress/dist` | --base, --config, --clean, --mpa |
-| `vitepress preview [dir]` | Preview built docs | --port, --host, --base |
-| `vitepress init` | Initialize VitePress project | --yes |
-| `vitepress --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `vitepress dev [dir]` | Start dev server on port 5173 | — | --port, --host, --base, --config, --temp |
+| `vitepress build [dir]` | Build docs to `.vitepress/dist` | — | --base, --config, --clean, --mpa |
+| `vitepress preview [dir]` | Preview built docs | — | --port, --host, --base |
+| `vitepress init` | Initialize VitePress project | — | --yes |
+| `vitepress --help` | Show help | — | (none) |
 ## Examples
 
 ```sh

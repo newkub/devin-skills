@@ -18,3 +18,5 @@
 | [nuxt-blog-2024-2025.md](nuxt-blog-2024-2025.md) | Nuxt blog: posts from 2024-2025 (v3.16, Nuxt Icon, Nuxt Scripts, v3.12, ESLint) |
 | [nuxt-blog-2019-2023.md](nuxt-blog-2019-2023.md) | Nuxt blog: posts from 2019-2023 (v3.0, v3 RC, v3 Beta, Nuxt 2 static, prefetching) |
 | [nuxt-ui-module.md](nuxt-ui-module.md) | @nuxt/ui module: installation, templates, Vue/Nuxt setup, contribution guide |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

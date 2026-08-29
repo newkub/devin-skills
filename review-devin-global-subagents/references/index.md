@@ -15,6 +15,7 @@ description: ตาราง mapping reference files กับความรั
 | `safety.md` | ตรวจสอบ safety: ไม่มี secrets hardcoded, `permissions` deny risky paths, `allowed-tools` เหมาะสม |
 | `scoring.md` | สูตรคำนวณ review score, grade A-F, action threshold Score<70 |
 | `index.md` | ตาราง mapping reference files กับความรับผิดชอบ (ไฟล์นี้) |
+| [website.md](website.md) | Official resources and links |
 
 ## Usage
 

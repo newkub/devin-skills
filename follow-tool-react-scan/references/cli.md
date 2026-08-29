@@ -14,12 +14,12 @@ bun add -D react-scan
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `react-scan` | Start React Scan overlay | --port, --no-open, --output |
-| `react-scan <url>` | Scan URL | --headless, --port, --output |
-| `npx react-scan` | Run without install | (none) |
-| `react-scan --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `react-scan` | Start React Scan overlay | — | --port, --no-open, --output |
+| `react-scan <url>` | Scan URL | — | --headless, --port, --output |
+| `npx react-scan` | Run without install | — | (none) |
+| `react-scan --help` | Show help | — | (none) |
 ## Examples
 
 ```sh

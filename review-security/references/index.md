@@ -12,3 +12,4 @@
 | 9. File Upload Security | `file-upload.md` |
 | 10. Security Risk Analysis | `security-risk.md` |
 | Scoring | `scoring.md` |
+| [website.md](website.md) | Official resources and links |

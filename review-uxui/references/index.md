@@ -9,3 +9,4 @@
 | [scoring.md](scoring.md) | UX/UI Review Score Formula |
 | [visual-design.md](visual-design.md) | Visual Design Checks |
 | [user-flow.md](user-flow.md) | User Flow and Journey Mapping |
+| [website.md](website.md) | Official resources and links |

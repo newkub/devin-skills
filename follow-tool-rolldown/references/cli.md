@@ -14,12 +14,12 @@ bun add -D rolldown
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `rolldown <input>` | Bundle entry file to `dist/` with default ESM format | `--file`, `--dir`, `--format`, `--name`, `--globals`, `--external`, `--plugin`, `--minify`, `--sourcemap`, `--watch`, `--silent`, `-c, --config` |
-| `rolldown -c` / `rolldown --config <file>` | Use `rolldown.config.*` | (none) |
-| `rolldown --help` | Show help | (none) |
-| `rolldown --version` | Print version | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `rolldown <input>` | Bundle entry file to `dist/` with default ESM format | — | `--file`, `--dir`, `--format`, `--name`, `--globals`, `--external`, `--plugin`, `--minify`, `--sourcemap`, `--watch`, `--silent`, `-c, --config` |
+| `rolldown -c` / `rolldown --config <file>` | Use `rolldown.config.*` | — | (none) |
+| `rolldown --help` | Show help | — | (none) |
+| `rolldown --version` | Print version | — | (none) |
 
 ## Examples
 

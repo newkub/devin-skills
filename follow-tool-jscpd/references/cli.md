@@ -14,12 +14,12 @@ bun add -D jscpd
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `jscpd [paths]` | Detect copy/paste in paths; default threshold `null` | `--min-lines`, `--min-tokens`, `--max-lines`, `--max-size`, `--threshold`, `-c, --config`, `--ignore`, `--reporters`, `--output`, `--mode`, `--pattern`, `--blame`, `--silent`, `--workers`, `--absolute`, `--no-gitignore` |
-| `cpd [paths]` | Alias for `jscpd` | same as `jscpd` |
-| `jscpd --list` | List supported formats | (none) |
-| `jscpd --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `jscpd [paths]` | Detect copy/paste in paths | default threshold `null` | `--min-lines`, `--min-tokens`, `--max-lines`, `--max-size`, `--threshold`, `-c, --config`, `--ignore`, `--reporters`, `--output`, `--mode`, `--pattern`, `--blame`, `--silent`, `--workers`, `--absolute`, `--no-gitignore` |
+| `cpd [paths]` | Alias for `jscpd` | — | same as `jscpd` |
+| `jscpd --list` | List supported formats | — | (none) |
+| `jscpd --help` | Show help | — | (none) |
 
 ## Options
 

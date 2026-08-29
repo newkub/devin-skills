@@ -52,7 +52,7 @@ yarn <script>                 # Run script
 ## Core Commands
 
 | Command | Description |
-|---------|-------------|
+|---|---|
 | `node -v` | Node.js version |
 | `npm -v` | npm version |
 | `pnpm -v` | pnpm version |

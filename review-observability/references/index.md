@@ -11,3 +11,4 @@
 | 8. APM Integration | `apm.md` |
 | 9. Incident Response Readiness | `incident-response.md` |
 | Scoring | `scoring.md` |
+| [website.md](website.md) | Official resources and links |

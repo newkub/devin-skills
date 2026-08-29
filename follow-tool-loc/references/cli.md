@@ -14,10 +14,10 @@ cargo install loc
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `loc [paths]` | Count lines of code in target directory; respects `.gitignore` | `--files`, `--sort`, `--include`, `--exclude`, `-u, -uu`, `--languages` |
-| `loc --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `loc [paths]` | Count lines of code in target directory | respects `.gitignore` | `--files`, `--sort`, `--include`, `--exclude`, `-u, -uu`, `--languages` |
+| `loc --help` | Show help | — | (none) |
 
 ## Options
 

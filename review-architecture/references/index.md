@@ -12,3 +12,4 @@
 | [scoring.md](scoring.md) | Architecture Review Score Formula |
 | [data-flow.md](data-flow.md) | Data Flow Tracing |
 | [cost-impact.md](cost-impact.md) | Cost Impact Analysis |
+| [website.md](website.md) | Official resources and links |

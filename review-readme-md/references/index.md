@@ -13,6 +13,7 @@
 | `workspace-consistency.md` | กฎการตรวจสอบ workspace READMEs ใน monorepo |
 | `scoring.md` | กฎการคำนวณ review score, grade และ action threshold |
 | `index.md` | ตาราง mapping reference file แต่ละไฟล์กับความรับผิดชอบ |
+| [website.md](website.md) | Official resources and links |
 
 ## Usage
 

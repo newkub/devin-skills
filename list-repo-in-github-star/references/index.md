@@ -6,6 +6,7 @@
 |---|---|
 | List starred repos | https://docs.github.com/en/rest/activity/starring |
 | gh CLI | https://cli.github.com/manual/gh_api |
+| [website.md](website.md) | Official resources and links |
 
 ## Commands
 

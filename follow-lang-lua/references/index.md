@@ -9,3 +9,4 @@
 | [official-resources.md](official-resources.md) | Official Lua websites, LuaJIT, LuaRocks, documentation sites, GitHub repositories, and standards |
 | [community-and-learning.md](community-and-learning.md) | Community resources, learning materials, blogs, social media, events, books, video tutorials, and cheat sheets |
 | [libraries-and-tools.md](libraries-and-tools.md) | Game development frameworks, IDEs, libraries, testing tools, and language integration bindings |
+| [website.md](website.md) | Official resources and links |

@@ -5,6 +5,7 @@
 | Resource | URL |
 |---|---|
 | Excalidraw JSON Schema | https://docs.excalidraw.com/docs/codebase/json-schema |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

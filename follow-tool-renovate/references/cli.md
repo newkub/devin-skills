@@ -14,12 +14,12 @@ bun add -D renovate
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `renovate` | Run Renovate on configured repos | --autodiscover, --dry-run, --log-level |
-| `renovate --dry-run` | Simulate only | --autodiscover, --repositories, --token |
-| `renovate-config-validator` | Validate Renovate config | --strict |
-| `renovate --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `renovate` | Run Renovate on configured repos | — | --autodiscover, --dry-run, --log-level |
+| `renovate --dry-run` | Simulate only | — | --autodiscover, --repositories, --token |
+| `renovate-config-validator` | Validate Renovate config | — | --strict |
+| `renovate --help` | Show help | — | (none) |
 ## Examples
 
 ```sh

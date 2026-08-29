@@ -14,12 +14,12 @@ cargo install cargo-mutants --locked
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `cargo mutants` | Run mutation tests in cwd; shuffled order by default | `--dir`, `--manifest-path`, `--file`, `--exclude`, `--re`, `--exclude-re`, `--jobs`, `--timeout`, `--config`, `--no-config` |
-| `cargo mutants --list` | List mutants without running | `--json`, `--diff` |
-| `cargo mutants --check` | Run `cargo check` on mutants | (none) |
-| `cargo mutants --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `cargo mutants` | Run mutation tests in cwd | shuffled order by default | `--dir`, `--manifest-path`, `--file`, `--exclude`, `--re`, `--exclude-re`, `--jobs`, `--timeout`, `--config`, `--no-config` |
+| `cargo mutants --list` | List mutants without running | — | `--json`, `--diff` |
+| `cargo mutants --check` | Run `cargo check` on mutants | — | (none) |
+| `cargo mutants --help` | Show help | — | (none) |
 
 ## Options
 

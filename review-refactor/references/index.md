@@ -8,3 +8,4 @@
 | [long-files.md](long-files.md) | Long Files Thresholds And Split Strategies |
 | [package-boundaries.md](package-boundaries.md) | Package/Module Boundary Checks |
 | [srp-violations.md](srp-violations.md) | SRP Violations Detection Criteria |
+| [website.md](website.md) | Official resources and links |

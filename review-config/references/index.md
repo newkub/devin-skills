@@ -14,6 +14,7 @@
 | Editor | `.vscode/settings.json`, `.vscode/extensions.json`, `.editorconfig` |
 | Env | `.env*`, `.env.example` |
 | Git | `.gitignore`, `.gitattributes`, `lefthook.yml`, `husky/*` |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

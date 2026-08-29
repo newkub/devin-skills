@@ -15,7 +15,7 @@ sv create [directory] [options]
 ### Options
 
 | Option | Description | Default |
-|--------|-------------|---------|
+|---|---|---|
 | `--template` | Template to use | minimal |
 | `--types` | TypeScript or JavaScript | ts |
 | `--no-add-ons` | Skip add-ons | false |
@@ -68,7 +68,7 @@ sv check
 ### Options
 
 | Option | Description |
-|--------|-------------|
+|---|---|
 | `--watch` | Watch for changes |
 | `--tsconfig` | Custom tsconfig path |
 
@@ -103,7 +103,7 @@ bun run dev
 ### Options
 
 | Option | Description |
-|--------|-------------|
+|---|---|
 | `--port` | Port number |
 | `--host` | Host to bind |
 | `--https` | Enable HTTPS |

@@ -14,11 +14,11 @@ bun add -D usage
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `usage` | Generate usage docs | --config, --input, --output, --format |
-| `usage generate` | Generate from source | --input, --output |
-| `usage --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `usage` | Generate usage docs | — | --config, --input, --output, --format |
+| `usage generate` | Generate from source | — | --input, --output |
+| `usage --help` | Show help | — | (none) |
 
 ## Notes
 

@@ -7,6 +7,7 @@
 | images-to-svg | `bunx images-to-svg convert <input>` | sharp + potrace + svgo |
 | potrace-cli | `bunx potrace-cli <input> -o out.svg` | python wrapper |
 | svgo | `bunx svgo` | SVG optimization |
+| [website.md](website.md) | Official resources and links |
 
 ## Docs
 

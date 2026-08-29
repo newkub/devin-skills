@@ -9,3 +9,4 @@
 | [scoring.md](scoring.md) | Techstack Review Score Formula |
 | [techstack.md](techstack.md) | Tech Stack And Runtime Checks |
 | [type-declarations.md](type-declarations.md) | Goal |
+| [website.md](website.md) | Official resources and links |

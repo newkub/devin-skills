@@ -14,11 +14,11 @@ bun add -D stryker-cli
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `stryker run [config]` | Run mutation testing; look for `stryker.config.*` in cwd | `--configFile`, `--mutate`, `--reporters`, `--testRunner`, `--coverageAnalysis`, `--concurrency`, `--buildCommand`, `--checkers`, `--disableBail`, `--allowEmpty` |
-| `stryker init` | Initialize Stryker config and install packages | (none) |
-| `stryker --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `stryker run [config]` | Run mutation testing | look for `stryker.config.*` in cwd | `--configFile`, `--mutate`, `--reporters`, `--testRunner`, `--coverageAnalysis`, `--concurrency`, `--buildCommand`, `--checkers`, `--disableBail`, `--allowEmpty` |
+| `stryker init` | Initialize Stryker config and install packages | — | (none) |
+| `stryker --help` | Show help | — | (none) |
 
 ## Options
 

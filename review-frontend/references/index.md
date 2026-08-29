@@ -19,3 +19,4 @@ related:
 | [state-management.md](state-management.md) | State Management Checks |
 | [testing.md](testing.md) | Frontend Testing Checks |
 | [type-safety.md](type-safety.md) | Type Safety Checks |
+| [website.md](website.md) | Official resources and links |

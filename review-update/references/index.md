@@ -9,3 +9,4 @@
 | [rules-drift.md](rules-drift.md) | Rules, Ast-Grep Rules, Devin-Project-Rules Drift Checks |
 | [test-drift.md](test-drift.md) | Test Suite Drift Checks |
 | [update-priority.md](update-priority.md) | Update Priority Ordering Formula |
+| [website.md](website.md) | Official resources and links |

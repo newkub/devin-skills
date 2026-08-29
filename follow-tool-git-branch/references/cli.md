@@ -14,15 +14,15 @@ git --version
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `git branch` | List local branches | -a, --all, -r, --remotes, -vv, --sort |
-| `git branch <name>` | Create branch | (none) |
-| `git branch -d <name>` | Delete merged branch | -D, --delete --force |
-| `git branch -m <old> <new>` | Rename branch | (none) |
-| `git branch -c <old> <new>` | Copy branch | (none) |
-| `git switch <branch>` | Switch to branch | -c, --create, --orphan |
-| `git checkout -b <branch>` | Create and switch branch | --track |
+| commands | description | default | options |
+|---|---|---|---|
+| `git branch` | List local branches | — | -a, --all, -r, --remotes, -vv, --sort |
+| `git branch <name>` | Create branch | — | (none) |
+| `git branch -d <name>` | Delete merged branch | — | -D, --delete --force |
+| `git branch -m <old> <new>` | Rename branch | — | (none) |
+| `git branch -c <old> <new>` | Copy branch | — | (none) |
+| `git switch <branch>` | Switch to branch | — | -c, --create, --orphan |
+| `git checkout -b <branch>` | Create and switch branch | — | --track |
 ## Examples
 
 ```sh

@@ -35,7 +35,7 @@ bunx @tauri-apps/cli plugin new <name>
 ### Options
 
 | Flag | คำอธิบาย |
-|------|---------|
+|---|---|
 | `--no-api` | ไม่สร้าง NPM package (เฉพาะ Rust crate) |
 | `--android` | เพิ่ม Android library project |
 | `--ios` | เพิ่ม iOS Swift package |

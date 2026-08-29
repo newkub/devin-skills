@@ -14,9 +14,9 @@ bun add -D zod # or valibot, arktype
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `zod-to-ts` | Generate TS from Zod | --input, --output |
+| commands | description | default | options |
+|---|---|---|---|
+| `zod-to-ts` | Generate TS from Zod | — | --input, --output |
 
 ## Notes
 

@@ -14,19 +14,19 @@ bun add -D agent-browser
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `agent-browser open [url]` | Launch browser; if URL, navigate to it | `--headed`, `--session`, `--executable-path`, `--proxy`, `--user-agent`, `--device` |
-| `agent-browser read [url]` | Fetch agent-readable text or DOM | `--json`, `--full` |
-| `agent-browser click <sel>` | Click element | `--new-tab` |
-| `agent-browser type <sel> <text>` | Type text into element | (none) |
-| `agent-browser press <key>` | Press a key | (none) |
-| `agent-browser scroll <dir> [px]` | Scroll page | `--selector` |
-| `agent-browser screenshot [path]` | Capture screenshot | `--full`, `--annotate`, `--screenshot-dir`, `--screenshot-format`, `--screenshot-quality` |
-| `agent-browser pdf <path>` | Save page as PDF | (none) |
-| `agent-browser snapshot` | Output accessibility tree | `-i, --interactive`, `-c, --compact` |
-| `agent-browser eval <js>` | Run JavaScript | (none) |
-| `agent-browser --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `agent-browser open [url]` | Launch browser | if URL, navigate to it | `--headed`, `--session`, `--executable-path`, `--proxy`, `--user-agent`, `--device` |
+| `agent-browser read [url]` | Fetch agent-readable text or DOM | — | `--json`, `--full` |
+| `agent-browser click <sel>` | Click element | — | `--new-tab` |
+| `agent-browser type <sel> <text>` | Type text into element | — | (none) |
+| `agent-browser press <key>` | Press a key | — | (none) |
+| `agent-browser scroll <dir> [px]` | Scroll page | — | `--selector` |
+| `agent-browser screenshot [path]` | Capture screenshot | — | `--full`, `--annotate`, `--screenshot-dir`, `--screenshot-format`, `--screenshot-quality` |
+| `agent-browser pdf <path>` | Save page as PDF | — | (none) |
+| `agent-browser snapshot` | Output accessibility tree | — | `-i, --interactive`, `-c, --compact` |
+| `agent-browser eval <js>` | Run JavaScript | — | (none) |
+| `agent-browser --help` | Show help | — | (none) |
 
 ## Global Options
 

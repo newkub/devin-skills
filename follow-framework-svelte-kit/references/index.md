@@ -7,3 +7,5 @@
 | [sveltekit-api-functions-exports.md](sveltekit-api-functions-exports.md) | SvelteKit API: functions (error, redirect, fail, json), exports (load, actions, prerender, entries) |
 | sveltekit-cli.md | SvelteKit CLI commands: sv create, sv sync, sv check, sv build, sv dev, sv preview, legacy svelte-kit CLI, adapter CLI, environment variables |
 | sveltekit-website.md | SvelteKit official resources: documentation, tutorial, playground, GitHub, adapters, related libraries, community links |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

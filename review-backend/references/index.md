@@ -10,3 +10,4 @@
 | [integration.md](integration.md) | Integration And Client Checks |
 | [scoring.md](scoring.md) | Backend Review Score Formula |
 | [service.md](service.md) | Service Layer Checks |
+| [website.md](website.md) | Official resources and links |

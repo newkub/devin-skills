@@ -6,3 +6,5 @@
 | `nodejs-modules.md` | Built-in modules (fs, path, http, events, stream, crypto, os, buffer, and more) |
 | `nodejs-cli.md` | CLI commands for node, npm, pnpm, yarn, and npx |
 | `nodejs-resources.md` | Official documentation links, ecosystem tools, community, and release info |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

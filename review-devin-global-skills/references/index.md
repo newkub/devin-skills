@@ -10,3 +10,4 @@
 | `content-quality.md` | Content quality: simplify, high-impact, clarity, determinism |
 | `parallel-usage.md` | Parallel markers and script usage rules |
 | `scoring.md` | Review score formula and grade mapping |
+| [website.md](website.md) | Official resources and links |

@@ -9,6 +9,7 @@
 | Capacitor Plugins | https://capacitorjs.com/docs/plugins |
 | Capacitor iOS | https://capacitorjs.com/docs/ios |
 | Capacitor Android | https://capacitorjs.com/docs/android |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

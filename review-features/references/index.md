@@ -22,6 +22,7 @@ Map reference file แต่ละไฟล์ไปยัง responsibility ข
 | `references/duplication.md` | ตรวจ no duplication — ไม่มี `docs/` ในแต่ละ workspace, ไม่มี `.devin/features/`, ไม่มี duplicate docs | Check No Duplication |
 | `references/monorepo.md` | ตรวจ monorepo coverage — ทุก workspace ถูกวิเคราะห์, แต่ละ feature ระบุ workspace | Check Monorepo Coverage |
 | `references/scoring.md` | คำนวณ review score และ grade — severity to score, grade thresholds, action threshold | Score And Report |
+| [website.md](website.md) | Official resources and links |
 
 ## Usage
 

@@ -14,10 +14,10 @@ bun add -D renovate
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `renovate-config-validator <file>` | Validate config file | --strict |
-| `renovate-config-validator` | Validate default configs | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `renovate-config-validator <file>` | Validate config file | — | --strict |
+| `renovate-config-validator` | Validate default configs | — | (none) |
 ## Examples
 
 ```sh

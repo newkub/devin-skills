@@ -7,3 +7,4 @@
 | [identify-scope.md](identify-scope.md) | Identify Scope |
 | [plan-fixes.md](plan-fixes.md) | Plan Fixes |
 | [verify.md](verify.md) | Verify |
+| [website.md](website.md) | Official resources and links |

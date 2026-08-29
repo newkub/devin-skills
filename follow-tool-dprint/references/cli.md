@@ -14,15 +14,15 @@ bun add -D dprint
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `dprint fmt [files]` | Format files in place; respects `.gitignore` | `--check`, `--config`, `--no-gitignore`, `--incremental`, `--config-discovery`, `--plugins` |
-| `dprint check [files]` | Check formatting without writing | `--config`, `--no-gitignore`, `--config-discovery` |
-| `dprint init` | Create `dprint.json` config interactively | `--yes` |
-| `dprint config update` | Update plugin versions in config | `--recursive`, `--dry-run` |
-| `dprint config edit` | Edit config interactively | (none) |
-| `dprint add <plugin>` | Add plugin to config | `--checksum` |
-| `dprint --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `dprint fmt [files]` | Format files in place | respects `.gitignore` | `--check`, `--config`, `--no-gitignore`, `--incremental`, `--config-discovery`, `--plugins` |
+| `dprint check [files]` | Check formatting without writing | — | `--config`, `--no-gitignore`, `--config-discovery` |
+| `dprint init` | Create `dprint.json` config interactively | — | `--yes` |
+| `dprint config update` | Update plugin versions in config | — | `--recursive`, `--dry-run` |
+| `dprint config edit` | Edit config interactively | — | (none) |
+| `dprint add <plugin>` | Add plugin to config | — | `--checksum` |
+| `dprint --help` | Show help | — | (none) |
 
 ## Options
 

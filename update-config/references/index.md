@@ -12,6 +12,7 @@
 | pnpm | `pnpm-workspace.yaml` `catalogs:` |
 | Bun | `bun-workspace.toml`, `bunfig.toml` |
 | mise | `mise.toml` |
+| [website.md](website.md) | Official resources and links |
 
 ## Resources
 

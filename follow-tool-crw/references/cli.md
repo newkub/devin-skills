@@ -15,12 +15,12 @@
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `crw scrape <url>` | Scrape a URL to markdown stdout | `--format`, `-o`, `--js`, `--css`, `--xpath`, `--proxy`, `--stealth`, `--raw`, `--extract` |
-| `crw crawl <url>` | Crawl a site to markdown/JSON | `-d, --depth`, `-l, --limit`, `--format`, `--js`, `--rate-limit`, `--concurrency`, `--timeout`, `--proxy`, `--stealth`, `--raw` |
-| `crw extract <url>` | Extract structured data with JSON schema | `--extract @schema.json`, `-o`, `--llm-provider`, `--llm-key`, `--llm-model` |
-| `crw --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `crw scrape <url>` | Scrape a URL to markdown stdout | — | `--format`, `-o`, `--js`, `--css`, `--xpath`, `--proxy`, `--stealth`, `--raw`, `--extract` |
+| `crw crawl <url>` | Crawl a site to markdown/JSON | — | `-d, --depth`, `-l, --limit`, `--format`, `--js`, `--rate-limit`, `--concurrency`, `--timeout`, `--proxy`, `--stealth`, `--raw` |
+| `crw extract <url>` | Extract structured data with JSON schema | — | `--extract @schema.json`, `-o`, `--llm-provider`, `--llm-key`, `--llm-model` |
+| `crw --help` | Show help | — | (none) |
 
 ## Options
 

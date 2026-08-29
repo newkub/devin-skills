@@ -10,3 +10,4 @@
 | [remove-redundancy.md](remove-redundancy.md) | Remove Redundancy |
 | [report.md](report.md) | Report |
 | [validate.md](validate.md) | Validate |
+| [website.md](website.md) | Official resources and links |

@@ -7,6 +7,7 @@
 | @illyism/transcribe | `bunx @illyism/transcribe <video>` | needs `OPENAI_API_KEY` |
 | Pollinations CLI | `bunx @pollinations/cli gen transcribe <audio>` | no API key |
 | whisper-subs | `whisper-subs <video>` | local whisper.cpp |
+| [website.md](website.md) | Official resources and links |
 
 ## Docs
 

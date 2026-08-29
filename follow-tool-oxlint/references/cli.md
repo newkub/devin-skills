@@ -14,11 +14,11 @@ bun add -D oxlint
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `oxlint [paths]` | Lint current directory if no paths; use recommended rules by default | `-c, --config`, `--tsconfig`, `--init`, `-A/--allow`, `-W/--warn`, `-D/--deny`, `--fix`, `--fix-suggestions`, `--fix-dangerously`, `--format`, `--max-warnings`, `--deny-warnings`, `--ignore-path`, `--ignore-pattern`, `--no-ignore`, `--print-config` |
-| `oxlint --rules` | List all rules | (none) |
-| `oxlint --init` | Create `.oxlintrc.json` with defaults | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `oxlint [paths]` | Lint current directory if no paths | use recommended rules by default | `-c, --config`, `--tsconfig`, `--init`, `-A/--allow`, `-W/--warn`, `-D/--deny`, `--fix`, `--fix-suggestions`, `--fix-dangerously`, `--format`, `--max-warnings`, `--deny-warnings`, `--ignore-path`, `--ignore-pattern`, `--no-ignore`, `--print-config` |
+| `oxlint --rules` | List all rules | — | (none) |
+| `oxlint --init` | Create `.oxlintrc.json` with defaults | — | (none) |
 
 ## Examples
 

@@ -14,11 +14,11 @@ bun add -D build-packages
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `build-packages` | Build all packages in workspace | --config, --watch, --clean, --output |
-| `build-packages --watch` | Watch and rebuild | --ignore-watch |
-| `build-packages --clean` | Clean output directories | --yes |
+| commands | description | default | options |
+|---|---|---|---|
+| `build-packages` | Build all packages in workspace | — | --config, --watch, --clean, --output |
+| `build-packages --watch` | Watch and rebuild | — | --ignore-watch |
+| `build-packages --clean` | Clean output directories | — | --yes |
 
 ## Notes
 

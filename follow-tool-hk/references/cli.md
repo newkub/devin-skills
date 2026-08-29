@@ -14,13 +14,13 @@ bun add -D hk
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `hk install` | Install hooks | -f, --force |
-| `hk run [hook]` | Run hook or all hooks | --all-files, --from-ref, --to-ref, --staged, --no-stash |
-| `hk add <hook> <cmd>` | Add hook command | --stage |
-| `hk uninstall` | Remove hooks | (none) |
-| `hk --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `hk install` | Install hooks | — | -f, --force |
+| `hk run [hook]` | Run hook or all hooks | — | --all-files, --from-ref, --to-ref, --staged, --no-stash |
+| `hk add <hook> <cmd>` | Add hook command | — | --stage |
+| `hk uninstall` | Remove hooks | — | (none) |
+| `hk --help` | Show help | — | (none) |
 ## Examples
 
 ```sh

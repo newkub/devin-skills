@@ -9,3 +9,4 @@
 | [detect-unused-skills.md](detect-unused-skills.md) | Detect Unused Skills |
 | [inventory-and-group-skills.md](inventory-and-group-skills.md) | Inventory And Group Skills |
 | [recommend-actions.md](recommend-actions.md) | Recommend Actions |
+| [website.md](website.md) | Official resources and links |

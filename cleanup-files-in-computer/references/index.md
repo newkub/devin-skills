@@ -8,6 +8,7 @@
 | mise cache prune | https://mise.jdx.dev/cli/cache/prune.html |
 | mise prune | https://mise.jdx.dev/cli/prune.html |
 | global config | https://mise.jdx.dev/configuration.html |
+| [website.md](website.md) | Official resources and links |
 
 ## Cleanup Tools
 

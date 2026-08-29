@@ -14,11 +14,11 @@ bun add -D semantic-release
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `semantic-release` | Run release from CI | --dry-run, --debug, --branches, --plugins |
-| `semantic-release --dry-run` | Simulate release | --repository-url, --tag-format |
-| `semantic-release --debug` | Verbose debug output | --debug |
+| commands | description | default | options |
+|---|---|---|---|
+| `semantic-release` | Run release from CI | — | --dry-run, --debug, --branches, --plugins |
+| `semantic-release --dry-run` | Simulate release | — | --repository-url, --tag-format |
+| `semantic-release --debug` | Verbose debug output | — | --debug |
 ## Examples
 
 ```sh

@@ -14,12 +14,12 @@ bun add -D lefthook # or hk / husky
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `lefthook install` | Install git hooks | -f, --force |
-| `lefthook run <hook>` | Run hook manually | -a, --all-files, -f, --force |
-| `lefthook uninstall` | Remove hooks | (none) |
-| `lefthook dump` | Dump config | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `lefthook install` | Install git hooks | — | -f, --force |
+| `lefthook run <hook>` | Run hook manually | — | -a, --all-files, -f, --force |
+| `lefthook uninstall` | Remove hooks | — | (none) |
+| `lefthook dump` | Dump config | — | (none) |
 ## Examples
 
 ```sh

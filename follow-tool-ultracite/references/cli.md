@@ -14,12 +14,12 @@ bun add -D ultracite
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `biome check [paths]` | Format, lint, assist; report only | --write, --formatter-enabled, --linter-enabled, --assist-enabled, --staged |
-| `biome lint [paths]` | Lint files; report only | --write, --unsafe, --only, --skip, --staged |
-| `biome format [paths]` | Format files; report only | --write, --staged, --changed |
-| `biome ci [paths]` | CI-optimized check; fails on diagnostics | --staged, --changed |
+| commands | description | default | options |
+|---|---|---|---|
+| `biome check [paths]` | Format, lint, assist | report only | --write, --formatter-enabled, --linter-enabled, --assist-enabled, --staged |
+| `biome lint [paths]` | Lint files; report only | — | --write, --unsafe, --only, --skip, --staged |
+| `biome format [paths]` | Format files | report only | --write, --staged, --changed |
+| `biome ci [paths]` | CI-optimized check | fails on diagnostics | --staged, --changed |
 
 ## Notes
 

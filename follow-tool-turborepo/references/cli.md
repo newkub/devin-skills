@@ -14,15 +14,15 @@ bun add -D turbo
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `turbo run <task>` | Run `<task>` across selected workspaces from `turbo.json` | `--filter`, `--no-cache`, `--cache`, `--parallel`, `--since`, `--affected`, `--graph`, `--dry-run`, `--force` |
-| `turbo build` / `turbo dev` / `turbo test` | Shorthand for `turbo run <task>` | same as `turbo run` |
-| `turbo prune <workspace>` | Prune workspace to `out/` | `--docker`, `--out-dir` |
-| `turbo gen` | Generate workspace/package | `--copy`, `--empty`, `--name` |
-| `turbo query` | Query monorepo graph | `--affected`, `--format` |
-| `turbo devtools` | Start devtools server | `--port`, `--no-open` |
-| `turbo --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `turbo run <task>` | Run `<task>` across selected workspaces from `turbo.json` | — | `--filter`, `--no-cache`, `--cache`, `--parallel`, `--since`, `--affected`, `--graph`, `--dry-run`, `--force` |
+| `turbo build` / `turbo dev` / `turbo test` | Shorthand for `turbo run <task>` | — | same as `turbo run` |
+| `turbo prune <workspace>` | Prune workspace to `out/` | — | `--docker`, `--out-dir` |
+| `turbo gen` | Generate workspace/package | — | `--copy`, `--empty`, `--name` |
+| `turbo query` | Query monorepo graph | — | `--affected`, `--format` |
+| `turbo devtools` | Start devtools server | — | `--port`, `--no-open` |
+| `turbo --help` | Show help | — | (none) |
 
 ## Examples
 

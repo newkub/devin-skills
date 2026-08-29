@@ -5,3 +5,5 @@
 | [elysia.md](elysia.md) | Elysia — Bun-optimized backend framework reference |
 | [orpc.md](orpc.md) | oRPC — Type-safe API layer reference |
 | [tanstack-start.md](tanstack-start.md) | TanStack Start for SolidJS — SSR framework reference |
+| [website.md](website.md) | Official resources and links |
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

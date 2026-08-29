@@ -14,12 +14,12 @@ bun add -D knip
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `knip` | Lint project for unused dependencies, exports, files | `--config`, `--tsConfig`, `--include`, `--exclude`, `--reporter`, `--no-exit-code`, `--cache` |
-| `knip --production` | Only report production-related issues | `--strict`, `--workspace`, `--directory` |
-| `knip-bun` | Bun-specific runner | same as `knip` |
-| `knip --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `knip` | Lint project for unused dependencies, exports, files | — | `--config`, `--tsConfig`, `--include`, `--exclude`, `--reporter`, `--no-exit-code`, `--cache` |
+| `knip --production` | Only report production-related issues | — | `--strict`, `--workspace`, `--directory` |
+| `knip-bun` | Bun-specific runner | — | same as `knip` |
+| `knip --help` | Show help | — | (none) |
 
 ## Options
 

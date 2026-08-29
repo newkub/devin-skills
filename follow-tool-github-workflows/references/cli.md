@@ -14,14 +14,14 @@ bun add -D gh
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `gh workflow list` | List workflows | -R, --repo, -a, --all |
-| `gh workflow view <id>` | View workflow YAML | -R, --repo, -y, --yaml |
-| `gh workflow run <id>` | Trigger workflow | -R, --repo, -f, --field, -r, --ref |
-| `gh run list` | List runs | -R, --repo, -b, --branch, -s, --status |
-| `gh run view <id>` | View run | -R, --repo, --log, --exit-status, --json |
-| `gh run logs <id>` | Download logs | -R, --repo, --dir |
+| commands | description | default | options |
+|---|---|---|---|
+| `gh workflow list` | List workflows | — | -R, --repo, -a, --all |
+| `gh workflow view <id>` | View workflow YAML | — | -R, --repo, -y, --yaml |
+| `gh workflow run <id>` | Trigger workflow | — | -R, --repo, -f, --field, -r, --ref |
+| `gh run list` | List runs | — | -R, --repo, -b, --branch, -s, --status |
+| `gh run view <id>` | View run | — | -R, --repo, --log, --exit-status, --json |
+| `gh run logs <id>` | Download logs | — | -R, --repo, --dir |
 ## Examples
 
 ```sh

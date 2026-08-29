@@ -6,6 +6,7 @@
 |---|---|
 | SVG MDN | https://developer.mozilla.org/en-US/docs/Web/SVG |
 | SVG Spec | https://www.w3.org/TR/SVG2/ |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

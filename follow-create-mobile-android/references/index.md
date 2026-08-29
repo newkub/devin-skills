@@ -8,6 +8,7 @@
 | Jetpack Compose | https://developer.android.com/jetpack/compose |
 | Kotlin Docs | https://kotlinlang.org/docs/home.html |
 | Gradle Kotlin DSL | https://docs.gradle.org/current/userguide/kotlin_dsl.html |
+| [website.md](website.md) | Official resources and links |
 
 ## Related Skills
 

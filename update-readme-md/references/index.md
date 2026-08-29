@@ -7,3 +7,4 @@
 | [sample-readme-workflows.md](sample-readme-workflows.md) | Sample README — core, architecture, framework, utility workflows and configuration |
 | [sample-readme-releases.md](sample-readme-releases.md) | Sample README — release history and changelog |
 | [sample-readme-contribution.md](sample-readme-contribution.md) | Sample README — license and contribution guidelines |
+| [website.md](website.md) | Official resources and links |

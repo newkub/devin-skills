@@ -14,11 +14,11 @@ bun add -D eslint
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `eslint [paths]` | Lint current working directory if no paths; uses `eslint.config.*` (flat config) | `-c, --config`, `--no-config-lookup`, `--inspect-config`, `--ext`, `--global`, `--parser`, `--no-ignore`, `--ignore-pattern`, `--stdin`, `--stdin-filename`, `--quiet`, `--max-warnings`, `-f, --format`, `-o, --output-file`, `--fix`, `--fix-type`, `--cache` |
-| `eslint --help` | Show help | (none) |
-| `eslint --version` | Print version | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `eslint [paths]` | Lint current working directory if no paths | uses `eslint.config.*` (flat config) | `-c, --config`, `--no-config-lookup`, `--inspect-config`, `--ext`, `--global`, `--parser`, `--no-ignore`, `--ignore-pattern`, `--stdin`, `--stdin-filename`, `--quiet`, `--max-warnings`, `-f, --format`, `-o, --output-file`, `--fix`, `--fix-type`, `--cache` |
+| `eslint --help` | Show help | — | (none) |
+| `eslint --version` | Print version | — | (none) |
 
 ## Examples
 

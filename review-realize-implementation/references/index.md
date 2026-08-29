@@ -9,3 +9,4 @@
 | [missing-ui.md](missing-ui.md) | Missing UI Detection Criteria |
 | [scoring.md](scoring.md) | Implementation Completeness Score Formula |
 | [severity.md](severity.md) | Severity Classification For Implementation Gaps |
+| [website.md](website.md) | Official resources and links |

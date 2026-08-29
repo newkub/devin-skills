@@ -14,15 +14,15 @@ bun add -D storybook
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `storybook dev` | Start dev server on port `6006` | `-p, --port`, `-h, --host`, `-c, --config-dir`, `--loglevel`, `--https`, `--ssl-cert`, `--ssl-key`, `--smoke-test`, `--no-open` |
-| `storybook build` | Build static storybook to `storybook-static/` | `-o, --output-dir`, `-c, --config-dir`, `--loglevel`, `--debug`, `--webpack-stats-json` |
-| `storybook init` | Initialize Storybook in project | `--yes`, `--type`, `--package-manager` |
-| `storybook automigrate` | Run automatic migrations | `--dry-run` |
-| `storybook add <addon>` | Install an addon | (none) |
-| `storybook doctor` | Diagnose project issues | (none) |
-| `storybook --help` | Show help | (none) |
+| commands | description | default | options |
+|---|---|---|---|
+| `storybook dev` | Start dev server on port `6006` | — | `-p, --port`, `-h, --host`, `-c, --config-dir`, `--loglevel`, `--https`, `--ssl-cert`, `--ssl-key`, `--smoke-test`, `--no-open` |
+| `storybook build` | Build static storybook to `storybook-static/` | — | `-o, --output-dir`, `-c, --config-dir`, `--loglevel`, `--debug`, `--webpack-stats-json` |
+| `storybook init` | Initialize Storybook in project | — | `--yes`, `--type`, `--package-manager` |
+| `storybook automigrate` | Run automatic migrations | — | `--dry-run` |
+| `storybook add <addon>` | Install an addon | — | (none) |
+| `storybook doctor` | Diagnose project issues | — | (none) |
+| `storybook --help` | Show help | — | (none) |
 
 ## Examples
 

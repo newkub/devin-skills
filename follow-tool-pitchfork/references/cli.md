@@ -14,12 +14,12 @@ composer require --dev mnavarrocarter/pitchfork # PHP
 
 ## Commands
 
-| commands | default | options |
-|---|---|---||---|---|---||---|---|---||
-| `pitchfork run` | Run configured workers | --config, --workers, --port, --host |
-| `pitchfork status` | Show worker status | --json |
-| `pitchfork stop` | Stop workers | --graceful |
-| `pitchfork restart` | Restart workers | --config |
+| commands | description | default | options |
+|---|---|---|---|
+| `pitchfork run` | Run configured workers | — | --config, --workers, --port, --host |
+| `pitchfork status` | Show worker status | — | --json |
+| `pitchfork stop` | Stop workers | — | --graceful |
+| `pitchfork restart` | Restart workers | — | --config |
 ## Examples
 
 ```sh

@@ -32,7 +32,7 @@ bunx @scalar/api-designer --help
 ## Options
 
 | Option | Description |
-|--------|-------------|
+|---|---|
 | `--port` | Server port |
 | `--host` | Server host |
 | `--config` | Config file path |

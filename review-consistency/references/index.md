@@ -8,3 +8,4 @@
 | [check-structure-consistency.md](check-structure-consistency.md) | Check Structure Consistency |
 | [inventory-and-baseline.md](inventory-and-baseline.md) | Inventory And Baseline |
 | [validate.md](validate.md) | Validate |
+| [website.md](website.md) | Official resources and links |

@@ -15,7 +15,7 @@ bun add -g leptos
 ## Commands
 
 | Command | Description | Example |
-|----------|-------------|---------|
+|---|---|---|
 | command1 | Description | `leptos command1` |
 | command2 | Description | `leptos command2 --option` |
 
