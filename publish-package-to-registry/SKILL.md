@@ -1,6 +1,6 @@
 ---
-name: release-package-to-registry
-description: Auto-detect registry และ release package ไปยัง npm, crates.io หรือ registry อืน
+name: publish-package-to-registry
+description: Auto-detect registry แล้ว publish package ไปยัง npm, crates.io หรือ registry อืน
 related:
   - follow-secret-manager
   - run-release
@@ -12,15 +12,23 @@ related:
   - use-my-packages-on-registry
   - ship
   - ask-me
+  - watch-release
+  - follow-tool-release-it
+  - follow-tool-semantic-release
+  - follow-tool-changelogen
+  - follow-tool-changesets
+  - check-backward-compatibility
+  - follow-tool-build-packages
+  - follow-tool-pkg-new
 ---
 
 ## Goal
 
-Auto-detect registry จาก project manifest แล้ว release package ไปยัง npm, crates.io หรือ registry ที่กำหนด
+Auto-detect registry จาก project manifest แล้ว publish package ไปยัง npm, crates.io หรือ registry ที่กำหนด
 
 ## Scope
 
-ใช้สำหรับ release package หนึ่ง package ไปยัง registry ที่ detect ได้จาก project files
+ใช้สำหรับ publish package หนึ่ง package ไปยัง registry ที่ detect ได้จาก project files
 
 ## Execute
 
@@ -31,12 +39,12 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 1. อ่าน `package.json` → npm/bun registry
 2. อ่าน `Cargo.toml` → crates.io
 3. อ่าน `pyproject.toml` → PyPI
-4. ถ้า `package.json` มี `private: true` → ไม่ release ยกเว้น user confirm
+4. ถ้า `package.json` มี `private: true` → ไม่ publish ยกเว้น user confirm
 5. ถ้า detect ไม่ได้หรือหลาย registry → ทำ `/ask-me`
 
 ### 2. Verify
 
-> Goal: ตรวจสอบคุณภาพก่อน release
+> Goal: ตรวจสอบคุณภาพก่อน publish
 
 1. ทำ `/run-verify-on-local`
 2. ตรวจสอบ version ถูกต้องตาม semver
@@ -53,7 +61,7 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 1. npm/bun: `bun run build` หรือ `npm run build`
 2. cargo: `cargo build --release`
 3. python: `python -m build`
-4. ถ้า build ไม่ผ่าน → แก้ไขก่อน release
+4. ถ้า build ไม่ผ่าน → แก้ไขก่อน publish
 
 ### 4. Dry Run
 
@@ -66,19 +74,19 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 ### 5. Publish
 
-> Goal: Release package ไปยัง registry
+> Goal: Publish package ไปยัง registry
 
 1. npm/bun: `bun publish` หรือ `npm publish`
 2. cargo: `cargo publish`
 3. python: `twine upload dist/*`
-4. ถ้า release ไม่สำเร็จ → แก้ไขแล้วรันใหม่
+4. ถ้า publish ไม่สำเร็จ → แก้ไขแล้วรันใหม่
 
 ### 6. Verify Publish
 
-> Goal: ยืนยัน release สำเร็จ
+> Goal: ยืนยัน publish สำเร็จ
 
 1. ตรวจสอบ registry ว่ามี version ใหม่
-2. ทำ `/list-my-npm-packages` ถ้าเป็น npm เพื่อยืนยัน
+2. ทำ `/list-my-npm-packages` ถ้าเป็น npm เพื่อยื่นยัน
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -86,12 +94,12 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 ### 1. Auto-Detection
 
 - ใช้ manifest หลักของ project ในการระบุ registry
-- ถ้าหลาย manifest ให้ user เลือก หรือ release ตามลำดับ
+- ถ้าหลาย manifest ให้ user เลือก หรือ publish ตามลำดับ
 - ไม่ assume registry ถ้าไม่มี manifest
 
 ### 2. Verify Before Publish
 
-- ทำ `/run-verify-on-local` เสมอก่อน release
+- ทำ `/run-verify-on-local` เสมอก่อน publish
 - version ต้อง bump ก่อน publish
 - changelog ต้อง gen ด้วย `/gen-changelog-md`
 
@@ -102,7 +110,7 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 ### 4. Authentication And Security
 
-- ตรวจสอบ tokens ก่อน release
+- ตรวจสอบ tokens ก่อน publish
 - ไม่ expose secrets ใน output
 - ใช้ `/follow-secret-manager` สำหรับจัดการ tokens แล้ว sync ไป CI/CD หรือใช้ `gh secret set` แบบ manual
 
@@ -113,8 +121,8 @@ Auto-detect registry จาก project manifest แล้ว release package ไ
 
 ## Expected Outcome
 
-- Package ถูก release ไปยัง registry ที่ detect ได้
+- Package ถูก publish ไปยัง registry ที่ detect ได้
 - Version, changelog, และ build ถูกต้อง
-- Verify ผ่านก่อน release
+- Verify ผ่านก่อน publish
 - Dry run ผ่านก่อนของจริง
 - ไม่ expose secrets

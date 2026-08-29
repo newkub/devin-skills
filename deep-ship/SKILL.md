@@ -10,7 +10,7 @@ related:
   - deep-update-project
   - run-release
   - follow-release
-  - release-package-to-registry
+  - publish-package-to-registry
   - deploy-to-vercel
   - deploy-to-cloudflare
   - deploy-to-railway
@@ -98,7 +98,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: สร้าง release ถ้า project มี versioned artifact
 
 1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml` ว่ามี version และ publish config
-2. ถ้าเป็น package/library → ทำ `/run-release` หรือ `/release-package-to-registry`
+2. ถ้าเป็น package/library → ทำ `/run-release` หรือ `/publish-package-to-registry`
 3. ถ้าใช้ changesets → ทำ `/follow-tool-changesets`
 4. ถ้าใช้ release-it → ทำ `/follow-tool-release-it`
 5. ถ้าไม่มี release config → ข้าม step นี้

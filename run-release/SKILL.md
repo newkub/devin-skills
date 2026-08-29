@@ -5,7 +5,7 @@ related:
   - follow-secret-manager
   - ship
   - gen-changelog-md
-  - release-package-to-registry
+  - publish-package-to-registry
   - use-my-packages-on-registry
   - watch-release
   - check-backward-compatibility
@@ -73,8 +73,8 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ตั้งค่า release tool ตาม platforms ที่ detect ได้
 
-1. `npm`: ทำ `/release-package-to-registry` เพื่อตั้งค่า release tool
-2. `crates`: ทำ `/release-package-to-registry` เพื่อตั้งค่า release tool
+1. `npm`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
+2. `crates`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
 3. `vscode`: ทำ `/follow-create-vscode-extensions` เพื่อตั้งค่า release tool
 4. `webstore`: ทำ `/follow-create-browser-extensions` เพื่อตั้งค่า release tool
 5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
@@ -96,8 +96,8 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 รัน release ตาม platforms ที่ detect ได้
 
-1. `npm`: ทำ `/release-package-to-registry`
-2. `crates`: ทำ `/release-package-to-registry`
+1. `npm`: ทำ `/publish-package-to-registry`
+2. `crates`: ทำ `/publish-package-to-registry`
 3. `vscode`: รัน `vsce publish`
 4. `webstore`: รัน `chrome-webstore-upload`
 5. `docker`: รัน `docker build` และ `docker push`
@@ -155,7 +155,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 ### 4. Release Tool Usage
 
 - ใช้ `release-*` workflows สำหรับตั้งค่า release tool แต่ละ platform
-- ใช้ `/release-package-to-registry` สำหรับ npm และ crates
+- ใช้ `/publish-package-to-registry` สำหรับ npm และ crates
 - รัน verify ก่อน release เสมอ
 - รัน prerelease script ก่อน release สำหรับ npm
 - รัน `vsce package` ก่อน publish สำหรับ vscode
