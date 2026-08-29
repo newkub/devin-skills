@@ -73,7 +73,7 @@ related:
 > Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
 
 1. ตรวจสอบ scripts syntax ใน `package.json` หรือ `Cargo.toml` — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
-2. ยืนยัน `check` script = `lint && typecheck && scan` และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test`
+2. ยืนยัน `check` script = `format && lint && typecheck && scan` และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test`
 3. ทำ `/test-all` เพื่อรัน unit, integration, e2e, coverage
 4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
 5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/review-codebase-everythink` เพื่อสร้าง/อัปเดต CLI แล้ว retry
@@ -104,10 +104,10 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | build | bun build | nuxt build | next build | vite build | vite build | tauri build | cargo build | python -m build | go build . |
 | typecheck | tsc --noEmit | nuxt typecheck | tsc --noEmit | tsc --noEmit | svelte-check --tsconfig ./tsconfig.json | tsc --noEmit | cargo check | mypy src | go vet ./... |
 | lint | biome lint | biome lint | biome lint | biome lint | biome lint | biome lint | cargo clippy | ruff check | golangci-lint run |
-| format | biome lint --write | biome lint --write | biome lint --write | biome lint --write | biome lint --write | biome lint --write | cargo fmt | ruff format | gofmt -w . |
+| format | biome format --write | biome format --write | biome format --write | biome format --write | biome format --write | biome format --write | cargo fmt | ruff format | gofmt -w . |
 | test | vitest run | vitest run | vitest run | vitest run | vitest run | vitest run | cargo nextest run | pytest | go test ./... |
 | scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | ast-grep scan | cargo clippy --all-targets | ruff check | golangci-lint run |
-| check | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | lint && typecheck && scan | cargo clippy && cargo check | ruff check && mypy | golangci-lint run && go vet |
+| check | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | format && lint && typecheck && scan | cargo fmt && cargo clippy && cargo check | ruff format && ruff check && mypy | gofmt -w . && golangci-lint run && go vet |
 | verify | check && test && build | check && test && build | check && test && build | check && test && build | check && test && build | check && test && build | cargo clippy && cargo check && cargo nextest run && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test ./... && go build . |
 | ci | bun run verify | bun run verify | bun run verify | bun run verify | bun run verify | bun run verify | cargo clippy && cargo check && cargo nextest run && cargo build | ruff check && mypy && pytest && python -m build | golangci-lint run && go vet && go test ./... && go build . |
 | verify:full | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | ci && test:integration && test:e2e | cargo clippy && cargo check && cargo nextest run && cargo nextest run --test-dir integration && cargo nextest run --test-dir e2e && cargo build | ruff check && mypy && pytest && pytest tests/integration && pytest tests/e2e && python -m build | golangci-lint run && go vet && go test ./... && go test ./tests/integration && go test ./tests/e2e && go build . |
