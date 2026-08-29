@@ -1,7 +1,8 @@
 ---
 name: ship
-description: Ship workspace ที่เลือก โดยทำตาม AGENTS.md และอัปเดต skills ก่อน commit
+description: Ship workspace ใน local ที่เลือก โดยทำตาม AGENTS.md และอัปเดต skills ก่อน commit
 related:
+  - ship-cloud
   - ship-continuous-dont-ask
   - update-agents-md
   - follow-agents-md
@@ -20,7 +21,10 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 ## Scope
 
-ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules ไม่รวม push หรือ release สำหรับหลาย workspace ให้เรียก `/ship` แต่ละ workspace ตามลำดับ dependency
+ใช้เมื่องานใน workspace ที่เลือกเสร็จสมบูรณ์และต้องการ commit ใน local ครอบคลุมทั้ง code workspace ปกติและ skills repo ที่มี `.git` submodules
+ไม่รวม push หรือ release
+ถ้าต้องการ ship บน cloud/CI ให้ใช้ `/ship-cloud`
+สำหรับหลาย workspace ให้เรียก `/ship` แต่ละ workspace ตามลำดับ dependency
 
 ## Execute
 

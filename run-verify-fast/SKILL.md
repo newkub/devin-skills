@@ -1,8 +1,10 @@
 ---
 name: run-verify-fast
-description: รัน verify แบบเร็ว ครอบคลุม scan, lint, typecheck, unit test และ build
+description: รัน verify แบบเร็วใน local ครอบคลุม scan, lint, typecheck, unit test และ build
 related:
   - run-verify-full
+  - run-verify-cloud
+  - ship-cloud
   - run-task-all
   - run-test
   - run-test-all
@@ -18,7 +20,8 @@ related:
 
 ## Scope
 
-ตรวจสอบคุณภาพโค้ดด้วย verify script ที่รวม scan, typecheck, lint, test และ build
+ตรวจสอบคุณภาพโค้ดด้วย verify script ใน local ที่รวม scan, typecheck, lint, test และ build
+ถ้าต้องการ verify บน cloud/CI ให้ใช้ `/run-verify-cloud` หรือ `/ship-cloud`
 
 ## Execute
 
@@ -52,7 +55,6 @@ related:
 
 1. ทำ `/run-build` เพื่อสร้าง production-ready artifacts
 2. ถ้าพบ build errors ให้ทำ `/resolve-errors` แล้วรันซ้ำ — retry max 3 → stop/report
-3. ถ้าต้องการ CI pipeline ให้รัน `bun run ci` แทน `bun run verify` — `ci` = `verify && build`
 
 ## Rules
 
@@ -60,7 +62,6 @@ related:
 
 - ต้องมี verify script ใน package manifest ก่อนรัน
 - verify script รวม scan, typecheck, lint, test และ build
-- ci script รวม verify และ build สำหรับ CI/CD pipeline
 - ใช้คำสั่งที่เหมาะสมกับ package manager (`bun`, `npm`, `pnpm`, `yarn`)
 
 ### 2. Error Handling
@@ -79,4 +80,3 @@ related:
 - Code ผ่าน scan, lint, typecheck, และ test ทั้งหมด
 - ไม่มี scan, typecheck, lint, หรือ test errors
 - Build สำเร็จ ไม่มี build errors
-- ถ้ารัน ci: Build artifacts ถูกสร้างอย่างถูกต้อง
