@@ -1,12 +1,12 @@
 ---
-name: create-github-pull-request
+name: create-github-pr
 description: สร้าง pull request จาก current branch พร้อม title, body, labels, reviewers
 related:
   - git-commit
   - git-push
   - run-check
   - run-test
-  - merge-github-pull-request
+  - merge-github-pr
   - implement-github-issue
   - open-github-pr
   - open-github-repo-personal
@@ -110,7 +110,7 @@ related:
 
 1. รายงาน PR number, URL, title
 2. รายงาน status checks และ labels
-3. ถ้าต้องการ merge ต่อ → ทำ `/merge-github-pull-request`
+3. ถ้าต้องการ merge ต่อ → ทำ `/merge-github-pr`
 
 ## Rules
 

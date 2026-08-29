@@ -8,7 +8,7 @@ related:
   - run-verify-on-local
   - git-commit
   - git-push
-  - merge-github-pull-request
+  - merge-github-pr
   - resolve-errors
 ---
 
@@ -87,7 +87,7 @@ related:
 
 > Goal: ถ้า user ต้องการ merge ทันที
 
-1. ถ้า PR พร้อม merge → ทำ `/merge-github-pull-request`
+1. ถ้า PR พร้อม merge → ทำ `/merge-github-pr`
 2. ถ้ายังไม่พร้อม → รายงาน PR number
 
 ### 9. Update Issue

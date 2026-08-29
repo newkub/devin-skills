@@ -1,8 +1,8 @@
 ---
-title: review-github-pull-request References
-description: Reference index for review-github-pull-request
+title: review-github-pr References
+description: Reference index for review-github-pr
 related:
-  - review-github-pull-request
+  - review-github-pr
 ---
 
 | File | Responsibility |

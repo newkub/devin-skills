@@ -9,7 +9,7 @@ related:
   - ask-me
   - create-github-task
   - list-github-issue
-  - list-github-pull-request
+  - list-github-pr
 ---
 
 ## Goal
@@ -17,7 +17,7 @@ related:
 แสดงรายการ GitHub Projects (Projects v2) ของ user หรือ organization พร้อมกรองตาม source ทีเกี่ยวข้อง
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `follow-tool-github-project`, `list-github-repo`, `create-github-task`, `list-github-issue`, `list-github-pull-request`
+- สำหรับ skills ที่เกี่ยวข้อง: `follow-tool-github-project`, `list-github-repo`, `create-github-task`, `list-github-issue`, `list-github-pr`
 
 ใช้ `gh project` เพื่อ list projects และ item-list สำหรับ user, org หรือ repository ทีระบุ โดย filter ตาม `source`
 

@@ -1,12 +1,12 @@
 ---
-name: list-github-pull-request
+name: list-github-pr
 description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
 argument-hint: "[repo]"
 related:
   - open-github-pr
   - open-github-issue
-  - create-github-pull-request
-  - review-github-pull-request
+  - create-github-pr
+  - review-github-pr
 ---
 
 ## Goal
@@ -14,7 +14,7 @@ related:
 แสดงรายการ pull requests ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `open-github-issue`, `create-github-pull-request`, `review-github-pull-request`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `open-github-issue`, `create-github-pr`, `review-github-pr`
 
 ใช้สำหรับดู pull requests ของ repository ใดๆ บน GitHub กรองตาม state ได้
 

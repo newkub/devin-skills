@@ -2,7 +2,7 @@
 title: Report And Recommend
 description: สรุปผล PR review, merge readiness, และแนะนำ action ถัดไป
 related:
-  - review-github-pull-request
+  - review-github-pr
 ---
 
 ## Goal

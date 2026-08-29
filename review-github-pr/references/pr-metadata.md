@@ -2,7 +2,7 @@
 title: PR Metadata Checks
 description: ตรวจ PR title, description, size, commits, conflicts, และ draft status
 related:
-  - review-github-pull-request
+  - review-github-pr
 ---
 
 ## Goal

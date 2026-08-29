@@ -1,11 +1,11 @@
 ---
-name: review-github-pull-request
+name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 argument-hint: "[pr-number]"
 related:
   - open-github-pr
-  - list-github-pull-request
-  - merge-github-pull-request
+  - list-github-pr
+  - merge-github-pr
   - list-github-action-fail
 ---
 
@@ -14,7 +14,7 @@ related:
 Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `list-github-pull-request`, `merge-github-pull-request`, `list-github-action-fail`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `list-github-pr`, `merge-github-pr`, `list-github-action-fail`
 
 ใช้สำหรับ review pull request ก่อน merge — ทำงานบน PR จาก GitHub หรือ local branch diff — ไม่แก้ไข code โดยไม่ได้รับอนุญาต
 

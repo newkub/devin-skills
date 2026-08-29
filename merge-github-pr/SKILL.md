@@ -1,14 +1,14 @@
 ---
-name: merge-github-pull-request
+name: merge-github-pr
 description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
 related:
-  - resolve-github-pull-request
+  - resolve-github-pr
   - refactor-commit
   - git-commit
   - git-push
   - deep-validate
   - open-github-pr
-  - review-github-pull-request
+  - review-github-pr
 ---
 
 ## Goal
@@ -16,7 +16,7 @@ related:
 Merge pull request ด้วยวิธีทีเหมาะสม (merge, squash, rebase) พร้อมตรวจสอบ CI, review approval และ conflicts
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `refactor-commit`, `git-commit`, `git-push`, `deep-validate`, `open-github-pr`, `review-github-pull-request`
+- สำหรับ skills ที่เกี่ยวข้อง: `refactor-commit`, `git-commit`, `git-push`, `deep-validate`, `open-github-pr`, `review-github-pr`
 
 ใช้เมื่อ PR พร้อม merge ต้องการเลือก strategy อย่างถูกต้องและ merge อย่างปลอดภัย
 
@@ -38,7 +38,7 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 2. ตรวจสอบ review approval: `gh pr view <pr> --json reviews`
 3. ตรวจสอบ conflicts: `gh pr view <pr> --json mergeStateStatus`
 4. ถ้า CI ไม่ผ่าน → ทำ `/resolve-errors` ก่อน merge
-5. ถ้ามี conflicts → ทำ `/resolve-github-pull-request` หรือ merge base branch
+5. ถ้ามี conflicts → ทำ `/resolve-github-pr` หรือ merge base branch
 
 ### 3. Choose Merge Strategy
 

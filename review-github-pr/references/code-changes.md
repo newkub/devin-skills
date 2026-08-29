@@ -2,7 +2,7 @@
 title: Code Changes Review
 description: ตรวจ code changes, verify, coverage, security, docs, และ domain-specific reviews
 related:
-  - review-github-pull-request
+  - review-github-pr
 ---
 
 ## Goal
