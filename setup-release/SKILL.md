@@ -7,6 +7,7 @@ related:
   - ship-release
   - setup-ci-cd
   - setup-package
+  - test-release
   - follow-release
   - follow-tool-changelogen
   - follow-tool-changesets
@@ -75,7 +76,8 @@ related:
 1. ทำ `/review-config` ตรวจ release config
 2. ทำ `/run-verify` ตรวจ verify/build ผ่าน
 3. ถ้า platform รองรับ dry-run (เช่น `npm publish --dry-run`, `cargo publish --dry-run`) → รัน
-4. ถ้า validate ไม่ผ่าน → แก้ไขและ retry สูงสุด 3 ครั้ง
+4. ถ้ามี release artifact ทีต้อง smoke test → ทำ `/test-release`
+5. ถ้า validate ไม่ผ่าน → แก้ไขและ retry สูงสุด 3 ครั้ง
 
 ## Rules
 

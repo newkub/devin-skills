@@ -1,6 +1,14 @@
 ---
 name: review-release
 description: Review release readiness ก่อน publish
+related:
+  - test-release
+  - run-release
+  - ship-release
+  - setup-release
+  - review-correctness
+  - review-architecture
+  - report-table
 ---
 
 ## Goal
@@ -82,7 +90,8 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 4. สร้างตาราง Go/No-Go Checklist: Item, Status, Action Required
 5. สร้างตาราง Breaking Changes: Change, Impact, Migration Notes, Severity
 6. แสดง go/no-go recommendation พร้อมเหตุผล
-7. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+7. ถ้า go → แนะนำให้ทำ `/test-release` ก่อน `/run-release`
+8. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 ## Rules
 
