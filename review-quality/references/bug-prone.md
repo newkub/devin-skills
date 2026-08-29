@@ -59,6 +59,6 @@ criteria สำหรับตรวจจับรูปแบบโค้ด�
 
 ## Scope Boundaries
 
-- ไม่ซ้ำกับ `update-review-codebase-cli-and-run` สำหรับ race condition, deadlock, parallel execution
-- ไม่ซ้ำกับ `update-review-codebase-cli-and-run` สำหรับ error boundaries, error messages, graceful degradation
-- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/update-review-codebase-cli-and-run`
+- ไม่ซ้ำกับ `review-codebase-everythink` สำหรับ race condition, deadlock, parallel execution
+- ไม่ซ้ำกับ `review-codebase-everythink` สำหรับ error boundaries, error messages, graceful degradation
+- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/review-codebase-everythink`

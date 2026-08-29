@@ -1,5 +1,5 @@
 ---
-name: create-plan-md-in-dot-devin
+name: create-plan-in-dot-devin
 description: สร้างแผนละเอียดใน .devin/plan/<title-time>.md
 argument-hint: "[title]"
 related:
@@ -9,11 +9,12 @@ related:
   - improve
   - update-references
   - ship
+  - follow-report-in-dot-devin
 ---
 
 ## Goal
 
-สร้างแผนงานทีอ่านง่าย มีประโยชน์ และ implement ได้จริง จาก request ของผู้ใช้ แล้วบันทึกลง `.devin/plan/<title-time>.md`
+สร้างแผนงานที่อ่านง่าย มีประโยชน์ และ implement ได้จริง จาก request ของผู้ใช้ แล้วบันทึกลง `.devin/plan/<title-time>.md`
 
 ## Scope
 
@@ -52,8 +53,8 @@ related:
    - ลำดับชัดเจน (dependency order)
    - แต่ละ task มี single responsibility
    - expected result วัดผลได้
-   - ลดข้อความทีไม่จำเป็น
-3. บันทึกแผนทีปรับปรุงแล้ว
+   - ลดข้อความที่ไม่จำเป็น
+3. บันทึกแผนที่ปรับปรุงแล้ว
 
 ### 4. Review Plan
 
@@ -61,8 +62,8 @@ related:
 
 1. ทำ `/review-plan` เพื่อตรวจ:
    - ความสอดคล้องกับ request
-   - ลำดับทีถูกต้อง
-   - risk ทีระบุครบ
+   - ลำดับที่ถูกต้อง
+   - risk ที่ระบุครบ
    - ไม่มี gap
 2. ถ้า review พบปัญหา → ทำ `/improve` ซ้ำ
 3. วนจนกว่าจะผ่าน review
@@ -90,10 +91,10 @@ related:
 
 ### 7. Update References
 
-> Goal: อัปเดต references ทีเกี่ยวข้อง
+> Goal: อัปเดต references ที่เกี่ยวข้อง
 
-1. ทำ `/update-references` กับทุก skill ทีอ้างอิง `create-plan` เก่า
-2. เปลี่ยนเป็น `create-plan-md-in-dot-devin` ทีจำเป็น
+1. ทำ `/update-references` กับทุก skill ที่อ้างอิง `create-plan` เก่า
+2. เปลี่ยนเป็น `create-plan-in-dot-devin` ที่จำเป็น
 3. ถ้ามี `AGENTS.md` → อัปเดต slash command
 
 ### 8. Mark Complete And Cleanup

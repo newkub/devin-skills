@@ -1,26 +1,28 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอร์ใหม่และขยายจากของเดิม บันทึกลง temp แล้วเปิด app เลือก copy และดู uxui sketch
+description: สร้างไอเดียฟีเจอรใหม่และขยายจากของเดิม โดยไม่เปิด web app และไม่สร้าง report files ถาวร
 argument-hint: "[topic]"
 related:
-  - report-uxui-sketch
+  - follow-report-in-dot-devin
+  - realize-implementation
+  - review-codebase-everythink
+  - suggest-me
   - enhance-prompt
-  - follow-tool-vite
-  - follow-framework-solidjs
+  - report-uxui-sketch
 ---
 
 ## Goal
 
-สร้างไอเดียฟีเจอร์ใหม่และฟีเจอร์ที่ขยายจากของเดิมสำหรับ project จากนั้นบันทึกลง temp JSON แล้วเปิด web app ให้ user เลือก features, copy ในรูปแบบ enhance-prompt และดู report-uxui-sketch ของแต่ละ feature
+สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิมสำหรับ project จากนั้นสรุปใน chat หรือสร้าง report ชั่วคราวใน `.devin/reports/` แล้วลบหลังใช้งาน โดยไม่เปิด web app
 
 ## Scope
 
-- วิเคราะห์ project, packages, ฟีเจอร์ที่มีอยู่ และแนวโน้มตลาด
-- สร้างไอเดียฟีเจอร์จัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- บันทึกข้อมูลลงไฟล์ JSON ใน temp directory เท่านั้น
-- เปิด web app ที่อ่าน JSON จาก temp โดยไม่มี backend server
-- ใน app สามารถเลือก features, copy ทีเดียว, ดู uxui sketch แต่ละ feature
-- ห้ามเปรียบเทียบคู่แข่งโดยตรงใน skill นี้
+- วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
+- สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
+- สร้าง report ชั่วคราวใน `.devin/reports/` ด้วย `/follow-report-in-dot-devin` ถ้าต้องการ
+- ไม่เปิด web app, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
+- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everythink` ก่อน และลบ report files หลังเสร็จ
+- ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
 ## Execute
 
@@ -35,9 +37,9 @@ related:
 
 ### 2. Generate Ideas
 
-> Goal: สร้างไอเดียฟีเจอร์ที่ actionable
+> Goal: สร้างไอเดียฟีเจอรที่ actionable
 
-1. สร้างไอเดีย `Extends` (ขยายฟีเจอร์ที่มี) และ `New` (ฟีเจอร์ใหม่)
+1. สร้างไอเดีย `Extends` (ขยายฟีเจอรที่มี) และ `New` (ฟีเจอรใหม่)
 2. จัดลำดับตาม impact: สูง → กลาง → ต่ำ
 3. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
 4. ลำดับเลขต่อเนื่อง: `Extends` เริ่ม 1, `New` ต่อจาก `Extends`
@@ -53,93 +55,88 @@ related:
 4. ระบุ Effort: S, M, L, XL
 5. ระบุ Risk: สูง, กลาง, ต่ำ
 
-### 4. Save Data To Temp
+### 4. Create Temporary Report
 
-> Goal: เขียน JSON ลง temp สำหรับ app โหลด
+> Goal: สร้าง report ชั่วคราวใน .devin/reports/
 
-1. สร้าง directory `TEMP/idea-features/` ถ้ายังไม่มี (`TEMP` คือ `%TEMP%` บน Windows หรือ `$TMPDIR`)
-2. ใช้ path จาก env `IDEA_FEATURES_DATA` ถ้ามี ไม่งั้นใช้ `TEMP/idea-features/data.json`
-3. เขียน JSON ด้วยโครงสร้าง:
-   - `generatedAt`: ISO timestamp
-   - `features`: array ของ feature objects
-4. feature object ต้องมี fields หลัก: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail` และอาจเพิ่ม `tags` (array สตริง) / `files` (array path) เพื่อแสดงใน app
-5. ใช้ `write` tool หรือ script เขียนไฟล์
+1. ทำ `/follow-report-in-dot-devin` ด้วย title จาก topic
+2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
+3. รวม `/report-file-structure` ของ project
+4. บันทึกลง `.devin/reports/<title>-<time>.md`
 
-### 5. Open Web App
+### 5. Summarize In Chat
 
-> Goal: เปิด app ให้ user เลือก features แทนการตอบใน chat
+> Goal: รายงานผลให้ user ทราบ
 
-1. ตรวจสอบว่าอยู่ใน directory `C:\Users\Veerapong\AppData\Roaming\devin\skills\idea-features`
-2. ถ้ายังไม่ได้ติดตั้ม dependencies → รัน `bun install`
-3. รัน `bun run dev` ใน background
-4. รอ dev server ready ที่ `http://localhost:5173`
-5. ทำ `/browser_preview` หรือ `agent-browser open http://localhost:5173` เพื่อเปิดใน browser
-6. รายงาน user ว่า app พร้อมใช้งาน สามารถเลือก features, copy, ดู uxui sketch ได้
-7. dev server รันไปเรื่อยจนกว่า user จะ kill เองหรือ terminal หยุด
+1. สรุป features หลักใน chat สั้นๆ
+2. ระบุ path ของ report ชั่วคราว
+3. ถาม user ว่าต้องการทำ features ไหน
 
-### 6. Cleanup
+### 6. Implement If Asked
+
+> Goal: ทำตามคำสั่ง "ทำ"
+
+1. ถ้า user บอก "ทำ" → ทำ `/review-codebase-everythink` ก่อน
+2. จากนั้นทำ `/realize-implementation` ตาม features ที่เลือก
+3. หลัง `/realize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/`
+4. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็น → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
+
+### 7. Cleanup
 
 > Goal: จัดการหลังใช้งาน
 
-1. ถ้า user บอกว่าเสร็จแล้ว หรืองานอื่นรับช่วง → ตรวจสอบว่า dev server หยุดแล้ว
-2. ถ้า server ยังรันอยู่ → ทำ `kill` หรือหยุด background shell
-3. ไฟล์ data ใน temp สามารถลบหรือเก็บไว้ดังเดิมตาม context
+1. ถ้า report ชั่วคราวยังคงอยู่และไม่ต้องการเก็บ → ลบไฟล์ `.devin/reports/<title>-<time>.md`
+2. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files ค้าง
 
 ## Rules
 
-### 1. Data Format
+### 1. No Permanent Web App
 
-- บันทึกเฉพาะ data JSON ลง temp directory
-- template uxui ของ app อยู่ใน `src/App.tsx` ไม่ต้องเขียน template ลง temp
-- data ต้องมี `features` เป็น array
+- skill directory `idea-features` มีแค่ `SKILL.md`
+- ไม่มี `src/`, `package.json`, `index.html`, `vite.config.ts`, `uno.config.ts`, `tsconfig.json`
+- ไม่เปิด web app หรือ dev server
+- ไม่บันทึก data JSON ลง temp เพื่อเปิด app
 
-### 2. Web App Behavior
+### 2. Report Is Temporary
 
-- app เป็น Solid client-side SPA ไม่มี backend server
-- app โหลด JSON จาก `/api/data` ที Vite plugin serve จาก temp
-- app แสดงผลภาษาไทย สนับสนุนการ filter, select, copy
-- app มี uxui sketch สำหรับแต่ละ feature แบบละเอียด
-- app ส่ง beacon ไป `/close` ตอน `beforeunload` เพื่อหยุด dev server
+- สร้าง report ใน `.devin/reports/` เท่านั้น
+- ต้องลบ report files หลัง `/realize-implementation` เสร็จ
+- ไม่เก็บ report ค้าง
 
-### 3. Copy Format
+### 3. Implement Flow
 
-- เมื่อ user กด copy ให้สร้าง numbered list ตาม `/enhance-prompt`
-- รูปแบบ: `1. <feature> — <description>`
-- ทีเดียวสำหรับ features ทีเลือกทั้งหมด
+- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/review-codebase-everythink` ก่อน แล้ว `/realize-implementation`
+- ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
+- ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
-### 4. Table Columns For Internal Use
+### 4. Data Format
 
-`# | Impact | Feature | Description | Phase | Effort | MVP Score | Risk`
+- ใช้ `/follow-report-in-dot-devin` สำหรับ report format
+- แต่ละ feature ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
+- ใช้ `/enhance-prompt` สำหรับ copy format
 
-- Impact: สูง, กลาง, ต่ำ
-- Phase: MVP, v2, v3
-- Effort: S, M, L, XL
-- MVP Score: 1-10
-- Risk: สูง, กลาง, ต่ำ
-- Description: บรรทัดเดียว ภาษาไทย
+### 5. Direct Execution
 
-### 5. No Chat Output By Default
-
-- ไม่ต้องรายงานผลใน chat โดย default
-- ถ้า user ขอ chat summary → ให้สรุปสั้นๆ แล้วเปิด app
+- ถ้า user บอก "do ... now" → ทำ `/review-codebase-everythink` แล้ว `/realize-implementation`
+- ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
+- ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
 ### 6. Start With MVP
 
 - เริ่มจากเวอร์ชันที่ใช้งานได้น้อยที่สุด
-- กำหนด MVP scope ให้ชัดเจนต่อฟีเจอร์
+- กำหนด MVP scope ให้ชัดเจนต่อฟีเจอร
 - สร้างแบบ iterative ไม่ใช่ big bang
 
-### 7. Direct Execution
+### 7. Cleanup Generated Project
 
-- ถ้า user บอก "do ... now" → ทำ `/refactor` และ `/realize-implementation`
-- ถ้า user ขอ implement ฟีเจอร์เฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/update-review-codebase-cli-and-run`
+- ถ้าสร้าง project สำหรับ features → ลบ `.git`, remote repo, submodules, web src ตาม context
+- เหลือแค่ `SKILL.md` หรือไฟล์ที่จำเป็นจริงๆ
+- ใช้ dry run ก่อน destructive actions
 
 ## Expected Outcome
 
-- ไฟล์ JSON ของ features ถูกบันทึกลง temp
-- Web app ทำงานที่ `http://localhost:5173` หลังรัน `bun run dev`
-- สามารถเลือก features, copy ทีเดียวในรูปแบบ `/enhance-prompt`
-- แต่ละ feature มี report-uxui-sketch ละเอียด
-- ปิด tab เพื่อหยุด dev server อัตโนมัติ
-- ไม่ต้องตอบยาวใน chat สรุป path และ url สั้นๆ
+- ไอเดีย features ถูกสร้างและจัดลำดับ
+- Report ชั่วคราวถูกสร้างใน `.devin/reports/` (ถ้าต้องการ)
+- ไม่มี web app หรือ report files ถาวร
+- เมื่อ user บอก "ทำ" ให้ทำ `/review-codebase-everythink` แล้ว `/realize-implementation` แล้วลบ report files
+- ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ

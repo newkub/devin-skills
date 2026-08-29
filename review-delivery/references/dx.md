@@ -56,4 +56,4 @@ DX review สำหรับ: package scripts, dev server, build, lint, test, RE
 - ทำ review เท่านั้น ไม่ fix, ไม่ลบ, และไม่แก้ไข code ระหว่าง review
 - Build ควรใช้เวลา < 1 นาที, tests รันเร็ว, linting เร็ว, HMR instant
 - ทุก finding ต้องมี file path, line number, หรือ doc URL
-- รายละเอียด config review อยู่ใน `/update-review-codebase-cli-and-run` แล้ว
+- รายละเอียด config review อยู่ใน `/review-codebase-everythink` แล้ว

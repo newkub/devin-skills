@@ -27,7 +27,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-2. ทำ `/update-review-codebase-cli-and-run` แล้วรัน review analyzers
+2. ทำ `/review-codebase-everythink` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ดูรายละเอียด dimension checks ใน [references/index.md](references/index.md)
 5. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
@@ -88,7 +88,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/update-review-codebase-cli-and-run` สำหรับระบุ issues ใน code
+- ใช้ `/review-codebase-everythink` สำหรับระบุ issues ใน code
 - แยก review process จาก fix process
 - ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
 
@@ -96,7 +96,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 - ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 - ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
-- ไม่ review refactor opportunities ลึกที่ `/update-review-codebase-cli-and-run` ทำ
+- ไม่ review refactor opportunities ลึกที่ `/review-codebase-everythink` ทำ
 - ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
 - ไม่ review security controls — ใช้ `/review-delivery`
 - ไม่ review code quality — ใช้ `/review-quality`

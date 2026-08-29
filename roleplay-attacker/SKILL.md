@@ -118,7 +118,7 @@ Business Logic:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/run-audit` หรือ `/update-review-codebase-cli-and-run`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/run-audit` หรือ `/review-codebase-everythink`
 
 ### 2. Think Like An Attacker
 
@@ -153,9 +153,9 @@ Business Logic:
 
 - ถ้า attack chain ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม simulate
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan security patterns จริง ให้ใช้ `/update-review-codebase-cli-and-run`
+- ถ้าต้องการ scan security patterns จริง ให้ใช้ `/review-codebase-everythink`
 - ถ้าต้องการ run security audit จริง ให้ใช้ `/run-audit`
-- ถ้าต้องการเฉพาะ browser security ให้ใช้ `/update-review-codebase-cli-and-run`
+- ถ้าต้องการเฉพาะ browser security ให้ใช้ `/review-codebase-everythink`
 
 ### 7. Output
 

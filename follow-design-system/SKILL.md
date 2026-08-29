@@ -37,8 +37,8 @@ description: Design system principles พื้นฐานที่ใช้ไ
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/update-review-codebase-cli-and-run`
-4. ถ้า project มี TUI ทำ `/update-review-codebase-cli-and-run`
+3. ถ้า project มี mobile ทำ `/review-codebase-everythink`
+4. ถ้า project มี TUI ทำ `/review-codebase-everythink`
 
 ### 4. Ensure Accessibility
 

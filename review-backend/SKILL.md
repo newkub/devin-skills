@@ -30,8 +30,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 1. ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
 2. ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points ที่ใช้
-3. ทำ `/update-review-codebase-cli-and-run` — `/update-review-codebase-cli-and-run` เรียก `/update-project-rules` ภายในเพื่ออัปเดต ast-grep rules
-4. ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
+3. ทำ `/review-codebase-everythink` — `/review-codebase-everythink` เรียก `/update-project-rules` ภายในเพื่ออัปเดต ast-grep rules
+4. ถ้า `/review-codebase-everythink` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 5. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 6. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
@@ -41,13 +41,13 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 > Goal: ครอบคลุมทุก backend dimension ผ่าน 14 sub-review workflows
 
-1. ทำ `/update-review-codebase-cli-and-run` สำหรับ API review (อ้างอิง `references/api.md`)
-2. ทำ `/update-review-codebase-cli-and-run` สำหรับ service layer review (อ้างอิง `references/service.md`)
-3. ทำ `/update-review-codebase-cli-and-run` สำหรับ database review (อ้างอิง `references/database.md`)
-4. ทำ `/update-review-codebase-cli-and-run` สำหรับ data flow review (อ้างอิง `references/data-flow.md`)
-5. ทำ `/update-review-codebase-cli-and-run` สำหรับ data fetching review (อ้างอิง `references/data-fetching.md`)
-6. ทำ `/update-review-codebase-cli-and-run` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
-7. ทำ `/update-review-codebase-cli-and-run` สำหรับ integration review (อ้างอิง `references/integration.md`)
+1. ทำ `/review-codebase-everythink` สำหรับ API review (อ้างอิง `references/api.md`)
+2. ทำ `/review-codebase-everythink` สำหรับ service layer review (อ้างอิง `references/service.md`)
+3. ทำ `/review-codebase-everythink` สำหรับ database review (อ้างอิง `references/database.md`)
+4. ทำ `/review-codebase-everythink` สำหรับ data flow review (อ้างอิง `references/data-flow.md`)
+5. ทำ `/review-codebase-everythink` สำหรับ data fetching review (อ้างอิง `references/data-fetching.md`)
+6. ทำ `/review-codebase-everythink` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
+7. ทำ `/review-codebase-everythink` สำหรับ integration review (อ้างอิง `references/integration.md`)
 8. ถ้า sub-review ไม่เกี่ยวข้องกับ project → ข้าม sub-review นั้น
 9. ถ้าพบ critical issues → หยุดและทำ `/deep-validate` ก่อนดำเนินต่อ
 
@@ -103,8 +103,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ### 6. Update Before Run
 
-- ทำ `/update-review-codebase-cli-and-run` ก่อนรัน sub-reviews เสมอ — `/update-review-codebase-cli-and-run` เรียก `/update-project-rules` ภายใน
-- ถ้า `/update-review-codebase-cli-and-run` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
+- ทำ `/review-codebase-everythink` ก่อนรัน sub-reviews เสมอ — `/review-codebase-everythink` เรียก `/update-project-rules` ภายใน
+- ถ้า `/review-codebase-everythink` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
 
 ### 7. Formatting
 

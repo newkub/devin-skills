@@ -66,7 +66,7 @@ Goal reminder: ทุก dimension ต้องมี severity และ actiona
 6. Documentation — README, API docs, examples, content quality
 7. Configuration — config files, env vars, consistency, safety
 8. Dependencies — versions, security, unused, compatibility
-9. ถ้า project มี `/update-review-codebase-cli-and-run` → ใช้เป็น orchestrator สำหรับ dimension reviews
+9. ถ้า project มี `/review-codebase-everythink` → ใช้เป็น orchestrator สำหรับ dimension reviews
 
 ### 5. Deep Report
 

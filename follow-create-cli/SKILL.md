@@ -13,7 +13,7 @@ related:
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/update-review-codebase-cli-and-run`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase-everythink`
 
 ## Scope
 
@@ -55,8 +55,8 @@ related:
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
-1. ทำ `/update-review-codebase-cli-and-run` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/update-review-codebase-cli-and-run` ระบุ
+1. ทำ `/review-codebase-everythink` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/review-codebase-everythink` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 5. Integrate Into Workspace
@@ -103,7 +103,7 @@ related:
 
 ### 4. Review Before Ship
 
-- ทำ `/update-review-codebase-cli-and-run` ก่อน commit
+- ทำ `/review-codebase-everythink` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -113,5 +113,5 @@ related:
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
 - Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
-- ผ่าน `/update-review-codebase-cli-and-run`
+- ผ่าน `/review-codebase-everythink`
 - ผสานเข้ากับ workspace ได้

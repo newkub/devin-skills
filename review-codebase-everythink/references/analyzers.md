@@ -26,7 +26,7 @@
 
 ตรวจว่าทุก analyzer มี `reviewWorkflow` map:
 
-- map จาก category ไปยัง `/update-review-codebase-cli-and-run` หรือ references
+- map จาก category ไปยัง `/review-codebase-everythink` หรือ references
 - ระบุ action ที่ต้องทำเมื่อพบ issue
 
 ถ้าขาด `reviewWorkflow` → flag เป็น `Medium` severity

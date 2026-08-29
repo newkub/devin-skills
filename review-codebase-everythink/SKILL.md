@@ -1,11 +1,19 @@
 ---
-name: update-review-codebase-cli-and-run
-description: สร้างและอัปเดต tools/review-codebase CLI แล้วรัน review จนได้ผล
+name: review-codebase-everythink
+description: รีวิว codebase ครบทุกมิติ พร้อมอัปเดต project rules และ review CLI ให้ทันสมัย
+related:
+  - update-review-cli
+  - update-project-rules
+  - update-create-analyze-cli
+  - run-review
+  - deep-analyze-by-use-scripts
+  - deep-review
+  - deep-validate
 ---
 
 ## Goal
 
-สร้างหรืออัปเดต `tools/review-codebase` CLI ที่ project root แล้วรัน review เพื่อวัด metrics ของ codebase ครบทุกมิติ ถ้า metrics ไม่ผ่านเกณฑ์ให้ update CLI อัตโนมัติและรันใหม่ จนกว่าจะผ่านหรือครบ 3 รอบ
+สร้างหรืออัปเดต `tools/review-codebase` CLI แล้วรัน review เพื่อวัด metrics ของ codebase ครบทุกมิติ โดย keep up กับ codebase features ด้วย `/update-project-rules` และ `/update-review-cli` ถ้า metrics ไม่ผ่านเกณฑ์ให้ update CLI อัตโนมัติและรันใหม่ จนกว่าจะผ่านหรือครบ 3 รอบ
 
 ## Scope
 
@@ -13,17 +21,19 @@ description: สร้างและอัปเดต tools/review-codebase CL
 
 ## Execute
 
-### 1. Prepare And Check Should Update
+### 1. Prepare And Keep Up With Codebase
 
-> Goal: รู้จุดเริ่มต้นและตัดสินใจว่าต้อง create/update หรือ run ทันที
+> Goal: อัปเดต rules, skills และ CLI ให้ทันสมัยก่อนรัน review
 
 1. ทำ `/scan-codebase` ใน `tools/review-codebase/` ถ้ามีอยู่
-2. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
-3. ถ้าผลเป็น `skip` → ไป Step 8 (Run Review CLI)
-4. ถ้าผลเป็น `update` หรือ `create` → ไป Step 2
-5. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
-6. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` เพื่อตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, และ evidence
-7. ถ้า pre-review score < 70 → ทำ Step 2-7 ก่อน Step 8
+2. ทำ `/update-project-rules` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
+3. ทำ `/update-review-cli` เพื่ออัปเดต `tools/review-codebase` ให้ครอบคลุม features ปัจจุบัน
+4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
+5. ถ้าผลเป็น `skip` → ไป Step 9 (Run Review CLI)
+6. ถ้าผลเป็น `update` หรือ `create` → ไป Step 2
+7. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
+8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` เพื่อตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, และ evidence
+9. ถ้า pre-review score < 70 → ทำ Step 2-8 ก่อน Step 9
 
 ### 2. Plan Analyzer Categories
 
@@ -32,7 +42,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 1. ทำตาม `run-review` เพื่อดู 60+ categories จัดกลุ่มตาม 5 domains
 2. สร้าง mapping แต่ละ category ไปยัง analyzer file ใน `src/domain/analyzers/`
 3. ระบุ analyzers ที่มีอยู่, ต้องสร้างใหม่, หรือต้องอัปเดท
-4. ดู [references/review-codebase-cli.md](references/review-codebase-cli.md) สำหรับ category structure
+4. ดู `references/review-codebase-cli.md` สำหรับ category structure
 
 ### 3. Create Or Update Workspace Package
 
@@ -62,7 +72,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อนใน `tools/analyze` ไม่ใช่ใน `tools/review-codebase`
 2. import `runAllAnalyzers` จาก `tools-analyze` ใน `src/application/review.ts`
 3. แปลงผล `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
-4. กำหนด `reviewWorkflow` map ไปยัง `update-review-codebase-cli-and-run/references/<dimension>.md` หรือ review skills ที่เกี่ยวข้อง
+4. กำหนด `reviewWorkflow` map ไปยัง `review-codebase-everythink/references/<dimension>.md` หรือ review skills ที่เกี่ยวข้อง
 5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียดใน `tools/analyze`
 
 ### 6. Update Package Scripts
@@ -129,7 +139,7 @@ description: สร้างและอัปเดต tools/review-codebase CL
 ### 1. CLI-Driven Review
 
 - ใช้ `tools/review-codebase` CLI เป็นแหล่งหลักของ findings ไม่ manual อ่าน references ทีละ dimension
-- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ Step 3-7 ก่อนรีวิวต่อ
+- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ Step 2-8 ก่อนรีวิวต่อ
 - `tools/review-codebase` สร้างที่ project root เท่านั้น ไม่ใช่ `tools/review`
 
 ### 2. Metric Triggers

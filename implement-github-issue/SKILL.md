@@ -2,7 +2,7 @@
 name: implement-github-issue
 description: นำ GitHub issue ไป implement จนพร้อม merge
 related:
-  - create-plan-md-in-dot-devin
+  - create-plan-in-dot-devin
   - realize-implementation
   - implement-mock
   - run-verify-on-local
@@ -44,7 +44,7 @@ related:
 
 > Goal: วางแผนการ implement
 
-1. ทำ `/create-plan-md-in-dot-devin` ถ้า issue ซับซ้อน
+1. ทำ `/create-plan-in-dot-devin` ถ้า issue ซับซ้อน
 2. ระบุไฟล์และ skills ทีจำเป็น
 3. วิเคราะห์ dependencies และ risk
 

@@ -47,7 +47,7 @@ Review แล้วสร้างหรืออัปเดต `tools/analyze`
 
 > Goal: รู้ว่าจะ expose analyzers อะไรบ้าง
 
-1. ทำตาม `run-review` หรือ `update-review-codebase-cli-and-run` เพื่อดู category catalog
+1. ทำตาม `run-review` หรือ `review-codebase-everythink` เพื่อดู category catalog
 2. จัดกลุ่มเป็น 5 domains: `user-facing`, `security-compliance`, `backend-data`, `infrastructure`, `code-architecture`
 3. สร้างรายชื่อ analyzer files ที่จะ implement
 
@@ -78,7 +78,7 @@ Review แล้วสร้างหรืออัปเดต `tools/analyze`
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อน
 2. ใส่ specific checks ตาม domain ที่กำหนดใน Step 3
 3. ให้แต่ละ analyzer return `CategoryResult` กับ `status`, `score`, `findings`
-4. กำหนด `reviewWorkflow` ให้ตรงกับ `update-review-codebase-cli-and-run` references
+4. กำหนด `reviewWorkflow` ให้ตรงกับ `review-codebase-everythink` references
 
 ### 7. Expose Workspace API And Update tools/review-codebase
 

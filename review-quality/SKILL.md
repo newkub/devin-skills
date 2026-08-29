@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - deep-analyze
   - run-review
-  - update-review-codebase-cli-and-run
+  - review-codebase-everythink
   - use-ast-grep
   - report-table
   - suggest-next-action

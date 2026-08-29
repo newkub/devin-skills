@@ -48,11 +48,11 @@ bun run --filter tools-review-codebase review-codebase -- --output report.json
 
 ## CLI Error Handling
 
-ถ้า CLI error ให้ทำ `update-review-codebase-cli-and-run` Step 3-7 เพื่อแก้ไขแล้วรันใหม่
+ถ้า CLI error ให้ทำ `review-codebase-everythink` Step 3-7 เพื่อแก้ไขแล้วรันใหม่
 
 ## Metric Triggers สำหรับ Update CLI
 
-ถ้า metrics ตรงเงื่อนไขข้างล่าง → ทำ `/update-create-analyze-cli` เพื่อแก้ไข analyzer ก่อน แล้วทำ `update-review-codebase-cli-and-run` Step 3-7 เพื่อ integrate แล้วรัน review ใหม่ (ไม่เกิน 3 รอบ):
+ถ้า metrics ตรงเงื่อนไขข้างล่าง → ทำ `/update-create-analyze-cli` เพื่อแก้ไข analyzer ก่อน แล้วทำ `review-codebase-everythink` Step 3-7 เพื่อ integrate แล้วรัน review ใหม่ (ไม่เกิน 3 รอบ):
 
 - `categories < 60` → เพิ่ม categories ใน `tools/analyze`
 - `score < 70` หรือ `grade D/F` → ปรับปรุง analyzers ใน `tools/analyze`
@@ -67,4 +67,4 @@ bun run --filter tools-review-codebase review-codebase -- --output report.json
 - `tools/review-codebase/src/presentation/cli.ts` — CLI entry point
 - `tools/review-codebase/README.md` — CLI documentation
 
-ถ้าไฟล์เหล่านี้ไม่อยู่ → ทำ `update-review-codebase-cli-and-run` เพื่อสร้าง
+ถ้าไฟล์เหล่านี้ไม่อยู่ → ทำ `review-codebase-everythink` เพื่อสร้าง

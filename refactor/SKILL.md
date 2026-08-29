@@ -22,7 +22,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - ใช้กับทุก workspace ที่ต้องการ refactor
 - ครอบคลุม SRP, long files, import/export, architecture, packages, code styles
 - รวม consistency check สำหรับ naming, patterns, structure, และ style
-- ใช้ `/create-plan-md-in-dot-devin` สำหรับงานใหญ่
+- ใช้ `/create-plan-in-dot-devin` สำหรับงานใหญ่
 - ใช้ `/implement-plan` สำหรับ execute แผน
 
 ## Execute
@@ -31,7 +31,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: เข้าใจ codebase ก่อน refactor
 
-1. ทำ `/update-review-codebase-cli-and-run` สำหรับ deep review
+1. ทำ `/review-codebase-everythink` สำหรับ deep review
 2. ทำ `/check-code-structure`, `/review-quality`, `/check-long-files`
 3. บันทึก baseline: files, symbols, responsibilities
 
@@ -39,7 +39,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: มีแผนก่อน refactor ขนาดใหญ่
 
-1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan-md-in-dot-devin`
+1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan-in-dot-devin`
 2. ถ้างานเล็ก → ข้ามไป Step 3
 
 ### 3. Refactor By Concern

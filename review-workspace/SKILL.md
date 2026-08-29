@@ -8,7 +8,7 @@ related:
   - follow-package-manifest
   - check-unused-deps
   - run-audit
-  - update-review-codebase-cli-and-run
+  - review-codebase-everythink
   - run-verify-on-local
   - deep-validate
   - report-table
@@ -23,7 +23,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ## Scope
 
-ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/update-review-codebase-cli-and-run`
+ใช้สำหรับ review workspace หนึ่ง โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/review-codebase-everythink`
 
 ## Execute
 
@@ -81,7 +81,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 ### 1. Scope Boundary
 
 - review หนึ่ง workspace ต่อการเรียก
-- ไม่ duplicate กับ `/update-review-codebase-cli-and-run`
+- ไม่ duplicate กับ `/review-codebase-everythink`
 - ถ้าพบ issues นอก scope ให้ระบุเป็น Info และอ้างอิง skill ที่เหมาะสม
 
 ### 2. Evidence Quality

@@ -12,7 +12,9 @@ related:
   - follow-agents-md
   - update-devin-global-skills
   - update-all-devin-global-skills
-  - update-review-codebase-cli-and-run
+  - run-verify-on-local
+  - run-test-all
+  - review-codebase-everythink
   - review-diff
   - resolve-errors
   - git-commit
@@ -64,7 +66,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 1. ทำ `/run-verify-on-local` ถ้า `AGENTS.md` หรือ workspace ระบุ
 2. ทำ `/run-test-all` ถ้ามี test suites
-3. ทำ `/update-review-codebase-cli-and-run` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
+3. ทำ `/review-codebase-everythink` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
 4. ทำ `/deep-validate` เพื่อ validate ผลลัพธ์
 5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry
 
@@ -130,7 +132,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 
 - `AGENTS.md` อัปเดตและถูกต้อง
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบ
-- Code ผ่าน `/run-verify-on-local`, `/run-test-all`, `/update-review-codebase-cli-and-run` (ถ้ามี) และ `/deep-validate`
+- Code ผ่าน `/run-verify-on-local`, `/run-test-all`, `/review-codebase-everythink` (ถ้ามี) และ `/deep-validate`
 - ทุก submodule ที่มี changes ถูก commit ก่อน root
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ

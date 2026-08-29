@@ -66,7 +66,7 @@ related:
 
 > Goal: บันทึกแผนทีตกลงร่วมกัน
 
-1. ถ้า tasks มากกว่า 10 → ทำ `/create-plan-md-in-dot-devin` เพื่อสร้าง `.devin/plan/<topic>-<date>.md`
+1. ถ้า tasks มากกว่า 10 → ทำ `/create-plan-in-dot-devin` เพื่อสร้าง `.devin/plan/<topic>-<date>.md`
 2. ถ้า tasks น้อยกว่าหรือเท่ากับ 10 → บันทึกใน chat report
 3. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือ implement
 

@@ -113,7 +113,7 @@ Domain Knowledge:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/update-review-codebase-cli-and-run` หรือ `/run-dev`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/review-codebase-everythink` หรือ `/run-dev`
 
 ### 2. Think Like A New Developer
 
@@ -148,9 +148,9 @@ Domain Knowledge:
 
 - ถ้า onboarding ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan DX patterns จริง ให้ใช้ `/update-review-codebase-cli-and-run`
+- ถ้าต้องการ scan DX patterns จริง ให้ใช้ `/review-codebase-everythink`
 - ถ้าต้องการ scan file structure ให้ใช้ `/check-code-structure`
-- ถ้าต้องการ scan naming ให้ใช้ `/update-review-codebase-cli-and-run`
+- ถ้าต้องการ scan naming ให้ใช้ `/review-codebase-everythink`
 
 ### 7. Output
 

@@ -24,7 +24,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
 
-1. ทำ `/update-review-codebase-cli-and-run` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+1. ทำ `/review-codebase-everythink` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Deep Analysis And Thinking
 
@@ -120,7 +120,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 3. ตรวจสอบไม่มี missing tasks หรือ gaps
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ พร้อม risks และ mitigation
 5. ทำ `/deep-validate` เพื่อ validate แผนก่อนบันทึก
-6. ทำ `/create-plan-md-in-dot-devin` เพื่อสร้างแผนลง `.devin/plan/<title>-<date>.md`
+6. ทำ `/create-plan-in-dot-devin` เพื่อสร้างแผนลง `.devin/plan/<title>-<date>.md`
 7. ทำ `/report-table` สำหรับ tasks และ file structure
 8. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
 9. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป

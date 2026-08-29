@@ -76,7 +76,7 @@ related:
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
-   - `/update-review-codebase-cli-and-run` (ถ้ามี `tools/review-codebase/`)
+   - `/review-codebase-everythink` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด

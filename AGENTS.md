@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **732** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **766** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -100,11 +100,11 @@ Core:
 By prefix:
 
 Major skill families by current count:
-- `follow-*` (234): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`
-- `review-*` (54): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`
-- `list-*` (43): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-action-fail`
+- `follow-*` (238): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`, `follow-report-in-dot-devin`
+- `review-*` (56): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`, `review-codebase-everythink`, `review-codebase-everythink-and-ship`
+- `list-*` (47): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-action-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-on-local`, `run-verify-on-ci-cd`, `run-test-all`
-- `update-*` (34): repo, skills, docs, config, runtime, and version maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-runtime-latest`
+- `update-*` (34): repo, skills, docs, config, runtime, and version maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-runtime-latest`, `update-review-cli`
 - `setup-*` (1): one-time setup helpers. Examples: `setup-ci-cd`
 - `report-*` (34): reporting, diagrams, and visualization helpers. Examples: `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-task-progress`
 - `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
@@ -119,16 +119,16 @@ Major skill families by current count:
 - `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
 - `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
 - `implement-*` (6): implement tasks and features. Examples: `implement-github-task`, `implement-todo-md`, `implement-features-to-mvp`
-- `idea-*` (9): idea generation. Examples: `idea`, `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`, `idea-refactor-devin-global-skills`
+- `idea-*` (8): idea generation. Examples: `idea-features`, `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`, `idea-refactor-devin-global-skills`
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-performance-profile`, `analyze-security-risk`, `analyze-data-flow`, `analyze-tech-debt`, `analyze-attack-surface`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-to-cloud`, `ship-github-issue`, `ship-release`, `ship-continue`, `ship-continuous-dont-ask`, `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-performance-profile`, `analyze-security-risk`, `analyze-data-flow`, `analyze-tech-debt`, `analyze-attack-surface`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-to-cloud`, `ship-github-issue`, `ship-release`, `ship-continue`, `ship-continuous-dont-ask`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
 - Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
-- Submodules: `ask-project-requirement`, `analyze-codebase-quality`, `visualize-devin-in-web`, `open-files-in-web`
+- Submodules: `analyze-codebase-quality`, `analyze-dependencies`, `analyze-file-structure`, `ask-project-requirement`, `open-files-in-web`, `visualize-devin-in-web`
 
 ### 7. Safety
 

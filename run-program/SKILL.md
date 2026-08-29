@@ -56,7 +56,7 @@ description: รันโปรแกรมหลักและทำให้�
 1. อ่าน error messages และระบุ root cause
 2. จัดลำดับความสำคัญ
 3. แก้ไข code ที่เป็นปัญหา
-4. รัน `/update-review-codebase-cli-and-run` ถ้าจำเป็น
+4. รัน `/review-codebase-everythink` ถ้าจำเป็น
 5. rebuild และรันใหม่
 
 ## Rules
