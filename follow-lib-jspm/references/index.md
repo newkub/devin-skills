@@ -7,4 +7,5 @@
 | `jspm-config.md` | JSPM configuration reference (placeholder, pending content) |
 | `official-resources.md` | Official JSPM websites, documentation, GitHub, related standards (import maps, ES modules), related tools, and CLI help |
 | [website.md](website.md) | Official resources and links |
+
 | [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

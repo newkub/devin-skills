@@ -9,7 +9,6 @@
 | `tanstack-config.md` | TanStack configuration examples: QueryClient, Router, Table, Form, Store, and Start (Vite) setup |
 | `official-resources.md` | Official TanStack documentation links, GitHub repositories, and community resources |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Workflows
 
@@ -17,3 +16,5 @@
 |------|----------------|
 | `../workflows/use-tanstack-query.md` | Step-by-step workflow for installing and using TanStack Query |
 | `../workflows/use-tanstack-table.md` | Step-by-step workflow for installing and using TanStack Table |
+
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

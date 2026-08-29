@@ -1,6 +1,3 @@
-# Create Bun Cli Official Resources
+# Follow Create Bun Cli Resources
 
-- [Website](https://bunup.dev)
-- [Repository](https://github.com/bunup/bunup)
-- [Package Registry](https://www.npmjs.com/package/bunup)
-- About: ⚡ A blazing-fast build tool for your libraries built with Bun.
+- This skill is a creation guide; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for steps and target stack resources.

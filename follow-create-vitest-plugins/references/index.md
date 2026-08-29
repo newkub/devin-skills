@@ -9,7 +9,6 @@
 | `plugin-api.md` | Vitest Plugin API reference - `configureVitest` hook, context properties (`project`, `vitest`, `injectTestProjects`, `experimental_defineCacheKeyGenerator`), config mutations |
 | `test-project.md` | Test Project API reference - `injectTestProjects` usage, config glob, filepath, inline config, unique name requirement, filter behavior, `TestProject` properties |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Usage
 

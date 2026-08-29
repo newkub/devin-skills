@@ -10,4 +10,3 @@
 | [remotion-config.md](remotion-config.md) | Remotion configuration options (video settings, output, server, Chromium, environment variables, TypeScript) |
 | [official-resources.md](official-resources.md) | Official Remotion resources, documentation links, community channels, and quick start guides |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

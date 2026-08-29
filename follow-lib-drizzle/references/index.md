@@ -4,6 +4,7 @@
 
 | File | Responsibility |
 |---|---|
+| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 | [cli.md](cli.md) | `drizzle-kit` CLI commands and migration strategy |
 | [api/schema.md](api/schema.md) | Schema definition across dialects, relations, type inference |
 | [api/queries.md](api/queries.md) | CRUD, joins, relational queries (RQB), pagination, raw SQL |
@@ -11,7 +12,6 @@
 | [components/config.md](components/config.md) | `drizzle.config.ts` options and dialect/driver matrix |
 | [components/drivers.md](components/drivers.md) | Driver install and client init per runtime (incl. serverless) |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Version Info
 

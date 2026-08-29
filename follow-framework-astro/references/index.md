@@ -4,4 +4,3 @@
 |---|---|
 | [astro.md](astro.md) | Astro 5 framework reference including project creation and upgrade |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

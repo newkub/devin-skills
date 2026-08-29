@@ -10,4 +10,5 @@
 | [official-resources.md](official-resources.md) | Official Playwright resources, documentation links, packages, and community channels |
 | [cli.md](cli.md) | CLI commands, default behaviors, and options |
 | [website.md](website.md) | Official resources and links |
+
 | [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

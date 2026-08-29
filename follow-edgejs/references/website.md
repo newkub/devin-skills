@@ -1,3 +1,3 @@
-# Edgejs Official Resources
+# Follow Edgejs Official Resources
 
-- [Package Registry](https://www.npmjs.com/package/edge.js)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

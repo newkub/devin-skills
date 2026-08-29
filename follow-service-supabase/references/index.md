@@ -7,4 +7,3 @@
 | `supabase-config.md` | Supabase configuration reference: config.toml sections, environment variables, Docker services, and migration directory |
 | `official-resources.md` | Official Supabase websites, documentation links, GitHub repositories, community, and packages |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

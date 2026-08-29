@@ -10,7 +10,6 @@
 | `plugin-api.md` | Vite Plugin API reference — โครงสร้าง plugin object, `name`, `enforce`, `apply`, universal hooks (Rolldown), Vite-specific hooks, และ Rolldown compatibility notes |
 | `library-mode.md` | Vite library mode build reference — `build.lib` config, `entry`, `name`, `fileName`, `formats`, `external`, `tsconfig`, และ `package.json` scripts |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Usage
 

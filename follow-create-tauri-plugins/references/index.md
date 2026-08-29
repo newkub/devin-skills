@@ -9,7 +9,6 @@
 | `tauri-plugin-api.md` | Tauri plugin Rust API reference — `Builder`, `generate_handler!` macro, lifecycle hooks (`setup`, `on_navigation`, `on_webview_ready`, `on_event`, `on_drop`), state management, `Manager` trait, extension traits, plugin configuration, command permissions |
 | `tauri-cli.md` | Tauri CLI commands สำหรับ plugin development — `plugin new`, `plugin android add`, `plugin ios add`, `tauri add`, `cargo build`, build script, platform support declaration |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## Usage
 

@@ -14,4 +14,3 @@
 - `follow-tool-bunup` — bundle TypeScript libraries with Bunup
 
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

@@ -11,7 +11,6 @@
 | `flat-config-basics.md` | รูปแบบ ESLint flat config สำหรับ plugins: `plugins` key, namespace assignment, รูปแบบ rule `namespace/rule-name`, และ plugin object structure |
 | `flat-config-advanced.md` | การใช้ configs จาก plugin, shared settings, dual export (flat config + legacy), และตัวอย่าง configuration แบบสมบูรณ์ |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## ลำดับการอ่านแนะนำ
 

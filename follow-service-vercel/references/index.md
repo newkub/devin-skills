@@ -6,4 +6,3 @@
 | vercel-cli.md | Vercel CLI reference: core commands, authentication, project management, deployment, environment variables, domains, logs, teams, secrets, certificates, aliases, configuration |
 | vercel-website.md | Vercel official website resources: documentation, features, tools, community, related services |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

@@ -10,7 +10,6 @@
 | `gritql-patterns.md` | GritQL pattern syntax reference — metavariables, regex, conditions, pattern modifiers, rewrites, `or` blocks |
 | `biome-config.md` | Biome plugin configuration reference — `plugins` array, `includes`, glob patterns, `biome.jsonc` format |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |
 
 ## When To Use Each Reference
 

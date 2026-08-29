@@ -153,7 +153,7 @@
   - `## Dependencies` สั้นๆ
   - `## Common API / Commands` ตาราง `| commands | description | default | options |`
   - `## Source` ลิงก์ official docs
-- ห้ามใช้ placeholder เช่น `TBD` หรือ `TBC` ใน references; ข้อมูลต้อง research จาก official docs หรือ package registry จริง
+- ห้ามใช้ placeholder หรือข้อความทีระบุว่ายังไม่เสร็จ ใน `references/`; ข้อมูลต้อง research จาก official docs หรือ package registry จริง
 - ทุกไฟล์ใน `references/` ไม่เกิน 250 บรรทัด
 
 ## Expected Outcome

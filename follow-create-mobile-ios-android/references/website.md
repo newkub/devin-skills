@@ -1,6 +1,3 @@
-# Create Mobile Ios Android Official Resources
+# Follow Create Mobile Ios Android Resources
 
-- [Website](https://capacitorjs.com)
-- [Repository](https://github.com/ionic-team/capacitor)
-- [Package Registry](https://www.npmjs.com/package/@capacitor/core)
-- About: Capacitor: Cross-platform apps with JavaScript and the web
+- This skill is a creation guide; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for steps and target stack resources.

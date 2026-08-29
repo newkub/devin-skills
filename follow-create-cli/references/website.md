@@ -1,3 +1,3 @@
-# Create Cli Official Resources
+# Follow Create Cli Resources
 
-- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.
+- This skill is a creation guide; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for steps and target stack resources.

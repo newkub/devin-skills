@@ -1,3 +1,3 @@
-# Package Manifest Official Resources
+# Follow Package Manifest Official Resources
 
-- [Package Registry](https://www.npmjs.com/package/-U)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.
