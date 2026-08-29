@@ -19,13 +19,12 @@ related:
   - follow-math-algorithm-complexity
   - check-dead-code
   - check-bottlenecks
-  - analyze-performance-profile
-  - analyze-security-risk
-  - analyze-error-patterns
-  - analyze-data-flow
-  - analyze-tech-debt
-  - analyze-user-flow
-  - analyze-cost-impact
+  - review-performance
+  - review-security
+  - review-stability
+  - review-architecture
+  - review-quality
+  - review-uxui
   - analyze-attack-surface
   - follow-math-optimization
 ---

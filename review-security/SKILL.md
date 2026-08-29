@@ -5,7 +5,6 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - check-secrets-leak
-  - analyze-security-risk
   - analyze-attack-surface
 ---
 
@@ -15,7 +14,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ## Scope
 
-security review สำหรับ: authentication, authorization, OWASP Top 10, secrets management, injection prevention, CORS/CSP, supply chain, API security, session/token management, encryption, file upload security
+security review สำหรับ: authentication, authorization, OWASP Top 10, secrets management, injection prevention, CORS/CSP, supply chain, API security, session/token management, encryption, file upload security, security risk scoring and prioritization
 
 ไม่รวม compliance review (ใช้ `/review-compliance`) และ observability review (ใช้ `/review-observability`)
 
@@ -35,6 +34,7 @@ security review สำหรับ: authentication, authorization, OWASP Top 10,
 6. ทำ `/review-codebase-everythink` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 8. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+9. ถ้าต้องการ risk matrix และ prioritized findings ให้ทำตาม `references/security-risk.md`
 
 ### 2. Authentication Review
 

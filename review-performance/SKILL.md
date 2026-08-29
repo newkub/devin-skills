@@ -32,6 +32,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 - `caching`: invalidation, TTL, key design, stampede
 - `database`: N+1 queries, indexes, query optimization
 - `complexity`: Big O, data structures
+- `profiling`: flamegraphs, runtime profilers, hotspot detection
 
 ไม่รวม security หรือ stability (ใช้ `/review-security` และ `/review-stability`)
 
@@ -45,6 +46,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 2. ระบุ performance tools ที่มี: `lighthouse`, `react-scan`, `unlighthouse`, `bun profile`, `Chrome DevTools`
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
 4. ทำ `/run-review` เพื่อดึง review metrics ล่าสุด
+5. ถ้าต้องการ runtime profile ลึก ให้ทำตาม `references/performance-profile.md`
 
 ### 2. Network And API Performance
 

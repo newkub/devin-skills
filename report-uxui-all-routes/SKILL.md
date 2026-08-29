@@ -4,7 +4,7 @@ description: สร้างรายงาน routes ทั้งหมดข�
 related:
   - report-uxui-sketch
   - list-website-all-routes
-  - analyze-user-flow
+  - review-uxui
   - report-table
 ---
 

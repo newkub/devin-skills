@@ -3,7 +3,7 @@ name: analyze-attack-surface
 description: วิเคราะห์ attack surface และ exposed endpoints ของระบบ
 argument-hint: "[app-url|repo-path]"
 related:
-  - analyze-security-risk
+  - review-security
   - check-secrets-leak
   - list-website-all-routes
   - review-security

@@ -1,14 +1,3 @@
----
-name: analyze-error-patterns
-description: วิเคราะห์ log/error patterns เพื่อหา issues ทีเกิดซ้ำ
-argument-hint: "[log-source]"
-related:
-  - analyze-root-cause-analysis
-  - analyze-data-flow
-  - watch-ci-cd
-  - improve
----
-
 ## Goal
 รวบรวมและจับกลุ่ม errors/exceptions จาก logs เพื่อหา patterns และ root cause
 

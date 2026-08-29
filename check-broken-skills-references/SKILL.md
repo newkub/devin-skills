@@ -6,7 +6,7 @@ related:
   - check-reference
   - deep-validate
   - check-backward-compatibility
-  - analyze-security-risk
+  - review-security
   - update-references
 ---
 ## Goal

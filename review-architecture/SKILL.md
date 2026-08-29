@@ -9,7 +9,7 @@ Review architecture ระดับ macro ครอบคลุม design patter
 
 ## Scope
 
-architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, และ governance
+architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, governance, data flow tracing, และ cost impact analysis
 
 ## Execute
 
@@ -30,7 +30,9 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 2. ทำ `/review-codebase-everythink` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ดูรายละเอียด dimension checks ใน [references/index.md](references/index.md)
-5. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
+5. ทำ data flow analysis ตาม `references/data-flow.md`
+6. ทำ cost impact analysis ตาม `references/cost-impact.md`
+7. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
 
 ### 3. Review Import, Export And Barrel Exports
 

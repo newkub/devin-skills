@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - watch-build
   - run-check
-  - analyze-performance-profile
+  - review-performance
   - improve
 ---
 
@@ -49,7 +49,7 @@ related:
 
 1. สรุป top 5 bottlenecks
 2. ระบุ impact และ root cause
-3. แนะนำ next action เช่น `/analyze-performance-profile`
+3. แนะนำ next action เช่น `/review-performance`
 
 ## Rules
 ### 1. Baseline

@@ -3,7 +3,7 @@ name: refactor-to-single-responsibility
 description: Refactor code ให้เป็น SRP โดยวิเคราะห์ structure และอัปเดท references
 related:
   - check-dead-code
-  - analyze-tech-debt
+  - review-quality
 ---
 
 ## Goal

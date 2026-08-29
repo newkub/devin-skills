@@ -10,3 +10,5 @@
 | [reliability.md](reliability.md) | Reliability Checks |
 | [resilience.md](resilience.md) | Resilience Checks |
 | [scoring.md](scoring.md) | Architecture Review Score Formula |
+| [data-flow.md](data-flow.md) | Data Flow Tracing |
+| [cost-impact.md](cost-impact.md) | Cost Impact Analysis |

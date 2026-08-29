@@ -11,3 +11,4 @@
 | [runtime-and-cpu.md](runtime-and-cpu.md) | Runtime And CPU Performance |
 | [scoring.md](scoring.md) | Performance Review Score Formula |
 | [time-complexity.md](time-complexity.md) | Time Complexity Review |
+| [performance-profile.md](performance-profile.md) | Runtime Profiling and Hotspots |

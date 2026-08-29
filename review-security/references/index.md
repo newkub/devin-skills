@@ -10,4 +10,5 @@
 | 7. API Security | `api-security.md` |
 | 8. Encryption | `encryption.md` |
 | 9. File Upload Security | `file-upload.md` |
+| 10. Security Risk Analysis | `security-risk.md` |
 | Scoring | `scoring.md` |

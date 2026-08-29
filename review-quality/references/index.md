@@ -7,3 +7,4 @@
 | [correctness.md](correctness.md) | Correctness Criteria |
 | [scoring.md](scoring.md) | Quality Score Formula |
 | [time-complexity.md](time-complexity.md) | Goal |
+| [tech-debt.md](tech-debt.md) | Tech Debt Scoring and Prioritization |

@@ -1,14 +1,3 @@
----
-name: analyze-tech-debt
-description: วิเคราะห์ technical debt และจัดลำดับการแก้ไข
-argument-hint: "[path]"
-related:
-  - check-dead-code
-  - analyze-codebase-quality
-  - improve
-  - refactor-to-single-responsibility
----
-
 ## Goal
 ให้คะแนน technical debt และจัดลำดับ remediation ตาม impact/effort
 

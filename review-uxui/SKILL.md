@@ -19,7 +19,7 @@ Review UX/UI design quality จาก source code ครอบคลุม desig
 
 ## Scope
 
-UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility (WCAG 2.1), และ design-dev handoff quality
+UX/UI design review สำหรับ project ที่มี UI — ตรวจ design tokens, component library, visual consistency, interaction states, accessibility (WCAG 2.1), design-dev handoff quality, user flow mapping และ journey analysis
 
 ไม่รวม:
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
@@ -42,7 +42,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 4. ทำ `/review-codebase-everythink` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
 5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
-7. ถ้าสแกนไม่ได้ → stop และ report
+7. ถ้ามี user flow หรือ journey ให้ map ตาม `references/user-flow.md`
+8. ถ้าสแกนไม่ได้ → stop และ report
 
 ### 2. Design System Review
 

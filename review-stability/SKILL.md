@@ -13,6 +13,7 @@ Review ความเสถียรของ application ครอบคลุ
 - `app-stability`: crashes, error boundaries, recovery, monitoring, health checks, graceful degradation
 - `debugging`: logging context, error messages clarity, naming conventions, code complexity, debuggability score
 - `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification, recovery
+- `error-patterns`: log clustering and recurring issue detection from logs
 
 ไม่รวมการ fix (ใช้ `/review-codebase-everythink` สำหรับ fix)
 
@@ -27,6 +28,7 @@ Review ความเสถียรของ application ครอบคลุ
 3. ตรวจสอบ logging statements, error messages, naming conventions, code complexity และ nesting
 4. ระบุ files ที่เกี่ยวข้องกับ top-level error boundaries หรือ crash handlers
 5. ค้นหา patterns: try-catch, unhandled rejections, global error handlers, memory leaks, infinite loops
+6. ถ้ามี log หรือ error aggregation ให้ทำ error pattern analysis ตาม `references/error-patterns.md`
 
 ### 2. Deep Analyze
 

@@ -1,14 +1,3 @@
----
-name: analyze-user-flow
-description: วิเคราะห์ user flow และ journey จาก code หรือ analytics
-argument-hint: "[app-path|route]"
-related:
-  - analyze-data-flow
-  - report-uxui-all-routes
-  - review-frontend
-  - improve
----
-
 ## Goal
 map user flows, identify friction points, and suggest UX improvements
 

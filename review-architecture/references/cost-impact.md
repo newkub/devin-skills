@@ -1,14 +1,3 @@
----
-name: analyze-cost-impact
-description: ประเมิน cost impact ของ code, infra, หรือ architectural changes
-argument-hint: "[change-desc|config-path]"
-related:
-  - analyze-dependencies
-  - analyze-performance-profile
-  - improve
-  - plan
----
-
 ## Goal
 ประเมินค่าใช้จ่ายทีอาจเกิดขึ้นจากการเปลี่ยนแปลง infrastructure, dependencies, หรือ architecture
 

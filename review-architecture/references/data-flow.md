@@ -1,14 +1,3 @@
----
-name: analyze-data-flow
-description: วิเคราะห์และ trace data flow จาก input ไป output
-argument-hint: "[entrypoint]"
-related:
-  - analyze-file-structure
-  - analyze-dependencies
-  - analyze-codebase-quality
-  - draw-svg-image
----
-
 ## Goal
 trace ข้อมูลจาก entrypoint ผ่านทุก layer จนถึง output หรือ database
 

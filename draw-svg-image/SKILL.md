@@ -4,7 +4,7 @@ description: สร้าง SVG image จากคำอธิบายหร�
 argument-hint: "[description]"
 related:
   - convert-to-svg
-  - analyze-data-flow
+  - review-architecture
   - visualize-in-web
 ---
 ## Goal

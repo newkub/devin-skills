@@ -11,7 +11,7 @@ related:
   - deep-validate
   - report
   - report-table
-  - analyze-user-flow
+  - review-uxui
   - suggest-next-action
 ---
 

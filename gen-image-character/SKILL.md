@@ -6,7 +6,6 @@ related:
   - gen-ai-images
   - draw-svg-image
   - convert-to-svg
-  - analyze-image
   - create-video-story
 ---
 
@@ -71,7 +70,7 @@ related:
 > Goal: ยืนยันว่าไฟล์ใช้งานได้
 
 1. ใช้ `file` หรือ `ffprobe` ตรวจรูปแบบ
-2. ถ้าต้องการ quality check เรียก `/analyze-image`
+2. ถ้าต้องการ quality check ให้ระบุให้ user ตรวจสอบ output
 3. รายงาน output path, provider, model, seed
 4. ถ้า fail แสดง stderr และแนะนำ provider อื่น
 

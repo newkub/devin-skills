@@ -4,7 +4,6 @@ description: สร้างวิดีโอด้วย AI ผ่าน bunx 
 argument-hint: "[prompt]"
 related:
   - gen-ai-images
-  - analyze-video
   - gen-subtitle-video
 ---
 

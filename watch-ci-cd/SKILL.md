@@ -18,7 +18,7 @@ related:
   - resolve-errors
   - run-check
   - report-table
-  - analyze-error-patterns
+  - review-stability
   - suggest-next-action
 ---
 

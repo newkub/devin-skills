@@ -1,14 +1,3 @@
----
-name: analyze-security-risk
-description: ประเมิน security risk และ attack surface ของระบบ
-argument-hint: "[path|url]"
-related:
-  - check-secrets-leak
-  - analyze-attack-surface
-  - review-security
-  - check-broken-skills-references
----
-
 ## Goal
 ประเมิน security risk ของ codebase, dependencies, และ infrastructure ด้วย severity scoring
 

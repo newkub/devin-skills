@@ -1,14 +1,3 @@
----
-name: analyze-performance-profile
-description: วิเคราะห์ performance profile ลึกซึ้งหา runtime hotspots
-argument-hint: "[target]"
-related:
-  - check-bottlenecks
-  - analyze-codebase-quality
-  - improve
-  - watch-test
----
-
 ## Goal
 วิเคราะห์ runtime profile เพื่อหา hotspots, memory leak, และ inefficient paths
 

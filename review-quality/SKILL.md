@@ -29,7 +29,7 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 - bug-prone patterns: null/undefined safety, type assertions, exhaustive control flow, arithmetic bugs, mutable shared state, async/promise bugs, unsafe parse/regex, resource cleanup, implicit assumptions, unsafe defaults
 - correctness: logic correctness, edge cases, invariant checks, validation, calculations, transformations, data mappings, error handling
 - time complexity: Big O analysis, data structure selection, input bounds validation, benchmark verification
-- general quality: simplicity, redundancy, consistency, refactor readiness, deprecation, techstack alignment
+- general quality: simplicity, redundancy, consistency, refactor readiness, deprecation, techstack alignment, tech debt scoring and prioritization
 
 ดูรายละเอียดใน `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/time-complexity.md`, และ `references/scoring.md`
 
@@ -42,7 +42,8 @@ quality review สำหรับ code, configuration, rule files, workflows, �
 1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure, dependencies, tech stack และ conventions
 2. อ่าน `AGENTS.md` เพื่อทราบ tools ที่ใช้ใน project
 3. ระบุ quality tools ที่มี: `biome`, `tsc`, `ast-grep`, `knip`, `jscpd`, `madge`
-4. ถ้า project ไม่มี code ที่ต้อง review → stop และ report
+4. ถ้าต้องการ tech debt scoring ให้ดู `references/tech-debt.md`
+5. ถ้า project ไม่มี code ที่ต้อง review → stop และ report
 
 ### 2. Code Quality Review
 

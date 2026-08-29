@@ -3,7 +3,6 @@ name: request-prompt-from-image
 description: สร้าง image generation prompt จากรูปภาพด้วย AI vision ผ่าน bunx CLI
 argument-hint: "[image-path] [style]"
 related:
-  - analyze-image
   - gen-ai-images
   - gen-image-character
   - report-codeblock
