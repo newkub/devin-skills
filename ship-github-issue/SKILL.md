@@ -5,6 +5,7 @@ argument-hint: "[issue-number-or-title]"
 related:
   - ship
   - ship-release
+  - ship-features-implement
   - create-dev-branch
   - follow-git-flow
   - follow-github
