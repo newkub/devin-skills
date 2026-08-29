@@ -19,6 +19,7 @@ related:
   - update-gitignore
   - update-dot-vscode
   - update-github-metadata
+  - update-version-latest
   - deep-analyze
   - deep-review
   - deep-validate
@@ -73,10 +74,11 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: อัปเดต config, rules, และ tooling
 
 1. ทำ `/update-config` เพื่อ sync shared config และ dependencies catalog
-2. ทำ `/update-dot-devin` เพื่อ sync `.devin` structure
-3. ทำ `/update-gitignore` เพื่อ sync `.gitignore`
-4. ทำ `/update-dot-vscode` เพื่อ sync `.vscode` settings
-5. ทำ `/update-project-rules` ถ้ามี `rules/` หรือ `sgconfig.yml`
+2. ถ้า root มี versioned manifests (`package.json`, `mise.toml`, `Cargo.toml`, `go.mod`, `pyproject.toml`) หรือต้องการ update ทุก version → ทำ `/update-version-latest` เพื่อ sync runtimes/dependencies/tools/config
+3. ทำ `/update-dot-devin` เพื่อ sync `.devin` structure
+4. ทำ `/update-gitignore` เพื่อ sync `.gitignore`
+5. ทำ `/update-dot-vscode` เพื่อ sync `.vscode` settings
+6. ทำ `/update-project-rules` ถ้ามี `rules/` หรือ `sgconfig.yml`
 
 ### 5. Sync Project Skills And Examples
 

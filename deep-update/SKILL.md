@@ -17,6 +17,7 @@ related:
   - prioritize
   - deep-update-project
   - update-project
+  - update-version-latest
   - update-config
   - update-dot-devin
   - update-readme-md
@@ -111,16 +112,17 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. ถ้า target type เป็น `skill` ใน global skills → ทำ `/update-devin-global-skills <skill-name>`
 3. ถ้า target type เป็น `all` global skills → ทำ `/update-all-devin-global-skills`
 4. ถ้า target type เป็น `config` → ทำ `/update-config`
-5. ถ้า target type เป็น `project-docs` → ทำ `/update-readme-md`, `/update-agents-md`, `/update-usage-md`, `/update-features-md`
-6. ถ้า target type เป็น `rules` → ทำ `/update-project-rules`
-7. ถ้า target type เป็น `skills` ใน project → ทำ `/update-project-skills`
-8. ถ้า target type เป็น `examples` → ทำ `/update-examples`
-9. ถ้า target type เป็น `tests` → ทำ `/update-test`
-10. ถ้า target type เป็น `todo` → ทำ `/update-todo-md`
-11. ถ้า target type เป็น `gitignore` → ทำ `/update-gitignore`
-12. ถ้า target type เป็น `vscode` → ทำ `/update-dot-vscode`
-13. ถ้า target type เป็น `github-metadata` → ทำ `/update-github-metadata`
-14. ถ้า target type เป็น `codebase` → ทำ `/deep-realize-implementation` ตาม critical path
+5. ถ้า target type เป็น `versions` (runtime, deps, tools, CI, Docker) → ทำ `/update-version-latest`
+6. ถ้า target type เป็น `project-docs` → ทำ `/update-readme-md`, `/update-agents-md`, `/update-usage-md`, `/update-features-md`
+7. ถ้า target type เป็น `rules` → ทำ `/update-project-rules`
+8. ถ้า target type เป็น `skills` ใน project → ทำ `/update-project-skills`
+9. ถ้า target type เป็น `examples` → ทำ `/update-examples`
+10. ถ้า target type เป็น `tests` → ทำ `/update-test`
+11. ถ้า target type เป็น `todo` → ทำ `/update-todo-md`
+12. ถ้า target type เป็น `gitignore` → ทำ `/update-gitignore`
+13. ถ้า target type เป็น `vscode` → ทำ `/update-dot-vscode`
+14. ถ้า target type เป็น `github-metadata` → ทำ `/update-github-metadata`
+15. ถ้า target type เป็น `codebase` → ทำ `/deep-realize-implementation` ตาม critical path
 15. ทำ `/update-references` เพื่อ sync ทุก reference หลัง update
 
 ### 6. Restructure And Refactor

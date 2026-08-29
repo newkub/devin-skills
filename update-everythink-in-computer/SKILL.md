@@ -1,15 +1,21 @@
 ---
 name: update-everythink-in-computer
 description: "อัปเดตทุกอย่างในเครื่อง: programs, chezmoi dotfiles, devin global skills"
+related:
+  - update-all-program-in-computer
+  - update-chezmoi
+  - update-all-devin-global-skills
+  - update-version-latest
+  - follow-my-package-manager
 ---
 
 ## Goal
 
-อัปเดตทุกอย่างในเครื่องทีจำเป็นสำหรับ development environment: global programs, chezmoi dotfiles, Devin global skills
+อัปเดตทุกอย่างในเครื่องทีจำเป็นสำหรับ development environment: global programs, active project versions, chezmoi dotfiles, Devin global skills
 
 ## Scope
 
-ใช้เมื่อต้องการ sync/อัปเดต state ทั้งหมดของ computer รวม package managers, dotfiles, skills
+ใช้เมื่อต้องการ sync/อัปเดต state ทั้งหมดของ computer รวม package managers, active project versioned surfaces, dotfiles, skills
 
 ## Execute
 
@@ -21,7 +27,15 @@ description: "อัปเดตทุกอย่างในเครื่อ
 2. บันทึก programs ที update สำเร็จ/ล้มเหลว
 3. ถ้ามี programs ทีล้าสมัยมาก → ทำ `/follow-my-global-cli`
 
-### 2. Update Dotfiles
+### 2. Update Active Project Versions
+
+> Goal: อัปเดต project ที่กำลังทำงานอยู่ให้ทันสมัย
+
+1. ถ้ามี project active และ user ต้องการ update ทุก version → ทำ `/update-version-latest`
+2. บันทึก runtimes/dependencies/tools ที่อัปเดต
+3. ถ้าไม่มี project active → skip
+
+### 3. Update Dotfiles
 
 > Goal: อัปเดต chezmoi dotfiles
 
@@ -29,14 +43,14 @@ description: "อัปเดตทุกอย่างในเครื่อ
 2. ถ้าไม่มี chezmoi → skip หรือแนะนำ user
 3. บันทึก files ที readd/apply
 
-### 3. Update Devin Global Skills
+### 4. Update Devin Global Skills
 
 > Goal: อัปเดต Devin skills catalog
 
 1. ทำ `/update-all-devin-global-skills`
 2. บันทึก skills ที update/สร้าง/ลบ
 
-### 4. Update Project Skills (optional)
+### 5. Update Project Skills (optional)
 
 > Goal: sync project-specific skills
 
@@ -44,7 +58,7 @@ description: "อัปเดตทุกอย่างในเครื่อ
 2. ถ้ามี workspace หลายอัน → ทำ `/report-workspace-graph` ก่อน
 3. บันทึก project skills ทีอัปเดต
 
-### 5. Verify And Report
+### 6. Verify And Report
 
 > Goal: ตรวจสอบและสรุป
 
@@ -57,7 +71,7 @@ description: "อัปเดตทุกอย่างในเครื่อ
 
 ### 1. Order Matters
 
-- อัปเดต programs ก่อน dotfiles/skill เพราะบาง skill อาจต้องใช้ tools ใหม่
+- อัปเดต programs ก่อน active project/dotfiles/skill เพราะบาง skill อาจต้องใช้ tools ใหม่
 - ไม่ข้าม step โดยไม่มีเหตุผล
 - ถ้า step หนึ่งล้มเหลว → report ก่อนดำเนินต่อ
 

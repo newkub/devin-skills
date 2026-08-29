@@ -1,15 +1,21 @@
 ---
 name: review-update
 description: Review drift between current and target state to determine update priority order
+related:
+  - update-version-latest
+  - update-runtime-latest
+  - update-dependencies-latest
+  - check-should-update
+  - report-table
 ---
 
 ## Goal
 
-Review drift ระหว่าง current state และ target state เพื่อระบุสิ่งที่ต้อง update และจัดลำดับ priority ครอบคลุม dependency drift, rules drift, docs drift, config drift, test drift, gitignore drift, features drift, subagents drift, ast-grep rules drift, devin-project-rules drift, references drift โดยไม่ดำเนินการ update จริง
+Review drift ระหว่าง current state และ target state เพื่อระบุสิ่งที่ต้อง update และจัดลำดับ priority ครอบคลุม dependency drift, runtime drift, rules drift, docs drift, config drift, test drift, gitignore drift, features drift, subagents drift, ast-grep rules drift, devin-project-rules drift, references drift โดยไม่ดำเนินการ update จริง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-*` skills เพื่อทำความเข้าใจ drift และจัดลำดับการ update ครอบคลุมทุกประเภท: dependencies, rules, docs, config, tests, gitignore, features, subagents, ast-grep rules, devin-project-rules, references ไม่รวมการ update จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `update-*` skills เพื่อทำความเข้าใจ drift และจัดลำดับการ update ครอบคลุมทุกประเภท: dependencies, runtimes, rules, docs, config, tests, gitignore, features, subagents, ast-grep rules, devin-project-rules, references ไม่รวมการ update จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -22,15 +28,16 @@ Review drift ระหว่าง current state และ target state เพ�
 3. อ่าน `AGENTS.md` เพื่อทราบ tools และ conventions
 4. ถ้าสแกนไม่ได้ → stop และ report
 
-### 2. Analyze Dependency Drift
+### 2. Analyze Dependency And Runtime Drift
 
-> Goal: ระบุ dependency version drift
+> Goal: ระบุ dependency และ runtime version drift
 
 1. รัน `bunx taze -r` หรือ `npm outdated` เพื่อดู outdated dependencies
 2. ตรวจสอบ drift ตาม [references/dependency-drift.md](references/dependency-drift.md)
 3. แยกตามประเภท: major, minor, patch
 4. ตรวจสอบ breaking changes จาก changelogs
-5. บันทึก: package, current version, latest version, drift type, breaking changes
+5. ตรวจสอบ runtime drift: `bun --version`, `node --version`, `python --version`, `rustc --version`, `go version`, `mise list`
+6. บันทึก: package/runtime, current version, latest version, drift type, breaking changes
 
 ### 3. Analyze Docs Drift
 
@@ -91,7 +98,7 @@ Review drift ระหว่าง current state และ target state เพ�
 1. รวม findings จาก Step 2-7 เป็น drift report
 2. คำนวณ priority ตาม [references/update-priority.md](references/update-priority.md)
 3. จัดลำดับ: critical drift ก่อน → high drift → medium drift → low drift
-4. ระบุ dependencies ระหว่าง updates (เช่น dependency update ก่อน docs update)
+4. ระบุ dependencies ระหว่าง updates (เช่น runtime update ก่อน dependency update, dependency update ก่อน docs update)
 5. สร้าง update priority order พร้อม recommended skills
 
 ### 9. Report
@@ -136,7 +143,7 @@ Review drift ระหว่าง current state และ target state เพ�
 
 ### 5. Update Health Scoring
 
-- ครอบคลุม drift areas: dependencies, docs, config, rules, tests, features, subagents
+- ครอบคลุม drift areas: runtimes, dependencies, docs, config, rules, tests, features, subagents
 - คะแนนต่อ area: no drift = 1, minor drift = 0.5, major drift = 0
 - Update health score = (total score / total areas) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)

@@ -1,6 +1,11 @@
 ---
 name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
+related:
+  - update-dependencies-latest
+  - update-version-latest
+  - update-runtime-latest
+  - follow-tool-mise
 ---
 
 ## Goal
@@ -18,7 +23,8 @@ description: ติดตั้ง dependencies และแก้ไขปั�
 > Goal: Update Dependencies
 
 1. ทำ `/update-dependencies-latest` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
-2. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
+2. ถ้าต้องการ update ทุก version รวม runtime/tools → ทำ `/update-version-latest` แทนหรือหลัง `/update-dependencies-latest`
+3. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
 
 ### 2. Determine Package Manager
 

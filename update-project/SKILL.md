@@ -12,6 +12,7 @@ related:
   - update-project-skills
   - update-github-metadata
   - update-todo-md
+  - update-version-latest
   - deep-update-project
 ---
 
@@ -21,7 +22,7 @@ related:
 
 ## Scope
 
-ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code
+ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update ทุก version ทั้ง runtime, deps, tools → ใช้ `/update-version-latest` ก่อนหรือแทนที่จะ update เฉพาะ config
 
 ## Execute
 

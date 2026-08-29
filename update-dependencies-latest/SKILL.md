@@ -1,6 +1,12 @@
 ---
 name: update-dependencies-latest
 description: อัพเดท dependencies ในทุก workspace ให้เป็น latest version ทั้ง major, minor, patch
+related:
+  - update-version-latest
+  - update-runtime-latest
+  - update-config
+  - run-check
+  - deep-validate
 ---
 
 ## Goal
@@ -9,7 +15,7 @@ description: อัพเดท dependencies ในทุก workspace ให้
 
 ## Scope
 
-อัพเดท dependencies ในทุก workspace และ packages ใน monorepo
+อัพเดท dependencies ในทุก workspace และ packages ใน monorepo นี้เป็นส่วน `dependencies` ของ `/update-version-latest` — ไม่รวม runtime หรือ global tools
 
 ## Execute
 
