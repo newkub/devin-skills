@@ -1,11 +1,11 @@
 ---
 name: ship-cloud
-description: Ship code ไปยัง cloud/CI ด้วย setup CI, verify, push, watch, fix และ optional release/deploy
+description: Ship code ไปยัง cloud/CI โดยเรียก /ship แล้ว push, watch, fix และ optional release/deploy
 related:
-  - run-verify-fast
+  - ship
   - run-verify-cloud
   - setup-ci-cd
-  - git-commit-and-push
+  - git-commit
   - resolve-errors
   - run-release
   - run-deploy
@@ -16,11 +16,12 @@ related:
 
 ## Goal
 
-Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้าขาด, verify ใน local, commit/push, รัน verify บน cloud, แก้ไขจนกว่าจะผ่าน แล้ว optional release/deploy
+Ship code ไปยัง cloud/CI โดยเรียก `/ship` ทีจัดการ commit ใน local แล้ว push เสมอ รัน verify บน cloud, แก้ไขจนกว่าจะผ่าน แล้ว optional release/deploy
 
 ## Scope
 
 ใช้เมื่อต้องการส่งมอบงานผ่าน CI/CD pipeline บน cloud ไม่ใช่แค่ commit ใน local
+`/ship-cloud` จะเรียก `/ship` เพื่อ commit ใน local ก่อน แล้ว push และรัน verify บน cloud ทุกครั้ง
 ครอบคลุม GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins, Cloudflare Pages, Vercel
 
 ถ้าต้องการ commit ใน local เท่านั้น ให้ใช้ `/ship`
@@ -45,20 +46,20 @@ Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้า�
 3. ถ้า setup ไม่สำเร็จ → stop และ report
 4. ถ้า CI/CD พร้อม → ไปขั้นตอนถัดไป
 
-### 3. Run Local Verify
+### 3. Ship Local
 
-> Goal: ยืนยันว่า code ผ่าน local verify ก่อน push เพื่อประหยัด CI
+> Goal: ใช้ `/ship` จัดการ pre-commit, verify, commit ใน local
 
-1. ทำ `/run-verify-fast`
-2. ถ้า fail → ทำ `/resolve-errors` แล้วรัน `/run-verify-fast` ซ้ำ — max 3 รอบ
-3. ถ้ายังไม่ผ่าน → stop และ report
+1. ทำ `/ship`
+2. ถ้า `/ship` ไม่ผ่าน → stop และ report (ไม่ push)
+3. ถ้า `/ship` สำเร็จ → ไปขั้นตอนถัดไป
 
-### 4. Commit And Push
+### 4. Push
 
-> Goal: ส่ง code ขึ้น remote
+> Goal: push commit ทีสร้างจาก `/ship` ขึ้น remote เสมอ
 
-1. ทำ `/git-commit-and-push`
-2. ถ้า push ถูก reject → ทำ `/resolve-errors` หรือ pull/rebase ตามความเหมาะสม แล้ว push ใหม่
+1. ทำ `git push` เพื่อ push current branch ไปยัง remote
+2. ถ้า push ถูก reject → resolve หรือ pull/rebase ตามความเหมาะสม แล้ว push ใหม่
 3. ไม่ force push
 4. ถ้า push สำเร็จ → ไปขั้นตอนถัดไป
 
@@ -75,10 +76,11 @@ Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้า�
 > Goal: แก้ไข failure จาก cloud verify แล้ว re-push
 
 1. ทำ `/resolve-errors` ตาม root cause จาก cloud logs
-2. ทำ `/git-commit-and-push` อีกครั้ง
-3. ทำ `/run-verify-cloud` อีกครั้ง
-4. วนซ้ำสูงสุด 5 รอบ ถ้ายังไม่ผ่าน → stop และ report
-5. ถ้าผ่าน → ไปขั้นตอนถัดไป
+2. ถ้ามี changes หลังแก้ไข → ทำ `/git-commit` แล้ว `git push`
+3. ถ้าไม่มี changes → ทำ `git push` เพื่อ re-trigger pipeline
+4. ทำ `/run-verify-cloud` อีกครั้ง
+5. วนซ้ำสูงสุด 5 รอบ ถ้ายังไม่ผ่าน → stop และ report
+6. ถ้าผ่าน → ไปขั้นตอนถัดไป
 
 ### 7. Optional Release/Deploy
 
@@ -98,10 +100,11 @@ Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้า�
 
 ## Rules
 
-### 1. Local First
+### 1. Ship Local First
 
-- ต้องผ่าน `/run-verify-fast` ก่อน push เสมอ
-- ไม่ push code ไป cloud โดยไม่มี local verify
+- ต้องทำ `/ship` ก่อน push เสมอ
+- `/ship` จัดการ local verify, commit, และ pre-commit checks
+- ไม่ push code ไป cloud โดยไม่ผ่าน `/ship`
 
 ### 2. No Force Push
 
@@ -124,7 +127,7 @@ Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้า�
 
 - ไม่ push secrets
 - ไม่ skip git hooks
-- ไม่ commit ถ้า CI ยังไม่ผ่าน
+- ไม่ force push
 
 ### 6. Setup Before Run
 
@@ -134,8 +137,8 @@ Ship code ไปยัง cloud/CI ด้วยการ setup CI/CD ถ้า�
 ## Expected Outcome
 
 - CI/CD config พร้อมใช้งาน
-- Code ผ่าน local verify และ cloud verify
-- Code ถูก commit และ push ไปยัง remote
+- Code ผ่าน `/ship` (local) และ `/run-verify-cloud` (cloud)
+- Code ถูก commit โดย `/ship` และ push โดย `ship-cloud` ทุกครั้ง
 - Failure จาก cloud ถูกแก้ไขจนผ่าน หรือ report สถานะถ้าเกิน loop limit
 - Release/deploy เกิดขึ้นเฉพาะเมื่อมี config และผ่าน verify ทั้งหมด
 - มีรายงานผล ship บน cloud ครบถ้วน

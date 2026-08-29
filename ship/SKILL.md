@@ -87,11 +87,12 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 - `/follow-agents-md` ต้องทำหลัง `AGENTS.md` อัปเดต
 - ห้าม duplicate เนื้อหาที่มีอยู่ใน `AGENTS.md`
 
-### 2. No Push Or Release
+### 2. Commit Only
 
-- `ship` ไม่ทำ push หรือ release
-- ถ้า user ต้องการ push → รัน `git push` ด้วย `exec` หลัง `/ship`
-- ถ้า user ต้องการ release → ทำ `/run-release` หลัง `/ship`
+- `ship` สิ้นสุดที root commit ใน local เท่านั้น
+- `ship` ไม่ push, ไม่ release, ไม่ deploy
+- ถ้า user ต้องการ push หรือ cloud verify → ใช้ `/ship-cloud`
+- ถ้า user ต้องการ release เฉพาะ → ทำ `/run-release` หลัง `/ship`
 - ไม่ถาม user ว่าจะ push/release หรือไม่
 
 ### 3. Update Skills Before Ship
@@ -122,5 +123,4 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 - Root pointer ชี้ไปยัง commit ล่าสุดของ submodules (ถ้ามี)
 - Root commit สำเร็จ
 - รายงาน submodule commits และ root commit ครบถ้วน
-- ถ้ามี release → ตรวจสอบด้วย `/watch-release`
-- ถ้า requirements ไม่ชัด → ถามด้วย `/ask-project-requirement` ก่อน ship
+- สิ้นสุดที commit ใน local ไม่ push หรือ release
