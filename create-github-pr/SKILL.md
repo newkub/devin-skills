@@ -28,8 +28,8 @@ related:
 
 > Goal: ตรวจสอบสถานะก่อนสร้าง PR
 
-1. ตรวจสอบว่าอยู่ใน branch ทีถูกต้อง ไม่ใช่ `main`
-2. รัน `git status --short` เพื่อดูไฟล์ทีเปลี่ยนแปลง
+1. ตรวจสอบว่าอยู่ใน branch ที่ถูกต้อง ไม่ใช่ `main`
+2. รัน `git status --short` เพื่อดูไฟล์ที่เปลี่ยนแปลง
 3. ถ้ามี uncommitted changes → ทำ `/git-commit` ก่อน
 4. รัน `git log --oneline main..HEAD` เพื่อดู commits
 
@@ -50,21 +50,36 @@ related:
 
 ### 4. Build PR Body
 
-> Goal: สร้าง PR title และ body
+> Goal: สร้าง PR title และ body ในรูปแบบ feature-based พร้อมหลักฐาน
 
-1. สร้าง title จาก commit messages หรือ task ทีทำ
-2. สร้าง body ประกอบด้วย:
+1. สร้าง title จาก commit messages หรือ task ที่ทำ
+2. ถ้า PR ประกอบด้วยหลาย feature หรือ change ที่แยกออกเป็นส่วนได้ → แบ่ง body เป็นหลาย section โดยแต่ละ section เป็น 1 feature:
+   - ใช้ heading ชัดเจนระบุชื่อ feature เช่น `## Feature: <ชื่อ>`
+   - ภายใต้แต่ละ feature ให้ใช้ตาราง 1 row ที่มี 5 คอลัมน์:
+     | Description | Benefit | Why | File Change | Image/Video |
+   - `Description`: อธิบายว่า feature/change นี้ทำอะไร
+   - `Benefit`: value ที่ได้รับจาก change นี้
+   - `Why`: เหตุผลที่ต้องทำหรือปัญหาที่แก้
+   - `File Change`: ไฟล์หรือ path หลักที่เปลี่ยนแปลง
+   - `Image/Video`: หลักฐาน screenshot หรือ video ที่บันทึกจาก `/record-video-terminal` หรือ `/capture-terminal` เท่านั้น
+3. ห้ามใช้ mockup, placeholder หรือ image/video ที่ไม่ใช่หลักฐานจริงใน column Image/Video
+4. ถ้า PR ไม่ใช่ลักษณะ feature → ใช้รูปแบบมาตรฐาน:
    - Summary
    - Changes (bullet points)
-   - Type of change (feat, fix, refactor, docs)
+   - Type of change
    - Breaking changes (ถ้ามี)
    - Testing done
    - Issue references (เช่น `Closes #<issue>`)
-3. ถ้ามี project template → อ่าน `.github/pull_request_template.md`
-4. ใช้ format มาตรฐานถ้าไม่มี template:
+5. ถ้ามี project template → อ่าน `.github/pull_request_template.md`
+6. ใช้ format มาตรฐานถ้าไม่มี template:
 ```markdown
 ## Summary
 [อธิบาย changes อย่างกระชับ]
+
+## Feature: <feature-name>
+| Description | Benefit | Why | File Change | Image/Video |
+|---|---|---|---|---|
+| [อธิบาย feature] | [value ที่ได้] | [เหตุผล/ปัญหา] | `path/to/file` | ![evidence](path/to/screenshot.png) หรือ [video](path/to/video.cast) |
 
 ## Type of Change
 - [ ] Bug fix
@@ -84,7 +99,7 @@ related:
 - [ ] Comments added for complex logic
 - [ ] Documentation updated (if needed)
 ```
-5. ถ้าไม่ชัด → ทำ `/ask-me`
+7. ถ้าไม่ชัด → ทำ `/ask-me`
 
 ### 5. Create PR
 
@@ -119,11 +134,14 @@ related:
 - ไม่สร้าง PR บน `main`
 - ใช้ PR template ถ้ามี
 - ระบุ `Closes #<issue>` ถ้าเกี่ยวข้อง
+- ห้ามใช้ mockup หรือ placeholder สำหรับ image/video ในตาราง feature ต้องเป็นหลักฐานจริงจาก `/record-video-terminal` หรือ `/capture-terminal`
 - ถ้า title/body ไม่ชัด → ถาม user
 
 ## Expected Outcome
 
-- PR ถูกสร้างพร้อม title, body, labels
+- PR ถูกสร้างพร้อม title, body ในรูปแบบ feature-based, labels
+- แต่ละ feature มี heading และตาราง 5 คอลัมน์ (Description, Benefit, Why, File Change, Image/Video)
+- Image/Video ในตารางเป็นหลักฐานจริงจาก `/record-video-terminal` หรือ `/capture-terminal` ห้าม mockup
 - Branch ถูก push แล้ว
 - Checks ผ่านก่อนสร้าง PR
 - Issue ถูก link (ถ้ามี)
