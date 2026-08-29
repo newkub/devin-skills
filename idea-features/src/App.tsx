@@ -12,7 +12,7 @@ const App: Component = () => {
   const app = useFeatureApp(features)
 
   return (
-    <div class="flex h-screen flex-col bg-slate-950 text-slate-100">
+    <div class="flex h-screen flex-col bg-background text-foreground">
       <Header
         loading={loading}
         loadData={loadData}

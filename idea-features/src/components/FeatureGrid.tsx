@@ -30,6 +30,7 @@ const FeatureGrid: Component<FeatureGridProps> = (props) => {
               feature={feature}
               selected={isSelected(feature.number)}
               onSelect={props.app.selectFeature}
+              onHover={props.app.hoverFeature}
             />
           )}
         </For>

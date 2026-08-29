@@ -1,5 +1,5 @@
 ---
-name: delete-project-from-local-remote
+name: delete-projects
 description: ลบ project ทั้ง local, remote repo, และ Cloudflare resources อย่างปลอดภัย
 argument-hint: "[project-path-or-name]"
 related:

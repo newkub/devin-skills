@@ -5,7 +5,7 @@ related:
   - check-should-update
   - cleanup-files-in-project
   - check-dead-code
-  - delete-project-from-local-remote
+  - delete-projects
 ---
 ## Goal
 

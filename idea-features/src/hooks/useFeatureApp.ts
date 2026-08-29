@@ -13,6 +13,7 @@ export const useFeatureApp = (features: () => Feature[]) => {
   const [sortBy, setSortBy] = createSignal<SortKey>('impact');
   const [sortDesc, setSortDesc] = createSignal(true);
   const [selectedId, setSelectedId] = createSignal<number | null>(null);
+  const [hoveredId, setHoveredId] = createSignal<number | null>(null);
   const [copied, setCopied] = createSignal(false);
 
   const filterCategories = createMemo(() => {
@@ -60,6 +61,11 @@ export const useFeatureApp = (features: () => Feature[]) => {
     return id !== null ? features().find(f => f.number === id) || null : null;
   });
 
+  const previewFeature = createMemo(() => {
+    const id = hoveredId() ?? selectedId();
+    return id !== null ? features().find(f => f.number === id) || null : null;
+  });
+
   const toggleFilter = (key: string, value: string) => {
     setActiveFilters(prev => {
       const next: Record<string, Set<string>> = { ...prev };
@@ -79,6 +85,7 @@ export const useFeatureApp = (features: () => Feature[]) => {
 
   const selectFeature = (id: number) => setSelectedId(id);
   const clearSelection = () => setSelectedId(null);
+  const hoverFeature = (id: number | null) => setHoveredId(id);
 
   const promptText = () => {
     const f = selectedFeature();
@@ -140,7 +147,9 @@ export const useFeatureApp = (features: () => Feature[]) => {
     selectedId,
     selectFeature,
     clearSelection,
+    hoverFeature,
     selectedFeature,
+    previewFeature,
     promptText,
     copyPrompt,
     copied,

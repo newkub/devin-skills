@@ -41,7 +41,7 @@ export default function Filters(props: FiltersProps) {
             value={props.app.search()}
             onInput={e => props.app.setSearch(e.currentTarget.value)}
             placeholder="Search features, tags, or details..."
-            class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+            class="w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-surface-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none"
           />
         </div>
 
@@ -49,19 +49,19 @@ export default function Filters(props: FiltersProps) {
           <select
             value={props.app.sortBy()}
             onInput={e => setSort(e.currentTarget.value)}
-            class="rounded-lg border border-slate-200 bg-white px-2 py-2 text-xs text-slate-700 focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            class="rounded-lg border border-border bg-surface px-2 py-2 text-xs text-surface-foreground focus:border-ring focus:outline-none"
           >
             <For each={sortOptions}>
               {opt => <option value={opt.key}>Sort: {opt.label}</option>}
             </For>
           </select>
-          <span class="rounded-md border border-slate-200 bg-slate-50 px-2 py-1.5 text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+          <span class="rounded-md border border-border bg-muted px-2 py-1.5 text-xs text-muted-foreground">
             {props.app.visibleFeatures().length}
           </span>
           <Show when={activeCount() > 0 || props.app.search()}>
             <button
               onClick={props.app.clearFilters}
-              class="text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+              class="text-xs font-medium text-muted-foreground hover:text-surface-foreground"
             >
               Clear
             </button>
@@ -73,14 +73,14 @@ export default function Filters(props: FiltersProps) {
         <For each={Object.entries(props.app.filterCategories())}>
           {([key, values]) => (
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] font-medium uppercase text-slate-400">{filterLabels[key]}</span>
+              <span class="text-[10px] font-medium uppercase text-muted-foreground">{filterLabels[key]}</span>
               {Array.from(values).map(value => (
                 <button
                   onClick={() => props.app.toggleFilter(key, value)}
                   class={`rounded-full px-2.5 py-1 text-[10px] font-medium transition ${
                     isActive(key, value)
-                      ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
-                      : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-slate-600'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'border border-border bg-surface text-muted-foreground hover:border-border-hover hover:text-surface-foreground'
                   }`}
                 >
                   {value}
