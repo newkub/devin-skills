@@ -1,0 +1,15 @@
+name: Trigger Wrikka Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger:
+    name: Trigger wrikka-com deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch wrikka-com
+        env:
+          GH_TOKEN: ${{ secrets.WRIKKA_DISPATCH_TOKEN }}
+        run: gh api -X POST repos/newkub/wrikka-com/dispatches -f event_type=devin-skills-updated
