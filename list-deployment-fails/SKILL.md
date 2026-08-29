@@ -9,6 +9,9 @@ related:
   - suggest-next-action
   - watch-github-actions
   - watch-cloudflare
+  - follow-service-vercel
+  - follow-service-cloudflare
+  - open-cloudflare-workers
 ---
 
 ## Goal

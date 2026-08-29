@@ -5,8 +5,10 @@ argument-hint: "[account-id]"
 related:
   - open-web
   - list-cloudflare-project
+  - list-cloudflare-projects
   - list-cloudflare-worker-fail
   - watch-cloudflare
+  - follow-service-cloudflare
 ---
 
 ## Goal

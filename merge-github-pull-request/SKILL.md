@@ -7,6 +7,8 @@ related:
   - git-commit
   - git-push
   - deep-validate
+  - open-github-pr
+  - review-github-pull-request
 ---
 
 ## Goal

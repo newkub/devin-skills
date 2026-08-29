@@ -6,6 +6,9 @@ related:
   - implement-github-issue
   - create-github-pull-request
   - ask-me
+  - open-github-issue
+  - open-github-repo-personal
+  - open-github-repo-org
 ---
 
 ## Goal

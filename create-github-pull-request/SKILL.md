@@ -8,6 +8,9 @@ related:
   - run-test
   - merge-github-pull-request
   - implement-github-issue
+  - open-github-pr
+  - open-github-repo-personal
+  - open-github-repo-org
 ---
 
 ## Goal

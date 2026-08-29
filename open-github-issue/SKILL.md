@@ -6,6 +6,11 @@ related:
   - open-github-pr
   - open-web
   - follow-tool-github-issue
+  - list-github-issue
+  - create-github-issue
+  - review-github-issue
+  - open-github-repo-personal
+  - open-github-repo-org
 ---
 
 ## Goal

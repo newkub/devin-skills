@@ -4,6 +4,8 @@ description: รายการ Cloudflare projects ในเครื่อง 
 related:
   - list-project-git-in-computer
   - list-chezmoi-files
+  - list-cloudflare-projects
+  - open-cloudflare-workers
 ---
 
 ## Goal

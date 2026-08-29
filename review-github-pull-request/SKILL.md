@@ -2,6 +2,11 @@
 name: review-github-pull-request
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 argument-hint: "[pr-number]"
+related:
+  - open-github-pr
+  - list-github-pull-request
+  - merge-github-pull-request
+  - list-github-action-fail
 ---
 
 ## Goal

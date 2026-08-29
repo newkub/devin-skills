@@ -1,6 +1,11 @@
 ---
 name: follow-tool-github-issue
 description: ใช้ `gh issue` สร้าง ดู แก้ไข และจัดการ issues ของ repository ผ่าน CLI
+related:
+  - open-github-issue
+  - open-github-pr
+  - list-github-issue
+  - create-github-issue
 ---
 
 ## Goal

@@ -7,6 +7,9 @@ related:
   - list-github-repo
   - report-table
   - ask-me
+  - create-github-task
+  - list-github-issue
+  - list-github-pull-request
 ---
 
 ## Goal

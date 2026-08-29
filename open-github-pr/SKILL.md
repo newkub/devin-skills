@@ -7,6 +7,11 @@ related:
   - open-web
   - follow-tool-github-issue
   - list-github-pull-request
+  - create-github-pull-request
+  - review-github-pull-request
+  - merge-github-pull-request
+  - open-github-repo-personal
+  - open-github-repo-org
 ---
 
 ## Goal

@@ -8,6 +8,8 @@ related:
   - list-project-git-in-computer
   - report-table
   - open-cloudflare-workers
+  - watch-cloudflare
+  - follow-service-cloudflare
 ---
 
 ## Goal

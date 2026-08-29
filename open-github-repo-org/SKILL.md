@@ -8,6 +8,8 @@ related:
   - open-github-pr
   - open-web
   - list-github-repo
+  - list-github-star-latest
+  - search-in-github-star
 ---
 
 ## Goal

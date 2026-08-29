@@ -2,6 +2,11 @@
 name: review-github-issue
 description: ตรวจสอบเนื้อหา, labels และความพร้อมของ GitHub issue
 argument-hint: "[issue-number]"
+related:
+  - open-github-issue
+  - list-github-issue
+  - create-github-issue
+  - implement-github-issue
 ---
 
 ## Goal

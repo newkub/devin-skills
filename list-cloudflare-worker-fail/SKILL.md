@@ -6,6 +6,8 @@ related:
   - watch-cloudflare
   - report-table
   - suggest-next-action
+  - list-deployment-fails
+  - list-cloudflare-projects
 ---
 
 ## Goal

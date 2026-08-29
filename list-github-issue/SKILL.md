@@ -2,6 +2,11 @@
 name: list-github-issue
 description: แสดงรายการ issues ของ repository ที่ระบุบน GitHub
 argument-hint: "[repo]"
+related:
+  - open-github-issue
+  - create-github-issue
+  - review-github-issue
+  - list-github-pull-request
 ---
 
 ## Goal

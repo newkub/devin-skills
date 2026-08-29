@@ -2,6 +2,11 @@
 name: list-github-pull-request
 description: แสดง pull requests ของ repo ที่ระบุพร้อม state และ metadata
 argument-hint: "[repo]"
+related:
+  - open-github-pr
+  - open-github-issue
+  - create-github-pull-request
+  - review-github-pull-request
 ---
 
 ## Goal

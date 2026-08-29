@@ -6,6 +6,7 @@ related:
   - list-github-repo
   - report-table
   - suggest-next-action
+  - list-deployment-fails
 ---
 
 ## Goal
