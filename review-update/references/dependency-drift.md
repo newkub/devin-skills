@@ -1,4 +1,4 @@
-# Dependency Version Drift Checks
+# Dependency And Runtime Version Drift Checks
 
 ## Checks
 
@@ -7,6 +7,12 @@
 - รัน `bunx taze -r` หรือ `npm outdated` เพื่อดู outdated dependencies
 - แยกตามประเภท: major, minor, patch
 - ตรวจสอบ breaking changes จาก changelogs ของแต่ละ package
+
+### Runtime Version Drift
+
+- รัน `bun --version`, `node --version`, `python --version`, `rustc --version`, `go version`, `dotnet --version`
+- ตรวจสอบ `package.json#engines`, `mise.toml`, `.nvmrc`, `.python-version`, `rust-toolchain.toml`, `go.mod`, `global.json`
+- ระบุ runtime ที่ outdated เทียบกับ latest stable
 
 ### Security Vulnerabilities
 
@@ -39,6 +45,8 @@
 
 ## Recommended Update Skills
 
+- `update-version-latest` สำหรับ update ทุก versioned สิ่ง (dependencies, runtimes, tools, config)
+- `update-runtime-latest` สำหรับ update language runtimes และ version pins
 - `update-dependencies-latest` สำหรับ update dependencies เป็น latest
-- `update-dot-devin` ถ้า dependency changes กระทบ `.devin` structure
-- `update-project-rules` ถ้า dependency changes กระทบ rules
+- `update-dot-devin` ถ้า dependency/runtime changes กระทบ `.devin` structure
+- `update-project-rules` ถ้า dependency/runtime changes กระทบ rules

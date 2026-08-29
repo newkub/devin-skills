@@ -21,18 +21,19 @@ Priority = drift severity × update urgency × dependency order
 
 บาง updates ต้องทำก่อนเพื่อให้ update อื่นทำได้:
 
-1. `update-dependencies-latest` — dependency update ก่อน เพราะกระทบ rules, docs, config
-2. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
-3. `update-project-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
-4. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
-5. `update-readme-md` — README หลัง architecture ชัด
-6. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
-7. `run-release` — CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
-8. `update-test` — tests และ spec หลัง source code changes
-9. `update-features-md` — features doc หลัง source code stable
-10. `update-gitignore` — gitignore หลัง stack changes
-11. `update-devin-global-subagents` — global subagents หลัง skills stable
-12. `update-all-devin-global-skills` — skills repo หลังทุกอย่าง stable
+1. `update-version-latest` หรือ `update-runtime-latest` — runtime update ก่อน เพราะ dependencies อาจต้องใช้ runtime ใหม่
+2. `update-dependencies-latest` — dependency update ต่อ กระทบ rules, docs, config
+3. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
+4. `update-project-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
+5. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
+6. `update-readme-md` — README หลัง architecture ชัด
+7. `update-contributing-md` — CONTRIBUTING หลัง workflows ชัด
+8. `run-release` — CHANGELOG.md gen อัตโนมัติหลัง release สำเร็จ
+9. `update-test` — tests และ spec หลัง source code changes
+10. `update-features-md` — features doc หลัง source code stable
+11. `update-gitignore` — gitignore หลัง stack changes
+12. `update-devin-global-subagents` — global subagents หลัง skills stable
+13. `update-all-devin-global-skills` — skills repo หลังทุกอย่าง stable
 
 ## Priority Tiers
 
@@ -47,12 +48,13 @@ Priority = drift severity × update urgency × dependency order
 
 | Priority | Update Skill | Drift Area | Effort | Impact |
 |----------|-------------|-----------|--------|--------|
-| 1 | `update-dependencies-latest` | Security vulnerability | medium | critical |
-| 2 | `update-project-rules` | Rules missing coverage | high | high |
+| 1 | `update-version-latest` หรือ `update-runtime-latest` | Runtime/dependency security vulnerability | medium | critical |
+| 2 | `update-dependencies-latest` | Dependency security vulnerability | medium | critical |
+| 3 | `update-project-rules` | Rules missing coverage | high | high |
 
 ## Update Health Score
 
-- ครอบคลุม drift areas: dependencies, docs, config, rules, tests, features, subagents
+- ครอบคลุม drift areas: runtimes, dependencies, docs, config, rules, tests, features, subagents
 - คะแนนต่อ area: no drift = 1, minor drift = 0.5, major drift = 0
 - Update health score = (total score / total areas) × 100%
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)

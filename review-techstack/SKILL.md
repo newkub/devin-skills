@@ -11,6 +11,9 @@ related:
   - suggest-next-action
   - follow-package-manifest
   - list-dependencies
+  - update-version-latest
+  - update-runtime-latest
+  - update-dependencies-latest
 ---
 
 ## Goal

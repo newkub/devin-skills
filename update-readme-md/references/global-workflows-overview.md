@@ -188,6 +188,12 @@ check-file-length
 # Deploy to Cloudflare
 /deploy-to-cloudflare
 
+# Update all versions (runtime + deps + tools + config)
+/update-version-latest
+
+# Update runtime only
+/update-runtime-latest
+
 # Update dependencies
 /update-dependencies-latest
 ```

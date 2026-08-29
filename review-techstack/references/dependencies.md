@@ -5,10 +5,12 @@ Reference สำหรับ dependency review checks
 ## Versions And Freshness
 
 1. ตรวจสอบ version ปัจจุบันเทียบกับ latest stable ด้วย `/update-dependencies-latest` (dry run)
-2. ระบุ dependencies ที่ outdated: major, minor, patch
-3. ตรวจสอบ floating ranges (`latest`, `*`, unbounded `>=`) ที่ auto-resolve เป็น brand-new releases
-4. ตรวจสอบ peer dependencies และ compatibility
-5. ตรวจสอบ lockfile consistency กับ manifest
+2. ตรวจสอบ runtime versions ด้วย `/update-runtime-latest` (dry run)
+3. ถ้าต้องการ update ทุก version รวมกัน ให้ใช้ `/update-version-latest` (dry run)
+4. ระบุ dependencies ที่ outdated: major, minor, patch
+5. ตรวจสอบ floating ranges (`latest`, `*`, unbounded `>=`) ที่ auto-resolve เป็น brand-new releases
+6. ตรวจสอบ peer dependencies และ compatibility
+7. ตรวจสอบ lockfile consistency กับ manifest
 
 ## Security
 
