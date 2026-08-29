@@ -1,5 +1,5 @@
 ---
-name: record-terminal
+name: record-video-terminal
 description: บันทึกวิดีโอและ session จาก terminal สำหรับ CLI testing
 ---
 
@@ -93,7 +93,7 @@ description: บันทึกวิดีโอและ session จาก ter
 
 ### 4. Integration With Workflows
 
-- เรียก `/record-terminal` ใน workflows ที่ต้องการบันทึก
+- เรียก `/record-video-terminal` ใน workflows ที่ต้องการบันทึก
 - ใช้ใน `/run-dev` สำหรับบันทึก development sessions
 - ใช้ใน `/watch-terminal` สำหรับ monitoring
 
