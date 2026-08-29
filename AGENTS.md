@@ -60,6 +60,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
 - Keep the file under 250 lines
 - Use backticks for `tools`, `commands`, `paths`, and `skill-name`
+- If a skill has `references/`, write it according to `update-devin-global-skills/references/create-devin-skills.md` — at least `index.md`, `website.md`, `cli.md` for CLI tools, and `apis/index.md` for libraries/frameworks/services/plugin-creation skills
 
 ### 2. Architecture
 

@@ -142,6 +142,20 @@
 - ดูรายละเอียดใน [dependencies.md](dependencies.md)
 - install commands ใน `SKILL.md` และ `references/` ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
+### 8. References
+
+- ถ้า skill มี `references/` → ต้องมี `references/index.md` ทีอ้างถึงไฟล์ย่อยทั้งหมดด้วยตาราง `| File | Responsibility |`
+- ต้องมี `references/website.md` พร้อม official `Website`, `Documentation`, `Repository`, `Package Registry` (ถ้ามี) และ description สั้นๆ
+- `references/cli.md` สำหรับ CLI tool ใช้ตาราง 4 คอลัมน์: `| commands | description | default | options |`
+- `references/apis/index.md` สำหรับ `follow-lib-*`, `follow-framework-*`, `follow-service-*`, `follow-create-*-plugins/extensions/bots` ทีมี dependencies ประกอบด้วย:
+  - `## Install` ด้วยคำสั่่งทีเหมาะสมกับ ecosystem เช่น `bun add -D <package>`, `cargo add <crate>`, `pip install <pkg>`
+  - `## Version` ระบุ latest version, Package Registry, Repository
+  - `## Dependencies` สั้นๆ
+  - `## Common API / Commands` ตาราง `| commands | description | default | options |`
+  - `## Source` ลิงก์ official docs
+- ห้ามใช้ placeholder เช่น `TBD` หรือ `TBC` ใน references; ข้อมูลต้อง research จาก official docs หรือ package registry จริง
+- ทุกไฟล์ใน `references/` ไม่เกิน 250 บรรทัด
+
 ## Expected Outcome
 
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
