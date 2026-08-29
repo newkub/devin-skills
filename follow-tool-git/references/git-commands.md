@@ -57,11 +57,9 @@
 
 | Command | Description |
 |---------|-------------|
-| `git checkout <branch>` | สลับไป branch นั้นๆ |
-| `git checkout -b <branch>` | สร้างและสลับไป branch ใหม่ |
-| `git checkout -b <branch> <start-point>` | สร้าง branch จาก point ที่กำหนด |
-| `git switch <branch>` | สลับไป branch (ใหม่) |
+| `git switch <branch>` | สลับไป branch |
 | `git switch -c <branch>` | สร้างและสลับไป branch ใหม่ |
+| `git switch -c <branch> <start-point>` | สร้าง branch จาก point ที่กำหนด |
 
 ### Merging
 
@@ -129,8 +127,7 @@
 
 | Command | Description |
 |---------|-------------|
-| `git checkout -- <file>` | ย้อนไฟล์กลับไป staged state |
-| `git restore <file>` | ย้อนไฟล์กลับ (ใหม่) |
+| `git restore <file>` | ย้อนไฟล์กลับ working tree จาก index |
 | `git restore --staged <file>` | ย้อนจาก staged ไป unstaged |
 | `git reset <file>` | ย้อนจาก staged |
 | `git reset --soft <commit>` | ย้อนแต่เก็บ changes ไว้ |
