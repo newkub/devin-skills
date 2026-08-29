@@ -25,4 +25,3 @@
 - `follow-runtime-bun` - Bun runtime CLI (run, install, test, build, config)
 
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

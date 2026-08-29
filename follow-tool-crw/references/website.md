@@ -1,5 +1,6 @@
-# Crw Official Resources
+# Tool Crw Official Resources
 
-- [Repository](https://github.com/us/crw)
-- [Documentation](https://crw.dev/)
-- [Package](https://www.npmjs.com/package/crw)
+- [Website](https://github.com/bzpython/crw#readme)
+- [Repository](https://github.com/bzpython/crw)
+- [Package Registry](https://www.npmjs.com/package/crw)
+- About: cr wallet - coming soon

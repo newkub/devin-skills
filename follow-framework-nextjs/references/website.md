@@ -1,3 +1,6 @@
-# Nextjs Official Resources
+# Framework Nextjs Official Resources
 
-- [Package](https://www.npmjs.com/package/next)
+- [Website](https://nextjs.org)
+- [Repository](https://github.com/vercel/next.js)
+- [Package Registry](https://www.npmjs.com/package/next)
+- About: The React Framework

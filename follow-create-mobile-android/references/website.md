@@ -1,3 +1,3 @@
-# Mobile Android Official Resources
+# Create Mobile Android Official Resources
 
-- [Documentation](https://developer.android.com/)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

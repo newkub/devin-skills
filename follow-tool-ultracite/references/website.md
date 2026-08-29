@@ -1,4 +1,6 @@
-# Ultracite Official Resources
+# Tool Ultracite Official Resources
 
-- [Repository](https://github.com/ultracite/biome)
-- [Package](https://www.npmjs.com/package/ultracite)
+- [Website](https://www.ultracite.ai/)
+- [Repository](https://github.com/haydenbleasel/ultracite)
+- [Package Registry](https://www.npmjs.com/package/ultracite)
+- About: The AI-ready formatter that helps you write and generate code faster.

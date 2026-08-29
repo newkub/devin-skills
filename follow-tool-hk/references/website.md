@@ -1,4 +1,6 @@
-# Hk Official Resources
+# Tool Hk Official Resources
 
-- [Repository](https://github.com/chshersh/hk)
-- [Package](https://www.npmjs.com/package/hk)
+- [Website](https://github.com/chshersh/hk)
+- [Documentation](https://www.npmjs.com/package/hk)
+- [Package Registry](https://www.npmjs.com/package/hk)
+- About: An experimental Heroku CLI

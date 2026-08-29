@@ -1,5 +1,6 @@
-# Pitchfork Official Resources
+# Tool Pitchfork Official Resources
 
-- [Repository](https://github.com/mnavarrocarter/pitchfork)
-- [Documentation](http://localhost:3000/health)
-- [Package](https://www.npmjs.com/package/pitchfork)
+- [Website](https://github.com/omardelarosa/pitchfork-npm)
+- [Repository](https://github.com/omardelarosa/pitchfork-npm)
+- [Package Registry](https://www.npmjs.com/package/pitchfork)
+- About: An Unofficial Pitchfork Music API client for Node.js

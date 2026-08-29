@@ -1,5 +1,6 @@
-# Cargo Official Resources
+# Tool Cargo Official Resources
 
-- [Repository](https://github.com/rust-lang/cargo)
-- [Documentation](https://doc.rust-lang.org/cargo/commands/index.html)
-- [Package](https://www.npmjs.com/package/cargo)
+- [Website](https://github.com/ryanve/cargo)
+- [Repository](https://github.com/ryanve/cargo)
+- [Package Registry](https://www.npmjs.com/package/cargo)
+- About: HTML5 web storage module

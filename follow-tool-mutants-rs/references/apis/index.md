@@ -1,30 +1,30 @@
-# Mutants Rs API & Dependencies
+# Tool Mutants Rs API & Dependencies
 
 ## Install
 
 ```sh
-bun add -D cargo-mutants
-# or
-npm install --save-dev cargo-mutants
+cargo add cargo-mutants
 ```
 
 ## Version
 
-- Latest: see package registry
+- Latest: 0.0.4
+- [Package Registry](https://crates.io/crates/mutants)
+- [Repository](https://github.com/sourcefrog/cargo-mutants)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install cargo-mutants in project | latest version | --save-dev, --save, --global |
+| `cargo-mutants` | Run the tool CLI | current workspace | see cli.md |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://crates.io/crates/mutants
+- Description: Decorator attributes to be used with cargo-mutants

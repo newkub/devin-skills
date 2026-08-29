@@ -1,3 +1,3 @@
-# Cli Official Resources
+# Create Cli Official Resources
 
-- [Package](https://www.npmjs.com/package/commander)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

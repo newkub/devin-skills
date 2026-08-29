@@ -1,4 +1,6 @@
-# Bun Cli Official Resources
+# Create Bun Cli Official Resources
 
-- [Documentation](https://bun.sh/docs)
-- [Package](https://www.npmjs.com/package/bunup)
+- [Website](https://bunup.dev)
+- [Repository](https://github.com/bunup/bunup)
+- [Package Registry](https://www.npmjs.com/package/bunup)
+- About: ⚡ A blazing-fast build tool for your libraries built with Bun.

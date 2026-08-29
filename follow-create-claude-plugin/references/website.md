@@ -1,3 +1,3 @@
-# Claude Plugin Official Resources
+# Create Claude Plugin Official Resources
 
-- [Package](https://www.npmjs.com/package/@anthropic-ai/claude-mcp)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

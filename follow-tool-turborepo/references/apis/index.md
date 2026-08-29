@@ -1,4 +1,4 @@
-# Turborepo API & Dependencies
+# Tool Turborepo API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev turbo
 
 ## Version
 
-- Latest: see package registry
+- Latest: 2.10.12
+- [Package Registry](https://www.npmjs.com/package/turbo)
+- [Repository](https://github.com/vercel/turborepo)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install turbo in project | latest version | --save-dev, --save, --global |
+| `turbo` | Run the turbo CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://turborepo.dev
+- Description: Turborepo is the build system for coding agents.

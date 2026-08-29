@@ -1,4 +1,3 @@
 # Draw Tldraw Diagram Official Resources
 
-- [Repository](https://github.com/tldraw/tldraw)
-- [Documentation](https://tldraw.dev/docs/persistence)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

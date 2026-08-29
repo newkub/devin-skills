@@ -1,5 +1,6 @@
-# Aube Official Resources
+# Tool Aube Official Resources
 
-- [Repository](https://github.com/aubejs/aube)
-- [Documentation](https://aube.en.dev/installation)
-- [Package](https://www.npmjs.com/package/aube)
+- [Website](https://github.com/estjs/aube#readme)
+- [Repository](https://github.com/estjs/aube)
+- [Package Registry](https://www.npmjs.com/package/aube)
+- About: [![NPM version](https://img.shields.io/npm/v/aube?color=a1b858&label=)](https://www.npmjs.com/package/aube)

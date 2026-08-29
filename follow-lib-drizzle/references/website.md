@@ -1,4 +1,6 @@
-# Drizzle Official Resources
+# Lib Drizzle Official Resources
 
-- [Documentation](https://orm.drizzle.team/docs/get-started)
-- [Package](https://www.npmjs.com/package/drizzle-orm)
+- [Website](https://orm.drizzle.team)
+- [Repository](https://github.com/drizzle-team/drizzle-orm)
+- [Package Registry](https://www.npmjs.com/package/drizzle-orm)
+- About: Drizzle ORM package for SQL databases

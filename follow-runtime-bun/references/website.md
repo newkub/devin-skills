@@ -1,3 +1,5 @@
 # Bun Official Resources
 
-- [Package](https://www.npmjs.com/package/-d)
+- [Website](https://bun.sh)
+- [Documentation](https://bun.sh/docs)
+- [Repository](https://github.com/oven-sh/bun)

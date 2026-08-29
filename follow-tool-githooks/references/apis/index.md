@@ -1,4 +1,4 @@
-# Githooks API & Dependencies
+# Tool Githooks API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev lefthook
 
 ## Version
 
-- Latest: see package registry
+- Latest: 2.1.12
+- [Package Registry](https://www.npmjs.com/package/lefthook)
+- [Repository](https://github.com/evilmartians/lefthook)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install lefthook in project | latest version | --save-dev, --save, --global |
+| `lefthook` | Run the lefthook CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://github.com/evilmartians/lefthook#readme
+- Description: Simple git hooks manager

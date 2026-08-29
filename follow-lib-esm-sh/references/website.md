@@ -1,4 +1,5 @@
-# Esm Sh Official Resources
+# Lib Esm Sh Official Resources
 
-- [Documentation](https://esm.sh/react@18'`)
-- [Package](https://www.npmjs.com/package/esm-sh)
+- [Website](https://esm.sh)
+- [Repository](https://github.com/esm-dev/esm.sh)
+- [Package Registry](https://www.npmjs.com/package/esm-sh)

@@ -1,4 +1,4 @@
-#  API & Dependencies
+# Edgejs API & Dependencies
 
 ## Install
 
@@ -10,21 +10,24 @@ npm install --save-dev edge.js
 
 ## Version
 
-- Latest: see package registry
+- Latest: see registry
+- [Package Registry](https://www.npmjs.com/package/edge.js)
+
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
+| `install` | Install edge.js in project | latest version | --save-dev, --save, --global |
+| `import` | Import from 'edge.js' | default or named | (none) |
 | `configure` | Configure project settings | project defaults | --config, --file |
 | `use` | Use the main API / runtime | as documented | (none) |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://www.npmjs.com/package/edge.js
+

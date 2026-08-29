@@ -1,3 +1,5 @@
 # Nodejs Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://nodejs.org)
+- [Documentation](https://nodejs.org/docs/latest/)
+- [Repository](https://github.com/nodejs/node)

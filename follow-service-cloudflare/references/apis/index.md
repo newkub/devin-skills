@@ -1,4 +1,4 @@
-# Cloudflare API & Dependencies
+# Service Cloudflare API & Dependencies
 
 ## Install
 
@@ -10,21 +10,26 @@ npm install --save-dev wrangler
 
 ## Version
 
-- Latest: see package registry
+- Latest: 4.127.1
+- [Package Registry](https://www.npmjs.com/package/wrangler)
+- [Repository](https://github.com/cloudflare/workers-sdk)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install wrangler in project | latest version | --save-dev, --save, --global |
+| `wrangler` | Run the wrangler CLI | current workspace | --help, --version, --config |
+| `wrangler2` | Run the wrangler2 CLI | current workspace | --help, --version, --config |
+| `cf-wrangler` | Run the cf-wrangler CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
+| `import 'wrangler/experimental-config'` | Subpath export for experimental-config | entry as documented | (none) |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://developers.cloudflare.com/workers/wrangler
+- Description: Command-line interface for all things Cloudflare Workers

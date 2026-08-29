@@ -1,4 +1,6 @@
-# Vite Plugins Official Resources
+# Create Vite Plugins Official Resources
 
-- [Documentation](https://vite.dev/guide/api-plugin.html)
-- [Package](https://www.npmjs.com/package/vite)
+- [Website](https://vite.dev)
+- [Repository](https://github.com/vitejs/vite)
+- [Package Registry](https://www.npmjs.com/package/vite)
+- About: Native-ESM powered web dev build tool

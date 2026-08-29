@@ -1,4 +1,3 @@
-# Build Packages Official Resources
+# Tool Build Packages Official Resources
 
-- [Repository](https://github.com/darkflare/build-packages)
-- [Package](https://www.npmjs.com/package/build-packages)
+- [Package Registry](https://www.npmjs.com/package/build-packages)

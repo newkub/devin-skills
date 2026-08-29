@@ -1,3 +1,6 @@
-# Jspm Official Resources
+# Lib Jspm Official Resources
 
-- [Package](https://www.npmjs.com/package/jspm)
+- [Website](https://jspm.org)
+- [Repository](https://github.com/jspm/jspm)
+- [Package Registry](https://www.npmjs.com/package/jspm)
+- About: Import Map Package Manager

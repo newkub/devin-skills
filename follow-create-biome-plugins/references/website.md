@@ -1,4 +1,6 @@
-# Biome Plugins Official Resources
+# Create Biome Plugins Official Resources
 
-- [Documentation](https://biomejs.dev/playground/)
-- [Package](https://www.npmjs.com/package/@biomejs/biome)
+- [Website](https://biomejs.dev)
+- [Repository](https://github.com/biomejs/biome)
+- [Package Registry](https://www.npmjs.com/package/@biomejs/biome)
+- About: Biome is a toolchain for the web: formatter, linter and more

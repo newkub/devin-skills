@@ -1,5 +1,6 @@
-# Vitest Official Resources
+# Tool Vitest Official Resources
 
+- [Website](https://vitest.dev)
 - [Repository](https://github.com/vitest-dev/vitest)
-- [Documentation](https://vitest.dev/guide/cli)
-- [Package](https://www.npmjs.com/package/vitest)
+- [Package Registry](https://www.npmjs.com/package/vitest)
+- About: Next generation testing framework powered by Vite

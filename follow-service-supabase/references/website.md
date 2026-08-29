@@ -1,4 +1,6 @@
-# Supabase Official Resources
+# Service Supabase Official Resources
 
-- [Documentation](http://127.0.0.1:54323`)
-- [Package](https://www.npmjs.com/package/supabase)
+- [Website](https://github.com/supabase/cli#readme)
+- [Repository](https://github.com/supabase/cli)
+- [Package Registry](https://www.npmjs.com/package/supabase)
+- About: Supabase CLI

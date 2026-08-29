@@ -17,7 +17,7 @@
 
 ### Placeholder Code
 
-- สแกนหา `placeholder`, `not implemented`, `coming soon`, `WIP`, `TBD`
+- สแกนหา `placeholder`, `not implemented`, `coming soon`, `WIP`, `to be determined`
 - ตรวจสอบ: function ที่ return empty array, null, หรือ default value โดยไม่มี logic
 - ตรวจสอบ: component ที่ render placeholder text แทน real content
 

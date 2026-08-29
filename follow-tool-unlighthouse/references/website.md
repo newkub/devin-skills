@@ -1,5 +1,6 @@
-# Unlighthouse Official Resources
+# Tool Unlighthouse Official Resources
 
+- [Website](https://github.com/harlan-zw/unlighthouse#readme)
 - [Repository](https://github.com/harlan-zw/unlighthouse)
-- [Documentation](http://localhost:3000`)
-- [Package](https://www.npmjs.com/package/unlighthouse)
+- [Package Registry](https://www.npmjs.com/package/unlighthouse)
+- About: Delightfully scan your entire website with Google Lighthouse. Navigate your performance, accessibility and SEO.

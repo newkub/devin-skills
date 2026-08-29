@@ -1,5 +1,5 @@
-# Rmux Official Resources
+# Tool Rmux Official Resources
 
+- [Website](https://rmux.io)
 - [Repository](https://github.com/nakulbh/rmux)
-- [Documentation](https://rmux.io/)
-- [Package](https://www.npmjs.com/package/rmux)
+- [Package Registry](https://www.npmjs.com/package/rmux)

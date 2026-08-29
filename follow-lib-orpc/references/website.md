@@ -1,3 +1,5 @@
-# Orpc Official Resources
+# Lib Orpc Official Resources
 
-- [Package](https://www.npmjs.com/package/@orpc/server)
+- [Website](https://orpc.dev)
+- [Repository](https://github.com/middleapi/orpc)
+- [Package Registry](https://www.npmjs.com/package/@orpc/server)

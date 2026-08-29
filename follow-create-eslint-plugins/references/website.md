@@ -1,4 +1,6 @@
-# Eslint Plugins Official Resources
+# Create Eslint Plugins Official Resources
 
-- [Documentation](https://eslint.org/docs/latest/extend/custom-rules)
-- [Package](https://www.npmjs.com/package/eslint)
+- [Website](https://eslint.org)
+- [Repository](https://github.com/eslint/eslint)
+- [Package Registry](https://www.npmjs.com/package/eslint)
+- About: An AST-based pattern checker for JavaScript.

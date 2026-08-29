@@ -1,3 +1,3 @@
-#  Official Resources
+# Edgejs Official Resources
 
-- [Package](https://www.npmjs.com/package/edge.js)
+- [Package Registry](https://www.npmjs.com/package/edge.js)

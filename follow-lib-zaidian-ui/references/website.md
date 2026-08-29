@@ -1,3 +1,3 @@
-# Zaidian Ui Official Resources
+# Lib Zaidian Ui Official Resources
 
-- [Package](https://www.npmjs.com/package/zaidian-ui)
+- [Package Registry](https://www.npmjs.com/package/zaidian-ui)

@@ -1,3 +1,3 @@
-# Mobile iOS Official Resources
+# Create Mobile Ios Official Resources
 
-- [Documentation](https://developer.apple.com/documentation/)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

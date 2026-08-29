@@ -1,4 +1,3 @@
 # Convert To Svg Official Resources
 
-- [Repository](https://github.com/svg/svgo)
-- [Documentation](https://www.npmjs.com/package/images-to-svg)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

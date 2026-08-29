@@ -1,4 +1,7 @@
-# Git Branch Official Resources
+# Tool Git Branch Official Resources
 
-- [Documentation](https://git-scm.com/)
-- [Package](https://www.npmjs.com/package/git)
+- [Website](https://git-scm.com/)
+- [Documentation](https://www.npmjs.com/package/git)
+- [Repository](git@github.com:christkv/node-git)
+- [Package Registry](https://www.npmjs.com/package/git)
+- About: A node.js library for git

@@ -1,4 +1,5 @@
-# Pkg New Official Resources
+# Tool Pkg New Official Resources
 
-- [Repository](https://github.com/apps/pkg-pr-new`)
-- [Package](https://www.npmjs.com/package/pkg-pr-new)
+- [Website](https://github.com/stackblitz-labs/pkg.pr.new#readme)
+- [Repository](https://github.com/stackblitz-labs/pkg.pr.new)
+- [Package Registry](https://www.npmjs.com/package/pkg-pr-new)

@@ -1,3 +1,6 @@
-# Browser Extensions Official Resources
+# Create Browser Extensions Official Resources
 
-- [Package](https://www.npmjs.com/package/webextension-polyfill)
+- [Website](https://github.com/mozilla/webextension-polyfill)
+- [Repository](https://github.com/mozilla/webextension-polyfill)
+- [Package Registry](https://www.npmjs.com/package/webextension-polyfill)
+- About: A lightweight polyfill library for Promise-based WebExtension APIs in Chrome.

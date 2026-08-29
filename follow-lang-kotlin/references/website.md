@@ -1,3 +1,5 @@
 # Kotlin Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://kotlinlang.org)
+- [Documentation](https://kotlinlang.org/docs)
+- [Repository](https://github.com/JetBrains/kotlin)

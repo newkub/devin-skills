@@ -1,3 +1,3 @@
 # Update Readme Md Official Resources
 
-- [Documentation](https://img.shields.io/badge/status-in_development-red)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

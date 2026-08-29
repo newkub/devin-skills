@@ -1,4 +1,4 @@
-# Renovate Json API & Dependencies
+# Tool Renovate Json API & Dependencies
 
 ## Install
 
@@ -10,21 +10,24 @@ npm install --save-dev renovate
 
 ## Version
 
-- Latest: see package registry
+- Latest: 44.51.2
+- [Package Registry](https://www.npmjs.com/package/renovate)
+- [Repository](https://github.com/renovatebot/renovate)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install renovate in project | latest version | --save-dev, --save, --global |
+| `renovate` | Run the renovate CLI | current workspace | --help, --version, --config |
+| `renovate-config-validator` | Run the renovate-config-validator CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://renovatebot.com
+- Description: Automated dependency updates. Flexible so you don't need to be.

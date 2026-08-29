@@ -1,3 +1,3 @@
-# Svelte Kit Official Resources
+# Framework Svelte Kit Official Resources
 
-- [Package](https://www.npmjs.com/package/-D)
+- [Package Registry](https://www.npmjs.com/package/-D)

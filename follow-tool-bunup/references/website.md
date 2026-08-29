@@ -1,5 +1,6 @@
-# Bunup Official Resources
+# Tool Bunup Official Resources
 
-- [Repository](https://github.com/okikio/bunup)
-- [Documentation](https://bunup.dev/docs/guide/cli-options.html)
-- [Package](https://www.npmjs.com/package/bunup)
+- [Website](https://bunup.dev)
+- [Repository](https://github.com/bunup/bunup)
+- [Package Registry](https://www.npmjs.com/package/bunup)
+- About: ⚡ A blazing-fast build tool for your libraries built with Bun.

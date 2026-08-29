@@ -1,5 +1,6 @@
-# Vitepress Official Resources
+# Tool Vitepress Official Resources
 
-- [Repository](https://github.com/vuejs/vitepress)
-- [Documentation](https://vp.yuy1n.io/)
-- [Package](https://www.npmjs.com/package/unocss)
+- [Website](https://unocss.dev)
+- [Repository](https://github.com/unocss/unocss)
+- [Package Registry](https://www.npmjs.com/package/unocss)
+- About: The instant on-demand Atomic CSS engine.

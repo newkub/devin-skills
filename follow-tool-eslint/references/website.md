@@ -1,5 +1,6 @@
-# Eslint Official Resources
+# Tool Eslint Official Resources
 
+- [Website](https://eslint.org)
 - [Repository](https://github.com/eslint/eslint)
-- [Documentation](https://eslint.org/docs/latest/use/command-line-interface)
-- [Package](https://www.npmjs.com/package/eslint)
+- [Package Registry](https://www.npmjs.com/package/eslint)
+- About: An AST-based pattern checker for JavaScript.

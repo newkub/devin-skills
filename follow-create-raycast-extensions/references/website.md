@@ -1,5 +1,6 @@
-# Raycast Extensions Official Resources
+# Create Raycast Extensions Official Resources
 
+- [Website](https://developers.raycast.com)
 - [Repository](https://github.com/raycast/extensions)
-- [Documentation](https://www.raycast.com/schemas/extension.json)
-- [Package](https://www.npmjs.com/package/@raycast/api)
+- [Package Registry](https://www.npmjs.com/package/@raycast/api)
+- About: Build extensions for Raycast with React and Node.js.

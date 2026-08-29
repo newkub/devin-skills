@@ -1,4 +1,6 @@
-# Instantdb Official Resources
+# Service Instantdb Official Resources
 
-- [Documentation](https://www.instantdb.com/docs`)
-- [Package](https://www.npmjs.com/package/@instantdb/react)
+- [Website](https://github.com/instantdb/instant/tree/main/client/packages/react)
+- [Repository](https://github.com/instantdb/instant)
+- [Package Registry](https://www.npmjs.com/package/@instantdb/react)
+- About: Instant DB for React

@@ -1,5 +1,6 @@
-# Stryker Mutator Official Resources
+# Tool Stryker Mutator Official Resources
 
+- [Website](https://stryker-mutator.io/)
 - [Repository](https://github.com/stryker-mutator/stryker-js)
-- [Documentation](https://stryker-mutator.io/docs/stryker-js/usage/)
-- [Package](https://www.npmjs.com/package/@stryker-mutator/core)
+- [Package Registry](https://www.npmjs.com/package/@stryker-mutator/core)
+- About: The extendable JavaScript mutation testing framework

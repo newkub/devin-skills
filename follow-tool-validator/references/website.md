@@ -1,5 +1,6 @@
-# Validator Official Resources
+# Tool Validator Official Resources
 
-- [Repository](https://github.com/colinhacks/zod)
-- [Documentation](https://zod.dev/)
-- [Package](https://www.npmjs.com/package/validator)
+- [Website](https://github.com/validatorjs/validator.js)
+- [Repository](https://github.com/validatorjs/validator.js)
+- [Package Registry](https://www.npmjs.com/package/validator)
+- About: String validation and sanitization

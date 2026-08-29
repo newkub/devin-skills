@@ -1,3 +1,3 @@
-# Capacitor Official Resources
+# Framework Capacitor Official Resources
 
-- [Package](https://www.npmjs.com/package/@capacitor/)
+- [Package Registry](https://www.npmjs.com/package/@capacitor/)

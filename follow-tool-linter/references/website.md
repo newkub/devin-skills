@@ -1,5 +1,7 @@
-# Linter Official Resources
+# Tool Linter Official Resources
 
-- [Repository](https://github.com/biomejs/biome)
-- [Documentation](https://biomejs.dev/reference/cli/)
-- [Package](https://www.npmjs.com/package/linter)
+- [Website](https://github.com/biomejs/biome)
+- [Documentation](https://www.npmjs.com/package/linter)
+- [Repository](https://github.com/kof/node-linter)
+- [Package Registry](https://www.npmjs.com/package/linter)
+- About: Code quality tools collection in one module

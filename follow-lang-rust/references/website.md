@@ -1,3 +1,5 @@
 # Rust Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://www.rust-lang.org)
+- [Documentation](https://doc.rust-lang.org/)
+- [Repository](https://github.com/rust-lang/rust)

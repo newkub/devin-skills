@@ -1,3 +1,3 @@
 # Visualize Project Official Resources
 
-- [Package](https://www.npmjs.com/package/unocss)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

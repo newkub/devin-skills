@@ -1,3 +1,5 @@
-#  Official Resources
+# Monorepo Official Resources
 
-- [Package](https://www.npmjs.com/package/turborepo)
+- [Website](https://turbo.build/repo)
+- [Repository](https://github.com/vercel/turborepo)
+- [Package Registry](https://www.npmjs.com/package/turborepo)

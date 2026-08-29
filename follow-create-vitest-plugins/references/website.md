@@ -1,4 +1,6 @@
-# Vitest Plugins Official Resources
+# Create Vitest Plugins Official Resources
 
-- [Documentation](https://vitest.dev/api/advanced/plugin)
-- [Package](https://www.npmjs.com/package/vitest)
+- [Website](https://vitest.dev)
+- [Repository](https://github.com/vitest-dev/vitest)
+- [Package Registry](https://www.npmjs.com/package/vitest)
+- About: Next generation testing framework powered by Vite

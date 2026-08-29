@@ -1,4 +1,4 @@
-# Oxlint API & Dependencies
+# Tool Oxlint API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev oxlint@latest
 
 ## Version
 
-- Latest: see package registry
+- Latest: see registry
+- [Package Registry](https://www.npmjs.com/package/oxlint@latest)
+
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install oxlint@latest in project | latest version | --save-dev, --save, --global |
+| `oxlint@latest` | Run the tool CLI | current workspace | see cli.md |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://www.npmjs.com/package/oxlint@latest
+

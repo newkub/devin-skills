@@ -1,30 +1,30 @@
-# Nextest API & Dependencies
+# Tool Nextest API & Dependencies
 
 ## Install
 
 ```sh
-bun add -D cargo-nextest
-# or
-npm install --save-dev cargo-nextest
+cargo add cargo-nextest
 ```
 
 ## Version
 
-- Latest: see package registry
+- Latest: 0.1.1
+- [Package Registry](https://crates.io/crates/nextest)
+- [Repository](https://github.com/nextest-rs/nextest)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install cargo-nextest in project | latest version | --save-dev, --save, --global |
+| `cargo-nextest` | Run the tool CLI | current workspace | see cli.md |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://crates.io/crates/nextest
+- Description: Stub crate, you likely want cargo-nextest instead

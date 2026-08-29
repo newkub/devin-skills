@@ -1,4 +1,4 @@
-# Infisical API & Dependencies
+# Service Infisical API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev @infisical/cli
 
 ## Version
 
-- Latest: see package registry
+- Latest: 0.43.128
+- [Package Registry](https://www.npmjs.com/package/@infisical/cli)
+- [Repository](https://github.com/Infisical/cli)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install @infisical/cli in project | latest version | --save-dev, --save, --global |
+| `infisical` | Run the infisical CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://github.com/Infisical/cli#readme
+- Description: <h1 align="center">Infisical CLI</h1> <p align="center">   <p align="center"><b>Embrace shift-left security with the Infisical CLI and strengthen your DevSecOps practices by seamlessly managing secrets across your workflows, pipelines, and applications.</

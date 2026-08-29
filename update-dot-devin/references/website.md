@@ -1,3 +1,3 @@
 # Update Dot Devin Official Resources
 
-- [Documentation](https://docs.devin.ai/cli/extensibility/rules)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

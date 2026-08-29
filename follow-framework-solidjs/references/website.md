@@ -1,3 +1,6 @@
-# Solidjs Official Resources
+# Framework Solidjs Official Resources
 
-- [Package](https://www.npmjs.com/package/solid-js)
+- [Website](https://solidjs.com)
+- [Repository](https://github.com/solidjs/solid)
+- [Package Registry](https://www.npmjs.com/package/solid-js)
+- About: A declarative JavaScript library for building user interfaces.

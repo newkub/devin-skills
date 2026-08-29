@@ -1,4 +1,6 @@
-# Tsdown Official Resources
+# Tool Tsdown Official Resources
 
+- [Website](http://tsdown.dev/)
 - [Repository](https://github.com/rolldown/tsdown)
-- [Package](https://www.npmjs.com/package/tsdown)
+- [Package Registry](https://www.npmjs.com/package/tsdown)
+- About: The Elegant Bundler for Libraries

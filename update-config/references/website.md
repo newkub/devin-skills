@@ -1,3 +1,3 @@
 # Update Config Official Resources
 
-- [Documentation](https://moonrepo.dev/docs/config/tasks)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

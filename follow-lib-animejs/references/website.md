@@ -1,3 +1,6 @@
-# Animejs Official Resources
+# Lib Animejs Official Resources
 
-- [Package](https://www.npmjs.com/package/animejs)
+- [Website](https://animejs.com)
+- [Repository](https://github.com/juliangarnier/anime)
+- [Package Registry](https://www.npmjs.com/package/animejs)
+- About: JavaScript animation engine

@@ -1,5 +1,6 @@
-# Formatter Official Resources
+# Tool Formatter Official Resources
 
-- [Repository](https://github.com/biomejs/biome)
-- [Documentation](https://biomejs.dev/reference/cli/)
-- [Package](https://www.npmjs.com/package/formatter)
+- [Website](https://github.com/DamonOehlman/formatter#readme)
+- [Repository](https://github.com/DamonOehlman/formatter)
+- [Package Registry](https://www.npmjs.com/package/formatter)
+- About: Simple String Variable Replacement Formatter

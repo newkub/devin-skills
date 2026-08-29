@@ -8,4 +8,3 @@
 | [typescript-testing.md](typescript-testing.md) | Testing: Vitest, type testing, fixture patterns |
 | [typescript-documentation.md](typescript-documentation.md) | Documentation: TSDoc, JSDoc, API docs generation |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

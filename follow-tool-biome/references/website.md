@@ -1,5 +1,6 @@
-# Biome Official Resources
+# Tool Biome Official Resources
 
+- [Website](https://biomejs.dev)
 - [Repository](https://github.com/biomejs/biome)
-- [Documentation](https://biomejs.dev/reference/cli/)
-- [Package](https://www.npmjs.com/package/@biomejs/biome)
+- [Package Registry](https://www.npmjs.com/package/@biomejs/biome)
+- About: Biome is a toolchain for the web: formatter, linter and more

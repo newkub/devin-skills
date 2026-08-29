@@ -1,3 +1,3 @@
 # Draw Svg Image Official Resources
 
-- [Documentation](http://www.w3.org/2000/svg)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

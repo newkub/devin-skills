@@ -1,5 +1,6 @@
-# Dprint Official Resources
+# Tool Dprint Official Resources
 
-- [Repository](https://github.com/newkub/my-config/blob/main/dprint.json`)
-- [Documentation](https://plugins.dprint.dev/typescript-0.95.13.wasm)
-- [Package](https://www.npmjs.com/package/dprint)
+- [Website](https://dprint.dev)
+- [Repository](https://github.com/dprint/dprint)
+- [Package Registry](https://www.npmjs.com/package/dprint)
+- About: Pluggable and configurable code formatting platform written in Rust.

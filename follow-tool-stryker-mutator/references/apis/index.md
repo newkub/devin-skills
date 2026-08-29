@@ -1,4 +1,4 @@
-# Stryker Mutator API & Dependencies
+# Tool Stryker Mutator API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev @stryker-mutator/core
 
 ## Version
 
-- Latest: see package registry
+- Latest: 10.0.0
+- [Package Registry](https://www.npmjs.com/package/@stryker-mutator/core)
+- [Repository](https://github.com/stryker-mutator/stryker-js)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install @stryker-mutator/core in project | latest version | --save-dev, --save, --global |
+| `stryker` | Run the stryker CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://stryker-mutator.io/
+- Description: The extendable JavaScript mutation testing framework

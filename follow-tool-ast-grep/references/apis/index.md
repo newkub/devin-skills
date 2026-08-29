@@ -1,4 +1,4 @@
-# Ast Grep API & Dependencies
+# Tool Ast Grep API & Dependencies
 
 ## Install
 
@@ -10,21 +10,24 @@ npm install --save-dev @ast-grep/cli
 
 ## Version
 
-- Latest: see package registry
+- Latest: 0.45.2
+- [Package Registry](https://www.npmjs.com/package/@ast-grep/cli)
+- [Repository](https://github.com/ast-grep/ast-grep)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install @ast-grep/cli in project | latest version | --save-dev, --save, --global |
+| `sg` | Run the sg CLI | current workspace | --help, --version, --config |
+| `ast-grep` | Run the ast-grep CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://ast-grep.github.io
+- Description: Search and Rewrite code at large scale using precise AST pattern

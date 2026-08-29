@@ -1,3 +1,5 @@
 # Zig Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://ziglang.org)
+- [Documentation](https://ziglang.org/documentation/master/)
+- [Repository](https://github.com/ziglang/zig)

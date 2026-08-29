@@ -1,5 +1,6 @@
-# Storybook Official Resources
+# Tool Storybook Official Resources
 
+- [Website](https://storybook.js.org)
 - [Repository](https://github.com/storybookjs/storybook)
-- [Documentation](https://storybook.js.org/docs/api/cli-options/)
-- [Package](https://www.npmjs.com/package/storybook)
+- [Package Registry](https://www.npmjs.com/package/storybook)
+- About: Storybook: Develop, document, and test UI components in isolation

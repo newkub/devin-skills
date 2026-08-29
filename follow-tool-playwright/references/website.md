@@ -1,5 +1,6 @@
-# Playwright Official Resources
+# Tool Playwright Official Resources
 
+- [Website](https://playwright.dev)
 - [Repository](https://github.com/microsoft/playwright)
-- [Documentation](https://playwright.dev/docs/test-cli)
-- [Package](https://www.npmjs.com/package/@playwright/test)
+- [Package Registry](https://www.npmjs.com/package/@playwright/test)
+- About: A high-level API to automate web browsers

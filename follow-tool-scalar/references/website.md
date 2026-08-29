@@ -1,4 +1,3 @@
-# Scalar Official Resources
+# Tool Scalar Official Resources
 
-- [Repository](https://github.com/scalar/scalar)
-- [Package](https://www.npmjs.com/package/-D)
+- [Package Registry](https://www.npmjs.com/package/-D)

@@ -1,4 +1,6 @@
-# Template Starter Official Resources
+# Tool Template Starter Official Resources
 
-- [Repository](https://github.com/newkub/template-starter/tree/main/templates`)
-- [Package](https://www.npmjs.com/package/degit)
+- [Website](https://github.com/Rich-Harris/degit#readme)
+- [Repository](https://github.com/Rich-Harris/degit)
+- [Package Registry](https://www.npmjs.com/package/degit)
+- About: Straightforward project scaffolding

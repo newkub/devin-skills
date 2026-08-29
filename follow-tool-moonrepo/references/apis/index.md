@@ -1,4 +1,4 @@
-# Moonrepo API & Dependencies
+# Tool Moonrepo API & Dependencies
 
 ## Install
 
@@ -10,21 +10,24 @@ npm install --save-dev @moonrepo/cli
 
 ## Version
 
-- Latest: see package registry
+- Latest: 2.5.3
+- [Package Registry](https://www.npmjs.com/package/@moonrepo/cli)
+- [Repository](https://github.com/moonrepo/moon)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install @moonrepo/cli in project | latest version | --save-dev, --save, --global |
+| `moon` | Run the moon CLI | current workspace | --help, --version, --config |
+| `moonx` | Run the moonx CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://github.com/moonrepo/moon#readme
+- Description: moon command line and core system.

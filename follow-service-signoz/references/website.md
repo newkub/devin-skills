@@ -1,4 +1,6 @@
-# Signoz Official Resources
+# Service Signoz Official Resources
 
-- [Documentation](https://signoz.io/docs/install/docker/`)
-- [Package](https://www.npmjs.com/package/@opentelemetry/api)
+- [Website](https://github.com/open-telemetry/opentelemetry-js/tree/main/api)
+- [Repository](https://github.com/open-telemetry/opentelemetry-js)
+- [Package Registry](https://www.npmjs.com/package/@opentelemetry/api)
+- About: Public API for OpenTelemetry

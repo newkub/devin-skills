@@ -1,4 +1,4 @@
-# Bun API & Dependencies
+# Runtime Bun API & Dependencies
 
 ## Install
 
@@ -10,21 +10,23 @@ npm install --save-dev -d
 
 ## Version
 
-- Latest: see package registry
+- Latest: see registry
+- [Package Registry](https://www.npmjs.com/package/-d)
+
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install -d runtime/toolchain | latest | --version |
+| `run` | Run source file | main entry | --watch, --env |
+| `configure` | Set environment/config | defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://www.npmjs.com/package/-d
+

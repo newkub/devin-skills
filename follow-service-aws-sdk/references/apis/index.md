@@ -1,4 +1,4 @@
-# Aws SDK API & Dependencies
+# Service Aws Sdk API & Dependencies
 
 ## Install
 
@@ -10,21 +10,25 @@ npm install --save-dev @aws-sdk/client-s3
 
 ## Version
 
-- Latest: see package registry
+- Latest: 3.1121.0
+- [Package Registry](https://www.npmjs.com/package/@aws-sdk/client-s3)
+- [Repository](https://github.com/aws/aws-sdk-js-v3)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install @aws-sdk/client-s3 SDK | latest version | --save |
+| `createClient` | Create service client | env-based | --url, --key |
+| `query` | Query data | all rows | filters, order |
+| `insert` | Insert data | new record | --returning |
+| `configure` | Configure connection | project defaults | --config |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://aws.amazon.com/sdk-for-javascript
+- Description: AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native

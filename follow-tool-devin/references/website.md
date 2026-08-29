@@ -1,4 +1,6 @@
-# Devin Official Resources
+# Tool Devin Official Resources
 
-- [Documentation](https://devin.ai/)
-- [Package](https://www.npmjs.com/package/devin)
+- [Website](https://github.com/devjmetivier/devin#readme)
+- [Repository](https://github.com/devjmetivier/devin)
+- [Package Registry](https://www.npmjs.com/package/devin)
+- About: Devin Metivier

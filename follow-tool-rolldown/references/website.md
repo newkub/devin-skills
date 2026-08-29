@@ -1,5 +1,7 @@
-# Rolldown Official Resources
+# Tool Rolldown Official Resources
 
-- [Repository](https://github.com/rolldown/rolldown)
-- [Documentation](https://www.rolldown.rs/guide/getting-started)
-- [Package](https://www.npmjs.com/package/rolldown)
+- [Website](https://rolldown.rs)
+- [Documentation](https://rolldown.rs/)
+- [Repository](https://github.com/rolldown-rs/rolldown)
+- [Package Registry](https://www.npmjs.com/package/rolldown)
+- About: Fast JavaScript/TypeScript bundler in Rust with Rollup-compatible API.

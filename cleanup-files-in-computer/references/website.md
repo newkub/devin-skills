@@ -1,3 +1,3 @@
 # Cleanup Files In Computer Official Resources
 
-- [Documentation](https://mise.jdx.dev/tasks/toml-tasks.html)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

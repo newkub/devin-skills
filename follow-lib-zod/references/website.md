@@ -1,4 +1,6 @@
-# Zod Official Resources
+# Lib Zod Official Resources
 
-- [Documentation](https://www.npmjs.com/package/zod`)
-- [Package](https://www.npmjs.com/package/zod)
+- [Website](https://zod.dev)
+- [Repository](https://github.com/colinhacks/zod)
+- [Package Registry](https://www.npmjs.com/package/zod)
+- About: TypeScript-first schema declaration and validation library with static type inference

@@ -1,30 +1,30 @@
-# Ratatui API & Dependencies
+# Framework Ratatui API & Dependencies
 
 ## Install
 
 ```sh
-bun add -D ratatui
-# or
-npm install --save-dev ratatui
+cargo add ratatui
 ```
 
 ## Version
 
-- Latest: see package registry
+- Latest: 0.1.15
+- [Package Registry](https://www.npmjs.com/package/ratatui)
+- [Repository](https://github.com/holo-q/ratatui-ts)
 
 ## Dependencies
 
-- 
+- See package registry for transitive dependencies.
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install package in project | latest version | --save-dev, --save, --global |
-| `import` | Import library into source | named or default import | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
+| `install` | Install ratatui in project | latest version | --save-dev, --save, --global |
+| `ratatui-ts-demos` | Run the ratatui-ts-demos CLI | current workspace | --help, --version, --config |
+| `configure` | Configure via config file | project defaults | --config, --file |
 
 ## Source
 
-- Official docs: TBD
+- Official docs: https://github.com/holo-q/ratatui-ts#readme
+- Description: TypeScript bindings for ratatui_ffi via ffi-napi

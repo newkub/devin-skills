@@ -1,3 +1,5 @@
 # Typescript Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://www.typescriptlang.org)
+- [Documentation](https://www.typescriptlang.org/docs/)
+- [Repository](https://github.com/microsoft/TypeScript)

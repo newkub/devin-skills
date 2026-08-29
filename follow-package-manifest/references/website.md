@@ -1,3 +1,3 @@
-# Manifest Official Resources
+# Package Manifest Official Resources
 
-- [Package](https://www.npmjs.com/package/-U)
+- [Package Registry](https://www.npmjs.com/package/-U)

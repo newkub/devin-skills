@@ -1,5 +1,6 @@
-# React Scan Official Resources
+# Tool React Scan Official Resources
 
+- [Website](https://react-scan.million.dev)
 - [Repository](https://github.com/aidenybai/react-scan)
-- [Documentation](https://unpkg.com/react-scan/dist/auto.global.js)
-- [Package](https://www.npmjs.com/package/react-scan)
+- [Package Registry](https://www.npmjs.com/package/react-scan)
+- About: Scan your React app for renders

@@ -1,4 +1,3 @@
 # Watch Release Official Resources
 
-- [Repository](https://api.github.com/repos/<owner)
-- [Documentation](https://registry.npmjs.org/<package)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

@@ -1,4 +1,3 @@
-# Tauri Plugins Official Resources
+# Create Tauri Plugins Official Resources
 
-- [Documentation](https://v2.tauri.app/develop/plugins/)
-- [Package](https://www.npmjs.com/package/@tauri-apps/api/core)
+- [Package Registry](https://www.npmjs.com/package/@tauri-apps/api/core)

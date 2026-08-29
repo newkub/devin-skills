@@ -1,3 +1,3 @@
 # Review Test Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- This skill is a workflow; see [references/index.md](index.md) and [SKILL.md](../SKILL.md) for tooling.

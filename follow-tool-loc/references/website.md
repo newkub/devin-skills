@@ -1,5 +1,6 @@
-# Loc Official Resources
+# Tool Loc Official Resources
 
-- [Repository](https://github.com/cgag/loc/releases)
-- [Documentation](https://www.rustup.rs/)
-- [Package](https://www.npmjs.com/package/loc)
+- [Website](https://github.com/cgag/loc)
+- [Repository](https://github.com/cgag/loc)
+- [Package Registry](https://www.npmjs.com/package/loc)
+- About: lightweight simple translation module with dynamic json storage

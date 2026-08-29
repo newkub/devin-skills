@@ -1,5 +1,7 @@
-# Changesets Official Resources
+# Tool Changesets Official Resources
 
+- [Website](https://github.com/changesets/changesets)
+- [Documentation](https://changesets.dev)
 - [Repository](https://github.com/changesets/changesets)
-- [Documentation](https://unpkg.com/@changesets/config@3.0.0/schema.json)
-- [Package](https://www.npmjs.com/package/@changesets/cli)
+- [Package Registry](https://www.npmjs.com/package/@changesets/cli)
+- About: A tool to manage versioning and changelogs with a focus on monorepos

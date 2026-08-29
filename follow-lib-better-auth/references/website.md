@@ -1,3 +1,6 @@
-# Better Auth Official Resources
+# Lib Better Auth Official Resources
 
-- [Package](https://www.npmjs.com/package/better-auth)
+- [Website](https://better-auth.com)
+- [Repository](https://github.com/better-auth/better-auth)
+- [Package Registry](https://www.npmjs.com/package/better-auth)
+- About: The most comprehensive authentication framework for TypeScript.

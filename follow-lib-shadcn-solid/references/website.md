@@ -1,3 +1,6 @@
-# Shadcn Solid Official Resources
+# Lib Shadcn Solid Official Resources
 
-- [Package](https://www.npmjs.com/package/solid-ui)
+- [Website](https://github.com/SolidOS/solid-ui)
+- [Repository](https://github.com/SolidOS/solid-ui)
+- [Package Registry](https://www.npmjs.com/package/solid-ui)
+- About: UI library for Solid applications

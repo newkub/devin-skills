@@ -17,4 +17,3 @@
 | [rust-dependency-management.md](rust-dependency-management.md) | Dependency management (rust-version/MSRV, feature flags, workspace.dependencies, cargo sort, cargo outdated) |
 | [rust-async.md](rust-async.md) | Async patterns (tokio, JoinSet, CancellationToken, Send+Sync, block_on, tokio::select!, Arc) |
 | [website.md](website.md) | Official resources and links |
-| [apis/index.md](apis/index.md) | API, dependencies, and programmatic usage |

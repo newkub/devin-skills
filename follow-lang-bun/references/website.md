@@ -1,3 +1,5 @@
 # Bun Official Resources
 
-- Official website: TBD (use `learn-from-web` to find the latest URL)
+- [Website](https://bun.sh)
+- [Documentation](https://bun.sh/docs)
+- [Repository](https://github.com/oven-sh/bun)
