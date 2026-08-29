@@ -177,6 +177,17 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 4. ถ้า rebase มี conflict → ใช้ `/resolve-merge-conflicts`
 5. ตรวจสอบด้วย `git log --oneline -n 10`
 
+### 12. Check And Rewrite Non-English Commit Messages
+
+> Goal: ตรวจสอบและแก้ไข commit messages ที่ไม่ใช่ภาษาอังกฤษ
+
+1. รัน `git log --oneline` เพื่อดู commit messages ทั้งหมด
+2. ระบุ commits ที่มีตัวอักษรหรือคำภาษาอื่น (เช่น ภาษาไทย)
+3. ถ้าพบ → ใช้ `git rebase -i HEAD~N` แล้วเปลี่ยน `pick` เป็น `reword` สำหรับ commits นั้น
+4. แปลง messages เป้นภาษาอังกฤษทีมีความหมายเดียวกัน โดยใช้ imperative mood และ conventional commits
+5. ถ้าไม่แน่ใจในการแปล → หยุดและใช้ `/ask-me` ก่อน reword
+6. ตรวจสอบด้วย `git log --oneline -n 10` ว่า messages ทั้งหมดเป็นภาษาอังกฤษ
+
 ## Rules
 
 ### 1. Safety
@@ -190,7 +201,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 ### 2. Commit Quality
 
 - Break down commits ตาม logical changes (ไม่ใหญ่เกินไป)
-- ใช้ commit messages ที่ชัดเจนและเป็นไปตาม conventional commits
+- ใช้ commit messages ที่ชัดเจน เป็นไปตาม conventional commits และเป็นภาษาอังกฤษ
 - แต่ละ commit ควรเป็น self-contained และ buildable
 - ไม่รวม unrelated changes ใน commit เดียวกัน
 - ใช้ `fixup` และ `autosquash` สำหรับการจัดการ commits ที่ซับซ้อน
@@ -211,9 +222,17 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 - ใช้ `git diff --stat` เพื่อดูสรุป changes
 - ตรวจสอบว่าไม่มี files ที่ถูกลบโดยไม่ตั้งใจ
 
+### 5. Language
+
+- Commit messages ทั้งหมดต้องเป็นภาษาอังกฤษ
+- ถ้าพบข้อความภาษาอื่นใน git history ให้ reword เป้นภาษาอังกฤษ
+- รักษาความหมายและ context เดิมเมื่อแปล
+- ถ้า commit ถูก push ไปแล้ว ให้ทำตาม Rules ส่วน Safety ก่อน reword
+
 ## Expected Outcome
 
 - Commits ถูก refactor ให้เหมาะสม (break down, edit, reorganize, squash, fixup)
+- Commit messages ทั้งหมดเป็นภาษาอังกฤษ
 - Commit history สะอาดและเป็นไปตาม best practices
 - ไม่มี conflicts หรือ errors หลัง refactor
 - Tests ผ่านทั้งหมด (ถ้ามี)

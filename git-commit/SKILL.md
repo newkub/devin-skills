@@ -72,7 +72,8 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 2. ใช้รูปแบบ `<type>: <subject>`
 3. subject สั้นกระชับไม่เกิน 72 ตัวอักษร
 4. ใช้ imperative mood (เช่น add ไม่ใช่ added)
-5. ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
+5. ใช้ภาษาอังกฤษเท่านั้น
+   - ถ้าเนื้อหาหรือ context ทำให้คิดเป็นภาษาอื่น ให้แปล subject และ body เป็นภาษาอังกฤษก่อน commit
 
 ### 6. Execute Commit
 
@@ -91,7 +92,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 ตรวจสอบความถูกต้องของ commits
 
 1. รัน `git log --oneline -5` เพื่อดู commits ล่าสุด
-2. ตรวจสอบว่า commit messages สอดคล้องกับ conventional commits
+2. ตรวจสอบว่า commit messages สอดคล้องกับ conventional commits และเป็นภาษาอังกฤษ
 3. ตรวจสอบว่าไม่มีไฟล์ที่ยังไม่ commit เหลืออยู่
 4. รัน `git status` เพื่อยืนยันว่า working directory สะอาด
 
@@ -105,7 +106,8 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - subject ไม่ต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่หรือจบด้วยจุด
 - สั้นกระชับไม่เกิน 72 ตัวอักษร
 - ใช้ imperative mood (เช่น add ไม่ใช่ added)
-- ใช้ภาษาอังกฤษหรือไทยให้สม่ำเสมอ
+- ใช้ภาษาอังกฤษเท่านั้น
+  - ถ้าเนื้อหาหรือ context ทำให้คิดเป็นภาษาอื่น ให้แปล subject และ body เป็นภาษาอังกฤษก่อน commit
 
 ### Commit Types
 
@@ -127,7 +129,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 
 ## Expected Outcome
 
-- Commit messages ที่สอดคล้องกับ conventional commits
+- Commit messages ที่สอดคล้องกับ conventional commits และเป็นภาษาอังกฤษทั้งหมด
 - Git history ที่อ่านง่ายและติดตามง่าย
 - ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ถูก commit
 - Working directory สะอาด
