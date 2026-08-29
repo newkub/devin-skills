@@ -66,7 +66,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `devin-cli-skills: /update-devin-global-skills`
 - `skill-format: /update-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 3 (ask-project-requirement, visualize-devin-in-web, open-files-in-web)`
+- `submodules: 2 (visualize-devin-in-web, open-files-in-web)`
 
 ### 3. Platform
 
@@ -81,7 +81,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **768** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **775** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -100,7 +100,7 @@ Core:
 By prefix:
 
 Major skill families by current count:
-- `follow-*` (237): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`
+- `follow-*` (238): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`, `follow-review`
 - `review-*` (56): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`, `review-codebase-everythink`, `review-codebase-everythink-and-ship`
 - `list-*` (47): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-action-fail`
 - `run-*` (35): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify-on-local`, `run-verify-on-ci-cd`, `run-test-all`
@@ -128,7 +128,7 @@ Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` 
 ### 6. Workspaces
 
 - Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
-- Submodules: `ask-project-requirement`, `open-files-in-web`, `visualize-devin-in-web`
+- Submodules: `open-files-in-web`, `visualize-devin-in-web`
 
 ### 7. Safety
 
