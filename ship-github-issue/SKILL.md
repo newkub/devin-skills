@@ -11,8 +11,9 @@ related:
   - follow-github
   - open-github-issue
   - create-github-issue
-  - delete-git-worktree
   - follow-plan
+  - do-it-all
+  - run-verify-on-local
   - report-table
   - suggest-next-action
 ---

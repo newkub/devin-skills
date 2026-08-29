@@ -4,8 +4,6 @@ description: สร้าง branch `dev` จาก `main` ถ้ายังไ
 related:
   - follow-git-flow
   - ship-github-issue
-  - use-git-worktrees
-  - git-push
   - report-table
   - suggest-next-action
 ---

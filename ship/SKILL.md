@@ -7,7 +7,7 @@ related:
   - ship-release
   - follow-git-flow
   - follow-github
-  - ship-continuous-dont-ask
+  - ship-continuous
   - update-agents-md
   - follow-agents-md
   - update-devin-global-skills
@@ -32,7 +32,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 ถ้าต้องการ ship บน cloud/CI ให้ใช้ `/ship-to-cloud`
 ถ้าต้องการ release/deploy ให้ใช้ `/ship-release`
 ถ้าต้องการทำงานตาม issue ทั่งหมด ให้ใช้ `/ship-github-issue`
-สำหรับหลาย workspace ให้เรียก `/ship` แต่ละ workspace ตามลำดับ dependency
+สำหรับหลาย workspace ให้หา dependency order จาก `docs/project/dependencies.md`, `package.json` workspaces, `AGENTS.md` หรือ dependency graph แล้วเรียก `/ship` แต่ละ workspace จาก leaf → root
 
 ## Execute
 
@@ -49,7 +49,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 > Goal: ทำตาม workflows ที่ระบุใน `AGENTS.md`
 
 1. ทำ `/follow-agents-md` เพื่ออ่าน `AGENTS.md`
-2. ทำตาม `## Execute` ของ `AGENTS.md` ตามลำดับ
+2. ทำตาม `## Execute` ของ `AGENTS.md` ตามลำดับ ถ้า `AGENTS.md` ระบุให้เรียก `/ship` ซ้ำ → ข้าม และใช้ default verify → commit → report
 3. ถ้า `AGENTS.md` ไม่ระบุ workflow → ใช้ default: verify → commit → report
 
 ### 3. Update Skills
@@ -75,7 +75,7 @@ Ship workspace ที่เลือกโดยทำตาม `AGENTS.md` แ�
 > Goal: commit การเปลี่ยนแปลง
 
 1. รัน `git submodule status` เพื่อดู submodules ทั้งหมด
-2. ถ้ามี submodules ที่มี changes → commit ใน submodule ก่อน root
+2. ถ้ามี submodules ที่มี changes → `cd` เข้า submodule แต่ละอัน ทำ `/git-commit` หรือ `git add . && git commit` ใน submodule แล้วกลับมา root
 3. ทำ `/git-commit` ที่ root พร้อมระบุ submodule pointer updates ถ้ามี
 4. ถ้าไม่มี changes → stop และ report
 

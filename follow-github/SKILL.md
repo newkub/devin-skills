@@ -70,25 +70,31 @@ related:
      "allow_deletions": false
    }
    ```
-2. ส่งไปยัง GitHub API:
+2. บันทึก payload ลง `.devin/github/main-protection.json`:
+   - สร้าง directory `.devin/github/` ถ้ายังไม่มี
+   - เขียน JSON ลงไฟล์
+3. ส่งไปยัง GitHub API:
    ```bash
-   gh api repos/<owner>/<repo>/branches/main/protection --method PUT --input - < main-protection.json
+   gh api repos/<owner>/<repo>/branches/main/protection --method PUT --input .devin/github/main-protection.json
    ```
-3. หรือใช้ PowerShell:
+4. หรือใช้ PowerShell:
    ```powershell
    $body = Get-Content .devin/github/main-protection.json -Raw
    $body | gh api repos/<owner>/<repo>/branches/main/protection --method PUT --input -
    ```
-4. ถ้า API ตอบ 422 → ปรับ `enforce_admins` เป้น `null` หรือ `{"enabled": true}` ตาม response
-5. บันทึก status code
+5. ถ้า API ตอบ 422 → ปรับ `enforce_admins` เป้น `null` หรือ `{"enabled": true}` ตาม response
+6. บันทึก status code
 
 ### 4. Protect dev Branch
 
 > Goal: `dev` เป้น staging branch ทีมี status checks
 
 1. ใช้ payload เหมือน `main` แต่เปลี่ยน path เป้น `branches/dev/protection`
-2. ส่งด้วย `gh api`
-3. ถ้าไม่ต้องการ required PR บน `dev` → ตั้ง `required_pull_request_reviews` เป้น `null`
+2. บันทึก `.devin/github/dev-protection.json` (ถ้าไม่ต้องการ required PR บน `dev` ให้ตั้ง `required_pull_request_reviews` เป้น `null`)
+3. ส่งด้วย `gh api`:
+   ```bash
+   gh api repos/<owner>/<repo>/branches/dev/protection --method PUT --input .devin/github/dev-protection.json
+   ```
 
 ### 5. Setup .github Templates (Optional)
 
