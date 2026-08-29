@@ -6,6 +6,9 @@ related:
   - ship
   - ship-to-cloud
   - ship-github-issue
+  - create-dev-branch
+  - follow-git-flow
+  - follow-github
   - create-github-pull-request
   - merge-github-pull-request
   - run-release
@@ -39,6 +42,7 @@ related:
 2. ทำ `git status --porcelain` ต้องว่าง
 3. ตรวจ issue number จาก argument หรือจาก `CURRENT_BRANCH` (`dev/<number>`)
 4. บันทึก `ISSUE_NUMBER` เพื่อใช้ close issue
+5. ถ้า `dev` ยังไม่มี → ทำ `/create-dev-branch`
 
 ### 2. Ship To Cloud First
 

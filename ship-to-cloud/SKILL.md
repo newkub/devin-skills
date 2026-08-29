@@ -3,6 +3,8 @@ name: ship-to-cloud
 description: Push current branch ไปยัง remote แล้วรัน cloud verify แก้ไขจนผ่าน โดยไม่ release/deploy
 related:
   - ship
+  - follow-git-flow
+  - follow-github
   - run-verify-cloud
   - setup-ci-cd
   - resolve-errors

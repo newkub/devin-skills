@@ -123,7 +123,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-performance-profile`, `analyze-security-risk`, `analyze-data-flow`, `analyze-tech-debt`, `analyze-attack-surface`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-to-cloud`, `ship-github-issue`, `ship-release`, `ship-continuous-dont-ask`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-performance-profile`, `analyze-security-risk`, `analyze-data-flow`, `analyze-tech-debt`, `analyze-attack-surface`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `compare`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `release-*`, `relocate-*`, `rename-*`, `request-*` (e.g. `request-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `ship`, `ship-to-cloud`, `ship-github-issue`, `ship-release`, `ship-continue`, `ship-continuous-dont-ask`, `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
@@ -135,6 +135,16 @@ Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` 
 - Do not edit another skill's `SKILL.md` without explicit command
 - Do not delete or move skill directories without a dry run
 - Dry run before destructive actions
+
+### 8. Ship Flow
+
+- Default branches: `main` (production), `dev` (staging)
+- Issue branch: `dev/<number>` (short-lived)
+- Worktree: `worktrees/dev-<number>/`
+- Flow: `dev/<number>` → `dev` → `main`
+- Local hooks: block direct commit/push on `main`
+- GitHub: branch protection on `main` (PR + status checks) and `dev` (status checks)
+- Skills: `/ship`, `/ship-to-cloud`, `/ship-github-issue`, `/ship-release`, `/ship-continue`
 
 ## Expected Outcome
 

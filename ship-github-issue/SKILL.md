@@ -6,6 +6,9 @@ related:
   - ship
   - ship-to-cloud
   - ship-release
+  - create-dev-branch
+  - follow-git-flow
+  - follow-github
   - open-github-issue
   - create-github-issue
   - use-git-worktrees
@@ -51,9 +54,8 @@ related:
 
 > Goal: ให้ branch `dev` พร้อมใช้งาน
 
-1. ทำ `git branch --list dev`
-2. ถ้าไม่มี `dev` → `git switch -c dev main`
-3. ทำ `git push -u origin dev` ถ้ายังไม่ได้ push
+1. ทำ `/create-dev-branch`
+2. ถ้า fail → stop และ report
 
 ### 4. Create Branch And Worktree
 

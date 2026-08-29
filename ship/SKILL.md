@@ -5,6 +5,8 @@ related:
   - ship-to-cloud
   - ship-github-issue
   - ship-release
+  - follow-git-flow
+  - follow-github
   - ship-continuous-dont-ask
   - update-agents-md
   - follow-agents-md

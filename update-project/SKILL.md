@@ -11,6 +11,7 @@ related:
   - update-examples
   - update-project-skills
   - update-github-metadata
+  - follow-github
   - update-todo-md
   - update-version-latest
   - deep-update-project
@@ -90,12 +91,13 @@ related:
 2. ตรวจว่า skills ที่สร้างผ่าน `/deep-validate`
 3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 
-### 5. Update GitHub Metadata
+### 5. Update GitHub Metadata And Settings
 
-> Goal: GitHub repo metadata สะท้อน project จริง
+> Goal: GitHub repo metadata และ branch protection สะท้อน project จริง
 
 1. ทำ `/update-github-metadata` เพื่อ sync description, homepage, topics กับ `README.md` และ `package.json`
-2. ยืนยันว่า metadata ตรงกับเนื้อหาล่าสุด
+2. ทำ `/follow-github` เพื่อตั้ง branch protection บน `main` และ `dev` และ `.github` templates (optional)
+3. ยืนยันว่า metadata และ branch protection ตรงกับ project conventions
 
 ### 6. Validate And Report
 
