@@ -66,7 +66,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `devin-cli-skills: /update-devin-global-skills`
 - `skill-format: /update-devin-global-skills/references/frontmatter.md`
 - `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 6 (analyze-codebase-quality, ask-project-requirement, visualize-devin-in-web, open-files-in-web, analyze-file-structure, analyze-dependencies)`
+- `submodules: 3 (ask-project-requirement, visualize-devin-in-web, open-files-in-web)`
 
 ### 3. Platform
 
@@ -128,7 +128,7 @@ Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` 
 ### 6. Workspaces
 
 - Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
-- Submodules: `analyze-codebase-quality`, `analyze-dependencies`, `analyze-file-structure`, `ask-project-requirement`, `open-files-in-web`, `visualize-devin-in-web`
+- Submodules: `ask-project-requirement`, `open-files-in-web`, `visualize-devin-in-web`
 
 ### 7. Safety
 

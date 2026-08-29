@@ -1,18 +1,9 @@
 [submodule "visualize-devin-in-web"]
 	path = visualize-devin-in-web
 	url = git@github.com:newkub/visualize-devin-in-web.git
-[submodule "analyze-codebase-quality"]
-	path = analyze-codebase-quality
-	url = git@github.com:newkub/analyze-codebase-quality.git
 [submodule "ask-project-requirement"]
 	path = ask-project-requirement
 	url = git@github.com:newkub/ask-requirement.git
 [submodule "open-files-in-web"]
 	path = open-files-in-web
 	url = https://github.com/newkub/open-files-in-web
-[submodule "analyze-file-structure"]
-	path = analyze-file-structure
-	url = https://github.com/newkub/analyze-file-structure
-[submodule "analyze-dependencies"]
-	path = analyze-dependencies
-	url = https://github.com/newkub/analyze-dependencies
