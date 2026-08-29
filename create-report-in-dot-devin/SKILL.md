@@ -1,5 +1,5 @@
 ---
-name: follow-report-in-dot-devin
+name: create-report-in-dot-devin
 description: สร้าง report ละเอียดใน .devin/reports/ พร้อม 3 tables, file structure และ what-you-do
 argument-hint: "[title]"
 related:
@@ -91,7 +91,7 @@ related:
 
 > Goal: อัปเดต references ที่เกี่ยวข้อง
 
-1. ทำ `/update-references` กับทุก skill ที่อ้างอิง `follow-report-in-dot-devin`
+1. ทำ `/update-references` กับทุก skill ที่อ้างอิง `create-report-in-dot-devin`
 2. ถ้ามี `AGENTS.md` → อัปเดต slash command
 
 ## Rules

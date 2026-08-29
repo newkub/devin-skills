@@ -3,7 +3,7 @@ name: idea-features
 description: สร้างไอเดียฟีเจอรใหม่และขยายจากของเดิม โดยไม่เปิด web app และไม่สร้าง report files ถาวร
 argument-hint: "[topic]"
 related:
-  - follow-report-in-dot-devin
+  - create-report-in-dot-devin
   - realize-implementation
   - review-codebase-everythink
   - suggest-me
@@ -19,7 +19,7 @@ related:
 
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- สร้าง report ชั่วคราวใน `.devin/reports/` ด้วย `/follow-report-in-dot-devin` ถ้าต้องการ
+- สร้าง report ชั่วคราวใน `.devin/reports/` ด้วย `/create-report-in-dot-devin` ถ้าต้องการ
 - ไม่เปิด web app, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everythink` ก่อน และลบ report files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
@@ -59,7 +59,7 @@ related:
 
 > Goal: สร้าง report ชั่วคราวใน .devin/reports/
 
-1. ทำ `/follow-report-in-dot-devin` ด้วย title จาก topic
+1. ทำ `/create-report-in-dot-devin` ด้วย title จาก topic
 2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
 3. รวม `/report-file-structure` ของ project
 4. บันทึกลง `.devin/reports/<title>-<time>.md`
@@ -111,7 +111,7 @@ related:
 
 ### 4. Data Format
 
-- ใช้ `/follow-report-in-dot-devin` สำหรับ report format
+- ใช้ `/create-report-in-dot-devin` สำหรับ report format
 - แต่ละ feature ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
 - ใช้ `/enhance-prompt` สำหรับ copy format
 

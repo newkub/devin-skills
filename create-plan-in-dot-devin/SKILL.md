@@ -9,7 +9,7 @@ related:
   - improve
   - update-references
   - ship
-  - follow-report-in-dot-devin
+  - create-report-in-dot-devin
 ---
 
 ## Goal
