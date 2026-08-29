@@ -85,7 +85,7 @@ related:
 เลือกระดับตามขนาดและความซับซ้อนของโปรเจกต์
 - Minimal (Default): dev, build, typecheck, lint, format, test, scan, check, verify, ci - เหมาะสำหรับโปรเจกต์ส่วนใหญ่
 - Standard: Minimal + test:watch, test:coverage, deps:analyze, clean, security, db scripts, predeploy, deploy:staging - เหมาะสำหรับโปรเจกต์ที่ต้องการ testing และ dependency management เพิ่มเติม
-- Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, release, db:studio - เหมาะสำหรับ infra/tooling team
+- Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, db:studio - เหมาะสำหรับ infra/tooling team
 
 สำหรับ monorepo ที่ใช้ Bun:
 - `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` เท่านั้น
@@ -153,9 +153,9 @@ Scripts สำหรับ database operations เพื่อจัดการ
 | db:studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | bunx drizzle-kit studio | - | - | - |
 | db:generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | bunx drizzle-kit generate | - | - | - |
 
-### 7. Release Scripts
+### 7. Prerelease And Benchmark Scripts
 
-Scripts สำหรับการ release เพื่อจัดการ versioning และ performance:
+Scripts สำหรับ prerelease และ benchmark:
 
 | Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Rust | Python | Go |
 |------|-----|------|---------|------------|----------|------|--------|----|
@@ -163,7 +163,7 @@ Scripts สำหรับการ release เพื่อจัดการ ve
 | bench:fn | bunx mitata | bunx mitata | bunx mitata | bunx mitata | bunx mitata | cargo bench | pytest-benchmark | go test -bench=. |
 | bench:server | bunx autocannon | bunx autocannon | bunx autocannon | bunx autocannon | bunx autocannon | - | - | - |
 | bench:memory | bunx clinic | bunx clinic | bunx clinic | bunx clinic | bunx clinic | - | memory_profiler | pprof |
-| release | auto-it | auto-it | auto-it | auto-it | auto-it | cargo release | python -m build && twine upload | go release |
+- `release` ไม่อยู่ใน package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
 
 ### 8. Security Scripts
 

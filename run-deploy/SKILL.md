@@ -5,6 +5,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - review-deploy
+  - watch-cd-and-resolve
   - run-verify
   - run-build
 ---

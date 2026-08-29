@@ -19,7 +19,8 @@ related:
   - resolve-errors
   - git-commit
   - git-push
-  - watch-ci-cd
+  - watch-ci-and-resolve
+  - watch-cd-and-resolve
   - watch-github-actions
   - setup-ci-cd
   - report

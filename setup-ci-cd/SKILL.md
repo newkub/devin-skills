@@ -105,7 +105,44 @@ jobs:
       - run: bun run build
 ```
 
-3. เพิ่ม `deploy.yml` หรือ `release.yml` ตามความต้องการ โดยเรียก `bun run deploy` หรือ `bun run release`
+3. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
+
+4. ถ้าต้องการ release ให้สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
+
+```yaml
+name: release
+on:
+  push:
+    tags: ['v*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run verify
+      - run: bun run build
+      - name: release
+        run: |
+          # ใส่คำสั่ง release ตาม platform ที detect ไว้
+          # npm: npm publish
+          # crates: cargo publish
+          # vscode: npx vsce publish
+          # webstore: npx chrome-webstore-upload
+          # docker: docker build . -t <image>:<tag> && docker push <image>:<tag>
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+```
 
 #### GitLab CI
 
@@ -169,6 +206,7 @@ jobs:
 - project เล็ก: `verify` ต้องรวม `scan`, `lint`, `typecheck`, `test`, `build` ใน package manifest เลย
 - project ใหญ่: CI/CD pipeline รัน full suite; package manifest มี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
 - `test:all` ควรรวม unit, integration, e2e, coverage ตาม project
+- ไม่ใส่ `release` ลง package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
 
 ### 5. No Auto Commit
 
@@ -179,7 +217,7 @@ jobs:
 
 - CI/CD platform ถูก detect หรือถาม user
 - Workflow files สร้างถูกต้องตาม platform
-- Package scripts ครบถ้วนสำหรับ verify, test, build, deploy, release
+- Package scripts ครบถ้วนสำหรับ verify, test, build, deploy — `release` ไม่อยู่ใน package manifest
 - Secrets ถูก setup อย่างปลอดภัย
 - ไม่มีการ commit/push/deploy/release โดยอัตโนมัติ
 - มีรายงาน setup status และ next action ชัดเจน

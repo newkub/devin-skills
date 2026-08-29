@@ -80,7 +80,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 5. สร้างตาราง Blockers: Blocker, Severity, Action Required
 6. แสดง go/no-go recommendation พร้อมเหตุผล
 7. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
-8. ถ้ามี CI/CD pipeline ยังไม่ผ่านหรือต้อง watch ก่อน deploy → ใช้ `/watch-ci-cd`
+8. ถ้ามี CI pipeline ยังไม่ผ่านหรือต้อง watch ก่อน deploy → ใช้ `/watch-ci-and-resolve`; ถ้าหลัง deploy ไม่ healthy → ใช้ `/watch-cd-and-resolve`
 
 ## Rules
 

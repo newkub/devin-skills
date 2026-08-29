@@ -12,7 +12,8 @@ related:
   - setup-ci-cd
   - follow-tasks
   - ship
-  - watch-ci-cd
+  - watch-ci-and-resolve
+  - watch-cd-and-resolve
   - watch-github-actions
   - git-push
   - resolve-errors
@@ -74,7 +75,7 @@ related:
 4. ตรวจหา CI/CD config (`setup-ci-cd` รายการ); ถ้าไม่มี → ทำ `/setup-ci-cd`
 5. ทำ `/git-push` ถ้ามี unpushed commits
 6. ถ้า push ถูก reject → stop และ report (ไม่ force push)
-7. ถ้าเป็น GitHub Actions → `/watch-github-actions` มิฉะนั้น `/watch-ci-cd`
+7. ถ้าเป็น GitHub Actions → `/watch-github-actions` มิฉะนั้น `/watch-ci-and-resolve`
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
 

@@ -4,10 +4,15 @@ description: Auto-detect platforms, release ไปยัง external platforms, 
 related:
   - follow-secret-manager
   - ship
+  - ship-release
+  - setup-ci-cd
+  - run-verify
+  - watch-ci-and-resolve
+  - watch-cd-and-resolve
+  - watch-release
   - gen-changelog-md
   - publish-package-to-registry
   - use-my-packages-on-registry
-  - watch-release
   - check-backward-compatibility
   - update-devin-global-skills
 ---
@@ -21,6 +26,20 @@ Auto-detect platforms ที่ project รองรับจาก configuratio
 Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `CHANGELOG.md` จาก git tags
 
 ## Execute
+
+### 0. Check Release Conditions
+
+> Goal: ยืนยันวา release ถูกต้องและปลอดภัยก่อน run
+
+1. ตรวจ `git branch --show-current` และ `git describe --tags --exact-match` หรือ `git tag --points-at HEAD`
+   - ถ้า HEAD ไม่อยู่บน tag `v*` และไม่อยู่บน `main` หรือ `master` → stop และ report
+2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship-release` ก่อน
+3. ตรวจ `git status --porcelain` ต้อง clean
+4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
+   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/watch-ci-and-resolve <run-id>`
+   - ถ้า CI ยังไม่ผ่าน → stop และ report
+5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
+6. ถ้าทุก condition ผ่าน → ไปขั้นตอน Detect Platforms
 
 ### 1. Detect Platforms
 
@@ -128,7 +147,16 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 
 ## Rules
 
-### 1. Auto-Detection
+### 1. Conditions
+
+- ต้องอยู่บน tag `v*` หรือ `main`/`master` เท่านั้น
+- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship-release`
+- working tree ต้อง clean
+- CI ต้องผ่านก่อน release
+- secrets สำหรับ platforms ที detect ต้องพร้อม
+- ไม่ release โดยอัตโนมัติจากทุก merge
+
+### 2. Auto-Detection
 
 - ตรวจสอบ `package.json` สำหรับ npm และ vscode
 - ตรวจสอบ `Cargo.toml` สำหรับ crates
@@ -136,7 +164,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - ตรวจสอบ `Dockerfile` สำหรับ docker
 - รันเฉพาะ platforms ที่ detect ได้เท่านั้น
 
-### 2. Configuration Requirements
+### 3. Configuration Requirements
 
 - ทุก platform ต้องมี name, version, description, license
 - `npm`: `private` ต้องเป็น `false`, ต้องมี `repository` และ `homepage`
@@ -145,14 +173,14 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - `webstore`: ต้องมี `manifest_version`, `permissions`, `icons`
 - `docker`: ต้องมี `.dockerignore` และ tag ที่ชัดเจน
 
-### 3. Authentication
+### 4. Authentication
 
 - ใช้ API/Automation tokens ไม่ใช่ personal tokens
 - ตั้งค่า secrets ใน GitHub Secrets ก่อน release
 - ตรวจสอบว่า token มีสิทธิ์ publish ไปที่ package/extension ที่เกี่ยวข้อง
 - `npm` alternative: ใช้ npm Trusted Publishers (OIDC) แทน token
 
-### 4. Release Tool Usage
+### 5. Release Tool Usage
 
 - ใช้ `release-*` workflows สำหรับตั้งค่า release tool แต่ละ platform
 - ใช้ `/publish-package-to-registry` สำหรับ npm และ crates
@@ -162,7 +190,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - รัน `chrome-webstore-upload validate` ก่อน publish สำหรับ webstore
 - รัน `docker build --no-cache` สำหรับ build ใหม่ทั้งหมด
 
-### 5. CHANGELOG.md Generation
+### 6. CHANGELOG.md Generation
 
 - `CHANGELOG.md` เกิดจากการ gen ด้วย `gen-changelog-md` skill จาก `git tag --sort=-version:refname` เท่านั้น
 - ห้ามแก้ไข `CHANGELOG.md` ด้วยมือ — ถ้าต้องการอัปเดต ให้รัน script ใหม่

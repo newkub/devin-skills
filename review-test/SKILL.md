@@ -88,7 +88,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 2. ตรวจ critical paths มี regression coverage
 3. ตรวจ mutation testing สำหรับ critical code (score > 80%)
 4. ตรวจ CI/CD pipeline รัน regression tests อัตโนมัติ
-5. ถ้า regression ล้มเหลวใน CI/CD หรือต้อง monitor จนผ่าน → ส่งต่อ `/watch-ci-cd`
+5. ถ้า regression ล้มเหลวใน CI หรือต้อง monitor จนผ่าน → ส่งต่อ `/watch-ci-and-resolve`
 
 ### 7. Pre-Run Score And Report
 

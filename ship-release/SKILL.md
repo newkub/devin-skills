@@ -10,6 +10,7 @@ related:
   - follow-github
   - run-release
   - run-deploy
+  - watch-cd-and-resolve
   - report-table
   - suggest-next-action
 ---
@@ -125,8 +126,11 @@ related:
    - วนดึง `gh run list --branch main --limit 5 --json databaseId,headSha` จนกว่า `headSha == MAIN_SHA` (สูงสุด 10 รอบ)
    - ถ้าเจอ → `gh run watch <run-id>`
    - ถ้า fail → หยุด และทำ `/resolve-errors` แล้ว retry
-7. ถ้า project ต้องการ release → ทำ `/run-release`
-8. ถ้า project ต้องการ deploy → ทำ `/run-deploy`
+7. ถ้า project ต้องการ release:
+   1. ดึง version จาก `package.json` หรือ `Cargo.toml` หรือ `manifest.json` ตาม platform
+   2. ถ้า `HEAD` ยังไม่มี tag → สร้าง annotated tag `v<version>` แล้ว `git push origin v<version>`
+   3. ทำ `/run-release`
+8. ถ้า project ต้องการ deploy → ทำ `/run-deploy` แล้ว `/watch-cd-and-resolve`
 9. ถ้าไม่ต้องการ release/deploy → report และไป step Cleanup
 
 ### 6. Close Issue And Cleanup
