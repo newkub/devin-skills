@@ -1,15 +1,19 @@
 ---
 name: open-web
-description: เปิด website ด้วย open command
+description: เปิด website ด้วย native OS command
+related:
+  - open-files-in-web
+  - follow-tool-agent-browser
+  - watch-browser-and-fix
 ---
 
 ## Goal
 
-เปิด website ด้วย open command
+เปิด website ด้วย native OS command
 
 ## Scope
 
-ใช้ `open-web` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `open-web` เมื่อต้องเปิด URL ใน external browser หรือ integrated browser
 
 ## Execute
 
@@ -17,19 +21,27 @@ description: เปิด website ด้วย open command
 
 > Goal: Open Website
 
-เปิด website ด้วย open command
+เปิด website ด้วย native OS command
 
-1. รับ URL ที่ต้องเปิด
-2. ใช้ command `open <url>` เพื่อเปิด website
-3. ตรวจสอบว่า website เปิดถูกต้อง
+1. รับ URL จาก user
+2. ตรวจสอบ URL ว่าถูกต้อง
+3. พิจารณาเปิดใน integrated browser หรือ external browser:
+   - integrated: ถ้า user ขอหรือ context รองรับ `browser_preview` tool → เรียก `browser_preview`
+   - external: ใช้ default browser ของระบบ
+4. ใช้ native OS command สำหรับ external browser:
+   - Windows: `start <url>`
+   - macOS: `open <url>`
+   - Linux: `xdg-open <url>`
+5. ตรวจสอบว่า website เปิดถูกต้อง
 
 ## Rules
 
-- ใช้ `open <url>` command
-- ตรวจสอบ URL ว่าถูกต้อง
-- ใช้ default browser ของระบบ
+- ไม่ใช้ `open` CLI tool แบบ standalone; ใช้ native OS command เท่านั้น
+- ตรวจสอบ URL ก่อนเปิด
+- ใช้ `browser_preview` tool สำหรับ integrated browser เมื่อ context รองรับ
+- ใช้ default browser ของระบบสำหรับ external browser
 
 ## Expected Outcome
 
-- Website เปิดใน browser
+- Website เปิดใน browser ทีเลือก
 - URL ถูกต้อง
