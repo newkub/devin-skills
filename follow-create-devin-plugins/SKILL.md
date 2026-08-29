@@ -6,6 +6,8 @@ related:
   - follow-create-sdk
   - update-devin-global-skills
   - update-devin-global-subagents
+  - follow-my-tech-stack
+  - review-techstack
   - ship
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Plan Plugin Scope
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Plan Plugin Scope
 
 > Goal: วางแผนว่า plugin ทำอะไร
 
@@ -28,7 +38,7 @@ related:
 4. ระบุ target consumers: project, team, หรือ public
 5. ตรวจสอบว่าไม่ซ้ำชื่อกับ plugins ที่ติดตั้งแล้ว
 
-### 2. Create Plugin Directory
+### 3. Create Plugin Directory
 
 > Goal: สร้างโครงสร้าง plugin
 
@@ -41,7 +51,7 @@ related:
 7. สร้าง `hooks.json` ถ้าต้องการ lifecycle hooks
 8. สร้าง `mcp_config.json` ถ้าต้องการ MCP servers
 
-### 3. Write Plugin Manifest
+### 4. Write Plugin Manifest
 
 > Goal: เขียน `.devin-plugin/plugin.json`
 
@@ -54,7 +64,7 @@ related:
 7. ระบุ `mcpServers` ถ้ามี MCP servers
 8. ระบุ `requiredPlugins`, `optionalPlugins`, `forbiddenPlugins` ตาม governance policy
 
-### 4. Create Skills
+### 5. Create Skills
 
 > Goal: สร้าง skills ภายใน plugin
 
@@ -63,7 +73,7 @@ related:
 3. ตรวจสอบว่า skill name ไม่ซ้ำภายใน plugin
 4. ทดสอบ invoke ด้วย `/<plugin-name>:<skill-name>`
 
-### 5. Add Rules And Agents
+### 6. Add Rules And Agents
 
 > Goal: เพิ่ม rules และ custom subagents ถ้าจำเป็น
 
@@ -72,7 +82,7 @@ related:
 3. สร้าง `agents/<agent-name>.md` หรือ `agents/<agent-name>/AGENT.md` สำหรับ custom subagents
 4. ตรวจสอบว่า agents load ได้เฉพาะใน local Devin agents (CLI และ Devin Desktop)
 
-### 6. Add Hooks And MCP
+### 7. Add Hooks And MCP
 
 > Goal: เพิ่ม lifecycle hooks และ MCP servers
 
@@ -80,7 +90,7 @@ related:
 2. สร้าง `mcp_config.json` สำหรับ MCP servers ด้วย `mcpServers` map
 3. ตรวจสอบว่า MCP servers ไม่ expose secrets ใน plugin repository
 
-### 7. Test Plugin Locally
+### 8. Test Plugin Locally
 
 > Goal: ทดสอบ plugin ก่อน publish
 
@@ -90,7 +100,7 @@ related:
 4. ทดสอบ invoke skill ด้วย `/<plugin-name>:<skill-name>`
 5. แก้ไข skill แล้วทดสอบใหม่ โดยไม่ต้อง `update` เพราะ local plugin linked
 
-### 8. Publish And Manage
+### 9. Publish And Manage
 
 > Goal: publish plugin และจัดการ versions
 

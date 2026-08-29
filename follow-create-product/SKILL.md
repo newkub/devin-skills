@@ -14,6 +14,8 @@ related:
   - ship
   - report-table
   - enhance-prompt
+  - follow-my-tech-stack
+  - review-techstack
   - realize-implementation
 ---
 
@@ -32,7 +34,15 @@ related:
 
 ## Execute
 
-### 1. Understand Input
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Understand Input
 
 > Goal: วิเคราะห์ product idea
 
@@ -42,7 +52,7 @@ related:
 4. ระบุ value proposition
 5. ถ้า input กำกวม → ใช้ `/enhance-prompt` หรือ `/ask-me` ก่อน
 
-### 2. Define Product Scope
+### 3. Define Product Scope
 
 > Goal: กำหนดขอบเขต product
 
@@ -52,7 +62,7 @@ related:
 4. ระบุ success metrics
 5. ใช้ `/report-table` สรุป scope, priority, effort
 
-### 3. Build Product Spec
+### 4. Build Product Spec
 
 > Goal: เขียน product specification
 
@@ -63,7 +73,7 @@ related:
 5. Acceptance criteria สำหรับแต่ละ feature
 6. Metrics และ KPIs
 
-### 4. Create Roadmap
+### 5. Create Roadmap
 
 > Goal: วางแผนการพัฒนา
 
@@ -72,7 +82,7 @@ related:
 3. ประเมิน effort แบบ rough (S/M/L)
 4. ใช้ `/report-table` สรุป roadmap
 
-### 5. Design UX And Pages
+### 6. Design UX And Pages
 
 > Goal: ออกแบบ UX/UI และ page structure
 
@@ -82,7 +92,7 @@ related:
 4. ใช้ `/review-uxui` ตรวจ layout, navigation, responsive, CTA
 5. สร้าง wireframe/sketch ด้วย `/report-uxui-sketch` ถ้าจำเป็น
 
-### 6. Create Website
+### 7. Create Website
 
 > Goal: สร้าง website project
 
@@ -91,7 +101,7 @@ related:
 3. ใช้ `/follow-single-responsibility` ตรวจแต่ละ page/component
 4. ทดสอบ dev server และ build
 
-### 7. Add Authentication
+### 8. Add Authentication
 
 > Goal: เพิ่มระบบ user auth
 
@@ -100,7 +110,7 @@ related:
 3. สร้าง `/user` page แสดง profile, settings
 4. ปกป้อง `/dashboard` ด้วย auth guard
 
-### 8. Add Payments
+### 9. Add Payments
 
 > Goal: เพิ่ม billing และ pricing
 
@@ -109,7 +119,7 @@ related:
 3. สร้าง `/user/billing` page สำหรับ manage subscription
 4. เชื่อม Stripe webhooks เข้ากับ `/dashboard`
 
-### 9. Build Product Pages
+### 10. Build Product Pages
 
 > Goal: สร้างเนื้อหาและ features บนแต่ละ page
 
@@ -120,7 +130,7 @@ related:
 5. `/dashboard`: overview, metrics, upgrade prompts
 6. ใช้ `/realize-implementation` เพื่อตรวจว่าไม่มี TODO/MOCK/placeholder
 
-### 10. Ship
+### 11. Ship
 
 > Goal: ส่งมอบ product
 

@@ -6,6 +6,8 @@ related:
   - follow-create-website
   - follow-service-cloudflare
   - follow-service-vercel
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-github-actions
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Choose Stack
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Choose Stack
 
 > Goal: เลือก stack ทีเหมาะสมกับ use case
 
@@ -27,7 +37,7 @@ related:
 3. ใช้ `follow-create-bun-cli` ถ้า bot เป็น Bun CLI + server
 4. ใช้ `follow-create-website` ถ้า bot มี dashboard หรือ configuration UI
 
-### 2. Setup Project
+### 3. Setup Project
 
 > Goal: สร้าง project structure และ dependencies
 
@@ -40,7 +50,7 @@ related:
 4. สร้าง `tsconfig.json` ด้วย `strict: true`
 5. สร้าง `.env.example` ด้วย `APP_ID`, `PRIVATE_KEY`, `WEBHOOK_SECRET`, `WEBHOOK_PROXY_URL`
 
-### 3. Register GitHub App
+### 4. Register GitHub App
 
 > Goal: ลงทะเบียน GitHub App ให้ถูกต้อง
 
@@ -51,7 +61,7 @@ related:
 5. ดาวน์โหลด private key และบันทึก `APP_ID`
 6. Install app เข้า repositories หรือ organization ทีต้องการ
 
-### 4. Implement Webhook Handlers
+### 5. Implement Webhook Handlers
 
 > Goal: implement event handlers สำหรับ bot
 
@@ -76,7 +86,7 @@ related:
 5. แยก business logic ออกจาก webhook wiring → `src/domain/`
 6. ใช้ `try/catch` รอบ handler และ log errors
 
-### 5. Add Local Development Proxy
+### 6. Add Local Development Proxy
 
 > Goal: ทดสอบ webhooks ใน local
 
@@ -85,7 +95,7 @@ related:
 3. รัน `bun run dev` หรือ `bunx smee -u <url> -p 3000`
 4. ทดสอบ events จาก GitHub จริง
 
-### 6. Add Tests
+### 7. Add Tests
 
 > Goal: ทดสอบ handlers โดยไม่ต้องรัน GitHub App จริง
 
@@ -94,7 +104,7 @@ related:
 3. รัน `bun test`
 4. ตรวจสอบ idempotency และ error handling
 
-### 7. Deploy
+### 8. Deploy
 
 > Goal: deploy bot ไปยัง production
 
@@ -107,7 +117,7 @@ related:
 3. อัปเดต Webhook URL ใน GitHub App settings
 4. ตรวจสอบ health endpoint `/health` หรือ `/`
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

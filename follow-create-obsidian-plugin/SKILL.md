@@ -7,6 +7,8 @@ related:
   - follow-lang-typescript
   - run-test
   - update-dot-vscode
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้างโครงสร้าง plugin
 
@@ -29,7 +39,7 @@ related:
 3. เปลี่ยนชื่อ folder ให้ตรงกับ `id` ใน `manifest.json`
 4. ติดตั้ง dependencies ด้วย `bun install` หรือ `npm install`
 
-### 2. Configure Manifest
+### 3. Configure Manifest
 
 > Goal: กำหนด plugin metadata
 
@@ -40,7 +50,7 @@ related:
    - `isDesktopOnly`: `false` ถ้ารองรับ mobile
 2. แก้ `versions.json` ให้ map version กับ `minAppVersion`
 
-### 3. Implement Plugin Class
+### 4. Implement Plugin Class
 
 > Goal: สร้าง `Plugin` subclass
 
@@ -49,7 +59,7 @@ related:
 3. Implement `onload()` สำหรับ `addCommand`, `addRibbonIcon`, `addSettingTab`
 4. Implement `onunload()` สำหรับ cleanup
 
-### 4. Add Settings
+### 5. Add Settings
 
 > Goal: สร้าง settings tab
 
@@ -58,7 +68,7 @@ related:
 3. ใช้ `this.loadData()` และ `this.saveData()` อ่าน/เขียน settings
 4. สร้าง UI ด้วย `Setting` class
 
-### 5. Build And Watch
+### 6. Build And Watch
 
 > Goal: build plugin เป้น `main.js`
 
@@ -67,7 +77,7 @@ related:
 3. รัน `bun run dev` หรือ `npm run dev` สำหรับ watch
 4. ตรวจสอบ `main.js` และ `styles.css` อยู่ root
 
-### 6. Test In Obsidian
+### 7. Test In Obsidian
 
 > Goal: ทดสอบ plugin ใน vault
 
@@ -76,7 +86,7 @@ related:
 3. ทดสอบ command, ribbon icon, settings tab
 4. ใช้ `Ctrl+Shift+I` / `Cmd+Opt+I` ดู console errors
 
-### 7. Release
+### 8. Release
 
 > Goal: สร้าง GitHub release
 

@@ -3,6 +3,8 @@ name: follow-create-oxlint-plugins
 description: ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript
 related:
   - follow-create-sdk
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-oxlint
 ---
 ## Goal
@@ -15,21 +17,29 @@ related:
 
 ## Execute
 
-### 1. Setup
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup
 
 > Goal: ติดตั้ง oxlint และตรวจสอบ config file เดิม
 
 1. ติดตั้ง oxlint ด้วย `bun add -D oxlint`
 2. ตรวจสอบว่ามี config file อยู่แล้ว
 
-### 2. Create Config File
+### 3. Create Config File
 
 > Goal: สร้าง config file ที่ root ของโปรเจกต์
 
 1. สร้าง `.oxlintrc.json` หรือ `oxlint.config.ts` ที่ root — ดู [references/oxlint-config.md](references/oxlint-config.md)
 2. เลือกใช้ format ที่ต้องการ
 
-### 3. Configure Built-in Plugins
+### 4. Configure Built-in Plugins
 
 > Goal: เปิดใช้งาน built-in plugins ผ่าน `plugins` field
 
@@ -37,7 +47,7 @@ related:
 2. กำหนดผ่าน `plugins` field ใน config
 3. ตั้งค่า categories สำหรับ severity
 
-### 4. Configure JS Plugins (Optional)
+### 5. Configure JS Plugins (Optional)
 
 > Goal: กำหนด JavaScript plugins ผ่าน `jsPlugins` field
 
@@ -45,14 +55,14 @@ related:
 2. กำหนดผ่าน `jsPlugins` field ใน config
 3. ใช้ custom name สำหรับ reserved plugin names
 
-### 5. Verify
+### 6. Verify
 
 > Goal: ทดสอบ plugins กับ oxlint
 
 1. รัน `oxlint` เพื่อทดสอบ plugins
 2. ตรวจสอบว่า rules ทำงานได้ถูกต้อง
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

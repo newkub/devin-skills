@@ -4,6 +4,8 @@ description: สร้าง custom Biome linter plugins ด้วย GritQL
 related:
   - follow-create-sdk
   - follow-tool-biome
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-formatter
 ---
 ## Goal
@@ -16,7 +18,15 @@ related:
 
 ## Execute
 
-### 1. Setup
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup
 
 > Goal: ตรวจสอบ Biome และ project prerequisites
 
@@ -24,7 +34,7 @@ related:
 2. ตรวจสอบว่ามี `biome.jsonc` อยู่แล้ว
 3. ระบุ target language และ rules ที่ต้องการตรวจสอบ
 
-### 2. Create Plugin File
+### 3. Create Plugin File
 
 > Goal: สร้างและเขียน `.grit` plugin file
 
@@ -37,7 +47,7 @@ related:
 
 ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ pattern syntax เต็ม
 
-### 3. Configure Plugin
+### 4. Configure Plugin
 
 > Goal: ตั้งค่า plugin ใน `biome.jsonc`
 
@@ -48,7 +58,7 @@ related:
 
 ดู [references/biome-config.md](references/biome-config.md) สำหรับ configuration options เต็ม
 
-### 4. Discover CST Node Names
+### 5. Discover CST Node Names
 
 > Goal: หา CST node names สำหรับ GritQL patterns
 
@@ -58,7 +68,7 @@ related:
 4. ใช้ node name (PascalCase) ใน GritQL pattern
 5. ตรวจสอบ node names ใน `.ungram` files ใน Biome repository สำหรับ complete list
 
-### 5. Verify
+### 6. Verify
 
 > Goal: ทดสอบ plugin กับ Biome
 
@@ -67,7 +77,7 @@ related:
 3. ทดสอบ edge cases และ false positives
 4. ทดสอบ rewrites (`=>`) สำหรับ fixable diagnostics
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

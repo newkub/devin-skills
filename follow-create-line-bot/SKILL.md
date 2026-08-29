@@ -12,6 +12,8 @@ related:
   - follow-lang-typescript
   - run-test
   - use-bun-native-api
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -24,7 +26,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: รวบรวมข้อมูลก่อนสร้าง bot
 
@@ -33,7 +43,7 @@ related:
 3. ระบุ runtime: `Bun` (default) หรือ `Node.js`
 4. ระบุ deployment target: `Cloudflare Workers`, `Railway`, `Vercel`, หรือ `VPS`
 
-### 2. Setup Project
+### 3. Setup Project
 
 > Goal: สร้างโครงสร้าง project
 
@@ -42,7 +52,7 @@ related:
 3. สร้าง `package.json`, `tsconfig.json`, `.env.example`, `.gitignore`
 4. รัน `bun init` หรือ `npm init` ตาม runtime
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 
 > Goal: ติดตั้ง SDK และ web server
 
@@ -50,7 +60,7 @@ related:
 2. ติดตั้ง web server: `bun add hono` (default) หรือ `express`
 3. ติดตั้ง dev tools: `bun add -D @types/bun bun-types typescript`
 
-### 4. Configure Bot And Webhook
+### 5. Configure Bot And Webhook
 
 > Goal: เชื่อมต่อ LINE Messaging API
 
@@ -59,7 +69,7 @@ related:
 3. สร้าง `src/webhook.ts` ด้วย `Hono` `POST /webhook` ที validate `x-line-signature` ด้วย `validateSignature`
 4. สร้าง `src/index.ts` เป็น entry point
 
-### 5. Implement Handlers
+### 6. Implement Handlers
 
 > Goal: จัดการ message events
 
@@ -68,7 +78,7 @@ related:
 3. สร้าง `src/handlers/postback.ts` สำหรับ `postback` events
 4. ใช้ `client.replyMessage` หรือ `client.pushMessage` สำหรับส่งข้อความ
 
-### 6. Add Features
+### 7. Add Features
 
 > Goal: เพิ่ม features ตาม requirement
 
@@ -77,7 +87,7 @@ related:
 3. ใช้ `LIFF` สำหรับ in-app web view (optional)
 4. เพิ่ม middleware สำหรับ logging, error handling, rate limiting
 
-### 7. Test Locally
+### 8. Test Locally
 
 > Goal: ทดสอบ bot ก่อน deploy
 
@@ -87,7 +97,7 @@ related:
 4. ทดสอบส่งข้อความและตรวจสอบ logs
 5. ทำ `/run-test` สำหรับ unit tests ของ handlers
 
-### 8. Deploy
+### 9. Deploy
 
 > Goal: deploy bot ไป production
 

@@ -14,6 +14,8 @@ related:
   - run-test
   - search-npm-libraries
   - use-bun-native-api
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -26,7 +28,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: รวบรวมข้อมูลก่อนสร้าง bot
 
@@ -35,7 +45,7 @@ related:
 3. ระบุ intents: `GatewayIntentBits.Guilds`, `GuildMessages`, `MessageContent`, etc.
 4. ระบุ deployment target: local dev หรือ server/serverless
 
-### 2. Setup Project
+### 3. Setup Project
 
 > Goal: สร้างโครงสร้าง project
 
@@ -45,7 +55,7 @@ related:
 4. รัน `bun init` หรือ `npm init`
 5. ใช้ `/search-npm-libraries` เลือก library (default `discord.js` หรือ lightweight wrapper)
 
-### 3. Configure Bot And Commands
+### 4. Configure Bot And Commands
 
 > Goal: เชื่อมต่อ Discord API
 
@@ -56,7 +66,7 @@ related:
 5. สร้าง `src/deploy-commands.ts` เพื่อ register slash commands กับ Discord
 6. สร้าง `src/commands/ping.ts` เป็นตัวอย่าง
 
-### 4. Auto-Load Commands And Events
+### 5. Auto-Load Commands And Events
 
 > Goal: โหลด commands/events จาก directory อัตโนมัติ
 
@@ -66,7 +76,7 @@ related:
 4. ใช้ `client.on('ready')` เพื่อ log login
 5. เพิ่ม `src/events/` สำหรับ `ready`, `interactionCreate`, `messageCreate` ตาม need
 
-### 5. Add Features
+### 6. Add Features
 
 > Goal: เพิ่ม features ตาม requirement
 
@@ -76,7 +86,7 @@ related:
 4. เพิ่ม guards/middleware สำหรับ permission checks, rate limiting
 5. ใช้ `Interaction` types สำหรับ type safety
 
-### 6. Test Locally
+### 7. Test Locally
 
 > Goal: ทดสอบ bot
 
@@ -86,7 +96,7 @@ related:
 4. ตรวจสอบ logs และ error handling
 5. ทำ `/run-test` สำหรับ unit tests
 
-### 7. Deploy
+### 8. Deploy
 
 > Goal: deploy bot ไป production
 

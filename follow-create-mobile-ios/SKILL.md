@@ -6,6 +6,8 @@ related:
   - follow-create-website
   - follow-lang-swift
   - follow-tool-cargo
+  - follow-my-tech-stack
+  - review-techstack
   - follow-create-mobile-ios-android
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ scope ของ iOS app
 
@@ -30,7 +40,7 @@ related:
 4. ระบุ DI/dependency จัดการ: Factory, Swinject หรือ manual
 5. ถ้าไม่ชัด → ใช้ `/ask-me`
 
-### 2. Verify Environment
+### 3. Verify Environment
 
 > Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
 
@@ -39,7 +49,7 @@ related:
 3. ตรวจสอบ iOS Simulator หรือ real device พร้อมใช้
 4. ตรวจสอบ Apple Developer account ถ้าจะ deploy ไป device/store
 
-### 3. Create Project
+### 4. Create Project
 
 > Goal: สร้าง iOS project ด้วย Xcode
 
@@ -49,7 +59,7 @@ related:
 4. ตั้งค่า target iOS >= 15
 5. ใช้ SwiftUI เป็น lifecycle (ไม่ใช้ Storyboard)
 
-### 4. Configure Project
+### 5. Configure Project
 
 > Goal: ตั้งค่า project ให้พร้อมสำหรับ scale
 
@@ -58,7 +68,7 @@ related:
 3. ตั้งค่า capabilities ที่จำเป็น (push notifications, app groups, keychain sharing)
 4. สร้าง `README.md` หรือ project note สำหรับ onboarding
 
-### 5. Setup Architecture
+### 6. Setup Architecture
 
 > Goal: จัดโครงสร้างตาม Clean Architecture หรือ MVVM
 
@@ -70,7 +80,7 @@ related:
 6. `Presentation/` เก็บ Views, ViewModels
 7. ใช้ `follow-lang-swift` สำหรับ conventions
 
-### 6. Implement Core UI
+### 7. Implement Core UI
 
 > Goal: สร้าง UI ด้วย SwiftUI
 
@@ -79,7 +89,7 @@ related:
 3. สร้าง screens และ reusable components
 4. ใช้ `NavigationStack` หรือ `NavigationView` สำหรับ navigation
 
-### 7. Add DI And State Management
+### 8. Add DI And State Management
 
 > Goal: จัดการ dependency injection และ state
 
@@ -88,7 +98,7 @@ related:
 3. ใช้ `@StateObject`, `@ObservedObject`, `@State` อย่างถูกต้อง
 4. ใช้ `@MainActor` สำหรับ UI updates
 
-### 8. Add SPM Dependencies
+### 9. Add SPM Dependencies
 
 > Goal: ติดตั้ง dependencies ที่จำเป็น
 
@@ -97,7 +107,7 @@ related:
 3. หรือใช้ `Package.swift` สำหรับ pure SPM project
 4. ตรวจสอบ version compatibility
 
-### 9. Testing
+### 10. Testing
 
 > Goal: ตรวจสอบความถูกต้องของ app
 
@@ -105,7 +115,7 @@ related:
 2. เขียน UI tests ด้วย `XCTest` และ SwiftUI testing APIs
 3. รัน `Cmd+U` หรือ `xcodebuild test -scheme <scheme>`
 
-### 10. Build And Deploy
+### 11. Build And Deploy
 
 > Goal: สร้าง release build และเตรียม deploy
 
@@ -114,7 +124,7 @@ related:
 3. ใช้ Xcode Organizer หรือ `xcodebuild -exportArchive` สร้าง `.ipa`
 4. ใช้ App Store Connect หรือ TestFlight สำหรับ distribute
 
-#### 10.2 Validate And Ship
+#### 11.2 Validate And Ship
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

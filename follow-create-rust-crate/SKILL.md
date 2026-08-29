@@ -8,6 +8,8 @@ related:
   - follow-release
   - follow-tool-cargo
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้างโครงสร้าง crate
 
@@ -29,7 +39,7 @@ related:
 3. สร้าง directories `src/`, `tests/`, `examples/`, `benches/` ถ้าจำเป็น
 4. แยก modules ตาม responsibility
 
-### 2. Configure Cargo.toml
+### 3. Configure Cargo.toml
 
 > Goal: กำหนด crate metadata และ build profiles
 
@@ -39,7 +49,7 @@ related:
 4. ตั้งค่า `[lib]`, `crate-type` เป้น `["lib"]` หรือ `["cdylib"]` สำหรับ FFI
 5. ตั้งค่า `[profile.dev]` และ `[profile.release]`
 
-### 3. Write Public API
+### 4. Write Public API
 
 > Goal: ออกแบบ `lib.rs` ให้ชัดเจน
 
@@ -48,7 +58,7 @@ related:
 3. เขียน doc comments (`///`) บน public types และ functions
 4. ใช้ `#[cfg(...)]` สำหรับ feature flags
 
-### 4. Implement Modules
+### 5. Implement Modules
 
 > Goal: แยก implementation ตาม concern
 
@@ -57,7 +67,7 @@ related:
 3. ใช้ `thiserror` สำหรับ error types
 4. ไม่ใช้ `unwrap()` หรือ `expect()` ใน library code
 
-### 5. Add Tests
+### 6. Add Tests
 
 > Goal: ทดสอบ unit และ integration
 
@@ -66,7 +76,7 @@ related:
 3. ใช้ `benches/` สำหรับ benchmarks ถ้าจำเป็น
 4. รัน `cargo test`, `cargo clippy`, `cargo fmt --check`
 
-### 6. Add Documentation
+### 7. Add Documentation
 
 > Goal: สร้าง rustdoc
 
@@ -75,7 +85,7 @@ related:
 3. รัน `cargo doc --no-deps`
 4. ตรวจสอบว่า docs ไม่มี broken links
 
-### 7. CI And Release
+### 8. CI And Release
 
 > Goal: ตั้งค่า CI และ release
 
@@ -83,7 +93,7 @@ related:
 2. สร้าง `.github/workflows/release.yml` สำหรับ `cargo publish`
 3. ทำ `/follow-release` เมื่อ publish
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

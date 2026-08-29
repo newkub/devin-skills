@@ -6,6 +6,8 @@ related:
   - follow-create-rolldown-plugins
   - follow-create-vite-plugins
   - follow-lang-typescript
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-build-packages
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้าง plugin package
 
@@ -28,7 +38,7 @@ related:
 4. ติดตั้ง build tool: `bunup` หรือ `tsdown`
 5. สร้าง `tsconfig.json` ด้วย `strict: true`, `declaration: true`
 
-### 2. Create Plugin Object
+### 3. Create Plugin Object
 
 > Goal: implement plugin factory
 
@@ -46,7 +56,7 @@ related:
    }
    ```
 
-### 3. Add Rolldown Hooks
+### 4. Add Rolldown Hooks
 
 > Goal: ใช้ Rolldown plugin API
 
@@ -64,7 +74,7 @@ related:
    }
    ```
 
-### 4. Add tsdown-Specific Hooks
+### 5. Add tsdown-Specific Hooks
 
 > Goal: ใช้ tsdown-specific lifecycle
 
@@ -73,7 +83,7 @@ related:
 3. ใช้ mutation สำหรับ `config.plugins` ใน `tsdownConfig`
 4. ระวังว่า `fromVite` plugins ไม่ได้รับ `tsdownConfig`
 
-### 5. Build Package
+### 6. Build Package
 
 > Goal: build plugin สำหรับ npm
 
@@ -83,7 +93,7 @@ related:
 4. ระบุ `exports`, `types`, `main` ใน `package.json`
 5. รัน `bun run build`
 
-### 6. Add Tests
+### 7. Add Tests
 
 > Goal: ทดสอบ plugin
 
@@ -92,7 +102,7 @@ related:
 3. ตรวจสอบ bundle output
 4. รัน `bun test`
 
-### 7. Add Examples
+### 8. Add Examples
 
 > Goal: สร้างตัวอย่างใช้งาน
 
@@ -100,7 +110,7 @@ related:
 2. สร้าง `examples/tsdown-config/` แสดงการใช้ `tsdownConfig` hook
 3. รันตัวอย่างให้ผ่าน
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

@@ -7,6 +7,8 @@ related:
   - follow-architecture
   - follow-flat-folders
   - rethink
+  - follow-my-tech-stack
+  - review-techstack
   - review-architecture
 ---
 ## Goal
@@ -19,7 +21,15 @@ related:
 
 ## Execute
 
-### 1. Decide Architecture
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Decide Architecture
 
 > Goal: เลือก architecture ที่เหมาะสมกับ CLI
 
@@ -31,7 +41,7 @@ related:
    - มีหลาย backend/IO ซับซ้อน ต้อง test สูง → Hexagonal / Ports & Adapters
 4. บันทึกเหตุผลที่เลือก architecture นี้
 
-### 2. Setup Project Structure
+### 3. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เลือก
 
@@ -47,7 +57,7 @@ related:
 5. ถ้า project มีหลาย binaries: สร้างใน `src/bin/`
 6. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
 
-### 3. Configure Dependencies
+### 4. Configure Dependencies
 
 > Goal: เพิ่ม dependencies ที่จำเป็นสำหรับ CLI ใน `Cargo.toml`
 
@@ -62,7 +72,7 @@ related:
 7. เพิ่ม table output: `comfy-table` หรือ `prettytable-rs`
 8. ตั้งค่า `edition = "2024"` ใน `Cargo.toml`
 
-### 4. Configure Build Profiles
+### 5. Configure Build Profiles
 
 > Goal: ตั้งค่า build profiles สำหรับ development และ production
 
@@ -72,7 +82,7 @@ related:
 2. ตั้งค่า `[profile.release]` ด้วย `lto = true`, `opt-level = "z"`, `strip = true`, `codegen-units = 1`, `panic = "abort"`
 3. ตั้งค่า `[profile.dev.package."*"]` ด้วย `debug = false` เพื่อ speed up deps compilation
 
-### 5. Setup Scripts
+### 6. Setup Scripts
 
 > Goal: สร้าง justfile สำหรับ development scripts ที่ใช้ซ้ำได้
 
@@ -84,7 +94,7 @@ related:
 4. เพิ่ม `test` recipe: `cargo nextest run && cargo test --doc`
 5. เพิ่ม `run` recipe: `cargo run --`
 
-### 6. Development Workflow
+### 7. Development Workflow
 
 > Goal: ใช้ workflow ที่มี watch mode, lint และ format อัตโนมัติ
 
@@ -95,7 +105,7 @@ related:
 3. ใช้ `cargo clippy -- -D warnings` สำหรับ code quality checks
 4. ใช้ `cargo fmt` สำหรับ formatting
 
-### 7. Ship
+### 8. Ship
 
 > Goal: ส่งมอบงาน
 

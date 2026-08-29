@@ -3,6 +3,8 @@ name: follow-create-vite-plugins
 description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
 related:
   - follow-create-sdk
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-vite
 ---
 ## Goal
@@ -15,7 +17,15 @@ related:
 
 ## Execute
 
-### 1. Setup
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup
 
 > Goal: เตรียมโครงสร้างโฟลเดอร์และ config เริ่มต้น
 
@@ -23,7 +33,7 @@ related:
 2. สร้าง `package.json` ด้วย dependencies และ scripts
 3. สร้าง `tsconfig.json` สำหรับ TypeScript configuration
 
-### 2. Create Plugin
+### 3. Create Plugin
 
 > Goal: สร้าง plugin implementation ด้วย hooks ตาม [references/plugin-api.md](references/plugin-api.md)
 
@@ -31,7 +41,7 @@ related:
 2. กำหนด plugin function ที่ return object ด้วย hooks
 3. ใช้ TypeScript สำหรับ type safety
 
-### 3. Configure Build
+### 4. Configure Build
 
 > Goal: ตั้งค่า library mode build ตาม [references/library-mode.md](references/library-mode.md)
 
@@ -39,7 +49,7 @@ related:
 2. ตั้งค่า build.lib ด้วย entry, name, fileName
 3. external vite จาก bundle
 
-### 4. Add Examples
+### 5. Add Examples
 
 > Goal: สร้างตัวอย่างการใช้งานพื้นฐานและขั้นสูง
 
@@ -47,7 +57,7 @@ related:
 2. สร้าง `examples/advanced/` พร้อมตัวอย่างขั้นสูง
 3. ทดสอบ examples ว่าทำงานได้จริง
 
-### 5. Add Tests
+### 6. Add Tests
 
 > Goal: สร้าง unit และ integration tests สำหรับ plugin
 
@@ -55,7 +65,7 @@ related:
 2. รัน `build` เพื่อตรวจสอบ build process
 3. รัน `test` เพื่อตรวจสอบ functionality
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

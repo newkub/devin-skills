@@ -3,6 +3,8 @@ name: follow-create-tauri-plugins
 description: สร้าง custom Tauri plugins ด้วย Rust และ JavaScript API
 related:
   - follow-create-website
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-cargo
 ---
 ## Goal
@@ -15,7 +17,15 @@ related:
 
 ## Execute
 
-### 1. Initialize Plugin Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Initialize Plugin Project
 
 > Goal: สร้าง plugin project ใหม่ด้วย Tauri CLI พร้อมโครงสร้างมาตรฐาน
 
@@ -26,7 +36,7 @@ related:
 3. ใช้ `--android` และ `--ios` สำหรับ mobile support
 4. Plugin จะถูกสร้างใน `tauri-plugin-<name>/`
 
-### 2. Configure Plugin
+### 3. Configure Plugin
 
 > Goal: กำหนด configuration ของ plugin ผ่าน Builder และ Config struct
 
@@ -36,7 +46,7 @@ related:
 2. กำหนด Config struct ใน Rust code
 3. ใช้ Builder สำหรับ setup plugin ด้วย config
 
-### 3. Define Commands
+### 4. Define Commands
 
 > Goal: สร้าง commands สำหรับให้ webview เรียกใช้ผ่าน invoke handler
 
@@ -46,7 +56,7 @@ related:
 2. Register commands ใน `src/lib.rs` ผ่าน `invoke_handler(tauri::generate_handler![commands::my_command])`
 3. Commands สามารถ access `AppHandle`, `Window`, state และ input parameters
 
-### 4. Implement Lifecycle Events
+### 5. Implement Lifecycle Events
 
 > Goal: เชื่อม lifecycle hooks ของ plugin เพื่อจัดการ state และ events
 
@@ -56,7 +66,7 @@ Hook ลง lifecycle events ของ plugin — ดู lifecycle hooks ใน 
 2. จัดการ state ใน `setup` hook ผ่าน `app.manage()`
 3. Access state ผ่าน extension trait บน Manager instances
 
-### 5. Create JavaScript API
+### 6. Create JavaScript API
 
 > Goal: สร้าง JavaScript/TypeScript bindings สำหรับเรียก commands จาก frontend
 
@@ -73,7 +83,7 @@ export async function myCommand() {
 
 2. Build TypeScript: `bun run build`
 
-### 6. Add Mobile Support
+### 7. Add Mobile Support
 
 > Goal: เพิ่ม mobile support สำหรับ Android และ iOS
 
@@ -82,7 +92,7 @@ export async function myCommand() {
 3. Implement native code ใน Kotlin (Android) และ Swift (iOS)
 4. Trigger mobile code จาก Rust ผ่าน `mobile.rs`
 
-### 7. Test And Publish
+### 8. Test And Publish
 
 > Goal: ทดสอบและ publish plugin
 
@@ -90,7 +100,7 @@ export async function myCommand() {
 2. Build plugin: `cargo build`
 3. Publish ไป crates.io และ NPM
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

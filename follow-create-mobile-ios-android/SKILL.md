@@ -6,6 +6,8 @@ related:
   - follow-create-website
   - follow-framework-capacitor
   - follow-tool-cargo
+  - follow-my-tech-stack
+  - review-techstack
   - follow-runtime-bun
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ scope ของ mobile app
 
@@ -30,7 +40,7 @@ related:
 4. ระบุ features เช่น push notifications, camera, deep links
 5. ถ้าไม่ชัด → ใช้ `/ask-me`
 
-### 2. Prepare Web Base
+### 3. Prepare Web Base
 
 > Goal: มี web app ที่พร้อมสำหรับ Capacitor
 
@@ -39,7 +49,7 @@ related:
 3. ตั้งค่า build output ไปยัง `dist-spa` หรือ `dist-mobile`
 4. รัน `bun run build:spa` เพื่อตรวจสอบว่า `index.html` อยู่ root ของ output
 
-### 3. Initialize Capacitor
+### 4. Initialize Capacitor
 
 > Goal: ตั้งค่า Capacitor config ถูกต้อง
 
@@ -48,7 +58,7 @@ related:
 3. ตรวจสอบ `capacitor.config.ts` ว่ามี `appId`, `appName`, `webDir`
 4. ใช้ `/follow-framework-capacitor` เพื่อตั้งค่า advanced config
 
-### 4. Add Native Platforms
+### 5. Add Native Platforms
 
 > Goal: เพิ่ม iOS และ Android ใน project
 
@@ -57,7 +67,7 @@ related:
 3. ตรวจสอบว่า `ios/` และ `android/` ถูกสร้าง
 4. รัน `bunx cap sync` เพื่อ copy web assets และ update dependencies
 
-### 5. Configure Platform Specifics
+### 6. Configure Platform Specifics
 
 > Goal: จัดการ config เฉพาะ iOS/Android
 
@@ -66,7 +76,7 @@ related:
 3. เพิ่ม plugin configs ใน `capacitor.config.ts`
 4. ใช้ `Capacitor.platform` หรือ `Capacitor.isNativePlatform()` ใน app code ถ้าจำเป็น
 
-### 6. Add Plugins
+### 7. Add Plugins
 
 > Goal: ติดตั้ง plugins ที่จำเป็น
 
@@ -75,7 +85,7 @@ related:
 3. กำหนด plugin configuration ใน `capacitor.config.ts`
 4. ตรวจสอบ Capacitor 8 compatibility
 
-### 7. Run And Test
+### 8. Run And Test
 
 > Goal: ทดสอบบน device/emulator
 
@@ -84,7 +94,7 @@ related:
 3. ทดสอบบน real device ก่อน production
 4. ใช้ live reload ด้วย `server.url` ถ้าต้องการ
 
-### 8. Build And Deploy
+### 9. Build And Deploy
 
 > Goal: สร้าง release build และเตรียม deploy
 
@@ -94,7 +104,7 @@ related:
 4. ตั้งค่า signing, app icon, splash screen
 5. ใช้ Fastlane หรือ upload ขึ้น App Store / Play Store
 
-### 9. Validate
+### 10. Validate
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

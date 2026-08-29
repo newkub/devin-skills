@@ -8,6 +8,8 @@ related:
   - follow-architecture
   - follow-flat-folders
   - rethink
+  - follow-my-tech-stack
+  - review-techstack
   - review-architecture
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project Structure
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project Structure
 
 > Goal: สร้างโครงสร้างโปรเจกต์ตาม architecture ที่เหมาะสม
 
@@ -32,7 +42,7 @@ related:
 3. สร้าง entry points ตาม architecture ที่เลือก เช่น `src/cli.ts`, `src/index.ts`, หรือ `src/presentation/cli.ts`
 4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
 
-### 2. Configure Build Tools
+### 3. Configure Build Tools
 
 > Goal: ตั้งค่า build tools สำหรับ production
 
@@ -42,7 +52,7 @@ related:
 4. ติดตั้ง `cac` แทน `commander` สำหรับ argument parsing
 5. ตั้งค่า `tsconfig.json`: `declaration: true`, `isolatedDeclarations: true`
 
-### 3. Setup Scripts
+### 4. Setup Scripts
 
 > Goal: ตั้งค่า scripts ใน `package.json` ตาม `/follow-tasks`
 
@@ -52,7 +62,7 @@ related:
 4. เพิ่ม `lint`: `bunx tsc --noEmit && bunx biome lint --write`
 5. เพิ่ม `test`: `bun test`
 
-### 4. Choose CLI Libraries and APIs
+### 5. Choose CLI Libraries and APIs
 
 > Goal: ใช้ lightweight libraries และ Bun native APIs
 
@@ -63,7 +73,7 @@ related:
 
 ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ CLI libraries เต็ม
 
-### 5. Development Workflow
+### 6. Development Workflow
 
 > Goal: ใช้ development workflow ที่มีประสิทธิภาพ
 
@@ -72,7 +82,7 @@ related:
 3. ใช้ `bun run build` สำหรับ production build
 4. รัน lint และ typecheck ก่อน commit
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

@@ -8,6 +8,8 @@ related:
   - ask-me
   - search-skills
   - follow-harness-engineering
+  - follow-my-tech-stack
+  - review-techstack
   - follow-clean-architecture
 ---
 
@@ -21,7 +23,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ purpose และ components ของ plugin
 
@@ -34,7 +44,7 @@ related:
    - `mcpServers` ใน `.mcp.json` สำหรับ external service integration
 3. ถ้ายังไม่ชัด → ใช้ `/ask-me` เพื่อเลือก components
 
-### 2. Create Plugin Structure
+### 3. Create Plugin Structure
 
 > Goal: สร้าง directory structure ตาม Claude plugin convention
 
@@ -44,7 +54,7 @@ related:
 4. สร้าง `.mcp.json` ถ้ามี MCP servers
 5. ใช้ `${CLAUDE_PLUGIN_ROOT}` สำหรับ portable paths ใน manifest
 
-### 3. Implement Components
+### 4. Implement Components
 
 > Goal: สร้างแต่ละ component ตาม convention
 
@@ -54,7 +64,7 @@ related:
 4. สำหรับ `commands/`: สร้าง `.md` file ด้วย frontmatter และ instructions
 5. สำหรับ `mcpServers`: ระบุ server name, transport, command, args, env ใน `.mcp.json`
 
-### 4. Validate And Test
+### 5. Validate And Test
 
 > Goal: ตรวจสอบ plugin ก่อนใช้
 
@@ -63,7 +73,7 @@ related:
 3. ตรวจสอบ `plugin.json` ด้วย schema ตาม `references/claude-plugin.md`
 4. ถ้ามี agents/hooks → ทำ `/deep-validate` สำหรับแต่ละ `AGENT.md`/`hooks.json`
 
-### 5. Document And Distribute
+### 6. Document And Distribute
 
 > Goal: plugin พร้อมแชร์
 

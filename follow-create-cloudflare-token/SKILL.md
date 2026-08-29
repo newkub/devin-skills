@@ -5,6 +5,8 @@ related:
   - follow-service-cloudflare
   - open-web-for-config-secret
   - follow-secret-manager
+  - follow-my-tech-stack
+  - review-techstack
   - watch-cloudflare
 ---
 
@@ -22,7 +24,15 @@ related:
 
 ## Execute
 
-### 1. Identify Required Permissions
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Identify Required Permissions
 
 > Goal: ระบุ permission keys ตาม use case
 
@@ -49,7 +59,7 @@ related:
 - `user_details` `read`
 - `memberships` `read`
 
-### 2. Determine Token Name
+### 3. Determine Token Name
 
 > Goal: ตั้งชื่อ token ทีบอกทั้ง project และ purpose
 
@@ -57,7 +67,7 @@ related:
 2. ต่อท้ายด้วย `-github-actions`, `-ci`, `-local-dev`, หรือ `-deploy`
 3. ตัวอย่าง: `tiermaker-github-actions`
 
-### 3. Generate Template URL
+### 4. Generate Template URL
 
 > Goal: สร้าง URL ที่ pre-fill permissions ใน Cloudflare dashboard
 
@@ -93,7 +103,7 @@ related:
    "
    ```
 
-### 4. Open Dashboard
+### 5. Open Dashboard
 
 > Goal: พา user ไปยังหน้าสร้าง token
 
@@ -104,7 +114,7 @@ related:
    ```
 3. ถ้าไม่สามารถเปิดอัตโนมัติได้ ให้ user copy URL แล้ววางใน browser
 
-### 5. Guide Token Creation
+### 6. Guide Token Creation
 
 > Goal: ให้ user สร้าง token ถูกต้องและปลอดภัย
 
@@ -114,7 +124,7 @@ related:
 4. กด **Continue to summary** → **Create Token**
 5. บอก user ให้ **copy token secret ทันที** เพราะ dashboard แสดงครั้งเดียว
 
-### 6. Store Token In Secret Manager
+### 7. Store Token In Secret Manager
 
 > Goal: ไม่ให้ token หลุดไปยัง source code
 

@@ -7,6 +7,8 @@ related:
   - follow-create-cli
   - follow-lang-rust
   - follow-lang-typescript
+  - follow-my-tech-stack
+  - review-techstack
   - update-devin-global-mcp
 ---
 
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Decide Stack
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Decide Stack
 
 > Goal: เลือก stack ที่เหมาะสมกับ use case
 
@@ -30,7 +40,7 @@ related:
 4. ถ้าไม่ชัด → ใช้ Rust เป็น default
 5. ดูรายละเอียด stack ใน [references/mcp-stacks.md](references/mcp-stacks.md)
 
-### 2. Create MCP Server Project
+### 3. Create MCP Server Project
 
 > Goal: สร้าง scaffold ตาม stack ที่เลือก
 
@@ -40,7 +50,7 @@ related:
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
 5. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม (ไม่บังคับ Clean) แล้วแยก handlers, transport, และ domain logic ชัดเจน
 
-### 3. Implement Tools And Resources
+### 4. Implement Tools And Resources
 
 > Goal: expose functionality ผ่าน MCP protocol
 
@@ -49,7 +59,7 @@ related:
 3. ระบุ resources และ prompts ถ้าจำเป็น
 4. ใช้ `/follow-single-responsibility` แยกแต่ละ tool handler ออกเป็น module
 
-### 4. Choose Transport
+### 5. Choose Transport
 
 > Goal: เลือก transport ที่เหมาะสม
 
@@ -58,7 +68,7 @@ related:
 3. SSE: สำหรับ backward compatibility
 4. ถ้าไม่ชัด → ใช้ stdio เป็น default สำหรับ CLI tool, Streamable HTTP สำหรับ service
 
-### 5. Test Server
+### 6. Test Server
 
 > Goal: ยืนยันว่า server ทำงานถูกต้อง
 
@@ -67,7 +77,7 @@ related:
 3. ตรวจสอบว่า tools สามารถ list และ invoke ได้
 4. ถ้า transport เป็น stdio → ทดสอบ spawn ผ่าน client เช่น Claude Code หรือ `npx @anthropic/mcp-inspector`
 
-### 6. Register In mcp_config.json
+### 7. Register In mcp_config.json
 
 > Goal: ให้ Devin หรือ client อื่นใช้งาน server ได้
 
@@ -76,7 +86,7 @@ related:
 3. ถ้าไฟล์ยังไม่มี → สร้างใหม่ด้วยโครงสร้าง `{ "mcpServers": {} }`
 4. ใช้ `/update-devin-global-mcp` ถ้าต้องการควบคุม MCP config อย่างปลอดภัย
 
-### 7. Ship
+### 8. Ship
 
 > Goal: ส่งมอบ MCP server
 

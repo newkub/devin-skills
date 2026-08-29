@@ -3,6 +3,8 @@ name: follow-create-vitest-plugins
 description: สร้างและใช้งาน Vitest plugins ตาม Plugin API อย่างถูกต้อง (Vitest 3.1.0+)
 related:
   - follow-create-sdk
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-vitest
 ---
 ## Goal
@@ -15,7 +17,15 @@ related:
 
 ## Execute
 
-### 1. Understand Plugin API
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Understand Plugin API
 
 > Goal: ศึกษา Plugin API 3.1.0+ และ context ที่ได้รับ
 
@@ -24,7 +34,7 @@ related:
 3. รู้จัก context: `project`, `vitest`, `injectTestProjects`
 4. ศึกษา `experimental_defineCacheKeyGenerator` (4.0.11+)
 
-### 2. Create Plugin
+### 3. Create Plugin
 
 > Goal: สร้าง plugin ด้วย `configureVitest` method
 
@@ -48,7 +58,7 @@ export function myPlugin(options: PluginOptions) {
 }
 ```
 
-### 3. Use Context Properties
+### 4. Use Context Properties
 
 > Goal: ใช้ context properties ตามจุดประสงค์
 
@@ -57,7 +67,7 @@ export function myPlugin(options: PluginOptions) {
 3. ใช้ `injectTestProjects` เพื่อ inject projects เพิ่มเติม — ดู [references/test-project.md](references/test-project.md)
 4. แก้ไข `vitest.config` โดยตรงถ้าจำเป็น
 
-### 4. Implement Cache Key Generator
+### 5. Implement Cache Key Generator
 
 > Goal: ใช้ cache key generator ถ้าจำเป็น (Vitest 4.0.11+)
 
@@ -75,7 +85,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 }
 ```
 
-### 5. Test Plugin
+### 6. Test Plugin
 
 > Goal: สร้าง test project เพื่อทดสอบ plugin
 
@@ -84,7 +94,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 3. Test config injection
 4. ตรวจสอบ cache behavior
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

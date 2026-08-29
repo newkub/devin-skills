@@ -14,6 +14,8 @@ related:
   - run-test
   - search-npm-libraries
   - use-bun-native-api
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -26,7 +28,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: รวบรวมข้อมูลก่อนสร้าง bot
 
@@ -35,7 +45,7 @@ related:
 3. ระบุ runtime: `Bun` (default) หรือ `Node.js`
 4. ระบุ deployment mode: `long-polling` สำหรับ dev หรือ `webhook` สำหรับ production
 
-### 2. Setup Project
+### 3. Setup Project
 
 > Goal: สร้างโครงสร้าง project
 
@@ -45,7 +55,7 @@ related:
 4. รัน `bun init` หรือ `npm init` ตาม runtime
 5. ใช้ `/search-npm-libraries` เลือก library หลัก (default แนะนำ `grammy`)
 
-### 3. Configure Bot And Handlers
+### 4. Configure Bot And Handlers
 
 > Goal: เชื่อมต่อ Telegram Bot API
 
@@ -56,7 +66,7 @@ related:
 5. เพิ่ม middleware สำหรับ logging, error handling, rate limiting
 6. ถ้าต้องการ session → ใช้ `grammy` session middleware หรือ memory/redis
 
-### 4. Add Features
+### 5. Add Features
 
 > Goal: เพิ่ม features ตาม requirement
 
@@ -65,7 +75,7 @@ related:
 3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
 4. เพิ่ม type safety ด้วย TypeScript interfaces สำหรับ context/dependencies
 
-### 5. Test Locally
+### 6. Test Locally
 
 > Goal: ทดสอบ bot
 
@@ -74,7 +84,7 @@ related:
 3. ตรวจสอบ logs และ error handling
 4. ทำ `/run-test` สำหรับ unit tests ของ handlers
 
-### 6. Deploy
+### 7. Deploy
 
 > Goal: deploy bot ไป production
 

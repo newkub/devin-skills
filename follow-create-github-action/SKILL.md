@@ -9,6 +9,8 @@ related:
   - follow-release
   - follow-tool-github-workflows
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -21,7 +23,15 @@ related:
 
 ## Execute
 
-### 1. Choose Action Type
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Choose Action Type
 
 > Goal: เลือกประเภท action
 
@@ -30,7 +40,7 @@ related:
 3. ถ้าต้องการ environment ควบคุม: ใช้ `docker`
 4. ระบุ inputs และ outputs ทีต้องการ
 
-### 2. Setup Project
+### 3. Setup Project
 
 > Goal: สร้างโครงสร้าง action
 
@@ -39,7 +49,7 @@ related:
 3. สร้าง `README.md` บอกวิธีใช้
 4. สร้าง `.github/workflows/ci.yml` สำหรับ test action
 
-### 3. Write action.yml
+### 4. Write action.yml
 
 > Goal: กำหนด manifest ของ action
 
@@ -48,7 +58,7 @@ related:
 3. ระบุ `outputs` สำหรับผลลัพธ์
 4. ระบุ `runs.using` เป้น `node20`, `composite`, หรือ `docker`
 
-### 4. Implement Logic
+### 5. Implement Logic
 
 > Goal: เขียน logic ของ action
 
@@ -57,7 +67,7 @@ related:
 3. ถ้า Docker: สร้าง `Dockerfile` และ `entrypoint.sh`
 4. จัดการ secrets ด้วย `core.getInput()` ไม่ hardcode
 
-### 5. Build TypeScript Action
+### 6. Build TypeScript Action
 
 > Goal: build `dist/index.js` สำหรับ TypeScript
 
@@ -66,7 +76,7 @@ related:
 3. รวม `licenses.txt` ถ้าใช้ `ncc`
 4. commit `dist/` เข้า repo
 
-### 6. Add Tests
+### 7. Add Tests
 
 > Goal: ทดสอบ action
 
@@ -75,7 +85,7 @@ related:
 3. สร้าง `.github/workflows/test.yml` เพื่อรัน action บน `workflow_call` หรือ `push`
 4. ตรวจสอบ outputs และ side effects
 
-### 7. Release
+### 8. Release
 
 > Goal: สร้าง release tags
 

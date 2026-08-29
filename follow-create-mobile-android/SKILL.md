@@ -6,6 +6,8 @@ related:
   - follow-create-website
   - follow-lang-kotlin
   - follow-tool-cargo
+  - follow-my-tech-stack
+  - review-techstack
   - follow-create-mobile-ios-android
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ scope ของ Android app
 
@@ -30,7 +40,7 @@ related:
 4. ระบุ DI library: Koin หรือ Hilt
 5. ถ้าไม่ชัด → ใช้ `/ask-me`
 
-### 2. Verify Environment
+### 3. Verify Environment
 
 > Goal: ตรวจสอบสภาพแวดล้อมก่อนสร้าง
 
@@ -39,7 +49,7 @@ related:
 3. ตรวจสอบ Android SDK ที่ติดตั้ง (compileSdk >= 36)
 4. ตรวจสอบ `adb` และ emulator ถ้าจะรันบน device
 
-### 3. Create Project
+### 4. Create Project
 
 > Goal: สร้าง Android project ด้วย template ที่เหมาะสม
 
@@ -48,7 +58,7 @@ related:
 3. เลือก minimum SDK เป็น API 24 หรือสูงกว่า
 4. ตั้งค่า Gradle ให้ใช้ Kotlin DSL (`build.gradle.kts`)
 
-### 4. Configure Gradle
+### 5. Configure Gradle
 
 > Goal: ตั้งค่า build และ dependencies ที่จำเป็น
 
@@ -62,7 +72,7 @@ related:
 3. ใช้ `libs.versions.toml` สำหรับ version catalog
 4. เพิ่ม dependencies: Compose BOM, ViewModel, Navigation, Koin/Hilt, Coroutines
 
-### 5. Setup Architecture
+### 6. Setup Architecture
 
 > Goal: จัดโครงสร้างตาม Clean Architecture หรือ MVVM
 
@@ -72,7 +82,7 @@ related:
 4. `presentation/` เก็บ screens, ViewModels, components
 5. ใช้ `follow-lang-kotlin` สำหรับ conventions
 
-### 6. Implement Core UI
+### 7. Implement Core UI
 
 > Goal: สร้าง UI ด้วย Jetpack Compose
 
@@ -81,7 +91,7 @@ related:
 3. สร้าง screens และ reusable components
 4. ใช้ `Navigation Compose` สำหรับ navigation graph
 
-### 7. Add DI And State Management
+### 8. Add DI And State Management
 
 > Goal: จัดการ dependency injection และ state
 
@@ -90,7 +100,7 @@ related:
 3. ใช้ `ViewModel` สำหรับ screen state
 4. ใช้ `StateFlow` หรือ `MutableState` สำหรับ UI state
 
-### 8. Testing
+### 9. Testing
 
 > Goal: ตรวจสอบความถูกต้องของ app
 
@@ -98,7 +108,7 @@ related:
 2. เขียน UI tests ด้วย Compose Testing
 3. รัน `./gradlew test` และ `./gradlew connectedCheck` ถ้ามี emulator
 
-### 9. Build And Deploy
+### 10. Build And Deploy
 
 > Goal: สร้าง release build และเตรียม deploy
 
@@ -107,7 +117,7 @@ related:
 3. ตรวจสอบ `app-release.apk` หรือ `app-release.aab`
 4. ใช้ Play Console หรือ `fastlane supply` สำหรับ publish
 
-### 10. Validate And Ship
+### 11. Validate And Ship
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

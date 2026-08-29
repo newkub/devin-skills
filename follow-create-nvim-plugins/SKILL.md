@@ -14,7 +14,15 @@ related:
 
 ## Execute
 
-### 1. Prepare
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Prepare
 
 > Goal: ตรวจสอบ requirements ก่อนเริ่ม
 
@@ -22,7 +30,7 @@ related:
 2. ติดตั้ง Git >= 2.19.0
 3. มี `init.lua` สำหรับ entry point
 
-### 2. Config Structure
+### 3. Config Structure
 
 > Goal: สร้างโครงสร้าง config สำหรับ lazy.nvim
 
@@ -30,7 +38,7 @@ related:
 2. แยก plugin specs เป็นไฟล์ต่างๆ ตามหมวด — ดู [references/plugin-configuration.md](references/plugin-configuration.md)
 3. ใช้ `return {}` สำหรับแต่ละ plugin spec
 
-### 3. Bootstrap lazy.nvim
+### 4. Bootstrap lazy.nvim
 
 > Goal: ติดตั้ง lazy.nvim ใน `init.lua`
 
@@ -38,7 +46,7 @@ related:
 2. ตั้งค่า `lazy.nvim` พร้อม plugin specs
 3. ใช้ `require('lazy').setup(specs)`
 
-### 4. Plugin Specs
+### 5. Plugin Specs
 
 > Goal: กำหนด plugin specs
 
@@ -48,7 +56,7 @@ related:
 4. ใช้ `config` function สำหรับ plugin configuration
 5. ใช้ `dependencies` สำหรับ plugin dependencies
 
-### 5. Performance
+### 6. Performance
 
 > Goal: เพิ่มประสิทธิภาพ Neovim startup
 
@@ -56,7 +64,7 @@ related:
 2. หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น
 3. ใช้ `priority` สำหรับ plugins ที่ต้องโหลดก่อน
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

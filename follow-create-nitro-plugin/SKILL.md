@@ -7,6 +7,8 @@ related:
   - follow-framework-nextjs
   - follow-lang-typescript
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -19,7 +21,15 @@ related:
 
 ## Execute
 
-### 1. Choose Plugin Type
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Choose Plugin Type
 
 > Goal: ระบุวิธีใช้ plugin
 
@@ -27,7 +37,7 @@ related:
 2. ถ้าใช้เป็น package: สร้าง `packages/{plugin-name}/` แยกออกมา
 3. ระบุ hooks ทีต้องการ `render:html`, `request`, `close`, หรือ custom hooks
 
-### 2. Setup Package
+### 3. Setup Package
 
 > Goal: สร้างโครงสร้าง plugin package
 
@@ -36,7 +46,7 @@ related:
 3. สร้าง `tsconfig.json`, `src/index.ts`, `test/plugin.test.ts`
 4. ติดตั้ง `unbuild` หรือ `tsup` สำหรับ build
 
-### 3. Implement Plugin
+### 4. Implement Plugin
 
 > Goal: เขียน Nitro plugin
 
@@ -45,7 +55,7 @@ related:
 3. ใช้ `nitroApp.hooks.hook('close', async () => { ... })` สำหรับ cleanup
 4. ถ้าใช้ storage ให้ใช้ `useStorage()` ภายใน hook
 
-### 4. Register Middleware Or Handlers
+### 5. Register Middleware Or Handlers
 
 > Goal: เพิ่ม middleware หรือ route handlers
 
@@ -53,7 +63,7 @@ related:
 2. หรือสร้าง `server/middleware/` และ `server/routes/` แยกใน Nuxt project
 3. หลีกเลี่ยงทำ side effects นอก `defineNitroPlugin` callback
 
-### 5. Configure Types
+### 6. Configure Types
 
 > Goal: รองรับ TypeScript types
 
@@ -62,7 +72,7 @@ related:
 3. ส่ง generic ผ่าน `NitroApp` ถ้าจำเป็น
 4. ระบุ runtime types ด้วย `declare module 'nitropack' { ... }` ถ้ามี custom hooks
 
-### 6. Build Package
+### 7. Build Package
 
 > Goal: build plugin สำหรับ npm
 
@@ -71,7 +81,7 @@ related:
 3. รัน `bun run build`
 4. ตรวจสอบ `dist/index.mjs` และ `dist/index.d.ts`
 
-### 7. Test
+### 8. Test
 
 > Goal: ทดสอบ plugin
 
@@ -80,7 +90,7 @@ related:
 3. ตรวจสอบ HTML, headers, หรือ storage
 4. รัน `bun test`
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

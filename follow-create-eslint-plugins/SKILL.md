@@ -3,6 +3,8 @@ name: follow-create-eslint-plugins
 description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
 related:
   - follow-create-sdk
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-eslint
 ---
 ## Goal
@@ -15,7 +17,15 @@ related:
 
 ## Execute
 
-### 1. Setup
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup
 
 > Goal: เตรียม project directory และ dependencies สำหรับ plugin
 
@@ -23,7 +33,7 @@ related:
 2. สร้าง `package.json` ด้วย npm package name เป็น `eslint-plugin-*`
 3. ติดตั้ง dependencies ที่จำเป็น
 
-### 2. Create Plugin Entry
+### 3. Create Plugin Entry
 
 > Goal: สร้าง entry file ที่ export plugin object พร้อม properties ครบถ้วน
 
@@ -31,7 +41,7 @@ related:
 2. กำหนด properties: meta, configs, rules, processors
 3. Export สำหรับ ESM หรือ CommonJS — ดู [references/flat-config-basics.md](references/flat-config-basics.md)
 
-### 3. Create Custom Rules
+### 4. Create Custom Rules
 
 > Goal: สร้าง rule files และ implement rule logic ด้วย meta และ create function
 
@@ -39,7 +49,7 @@ related:
 2. กำหนด rule structure ด้วย meta object — ดู [references/rule-structure-meta.md](references/rule-structure-meta.md)
 3. Implement create function สำหรับ rule logic — ดู [references/rule-structure-context.md](references/rule-structure-context.md)
 
-### 4. Configure Rule Metadata
+### 5. Configure Rule Metadata
 
 > Goal: กำหนด type, docs, fixable และ schema ของ rule ให้ครบถ้วน
 
@@ -48,7 +58,7 @@ related:
 3. กำหนด fixable ถ้า rule สามารถ auto-fix ได้
 4. กำหนด schema ถ้า rule มี options — ดู [references/rule-structure-meta.md](references/rule-structure-meta.md)
 
-### 5. Test Plugin
+### 6. Test Plugin
 
 > Goal: ตรวจสอบว่า rules ทำงานถูกต้องผ่าน test files
 
@@ -56,7 +66,7 @@ related:
 2. รัน tests ด้วย test runner
 3. ตรวจสอบว่า rules ทำงานถูกต้อง
 
-### 6. Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

@@ -6,6 +6,8 @@ related:
   - follow-runtime-bun
   - follow-create-bun-cli
   - follow-tool-bunup
+  - follow-my-tech-stack
+  - review-techstack
   - follow-create-elysia-plugin
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้าง plugin package
 
@@ -28,7 +38,7 @@ related:
 4. ติดตั้ง build tool: `bunup` หรือ `tsdown`
 5. สร้าง `tsconfig.json` ด้วย `strict: true`, `declaration: true`
 
-### 2. Create Plugin With Bun.plugin
+### 3. Create Plugin With Bun.plugin
 
 > Goal: implement Bun plugin factory
 
@@ -47,7 +57,7 @@ related:
    ```
 3. ลงทะเบียน plugin ใน `bunfig.toml` หรือ `bun build --plugin` ถ้าจำเป็น
 
-### 3. Add onResolve
+### 4. Add onResolve
 
 > Goal: intercept และเปลี่ยน module resolution
 
@@ -56,7 +66,7 @@ related:
 3. คืน `path` และ optional `namespace`
 4. คืน `undefined` หรือ `null` ถ้าไม่ match
 
-### 4. Add onLoad
+### 5. Add onLoad
 
 > Goal: โหลดและ transform module contents
 
@@ -66,7 +76,7 @@ related:
 4. ใช้ `Bun.file(args.path).text()` สำหรับอ่านไฟล์
 5. ใช้ `namespace` เมื่องสร้าง virtual modules
 
-### 5. Add onStart And onEnd
+### 6. Add onStart And onEnd
 
 > Goal: จัดการ build lifecycle
 
@@ -74,7 +84,7 @@ related:
 2. `build.onEnd((result) => { ... })` — จบ build พร้อม `BuildOutput`
 3. ใช้สำหรับ setup/cleanup resources
 
-### 6. Build Package
+### 7. Build Package
 
 > Goal: build plugin สำหรับ npm
 
@@ -84,7 +94,7 @@ related:
 4. ระบุ `exports`, `types`, `main` ใน `package.json`
 5. รัน `bun run build`
 
-### 7. Add Tests
+### 8. Add Tests
 
 > Goal: ทดสอบ plugin
 
@@ -94,7 +104,7 @@ related:
 4. ตรวจสอบ output contents
 5. รัน `bun test`
 
-### 8. Add Examples
+### 9. Add Examples
 
 > Goal: สร้างตัวอย่างใช้งาน
 
@@ -102,7 +112,7 @@ related:
 2. สร้าง `examples/virtual-module/` ด้วย `onResolve` + `onLoad`
 3. รันตัวอย่างให้ผ่าน
 
-### 9. Ship
+### 10. Ship
 
 > Goal: ส่งมอบงาน
 

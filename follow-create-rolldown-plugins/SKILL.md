@@ -7,6 +7,8 @@ related:
   - follow-create-vite-plugins
   - follow-lang-typescript
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -19,7 +21,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้าง plugin package
 
@@ -28,7 +38,7 @@ related:
 3. ติดตั้ง `rolldown`, `typescript`, `@types/bun`
 4. สร้าง `tsconfig.json`
 
-### 2. Create Plugin Object
+### 3. Create Plugin Object
 
 > Goal: implement plugin factory
 
@@ -36,7 +46,7 @@ related:
 2. return object ด้วย `name` ที่ required
 4. ใช้ hook filters สำหรับลด overhead
 
-### 3. Add Hooks
+### 4. Add Hooks
 
 > Goal: ใช้ Rolldown plugin API
 
@@ -47,14 +57,14 @@ related:
 5. `transform` — แปลง code
 6. `buildEnd` / `closeBundle` — cleanup
 
-### 4. Configure Hook Filters
+### 5. Configure Hook Filters
 
 > Goal: ลด overhead ระหว่าง Rust และ JS
 
 1. ใช้ `filter: { id: regex }` ใน `resolveId`, `load`, `transform`
 2. คืน `null` เร็วถ้าไม่ match
 
-### 5. Build Package
+### 6. Build Package
 
 > Goal: build สำหรับ npm
 
@@ -63,7 +73,7 @@ related:
 3. output `esm` และ `cjs`
 4. ระบุ `types`, `main`, `exports` ใน `package.json`
 
-### 6. Add Tests
+### 7. Add Tests
 
 > Goal: ทดสอบ plugin
 
@@ -72,7 +82,7 @@ related:
 3. ตรวจสอบ output bundle
 4. รัน `bun test`
 
-### 7. Add Examples
+### 8. Add Examples
 
 > Goal: สร้างตัวอย่างใช้งาน
 
@@ -80,7 +90,7 @@ related:
 2. สร้าง `examples/virtual-module/` ด้วย resolveId + load
 3. รันตัวอย่างให้ผ่าน
 
-### 8. Ship
+### 9. Ship
 
 > Goal: ส่งมอบงาน
 

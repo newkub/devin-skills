@@ -4,6 +4,8 @@ description: สร้างและดูแล browser extensions ตาม M
 related:
   - deploy-to-cloudflare
   - follow-create-website
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-vite
 ---
 ## Goal
@@ -16,7 +18,15 @@ related:
 
 ## Execute
 
-### 1. Identify Or Create Extension
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Identify Or Create Extension
 
 > Goal: ทราบว่าเป็น extension ใหม่หรือมีอยู่แล้ว และเตรียม project
 
@@ -30,7 +40,7 @@ related:
    - สร้างโครงสร้าง: `src/background.ts`, `src/content.ts`, `src/popup/`
    - ติดตั้ง dependencies ด้วย `bun install`
 
-### 2. Configure Manifest
+### 3. Configure Manifest
 
 > Goal: ตั้งค่า `manifest.json` ตาม Manifest V3
 
@@ -39,7 +49,7 @@ related:
 3. ระบุ `permissions` และ `host_permissions` เท่านทีจำเป็น
 4. ระบุ `background.service_worker`, `content_scripts`, `action.default_popup`
 
-### 3. Implement Features
+### 4. Implement Features
 
 > Goal: พัฒนา background, content, และ popup scripts
 
@@ -48,7 +58,7 @@ related:
 3. สร้าง popup UI สำหรับ user interaction
 4. แยก pure logic ออกจาก browser API integration
 
-### 4. Test Cross-Browser
+### 5. Test Cross-Browser
 
 > Goal: extension ทำงานได้บนทุก browser target
 
@@ -57,7 +67,7 @@ related:
 3. ตรวจสอบ console errors และ permission warnings
 4. ทดสอบ cross-browser compatibility
 
-### 5. Validate And Ship
+### 6. Validate And Ship
 
 > Goal: extension ผ่านเกณฑ์และพร้อมส่งมอบ
 

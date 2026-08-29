@@ -8,6 +8,8 @@ related:
   - follow-release
   - follow-tool-vite
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -20,7 +22,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้างโครงสร้าง extension
 
@@ -29,7 +39,7 @@ related:
 3. ทางเลือก C: สร้าง `package.json`, `tsconfig.json`, `src/` เอง
 4. สร้าง `src/extension.ts`, `README.md`, `CHANGELOG.md`, `.vscodeignore`
 
-### 2. Configure Package And Manifest
+### 3. Configure Package And Manifest
 
 > Goal: กำหนด `package.json` ตาม VSCode schema
 
@@ -39,7 +49,7 @@ related:
 4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
 5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`
 
-### 3. Implement Extension
+### 4. Implement Extension
 
 > Goal: implement extension logic
 
@@ -48,7 +58,7 @@ related:
 3. push disposables เข้า `context.subscriptions`
 4. ใช้ `reactive-vscode` ถ้าเลือกทาง B
 
-### 4. Build And Watch
+### 5. Build And Watch
 
 > Goal: compile TypeScript
 
@@ -57,7 +67,7 @@ related:
 3. รัน `bun run watch` สำหรับ dev
 4. รัน `bun run compile` สำหรับ build
 
-### 5. Test In Extension Host
+### 6. Test In Extension Host
 
 > Goal: ทดสอบใน VSCode
 
@@ -66,7 +76,7 @@ related:
 3. ทดสอบ commands และ features
 4. ตรวจสอบ Debug Console
 
-### 6. Package And Publish
+### 7. Package And Publish
 
 > Goal: สร้าง `.vsix` และ publish
 

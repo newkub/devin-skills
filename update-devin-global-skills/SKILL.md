@@ -17,6 +17,7 @@ related:
   - follow-create-website
   - follow-create-mcp
   - follow-my-tech-stack
+  - review-techstack
 ---
 
 ## Goal
@@ -52,12 +53,17 @@ related:
    - CLI → `/follow-create-cli` (ใช้ `/follow-my-tech-stack` สำหรับ table/command/prompt/TUI)
    - Website → `/follow-create-website`
    - MCP server → `/follow-create-mcp` (พยายามใช้ Rust MCP ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript MCP)
-6. ถ้าสร้าง MCP server → อัปเดต `%APPDATA%\devin\mcp_config.json` เพื่อ register server ที่สร้าง
-7. ทำตาม [references/create-devin-skills.md](references/create-devin-skills.md) เพื่อเลือก template, เขียน `SKILL.md`, directory structure, references และ `src/` ถ้าจำเป็น
-8. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
-9. ถ้าไฟล์เกิน 250 บรรทัด → แยกออกไปยัง `references/` หรือ `subskills/`
-10. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
-11. วิเคราะห์ file structure ของ skills ที่คล้ายกัน ถ้าพบ pattern ที่ใช้ซ้ำ → สร้าง template ใน `references/` หรือ `templates/` แล้วให้ skill ใหม่อ้างอิง template แทนที่จะเขียนซ้ำ
+6. ถ้า skill เป็น `follow-create-*` ให้บังคับมีขั้นตอนนี้ก่อนเขียน `SKILL.md`:
+   - ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+   - ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+   - เพิ่มทั้งสอง skill เข้า `related`
+   - ใส่เป็นขั้นตอนแรกใน `## Execute` ก่อนขั้นตอนอื่น
+7. ถ้าสร้าง MCP server → อัปเดต `%APPDATA%\devin\mcp_config.json` เพื่อ register server ที่สร้าง
+8. ทำตาม [references/create-devin-skills.md](references/create-devin-skills.md) เพื่อเลือก template, เขียน `SKILL.md`, directory structure, references และ `src/` ถ้าจำเป็น
+9. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
+10. ถ้าไฟล์เกิน 250 บรรทัด → แยกออกไปยัง `references/` หรือ `subskills/`
+11. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
+12. วิเคราะห์ file structure ของ skills ที่คล้ายกัน ถ้าพบ pattern ที่ใช้ซ้ำ → สร้าง template ใน `references/` หรือ `templates/` แล้วให้ skill ใหม่อ้างอิง template แทนที่จะเขียนซ้ำ
 
 ### 3. Align With Catalog And Global Rules
 

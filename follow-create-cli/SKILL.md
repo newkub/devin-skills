@@ -8,6 +8,7 @@ related:
   - follow-flat-folders
   - follow-my-tech-stack
   - ship
+  - review-techstack
   - rethink
 ---
 ## Goal
@@ -20,7 +21,15 @@ related:
 
 ## Execute
 
-### 1. Decide CLI Stack
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Decide CLI Stack
 
 > Goal: พิจารณาเลือก stack ที่เหมาะสม
 
@@ -31,7 +40,7 @@ related:
 
 ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ stack comparison และ framework examples
 
-### 2. Create CLI Project
+### 3. Create CLI Project
 
 > Goal: สร้างโครงสร้างตาม stack ที่เลือก
 
@@ -42,7 +51,7 @@ related:
 5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/follow-my-tech-stack` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
 6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
-### 3. Review CLI
+### 4. Review CLI
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
@@ -50,7 +59,7 @@ related:
 2. แก้ไขตาม findings ที่ `/update-review-codebase-cli-and-run` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
-### 4. Integrate Into Workspace
+### 5. Integrate Into Workspace
 
 > Goal: ผสาน CLI เข้ากับ workspace
 
@@ -58,7 +67,7 @@ related:
 2. ถ้าเป็น monorepo → ทำ `/follow-monorepo` เพื่อกำหนด workspace และ dependencies
 3. อัปเดต references ใน `README.md` และ `AGENTS.md` ถ้าจำเป็น
 
-### 5. Ship
+### 6. Ship
 
 > Goal: ส่งมอบงาน
 

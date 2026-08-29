@@ -6,6 +6,8 @@ related:
   - open-web-for-config-secret
   - deploy-to-cloudflare
   - deploy-to-vercel
+  - follow-my-tech-stack
+  - review-techstack
   - follow-create-sdk
 ---
 ## Goal
@@ -22,7 +24,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ scope ของ website
 
@@ -31,7 +41,7 @@ related:
 3. ระบุ integrations: auth, payments, CMS, analytics
 4. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-tanstack`
 
-### 2. Choose Stack
+### 3. Choose Stack
 
 > Goal: เลือก stack ทีเหมาะสม
 
@@ -40,7 +50,7 @@ related:
 3. ถ้าต้องการ Vue → ทำ `/follow-lib-vue` หรือ Nuxt → ทำ `/follow-framework-nuxt`
 4. บันทึกเหตุผลทีเลือก stack นั้น
 
-### 3. Setup Framework
+### 4. Setup Framework
 
 > Goal: สร้าง scaffold project
 
@@ -48,7 +58,7 @@ related:
 2. ตรวจสอบ `package.json`, `tsconfig.json`, `vite.config.ts`
 3. รัน `bun install` และ `bun run dev` ทดสอบว่า project รันได้
 
-### 4. Configure TanStack Ecosystem
+### 5. Configure TanStack Ecosystem
 
 > Goal: ใช้ TanStack libraries ให้เหมาะสม
 
@@ -56,7 +66,7 @@ related:
 2. ตั้งค่า providers และ clients ใน entry point
 3. ตรวจสอบ type safety ของ router และ query
 
-### 5. Add Effect-TS If Needed
+### 6. Add Effect-TS If Needed
 
 > Goal: ใช้ Effect-TS ถ้าต้องการ functional programming patterns
 
@@ -64,7 +74,7 @@ related:
 2. ตรวจสอบว่า Effect-TS ไม่ซ้อนทับ patterns ของ oRPC
 3. ใช้ Effect สำหรับ business logic ไม่ใช้ client-side state
 
-### 6. Design Components And Pages
+### 7. Design Components And Pages
 
 > Goal: สร้าง UI ทีเป็นระเบียบ
 
@@ -73,7 +83,7 @@ related:
 3. สร้าง `src/components/` สำหรับ reusable UI
 4. ทำ `/follow-single-responsibility` เพื่อตรวจสอบแต่ละ component/page ทำงานเดียว
 
-### 7. Build API And Data Layer
+### 8. Build API And Data Layer
 
 > Goal: สร้าง API สำหรับ website
 
@@ -82,7 +92,7 @@ related:
 3. ใช้ Zod สำหรับ validation
 4. ตรวจสอบ type safety จาก client ถึง server
 
-### 8. Style And Polish
+### 9. Style And Polish
 
 > Goal: ใช้ UnoCSS และ theme system
 
@@ -90,7 +100,7 @@ related:
 2. ใช้ design tokens สำหรับ colors, spacing, typography
 3. ตรวจสอบ dark mode และ responsive
 
-### 9. Test And Validate
+### 10. Test And Validate
 
 > Goal: ตรวจสอบว่า website ทำงานถูกต้อง
 
@@ -99,7 +109,7 @@ related:
 3. ทำ `/review-frontend` เพื่อตรวจ accessibility, performance
 4. ทำ `/deep-validate` ถ้ามี complex flows
 
-### 10. Deploy
+### 11. Deploy
 
 > Goal: deploy website ไปยัง target platform
 
@@ -108,7 +118,7 @@ related:
 3. ตรวจสอบ environment variables และ build config
 4. ทดสอบ production URL
 
-#### 10.2 Register As Devin Skill If Needed
+#### 11.2 Register As Devin Skill If Needed
 
 > Goal: ถ้า website เป็น devin skill ให้ update registry
 

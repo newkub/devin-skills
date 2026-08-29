@@ -3,6 +3,8 @@ name: follow-create-raycast-extensions
 description: สร้าง Raycast Extensions ด้วย TypeScript, React และ Raycast API สำหรับ macOS productivity
 related:
   - follow-create-sdk
+  - follow-my-tech-stack
+  - review-techstack
   - follow-tool-vite
 ---
 ## Goal
@@ -15,7 +17,15 @@ related:
 
 ## Execute
 
-### 1. Setup Environment
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Environment
 
 > Goal: เตรียม environment สำหรับ Raycast extension development
 
@@ -23,7 +33,7 @@ related:
 2. ตรวจสอบ Raycast CLI: `bunx ray --version` และ `bunx ray whoami`
 3. ยืนยัน Node.js 18+ และ Bun ติดตั้งแล้ว
 
-### 2. Create Extension Project
+### 3. Create Extension Project
 
 > Goal: สร้าง extension project ด้วย CLI
 
@@ -32,7 +42,7 @@ related:
 3. ย้าย project เข้า `desktop-apps/raycast-extensions/{extension-name}/`
 4. ตรวจสอบโครงสร้าง: `package.json`, `src/`, `tsconfig.json`
 
-### 3. Configure Manifest
+### 4. Configure Manifest
 
 > Goal: กำหนด manifest ใน package.json ตาม Raycast schema
 
@@ -58,7 +68,7 @@ related:
 2. เลือก `mode`: `view`, `no-view`, หรือ `menu-bar`
 3. รัน `bun install`
 
-### 4. Develop Commands
+### 5. Develop Commands
 
 > Goal: พัฒนา commands ด้วย Raycast API
 1. List Command:
@@ -95,14 +105,14 @@ export default function Command() {
    - Storage: `LocalStorage.setItem()`, `LocalStorage.getItem()`
    - Preferences: `getPreferenceValues<Preferences>()`
 
-### 5. Test Extension
+### 6. Test Extension
 
 > Goal: ทดสอบ extension ด้วย develop, lint และ build
 1. รัน `bunx ray develop`
 2. รัน `bunx ray lint`
 3. รัน `bunx ray build`
 
-### 6. Publish Extension
+### 7. Publish Extension
 
 > Goal: เตรียม extension สำหรับ publish สู่ Raycast Store
 1. สร้าง screenshots ใน `metadata/`

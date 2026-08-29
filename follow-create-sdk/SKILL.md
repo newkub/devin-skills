@@ -43,6 +43,8 @@ related:
   - update-devin-global-subagents
   - update-references
   - update-test
+  - follow-my-tech-stack
+  - review-techstack
   - ship
 ---
 ## Goal
@@ -55,7 +57,15 @@ related:
 
 ## Execute
 
-### 1. Parse Argument
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Parse Argument
 
 > Goal: ตรวจสอบว่า user ระบุ skill หรือ goal มาหรือไม่
 
@@ -63,7 +73,7 @@ related:
 2. ถ้า user ระบุ goal (เช่น `bun cli`, `mobile app`, `vite plugin`, `skills`, `mcp`, `web`, `mobile`) → ใช้เป็นคำใบ้ในการ sort ตัวเลือก
 3. ถ้าไม่ระบุอะไร → ไปขั้นตอนถัดไป
 
-### 2. Discover Create Skills
+### 3. Discover Create Skills
 
 > Goal: หา `follow-create-*` skills ทีมีอยู่ทั้งหมด
 
@@ -77,7 +87,7 @@ related:
    - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`
 4. ใช้ `/report-table` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
-### 3. Build And Ask Options
+### 4. Build And Ask Options
 
 > Goal: ถาม user ว่าจะทำตาม follow-create- ไหน
 
@@ -91,7 +101,7 @@ related:
 8. ถ้า user เลือก `Skip` → หยุดและรายงานว่าไม่มีการเลือก
 9. ถ้า user เลือก `Suggest another` → ให้ user พิมพ์ชื่อ skill หรือ goal แล้ว match ใหม่
 
-### 4. Invoke Selected Skill
+### 5. Invoke Selected Skill
 
 > Goal: ส่งต่อไปยัง skill ทีเลือก
 
@@ -100,7 +110,7 @@ related:
 3. ถ้า user ตอบเอง (custom text) → ใช้ `search-skills` หรือ string match กับ `follow-create-*` แล้ว invoke ถ้าตรง
 4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุ `/ship` → invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
-### 5. Handle Mismatch
+### 6. Handle Mismatch
 
 > Goal: จัดการกรณีหาหรือ match ไม่เจอ
 

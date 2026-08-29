@@ -10,6 +10,8 @@ related:
   - search-skills
   - update-devin-global-skills
   - update-devin-global-subagents
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -22,7 +24,15 @@ related:
 
 ## Execute
 
-### 1. Gather Requirements
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Gather Requirements
 
 > Goal: เข้าใจ purpose และ components ของ plugin
 
@@ -34,7 +44,7 @@ related:
    - `hooks` สำหรับ lifecycle events
 3. ถ้ายังไม่ชัด → ใช้ `/ask-me` เพื่อเลือก components
 
-### 2. Create Plugin Structure
+### 3. Create Plugin Structure
 
 > Goal: สร้าง directory structure ตาม Codex plugin convention
 
@@ -45,7 +55,7 @@ related:
 5. สร้าง `.app.json` ถ้าเชื่อมต่อกับ ChatGPT app
 6. สร้าง `hooks` field ใน manifest ถ้าจำเป็น
 
-### 3. Implement Components
+### 4. Implement Components
 
 > Goal: สร้างแต่ละ component ตาม convention
 
@@ -55,7 +65,7 @@ related:
 4. กำหนด `interface` ใน manifest สำหรับ display name, descriptions, icons, brand color, default prompts
 5. เพิ่ม `homepage`, `repository`, `license` ใน manifest
 
-### 4. Register And Test
+### 5. Register And Test
 
 > Goal: ตรวจสอบ plugin ใน ChatGPT/Codex
 
@@ -65,7 +75,7 @@ related:
 4. ติดตั้ง plugin จาก Plugins Directory
 5. เปิด Work chat พิมพ์ `@` เพื่อเลือก plugin และทดสอบ tool
 
-### 5. Document And Distribute
+### 6. Document And Distribute
 
 > Goal: plugin พร้อมแชร
 

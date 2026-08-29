@@ -6,6 +6,8 @@ related:
   - follow-create-sdk
   - follow-lang-rust
   - open-in-zed
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Determine Extension Type
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Determine Extension Type
 
 > Goal: เลือกประเภท extension
 
@@ -27,14 +37,14 @@ related:
 3. ถ้าเพิ่ม snippets: ใช้ `snippets/`
 4. ถ้า language server/debugger/MCP: ใช้ Rust/WASM custom code
 
-### 2. Setup Manifest
+### 3. Setup Manifest
 
 > Goal: สร้าง `extension.toml`
 
 1. สร้าง root `extension.toml` ด้วย `id`, `name`, `version`, `schema_version`, `authors`, `description`, `repository`
 2. ระบุ `themes`, `languages`, `snippets`, `lib` ตาม feature
 
-### 3. Add Rust/WASM Code (If Needed)
+### 4. Add Rust/WASM Code (If Needed)
 
 > Goal: implement custom code สำหรับ language server หรือ debugger
 
@@ -44,7 +54,7 @@ related:
 4. สร้าง `src/lib.rs` ด้วย `impl zed::Extension for MyExtension` และ `register_extension!`
 5. ระวังว่า `std::env::var` ไม่ทำงานใน WASM
 
-### 4. Add Languages
+### 5. Add Languages
 
 > Goal: เพิ่ม language support
 
@@ -52,7 +62,7 @@ related:
 2. สร้าง `languages/{language}/highlights.scm`
 3. ระบุ `path_suffixes`, `line_comments`, `tab_size`
 
-### 5. Add Themes
+### 6. Add Themes
 
 > Goal: เพิ่ม theme หรือ icon theme
 
@@ -60,7 +70,7 @@ related:
 2. ติดตั้ง theme format ตาม Zed docs
 3. ระบุ theme ใน `extension.toml`
 
-### 6. Test Locally
+### 7. Test Locally
 
 > Goal: ทดสอบ extension ใน Zed
 
@@ -69,7 +79,7 @@ related:
 3. ตรวจสอบ logs ด้วย `zed: open log`
 4. ถ้า Rust extension เปิด Zed ด้วย `zed --foreground` เพื่อเห็น `println!`
 
-### 7. Publish
+### 8. Publish
 
 > Goal: publish สู่ Zed extension registry
 

@@ -6,6 +6,8 @@ related:
   - follow-create-sdk
   - follow-lang-typescript
   - run-test
+  - follow-my-tech-stack
+  - review-techstack
   - report-table
 ---
 ## Goal
@@ -18,7 +20,15 @@ related:
 
 ## Execute
 
-### 1. Setup Project
+### 1. Review Tech Stack
+
+> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+
+1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+
+### 2. Setup Project
 
 > Goal: สร้างโครงสร้าง plugin package
 
@@ -27,7 +37,7 @@ related:
 3. สร้าง `tsconfig.json` ด้วย `strict: true`
 4. รัน `bun init` หรือ `npm init`
 
-### 2. Create Plugin
+### 3. Create Plugin
 
 > Goal: implement Elysia plugin
 
@@ -36,7 +46,7 @@ related:
 3. เพิ่ม routes ด้วย `.get()`, `.post()` ตาม need
 4. เพิ่ม lifecycle hooks ด้วย `.onBeforeHandle()`, `.onAfterHandle()`, `.onError()`
 
-### 3. Configure Plugin Options
+### 4. Configure Plugin Options
 
 > Goal: รองรับ options และ type safety
 
@@ -45,7 +55,7 @@ related:
 3. ส่ง generic types ผ่าน `Elysia<...>` ถ้าจำเป็น
 4. ใช้ `seed` สำหรับ deduplication
 
-### 4. Build Package
+### 5. Build Package
 
 > Goal: build สำหรับ npm
 
@@ -54,7 +64,7 @@ related:
 3. external `elysia` ใน `package.json`
 4. ระบุ `types`, `main`, `exports` ใน `package.json`
 
-### 5. Add Tests
+### 6. Add Tests
 
 > Goal: ทดสอบ plugin
 
@@ -63,7 +73,7 @@ related:
 3. เรียก `app.handle(new Request('http://localhost/...'))` เพื่อทดสอบ
 4. รัน `bun test`
 
-### 6. Add Examples
+### 7. Add Examples
 
 > Goal: สร้างตัวอย่างการใช้งาน
 
@@ -71,7 +81,7 @@ related:
 2. สร้าง `examples/with-options.ts`
 3. รันตัวอย่างให้ผ่าน
 
-### 7. Ship
+### 8. Ship
 
 > Goal: ส่งมอบงาน
 
