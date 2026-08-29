@@ -34,7 +34,7 @@ git remote add upstream https://github.com/newkub/global_workflows.git
 1. Create a new branch for your workflow
 
 ```bash
-git checkout -b feature/my-workflow
+git switch -c feature/my-workflow
 ```
 
 2. Follow `/update-devin-global-skills` for workflow structure
@@ -64,7 +64,7 @@ git push origin feature/my-workflow
 1. After merge, sync your fork with upstream
 
 ```bash
-git checkout main
+git switch main
 git fetch upstream
 git merge upstream/main
 git push origin main

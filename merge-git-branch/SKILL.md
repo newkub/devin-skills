@@ -35,7 +35,7 @@ Merge feature branch เข้า target branch ด้วย `--no-ff` merge com
 
 > Goal: ย้ายไป target branch ก่อน merge
 
-1. ทำ `git checkout <target-branch>` หรือ `git switch <target-branch>`
+1. ทำ `git switch <target-branch>`
 2. ทำ `git pull --ff-only origin <target-branch>` เพื่อดึง latest target branch
 3. ถ้า pull มี conflict → stop และ report ให้ user แก้ manually
 

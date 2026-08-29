@@ -77,7 +77,7 @@ related:
 
 ### 2. Read Only
 
-- ไม่ทำ `git add`, `git commit`, `git stash`, `git checkout`
+- ไม่ทำ `git add`, `git commit`, `git stash`, `git switch`, `git restore`, `git checkout` โดยไม่ตั้งใจ
 - ใช้ `git status`, `git log`, `git branch`, `git remote` เท่านั้น
 
 ### 3. Depth

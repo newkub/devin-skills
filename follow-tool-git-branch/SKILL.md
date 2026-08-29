@@ -26,7 +26,7 @@ description: จัดการ git branches ทั้งหมดใน reposit
 
 > Goal: สลับ branch อย่างปลอดภัย
 
-1. `git switch <branch>` หรือ `git checkout <branch>`
+1. `git switch <branch>`
 2. ตรวจสอบ working tree สะอาด
 3. ถ้ามี uncommitted changes → stash หรือ commit ก่อน
 

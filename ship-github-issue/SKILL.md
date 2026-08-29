@@ -132,7 +132,7 @@ related:
 
 - ไม่ทำ `git init`
 - ไม่ทำ `git config --global`
-- สร้าง branch โดยใช้ `git switch -c` หรือ `git checkout -b`
+- สร้าง branch โดยใช้ `git switch -c <branch>`
 
 ### 6. Safety
 

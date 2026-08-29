@@ -38,7 +38,7 @@ related:
 1. checkout base branch (เช่น `main`)
 2. รัน `git pull` เพื่ออัปเดต
 3. สร้าง branch `issue-<number>-<short-title>` หรือตาม project conventions
-4. รัน `git checkout -b <branch>`
+4. รัน `git switch -c <branch>`
 
 ### 3. Plan
 

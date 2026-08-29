@@ -10,8 +10,6 @@ Merge branch หนึ่งเข้ากับอีก branch
 
 ```bash
 # Switch to branch you want to merge into
-git checkout main
-# or
 git switch main
 ```
 
@@ -87,9 +85,9 @@ git commit -m "Feature description"
 
 ```bash
 # Rebase before merge
-git checkout feature-branch
+git switch feature-branch
 git rebase main
-git checkout main
+git switch main
 git merge feature-branch
 ```
 
@@ -166,9 +164,9 @@ git mergetool
 
 ```bash
 # Choose which version to keep
-git checkout --ours binary-file
+git restore --ours -- binary-file
 # or
-git checkout --theirs binary-file
+git restore --theirs -- binary-file
 
 git add binary-file
 git commit

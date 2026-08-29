@@ -36,8 +36,7 @@ argument-hint: "[branch-name]"
 
 > Goal: Create And Switch
 
-1. `git switch -c <branch>` สำหรับ modern git
-2. หรือ `git checkout -b <branch>`
+1. `git switch -c <branch>`
 3. ตรวจสอบว่าอยู่บน commit ที่ถูกต้อง
 4. push upstream ด้วย `git push -u origin <branch>`
 

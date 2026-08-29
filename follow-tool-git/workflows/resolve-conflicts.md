@@ -94,7 +94,7 @@ git log -1
 
 ```bash
 # Keep HEAD changes
-git checkout --ours conflicted-file.txt
+git restore --ours -- conflicted-file.txt
 git add conflicted-file.txt
 ```
 
@@ -102,7 +102,7 @@ git add conflicted-file.txt
 
 ```bash
 # Keep incoming changes
-git checkout --theirs conflicted-file.txt
+git restore --theirs -- conflicted-file.txt
 git add conflicted-file.txt
 ```
 
@@ -130,9 +130,9 @@ git add conflicted-file.txt
 
 ```bash
 # Choose which version to keep
-git checkout --ours binary-file
+git restore --ours -- binary-file
 # or
-git checkout --theirs binary-file
+git restore --theirs -- binary-file
 
 git add binary-file
 git commit
@@ -192,7 +192,7 @@ git merge feature-branch
 git grep "<<<<<<<"
 
 # Remove all markers
-git checkout --ours conflicted-file.txt
+git restore --ours -- conflicted-file.txt
 # or manually edit
 ```
 

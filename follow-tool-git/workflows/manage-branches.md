@@ -13,8 +13,6 @@
 git branch feature-name
 
 # Create and switch
-git checkout -b feature-name
-# or
 git switch -c feature-name
 
 # Create from specific commit
@@ -28,13 +26,9 @@ git branch feature-name origin/feature-name
 
 ```bash
 # Switch to branch
-git checkout feature-name
-# or
 git switch feature-name
 
 # Switch to previous branch
-git checkout -
-# or
 git switch -
 ```
 
@@ -131,8 +125,8 @@ release/2.0.0
 # Track remote branch
 git branch --set-upstream-to=origin/main main
 
-# Or when checking out
-git checkout -b local-branch origin/remote-branch
+# Or when creating and tracking
+git switch -c local-branch --track origin/remote-branch
 ```
 
 ## Compare Branches
@@ -179,7 +173,7 @@ git branch feature-name-2
 git branch -D feature-name
 
 # Or switch to another branch first
-git checkout main
+git switch main
 git branch -D feature-name
 ```
 
@@ -187,10 +181,10 @@ git branch -D feature-name
 
 ```bash
 # Create branch from detached HEAD
-git checkout -b new-branch
+git switch -c new-branch
 
 # Or go back to branch
-git checkout main
+git switch main
 ```
 
 ### Branch Not Tracking Remote

@@ -31,8 +31,8 @@ related:
 > Goal: Move to the workflow branch
 
 1. รัน `git branch --list` เพื่อตรวจว่า branch มีอยู่หรือไม่
-2. ถ้า branch ไม่มี → สร้างด้วย `git checkout -b <workflow>`
-3. ถ้า branch มีอยู่ → เปลี่ยนไปด้วย `git checkout <workflow>`
+2. ถ้า branch ไม่มี → สร้างด้วย `git switch -c <workflow>`
+3. ถ้า branch มีอยู่ → เปลี่ยนไปด้วย `git switch <workflow>`
 4. ตรวจสอบด้วย `git branch --show-current`
 
 ### 3. Confirm Context
@@ -55,7 +55,7 @@ related:
 
 - ไม่เปลี่ยน branch ถ้ามี uncommitted changes ยกเว้นได้รับอนุญาต
 - ไม่ลบหรือ force-push branch
-- ใช้ `git checkout -b` เฉพาะเมื่อ branch ยังไม่มี
+- ใช้ `git switch -c` เฉพาะเมื่อ branch ยังไม่มี
 
 ## Expected Outcome
 

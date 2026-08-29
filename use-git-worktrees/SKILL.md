@@ -55,7 +55,7 @@ related:
 > Goal: รวมงานกลับเข้า branch ต้นทาง
 
 1. cd ไปยัง main working tree หรือ worktree ที target branch
-2. `git checkout <target-branch>`
+2. `git switch <target-branch>`
 3. รัน `git status` ให้สะอาด
 4. `git merge <feature-branch>`
 5. ถ้ามี conflict → ใช้ `/resolve-merge-conflicts`

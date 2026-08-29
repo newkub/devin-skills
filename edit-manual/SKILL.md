@@ -72,7 +72,7 @@ argument-hint: "[file]"
 1. ถ้าเป็น build config → ทดสอบ `bun run build` ว่าผ่าน
 2. ถ้าเป็น CI/CD config → ตรวจสอบว่า pipeline จะไม่ fail จากการเปลี่ยนแปลง
 3. ลบไฟล์สำรองใน `$env:TEMP` หลังยืนยันว่าการแก้ไขผ่านทุก validation
-4. ถ้า validation ไม่ผ่านและแก้ไม่ได้ → rollback ด้วย `git checkout <hash> -- <file>` และ report
+4. ถ้า validation ไม่ผ่านและแก้ไม่ได้ → rollback ด้วย `git restore --source=<hash> --staged --worktree -- <file>` และ report
 5. สรุปการเปลี่ยนแปลง: ไฟล์ที่แก้, ค่าที่เปลี่ยน, impact ที่ตรวจสอบแล้ว
 
 ## Rules
@@ -80,7 +80,7 @@ argument-hint: "[file]"
 ### 1. Safety And Rollback
 
 - ตรวจสอบ git working tree สะอาดก่อนแก้เสมอ — ถ้าไม่สะอาด → ถามผู้ใช้ก่อน
-- เก็บ commit hash ก่อนแก้เสมอเพื่อใช้ rollback ด้วย `git checkout <hash> -- <file>`
+- เก็บ commit hash ก่อนแก้เสมอเพื่อใช้ rollback ด้วย `git restore --source=<hash> --staged --worktree -- <file>`
 - ไฟล์ที่ไม่ถูก track โดย git → สร้างสำเนาใน `$env:TEMP` ก่อนแก้
 - ถ้า validation ไม่ผ่านภายใน 3 ครั้ง → rollback และ report (ไม่ฝืนแก้ต่อ)
 - ห้ามแก้ไข config หลายไฟล์พร้อมกันโดยไม่มี rollback plan
