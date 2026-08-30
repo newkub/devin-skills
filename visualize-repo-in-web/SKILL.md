@@ -1,4 +1,4 @@
----
+﻿---
 name: visualize-repo-in-web
 description: สร้าง web graph visualize repo ด้วย Rust สแกน + SolidJS แสดงผล พร้อม src
 allowed-tools:
@@ -22,7 +22,9 @@ related:
   - review-frontend
   - resolve-errors
   - open-web
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
   - suggest-next-action
 ---
 
@@ -99,7 +101,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ถ้า user ต้องการ keep project → ทำ `/ship`
+1. ถ้า user ต้องการ keep project → ทำ `/ship-ci`
 2. รายงานจำนวน nodes, edges, ประเภททีพบ
 3. ทำ `/suggest-next-action`
 

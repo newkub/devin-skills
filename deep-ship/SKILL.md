@@ -4,8 +4,9 @@ argument-hint: "[target]"
 description: Ship ไป production/release ด้วย deep validation, release, deploy, rollback plan, และ monitoring
 related:
   - ask-me
-  - ship
-  - ship-continuous
+  - ship-code
+  - ship-local
+  - ship-ci
   - deep-update
   - deep-update-project
   - run-release
@@ -47,7 +48,7 @@ Ship workspace หรือ project ไปสู่ production/release ด้ว
 
 ## Scope
 
-ใช้เมื่องานต้องส่งมอบไปยัง production หรือ release จริง ไม่ใช่แค่ commit ใน repo — ครอบคลุมตั้งแต่ pre-ship validation จนถึง live verification สำหรับ commit-only ใช้ `/ship`; สำหรับ loop improve แล้ว ship ใช้ `/ship-continuous`
+ใช้เมื่องานต้องส่งมอบไปยัง production หรือ release จริง ไม่ใช่แค่ commit ใน repo — ครอบคลุมตั้งแต่ pre-ship validation จนถึง live verification สำหรับ commit-only ใช้ `/ship-local`; สำหรับ loop improve แล้ว ship ใช้ `/ship-ci`
 
 ## Execute
 
@@ -88,8 +89,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: commit การเปลี่ยนแปลงที verified แล้ว
 
-1. ทำ `/ship` ตาม `AGENTS.md` workflow (commit, submodule, skills update)
-2. ถ้าต้องการ continuous improvement ก่อน ship → ทำ `/ship-continuous`
+1. ทำ `/ship-ci` ตาม `AGENTS.md` workflow (commit, push, submodule, skills update, watch CI)
+2. ถ้าต้องการ continuous improvement ก่อน ship → ทำ `/ship-ci` หรือ `/loop-continuous`
 3. ถ้าไม่มี changes → stop และ report
 4. ถ้าต้องการ push → ทำ `/git-push` หรือ `/git-commit-and-push`
 
@@ -154,7 +155,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. No Surprise Push/Release
 
 - `/deep-ship` อาจ push, release, deploy ตาม config ของ project
-- ถ้า user ไม่ต้องการ release/deploy → ใช้ `/ship` แทน
+- ถ้า user ไม่ต้องการ release/deploy → ใช้ `/ship-local` หรือ `/ship-ci` แทน
 - ถ้า config ไม่ชัด → ทำ `/ask-me` ก่อนดำเนืินการ
 
 ### 2. Validation Before Ship

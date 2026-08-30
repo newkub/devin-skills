@@ -82,7 +82,7 @@ related:
 
 | Skill / Skill Group | เหตุผลทีควร integrate |
 |---|---|
-| `/ship`, `/ship-release` | มีหลายขั้นตอน: verify, build, deploy, commit |
+| `/ship-code`, `/ship-local`, `/ship-ci`, `/ship-release` | มีหลายขั้นตอน: verify, build, deploy, commit |
 | `/deep-analyze`, `/deep-research`, `/deep-plan` | ใช้เวลานาน มีหลาย phase |
 | `/resolve-errors` | ต้อง trial-and-error หลายรอบ |
 | `/run-verify`, `/watch-ci-and-resolve`, `/watch-cd-and-resolve` | รอ external pipeline |

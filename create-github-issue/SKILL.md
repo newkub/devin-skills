@@ -1,4 +1,4 @@
----
+﻿---
 name: create-github-issue
 description: สร้างหรืออัปเดต GitHub issue พร้อม template, labels, assignees, milestones
 related:
@@ -89,7 +89,7 @@ related:
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
 2. ยืนยัน metadata ถูกต้อง
-3. ทำ `/ship`
+3. ทำ `/ship-ci`
 
 ## Rules
 

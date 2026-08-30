@@ -1,4 +1,4 @@
----
+﻿---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
 related:
@@ -125,13 +125,13 @@ related:
 
 - แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`) และ project config
 - ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
+- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-ci` ใน workspace นั้น
 
 ### 3. No Commit
 
 - `update-project` ไม่ commit การเปลี่ยนแปลง
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
-- ถ้าใช้ใน monorepo → เรียก `/ship` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
+- ถ้าใช้ใน monorepo → เรียก `/ship-ci` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
 ### 4. Idempotency
 

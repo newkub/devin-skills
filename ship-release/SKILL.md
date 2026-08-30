@@ -3,7 +3,9 @@ name: ship-release
 description: Release branch ไปสู่ production โดย merge เข้า dev สร้าง PR ไป main และ release/deploy
 argument-hint: "[issue-number]"
 related:
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
   - ship-github-issue
   - create-dev-branch
   - follow-git-flow
@@ -28,8 +30,8 @@ related:
 ใช้เมื่อ branch ผ่าน cloud verify แล้วและต้องการ release/deploy บน production
 รองรับการเริ่มจาก `dev/<number>`, `dev` หรือ `main`
 
-ถ้าต้องการแค่ commit ใน local → ใช้ `/ship`
-ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship --cloud`
+ถ้าต้องการแค่ commit ใน local → ใช้ `/ship-local`
+ถ้าต้องการ push + verify อย่างเดียว → ใช้ `/ship-ci`
 ถ้าต้องการทำงานตาม issue ทั่งหมด → ใช้ `/ship-github-issue`
 
 ## Execute
@@ -49,7 +51,7 @@ related:
 
 > Goal: ensure branch ปัจจุบันถูก push และผ่าน cloud verify
 
-1. ทำ `/ship --cloud`
+1. ทำ `/ship-ci`
 2. ถ้า fail → stop และ report
 3. ถ้า `CURRENT_BRANCH` คือ `dev` หรือ `main` → ข้าม merge step และไป step สร้าง PR หรือ release
 4. `cd $REPO_ROOT` เพื่อทำ PR, release และ cleanup จาก main working tree
@@ -149,7 +151,7 @@ related:
    ```bash
    git -C worktrees/dev-<number> status --porcelain
    ```
-   ถ้ามี uncommitted changes → stop และ report ให้ `/ship` ใน worktree ก่อน
+   ถ้ามี uncommitted changes → stop และ report ให้ `/ship-ci` ใน worktree ก่อน
 4. ลบ worktree ถ้ามี:
    ```bash
    git worktree remove worktrees/dev-<number>
@@ -203,7 +205,7 @@ related:
 ### 5. Branch State
 
 - ต้อง `git status` ว่างก่อนเริ่ม
-- ถ้ามี uncommitted changes → ให้ user `/ship` ก่อน
+- ถ้ามี uncommitted changes → ให้ user `/ship-local` หรือ `/ship-ci` ก่อน
 - ตรวจสอบ branch ก่อนสร้าง PR
 
 ### 6. Optional Release/Deploy

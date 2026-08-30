@@ -1,4 +1,4 @@
----
+﻿---
 name: create-mermaid-diagram-all-workspace
 description: สร้าง Mermaid source code สำหรับทุก workspace ใน monorepo
 argument-hint: "[output-name]"
@@ -10,7 +10,9 @@ related:
   - follow-monorepo
   - follow-package-manifest
   - check-circular-dependencies
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
 ---
 
 ## Goal

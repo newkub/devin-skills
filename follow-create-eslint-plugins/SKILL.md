@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-eslint-plugins
 description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
 related:
@@ -70,7 +70,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-ci`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

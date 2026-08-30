@@ -1,4 +1,4 @@
----
+﻿---
 name: edit-by-use-scripts
 description: แก้ไขไฟล์ผ่าน scripts ที่สร้างด้วย /use-scripts เพื่อ automate การแก้ไขแบบ reproducible
 argument-hint: "[target]"
@@ -68,7 +68,7 @@ argument-hint: "[target]"
 
 1. ลบ scripts จาก `$env:TEMP`
 2. ลบ backup files หลังยืนยันว่าการแก้ไขผ่านทุก validation
-3. ทำ `/ship`
+3. ทำ `/ship-ci`
 4. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

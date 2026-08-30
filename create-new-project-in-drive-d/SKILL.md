@@ -1,4 +1,4 @@
----
+﻿---
 name: create-new-project-in-drive-d
 description: สร้าง project ใหม่บน drive D ด้วย follow-create-* skill ตามประเภท
 argument-hint: "<project-type> <project-name>"
@@ -69,7 +69,7 @@ related:
 
 1. ตรวจสอบว่า project files ถูกสร้างจริงที target path
 2. รัน `/run-check` ตาม stack ถ้าจำเป็น
-3. ทำ `/ship` เมื่องานเสร็จสมบูรณ์
+3. ทำ `/ship-ci` เมื่องานเสร็จสมบูรณ์
 4. รายงาน path และ next actions
 
 ## Rules

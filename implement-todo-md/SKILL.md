@@ -1,4 +1,4 @@
----
+﻿---
 name: implement-todo-md
 description: อ่าน TODO.md แล้ว implement tasks ทั้งหมดตามลำดับ พร้อม update status
 related:
@@ -76,7 +76,7 @@ related:
 
 1. ทำ `/deep-validate` เพื่อตรวจ references และ structure
 2. ทำ `/run-verify` ถ้ามี
-3. ทำ `/ship`
+3. ทำ `/ship-ci`
 4. ใช้ `/report-table` สรุป tasks ทั้งหมด
 
 ## Rules

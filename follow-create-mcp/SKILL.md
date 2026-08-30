@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-mcp
 description: สร้าง MCP server ด้วย Rust หรือ TypeScript พร้อม register ลง mcp_config.json
 related:
@@ -91,7 +91,7 @@ related:
 > Goal: ส่งมอบ MCP server
 
 1. ทำ `/deep-validate` เพื่อตรวจ conventions, references, และ security
-2. ทำ `/ship`
+2. ทำ `/ship-ci`
 3. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -125,4 +125,4 @@ related:
 - Tools/resources/prompts ถูก expose ผ่าน MCP protocol
 - Transport ทีเลือกทดสอบผ่าน
 - `%APPDATA%\devin\mcp_config.json` ถูกอัปเดตพร้อม server entry
-- ผ่าน `/deep-validate` และ `/ship`
+- ผ่าน `/deep-validate` และ `/ship-ci`

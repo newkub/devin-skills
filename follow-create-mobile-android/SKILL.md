@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-mobile-android
 description: สร้าง native Android mobile app ด้วย Kotlin และ Jetpack Compose
 argument-hint: "[project-name]"
@@ -124,7 +124,7 @@ related:
 1. ทำ `/review-frontend` เพื่อตรวจ UI/UX
 2. ทำ `/run-test` สำหรับ test suite
 3. ทำ `/follow-lang-kotlin` เพื่อ verify conventions
-4. ทำ `/ship`
+4. ทำ `/ship-ci`
 
 ## Rules
 

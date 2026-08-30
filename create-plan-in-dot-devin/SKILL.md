@@ -1,4 +1,4 @@
----
+﻿---
 name: create-plan-in-dot-devin
 description: สร้างแผนละเอียดใน .devin/plan/<title-time>.md
 argument-hint: "[title]"
@@ -8,7 +8,9 @@ related:
   - review-plan
   - improve
   - update-references
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
   - create-report-in-dot-devin
 ---
 

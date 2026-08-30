@@ -1,10 +1,12 @@
----
+﻿---
 name: follow-enter-dot
 description: จัดการเมื่อ user ส่ง "." โดยตรวจ state แล้วทำ continue, suggest, ship หรือ ask-me
 related:
   - continue
   - follow-your-suggestion
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
   - ask-me
   - suggest-next-action
   - report-before
@@ -34,7 +36,7 @@ related:
 > Goal: เลือก action ทีเหมาะสม
 
 1. ถ้ามีงานค้างหรือ todos ยังไม่เสร็จ → ทำ `/continue`
-2. ถ้างานพร้อม ship และ validation ผ่าน → ทำ `/ship`
+2. ถ้างานพร้อม ship และ validation ผ่าน → ทำ `/ship-ci`
 3. ถ้าต้องการแนะนำทิศทางหรือขั้นตอนถัดไป → ทำ `/suggest-next-action` หรือ `/follow-your-suggestion`
 4. ถ้า context ไม่ชัดหรือต้องการคำตอบจาก user → ทำ `/ask-me`
 5. ถ้า user บ่งบอกเจตนาเฉพาะ (เช่น ship, continue, ask) → ทำตามที user ต้องการ
@@ -44,7 +46,7 @@ related:
 > Goal: ดำเนินการตามทีเลือก
 
 1. `/continue` — ทำงานค้างให้เสร็จ
-2. `/ship` — ส่งมอบงานทีเสร็จแล้ว
+2. `/ship-ci` — ส่งมอบงานทีเสร็จแล้ว
 3. `/suggest-next-action` — แนะนำขั้นตอนถัดไป
 4. `/follow-your-suggestion` — ทำตามข้อเสนอทีเคยวิเคราะห์ไว้
 5. `/ask-me` — ถาม user เมื่อ context ไม่พอ
@@ -62,7 +64,7 @@ related:
 
 - `.` เป็น trigger ไม่ใช่คำสั่่งเต็มรูปแบบ
 - ต้องตรวจ state ก่อนตัดสินใจเสมอ
-- ถ้างานยังไม่เสร็จ → ทำ `/continue` ก่อน `/ship`
+- ถ้างานยังไม่เสร็จ → ทำ `/continue` ก่อน `/ship-ci`
 - ถ้าต้อง ship → ต้องผ่าน validation ก่อน
 - ถ้า context ไม่ชัด → ทำ `/ask-me`
 - ไม่ทำการเปลี่ยนแปลงทีเสี่ยงโดยไม่มี user confirmation

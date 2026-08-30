@@ -1,10 +1,12 @@
----
+﻿---
 name: watch-release
 description: ตรวจสอบ release บน registry หรือ GitHub จนกว่าจะ live
 related:
   - run-release
   - follow-release
-  - ship
+  - ship-code
+  - ship-local
+  - ship-ci
   - watch-deploy
   - resolve-errors
 ---
@@ -15,7 +17,7 @@ Monitor a release after it has been published and report when the version or tag
 
 ## Scope
 
-Use after `/run-release`, manual release, or when `/ship` detects a release. Supports npm, crates.io, Docker Hub, VS Code Marketplace, and GitHub releases.
+Use after `/run-release`, manual release, or when `/ship-ci` detects a release. Supports npm, crates.io, Docker Hub, VS Code Marketplace, and GitHub releases.
 
 ## Execute
 

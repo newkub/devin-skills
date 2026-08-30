@@ -4,7 +4,6 @@ description: ใช้ Semantic Release สำหรับ automated version man
 related:
   - follow-release
   - follow-tool-github-actions
-  - follow-tool-github-workflows
   - follow-tool-changesets
   - follow-tool-git
   - follow-test

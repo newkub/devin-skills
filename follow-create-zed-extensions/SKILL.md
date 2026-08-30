@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-zed-extensions
 description: สร้าง Zed extensions ด้วย Rust/WASM และ extension manifest
 related:
@@ -87,7 +87,7 @@ related:
 2. build Rust extension ด้วย `cargo build --target wasm32-wasip2 --release`
 3. สร้าง GitHub repo พร้อม release
 4. ส่ง PR ไปยัง `zed-industries/extensions` หรือ publish ผ่าน Zed registry
-5. ทำ `/ship`
+5. ทำ `/ship-ci`
 
 ## Rules
 

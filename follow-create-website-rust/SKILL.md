@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-website-rust
 description: สร้าง website ด้วย Rust WASM + Solid frontend ผ่าน Vite plugin
 argument-hint: "[project-name]"
@@ -168,7 +168,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ทำ `/ship`
+1. ทำ `/ship-ci`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -1,4 +1,4 @@
----
+﻿---
 name: ship-review
 description: Ship workspace ผ่าน branch, review, issue, และ PR โดยไม่ merge เอง รอ human merge
 related:
@@ -23,7 +23,7 @@ Ship การเปลี่ยนแปลงโดยสร้าง branch, 
 ## Scope
 
 ใช้เมื่องานใน workspace เสร็จสมบูรณ์ แต่ต้องการ human-in-the-loop ก่อน merge เข้า `main`/`master`
-- ใช้แทน `/ship` เมื่อไม่ต้องการ push ตรง `main`
+- ใช้แทน `/ship-ci` เมื่อไม่ต้องการ push ตรง `main`
 - ใช้เมื่อต้องการ review ก่อน merge
 - ไม่ merge เอง สิ้นสุดที PR ทีพร้อมให้ human merge
 

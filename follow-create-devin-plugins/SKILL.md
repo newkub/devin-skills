@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-devin-plugins
 description: สร้าง Devin CLI plugin ที่รวม skills, rules, agents, hooks และ MCP servers
 argument-hint: "[plugin-name]"
@@ -114,7 +114,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-ci`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

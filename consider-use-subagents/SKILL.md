@@ -1,4 +1,4 @@
----
+﻿---
 name: consider-use-subagents
 description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles พร้อม deep context จาก /follow-deep
 argument-hint: "[task]"
@@ -70,7 +70,7 @@ related:
 > Goal: ส่งมอบงานทีผ่าน check
 
 1. รัน `run-check` ตาม ecosystem ทีตรวจพบ
-2. ถ้าผ่าน → ทำ `/ship`
+2. ถ้าผ่าน → ทำ `/ship-ci`
 3. ถ้าไม่ผ่าน → report สถานะและขั้นตอนถัดไป
 4. ทำ `/report` สรุปสิ่งทีแต่ละ subagent ทำ
 

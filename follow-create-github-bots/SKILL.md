@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-github-bots
 description: สร้าง GitHub bots ด้วย GitHub Apps หรือ Probot พร้อม webhooks และ deployment
 related:
@@ -121,7 +121,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-ci`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

@@ -1,4 +1,4 @@
-# Diff Review Checklist
+﻿# Diff Review Checklist
 
 ## Goal
 
@@ -6,7 +6,7 @@
 
 ## Scope
 
-ใช้ก่อน `git-commit`, `/ship`, `/follow-enter-dot` หรือเมื่อ working tree มีการเปลี่ยนแปลงจำนวนมาก
+ใช้ก่อน `git-commit`, `/ship-ci`, `/follow-enter-dot` หรือเมื่อ working tree มีการเปลี่ยนแปลงจำนวนมาก
 
 ## Capture Diff State
 
@@ -37,7 +37,7 @@
 
 ## Act On Decision
 
-1. ถ้า `continue` → ทำงานถัดไปตาม context (เช่น `/ship`, `/git-commit`)
+1. ถ้า `continue` → ทำงานถัดไปตาม context (เช่น `/ship-ci`, `/git-commit`)
 2. ถ้า `revert` → แสดง list ทีจะ revert ก่อนทำ แล้วรอ confirmation
 3. ถ้า `inspect` → อ่านไฟล์ทีระบุและนำเสนอสรุปเพิ่ม
 4. ถ้า `ask` → ใช้ `/ask-me` เพื่อถามปัญหาทีค้าง

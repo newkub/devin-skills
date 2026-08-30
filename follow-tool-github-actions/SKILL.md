@@ -4,6 +4,7 @@ description: ตั้งค่า GitHub Actions สำหรับ CI/CD ค�
 related:
   - follow-secret-manager
   - open-web-for-config-secret
+  - follow-dot-github
   - follow-deploy
   - run-deploy
 ---
@@ -53,6 +54,19 @@ related:
 - Deployment: เพิ่ม workflows ตาม platform ที่ใช้ (Docker, Cloudflare, Vercel)
 - Monitoring: เพิ่ม `slack-notify.yml` สำหรับ team notifications
 - Git Ops: เพิ่ม `commitlint.yml`, `dependency-review.yml` สำหรับ team collaboration
+
+### 4. Write Workflows
+
+> Goal: เขียน workflow YAML ตาม best practices
+
+1. ทำ `/analyze-project` เพื่อวิเคราะห์โครงสร้างและ dependencies
+2. อ่าน `.github/workflows/` directory แล้ววิเคราะห์ workflows ที่มีอยู่
+3. ระบุ workflows ที่ขาดหายหรือซ้ำซ้อน
+4. เขียน workflow YAML โดยใช้ `actions/checkout@v4`, caching, และ permissions อย่างปลอดภัย
+5. แยก CI และ CD workflows
+6. ใช้ matrix strategy สำหรับ multiple configurations
+7. ตั้งค่า monitoring และ notifications สำหรับ failures
+8. ทดสอบ syntax และ permissions
 
 ## Rules
 

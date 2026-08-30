@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-obsidian-plugin
 description: สร้าง Obsidian plugin ด้วย TypeScript พร้อม manifest, commands, settings
 related:
@@ -93,7 +93,7 @@ related:
 1. อัปเดต `manifest.json` และ `versions.json` ด้วย version ใหม่
 2. สร้าง git tag ตาม version
 3. สร้าง GitHub release พร้อมแนบ `main.js`, `manifest.json`, `styles.css`
-4. ทำ `/ship`
+4. ทำ `/ship-ci`
 
 ## Rules
 
