@@ -1,120 +1,79 @@
 ---
 name: review-backend
-description: Orchestrator backend review ครอบคลุม 14 sub-review workflows แบบ parallel
+description: Orchestrator backend review ครอบคลุม 7 sub-review workflows แบบ parallel
 ---
 
 ## Goal
 
-Orchestrate backend review ครอบคลุม API, service, database, data flow, data fetching, data validation, integration ผ่าน 14 sub-review workflows แบบ parallel พร้อม validate findings และ review score
+Orchestrate backend review ครอบคลุม API, service, database, data flow, data fetching, data validation, integration ผ่าน 7 sub-review workflows แบบ parallel พร้อม validate findings และ review score
 
 ## Scope
 
 ใช้สำหรับ backend review ทั้งหมด — เรียก sub-review workflows โดยตรง ไม่ทำ review เอง — ไม่รวม frontend, infrastructure, หรือ security reviews
 
-ครอบคลุม 7 backend dimensions:
-- `api` — API design, versioning, docs, errors, rate limiting (ดู `references/api.md`)
-- `service` — service layer organization, boundaries, business logic, transactions, DI (ดู `references/service.md`)
-- `database` — schema, query, index, integrity, connection, migrations (ดู `references/database.md`)
-- `data-flow` — data lineage, API-to-database, API-to-client mapping, schema consistency, impact (ดู `references/data-flow.md`)
-- `data-fetching` — loading, cache, optimistic, pagination, race conditions (ดู `references/data-fetching.md`)
-- `data-validation` — Zod schemas, input/output validation, data contracts, transformation safety (ดู `references/data-validation.md`)
-- `integration` — API client design, timeout, retry, circuit breaker, vendor lock-in, fallback (ดู `references/integration.md`)
-
 ## Execute
 
 ### 1. Prepare And Update Rules
 
-เตรียม context และอัปเดต rules ก่อนรัน sub-reviews
+> Goal: rules และ analyzers ครอบคลุมล่าสุด
 
-> Goal: rules และ analyzers ครอบคลุมล่าสุด พร้อมรัน sub-reviews
-
-1. ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
-2. ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points ที่ใช้
-3. ทำ `/review-codebase-everythink` — `/review-codebase-everythink` เรียก `/update-project-rules` ภายในเพื่ออัปเดต ast-grep rules
-4. ถ้า `/review-codebase-everythink` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
-5. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
-6. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
+- ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
+- ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points
+- ทำ `/review-codebase-everythink` เพื่ออัปเดต rules
+- รัน `bunx ast-grep scan --inspect summary`
+- ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
 ### 2. Run Backend Sub-Reviews
 
-รัน 14 backend sub-review workflows แบบ parallel โดยอ้างอิง reference files ใน `references/`
+> Goal: ครอบคลุมทุก backend dimension แบบ parallel
 
-> Goal: ครอบคลุมทุก backend dimension ผ่าน 14 sub-review workflows
+ทำตาม references แต่ละ dimension:
 
-1. ทำ `/review-codebase-everythink` สำหรับ API review (อ้างอิง `references/api.md`)
-2. ทำ `/review-codebase-everythink` สำหรับ service layer review (อ้างอิง `references/service.md`)
-3. ทำ `/review-codebase-everythink` สำหรับ database review (อ้างอิง `references/database.md`)
-4. ทำ `/review-codebase-everythink` สำหรับ data flow review (อ้างอิง `references/data-flow.md`)
-5. ทำ `/review-codebase-everythink` สำหรับ data fetching review (อ้างอิง `references/data-fetching.md`)
-6. ทำ `/review-codebase-everythink` สำหรับ data validation review (อ้างอิง `references/data-validation.md`)
-7. ทำ `/review-codebase-everythink` สำหรับ integration review (อ้างอิง `references/integration.md`)
-8. ถ้า sub-review ไม่เกี่ยวข้องกับ project → ข้าม sub-review นั้น
-9. ถ้าพบ critical issues → หยุดและทำ `/deep-validate` ก่อนดำเนินต่อ
+- `api` → references/api.md
+- `service` → references/service.md
+- `database` → references/database.md
+- `data-flow` → references/data-flow.md
+- `data-fetching` → references/data-fetching.md
+- `data-validation` → references/data-validation.md
+- `integration` → references/integration.md
+
+ข้าม sub-review ที่ไม่เกี่ยวข้องกับ project หรือพบ critical issues ให้หยุดทำ `/deep-validate` ก่อน
 
 ### 3. Validate And Report
 
-ตรวจสอบ findings และรายงานผล
-
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/deep-validate` สำหรับ validate issues จากทุก sub-review
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ review score ตามสูตรใน `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-table`
-6. ทำ `/suggest-next-action`
+- ทำ `/deep-validate` เพื่อ validate findings
+- จัดลำดับตาม severity: Critical → High → Medium → Low
+- คำนวณ review score, dimension scores และ supplementary metrics ตาม references/scoring.md
+- ทำ `/report` พร้อม `/report-table`
+- ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Delegation
-
-- Orchestrator เรียก sub-review workflows โดยตรง ไม่ทำ review เอง
-- ไม่ duplicate เนื้อหา inline — checklist ของแต่ละ dimension อยู่ใน `references/` ไฟล์
-- ถ้า project ไม่มี dimension ใด → ข้าม sub-review นั้น
-
-### 2. Skip Conditions
-
-- ถ้า project ไม่มี API layer → ข้าม `api` sub-review
-- ถ้า project ไม่มี service layer → ข้าม `service` sub-review
-- ถ้า project ไม่มี database → ข้าม `database` sub-review
-- ถ้า project ไม่มี data pipeline → ข้าม `data-flow` sub-review
-- ถ้า project ไม่มี data fetching → ข้าม `data-fetching` sub-review
-- ถ้า project ไม่มี validation schemas → ข้าม `data-validation` sub-review
-- ถ้า project ไม่มี third-party integrations → ข้าม `integration` sub-review
-
-### 3. Severity Classification
-
-- Critical: data loss risk, data corruption, broken endpoint, no error handling on critical path, unauthenticated endpoint, missing input validation, no timeout on external call, connection leak, missing transaction boundary, circular service dependency
-- High: missing rate limiting, inconsistent response format, missing idempotency, missing pagination, N+1 query, missing index, missing DI, untestable service, missing cache invalidation, race condition, missing retry, no circuit breaker, missing schema on endpoint
-- Medium: inconsistent naming, suboptimal schema, suboptimal cache strategy, minor schema drift, missing abstraction layer, missing localization
-- Low: cosmetic, documentation gap, minor naming
-
-### 4. Evidence-Based Findings
-
-- ทุก finding ต้องมี file path และ line number
-- ระบุ endpoint, service, table, query, schema, integration, หรือ component ที่เกี่ยวข้อง
-- ใช้ query plans, EXPLAIN ANALYZE, หรือ metrics แทน assumptions
-
-### 5. Review Independence
-
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ไม่สั่งให้ `drop table`, `drop index`, `delete data`, หรือรัน `destructive migration` ใน review phase
-- ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
-
-### 6. Update Before Run
-
-- ทำ `/review-codebase-everythink` ก่อนรัน sub-reviews เสมอ — `/review-codebase-everythink` เรียก `/update-project-rules` ภายใน
-- ถ้า `/review-codebase-everythink` ข้าม `/update-project-rules` → ทำ `/update-project-rules` แยก
-
-### 7. Formatting
-
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+1. Delegation
+   - Orchestrator เรียก sub-review workflows โดยตรง
+   - checklist ของแต่ละ dimension อยู่ใน `references/`
+   - ข้าม dimension ที่ project ไม่มี
+2. Skip Conditions
+   - ข้าม API, service, database, data-flow, data-fetching, data-validation, integration ตามที่ project ไม่มี
+3. Severity Classification
+   - Critical: data loss, broken endpoint, unauthenticated endpoint, missing input validation, connection leak
+   - High: missing rate limiting, N+1 query, missing DI, race condition
+   - Medium: inconsistent naming, suboptimal schema
+   - Low: cosmetic, documentation gap
+4. Evidence-Based Findings
+   - ทุก finding ต้องมี file path และ line number
+5. Review Independence
+   - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+6. Formatting
+   - ห้ามใช้ bold markers — ใช้ backticks
+   - รายงานเป็นตารางด้วย `/report-table`
 
 ## Expected Outcome
 
-- Findings และ recommendations จาก 14 backend sub-review workflows
-- Issues ที่พบถูก validate ครบถ้วนตาม severity
-- Review score ต่อ dimension และ overall ตาม `references/scoring.md`
-- รายงานในแชทเป็นตารางตาม `/report-table`
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- Findings และ recommendations จาก 7 backend sub-review workflows
+- Issues ที่พบถูก validate ตาม severity
+- Review score ต่อ dimension และ overall ตาม references/scoring.md
+- รายงานในแชทเป็นตาราง
+- แนะนำ action ถัดไป

@@ -22,13 +22,6 @@
 - ตรวจสอบ monitoring, alerts, metrics ถ้ามี
 - ระบุ critical paths ที่ไม่มี logs
 
-## Recovery And Degradation
-
-- ค้นหา retry, circuit breaker, fallback patterns
-- ตรวจสอบ timeout และ backoff strategies
-- ระบุ dependencies ที่ไม่มี fallback
-- ตรวจสอบ queue, dead letter queue, และ error recovery workers
-
 ## Stability Criteria
 
 - ระบุ crashes, unhandled exceptions, OOM, infinite loops

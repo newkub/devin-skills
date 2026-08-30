@@ -2,6 +2,7 @@
 
 | Section | Reference File |
 |---------|---------------|
+| 1. Prepare And Scan | `prepare.md` |
 | 2. Metrics | `metrics.md` |
 | 3. Distributed Tracing | `tracing.md` |
 | 4. Structured Logging | `logging.md` |
@@ -10,5 +11,5 @@
 | 7. SLO And SLI | `slo-sli.md` |
 | 8. APM Integration | `apm.md` |
 | 9. Incident Response Readiness | `incident-response.md` |
-| Scoring | `scoring.md` |
-| [website.md](website.md) | Official resources and links |
+| 10. Validate Score And Report | `scoring.md` |
+| Website | `website.md` |

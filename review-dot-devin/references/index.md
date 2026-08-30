@@ -1,9 +1,9 @@
-# References
+# review-dot-devin References Index
 
-| File | Responsibility |
-|---|---|
-| `directories.md` | `.devin/` directory structure validation |
-| `hooks.md` | Hook scripts and `hooks.json` validation |
-| `sgconfig.md` | `sgconfig.yml` and ast-grep `rules/` location check |
-| `scoring.md` | Review score formula and grade mapping |
-| [website.md](website.md) | Official resources and links |
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | [directories.md](directories.md) | Directories Check |
+| 2 | [hooks.md](hooks.md) | Hooks Check |
+| 3 | [scoring.md](scoring.md) | Scoring Formula |
+| 4 | [sgconfig.md](sgconfig.md) | Sgconfig And Ast-Grep Rules Check |
+| 5 | [website.md](website.md) | Review Dot Devin Official Resources |

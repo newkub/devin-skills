@@ -9,7 +9,6 @@ related:
   - deep-analyze
   - run-review
   - deep-validate
-  - deep-validate
   - report-table
   - suggest-next-action
   - use-ast-grep
@@ -38,68 +37,59 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare
 
 > Goal: เข้าใจ project structure, tech stack และ performance setup
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ project structure, tech stack, build tools
-2. ระบุ performance tools ที่มี: `lighthouse`, `react-scan`, `unlighthouse`, `bun profile`, `Chrome DevTools`
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-4. ทำ `/run-review` เพื่อดึง review metrics ล่าสุด
-5. ถ้าต้องการ runtime profile ลึก ให้ทำตาม `references/performance-profile.md`
+ทำตาม `references/prepare.md`
 
-### 2. Network And API Performance
+### 2. Network And API
 
 > Goal: API calls และ network layer มีประสิทธิภาพ
 
-Review HTTP client, CDN, DNS, connection pooling, latency, payload, compression, and cache headers. See [references/network-and-api.md](references/network-and-api.md).
+ทำตาม `references/network-and-api.md`
 
-### 3. Bundler And Build Performance
+### 3. Bundler And Build
 
 > Goal: bundle และ build output มีขนาดเล็ก โหลดเร็ว
 
-Review build tool config, chunk splitting, tree shaking, minification, source maps, and asset optimization. See [references/bundler-and-build.md](references/bundler-and-build.md).
+ทำตาม `references/bundler-and-build.md`
 
-### 4. Runtime And CPU Performance
+### 4. Runtime And CPU
 
 > Goal: runtime execution ไม่มี hot paths หรือ bottlenecks
 
-Review hot paths, event loop blocking, main thread work, and run profilers for critical flows. See [references/runtime-and-cpu.md](references/runtime-and-cpu.md).
+ทำตาม `references/runtime-and-cpu.md`
 
-### 5. Memory Performance
+### 5. Memory
 
 > Goal: memory usage อยู่ในเกณฑ์ ไม่มี leaks
 
-Review heap snapshots, GC pressure, unbounded collections, cleanup, and streaming for large data. See [references/memory.md](references/memory.md).
+ทำตาม `references/memory.md`
 
-### 6. I/O And Database Performance
+### 6. I/O And Database
 
 > Goal: I/O operations มีประสิทธิภาพ
 
-Review file/database/network I/O, batching, connection pooling, N+1 queries, indexes, and hot-path queries. See [references/io-and-database.md](references/io-and-database.md).
+ทำตาม `references/io-and-database.md`
 
 ### 7. Caching And Complexity
 
 > Goal: caching และ algorithms มีประสิทธิภาพ
 
-Review cache invalidation, TTL, key design, stampede, and time/space complexity on critical paths. See [references/caching.md](references/caching.md).
+ทำตาม `references/caching.md`
 
-### 8. Concurrency Review
+### 8. Concurrency
 
 > Goal: ตรวจสอบ concurrent programming ใน application code
 
-Review async/await, parallel execution, resource management, synchronization, and race conditions. See [references/concurrency.md](references/concurrency.md).
+ทำตาม `references/concurrency.md`
 
-### 9. Validate, Score And Report
+### 9. Validate Score And Report
 
 > Goal: findings ถูกต้อง พร้อม review score
 
-1. ทำ `/deep-validate` เพื่อ validate findings ทุกรายการ
-2. ทำ `/deep-validate` สำหรับ issues จาก scripts
-3. จัดลำดับ severity: Critical → High → Medium → Low → Info
-4. คำนวณ review score ตาม [references/scoring.md](references/scoring.md)
-5. ทำ `/report` พร้อม `/report-table`
-6. ทำ `/suggest-next-action`
+ทำตาม `references/validate-score-and-report.md`
 
 ## Rules
 
@@ -109,21 +99,24 @@ Review async/await, parallel execution, resource management, synchronization, an
 - ไม่ซ้ำกับ `/review-security` หรือ `/review-stability`
 - ถ้าพบ security/stability issues → ระบุเป็น info เท่านั้น
 - รายละเอียด rendering performance อยู่ใน `/review-frontend`
+- ห้าม duplicate รายละเอียด checklist จาก `references/`
 
 ### 2. Skip Conditions
 
-- ถ้าไม่มี build step → ข้าม Bundler and Build Review
-- ถ้าไม่มี caching → ข้าม Caching and Complexity Review
-- ถ้าไม่มี network layer → ข้าม Network and API Review
-- ถ้าไม่มี database → ข้าม I/O And Database Review
+- ถ้าไม่มี build step → ข้าม Bundler And Build
+- ถ้าไม่มี caching → ข้าม Caching And Complexity
+- ถ้าไม่มี network layer → ข้าม Network And API
+- ถ้าไม่มี database → ข้าม I/O And Database
 - ถ้าไม่มี frontend → ข้าม runtime ที่เกี่ยวกับ render
 
 ### 3. Severity Classification
 
-- Critical: blocking bottleneck, bundle size ที่ส่งผลกระทบรุนแรง, broken build config, Core Web Vitals ไม่ผ่าน, cache poisoning, cache stampede, complexity เกิน budget 10x บน hot path
-- High: N+1 query, missing cache บน hot path, missing code splitting, large vendor chunk, missing tree shaking, missing TTL, complexity เกิน budget บน hot path
-- Medium: suboptimal query, missing lazy load, suboptimal chunk, complexity เกิน budget บน cold path
-- Low: minor optimization, minor cache improvement, complexity ใกล้ budget
+| Severity | ลักษณะ |
+|---|---|
+| Critical | blocking bottleneck, bundle size ที่ส่งผลรุนแรง, broken build config, CWV ไม่ผ่าน, cache poisoning, cache stampede, complexity เกิน budget 10x บน hot path |
+| High | N+1 query, missing cache บน hot path, missing code splitting, large vendor chunk, missing tree shaking, missing TTL, complexity เกิน budget บน hot path |
+| Medium | suboptimal query, missing lazy load, suboptimal chunk, complexity เกิน budget บน cold path |
+| Low | minor optimization, minor cache improvement, complexity ใกล้ budget |
 
 ### 4. Evidence-Based Findings
 
@@ -134,7 +127,7 @@ Review async/await, parallel execution, resource management, synchronization, an
 
 ### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning

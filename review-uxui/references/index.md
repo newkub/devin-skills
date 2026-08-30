@@ -6,7 +6,7 @@
 | [design-system.md](design-system.md) | Design System Checks |
 | [handoff.md](handoff.md) | Design-Dev Handoff Checks |
 | [interaction-design.md](interaction-design.md) | Interaction Design Checks |
-| [scoring.md](scoring.md) | UX/UI Review Score Formula |
+| [scoring.md](scoring.md) | UX/UI Review Score Formula and Supplementary Metrics |
 | [visual-design.md](visual-design.md) | Visual Design Checks |
 | [user-flow.md](user-flow.md) | User Flow and Journey Mapping |
 | [website.md](website.md) | Official resources and links |

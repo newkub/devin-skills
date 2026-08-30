@@ -62,3 +62,18 @@ overall_score = sum(dimension_score) / count(dimensions)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - ไม่นับ dimensions ที่ถูก skip ใน overall score
 - ใช้ score เปรียบเทียบ before/after เท่านั้น ไม่ใช้สำหรับ pass/fail
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % SEO dimensions in scope that were reviewed | reviewed / total × 100 |
+| False Positive Rate | % SEO findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with evidence (file/line) | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with clear SEO recommendation | actionable findings / total findings × 100 |
+| Severity Distribution | count of findings per severity | count of Critical/High/Medium/Low/Info |
+| MTTR Estimate | estimated time to fix SEO issues | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | score improvement over time | (after - before) / before × 100 |
+| Risk Exposure Index | high-severity findings in critical SEO areas | count of Critical/High findings in crawl/index/on-page scope |
+| Scope Boundary Adherence | % findings inside declared SEO scope | in-scope findings / total findings × 100 |
+| Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |

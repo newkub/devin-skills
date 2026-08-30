@@ -1,0 +1,15 @@
+---
+name: consider-reuse
+description: ตรวจสอบทิศทางการใช้ซ้ำ/ขยายของ naming review
+---
+
+# Consider Reuse
+
+## Goal
+
+ตรวจสอบว่าชื่อ/skill สามารถใช้ซ้ำหรือขยายได้หรือไม
+
+## Checks
+
+1. ทำ `/consider-use-in-another-skills` เพื่อดูทิศทางการใช้ซ้ำ/ขยาย
+2. บันทึก findings ที่อาจกระทบ skill อื่นหรือต้องปรับชื่อ

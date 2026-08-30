@@ -13,3 +13,5 @@
 | [data-flow.md](data-flow.md) | Data Flow Tracing |
 | [cost-impact.md](cost-impact.md) | Cost Impact Analysis |
 | [website.md](website.md) | Official resources and links |
+| [review-rules.md](review-rules.md) | Review Rules And Formatting |
+| [severity-classification.md](severity-classification.md) | Severity Classification |

@@ -1,6 +1,6 @@
 ---
 name: review-platform
-description: Review platform ครอบคลุม mobile, desktop, CLI/TUI, SSR, i18n, SEO, performance, accessibility
+description: Review platform ครอบคลุมทุก dimension พร้อม review score
 related:
   - review-seo
 ---
@@ -11,143 +11,87 @@ Review platform ครอบคลุมทุก dimension ของ platform �
 
 ## Scope
 
-platform review สำหรับ: mobile app, desktop app, CLI/TUI, server-side rendering, state management, routing, PWA, i18n และ localization, SEO, web performance, accessibility, battery/energy usage, browser/platform compatibility
+platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state management, routing, PWA, i18n, SEO, performance, accessibility, battery/energy, browser/platform compatibility
 
 ## Execute
 
-### 1. Prepare And Scan
+### 1. Prepare
 
-เตรียม context ก่อนเริ่ม review
+ทำตาม `references/prepare.md`
 
-> Goal: เข้าใจ platform setup ใน codebase
+### 2. Mobile And Desktop
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ platform setup
-2. ระบุ mobile framework, desktop framework, CLI framework, SSR setup, state management library, routing library, PWA setup, i18n library, SEO strategy, battery-sensitive components, compatibility targets
-3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-4. ทำ `/review-codebase-everythink` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-5. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-6. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+ทำตาม `references/mobile-desktop.md`
 
-#### 1.2 Mobile And Desktop Review
+### 3. CLI And TUI
 
-> Goal: ครอบคลุมทุก mobile และ desktop dimension
+ทำตาม `references/cli-tui.md`
 
-Review native bridge, offline support, mobile/desktop UX, IPC, window management, auto-update, and file system access. See [references/mobile-desktop.md](references/mobile-desktop.md).
+### 4. SSR, State, Routing, PWA
 
-### 2. CLI And TUI Review
+ทำตาม `references/ssr-state-routing-pwa.md`
 
-> Goal: ครอบคลุมทุก CLI/TUI dimension
+### 5. I18n
 
-Review command structure, help/exit codes, interactive mode, TUI layout, build config, and distribution. See [references/cli-tui.md](references/cli-tui.md).
+ทำตาม `references/i18n.md`
 
-### 3. SSR, State Management, Routing, PWA Review
+### 6. SEO
 
-> Goal: ครอบคลุมทุก SSR, state, routing, PWA dimension
+ทำ `/review-seo`
 
-Review SSR/hydration, state management, routing, and PWA compliance. See [references/ssr-state-routing-pwa.md](references/ssr-state-routing-pwa.md).
+### 7. Battery And Energy
 
-### 4. I18n And Localization Review
+ทำตาม `references/battery.md`
 
-> Goal: ครอบคลุมทุก i18n dimension
+### 8. Performance
 
-Review translation completeness, locale formatting, RTL support, cultural adaptation, and locale-specific validation. See [references/i18n.md](references/i18n.md).
+ทำตาม `references/performance.md`
 
-### 5. SEO Review
+### 9. Accessibility
 
-> Goal: ครอบคลุมทุก SEO dimension
+ทำตาม `references/accessibility.md`
 
-1. ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ
-2. รับ findings, severity และ score จาก `/review-seo` มารวมใน aggregate report
-3. ถ้า project ไม่ใช่ web app → ข้าม section นี้
+### 10. Compatibility
 
-### 6. Battery And Energy Review
+ทำตาม `references/compatibility.md`
 
-> Goal: ครอบคลุมทุก battery/energy dimension
+### 11. Validate
 
-Review polling/timers, sensors, network/sync, background services, UI rendering, and compute for battery impact. See [references/battery.md](references/battery.md).
+ทำตาม `references/validate.md`
 
-### 7. Performance Review
+### 12. Report
 
-> Goal: ครอบคลุมทุก performance dimension
-
-Review Core Web Vitals, bundle size, network, runtime, loading metrics, and Lighthouse audit. See [references/performance.md](references/performance.md).
-
-### 8. Accessibility Review
-
-> Goal: ครอบคลุมทุก accessibility dimension
-
-Review keyboard navigation, screen reader support, color contrast, forms, media, and automated audits against WCAG 2.1. See [references/accessibility.md](references/accessibility.md).
-
-### 9. Compatibility Review
-
-> Goal: ครอบคลุมทุก compatibility dimension
-
-Review browser support, polyfills, feature detection, transpilation, OS/runtime compatibility, and CSS compatibility. See [references/compatibility.md](references/compatibility.md).
-
-### 10. Validate Findings
-
-ตรวจสอบและ validate issues จากทุก section
-
-> Goal: Issues ถูกต้องและจัดลำดับตาม severity
-
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
-2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low
-
-#### 10.2 Report
-
-รายงานผล review ในรูปแบบตาราง
-
-> Goal: รายงาน aggregate findings พร้อม actionable recommendations
-
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง aggregate findings จากทุก section
-3. คำนวณ review score — ดูสูตรใน [references/scoring.md](references/scoring.md)
-4. ทำ `/suggest-next-action`
+ทำตาม `references/report.md` และคำนวณ score จาก `references/scoring.md`
 
 ## Rules
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี mobile app ให้ข้าม Section 2 mobile parts
-- ถ้า project ไม่มี desktop app ให้ข้าม Section 2 desktop parts
-- ถ้า project ไม่มี CLI หรือ TUI ให้ข้าม Section 3
-- ถ้า project ไม่มี SSR ให้ข้าม Section 4 SSR items
-- ถ้า project ไม่มี i18n ให้ข้าม Section 5
-- ถ้า project ไม่ใช่ web app ให้ข้าม Section 6
-- ถ้า project ไม่มี battery-sensitive dimension ให้ข้าม Section 7
-- ถ้า project ไม่ใช่ web app ให้ข้าม Section 8 performance
-- ถ้า project ไม่มี UI ให้ข้าม Section 9 accessibility
-- ถ้า project ไม่มี compatibility concern ให้ข้าม Section 10
+- ถ้า project ไม่มี dimension ใด → ข้าม step นั้นตามเกณฑ์ใน reference นั้น
+- ถ้า project ไม่ใช่ web app → ข้าม SEO และ performance
+- ถ้า project ไม่มี UI → ข้าม accessibility
 
-### 2. Severity Classification
-
-- Critical: ระบบพัง, data loss, security hole — ดูรายละเอียดในแต่ละ section และ reference files
-- High: ฟังก์ชันหลักพัง, ขาด feature สำคัญ — ดูรายละเอียดในแต่ละ section และ reference files
-- Medium: inconsistent UX pattern, suboptimal config, missing safe area, incomplete manifest, suboptimal polling
-- Low: cosmetic improvement, naming convention, minor layout issue, documentation gap
-
-### 3. Evidence-Based Findings
+### 2. Evidence-Based Findings
 
 - ทุก finding ต้องมี file path และ line number
 - ไม่เดา ใช้ tools สำหรับ verification
-- ระบุ locale, translation key, URL, meta tag, หรือ formatting function ที่เกี่ยวข้อง
+- ระบุ locale, URL, meta tag, หรือ function ที่เกี่ยวข้อง
 
-### 4. Review Independence
+### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ไม่ลบไฟล์หรือส่วนประกอบใดๆ ในระหว่าง review
 
-### 5. Health Score
+### 4. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน [references/scoring.md](references/scoring.md)
+- คำนวณ review score เป็น percentage (0-100) ตาม `references/scoring.md`
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+- ใช้ score เปรียบเทียบ before/after
 
-### 6. Formatting
+### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 

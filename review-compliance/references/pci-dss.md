@@ -53,6 +53,16 @@
 - Code review: review code ก่อน deploy
 - ตรวจ coding: มี standard, มี change management, มี review
 
+## Review Checklist
+
+1. ตรวจสอบ cardholder data handling: PAN masking, truncation, storage minimization, no CVV storage
+2. ตรวจสอบ network security: firewall config, network segmentation, cardholder data environment isolation
+3. ตรวจสอบ access control: unique ID, RBAC, MFA for CDE access, physical access
+4. ตรวจสอบ encryption: strong cryptography, key management, key rotation, TLS for transmission
+5. ตรวจสอบ monitoring: audit logs, log review, file integrity monitoring, intrusion detection
+6. ตรวจสอบ vulnerability management: patch management, vulnerability scan, penetration test
+7. ตรวจสอบ secure coding: secure development, change management, code review
+
 ## Severity Criteria
 
 - Critical: CVV storage, unencrypted PAN, no network segmentation, shared credentials, no audit log, no MFA for CDE

@@ -52,6 +52,16 @@
 - Availability: มี NPP ที่ accessible
 - ตรวจ NPP: มี content, มี acknowledgment, มี availability
 
+## Review Checklist
+
+1. ตรวจสอบ PHI handling: protected health information identification, minimum necessary, de-identification
+2. ตรวจสอบ administrative safeguards: workforce training, access management, incident response, sanction policy
+3. ตรวจสอบ physical safeguards: facility access, workstation security, device media controls
+4. ตรวจสอบ technical safeguards: access control, audit controls, integrity, transmission security, encryption
+5. ตรวจสอบ Business Associate Agreement (BAA): vendor BAA, subcontractor BAA, BAA scope
+6. ตรวจสอบ breach notification: 60-day notification, HHS notification, media notification
+7. ตรวจสอบ Notice of Privacy Practices (NPP): content, acknowledgment, availability
+
 ## Severity Criteria
 
 - Critical: no BAA with vendor, unencrypted PHI, no access control, no audit log, no breach notification, no NPP

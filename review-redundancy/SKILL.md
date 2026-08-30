@@ -15,82 +15,38 @@ argument-hint: "[scope]"
 ## Execute
 
 ### 1. Inventory And Group Skills
-
-> Goal: รู้ทุก skill และจัดกลุ่มตาม purpose
-
-1. ดูรายละเอียดใน [references/inventory-and-group-skills.md](references/inventory-and-group-skills.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/inventory-and-group-skills.md](references/inventory-and-group-skills.md)
 
 ### 2. Detect Duplicate Purpose
-
-> Goal: หา skills ที่ทำหน้าที่เดียวกัน
-
-1. ดูรายละเอียดใน [references/detect-duplicate-purpose.md](references/detect-duplicate-purpose.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/detect-duplicate-purpose.md](references/detect-duplicate-purpose.md)
 
 ### 3. Detect Overlapping Scope
-
-> Goal: หา skills ที่ scope ซ้อนทับกัน
-
-1. ดูรายละเอียดใน [references/detect-overlapping-scope.md](references/detect-overlapping-scope.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/detect-overlapping-scope.md](references/detect-overlapping-scope.md)
 
 ### 4. Detect Redundant Content
-
-> Goal: หา content ที่ซ้ำกันในหลาย skills
-
-1. ดูรายละเอียดใน [references/detect-redundant-content.md](references/detect-redundant-content.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/detect-redundant-content.md](references/detect-redundant-content.md)
 
 ### 5. Detect Unused Skills
-
-> Goal: หา skills ที่ไม่ถูกอ้างถึงโดย skill อื่น
-
-1. ดูรายละเอียดใน [references/detect-unused-skills.md](references/detect-unused-skills.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/detect-unused-skills.md](references/detect-unused-skills.md)
 
 ### 6. Recommend Actions
-
-> Goal: แนะนำการจัดการกับ redundancy
-
-1. ดูรายละเอียดใน [references/recommend-actions.md](references/recommend-actions.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/recommend-actions.md](references/recommend-actions.md)
 
 ### 7. Confirm And Execute
+ทำตาม [references/confirm-and-execute.md](references/confirm-and-execute.md)
 
-> Goal: ดำเนินการตาม recommendations หลัง user ยืนยัน
-
-1. ดูรายละเอียดใน [references/confirm-and-execute.md](references/confirm-and-execute.md)
-2. บันทึก findings พร้อม severity และ evidence
+### 8. Score And Report
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules
-
-### 1. Detection Criteria
 
 - Duplicate purpose: `description` และ `## Goal` ซ้อนทับ >70%
 - Overlapping scope: `## Scope` บอกขอบเขตที่ทับซ้อน
 - Redundant content: text blocks ที่เหมือนกัน >50%
 - Unused skill: ไม่ถูกอ้างถึงใน `related` ของ skill อื่นและไม่อยู่ใน `AGENTS.md`
-
-### 2. Recommendations
-
-- แนะนำ merge เมื่อ skills ทำหน้าที่เดียวกันจริงๆ
-- แนะนำ split เมื่อ skill เดียวทำหลายหน้าที่ที่ไม่เกี่ยวกัน
-- แนะนำ shared reference เมื่อ content ซ้ำแต่ purpose ต่างกัน
-- ไม่บังคับ remove โดยไม่มี user confirmation
-
-### 3. Safety
-
 - ไม่ลบ ไม่ merge โดยไม่มี user confirmation
-- ทำ dry run ก่อน destructive actions
 - ทำ `/update-references` หลังทุกการเปลี่ยนแปลง
-- ไม่ทำลาย `related` references โดยไม่ตรวจสอบ
-
-### 4. Scope Boundary
-
-- ไม่รวม review quality ทั่วไป — อยู่ใน `/review-devin-global-skills`
-- ไม่รวม review consistency — อยู่ใน `/review-consistency`
-- เน้นเฉพาะ redundancy: duplicate, overlap, unused
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
 ## Expected Outcome
 
@@ -100,4 +56,3 @@ argument-hint: "[scope]"
 - รายงาน unused skills พร้อมประเภทและ recommendations
 - ตารางสรุป recommendations พร้อม priority
 - การดำเนินการผ่าน user confirmation เท่านั้น
-- ทุกการเปลี่ยนแปลงผ่าน `/deep-validate` และ `/update-references`

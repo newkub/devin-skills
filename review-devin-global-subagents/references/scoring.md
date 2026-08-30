@@ -1,9 +1,9 @@
 ---
-title: Scoring Formula
-description: สูตรคำนวณ review score และ grade
+title: Scoring
+description: สูตรคำนวณ review score, grade และ metrics
 ---
 
-# Scoring Formula
+# Scoring
 
 ## Severity Weights
 
@@ -57,3 +57,18 @@ score = sum(weight of each finding) / count of findings
 ## Next Action
 
 หลัง report ให้ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไปตาม score และ grade
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % ของ subagent files, frontmatter fields, sections, style rules และ safety rules ใน scope ที่ review ครบ | reviewed / total × 100 |
+| False Positive Rate | % ของ findings ที่ไม่ใช่ปัญหาจริง | false positives / total findings × 100 |
+| Evidence Strength Score | % ของ findings ที่มี evidence (file path หรือ line number) | findings with evidence / total findings × 100 |
+| Actionability Score | % ของ findings ที่มีคำแนะนำชัดเจน | actionable findings / total findings × 100 |
+| Severity Distribution | จำนวน findings แยกตาม severity | count of Critical/High/Medium/Low/Info |
+| MTTR Estimate | ระยะเวลาโดยประมาณในการแก้ | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | การปรับปรุงคะแนนระหว่างก่อนและหลัง | (after - before) / before × 100 |
+| Risk Exposure Index | จำนวน Critical/High findings ใน permissions, allowed-tools, secrets, safety และ hardcoded paths | count of Critical/High findings in critical scope |
+| Scope Boundary Adherence | % ของ findings อยู่ใน subagent scope ที่ประกาศ | in-scope findings / total findings × 100 |
+| Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |

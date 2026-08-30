@@ -13,77 +13,62 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 
 ## Execute
 
-### 1. Scan Rules And AGENTS.md
+### 1. Scan And Identify
 
-> Goal: ค้นหา rules และไฟล์ `AGENTS.md` ทั้งหมด
+> Goal: ค้นหา rules และ AGENTS.md ทั้งหมด
 
-1. ใช้ `/scan-codebase` ใน `.devin/rules/` และ `rules/`
-2. ใช้ `glob` เพื่อค้นหา `**/AGENTS.md`
-3. ระบุ duplicate rules (เช่น `import-alias` vs `import-aliases`)
-4. ระบุ rules ที่ขาด frontmatter หรือ metadata ไม่ครบ
-5. หากไม่มี `AGENTS.md` ให้รายงานและข้ามไปยังขั้นตอน rules
-6. บันทึก findings
+ทำตาม references/devin-rules.md
+
+- ใช้ `/scan-codebase` และ glob pattern หา `AGENTS.md`
+- ระบุ duplicate rules และ rules ที่ขาด frontmatter
+- บันทึก findings
 
 ### 2. Check Rules Alignment
 
 > Goal: ตรวจสอบความสอดคล้องของ rules
 
-1. เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/`
-2. ตรวจสอบว่า frontmatter ถูกต้อง (`trigger: always_on`, `model_decision`, `glob`)
-3. ตรวจสอบ filenames ใช้ kebab-case
-4. ตรวจสอบ `ruleDirs` ใน `sgconfig.yml`
-5. ดูรายละเอียดเพิ่มเติมใน `references/devin-rules.md` และ `references/ast-grep-rules.md`
+ทำตาม references/ast-grep-rules.md และ references/devin-rules.md
+
+- เปรียบเทียบ `.devin/rules` กับ ast-grep `rules/`
+- ตรวจ frontmatter, filenames และ `ruleDirs`
 
 ### 3. Validate AGENTS.md
 
-> Goal: ตรวจสอบโครงสร้างและ references ของ `AGENTS.md`
+> Goal: ตรวจสอบโครงสร้างและ references ของ AGENTS.md
 
-1. ตรวจ frontmatter: `name`, `description`, `related`
-2. ยืนยัน sections ตามลำดับ: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-3. ยืนยันว่า `## Rules` มี `### Architecture` พร้อม `tech: /follow-<tech>`
-4. ยืนยันว่า `### Skills` map `skill-name: /skill-name`
-5. ยืนยันว่าไม่มี section `## Workflows` หรือ `### Workflows`
-6. ดูรายละเอียดเพิ่มเติมใน `references/agents-md.md`
+ทำตาม references/agents-md.md
+
+- ตรวจ frontmatter, section order, skills map, workspaces
+- ยืนยันว่าไม่มี section Workflows
 
 ### 4. Check References And Coverage
 
 > Goal: ตรวจสอบ skill references และ workspace coverage
 
-1. ดึง references `skill-name` ทั้งหมดจาก `AGENTS.md`
-2. ยืนยันว่า directory ของแต่ละ skill เป้าหมายมีอยู่
-3. ตรวจ mappings `tech: /follow-<tech>` และ `skill-name: /skill-name`
-4. ใช้ `/check-monorepo` เพื่อยืนยันรายการ workspace
-5. เปรียบเทียบ directories ของ workspace กับตำแหน่ง `AGENTS.md`
-6. ตรวจว่า `AGENTS.md` ระดับ workspace ไม่ซ้ำเนื้อหาของ root
+ทำตาม references/agents-md.md
+
+- ดึง references `skill-name` จาก `AGENTS.md`
+- ยืนยันว่า directory ของ skill เป้าหมายมีอยู่
+- เปรียบเทียบ workspaces กับ `AGENTS.md`
 
 ### 5. Fix Issues
 
 > Goal: แก้ไขปัญหาที่พบ
 
-1. ลบ duplicate rules หลัง user confirm
-2. เพิ่ม missing rules ตาม `.devin/rules`
-3. แก้ frontmatter ให้ถูกต้อง
-4. อัปเดต `sgconfig.yml` ให้ match directory structure
-5. แก้ broken references ใน `AGENTS.md`
+- ลบ duplicate rules หลัง user confirm
+- เพิ่ม missing rules ตาม `.devin/rules`
+- แก้ frontmatter และ broken references ใน `AGENTS.md`
 
-### 6. Validate And Score
+### 6. Score And Report
 
 > Goal: ตรวจสอบผลลัพธ์และให้คะแนน
 
-1. รัน `ast-grep scan` หรือ `bun run scan`
-2. ทำ `/deep-validate` เพื่อ verify rule files
-3. ทำ `/check-reference` เพื่อตรวจ broken references
-4. คำนวณ score ตาม `references/scoring.md`
+ทำตาม references/scoring.md
 
-### 7. Report
-
-> Goal: สรุปการปรับปรุง
-
-1. ใช้ `/report-table` สำหรับปัญหา
-2. จัดกลุ่มตามความรุนแรง: critical, high, medium, low
-3. ระบุ file path และ line number สำหรับแต่ละผลการตรวจ
-4. รายงาน rules ที่แก้ไขและที่ยังเหลือ
-5. แนะนำ next actions
+- คำนวณ score ตามสูตรและ supplementary metrics
+- ทำ `/deep-validate`, `/check-reference`
+- ทำ `/report-table` พร้อม severity, evidence, action
+- ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -94,34 +79,24 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 
 ### 2. Frontmatter Standard
 
-- `trigger: always_on`, `model_decision`, หรือ `glob`
-- `title` Title Case
+- `trigger` ถูกต้อง
+- `title` ใช้ Title Case
 - `description` ไม่เกิน 100 ตัวอักษร
 
-### 3. AGENTS.md Format Compliance
+### 3. AGENTS.md Format
 
-- `AGENTS.md` ต้องเป็นไปตามรูปแบบ `/update-devin-global-skills`
-- frontmatter `name`, `description`, `related` จำเป็นต้องมี
-- sections ตามลำดับ: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
-- ห้ามมี section `## Workflows`
+- frontmatter ครบ
+- sections ตามลำดับที่ถูกต้อง
+- ห้ามมี section Workflows
 
 ### 4. Reference Validity
 
-- `skill-name` ทั้งหมดต้องเป็น skills ที่มีอยู่จริง
-- `tech: /follow-<tech>` ควร map ไปยัง skill `follow-*` จริงหากเป็นไปได้
-- `skill-name: /skill-name` ควร map ไปยัง skill จริง
+- skill references ทั้งหมดถูกต้อง
+- tech maps ถูกต้อง
 
-### 5. Workspace Rules
-
-- `AGENTS.md` ระดับ root ต้องมี `### Workspaces` ที่ระบุแต่ละ workspace
-- `AGENTS.md` ของแต่ละ workspace ต้องอ้างอิง workspaces ที่ใช้
-- `AGENTS.md` ของ workspace ต้องไม่ซ้ำ conventions ของ root
-
-### 6. Safety
+### 5. Safety
 
 - ไม่ลบ rule โดยไม่ user confirm
-- ไม่เปลี่ยน rule intent โดยไม่ record
-- รายงานเฉพาะปัญหาที่กระทบการทำงานหรือความถูกต้อง
 - ระบุ evidence พร้อม file path และ line number
 
 ## Expected Outcome
@@ -130,7 +105,5 @@ description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS
 - ไม่มี duplicate rules
 - ไม่มี broken references
 - `ast-grep scan` ผ่าน
-- ไฟล์ `AGENTS.md` เป็นไปตามรูปแบบมาตรฐาน
-- skill references ทั้งหมดถูกต้อง
-- ทุก workspace มี `AGENTS.md` ระดับ workspace ใน monorepo
+- `AGENTS.md` เป็นไปตามมาตรฐาน
 - รายงานพร้อมผลการตรวจและ next actions

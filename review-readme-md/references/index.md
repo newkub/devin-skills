@@ -1,22 +1,12 @@
-# Reference Index
+# References
 
-ตาราง mapping reference file แต่ละไฟล์กับความรับผิดชอบ
-
-## Reference Files
-
-| File | Responsibility |
-|---|---|
-| `section-order.md` | กฎการตรวจสอบลำดับ section ใน `README.md` และ UI Sketch format |
-| `tables-icons.md` | กฎการตรวจสอบ table columns, icon format และ alignment |
-| `content-standards.md` | กฎการตรวจสอบ content quality, language, placeholder และ forbidden sections |
-| `usage-coverage.md` | กฎการตรวจสอบ Usage section ครอบคลุมทุก access methods |
-| `workspace-consistency.md` | กฎการตรวจสอบ workspace READMEs ใน monorepo |
-| `scoring.md` | กฎการคำนวณ review score, grade และ action threshold |
-| `index.md` | ตาราง mapping reference file แต่ละไฟล์กับความรับผิดชอบ |
-| [website.md](website.md) | Official resources and links |
-
-## Usage
-
-- อ้างอิง reference file จาก `SKILL.md` ในแต่ละ Execute step
-- แต่ละ reference file มี single responsibility ครอบคลุมเพียงหนึ่ง concern
-- อ่าน reference file ที่เกี่ยวข้องก่อนตรวจสอบ section นั้น
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | `scoring.md` | Review score formula and supplementary metrics |
+| 2 | `content-standards.md` | Content quality, language, placeholder, forbidden sections |
+| 3 | `features-coverage.md` | Features table coverage checks |
+| 4 | `section-order.md` | Section order and UI Sketch format rules |
+| 5 | `tables-icons.md` | Table columns, icon format, and alignment |
+| 6 | `usage-coverage.md` | Usage section coverage for all access methods |
+| 7 | `workspace-consistency.md` | Workspace READMEs in monorepo |
+| 8 | `website.md` | Official resources and links |

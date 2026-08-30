@@ -81,6 +81,10 @@ description: เขียน content ครอบคลุมทุก features,
 - ทุก concepts ต้องมี explanations
 - ทุก best practices ต้องมี guidelines
 
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
 ## Expected Outcome
 
 - Content ครอบคลุมทุก features, APIs, และ use cases

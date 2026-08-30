@@ -49,6 +49,15 @@
 - Segregation of duties: คนที่ review ไม่ใช่คนที่ generate
 - ตรวจ access: มี RBAC, มี access log, มี segregation
 
+## Review Checklist
+
+1. ตรวจสอบ audit log content: who, what, when, where, before/after, reason
+2. ตรวจสอบ audit log coverage: authentication, authorization, data access, data modification, configuration change
+3. ตรวจสอบ tamper protection: append-only, cryptographic hash, digital signature, access restriction
+4. ตรวจสอบ audit log retention: retention period, archive, legal hold, disposal
+5. ตรวจสอบ audit log review: regular review, anomaly detection, escalation, review record
+6. ตรวจสอบ audit log access: access control, access log, segregation of duties
+
 ## Severity Criteria
 
 - Critical: no audit log on data access, no tamper protection, audit log can be modified, no retention, no access control

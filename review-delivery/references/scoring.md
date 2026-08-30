@@ -70,3 +70,18 @@ overall_score = sum(dimension_score) / count(dimensions)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - ไม่นับ dimensions ที่ถูก skip ใน overall score
 - ใช้ score เปรียบเทียบ before/after เท่านั้น ไม่ใช้สำหรับ pass/fail
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % delivery areas reviewed | reviewed areas / total areas × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with config/log evidence | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with clear fix | actionable findings / total findings × 100 |
+| CI/CD Maturity | pipeline coverage and quality | passing checks / total checks × 100 |
+| Documentation Coverage | % features with docs | documented features / total features × 100 |
+| DX Score | developer friction points | friction findings / total checks × 100 |
+| Rollback Readiness | % releases with rollback plan | with rollback / total releases × 100 |
+| Dependency freshness | outdated dependency ratio | outdated / total dependencies × 100 |
+| Before/After Trend | score improvement | (after - before) / before × 100 |

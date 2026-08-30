@@ -58,3 +58,18 @@ review score = sum(severity_score) / count(findings)
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 - ถ้า Score < 70 → แนะนำ `update-readme-md` เป็น action หลัก
 - ถ้า Score >= 70 → แนะนำการแก้ไข findings ที่เหลือตาม priority
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % README sections and workspaces in scope that were reviewed | reviewed / total × 100 |
+| False Positive Rate | % README findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with evidence (file/line) | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with clear README fix recommendation | actionable findings / total findings × 100 |
+| Severity Distribution | count of findings per severity | count of Critical/High/Medium/Low/Info |
+| MTTR Estimate | estimated time to fix README issues | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | score improvement over time | (after - before) / before × 100 |
+| Risk Exposure Index | high-severity findings in critical README areas | count of Critical/High findings in section order/features/usage scope |
+| Scope Boundary Adherence | % findings inside declared README-review scope | in-scope findings / total findings × 100 |
+| Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |

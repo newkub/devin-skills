@@ -81,6 +81,10 @@ Review project จากหลายมุมมองของ stakeholder โ�
 - ให้แต่ละ roleplay ทำงานของตัวเองตามกฎของ roleplay
 - ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow
 
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
 ## Expected Outcome
 
 - รายงาน multi-stakeholder review จาก roleplay ที่เลือก

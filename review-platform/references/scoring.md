@@ -1,5 +1,20 @@
 # Platform Review Score Formula
 
+## Review Metrics
+
+| Metric | Description | How To Calculate |
+|---|---|---|
+| Review Coverage Ratio | % platform features reviewed | `reviewed features / total platform features × 100` |
+| False Positive Rate | % findings that are false positives | `false positives / total findings × 100` |
+| Evidence Strength Score | % findings with file + line + evidence | `findings with evidence / total findings × 100` |
+| Actionability Score | % findings with actionable recommendation | `actionable findings / total findings × 100` |
+| Platform Coverage | % target platforms verified | `verified platforms / target platforms × 100` |
+| Core Web Vitals Score | LCP, INP, CLS pass rate | `passing CWV / total pages × 100` |
+| Accessibility Coverage | % screens meeting WCAG | `compliant screens / total × 100` |
+| i18n Completeness | % locale keys translated | `translated keys / total keys × 100` |
+| Battery/Energy Score | high-impact battery patterns found | `battery findings / total checks × 100` |
+| Before/After Trend | score improvement | `(after - before) / before × 100` |
+
 ## Score Calculation
 
 คำนวณ review score เป็น percentage (0-100)
@@ -13,12 +28,12 @@ score = sum(severity_weight[finding] for all findings) / total_findings
 ### Severity Weights
 
 | Severity | Weight |
-|----------|--------|
-| Critical | 0      |
-| High     | 25     |
-| Medium   | 50     |
-| Low      | 75     |
-| Info     | 100    |
+|---|---|
+| Critical | 0 |
+| High | 25 |
+| Medium | 50 |
+| Low | 75 |
+| Info | 100 |
 
 ### Interpretation
 

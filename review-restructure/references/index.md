@@ -1,9 +1,10 @@
-# review-restructure References Index
+# References
 
-| File | Responsibility |
-|---|---|
-| [barrel-exports.md](barrel-exports.md) | Barrel Export And Alias Complexity Checks |
-| [file-naming.md](file-naming.md) | File Naming Convention Checks |
-| [folder-grouping.md](folder-grouping.md) | Folder Domain Grouping Checks |
-| [structure-health.md](structure-health.md) | Structure Health Score Formula |
-| [website.md](website.md) | Official resources and links |
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | `scoring.md` | Structure health score and supplementary metrics |
+| 2 | `barrel-exports.md` | Barrel export and alias complexity checks |
+| 3 | `file-naming.md` | File naming convention checks |
+| 4 | `folder-grouping.md` | Folder domain grouping checks |
+| 5 | `structure-health.md` | Structure health score formula and relocation plan format |
+| 6 | `website.md` | Official resources and links |

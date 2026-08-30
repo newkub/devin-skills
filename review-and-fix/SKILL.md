@@ -62,6 +62,10 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ทุก fix ต้องมีเหตุผลจาก review
 - ระบุ file path และ line number
 
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
 ## Expected Outcome
 
 - รายงาน issues ก่อน fix

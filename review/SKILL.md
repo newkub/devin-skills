@@ -19,31 +19,19 @@ Review งานตาม context โดยเลือก review skill ที�
 
 > Goal: รู้ context ก่อนเลือก review skill
 
-1. ตรวจ workspace files: `package.json`, `AGENTS.md`, `SKILL.md`, `git status`
-2. ถ้ามี `apps/`, `src/`, `packages/` → น่าจะเป็น code
-3. ถ้าเป็น `.md` หรือ `AGENTS.md` → น่าจะเป็น docs
-4. ถ้ามี `/.devin/skills/` หรือ `%APPDATA%/devin/skills` → น่าจะเป็น skill
-5. ถ้า user ระบุ issue/PR number หรือ `github` → น่าจะเป็น GitHub
+ทำตาม [references/detect-context.md](references/detect-context.md)
 
 ### 2. Route To Review Skill
 
 > Goal: เรียก review skill ที่ถูกต้อง
 
-1. ถ้าผู้ใช้ต้องการ multi-stakeholder review หรือ roleplay หลายบทบาท → ทำ `/review-by-stakeholder`
-2. ถ้า code → ทำ `/review-codebase-everythink`
-3. ถ้า `AGENTS.md` หรือ docs → ทำ `/review-rules`
-4. ถ้า GitHub issue → ทำ `/review-github-issue`
-5. ถ้า GitHub PR → ทำ `/review-github-pr`
-6. ถ้า devin skills → ทำ `/review-devin-global-skills`
-7. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-before` ก่อน แล้วถาม user
+ทำตาม [references/route-to-review-skill.md](references/route-to-review-skill.md)
 
 ### 3. Report
 
 > Goal: สรุปผล review
 
-1. สรุป findings พร้อม severity
-2. ระบุ skill ที่ใช้
-3. ทำ `/suggest-next-action`
+ทำตาม [references/report.md](references/report.md)
 
 ## Rules
 
@@ -57,6 +45,10 @@ Review งานตาม context โดยเลือก review skill ที�
 
 ### 3. Evidence
 - ทุก finding ต้องมี file, line, หรือ reference
+
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
 
 ## Expected Outcome
 

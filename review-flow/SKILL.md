@@ -78,6 +78,10 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ถ้ามี destructive change → ต้อง dry-run ก่อน
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
 ## Expected Outcome
 
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น

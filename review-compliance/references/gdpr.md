@@ -57,6 +57,16 @@
 - DPO independence: DPO ไม่มี conflict of interest
 - ตรวจ DPO: มี appointment, มี contact
 
+## Review Checklist
+
+1. ตรวจสอบ lawful basis: consent, contract, legal obligation, vital interest, public task, legitimate interest
+2. ตรวจสอบ data subject rights: access (Article 15), rectification (Article 16), erasure (Article 17), portability (Article 20), objection (Article 21)
+3. ตรวจสอบ consent management: granular consent, consent withdrawal, consent record, consent versioning
+4. ตรวจสอบ privacy by design: data minimization, purpose limitation, storage limitation, default privacy settings
+5. ตรวจสอบ DPIA: data protection impact assessment, high-risk processing identification
+6. ตรวจสอบ data breach notification: 72-hour notification, breach detection, breach record
+7. ตรวจสอบ DPO appointment: Data Protection Officer requirement, DPO contact
+
 ## Severity Criteria
 
 - Critical: no lawful basis, no consent mechanism, no DSAR process, no breach notification, data minimization violation, no DPO when required

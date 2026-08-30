@@ -102,3 +102,22 @@ score = sum(severity_weight * count) / total_findings
 - file path
 - line number
 - code snippet ที่เป็นปัญหา
+
+## Supplementary Metrics
+
+ใช้ metrics เหล่านี้เพื่อวัดประสิทธิภาพและความครอบคลุมของ review process:
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % codebase files scanned/reviewed | `scanned files / total files × 100` |
+| False Positive Rate | % findings that are false positives | `false positives / total findings × 100` |
+| Evidence Strength Score | % findings with tool/line evidence | `findings with evidence / total findings × 100` |
+| Actionability Score | % findings with clear next action | `actionable findings / total findings × 100` |
+| Category Coverage | % review categories executed | `executed categories / total categories × 100` |
+| Sub-Review Completion | % recommended sub-reviews run | `completed / recommended × 100` |
+| Analyzer Pass Rate | % analyzers producing valid output | `working analyzers / total analyzers × 100` |
+| Critical Path Coverage | % critical paths reviewed | `reviewed critical / total critical × 100` |
+| Issue Deduplication Rate | duplicate findings merged | `duplicates merged / total × 100` |
+| Before/After Trend | score improvement | `(after - before) / before × 100` |
+
+บันทึก metrics เหล่านี้หลังแต่ละรอบ review เพื่อเปรียบเทียบ before/after และตัดสินใจปรับปรุง CLI

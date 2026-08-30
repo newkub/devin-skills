@@ -10,10 +10,14 @@
 | [docker.md](docker.md) | Docker & Container Engines Reference |
 | [docs.md](docs.md) | Documentation Quality Checks |
 | [dx.md](dx.md) | Developer Experience Checks |
+| [analytics.md](analytics.md) | Analytics Checks |
+| [logging-debugging.md](logging-debugging.md) | Logging And Debugging Checks |
 | [efficiency.md](efficiency.md) | Build Efficiency Checks |
 | [infrastructure.md](infrastructure.md) | Infrastructure Checks |
 | [performance.md](performance.md) | Performance Checks |
 | [pr-review.md](pr-review.md) | PR Review Checks |
 | [scoring.md](scoring.md) | Delivery Review Score Formula |
 | [security.md](security.md) | Security Checks |
+| [testing.md](testing.md) | Testing Checks |
+| [versioning.md](versioning.md) | Versioning Checks |
 | [website.md](website.md) | Official resources and links |

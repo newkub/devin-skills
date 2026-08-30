@@ -17,41 +17,35 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 > Goal: ตรวจสอบว่าชื่อ/skill สามารถใช้ซ้ำหรือขยายได้หรือไม่
 
-1. ทำ `/consider-use-in-another-skills` เพื่อดูทิศทางการใช้ซ้ำ/ขยาย
+1. ทำตาม [references/consider-reuse.md](references/consider-reuse.md)
 2. บันทึก findings ที่อาจกระทบ skill อื่นหรือต้องปรับชื่อ
 
 ### 2. Scan Names
 
 > Goal: รวบรวมชื่อทีต้อง review
 
-1. ทำ `/scan-codebase` หา identifiers, file paths, skill names
-2. รวบรวม skill names จาก `AGENTS.md` และ directory names
-3. ระบุ public API, class names, function names, variable names, constants
-4. หา duplicate names, shadowing, หรือชื่อทีตีความได้หลายทาง
+1. ทำตาม [references/scan-names.md](references/scan-names.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Evaluate Naming
 
 > Goal: ตรวจสอบคุณภาพของชื่อ
 
-Review names against clarity, consistency, casing, abbreviations, length, and skill-name rules. See [references/naming-checklist.md](references/naming-checklist.md).
+ทำตาม [references/naming-checklist.md](references/naming-checklist.md)
 
 ### 4. Check Conflicts
 
 > Goal: ตรวจสอบความขัดแย้งของชื่อ
 
-1. ตรวจสอบว่าไม่ซ้ำกับ existing skills หรือ reserved words
-2. ตรวจสอบว่าไม่มี shadowing ระหว่าง nested scopes
-3. ตรวจสอบว่า file name ตรงกับ content หรือ main export
-4. ตรวจสอบว่า directory name ตรงกับ skill `name` ใน frontmatter
+1. ทำตาม [references/check-conflicts.md](references/check-conflicts.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Report
 
 > Goal: สรุป findings พร้อม recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง: Name, Type, Issue, Severity, Suggested Name
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ทำตาม [references/report.md](references/report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 
@@ -78,6 +72,10 @@ Review names against clarity, consistency, casing, abbreviations, length, and sk
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
+
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
 
 ## Expected Outcome
 

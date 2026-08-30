@@ -50,6 +50,15 @@
 - Remediation plan: มี plan, มี owner, มี due date
 - ตรวจ monitoring: มี testing, มี exception tracking, มี remediation
 
+## Review Checklist
+
+1. ตรวจสอบ Security criteria: access control, network monitoring, intrusion detection, vulnerability management
+2. ตรวจสอบ Availability criteria: performance monitoring, incident response, backup recovery, capacity planning
+3. ตรวจสอบ Processing Integrity criteria: input validation, processing accuracy, error handling, reconciliation
+4. ตรวจสอบ Confidentiality criteria: data classification, encryption, NDA, data disposal
+5. ตรวจสอบ Privacy criteria: notice, consent, choice, collection, use, retention, disposal, disclosure
+6. ตรวจสอบ control monitoring: control testing, control exception, remediation plan
+
 ## Severity Criteria
 
 - Critical: missing access control, no incident response, no backup, no encryption, no privacy notice, no NDA

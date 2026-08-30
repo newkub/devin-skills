@@ -1,6 +1,6 @@
 ---
 name: review-stability
-description: Review app stability, error handling, debuggability ครอบคลุม crashes, recovery, monitoring, score
+description: Review app stability, error handling, debuggability, recovery, monitoring and score
 ---
 
 ## Goal
@@ -9,13 +9,11 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Scope
 
-ใช้สำหรับ review ความเสถียรของ app ครอบคลุม 3 ด้าน:
 - `app-stability`: crashes, error boundaries, recovery, monitoring, health checks, graceful degradation
-- `debugging`: logging context, error messages clarity, naming conventions, code complexity, debuggability score
-- `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification, recovery
+- `error-handling`: try-catch, unhandled rejections, error messages, error codes, error classification
+- `debuggability`: logging context, error message clarity, naming conventions, code complexity
 - `error-patterns`: log clustering and recurring issue detection from logs
-
-ไม่รวมการ fix (ใช้ `/review-codebase-everythink` สำหรับ fix)
+- ไม่รวมการ fix (ใช้ `/review-codebase-everythink` สำหรับ fix)
 
 ## Execute
 
@@ -24,11 +22,11 @@ Review ความเสถียรของ application ครอบคลุ
 > Goal: เข้าใจ stability, error handling, debuggability ปัจจุบันของ codebase
 
 1. ทำ `/scan-codebase` เพื่อหา error handling, logging, monitoring, health checks
-2. ระบุ error handling framework, error boundary patterns, error logging service, error monitoring (Sentry, Bugsnag) ที่ใช้
+2. ระบุ error handling framework, error boundary patterns, error logging service, error monitoring ที่ใช้
 3. ตรวจสอบ logging statements, error messages, naming conventions, code complexity และ nesting
 4. ระบุ files ที่เกี่ยวข้องกับ top-level error boundaries หรือ crash handlers
 5. ค้นหา patterns: try-catch, unhandled rejections, global error handlers, memory leaks, infinite loops
-6. ถ้ามี log หรือ error aggregation ให้ทำ error pattern analysis ตาม `references/error-patterns.md`
+6. ถ้ามี log หรือ error aggregation ให้ทำตาม `references/error-patterns.md`
 
 ### 2. Deep Analyze
 
@@ -40,59 +38,31 @@ Review ความเสถียรของ application ครอบคลุ
 4. รัน `bunx ast-grep scan --inspect summary` เพื่อ verify rules ทำงานได้
 5. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 
-### 3. App Stability Review
+### 3. App Stability
 
 > Goal: app ไม่ crash ทั้งหมดเมื่อส่วนใดส่วนหนึ่งพัง
 
-1. ตรวจสอบ React Error Boundaries, Vue error handlers, หรือ framework equivalent
-2. ระบุ components หรือ modules ที่ไม่มี error boundary
-3. ตรวจสอบ graceful fallback UI เมื่อ error
-4. ตรวจสอบ process-level crash handlers สำหรับ backend/CLI
-5. ค้นหา health check endpoints: `/health`, `/ready`, `/live`
-6. ตรวจสอบว่า health checks ตรวจ dependencies จริง เช่น database, queue
-7. ระบุ health checks ที่ dummy หรือไม่ตรวจอะไร
-8. ตรวจสอบ startup/shutdown hooks
+ทำตาม `references/app-stability.md`
 
-### 4. Error Handling Review
+### 4. Error Handling
 
 > Goal: errors ถูกจัดการอย่างถูกต้อง ครอบคลุมทุก dimension
 
-1. ตรวจสอบ error boundaries: coverage, fallback UI, recovery, logging, nested boundaries
-2. ตรวจสอบ try-catch coverage: async operations, external calls, critical functions, catch block quality
-3. ตรวจสอบ unhandled rejections: handler, floating promises, promise chain error propagation
-4. ตรวจสอบ error classification: types (network, validation, auth, server, client), hierarchy, custom classes
-5. ตรวจสอบ error messages: user-friendly, actionable, localized, clarity, specificity, no technical jargon
-6. ตรวจสอบ error codes: system, uniqueness, documentation, API response, mapping to user messages
-7. ตรวจสอบ graceful degradation: fallback UI, partial functionality, cached data fallback, offline mode
-8. ตรวจสอบ error recovery: retry, state recovery, error boundary reset, form data preservation
-9. ตรวจสอบ error logging: completeness, context (stack, user, request), PII scrubbing, log level, structured logging
-10. ตรวจสอบ error monitoring: integration, alerting, rate thresholds, grouping, dashboard, trend tracking
-11. จัด severity ตาม `## Rules` section Severity Classification
+ทำตาม `references/error-handling.md`
 
-### 5. Debuggability Review
+### 5. Debuggability
 
 > Goal: รู้ว่า logging, error messages, naming, complexity เหมาะสมหรือไม่
 
-1. ตรวจสอบ logging มี context ครบถ้วน และใช้ structured logging
-2. ตรวจสอบ log levels ที่เหมาะสม (debug, info, warn, error) และ timestamps, correlation IDs
-3. ระบุ logging ที่ซ้ำซ้อน
-4. ตรวจสอบ error messages ชัดเจน เป็นประโยค ระบุสาเหตุและวิธีแก้ไข ใช้ typed error classes
-5. ระบุ generic error messages ที่ไม่มีประโยชน์
-6. ตรวจสอบ naming บ่งบอกถึง purpose, verbs สำหรับ functions, nouns สำหรับ variables และ types
-7. ตรวจสอบ abbreviations ที่ไม่ชัดเจน
-8. ตรวจสอบ nesting levels สูงสุด 3 levels, functions ที่ยาวกว่า 50 บรรทัด
-9. ตรวจสอบ early returns และ guard clauses
+ทำตาม `references/debuggability.md`
 
-### 6. Recovery And Degradation Review
+### 6. Recovery
 
 > Goal: ระบบพังบางส่วนได้โดยไม่หยุดทำงานทั้งหมด
 
-1. ค้นหา retry, circuit breaker, fallback patterns
-2. ตรวจสอบ timeout และ backoff strategies
-3. ระบุ dependencies ที่ไม่มี fallback
-4. ตรวจสอบ queue, dead letter queue, และ error recovery workers
+ทำตาม `references/recovery.md`
 
-### 7. Check Related Workflows
+### 7. Related Workflows
 
 > Goal: ไม่ซ้ำซ้อนกับ review skills อื่น
 
@@ -106,13 +76,12 @@ Review ความเสถียรของ application ครอบคลุ
 
 > Goal: Issues ถูก validate และรายงานเป็นตาราง พร้อม review score
 
-1. ทำ `/deep-validate` เพื่อ validate findings
-2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ review score ตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
-6. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
-7. ทำ `/suggest-next-action`
+1. ทำ `/deep-validate` เพื่อ validate findings จากทุก section
+2. จัดลำดับตาม severity: Critical → High → Medium → Low
+3. คำนวณ review score ตาม `references/scoring.md`
+4. ทำ `/report` พร้อม `/report-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
+5. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -120,14 +89,14 @@ Review ความเสถียรของ application ครอบคลุ
 
 - เน้นความเสถียรของ app โดยรวม ไม่ใช่แค่ app crash
 - ไม่ซ้ำกับ `/review-codebase-everythink` ใช้ workflows เหล่านั้นแทนการเขียนซ้ำ
-- รายละเอียด debugging principles อยู่ใน `/follow-debugging` แล้ว
+- รายละเอียด debuggability principles อยู่ใน `references/debuggability.md`
 - workflow นี้เป็น review เท่านั้น ไม่ fix
 
 ### 2. Skip Conditions
 
-- ถ้า project ไม่มี error boundaries → ข้าม Step 4 item 1
-- ถ้า project ไม่มี error monitoring → ข้าม Step 4 item 10
-- ถ้า project ไม่มี async operations → ข้าม Step 4 item 3
+- ถ้า project ไม่มี error boundaries → ข้าม `app-stability` error boundary checks
+- ถ้า project ไม่มี error monitoring → ข้าม `error-handling` error monitoring checks
+- ถ้า project ไม่มี async operations → ข้าม `error-handling` unhandled rejections checks
 
 ### 3. Severity Classification
 

@@ -10,6 +10,7 @@
 | [prepare-and-scan.md](prepare-and-scan.md) | Prepare And Scan |
 | [realtime-review.md](realtime-review.md) | Realtime Review |
 | [report.md](report.md) | Report |
+| [scoring.md](scoring.md) | Scoring and metrics |
 | [subscription-review.md](subscription-review.md) | Subscription Review |
 | [validate-findings.md](validate-findings.md) | Validate Findings |
 | [website.md](website.md) | Official resources and links |

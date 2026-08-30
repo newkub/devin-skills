@@ -26,60 +26,31 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 ## Execute
 
 ### 1. Read Flow
-
-> Goal: เข้าใจ workflow ปัจจุบัน
-
-1. ดูรายละเอียดใน [references/read-flow.md](references/read-flow.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/read-flow.md](references/read-flow.md)
 
 ### 2. Check Speed
-
-> Goal: ลด latency และ unnecessary steps
-
-1. ดูรายละเอียดใน [references/check-speed.md](references/check-speed.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/check-speed.md](references/check-speed.md)
 
 ### 3. Check Safety
-
-> Goal: ลด risk ของ workflow
-
-1. ดูรายละเอียดใน [references/check-safety.md](references/check-safety.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/check-safety.md](references/check-safety.md)
 
 ### 4. Check Usability
-
-> Goal: ให้ง่ายต่อการเรียกใช้
-
-1. ดูรายละเอียดใน [references/check-usability.md](references/check-usability.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/check-usability.md](references/check-usability.md)
 
 ### 5. Check Efficiency
-
-> Goal: ใช้ resources คุ้มค่า
-
-1. ดูรายละเอียดใน [references/check-efficiency.md](references/check-efficiency.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/check-efficiency.md](references/check-efficiency.md)
 
 ### 6. Remove Redundancy
-
-> Goal: ไม่ซ้ำซ้อน
-
-1. ดูรายละเอียดใน [references/remove-redundancy.md](references/remove-redundancy.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/remove-redundancy.md](references/remove-redundancy.md)
 
 ### 7. Report
-
-> Goal: สรุปผลการ review
-
-1. ดูรายละเอียดใน [references/report.md](references/report.md)
-2. บันทึก findings พร้อม severity และ evidence
+ทำตาม [references/report.md](references/report.md)
 
 ### 8. Validate
+ทำตาม [references/validate.md](references/validate.md)
 
-> Goal: ตรวจสอบความถูกต้องหลัง review
-
-1. ดูรายละเอียดใน [references/validate.md](references/validate.md)
-2. บันทึก findings พร้อม severity และ evidence
+### 9. Score And Report
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules
 
@@ -89,6 +60,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ existing skills แทนการ duplicate logic
 - ถ้ามี destructive change → ต้อง dry-run ก่อน
 - ไม่เกิน 250 บรรทัดต่อไฟล์
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
 ## Expected Outcome
 

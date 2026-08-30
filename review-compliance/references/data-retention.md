@@ -47,6 +47,15 @@
 - Exception record: มี record สำหรับ exception
 - ตรวจ documentation: มี policy, มี schedule, มี exception
 
+## Review Checklist
+
+1. ตรวจสอบ retention policy: data category, retention period, legal basis, business need
+2. ตรวจสอบ retention schedule: data inventory, retention trigger, retention end, automated enforcement
+3. ตรวจสอบ retention enforcement: automated deletion, manual deletion, deletion verification, backup deletion
+4. ตรวจสอบ legal hold: hold process, hold scope, hold release, hold record
+5. ตรวจสอบ data disposal: secure disposal, disposal verification, disposal record, third-party disposal
+6. ตรวจสอบ retention documentation: policy document, schedule document, exception record
+
 ## Severity Criteria
 
 - Critical: no retention policy, no automated deletion, indefinite retention without basis, no legal hold process, no disposal

@@ -1,7 +1,9 @@
-# review-risk References Index
+# References
 
-| File | Responsibility |
-|---|---|
-| [risk-categories.md](risk-categories.md) | Risk Categories |
-| [risk-scoring.md](risk-scoring.md) | Risk Scoring |
-| [website.md](website.md) | Official resources and links |
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | `scoring.md` | Risk readiness score and supplementary metrics |
+| 2 | `risk-categories.md` | Risk categories |
+| 3 | `risk-checklist.md` | Risk review checklist: identify and mitigation |
+| 4 | `risk-scoring.md` | Risk scoring |
+| 5 | `website.md` | Official resources and links |

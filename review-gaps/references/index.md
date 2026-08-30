@@ -1,10 +1,11 @@
 # review-gaps References Index
 
-| File | Responsibility |
-|---|---|
-| [collect.md](collect.md) | Collect |
-| [deduplicate.md](deduplicate.md) | Deduplicate |
-| [prepare.md](prepare.md) | Prepare |
-| [prioritize.md](prioritize.md) | Prioritize |
-| [report.md](report.md) | Report |
-| [website.md](website.md) | Official resources and links |
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | [scoring.md](scoring.md) | Supplementary metrics for gap aggregation review |
+| 2 | [collect.md](collect.md) | Collect |
+| 3 | [deduplicate.md](deduplicate.md) | Deduplicate |
+| 4 | [prepare.md](prepare.md) | Prepare |
+| 5 | [prioritize.md](prioritize.md) | Prioritize |
+| 6 | [report.md](report.md) | Report |
+| 7 | [website.md](website.md) | Official resources and links |

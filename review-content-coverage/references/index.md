@@ -1,6 +1,7 @@
 # review-content-coverage References Index
 
-| File | Responsibility |
-|---|---|
-| [content-coverage-checklist.md](content-coverage-checklist.md) | Detailed content coverage checks |
-| [website.md](website.md) | Official resources and links |
+| No. | File | Responsibility |
+|-----|------|----------------|
+| 1 | [scoring.md](scoring.md) | Supplementary metrics for content coverage review |
+| 2 | [content-coverage-checklist.md](content-coverage-checklist.md) | Detailed content coverage checks |
+| 3 | [website.md](website.md) | Official resources and links |

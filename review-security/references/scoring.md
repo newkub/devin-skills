@@ -40,3 +40,18 @@ review score = weighted average ของ findings ทั้งหมด
 - Score < 70 → แนะนำให้แก้ไขก่อน release
 - Score 70-79 → แนะนำให้แก้ไขในรอบถัดไป
 - Score 80+ → ผ่านเกณฑ์, ติดตาม medium/low ตามลำดับ
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % security-sensitive files reviewed | reviewed security files / total security files × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with file + line + evidence | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with actionable recommendation | actionable findings / total findings × 100 |
+| Risk Exposure Index | count of critical/high findings on critical paths | count of Critical/High findings in auth/data paths |
+| Regression Risk Score | chance changes break existing flows | weighted severity in public API and auth flows × 100 |
+| MTTR Estimate | estimated remediation time by severity | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | score improvement after fixes | (after_score - before_score) / before_score × 100 |
+| OWASP Coverage | % OWASP Top 10 categories reviewed | categories reviewed / 10 × 100 |
+| Dependency Risk Score | vulnerable/outdated dependency exposure | count critical/high CVE / total dependencies × 100 |

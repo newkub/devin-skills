@@ -44,6 +44,15 @@
 - Opt-out right: consumer สามารถ opt-out ของ incentive
 - ตรวจ incentive: มี notice, มี opt-out
 
+## Review Checklist
+
+1. ตรวจสอบ consumer rights: know, delete, opt-out of sale, non-discrimination
+2. ตรวจสอบ notice at collection: privacy policy, categories collected, purpose, retention
+3. ตรวจสอบ opt-out mechanism: `Do Not Sell My Personal Information` link, opt-out signal (GPC)
+4. ตรวจสอบ sale of data: sale definition, third-party sale, service provider exception
+5. ตรวจสอบ verification: identity verification for requests, authorized agent
+6. ตรวจสอบ financial incentive: notice, value, opt-out right
+
 ## Severity Criteria
 
 - Critical: no opt-out mechanism, no notice at collection, no consumer right process, selling data without notice, no verification

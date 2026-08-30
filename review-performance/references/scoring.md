@@ -62,3 +62,18 @@ overall_score = sum(dimension_score) / count(dimensions)
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - ไม่นับ dimensions ที่ถูก skip ใน overall score
 - ใช้ score เปรียบเทียบ before/after เท่านั้น ไม่ใช้สำหรับ pass/fail
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % hot paths profiled/audited | reviewed hot paths / total hot paths × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with profile/measurement evidence | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with clear optimization path | actionable findings / total findings × 100 |
+| Core Web Vitals Score | CWV pass rate | passing pages / total pages × 100 |
+| Hot Path Bottleneck Count | slow operations on critical paths | count of high/critical findings on hot paths |
+| Cache Hit/Miss Estimate | cache effectiveness | hits / (hits + misses) from metrics |
+| N+1 Query Count | repeated queries detected | count of N+1 patterns |
+| Memory Leak Risk | unbounded collections/listeners | count of leak patterns × severity |
+| Before/After Trend | score improvement | (after - before) / before × 100 |

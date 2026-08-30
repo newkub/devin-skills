@@ -3,36 +3,14 @@ title: Reference Index
 description: ตาราง mapping reference files กับความรับผิดชอบ
 ---
 
-# Reference Index
+# review-devin-global-subagents References Index
 
-## Reference Files Mapping
-
-| File | Responsibility |
-|---|---|
-| `frontmatter.md` | ตรวจสอบ frontmatter fields: `name`, `description`, `model`, `allowed-tools`, `permissions` |
-| `sections.md` | ตรวจสอบลำดับ sections, line count <=250, ไม่มี TODO/MOCK/placeholder |
-| `style.md` | ตรวจสอบ style conventions: backticks, ไม่มี `**` bold, heading Title Case |
-| `safety.md` | ตรวจสอบ safety: ไม่มี secrets hardcoded, `permissions` deny risky paths, `allowed-tools` เหมาะสม |
-| `scoring.md` | สูตรคำนวณ review score, grade A-F, action threshold Score<70 |
-| `index.md` | ตาราง mapping reference files กับความรับผิดชอบ (ไฟล์นี้) |
-| [website.md](website.md) | Official resources and links |
-
-## Usage
-
-อ้างอิง reference file ตามขั้นตอนใน `SKILL.md`:
-
-- ขั้นตอน Check Frontmatter → `references/frontmatter.md`
-- ขั้นตอน Check Sections → `references/sections.md`
-- ขั้นตอน Check Style → `references/style.md`
-- ขั้นตอน Check Safety → `references/safety.md`
-- ขั้นตอน Score And Report → `references/scoring.md`
-
-## Single Responsibility
-
-แต่ละ reference file ครอบคลุม concern เดียวเท่านั้น:
-
-- `frontmatter.md` → frontmatter validation เท่านั้น
-- `sections.md` → section order และ line count เท่านั้น
-- `style.md` → style conventions เท่านั้น
-- `safety.md` → safety และ security เท่านั้น
-- `scoring.md` → scoring formula เท่านั้น
+| No. | File | Responsibility |
+|---|---|---|
+| 1 | [frontmatter.md](frontmatter.md) | Frontmatter validation |
+| 2 | [prepare-context.md](prepare-context.md) | Prepare subagent context |
+| 3 | [safety.md](safety.md) | Safety and security checks |
+| 4 | [scoring.md](scoring.md) | Review score, grade and metrics |
+| 5 | [sections.md](sections.md) | Section order and line count |
+| 6 | [style.md](style.md) | Style conventions |
+| 7 | [website.md](website.md) | Official resources and links |

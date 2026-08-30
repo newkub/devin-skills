@@ -1,6 +1,6 @@
 ---
 name: review-observability
-description: Review observability ครอบคลุม metrics, tracing, logging, alerting, SLO/SLI, APM, dashboards
+description: Review observability for metrics, tracing, logging, alerting, dashboards, SLO/SLI, APM, and incidents
 ---
 
 ## Goal
@@ -9,87 +9,71 @@ Review observability ครอบคลุมทุก dimension ของ syste
 
 ## Scope
 
-observability review สำหรับ: metrics collection, distributed tracing, structured logging, alerting, dashboards, SLO/SLI/SLA, OpenTelemetry, APM integration, incident response readiness
+observability review สำหรับ: metrics collection, distributed tracing, structured logging, alerting, dashboards, SLO/SLI/SLA, APM integration, incident response readiness
 
 ไม่รวม stability review (ใช้ `/review-stability`) และ security review (ใช้ `/review-security`)
 
 ## Execute
 
-### 1. Prepare And Scan
-
-เตรียม context ก่อนเริ่ม review
+### 1. Prepare
 
 > Goal: เข้าใจ observability setup ใน codebase
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ observability setup, logging, monitoring, tracing
-2. ระบุ metrics library (Prometheus, StatsD, OpenTelemetry Metrics), tracing library (OpenTelemetry, Jaeger, Zipkin, Datadog), logging library (pino, winston, structlog)
-3. ระบุ APM tool (Datadog, New Relic, Sentry, AppSignal, Honeycomb), alerting platform (PagerDuty, Opsgenie, Slack)
-4. ระบุ dashboard tool (Grafana, Datadog dashboards, Kibana), SLO/SLI definitions
-5. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
-6. ทำ `/review-codebase-everythink` เพื่อให้ analyzers ครอบคลุม categories ล่าสุด
-7. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-8. ทำ `/run-review` เพื่อรัน review CLI และดึง metrics ล่าสุด
+ทำตาม `references/prepare.md`
 
-### 2. Metrics Review
+### 2. Metrics
 
 > Goal: ครอบคลุมทุก metrics dimension
 
-Review metrics collection (types, naming, labels, RED/USE, business, exposure) and severity thresholds. See [references/metrics.md](references/metrics.md).
+ทำตาม `references/metrics.md`
 
-### 3. Distributed Tracing Review
+### 3. Tracing
 
 > Goal: ครอบคลุมทุก tracing dimension
 
-Review trace context propagation, span creation, cross-service propagation, sampling, instrumentation, correlation, and backend integration. See [references/tracing.md](references/tracing.md).
+ทำตาม `references/tracing.md`
 
-### 4. Structured Logging Review
+### 4. Logging
 
 > Goal: ครอบคลุมทุก logging dimension
 
-Review log levels, format, context, content, retention, aggregation, search, and severity thresholds. See [references/logging.md](references/logging.md).
+ทำตาม `references/logging.md`
 
-### 5. Alerting Review
+### 5. Alerting
 
 > Goal: ครอบคลุมทุก alerting dimension
 
-Review alert rules, thresholds, routing, escalation, noise reduction, content, and testing. See [references/alerting.md](references/alerting.md).
+ทำตาม `references/alerting.md`
 
-### 6. Dashboards Review
+### 6. Dashboards
 
 > Goal: ครอบคลุมทุก dashboard dimension
 
-Review dashboard coverage, layout, drill-down, freshness, access, documentation, and severity thresholds. See [references/dashboards.md](references/dashboards.md).
+ทำตาม `references/dashboards.md`
 
-### 7. SLO And SLI Review
+### 7. SLO/SLI
 
 > Goal: ครอบคลุมทุก SLO/SLI dimension
 
-Review SLI/SLO/SLA definition, error budget, reporting, review cycle, and severity thresholds. See [references/slo-sli.md](references/slo-sli.md).
+ทำตาม `references/slo-sli.md`
 
-### 8. APM Integration Review
+### 8. APM
 
 > Goal: ครอบคลุมทุก APM dimension
 
-Review APM agent setup, auto-instrumentation, custom instrumentation, overhead, retention, alerting, and severity thresholds. See [references/apm.md](references/apm.md).
+ทำตาม `references/apm.md`
 
-### 9. Incident Response Readiness Review
+### 9. Incident Response
 
 > Goal: ครอบคลุมทุก incident response dimension
 
-Review runbook, on-call, incident declaration, communication, postmortem, chaos engineering, and severity thresholds. See [references/incident-response.md](references/incident-response.md).
+ทำตาม `references/incident-response.md`
 
-### 10. Validate, Score And Report
-
-ตรวจสอบ findings และรายงานผล
+### 10. Validate Score And Report
 
 > Goal: findings ถูก validate และรายงานเป็นตาราง
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
-2. ทำ `/deep-validate` สำหรับ validate issues จากทุก section
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. คำนวณ review score ตาม [references/scoring.md](references/scoring.md)
-5. ทำ `/report` พร้อม `/report-table`
-6. ทำ `/suggest-next-action`
+ทำตาม `references/scoring.md`
 
 ## Rules
 
@@ -125,13 +109,13 @@ Review runbook, on-call, incident declaration, communication, postmortem, chaos 
 
 ### 5. Health Score
 
-- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน [references/scoring.md](references/scoring.md)
+- คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
 - 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
 - แสดง score ต่อ dimension และ overall score
 
 ### 6. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 

@@ -17,47 +17,35 @@ Review code และ text ให้อ่านง่าย ลด cognitive lo
 
 > Goal: ตรวจสอบว่า skill/feedback สามารถใช้ซ้ำหรือขยายได้หรือไม่
 
-1. ทำ `/consider-use-in-another-skills` เพื่อดูทิศทางการใช้ซ้ำ/ขยาย
+1. ทำตาม [references/consider-reuse.md](references/consider-reuse.md)
 2. บันทึก findings ที่อาจกระทบ skill อื่นหรือต้องปรับทั่วโปรเจกต์
 
 ### 2. Scan
 
 > Goal: หาส่วนทีอ่านยากใน code และ text
 
-1. ทำ `/scan-codebase` หา long functions, deep nesting, complex expressions
-2. หาไฟล์ skill ทีเกิน 250 บรรทัด
-3. ระบุ comment ทีพูดเรื่อง what แทน why
-4. หา complex conditionals, magic numbers, nested callbacks
+1. ทำตาม [references/scan.md](references/scan.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Evaluate
 
 > Goal: ตรวจสอบปัจจัยทีมีผลต่อ readability
 
-1. Function/section ไม่เกิน 250 บรรทัด
-2. Nesting ไม่เกิน 3 ระดับ
-3. Line length ไม่เกิน 120 ตัวอักษร
-4. ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill names`
-5. ไม่ใช้ `**` (bold markers) — ใช้ backticks แทน
-6. ชื่อ variables, functions, classes บอก intent ชัดเจน
-7. จัดเรียง code ตามลำดับทีอ่านง่าย
+ทำตาม [references/readability-checklist.md](references/readability-checklist.md)
 
 ### 4. Score
 
 > Goal: ให้คะแนน readability ต่อ file หรือ section
 
-1. ให้คะแนน 0-100 ต่อ file/section
-2. ระบุ grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-3. ระบุจุดทีทำให้คะแนนลด
-4. เปรียบเทียบ before/after ถ้ามี
+1. ทำตาม [references/score.md](references/score.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Report
 
 > Goal: สรุป findings พร้อม recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
-2. สร้างตาราง: File, Section, Issue, Severity, Recommendation
-3. จัดลำดับตาม severity: Critical → High → Medium → Low
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ทำตาม [references/report.md](references/report.md)
+2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
 
@@ -87,6 +75,10 @@ Review code และ text ให้อ่านง่าย ลด cognitive lo
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - ถ้าต้องแก้ไขให้สรุป recommendations และใช้ `/edit-only`
 - ทุก finding ต้องมี file path, line number และ evidence
+
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
 
 ## Expected Outcome
 

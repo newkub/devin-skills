@@ -2,14 +2,14 @@
 
 ### 1. Skip Conditions
 
-- ถ้า project ไม่มี EU users → ข้าม Section 2
-- ถ้า project ไม่มี California users → ข้าม Section 3
-- ถ้า project ไม่มี health data → ข้าม Section 4
-- ถ้า project ไม่มี payment processing → ข้าม Section 5
-- ถ้า project ไม่ใช่ SaaS → ข้าม Section 6
-- ถ้า project ไม่มี Thailand users หรือไม่อยู่ในเขต PDPA → ข้าม Section 7
-- ถ้า project ไม่มี consent collection → ข้าม Section 8
-- ถ้า project ไม่มี cross-border transfer → ข้าม Section 12
+- ถ้า project ไม่มี EU users → ข้าม GDPR review
+- ถ้า project ไม่มี California users → ข้าม CCPA review
+- ถ้า project ไม่มี health data → ข้าม HIPAA review
+- ถ้า project ไม่มี payment processing → ข้าม PCI-DSS review
+- ถ้า project ไม่ใช่ SaaS → ข้าม SOC2 review
+- ถ้า project ไม่มี Thailand users หรือไม่อยู่ในเขต PDPA → ข้าม PDPA review
+- ถ้า project ไม่มี consent collection → ข้าม Consent Management review
+- ถ้า project ไม่มี cross-border transfer → ข้าม Cross-Border Transfer review
 
 ### 2. Severity Classification
 

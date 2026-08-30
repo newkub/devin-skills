@@ -8,6 +8,15 @@
 
 ครอบคลุม compute, database, storage, edge, serverless, container, real-time, static hosting, auth, payment และ AI inference สำหรับ TypeScript/Rust projects
 
+## Execute
+
+1. ระบุ workload pattern: long-running, burst, scale-to-zero, CPU-heavy, edge, stateful, database, static
+2. ระบุ requirements: latency, throughput, scale, persistence, budget, team familiarity, lock-in tolerance
+3. ทำ `/follow-my-tech-stack` เพื่อดู cloud, deployment, storage, auth, database options ที่ใช้งาน
+4. ดู `references/cloud-selection.md` สำหรับ cloud selection matrix หลายคอลัมน์
+5. ระบุ trade-offs, avoid conditions, และ alternatives ของแต่ละ scenario
+6. บันทึก recommended cloud providers พร้อมเหตุผล
+
 ## Selection Criteria
 
 1. Workload pattern: long-running, burst/event, scale-to-zero, CPU-heavy, edge, stateful, database, static, real-time

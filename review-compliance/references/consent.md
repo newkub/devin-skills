@@ -45,6 +45,15 @@
 - Frequency: ระบุ frequency, ให้ user เลือกได้
 - ตรวจ marketing: มี opt-in, มี unsubscribe, มี frequency control
 
+## Review Checklist
+
+1. ตรวจสอบ consent collection: granular consent, purpose-specific, pre-ticked box avoidance, explicit consent
+2. ตรวจสอบ consent withdrawal: easy withdrawal, withdrawal mechanism, withdrawal effect
+3. ตรวจสอบ consent record: who, when, what, version, proof of consent
+4. ตรวจสอบ consent versioning: policy version, consent re-collection on change, version history
+5. ตรวจสอบ consent for minors: age verification, parental consent, age-appropriate design
+6. ตรวจสอบ consent for marketing: opt-in vs opt-out, unsubscribe, frequency
+
 ## Severity Criteria
 
 - Critical: no consent mechanism, pre-ticked consent, no withdrawal, no consent record, no minor protection

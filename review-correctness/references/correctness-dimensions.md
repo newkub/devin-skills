@@ -8,6 +8,13 @@ Reference สำหรับ dimensions ทีต้องตรวจสอบ�
 
 ครอบคลุม requirements, contracts, types, logic, concurrency, data transformations, และ tests
 
+## Prepare And Scan
+
+1. ทำ `/scan-codebase` เพื่อเข้าใจ structure, tech stack, และ conventions
+2. อ่าน `README.md`, `AGENTS.md`, requirements, acceptance criteria ถ้ามี
+3. ระบุ test framework, test files, และ coverage setup
+4. ถ้าไม่มี code ที่ต้อง review → stop และ report
+
 ## Requirements And Contracts
 
 1. เปรียบเทียบ expected behavior จาก requirements กับ code

@@ -38,6 +38,14 @@
 - Surveillance risk: ประเมิน surveillance risk
 - ตรวจ Schrems II: มี measure, มี assessment, มี risk evaluation
 
+## Review Checklist
+
+1. ตรวจสอบ transfer identification: data flow mapping, transfer direction, data category, recipient country
+2. ตรวจสอบ transfer mechanism: adequacy decision, Standard Contractual Clauses (SCC), Binding Corporate Rules (BCR), derogation
+3. ตรวจสอบ transfer safeguard: encryption, pseudonymization, access control, contractual safeguard
+4. ตรวจสอบ transfer documentation: transfer record, transfer impact assessment, safeguard documentation
+5. ตรวจสอบ Schrems II compliance: supplementary measure, transfer assessment, surveillance risk
+
 ## Severity Criteria
 
 - Critical: no transfer mechanism, no safeguard, no transfer documentation, transfer to non-adequate country without SCC

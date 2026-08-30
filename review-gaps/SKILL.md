@@ -81,6 +81,10 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 - ใช้ `/report-table` สำหรับตาราง
 - ระบุ quick wins และ top 3-5 opportunities เท่าที่จำเป็น
 
+## Metrics
+
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
 ## Expected Outcome
 
 - ตาราง prioritized improvement list พร้อม category, score, action skill

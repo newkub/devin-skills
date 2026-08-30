@@ -41,3 +41,18 @@ test_quality_score = (sum(category_scores) / total_categories) × 100
 
 - Score >= 70 และไม่มี critical gaps → Go
 - Score < 70 หรือมี critical gaps → No-Go แนะนำให้เขียน tests ก่อน
+
+## Supplementary Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Review Coverage Ratio | % tests reviewed for quality | reviewed tests / total tests × 100 |
+| 2 | False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| 3 | Evidence Strength Score | % findings with test output evidence | findings with evidence / total findings × 100 |
+| 4 | Actionability Score | % findings with clear next action | actionable findings / total findings × 100 |
+| 5 | Flaky Rate | % tests that fail inconsistently | flaky tests / total tests run × 100 |
+| 6 | Coverage Trend | coverage change over time | (after - before) / before × 100 |
+| 7 | Mutation Score | test quality by mutation testing | killed mutants / total mutants × 100 |
+| 8 | Test Pyramid Balance | unit:integration:e2e ratio | abs(unit% - 70) + abs(integration% - 20) + abs(e2e% - 10) |
+| 9 | MTTR Estimate | estimated time to fix failures | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| 10 | CI Confidence Score | tests passing consistently in CI | successful CI runs / total runs × 100 |

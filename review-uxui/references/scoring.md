@@ -59,3 +59,19 @@ overall_score = average(dimension_scores) × 100 / 100
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 - รายงาน progress bar และ grade ใน report
 - รายงาน design maturity scorecard ควบคู่กับ review score
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % UI components/screens reviewed | reviewed components / total components × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with file + line + snippet | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with actionable recommendation | actionable findings / total findings × 100 |
+| Design Maturity Scorecard | 1-5 score per design dimension | average of 5 dimension maturity scores |
+| Accessibility Coverage | % WCAG success criteria checked | criteria checked / total applicable × 100 |
+| Before/After Trend | score improvement after fixes | (after_score - before_score) / before_score × 100 |
+| Design Debt Velocity | rate of design drift accumulation | new design inconsistencies / review cycle |
+| Component Token Compliance | % components using design tokens | token-compliant components / total × 100 |
+| Cross-Platform Consistency | consistency across breakpoints/platforms | consistent elements / total checked × 100 |
+

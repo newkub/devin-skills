@@ -2,6 +2,7 @@
 
 | Section | Reference File |
 |---------|---------------|
+| 1. Prepare And Scan | `security-risk.md` |
 | 2. Authentication | `authentication.md` |
 | 3. Authorization | `authorization.md` |
 | 4. OWASP Top 10 | `owasp-top-10.md` |
@@ -10,6 +11,5 @@
 | 7. API Security | `api-security.md` |
 | 8. Encryption | `encryption.md` |
 | 9. File Upload Security | `file-upload.md` |
-| 10. Security Risk Analysis | `security-risk.md` |
-| Scoring | `scoring.md` |
-| [website.md](website.md) | Official resources and links |
+| 10. Validate Score And Report | `scoring.md` |
+| Website | `website.md` |

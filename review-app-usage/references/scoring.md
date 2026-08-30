@@ -1,4 +1,4 @@
-# Scoring Formula
+# Scoring
 
 คำนวณ review score สำหรับ `usage.kdl` spec
 
@@ -26,3 +26,18 @@ review score = weighted average ของ findings ทั้งหมด
 
 - Score < 70 → แนะนำให้เรียก `update-usage-md` ก่อนดำเนินการ
 - Score < 50 → หยุดและ report อย่างเดียว
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % ของ commands, flags, args, metadata, effects และ USAGE.md sections ใน scope ที่ review ครบ | reviewed / total × 100 |
+| False Positive Rate | % ของ findings ที่ไม่ใช่ปัญหาจริง | false positives / total findings × 100 |
+| Evidence Strength Score | % ของ findings ที่มี evidence (file path หรือ line number) | findings with evidence / total findings × 100 |
+| Actionability Score | % ของ findings ที่มีคำแนะนำชัดเจน | actionable findings / total findings × 100 |
+| Severity Distribution | จำนวน findings แยกตาม severity | count of Critical/High/Medium/Low/Info |
+| MTTR Estimate | ระยะเวลาโดยประมาณในการแก้ | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| Before/After Trend | การปรับปรุงคะแนนระหว่างก่อนและหลัง | (after - before) / before × 100 |
+| Risk Exposure Index | จำนวน Critical/High findings ใน syntax, metadata, commands หลัก, version และ effects | count of Critical/High findings in critical scope |
+| Scope Boundary Adherence | % ของ findings อยู่ใน scope ของ `usage.kdl` และ `USAGE.md` | in-scope findings / total findings × 100 |
+| Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |

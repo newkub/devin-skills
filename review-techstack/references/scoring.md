@@ -42,3 +42,18 @@ review score = sum(severity_weight[finding] for all findings) / count(findings)
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 - แสดง score ใน report พร้อม recommended actions
 - ถ้า score < 60 → แนะนำ priority actions ก่อนจบ review
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % manifest/workspaces reviewed | reviewed workspaces / total × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with package/evidence data | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with migration/update path | actionable findings / total findings × 100 |
+| Dependency Risk Score | vulnerable/outdated exposure | count critical/high CVE / total deps × 100 |
+| EOL/Deprecated Count | deprecated or EOL dependencies | count of EOL/deprecated packages |
+| Duplicate Package Count | duplicate package versions | count of duplicate packages |
+| License Compliance | non-compliant licenses | non-compliant packages / total packages × 100 |
+| Tree-Shaking Health | dead-code/exports removed | tree-shaken size / total size × 100 |
+| Before/After Trend | score improvement | (after - before) / before × 100 |

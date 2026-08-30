@@ -52,3 +52,18 @@ review score = weighted average ของ findings ตาม severity
 - แสดง score ต่อ dimension และ overall score
 - แสดง grade และ progress bar
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
+
+## Supplementary Metrics
+
+| Metric | Description | How To Calculate |
+|--------|-------------|------------------|
+| Review Coverage Ratio | % source files audited | reviewed files / total source files × 100 |
+| False Positive Rate | % findings that are false positives | false positives / total findings × 100 |
+| Evidence Strength Score | % findings with tool/line evidence | findings with evidence / total findings × 100 |
+| Actionability Score | % findings with clear fix | actionable findings / total findings × 100 |
+| Tech Debt Score | accumulated debt weighted by severity | weighted severity / max possible × 100 |
+| Cognitive Complexity | average complexity per function | total complexity / function count |
+| Dead Code Count | unused exports/functions | count from `knip`/`madge` |
+| Code Duplication Rate | % duplicated code | duplicated lines / total lines × 100 |
+| Hardcode Count | magic numbers/strings on critical paths | count of hardcoded values |
+| Before/After Trend | score improvement | (after - before) / before × 100 |

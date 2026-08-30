@@ -26,31 +26,28 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
-1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
 2. ทำ `/review-codebase-everythink` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-4. ดูรายละเอียด dimension checks ใน [references/index.md](references/index.md)
-5. ทำ data flow analysis ตาม `references/data-flow.md`
-6. ทำ cost impact analysis ตาม `references/cost-impact.md`
+4. ตรวจสอบแต่ละ dimension ตาม reference files ใน [references/index.md](references/index.md)
+5. ทำ data flow analysis ตาม [references/data-flow.md](references/data-flow.md)
+6. ทำ cost impact analysis ตาม [references/cost-impact.md](references/cost-impact.md)
 7. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
 
 ### 3. Review Import, Export And Barrel Exports
 
 > Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
-1. ดูรายละเอียดใน [references/import-export.md](references/import-export.md)
-2. ยืนยัน public API ซ่อน implementation details
-3. ตรวจ circular dependencies และ unused imports
-4. ประเมิน tree-shaking และ bundle size impact
-5. บันทึก findings
+1. ทำตาม [references/import-export.md](references/import-export.md)
+2. บันทึก findings
 
 ### 4. Validate Findings
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
-1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ: cross-reference, type safety, runtime, security, compliance
+1. ทำ `/deep-validate` เพื่อ validate findings หลายมิติ
 2. ทำ `/deep-validate` สำหรับ validate issues แต่ละอย่าง
-3. จัดลำดับการ validate ตาม severity: Critical → High → Medium → Low → Info
+3. ใช้เกณฑ์ severity จาก [references/severity-classification.md](references/severity-classification.md)
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
@@ -62,7 +59,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 2. สร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
 3. สร้างตาราง Metrics Summary ตาม dimension พร้อม status indicators และ score
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
-5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+5. ทำ `/suggest-next-action`
 
 ### 6. Implement All
 
@@ -73,57 +70,11 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 ## Rules
 
-### 1. Severity Classification
-
-- Critical: broken architecture, circular dependency ระหว่าง core modules, God object/module ที่ทำทุกอย่าง, Singleton abuse ที่ทำให้ test ไม่ได้, anti-pattern ใน critical path ที่ก่อน bugs, global mutable state ใน critical path, no environment separation ระหว่าง prod กับ non-prod, no timeout/retries บน critical external call, no fallback สำหรับ critical dependency, SPOF โดยไม่มี redundancy, no governance for critical decisions, missing security/compliance policy, no code review requirement, no CI in critical path
-- High: violated SOLID principle, tight coupling, pattern ที่ใช้ผิด intent, Factory overuse, Observer ที่ไม่ cleanup, premature abstraction, SRP violation ใน module หลัก, missing dependency inversion, missing boundaries ระหว่าง layers, leaky abstraction, missing retry/timeout/fallback/circuit breaker, incomplete ownership, missing coding standards, single reviewer for critical code
-- Medium: inconsistent pattern, missing abstraction, Decorator chain ยาวเกินไป, Facade ที่ซ่อน complexity มากเกินไป, pattern ที่ over-engineer, mixed concerns, unclear public API, minor side effect leak, suboptimal retry/backoff, policy gaps, outdated owner, informal decision process
-- Low: minor pattern improvement, pattern ที่ simplify ได้, cosmetic, documentation gap, minor naming improvement
-
-### 2. Evidence-Based Findings
-
-- ทุก finding ต้องมี file path และ line number
-- ไม่เดา ใช้ tools สำหรับ verification (`madge`, `knip`, `ast-grep`)
-- ระบุ module, package, boundary, dependency, policy, owner ที่เกี่ยวข้อง
-- ระบุ false positives ที่พบ
-
-### 3. Review Independence
-
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/review-codebase-everythink` สำหรับระบุ issues ใน code
-- แยก review process จาก fix process
-- ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
-
-### 4. Scope Boundaries
-
-- ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
-- ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
-- ไม่ review refactor opportunities ลึกที่ `/review-codebase-everythink` ทำ
-- ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
-- ไม่ review security controls — ใช้ `/review-delivery`
-- ไม่ review code quality — ใช้ `/review-quality`
-- focus ที่ system-level: patterns, boundaries, coupling, SOLID, scalability, modularity, isolation, resilience, reliability, governance
-
-### 5. Skip Conditions
-
-- ถ้า project ไม่มี module/package structure → ข้าม package boundaries checks
-- ถ้า project ไม่มี tests → ข้าม test isolation checks
-- ถ้า project ไม่มี container/process separation → ข้าม environment isolation checks
-- ถ้า project ไม่มี async operations → ข้าม concurrency checks
-
-### 6. Health Score
-
-- คำนวณ review score เป็น percentage (0-100)
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
-- Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
-
-### 7. Formatting
-
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+1. ทุก finding ต้องมี file path, line number และ evidence — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
+2. แยก review process จาก fix process และ scope boundaries ตาม [references/review-rules.md](references/review-rules.md)
+3. ใช้ skip conditions เมื่อ project ไม่มีสภาพแวดล้อมที่เกี่ยวข้อง — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
+4. คำนวณ score, grade, status, และ metrics ตาม [references/scoring.md](references/scoring.md)
+5. รายงานด้วยตารางและไม่ใช้ `**` bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 
 ## Expected Outcome
 

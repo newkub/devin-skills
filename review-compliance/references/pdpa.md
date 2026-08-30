@@ -77,6 +77,18 @@ PDPA = พ.ร.บ. คุ้มครองข้อมูลส่วนบุ
 - DPO independence: DPO ไม่มี conflict of interest
 - ตรวจ DPO: มี appointment, มี contact, มี independence
 
+## Review Checklist
+
+1. ตรวจสอบ data controller และ data processor: ระบุ role, ระบุ joint controller, มี data processing agreement (DPA) ระหว่าง controller และ processor
+2. ตรวจสอบ lawful basis (Section 24): consent, contract, legal obligation, vital interest, public task, legitimate interest — ทุก processing activity มี lawful basis
+3. ตรวจสอบ sensitive data (Section 26): race, ethnicity, political opinion, religious belief, sexual behavior, health, disability, labor union, genetic, biometric, sex, criminal record — ต้องมี explicit consent หรือ statutory exception
+4. ตรวจสอบ data subject rights (Section 30-37): access, rectification, erasure, portability, objection, restriction — มี process สำหรับทุก right, response ภายใน 30 วัน
+5. ตรวจสอบ consent management (Section 19): explicit consent, withdrawal mechanism, consent record, consent versioning, minor consent (Section 20 — ผู้เยาว์ต้องมีผู้ปกครองให้ consent)
+6. ตรวจสอบ privacy notice (Section 23): มี privacy notice ก่อนหรือขณะเก็บข้อมูล, ระบุ purpose, categories, retention, rights, contact
+7. ตรวจสอบ data breach notification (Section 37): แจ้ง PDPC ภายใน 72 ชม. หลังรู้, แจ้ง data subject ถ้ามี high risk, มี breach record
+8. ตรวจสอบ cross-border transfer (Section 28-29): แจ้ง PDPC และได้รับอนุมัติ, หรือ adequate protection, หรือ SCC, หรือ BCR, หรือ exception
+9. ตรวจสอบ DPO (Section 41): แต่งตั้ง DPO ถ้าเป็น public authority, ประมวลผลข้อมูลจำนวนมาก, เฝ้าระวังข้อมูลเป็นประจำ — มี contact point
+
 ## Severity Criteria
 
 - Critical: no lawful basis, no consent mechanism, no sensitive data protection (Section 26), no DSAR process, no breach notification, no privacy notice, cross-border transfer without PDPC approval, no DPA with processor

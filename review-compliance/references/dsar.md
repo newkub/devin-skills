@@ -46,6 +46,15 @@
 - Legal claims: ไม่ลบถ้าจำเป็นสำหรับ legal claim
 - ตรวจ exception: มี exception policy, มี documentation
 
+## Review Checklist
+
+1. ตรวจสอบ DSAR intake: request channel, identity verification, request tracking, response timeline
+2. ตรวจสอบ access request: data export, data categories, data sources, third-party data
+3. ตรวจสอบ deletion request: data deletion, backup deletion, third-party deletion, deletion verification
+4. ตรวจสอบ portability request: machine-readable format, data export, direct transmission
+5. ตรวจสอบ objection request: processing stop, marketing opt-out, profiling stop
+6. ตรวจสอบ DSAR exception: legal obligation, freedom of expression, public interest, legal claims
+
 ## Severity Criteria
 
 - Critical: no DSAR process, no identity verification, no deletion including backup, no response within timeline, no tracking
