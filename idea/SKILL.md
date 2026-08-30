@@ -2,6 +2,13 @@
 name: idea
 description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
 argument-hint: "[topic]"
+related:
+  - idea-features
+  - review-frontend
+  - report
+  - report-table
+  - suggest-next-action
+  - realize-implementation
 ---
 
 ## Goal

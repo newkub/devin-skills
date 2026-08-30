@@ -2,6 +2,9 @@
 name: follow-best-practice
 description: เขียนตาม best practices จาก context นั้นๆ
 argument-hint: "[topic]"
+related:
+  - learn-from-web
+  - deep-research
 ---
 
 ## Goal

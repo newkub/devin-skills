@@ -4,33 +4,33 @@ Workflow for creating a browser extension.
 
 ## Steps
 
-1. **Choose the target browser** (Chrome, Firefox, Safari, Edge)
-2. **Set up project structure**
+1. Choose the target browser (Chrome, Firefox, Safari, Edge)
+2. Set up project structure
    - Create manifest.json
    - Set up source files
    - Configure build tools
 
-3. **Implement core features**
+3. Implement core features
    - Background scripts
    - Content scripts
    - Popup UI
    - Options page
 
-4. **Configure permissions**
+4. Configure permissions
    - Add required permissions to manifest
    - Request user consent
 
-5. **Test locally**
+5. Test locally
    - Load unpacked extension
    - Test functionality
    - Debug with DevTools
 
-6. **Build for production**
+6. Build for production
    - Minify code
    - Optimize assets
    - Package extension
 
-7. **Publish to store**
+7. Publish to store
    - Submit to Chrome Web Store
    - Submit to Firefox Add-ons
    - Submit to Safari App Store

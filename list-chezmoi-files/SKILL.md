@@ -1,6 +1,11 @@
 ---
 name: list-chezmoi-files
 description: รายการไฟล์ทีถูก chezmoi จัดการ (chezmoi managed)
+related:
+  - follow-my-global-cli
+  - report-table
+  - suggest-next-action
+  - update-chezmoi
 ---
 
 ## Goal

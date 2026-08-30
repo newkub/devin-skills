@@ -2,6 +2,10 @@
 name: open-web-dependencies
 description: เปิด website ของ dependencies จาก package manifest
 argument-hint: "[manifest]"
+related:
+  - analyze-dependencies
+  - check-circular-dependencies
+  - list-dependencies
 ---
 
 ## Goal

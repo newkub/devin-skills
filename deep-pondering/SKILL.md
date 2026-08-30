@@ -2,6 +2,12 @@
 name: deep-pondering
 description: ครุ่นคิดเชิงลึกก่อนตัดสินใจสำหรับงานซับซ้อน ระบุ trade-offs และ uncertainties
 argument-hint: "[topic]"
+related:
+  - deep-thinking
+  - deep-plan
+  - ask-me
+  - deep-research
+  - suggest-next-action
 ---
 
 ## Goal

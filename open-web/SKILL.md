@@ -2,7 +2,6 @@
 name: open-web
 description: เปิด website ด้วย native OS command
 related:
-  - open-files-in-web
   - follow-tool-agent-browser
   - watch-browser-and-fix
 ---

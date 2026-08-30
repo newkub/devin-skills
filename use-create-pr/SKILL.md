@@ -1,6 +1,6 @@
 ---
 name: use-create-pr
-description: สร้าง PR แบบ fully-featured พร้อม template body, test cases accordion, annotated screenshots, และ staging preview links
+description: สร้าง PR พร้อม template, test cases, screenshots, และ preview links
 related:
   - create-github-pr
   - capture-terminal
@@ -25,6 +25,19 @@ related:
 - ต้องการใส่ staging preview link สำหรับแต่ละ test case
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ตรวจสอบ environment สำหรับสร้าง PR
+
+1. ตรวจสอบ git: `git --version`
+2. ตรวจสอบ `gh` CLI: `gh --version`
+3. ถ้ายังไม่มี `gh`:
+   - `mise use -g gh`
+   - หรือ `brew install gh` / `winget install --id GitHub.cli`
+4. Login: `gh auth login` แล้ว verify `gh auth status`
+5. ตรวจสอบ remote: `git remote -v` ต้องมี origin
+6. ถ้าใช้ `bunx` สำหรับ screenshots/scripts → `bun --version`
 
 ### 1. Prepare
 
@@ -117,7 +130,7 @@ related:
 ข้อกำหนด:
 
 - 1 test case = 1 `<details>`
-- แต่ละ test case ต้องมี **staging preview link** (ไม่ใช่รูปทีกดได้)
+- แต่ละ test case ต้องมี staging preview link (ไม่ใช่รูปทีกดได้)
 - ใส่รูป annotate ภายใน `<details>`
 - ถ้าไม่มี staging ให้ใส่ local preview URL พร้อม note ให้ reviewer ทราบ
 

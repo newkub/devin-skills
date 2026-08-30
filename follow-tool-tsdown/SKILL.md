@@ -7,6 +7,7 @@ related:
   - follow-tool-build-packages
   - follow-lang-typescript
   - follow-tool-vitest
+  - follow-test
 ---
 
 ## Goal

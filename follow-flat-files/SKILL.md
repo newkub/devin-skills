@@ -1,6 +1,11 @@
 ---
 name: follow-flat-files
 description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file `<name>.md`
+related:
+  - check-reference
+  - update-references
+  - deep-validate
+  - report
 ---
 
 ## Goal

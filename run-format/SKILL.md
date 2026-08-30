@@ -1,6 +1,13 @@
 ---
 name: run-format
 description: ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter
+related:
+  - convert-files-format
+  - follow-best-practice
+  - suggest-next-action
+  - run-check
+  - run-verify
+  - resolve-errors
 ---
 
 ## Goal

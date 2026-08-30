@@ -1,6 +1,11 @@
 ---
 name: roleplay-solutions-engineer
 description: รับบทเป็น solutions engineer ประเมิน integration, security, scalability, ROI สำหรับ enterprise buyer
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

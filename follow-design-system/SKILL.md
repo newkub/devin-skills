@@ -1,6 +1,10 @@
 ---
 name: follow-design-system
 description: Design system principles พื้นฐานที่ใช้ได้กับทุก platform (TUI, Web, Desktop, Mobile)
+related:
+  - follow-lib-unocss-theme
+  - review-frontend
+  - review-codebase-everything
 ---
 
 ## Goal

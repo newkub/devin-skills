@@ -6,6 +6,8 @@ related:
   - follow-tool-validator
   - follow-tool-biome
   - follow-tool-dprint
+  - run-verify
+  - update-references
 ---
 
 ## Goal

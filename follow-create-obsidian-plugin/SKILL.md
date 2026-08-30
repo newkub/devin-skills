@@ -37,7 +37,7 @@ related:
 1. โคลน https://github.com/obsidianmd/obsidian-sample-plugin หรือสร้างโครงสร้างเอง
 2. สร้าง `src/`, `styles.css`, `manifest.json`, `versions.json`, `package.json`, `tsconfig.json`, `esbuild.config.mjs`
 3. เปลี่ยนชื่อ folder ให้ตรงกับ `id` ใน `manifest.json`
-4. ติดตั้ง dependencies ด้วย `bun install` หรือ `npm install`
+4. ติดตั้ง dependencies ด้วย `bun install` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm install`)
 
 ### 3. Configure Manifest
 
@@ -74,7 +74,7 @@ related:
 
 1. ใช้ `esbuild.config.mjs` สำหรับ compile `src/main.ts` → `main.js`
 2. ตั้งค่า `external: ['obsidian', 'fs', 'path']` ใน esbuild
-3. รัน `bun run dev` หรือ `npm run dev` สำหรับ watch
+3. รัน `bun run dev` สำหรับ watch (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm run dev`)
 4. ตรวจสอบ `main.js` และ `styles.css` อยู่ root
 
 ### 7. Test In Obsidian

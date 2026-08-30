@@ -1,6 +1,13 @@
 ---
 name: follow-tool-biome
 description: ตั้งค่าและใช้งาน Biome สำหรับ linting และ formatting แทน ESLint/Prettier
+related:
+  - follow-create-biome-plugins
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

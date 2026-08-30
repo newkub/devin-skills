@@ -8,6 +8,8 @@ related:
   - open-web
   - report-table
   - search-files-patterns
+  - enhance-prompt
+  - ask-me
 ---
 
 ## Goal

@@ -21,9 +21,9 @@ description: กฎตรวจสอบ style conventions ของ AGENT.md
 
 ## Bold Markers
 
-- ห้ามใช้ `**` bold markers ทั้งหมด
+- ห้ามใช้ `` bold markers ทั้งหมด
 - ใช้ backticks สำหรับ emphasis แทน bold
-- ถ้าพบ `**` → flag เป็น Medium
+- ถ้าพบ `` → flag เป็น Medium
 
 ## Heading Format
 

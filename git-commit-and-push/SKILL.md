@@ -6,6 +6,7 @@ related:
   - git-push
   - refactor-commit
   - update-references
+  - follow-monorepo
 ---
 
 ## Goal

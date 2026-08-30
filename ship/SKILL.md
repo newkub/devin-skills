@@ -79,11 +79,11 @@ Ship workspace ตั้งแต่ prepare จนถึง production โด�
 > Goal: เลือก path ทีเหมาะสม
 
 - ถ้า user ระบุชัด → ใช้ตามที user ระบุ
-- **local**: งานเล็กน้อย low-risk ไม่ต้องการ push
-- **CI**: งานใหญ่ high-risk ต้องการ multi-platform หรือ push branch
-- **review**: ต้องการ human-in-the-loop ก่อน merge
-- **fix**: มี review findings ต้อง fix
-- **release**: merge dev → main → release/deploy
+- local: งานเล็กน้อย low-risk ไม่ต้องการ push
+- CI: งานใหญ่ high-risk ต้องการ multi-platform หรือ push branch
+- review: ต้องการ human-in-the-loop ก่อน merge
+- fix: มี review findings ต้อง fix
+- release: merge dev → main → release/deploy
 - ถ้าไม่ชัด → `/ask-me`
 
 ### 5. Verify

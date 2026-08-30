@@ -4,6 +4,12 @@ description: วางแผนงานและ architecture อย่าง�
 argument-hint: "[prompt]"
 related:
   - review-architecture
+  - follow-architecture
+  - analyze-project
+  - use-lib-better
+  - use-lib-effective
+  - prioritize
+  - pondering
 ---
 
 ## Goal

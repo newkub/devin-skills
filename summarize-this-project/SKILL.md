@@ -2,6 +2,10 @@
 name: summarize-this-project
 description: สรุป project ปัจจุบัน features และ solutions
 argument-hint: "[target]"
+related:
+  - summarize-this-chat-session
+  - at-this-repo
+  - edit-this-repo
 ---
 
 ## Goal

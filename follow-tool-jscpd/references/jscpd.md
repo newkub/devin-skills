@@ -20,12 +20,12 @@ bunx jscpd /path/to/code
 
 ## Version Info
 
-- **Latest stable:** `5.0.16` (Rust engine)
-- **TypeScript engine:** `4.2.5` (`jscpd@4`)
-- **License:** MIT
-- **Node.js:** `>=18` (for npm wrapper; Rust binary is self-contained)
-- **Source:** https://github.com/kucherenko/jscpd
-- **Docs:** https://jscpd.dev
+- Latest stable: `5.0.16` (Rust engine)
+- TypeScript engine: `4.2.5` (`jscpd@4`)
+- License: MIT
+- Node.js: `>=18` (for npm wrapper; Rust binary is self-contained)
+- Source: https://github.com/kucherenko/jscpd
+- Docs: https://jscpd.dev
 
 ## Peer Dependencies
 

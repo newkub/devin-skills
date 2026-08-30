@@ -1,6 +1,9 @@
 ---
 name: follow-lib-framework-agnostic
 description: พัฒนา libraries ที่ใช้ได้บน multiple frameworks โดยไม่ผูกติด framework ใด
+related:
+  - deep-validate
+  - follow-lang-typescript
 ---
 
 ## Goal

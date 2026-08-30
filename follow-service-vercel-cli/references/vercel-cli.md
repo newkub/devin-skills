@@ -6,11 +6,11 @@ Vercel CLI is the command-line interface for the Vercel platform. It allows you 
 
 ## Version Info
 
-- **Package**: `vercel`
-- **Latest stable**: `59.5.0`
-- **Node.js requirement**: `>= 18`
-- **License**: Apache-2.0
-- **npm**: https://www.npmjs.com/package/vercel
+- Package: `vercel`
+- Latest stable: `59.5.0`
+- Node.js requirement: `>= 18`
+- License: Apache-2.0
+- npm: https://www.npmjs.com/package/vercel
 
 ## Install
 

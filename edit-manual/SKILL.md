@@ -2,6 +2,14 @@
 name: edit-manual
 description: แก้ไข configuration files ด้วยมืออย่างปลอดภัย ควบคุมการเปลี่ยนแปลงแบบ precise พร้อม rollback
 argument-hint: "[file]"
+related:
+  - review-delivery
+  - ask-me
+  - learn-from-web
+  - follow-best-practice
+  - dont-over-engineer
+  - use-scripts
+  - update-references
 ---
 
 ## Goal

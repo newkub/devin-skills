@@ -5,6 +5,8 @@ related:
   - follow-math-optimization
   - follow-math-probability
   - follow-math-game-theory
+  - pondering
+  - check-skills-related
 ---
 
 ## Goal

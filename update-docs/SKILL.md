@@ -1,6 +1,13 @@
 ---
 name: update-docs
 description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
+related:
+  - idea-features
+  - check-should-update
+  - check-monorepo
+  - update-features-md
+  - review-writing
+  - update-references
 ---
 
 ## Goal

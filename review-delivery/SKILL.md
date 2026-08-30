@@ -7,6 +7,8 @@ related:
   - review-security
   - review-quality
   - list-ci-configs
+  - scan-codebase
+  - deep-analyze
 ---
 
 ## Goal

@@ -9,6 +9,7 @@ related:
   - report-table
   - create-video-story
   - gen-image-character
+  - enhance-prompt
 ---
 
 ## Goal

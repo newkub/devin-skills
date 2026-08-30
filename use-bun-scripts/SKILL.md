@@ -1,6 +1,9 @@
 ---
 name: use-bun-scripts
 description: สร้าง Bun scripts สำหรับ automate งาน
+related:
+  - follow-runtime-bun
+  - update-devin-global-skills
 ---
 
 ## Goal

@@ -1,6 +1,13 @@
 ---
 name: update-dot-devin
 description: สร้าง .devin structure ครบถ้วนรวม rules และ hooks โดยไม่มี workflows directory
+related:
+  - check-monorepo
+  - analyze-project
+  - update-project-rules
+  - update-devin-global-skills
+  - update-agents-md
+  - run-lint
 ---
 
 ## Goal

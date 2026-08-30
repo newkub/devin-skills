@@ -1,6 +1,10 @@
 ---
 name: follow-event-driven
 description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
+related:
+  - follow-layered-architecture
+  - follow-microservices-architecture
+  - follow-clean-architecture
 ---
 
 ## Goal

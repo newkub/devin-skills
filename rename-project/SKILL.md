@@ -119,19 +119,19 @@ Rename project จากชื่อเก่าเป้นชื่อให�
 
 > Goal: เปลี่ยนชื่อ Worker, D1, Pages ให้ตรง
 
-1. **Worker**: เปลี่ยน `name` ใน `wrangler.toml` แล้ว deploy ใหม
+1. Worker: เปลี่ยน `name` ใน `wrangler.toml` แล้ว deploy ใหม
    ```bash
    wrangler deploy
    ```
-2. **D1**: ถ้าต้องการ rename database ให้ใช้ Cloudflare dashboard หรือ API
+2. D1: ถ้าต้องการ rename database ให้ใช้ Cloudflare dashboard หรือ API
    ```bash
    # หรืออัปเดต database_name ใน wrangler.toml โดยไม่ต้องเปลี่ยน database_id
    ```
-3. **Pages project เก่า**: ลบด้วย
+3. Pages project เก่า: ลบด้วย
    ```bash
    wrangler pages project delete <old-name> --yes
    ```
-4. **Secrets / env vars**:
+4. Secrets / env vars:
    - ลบเก่าใน `wrangler secret` หรือ GitHub/GitLab secrets
    - สร้างใหม่ในระบบทีต้องการ (ใช้ `/follow-secret-manager`)
 5. อัปเดต `.github/workflows/deploy.yml` ชี้ไปยัง secrets ใหม่

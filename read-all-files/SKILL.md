@@ -1,6 +1,11 @@
 ---
 name: read-all-files
 description: อ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะห์
+related:
+  - read-devin-context
+  - read-related
+  - all-files
+  - update-references
 ---
 
 ## Goal

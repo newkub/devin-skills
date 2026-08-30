@@ -1,6 +1,11 @@
 ---
 name: prioritize
 description: จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - pondering
 ---
 
 ## Goal

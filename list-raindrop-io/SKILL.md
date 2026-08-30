@@ -6,6 +6,7 @@ related:
   - follow-my-tech-stack
   - follow-my-global-cli
   - use-scripts
+  - report-table
 ---
 
 ## Goal

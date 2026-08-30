@@ -2,6 +2,12 @@
 name: idea-merge-files
 description: สร้างไอเดียการ merge ไฟล์หรือ skills ที่ซ้ำซ้อนให้เป็นหน่วยเดียว
 argument-hint: "[target]"
+related:
+  - scan-codebase
+  - review-redundancy
+  - dont-over-engineer
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

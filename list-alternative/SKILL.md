@@ -1,6 +1,11 @@
 ---
 name: list-alternative
 description: List alternatives ที่ดีกว่าสำหรับ libraries, tools, frameworks หรือ patterns
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - deep-research
 ---
 
 ## Goal

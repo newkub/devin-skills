@@ -6,7 +6,6 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - review-security
-  - check-broken-skills-references
   - check-reference
 ---
 

@@ -2,6 +2,10 @@
 name: open-in-wezterm
 description: เปิด directory ใน WezTerm terminal ด้วย wezterm start --cwd
 argument-hint: "[path]"
+related:
+  - open-in-devin
+  - open-in-explorer
+  - open-in-windows-terminal
 ---
 
 ## Goal

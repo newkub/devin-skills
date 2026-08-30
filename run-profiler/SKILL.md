@@ -1,6 +1,13 @@
 ---
 name: run-profiler
 description: Profile performance เพื่อหา bottlenecks และ optimize
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - run-check
+  - run-verify
+  - review-codebase-everything
 ---
 
 ## Goal

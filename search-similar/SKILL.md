@@ -7,6 +7,8 @@ related:
   - list-devin-global-skills
   - consider-use-in-another-skills
   - create-similar
+  - ask-me
+  - report-table
 ---
 
 ## Goal

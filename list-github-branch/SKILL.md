@@ -2,6 +2,11 @@
 name: list-github-branch
 description: แสดง branches ทั้งหมดของ repo ที่ระบุบน GitHub
 argument-hint: "[repo]"
+related:
+  - list-git-branch
+  - cleanup-git-branch
+  - create-dev-branch
+  - report-table
 ---
 
 ## Goal

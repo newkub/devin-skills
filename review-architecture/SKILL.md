@@ -1,6 +1,14 @@
 ---
 name: review-architecture
 description: Review architecture, modularity, isolation, resilience, reliability, governance
+related:
+  - scan-codebase
+  - deep-analyze
+  - review-codebase-everything
+  - deep-validate
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

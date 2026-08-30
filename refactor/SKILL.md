@@ -54,7 +54,7 @@ Refactor code ตาม context โดยเลือก sub-skill ทีเห�
 > Goal: ตรวจ references หลัง refactor
 
 1. หลัง sub-skill เสร็จ ทำ `/update-references` ถ้ามีการย้าย/ลบ/rename
-2. ตรวจ broken references ด้วย `/check-broken-skills-references` ถ้ามี
+2. ตรวจ broken references ด้วย `/check-skills-related` ถ้ามี
 3. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/test/build
 
 ### 4. Report

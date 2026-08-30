@@ -7,6 +7,8 @@ related:
   - update-all-devin-global-skills
   - update-version-latest
   - follow-my-package-manager
+  - follow-my-global-cli
+  - update-project-skills
 ---
 
 ## Goal

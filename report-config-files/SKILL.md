@@ -3,6 +3,8 @@ name: report-config-files
 description: Report configuration files, defaults, and drift in the project
 related:
   - list-ci-configs
+  - report-table
+  - report-file-structure
 ---
 
 ## Goal

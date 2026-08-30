@@ -19,6 +19,7 @@ related:
   - review-quality
   - check-should-update
   - ship
+  - report
 ---
 
 ## Goal

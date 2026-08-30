@@ -1,6 +1,11 @@
 ---
 name: roleplay-performance-engineer
 description: รับบทเป็น performance engineer ตรวจ latency, throughput, resource, cost จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

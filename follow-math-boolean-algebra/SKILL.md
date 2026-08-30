@@ -7,6 +7,7 @@ related:
   - follow-math-concepts
   - follow-debugging
   - follow-software-engineering
+  - simplify
 ---
 
 ## Goal

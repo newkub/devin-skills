@@ -20,10 +20,10 @@ bunx --bun @biomejs/biome init
 
 ## Version Info
 
-- **Latest stable:** `2.5.10`
-- **License:** MIT OR Apache-2.0
-- **Node.js:** `>=14.21.3`
-- **Source:** https://biomejs.dev
+- Latest stable: `2.5.10`
+- License: MIT OR Apache-2.0
+- Node.js: `>=14.21.3`
+- Source: https://biomejs.dev
 
 ## Peer Dependencies
 

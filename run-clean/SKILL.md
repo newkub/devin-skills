@@ -1,6 +1,12 @@
 ---
 name: run-clean
 description: Clean build artifacts และ cache เพื่อเริ่มต้นใหม่
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - run-check
+  - run-verify
 ---
 
 ## Goal

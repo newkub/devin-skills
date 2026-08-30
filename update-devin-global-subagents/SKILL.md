@@ -7,8 +7,7 @@ related:
   - review-devin-global-subagents
   - follow-create-devin-plugins
   - ship
-  - ship
-  - ship
+  - ask-me
 ---
 
 ## Goal

@@ -66,13 +66,13 @@ messages: {
 
 ระบุ `"code"` หรือ `"whitespace"` ถ้า `--fix` สามารถแก้ปัญหาอัตโนมัติได้
 
-**สำคัญ:** `fixable` เป็น mandatory สำหรับ fixable rules ถ้าไม่ระบุ ESLint จะ throw error เมื่อ rule พยายาม produce fix ถ้า rule ไม่ fix ได้ให้ omit คุณสมบัตินี้
+สำคัญ: `fixable` เป็น mandatory สำหรับ fixable rules ถ้าไม่ระบุ ESLint จะ throw error เมื่อ rule พยายาม produce fix ถ้า rule ไม่ fix ได้ให้ omit คุณสมบัตินี้
 
 ### hasSuggestions
 
 `boolean` ระบุว่า rule สามารถ return suggestions ได้หรือไม่ (default `false`)
 
-**สำคัญ:** `hasSuggestions` เป็น mandatory สำหรับ rules ที่ provide suggestions ต้องตั้งเป็น `true` ไม่งั้น ESLint จะ throw error
+สำคัญ: `hasSuggestions` เป็น mandatory สำหรับ rules ที่ provide suggestions ต้องตั้งเป็น `true` ไม่งั้น ESLint จะ throw error
 
 ### schema
 

@@ -1,6 +1,14 @@
 ---
 name: roleplay-user
 description: รับบทเป็น user อ่าน code แล้วคิดผ่าน user journey เพื่อ review usage และ UX/UI แบบไม่รันอะไรจริง
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - review-codebase-everything
+  - deep-thinking
+  - pondering
 ---
 
 ## Goal

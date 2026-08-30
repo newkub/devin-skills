@@ -1,6 +1,13 @@
 ---
 name: follow-tool-websearch
 description: ใช้ crw สำหรับ web search และ scrape อย่างรวดเร็วและมีประสิทธิภาพ
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal
@@ -15,6 +22,20 @@ description: ใช้ crw สำหรับ web search และ scrape อย
 - การเลือก format ที่เหมาะสมกับวัตถุประสงค์
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ติดตั้งและตั้งค่า `crw`
+
+1. ติดตั้ง `crw` ตามระบบ:
+   - macOS: `brew install us/crw/crw`
+   - Linux: `curl -fsSL https://fastcrw.com/install | CRW_BINARY=crw sh`
+   - Windows: `winget install fastcrw.crw` หรือ `scoop install crw`
+   - Rust: `cargo install crw-cli`
+2. รัน `crw setup` เพื่อเชื่อมต่อ managed API (ถ้าใช้ managed cloud)
+3. ถ้า self-hosted: ตั้งค่า `~/.config/crw/config.toml` และ SearXNG URL
+4. Verify: `crw search "test"` ต้องได้ผลลัพธ์
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup crw`
 
 ### 1. Search With Crw
 

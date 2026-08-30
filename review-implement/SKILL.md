@@ -1,6 +1,14 @@
 ---
 name: review-implement
 description: Review implementation readiness ก่อน execute implement-* skills
+related:
+  - scan-codebase
+  - report-table
+  - suggest-next-action
+  - realize-implementation
+  - implement-plan
+  - implement-mock
+  - implement-github-task
 ---
 
 ## Goal

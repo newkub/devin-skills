@@ -8,6 +8,7 @@ related:
   - review-writing
   - check-reference
   - report-config-files
+  - learn-from-web
 ---
 
 ## Goal

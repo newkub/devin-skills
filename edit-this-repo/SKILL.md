@@ -9,6 +9,7 @@ related:
   - deep-validate
   - report
   - ask-me
+  - refactor
 ---
 
 ## Goal

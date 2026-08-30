@@ -1,6 +1,10 @@
 ---
 name: grouping
 description: จัดกลุ่ม items ตามหมวดหมู่หรือคุณลักษณะ
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal

@@ -74,7 +74,7 @@ export default defineConfig({
 
 Plugins ขยายชุด rules ที่ใช้ได้ Oxlint รองรับหลาย plugins แบบ native ใน Rust โดยไม่ต้องพึ่ง JavaScript dependency tree
 
-การตั้งค่า `plugins` จะ **overwrite** default plugin set — ต้องระบุทุก plugin ที่ต้องการเปิด:
+การตั้งค่า `plugins` จะ overwrite default plugin set — ต้องระบุทุก plugin ที่ต้องการเปิด:
 
 ```json
 {

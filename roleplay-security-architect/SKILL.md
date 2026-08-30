@@ -1,6 +1,11 @@
 ---
 name: roleplay-security-architect
 description: รับบทเป็น security architect ตรวจ threat model, defense in depth, design จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -142,9 +142,9 @@ bunup --no-config
 
 ## Output Formats
 
-- **esm**: ECMAScript modules (default)
-- **cjs**: CommonJS modules
-- **iife**: Immediately Invoked Function Expression (for browser)
+- esm: ECMAScript modules (default)
+- cjs: CommonJS modules
+- iife: Immediately Invoked Function Expression (for browser)
 
 ### File Extensions
 

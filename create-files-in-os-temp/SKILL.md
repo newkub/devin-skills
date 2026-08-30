@@ -1,6 +1,10 @@
 ---
 name: create-files-in-os-temp
 description: สร้างไฟล์หรือ directory ชั่วคราวใน OS temp directory
+related:
+  - cleanup-files-in-computer
+  - cleanup-files-in-project
+  - create-new-project-in-drive-d
 ---
 
 ## Goal

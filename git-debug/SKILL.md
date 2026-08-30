@@ -5,6 +5,10 @@ related:
   - check-git-files-history
   - search-in-git
   - restore-from-git-log
+  - deep-debug
+  - ask-me
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

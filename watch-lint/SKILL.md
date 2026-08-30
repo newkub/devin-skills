@@ -2,6 +2,10 @@
 name: watch-lint
 description: ตรวจสอบและ monitor linting ในโปรเจกต์อย่างต่อเนื่อง พร้อมจัดการ errors อัตโนมัติ
 argument-hint: "[linter]"
+related:
+  - run-typecheck
+  - resolve-errors
+  - run-lint
 ---
 
 ## Goal

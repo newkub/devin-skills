@@ -1,6 +1,12 @@
 ---
 name: all-folders
 description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
+related:
+  - analyze-project
+  - scan-codebase
+  - deep-validate
+  - resolve-errors
+  - report
 ---
 
 ## Goal

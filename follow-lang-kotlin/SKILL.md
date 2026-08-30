@@ -1,6 +1,13 @@
 ---
 name: follow-lang-kotlin
 description: พัฒนา Kotlin applications ด้วย Clean Architecture และ Compose
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-lua
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

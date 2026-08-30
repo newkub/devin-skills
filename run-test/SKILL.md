@@ -8,6 +8,7 @@ related:
   - run-test-e2e
   - run-test-api
   - run-test-coverage
+  - deep-validate
 ---
 
 ## Goal

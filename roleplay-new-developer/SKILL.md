@@ -1,6 +1,14 @@
 ---
 name: roleplay-new-developer
 description: รับบทเป็น dev ใหม่ที่เพิ่ง join พยายาม onboard ผ่าน codebase หาสิ่งที่งง ขาด docs ไม่มี context
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - review-codebase-everything
+  - run-dev
+  - deep-thinking
 ---
 
 ## Goal

@@ -2,6 +2,14 @@
 name: prepare-skills-context
 description: ตรวจจับ AI tool อ่าน global rules related skills และเลือก template ก่อนเขียน skill
 argument-hint: "[skill-name]"
+related:
+  - update-devin-global-skills
+  - deep-validate
+  - ask-me
+  - check-skills-related
+  - check-reference
+  - follow-best-practice
+  - follow-architecture
 ---
 
 ## Goal

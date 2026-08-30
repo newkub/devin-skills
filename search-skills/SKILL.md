@@ -2,6 +2,13 @@
 name: search-skills
 description: ค้นหา skills ด้วย command `skills find <keyword>` อย่างมีประสิทธิภาพ
 argument-hint: "[keyword]"
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - follow-tool-websearch
+  - follow-tool-crw
+  - learn-from-web
 ---
 
 ## Goal

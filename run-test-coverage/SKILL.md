@@ -1,6 +1,14 @@
 ---
 name: run-test-coverage
 description: รัน test coverage analysis ตรวจสอบ framework และบรรลุ 100% coverage
+related:
+  - follow-coverage
+  - review-content-coverage
+  - run-test
+  - run-check
+  - run-verify
+  - suggest-next-action
+  - review-quality
 ---
 
 ## Goal

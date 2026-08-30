@@ -1,6 +1,9 @@
 ---
 name: follow-lib-unocss-theme
 description: ตั้งค่า theme colors และ Design System ด้วย UnoCSS แบบ HSL variables
+related:
+  - follow-lib-unocss
+  - follow-create-biome-plugins
 ---
 
 ## Goal

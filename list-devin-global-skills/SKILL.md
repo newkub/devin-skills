@@ -1,6 +1,9 @@
 ---
 name: list-devin-global-skills
 description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
+related:
+  - report-table
+  - search-skills
 ---
 
 ## Goal

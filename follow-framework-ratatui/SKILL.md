@@ -1,6 +1,13 @@
 ---
 name: follow-framework-ratatui
 description: สร้าง TUI ด้วย Ratatui library สำหรับ Rust
+related:
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-framework-desktop-app
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 ---
 
 ## Goal

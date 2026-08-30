@@ -8,6 +8,7 @@ related:
   - report-table
   - deep-validate
   - ship
+  - deep-plan
 ---
 
 ## Goal

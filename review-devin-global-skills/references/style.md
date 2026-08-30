@@ -12,9 +12,9 @@
 
 ## Bold Markers
 
-- ห้ามใช้ `**` (bold markers) ในเนื้อหาทั้งหมด
+- ห้ามใช้ `` (bold markers) ในเนื้อหาทั้งหมด
 - ใช้ backticks สำหรับ emphasis แทน bold
-- ถ้าพบ `**` → flag เป็น Medium
+- ถ้าพบ `` → flag เป็น Medium
 
 ## Heading Conventions
 

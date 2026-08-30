@@ -1,6 +1,13 @@
 ---
 name: follow-tool-eslint
 description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
+related:
+  - follow-create-eslint-plugins
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

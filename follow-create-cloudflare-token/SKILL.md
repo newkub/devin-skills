@@ -121,8 +121,8 @@ related:
 1. บอก user ว่าหน้า dashboard จะ pre-fill permissions ไว้แล้ว
 2. ให้ตรวจ Account resources: `Include all accounts` หรือเลือก account ทีต้องการ
 3. ให้ตรวจ Zone resources: `All zones` (ถ้ามี Workers Routes)
-4. กด **Continue to summary** → **Create Token**
-5. บอก user ให้ **copy token secret ทันที** เพราะ dashboard แสดงครั้งเดียว
+4. กด Continue to summary → Create Token
+5. บอก user ให้ copy token secret ทันที เพราะ dashboard แสดงครั้งเดียว
 
 ### 7. Store Token In Secret Manager
 

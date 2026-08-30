@@ -1,6 +1,13 @@
 ---
 name: follow-lib-jspm
 description: JSPM เป็น ES Module Package Manager และ CDN ที่ใช้มาตรฐาน native ES modules พร้อม import maps
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

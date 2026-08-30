@@ -3,11 +3,12 @@ name: check-file-relations
 description: วิเคราะห์ความสัมพันธ์ระหว่างไฟล์ หา imports, consumers และ references
 related:
   - update-references
-  - check-broken-skills-references
   - check-code-structure
   - report-table
   - follow-tool-ast-grep
   - search-files-patterns
+  - suggest-next-action
+  - refactor
 ---
 
 ## Goal

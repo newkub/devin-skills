@@ -1,6 +1,10 @@
 ---
 name: report-idea
 description: สร้างและรายงานไอเดียตาม user context ทั่วไป
+related:
+  - report-table
+  - report-before
+  - suggest-next-action
 ---
 
 ## Goal

@@ -6,6 +6,7 @@ related:
   - open-github-pr
   - list-github-issue
   - create-github-issue
+  - delete
 ---
 
 ## Goal

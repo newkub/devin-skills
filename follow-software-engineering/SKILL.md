@@ -6,6 +6,9 @@ related:
   - follow-math-boolean-algebra
   - follow-math-optimization
   - follow-math-probability
+  - follow-clean-architecture
+  - follow-programming-paradigm
+  - review-frontend
 ---
 
 ## Goal

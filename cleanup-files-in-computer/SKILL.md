@@ -7,6 +7,7 @@ related:
   - follow-tool-mise
   - use-lib-better
   - delete
+  - report-table
 ---
 
 ## Goal

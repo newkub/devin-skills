@@ -1,6 +1,11 @@
 ---
 name: report-architecture-diagram
 description: วาด architecture diagram ด้วย ANSI box-drawing characters ในแชทจาก codebase จริง
+related:
+  - scan-codebase
+  - report-table
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

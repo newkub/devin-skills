@@ -2,6 +2,10 @@
 name: open-in-explorer
 description: เปิดไฟล์หรือ directory ใน Windows Explorer ด้วย explorer <path>
 argument-hint: "[path]"
+related:
+  - open-in-devin
+  - open-in-wezterm
+  - open-in-windows-terminal
 ---
 
 ## Goal

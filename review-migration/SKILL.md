@@ -7,6 +7,8 @@ related:
   - update-dependencies-latest
   - follow-tool-renovate
   - report-table
+  - suggest-next-action
+  - scan-codebase
 ---
 
 ## Goal

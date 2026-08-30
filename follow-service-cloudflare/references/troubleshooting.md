@@ -6,11 +6,11 @@
 
 ### `wrangler login` ไม่ผ่าน
 
-**Error**: `localhost refused to connect` หรือ `ERR_CONNECTION_REFUSED`
+Error: `localhost refused to connect` หรือ `ERR_CONNECTION_REFUSED`
 
-**สาเหตุ**: IPv6 disabled, VPN, WSL networking, port 8976 ไม่เปิด
+สาเหตุ: IPv6 disabled, VPN, WSL networking, port 8976 ไม่เปิด
 
-**แก้**:
+แก้:
 ```bash
 # ใช้ device flow (Wrangler 4.119.0+)
 wrangler login --device
@@ -21,9 +21,9 @@ wrangler login --browser=false
 
 ### API Token ไม่ทำงาน
 
-**Error**: `Failed to fetch auth token: 400 Bad Request`
+Error: `Failed to fetch auth token: 400 Bad Request`
 
-**แก้**:
+แก้:
 - ตรวจ token ยัง active ใน dashboard
 - ตรวจ permissions: Workers Scripts Edit, KV Edit, D1 Edit, Tail Read
 - ถ้าเปลี่ยนเป็น OAuth: `unset CLOUDFLARE_API_TOKEN && wrangler logout && wrangler login`
@@ -38,33 +38,33 @@ wrangler logout && wrangler login
 
 ### Worker Name Mismatch
 
-**Error**: name ใน config ไม่ตรงกับ dashboard
+Error: name ใน config ไม่ตรงกับ dashboard
 
-**แก้**: อัปเดต `name` ใน `wrangler.jsonc` ให้ตรง
+แก้: อัปเดต `name` ใน `wrangler.jsonc` ให้ตรง
 
 ### Missing Configuration File
 
-**Error**: `Missing entry-point`
+Error: `Missing entry-point`
 
-**แก้**: เพิ่ม `wrangler.jsonc` หรือ `wrangler.toml` ใน root พร้อม `main` field
+แก้: เพิ่ม `wrangler.jsonc` หรือ `wrangler.toml` ใน root พร้อม `main` field
 
 ### Incorrect Account ID
 
-**Error**: `Could not route to /client/v4/accounts/... [code: 7003]`
+Error: `Could not route to /client/v4/accounts/... [code: 7003]`
 
-**แก้**: ลบ `account_id` ใน config หรือใส่ให้ถูกต้อง
+แก้: ลบ `account_id` ใน config หรือใส่ให้ถูกต้อง
 
 ### Error 10004 (Malformed Parameter)
 
-**แก้**: ลบและสร้าง Worker ใหม่ หรือ retry
+แก้: ลบและสร้าง Worker ใหม่ หรือ retry
 
 ## Configuration Errors
 
 ### Invalid Route
 
-**Error**: `Expected "route" to be either a string, or an object...`
+Error: `Expected "route" to be either a string, or an object...`
 
-**แก้**:
+แก้:
 ```toml
 route = "https://example.com/*"
 # หรือ
@@ -91,9 +91,9 @@ nvm use --lts
 
 ### Compatibility Date Warning
 
-**Warning**: requested date ใหม่กว่าที่ workerd รองรับ
+Warning: requested date ใหม่กว่าที่ workerd รองรับ
 
-**แก้**: `npm update wrangler` (ห้าม ignore warning)
+แก้: `npm update wrangler` (ห้าม ignore warning)
 
 ### nodejs_compat
 
@@ -119,9 +119,9 @@ npx wrangler dev --log-level debug
 
 ### Proxy Errors
 
-**Error**: `UND_ERR_SOCKET` หรือ `TypeError: fetch failed`
+Error: `UND_ERR_SOCKET` หรือ `TypeError: fetch failed`
 
-**แก้**:
+แก้:
 ```bash
 unset http_proxy
 unset HTTPS_PROXY
@@ -130,9 +130,9 @@ wrangler dev
 
 ### IPv6/IPv4
 
-**Error**: `Could not proxy request: TypeError: fetch failed`
+Error: `Could not proxy request: TypeError: fetch failed`
 
-**แก้**: ปิด IPv6 ชั่วคราว หรือตั้งให้ OS prefer IPv4
+แก้: ปิด IPv6 ชั่วคราว หรือตั้งให้ OS prefer IPv4
 
 ### WSL
 
@@ -155,23 +155,23 @@ export https_proxy=""
 
 ### Multiple Accounts
 
-**Error**: `More than one account available...`
+Error: `More than one account available...`
 
-**แก้**: ตั้ง `CLOUDFLARE_ACCOUNT_ID` env var หรือใส่ `account_id` ใน config
+แก้: ตั้ง `CLOUDFLARE_ACCOUNT_ID` env var หรือใส่ `account_id` ใน config
 
 ## Durable Objects Errors
 
 ### No Event Handlers
 
-**Error**: `No event handlers were registered`
+Error: `No event handlers were registered`
 
-**แก้**: ตรวจ `dir` และ `main` ใน config, ใช้ `.mjs` ถ้า ES modules
+แก้: ตรวจ `dir` และ `main` ใน config, ใช้ `.mjs` ถ้า ES modules
 
 ### Durable Object Overloaded
 
-**Error**: `Durable Object is overloaded`
+Error: `Durable Object is overloaded`
 
-**แก้**:
+แก้:
 - Horizontal scaling (หลาย instances)
 - ห้าม retry ถ้า `.overloaded === true`
 

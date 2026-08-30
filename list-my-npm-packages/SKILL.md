@@ -5,6 +5,7 @@ related:
   - list-program-in-computer
   - report-table
   - suggest-next-action
+  - ask-me
 ---
 
 ## Goal

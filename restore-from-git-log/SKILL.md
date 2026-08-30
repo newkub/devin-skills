@@ -4,6 +4,9 @@ description: กู้คืนไฟล์จาก git log โดยเริ�
 related:
   - git-debug
   - check-git-files-history
+  - follow-tool-git
+  - ask-me
+  - git-commit
 ---
 
 ## Goal

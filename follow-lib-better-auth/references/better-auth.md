@@ -2,12 +2,12 @@
 
 ## Version Info
 
-- **Package**: `better-auth` v1.6.9 (published ~4 months ago)
-- **CLI Package**: `auth` (Better Auth CLI)
-- **License**: MIT
-- **Peer Dependencies**: None (database adapter installed separately)
-- **Supported Frameworks**: Next.js, Nuxt, SvelteKit, SolidStart, Hono, Elysia, TanStack Start, Express, Cloudflare Workers, Expo
-- **Source**: https://better-auth.com/docs/installation
+- Package: `better-auth` v1.6.9 (published ~4 months ago)
+- CLI Package: `auth` (Better Auth CLI)
+- License: MIT
+- Peer Dependencies: None (database adapter installed separately)
+- Supported Frameworks: Next.js, Nuxt, SvelteKit, SolidStart, Hono, Elysia, TanStack Start, Express, Cloudflare Workers, Expo
+- Source: https://better-auth.com/docs/installation
 
 ## Install
 

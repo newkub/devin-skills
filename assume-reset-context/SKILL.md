@@ -2,6 +2,14 @@
 name: assume-reset-context
 description: สมมุติว่ากำลังเข้ามาแก้ไขไฟล์นี้เป็นครั้งแรก โดยไม่มี context จากการสนทนาก่อนหน้า
 argument-hint: "[file]"
+related:
+  - scan-codebase
+  - use-ast-grep
+  - check-skills-related
+  - deep-thinking
+  - follow-best-practice
+  - follow-layered-architecture
+  - deep-plan
 ---
 
 ## Goal

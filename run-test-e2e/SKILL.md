@@ -2,6 +2,12 @@
 name: run-test-e2e
 description: รัน E2E tests ด้วย Playwright หรือ Cypress
 related:
+  - run-test
+  - run-test-all
+  - run-test-api
+  - run-check
+  - run-verify
+  - suggest-next-action
   - watch-browser-and-test-all-routes
 ---
 

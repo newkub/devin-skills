@@ -6,12 +6,12 @@ The Supabase CLI enables local development, database migrations, type generation
 
 ## Version Info
 
-- **Package**: `supabase`
-- **Latest stable**: `2.115.0`
-- **Node.js requirement**: `>= 20` (when installed via npm/npx)
-- **License**: MIT
-- **npm**: https://www.npmjs.com/package/supabase
-- **GitHub**: https://github.com/supabase/cli
+- Package: `supabase`
+- Latest stable: `2.115.0`
+- Node.js requirement: `>= 20` (when installed via npm/npx)
+- License: MIT
+- npm: https://www.npmjs.com/package/supabase
+- GitHub: https://github.com/supabase/cli
 
 ## Install
 
@@ -73,7 +73,7 @@ brew link --overwrite supabase-beta
 
 ## Prerequisites
 
-- **Docker** (or compatible container runtime) is required for local development
+- Docker (or compatible container runtime) is required for local development
 - Container runtime options: Docker Desktop, Rancher Desktop, Podman, OrbStack, colima
 
 ## Initialize Project
@@ -93,9 +93,9 @@ supabase status   # Check status and show local credentials
 ```
 
 After `supabase start`, you get:
-- **Studio**: `http://127.0.0.1:54323`
-- **API URL**: `http://127.0.0.1:54321`
-- **Database URL**: `postgresql://postgres:postgres@127.0.0.1:54322/postgres`
+- Studio: `http://127.0.0.1:54323`
+- API URL: `http://127.0.0.1:54321`
+- Database URL: `postgresql://postgres:postgres@127.0.0.1:54322/postgres`
 
 ## Link To Remote Project
 

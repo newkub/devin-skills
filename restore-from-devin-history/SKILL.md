@@ -5,6 +5,7 @@ argument-hint: "[file]"
 related:
   - git-debug
   - restore-from-git-log
+  - ask-me
 ---
 ## Goal
 

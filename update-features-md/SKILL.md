@@ -1,6 +1,11 @@
 ---
 name: update-features-md
 description: วิเคราะห์ features ที่มีอยู่ใน project และเขียน FEATURES.md ที่ root ของ workspace
+related:
+  - analyze-project
+  - use-scripts
+  - report-table
+  - update-docs
 ---
 
 ## Goal

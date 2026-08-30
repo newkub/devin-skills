@@ -19,13 +19,13 @@ description: Complete API reference for the project
 {{signature}}
 ```
 
-**Parameters**
+Parameters
 
 | Name | Type | Description |
 |---|---|---|
 | {{name}} | `{{type}}` | {{description}} |
 
-**Returns**
+Returns
 
 | Type | Description |
 |---|---|

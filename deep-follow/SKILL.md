@@ -1,6 +1,12 @@
 ---
 name: deep-follow
 description: ติดตามและ execute deep workflows ซ้อนลึกแบบ recursive ตาม context จนครบถ้วน
+related:
+  - ask-me
+  - deep-validate
+  - follow-parallel
+  - follow-devin-global-subagents
+  - report
 ---
 
 ## Goal

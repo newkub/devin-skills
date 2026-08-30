@@ -87,7 +87,7 @@ related:
 
 1. ตรวจว่าทุก item มีเลขกำกับ
 2. ตรวจว่า nested items มีเลขย่อย
-3. ตรวจว่าไม่มี `**` (bold markers)
+3. ตรวจว่าไม่มี `` (bold markers)
 4. ตรวจว่าใช้ backticks สำหรับ `tools`, `commands`, paths
 5. ทำ `/report-table` สรุป action, title, status, next step
 
@@ -111,7 +111,7 @@ related:
 - ใช้ numbered list สำหรับ items หลัก
 - ใช้ nested numbered list สำหรับ sub-items
 - แต่ละ item ต้องกระชับและมี single responsibility
-- ใช้ backticks สำหรับ emphasis แทน `**`
+- ใช้ backticks สำหรับ emphasis แทน ``
 
 ### 4. Scope
 

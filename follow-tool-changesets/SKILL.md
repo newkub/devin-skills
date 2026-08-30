@@ -1,6 +1,13 @@
 ---
 name: follow-tool-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

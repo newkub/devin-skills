@@ -5,6 +5,7 @@ argument-hint: "[url]"
 related:
   - watch-browser-and-test-all-routes
   - watch-browser-and-fix
+  - resolve-errors
 ---
 
 ## Goal

@@ -2,6 +2,11 @@
 name: watch-deploy
 description: Poll a deployed URL and report when it becomes healthy after deployment
 argument-hint: "[url]"
+related:
+  - run-watch-build
+  - run-watch-test
+  - run-watch-typecheck
+  - ask-me
 ---
 
 ## Goal

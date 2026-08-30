@@ -1,6 +1,13 @@
 ---
 name: follow-service-signoz
 description: ????????????????? SigNoz ?????? Node/Bun/TypeScript ???? OpenTelemetry
+related:
+  - follow-service-aws-sdk
+  - follow-service-cloudflare
+  - follow-service-infisical
+  - follow-best-practice
+  - learn-from-web
+  - setup-cicd
 ---
 
 ## Goal

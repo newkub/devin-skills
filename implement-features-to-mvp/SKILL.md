@@ -1,6 +1,12 @@
 ---
 name: implement-features-to-mvp
 description: Implement features ที่จำเป็นสำหรับ MVP เท่านั้น หยุดเมื่อครบถ้วน
+related:
+  - analyze-project
+  - plan
+  - realize-implementation
+  - dont-over-engineer
+  - report
 ---
 
 ## Goal

@@ -58,7 +58,7 @@ npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 
 ### Behavior
 
-- Deploy แล้ว crons ใหม่ **replace** ของเดิมทั้งหมด
+- Deploy แล้ว crons ใหม่ replace ของเดิมทั้งหมด
 - `crons: []` = ลบ triggers ทั้งหมด
 - `crons` undefined = ไม่เปลี่ยน triggers ปัจจุบัน
 - Comment out ไม่ได้หมายถึง disable ต้องใช้ empty array
@@ -75,7 +75,7 @@ npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 | Month | 1-12 หรือ JAN-DEC | `*` `,` `-` `/` |
 | Weekday | 1-7 หรือ SUN-SAT | `*` `,` `-` `/` `L` `#` |
 
-**สำคัญ**: weekday 1=Sunday ถึง 7=Saturday (ต่างจาก cron อื่นที่ 0=Sunday)
+สำคัญ: weekday 1=Sunday ถึง 7=Saturday (ต่างจาก cron อื่นที่ 0=Sunday)
 
 | Special | Description |
 |---|---|

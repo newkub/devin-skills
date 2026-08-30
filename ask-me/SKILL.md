@@ -9,6 +9,7 @@ related:
   - ask-again
   - dont-ask
   - update-references
+  - deep-plan
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - delete-git-worktree
   - cleanup-worktree
   - resolve-merge-conflicts
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
@@ -18,6 +20,18 @@ related:
 ใช้สำหรับ git repository ที่ต้องการทำงานหลาย branches พร้อมกันโดยไม่กระทบ main working tree ครอบคลุมตั้งแต่สร้าง worktree ทำงาน merge กลับ และ cleanup
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ตรวจสอบ git worktrees พร้อมใช้งาน
+
+1. ตรวจสอบ git: `git --version` (แนะนำ 2.15+ สำหรับ worktree ทีเสถียร)
+2. ถ้ายังไม่มี git → ติดตั้งตาม OS:
+   - macOS: `mise use -g git` หรือ `brew install git`
+   - Windows: `winget install Git.Git` หรือ `scoop install git`
+   - Linux: `apt install git`
+3. ตรวจสอบ repository มี remote ทีถูกต้อง: `git remote -v`
+4. Verify worktree: `git worktree list`
 
 ### 1. Create Worktree
 

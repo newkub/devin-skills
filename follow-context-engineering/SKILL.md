@@ -7,6 +7,8 @@ related:
   - deep-validate
   - report
   - suggest-next-action
+  - deep-plan
+  - loop-until-complete
 ---
 
 ## Goal

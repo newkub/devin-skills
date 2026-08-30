@@ -1,6 +1,11 @@
 ---
 name: review-readability
 description: ตรวจอ่านง่ายของ code และ text พร้อม actionable feedback
+related:
+  - report
+  - report-table
+  - edit-only
+  - suggest-next-action
 ---
 
 ## Goal

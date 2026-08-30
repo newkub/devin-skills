@@ -6,6 +6,8 @@ related:
   - learn-from-web
   - use-lib-effective
   - follow-my-tech-stack
+  - follow-devin-skills
+  - review-codebase-everything
 ---
 
 ## Goal
@@ -17,6 +19,16 @@ related:
 ใช้เมื่อต้องเปรียบเทียบ dependencies เพื่อตัดสินใจเลือก library หรือ framework ไม่รวมการ execute การเปลี่ยนแปลง
 
 ## Execute
+
+### 0. Setup
+
+> Goal: เตรียม context และ tools สำหรับวิเคราะห์ dependencies
+
+1. อ่าน project manifest (`package.json`, `Cargo.toml`, `pyproject.toml`, etc.)
+2. ทำ `/follow-devin-skills` เพื่อเข้าใจ global workflows
+3. ทำ `/follow-my-tech-stack` เพื่อดู tech stack ทั้งหมด
+4. ตรวจสอบการเข้าถึง npm registry / npm trends / Bundlephobia / GitHub ถ้าต้องการข้อมูลเพิ่มเติม
+5. ถ้าขาด tools หรือ context → ใช้ `/research-setup`
 
 ### 1. Read Context
 

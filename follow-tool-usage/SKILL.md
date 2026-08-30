@@ -1,6 +1,14 @@
 ---
 name: follow-tool-usage
 description: สร้าง CLI spec ด้วย usage เพื่อ generate completions/docs/SDK
+related:
+  - report-usage
+  - report-usage-md
+  - review-app-usage
+  - follow-best-practice
+  - setup-cicd
+  - resolve-errors
+  - follow-tool-mise
 ---
 
 ## Goal

@@ -237,8 +237,8 @@ page.on('websocket', ws => {
 
 | API | Methods |
 |-----|---------|
-| **Browser** | launch, newContext, close |
-| **Context** | newPage, grantPermissions |
-| **Page** | goto, click, fill, screenshot |
-| **Locator** | click, fill, isVisible |
-| **Expect** | toHaveText, toBeVisible |
+| Browser | launch, newContext, close |
+| Context | newPage, grantPermissions |
+| Page | goto, click, fill, screenshot |
+| Locator | click, fill, isVisible |
+| Expect | toHaveText, toBeVisible |

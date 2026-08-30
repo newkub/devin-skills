@@ -1,6 +1,10 @@
 ---
 name: list-devin-global-mcp
 description: List configured global MCP servers and their tools
+related:
+  - report-table
+  - suggest-next-action
+  - update-devin-global-mcp
 ---
 
 ## Goal

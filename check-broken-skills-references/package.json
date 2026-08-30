@@ -1,0 +1,14 @@
+{
+  "name": "check-broken-skills-references",
+  "version": "1.0.0",
+  "description": "ตรวจหา broken skill references ใน devin skills repo",
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "check": "bun run src/index.ts",
+    "check:repo": "bun run src/index.ts '%APPDATA%\\devin\\skills'"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  }
+}

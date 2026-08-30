@@ -1,6 +1,13 @@
 ---
 name: follow-framework-nextjs
 description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 16 applications
+related:
+  - follow-nextjs-architecture
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 ---
 
 ## Goal

@@ -1,6 +1,14 @@
 ---
 name: follow-framework-desktop-app
 description: สร้าง Desktop Applications ด้วย Tauri, SolidStart, และ UnoCSS
+related:
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-framework-dioxus
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
+  - refactor-all-workspace
 ---
 
 ## Goal

@@ -1,6 +1,9 @@
 ---
 name: list-devin-global-hooks
 description: List global and project-level devin hooks from common config paths
+related:
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

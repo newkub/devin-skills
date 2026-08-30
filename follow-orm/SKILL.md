@@ -5,6 +5,9 @@ related:
   - follow-clean-architecture
   - follow-layered-architecture
   - use-lib-effective
+  - follow-lib-drizzle
+  - update-test-everything
+  - delete
 ---
 
 ## Goal

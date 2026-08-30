@@ -8,6 +8,8 @@ related:
   - report-what-you-do
   - report-table
   - idea-features
+  - analyze-project
+  - scan-codebase
 ---
 
 ## Goal

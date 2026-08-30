@@ -6,6 +6,8 @@ related:
   - list-website-all-routes
   - review-uxui
   - report-table
+  - suggest-next-action
+  - ask-me
 ---
 
 ## Goal

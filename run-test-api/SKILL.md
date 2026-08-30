@@ -1,6 +1,14 @@
 ---
 name: run-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
+related:
+  - follow-test
+  - use-scripts
+  - use-ast-grep-programatic
+  - deep-validate
+  - report-table
+  - resolve-errors
+  - suggest-next-action
 ---
 
 ## Goal

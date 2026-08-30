@@ -3,7 +3,12 @@ name: resolve-errors
 description: แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate
 related:
   - rethink
-
+  - deep-debug
+  - check-skills-related
+  - scan-codebase
+  - refactor
+  - use-scripts
+  - deep-review
 ---
 
 ## Goal

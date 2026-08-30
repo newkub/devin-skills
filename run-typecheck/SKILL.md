@@ -1,6 +1,10 @@
 ---
 name: run-typecheck
 description: Run typecheck with config check
+related:
+  - deep-review
+  - deep-debug
+  - resolve-errors
 ---
 
 ## Goal

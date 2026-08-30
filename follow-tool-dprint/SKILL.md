@@ -1,6 +1,13 @@
 ---
 name: follow-tool-dprint
 description: ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

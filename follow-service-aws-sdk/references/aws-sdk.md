@@ -6,11 +6,11 @@ AWS SDK for JavaScript v3 is a modular rewrite of v2 with first-class TypeScript
 
 ## Version Info
 
-- **Package example**: `@aws-sdk/client-s3`
-- **Latest stable**: `3.1117.0`
-- **Node.js requirement**: `>=20.0.0`
-- **License**: Apache-2.0
-- **Architecture**: Modular — one package per service
+- Package example: `@aws-sdk/client-s3`
+- Latest stable: `3.1117.0`
+- Node.js requirement: `>=20.0.0`
+- License: Apache-2.0
+- Architecture: Modular — one package per service
 
 ## Install
 

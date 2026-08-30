@@ -5,6 +5,7 @@ related:
   - follow-tool-linter
   - follow-lib-zod
   - update-test-everything
+  - run-test
 ---
 
 ## Goal

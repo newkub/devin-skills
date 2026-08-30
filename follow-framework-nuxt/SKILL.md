@@ -1,6 +1,14 @@
 ---
 name: follow-framework-nuxt
 description: สร้างหรือปรับปรุง Nuxt 4 project ด้วย Universal Rendering และ Nitro
+related:
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-framework-desktop-app
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
+  - follow-lib-vue
 ---
 
 ## Goal

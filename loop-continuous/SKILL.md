@@ -3,7 +3,6 @@ name: loop-continuous
 description: วนปรับปรุงงานซ้ำจนถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
 related:
   - ship
-  - ship
   - loop-until-complete
   - run-until-pass
   - follow-loop-engineering

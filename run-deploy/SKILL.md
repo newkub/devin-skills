@@ -8,6 +8,7 @@ related:
   - watch-cicd-and-resolve
   - run-verify
   - run-build
+  - deploy-to-vercel
 ---
 
 ## Goal

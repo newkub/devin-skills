@@ -6,10 +6,10 @@ Cloudflare Workers is a serverless execution environment that runs on Cloudflare
 
 ## Version Info
 
-- **Wrangler (CLI)**: `4.125.0` (latest stable)
-- **Node.js requirement**: `>=22.0.0`
-- **Peer dependency**: `@cloudflare/workers-types` (optional, for TypeScript support)
-- **License**: MIT OR Apache-2.0
+- Wrangler (CLI): `4.125.0` (latest stable)
+- Node.js requirement: `>=22.0.0`
+- Peer dependency: `@cloudflare/workers-types` (optional, for TypeScript support)
+- License: MIT OR Apache-2.0
 
 ## Install
 

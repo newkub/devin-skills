@@ -1,6 +1,14 @@
 ---
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
+related:
+  - deep-research
+  - review-codebase-everything
+  - pondering
+  - deep-plan
+  - ask-me
+  - ship
+  - update-docs
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - follow-tool-oxlint
   - follow-lib-esm-sh
   - use-lib-effective
+  - deep-analyze-by-use-scripts
 ---
 
 ## Goal

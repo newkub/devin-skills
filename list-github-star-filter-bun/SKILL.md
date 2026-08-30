@@ -5,6 +5,7 @@ argument-hint: "[username]"
 related:
   - list-github-star-latest
   - list-github-repo
+  - report-table
 ---
 
 ## Goal

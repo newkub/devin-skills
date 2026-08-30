@@ -64,7 +64,7 @@ plugin จะทำงานบนทุกไฟล์ที่ linter ปร�
 
 ## `plugins.<ITEM>.path`
 
-**Required** — path ไปยัง plugin `.grit` file ใช้ relative path จาก root ของโปรเจกต์
+Required — path ไปยัง plugin `.grit` file ใช้ relative path จาก root ของโปรเจกต์
 
 ```jsonc
 {
@@ -98,7 +98,7 @@ plugin จะทำงานบนทุกไฟล์ที่ linter ปร�
 | Pattern | Description |
 |---------|-------------|
 | `*` | match zero หรือ more characters ไม่ match `/` |
-| `**` | recursively match directories และ files (ต้องเป็น path component เช่น `**/file`) |
+| `` | recursively match directories และ files (ต้องเป็น path component เช่น `/file`) |
 | `[...]` | match any character ใน brackets เช่น `[0-9]` |
 | `[!...]` | negation ของ `[...]` — match characters ที่ไม่อยู่ใน brackets |
 | `!pattern` | negated pattern — match เฉพาะเมื่อ path ไม่ match (ใช้เป็น exception เท่านั้น) |

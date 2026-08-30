@@ -4,6 +4,11 @@ description: เลือกใช้ programming paradigm ทีเหมาะ
 related:
   - follow-math-category-theory
   - follow-math-propositional-logic
+  - run-lint
+  - run-test
+  - run-typecheck
+  - review-architecture
+  - resolve-errors
 ---
 
 ## Goal

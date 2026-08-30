@@ -6,6 +6,7 @@ related:
   - use-pwsh-shell
   - report-table
   - search-files-patterns
+  - run-profiler
 ---
 
 ## Goal

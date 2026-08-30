@@ -7,6 +7,9 @@ related:
   - idea-features
   - idea-improve-files-naming
   - update-devin-global-skills
+  - update-references
+  - check-reference
+  - idea
 ---
 
 ## Goal

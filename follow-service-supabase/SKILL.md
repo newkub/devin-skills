@@ -1,6 +1,14 @@
 ---
 name: follow-service-supabase
 description: ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime และ CLI
+related:
+  - follow-service-aws-sdk
+  - follow-service-cloudflare
+  - follow-service-infisical
+  - follow-best-practice
+  - learn-from-web
+  - setup-cicd
+  - delete
 ---
 
 ## Goal

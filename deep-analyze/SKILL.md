@@ -3,6 +3,12 @@ name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งด้วยหลายมิติและ external research
 related:
   - rethink
+  - deep-thinking
+  - analyze-project
+  - deep-analyze-by-use-scripts
+  - scan-codebase
+  - check-code-structure
+  - use-ast-grep
 ---
 
 ## Goal

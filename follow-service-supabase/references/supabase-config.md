@@ -153,6 +153,6 @@ INSERT INTO profiles (display_name) VALUES ('Admin');
 
 | Category | Options |
 |----------|---------|
-| **Config** | project_id, api, db, studio |
-| **Env** | SUPABASE_ACCESS_TOKEN, DB_PASSWORD |
-| **Services** | -x flag to exclude services |
+| Config | project_id, api, db, studio |
+| Env | SUPABASE_ACCESS_TOKEN, DB_PASSWORD |
+| Services | -x flag to exclude services |

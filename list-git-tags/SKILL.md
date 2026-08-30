@@ -1,6 +1,11 @@
 ---
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
+related:
+  - follow-tool-git
+  - report-table
+  - list-github-release
+  - list-git-branch
 ---
 
 ## Goal

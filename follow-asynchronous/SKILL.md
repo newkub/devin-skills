@@ -1,6 +1,9 @@
 ---
 name: follow-asynchronous
 description: ใช้งาน async patterns ใน JavaScript/TypeScript ให้ถูกต้อง
+related:
+  - ask-me
+  - run-test
 ---
 
 ## Goal

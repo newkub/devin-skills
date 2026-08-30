@@ -1,6 +1,13 @@
 ---
 name: follow-lang-python
 description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-kotlin
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

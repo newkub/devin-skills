@@ -6,7 +6,6 @@ related:
   - review-security
   - check-secrets-leak
   - list-website-all-routes
-  - review-security
 ---
 
 ## Goal

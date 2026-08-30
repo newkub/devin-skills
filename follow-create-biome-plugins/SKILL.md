@@ -7,6 +7,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-formatter
+  - ship
 ---
 ## Goal
 

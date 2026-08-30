@@ -8,6 +8,8 @@ related:
   - report-table
   - download-program
   - uninstall-program-in-computer
+  - enhance-prompt
+  - ask-me
 ---
 
 ## Goal

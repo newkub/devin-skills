@@ -24,8 +24,8 @@ create(context) {
 }
 ```
 
-- key เป็น node type หรือ selector → ESLint เรียก visitor ตอน going **down**
-- key เป็น node type/selector + `:exit` → ESLint เรียก visitor ตอน going **up**
+- key เป็น node type หรือ selector → ESLint เรียก visitor ตอน going down
+- key เป็น node type/selector + `:exit` → ESLint เรียก visitor ตอน going up
 - key เป็น event name → ESLint เรียก handler สำหรับ code path analysis
 
 ## context Object

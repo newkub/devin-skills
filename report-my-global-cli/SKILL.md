@@ -1,6 +1,13 @@
 ---
 name: report-my-global-cli
 description: รายงาน CLI tools ที่ติดตั้งและ commands ที่ควรแปลงเป็น skills
+related:
+  - learn-from-cli
+  - report-table
+  - idea-convert-my-global-cli-to-skills
+  - follow-my-global-cli
+  - suggest-next-action
+  - report-ansi
 ---
 
 ## Goal

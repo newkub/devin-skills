@@ -1,6 +1,12 @@
 ---
 name: run-scan
 description: รัน ast-grep scan เพื่อตรวจสอบ codebase ด้วย AST-based patterns
+related:
+  - follow-tool-ast-grep
+  - update-project-rules
+  - report-ansi
+  - loop-until-complete
+  - resolve-errors
 ---
 
 ## Goal

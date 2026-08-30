@@ -2,6 +2,9 @@
 name: list-git-commit
 description: รายงาน git log สรุป commits, สถิติ, และ insights ในรูปแบบที่อ่านง่าย
 argument-hint: "[ref]"
+related:
+  - git-commit
+  - report-table
 ---
 
 ## Goal

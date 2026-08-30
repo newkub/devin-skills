@@ -1,6 +1,9 @@
 ---
 name: follow-gitignore
 description: สร้างและจัดการ .gitignore ที่ root และ workspace โดยแจกจ่าย patterns ตาม responsibility
+related:
+  - relocation
+  - update-references
 ---
 
 ## Goal

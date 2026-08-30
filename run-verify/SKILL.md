@@ -12,8 +12,6 @@ related:
   - setup-cicd
   - follow-tasks
   - ship
-  - ship
-  - ship
   - watch-cicd-and-resolve
   - watch-github-actions
   - git-push

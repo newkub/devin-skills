@@ -136,12 +136,12 @@ git merge --abort
 
 ## Best Practices
 
-1. **Update Before Merge**: Pull latest changes ก่อน merge
-2. **Review Changes**: Review changes ก่อน merge
-3. **Test After Merge**: Test หลัง merge
-4. **Resolve Conflicts Carefully**: Resolve conflicts อย่างระมัดระวัง
-5. **Delete Merged Branches**: Delete branches หลัง merge
-6. **Use Pull Requests**: ใช้ PR สำหรับ review
+1. Update Before Merge: Pull latest changes ก่อน merge
+2. Review Changes: Review changes ก่อน merge
+3. Test After Merge: Test หลัง merge
+4. Resolve Conflicts Carefully: Resolve conflicts อย่างระมัดระวัง
+5. Delete Merged Branches: Delete branches หลัง merge
+6. Use Pull Requests: ใช้ PR สำหรับ review
 
 ## Common Issues
 

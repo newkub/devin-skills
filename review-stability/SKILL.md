@@ -1,6 +1,14 @@
 ---
 name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring and score
+related:
+  - review-codebase-everything
+  - scan-codebase
+  - deep-analyze
+  - update-project-rules
+  - run-review
+  - consider-use-in-another-skills
+  - report-table
 ---
 
 ## Goal

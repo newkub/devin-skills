@@ -2,12 +2,12 @@
 
 ## Version Info
 
-- **Package**: `elysia` v1.4.29 (published ~23 days ago)
-- **Companion**: `@elysia/eden` (end-to-end type safety client)
-- **License**: MIT
-- **Runtime**: Optimized for Bun; also supports Node.js
-- **Peer Dependencies**: None
-- **Source**: https://elysiajs.com
+- Package: `elysia` v1.4.29 (published ~23 days ago)
+- Companion: `@elysia/eden` (end-to-end type safety client)
+- License: MIT
+- Runtime: Optimized for Bun; also supports Node.js
+- Peer Dependencies: None
+- Source: https://elysiajs.com
 
 ## Install
 

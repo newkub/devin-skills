@@ -1,6 +1,13 @@
 ---
 name: follow-lang-typescript
 description: พัฒนา TypeScript projects ด้วย type safety และ code quality best practices
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-kotlin
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

@@ -4,6 +4,8 @@ description: สร้าง visual แบบ Web ใน browser บน OS temp 
 related:
   - report-in-html
   - open-web
+  - visualize-project
+  - open-readme-html
 ---
 
 ## Goal

@@ -6,6 +6,9 @@ related:
   - open-web-for-config-secret
   - follow-service-vercel-cli
   - deploy-to-vercel
+  - watch-browser-and-fix
+  - resolve-errors
+  - loop-until-complete
 ---
 
 ## Goal

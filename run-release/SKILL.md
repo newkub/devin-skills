@@ -4,7 +4,6 @@ description: Auto-detect platforms, release ไปยัง external platforms, 
 related:
   - follow-secret-manager
   - ship
-  - ship
   - setup-cicd
   - setup-package
   - setup-release

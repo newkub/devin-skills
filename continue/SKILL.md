@@ -2,6 +2,10 @@
 name: continue
 description: ทำงานต่อให้ครบถ้วนตามที่ได้รับมอบหมาย ตรวจสอบความสมบูรณ์ และหยุดเมื่องานเสร็จสิ้น
 argument-hint: "[session-id]"
+related:
+  - report-and-continue
+  - follow-best-practice
+  - suggest-next-action
 ---
 
 ## Goal

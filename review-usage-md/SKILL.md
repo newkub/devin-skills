@@ -1,6 +1,10 @@
 ---
 name: review-usage-md
 description: Review USAGE.md quality, coverage, and consistency in workspace
+related:
+  - update-usage-md
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -2,13 +2,13 @@
 
 ## Version Info
 
-- **Package**: `zod` v4.4.3 (published Aug 20, 2026)
-- **License**: MIT
-- **Peer Dependencies**: None (zero external dependencies)
-- **TypeScript**: >=5.5.0 (older versions may work but not officially supported)
-- **Runtime**: Node.js and all modern browsers
-- **Bundle**: 2kb core (gzipped)
-- **Source**: https://zod.dev
+- Package: `zod` v4.4.3 (published Aug 20, 2026)
+- License: MIT
+- Peer Dependencies: None (zero external dependencies)
+- TypeScript: >=5.5.0 (older versions may work but not officially supported)
+- Runtime: Node.js and all modern browsers
+- Bundle: 2kb core (gzipped)
+- Source: https://zod.dev
 
 ## Install
 

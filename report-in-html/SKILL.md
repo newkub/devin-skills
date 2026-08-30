@@ -5,6 +5,8 @@ related:
   - visualize-in-web
   - visualize-project
   - open-web
+  - analyze-project
+  - idea-features
 ---
 
 ## Goal

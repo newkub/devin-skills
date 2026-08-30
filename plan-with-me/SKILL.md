@@ -9,6 +9,7 @@ related:
   - deep-report
   - ask-me
   - report-plan
+  - create-plan-as-github-issue
 ---
 
 ## Goal

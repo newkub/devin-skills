@@ -8,6 +8,7 @@ related:
   - follow-lib-react
   - follow-monorepo
   - review-architecture
+  - refactor-workspace
 ---
 
 ## Goal

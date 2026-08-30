@@ -2,6 +2,9 @@
 name: summarize-this-chat-session
 description: สรุป chat session ทีคุยในครังนี้
 argument-hint: "[target]"
+related:
+  - report-table
+  - summarize-this-project
 ---
 
 ## Goal

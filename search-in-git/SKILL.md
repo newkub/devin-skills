@@ -4,6 +4,9 @@ description: ค้นหา git history, commits, diffs ด้วย log/grep/b
 related:
   - git-debug
   - check-git-files-history
+  - deep-debug
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

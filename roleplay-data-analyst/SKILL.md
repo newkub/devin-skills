@@ -1,6 +1,11 @@
 ---
 name: roleplay-data-analyst
 description: รับบทเป็น data analyst ตรวจ data quality, event tracking, metrics, dashboards จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

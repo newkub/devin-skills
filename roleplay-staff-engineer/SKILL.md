@@ -1,6 +1,11 @@
 ---
 name: roleplay-staff-engineer
 description: รับบทเป็น staff engineer ตรวจ architecture, tech debt, scalability trade-offs จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

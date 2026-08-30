@@ -14,7 +14,7 @@ related:
 ## Scope
 
 - ใช้ใน current working directory เท่านั้น
-- หาไฟล์ชื่อ `TODO.md` ทั้งหมดด้วย pattern `**/TODO.md`
+- หาไฟล์ชื่อ `TODO.md` ทั้งหมดด้วย pattern `/TODO.md`
 - ไม่แก้ไข ไม่เพิ่ม ไม่ลบไฟล์ใด ๆ
 - รองรับ checkbox รูปแบบ `- [ ]`, `- [x]`, `* [ ]`, `* [x]`
 
@@ -24,7 +24,7 @@ related:
 
 > Goal: หาไฟล์ `TODO.md` ทั้งหมดใน workspace
 
-1. ใช้ `find_file_by_name` ด้วย pattern `**/TODO.md` ใน current workspace
+1. ใช้ `find_file_by_name` ด้วย pattern `/TODO.md` ใน current workspace
 2. เก็บ relative path ของแต่ละไฟล์
 3. เรียงลำดับตาม path ก่อนอ่าน
 

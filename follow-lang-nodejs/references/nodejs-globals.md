@@ -83,7 +83,7 @@ bun add -D @types/node
 
 ---
 
-**See also:**
+See also:
 - [Official API Docs](https://nodejs.org/api/)
 - [Globals](https://nodejs.org/api/globals.html)
 - [Modules](https://nodejs.org/api/modules.html)

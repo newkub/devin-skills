@@ -1,6 +1,13 @@
 ---
 name: follow-lib-gritql
 description: ตั้งค่าและใช้งาน GritQL สำหรับ code search, transformation และ linting ใน Biome
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

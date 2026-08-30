@@ -7,6 +7,8 @@ related:
   - list-devin-global-skills
   - check-backward-compatibility
   - scan-codebase
+  - delete
+  - check-circular-dependencies
 ---
 
 ## Goal

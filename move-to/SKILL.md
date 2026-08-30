@@ -2,6 +2,11 @@
 name: move-to
 description: ย้ายไฟล์และอัพเดท reference
 argument-hint: "[source] [target]"
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - update-references
 ---
 
 ## Goal

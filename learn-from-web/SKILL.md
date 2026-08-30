@@ -3,6 +3,11 @@ name: learn-from-web
 description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official Documentation
 related:
   - list-website-all-routes
+  - update-devin-global-skills
+  - check-reference
+  - deep-research
+  - research-setup
+  - follow-best-practice
 ---
 
 ## Goal

@@ -2,6 +2,13 @@
 name: report-git-diff
 description: รายงาน git diff พร้อมสรุปการเปลี่ยนแปลง สถิติ และ insights ในรูปแบบที่อ่านง่าย
 argument-hint: "[ref]"
+related:
+  - git-commit
+  - report-table
+  - report-codeblock
+  - report-ansi
+  - suggest-next-action
+  - follow-tool-git
 ---
 
 ## Goal

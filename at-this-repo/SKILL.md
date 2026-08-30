@@ -1,6 +1,11 @@
 ---
 name: at-this-repo
 description: แก้ไข files ใน repository ปัจจุบันอย่างปลอดภัย minimal และ validate
+related:
+  - refactor
+  - git-commit
+  - ship
+  - update-agents-md
 ---
 
 ## Goal

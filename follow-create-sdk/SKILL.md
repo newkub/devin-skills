@@ -45,7 +45,6 @@ related:
   - update-test-everything
   - follow-my-tech-stack
   - review-techstack
-  - ship
 ---
 ## Goal
 

@@ -3,6 +3,12 @@ name: git-commit-at-devin-skills-global
 description: Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ตามมาตรฐาน conventional commits
 argument-hint: "[target]"
 related:
+  - git-commit
+  - git-commit-and-push
+  - git-commit-selected-files
+  - follow-git-flow
+  - resolve-errors
+  - follow-best-practice
   - update-agents-md
 ---
 

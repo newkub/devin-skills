@@ -5,6 +5,7 @@ related:
   - follow-secret-manager
   - follow-tool-release-it
   - follow-tool-github-actions
+  - open-web-for-config-secret
 ---
 
 ## Goal

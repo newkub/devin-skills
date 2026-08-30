@@ -1,6 +1,9 @@
 ---
 name: review-business
 description: Review business logic ครอบคลุม payment, subscription, multi-tenancy, feature flags, realtime, email
+related:
+  - report
+  - suggest-next-action
 ---
 
 ## Goal

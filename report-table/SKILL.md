@@ -1,6 +1,11 @@
 ---
 name: report-table
 description: จัดรูปแบบตาราง, bullet, numbered list, และ metrics สำหรับรายงาน
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - report-ansi
 ---
 
 ## Goal

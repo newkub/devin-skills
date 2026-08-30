@@ -4,6 +4,12 @@ description: วางแผนละเอียดหลายมิติ ค
 argument-hint: "[topic]"
 related:
   - rethink
+  - use-lib-better
+  - review-codebase-everything
+  - deep-analyze
+  - deep-thinking
+  - deep-pondering
+  - deep-validate
 ---
 
 ## Goal

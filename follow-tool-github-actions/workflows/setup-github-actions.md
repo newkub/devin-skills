@@ -44,7 +44,7 @@ Push workflow file ไปยัง repository
 
 ### 4. ตรวจสอบ
 
-ไปที่ **Actions** tab เพื่อดู workflow ทำงาน
+ไปที่ Actions tab เพื่อดู workflow ทำงาน
 
 ## Expected Outcome
 

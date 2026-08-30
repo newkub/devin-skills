@@ -8,7 +8,7 @@
 Oxlint รองรับ plugins ที่เขียนด้วย JavaScript — ทั้งที่เขียนเองหรือจาก npm Plugin API ของ Oxlint
 เข้ากันได้กับ ESLint v9+ ทำให้ ESLint plugins ส่วนใหญ่ใช้งานได้ทันที
 
-> **คำเตือน:** JS plugins อยู่ในสถานะ **alpha** และกำลังพัฒนาอยู่ — ไม่อยู่ภายใต้ semver
+> คำเตือน: JS plugins อยู่ในสถานะ alpha และกำลังพัฒนาอยู่ — ไม่อยู่ภายใต้ semver
 > หากพบพฤติกรรมต่างจาก ESLint ให้รายงานเป็น bug
 
 ## การใช้งาน `jsPlugins`

@@ -6,6 +6,10 @@ related:
   - write-how-to
   - summarize
   - learn
+  - scan-codebase
+  - deep-trace
+  - learn-from-web
+  - read-related
 ---
 
 ## Goal

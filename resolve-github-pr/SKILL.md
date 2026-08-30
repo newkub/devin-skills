@@ -1,6 +1,10 @@
 ---
 name: resolve-github-pr
 description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
+related:
+  - create-github-pr
+  - list-github-pr
+  - merge-github-pr
 ---
 
 ## Goal

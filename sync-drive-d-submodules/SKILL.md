@@ -1,6 +1,10 @@
 ---
 name: sync-drive-d-submodules
 description: Sync และอัพเดท git submodules ใน D drive กับ remote repositories
+related:
+  - convert-to-git-submodules
+  - delete-git-submodules
+  - list-git-submodules
 ---
 
 ## Goal

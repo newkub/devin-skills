@@ -7,6 +7,8 @@ related:
   - update-dependencies-latest
   - check-should-update
   - report-table
+  - scan-codebase
+  - report
 ---
 
 ## Goal

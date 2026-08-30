@@ -1,6 +1,12 @@
 ---
 name: run-audit
 description: Audit dependencies และ security เพื่อตรวจสอบ vulnerabilities
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - run-check
+  - run-verify
 ---
 
 ## Goal

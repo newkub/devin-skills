@@ -6,6 +6,10 @@ related:
   - check-git-files-history
   - git-debug
   - search-in-git
+  - ask-me
+  - delete
+  - resolve-errors
+  - suggest-next-action
 ---
 ## Goal
 

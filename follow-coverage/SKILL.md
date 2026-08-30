@@ -1,6 +1,14 @@
 ---
 name: follow-coverage
 description: ทำให้ครอบคลุม ตรวจและเติมส่วนที่ขาดใน content skill และ code
+related:
+  - review-content-coverage
+  - ask-me
+  - scan-codebase
+  - report-table
+  - review-writing
+  - use-scripts
+  - check-reference
 ---
 
 ## Goal

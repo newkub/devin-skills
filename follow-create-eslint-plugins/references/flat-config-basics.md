@@ -168,4 +168,4 @@ export default plugin;
 module.exports = plugin;
 ```
 
-**สำคัญ:** ใช้ `Object.assign()` หลังประกาศ `plugin` เพื่อให้ config objects อ้างอิงตัวแปร `plugin` ได้
+สำคัญ: ใช้ `Object.assign()` หลังประกาศ `plugin` เพื่อให้ config objects อ้างอิงตัวแปร `plugin` ได้

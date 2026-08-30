@@ -7,6 +7,9 @@ related:
   - save-to-new-gist
   - list-gist-idea
   - implement-from-gist-idea
+  - idea
+  - list-gist
+  - open-web
 ---
 
 ## Goal

@@ -2,6 +2,12 @@
 name: learn
 description: เรียนรู้ concept, tool, หรือ library อย่างเป็นระบบ ด้วย research และ practice
 argument-hint: "[topic]"
+related:
+  - deep-research
+  - learn-from-web
+  - follow-best-practice
+  - learn-from-pattern
+  - update-examples
 ---
 
 ## Goal

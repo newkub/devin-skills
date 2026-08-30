@@ -12,8 +12,6 @@ related:
   - follow-design-system
   - review-uxui
   - ship
-  - ship
-  - ship
   - report-table
   - enhance-prompt
   - follow-my-tech-stack

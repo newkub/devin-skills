@@ -1,6 +1,11 @@
 ---
 name: run-bench
 description: รัน benchmark tests เพื่อวัดประสิทธิภาพและเปรียบเทียบ performance
+related:
+  - run-install
+  - report-table
+  - review-quality
+  - report
 ---
 
 ## Goal

@@ -2,6 +2,13 @@
 name: ask-project-requirement
 description: ถาม project requirements ผ่าน /ask-me แบบ multi-select/multi-step แล้วสรุปเป็นข้อกำหนด
 argument-hint: "[topic]"
+related:
+  - ask-me
+  - update-agents-md
+  - use-lib-better
+  - ship
+  - deep-plan
+  - follow-goal
 ---
 
 ## Goal

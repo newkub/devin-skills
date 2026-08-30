@@ -1,6 +1,13 @@
 ---
 name: follow-tool-playwright
 description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

@@ -1,6 +1,9 @@
 ---
 name: use-bun-native-api
 description: ใช้ Bun native APIs แทน Node.js libraries เพื่อ performance และ simplicity
+related:
+  - follow-runtime-bun
+  - follow-lang-bun
 ---
 
 ## Goal
@@ -65,17 +68,17 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 
 > Goal: Use Package Manager
 
-ใช้ Bun package manager แทน npm/pnpm/yarn
+ใช้ Bun package manager สำหรับทุก operations
 
-1. ใช้ `bun install` แทน `npm install` สำหรับ install dependencies จาก lockfile
-2. ใช้ `bun add` แทน `npm install <pkg>` สำหรับ add packages
-3. ใช้ `bun add -d` แทน `npm install -D <pkg>` สำหรับ dev dependencies
-4. ใช้ `bun remove` แทน `npm uninstall` สำหรับ remove packages
-5. ใช้ `bun update` แทน `npm update` สำหรับ update packages
-6. ใช้ `bun run` แทน `npm run` สำหรับ run scripts
-7. ใช้ `bunx` แทน `npx` สำหรับ execute packages
+1. ใช้ `bun install` สำหรับ install dependencies จาก lockfile
+2. ใช้ `bun add` สำหรับ add packages
+3. ใช้ `bun add -d` สำหรับ dev dependencies
+4. ใช้ `bun remove` สำหรับ remove packages
+5. ใช้ `bun update` สำหรับ update packages
+6. ใช้ `bun run` สำหรับ run scripts
+7. ใช้ `bunx` สำหรับ execute packages
 8. ใช้ `bun pm` สำหรับ package manager commands
-9. ใช้ `bun.lockb` แทน `package-lock.json` สำหรับ lockfile
+9. ใช้ `bun.lockb` สำหรับ lockfile
 10. ใช้ `bun pm cache rm` สำหรับ clear cache
 
 ### 5. Use Test Runner
@@ -155,10 +158,10 @@ description: ใช้ Bun native APIs แทน Node.js libraries เพื่�
 
 ใช้ Bun package manager สำหรับทุก operations
 
-- ใช้ `bun install` แทน `npm install` สำหรับ install จาก lockfile
-- ใช้ `bun add` แทน `npm install <package>` สำหรับ add package
-- ใช้ `bunx` แทน `npx`
-- ใช้ `bun.lockb` แทน `package-lock.json`
+- ใช้ `bun install` สำหรับ install จาก lockfile
+- ใช้ `bun add` สำหรับ add package
+- ใช้ `bunx` สำหรับ execute packages
+- ใช้ `bun.lockb` สำหรับ lockfile
 
 ### 3. TypeScript Integration
 

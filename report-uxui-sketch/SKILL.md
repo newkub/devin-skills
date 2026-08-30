@@ -7,6 +7,8 @@ related:
   - report-architecture-diagram
   - follow-design-system
   - roleplay-ui-designer
+  - ask-me
+  - suggest-next-action
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - run-lint
   - run-test
   - run-verify
+  - deep-validate
 ---
 
 ## Goal
@@ -25,14 +26,14 @@ related:
 > Goal: ติดตั้ง moon CLI บน environment
 
 1. ติดตั้งด้วย package manager ที่เหมาะสม:
-   - Bun: `bun add -D @moonrepo/cli`
-   - npm/pnpm/yarn: `npm install -D @moonrepo/cli` (หรือ `pnpm add -D`, `yarn add --dev`)
+   - Bun project: `bun add -D @moonrepo/cli`
+   - ถ้า project ไม่ใช้ Bun: ใช้ package manager ของ project (npm, pnpm, yarn)
    - PowerShell: `irm https://moonrepo.dev/install/moon.ps1 | iex`
    - macOS/Linux/WSL: `bash <(curl -fsSL https://moonrepo.dev/install/moon.sh)`
    - proto: `proto install moon`
    - mise: `mise use -g moon` (ถ้ามี `mise` ใน `.tool-versions` หรือ `mise.toml`)
 2. ตรวจสอบ version ด้วย `moon --version`
-3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (`bun add -D @moonrepo/cli` หรือ `npm install -D @moonrepo/cli`)
+3. ถ้าจะให้ project อื่นใช้ moon ใน repo นี้ → ใช้ package manager ของ workspace (default ใช้ `bun add -D @moonrepo/cli`)
 4. ดูรายละเอียดเพิ่มเติมใน [references/moonrepo.md](references/moonrepo.md)
 
 ### 2. Identify Workspace

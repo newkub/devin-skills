@@ -6,6 +6,8 @@ related:
   - convert-to-svg
   - review-architecture
   - visualize-in-web
+  - open-web
+  - gen-ai-images
 ---
 ## Goal
 

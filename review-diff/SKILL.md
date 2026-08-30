@@ -8,6 +8,8 @@ related:
   - report-table
   - deep-validate
   - ask-me
+  - ship
+  - follow-enter-dot
 ---
 
 ## Goal

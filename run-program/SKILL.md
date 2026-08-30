@@ -1,6 +1,10 @@
 ---
 name: run-program
 description: รันโปรแกรมหลักและทำให้ทำงานได้จริง
+related:
+  - run-install
+  - run-build
+  - review-codebase-everything
 ---
 
 ## Goal

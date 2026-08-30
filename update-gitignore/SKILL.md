@@ -1,6 +1,12 @@
 ---
 name: update-gitignore
 description: อัปเดต .gitignore ให้ครบถ้วนตาม stack และ artifacts ทีใช้
+related:
+  - follow-gitignore
+  - follow-best-practice
+  - suggest-next-action
+  - update-references
+  - deep-validate
 ---
 
 ## Goal

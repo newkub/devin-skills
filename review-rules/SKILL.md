@@ -1,6 +1,12 @@
 ---
 name: review-rules
 description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS.md ให้ถูกต้อง ครบถ้วน ไม่ซ้ำซ้อน
+related:
+  - scan-codebase
+  - deep-validate
+  - check-reference
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

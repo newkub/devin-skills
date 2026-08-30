@@ -83,11 +83,11 @@ git push origin :feature-branch
 
 ## Best Practices
 
-1. **Pull Before Push**: Pull latest changes ก่อน push
-2. **Review Changes**: Review commits ก่อน push
-3. **Use Force with Lease**: ใช้ --force-with-lease แทน --force
-4. **Protect Main Branch**: ใช้ branch protection
-5. **Push Often**: Push บ่อยๆ เพื่อ backup
+1. Pull Before Push: Pull latest changes ก่อน push
+2. Review Changes: Review commits ก่อน push
+3. Use Force with Lease: ใช้ --force-with-lease แทน --force
+4. Protect Main Branch: ใช้ branch protection
+5. Push Often: Push บ่อยๆ เพื่อ backup
 
 ## Common Issues
 

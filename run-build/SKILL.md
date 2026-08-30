@@ -1,6 +1,13 @@
 ---
 name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
+related:
+  - review-delivery
+  - run-typecheck
+  - resolve-errors
+  - run-clean
+  - report-table
+  - report-ansi
 ---
 
 ## Goal
@@ -106,50 +113,50 @@ related:
   - /resolve-errors
 ---
 
-## Goal
+### Goal
 
 รัน build process สำหรับ production-ready artifacts
 
-## Scope
+### Scope
 
 ใช้กับ project ที่มี build script
 
-## Execute
+### Execute
 
-### 1. Optimize Build
+#### 1. Optimize Build
 
 > Goal: build config พร้อม
 
 1. ทำ `/review-delivery`
 
-### 2. Typecheck
+#### 2. Typecheck
 
 > Goal: ไม่มี type errors
 
 1. ทำ `/run-typecheck`
 2. ถ้ามี errors → ทำ `/resolve-errors`
 
-### 3. Build
+#### 3. Build
 
 > Goal: build สำเร็จ
 
 1. ทำ `/run-clean`
 2. รัน build command
 
-### 4. Report
+#### 4. Report
 
 > Goal: สรุปผล
 
 1. ทำ `/report-table`
 2. ทำ `/report-ansi`
 
-## Rules
+### Rules
 
-### 1. Order
+#### 1. Order
 
 - Optimize ก่อน build
 
-## Expected Outcome
+### Expected Outcome
 
 - Build สำเร็จ
 ```

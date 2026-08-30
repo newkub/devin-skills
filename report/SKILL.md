@@ -1,6 +1,11 @@
 ---
 name: report
 description: ตอบในแชทเป็นตารางพร้อมคอลัมน์ No. เรียงลำดับ 1, 2, 3, ...
+related:
+  - report-table
+  - report-ansi
+  - report-progress
+  - review-writing
 ---
 
 ## Goal

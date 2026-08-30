@@ -5,8 +5,6 @@ related:
   - run-release
   - follow-release
   - ship
-  - ship
-  - ship
   - watch-deploy
   - resolve-errors
 ---

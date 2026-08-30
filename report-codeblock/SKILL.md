@@ -1,6 +1,10 @@
 ---
 name: report-codeblock
 description: จัดรูปแบบ code blocks, diffs, JSON และ markdown documents
+related:
+  - report-table
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

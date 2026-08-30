@@ -1,6 +1,11 @@
 ---
 name: roleplay-growth-manager
 description: รับบทเป็น growth manager ตรวจ funnel, A/B test, acquisition, retention จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

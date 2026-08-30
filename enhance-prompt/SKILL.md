@@ -1,6 +1,11 @@
 ---
 name: enhance-prompt
 description: สรุป prompt เป็น numbered list แต่ละข้อ single responsibility เพื่อดำเนินการต่อชัดเจน
+related:
+  - ask-me
+  - report-plan
+  - continue
+  - follow-devin-skills
 ---
 
 ## Goal

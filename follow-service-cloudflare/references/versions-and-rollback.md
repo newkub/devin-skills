@@ -4,8 +4,8 @@
 
 ## Key Concepts
 
-- **Version**: snapshot ของ Worker ณ เวลาหนึ่ง (code, assets, bindings, compat settings)
-- **Deployment**: version ที่กำลัง serve traffic (100% หรือ split)
+- Version: snapshot ของ Worker ณ เวลาหนึ่ง (code, assets, bindings, compat settings)
+- Deployment: version ที่กำลัง serve traffic (100% หรือ split)
 - `wrangler deploy` = upload + deploy 100% ในขั้นเดียว
 - `wrangler versions` = แยก upload และ deploy เพื่อควบคุมมากขึ้น
 

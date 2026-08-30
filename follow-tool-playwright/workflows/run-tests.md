@@ -58,7 +58,7 @@ bunx playwright test --update-snapshots
 
 ## Best Practices
 
-1. **Run Locally**: Run tests locally ก่อน CI
-2. **Use UI Mode**: ใช้ UI mode สำหรับ debugging
-3. **Parallel Execution**: ใช้ parallel execution สำหรับ speed
-4. **Headless in CI**: ใช้ headless mode ใน CI
+1. Run Locally: Run tests locally ก่อน CI
+2. Use UI Mode: ใช้ UI mode สำหรับ debugging
+3. Parallel Execution: ใช้ parallel execution สำหรับ speed
+4. Headless in CI: ใช้ headless mode ใน CI

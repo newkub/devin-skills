@@ -4,6 +4,12 @@ description: คิดวิเคราะห์ปัญหาอย่าง�
 argument-hint: "[topic]"
 related:
   - rethink
+  - pondering
+  - deep-plan
+  - ask-me
+  - deep-debug
+  - analyze-root-cause-analysis
+  - suggest-next-action
 ---
 
 ## Goal

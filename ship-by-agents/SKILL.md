@@ -1,31 +1,51 @@
-## เป้าหมาย
+---
+name: ship-by-agents
+description: ให้ agent รับงาน code project ต่อและทำจน deploy/release สำเร็จ
+related:
+  - ship
+  - suggest-next-action
+  - follow-devin-global-subagents
+  - consider-use-subagents
+  - report-progress
+  - resolve-errors
+  - ask-me
+---
 
-- ทำให้ทุกอย่างใช้งานได้ และดีที่สดเท่าที่คุณสามารถทำได้
+## Goal
 
-## หน้าที่
+ให้ agent รับงาน code project ต่อจาก context ปัจจุบันและทำจน deploy/release สำเร็จ
 
-- ทำตัวเป็น agentic coding ที่เก่งระดับพระเจ้าที่ในโลกนี้ไม่มีใครทัดทานได้แม้แต่น้อย 
+## Scope
 
-## สิ่งที่ต้องทำในแต่ละรอบ
+ใช้เมื่องานขนาดใหญ่หรือต้องการให้ agentic flow รับไปทำต่อแทนการทำเองทุกขั้นตอน
 
-1. setup tools, config, deps, version ให้ดีที่สุด ให้ล่าสุด
-2. ทำ features ให้ครอบคลุมการใช้งาน
-3. implement ให้ทุกอย่างใช้งานได้ เลือก stack ที่ดีที่สุด เหมาะสมที่สุด
-4. improve code quality ให้ readabilty ง่ายที่สุด test ง่ายที่สุด debug ง่ายที่สุด maintain ง่ายที่สุด resilence ที่สุด และ scale ได้
-5. ทดสอบทุกอย่าง ทุกประเภท ไม่มีอะไรที่ไม่ถูกทดสอบ
-6. เขียน code ให้ฉลาด
-7. optimize ทุกๆอย่างที่สามารถทำได้ 
-8. improve uxui ให้สม่ำเสมอทั่วกัน นำเสนอถูกต้อง เข้าใจง่ายที่สุด ใช้ง่ายที่สุด
-9. upgrade security ปิดช่องโหว่ทุกทาง
-10. ทบทวนทั้งหมดอีกครั้ง  fix and cleanup 
-11. push and deploy จนกว่าจะผ่าน 
+## Execute
 
-## ระหว่างที่ทำ
+### 1. Handover
 
-- วางแผนก่อน ทำสิ่งที่ impact ที่สุดก่อน 
-- หมั่น commit เสมอๆ 
-- ทบทวน how to ที่จะทำว่าเป็นวิธีที่ถูกต้อง และควรจะทำ 
-- ใช้ use-scripts, use-subagents เพื่อเร่งความเร็ว แต่ต้องมั่นใจว่าปลอดภัย
-- ไม่มั่นใจ ไม่ต้องถาม ให้คิดและทบทวนเอง
-- ต้องการทิศทาง ให้ถาม  
-- อย่าข้ามขั้นตอน ไม่ทำอะไรโง่ๆ และมักง่าย ทำอะไรที่ปลอดภัย
+> Goal: ส่งต่อ context และ target ให้ agent
+
+1. ทำ `/report-before` เพื่อสรุป context, state, และ target
+2. ใช้ `/suggest-next-action` เลือกลำดับถัดไป
+3. ถ้าต้องการให้ subagents ทำงานคู่ขนาน → `/consider-use-subagents` หรือ `/follow-devin-global-subagents`
+
+### 2. Autonomous Ship
+
+> Goal: ให้ agent ดำเนินการจนถึง deploy/release
+
+1. ทำ `/ship` โดยปล่อยให้ agent จัดการ steps ตาม state
+2. ติดตาม progress ด้วย `/report-progress`
+3. ถ้าติด blocker → `/resolve-errors` หรือ `/ask-me`
+
+## Rules
+
+- รักษา goal และ target ชัดเจน
+- ไม่เปลี่ยน scope โดยไม่ถาม user
+- ทำ checkpoint ก่อน action เสี่ยง
+- ถ้างานไม่สมบูรณ์ → รายงานสิ่งทีทำได้, blocker, และ next action
+
+## Expected Outcome
+
+- Project ถูก ship จนถึง deploy/release หรือทีกำหนด
+- มี report สรุปสิ่งที agent ทำ
+- user ทราบสถานะสุดท้ายและสิ่งทีค้าง

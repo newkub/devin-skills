@@ -1,6 +1,10 @@
 ---
 name: relocation
 description: ย้ายไฟล์และโฟลเดอร์ไปยังตำแหน่งที่เหมาะสมตาม domain และ responsibility
+related:
+  - review-architecture
+  - update-references
+  - use-scripts
 ---
 
 ## Goal

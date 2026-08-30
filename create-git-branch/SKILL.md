@@ -2,6 +2,11 @@
 name: create-git-branch
 description: สร้าง git branch ใหม่อย่างถูกต้อง
 argument-hint: "[branch-name]"
+related:
+  - cleanup-git-branch
+  - create-dev-branch
+  - delete-git-branch
+  - ship
 ---
 
 ## Goal

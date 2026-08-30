@@ -1,6 +1,13 @@
 ---
 name: follow-lib-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
+related:
+  - use-lib-better
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

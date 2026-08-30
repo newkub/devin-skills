@@ -7,6 +7,8 @@ related:
   - fix
   - watch-browser-and-fix
   - resolve-errors
+  - list-project-git-in-computer
+  - run-check
 ---
 
 ## Goal

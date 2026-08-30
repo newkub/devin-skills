@@ -1,6 +1,10 @@
 ---
 name: all-files
 description: ทำงานกับแต่ละ file ใน project จนครบถ้วน
+related:
+  - analyze-project
+  - deep-validate
+  - resolve-errors
 ---
 
 ## Goal

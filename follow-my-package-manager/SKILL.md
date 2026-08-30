@@ -7,6 +7,7 @@ related:
   - download-program
   - list-program-in-computer
   - uninstall-program-in-computer
+  - open-web
 ---
 
 ## Goal

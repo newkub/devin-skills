@@ -21,10 +21,8 @@ related:
 > Goal: ติดตั้ง Knip และสร้าง config file ใน root directory
 
 1. ติดตั้ง `knip` ด้วย package manager ของ project:
-   - Bun: `bun add -D knip`
-   - npm: `npm install -D knip`
-   - pnpm: `pnpm add -D knip`
-   - yarn: `yarn add -D knip`
+   - Bun project: `bun add -D knip`
+   - ถ้า project ไม่ใช้ Bun: ใช้ package manager ของ project (npm, pnpm, yarn)
 2. สร้าง `knip.json` ใน root directory สำหรับ monorepo หรือ single project
 3. ตั้งค่า `$schema` เป็น `https://unpkg.com/knip@latest/schema.json`
 4. ถ้าเป็น monorepo → ใช้ `workspaces` object แทน root-level `entry`/`project`

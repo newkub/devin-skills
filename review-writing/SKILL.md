@@ -1,6 +1,14 @@
 ---
 name: review-writing
 description: Review writing quality, naming conventions, and discoverability across docs, code, features
+related:
+  - scan-codebase
+  - deep-validate
+  - run-verify
+  - resolve-errors
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

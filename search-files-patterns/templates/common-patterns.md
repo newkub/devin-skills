@@ -4,14 +4,14 @@
 
 ## File Name Patterns
 
-- `**/*.test.{ts,tsx,js,jsx}` — test files
-- `**/*.spec.*` — spec files
-- `**/__mocks__/**` — mock files
-- `**/mocks.{ts,js}` — mock modules
-- `**/fixtures/**` — fixture data
-- `**/index.{ts,tsx,js,jsx}` — barrel exports
-- `**/*.d.ts` — type declaration files
-- `**/{README,CONTRIBUTING,CHANGELOG,SECURITY}.md` — markdown docs
+- `/*.test.{ts,tsx,js,jsx}` — test files
+- `/*.spec.*` — spec files
+- `/__mocks__/` — mock files
+- `/mocks.{ts,js}` — mock modules
+- `/fixtures/` — fixture data
+- `/index.{ts,tsx,js,jsx}` — barrel exports
+- `/*.d.ts` — type declaration files
+- `/{README,CONTRIBUTING,CHANGELOG,SECURITY}.md` — markdown docs
 
 ## Content Patterns
 

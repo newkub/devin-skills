@@ -1,6 +1,11 @@
 ---
 name: roleplay-data-engineer
 description: รับบทเป็น data engineer ตรวจ data pipelines, ETL, schema, data infra จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

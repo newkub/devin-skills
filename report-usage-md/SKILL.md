@@ -1,6 +1,14 @@
 ---
 name: report-usage-md
 description: Report the status and coverage of USAGE.md in workspace
+related:
+  - update-usage-md
+  - review-usage-md
+  - consider-use-in-another-skills
+  - report-usage
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

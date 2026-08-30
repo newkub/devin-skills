@@ -4,27 +4,27 @@ Workflow for deploying projects to Vercel.
 
 ## Steps
 
-1. **Install Vercel CLI**
+1. Install Vercel CLI
    ```bash
    bun i -g vercel
    ```
 
-2. **Login to Vercel**
+2. Login to Vercel
    ```bash
    vercel login
    ```
 
-3. **Initialize project**
+3. Initialize project
    ```bash
    vercel
    ```
 
-4. **Configure project settings**
+4. Configure project settings
    - Set framework preset
    - Configure build settings
    - Set environment variables
 
-5. **Deploy**
+5. Deploy
    ```bash
    vercel --prod
    ```

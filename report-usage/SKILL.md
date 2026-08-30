@@ -1,6 +1,10 @@
 ---
 name: report-usage
 description: Report usage statistics and patterns of APIs, functions, or skills
+related:
+  - report-table
+  - report-file-structure
+  - report-ansi
 ---
 
 ## Goal

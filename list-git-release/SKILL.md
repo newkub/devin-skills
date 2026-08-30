@@ -1,6 +1,11 @@
 ---
 name: list-git-release
 description: รายการ git tags และ releases จาก local repo พร้อม version, date, notes
+related:
+  - list-git-branch
+  - list-git-commit
+  - list-git-stash
+  - report-table
 ---
 
 ## Goal

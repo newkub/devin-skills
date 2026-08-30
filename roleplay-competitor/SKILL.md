@@ -1,6 +1,14 @@
 ---
 name: roleplay-competitor
 description: รับบทเป็นคู่แข่งอ่าน code แล้ววิเคราะห์จุดอ่อน ช่องโหว่ และโอกาสที่คู่แข่งจะเอาชนะได้
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - bench-competitors
+  - review-codebase-everything
+  - deep-thinking
 ---
 
 ## Goal

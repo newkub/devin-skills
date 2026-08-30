@@ -7,6 +7,8 @@ related:
   - summarize
   - dont-understand
   - write-how-to
+  - learn-from-web
+  - deep-research
 ---
 
 ## Goal

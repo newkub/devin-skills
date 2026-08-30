@@ -1,6 +1,13 @@
 ---
 name: follow-github-issue-templates
 description: สร้าง GitHub issue templates สำหรับ bug, feature, plan, test, questions และ agents-task
+related:
+  - follow-dot-github
+  - deep-validate
+  - report
+  - suggest-next-action
+  - create-github-issue
+  - plan
 ---
 
 ## Goal

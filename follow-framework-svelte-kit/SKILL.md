@@ -1,6 +1,13 @@
 ---
 name: follow-framework-svelte-kit
 description: สร้าง Svelte applications ด้วย SSR/CSR/Prerendering และ file-based routing ตามมาตรฐาน SvelteKit
+related:
+  - follow-framework-svelte
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 ---
 
 ## Goal

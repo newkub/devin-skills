@@ -1,6 +1,13 @@
 ---
 name: run-cleanup
 description: Run Cleanup
+related:
+  - cleanup-files-in-computer
+  - cleanup-files-in-project
+  - cleanup-git-branch
+  - run-check
+  - run-verify
+  - suggest-next-action
 ---
 
 ## Goal

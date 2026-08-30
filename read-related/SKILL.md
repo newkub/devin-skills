@@ -2,6 +2,11 @@
 name: read-related
 description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
 argument-hint: "[skill-name]"
+related:
+  - check-skills-related
+  - report-table
+  - suggest-next-action
+  - review-quality
 ---
 
 ## Goal

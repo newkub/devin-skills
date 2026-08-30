@@ -2,6 +2,10 @@
 name: translate-to-lang-en
 description: ใช้ภาษาอังกฤษในการสื่อสารและทำงาน
 argument-hint: "[target]"
+related:
+  - translate-to-lang-th
+  - follow-best-practice
+  - suggest-next-action
 ---
 
 ## Goal

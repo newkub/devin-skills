@@ -1,6 +1,11 @@
 ---
 name: save-to-new-gist
 description: สร้าง GitHub gist จากไฟล์หรือข้อความที่ระบุ
+related:
+  - save-to-gist-idea
+  - implement-from-gist-idea
+  - list-gist
+  - open-web
 ---
 
 ## Goal

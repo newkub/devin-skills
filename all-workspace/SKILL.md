@@ -1,6 +1,10 @@
 ---
 name: all-workspace
 description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
+related:
+  - analyze-project
+  - deep-validate
+  - resolve-errors
 ---
 
 ## Goal

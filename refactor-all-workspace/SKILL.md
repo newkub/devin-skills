@@ -1,6 +1,14 @@
 ---
 name: refactor-all-workspace
 description: Deep refactoring ทุก workspace ใน monorepo ด้วย comprehensive analysis และ safety measures
+related:
+  - run-test
+  - run-typecheck
+  - analyze-project
+  - run-lint
+  - review-quality
+  - read-all-files
+  - check-long-files
 ---
 
 ## Goal

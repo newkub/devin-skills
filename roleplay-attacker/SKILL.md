@@ -1,6 +1,14 @@
 ---
 name: roleplay-attacker
 description: รับบทเป็น hacker มองหา vulnerabilities attack surfaces และ exploit paths จาก source code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - run-audit
+  - review-codebase-everything
+  - deep-thinking
 ---
 
 ## Goal

@@ -6,6 +6,9 @@ related:
   - suggest-next-action
   - report-before
   - report-before-after
+  - analyze-project
+  - scan-codebase
+  - deep-report
 ---
 
 ## Goal

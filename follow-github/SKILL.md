@@ -7,6 +7,7 @@ related:
   - create-dev-branch
   - report-table
   - suggest-next-action
+  - follow-git-flow
 ---
 
 ## Goal

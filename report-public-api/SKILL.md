@@ -1,6 +1,10 @@
 ---
 name: report-public-api
 description: รายงาน public API ของ project หรือ library ในรูปแบบ markdown table
+related:
+  - scan-codebase
+  - check-code-structure
+  - report-table
 ---
 
 ## Goal

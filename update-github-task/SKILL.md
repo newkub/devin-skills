@@ -2,6 +2,13 @@
 name: update-github-task
 description: อัปเดต fields และสถานะของงานใน GitHub Project
 argument-hint: "[task-id]"
+related:
+  - cleanup-github-task
+  - implement-github-task
+  - update-github-metadata
+  - update-references
+  - suggest-next-action
+  - follow-best-practice
 ---
 
 ## Goal

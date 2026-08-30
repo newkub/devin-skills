@@ -29,7 +29,7 @@ bun add -D rolldown
 
 เปลี่ยนจาก `rollup.config.js` เป็น `rolldown.config.ts`:
 
-**Before (rollup.config.js):**
+Before (rollup.config.js):
 ```javascript
 export default {
   input: 'src/index.js',
@@ -40,7 +40,7 @@ export default {
 }
 ```
 
-**After (rolldown.config.ts):**
+After (rolldown.config.ts):
 ```typescript
 import { defineConfig } from 'rolldown'
 
@@ -57,7 +57,7 @@ export default defineConfig({
 
 เปลี่ยน plugins จาก Rollup เป็น Rolldown:
 
-**Before:**
+Before:
 ```javascript
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -70,7 +70,7 @@ export default {
 }
 ```
 
-**After:**
+After:
 ```typescript
 import commonjs from '@rolldown/plugin-commonjs'
 import nodeResolve from '@rolldown/plugin-node-resolve'
@@ -87,7 +87,7 @@ export default defineConfig({
 
 เปลี่ยน build script ใน package.json:
 
-**Before:**
+Before:
 ```json
 {
   "scripts": {
@@ -96,7 +96,7 @@ export default defineConfig({
 }
 ```
 
-**After:**
+After:
 ```json
 {
   "scripts": {

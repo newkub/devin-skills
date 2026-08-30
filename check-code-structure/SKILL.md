@@ -8,6 +8,7 @@ related:
   - restructure
   - review-codebase-everything
   - deep-validate
+  - scan-codebase
 ---
 
 ## Goal

@@ -1,6 +1,13 @@
 ---
 name: follow-lib-drizzle
 description: ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations ด้วย SQL-like syntax
+related:
+  - run-drizzle-studio
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

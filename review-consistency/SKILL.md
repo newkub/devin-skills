@@ -1,6 +1,11 @@
 ---
 name: review-consistency
 description: ตรวจสอบและปรับปรุงความสอดคล้องของ skill files ทั้งภายในและข้าม skill
+related:
+  - deep-validate
+  - report-table
+  - suggest-next-action
+  - scan-codebase
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - follow-tool-github-actions
   - follow-tool-pkg-new
   - follow-lang-nodejs
+  - open-web-for-config-secret
 ---
 
 ## Goal

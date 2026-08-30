@@ -4,6 +4,9 @@ description: ดูประวัติไฟล์ทีระบุจาก 
 related:
   - git-debug
   - restore-from-git-log
+  - deep-debug
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

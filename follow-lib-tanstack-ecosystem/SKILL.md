@@ -1,6 +1,11 @@
 ---
 name: follow-lib-tanstack-ecosystem
 description: เลือกและใช้งาน TanStack libraries ใน project ตาม use case
+related:
+  - analyze-project
+  - ask-me
+  - run-test
+  - run-typecheck
 ---
 
 ## Goal

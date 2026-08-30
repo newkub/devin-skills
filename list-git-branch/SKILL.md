@@ -1,6 +1,10 @@
 ---
 name: list-git-branch
 description: แสดง branches ในเครื่องและ remote พร้อมข้อมูลล่าสุด
+related:
+  - list-github-branch
+  - report-table
+  - follow-tool-git
 ---
 
 ## Goal

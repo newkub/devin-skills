@@ -1,6 +1,11 @@
 ---
 name: roleplay-customer-support-agent
 description: รับบทเป็น customer support agent อ่าน code หา issues ที่ user จะร้องเรียนและ support gaps
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

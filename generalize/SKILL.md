@@ -1,6 +1,10 @@
 ---
 name: generalize
 description: แปลง how-to หรือ instructions เป็น solution patterns ทั่วไปที่ใช้ซ้ำได้
+related:
+  - write-explicit
+  - deep-validate
+  - check-reference
 ---
 
 ## Goal

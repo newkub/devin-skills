@@ -5,6 +5,8 @@ related:
   - list-devin-global-mcp
   - follow-create-mcp
   - update-chezmoi
+  - report
+  - suggest-next-action
 ---
 
 ## Goal

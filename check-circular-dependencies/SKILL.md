@@ -5,6 +5,10 @@ related:
   - check-reference
   - check-skills-related
   - deep-validate
+  - use-scripts
+  - resolve-errors
+  - refactor-workspace
+  - update-references
 ---
 ## Goal
 

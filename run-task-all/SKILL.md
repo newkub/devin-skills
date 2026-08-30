@@ -7,6 +7,7 @@ related:
   - run-test
   - report-table
   - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal

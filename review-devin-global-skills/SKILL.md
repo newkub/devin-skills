@@ -9,6 +9,7 @@ related:
   - report-table
   - suggest-next-action
   - check-reference
+  - check-broken-skills-references
 ---
 
 ## Goal
@@ -56,7 +57,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 > Goal: ตรวจ references ครบถ้วนและเนื้อหากระชับ
 
 1. ทำ `/check-reference` เพื่อยืนยัน `related` references
-2. ทำตาม `references/content-quality.md`
+2. ทำ `/check-broken-skills-references` เพื่อ scan หา broken `/skill-name` references ทั้งหมด
+3. ทำตาม `references/content-quality.md`
 
 ### 6. Check Parallel And Script Usage
 

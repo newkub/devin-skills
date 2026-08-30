@@ -1,6 +1,14 @@
 ---
 name: use-ast-grep-programatic
 description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis และ integrate กับ review CLI
+related:
+  - use-ast-grep
+  - update-project-rules
+  - update-review-cli
+  - follow-lang-bun
+  - follow-create-bun-cli
+  - scan-codebase
+  - use-scripts
 ---
 
 ## Goal
@@ -12,6 +20,18 @@ description: ใช้งาน ast-grep แบบ programmatic ผ่าน scr
 ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-ast-grep`) — ไม่รวมการอัปเดต rules (ดู `/update-project-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli`)
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ติดตั้ง ast-grep สำหรับ Bun scripts
+
+1. ติดตั้ง `@ast-grep/cli` ใน project:
+   - `bun add -D @ast-grep/cli`
+   - หรือ global: `mise use -g 'npm:@ast-grep/cli'`
+2. ตรวจสอบ CLI: `bunx ast-grep --version`
+3. ถ้าต้องใช้ napi bindings → `bun add -D @ast-grep/napi`
+4. สร้าง `sgconfig.yml` ที root ถ้ายังไม่มี
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup ast-grep`
 
 ### 1. Prepare Context
 

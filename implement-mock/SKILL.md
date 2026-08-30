@@ -1,6 +1,9 @@
 ---
 name: implement-mock
 description: แปลง MOCK, FAKE, STUB implementations เป็น production code
+related:
+  - run-test
+  - run-lint
 ---
 
 ## Goal

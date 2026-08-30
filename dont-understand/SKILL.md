@@ -7,6 +7,7 @@ related:
   - understand-me
   - dont-ask
   - continue
+  - ask-project-requirement
 ---
 
 ## Goal

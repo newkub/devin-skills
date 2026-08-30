@@ -4,39 +4,39 @@ Workflow for creating a Leptos application.
 
 ## Steps
 
-1. **Install prerequisites**
+1. Install prerequisites
    ```bash
    cargo install cargo-leptos
    cargo install trunk
    ```
 
-2. **Create new project**
+2. Create new project
    ```bash
    cargo leptos new my-app
    ```
 
-3. **Choose template**
+3. Choose template
    - SSR (Server-Side Rendering)
    - CSR (Client-Side Rendering)
    - Full Stack
 
-4. **Configure project**
+4. Configure project
    - Set up dependencies
    - Configure Cargo.toml
    - Set up build settings
 
-5. **Implement components**
+5. Implement components
    - Create components
    - Add signals
    - Implement reactive system
 
-6. **Run development**
+6. Run development
    ```bash
    cd my-app
    cargo leptos watch
    ```
 
-7. **Build for production**
+7. Build for production
    ```bash
    cargo leptos build --release
    ```

@@ -4,6 +4,7 @@ description: สร้างไฟล์ .excalidraw จากคำอธิบ
 argument-hint: "[description]"
 related:
   - draw-svg-image
+  - draw-tldraw
 ---
 
 ## Goal

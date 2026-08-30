@@ -17,37 +17,37 @@ auto_execution_mode: 3
 
 ### Plugin Not Compatible
 
-**Problem:** Plugin ไม่ทำงานกับ Rolldown
+Problem: Plugin ไม่ทำงานกับ Rolldown
 
-**Solution:**
+Solution:
 - ตรวจสอบว่ามี Rolldown version หรือไม่
 - ใช้ plugin ที่ compatible กับทั้งสอง
 - ปรับ plugin ให้ compatible
 
 ### Build Error
 
-**Problem:** Build error หลัง migration
+Problem: Build error หลัง migration
 
-**Solution:**
+Solution:
 - ตรวจสอบ config options
 - ตรวจสอบ plugin compatibility
 - ตรวจสอบ TypeScript config
 
 ### Output Different
 
-**Problem:** Output ต่างจาก Rollup
+Problem: Output ต่างจาก Rollup
 
-**Solution:**
+Solution:
 - ตรวจสอบ tree-shaking options
 - ตรวจสอบ minification settings
 - ตรวจสอบ output format
 
 ## Benefits of Migration
 
-- **Performance**: 10-100x faster builds
-- **TypeScript**: Built-in TypeScript support
-- **Minification**: Built-in minifier
-- **Compatibility**: Rollup-compatible API
+- Performance: 10-100x faster builds
+- TypeScript: Built-in TypeScript support
+- Minification: Built-in minifier
+- Compatibility: Rollup-compatible API
 
 ## Rules
 

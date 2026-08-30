@@ -6,6 +6,8 @@ related:
   - resolve-merge-conflicts
   - git-commit
   - git-push
+  - refactor-commit
+  - merge-in
 ---
 
 ## Goal

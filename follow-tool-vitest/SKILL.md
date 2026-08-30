@@ -1,6 +1,9 @@
 ---
 name: follow-tool-vitest
 description: ติดตั้งและตั้งค่า Vitest 4 สำหรับ unit testing ด้วย Vite
+related:
+  - follow-tool-vite
+  - update-test-everything
 ---
 
 ## Goal

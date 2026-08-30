@@ -2,6 +2,10 @@
 name: summarize-prompt
 description: สรุปการสนทนาเป็น prompt ที่ชัดเจน
 argument-hint: "[target]"
+related:
+  - enhance-prompt
+  - generate-prompt-from-image
+  - report-enhance-prompt
 ---
 
 ## Goal

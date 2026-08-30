@@ -9,6 +9,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - ship
+  - update-references
 ---
 ## Goal
 

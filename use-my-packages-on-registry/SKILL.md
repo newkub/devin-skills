@@ -54,10 +54,10 @@ related:
 
 > Goal: ติดตั้ง packages ทีเลือกลง project
 
-1. npm/bun:
+1. Bun/Node:
    - `bun add <pkg>` สำหรับ dependencies
    - `bun add -d <pkg>` สำหรับ dev dependencies
-   - fallback ไป `npm install <pkg>` ถ้า project ใช้ npm
+   - ถ้า project ใช้ npm เป็นหลัก: ใช้คำสั่ง install ของ npm ด้วย package name
 2. cargo:
    - `cargo add <pkg>`
    - `cargo add --dev <pkg>` สำหรับ dev dependencies
@@ -92,7 +92,7 @@ related:
 ### 3. Security
 
 - ไม่ expose tokens, credentials หรือ secrets
-- ใช้ `bun add` แทน `npm install` ถ้าเป็น Bun project
+- ใช้ `bun add` สำหรับ Bun/Node project ในระดับ project
 - ใช้ `cargo add` สำหรับ Rust
 
 ### 4. Scripts And Temp

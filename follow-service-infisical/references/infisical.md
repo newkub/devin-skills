@@ -6,13 +6,13 @@ Infisical is an open-source secrets management platform. The Infisical CLI retri
 
 ## Version Info
 
-- **CLI Package**: `@infisical/cli`
-- **CLI Latest stable**: `0.43.125`
-- **SDK Package**: `@infisical/sdk`
-- **SDK Latest stable**: `5.0.2`
-- **SDK Node.js requirement**: `>= 20`
-- **CLI License**: MIT
-- **SDK License**: ISC
+- CLI Package: `@infisical/cli`
+- CLI Latest stable: `0.43.125`
+- SDK Package: `@infisical/sdk`
+- SDK Latest stable: `5.0.2`
+- SDK Node.js requirement: `>= 20`
+- CLI License: MIT
+- SDK License: ISC
 
 ## Install CLI
 

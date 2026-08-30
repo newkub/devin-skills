@@ -1,6 +1,12 @@
 ---
 name: review-features
 description: ตรวจสอบ features documentation ก่อน update-features-md แก้ไข
+related:
+  - scan-codebase
+  - check-monorepo
+  - report-table
+  - suggest-next-action
+  - update-features-md
 ---
 
 ## Goal

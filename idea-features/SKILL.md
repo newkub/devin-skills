@@ -9,6 +9,7 @@ related:
   - suggest-me
   - enhance-prompt
   - report-uxui-sketch
+  - analyze-project
 ---
 
 ## Goal

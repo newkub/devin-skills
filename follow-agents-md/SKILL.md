@@ -2,6 +2,10 @@
 name: follow-agents-md
 description: ทำตาม AGENTS.md ใน workspace
 argument-hint: "[target]"
+related:
+  - update-agents-md
+  - check-skills-related
+  - consider-use-subagents
 ---
 
 ## Goal

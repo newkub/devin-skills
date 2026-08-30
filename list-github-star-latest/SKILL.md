@@ -4,6 +4,7 @@ description: แสดง 50 starred repositories ล่าสุดของ au
 argument-hint: "[username]"
 related:
   - list-github-repo
+  - report-table
 ---
 
 ## Goal

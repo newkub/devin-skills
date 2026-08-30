@@ -1,6 +1,14 @@
 ---
 name: follow-tool-bunup
 description: ตั้งค่า Bunup สำหรับ bundle TypeScript libraries ด้วย ESM, CJS, และ dts
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
+  - follow-runtime-bun
 ---
 
 ## Goal

@@ -112,13 +112,13 @@ vcs:
 
 ## Tasks
 
-Tasks are commands run in the context of a project. Configured per-project via `moon.yml` or shared via `.moon/tasks/**/*`.
+Tasks are commands run in the context of a project. Configured per-project via `moon.yml` or shared via `.moon/tasks//*`.
 
 ### Task Types
 
-- **Build** — generates artifacts (derived from `outputs` setting)
-- **Run** — long-running or one-off process (derived from `options.persistent`)
-- **Test** — asserts code correctness (default type)
+- Build — generates artifacts (derived from `outputs` setting)
+- Run — long-running or one-off process (derived from `options.persistent`)
+- Test** — asserts code correctness (default type)
 
 ### Task Configuration in `moon.yml`
 

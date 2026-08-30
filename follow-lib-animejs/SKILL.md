@@ -1,6 +1,13 @@
 ---
 name: follow-lib-animejs
 description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่าย
+related:
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-lib-css
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

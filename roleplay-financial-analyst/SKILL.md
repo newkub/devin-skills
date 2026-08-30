@@ -1,6 +1,11 @@
 ---
 name: roleplay-financial-analyst
 description: รับบทเป็น financial analyst ตรวจ pricing, burn, unit economics จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

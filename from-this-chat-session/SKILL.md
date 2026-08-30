@@ -2,6 +2,12 @@
 name: from-this-chat-session
 description: สกัดการทำงานจาก chat session นี้ไปสร้างเป็น skill ใหม่ใน repo
 argument-hint: "[target]"
+related:
+  - update-devin-global-skills
+  - summarize-this-chat-session
+  - scan-codebase
+  - deep-validate
+  - ship
 ---
 
 ## Goal

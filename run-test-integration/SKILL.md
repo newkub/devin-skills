@@ -1,6 +1,13 @@
 ---
 name: run-test-integration
 description: รัน integration tests สำหรับ module interactions และ data flow
+related:
+  - run-test
+  - run-test-all
+  - run-test-api
+  - run-check
+  - run-verify
+  - suggest-next-action
 ---
 
 ## Goal

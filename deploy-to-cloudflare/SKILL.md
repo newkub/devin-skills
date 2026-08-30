@@ -8,7 +8,7 @@ related:
 
 ## Goal
 
-Deploy application ไปยัง Cloudflare Workers ด้วย wrangler ตั้งแต่ build, cleanup, deploy, watch, และ fix จนสำเร็จ โดย **ไม่ใช้ Cloudflare Pages**
+Deploy application ไปยัง Cloudflare Workers ด้วย wrangler ตั้งแต่ build, cleanup, deploy, watch, และ fix จนสำเร็จ โดย ไม่ใช้ Cloudflare Pages
 
 ## Scope
 

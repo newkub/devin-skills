@@ -4,6 +4,7 @@ description: แปลงไฟล์ระหว่าง formats ต่าง�
 argument-hint: "[input] [output-format]"
 related:
   - convert-to-svg
+  - ask-me
 ---
 
 ## Goal

@@ -1,6 +1,11 @@
 ---
 name: roleplay-technical-writer
 description: รับบทเป็น technical writer ตรวจ docs, examples, และ discoverability ของ project
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

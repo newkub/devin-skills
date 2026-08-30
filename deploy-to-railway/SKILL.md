@@ -7,6 +7,8 @@ related:
   - deploy-to-cloudflare
   - deploy-to-vercel
   - run-deploy
+  - run-build
+  - resolve-errors
 ---
 
 ## Goal

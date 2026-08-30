@@ -1,6 +1,13 @@
 ---
 name: review-and-fix
 description: Review แล้วแก้ไขตาม context โดยขอ user confirm
+related:
+  - unified-review-and-merge-pr
+  - watch-browser-and-fix
+  - follow-best-practice
+  - review-codebase-everything
+  - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal

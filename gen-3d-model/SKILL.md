@@ -4,6 +4,8 @@ description: สร้าง 3D model จาก prompt หรือรูปภ�
 argument-hint: "[prompt]"
 related:
   - gen-ai-images
+  - gen-ai-videos
+  - gen-changelog-md
 ---
 
 ## Goal

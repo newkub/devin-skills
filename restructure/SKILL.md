@@ -7,7 +7,8 @@ related:
   - relocation
   - update-references
   - rethink
-
+  - deep-review
+  - check-long-files
 ---
 
 ## Goal

@@ -1,6 +1,14 @@
 ---
 name: review-content-coverage
 description: เขียน content ครอบคลุมทุก features, APIs, และ use cases
+related:
+  - follow-coverage
+  - run-test-coverage
+  - follow-best-practice
+  - review-codebase-everything
+  - suggest-next-action
+  - resolve-errors
+  - review-writing
 ---
 
 ## Goal

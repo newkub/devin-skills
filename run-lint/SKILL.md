@@ -1,6 +1,10 @@
 ---
 name: run-lint
 description: รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และห้ามแก้ไข config ไฟล์
+related:
+  - deep-review
+  - resolve-errors
+  - check-unused-files
 ---
 
 ## Goal

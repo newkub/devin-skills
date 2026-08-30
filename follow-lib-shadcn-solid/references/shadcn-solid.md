@@ -8,7 +8,7 @@
 
 ## Overview
 
-`shadcn-solid` is an unofficial community-led SolidJS port of `shadcn/ui`. It provides accessible, customizable components using a **copy-to-own** pattern — component source code is copied directly into your project, not installed as a dependency.
+`shadcn-solid` is an unofficial community-led SolidJS port of `shadcn/ui`. It provides accessible, customizable components using a copy-to-own pattern — component source code is copied directly into your project, not installed as a dependency.
 
 Built on Kobalte primitives for accessibility. Styled with Tailwind CSS or UnoCSS.
 
@@ -154,10 +154,10 @@ Accordion, Alert, Alert Dialog, Badge, Breadcrumbs, Button, Button Group, Calend
 
 ## Key Concepts
 
-- **Copy-to-own**: Component source is copied into `src/components/ui/` — you own and customize the code
-- **Accessible primitives**: Built on Kobalte for WAI-ARIA compliance
-- **Tailwind CSS / UnoCSS**: Styled with utility classes, customizable via CSS variables
-- **No dependency lock-in**: No `@shadcn/core` package to install — components are plain source files
+- Copy-to-own: Component source is copied into `src/components/ui/` — you own and customize the code
+- Accessible primitives: Built on Kobalte for WAI-ARIA compliance
+- Tailwind CSS / UnoCSS: Styled with utility classes, customizable via CSS variables
+- No dependency lock-in: No `@shadcn/core` package to install — components are plain source files
 
 ## License
 

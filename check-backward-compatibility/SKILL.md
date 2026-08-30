@@ -5,7 +5,6 @@ argument-hint: "[base-ref] [head-ref]"
 related:
   - review-references
   - run-release
-  - check-broken-skills-references
 ---
 
 ## Goal

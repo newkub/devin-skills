@@ -1,6 +1,13 @@
 ---
 name: follow-tool-git-branch
 description: จัดการ git branches ทั้งหมดใน repository
+related:
+  - cleanup-git-branch
+  - create-git-branch
+  - delete-git-branch
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal
@@ -12,6 +19,19 @@ description: จัดการ git branches ทั้งหมดใน reposit
 ใช้กับ repository ใดๆ ที่ต้องการจัดการ branches
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ตรวจสอบและตั้งค่า git
+
+1. ตรวจสอบ git: `git --version` (แนะนำ 2.30+)
+2. ถ้ายังไม่มี git → ติดตั้งตาม OS:
+   - macOS: `mise use -g git` หรือ `brew install git`
+   - Windows: `winget install Git.Git` หรือ `scoop install git`
+   - Linux: `apt install git`
+3. ตั้งค่า default branch: `git config --global init.defaultBranch main`
+4. ตั้งค่า alias ถ้าจำเป็น: `git config --global alias.<name> <command>`
+5. Verify: `git config --list`
 
 ### 1. List Branches
 

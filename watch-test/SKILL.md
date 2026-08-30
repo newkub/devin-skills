@@ -5,6 +5,11 @@ argument-hint: "[file-or-pattern]"
 related:
   - watch-browser-and-test-all-routes
   - review-performance
+  - run-watch-test
+  - ask-me
+  - resolve-errors
+  - loop-until-complete
+  - run-install
 ---
 
 ## Goal

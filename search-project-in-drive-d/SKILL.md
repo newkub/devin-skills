@@ -2,6 +2,9 @@
 name: search-project-in-drive-d
 description: ค้นหา project ใน drive D ที่ตรงกับ keyword หรือ pattern
 argument-hint: "[keyword]"
+related:
+  - ask-me
+  - report-table
 ---
 
 ## Goal

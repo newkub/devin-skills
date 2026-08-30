@@ -1,6 +1,11 @@
 ---
 name: roleplay-compliance-officer
 description: รับบทเป็น compliance officer ทัง DPO และ regulator อ่าน source code หา privacy และ legal gaps
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

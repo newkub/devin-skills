@@ -6,6 +6,8 @@ related:
   - analyze-root-cause-analysis
   - deep-validate
   - run-check
+  - ask-me
+  - scan-codebase
 ---
 
 ## Goal

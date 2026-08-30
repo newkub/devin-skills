@@ -1,6 +1,9 @@
 ---
 name: follow-tool-cargo
 description: ตั้งค่า Cargo lint rules และ workspace lint configuration
+related:
+  - analyze-project
+  - run-verify
 ---
 
 ## Goal

@@ -1,6 +1,10 @@
 ---
 name: follow-tool-linter
 description: ใช้งาน linter ใน project
+related:
+  - follow-tool-biome
+  - follow-tool-oxlint
+  - resolve-errors
 ---
 
 ## Goal

@@ -47,7 +47,7 @@ mkdir src
 
 สร้าง entry file:
 
-**src/index.ts:**
+src/index.ts:
 ```typescript
 export function greet(name: string): string {
   return `Hello, ${name}!`
@@ -60,7 +60,7 @@ export const version = '1.0.0'
 
 สร้าง config file:
 
-**rolldown.config.ts:**
+rolldown.config.ts:
 ```typescript
 import { defineConfig } from 'rolldown'
 
@@ -112,7 +112,7 @@ bun add -D typescript
 
 ### 2. Create tsconfig.json
 
-**tsconfig.json:**
+tsconfig.json:
 ```json
 {
   "compilerOptions": {
@@ -128,7 +128,7 @@ bun add -D typescript
 
 ### 3. Update Config
 
-**rolldown.config.ts:**
+rolldown.config.ts:
 ```typescript
 import { defineConfig } from 'rolldown'
 
@@ -152,7 +152,7 @@ bun add -D @rolldown/plugin-commonjs @rolldown/plugin-node-resolve
 
 ### 2. Update Config
 
-**rolldown.config.ts:**
+rolldown.config.ts:
 ```typescript
 import { defineConfig } from 'rolldown'
 import commonjs from '@rolldown/plugin-commonjs'

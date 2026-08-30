@@ -1,6 +1,9 @@
 ---
 name: follow-principles
 description: ระบุและใช้ principles ของ context นั้นๆ ในการทำงาน
+related:
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -1,6 +1,14 @@
 ---
 name: scan-codebase
 description: Scan codebase อย่างรวดเร็วเพื่อเข้าใจ structure, patterns, และ quality ใน 3 นาที
+related:
+  - use-scripts
+  - check-code-structure
+  - use-ast-grep
+  - review-quality
+  - report-table
+  - report
+  - update-project-rules
 ---
 
 ## Goal

@@ -129,14 +129,14 @@ User Command → moon CLI → Read moon.yml → Resolve Projects
 
 ### Steps
 
-1. **Command Parsing** — parse task name, options, filters
-2. **Configuration Loading** — read `moon.yml`, project configs, merge
-3. **Project Resolution** — find matching projects, filter, sort by dependencies
-4. **Task Resolution** — find tasks, resolve dependencies, create execution graph
-5. **Hash Calculation** — hash source files, dependencies, configuration
-6. **Cache Check** — check local + remote cache, return cached if available
-7. **Task Execution** — parallel (independent) or sequential (dependent)
-8. **Cache Storage** — store outputs in local + remote cache
+1. Command Parsing — parse task name, options, filters
+2. Configuration Loading — read `moon.yml`, project configs, merge
+3. Project Resolution — find matching projects, filter, sort by dependencies
+4. Task Resolution — find tasks, resolve dependencies, create execution graph
+5. Hash Calculation — hash source files, dependencies, configuration
+6. Cache Check — check local + remote cache, return cached if available
+7. Task Execution — parallel (independent) or sequential (dependent)
+8. Cache Storage — store outputs in local + remote cache
 
 ## Best Practices
 

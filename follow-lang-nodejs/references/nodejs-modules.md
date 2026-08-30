@@ -199,6 +199,6 @@ vm.runInContext("1 + 1", vm.createContext({}))
 
 ---
 
-**See also:**
+See also:
 - [Official API Docs](https://nodejs.org/api/)
 - [Modules](https://nodejs.org/api/modules.html)

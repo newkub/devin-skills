@@ -8,6 +8,7 @@ related:
   - report-table
   - continue
   - suggest-next-action
+  - update-todo-md
 ---
 
 ## Goal

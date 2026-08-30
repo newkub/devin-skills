@@ -1,6 +1,10 @@
 ---
 name: follow-my-global-cli
 description: Run installed global CLI tools correctly based on context and environment
+related:
+  - idea-convert-my-global-cli-to-skills
+  - report-my-global-cli
+  - follow-create-bun-cli
 ---
 
 ## Goal

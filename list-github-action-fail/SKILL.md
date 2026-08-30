@@ -8,6 +8,7 @@ related:
   - report-table
   - suggest-next-action
   - list-deployment-fails
+  - ask-me
 ---
 
 ## Goal

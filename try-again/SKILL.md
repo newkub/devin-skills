@@ -2,6 +2,10 @@
 name: try-again
 description: ทำตาม user prompt ล่าสุดอีกครั้ง
 argument-hint: "[prompt]"
+related:
+  - ask-again
+  - follow-best-practice
+  - suggest-next-action
 ---
 
 ## Goal

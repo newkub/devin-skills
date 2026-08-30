@@ -2,6 +2,14 @@
 name: implement-plan
 description: อ่านแผนใน .devin/plan/<title-date>.md ทำงานให้ครบ แล้วลบแผน
 argument-hint: "[plan-file]"
+related:
+  - plan
+  - deep-plan
+  - report-plan
+  - resolve-errors
+  - deep-validate
+  - run-verify
+  - ask-me
 ---
 
 ## Goal

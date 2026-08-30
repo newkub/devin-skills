@@ -10,8 +10,6 @@ related:
   - report-architecture-diagram
   - use-scripts
   - ship
-  - ship
-  - ship
 ---
 
 ## Goal

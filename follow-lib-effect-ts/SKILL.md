@@ -1,6 +1,13 @@
 ---
 name: follow-lib-effect-ts
 description: แนวทางการพัฒนาด้วย Effect-TS v3.x สำหรับ functional programming และ type-safe effects
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

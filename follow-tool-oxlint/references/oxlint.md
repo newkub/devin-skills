@@ -18,11 +18,11 @@ bunx oxlint@latest
 
 ## Version Info
 
-- **oxlint latest stable:** `1.80.0`
-- **eslint-plugin-oxlint latest stable:** `1.80.0`
-- **License:** MIT
-- **Node.js:** `^20.19.0 || >=22.12.0`
-- **Source:** https://oxc.rs/docs/guide/usage/linter/quickstart.html
+- oxlint latest stable: `1.80.0`
+- eslint-plugin-oxlint latest stable: `1.80.0`
+- License: MIT
+- Node.js: `^20.19.0 || >=22.12.0`
+- Source: https://oxc.rs/docs/guide/usage/linter/quickstart.html
 
 ## Peer Dependencies
 

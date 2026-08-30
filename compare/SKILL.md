@@ -2,6 +2,10 @@
 name: compare
 description: เปรียบเทียบ options, tools, หรือ solutions เพื่อตัดสินใจ
 argument-hint: "[a] [b]"
+related:
+  - deep-research
+  - report-table
+  - pondering
 ---
 
 ## Goal

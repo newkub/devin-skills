@@ -2,6 +2,14 @@
 name: summarize
 description: สรุปเนื้อหาตาม context ทั่วไป
 argument-hint: "<context>"
+related:
+  - summarize-this-project
+  - summarize-this-chat-session
+  - report-table
+  - scan-codebase
+  - report
+  - list-git-commit
+  - report-git-diff
 ---
 
 ## Goal

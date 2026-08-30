@@ -1,6 +1,11 @@
 ---
 name: review-naming
 description: ตรวจชื่อ variables, functions, files, skills ให้ชัดเจน สม่ำเสมอ
+related:
+  - report
+  - rename-to
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

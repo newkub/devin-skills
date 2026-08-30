@@ -1,6 +1,10 @@
 ---
 name: list-project-task
 description: รายการ tasks ทั้งหมดใน project จาก TODO.md, TASKS.md และ task files
+related:
+  - check-reference
+  - report-table
+  - update-todo-md
 ---
 
 ## Goal

@@ -1,6 +1,11 @@
 ---
 name: report-progress
 description: รายงานสถานะและความคืบหน้าของ session รวมงานเสร็จ ค้าง และ next actions
+related:
+  - ask-me
+  - report-table
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

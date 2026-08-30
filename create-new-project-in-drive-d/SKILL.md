@@ -8,6 +8,8 @@ related:
   - follow-create-sdk
   - follow-my-tech-stack
   - follow-your-suggestion
+  - follow-create-mobile-ios-android
+  - follow-create-telegram-bot
 ---
 
 ## Goal

@@ -1,6 +1,14 @@
 ---
 name: follow-framework-astro
 description: พัฒนา Astro 5 applications ด้วย Server Islands, Content Layer และ Actions
+related:
+  - follow-framework-capacitor
+  - follow-framework-desktop-app
+  - follow-framework-dioxus
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
+  - follow-lib-unocss
 ---
 
 ## Goal

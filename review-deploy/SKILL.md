@@ -6,6 +6,9 @@ related:
   - open-web-for-config-secret
   - run-deploy
   - follow-deploy
+  - scan-codebase
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

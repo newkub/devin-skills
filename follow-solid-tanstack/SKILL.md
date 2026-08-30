@@ -1,6 +1,14 @@
 ---
 name: follow-solid-tanstack
 description: ตั้งค่าและพัฒนา full-stack app ด้วย TanStack Start (SolidJS), oRPC, Elysia และ UnoCSS
+related:
+  - follow-lib-unocss
+  - follow-tool-vite
+  - follow-lang-typescript
+  - follow-lib-tanstack-ecosystem
+  - follow-lib-elysia
+  - follow-lib-effect-ts
+  - follow-single-responsibility
 ---
 
 ## Goal

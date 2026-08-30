@@ -5,6 +5,7 @@ related:
   - list-git-worktree
   - use-git-worktrees
   - cleanup-worktree
+  - delete-git-branch
 ---
 
 ## Goal

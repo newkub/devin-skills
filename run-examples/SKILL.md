@@ -1,6 +1,11 @@
 ---
 name: run-examples
 description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+related:
+  - follow-tool-vitepress
+  - analyze-project
+  - update-readme-md
+  - update-references
 ---
 
 ## Goal

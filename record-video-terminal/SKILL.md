@@ -1,6 +1,10 @@
 ---
 name: record-video-terminal
 description: บันทึกวิดีโอและ session จาก terminal สำหรับ CLI testing
+related:
+  - run-dev
+  - watch-terminal
+  - resolve-errors
 ---
 
 ## Goal

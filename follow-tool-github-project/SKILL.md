@@ -4,6 +4,7 @@ description: ใช้ `gh project` จัดการ GitHub Projects ผ่า
 related:
   - list-github-project
   - list-github-repo
+  - delete
 ---
 
 ## Goal
@@ -16,6 +17,20 @@ related:
 ใช้กับ GitHub Projects (Projects v2) ของผู้ใช้ องค์กร หรือ repository ที่เชื่อมโยง ไม่ครอบคลุม `gh issue` หรือ `gh pr` โดยตรง
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ติดตั้ง `gh` CLI และ login
+
+1. ติดตั้ง `gh`:
+   - `mise use -g gh`
+   - หรือ `brew install gh`
+   - หรือ Windows: `winget install --id GitHub.cli`
+   - หรือ Linux: `apt install gh`
+2. Verify: `gh --version`
+3. Login: `gh auth login`
+4. ขอ scope `project`: `gh auth refresh -s project`
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup gh`
 
 ### 1. Verify Authentication And Scope
 

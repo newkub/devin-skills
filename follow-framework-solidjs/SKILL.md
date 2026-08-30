@@ -2,6 +2,10 @@
 name: follow-framework-solidjs
 description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
 argument-hint: "[task]"
+related:
+  - follow-solid-tanstack-architecture
+  - follow-lang-typescript
+  - follow-tool-vitest
 ---
 
 ## Goal

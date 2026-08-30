@@ -1,6 +1,14 @@
 ---
 name: follow-tool-agent-browser
 description: ใช้ agent-browser CLI สำหรับ browser automation และ web testing อย่างครบถ้วน
+related:
+  - follow-create-browser-extensions
+  - list-brave-browser-history
+  - roleplay-customer-support-agent
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
+  - resolve-errors
 ---
 
 ## Goal

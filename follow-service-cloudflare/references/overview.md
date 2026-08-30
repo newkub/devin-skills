@@ -6,12 +6,12 @@ Wrangler is the Cloudflare Developer Platform command-line interface (CLI) for m
 
 ## Version Info
 
-- **Package**: `wrangler`
-- **Latest stable**: `4.125.0`
-- **Node.js requirement**: `>=22.0.0`
-- **Peer dependency**: `@cloudflare/workers-types` (optional)
-- **License**: MIT OR Apache-2.0
-- **npm**: https://www.npmjs.com/package/wrangler
+- Package: `wrangler`
+- Latest stable: `4.125.0`
+- Node.js requirement: `>=22.0.0`
+- Peer dependency: `@cloudflare/workers-types` (optional)
+- License: MIT OR Apache-2.0
+- npm: https://www.npmjs.com/package/wrangler
 
 ## Migration From v3 To v4
 

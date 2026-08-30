@@ -4,20 +4,20 @@
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| **Website** | https://www.remotion.dev | เว็บไซต์หลัก |
-| **Documentation** | https://www.remotion.dev/docs | เอกสารอย่างเป็นทางการ |
-| **GitHub** | https://github.com/remotion-dev/remotion | source code และ issues |
-| **Changelog** | https://www.remotion.dev/changelog | รายละเอียดการเปลี่ยนแปลง |
-| **Examples** | https://github.com/remotion-dev/examples | collection ของตัวอย่าง |
+| Website | https://www.remotion.dev | เว็บไซต์หลัก |
+| Documentation | https://www.remotion.dev/docs | เอกสารอย่างเป็นทางการ |
+| GitHub | https://github.com/remotion-dev/remotion | source code และ issues |
+| Changelog | https://www.remotion.dev/changelog | รายละเอียดการเปลี่ยนแปลง |
+| Examples | https://github.com/remotion-dev/examples | collection ของตัวอย่าง |
 
 ## Community Resources
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| **Discord** | https://discord.gg/remotion | community และ support |
-| **YouTube** | https://www.youtube.com/@remotion | video tutorials |
-| **Remotion Studio** | https://remotion.studio | cloud-based editor |
-| **Lambda** | https://remotion.dev/lambda | serverless rendering |
+| Discord | https://discord.gg/remotion | community และ support |
+| YouTube | https://www.youtube.com/@remotion | video tutorials |
+| Remotion Studio | https://remotion.studio | cloud-based editor |
+| Lambda | https://remotion.dev/lambda | serverless rendering |
 
 ## Quick Links
 

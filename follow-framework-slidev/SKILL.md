@@ -1,6 +1,13 @@
 ---
 name: follow-framework-slidev
 description: ตั้งค่าและพัฒนา presentation slides ด้วย Slidev framework
+related:
+  - create-slide-via-slidev
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 ---
 
 ## Goal

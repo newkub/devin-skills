@@ -8,6 +8,7 @@ related:
   - report-file-structure
   - report-ansi
   - follow-single-responsibility
+  - deep-plan
 ---
 
 ## Goal

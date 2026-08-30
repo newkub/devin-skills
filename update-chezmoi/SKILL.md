@@ -1,6 +1,11 @@
 ---
 name: update-chezmoi
 description: อัปเดต dotfiles ด้วย chezmoi รวมถึง chezmoi readd
+related:
+  - follow-my-global-cli
+  - git-commit
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

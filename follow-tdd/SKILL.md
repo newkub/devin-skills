@@ -4,6 +4,9 @@ description: พัฒนา feature ด้วย Test-Driven Development red-gr
 related:
   - follow-math-proofs
   - follow-math-propositional-logic
+  - consider-use-in-another-skills
+  - run-verify
+  - git-commit
 ---
 
 ## Goal

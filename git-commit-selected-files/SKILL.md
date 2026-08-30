@@ -8,6 +8,8 @@ related:
   - git-push
   - refactor-commit
   - deep-validate
+  - fix
+  - refactor
 ---
 
 ## Goal

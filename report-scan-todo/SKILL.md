@@ -1,6 +1,14 @@
 ---
 name: report-scan-todo
 description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่งและความสำคัญ
+related:
+  - update-todo-md
+  - realize-implementation
+  - scan-codebase
+  - report-table
+  - resolve-errors
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

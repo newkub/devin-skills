@@ -1,6 +1,12 @@
 ---
 name: report-bundle
 description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
+related:
+  - review-delivery
+  - run-build
+  - report-table
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

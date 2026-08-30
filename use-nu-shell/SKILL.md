@@ -2,6 +2,11 @@
 name: use-nu-shell
 description: ใช้ Nushell สำหรับ shell commands, structured data pipelines, และ scripting
 argument-hint: "[command]"
+related:
+  - use-bun-shell
+  - use-pwsh-shell
+  - follow-best-practice
+  - use-scripts
 ---
 
 ## Goal

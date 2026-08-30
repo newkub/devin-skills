@@ -1,6 +1,13 @@
 ---
 name: run-preview
 description: รัน preview build เพื่อทดสอบก่อน deploy จริง
+related:
+  - run-build
+  - watch-browser-and-fix
+  - run-test
+  - report-table
+  - resolve-errors
+  - run-deploy
 ---
 
 ## Goal

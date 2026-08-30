@@ -2,6 +2,12 @@
 name: implement-github-task
 description: นำ task จาก GitHub issue หรือ project item ไป implement
 argument-hint: "[task-id]"
+related:
+  - create-plan-as-github-issue
+  - realize-implementation
+  - refactor
+  - run-verify
+  - run-test
 ---
 
 ## Goal

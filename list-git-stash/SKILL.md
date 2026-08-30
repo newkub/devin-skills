@@ -1,6 +1,11 @@
 ---
 name: list-git-stash
 description: แสดง stashes ทั้งหมดพร้อมข้อมูลและสถานะ
+related:
+  - follow-tool-git
+  - report-table
+  - list-git-branch
+  - list-git-tags
 ---
 
 ## Goal

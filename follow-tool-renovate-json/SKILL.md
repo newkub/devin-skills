@@ -1,6 +1,13 @@
 ---
 name: follow-tool-renovate-json
 description: เขียนและตรวจ renovate.json config สำหรับ Renovate bot auto update dependencies
+related:
+  - follow-tool-renovate
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal
@@ -12,6 +19,21 @@ description: เขียนและตรวจ renovate.json config สำห
 ใช้สำหรับสร้าง แก้ไข หรือตรวจ `renovate.json`/`renovate.jsonc`/`.github/renovate.json` และไฟล์ config ที่เกี่ยวข้อง
 
 ## Execute
+
+### 0. Setup
+
+> Goal: ติดตั้งหรือเชื่อมต่อ Renovate
+
+1. เลือกวิธีติดตั้ง:
+   - GitHub App: ติดตั้ง Mend Renovate จาก GitHub Marketplace (ไม่ต้อง self-host)
+   - Self-hosted CLI: `mise use -g npm:renovate` หรือ `bun add -g renovate`
+2. ตั้งค่า token:
+   - `RENOVATE_TOKEN` environment variable
+   - หรือ `--token=` ใน CLI
+   - หรือ `token` ใน `config.js`
+3. Verify CLI: `renovate --version`
+4. ถ้าต้อง dry-run: `renovate --dry-run --platform github --repositories owner/repo`
+5. ถ้าติดตั้งไม่สำเร็จ → ใช้ `/research-setup renovate`
 
 ### 1. Check Existing Config
 

@@ -7,6 +7,8 @@ related:
   - translate-to-lang-en
   - report-table
   - deep-validate
+  - report-ansi
+  - capture-web
 ---
 
 ## Goal

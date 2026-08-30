@@ -1,6 +1,14 @@
 ---
 name: analyze-project
 description: วิเคราะห์โปรเจกต์พื้นฐานด้วยเลือกใช้ tools ที่เหมาะสมกับงาน
+related:
+  - scan-codebase
+  - use-ast-grep
+  - use-scripts
+  - follow-my-global-cli
+  - deep-analyze
+  - deep-review
+  - review-quality
 ---
 
 ## Goal

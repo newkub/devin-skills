@@ -9,6 +9,7 @@ related:
   - visualize-in-web
   - visualize-project
   - consider-use-in-another-skills
+  - ask-me
 ---
 
 ## Goal

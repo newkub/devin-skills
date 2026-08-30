@@ -9,12 +9,12 @@ description: New feature ideas and extensions
 
 ### {{Existing Feature}}
 
-- **UX/UI**: {{UX description}}
-- **Plan**: {{Implementation plan}}
+- UX/UI: {{UX description}}
+- Plan: {{Implementation plan}}
 
 ## New
 
 ### {{New Feature}}
 
-- **UX/UI**: {{UX description}}
-- **Plan**: {{Implementation plan}}
+- UX/UI: {{UX description}}
+- Plan: {{Implementation plan}}

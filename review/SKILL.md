@@ -3,6 +3,7 @@ name: review
 description: Review ตาม context โดยเลือก review skill ที่เหมาะสม
 related:
   - follow-review
+  - report
 ---
 
 ## Goal

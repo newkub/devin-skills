@@ -93,11 +93,11 @@ git pull -X ours origin main
 
 ## Best Practices
 
-1. **Pull Before Work**: Pull ก่อนเริ่มทำงาน
-2. **Review Changes**: Review changes หลัง pull
-3. **Resolve Conflicts**: Resolve conflicts อย่างระมัดระวัง
-4. **Test After Pull**: Test หลัง pull
-5. **Use Rebase**: ใช้ rebase สำหรับ clean history
+1. Pull Before Work: Pull ก่อนเริ่มทำงาน
+2. Review Changes: Review changes หลัง pull
+3. Resolve Conflicts: Resolve conflicts อย่างระมัดระวัง
+4. Test After Pull: Test หลัง pull
+5. Use Rebase: ใช้ rebase สำหรับ clean history
 
 ## Common Issues
 

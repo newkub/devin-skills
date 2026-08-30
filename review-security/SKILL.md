@@ -6,6 +6,9 @@ related:
   - open-web-for-config-secret
   - check-secrets-leak
   - analyze-attack-surface
+  - review-compliance
+  - review-observability
+  - scan-codebase
 ---
 
 ## Goal

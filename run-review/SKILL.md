@@ -1,6 +1,11 @@
 ---
 name: run-review
 description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
+related:
+  - review-codebase-everything
+  - suggest-next-action
+  - report-table
+  - update-create-analyze-cli
 ---
 
 ## Goal

@@ -7,6 +7,7 @@ related:
   - create-github-issue
   - review-github-issue
   - list-github-pr
+  - report-table
 ---
 
 ## Goal

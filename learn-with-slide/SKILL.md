@@ -2,6 +2,12 @@
 name: learn-with-slide
 description: เรียนรู้และสร้าง Slidev presentation สรุปความรู้ใน D:/newkub/slides/learn/
 argument-hint: "[topic]"
+related:
+  - learn
+  - create-slide-in-newkub-slides
+  - translate-to-lang-th
+  - open-web
+  - follow-framework-slidev
 ---
 
 ## Goal

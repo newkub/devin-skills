@@ -1,6 +1,14 @@
 ---
 name: review-refactor
 description: Review codebase before refactor to establish baseline and identify refactor targets
+related:
+  - deep-review
+  - review-quality
+  - report
+  - report-table
+  - suggest-next-action
+  - refactor
+  - refactor-to-single-responsibility
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - consider-use-in-another-skills
   - follow-global-rules
   - report-idea
+  - list-devin-global-skills
+  - scan-codebase
 ---
 
 ## Goal

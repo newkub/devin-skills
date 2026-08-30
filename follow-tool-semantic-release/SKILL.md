@@ -7,6 +7,7 @@ related:
   - follow-tool-changesets
   - follow-tool-git
   - follow-test
+  - fix
 ---
 
 ## Goal

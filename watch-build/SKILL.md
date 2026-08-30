@@ -4,6 +4,12 @@ description: Watch build status และ fix build errors จนกว่าจ
 argument-hint: "[file-or-directory]"
 related:
   - check-bottlenecks
+  - run-watch-build
+  - ask-me
+  - resolve-errors
+  - run-install
+  - loop-until-complete
+  - review-delivery
 ---
 
 ## Goal

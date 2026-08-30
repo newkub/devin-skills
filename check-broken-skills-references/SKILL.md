@@ -1,14 +1,17 @@
 ---
 name: check-broken-skills-references
-description: ตรวจหา broken skill references ใน SKILL.md ของ devin skills repo ด้วย Rust CLI
+description: ตรวจหา broken skill references ใน SKILL.md ของ devin skills repo ด้วย Bun/TypeScript
 argument-hint: "[path]"
 related:
   - check-reference
+  - check-skills-related
   - deep-validate
   - check-backward-compatibility
   - review-security
   - update-references
+  - review-devin-global-skills
 ---
+
 ## Goal
 
 ตรวจหา broken skill references ใน `SKILL.md` ของ devin skills repo โดยเปรียบเทียบ references ที่อ้างถึงกับ skills ที่มีอยู่จริง
@@ -19,31 +22,23 @@ related:
 
 ## Execute
 
-### 1. Build CLI
+### 1. Run Checker
 
-> Goal: build Rust CLI จาก source ใน skill directory
+> Goal: รัน checker เพื่อ scan broken references
 
-1. ตรวจสอบว่า `Cargo.toml` และ `src/main.rs` อยู่ใน skill directory
-2. รันคำสั่ง `cargo build --release` ใน skill directory
-3. ตรวจสอบ binary ที่ `target/release/check-broken-skills-references` (หรือ `.exe` บน Windows)
-
-### 2. Run CLI
-
-> Goal: รัน CLI เพื่อ scan broken references
-
-1. เปลี่ยน working directory ไปยัง skill directory
-2. รันคำสั่ง `cargo run -- [PATH]` หรือ `<skill-dir>/target/release/check-broken-skills-references [PATH]`
+1. เปลี่ยน working directory ไปยัง skill directory `check-broken-skills-references`
+2. รันคำสั่ง `bun src/index.ts [PATH]`
 3. ถ้าไม่ระบุ `PATH` จะใช้ `%APPDATA%\devin\skills` (Windows) หรือ `$HOME/.devin/skills` (Unix)
-4. รับผลลัพธ์: รายการ broken references แยกตาม Critical/Warning
+4. รับผลลัพธ์: ตาราง broken references แยกตาม Critical/Warning
 
 ## Rules
 
-### 1. Rust CLI
+### 1. TypeScript / Bun CLI
 
-- ใช้ `clap` สำหรับ argument parsing
-- ใช้ `regex` สำหรับหา `/skill-name` patterns
-- ใช้ `serde_yaml` สำหรับ parse `related` frontmatter
-- รองรับ Unicode content ใน SKILL.md โดยไม่ panic
+- รันผ่าน `bun src/index.ts [path]` โดยไม่ต้อง build
+- รองรับ Unicode content ใน SKILL.md
+- ใช้ `Bun.Glob` สำหรับ scan files
+- ใช้ regex สำหรับหา `/skill-name` patterns
 
 ### 2. Filter False Positives
 
@@ -64,7 +59,6 @@ related:
 
 ## Expected Outcome
 
-- CLI binary ถูก build สำเร็จ
 - รายงาน broken references ครบถ้วน พร้อม skill name, reference, type, severity
 - สถิติ: total skills, total references checked, broken count
 - ถ้ามี Critical → แนะนำ next action (`/update-references` หรือ `/resolve-errors`)

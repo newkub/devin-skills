@@ -1,6 +1,10 @@
 ---
 name: follow-tool-vitepress
 description: ตั้งค่า VitePress ด้วย UnoCSS, Shiki Twoslash, Group Icons และ Vue components สำหรับ project docs
+related:
+  - follow-gitignore
+  - follow-lang-typescript
+  - follow-lib-unocss
 ---
 
 ## Goal

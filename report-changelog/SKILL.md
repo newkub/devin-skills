@@ -2,6 +2,14 @@
 name: report-changelog
 description: สร้าง changelog รายงานจาก git log ระหว่าง tags หรือ releases
 argument-hint: "[range]"
+related:
+  - follow-tool-changelogen
+  - run-release
+  - report-table
+  - report-ansi
+  - suggest-next-action
+  - follow-tool-git
+  - fix
 ---
 
 ## Goal

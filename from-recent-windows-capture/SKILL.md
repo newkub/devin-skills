@@ -6,6 +6,8 @@ related:
   - capture-terminal
   - analyze-codebase-quality
   - report-ansi
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

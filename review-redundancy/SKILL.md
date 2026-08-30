@@ -2,6 +2,11 @@
 name: review-redundancy
 description: ตรวจหา skills ที่ซ้ำซ้อนกันใน devin skills repo
 argument-hint: "[scope]"
+related:
+  - review-devin-global-skills
+  - report-table
+  - suggest-next-action
+  - update-references
 ---
 
 ## Goal

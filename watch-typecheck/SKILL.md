@@ -2,6 +2,12 @@
 name: watch-typecheck
 description: Watch typecheck status และ fix type errors จนกว่าจะผ่าน
 argument-hint: "[file-or-directory]"
+related:
+  - run-watch-typecheck
+  - ask-me
+  - resolve-errors
+  - loop-until-complete
+  - run-check
 ---
 
 ## Goal

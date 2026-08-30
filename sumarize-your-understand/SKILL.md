@@ -8,6 +8,8 @@ related:
   - rethink
   - deep-thinking
   - deep-plan
+  - report-scan-todo
+  - report-file-structure
 ---
 
 ## Goal

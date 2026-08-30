@@ -6,6 +6,8 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-eslint
+  - ship
+  - report
 ---
 ## Goal
 

@@ -1,6 +1,14 @@
 ---
 name: update-create-analyze-cli
 description: ตรวจสอบและสร้าง/อัปเดต tools/analyze CLI สำหรับ deep codebase analysis
+related:
+  - deep-analyze-by-use-scripts
+  - scan-codebase
+  - resolve-errors
+  - review
+  - run-review
+  - review-codebase-everything
+  - follow-clean-architecture
 ---
 
 ## Goal

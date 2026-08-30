@@ -41,7 +41,7 @@ export default defineConfig({
 
 ### TanStack Start (Solid หรือ React)
 
-สำหรับ TanStack Start ต้องวาง `cloudflare()` **ก่อน** `tanstackStart()` และตั้งค่า `viteEnvironment`:
+สำหรับ TanStack Start ต้องวาง `cloudflare()` ก่อน `tanstackStart()` และตั้งค่า `viteEnvironment`:
 
 ```ts
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -136,11 +136,11 @@ wrangler deploy
 
 ### Common Pitfalls
 
-- **Frozen lockfile**: CI ใช้ `bun install --frozen-lockfile` ถ้า `bun.lock` ไม่ sync กับ `package.json` จะ fail ต้องรัน `bun install` ในเครื่องแล้ว commit lockfile ใหม่
-- **Missing secret**: ต้องตั้ง `CLOUDFLARE_API_TOKEN` เป็น GitHub secret (`gh secret set CLOUDFLARE_API_TOKEN`)
-- **`.wrangler` directory**: เพิ่ม `.wrangler` ใน `.gitignore` และ linter ignores
-- **Stale wrangler.toml**: ถ้า migrate จาก Nitro/SolidStart เก่าที่ใช้ `.output/server/index.mjs` ต้องแปลงเป็น `wrangler.jsonc` และใช้ `main` ตาม framework ปัจจุบัน
-- **Biome schema version**: ถ้า Biome อัปเดต ให้รัน `bunx biome migrate --write` และอัปเดต `$schema` URL ใน `biome.jsonc`
+- Frozen lockfile: CI ใช้ `bun install --frozen-lockfile` ถ้า `bun.lock` ไม่ sync กับ `package.json` จะ fail ต้องรัน `bun install` ในเครื่องแล้ว commit lockfile ใหม่
+- Missing secret: ต้องตั้ง `CLOUDFLARE_API_TOKEN` เป็น GitHub secret (`gh secret set CLOUDFLARE_API_TOKEN`)
+- `.wrangler` directory: เพิ่ม `.wrangler` ใน `.gitignore` และ linter ignores
+- Stale wrangler.toml: ถ้า migrate จาก Nitro/SolidStart เก่าที่ใช้ `.output/server/index.mjs` ต้องแปลงเป็น `wrangler.jsonc` และใช้ `main` ตาม framework ปัจจุบัน
+- Biome schema version: ถ้า Biome อัปเดต ให้รัน `bunx biome migrate --write` และอัปเดต `$schema` URL ใน `biome.jsonc`
 
 ## Source
 

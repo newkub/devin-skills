@@ -5,6 +5,10 @@ related:
   - follow-my-package-manager
   - list-program-in-computer
   - report-my-global-cli
+  - follow-my-global-cli
+  - deep-research
+  - report-table
+  - report
 ---
 
 ## Goal

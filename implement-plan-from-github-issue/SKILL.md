@@ -5,7 +5,6 @@ related:
   - implement-github-issue
   - create-plan-as-github-issue
   - idea-features
-  - create-plan-as-github-issue
   - realize-implementation
   - implement-mock
   - run-verify

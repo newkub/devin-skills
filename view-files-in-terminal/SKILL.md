@@ -2,6 +2,10 @@
 name: view-files-in-terminal
 description: แสดงเนื้อหาไฟล์ใน terminal ด้วย bat พร้อม syntax highlighting
 argument-hint: "[file]"
+related:
+  - open-in-windows-terminal
+  - capture-terminal
+  - record-video-terminal
 ---
 
 ## Goal

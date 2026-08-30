@@ -8,6 +8,7 @@ related:
   - follow-tool-usage
   - follow-tool-pkg-new
   - follow-tool-renovate
+  - report
 ---
 
 ## Goal

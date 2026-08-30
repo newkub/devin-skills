@@ -1,6 +1,9 @@
 ---
 name: update-contributing-md
 description: อัปเดต CONTRIBUTING.md ให้สอดคล้องกับ project workflows และ conventions
+related:
+  - deep-validate
+  - check-reference
 ---
 
 ## Goal

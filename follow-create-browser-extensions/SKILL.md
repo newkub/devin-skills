@@ -7,6 +7,8 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-vite
+  - follow-framework-wxt
+  - deep-validate
 ---
 ## Goal
 

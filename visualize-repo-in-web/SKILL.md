@@ -13,7 +13,6 @@ triggers:
   - user
   - model
 related:
-  - visualize-devin-in-web
   - visualize-project
   - follow-framework-solidjs
   - follow-create-rust-crate
@@ -22,8 +21,6 @@ related:
   - review-frontend
   - resolve-errors
   - open-web
-  - ship
-  - ship
   - ship
   - suggest-next-action
 ---

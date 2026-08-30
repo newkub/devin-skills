@@ -1,6 +1,11 @@
 ---
 name: list-workspaces
 description: แสดงรายการ workspaces ทั้งหมดใน monorepo พร้อม dependencies graph
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - report-table
 ---
 
 ## Goal

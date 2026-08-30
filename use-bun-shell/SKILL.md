@@ -2,6 +2,9 @@
 name: use-bun-shell
 description: ใช้ Bun shell สำหรับ execute commands ด้วย bun -e
 argument-hint: "[command]"
+related:
+  - follow-runtime-bun
+  - follow-lang-bun
 ---
 
 ## Goal

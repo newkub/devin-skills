@@ -1,6 +1,13 @@
 ---
 name: follow-lang-bun
 description: พัฒนาโปรเจกต์ด้วย Bun native APIs และ Web-standard APIs อย่างเต็มประสิทธิภาพ
+related:
+  - follow-create-bun-cli
+  - follow-create-bun-plugins
+  - follow-runtime-bun
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

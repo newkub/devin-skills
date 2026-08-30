@@ -1,6 +1,14 @@
 ---
 name: review-restructure
 description: Review file/folder structure before restructure to plan relocation and dry-run
+related:
+  - scan-codebase
+  - check-long-files
+  - follow-flat-folders
+  - follow-architecture
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

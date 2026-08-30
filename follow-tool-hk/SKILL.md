@@ -1,6 +1,10 @@
 ---
 name: follow-tool-hk
 description: ตั้งค่าและใช้งาน hk สำหรับ Git hooks แทน Lefthook/pre-commit
+related:
+  - follow-tool-mise
+  - run-verify
+  - fix
 ---
 
 ## Goal

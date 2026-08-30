@@ -1,6 +1,10 @@
 ---
 name: follow-framework-svelte
 description: ตั้งค่า Vite + Svelte 5 Runes + TypeScript (client-side only)
+related:
+  - follow-framework-svelte-kit
+  - follow-lib-unocss
+  - refactor
 ---
 
 ## Goal

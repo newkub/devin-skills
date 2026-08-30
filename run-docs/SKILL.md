@@ -1,6 +1,14 @@
 ---
 name: run-docs
 description: รัน documentation site และแก้ไขข้อผิดพลาด
+related:
+  - follow-tool-vitepress
+  - review-codebase-everything
+  - deep-review
+  - deep-debug
+  - resolve-errors
+  - watch-browser-and-fix
+  - open-web
 ---
 
 ## Goal

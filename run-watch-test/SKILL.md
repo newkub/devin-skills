@@ -1,6 +1,9 @@
 ---
 name: run-watch-test
 description: รัน tests แบบ watch mode เพื่อตรวจสอบ test failures อย่างต่อเนื่อง
+related:
+  - resolve-errors
+  - deep-debug
 ---
 
 ## Goal

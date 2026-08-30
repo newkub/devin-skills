@@ -45,7 +45,7 @@ Alternative CDN:
 
 ### NPM Import
 
-**Important**: `react-scan` must be imported BEFORE React and React DOM.
+Important: `react-scan` must be imported BEFORE React and React DOM.
 
 ```ts
 // src/index.tsx — must be first import

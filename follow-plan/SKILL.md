@@ -2,6 +2,13 @@
 name: follow-plan
 description: อ่านแผนจาก AGENTS.md หรือเอกสาร plan แล้วทำตามทีละ step จนครบ พร้อม track ใน todo list
 argument-hint: "[plan-file]"
+related:
+  - deep-plan
+  - follow-agents-md
+  - report
+  - test-usage
+  - resolve-errors
+  - suggest-next-action
 ---
 
 ## Goal

@@ -1,6 +1,13 @@
 ---
 name: follow-lang-swift
 description: แนวทางการพัฒนา Swift applications ตาม Clean Architecture และ SwiftUI
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-kotlin
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

@@ -2,6 +2,12 @@
 name: cleanup-files-in-project
 description: Clean up unnecessary source files in the project, not build artifacts or dependency caches
 argument-hint: "[target]"
+related:
+  - check-unused-files
+  - check-unused-deps
+  - report-table
+  - report-file-structure
+  - check-reference
 ---
 
 ## Goal

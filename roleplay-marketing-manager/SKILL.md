@@ -1,6 +1,11 @@
 ---
 name: roleplay-marketing-manager
 description: รับบทเป็น marketing manager ตรวจ messaging, positioning, SEO, content จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

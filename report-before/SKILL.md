@@ -1,6 +1,10 @@
 ---
 name: report-before
 description: รายงานสถานะปัจจุบันตาม context ก่อนเริ่มทำอะไร
+related:
+  - report-ansi
+  - report-progress
+  - suggest-next-action
 ---
 
 ## Goal

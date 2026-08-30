@@ -1,6 +1,14 @@
 ---
 name: follow-deep
 description: พิจารณาและเรียก deep-* workflows ที่เกี่ยวข้องตาม context ของ task
+related:
+  - review
+  - review-codebase-everything
+  - deep-analyze
+  - deep-analyze-by-use-scripts
+  - deep-review
+  - deep-plan
+  - refactor
 ---
 
 ## Goal

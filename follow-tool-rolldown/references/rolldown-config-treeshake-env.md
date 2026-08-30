@@ -110,7 +110,7 @@ export default defineConfig({
 
 | Category | Options |
 |----------|---------|
-| **Input** | `input`, `external`, `plugins`, `treeshake` |
-| **Output** | `dir`, `format`, `sourcemap`, `minify` |
-| **Chunks** | `manualChunks`, `entryFileNames`, `chunkFileNames` |
-| **Tree-shake** | `moduleSideEffects`, `treeshakeLiterals` |
+| Input | `input`, `external`, `plugins`, `treeshake` |
+| Output | `dir`, `format`, `sourcemap`, `minify` |
+| Chunks | `manualChunks`, `entryFileNames`, `chunkFileNames` |
+| Tree-shake | `moduleSideEffects`, `treeshakeLiterals` |

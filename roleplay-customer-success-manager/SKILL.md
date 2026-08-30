@@ -1,6 +1,11 @@
 ---
 name: roleplay-customer-success-manager
 description: รับบทเป็น customer success manager ตรวจ health score, onboarding, churn จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

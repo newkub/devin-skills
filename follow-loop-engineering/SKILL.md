@@ -5,6 +5,10 @@ related:
   - loop-continuous
   - loop-until-complete
   - run-until-pass
+  - suggest-next-action
+  - report
+  - report-table
+  - scan-codebase
 ---
 
 ## Goal

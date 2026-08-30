@@ -7,6 +7,9 @@ related:
   - list-program-in-computer
   - use-pwsh-shell
   - download-program
+  - enhance-prompt
+  - resolve-errors
+  - report-table
 ---
 
 ## Goal

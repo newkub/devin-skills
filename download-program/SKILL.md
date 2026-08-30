@@ -9,6 +9,7 @@ related:
   - search-in-github-star
   - search-files-patterns
   - follow-best-practice
+  - enhance-prompt
 ---
 
 ## Goal

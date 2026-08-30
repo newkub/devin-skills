@@ -2,6 +2,10 @@
 name: extract-pattern
 description: เขียน pattern rules จากข้อมูลที่ให้มา
 argument-hint: "[pattern]"
+related:
+  - follow-design-pattern
+  - learn-from-pattern
+  - follow-best-practice
 ---
 
 ## Goal

@@ -5,6 +5,8 @@ related:
   - ask-me
   - continue
   - follow-your-suggestion
+  - ask-project-requirement
+  - suggest-next-action
 ---
 
 ## Goal

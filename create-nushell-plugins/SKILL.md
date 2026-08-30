@@ -2,6 +2,11 @@
 name: create-nushell-plugins
 description: สร้าง NuShell plugin ด้วย Rust ตาม official contributor guide
 argument-hint: "[plugin-name]"
+related:
+  - follow-create-biome-plugins
+  - follow-create-bun-plugins
+  - follow-create-devin-plugins
+  - ship
 ---
 
 ## Goal

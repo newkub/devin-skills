@@ -4,6 +4,7 @@ description: ทำซ้ำงานจนกว่าจะเสร็จส�
 related:
   - loop-continuous
   - run-until-pass
+  - try-again
 ---
 
 ## Goal

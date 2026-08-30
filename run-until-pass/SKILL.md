@@ -2,6 +2,13 @@
 name: run-until-pass
 description: run command จนกว่าจะผ่าน และแก้ไข error ทั้งหมด
 argument-hint: "[command]"
+related:
+  - loop-until-complete
+  - follow-best-practice
+  - suggest-next-action
+  - run-check
+  - run-verify
+  - resolve-errors
 ---
 
 ## Goal

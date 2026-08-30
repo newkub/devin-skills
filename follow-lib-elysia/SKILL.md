@@ -1,6 +1,9 @@
 ---
 name: follow-lib-elysia
 description: แนวทางการพัฒนา API ด้วย Elysia บน Bun แบบ type-safe ตาม official best practices
+related:
+  - follow-lang-bun
+  - follow-lib-zod
 ---
 
 ## Goal

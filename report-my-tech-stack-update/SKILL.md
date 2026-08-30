@@ -1,6 +1,13 @@
 ---
 name: report-my-tech-stack-update
 description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
+related:
+  - follow-my-tech-stack
+  - deep-research
+  - report-table
+  - report
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

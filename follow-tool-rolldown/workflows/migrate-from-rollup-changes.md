@@ -27,14 +27,14 @@ mv rollup.config.js rolldown.config.ts
 
 เปลี่ยน import:
 
-**Before:**
+Before:
 ```javascript
 export default {
   input: 'src/index.js',
 }
 ```
 
-**After:**
+After:
 ```typescript
 import { defineConfig } from 'rolldown'
 
@@ -47,7 +47,7 @@ export default defineConfig({
 
 Rolldown มี built-in TypeScript support:
 
-**Before (Rollup):**
+Before (Rollup):
 ```javascript
 import typescript from '@rollup/plugin-typescript'
 
@@ -56,7 +56,7 @@ export default {
 }
 ```
 
-**After (Rolldown):**
+After (Rolldown):
 ```typescript
 export default defineConfig({
   tsconfig: './tsconfig.json',
@@ -67,7 +67,7 @@ export default defineConfig({
 
 Rolldown ใช้ built-in minifier:
 
-**Before (Rollup):**
+Before (Rollup):
 ```javascript
 import terser from '@rollup/plugin-terser'
 
@@ -76,7 +76,7 @@ export default {
 }
 ```
 
-**After (Rolldown):**
+After (Rolldown):
 ```typescript
 export default defineConfig({
   output: {

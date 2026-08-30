@@ -1,6 +1,14 @@
 ---
 name: follow-tool-ast-grep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
+related:
+  - use-ast-grep
+  - use-ast-grep-programatic
+  - follow-tool-agent-browser
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
+  - update-project-rules
 ---
 
 ## Goal

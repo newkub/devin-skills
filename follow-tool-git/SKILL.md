@@ -1,6 +1,13 @@
 ---
 name: follow-tool-git
 description: ใช้งาน git commands ตามสถานการณ์
+related:
+  - follow-tool-git-branch
+  - follow-git-flow
+  - follow-git-workflows
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

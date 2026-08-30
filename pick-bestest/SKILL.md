@@ -6,6 +6,9 @@ related:
   - ask-me
   - sumarize-your-understand
   - report-numbered-bullet
+  - follow-create-cli
+  - improve
+  - report-plan
 ---
 
 ## Goal
@@ -34,7 +37,7 @@ related:
 
 1. แสดง question พร้อมตัวเลือกแบบ numbered list
 2. แต่ละ option อาจมีคำอธิบายสั้นๆ 1 บรรทัด
-3. ใช้ `/ask-me` หรือ `ask_user_question` ให้ user เลือก **อันเดียว**
+3. ใช้ `/ask-me` หรือ `ask_user_question` ให้ user เลือก อันเดียว
 4. ตัวเลือกสุดท้ายเป็น `Other` เสมอ สำหรับคำตอบนอก list
 5. ไม่เริ่มทำงานต่อจนกว่า user จะตอบ
 
@@ -52,7 +55,7 @@ related:
 
 ### 1. Single Choice Only
 
-- ถามให้เลือก **อันเดียว** เท่านั้น
+- ถามให้เลือก อันเดียว เท่านั้น
 - ถ้าต้องการ multi select → ใช้ `/ask-me` หรือ skill อื่น
 - ถ้า user ตอบหลายอัน → แจ้งและขอเลือกใหม่
 

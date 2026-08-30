@@ -1,6 +1,13 @@
 ---
 name: follow-tool-aube
 description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-auto-it
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

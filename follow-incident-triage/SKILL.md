@@ -4,6 +4,8 @@ description: จัดลำดับความสำคัญของ incide
 related:
   - follow-math-probability
   - follow-math-statistics
+  - deep-debug
+  - resolve-errors
 ---
 
 ## Goal

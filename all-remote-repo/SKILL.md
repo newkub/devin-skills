@@ -6,6 +6,7 @@ related:
   - list-project-git-in-computer
   - report-table
   - suggest-next-action
+  - list-github-star-latest
 ---
 
 ## Goal

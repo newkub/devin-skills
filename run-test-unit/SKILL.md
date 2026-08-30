@@ -1,6 +1,13 @@
 ---
 name: run-test-unit
 description: รัน unit tests สำหรับ pure functions และ business logic
+related:
+  - run-test
+  - run-test-all
+  - run-test-api
+  - run-check
+  - run-verify
+  - suggest-next-action
 ---
 
 ## Goal

@@ -1,6 +1,12 @@
 ---
 name: follow-lang-rust
 description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
+related:
+  - follow-clean-architecture
+  - follow-tool-cargo
+  - follow-tool-clippy
+  - follow-test
+  - follow-tool-mutants-rs
 ---
 
 ## Goal

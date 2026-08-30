@@ -1,6 +1,10 @@
 ---
 name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
+related:
+  - follow-lib-drizzle
+  - resolve-errors
+  - open-web
 ---
 
 ## Goal

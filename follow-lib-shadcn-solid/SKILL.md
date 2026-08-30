@@ -1,6 +1,13 @@
 ---
 name: follow-lib-shadcn-solid
 description: shadcn/ui port สำหรับ SolidJS - accessible, customizable components ที่ copy-paste ได้
+related:
+  - follow-solid-tanstack
+  - follow-solid-tanstack-architecture
+  - follow-lib-animejs
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

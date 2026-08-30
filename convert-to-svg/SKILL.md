@@ -3,6 +3,9 @@ name: convert-to-svg
 description: แปลงรูปภาพ bitmap เป็น SVG ด้วย bunx CLI
 argument-hint: "[input]"
 related:
+  - convert-to-git-submodules
+  - idea-convert-my-global-cli-to-skills
+  - convert-files-format
   - draw-svg-image
 ---
 

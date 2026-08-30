@@ -41,7 +41,6 @@ related:
   - deep-validate
   - run-verify
   - run-test-all
-  - check-broken-skills-references
   - check-circular-dependencies
   - resolve-errors
   - report-before-after
@@ -142,7 +141,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 1. ทำ `/deep-validate` เพื่อ validate cross-reference, type, security, compliance
 2. ทำ `/run-verify` เพื่อ lint, typecheck, unit test, build
 3. ทำ `/run-test-all` เพื่อรัน test suites ทั้งหมดถ้ามี
-4. ทำ `/check-broken-skills-references` ถ้าเป้าหมายเกี่ยวข้องกับ skills
+4. ทำ `/check-skills-related` ถ้าเป้าหมายเกี่ยวข้องกับ skills
 5. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
 6. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 

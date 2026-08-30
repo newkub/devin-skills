@@ -8,7 +8,7 @@
 
 ## Overview
 
-CSS is a web standard built into all browsers — no package installation needed. Modern features are tracked via **Baseline**: a feature is "Widely available" when supported in the last two versions of Chrome, Edge, Firefox, and Safari (including mobile).
+CSS is a web standard built into all browsers — no package installation needed. Modern features are tracked via Baseline: a feature is "Widely available" when supported in the last two versions of Chrome, Edge, Firefox, and Safari (including mobile).
 
 Optional PostCSS toolchain for vendor prefix fallbacks:
 

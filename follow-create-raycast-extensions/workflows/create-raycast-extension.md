@@ -4,43 +4,43 @@ Workflow for creating a Raycast extension.
 
 ## Steps
 
-1. **Install Raycast CLI**
+1. Install Raycast CLI
    ```bash
    bun add -g @raycast/api
    ```
 
-2. **Create new extension**
+2. Create new extension
    ```bash
    npx @raycast/api@latest create
    ```
 
-3. **Choose template**
+3. Choose template
    - Blank
    - List
    - Form
    - Command
 
-4. **Configure package.json**
+4. Configure package.json
    - Set extension name
    - Add commands
    - Configure permissions
 
-5. **Implement commands**
+5. Implement commands
    - Create command functions
    - Build UI components
    - Add actions
 
-6. **Test locally**
+6. Test locally
    ```bash
    bun run dev
    ```
 
-7. **Build for production**
+7. Build for production
    ```bash
    bun run build
    ```
 
-8. **Publish to store**
+8. Publish to store
    ```bash
    npx @raycast/api@latest publish
    ```

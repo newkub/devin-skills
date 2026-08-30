@@ -2,13 +2,13 @@
 
 ## Version Info
 
-- **Package**: `@opentelemetry/auto-instrumentations-node` v0.79.0
-- **API Package**: `@opentelemetry/api` v1.9.0+
-- **License**: Apache-2.0
-- **Node.js**: >=20.6.0 (Node 18.19.0+ supported but EOL)
-- **SigNoz Cloud Endpoint**: `https://ingest.<region>.signoz.cloud:443`
-- **Self-Hosted Endpoint**: `http://localhost:4318`
-- **Source**: https://signoz.io/docs/instrumentation/opentelemetry-nodejs/
+- Package: `@opentelemetry/auto-instrumentations-node` v0.79.0
+- API Package: `@opentelemetry/api` v1.9.0+
+- License: Apache-2.0
+- Node.js: >=20.6.0 (Node 18.19.0+ supported but EOL)
+- SigNoz Cloud Endpoint: `https://ingest.<region>.signoz.cloud:443`
+- Self-Hosted Endpoint: `http://localhost:4318`
+- Source: https://signoz.io/docs/instrumentation/opentelemetry-nodejs/
 
 ## Install
 
@@ -147,10 +147,10 @@ import '@opentelemetry/auto-instrumentations-node/register'
 ## Verification
 
 1. Open SigNoz UI at `http://localhost:8080` (self-hosted) or SigNoz Cloud URL
-2. Check service name in **Services** page
-3. View traces in **Traces** page
-4. View logs in **Logs Explorer**
-5. View metrics in **Metrics Explorer** or **Dashboards**
+2. Check service name in Services page
+3. View traces in Traces page
+4. View logs in Logs Explorer
+5. View metrics in Metrics Explorer or Dashboards
 6. If no data appears within 5 minutes, check ingestion key, endpoint, and firewall
 7. Enable `OTEL_LOG_LEVEL=debug` for troubleshooting
 

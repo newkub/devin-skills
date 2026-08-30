@@ -2,6 +2,11 @@
 name: list-github-release
 description: แสดง releases ทั้งหมดของ repo ที่ระบุบน GitHub
 argument-hint: "[repo]"
+related:
+  - list-git-release
+  - list-github-action-fail
+  - list-github-branch
+  - report-table
 ---
 
 ## Goal

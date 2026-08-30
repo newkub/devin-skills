@@ -5,6 +5,7 @@ related:
   - follow-monorepo
   - follow-package-manifest
   - follow-tool-moonrepo
+  - report-table
 ---
 ## Goal
 

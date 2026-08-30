@@ -5,9 +5,8 @@ related:
   - suggest-next-action
   - resolve-errors
   - search-skills
-  - follow-skills
-  - follow-skills-map
   - ask-me
+  - report-table
 ---
 
 ## Goal

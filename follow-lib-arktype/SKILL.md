@@ -1,6 +1,13 @@
 ---
 name: follow-lib-arktype
 description: TypeScript runtime validation ด้วย native type syntax 1:1, 20x faster than Zod
+related:
+  - follow-lib-animejs
+  - follow-lib-better-auth
+  - follow-lib-css
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - use-bun-scripts
   - follow-create-bun-cli
   - follow-tool-bunup
+  - deep-validate
 ---
 
 ## Goal
@@ -87,7 +88,8 @@ related:
 
 ## Rules
 
-- `bun install` แทน `npm install` หรือ `npm i` และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm เป็นหลัก)
+- `bun install` แทน `npm install` หรือ `npm i` สำหรับ project dependencies (ยกเว้น project ใช้ npm เป็นหลัก)
+- สำหรับ global CLI ที่เป็น npm package ให้ใช้ `mise use -g npm:<package>` แทน `bun add -g`
 - ใช้ `bunfig.toml` สำหรับ config ที่เกี่ยวข้องกับ runtime ดู `references/bunfig.md`
 - ดู references ทั้งหมดเริ่มจาก `references/index.md`
 - ใช้ Web-standard APIs เมื่อเป็นไปได้ สำหรับ Bun native APIs ใน code ดู `follow-lang-bun` และ `use-bun-native-api`

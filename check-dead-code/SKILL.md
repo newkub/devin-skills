@@ -7,6 +7,7 @@ related:
   - check-unused-deps
   - refactor-to-single-responsibility
   - improve
+  - report-table
 ---
 
 ## Goal

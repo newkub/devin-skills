@@ -8,6 +8,7 @@ related:
   - follow-math-proofs
   - follow-math-numerical-methods
   - follow-math-algorithm-complexity
+  - follow-monorepo
 ---
 
 ## Goal

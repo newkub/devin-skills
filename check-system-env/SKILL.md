@@ -5,6 +5,7 @@ related:
   - check-code-structure
   - prepare-skills-context
   - use-lib-better
+  - report-table
 ---
 ## Goal
 

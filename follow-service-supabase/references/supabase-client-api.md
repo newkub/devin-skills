@@ -233,8 +233,8 @@ const { data, error } = await supabase.functions
 
 | API | Methods |
 |-----|---------|
-| **Client** | createClient |
-| **Database** | select, insert, update, delete |
-| **Auth** | signUp, signIn, signOut |
-| **Storage** | upload, download, remove |
-| **Realtime** | channel, subscribe |
+| Client | createClient |
+| Database | select, insert, update, delete |
+| Auth | signUp, signIn, signOut |
+| Storage | upload, download, remove |
+| Realtime | channel, subscribe |

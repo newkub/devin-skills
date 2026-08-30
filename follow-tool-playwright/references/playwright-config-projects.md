@@ -163,11 +163,11 @@ export default defineConfig({
 
 | Category | Options |
 |----------|---------|
-| **Test** | testDir, testMatch, timeout |
-| **Browser** | headless, viewport, locale |
-| **Trace** | trace, screenshot, video |
-| **Reporter** | list, html, json |
-| **CI** | retries, workers, forbidOnly |
+| Test | testDir, testMatch, timeout |
+| Browser | headless, viewport, locale |
+| Trace | trace, screenshot, video |
+| Reporter | list, html, json |
+| CI | retries, workers, forbidOnly |
 
 ## See Also
 

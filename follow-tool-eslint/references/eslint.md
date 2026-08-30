@@ -18,12 +18,12 @@ bun create @eslint/config@latest
 
 ## Version Info
 
-- **eslint latest stable:** `10.9.1`
-- **@eslint/js latest stable:** `10.0.1`
-- **typescript-eslint latest stable:** `8.68.0`
-- **License:** MIT
-- **Node.js:** `^20.19.0`, `^22.13.0`, or `>=24`
-- **Source:** https://eslint.org/docs/latest/use/getting-started
+- eslint latest stable: `10.9.1`
+- @eslint/js latest stable: `10.0.1`
+- typescript-eslint latest stable: `8.68.0`
+- License: MIT
+- Node.js: `^20.19.0`, `^22.13.0`, or `>=24`
+- Source: https://eslint.org/docs/latest/use/getting-started
 
 ## Peer Dependencies
 

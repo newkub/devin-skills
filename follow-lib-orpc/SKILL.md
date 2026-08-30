@@ -1,6 +1,14 @@
 ---
 name: follow-lib-orpc
 description: แนวทางการพัฒนา API ด้วย oRPC แบบ type-safe ตาม official best practices
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
+  - follow-lib-zod
 ---
 
 ## Goal

@@ -13,8 +13,8 @@
 
 ## When To Use Each Reference
 
-- **`gritql-patterns.md`**: ใช้เมื่อเขียน `.grit` plugin file, ออกแบบ patterns, ใช้ metavariables, regex, conditions หรือ rewrites
-- **`biome-config.md`**: ใช้เมื่อกำหนดค่า plugin ใน `biome.jsonc`, ตั้งค่า `includes` หรือ glob patterns สำหรับจำกัดไฟล์
+- `gritql-patterns.md`: ใช้เมื่อเขียน `.grit` plugin file, ออกแบบ patterns, ใช้ metavariables, regex, conditions หรือ rewrites
+- `biome-config.md`: ใช้เมื่อกำหนดค่า plugin ใน `biome.jsonc`, ตั้งค่า `includes` หรือ glob patterns สำหรับจำกัดไฟล์
 
 ## Related Resources
 

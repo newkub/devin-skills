@@ -7,6 +7,7 @@ related:
   - list-github-issue
   - create-github-issue
   - implement-github-issue
+  - report
 ---
 
 ## Goal

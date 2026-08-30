@@ -5,8 +5,6 @@ description: Ship ไป production/release ด้วย deep validation, releas
 related:
   - ask-me
   - ship
-  - ship
-  - ship
   - deep-update
   - deep-update-project
   - run-release

@@ -8,6 +8,8 @@ related:
   - review-update
   - realize-implementation
   - review-codebase-everything
+  - scan-codebase
+  - deep-analyze
 ---
 
 ## Goal

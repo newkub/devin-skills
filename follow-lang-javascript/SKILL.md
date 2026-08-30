@@ -1,6 +1,13 @@
 ---
 name: follow-lang-javascript
 description: เขียน JavaScript ตาม modern best practices และ ES2025+
+related:
+  - follow-lang-bun
+  - follow-lang-kotlin
+  - follow-lang-lua
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

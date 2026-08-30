@@ -1,6 +1,11 @@
 ---
 name: resolve-merge-conflicts
 description: แก้ไข git merge conflicts อย่างปลอดภัย ไม่สูญเสีย changes
+related:
+  - idea-merge-files
+  - merge-git-branch
+  - merge-github-pr
+  - git-commit
 ---
 
 ## Goal

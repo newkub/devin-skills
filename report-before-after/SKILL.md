@@ -1,6 +1,13 @@
 ---
 name: report-before-after
 description: รายงานแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
+related:
+  - analyze-project
+  - plan
+  - report-table
+  - report-ansi
+  - suggest-next-action
+  - update-devin-global-skills
 ---
 
 ## Goal

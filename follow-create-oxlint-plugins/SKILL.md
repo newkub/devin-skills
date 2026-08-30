@@ -6,6 +6,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-oxlint
+  - ship
 ---
 ## Goal
 

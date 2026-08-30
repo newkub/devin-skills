@@ -2,13 +2,13 @@
 
 ## Version Info
 
-- **Server Package**: `@orpc/server` v1.14.1 (published May 4, 2026)
-- **Client Package**: `@orpc/client` v1.14.0 (published Apr 22, 2026)
-- **Zod Adapter**: `@orpc/zod` v1.14.2 (published May 6, 2026)
-- **TanStack Query**: `@orpc/tanstack-query` (same version range)
-- **OpenAPI**: `@orpc/openapi` (same version range)
-- **License**: MIT
-- **Source**: https://orpc.dev/docs/getting-started
+- Server Package: `@orpc/server` v1.14.1 (published May 4, 2026)
+- Client Package: `@orpc/client` v1.14.0 (published Apr 22, 2026)
+- Zod Adapter: `@orpc/zod` v1.14.2 (published May 6, 2026)
+- TanStack Query: `@orpc/tanstack-query` (same version range)
+- OpenAPI: `@orpc/openapi` (same version range)
+- License: MIT
+- Source: https://orpc.dev/docs/getting-started
 
 ## Install
 

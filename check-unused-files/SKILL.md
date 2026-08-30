@@ -6,6 +6,9 @@ related:
   - cleanup-files-in-project
   - check-dead-code
   - delete-projects
+  - check-unused-deps
+  - follow-tool-knip
+  - update-references
 ---
 ## Goal
 

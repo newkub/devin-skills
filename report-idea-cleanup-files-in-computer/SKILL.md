@@ -1,6 +1,14 @@
 ---
 name: report-idea-cleanup-files-in-computer
 description: รายงานไอเดียไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้
+related:
+  - list-system-env
+  - follow-my-global-cli
+  - use-scripts
+  - report-table
+  - report-file-structure
+  - suggest-next-action
+  - cleanup-files-in-project
 ---
 
 ## Goal

@@ -5,6 +5,9 @@ related:
   - follow-math-graph-theory
   - follow-math-set-theory
   - follow-math-linear-algebra
+  - delete
+  - follow-programming-paradigm
+  - ask-me
 ---
 
 ## Goal

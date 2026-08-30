@@ -1,6 +1,12 @@
 ---
 name: list-dependencies
 description: แสดงรายการ dependencies ทั้งหมดใน project พร้อมข้อมูลและการวิเคราะห์
+related:
+  - check-unused-deps
+  - use-lib-better
+  - run-audit
+  - follow-tool-taze
+  - report-table
 ---
 
 ## Goal

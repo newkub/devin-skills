@@ -1,6 +1,11 @@
 ---
 name: roleplay-ceo
 description: รับบทเป็น CEO มอง business value, strategic risk, vision, และ investment จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -1,6 +1,9 @@
 ---
 name: report-flow
 description: สรุปขั้นตอน workflow หรือกระบวนการเป็นลำดับ step ทีอ่านง่าย
+related:
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

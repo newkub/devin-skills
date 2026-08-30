@@ -1,6 +1,10 @@
 ---
 name: more-file
 description: Add more files
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
 ---
 
 ## Goal

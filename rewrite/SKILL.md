@@ -1,6 +1,14 @@
 ---
 name: rewrite
 description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
+related:
+  - assume-reset-context
+  - deep-validate
+  - scan-codebase
+  - check-skills-related
+  - follow-best-practice
+  - use-scripts
+  - edit-relative
 ---
 
 ## Goal

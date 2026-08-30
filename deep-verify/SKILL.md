@@ -1,6 +1,14 @@
 ---
 name: deep-verify
 description: Verify ละเอียดหลัง merge/parallel ทำงาน โดยรวม checks, tests, references, และ runtime
+related:
+  - deep-validate
+  - ask-me
+  - run-verify
+  - run-test
+  - check-reference
+  - scan-codebase
+  - report
 ---
 
 ## Goal

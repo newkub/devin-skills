@@ -4,12 +4,12 @@ Workflow สำหรับสร้าง SvelteKit application
 
 ## Steps
 
-1. **Create new project**
+1. Create new project
    ```bash
    bun create svelte@latest my-app
    ```
 
-2. **Choose options**
+2. Choose options
    - Skeleton project
    - TypeScript
    - ESLint
@@ -17,23 +17,23 @@ Workflow สำหรับสร้าง SvelteKit application
    - Playwright
    - Vitest
 
-3. **Configure project**
+3. Configure project
    - Set up dependencies
    - Configure svelte.config.js
    - Set up environment variables
 
-4. **Implement routes**
+4. Implement routes
    - Create routes directory
    - Add page components
    - Add load functions
 
-5. **Run development**
+5. Run development
    ```bash
    cd my-app
    bun run dev
    ```
 
-6. **Build for production**
+6. Build for production
    ```bash
    bun run build
    bun run preview

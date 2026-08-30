@@ -20,11 +20,11 @@ Ultracite detects your package manager automatically. You can also use `pnpm dlx
 
 ## Version Info
 
-- **ultracite latest stable:** `7.10.6`
-- **@biomejs/biome (bundled):** `2.5.9`
-- **License:** MIT
-- **Source:** https://github.com/haydenbleasel/ultracite
-- **Docs:** https://www.ultracite.ai/
+- ultracite latest stable: `7.10.6`
+- @biomejs/biome (bundled): `2.5.9`
+- License: MIT
+- Source: https://github.com/haydenbleasel/ultracite
+- Docs: https://www.ultracite.ai/
 
 ## Peer Dependencies
 
@@ -132,10 +132,10 @@ npx ultracite doctor
 
 ## Key Features
 
-- **Subsecond performance:** Built around Rust-based tooling for near-instant analysis
-- **Zero-config by design:** Hundreds of preconfigured rules, override anything when needed
-- **AI-ready:** Generates ruleset and context files for Claude Code, Copilot, Cursor, Gemini
-- **Monorepo ready:** One unified toolchain configuration across every package
+- Subsecond performance: Built around Rust-based tooling for near-instant analysis
+- Zero-config by design: Hundreds of preconfigured rules, override anything when needed
+- AI-ready: Generates ruleset and context files for Claude Code, Copilot, Cursor, Gemini
+- Monorepo ready: One unified toolchain configuration across every package
 
 ## Important Notes
 

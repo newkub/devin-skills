@@ -52,7 +52,7 @@ bunx playwright test
 
 ## Best Practices
 
-1. **Use create-playwright**: ใช้ create-playwright สำหรับ setup ง่าย
-2. **Configure Projects**: Configure projects สำหรับ multiple browsers
-3. **Use Base URL**: ใช้ base URL สำหรับ convenience
-4. **Version Control**: Commit config file
+1. Use create-playwright: ใช้ create-playwright สำหรับ setup ง่าย
+2. Configure Projects: Configure projects สำหรับ multiple browsers
+3. Use Base URL: ใช้ base URL สำหรับ convenience
+4. Version Control: Commit config file

@@ -8,6 +8,7 @@ related:
   - review-quality
   - simplify
   - follow-single-responsibility
+  - report
 ---
 
 ## Goal

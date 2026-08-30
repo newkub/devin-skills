@@ -2,6 +2,11 @@
 name: use-pwsh-shell
 description: ใช้ PowerShell สำหรับ shell commands, scripting, และ automation
 argument-hint: "[command]"
+related:
+  - use-bun-shell
+  - use-nu-shell
+  - follow-best-practice
+  - use-scripts
 ---
 
 ## Goal

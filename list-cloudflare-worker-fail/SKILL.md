@@ -8,6 +8,7 @@ related:
   - suggest-next-action
   - list-deployment-fails
   - list-cloudflare-projects
+  - ask-me
 ---
 
 ## Goal

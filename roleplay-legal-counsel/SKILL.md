@@ -1,6 +1,11 @@
 ---
 name: roleplay-legal-counsel
 description: รับบทเป็น legal counsel ตรวจ contracts, terms, IP, liability จาก source code และ docs
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -2,6 +2,10 @@
 name: translate-to-lang-th
 description: ใช้ภาษาไทยเป็นภาษาหลักในการสื่อสารและทำงาน
 argument-hint: "[target]"
+related:
+  - translate-to-lang-en
+  - follow-best-practice
+  - suggest-next-action
 ---
 
 ## Goal

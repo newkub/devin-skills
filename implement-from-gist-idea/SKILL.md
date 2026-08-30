@@ -11,8 +11,6 @@ related:
   - run-check
   - deep-validate
   - ship
-  - ship
-  - ship
 ---
 
 ## Goal

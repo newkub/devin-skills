@@ -2,6 +2,10 @@
 name: create-slide-in-newkub-slides
 description: สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ
 argument-hint: "[title]"
+related:
+  - follow-framework-slidev
+  - run-dev
+  - ship
 ---
 
 ## Goal

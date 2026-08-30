@@ -7,6 +7,8 @@ related:
   - follow-tool-github-actions
   - follow-service-cloudflare
   - follow-service-vercel
+  - follow-service-vercel-cli
+  - deploy-to-railway
 ---
 
 ## Goal

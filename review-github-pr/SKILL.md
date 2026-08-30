@@ -7,6 +7,8 @@ related:
   - list-github-pr
   - merge-github-pr
   - list-github-action-fail
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

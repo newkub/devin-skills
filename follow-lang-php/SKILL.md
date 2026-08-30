@@ -1,6 +1,13 @@
 ---
 name: follow-lang-php
 description: พัฒนา PHP projects ด้วย PSR standards และ modern best practices
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-kotlin
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

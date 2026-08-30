@@ -1,6 +1,9 @@
 ---
 name: follow-tool-changelogen
 description: สร้าง changelog และจัดการ releases ด้วย changelogen
+related:
+  - fix
+  - refactor
 ---
 
 ## Goal

@@ -1,6 +1,14 @@
 ---
 name: review-backend
 description: Orchestrator backend review ครอบคลุม 7 sub-review workflows แบบ parallel
+related:
+  - scan-codebase
+  - review-codebase-everything
+  - run-review
+  - deep-validate
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

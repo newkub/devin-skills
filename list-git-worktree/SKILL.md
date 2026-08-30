@@ -4,6 +4,7 @@ description: รายการ git worktrees ใน repo พร้อม branch
 related:
   - use-git-worktrees
   - cleanup-worktree
+  - report-table
 ---
 
 ## Goal

@@ -8,6 +8,7 @@ related:
   - follow-design-system
   - report-table
   - suggest-next-action
+  - scan-codebase
 ---
 
 ## Goal

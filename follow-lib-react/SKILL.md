@@ -1,6 +1,14 @@
 ---
 name: follow-lib-react
 description: พัฒนา React 19 applications ตาม best practices 2026
+related:
+  - follow-tool-react-scan
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
+  - follow-lib-unocss
 ---
 
 ## Goal

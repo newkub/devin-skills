@@ -1,6 +1,11 @@
 ---
 name: list-system-env
 description: แสดงรายการ OS, shell, environment variables และ global root paths
+related:
+  - check-system-env
+  - follow-best-practice
+  - suggest-next-action
+  - report-table
 ---
 
 ## Goal

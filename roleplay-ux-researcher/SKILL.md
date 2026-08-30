@@ -6,6 +6,8 @@ related:
   - report-uxui-sketch
   - report-table
   - suggest-next-action
+  - scan-codebase
+  - report
 ---
 
 ## Goal

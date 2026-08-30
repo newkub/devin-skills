@@ -2,12 +2,12 @@
 
 ## Version Info
 
-- **Package**: `@stryker-mutator/core` v10.0.0 (published Aug 14, 2026)
-- **License**: Apache-2.0
-- **Peer Dependencies**: Test runner plugin (e.g. `@stryker-mutator/jest-runner`, `@stryker-mutator/vitest-runner`)
-- **Supported Test Runners**: Jest, Mocha, Karma, Jasmine, Vitest, Cucumber, Tap
-- **Supported Languages**: JavaScript, TypeScript, React, Angular, Vue, Svelte, Node.js
-- **Source**: https://stryker-mutator.io/docs/stryker-js/getting-started/
+- Package: `@stryker-mutator/core` v10.0.0 (published Aug 14, 2026)
+- License: Apache-2.0
+- Peer Dependencies: Test runner plugin (e.g. `@stryker-mutator/jest-runner`, `@stryker-mutator/vitest-runner`)
+- Supported Test Runners: Jest, Mocha, Karma, Jasmine, Vitest, Cucumber, Tap
+- Supported Languages: JavaScript, TypeScript, React, Angular, Vue, Svelte, Node.js
+- Source: https://stryker-mutator.io/docs/stryker-js/getting-started/
 
 ## Install
 
@@ -117,9 +117,9 @@ bunx stryker run --logLevel trace
 
 ## Coverage Analysis
 
-- **`off`**: No optimization. All tests run for each mutant.
-- **`all`**: Mutants without coverage reported as `NoCoverage`. Not tested.
-- **`perTest`**: Only tests covering a mutant are executed. Tests must run independently and in random order.
+- `off`: No optimization. All tests run for each mutant.
+- `all`: Mutants without coverage reported as `NoCoverage`. Not tested.
+- `perTest`: Only tests covering a mutant are executed. Tests must run independently and in random order.
 
 ## Supported Mutators (30+ types)
 
@@ -141,9 +141,9 @@ bunx stryker run --logLevel trace
 
 ## Reports
 
-- **HTML**: `reports/mutation/html/index.html`
-- **Clear text**: Terminal output
-- **Dashboard**: https://dashboard.stryker-mutator.io
+- HTML: `reports/mutation/html/index.html`
+- Clear text: Terminal output
+- Dashboard: https://dashboard.stryker-mutator.io
 
 ## CI Integration
 

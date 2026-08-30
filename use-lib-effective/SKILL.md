@@ -6,6 +6,9 @@ related:
   - learn-from-web
   - use-lib-better
   - review-techstack
+  - deep-analyze
+  - deep-analyze-by-use-scripts
+  - realize-implementation
 ---
 
 ## Goal

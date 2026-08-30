@@ -5,6 +5,8 @@ argument-hint: "@files [destination]"
 related:
   - update-references
   - deep-validate
+  - ask-me
+  - deep-analyze
 ---
 
 ## Goal

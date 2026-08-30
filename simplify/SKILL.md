@@ -1,6 +1,11 @@
 ---
 name: simplify
 description: ลดความซับซ้อนของ content code architecture และ workflows
+related:
+  - follow-best-practice
+  - suggest-next-action
+  - resolve-errors
+  - update-references
 ---
 
 ## Goal

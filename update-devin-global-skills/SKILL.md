@@ -13,8 +13,6 @@ related:
   - update-references
   - review-issue
   - ship
-  - ship
-  - ship
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
@@ -136,7 +134,8 @@ related:
 
 - skill ต้องผ่าน `/deep-validate` ก่อน ship
 - ไม่มี TODO/MOCK/placeholder
-- install commands ใช้ตาม ecosystem หลัก เช่น `bun add` สำหรับ JS/TS, `cargo add` สำหรับ Rust, `go get` สำหรับ Go, `pip install` สำหรับ Python; สำหรับ global CLI ใช้ package manager ที่เหมาะสมกับ stack
+- install commands ใช้ตาม ecosystem หลัก: `bun add`/`bun install` สำหรับ Bun/Node ecosystem (ยกเว้น project ใช้ npm เป็นหลัก), `cargo add` สำหรับ Rust, `go get` สำหรับ Go, `pip install` สำหรับ Python
+- สำหรับ global CLI ที่เป็น npm package ใน Bun/Node ecosystem ให้ใช้ `mise use -g npm:<package>`
 
 ## Expected Outcome
 

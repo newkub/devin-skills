@@ -1,6 +1,13 @@
 ---
 name: follow-lib-css
 description: เขียน CSS ตาม best practices และ modern features
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

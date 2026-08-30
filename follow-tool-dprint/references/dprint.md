@@ -30,9 +30,9 @@ npx dprint init -y
 
 ## Version Info
 
-- **Latest stable:** `0.56.1`
-- **License:** MIT
-- **Source:** https://dprint.dev
+- Latest stable: `0.56.1`
+- License: MIT
+- Source: https://dprint.dev
 
 ## Peer Dependencies
 

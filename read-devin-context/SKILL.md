@@ -1,6 +1,11 @@
 ---
 name: read-devin-context
 description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
+related:
+  - assume-reset-context
+  - follow-context-engineering
+  - prepare-skills-context
+  - ask-me
 ---
 
 ## Goal

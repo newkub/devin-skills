@@ -2,6 +2,12 @@
 name: follow-your-suggestion
 description: ทำตามคำแนะนำจากการวิเคราะห์ปัญหาและแก้ไข code ตามที่คุยกันก่อนหน้า
 argument-hint: "[suggestion]"
+related:
+  - check-skills-related
+  - prioritize
+  - resolve-errors
+  - realize-implementation
+  - dont-over-engineer
 ---
 
 ## Goal

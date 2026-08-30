@@ -1,6 +1,13 @@
 ---
 name: search-files-patterns
 description: Search file name and content patterns across codebases with glob, grep, and ast-grep
+related:
+  - report-table
+  - suggest-next-action
+  - run-review
+  - refactor
+  - fix
+  - use-ast-grep
 ---
 
 ## Goal
@@ -9,7 +16,7 @@ description: Search file name and content patterns across codebases with glob, g
 
 ## Scope
 
-- ค้นหาไฟล์ตามชื่อ pattern เช่น `*.test.ts`, `**/{mock,fixture}.*`
+- ค้นหาไฟล์ตามชื่อ pattern เช่น `*.test.ts`, `/{mock,fixture}.*`
 - ค้นหาเนื้อหาไฟล์ตาม regex หรือ AST pattern
 - รองรับหลาย ecosystems: TypeScript, JavaScript, Rust, Python, Go
 - ใช้ผลลัพธ์สำหรับ review, refactor, debug, หรือ audit
@@ -91,7 +98,7 @@ description: Search file name and content patterns across codebases with glob, g
 
 ### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 

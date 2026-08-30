@@ -1,6 +1,13 @@
 ---
 name: follow-service-aws-sdk
 description: ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
+related:
+  - follow-create-sdk
+  - follow-service-cloudflare
+  - follow-service-infisical
+  - follow-best-practice
+  - learn-from-web
+  - setup-cicd
 ---
 
 ## Goal

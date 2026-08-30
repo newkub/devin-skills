@@ -4,6 +4,9 @@ description: วิเคราะห์หาสาเหตุหลักข�
 argument-hint: "[target]"
 related:
   - review-stability
+  - deep-debug
+  - use-bun-shell
+  - resolve-errors
 ---
 
 ## Goal

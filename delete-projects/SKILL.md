@@ -8,6 +8,8 @@ related:
   - delete-git-worktree
   - follow-service-cloudflare
   - list-cloudflare-project
+  - update-references
+  - ask-me
 ---
 
 ## Goal

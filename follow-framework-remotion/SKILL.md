@@ -1,6 +1,13 @@
 ---
 name: follow-framework-remotion
 description: Framework สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งโดยใช้ React
+related:
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-framework-desktop-app
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 ---
 
 ## Goal

@@ -6,6 +6,7 @@ related:
   - update-project-rules
   - check-code-structure
   - replace
+  - follow-tool-ast-grep
 ---
 
 ## Goal

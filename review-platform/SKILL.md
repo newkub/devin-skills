@@ -3,6 +3,9 @@ name: review-platform
 description: Review platform ครอบคลุมทุก dimension พร้อม review score
 related:
   - review-seo
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

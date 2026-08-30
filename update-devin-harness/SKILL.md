@@ -8,6 +8,7 @@ related:
   - review-devin-global-subagents
   - list-devin-global-skills
   - list-devin-global-subagents
+  - consider-use-in-another-skills
 ---
 
 ## Goal

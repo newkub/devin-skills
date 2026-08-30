@@ -35,7 +35,7 @@ bunx rolldown
 
 Build สำหรับ production ด้วย minification:
 
-**rolldown.config.ts:**
+rolldown.config.ts:
 ```typescript
 import { defineConfig } from 'rolldown'
 

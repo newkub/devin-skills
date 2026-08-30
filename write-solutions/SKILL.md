@@ -1,6 +1,14 @@
 ---
 name: write-solutions
 description: เขียน solution documents และ problem-solving workflows
+related:
+  - analyze-root-cause-analysis
+  - deep-research
+  - follow-architecture
+  - update-devin-global-skills
+  - resolve-errors
+  - dont-over-engineer
+  - run-test
 ---
 
 ## Goal

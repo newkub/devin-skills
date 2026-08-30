@@ -8,6 +8,7 @@ related:
   - follow-service-infisical
   - open-github-secrets
   - follow-math-concepts
+  - open-web-for-config-secret
 ---
 
 ## Goal

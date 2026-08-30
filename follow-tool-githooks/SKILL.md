@@ -7,6 +7,8 @@ related:
   - follow-tool-formatter
   - run-verify
   - follow-gitignore
+  - run-test
+  - fix
 ---
 
 ## Goal

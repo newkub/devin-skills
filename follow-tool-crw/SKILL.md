@@ -1,6 +1,13 @@
 ---
 name: follow-tool-crw
 description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
+related:
+  - follow-tool-agent-browser
+  - follow-tool-ast-grep
+  - follow-tool-aube
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 ---
 
 ## Goal

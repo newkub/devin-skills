@@ -1,6 +1,9 @@
 ---
 name: run-watch-typecheck
 description: รัน type checking แบบ watch mode เพื่อตรวจสอบ type errors อย่างต่อเนื่อง
+related:
+  - resolve-errors
+  - deep-debug
 ---
 
 ## Goal

@@ -6,6 +6,9 @@ related:
   - follow-create-rust-cli
   - review-frontend
   - run-test-all
+  - follow-my-tech-stack
+  - follow-single-responsibility
+  - follow-release
 ---
 
 ## Goal

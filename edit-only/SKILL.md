@@ -1,6 +1,10 @@
 ---
 name: edit-only
 description: แก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal
+related:
+  - review-architecture
+  - update-references
+  - review-quality
 ---
 
 ## Goal

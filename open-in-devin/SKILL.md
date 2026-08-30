@@ -2,6 +2,10 @@
 name: open-in-devin
 description: เปิด directory หรือ file ใน Devin session ใหม่
 argument-hint: "[path]"
+related:
+  - create-report-in-dot-devin
+  - list-devin-user-request-in-this-session
+  - open-in-explorer
 ---
 
 ## Goal

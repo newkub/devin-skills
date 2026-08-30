@@ -1,6 +1,11 @@
 ---
 name: write-explicit
 description: เขียนหรือแก้ instructions ให้ชัดเจน วัดผลได้ และมี single responsibility
+related:
+  - write-how-to
+  - write-solutions
+  - follow-best-practice
+  - deep-validate
 ---
 
 ## Goal

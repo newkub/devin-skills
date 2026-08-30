@@ -1,6 +1,13 @@
 ---
 name: follow-lib-vueuse
 description: ใช้งาน VueUse v14 composables ตาม best practices 2026
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

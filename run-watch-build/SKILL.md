@@ -1,6 +1,9 @@
 ---
 name: run-watch-build
 description: รัน build แบบ watch mode เพื่อตรวจสอบ build errors อย่างต่อเนื่อง
+related:
+  - resolve-errors
+  - deep-debug
 ---
 
 ## Goal

@@ -60,7 +60,7 @@ related:
 2. ใช้ `/open-web-for-config-secret` เพื่อเปิด:
    - URLs ของ external services (Stripe, OpenAI, Cloudflare, ฯลฯ) สำหรับสร้าง API keys
    - URL ของ secret manager dashboard สำหรับ paste ค่า
-3. ให้ user **copy API keys จาก service dashboard แล้ว paste ลง secret manager เอง**
+3. ให้ user copy API keys จาก service dashboard แล้ว paste ลง secret manager เอง
 4. AI ไม่รับค่า secrets จาก user โดยตรง ยกเว้น user ต้องการป้อนใน dashboard เอง
 
 ### 5. Store Secrets In Secret Manager
@@ -78,10 +78,11 @@ related:
 > Goal: inject secrets สำหรับ local dev โดยไม่ต้องมี `.env`
 
 1. รัน `infisical run --env=dev -- <command>`
-2. Bun project: `infisical run --env=dev -- bun run dev`
-3. Auto-reload: `infisical run --watch -- npm run dev`
-4. หลาย commands: `infisical run --command="npm run build && npm run start"`
-5. ใช้ root scripts ใน monorepo:
+2. รัน dev: `infisical run --env=dev -- bun run dev`
+3. Auto-reload: `infisical run --watch -- bun run dev`
+4. หลาย commands: `infisical run --command="bun run build && bun run start"`
+5. ถ้า project ใช้ npm เป็นหลัก → แทนด้วย `npm run`
+6. ใช้ root scripts ใน monorepo:
    - `"secrets:dev": "infisical run --env=dev -- turbo run dev"`
    - `"secrets:build": "infisical run --env=prod -- turbo run build"`
 
@@ -127,7 +128,7 @@ related:
 
 > Goal: programmatic access โดยไม่ hardcode credentials
 
-- ติดตั้ง SDK: `bun add @infisical/sdk` หรือ `npm install @infisical/sdk` หรือ `pnpm add @infisical/sdk`
+- ติดตั้ง SDK: `bun add @infisical/sdk` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm install @infisical/sdk`)
 - Authenticate: `client.auth().universalAuth.login({ clientId, clientSecret })`
 - ดึง secret: `client.secrets().getSecret({ environment, projectId, secretName })`
 - ดึงทั้งหมด: `client.secrets().listSecrets({ environment, projectId, expandSecretReferences: true })`

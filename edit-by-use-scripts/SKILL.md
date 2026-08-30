@@ -2,6 +2,14 @@
 name: edit-by-use-scripts
 description: แก้ไขไฟล์ผ่าน scripts ที่สร้างด้วย /use-scripts เพื่อ automate การแก้ไขแบบ reproducible
 argument-hint: "[target]"
+related:
+  - use-scripts
+  - edit-only
+  - edit-manual
+  - scan-codebase
+  - dont-over-engineer
+  - run-verify
+  - resolve-errors
 ---
 
 ## Goal

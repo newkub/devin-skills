@@ -1,6 +1,11 @@
 ---
 name: roleplay-incident-commander
 description: รับบทเป็น incident commander ตรวจ incident response, runbooks, communication จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

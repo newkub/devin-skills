@@ -1,6 +1,14 @@
 ---
 name: roleplay-devops-engineer
 description: รับบทเป็น DevOps/SRE มอง code ว่า deploy ง่ายไหม monitor ได้ไหม rollback ได้ไหม observability พอไหม
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - review-codebase-everything
+  - run-build
+  - deep-thinking
 ---
 
 ## Goal

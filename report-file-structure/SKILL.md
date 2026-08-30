@@ -1,6 +1,14 @@
 ---
 name: report-file-structure
 description: แสดงโครงสร้างไฟล์ โฟลเดอร์ พร้อม metadata สถิติ และคำแนะนำ
+related:
+  - scan-codebase
+  - deep-review
+  - use-scripts
+  - report-table
+  - report
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

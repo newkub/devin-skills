@@ -4,6 +4,11 @@ description: ครุ่นคิดและทบทวนอย่างล�
 argument-hint: "[topic]"
 related:
   - rethink
+  - deep-thinking
+  - deep-plan
+  - ask-me
+  - deep-research
+  - suggest-next-action
 ---
 
 ## Goal

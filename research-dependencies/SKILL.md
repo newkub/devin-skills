@@ -8,6 +8,7 @@ related:
   - follow-best-practice
   - check-reference
   - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - follow-dot-github
   - follow-deploy
   - run-deploy
+  - follow-tool-renovate
+  - follow-tool-release-it
 ---
 
 ## Goal

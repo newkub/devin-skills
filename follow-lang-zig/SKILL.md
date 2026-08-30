@@ -1,6 +1,13 @@
 ---
 name: follow-lang-zig
 description: เขียน Zig ตาม best practices และ language conventions
+related:
+  - follow-lang-bun
+  - follow-lang-javascript
+  - follow-lang-kotlin
+  - follow-best-practice
+  - setup-cicd
+  - use-scripts
 ---
 
 ## Goal

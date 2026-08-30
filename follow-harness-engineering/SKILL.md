@@ -1,6 +1,11 @@
 ---
 name: follow-harness-engineering
 description: สร้างและปรับปรุง AI agent harness เพื่อ reliability และ verifiable execution
+related:
+  - follow-context-engineering
+  - review-codebase-everything
+  - deep-validate
+  - run-test
 ---
 
 ## Goal

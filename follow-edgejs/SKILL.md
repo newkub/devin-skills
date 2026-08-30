@@ -6,6 +6,9 @@ related:
   - follow-lang-typescript
   - follow-tool-vite
   - follow-create-devin-plugins
+  - ask-me
+  - deep-validate
+  - ship
 ---
 
 ## Goal
@@ -38,7 +41,7 @@ related:
 
 > Goal: ติดตั้ง `edge.js` ใน project
 
-1. รัน `bun add edge.js` หรือ `npm i edge.js`
+1. รัน `bun add edge.js` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm i edge.js`)
 2. ตรวจสอบว่า `edge.js` อยู่ใน `dependencies` ของ `package.json`
 3. ถ้าใช้ TypeScript ให้ตรวจสอบว่า `tsconfig.json` รองรับ ESM (`module: "NodeNext"` หรือ `"ESNext"`)
 4. อย่า hardcode credentials หรือ secrets ใน template หรือ config
@@ -177,7 +180,7 @@ server.listen(3000)
 ### 7. Package Manager
 
 - default ใช้ `bun add` สำหรับ JS/TS projects
-- ใช้ `npm i` / `pnpm add` / `yarn add` ก็ได้ถ้า project ใช้ package manager อื่น
+- ถ้า project ใช้ package manager อื่น ให้ใช้ตาม ecosystem (`npm i`, `pnpm add`, `yarn add`)
 
 ## Expected Outcome
 

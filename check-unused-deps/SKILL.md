@@ -5,6 +5,8 @@ related:
   - follow-tool-knip
   - check-dead-code
   - update-config
+  - check-unused-files
+  - resolve-errors
 ---
 ## Goal
 

@@ -6,6 +6,7 @@ related:
   - check-monorepo
   - report-table
   - suggest-next-action
+  - update-readme-md
 ---
 
 ## Goal

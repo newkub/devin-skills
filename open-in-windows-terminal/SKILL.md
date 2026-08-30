@@ -2,6 +2,10 @@
 name: open-in-windows-terminal
 description: เปิด directory ใน Windows Terminal ด้วย wt -d <path>
 argument-hint: "[path]"
+related:
+  - view-files-in-terminal
+  - capture-terminal
+  - from-recent-windows-capture
 ---
 
 ## Goal

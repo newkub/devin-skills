@@ -1,6 +1,14 @@
 ---
 name: review-plan
 description: Review plan quality ก่อน execute plan
+related:
+  - report-table
+  - suggest-next-action
+  - plan
+  - deep-plan
+  - create-plan-as-github-issue
+  - implement-plan
+  - follow-plan
 ---
 
 ## Goal

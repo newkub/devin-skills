@@ -163,12 +163,12 @@ git rebase --abort
 
 ## Best Practices
 
-1. **Communicate**: คุยกับ team members เกี่ยวกับ conflicts
-2. **Understand Context**: เข้าใจทั้งสอง sides ก่อน resolve
-3. **Test**: Test หลัง resolve conflicts
-4. **Ask for Help**: ถ้าไม่แน่ใจ ขอความช่วยเหลือ
-5. **Document**: Document การตัดสินใจสำคัญ
-6. **Prevent**: Pull บ่อยๆ เพื่อลด conflicts
+1. Communicate: คุยกับ team members เกี่ยวกับ conflicts
+2. Understand Context: เข้าใจทั้งสอง sides ก่อน resolve
+3. Test: Test หลัง resolve conflicts
+4. Ask for Help: ถ้าไม่แน่ใจ ขอความช่วยเหลือ
+5. Document: Document การตัดสินใจสำคัญ
+6. Prevent: Pull บ่อยๆ เพื่อลด conflicts
 
 ## Common Issues
 

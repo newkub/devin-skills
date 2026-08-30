@@ -8,6 +8,8 @@ related:
   - understand-me
   - ask-project-requirement
   - follow-your-suggestion
+  - realize-implementation
+  - scan-codebase
 ---
 
 ## Goal

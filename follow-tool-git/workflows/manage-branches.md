@@ -147,12 +147,12 @@ git log feature-branch..main
 
 ## Best Practices
 
-1. **Short-Lived Branches**: Delete branches หลัง merge
-2. **Meaningful Names**: ใช้ชื่อที่อธิบายได้
-3. **Branch from Main**: Branch จาก main หรือ develop
-4. **Keep Main Clean**: ไม่ commit โดยตรงไป main
-5. **Use Protection Rules**: ใช้ branch protection
-6. **Regular Cleanup**: Delete unused branches
+1. Short-Lived Branches: Delete branches หลัง merge
+2. Meaningful Names: ใช้ชื่อที่อธิบายได้
+3. Branch from Main: Branch จาก main หรือ develop
+4. Keep Main Clean: ไม่ commit โดยตรงไป main
+5. Use Protection Rules: ใช้ branch protection
+6. Regular Cleanup: Delete unused branches
 
 ## Common Issues
 

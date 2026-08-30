@@ -1,6 +1,13 @@
 ---
 name: follow-lib-zaidian-ui
 description: ใช้ Zaidian UI สำหรับ SolidJS UI components ด้วย Kobalte, Corvu และ Tailwind CSS
+related:
+  - follow-lib-animejs
+  - follow-lib-arktype
+  - follow-lib-better-auth
+  - follow-best-practice
+  - use-my-packages-on-registry
+  - setup-cicd
 ---
 
 ## Goal

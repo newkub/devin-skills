@@ -8,6 +8,8 @@ related:
   - check-reference
   - update-devin-global-skills
   - deep-validate
+  - update-references
+  - report
 ---
 
 ## Goal

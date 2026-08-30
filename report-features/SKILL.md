@@ -1,6 +1,14 @@
 ---
 name: report-features
 description: รายงาน features ทั้งหมดใน project เป็นตารางจาก generated TypeScript files
+related:
+  - update-features-md
+  - deep-review
+  - all-workspace
+  - report-table
+  - report
+  - report-ansi
+  - suggest-next-action
 ---
 
 ## Goal

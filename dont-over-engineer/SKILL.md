@@ -1,6 +1,11 @@
 ---
 name: dont-over-engineer
 description: หลีกเลี่ยงการ over-engineering ใช้ minimal changes
+related:
+  - dont-ask
+  - dont-understand
+  - roleplay-data-engineer
+  - deep-debug
 ---
 
 ## Goal

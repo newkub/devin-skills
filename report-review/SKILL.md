@@ -1,6 +1,13 @@
 ---
 name: report-review
 description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
+related:
+  - deep-review
+  - resolve-errors
+  - report-table
+  - report-ansi
+  - suggest-next-action
+  - report
 ---
 
 ## Goal

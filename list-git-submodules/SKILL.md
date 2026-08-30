@@ -5,6 +5,7 @@ related:
   - list-project-git-in-computer
   - delete-git-submodules
   - convert-to-git-submodules
+  - report-table
 ---
 
 ## Goal

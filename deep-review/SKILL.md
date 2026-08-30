@@ -3,6 +3,12 @@ name: deep-review
 description: Review ครบทุกมิติอย่างลึกซึ้ง พร้อม severity ratings และ actionable recommendations
 related:
   - rethink
+  - deep-thinking
+  - pondering
+  - deep-analyze
+  - deep-analyze-by-use-scripts
+  - scan-codebase
+  - deep-plan
 ---
 
 ## Goal

@@ -5,6 +5,8 @@ related:
   - follow-my-package-manager
   - list-program-in-computer
   - download-program
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

@@ -5,6 +5,10 @@ related:
   - follow-math-graph-theory
   - follow-math-optimization
   - follow-math-game-theory
+  - review-performance
+  - review-quality
+  - check-unused-files
+  - check-unused-deps
 ---
 
 ## Goal

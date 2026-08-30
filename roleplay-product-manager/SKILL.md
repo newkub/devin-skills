@@ -1,6 +1,14 @@
 ---
 name: roleplay-product-manager
 description: รับบทเป็น PM มอง code ว่า features ครบไหม priority ถูกไหม MVP ใช้ได้ไหม ขาดอะไรที่ user ต้องการจริง
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
+  - review-codebase-everything
+  - deep-thinking
+  - pondering
 ---
 
 ## Goal

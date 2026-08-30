@@ -1,6 +1,12 @@
 ---
 name: review-issue
 description: ตรวจสอบ issue ใดๆ เพื่อดูความชัดเจน, scope, acceptance criteria และความพร้อม
+related:
+  - review-github-issue
+  - follow-best-practice
+  - suggest-next-action
+  - review-codebase-everything
+  - resolve-errors
 ---
 
 ## Goal

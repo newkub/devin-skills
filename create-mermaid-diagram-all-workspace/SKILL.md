@@ -11,8 +11,6 @@ related:
   - follow-package-manifest
   - check-circular-dependencies
   - ship
-  - ship
-  - ship
 ---
 
 ## Goal
@@ -93,7 +91,7 @@ related:
 1. รวมไฟล์ทั้งหมดลง directory หรือ root ตาม context
 2. ตรวจสอบชื่อไฟล์ไม่ซ้ำ
 3. ตรวจ syntax ของแต่ละ mermaid block ด้วยตาเปล่าหรือ `mmdc --version` ถ้ามี
-4. ถ้า `mmdc` พร้อมและ user ขอ render → render เป็น `.svg` แต่ **ห้ามบังคับเป็น output หลัก**
+4. ถ้า `mmdc` พร้อมและ user ขอ render → render เป็น `.svg` แต่ ห้ามบังคับเป็น output หลัก
 5. ถ้าไม่มี `mmdc` ให้แนะนำ Mermaid Live Editor
 
 ### 8. Report

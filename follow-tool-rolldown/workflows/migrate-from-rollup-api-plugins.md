@@ -27,11 +27,11 @@ Rolldown เข้ากันได้กับ Rollup APIs ส่วนให�
 
 ### Minor Differences
 
-**Output Options:**
+Output Options:
 - Rolldown รองรับ options ส่วนใหญ่ของ Rollup
 - บาง advanced options อาจยังไม่รองรับ
 
-**Plugin Hooks:**
+Plugin Hooks:
 - Rolldown รองรับ plugin hooks หลักของ Rollup
 - บาง advanced hooks อาจยังไม่รองรับ
 

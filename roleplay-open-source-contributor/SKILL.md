@@ -1,6 +1,11 @@
 ---
 name: roleplay-open-source-contributor
 description: รับบทเป็น open-source contributor ตรวจ CONTRIBUTING, PR flow, community จาก code
+related:
+  - scan-codebase
+  - report
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal

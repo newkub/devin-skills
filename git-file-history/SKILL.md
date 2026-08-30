@@ -2,6 +2,13 @@
 name: git-file-history
 description: ดู git file history ของไฟล์ที่ระบุผ่าน @wrikka/git-cli package ที่ release แล้ว โดยใช้คำสั่ง
 argument-hint: "[file]"
+related:
+  - check-git-files-history
+  - list-brave-browser-history
+  - restore-from-devin-history
+  - follow-git-flow
+  - resolve-errors
+  - follow-best-practice
 ---
 
 ## Goal

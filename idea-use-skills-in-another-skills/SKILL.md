@@ -1,6 +1,13 @@
 ---
 name: idea-use-skills-in-another-skills
 description: สร้างไอเดียการนำ skill หน่วงไปใช้ใน skills อื่นพร้อมตาราง
+related:
+  - scan-codebase
+  - list-devin-global-skills
+  - report-table
+  - suggest-next-action
+  - check-reference
+  - report
 ---
 
 ## Goal

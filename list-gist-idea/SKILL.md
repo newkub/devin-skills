@@ -7,6 +7,7 @@ related:
   - implement-from-gist-idea
   - list-gist
   - report-table
+  - idea
 ---
 
 ## Goal

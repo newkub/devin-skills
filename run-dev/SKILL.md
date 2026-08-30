@@ -1,6 +1,12 @@
 ---
 name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
+related:
+  - resolve-errors
+  - watch-terminal
+  - open-web
+  - watch-browser-and-fix
+  - report-ansi
 ---
 
 ## Goal

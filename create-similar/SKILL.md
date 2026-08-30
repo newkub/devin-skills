@@ -8,6 +8,7 @@ related:
   - consider-use-in-another-skills
   - edit-by-use-scripts
   - deep-validate
+  - search-files-patterns
 ---
 
 ## Goal

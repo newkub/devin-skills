@@ -2,6 +2,14 @@
 name: learn-from-pattern
 description: เรียนรู้จาก patterns ที่พบใน codebase, competitors, หรือ real-world implementations
 argument-hint: "[target]"
+related:
+  - scan-codebase
+  - use-ast-grep
+  - deep-research
+  - bench-competitors
+  - follow-best-practice
+  - learn-from-web
+  - generalize
 ---
 
 ## Goal

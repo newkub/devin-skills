@@ -7,6 +7,8 @@ related:
   - follow-math-probability
   - follow-math-statistics
   - follow-math-numerical-methods
+  - use-bun-shell
+  - run-test
 ---
 
 ## Goal

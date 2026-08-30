@@ -6,6 +6,7 @@ related:
   - report-table
   - follow-create-rust-cli
   - follow-my-tech-stack
+  - report-in-html
 ---
 
 ## Goal

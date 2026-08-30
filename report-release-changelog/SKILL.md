@@ -2,6 +2,14 @@
 name: report-release-changelog
 description: ดึงและจัดรูปแบบ release changelog จาก GitHub diff ระหว่าง tags
 argument-hint: "[range]"
+related:
+  - compare
+  - ask-me
+  - report-table
+  - suggest-next-action
+  - report-ansi
+  - fix
+  - refactor
 ---
 
 ## Goal

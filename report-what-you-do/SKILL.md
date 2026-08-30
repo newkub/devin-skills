@@ -5,6 +5,10 @@ related:
   - setup-cicd
   - setup-package
   - setup-release
+  - ship
+  - deep-analyze
+  - deep-research
+  - deep-plan
 ---
 
 ## Goal

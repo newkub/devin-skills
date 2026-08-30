@@ -1,6 +1,10 @@
 ---
 name: follow-single-responsibility
 description: แยก task หรือ prompt ออกเป็นหน่วยงานย่อยทีละอย่าง (single responsibility)
+related:
+  - ask-me
+  - report-plan
+  - continue
 ---
 
 ## Goal
