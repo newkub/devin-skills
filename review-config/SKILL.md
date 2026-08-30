@@ -4,6 +4,7 @@ description: Review config files หา drift, missing, duplicate, shared config
 argument-hint: "[path]"
 related:
   - report-config-files
+  - list-ci-configs
   - setup-ci-cd
   - setup-package
   - setup-release

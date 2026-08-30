@@ -1,6 +1,6 @@
 ---
 name: follow-create-cloudflare-token
-description: สร้าง Cloudflare API token URL ที่ pre-fill permissions ไว้ล่วงหน้า แล้วเปิดหน้า dashboard ให้ user สร้าง token เอง
+description: สร้าง Cloudflare API token URL ที่ pre-fill permissions แล้วเปิด dashboard
 related:
   - follow-service-cloudflare
   - open-web-for-config-secret

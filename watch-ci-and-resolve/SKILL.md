@@ -4,6 +4,7 @@ argument-hint: "[run-id]"
 description: ติดตาม CI pipeline ทุก platform จนผ่าน และแก้ไข failures
 related:
   - watch-github-actions
+  - list-ci-configs
   - watch-build
   - watch-test
   - watch-lint
@@ -38,13 +39,8 @@ related:
 
 > Goal: ระบุ CI platform ของ repository ปัจจุบัน
 
-1. ค้นหา config files:
-   - GitHub Actions: `.github/workflows/*.yml`, `.github/workflows/*.yaml`
-   - GitLab CI: `.gitlab-ci.yml`
-   - Azure DevOps: `azure-pipelines.yml`
-   - CircleCI: `.circleci/config.yml`
-   - Jenkins: `Jenkinsfile`
-2. ถ้าพบหลาย platform เลือกตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
+1. ทำ `/list-ci-configs` เพื่อรายการ CI config files ใน repo
+2. เลือก platform จากผลลัพธ์ตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
 3. ถ้าไม่พบ CI config → ทำ `/ask-me` ถาม user หรือ `/review-delivery`, `/review-config`, `/review-deploy`, `/review-test` เพื่อตรวจสอบ
 
 ### 2. Verify Required CLI

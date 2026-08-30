@@ -1,6 +1,6 @@
 ---
 name: watch-browser-and-fix
-description: เปิด browser ด้วย agent-browser แล้ว capture แก้ไข ถ้าแก้ไม่ได้ใช้ /watch-browser-console และ confirm web server ทำงานได้
+description: เปิด browser ด้วย agent-browser แล้ว capture แก้ไข และ confirm web server
 argument-hint: "[url]"
 related:
   - watch-browser-console

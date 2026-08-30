@@ -1,6 +1,6 @@
 ---
 name: report-progress
-description: รายงานสถานะและความคืบหน้าของ agent session ปัจจุบัน รวมงานทีเสร็จ งานค้าง เปอร์เซ็นต์ความคืบหน้า และ next actions
+description: รายงานสถานะและความคืบหน้าของ session รวมงานเสร็จ ค้าง และ next actions
 ---
 
 ## Goal

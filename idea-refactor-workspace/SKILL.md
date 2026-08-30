@@ -1,6 +1,6 @@
 ---
 name: idea-refactor-workspace
-description: สร้างไอเดีย refactor workspace ใน monorepo ด้วย /refactor-all-workspace และ /follow-single-responsibility
+description: สร้างไอเดีย refactor workspace ใน monorepo ด้วย /refactor-all-workspace
 related:
   - refactor-all-workspace
   - follow-single-responsibility

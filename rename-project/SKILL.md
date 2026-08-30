@@ -1,6 +1,6 @@
 ---
 name: rename-project
-description: Rename project ทั่วทุกจุด ทั้ง local, GitHub, Cloudflare Workers, D1, secrets, env, และ references ใน code
+description: Rename project ทั่วทุกจุด ทั้ง local, GitHub, Cloudflare, secrets, env, และ code
 related:
   - follow-secret-manager
   - open-web-for-config-secret

@@ -2,6 +2,7 @@
 name: list-github-action-fail
 description: ดู GitHub Actions workflow runs ทีล้มเหลวทั้ง personal และ org repos
 related:
+  - list-ci-configs
   - watch-github-actions
   - list-github-repo
   - report-table

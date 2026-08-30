@@ -6,6 +6,7 @@ related:
   - review-seo
   - review-security
   - review-quality
+  - list-ci-configs
 ---
 
 ## Goal

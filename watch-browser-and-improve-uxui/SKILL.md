@@ -1,6 +1,6 @@
 ---
 name: watch-browser-and-improve-uxui
-description: เปิด browser ด้วย agent-browser แล้ว capture หน้าเพื่อ review ปรับปรุง UX/UI ด้วย /review-by-stakeholder
+description: เปิด browser ด้วย agent-browser แล้ว capture หน้าเพื่อ review ปรับปรุง UX/UI
 argument-hint: "[url]"
 related:
   - review-by-stakeholder
