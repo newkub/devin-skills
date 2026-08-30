@@ -13,8 +13,6 @@ related:
   - run-verify
   - run-test-all
   - ship
-  - ship
-  - ship
   - report-table
   - suggest-next-action
 ---

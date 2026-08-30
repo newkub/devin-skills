@@ -41,6 +41,7 @@ Ship workspace ตั้งแต่ prepare จนถึง production โด�
 ใช้เมื่องานใน workspace เสร็จสมบูรณ์
 - รองรับ path: prepare, issue+worktree, local commit, CI push, review PR, fix after review, release/deploy
 - resolve errors ซ้ำจนกว่าจะผ่าน หรือครบ limit
+- เรียก setup ทีจำเป็นตาม path: `/setup-cicd` ก่อน push, `/setup-package` / `/setup-release` ก่อน release/deploy
 - ถ้าต้องการให้ agent รับไปทำต่อ → ใช้ `/ship-by-agents`
 
 ## Execute
