@@ -1,6 +1,6 @@
 ---
-name: list-gist-idea
-description: แสดงรายการ gist idea notes ของผู้ใช้
+name: list-gist-notes
+description: แสดงรายการ gist notes ของผู้ใช้
 argument-hint: "[--limit N]"
 related:
   - save-to-gist-idea
@@ -12,12 +12,12 @@ related:
 
 ## Goal
 
-แสดงรายการ gist idea notes ที่มี่อยู่และสรุปเนื้อหา
+แสดงรายการ gist notes ที่มี่อยู่และสรุปเนื้อหา
 
 ## Scope
 
 - ใช้ `gh gist list` เท่านั้น
-- กรองเฉพาะ gist ที่เป็น idea note (description/filename มี่คำว่า idea)
+- กรองเฉพาะ gist ที่เป็น note (description/filename มี่คำว่า idea หรือ note)
 - รองรับ limit
 - ไม่แก้ไข gist
 
@@ -30,19 +30,19 @@ related:
 1. รัน `gh auth status`
 2. ถ้าไม่ login ให้หยุดและแจ้งให้ทำ `gh auth login`
 
-### 2. List Gist Ideas
+### 2. List Gist Notes
 
-> Goal: ดึงรายการ gist ideas
+> Goal: ดึงรายการ gist notes
 
 1. รับ `--limit` จาก argument (ค่าเริ่มต้น 30)
 2. รัน `gh gist list --limit <limit>`
-3. กรอง gist ที่ description หรือ filename มี่ `idea` (case-insensitive)
+3. กรอง gist ที่ description หรือ filename มี่ `idea` หรือ `note` (case-insensitive)
 
 ### 3. Fetch Summaries
 
-> Goal: สรุปเนื้อหาภายในแต่ละ gist idea
+> Goal: สรุปเนื้อหาภายในแต่ละ gist note
 
-1. สำหรับแต่ละ gist idea → ใช้ `gh gist view <id> --files` หรือ `gh gist view <id>`
+1. สำหรับแต่ละ gist note → ใช้ `gh gist view <id> --files` หรือ `gh gist view <id>`
 2. สรุปจำนวน items / หัวข้อหลัก
 3. เก็บ URL แต่ละ gist
 
@@ -73,11 +73,11 @@ related:
 
 ### 4. Empty State
 
-- ถ้าไม่พบ gist idea → แจ้ง user
+- ถ้าไม่พบ gist note → แจ้ง user
 - เสนอให้ใช้ `/save-to-gist-idea` เพื่อสร้างใหม่
 
 ## Expected Outcome
 
-- รายการ gist idea notes
+- รายการ gist notes
 - สรุปเนื้อหาภายในแต่ละ gist
 - URL สำหรับเปิดแต่ละ gist

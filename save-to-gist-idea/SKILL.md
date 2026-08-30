@@ -5,7 +5,7 @@ argument-hint: "[idea-title]"
 related:
   - enhance-prompt
   - save-to-new-gist
-  - list-gist-idea
+  - list-gist-notes
   - implement-from-gist-idea
   - idea
   - list-gist
@@ -45,7 +45,7 @@ related:
 
 > Goal: ไม่สร้างซ้ำถ้ามี่ gist idea อยู่แล้ว
 
-1. รัน `gh gist list --limit 100` หรือใช้ `/list-gist`
+1. รัน `gh gist list --limit 100` หรือใช้ `/list-gist-notes`
 2. ค้นหา gist ที่ description หรือ filename มี่คำว่า `idea` และตรงกับ title
 3. ถ้ามี่อยู่แล้ว → แจ้ง user URL และหยุด
 4. ถ้าไม่มี่ → ไปขั้นตอนถัดไป

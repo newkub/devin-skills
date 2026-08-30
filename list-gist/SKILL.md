@@ -2,7 +2,7 @@
 name: list-gist
 description: แสดงรายการ gists ของผู้ใช้
 related:
-  - list-gist-idea
+  - list-gist-notes
   - implement-from-gist-idea
   - save-to-gist-idea
   - report-table

@@ -4,7 +4,7 @@ description: นำ gist idea note ไป implement ตาม numbered list
 argument-hint: "[gist-id-or-url]"
 related:
   - save-to-gist-idea
-  - list-gist-idea
+  - list-gist-notes
   - continue
   - implement-plan
   - follow-plan
@@ -32,7 +32,7 @@ related:
 > Goal: หา gist idea ที่ต้อง implement
 
 1. รับ `gist-id`, URL, หรือ title จาก argument
-2. ถ้าไม่มี่ → ใช้ `/list-gist-idea` เพื่อเลือก
+2. ถ้าไม่มี่ → ใช้ `/list-gist-notes` เพื่อเลือก
 3. ถ้ายังไม่ชัด → ถาม user ด้วย `/ask-me`
 
 ### 2. Fetch Idea Content
@@ -73,7 +73,7 @@ related:
 ### 1. Gist Selection
 
 - ต้องได้รับ gist idea ก่อน implement
-- ถ้าไม่พบ gist → ใช้ `/list-gist-idea` หรือ `/ask-me`
+- ถ้าไม่พบ gist → ใช้ `/list-gist-notes` หรือ `/ask-me`
 - ไม่เดาจาก partial title
 
 ### 2. Execution Order
