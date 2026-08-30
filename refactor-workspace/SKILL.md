@@ -2,6 +2,10 @@
 name: refactor-workspace
 description: Refactor workspace members ให้มี SRP, แนะนำ workspace layout
 related:
+  - refactor
+  - refactor-codebase
+  - refactor-files
+  - refactor-to-single-responsibility
   - follow-single-responsibility
   - restructure
   - relocation

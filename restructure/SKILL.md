@@ -2,6 +2,10 @@
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
 related:
+  - refactor
+  - refactor-to-single-responsibility
+  - relocation
+  - update-references
   - rethink
 
 ---
@@ -43,7 +47,7 @@ related:
 
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
 
-1. ทำ `/refactor` สำหรับไฟล์ที่ยาวกว่า 250 บรรทัด
+1. ทำ `/refactor-to-single-responsibility` สำหรับไฟล์ที่ยาวกว่า 250 บรรทัด
 2. ทำ `/update-references` เพื่ออัปเดต imports
 3. ถ้าไม่มีไฟล์เกิน 250 บรรทัด → skip ไป Step 4
 
@@ -88,7 +92,7 @@ related:
 - ทำ `/dont-over-engineer` เสมอเมื่อเริ่มทำงาน
 - ใช้ minimal changes เสมอ
 - ถ้า file operations มากกว่า 10 ไฟล์ → ใช้ `/use-scripts`
-- สำหรับ logical concern separation ให้ใช้ `/refactor`
+- สำหรับ logical concern separation ให้ใช้ `/refactor-to-single-responsibility`
 
 ### 2. File And Folder Boundaries
 

@@ -1,139 +1,95 @@
 ---
 name: refactor
-description: Refactor codebase ครบวงจร — SRP, boundaries, code styles, consistency, maintainability
-argument-hint: "[scope]"
+description: Refactor ตาม context โดยเรียก sub-skill ทีเหมาะสม
+argument-hint: "[@files... | scope]"
 related:
-  - refactor-to-single-responsibility
+  - refactor-codebase
+  - refactor-files
   - refactor-workspace
-  - review-refactor
+  - refactor-to-single-responsibility
+  - relocation
+  - review-restructure
   - review-quality
-  - follow-architecture
-  - review-architecture
+  - update-references
+  - run-verify
   - dont-over-engineer
-  - rethink
 ---
 
 ## Goal
 
-Refactor codebase ครบวงจรเพื่อปรับปรุง SRP, boundaries, code styles, consistency, และ maintainability
+Refactor code ตาม context โดยเลือก sub-skill ทีเหมาะสม: ไฟล์, workspace, codebase, หรือ SRP
 
 ## Scope
 
-- ใช้กับทุก workspace ที่ต้องการ refactor
-- ครอบคลุม SRP, long files, import/export, architecture, packages, code styles
-- รวม consistency check สำหรับ naming, patterns, structure, และ style
-- ใช้ `/create-plan-in-dot-devin` สำหรับงานใหญ่
-- ใช้ `/implement-plan` สำหรับ execute แผน
+- ถ้า user ระบุ `@files...` → ใช้ `/refactor-files`
+- ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
+- ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ใช้ `/refactor-to-single-responsibility`
+- ถ้าต้องการ refactor ทั้ม codebase → ใช้ `/refactor-codebase`
+- ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ## Execute
 
-### 1. Review And Baseline
+### 1. Detect Context
 
-> Goal: เข้าใจ codebase ก่อน refactor
+> Goal: ระบุ scope ของ refactoring
 
-1. ทำ `/review-codebase-everythink` สำหรับ deep review
-2. ทำ `/check-code-structure`, `/review-quality`, `/check-long-files`
-3. บันทึก baseline: files, symbols, responsibilities
+1. ถ้ามี `@files...` จาก argument → mark เป็น file refactor
+2. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → ใช้ `/refactor-workspace`
+3. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ใช้ `/refactor-to-single-responsibility`
+4. ถ้าต้องการ refactor ทั้ม codebase หรือไม่มี files/workspace context → ใช้ `/refactor-codebase`
+5. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
-### 2. Create Plan If Large
+### 2. Dispatch
 
-> Goal: มีแผนก่อน refactor ขนาดใหญ่
+> Goal: เรียก sub-skill ทีเหมาะสม
 
-1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan-in-dot-devin`
-2. ถ้างานเล็ก → ข้ามไป Step 3
+1. ถ้า file refactor → ทำ `/refactor-files [@files...]`
+2. ถ้า workspace refactor → ทำ `/refactor-workspace`
+3. ถ้า SRP refactor → ทำ `/refactor-to-single-responsibility`
+4. ถ้า codebase refactor → ทำ `/refactor-codebase`
+5. ถ้า relocation → ทำ `/relocation`
 
-### 3. Refactor By Concern
+### 3. Update References
 
-> Goal: แก้ไขปัญหาเฉพาะทีละเรื่อง
+> Goal: ตรวจ references หลัง refactor
 
-1. ถ้ามี SRP violations → ทำ `/refactor-to-single-responsibility`
-2. ถ้ามี function quality issues (long functions, bad naming, side effects, complex params) → ทำ `/review-refactor`
-3. ถ้ามีไฟล์ยาว >250 บรรทัด → ทำ `/refactor-to-single-responsibility`
-4. ถ้ามี imports/exports ซับซ้อน → ทำ `/review-architecture`
-5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
-6. ถ้ามี package/module ปัญหา → ทำ `/refactor-workspace`
+1. หลัง sub-skill เสร็จ ทำ `/update-references` ถ้ามีการย้าย/ลบ/rename
+2. ตรวจ broken references ด้วย `/check-broken-skills-references` ถ้ามี
+3. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/test/build
 
-### 4. Update References
+### 4. Report
 
-> Goal: ไม่มี broken references
+> Goal: สรุปผล
 
-1. ทำ `/edit-relative` สำหรับ relative paths/imports
-2. ทำ `/update-references` สำหรับ global references
-3. ถ้ามี broken references → ทำ `/resolve-errors`
-
-### 5. Check Consistency
-
-> Goal: naming, patterns, structure, style สอดคล้องกันทั้ง codebase
-
-1. ทำ `/review-quality` เพื่อตรวจ inconsistencies ใน naming, patterns, structure, หรือ style
-2. ถ้าพบ inconsistencies → แก้ตาม findings
-3. อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
-
-### 6. Verify
-
-> Goal: code ผ่าน lint/typecheck/test/build
-
-1. ทำ `/run-verify` เพื่อรัน scan, lint, typecheck, test, build
-2. ทำ `/check-code-structure` เปรียบเทียบ baseline
-3. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3 (max 3)
-
-### 7. Implement Plan
-
-> Goal: ทำงานตามแผนจนครบและลบแผน
-
-1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
-2. ถ้าไม่มีแผน → รายงานผล
-
-### 8. Report
-
-> Goal: สื่อสารผล refactor และ consistency
-
-1. ทำ `/report` สรุป before/after รวม refactor และ consistency check
-2. ระบุ TODO ถ้ามี
+1. ทำ `/report-table` สรุป sub-skill ทีใช้ การเปลี่ยนแปลง และ status
+2. ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Code Style
+### 1. Context Aware
 
-- ทำให้ดีตามที่ควรเป็น
-- ทำให้ type safe
-- ทำให้ maintenance ง่าย
-- ทำให้ test ง่าย
-- ทำให้อ่านง่าย
-- ลด side effect
-- ใช้ naming สม่ำเสมอ
-- ลบ unused imports/exports
-- จัดเรียง imports/exports ตามมาตรฐาน project
+- ไม่เดา scope ถ้าไม่ชัด
+- ถ้าไม่ชัดให้ถาม user
+- ไม่ dispatch ไปหลาย sub-skill พร้อมกัน
 
 ### 2. Minimal Change
 
-- ทำ `/dont-over-engineer` ก่อน
-- หลีกเลี่ยง abstraction ที่ไม่จำเป็น
-- รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน
+- ทำ `/dont-over-engineer`
+- ไม่ refactor เกินความจำเป็นต่อ context
 
-### 3. Consistency
+### 3. Safety
 
-- ทำ `/review-quality` เมื่อพบ inconsistencies ใน naming, patterns, structure, หรือ style
-- รักษา conventions เดียวกันทั้ง codebase
-- อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
+- การย้าย/ลบ/rename ต้อง update references
+- destructive actions ต้อง dry run + user confirmation
 
-### 4. Safety
+### 4. Verification
 
-- destructive actions ต้องมี user confirmation
-- ทำ `/update-references` หลังย้าย/ลบ/แยกไฟล์
-- ไม่ force push
-
-### 5. Verification
-
-- ต้องผ่าน `/run-verify` และ `/run-test`
-- ไฟล์ไม่เกิน 250 บรรทัด
+- ทุก refactor ต้องผ่าน `/run-verify`
 - ไม่มี broken references
 
 ## Expected Outcome
 
-- Codebase มี SRP ชัดเจน
-- ไฟล์และ packages มีขนาดเหมาะสม
-- imports/exports สะอาด
-- naming, patterns, structure มี consistency ผ่าน `/review-quality`
-- ผ่าน lint/typecheck/test/build
-- รายงาน before/after รวม refactor และ consistency
+- Sub-skill ทีเหมาะสมถูกเรียกตาม context
+- ผ่าน verify
+- ไม่มี broken references
+- รายงาน before/after
