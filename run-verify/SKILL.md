@@ -1,6 +1,6 @@
 ---
 name: run-verify
-description: รัน verify แบบครบวงจร (scan, format, lint, typecheck, test, build) บน local หรือ CI/CD ตามขนาด project
+description: รัน verify แบบครบวงจรบน local หรือ CI/CD ตามขนาด project
 related:
   - run-scan
   - run-lint
