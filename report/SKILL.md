@@ -4,7 +4,6 @@ description: ตอบในแชทเป็นตารางพร้อม�
 related:
   - report-table
   - report-ansi
-  - report-progress
   - report-session-status
   - review-writing
 ---
@@ -40,7 +39,7 @@ related:
 2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-table` พร้อมคอลัมน์ "No." เป็นคอลัมน์แรก
 3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
 4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-ansi`
-5. ถ้าเป็นรายงานสถานะ ใช้ `/report-progress`
+5. ถ้าเป็นรายงานสถานะ ใช้ `/report-session-status`
 6. ถ้าเป็นรายงาน error ใช้ `/report-ansi`
 
 ### 3. Apply Grouping And Sorting

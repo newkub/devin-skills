@@ -10,7 +10,7 @@ related:
   - improve
   - follow-your-suggestion
   - suggest-next-action
-  - report-progress
+  - report-session-status
   - continue
   - deep-validate
 ---

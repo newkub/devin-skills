@@ -6,7 +6,7 @@ related:
   - suggest-next-action
   - follow-devin-global-subagents
   - consider-use-subagents
-  - report-progress
+  - report-session-status
   - resolve-errors
   - ask-me
 ---
@@ -34,7 +34,7 @@ related:
 > Goal: ให้ agent ดำเนินการจนถึง deploy/release
 
 1. ทำ `/ship` โดยปล่อยให้ agent จัดการ steps ตาม state
-2. ติดตาม progress ด้วย `/report-progress`
+2. ติดตาม progress ด้วย `/report-session-status`
 3. ถ้าติด blocker → `/resolve-errors` หรือ `/ask-me`
 
 ## Rules

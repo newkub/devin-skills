@@ -1,23 +1,22 @@
 ---
 name: report-session-status
-description: รายงานสถานะของ agent session ปัจจุบัน รวม completed, pending, blockers และ next actions
+description: รายงานสถานะและความคืบหน้าของ agent session รวม completed, pending, blockers และ next actions
 argument-hint: "[all|completed|pending|blockers]"
 related:
   - report
   - report-table
   - report-ansi
-  - report-progress
   - report-before
   - add-to-devin-global-skills
 ---
 
 ## Goal
 
-รายงานสถานะของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จแล้วหรือไม่ อะไรยังค้างอยู่ และต้องทำอะไรต่อ
+รายงานสถานะและความคืบหน้าของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จกี่เปอร์เซ็นต์ อะไรยังค้าง และต้องทำอะไรต่อ
 
 ## Scope
 
-ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, และ todo list ทีมีอยู่
+ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, todo list, และ validation results ทีมีอยู่
 
 ## Execute
 
@@ -49,11 +48,21 @@ related:
 3. ระบุ tests, build, lint หรือ validation ทียังไม่ผ่าน
 4. ระบุ dependencies หรือ decisions ทีรอ user
 
-### 4. Report And Suggest Next Actions
+### 4. Calculate Progress
+
+> Goal: รู้เปอร์เซ็นต์ทีทำเสร็จ
+
+1. นับจำนวนงาน completed และ pending จาก todo/roadmap
+2. คำนวณเปอร์เซ็นต์: `completed / total * 100`
+3. ถ้ามี sub-tasks ให้รวมทั้งหมดเข้าด้วยกัน
+4. ใช้ progress bar เช่น `████████████░░ 80%`
+5. ระบุ trend: ↑ ↓ → (improving, regressing, stable)
+
+### 5. Report And Suggest Next Actions
 
 > Goal: report ชัดเจน พร้อม next steps
 
-1. สรุปสถานะโดยรวมของ session
+1. สรุปสถานะโดยรวมของ session พร้อม progress bar
 2. ใช้ `/report-table` หรือ `/report-ansi` แสดง completed, pending, blockers
 3. ระบุ priority ของงานค้าง
 4. ทำ `/suggest-next-action` เพื่อเสนอ next step
@@ -73,7 +82,14 @@ related:
 - ไม่ hallucinate งานทีไม่ได้เกิดขึ้นใน session
 - แยกแยะระหว่างงานทีเสร็จ งานค้าง และงานทีต้องรอ user
 
-### 3. Report Format
+### 3. Progress Format
+
+- แสดงเปอร์เซ็นต์ทีชัดเจน เช่น `75%`
+- ใช้ progress bar เช่น `████████████░░ 75%`
+- แยกสี/สถานะ: ✅ เสร็จ, ⚠️ ค้าง, ❌ ติดปัญหา
+- ถ้ามี sub-tasks แยก progress ของแต่ละหมวด
+
+### 4. Report Format
 
 - สรุป key findings ไว้ด้านบนสุด
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
@@ -81,7 +97,7 @@ related:
 - ใช้ `/report-ansi` สำหรับสถานะ/progress
 - ใช้ `/report-numbered-bullet` สำหรับรายละเอียดงาน
 
-### 4. Privacy
+### 5. Privacy
 
 - ไม่อ้างอิงหรือเปิดเผย secrets, API keys, credentials
 - ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
@@ -89,6 +105,7 @@ related:
 ## Expected Outcome
 
 - รู้สถานะปัจจุบันของ session ทั้งหมด
+- รู้เปอร์เซ็นต์ความคืบหน้าทีแม่นยำ
 - รายงาน completed work, pending work, blockers ชัดเจน
 - มี priority และ next actions ที actionable
-- report อ่านง่าย พร้อม symbols และ table
+- report อ่านง่าย พร้อม progress bar, symbols และ table

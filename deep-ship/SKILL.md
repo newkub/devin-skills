@@ -32,7 +32,7 @@ related:
   - git-commit
   - git-push
   - git-commit-and-push
-  - report-progress
+  - report-session-status
   - run-test-api
   - run-test-e2e
   - resolve-errors
@@ -138,7 +138,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ทำ `/review-observability` ถ้ามี metrics, logging, alerting
 2. ตรวจสอบ error rates, latency, traffic จาก dashboard ถ้ามี
-3. ทำ `/report-progress` เพื่อ track status หลัง ship
+3. ทำ `/report-session-status` เพื่อ track status หลัง ship
 
 ### 10. Report And Suggest
 
