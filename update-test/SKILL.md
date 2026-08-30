@@ -1,6 +1,6 @@
 ---
 name: update-test
-description: เขียนและอัปเดต test ทีมีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
+description: เขียนและอัปเดต test ตาม code ให้ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
 related:
   - review-writing
   - run-test-coverage
@@ -208,7 +208,13 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Avoid fragile assertions: ไม่ assert ค่าที่ non-deterministic ใช้ `expect.any(Date)` หรือ `expect.any(String)`
 - Avoid test interdependence: แต่ละ test ต้องรันได้อิสระ
 
-### 9. Security And Handler Test Patterns
+### 9. Keep Tests In Sync With Code
+
+- เมื่องานเกิดจาก code เปลี่ยนใหม่ หรือ refactor → ตรวจสอบและอัปเดต tests ทีได้รับผลกระทบก่อน ship
+- ใช้ `/run-test-coverage` เพื่อหา coverage gaps หลัง code เปลี่ยน
+- ไม่ ship ถ้า tests เก่ากว่า code
+
+### 10. Security And Handler Test Patterns
 
 - Auth bypass: ส่ง request โดยไม่มี auth -> ต้อง reject
 - IDOR: user A เข้าถึง resource ของ user B -> ต้อง deny
