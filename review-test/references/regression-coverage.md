@@ -10,7 +10,7 @@
 2. ตรวจ critical paths มี regression coverage
 3. ตรวจ mutation testing สำหรับ critical code (score > 80%)
 4. ตรวจ CI/CD pipeline รัน regression tests อัตโนมัติ
-5. ถ้า regression ล้มเหลวใน CI หรือต้อง monitor จนผ่าน → ส่งต่อ `/watch-ci-and-resolve`
+5. ถ้า regression ล้มเหลวใน CI หรือต้อง monitor จนผ่าน → ส่งต่อ `/watch-cicd-and-resolve`
 
 ## Severity
 

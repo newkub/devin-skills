@@ -5,7 +5,7 @@ related:
   - merge-github-pr
   - review-correctness
   - review-architecture
-  - watch-ci-and-resolve
+  - watch-cicd-and-resolve
   - resolve-github-pr
   - run-check
   - run-test
@@ -42,7 +42,7 @@ Review pull request อย่างครบถ้วน แล้ว merge ถ�
 > Goal: CI ต้องผ่านก่อน review และ merge
 
 1. รัน `gh pr checks <pr>` หรือ `gh pr view <pr> --json statusCheckRollup`
-2. ถ้า CI กำลังรัน → ทำ `/watch-ci-and-resolve` หรือ `/watch-github-actions` จนจบ
+2. ถ้า CI กำลังรัน → ทำ `/watch-cicd-and-resolve` หรือ `/watch-github-actions` จนจบ
 3. ถ้า CI ไม่ผ่าน → ทำ `/resolve-errors` หรือ stop และ report
 4. ไม่ merge ถ้า CI ไม่ผ่าน
 

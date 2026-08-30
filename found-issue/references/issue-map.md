@@ -11,8 +11,8 @@
 | lint fail | `/run-lint`, `/watch-lint`, `/resolve-errors` |
 | typecheck fail | `/run-typecheck`, `/resolve-errors` |
 | test fail / flaky | `/run-test`, `/watch-test`, `/run-test-all`, `/resolve-errors` |
-| CI/CD pipeline fail | `/watch-ci-and-resolve`, `/watch-github-actions`, `/list-github-action-fail`, `/setup-ci-cd` |
-| deploy fail | `/watch-cd-and-resolve`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
+| CI/CD pipeline fail | `/watch-cicd-and-resolve`, `/watch-github-actions`, `/list-github-action-fail`, `/setup-ci-cd` |
+| deploy fail | `/watch-cicd-and-resolve`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
 | secrets leak / สงสัย hardcoded secret | `/check-secrets-leak`, `/follow-secret-manager`, `/open-github-secrets` |
 | unused dependencies | `/check-unused-deps`, `/follow-tool-knip` |
 | dead code / unused files | `/check-dead-code`, `/check-unused-files` |

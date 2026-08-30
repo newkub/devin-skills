@@ -10,8 +10,7 @@ related:
   - setup-release
   - test-release
   - run-verify
-  - watch-ci-and-resolve
-  - watch-cd-and-resolve
+  - watch-cicd-and-resolve
   - watch-release
   - gen-changelog-md
   - publish-package-to-registry
@@ -39,7 +38,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship-release` ก่อน
 3. ตรวจ `git status --porcelain` ต้อง clean
 4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
-   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/watch-ci-and-resolve <run-id>`
+   - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/watch-cicd-and-resolve <run-id>`
    - ถ้า CI ยังไม่ผ่าน → stop และ report
 5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
 6. ถ้าทุก condition ผ่าน → ไปขั้นตอน Detect Platforms

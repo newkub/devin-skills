@@ -15,7 +15,7 @@ related:
   - test-release
   - run-release
   - run-deploy
-  - watch-cd-and-resolve
+  - watch-cicd-and-resolve
   - report-table
   - suggest-next-action
 ---
@@ -138,7 +138,7 @@ related:
    1. ดึง version จาก `package.json` หรือ `Cargo.toml` หรือ `manifest.json` ตาม platform
    2. ถ้า `HEAD` ยังไม่มี tag → สร้าง annotated tag `v<version>` แล้ว `git push origin v<version>`
    3. ทำ `/test-release` ก่อน ถ้าผ่านค่อยทำ `/run-release`
-8. ถ้า project ต้องการ deploy → ทำ `/run-deploy` แล้ว `/watch-cd-and-resolve`
+8. ถ้า project ต้องการ deploy → ทำ `/run-deploy` แล้ว `/watch-cicd-and-resolve`
 9. ถ้าไม่ต้องการ release/deploy → report และไป step Cleanup
 
 ### 6. Close Issue And Cleanup

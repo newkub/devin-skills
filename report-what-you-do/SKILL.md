@@ -85,7 +85,7 @@ related:
 | `/ship-code`, `/ship-local`, `/ship-ci`, `/ship-release` | มีหลายขั้นตอน: verify, build, deploy, commit |
 | `/deep-analyze`, `/deep-research`, `/deep-plan` | ใช้เวลานาน มีหลาย phase |
 | `/resolve-errors` | ต้อง trial-and-error หลายรอบ |
-| `/run-verify`, `/watch-ci-and-resolve`, `/watch-cd-and-resolve` | รอ external pipeline |
+| `/run-verify`, `/watch-cicd-and-resolve` | รอ external pipeline |
 | `/watch-browser-and-fix`, `/watch-browser-and-test-all-routes` | ต้อง test หลายหน้า |
 | `/implement-from-gist-idea` | ทำตาม list ยาว |
 | `/follow-*` skills ทีซับซ้อน | เช่น `follow-agents-md`, `follow-framework-*` |

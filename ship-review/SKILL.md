@@ -10,7 +10,7 @@ related:
   - create-github-issue
   - create-github-pr
   - unified-review-and-merge-pr
-  - watch-ci-and-resolve
+  - watch-cicd-and-resolve
   - run-verify
   - git-commit
   - git-push
@@ -108,7 +108,7 @@ Ship การเปลี่ยนแปลงโดยสร้าง branch, 
 > Goal: ตรวจสอบ CI บน PR
 
 1. รอ CI รันบน PR
-2. ทำ `/watch-ci-and-resolve` หรือ `/watch-github-actions` ถ้า CI fail
+2. ทำ `/watch-cicd-and-resolve` หรือ `/watch-github-actions` ถ้า CI fail
 3. ถ้า CI ไม่ผ่าน → แก้ไขบน branch, commit, push
 
 ### 10. Report
