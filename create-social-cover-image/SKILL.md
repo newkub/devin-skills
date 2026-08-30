@@ -125,6 +125,9 @@ related:
 - ส่งออกเป้น `jpg` ถ้าต้องการขนาดไฟล์เล็ก
 - สำหรับ web สามารถใช้ `webp` ได้
 
+- ใช้ /create-video-story ถ้าจำเป็น
+- ใช้ /gen-image-character ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Cover image ทีตรงขนาด platform

@@ -88,6 +88,7 @@ related:
 - เรียงตาม `updatedAt` ล่าสุด
 - ไม่แสดง secrets, tokens, หรือข้อมูล sensitive
 
+- ใช้ /list-github-repo ถ้าจำเป็น
 ## Expected Outcome
 
 - รายการ repo ทั้งหมดที่ user เป็นเจ้าของบน GitHub ไม่รวม fork

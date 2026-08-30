@@ -113,6 +113,10 @@ related:
 - `a ? b : c` เป็น conditional/ternary
 - `==` ไม่ใช่ logical equivalence เสมอไป ต้องระวัง
 
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-debugging ถ้าจำเป็น
+- ใช้ /ask-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถสร้าง truth table จาก propositions

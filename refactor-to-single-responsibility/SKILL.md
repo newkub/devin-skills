@@ -111,6 +111,9 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 - ต้องรัน `/check-code-structure` ก่อนและหลัง refactor
 - ต้องผ่าน `/run-verify` และ `/run-test` ก่อนถือว่าเสร็จ
 
+- ใช้ /restructure ถ้าจำเป็น
+- ใช้ /check-dead-code ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Code units มี single responsibility ชัดเจน

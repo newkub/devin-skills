@@ -81,6 +81,8 @@ related:
 - ใช้ `/report-ansi` สำหรับ status/progress/logs
 - ไม่ต้องรอยืนยัน แต่ถ้าเสี่ยงสูง ให้ใช้ `/ask-me`
 
+- ใช้ /follow-single-responsibility ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สรุปแผนงานชัดเจน

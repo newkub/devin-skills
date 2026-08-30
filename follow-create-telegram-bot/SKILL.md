@@ -102,6 +102,12 @@ related:
 - ใช้ TypeScript first ตาม `/follow-lang-typescript`
 - ดู `references/telegram-bot.md` สำหรับ official docs
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Telegram bot project รันได้ด้วย `bun dev`

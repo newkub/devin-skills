@@ -90,6 +90,11 @@ related:
 - เลือก topics ที่เกี่ยวข้องที่สุดไม่เกิน 10
 - ลำดับความสำคัญ: framework > language > platform > tool > domain
 
+- ใช้ /git-push ถ้าจำเป็น
+- ใช้ /follow-dot-github ถ้าจำเป็น
+- ใช้ /list-github-repo ถ้าจำเป็น
+- ใช้ /create-github-repo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - GitHub repo metadata ตรงกับ `README.md` และ `package.json`

@@ -6,7 +6,7 @@ related:
   - follow-create-web-landing
   - follow-create-web-saas
   - follow-create-web-paas
-  - follow-seo
+  - review-seo
 ---
 
 ## Goal
@@ -61,6 +61,12 @@ related:
 3. ถ้า public ต้องการ SEO ให้ใส่ `Sitemap`
 4. ไม่ให้ `robots.txt` แยกย่อยหลายไฟล์
 5. ตรวจ `robots.txt` หลัง build/deploy ทุกครั้ง
+
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web-landing ถ้าจำเป็น
+- ใช้ /follow-create-web-saas ถ้าจำเป็น
+- ใช้ /follow-create-web-paas ถ้าจำเป็น
+- ใช้ /review-seo ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -130,6 +130,32 @@ related:
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
 - ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
+- ใช้ /follow-create-biome-plugins ถ้าจำเป็น
+- ใช้ /follow-create-browser-extensions ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /follow-create-discord-bot ถ้าจำเป็น
+- ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
+- ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
+- ใช้ /follow-create-github-action ถ้าจำเป็น
+- ใช้ /follow-create-line-bot ถ้าจำเป็น
+- ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
+- ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
+- ใช้ /follow-create-obsidian-plugin ถ้าจำเป็น
+- ใช้ /follow-create-oxlint-plugins ถ้าจำเป็น
+- ใช้ /follow-create-raycast-extensions ถ้าจำเป็น
+- ใช้ /follow-create-rolldown-plugins ถ้าจำเป็น
+- ใช้ /follow-create-rust-cli ถ้าจำเป็น
+- ใช้ /follow-create-rust-crate ถ้าจำเป็น
+- ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
+- ใช้ /follow-create-telegram-bot ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vscode-extensions ถ้าจำเป็น
+- ใช้ /follow-create-zed-extensions ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /update-references ถ้าจำเป็น
+- ใช้ /update-test-everything ถ้าจำเป็น
+
 ## Expected Outcome
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด

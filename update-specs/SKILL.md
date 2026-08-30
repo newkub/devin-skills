@@ -96,6 +96,11 @@ related:
 - ถ้า workspace ไม่มี test framework → สร้าง `specs/overview.md` ระบุ recommended test strategy
 - ถ้างานเช็ค/verify → focus ที่ sync `specs/SPEC.md`
 
+- ใช้ /deep-test ถ้าจำเป็น
+- ใช้ /review-update ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `<workspace>/specs/` ถูกสร้าง/อัปเดต

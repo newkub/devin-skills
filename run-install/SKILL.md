@@ -171,6 +171,9 @@ General:
 - ใช้ clean install เมื่อมี dependency conflicts ข้ามภาษา
 - ลบ cache ของทุก package manager ก่อน install
 
+- ใช้ /update-runtime-latest ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+
 ## Expected Outcome
 
 JavaScript/TypeScript:

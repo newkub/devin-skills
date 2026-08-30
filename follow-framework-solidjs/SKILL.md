@@ -105,6 +105,9 @@ related:
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Solid.js components พัฒนาตาม render-once mental model

@@ -131,6 +131,10 @@ Trace ลึกตามทางเดินของ execution, data flow, req
 - ตรวจสอบ network, database, serialization, concurrency
 - ไม่มองข้าม async หรือ event-driven flow
 
+- ใช้ /watch-browser-console ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /follow-tool-git ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. รายการ step-by-step ของ execution หรือ data flow

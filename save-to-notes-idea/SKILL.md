@@ -78,6 +78,10 @@ related:
 - ไม่บันทึกไฟล์ท่ีมี secrets หรือ credentials
 - ถ้าไฟล์ใหญ่เกิน 10 MB ให้แจ้ง user
 
+- ใช้ /save-to-new-notes ถ้าจำเป็น
+- ใช้ /list-notes ถ้าจำเป็น
+- ใช้ /implement-from-notes-idea ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Note idea ถูกสร้างใน `D:\newkub\notes`

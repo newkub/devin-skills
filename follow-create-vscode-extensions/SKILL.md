@@ -95,6 +95,14 @@ related:
 - `activationEvents` ต้องตรงกับ command หรือ event จริง
 - ใช้ `vsce` สำหรับ package และ publish
 
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-release ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - VSCode extension build ผ่าน

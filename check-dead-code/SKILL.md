@@ -65,6 +65,11 @@ related:
 - ข้าม dynamically imported symbols
 - ใช้ `grep` หรือ `code_search` ยืนยัน consumers
 
+- ใช้ /check-unused-files ถ้าจำเป็น
+- ใช้ /check-unused-deps ถ้าจำเป็น
+- ใช้ /refactor-to-single-responsibility ถ้าจำเป็น
+- ใช้ /improve ถ้าจำเป็น
+
 ## Expected Outcome
 - รายการ dead code ทีปลอดภัยลบได้
 - รายงานรูปแบบตาราง

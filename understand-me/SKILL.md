@@ -125,6 +125,10 @@ related:
 - ใช้ภาษาที่ผู้ใช้ต้องการ
 - ปรับ `verbosity` ตาม `style`
 
+- ใช้ /ask-me ถ้าจำเป็น
+- ใช้ /dont-understand ถ้าจำเป็น
+- ใช้ /plan-with-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เข้าใจ `preferences` ของผู้ใช้ครบถ้วน

@@ -173,6 +173,8 @@ related:
 - ทำ responsive, dark mode, accessible
 - ใช้ design tokens สม่ำเสมอ
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Product spec ครบถ้วน

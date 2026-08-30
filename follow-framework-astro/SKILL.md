@@ -176,6 +176,13 @@ related:
 - ใช้ Biome สำหรับ linting และ formatting
 - ใช้ `import.meta.env` สำหรับ type-safe env access
 
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
+- ใช้ /follow-framework-dioxus ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Astro 5 project ที่มีโครงสร้างถูกต้อง

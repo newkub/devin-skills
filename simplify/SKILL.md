@@ -45,6 +45,10 @@ related:
 - ถ้า fail ที่ step ไหน → stop และ report พร้อมสาเหตุ
 - ลดความซ้ำซ้อนได้เฉพาะเมื่อไม่สูญเสีย context เนื้อหาหลักต้องยังอยู่ครบ
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ความซับซ้อนลดลง

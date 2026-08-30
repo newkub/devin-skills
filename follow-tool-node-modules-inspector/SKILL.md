@@ -86,6 +86,13 @@ related:
 - ใช้ `--limit` และ `--depth` เพื่อลดขนาด output
 - สำหรับ CI ให้ใช้ `report` subcommands แทน UI
 
+- ใช้ /follow-lang-nodejs ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-tool-knip ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-tool-pkg-new ถ้าจำเป็น
+- ใช้ /follow-tool-renovate ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

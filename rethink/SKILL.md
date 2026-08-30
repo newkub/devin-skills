@@ -130,6 +130,14 @@ related:
 - ใช้ `/ask-me` ถ้าต้องการ user input
 - ใช้ `/update-references` ถ้ามีการเปลี่ยน structure
 
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /follow-architecture ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
+- ใช้ /restructure ถ้าจำเป็น
+- ใช้ /improve ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ชัดเจนว่าจะ continue, pivot, simplify, stop หรือ gather more data

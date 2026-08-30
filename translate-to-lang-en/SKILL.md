@@ -72,6 +72,10 @@ related:
 - ใช้ short sentences
 - Avoid ambiguity
 
+- ใช้ /translate-to-lang-th ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 - การสื่อสารเป็นภาษาอังกฤษที่ professional

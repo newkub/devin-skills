@@ -111,6 +111,13 @@ related:
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
 
+- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /use-ast-grep-programatic ถ้าจำเป็น
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

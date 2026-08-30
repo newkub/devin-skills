@@ -100,6 +100,9 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 - ถ้า library ไม่อยู่ใน `/follow-my-tech-stack` table → ใช้ `/deep-research` เพิ่ม
 - ถ้าต้อง add ลง tech stack table → แนะนำ update `/follow-my-tech-stack`
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางเปรียบเทียบ dependencies

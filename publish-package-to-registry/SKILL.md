@@ -119,6 +119,20 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ถ้าต้อง process ข้อมูลซับซ้อน → ทำ `/use-scripts`
 - ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ build artifacts ชั่วคราว
 
+- ใช้ /run-release ถ้าจำเป็น
+- ใช้ /follow-runtime-bun ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /watch-release ถ้าจำเป็น
+- ใช้ /follow-tool-release-it ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-changelogen ถ้าจำเป็น
+- ใช้ /follow-tool-changesets ถ้าจำเป็น
+- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /follow-tool-build-packages ถ้าจำเป็น
+- ใช้ /follow-tool-pkg-new ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Package ถูก publish ไปยัง registry ที่ detect ได้

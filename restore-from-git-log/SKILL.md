@@ -80,6 +80,9 @@ related:
 - ถ้าไฟล์ถูกลบ → ใช้ `git log --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
 - ระบุ commit hash ที่ชัดเจนก่อน restore เสมอ
 
+- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /check-git-files-history ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. ไฟล์ที่ต้องการถูก restore กลับไปยัง working directory

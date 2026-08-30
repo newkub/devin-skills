@@ -138,6 +138,9 @@ related:
 - Rows ไม่ยาวเกินไป
 - Formatting สอดคล้องกันทั้งตาราง
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางที่มีโครงสร้างสอดคล้อง

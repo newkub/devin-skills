@@ -115,6 +115,10 @@ related:
 - ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.nu` สำหรับ Nushell scripts
 
+- ใช้ /use-bun-shell ถ้าจำเป็น
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `nu` ติดตั้งและใช้งานได้

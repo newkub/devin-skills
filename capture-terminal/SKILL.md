@@ -122,6 +122,9 @@ Capture terminal output ตาม tool ที่เลือก
 - ถ้า tool ไม่รองรับ Windows ให้เลือก tool อื่น
 - ถ้า PNG export ต้องการ Chromium ให้ตรวจสอบว่าติดตั้งแล้ว
 
+- ใช้ /capture-web ถ้าจำเป็น
+- ใช้ /from-recent-windows-capture ถ้าจำเป็น
+- ใช้ /open-in-windows-terminal ถ้าจำเป็น
 ## Expected Outcome
 
 - ภาพ screenshot จาก terminal output คุณภาพสูง

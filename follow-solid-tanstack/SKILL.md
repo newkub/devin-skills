@@ -206,6 +206,8 @@ related:
 - ใช้ `defaultPreload: "intent"` และ `scrollRestoration: true`
 - ใช้ `manualChunks` ใน Vite config สำหรับ vendor splitting
 
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - TanStack Start (SolidJS) project ที่ตั้งค่าด้วย Elysia

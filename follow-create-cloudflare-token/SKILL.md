@@ -157,6 +157,11 @@ related:
 - ตั้งชื่อ token ให้สื่อ project และ purpose เพื่อง่ายต่อการ audit
 - ห้ามใช้ชื่อทั่วไป เช่น `token1`, `mytoken`
 
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
+- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+
 ## Expected Outcome
 
 - User ได้ URL ที่ pre-fill permissions ถูกต้อง

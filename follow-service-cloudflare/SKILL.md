@@ -197,6 +197,14 @@ export default defineNuxtConfig({
 
 หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Wrangler CLI ติดตั้งและกำหนดค่าอย่างถูกต้อง

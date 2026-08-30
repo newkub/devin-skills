@@ -174,6 +174,9 @@ use-github-ship-bots/
 - ถ้า feature ยังไม่เสร็จ → ระบุเป็น TODO ใน code พร้อม note
 - ไม่ deploy ถ้า verify ไม่ผ่าน
 
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /open-github-repo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Bot project ถูกสร้างตาม plan

@@ -124,6 +124,8 @@ related:
 - ลบ report ทันทีเมื่องานเสร็จถ้า context ระบุ
 - ไม่เก็บ report ค้างถ้าไม่จำเป็น
 
+- ใช้ /open-files-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ report `.devin/reports/<title>-<time>.md` ถูกสร้าง

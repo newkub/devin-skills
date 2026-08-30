@@ -90,6 +90,11 @@ related:
 - ใช้ `ignoreOtherWorkspaces` ถ้าจำเป็น
 - ตรวจสอบ compatibility ข้าม workspace
 
+- ใช้ /follow-tool-turborepo ถ้าจำเป็น
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

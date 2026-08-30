@@ -57,6 +57,13 @@ related:
 - `check-broken-skills-references` ตรวจและรายงานเท่านั้น
 - ถ้าต้องการแก้ → ทำ `/update-references` หลังจากนี้
 
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน broken references ครบถ้วน พร้อม skill name, reference, type, severity

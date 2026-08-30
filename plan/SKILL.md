@@ -144,6 +144,8 @@ related:
 - จัดลำดับ risks ตาม probability × impact
 - ถ้างานซับซ้อนสูง: ทำ `deep-thinking` และ `deep-research` ก่อนวางแผน
 
+- ใช้ /review-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Task document ใน `.devin/tasks/` (ถ้า tasks > 10)

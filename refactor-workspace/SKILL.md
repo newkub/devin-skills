@@ -125,6 +125,10 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 - ทำ `/update-references` หลังทุกการย้าย code
 - ถ้า broken references → ทำ `/resolve-errors`
 
+- ใช้ /refactor-codebase ถ้าจำเป็น
+- ใช้ /refactor-files ถ้าจำเป็น
+- ใช้ /refactor-to-single-responsibility ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Workspace members มี single responsibility, high cohesion, low coupling

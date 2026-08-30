@@ -72,6 +72,10 @@ related:
 4. ถ้า input เป็น secret/token ให้ปฏิเสธและบอกให้เก็บใน secret manager
 5. ถ้า input เป็น URL ทีละเอียด ให้ fetch เพื่อสรุป title/คำอธิบายก่อนตัดสินใจ
 
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
 ## Expected Outcome
 
 - รู้ว่า input ควรอยู่ใน skill ใด

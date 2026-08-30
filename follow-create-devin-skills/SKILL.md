@@ -128,6 +128,8 @@ related:
 - Web ใช้ `src/index.ts` หรือ `src/main.ts`
 - ทำ `/ship` หลัง validation ผ่าน
 
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Skill package ใหม่ถูกสร้างท่ี `%APPDATA%\devin\skills\<skill-name>\`

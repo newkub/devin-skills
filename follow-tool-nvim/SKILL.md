@@ -114,6 +114,11 @@ related:
 - อัปเดต plugins ผ่าน `:Lazy update`
 - ตรวจ `lazy-lock.json` หลังอัปเดต
 
+- ใช้ /follow-lang-lua ถ้าจำเป็น
+- ใช้ /follow-tool-formatter ถ้าจำเป็น
+- ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
+- ใช้ /follow-test ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

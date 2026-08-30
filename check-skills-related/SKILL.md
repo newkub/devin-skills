@@ -122,6 +122,10 @@ related:
 - `check-skills-related` ตรวจและรายงานเท่านั้น
 - ถ้าต้องการแก้ `related` หรือ body references → ใช้ `/update-references`
 
+- ใช้ /review-references ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Call graph ครบถ้วนของ skills ทั้งหมดใน target directory

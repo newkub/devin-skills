@@ -126,6 +126,11 @@ Search files, directories, and projects in `D:\` by name pattern, path pattern, 
 - ถ้าพบ project/skill ใหม่ → ทำ `/update-agents-md`
 - ไม่กระทำ AGENTS.md โดยตรง
 
+- ใช้ /search-project-in-drive-d ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+- ใช้ /follow-my-global-cli ถ้าจำเป็น
+- ใช้ /ask-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ files/folders ทีตรงกับ pattern

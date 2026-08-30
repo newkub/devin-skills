@@ -73,6 +73,10 @@ related:
 - รายงานผลเป็นรายการ path พร้อม command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
+- ใช้ /follow-create-zed-extensions ถ้าจำเป็น
+- ใช้ /open-in-devin ถ้าจำเป็น
+- ใช้ /open-in-explorer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์หรือ directory ถูกเปิดใน Zed หรือรายงานสาเหตุที่ไม่สำเร็จ

@@ -115,6 +115,13 @@ related:
 - ไม่ commit `.env`
 - ใช้ TypeScript first ตาม `/follow-lang-typescript`
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - LINE bot project รันได้ด้วย `bun dev`

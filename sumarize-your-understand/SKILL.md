@@ -79,6 +79,10 @@ related:
 - ถ้าต้องการแสดง todo list → ใช้ `/report-scan-todo`
 - ถ้าต้องการแสดง file structure → ใช้ `/report-file-structure`
 
+- ใช้ /rethink ถ้าจำเป็น
+- ใช้ /deep-thinking ถ้าจำเป็น
+- ใช้ /deep-plan ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สรุปความเข้าใจกระชับ

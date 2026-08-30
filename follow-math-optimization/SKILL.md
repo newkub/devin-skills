@@ -90,6 +90,13 @@ related:
 - ใช้ DP table ถ้า subproblems ซ้ำ
 - ใช้ gradient ถ้ามี differentiable objective
 
+- ใช้ /follow-math-linear-algebra ถ้าจำเป็น
+- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-goal ถ้าจำเป็น
+- ใช้ /follow-software-engineering ถ้าจำเป็น
+- ใช้ /follow-parallel ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถ formulate optimization problem

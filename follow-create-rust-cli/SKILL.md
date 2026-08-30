@@ -180,6 +180,9 @@ related:
 - รัน `cargo clippy` และ `cargo fmt` ก่อน commit
 - ใช้ `cargo nextest run` สำหรับ fast test execution
 
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - CLI project ที่มีโครงสร้างที่ดีและ maintainable

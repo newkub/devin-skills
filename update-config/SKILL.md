@@ -198,6 +198,9 @@ related:
 - ใช้ conventions ของ Bun, pnpm, Node, Rust, Python ตามทีตรวจพบ
 - ใช้ `/follow-devin-skills` เพื่อหา config skills เฉพาะทาง
 
+- ใช้ /update-project ถ้าจำเป็น
+- ใช้ /report-idea-cleanup-files-in-computer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - config files ทั้งหมดครบถ้วนและสอดคล้องกัน

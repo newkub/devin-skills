@@ -64,6 +64,10 @@ related:
 - focus หา bottleneck ไม่ใช่แก้ไข
 - ระบุ metric ทีวัดได้
 
+- ใช้ /watch-build ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /improve ถ้าจำเป็น
+
 ## Expected Outcome
 - รายการ bottlenecks พร้อม metric
 - baseline และเป้าหมายทีวัดได้

@@ -145,6 +145,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - รัน `git diff --check`
 - ไม่อ้างว่า check ผ่านถ้า command fail
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - git log ของทุก workspace ถูกตรวจและบันทึก

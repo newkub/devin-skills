@@ -110,6 +110,13 @@ related:
 - ใช้ `--summary` ร่วมกับ `--llm-provider` เพื่อเลือก AI provider
 - ใช้ `--prompt "hint"` สำหรับกำหนด style ของ summary
 
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-aube ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

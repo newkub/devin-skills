@@ -77,6 +77,8 @@ related:
 - ไม่expose secrets หรือ sensitive ใน snippets
 - ถ้า context ไม่ชัด → ถาม user ก่อน
 
+- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ skills/files/patterns ทีคล้ายกับ target พร้อม similarity score

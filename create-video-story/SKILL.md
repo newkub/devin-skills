@@ -161,6 +161,8 @@ related:
 - default style = `realistic` หรือ `anime` ตาม target platform
 - default output format = `.mp4`
 
+- ใช้ /enhance-prompt ถ้าจำเป็น
+
 ## Expected Outcome
 
 - วิดีโอสั้นที่สมบูรณ์พร้อมภาพ เสียง และ subtitle

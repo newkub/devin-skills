@@ -78,6 +78,9 @@ related:
 - ถ้า `dev` มีอยู่แล้ว → ไม่สร้างซ้ำ แค่ push ถ้ายังไม่ได้ push
 - รันได้หลายครั้งโดยไม่เกิด side effects
 
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `dev` branch มีอยู่ใน local และ remote

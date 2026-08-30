@@ -92,6 +92,16 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
    - ไม่ใช้ bold markers
    - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /check-monorepo ถ้าจำเป็น
+- ใช้ /list-workspaces ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /check-unused-deps ถ้าจำเป็น
+- ใช้ /run-audit ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /refactor-workspace ถ้าจำเป็น
+- ใช้ /review-techstack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Review report ของ single workspace พร้อม review score

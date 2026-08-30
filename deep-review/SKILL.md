@@ -134,6 +134,8 @@ Goal reminder: ทุก dimension ต้องมี severity และ actiona
 - ระบุ quick wins (low effort, high impact) แยกจาก major improvements
 - เชื่อมโยง findings ไปยัง `/review-*` workflows ที่เกี่ยวข้อง
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Deep review ครบทุกมิติพร้อม severity ratings และ actionable recommendations

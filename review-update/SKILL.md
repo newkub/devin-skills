@@ -109,6 +109,11 @@ Review drift ระหว่าง current state และ target state เพ�
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /update-version-latest ถ้าจำเป็น
+- ใช้ /update-runtime-latest ถ้าจำเป็น
+- ใช้ /update-dependencies-latest ถ้าจำเป็น
+- ใช้ /update-specs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงานตาราง Drift Report พร้อม severity และ evidence

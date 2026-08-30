@@ -141,6 +141,9 @@ related:
 - ลบ temp directory หลัง push สำเร็จ
 - ไม่ commit temp files เข้า repo
 
+- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /list-git-submodules ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Directory กลายเป็น git submodule

@@ -140,6 +140,12 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 4. Account resource ควรระบุ account ID เฉพาะ ไม่ใช้ `*` ถ้าไม่จำเป็น
 5. สำหรับ Cloudflare Access ตรวจให้ account เปิด Zero Trust แล้วหรือ token มีสิทธิ์ enable ได้
 
+- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ได้ dashboard URL หรือ API command สำหรับสร้าง token

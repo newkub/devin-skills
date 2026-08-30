@@ -120,6 +120,9 @@ related:
 - ไม่แก้ไข agent อื่นโดยไม่จำเป็น
 - ถ้าเปลี่ยน directory name → อัปเดต `name` ใน frontmatter ให้ตรง
 
+- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /follow-create-devin-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `AGENT.md` ใหม่หรืออัปเดทที `<agents-root>/<agent-name>/AGENT.md`

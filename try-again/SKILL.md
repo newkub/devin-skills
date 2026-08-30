@@ -38,6 +38,10 @@ related:
 - แก้ที่ root cause ไม่ใช่ symptoms
 - ใช้ minimal changes เสมอ
 
+- ใช้ /ask-again ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 - งานที่ทำซ้ำเสร็จสมบูรณ์

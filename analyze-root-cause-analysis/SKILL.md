@@ -170,6 +170,7 @@ related:
 - แนบ evidence ทั้งหมด
 - ระบุ action items สำหรับ prevention
 
+- ใช้ /review-stability ถ้าจำเป็น
 ## Expected Outcome
 
 - Root cause ถูกระบุอย่างชัดเจน

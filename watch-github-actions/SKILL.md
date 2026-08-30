@@ -120,6 +120,8 @@ related:
 - `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ fix-and-push
 - `ghRunWatchTimeout` = `300` วินาที สำหรับ `gh run watch`
 
+- ใช้ /list-ci-configs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุก GitHub Actions ผ่านสำเร็จ

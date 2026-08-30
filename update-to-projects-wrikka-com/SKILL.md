@@ -73,6 +73,12 @@ related:
 5. ถ้า deploy ไม่ผ่านให้หยุดและ report ก่อน retry
 6. ห้ามลบ `wrangler.jsonc`, `vite.config.ts`, `src/router.tsx`, `src/routes/__root.tsx`, `src/start.ts` โดยไม่สร้างใหม่
 
+- ใช้ /follow-solid-tanstack ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-create-devin-skills ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
+- ใช้ /add-to-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Project build ผ่านและ typecheck ผ่าน

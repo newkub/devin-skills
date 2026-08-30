@@ -145,6 +145,8 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 - focus ที่ code-level structure: symbols, exports, members, cohesion
 - สำหรับ system-wide view ทำ `/review-codebase-everything`
 
+- ใช้ /use-ast-grep-programatic ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Code structure ถูกปรับปรุง: symbols ต่อไฟล์, exports, members, cohesion อยู่ในเกณฑ์

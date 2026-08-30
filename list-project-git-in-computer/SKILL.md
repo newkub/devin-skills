@@ -102,6 +102,8 @@ related:
 - ใช้ `ErrorAction SilentlyContinue` เพื่อไม่หยุดเมื่อ permission denied
 - ถ้า scan นานเกินไป → ลด depth หรือ scope
 
+- ใช้ /list-cloudflare-projects ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ git projects ทั้งหมดในเครื่อง

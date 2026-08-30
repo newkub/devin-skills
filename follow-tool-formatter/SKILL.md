@@ -95,6 +95,11 @@ related:
 - ห้ามสลับ formatter บ่อย
 - ถ้าเปลี่ยน formatter → ทำ `/update-references` และระบุใน CHANGELOG
 
+- ใช้ /follow-tool-linter ถ้าจำเป็น
+- ใช้ /follow-tool-validator ถ้าจำเป็น
+- ใช้ /follow-tool-biome ถ้าจำเป็น
+- ใช้ /follow-tool-dprint ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

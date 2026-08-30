@@ -71,6 +71,10 @@ related:
 - ใช้ประโยคสั้นๆ
 - หลีกเลี่ยงความคลุมเครือ
 
+- ใช้ /translate-to-lang-en ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 - การสื่อสารเป็นภาษาไทยที่ชัดเจน

@@ -62,6 +62,8 @@ related:
 - ใช้ cache เพื่อเพิ่มความเร็ว
 - รัน checks ใน CI environment
 
+- ใช้ /check-bottlenecks ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Lint ผ่านทั้งหมด

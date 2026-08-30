@@ -193,6 +193,11 @@ related:
 - แนะนำ preventive measures ที่ actionable
 - บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
 
+- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /deep-retro ถ้าจำเป็น
+- ใช้ /deep-impact ถ้าจำเป็น
+- ใช้ /deep-trace ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. หา root cause ได้เร็วขึ้นด้วย Bayesian approach

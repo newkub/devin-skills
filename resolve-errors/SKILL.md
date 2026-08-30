@@ -153,6 +153,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/rename-to` — rename code identifiers ที่เป็น root cause ของ error
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Error ถูกแก้ไขอย่างถาวรจาก root cause

@@ -91,6 +91,9 @@ related:
 - ถ้า command ถาม interactive → ใช้ `--no-confirm` หรือเลือก default
 - ถ้าไม่สามารถ non-interactive ได้ → report ให้ user รันเอง
 
+- ใช้ /list-program-in-computer ถ้าจำเป็น
+- ใช้ /download-program ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Programs ทั้งหมดถูกอัปเดตผ่าน package managers ทีมี

@@ -79,6 +79,10 @@ related:
 - ถ้า user ต้องการ implement → ส่งต่อ `/realize-implementation`
 - ถ้าต้องการ plan → ส่งต่อ `/create-plan-as-github-issue`
 
+- ใช้ /understand-me ถ้าจำเป็น
+- ใช้ /ask-project-requirement ถ้าจำเป็น
+- ใช้ /follow-your-suggestion ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ผู้ใช้ตอบคำถามจนครบถ้วน

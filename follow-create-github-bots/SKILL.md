@@ -159,6 +159,8 @@ related:
 - Mock Octokit API calls ทังหมด
 - ทดสอบ error paths
 
+- ใช้ /use-github-ship-bots ถ้าจำเป็น
+
 ## Expected Outcome
 
 - GitHub App ลงทะเบียนถูกต้องและ install บน target repos

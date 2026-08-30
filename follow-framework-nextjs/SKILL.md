@@ -161,6 +161,13 @@ related:
 - ห้ามทำ database calls ใน proxy
 - รันบน Edge Runtime
 
+- ใช้ /follow-nextjs-architecture ถ้าจำเป็น
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Next.js 16 project ที่มีโครงสร้างถูกต้อง

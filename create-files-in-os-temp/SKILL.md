@@ -72,6 +72,10 @@ related:
 - ถ้ามี sensitive data → ลบทันทีหลังใช้งาน
 - ไม่สร้าง temp files ใน shared temp ทีอ่านได้โดยทั้วไปถ้าเป็นเรื่อง sensitive
 
+- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
+- ใช้ /cleanup-files-in-project ถ้าจำเป็น
+- ใช้ /create-new-project-in-drive-d ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์หรือ directory ชั่วคราวถูกสร้างใน OS temp

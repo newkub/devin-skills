@@ -64,6 +64,10 @@ related:
 4. ต้องระบุ constraints และ edge cases
 5. ห้ามใช้ภาษาที่คลุมเครือหรือหลายความหมาย
 
+- ใช้ /enhance-prompt ถ้าจำเป็น
+- ใช้ /generate-prompt-from-image ถ้าจำเป็น
+- ใช้ /report-enhance-prompt ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Instruction prompt ที่กระชับและชัดเจน

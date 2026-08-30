@@ -47,6 +47,8 @@ Review งานตาม context โดยเลือก review skill ที�
 ### 3. Evidence
 - ทุก finding ต้องมี file, line, หรือ reference
 
+- ใช้ /follow-review ถ้าจำเป็น
+
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)

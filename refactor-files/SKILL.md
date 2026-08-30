@@ -103,6 +103,8 @@ Refactor ไฟล์ทีระบุให้มี SRP, naming, structure, �
 - ไฟล์ไม่เกิน 250 บรรทัด ถ้าเป็นไปได้
 - ไม่มี broken references
 
+- ใช้ /review-restructure ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ทีระบุถูก refactor

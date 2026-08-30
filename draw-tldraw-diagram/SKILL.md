@@ -79,6 +79,9 @@ related:
 - ไม่ให้ arrow ซ้อนกันมาก
 - ถ้า node มากเกินไป ให้แบ่งเป็นหลายหน้าหรือย่อย
 
+- ใช้ /draw-excalidraw ถ้าจำเป็น
+- ใช้ /draw-svg-image ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `diagram.tldr` ทีเปิดใน tldraw ได้

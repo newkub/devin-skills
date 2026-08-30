@@ -209,6 +209,12 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - ใช้ annotated tags สำหรับ releases
 - สำหรับ projects ที่ต้องการ conventional commits grouping และ changelog generation ให้ใช้ `/follow-tool-changelogen` แทน
 
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /watch-release ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Platforms ถูก detect อัตโนมัติจาก project configuration

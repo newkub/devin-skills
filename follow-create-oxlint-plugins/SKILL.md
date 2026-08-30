@@ -108,6 +108,9 @@ related:
 - restriction: Rules ที่ห้าม patterns หรือ features เฉพาะ
 - nursery: Rules ที่อยู่ระหว่างพัฒนาอาจเปลี่ยนแปลง
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-oxlint ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Config file สร้างขึ้นที่ root

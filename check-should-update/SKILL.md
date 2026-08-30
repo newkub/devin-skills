@@ -74,6 +74,12 @@ Skill นี้มี Rust CLI เพื่อตรวจสอบเร็ว�
 - ถ้า `refs` เป็นค่าที่ user กำหนดและ git command ล้มเหลว → CLI จะ return exit code 1
 - ใช้ `-v` หรือ `--verbose` เพื่อดู reasoning ที `stderr`
 
+- ใช้ /check-git-diff ถ้าจำเป็น
+- ใช้ /follow-create-rust-cli ถ้าจำเป็น
+- ใช้ /follow-tool-git ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รู้ว่า target ต้อง `skip`, `update`, หรือ `create`

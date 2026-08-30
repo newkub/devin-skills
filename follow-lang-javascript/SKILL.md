@@ -107,6 +107,13 @@ related:
 - sanitize input, หลีกเลี่ยง `eval()`, ใช้ CSP/HTTPS
 - ดู [references/javascript-security.md](references/javascript-security.md)
 
+- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /follow-lang-kotlin ถ้าจำเป็น
+- ใช้ /follow-lang-lua ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - JavaScript ที่เขียนตาม modern best practices และ ES2025+

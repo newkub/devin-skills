@@ -99,6 +99,13 @@ related:
 - log errors อย่างเหมาะสม
 - ให้ error messages ที่ชัดเจน
 
+- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+- ใช้ /follow-lang-kotlin ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Lua code ที่เป็นมาตรฐานและ maintainable

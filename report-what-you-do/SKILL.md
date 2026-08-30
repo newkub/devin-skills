@@ -80,6 +80,10 @@ related:
 - สุภาพ กระชับ ไม่ defensive
 - ไม่ขอโทษถ้าไม่จำเป็น
 
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /setup-package ถ้าจำเป็น
+- ใช้ /setup-release ถ้าจำเป็น
+
 ## Integration With Other Skills
 
 `report-what-you-do` ควรถูกเรียกโดย skills ที่:

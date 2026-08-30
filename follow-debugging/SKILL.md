@@ -140,6 +140,12 @@ related:
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-boolean-algebra ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-numerical-methods ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Root cause หาได้เร็วและแม่นยำ

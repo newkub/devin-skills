@@ -150,6 +150,12 @@ Clean Architecture มี 3 rules หลัก:
 - แต่ละ sub-module ควรมี 3-10 ไฟล์ และเขียน responsibility ได้ในประโยคเดียว (SRP)
 - ไม่ split ถ้าทำให้เกิด `circular dependency` หรือใน prototype/MVP phase
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Functional Clean Architecture ที่ production-ready

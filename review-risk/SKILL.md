@@ -119,6 +119,8 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /prioritize ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Risk Register พร้อม category, probability, impact, score, severity, mitigation

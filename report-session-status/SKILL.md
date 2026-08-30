@@ -102,6 +102,9 @@ related:
 - ไม่อ้างอิงหรือเปิดเผย secrets, API keys, credentials
 - ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
 
+- ใช้ /report-before ถ้าจำเป็น
+- ใช้ /add-to-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รู้สถานะปัจจุบันของ session ทั้งหมด

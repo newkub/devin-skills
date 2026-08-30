@@ -133,6 +133,9 @@ related:
 - test reactive code ด้วย marble diagrams หรือ virtual scheduler
 - test DP solution ด้วย edge cases และ large inputs
 
+- ใช้ /follow-math-category-theory ถ้าจำเป็น
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Paradigm หลักของ module/feature ชัดเจน

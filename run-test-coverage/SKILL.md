@@ -111,6 +111,12 @@ related:
 - ไม่มีข้อยกเว้นสำหรับ edge cases
 - ไม่มีข้อยกเว้นสำหรับ error paths
 
+- ใช้ /follow-coverage ถ้าจำเป็น
+- ใช้ /review-content-coverage ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Test framework ถูกระบุอย่างถูกต้อง

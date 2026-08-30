@@ -162,6 +162,9 @@ related:
 - Handle `consistently`
 - Test `error paths`
 
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-proofs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Functions ที่ deterministic

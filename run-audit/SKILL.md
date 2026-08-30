@@ -87,6 +87,12 @@ Audit dependencies และ security เพื่อตรวจสอบ vulne
 - ระบุ copyleft licenses
 - ติดตาม license obligations
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Dependencies ถูก audit

@@ -106,6 +106,8 @@ related:
 - จัดกลุ่มข้อมูลที่เกี่ยวข้อง
 - ใช้ color/contrast สำหรับ emphasis
 
+- ใช้ /open-files-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Visual แบบ Web ที่เข้าใจง่าย

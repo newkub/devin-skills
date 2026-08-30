@@ -81,6 +81,10 @@ related:
 - ใช้ path เป้น absolute เสมอ
 - ใช้ `/report-table` สำหรับ output
 
+- ใช้ /list-devin-user-request-in-this-session ถ้าจำเป็น
+- ใช้ /use-bun-shell ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ได้ตาราง user requests ใน repo ปัจจุบัน ไม่ซ้ำ

@@ -85,6 +85,13 @@ related:
 - ใช้ animations เพื่อเสริม UX ไม่ใช่ distraction
 - ให้ feedback ชัดเจนเมื่อ animation เสร็จ
 
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-lib-css ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Animation ที่รวดเร็วและมีประสิทธิภาพ

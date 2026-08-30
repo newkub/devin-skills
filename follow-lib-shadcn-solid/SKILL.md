@@ -80,6 +80,13 @@ related:
 - Customize components ตามความต้องการ
 - หลีกเลี่ยง modifying core components
 
+- ใช้ /follow-solid-tanstack ถ้าจำเป็น
+- ใช้ /follow-solid-tanstack-architecture ถ้าจำเป็น
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - UI components ที่ accessible และ customizable

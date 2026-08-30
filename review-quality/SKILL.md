@@ -103,6 +103,15 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning
 
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+- ใช้ /review-uxui ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Quality Metrics Summary, Findings by Category, Recommended Actions

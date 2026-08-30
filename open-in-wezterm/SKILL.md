@@ -62,6 +62,10 @@ related:
 - รายงานผลเป็นรายการ path พร้อม `wezterm` command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
+- ใช้ /open-in-devin ถ้าจำเป็น
+- ใช้ /open-in-explorer ถ้าจำเป็น
+- ใช้ /open-in-windows-terminal ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Directory หรือ parent directory ของ file ถูกเปิดใน WezTerm window/tab ใหม่

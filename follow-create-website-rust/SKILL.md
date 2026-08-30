@@ -206,6 +206,14 @@ related:
 - ใช้ `#[wasm_bindgen]` types ที support โดย `wasm-bindgen`
 - ไม่ commit secrets หรือ API keys
 
+- ใช้ /follow-create-rust-crate ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /use-lib-effective ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /deploy-to-vercel ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Rust crate build ผ่าน `wasm-pack` และ produce `pkg/` ที่ใช้ใน browser ได้

@@ -97,6 +97,11 @@ related:
 - ดู bun.com docs เป็นแหล่งหลัก ดู `references/routes.md` สำหรับ route map
 - ไม่บังคับ upgrade Bun โดยไม่แจ้งผู้ใช้
 
+- ใช้ /use-bun-shell ถ้าจำเป็น
+- ใช้ /use-bun-scripts ถ้าจำเป็น
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-tool-bunup ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Bun runtime ติดตั้งและพร้อมใช้งาน

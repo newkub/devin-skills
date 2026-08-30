@@ -49,6 +49,11 @@ related:
 - ทุกสรุปต้องมาจาก `git status`, `git diff` หรือการอ่านไฟล์จริง
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
+- ใช้ /report-git-diff ถ้าจำเป็น
+- ใช้ /check-git-diff ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /ask-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางสรุป diff ทั้ง tracked และ untracked

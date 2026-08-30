@@ -146,6 +146,9 @@ related:
 
 ดู [references/gritql-patterns.md](references/gritql-patterns.md) สำหรับ CST node matching syntax
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-formatter ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Plugin file `.grit` สร้างขึ้นที่ root

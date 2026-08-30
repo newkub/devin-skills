@@ -44,6 +44,10 @@ related:
 - ตรวจสอบว่าไม่มี data loss
 - อัพเดท references หลังจากย้ายไฟล์
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ถูกย้ายไปยังตำแหน่งใหม่

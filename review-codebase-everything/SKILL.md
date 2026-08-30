@@ -116,6 +116,9 @@ related:
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /deep-analyze-by-use-scripts ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `tools/review-codebase` CLI มีอยู่และรันได้ที่ project root

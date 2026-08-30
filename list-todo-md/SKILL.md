@@ -96,6 +96,8 @@ related:
 - Summary table แสดงทุกไฟล์
 - Detail table แสดงสูงสุด 50 รายการแรก ถ้าเกินให้บอก total
 
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางสรุปจำนวน `TODO.md` ใน workspace พร้อม counts

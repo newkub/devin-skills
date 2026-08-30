@@ -41,6 +41,11 @@ related:
 - ห้ามแก้ source หรือ test โดยไม่มี evidence
 - ถ้า fail → ทำ `/deep-validate` กับ source แล้ว report ก่อนแก้ไข
 
+- ใช้ /run-test-integration ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
+- ใช้ /run-test-api ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Unit tests ถูกรัน

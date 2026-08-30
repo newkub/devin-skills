@@ -123,6 +123,9 @@ related:
 
 ดู [references/bun.md](references/bun.md) สำหรับ Bun native APIs และ library versions
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - CLI project ที่มีโครงสร้างตาม architecture ที่เลือกและ maintainable

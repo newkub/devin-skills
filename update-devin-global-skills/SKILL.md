@@ -137,6 +137,9 @@ related:
 - install commands ใช้ตาม ecosystem หลัก: `bun add`/`bun install` สำหรับ Bun/Node ecosystem (ยกเว้น project ใช้ npm เป็นหลัก), `cargo add` สำหรับ Rust, `go get` สำหรับ Go, `pip install` สำหรับ Python
 - สำหรับ global CLI ที่เป็น npm package ใน Bun/Node ecosystem ให้ใช้ `mise use -g npm:<package>`
 
+- ใช้ /alignment ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - skill ใหม่ถูกสร้างหรือ skill เดิมถูกอัปเดตที่ `%APPDATA%\devin\skills\<skill-name>\`

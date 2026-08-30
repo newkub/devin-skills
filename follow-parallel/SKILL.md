@@ -110,6 +110,10 @@ related:
 - ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
 - ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
 
+- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-game-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Independent operations รัน parallel ลด total execution time

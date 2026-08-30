@@ -91,6 +91,10 @@ related:
 - สร้างเฉพาะ directories ทีใช้จริง
 - ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /search-skills ถ้าจำเป็น
+- ใช้ /follow-clean-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Claude Code plugin มี `plugin.json` และ components ครบตามทีเลือก

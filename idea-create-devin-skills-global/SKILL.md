@@ -109,6 +109,10 @@ related:
 - ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
+- ใช้ /idea-features ถ้าจำเป็น
+- ใช้ /idea-improve-files-naming ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน

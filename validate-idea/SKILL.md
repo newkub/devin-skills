@@ -92,6 +92,9 @@ related:
 - เปรียบเทียบ alternatives แบบ apples-to-apples
 - ถ้าขาด context → stop และ report
 
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /pick-bestest ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน validation เป็นตาราง: Criteria, Score, Notes

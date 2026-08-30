@@ -107,6 +107,13 @@ related:
 - ไม่ซ้อน project boundaries ซ้ำซ้อน
 - JS/Bun project = package, Rust project = crate (Cargo package)
 
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

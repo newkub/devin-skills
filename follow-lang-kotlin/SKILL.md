@@ -85,6 +85,13 @@ related:
 - ใช้ `data class` สำหรับ immutable data models
 - ดูรายละเอียดใน `references/error-handling.md`
 
+- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+- ใช้ /follow-lang-lua ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Kotlin project ใช้ Clean Architecture แบ่ง layers ชัดเจน

@@ -167,6 +167,12 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ใช้ real implementation สำหรับ pure functions
 - mock external dependencies เฉพาะที่จำเป็น
 
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
+- ใช้ /follow-tdd ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+- ใช้ /update-specs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Tests ครอบคลุมทุก type: unit, integration, e2e, contract, property, mutation, performance, security, accessibility

@@ -100,6 +100,11 @@ related:
 - Union/Intersection = combine datasets
 - Difference = exclude
 
+- ใช้ /follow-math-predicate-logic ถ้าจำเป็น
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-debugging ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถวาด Venn diagram และหา operations

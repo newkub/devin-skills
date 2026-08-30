@@ -165,6 +165,8 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 - แยก validation process จาก fix process
 - ถ้าต้องแก้ไข ให้ทำ `/resolve-errors` หลัง validate
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ความถูกต้องได้รับการตรวจสอบครบทุกมิติ

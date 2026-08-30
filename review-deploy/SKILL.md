@@ -84,6 +84,9 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /follow-secret-manager ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Deploy Readiness Summary พร้อม score และ grade

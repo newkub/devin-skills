@@ -99,6 +99,10 @@ related:
 - ถ้าข้อมูลไม่พอ ให้บอก assumption
 - ไม่ตัดสินแทน user ถ้าไม่มีข้อมูลพอ
 
+- ใช้ /report-numbered-bullet ถ้าจำเป็น
+- ใช้ /report-plan ถ้าจำเป็น
+- ใช้ /deep-analyze ถ้าจำเป็น
+
 ## Expected Outcome
 
 - มี 3-5 สมการทีสะท้อนปัญหา/ตัวเลือก/ผลลัพธ์

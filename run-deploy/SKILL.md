@@ -158,6 +158,9 @@ Watch deployment ด้วย browser จนกว่าจะ live
 - ถ้า deploy ล้มเหลว ให้ rollback ทันที
 - ต้องมี zero-downtime deploy (ถ้าต้องการ)
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Application ถูก deploy สำเร็จ

@@ -113,6 +113,16 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /list-dependencies ถ้าจำเป็น
+- ใช้ /update-version-latest ถ้าจำเป็น
+- ใช้ /update-runtime-latest ถ้าจำเป็น
+- ใช้ /update-dependencies-latest ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location

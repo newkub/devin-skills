@@ -159,6 +159,8 @@ related:
 - สร้าง `.d.ts` ด้วย `bunup` หรือ `tsdown`
 - ใช้ `exports` field ใน `package.json`
 
+- ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Bun plugin build ผ่าน

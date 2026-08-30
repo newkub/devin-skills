@@ -127,6 +127,14 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - แยกจาก subject ด้วยบรรทัดว่าง
 - ใช้ bullet points สำหรับหลายรายการ
 
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /follow-tool-hk ถ้าจำเป็น
+- ใช้ /list-git-commit ถ้าจำเป็น
+- ใช้ /refactor-commit ถ้าจำเป็น
+- ใช้ /review-diff ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Commit messages ที่สอดคล้องกับ conventional commits และเป็นภาษาอังกฤษทั้งหมด

@@ -160,6 +160,10 @@ related:
 - ตั้ง bundle identifier เป็น reverse domain
 - ใช้ semantic versioning สำหรับ version และ build number
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-create-mobile-ios-android ถ้าจำเป็น
+
 ## Expected Outcome
 
 - iOS project สร้างด้วย Swift + SwiftUI

@@ -103,6 +103,10 @@ related:
 - Test บนหลาย browsers
 - Follow browser extension guidelines
 
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Browser extensions ที่ compatible กับ multiple browsers

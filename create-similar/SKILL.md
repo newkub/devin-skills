@@ -93,6 +93,11 @@ related:
 - ไม่เดา context ถ้าไม่ชัด → ใช้ `/ask-me`
 - ถ้าสร้าง skill ใหม่ → อัปเดต `AGENTS.md`
 
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-naming ถ้าจำเป็น
+- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /edit-by-use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สร้างไฟล์/ directory ใหม่ทีคล้าย example แต่ปรับตาม target

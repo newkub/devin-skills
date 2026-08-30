@@ -146,6 +146,13 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - Share package files ระหว่าง projects
 - node_modules layout ที่ efficient
 
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-auto-it ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

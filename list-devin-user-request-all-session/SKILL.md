@@ -54,6 +54,11 @@ related:
 - ไม่แก้ไข history files
 - ถ้าไม่พบ summaries → report
 
+- ใช้ /list-devin-user-request-this-repo ถ้าจำเป็น
+- ใช้ /list-devin-user-request-in-this-session ถ้าจำเป็น
+- ใช้ /summarize ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ได้รายการ requests จาก user ทังหมด sessions

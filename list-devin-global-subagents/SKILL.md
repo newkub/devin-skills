@@ -61,6 +61,10 @@ related:
 - ตรวจครบทุก subdirectories
 - ระบุ global subagents ที่ frontmatter ไม่ครบ
 
+- ใช้ /follow-devin-global-subagents ถ้าจำเป็น
+- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ global subagents ทั้งหมดในตาราง

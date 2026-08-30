@@ -153,6 +153,10 @@ related:
 - ใช้ version catalog (`libs.versions.toml`)
 - ใช้ Gradle 8.13 หรือใหม่กว่า
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-create-mobile-ios-android ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Android project สร้างด้วย Kotlin + Jetpack Compose

@@ -128,6 +128,9 @@ related:
 - แสดง unit ชัดเจน (GB, MHz, cores)
 - ถ้า value ไม่พบ ให้ระบุ `N/A`
 
+- ใช้ /list-program-in-computer ถ้าจำเป็น
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการข้อมูลเครื่องตาม mode (summary/full)

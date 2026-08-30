@@ -59,6 +59,9 @@ related:
 
 - ถ้า repo เป็น bare ให้ระบุ worktree path ตาม bare structure
 
+- ใช้ /use-git-worktrees ถ้าจำเป็น
+- ใช้ /cleanup-worktree ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตาราง worktrees ครบถ้วน

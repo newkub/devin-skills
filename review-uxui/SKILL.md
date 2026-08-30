@@ -11,6 +11,9 @@ related:
   - report
   - report-table
   - suggest-next-action
+  - improve-uxui
+  - optimize-everything
+  - follow-design-system
 ---
 
 ## Goal
@@ -145,6 +148,10 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /improve-uxui ถ้าจำเป็น
+- ใช้ /optimize-everything ถ้าจำเป็น
+- ใช้ /follow-design-system ถ้าจำเป็น
 
 ## Expected Outcome
 

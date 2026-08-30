@@ -165,6 +165,11 @@ related:
 - README: ครบถ้วนสำหรับ project
 - Up-to-date: อัปเดตอย่างต่อเนื่อง
 
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-boolean-algebra ถ้าจำเป็น
+- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Architecture ที่ test ง่ายและ scale ง่าย

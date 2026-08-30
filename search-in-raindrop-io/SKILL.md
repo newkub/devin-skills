@@ -101,6 +101,10 @@ related:
 - ลด filters ทีไม่ได้ใช้ประจำ
 - ทุก example ต้องมี query จริงทีสามารถรันได้
 
+- ใช้ /list-raindrop-io ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - raindrop CLI authenticated และพร้อม search

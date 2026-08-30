@@ -103,6 +103,13 @@ related:
 - ใช้ environment variables สำหรับ secrets
 - Follow security best practices
 
+- ใช้ /follow-create-devin-plugins ถ้าจำเป็น
+- ใช้ /follow-devin-global-subagents ถ้าจำเป็น
+- ใช้ /follow-devin-skills ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

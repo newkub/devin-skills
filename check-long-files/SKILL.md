@@ -56,6 +56,10 @@ Skill นี้ใช้ Rust CLI แทน Bun/TS CLI เพราะต้อ�
 - แสดงชื่อไฟล์และจำนวนบรรทัด
 - แสดงจำนวนไฟล์ทั้งหมดที่เกิน threshold
 
+- ใช้ /check-code-structure ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
+- ใช้ /report-scan-todo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - CLI binary ถูก build สำเร็จ

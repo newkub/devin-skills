@@ -98,6 +98,13 @@ related:
 - ถ้าปัญหาง่าย → สูตรง่าย อธิบายสั้น
 - รักษา semantics ของ input เดิม
 
+- ใช้ /report-math-equation ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report-codeblock ถ้าจำเป็น
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /ask-me ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สูตรคณิตศาสตรใน LaTeX ทีถูกต้อง

@@ -89,6 +89,12 @@ Clean build artifacts และ cache เพื่อเริ่มต้นใ
 - Commit หรือ stash changes ที่สำคัญ
 - ใช้ `--dry-run` ก่อน `git clean`
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Build artifacts ถูกลบทั้งหมด

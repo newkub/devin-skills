@@ -91,6 +91,10 @@ related:
 - ลบไฟล์ที่ไม่จำเป็น
 - commit หลัง setup เสร็จ
 
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

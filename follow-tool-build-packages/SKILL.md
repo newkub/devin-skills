@@ -80,6 +80,9 @@ tests/examples <-- src
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

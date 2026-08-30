@@ -112,6 +112,9 @@ related:
 - Import plugin และ assign namespace
 - ใช้ rule format `namespace/rule-name` ใน rules object
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-eslint ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Plugin package สร้างขึ้นด้วย naming convention ถูกต้อง

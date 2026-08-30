@@ -217,6 +217,10 @@ const getPriorityType = (priority) => {
 - Element Plus components จะปรับสีอัตโนมัติตาม dark mode
 - Tailwind classes ใช้ `dark:` prefix สำหรับ dark mode styling
 
+- ใช้ /report-in-html ถ้าจำเป็น
+- ใช้ /review-readme-md ถ้าจำเป็น
+- ใช้ /update-readme-md ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `README.html` สร้างด้วย Vue 3 (unpkg CDN), Element Plus, และ Tailwind CSS

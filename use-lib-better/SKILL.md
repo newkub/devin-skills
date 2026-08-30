@@ -97,6 +97,8 @@ related:
 - เปรียบเทียบ apples-to-apples กับ version ล่าสุด
 - ไม่ต้องเขียน migration plan ละเอียด (ให้ `/review-codebase-everything` ทำ)
 
+- ใช้ /use-lib-effective ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ deps ที่ควรใช้ พร้อมคะแนนและ priority

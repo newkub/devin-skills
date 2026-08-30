@@ -133,6 +133,8 @@ related:
 - ทำ `/deep-plan` หลัง ponder ถ้าต้องวางแผนงาน
 - ทำ `/suggest-next-action` หลัง ponder ถ้าต้องรู้ว่าควรทำอะไรต่อ
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - การตัดสินใจที่รอบคอบและครอบคลุม

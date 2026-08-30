@@ -87,6 +87,10 @@ related:
 - อธิบายทำไมถึงเลือก structure นี
 - บอก limitations
 
+- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-linear-algebra ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Data structure ทีเลือกเหมาะสมกับ access pattern

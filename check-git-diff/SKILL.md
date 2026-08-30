@@ -72,6 +72,10 @@ related:
 - ใช้ `/report-table` สำหรับสรุป stat
 - ระบุ file paths เป็น relative จาก repo root
 
+- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /search-in-git ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สรุป diff: files changed, insertions, deletions, ประเภทการเปลี่ยนแปลง

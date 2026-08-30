@@ -102,6 +102,9 @@ related:
 - แสดง size ก่อนและหลัง (ถ้าเปรียบเทียบ)
 - ถ้าเปรียบเทียบหลาย path → เรียงตาม size
 
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทราบขนาดของไฟล์, directory หรือ disk ทีต้องการ

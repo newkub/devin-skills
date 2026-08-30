@@ -91,6 +91,10 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /test-release ถ้าจำเป็น
+- ใช้ /review-correctness ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Release Readiness Summary พร้อม score และ grade

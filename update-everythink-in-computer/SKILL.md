@@ -95,6 +95,8 @@ related:
 - ระบุ successes, failures, skipped
 - เก็บ log ของ commands
 
+- ใช้ /follow-my-package-manager ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Programs ทั้งหมดอัปเดตแล้ว

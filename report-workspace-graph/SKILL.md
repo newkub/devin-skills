@@ -146,6 +146,11 @@ related:
 - ไม่เรียก `/open-web`, `/visualize-in-web`, `/visualize-project`, `/visualize-devin-in-web`, `/report-in-html`
 - ถ้า graph ซับซ้อนจริงๆ ให้ใช้ mermaid หรือ text graph ใน markdown แทน
 
+- ใช้ /refactor-workspace ถ้าจำเป็น
+- ใช้ /all-workspace ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-monorepo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงานความสัมพันธ์ระหว่าง workspaces ทั้งหมด

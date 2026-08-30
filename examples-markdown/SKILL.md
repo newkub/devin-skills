@@ -87,6 +87,10 @@ related:
 - templates ต้องครอบคลุมทุกหมวดใน sidebar ของ `/update-docs`
 - ได้แก่: project, getting-started, development, references, roadmap, content, api-reference, changelog
 
+- ใช้ /update-readme-md ถ้าจำเป็น
+- ใช้ /update-features-md ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - มี markdown templates ครบทุกหมวด

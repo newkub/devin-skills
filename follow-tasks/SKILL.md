@@ -204,6 +204,10 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 
 หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/review-codebase-everything` ถ้าต้องการสร้างหรืออัปเดต CLI
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `package.json` มี scripts ตาม template ที่เลือก (state change)

@@ -102,6 +102,8 @@ related:
 - รองรับ public/private repositories ตามสิทธิ์ของ `gh` token
 - ไม่ expose secrets หรือ tokens ใน output
 
+- ใช้ /list-ci-configs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ GitHub Actions runs ทีล้มเหลวทั่ว personal/org repos

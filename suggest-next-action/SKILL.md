@@ -172,6 +172,13 @@ related:
 - ระบุ opportunity costs
 - ให้ผู้ใช้ตัดสินใจขั้นสุดท้าย
 
+- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /follow-enter-dot ถ้าจำเป็น
+- ใช้ /report-before ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /continue ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ผู้ใช้ได้รับคำแนะนำที่ชัดเจน

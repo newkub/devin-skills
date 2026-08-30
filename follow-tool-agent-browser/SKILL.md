@@ -226,6 +226,13 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 - ปิด sessions ที่ไม่ได้ใช้ด้วย `agent-browser close` เพื่อประหยัด resources
 - ใช้ `--json` flag สำหรับ JSON output ที่ parse ง่ายใน scripts
 
+- ใช้ /follow-create-browser-extensions ถ้าจำเป็น
+- ใช้ /list-brave-browser-history ถ้าจำเป็น
+- ใช้ /roleplay-customer-support-agent ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

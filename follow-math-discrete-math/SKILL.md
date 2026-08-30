@@ -75,6 +75,11 @@ related:
 - `%` ใน programming คือ remainder ซึงอาจติดลบกับ negative numbers
 - ใช้ `((a % m) + m) % m` เพื่อให้เป็นบวก
 
+- ใช้ /follow-math-cryptography ถ้าจำเป็น
+- ใช้ /follow-math-combinatorics ถ้าจำเป็น
+- ใช้ /follow-algorithms ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถคำนวณ gcd, lcm, modular inverse

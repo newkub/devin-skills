@@ -122,6 +122,10 @@ related:
 - บันทึก findings จาก review-correctness ใน report
 - ถ้ามี critical/high issues → ถาม user ก่อน ship
 
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /check-should-update ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุก usage example ใน docs ถูกทดสอบ

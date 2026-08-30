@@ -154,6 +154,9 @@ related:
 - ถ้าแก้ >10 ไฟล์ → ทำ `/use-scripts`
 - ถ้าไฟล์ยาว >250 บรรทัด → ทำ `/review-devin-global-skills` Steps 7-8 หลังจบ task
 
+- ใช้ /review-flow ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+
 ## Expected Outcome
 
 - devin skills repo ครบถ้วน สอดคล้องกัน เป็นปัจจุบัน และมีโครงสร้าง SRP ชัดเจน

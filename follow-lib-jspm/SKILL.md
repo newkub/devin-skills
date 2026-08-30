@@ -75,6 +75,13 @@ related:
 - ใช้ code blocks สำหรับ examples
 - ใช้ ansi markdown diagrams สำหรับ flow และ architecture
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ES modules ที่ native และ efficient

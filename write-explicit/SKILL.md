@@ -81,6 +81,10 @@ related:
 - ใช้ชื่อ tool/skill เหมือนกันทั้งไฟล์
 - skill name อยู่ใน backticks เสมอ
 
+- ใช้ /write-how-to ถ้าจำเป็น
+- ใช้ /write-solutions ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Target สามารถทำตามได้ทันทีโดยไม่ต้องถามเพิ่ม

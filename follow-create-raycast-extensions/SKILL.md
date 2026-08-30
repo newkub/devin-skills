@@ -159,6 +159,9 @@ desktop-apps/raycast-extensions/{extension}/
 | `no-view` | Background script |
 | `menu-bar` | Menu bar |
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Extension สร้างด้วย `bunx create-raycast-extension`

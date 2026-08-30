@@ -37,6 +37,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 > Goal: ตรวจ frontmatter ครบถ้วน
 
 1. ทำตาม `references/frontmatter.md`
+2. ตรวจทุก `related` ใน frontmatter ว่ามี mention ใน content ด้วย
+3. ถ้า `related` ไม่มีใน content → flag Medium (orphan reference)
 
 ### 3. Check Sections And Style
 
@@ -127,6 +129,9 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, skill references
 - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /idea-refactor-devin-global-skills ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
 
 ## Expected Outcome
 

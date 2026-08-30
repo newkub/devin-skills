@@ -86,6 +86,10 @@ related:
 - ลบ code ที่ไม่จำเป็นที่เพิ่มขึ้น
 - วัดผลกระทบ (performance, complexity)
 
+- ใช้ /dont-ask ถ้าจำเป็น
+- ใช้ /dont-understand ถ้าจำเป็น
+- ใช้ /roleplay-data-engineer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - แก้ปัญหาด้วย minimal changes

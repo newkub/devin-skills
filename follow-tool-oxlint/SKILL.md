@@ -91,6 +91,11 @@ related:
 - ใช้ oxlint built-in plugins ผ่าน `eslint-plugin-oxlint` configs
 - ใช้ `buildFromOxlintConfig` กับ plugins array
 
+- ใช้ /follow-tool-eslint ถ้าจำเป็น
+- ใช้ /follow-tool-biome ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

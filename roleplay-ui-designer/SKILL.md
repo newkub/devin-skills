@@ -176,6 +176,10 @@ Design-Dev Handoff:
 - สรุป design issues และ design wins
 - แนะนำ action ถัดไป
 
+- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /report-uxui-sketch ถ้าจำเป็น
+- ใช้ /follow-design-system ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน UI design review จากมุมมอง UI designer ที่จำลองจาก source code

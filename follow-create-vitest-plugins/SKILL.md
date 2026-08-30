@@ -151,6 +151,10 @@ const newProjects = await injectTestProjects({
 - `setupFile` ไม่ resolved อีกครั้ง - resolve เองถ้า add new files
 - บาง properties มี type ต่างจาก user config (resolved แล้ว)
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Vitest plugin ที่ใช้ Plugin API 3.1.0+ อย่างถูกต้อง

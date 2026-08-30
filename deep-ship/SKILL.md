@@ -179,6 +179,11 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ทำ `/update-agents-md` และ `/follow-agents-md` ก่อน ship ทุกครั้ง
 - ถ้า `AGENTS.md` ไม่พร้อม → แก้ไขก่อน ship
 
+- ใช้ /deep-update ถ้าจำเป็น
+- ใช้ /deep-update-project ถ้าจำเป็น
+- ใช้ /follow-release ถ้าจำเป็น
+- ใช้ /review-deploy ถ้าจำเป็น
+
 ## Expected Outcome
 
 - การเปลี่ยนแปลงถูก commit (และ push ถ้าได้รับคำสั่ง/มี config)

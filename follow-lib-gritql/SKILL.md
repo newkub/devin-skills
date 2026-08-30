@@ -150,6 +150,13 @@ related:
 - ใช้ specific node types แทน full-tree walks
 - ตรวจสอบ performance ด้วย benchmarking
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Common Mistakes
 
 ข้อผิดพลาดที่พบบ่อย:

@@ -86,6 +86,10 @@ related:
 - commit message ระบุว่า resolve conflicts
 - ถ้า rebase มีหลาย conflict ให้ squash ถ้าเหมาะสม
 
+- ใช้ /idea-merge-files ถ้าจำเป็น
+- ใช้ /merge-git-branch ถ้าจำเป็น
+- ใช้ /merge-github-pr ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไม่มี conflict markers ตกค้าง

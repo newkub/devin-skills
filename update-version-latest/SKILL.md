@@ -126,6 +126,10 @@ related:
 - ใช้ `mise.toml` เป็น single source of truth ถ้ามี
 - ทำ `/update-references` ถ้ามี rename หรือ move
 
+- ใช้ /update-project ถ้าจำเป็น
+- ใช้ /deep-update-project ถ้าจำเป็น
+- ใช้ /follow-my-package-manager ถ้าจำเป็น
+
 ## Expected Outcome
 
 - dependencies, runtimes, global tools, versioned config ทั้งหมดเป็น latest stable

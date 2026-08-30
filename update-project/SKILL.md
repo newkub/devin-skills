@@ -152,6 +152,8 @@ related:
 - รัน validation หลัง update
 - ไม่อ้างว่า check ผ่าน ถ้า command fail
 
+- ใช้ /deep-update-project ถ้าจำเป็น
+
 ## Expected Outcome
 
 - git log ของทุก workspace ถูกตรวจและบันทึก

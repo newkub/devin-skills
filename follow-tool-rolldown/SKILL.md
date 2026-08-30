@@ -103,6 +103,12 @@ related:
 - ตรวจสอบ maintenance status และ compatibility
 - ไม่ hard-code paths หรือ secrets ใน config
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-tool-tsdown ถ้าจำเป็น
+- ใช้ /follow-tool-build-packages ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

@@ -108,6 +108,8 @@ related:
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - CLI project ที่เลือก stack เหมาะสม

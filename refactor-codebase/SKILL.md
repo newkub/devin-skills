@@ -132,6 +132,9 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 
+- ใช้ /refactor-files ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Codebase มี SRP ชัดเจน

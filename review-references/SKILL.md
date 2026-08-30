@@ -52,6 +52,11 @@ related:
 - ไม่ auto-delete references โดยไม่ถาม
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /list-devin-global-skills ถ้าจำเป็น
+- ใช้ /check-backward-compatibility ถ้าจำเป็น
+- ใช้ /scan-codebase ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน references ทีขาด/ซ้ำ/วน/ล้าหลัง

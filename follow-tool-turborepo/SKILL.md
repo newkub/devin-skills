@@ -109,6 +109,12 @@ related:
 - กำหนด `tags` และ `boundaries` rules
 - หลีกเลี่ยง imports ข้าม package boundaries
 
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tool-taze ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

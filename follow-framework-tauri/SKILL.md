@@ -126,6 +126,13 @@ desktop-apps/{project}/
 - อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
 - ไม่เปิด permission กว้างเกินความจำเป็น
 
+- ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Tauri project สร้างสำเร็จ

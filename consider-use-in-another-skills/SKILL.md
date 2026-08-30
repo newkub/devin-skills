@@ -99,6 +99,8 @@ related:
 - ใช้ `/update-references` สำหรับการอัปเดต
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
+- ใช้ /review-diff ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน

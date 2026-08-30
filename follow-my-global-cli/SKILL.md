@@ -56,6 +56,10 @@ related:
 - หลีกเลี่ยง secret ใน command line
 - ถ้าไม่แน่ใจให้ถาม user ก่อน
 
+- ใช้ /idea-convert-my-global-cli-to-skills ถ้าจำเป็น
+- ใช้ /report-my-global-cli ถ้าจำเป็น
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+
 ## Expected Outcome
 
 - CLI command รันได้ตามที่ขอ

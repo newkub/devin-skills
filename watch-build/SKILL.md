@@ -132,6 +132,8 @@ Watch build status อย่างต่อเนื่อง ตรวจจั
 - `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ build
 - ถ้า build ใช้เวลา > `120` วินาที → stop และ report
 
+- ใช้ /check-bottlenecks ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Build ผ่านโดยไม่มี error

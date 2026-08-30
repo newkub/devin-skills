@@ -92,6 +92,8 @@ related:
 - ไม่ติดตั้ง dependencies
 - เป็นข้อมูล references เท่านั้น
 
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ API references ครบถ้วน ไม่ซ้ำซ้อน

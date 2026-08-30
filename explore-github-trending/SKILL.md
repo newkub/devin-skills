@@ -117,6 +117,8 @@ related:
 - แสดง URL ทีใช้ fetch
 - ระบุเวลา (daily/weekly/monthly) และ language
 
+- ใช้ /open-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ trending repositories บน GitHub

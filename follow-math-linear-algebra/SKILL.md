@@ -79,6 +79,11 @@ related:
 - ใช้ libraries เช่น `mathjs`, `numpy` ถ้าซับซ้อน
 - ใช้ WebGL matrices สำหรับ graphics
 
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-statistics ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถคำนวณ vector/matrix operations

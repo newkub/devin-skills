@@ -106,6 +106,10 @@ related:
 - ข้าม skills ที่มีอยู่แล้ว
 - บันทึก skills ที่สร้างไม่สำเร็จ
 
+- ใช้ /use-scripts ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /report-config-files ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Skills ทั้งหมดจาก dependencies ถูกสร้างใน global

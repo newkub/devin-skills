@@ -99,6 +99,13 @@ related:
 - Personal config ที่ `~/.config/nextest/config.toml`
 - ใช้ `--config-file` สำหรับ override config location
 
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-test ถ้าจำเป็น
+- ใช้ /update-test-everything ถ้าจำเป็น
+- ใช้ /follow-tool-mutants-rs ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

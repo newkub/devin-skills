@@ -115,6 +115,8 @@ related:
 - ต้อง validate `usage.kdl` ก่อน generate `USAGE.md` และ completions
 - ถ้า parse ไม่ผ่าน → ห้าม generate
 
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `usage.kdl` ตรงกับ CLI จริง

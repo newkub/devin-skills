@@ -86,6 +86,8 @@ related:
 - ใช้ backticks สำหรับ paths และ method
 - ระบุ routes ทีอาจ conflict หรือซ้ำซ้อน
 
+- ใช้ /analyze-attack-surface ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ page routes ทั้งหมดใน project

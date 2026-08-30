@@ -126,6 +126,8 @@ related:
 - ถ้าต้อง remove server → ตรวจ dependents ก่อน
 - ถ้า server ไม่ทำงานหลังแก้ → revert จาก backup
 
+- ใช้ /follow-create-mcp ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `%APPDATA%\devin\mcp_config.json` ถูกต้องตาม schema

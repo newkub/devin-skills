@@ -106,6 +106,12 @@ related:
 - ไม่ทำ destructive action โดยไม่มี user confirmation
 - ถ้าพบว่างานเริ่มแย่ลงหรือ drift ออกจาก goal ให้หยุดทันที
 
+- ใช้ /loop-until-complete ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
+- ใช้ /follow-loop-engineering ถ้าจำเป็น
+- ใช้ /follow-your-suggestion ถ้าจำเป็น
+- ใช้ /report-session-status ถ้าจำเป็น
+
 ## Expected Outcome
 
 - งานถูกปรับปรุงซ้ำจนถึงจุดทีดีพอ

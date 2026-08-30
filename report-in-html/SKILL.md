@@ -205,6 +205,10 @@ related:
 - ทำความสะอาดเนื้อหาที่ผู้ใช้ให้มาก่อนฉีดเข้า HTML
 - ใช้ `DOMPurify` หากเรนเดอร์ HTML จากแหล่งที่ไม่น่าเชื่อถือ
 
+- ใช้ /visualize-in-web ถ้าจำเป็น
+- ใช้ /visualize-project ถ้าจำเป็น
+- ใช้ /open-files-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `.html` ไฟล์เดียวที่บันทึกในโปรเจกต์

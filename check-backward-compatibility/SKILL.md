@@ -63,6 +63,9 @@ related:
 - new feature non-breaking → minor
 - bug fix → patch
 
+- ใช้ /review-references ถ้าจำเป็น
+- ใช้ /run-release ถ้าจำเป็น
+
 ## Expected Outcome
 - รายการ breaking และ deprecated changes
 - recommended version bump

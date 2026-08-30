@@ -94,6 +94,9 @@ related:
 - แสดง timeline เป็นข้อๆ
 - ไม่ตอบคำถามก่อนรวบรวมข้อมูลครบ
 
+- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /restore-from-git-log ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รู้ว่า git restore ช่วยไม่ได้จริงหรือไม่

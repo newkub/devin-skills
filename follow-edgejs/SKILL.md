@@ -182,6 +182,11 @@ server.listen(3000)
 - default ใช้ `bun add` สำหรับ JS/TS projects
 - ถ้า project ใช้ package manager อื่น ให้ใช้ตาม ecosystem (`npm i`, `pnpm add`, `yarn add`)
 
+- ใช้ /follow-lang-nodejs ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-devin-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `edge.js` ติดตั้งและกำหนดค่าถูกต้องด้วย ESM

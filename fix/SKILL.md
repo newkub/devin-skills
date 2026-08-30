@@ -82,6 +82,8 @@ related:
 - ไม่แก้ไขนอก scope ที่ตกลง
 - ถ้าค้างใช้ TODO → ระบุชัดเจนใน `TODO.md`
 
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ปัญหาถูกแก้ไข

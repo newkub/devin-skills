@@ -140,6 +140,10 @@ related:
 - ถ้า `mmdc` render ไม่ผ่าน → ส่ง mermaid source ให้ user
 - ถ้ามี circular dependencies ให้ highlight ด้วย dashed edge หรือ note
 
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ Mermaid source overview ของ workspaces ทั้งหมด

@@ -24,6 +24,10 @@ related:
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 Completed `more-file` workflow with correct output

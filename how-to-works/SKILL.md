@@ -88,6 +88,9 @@ related:
 - 1 step = 1 idea
 - ใช้ backticks สำหรับ code, tools, ชื่อ components
 
+- ใช้ /write-how-to ถ้าจำเป็น
+- ใช้ /summarize ถ้าจำเป็น
+
 ## Expected Outcome
 
 - คำอธิบายกลไกการทำงานของ target ทีชัดเจน

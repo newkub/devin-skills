@@ -114,6 +114,13 @@ related:
 - ทำให้ code decoupled และ testable
 - ใช้ naming conventions อย่างสม่ำเสมอ
 
+- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+- ใช้ /follow-lang-kotlin ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Swift applications ที่มีโครงสร้าง Clean Architecture

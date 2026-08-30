@@ -106,6 +106,8 @@ related:
 - ห้ามประดิษฐ์ routes ที่ไม่มี
 - ถ้ามี context ทีขาด → ระบุ gaps และถามผู้ใช้ด้วย `/ask-me`
 
+- ใช้ /review-uxui ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Markdown table ของ routes ทั้งหมด จัดกลุ่มตาม Tab Group

@@ -83,6 +83,10 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 - ตรวจสอบ build status
 - ตรวจสอบ hot reload ทำงานได้
 
+- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /open-in-windows-terminal ถ้าจำเป็น
+- ใช้ /record-video-terminal ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Development server รันอยู่เสมอ

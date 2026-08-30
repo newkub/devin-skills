@@ -177,6 +177,13 @@ related:
 - ถ้า project มี secrets น้อยมากและทีมเล็กมาก อาจใช้ `.env` ผ่าน USB/secure channel แล้วไม่ commit ก็ยังพอรับได้
 - ถ้า secret manager ล่มแล้ว production ได้รับผลกระทบ → วางแผน fallback
 
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /deploy-to-vercel ถ้าจำเป็น
+- ใช้ /deploy-to-railway ถ้าจำเป็น
+- ใช้ /follow-deploy ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+
 ## Expected Outcome
 
 - มี secret manager ตั้งค่าครบถ้วน

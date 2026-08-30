@@ -32,6 +32,13 @@ related:
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /list-my-npm-packages ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /follow-tool-websearch ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 Completed `search-npm-libraries` workflow with correct output

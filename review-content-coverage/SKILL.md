@@ -89,6 +89,13 @@ related:
 - ทุก concepts ต้องมี explanations
 - ทุก best practices ต้องมี guidelines
 
+- ใช้ /follow-coverage ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)

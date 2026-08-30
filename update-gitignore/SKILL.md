@@ -81,6 +81,11 @@ related:
 - รักษา pattern เดียวกันระหว่าง root และ workspaces
 - เรียงลำดับ categories: dependencies > build > IDE > secrets > OS
 
+- ใช้ /follow-gitignore ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /update-references ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `.gitignore` ครอบคลุม stack ที่ใช้

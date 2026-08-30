@@ -221,6 +221,15 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - `.env.example` ต้องมี `INFISICAL_TOKEN` และ `INFISICAL_DOMAIN` สำหรับ documentation
 - `turbo.json` ต้องมี `INFISICAL_TOKEN` ใน `passThroughEnv` และ `INFISICAL_DOMAIN` ใน `env`
 
+- ใช้ /follow-math-cryptography ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /follow-service-vercel ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Infisical ตั้งค่าเสร็จสมบูรณ์

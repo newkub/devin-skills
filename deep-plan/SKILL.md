@@ -168,6 +168,8 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - ถ้าพบ issue ให้กลับไปแก้แผน ไม่ฝืนทำ
 - ถ้าเกิน 3 รอบแล้วยังไม่ผ่าน ให้ stop และ report
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Comprehensive plan พร้อม risk assessment และ trade-off analysis

@@ -151,6 +151,11 @@ related:
 - ถ้าไม่สามารถ capture UI ได้ ให้ใช้ terminal screenshot พร้อม note
 - สำหรับ private repo ใช้ release assets หรือ GitHub attachments เพื่อให้รูปแสดงได้
 
+- ใช้ /create-github-pr ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /open-github-pr ถ้าจำเป็น
+
 ## Expected Outcome
 
 - PR body มี feature summary table

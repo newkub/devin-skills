@@ -108,6 +108,10 @@ related:
 - ใช้ byte-level iteration สำหรับความเร็วสูง
 - กรองไฟล์ด้วย `--include`/`--exclude` ก่อนนับเพื่อลดเวลา
 
+- ใช้ /report-file-structure ถ้าจำเป็น
+- ใช้ /scan-codebase ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

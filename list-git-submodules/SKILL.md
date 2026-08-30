@@ -65,6 +65,10 @@ related:
 - ถ้า submodule ไม่ถูก initialize → ระบุ `(not initialized)`
 - ถ้า `.gitmodules` ไม่มี → รายงานว่าไม่มี submodules
 
+- ใช้ /list-project-git-in-computer ถ้าจำเป็น
+- ใช้ /delete-git-submodules ถ้าจำเป็น
+- ใช้ /convert-to-git-submodules ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตาราง submodules ครบถ้วน

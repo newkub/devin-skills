@@ -114,6 +114,12 @@ related:
 - ใช้ intents ตาม least privilege
 - ดู `references/discord-bot.md` สำหรับ official docs
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Discord bot project รันได้ด้วย `bun dev`

@@ -94,6 +94,13 @@ related:
 | Priority | ระดับความสำคัญ |
 | Description | รายละเอียดสั้นๆ |
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /follow-tool-websearch ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตารางสรุป skills ที่พบทั้งหมดพร้อมหมายเลขลำดับ

@@ -86,6 +86,9 @@ related:
 - `--production` exclude devDependencies — เหมาะสำหรับตรวจสอบ production bundle
 - default mode รวม devDependencies — เหมาะสำหรับ cleanup ทั่วไป
 
+- ใช้ /check-dead-code ถ้าจำเป็น
+- ใช้ /update-config ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ unused dependencies ที่ยืนยันแล้ว (หรือไม่มีถ้าผ่าน)

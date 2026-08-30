@@ -154,6 +154,9 @@ tauri-plugin-<name>/
 - iOS: Swift code ใน `ios/`
 - Trigger mobile code จาก Rust ผ่าน `mobile.rs`
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Tauri plugin สร้างสำเร็จด้วย CLI

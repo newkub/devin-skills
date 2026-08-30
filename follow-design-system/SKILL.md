@@ -5,6 +5,9 @@ related:
   - follow-lib-unocss-theme
   - review-frontend
   - review-codebase-everything
+  - improve-uxui
+  - review-uxui
+  - optimize-everything
 ---
 
 ## Goal
@@ -98,6 +101,10 @@ related:
 - camelCase สำหรับ props และ variables
 - kebab-case สำหรับ CSS classes
 - UPPER_SNAKE_CASE สำหรับ constants
+
+- ใช้ /improve-uxui ถ้าจำเป็น
+- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /optimize-everything ถ้าจำเป็น
 
 ## Expected Outcome
 

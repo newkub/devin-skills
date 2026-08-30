@@ -115,6 +115,10 @@ related:
 - ใช้ `/report-table` หรือ markdown table
 - ถ้าไม่พบ program → รายงานว่าไม่พบ
 
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /download-program ถ้าจำเป็น
+- ใช้ /uninstall-program-in-computer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ program ที่ติดตั้งครบถ้วน

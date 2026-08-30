@@ -64,6 +64,9 @@ related:
 - ระบุ allowlist ถ้ามี
 - แยก test data ออกจาก real secrets
 
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 - รายการ secrets ทีพบพร้อม location และ severity
 - ไม่มี secret จริงรั่วไหลใน report

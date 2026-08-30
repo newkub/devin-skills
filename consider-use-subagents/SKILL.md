@@ -103,6 +103,8 @@ related:
 - รักษา consistency ของ codebase
 - ทำ `/deep-validate` หลัง merge
 
+- ใช้ /follow-devin-global-subagents ถ้าจำเป็น
+
 ## Expected Outcome
 
 - งานถูกแบ่งและทำขนานกันโดย subagents

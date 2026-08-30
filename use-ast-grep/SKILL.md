@@ -110,6 +110,8 @@ related:
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
 
+- ใช้ /check-code-structure ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `sgconfig.yml` ตั้งค่าเรียบร้อยครบทุก fields ที่จำเป็น

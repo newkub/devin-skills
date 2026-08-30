@@ -103,6 +103,10 @@ Use after `/run-release`, manual release, or when `/ship` detects a release. Sup
 - ระบุ platform-specific rollback command
 - ไม่ rollback อัตโนมัติ
 
+- ใช้ /follow-release ถ้าจำเป็น
+- ใช้ /watch-deploy ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Release ถูก poll จนกว่าจะ live หรือ timeout

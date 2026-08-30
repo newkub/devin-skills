@@ -128,6 +128,13 @@ related:
 - ตรวจสอบว่าไม่มี regressions
 - ห้ามใช้ `--unsafe` flag กับ biome commands
 
+- ใช้ /convert-files-format ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 โค้ดที่ผ่าน format โดยไม่มี format errors พร้อมรายงานผลลัพธ์การรัน format

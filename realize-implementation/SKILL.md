@@ -116,6 +116,9 @@ related:
 - Form validation ด้วย validation schemas ที่ตรงกับ API validation — แสดง user-friendly error messages
 - Structured logging สำหรับทุก external call — metrics สำหรับ response times, error rates — log correlation IDs สำหรับ distributed tracing
 
+- ใช้ /update-todo-md ถ้าจำเป็น
+- ใช้ /deep-realize-implementation ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุกอย่างเป็น production code จริง ใช้งานได้จริง — ไม่มี TODO/MOCK/placeholder เหลือ

@@ -62,6 +62,9 @@ related:
 - ตรวจสอบคุณภาพของผลลัพธ์ก่อนหยุด
 - ใช้ minimal changes ในแต่ละรอบ
 
+- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
+
 ## Expected Outcome
 
 - งานทำซ้ำจนบรรลุวัตถุประสงค์

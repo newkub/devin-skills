@@ -185,6 +185,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ไม่อ้างว่า check ผ่าน ถ้า command fail
 - ถ้า validation ไม่ผ่านหลัง 3 รอบ → stop และ report
 
+- ใช้ /update-dot-devin ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เป้าหมายถูก update ด้วย deep review, planning, และ cross-reference sync

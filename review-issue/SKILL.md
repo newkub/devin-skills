@@ -61,6 +61,12 @@ related:
 - ทุกผลการตรวจต้องมีข้อแนะนำที่เป็นรูปธรรม
 - ผลลัพธ์ต้องระบุความพร้อมโดยรวม: Ready, Needs Clarification, Blocked หรือ Not Ready
 
+- ใช้ /review-github-issue ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)

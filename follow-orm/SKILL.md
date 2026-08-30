@@ -135,6 +135,10 @@ related:
 - ห้ามเปิด transaction ใน business logic
 - ห้ามใช้ `any` สำหรับ database results — ใช้ mapper functions
 
+- ใช้ /follow-clean-architecture ถ้าจำเป็น
+- ใช้ /follow-layered-architecture ถ้าจำเป็น
+- ใช้ /use-lib-effective ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Repository interfaces ที่ framework-agnostic

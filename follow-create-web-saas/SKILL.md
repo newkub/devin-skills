@@ -158,6 +158,12 @@ related:
 - ใช้ `environment variables` สำหรับ non-sensitive config
 - ถ้ามี destructive changes → dry run ก่อน
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web-landing ถ้าจำเป็น
+- ใช้ /follow-create-web-paas ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /deploy-to-vercel ถ้าจำเป็น
+
 ## Expected Outcome
 
 - SaaS website รันด้วย SolidJS + TanStack + oRPC + Elysia + UnoCSS

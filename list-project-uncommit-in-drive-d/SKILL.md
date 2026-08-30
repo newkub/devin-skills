@@ -85,6 +85,8 @@ related:
 - ใช้ `Depth 4` เป็นค่าเริ่มต้น
 - ถ้า project อยู่ลึกกว่า → ขยาย depth หรือระบุ root path เฉพาะ
 
+- ใช้ /list-project-git-in-computer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ project บน `D:\` ทีมี uncommitted changes หรือ untracked files

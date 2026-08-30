@@ -117,6 +117,9 @@ related:
 - ใช้ `/report` สำหรับ executive summary
 - สรุป top 5 highlights ของสัปดาห์
 
+- ใช้ /list-program-in-computer ถ้าจำเป็น
+- ใช้ /report-my-global-cli ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงานอัปเดต CLI tools ประจำสัปดาห์

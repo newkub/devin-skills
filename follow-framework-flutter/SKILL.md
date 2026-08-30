@@ -136,6 +136,13 @@ related:
 - ใช้ `mocktail` สำหรับ mocks
 - Code generation ต้องรันก่อน commit
 
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Flutter project ใช้ Clean Architecture แบ่ง layers ชัดเจน

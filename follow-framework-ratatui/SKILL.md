@@ -121,6 +121,13 @@ related:
 - จัดการ recoverable errors อย่าง graceful
 - Log errors สำหรับ debugging
 
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - TUI application ที่ทำงานได้จริง

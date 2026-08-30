@@ -150,6 +150,15 @@ Map variable names ไปยัง services:
 - ไม่ให้ user deploy ก่อนยืนยันว่า secrets ครบ
 - ไม่แนะนำให้เก็บค่าลง `.env`
 
+- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-create-product ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-deploy ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
+- ใช้ /deploy-to-vercel ถ้าจำเป็น
+- ใช้ /deploy-to-railway ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `.env.example` ถูกอ่านและแยก keys ออกมา

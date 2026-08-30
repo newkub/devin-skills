@@ -142,6 +142,9 @@ related:
 - ไม่แก้ไข project `mise.toml` โดยไม่ได้รับอนุญาต
 - commit หรือ backup global config ก่อนแก้ถ้าจำเป็น
 
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /delete ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `[tasks.cleanup]` อยู่ใน global `mise.toml`

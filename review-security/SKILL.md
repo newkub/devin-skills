@@ -138,6 +138,9 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /check-secrets-leak ถ้าจำเป็น
+- ใช้ /analyze-attack-surface ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก security section

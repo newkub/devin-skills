@@ -11,6 +11,10 @@ related:
   - follow-solid-tanstack
   - follow-lib-unocss
   - follow-robots-txt
+  - improve-uxui
+  - optimize-everything
+  - follow-design-system
+  - review-uxui
 ---
 
 ## Goal
@@ -63,6 +67,8 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
+- ทำ `/improve-uxui` สำหรับปรับ UX/UI ก่อน deploy
+- ทำ `/optimize-everything` สำหรับ SEO/performance/bundle
 - ทำ `/review-frontend` ก่อน deploy
 - ทำ `/realize-implementation` หลัง website เสร็จ
 
@@ -78,6 +84,12 @@ related:
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, commands, skill names
 - รายงานด้วย `/report-table`
+
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /review-techstack ถ้าจำเป็น
+- ใช้ /follow-lib-unocss ถ้าจำเป็น
+- ใช้ /follow-design-system ถ้าจำเป็น
+- ใช้ /review-uxui ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -84,6 +84,8 @@ related:
 - ถ้าข้อมูลไม่พอ → ใช้ `/ask-project-requirement`
 - ถ้าผู้ใช้บอกให้หยุดถาม/ทำเลย → ใช้ `/dont-ask`
 
+- ใช้ /ask-me ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ผู้ใช้เข้าใจคำถาม/คำอธิบายใหม่

@@ -27,6 +27,13 @@ run task มีปัญหา ต้อง cleanup file ต่างๆ เช�
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
+- ใช้ /cleanup-files-in-project ถ้าจำเป็น
+- ใช้ /cleanup-git-branch ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 Completed `run-cleanup` workflow with correct output

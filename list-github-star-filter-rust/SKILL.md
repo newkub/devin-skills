@@ -73,6 +73,9 @@ related:
 - ถ้า username private → ต้องมี scope `read:user`
 - ถ้าไม่มีสิทธิ์ → แจ้ง user
 
+- ใช้ /list-github-star-latest ถ้าจำเป็น
+- ใช้ /list-github-repo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ 50 starred repositories ล่าสุดทีภาษาหลักเป็น Rust

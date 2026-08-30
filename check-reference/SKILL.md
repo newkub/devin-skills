@@ -81,6 +81,10 @@ related:
 - ตรวจสอบ version ล่าสุด
 - ตรวจสอบ deprecation notices
 
+- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /check-secrets-leak ถ้าจำเป็น
+- ใช้ /update-references ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Reference จาก sources ต่างๆ ถูกตรวจสอบครบถ้วน

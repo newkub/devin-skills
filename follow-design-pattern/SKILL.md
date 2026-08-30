@@ -63,6 +63,9 @@ related:
 - หลีกเลี่ยง anti-patterns ที่ทำให้ code ซับซ้อนโดยไม่จำเป็น
 - ทำตาม project conventions และ global rules
 
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-category-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เลือก pattern ที่เหมาะสมกับปัญหาได้อย่างถูกต้อง

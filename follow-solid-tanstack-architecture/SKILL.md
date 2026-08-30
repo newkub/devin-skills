@@ -206,6 +206,9 @@ apps/
 - ถ้าใช้ UnoCSS → เพิ่ม `@unocss/vite` plugin
 - ทำ `/follow-tool-vitest` สำหรับ testing strategy
 
+- ใช้ /follow-solid-tanstack ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - TanStack Start + SolidJS structure ที่ถูกต้องพร้อม `modules/` และ monorepo support

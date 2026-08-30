@@ -63,6 +63,10 @@ related:
 - รายงานผลเป็นรายการ path พร้อม `devin` command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
+- ใช้ /create-report-in-dot-devin ถ้าจำเป็น
+- ใช้ /list-devin-user-request-in-this-session ถ้าจำเป็น
+- ใช้ /open-in-explorer ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Devin session เริ่มต้นด้วย target path เป็น workspace หรือ context

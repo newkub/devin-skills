@@ -76,6 +76,8 @@ related:
 - ระบุ `local-only` ถ้าไม่มี remote
 - รองรับ Workers, Pages และ Wrangler config ทุก format
 
+- ใช้ /list-cloudflare-worker-fail ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ Cloudflare projects ทั้งหมดในเครื่อง

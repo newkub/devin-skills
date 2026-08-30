@@ -1,6 +1,6 @@
 ---
 name: create-cloudflare-worker
-description: สร้าง Cloudflare Workers project พร้อมเชื่อม Git repo และถามเรื่อง Cloudflare Access โดยไม่ต้องกด UI เอง
+description: สร้าง Cloudflare Workers project พร้อม Git connect และ Cloudflare Access setup
 argument-hint: "[project-name]"
 related:
   - create-cloudflare-token
@@ -224,6 +224,10 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 - ถ้า API ไม่สำเร็จ ให้เปิด dashboard พร้อม guide ขั้นตอน
 - ไม่ commit `.env` หรือ token ลง repo
 - รองรับ Bun, npm, pnpm ตาม context ของ project
+
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
 
 ## Expected Outcome
 

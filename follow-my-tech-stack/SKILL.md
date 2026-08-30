@@ -154,6 +154,10 @@ related:
 - ดู `/follow-tool-rolldown` และ `/follow-tool-oxlint` สำหรับ setup และ best practices
 - ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด
 
+- ใช้ /use-bun-native-api ถ้าจำเป็น
+- ใช้ /follow-lib-esm-sh ถ้าจำเป็น
+- ใช้ /use-lib-effective ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการสรุป tech stack ที่ครบถ้วนครอบคลุมทั้ง TypeScript และ Rust

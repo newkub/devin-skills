@@ -97,6 +97,12 @@ related:
 - ใช้ `zed_extension_api::current_platform()` แทน `std::env::var`
 - หลีกเลี่ยง `std::fs` ใน WASM; ใช้ `Worktree` methods
 
+- ใช้ /follow-create-rust-crate ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /open-in-zed ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `extension.toml` ถูกต้อง

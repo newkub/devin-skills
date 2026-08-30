@@ -89,6 +89,11 @@ related:
 - ใช้ `ignoreFiles` ใน `knip.json` สำหรับ generated files ที่ไม่ควรตรวจ
 - ห้ามลบไฟล์ใน `dist/`, `build/`, `.output/`, `node_modules/` — เป็น build artifacts
 
+- ใช้ /check-should-update ถ้าจำเป็น
+- ใช้ /cleanup-files-in-project ถ้าจำเป็น
+- ใช้ /check-dead-code ถ้าจำเป็น
+- ใช้ /delete-projects ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ unused files ที่ยืนยันแล้ว (หรือไม่มีถ้าผลลัพธ์ว่าง)

@@ -87,6 +87,12 @@ related:
 - ใช้ queue/stack สำหรับ BFS/DFS
 - ใช้ library เช่น `graphlib` ถ้าจำเป็น
 
+- ใช้ /follow-math-discrete-math ถ้าจำเป็น
+- ใช้ /follow-algorithms ถ้าจำเป็น
+- ใช้ /follow-data-structures ถ้าจำเป็น
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถสร้าง graph จากปัญหา

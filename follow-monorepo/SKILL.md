@@ -151,6 +151,8 @@ related:
 - ใช้ `/run-test-all` สำหรับทดสอบทั้ง monorepo
 - ใช้ task pipeline สำหรับ test orchestration
 
+- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - โครงสร้าง monorepo ชัดเจนพร้อมการแยกส่วนที่เหมาะสม

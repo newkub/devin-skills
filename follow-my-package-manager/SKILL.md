@@ -126,6 +126,8 @@ related:
 - แสดง OS, package manager ทีเลือก, command, และเหตุผลสั้นๆ
 - ถ้า program ไม่อยู่ใน package manager ใด ให้ระบุทางเลือก fallback
 
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ได้ package manager ทีเหมาะสมสำหรับ OS และ action

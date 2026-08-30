@@ -101,6 +101,8 @@ related:
 - สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
 - ใช้ `git commit` ทีละ layer
 
+- ใช้ /review-devin-global-subagents ถ้าจำเป็น
+
 ## Expected Outcome
 
 - global rules, global skills, global subagents สอดคล้องกัน

@@ -84,6 +84,10 @@ related:
 - ใช้ `pipe`/`compose` สำหรับ function composition
 - ใช้ library เช่น `fp-ts`, `effect` ถ้าจำเป็น
 
+- ใช้ /follow-programming-paradigm ถ้าจำเป็น
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถอธิบาย category, functor, monad

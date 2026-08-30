@@ -61,6 +61,13 @@ related:
 - ใช้ SRI hashes สำหรับ security
 - Monitor CDN performance
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Loading performance ที่ดีขึ้นด้วย multi-CDN

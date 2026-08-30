@@ -96,6 +96,11 @@ related:
 - ใช้ `--throttle` เพื่อจำลอง real network
 - ใช้ `--samples N` สำหรับ multiple runs
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-tool-playwright ถ้าจำเป็น
+- ใช้ /follow-test ถ้าจำเป็น
+- ใช้ /follow-deploy ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

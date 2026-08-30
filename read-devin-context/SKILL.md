@@ -103,6 +103,10 @@ related:
 - ระบุ context ที่หาไม่เจอหรือขาดหาย
 - ไม่แก้ไข context ใน step นี้
 
+- ใช้ /assume-reset-context ถ้าจำเป็น
+- ใช้ /follow-context-engineering ถ้าจำเป็น
+- ใช้ /prepare-skills-context ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ context ทั้งหมดพร้อม location และ status

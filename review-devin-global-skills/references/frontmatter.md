@@ -27,6 +27,9 @@
 - ตรวจว่า skill อื่นมี `related` อ้างกลับมาหรือไม่
 - ถ้ามี skill ที่ไม่ถูกอ้างใน `related` ของ skill นี้แต่ควรอ้าง → flag เป็น High (unused)
 - ตรวจ circular dependencies: A → B → A → flag เป็น High (circular)
+- ตรวจทุก `related` entry ว่ามีปรากฏใน content ของ `SKILL.md` หรือไม่
+- ถ้า `related` มีใน frontmatter แต่ไม่มีใน content → flag เป็น Medium (orphan reference)
+- นับการ mention ใน content ทั้งชื่อ skill, `/skill-name`, หรือชื่อ directory
 
 ## Scoring
 

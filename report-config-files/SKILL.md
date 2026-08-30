@@ -59,6 +59,8 @@ related:
 
 - ใช้ conventions ของ framework เช่น `.env` สำหรับ JS, `Cargo.toml` สำหรับ Rust
 
+- ใช้ /list-ci-configs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ config files ทั้งหมด

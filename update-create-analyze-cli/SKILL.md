@@ -151,6 +151,8 @@ Review แล้วสร้างหรืออัปเดต `tools/analyze`
 - คำนวณ review score ตาม severity: Critical=0, High=25, Medium=50, Low=75, Info=100
 - ถ้า score < 70 → ต้อง update ก่อนดำเนินการ
 
+- ใช้ /follow-clean-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `tools/analyze` เป็น workspace `tools-analyze` ที่รัน standalone ได้

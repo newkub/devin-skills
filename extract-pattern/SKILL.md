@@ -64,6 +64,10 @@ related:
 4. ห้ามเขียน rules ที่ซับซ้อนเกินความจำเป็น
 5. ต้องครอบคลุมทุกกรณีที่เป็นไปได้
 
+- ใช้ /follow-design-pattern ถ้าจำเป็น
+- ใช้ /learn-from-pattern ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Pattern rules ที่ชัดเจนและเข้าใจง่าย

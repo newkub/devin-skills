@@ -117,6 +117,9 @@ related:
 - ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret` เมื่อต้องการ config/secrets
 - scripts ทีต้องการ secrets ให้ใช้ `infisical run -- <command>`
 
+- ใช้ /follow-tool-hk ถ้าจำเป็น
+- ใช้ /use-ast-grep ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `package.json` มี scripts ตาม template ที่เลือก (state change)

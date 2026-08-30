@@ -53,6 +53,10 @@ related:
 - ปิดพร้อม comment อธิบายเหตุผล
 - ห้าม mass-close โดยไม่ได้รับอนุมัติ
 
+- ใช้ /cleanup-github-task ถ้าจำเป็น
+- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
+- ใช้ /cleanup-files-in-project ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Issues ที่ค้างอยู่ถูกปิดหรือลบ

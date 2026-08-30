@@ -205,6 +205,9 @@ Monitor และ debug deployments อย่างมีประสิทธ�
 - ตรวจสอบ deployment metrics แล告 analytics
 - ใช้ Vercel dashboard สำหรับ detailed insights
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-service-vercel ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Vercel CLI ติดตั้งและตั้งค่าอย่างถูกต้อง

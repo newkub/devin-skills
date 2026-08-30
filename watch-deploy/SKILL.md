@@ -103,6 +103,10 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 - ไม่ส่ง headers ลับ เช่น API keys, โดยไม่ได้รับอนุญาต
 - หยุดทันทีเมื่อ user กด `Ctrl+C`
 
+- ใช้ /run-watch-build ถ้าจำเป็น
+- ใช้ /run-watch-test ถ้าจำเป็น
+- ใช้ /run-watch-typecheck ถ้าจำเป็น
+
 ## Expected Outcome
 
 - URL ที่ deploy ไปถูก poll ซ้ำจนกว่าจะ healthy หรือหมดเวลา

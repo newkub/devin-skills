@@ -62,6 +62,11 @@ related:
 - ตรวจสอบเนื้อหาก่อน commit
 - ถ้าไฟล์ใหญ่เกิน 10 MB ให้แจ้ง user
 
+- ใช้ /save-to-notes-idea ถ้าจำเป็น
+- ใช้ /implement-from-notes-idea ถ้าจำเป็น
+- ใช้ /list-notes ถ้าจำเป็น
+- ใช้ /open-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Note ถูกสร้างใน `D:\newkub\notes`

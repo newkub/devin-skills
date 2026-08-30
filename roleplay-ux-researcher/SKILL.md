@@ -135,6 +135,8 @@ Actionability:
 - สรุป research questions และ pain points
 - แนะนำ action ถัดไป
 
+- ใช้ /report-uxui-sketch ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน UX research review จากมุมมอง UX researcher

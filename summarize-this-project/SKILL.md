@@ -100,6 +100,10 @@ related:
 - ใช้ concise language
 - จัดลำดับตามความสำคัญ
 
+- ใช้ /summarize-this-chat-session ถ้าจำเป็น
+- ใช้ /at-this-repo ถ้าจำเป็น
+- ใช้ /edit-this-repo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Project overview ที่ชัดเจน

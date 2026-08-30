@@ -200,6 +200,12 @@ related:
 - รายงานเป็นตารางด้วย `/report-table`
 - ทุก report table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 
+- ใช้ /review-seo ถ้าจำเป็น
+- ใช้ /review-workflow ถ้าจำเป็น
+- ใช้ /review-workspace ถ้าจำเป็น
+- ใช้ /review-writing ถ้าจำเป็น
+- ใช้ /follow-deep ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รู้ว่า review อะไรและใช้ review skill ใด

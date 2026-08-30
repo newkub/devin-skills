@@ -124,6 +124,8 @@ related:
 - ถ้า issue ซับซ้อน → แบ่งเป็นหลาย retro session
 - จบที action plan ไม่ใช่แค่ discussion
 
+- ใช้ /follow-incident-triage ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. Timeline ของ incident ทีละเอียดและตรงตาม facts

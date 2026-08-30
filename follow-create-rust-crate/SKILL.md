@@ -109,6 +109,13 @@ related:
 - ระบุ `edition = "2024"`
 - `crate-type` เป้น `["lib"]` ยกเว้นต้องใช้ FFI
 
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Rust crate build ผ่าน `cargo build`

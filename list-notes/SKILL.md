@@ -70,6 +70,9 @@ related:
 
 - ถ้าไม่พบ note ให้เสนอใช้ `/save-to-notes-idea`
 
+- ใช้ /save-to-new-notes ถ้าจำเป็น
+- ใช้ /implement-from-notes-idea ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ notes

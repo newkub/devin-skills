@@ -114,6 +114,9 @@ related:
 - ถ้า uninstall ล้มเหลว ให้เก็บ error message
 - แนะนำวิธีแก้ไขหรือ fallback
 
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+- ใช้ /download-program ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Program ถูกลบออกจากระบบ

@@ -114,6 +114,10 @@ related:
 - `check-file-relations` วิเคราะห์และรายงานเท่านั้น
 - ถ้าต้องการแก้ → ทำ `/update-references` หลังจากนี้
 
+- ใช้ /check-code-structure ถ้าจำเป็น
+- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Relation map ครอบคลุม local imports และ global references

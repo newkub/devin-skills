@@ -77,6 +77,9 @@ related:
 - ไม่ hardcode API key
 - ใช้ environment variable หรือถาม user
 
+- ใช้ /gen-subtitle-video ถ้าจำเป็น
+- ใช้ /gen-ai-videos ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์เสียงจากข้อความ

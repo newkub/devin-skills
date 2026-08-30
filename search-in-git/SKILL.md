@@ -95,6 +95,8 @@ related:
 - แสดง exact match และ context สั้นๆ
 - เรียงผลลัพธ์ตาม date ล่าสุดก่อน
 
+- ใช้ /check-git-files-history ถ้าจำเป็น
+
 ## Expected Outcome
 
 - หา commit/file/line ทีตรงเงื่อนไขได้

@@ -111,6 +111,8 @@ related:
 - การย้ายไฟล์ (Step 4) เป็น high-risk action → ต้องมี user confirmation และ dry run mode
 - ถ้า validation ไม่ผ่าน → rollback การเปลี่ยนแปลง
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุกไฟล์มี `single responsibility` ชัดเจน ไม่เกิน 250 บรรทัด

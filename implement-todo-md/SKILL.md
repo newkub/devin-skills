@@ -88,6 +88,8 @@ related:
 - ถ้ามี dependency → รอ task ก่อนหน้าเสร็จ
 - ไม่เพิ่ม task ใหม่โดยไม่มีเหตุผล
 
+- ใช้ /update-todo-md ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุก `pending` task ใน `TODO.md` ถูก implement

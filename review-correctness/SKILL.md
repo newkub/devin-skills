@@ -123,6 +123,15 @@ Review implementation correctness ของ code, configuration, และ tests
 - รายงานเป็นตารางด้วย `/report-table`
 - ตารางทุกใบต้องมี `No.` เป็นคอลัมน์แรก
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /scan-codebase ถ้าจำเป็น
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
+- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน correctness findings ครอบคลุมทุก dimension

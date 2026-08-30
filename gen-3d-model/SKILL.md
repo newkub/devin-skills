@@ -85,6 +85,10 @@ related:
 - รองรับ `.fbx`, `.obj` ตาม CLI
 - เก็บ output ใน project directory
 
+- ใช้ /gen-ai-images ถ้าจำเป็น
+- ใช้ /gen-ai-videos ถ้าจำเป็น
+- ใช้ /gen-changelog-md ถ้าจำเป็น
+
 ## Expected Outcome
 
 - 3D model ไฟล์ถูกสร้างจาก prompt/image

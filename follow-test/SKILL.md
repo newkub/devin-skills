@@ -182,6 +182,13 @@ tests/
 - เพิ่ม test cases สำหรับ bugs ที่พบ ใช้ mutation testing สำหรับ critical code
 - ห้ามข้าม regression testing เพื่อ save time หรือรันเฉพาะ unit tests และข้าม integration/e2e
 
+- ใช้ /follow-math-combinatorics ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-proofs ถ้าจำเป็น
+- ใช้ /follow-math-numerical-methods ถ้าจำเป็น
+- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Test scripts ตั้งค่าครบถ้วนใน `package.json`

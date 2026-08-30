@@ -105,6 +105,9 @@ related:
 - ไม่ใช้ placeholder assertions
 - ตรวจ output/behavior จริง
 
+- ใช้ /follow-math-proofs ถ้าจำเป็น
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Feature ถูก cover ด้วย tests ทีเขียนก่อน

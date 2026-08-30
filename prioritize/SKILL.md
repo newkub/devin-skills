@@ -132,6 +132,10 @@ related:
 - ปรับ priority ตาม business needs
 - ยืนยัน priority สุดท้ายก่อนเริ่มทำ
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Tasks ถูกจัดลำดับความสำคัญอย่างถูกต้อง

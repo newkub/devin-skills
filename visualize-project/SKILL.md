@@ -144,6 +144,9 @@ related:
 - Scroll ข้างขวาแล้ว active item ข้างซ้ายเปลี่ยนอัตโนมัติ
 - Click ข้างซ้ายแล้ว scroll ข้างขวาไปยัง item นั้น
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /visualize-repo-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Temp Vite + Solid + TanStack project รันบน browser ได้ พร้อม UnoCSS `presetWind4`

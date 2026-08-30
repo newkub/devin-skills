@@ -118,6 +118,10 @@ Commit submodule updates ถ้าต้องการ
 - จัดการ network errors
 - ใช้ retries สำหรับ failed updates
 
+- ใช้ /convert-to-git-submodules ถ้าจำเป็น
+- ใช้ /delete-git-submodules ถ้าจำเป็น
+- ใช้ /list-git-submodules ถ้าจำเป็น
+
 ## Expected Outcome
 
 - git submodules ทั้งหมดใน drive D ถูกอัพเดทไปยัง latest remote version

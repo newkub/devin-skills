@@ -165,6 +165,10 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - user-friendly error messages
 - optimistic updates เฉพาะเมื่อเหมาะสม
 
+- ใช้ /realize-implementation ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไม่มี TODO/MOCK/FAKE/STUB/placeholder ใน production code

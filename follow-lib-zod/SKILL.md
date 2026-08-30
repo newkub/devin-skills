@@ -167,6 +167,10 @@ related:
 
 - test schemas อย่างครอบคลุม
 
+- ใช้ /follow-math-predicate-logic ถ้าจำเป็น
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Zod ติดตั้งและตั้งค่าอย่างถูกต้อง

@@ -221,6 +221,9 @@ related:
 - ถ้าไฟล์ที่มีอยู่ถูกต้องแล้ว → ไม่สร้างใหม่ แต่อัปเดตเฉพาะส่วนที่ขาด
 - ถ้ามา user settings ที่ขัดแย้ง → workspace settings จะ override โดยอัตโนมัติ
 
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `.vscode/` directory มาไฟล์ครบ: `settings.json`, `extensions.json`, `launch.json`, `tasks.json`

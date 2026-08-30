@@ -225,6 +225,10 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Test input -> output mapping: ส่ง input ผ่าน handler แล้วตรวจสอบ output
 - Test error fallback: เมื่อ service throw ต้อง return fallback ที่ถูกต้อง
 
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /deep-test ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Test files อยู่ใน location ที่ถูกต้องตาม conventions

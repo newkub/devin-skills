@@ -89,6 +89,13 @@ related:
 - เก็บชื่อ branch สื่อความหมาย
 - ใช้ kebab-case สำหรับ branch names
 
+- ใช้ /cleanup-git-branch ถ้าจำเป็น
+- ใช้ /create-git-branch ถ้าจำเป็น
+- ใช้ /delete-git-branch ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

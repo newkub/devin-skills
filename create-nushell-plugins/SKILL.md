@@ -108,6 +108,10 @@ related:
 - ใช้ `MsgPackSerializer` สำหรับ production
 - ใช้ `JsonSerializer` สำหรับ debug หรือทดสอบ protocol
 
+- ใช้ /follow-create-biome-plugins ถ้าจำเป็น
+- ใช้ /follow-create-bun-plugins ถ้าจำเป็น
+- ใช้ /follow-create-devin-plugins ถ้าจำเป็น
+
 ## Expected Outcome
 
 - NuShell plugin ที่ build และ register ได้สำเร็จ

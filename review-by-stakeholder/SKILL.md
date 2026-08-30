@@ -81,6 +81,8 @@ Review project จากหลายมุมมองของ stakeholder โ�
 - ให้แต่ละ roleplay ทำงานของตัวเองตามกฎของ roleplay
 - ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow
 
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)

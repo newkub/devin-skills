@@ -24,7 +24,6 @@ related:
 - Browser history analysis
 - User behavior analysis
 - Development environment
-
 ## Execute
 
 ### 1. List Operating System
@@ -234,6 +233,10 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 - ใช้ headers ชัดเจน
 - ใช้ alignment ที่เหมาะสม
 - ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
+
+- ใช้ /check-system-env ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

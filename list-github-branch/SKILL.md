@@ -58,6 +58,10 @@ related:
 - ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
 - แสดงข้อมูลสำคัญ: branch name, last commit SHA, protected status
 
+- ใช้ /list-git-branch ถ้าจำเป็น
+- ใช้ /cleanup-git-branch ถ้าจำเป็น
+- ใช้ /create-dev-branch ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ branches ทั้งหมดของ repository

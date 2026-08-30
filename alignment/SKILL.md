@@ -117,6 +117,7 @@ related:
 - ใช้ `/review-references` ก่อนและหลังแก้ไข
 - ไม่สร้าง circular references
 
+- ใช้ /update-project-skills ถ้าจำเป็น
 ## Expected Outcome
 
 - devin rules, ast-grep rules, `sgconfig.yml` สอดคล้องกัน

@@ -84,6 +84,12 @@ related:
 - ใช้ outputs สำหรับ E2E tests
 - หลีกเลี่ยง publishing บน tags
 
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-release-it ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-renovate ถ้าจำเป็น
+- ใช้ /follow-tool-node-modules-inspector ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

@@ -176,6 +176,13 @@ export default defineConfig([
 - ใส่ `prettier` config เป็นตัวสุดท้าย
 - ไม่ใช้ `.eslintignore` ใน ESLint 9
 
+- ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

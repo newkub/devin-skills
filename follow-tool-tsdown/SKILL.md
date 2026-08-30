@@ -108,6 +108,13 @@ related:
 - ตรวจสอบว่า output เหมือนเดิมหลัง migrate
 - แก้ config ที่ incompatible
 
+- ใช้ /follow-tool-rolldown ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-tool-build-packages ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

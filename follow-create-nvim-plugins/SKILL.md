@@ -89,6 +89,8 @@ related:
 - หลีกเลี่ยงการโหลด plugin ที่ไม่จำเป็น
 - Neovim startup time < 50ms — ดู [references/plugin-management.md](references/plugin-management.md)
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Neovim plugins จัดการด้วย `lazy.nvim`

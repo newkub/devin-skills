@@ -75,6 +75,9 @@ related:
 - ไม่ hardcode API key
 - ใช้ environment variable หรือถามก่อน
 
+- ใช้ /gen-ai-images ถ้าจำเป็น
+- ใช้ /gen-subtitle-video ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์วิดีโอถูกสร้างจาก prompt

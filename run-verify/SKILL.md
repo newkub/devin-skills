@@ -98,6 +98,16 @@ related:
 - small project ต้องมี `verify` = `scan + format + lint + typecheck + test + build` (format ก่อน lint)
 - large project ใช้ CI/CD pipeline รัน full suite
 
+- ใช้ /run-scan ถ้าจำเป็น
+- ใช้ /run-lint ถ้าจำเป็น
+- ใช้ /run-typecheck ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-all ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+
 ## Expected Outcome
 
 - small project: code ผ่าน scan, format, lint, typecheck, test, build บน local

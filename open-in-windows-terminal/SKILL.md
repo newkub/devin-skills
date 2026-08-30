@@ -65,6 +65,10 @@ related:
 - รายงานผลเป็นรายการ path พร้อม `wt` command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
+- ใช้ /view-files-in-terminal ถ้าจำเป็น
+- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /from-recent-windows-capture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Directory หรือ parent directory ของ file ถูกเปิดใน Windows Terminal tab/window ใหม่

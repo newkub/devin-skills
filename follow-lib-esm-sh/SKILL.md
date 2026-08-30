@@ -50,6 +50,13 @@ related:
 - ใช้ `?external` สำหรับ peer dependencies
 - Test ใน production ก่อน deploy
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Bundle size ที่เล็กลงด้วย tree-shaking

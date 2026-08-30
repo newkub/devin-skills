@@ -172,6 +172,9 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 - `lockIssues`: lock issues ที่ merged ใน PRs
 - `includeBotPrs`: comment บน PRs จาก bots
 
+- ใช้ /follow-tool-release-it ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

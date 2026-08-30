@@ -99,6 +99,9 @@ related:
 - รัน review-codebase ให้ผ่านก่อนใช้งาน
 - ถ้ามี analyzer error ให้แก้ไขก่อน
 
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-analyze-by-use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `tools/review-codebase` ครอบคลุม features ปัจจุบัน

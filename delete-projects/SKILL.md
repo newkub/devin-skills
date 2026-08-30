@@ -141,6 +141,11 @@ related:
 - บันทึกรายการ resources ที่ลบ
 - ถ้าลบผิดพลาด → แจ้ง user และระบุขั้นตอนกู้คืน
 
+- ใช้ /delete-git-branch ถ้าจำเป็น
+- ใช้ /delete-git-worktree ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /list-cloudflare-projects ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Local directory ถูกลบ

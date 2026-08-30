@@ -167,6 +167,8 @@ related:
 - ตรวจสอบความถูกต้องด้วย linter และ typecheck
 - รัน tests เพื่อยืนยันว่าไม่มี regression
 
+- ใช้ /research-setup ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ข้อมูลที่ครบถ้วนจาก multiple sources

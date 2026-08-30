@@ -63,6 +63,13 @@ related:
 - ใช้ streaming สำหรับ large files
 - ใช้ pagination helpers สำหรับ large datasets
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Integration กับ AWS services ที่ reliable

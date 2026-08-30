@@ -50,6 +50,8 @@ related:
 - ถ้า ecosystem ไม่อยู่ใน list → ใช้ `/research-dependencies` หา tool เพิ่มเติม
 - ใช้ `--latest` เฉพาะเมื่อมี network และไม่ต้องการส่ง request มากเกินไป
 
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /follow-create-rust-cli ถ้าจำเป็น
 ## Expected Outcome
 
 - รายการ dependencies พร้อม version และ source

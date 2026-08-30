@@ -223,6 +223,13 @@ Migration จาก presetWind3:
 - CSS custom properties generate แบบ on-demand
 - ไม่ต้อง import `@unocss/reset` (preflights อัตโนมัติ)
 
+- ใช้ /follow-lib-unocss-theme ถ้าจำเป็น
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. UnoCSS v66+ ติดตั้งและทำงานได้พร้อม presetWind4

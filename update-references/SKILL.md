@@ -132,6 +132,12 @@ related:
 - ตรวจสอบว่า code ยังทำงานได้
 - ตรวจสอบว่าไม่มี broken imports
 
+- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /edit-relative ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - References ทั้งหมดถูกอัปเดทครบถ้วนในทุกตำแหน่ง

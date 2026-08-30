@@ -163,6 +163,9 @@ related:
 - ระบุ `license` ถ้า publish สาธารณะ
 - รักษา backward compatibility เมื่อได้ยกเว้น major version bump
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Plugin directory สร้างถูกต้องตาม Devin CLI spec

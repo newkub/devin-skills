@@ -54,6 +54,13 @@ related:
 - ระบุ owner และ project number
 - ห้ามเปลี่ยนสถานะโดยไม่มี context
 
+- ใช้ /cleanup-github-task ถ้าจำเป็น
+- ใช้ /implement-github-task ถ้าจำเป็น
+- ใช้ /update-github-metadata ถ้าจำเป็น
+- ใช้ /update-references ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - fields ของงานถูกอัปเดต

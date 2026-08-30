@@ -126,6 +126,12 @@ related:
 - ใช้ `/follow-secret-manager` สำหรับ secrets
 - ใช้ `environment variables` สำหรับ non-sensitive config
 
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web-saas ถ้าจำเป็น
+- ใช้ /follow-create-web-paas ถ้าจำเป็น
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /deploy-to-vercel ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Landing website รันด้วย SolidJS + TanStack + UnoCSS

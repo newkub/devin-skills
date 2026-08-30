@@ -75,6 +75,13 @@ SOFTWARE.
 - ระบุ license ใน package manifest ให้ตรงกับ `LICENSE` file
 - อ้างอิง `https://choosealicense.com` สำหรับเลือก license
 
+- ใช้ /follow-agents-md ถ้าจำเป็น
+- ใช้ /gen-changelog-md ถ้าจำเป็น
+- ใช้ /implement-todo-md ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `LICENSE` file อยู่ที่ root directory

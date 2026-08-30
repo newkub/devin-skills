@@ -118,6 +118,8 @@ related:
 - รายงาน version และ path หลังติดตั้ง
 - ถ้าเปิดหน้า download ให้รายงาน URL พร้อมวิธีติดตั้งทั่วไป
 
+- ใช้ /use-pwsh-shell ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Program ถูกติดตั้งผ่าน package manager ทีเหมาะสมถ้าหาเจอ

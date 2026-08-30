@@ -71,6 +71,13 @@ related:
 - Optimize reactivity ด้วย `create_memo` สำหรับ expensive computations
 - Test SSR และ CSR modes ก่อน deploy
 
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Reactive web applications ด้วย Rust

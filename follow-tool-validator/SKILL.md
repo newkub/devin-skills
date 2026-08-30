@@ -95,6 +95,9 @@ related:
 - ถ้าต้อง validate ใน business logic → ควรย้ายไป schema layer
 - ห้ามใช้ manual `if (!x) throw` แทน schema validation
 
+- ใช้ /follow-tool-linter ถ้าจำเป็น
+- ใช้ /follow-lib-zod ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

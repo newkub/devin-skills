@@ -93,6 +93,11 @@ related:
 - ตรวจสอบว่า package ผ่าน tests และ lint ก่อน publish
 - ไม่ publish บน branch ทีไม่ได้รับอนุญาต
 
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-changesets ถ้าจำเป็น
+- ใช้ /follow-tool-git ถ้าจำเป็น
+- ใช้ /follow-test ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

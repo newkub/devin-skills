@@ -89,6 +89,11 @@ related:
 - `node:crypto` ใน Node/Bun
 - `libsodium` สำหรับ high-level crypto
 
+- ใช้ /follow-math-discrete-math ถ้าจำเป็น
+- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /open-github-secrets ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - สามารถเลือก hash/encryption ทีเหมาะสม

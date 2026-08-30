@@ -82,6 +82,8 @@ related:
 - แสดงรายการ URL ทีเปิด
 - รายงาน project ไหนเปิดไม่ได้
 
+- ใช้ /list-cloudflare-worker-fail ถ้าจำเป็น
+
 ## Expected Outcome
 
 - หน้า dashboard ของทุก Cloudflare project เปิดบน web

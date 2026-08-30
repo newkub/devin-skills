@@ -78,6 +78,10 @@ related:
 - ระบุผลเป็น `monorepo` หรือ `single-project`
 - ถ้าเป็น monorepo ให้ระบุ workspaces ทั้งหมดและ monorepo tool
 
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tool-moonrepo ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทราบว่า project เป็น monorepo หรือไม่ โดยไม่จำกัดที่ `package.json` workspaces เพียงอย่างเดียว

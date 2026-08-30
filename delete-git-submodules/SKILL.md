@@ -74,6 +74,9 @@ related:
 - ถ้าเป็น submodule ตัวเดียว ลบ `.gitmodules` ออกเลย
 - รัน `git gc` เสมอหลังลบเสร็จ
 
+- ใช้ /git-commit ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Submodule ลบออกจาก repository อย่างสมบูรณ์

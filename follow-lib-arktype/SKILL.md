@@ -130,6 +130,13 @@ related:
 
 - ใช้ Standard Schema integration เมื่อจำเป็น
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-lib-css ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Schema validation ที่รวดเร็วและแม่นยำ

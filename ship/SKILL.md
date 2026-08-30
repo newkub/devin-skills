@@ -210,6 +210,12 @@ Ship workspace ตั้งแต่ prepare จนถึง production โด�
 
 - ถ้า user ระบุ path ชัดเจน → ใช้ตามที user ระบุ
 
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /follow-github ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /git-push ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Workspace ถูก prepare และ verify

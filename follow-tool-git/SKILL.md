@@ -89,6 +89,13 @@ related:
 - ตรวจสอบ `git status` ให้สะอาดก่อน push
 - ใช้ `git diff` ตรวจงานก่อน commit
 
+- ใช้ /follow-tool-git-branch ถ้าจำเป็น
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /follow-git-workflows ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

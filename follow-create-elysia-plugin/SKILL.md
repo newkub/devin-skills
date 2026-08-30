@@ -96,6 +96,12 @@ related:
 - ใช้ lifecycle hooks สำหรับ cross-cutting concerns
 - ทดสอบด้วย `app.handle()` โดยไม่ต้อง listen port
 
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Elysia plugin package build ผ่าน

@@ -108,6 +108,13 @@ related:
 - Cache frequent search queries ถ้าจำเป็น
 - ใช้ `gh search` โดยตรงแทน API calls
 
+- ใช้ /list-repo-in-github-star ถ้าจำเป็น
+- ใช้ /list-github-star-filter-bun ถ้าจำเป็น
+- ใช้ /list-github-star-filter-rust ถ้าจำเป็น
+- ใช้ /follow-tool-websearch ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `gh` CLI command ที่ทำงานได้จริง

@@ -85,6 +85,9 @@ related:
 - สร้าง drawing ง่ายๆ ก่อน
 - ค่อยๆ เพิ่ม detail ถ้า user ต้องการ
 
+- ใช้ /draw-excalidraw ถ้าจำเป็น
+- ใช้ /draw-tldraw-diagram ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `.tldr` ทีเปิดใน tldraw ได้

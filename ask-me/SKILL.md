@@ -141,6 +141,7 @@ related:
 - ถ้าคำตอบของผู้ใช้นำไปสู่การแก้ไข ย้าย เปลี่ยนชื่อ หรือลบไฟล์/skill → ดำเนินการตามคำตอบแล้วทำ `/update-references` เสมอ
 - ไม่ต้องถามยืนยันก่อน update references เพราะเป็นขั้นตอนทีต้องทำเสมอหลังการเปลี่ยนแปลง
 
+- ใช้ /follow-your-suggestion ถ้าจำเป็น
 ## Examples
 
 ### Question Categories

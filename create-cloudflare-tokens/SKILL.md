@@ -119,6 +119,10 @@ console.log(url);
 - ไม่เขียน token ลง source code
 - เปิด dashboard ให้ user สร้างเอง
 
+- ใช้ /create-cloudflare-project ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
+- ใช้ /create-cloudflare-worker ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Token URL สำหรับสร้าง Cloudflare API token พร้อม permissions

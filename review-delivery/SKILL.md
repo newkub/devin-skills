@@ -80,6 +80,10 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ `/report-table` สำหรับรายงาน findings, score, actions
 
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /list-ci-configs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ตาราง aggregate findings จากทุก delivery section

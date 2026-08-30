@@ -167,6 +167,11 @@ services/
 - Services สามารถใช้ภาษาต่างกันได้
 - ปรับ deployment strategy ตามภาษา
 
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-monorepo ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Microservices Architecture ที่ loosely coupled

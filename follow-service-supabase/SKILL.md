@@ -167,6 +167,13 @@ related:
 - ใช้ `supabase functions deploy` สำหรับ functions
 - Test ก่อน deploy ด้วย `supabase db diff`
 
+- ใช้ /follow-service-aws-sdk ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้าจำเป็น
+- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Supabase CLI ติดตั้งและตั้งค่าอย่างถูกต้อง

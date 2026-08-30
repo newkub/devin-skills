@@ -104,6 +104,10 @@ related:
 - ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.ps1` สำหรับ PowerShell scripts
 
+- ใช้ /use-bun-shell ถ้าจำเป็น
+- ใช้ /use-nu-shell ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `pwsh` ติดตั้งและใช้งานได้

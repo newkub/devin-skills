@@ -96,6 +96,10 @@ related:
 - ห้ามส่ง skill ซ้ำซ้อน
 - ใช้ `argument-hint` ตามที่ skill ระบุ
 
+- ใช้ /update-project-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - อ่านและใช้ skill ได้อย่างถูกต้อง

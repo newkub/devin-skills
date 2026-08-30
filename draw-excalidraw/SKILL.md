@@ -80,6 +80,9 @@ related:
 - สร้าง diagram ง่ายๆ ก่อน ถ้า user ต้องการเพิ่มค่อยปรับ
 - ไม่ต้องสร้างทุก style option
 
+- ใช้ /draw-svg-image ถ้าจำเป็น
+- ใช้ /draw-tldraw ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `.excalidraw` ทีเปิดใน Excalidraw ได้

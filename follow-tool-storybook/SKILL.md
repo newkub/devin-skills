@@ -110,6 +110,11 @@ related:
 - ใช้ decorators สำหรับ context providers
 - รักษา components แบบ isolation
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-tool-playwright ถ้าจำเป็น
+- ใช้ /follow-tool-biome ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

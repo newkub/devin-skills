@@ -1,6 +1,6 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอรใหม่และขยายจากของเดิม สร้าง report ชั่วคราว และเปิด preview ด้วย open-files-in-web ได้
+description: สร้างไอเดียฟีเจอรใหม่ ขยายจากของเดิม และทำ report ชั่วคราว
 argument-hint: "[topic]"
 related:
   - create-report-in-dot-devin
@@ -147,6 +147,9 @@ related:
 - ถ้าสร้าง project สำหรับ features → ลบ `.git`, remote repo, submodules, web src ตาม context
 - เหลือแค่ `SKILL.md` หรือไฟล์ที่จำเป็นจริงๆ
 - ใช้ dry run ก่อน destructive actions
+
+- ใช้ /suggest-me ถ้าจำเป็น
+- ใช้ /report-uxui-sketch ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -114,6 +114,9 @@ related:
 - อัปเดต `AGENTS.md` ถ้ามี skill ใหม่
 - อัปเดต `related` ใน frontmatter ของ skills ที่เกี่ยวข้อง
 
+- ใช้ /update-devin-global-rules ถ้าจำเป็น
+- ใช้ /review-rules ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `global_rules.md` สอดคล้องกับ skills และ subagents

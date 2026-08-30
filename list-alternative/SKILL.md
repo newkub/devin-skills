@@ -96,6 +96,10 @@ related:
 - แนะนำ migration paths ถ้าจำเป็น
 - ให้ references สำหรับ deeper learning
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Alternatives ที่ดีกว่าพร้อมเปรียบเทียบ

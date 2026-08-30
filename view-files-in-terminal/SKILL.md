@@ -103,6 +103,10 @@ related:
 - ไม่ใช้ `bat` กับ binary files โดยตรง
 - ตรวจสอบ file permissions ก่อนอ่านไฟล์ที่ sensitive
 
+- ใช้ /open-in-windows-terminal ถ้าจำเป็น
+- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /record-video-terminal ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `bat` ติดตั้งและใช้งานได้

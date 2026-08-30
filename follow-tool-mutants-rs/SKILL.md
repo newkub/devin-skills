@@ -98,6 +98,12 @@ related:
 - ใช้ `timeout` เริ่มต้นที่เหมาะสม เพื่อป้องกัน tests แขวน
 - ไม่ hard-code paths หรือ secrets ใน `mutants.toml`
 
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-tool-nextest ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /update-test-everything ถ้าจำเป็น
+- ใช้ /follow-test ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

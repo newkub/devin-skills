@@ -178,6 +178,13 @@ jobs:
 - Types: สำหรับ type analysis (มีผลต่อ performance)
 - Vue: สำหรับ Vue projects
 
+- ใช้ /follow-create-biome-plugins ถ้าจำเป็น
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

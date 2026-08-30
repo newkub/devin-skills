@@ -102,6 +102,12 @@ related:
 - ลืมตั้งค่า permissions ใน workflow
 - ใช้ `--frozen-lockfile` ทำให้ Renovate ไม่สามารถ update lockfile ได้
 
+- ใช้ /follow-tool-renovate-json ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-pkg-new ถ้าจำเป็น
+- ใช้ /follow-tool-release-it ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

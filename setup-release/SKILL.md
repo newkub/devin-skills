@@ -105,6 +105,9 @@ related:
 - ถ้าใช้ semantic-release → `/follow-tool-semantic-release`
 - ถ้าใช้ changelogen → `/follow-tool-changelogen`
 
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - release tool ถูกตั้งค่าถูกต้อง

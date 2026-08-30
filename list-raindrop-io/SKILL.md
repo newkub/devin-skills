@@ -89,6 +89,10 @@ related:
 - `--human` ถ้า CLI รองรับและต้องการอ่านทันที
 - ใช้ `jq -r` เพื่อ raw string output
 
+- ใช้ /search-in-raindrop-io ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ bookmarks จาก Raindrop.io ทั้งหมดหรือจาก collection ที่ระบุ

@@ -224,6 +224,9 @@ export default {
 - ทำ `/follow-lang-typescript` สร้าง `docs/tsconfig.json` extends จาก root พร้อม `noEmit: true`, `types: ["vitepress"]`
 - สำหรับ monorepo ให้เพิ่ม `docs` ใน `exclude` ของ root `tsconfig.json`
 
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

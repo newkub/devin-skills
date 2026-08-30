@@ -125,6 +125,10 @@ on_output = { filter = "connected", run = "echo 'worker ready'" }
 - `pitchfork project enter --pid $$`
 - `pitchfork project leave --pid $$`
 
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

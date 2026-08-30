@@ -69,6 +69,13 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ทุก fix ต้องมีเหตุผลจาก review
 - ระบุ file path และ line number
 
+- ใช้ /unified-review-and-merge-pr ถ้าจำเป็น
+- ใช้ /watch-browser-and-fix ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)

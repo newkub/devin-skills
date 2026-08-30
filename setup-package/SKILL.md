@@ -95,6 +95,9 @@ related:
 - `setup-package` ไม่ publish package
 - publish ให้ใช้ `/publish-package-to-registry` หรือ `/run-release`
 
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - package manifest มี required fields ครบถ้วน

@@ -83,6 +83,12 @@ related:
 - `/open-web` เป้น fallback
 - `browser_preview` ถ้า user ต้องการ integrated browser
 
+- ใช้ /open-github-repo-personal ถ้าจำเป็น
+- ใช้ /open-github-repo-org ถ้าจำเป็น
+- ใช้ /open-github-issue ถ้าจำเป็น
+- ใช้ /open-github-pr ถ้าจำเป็น
+- ใช้ /explore-github-trending ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Browser เปิด `https://github.com/<owner>/<repo>/tree/<branch>`

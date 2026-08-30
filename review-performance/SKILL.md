@@ -137,6 +137,15 @@ Review application performance ครอบคลุม network, build/runtime, 
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 - ห้าม TODO, MOCK, placeholder
 
+- ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /run-profiler ถ้าจำเป็น
+- ใช้ /run-bench ถ้าจำเป็น
+- ใช้ /deep-analyze ถ้าจำเป็น
+- ใช้ /run-review ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน performance findings ครอบคลุมทุก dimension

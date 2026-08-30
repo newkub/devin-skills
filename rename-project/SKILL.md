@@ -180,6 +180,9 @@ Rename project จากชื่อเก่าเป้นชื่อให�
 - ตรวจ old name ซ้ำอย่างน้อย 2 รอบ
 - ไม่ commit ก่อนตรวจสอบครบทุกจุด
 
+- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
+- ใช้ /git-commit ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Project ถูก rename ทั่วทุกจุด

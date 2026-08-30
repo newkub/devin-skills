@@ -104,6 +104,8 @@ related:
 - ใส่ references: `/<skill-name>`, `references/<file>.md`, URLs
 - ไม่เกิน 250 บรรทัด
 
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการไอเดีย refactor สำหรับ devin skills repo

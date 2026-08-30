@@ -91,6 +91,12 @@ Profile performance เพื่อหา bottlenecks และ optimize
 - ใช้ measurements ไม่ใช่ assumptions
 - Optimize แบบ iterative
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Performance bottlenecks ถูกระบุ

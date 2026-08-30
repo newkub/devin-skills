@@ -104,6 +104,10 @@ related:
 - รายงานทุกรอบด้วย `/report` หรือ `/report-table`
 - ระบุจุดทีต้องให้คนตรวจสอบ
 
+- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /loop-until-complete ถ้าจำเป็น
+- ใช้ /run-until-pass ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เอกสารออกแบบ loop: goal, trigger, stop condition, max iterations, human gates

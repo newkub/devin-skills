@@ -122,6 +122,9 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 - รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning
 
+- ใช้ /review-frontend ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 - รายงาน SEO findings ครอบคลุมทุก dimension
 - Review score ต่อ dimension และ overall

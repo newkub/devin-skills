@@ -138,6 +138,8 @@ related:
 - ไม่ต้องรอผลจากทุก roleplay ถ้า findings ชัดเจน
 - ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/deep-validate`
 
+- ใช้ /follow-agents-md ถ้าจำเป็น
+
 ## Expected Outcome
 
 - root `AGENTS.md` สมบูรณ์

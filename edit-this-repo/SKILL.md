@@ -76,6 +76,9 @@ Edit files in the current repository safely, with clear scope, minimal changes, 
 - ถ้า AGENTS.md เปลี่ยน → `/update-agents-md` ทันที
 - แก้เฉพาะสิ่งที่ user ขอ
 
+- ใช้ /at-this-repo ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Target files ถูกแก้ไขตามทีขอ

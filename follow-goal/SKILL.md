@@ -94,6 +94,10 @@ related:
 - ปรับแผนตาม feedback
 - ตรวจสอบว่าแผนครอบคลุมทุกอย่าง
 
+- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-game-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เป้าหมายที่ชัดเจนและวัดผลได้

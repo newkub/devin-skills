@@ -106,6 +106,15 @@ Build release artifact ตาม platform แล้วรัน smoke test ก�
 - ไม่ใช้ `--force` หรือ `--force-with-lease`
 - ไม่ rewrite history
 
+- ใช้ /setup-release ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /review-release ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /setup-package ถ้าจำเป็น
+- ใช้ /watch-release ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Release artifact ถูกสร้างสำเร็จตาม platform

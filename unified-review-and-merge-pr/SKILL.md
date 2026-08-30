@@ -148,6 +148,8 @@ Review pull request อย่างครบถ้วน แล้ว merge ถ�
 - ไม่ใช้ `--force` หรือ `--force-with-lease`
 - ไม่ rewrite history
 
+- ใช้ /merge-github-pr ถ้าจำเป็น
+
 ## Expected Outcome
 
 - PR ถูก review ครบถ้วน

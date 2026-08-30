@@ -62,6 +62,10 @@ related:
 - เรียงตามวันที่ publish ล่าสุด
 - แสดงข้อมูลสำคัญ: tag, title, draft, prerelease, published, author
 
+- ใช้ /list-git-release ถ้าจำเป็น
+- ใช้ /list-github-action-fail ถ้าจำเป็น
+- ใช้ /list-github-branch ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ releases ทั้งหมดของ repository

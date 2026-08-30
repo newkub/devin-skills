@@ -115,6 +115,10 @@ related:
 9. ใช้ separators สำหรับแยกกลุ่มที่ชัดเจน
 10. ตรวจสอบว่าตารางอ่านง่ายบนทุก device
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - User เห็นภาพรวม workspaces ทั้งหมดใน monorepo

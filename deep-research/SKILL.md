@@ -153,6 +153,10 @@ related:
 5. เน้นข้อมูลปีล่าสุดและระบุ gaps
 6. ดูรายละเอียดใน [references/research-rules.md](references/research-rules.md)
 
+- ใช้ /rethink ถ้าจำเป็น
+- ใช้ /research-setup ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ข้อมูลครบถ้วนจาก multiple sources ที่ cross-referenced

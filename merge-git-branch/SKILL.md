@@ -100,6 +100,10 @@ Merge feature branch เข้า target branch ด้วย `--no-ff` merge com
 - ใช้ `git branch -d` (safe delete) ไม่ใช้ `-D`
 - ทำ `git remote prune origin` หลังลบ remote branch
 
+- ใช้ /resolve-merge-conflicts ถ้าจำเป็น
+- ใช้ /git-commit ถ้าจำเป็น
+- ใช้ /git-push ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Feature branch ถูก merge เข้า target branch ด้วย `--no-ff` merge commit

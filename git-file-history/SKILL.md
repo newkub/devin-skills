@@ -111,6 +111,13 @@ related:
 - ทุก commit ต้องมี entry ใน timeline
 - ไฟล์ต้องทำงานได้ทันทีเมื่อเปิดใน browser
 
+- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /list-brave-browser-history ถ้าจำเป็น
+- ใช้ /restore-from-devin-history ถ้าจำเป็น
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - HTML ไฟล์เดียวใน OS temp directory พร้อม real git data

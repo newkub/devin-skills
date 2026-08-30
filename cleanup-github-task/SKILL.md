@@ -50,6 +50,10 @@ related:
 - ยืนยัน actions ที่ทำลายข้อมูล
 - ห้ามเก็บถาวร tasks ที่กำลังดำเนินการโดยไม่มีเหตุผล
 
+- ใช้ /cleanup-github-issue ถ้าจำเป็น
+- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
+- ใช้ /cleanup-files-in-project ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Project board สะอาด

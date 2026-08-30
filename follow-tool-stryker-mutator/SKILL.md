@@ -93,6 +93,12 @@ related:
 - ใช้ dashboard สำหรับ trend
 - ตรวจสอบ `timeout` mutants
 
+- ใช้ /follow-test ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

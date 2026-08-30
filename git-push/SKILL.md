@@ -106,6 +106,9 @@ Push commits จาก local repository และ git submodules ไปยัง
 - ตรวจสอบ `package.json` มี `repository`, `homepage`, `bugs`, `license` ครบ
 - ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false`
 
+- ใช้ /git-commit ถ้าจำเป็น
+- ใช้ /git-commit-and-push ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Repository พร้อม push แม้ยังไม่มี `.git` หรือ remote

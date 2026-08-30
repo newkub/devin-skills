@@ -62,6 +62,14 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ไม่เกิน 250 บรรทัดต่อไฟล์
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
+- ใช้ /review-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /simplify ถ้าจำเป็น
+- ใช้ /review-redundancy ถ้าจำเป็น
+- ใช้ /review-consistency ถ้าจำเป็น
+- ใช้ /consider-use-subagents ถ้าจำเป็น
+- ใช้ /follow-parallel ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น

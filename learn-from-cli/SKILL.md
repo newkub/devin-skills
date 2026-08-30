@@ -51,6 +51,10 @@ related:
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /learn-from-pattern ถ้าจำเป็น
+- ใช้ /learn-from-references ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 Completed `learn-from-cli` workflow with correct output

@@ -91,6 +91,10 @@ related:
 - ไม่ hard-code secrets หรือ API keys
 - ใช้ environment variables สำหรับ config ที environment-specific
 
+- ใช้ /follow-release ถ้าจำเป็น
+- ใช้ /follow-deploy ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

@@ -131,6 +131,8 @@ related:
 - ตรวจสอบว่าไม่มี broken imports
 - เก็บ evidence ของทุกไฟล์ที่แก้
 
+- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+
 ## Expected Outcome
 
 - References ทั้งหมดถูกอัปเดทครบถ้วนในทุกตำแหน่ง

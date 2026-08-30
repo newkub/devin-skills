@@ -136,6 +136,13 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - แยกจาก subject ด้วยบรรทัดว่าง
 - ใช้ bullet points สำหรับหลายรายการ
 
+- ใช้ /git-commit ถ้าจำเป็น
+- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /git-commit-selected-files ถ้าจำเป็น
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `AGENTS.md` ถูกอัปเดตก่อน commit

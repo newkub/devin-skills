@@ -66,6 +66,13 @@ related:
 - ใช้ type-safe client
 - กำหนด session ให้ปลอดภัย
 
+- ใช้ /use-lib-better ถ้าจำเป็น
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Auth flow ทำงานถูกต้อง

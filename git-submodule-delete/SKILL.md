@@ -79,6 +79,13 @@ related:
 - ถ้าเป็น submodule ตัวเดียว ลบ `.gitmodules` ออกเลย
 - รัน `git gc` เสมอหลังลบเสร็จ
 
+- ใช้ /delete-git-branch ถ้าจำเป็น
+- ใช้ /delete-git-submodules ถ้าจำเป็น
+- ใช้ /delete-git-worktree ถ้าจำเป็น
+- ใช้ /follow-git-flow ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Submodule ลบออกจาก repository อย่างสมบูรณ์

@@ -70,6 +70,13 @@ bunx remotion render MyComposition --output.gif
 - Test ใน Studio ก่อน render
 - Optimize assets ก่อน rendering
 
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - วิดีโอแบบโปรแกรมมิ่งด้วย React

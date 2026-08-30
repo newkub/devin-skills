@@ -209,6 +209,8 @@ related:
 - สร้าง roadmap สำหรับ improvements
 - ใช้ `/report-table` สำหรับ structured output
 
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เข้าใจ architecture และ design patterns ที่ใช้

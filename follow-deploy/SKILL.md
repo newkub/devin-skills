@@ -120,6 +120,8 @@ related:
 - ต้องตรวจสอบว่า application ทำงานได้
 - ต้องตรวจสอบ logs ว่าไม่มี error
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Platform configuration ตั้งค่าครบถ้วน

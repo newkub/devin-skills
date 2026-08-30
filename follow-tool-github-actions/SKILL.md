@@ -75,6 +75,11 @@ related:
 - Follow the project conventions and global rules
 - Use the allowed tools only when needed
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-dot-github ถ้าจำเป็น
+- ใช้ /follow-deploy ถ้าจำเป็น
+- ใช้ /run-deploy ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

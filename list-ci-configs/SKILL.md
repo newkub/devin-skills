@@ -92,6 +92,14 @@ related:
 - ไม่ list เนื้อหา config ทั้งหมด
 - ระบุแค่ platform, file path, status และ notes สั้น ๆ
 
+- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+- ใช้ /watch-github-actions ถ้าจำเป็น
+- ใช้ /list-github-action-fail ถ้าจำเป็น
+- ใช้ /report-config-files ถ้าจำเป็น
+- ใช้ /review-config ถ้าจำเป็น
+- ใช้ /review-delivery ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ config files ใน repo ทีพบ

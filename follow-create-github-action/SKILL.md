@@ -103,6 +103,15 @@ related:
 - ใช้ major version tags (`v1`) สำหรับ consumers
 - ทดสอบ action บน GitHub runner ก่อน release
 
+- ใช้ /follow-create-bun-cli ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-dot-github ถ้าจำเป็น
+- ใช้ /follow-release ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - `action.yml` valid และ `name` ไม่ซ้ำ

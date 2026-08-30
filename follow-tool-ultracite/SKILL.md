@@ -93,6 +93,13 @@ related:
 - ใช้ Ultracite presets ก่อน
 - ตรวจสอบว่า config ไม่ conflict
 
+- ใช้ /follow-tool-biome ถ้าจำเป็น
+- ใช้ /follow-tool-oxlint ถ้าจำเป็น
+- ใช้ /follow-tool-eslint ถ้าจำเป็น
+- ใช้ /follow-tool-formatter ถ้าจำเป็น
+- ใช้ /follow-tool-linter ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

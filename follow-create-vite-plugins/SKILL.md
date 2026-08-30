@@ -111,6 +111,9 @@ related:
 - ใช้ formats: ['es', 'cjs']
 - external vite จาก bundle
 
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Plugin สร้างขึ้นด้วย naming convention ถูกต้อง

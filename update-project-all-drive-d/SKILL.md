@@ -126,6 +126,9 @@ related:
 - ถ้า project มี changes จาก pull → แจ้งให้ user ทราบ
 - ถ้าต้องการ commit ให้ใช้ `/git-commit` หรือ `/ship` แยกต่อ project
 
+- ใช้ /sync-drive-d-submodules ถ้าจำเป็น
+- ใช้ /check-should-update ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ project ใน `D:\` ถูก scan ครบ

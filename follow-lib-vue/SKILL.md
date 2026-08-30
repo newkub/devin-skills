@@ -157,6 +157,13 @@ related:
 - ใช้ Vapor Mode สำหรับ component-heavy scenarios (up to 97% faster)
 - ใช้ tree-shaking อย่างเต็มที่
 
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Vue 3 components ที่มีโครงสร้างถูกต้องตาม Composition API

@@ -93,6 +93,11 @@ related:
 - ระบุรูปแบบ output ตามความเหมาะสมของ audience
 - รายงาน gaps หรือ items ที่ยังจัดหมวดหมู่ไม่สมบูรณ์
 
+- ใช้ /grouping ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
+- ใช้ /visualize-project ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Taxonomy ทีสมบูรณ์และใช้งานได้

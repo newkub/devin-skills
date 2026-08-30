@@ -63,6 +63,10 @@ related:
 - รายงานผลเป็นรายการ path พร้อม `explorer` command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
+- ใช้ /open-in-devin ถ้าจำเป็น
+- ใช้ /open-in-wezterm ถ้าจำเป็น
+- ใช้ /open-in-windows-terminal ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์หรือ directory ถูกเปิดหรือเลื่อกใน Windows Explorer

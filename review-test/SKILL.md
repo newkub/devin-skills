@@ -79,6 +79,9 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 5. Safety: ไม่ expose secrets จาก test output หรือ coverage report — ไม่รัน destructive commands ระหว่าง review — ทำ dry run ถ้าต้อง re-run tests เพื่อ verify flakiness
 6. Formatting: ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis — ใช้ heading levels สำหรับ structure — รายงานเป็นตารางด้วย `/report-table`
 
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน Test Quality Summary พร้อม score, grade และ progress bar

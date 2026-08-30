@@ -106,6 +106,10 @@ related:
 - ไม่ใช้ emoji ใน output
 - ใช้สัญลักษณ์ text เช่น `[A]`, `(*)`, `(?)` แทน
 
+- ใช้ /report-flow ถ้าจำเป็น
+- ใช้ /report-workspace-graph ถ้าจำเป็น
+- ใช้ /visualize-project ถ้าจำเป็น
+
 ## Expected Outcome
 
 - markdown graph ใน chat ทีแสดงความเชื่อมโยงของข้อมูล

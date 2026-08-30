@@ -176,6 +176,12 @@ src/
 - ถ้า project ต้องการ modular boundaries → ใช้ module structure ใน `src/modules/<feature>/` ตาม `/follow-clean-architecture`
 - Domain logic ต้อง framework-agnostic เพื่อให้ migrate ได้ง่าย
 
+- ใช้ /follow-lib-vue ถ้าจำเป็น
+- ใช้ /follow-framework-nuxt ถ้าจำเป็น
+- ใช้ /follow-framework-svelte-kit ถ้าจำเป็น
+- ใช้ /follow-framework-nextjs ถ้าจำเป็น
+- ใช้ /follow-lib-react ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เลือก pattern ที่เหมาะสมกับโปรเจกต์

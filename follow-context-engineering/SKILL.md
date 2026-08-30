@@ -164,6 +164,10 @@ related:
 - ใช้ `/report-table` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-information-theory ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Context window ใช้อย่างมีประสิทธิภาพ ลด context rot

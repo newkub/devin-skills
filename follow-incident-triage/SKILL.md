@@ -123,6 +123,9 @@ related:
 - P2: Scheduled updates
 - P3: Next scheduled meeting
 
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-statistics ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Incident ถูกจัดลำดับความสำคัญอย่างถูกต้อง

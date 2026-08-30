@@ -107,6 +107,10 @@ related:
 - เลือก Total Order สำหรับรายการที่เปรียบเทียบได้ทั้งหมด, Partial Order สำหรับบางรายการ
 - ลำดับต้องอ่านง่าย ค้นหาได้ง่าย และสอดคล้องกับวัตถุประสงค์
 
+- ใช้ /restructure ถ้าจำเป็น
+- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Architecture pattern ที่เหมาะสมกับโปรเจกต์

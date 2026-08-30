@@ -119,6 +119,11 @@ related:
 - server ต้อง register ใน `%APPDATA%\devin\mcp_config.json` หรือ `mcp_config.json` ของ project ก่อนถือว่าเสร็จ
 - ถ้า skill นี้ถูกสร้างใน global skills repo → อัปเดต `related` และ `AGENTS.md`
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-cli ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-lang-typescript ถ้าจำเป็น
+
 ## Expected Outcome
 
 - MCP server ทำงานได้ทั้ง Rust หรือ TypeScript

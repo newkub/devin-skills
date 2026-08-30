@@ -107,6 +107,11 @@ related:
 - ไม่ commit hook scripts ที่ generate ทั้งหมด (ยกเว้น native `core.hooksPath`)
 - ระบุ version ของ manager ใน `mise.toml` หรือ package manifest
 
+- ใช้ /follow-tool-hk ถ้าจำเป็น
+- ใช้ /follow-tool-linter ถ้าจำเป็น
+- ใช้ /follow-tool-formatter ถ้าจำเป็น
+- ใช้ /follow-gitignore ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

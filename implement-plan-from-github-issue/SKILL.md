@@ -128,6 +128,11 @@ related:
 - ตรวจสอบก่อน merge ว่า CI ผ่าน
 - อัปเดต plan checkboxes ตาม progress
 
+- ใช้ /implement-github-issue ถ้าจำเป็น
+- ใช้ /idea-features ถ้าจำเป็น
+- ใช้ /open-github-issue ถ้าจำเป็น
+- ใช้ /create-github-pr ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Issue plan ถูก implement ครบตาม acceptance criteria

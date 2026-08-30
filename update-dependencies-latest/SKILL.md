@@ -152,6 +152,12 @@ CLI ตรวจหาไฟล์อัตโนมัติ:
 - กำหนด schedule สำหรับ automated updates
 - ตั้ง auto-merge สำหรับ patch updates ทีผ่าน tests
 
+- ใช้ /update-version-latest ถ้าจำเป็น
+- ใช้ /update-runtime-latest ถ้าจำเป็น
+- ใช้ /update-config ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุก dependencies อัพเดทเป็น latest versions

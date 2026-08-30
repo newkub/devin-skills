@@ -58,6 +58,13 @@ related:
 - ใช้ proper error handling
 - ใช้ async/await สำหรับ async operations
 
+- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /follow-lang-javascript ถ้าจำเป็น
+- ใช้ /follow-lang-kotlin ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /use-scripts ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Projects ที่ compatible กับ ecosystem ที่ใหญ่

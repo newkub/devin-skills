@@ -86,6 +86,12 @@ related:
 - ทดสอบ worst case ถ้าเป็นไปได้
 - ใช้ property-based tests ถ้าเหมาะสม
 
+- ใช้ /follow-math-combinatorics ถ้าจำเป็น
+- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-math-discrete-math ถ้าจำเป็น
+- ใช้ /follow-math-proofs ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Algorithm ทีเลือกเหมาะสมกับปัญหา

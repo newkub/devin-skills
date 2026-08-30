@@ -121,6 +121,18 @@ related:
 - ถ้า context ไม่ชัด → ถาม user ก่อนลงมือ
 - ไม่แก้ไขนอก scope ทีตกลง
 
+- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /rethink ถ้าจำเป็น
+- ใช้ /follow-single-responsibility ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /check-dead-code ถ้าจำเป็น
+- ใช้ /check-bottlenecks ถ้าจำเป็น
+- ใช้ /review-performance ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /review-stability ถ้าจำเป็น
+- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /analyze-attack-surface ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ระบุและแก้ไข gaps ตาม context

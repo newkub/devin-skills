@@ -158,6 +158,13 @@ related:
 - `tsconfig.json`: TypeScript configuration
 - UnoCSS configuration ตาม `/follow-lib-unocss`
 
+- ใช้ /follow-tool-react-scan ถ้าจำเป็น
+- ใช้ /follow-lib-animejs ถ้าจำเป็น
+- ใช้ /follow-lib-arktype ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
 ## Expected Outcome
 
 - React 19 application ด้วย structure ที่ถูกต้อง

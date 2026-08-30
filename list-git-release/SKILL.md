@@ -79,6 +79,10 @@ related:
 2. Annotated tag message (`git tag -n`)
 3. Commit subject (`git show --quiet`)
 
+- ใช้ /list-git-branch ถ้าจำเป็น
+- ใช้ /list-git-commit ถ้าจำเป็น
+- ใช้ /list-git-stash ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ tags/releases ใน repo

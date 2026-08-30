@@ -67,6 +67,9 @@ related:
 - ลบ worktree ไม่ลบ branch
 - ถ้าต้องการลบ branch ด้วย → ทำ `/delete-git-branch`
 
+- ใช้ /use-git-worktrees ถ้าจำเป็น
+- ใช้ /cleanup-worktree ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Worktree ถูกลบ

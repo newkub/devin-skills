@@ -122,6 +122,11 @@ related:
 - รองรับหลาย package manifest: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
 - ใช้ commands ตาม ecosystem เช่น `cargo run` สำหรับ Rust, `bun install` สำหรับ JS/TS
 
+- ใช้ /visualize-project ถ้าจำเป็น
+- ใช้ /follow-framework-solidjs ถ้าจำเป็น
+- ใช้ /follow-create-rust-crate ถ้าจำเป็น
+- ใช้ /review-frontend ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Rust scanner สร้าง `repo-graph.json` จาก repo ทีระบุ

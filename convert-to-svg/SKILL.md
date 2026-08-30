@@ -74,6 +74,11 @@ related:
 - ถ้า tool แรก fail → ลอง `potrace-cli`
 - ถ้า fail อีก → ใช้ script ด้วย `sharp` + `potrace`
 
+- ใช้ /convert-to-git-submodules ถ้าจำเป็น
+- ใช้ /idea-convert-my-global-cli-to-skills ถ้าจำเป็น
+- ใช้ /convert-files-format ถ้าจำเป็น
+- ใช้ /draw-svg-image ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `.svg` ถูกสร้างจาก bitmap

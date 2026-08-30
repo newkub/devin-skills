@@ -165,6 +165,13 @@ const response = await invoke('greet', { name: 'World' })
 - IPC ใช้ `invoke()` สำหรับ frontend → backend
 - เขียน isomorphic code (ใช้ได้ทั้ง client และ server)
 
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-framework-dioxus ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Tauri + SolidStart project สร้างสำร็จ

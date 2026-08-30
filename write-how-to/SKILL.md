@@ -133,6 +133,10 @@ related:
 - ใช้ semantic headings สำหรับ screen readers
 - ให้ keyboard navigation สำหรับ interactive elements
 
+- ใช้ /how-to-works ถ้าจำเป็น
+- ใช้ /write-explicit ถ้าจำเป็น
+- ใช้ /write-solutions ถ้าจำเป็น
+
 ## Expected Outcome
 
 - How-to guide ที่มีโครงสร้างชัดเจน

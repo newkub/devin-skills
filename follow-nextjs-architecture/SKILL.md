@@ -174,6 +174,8 @@ apps/
 - ใช้ caching strategies และ ISR สำหรับ static content
 - ใช้ `dynamic` imports สำหรับ code splitting
 
+- ใช้ /follow-lib-react ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Next.js structure ที่ถูกต้องพร้อม `modules/` และ monorepo support

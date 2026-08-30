@@ -122,6 +122,9 @@ related:
 - ไม่ลบ `.mise` cache โดยไม่รู้ผล
 - ตรวจสอบ exit code ของ `mise run`
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-service-infisical ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

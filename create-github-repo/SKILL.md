@@ -84,6 +84,8 @@ related:
 - ไม่ force push
 - ถ้า repo มี remote อยู่แล้วให้หยุดและบอกให้ใช้ `/git-push`
 
+- ใช้ /follow-gitignore ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Local project มี `.git` และ remote `origin`

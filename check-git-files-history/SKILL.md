@@ -94,6 +94,8 @@ related:
 - หยุดทันทีเมื่อเจอ commit แรกทีตรงเงื่อนไข (ล่าสุดทียังตรง)
 - ถ้า user ต้องการ list ทั้งหมด → ให้ระบุ explicitly
 
+- ใช้ /restore-from-git-log ถ้าจำเป็น
+
 ## Expected Outcome
 
 - หา commit ทีตรงเงื่อนไขได้

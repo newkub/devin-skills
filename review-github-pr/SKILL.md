@@ -48,6 +48,11 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ทุก finding ต้องมี file path, line number หรือ commit reference
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
+- ใช้ /open-github-pr ถ้าจำเป็น
+- ใช้ /list-github-pr ถ้าจำเป็น
+- ใช้ /merge-github-pr ถ้าจำเป็น
+- ใช้ /list-github-action-fail ถ้าจำเป็น
+
 ## Expected Outcome
 
 - PR metadata review: title, description, size, commits, conflicts

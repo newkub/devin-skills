@@ -93,6 +93,11 @@ related:
 - สร้างเฉพาะ components ทีใช้จริง
 - ใช้ `SKILL.md` format ตาม `/update-devin-global-skills`
 
+- ใช้ /follow-clean-architecture ถ้าจำเป็น
+- ใช้ /follow-create-sdk ถ้าจำเป็น
+- ใช้ /search-skills ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Codex plugin มี `plugin.json` และ components ครบตามทีเลือก

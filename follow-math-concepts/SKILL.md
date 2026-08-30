@@ -59,6 +59,25 @@ related:
 - อ้างอิง sources ที่เชื่อถือได้
 - อัปเดต content ให้ทันสมัยตาม version ล่าสุด
 
+- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-predicate-logic ถ้าจำเป็น
+- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-boolean-algebra ถ้าจำเป็น
+- ใช้ /follow-math-combinatorics ถ้าจำเป็น
+- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+- ใช้ /follow-math-linear-algebra ถ้าจำเป็น
+- ใช้ /follow-math-discrete-math ถ้าจำเป็น
+- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-math-numerical-methods ถ้าจำเป็น
+- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-information-theory ถ้าจำเป็น
+- ใช้ /follow-math-category-theory ถ้าจำเป็น
+- ใช้ /follow-math-cryptography ถ้าจำเป็น
+- ใช้ /follow-math-proofs ถ้าจำเป็น
+- ใช้ /follow-math-game-theory ถ้าจำเป็น
+
 ## Expected Outcome
 
 - เข้าใจ discrete mathematics สำหรับ algorithms

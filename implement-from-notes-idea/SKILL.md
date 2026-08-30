@@ -91,6 +91,8 @@ related:
 - ไม่ skip `/run-check` ก่อน ship
 - ถ้า validation ไม่ผ่าน → แก้ไขก่อน continue
 
+- ใช้ /save-to-notes-idea ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Note idea ถูก implement ครบตาม numbered list

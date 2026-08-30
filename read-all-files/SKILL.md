@@ -67,6 +67,9 @@ related:
 - หาความสัมพันธ์ระหว่าง modules
 - สรุป architecture ที่ใช้
 
+- ใช้ /read-devin-context ถ้าจำเป็น
+- ใช้ /read-related ถ้าจำเป็น
+
 ## Expected Outcome
 
 - อ่านไฟล์ทั้งหมดที่เกี่ยวข้อง

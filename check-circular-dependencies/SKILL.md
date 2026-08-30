@@ -108,6 +108,10 @@ related:
 - ถ้า cycle เกิดจาก barrel exports → แนะนำการแยก barrel file หรือใช้ type-only imports
 - ถ้า cycle เกิดจาก skill references → แก้ไข `related` หรือ links ใน `SKILL.md`
 
+- ใช้ /check-reference ถ้าจำเป็น
+- ใช้ /check-skills-related ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ circular dependencies ในทุก target type (code, skills, markdown) พร้อม severity และ recommendations

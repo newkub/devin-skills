@@ -173,6 +173,14 @@ related:
 - ตรวจสอบ `rust-version`, `go` directive, `engines` ให้ compatible
 - ถ้า test fail หลัง upgrade -> ทำ `/resolve-errors` ก่อน commit
 
+- ใช้ /update-version-latest ถ้าจำเป็น
+- ใช้ /update-all-program-in-computer ถ้าจำเป็น
+- ใช้ /follow-tool-mise ถ้าจำเป็น
+- ใช้ /follow-runtime-bun ถ้าจำเป็น
+- ใช้ /follow-lang-nodejs ถ้าจำเป็น
+- ใช้ /follow-lang-python ถ้าจำเป็น
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ทุก runtime ที่พบถูกอัปเดตเป็น latest stable version

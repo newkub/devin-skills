@@ -95,6 +95,11 @@ related:
 - ใช้ `wait-for` หรือ SDK equivalent เพื่อ synchronize ระหว่าง panes
 - ปิด sessions ที่ไม่ใช้งานด้วย `rmux kill-session -t <name>`
 
+- ใช้ /follow-lang-rust ถ้าจำเป็น
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-framework-ratatui ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+
 ## References
 
 - [CLI reference](references/cli.md)

@@ -105,6 +105,12 @@ related:
 - ถ้า `mmdc` ไม่พร้อม → ส่ง mermaid source ให้ user โดยไม่ทำอะไรเพิ่ม
 - ถ้า validation ผิดพลาดหลัง 3 รอบ → report สถานะแล้วหยุด
 
+- ใช้ /draw-excalidraw ถ้าจำเป็น
+- ใช้ /draw-tldraw ถ้าจำเป็น
+- ใช้ /report-flow ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /open-files-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ไฟล์ `.md` หรือ `.mmd` ทีมี Mermaid source ถูกต้อง

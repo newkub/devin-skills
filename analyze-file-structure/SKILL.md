@@ -52,6 +52,7 @@ related:
 - ระบุ depth สำหรับ project ใหญ่
 - ถ้า CLI ยังไม่ถูกต้องตาม tech stack → ทำ `/follow-my-tech-stack` ก่อน
 
+- ใช้ /follow-create-rust-cli ถ้าจำเป็น
 ## Expected Outcome
 
 - รายการไฟล์และโฟลเดอรทีอ่านง่าย

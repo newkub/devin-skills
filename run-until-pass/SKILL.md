@@ -48,6 +48,13 @@ run command และตรวจสอบผล
 - รัน command จนกว่าจะผ่าน
 - ตรวจสอบว่าไม่มี errors ที่เหลือ
 
+- ใช้ /loop-until-complete ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
+- ใช้ /run-check ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Command ผ่านทั้งหมด

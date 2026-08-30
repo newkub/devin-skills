@@ -213,6 +213,10 @@ related:
 
 ดู `templates/readme-template.md`
 
+- ใช้ /review-readme-md ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /deep-validate ถ้าจำเป็น
+
 ## Expected Outcome
 
 - README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/analyze-project` ไม่มี placeholder ยกเว้น banner image

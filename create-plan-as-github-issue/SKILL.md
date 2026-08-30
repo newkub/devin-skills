@@ -126,6 +126,12 @@ related:
 - ใช้ `open-web` หรือ OS native command เท่านั้น
 - ไม่เปิด URL ทีไม่มาจาก GitHub ถ้าไม่แน่ใจ
 
+- ใช้ /create-github-issue ถ้าจำเป็น
+- ใช้ /open-github-issue ถ้าจำเป็น
+- ใช้ /open-github-repo ถ้าจำเป็น
+- ใช้ /follow-github-issue-templates ถ้าจำเป็น
+- ใช้ /report-plan ถ้าจำเป็น
+
 ## Expected Outcome
 
 - GitHub issue ถูกสร้างด้วย plan ทีมี features table, scoring math, TODO table

@@ -141,6 +141,9 @@ related:
 - `webDir` ใช้ relative path จาก mobile workspace
 - แยก dependencies ระหว่าง website และ mobile workspace
 
+- ใช้ /follow-tool-cargo ถ้าจำเป็น
+- ใช้ /follow-runtime-bun ถ้าจำเป็น
+
 ## Expected Outcome
 
 - มี Capacitor iOS และ Android project ที่ทำงานได้

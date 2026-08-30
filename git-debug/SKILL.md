@@ -171,6 +171,8 @@ related:
 - lost file → `git log --diff-filter=D` + `git restore`
 - unknown cause → `git status` + `git log` + `git diff` + `git stash list`
 
+- ใช้ /search-in-git ถ้าจำเป็น
+
 ## Expected Outcome
 
 1. พบ root cause ของปัญหา git อย่างเป็นระบบ

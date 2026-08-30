@@ -99,6 +99,8 @@ related:
 - ทุกไอเดียต้องบอก sub-skill ทีเหมาะสม
 - ไม่ทิ้งไอเดียทีไม่มี next step
 
+- ใช้ /refactor-codebase ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการไอเดีย refactor สำหรับไฟล์ทีระบุ

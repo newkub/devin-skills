@@ -42,6 +42,10 @@ related:
 3. ใช้ environment variables หรือ secrets management tools
 4. อย่าแชร์ secrets กับบุคคลอื่น
 
+- ใช้ /analyze-dependencies ถ้าจำเป็น
+- ใช้ /check-circular-dependencies ถ้าจำเป็น
+- ใช้ /list-dependencies ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ระบุ dependencies ทั้งหมดจาก package manifest

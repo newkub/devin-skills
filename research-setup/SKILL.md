@@ -89,6 +89,12 @@ related:
 - ไม่ copy-paste config โดยไม่ระบุ source
 - ถ้า setup เกี่ยวกับ dependencies → ใช้ `/research-dependencies` ก่อน
 
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
+
 ## Expected Outcome
 
 รายงาน setup ทีครบถ้วน ประกอบด้วย prerequisites, config files, commands, CI/CD samples, common pitfalls, alternatives และแหล่งอ้างอิง พร้อมใช้งานได้ทันที

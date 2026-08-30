@@ -69,6 +69,10 @@ related:
 
 - ใช้ environment-based config
 
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-create-product ถ้าจำเป็น
+- ใช้ /follow-lib-better-auth ถ้าจำเป็น
+
 ## Expected Outcome
 
 - WorkOS SDK พร้อมใช้งานและกำหนดค่าถูกต้อง

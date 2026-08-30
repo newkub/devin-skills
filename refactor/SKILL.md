@@ -87,6 +87,9 @@ Refactor code ตาม context โดยเลือก sub-skill ทีเห�
 - ทุก refactor ต้องผ่าน `/run-verify`
 - ไม่มี broken references
 
+- ใช้ /review-restructure ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Sub-skill ทีเหมาะสมถูกเรียกตาม context

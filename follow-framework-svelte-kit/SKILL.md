@@ -69,6 +69,13 @@ bun create svelte@latest my-app
 - ใช้ layouts สำหรับ shared UI
 - ใช้ error pages สำหรับ error handling
 
+- ใช้ /follow-framework-svelte ถ้าจำเป็น
+- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Svelte applications ด้วย SSR/CSR/Prerendering

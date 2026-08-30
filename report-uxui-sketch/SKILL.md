@@ -111,6 +111,11 @@ related:
 - เรียง tabs/screens ตามลำดับ navigation
 - ทุก screen ต้องมีชื่อและ purpose กำกับ
 
+- ใช้ /report-uxui-all-routes ถ้าจำเป็น
+- ใช้ /follow-design-system ถ้าจำเป็น
+- ใช้ /roleplay-ui-designer ถ้าจำเป็น
+- ใช้ /open-files-in-web ถ้าจำเป็น
+
 ## Expected Outcome
 
 - Markdown UX/UI sketch ครอบคลุมทุก screen/tab

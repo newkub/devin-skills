@@ -51,6 +51,9 @@ related:
 - ถ้าไม่มี user request → report ว่าไม่พบ
 - ไม่สร้างหรือแก้ไข history file
 
+- ใช้ /summarize ถ้าจำเป็น
+- ใช้ /search-files-patterns ถ้าจำเป็น
+
 ## Expected Outcome
 
 - ได้รายการ requests ของ user ใน session ปัจจุบัน

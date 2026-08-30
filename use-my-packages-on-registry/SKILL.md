@@ -100,6 +100,9 @@ related:
 - ถ้าต้อง process ข้อมูลซับซ้อน → ทำ `/use-scripts`
 - ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ reports ชั่วคราว
 
+- ใช้ /use-bun-native-api ถ้าจำเป็น
+- ใช้ /follow-runtime-bun ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายการ packages จาก registry ที user เป็นเจ้าของ

@@ -62,6 +62,8 @@ related:
 - แยก internal vs external exposure
 - ระบุ trust boundaries
 
+- ใช้ /review-security ถ้าจำเป็น
+- ใช้ /check-secrets-leak ถ้าจำเป็น
 ## Expected Outcome
 - attack surface list พร้อม severity
 - trust boundary map
