@@ -3,7 +3,6 @@ name: list-todo-md
 description: สแกนหา TODO.md ทั้งหมดใน current workspace และรายงาน summary/รายละเอียดในรูปแบบตาราง
 related:
   - update-todo-md
-  - list-project-task
   - report-table
 ---
 
