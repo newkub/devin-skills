@@ -2,6 +2,7 @@
 name: follow-create-github-bots
 description: สร้าง GitHub bots ด้วย GitHub Apps หรือ Probot พร้อม webhooks และ deployment
 related:
+  - ship-bots
   - follow-create-bun-cli
   - follow-create-web
   - follow-service-cloudflare
