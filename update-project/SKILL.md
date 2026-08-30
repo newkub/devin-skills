@@ -14,6 +14,7 @@ related:
   - follow-github
   - update-todo-md
   - update-version-latest
+  - setup-cicd
   - deep-update-project
 ---
 
@@ -60,7 +61,8 @@ related:
 3. ตรวจสอบ `docs/`, `rules/`, `.devin/`, `.vscode/`
 4. ระบุ orchestration tools (moon, turbo)
 5. รัน updates ตามลำดับ:
-   - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ/ตั้งค่า)
+   - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ)
+   - `/setup-cicd` (ถ้า CI/CD config drift หรือยังไม่พร้อม)
    - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)

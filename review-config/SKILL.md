@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - report-config-files
   - list-ci-configs
-  - setup-ci-cd
+  - setup-cicd
   - setup-package
   - setup-release
   - follow-devin-skills
@@ -66,7 +66,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 1. ทำตาม `references/scoring.md`
 2. ทำ `/report-table` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
 3. ทำ `/report-file-structure` สำหรับ config tree
-4. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-ci-cd`
+4. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-cicd`
 
 ## Rules
 

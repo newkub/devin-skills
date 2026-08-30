@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - run-release
   - ship-release
-  - setup-ci-cd
+  - setup-cicd
   - setup-package
   - test-release
   - follow-release

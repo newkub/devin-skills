@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - follow-package-manifest
   - follow-monorepo
-  - setup-ci-cd
+  - setup-cicd
   - setup-release
   - run-verify
   - run-release

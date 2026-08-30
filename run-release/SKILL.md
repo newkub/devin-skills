@@ -5,7 +5,7 @@ related:
   - follow-secret-manager
   - ship
   - ship-release
-  - setup-ci-cd
+  - setup-cicd
   - setup-package
   - setup-release
   - test-release

@@ -9,7 +9,7 @@ related:
   - run-build
   - run-test-all
   - check-monorepo
-  - setup-ci-cd
+  - setup-cicd
   - follow-tasks
   - ship-code
   - ship-local
@@ -73,7 +73,7 @@ related:
 1. ทำ `git branch --show-current`, `git status`, `git log origin/<branch>..HEAD`
 2. ถ้า working tree ไม่สะอาด → stop และ report
 3. ถ้าไม่มี remote → stop และ report
-4. ตรวจหา CI/CD config (`setup-ci-cd` รายการ); ถ้าไม่มี → ทำ `/setup-ci-cd`
+4. ตรวจหา CI/CD config (`setup-cicd` รายการ); ถ้าไม่มี → ทำ `/setup-cicd`
 5. ทำ `/git-push` ถ้ามี unpushed commits
 6. ถ้า push ถูก reject → stop และ report (ไม่ force push)
 7. ถ้าเป็น GitHub Actions → `/watch-github-actions` มิฉะนั้น `/watch-cicd-and-resolve`

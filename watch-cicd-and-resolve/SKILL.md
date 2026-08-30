@@ -121,7 +121,7 @@ related:
 2. ทำ `/resolve-errors` วิเคราะห์ logs, errors, config
 3. ถ้า failure มาจาก code/config → แก้ไขน้อยทีสุด
 4. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/review-delivery`, `/review-config`, `/review-test` ตามลักษณะ
-5. ถ้า failure มาจาก infra/secret/platform → ทำ `/review-deploy`, `/follow-secret-manager`, `/setup-ci-cd` ตามลักษณะ
+5. ถ้า failure มาจาก infra/secret/platform → ทำ `/review-deploy`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
 6. ถ้าเป้น CI: commit/push หรือ re-trigger pipeline ตาม platform กลับไป Watch Pipeline
 7. ถ้าเป้น CD: re-deploy ตาม platform:
    - Cloudflare → `/deploy-to-cloudflare`

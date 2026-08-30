@@ -4,7 +4,7 @@ description: "Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push, �
 related:
   - ship-code
   - ship-verify
-  - setup-ci-cd
+  - setup-cicd
   - run-test-all
   - deep-validate
   - git-commit
@@ -43,7 +43,7 @@ Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push branch, watch CI
 
 1. ทำ `git status --porcelain`, `git branch --show-current`, `git remote -v`
 2. ถ้าไม่มี remote → stop และ report
-3. ทำ `/setup-ci-cd` เพื่อ detect platform, verify package scripts, setup secrets, และ create/update workflow files
+3. ทำ `/setup-cicd` เพื่อ detect platform, verify package scripts, setup secrets, และ create/update workflow files
 4. ตรวจสอบว่า CI/CD workflow รัน `/run-verify` หรือ `/run-test-all`
 5. ถ้า CI/CD config ยังไม่พร้อม → stop และ report
 6. บันทึก `LAST_GREEN_SHA` ด้วย `git rev-parse HEAD`

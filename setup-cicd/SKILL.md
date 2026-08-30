@@ -1,5 +1,5 @@
 ---
-name: setup-ci-cd
+name: setup-cicd
 description: ตรวจจับ platform และตั้งค่า CI/CD config files, secrets และ workflows
 related:
   - setup-package
@@ -25,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, release, หรือ deploy
+ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, deploy หรือ release (setup release workflow ได้ แต่ไม่รัน release)
 
 ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-ci` แทน
 
@@ -189,11 +189,18 @@ jobs:
 1. ใช้ `/report-table` สรุป: platform, workflow files, missing scripts, missing secrets, next action
 2. ทำ `/suggest-next-action`
 
+### 7. Optional Release Setup
+
+> Goal: ตั้งค่า release workflow ถ้าจำเป็น
+
+1. ถ้า project ต้องการ release บน tag → ทำ `/setup-release`
+2. ถ้าไม่ต้องการ release → ข้าม
+
 ## Rules
 
 ### 1. Setup Only
 
-- `setup-ci-cd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
+- `setup-cicd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
 - ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
 - ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-ci`
 
