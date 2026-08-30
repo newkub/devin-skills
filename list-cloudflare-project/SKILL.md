@@ -4,7 +4,7 @@ description: รายการ Cloudflare projects ในเครื่อง 
 related:
   - list-project-git-in-computer
   - list-chezmoi-files
-  - list-cloudflare-projects
+  - list-cloudflare-worker-fail
   - open-cloudflare-workers
 ---
 
@@ -13,7 +13,7 @@ related:
 สแกนเครื่องหา projects ทีใช้ Cloudflare (Workers, Pages, Wrangler) พร้อม local path, remote repo match, deployment status และสรุปเป็น table
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `list-cloudflare-projects`, `open-cloudflare-workers`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`
 
 ใช้เพื่อหา Cloudflare projects ทั้งหมดในเครื่อง โดย detect จาก `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, หรือ `wrangler.config.ts`
 

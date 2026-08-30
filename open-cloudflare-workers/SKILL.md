@@ -5,7 +5,6 @@ argument-hint: "[account-id]"
 related:
   - open-web
   - list-cloudflare-project
-  - list-cloudflare-projects
   - list-cloudflare-worker-fail
   - watch-cicd-and-resolve
   - follow-service-cloudflare
@@ -17,7 +16,7 @@ related:
 เปิดหน้า Cloudflare Workers dashboard ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-cloudflare-projects`, `list-cloudflare-worker-fail`, `watch-cicd-and-resolve`, `follow-service-cloudflare`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-cloudflare-worker-fail`, `watch-cicd-and-resolve`, `follow-service-cloudflare`
 
 ใช้เปิด dashboard สำหรับจัดการ Cloudflare Workers และ Pages โดยไม่แก้ไข config ใดๆ
 
