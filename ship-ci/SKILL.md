@@ -3,6 +3,7 @@ name: ship-ci
 description: "Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push, และ watch CI จนผ่าน"
 related:
   - ship-code
+  - ship-verify
   - setup-ci-cd
   - run-test-all
   - deep-validate

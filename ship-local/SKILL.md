@@ -3,6 +3,7 @@ name: ship-local
 description: Ship workspace ด้วย local verify แล้ว commit โดยไม่ push
 related:
   - ship-code
+  - ship-verify
   - run-verify
   - run-test-all
   - review-codebase-everythink

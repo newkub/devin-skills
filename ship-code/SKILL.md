@@ -13,6 +13,7 @@ related:
   - resolve-errors
   - report
   - suggest-next-action
+  - ship-verify
   - ship-local
   - ship-ci
   - ship-release
@@ -25,7 +26,7 @@ Prepare workspace code ก่อน ship โดยอัปเดต project doc
 
 ## Scope
 
-ใช้เป้นพื้นฐานก่อน `ship-local`, `ship-ci`, `ship-release`, หรือ `ship-github-issue`
+ใช้เป้นพื้นฐานก่อน `ship-verify`, `ship-local`, `ship-ci`, `ship-release`, หรือ `ship-github-issue`
 - ไม่ verify
 - ไม่ commit
 - ไม่ push
@@ -84,7 +85,7 @@ Prepare workspace code ก่อน ship โดยอัปเดต project doc
 > Goal: สรุปสถานะ pre-ship
 
 1. ทำ `/report` สรุปสิ่งทีทำใน `ship-code`
-2. ทำ `/suggest-next-action` เพื่อแนะนำ `ship-local` หรือ `ship-ci`
+2. ทำ `/suggest-next-action` เพื่อแนะนำ `ship-verify` โดย default หรือ `ship-local`/`ship-ci` ถ้า user ระบุ path
 
 ## Rules
 
