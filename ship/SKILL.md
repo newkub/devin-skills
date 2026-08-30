@@ -4,7 +4,7 @@ description: "Ship workspace from prepare through verify, CI, review, fix, relea
 argument-hint: "[issue-number-or-title]"
 related:
   - ship-by-agents
-  - review-codebase-everythink
+  - review-codebase-everything
   - create-dev-branch
   - follow-git-flow
   - follow-github
@@ -92,7 +92,7 @@ Ship workspace ตั้งแต่ prepare จนถึง production โด�
 
 1. ทำ `/run-verify`
 2. ทำ `/run-test-all` ถ้ามี test suites
-3. ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ → ทำ `/review-codebase-everythink`
+3. ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ → ทำ `/review-codebase-everything`
 4. ทำ `/deep-validate`
 5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
 

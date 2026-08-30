@@ -117,7 +117,7 @@ Quality and Trust:
 
 - ไม่รัน dev server, test, build, browser, CLI, หรือ script จริง
 - อ่าน code ด้วย read-only tools เท่านั้น
-- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/review-codebase-everythink`
+- ถ้าผู้ใช้ขอรันอะไรจริง ให้ confirm ว่าจะเปลี่ยน workflow เป็น `/review-codebase-everything`
 
 ### 2. Think Like A Product Manager
 
@@ -152,7 +152,7 @@ Quality and Trust:
 
 - ถ้า product review ซับซ้อน ให้ทำ `/deep-thinking` ก่อนเริ่ม
 - ถ้าต้องการทบทวนมุมมองก่อนสรุป ให้ทำ `/pondering`
-- ถ้าต้องการ scan missing features จริง ให้ใช้ `/review-codebase-everythink`
+- ถ้าต้องการ scan missing features จริง ให้ใช้ `/review-codebase-everything`
 - ถ้าต้องการมุมมอง user ให้ใช้ `/roleplay-user`
 
 ### 7. Output

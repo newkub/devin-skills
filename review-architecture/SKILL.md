@@ -27,7 +27,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-2. ทำ `/review-codebase-everythink` แล้วรัน review analyzers
+2. ทำ `/review-codebase-everything` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ตรวจสอบแต่ละ dimension ตาม reference files ใน [references/index.md](references/index.md)
 5. ทำ data flow analysis ตาม [references/data-flow.md](references/data-flow.md)

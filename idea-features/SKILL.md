@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - create-report-in-dot-devin
   - realize-implementation
-  - review-codebase-everythink
+  - review-codebase-everything
   - suggest-me
   - enhance-prompt
   - report-uxui-sketch
@@ -21,7 +21,7 @@ related:
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
 - สร้าง report ชั่วคราวใน `.devin/reports/` ด้วย `/create-report-in-dot-devin` ถ้าต้องการ
 - ไม่เปิด web app, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
-- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everythink` ก่อน และลบ report files หลังเสร็จ
+- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everything` ก่อน และลบ report files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
 ## Execute
@@ -76,7 +76,7 @@ related:
 
 > Goal: ทำตามคำสั่ง "ทำ"
 
-1. ถ้า user บอก "ทำ" → ทำ `/review-codebase-everythink` ก่อน
+1. ถ้า user บอก "ทำ" → ทำ `/review-codebase-everything` ก่อน
 2. จากนั้นทำ `/realize-implementation` ตาม features ที่เลือก
 3. หลัง `/realize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/`
 4. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็น → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
@@ -105,7 +105,7 @@ related:
 
 ### 3. Implement Flow
 
-- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/review-codebase-everythink` ก่อน แล้ว `/realize-implementation`
+- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/review-codebase-everything` ก่อน แล้ว `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
@@ -117,7 +117,7 @@ related:
 
 ### 5. Direct Execution
 
-- ถ้า user บอก "do ... now" → ทำ `/review-codebase-everythink` แล้ว `/realize-implementation`
+- ถ้า user บอก "do ... now" → ทำ `/review-codebase-everything` แล้ว `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
@@ -138,5 +138,5 @@ related:
 - ไอเดีย features ถูกสร้างและจัดลำดับ
 - Report ชั่วคราวถูกสร้างใน `.devin/reports/` (ถ้าต้องการ)
 - ไม่มี web app หรือ report files ถาวร
-- เมื่อ user บอก "ทำ" ให้ทำ `/review-codebase-everythink` แล้ว `/realize-implementation` แล้วลบ report files
+- เมื่อ user บอก "ทำ" ให้ทำ `/review-codebase-everything` แล้ว `/realize-implementation` แล้วลบ report files
 - ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ

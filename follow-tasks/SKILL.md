@@ -76,7 +76,7 @@ related:
 2. ยืนยัน `check` script = `format && lint && typecheck && scan` และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test`
 3. ทำ `/run-test-all` เพื่อรัน unit, integration, e2e, coverage
 4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
-5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/review-codebase-everythink` เพื่อสร้าง/อัปเดต CLI แล้ว retry
+5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/review-codebase-everything` เพื่อสร้าง/อัปเดต CLI แล้ว retry
 
 ## Rules
 
@@ -202,7 +202,7 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 
 ถ้า project ใช้ `tools/review-codebase` ให้เพิ่ม scripts นี้ใน package.json เมื่อตั้งค่า scripts ตาม `/follow-tasks`
 
-หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/review-codebase-everythink` ถ้าต้องการสร้างหรืออัปเดต CLI
+หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/review-codebase-everything` ถ้าต้องการสร้างหรืออัปเดต CLI
 
 ## Expected Outcome
 

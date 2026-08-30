@@ -42,7 +42,7 @@
 `categories` metric วัดความครอบคลุมของ review:
 
 - target: `categories >= 60`
-- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `review-codebase-everythink` เพื่อ integrate
+- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `review-codebase-everything` เพื่อ integrate
 
 ## Health Indicator
 
@@ -78,7 +78,7 @@ score = sum(severity_weight * count) / total_findings
 
 ถ้า score < 70:
 
-- แนะนำให้เรียก `/review-codebase-everythink` ก่อนดำเนินการ
+- แนะนำให้เรียก `/review-codebase-everything` ก่อนดำเนินการ
 - ระบุ findings ที่ต้องแก้ไข
 - ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 

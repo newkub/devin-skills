@@ -1,5 +1,5 @@
 ---
-name: review-codebase-everythink
+name: review-codebase-everything
 description: รีวิว codebase ครบทุกมิติ พร้อมอัปเดต project rules และ review CLI ให้ทันสมัย
 related:
   - update-review-cli

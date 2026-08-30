@@ -13,7 +13,7 @@ related:
   - deep-plan
   - deep-refactor
   - deep-validate
-  - review-codebase-everythink
+  - review-codebase-everything
   - use-lib-effective
   - use-lib-better
   - resolve-errors

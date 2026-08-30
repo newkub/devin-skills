@@ -2,7 +2,7 @@
 name: review-techstack
 description: Review tech stack, dependencies และ library design ครอบคลุม versions, security, API, bundle
 related:
-  - review-codebase-everythink
+  - review-codebase-everything
   - follow-my-tech-stack
   - run-review
   - deep-analyze

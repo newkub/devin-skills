@@ -35,7 +35,7 @@
 ## Detection Tools
 
 - `/scan-codebase` สำหรับ list ไฟล์ทั้งหมด
-- `/review-codebase-everythink` สำหรับ naming conventions review
+- `/review-codebase-everything` สำหรับ naming conventions review
 - `Get-ChildItem -Recurse -File` สำหรับ file discovery
 
 ## Exclusions

@@ -51,7 +51,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 > Goal: ปรับปรุง performance ตาม findings
 
-1. ทำ `/review-codebase-everythink` เพื่อปรับปรุง
+1. ทำ `/review-codebase-everything` เพื่อปรับปรุง
 2. ใช้ caching ที่เหมาะสม
 3. Optimize algorithms และ data structures
 4. ลบ unnecessary work

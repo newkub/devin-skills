@@ -11,7 +11,7 @@ related:
   - run-test-all
   - follow-secret-manager
   - open-web-for-config-secret
-  - review-codebase-everythink
+  - review-codebase-everything
   - follow-tool-hk
   - use-ast-grep
 ---
@@ -81,7 +81,7 @@ related:
 2. ยืนยัน `check` script = `lint && typecheck && scan` และ `verify` = `check && test`
 3. ทำ `/run-test-all` เพื่อรัน unit, integration, e2e, coverage
 4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
-5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/review-codebase-everythink` เพื่อสร้าง/อัปเดต CLI แล้ว retry
+5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/review-codebase-everything` เพื่อสร้าง/อัปเดต CLI แล้ว retry
 
 ## Rules
 

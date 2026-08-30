@@ -24,7 +24,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
 
-1. ทำ `/review-codebase-everythink` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Deep Analysis And Thinking
 

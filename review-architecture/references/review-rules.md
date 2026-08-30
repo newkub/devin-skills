@@ -14,7 +14,7 @@
 ## Review Independence
 
 1. ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-2. ใช้ `/review-codebase-everythink` สำหรับระบุ issues ใน code
+2. ใช้ `/review-codebase-everything` สำหรับระบุ issues ใน code
 3. แยก review process จาก fix process
 4. ห้ามลบไฟล์, โค้ด, dependencies, หรือ configuration ระหว่าง review
 
@@ -22,7 +22,7 @@
 
 1. ไม่ review code-level structure (symbols, exports, members) ที่ `/check-code-structure` ทำ
 2. ไม่ review filesystem organization ที่ `/check-code-structure` ทำ
-3. ไม่ review refactor opportunities ลึกที่ `/review-codebase-everythink` ทำ
+3. ไม่ review refactor opportunities ลึกที่ `/review-codebase-everything` ทำ
 4. ไม่ review deployment / CI/CD — ใช้ `/review-delivery`
 5. ไม่ review security controls — ใช้ `/review-delivery`
 6. ไม่ review code quality — ใช้ `/review-quality`

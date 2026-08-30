@@ -1,4 +1,4 @@
-# review-codebase-everythink References Index
+# review-codebase-everything References Index
 
 | File | Responsibility |
 |---|---|

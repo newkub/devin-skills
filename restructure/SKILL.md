@@ -37,7 +37,7 @@ related:
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
-1. ทำ `/review-codebase-everythink` เพื่อปรับปรุง naming
+1. ทำ `/review-codebase-everything` เพื่อปรับปรุง naming
 2. ทำ `/update-references` เพื่ออัปเดต import paths
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 

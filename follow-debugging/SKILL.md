@@ -90,7 +90,7 @@ related:
 > Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
 
 1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
-2. ทำ `/review-codebase-everythink` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
+2. ทำ `/review-codebase-everything` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
 3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
 4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
 
@@ -118,7 +118,7 @@ related:
 - ใส่ context: function name, input values, state
 - ใช้ log levels: `debug`, `info`, `warn`, `error`
 - หลัง fix ให้ลบ debug logging ที่ไม่จำเป็น
-- รายละเอียดเพิ่มเติมอยู่ใน `/review-codebase-everythink`
+- รายละเอียดเพิ่มเติมอยู่ใน `/review-codebase-everything`
 
 ### 4. Tool Selection
 
@@ -134,7 +134,7 @@ related:
 
 - รายละเอียด Bayesian approach อยู่ใน `/deep-debug` แล้ว
 - รายละเอียด causal analysis อยู่ใน `/analyze-root-cause-analysis` แล้ว
-- รายละเอียด improving debuggability อยู่ใน `/review-codebase-everythink` แล้ว
+- รายละเอียด improving debuggability อยู่ใน `/review-codebase-everything` แล้ว
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 

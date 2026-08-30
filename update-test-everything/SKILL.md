@@ -4,7 +4,7 @@ description: เขียนและอัปเดต test ตาม code ใ�
 related:
   - review-writing
   - run-test-coverage
-  - review-codebase-everythink
+  - review-codebase-everything
   - review-quality
   - deep-validate
   - check-reference
@@ -54,7 +54,7 @@ related:
 > Goal: ย้าย test files ไว้ใน location ที่ถูกต้อง สร้าง spec และปรับปรุง naming ก่อนเขียน test
 
 1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
-2. ทำ `/review-codebase-everythink` เพื่อตรวจ naming และ structure
+2. ทำ `/review-codebase-everything` เพื่อตรวจ naming และ structure
 3. ถ้า fail → retry (max 3 → stop/report)
 
 ### 4. Write Spec
@@ -115,7 +115,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 > Goal: ตรวจสอบ coverage และเขียน tests ที่ขาดเพิ่มเติม
 
-1. ทำ `/review-codebase-everythink` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
+1. ทำ `/review-codebase-everything` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
 2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
@@ -183,7 +183,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Unit tests: `< 10ms` ต่อ test
 - Integration tests: `< 100ms` ต่อ test
 - ใช้ `parallel execution` เมื่อ tests ไม่ dependent กัน
-- Coverage verification และ 100% enforcement อยู่ใน `/review-codebase-everythink` และ `/run-test-coverage`
+- Coverage verification และ 100% enforcement อยู่ใน `/review-codebase-everything` และ `/run-test-coverage`
 
 ### 7. Testing Strategy Per Type
 
@@ -231,7 +231,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Test files อยู่ใน location ที่ถูกต้องตาม conventions
 - Tests ครอบคลุมทุก category และ test type (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility)
 - Tests รันผ่านทั้งหมด ไม่มี false positive
-- Coverage 100% ผ่าน `/review-codebase-everythink` และ `/run-test-coverage`
+- Coverage 100% ผ่าน `/review-codebase-everything` และ `/run-test-coverage`
 - Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
 - Test data ใช้ factories/fixtures/builders ตาม strategy
 - `spec/SPEC.md` หรือเอกสาร test plan ถูกอัพเดทด้วย test cases ที่เขียนแล้ว

@@ -2,7 +2,7 @@
 name: update-review-cli
 description: อัปเดต tools/review-codebase CLI ให้ keep up ทันกับ codebase features
 related:
-  - review-codebase-everythink
+  - review-codebase-everything
   - update-create-analyze-cli
   - update-project-rules
   - run-review
