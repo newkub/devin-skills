@@ -107,7 +107,7 @@ Major skill families by current count:
 - `run-*` (34): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
 - `update-*` (34): repo, skills, docs, config, runtime, and version maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-runtime-latest`, `update-review-cli`
 - `setup-*` (3): one-time setup helpers. Examples: `setup-cicd`, `setup-package`, `setup-release`
-- `ship-*` (2): ship and deploy helpers. Examples: `ship-by-agents`, `use-ship-bots`
+- `ship-*` (2): ship and deploy helpers. Examples: `ship-by-agents`, `use-github-ship-bots`
 - `report-*` (38): reporting, diagrams, and visualization helpers. Examples: `report-what-you-do`, `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-task-progress`, `report-math-equation`, `report-todo`, `report-math-formula`
 - `roleplay-*` (26): stakeholder roleplay perspectives. Examples: `roleplay-staff-engineer`, `roleplay-ceo`, `roleplay-security-architect`, `roleplay-customer-support-agent`
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`

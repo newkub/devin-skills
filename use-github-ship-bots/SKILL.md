@@ -1,5 +1,5 @@
 ---
-name: use-ship-bots
+name: use-github-ship-bots
 description: สร้าง ship bot project จาก plan/issue จนถึง deploy ผ่าน PR
 related:
   - follow-create-github-bots
@@ -16,7 +16,7 @@ related:
   - report-progress
 ---
 
-![use-ship-bots logo](bot-logo.png)
+![use-github-ship-bots logo](bot-logo.png)
 
 ## Goal
 
@@ -24,13 +24,28 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ## How to use
 
-1. เรียก skill ด้วย `/use-ship-bots <issue-number>` หรือ `/use-ship-bots <plan-file>`
-   - ตัวอย่าง issue: `/use-ship-bots 42`
-   - ตัวอย่าง plan file: `/use-ship-bots .devin/plan/feed-bot.md`
+1. เรียก skill ด้วย `/use-github-ship-bots <issue-number>` หรือ `/use-github-ship-bots <plan-file>`
+   - ตัวอย่าง issue: `/use-github-ship-bots 42`
+   - ตัวอย่าง plan file: `/use-github-ship-bots .devin/plan/feed-bot.md`
 2. ถ้าเป็น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>` เพื่ออ่านรายละเอียด
 3. ถ้าเป็น plan file → อ่านไฟล์ plan จาก path ที่ระบุ
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ทำตามขั้นตอนใน Execute จนสร้าง PR พร้อม deploy และ evidence
+
+## Submodule
+
+Skill นี้แพ็ก bot reference code ไว้เป็น git submodule:
+
+```
+use-github-ship-bots/
+├── SKILL.md
+├── bot-logo.png
+└── github-ship-bots/    # git submodule -> github.com/newkub/github-ship-bots
+```
+
+- อ่าน reference จาก `github-ship-bots/`
+- ถ้าต้องการ deploy ใหม่ ให้ clone submodule แล้วทำงานภายใน `github-ship-bots/`
+- อัปเดต submodule commit หลัง ship bot เวอร์ชันใหม่
 
 ## Scope
 
@@ -78,7 +93,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 1. สร้าง `src/handlers/` สำหรับ events ที่ plan ระบุ
 2. สร้าง `src/domain/` สำหรับ business logic
 3. เพิ่ม approve/reject buttons หรือ slash commands ถ้ามี
-4. เชื่อมต่อกับ `ship-feed` orchestrator ถ้าเป็น ship-feed bot
+4. เชื่อมต่อกับ `github-ship-bots` submodule ถ้าเป็น GitHub ship bot
 5. รัน `/run-lint` และ `/run-typecheck` ระหว่าง implement
 
 ### 5. Add Tests
