@@ -5,7 +5,7 @@ argument-hint: "[prompt]"
 related:
   - convert-to-svg
   - draw-svg-image
-  - request-prompt-from-image
+  - generate-prompt-from-image
 ---
 
 ## Goal

@@ -1,5 +1,5 @@
 ---
-name: request-prompt
+name: summarize-prompt
 description: สรุปการสนทนาเป็น prompt ที่ชัดเจน
 argument-hint: "[target]"
 ---
@@ -10,7 +10,7 @@ argument-hint: "[target]"
 
 ## Scope
 
-ใช้ `request-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `summarize-prompt` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
