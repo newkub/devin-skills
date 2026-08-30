@@ -3,7 +3,6 @@ name: follow-tool-github-project
 description: ใช้ `gh project` จัดการ GitHub Projects ผ่าน CLI แบบ interactive และ scripted
 related:
   - list-github-project
-  - create-github-task
   - list-github-repo
 ---
 
@@ -12,7 +11,7 @@ related:
 ใช้ `gh project` สร้าง ดู แก้ไข และจัดการ items/fields ใน GitHub Projects ผ่าน CLI โดยใช้โหมด interactive หรือ flags ตามสถานการณ์
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-github-project`, `create-github-task`, `list-github-repo`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-github-project`, `list-github-repo`
 
 ใช้กับ GitHub Projects (Projects v2) ของผู้ใช้ องค์กร หรือ repository ที่เชื่อมโยง ไม่ครอบคลุม `gh issue` หรือ `gh pr` โดยตรง
 
