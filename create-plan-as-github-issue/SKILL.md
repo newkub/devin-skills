@@ -1,8 +1,7 @@
 ---
-name: create-plan-on-github-issue
+name: create-plan-as-github-issue
 description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอร แล้วเขียนลง GitHub issue พร้อม open-web
 related:
-  - create-plan-in-dot-devin
   - idea-features
   - create-github-issue
   - open-github-issue

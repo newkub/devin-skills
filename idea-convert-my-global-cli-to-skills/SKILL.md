@@ -25,7 +25,7 @@ argument-hint: "[cli-name]"
 
 1. ดูรายการจาก `/report-my-global-cli` หรือถาม user
 2. ถ้าไม่มี report ทำ `/follow-my-global-cli` เพื่อ list ทีติดตั้ง
-3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-in-dot-devin`
+3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-as-github-issue`
 4. ตรวจสอบ version, installation path และ global availability
 
 ### 2. Explore Commands

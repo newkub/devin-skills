@@ -75,7 +75,7 @@ related:
 
 - ถ้า user ต้องการไอเดีย features → ส่งต่อ `/idea-features`
 - ถ้า user ต้องการ implement → ส่งต่อ `/realize-implementation`
-- ถ้าต้องการ plan → ส่งต่อ `/create-plan-in-dot-devin`
+- ถ้าต้องการ plan → ส่งต่อ `/create-plan-as-github-issue`
 
 ## Expected Outcome
 

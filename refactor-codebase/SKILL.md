@@ -24,7 +24,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - ใช้กับทุก workspace ที่ต้องการ refactor
 - ครอบคลุม SRP, long files, import/export, architecture, packages, code styles
 - รวม consistency check สำหรับ naming, patterns, structure, และ style
-- ใช้ `/create-plan-in-dot-devin` สำหรับงานใหญ่
+- ใช้ `/create-plan-as-github-issue` สำหรับงานใหญ่
 - ใช้ `/implement-plan` สำหรับ execute แผน
 
 ## Execute
@@ -41,7 +41,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: มีแผนก่อน refactor ขนาดใหญ่
 
-1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan-in-dot-devin`
+1. ถ้างานมี >5 files หรือมีหลาย concerns → ทำ `/create-plan-as-github-issue`
 2. ถ้างานเล็ก → ข้ามไป Step 3
 
 ### 3. Refactor By Concern

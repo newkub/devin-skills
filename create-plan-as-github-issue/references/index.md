@@ -1,4 +1,4 @@
-# create-plan-on-github-issue References
+# create-plan-as-github-issue References
 
 | No. | File | Responsibility |
 |-----|------|----------------|

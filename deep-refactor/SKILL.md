@@ -61,7 +61,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 > Goal: วางแผน refactor อย่างปลอดภัยและเป็นระบบ
 
-1. ทำ `/plan` หรือ `/create-plan-in-dot-devin` สำหรับงานขนาดใหญ่
+1. ทำ `/plan` หรือ `/create-plan-as-github-issue` สำหรับงานขนาดใหญ่
 2. จัดลำดับตาม high impact + low effort ก่อน
 3. เลือก strategy: in-place, extract, relocate, rename, split
 4. กำหนด success criteria และ checkpoint สำหรับแต่ละ phase

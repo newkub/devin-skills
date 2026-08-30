@@ -4,7 +4,7 @@ description: Ship bot project จาก plan/issue จนพร้อม deploy 
 related:
   - follow-create-github-bots
   - implement-plan-from-github-issue
-  - create-plan-on-github-issue
+  - create-plan-as-github-issue
   - create-github-pr
   - use-create-pr
   - run-verify
@@ -125,7 +125,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 1. Plan First
 
 - ไม่เริ่ม implement ถ้า plan ไม่ชัด
-- ใช้ `/create-plan-on-github-issue` ถ้าต้องการ plan ใหม่
+- ใช้ `/create-plan-as-github-issue` ถ้าต้องการ plan ใหม่
 - ใช้ `/implement-plan-from-github-issue` ถ้าเริ่ม implement จาก issue
 
 ### 2. Bot Conventions

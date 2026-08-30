@@ -3,9 +3,9 @@ name: implement-plan-from-github-issue
 description: อ่าน plan จาก GitHub issue แล้ว implement ตาม plan จนพร้อม merge
 related:
   - implement-github-issue
-  - create-plan-on-github-issue
+  - create-plan-as-github-issue
   - idea-features
-  - create-plan-in-dot-devin
+  - create-plan-as-github-issue
   - realize-implementation
   - implement-mock
   - run-verify
@@ -66,7 +66,7 @@ related:
 
 > Goal: วางแผนการ implement
 
-1. ทำ `/create-plan-in-dot-devin` ถ้า issue ซับซ้อน
+1. ทำ `/create-plan-as-github-issue` ถ้า issue ซับซ้อน
 2. ระบุไฟล์และ skills ทีจำเป็น
 3. วิเคราะห์ dependencies และ risk
 
