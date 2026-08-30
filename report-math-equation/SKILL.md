@@ -1,5 +1,5 @@
 ---
-name: report-equation
+name: report-math-equation
 description: ตอบคำถามหรือเปรียบเทียบทางเลือกในรูปแบบสมการ + - = ให้เข้าใจง่าย
 related:
   - report-table

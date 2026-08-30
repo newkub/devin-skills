@@ -2,7 +2,7 @@
 name: report-math-formula
 description: แปลง code/description/ปัญหาให้เป้นสูตรคณิตศาสตร
 related:
-  - report-equation
+  - report-math-equation
   - report-table
   - report-codeblock
   - deep-analyze
