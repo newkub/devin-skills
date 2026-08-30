@@ -8,6 +8,8 @@ related:
   - deploy-to-cloudflare
   - watch-cicd-and-resolve
   - follow-tool-mise
+  - follow-tasks
+  - follow-package-manifest
 ---
 
 ## Goal
@@ -56,6 +58,7 @@ related:
 3. ใช้ `--local` สำหรับ local-only mode
 4. ใช้ `--remote` สำหรับ access remote resources
 5. ตรวจสอบ logs และ test bindings ใน local
+6. ถ้า project มี `package.json` ให้ตั้งค่า `dev` script เป็น `wrangler dev` แทน default dev server (ดู Rules Package Scripts)
 
 ### 4. Configure Bindings
 
@@ -87,6 +90,7 @@ related:
 3. รัน `bun run build` หรือ `wrangler deploy --dry-run`
 4. ตรวจสอบ bundle size (limit 1 MB สำหรับ Workers)
 5. Optimize bundle ถ้าเกิน limit
+6. ถ้า deploy target เป็น Cloudflare Workers/Pages ให้ตั้ง `build` script ใน `package.json` เป็น `wrangler build` แทน default build (ดู Rules Package Scripts); จากนั้นรัน build ด้วย `bun run build`
 
 ### 7. Deploy Staging And Production
 
@@ -181,6 +185,17 @@ export default defineNuxtConfig({
 - Build ล้มเหลว: วิเคราะห์และแก้ไข
 - Optimize bundle ถ้าเกิน 1 MB limit
 - ใช้ `wrangler types` generate types ไม่ hand-write
+
+### 6. Package Scripts
+
+ถ้า task หรือ project ใช้ Cloudflare (Workers/Pages) ให้ตั้งค่า `package.json` scripts ดังนี้:
+
+- `dev`: `wrangler dev` — แทน default dev server (`bun run src/index.ts`, `vite dev`, `next dev` ฯลฯ)
+- `build`: `wrangler build` — แทน `bun build`/`vite build`/`next build` เมื่อ deploy ไป Cloudflare
+- `deploy`: `wrangler deploy`
+- `deploy:staging`: `wrangler deploy --env staging` (ถ้ามี staging environment)
+
+หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
 
 ## Expected Outcome
 
