@@ -1,0 +1,23 @@
+{
+  "name": "updatedeps",
+  "version": "0.0.1",
+  "description": "CLI to update dependencies, convert submodules, refactor, retest, and commit across ecosystems",
+  "type": "module",
+  "bin": {
+    "updatedeps": "src/cli.ts"
+  },
+  "scripts": {
+    "build": "bun build src/cli.ts --outdir dist --target node",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "dependencies",
+    "update",
+    "cli",
+    "bun"
+  ],
+  "license": "MIT"
+}
