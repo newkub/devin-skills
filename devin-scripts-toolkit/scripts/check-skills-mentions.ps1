@@ -37,7 +37,17 @@ function Remove-UrlsFromBody {
 
 $issues = @()
 
+# Cache submodule names to skip
+$submodules = @()
+$gitmodules = Join-Path $SkillsDir ".gitmodules"
+if (Test-Path $gitmodules) {
+    $submodules = (Get-Content $gitmodules -Raw | Select-String '\[submodule "([^"]+)"\]' -AllMatches).Matches | ForEach-Object { $_.Groups[1].Value }
+}
+
 foreach ($skillDir in Get-ChildItem -Path $SkillsDir -Directory) {
+    # Skip git submodules
+    if ($submodules -contains $skillDir.Name) { continue }
+
     $skillFile = Join-Path $skillDir.FullName "SKILL.md"
     if (-not (Test-Path $skillFile)) { continue }
 
