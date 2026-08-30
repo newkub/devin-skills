@@ -10,6 +10,7 @@ related:
   - report-architecture-diagram
   - use-scripts
   - ship
+  - open-files-in-web
 ---
 
 ## Goal

@@ -5,6 +5,7 @@ related:
   - visualize-in-web
   - visualize-project
   - open-web
+  - open-files-in-web
   - analyze-project
   - idea-features
 ---

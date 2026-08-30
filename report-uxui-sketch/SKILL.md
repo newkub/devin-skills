@@ -9,6 +9,7 @@ related:
   - roleplay-ui-designer
   - ask-me
   - suggest-next-action
+  - open-files-in-web
 ---
 
 ## Goal

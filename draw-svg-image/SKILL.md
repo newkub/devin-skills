@@ -7,6 +7,7 @@ related:
   - review-architecture
   - visualize-in-web
   - open-web
+  - open-files-in-web
   - gen-ai-images
 ---
 ## Goal

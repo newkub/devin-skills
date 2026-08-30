@@ -10,6 +10,7 @@ related:
   - idea-features
   - analyze-project
   - scan-codebase
+  - open-files-in-web
 ---
 
 ## Goal
