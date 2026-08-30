@@ -1,9 +1,11 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอรใหม่และขยายจากของเดิม โดยไม่เปิด web app และไม่สร้าง report files ถาวร
+description: สร้างไอเดียฟีเจอรใหม่และขยายจากของเดิม สร้าง report ชั่วคราว และเปิด preview ด้วย open-files-in-web ได้
 argument-hint: "[topic]"
 related:
   - create-report-in-dot-devin
+  - create-files-in-os-temp
+  - open-files-in-web
   - realize-implementation
   - review-codebase-everything
   - suggest-me
@@ -14,14 +16,17 @@ related:
 
 ## Goal
 
-สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิมสำหรับ project จากนั้นสรุปใน chat หรือสร้าง report ชั่วคราวใน `.devin/reports/` แล้วลบหลังใช้งาน โดยไม่เปิด web app
+สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิมสำหรับ project จากนั้นสรุปใน chat หรือสร้าง report ชั่วคราว แล้วลบหลังใช้งาน
+
+สามารถสร้าง report ใน OS temp directory และเปิด preview ด้วย `open-files-in-web` ได้ ถ้าผู้ใช้ต้องการดู report ก่อนตัดสินใจ
 
 ## Scope
 
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- สร้าง report ชั่วคราวใน `.devin/reports/` ด้วย `/create-report-in-dot-devin` ถ้าต้องการ
-- ไม่เปิด web app, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
+- สร้าง report ชั่วคราวใน `.devin/reports/` หรือ OS temp directory ถ้าต้องการ
+- เปิด report ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
+- ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everything` ก่อน และลบ report files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
@@ -58,12 +63,21 @@ related:
 
 ### 4. Create Temporary Report
 
-> Goal: สร้าง report ชั่วคราวใน .devin/reports/
+> Goal: สร้าง report ชั่วคราวเพื่อสรุปไอเดีย
 
-1. ทำ `/create-report-in-dot-devin` ด้วย title จาก topic
-2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
-3. รวม `/report-file-structure` ของ project
-4. บันทึกลง `.devin/reports/<title>-<time>.md`
+1. ถ้าต้องการ preview ใน browser → ใช้ `/create-files-in-os-temp` สร้าง report ใน OS temp
+2. ถ้าไม่ต้องการ preview → ใช้ `/create-report-in-dot-devin` ใน `.devin/reports/`
+3. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
+4. รวม `/report-file-structure` ของ project
+5. บันทึกลง path ทีเลือก
+
+### 4.5 Open Preview With Open-Files-In-Web
+
+> Goal: เปิด report ชั่วคราวดูก่อนตัดสินใจ
+
+1. ถ้าสร้าง report ใน temp → ใช้ `/open-files-in-web preview <path>`
+2. ถ้าสร้างใน `.devin/reports/` → ใช้ `/open-files-in-web <path>`
+3. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
 
 ### 5. Summarize In Chat
 
@@ -95,13 +109,13 @@ related:
 
 - skill directory `idea-features` มีแค่ `SKILL.md`
 - ไม่มี `src/`, `package.json`, `index.html`, `vite.config.ts`, `uno.config.ts`, `tsconfig.json`
-- ไม่เปิด web app หรือ dev server
-- ไม่บันทึก data JSON ลง temp เพื่อเปิด app
+- ไม่สร้าง web app ถาวร หรือ dev server
+- เปิด preview ชั่วคราวด้วย `/open-files-in-web` ได้ ถ้าผู้ใช้ต้องการ
 
 ### 2. Report Is Temporary
 
-- สร้าง report ใน `.devin/reports/` เท่านั้น
-- ต้องลบ report files หลัง `/realize-implementation` เสร็จ
+- สร้าง report ใน `.devin/reports/` หรือ OS temp directory เท่านั้น
+- ต้องลบ report files หลัง `/realize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
 - ไม่เก็บ report ค้าง
 
 ### 3. Implement Flow
@@ -137,7 +151,8 @@ related:
 ## Expected Outcome
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
-- Report ชั่วคราวถูกสร้างใน `.devin/reports/` (ถ้าต้องการ)
-- ไม่มี web app หรือ report files ถาวร
+- Report ชั่วคราวถูกสร้างใน `.devin/reports/` หรือ OS temp (ถ้าต้องการ)
+- สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
+- ไม่มี report files ค้างหลังเสร็จงาน
 - เมื่อ user บอก "ทำ" ให้ทำ `/review-codebase-everything` แล้ว `/realize-implementation` แล้วลบ report files
 - ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ
