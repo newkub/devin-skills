@@ -45,3 +45,11 @@
 | Risk Exposure Index | high-severity findings in critical production code | count of Critical/High findings in critical path |
 | Scope Boundary Adherence | % findings inside declared refactor-review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Refactor benefit score | ประมาณค่าที่ได้จากการ refactor | (maintainability gain + ลดความเสี่ยง) / effort |
+| 2 | Risk score | โอกาสที่ refactor จะเกิดปัญหา | risk findings / รวม refactor findings × 100 |
+| 3 | Regression rate | % ของ code ที่ refactor แล้วเกิด test ล้มเหลว | tests ที่ล้มหลัง refactor / tests ก่อน refactor × 100 |

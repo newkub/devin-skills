@@ -26,3 +26,11 @@
 | Risk Exposure Index | high-severity findings in critical areas (plan, MVP, or blockers) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Requirement Coverage | % requirements ที่ implement และ verify ครบ | implemented requirements / total requirements × 100 |
+| 2 | Implementation Gap | % หรือจำนวน items ที่ยังไม่ได้ implement | missing items / total items × 100 |
+| 3 | Test Pass Rate | % tests ที่ผ่านหลัง implement | passed tests / total tests × 100 |

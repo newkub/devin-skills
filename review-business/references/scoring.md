@@ -26,3 +26,12 @@ description: คำนวณ review score และ supplementary metrics สำ
 | Subscription Edge Cases | subscription lifecycle checks | checked transitions / total transitions × 100 |
 | Realtime Consistency | % realtime flows with conflict handling | handled flows / total realtime flows × 100 |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Payment Flow Coverage | % payment paths with safeguards | covered payment paths / total payment paths × 100 |
+| 2 | Feature Flag Consistency | % feature checks matching rollout state | consistent flags / total flags × 100 |
+| 3 | Subscription Edge Case Coverage | % subscription transitions checked | checked transitions / total transitions × 100 |
+| 4 | Realtime Consistency | % realtime flows with conflict handling | handled realtime flows / total realtime flows × 100 |

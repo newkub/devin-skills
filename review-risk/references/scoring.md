@@ -67,3 +67,11 @@ risk score = probability value × impact value
 | Risk Exposure Index | high-severity risks in critical target areas | count of Critical/High findings in production/critical path scope |
 | Scope Boundary Adherence | % findings inside declared review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Risk Coverage | % ของ risk categories ที่ review ครบ | reviewed categories / total categories × 100 |
+| 2 | Probability/Impact Matrix | % ของ risks ที่มี probability และ impact ประเมิน | assessed risks / total risks × 100 |
+| 3 | Mitigation Rate | % ของ high/critical risks ที่มี mitigation plan | mitigated high/critical risks / total high/critical risks × 100 |

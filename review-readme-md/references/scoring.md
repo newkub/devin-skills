@@ -73,3 +73,12 @@ review score = sum(severity_score) / count(findings)
 | Risk Exposure Index | high-severity findings in critical README areas | count of Critical/High findings in section order/features/usage scope |
 | Scope Boundary Adherence | % findings inside declared README-review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Section coverage | % ของ section ที่แนะนำใน README ที่มีครบ | ส่วนที่มี / ส่วนที่แนะนำ × 100 |
+| 2 | Badge accuracy | % ของ badge ที่ตรงกับสถานะปัจจุบัน | badge ถูกต้อง / รวม badge × 100 |
+| 3 | Install clarity | ความชัดเจนของคำแนะนำการติดตั้ง | คะแนนจาก checklist หรือ peer review |
+| 4 | Example coverage | % ของ use cases ที่มีตัวอย่าง | ตัวอย่างที่มี / use cases ทั้งหมด × 100 |

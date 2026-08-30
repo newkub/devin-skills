@@ -75,3 +75,13 @@ overall_score = average(dimension_scores) × 100 / 100
 | Component Token Compliance | % components using design tokens | token-compliant components / total × 100 |
 | Cross-Platform Consistency | consistency across breakpoints/platforms | consistent elements / total checked × 100 |
 
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | token adoption rate | % ของ components หรือ styles ที่ใช้ design tokens ที่กำหนด | token-backed elements / total elements reviewed × 100 |
+| 2 | component reuse ratio | สัดส่วน components ที่ reuse จากชุดเดิมแทนการสร้างใหม่ | reused components / total components × 100 |
+| 3 | design-to-code drift | % ของ design specs ที่ implementation ไม่ตรง | design deviations / total checked design specs × 100 |
+| 4 | WCAG violation density | จำนวน WCAG violations ต่อหน้าจอหรือ component ที่ตรวจ | total WCAG violations / total screens or components reviewed |
+| 5 | handoff completeness | % ของ handoff items ที่มีครบ (specs, assets, responsive, tokens) | complete handoff items / total required handoff items × 100 |
+

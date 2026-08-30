@@ -67,3 +67,12 @@ review score = weighted average ของ findings ตาม severity
 | Code Duplication Rate | % duplicated code | duplicated lines / total lines × 100 |
 | Hardcode Count | magic numbers/strings on critical paths | count of hardcoded values |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Cognitive complexity | ค่าความซับซ้อนทางความคิดเฉลี่ยต่อ function | รวม cognitive complexity / จำนวน function |
+| 2 | Code duplication rate | % ของ code ที่ซ้ำกัน | บรรทัดซ้ำ / บรรทัดทั้งหมด × 100 |
+| 3 | Dead code count | จำนวน exports/function ที่ไม่ถูกใช้ | นับจาก static analysis (เช่น knip/madge) |
+| 4 | Hardcode count | จำนวน magic numbers/strings บน critical paths | นับค่าที่ hardcode ใน code |

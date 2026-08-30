@@ -12,3 +12,11 @@
 | 8 | Risk Exposure Index | high-severity gaps in critical dimensions | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % gaps inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % gaps with source dimension and location | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Coverage Gap Count | จำนวน coverage dimensions หรือ items ที่ขาดหาย | total missing items |
+| 2 | Deduplication Rate | % findings ที่เป็น duplicate ถูกรวมหรือลบออก | removed duplicates / total findings × 100 |
+| 3 | Finding-to-action Conversion | % findings ที่มี action ชัดเจนและถูก assign | findings with actions / total findings × 100 |

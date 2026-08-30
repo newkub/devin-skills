@@ -41,3 +41,12 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | high-severity findings in critical docs areas | count of Critical/High findings in structure/nav/content scope |
 | Scope Boundary Adherence | % findings inside declared docs-review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Doc Freshness | % of docs updated within acceptable window | fresh docs / total docs × 100 |
+| 2 | Searchability | % of docs with findable structure | searchable docs / total docs × 100 |
+| 3 | Example Coverage | % of documented items with examples | items with examples / total items × 100 |
+| 4 | API Doc Completeness | % of APIs with complete documentation | documented APIs / total APIs × 100 |

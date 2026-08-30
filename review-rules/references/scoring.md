@@ -68,3 +68,11 @@
 | Risk Exposure Index | high-severity findings in critical areas (rules or AGENTS.md) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Rule Coverage | % ของ rule categories ที่ review ครบ | reviewed rules / total rules × 100 |
+| 2 | Rule Conflict Count | จำนวน rules ที่ขัดแย้งหรือซ้ำซ้อน | count of conflicting or duplicate rules |
+| 3 | Rule Enforcement Rate | % ของ rules ที่มี ast-grep/scan ตรวจสอบได้ | enforced rules / total rules × 100 |

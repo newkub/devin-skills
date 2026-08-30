@@ -45,3 +45,11 @@
 | Risk Exposure Index | high-severity findings in critical config areas | count of Critical/High findings in security/build/deploy scope |
 | Scope Boundary Adherence | % findings inside declared config scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Config Drift Rate | % config values diverging from baseline | divergent configs / total configs × 100 |
+| 2 | Secret Exposure Count | จำนวน secrets ที่ถูก expose ใน config | count of secrets in plain text or logs |
+| 3 | Environment Parity Score | % config keys matching across environments | matching env vars/configs / total × 100 |

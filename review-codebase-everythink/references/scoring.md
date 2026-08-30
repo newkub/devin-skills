@@ -121,3 +121,12 @@ score = sum(severity_weight * count) / total_findings
 | Before/After Trend | score improvement | `(after - before) / before × 100` |
 
 บันทึก metrics เหล่านี้หลังแต่ละรอบ review เพื่อเปรียบเทียบ before/after และตัดสินใจปรับปรุง CLI
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Analyzer Pass Rate | % analyzers producing valid output | working analyzers / total analyzers × 100 |
+| 2 | Category Coverage | % review categories executed | executed categories / total categories × 100 |
+| 3 | Critical Path Coverage | % critical paths reviewed | reviewed critical / total critical × 100 |
+| 4 | Deduplication Rate | % duplicate findings merged into one | duplicates merged / total × 100 |

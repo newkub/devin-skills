@@ -28,3 +28,12 @@ Reference สำหรับ metrics ที่ใช้วัดผล review co
 - คำนวณ metrics หลังจากจัดลำดับ severity เสร็จแล้ว
 - ใช้ข้อมูลจาก findings table ที่ report ได้
 - ถ้าไม่สามารถคำนวณค่าใดค่าหนึ่งได้ → ระบุ `N/A` พร้อมเหตุผล
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Edge Case Coverage | % of edge cases reviewed | covered edge cases / total edge cases × 100 |
+| 2 | Invariant Violation Count | number of broken invariants | count of invariant findings |
+| 3 | Contract Coverage | % of contracts/interfaces verified | covered contracts / total contracts × 100 |
+| 4 | Mutation Score | % of mutants killed by tests | killed mutants / total mutants × 100 |

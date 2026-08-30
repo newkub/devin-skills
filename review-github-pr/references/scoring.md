@@ -41,3 +41,12 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน security-sensitive files, auth, API, breaking changes และ CI | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน changed files และ PR scope ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | PR Size | ขนาด PR จาก changed lines หรือ files | changed lines + changed files |
+| 2 | Review Coverage | % changed files ใน PR ที่ถูก review | reviewed files / changed files × 100 |
+| 3 | CI Status Pass Rate | % CI checks ที่ผ่านใน PR | passed checks / total checks × 100 |
+| 4 | Conflict Rate | % PRs หรือ files ที่มี merge conflicts | conflicting PRs / total PRs × 100 |

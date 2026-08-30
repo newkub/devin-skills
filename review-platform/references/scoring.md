@@ -59,3 +59,12 @@ overall = sum(dimension_score[dimension] for non-skipped dimensions) / non_skipp
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 - ถ้า Critical/High พบ → แนะนำ `/resolve-errors` เป็น action ถัดไป
 - ทำ review ซ้ำหลังแก้ไขสูงสุด 3 รอบ
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Browser/device pass rate | % ของ browser/device เป้าหมายที่ผ่านทดสอบ | คอนฟิกที่ผ่าน / คอนฟิกเป้าหมาย × 100 |
+| 2 | i18n completeness | % ของ locale keys ที่แปลแล้ว | translated keys / รวม keys × 100 |
+| 3 | Accessibility violations | จำนวนการละเมิด WCAG ที่พบ | นับ findings ด้าน accessibility ตาม severity |
+| 4 | Hydration mismatch count | จำนวน hydration mismatch ที่ตรวจพบ | นับ mismatches จาก logs หรือ tests |

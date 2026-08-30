@@ -28,3 +28,11 @@
 | Risk Exposure Index | high-severity findings in critical areas (manifest, dependencies, or config) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | workspace coverage | % workspace dimensions in scope that were reviewed | reviewed workspace dimensions / total dimensions × 100 |
+| 2 | dependency graph accuracy | % dependency relationships that match the actual codebase | correct dependencies / total dependencies in graph × 100 |
+| 3 | shared config consistency | % shared config files with consistent values across the workspace | consistent shared config files / total shared config files × 100 |

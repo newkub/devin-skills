@@ -72,3 +72,11 @@ score = sum(weight of each finding) / count of findings
 | Risk Exposure Index | จำนวน Critical/High findings ใน permissions, allowed-tools, secrets, safety และ hardcoded paths | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน subagent scope ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Subagent Profile Fit | % ของ subagent ที่มี profile ตรงกับงาน | matching profiles / total subagents × 100 |
+| 2 | Context Accuracy | % ของ context ที่ส่งให้ subagent ถูกต้อง | accurate contexts / total contexts × 100 |
+| 3 | Subagent Coverage | % ของงานที่มี subagent เหมาะสม | tasks with subagent / total tasks × 100 |

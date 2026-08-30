@@ -12,3 +12,12 @@
 | 8 | Risk Exposure Index | high-severity misrouted review contexts | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % routing findings inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % findings with target and recommended skill | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Routing Accuracy | % reviews routed to the correct skill or target | correct routes / total routed × 100 |
+| 2 | Ambiguity Rate | % inputs with unclear routing intent | ambiguous inputs / total inputs × 100 |
+| 3 | Fallback Rate | % reviews that fall back to a default handler | fallback count / total reviews × 100 |
+| 4 | Context Detection Coverage | % contexts where domain/intent is correctly detected | detected contexts / total contexts × 100 |

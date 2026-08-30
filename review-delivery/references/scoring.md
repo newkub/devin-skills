@@ -85,3 +85,12 @@ overall_score = sum(dimension_score) / count(dimensions)
 | Rollback Readiness | % releases with rollback plan | with rollback / total releases × 100 |
 | Dependency freshness | outdated dependency ratio | outdated / total dependencies × 100 |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | CI/CD Maturity | pipeline coverage and quality | passing checks / total checks × 100 |
+| 2 | Documentation Coverage | % of features with docs | documented features / total features × 100 |
+| 3 | Rollback Readiness | % of releases with rollback plan | releases with rollback / total releases × 100 |
+| 4 | Dependency Freshness | % of dependencies up to date | up-to-date dependencies / total dependencies × 100 |

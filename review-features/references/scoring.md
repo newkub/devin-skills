@@ -89,3 +89,11 @@ related:
 | Risk Exposure Index | high-severity findings in critical areas (features table or coverage) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Feature Coverage | % features ใน scope ที่มี behavior และ acceptance criteria ครบ | reviewed features / total features × 100 |
+| 2 | Acceptance Criteria Coverage | % features ที่มี acceptance criteria ชัดเจนและทดสอบได้ | features with AC / total features × 100 |
+| 3 | Feature Flag Coverage | % feature toggle ที่มี rollout, enable และ cleanup plan | flagged features with plan / total flags × 100 |

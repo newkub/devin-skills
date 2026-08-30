@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน deleted/renamed files, secrets, files ยาวเกิน 250 บรรทัด และ out-of-scope changes | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน diff scope ที่ user ร้องขอ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/status/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Diff Coverage | % ของ changes ใน diff ที่ review ครบ | reviewed changes / total changes × 100 |
+| 2 | Change Type Distribution | สัดส่วนประเภทของ changes | count per change type / total changes × 100 |
+| 3 | Change Risk Score | คะแนนความเสี่ยงของ changes | risk-weighted changes / total changes × 100 |

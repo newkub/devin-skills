@@ -45,3 +45,11 @@
 | Risk Exposure Index | high-severity findings in critical structure areas | count of Critical/High findings in core folders |
 | Scope Boundary Adherence | % findings inside declared restructure-review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Structure Maturity | % ของ structure rules ที่ผ่านเกณฑ์ | passed structure rules / total rules × 100 |
+| 2 | Coupling Score | % ของ modules ที่มี import/dependency น้อย | low-coupling modules / total modules × 100 |
+| 3 | Cohesion Score | % ของ modules ที่มี responsibilities สอดคล้องกัน | cohesive modules / total modules × 100 |

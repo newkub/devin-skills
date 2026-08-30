@@ -57,3 +57,13 @@ review score = sum(severity_weight[finding] for all findings) / count(findings)
 | License Compliance | non-compliant licenses | non-compliant packages / total packages × 100 |
 | Tree-Shaking Health | dead-code/exports removed | tree-shaken size / total size × 100 |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Dependency Freshness | % ของ dependencies ที่เป็น version ล่าสุด | up-to-date deps / total deps × 100 |
+| 2 | Vulnerable Dependency Count | จำนวน dependencies ที่มี known CVE | count of deps with critical/high CVE |
+| 3 | Transitive Depth | ระดับความลึกของ dependency tree | max depth of dependency tree |
+| 4 | Duplicate Package Count | จำนวน packages ที่มี version ซ้ำ | count of duplicate package versions |
+| 5 | License Compliance | % ของ packages ที่มี license ถูกต้อง | compliant packages / total packages × 100 |

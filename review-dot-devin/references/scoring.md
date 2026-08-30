@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | high-severity findings in critical areas (`.devin` rules, hooks, or sgconfig) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Rule Coverage | % of required rules defined | defined rules / required rules × 100 |
+| 2 | Config Consistency | % of config files following conventions | consistent configs / total configs × 100 |
+| 3 | Workspace Mapping Accuracy | % of workspace paths mapped correctly | correct mappings / total mappings × 100 |

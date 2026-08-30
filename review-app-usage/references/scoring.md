@@ -41,3 +41,12 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน syntax, metadata, commands หลัก, version และ effects | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน scope ของ `usage.kdl` และ `USAGE.md` | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Usage Path Coverage | % paths in usage spec or USAGE.md covered | covered paths / total paths × 100 |
+| 2 | Error Rate | % runs or simulations ending in error | error runs / total runs × 100 |
+| 3 | Completion Rate | % usage flows reaching the intended end | completed / total × 100 |
+| 4 | Drop-off Points | จุดที่ผู้ใช้หยุดหรือออกจาก flow | count of exit steps / total steps |

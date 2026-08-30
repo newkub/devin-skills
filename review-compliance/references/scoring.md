@@ -55,3 +55,12 @@ review score = weighted average ของ findings ทั้งหมด
 | Audit Trail Coverage | % critical actions logged | logged actions / critical actions × 100 |
 | Data Retention Compliance | % data types with retention policy | compliant types / total types × 100 |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Regulation Coverage | % applicable regulations checked | checked regulations / total applicable × 100 |
+| 2 | Consent Coverage | % user flows with valid consent | flows with consent / total data flows × 100 |
+| 3 | DSAR Readiness | % DSAR requirements implemented | implemented / required × 100 |
+| 4 | Audit Trail Coverage | % critical actions with complete logs | logged actions / critical actions × 100 |

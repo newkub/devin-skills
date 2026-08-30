@@ -12,3 +12,11 @@
 | 8 | Risk Exposure Index | high-severity issues that block implementation | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % issue findings inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % findings with quote or reference from issue | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Triage Accuracy | % issues ที่ assign priority/label/assignee ถูกต้อง | correct triage / total issues × 100 |
+| 2 | Resolution Time | เวลาเฉลี่ยจาก issue เปิดจนปิด resolved | sum resolution times / resolved issues |
+| 3 | Recurrence Rate | % closed issues ที่ reopen ซ้ำ | reopened issues / closed issues × 100 |

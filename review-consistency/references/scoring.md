@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน global rules, `AGENTS.md` references, frontmatter และ shared conventions | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน skill files ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Naming Consistency | ความสอดคล้องของ naming convention ข้าม files | consistent names / total names × 100 |
+| 2 | Style Consistency | ความสอดคล้องของ style convention ข้าม files | consistent styles / total style points × 100 |
+| 3 | Cross-File Consistency Score | คะแนนความสอดคล้องระหว่าง files | consistent cross-file items / total cross-file items × 100 |

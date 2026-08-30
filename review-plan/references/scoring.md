@@ -45,3 +45,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน critical path, high-risk tasks, rollback และ acceptance criteria | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน plan scope ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Plan completeness | % ของส่วนที่จำเป็นใน plan ที่มีครบ | ส่วนที่ครบ / ส่วนที่ต้องมี × 100 |
+| 2 | Milestone coverage | % ของ milestone ที่มี deliverable และวันที่ | milestones ที่กำหนด / รวม milestones × 100 |
+| 3 | Dependency accuracy | % ของ dependency ที่ระบุถูกต้อง | dependencies ถูกต้อง / รวม dependencies × 100 |

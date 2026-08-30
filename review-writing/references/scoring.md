@@ -72,3 +72,11 @@ review_score = sum(severity_score) / count(findings)
 | Risk Exposure Index | high-severity findings in critical areas (README, public API docs, or core naming) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | grammar consistency | % writing samples without grammar or spelling issues | clean writing samples / total samples × 100 |
+| 2 | clarity score | % writing that is immediately understandable and concise | clear and concise items / total items reviewed × 100 |
+| 3 | terminology consistency | % terminology that matches the project glossary consistently | consistent terminology / total checked terms × 100 |

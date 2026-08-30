@@ -45,3 +45,11 @@
 | Risk Exposure Index | high-severity findings in critical drift areas | count of Critical/High findings in runtime/dependency/rules scope |
 | Scope Boundary Adherence | % findings inside declared update-review scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | deprecation count | จำนวน features, APIs, หรือ dependencies ที่ถูก deprecate | count of deprecated items found |
+| 2 | migration completeness | % ของ migrations ที่ดำเนินการครบถ้วน | completed migrations / total required migrations × 100 |
+| 3 | version compatibility | % ของ dependencies ที่เข้ากันได้กับ target version | compatible dependencies / total dependencies checked × 100 |

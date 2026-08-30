@@ -70,3 +70,13 @@ overall_score = sum(dimension_score) / count(dimensions)
 - แสดง score ต่อ dimension และ overall score
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 - รายงาน progress bar และ grade ใน report
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Component Reuse Ratio | % UI patterns ที่เป็น reusable components | reusable components / total components × 100 |
+| 2 | Prop Drilling Depth | ความลึกสูงสุดของ props ที่ส่งผ่าน component layers | max hops from source to consumer |
+| 3 | Render Count/Regression | จำนวน render ที่ไม่จำเป็นหรือเกิน baseline | (regression renders / baseline renders - 1) × 100 |
+| 4 | Bundle Lazy-load Coverage | % routes หรือ components หนักที่ lazy loaded | lazy loaded chunks / total chunks × 100 |
+| 5 | CSS Specificity Score | ค่า specificity เฉลี่ยหรือสูงสุดของ CSS selectors | sum specificity / total selectors |

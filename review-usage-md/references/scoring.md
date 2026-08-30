@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน commands, examples, README/package.json references | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน `USAGE.md` และ project scope ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | usage example coverage | % ของ usage examples ที่มีครบและถูกต้อง | valid usage examples / total expected usage examples × 100 |
+| 2 | command accuracy | % ของ commands ที่เขียนถูกต้องและใช้งานได้ | correct commands / total commands reviewed × 100 |
+| 3 | output sample coverage | % ของ commands ที่มี output sample ประกอบ | commands with output sample / total commands × 100 |

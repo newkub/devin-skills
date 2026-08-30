@@ -64,3 +64,14 @@ review score = weighted average ของ findings ทั้งหมด
 4. คำนวณ review score ตามสูตรและ metrics ข้างต้น
 5. ทำ `/report` พร้อม `/report-table`
 6. ทำ `/suggest-next-action`
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | MTTD | ระยะเวลาเฉลี่ยจากเกิด incident จนถึงตรวจพบ | ผลรวมเวลาตรวจพบ / จำนวน incident |
+| 2 | MTTA | ระยะเวลาเฉลี่ยจาก alert จนถึง acknowledge | ผลรวมเวลา acknowledge / จำนวน alert |
+| 3 | MTTR | ระยะเวลาเฉลี่ยจากตรวจพบจนถึงแก้ไขได้ | ผลรวมเวลาแก้ไข / จำนวน incident |
+| 4 | Trace propagation rate | % ของ request ที่ส่งต่อ trace context ข้าม service | request ที่มี propagated trace / รวม request × 100 |
+| 5 | Alert noise rate | % ของ alert ที่ไม่นำไปสู่ action | alert ที่ไม่ actionable / รวม alert × 100 |
+| 6 | SLO coverage | % ของ critical services ที่มี SLO กำหนด | services ที่มี SLO / critical services × 100 |

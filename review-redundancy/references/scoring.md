@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน core skills หรือ skills ที่อยู่ใน `AGENTS.md` | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน scope ของ skills repo ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Duplication rate | % ของ code หรือ content ที่ซ้ำกัน | บรรทัดซ้ำ / บรรทัดทั้งหมด × 100 |
+| 2 | Consolidation opportunities | จำนวน module/component ที่สามารถรวมได้ | นับ candidates จากการวิเคราะห์ |
+| 3 | Dead code count | จำนวน exports/functions ที่ไม่ถูกใช้ | นับจาก static analysis (เช่น knip/madge) |

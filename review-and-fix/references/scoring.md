@@ -12,3 +12,11 @@
 | 8 | Risk Exposure Index | high-severity unfixed issues in critical areas | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % fixed issues inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % fixes with file/line and reason | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Fix Success Rate | % fixes that pass verification | fixed verified / total fixes × 100 |
+| 2 | Regression Rate After Fix | % fixed issues that reintroduce problems | regressions / total fixed × 100 |
+| 3 | Verification Coverage | % findings covered by a verification step | verified findings / total findings × 100 |

@@ -12,3 +12,12 @@
 | 8 | Risk Exposure Index | high-severity missing content in critical features or APIs | count of Critical/High content gaps in critical scope |
 | 9 | Scope Boundary Adherence | % content gaps inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % findings with content location and source reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Content Completeness | % of required content topics covered | covered topics / required topics × 100 |
+| 2 | Content Freshness | % of content updated within acceptable window | fresh items / total items × 100 |
+| 3 | Content Accuracy | % of content facts verified correct | correct facts / checked facts × 100 |
+| 4 | Example Coverage | % of documented items with examples | items with examples / total items × 100 |

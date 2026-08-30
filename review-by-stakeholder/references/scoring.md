@@ -12,3 +12,11 @@
 | 8 | Risk Exposure Index | high-severity findings from critical stakeholders | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % stakeholder findings inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % findings with stakeholder, dimension, and location | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Stakeholder Coverage | % required stakeholder roles represented | represented stakeholders / required × 100 |
+| 2 | Concern Coverage | % raised concerns reviewed and addressed | addressed concerns / total concerns × 100 |
+| 3 | Priority Alignment Score | % high-priority concerns aligned with roadmap | high-priority aligned / total high-priority × 100 |

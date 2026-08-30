@@ -49,3 +49,13 @@
 - review score ต่อ dimension และ overall
 - จัดลำดับตาม severity: Critical → High → Medium → Low
 - รายงานเป็นตารางด้วย `/report-table`
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Crash-Free Session Rate | % ของ sessions ที่ไม่มี crashes | crash-free sessions / total sessions × 100 |
+| 2 | MTTR | ระยะเวลาเฉลี่ยในการกู้คืนระบบ | total recovery time / incident count |
+| 3 | Recovery Success Rate | % ของ recoveries ที่สำเร็จ | successful recoveries / total attempts × 100 |
+| 4 | Error Budget Consumption | % ของ error budget ที่ใช้ไป | consumed budget / total budget × 100 |
+| 5 | Recurring Error Frequency | ความถี่ของ errors ที่เกิดซ้ำ | recurring errors / total errors × 100 |

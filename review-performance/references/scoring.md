@@ -77,3 +77,13 @@ overall_score = sum(dimension_score) / count(dimensions)
 | N+1 Query Count | repeated queries detected | count of N+1 patterns |
 | Memory Leak Risk | unbounded collections/listeners | count of leak patterns × severity |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | p50/p95/p99 latency | ค่า latency ที่ percentile 50, 95, 99 | วัดจาก profiling/logs ของ critical paths |
+| 2 | Throughput | จำนวน request หรือ operation ต่อหน่วยเวลา | รวม request / ช่วงเวลา (วินาที/นาที) |
+| 3 | Core Web Vitals pass rate | % ของหน้าที่ผ่าน LCP, INP, CLS | หน้าที่ผ่าน CWV / รวมหน้า × 100 |
+| 4 | Bundle budget delta | ความต่างของ bundle size จริงกับ budget | actual bundle size - budget size |
+| 5 | Query count per request | ค่าเฉลี่ย query ต่อ request | รวม query / รวม request |

@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน safety checks, redundant steps, destructive actions และ scope boundaries | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน workflow scope ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | workflow coverage | % ของ workflow steps ใน scope ที่ review ครบ | reviewed steps / total workflow steps × 100 |
+| 2 | automation rate | % ของ steps ที่ทำงานอัตโนมัติโดยไม่ต้อง manual | automated steps / total steps × 100 |
+| 3 | bottleneck count | จำนวน steps ที่มี latency, dependency, หรือ manual intervention สูง | count of steps with wait/dependency/manual block |

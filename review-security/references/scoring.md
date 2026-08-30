@@ -55,3 +55,13 @@ review score = weighted average ของ findings ทั้งหมด
 | Before/After Trend | score improvement after fixes | (after_score - before_score) / before_score × 100 |
 | OWASP Coverage | % OWASP Top 10 categories reviewed | categories reviewed / 10 × 100 |
 | Dependency Risk Score | vulnerable/outdated dependency exposure | count critical/high CVE / total dependencies × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Attack Surface Coverage | % ของ entry points ที่ review ครบ | reviewed entry points / total entry points × 100 |
+| 2 | Endpoint Auth Coverage | % ของ endpoints ที่มี authentication ครบ | authenticated endpoints / total endpoints × 100 |
+| 3 | Authorization Coverage | % ของ endpoints ที่มี authorization check ครบ | authorized endpoints / total endpoints × 100 |
+| 4 | Secret Scan Coverage | % ของ files/commits ที่ scan secret ครบ | scanned files / total files × 100 |
+| 5 | SBOM Completeness | % ของ components ที่มีข้อมูลครบใน SBOM | components with full data / total components × 100 |

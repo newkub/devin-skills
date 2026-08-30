@@ -12,3 +12,11 @@
 | 8 | Risk Exposure Index | high-severity naming issues in public API or skill names | count of Critical/High findings in critical scope |
 | 9 | Scope Boundary Adherence | % naming findings inside declared scope | in-scope findings / total findings × 100 |
 | 10 | Documentation/Report Quality | % findings with file path/line and suggested name | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Naming Convention Coverage | % identifiers/files ที่เป็นไปตาม naming convention | conforming names / total names × 100 |
+| 2 | Conflict Count | จำนวน naming conflicts หรือ duplicate names | duplicate or conflicting names |
+| 3 | Clarity Score | % names ที่สื่อ intent ได้ชัดเจนไม่กำกวม | clear names / total names × 100 |

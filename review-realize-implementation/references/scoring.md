@@ -65,3 +65,11 @@ Implementation Completeness: 72.7% [██████████████�
 | Risk Exposure Index | high-severity gaps in critical production path | count of Critical/High findings in schema/data/API/UI critical path |
 | Scope Boundary Adherence | % findings inside declared implementation scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Realization gap | % ของรายการใน plan ที่ยังไม่ได้ implement | รายการที่ขาด / รายการใน plan × 100 |
+| 2 | Verification coverage | % ของรายการที่ implement แล้วและมี test ยืนยัน | รายการที่ verified / รายการที่ implement × 100 |
+| 3 | Risk score | คะแนนความเสี่ยงของ implementation | ความเสี่ยง × น้ำหนัก severity / คะแนนเต็ม |

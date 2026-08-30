@@ -26,3 +26,12 @@
 | Risk Exposure Index | high-severity findings in critical areas (env, build, health, or zero-downtime) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Deployment Frequency | number of deployments per time window | total deployments / time period |
+| 2 | Lead Time | time from commit to production | average (deploy time - commit time) |
+| 3 | Failure Rate | % of deployments that fail | failed deployments / total deployments × 100 |
+| 4 | Rollback Success Rate | % of rollbacks completed successfully | successful rollbacks / total rollbacks × 100 |

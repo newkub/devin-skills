@@ -77,3 +77,12 @@ overall_score = sum(dimension_score) / count(dimensions)
 | Risk Exposure Index | high-severity findings in critical SEO areas | count of Critical/High findings in crawl/index/on-page scope |
 | Scope Boundary Adherence | % findings inside declared SEO scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Crawl Coverage | % ของ URLs ที่ crawler เข้าถึงได้ | crawled URLs / total URLs × 100 |
+| 2 | Indexability | % ของ pages ที่สามารถ index ได้ | indexable pages / total pages × 100 |
+| 3 | Core Web Vitals for SEO | % ของ pages ที่ผ่าน LCP/INP/CLS thresholds | passing pages / total pages × 100 |
+| 4 | Schema Markup Coverage | % ของ pages ที่มี structured data ครบ | pages with valid schema / total pages × 100 |

@@ -12,4 +12,5 @@
 | 8 | [capture-output.md](capture-output.md) | Capture Output And Classify Failures |
 | 9 | [analyze-coverage-flaky.md](analyze-coverage-flaky.md) | Analyze Coverage Delta And Detect Flakiness |
 | 10 | [decide-actions.md](decide-actions.md) | Decide Actions, Update Skills And Report |
-| 11 | [website.md](website.md) | Official Resources And Links |
+| 11 | [scoring.md](scoring.md) | Test Review Domain-Specific Metrics |
+| 12 | [website.md](website.md) | Official Resources And Links |

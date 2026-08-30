@@ -26,3 +26,11 @@
 | Risk Exposure Index | high-severity findings in critical areas (data integrity, rollback, or migration steps) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Migration Script Coverage | % migration steps ที่มี script ครอบคลุม | scripted steps / total migration steps × 100 |
+| 2 | Data Integrity | % data validation หรือ consistency checks ผ่าน | passing checks / total checks × 100 |
+| 3 | Rollback Coverage | % migration steps ที่มี rollback plan หรือ script | steps with rollback / total steps × 100 |

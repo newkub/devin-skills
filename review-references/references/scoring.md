@@ -41,3 +41,11 @@ review score = weighted average ของ findings ทั้งหมด
 | Risk Exposure Index | จำนวน Critical/High findings ใน AGENTS.md, global rules, frontmatter related ของ core skills | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % ของ findings อยู่ใน scope ของ skills และ references ที่ประกาศ | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % ของ findings ที่มี file path/line/reference ครบ | documented findings / total findings × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Reference Completeness | % ของ references ที่มีเนื้อหาครบถ้วน | complete references / total references × 100 |
+| 2 | Broken Reference Rate | % ของ references ที่ลิงก์เสียหรือหาไม่พบ | broken references / total references × 100 |
+| 3 | Cross-Skill Mapping | % ของ references ที่เชื่อมต่อกับ skills ที่เกี่ยวข้อง | mapped references / total references × 100 |

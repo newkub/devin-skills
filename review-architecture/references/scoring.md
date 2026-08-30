@@ -71,3 +71,12 @@ overall_score = average(dimension_scores) × 100 / 100
 | Resilience Coverage | % paths with fallback/retry | resilient paths / critical paths × 100 |
 | Tech Debt Concentration | debt in critical modules | debt findings in critical / total debt |
 | Before/After Trend | score improvement | (after - before) / before × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Coupling Index | ระดับการพึ่งพากันของ modules | count of cross-module imports × severity |
+| 2 | Cyclic Dependency Count | จำนวน dependency cycles | count of circular dependency cycles |
+| 3 | Modularity Score | % modules with clean boundaries | cleanly bounded modules / total × 100 |
+| 4 | Resilience Coverage | % critical paths with fallback/retry/timeout | resilient paths / critical paths × 100 |

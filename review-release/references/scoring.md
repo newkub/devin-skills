@@ -26,3 +26,11 @@
 | Risk Exposure Index | high-severity findings in critical areas (version, changelog, breaking changes, or platform config) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Release Note Coverage | % ของ version/change ที่มี release notes ครบ | changes with notes / total changes × 100 |
+| 2 | Rollback Readiness | % ของ release ที่มี rollback plan พร้อมใช้ | releases with rollback plan / total releases × 100 |
+| 3 | Changelog Accuracy | % ของ changelog entries ที่ตรงกับ actual changes | accurate entries / total entries × 100 |

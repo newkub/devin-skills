@@ -52,3 +52,13 @@
 | Risk Exposure Index | high-severity findings in critical areas (API, database, or integration) | count of Critical/High findings in critical scope |
 | Scope Boundary Adherence | % findings inside declared scope | in-scope findings / total findings × 100 |
 | Documentation/Report Quality | % findings with proper location/reference | documented findings / total × 100 |
+
+## Domain-Specific Metrics
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Endpoint Coverage | % backend endpoints documented and tested | documented+tested endpoints / total × 100 |
+| 2 | API Contract Coverage | % endpoints with matching request/response contract | endpoints with matching contract / total × 100 |
+| 3 | N+1 Rate | % endpoints with detected N+1 query issues | N+1 detected queries / total endpoints × 100 |
+| 4 | Idempotency Coverage | % state-changing endpoints with idempotency guard | idempotent endpoints / state-changing endpoints × 100 |
+| 5 | Data Lineage Completeness | % data flows with full source-to-sink lineage | data flows with full lineage / total data flows × 100 |
