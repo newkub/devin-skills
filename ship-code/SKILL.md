@@ -8,7 +8,7 @@ related:
   - update-all-devin-global-skills
   - update-project
   - refactor
-  - update-test
+  - update-test-everything
   - run-verify
   - resolve-errors
   - report
@@ -75,7 +75,7 @@ Prepare workspace code ก่อน ship โดยอัปเดต project doc
 
 > Goal: อัปเดต tests ให้ sync กับ code ก่อน ship
 
-1. ถ้ามี code change, refactor หรือ AGENTS.md ระบุ → ทำ `/update-test`
+1. ถ้ามี code change, refactor หรือ AGENTS.md ระบุ → ทำ `/update-test-everything`
 2. ตรวจสอบ coverage gaps ด้วย `/run-test-coverage`
 3. ถ้า tests ไม่อยู่ใน location ที่ถูกต้อง → ปรับก่อน report
 

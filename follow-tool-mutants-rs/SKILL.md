@@ -5,7 +5,7 @@ related:
   - follow-lang-rust
   - follow-tool-nextest
   - follow-tool-cargo
-  - update-test
+  - update-test-everything
   - follow-test
 ---
 

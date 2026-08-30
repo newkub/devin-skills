@@ -72,7 +72,7 @@ related:
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)
    - `/update-examples` (ถ้ามี `examples/` หรือ public APIs เปลี่ยน)
-   - `/update-test` เพื่ออัปเดต test setup
+   - `/update-test-everything` เพื่ออัปเดต test setup
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`

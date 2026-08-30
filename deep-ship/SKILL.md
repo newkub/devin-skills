@@ -20,7 +20,7 @@ related:
   - watch-release
   - deep-validate
   - run-verify
-  - test-all
+  - run-test-all
   - review-security
   - review-compliance
   - review-observability
@@ -70,7 +70,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ทำ `/deep-validate` เพื่อ validate correctness, type, security, compliance, cross-reference
 2. ทำ `/run-verify` เพื่อ lint, typecheck, test, build
-3. ทำ `/test-all` เพื่อรัน test suites ทั้งหมด
+3. ทำ `/run-test-all` เพื่อรัน test suites ทั้งหมด
 4. ทำ `/review-security` ถ้ามี API, auth, secrets
 5. ทำ `/review-compliance` ถ้ามี GDPR, PDPA, PCI, SOC2
 6. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
@@ -160,7 +160,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 2. Validation Before Ship
 
-- ต้องผ่าน `/deep-validate`, `/run-verify`, `/test-all` ก่อนย้ายไป step ถัดไป
+- ต้องผ่าน `/deep-validate`, `/run-verify`, `/run-test-all` ก่อนย้ายไป step ถัดไป
 - ไม่อ้างว่างานพร้อม ship ถ้า validation fail
 - ถ้าไม่ผ่านหลัง 3 รอบ → stop และ report
 
@@ -186,7 +186,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - การเปลี่ยนแปลงถูก commit (และ push ถ้าได้รับคำสั่ง/มี config)
 - release ถูกสร้าง (ถ้ามี versioned artifact)
 - deploy สำเร็จและ live (ถ้ามี deploy config)
-- ผ่าน `/deep-validate`, `/run-verify`, `/test-all` ก่อน ship
+- ผ่าน `/deep-validate`, `/run-verify`, `/run-test-all` ก่อน ship
 - มี rollback plan และบันทึก previous state
 - observability ตรวจสอบ (ถ้ามี)
 - รายงาน status, version, URLs, validation, rollback, และ next actions ครบถ้วน

@@ -41,4 +41,4 @@
 
 ## Recommended Update Skills
 
-- `update-test` สำหรับ update test suite และ `spec/SPEC.md`
+- `update-test-everything` สำหรับ update test suite และ `spec/SPEC.md`

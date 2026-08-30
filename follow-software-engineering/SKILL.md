@@ -81,7 +81,7 @@ related:
 
 จัดการ testing อย่าง systematic
 
-1. ทำ `/update-test` สำหรับ testing strategy
+1. ทำ `/update-test-everything` สำหรับ testing strategy
 2. เขียน unit tests สำหรับ pure functions
 3. เขียน integration tests สำหรับ adapters
 4. เขียน E2E tests สำหรับ critical flows

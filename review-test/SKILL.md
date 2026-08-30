@@ -4,7 +4,7 @@ description: Review test strategy, quality, และผลลัพธ์หล
 related:
   - run-test
   - run-test-coverage
-  - update-test
+  - update-test-everything
   - follow-test
   - follow-tdd
   - update-config
@@ -25,8 +25,8 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ใช้ได้ทั้งก่อนและหลังการรัน tests:
 
-- ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-test`, `run-test-coverage` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
-- หลัง: ใช้หลัง `run-test`, `run-test-coverage`, `follow-tdd`, `update-test`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
+- ก่อน: ใช้ก่อน `run-test`, `follow-test`, `follow-tdd`, `update-test-everything`, `run-test-coverage` — ตรวจ test strategy ครอบคลุม coverage, edge cases, isolation, pyramid balance, regression
+- หลัง: ใช้หลัง `run-test`, `run-test-coverage`, `follow-tdd`, `update-test-everything`, หรือ `follow-test` — วิเคราะห์ผลลัพธ์, coverage delta, flaky, สรุป action
 
 ## Execute
 
@@ -134,12 +134,12 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 > Goal: สรุป action ถัดไป อัปเดต skill ถ้าพบ systemic gap และ report
 
-1. ถ้ามี assertion/implementation failure → แนะนำ `update-test` หรือ `deep-debug`
+1. ถ้ามี assertion/implementation failure → แนะนำ `update-test-everything` หรือ `deep-debug`
 2. ถ้ามี runtime/setup failure → แนะนำ `resolve-errors` หรือ `update-config`
-3. ถ้ามี coverage gap → แนะนำ `update-test`
+3. ถ้ามี coverage gap → แนะนำ `update-test-everything`
 4. ถ้ามี flaky → แนะนำ refactor test หรือ `follow-test`
 5. ถ้าผลลัพธ์ทำให้รู้ว่า skill/flow ใดควรปรับปรุง → ใช้ `/update-devin-global-skills`
-6. ถ้าพบว่า skill ทีใช้ (เช่น `update-test`, `follow-test`) ยังไม่ครอบคลุมกรณีทีเจอ → บันทึก gap
+6. ถ้าพบว่า skill ทีใช้ (เช่น `update-test-everything`, `follow-test`) ยังไม่ครอบคลุมกรณีทีเจอ → บันทึก gap
 7. รัน `/update-devin-global-skills <skill-name>` เพื่อ update skill นั้น
 8. ทำ `/deep-validate` และ `/check-reference` หลัง update
 9. ไม่ update skill โดยไม่มี evidence จาก test result
@@ -153,7 +153,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 ### 1. Review Only
 
 - ทำ review strategy และผลลัพธ์เท่านั้น ไม่แก้ไข source/test code ระหว่าง review
-- ถ้าต้องเขียน/แก้ tests → ใช้ `update-test` หลัง review
+- ถ้าต้องเขียน/แก้ tests → ใช้ `update-test-everything` หลัง review
 - ถ้าต้องแก้ไข source code จาก failure → ส่งต่อให้ `deep-debug` หรือ `resolve-errors`
 - ถ้าต้องแก้ไข config → ส่งต่อให้ `update-config`
 

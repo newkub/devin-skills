@@ -1,5 +1,5 @@
 ---
-name: update-test
+name: update-test-everything
 description: เขียนและอัปเดต test ตาม code ให้ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
 related:
   - review-writing

@@ -89,7 +89,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 7. Testing Strategy
 
-> Goal: ทำ `/update-test` เพื่อจัดการ tests ตาม Clean Architecture
+> Goal: ทำ `/update-test-everything` เพื่อจัดการ tests ตาม Clean Architecture
 
 1. ทำ `/follow-tool-vitest` สำหรับ testing framework setup
 2. Unit tests - Pure function tests ใน `test/modules/*/domain/` (AAA pattern)

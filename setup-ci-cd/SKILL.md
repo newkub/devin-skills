@@ -11,6 +11,7 @@ related:
   - review-delivery
   - review-config
   - run-verify
+  - run-test-all
   - ship-code
   - ship-local
   - ship-ci
@@ -178,7 +179,8 @@ jobs:
 1. ทำ `/review-config` เพื่อตรวจ drift และ duplication
 2. ทำ `/review-delivery` เพื่อตรวจว่า config ครอบคลุม security, testing, deployment
 3. รัน dry run ถ้า platform รองรับ (เช่น `act` สำหรับ GitHub Actions) — optional
-4. ถ้ามี syntax error → แก้ไขก่อนจบ
+4. ถ้าต้องการ validate test suite ใน local → ทำ `/run-test-all` ก่อนขึ้น CI
+5. ถ้ามี syntax error → แก้ไขก่อนจบ
 
 ### 6. Report
 

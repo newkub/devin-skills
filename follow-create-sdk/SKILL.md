@@ -42,7 +42,7 @@ related:
   - update-devin-global-skills
   - update-devin-global-subagents
   - update-references
-  - update-test
+  - update-test-everything
   - follow-my-tech-stack
   - review-techstack
   - ship

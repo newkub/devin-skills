@@ -8,7 +8,7 @@ related:
   - run-dev
   - deep-validate
   - report-table
-  - update-test
+  - update-test-everything
   - update-usage-md
   - run-format
   - run-typecheck

@@ -13,7 +13,7 @@ related:
   - update-project-rules
   - update-project-skills
   - update-examples
-  - update-test
+  - update-test-everything
   - update-todo-md
   - update-references
   - update-gitignore
@@ -86,7 +86,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ทำ `/update-project-skills` เพื่อ sync `.devin/skills/`
 2. ทำ `/update-examples` ถ้ามี public APIs หรือ `examples/`
-3. ทำ `/update-test` เพื่อ sync test setup
+3. ทำ `/update-test-everything` เพื่อ sync test setup
 4. ทำ `/update-todo-md` ถ้ามี `TODO.md`
 5. ทำ `/update-references` เพื่อ sync ทุก reference
 

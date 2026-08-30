@@ -7,7 +7,7 @@ related:
   - analyze-root-cause-analysis
   - deep-thinking
   - report-table
-  - update-test
+  - update-test-everything
   - follow-tool-git
 ---
 
@@ -86,7 +86,7 @@ related:
 1. สร้าง action item เป็นลิสต์พร้อม owner, due date, success criteria
 2. แบ่ง action items ตามระดับ: immediate (≤ 1 สัปดาห์), short-term (≤ 1 เดือน), long-term (≤ 3 เดือน)
 3. ทุก action item ต้องเชื่อมกับ contributing factor ทีระบุ
-4. ถ้าต้องแก้ code → ทำ `/update-test` เพื่อสร้าง regression test
+4. ถ้าต้องแก้ code → ทำ `/update-test-everything` เพื่อสร้าง regression test
 5. ถ้าต้องแก้ process → เขียน runbook หรือ checklist
 
 ### 8. Communicate And Follow Up

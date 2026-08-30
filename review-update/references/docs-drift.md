@@ -47,4 +47,4 @@
 - `run-release` สำหรับ `CHANGELOG.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
 - `gen-changelog-md` สำหรับ `CHANGELOG.md` (gen จาก git tags)
 - `follow-tool-changelogen` สำหรับ `CHANGELOG.md` (ด้วย changelogen)
-- `update-test` สำหรับ `spec/SPEC.md`
+- `update-test-everything` สำหรับ `spec/SPEC.md`

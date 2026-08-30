@@ -3,13 +3,13 @@ name: deep-test
 description: Test ละเอียดหลายมิติ — coverage, mutation, security, performance, accessibility
 argument-hint: "[scope]"
 related:
-  - update-test
+  - update-test-everything
   - run-test
   - run-test-coverage
   - run-test-unit
   - run-test-integration
   - run-test-e2e
-  - test-all
+  - run-test-all
   - watch-test
   - review-test
   - deep-analyze
@@ -69,7 +69,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: เขียน unit และ integration tests ตามมาตรฐาน
 
-1. ทำ `/update-test` เพื่อสร้างหรืออัปเดต unit และ integration tests
+1. ทำ `/update-test-everything` เพื่อสร้างหรืออัปเดต unit และ integration tests
 2. ทำ `/run-test-unit` เพื่อ verify unit tests
 3. ทำ `/run-test-integration` เพื่อ verify integration tests
 4. ใช้ factories, fixtures, builders สำหรับ test data
