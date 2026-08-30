@@ -1,9 +1,10 @@
 ---
 name: ship-ci
-description: Ship workspace ด้วย CI/CD: prepare code, push, และ watch CI จนผ่าน
+description: Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push, และ watch CI จนผ่าน
 related:
   - ship-code
   - setup-ci-cd
+  - run-test-all
   - deep-validate
   - git-commit
   - git-push
@@ -18,11 +19,11 @@ related:
 
 ## Goal
 
-Ship workspace ด้วย CI/CD: prepare code, push branch, watch CI pipeline จนผ่าน
+Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push branch, watch CI pipeline จนผ่าน
 
 ## Scope
 
-ใช้เมื่องานใน workspace ทีเลือกเสร็จสมบูรณ์ และต้องการ push ไปยัง remote เพื่อ verify บน CI
+ใช้เมื่องานใน workspace ทีเลือกเสร็จสมบูรณ์ และต้องการ ship-code, setup CI/CD, push, แล้ว watch CI จนผ่าน
 - ไม่ release/deploy
 - รัน `/run-verify` บน CI หลัง push
 
@@ -35,15 +36,15 @@ Ship workspace ด้วย CI/CD: prepare code, push branch, watch CI pipeline 
 1. ทำ `/ship-code`
 2. ถ้า fail → stop และ report
 
-### 2. Pre-flight
+### 2. Setup CI/CD
 
-> Goal: เตรียม workspace ก่อน push
+> Goal: ตั้งค่าหรืออัปเดต CI/CD ให้พร้อมก่อน push
 
 1. ทำ `git status --porcelain`, `git branch --show-current`, `git remote -v`
 2. ถ้าไม่มี remote → stop และ report
-3. ตรวจ CI/CD config files: `.github/workflows/*.{yml,yaml}`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `.circleci/config.yml`, `Jenkinsfile`, `wrangler.toml`, `vercel.json`
-4. ถ้าไม่พบ CI/CD config → ทำ `/setup-ci-cd`
-5. ตรวจสอบว่า CI/CD workflow รัน `/run-verify`
+3. ทำ `/setup-ci-cd` เพื่อ detect platform, verify package scripts, setup secrets, และ create/update workflow files
+4. ตรวจสอบว่า CI/CD workflow รัน `/run-verify` หรือ `/run-test-all`
+5. ถ้า CI/CD config ยังไม่พร้อม → stop และ report
 6. บันทึก `LAST_GREEN_SHA` ด้วย `git rev-parse HEAD`
 
 ### 3. Commit
