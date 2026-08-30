@@ -5,6 +5,7 @@ related:
   - report-table
   - report-ansi
   - report-progress
+  - report-session-status
   - review-writing
 ---
 

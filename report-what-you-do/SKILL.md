@@ -91,7 +91,7 @@ related:
 | `/resolve-errors` | ต้อง trial-and-error หลายรอบ |
 | `/run-verify`, `/watch-cicd-and-resolve` | รอ external pipeline |
 | `/watch-browser-and-fix`, `/watch-browser-and-test-all-routes` | ต้อง test หลายหน้า |
-| `/implement-from-gist-idea` | ทำตาม list ยาว |
+| `/implement-from-notes-idea` | ทำตาม list ยาว |
 | `/follow-*` skills ทีซับซ้อน | เช่น `follow-agents-md`, `follow-framework-*` |
 | `/consider-use-subagents` | มีการ delegate งานไป subagents |
 | `/deep-ship`, `/deep-validate` | มี validation หลายรอบ |

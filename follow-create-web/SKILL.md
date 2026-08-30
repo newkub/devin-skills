@@ -10,6 +10,7 @@ related:
   - review-techstack
   - follow-solid-tanstack
   - follow-lib-unocss
+  - follow-robots-txt
 ---
 
 ## Goal
@@ -49,7 +50,8 @@ related:
 
 1. เรียก sub-skill ทีเลือกพร้อม requirements ทีบันทึกไว้
 2. ตรวจสอบว่า sub-skill ทำงานครบถ้วนตาม expected outcome
-3. ทำ `/deep-validate` ถ้ามี complex flows
+3. ทำ `/follow-robots-txt` ก่อน deploy เพื่อตั้งค่า `robots.txt` ตามสถานะ site
+4. ทำ `/deep-validate` ถ้ามี complex flows
 
 ## Rules
 

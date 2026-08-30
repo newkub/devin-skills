@@ -11,6 +11,7 @@ related:
   - follow-create-cli
   - follow-create-codex-plugin
   - follow-create-devin-plugins
+  - follow-create-devin-skills
   - follow-create-discord-bot
   - follow-create-elysia-plugin
   - follow-create-eslint-plugins
@@ -79,7 +80,9 @@ related:
 1. ใช้ `search-files-patterns` หรือ `exec` ค้นหา `follow-create-*/SKILL.md` ใน `%APPDATA%\devin\skills`
 2. อ่าน frontmatter (`name`, `description`) ของแต่ละ skill
 3. สร้างรายการ: ชื่อ skill, description, category โดยประมาณ
-   - `skills` → `update-devin-global-skills`
+   - `skills` → `follow-create-devin-skills`
+   - `devin skills` → `follow-create-devin-skills`
+   - `update all skills` → `update-devin-global-skills`
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web`
