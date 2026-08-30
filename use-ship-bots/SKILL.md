@@ -1,6 +1,6 @@
 ---
-name: ship-bots
-description: Ship bot project จาก plan/issue จนพร้อม deploy ผ่าน PR
+name: use-ship-bots
+description: สร้าง ship bot project จาก plan/issue จนถึง deploy ผ่าน PR
 related:
   - follow-create-github-bots
   - implement-plan-from-github-issue
@@ -16,14 +16,26 @@ related:
   - report-progress
 ---
 
+![use-ship-bots logo](bot-logo.png)
+
 ## Goal
 
 Ship bot project ตาม plan หรือ GitHub issue โดยสร้าง project, implement handlers, tests, CI/CD, deploy, และสร้าง PR
 
+## How to use
+
+1. เรียก skill ด้วย `/use-ship-bots <issue-number>` หรือ `/use-ship-bots <plan-file>`
+   - ตัวอย่าง issue: `/use-ship-bots 42`
+   - ตัวอย่าง plan file: `/use-ship-bots .devin/plan/feed-bot.md`
+2. ถ้าเป็น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>` เพื่ออ่านรายละเอียด
+3. ถ้าเป็น plan file → อ่านไฟล์ plan จาก path ที่ระบุ
+4. ระบุ bot type, platform, features, acceptance criteria
+5. ทำตามขั้นตอนใน Execute จนสร้าง PR พร้อม deploy และ evidence
+
 ## Scope
 
 - รับ plan จาก issue, file, หรือ argument
-- สร้าง bot project ตาม stack ทีเลือก
+- สร้าง bot project ตาม stack ที่เลือก
 - Implement handlers, business logic, tests
 - รัน verify, CI/CD, deploy
 - สร้าง PR พร้อม evidence
@@ -33,17 +45,17 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 1. Read Plan
 
-> Goal: เข้าใจ bot ทีต้อง ship
+> Goal: เข้าใจ bot ที่ต้อง ship
 
 1. รับ `<issue-or-plan>` จาก argument
-2. ถ้าเป้น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>`
-3. ถ้าเป้น file → อ่าน `.devin/plan/<file>.md`
+2. ถ้าเป็น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>`
+3. ถ้าเป็น file → อ่าน `.devin/plan/<file>.md`
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ถ้าไม่ชัด → ทำ `/ask-me`
 
 ### 2. Choose Bot Stack
 
-> Goal: เลือก stack ทีเหมาะสม
+> Goal: เลือก stack ที่เหมาะสม
 
 1. GitHub bot สำหรับ approve/reject buttons → ใช้ `/follow-create-github-bots` ด้วย Probot หรือ GitHub Apps
 2. Web dashboard bot → ใช้ `/follow-create-web`
@@ -63,7 +75,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 > Goal: implement bot ตาม plan
 
-1. สร้าง `src/handlers/` สำหรับ events ที plan ระบุ
+1. สร้าง `src/handlers/` สำหรับ events ที่ plan ระบุ
 2. สร้าง `src/domain/` สำหรับ business logic
 3. เพิ่ม approve/reject buttons หรือ slash commands ถ้ามี
 4. เชื่อมต่อกับ `ship-feed` orchestrator ถ้าเป็น ship-feed bot
