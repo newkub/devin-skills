@@ -27,7 +27,9 @@ related:
 - ปรับปรุงแผนด้วย `/deep-plan`, `/improve`, `/review-plan`, `/report-plan`
 - สร้าง GitHub issue ด้วย body ทีเป้น table
 - เปิด issue URL ด้วย `open-web`
-- ไม่ใช้ emoji หรือ external icon CDN ใน issue body
+- ใช้ Iconify CDN icons ใน headings และ table cells ถ้าช่วยให้อ่านง่าย
+- ไม่ให้ table columns มากเกิน 6-8 คอลัมน์
+- ANSI diagram ต้องไม่มี HTML icons ข้างใน code block
 
 ## Execute
 
@@ -129,11 +131,13 @@ related:
    - `## Risks`
    - `## Acceptance Criteria` (checkboxes)
    - `## Notes` (optional)
-3. Features table ใช้ fields จาก `/idea-features`
-4. Tasks table ใช้: No., Task, Owner, Status, Depends On, Expected Outcome
-5. ไม่ใช้ emoji หรือ external icon CDN
-6. ใช้ checkboxes `- [ ]` สำหรับ acceptance criteria
-7. แนบ link ไป report หรือ sketch ถ้ามี
+3. Features table ใช้ fields จาก `/idea-features` แต่ไม่เกิน 6-8 คอลัมน์
+4. Tasks table ใช้: No., Task, Status, Depends On, Expected Outcome
+5. ใช้ Iconify CDN icons ใน section headings และ table cells เพื่อสื่อ meaning
+6. ใช้ color ใน icon ผ่าน query string `?color=%23hex` เพื่อง่ายต่อการแยกแยะ
+7. ANSI diagram วางใน code block โดยไม่มี HTML tags ข้างใน
+8. ใช้ checkboxes `- [ ]` สำหรับ acceptance criteria
+9. แนบ link ไป report หรือ sketch ถ้ามี
 
 ### 10. Create GitHub Issue
 
@@ -165,7 +169,10 @@ related:
 ### 2. Issue Body Format
 
 - ใช้ markdown table สำหรับ features และ tasks
-- ไม่ใช้ emoji หรือ external icon CDN
+- จำกัด table ไม่เกิน 6-8 คอลัมน์
+- ใช้ Iconify CDN icons ใน headings/table cells ถ้าช่วยให้อ่านง่าย
+- ใช้ color query ใน icon URL เพื่อสื่อสถานะ/ระดับ
+- ANSI diagram อยู่ใน code block แบบ plain text
 - ใช้ checkbox สำหรับ acceptance criteria
 - ไม่เกินความกว้างทีอ่านง่ายบน GitHub
 
@@ -178,6 +185,7 @@ related:
 ## Expected Outcome
 
 - GitHub issue ถูกสร้างด้วย plan ทีมี feature table และ task table
-- Issue body อ่านง่าย ไม่มี emoji หรือ icon CDN
+- Issue body อ่านง่าย มี Iconify icons และ color สื่อ meaning
+- ANSI diagram อยู่ใน code block แบบ plain text
 - Issue URL ถูกเปิดใน browser
 - Plan สามารถ track ความคืบหน้าได้
