@@ -9,6 +9,7 @@ related:
   - deep-validate
   - check-reference
   - deep-test
+  - update-specs
 ---
 
 ## Goal
@@ -57,15 +58,13 @@ related:
 2. ทำ `/review-codebase-everything` เพื่อตรวจ naming และ structure
 3. ถ้า fail → retry (max 3 → stop/report)
 
-### 4. Write Spec
+### 4. Write Specs
 
-> Goal: เขียน spec files ใน `spec/` ตาม test files ที่มีอยู่
+> Goal: ทำ `/update-specs` เพื่อสร้าง/อัปเดต spec files ใน `<workspace>/specs/`
 
-1. อ่าน test files ทั้งหมดใน `tests/`
-2. สร้าง `spec/overview.md` ระบุ framework, coverage threshold และ structure
-3. แยก spec เป็นไฟล์ย่อยๆ ตาม modules/features
-4. บันทึก test cases ทั้งหมดแบบกระชับ พร้อม status tracking
-5. แต่ละ spec file ไม่เกิน 250 บรรทัด — ถ้าเกินให้ refactor แยกไฟล์
+1. ทำ `/update-specs` เพื่อสร้าง `specs/overview.md` และ `specs/<feature>.md`
+2. ตรวจว่า spec files ครอบคลุม test files ที่มีอยู่
+3. ถ้า fail → retry (max 3 → stop/report)
 
 ### 5. Write Tests
 
@@ -132,9 +131,9 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 ### 9. Sync And Verify
 
-> Goal: อัพเดท SPEC.md ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
+> Goal: sync `specs/SPEC.md` กับ test cases ที่เขียนหรืออัปเดตแล้ว
 
-1. อัพเดท `spec/SPEC.md` หรือเอกสาร test plan ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
+1. ทำ `/update-specs` เพื่อ sync `specs/SPEC.md` ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
 2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
@@ -234,4 +233,4 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - Coverage 100% ผ่าน `/review-codebase-everything` และ `/run-test-coverage`
 - Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
 - Test data ใช้ factories/fixtures/builders ตาม strategy
-- `spec/SPEC.md` หรือเอกสาร test plan ถูกอัพเดทด้วย test cases ที่เขียนแล้ว
+- `specs/SPEC.md` หรือเอกสาร test plan ถูก sync ด้วย test cases ที่เขียนแล้ว

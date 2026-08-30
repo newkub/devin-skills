@@ -20,6 +20,7 @@ related:
   - follow-tool-mutants-rs
   - run-bench
   - rethink
+  - update-specs
 ---
 
 ## Goal
@@ -43,7 +44,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 3. ระบุ dimensions ที่ต้อง test: unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility
 4. ระบุ target scope: feature, module, workspace, หรือทั้งโปรเจกต์
 5. กำหนด coverage target, mutation score, performance baseline, security scenarios
-6. บันทึก test strategy ใน `spec/TEST_PLAN.md` ถ้างานซับซ้อน
+6. บันทึก test strategy ใน `specs/TEST_PLAN.md` ถ้างานซับซ้อน
 
 ### 2. Audit Existing Test State
 

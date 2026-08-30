@@ -10,7 +10,7 @@
 
 ### Spec Drift
 
-- เปรียบเทียบ `spec/SPEC.md` กับ actual test files
+- เปรียบเทียบ `specs/SPEC.md` กับ actual test files
 - ระบุ test cases ใน spec ที่ไม่มีใน tests จริง
 - ระบุ test cases ใน tests ที่ไม่มีใน spec
 
@@ -41,4 +41,5 @@
 
 ## Recommended Update Skills
 
-- `update-test-everything` สำหรับ update test suite และ `spec/SPEC.md`
+- `update-specs` สำหรับ `specs/SPEC.md`
+- `update-test-everything` สำหรับ update test suite

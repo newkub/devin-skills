@@ -9,6 +9,7 @@ related:
   - report-table
   - scan-codebase
   - report
+  - update-specs
 ---
 
 ## Goal

@@ -26,9 +26,9 @@
 - ตรวจสอบ: version numbers, commit messages, dates, release history
 - ระบุ commits และ tags ที่ยังไม่อยู่ใน changelog
 
-### spec/SPEC.md Drift
+### specs/SPEC.md Drift
 
-- เปรียบเทียบ `spec/SPEC.md` กับ actual test files
+- เปรียบเทียบ `specs/SPEC.md` กับ actual test files
 - ตรวจสอบ: test cases, coverage targets, test categories
 - ระบุ test cases ที่ล้าหลังหรือไม่ตรกับ tests จริง
 
@@ -47,4 +47,5 @@
 - `run-release` สำหรับ `CHANGELOG.md` (gen อัตโนมัติเมื่อ release สำเร็จ)
 - `gen-changelog-md` สำหรับ `CHANGELOG.md` (gen จาก git tags)
 - `follow-tool-changelogen` สำหรับ `CHANGELOG.md` (ด้วย changelogen)
-- `update-test-everything` สำหรับ `spec/SPEC.md`
+- `update-specs` สำหรับ `specs/SPEC.md`
+- `update-test-everything` สำหรับ update test suite

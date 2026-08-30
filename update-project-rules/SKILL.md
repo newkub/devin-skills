@@ -9,6 +9,7 @@ related:
   - check-reference
   - report-config-files
   - learn-from-web
+  - update-specs
 ---
 
 ## Goal
@@ -46,7 +47,15 @@ related:
 3. เขียน SKILL.md index และ content files
 4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
 
-### 4. Validate And Finalize
+### 4. Update Test Specs
+
+> Goal: สร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
+
+1. ทำ `/update-specs` เพื่อสร้าง/อัปเดต `specs/overview.md` และ `specs/SPEC.md`
+2. ตรวจว่า spec files สอดคล้องกับ project type และ dependencies
+3. ถ้า fail → retry (max 3 → stop/report)
+
+### 5. Validate And Finalize
 
 > Goal: Validate And Finalize
 
