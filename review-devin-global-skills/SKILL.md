@@ -1,6 +1,14 @@
 ---
 name: review-devin-global-skills
 description: Review, refactor และตรวจ cross-skill consistency ของ devin skills repo
+related:
+  - update-all-devin-global-skills
+  - update-devin-global-skills
+  - idea-refactor-devin-global-skills
+  - review-codebase-everything
+  - report-table
+  - suggest-next-action
+  - check-reference
 ---
 
 ## Goal
