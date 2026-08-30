@@ -5,7 +5,6 @@ description: ติดตาม CI/CD pipeline จาก trigger จนผ่า
 related:
   - watch-github-actions
   - watch-deploy
-  - watch-cloudflare
   - watch-vercel
   - watch-release
   - list-ci-configs
@@ -35,7 +34,7 @@ related:
 - CD: Cloudflare Pages, Vercel, Railway, Render, Fly.io, Netlify, custom domain, release/tag
 
 สำหรับ CI platform เฉพาะจะส่งต่อ `/watch-github-actions`, `/watch-build`, `/watch-test`, `/watch-lint`
-สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-cloudflare`, `/watch-vercel`, `/watch-release`, `/watch-deploy`
+สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-vercel`, `/watch-release`, `/watch-deploy`
 
 ไม่รวม trigger ครั้งแรก — ต้องถูก trigger โดย `/run-deploy`, `/deploy-to-*`, `/run-release` หรือ push ก่อน
 
@@ -100,7 +99,7 @@ related:
 
 > Goal: เลือก skill ทีเหมาะกับ CD target
 
-1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → `/watch-cloudflare`
+1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/watch-cicd-and-resolve`)
 2. Vercel: URL มี `.vercel.app` หรือ `vercel` ใน output → `/watch-vercel`
 3. Release/tag: version tag, release name, GitHub release → `/watch-release`
 4. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`

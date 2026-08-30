@@ -6,7 +6,7 @@ related:
   - open-web-for-config-secret
   - follow-create-cloudflare-token
   - deploy-to-cloudflare
-  - watch-cloudflare
+  - watch-cicd-and-resolve
   - follow-tool-mise
 ---
 

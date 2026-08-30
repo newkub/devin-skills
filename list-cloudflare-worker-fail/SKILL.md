@@ -3,7 +3,7 @@ name: list-cloudflare-worker-fail
 description: แสดงรายการ Cloudflare Workers ทีมี deployment/health ล้มเหลว
 related:
   - list-cloudflare-project
-  - watch-cloudflare
+  - watch-cicd-and-resolve
   - report-table
   - suggest-next-action
   - list-deployment-fails
@@ -87,7 +87,7 @@ related:
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy, check logs, หรือ `watch-cloudflare`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy, check logs, หรือ `watch-cicd-and-resolve`
 
 ## Rules
 

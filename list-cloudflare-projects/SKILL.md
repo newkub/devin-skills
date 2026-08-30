@@ -8,7 +8,7 @@ related:
   - list-project-git-in-computer
   - report-table
   - open-cloudflare-workers
-  - watch-cloudflare
+  - watch-cicd-and-resolve
   - follow-service-cloudflare
 ---
 
@@ -17,7 +17,7 @@ related:
 แสดงรายการ Cloudflare projects ทั้งหมดทีพบในเครื่องและใน Cloudflare account พร้อม local path, remote repo, worker/service name, deployment status
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-cloudflare-worker-fail`, `report-table`, `open-cloudflare-workers`, `watch-cloudflare`, `follow-service-cloudflare`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-cloudflare-worker-fail`, `report-table`, `open-cloudflare-workers`, `watch-cicd-and-resolve`, `follow-service-cloudflare`
 
 ใช้สำหรับหา projects ทีใช้ Cloudflare (Workers, Pages, Wrangler) ทั้ง local และ remote โดย detect จาก `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, หรือ `wrangler.config.ts`
 

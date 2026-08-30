@@ -8,7 +8,7 @@ related:
   - report-table
   - suggest-next-action
   - watch-github-actions
-  - watch-cloudflare
+  - watch-cicd-and-resolve
   - follow-service-vercel
   - follow-service-cloudflare
   - open-cloudflare-workers
@@ -77,7 +77,7 @@ related:
 > Goal: แนะนำขั้นตอนถัดไป
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/watch-cloudflare`
+2. ถ้ามี failures จาก Cloudflare → แนะนำ `/watch-cicd-and-resolve`
 3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/watch-github-actions`
 
 ## Rules

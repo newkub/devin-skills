@@ -7,7 +7,7 @@ related:
   - follow-secret-manager
   - follow-my-tech-stack
   - review-techstack
-  - watch-cloudflare
+  - watch-cicd-and-resolve
 ---
 
 ## Goal

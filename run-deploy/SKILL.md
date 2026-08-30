@@ -126,7 +126,7 @@ Watch deployment ด้วย browser จนกว่าจะ live
 - ใช้ `/deploy-to-<platform>` ตาม platform ที่เลือก
 - ต้อง deploy สำเร็จ
 - ตรวจสอบ deployment status
-- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/watch-cloudflare` เพื่อ watch และ fix จนกว่าจะผ่าน
+- ถ้า deploy ไป Cloudflare และ deploy ไม่ผ่าน ให้ทำ `/watch-cicd-and-resolve` เพื่อ watch และ fix จนกว่าจะผ่าน
 
 ### 4. Commit And Push
 
