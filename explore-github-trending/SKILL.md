@@ -4,6 +4,7 @@ description: สำรวจ repository ทีกำลัง trending บน Gi
 argument-hint: "[language] [daily|weekly|monthly]"
 related:
   - search-in-github-star
+  - open-github-repo
   - open-web
   - report-table
   - search-files-patterns
@@ -78,7 +79,7 @@ related:
 
 > Goal: ให้ user ดูรายละเอียด repo ทีสนใจ
 
-1. ถ้า user ระบุ repo → เปิด `/open-web https://github.com/<owner>/<repo>`
+1. ถ้า user ระบุ repo → เปิด `/open-github-repo <owner>/<repo>`
 2. ถ้าต้องการ search ใน GitHub stars → ใช้ `/search-in-github-star <repo>`
 3. ถ้าต้องการดู release → เปิด `https://github.com/<owner>/<repo>/releases`
 

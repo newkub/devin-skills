@@ -9,6 +9,7 @@ related:
   - list-github-issue
   - create-github-issue
   - review-github-issue
+  - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
 ---
@@ -18,7 +19,7 @@ related:
 เปิดหน้า GitHub issue ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `follow-tool-github-issue`, `list-github-issue`, `create-github-issue`, `review-github-issue`, `open-github-repo-personal`, `open-github-repo-org`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-pr`, `follow-tool-github-issue`, `list-github-issue`, `create-github-issue`, `review-github-issue`, `open-github-repo`, `open-github-repo-personal`, `open-github-repo-org`
 
 ใช้เปิด issue ด้วย `owner/repo` + `issue-number` หรือ URL ทีให้มา โดยไม่แก้ไข issue
 

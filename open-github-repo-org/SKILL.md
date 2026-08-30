@@ -3,6 +3,7 @@ name: open-github-repo-org
 description: เปิดหน้า repositories ของ GitHub organization ใน browser
 argument-hint: "[org-name]"
 related:
+  - open-github-repo
   - open-github-repo-personal
   - open-github-issue
   - open-github-pr
@@ -17,7 +18,7 @@ related:
 เปิดหน้า repositories ของ GitHub organization ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-repo-personal`, `open-github-issue`, `open-github-pr`, `list-github-repo`, `list-github-star-latest`, `search-in-github-star`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-repo`, `open-github-repo-personal`, `open-github-issue`, `open-github-pr`, `list-github-repo`, `list-github-star-latest`, `search-in-github-star`
 
 - เปิด `https://github.com/orgs/<org-name>/repositories`
 - ถ้าไม่ระบุ org ให้ list orgs ของ user แล้วถาม

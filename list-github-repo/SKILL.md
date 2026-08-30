@@ -2,6 +2,7 @@
 name: list-github-repo
 description: แสดงรายการ repositories ทั้งหมดที่ผู้ใช้สร้างบน GitHub
 related:
+  - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
   - list-github-project

@@ -10,6 +10,7 @@ related:
   - create-github-pr
   - review-github-pr
   - merge-github-pr
+  - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
 ---
@@ -19,7 +20,7 @@ related:
 เปิดหน้า GitHub pull request ใน browser ด้วย native OS command
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `follow-tool-github-issue`, `list-github-pr`, `create-github-pr`, `review-github-pr`, `merge-github-pr`, `open-github-repo-personal`, `open-github-repo-org`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `follow-tool-github-issue`, `list-github-pr`, `create-github-pr`, `review-github-pr`, `merge-github-pr`, `open-github-repo`, `open-github-repo-personal`, `open-github-repo-org`
 
 ใช้เปิด pull request ด้วย `owner/repo` + `pr-number` หรือ URL ทีให้มา โดยไม่แก้ไข pull request
 

@@ -9,6 +9,7 @@ related:
   - merge-github-pr
   - implement-github-issue
   - open-github-pr
+  - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
 ---
@@ -18,7 +19,7 @@ related:
 สร้าง pull request จาก branch ปัจจุบันพร้อม title, body, labels และ reviewers ตาม project conventions
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `implement-github-issue`, `open-github-pr`, `open-github-repo-personal`, `open-github-repo-org`
+- สำหรับ skills ที่เกี่ยวข้อง: `implement-github-issue`, `open-github-pr`, `open-github-repo`, `open-github-repo-personal`, `open-github-repo-org`
 
 ใช้หลัง implement เสร็จและต้องการสร้าง PR เพื่อ merge เข้า base branch
 
