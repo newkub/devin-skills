@@ -1,6 +1,6 @@
 ---
 name: report-math-formula
-description: แปลง code, description, หรือปัญหาทีผู้ใช้ให้มาให้เป้นสูตรคณิตศาสตรทีกระชับ เข้าใจง่าย และนำไปใช้ได้จริง
+description: แปลง code/description/ปัญหาให้เป้นสูตรคณิตศาสตร
 related:
   - report-equation
   - report-table
