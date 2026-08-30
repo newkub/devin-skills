@@ -1,9 +1,9 @@
 ---
 name: create-plan-on-github-issue
-description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอรแล้วเขียนลง GitHub issue เป้น table พร้อมเปิดดู
+description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอรแล้วเขียนลง GitHub issue พร้อม open-web
 related:
-  - idea-features
   - create-plan-in-dot-devin
+  - idea-features
   - create-github-issue
   - open-github-issue
   - open-web
@@ -14,6 +14,7 @@ related:
   - review-plan
   - report-plan
   - report-uxui-sketch
+  - report-architecture-diagram
 ---
 
 ## Goal
@@ -23,13 +24,10 @@ related:
 ## Scope
 
 - รับ request หรือ topic
-- ใช้ `/idea-features` เพื่อ generate features ทีเป็นระบบ
-- ปรับปรุงแผนด้วย `/deep-plan`, `/improve`, `/review-plan`, `/report-plan`
-- สร้าง GitHub issue ด้วย body ทีเป้น table
+- ใช้ `/idea-features` เพื่อ generate features ทีเป้นระบบ
+- คำนวณ score ตามสูตรคณิตศาสตร์
+- สร้าง GitHub issue ด้วย body ทีเป็น table
 - เปิด issue URL ด้วย `open-web`
-- ใช้ Iconify CDN icons ใน headings และ table cells ถ้าช่วยให้อ่านง่าย
-- ไม่ให้ table columns มากเกิน 6-8 คอลัมน์
-- ANSI diagram ต้องไม่มี HTML icons ข้างใน code block
 
 ## Execute
 
@@ -41,67 +39,57 @@ related:
 2. อ่าน context, design, report ทีเกี่ยวข้อง
 3. ถ้าข้อมูลไม่พอ → ทำ `/ask-me`
 
-### 2. Generate Features With idea-features
+### 2. Generate Features
 
-> Goal: สร้างไอเดียฟีเจอรที actionable
+> Goal: สร้างไอเดียฟีเจอร
 
 1. ทำ `/idea-features <topic>` เพื่อ generate features
-2. แบ่งเป็น `New` และ `Extends`
-3. ทุก feature ต้องมี fields:
-   - `No.`
-   - `Type`
-   - `Impact`
-   - `Feature`
-   - `Description`
-   - `Phase`
-   - `Effort`
-   - `MVP Score`
-   - `Risk`
-   - `Reason`
-   - `How`
-   - `Risk Detail`
-4. บันทึก output ชั่วคราวสำหรับสร้าง plan
+2. แบ่งเป้น `New` และ `Extends`
+3. ทุก feature ต้องมี fields ครบ
 
-### 3. Deep Plan
+### 3. Score Features
+
+> Goal: ให้คะแนน feature ด้วยสูตรคณิตศาสตร์
+
+1. กำหนด scale:
+   - `Impact`: High = 10, Medium = 6, Low = 3
+   - `Effect`: High = 10, Medium = 6, Low = 3
+   - `Risk`: High = 3, Medium = 2, Low = 1
+   - `Phase`: MVP = 1.0, v2 = 1.5, v3 = 2.0, Done = 0.5
+2. ใช้สูตร `Score = (Impact + Effect) / (Risk × Phase)`
+3. ปัดเศษทศนิยม 1 ตำแหน่ง
+4. ใช้ score เรียงลำดับ priority
+
+### 4. Deep Plan
 
 > Goal: วางแผนครบมิติ
 
 1. ทำ `/deep-plan` โดยใช้ features จากขั้นตอนก่อน
-2. แบ่งเป็น phases: MVP, v2, v3
+2. แบ่งเป้น phases: MVP, v2, v3
 3. ระบุ dependencies ระหว่าง features
 
-### 4. Improve Plan
+### 5. Improve Plan
 
 > Goal: ทำให้แผนกระชับและอ่านง่าย
 
 1. ทำ `/improve` กับเนื้อหาแผน
-2. เน้น:
-   - ลำดับชัดเจนตาม dependency
-   - ทุก task มี single responsibility
-   - expected result วัดผลได้
-   - ลดข้อความทีไม่จำเป็นจริง ๆ
+2. เน้นลำดับชัดเจน, single responsibility, expected result วัดผลได้
 
-### 5. Review Plan
+### 6. Review Plan
 
 > Goal: ตรวจคุณภาพแผน
 
-1. ทำ `/review-plan` เพื่อตรวจ:
-   - ความสอดคล้องกับ request
-   - ลำดับทีถูกต้อง
-   - risk ทีระบุครบ
-   - ไม่มี gap
-2. ถ้า review พบปัญหา → ทำ `/improve` ซ้ำ
+1. ทำ `/review-plan`
+2. ถ้าพบปัญหา → ทำ `/improve` ซ้ำ
 
-### 6. Report Plan As Table
+### 7. Report Plan
 
-> Goal: สรุปแผนเป็น table
+> Goal: สรุปแผนให้ user เห็นภาพรวม
 
-1. ทำ `/report-plan` สรุปเป็น 2 table:
-   - **Features table** (No, Type, Impact, Feature, Description, Phase, Effort, MVP Score, Risk, Reason, How, Risk Detail)
-   - **Tasks table** (No, Task, Owner, Status, Depends On, Expected Outcome)
-2. ตรวจสอบว่า table ครบถ้วน
+1. ทำ `/report-plan` สรุปเป้น table
+2. ระบุ title, features, dependencies, risks
 
-### 7. Determine Repository
+### 8. Determine Repository
 
 > Goal: ระบุ repo ทีจะสร้าง issue
 
@@ -109,7 +97,7 @@ related:
 2. ถ้าไม่มี remote หรือต้องการ repo อื่น → ถาม user
 3. บันทึก owner/repo สำหรับ `gh issue create`
 
-### 8. Check For Duplicate
+### 9. Check For Duplicate
 
 > Goal: หลีกเลี่ยง issue ซ้ำ
 
@@ -117,29 +105,28 @@ related:
 2. ถ้ามี issue ซ้ำ → อัปเดต issue เดิมแทน
 3. ถ้าไม่มี → สร้างใหม่
 
-### 9. Build Issue Body
+### 10. Build Issue Body
 
 > Goal: สร้าง issue body ทีอ่านง่าย
 
-1. สร้าง title ทีบ่งบอกว่าเป็น plan เช่น `[Plan] <feature-name>`
+1. สร้าง title ทีบ่งบอกว่าเป้น plan เช่น `[Plan] <feature-name>`
 2. เขียน body ด้วย sections:
-   - `## Summary`
-   - `## Goals`
-   - `## Scope`
-   - `## Features` (table)
-   - `## Task Plan` (table)
-   - `## Risks`
+   - `## Goal` (paragraph)
+   - `## Architecture` (optional ANSI diagram centered)
+   - `## Idea Features`
+     - `### Scoring` (math formula)
+     - `### Features` (table)
+   - `## TODO` (task table)
    - `## Acceptance Criteria` (checkboxes)
-   - `## Notes` (optional)
-3. Features table ใช้ fields จาก `/idea-features` แต่ไม่เกิน 6-8 คอลัมน์
-4. Tasks table ใช้: No., Task, Status, Depends On, Expected Outcome
-5. ใช้ Iconify CDN icons ใน section headings และ table cells เพื่อสื่อ meaning
-6. ใช้ color ใน icon ผ่าน query string `?color=%23hex` เพื่อง่ายต่อการแยกแยะ
-7. ANSI diagram วางใน code block โดยไม่มี HTML tags ข้างใน
-8. ใช้ checkboxes `- [ ]` สำหรับ acceptance criteria
-9. แนบ link ไป report หรือ sketch ถ้ามี
+3. Features table columns:
+   - `Icon`, `No.`, `Feature`, `Description`, `Files Change`, `Impact`, `Risk`, `Effect`, `Score`, `Phase`
+4. TODO table columns:
+   - `No.`, `Task`, `Status`, `Depends On`, `Expected Outcome`
+5. ใช้ Iconify CDN icons ใน column `Icon` และ headings
+6. ใช้ color query `?color=%23hex` สำหรับสถานะ/ระดับ
+7. ANSI diagram อยู่ใน `<div align="center">` พร้อม code block
 
-### 10. Create GitHub Issue
+### 11. Create GitHub Issue
 
 > Goal: สร้าง issue บน GitHub
 
@@ -149,7 +136,7 @@ related:
 4. เพิ่ม labels ถ้าจำเป็น เช่น `plan`, `enhancement`
 5. บันทึก issue URL จาก output
 
-### 11. Open In Web
+### 12. Open In Web
 
 > Goal: เปิด issue ใน browser
 
@@ -161,22 +148,28 @@ related:
 
 ### 1. Plan Quality
 
-- Plan ต้องมาไอเดียฟีเจอรจาก `/idea-features`
-- Plan ต้องมี Goals, Scope, Features, Tasks, Risks, Acceptance Criteria
-- ทุก feature ต้องมี MVP Score, Phase, Effort, Risk
-- ทุก task ต้องมี Expected Outcome วัดผลได้
+- Plan ต้องมาจาก `/idea-features`
+- ทุก feature ต้องมี score คำนวณจากสูตร
+- ทุก task ต้องมี expected outcome วัดผลได้
 
 ### 2. Issue Body Format
 
+- Goal เป้น paragraph สั้น ๆ
 - ใช้ markdown table สำหรับ features และ tasks
-- จำกัด table ไม่เกิน 6-8 คอลัมน์
-- ใช้ Iconify CDN icons ใน headings/table cells ถ้าช่วยให้อ่านง่าย
-- ใช้ color query ใน icon URL เพื่อสื่อสถานะ/ระดับ
-- ANSI diagram อยู่ใน code block แบบ plain text
+- Features table มีคอลัมน์ `Icon` อยู่ตำแหน่งแรก
+- คอลัมน์ `Files Change`, `Impact`, `Risk`, `Effect`, `Score`, `Phase` ครบ
+- ใช้ Iconify CDN icons ใน column `Icon` และ headings
+- ใช้ color query ใน icon URL เพื่อง่ายต่อการแยกแยะ
+- ANSI diagram อยู่ใน code block แบบ plain text ภายใต้ `<div align="center">`
 - ใช้ checkbox สำหรับ acceptance criteria
-- ไม่เกินความกว้างทีอ่านง่ายบน GitHub
 
-### 3. URL Safety
+### 3. Scoring
+
+- ใช้สูตร `Score = (Impact + Effect) / (Risk × Phase)`
+- ระบุ scale ทีชัดเจน
+- คำนวณทุก row
+
+### 4. URL Safety
 
 - ตรวจสอบ URL ก่อนเปิด browser
 - ใช้ `open-web` หรือ OS native command เท่านั้น
@@ -184,8 +177,8 @@ related:
 
 ## Expected Outcome
 
-- GitHub issue ถูกสร้างด้วย plan ทีมี feature table และ task table
-- Issue body อ่านง่าย มี Iconify icons และ color สื่อ meaning
-- ANSI diagram อยู่ใน code block แบบ plain text
+- GitHub issue ถูกสร้างด้วย plan ทีมี features table, scoring math, TODO table
+- Issue body อ่านง่าย มี Iconify icons และ color
+- ANSI diagram อยู่ตรงกลาง
 - Issue URL ถูกเปิดใน browser
 - Plan สามารถ track ความคืบหน้าได้
