@@ -8,7 +8,7 @@ related:
   - deep-validate
   - git-commit
   - git-push
-  - watch-ci-and-resolve
+  - watch-cicd-and-resolve
   - resolve-errors
   - report
   - suggest-next-action
@@ -62,9 +62,9 @@ Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push branch, watch CI
 
 1. ทำ `git push -u origin <current-branch>` (ไม่ force push)
 2. ถ้า push ถูก reject → resolve หรือ rebase ตามความเหมาะสม แล้ว push ใหม
-3. ทำ `/watch-ci-and-resolve`
+3. ทำ `/watch-cicd-and-resolve`
 4. ถ้าผ่าน → ไปขั้นตอน Report
-5. ถ้า fail → ทำ `/resolve-errors` วิเคราะห์ cloud logs, แก้ไข, commit ถ้ามี changes, push, re-run `/watch-ci-and-resolve`
+5. ถ้า fail → ทำ `/resolve-errors` วิเคราะห์ cloud logs, แก้ไข, commit ถ้ามี changes, push, re-run `/watch-cicd-and-resolve`
 6. วนซ้ำสูงสุด 5 รอบ ถ้ายังไม่ผ่าน → stop และ report
 
 ### 5. Report
