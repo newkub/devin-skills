@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-biome-plugins
 description: สร้าง custom Biome linter plugins ด้วย GritQL
 related:
@@ -81,7 +81,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

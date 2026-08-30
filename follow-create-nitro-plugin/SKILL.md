@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-nitro-plugin
 description: สร้าง Nitro plugin สำหรับ Nuxt ด้วย defineNitroPlugin และ hooks
 related:
@@ -94,7 +94,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

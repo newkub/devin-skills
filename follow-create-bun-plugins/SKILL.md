@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-bun-plugins
 description: สร้าง Bun plugins ด้วย Bun.plugin API สำหรับ runtime และ bundler
 related:
@@ -116,7 +116,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

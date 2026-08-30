@@ -27,7 +27,7 @@ related:
 
 ใช้หลังจาก:
 - push code
-- `/run-deploy`, `/deploy-to-*`, `/ship-release`, `/run-release`
+- `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
 - หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
 
 ครอบคลุม:

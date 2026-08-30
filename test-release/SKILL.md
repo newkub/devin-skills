@@ -4,7 +4,7 @@ description: สร้าง release artifact, รัน smoke test, และ�
 related:
   - setup-release
   - run-release
-  - ship-release
+  - ship
   - review-release
   - run-verify
   - run-check

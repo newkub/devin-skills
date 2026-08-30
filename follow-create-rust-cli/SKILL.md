@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-rust-cli
 description: สร้าง CLI applications ด้วย Rust ตาม context และ best practices
 related:
@@ -109,7 +109,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

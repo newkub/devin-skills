@@ -3,7 +3,7 @@ name: create-dev-branch
 description: สร้าง branch `dev` จาก `main` ถ้ายังไม่มี และ push ไปยัง remote
 related:
   - follow-git-flow
-  - ship-github-issue
+  - ship
   - report-table
   - suggest-next-action
 ---

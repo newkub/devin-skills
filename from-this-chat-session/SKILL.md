@@ -1,4 +1,4 @@
-﻿---
+---
 name: from-this-chat-session
 description: สกัดการทำงานจาก chat session นี้ไปสร้างเป็น skill ใหม่ใน repo
 argument-hint: "[target]"
@@ -59,7 +59,7 @@ argument-hint: "[target]"
 1. ตรวจสอบว่า `SKILL.md` ไม่เกิน 250 บรรทัด
 2. ทำ `/deep-validate` เพื่อตรวจความถูกต้อง
 3. ทำ `/deep-validate` เพื่อตรวจ: sections ครบ, ไม่มี TODO/MOCK/placeholder
-4. ทำ `/ship-ci`
+4. ทำ `/ship`
 
 ## Rules
 

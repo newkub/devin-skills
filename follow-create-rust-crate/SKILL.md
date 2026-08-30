@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-rust-crate
 description: สร้าง Rust library crate ด้วย Cargo ตาม best practices
 related:
@@ -97,7 +97,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

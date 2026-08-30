@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-mobile-ios
 description: สร้าง native iOS mobile app ด้วย Swift และ SwiftUI
 argument-hint: "[project-name]"
@@ -131,7 +131,7 @@ related:
 1. ทำ `/review-frontend` เพื่อตรวจ UI/UX
 2. ทำ `/run-test` สำหรับ test suite
 3. ทำ `/follow-lang-swift` เพื่อ verify conventions
-4. ทำ `/ship-ci`
+4. ทำ `/ship`
 
 ## Rules
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-devin-global-skills
 description: สร้างหรืออัปเดต skill หนึ่งตัวหรือหลายตัวใน devin skills repo ตามมาตรฐาน
 argument-hint: "[@files...]"
@@ -12,9 +12,9 @@ related:
   - check-reference
   - update-references
   - review-issue
-  - ship-code
-  - ship-local
-  - ship-ci
+  - ship
+  - ship
+  - ship
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
@@ -107,7 +107,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะและ stop
 3. ทำ `/report-table` สรุป before-after, findings, actions และ next actions
 

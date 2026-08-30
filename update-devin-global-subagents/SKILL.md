@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-devin-global-subagents
 description: สร้างหรืออัปเดต global subagent ใน devin agents repo ให้ถูกต้องตาม AGENT.md
 argument-hint: "[agent-name]"
@@ -6,9 +6,9 @@ related:
   - list-devin-global-subagents
   - review-devin-global-subagents
   - follow-create-devin-plugins
-  - ship-code
-  - ship-local
-  - ship-ci
+  - ship
+  - ship
+  - ship
 ---
 
 ## Goal
@@ -88,7 +88,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

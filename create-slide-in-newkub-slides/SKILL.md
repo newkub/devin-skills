@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-slide-in-newkub-slides
 description: สร้าง Slidev project ใน D:/newkub/slides และเปิด browser อัตโนมัติ
 argument-hint: "[title]"
@@ -118,7 +118,7 @@ graph LR
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

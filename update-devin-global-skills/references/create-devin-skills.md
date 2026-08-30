@@ -1,4 +1,4 @@
-﻿# Create Devin Skills Reference
+# Create Devin Skills Reference
 
 ## Goal
 
@@ -64,7 +64,7 @@
 2. เลือก entry point ตาม stack ที่เลือก เช่น `src/presentation/cli.ts` สำหรับ Bun/TS หรือ `src/main.rs` สำหรับ Rust
 3. ใช้ `src/` เก็บ web app code หรือ MCP server code ตามประเภท
 4. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระ
-5. ถ้า skill มี `src/` → ทำ `/ship-ci` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
+5. ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน (ไม่ต้องถาม user)
 
 ### 7. Validate Skill
 
@@ -131,7 +131,7 @@
 - ถ้า skill ต้องการ MCP server → เรียก `/follow-create-mcp` (พยายาม Rust ก่อน) แล้วอัปเดต `mcp_config.json`
 - รักษา package structure ที่ไม่เกิน 250 บรรทัด
 - ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` เพื่อแยกเป็น repo อิสระหลัง validation ผ่าน
-- ถ้า skill มี `src/` → ทำ `/ship-ci` เลยหลัง validation ผ่าน ไม่ต้องถาม user
+- ถ้า skill มี `src/` → ทำ `/ship` เลยหลัง validation ผ่าน ไม่ต้องถาม user
 
 ### 6. Subagent And Model
 
@@ -161,7 +161,7 @@
 - Skill package ทั้งหมดถูกต้องตามมาตรฐาน. `SKILL.md` valid ตาม Devin CLI spec. frontmatter ครบถ้วนและถูกต้อง. prompt body มี `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 - Template ที่เลือกตรงกับ prefix ของ skill. Directory contents ครบถ้วนและไม่เกิน 250 บรรทัดต่อไฟล์
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
-- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules` และ ship ผ่าน `/ship-ci` เลย
+- ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules` และ ship ผ่าน `/ship` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)

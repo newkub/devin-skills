@@ -11,9 +11,9 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - ship-code
-  - ship-local
-  - ship-ci
+  - ship
+  - ship
+  - ship
   - watch-cicd-and-resolve
   - watch-github-actions
   - git-push

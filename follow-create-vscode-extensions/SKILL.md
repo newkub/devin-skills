@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-vscode-extensions
 description: สร้าง VSCode extensions ด้วย TypeScript, official generator, หรือ reactive-vscode
 related:
@@ -84,7 +84,7 @@ related:
 2. รัน `bunx vsce package` เพื่อสร้าง `.vsix`
 3. สร้าง publisher account ใน Marketplace
 4. รัน `bunx vsce publish` หรือใช้ GitHub Actions
-5. ทำ `/ship-ci`
+5. ทำ `/ship`
 
 ## Rules
 

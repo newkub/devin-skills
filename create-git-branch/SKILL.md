@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-git-branch
 description: สร้าง git branch ใหม่อย่างถูกต้อง
 argument-hint: "[branch-name]"
@@ -44,7 +44,7 @@ argument-hint: "[branch-name]"
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

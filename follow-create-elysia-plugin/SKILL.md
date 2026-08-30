@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-elysia-plugin
 description: สร้าง Elysia plugin ด้วย TypeScript/Bun พร้อม type safety และ lifecycle hooks
 related:
@@ -85,7 +85,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

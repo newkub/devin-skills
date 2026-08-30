@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-devin-global-subagents
 description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ global subagents ตาม job roles ทำขนานกัน
 argument-hint: "[task]"
@@ -73,7 +73,7 @@ related:
 
 1. ทำ `/deep-validate`
 2. ทำ `/deep-validate` ถ้างานเสี่ยงสูง
-3. ทำ `/ship-ci` ถ้ามีการเปลี่ยนแปลง
+3. ทำ `/ship` ถ้ามีการเปลี่ยนแปลง
 4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
 
 ## Rules

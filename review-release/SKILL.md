@@ -4,7 +4,7 @@ description: Review release readiness ก่อน publish
 related:
   - test-release
   - run-release
-  - ship-release
+  - ship
   - setup-release
   - review-correctness
   - review-architecture
@@ -17,7 +17,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 ## Scope
 
-ใช้ก่อนเรียก `run-release`, `ship-release`, `setup-release` หรือ release tooling อื่น ตรวจ release readiness ครอบคลุม version, changelog, breaking changes, platform, rollback, release notes, license แล้วสรุป release readiness score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `run-release`, `ship`, `setup-release` หรือ release tooling อื่น ตรวจ release readiness ครอบคลุม version, changelog, breaking changes, platform, rollback, release notes, license แล้วสรุป release readiness score พร้อม go/no-go recommendation
 
 ## Execute
 

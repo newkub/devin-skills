@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-sdk
 description: ถามและส่งต่อไปยัง skill follow-create-* ทีเหมาะสมกับงานสร้าง
 argument-hint: "[skill-name-or-goal]"
@@ -108,7 +108,7 @@ related:
 1. ถ้า user เลือก skill เดียว → เรียก `skill` tool ด้วย `skill: <selected-skill-name>`
 2. ถ้า user เลือกหลาย skills → ยืนยันลำดับกับ user ด้วย `/ask-me` ก่อน แล้วเรียกตามลำดับ
 3. ถ้า user ตอบเอง (custom text) → ใช้ `search-skills` หรือ string match กับ `follow-create-*` แล้ว invoke ถ้าตรง
-4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุ `/ship-ci` → invoke `/ship-ci` หลัง skill ทีเลือกเสร็จ
+4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุให้ ship → invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 ### 6. Handle Mismatch
 
@@ -126,10 +126,10 @@ related:
 - ไม่เพิ่ม `follow-create-*` ใหม่เองถ้ายังไม่มี
 - หลัง user เลือกต้อง invoke skill ด้วย `skill` tool
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
-- ถ้า user ต้องการ `/ship-ci` ให้ invoke `/ship-ci` หลัง skill ทีเลือกเสร็จ
+- ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 ## Expected Outcome
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด
 - User เลือก skill ทีต้องการผ่าน `/ask-me`
-- Skill ทีเลือกถูก invoke พร้อม `/ship-ci` ถ้าจำเป็น
+- Skill ทีเลือกถูก invoke พร้อม `/ship` ถ้าจำเป็น

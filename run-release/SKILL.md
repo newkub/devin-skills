@@ -4,7 +4,7 @@ description: Auto-detect platforms, release ไปยัง external platforms, 
 related:
   - follow-secret-manager
   - ship
-  - ship-release
+  - ship
   - setup-cicd
   - setup-package
   - setup-release
@@ -35,7 +35,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 1. ตรวจ `git branch --show-current` และ `git describe --tags --exact-match` หรือ `git tag --points-at HEAD`
    - ถ้า HEAD ไม่อยู่บน tag `v*` และไม่อยู่บน `main` หรือ `master` → stop และ report
-2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship-release` ก่อน
+2. ถ้าอยู่บน `main`/`master` แต่ยังไม่มี tag → หยุดและแนะนำให้สร้าง tag หรือใช้ `/ship` ก่อน
 3. ตรวจ `git status --porcelain` ต้อง clean
 4. ตรวจ CI ผ่านสำหรับ SHA ปัจจุบัน:
    - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/watch-cicd-and-resolve <run-id>`
@@ -161,7 +161,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 ### 1. Conditions
 
 - ต้องอยู่บน tag `v*` หรือ `main`/`master` เท่านั้น
-- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship-release`
+- ถ้าอยู่บน `main` แต่ไม่มี tag → หยุดและแนะนำ `/ship`
 - working tree ต้อง clean
 - CI ต้องผ่านก่อน release
 - secrets สำหรับ platforms ที detect ต้องพร้อม

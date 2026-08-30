@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-project-all-drive-d
 description: อัปเดต project ทั้งหมดใน drive D โดย pull/fetch/sync submodules/อัปเดต project files ตาม state
 argument-hint: "[filter]"
@@ -124,7 +124,7 @@ related:
 
 - skill นี้ ไม่ commit หรือ push ให้ user
 - ถ้า project มี changes จาก pull → แจ้งให้ user ทราบ
-- ถ้าต้องการ commit ให้ใช้ `/git-commit` หรือ `/ship-ci` แยกต่อ project
+- ถ้าต้องการ commit ให้ใช้ `/git-commit` หรือ `/ship` แยกต่อ project
 
 ## Expected Outcome
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-nvim-plugins
 description: ตั้งค่า Neovim plugins ด้วย lazy.nvim
 related:
@@ -68,7 +68,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-ci`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

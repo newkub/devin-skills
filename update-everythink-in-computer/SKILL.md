@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-everythink-in-computer
 description: "อัปเดตทุกอย่างในเครื่อง: programs, chezmoi dotfiles, devin global skills"
 related:
@@ -85,7 +85,7 @@ related:
 
 - ไม่ลบ skills หรือ dotfiles โดยไม่มี dry run
 - ตรวจ `git status` หลัง update skills
-- ใช้ `/ship-ci` หรือ `/git-commit` เมื่อจบ
+- ใช้ `/ship` หรือ `/git-commit` เมื่อจบ
 
 ### 4. Report Everything
 

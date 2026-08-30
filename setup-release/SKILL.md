@@ -4,7 +4,7 @@ description: ตั้งค่า release tool, workflow และ changelog ge
 argument-hint: "[path]"
 related:
   - run-release
-  - ship-release
+  - ship
   - setup-cicd
   - setup-package
   - test-release

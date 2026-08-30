@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-mermaid-diagram
 description: สร้าง Mermaid source code จากคำอธิบาย บันทึกเป็น .md หรือ .mmd
 argument-hint: "[prompt or topic]"
@@ -9,9 +9,9 @@ related:
   - report-flow
   - report-architecture-diagram
   - use-scripts
-  - ship-code
-  - ship-local
-  - ship-ci
+  - ship
+  - ship
+  - ship
 ---
 
 ## Goal

@@ -1,4 +1,4 @@
-﻿---
+---
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
 ---
@@ -52,7 +52,7 @@ description: ศึกษาคู่แข่งและปรับปรุ�
 
 > Goal: ปรับปรุง project ตาม roadmap
 
-1. ทำ `/ship-ci` เพื่อ implement improvements
+1. ทำ `/ship` เพื่อ implement improvements
 2. ทำ `/review-codebase-everythink` สำหรับ performance improvements
 3. ทำ `/review-codebase-everythink` สำหรับ UX/UI improvements
 4. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
