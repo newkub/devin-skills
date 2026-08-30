@@ -3,6 +3,7 @@ name: follow-tool-storybook
 description: ตั้งค่าและใช้ Storybook สำหรับ component development และ documentation
 related:
   - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-tool-vitest
   - follow-test
   - follow-tool-playwright

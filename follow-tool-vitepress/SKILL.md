@@ -5,6 +5,8 @@ related:
   - follow-gitignore
   - follow-lang-typescript
   - follow-lib-unocss
+  - follow-tool-vite
+  - follow-create-vite-plugins
 ---
 
 ## Goal

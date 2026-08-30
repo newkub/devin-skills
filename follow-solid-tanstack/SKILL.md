@@ -4,6 +4,7 @@ description: ตั้งค่าและพัฒนา full-stack app ด้
 related:
   - follow-lib-unocss
   - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-lang-typescript
   - follow-lib-tanstack-ecosystem
   - follow-lib-elysia

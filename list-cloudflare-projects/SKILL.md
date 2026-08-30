@@ -1,11 +1,13 @@
 ---
-name: list-cloudflare-project
-description: รายการ Cloudflare projects ในเครื่อง พร้อม local path, remote match และ status
+name: list-cloudflare-projects
+description: รายการ Cloudflare projects ทั้งหมดในเครื่อง พร้อม local path, remote match และ status
+argument-hint: "[path]"
 related:
   - list-project-git-in-computer
   - list-chezmoi-files
   - list-cloudflare-worker-fail
   - open-cloudflare-workers
+  - open-all-cloudflare-projects
 ---
 
 ## Goal
@@ -13,7 +15,7 @@ related:
 สแกนเครื่องหา projects ทีใช้ Cloudflare (Workers, Pages, Wrangler) พร้อม local path, remote repo match, deployment status และสรุปเป็น table
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`, `open-all-cloudflare-projects`
 
 ใช้เพื่อหา Cloudflare projects ทั้งหมดในเครื่อง โดย detect จาก `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, หรือ `wrangler.config.ts`
 

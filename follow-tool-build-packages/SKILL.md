@@ -5,6 +5,8 @@ related:
   - follow-tool-turborepo
   - follow-tool-tsdown
   - follow-tool-vitest
+  - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-programming-paradigm
   - analyze-project
   - refactor-workspace

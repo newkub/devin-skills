@@ -7,7 +7,7 @@ related:
   - delete-git-branch
   - delete-git-worktree
   - follow-service-cloudflare
-  - list-cloudflare-project
+  - list-cloudflare-projects
   - update-references
   - ask-me
 ---

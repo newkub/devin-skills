@@ -5,6 +5,8 @@ argument-hint: "[task]"
 related:
   - follow-solid-tanstack-architecture
   - follow-lang-typescript
+  - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-tool-vitest
 ---
 

@@ -11,6 +11,8 @@ related:
   - setup-cicd
   - setup-package
   - setup-release
+  - follow-tool-vite
+  - follow-create-vite-plugins
   - run-verify
   - run-test-all
   - deep-validate

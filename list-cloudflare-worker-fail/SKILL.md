@@ -2,7 +2,7 @@
 name: list-cloudflare-worker-fail
 description: แสดงรายการ Cloudflare Workers ทีมี deployment/health ล้มเหลว
 related:
-  - list-cloudflare-project
+  - list-cloudflare-projects
   - watch-cicd-and-resolve
   - report-table
   - suggest-next-action
@@ -15,7 +15,7 @@ related:
 แสดงรายการ Cloudflare Workers หรือ Cloudflare Pages functions พร้อมสถานะล่าสุด deployment และข้อผิดพลาดทีอาจเกิดขึ้น
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-project`, `list-deployment-fails`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `list-deployment-fails`
 
 ใช้เมื่อต้องการตรวจสอบ workers ที deploy ไม่ผ่านหรือมี runtime errors ใน Cloudflare account ของผู้ใช้ โดยใช้ `wrangler` หรือ Cloudflare API
 

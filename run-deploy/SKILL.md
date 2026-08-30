@@ -8,6 +8,8 @@ related:
   - watch-cicd-and-resolve
   - run-verify
   - run-build
+  - follow-tool-vite
+  - follow-create-vite-plugins
   - deploy-to-vercel
 ---
 

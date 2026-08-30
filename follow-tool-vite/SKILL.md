@@ -6,6 +6,7 @@ related:
   - follow-tool-rolldown
   - follow-tool-tsdown
   - follow-tool-vitepress
+  - follow-create-vite-plugins
   - follow-tool-biome
   - follow-lang-typescript
 ---

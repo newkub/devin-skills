@@ -2,7 +2,7 @@
 name: list-project-git-in-computer
 description: สแกนและรายการ git projects ทั้งหมดในเครื่อง ทุก drive พร้อม status
 related:
-  - list-cloudflare-project
+  - list-cloudflare-projects
   - report-table
   - suggest-next-action
 ---

@@ -6,6 +6,7 @@ related:
   - follow-lib-tanstack-ecosystem
   - follow-framework-solidjs
   - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-tool-vitest
   - follow-monorepo
   - review-architecture

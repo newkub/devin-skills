@@ -4,6 +4,7 @@ description: ตั้งค่า tsdown เป็น library bundler สำห
 related:
   - follow-tool-rolldown
   - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-tool-build-packages
   - follow-lang-typescript
   - follow-tool-vitest

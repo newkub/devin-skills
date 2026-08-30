@@ -3,6 +3,7 @@ name: follow-tool-rolldown
 description: ตั้งค่าและใช้ Rolldown สำหรับ bundle JavaScript/TypeScript ด้วยความเร็วสูง
 related:
   - follow-tool-vite
+  - follow-create-vite-plugins
   - follow-tool-tsdown
   - follow-tool-build-packages
   - follow-lang-typescript
