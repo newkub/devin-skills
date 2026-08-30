@@ -1,6 +1,6 @@
 ---
 name: ship-ci
-description: Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push, และ watch CI จนผ่าน
+description: "Ship workspace ด้วย CI/CD: ship-code, setup CI/CD, push, และ watch CI จนผ่าน"
 related:
   - ship-code
   - setup-ci-cd

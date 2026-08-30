@@ -1,6 +1,6 @@
 ---
 name: ship-code
-description: Prepare workspace code before ship: update project, refactor, and update skills/docs
+description: "Prepare workspace code before ship: update project, refactor, and update skills/docs"
 related:
   - update-agents-md
   - follow-agents-md
