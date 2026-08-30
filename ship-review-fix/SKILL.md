@@ -3,7 +3,6 @@ name: ship-review-fix
 description: รับ issue review findings, สร้าง fix plan, implement, ส่ง merge ผ่าน review gate
 related:
   - ship-review
-  - ship-features-implement
   - unified-review-and-merge-pr
   - review-correctness
   - review-architecture

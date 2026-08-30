@@ -7,7 +7,6 @@ related:
   - ship-local
   - ship-ci
   - ship-release
-  - ship-features-implement
   - create-dev-branch
   - follow-git-flow
   - follow-github
