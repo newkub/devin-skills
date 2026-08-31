@@ -40,7 +40,6 @@
 
 ## Phase 0: Research & Context
 
-- [ ] อ่าน `ship-by-agents/SKILL.md` ที่มีอยู่
 - [ ] อ่าน `follow-solid-tanstack/SKILL.md`
 - [ ] อ่าน `follow-framework-solidjs/SKILL.md`
 - [ ] อ่าน `follow-lib-unocss/SKILL.md`
@@ -169,7 +168,6 @@
 - [ ] ทดสอบ Elysia API ด้วย `curl` หรือ test script
 - [ ] ทดสอบ SSE real-time update
 - [ ] ทดสอบ dashboard ใน browser
-- [ ] ตรวจสอบไม่ซ้ำซ้อนกับ `ship-by-agents`
 - [ ] ตรวจสอบ broken skill references ถ้ามี
 - [ ] ตรวจสอบ `.gitignore` ครบถ้วน
 

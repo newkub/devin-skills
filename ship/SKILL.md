@@ -3,7 +3,6 @@ name: ship
 description: "Ship workspace from prepare through verify, CI, review, fix, release, and deploy with resolve"
 argument-hint: "[issue-number-or-title]"
 related:
-  - ship-by-agents
   - review-codebase-everything
   - create-dev-branch
   - follow-git-flow
@@ -44,7 +43,7 @@ Ship workspace ตั้งแต่ prepare จนถึง production โด�
 - รองรับ path: prepare, issue+worktree, local commit, CI push, review PR, fix after review, release/deploy
 - resolve errors ซ้ำจนกว่าจะผ่าน หรือครบ limit
 - เรียก setup ทีจำเป็นตาม path: `/setup-cicd` ก่อน push, `/setup-package` / `/setup-release` ก่อน release/deploy
-- ถ้าต้องการให้ agent รับไปทำต่อ → ใช้ `/ship-by-agents`
+- ถ้าต้องการให้ agent รับไปทำต่อ → ใช้ `/consider-use-subagents` หรือ `/follow-devin-global-subagents`
 
 ## Execute
 
