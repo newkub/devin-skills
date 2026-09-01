@@ -4,7 +4,8 @@ description: สรุป deployment failures จาก CI/CD และ cloud (G
 argument-hint: "[limit]"
 related:
   - list-github-action-fail
-  - list-cloudflare-worker-fail
+  - resolve-all-github-actions-fails
+  - resolve-all-cloudflare-worker-fails
   - report-table
   - suggest-next-action
   - watch-github-actions
@@ -46,7 +47,7 @@ related:
 
 > Goal: รวบรวม Cloudflare Workers failures
 
-1. ทำ `/list-cloudflare-worker-fail` เพื่อหา workers ที deploy/health ล้มเหลว
+1. ทำ `/resolve-all-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: worker, type, latest deployment, status, errors
 

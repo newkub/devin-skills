@@ -5,7 +5,7 @@ argument-hint: "[account-id]"
 related:
   - open-web
   - list-cloudflare-projects
-  - list-cloudflare-worker-fail
+  - resolve-all-cloudflare-worker-fails
   - open-cloudflare-workers
   - ask-me
 ---
@@ -82,7 +82,7 @@ related:
 - แสดงรายการ URL ทีเปิด
 - รายงาน project ไหนเปิดไม่ได้
 
-- ใช้ /list-cloudflare-worker-fail ถ้าจำเป็น
+- ใช้ /resolve-all-cloudflare-worker-fails ถ้าจำเป็น
 
 ## Expected Outcome
 
