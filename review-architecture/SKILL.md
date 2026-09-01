@@ -56,14 +56,25 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 8. ตรวจ dynamic programming: overlapping subproblems, base cases, state transitions, space optimization
 9. ถ้า mixed paradigms → ตรวจ boundaries ให้ชัดเจน
 
-### 4. Review Import, Export And Barrel Exports
+### 4. Review Design Patterns
+
+> Goal: ตรวจสอบว่า design patterns ถูกเลือกและใช้งานอย่างเหมาะสม
+
+1. ทำตาม [references/design-patterns.md](references/design-patterns.md) และ [references/apply-design-patterns.md](references/apply-design-patterns.md)
+2. ระบุ patterns ที่ใช้ใน codebase: Creational, Structural, Behavioral
+3. ตรวจสอบ pattern fit กับปัญหาที่แก้ไข — ไม่ over-engineer, ไม่ under-engineer
+4. ตรวจสอบ trade-offs และ maintainability ของแต่ละ pattern
+5. ระบุ anti-patterns และ premature abstraction จาก [references/patterns-boundaries.md](references/patterns-boundaries.md)
+6. บันทึก findings
+
+### 6. Review Import, Export And Barrel Exports
 
 > Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
 1. ทำตาม [references/import-export.md](references/import-export.md)
 2. บันทึก findings
 
-### 5. Validate Findings
+### 7. Validate Findings
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
@@ -73,7 +84,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
-### 6. Report
+### 8. Report
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
@@ -83,7 +94,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
 5. ทำ `/suggest-next-action`
 
-### 7. Implement All
+### 9. Implement All
 
 > Goal: ไม่มี implementation gap ค้างหลัง review
 

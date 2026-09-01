@@ -16,6 +16,9 @@ triggers:
   - model
 related:
   - ship-code
+  - run-dev
+  - test-usage
+  - watch-browser-and-fix
   - optimize-codebase
   - deep-optimize
   - run-verify
@@ -46,13 +49,21 @@ Ship code ใน local: เตรียม code, optimize, verify แล้ว c
 1. ทำ `/ship-code`
 2. ถ้าไม่มี changes → stop และ report
 
-### 2. Optimize
+### 2. Run Dev And Test Usage
+
+> Goal: รัน dev server และทดสอบการใช้งานจริง
+
+1. ทำ `/run-dev` เพื่อรัน dev server
+2. ทำ `/test-usage` เพื่อทดสอบ flow สำคัญ
+3. ถ้าพบปัญหา → ทำ `/watch-browser-and-fix` หรือ `/resolve-errors` ก่อน optimize
+
+### 3. Optimize
 
 1. ทำ `/optimize-codebase` เพื่อหา quick wins
 2. ถ้าพบปัญหาใหญ่ → ถาม user ก่อนทำ `/deep-optimize`
 3. ถ้า optimize เปลี่ยน behavior สำคัญ → ถาม user ก่อน
 
-### 3. Verify
+### 4. Verify
 
 1. ทำ `/run-verify`
 2. ทำ `/run-test-all` ถ้ามี
@@ -60,12 +71,12 @@ Ship code ใน local: เตรียม code, optimize, verify แล้ว c
 4. ทำ `/deep-validate`
 5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
 
-### 4. Commit
+### 5. Commit
 
 1. ทำ `/git-commit`
 2. ถ้าไม่มี changes → stop และ report
 
-### 5. Report
+### 6. Report
 
 1. ทำ `/report-progress` พร้อม progress, completed, pending, next actions
 2. ถ้า user ต้องการดู graph ของ skills ทีใช้ → ทำ `/open-devin-in-web`

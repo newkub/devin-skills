@@ -3,7 +3,7 @@ name: extract-pattern
 description: เขียน pattern rules จากข้อมูลที่ให้มา
 argument-hint: "[pattern]"
 related:
-  - follow-design-pattern
+  - review-architecture
   - learn-from-pattern
   - follow-best-practice
 ---
@@ -64,7 +64,7 @@ related:
 4. ห้ามเขียน rules ที่ซับซ้อนเกินความจำเป็น
 5. ต้องครอบคลุมทุกกรณีที่เป็นไปได้
 
-- ใช้ /follow-design-pattern ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 - ใช้ /learn-from-pattern ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 

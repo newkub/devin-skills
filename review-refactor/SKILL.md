@@ -106,7 +106,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - Critical: circular dependency, cross-layer import, SRP violation ใน critical path, dead code ใน production path
 - High: long file >250 lines, function >50 lines, parameter >4, high coupling, high duplication
-- Medium: moderate coupling, code smell, naming inconsistency, 4-5 top-level symbols
+- Medium: moderate coupling, code smell, naming inconsistency, 4-5 top-level symbols, pattern overuse ที่ซับซ้อนเกินจำเป็น
 - Low: minor naming, cosmetic improvement, unused export ใน non-critical path
 
 ### 4. Baseline Metrics Scoring

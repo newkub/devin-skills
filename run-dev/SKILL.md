@@ -6,6 +6,8 @@ related:
   - watch-terminal
   - open-web
   - watch-browser-and-fix
+  - test-usage
+  - run-verify
   - report-ansi
 ---
 
@@ -60,15 +62,24 @@ related:
 2. ตรวจสอบว่า dev server ทำงานได้จริงผ่าน browser
 3. ทดสอบ features หลักทำงานได้
 
-### 6. Verify
+### 6. Test Usage
+
+> Goal: ทดสอบ flow การใช้งานสำคัญ
+
+1. ทำ `/test-usage` เพื่อทดสอบ features หลัก
+2. ถ้าพบปัญหา → ทำ `/watch-browser-and-fix` หรือ `/resolve-errors`
+3. ยืนยันว่า user flow สำคัญทำงานได้
+
+### 7. Verify
 
 > Goal: Verify
 
-1. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
-2. ตรวจสอบว่า services ที่เกี่ยวข้องทำงานปกติ
-3. ยืนยันว่าไม่มี runtime errors ใน console
+1. ทำ `/run-verify`
+2. ยืนยันว่าไม่มี critical errors ที่ขัดขวางการทำงาน
+3. ตรวจสอบว่า services ที่เกี่ยวข้องทำงานปกติ
+4. ยืนยันว่าไม่มี runtime errors ใน console
 
-### 7. Report
+### 8. Report
 
 > Goal: Report
 

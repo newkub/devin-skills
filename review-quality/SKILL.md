@@ -99,6 +99,8 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ปฏิบัติตาม hardcode exclusions ใน `references/code-quality.md`
 - รวม findings จากหลาย source เป็น single finding ถ้าซ้ำกัน
 - ข้าม sub-workflow ที่ไม่เกี่ยวข้องกับ project
+- ตรวจ pattern ทีใช้ว่าช่วย maintainability และ extensibility หรือไม่
+- หลีกเลี่ยง anti-patterns ทีทำให้ code ซับซ้อนโดยไม่จำเป็น
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ tools, commands, paths, skill references
 - รายงานเป็นตารางด้วย `/report-table`
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning

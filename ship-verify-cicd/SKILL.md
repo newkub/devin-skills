@@ -18,6 +18,7 @@ related:
   - ship-verify-local
   - run-verify
   - run-test-all
+  - test-usage
   - deep-review-codebase
   - deep-validate
   - resolve-errors
@@ -48,9 +49,10 @@ Ship code ขึ้น CI/CD: เตรียม code, verify, commit, push, set
 2. ถ้าไม่มี changes → stop และ report
 3. ทำ `/run-verify`
 4. ทำ `/run-test-all` ถ้ามี
-5. ทำ `/deep-review-codebase` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
-6. ทำ `/deep-validate`
-7. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
+5. ทำ `/test-usage` เพื่อทดสอบ features หลักก่อน push
+6. ทำ `/deep-review-codebase` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
+7. ทำ `/deep-validate`
+8. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
 
 ### 2. Commit
 
