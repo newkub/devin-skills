@@ -2,7 +2,7 @@
 name: git-debug
 description: Debug ปัญหาที่เกี่ยวกับ git โดยใช้ bisect, blame, reflog, log และ diff
 related:
-  - check-git-files-history
+  - check-git-logs
   - search-in-git
   - restore-from-git-log
   - deep-debug
@@ -99,7 +99,7 @@ related:
 
 1. ทำ `/follow-tool-git` เพื่อดู blame ของไฟล์หรือบรรทัดที่สงสัย
 2. รัน `git log -p --follow -S "<code-snippet>" -- <file-path>` เพื่อดู commit ที่เพิ่ม/ลบ code นั้น
-3. ทำ `/check-git-files-history` เพื่อ trace ไฟล์ใน git log จนกว่าจะเจอเงื่อนไข หรือ `/git-file-history` ถ้าต้องการ UI viewer
+3. ทำ `/check-git-logs` เพื่อ trace ไฟล์ใน git log จนกว่าจะเจอเงื่อนไข หรือ `/git-file-history` ถ้าต้องการ UI viewer
 4. วิเคราะห์เหตุผลของการเปลี่ยนแปลงจาก commit message และ diff
 
 ### 4. Recover Lost Commit With Reflog

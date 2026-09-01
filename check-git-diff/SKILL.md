@@ -3,7 +3,7 @@ name: check-git-diff
 description: ตรวจสอบความแตกต่างของ git refs หรือ working tree ด้วย git diff
 argument-hint: "[ref]"
 related:
-  - check-git-files-history
+  - check-git-logs
   - git-debug
   - search-in-git
   - ask-me
@@ -72,7 +72,7 @@ related:
 - ใช้ `/report-table` สำหรับสรุป stat
 - ระบุ file paths เป็น relative จาก repo root
 
-- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /check-git-logs ถ้าจำเป็น
 - ใช้ /git-debug ถ้าจำเป็น
 - ใช้ /search-in-git ถ้าจำเป็น
 

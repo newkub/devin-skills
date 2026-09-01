@@ -3,7 +3,7 @@ name: git-file-history
 description: ดู git file history ของไฟล์ที่ระบุผ่าน @wrikka/git-cli package ที่ release แล้ว โดยใช้คำสั่ง
 argument-hint: "[file]"
 related:
-  - check-git-files-history
+  - check-git-logs
   - list-brave-browser-history
   - restore-from-devin-history
   - follow-git-flow
@@ -111,7 +111,7 @@ related:
 - ทุก commit ต้องมี entry ใน timeline
 - ไฟล์ต้องทำงานได้ทันทีเมื่อเปิดใน browser
 
-- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /check-git-logs ถ้าจำเป็น
 - ใช้ /list-brave-browser-history ถ้าจำเป็น
 - ใช้ /restore-from-devin-history ถ้าจำเป็น
 - ใช้ /follow-git-flow ถ้าจำเป็น

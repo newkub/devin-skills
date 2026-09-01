@@ -3,7 +3,7 @@ name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
 related:
   - git-debug
-  - check-git-files-history
+  - check-git-logs
   - search-in-git
   - analyze-root-cause-analysis
   - resolve-errors
@@ -193,7 +193,7 @@ related:
 - แนะนำ preventive measures ที่ actionable
 - บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
 
-- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /check-git-logs ถ้าจำเป็น
 - ใช้ /deep-retro ถ้าจำเป็น
 - ใช้ /deep-impact ถ้าจำเป็น
 - ใช้ /deep-trace ถ้าจำเป็น

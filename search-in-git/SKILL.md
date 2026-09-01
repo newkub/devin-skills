@@ -3,7 +3,7 @@ name: search-in-git
 description: ค้นหา git history, commits, diffs ด้วย log/grep/blame/pickaxe
 related:
   - git-debug
-  - check-git-files-history
+  - check-git-logs
   - deep-debug
   - report-table
   - suggest-next-action
@@ -95,7 +95,7 @@ related:
 - แสดง exact match และ context สั้นๆ
 - เรียงผลลัพธ์ตาม date ล่าสุดก่อน
 
-- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /check-git-logs ถ้าจำเป็น
 
 ## Expected Outcome
 

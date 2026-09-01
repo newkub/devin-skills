@@ -4,7 +4,7 @@ description: กู้คืนไฟล์จาก git log โดยเริ�
 related:
   - restore-from-my-dotfiles
   - git-debug
-  - check-git-files-history
+  - check-git-logs
   - follow-tool-git
   - ask-me
   - git-commit
@@ -82,7 +82,7 @@ related:
 - ระบุ commit hash ที่ชัดเจนก่อน restore เสมอ
 
 - ใช้ /git-debug ถ้าจำเป็น
-- ใช้ /check-git-files-history ถ้าจำเป็น
+- ใช้ /check-git-logs ถ้าจำเป็น
 
 ## Expected Outcome
 

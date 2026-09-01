@@ -49,7 +49,7 @@ related:
 2. ทำ `/analyze-root-cause-analysis` เพื่อหา causal graph
 3. เก็บ logs, traces, metrics, screenshots, error messages
 4. เก็บการตัดสินใจและการสื่อสารระหว่างทีม
-5. ตรวจสอบ git history: `/follow-tool-git` หรือ `/check-git-files-history`
+5. ตรวจสอบ git history: `/follow-tool-git` หรือ `/check-git-logs`
 
 ### 4. Identify Contributing Factors
 

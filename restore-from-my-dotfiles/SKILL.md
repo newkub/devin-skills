@@ -4,7 +4,7 @@ description: กู้คืน dotfiles จาก git log ของ chezmoi rep
 related:
   - restore-from-git-log
   - follow-tool-git
-  - check-git-files-history
+  - check-git-logs
   - git-debug
   - ask-me
   - report-table
