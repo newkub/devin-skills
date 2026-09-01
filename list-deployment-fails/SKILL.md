@@ -3,7 +3,8 @@ name: list-deployment-fails
 description: สรุป deployment failures จาก CI/CD และ cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
-  - list-github-action-fail
+  - list-github-actions-fails
+  - list-cloudflare-worker-fails
   - resolve-all-github-actions-fails
   - resolve-all-cloudflare-worker-fails
   - report-table
@@ -20,7 +21,6 @@ related:
 สรุป deployment และ CI/CD failures ทีเกิดขึ้นจาก GitHub Actions และ Cloudflare Workers
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `follow-service-vercel`, `follow-service-cloudflare`, `open-cloudflare-workers`
 
 ใช้สำหรับตรวจสอบ failures ทั้งหมดจาก CI/CD (GitHub Actions) และ cloud deployment (Cloudflare Workers) โดยไม่แก้ไขหรือ re-run อะไร
 
@@ -39,7 +39,7 @@ related:
 
 > Goal: รวบรวม GitHub Actions failures
 
-1. ทำ `/list-github-action-fail` เพื่อหา workflow runs ทีล้มเหลว
+1. ทำ `/list-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: repo, workflow, branch, commit, event, started at, url
 
@@ -47,7 +47,7 @@ related:
 
 > Goal: รวบรวม Cloudflare Workers failures
 
-1. ทำ `/resolve-all-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
+1. ทำ `/list-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: worker, type, latest deployment, status, errors
 
@@ -78,8 +78,8 @@ related:
 > Goal: แนะนำขั้นตอนถัดไป
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/watch-cicd-and-resolve`
-3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/watch-github-actions`
+2. ถ้ามี failures จาก Cloudflare → แนะนำ `/watch-cicd-and-resolve` หรือ `/resolve-all-cloudflare-worker-fails`
+3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/watch-github-actions` หรือ `/resolve-all-github-actions-fails`
 
 ## Rules
 
