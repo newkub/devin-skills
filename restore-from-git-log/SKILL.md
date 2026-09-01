@@ -2,6 +2,7 @@
 name: restore-from-git-log
 description: กู้คืนไฟล์จาก git log โดยเริ่มจาก commit ล่าสุดถอยหลังจนกว่าจะพบ
 related:
+  - restore-from-my-dotfiles
   - git-debug
   - check-git-files-history
   - follow-tool-git
