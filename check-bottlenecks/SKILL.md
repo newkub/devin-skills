@@ -3,7 +3,6 @@ name: check-bottlenecks
 description: ตรวจหา performance bottlenecks ใน app, API, หรือ build
 argument-hint: "[target]"
 related:
-  - watch-build
   - run-check
   - review-performance
   - improve
@@ -63,8 +62,6 @@ related:
 - ไม่เปลี่ยน code ใน step นี้
 - focus หา bottleneck ไม่ใช่แก้ไข
 - ระบุ metric ทีวัดได้
-
-- ใช้ /watch-build ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /improve ถ้าจำเป็น
 
