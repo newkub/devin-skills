@@ -10,6 +10,7 @@ related:
   - suggest-next-action
   - check-reference
   - check-broken-skills-references
+  - follow-skills-map
 ---
 
 ## Goal
@@ -61,6 +62,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 1. ทำ `/check-reference` เพื่อยืนยัน `related` references
 2. ทำ `/check-broken-skills-references` เพื่อ scan หา broken `/skill-name` references ทั้งหมด
 3. ทำตาม `references/content-quality.md`
+4. ทำ `/follow-skills-map` เพื่อตรวจว่า skills map sync กับ skills ทีมีอยู่
 
 ### 6. Check Parallel And Script Usage
 
@@ -131,7 +133,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - รายงานเป็นตารางด้วย `/report-table`
 
 - ใช้ /idea-refactor-devin-global-skills ถ้าจำเป็น
-- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome
 

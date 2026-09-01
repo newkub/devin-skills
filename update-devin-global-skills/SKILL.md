@@ -12,12 +12,13 @@ related:
   - check-reference
   - update-references
   - review-issue
-  - ship
+  - ship-verify-cicd
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
   - follow-my-tech-stack
   - review-techstack
+  - follow-skills-map
 ---
 
 ## Goal
@@ -40,6 +41,7 @@ related:
 4. ตรวจสอบว่าแต่ละ `<skill-name>\SKILL.md` มีอยู่หรือไม่
 5. ถ้าไม่มี → สร้างใหม่; ถ้ามี → อัปเดต
 6. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ
+7. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ทีเกี่ยวข้องก่อนดำเนินการต่อ
 
 ### 2. Create Or Update Each Skill
 
@@ -105,7 +107,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะและ stop
 3. ทำ `/report-table` สรุป before-after, findings, actions และ next actions
 
@@ -137,6 +139,13 @@ related:
 - install commands ใช้ตาม ecosystem หลัก: `bun add`/`bun install` สำหรับ Bun/Node ecosystem (ยกเว้น project ใช้ npm เป็นหลัก), `cargo add` สำหรับ Rust, `go get` สำหรับ Go, `pip install` สำหรับ Python
 - สำหรับ global CLI ที่เป็น npm package ใน Bun/Node ecosystem ให้ใช้ `mise use -g npm:<package>`
 
+### 5. Language
+
+- global skills ใน `%APPDATA%\devin\skills` เขียนเนื้อหาเป็นภาษาไทย โดยคงคำศัพท์เทคนิคไว้เป็นภาษาอังกฤษ
+- คำศัพท์เทคนิค เช่น tool names, skill names, commands, paths, `git`, `lint`, `AST`, `CLI`, `JSON`, `API` ไม่ต้องแปล
+- project-local skills เขียนเนื้อหาเป็นภาษาอังกฤษทั้งหมด
+- ถ้าพบ global skill ทีเขียนเนื้อหาเป็นภาษาอังกฤษทั้งหมด ให้แปลเป้นภาษาไทยโดยคงคำศัพท์เทคนิคไว้
+
 - ใช้ /alignment ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
@@ -150,3 +159,4 @@ related:
 - ถ้าพบ pattern จาก file structure ของ skills ที่คล้ายกัน มี template ใน `references/` หรือ `templates/`
 - ถ้ามีการสร้าง MCP server → `%APPDATA%\devin\mcp_config.json` ถูกอัปเดตพร้อม register server
 - references อัปเดตครบทั้ง `AGENTS.md`, `global_rules.md`, `/follow-global-rules` และ skills อื่นที่เกี่ยวข้อง
+

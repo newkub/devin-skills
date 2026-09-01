@@ -9,6 +9,8 @@ related:
   - deep-validate
   - update-agents-md
   - prepare-skills-context
+  - check-circular-dependencies
+  - report
 ---
 
 ## Goal
@@ -132,4 +134,4 @@ related:
 - สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
 - สร้าง skills แบบ manual ไม่ตามมาตรฐาน
 - ข้าม `/learn-from-web` ก่อนเขียนเนื้อหา
-- ไม่ตรวจสอบคุณภาพ content
+- ไม่ตรวจสอบคุณภาพ content ก่อนส่งมอบ

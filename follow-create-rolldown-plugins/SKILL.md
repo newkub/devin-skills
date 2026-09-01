@@ -94,7 +94,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -120,3 +120,4 @@ related:
 - Hook filters ลด overhead
 - Tests และ examples ผ่าน
 - สามารถใช้กับ Vite 8+ ได้
+

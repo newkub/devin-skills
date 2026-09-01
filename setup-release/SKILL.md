@@ -4,7 +4,7 @@ description: ตั้งค่า release tool, workflow และ changelog ge
 argument-hint: "[path]"
 related:
   - run-release
-  - ship
+  - ship-verify-cicd
   - setup-cicd
   - setup-package
   - test-release
@@ -105,7 +105,7 @@ related:
 - ถ้าใช้ semantic-release → `/follow-tool-semantic-release`
 - ถ้าใช้ changelogen → `/follow-tool-changelogen`
 
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 
 ## Expected Outcome
@@ -116,3 +116,4 @@ related:
 - changelog generation ถูกตั้งค่า
 - ไม่มี `release` script ใน package manifest
 - `/run-verify` ผ่าน
+

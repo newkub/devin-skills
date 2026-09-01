@@ -76,7 +76,7 @@ related:
 > Goal: ส่งมอบข้อมูลให้ใช้ต่อได้
 
 1. ถ้าพบข้อมูลยาวหรือซับซ้อน → สร้าง `references/setup-<topic>.md`
-2. ทำ `/report-session-status` หรือ `/report-table` สรุปผล
+2. ทำ `/report-progress` หรือ `/report-table` สรุปผล
 3. ระบุ source links ทั้งหมดทีใช้อ้างอิง
 4. ถ้าข้อมูลไม่แน่นอน → ระบุเป็น assumption หรือข้อควรระวัง
 

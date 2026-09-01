@@ -5,7 +5,7 @@ argument-hint: "[title]"
 related:
   - create-slide-in-newkub-slides
   - run-dev
-  - ship
+  - ship-verify-cicd
   - follow-framework-slidev
 ---
 
@@ -74,7 +74,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -113,3 +113,4 @@ related:
 - `slides.md` มี headmatter และ content ครบถ้วน
 - Dev server ทำงานได้ที่ port 3030
 - สามารถ build หรือ export ได้
+

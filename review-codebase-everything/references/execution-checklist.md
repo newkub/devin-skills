@@ -1,6 +1,6 @@
 # Workflow Execution Checklist
 
-รายละเอียดขั้นตอนการทำงานของ `/review-codebase-everything` ดำเนินการตามลำดับ ถ้า metrics ไม่ผ่านให้ทำซ้ำไม่เกิน 3 รอบ
+รายละเอียดขั้นตอนการทำงานของ `/deep-review` ดำเนินการตามลำดับ ถ้า metrics ไม่ผ่านให้ทำซ้ำไม่เกิน 3 รอบ
 
 ## 1. Prepare And Keep Up With Codebase
 
@@ -61,7 +61,7 @@
 1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อนใน `tools/analyze` ไม่ใช่ใน `tools/review-codebase`
 2. import `runAllAnalyzers` จาก `tools-analyze` ใน `src/application/review.ts`
 3. แปลงผล `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
-4. กำหนด `reviewWorkflow` map ไปยัง `review-codebase-everything/references/<dimension>.md` หรือ review skills ที่เกี่ยวข้อง
+4. กำหนด `reviewWorkflow` map ไปยัง `/review-*` workflows ที่เหมาะสม
 5. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียดใน `tools/analyze`
 
 ดูเพิ่มเติม: [analyze-integration.md](analyze-integration.md)

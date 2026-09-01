@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับจัดการ parallel execution ใน 3 ระดับ: tool calls, script execution, และ workflow orchestration — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/review-performance` หรือดู `?review-performance/references/concurrency.md`)
+ใช้สำหรับจัดการ parallel execution ใน 3 ระดับ: tool calls, script execution, และ workflow orchestration — ไม่ครอบคลุม concurrent programming ใน application code (ใช้ `/review-performance`)
 
 ## Execute
 

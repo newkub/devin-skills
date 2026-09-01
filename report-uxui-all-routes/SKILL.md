@@ -2,6 +2,7 @@
 name: report-uxui-all-routes
 description: สร้างรายงาน routes ทั้งหมดของ app/website ใน markdown table สำหรับ UX/UI
 related:
+  - report-uxui
   - report-uxui-sketch
   - list-website-all-routes
   - review-uxui
@@ -20,6 +21,7 @@ related:
 - รองรับ file-based routing, config-based routing, หรือ manual route list
 - ระบุ route/screen, tab group, method, purpose, actions, entry points
 - ใช้ร่วมกับ `/report-uxui-sketch` เพื่อสร้าง wireframe ครบ
+- ถ้าต้องการ ANSI table ตาม context ให้ใช้ `/report-uxui`
 
 ## Execute
 

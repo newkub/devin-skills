@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 
 use crate::graph::Graph;
 
-pub fn load_graph(root: &Path) -> (Graph, Vec<String>) {
+pub fn load_graph(root: &Path, quick: bool) -> (Graph, Vec<String>) {
     let mut graph = Graph::new();
     let mut unknown: Vec<String> = Vec::new();
     let (names, by_name) = match read_skill_names(root) {
@@ -25,10 +25,12 @@ pub fn load_graph(root: &Path) -> (Graph, Vec<String>) {
                 }
             }
         }
-        let body = clean_body(&body_raw);
-        for r in body_refs(&body, &skill_set, &name) {
-            if r != name {
-                callees.insert(r);
+        if !quick {
+            let body = clean_body(&body_raw);
+            for r in body_refs(&body, &skill_set, &name) {
+                if r != name {
+                    callees.insert(r);
+                }
             }
         }
         graph.insert(name, callees);

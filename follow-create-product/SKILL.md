@@ -11,7 +11,7 @@ related:
   - follow-lib-unocss-theme
   - follow-design-system
   - review-uxui
-  - ship
+  - ship-verify-cicd
   - report-table
   - enhance-prompt
   - follow-my-tech-stack
@@ -30,7 +30,7 @@ related:
 - เรียก `/follow-create-web` เพื่อสร้าง website project
 - เรียก `/follow-service-workos` สำหรับ auth
 - เรียก `/follow-service-stripe` สำหรับ payments, pricing, billing
-- เรียก `/ship` เมื่องานเสร็จ
+- เรียก `/ship-verify-cicd` เมื่องานเสร็จ
 
 ## Execute
 
@@ -136,7 +136,7 @@ related:
 
 1. เรียก `/deep-validate` สำหรับ type, quality, security, cross-reference
 2. เรียก `/run-test-all` ถ้ามี tests
-3. เรียก `/ship` เพื่อ commit และ deploy
+3. เรียก `/ship-verify-cicd` เพื่อ commit และ deploy
 4. รายงาน product URL, features, และ next actions
 
 ## Rules
@@ -184,3 +184,4 @@ related:
 - Auth และ payments ทำงาน
 - `/pricing`, `/user`, `/dashboard`, `/features` พร้อมใช้งาน
 - Product ถูก ship พร้อม URL และ next actions
+

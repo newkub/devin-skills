@@ -122,7 +122,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -201,3 +201,4 @@ my-github-bot/
 - `follow-tool-github-actions` — GitHub Actions CI/CD
 - [Probot Docs](https://probot.github.io/docs/)
 - [GitHub Apps Docs](https://docs.github.com/en/apps)
+

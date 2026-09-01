@@ -21,7 +21,7 @@ related:
   - review-frontend
   - resolve-errors
   - open-web
-  - ship
+  - ship-verify-cicd
   - suggest-next-action
 ---
 
@@ -98,7 +98,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ถ้า user ต้องการ keep project → ทำ `/ship`
+1. ถ้า user ต้องการ keep project → ทำ `/ship-verify-cicd`
 2. รายงานจำนวน nodes, edges, ประเภททีพบ
 3. ทำ `/suggest-next-action`
 
@@ -134,3 +134,4 @@ related:
 - `src/` directory มี scaffold สำหรับ Rust crate และ Solid web app
 - รองรับหลาย ecosystems และ repo layouts
 - สามารถ ship หรือ run ใน browser ได้
+

@@ -4,7 +4,7 @@ description: ใช้ agent-browser CLI สำหรับ browser automation �
 related:
   - follow-create-browser-extensions
   - list-brave-browser-history
-  - roleplay-customer-support-agent
+  - roleplay-stakeholder
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
@@ -228,7 +228,7 @@ Monitor และ debug อย่างมีประสิทธิภาพ
 
 - ใช้ /follow-create-browser-extensions ถ้าจำเป็น
 - ใช้ /list-brave-browser-history ถ้าจำเป็น
-- ใช้ /roleplay-customer-support-agent ถ้าจำเป็น
+- ใช้ /roleplay-stakeholder ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

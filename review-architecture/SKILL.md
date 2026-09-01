@@ -35,21 +35,35 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 > Goal: ครอบคลุมทุก architecture dimension พร้อม review score
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
-2. ทำ `/review-codebase-everything` แล้วรัน review analyzers
+2. ทำ `/deep-review` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
 4. ตรวจสอบแต่ละ dimension ตาม reference files ใน [references/index.md](references/index.md)
 5. ทำ data flow analysis ตาม [references/data-flow.md](references/data-flow.md)
 6. ทำ cost impact analysis ตาม [references/cost-impact.md](references/cost-impact.md)
 7. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
 
-### 3. Review Import, Export And Barrel Exports
+### 3. Review Paradigm Consistency
+
+> Goal: ตรวจสอบวา module หรือ feature ใช้ programming paradigm ทีเหมาะสมและสม่ำเสมอ
+
+1. ระบุ paradigm หลักทีใช้ในแต่ละ module: declarative, functional, imperative, object-oriented, reactive, dynamic programming
+2. ตรวจสอบ consistency: paradigm หลักต้องสม่ำเสมอภายใน module หรือ feature
+3. ตรวจ declarative: collection operations แทน loops, immutable data, composition
+4. ตรวจ functional: pure functions, separation of functional core / imperative shell, `Result`/`Option` patterns
+5. ตรวจ imperative: control flow, guard clauses, mutable state scope, error handling
+6. ตรวจ OOP: encapsulation, interfaces, polymorphism, single responsibility, composition over inheritance
+7. ตรวจ reactive: lazy streams, proper subscription/unsubscription, error handling with `catchError`
+8. ตรวจ dynamic programming: overlapping subproblems, base cases, state transitions, space optimization
+9. ถ้า mixed paradigms → ตรวจ boundaries ให้ชัดเจน
+
+### 4. Review Import, Export And Barrel Exports
 
 > Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
 1. ทำตาม [references/import-export.md](references/import-export.md)
 2. บันทึก findings
 
-### 4. Validate Findings
+### 5. Validate Findings
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
@@ -59,7 +73,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
-### 5. Report
+### 6. Report
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
@@ -69,7 +83,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
 5. ทำ `/suggest-next-action`
 
-### 6. Implement All
+### 7. Implement All
 
 > Goal: ไม่มี implementation gap ค้างหลัง review
 
@@ -82,7 +96,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 2. แยก review process จาก fix process และ scope boundaries ตาม [references/review-rules.md](references/review-rules.md)
 3. ใช้ skip conditions เมื่อ project ไม่มีสภาพแวดล้อมที่เกี่ยวข้อง — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 4. คำนวณ score, grade, status, และ metrics ตาม [references/scoring.md](references/scoring.md)
-5. รายงานด้วยตารางและไม่ใช้ `**` bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
+5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 
 ## Expected Outcome
 

@@ -27,7 +27,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 - ทำ `/scan-codebase` เพื่อเข้าใจ backend structure และ stack
 - ระบุ API framework, service patterns, database engine, data fetching library, validation library, integration points
-- ทำ `/review-codebase-everything` เพื่ออัปเดต rules
+- ทำ `/deep-review` เพื่ออัปเดต rules
 - รัน `bunx ast-grep scan --inspect summary`
 - ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 

@@ -7,7 +7,7 @@ related:
   - git-commit
   - git-push
   - refactor-commit
-  - merge-in
+  - merge
 ---
 
 ## Goal
@@ -16,7 +16,7 @@ Merge feature branch เข้า target branch ด้วย `--no-ff` merge com
 
 ## Scope
 
-ใช้เมื่อ feature branch พร้อม merge เข้า target branch (ค่าเริ่มต้น `main`) — ครอบคลุม pre-merge validation, merge execution, push และ post-merge cleanup ไม่รวม squash merge (ดู `refactor-commit`) หรือ file merge (ดู `merge-in`)
+ใช้เมื่อ feature branch พร้อม merge เข้า target branch (ค่าเริ่มต้น `main`) — ครอบคลุม pre-merge validation, merge execution, push และ post-merge cleanup ไม่รวม squash merge (ดู `refactor-commit`) หรือ file merge (ดู `merge`)
 
 ## Execute
 

@@ -26,7 +26,7 @@
 
 ตรวจว่าทุก analyzer มี `reviewWorkflow` map:
 
-- map จาก category ไปยัง `/review-codebase-everything` หรือ references
+- map จาก category ไปยัง `/deep-review` หรือ references
 - ระบุ action ที่ต้องทำเมื่อพบ issue
 
 ถ้าขาด `reviewWorkflow` → flag เป็น `Medium` severity

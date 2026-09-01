@@ -1,134 +1,104 @@
 ---
 name: improve-uxui
-description: ปรับ UX/UI ด้วย Vercel + Google guidelines ผ่าน /follow-design-system และ /review-uxui
+description: ปรับ UX/UI ให้สวยงาม เข้าใจง่าย ใช้งานง่าย โดยอ่าน review แล้วเลือก action ตามผล
 argument-hint: "[file-or-pattern]"
 related:
-  - follow-design-system
   - review-uxui
-  - follow-create-web
+  - capture-image-app-to-screenshot
+  - capture-component
+  - from-downloads
+  - from-recent-windows-capture
+  - follow-design-system
   - optimize-everything
-  - ship
+  - ship-verify-cicd
+  - suggest-next-action
+  - report
 ---
 
 ## Goal
 
-ปรับปรุง UX/UI ของ project ให้ดีขึ้นด้วยการผสมผสาน best practices จาก Vercel Web Interface Guidelines และ Google Modern Web Guidance
+ปรับปรุง UX/UI ของ project ให้เป็น design system ทีสวยงาม เข้าใจง่าย และใช้งานง่าย โดยเริ่มจาก `/review-uxui` แล้วเลือก action ตามปัญหาทีพบ
 
 ## Scope
 
-- ใช้สำหรับ web และ TUI projects
-- ครอบคลุม design system, accessibility, visual design, interaction, performance
-- ใช้ `/follow-design-system` สำหรับสร้าง/ปรับ design system
-- ใช้ `/review-uxui` สำหรับ audit และหาปัญหา
-- ใช้ `/optimize-everything` สำหรับ SEO, bundle, และ performance
+- ใช้กับ web และ TUI projects
+- เน้น design system, visual consistency, accessibility, interaction
+- ไม่แก้ code โดยตรงถ้าไม่จำเป็น แต่จะชี้ไปยัง skill ทีเหมาะสม
+- ถ้าไม่มี UI หรือไม่มีสิ่งแก้ไข → stop และ report
 
 ## Execute
 
-### 1. Detect Project Type
+### 1. Capture Screenshots
 
-> Goal: ระบุว่าเป้น web, TUI, หรืออื่น
+> Goal: มี reference images ของ UI ก่อน review
 
-1. ตรวจ `package.json`, `wrangler.toml`, `Cargo.toml`
-2. ถ้าเป็น web → ไปข้อ 2
-3. ถ้าเป็น TUI → ทำ `/follow-design-system` แล้วข้าม web-specific steps
+1. ถ้า project เป็น web หรือ TUI → ทำ `/capture-image-app-to-screenshot` เพื่อ capture ทุก route/component/view ลง `public/screenshots/`
+2. ถ้า user มี screenshots อยู่ใน Downloads → ทำ `/from-downloads` เพื่ออ่านภาพ
+3. ถ้ามี screenshots ล่าสุดจาก Windows → ทำ `/from-recent-windows-capture`
+4. ถ้าต้องการ capture component แยก → ทำ `/capture-component <component-name-or-url>`
+5. อ่านภาพที capture ได้ด้วย `/read` เพื่อเข้าใจสภาพ UI ปัจจุบัน
 
-### 2. Run UX/UI Review
+### 2. Review First
 
-> Goal: หาปัญหา UX/UI ปัจจุบัน
+> Goal: เข้าใจปัญหา UX/UI ก่อนแก้
 
-1. ใช้ `/review-uxui <file-or-pattern>`
+1. ทำ `/review-uxui <file-or-pattern>`
 2. บันทึก findings, severity, score
-3. ถ้าไม่มี `review-uxui` ให้ใช้ `/deep-analyze` แทน
+3. ถ้าไม่มี UI หรือไม่มี findings ทีแก้ไขได้ → stop และ report
 
-### 3. Apply Design System
+### 3. Decide Action
 
-> Goal: ปรับ/สร้าง design system
+> Goal: เลือก skill ทีเหมาะสมตามผล review
 
-1. ใช้ `/follow-design-system`
-2. กำหนด tokens: colors, typography, spacing, shadows, borders, radius
-3. สร้าง/ปรับ reusable components
-4. ทำ `/follow-lib-unocss-theme` ถ้าใช้ UnoCSS
+| ปัญหาทีพบ | Action |
+|-----------|--------|
+| ไม่มี design system / tokens ไม่สม่ำเสมอ | `/follow-design-system` |
+| ปัญหา accessibility / contrast / focus / keyboard | `/follow-design-system` หรือแก้เฉพาะจุด |
+| ปัญหา performance / SEO / bundle | `/optimize-everything` |
+| ต้องการมุมมอง user หรือ designer | `/roleplay-stakeholder` |
+| code พร้อมแล้ว ต้องการส่งมอบ | `/ship-verify-cicd` |
 
-### 4. Apply Vercel Web Interface Guidelines
+เลือก 1-3 actions ทีมี impact สูงสุด อย่า over-engineer
 
-> Goal: ตรวจสอบตาม Vercel guidelines
+### 4. Apply Design System
 
-1. Fetch หรืออ่าน guidelines จาก URL:
-   ```text
-   https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
-   ```
-2. ตรวจสอบ:
-   - Accessibility (aria-label, keyboard, semantic HTML, headings)
-   - Focus states (focus-visible, ไม่ outline-none)
-   - Forms (labels, autocomplete, type, inputmode, placeholders)
-   - Animation (prefers-reduced-motion, transform/opacity)
-   - Typography (…, curly quotes, non-breaking spaces, text-wrap)
-   - Images (width/height, lazy/priority)
-   - Performance (virtualize lists, preconnect, font preload)
-   - Navigation (URL state, Link, deep-link)
-   - Touch (touch-action, overscroll-behavior)
-   - Dark mode (color-scheme, meta theme-color)
-3. แก้ไข issues ทีพบ
+> Goal: สร้างความสม่ำเสมอให้ UI
 
-### 5. Apply Google Modern Web Guidance
+1. ถ้าเลือก `/follow-design-system` → กำหนด tokens: colors, typography, spacing, radius, shadows
+2. สร้าง / ปรับ reusable components
+3. อัปเดต theme config ให้เป็นระบบ
+4. ใช้ tokens ใหม่แทนค่า hardcode เก่า
 
-> Goal: ใช้ modern web APIs และ best practices
-
-1. รัน modern-web-guidance search ถ้าจำเป็น:
-   ```bash
-   npx -y modern-web-guidance@latest search "<topic>" --skill-version 2026_05_16-c5e78707
-   ```
-2. ตรวจสอบ:
-   - View Transitions
-   - Scroll-driven animations
-   - Container queries
-   - `:has()`, `:user-valid`
-   - Anchor Positioning
-   - Popover API
-   - `content-visibility`
-   - `Fetch Priority`
-   - `scheduler.yield`
-3. ปรับใช้ตาม framework ทีใช้ (Solid, React, Vue)
-
-### 6. Optimize
-
-> Goal: ปรับ performance, SEO, bundling
-
-1. ใช้ `/optimize-everything`
-2. รัน build และตรวจ bundle size
-3. รัน Lighthouse หรือ PageSpeed Insights ถ้าเป็น web
-
-### 7. Verify
+### 5. Verify
 
 > Goal: ยืนยันว่า UX/UI ดีขึ้น
 
-1. รัน `bun run build`, `bun run typecheck`
-2. รัน `/review-uxui` อีกครั้ง
-3. เปิด browser ตรวจ visual และ interaction
-4. ทำ `/deep-validate`
+1. ทำ `/review-uxui` อีกครั้ง
+2. รัน `bun run build` และ `bun run typecheck` ถ้ามี
+3. ถ้า project เป็น web → เปิด browser ตรวจ visual และ interaction
 
-### 8. Report
+### 6. Ship
 
-> Goal: สรุปผล
+> Goal: ส่งมอบงานทีผ่านการ verify
 
-1. ทำ `/report-progress`
-2. รายงาน before/after score
-3. ทำ `/suggest-next-action`
+1. ทำ `/deep-validate`
+2. ถ้าผ่านและมี code changes → ทำ `/ship-verify-cicd`
+3. ทำ `/report` สรุป before/after score, สิ่งทีแก้, และ next actions
+4. ทำ `/suggest-next-action`
 
 ## Rules
 
-- ใช้ `/follow-design-system` ก่อนปรับ components
-- ใช้ `/review-uxui` ก่อนและหลังปรับปรุง
-- ใช้ `/optimize-everything` สำหรับ SEO/performance
-- ใช้ `/follow-create-web` หรือ `/ship` ตาม flow
+- ต้องเริ่มจาก `/review-uxui` เสมอ
+- ไม่เรียกตัวเอง (`/improve-uxui`) ซ้ำ
+- เลือก action ตาม severity / impact ไม่ทำทุกอย่างในครั้งเดียว
+- ใช้ `/follow-design-system` เป็นหลักสำหรับ design system
+- ใช้ `/optimize-everything` เฉพาะเมื่อเจอปัญหา performance/SEO
 - ไม่ commit ก่อนตรวจสอบผ่าน
-- ใช้ Vercel guidelines สำหรับ UI/UX specifics
-- ใช้ Google Modern Web Guidance สำหรับ modern APIs
 
 ## Expected Outcome
 
-- UX/UI ดีขึ้นตาม Vercel + Google guidelines
-- Design system สม่ำเสมอ
-- Accessibility ดีขึ้น
-- Performance ดีขึ้น
-- มี before/after score
+- มี design system ทีสม่ำเสมอ
+- UX/UI ใช้งานง่าย เข้าใจง่าย สวยงาม
+- Review score ดีขึ้นจาก before
+- รายงาน before/after, next actions ชัดเจน
+

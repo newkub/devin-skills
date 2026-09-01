@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - report-idea-cleanup-files-in-computer
   - follow-tool-mise
-  - use-lib-better
+  - alternative
   - delete
   - report-table
 ---
@@ -36,7 +36,7 @@ related:
 > Goal: เลือก cleanup tools ทีเหมาะสม
 
 1. ตรวจสอบ package managers/CLI ที่ติดตั้ง: `bun`, `pnpm`, `npm`, `pip`, `cargo`, `scoop`, `mise`, `uv`, `pnpm`
-2. ใช้ `/use-lib-better` เพื่อประเมิน cleanup tools เช่น:
+2. ใช้ `/alternative` เพื่อประเมิน cleanup tools เช่น:
    - `mise cache prune` vs `mise prune`
    - `bun pm cache clean` vs `npm cache clean`
    - `scoop cleanup *` vs `scoop cache rm *`
@@ -151,3 +151,4 @@ related:
 - `mise run cleanup --dry-run` แสดงรายการทีจะลบ
 - หลัง user confirm ลบ cache/temp/artifacts ทีเลือก
 - รายงาน disk space ประหยัดได้และ errors
+

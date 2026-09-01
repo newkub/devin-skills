@@ -3,8 +3,7 @@ name: report-todo
 description: รายงานสิ่งที AI จะทำต่อไปในรูปแบบตาราง ไม่ใช่สำหรับอ่าน TODO.md
 related:
   - report-plan
-  - report-session-status
-  - report-task-progress
+  - report-progress
   - report-table
   - continue
   - suggest-next-action
@@ -24,7 +23,7 @@ related:
 
 ไม่ใช้สำหรับ:
 - อ่านหรือ update ไฟล์ `TODO.md` (ใช้ `/update-todo-md` หรือ `/report-scan-todo`)
-- รายงาน progress หลังทำงาน (ใช้ `/report-session-status` หรือ `/report-task-progress`)
+- รายงาน progress หลังทำงาน (ใช้ `/report-progress` หรือ `/report-progress`)
 - วางแผนละเอียดไฟล์/โครงสร้าง (ใช้ `/report-plan`)
 
 ## Execute

@@ -8,6 +8,7 @@ related:
   - improve-uxui
   - review-uxui
   - optimize-everything
+  - capture-component
 ---
 
 ## Goal
@@ -37,6 +38,7 @@ related:
 2. ใช้ design tokens สำหรับทุก component
 3. Document ทุก component และ pattern
 4. กำหนด component variants (sizes, states, colors)
+5. ทำ `/capture-component` เพื่อบันทึกภาพ component แต่ละตัวสำหรับ documentation
 
 ### 3. Apply To Platforms
 
@@ -44,8 +46,8 @@ related:
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/review-codebase-everything`
-4. ถ้า project มี TUI ทำ `/review-codebase-everything`
+3. ถ้า project มี mobile ทำ `/deep-review`
+4. ถ้า project มี TUI ทำ `/deep-review`
 
 ### 4. Ensure Accessibility
 

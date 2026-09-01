@@ -97,4 +97,4 @@ description: Script command lookup tables for Minimal, Standard, and Complete te
 | review-codebase | `bun --filter tools-review-codebase review-codebase` |
 | review-codebase:json | `bun --filter tools-review-codebase review-codebase:json` |
 
-หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/review-codebase-everything` ถ้าต้องการสร้างหรืออัปเดต CLI
+หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/deep-review` ถ้าต้องการสร้างหรืออัปเดต CLI

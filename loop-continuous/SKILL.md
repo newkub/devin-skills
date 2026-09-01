@@ -2,7 +2,7 @@
 name: loop-continuous
 description: วนปรับปรุงงานซ้ำจนถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
 related:
-  - ship
+  - ship-verify-cicd
   - loop-until-complete
   - run-until-pass
   - follow-loop-engineering
@@ -10,7 +10,7 @@ related:
   - improve
   - follow-your-suggestion
   - suggest-next-action
-  - report-session-status
+  - report-progress
   - continue
   - deep-validate
 ---
@@ -76,7 +76,7 @@ related:
 1. รัน `/run-check` หรือ `/deep-validate` ครั้งสุดท้าย
 2. สรุปจำนวนรอบ, สิ่งทีเปลี่ยน, metrics before/after, และเหตุผลทีหยุด
 3. ทำ `/report-table` แสดง progress ตามลำดับรอบ
-4. ถ้าพร้อม ให้ทำ `/ship` หรือ `/continue` ตาม context
+4. ถ้าพร้อม ให้ทำ `/ship-verify-cicd` หรือ `/continue` ตาม context
 
 ## Rules
 
@@ -110,7 +110,7 @@ related:
 - ใช้ /run-until-pass ถ้าจำเป็น
 - ใช้ /follow-loop-engineering ถ้าจำเป็น
 - ใช้ /follow-your-suggestion ถ้าจำเป็น
-- ใช้ /report-session-status ถ้าจำเป็น
+- ใช้ /report-progress ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -118,3 +118,4 @@ related:
 - มีบันทึกรอบ, metrics, และเหตุผลทีหยุด
 - ไม่เกิด over-engineering หรือ scope creep
 - ผลลัพธ์พร้อม validate และ ship
+

@@ -2,7 +2,7 @@
 name: follow-lib-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
 related:
-  - use-lib-better
+  - alternative
   - follow-lib-animejs
   - follow-lib-arktype
   - follow-best-practice
@@ -66,7 +66,7 @@ related:
 - ใช้ type-safe client
 - กำหนด session ให้ปลอดภัย
 
-- ใช้ /use-lib-better ถ้าจำเป็น
+- ใช้ /alternative ถ้าจำเป็น
 - ใช้ /follow-lib-animejs ถ้าจำเป็น
 - ใช้ /follow-lib-arktype ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

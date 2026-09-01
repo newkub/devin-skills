@@ -9,6 +9,7 @@ related:
   - deep-validate
   - report-ansi
   - capture-web
+  - capture-component
 ---
 
 ## Goal

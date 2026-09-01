@@ -4,7 +4,7 @@ description: แก้ไข files ใน repository ปัจจุบันอ
 related:
   - refactor
   - git-commit
-  - ship
+  - ship-verify-cicd
   - update-agents-md
 ---
 
@@ -60,7 +60,7 @@ related:
 > Goal: เก็บ changes ไว้อย่างชัดเจน
 
 1. ทำ `/git-commit` สำหรับ changes ทีสำคัญ
-2. ใช้ `/ship` เมื่องานเสร็จ
+2. ใช้ `/ship-verify-cicd` เมื่องานเสร็จ
 3. ไม่ stage files ที่ไม่เกี่ยวข้อง
 
 ## Rules
@@ -70,7 +70,7 @@ related:
 - ไม่ลบ ย้าย หรือ overwrite ถ้าไม่ได้รับ confirmation
 - ตรวจสอบ `git status` ก่อนและหลังแก้ไข
 - ถ้า action เสี่ยง → ทำ dry run ก่อน
-- ถ้าแก้ไข `AGENTS.md` → ทำ `/update-agents-md` ตาม `/ship`
+- ถ้าแก้ไข `AGENTS.md` → ทำ `/update-agents-md` ตาม `/ship-verify-cicd`
 
 ### 2. Minimal Scope
 
@@ -96,3 +96,4 @@ related:
 - ไม่มี broken references หรือ missing files
 - ผ่าน validation ทีเกี่ยวข้อง
 - มี commit ที่สะอาดและชัดเจน
+

@@ -4,6 +4,7 @@ description: อ่านและใช้ skills ทีมีใน global แ
 argument-hint: "[skill-name]"
 related:
   - list-devin-global-skills
+  - follow-skills-map
   - update-project-skills
   - check-reference
   - update-devin-global-skills
@@ -34,7 +35,14 @@ related:
 3. ถ้ามี project `AGENTS.md` ให้อ่าน `### Skills` section
 4. สร้างรายการ `global` และ `project` skills พร้อม path
 
-### 2. Resolve Skill Name
+### 2. Map Skills To Task
+
+> Goal: ใช้ map เพื่อหา skill เร็วขึ้น
+
+1. ถ้าไม่ระบุ `argument [skill-name]` → ทำ `/follow-skills-map` เพื่อหา skills ทีตรงกับ task
+2. ถ้ามีหลาย skills → แสดง map และให้ user เลือก
+
+### 3. Resolve Skill Name
 
 > Goal: หา skill ทีต้องการใช้
 
@@ -43,7 +51,7 @@ related:
 3. ค้นหาทั้งใน `follow-devin-skills` (global) และ `.devin/skills/` (project)
 4. ถ้ามีทั้ง global และ project ชื่อเดียวกัน → ใช้ project skill เว้นแต่ global ใหม่กว่าหรือ user ระบุ
 
-### 3. Read Skill
+### 4. Read Skill
 
 > Goal: เข้าใจเนื้อหา skill
 
@@ -52,7 +60,7 @@ related:
 3. ระบุ goal, scope, execute, rules, expected outcome
 4. ตรวจสอบ `related` ว่า skills ทีอ้างอิงมีอยู่จริง
 
-### 4. Check References
+### 5. Check References
 
 > Goal: ตรวจสอบความถูกต้องก่อนใช้
 
@@ -60,7 +68,7 @@ related:
 2. ถ้า reference ไม่มีอยู่ → แจ้ง user หรือใช้ `/update-references`
 3. ตรวจว่า skill ไม่มี circular dependency
 
-### 5. Use Skill
+### 6. Use Skill
 
 > Goal: ดำเนินการตาม skill
 
@@ -69,7 +77,7 @@ related:
 3. ถ้า skill บอกให้ใช้ skills อื่น → ทำ `/follow-devin-skills` ซ้ำตามลำดับ
 4. ตรวจสอบผลลัพธ์ตาม `## Expected Outcome`
 
-### 6. Report
+### 7. Report
 
 > Goal: สรุปการใช้ skill
 

@@ -6,7 +6,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-oxlint
-  - ship
+  - ship-verify-cicd
 ---
 ## Goal
 
@@ -67,7 +67,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

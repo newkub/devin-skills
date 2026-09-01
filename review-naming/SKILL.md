@@ -3,7 +3,7 @@ name: review-naming
 description: ตรวจชื่อ variables, functions, files, skills ให้ชัดเจน สม่ำเสมอ
 related:
   - report
-  - rename-to
+  - rename
   - report-table
   - suggest-next-action
 ---
@@ -70,7 +70,7 @@ Review ชื่อใน code และ skill files ให้ชัดเจน
 
 - ไม่ review naming นอก scope ทีกำหนด
 - ไม่ rename identifier โดยไม่ dry run
-- ถ้า rename กระทบ public API → ทำ `/rename-to` ด้วย ast-grep
+- ถ้า rename กระทบ public API → ทำ `/rename` ด้วย ast-grep
 
 ### 4. Formatting
 

@@ -22,22 +22,36 @@ pub fn run_summary(graph: &Graph, unknown: &[String]) {
     let total_skills = graph.len();
     let total_relations: usize = graph.values().map(|v| v.len()).sum();
     let orphan_count = graph.values().filter(|v| v.is_empty()).count();
-    let cycles_found = graph::cycles(graph);
 
     println!("=== SKILL RELATION SUMMARY ===");
     println!("total skills:    {}", total_skills);
     println!("total relations: {}", total_relations);
     println!("orphan skills:   {}", orphan_count);
-    if cycles_found.is_empty() {
-        println!("cycle count:     0");
-        println!("first cycle:     none");
-    } else {
-        println!("cycle count:     {}", cycles_found.len());
-        println!("first cycle:     {}", cycles_found[0].join(" -> "));
-    }
     if !unknown.is_empty() {
         println!("unknown refs:    {}", unknown.len());
     }
+}
+
+pub fn run_quick(graph: &Graph, unknown: &[String], target: &str) {
+    if target.is_empty() {
+        run_summary(graph, unknown);
+        return;
+    }
+    if !graph.contains_key(target) {
+        eprintln!("ERROR: Skill not found: {}", target);
+        std::process::exit(1);
+    }
+    println!("=== SKILL: {} ===", target);
+    let direct = sorted_vec(&graph[target]);
+    println!("direct count: {}", direct.len());
+    println!(
+        "direct:       {}",
+        if direct.is_empty() {
+            "none".to_string()
+        } else {
+            direct.join(", ")
+        }
+    );
 }
 
 pub fn run_tree(graph: &Graph, target: &str, depth: usize, include_transitive: bool) {

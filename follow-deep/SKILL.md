@@ -41,7 +41,7 @@ related:
 5. Testing → `run-test`
 6. Validation → `deep-validate`
 7. Security → `review-delivery`
-8. Performance → `/review-codebase-everything` (comprehensive) หรือ `review-delivery` (specific)
+8. Performance → `/deep-review` (comprehensive) หรือ `review-delivery` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)
 10. Thinking → `deep-thinking` (systematic) หรือ `pondering` (reflective)
 

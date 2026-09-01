@@ -7,13 +7,13 @@ related:
   - follow-architecture
   - follow-flat-folders
   - follow-my-tech-stack
-  - ship
+  - ship-verify-cicd
   - review-techstack
   - rethink
 ---
 ## Goal
 
-สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/review-codebase-everything`
+สร้าง CLI applications ด้วย Rust หรือ Bun ตาม context และ requirements พร้อม review คุณภาพด้วย `/deep-review`
 
 ## Scope
 
@@ -36,7 +36,7 @@ related:
 1. วิเคราะห์ requirements: performance, distribution, ecosystem, team skill
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency
 3. เลือก Bun ถ้า: ทีมใช้ TypeScript, ต้องการ rapid development, มี Bun runtime ติดตั้ง
-4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/compare` ก่อน
+4. ถ้าไม่ชัด → ใช้ `/ask-me` หรือ `/vs` ก่อน
 
 ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ stack comparison และ framework examples
 
@@ -55,8 +55,8 @@ related:
 
 > Goal: ตรวจสอบคุณภาพ CLI หลังสร้าง
 
-1. ทำ `/review-codebase-everything` เพื่อตรวจสอบ design, structure, UX, error handling
-2. แก้ไขตาม findings ที่ `/review-codebase-everything` ระบุ
+1. ทำ `/deep-review` เพื่อตรวจสอบ design, structure, UX, error handling
+2. แก้ไขตาม findings ที่ `/deep-review` ระบุ
 3. รัน lint และ test ตาม stack ที่เลือก
 
 ### 5. Integrate Into Workspace
@@ -71,7 +71,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -103,7 +103,7 @@ related:
 
 ### 4. Review Before Ship
 
-- ทำ `/review-codebase-everything` ก่อน commit
+- ทำ `/deep-review` ก่อน commit
 - รองรับ `--help`, `--version`, error messages ที่ชัดเจน
 - มี tests ครอบคลุม critical paths
 - มี logging หรือ tracing ตาม stack
@@ -115,5 +115,6 @@ related:
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
 - Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
-- ผ่าน `/review-codebase-everything`
+- ผ่าน `/deep-review`
 - ผสานเข้ากับ workspace ได้
+

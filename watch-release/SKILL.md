@@ -4,7 +4,7 @@ description: ตรวจสอบ release บน registry หรือ GitHub �
 related:
   - run-release
   - follow-release
-  - ship
+  - ship-verify-cicd
   - watch-deploy
   - resolve-errors
 ---
@@ -15,7 +15,7 @@ Monitor a release after it has been published and report when the version or tag
 
 ## Scope
 
-Use after `/run-release`, manual release, or when `/ship` detects a release. Supports npm, crates.io, Docker Hub, VS Code Marketplace, and GitHub releases.
+Use after `/run-release`, manual release, or when `/ship-verify-cicd` detects a release. Supports npm, crates.io, Docker Hub, VS Code Marketplace, and GitHub releases.
 
 ## Execute
 
@@ -113,3 +113,4 @@ Use after `/run-release`, manual release, or when `/ship` detects a release. Sup
 - ผลลัพธ์ report ครบ: platform, version/tag, final status, elapsed, polls
 - ไม่มี TODO/MOCK/placeholder
 - `SKILL.md` และ references ไม่เกิน 250 บรรทัด
+

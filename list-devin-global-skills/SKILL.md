@@ -4,6 +4,7 @@ description: แสดงรายการ Devin global skills ทั้งห�
 related:
   - report-table
   - search-skills
+  - follow-skills-map
 ---
 
 ## Goal
@@ -43,6 +44,7 @@ related:
 
 1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
 2. ทำ `/report-table` สำหรับจัดรูปแบบ
+3. ทำ `/follow-skills-map` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
 
 ## Rules
 

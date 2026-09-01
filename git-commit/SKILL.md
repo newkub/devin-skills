@@ -8,7 +8,7 @@ related:
   - list-git-commit
   - refactor-commit
   - review-diff
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -133,7 +133,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ /list-git-commit ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /review-diff ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -141,3 +141,4 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - Git history ที่อ่านง่ายและติดตามง่าย
 - ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills ถูก commit
 - Working directory สะอาด
+

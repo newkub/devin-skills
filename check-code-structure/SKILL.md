@@ -57,8 +57,8 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 4. ตรวจสอบ imports ที่ข้าม boundary หรือชั้น layer
 5. ตรวจสอบ file ที่มี symbols จากหลาย domain หรือ layer ปนกัน
 6. ใช้ `/use-ast-grep` สำหรับ patterns ที่ `sg outline` ไม่ครอบ เช่น God class
-7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/review-codebase-everything` แยก
-8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/review-codebase-everything` แยก
+7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/deep-review` แยก
+8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/deep-review` แยก
 
 ### 4. Validate Findings
 
@@ -80,7 +80,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 3. ทำ `/review-architecture` เพื่อจัดการ barrel exports และ import aliases — ซ่อน internal exports ที่ไม่ต้อง public, แทนที่ relative paths ที่ซับซ้อน
 4. แก้ไข imports ที่ข้าม boundary หรือ layer
 5. แยก file ที่มี symbols จากหลาย domain ออกจากกัน
-6. ทำ `/rename-to` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
+6. ทำ `/rename` สำหรับ rename identifiers และ `/update-references` หลังทุกการ split หรือ rename
 7. ถ้าต้องปรับ physical structure ให้ทำ `/restructure`
 
 ### 6. Verify
@@ -122,13 +122,13 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 ### 3. Review Before Improve
 
 - วิเคราะห์และ validate findings ให้ครบก่อนเริ่ม improve
-- ถ้าต้อง refactor ลึก ให้ทำ `/review-codebase-everything` แยกก่อน improve
-- แยก improvement process จาก review process อื่น เช่น `/review-codebase-everything`
+- ถ้าต้อง refactor ลึก ให้ทำ `/deep-review` แยกก่อน improve
+- แยก improvement process จาก review process อื่น เช่น `/deep-review`
 
 ### 4. Follow Write Standards
 
 - ทำ `/update-references` หลังทุกการ split, rename, หรือย้ายไฟล์
-- ใช้ `/rename-to` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
+- ใช้ `/rename` สำหรับ rename code identifiers ที่ไม่สะท้อน responsibility
 - แต่ละไฟล์ไม่เกิน 250 บรรทัด
 - แต่ละ function/type/class ทำหน้าที่เดียว
 - ใช้ `sg outline` ยืนยัน structure หลัง improve
@@ -139,11 +139,11 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 ### 6. Scope Boundaries
 
-- ไม่ improve architecture ที่ `/review-codebase-everything` ทำ
-- ไม่ improve filesystem organization ที่ `/review-codebase-everything` ทำ
+- ไม่ improve architecture ที่ `/deep-review` ทำ
+- ไม่ improve filesystem organization ที่ `/deep-review` ทำ
 - ไม่ refactor separation of concerns ลึกที่ `/refactor` ทำ
 - focus ที่ code-level structure: symbols, exports, members, cohesion
-- สำหรับ system-wide view ทำ `/review-codebase-everything`
+- สำหรับ system-wide view ทำ `/deep-review`
 
 - ใช้ /use-ast-grep-programatic ถ้าจำเป็น
 

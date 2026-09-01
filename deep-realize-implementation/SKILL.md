@@ -15,7 +15,7 @@ related:
   - deep-validate
   - review-codebase-everything
   - use-lib-effective
-  - use-lib-better
+  - alternative
   - resolve-errors
   - refactor
   - restructure
@@ -97,7 +97,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 1. ทำ `/implement-todo-md` ถ้ามี `TODO.md`
 2. ทำ `/implement-mock` ถ้ามี MOCK/FAKE/STUB
 3. ค้นหา placeholder functions และแทนที่ real implementation
-4. ใช้ `/use-lib-better` ถ้าต้องเลือก library ใหม่
+4. ใช้ `/alternative` ถ้าต้องเลือก library ใหม่
 5. ตรวจสอบว่าไม่มี TODO/MOCK/placeholder เหลือ
 
 ### 7. Deep Refactor And Restructure
@@ -166,7 +166,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - optimistic updates เฉพาะเมื่อเหมาะสม
 
 - ใช้ /realize-implementation ถ้าจำเป็น
-- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome
@@ -176,3 +176,4 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ผ่าน `/deep-validate` และ `/run-verify`
 - ผ่าน test coverage และ e2e
 - รายงาน before/after, risks, next actions
+

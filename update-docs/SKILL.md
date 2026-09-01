@@ -2,7 +2,7 @@
 name: update-docs
 description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
 related:
-  - idea-features
+  - deep-idea-features
   - check-should-update
   - check-monorepo
   - update-features-md
@@ -19,7 +19,7 @@ related:
 - ตั้งค่า `docs/` สำหรับ single project และ monorepo
 - สร้าง/อัปเดท markdown เนื้อหาจริงจาก source code
 - ตั้งค่า `docs/.vitepress/config.ts` ให้มี nav และ sidebar
-- รองรับ `update-features-md` และ `idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
+- รองรับ `update-features-md` และ `deep-idea-features` โดยแยกหน้า `features` และ `roadmap/idea-features`
 
 ## Execute
 
@@ -97,11 +97,11 @@ related:
 4. จัดกลุ่มตาม domain ด้วย heading หรือ sub-section
 5. ไม่ต้องมี dropdown ใช้ heading และ bullet ธรรมดา
 
-### 6. Integrate `idea-features`
+### 6. Integrate `deep-idea-features`
 
 > Goal: หน้า idea features ถูกต้อง
 
-1. ถ้า `/idea-features` เรียกมา จะมี `docs/roadmap/idea-features.md` หรือข้อมูลให้เขียน
+1. ถ้า `/deep-idea-features` เรียกมา จะมี `docs/roadmap/idea-features.md` หรือข้อมูลให้เขียน
 2. เขียน/อัปเดท `docs/roadmap/idea-features.md` ด้วยตาราง `Extends` และ `New`
 3. แต่ละ feature ใช้ heading `### <#> <feature>` แล้วเขียน `UX/UI` และ `Plan` เป็น bullet
 4. ตาราง markdown 27 คอลัมน์ ภาษาไทย body English
@@ -160,7 +160,7 @@ related:
 ### 5. Language
 
 - เนื้อหา markdown ใช้ภาษาของ project หรือภาษาอังกฤษ
-- `idea-features` body ภาษาอังกฤษ ตารางภาษาไทย
+- `docs/roadmap/idea-features.md` body ภาษาอังกฤษ ตารางภาษาไทย
 - ห้ามผสมภาษาในย่อหน้าเดียวกัน
 
 ### 6. No Workspace Duplicates
@@ -180,7 +180,7 @@ related:
 - `docs/` directory ที่ root มี VitePress config, nav, sidebar
 - Markdown files สมบูรณ์: index, project, features, getting-started, roadmap, development, references
 - `docs/project/features.md` มีตาราง features จาก `update-features-md`
-- `docs/roadmap/idea-features.md` มีตาราง `Extends` และ `New` จาก `idea-features`
+- `docs/roadmap/idea-features.md` มีตาราง `Extends` และ `New` จาก `deep-idea-features`
 - ทุกไฟล์มี frontmatter
 - ไม่มี HTML/UX ซับซ้อน
 - Links ถูกต้อง ไม่เสีย

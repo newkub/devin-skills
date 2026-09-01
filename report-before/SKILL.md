@@ -3,7 +3,7 @@ name: report-before
 description: รายงานสถานะปัจจุบันตาม context ก่อนเริ่มทำอะไร
 related:
   - report-ansi
-  - report-session-status
+  - report-progress
   - suggest-next-action
 ---
 
@@ -34,7 +34,7 @@ related:
 2. ถ้าต้องการเน้นลำดับความสำคัญ → ใช้ numbered list
 3. ถ้าเหมาะสม → ผสมทั้งสองรูปแบบ
 4. ถ้าเป็นรายงานความคืบหน้า → อ้างอิง `/report-ansi`
-5. ถ้าเป็นรายงานสถานะ → อ้างอิง `/report-session-status`
+5. ถ้าเป็นรายงานสถานะ → อ้างอิง `/report-progress`
 
 ### 3. Format Output
 

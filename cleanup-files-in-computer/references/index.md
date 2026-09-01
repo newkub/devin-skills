@@ -30,4 +30,5 @@
 |---|---|
 | `/report-idea-cleanup-files-in-computer` | report-only analysis |
 | `/follow-tool-mise` | mise setup |
-| `/use-lib-better` | compare cleanup tools |
+| `/alternative` | compare cleanup tools |
+

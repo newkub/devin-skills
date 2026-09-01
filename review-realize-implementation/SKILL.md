@@ -41,7 +41,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 > Goal: หา implementation ที่ไม่สมบูรณ์ในทุกมิติ
 
-1. ทำ `/deep-analyze`, `/review-codebase-everything`, `/run-review`
+1. ทำ `/deep-analyze`, `/deep-review`, `/run-review`
 2. ทำตาม `references/implementation-gaps.md`
 3. ทำตาม `references/missing-flows.md`
 4. ทำตาม `references/missing-ui.md`
@@ -88,7 +88,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 ### 3. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
-- ใช้ `/review-codebase-everything` สำหรับระบุ issues ใน code
+- ใช้ `/deep-review` สำหรับระบุ issues ใน code
 - ถ้าต้อง refactor → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure → ทำ `review-restructure` ก่อน `restructure`
 - ถ้าต้อง update → ทำ `review-update` ก่อน `update-*`
@@ -109,9 +109,9 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 ### 6. Flow And Feature Completeness
 
-- ทำ `/roleplay-user` เพื่อจำลอง user journey
+- ทำ `/roleplay-stakeholder` เพื่อจำลอง user journey
 - ตรวจ missing features ภายใน workflow
-- ทำ `/review-codebase-everything` ถ้าพบ gaps ในแต่ละด้าน
+- ทำ `/deep-review` ถ้าพบ gaps ในแต่ละด้าน
 - ตรวจ flow หลักมี happy path, error path, recovery, rollback, undo, confirmation
 - ตรวจ feature หลักมี supporting features ครบ: validation, auth, audit, notifications, rate limiting, tests, docs
 

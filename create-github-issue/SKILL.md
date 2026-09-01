@@ -90,7 +90,7 @@ related:
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
 2. ยืนยัน metadata ถูกต้อง
-3. ทำ `/ship`
+3. ทำ `/ship-verify-cicd`
 
 ## Rules
 
@@ -180,3 +180,4 @@ related:
 - สร้าง issue ที่ไม่มี action items
 - สร้าง issue โดยไม่มี steps to reproduce
 - ใช้ description สั้นเกินไปไม่มี context
+

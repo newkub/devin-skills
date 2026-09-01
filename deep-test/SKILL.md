@@ -1,182 +1,246 @@
 ---
 name: deep-test
-description: Test ละเอียดหลายมิติ — coverage, mutation, security, performance, accessibility
+description: Test ละเอียดครอบคลุมทุกประเภท coverage สูงสุดและใช้ run-test-all
 argument-hint: "[scope]"
 related:
-  - update-test-everything
-  - run-test
+  - run-test-all
   - run-test-coverage
   - run-test-unit
   - run-test-integration
   - run-test-e2e
-  - run-test-all
-  - watch-test
-  - review-test
-  - deep-analyze
+  - review-codebase-everything
+  - review-quality
   - deep-validate
-  - follow-tdd
-  - follow-tool-playwright
-  - follow-tool-stryker-mutator
-  - follow-tool-mutants-rs
-  - run-bench
-  - rethink
+  - check-reference
+  - update-test-everything
   - update-specs
 ---
 
 ## Goal
 
-Test ละเอียดหลายมิติเพื่อ verify implementation ครบทั้ง correctness, type safety, coverage, mutation, security, performance, accessibility, contract, property-based
+เขียนและอัปเดต test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language และใช้ `/run-test-all` เมื่องานเช็คหรือ verify
 
 ## Scope
 
-ใช้เมื่องาน test ต้องการความละเอียดสูง ครอบคลุมทุก test type และ cross-dimensional validation — ไม่ใช่สำหรับรัน unit test ง่ายๆ เท่านั้น
+เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
 ## Execute
 
-Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ
+### 1. Detect Test Framework And Define Strategy
 
-### 1. Define Test Scope And Strategy
+> Goal: ตรวจสอบ test framework และกำหนด testing strategy ก่อนเขียน spec
 
-> Goal: กำหนดขอบเขตและกลยุทธ์การ test อย่างชัดเจน
+1. ตรวจสอบ `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod` หรือ manifest ทั้งหมดสำหรับ test dependencies (`vitest`, `jest`, `pytest`, `go test`)
+2. ตรวจสอบ config files (`vitest.config.ts`, `jest.config.js`, `pytest.ini`)
+3. ตรวจสอบ coverage tools ที่ framework รองรับ (`c8`, `istanbul`, `coverage.py`, `go test -cover`)
+4. กำหนด test pyramid ที่เหมาะสม (unit, integration, e2e)
+5. กำหนด test types ที่จำเป็น (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility, visual regression)
+6. กำหนด coverage targets สำหรับแต่ละ test type
+7. กำหนด test priorities ตาม criticality
+8. กำหนด test environments (local, staging, production)
+9. กำหนด test data strategy: `factories` สำหรับ dynamic data, `fixtures` สำหรับ static data, `builders` สำหรับ complex objects
+10. กำหนด mock strategy: mock external dependencies (DB, API, email) แต่ใช้ real implementations สำหรับ internal pure functions
 
-1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมายและ risk ของ testing
-2. ทำ `/deep-analyze` เพื่อเข้าใจ architecture, tech stack, dependencies
-3. ระบุ dimensions ที่ต้อง test: unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility
-4. ระบุ target scope: feature, module, workspace, หรือทั้งโปรเจกต์
-5. กำหนด coverage target, mutation score, performance baseline, security scenarios
-6. บันทึก test strategy ใน `specs/TEST_PLAN.md` ถ้างานซับซ้อน
+### 2. Analyze Source Code
 
-### 2. Audit Existing Test State
+> Goal: อ่านและวิเคราะห์ source code ที่จะ test ก่อนเขียน
 
-> Goal: วิเคราะห์สถานะ test ปัจจุบัน
+1. อ่าน source file ทั้งหมดที่เกี่ยวข้อง (handler, service, utils, types)
+2. ระบุทุก branch และ code path (`if/else`, `try/catch`, `switch`, ternary, optional chaining)
+3. ระบุ external dependencies ที่ต้อง mock (database, API, auth, email, payment)
+4. ระบุ input parameters และ validation rules (Zod schemas, type constraints)
+5. ระบุ output shapes และ error response patterns
+6. ระบุ security-critical logic (auth checks, permission checks, userId injection, sanitization)
+7. ระบุ async patterns (promises, streams, generators, event emitters) ที่ต้อง test
+8. สร้าง branch map: นับจำนวน branches ทั้งหมดเพื่อคำนวณ minimum test cases ที่จำเป็น
 
-1. ตรวจ manifest files: `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`
-2. ตรวจ test configs: `vitest.config.*`, `jest.config.*`, `pytest.ini`, `nextest.toml`
-3. ทำ `/scan-codebase` เพื่อหา test files, source files, conventions
-4. ทำ `/run-test-coverage` เพื่อดู coverage ปัจจุบัน
-5. บันทึก gaps: missing test types, low coverage, fragile tests, no security tests
+### 3. Organize, Write Spec, And Improve Naming
 
-### 3. Design Deep Test Cases
+> Goal: ย้าย test files ไว้ใน location ที่ถูกต้อง สร้าง spec และปรับปรุง naming ก่อนเขียน test
 
-> Goal: ออกแบบ test cases ครอบคลุมทุกมิติ
+1. ย้าย test files ที่กระจัดกระจายมาไว้ใน location ที่ถูกต้องตาม Rule 3
+2. ทำ `/deep-review` เพื่อตรวจ naming และ structure
+3. ถ้า fail → retry (max 3 → stop/report)
 
-1. ทำ `/deep-analyze` เพื่อระบุทุก branch, edge case, error path
-2. ทำ `/roleplay-qa-tester` เพื่อหา boundary conditions และ edge cases
-3. ทำ `/roleplay-attacker` เพื่อหา security scenarios
-4. สร้าง test matrix: input × role × state × error condition
-5. ใช้ table-driven/parameterized tests สำหรับ boundary values และ permission matrix
+### 4. Write Specs
 
-### 4. Implement Unit And Integration Tests
+> Goal: ทำ `/update-specs` เพื่อสร้าง/อัปเดต spec files ใน `<workspace>/specs/`
 
-> Goal: เขียน unit และ integration tests ตามมาตรฐาน
+1. ทำ `/update-specs` เพื่อสร้าง `specs/overview.md` และ `specs/<feature>.md`
+2. ตรวจว่า spec files ครอบคลุม test files ที่มีอยู่
+3. ถ้า fail → retry (max 3 → stop/report)
 
-1. ทำ `/update-test-everything` เพื่อสร้างหรืออัปเดต unit และ integration tests
-2. ทำ `/run-test-unit` เพื่อ verify unit tests
-3. ทำ `/run-test-integration` เพื่อ verify integration tests
-4. ใช้ factories, fixtures, builders สำหรับ test data
-5. ตรวจ auth bypass, IDOR, userId injection, sanitization ใน integration tests
+### 5. Write Tests
 
-### 5. Implement E2E And Contract Tests
+> Goal: เขียน test ตามประเภทและ conventions ของภาษาที่ใช้ ครอบคลุมทุก category — reminder: workflow goal คือ test ที่มีคุณภาพสูงครอบคลุมทุกกรณี
 
-> Goal: ครอบคลุม user flow และ API contract
+Required categories (ทุก handler/function):
 
-1. ทำ `/run-test-e2e` เพื่อ verify user flows ด้วย Playwright หรือ Cypress
-2. ทำ `/follow-tool-playwright` ถ้ายังไม่มี E2E setup
-3. ตรวจสอบ API contract ระหว่าง services
-4. เพิ่ม contract tests สำหรับ serialization และ schema compatibility
-5. ทำ `/test-usage` เพื่อ verify examples ทำงานจริง
+1. Happy path: input ที่ถูกต้อง -> expected output
+2. Error path: dependency throw -> error response ที่ถูกต้อง
+3. Edge cases: empty input, null/undefined, boundary values (min, max, min-1, max+1)
+4. Unauthorized: auth missing หรือ invalid -> throw หรือ error response
+5. Input validation: invalid input ที่ผิด schema -> validation error
 
-### 6. Implement Property And Mutation Tests
+Conditional categories (เมื่อมี logic ที่เกี่ยวข้อง):
 
-> Goal: ตรวจ invariants และ test quality
+6. Permission/RBAC: user ไม่มี permission -> deny
+7. IDOR/Ownership: user เข้าถึง resource ของ user อื่น -> deny
+8. Sanitization: user input ที่มี malicious content -> sanitized output
+9. userId injection: ตรวจสอบว่า userId มาจาก auth ไม่ใช่จาก input (security)
+10. Empty results: query return empty array/undefined -> handle ถูกต้อง
+11. Boundary values: ค่า min/max ของ numeric input
+12. Optional fields: ส่งและไม่ส่ง optional fields -> ทำงานถูกต้องทั้งคู่
+13. Concurrency: race conditions, parallel calls (เฉพาะ stateful operations)
+14. Snapshot: UI component output, serialized data ที่เปลี่ยนน้อย — ใช้ sparingly
+15. Regression: bug fix ต้องมี test ป้องกัน recurrence
+16. Contract: API compatibility ระหว่าง services
+17. Property-based: invariants ที่ต้องเป็นจริงทุก input (เช่น `forall x: f(g(x)) = x`)
+18. Accessibility: UI components ต้องผ่าน WCAG, ARIA, keyboard nav
+19. Performance: critical paths ต้องไม่ช้ากว่า threshold
 
-1. ทำ `/follow-math-probability` สำหรับ property-based invariants
-2. ใช้ `fast-check`, `hypothesis`, หรือ `proptest` สำหรับ property-based tests
-3. ทำ `/follow-tool-stryker-mutator` สำหรับ JS/TS mutation testing
-4. ทำ `/follow-tool-mutants-rs` สำหรับ Rust mutation testing
-5. บันทึก mutation score และ fix tests ที่ไม่ฆ่า mutant ได้
+Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
-### 7. Run Performance And Security Tests
+- Boundary values หลายค่า (เช่น rating 1, 2, 3, 4, 5)
+- Input validation หลายกรณี (เช่น missing required fields แต่ละ field)
+- Permission matrix (role x action)
 
-> Goal: ตรวจประสิทธิภาพและความปลอดภัย
+### 6. Run Tests
 
-1. ทำ `/run-bench` เพื่อวัด performance critical paths
-2. ทำ `/roleplay-attacker` เพื่อหา security test scenarios
-3. ทำ `/review-security` สำหรับ security review
-4. ทำ `/follow-tool-react-scan` ถ้าเป็น React project
-5. บันทึก performance baseline และ security findings
+> Goal: รัน tests หลังเขียนเสร็จเพื่อ verify ว่าผ่านทั้งหมด
 
-### 8. Verify Coverage And Accessibility
+1. ทำ `/run-test-all` เพื่อรัน test suite ทั้งหมดตาม project type
+2. รัน test script ตาม ecosystem (`bun|npm run test`, `cargo test`, `pytest`, `go test ./...`)
+3. แก้ไข failing tests จนผ่านทั้งหมด — retry max 3 → stop/report
+4. ตรวจสอบว่าไม่มี test ที่ pass เพราะเหตุผลผิด (false positive)
+5. ตรวจสอบว่า error path tests จริงๆ ทดสอบ error ไม่ใช่แค่ทดสอบว่าไม่ throw
 
-> Goal: บรรลุ coverage target และ accessibility
+### 7. Verify Coverage
 
-1. ทำ `/run-test-coverage` อีกครั้งเพื่อ verify 100% coverage
-2. ทำ accessibility tests สำหรับ UI components ด้วย Playwright Axe ถ้ามี
-3. ตรวจ WCAG, ARIA, keyboard navigation สำหรับ UI components
-4. ใช้ `/deep-validate` เพื่อตรวจสอบ correctness, cross-references
+> Goal: ตรวจสอบ coverage และเขียน tests ที่ขาดเพิ่มเติม
 
-### 9. Watch And Fix
+1. ทำ `/deep-review` เพื่อวิเคราะห์ coverage gaps และบรรลุ 100%
+2. ทำ `/run-test-coverage` เพื่อ verify coverage ทุก category (lines, branches, functions, statements)
+3. ถ้าพบ gaps ให้ทำ `/review-quality` เพื่อเขียน tests ที่ขาด
 
-> Goal: แก้ไข failures จนผ่านทั้งหมด
+### 8. Update Existing Tests
 
-1. ทำ `/watch-test` เพื่อตรวจ failures อย่างต่อเนื่อง
-2. ทำ `/resolve-errors` สำหรับ failing tests
-3. retry สูงสุด 3 รอบ ถ้ายังไม่ผ่าน → stop และ report
+> Goal: อัปเดต tests ที่มีอยู่เมื่องานหรือ requirements เปลี่ยน
 
-### 10. Report
+1. ตรวจสอบ tests ที่มีอยู่ว่าตรงกับ code ปัจจุบัน
+2. แก้ไข assertions, mocks, fixtures ที่ตกรุ่น
+3. เพิ่ม test cases สำหรับ logic ใหมหรือ branches ใหม่
+4. ลบ tests ที่ซ้ำซ้อนหรือไม่จำเป็น
+5. รัน tests เพื่อยืนยันว่าไม่มี regression
+6. ถ้ามี tests ทีไม่ผ่านเพราะ code เปลี่ยน → ทำ `/resolve-errors` หรือ `/deep-debug` ก่อนอัปเดต
 
-> Goal: สรุปผลและแนะนำ next action
+### 9. Sync And Verify
 
-1. ทำ `/report-table` สรุป test type, count, pass/fail, coverage, mutation score
-2. ทำ `/deep-validate` เพื่อ verify ผลลัพธ์สุดท้าย
-3. ทำ `/suggest-next-action` เพื่อแนะนำ next action
+> Goal: sync `specs/SPEC.md` กับ test cases ที่เขียนหรืออัปเดตแล้ว
+
+1. ทำ `/update-specs` เพื่อ sync `specs/SPEC.md` ด้วย test cases ที่เขียนหรืออัปเดตแล้ว
+2. ถ้า fail → retry (max 3 → stop/report)
 
 ## Rules
 
-### 1. Test Quality
+### 1. Test Principles
 
-- แต่ละ test case มี single responsibility
-- ใช้ `Arrange-Act-Assert` pattern
-- ไม่แชร์ state ระหว่าง tests
-- ใช้ factories/fixtures สำหรับ test data
-- ไม่ hardcode secrets หรือ credentials
+- ตั้งชื่อ test: `should [expected behavior] when [condition]`
+- Follow `AAA` pattern (`Arrange`, `Act`, `Assert`)
+- Test แค่สิ่งเดียวต่อ test case (`Single Responsibility`)
+- ไม่แชร์ state ระหว่าง tests (`isolated`)
+- Test ทั้ง `happy path`, `edge cases`, `error cases`, `boundary conditions`
+- ใช้ `parameterized tests` สำหรับกรณีที่ test ซ้ำๆ กันหลายค่า
 
-### 2. Coverage And Mutation
+### 2. Language Conventions
 
-- เป้าหมาย coverage 100% สำหรับ critical paths
-- mutation score ไม่ต่ำกว่า 80%
-- ทุก branch ต้องมี test
-- ทุก error path ต้องมี test
+ทำตาม conventions ของภาษาที่ใช้: TypeScript ใช้ `vitest/jest`, Go ใช้ `*_test.go` table-driven, Python ใช้ `pytest`, Rust ใช้ `#[test]`, Java ใช้ `JUnit`, C# ใช้ `xUnit`, Ruby ใช้ `rspec`, PHP ใช้ `PHPUnit`
 
-### 3. Security And Accessibility
+### 3. File Organization
 
-- ทุก protected endpoint ต้องมี auth test
-- ทุก permission check ต้องมี permission matrix test
-- ทุก user input ต้องมี validation/sanitization test
-- UI components ต้องมี keyboard nav และ ARIA tests ถ้าเกี่ยวข้อง
+- Unit tests: ใน `tests/unit/` หรือ `__tests__/` ข้าง source
+- Integration tests: ใน `tests/integration/`
+- E2E tests: ใน `tests/e2e/`
+- Test utilities: ใน `tests/utils/` (helpers, mocks, setup, assertions)
+- Test data: ใน `tests/fixtures/` (data, factories, snapshots)
+- Follow existing pattern: ถ้า project มี colocated tests อยู่แล้ว ให้ตาม pattern นั้น
+- Don't mix: อย่ามีทั้ง colocated และ separate สำหรับ unit tests ในหลายระดับ
 
-### 4. Performance
+### 4. Naming And Data
 
-- ระบุ performance threshold ก่อน run benchmark
-- เปรียบเทียบ baseline และ regression
-- ไม่ยอมรับ flaky tests
+- Test files: ใช้ชื่อเดียวกับ source ต่อท้ายด้วย `.test`, `.spec`, หรือ `_test`
+- ใช้ `factories`, `fixtures`, `builders` สร้าง test data
+- Clean up test data หลังแต่ละ test (`afterEach`, `teardown`)
+- ไม่ hardcode sensitive data (passwords, API keys, tokens)
 
-### 5. Independence
+### 5. Mocking and Security
 
-- แต่ละ test type เป็นอิสระจากกัน
-- ใช้ real implementation สำหรับ pure functions
-- mock external dependencies เฉพาะที่จำเป็น
+- Mock external dependencies เฉพาะที่จำเป็น
+- ใช้ interfaces/ports สำหรับ test doubles
+- Restore/cleanup mocks หลังแต่ละ test
+- ไม่ hardcode credentials ใน test files
+- ใช้ environment variables สำหรับ secrets
+- ใช้ `test databases` แยกจาก production
 
+### 6. Performance
+
+- Unit tests: `< 10ms` ต่อ test
+- Integration tests: `< 100ms` ต่อ test
+- ใช้ `parallel execution` เมื่อ tests ไม่ dependent กัน
+- Coverage verification และ 100% enforcement อยู่ใน `/deep-review` และ `/run-test-coverage`
+
+### 7. Testing Strategy Per Type
+
+- Unit (70%): pure functions, handlers, utils — mock dependencies — `< 10ms` ต่อ test
+- Integration (20%): API endpoints, DB queries, service interactions — real or test DB — `< 100ms` ต่อ test
+- E2E (10%): user flows, critical paths — real browser/environment — ใช้ `Playwright` หรือเทียบเท่า
+- Contract: API schema compatibility ระหว่าง services — ใช้ `pact` หรือ schema validation
+- Property-based: invariants ที่ต้องเป็นจริงทุก input — ใช้ `fast-check` หรือ `hypothesis`
+- Mutation: ตรวจสอบ test quality — ใช้ `stryker` หรือ `cargo-mutants` — รันใน CI
+- Performance: critical paths ไม่ช้ากว่า threshold — รันใน CI เพื่อจับ regressions
+- Security: auth bypass, IDOR, injection, rate limiting — รันใน CI
+- Accessibility: WCAG, ARIA, keyboard nav — รันใน CI สำหรับ UI components
+
+### 8. Test Code Quality And Assertions
+
+- DRY: extract repeated test setup เป็น helper functions ใน `test-utils.ts`
+- No type casting: หลีกเลี่ยง `as unknown as` ซ้ำๆ สร้าง typed helper แทน
+- Descriptive assertions: ใช้ `expect.objectContaining` และ `expect.arrayContaining`
+- Assert behavior ไม่ใช่ implementation: ตรวจสอบ output/result ไม่ใช่ว่าเรียก function อะไร
+- Assert error shape: ตรวจสอบ error message และ structure ไม่ใช่แค่ว่ามี error
+- Assert side effects: ถ้า function มี side effect ต้อง assert ด้วย
+- Avoid fragile assertions: ไม่ assert ค่าที่ non-deterministic ใช้ `expect.any(Date)` หรือ `expect.any(String)`
+- Avoid test interdependence: แต่ละ test ต้องรันได้อิสระ
+
+### 9. Keep Tests In Sync With Code
+
+- เมื่องานเกิดจาก code เปลี่ยนใหม่ หรือ refactor → ตรวจสอบและอัปเดต tests ทีได้รับผลกระทบก่อน ship
+- ใช้ `/run-test-coverage` เพื่อหา coverage gaps หลัง code เปลี่ยน
+- ไม่ ship ถ้า tests เก่ากว่า code
+
+### 10. Security And Handler Test Patterns
+
+- Auth bypass: ส่ง request โดยไม่มี auth -> ต้อง reject
+- IDOR: user A เข้าถึง resource ของ user B -> ต้อง deny
+- userId injection: ตรวจสอบว่า userId มาจาก `auth.userId` ไม่ใช่จาก `input.userId`
+- Sanitization: ส่ง XSS/malicious input -> ต้อง sanitized ก่อนเก็บ
+- Permission matrix: ทุก role x action ต้องมี test (ใช้ `it.each`)
+- Extract handler: ดึง handler จาก router object แล้วเรียกโดยตรงใน test
+- Mock dependencies: mock service layer, auth, database, external APIs
+- Test input -> output mapping: ส่ง input ผ่าน handler แล้วตรวจสอบ output
+- Test error fallback: เมื่อ service throw ต้อง return fallback ที่ถูกต้อง
+
+- ใช้ /deep-validate ถ้าจำเป็น
+- ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /review-test ถ้าจำเป็น
-- ใช้ /follow-tdd ถ้าจำเป็น
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /update-specs ถ้าจำเป็น
+- ใช้ /update-test-everything ถ้าจำเป็น
 
 ## Expected Outcome
 
-- Tests ครอบคลุมทุก type: unit, integration, e2e, contract, property, mutation, performance, security, accessibility
-- Coverage 100% สำหรับ critical paths
-- Mutation score ผ่านเกณฑ์
-- ไม่มี flaky tests หรือ false positives
-- รายงานผล test เป็น table พร้อม next action
+- Test files อยู่ใน location ที่ถูกต้องตาม conventions
+- Tests ครอบคลุมทุก category และ test type (unit, integration, e2e, contract, property-based, mutation, performance, security, accessibility)
+- Tests รันผ่านทั้งหมด ไม่มี false positive
+- Coverage 100% ผ่าน `/deep-review` และ `/run-test-coverage`
+- Test code มีคุณภาพ (DRY, readable, typed helpers, no type casting)
+- Test data ใช้ factories/fixtures/builders ตาม strategy
+- `specs/SPEC.md` หรือเอกสาร test plan ถูก sync ด้วย test cases ที่เขียนแล้ว

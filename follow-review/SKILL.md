@@ -92,7 +92,7 @@ related:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/review-codebase-everything` | `/review-quality`, `/review-correctness` |
+| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-quality`, `/review-correctness` |
 | 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-correctness`, `/review-naming` |
 | 3 | เน้น logic, types, edge cases, contracts, tests | `/review-correctness` | `/review-quality`, `/review-test` |
 | 4 | เน้น security | `/review-security` | `/review-compliance`, `/review-delivery` |
@@ -147,7 +147,7 @@ related:
 1. ถ้ามี skill เดียว → เรียก skill นั้นโดยตรง
 2. ถ้ามีหลาย skills และ independent → ใช้ `/follow-parallel` รัน parallel (จำกัดไม่เกิน 10 ต่อ batch)
 3. ถ้ามี dependency เช่น `/review-plan` ก่อน `/review-implement` → รันตามลำดับ
-4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/review-codebase-everything` ก่อน
+4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/deep-review` ก่อน
 5. บันทึก output และ findings จากแต่ละ skill
 
 ### 4. Validate And Aggregate
@@ -165,7 +165,7 @@ related:
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
-3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-and-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
+3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-and-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship-verify-cicd`
 4. ทำ `/suggest-next-action`
 
 ## Rules
@@ -213,3 +213,4 @@ related:
 - ไม่เรียก skills ที่ไม่เกี่ยวข้อง
 - Findings ถูก validate, กรอง false positives, และรวมเป็น report
 - รู้ skill ถัดไปที่ควรทำ
+

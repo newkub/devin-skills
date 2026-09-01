@@ -3,7 +3,7 @@ name: list-dependencies
 description: แสดงรายการ dependencies ทั้งหมดใน project พร้อมข้อมูลและการวิเคราะห์
 related:
   - check-unused-deps
-  - use-lib-better
+  - alternative
   - run-audit
   - follow-tool-taze
   - report-table
@@ -58,7 +58,7 @@ related:
 
 แนะนำ improvements สำหรับ dependencies
 
-1. ทำ `/use-lib-better` เพื่อเปรียบเทียบกับ alternatives
+1. ทำ `/alternative` เพื่อเปรียบเทียบกับ alternatives
 2. แนะนำ dependencies ที่ควร update
 3. แนะนำ dependencies ที่ควรลบ
 4. แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า
@@ -96,7 +96,7 @@ related:
 
 แนะนำ improvements ที่เป็นประโยชน์
 
-- ใช้ `/use-lib-better` เพื่อเปรียบเทียบกับ alternatives
+- ใช้ `/alternative` เพื่อเปรียบเทียบกับ alternatives
 - แนะนำ dependencies ที่ควร update ด้วย `/follow-tool-taze`
 - แนะนำ dependencies ที่ควรลบ
 - แนะนำ dependencies ที่ควรเปลี่ยนเป็น alternatives ที่ดีกว่า

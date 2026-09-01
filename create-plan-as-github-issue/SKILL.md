@@ -2,7 +2,7 @@
 name: create-plan-as-github-issue
 description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอร แล้วเขียนลง GitHub issue พร้อม open-web
 related:
-  - idea-features
+  - deep-idea-features
   - create-github-issue
   - open-github-issue
   - open-web
@@ -23,7 +23,7 @@ related:
 ## Scope
 
 - รับ request หรือ topic
-- ใช้ `/idea-features` เพื่อ generate features ทีเป้นระบบ
+- ใช้ `/deep-idea-features` เพื่อ generate features ทีเป้นระบบ
 - คำนวณ score ตามสูตรคณิตศาสตร์
 - สร้าง GitHub issue ด้วย body ทีสแกนได้ มี icons, color, diagram, tables
 - เปิด issue URL ด้วย `open-web`
@@ -44,7 +44,7 @@ related:
 
 > Goal: สร้างไอเดียฟีเจอร พร้อมคะแนน
 
-1. ทำ `/idea-features <topic>` โดยแบ่งเป้น `New` และ `Extends`
+1. ทำ `/deep-idea-features <topic>` โดยแบ่งเป้น `New` และ `Extends`
 2. คำนวณ score ตาม `references/scoring.md`
    - `Score = (Impact + Effect) / (Risk × Phase)`
 3. เรียงลำดับ features ตาม score สูง → ต่ำ
@@ -98,7 +98,7 @@ related:
 
 ### 1. Plan Quality
 
-- Plan ต้องมาจาก `/idea-features`
+- Plan ต้องมาจาก `/deep-idea-features`
 - ทุก feature ต้องมี score คำนวณจากสูตร
 - ทุก task ต้องมี expected outcome วัดผลได้
 

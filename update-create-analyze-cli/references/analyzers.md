@@ -16,7 +16,7 @@
 
 ## ReviewWorkflow Map
 
-ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/review-codebase-everything` reference:
+ทุก analyzer ต้องมี `reviewWorkflow` map ที่ map finding type ไปยัง `/deep-review` reference:
 
 ```typescript
 const reviewWorkflow: Record<string, string> = {

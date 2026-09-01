@@ -116,7 +116,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -229,3 +229,4 @@ export function yamlPlugin(): BunPlugin {
 - `follow-tool-bunup` — Bunup bundler
 - [Bun Plugin Docs](https://bun.com/docs/runtime/plugins)
 - [Bun Bundler Plugins](https://bun.com/docs/bundler/plugins)
+

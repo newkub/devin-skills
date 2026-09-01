@@ -168,7 +168,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -221,3 +221,4 @@ related:
 - Rust function ถูกเรียกจาก Solid component และแสดงผลบนหน้าเว็บ
 - Production build สำเร็จและพร้อม deploy
 - Project structure ถูกต้องตาม convention ของ Rust + Vite + Solid
+

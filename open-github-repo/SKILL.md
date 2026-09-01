@@ -9,6 +9,7 @@ related:
   - open-github-pr
   - open-web
   - explore-github-trending
+  - view-repo
 ---
 
 ## Goal
@@ -53,12 +54,13 @@ related:
 > Goal: เปิด URL ใน browser
 
 1. ตรวจสอบ URL ว่าถูกต้อง
-2. เปิดด้วย native OS command:
+2. ถ้าต้องการดู metadata ก่อนเปิด browser ให้ทำ `/view-repo` ก่อน
+3. เปิดด้วย native OS command:
    - Windows: `start <url>`
    - macOS: `open <url>`
    - Linux: `xdg-open <url>`
-3. หรือทำ `/open-web <url>` เป้น fallback
-4. แจ้ง user URL ทีเปิด
+4. หรือทำ `/open-web <url>` เป้น fallback
+5. แจ้ง user URL ทีเปิด
 
 ## Rules
 

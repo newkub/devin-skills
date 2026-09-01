@@ -72,7 +72,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ใช้ /unified-review-and-merge-pr ถ้าจำเป็น
 - ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

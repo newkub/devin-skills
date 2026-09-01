@@ -8,7 +8,7 @@ related:
   - update-devin-global-subagents
   - follow-my-tech-stack
   - review-techstack
-  - ship
+  - ship-verify-cicd
   - update-references
 ---
 ## Goal
@@ -115,7 +115,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -174,3 +174,4 @@ related:
 - Rules, agents, hooks, MCP ประกาศถูกต้อง (ถ้ามี)
 - Plugin ติดตั้งจาก local และ remote ได้
 - Dependencies และ governance ชัดเจน
+

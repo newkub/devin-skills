@@ -112,7 +112,7 @@ related:
 1. ทำ `/run-test` สำหรับ web tests
 2. ทำ `/review-frontend` เพื่อตรวจ UI/UX
 3. ทำ `/follow-framework-capacitor` เพื่อ verify security และ production config
-4. ทำ `/ship` หลังผ่าน validation
+4. ทำ `/ship-verify-cicd` หลังผ่าน validation
 
 ## Rules
 
@@ -151,3 +151,4 @@ related:
 - Plugins, signing, build config ถูกต้อง
 - App รันบน emulator/device ได้
 - พร้อมสำหรับ App Store / Play Store deploy
+

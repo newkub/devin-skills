@@ -8,7 +8,7 @@ related:
   - consider-use-subagents
   - review-and-fix
   - deep-validate
-  - ship
+  - ship-verify-cicd
   - report
 ---
 
@@ -73,7 +73,7 @@ related:
 
 1. ทำ `/deep-validate`
 2. ทำ `/deep-validate` ถ้างานเสี่ยงสูง
-3. ทำ `/ship` ถ้ามีการเปลี่ยนแปลง
+3. ทำ `/ship-verify-cicd` ถ้ามีการเปลี่ยนแปลง
 4. ทำ `/report` สรุปสิ่งที่แต่ละ subagent ทำ
 
 ## Rules
@@ -109,3 +109,4 @@ related:
 - ผลลัพธ์ถูก merge และ review แล้ว
 - ผ่าน `/deep-validate`
 - มีรายงานสรุปจากแต่ละ role
+

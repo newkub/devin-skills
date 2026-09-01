@@ -18,7 +18,7 @@ related:
   - resolve-errors
   - review-quality
   - check-should-update
-  - ship
+  - ship-verify-cicd
   - report
 ---
 
@@ -133,3 +133,4 @@ related:
 - มี report สรุปสถานะทดสอบ
 - มีการทำ `/review-correctness` เพื่อตรวจความถูกต้องก่อนส่งมอบ
 - ผู้ใช้ทราบก่อน ship หากมี examples ที่ยังไม่ทำงาน
+

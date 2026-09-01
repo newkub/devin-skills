@@ -7,6 +7,7 @@ related:
   - follow-dot-github
   - list-github-repo
   - create-github-repo
+  - view-repo
 ---
 
 ## Goal
@@ -35,6 +36,7 @@ related:
 1. รัน `gh repo view <owner/repo> --json description,homepageUrl,repositoryTopics,licenseInfo,defaultBranchRef`
 2. เปรียบเทียบกับข้อมูลจาก Step 1
 3. ระบุ fields ที่ต้องอัปเดต
+4. ถ้าต้องการดู metadata สรุปก่อนอัปเดต ให้ทำ `/view-repo`
 
 ### 3. Update Metadata
 

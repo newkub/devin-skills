@@ -3,7 +3,7 @@ name: create-dev-branch
 description: สร้าง branch `dev` จาก `main` ถ้ายังไม่มี และ push ไปยัง remote
 related:
   - follow-git-flow
-  - ship
+  - ship-verify-cicd
   - report-table
   - suggest-next-action
 ---
@@ -79,7 +79,7 @@ related:
 - รันได้หลายครั้งโดยไม่เกิด side effects
 
 - ใช้ /follow-git-flow ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -87,3 +87,4 @@ related:
 - `dev` ชี้ไปยัง commit เดียวกับ `main` ถ้าเพิ่งสร้าง
 - ไม่เกิด force push
 - มีรายงานผล
+

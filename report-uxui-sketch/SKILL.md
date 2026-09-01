@@ -2,11 +2,12 @@
 name: report-uxui-sketch
 description: สร้างรายงาน UX/UI sketch ใน markdown สำหรับ app/website จาก context ที่ให้มา
 related:
+  - report-uxui
   - report-uxui-all-routes
   - report-table
   - report-architecture-diagram
   - follow-design-system
-  - roleplay-ui-designer
+  - roleplay-stakeholder
   - ask-me
   - suggest-next-action
   - open-files-in-web
@@ -79,6 +80,7 @@ related:
 - ไม่สร้างรูปภาพหรือ binary files
 - ใช้ markdown, ASCII, Unicode box-drawing characters เท่านั้น
 - หนึ่ง screen ต่อหนึ่ง sketch section
+- ถ้าต้องการ route table ก่อนสร้าง sketch ให้ใช้ `/report-uxui`
 
 ### Mobile Layout
 
@@ -113,7 +115,7 @@ related:
 
 - ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
-- ใช้ /roleplay-ui-designer ถ้าจำเป็น
+- ใช้ /roleplay-stakeholder ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 
 ## Expected Outcome

@@ -10,7 +10,7 @@ related:
   - follow-monorepo
   - follow-package-manifest
   - check-circular-dependencies
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -142,7 +142,7 @@ related:
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-package-manifest ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -152,3 +152,4 @@ related:
 - (optional) ไฟล์ `.svg` ถ้า user ขอ render image
 - รายงาน output files, จำนวน workspaces, circular/shared dependencies, next action
 - ไม่มี TODO/MOCK/placeholder
+

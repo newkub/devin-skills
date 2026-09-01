@@ -4,7 +4,7 @@ description: หลีกเลี่ยงการ over-engineering ใช้ 
 related:
   - dont-ask
   - dont-understand
-  - roleplay-data-engineer
+  - roleplay-stakeholder
   - deep-debug
 ---
 
@@ -88,7 +88,7 @@ related:
 
 - ใช้ /dont-ask ถ้าจำเป็น
 - ใช้ /dont-understand ถ้าจำเป็น
-- ใช้ /roleplay-data-engineer ถ้าจำเป็น
+- ใช้ /roleplay-stakeholder ถ้าจำเป็น
 
 ## Expected Outcome
 

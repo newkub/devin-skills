@@ -2,12 +2,13 @@
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
 related:
+  - create-plan-in-dot-devin
   - deep-research
   - review-codebase-everything
   - pondering
   - deep-plan
   - ask-me
-  - ship
+  - ship-verify-cicd
   - update-docs
 ---
 
@@ -42,8 +43,8 @@ related:
 
 > Goal: เปรียบเทียบมิติที่เหลือนอกเหนือ features
 
-1. ทำ `/review-codebase-everything` สำหรับ performance
-2. ทำ `/review-codebase-everything` สำหรับ UX/UI
+1. ทำ `/deep-review` สำหรับ performance
+2. ทำ `/deep-review` สำหรับ UX/UI
 3. ถ้ามีมิติอื่น (architecture, DX, security, scalability, business) ให้ใช้เครื่องมือที่เหมาะสม
 4. บันทึกผลใน `docs/project.md`
 
@@ -53,17 +54,19 @@ related:
 
 1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
-3. ระบุ priority: Critical, High, Medium, Nice-to-have
-4. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
+3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
+4. ระบุ priority: Critical, High, Medium, Nice-to-have
+5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
 
 ### 5. Implement Improvements
 
 > Goal: ปรับปรุง project ตาม roadmap
 
-1. ทำ `/ship` เพื่อ implement improvements
-2. ทำ `/review-codebase-everything` สำหรับ performance improvements
-3. ทำ `/review-codebase-everything` สำหรับ UX/UI improvements
-4. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
+1. ทำ `/ship-verify-cicd` เพื่อ implement improvements ตาม `PLAN_PATH`
+2. หลัง `/ship-verify-cicd` เสร็จ ลบ `PLAN_PATH`
+3. ทำ `/deep-review` สำหรับ performance improvements
+4. ทำ `/deep-review` สำหรับ UX/UI improvements
+5. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
 
 ### 6. Update Report
 
@@ -96,7 +99,9 @@ related:
 
 ### 4. Implementation Discipline
 
+- สร้าง plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง
+- ลบ plan หลัง `/ship-verify-cicd` เสร็จ
 - หยุดเมื่อสำเร็จเป้าหมายในทุกมิติ
 - ติดตามความคืบหน้าอย่างสม่ำเสมอ
 - Re-benchmark หลังการปรับปรุงแต่ละครั้ง
@@ -109,6 +114,8 @@ related:
 
 ## Expected Outcome
 
+- ไฟล์ plan ใน `.devin/plan/` ถูกสร้างก่อน implement และลบหลัง `/ship-verify-cicd` เสร็จ
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark
+

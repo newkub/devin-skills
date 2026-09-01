@@ -13,7 +13,7 @@ related:
   - deploy-to-cloudflare
   - deploy-to-vercel
   - open-github-repo
-  - report-session-status
+  - report-progress
 ---
 
 ![use-github-ship-bots logo](bot-logo.png)
@@ -145,7 +145,7 @@ use-github-ship-bots/
 
 1. อัปเดต checkboxes ใน issue
 2. ระบุ deployed URL, version
-3. ทำ `/report-session-status`
+3. ทำ `/report-progress`
 
 ## Rules
 

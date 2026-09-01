@@ -106,7 +106,7 @@ related:
 - `watch-*`/`test-*` → ตรวจสอบต่อเนื่องหรือ run tests, มี loop และ auto-fix
 - `deploy-*` → มี rollback strategy, ใช้ `/follow-deploy`
 - `follow-*` → รองรับ parallel execution ด้วย `/follow-parallel` และ parallel markers
-- `review-*`/`analyze-*` → ใช้ `/review-codebase-everything` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-table`
+- `review-*`/`analyze-*` → ใช้ `/deep-review` สำหรับ analysis, มี severity, actionable recommendations, output เป็น `/report-table`
 - `check-*` → มี pass/fail condition, รายงานเป็นตาราง
 - `deep-*` → เป็น orchestrator ที่เรียก sub-skills
 - `refactor-*` → ใช้ `/deep-analyze`, มี impact analysis

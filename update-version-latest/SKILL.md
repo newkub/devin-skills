@@ -76,6 +76,7 @@ related:
 4. อัปเดต `Dockerfile` `FROM` tag, `.github/workflows` version fields, `.devcontainer` image
 5. ถ้ามี Renovate/Dependabot config -> ตรวจ schedule ให้เหมาะสม
 6. บันทึก config ที่ sync
+7. ทำ `/update-project` เพื่อ sync project rules, docs, และ metadata กับ version ใหม่
 
 ### 7. Verify
 

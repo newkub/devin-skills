@@ -36,7 +36,7 @@ related:
 > Goal: Update Documentation
 
 1. ทำ `/follow-tool-vitepress` เพื่อสร้างและอัพเดทเอกสาร
-2. ทำ `/review-codebase-everything` เพื่อปรับปรุง SEO สำหรับ documentation site
+2. ทำ `/deep-review` เพื่อปรับปรุง SEO สำหรับ documentation site
 3. ตรวจสอบว่า documentation ถูกสร้างอย่างถูกต้อง
 
 ### 3. Run Dev Server

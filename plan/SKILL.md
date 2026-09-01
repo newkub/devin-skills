@@ -6,7 +6,7 @@ related:
   - review-architecture
   - follow-architecture
   - analyze-project
-  - use-lib-better
+  - alternative
   - use-lib-effective
   - prioritize
   - pondering
@@ -29,7 +29,7 @@ related:
 1. ทำ `analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
 2. ระบุ scope, constraints, และ assumptions
 3. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
-4. ทำ `use-lib-better` และ `use-lib-effective` เพื่อสำรวจและวิเคราะห์ libraries
+4. ทำ `alternative` และ `use-lib-effective` เพื่อสำรวจและวิเคราะห์ libraries
 5. บันทึก library ที่เลือกพร้อมเหตุผล (modern, type safety, performance, DX, maintenance)
 
 ### 2. Define Implementation Path

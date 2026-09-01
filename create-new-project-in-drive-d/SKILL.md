@@ -71,7 +71,7 @@ related:
 
 1. ตรวจสอบว่า project files ถูกสร้างจริงที target path
 2. รัน `/run-check` ตาม stack ถ้าจำเป็น
-3. ทำ `/ship` เมื่องานเสร็จสมบูรณ์
+3. ทำ `/ship-verify-cicd` เมื่องานเสร็จสมบูรณ์
 4. รายงาน path และ next actions
 
 ## Rules
@@ -100,3 +100,4 @@ related:
 - ใช้ `follow-create-*` skill ตามประเภท project
 - ผ่าน validation และพร้อม ship
 - รายงาน target path, stack, และ next actions
+

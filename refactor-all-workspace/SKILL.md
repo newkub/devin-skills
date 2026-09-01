@@ -50,7 +50,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - ทำ `/review-quality` เพื่อหา code duplication
 - ทำ `/read-all-files` เพื่ออ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะหา
 - ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวเกินไป
-- ทำ `/review-codebase-everything` เพื่อตรวจสอบ architecture issues
+- ทำ `/deep-review` เพื่อตรวจสอบ architecture issues
 - วิเคราะหา dependencies graph และ coupling
 - ระบุ technical debt และ code smells
 - วิเคราะหา performance bottlenecks
@@ -91,7 +91,7 @@ Deep refactor ทุก workspace ใน monorepo ด้วย safety measures �
 - ทำ `/run-typecheck` เพื่อตรวจสอบ type safety ทั้งหมด
 - ทำ `/run-test` เพื่อยืนยันว่า functionality ยังทำงาน
 - ทำ `/run-lint` เพื่อตรวจสอบ code quality
-- ทำ `/review-codebase-everything` เพื่อตรวจสอบ architecture consistency
+- ทำ `/deep-review` เพื่อตรวจสอบ architecture consistency
 - ทำ `/run-build` เพื่อตรวจสอบ build process
 - ตรวจสอบว่า success criteria ทั้งหมดผ่าน
 

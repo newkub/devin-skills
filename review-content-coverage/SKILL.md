@@ -92,7 +92,7 @@ related:
 - ใช้ /follow-coverage ถ้าจำเป็น
 - ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

@@ -4,7 +4,7 @@ description: วางแผนละเอียดหลายมิติ ค
 argument-hint: "[topic]"
 related:
   - rethink
-  - use-lib-better
+  - alternative
   - review-codebase-everything
   - deep-analyze
   - deep-thinking
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับวางแผนงานที่ซับซ้อนสูง ต้องการ comprehensive analysis ก่อน implement
 
-สำหรับสำรวจ libraries ใช้ `/use-lib-better`
+สำหรับสำรวจ libraries ใช้ `/alternative`
 
 ## Execute
 
@@ -30,7 +30,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่มวางแผน
 
-1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+1. ทำ `/deep-review` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Deep Analysis And Thinking
 
@@ -52,7 +52,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - วิเคราะห์ project structure, tech stack, และ architecture
 - ระบุ existing modules, shared code, และ integration points
-- สำรวจ libraries: ทำ `/use-lib-better` และ `/use-lib-effective`
+- สำรวจ libraries: ทำ `/alternative` และ `/use-lib-effective`
 - บันทึก library ที่เลือกพร้อมเหตุผล: modern, type safety, performance, DX, maintenance
 
 ### 4. Define Implementation Path
@@ -182,3 +182,4 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - Risks และ mitigation strategies ที่ชัดเจน
 - Stress-test ผ่าน worst-case scenario
 - Report plan พร้อม task table และ file structure
+

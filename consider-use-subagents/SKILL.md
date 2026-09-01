@@ -7,7 +7,7 @@ related:
   - follow-deep
   - list-devin-global-subagents
   - deep-validate
-  - ship
+  - ship-verify-cicd
   - report
   - ask-me
 ---
@@ -71,7 +71,7 @@ related:
 > Goal: ส่งมอบงานทีผ่าน check
 
 1. รัน `run-check` ตาม ecosystem ทีตรวจพบ
-2. ถ้าผ่าน → ทำ `/ship`
+2. ถ้าผ่าน → ทำ `/ship-verify-cicd`
 3. ถ้าไม่ผ่าน → report สถานะและขั้นตอนถัดไป
 4. ทำ `/report` สรุปสิ่งทีแต่ละ subagent ทำ
 
@@ -111,3 +111,4 @@ related:
 - มี deep context ก่อนเริ่มแก้
 - ผลลัพธ์ถูก merge ไม่มี conflicts และผ่าน `run-check`
 - มีรายงานสรุปสั้นและชัดเจน
+

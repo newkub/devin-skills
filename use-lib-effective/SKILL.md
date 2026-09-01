@@ -4,7 +4,7 @@ description: วิเคราะห์ dependencies และใช้งา�
 related:
   - deep-research
   - learn-from-web
-  - use-lib-better
+  - alternative
   - review-techstack
   - deep-analyze
   - deep-analyze-by-use-scripts
@@ -45,7 +45,7 @@ related:
 2. ระบุ features ที่ยังไม่ได้ใช้งานแต่จะเป็นประโยชน์
 3. ค้นหา best practices และ patterns สำหรับการใช้งานแต่ละ library
 4. ตรวจสอบ library changelog สำหรับ features ใหม่ที่อาจยังไม่ได้ใช้
-5. ทำ `/use-lib-better` เพื่อเปรียบเทียบกับ alternative libraries ที่ดีกว่า
+5. ทำ `/alternative` เพื่อเปรียบเทียบกับ alternative libraries ที่ดีกว่า
 
 ### 3. Analyze Type Declarations
 
@@ -86,7 +86,7 @@ related:
 - ใช้ library API ให้ครบทุก feature ที่จำเป็น ไม่ใช้แค่ส่วนที่คุ้นเคย
 - ตรวจสอบ library documentation ก่อนเขียน utility function ใหม่
 - แทนที่ custom code ด้วย library function ทุกที่ที่เป็นไปได้
-- ถ้า library ไม่พอใช้: ทำ `/use-lib-better` เพื่อหาที่ดีกว่า ไม่เขียนเอง
+- ถ้า library ไม่พอใช้: ทำ `/alternative` เพื่อหาที่ดีกว่า ไม่เขียนเอง
 
 ### 2. Library Selection
 
@@ -131,3 +131,4 @@ Optimize performance เมื่อใช้ libraries
 - `Performance` ของ application ดีขึ้น
 - มี `documentation` สำหรับการใช้งาน library ที่ซับซ้อน
 - พร้อมสำหรับ `/realize-implementation`
+

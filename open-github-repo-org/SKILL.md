@@ -11,6 +11,7 @@ related:
   - list-github-repo
   - list-github-star-latest
   - search-in-github-star
+  - view-repo
 ---
 
 ## Goal
@@ -45,6 +46,7 @@ related:
    - macOS: `open <url>`
    - Linux: `xdg-open <url>`
 4. หรือทำ `/open-web` เพื่อเปิด
+5. ถ้าต้องการดู metadata ของ repo ใด repo หนึ่ง ให้ทำ `/view-repo`
 
 ## Rules
 

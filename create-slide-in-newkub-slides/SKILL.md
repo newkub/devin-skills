@@ -5,7 +5,7 @@ argument-hint: "[title]"
 related:
   - follow-framework-slidev
   - run-dev
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -122,7 +122,7 @@ graph LR
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -176,3 +176,4 @@ graph LR
 - `slides.md` มี headmatter และ per-slide frontmatter ครบถ้วน
 - Dev server ทำงานได้ที่ port 3030
 - สามารถแก้ไข slides แบบ real-time
+

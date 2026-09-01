@@ -57,8 +57,8 @@
 
 ## Detection Tools
 
-- `/roleplay-user` สำหรับจำลอง user journey
-- `/review-codebase-everything` สำหรับระบุ gaps ใน code
+- `/roleplay-stakeholder` สำหรับจำลอง user journey
+- `/deep-review` สำหรับระบุ gaps ใน code
 - `/scan-codebase` สำหรับค้นหา API endpoints, schema, UI components
 
 ## Severity

@@ -6,7 +6,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-tool-cargo
-  - ship
+  - ship-verify-cicd
 ---
 ## Goal
 
@@ -105,7 +105,7 @@ export async function myCommand() {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -164,3 +164,4 @@ tauri-plugin-<name>/
 - Lifecycle events implemented ครบถ้วน
 - Plugin รองรับ desktop และ mobile platforms
 - Plugin สามารถ publish ไป crates.io และ NPM
+

@@ -36,7 +36,7 @@
 ## Detection Tools
 
 - `/scan-codebase` สำหรับค้นหา API endpoints, UI components
-- `/roleplay-user` สำหรับจำลอง user journey
+- `/roleplay-stakeholder` สำหรับจำลอง user journey
 - เปรียบเทียบ route files กับ component imports
 
 ## Severity

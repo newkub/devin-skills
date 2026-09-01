@@ -30,14 +30,14 @@ related:
 
 > Goal: Deep Review codebase ครบทุกมิติก่อนเริ่ม implement
 
-1. ทำ `/review-codebase-everything` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
+1. ทำ `/deep-review` เพื่อ deep review ครบทุกมิติอย่างลึกซึ้ง พร้อม validate issues
 
 ### 2. Analyze And Verify Infrastructure
 
 > Goal: วิเคราะห์สิ่งที่ขาดหายไปและตรวจสอบ infrastructure ก่อนเริ่ม implement
 
 1. ถ้ามี `.devin/plan/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
-2. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/review-codebase-everything` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
+2. ทำ `/deep-analyze-by-use-scripts`, `/deep-review`, `/deep-review` — วิเคราะห์โปรเจกต์ครบทุกมิติ ระบุ TODO/MOCK/FAKE/STUB/placeholder/unfinished features
 3. จัดลำดับตาม critical path: schema → data → API → UX/UI
 4. ตรวจสอบ Database (connection pool, indexes, migrations, backup), API Server (endpoints, rate limiting, CORS, auth), Environment Variables (required, secrets, values)
 5. ถ้ามี External Services → ตรวจสอบ credentials, API keys, rate limits — ถ้ามี Monitoring → ตรวจสอบ metrics collection, alerting rules
@@ -78,13 +78,13 @@ related:
 5. ถ้ามี `TODO.md` ให้ทำ `/implement-todo-md` เพื่อ implement tasks ตามลำดับ
 6. ทำ `/implement-features-to-mvp` เพื่อ implement features ที่ขาด
 7. ทำ `/implement-mock` เพื่อแทนที่ MOCK, FAKE, STUB ด้วย real implementations
-8. ทำ `/use-lib-effective` — ถ้ามี library ที่ดีกว่า → ทำ `/use-lib-better` — ถ้า fail ให้ทำ `/resolve-errors`
+8. ทำ `/use-lib-effective` — ถ้ามี library ที่ดีกว่า → ทำ `/alternative` — ถ้า fail ให้ทำ `/resolve-errors`
 
 ### 6. Refactor And Verify
 
 > Goal: ปรับปรุงคุณภาพโค้ด ตรวจสอบ references และ cleanup
 
-1. ทำ `/refactor`, `/update-references`, `/review-codebase-everything`, `/review-quality`, `/review-codebase-everything` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
+1. ทำ `/refactor`, `/update-references`, `/deep-review`, `/review-quality`, `/deep-review` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
 3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
 4. ทำ `/run-verify` เพื่อตรวจสอบ scan, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)
@@ -129,3 +129,4 @@ related:
 - Infrastructure พร้อมสำหรับ production — security, error handling, observability ครบถ้วน
 - Unused dependencies และ files ได้รับการพิจารณา — code ผ่าน lint โดยไม่มี errors/warnings
 - `/run-verify` ผ่าน: scan, typecheck, test, build ไม่มี errors
+

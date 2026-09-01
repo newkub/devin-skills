@@ -9,6 +9,7 @@ related:
   - follow-tool-websearch
   - follow-tool-crw
   - learn-from-web
+  - follow-skills-map
 ---
 
 ## Goal
@@ -30,6 +31,7 @@ related:
 1. ระบุ keyword ที่ต้องการค้นหา (เช่น framework, library, task, domain)
 2. พิจารณาคำที่เกี่ยวข้องและ synonyms ถ้าจำเป็น
 3. กำหนด scope ของการค้นหา (specific หรือ general)
+4. ถ้าต้องการดู map ของ skills ตาม task หรือ ecosystem ให้ทำ `/follow-skills-map` ก่อน
 
 ### 2. Execute Skills Find
 

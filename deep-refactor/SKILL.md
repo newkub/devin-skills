@@ -73,7 +73,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 1. ทำ `/refactor-to-single-responsibility` สำหรับ SRP violations
 2. ทำ `/refactor` สำหรับ code style, boundaries, consistency
 3. ทำ `/restructure` สำหรับ file/folder structure ที่ผิด domain
-4. ทำ `/rename-to` สำหรับ identifier ที่ต้องเปลี่ยนชื่อ
+4. ทำ `/rename` สำหรับ identifier ที่ต้องเปลี่ยนชื่อ
 5. ทำทีละ batch ตามลำดับในแผน พร้อม verify หลังแต่ละ batch
 
 ### 6. Update References

@@ -12,14 +12,14 @@ related:
 ## Checks
 
 1. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan — ถ้า fail ให้รายงานก่อน continue
-2. ทำ `/review-codebase-everything` บน files ที่เปลี่ยนแปลง
-3. ทำ `/review-codebase-everything` สำหรับ security-sensitive changes
-4. ทำ `/review-codebase-everything` สำหรับ test coverage และ test quality
-5. ทำ `/review-codebase-everything` สำหรับ docs, changelog, versioning, git hygiene
-6. ถ้า PR เป็น frontend → ทำ `/review-codebase-everything`
-7. ถ้า PR เป็น backend → ทำ `/review-codebase-everything`
-8. ถ้า PR เป็น API → ทำ `/review-codebase-everything`
-9. ถ้า PR เป็น auth → ทำ `/review-codebase-everything`
+2. ทำ `/deep-review` บน files ที่เปลี่ยนแปลง
+3. ทำ `/deep-review` สำหรับ security-sensitive changes
+4. ทำ `/deep-review` สำหรับ test coverage และ test quality
+5. ทำ `/deep-review` สำหรับ docs, changelog, versioning, git hygiene
+6. ถ้า PR เป็น frontend → ทำ `/deep-review`
+7. ถ้า PR เป็น backend → ทำ `/deep-review`
+8. ถ้า PR เป็น API → ทำ `/deep-review`
+9. ถ้า PR เป็น auth → ทำ `/deep-review`
 
 ## Severity
 

@@ -75,7 +75,7 @@ related:
 
 1. ทำ `/deep-validate` เพื่อตรวจ syntax และ config
 2. ถ้า validate ไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
-3. ทำ `/ship` เพื่อส่งมอบงาน
+3. ทำ `/ship-verify-cicd` เพื่อส่งมอบงาน
 
 ## Rules
 
@@ -113,3 +113,4 @@ related:
 - Code ที่ follow Manifest V3 standard
 - Security ที่เหมาะสม
 - ผ่าน `/deep-validate` และ `/run-check`
+

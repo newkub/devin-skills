@@ -18,6 +18,20 @@ related:
   - suggest-next-action
 ---
 
+## Usage
+
+เรียก skill โดย `/watch-cicd-and-resolve [run-id|url]` หรือรันด้วย helper script:
+
+```bash
+bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolve.ts" \
+  [--run-id <id> | --url <url>] \
+  [--max-retries 5] \
+  [--no-retry]
+```
+
+- helper รองรับ **GitHub Actions** (CI) แบบเต็มรูปแบบ
+- CD mode จะส่งต่อให้ `/watch-deploy`, `/watch-vercel`, `/watch-release` ตาม target
+
 ## Goal
 
 ติดตาม CI/CD pipeline หลังจากถูก trigger ตรวจสอบวาผ่าน, live/healthy, หรือ release สำเร็จ ถ้าไม่ผ่านให้ resolve และ re-run/re-deploy จนกว่าจะผ่าน
@@ -26,7 +40,7 @@ related:
 
 ใช้หลังจาก:
 - push code
-- `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
+- `/run-deploy`, `/deploy-to-*`, `/ship-verify-cicd`, `/run-release`
 - หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
 
 ครอบคลุม:
@@ -199,3 +213,4 @@ related:
 - ระบุ next step ผ่าน `/suggest-next-action`
 - ไม่มี auto-rollback โดยไม่แจ้ง user
 - ถ้าไม่ผ่าน มี last green SHA และ rollback recommendation ชัดเจน
+

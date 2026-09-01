@@ -6,7 +6,7 @@ related:
   - list-devin-global-subagents
   - review-devin-global-subagents
   - follow-create-devin-plugins
-  - ship
+  - ship-verify-cicd
   - ask-me
 ---
 
@@ -87,7 +87,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -132,3 +132,4 @@ related:
 - ชื่อ agent ตรงกับ directory name และไม่ซ้ำ
 - `permissions` เหมาะสมกับบทบาท
 - references อัปเดตครบถ้วน
+

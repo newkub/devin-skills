@@ -125,7 +125,7 @@ related:
 1. ทำ `/review-frontend` เพื่อตรวจ UI/UX
 2. ทำ `/run-test` สำหรับ test suite
 3. ทำ `/follow-lang-kotlin` เพื่อ verify conventions
-4. ทำ `/ship`
+4. ทำ `/ship-verify-cicd`
 
 ## Rules
 
@@ -164,3 +164,4 @@ related:
 - UI, navigation, DI, tests ครบถ้วน
 - Release build สำเร็จ
 - พร้อมสำหรับ Play Store deploy
+

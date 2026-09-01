@@ -84,7 +84,7 @@ related:
 2. รัน `bunx vsce package` เพื่อสร้าง `.vsix`
 3. สร้าง publisher account ใน Marketplace
 4. รัน `bunx vsce publish` หรือใช้ GitHub Actions
-5. ทำ `/ship`
+5. ทำ `/ship-verify-cicd`
 
 ## Rules
 
@@ -109,3 +109,4 @@ related:
 - Extension ทำงานใน Extension Development Host
 - `.vsix` สร้างได้
 - พร้อม publish ไป VSCode Marketplace
+

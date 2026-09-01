@@ -60,7 +60,7 @@ related:
 1. อ่าน error messages และระบุ root cause
 2. จัดลำดับความสำคัญ
 3. แก้ไข code ที่เป็นปัญหา
-4. รัน `/review-codebase-everything` ถ้าจำเป็น
+4. รัน `/deep-review` ถ้าจำเป็น
 5. rebuild และรันใหม่
 
 ## Rules

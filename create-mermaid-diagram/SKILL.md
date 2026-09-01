@@ -9,7 +9,7 @@ related:
   - report-flow
   - report-architecture-diagram
   - use-scripts
-  - ship
+  - ship-verify-cicd
   - open-files-in-web
 ---
 
@@ -108,7 +108,7 @@ related:
 - ใช้ /draw-excalidraw ถ้าจำเป็น
 - ใช้ /draw-tldraw ถ้าจำเป็น
 - ใช้ /report-flow ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 - ใช้ /open-files-in-web ถ้าจำเป็น
 
 ## Expected Outcome
@@ -118,3 +118,4 @@ related:
 - (optional) ไฟล์ `.svg` หรือ `.png` ถ้า user ขอ render image
 - รายงาน output file, diagram type, validation status
 - ไม่มี TODO/MOCK/placeholder
+

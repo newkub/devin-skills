@@ -93,7 +93,7 @@ related:
 1. อัปเดต `manifest.json` และ `versions.json` ด้วย version ใหม่
 2. สร้าง git tag ตาม version
 3. สร้าง GitHub release พร้อมแนบ `main.js`, `manifest.json`, `styles.css`
-4. ทำ `/ship`
+4. ทำ `/ship-verify-cicd`
 
 ## Rules
 
@@ -116,3 +116,4 @@ related:
 - Plugin โหลดใน Obsidian vault ได้
 - Command, ribbon icon, settings tab ทำงาน
 - Release มี `main.js`, `manifest.json`, `styles.css`
+

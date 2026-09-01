@@ -64,7 +64,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. แก้ไขที่จุดเดียวที่เป็น root cause จริง — single-line change เมื่อเป็นไปได้
 2. ถ้า error มีจำนวนมาก → ใช้ `/use-scripts` เพื่อ automate:
-   - Batch text replacement — แก้ typo, rename, import path ในหลายไฟล์ด้วย `Bun.Glob` + `Bun.file()` + `Bun.write()` หรือใช้ `/rename-to` สำหรับ rename code identifiers
+   - Batch text replacement — แก้ typo, rename, import path ในหลายไฟล์ด้วย `Bun.Glob` + `Bun.file()` + `Bun.write()` หรือใช้ `/rename` สำหรับ rename code identifiers
    - ast-grep structural fix — แก้ code pattern ที่ต้องเปลี่ยนโครงสร้าง AST
    - Parallel fix — แก้ independent errors ในหลายไฟล์พร้อมกันด้วย `Promise.all` ถ้า errors มี dependency ระหว่างกัน → แก้ตามลำดับแทน
 3. ถ้า fix กระทบหลายไฟล์ → ทำ `/update-references` อัปเดท references
@@ -150,7 +150,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - `/run-until-pass` — รัน command จนกว่าจะผ่าน
 - `/watch-browser-console` — error มาจาก browser console
 - `/update-references` — fix กระทบ references ในหลายไฟล์
-- `/rename-to` — rename code identifiers ที่เป็น root cause ของ error
+- `/rename` — rename code identifiers ที่เป็น root cause ของ error
 - `/scan-codebase` — ค้นหา pattern ที่คล้ายกัน
 
 - ใช้ /rethink ถ้าจำเป็น

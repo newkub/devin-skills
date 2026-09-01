@@ -4,7 +4,7 @@ description: สร้าง release artifact, รัน smoke test, และ�
 related:
   - setup-release
   - run-release
-  - ship
+  - ship-verify-cicd
   - review-release
   - run-verify
   - run-check
@@ -107,7 +107,7 @@ Build release artifact ตาม platform แล้วรัน smoke test ก�
 - ไม่ rewrite history
 
 - ใช้ /setup-release ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 - ใช้ /review-release ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
@@ -121,3 +121,4 @@ Build release artifact ตาม platform แล้วรัน smoke test ก�
 - Smoke tests ผ่านตาม platform
 - ไม่มี publish เกิดขึ้นในขั้นตอนนี้
 - รายงาน test results ชัดเจน
+

@@ -7,7 +7,7 @@ related:
   - refactor-files
   - relocation
   - restructure
-  - rename-to
+  - rename
   - check-dead-code
   - review-quality
   - dont-over-engineer
@@ -56,7 +56,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 2. แยก multi-responsibility classes/types ออกเป็น types ย่อยด้วย composition
 3. แยกไฟล์ที่มีหลาย concerns ออกเป็นไฟล์ย่อยตาม domain
 4. ทำ `/relocation` เมื่อต้องย้ายไฟล์
-5. ทำ `/rename-to` เมื่อต้องเปลี่ยนชื่อ identifier
+5. ทำ `/rename` เมื่อต้องเปลี่ยนชื่อ identifier
 6. ถ้าเป็น monorepo → ทำ `/all-workspace` หรือ `/refactor-workspace` ตามความเหมาะสม
 
 ### 4. Update References

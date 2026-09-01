@@ -1,6 +1,6 @@
 ---
 name: review-observability
-description: Review observability: metrics, tracing, logging, alerting, dashboards, SLO/SLI, APM, incidents
+description: "Review observability: metrics, tracing, logging, alerting, dashboards, SLO/SLI, APM, incidents"
 related:
   - review-stability
   - review-security

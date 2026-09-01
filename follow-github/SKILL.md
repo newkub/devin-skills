@@ -8,6 +8,7 @@ related:
   - report-table
   - suggest-next-action
   - follow-git-flow
+  - view-repo
 ---
 
 ## Goal
@@ -112,6 +113,7 @@ related:
 2. ทำ `gh api repos/<owner>/<repo>/branches/main/protection --jq .`
 3. ทำ `gh api repos/<owner>/<repo>/branches/dev/protection --jq .`
 4. ตรวจสอบว่า `main` และ `dev` มี protection
+5. ทำ `/view-repo` เพื่อตรวจ metadata และ health หลังตั้งค่า
 
 ### 7. Report
 

@@ -20,7 +20,7 @@ impl Args {
     pub fn parse() -> Self {
         let mut a = Args {
             root: default_root(),
-            tree_depth: 3,
+            tree_depth: 1,
             mode: "Summary".to_string(),
             ..Default::default()
         };
@@ -69,13 +69,15 @@ fn main() {
         eprintln!("ERROR: Target directory not found: {}", args.root.display());
         std::process::exit(1);
     }
-    let (graph, unknown) = parser::load_graph(&args.root);
+    let quick = args.mode == "Quick";
+    let (graph, unknown) = parser::load_graph(&args.root, quick);
     if graph.is_empty() {
         println!("No skills found in {}", args.root.display());
         std::process::exit(0);
     }
     match args.mode.as_str() {
         "Summary" => output::run_summary(&graph, &unknown),
+        "Quick" => output::run_quick(&graph, &unknown, &args.skill),
         "Tree" => output::run_tree(
             &graph,
             &args.skill,

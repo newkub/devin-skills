@@ -7,7 +7,7 @@ related:
   - review-techstack
   - follow-tool-vitest
   - follow-create-vite-plugins
-  - ship
+  - ship-verify-cicd
 ---
 ## Goal
 
@@ -100,7 +100,7 @@ configureVitest({ experimental_defineCacheKeyGenerator }) {
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

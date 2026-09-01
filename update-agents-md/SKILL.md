@@ -9,7 +9,7 @@ related:
   - review-rules
   - review-by-stakeholder
   - deep-validate
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -94,7 +94,7 @@ related:
 1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-4. ถ้าผ่าน → รอ `/ship` หรือ `/git-commit` เพื่อ commit ต่อไป
+4. ถ้าผ่าน → รอ `/ship-verify-cicd` หรือ `/git-commit` เพื่อ commit ต่อไป
 
 ## Rules
 
@@ -149,4 +149,5 @@ related:
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
 - ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/deep-validate`
 - ผ่าน `/review-rules` และ `/deep-validate`
-- ไม่ commit เอง — รอ `/ship` หรือ `/git-commit` ดำเนินการต่อ
+- ไม่ commit เอง — รอ `/ship-verify-cicd` หรือ `/git-commit` ดำเนินการต่อ
+

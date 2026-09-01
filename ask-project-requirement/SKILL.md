@@ -5,8 +5,8 @@ argument-hint: "[topic]"
 related:
   - ask-me
   - update-agents-md
-  - use-lib-better
-  - ship
+  - alternative
+  - ship-verify-cicd
   - deep-plan
   - follow-goal
 ---
@@ -57,16 +57,16 @@ related:
 
 #### Step 4: Libraries And Tools
 
-- ถามว่าควรใช้ `/use-lib-better` หรือไม่
+- ถามว่าควรใช้ `/alternative` หรือไม่
 - ถ้า library ที่ต้องการไม่มี ให้ถามว่าควรแนะนำตัวไหน แบบ multi_select จาก candidates
-- ถาม build/ship tools ที่ต้องการ แบบ multi_select
+- ถาม build/ship-verify-cicd tools ที่ต้องการ แบบ multi_select
 
 ### 3. Synthesize Requirements
 
 > Goal: สรุป requirements เป็นข้อกำหนด
 
 1. รวบรวมคำตอบจากทุก step เป็น bullet หรือ `requirement-summary.md`
-2. ถ้าต้องการเลือก library → ทำ `/use-lib-better`
+2. ถ้าต้องการเลือก library → ทำ `/alternative`
 3. ถ้าต้องการ plan ต่อ → ทำ `/deep-plan`
 4. ถ้าต้องการตั้งเป้า → ทำ `/follow-goal`
 5. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ด้วย requirements
@@ -106,3 +106,5 @@ related:
 - รู้ interfaces, users, tech, scale, constraints, compliance, definition of done
 - `AGENTS.md` อัปเดตตาม requirements
 - พร้อมทำ `/deep-plan` หรือ `/follow-goal` ต่อ
+
+

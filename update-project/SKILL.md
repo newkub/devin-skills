@@ -16,6 +16,7 @@ related:
   - update-todo-md
   - update-version-latest
   - setup-cicd
+  - follow-config
   - deep-update-project
 ---
 
@@ -64,6 +65,7 @@ related:
 5. รัน updates ตามลำดับ:
    - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ)
    - `/setup-cicd` (ถ้า CI/CD config drift หรือยังไม่พร้อม)
+   - `/follow-config` เพื่อ validate และ sync config files ตาม conventions
    - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
@@ -80,7 +82,7 @@ related:
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
-   - `/review-codebase-everything` (ถ้ามี `tools/review-codebase/`)
+   - `/deep-review` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด
@@ -129,13 +131,13 @@ related:
 
 - แก้ไขเฉพาะ root docs (`AGENTS.md`, `README.md`) และ project config
 - ไม่แก้ไข workspace code หรือ workspace docs
-- ถ้า workspace docs ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
+- ถ้า workspace docs ต้องแก้ → ใช้ `/ship-verify-cicd` ใน workspace นั้น
 
 ### 3. No Commit
 
 - `update-project` ไม่ commit การเปลี่ยนแปลง
 - ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project`
-- ถ้าใช้ใน monorepo → เรียก `/ship` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
+- ถ้าใช้ใน monorepo → เรียก `/ship-verify-cicd` แต่ละ workspace แล้วทำ `/git-commit` ที่ root หลัง `/update-project`
 
 ### 4. Idempotency
 
@@ -164,3 +166,4 @@ related:
 - GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
 - root project ผ่าน `/deep-validate`
 - รายงานสรุป workspace commits, project files, project skills และ GitHub metadata ครบถ้วน
+

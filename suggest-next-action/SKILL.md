@@ -9,7 +9,7 @@ related:
   - follow-devin-global-subagents
   - report-before
   - ask-me
-  - ship
+  - ship-verify-cicd
   - continue
   - rethink
 ---
@@ -175,7 +175,7 @@ related:
 - ใช้ /loop-continuous ถ้าจำเป็น
 - ใช้ /follow-enter-dot ถ้าจำเป็น
 - ใช้ /report-before ถ้าจำเป็น
-- ใช้ /ship ถ้าจำเป็น
+- ใช้ /ship-verify-cicd ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
@@ -191,3 +191,4 @@ related:
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/consider-use-subagents` ตาม context
 - สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
+

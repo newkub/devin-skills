@@ -1,6 +1,6 @@
 # Review Checklist For tools/review-codebase
 
-ตรวจสอบ `tools/review-codebase` CLI ก่อนเรียก `/review-codebase-everything` เพื่อยืนยันว่า Clean Architecture, analyzer structure, category coverage, CLI interface, และ workspace integration ครบถ้วนและถูกต้อง
+ตรวจสอบ `tools/review-codebase` CLI ก่อนเรียก `/deep-review` เพื่อยืนยันว่า Clean Architecture, analyzer structure, category coverage, CLI interface, และ workspace integration ครบถ้วนและถูกต้อง
 
 ## Reference Mapping
 
@@ -42,7 +42,7 @@
 
 1. ตรวจ analyzer files ใน `src/domain/analyzers/`: `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
 2. ตรวจว่าทุก analyzer return `CategoryResult` พร้อม `status`, `score`, `findings`
-3. ตรวจว่าทุก analyzer มี `reviewWorkflow` map ไปยัง `/review-codebase-everything` หรือ references
+3. ตรวจว่าทุก analyzer มี `reviewWorkflow` map ไปยัง `/deep-review` หรือ references
 4. ตรวจว่าใช้ shared utilities จาก `src/adapters/` ไม่ duplicate code
 5. ตรวจ category coverage: 60+ categories จาก `/run-review`, 5 domains
 6. บันทึก findings พร้อม evidence
@@ -105,7 +105,7 @@
 ### 1. Review Only
 
 - ทำ review เท่านั้น ไม่แก้ไข CLI code ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `/review-codebase-everything` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `/deep-review` หลัง review
 - ทุก finding ต้องมี file path และ evidence
 
 ### 2. Severity Ratings
@@ -120,7 +120,7 @@
 
 - review score = weighted average ของ findings ทั้งหมด
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
-- Score < 70 → แนะนำให้เรียก `/review-codebase-everything` ก่อนดำเนินการ
+- Score < 70 → แนะนำให้เรียก `/deep-review` ก่อนดำเนินการ
 
 ### 4. Formatting
 

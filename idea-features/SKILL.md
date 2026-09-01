@@ -1,161 +1,102 @@
 ---
 name: idea-features
-description: สร้างไอเดียฟีเจอรใหม่ ขยายจากของเดิม และทำ report ชั่วคราว
+description: สร้างไอเดียฟีเจอรใหม่/ขยาย และตอบกลับในแชท ไม่สร้างไฟล์
 argument-hint: "[topic]"
 related:
-  - create-report-in-dot-devin
-  - create-files-in-os-temp
-  - open-files-in-web
-  - realize-implementation
-  - review-codebase-everything
+  - deep-idea-features
   - suggest-me
   - enhance-prompt
-  - report-uxui-sketch
   - analyze-project
+  - report-table
+  - report-uxui-sketch
 ---
 
 ## Goal
 
-สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิมสำหรับ project จากนั้นสรุปใน chat หรือสร้าง report ชั่วคราว แล้วลบหลังใช้งาน
-
-สามารถสร้าง report ใน OS temp directory และเปิด preview ด้วย `open-files-in-web` ได้ ถ้าผู้ใช้ต้องการดู report ก่อนตัดสินใจ
+สร้างไอเดียฟีเจอรใหม่และฟีเจอรที่ขยายจากของเดิม แล้วสรุปผลกลับในแชททันที โดยไม่สร้างไฟล์
 
 ## Scope
 
-- วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
-- สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- สร้าง report ชั่วคราวใน `.devin/reports/` หรือ OS temp directory ถ้าต้องการ
-- เปิด report ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
-- ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
-- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/review-codebase-everything` ก่อน และลบ report files หลังเสร็จ
-- ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
+- วิเคราะห์ project context และ prompt
+- สร้างไอเดีย `Extends` และ `New` พร้อมระบุ impact/effort/risk
+- ตอบกลับในแชทด้วย markdown tables และ bullets
+- ไม่สร้าง report/plan ไฟล์
+- ไม่ implement
+- ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/deep-idea-features`
 
 ## Execute
 
-### 1. Analyze Project
+### 1. Understand Context
 
-> Goal: เข้าใจ project และระบุช่องว่าง
+> Goal: เข้าใจ topic และ project
 
-1. ทำ `/analyze-project` และอ่าน `docs/project/features.md` ถ้ามี
-2. ทำ `/learn-from-web` เพื่อศึกษาแนวโน้มตลาดและความต้องการของผู้ใช้
-3. ระบุ gaps และ opportunities จากการวิเคราะห์
-4. ถ้าเข้าถึง project ไม่ได้ → stop และ report
+1. รับ `<topic>` จาก argument หรือ conversation context
+2. ทำ `/analyze-project` แบบ lightweight ถ้าต้องการ
+3. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
 
 ### 2. Generate Ideas
 
-> Goal: สร้างไอเดียฟีเจอรที่ actionable
+> Goal: สร้างไอเดียฟีเจอร
 
 1. สร้างไอเดีย `Extends` (ขยายฟีเจอรที่มี) และ `New` (ฟีเจอรใหม่)
-2. จัดลำดับตาม impact: สูง → กลาง → ต่ำ
-3. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
+2. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
+3. แต่ละ feature ระบุ: feature, description, impact, effort, risk, mvp score (1-10)
 4. ลำดับเลขต่อเนื่อง: `Extends` เริ่ม 1, `New` ต่อจาก `Extends`
-5. แต่ละ feature ต้องมี `feature, description, reason, how, riskDetail` สั้นๆ
 
-### 3. Rank And Score
+### 3. Rank And Format
 
-> Goal: จัดลำดับความสำคัญและคะแนน
+> Goal: จัดลำดับและจัดรูปแบบตอบกลับ
 
-1. ให้ MVP Score 1-10 ตาม RICE (Reach, Impact, Confidence, Effort)
-2. จัดลำดับตาม MVP Score สูง → ต่ำ
-3. ระบุ Phase: MVP, v2, v3
-4. ระบุ Effort: S, M, L, XL
-5. ระบุ Risk: สูง, กลาง, ต่ำ
+1. จัดลำดับตาม MVP score สูง → ต่ำ
+2. สร้าง markdown tables ด้วย `/report-table`
+3. สรุป top 3-5 features สั้นๆ ด้วย bullets
+4. ระบุ phase: MVP, v2, v3
 
-### 4. Create Temporary Report
+### 4. Reply In Chat
 
-> Goal: สร้าง report ชั่วคราวเพื่อสรุปไอเดีย
+> Goal: ตอบกลับ user ทันที
 
-1. ถ้าต้องการ preview ใน browser → ใช้ `/create-files-in-os-temp` สร้าง report ใน OS temp
-2. ถ้าไม่ต้องการ preview → ใช้ `/create-report-in-dot-devin` ใน `.devin/reports/`
-3. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
-4. รวม `/report-file-structure` ของ project
-5. บันทึกลง path ทีเลือก
-
-### 4.5 Open Preview With Open-Files-In-Web
-
-> Goal: เปิด report ชั่วคราวดูก่อนตัดสินใจ
-
-1. ถ้าสร้าง report ใน temp → ใช้ `/open-files-in-web preview <path>`
-2. ถ้าสร้างใน `.devin/reports/` → ใช้ `/open-files-in-web <path>`
-3. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
-
-### 5. Summarize In Chat
-
-> Goal: รายงานผลให้ user ทราบ
-
-1. สรุป features หลักใน chat สั้นๆ
-2. ระบุ path ของ report ชั่วคราว
-3. ถาม user ว่าต้องการทำ features ไหน
-
-### 6. Implement If Asked
-
-> Goal: ทำตามคำสั่ง "ทำ"
-
-1. ถ้า user บอก "ทำ" → ทำ `/review-codebase-everything` ก่อน
-2. จากนั้นทำ `/realize-implementation` ตาม features ที่เลือก
-3. หลัง `/realize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/`
-4. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็น → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
-
-### 7. Cleanup
-
-> Goal: จัดการหลังใช้งาน
-
-1. ถ้า report ชั่วคราวยังคงอยู่และไม่ต้องการเก็บ → ลบไฟล์ `.devin/reports/<title>-<time>.md`
-2. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files ค้าง
+1. แสดง summary 1-2 บรรทัด
+2. แสดง tables ในแชท
+3. บอกว่าเป็นไอเดียสำหรับพิจารณา
+4. ถ้าต้องการ plan/report/implementation → แนะนำ `/deep-idea-features`
+5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
 
 ## Rules
 
-### 1. No Permanent Web App
+### 1. Chat Only
 
-- skill directory `idea-features` มีแค่ `SKILL.md`
-- ไม่มี `src/`, `package.json`, `index.html`, `vite.config.ts`, `uno.config.ts`, `tsconfig.json`
-- ไม่สร้าง web app ถาวร หรือ dev server
-- เปิด preview ชั่วคราวด้วย `/open-files-in-web` ได้ ถ้าผู้ใช้ต้องการ
+- ตอบกลับในแชทเท่านั้น
+- ไม่สร้างไฟล์ `.devin/reports/` หรือ `.devin/plan/`
+- ไม่สร้าง web app ถาวร
+- ไม่เรียก `/realize-implementation` หรือ `/ship-verify-cicd`
 
-### 2. Report Is Temporary
+### 2. Lightweight
 
-- สร้าง report ใน `.devin/reports/` หรือ OS temp directory เท่านั้น
-- ต้องลบ report files หลัง `/realize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
-- ไม่เก็บ report ค้าง
+- ไม่ต้อง `/learn-from-web` ลึก ยกเว้น user บอก
+- ไม่ต้องวิเคราะห์ codebase ละเอียด ถ้า context พอ
+- ใช้เวลาไม่เกิน 5-10 นาที
 
-### 3. Implement Flow
+### 3. Suggest Deep Workflow
 
-- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/review-codebase-everything` ก่อน แล้ว `/realize-implementation`
-- ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
+- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/deep-idea-features`
+- ถ้า user ต้องการ plan หรือ report → แนะนำ `/deep-idea-features`
+- ถ้า user ต้องการแค่ไอเดียเพิ่ม → ใช้ `/idea-features` ต่อ
 
-### 4. Data Format
+### 4. Format
 
-- ใช้ `/create-report-in-dot-devin` สำหรับ report format
-- แต่ละ feature ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
-- ใช้ `/enhance-prompt` สำหรับ copy format
+- ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
+- เรียงลำดับ 1, 2, 3, ...
+- ใช้ `/report-table` สำหรับ tables
+- ไม่ต้องตอบยาวเกินความจำเป็น
 
-### 5. Direct Execution
-
-- ถ้า user บอก "do ... now" → ทำ `/review-codebase-everything` แล้ว `/realize-implementation`
-- ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
-
-### 6. Start With MVP
-
-- เริ่มจากเวอร์ชันที่ใช้งานได้น้อยที่สุด
-- กำหนด MVP scope ให้ชัดเจนต่อฟีเจอร
-- สร้างแบบ iterative ไม่ใช่ big bang
-
-### 7. Cleanup Generated Project
-
-- ถ้าสร้าง project สำหรับ features → ลบ `.git`, remote repo, submodules, web src ตาม context
-- เหลือแค่ `SKILL.md` หรือไฟล์ที่จำเป็นจริงๆ
-- ใช้ dry run ก่อน destructive actions
-
-- ใช้ /suggest-me ถ้าจำเป็น
-- ใช้ /report-uxui-sketch ถ้าจำเป็น
+- ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ
 
 ## Expected Outcome
 
-- ไอเดีย features ถูกสร้างและจัดลำดับ
-- Report ชั่วคราวถูกสร้างใน `.devin/reports/` หรือ OS temp (ถ้าต้องการ)
-- สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
-- ไม่มี report files ค้างหลังเสร็จงาน
-- เมื่อ user บอก "ทำ" ให้ทำ `/review-codebase-everything` แล้ว `/realize-implementation` แล้วลบ report files
-- ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ
+- User ได้รับไอเดีย features ในแชททันที
+- มี tables สรุป Extends, New, ลำดับความสำคัญ
+- ไม่มีไฟล์ถูกสร้าง
+- ไม่มี implementation เกิดขึ้น
+- มีคำแนะนำถัดไปชัดเจน
+

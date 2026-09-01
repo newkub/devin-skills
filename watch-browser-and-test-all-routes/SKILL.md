@@ -12,6 +12,7 @@ related:
   - resolve-errors
   - loop-until-complete
   - run-install
+  - capture-component
 ---
 
 ## Goal
@@ -88,6 +89,7 @@ related:
 6. ทดสอบ `form submit` ด้วย `agent-browser submit @e1`
 7. ทดสอบ `modal` เปิด/ปิด
 8. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เมื่อ action ล้มเหลว
+9. ถ้าต้องการ capture ภาพ component แยกตัว ใช้ `/capture-component`
 
 ### 7. Resolve Failures And Errors
 

@@ -2,7 +2,7 @@
 name: update-review-cli
 description: อัปเดต tools/review-codebase CLI ให้ keep up ทันกับ codebase features
 related:
-  - review-codebase-everything
+  - deep-review
   - update-create-analyze-cli
   - update-project-rules
   - run-review
@@ -99,7 +99,7 @@ related:
 - รัน review-codebase ให้ผ่านก่อนใช้งาน
 - ถ้ามี analyzer error ให้แก้ไขก่อน
 
-- ใช้ /review-codebase-everything ถ้าจำเป็น
+- ใช้ `/deep-review` Step 3.5 หรือ `deep-review/references/cli-review-steps.md` ถ้าจำเป็น
 - ใช้ /deep-analyze-by-use-scripts ถ้าจำเป็น
 
 ## Expected Outcome

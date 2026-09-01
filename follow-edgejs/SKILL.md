@@ -8,7 +8,7 @@ related:
   - follow-create-devin-plugins
   - ask-me
   - deep-validate
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -138,7 +138,7 @@ server.listen(3000)
 1. รัน `bun run typecheck` หรือ `tsc --noEmit` ถ้าใช้ TypeScript
 2. รัน `bun test` หรือ test suite ที่มี
 3. ตรวจสอบว่าไม่มี reserved keywords ถูก override
-4. ทำ `/deep-validate` แล้ว `/ship`
+4. ทำ `/deep-validate` แล้ว `/ship-verify-cicd`
 
 ## Rules
 
@@ -195,3 +195,4 @@ server.listen(3000)
 - Template state ถูกจัดการตาม globals, locals, rendering data, inline variables
 - Production มี cache เปิดใช้งาน
 - Typecheck และ tests ผ่าน
+

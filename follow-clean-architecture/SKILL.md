@@ -2,7 +2,7 @@
 name: follow-clean-architecture
 description: สร้างโครงสร้าง Clean Architecture ด้วย modules, ports, adapters และ pure domain
 related:
-  - follow-programming-paradigm
+  - review-architecture
   - follow-lib-effect-ts
   - follow-lib-zod
   - follow-orm
@@ -40,7 +40,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 
 ### 2. Create Shared Kernel
 
-> Goal: ทำ `/follow-programming-paradigm` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
+> Goal: ทำ `/review-architecture` เพื่อเริ่มจาก pure functions และ immutability ก่อนสร้าง `shared/`
 
 1. `types/` - Common types (`Result`, `Option`)
 2. `utils/` - Pure utility functions
@@ -162,3 +162,4 @@ Clean Architecture มี 3 rules หลัก:
 - Pure domain logic ใน `modules/` (100% functional)
 - Side effects isolation ใน `adapters/` layer เท่านั้น
 - Production-grade testability จาก pure functions + clear boundaries
+

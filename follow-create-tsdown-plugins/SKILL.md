@@ -114,7 +114,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -188,3 +188,4 @@ packages/tsdown-plugin-example/
 - `follow-lang-typescript` — TypeScript best practices
 - [tsdown Plugin Architecture](https://github.com/rolldown/tsdown/blob/main/docs/advanced/plugins.md)
 - [Rolldown Plugin API](https://rolldown.rs/apis/plugin-api)
+

@@ -12,7 +12,7 @@ related:
   - review-config
   - run-verify
   - run-test-all
-  - ship
+  - ship-verify-cicd
   - report-table
   - suggest-next-action
 ---
@@ -25,7 +25,7 @@ related:
 
 ใช้ครั้งเดียวตอน setup หรือเมื่อ CI/CD config ไม่พร้อม ไม่รวมรัน pipeline, commit, push, deploy หรือ release (setup release workflow ได้ แต่ไม่รัน release)
 
-ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship` แทน
+ถ้าต้องการรัน cloud verify หรือ ship บน cloud ให้ใช้ `/run-verify` หรือ `/ship-verify-cicd` แทน
 
 ## Execute
 
@@ -200,7 +200,7 @@ jobs:
 
 - `setup-cicd` ทำเฉพาะตั้งค่า config ไม่รัน pipeline
 - ไม่ commit, ไม่ push, ไม่ deploy, ไม่ release
-- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship`
+- ถ้าต้องการรัน pipeline ให้ใช้ `/run-verify` หรือ `/ship-verify-cicd`
 
 ### 2. Platform First
 
@@ -225,7 +225,7 @@ jobs:
 ### 5. No Auto Commit
 
 - ไม่ commit หรือ push config files โดยอัตโนมัติ
-- ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship` หลัง setup
+- ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship-verify-cicd` หลัง setup
 
 ## Expected Outcome
 
@@ -235,3 +235,4 @@ jobs:
 - Secrets ถูก setup อย่างปลอดภัย
 - ไม่มีการ commit/push/deploy/release โดยอัตโนมัติ
 - มีรายงาน setup status และ next action ชัดเจน
+

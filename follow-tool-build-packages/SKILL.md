@@ -7,7 +7,7 @@ related:
   - follow-tool-vitest
   - follow-tool-vite
   - follow-create-vite-plugins
-  - follow-programming-paradigm
+  - review-architecture
   - analyze-project
   - refactor-workspace
 ---
@@ -31,7 +31,7 @@ related:
 - /follow-tool-turborepo
 - /follow-tool-tsdown
 - /follow-tool-vitest
-- /follow-programming-paradigm หรือ /follow-programming-paradigm
+- /review-architecture หรือ /review-architecture
 
 ## Project Structure
 
@@ -48,8 +48,8 @@ packages/
 
 - เริ่มจาก `/analyze-project` และ `/refactor-workspace`
 - เลือก runtime:
-  - Node: `/follow-programming-paradigm`
-  - Bun: `/follow-programming-paradigm`
+  - Node: `/review-architecture`
+  - Bun: `/review-architecture`
 - build/test/lint ต้องรันผ่าน pipeline เดียวกันใน monorepo
 
 ## Folder Rules
@@ -91,3 +91,4 @@ tests/examples <-- src
 ## Expected Outcome
 
 Completed `follow-tool-build-packages` workflow with correct output
+

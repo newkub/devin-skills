@@ -3,6 +3,7 @@ name: validate-idea
 description: ตรวจสอบและประเมินไอเดียก่อน implement ว่าคุ้มค่า ทำได้ และสอดคล้องกับ project
 related:
   - idea-features
+  - deep-idea-features
   - research-setup
   - deep-research
   - learn-from-web

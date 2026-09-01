@@ -6,7 +6,7 @@ related:
   - follow-create-biome-plugins
   - follow-create-bun-plugins
   - follow-create-devin-plugins
-  - ship
+  - ship-verify-cicd
 ---
 
 ## Goal
@@ -83,7 +83,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -218,3 +218,4 @@ plugin use len
 - [NuShell Plugins Guide](https://www.nushell.sh/contributor-book/plugins.html#creating-a-plugin-in-rust)
 - [nu-plugin crate docs](https://docs.rs/nu-plugin)
 - [nu-protocol crate docs](https://docs.rs/nu-protocol)
+

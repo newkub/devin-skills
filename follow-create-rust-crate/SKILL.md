@@ -97,7 +97,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -124,3 +124,4 @@ related:
 - `cargo doc` สร้างเอกสารได้
 - Public API ชัดเจนผ่าน `lib.rs`
 - พร้อม publish ไป crates.io
+

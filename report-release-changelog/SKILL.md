@@ -3,13 +3,14 @@ name: report-release-changelog
 description: ดึงและจัดรูปแบบ release changelog จาก GitHub diff ระหว่าง tags
 argument-hint: "[range]"
 related:
-  - compare
+  - vs
   - ask-me
   - report-table
   - suggest-next-action
   - report-ansi
   - fix
   - refactor
+  - view-repo
 ---
 
 ## Goal
@@ -30,6 +31,7 @@ related:
 2. ถ้า user ให้ `owner/repo` อย่างเดียว → หา latest release และก่อนหน้าผ่าน GitHub API
 3. ถ้าไม่ชัด → `/ask-me` ก่อน
 4. ถ้า tag ไม่มีอยู่จริง → report ว่า `tag not found` และ stop
+5. ถ้าต้องการดู repo metadata สรุปก่อน ให้ทำ `/view-repo`
 
 ### 2. Fetch Compare Data
 

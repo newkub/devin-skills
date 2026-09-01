@@ -3,7 +3,7 @@ name: review-uxui
 description: Review UX/UI design quality, design system, visual, interaction, accessibility, handoff
 related:
   - review-platform
-  - roleplay-ux-researcher
+  - roleplay-stakeholder
   - scan-codebase
   - deep-analyze
   - run-review
@@ -14,6 +14,7 @@ related:
   - improve-uxui
   - optimize-everything
   - follow-design-system
+  - capture-component
 ---
 
 ## Goal
@@ -28,8 +29,8 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - frontend code architecture, state management, rendering performance → ใช้ `/review-frontend`
 - platform-level (mobile, desktop, CLI, SSR, i18n, web vitals) → ใช้ `/review-platform`
 - SEO → ใช้ `/review-seo`
-- roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-ui-designer`
-- roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-ux-researcher`
+- roleplay/simulation จากมุมมอง UI designer → ใช้ `/roleplay-stakeholder`
+- roleplay/simulation จากมุมมอง UX researcher → ใช้ `/roleplay-stakeholder`
 
 ## Execute
 
@@ -43,6 +44,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 4. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 5. ถ้ามี user flow หรือ journey ให้ map ตาม `references/user-flow.md`
 6. ถ้าสแกนไม่ได้ → stop และ report
+7. ถ้าต้องการ capture ภาพ component สำหรับ review ให้ทำ `/capture-component`
 
 ### 2. Design System
 

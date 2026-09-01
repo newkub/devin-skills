@@ -4,7 +4,7 @@ description: Review release readiness ก่อน publish
 related:
   - test-release
   - run-release
-  - ship
+  - ship-verify-cicd
   - setup-release
   - review-correctness
   - review-architecture
@@ -103,3 +103,4 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 - Go/no-go recommendation
 - Release readiness score พร้อม progress bar
 - แนะนำ action ถัดไป
+

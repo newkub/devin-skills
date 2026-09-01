@@ -86,7 +86,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
+1. ทำ `/ship-verify-cicd`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -181,3 +181,4 @@ export default defineConfig({
 - `/follow-tasks` — Scripts standards
 - `/use-bun-native-api` — Bun native APIs แทน Node.js
 - [Bun Documentation](https://bun.sh/docs)
+

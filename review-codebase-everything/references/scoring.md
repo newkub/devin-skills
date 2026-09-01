@@ -78,7 +78,7 @@ score = sum(severity_weight * count) / total_findings
 
 ถ้า score < 70:
 
-- แนะนำให้เรียก `/review-codebase-everything` ก่อนดำเนินการ
+- แนะนำให้เรียก `/deep-review` ก่อนดำเนินการ
 - ระบุ findings ที่ต้องแก้ไข
 - ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 

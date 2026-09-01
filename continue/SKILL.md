@@ -6,6 +6,8 @@ related:
   - report-and-continue
   - follow-best-practice
   - suggest-next-action
+  - ship-verify-cicd
+  - ship-release
 ---
 
 ## Goal
@@ -52,7 +54,11 @@ related:
 > Goal: Finalize
 
 1. สรุปงานที่ทำเสร็จแล้วเป็นตาราง
-2. หยุดการทำงานเมื่อทุกอย่างครบถ้วน
+2. ถ้างานครบถ้วนและ user เคยบอกให้ ship หรือ deploy ให้เสนอ next action ตาม context:
+   - ถ้าต้องการ deploy ไป staging → `/ship-verify-cicd`
+   - ถ้าต้องการ release patch → `/ship-release`
+   - ถ้าไม่แน่ใจ → ใช้ `/suggest-next-action` เพื่อเลือก ship ทีเหมาะสม
+3. หยุดการทำงานเมื่อทุกอย่างครบถ้วน หรือเมื่อมี next action ทีชัดเจน
 
 ## Rules
 
