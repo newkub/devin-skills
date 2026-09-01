@@ -76,7 +76,7 @@ related:
 
 1. ลบ scripts จาก `$env:TEMP`
 2. ลบ backup files หลังยืนยันว่าการแก้ไขผ่านทุก validation
-3. ทำ `/ship-verify-cicd`
+3. ทำ `/ship`
 4. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

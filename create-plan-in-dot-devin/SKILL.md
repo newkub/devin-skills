@@ -12,7 +12,7 @@ related:
   - deep-idea-features
   - bench-competitors
   - follow-git-flow
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -108,7 +108,7 @@ related:
 
 - ลบ plan ทันทีเมื่องานเสร็จถ้า context ระบุ
 - ไม่เก็บ plan ค้างถ้าไม่จำเป็น
-- ถ้า implement ผ่าน `/ship-verify-cicd` → ให้ `/ship-verify-cicd` จัดการ cleanup ตาม context
+- ถ้า implement ผ่าน `/ship` → ให้ `/ship` จัดการ cleanup ตาม context
 
 - ใช้ `/deep-plan` ถ้าต้องการวิเคราะห์ลึกก่อนสร้าง plan
 - ใช้ `/report-plan` เพื่อรายงานแผนในแชท

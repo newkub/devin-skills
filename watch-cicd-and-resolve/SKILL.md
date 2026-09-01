@@ -40,7 +40,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 
 ใช้หลังจาก:
 - push code
-- `/run-deploy`, `/deploy-to-*`, `/ship-verify-cicd`, `/run-release`
+- `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
 - หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
 
 ครอบคลุม:

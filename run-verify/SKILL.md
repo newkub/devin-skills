@@ -11,7 +11,7 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - ship-verify-cicd
+  - ship
   - watch-cicd-and-resolve
   - watch-github-actions
   - git-push
@@ -104,7 +104,7 @@ related:
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 

@@ -7,7 +7,7 @@ related:
   - continue
   - report-table
   - deep-validate
-  - ship-verify-cicd
+  - ship
   - deep-plan
 ---
 
@@ -77,7 +77,7 @@ related:
 
 1. ทำ `/deep-validate` เพื่อตรวจ references และ structure
 2. ทำ `/run-verify` ถ้ามี
-3. ทำ `/ship-verify-cicd`
+3. ทำ `/ship`
 4. ใช้ `/report-table` สรุป tasks ทั้งหมด
 
 ## Rules

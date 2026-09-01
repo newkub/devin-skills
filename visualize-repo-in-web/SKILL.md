@@ -21,7 +21,7 @@ related:
   - review-frontend
   - resolve-errors
   - open-web
-  - ship-verify-cicd
+  - ship
   - suggest-next-action
 ---
 
@@ -98,7 +98,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ถ้า user ต้องการ keep project → ทำ `/ship-verify-cicd`
+1. ถ้า user ต้องการ keep project → ทำ `/ship`
 2. รายงานจำนวน nodes, edges, ประเภททีพบ
 3. ทำ `/suggest-next-action`
 

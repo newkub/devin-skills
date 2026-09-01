@@ -9,7 +9,7 @@ related:
   - follow-devin-global-subagents
   - report-before
   - ask-me
-  - ship-verify-cicd
+  - ship
   - continue
   - rethink
 ---
@@ -175,7 +175,7 @@ related:
 - ใช้ /loop-continuous ถ้าจำเป็น
 - ใช้ /follow-enter-dot ถ้าจำเป็น
 - ใช้ /report-before ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 

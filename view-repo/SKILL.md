@@ -22,7 +22,7 @@ related:
   - open-github-repo-personal
   - open-github-repo-org
   - update-github-metadata
-  - ship-release
+  - ship
   - follow-github
   - report-release-changelog
   - resolve-errors

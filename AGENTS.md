@@ -9,7 +9,7 @@ related:
   - review-rules
   - review-devin-global-skills
   - git-commit-at-devin-skills-global
-  - ship-verify-cicd
+  - ship
   - report
 ---
 
@@ -49,7 +49,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/review-rules` to check `AGENTS.md`
 2. Run `/review-devin-global-skills` when editing skills
 3. Run `/deep-validate` to verify correctness
-4. Run `/git-commit-at-devin-skills-global` or `/ship-verify-cicd` to commit changes
+4. Run `/git-commit-at-devin-skills-global` or `/ship` to commit changes
 5. Run `/report` to summarize results
 
 ## Rules
@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **782** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **779** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -94,10 +94,10 @@ Core:
 - `update-devin-harness: /update-devin-harness`
 - `follow-global-rules: /follow-global-rules`
 - `git-commit-at-devin-skills-global: /git-commit-at-devin-skills-global`
-- `ship-code: /ship-code`
-- `ship-verify-local: /ship-verify-local`
-- `ship-verify-cicd: /ship-verify-cicd`
-- `ship-release: /ship-release`
+- `ship: /ship`
+- `ship: /ship`
+- `ship: /ship`
+- `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`
 - `deep-review-codebase: /deep-review-codebase`
@@ -111,7 +111,7 @@ Major skill families by current count:
 - `run-*` (34): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
 - `update-*` (35): repo, skills, docs, config, runtime, version, and test spec maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-review-cli`, `update-specs`
 - `setup-*` (3): one-time setup helpers. Examples: `setup-cicd`, `setup-package`, `setup-release`
-- `ship-*` (4): ship and deploy helpers. Examples: `ship-code`, `ship-verify-local`, `ship-verify-cicd`, `ship-release`
+- `ship-*` (4): ship and deploy helpers. Examples: `ship`, `ship`, `ship`, `ship`
 - `report-*` (38): reporting, diagrams, and visualization helpers. Examples: `report-what-you-do`, `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-progress`, `report-math-equation`, `report-todo`, `report-math-formula`
 - `roleplay-*` (1): stakeholder roleplay perspectives. Examples: `roleplay-stakeholder`
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
@@ -150,7 +150,7 @@ Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` 
 - Flow: `dev/<number>` → `dev` → `main`
 - Local hooks: block direct commit/push on `main`
 - GitHub: branch protection on `main` (PR + status checks) and `dev` (status checks)
-- Skills: `/ship-verify-cicd`
+- Skills: `/ship`
 
 ## Expected Outcome
 

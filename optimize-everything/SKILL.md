@@ -5,7 +5,7 @@ argument-hint: "[file-or-pattern]"
 related:
   - review-uxui
   - follow-design-system
-  - ship-verify-cicd
+  - ship
   - follow-tool-vite
   - review-frontend
   - review-platform
@@ -17,7 +17,7 @@ Optimize web project ทั้งหมดที detect ได้: SEO, frontend
 
 ## Scope
 
-- ใช้คู่กับ `/ship-verify-cicd`
+- ใช้คู่กับ `/ship`
 - SEO (meta tags, Open Graph, structured data, robots, sitemap)
 - Frontend performance (LCP, INP, CLS, TTFB)
 - Bundle size และ code splitting

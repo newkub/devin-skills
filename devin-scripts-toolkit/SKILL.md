@@ -7,7 +7,7 @@ related:
   - check-broken-skills-references
   - follow-create-web
   - setup-cicd
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -68,7 +68,7 @@ related:
 
 ## Rules
 
-- ใช้ scripts นี้ก่อน `/ship-verify-cicd`
+- ใช้ scripts นี้ก่อน `/ship`
 - ใช้ `/devin-templates-toolkit` สำหรับ templates
 - ไม่ hardcode paths ใน scripts
 - ใช้ `Write-Host` สีเขียวสำหรับ OK, เหลืองสำหรับ warning, แดงสำหรับ error

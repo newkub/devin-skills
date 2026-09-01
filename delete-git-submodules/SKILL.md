@@ -4,7 +4,7 @@ description: ลบ git submodule ออกจาก repo ทั้งจาก 
 argument-hint: "[submodule-path]"
 related:
   - git-commit
-  - ship-verify-cicd
+  - ship
 ---
 ## Goal
 
@@ -75,7 +75,7 @@ related:
 - รัน `git gc` เสมอหลังลบเสร็จ
 
 - ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 
 ## Expected Outcome
 

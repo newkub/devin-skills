@@ -168,7 +168,7 @@ related:
 
 > Goal: ส่งมอบ project
 
-1. ทำ `/ship-verify-cicd`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

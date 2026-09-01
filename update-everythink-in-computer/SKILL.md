@@ -87,7 +87,7 @@ related:
 
 - ไม่ลบ skills หรือ dotfiles โดยไม่มี dry run
 - ตรวจ `git status` หลัง update skills
-- ใช้ `/ship-verify-cicd` หรือ `/git-commit` เมื่อจบ
+- ใช้ `/ship` หรือ `/git-commit` เมื่อจบ
 
 ### 4. Report Everything
 

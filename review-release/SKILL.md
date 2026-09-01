@@ -4,7 +4,7 @@ description: Review release readiness ก่อน publish
 related:
   - test-release
   - run-release
-  - ship-verify-cicd
+  - ship
   - setup-release
   - review-correctness
   - review-architecture

@@ -10,7 +10,7 @@ related:
   - follow-create-cli
   - list-my-npm-packages
   - use-my-packages-on-registry
-  - ship-verify-cicd
+  - ship
   - ask-me
   - watch-release
   - follow-tool-release-it
@@ -123,7 +123,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /follow-runtime-bun ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /watch-release ถ้าจำเป็น
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น

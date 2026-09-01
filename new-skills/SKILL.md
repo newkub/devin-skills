@@ -82,7 +82,7 @@ related:
 
 > Goal: Ship
 
-1. รัน `/ship-verify-cicd` หาก skill มี code หรือต้องการ deploy
+1. รัน `/ship` หาก skill มี code หรือต้องการ deploy
 2. รายงาน paths ของ skill ที่สร้างขึ้นและ validation status
 
 ## Rules

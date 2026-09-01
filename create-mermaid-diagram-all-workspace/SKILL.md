@@ -10,7 +10,7 @@ related:
   - follow-monorepo
   - follow-package-manifest
   - check-circular-dependencies
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -142,7 +142,7 @@ related:
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-package-manifest ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 
 ## Expected Outcome
 

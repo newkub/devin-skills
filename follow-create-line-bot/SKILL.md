@@ -104,7 +104,7 @@ related:
 1. ถ้า `Cloudflare Workers`: ใช้ `/deploy-to-cloudflare` พร้อม `Hono` adapter
 2. ถ้า `Railway/Vercel/VPS`: ใช้ `/deploy-to-railway` หรือ `/deploy-to-vercel` พร้อม environment variables
 3. อัปเดต webhook URL เป็น production endpoint
-4. ทำ `/ship-verify-cicd`
+4. ทำ `/ship`
 
 ## Rules
 

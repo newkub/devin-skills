@@ -12,7 +12,7 @@ related:
   - check-reference
   - update-references
   - review-issue
-  - ship-verify-cicd
+  - ship
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
@@ -107,7 +107,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-verify-cicd`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะและ stop
 3. ทำ `/report-table` สรุป before-after, findings, actions และ next actions
 

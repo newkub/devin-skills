@@ -39,7 +39,7 @@ related:
   - run-test
   - search-files-patterns
   - search-skills
-  - ship-verify-cicd
+  - ship
   - update-devin-global-skills
   - update-devin-global-subagents
   - update-references
@@ -110,7 +110,7 @@ related:
 1. ถ้า user เลือก skill เดียว → เรียก `skill` tool ด้วย `skill: <selected-skill-name>`
 2. ถ้า user เลือกหลาย skills → ยืนยันลำดับกับ user ด้วย `/ask-me` ก่อน แล้วเรียกตามลำดับ
 3. ถ้า user ตอบเอง (custom text) → ใช้ `search-skills` หรือ string match กับ `follow-create-*` แล้ว invoke ถ้าตรง
-4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุให้ ship → invoke `/ship-verify-cicd` หลัง skill ทีเลือกเสร็จ
+4. ถ้า selected skill สร้าง project/app/CLI ที่ต้อง ship หรือ user ระบุให้ ship → invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 ### 6. Handle Mismatch
 
@@ -128,7 +128,7 @@ related:
 - ไม่เพิ่ม `follow-create-*` ใหม่เองถ้ายังไม่มี
 - หลัง user เลือกต้อง invoke skill ด้วย `skill` tool
 - ถ้าเลือกหลาย skills ต้องยืนยันลำดับก่อน
-- ถ้า user ต้องการ ship ให้ invoke `/ship-verify-cicd` หลัง skill ทีเลือกเสร็จ
+- ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 - ใช้ /follow-create-biome-plugins ถ้าจำเป็น
 - ใช้ /follow-create-browser-extensions ถ้าจำเป็น
@@ -160,5 +160,5 @@ related:
 
 - User เห็นรายการ `follow-create-*` skills ทีมีอยู่ทั้งหมด
 - User เลือก skill ทีต้องการผ่าน `/ask-me`
-- Skill ทีเลือกถูก invoke พร้อม `/ship-verify-cicd` ถ้าจำเป็น
+- Skill ทีเลือกถูก invoke พร้อม `/ship` ถ้าจำเป็น
 
