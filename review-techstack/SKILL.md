@@ -12,7 +12,6 @@ related:
   - follow-package-manifest
   - list-dependencies
   - update-version-latest
-  - update-runtime-latest
   - update-dependencies-latest
 ---
 
@@ -120,7 +119,6 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 - ใช้ /follow-package-manifest ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
 - ใช้ /update-version-latest ถ้าจำเป็น
-- ใช้ /update-runtime-latest ถ้าจำเป็น
 - ใช้ /update-dependencies-latest ถ้าจำเป็น
 
 ## Expected Outcome

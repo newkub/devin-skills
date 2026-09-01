@@ -3,7 +3,6 @@ name: update-dependencies-latest
 description: อัพเดท dependencies ในทุก workspace ให้เป็น latest version ทั้ง major, minor, patch
 related:
   - update-version-latest
-  - update-runtime-latest
   - update-config
   - run-check
   - deep-validate
@@ -109,7 +108,6 @@ CLI ตรวจหาไฟล์อัตโนมัติ:
 1. รัน `bun src/cli.ts update --dry-run`
 2. แยกตามประเภทการอัพเดท: major, minor, patch
 3. ตรวจสอบ breaking changes จาก major updates
-4. สร้าง branch ใหม่ก่อนอัพเดท (แนะนำ)
 
 ### 2. Update Dependencies
 
@@ -133,7 +131,6 @@ CLI ตรวจหาไฟล์อัตโนมัติ:
 
 ### 2. Safety First
 
-- สร้าง branch ใหม่ก่อนอัพเดท
 - รัน tests ก่อนและหลังอัพเดท
 - ใช้ `--dry-run` ก่อน `--write`
 - `convert-submodules --push` ต้องยืนยันก่อน หรือใช้ `--force`
@@ -153,7 +150,6 @@ CLI ตรวจหาไฟล์อัตโนมัติ:
 - ตั้ง auto-merge สำหรับ patch updates ทีผ่าน tests
 
 - ใช้ /update-version-latest ถ้าจำเป็น
-- ใช้ /update-runtime-latest ถ้าจำเป็น
 - ใช้ /update-config ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น

@@ -4,7 +4,6 @@ description: ติดตั้ง dependencies และแก้ไขปั�
 related:
   - update-dependencies-latest
   - update-version-latest
-  - update-runtime-latest
   - follow-tool-mise
 ---
 
@@ -171,7 +170,7 @@ General:
 - ใช้ clean install เมื่อมี dependency conflicts ข้ามภาษา
 - ลบ cache ของทุก package manager ก่อน install
 
-- ใช้ /update-runtime-latest ถ้าจำเป็น
+- ใช้ /update-version-latest ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 
 ## Expected Outcome

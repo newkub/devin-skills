@@ -113,8 +113,7 @@ related:
 
 > Goal: จัดการ branches และตรวจสอบ database health
 
-1. Create branch ด้วย `supabase branches create`
-2. List/switch/pause/delete branches
+1. List/switch/pause/delete branches ด้วย `supabase branches`
 3. Inspect bloat ด้วย `supabase inspect db bloat`
 4. Inspect blocking และ long-running queries
 5. Generate report ด้วย `supabase inspect report`

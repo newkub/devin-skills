@@ -52,7 +52,7 @@ related:
 5. ระบุ output shapes และ error response patterns
 6. ระบุ security-critical logic (auth checks, permission checks, userId injection, sanitization)
 7. ระบุ async patterns (promises, streams, generators, event emitters) ที่ต้อง test
-8. สร้าง branch map: นับจำนวน branches ทั้งหมดเพื่อคำนวณ minimum test cases ที่จำเป็น
+8. สร้าง code-path map: นับจำนวน code paths ทั้งหมดเพื่อคำนวณ minimum test cases ที่จำเป็น
 
 ### 3. Organize, Write Spec, And Improve Naming
 
