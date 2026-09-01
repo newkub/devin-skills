@@ -4,7 +4,6 @@ description: ลบ git branches เก่าที merge แล้วหรื�
 argument-hint: "[filter]"
 related:
   - delete-git-branch
-  - follow-tool-git-branch
 ---
 
 ## Goal
@@ -51,7 +50,6 @@ related:
 - เก็บ release/hotfix branches ตาม policy
 
 - ใช้ /delete-git-branch ถ้าจำเป็น
-- ใช้ /follow-tool-git-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

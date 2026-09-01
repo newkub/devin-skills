@@ -35,7 +35,7 @@
 
 | Category | Workflows |
 |----------|-----------|
-| Git | `/follow-tool-git-branch`, `/follow-tool-git` |
+| Git | `/follow-tool-git` |
 | Testing | `/run-test`, `/run-test-e2e`, `/run-test-integration` |
 | Documentation | `/update-readme-md`, `/update-docs` |
 

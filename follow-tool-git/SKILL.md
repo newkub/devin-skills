@@ -2,7 +2,6 @@
 name: follow-tool-git
 description: ใช้งาน git commands ตามสถานการณ์
 related:
-  - follow-tool-git-branch
   - follow-git-flow
   - follow-git-workflows
   - follow-tool-usage
@@ -89,7 +88,6 @@ related:
 - ตรวจสอบ `git status` ให้สะอาดก่อน push
 - ใช้ `git diff` ตรวจงานก่อน commit
 
-- ใช้ /follow-tool-git-branch ถ้าจำเป็น
 - ใช้ /follow-git-flow ถ้าจำเป็น
 - ใช้ /follow-git-workflows ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
