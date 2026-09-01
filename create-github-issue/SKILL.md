@@ -84,19 +84,20 @@ related:
 6. ถ้ามี comments ใน body → ไม่เขียนทับโดยไม่ขอ user ยืนยันก่อน
 7. ตรวจสอบ issue อีกครั้งด้วย `gh issue view <number>`
 
-### 6. Verify And Ship
+### 6. Verify And Report
 
-> Goal: ยืนยันและส่งมอบ
+> Goal: ยืนยัน issue และส่งมอบผล
 
 1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
 2. ยืนยัน metadata ถูกต้อง
-3. ทำ `/ship-verify-cicd`
+3. รัน `gh issue view <number>` เพื่อตรวจสอบครั้งสุดท้าย
+4. รายงาน URL ของ issue กลับ
 
 ## Rules
 
 ### 1. Issue Title
 
-- ใช้ภาษาอังกฤษหรือตาม project conventions
+- ใช้ภาษาอังกฤษทั้งหมด ยกเว้น technical terms, project/skill names, และ repo conventions ทีกำหนดเป้นอย่างอื่น
 - เริ่มต้นด้วยประเภท issue (Bug, Feature, Enhancement, Docs)
 - ใช้ Title Case
 - ไม่เกิน 80 ตัวอักษร
@@ -106,17 +107,17 @@ related:
 
 ```markdown
 ## Problem
-[อธิบายปัญหาอย่างชัดเจน]
+[Describe the problem clearly]
 
 ## Expected Behavior
-[ความคาดหวัง]
+[What you expected to happen]
 
 ## Actual Behavior
-[สิ่งที่เกิดขึ้นจริง]
+[What actually happened]
 
 ## Steps to Reproduce
-1. [step 1]
-2. [step 2]
+1. [Step 1]
+2. [Step 2]
 
 ## Environment
 - OS: [version]
@@ -127,7 +128,13 @@ related:
 - [ ] criterion 2
 ```
 
-### 3. Labels Convention
+### 3. Language
+
+- เขียน title และ description ด้วยภาษาอังกฤษทั้งหมด
+- ยกเว้น technical terms, project/skill names, paths, commands, และ repo conventions ทีกำหนดภาษาอื่น
+- ถ้า repo conventions ไม่ระบุภาษา ใช้ภาษาอังกฤษเป็นค่าเริ่มต้น
+
+### 4. Labels Convention
 
 | Category | Labels |
 |----------|--------|
@@ -136,20 +143,20 @@ related:
 | Status | triage, in-progress, review, done |
 | Component | frontend, backend, database, api, ui |
 
-### 4. Issue Relations
+### 5. Issue Relations
 
 - `blockedBy`: issue ที่ต้องแก้ก่อน
 - `blocks`: issue ที่ถูกบล็อกโดย issue นี้
 - `relatedTo`: issue ที่เกี่ยวข้องแต่ไม่บล็อก
 - `duplicateOf`: issue ที่ซ้ำกับ issue นี้
 
-### 5. Assignees
+### 6. Assignees
 
 - กำหนด assignees หนึ่งคนเป็นหลัก
 - หลีกเลี่ยง assign หลายคนเว้นจำเป็น
 - ใช้ username ที่ถูกต้องใน GitHub
 
-### 6. Update Existing Issues
+### 7. Update Existing Issues
 
 - ห้ามเขียนทับ body โดยไม่ได้รับการยืนยันจากผู้ใช้ หากมี comments
 - ใช้ `--add-label` และ `--remove-label` เพื่อจัดการ labels
