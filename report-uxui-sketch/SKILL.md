@@ -2,7 +2,6 @@
 name: report-uxui-sketch
 description: สร้างรายงาน UX/UI sketch ใน markdown สำหรับ app/website จาก context ที่ให้มา
 related:
-  - improve-uxui
   - report-uxui-all-routes
   - report-table
   - report-architecture-diagram
