@@ -55,7 +55,7 @@ related:
 | 1 | ไม่ใช้ Cloudflare Access (default) |
 | 2 | ใช้ Cloudflare Access จำกัดการเข้าถึง Worker |
 
-ถ้าเลือก 2 → ขั้นตอนหลัง deploy ให้เปิด **Cloudflare Access** แล้วเพิ่ม policy ใน Zero Trust
+ถ้าเลือก 2 → ขั้นตอนหลัง deploy ให้เปิด Cloudflare Access แล้วเพิ่ม policy ใน Zero Trust
 
 ### 4. Create Workers Project
 

@@ -29,7 +29,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
   [--no-retry]
 ```
 
-- helper รองรับ **GitHub Actions** (CI) แบบเต็มรูปแบบ
+- helper รองรับ GitHub Actions (CI) แบบเต็มรูปแบบ
 - CD mode จะส่งต่อให้ `/watch-deploy`, `/watch-vercel`, `/watch-release` ตาม target
 
 ## Goal
@@ -213,4 +213,3 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 - ระบุ next step ผ่าน `/suggest-next-action`
 - ไม่มี auto-rollback โดยไม่แจ้ง user
 - ถ้าไม่ผ่าน มี last green SHA และ rollback recommendation ชัดเจน
-

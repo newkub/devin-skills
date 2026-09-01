@@ -100,9 +100,9 @@ related:
    export default defineNuxtConfig({
      routeRules: {
        '/': { prerender: true },
-       '/products/**': { swr: 3600 },
+       '/products/': { swr: 3600 },
        '/blog': { isr: 3600 },
-       '/admin/**': { ssr: false },
+       '/admin/': { ssr: false },
      },
    })
    ```

@@ -81,7 +81,7 @@ console.log(url);
 
 1. แสดง URL ให้ user
 2. ใช้ `/open-web` เปิด Cloudflare dashboard
-3. บอก user กด **Continue to summary** → **Create Token**
+3. บอก user กด Continue to summary → Create Token
 4. ให้ user copy token ทันที
 
 ### 5. Open GitHub Actions Secrets Page

@@ -81,7 +81,7 @@ await Bun.write(outputPath, content)
 await $`git status`.text()
 
 // File patterns
-for await (const file of new Bun.Glob("**/*.ts").scan()) {
+for await (const file of new Bun.Glob("/*.ts").scan()) {
   // process file
 }
 ```
@@ -114,7 +114,7 @@ function createScript(options: ScriptOptions) {
   return { run, errors, processed }
 }
 
-const script = createScript({ pattern: "**/*.ts" })
+const script = createScript({ pattern: "/*.ts" })
 await script.run()
 ```
 

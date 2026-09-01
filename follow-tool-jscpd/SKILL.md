@@ -117,8 +117,8 @@ related:
     "/dist/",
     "/.turbo/",
     "/coverage/",
-    "**/*.lock",
-    "**/bun.lock",
+    "/*.lock",
+    "/bun.lock",
     "/.output/",
     "/dist-spa/"
   ],

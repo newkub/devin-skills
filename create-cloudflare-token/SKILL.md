@@ -113,7 +113,7 @@ console.log('https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=
    ```
 3. รับ `value` จาก response (แสดงครั้้งเดียว) แล้วให้ user เก็บเอง
 
-**หมายเหตุ:** ไม่สามารถสร้าง API token ผ่าน CLI โดยไม่มี seed token ก่อน ถ้าไม่มี seed token ให้ใช้ dashboard URL ในขั้นตอน 2
+หมายเหตุ: ไม่สามารถสร้าง API token ผ่าน CLI โดยไม่มี seed token ก่อน ถ้าไม่มี seed token ให้ใช้ dashboard URL ในขั้นตอน 2
 
 ### 4. Store Token Securely
 

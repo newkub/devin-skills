@@ -92,13 +92,13 @@ related:
 2. สำหรับ Next.js เพิ่ม content path:
 
    ```ts
-   content: { filesystem: ['./app/**/*.{html,js,ts,jsx,tsx}'] }
+   content: { filesystem: ['./app//*.{html,js,ts,jsx,tsx}'] }
    ```
 
 3. สำหรับ Vite เพิ่ม content path:
 
    ```ts
-   content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
+   content: { filesystem: ['./src//*.{html,js,ts,jsx,tsx,vue,svelte,astro}'] }
    ```
 
 4. ดูรายละเอียดใน [references/unocss.md](references/unocss.md)

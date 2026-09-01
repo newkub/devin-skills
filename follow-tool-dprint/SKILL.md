@@ -46,12 +46,12 @@ related:
 ```json [dprint.json]
 {
   "includes": [
-    "**/*.{ts,tsx,js,jsx,json,md,rs,toml,yaml,yml,css,scss,sass,less,html,vue,svelte,astro,py,go,php}"
+    "/*.{ts,tsx,js,jsx,json,md,rs,toml,yaml,yml,css,scss,sass,less,html,vue,svelte,astro,py,go,php}"
   ],
   "excludes": [
-    "**/node_modules",
-    "**/dist",
-    "**/.git"
+    "/node_modules",
+    "/dist",
+    "/.git"
   ],
   "plugins": [
     "https://plugins.dprint.dev/typescript-0.95.13.wasm",

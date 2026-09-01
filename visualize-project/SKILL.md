@@ -58,7 +58,7 @@ related:
    import { defineConfig, presetWind4, presetIcons, transformerVariantGroup, transformerDirectives } from 'unocss'
 
    export default defineConfig({
-     content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx}'] },
+     content: { filesystem: ['./src//*.{html,js,ts,jsx,tsx}'] },
      presets: [
        presetWind4(),
        presetIcons({

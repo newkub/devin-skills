@@ -59,7 +59,7 @@ related:
 > Goal: ยืนยันว่า Mermaid ถูกต้องโดยไม่บังคับ render เป็น image
 
 1. ตรวจสอบโครงสร้าง code ด้วยตาเปล่า หรือใช้ `mmdc --version` ถ้าต้องการ verify
-2. ถ้า `mmdc` พร้อม สามารถรัน `mmdc -i <input.md> -o <output.svg>` ได้ แต่ **ห้ามบังคับเป็น output หลัก**
+2. ถ้า `mmdc` พร้อม สามารถรัน `mmdc -i <input.md> -o <output.svg>` ได้ แต่ ห้ามบังคับเป็น output หลัก
 3. ตรวจดูว่าไม่มี syntax error เช่น node id ซ้ำ, edge ไม่ถูกต้อง, quote ไม่ครบ
 4. ถ้า validation ผิดพลาด → อ่าน error แล้วแก้ source แล้ว validate ใหม่ (max 3 รอบ)
 
@@ -118,4 +118,3 @@ related:
 - (optional) ไฟล์ `.svg` หรือ `.png` ถ้า user ขอ render image
 - รายงาน output file, diagram type, validation status
 - ไม่มี TODO/MOCK/placeholder
-

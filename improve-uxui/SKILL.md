@@ -1,6 +1,6 @@
 ---
 name: improve-uxui
-description: ปรับ UX/UI ให้สวยงาม เข้าใจง่าย ใช้งานง่าย โดย deep-thinking/pondering ว่า UX/UI ที่ดีควรเป็นยังไง แล้วเลือก action ตามผล
+description: ปรับ UX/UI ด้วย deep-thinking/pondering แล้วเลือก action ตามผล
 argument-hint: "[file-or-pattern]"
 related:
   - review-uxui

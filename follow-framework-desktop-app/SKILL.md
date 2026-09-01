@@ -84,7 +84,7 @@ export default defineConfig({
     transformerVariantGroup(),
     transformerDirectives(),
   ],
-  content: { filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,vue,svelte}'] }
+  content: { filesystem: ['./src//*.{html,js,ts,jsx,tsx,vue,svelte}'] }
 })
 ```
 

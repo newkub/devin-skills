@@ -149,7 +149,7 @@ mise = true
 local linters = new Mapping<String, Step> {
   ["biome"] {
     glob = List("*.{ts,tsx,js,jsx,vue,json,jsonc,md}")
-    exclude = List("**/.agents/**", "**/.devin/**")
+    exclude = List("/.agents/", "/.devin/")
     check = "bunx biome check --no-errors-on-unmatched {{files}}"
     fix = "bunx biome check --write --no-errors-on-unmatched {{files}}"
     batch = true

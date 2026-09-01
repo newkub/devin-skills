@@ -130,7 +130,7 @@ related:
 - กำหนด plugin ผ่าน `plugins` array ใน `biome.jsonc`
 - ใช้ relative path จาก root ของโปรเจกต์
 - รูปแบบ string: `["./custom-rules.grit"]`
-- รูปแบบ object กับ `includes`: `[{ "path": "./plugin.grit", "includes": ["src/**/*.css"] }]`
+- รูปแบบ object กับ `includes`: `[{ "path": "./plugin.grit", "includes": ["src//*.css"] }]`
 - `includes` ใช้ glob patterns และรองรับ negation (`!`)
 - Plugins สามารถกำหนดใน root `biome.jsonc` และ extended โดย child configs
 
@@ -165,4 +165,3 @@ related:
 - [GritQL Reference](https://biomejs.dev/reference/gritql/)
 - [GritQL Language Documentation](https://docs.grit.io/language/overview)
 - [Biome Playground](https://biomejs.dev/playground/)
-

@@ -80,7 +80,7 @@ related:
 - ไม่สร้างรูปภาพหรือ binary files
 - ใช้ markdown, ASCII, Unicode box-drawing characters เท่านั้น
 - หนึ่ง screen ต่อหนึ่ง sketch section
-- ถ้าต้องการ route table ก่อนสร้าง sketch ให้ใช้ `/report-uxui`
+- ถ้าต้องการ route table ก่อนสร้าง sketch ให้ใช้ `/report-uxui-all-routes`
 
 ### Mobile Layout
 

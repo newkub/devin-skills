@@ -112,7 +112,7 @@ related:
 - Plugins auto-detect entry files และ config — ห้าม duplicate ใน `entry` ของ workspace
 - ปิด plugin ด้วย `false` เช่น `{ "webpack": false }`
 - เปิด plugin ด้วย `true` เช่น `{ "playwright": true }`
-- Override plugin config/entry เช่น `{ "mocha": { "config": "config/mocha.config.js", "entry": ["**/*.spec.js"] } }`
+- Override plugin config/entry เช่น `{ "mocha": { "config": "config/mocha.config.js", "entry": ["/*.spec.js"] } }`
 
 ### 7. Safe Usage
 

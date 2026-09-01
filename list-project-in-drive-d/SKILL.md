@@ -3,7 +3,6 @@ name: list-project-in-drive-d
 description: แสดง template shell script list projects ใน drive D ที่มี .git
 argument-hint: "[filter]"
 related:
-  - list-project-uncommit-in-drive-d
   - create-new-project-in-drive-d
   - list-project-git-in-computer
 ---
@@ -70,7 +69,6 @@ Filter เฉพาะ projects ใน drive D:
 - แสดง project name (directory name)
 - รองรับ table format หรือ list format
 
-- ใช้ /list-project-uncommit-in-drive-d ถ้าจำเป็น
 - ใช้ /create-new-project-in-drive-d ถ้าจำเป็น
 - ใช้ /list-project-git-in-computer ถ้าจำเป็น
 

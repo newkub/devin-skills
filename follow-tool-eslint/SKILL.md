@@ -75,7 +75,7 @@ export default defineConfig([
   ...vue.configs['flat/recommended'],
   prettier,
   {
-    files: ['**/*.{ts,tsx,vue}'],
+    files: ['/*.{ts,tsx,vue}'],
     plugins: {
       import: importPlugin,
       'unused-imports': unusedImports,
@@ -99,7 +99,7 @@ export default defineConfig([
     }
   },
   {
-    ignores: ['dist/', 'node_modules/', '.nuxt/**', '*.config.js']
+    ignores: ['dist/', 'node_modules/', '.nuxt/', '*.config.js']
   }
 ])
 ```

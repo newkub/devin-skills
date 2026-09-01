@@ -94,7 +94,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 1. สรุป optimizations ทีทำ
 2. บอก metrics ก่อน-หลัง
 3. ระบุ items ทีค้างและ recommendations
-4. ทำ `/report-session-status` และ `/suggest-next-action`
+4. ทำ `/report-progress` และ `/suggest-next-action`
 
 ## Rules
 
