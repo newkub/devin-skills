@@ -1,6 +1,6 @@
-[submodule "visualize-devin-in-web"]
-	path = visualize-devin-in-web
-	url = git@github.com:newkub/visualize-devin-in-web.git
+[submodule "open-devin-in-web"]
+	path = open-devin-in-web
+	url = git@github.com:newkub/open-devin-in-web.git
 [submodule "open-files-in-web"]
 	path = open-files-in-web
 	url = https://github.com/newkub/open-files-in-web

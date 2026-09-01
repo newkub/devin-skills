@@ -10,6 +10,8 @@ related:
   - follow-design-system
   - optimize-everything
   - ship-verify-cicd
+  - ship-verify-local
+  - open-devin-in-web
   - suggest-next-action
   - report
 ---
@@ -78,6 +80,7 @@ related:
 1. ทำ `/review-uxui` อีกครั้ง
 2. รัน `bun run build` และ `bun run typecheck` ถ้ามี
 3. ถ้า project เป็น web → เปิด browser ตรวจ visual และ interaction
+4. ถ้าต้องการดู graph ของ skills ทีเกี่ยวข้อง → ทำ `/open-devin-in-web`
 
 ### 6. Ship
 

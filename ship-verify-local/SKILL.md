@@ -26,6 +26,7 @@ related:
   - git-commit
   - report
   - report-progress
+  - open-devin-in-web
   - suggest-next-action
   - ask-me
 ---
@@ -67,8 +68,9 @@ Ship code ใน local: เตรียม code, optimize, verify แล้ว c
 ### 5. Report
 
 1. ทำ `/report-progress` พร้อม progress, completed, pending, next actions
-2. ถ้า user ต้องการ push → แนะนำ `/ship-verify-cicd`
-3. ถ้าไม่ → ทำ `/suggest-next-action`
+2. ถ้า user ต้องการดู graph ของ skills ทีใช้ → ทำ `/open-devin-in-web`
+3. ถ้า user ต้องการ push → แนะนำ `/ship-verify-cicd`
+4. ถ้าไม่ → ทำ `/suggest-next-action`
 
 ## Rules
 
