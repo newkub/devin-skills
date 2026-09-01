@@ -19,7 +19,6 @@ related:
   - run-dev
   - test-usage
   - watch-browser-and-fix
-  - optimize-codebase
   - deep-optimize
   - run-verify
   - run-test-all
@@ -59,9 +58,8 @@ Ship code ใน local: เตรียม code, optimize, verify แล้ว c
 
 ### 3. Optimize
 
-1. ทำ `/optimize-codebase` เพื่อหา quick wins
-2. ถ้าพบปัญหาใหญ่ → ถาม user ก่อนทำ `/deep-optimize`
-3. ถ้า optimize เปลี่ยน behavior สำคัญ → ถาม user ก่อน
+1. ถ้าพบปัญหาใหญ่ → ถาม user ก่อนทำ `/deep-optimize`
+2. ถ้า optimize เปลี่ยน behavior สำคัญ → ถาม user ก่อน
 
 ### 4. Verify
 
