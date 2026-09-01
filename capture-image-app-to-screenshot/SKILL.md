@@ -23,6 +23,7 @@ related:
   - capture-web
   - capture-terminal
   - capture-component
+  - watch-browser-and-improve-uxui
   - from-recent-windows-capture
   - scan-codebase
   - follow-tool-agent-browser
@@ -131,4 +132,4 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 - `public/screenshots/` มีภาพของทุก routes/components/views สำคัญ
 - มี `tools/capture-screenshots` script สำหรับ rerun
 - รายงาน captured files พร้อม paths
-- พร้อมใช้กับ `/improve-uxui` หรือ `/review-uxui`
+- พร้อมใช้กับ `/watch-browser-and-improve-uxui` หรือ `/review-uxui`

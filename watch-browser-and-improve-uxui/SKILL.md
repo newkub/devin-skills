@@ -1,10 +1,12 @@
 ---
 name: watch-browser-and-improve-uxui
-description: เปิด browser ด้วย agent-browser แล้ว capture หน้าเพื่อ review ปรับปรุง UX/UI
+description: เปิด browser แล้ว capture หน้าด้วย capture-image-app-to-screenshot เพื่อ review ปรับปรุง UX/UI
 argument-hint: "[url]"
 related:
   - review-by-stakeholder
   - review-uxui
+  - capture-image-app-to-screenshot
+  - capture-web
   - watch-browser-and-fix
   - watch-browser-and-test-all-routes
   - follow-tool-agent-browser
@@ -14,10 +16,10 @@ related:
 
 ## Goal
 
-เปิด browser ด้วย `agent-browser` แล้ว capture หน้าเว็บ เพื่อ review และ improve UX/UI ด้วย `/review-by-stakeholder`
+เปิด browser แล้วใช้ `capture-image-app-to-screenshot` เพื่อ capture หน้าเว็บ แล้ว review และ improve UX/UI ด้วย `/review-by-stakeholder`
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-fix`, `watch-browser-and-test-all-routes`, `follow-tool-agent-browser`
+- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-fix`, `watch-browser-and-test-all-routes`, `follow-tool-agent-browser`, `capture-image-app-to-screenshot`
 
 ใช้สำหรับ capture หน้าเว็บจริง วิเคราะห์ UX/UI ผ่าน stakeholder review และ implement การปรับปรุงทีเหมาะสม
 
@@ -36,10 +38,11 @@ related:
 
 > Goal: เปิด browser และ capture หน้าเว็บ
 
-1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser แบบมองเห็นหน้าต่าง
-2. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
-3. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เพื่อ capture before
-4. ใช้ `agent-browser snapshot -i` เพื่อบันทึก interactive elements และ state
+1. เปิด dev server ถ้าจำเป็น (`npm run dev`, `bun dev` ฯลฯ)
+2. ใช้ `/capture-image-app-to-screenshot` เพื่อ capture ทุก route/component/view ลง `public/screenshots/`
+3. ถ้า `capture-image-app-to-screenshot` ไม่ครอบคลุมหน้าเว็บนั้น → ใช้ `agent-browser open <url> --headed` แล้ว `agent-browser screenshot` แทน
+4. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
+5. ใช้ `agent-browser snapshot -i` เพื่อบันทึก interactive elements และ state (ถ้าใช้ agent-browser)
 
 ### 3. Review By Stakeholder
 

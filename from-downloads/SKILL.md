@@ -16,7 +16,7 @@ triggers:
 related:
   - from-recent-windows-capture
   - capture-image-app-to-screenshot
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - open-in-explorer
   - suggest-next-action
 ---

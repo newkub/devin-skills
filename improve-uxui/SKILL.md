@@ -1,13 +1,12 @@
 ---
 name: improve-uxui
-description: ปรับ UX/UI ให้สวยงาม เข้าใจง่าย ใช้งานง่าย โดยอ่าน review แล้วเลือก action ตามผล
+description: ปรับ UX/UI ให้สวยงาม เข้าใจง่าย ใช้งานง่าย โดย deep-thinking/pondering ว่า UX/UI ที่ดีควรเป็นยังไง แล้วเลือก action ตามผล
 argument-hint: "[file-or-pattern]"
 related:
   - review-uxui
-  - capture-image-app-to-screenshot
-  - capture-component
-  - from-downloads
-  - from-recent-windows-capture
+  - deep-thinking
+  - pondering
+  - rethink
   - follow-design-system
   - optimize-everything
   - ship-verify-cicd
@@ -17,26 +16,27 @@ related:
 
 ## Goal
 
-ปรับปรุง UX/UI ของ project ให้เป็น design system ทีสวยงาม เข้าใจง่าย และใช้งานง่าย โดยเริ่มจาก `/review-uxui` แล้วเลือก action ตามปัญหาทีพบ
+ปรับปรุง UX/UI ของ project ให้เป็น design system ทีสวยงาม เข้าใจง่าย และใช้งานง่าย โดย deep-thinking/pondering ว่า UX/UI ทีดีควรเป็นยังไง แล้วเลือก action ตามผล
 
 ## Scope
 
 - ใช้กับ web และ TUI projects
 - เน้น design system, visual consistency, accessibility, interaction
+- ไม่ต้อง capture ภาพหน้าจอ ใช้การคิดวิเคราะห์ภายในแทน
 - ไม่แก้ code โดยตรงถ้าไม่จำเป็น แต่จะชี้ไปยัง skill ทีเหมาะสม
 - ถ้าไม่มี UI หรือไม่มีสิ่งแก้ไข → stop และ report
 
 ## Execute
 
-### 1. Capture Screenshots
+### 1. Ponder & Define Good UX/UI
 
-> Goal: มี reference images ของ UI ก่อน review
+> Goal: คิดวิเคราะห์ภายในว่า UX/UI ทีดีควรเป็นยังไง
 
-1. ถ้า project เป็น web หรือ TUI → ทำ `/capture-image-app-to-screenshot` เพื่อ capture ทุก route/component/view ลง `public/screenshots/`
-2. ถ้า user มี screenshots อยู่ใน Downloads → ทำ `/from-downloads` เพื่ออ่านภาพ
-3. ถ้ามี screenshots ล่าสุดจาก Windows → ทำ `/from-recent-windows-capture`
-4. ถ้าต้องการ capture component แยก → ทำ `/capture-component <component-name-or-url>`
-5. อ่านภาพที capture ได้ด้วย `/read` เพื่อเข้าใจสภาพ UI ปัจจุบัน
+1. ทำ `/deep-thinking "what makes a good UX/UI for this project"` โดยไม่ต้อง capture หรือใช้ external tools
+2. ทำ `/pondering "UX/UI trade-offs and design direction"` เพื่อทบทวนมุมมองผู้ใช้ ระบบ และอนาคต
+3. ระบุหลักการสำคัญสำหรับ project นี้ เช่น visual hierarchy, consistency, accessibility, feedback, motion
+4. ถ้ามี screenshots หรือ context จาก user อยู่แล้ว → อ่านด้วย `/read` แล้วนำมาประกอบการคิด
+5. สรุป design principles ทีจะใช้ guide การปรับปรุง
 
 ### 2. Review First
 
@@ -88,7 +88,8 @@ related:
 
 ## Rules
 
-- ต้องเริ่มจาก `/review-uxui` เสมอ
+- ต้องเริ่มจาก `/deep-thinking` หรือ `/pondering` ก่อนเสมอ
+- ไม่ต้อง capture หน้าจอภายใน skill นี้ ให้คิดวิเคราะห์จาก context ทีมี
 - ไม่เรียกตัวเอง (`/improve-uxui`) ซ้ำ
 - เลือก action ตาม severity / impact ไม่ทำทุกอย่างในครั้งเดียว
 - ใช้ `/follow-design-system` เป็นหลักสำหรับ design system
@@ -97,6 +98,7 @@ related:
 
 ## Expected Outcome
 
+- มี design principles ทีตอบโจทย์ผู้ใช้และ project context
 - มี design system ทีสม่ำเสมอ
 - UX/UI ใช้งานง่าย เข้าใจง่าย สวยงาม
 - Review score ดีขึ้นจาก before

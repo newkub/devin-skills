@@ -23,7 +23,7 @@ related:
   - capture-web
   - capture-image-app-to-screenshot
   - capture-terminal
-  - improve-uxui
+  - watch-browser-and-improve-uxui
   - review-uxui
   - follow-design-system
   - watch-browser-and-test-all-routes
@@ -118,4 +118,4 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 - มีภาพของแต่ละ component แยกไฟล์
 - รองรับ variants และ states ต่าง ๆ
 - บันทึกลง `public/screenshots/components/`
-- พร้อมใช้กับ `/improve-uxui`, `/review-uxui`, `/update-readme-md`
+- พร้อมใช้กับ `/watch-browser-and-improve-uxui`, `/review-uxui`, `/update-readme-md`
