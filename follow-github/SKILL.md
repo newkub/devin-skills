@@ -4,7 +4,6 @@ description: ตั้งค่า GitHub repository รวม metadata, branch 
 related:
   - update-github-metadata
   - follow-dot-github
-  - create-dev-branch
   - report-table
   - suggest-next-action
   - follow-git-flow
@@ -40,7 +39,10 @@ related:
    gh api repos/<owner>/<repo>/branches/main
    gh api repos/<owner>/<repo>/branches/dev
    ```
-5. ถ้าไม่มี `dev` บน remote → ทำ `/create-dev-branch` ก่อน แล้วกลับมา
+5. ถ้าไม่มี `dev` บน remote → สร้าง `dev` ด้วย:
+   - `git fetch origin`
+   - `git switch -c dev origin/main`
+   - `git push -u origin dev`
 
 ### 2. Update GitHub Metadata
 
@@ -153,7 +155,7 @@ related:
 ### 5. Safety
 
 - ถ้า `gh` ไม่พร้อม → stop
-- ถ้า branch ไม่มีบน remote → สร้าง `dev` ก่อนด้วย `/create-dev-branch`
+- ถ้า branch ไม่มีบน remote → สร้าง `dev` ด้วย `git switch -c dev origin/main` แล้ว `git push -u origin dev`
 - ถ้า API ตอบ 422 → อ่าน error message และปรับ payload
 
 ## Expected Outcome

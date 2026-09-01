@@ -2,7 +2,6 @@
 name: follow-git-flow
 description: ตั้งค่า git flow ใน repo สร้าง `dev` branch, hooks, worktree convention และอัปเดต AGENTS.md
 related:
-  - create-dev-branch
   - follow-github
   - update-agents-md
   - ship-verify-cicd
@@ -21,7 +20,7 @@ related:
 รองรับ solo และ team โดย block direct push ไป `main` ทัง local hooks และ GitHub protection
 
 ถ้าต้องการแค่ remote GitHub setup → ใช้ `/follow-github`
-ถ้าต้องการแค่ create `dev` → ใช้ `/create-dev-branch`
+ถ้าต้องการแค่ create `dev` → ทำตามขั้นตอน Create dev Branch ข้างล่าง
 
 ## Execute
 
@@ -39,9 +38,11 @@ related:
 
 > Goal: ให้ `dev` พร้อมเป้น integration branch
 
-1. ทำ `/create-dev-branch`
-2. ถ้า fail → stop และ report
-3. `dev` ต้องพร้อมทั้ง local และ remote
+1. ตรวจ `git branch --list dev`
+2. ถ้ามี `dev` ใน local → ใช้ `git switch dev` แล้วไป Ensure Remote
+3. ถ้าไม่มี `dev` ใน local แต่มีบน remote → ใช้ `git switch -c dev origin/dev`
+4. ถ้าไม่มีทั้งสอง → ใช้ `git switch -c dev <base-branch>`
+5. ทำ `git push -u origin dev` เพื่อ ensure `dev` มีบน remote
 
 ### 3. Setup Local Hooks
 

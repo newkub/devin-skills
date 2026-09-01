@@ -1,12 +1,16 @@
 ---
 name: create-github-issue
-description: สร้างหรืออัปเดต GitHub issue พร้อม template, labels, assignees, milestones
+description: ใช้ `gh issue` สร้าง ดู แก้ไข ปิด ลบ และจัดการ issues ของ repository ผ่าน CLI
+argument-hint: "[action] [repo]"
 related:
   - follow-github-issue-templates
   - implement-github-issue
   - create-github-pr
   - ask-me
   - open-github-issue
+  - open-github-pr
+  - list-github-issue
+  - view-issue
   - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
@@ -14,96 +18,115 @@ related:
 
 ## Goal
 
-สร้าง GitHub issue ใหม่ด้วยข้อมูลที่ครบถ้วนและเป็นระเบียบ
+ใช้ `gh issue` สร้าง ค้นหา ดู แก้ไข ปิด เปิด ลบ และจัดการ issues ของ repository ผ่าน CLI ทั้ง interactive และ scripted
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `implement-github-issue`, `create-github-pr`, `open-github-issue`, `open-github-repo`, `open-github-repo-personal`, `open-github-repo-org`
 
-- สร้าง issue ใน repository ที่ระบุ
-- ตั้งค่า metadata (title, body, labels, assignees, milestones)
-- เชื่อมโยง issue กับ issues อื่น (related, blocking, duplicate)
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `open-github-pr`, `list-github-issue`, `view-issue`, `follow-github-issue-templates`, `create-github-pr`, `review-github-issue`
+- รองรับ repo ปัจจุบันหรือ `--repo owner/repo`
+- ไม่ project management ขั้นสูง
 
 ## Execute
 
-### 1. Prepare Issue Information
+### 1. Verify Repository And Auth
 
-> Goal: รวบรวมข้อมูล issue
+> Goal: ยืนยันเป้าหมาย repo
 
-1. รวบรวมข้อมูล issue: title, description, priority, type
-2. ระบุ repository และ branch ที่เกี่ยวข้อง
-3. กำหนด labels ตาม project conventions (bug, feature, enhancement, documentation)
-4. ระบุ assignees หากมีผู้รับผิดชอบ
-5. เชื่อมโยงกับ milestones หากมี roadmap
-6. ถ้าไม่มีข้อมูลพอ → ทำ `/ask-me`
+1. รัน `gh auth status`
+2. รัน `gh repo view` เพื่อดู repo ปัจจุบัน
+3. ถ้าอยู่นอก repo ใช้ `--repo owner/repo` ทุกคำสั่ง
+4. ตรวจสิทธิ์เขียน issue
 
-### 2. Check Duplicates
+### 2. List And View Issues
 
-> Goal: ตรวจสอบ issue ซ้ำ
+> Goal: ค้นหาและดูรายละเอียด
 
-1. รัน `gh issue list --search "<title>" --limit 10`
-2. ถ้ามี issue ซ้ำ → อัปเดต issue เดิมแทนการสร้างใหม่
-3. ระบุ relation `duplicateOf` ถ้าเกี่ยวข้อง
+1. `gh issue list --state all --limit 50` สำหรับ open/closed
+2. `gh issue list --label <label> --assignee <user>` เพื่อกรอง
+3. `gh issue view <number>` สำหรับรายละเอียด
+4. `gh issue view <number> --comments` สำหรับ comments
+5. `gh issue view <number> --web` เปิด browser
 
-### 3. Use Issue Template
+### 3. Check Duplicates
+
+> Goal: ตรวจสอบ issue ซ้ำก่อนสร้าง
+
+1. `gh issue list --search "<title>" --limit 10`
+2. ถ้าซ้ำ → อัปเดต issue เดิม ระบุ `duplicateOf`
+3. ถ้าไม่ซ้ำ → ไปสร้างใหม่
+
+### 4. Use Issue Template
 
 > Goal: เขียน body ตามมาตรฐาน
 
-1. ถ้า repo ยังไม่มี issue templates → ทำ `/follow-github-issue-templates` ก่อน
+1. ถ้า repo ยังไม่มี templates → `/follow-github-issue-templates`
 2. อ่าน `.github/ISSUE_TEMPLATE/*.md`
-3. เลือกประเภท issue: bug, feature, plan, test, question, agents-task
-4. เขียน title ที่ชัดเจนและกระชับ
-5. เขียน description ประกอบด้วย:
-   - Problem statement
-   - Expected behavior
-   - Actual behavior
-   - Steps to reproduce
-   - Environment details
-   - Acceptance criteria
-6. เพิ่ม screenshots หรือ logs ถ้าจำเป็น
+3. เลือกประเภท: bug, feature, plan, test, question, agents-task
+4. เขียน title, description ด้วยภาษาอังกฤษ
+5. description ประกอบด้วย: Problem, Expected, Actual, Steps, Environment, Acceptance Criteria
 
-### 4. Create Issue
+### 5. Create Issue
 
 > Goal: สร้าง issue บน GitHub
 
-1. รัน `gh issue create --title "<title>" --body "<body>"`
-2. เพิ่ม labels ด้วย `--label "<label>"`
-3. เพิ่ม assignees ด้วย `--assignee <user>`
-4. เพิ่ม milestone ด้วย `--milestone <milestone>`
-5. ถ้าเป็น project item → ใช้ `gh project item-add <project-id>`
-6. ถ้ามี MCP tool ที่ใช้งานได้ → ใช้ `mcp8_issue_write` หรือ equivalent
+1. `gh issue create` แบบ interactive
+2. หรือ `gh issue create --title "<title>" --body "<body>"`
+3. หรือ `gh issue create -F body.md` เพื่ออ่าน body จากไฟล์
+4. เพิ่ม `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent`
+5. ถ้าเป็น project item → `gh project item-add <project-id>`
+6. ใช้ `--web` เปิดหน้า create ใน browser
 
-### 5. Update Existing Issue
+### 6. Update And Edit Issues
 
-> Goal: อัปเดต issue ที่มีอยู่
+> Goal: อัปเดต metadata และเนื้อหา
 
-1. ถ้าต้องอัปเดต issue ที่มีอยู่ → รัน `gh issue view <number>` เพื่อยืนยัน repo และ issue number
-2. แก้ไข title และ body ด้วย `gh issue edit <number>`
-3. จัดการ labels ด้วย `--add-label` และ `--remove-label`
-4. จัดการ assignees ด้วย `--add-assignee` และ `--remove-assignee`
-5. อัปเดต milestone หรือ project ถ้าจำเป็น
-6. ถ้ามี comments ใน body → ไม่เขียนทับโดยไม่ขอ user ยืนยันก่อน
-7. ตรวจสอบ issue อีกครั้งด้วย `gh issue view <number>`
+1. `gh issue edit <number> --title "<title>" --body "<body>"`
+2. `gh issue edit <number> --add-label bug --remove-label duplicate`
+3. `gh issue edit <number> --add-assignee <user> --remove-assignee <user>`
+4. `gh issue edit <number> --add-project "<title>" --remove-project <id>`
+5. `gh issue edit <number> --milestone "v1.0"` หรือ `--remove-milestone`
+6. `gh issue edit <number> --type Bug --parent <number>`
 
-### 6. Verify And Report
+### 7. Manage Issue Lifecycle
 
-> Goal: ยืนยัน issue และส่งมอบผล
+> Goal: ปิด เปิด คอมเมนต์ ย้าย ลบ
 
-1. ตรวจสอบว่า issue ถูกสร้างสำเร็จ
-2. ยืนยัน metadata ถูกต้อง
-3. รัน `gh issue view <number>` เพื่อตรวจสอบครั้งสุดท้าย
-4. รายงาน URL ของ issue กลับ
+1. `gh issue close <number>` หรือ `gh issue reopen <number>`
+2. `gh issue comment <number> --body "<comment>"`
+3. `gh issue pin <number>` / `gh issue unpin <number>`
+4. `gh issue lock <number>` / `gh issue unlock <number>` ด้วยความระมัดระวัง
+5. `gh issue transfer <number> <owner/repo>` เพื่อย้าย
+6. `gh issue delete <number> --yes` ต้องถาม user ก่อน ใช้แทน `close` ถ้าต้องการลบจริง
+
+### 8. Verify And Report
+
+> Goal: ยืนยันผลและส่งมอบ
+
+1. ตรวจสอบ issue ถูกสร้าง/แก้ไขสำเร็จ
+2. `gh issue view <number>` เพื่อตรวจสอบครั้งสุดท้าย
+3. รายงาน URL ของ issue กลับ
 
 ## Rules
 
-### 1. Issue Title
+### 1. Repository Target
 
-- ใช้ภาษาอังกฤษทั้งหมด ยกเว้น technical terms, project/skill names, และ repo conventions ทีกำหนดเป้นอย่างอื่น
+- `gh issue` ใช้ repo จาก git remote ของ current directory
+- ใช้ `--repo owner/repo` หรือ `-R` สำหรับ repo อื่น
+
+### 2. Language
+
+- เขียน title และ description ด้วยภาษาอังกฤษทั้งหมด
+- ยกเว้น technical terms, project/skill names, paths, commands, และ repo conventions ที่กำหนดภาษาอื่น
+- ถ้า repo conventions ไม่ระบุภาษา ใช้ภาษาอังกฤษเป็นค่าเริ่มต้น
+
+### 3. Issue Title
+
 - เริ่มต้นด้วยประเภท issue (Bug, Feature, Enhancement, Docs)
 - ใช้ Title Case
 - ไม่เกิน 80 ตัวอักษร
 - ตัวอย่าง: `Bug: Login fails after timeout`
 
-### 2. Issue Description
+### 4. Issue Description
 
 ```markdown
 ## Problem
@@ -124,17 +147,11 @@ related:
 - Version: [version]
 
 ## Acceptance Criteria
-- [ ] criterion 1
-- [ ] criterion 2
+- [ ] Criterion 1
+- [ ] Criterion 2
 ```
 
-### 3. Language
-
-- เขียน title และ description ด้วยภาษาอังกฤษทั้งหมด
-- ยกเว้น technical terms, project/skill names, paths, commands, และ repo conventions ทีกำหนดภาษาอื่น
-- ถ้า repo conventions ไม่ระบุภาษา ใช้ภาษาอังกฤษเป็นค่าเริ่มต้น
-
-### 4. Labels Convention
+### 5. Labels Convention
 
 | Category | Labels |
 |----------|--------|
@@ -143,35 +160,59 @@ related:
 | Status | triage, in-progress, review, done |
 | Component | frontend, backend, database, api, ui |
 
-### 5. Issue Relations
+### 6. Issue Relations
 
 - `blockedBy`: issue ที่ต้องแก้ก่อน
 - `blocks`: issue ที่ถูกบล็อกโดย issue นี้
 - `relatedTo`: issue ที่เกี่ยวข้องแต่ไม่บล็อก
 - `duplicateOf`: issue ที่ซ้ำกับ issue นี้
 
-### 6. Assignees
+### 7. Assignees
 
 - กำหนด assignees หนึ่งคนเป็นหลัก
 - หลีกเลี่ยง assign หลายคนเว้นจำเป็น
 - ใช้ username ที่ถูกต้องใน GitHub
 
-### 7. Update Existing Issues
+### 8. Update Existing Issues
 
 - ห้ามเขียนทับ body โดยไม่ได้รับการยืนยันจากผู้ใช้ หากมี comments
-- ใช้ `--add-label` และ `--remove-label` เพื่อจัดการ labels
-- ใช้ `--add-assignee` และ `--remove-assignee` เพื่อจัดการ assignees
-- แก้ไขให้กระชับและน้อยที่สุด
+- ใช้ `--add-label` และ `--remove-label`
+- ใช้ `--add-assignee` และ `--remove-assignee`
 - ตรวจสอบ issue อีกครั้งหลังอัปเดต
+
+### 9. Safety
+
+- คำสั่ง `delete`, `close`, `lock`, `transfer` เป็น destructive ต้องถาม user ก่อน
+- ตรวจสอบ issue number/repo ก่อนเปลี่ยนสถานะ
+- ใช้ `gh issue close` แทน `delete` ถ้าต้องการปิดเท่านั้น
+
+### 10. Interactive And Script Mode
+
+- ใน TTY `gh issue create` ถาม title/body ถ้าขาด flags
+- ใน scripts/CI ให้ระบุ flags ครบถ้วนเพื่อหลีกเลี่ยง interactive
+- ใช้ `--json` หรือ `--jq` เพื่อรับ output เป็น JSON
+- ใช้ `--template` เพื่อจัดรูปแบบ output
+
+### 11. CLI Reference
+
+| Command | Description | Common Options |
+|---------|-------------|----------------|
+| `gh issue list` | List issues | `-R`, `--state`, `--label`, `--assignee`, `--limit` |
+| `gh issue view <id>` | View issue | `-R`, `--comments`, `--json`, `--web` |
+| `gh issue create` | Create issue | `-R`, `--title`, `--body`, `--label`, `--assignee`, `--milestone`, `--project`, `--type`, `--parent`, `--web` |
+| `gh issue edit <id>` | Edit issue | `-R`, `--title`, `--body`, `--add-label`, `--remove-label`, `--add-assignee`, `--remove-assignee`, `--add-project`, `--remove-project`, `--milestone`, `--type`, `--parent` |
+| `gh issue close <id>` | Close issue | `-R`, `--comment`, `--reason` |
+| `gh issue reopen <id>` | Reopen issue | `-R`, `--comment` |
+| `gh issue comment <id>` | Comment | `-R`, `--body`, `--edit-last` |
+| `gh issue delete <id>` | Delete issue | `-R`, `--yes` |
 
 ## Expected Outcome
 
-- Issue ถูกสร้างหรืออัปเดตด้วยข้อมูลครบถ้วน
-- Title และ description ชัดเจนและเป็นมาตรฐาน
-- Labels, assignees, milestones ถูกตั้งค่าอย่างถูกต้อง
-- Issue เชื่อมโยงกับ issues ที่เกี่ยวข้อง
-- การเปลี่ยนแปลง issue ผ่านการตรวจสอบและส่ง URL กลับ
-- Team สามารถเข้าใจและดำเนินการได้ทันที
+- สามารถสร้าง ค้นหา ดู แก้ไข และจัดการ lifecycle ของ issues ผ่าน `gh issue` ได้
+- ใช้งานได้ทั้ง interactive และ scripted
+- Issues เชื่อมโยงกับ project/labels/assignees/milestones ถูกต้อง
+- ไม่มี issue ถูกลบ/ย้าย/ปิดโดยไม่ได้รับอนุญาต
+- Team เข้าใจและดำเนินการได้ทันที
 
 ## Common Mistakes
 
@@ -187,4 +228,3 @@ related:
 - สร้าง issue ที่ไม่มี action items
 - สร้าง issue โดยไม่มี steps to reproduce
 - ใช้ description สั้นเกินไปไม่มี context
-

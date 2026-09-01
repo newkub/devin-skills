@@ -4,7 +4,6 @@ description: สร้าง git branch ใหม่อย่างถูกต�
 argument-hint: "[branch-name]"
 related:
   - cleanup-git-branch
-  - create-dev-branch
   - delete-git-branch
   - ship-verify-cicd
 ---
@@ -60,7 +59,6 @@ related:
 - ไม่สร้าง branch ซ้ำ
 
 - ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /create-dev-branch ถ้าจำเป็น
 - ใช้ /delete-git-branch ถ้าจำเป็น
 
 ## Expected Outcome

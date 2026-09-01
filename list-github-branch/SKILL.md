@@ -5,7 +5,6 @@ argument-hint: "[repo]"
 related:
   - list-git-branch
   - cleanup-git-branch
-  - create-dev-branch
   - report-table
 ---
 
@@ -60,7 +59,6 @@ related:
 
 - ใช้ /list-git-branch ถ้าจำเป็น
 - ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /create-dev-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **788** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **786** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -105,7 +105,7 @@ Core:
 By prefix:
 
 Major skill families by current count:
-- `follow-*` (241): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`, `follow-create-web`, `follow-create-tui`, `follow-review`
+- `follow-*` (243): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`, `follow-create-web`, `follow-create-tui`, `follow-review`
 - `review-*` (56): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`, `review-codebase-everything`
 - `list-*` (48): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-actions-fails`, `list-cloudflare-worker-fails`, `list-ci-configs`, `list-todo-md`
 - `run-*` (34): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
@@ -117,7 +117,7 @@ Major skill families by current count:
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
 - `deep-*` (25): deep analysis, research, debugging, validation, update, and ship. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`, `deep-update`, `deep-ship`, `deep-build`, `deep-review`, `deep-review-codebase`, `deep-review-pr`
 - `watch-*` (15): continuous monitoring and watch modes. Examples: `watch-build`, `watch-cicd-and-resolve`, `watch-test`, `watch-vercel`
-- `create-*` (18): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
+- `create-*` (21): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
 - `open-*` (16): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`, `open-files-in-web`, `open-github-repo`
 - `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
 - `use-*` (13): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`, `use-my-packages-on-registry`, `use-create-pr`
@@ -129,7 +129,7 @@ Major skill families by current count:
 - `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
 - `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-attack-surface`, `analyze-root-cause-analysis`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `vs`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*` (e.g. `refactor-codebase`), `release-*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `extract-*` (e.g. `extract-pattern`), `generate-*` (e.g. `generate-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `report-what-you-do` (e.g. `suggest-me`, `suggest-next-action`), `create-dev-branch`, `follow-git-flow`, `follow-github`, `simplify`, `summarize-*` (e.g. `summarize-prompt`), `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-attack-surface`, `analyze-root-cause-analysis`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `vs`, `consider-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*` (e.g. `refactor-codebase`), `release-*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `extract-*` (e.g. `extract-pattern`), `generate-*` (e.g. `generate-prompt-from-image`), `resolve-*`, `restore-*`, `save-*`, `scan-*`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `report-what-you-do` (e.g. `suggest-me`, `suggest-next-action`), `follow-git-flow`, `follow-github`, `simplify`, `summarize-*` (e.g. `summarize-prompt`), `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
 
 ### 6. Workspaces
 
