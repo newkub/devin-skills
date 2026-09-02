@@ -14,7 +14,6 @@ related:
   - dont-over-engineer
   - rethink
   - ship
-  - deep-ship
 ---
 
 ## Goal
@@ -100,8 +99,8 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: ส่งมอบ refactored code หลัง verify ผ่าน
 
-- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
-- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จ
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั้งหมด ตั้งแต่ verify, release, deploy, จนถึง rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` เสร็จ
 
 ## Rules
 

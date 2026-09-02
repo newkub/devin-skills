@@ -98,7 +98,7 @@ related:
 | `/implement-from-notes-idea` | ทำตาม list ยาว |
 | `/follow-*` skills ทีซับซ้อน | เช่น `follow-agents-md`, `follow-framework-*` |
 | `/consider-use-subagents` | มีการ delegate งานไป subagents |
-| `/deep-ship`, `/deep-validate` | มี validation หลายรอบ |
+| `/ship`, `/deep-validate` | มี validation หลายรอบ |
 
 ## Expected Outcome
 
