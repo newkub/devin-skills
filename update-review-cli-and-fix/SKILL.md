@@ -1,11 +1,12 @@
 ---
-name: update-review-cli
-description: อัปเดต tools/review-codebase CLI ให้ keep up ทันกับ codebase features
+name: update-review-cli-and-fix
+description: อัปเดต tools/review-codebase CLI ให้ keep up ทันกับ codebase features พร้อม run และ fix
 related:
   - deep-review
   - update-create-analyze-cli
   - update-project-rules
   - run-review
+  - resolve-errors
   - deep-analyze-by-use-scripts
   - scan-codebase
   - analyze-project

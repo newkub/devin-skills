@@ -26,7 +26,7 @@ related:
   - deep-plan
   - run-review
   - update-project-rules
-  - update-review-cli
+  - update-review-cli-and-fix
   - update-create-analyze-cli
   - deep-validate
   - deep-report
