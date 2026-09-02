@@ -26,6 +26,7 @@ related:
   - deep-optimize
   - run-verify
   - run-test-all
+  - run-test-coverage
   - deep-validate
   - resolve-errors
   - git-commit
@@ -78,7 +79,7 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 4. ทำ `/deep-optimize` ถ้าต้องการหา quick wins
 5. ทำ `/run-verify`
 6. ทำ `/run-test-all` ถ้ามี
-7. ทำ `/run-test-coverage` ถ้ามี setup coverage
+7. ทำ `/run-test-coverage` เพื่อ setup coverage 100% และ run จนกว่าจะ 100%
 8. ทำ `/update-review-cli-and-fix` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุให้อัปเดต/รัน review CLI
 9. ถ้ามี test failures หรือ coverage gaps ทีต้องแก้ → ทำ `/update-test-and-fix` แล้วรัน `/run-test-all` กับ `/run-test-coverage` ใหม่อีกครั้ง
 10. ทำ `/deep-validate`

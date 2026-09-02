@@ -4,7 +4,7 @@ argument-hint: "[directory]"
 description: แปลง directory ใน repo ไปเป็น git submodule โดยสร้าง remote repo push content แล้ว add กลับ
 related:
   - create-github-repo
-  - git-commit-and-push
+  - git-commit-and-push-and-resolve-cicd
   - git-push
   - list-git-submodules
   - delete-git-submodules
@@ -141,7 +141,7 @@ related:
 - ลบ temp directory หลัง push สำเร็จ
 - ไม่ commit temp files เข้า repo
 
-- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /git-commit-and-push-and-resolve-cicd ถ้าจำเป็น
 - ใช้ /list-git-submodules ถ้าจำเป็น
 
 ## Expected Outcome

@@ -57,17 +57,28 @@ related:
 4. บันทึก coverage metrics ทุก category
 5. บันทึก report location
 
-### 4. Verify 100% Coverage
+### 4. Verify And Loop Until 100% Coverage
 
-> Goal: Verify 100% Coverage
+> Goal: Verify And Loop Until 100% Coverage
 
-ตรวจสอบว่า coverage ถึง 100% ทุกประเภท
+ตรวจสอบว่า coverage ถึง 100% ทุกประเภท ถ้าไม่ถึงให้เขียน tests แล้ว run ใหม่จนกว่าจะ 100%
 
 1. ตรวจสอบ `lines` coverage ถึง 100%
 2. ตรวจสอบ `branches` coverage ถึง 100%
 3. ตรวจสอบ `functions` coverage ถึง 100%
 4. ตรวจสอบ `statements` coverage ถึง 100%
-5. หาก coverage ไม่ถึง 100% ทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+5. ถ้า coverage ถึง 100% ทุก category → ไป Report
+6. ถ้า coverage ไม่ถึง 100% → ทำ `/review-quality` วิเคราะห์ gaps และเขียน tests ที่ขาด
+7. ถ้าเขียน tests แล้ว → กลับไป Step 3 Run Coverage Analysis ใหม่
+8. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report พร้อม remaining gaps
+
+### 5. Report
+
+> Goal: Report coverage result
+
+1. ถ้า coverage ถึง 100% → report framework, metrics, report location
+2. ถ้าไม่ถึง 100% → report remaining gaps, categories ที่ยังไม่ผ่าน, next step
+3. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -101,12 +112,14 @@ related:
 - `statements` - % ของ statements ที่ถูก execute
 - ทุก category ต้องถึง 100%
 
-### 4. Coverage Threshold
+### 4. Coverage Threshold And Loop
 
-เป้าหมาย coverage ต้องถึง 100% ทุก category โดยไม่มีข้อยกเว้น
+เป้าหมาย coverage ต้องถึง 100% ทุก category โดยไม่มีข้อยกเว้น วน loop จนกว่าจะ 100%
 
 - Coverage 100% ทุก category เท่านั้นที่ผ่าน
 - หาก coverage ไม่ถึง 100% ต้องทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- วน loop run coverage → write tests → run coverage จนกว่าจะ 100% สูงสุด 5 รอบ
+- ถ้าเกิน 5 รอบ → stop และ report remaining gaps
 - ไม่มีข้อยกเว้นสำหรับ critical code
 - ไม่มีข้อยกเว้นสำหรับ edge cases
 - ไม่มีข้อยกเว้นสำหรับ error paths
@@ -120,7 +133,8 @@ related:
 ## Expected Outcome
 
 - Test framework ถูกระบุอย่างถูกต้อง
-- Coverage config ถูกตั้งค่าตาม framework
+- Coverage config ถูกตั้งค่า thresholds 100% ทุก category
 - Coverage report ถูกสร้าง
 - Coverage ถึง 100% ทุก category (lines, branches, functions, statements)
-- หากไม่ถึง 100% ทำ `/review-quality` เพื่อวิเคราะห์ gaps และเขียน tests ที่ขาด
+- ถ้าไม่ถึง 100% วน loop เขียน tests แล้ว run coverage จนกว่าจะ 100% สูงสุด 5 รอบ
+- ถ้าเกิน 5 รอบ → report remaining gaps และ next step
