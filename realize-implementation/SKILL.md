@@ -6,7 +6,7 @@ related:
   - implement-features-to-mvp
   - implement-todo-md
   - update-todo-md
-  - review-codebase-everything
+  - deep-review
   - deep-analyze-by-use-scripts
   - use-lib-effective
   - resolve-errors
@@ -14,6 +14,8 @@ related:
   - update-references
   - run-verify
   - deep-realize-implementation
+  - ship
+  - deep-ship
 ---
 
 ## Goal
@@ -88,6 +90,13 @@ related:
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
 3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
 4. ทำ `/run-verify` เพื่อตรวจสอบ scan, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)
+
+### 7. Ship (If Requested)
+
+> Goal: ส่งมอบ production code หลัง verify ผ่าน
+
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จ
 
 ## Rules
 

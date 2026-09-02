@@ -12,6 +12,7 @@ related:
   - setup-cicd
   - follow-tasks
   - ship
+  - deep-ship
   - watch-cicd-and-resolve
   - watch-github-actions
   - git-push
@@ -77,6 +78,13 @@ related:
 7. ถ้าเป็น GitHub Actions → `/watch-github-actions` มิฉะนั้น `/watch-cicd-and-resolve`
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
+
+### 5. Ship (If Requested)
+
+> Goal: ส่งมอบงานหลัง verify ผ่าน
+
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จ
 
 ## Rules
 

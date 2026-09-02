@@ -41,6 +41,8 @@ related:
   - suggest-next-action
   - fix
   - run-check
+  - ship
+  - deep-ship
 ---
 
 ## Goal
@@ -135,6 +137,13 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - ทำ `/report-table` สรุปผลรวม
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไปทีมี impact จริง
 - ถ้าพบ critical issues → ระบุ quick wins และ major improvements แยกกัน
+
+### 7. Ship (If Requested)
+
+> Goal: ส่งมอบงานหลัง deep review ผ่าน
+
+- ถ้า user ต้องการ ship ผลงานทีผ่าน deep review และ validation → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จเพื่อแนะนำ action ถัดไป
 
 ## Rules
 
