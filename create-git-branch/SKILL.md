@@ -4,9 +4,8 @@ description: สร้าง git branch ใหม่อย่างถูกต�
 argument-hint: "[branch-name]"
 related:
   - cleanup-git-branch
-  - create-dev-branch
   - delete-git-branch
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -49,7 +48,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-verify-cicd`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -60,7 +59,6 @@ related:
 - ไม่สร้าง branch ซ้ำ
 
 - ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /create-dev-branch ถ้าจำเป็น
 - ใช้ /delete-git-branch ถ้าจำเป็น
 
 ## Expected Outcome

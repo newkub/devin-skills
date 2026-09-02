@@ -98,8 +98,7 @@ related:
 1. จัดกลุ่ม failures ตาม route และประเภท: assertion, setup, timeout, browser error
 2. เรียง priority: setup/teardown ก่อน แล้ว assertion แล้ว timeout
 3. ทำ `/resolve-errors` กับ browser errors
-4. ทำ `/watch-test` สำหรับ test failures ที่ต้อง fix หลายรอบ
-5. แก้ที่ root cause ไม่ใช่ suppress
+4. แก้ที่ root cause ไม่ใช่ suppress
 
 ### 8. Review By Stakeholder
 

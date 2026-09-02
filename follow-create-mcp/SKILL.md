@@ -91,7 +91,7 @@ related:
 > Goal: ส่งมอบ MCP server
 
 1. ทำ `/deep-validate` เพื่อตรวจ conventions, references, และ security
-2. ทำ `/ship-verify-cicd`
+2. ทำ `/ship`
 3. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
@@ -130,5 +130,5 @@ related:
 - Tools/resources/prompts ถูก expose ผ่าน MCP protocol
 - Transport ทีเลือกทดสอบผ่าน
 - `%APPDATA%\devin\mcp_config.json` ถูกอัปเดตพร้อม server entry
-- ผ่าน `/deep-validate` และ `/ship-verify-cicd`
+- ผ่าน `/deep-validate` และ `/ship`
 

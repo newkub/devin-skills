@@ -5,7 +5,7 @@ related:
   - setup-cicd
   - setup-package
   - setup-release
-  - ship-verify-cicd
+  - ship
   - deep-analyze
   - deep-research
   - deep-plan
@@ -90,7 +90,7 @@ related:
 
 | Skill / Skill Group | เหตุผลทีควร integrate |
 |---|---|
-| `/ship-verify-cicd` | มีหลายขั้นตอน: prepare, verify, build, deploy, commit |
+| `/ship` | มีหลายขั้นตอน: prepare, verify, build, deploy, commit |
 | `/deep-analyze`, `/deep-research`, `/deep-plan` | ใช้เวลานาน มีหลาย phase |
 | `/resolve-errors` | ต้อง trial-and-error หลายรอบ |
 | `/run-verify`, `/watch-cicd-and-resolve` | รอ external pipeline |

@@ -3,7 +3,6 @@ name: review-update
 description: Review drift between current and target state to determine update priority order
 related:
   - update-version-latest
-  - update-runtime-latest
   - update-dependencies-latest
   - check-should-update
   - report-table
@@ -110,7 +109,6 @@ Review drift ระหว่าง current state และ target state เพ�
 - รายงานเป็นตารางด้วย `/report-table`
 
 - ใช้ /update-version-latest ถ้าจำเป็น
-- ใช้ /update-runtime-latest ถ้าจำเป็น
 - ใช้ /update-dependencies-latest ถ้าจำเป็น
 - ใช้ /update-specs ถ้าจำเป็น
 

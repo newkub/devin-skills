@@ -3,9 +3,7 @@ name: cleanup-git-branch
 description: ลบ git branches เก่าที merge แล้วหรือไม่ใช้แล้ว
 argument-hint: "[filter]"
 related:
-  - create-git-branch
   - delete-git-branch
-  - follow-tool-git-branch
 ---
 
 ## Goal
@@ -51,9 +49,7 @@ related:
 - ขอ confirm ก่อนลบ shared branches
 - เก็บ release/hotfix branches ตาม policy
 
-- ใช้ /create-git-branch ถ้าจำเป็น
 - ใช้ /delete-git-branch ถ้าจำเป็น
-- ใช้ /follow-tool-git-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

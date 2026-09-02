@@ -11,7 +11,7 @@
 | Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
 | Deployment | `/follow-deploy`, `/deploy-to-cloudflare`, `/follow-service-vercel` |
-| Maintenance | `/update-version-latest`, `/update-runtime-latest`, `/update-dependencies-latest`, `/run-cleanup`, `/refactor` |
+| Maintenance | `/update-version-latest`, `/update-dependencies-latest`, `/run-cleanup`, `/refactor` |
 
 ### Architecture Workflows
 
@@ -35,7 +35,7 @@
 
 | Category | Workflows |
 |----------|-----------|
-| Git | `/follow-tool-git-branch`, `/follow-tool-git` |
+| Git | `/follow-tool-git` |
 | Testing | `/run-test`, `/run-test-e2e`, `/run-test-integration` |
 | Documentation | `/update-readme-md`, `/update-docs` |
 

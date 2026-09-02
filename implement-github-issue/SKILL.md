@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ issue ทีต้องการเปลี่ยน code หรือ docs โดยสร้าง branch, implement, validate, แล้วสร้าง PR
+ใช้สำหรับ issue ทีต้องการเปลี่ยน code หรือ docs บน branch ทีเหมาะสม โดย implement, validate, แล้วสร้าง PR
 
 ## Execute
 
@@ -31,16 +31,7 @@ related:
 3. บันทึก acceptance criteria ถ้ามี
 4. ถ้าไม่ชัด → ทำ `/ask-me`
 
-### 2. Create Branch
-
-> Goal: เตรียม branch สำหรับงาน
-
-1. checkout base branch (เช่น `main`)
-2. รัน `git pull` เพื่ออัปเดต
-3. สร้าง branch `issue-<number>-<short-title>` หรือตาม project conventions
-4. รัน `git switch -c <branch>`
-
-### 3. Plan
+### 2. Plan
 
 > Goal: วางแผนการ implement
 
@@ -48,7 +39,7 @@ related:
 2. ระบุไฟล์และ skills ทีจำเป็น
 3. วิเคราะห์ dependencies และ risk
 
-### 4. Implement
+### 3. Implement
 
 > Goal: แก้ไขตาม issue
 
@@ -57,7 +48,7 @@ related:
 3. ถ้าต้อง refactor → ทำ `/refactor`
 4. ทำการเปลี่ยนแปลงตาม acceptance criteria
 
-### 5. Verify
+### 4. Verify
 
 > Goal: ยืนยันว่า code ถูกต้อง
 
@@ -66,7 +57,7 @@ related:
 3. รัน `git diff --check`
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
-### 6. Commit And Push
+### 5. Commit And Push
 
 > Goal: ส่งงานขึ้น remote
 
@@ -74,7 +65,7 @@ related:
 2. ทำ `/git-push` เพื่อ push branch
 3. บันทึก commit hash
 
-### 7. Create Pull Request
+### 6. Create Pull Request
 
 > Goal: สร้าง PR จาก branch
 
@@ -83,14 +74,14 @@ related:
 3. เพิ่ม labels/assignees ถ้าจำเป็น
 4. บันทึก PR number
 
-### 8. Optional Merge
+### 7. Optional Merge
 
 > Goal: ถ้า user ต้องการ merge ทันที
 
 1. ถ้า PR พร้อม merge → ทำ `/merge-github-pr`
 2. ถ้ายังไม่พร้อม → รายงาน PR number
 
-### 9. Update Issue
+### 8. Update Issue
 
 > Goal: อัปเดต issue status
 
@@ -100,7 +91,7 @@ related:
 ## Rules
 
 - ไม่แก้ไขเกิน scope ของ issue
-- สร้าง branch ใหม่เสมอ
+- ทำงานบน branch ทีเหมาะสม
 - ใช้ `/realize-implementation` สำหรับ code จริง
 - ใส่ `Closes #<issue>` ใน PR body
 - ตรวจสอบก่อน merge ว่า CI ผ่าน

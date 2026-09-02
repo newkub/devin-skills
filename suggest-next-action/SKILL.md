@@ -9,8 +9,10 @@ related:
   - follow-devin-global-subagents
   - report-before
   - ask-me
-  - ship-verify-cicd
+  - ship
   - continue
+  - idea-features
+  - deep-idea-features
   - rethink
 ---
 ## Goal
@@ -80,6 +82,7 @@ related:
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
 10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/follow-devin-global-subagents` หรือ `/consider-use-subagents` ตาม context
+11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/deep-idea-features` ถ้าต้องการ plan/implementation
 
 ### 5. Present Options
 
@@ -175,8 +178,9 @@ related:
 - ใช้ /loop-continuous ถ้าจำเป็น
 - ใช้ /follow-enter-dot ถ้าจำเป็น
 - ใช้ /report-before ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
+- ใช้ /idea-features หรือ /deep-idea-features ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome
@@ -190,5 +194,6 @@ related:
 - ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/consider-use-subagents` ตาม context
+- ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea-features` หรือ `/deep-idea-features` ตาม context
 - สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
 

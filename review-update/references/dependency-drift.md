@@ -46,7 +46,6 @@
 ## Recommended Update Skills
 
 - `update-version-latest` สำหรับ update ทุก versioned สิ่ง (dependencies, runtimes, tools, config)
-- `update-runtime-latest` สำหรับ update language runtimes และ version pins
 - `update-dependencies-latest` สำหรับ update dependencies เป็น latest
 - `update-dot-devin` ถ้า dependency/runtime changes กระทบ `.devin` structure
 - `update-project-rules` ถ้า dependency/runtime changes กระทบ rules

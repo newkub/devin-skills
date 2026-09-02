@@ -13,6 +13,8 @@ related:
   - review-architecture
   - dont-over-engineer
   - rethink
+  - ship
+  - deep-ship
 ---
 
 ## Goal
@@ -93,6 +95,13 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 1. ทำ `/report` สรุป before/after รวม refactor และ consistency check
 2. ระบุ TODO ถ้ามี
+
+### 9. Ship (If Requested)
+
+> Goal: ส่งมอบ refactored code หลัง verify ผ่าน
+
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จ
 
 ## Rules
 

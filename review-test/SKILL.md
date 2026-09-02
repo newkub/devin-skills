@@ -75,7 +75,7 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 1. Review Only: ทำ review strategy และผลลัพธ์เท่านั้น ไม่แก้ไข source/test code ระหว่าง review — ถ้าต้องเขียน/แก้ tests ใช้ `update-test-everything`, ถ้าต้องแก้ source ใช้ `deep-debug` หรือ `resolve-errors`, ถ้าต้องแก้ config ใช้ `update-config`
 2. Evidence-Based Findings: ทุก finding ต้องมี evidence จาก test output หรือ coverage report — ระบุ file path, test name, line number (ถ้ามี), ใช้ `Grep`, `scan-codebase`, `jq` หรือ `grep` ดึงข้อมูลจาก output ไฟล์, จัดลำดับตาม severity: Critical → High → Medium → Low
 3. Scoring: คะแนนต่อ category ผ่าน = 1, เตือน = 0.5, ไม่ผ่าน = 0 — test quality score = (total score / total categories) × 100% — Grade A (90+), B (80+), C (70+), D (60+), F (<60) — Score < 70 → แนะนำให้เขียน tests เพิ่มก่อน run
-4. Skill Update Discipline: ใช้ `/update-devin-global-skills` เฉพาะเมื่อ test result พบ gap ใน skill ที่มีอยู่จริง — ไม่อัปเดต skill เพียงเพราะ project test fail ปกติ — ต้องสร้าง issue/หมายเหตุก่อน update skill
+4. Skill Update Discipline: ใช้ `/update-devin-global-skills` เฉพาะเมื่อ test result พบ gap ใน skill ที่มีอยู่จริง — ไม่อัปเดต skill เพียงเพราะ project test fail ปกติ — บันทึกหมายเหตุ/เหตุผลก่อน update skill
 5. Safety: ไม่ expose secrets จาก test output หรือ coverage report — ไม่รัน destructive commands ระหว่าง review — ทำ dry run ถ้าต้อง re-run tests เพื่อ verify flakiness
 6. Formatting: ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis — ใช้ heading levels สำหรับ structure — รายงานเป็นตารางด้วย `/report-table`
 

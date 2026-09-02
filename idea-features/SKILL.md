@@ -69,7 +69,7 @@ related:
 - ตอบกลับในแชทเท่านั้น
 - ไม่สร้างไฟล์ `.devin/reports/` หรือ `.devin/plan/`
 - ไม่สร้าง web app ถาวร
-- ไม่เรียก `/realize-implementation` หรือ `/ship-verify-cicd`
+- ไม่เรียก `/realize-implementation` หรือ `/ship`
 
 ### 2. Lightweight
 

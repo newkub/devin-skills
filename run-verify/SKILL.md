@@ -11,7 +11,8 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - ship-verify-cicd
+  - ship
+  - deep-ship
   - watch-cicd-and-resolve
   - watch-github-actions
   - git-push
@@ -78,6 +79,13 @@ related:
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
 
+### 5. Ship (If Requested)
+
+> Goal: ส่งมอบงานหลัง verify ผ่าน
+
+- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั่วไป หรือ `/deep-ship` ถ้าต้องการ deep validation, release, deploy, rollback plan
+- ทำ `/suggest-next-action` หลัง `/ship` หรือ `/deep-ship` เสร็จ
+
 ## Rules
 
 ### 1. Verify Only
@@ -104,7 +112,7 @@ related:
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /ship-verify-cicd ถ้าจำเป็น
+- ใช้ /ship ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 

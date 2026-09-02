@@ -5,7 +5,7 @@ related:
   - follow-create-sdk
   - follow-my-tech-stack
   - review-techstack
-  - ship-verify-cicd
+  - ship
 ---
 ## Goal
 
@@ -71,7 +71,7 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship-verify-cicd`
+1. ทำ `/ship`
 2. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules

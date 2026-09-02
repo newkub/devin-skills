@@ -5,7 +5,6 @@ description: ติดตาม CI/CD pipeline จาก trigger จนผ่า
 related:
   - watch-github-actions
   - watch-deploy
-  - watch-vercel
   - watch-release
   - list-ci-configs
   - run-deploy
@@ -30,7 +29,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 ```
 
 - helper รองรับ GitHub Actions (CI) แบบเต็มรูปแบบ
-- CD mode จะส่งต่อให้ `/watch-deploy`, `/watch-vercel`, `/watch-release` ตาม target
+- CD mode จะส่งต่อให้ `/watch-deploy`, `/watch-release` ตาม target
 
 ## Goal
 
@@ -40,15 +39,15 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 
 ใช้หลังจาก:
 - push code
-- `/run-deploy`, `/deploy-to-*`, `/ship-verify-cicd`, `/run-release`
+- `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
 - หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
 
 ครอบคลุม:
 - CI: GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins
 - CD: Cloudflare Pages, Vercel, Railway, Render, Fly.io, Netlify, custom domain, release/tag
 
-สำหรับ CI platform เฉพาะจะส่งต่อ `/watch-github-actions`, `/watch-build`, `/watch-test`, `/watch-lint`
-สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-vercel`, `/watch-release`, `/watch-deploy`
+สำหรับ CI platform เฉพาะจะส่งต่อ `/watch-github-actions`
+สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-release`, `/watch-deploy`
 
 ไม่รวม trigger ครั้งแรก — ต้องถูก trigger โดย `/run-deploy`, `/deploy-to-*`, `/run-release` หรือ push ก่อน
 
@@ -114,9 +113,8 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 > Goal: เลือก skill ทีเหมาะกับ CD target
 
 1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/watch-cicd-and-resolve`)
-2. Vercel: URL มี `.vercel.app` หรือ `vercel` ใน output → `/watch-vercel`
-3. Release/tag: version tag, release name, GitHub release → `/watch-release`
-4. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
+2. Release/tag: version tag, release name, GitHub release → `/watch-release`
+3. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
 
 ### 7. CD: Watch Until Healthy
 

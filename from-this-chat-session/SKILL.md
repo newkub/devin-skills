@@ -7,7 +7,7 @@ related:
   - summarize-this-chat-session
   - scan-codebase
   - deep-validate
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -65,7 +65,7 @@ related:
 1. ตรวจสอบว่า `SKILL.md` ไม่เกิน 250 บรรทัด
 2. ทำ `/deep-validate` เพื่อตรวจความถูกต้อง
 3. ทำ `/deep-validate` เพื่อตรวจ: sections ครบ, ไม่มี TODO/MOCK/placeholder
-4. ทำ `/ship-verify-cicd`
+4. ทำ `/ship`
 
 ## Rules
 

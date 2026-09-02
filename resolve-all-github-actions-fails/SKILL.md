@@ -2,7 +2,7 @@
 name: resolve-all-github-actions-fails
 description: หาและ resolve GitHub Actions workflow runs ทีล้มเหลวทั้ง personal และ org repos
 related:
-  - list-github-action-fail
+  - list-github-actions-fails
   - list-ci-configs
   - watch-github-actions
   - list-github-repo
@@ -32,26 +32,15 @@ List ทุก GitHub Actions workflow run ทีล้มเหลว แล้
 3. ถ้าไม่ authenticated → ทำ `/ask-me` เพื่อให้ user รัน `gh auth login`
 4. ถ้าพร้อม → บันทึก username
 
-### 2. List Repos
+### 2. List Failed Runs
 
-> Goal: รวบรวม repositories ทีต้องตรวจ
+> Goal: หา workflow runs ทีล้มเหลวทั่วทุก repo
 
-1. รัน `gh repo list --json nameWithOwner,updatedAt --limit 100`
-2. รัน `gh org list` หรือ `gh api user/orgs --jq '.[].login'`
-3. สำหรับแต่ละ org รัน `gh repo list <org> --json nameWithOwner,updatedAt --limit 100`
-4. ข้าม archived repositories โดย default
-5. บันทึกรายการ repo names
+1. ทำ `/list-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
+2. รับรายการ failed runs: repo, workflow, branch, commit, event, started at, url
+3. ถ้าไม่มี failures → report ว่างานเสร็จแล้ว stop
 
-### 3. Query Failed Runs
-
-> Goal: หา workflow runs ทีล้มเหลวในแต่ละ repo
-
-1. สำหรับแต่ละ `owner/repo` รัน:
-   `gh run list --repo <owner/repo> --json databaseId,name,headBranch,headSha,status,conclusion,event,startedAt,displayTitle,url --limit 20 --jq '.[] | select(.conclusion=="failure")'`
-2. ถ้าไม่มี failure → ข้าม repo นั้น
-3. บันทึก failed runs ทั้งหมด
-
-### 4. Analyze Logs
+### 3. Analyze Logs
 
 > Goal: หา root cause ของแต่ละ failure
 
@@ -60,7 +49,7 @@ List ทุก GitHub Actions workflow run ทีล้มเหลว แล้
 2. หรือดู log จาก URL ทีได้
 3. บันทึกข้อผิดพลาดหลักของแต่ละ run
 
-### 5. Resolve Each Failure
+### 4. Resolve Each Failure
 
 > Goal: แก้ไข workflow failures
 
@@ -72,7 +61,7 @@ List ทุก GitHub Actions workflow run ทีล้มเหลว แล้
 3. ทำซ้ำสูงสุด 3 รอบต่อ run
 4. ถ้า resolve ไม่ได้ → ทำเครื่องหมาย `manual-fix-required`
 
-### 6. Build Report
+### 5. Build Report
 
 > Goal: สรุปผลเป็นตาราง
 
@@ -90,7 +79,7 @@ List ทุก GitHub Actions workflow run ทีล้มเหลว แล้
 3. เรียงตาม Started At ล่าสุด
 4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 
-### 7. Suggest Next Action
+### 6. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
 

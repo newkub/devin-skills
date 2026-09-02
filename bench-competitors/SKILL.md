@@ -2,13 +2,13 @@
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
 related:
-  - create-plan-in-dot-devin
+  - create-plan-as-github-issue
   - deep-research
   - review-codebase-everything
   - pondering
   - deep-plan
   - ask-me
-  - ship-verify-cicd
+  - ship
   - update-docs
 ---
 
@@ -54,7 +54,7 @@ related:
 
 1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
-3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
+3. ทำ `/create-plan-as-github-issue` จาก roadmap บันทึก `PLAN_PATH`
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
 5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
 
@@ -62,8 +62,8 @@ related:
 
 > Goal: ปรับปรุง project ตาม roadmap
 
-1. ทำ `/ship-verify-cicd` เพื่อ implement improvements ตาม `PLAN_PATH`
-2. หลัง `/ship-verify-cicd` เสร็จ ลบ `PLAN_PATH`
+1. ทำ `/ship` เพื่อ implement improvements ตาม `PLAN_PATH`
+2. หลัง `/ship` เสร็จ ลบ `PLAN_PATH`
 3. ทำ `/deep-review` สำหรับ performance improvements
 4. ทำ `/deep-review` สำหรับ UX/UI improvements
 5. หยุดเมื่อดีกว่าคู่แข่งทั้งหมดในทุกมิติ
@@ -99,9 +99,9 @@ related:
 
 ### 4. Implementation Discipline
 
-- สร้าง plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
+- สร้าง plan ผ่าน `/create-plan-as-github-issue` ก่อน implement
 - ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง
-- ลบ plan หลัง `/ship-verify-cicd` เสร็จ
+- ลบ plan หลัง `/ship` เสร็จ
 - หยุดเมื่อสำเร็จเป้าหมายในทุกมิติ
 - ติดตามความคืบหน้าอย่างสม่ำเสมอ
 - Re-benchmark หลังการปรับปรุงแต่ละครั้ง
@@ -114,7 +114,7 @@ related:
 
 ## Expected Outcome
 
-- ไฟล์ plan ใน `.devin/plan/` ถูกสร้างก่อน implement และลบหลัง `/ship-verify-cicd` เสร็จ
+- ไฟล์ plan ใน `.devin/plan/` ถูกสร้างก่อน implement และลบหลัง `/ship` เสร็จ
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark

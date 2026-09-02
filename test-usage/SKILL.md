@@ -18,7 +18,7 @@ related:
   - resolve-errors
   - review-quality
   - check-should-update
-  - ship-verify-cicd
+  - ship
   - report
 ---
 

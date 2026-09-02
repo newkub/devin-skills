@@ -2,6 +2,7 @@
 name: resolve-all-cloudflare-worker-fails
 description: หาและแก้ไข Cloudflare Workers/Pages ที deployment ล้มเหลวทั้งหมดใน account
 related:
+  - list-cloudflare-worker-fails
   - list-cloudflare-projects
   - list-deployment-fails
   - open-all-cloudflare-projects
@@ -45,26 +46,15 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
    - `CLOUDFLARE_API_TOKEN` env var
 3. ถ้าหาไม่พบ → ทำ `/ask-me` เพื่อให้ user ระบุ
 
-### 3. List All Workers And Pages Functions
-
-> Goal: ดึงรายการ workers ทั้งหมดใน account
-
-1. รัน API:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts"`
-2. หรือใช้ Bun/Node script เรียก API เดียวกัน
-3. บันทึก worker names และ pages function names
-
-### 4. Detect Failing Deployments
+### 3. List Failing Deployments
 
 > Goal: หา workers ทีมีปัญหา
 
-1. สำหรับแต่ละ worker รัน:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts/<worker_name>/deployments"`
-2. บันทึก latest deployment: status, created at, version
-3. หา status ทีไม่ใช่ `success` หรือ `active`
-4. รวบรวม list ทีต้อง resolve
+1. ทำ `/list-cloudflare-worker-fails` เพื่อหา workers/pages ที deployment ล้มเหลว
+2. รับรายการ: worker/project, type, latest deployment, status, errors/notes
+3. ถ้าไม่มี failures → report ว่างานเสร็จแล้ว stop
 
-### 5. Resolve Each Failure
+### 4. Resolve Each Failure
 
 > Goal: แก้ไข workers ทีล้มเหลวทีละตัว
 
@@ -81,7 +71,7 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 4. ทำซ้ำสูงสุด 3 รอบต่อ worker
 5. ถ้า deploy ใหม่ fail → ขยับไปทำตัวถัดไป และ report ไว้
 
-### 6. Build Report
+### 5. Build Report
 
 > Goal: รายงานผลเป็นตาราง
 
@@ -96,7 +86,7 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 2. เรียงตาม Worker name
 3. ระบุสรุป: จำนวนทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 
-### 7. Suggest Next Action
+### 6. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
 

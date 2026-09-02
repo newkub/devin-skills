@@ -92,7 +92,7 @@ related:
 1. สร้าง git tag `v1.0.0`
 2. ย้าย major tag `v1` ไป commit ล่าสุด
 3. สร้าง GitHub release พร้อม release notes
-4. ทำ `/ship-verify-cicd`
+4. ทำ `/ship`
 
 ## Rules
 

@@ -2,10 +2,9 @@
 name: follow-git-flow
 description: ตั้งค่า git flow ใน repo สร้าง `dev` branch, hooks, worktree convention และอัปเดต AGENTS.md
 related:
-  - create-dev-branch
   - follow-github
   - update-agents-md
-  - ship-verify-cicd
+  - ship
   - report-table
   - suggest-next-action
 ---
@@ -21,7 +20,7 @@ related:
 รองรับ solo และ team โดย block direct push ไป `main` ทัง local hooks และ GitHub protection
 
 ถ้าต้องการแค่ remote GitHub setup → ใช้ `/follow-github`
-ถ้าต้องการแค่ create `dev` → ใช้ `/create-dev-branch`
+ถ้าต้องการแค่ create `dev` → ทำตามขั้นตอน Create dev Branch ข้างล่าง
 
 ## Execute
 
@@ -33,15 +32,17 @@ related:
 2. ทำ `git branch --list main` หรือ `git branch --list master`
 3. ถ้าไม่มี `main` หรือ `master` → stop และ report
 4. ตรวจ `git status --porcelain` ต้องว่าง
-5. ถ้าไม่ว่าง → ให้ user `/ship-verify-cicd` ก่อน
+5. ถ้าไม่ว่าง → ให้ user `/ship` ก่อน
 
 ### 2. Create dev Branch
 
 > Goal: ให้ `dev` พร้อมเป้น integration branch
 
-1. ทำ `/create-dev-branch`
-2. ถ้า fail → stop และ report
-3. `dev` ต้องพร้อมทั้ง local และ remote
+1. ตรวจ `git branch --list dev`
+2. ถ้ามี `dev` ใน local → ใช้ `git switch dev` แล้วไป Ensure Remote
+3. ถ้าไม่มี `dev` ใน local แต่มีบน remote → ใช้ `git switch -c dev origin/dev`
+4. ถ้าไม่มีทั้งสอง → ใช้ `git switch -c dev <base-branch>`
+5. ทำ `git push -u origin dev` เพื่อ ensure `dev` มีบน remote
 
 ### 3. Setup Local Hooks
 
@@ -53,7 +54,7 @@ related:
    #!/bin/sh
    branch=$(git rev-parse --abbrev-ref HEAD)
    if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
-     echo "Do not commit directly on main. Use /ship-verify-cicd."
+     echo "Do not commit directly on main. Use /ship."
      exit 1
    fi
    exit 0
@@ -63,7 +64,7 @@ related:
    #!/bin/sh
    while read local_ref local_sha remote_ref remote_sha; do
      if [ "$remote_ref" = "refs/heads/main" ] || [ "$remote_ref" = "refs/heads/master" ]; then
-       echo "Direct push to main is not allowed. Use /ship-verify-cicd."
+       echo "Direct push to main is not allowed. Use /ship."
        exit 1
      fi
    done
@@ -101,7 +102,7 @@ related:
    - Worktree: `worktrees/dev-<n>/`
    - Local hooks: block `main` commits/pushes
    - GitHub protection: PR + status checks on `main`, status checks on `dev`
-   - Skill mapping: `/ship-verify-cicd`
+   - Skill mapping: `/ship`
 3. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
 
 ### 7. Report

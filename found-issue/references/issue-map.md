@@ -7,10 +7,10 @@
 | disk เต็ม / ใกล้เต็ม | `/cleanup-files-in-computer` หรือ `/uninstall-program-in-computer` หรือ `/follow-tool-mise` (`mise cleanup`) |
 | memory leak / ใช้ RAM สูง | `/run-profiler` หรือ `/check-bottlenecks`; ถ้าต้องการให้ CI ตรวจ → `/setup-cicd` + `/run-verify` |
 | CPU สูง / ช้าผิดปกติ | `/check-bottlenecks`, `/run-bench`, `/run-profiler` |
-| build fail | `/run-build`, `/watch-build`, `/resolve-errors` |
-| lint fail | `/run-lint`, `/watch-lint`, `/resolve-errors` |
+| build fail | `/run-build`, `/resolve-errors` |
+| lint fail | `/run-lint`, `/resolve-errors` |
 | typecheck fail | `/run-typecheck`, `/resolve-errors` |
-| test fail / flaky | `/run-test`, `/watch-test`, `/run-test-all`, `/resolve-errors` |
+| test fail / flaky | `/run-test`, `/run-test-all`, `/resolve-errors` |
 | CI/CD pipeline fail | `/watch-cicd-and-resolve`, `/watch-github-actions`, `/list-github-action-fail`, `/setup-cicd` |
 | deploy fail | `/watch-cicd-and-resolve`, `/watch-deploy`, `/list-deployment-fails`, `/run-deploy`, `/deploy-to-cloudflare`, `/deploy-to-vercel` |
 | secrets leak / สงสัย hardcoded secret | `/check-secrets-leak`, `/follow-secret-manager`, `/open-github-secrets` |

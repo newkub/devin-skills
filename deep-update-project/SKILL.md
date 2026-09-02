@@ -119,7 +119,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - แก้ไขเฉพาะ root docs, config, rules, tooling
 - ไม่แก้ไข workspace source code หรือ workspace docs
-- ถ้า workspace ต้องแก้ → ใช้ `/ship-verify-cicd` ใน workspace นั้น
+- ถ้า workspace ต้องแก้ → ใช้ `/ship` ใน workspace นั้น
 
 ### 2. Idempotency
 

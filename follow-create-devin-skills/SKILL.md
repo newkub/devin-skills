@@ -12,7 +12,7 @@ related:
   - check-skills-related
   - update-references
   - deep-validate
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -95,7 +95,7 @@ related:
 
 > Goal: ส่งมอบ skill
 
-1. ทำ `/ship-verify-cicd`
+1. ทำ `/ship`
 2. ถ้า skill มี `src/` → ทำ `/convert-to-git-submodules` ก่อน ship
 3. รายงาน path, name, และ status
 
@@ -126,7 +126,7 @@ related:
 - ถ้า skill มี `src/` ต้องทดสอบรันได้
 - CLI ใช้ `src/presentation/cli.ts` หรือ `src/main.rs`
 - Web ใช้ `src/index.ts` หรือ `src/main.ts`
-- ทำ `/ship-verify-cicd` หลัง validation ผ่าน
+- ทำ `/ship` หลัง validation ผ่าน
 
 - ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
@@ -136,5 +136,5 @@ related:
 - `SKILL.md` มี frontmatter ครบ เนื้อหาถูกต้อง ไม่เกิน 250 บรรทัด
 - `related` ครบและไม่มี broken references
 - ผ่าน `/deep-validate` และ `/follow-global-rules`
-- ถ้ามี code ก็ผ่าน `/ship-verify-cicd` หรือ `/convert-to-git-submodules`
+- ถ้ามี code ก็ผ่าน `/ship` หรือ `/convert-to-git-submodules`
 

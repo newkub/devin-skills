@@ -191,9 +191,6 @@ check-file-length
 # Update all versions (runtime + deps + tools + config)
 /update-version-latest
 
-# Update runtime only
-/update-runtime-latest
-
 # Update dependencies
 /update-dependencies-latest
 ```

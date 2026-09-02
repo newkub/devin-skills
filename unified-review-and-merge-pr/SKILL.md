@@ -23,7 +23,7 @@ Review pull request อย่างครบถ้วน แล้ว merge ถ�
 - รีวิว correctness และ architecture
 - Merge ถ้าผ่านทุกเงื่ือนไข
 - ถ้าไม่ผ่าน → request changes หรือ comment แล้ว stop
-- ใช้งานร่วมกับ `/ship-verify-cicd` ได้โดยตรง
+- ใช้งานร่วมกับ `/ship` ได้โดยตรง
 
 ## Execute
 

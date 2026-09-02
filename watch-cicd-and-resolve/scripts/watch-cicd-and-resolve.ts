@@ -319,7 +319,7 @@ function watchCd(url: string) {
 		`CD mode for ${url} is not implemented in this script.\n`,
 	);
 	process.stdout.write(
-		"Use /watch-deploy or /watch-vercel for the target platform.\n",
+		"Use /watch-deploy for the target platform.\n",
 	);
 	process.exit(1);
 }

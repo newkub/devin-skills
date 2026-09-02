@@ -6,7 +6,7 @@ related:
   - ask-me
   - update-agents-md
   - alternative
-  - ship-verify-cicd
+  - ship
   - deep-plan
   - follow-goal
 ---
@@ -59,7 +59,7 @@ related:
 
 - ถามว่าควรใช้ `/alternative` หรือไม่
 - ถ้า library ที่ต้องการไม่มี ให้ถามว่าควรแนะนำตัวไหน แบบ multi_select จาก candidates
-- ถาม build/ship-verify-cicd tools ที่ต้องการ แบบ multi_select
+- ถาม build/ship tools ที่ต้องการ แบบ multi_select
 
 ### 3. Synthesize Requirements
 

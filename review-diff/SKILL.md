@@ -8,7 +8,7 @@ related:
   - report-table
   - deep-validate
   - ask-me
-  - ship-verify-cicd
+  - ship
   - follow-enter-dot
 ---
 
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้ก่อน `git-commit`, `/ship-verify-cicd`, `/follow-enter-dot` หรือทุกครั้งที่ working tree มีการเปลี่ยนแปลงจำนวนมากและต้องการ user confirmation ก่อนลงมือ
+ใช้ก่อน `git-commit`, `/ship`, `/follow-enter-dot` หรือทุกครั้งที่ working tree มีการเปลี่ยนแปลงจำนวนมากและต้องการ user confirmation ก่อนลงมือ
 
 ## Execute
 
@@ -59,5 +59,5 @@ related:
 - ตารางสรุป diff ทั้ง tracked และ untracked
 - รายการ risks หรือ side effects ทีพบ
 - ตัวเลือกทัดไปที user เลือกได้ชัดเจน
-- ไม่มีการ commit/ship-verify-cicd/revert โดยไม่ได้รับ user confirmation
+- ไม่มีการ commit/ship/revert โดยไม่ได้รับ user confirmation
 

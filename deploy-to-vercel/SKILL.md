@@ -5,7 +5,6 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-service-vercel
-  - watch-vercel
   - run-build
   - git-commit
   - watch-browser-and-fix
@@ -50,7 +49,7 @@ Deploy application ไปยัง Vercel ด้วย CLI ตั้งแต่
 
 > Goal: ยืนยันว่า deployment live
 
-1. ทำ `/watch-vercel` ด้วย preview URL
+1. ทำ `/watch-deploy` ด้วย preview URL
 2. ทำ `/watch-browser-and-fix` ด้วย URL
 3. รอจนสถานะ `READY`
 

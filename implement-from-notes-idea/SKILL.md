@@ -10,7 +10,7 @@ related:
   - follow-plan
   - run-check
   - deep-validate
-  - ship-verify-cicd
+  - ship
 ---
 
 ## Goal
@@ -64,7 +64,7 @@ related:
 
 1. รัน `/run-check` ตาม ecosystem
 2. ทำ `/deep-validate`
-3. ทำ `/ship-verify-cicd` ถ้าผ่าน
+3. ทำ `/ship` ถ้าผ่าน
 4. รายงานสิ่งท่ีทำและ status
 
 ## Rules

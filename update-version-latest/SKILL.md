@@ -3,7 +3,6 @@ name: update-version-latest
 description: อัปเดตทุก versioned สิ่งใน project/computer ให้เป็น latest deps, runtimes, tools, config
 related:
   - update-dependencies-latest
-  - update-runtime-latest
   - update-all-program-in-computer
   - update-config
   - update-project
@@ -41,15 +40,25 @@ related:
 > Goal: พร้อมและปลอดภัยก่อน update
 
 1. ทำ `/check-should-update` เพื่อตรวจ git changes และตัดสินใจว่าควร update
-2. สร้าง branch ใหม่ก่อน update
-3. ถ้า scope ไม่ชัด -> ทำ `/ask-me`
+2. ถ้า scope ไม่ชัด -> ทำ `/ask-me`
 
 ### 3. Update Runtimes
 
-> Goal: language runtimes เป็น latest
+> Goal: อัปเดต language runtimes และ version pins ให้เป็น latest stable
 
-1. ทำ `/update-runtime-latest`
-2. บันทึก runtimes ที่อัปเดตและ version ใหม่
+1. ระบุ runtime pins จาก `package.json#engines`, `mise.toml`, `.nvmrc`, `.python-version`, `rust-toolchain.toml`, `go.mod`, `global.json`, `Dockerfile`
+2. เลือก version manager: `mise` ถ้ามี มิฉะนั้น `nvm/fnm`, `pyenv`, `rustup`, `gvm`, `sdkman`
+3. อัปเดตแต่ละ runtime:
+   - Bun: `bun upgrade` หรือ `mise use bun@latest`
+   - Node: `mise use node@latest`, `nvm install node`/`nvm use node`, `fnm install --lts`/`fnm use --lts`
+   - Python: `mise use python@latest`, `pyenv install <latest>`
+   - Rust: `rustup update stable`
+   - Go: `mise use go@latest` หรือ `gvm install go<version>` แล้ว `go mod edit -go=<version>`
+   - Java: `mise use java@latest` หรือ `sdk install java <version>`
+   - .NET: ติดตั้ง latest SDK ผ่าน installer/package manager แล้วอัปเดต `global.json`
+4. อัปเดต version pins: `mise.toml`, `.nvmrc`, `.python-version`, `package.json#engines`, `rust-toolchain.toml`, `go.mod`, `global.json`, `Dockerfile`, `.github/workflows`
+5. รัน `--version` ของทุก runtime ยืนยัน
+6. บันทึก runtimes ที่อัปเดตและ version ใหม่
 
 ### 4. Update Global Tools
 
@@ -100,8 +109,8 @@ related:
 
 ### 1. Delegate, Don't Reimplement
 
-- เรียก `/update-runtime-latest`, `/update-dependencies-latest`, `/update-all-program-in-computer`, `/update-config` แทนการทำเอง
-- `update-version-latest` เป็น orchestrator ไม่ลงรายละเอียด command ของแต่ละ tool
+- เรียก `/update-dependencies-latest`, `/update-all-program-in-computer`, `/update-config` สำหรับงานเฉพาะทาง
+- `update-version-latest` เป็น orchestrator ลงรายละเอียด runtimes เอง ส่วน dependencies/tools ให้ delegate
 
 ### 2. Order Matters
 
@@ -112,7 +121,6 @@ related:
 ### 3. Safety
 
 - ไม่อัปเดต major runtime/dependencies โดยไม่ถาม user
-- สร้าง branch/dry-run ก่อน
 - ไม่ force install หรือ downgrade
 
 ### 4. Scope Control

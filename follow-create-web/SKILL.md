@@ -11,7 +11,6 @@ related:
   - follow-solid-tanstack
   - follow-lib-unocss
   - follow-robots-txt
-  - improve-uxui
   - optimize-everything
   - follow-design-system
   - review-uxui
@@ -67,7 +66,6 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
-- ทำ `/improve-uxui` สำหรับปรับ UX/UI ก่อน deploy
 - ทำ `/optimize-everything` สำหรับ SEO/performance/bundle
 - ทำ `/review-frontend` ก่อน deploy
 - ทำ `/realize-implementation` หลัง website เสร็จ

@@ -17,7 +17,6 @@ triggers:
   - user
   - model
 related:
-  - optimize-codebase
   - review-performance
   - review-redundancy
   - check-bottlenecks
@@ -38,7 +37,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ## Scope
 
-ใช้เมื่อ `optimize-codebase` ธรรมดาไม่เพียงพอ หรือต้องการ optimize หลายมิติพร้อมกัน
+ใช้เมื่อ optimize ทั่วไปไม่เพียงพอ หรือต้องการ optimize หลายมิติพร้อมกัน
 
 ## Execute
 

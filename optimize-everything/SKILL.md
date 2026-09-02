@@ -3,10 +3,9 @@ name: optimize-everything
 description: "Optimize ทุกอย่างที detect ได้: SEO, performance, bundle, images, a11y, CWV"
 argument-hint: "[file-or-pattern]"
 related:
-  - improve-uxui
   - review-uxui
   - follow-design-system
-  - ship-verify-cicd
+  - ship
   - follow-tool-vite
   - review-frontend
   - review-platform
@@ -18,7 +17,7 @@ Optimize web project ทั้งหมดที detect ได้: SEO, frontend
 
 ## Scope
 
-- ใช้คู่กับ `/improve-uxui` และ `/ship-verify-cicd`
+- ใช้คู่กับ `/ship`
 - SEO (meta tags, Open Graph, structured data, robots, sitemap)
 - Frontend performance (LCP, INP, CLS, TTFB)
 - Bundle size และ code splitting

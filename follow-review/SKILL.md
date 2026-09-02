@@ -165,7 +165,7 @@ related:
 
 1. ทำ `/report` พร้อม `/report-table`
 2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
-3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-and-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship-verify-cicd`
+3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-and-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
 4. ทำ `/suggest-next-action`
 
 ## Rules

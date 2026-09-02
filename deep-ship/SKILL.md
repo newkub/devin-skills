@@ -4,7 +4,7 @@ argument-hint: "[target]"
 description: Ship ไป production/release ด้วย deep validation, release, deploy, rollback plan, และ monitoring
 related:
   - ask-me
-  - ship-verify-cicd
+  - ship
   - deep-update
   - deep-update-project
   - run-release
@@ -46,7 +46,7 @@ Ship workspace หรือ project ไปสู่ production/release ด้ว
 
 ## Scope
 
-ใช้เมื่องานต้องส่งมอบไปยัง production หรือ release จริง ไม่ใช่แค่ commit ใน repo — ครอบคลุมตั้งแต่ pre-ship validation จนถึง live verification สำหรับ ship ใช้ `/ship-verify-cicd` (รองรับทั้ง commit-only และ loop improve)
+ใช้เมื่องานต้องส่งมอบไปยัง production หรือ release จริง ไม่ใช่แค่ commit ใน repo — ครอบคลุมตั้งแต่ pre-ship validation จนถึง live verification สำหรับ ship ใช้ `/ship` (รองรับทั้ง commit-only และ loop improve)
 
 ## Execute
 
@@ -87,8 +87,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: commit การเปลี่ยนแปลงที verified แล้ว
 
-1. ทำ `/ship-verify-cicd` ตาม `AGENTS.md` workflow (commit, push, submodule, skills update, watch CI)
-2. ถ้าต้องการ continuous improvement ก่อน ship → ทำ `/ship-verify-cicd` หรือ `/loop-continuous`
+1. ทำ `/ship` ตาม `AGENTS.md` workflow (commit, push, submodule, skills update, watch CI)
+2. ถ้าต้องการ continuous improvement ก่อน ship → ทำ `/ship` หรือ `/loop-continuous`
 3. ถ้าไม่มี changes → stop และ report
 4. ถ้าต้องการ push → ทำ `/git-push` หรือ `/git-commit-and-push`
 
@@ -153,7 +153,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 ### 1. No Surprise Push/Release
 
 - `/deep-ship` อาจ push, release, deploy ตาม config ของ project
-- ถ้า user ไม่ต้องการ release/deploy → ใช้ `/ship-verify-cicd` แทน
+- ถ้า user ไม่ต้องการ release/deploy → ใช้ `/ship` แทน
 - ถ้า config ไม่ชัด → ทำ `/ask-me` ก่อนดำเนืินการ
 
 ### 2. Validation Before Ship

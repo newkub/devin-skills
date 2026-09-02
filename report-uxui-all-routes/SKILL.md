@@ -2,7 +2,6 @@
 name: report-uxui-all-routes
 description: สร้างรายงาน routes ทั้งหมดของ app/website ใน markdown table สำหรับ UX/UI
 related:
-  - improve-uxui
   - report-uxui-sketch
   - list-website-all-routes
   - review-uxui
