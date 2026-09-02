@@ -1,8 +1,10 @@
 ---
-name: watch-cicd-and-resolve
+name: resolve-cicd
 argument-hint: "[run-id-or-url-or-target]"
-description: ติดตาม CI/CD pipeline จาก trigger จนผ่าน/live/healthy พร้อม resolve และ re-run/re-deploy
+description: ติดตาม CI/CD pipeline จาก trigger จนผ่าน/live/healthy พร้อม resolve re-run re-deploy และลบ failed runs
 related:
+  - list-cicd-fails
+  - delete-cicd-fails
   - watch-github-actions
   - watch-deploy
   - watch-release
@@ -19,10 +21,10 @@ related:
 
 ## Usage
 
-เรียก skill โดย `/watch-cicd-and-resolve [run-id|url]` หรือรันด้วย helper script:
+เรียก skill โดย `/resolve-cicd [run-id|url]` หรือรันด้วย helper script:
 
 ```bash
-bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolve.ts" \
+bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
   [--run-id <id> | --url <url>] \
   [--max-retries 5] \
   [--no-retry]
@@ -63,7 +65,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
    - environment variable `DEPLOY_URL`, `PREVIEW_URL`, `VERCEL_URL`, `CF_PAGES_URL`
    - CI/CD log ล่าสุดทีมี run ID หรือ URL
    - `references/targets.md` ใน `watch-deploy`
-   - `references/runs.md` ใน `watch-cicd-and-resolve`
+   - `references/runs.md` ใน `resolve-cicd`
 4. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
 ### 2. CI: Detect CI Platform
@@ -112,7 +114,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 
 > Goal: เลือก skill ทีเหมาะกับ CD target
 
-1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/watch-cicd-and-resolve`)
+1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-cicd`)
 2. Release/tag: version tag, release name, GitHub release → `/watch-release`
 3. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
 
@@ -151,7 +153,9 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 1. ถ้า success/healthy/release สำเร็จ → report platform, target, duration, status
 2. ถ้าไม่ผ่าน → report failures ทีเหลือ, root cause, last green SHA, next step
 3. ใช้ `/report-table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
-4. ทำ `/suggest-next-action`
+4. ทำ `/list-cicd-fails` เพื่อดู failures ทีค้างใน repo
+5. ถ้า user ต้องการ cleanup → ทำ `/delete-cicd-fails` ก่อน next step
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -169,7 +173,7 @@ bun "%APPDATA%\devin\skills\watch-cicd-and-resolve\scripts\watch-cicd-and-resolv
 
 ### 3. No Initial Deploy
 
-- `watch-cicd-and-resolve` ไม่ trigger ครั้งแรกเอง
+- `resolve-cicd` ไม่ trigger ครั้งแรกเอง
 - ต้องถูกเรียกหลัง trigger แล้ว
 - ถ้ายังไม่มี trigger ให้ทำ `/run-deploy` หรือ push ก่อน
 

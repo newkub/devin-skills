@@ -7,7 +7,7 @@ related:
   - follow-secret-manager
   - follow-my-tech-stack
   - review-techstack
-  - watch-cicd-and-resolve
+  - resolve-cicd
 ---
 
 ## Goal
@@ -160,7 +160,7 @@ related:
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 
 ## Expected Outcome
 

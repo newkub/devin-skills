@@ -30,7 +30,7 @@ related:
   - git-commit
   - git-push
   - setup-cicd
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - create-github-pr
   - deep-review-pr
   - unified-review-and-merge-pr
@@ -93,7 +93,7 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 2. `git status --porcelain`, `git branch --show-current`, `git remote -v`
 3. ทำ `git push --dry-run -u origin dev`
 4. ทำ `git push -u origin dev` โดยไม่ force
-5. ทำ `/watch-cicd-and-resolve`
+5. ทำ `/resolve-cicd`
 6. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
 
 ### 5. Release
@@ -103,7 +103,7 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 3. ทำ `/deep-review-pr <PR_NUMBER>`
 4. ถาม user ก่อน merge
 5. ถ้า user ตกลง → ทำ `/unified-review-and-merge-pr <PR_NUMBER>`
-6. ทำ `/watch-cicd-and-resolve` บน `main` ก่อน release
+6. ทำ `/resolve-cicd` บน `main` ก่อน release
 7. ทำ `/test-release` ถ้ามี setup
 8. ทำ `/run-release --dry-run` ก่อน release จริง
 9. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`

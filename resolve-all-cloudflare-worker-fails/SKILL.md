@@ -7,7 +7,7 @@ related:
   - list-deployment-fails
   - open-all-cloudflare-projects
   - open-cloudflare-workers
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - resolve-errors
   - report-table
   - suggest-next-action
@@ -90,7 +90,7 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy เพิม, check logs, หรือ `watch-cicd-and-resolve`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy เพิม, check logs, หรือ `resolve-cicd`
 
 ## Rules
 

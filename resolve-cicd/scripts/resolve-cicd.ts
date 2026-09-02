@@ -53,7 +53,7 @@ function parseArgs(argv: string[]): Args {
 		else if (a === "--no-retry") noRetry = true;
 		else if (a === "--help") {
 			process.stdout.write(
-				"Usage: bun watch-cicd-and-resolve.ts [--run-id <id> | --url <url>] [--max-retries <n>] [--no-retry]\n",
+				"Usage: bun resolve-cicd.ts [--run-id <id> | --url <url>] [--max-retries <n>] [--no-retry]\n",
 			);
 			process.exit(0);
 		}
