@@ -5,6 +5,7 @@ related:
   - list-github-actions-fails
   - list-ci-configs
   - watch-github-actions
+  - resolve-cicd
   - list-github-repo
   - resolve-errors
   - report-table
