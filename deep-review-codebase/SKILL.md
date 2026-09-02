@@ -88,7 +88,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: สร้างหรืออัปเดต `tools/review-codebase` CLI แล้วรัน review เพื่อวัด metrics ครบทุกมิติ
 
-ถ้า project มีหรือกำลังสร้าง `tools/review-codebase` CLI ที project root ให้ดำเนินการ 10 ขั้นตอนตาม `references/cli-review-steps.md` ถ้า CLI ไม่มี → ใช้ `/deep-analyze` และ `/review-*` workflows แทน
+ถ้า project มีหรือกำลังสร้าง `tools/review-codebase` CLI ที project root ให้ดำเนินการ 10 ขั้นตอนตาม `deep-review/references/cli-review-steps.md` ถ้า CLI ไม่มี → ใช้ `/deep-analyze` และ `/review-*` workflows แทน
 
 1. เตรียมและอัปเดต rules, skills, CLI ด้วย `/scan-codebase`, `/update-project-rules`, `/update-create-analyze-cli`, `/check-should-update`
 2. วางแผน analyzer categories ตาม 5 domains จาก `/run-review` แล้ว map ไป `src/domain/analyzers/`

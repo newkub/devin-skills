@@ -1,6 +1,6 @@
 ---
 name: review-codebase-everything
-description: (Deprecated) เนื้อหา CLI-driven review ย้ายไปยัง /deep-review
+description: (Deprecated) เนื้อหา CLI-driven review ถูก merge เข้า /deep-review-codebase
 allowed-tools:
   - read
   - write
@@ -9,6 +9,7 @@ allowed-tools:
   - skill
 related:
   - deep-review
+  - deep-review-codebase
   - run-review
   - update-create-analyze-cli
 triggers:
@@ -18,7 +19,7 @@ triggers:
 
 ## Goal
 
-เนื้อหาและ 10 ขั้นตอนของ `tools/review-codebase` CLI ถูก merge เข้า `/deep-review` Step 3.5 และ `deep-review/references/cli-review-steps.md` แล้ว
+เนื้อหาและ 10 ขั้นตอนของ `tools/review-codebase` CLI ถูก merge เข้า `/deep-review-codebase` Step 3.5 และ `deep-review/references/cli-review-steps.md` แล้ว
 
 ## Scope
 
@@ -26,17 +27,17 @@ triggers:
 
 ## Execute
 
-1. ถ้าต้องการ review แบบ comprehensive ให้ใช้ `/deep-review`
+1. ถ้าต้องการ review แบบ comprehensive ให้ใช้ `/deep-review` หรือ `/deep-review-codebase` โดยตรง
 2. ถ้าต้องการรายละเอียด 10 ขั้นตอน CLI review ให้อ่าน `deep-review/references/cli-review-steps.md`
 3. ถ้าต้องการ extra checklists ให้อ่าน `review-codebase-everything/references/`
 
 ## Rules
 
-- ไม่ใช้ skill นี้โดยตรงสำหรับ workflow ใหม่ — ใช้ `/deep-review` แทน
-- ถ้า skill อื่นอ้างอิง `/review-codebase-everything` Step X ให้ map ไปยัง `/deep-review` Step 3.5 และ `deep-review/references/cli-review-steps.md`
+- ไม่ใช้ skill นี้โดยตรงสำหรับ workflow ใหม่ — ใช้ `/deep-review-codebase` แทน
+- ถ้า skill อื่นอ้างอิง `/review-codebase-everything` Step X ให้ map ไปยัง `/deep-review-codebase` Step 3.5 และ `deep-review/references/cli-review-steps.md`
 - `tools/review-codebase` ยังคงสร้างที่ project root เท่านั้น
 
 ## Expected Outcome
 
-- ไม่มี duplicate workflow ระหว่าง `review-codebase-everything` กับ `/deep-review`
-- CLI-driven review ถูกจัดการโดย `/deep-review` เป็นหลัก
+- ไม่มี duplicate workflow ระหว่าง `review-codebase-everything` กับ `/deep-review-codebase`
+- CLI-driven review ถูก merge เข้า `/deep-review-codebase` เป็นหลัก
