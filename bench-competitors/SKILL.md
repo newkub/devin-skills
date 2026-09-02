@@ -2,7 +2,7 @@
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
 related:
-  - create-plan-in-dot-devin
+  - create-plan-as-github-issue
   - deep-research
   - review-codebase-everything
   - pondering
@@ -54,7 +54,7 @@ related:
 
 1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
-3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
+3. ทำ `/create-plan-as-github-issue` จาก roadmap บันทึก `PLAN_PATH`
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
 5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan
 
@@ -99,7 +99,7 @@ related:
 
 ### 4. Implementation Discipline
 
-- สร้าง plan ผ่าน `/create-plan-in-dot-devin` ก่อน implement
+- สร้าง plan ผ่าน `/create-plan-as-github-issue` ก่อน implement
 - ทำตาม plan จนกว่าจะดีกว่าคู่แข่ง
 - ลบ plan หลัง `/ship` เสร็จ
 - หยุดเมื่อสำเร็จเป้าหมายในทุกมิติ

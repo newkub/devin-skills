@@ -82,7 +82,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **774** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **773** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -117,7 +117,7 @@ Major skill families by current count:
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
 - `deep-*` (25): deep analysis, research, debugging, validation, update, and ship. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`, `deep-update`, `deep-ship`, `deep-build`, `deep-review`, `deep-review-codebase`, `deep-review-pr`
 - `watch-*` (10): continuous monitoring and watch modes. Examples: `watch-cicd-and-resolve`, `watch-deploy`, `watch-github-actions`, `watch-release`, `watch-browser-and-fix`
-- `create-*` (21): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
+- `create-*` (20): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
 - `open-*` (16): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`, `open-files-in-web`, `open-github-repo`
 - `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
 - `use-*` (13): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`, `use-my-packages-on-registry`, `use-create-pr`

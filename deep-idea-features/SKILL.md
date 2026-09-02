@@ -4,7 +4,7 @@ description: สร้างไอเดียฟีเจอรใหม่ ข
 argument-hint: "[topic]"
 related:
   - idea-features
-  - create-plan-in-dot-devin
+  - create-plan-as-github-issue
   - create-report-in-dot-devin
   - create-files-in-os-temp
   - open-files-in-web
@@ -27,7 +27,7 @@ related:
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
 - สร้าง report ชั่วคราวใน `.devin/reports/` หรือ OS temp directory ถ้าต้องการ
-- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
+- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-as-github-issue` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
 - ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
@@ -95,7 +95,7 @@ related:
 > Goal: ทำตามคำสั่ง "ทำ"
 
 1. ถ้า user บอก "ทำ" → ทำ `/deep-review` ก่อน
-2. ทำ `/create-plan-in-dot-devin` จาก features ที่เลือก โดยใช้ `<topic>` เป้น title บันทึก `PLAN_PATH`
+2. ทำ `/create-plan-as-github-issue` จาก features ที่เลือก โดยใช้ `<topic>` เป้น title บันทึก `PLAN_PATH`
 3. จากนั้นทำ `/realize-implementation` ตาม `PLAN_PATH`
 4. หลัง `/realize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/` และลบ `PLAN_PATH`
 5. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็นต้อง → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
@@ -120,13 +120,13 @@ related:
 ### 2. Report And Plan Are Temporary
 
 - สร้าง report ใน `.devin/reports/` หรือ OS temp directory เท่านั้น
-- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin`
+- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-as-github-issue`
 - ต้องลบ report files และ plan files หลัง `/realize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
 - ไม่เก็บ report หรือ plan ค้าง
 
 ### 3. Implement Flow
 
-- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/create-plan-in-dot-devin` แล้ว `/realize-implementation`
+- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/create-plan-as-github-issue` แล้ว `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
@@ -138,7 +138,7 @@ related:
 
 ### 5. Direct Execution
 
-- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/realize-implementation`
+- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-as-github-issue` แล้ว `/realize-implementation`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
 - ถ้า user ขอ implement ทั้งหมด → ทำ `/realize-implementation`
 
@@ -164,5 +164,5 @@ related:
 - Plan ถูกสร้างใน `.devin/plan/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
 - ไม่มี report หรือ plan files ค้างหลังเสร็จงาน
-- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/realize-implementation` แล้วลบ report files และ plan files
+- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-as-github-issue` แล้ว `/realize-implementation` แล้วลบ report files และ plan files
 - ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ
