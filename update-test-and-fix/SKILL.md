@@ -1,6 +1,6 @@
 ---
-name: update-test-everything
-description: เขียนและอัปเดต test ตาม code ให้ครอบคลุมทุกกรณีใช้งาน ใช้ได้กับทุกภาษา
+name: update-test-and-fix
+description: เขียนและอัปเดต test ตาม code ให้ครอบคลุมทุกกรณีใช้งาน พร้อม fix
 related:
   - review-writing
   - run-test-coverage

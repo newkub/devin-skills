@@ -6,7 +6,7 @@ related:
   - follow-layered-architecture
   - use-lib-effective
   - follow-lib-drizzle
-  - update-test-everything
+  - update-test-and-fix
   - delete
 ---
 
@@ -85,7 +85,7 @@ related:
 
 ### 7. Test Data Access
 
-> Goal: ทำ `/update-test-everything` เพื่อทดสอบ repository implementations
+> Goal: ทำ `/update-test-and-fix` เพื่อทดสอบ repository implementations
 
 1. Integration tests สำหรับ repository implementations กับ test database
 2. Unit tests สำหรับ mapper functions — test pure transformation

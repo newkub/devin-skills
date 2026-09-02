@@ -27,7 +27,7 @@ related:
   - update-project-rules
   - update-project-skills
   - update-examples
-  - update-test-everything
+  - update-test-and-fix
   - update-todo-md
   - update-references
   - update-gitignore
@@ -117,7 +117,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 7. ถ้า target type เป็น `rules` → ทำ `/update-project-rules`
 8. ถ้า target type เป็น `skills` ใน project → ทำ `/update-project-skills`
 9. ถ้า target type เป็น `examples` → ทำ `/update-examples`
-10. ถ้า target type เป็น `tests` → ทำ `/update-test-everything`
+10. ถ้า target type เป็น `tests` → ทำ `/update-test-and-fix`
 11. ถ้า target type เป็น `todo` → ทำ `/update-todo-md`
 12. ถ้า target type เป็น `gitignore` → ทำ `/update-gitignore`
 13. ถ้า target type เป็น `vscode` → ทำ `/update-dot-vscode`

@@ -48,4 +48,4 @@
 - `gen-changelog-md` สำหรับ `CHANGELOG.md` (gen จาก git tags)
 - `follow-tool-changelogen` สำหรับ `CHANGELOG.md` (ด้วย changelogen)
 - `update-specs` สำหรับ `specs/SPEC.md`
-- `update-test-everything` สำหรับ update test suite
+- `update-test-and-fix` สำหรับ update test suite

@@ -87,7 +87,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: บันทึกการแก้ไขและป้องกัน regression
 
 1. เขียน comment อธิบายสาเหตุของการแก้ไขถ้าไม่ชัดเจน
-2. พิจารณาเพิ่ม test case เพื่อป้องกัน regression — ทำ `/update-test-everything`
+2. พิจารณาเพิ่ม test case เพื่อป้องกัน regression — ทำ `/update-test-and-fix`
 3. บันทึก pattern ของปัญหาและวิธีแก้ลงไฟล์บันทึกหรือ memory ของ project
 4. แนะนำ preventive measures ถ้า error มีโอกาสเกิดซ้ำ: linter rule, type constraint, pre-commit hook
 

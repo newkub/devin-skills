@@ -8,7 +8,7 @@ related:
   - run-dev
   - deep-validate
   - report-table
-  - update-test-everything
+  - update-test-and-fix
   - update-usage-md
   - run-format
   - run-typecheck
@@ -138,7 +138,7 @@ related:
 - ใช้ /run-dev ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
-- ใช้ /update-test-everything ถ้าจำเป็น
+- ใช้ /update-test-and-fix ถ้าจำเป็น
 - ใช้ /update-usage-md ถ้าจำเป็น
 
 ## Expected Outcome

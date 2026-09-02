@@ -100,7 +100,7 @@ Core:
 - `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`
-- `deep-review-codebase: /deep-review-codebase`
+- `update-review-cli-and-fix: /update-review-cli-and-fix`
 
 By prefix:
 
@@ -109,13 +109,13 @@ Major skill families by current count:
 - `review-*` (56): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`, `review-codebase-everything`
 - `list-*` (48): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-actions-fails`, `list-cicd-fails`, `list-cloudflare-worker-fails`, `list-ci-configs`, `list-todo-md`
 - `run-*` (34): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
-- `update-*` (35): repo, skills, docs, config, runtime, version, and test spec maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-review-cli-and-fix`, `update-specs`
+- `update-*` (35): repo, skills, docs, config, runtime, version, and test spec maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-review-cli-and-fix`, `update-test-and-fix`, `update-specs`
 - `setup-*` (3): one-time setup helpers. Examples: `setup-cicd`, `setup-package`, `setup-release`
 - `ship-*` (1): ship and deploy helpers. Examples: `ship`
 - `report-*` (38): reporting, diagrams, and visualization helpers. Examples: `report-what-you-do`, `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-progress`, `report-math-equation`, `report-todo`, `report-math-formula`
 - `roleplay-*` (1): stakeholder roleplay perspectives. Examples: `roleplay-stakeholder`
 - `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
-- `deep-*` (25): deep analysis, research, debugging, validation, update, and ship. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`, `deep-update`, `deep-ship`, `deep-build`, `deep-review`, `deep-review-codebase`, `deep-review-pr`
+- `deep-*` (24): deep analysis, research, debugging, validation, update, and ship. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`, `deep-update`, `deep-ship`, `deep-build`, `deep-review`, `deep-review-pr`
 - `watch-*` (9): continuous monitoring and watch modes. Examples: `watch-all-task`, `watch-browser-and-fix`, `watch-deploy`, `watch-github-actions`, `watch-release`, `watch-terminal`
 - `create-*` (20): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
 - `open-*` (16): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`, `open-files-in-web`, `open-github-repo`

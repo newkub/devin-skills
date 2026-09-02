@@ -2,7 +2,7 @@
 name: update-specs
 description: สร้างหรืออัปเดต `<workspace>/specs/` สำหรับ test specs ตาม project type
 related:
-  - update-test-everything
+  - update-test-and-fix
   - update-project
   - update-project-rules
   - deep-test
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-test-everything`, `/update-project`, `/update-project-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
+ใช้ใน workspace ใดๆ หรือถูกเรียกจาก `/update-test-and-fix`, `/update-project`, `/update-project-rules` เพื่อ sync test specs ให้สอดคล้องกับ code
 
 ## Execute
 

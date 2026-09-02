@@ -43,7 +43,7 @@ related:
   - update-devin-global-skills
   - update-devin-global-subagents
   - update-references
-  - update-test-everything
+  - update-test-and-fix
   - follow-my-tech-stack
   - review-techstack
 ---
@@ -154,7 +154,7 @@ related:
 - ใช้ /follow-create-zed-extensions ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
-- ใช้ /update-test-everything ถ้าจำเป็น
+- ใช้ /update-test-and-fix ถ้าจำเป็น
 
 ## Expected Outcome
 

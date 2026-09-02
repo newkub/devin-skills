@@ -138,7 +138,7 @@ related:
 1. ถ้าพบ commit ที่ทำให้เกิด bug → ทำ `/follow-tool-git` เพื่อ revert commit นั้น
 2. ถ้าไฟล์ถูก restore → ทำ `/git-commit` เพื่อ commit ไฟล์ที่ restore
 3. ถ้า commit ถูกกู้คืน → ตรวจสอบว่า code ทำงานได้ก่อน push
-4. ทำ `/update-test-everything` เพื่อสร้าง regression test สำหรับปัญหาที่พบ
+4. ทำ `/update-test-and-fix` เพื่อสร้าง regression test สำหรับปัญหาที่พบ
 
 ## Rules
 

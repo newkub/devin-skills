@@ -7,7 +7,7 @@ related:
   - search-in-git
   - analyze-root-cause-analysis
   - resolve-errors
-  - update-test-everything
+  - update-test-and-fix
   - follow-debugging
   - follow-incident-triage
   - deep-thinking
@@ -100,7 +100,7 @@ related:
 
 1. แก้ปัญหาที่ root cause ไม่ใช่ symptoms ใช้ minimal changes ที่สุด
 2. ทำ `/resolve-errors` เพื่อแก้ปัญหาที่ root cause อย่างเป็นระบบ ใช้ scripts automate เมื่อมีหลายไฟล์
-3. ทำ `/update-test-everything` เพื่อสร้าง regression tests จาก reproduction steps
+3. ทำ `/update-test-and-fix` เพื่อสร้าง regression tests จาก reproduction steps
 4. ทดสอบว่า test fail ก่อน fix และ pass หลัง fix
 5. ครอบคลุม edge cases ที่เกี่ยวข้อง
 6. รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression

@@ -12,7 +12,7 @@ related:
   - review-quality
   - deep-validate
   - check-reference
-  - update-test-everything
+  - update-test-and-fix
   - update-specs
 ---
 
@@ -233,7 +233,7 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /update-test-everything ถ้าจำเป็น
+- ใช้ /update-test-and-fix ถ้าจำเป็น
 
 ## Expected Outcome
 

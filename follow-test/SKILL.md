@@ -66,7 +66,7 @@ related:
 
 > Goal: Write Tests
 
-- ทำ `/update-test-everything` สำหรับเขียน unit tests และ coverage
+- ทำ `/update-test-and-fix` สำหรับเขียน unit tests และ coverage
 - ทำ `/run-test-all` สำหรับรัน tests ทุกประเภท (unit, integration, e2e, component)
 - ทำ `/run-test-api` สำหรับ API tests และ contract tests ถ้า project มี API
 

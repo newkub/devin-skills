@@ -50,7 +50,7 @@ description: วิเคราะห์และควบคุม time complex
 1. ทำ `/run-bench` กับ input sizes หลายระดับ: small, medium, large, worst-case
 2. ตรวจว่า execution time เติบโตตาม complexity ที่วิเคราะห์
 3. ถ้า empirical growth ไม่ตรง theoretical → วิเคราะห์ใหม่ (อาจมี hidden complexity)
-4. ทำ `/update-test-everything` สำหรับ regression: test กับ input ขนาดสูงสุด
+4. ทำ `/update-test-and-fix` สำหรับ regression: test กับ input ขนาดสูงสุด
 
 ## Data Structure Selection
 
