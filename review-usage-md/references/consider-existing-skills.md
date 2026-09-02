@@ -11,7 +11,7 @@ description: ตรวจสอบว่ามี skill อื่นเหมา
 
 ## Checks
 
-1. ทำ `/consider-use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
+1. ทำ `/use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
 2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/review-app-usage` แทน
 3. ถ้า `USAGE.md` ไม่มี → แนะนำ `/update-usage-md` หรือ `/report-usage-md`
 4. ถ้าไม่มี skill อื่นเหมาะสมกว่า → ดำเนินการ review

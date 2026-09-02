@@ -8,7 +8,7 @@ related:
   - review-devin-global-subagents
   - list-devin-global-skills
   - list-devin-global-subagents
-  - consider-use-in-another-skills
+  - use-in-another-skills
 ---
 
 ## Goal
@@ -55,7 +55,7 @@ related:
 1. ถ้า global rules กับ skill ขัดแย้ง → ปรับ skill หรือ update global rules
 2. ถ้า subagent เรียก skill ทีไม่มี → อัปเดต subagent
 3. ถ้า skill อ้างอิง rules ทีไม่มี → เพิ่มหรือลบ reference
-4. ใช้ `/consider-use-in-another-skills` เพื่อหา overlaps
+4. ใช้ `/use-in-another-skills` เพื่อหา overlaps
 
 ### 5. Validate Harness
 

@@ -4,7 +4,7 @@ description: อัปเดท references ทั้งหมดเมื่อ�
 argument-hint: "[target]"
 related:
   - update-references
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - search-files-patterns
   - use-ast-grep
   - deep-analyze-by-use-scripts
@@ -131,7 +131,7 @@ related:
 - ตรวจสอบว่าไม่มี broken imports
 - เก็บ evidence ของทุกไฟล์ที่แก้
 
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

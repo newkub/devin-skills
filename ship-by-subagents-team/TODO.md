@@ -44,7 +44,7 @@
 - [ ] อ่าน `follow-framework-solidjs/SKILL.md`
 - [ ] อ่าน `follow-lib-unocss/SKILL.md`
 - [ ] อ่าน `update-agents-md/SKILL.md`
-- [ ] อ่าน `consider-use-subagents/SKILL.md`
+- [ ] อ่าน `use-subagents/SKILL.md`
 - [ ] อ่าน `follow-loop-engineering/SKILL.md`
 - [ ] อ่าน `update-devin-global-subagents/SKILL.md`
 - [ ] อ่าน `update-devin-global-skills/SKILL.md` หรือ template ที่เกี่ยวข้อง

@@ -4,7 +4,7 @@ description: เพิ่ม link/resource/topic ที user ให้มาเ�
 argument-hint: "<url-or-topic>"
 related:
   - update-devin-global-skills
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - check-skills-related
   - review-devin-global-skills
 ---
@@ -73,7 +73,7 @@ related:
 5. ถ้า input เป็น URL ทีละเอียด ให้ fetch เพื่อสรุป title/คำอธิบายก่อนตัดสินใจ
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 - ใช้ /check-skills-related ถ้าจำเป็น
 - ใช้ /review-devin-global-skills ถ้าจำเป็น
 ## Expected Outcome

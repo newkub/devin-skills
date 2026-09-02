@@ -15,7 +15,7 @@ related:
   - update-agents-md
   - follow-agents-md
   - follow-devin-global-subagents
-  - consider-use-subagents
+  - use-subagents
   - report
   - suggest-next-action
 ---
@@ -39,7 +39,7 @@ Ship code จาก `dev` ไป `main` ตาม `AGENTS.md` โดย `/update
 
 1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` พร้อม ship workflow
 2. ทำ `/follow-agents-md` เพื่อดำเนินการตาม `AGENTS.md`
-3. ถ้ามีหลาย workflows/skills ที่ independent → ทำ `/consider-use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents
+3. ถ้ามีหลาย workflows/skills ที่ independent → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents
 4. ถ้าพบข้อขัดแย้งหรือต้องการ trade-off → ทำ `/ask-me`
 
 ### 2. Report

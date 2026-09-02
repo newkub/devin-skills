@@ -4,7 +4,7 @@ description: พัฒนา feature ด้วย Test-Driven Development red-gr
 related:
   - follow-math-proofs
   - follow-math-propositional-logic
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - run-verify
   - git-commit
 ---
@@ -25,7 +25,7 @@ related:
 
 1. อ่าน spec, issue, หรือ user requirement
 2. ตรวจสอบ existing tests และ test framework ที project ใช้
-3. ถ้าไม่มี test framework → ทำ `/consider-use-in-another-skills` เพื่อหา follow-tool-vitest, follow-jest, follow-test-api
+3. ถ้าไม่มี test framework → ทำ `/use-in-another-skills` เพื่อหา follow-tool-vitest, follow-jest, follow-test-api
 4. ระบุ smallest behavior ทีต้อง test ก่อน
 
 ### 2. Write Failing Test

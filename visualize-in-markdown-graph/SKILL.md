@@ -8,7 +8,7 @@ related:
   - report-workspace-graph
   - visualize-in-web
   - visualize-project
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - ask-me
 ---
 
@@ -42,7 +42,7 @@ related:
 1. สร้าง `nodes` เป็น entities หลัก
 2. สร้าง `edges` จากความสัมพันธ์/dependency/related ระหว่าง nodes
 3. กำหนดกลุ่มหรือประเภทให้แต่ละ node ถ้ามี
-4. ถ้าข้อมูลซับซ้อน → ใช้ `/consider-use-in-another-skills` หรือ `/taxonomy` ช่วยจัดกลุ่ม
+4. ถ้าข้อมูลซับซ้อน → ใช้ `/use-in-another-skills` หรือ `/taxonomy` ช่วยจัดกลุ่ม
 
 ### 3. Choose Graph Format
 

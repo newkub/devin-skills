@@ -97,7 +97,7 @@ related:
 | `/watch-browser-and-fix`, `/watch-browser-and-test-all-routes` | ต้อง test หลายหน้า |
 | `/implement-from-notes-idea` | ทำตาม list ยาว |
 | `/follow-*` skills ทีซับซ้อน | เช่น `follow-agents-md`, `follow-framework-*` |
-| `/consider-use-subagents` | มีการ delegate งานไป subagents |
+| `/use-subagents` | มีการ delegate งานไป subagents |
 | `/ship`, `/deep-validate` | มี validation หลายรอบ |
 
 ## Expected Outcome

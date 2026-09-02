@@ -7,7 +7,7 @@ related:
   - search-project-in-drive-d
   - search-files-patterns
   - follow-my-global-cli
-  - consider-use-subagents
+  - use-subagents
   - update-agents-md
   - report-table
   - ask-me
@@ -42,7 +42,7 @@ Search files, directories, and projects in `D:\` by name pattern, path pattern, 
 
 > Goal: ค้นหาหลาย pattern type ขนานกัน
 
-1. ถ้ามีหลาย pattern types หรือหลาย patterns → ทำ `/consider-use-subagents`
+1. ถ้ามีหลาย pattern types หรือหลาย patterns → ทำ `/use-subagents`
 2. Spawn subagents:
    - `search-folders`: ค้นหา directories ด้วย `fd --type directory <pattern> "D:\"`
    - `search-files`: ค้นหา files ด้วย `fd --type file <pattern> "D:\"`
@@ -117,7 +117,7 @@ Search files, directories, and projects in `D:\` by name pattern, path pattern, 
 
 ### 4. Subagents
 
-- ใช้ `/consider-use-subagents` เมื่องานมีหลาย pattern types
+- ใช้ `/use-subagents` เมื่องานมีหลาย pattern types
 - แต่ละ subagent ทำงานคนละชุด pattern
 - รวมผลก่อน report
 

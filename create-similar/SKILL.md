@@ -5,7 +5,7 @@ related:
   - at-this-repo
   - update-devin-global-skills
   - review-naming
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - edit-by-use-scripts
   - deep-validate
   - search-files-patterns
@@ -95,7 +95,7 @@ related:
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /review-naming ถ้าจำเป็น
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 - ใช้ /edit-by-use-scripts ถ้าจำเป็น
 
 ## Expected Outcome

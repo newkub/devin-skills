@@ -17,7 +17,7 @@ triggers:
 related:
   - new-skills
   - check-skills-related
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - follow-create-devin-skills
   - update-devin-global-skills
   - report-idea
@@ -103,7 +103,7 @@ related:
 
 - ตรวจสอบ skills ที่มีอยู่ก่อนเสนอ skill ใหม่
 - ถ้ามี skill คล้ายกันอยู่แล้ว ให้เสนอการขยาย skill นั้นแทน
-- ใช้ `consider-use-in-another-skills` เมื่อพบความซ้อนทับ
+- ใช้ `use-in-another-skills` เมื่อพบความซ้อนทับ
 
 ### 2. Concrete And Focused
 

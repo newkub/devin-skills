@@ -2,7 +2,7 @@
 name: review-by-stakeholder
 description: Review project โดยเลือก roleplay stakeholders ตาม status และ context ของ project
 related:
-  - consider-use-subagents
+  - use-subagents
   - follow-devin-global-subagents
   - scan-codebase
   - deep-validate
@@ -68,7 +68,7 @@ Review project จากหลายมุมมองของ stakeholder โ�
 - ระบุเหตุผลทีเลือกหรือไม่เลือกแต่ละบทบาท
 
 ### 3. Parallel Execution
-- พยายามใช้ `/consider-use-subagents` หรือ `/follow-devin-global-subagents` เพื่อ run ขนาน
+- พยายามใช้ `/use-subagents` หรือ `/follow-devin-global-subagents` เพื่อ run ขนาน
 - ถ้าไม่สามารถ parallel ได้ → ทำ sequential ตาม priority
 
 ### 4. Evidence-Based

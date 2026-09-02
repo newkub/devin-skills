@@ -5,7 +5,7 @@ related:
   - search-files-patterns
   - use-ast-grep
   - list-devin-global-skills
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - create-similar
   - ask-me
   - report-table
@@ -77,7 +77,7 @@ related:
 - ไม่expose secrets หรือ sensitive ใน snippets
 - ถ้า context ไม่ชัด → ถาม user ก่อน
 
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

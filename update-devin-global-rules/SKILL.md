@@ -4,7 +4,7 @@ description: ทำให้ global rules สอดคล้องกับ skil
 related:
   - update-all-devin-global-skills
   - update-devin-global-subagents
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - follow-global-rules
   - report-idea
   - list-devin-global-skills
@@ -115,7 +115,7 @@ related:
 
 - ใช้ /update-all-devin-global-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-subagents ถ้าจำเป็น
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

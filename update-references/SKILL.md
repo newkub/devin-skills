@@ -2,7 +2,7 @@
 name: update-references
 description: อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์
 related:
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - edit-relative
   - search-files-patterns
   - check-file-relations
@@ -132,7 +132,7 @@ related:
 - ตรวจสอบว่า code ยังทำงานได้
 - ตรวจสอบว่าไม่มี broken imports
 
-- ใช้ /consider-use-in-another-skills ถ้าจำเป็น
+- ใช้ /use-in-another-skills ถ้าจำเป็น
 - ใช้ /edit-relative ถ้าจำเป็น
 - ใช้ /search-files-patterns ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น

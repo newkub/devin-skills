@@ -15,7 +15,7 @@ related:
   - update-project
   - check-should-update
   - follow-parallel
-  - consider-use-subagents
+  - use-subagents
   - report-table
   - ask-me
 ---
@@ -111,7 +111,7 @@ related:
 
 ### 3. Parallel Execution
 
-- ถ้ามีมากกว่า 5 projects → ใช้ `/follow-parallel` หรือ `/consider-use-subagents` เพื่อประมวลผลขนาน
+- ถ้ามีมากกว่า 5 projects → ใช้ `/follow-parallel` หรือ `/use-subagents` เพื่อประมวลผลขนาน
 - แต่ละ subagent รับผิดชอบ project หนึ่ง หรือกลุ่ม project
 - รวมผลก่อน report
 

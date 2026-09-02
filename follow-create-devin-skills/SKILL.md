@@ -42,7 +42,7 @@ related:
 2. ทำ `/review-techstack` เพื่อ review ถ้าจำเป็น
 3. ทำ `/prepare-skills-context` เพื่อเลือก AI tool, template, และ directory pattern
 4. ทำ `/check-skills-related` เพื่อหา skills ท่ีซ้ำหรือเกี่ยวข้อง
-5. ถ้าซ้ำ → ทำ `/consider-use-in-another-skills` ก่อนดำเนินการต่อ
+5. ถ้าซ้ำ → ทำ `/use-in-another-skills` ก่อนดำเนินการต่อ
 
 ### 3. Select Template And Create Structure
 

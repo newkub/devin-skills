@@ -3,7 +3,7 @@ name: update-devin-global-skills
 description: สร้างหรืออัปเดต skill หนึ่งตัวหรือหลายตัวใน devin skills repo ตามมาตรฐาน
 argument-hint: "[@files...]"
 related:
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - scan-codebase
   - review-devin-global-skills
   - follow-global-rules
@@ -48,7 +48,7 @@ related:
 > Goal: สร้างหรืออัปเดตแต่ละ skill ตามมาตรฐาน
 
 1. สำหรับ skill ใหม่ → ทำ `/scan-codebase` เพื่อตรวจว่าไม่ซ้ำกับ skills ที่มีอยู่
-2. ถ้าซ้ำ → ทำ `/consider-use-in-another-skills` เพื่อเสนอ extend หรือ rename ก่อน
+2. ถ้าซ้ำ → ทำ `/use-in-another-skills` เพื่อเสนอ extend หรือ rename ก่อน
 3. สร้าง directory `%APPDATA%\devin\skills\<skill-name>\`
 4. ตรวจ ecosystem ของ target workspace จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `requirements.txt` เพื่อเลือก commands, package manager และ dependencies ที่ถูกต้อง
 5. ถ้า skill ต้องสร้าง app แทน script → เลือก `follow-create-*` ตามประเภท:

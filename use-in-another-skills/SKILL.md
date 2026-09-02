@@ -1,6 +1,6 @@
 ---
-name: consider-use-in-another-skills
-description: พิจารณา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่สำหรับ skill ปัจจุบัน
+name: use-in-another-skills
+description: หา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่สำหรับ skill ปัจจุบัน
 argument-hint: "[skill-name]"
 related:
   - idea-use-skills-in-another-skills

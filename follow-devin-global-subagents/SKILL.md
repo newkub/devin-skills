@@ -5,7 +5,7 @@ argument-hint: "[task]"
 related:
   - follow-agents-md
   - update-agents-md
-  - consider-use-subagents
+  - use-subagents
   - list-devin-global-subagents
   - review-workflow
   - review-and-fix
@@ -39,14 +39,14 @@ related:
 
 1. ทำ `/list-devin-global-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
-3. ถ้าไม่มี role ที่ต้องการ → ทำ `/consider-use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
 
 ### 3. Spawn Subagents
 
 > Goal: ส่งงานให้ subagents ทำขนานกัน
 
-1. ใช้ `/consider-use-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
+1. ใช้ `/use-subagents` เพื่อ spawn หลาย subagents พร้อมกัน
 2. ส่ง context ครบ: task, constraints, files, expected output
 3. กำหนด timeout หรือรอบการทำงาน
 4. ห้ามส่ง subtask ซ้ำซ้อนกัน

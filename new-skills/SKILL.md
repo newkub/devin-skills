@@ -20,7 +20,7 @@ related:
   - update-devin-global-skills
   - follow-create-devin-skills
   - review-devin-global-skills
-  - consider-use-in-another-skills
+  - use-in-another-skills
   - follow-global-rules
   - deep-validate
   - check-skills-related
@@ -52,7 +52,7 @@ related:
 > Goal: ตรวจหา skill ที่ซ้ำกัน
 
 1. เรียก `find_file_by_name` หรือ `grep` เพื่อตรวจสอบว่ามี skill ที่คล้ายกันอยู่แล้วหรือไม่
-2. ใช้ `consider-use-in-another-skills` หากพบ skill ที่อาจซ้ำกัน
+2. ใช้ `use-in-another-skills` หากพบ skill ที่อาจซ้ำกัน
 3. หากผู้ใช้ยืนยัน ให้ดำเนินการต่อด้วยชื่อใหม่
 
 ### 3. Run update-devin-global-skills
