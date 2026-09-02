@@ -4,7 +4,7 @@ description: รันและตรวจสอบ GitHub Actions จนกว
 argument-hint: "[run-id]"
 related:
   - list-ci-configs
-  - resolve-all-github-actions-fails
+  - resolve-github-actions-fails
   - ask-me
   - follow-tool-github-actions
 ---

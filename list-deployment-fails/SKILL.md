@@ -5,12 +5,12 @@ argument-hint: "[limit]"
 related:
   - list-github-actions-fails
   - list-cloudflare-worker-fails
-  - resolve-all-github-actions-fails
-  - resolve-all-cloudflare-worker-fails
+  - resolve-github-actions-fails
+  - resolve-cloudflare-worker-fails
   - report-table
   - suggest-next-action
   - watch-github-actions
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - follow-service-vercel
   - follow-service-cloudflare
   - open-cloudflare-workers
@@ -78,8 +78,8 @@ related:
 > Goal: แนะนำขั้นตอนถัดไป
 
 1. ทำ `/suggest-next-action` เพื่อแนะนำ debug, re-run, watch, หรือ fix
-2. ถ้ามี failures จาก Cloudflare → แนะนำ `/watch-cicd-and-resolve` หรือ `/resolve-all-cloudflare-worker-fails`
-3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/watch-github-actions` หรือ `/resolve-all-github-actions-fails`
+2. ถ้ามี failures จาก Cloudflare → แนะนำ `/resolve-cicd` หรือ `/resolve-cloudflare-worker-fails`
+3. ถ้ามี failures จาก GitHub Actions → แนะนำ `/watch-github-actions` หรือ `/resolve-github-actions-fails`
 
 ## Rules
 

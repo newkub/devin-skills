@@ -7,8 +7,8 @@ related:
   - list-deployment-fails
   - open-cloudflare-workers
   - open-all-cloudflare-projects
-  - resolve-all-cloudflare-worker-fails
-  - watch-cicd-and-resolve
+  - resolve-cloudflare-worker-fails
+  - resolve-cicd
   - follow-service-cloudflare
   - report-table
   - suggest-next-action
@@ -86,7 +86,7 @@ related:
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ check logs, `watch-cicd-and-resolve` หรือ `resolve-all-cloudflare-worker-fails`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ check logs, `resolve-cicd` หรือ `resolve-cloudflare-worker-fails`
 
 ## Rules
 

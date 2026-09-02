@@ -20,7 +20,7 @@ related:
   - create-github-pr
   - use-create-pr
   - run-verify
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - setup-cicd
   - deploy-to-cloudflare
   - deploy-to-vercel
@@ -111,7 +111,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 9. Monitor And Deploy
 
-1. ใช้ `/watch-cicd-and-resolve` ติดตาม CI/CD
+1. ใช้ `/resolve-cicd` ติดตาม CI/CD
 2. ถ้า pass → merge PR
 3. ถ้ามี deploy → ใช้ `/deploy-to-cloudflare` หรือ `/deploy-to-vercel`
 4. ตรวจสอบ bot ทำงานบน production

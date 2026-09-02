@@ -2,7 +2,7 @@
 name: list-ci-configs
 description: รายการ CI/CD config files ใน repository แบบ read-only
 related:
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - watch-github-actions
   - list-github-action-fail
   - report-config-files
@@ -92,7 +92,7 @@ related:
 - ไม่ list เนื้อหา config ทั้งหมด
 - ระบุแค่ platform, file path, status และ notes สั้น ๆ
 
-- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /watch-github-actions ถ้าจำเป็น
 - ใช้ /list-github-action-fail ถ้าจำเป็น
 - ใช้ /report-config-files ถ้าจำเป็น

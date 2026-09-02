@@ -1,5 +1,5 @@
 ---
-name: resolve-all-github-actions-fails
+name: resolve-github-actions-fails
 description: หาและ resolve GitHub Actions workflow runs ทีล้มเหลวทั้ง personal และ org repos
 related:
   - list-github-actions-fails

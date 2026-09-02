@@ -59,11 +59,15 @@ related:
 
 > Goal: เขียน body ตามมาตรฐาน
 
-1. ถ้า repo ยังไม่มี templates → `/follow-github-issue-templates`
-2. อ่าน `.github/ISSUE_TEMPLATE/*.md`
-3. เลือกประเภท: bug, feature, plan, test, question, agents-task
-4. เขียน title, description ด้วยภาษาอังกฤษ
-5. description ประกอบด้วย: Problem, Expected, Actual, Steps, Environment, Acceptance Criteria
+1. ถ้า repo มี `.github/ISSUE_TEMPLATE/*.yml` → อ่านและใช้ repo templates
+2. ถ้า repo ยังไม่มี templates → อ่าน `create-github-issue/templates/index.md` เลือก type:
+   - `bug` → `templates/bug.md`
+   - `feature` → `templates/feature.md`
+   - `plan` → `templates/plan.md`
+   - `question` → `templates/question.md`
+3. อ่าน template ทีเลือก แล้วแทนที placeholders ด้วยข้อมูลจริง
+4. เขียน title ด้วยภาษาอังกฤษ Title Case ไม่เกิน 80 ตัวอักษร
+5. description เขียนด้วยภาษาอังกฤษ ยกเว้น technical terms
 
 ### 5. Create Issue
 
@@ -128,28 +132,9 @@ related:
 
 ### 4. Issue Description
 
-```markdown
-## Problem
-[Describe the problem clearly]
-
-## Expected Behavior
-[What you expected to happen]
-
-## Actual Behavior
-[What actually happened]
-
-## Steps to Reproduce
-1. [Step 1]
-2. [Step 2]
-
-## Environment
-- OS: [version]
-- Version: [version]
-
-## Acceptance Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
-```
+- ใช้ template จาก `create-github-issue/templates/<type>.md` ตาม type ทีเลือก
+- แทนที placeholders ด้วยข้อมูลจริง
+- ถ้า type ไม่ตรง template ใด → ใช้ `bug.md` เป็น base แล้วปรับให้เหมาะสม
 
 ### 5. Labels Convention
 

@@ -6,7 +6,7 @@ related:
   - list-ci-configs
   - watch-github-actions
   - list-github-repo
-  - resolve-all-github-actions-fails
+  - resolve-github-actions-fails
   - list-deployment-fails
   - report-table
   - suggest-next-action
@@ -72,7 +72,7 @@ related:
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, `watch-github-actions` หรือ `resolve-all-github-actions-fails`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, `watch-github-actions` หรือ `resolve-github-actions-fails`
 
 ## Rules
 

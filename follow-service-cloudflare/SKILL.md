@@ -6,7 +6,7 @@ related:
   - open-web-for-config-secret
   - follow-create-cloudflare-token
   - deploy-to-cloudflare
-  - watch-cicd-and-resolve
+  - resolve-cicd
   - follow-tool-mise
   - follow-tasks
   - follow-package-manifest
@@ -200,7 +200,7 @@ export default defineNuxtConfig({
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
 - ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /watch-cicd-and-resolve ถ้าจำเป็น
+- ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-package-manifest ถ้าจำเป็น

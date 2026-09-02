@@ -67,7 +67,7 @@
 2. ตรวจ `.env` files ว่าอยู่ใน `.gitignore`
 3. ตรวจ `package.json` มี `engines` / `trustedDependencies` / `onlyBuiltDependencies` เหมาะสม
 4. ตรวจ CI/CD config มี secret scanning, SLSA, signed commits
-5. ถ้า CI config ผิดหรือ pipeline ต้อง monitor จนผ่าน → ระบุให้ใช้ `/watch-cicd-and-resolve`
+5. ถ้า CI config ผิดหรือ pipeline ต้อง monitor จนผ่าน → ระบุให้ใช้ `/resolve-cicd`
 
 ## Check Tool Versions And Consistency
 
