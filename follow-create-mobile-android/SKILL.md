@@ -101,24 +101,19 @@ related:
 3. ใช้ `ViewModel` สำหรับ screen state
 4. ใช้ `StateFlow` หรือ `MutableState` สำหรับ UI state
 
-### 9. Testing
+### 9. Testing And Build
 
-> Goal: ตรวจสอบความถูกต้องของ app
+> Goal: ตรวจสอบความถูกต้องของ app และสร้าง release build
 
 1. เขียน unit tests สำหรับ use cases และ ViewModels
 2. เขียน UI tests ด้วย Compose Testing
 3. รัน `./gradlew test` และ `./gradlew connectedCheck` ถ้ามี emulator
+4. ตั้งค่า signing config (keystore, password) ผ่าน environment variables
+5. รัน `./gradlew assembleRelease`
+6. ตรวจสอบ `app-release.apk` หรือ `app-release.aab`
+7. ใช้ Play Console หรือ `fastlane supply` สำหรับ publish
 
-### 10. Build And Deploy
-
-> Goal: สร้าง release build และเตรียม deploy
-
-1. ตั้งค่า signing config (keystore, password) ผ่าน environment variables
-2. รัน `./gradlew assembleRelease`
-3. ตรวจสอบ `app-release.apk` หรือ `app-release.aab`
-4. ใช้ Play Console หรือ `fastlane supply` สำหรับ publish
-
-### 11. Validate And Ship
+### 10. Validate And Ship
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

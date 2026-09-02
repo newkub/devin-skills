@@ -31,24 +31,19 @@ related:
 
 ## Execute
 
-### 1. Review Tech Stack
+### 1. Review Tech Stack And Verify Toolchain
 
-> Goal: ตรวจสอบ tech stack ก่อนสร้าง
+> Goal: ตรวจสอบ tech stack และยืนยันว่า Rust และ wasm-pack พร้อมใช้
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
 2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
 3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+4. รัน `rustc --version` และ `cargo --version`
+5. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`
+6. รัน `bun --version` หรือ `node --version` สำหรับ frontend tooling
+7. ถ้ายังไม่มี `wasm32-unknown-unknown` target → รัน `rustup target add wasm32-unknown-unknown`
 
-### 2. Verify Toolchain
-
-> Goal: ยืนยันว่า Rust และ wasm-pack พร้อมใช้
-
-1. รัน `rustc --version` และ `cargo --version`
-2. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`
-3. รัน `bun --version` หรือ `node --version` สำหรับ frontend tooling
-4. ถ้ายังไม่มี `wasm32-unknown-unknown` target → รัน `rustup target add wasm32-unknown-unknown`
-
-### 3. Create Rust Crate
+### 2. Create Rust Crate
 
 > Goal: สร้าง Rust library สำหรับ compile เป็น WASM
 
@@ -71,7 +66,7 @@ related:
    ```
 4. รัน `cargo check` เพื่อตรวจ syntax
 
-### 4. Build WASM Package
+### 3. Build WASM Package
 
 > Goal: สร้าง `.wasm` และ JS bindings จาก Rust crate
 
@@ -79,7 +74,7 @@ related:
 2. ตรวจสอบว่าเกิด `pkg/<project-name>_core.js`, `pkg/<project-name>_core_bg.wasm`, และ `package.json`
 3. ถ้ามี dependencies ของ `wasm-pack` ขาดหาย → รัน `wasm-pack build` อีกครั้งหลังแก้ `Cargo.toml`
 
-### 5. Setup Vite + Solid Frontend
+### 4. Setup Vite + Solid Frontend
 
 > Goal: สร้าง frontend project ด้วย Solid
 
@@ -94,7 +89,7 @@ related:
    "build": "bun wasm && tsc && vite build"
    ```
 
-### 6. Configure Vite
+### 5. Configure Vite
 
 > Goal: ตั้งค่า Vite ให้โหลด WASM package ได้
 
@@ -114,7 +109,7 @@ related:
 2. ถ้าใช้ `vite-plugin-wasm` แทน ให้เพิ่ม `topLevelAwait` plugin
 3. ตรวจ `tsconfig.json` ให้รองรับ `esnext` module
 
-### 7. Call Rust From Solid
+### 6. Call Rust From Solid
 
 > Goal: ใช้งาน WASM function ใน Solid components
 
@@ -137,7 +132,7 @@ related:
 2. ใช้ `createResource` เมื่อ loading WASM แบบ async
 3. ถ้า plugin ทำให้ import เป็น sync → ใช้ `createSignal` ธรรมดาได้
 
-### 8. Add State And UX
+### 7. Add State And UX
 
 > Goal: สร้าง UI ครอบคลุมการใช้งาน Rust function
 
@@ -146,7 +141,7 @@ related:
 3. ใช้ `<ErrorBoundary>` รองรับ WASM init errors
 4. ทำ `/follow-framework-solidjs` เพื่อตรวจ patterns ของ Solid
 
-### 9. Test And Build
+### 8. Test And Build
 
 > Goal: ยืนยันว่า project build ผ่านทั้ง Rust และ Vite
 
@@ -155,21 +150,16 @@ related:
 3. รัน `bun run dev` เพื่อตรวจ dev mode
 4. ทำ `/run-test` สำหรับ frontend ถ้ามี test suites
 
-### 10. Deploy
+### 9. Deploy And Ship
 
-> Goal: deploy website ไปยัง platform ที่เลือก
+> Goal: deploy website ไปยัง platform ที่เลือก และส่งมอบ project
 
 1. ถ้า Vercel → `bunx vercel --prod`
 2. ถ้า Cloudflare Pages → ทำ `/follow-service-cloudflare`
 3. ตรวจสอบว่า `.wasm` files ถูก serve ด้วย MIME type `application/wasm`
 4. ทดสอบ production URL กับ function หนัก
-
-### 11. Ship
-
-> Goal: ส่งมอบ project
-
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+5. ทำ `/ship`
+6. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

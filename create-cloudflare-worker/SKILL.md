@@ -23,28 +23,23 @@ related:
 
 ## Execute
 
-### 1. Verify Tech Stack
+### 1. Verify Tech Stack And Prerequisites
 
-> Goal: ตรวจสอบว่า project เป็น Workers ประเภทไหน
+> Goal: ตรวจสอบว่า project เป็น Workers ประเภทไหน และพร้อมสร้างและ deploy
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป stack
 2. ตรวจไฟล์ `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`
 3. ตรวจ `package.json` scripts และ build output
 4. ถ้าไม่มี `wrangler.toml` → สร้างใหม่ด้วย `name`, `main`, `compatibility_date`, และ `[assets]` หรือ `[site]`
-
-### 2. Check Prerequisites
-
-> Goal: ยืนยันว่าพร้อมสร้างและ deploy
-
-1. ตรวจ `wrangler --version` หรือ `bunx wrangler --version`
-2. ถ้า Wrangler ยังไม่ auth → รัน `bunx wrangler login` หรือใช้ `/create-cloudflare-token` แล้ว `wrangler config`
-3. ตรวจ `CLOUDFLARE_ACCOUNT_ID` จาก `wrangler whoami` หรือให้ user ใส่
-4. ตรวจ Git remote ของ repo ปัจจุบัน:
+5. ตรวจ `wrangler --version` หรือ `bunx wrangler --version`
+6. ถ้า Wrangler ยังไม่ auth → รัน `bunx wrangler login` หรือใช้ `/create-cloudflare-token` แล้ว `wrangler config`
+7. ตรวจ `CLOUDFLARE_ACCOUNT_ID` จาก `wrangler whoami` หรือให้ user ใส่
+8. ตรวจ Git remote ของ repo ปัจจุบัน:
    ```bash
    git remote -v
    ```
 
-### 3. Ask For Cloudflare Access
+### 2. Ask For Cloudflare Access
 
 > Goal: ถาม user ก่อนเปิดใช้ Cloudflare Access
 
@@ -57,7 +52,7 @@ related:
 
 ถ้าเลือก 2 → ขั้นตอนหลัง deploy ให้เปิด Cloudflare Access แล้วเพิ่ม policy ใน Zero Trust
 
-### 4. Create Workers Project
+### 3. Create Workers Project
 
 > Goal: สร้าง Worker บน Cloudflare
 
@@ -75,7 +70,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
   --data '{"name":"<project-name>","script":null,"class":"worker"}'
 ```
 
-### 5. Connect Git Repository
+### 4. Connect Git Repository
 
 > Goal: ผูก GitHub repo กับ Workers Builds
 
@@ -134,15 +129,6 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
    ```
 4. ถ้าไม่ต้องการ logic พิเศษ สามารถลบ `worker.js` ได้ถ้าใช้ `[assets]` อย่างเดียว
 
-### 6. Connect Git Repository
-
-> Goal: ผูก GitHub repo กับ Workers Builds
-
-วิธี A — ใช้ Cloudflare API v4 (แนะนำสำหรับ automation):
-```
-https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
-```
-
 ### 6. Configure Build Settings
 
 > Goal: ตั้งค่า build ให้ถูกต้อง
@@ -157,6 +143,11 @@ https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
 | Build output | `dist` หรือ `build` |
 | Root directory | ปกติ `.` หรือ `<subdirectory>` |
 | Framework | Vite / Other |
+
+หรือเปิด dashboard:
+```
+https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
+```
 
 ### 7. Enable Cloudflare Access (Optional)
 
@@ -192,9 +183,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
   }'
 ```
 
-### 8. Trigger First Deploy
+### 8. Deploy And Verify
 
-> Goal: deploy ครั้งแรกให้สำเร็จ
+> Goal: deploy ครั้งแรกให้สำเร็จ และยืนยันว่า Worker live และใช้งานได้
 
 1. ถ้าใช้ Workers Builds → push ไป `main` หรือรอ Cloudflare sync
 2. ถ้าใช้ Wrangler → รัน:
@@ -202,14 +193,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
    bunx wrangler deploy
    ```
 3. บันทึก deployment URL
-
-### 9. Verify And Report
-
-> Goal: ยืนยันว่า Worker live และใช้งานได้
-
-1. เปิด URL ที่ deploy แล้ว
-2. รัน `bunx wrangler tail` ดู logs
-3. รายงาน:
+4. เปิด URL ที่ deploy แล้ว
+5. รัน `bunx wrangler tail` ดู logs
+6. รายงาน:
    - Worker name
    - Deployment URL
    - Git repo ที่ connect

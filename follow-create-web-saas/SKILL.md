@@ -28,24 +28,19 @@ related:
 
 ## Execute
 
-### 1. Review Tech Stack
+### 1. Review Tech Stack And Gather Requirements
 
-> Goal: ตรวจสอบ tech stack
+> Goal: ตรวจสอบ tech stack และเข้าใจ scope
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป stack
 2. ทำ `/review-techstack` เพื่อ review dependencies
 3. บันทึกเหตุผลทีเลือก stack
+4. รับชื่อ project, target users, และ feature list
+5. ระบุ SSR หรือ full-stack
+6. ระบุ integrations: auth, payments (Stripe), CMS, analytics
+7. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-tanstack`
 
-### 2. Gather Requirements
-
-> Goal: เข้าใจ scope
-
-1. รับชื่อ project, target users, และ feature list
-2. ระบุ SSR หรือ full-stack
-3. ระบุ integrations: auth, payments (Stripe), CMS, analytics
-4. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-tanstack`
-
-### 3. Setup Framework
+### 2. Setup Framework
 
 > Goal: สร้าง scaffold
 
@@ -53,7 +48,7 @@ related:
 2. ตรวจสอบ `package.json`, `tsconfig.json`, `vite.config.ts`
 3. รัน `bun install` และ `bun run dev`
 
-### 4. Configure TanStack Ecosystem
+### 3. Configure TanStack Ecosystem
 
 > Goal: ใช้ TanStack libraries
 
@@ -61,7 +56,7 @@ related:
 2. ตั้งค่า providers และ clients ใน entry point
 3. ตรวจสอบ type safety ของ router และ query
 
-### 5. Add Auth
+### 4. Add Auth
 
 > Goal: จัดการ authentication
 
@@ -70,7 +65,7 @@ related:
 3. ป้องกัน routes ทีต้อง auth ด้วย middleware
 4. ตรวจสอบ session, token, refresh logic
 
-### 6. Add Payments
+### 5. Add Payments
 
 > Goal: รองรับ payments
 
@@ -79,7 +74,7 @@ related:
 3. สร้าง checkout flow และ webhook handler
 4. ตรวจสอบ subscription status ใน dashboard
 
-### 7. Build API And Data Layer
+### 6. Build API And Data Layer
 
 > Goal: สร้าง API
 
@@ -88,7 +83,7 @@ related:
 3. ใช้ Zod สำหรับ validation
 4. ตรวจสอบ type safety จาก client ถึง server
 
-### 8. Design Components And Pages
+### 7. Design Components And Pages
 
 > Goal: สร้าง UI
 
@@ -97,7 +92,7 @@ related:
 3. สร้าง `src/components/` สำหรับ reusable UI
 4. ทำ `/follow-single-responsibility` ตรวจสอบแต่ละ component
 
-### 9. Build Dashboard
+### 8. Build Dashboard
 
 > Goal: สร้าง dashboard
 
@@ -106,7 +101,7 @@ related:
 3. ใช้ TanStack Table สำหรับ data grids
 4. รองรับ role-based UI
 
-### 10. Style And Polish
+### 9. Style And Polish
 
 > Goal: ใช้ UnoCSS
 
@@ -114,23 +109,17 @@ related:
 2. ใช้ design tokens สำหรับ colors, spacing, typography
 3. ตรวจสอบ dark mode และ responsive
 
-### 11. Test And Validate
+### 10. Test, Validate And Deploy
 
-> Goal: ตรวจสอบ website
+> Goal: test, validate และ deploy website
 
-1. รัน `bun run build` และ `bun run start`
-2. ทำ `/run-test-all` สำหรับ unit, integration, e2e
-3. ทำ `/review-frontend` ตรวจ accessibility, performance
-4. ทำ `/deep-validate` ถ้ามี complex flows
-
-### 12. Deploy
-
-> Goal: deploy website
-
-1. ถ้า Cloudflare → ทำ `/follow-service-cloudflare`
-2. ถ้า Vercel → ทำ `/follow-service-vercel`
-3. ตรวจสอบ environment variables และ build config
-4. ทดสอบ production URL
+1. ทำ `/run-test-all` สำหรับ unit, integration, e2e
+2. ทำ `/review-frontend` ตรวจ accessibility, performance
+3. ทำ `/deep-validate` ถ้ามี complex flows
+4. ถ้า Cloudflare → ทำ `/follow-service-cloudflare`
+5. ถ้า Vercel → ทำ `/follow-service-vercel`
+6. ตรวจสอบ environment variables และ build config
+7. ทดสอบ production URL
 
 ## Rules
 

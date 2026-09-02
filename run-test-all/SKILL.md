@@ -124,21 +124,16 @@ related:
 2. รัน tests อีกครั้งหลังแก้ไข
 3. ถ้ายัง fail ให้กลับไปขั้นตอน Validate/Review ไม่แก้ให้ผ่านแบบอัตโนมัติ
 
-### 10. Check Coverage
+### 10. Check Coverage And Report
 
-> Goal: Check Coverage
+> Goal: Check Coverage และรายงานผล
 
 1. ทำ `/run-test-coverage` เพื่อวิเคราะห์ coverage
 2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/update-test-and-fix` เพิ่ม แล้วรัน tests ใหม่
-
-### 11. Report
-
-> Goal: Report
-
-1. ทำ `/report` สรุปผลลัพธ์
-2. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
-3. ทำ `/suggest-next-action` หากยังมี issues
+4. ทำ `/report` สรุปผลลัพธ์
+5. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
+6. ทำ `/suggest-next-action` หากยังมี issues
 
 ## Rules
 

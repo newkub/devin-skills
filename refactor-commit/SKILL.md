@@ -68,44 +68,23 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 2. ถ้าต้อง rebase ไปยัง upstream โดยอัตโนมัติ ใช้ Non-Interactive Rebase (step 6)
 3. ถ้าต้อง squash commits ด้วย fixup ใช้ Autosquash (step 7)
 
-### 5. Interactive Rebase
+### 5. Execute Rebase
 
-> Goal: Interactive Rebase
+> Goal: Execute rebase ตาม mode ที่เลือก (interactive, non-interactive, หรือ autosquash)
 
-เริ่ม interactive rebase สำหรับ break down หรือ edit commits
-
-1. ทำ `git rebase -i HEAD~N` (N = จำนวน commits ที่ต้อง refactor) หรือ `git rebase -i <commit-hash>`
-2. แก้ไข rebase todo list:
+1. Interactive: ทำ `git rebase -i HEAD~N` หรือ `git rebase -i <commit-hash>` แล้วแก้ไข rebase todo list:
    - เปลี่ยน `pick` เป็น `edit` สำหรับ commit ที่ต้อง break down
    - เปลี่ยน `pick` เป็น `reword` สำหรับ commit ที่ต้อง edit message
    - เปลี่ยน `pick` เป็น `squash` สำหรับ commit ที่ต้องรวม
    - ลำดับ commits ใหม่ถ้าต้องการ reorder
-3. Save และ close editor
+2. Non-interactive: ทำ `git rebase <upstream>` หรือ `git rebase --onto <new-base> <upstream>`
+3. Autosquash: สร้าง fixup commits ด้วย `git commit --fixup <commit-hash>` แล้วทำ `git rebase -i --autosquash HEAD~N`
+4. ถ้าเกิด conflicts → แก้ไขและทำ `git rebase --continue`
+5. ถ้าต้องการ skip commit → ทำ `git rebase --skip`
+6. ถ้าต้องการ abort → ทำ `git rebase --abort` และ restore จาก backup branch
+7. Save และ close editor
 
-### 6. Non-Interactive Rebase
-
-> Goal: Non-Interactive Rebase
-
-เริ่ม non-interactive rebase สำหรับ rebase ไปยัง upstream โดยอัตโนมัติ
-
-1. ทำ `git rebase <upstream>` เพื่อ rebase commits ไปยัง upstream
-2. ทำ `git rebase --onto <new-base> <upstream>` เพื่อ rebase ไปยัง base ใหม่
-3. ถ้าเกิด conflicts, แก้ไขและทำ `git rebase --continue`
-4. ถ้าต้องการ skip commit ปัจจุบัน, ทำ `git rebase --skip`
-5. ถ้าต้องการ abort, ทำ `git rebase --abort` และ restore จาก backup branch
-
-### 7. Autosquash Rebase
-
-> Goal: Autosquash Rebase
-
-ใช้ fixup commits และ autosquash สำหรับการจัดการ commits ที่ซับซ้อน
-
-1. สร้าง fixup commits: `git commit --fixup <commit-hash>` สำหรับแต่ละ fix
-2. ทำ `git rebase -i --autosquash HEAD~N` เพื่อให้ Git จัดเรียง fixup commits อัตโนมัติ
-3. Git จะเตรียม rebase todo list ให้โดยเรียง fixup commits ไว้หลัง target commits
-4. Save และ close editor
-
-### 8. Break Down Commits
+### 6. Break Down Commits
 
 > Goal: Break Down Commits
 
@@ -128,7 +107,7 @@ Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
 3. ทำ `git diff backup-branch HEAD` เพื่อดู changes ที่เกิดขึ้น
 4. รัน tests ถ้ามีเพื่อยืนยันว่าไม่มี regression
 
-### 9. Handle Conflicts
+### 7. Handle Conflicts
 
 > Goal: Handle Conflicts
 
@@ -152,7 +131,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 3. ใช้ `git push --force-with-lease` เพื่อความปลอดภัยกว่า `--force`
 4. แจ้งทีมให้ทราบก่อนทำ force push
 
-### 10. Rollback
+### 8. Rollback
 
 > Goal: Rollback
 
@@ -171,7 +150,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 
 1. ทำตาม `@[/update-references]`
 
-### 11. Quick Amend Or Rename
+### 9. Quick Amend Or Rename
 
 > Goal: แก้ไข message ของ commit ล่าสุดหรือ commit ก่อนหน้าอย่างรวดเร็ว
 
@@ -181,7 +160,7 @@ Push commits ที่ refactor แล้วไปยัง remote อย่า�
 4. ถ้า rebase มี conflict → ใช้ `/resolve-merge-conflicts`
 5. ตรวจสอบด้วย `git log --oneline -n 10`
 
-### 12. Check And Rewrite Non-English Commit Messages
+### 10. Check And Rewrite Non-English Commit Messages
 
 > Goal: ตรวจสอบและแก้ไข commit messages ที่ไม่ใช่ภาษาอังกฤษ
 

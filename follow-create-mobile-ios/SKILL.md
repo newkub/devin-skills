@@ -90,42 +90,32 @@ related:
 3. สร้าง screens และ reusable components
 4. ใช้ `NavigationStack` หรือ `NavigationView` สำหรับ navigation
 
-### 8. Add DI And State Management
+### 8. Add Dependencies, DI And State
 
-> Goal: จัดการ dependency injection และ state
-
-1. ถ้าใช้ Factory: เพิ่ม `Container` ด้วย registrations
-2. ถ้าใช้ manual DI: สร้าง `AppContainer` หรือ `CompositionRoot`
-3. ใช้ `@StateObject`, `@ObservedObject`, `@State` อย่างถูกต้อง
-4. ใช้ `@MainActor` สำหรับ UI updates
-
-### 9. Add SPM Dependencies
-
-> Goal: ติดตั้ง dependencies ที่จำเป็น
+> Goal: ติดตั้ง dependencies จัดการ dependency injection และ state
 
 1. ไปที่ `File > Add Package Dependencies`
 2. เพิ่ม packages เช่น `Alamofire`, `Factory`, `KeychainAccess` ถ้าจำเป็น
 3. หรือใช้ `Package.swift` สำหรับ pure SPM project
 4. ตรวจสอบ version compatibility
+5. ถ้าใช้ Factory: เพิ่ม `Container` ด้วย registrations
+6. ถ้าใช้ manual DI: สร้าง `AppContainer` หรือ `CompositionRoot`
+7. ใช้ `@StateObject`, `@ObservedObject`, `@State` อย่างถูกต้อง
+8. ใช้ `@MainActor` สำหรับ UI updates
 
-### 10. Testing
+### 9. Testing And Build
 
-> Goal: ตรวจสอบความถูกต้องของ app
+> Goal: ตรวจสอบความถูกต้องของ app และสร้าง release build
 
 1. เขียน unit tests สำหรับ UseCases และ ViewModels
 2. เขียน UI tests ด้วย `XCTest` และ SwiftUI testing APIs
 3. รัน `Cmd+U` หรือ `xcodebuild test -scheme <scheme>`
+4. เลือก `Any iOS Device` หรือ real device
+5. ใช้ `Product > Archive` สร้าง archive
+6. ใช้ Xcode Organizer หรือ `xcodebuild -exportArchive` สร้าง `.ipa`
+7. ใช้ App Store Connect หรือ TestFlight สำหรับ distribute
 
-### 11. Build And Deploy
-
-> Goal: สร้าง release build และเตรียม deploy
-
-1. เลือก `Any iOS Device` หรือ real device
-2. ใช้ `Product > Archive` สร้าง archive
-3. ใช้ Xcode Organizer หรือ `xcodebuild -exportArchive` สร้าง `.ipa`
-4. ใช้ App Store Connect หรือ TestFlight สำหรับ distribute
-
-#### 11.2 Validate And Ship
+### 10. Validate And Ship
 
 > Goal: ตรวจสอบคุณภาพก่อนส่งมอบ
 

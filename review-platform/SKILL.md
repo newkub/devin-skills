@@ -18,53 +18,45 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 
 ## Execute
 
-### 1. Prepare
+### 1. Prepare And Mobile And Desktop
 
-ทำตาม `references/prepare.md`
+ทำตาม `references/prepare.md` และ `references/mobile-desktop.md`
 
-### 2. Mobile And Desktop
-
-ทำตาม `references/mobile-desktop.md`
-
-### 3. CLI And TUI
+### 2. CLI And TUI
 
 ทำตาม `references/cli-tui.md`
 
-### 4. SSR, State, Routing, PWA
+### 3. SSR, State, Routing, PWA
 
 ทำตาม `references/ssr-state-routing-pwa.md`
 
-### 5. I18n
+### 4. I18n
 
 ทำตาม `references/i18n.md`
 
-### 6. SEO
+### 5. SEO
 
 ทำ `/review-seo`
 
-### 7. Battery And Energy
+### 6. Battery And Energy
 
 ทำตาม `references/battery.md`
 
-### 8. Performance
+### 7. Performance
 
 ทำตาม `references/performance.md`
 
-### 9. Accessibility
+### 8. Accessibility
 
 ทำตาม `references/accessibility.md`
 
-### 10. Compatibility
+### 9. Compatibility
 
 ทำตาม `references/compatibility.md`
 
-### 11. Validate
+### 10. Validate And Report
 
-ทำตาม `references/validate.md`
-
-### 12. Report
-
-ทำตาม `references/report.md` และคำนวณ score จาก `references/scoring.md`
+ทำตาม `references/validate.md` และ `references/report.md` และคำนวณ score จาก `references/scoring.md`
 
 ## Rules
 

@@ -28,9 +28,9 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ## Execute
 
-### 0. Check Release Conditions
+### 1. Check Conditions And Detect Platforms
 
-> Goal: ยืนยันวา release ถูกต้องและปลอดภัยก่อน run
+> Goal: ยืนยันวา release ถูกต้องและปลอดภัยก่อน run และ detect platforms ที่ project รองรับ
 
 1. ตรวจ `git branch --show-current` และ `git describe --tags --exact-match` หรือ `git tag --points-at HEAD`
    - ถ้า HEAD ไม่อยู่บน tag `v*` และไม่อยู่บน `main` หรือ `master` → stop และ report
@@ -40,19 +40,12 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
    - GitHub Actions: `gh run list --branch main --json databaseId,headSha,status --limit 5` แล้ว `/resolve-cicd <run-id>`
    - ถ้า CI ยังไม่ผ่าน → stop และ report
 5. ตรวจ secrets ทีจำเป็นพร้อมใช้งาน (`NPM_TOKEN`, `VSCE_PAT`, `CARGO_REGISTRY_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)
-6. ถ้าทุก condition ผ่าน → ไปขั้นตอน Detect Platforms
-
-### 1. Detect Platforms
-
-> Goal: Detect Platforms
-
-ตรวจสอบ platforms ที่ project รองรับจาก configuration files
-
-1. ตรวจสอบ `package.json` มี `private: false` → รองรับ `npm`
-2. ตรวจสอบ `package.json` มี `publisher` field → รองรับ `vscode`
-3. ตรวจสอบ `Cargo.toml` มีอยู่ → รองรับ `crates`
-4. ตรวจสอบ `manifest.json` มีอยู่ → รองรับ `webstore`
-5. ตรวจสอบ `Dockerfile` มีอยู่ → รองรับ `docker`
+6. ถ้าทุก condition ผ่าน → detect platforms:
+   - ตรวจสอบ `package.json` มี `private: false` → รองรับ `npm`
+   - ตรวจสอบ `package.json` มี `publisher` field → รองรับ `vscode`
+   - ตรวจสอบ `Cargo.toml` มีอยู่ → รองรับ `crates`
+   - ตรวจสอบ `manifest.json` มีอยู่ → รองรับ `webstore`
+   - ตรวจสอบ `Dockerfile` มีอยู่ → รองรับ `docker`
 
 ### 2. Check Configuration
 

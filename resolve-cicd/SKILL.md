@@ -1,7 +1,7 @@
 ---
 name: resolve-cicd
 argument-hint: "[run-id-or-url-or-target]"
-description: ติดตาม CI/CD pipeline จาก trigger จนผ่าน/live/healthy พร้อม resolve re-run re-deploy และลบ failed runs
+description: ติดตาม CI/CD pipeline จนผ่าน/live/healthy พร้อม resolve re-run re-deploy และลบ failed runs
 related:
   - list-cicd-fails
   - delete-cicd-fails
