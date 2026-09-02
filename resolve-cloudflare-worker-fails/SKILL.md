@@ -1,5 +1,5 @@
 ---
-name: resolve-all-cloudflare-worker-fails
+name: resolve-cloudflare-worker-fails
 description: หาและแก้ไข Cloudflare Workers/Pages ที deployment ล้มเหลวทั้งหมดใน account
 related:
   - list-cloudflare-worker-fails
