@@ -1,79 +1,86 @@
 ---
 name: devin-global-skills
-description: Index of global and project-specific Devin CLI skills
+description: Global and project-specific Devin CLI skill collection and conventions
 related:
   - update-agents-md
   - follow-agents-md
   - update-devin-global-skills
+  - update-devin-global-rules
+  - update-devin-harness
+  - follow-global-rules
   - deep-validate
   - review-rules
   - review-devin-global-skills
   - git-commit-at-devin-skills-global
+  - update-review-cli-and-fix
   - ship
   - report
 ---
 
 ## Goal
 
-Maintain `AGENTS.md` and conventions for the Devin global skills repository so they are correct, complete, and ready to use
+Maintain `AGENTS.md` and conventions for the Devin global skills repository so they are correct, complete, and ready to use.
 
 ## Scope
 
-Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packages. Does not include editing skill source code directly
+Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packages. Does not include editing skill source code directly.
 
 ## Execute
 
 ### 1. Start Every Task
 
-> Goal: Check workspace status and references before starting
+> Goal: Check workspace status and references before starting.
 
-1. Run `/update-agents-md` before starting every task
-2. Run `/follow-agents-md` to read and follow `AGENTS.md`
-3. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-4. Read `/update-devin-global-skills` when editing a skill
+1. Run `/update-agents-md` before starting every task.
+2. Run `/follow-agents-md` to read and follow `AGENTS.md`.
+3. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`.
+4. Read `/update-devin-global-skills` when editing a skill.
 
 ### 2. Maintain AGENTS.md
 
-> Goal: Keep `AGENTS.md` up to date and correct
+> Goal: Keep `AGENTS.md` up to date and correct.
 
-1. Run `/check-monorepo` to verify monorepo status
-2. Run `/analyze-project` to analyze tech stack and structure
-3. Run `/all-workspace` if it is a monorepo
-4. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project
-5. Keep the file under 250 lines
+1. Run `/check-monorepo` to verify monorepo status.
+2. Run `/analyze-project` to analyze tech stack and structure.
+3. Run `/all-workspace` if it is a monorepo.
+4. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
+5. Keep the file under 250 lines.
 
 ### 3. Validate And Ship
 
-> Goal: Validate and commit changes
+> Goal: Validate and commit changes.
 
-1. Run `/review-rules` to check `AGENTS.md`
-2. Run `/review-devin-global-skills` when editing skills
-3. Run `/deep-validate` to verify correctness
-4. Run `/git-commit-at-devin-skills-global` or `/ship` to commit changes
-5. Run `/report` to summarize results
+1. Run `/review-rules` to check `AGENTS.md` and rules coverage.
+2. Run `/review-devin-global-skills` when editing skills.
+3. Run `/deep-validate` to verify correctness.
+4. Run `/git-commit-at-devin-skills-global` or `/ship` to commit changes.
+5. Run `/report` to summarize results.
 
 ## Rules
 
 ### 1. Format
 
-- Use frontmatter `name`, `description`, `related`
-- Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-- Keep the file under 250 lines
-- Use backticks for `tools`, `commands`, `paths`, and `skill-name`
-- If a skill has `references/`, write it according to `update-devin-global-skills/references/create-devin-skills.md` — at least `index.md`, `website.md`, `cli.md` for CLI tools, and `apis/index.md` for libraries/frameworks/services/plugin-creation skills
+- Use frontmatter `name`, `description`, `related`.
+- Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`.
+- Keep the file under 250 lines.
+- Use backticks for `tools`, `commands`, `paths`, and `skill-name`.
+- If a skill has `references/`, write it according to `update-devin-global-skills/references/create-devin-skills.md`.
 
 ### 2. Architecture
 
-- `devin-cli-skills: /update-devin-global-skills`
-- `skill-format: /update-devin-global-skills/references/frontmatter.md`
-- `global-rules: C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-- `submodules: 2 (open-devin-in-web, open-files-in-web)`
+- `repo-type: skill collection` (no root package manifest; skills are Markdown docs with optional code).
+- `git: /follow-tool-git`
+- `github: /follow-github`
+- `skill-format: /update-devin-global-skills`
+- `global-rules: /follow-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
+- `review-cli: /update-review-cli-and-fix` (only if `tools/review-codebase` exists)
+- `submodules: open-files-in-web, open-devin-in-web`
 
 ### 3. Platform
 
-- `OS: Windows` (global Devin CLI config path)
-- `repo-type: skill collection` (no package manifest at root)
-- `runtime: none` (pure Markdown skill definitions; some submodules use Rust or Node tooling)
+- `OS: Windows` (global Devin CLI config path `%APPDATA%\devin\skills\`).
+- `repo-type: skill collection` (no package manifest at root).
+- `runtime: none` (pure Markdown skill definitions; some submodules use Bun or Rust tooling).
 
 ### 4. Target User
 
@@ -94,67 +101,49 @@ Core:
 - `update-devin-harness: /update-devin-harness`
 - `follow-global-rules: /follow-global-rules`
 - `git-commit-at-devin-skills-global: /git-commit-at-devin-skills-global`
-- `ship: /ship`
-- `ship: /ship`
-- `ship: /ship`
+- `update-review-cli-and-fix: /update-review-cli-and-fix`
 - `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`
-- `update-review-cli-and-fix: /update-review-cli-and-fix`
-
-By prefix:
 
 Major skill families by current count:
-- `follow-*` (242): language, framework, library, tool, service, architecture, and best-practice guides. Examples: `follow-my-package-manager`, `follow-create-product`, `follow-framework-nextjs`, `follow-lib-unocss`, `follow-tool-vitest`, `follow-create-github-bots`, `follow-create-tsdown-plugins`, `follow-create-bun-plugins`, `follow-create-web`, `follow-create-tui`, `follow-review`
-- `review-*` (56): code review, architecture, security, performance, and quality. Examples: `review-quality`, `review-frontend`, `review-rules`, `review-devin-global-skills`, `review-security`, `review-codebase-everything`
-- `list-*` (48): inventory, lookup, and listing utilities. Examples: `list-computer-info`, `list-program-in-computer`, `list-devin-global-skills`, `list-github-star-latest`, `list-github-star-filter-rust`, `list-github-actions-fails`, `list-cicd-fails`, `list-cloudflare-worker-fails`, `list-ci-configs`, `list-todo-md`
-- `run-*` (34): test, build, lint, typecheck, format, and deployment runners. Examples: `run-test`, `run-build`, `run-check`, `run-verify`, `run-test-all`
-- `update-*` (35): repo, skills, docs, config, runtime, version, and test spec maintenance. Examples: `update-all-program-in-computer`, `update-readme-md`, `update-dot-devin`, `update-all-devin-global-skills`, `update-devin-global-mcp`, `update-version-latest`, `update-review-cli-and-fix`, `update-test-and-fix`, `update-specs`
-- `setup-*` (3): one-time setup helpers. Examples: `setup-cicd`, `setup-package`, `setup-release`
-- `ship-*` (1): ship and deploy helpers. Examples: `ship`
-- `report-*` (38): reporting, diagrams, and visualization helpers. Examples: `report-what-you-do`, `report-my-cli-update`, `report-table`, `report-file-structure`, `report-git-diff`, `report-plan`, `report-numbered-bullet`, `report-enhance-prompt`, `report-progress`, `report-math-equation`, `report-todo`, `report-math-formula`
-- `roleplay-*` (1): stakeholder roleplay perspectives. Examples: `roleplay-stakeholder`
-- `check-*` (19): verification, structure, and health checks. Examples: `check-size`, `check-monorepo`, `check-unused-files`, `check-broken-skills-references`, `check-secrets-leak`, `check-dead-code`, `check-bottlenecks`, `check-backward-compatibility`
-- `deep-*` (23): deep analysis, research, debugging, validation, update, and ship. Examples: `deep-analyze`, `deep-debug`, `deep-refactor`, `deep-retro`, `deep-impact`, `deep-validate`, `deep-test`, `deep-realize-implementation`, `deep-update-project`, `deep-update`, `deep-build`, `deep-review`, `deep-review-pr`
-- `watch-*` (9): continuous monitoring and watch modes. Examples: `watch-all-task`, `watch-browser-and-fix`, `watch-deploy`, `watch-github-actions`, `watch-release`, `watch-terminal`
-- `create-*` (20): project, plugin, bot, report, and diagram scaffolding. Examples: `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `create-new-project-in-drive-d`, `create-report-in-dot-devin`, `create-video-story`, `create-social-cover-image`, `create-github-repo`, `create-plan-as-github-issue`, `create-github-pr`
-- `open-*` (16): browser, editor, and terminal integration. Examples: `open-in-wezterm`, `open-in-explorer`, `open-in-devin`, `open-files-in-web`, `open-github-repo`
-- `search-*` (11): search across code, git, files, and the web. Examples: `search-files-patterns`, `search-in-git`, `search-in-raindrop-io`
-- `use-*` (13): shell, scripts, and library usage. Examples: `use-scripts`, `use-ast-grep`, `use-bun-shell`, `use-pwsh-shell`, `use-my-packages-on-registry`, `use-create-pr`
-- `git-*` (8): git, GitHub, branches, and releases. Examples: `git-commit`, `git-push`, `git-commit-at-devin-skills-global`, `git-file-history`
-- `gen-*` (7): AI-generated images, video, voice, characters, and 3D. Examples: `gen-image-character`, `gen-ai-images`, `gen-ai-videos`, `gen-voice`
-- `cleanup-*` (6): cleanup branches, issues, tasks, and files. Examples: `cleanup-files-in-computer`, `cleanup-git-branch`, `cleanup-worktree`
-- `implement-*` (7): implement tasks and features. Examples: `implement-github-task`, `implement-todo-md`, `implement-features-to-mvp`, `implement-plan-from-github-issue`
-- `idea-*` (8): idea generation. Examples: `idea-features` (chat), `deep-idea-features` (report/plan/impl), `idea-merge-files`, `idea-create-devin-skills-global`, `idea-refactor-workspace`
-- `learn-*` (5): learning and research. Examples: `learn`, `learn-from-web`, `learn-from-pattern`
-- `edit-*` (5): editing helpers. Examples: `edit-only`, `edit-relative`, `edit-manual`
+- `follow-*` (241): language, framework, library, tool, service, architecture, and best-practice guides.
+- `review-*` (57): code review, architecture, security, performance, and quality.
+- `list-*` (49): inventory, lookup, and listing utilities.
+- `report-*` (38): reporting, diagrams, and visualization helpers.
+- `update-*` (35): repo, skills, docs, config, runtime, version, and test spec maintenance.
+- `run-*` (34): test, build, lint, typecheck, format, and deployment runners.
+- `deep-*` (24): deep analysis, research, debugging, validation, update, and ship.
+- `create-*` (20): project, plugin, bot, report, and diagram scaffolding.
+- `check-*` (19): verification, structure, and health checks.
+- `open-*` (17): browser, editor, and terminal integration.
 
-Other utility prefixes and standalone skills: `alignment`, `all-*`, `analyze-*` (e.g. `analyze-file-structure`, `analyze-dependencies`, `analyze-attack-surface`, `analyze-root-cause-analysis`), `ask-*` (e.g. `ask-me`, `pick-bestest`), `assume-*`, `at-*`, `bench-*`, `capture-*`, `vs`, `consider-*`, `convert-*`, `delete-*` (e.g. `delete-cicd-fails`, `delete-git-submodules`), `deploy-*`, `dont-*`, `download-*`, `draw-*`, `explain`, `explore-*`, `fix`, `from-*`, `grouping`, `how-to-works`, `improve`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*` (e.g. `refactor-codebase`), `release-*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `extract-*` (e.g. `extract-pattern`), `generate-*` (e.g. `generate-prompt-from-image`), `resolve-*` (e.g. `resolve-cicd`, `resolve-errors`, `resolve-cloudflare-worker-fails`), `restore-*`, `save-*`, `scan-*`, `suggest-*` (e.g. `suggest-me`, `suggest-next-action`), `create-mermaid-diagram`, `create-mermaid-diagram-all-workspace`, `report-what-you-do` (e.g. `suggest-me`, `suggest-next-action`), `follow-git-flow`, `follow-github`, `simplify`, `summarize-*` (e.g. `summarize-prompt`), `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `view-*`, `write-*`, and others.
+Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `improve`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
 
 ### 6. Workspaces
 
-- Not a monorepo: single root workspace (`%APPDATA%\devin\skills\`)
-- Submodules: `open-files-in-web`, `open-devin-in-web`
+- Not a package monorepo: single root workspace (`%APPDATA%\devin\skills\`).
+- Git submodules: `open-files-in-web`, `open-devin-in-web`.
 
 ### 7. Safety
 
-- Do not edit another skill's `SKILL.md` without explicit command
-- Do not delete or move skill directories without a dry run
-- Dry run before destructive actions
+- Do not edit another skill's `SKILL.md` without explicit command.
+- Do not delete or move skill directories without a dry run.
+- Dry run before destructive actions.
 
 ### 8. Ship Flow
 
-- Default branches: `main` (production), `dev` (staging)
-- Issue branch: `dev/<number>` (short-lived)
-- Worktree: `worktrees/dev-<number>/`
-- Flow: `dev/<number>` → `dev` → `main`
-- Local hooks: block direct commit/push on `main`
-- GitHub: branch protection on `main` (PR + status checks) and `dev` (status checks)
-- Skills: `/ship`
+- Default branches: `main` (production), `dev` (staging).
+- Create `dev` from `main` if it does not exist yet.
+- Issue branch: `dev/<number>` (short-lived).
+- Worktree: `worktrees/dev-<number>/`.
+- Flow: `dev/<number>` → `dev` → `main`.
+- Local hooks: block direct commit/push on `main`.
+- GitHub: branch protection on `main` (PR + status checks) and `dev` (status checks).
+- Use `/ship` for the full workflow.
 
 ## Expected Outcome
 
-- `AGENTS.md` follows Devin CLI standards and stays under 250 lines
-- Every skill reference exists
-- Changes are committed with a clear next action
-
+- `AGENTS.md` follows Devin CLI standards and stays under 250 lines.
+- Every skill reference exists.
+- Changes are committed with a clear next action.
