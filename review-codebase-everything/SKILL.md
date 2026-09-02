@@ -10,7 +10,6 @@ allowed-tools:
 related:
   - deep-review
   - update-review-cli-and-fix
-  - update-test-and-fix
   - run-review
   - update-create-analyze-cli
 triggers:

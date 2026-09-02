@@ -69,8 +69,6 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 4. `git branch --show-current` และ `git status --short`
 5. ถ้าไม่อยู่ `dev` → `git switch dev` แล้ว `git pull origin dev`
 6. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
-7. ทำ `/update-review-cli-and-fix` เพื่อ review code ก่อน verify
-8. ทำ `/update-test-and-fix` เพื่อ sync tests ก่อน verify
 
 ### 2. Local Verify
 
@@ -80,10 +78,11 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 4. ทำ `/deep-optimize` ถ้าต้องการหา quick wins
 5. ทำ `/run-verify`
 6. ทำ `/run-test-all` ถ้ามี
-7. ทำ `/update-review-cli-and-fix` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุ
-8. ทำ `/update-test-and-fix` ถ้ามี tests หรือ coverage ต้อง sync
-9. ทำ `/deep-validate`
-10. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
+7. ทำ `/run-test-coverage` ถ้ามี setup coverage
+8. ทำ `/update-review-cli-and-fix` ถ้ามี `tools/review-codebase/` หรือ `AGENTS.md` ระบุให้อัปเดต/รัน review CLI
+9. ถ้ามี test failures หรือ coverage gaps ทีต้องแก้ → ทำ `/update-test-and-fix` แล้วรัน `/run-test-all` กับ `/run-test-coverage` ใหม่อีกครั้ง
+10. ทำ `/deep-validate`
+11. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
 
 ### 3. Commit
 

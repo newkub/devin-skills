@@ -22,7 +22,6 @@ related:
   - deep-plan
   - deep-analyze
   - update-review-cli-and-fix
-  - update-test-and-fix
   - deep-review-pr
   - deep-report
   - deep-validate
@@ -48,7 +47,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 
 ### 2. Dispatch By Context
 
-1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/update-review-cli-and-fix` แล้วต่อด้วย `/update-test-and-fix` ถ้ามี tests/coverage
+1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/update-review-cli-and-fix`
 2. ถ้า context เป็น PR, pull request, branch diff → ทำ `/deep-review-pr`
 3. ถ้า context เป็น issue, bug, feature → ทำ `/deep-analyze` แล้วแนะนำ `/review-*` ทีเหมาะสม
 4. ถ้า context เป็น docs, README, content → ทำ `/review-docs`
