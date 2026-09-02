@@ -53,53 +53,17 @@ related:
 
 > Goal: สร้าง PR title และ body ในรูปแบบ feature-based พร้อมหลักฐาน
 
-1. สร้าง title จาก commit messages หรือ task ที่ทำ
-2. ถ้า PR ประกอบด้วยหลาย feature หรือ change ที่แยกออกเป็นส่วนได้ → แบ่ง body เป็นหลาย section โดยแต่ละ section เป็น 1 feature:
-   - ใช้ heading ชัดเจนระบุชื่อ feature เช่น `## Feature: <ชื่อ>`
-   - ภายใต้แต่ละ feature ให้ใช้ตาราง 1 row ที่มี 5 คอลัมน์:
-     | Description | Benefit | Why | File Change | Image/Video |
-   - `Description`: อธิบายว่า feature/change นี้ทำอะไร
-   - `Benefit`: value ที่ได้รับจาก change นี้
-   - `Why`: เหตุผลที่ต้องทำหรือปัญหาที่แก้
-   - `File Change`: ไฟล์หรือ path หลักที่เปลี่ยนแปลง
-   - `Image/Video`: หลักฐาน screenshot หรือ video ที่บันทึกจาก `/record-video-terminal` หรือ `/capture-terminal` เท่านั้น
-3. ห้ามใช้ mockup, placeholder หรือ image/video ที่ไม่ใช่หลักฐานจริงใน column Image/Video
-4. ถ้า PR ไม่ใช่ลักษณะ feature → ใช้รูปแบบมาตรฐาน:
-   - Summary
-   - Changes (bullet points)
-   - Type of change
-   - Breaking changes (ถ้ามี)
-   - Testing done
-   - Issue references (เช่น `Closes #<issue>`)
-5. ถ้ามี project template → อ่าน `.github/pull_request_template.md`
-6. ใช้ format มาตรฐานถ้าไม่มี template:
-```markdown
-## Summary
-[อธิบาย changes อย่างกระชับ]
-
-## Feature: <feature-name>
-| Description | Benefit | Why | File Change | Image/Video |
-|---|---|---|---|---|
-| [อธิบาย feature] | [value ที่ได้] | [เหตุผล/ปัญหา] | `path/to/file` | ![evidence](path/to/screenshot.png) หรือ [video](path/to/video.cast) |
-
-## Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation
-- [ ] Refactoring
-
-## Testing
-- [ ] Unit tests pass
-- [ ] Integration tests pass
-- [ ] Manual testing done
-
-## Checklist
-- [ ] Code follows project style
-- [ ] Self-review completed
-- [ ] Comments added for complex logic
-- [ ] Documentation updated (if needed)
-```
+1. สร้าง title จาก commit messages หรือ task ที่ทำ โดยใช้ conventional commit format: `<type>(<scope>): <subject>`
+2. ถ้า repo มี `.github/pull_request_template.md` → อ่านและใช้เป็น base
+3. ถ้าไม่มี → อ่าน `create-github-pr/templates/index.md` เลือก template ตาม type:
+   - `feature` → `templates/feature.md`
+   - `bugfix` → `templates/bugfix.md`
+   - `refactor` → `templates/refactor.md`
+   - `docs` → `templates/docs.md`
+   - `hotfix` → `templates/hotfix.md`
+4. อ่าน template ทีเลือก แล้วแทนที placeholders ด้วยข้อมูลจริง
+5. ถ้า PR ประกอบด้วยหลาย feature → ใช้ `feature.md` แล้วแบ่ง body เป็นหลาย `## Feature: <name>` section
+6. ห้ามใช้ mockup, placeholder หรือ image/video ที่ไม่ใช่หลักฐานจริงใน column Image/Video
 7. ถ้าไม่ชัด → ทำ `/ask-me`
 
 ### 5. Create PR
