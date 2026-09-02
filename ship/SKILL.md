@@ -64,6 +64,8 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 
 ### 1. Prepare
 
+> Goal: เตรียม workspace และ code ก่อน verify
+
 1. ทำ `/update-agents-md` ถ้า `AGENTS.md` ไม่อัปเดต
 2. ทำ `/follow-agents-md`
 3. ทำ `/update-project` ถ้าจำเป็น
@@ -72,6 +74,8 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 6. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
 
 ### 2. Local Verify
+
+> Goal: verify code บน local จนผ่านทุกเกณฑ์
 
 1. ทำ `/run-dev` ถ้าจำเป็น
 2. ทำ `/test-usage` เพื่อทดสอบ flow สำคัญ
@@ -87,10 +91,14 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 
 ### 3. Commit
 
+> Goal: commit changes ที่ผ่าน verification
+
 1. ทำ `/git-commit`
 2. ถ้าไม่มี changes → stop และ report
 
 ### 4. CI/CD Verify
+
+> Goal: push และ verify CI/CD จนผ่าน
 
 1. ทำ `/setup-cicd` ถ้า CI/CD ยังไม่พร้อม
 2. `git status --porcelain`, `git branch --show-current`, `git remote -v`
@@ -100,6 +108,8 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 6. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
 
 ### 5. Release
+
+> Goal: สร้าง PR, merge ไป main และ release patch
 
 1. ทำ `/view-repo` ถ้าต้องการดู health ก่อน ship
 2. ทำ `/create-github-pr --head dev --base main --fill` แล้วจด `PR_NUMBER`
@@ -113,6 +123,8 @@ Ship code จาก `dev` ไป `main` แบบครบวงจร: เต�
 10. `git switch dev` แล้ว `git pull origin dev`
 
 ### 6. Report
+
+> Goal: รายงานผลและแนะนำ action ถัดไป
 
 1. ทำ `/report-progress` พร้อม progress, completed, pending, next actions
 2. ทำ `/report` พร้อม PR, release version, branch
