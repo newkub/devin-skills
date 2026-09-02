@@ -3,6 +3,7 @@ name: replace
 description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
 related:
   - use-ast-grep-programatic
+  - search-with-astgrep
   - update-references
   - deep-validate
 ---

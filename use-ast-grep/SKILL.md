@@ -3,6 +3,7 @@ name: use-ast-grep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 related:
   - use-ast-grep-programatic
+  - search-with-astgrep
   - update-project-rules
   - check-code-structure
   - replace

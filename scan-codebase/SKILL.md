@@ -4,6 +4,7 @@ description: Scan codebase อย่างรวดเร็วเพื่อ�
 related:
   - use-scripts
   - check-code-structure
+  - search-with-astgrep
   - use-ast-grep
   - review-quality
   - report-table

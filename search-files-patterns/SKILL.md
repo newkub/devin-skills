@@ -7,6 +7,7 @@ related:
   - run-review
   - refactor
   - fix
+  - search-with-astgrep
   - use-ast-grep
 ---
 

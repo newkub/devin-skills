@@ -4,6 +4,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 related:
   - use-ast-grep
   - use-ast-grep-programatic
+  - search-with-astgrep
   - follow-tool-agent-browser
   - follow-tool-usage
   - follow-best-practice

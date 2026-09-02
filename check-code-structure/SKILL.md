@@ -2,6 +2,7 @@
 name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
 related:
+  - search-with-astgrep
   - use-ast-grep
   - use-ast-grep-programatic
   - review-architecture
