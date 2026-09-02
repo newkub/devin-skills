@@ -3,9 +3,11 @@ name: follow-devin-global-subagents
 description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ global subagents ตาม job roles ทำขนานกัน
 argument-hint: "[task]"
 related:
-  - review-workflow
-  - list-devin-global-subagents
+  - follow-agents-md
+  - update-agents-md
   - consider-use-subagents
+  - list-devin-global-subagents
+  - review-workflow
   - review-and-fix
   - deep-validate
   - ship

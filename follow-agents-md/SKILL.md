@@ -1,20 +1,21 @@
 ---
 name: follow-agents-md
-description: ทำตาม AGENTS.md ใน workspace
+description: ทำตาม AGENTS.md ใน workspace พร้อมใช้ subagents
 argument-hint: "[target]"
 related:
   - update-agents-md
   - check-skills-related
   - consider-use-subagents
+  - follow-devin-global-subagents
 ---
 
 ## Goal
 
-ทำตาม `AGENTS.md` ใน workspace ให้ครบถ้วน
+ทำตาม `AGENTS.md` ใน workspace ให้ครบถ้วน พร้อมใช้ subagents สำหรับงานที่มีหลายด้าน
 
 ## Scope
 
-ค้นหาและทำตาม `AGENTS.md` ในทุก workspace
+ค้นหาและทำตาม `AGENTS.md` ในทุก workspace โดยสามารถใช้ subagents เมื่องานมีหลาย workflows/skills ที่ independent
 
 ## Execute
 
@@ -41,7 +42,7 @@ related:
 1. อ่าน `AGENTS.md` ใน workspace root และทุก sub-workspace ถ้าเป็น monorepo
 2. วิเคราะห์ workflows และ skills ที่ระบุ
 3. ถ้ามี workflow เดียว ทำตามโดยตรง
-4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/consider-use-subagents`
+4. ถ้ามีหลาย workflows/skills ที่ independent ให้ทำ `/consider-use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents ทำขนานกัน
 5. ถ้าเป็น monorepo: ทำซ้ำสำหรับแต่ละ workspace
 
 ### 4. Verify Execution
@@ -70,3 +71,4 @@ related:
 - Workflows ที่ระบุใน `AGENTS.md` ถูก execute ครบถ้วน
 - Skills ที่ระบุใน `AGENTS.md` ถูกโหลด
 - ทุก workspace ใน monorepo ถูกประมวลผลครบ
+- subagents ถูกใช้เมื่องานมีหลาย workflows/skills ที่ independent

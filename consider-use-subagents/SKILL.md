@@ -3,6 +3,7 @@ name: consider-use-subagents
 description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles พร้อม deep context จาก /follow-deep
 argument-hint: "[task]"
 related:
+  - follow-agents-md
   - follow-devin-global-subagents
   - follow-deep
   - list-devin-global-subagents

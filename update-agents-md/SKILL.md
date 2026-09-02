@@ -1,6 +1,6 @@
 ---
 name: update-agents-md
-description: สร้างหรืออัปเดต AGENTS.md ด้วย architecture, platform, target user, lib mapping และ workspace rules
+description: สร้างหรืออัปเดต AGENTS.md พร้อม ship workflow จาก dev ไป main
 related:
   - follow-agents-md
   - update-devin-global-skills
@@ -9,16 +9,23 @@ related:
   - review-rules
   - review-by-stakeholder
   - deep-validate
-  - ship
+  - realize-implementation
+  - run-verify
+  - git-commit
+  - resolve-cicd
+  - create-github-pr
+  - unified-review-and-merge-pr
+  - run-release
+  - report
 ---
 
 ## Goal
 
-สร้างหรืออัปเดท `AGENTS.md` ใน root และทุก workspace ด้วย architecture, platform, target user, library mapping, ship readiness และ monorepo workspace rules
+สร้างหรืออัปเดท `AGENTS.md` ใน root และทุก workspace ด้วย architecture, platform, target user, library mapping, workspace rules และ ship workflow จาก `dev` ไป `main`
 
 ## Scope
 
-ใช้สำหรับเขียน `AGENTS.md` ใน root และทุก workspace ตาม project จริง ไม่รวมการ modify source code หรือ ship
+ใช้สำหรับเขียน `AGENTS.md` ใน root และทุก workspace ตาม project จริง ไม่รวมการ modify source code นอก scope ของ `AGENTS.md`
 
 ## Execute
 
@@ -94,7 +101,53 @@ related:
 1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-4. ถ้าผ่าน → รอ `/ship` หรือ `/git-commit` เพื่อ commit ต่อไป
+4. ถ้าผ่าน → ดำเนิน `### 8. Ship` ถัดไป
+
+### 8. Ship
+
+> Goal: ส่งมอบ code จาก `dev` ไป `main` หลัง `AGENTS.md` ผ่าน validation
+
+#### 8.1 Prepare
+
+1. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
+2. `git branch --show-current` ถ้าไม่อยู่ `dev` → `git switch dev` แล้ว `git pull origin dev`
+
+#### 8.2 Local Verify
+
+1. ทำ `/run-dev` ถ้าจำเป็น
+2. ทำ `/test-usage` เพื่อทดสอบ flow สำคัญ
+3. ทำ `/run-verify`
+4. ทำ `/run-test-all` ถ้ามี
+5. ทำ `/deep-validate`
+6. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
+
+#### 8.3 Commit
+
+1. ทำ `/git-commit`
+2. ถ้าไม่มี changes → stop และ report
+
+#### 8.4 CI/CD Verify
+
+1. ทำ `git push -u origin dev` โดยไม่ force
+2. ทำ `/resolve-cicd`
+3. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
+
+#### 8.5 Release
+
+1. ทำ `/create-github-pr --head dev --base main`
+2. ทำ `/deep-review-pr`
+3. ถาม user ก่อน merge
+4. ถ้า user ตกลง → ทำ `/unified-review-and-merge-pr`
+5. ทำ `/resolve-cicd` บน `main` ก่อน release
+6. ทำ `/run-release --dry-run` ก่อน release จริง
+7. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`
+8. `git switch dev` แล้ว `git pull origin dev`
+
+#### 8.6 Report
+
+1. ทำ `/report-progress`
+2. ทำ `/report` สรุป PR, release version, branch
+3. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -138,8 +191,6 @@ related:
 - ไม่ต้องรอผลจากทุก roleplay ถ้า findings ชัดเจน
 - ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/deep-validate`
 
-- ใช้ /follow-agents-md ถ้าจำเป็น
-
 ## Expected Outcome
 
 - root `AGENTS.md` สมบูรณ์
@@ -149,5 +200,5 @@ related:
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
 - ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/deep-validate`
 - ผ่าน `/review-rules` และ `/deep-validate`
-- ไม่ commit เอง — รอ `/ship` หรือ `/git-commit` ดำเนินการต่อ
+- ไม่ commit เองระหว่างเขียน `AGENTS.md` — ship workflow ใน section 8 ดำเนินการต่อไป
 
