@@ -14,7 +14,7 @@ related:
   - git-commit
   - resolve-cicd
   - create-github-pr
-  - unified-review-and-merge-pr
+  - merge-github-pr
   - run-release
   - report
 ---
@@ -137,7 +137,7 @@ related:
 1. ทำ `/create-github-pr --head dev --base main`
 2. ทำ `/deep-review-pr`
 3. ถาม user ก่อน merge
-4. ถ้า user ตกลง → ทำ `/unified-review-and-merge-pr`
+4. ถ้า user ตกลง → ทำ `/merge-github-pr`
 5. ทำ `/resolve-cicd` บน `main` ก่อน release
 6. ทำ `/run-release --dry-run` ก่อน release จริง
 7. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`

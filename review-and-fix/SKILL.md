@@ -2,7 +2,6 @@
 name: review-and-fix
 description: Review แล้วแก้ไขตาม context โดยขอ user confirm
 related:
-  - unified-review-and-merge-pr
   - watch-browser-and-fix
   - follow-best-practice
   - review-codebase-everything
@@ -69,7 +68,6 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ทุก fix ต้องมีเหตุผลจาก review
 - ระบุ file path และ line number
 
-- ใช้ /unified-review-and-merge-pr ถ้าจำเป็น
 - ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น

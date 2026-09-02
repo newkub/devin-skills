@@ -14,7 +14,6 @@ related:
   - view
   - view-diff
   - list-github-pr
-  - unified-review-and-merge-pr
 ---
 
 ## Goal
