@@ -22,14 +22,13 @@ related:
 
 ## Goal
 
-Ship code จาก `dev` ไป `main` ตาม `AGENTS.md` โดย `/update-agents-md` หรือ `/follow-agents-md`
+Ship code ตาม `AGENTS.md` โดย `/update-agents-md` หรือ `/follow-agents-md`
 
 ## Scope
 
-- ใช้บน `dev` branch
-- `main` ห้ามแก้ไขโดยตรง
-- ไม่ force push
-- รองรับ subagents สำหรับงานที่มีหลายด้าน
+- ใช้กับ project ทีมี `AGENTS.md`
+- รองรับ subagents สำหรับงานทีมีหลายด้าน
+- ไม่ข้าม validation หรือ workflow ที AGENTS.md กำหนด
 
 ## Execute
 
@@ -39,7 +38,7 @@ Ship code จาก `dev` ไป `main` ตาม `AGENTS.md` โดย `/update
 
 1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` พร้อม ship workflow
 2. ทำ `/follow-agents-md` เพื่อดำเนินการตาม `AGENTS.md`
-3. ถ้ามีหลาย workflows/skills ที่ independent → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents
+3. ถ้ามีหลาย workflows/skills ที independent → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents
 4. ถ้าพบข้อขัดแย้งหรือต้องการ trade-off → ทำ `/ask-me`
 
 ### 2. Report
@@ -52,16 +51,15 @@ Ship code จาก `dev` ไป `main` ตาม `AGENTS.md` โดย `/update
 
 ## Rules
 
-- ทำงานบน `dev` branch
-- `main` ห้ามแก้ไขโดยตรง
-- ไม่ force push
+- ทำตาม `AGENTS.md` ของ project นั้นๆ
 - ไม่ commit ถ้ายังไม่ผ่าน validation
 - ต้อง user ยืนยันก่อน release
+- ไม่ bypass checks หรือ validation
 
 ## Expected Outcome
 
 - `AGENTS.md` อัปเดตและทำตามครบถ้วน
-- `dev` ผ่าน verify บน local และ CI/CD
-- PR `dev → main` ถูกสร้าง รีวิว และ merge
-- Patch release สำเร็จ (ถ้ามี)
-- กลับมาอยู่บน `dev` พร้อมทำงานต่อ
+- code ผ่าน verify บน local และ CI/CD
+- PR ถูกสร้าง รีวิว และ merge ตาม workflow
+- release สำเร็จ (ถ้ามี)
+- พร้อมทำงานต่อบน workspace เดิม
