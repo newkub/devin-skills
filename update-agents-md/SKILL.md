@@ -1,9 +1,11 @@
 ---
 name: update-agents-md
-description: สร้างหรืออัปเดต AGENTS.md พร้อม ship workflow จาก dev ไป main
+description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
 related:
   - follow-agents-md
   - update-devin-global-skills
+  - follow-devin-global-subagents
+  - use-subagents
   - report-workspace-graph
   - follow-monorepo
   - review-rules
@@ -22,185 +24,157 @@ related:
 
 ## Goal
 
-สร้างหรืออัปเดท `AGENTS.md` ใน root และทุก workspace ด้วย architecture, platform, target user, library mapping, workspace rules และ ship workflow จาก `dev` ไป `main`
+สร้างหรืออัปเดท `AGENTS.md` ใน root และทุก workspace ให้ทำตามได้จริง โดย agents และ subagents สามารถอ่านแล้วดำเนินการตามลำดับขั้นตอน
 
 ## Scope
 
-ใช้สำหรับเขียน `AGENTS.md` ใน root และทุก workspace ตาม project จริง ไม่รวมการ modify source code นอก scope ของ `AGENTS.md`
+ใช้สำหรับเขียน/ปรับปรุง `AGENTS.md` ใน root และ workspace ของ project ตามข้อมูลจริง ไม่รวมการแก้ไข source code นอก scope ของ `AGENTS.md`
 
 ## Execute
 
-### 1. Analyze Project
+### 1. Prepare
 
-> Goal: วิเคราะห์ project และสร้าง/อัปเดท root `AGENTS.md`
+1. ทำ `/follow-agents-md` ถ้ามี `AGENTS.md` อยู่แล้ว
+2. ทำ `/check-monorepo` เพื่อตรวจ monorepo status
+3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
+4. ทำ `/all-workspace` ถ้าเป็น monorepo
+5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+6. ทำ `/ask-project-requirement` ถ้า context หรือ requirements ไม่ชัด
+7. ระบุ platform และ target user จาก context และ dependencies
+8. ถ้า project มี `tools/review-codebase` ทำ `/update-review-cli-and-fix`
 
-1. ทำ `/check-monorepo` เพื่อตรวจสอบ monorepo
-2. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
-3. ทำ `/all-workspace` ถ้าเป็น monorepo เพื่อรวบรวม workspaces
-4. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
-5. ทำ `/ask-project-requirement` ถ้า context หรือ requirements ไม่ชัด
-6. ระบุ `platform` และ `target user` จาก context และ dependencies
-7. ถ้า project มี `tools/review-codebase` → ทำ `/update-review-cli-and-fix` เพื่อ sync analyzers กับ features ปัจจุบัน
-
-### 2. Define Architecture
-
-> Goal: ระบุ architecture, tech stack และ libraries
+### 2. Analyze Architecture
 
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
-3. map แต่ละ tech ไปยัง `tech: /follow-<tech>` ถ้ามี skill ตรง
-4. ถ้าไม่มี skill ตรง ให้ใช้ `tech: /learn-from-web` หรือ `tech: none`
-5. อัปเดท `### Architecture` ใน root `AGENTS.md`
+3. map แต่ละ tech เป็น `tech: /follow-<tech>` ถ้ามี skill ตรง
+4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-web` หรือ `tech: none`
+5. อัปเดต `### Architecture` ใน root `AGENTS.md`
 
 ### 3. Define Platform And Target User
 
-> Goal: ระบุ platform และ target user ใน `AGENTS.md`
-
-1. ระบุ `platform` จาก runtime, OS, deployment target, หรือ environment
+1. ระบุ `platform` จาก runtime, OS, deployment target, environment
 2. ระบุ `target user` จาก project domain และผู้ใช้งานสุดท้าย
-3. อัปเดท `### Platform` และ `### Target User` ใน root `AGENTS.md`
+3. อัปเดต `### Platform` และ `### Target User` ใน root `AGENTS.md`
 
 ### 4. Write AGENTS.md
 
-> Goal: เขียน `AGENTS.md` ตามมาตรฐาน
-
 1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
-2. สร้าง sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+2. เขียน sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 3. เพิ่ม `### Architecture`, `### Platform`, `### Target User`, `### Skills`, `### Workspaces` ถ้าเกี่ยวข้อง
 4. ใช้ `tech: /follow-<tech>` สำหรับ tech mapping
-5. ถ้า context ไม่ชัด → stop และ report
+5. ใช้ `skill-name: /skill-name` สำหรับ skill mapping
+6. ทุก step ใน `## Execute` ต้องเป็น actionable command ที่ agent รันได้
+7. ถ้ามีหลาย workspace อิสระกัน ใช้ `/follow-devin-global-subagents` หรือ `/use-subagents`
+8. ถ้า context ไม่ชัด → stop และ report
 
-### 5. Monorepo Workspace Rules
+### 5. Workspace AGENTS.md
 
-> Goal: สร้าง/อัปเดท `AGENTS.md` สำหรับแต่ละ workspace ถ้าเป็น monorepo
-
-1. ทำ `/report-workspace-graph` เพื่อวิเคราะห์ dependencies ระหว่าง workspaces ก่อน
+1. ทำ `/report-workspace-graph` เพื่อวิเคราะห์ dependencies ระหว่าง workspaces
 2. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure
 3. สำหรับแต่ละ workspace ระบุ:
    - `name` ใน frontmatter ตรงกับชื่อ workspace
    - `### Architecture` ด้วย `tech: /follow-<tech>` ของ workspace
-   - `### Platform` และ `### Target User` ของ workspace
+   - `### Platform` และ `### Target User`
    - `### Skills` ด้วย `skill-name: /skill-name` ที่ใช้
-   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้ ด้วยรูปแบบ `<package> use <other-package>` เช่น `core: use db, web`
+   - `### Workspaces` หรือ `uses:` ระบุ workspace อื่นที่ใช้
 4. ระบุ dependencies ระหว่าง workspaces จาก `package.json` หรือ source imports
 5. ไม่ duplicate เนื้อหาจาก root `AGENTS.md`
 6. ทำ `/review-rules` เพื่อตรวจสอบทุก workspace `AGENTS.md`
 
 ### 6. Review By Stakeholder
 
-> Goal: ตรวจสอบ `AGENTS.md` และ project context จากหลายมุมมอง stakeholder ก่อน validate
-
-1. ทำ `/review-by-stakeholder` เพื่อรับมุมมองจาก roleplay stakeholders ทีเหมาะสมกับ project
-2. บันทึก findings พร้อม severity, stakeholder, และ recommendation
-3. ถ้าพบ issues ทีมีผลต่อ `AGENTS.md` → แก้ไข `AGENTS.md` ก่อนดำเนินต่อ
-4. ถ้า findings สำคัญ → ทำ `/ask-me` เพื่อ confirm trade-offs ก่อนเปลี่ยนแปลงขนาดใหญ่
-5. สรุป stakeholder coverage map และ top findings ในรายงาน
+1. ทำ `/review-by-stakeholder` เพื่อรับมุมมองจาก stakeholders ที่เหมาะสม
+2. บันทึก findings พร้อม severity, stakeholder, recommendation
+3. ถ้าพบ issues ที่มีผลต่อ `AGENTS.md` → แก้ไขก่อนดำเนินต่อ
+4. สรุป stakeholder coverage map และ top findings
 
 ### 7. Validate
-
-> Goal: ตรวจสอบ `AGENTS.md` ก่อนส่งต่อให้ ship
 
 1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-4. ถ้าผ่าน → ดำเนิน `### 8. Ship` ถัดไป
+4. ถ้าผ่าน → ดำเนิน `### 8. Ship` ต่อไป
 
 ### 8. Ship
 
-> Goal: ส่งมอบ code จาก `dev` ไป `main` หลัง `AGENTS.md` ผ่าน validation
-
-#### 8.1 Prepare
-
 1. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
-2. `git branch --show-current` ถ้าไม่อยู่ `dev` → `git switch dev` แล้ว `git pull origin dev`
-
-#### 8.2 Local Verify
-
-1. ทำ `/run-dev` ถ้าจำเป็น
-2. ทำ `/test-usage` เพื่อทดสอบ flow สำคัญ
-3. ทำ `/run-verify`
-4. ทำ `/run-test-all` ถ้ามี
-5. ทำ `/deep-validate`
-6. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
-
-#### 8.3 Commit
-
-1. ทำ `/git-commit`
-2. ถ้าไม่มี changes → stop และ report
-
-#### 8.4 CI/CD Verify
-
-1. ทำ `git push -u origin dev` โดยไม่ force
-2. ทำ `/resolve-cicd`
-3. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
-
-#### 8.5 Release
-
-1. ทำ `/create-github-pr --head dev --base main`
-2. ทำ `/deep-review-pr`
-3. ถาม user ก่อน merge
-4. ถ้า user ตกลง → ทำ `/merge-github-pr`
-5. ทำ `/resolve-cicd` บน `main` ก่อน release
-6. ทำ `/run-release --dry-run` ก่อน release จริง
-7. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`
-8. `git switch dev` แล้ว `git pull origin dev`
-
-#### 8.6 Report
-
-1. ทำ `/report-progress`
-2. ทำ `/report` สรุป PR, release version, branch
-3. ทำ `/suggest-next-action`
+2. ตรวจสอบ `git status` และ state ของ repository ตาม project conventions
+3. ทำ `/run-verify`, `/run-test-all` ถ้ามี
+4. ทำ `/deep-validate`
+5. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
+6. ทำ `/git-commit`
+7. ทำ `git push` โดยไม่ force
+8. ทำ `/resolve-cicd`
+9. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
+10. ทำ `/create-github-pr` เป้าหมายหลักของ project
+11. ทำ `/deep-review-pr`
+12. ถาม user ก่อน merge
+13. ถ้า user ตกลง → ทำ `/merge-github-pr`
+14. ทำ `/resolve-cicd` บน production ก่อน release
+15. ทำ `/run-release --dry-run` ก่อน release จริง
+16. ถ้า dry-run ผ่านและ user ยืนยัน → ทำ `/run-release`
+17. sync local state กับ remote ตาม project conventions
+18. ทำ `/report-progress`, `/report`, `/suggest-next-action`
 
 ## Rules
 
 ### 1. AGENTS.md Format
 
-- ใช้ format ตาม `update-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
-- มี sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
+- frontmatter `name`, `description` ≤100 ตัวอักษร, `related`
+- sections: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
 - ไม่มี `## Workflows` หรือ `### Workflows`
 - ไฟล์ไม่เกิน 250 บรรทัด
-- `AGENTS.md` ต้องเขียนเป็นภาษาอังกฤษทั้งหมด ไม่มีภาษาอื่นปน
+- `AGENTS.md` เขียนเป็นภาษาอังกฤษทั้งหมด (project-local)
+- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 
-### 2. Architecture Mapping
+### 2. Followable Content
+
+- ทุก step ใน `## Execute` ต้องเป็น action ที่ agent รันได้
+- ระบุ skill ที่ต้อง invoke ด้วย `/<skill-name>`
+- ระบุ command ที่ต้องรันด้วย backticks
+- ทุก `###` ต้องมี bullet หรือ numbered list ที่ชัดเจน
+- ถ้าต้องใช้ subagents ระบุชัดเจนว่า subtask ใดที่เป็นอิสระ
+
+### 3. Subagent Discipline
+
+- ใช้ `/follow-devin-global-subagents` หรือ `/use-subagents` เมื่อมีหลาย workspace หรือหลากหลาย architecture ที่ตรวจสอบได้อิสระกัน
+- แต่ละ subagent ต้องได้รับ context: workspace path, manifest, และเป้าหมาย
+- รวมผลจาก subagents ก่อนเขียน root `AGENTS.md`
+
+### 4. Architecture Mapping
 
 - ระบุ tech stack ด้วย `tech: /follow-<tech>`
-- ถ้าไม่มี skill ตรง ให้ใช้ `tech: /learn-from-web` หรือ `tech: none`
+- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-web` หรือ `tech: none`
 - map ตาม dependencies ใน manifest
 
-### 3. Platform And Target User
-
-- `### Platform` ระบุ runtime, OS, deployment target หรือ environment
-- `### Target User` ระบุผู้ใช้งานสุดท้ายหรือ persona
-- ไม่ให้ทิ้ง blank ถ้ามีข้อมูลพอระบุ
-
-### 4. Skills Mapping
+### 5. Skills Mapping
 
 - ระบุ skills ด้วย `skill-name: /skill-name`
 - รวมทั้ง skills ที่เรียกโดยตรงและอ้างอิงบ่อย
+- ไม่ใส่ skills ที่ไม่เกี่ยวข้อง
 
-### 5. Workspace Rules
+### 6. Workspace Rules
 
 - root `AGENTS.md` ต้องมี `### Workspaces` ระบุทุก workspace
-- workspace `AGENTS.md` ต้องระบุ `uses:` หรือ `### Workspaces` ว่าใช้ workspace อื่นใดบ้าง
+- workspace `AGENTS.md` ต้องระบุ `uses:` หรือ `### Workspaces`
 - ใช้รูปแบบ `<package> use <other-package>` เช่น `core: use db, web`
-- ก่อนเขียน workspace section ใน monorepo ต้องทำ `/report-workspace-graph` ก่อน
+- ก่อนเขียน workspace section ใน monorepo ต้องทำ `/report-workspace-graph`
 - ไม่ duplicate root conventions
 
-### 6. Stakeholder Review
+### 7. Validation
 
-- ทำ `/review-by-stakeholder` หลังจากเขียน `AGENTS.md` ทั้ง root และ workspace แล้ว
-- เลือก stakeholders ตาม context ของ project
-- ไม่ต้องรอผลจากทุก roleplay ถ้า findings ชัดเจน
-- ถ้า `AGENTS.md` ขาด perspective สำคัญ ให้อัปเดตก่อน `/deep-validate`
+- ทำ `/review-rules` เพื่อ review AGENTS.md
+- ทำ `/deep-validate` ก่อน ship
+- ไม่ commit เองระหว่างเขียน `AGENTS.md` — ship workflow ดำเนินการต่อหลัง validate ผ่าน
 
 ## Expected Outcome
 
-- root `AGENTS.md` สมบูรณ์
+- root `AGENTS.md` สมบูรณ์ ติดตามได้ และอิงตาม project จริง
 - `### Architecture` ระบุ `tech: /follow-<tech>` ครบ
 - `### Platform` และ `### Target User` ถูกต้อง
 - `### Skills` ระบุ skills หลักครบ
 - ถ้าเป็น monorepo: ทุก workspace มี `AGENTS.md` พร้อม workspace rules
-- ได้รับ review จาก stakeholders ทีเหมาะสมก่อน `/deep-validate`
+- ได้รับ review จาก stakeholders ที่เหมาะสมก่อน `/deep-validate`
 - ผ่าน `/review-rules` และ `/deep-validate`
-- ไม่ commit เองระหว่างเขียน `AGENTS.md` — ship workflow ใน section 8 ดำเนินการต่อไป
-
+- subagents สามารถอ่าน `AGENTS.md` แล้วดำเนินการตามขั้นตอนได้
