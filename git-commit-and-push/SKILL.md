@@ -1,5 +1,5 @@
 ---
-name: git-commit-and-push-and-resolve-cicd
+name: git-commit-and-push
 description: Commit push และ resolve CI/CD จนกว่าจะผ่าน live หรือ healthy
 related:
   - git-commit
