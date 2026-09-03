@@ -3,7 +3,7 @@ name: git-push
 description: Push commits จาก local repository และ git submodules ไปยัง remote repository อย่างปลอดภัย
 related:
   - git-commit
-  - git-commit-and-push
+  - git-commit-and-push-current-branch
   - refactor-commit
   - update-github-metadata
   - watch-github-actions
@@ -107,7 +107,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 - ถ้าเป็น public repo ให้ตั้ง `--enable-issues=true` และ `--enable-wiki=false`
 
 - ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /git-commit-and-push-current-branch ถ้าจำเป็น
 
 ## Expected Outcome
 

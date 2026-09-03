@@ -14,7 +14,7 @@ triggers:
 related:
   - update-agents-md
   - follow-agents-md
-  - git-commit-and-push
+  - git-commit-and-push-features-branch
   - resolve-cicd
   - create-github-pr
   - merge-github-pr
@@ -54,13 +54,16 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 > Goal: ส่งมอบ code ตาม project conventions
 
 1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
-2. ทำ `/git-commit-and-push` ถ้ามี changes ทีผ่าน validation
-3. ทำ `/resolve-cicd` บน branch ที push ไป
-4. ทำ `/create-github-pr` ไปยัง production branch ตาม project conventions
-5. ทำ `/deep-review-pr`
+2. ทำ `/git-commit-and-push-features-branch` ถ้ามี changes ทีผ่าน validation
+3. ทำ `/create-github-pr` ไปยัง production branch ตาม project conventions
+4. ทำ `/deep-review-pr` เพื่อ review PR พร้อม comment แต่ละ finding ลงใน PR
+5. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปทำ `/git-commit-and-push-features-branch` ซ้ำ
 6. ถาม user ก่อน merge
 7. ถ้า user ตกลง → ทำ `/merge-github-pr`
-8. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
+8. ทำ `/resolve-cicd` บน production branch หลัง merge
+9. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
+10. `git switch main` หรือ production branch ตาม project conventions
+11. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
 
 ### 3. Report
 

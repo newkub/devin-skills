@@ -3,7 +3,7 @@ name: create-github-repo
 description: บันทึก local project ที่ยังไม่มี remote ขึ้น GitHub repository ใหม่
 argument-hint: "[repo-name]"
 related:
-  - git-commit-and-push
+  - git-commit-and-push-current-branch
   - git-push
   - git-commit
   - follow-gitignore
@@ -53,8 +53,8 @@ related:
 
 > Goal: โค้ดทั้งหมดถูก commit และ push ไป remote
 
-1. ทำตาม `/git-commit-and-push` เพื่อ commit และ push การเปลี่ยนแปลง
-2. ถ้า `git-commit-and-push` ล้มเหลว → ตรวจ `git status`, `git log`, แล้ว retry สูงสุด 1 ครั้ง
+1. ทำตาม `/git-commit-and-push-current-branch` เพื่อ commit และ push การเปลี่ยนแปลง
+2. ถ้า `git-commit-and-push-current-branch` ล้มเหลว → ตรวจ `git status`, `git log`, แล้ว retry สูงสุด 1 ครั้ง
 
 ### 5. Verify
 
@@ -74,7 +74,7 @@ related:
 
 ### 2. Initial State
 
-- ถ้าไม่มี commit เลย ให้ `git-commit-and-push` จัดการ commit ครั้งแรก
+- ถ้าไม่มี commit เลย ให้ `git-commit-and-push-current-branch` จัดการ commit ครั้งแรก
 - ถ้ามีไฟล์ที่ควร ignore ให้แก้ไข `.gitignore` ก่อน stage
 - ไม่ใช้ `git add .` โดยตรง ให้ `git-commit` จัดการ stage
 

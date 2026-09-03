@@ -4,7 +4,7 @@ description: Commit selected files from working tree with conventional commits
 argument-hint: "[file-pattern-or-path]"
 related:
   - git-commit
-  - git-commit-and-push
+  - git-commit-and-push-current-branch
   - git-push
   - refactor-commit
   - deep-validate
@@ -115,7 +115,7 @@ Commit only selected files, without using `git add .`
 - ไม่ต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่ ไม่จบด้วยจุด
 
 - ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /git-commit-and-push ถ้าจำเป็น
+- ใช้ /git-commit-and-push-current-branch ถ้าจำเป็น
 - ใช้ /git-push ถ้าจำเป็น
 - ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
