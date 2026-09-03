@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ (restructure, dev, fix, review)
+สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ (restructure, feature, fix, review)
 
 ## Scope
 
@@ -22,7 +22,7 @@ related:
 
 > Goal: Determine which workflow branch to use
 
-1. ถามหรือวิเคราะห์ว่า user ต้องการ workflow ใด: `restructure`, `dev`, `fix`, `review`
+1. ถามหรือวิเคราะห์ว่า user ต้องการ workflow ใด: `restructure`, `feature`, `fix`, `review`
 2. รัน `git status --short` เพื่อตรวจสถานะปัจจุบัน
 3. ถ้ามี uncommitted changes → stop และถามว่าต้องการ commit, stash หรือ reset ก่อน
 
@@ -40,14 +40,14 @@ related:
 > Goal: Report the new branch and next action
 
 1. แสดง branch ปัจจุบัน
-2. ถ้า user ต้องการทำงานต่อ เช่น restructure, dev, fix, review ให้แนะนำ skill ถัดไป
+2. ถ้า user ต้องการทำงานต่อ เช่น restructure, feature, fix, review ให้แนะนำ skill ถัดไป
 
 ## Rules
 
 ### 1. Branch Names
 
 - `restructure` สำหรับ restructure/refactor tasks
-- `dev` สำหรับ development tasks
+- `feature` สำหรับ development tasks
 - `fix` สำหรับ bug fixes
 - `review` สำหรับ review tasks
 

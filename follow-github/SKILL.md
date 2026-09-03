@@ -12,14 +12,14 @@ related:
 
 ## Goal
 
-ตั้งค่า GitHub repository ให้พร้อมใช้งานตาม flow: metadata ถูกต้อง, `main` และ `dev` ถูก protect, `.github` templates ครบ
+ตั้งค่า GitHub repository ให้พร้อมใช้งานตาม flow: metadata ถูกต้อง, `main` และ integration branch ถูก protect, `.github` templates ครบ
 `/follow-github` ไม่เปลี่ยน visibility, ไม่ rename repo, ไม่ลบ branch
 
 ## Scope
 
-ใช้หลัง repo มี `main` และ `dev` บน remote แล้ว ครอบคลุม:
+ใช้หลัง repo มี `main` และ integration branch บน remote แล้ว ครอบคลุม:
 - sync GitHub metadata ด้วย `/update-github-metadata`
-- ตั้ง branch protection บน `main` และ `dev`
+- ตั้ง branch protection บน `main` และ integration branch
 - สร้าง/อัปเดต `.github` templates ด้วย `/follow-dot-github` (optional)
 
 ถ้าต้องการแค่ metadata → ใช้ `/update-github-metadata`
@@ -34,15 +34,16 @@ related:
 1. ตรวจ `gh` CLI ด้วย `gh auth status`
 2. ถ้าไม่ authenticate → stop และ report
 3. หา `owner/repo` ด้วย `gh repo view --json owner,name --jq '.owner.login + "/" + .name'`
-4. ตรวจ `main` และ `dev` บน remote ด้วย:
+4. กำหนด integration branch จาก `AGENTS.md` หรือ project conventions (default: `integration`)
+5. ตรวจ `main` และ `<integration-branch>` บน remote ด้วย:
    ```bash
    gh api repos/<owner>/<repo>/branches/main
-   gh api repos/<owner>/<repo>/branches/dev
+   gh api repos/<owner>/<repo>/branches/<integration-branch>
    ```
-5. ถ้าไม่มี `dev` บน remote → สร้าง `dev` ด้วย:
+6. ถ้าไม่มี integration branch บน remote → สร้างด้วย:
    - `git fetch origin`
-   - `git switch -c dev origin/main`
-   - `git push -u origin dev`
+   - `git switch -c <integration-branch> origin/main`
+   - `git push -u origin <integration-branch>`
 
 ### 2. Update GitHub Metadata
 
@@ -89,15 +90,15 @@ related:
 5. ถ้า API ตอบ 422 → ปรับ `enforce_admins` เป้น `null` หรือ `{"enabled": true}` ตาม response
 6. บันทึก status code
 
-### 4. Protect dev Branch
+### 4. Protect Integration Branch
 
-> Goal: `dev` เป้น staging branch ทีมี status checks
+> Goal: integration branch เป้น staging branch ทีมี status checks
 
-1. ใช้ payload เหมือน `main` แต่เปลี่ยน path เป้น `branches/dev/protection`
-2. บันทึก `.devin/github/dev-protection.json` (ถ้าไม่ต้องการ required PR บน `dev` ให้ตั้ง `required_pull_request_reviews` เป้น `null`)
+1. ใช้ payload เหมือน `main` แต่เปลี่ยน path เป้น `branches/<integration-branch>/protection`
+2. บันทึก `.devin/github/<integration-branch>-protection.json` (ถ้าไม่ต้องการ required PR บน integration branch ให้ตั้ง `required_pull_request_reviews` เป้น `null`)
 3. ส่งด้วย `gh api`:
    ```bash
-   gh api repos/<owner>/<repo>/branches/dev/protection --method PUT --input .devin/github/dev-protection.json
+   gh api repos/<owner>/<repo>/branches/<integration-branch>/protection --method PUT --input .devin/github/<integration-branch>-protection.json
    ```
 
 ### 5. Setup .github Templates (Optional)
@@ -113,8 +114,8 @@ related:
 
 1. ทำ `gh repo view <owner/repo> --json defaultBranchRef`
 2. ทำ `gh api repos/<owner>/<repo>/branches/main/protection --jq .`
-3. ทำ `gh api repos/<owner>/<repo>/branches/dev/protection --jq .`
-4. ตรวจสอบว่า `main` และ `dev` มี protection
+3. ทำ `gh api repos/<owner>/<repo>/branches/<integration-branch>/protection --jq .`
+4. ตรวจสอบว่า `main` และ `<integration-branch>` มี protection
 5. ทำ `/view-repo` เพื่อตรวจ metadata และ health หลังตั้งค่า
 
 ### 7. Report
@@ -142,9 +143,9 @@ related:
 ### 3. Branch Protection Defaults
 
 - `main`: บังคับ PR + status checks + no force push + no delete
-- `dev`: บังคับ status checks + no force push + no delete (PR optional)
+- integration branch: บังคับ status checks + no force push + no delete (PR optional)
 - `required_approving_review_count` เริ่มต้น 0 สำหรับ solo project
-- ถ้า team มากขึ้น → ปรับเป็น 1 ผ่าน `AGENTS.md`
+- ถ้า team มากขึ้น → ปรับเป้น 1 ผ่าน `AGENTS.md`
 
 ### 4. Idempotent
 
@@ -155,14 +156,14 @@ related:
 ### 5. Safety
 
 - ถ้า `gh` ไม่พร้อม → stop
-- ถ้า branch ไม่มีบน remote → สร้าง `dev` ด้วย `git switch -c dev origin/main` แล้ว `git push -u origin dev`
+- ถ้า branch ไม่มีบน remote → สร้าง integration branch ด้วย `git switch -c <integration-branch> origin/main` แล้ว `git push -u origin <integration-branch>`
 - ถ้า API ตอบ 422 → อ่าน error message และปรับ payload
 
 ## Expected Outcome
 
 - GitHub repo metadata sync กับ project
 - `main` ถูก protect: PR required, status checks, no force push, no delete
-- `dev` ถูก protect: status checks, no force push, no delete
+- integration branch ถูก protect: status checks, no force push, no delete
 - Default branch เป้น `main`
 - `.github` templates พร้อม (ถ้าเลือกทำ)
 - ไม่มี visibility/name เปลี่ยน
