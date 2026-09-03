@@ -1,7 +1,7 @@
 ---
 name: ship
-description: Ship code ตาม AGENTS.md โดย /update-agents-md หรือ /follow-agents-md พร้อมใช้ subagents
-argument-hint: "[issue-number-or-title]"
+description: Ship code ตาม AGENTS.md โดยอัปเดต AGENTS.md, ทำตาม workflow, และใช้ subagents ถ้าจำเป็น
+argument-hint: "[@issue-number-or-title]"
 allowed-tools:
   - read
   - exec
@@ -14,36 +14,57 @@ triggers:
 related:
   - update-agents-md
   - follow-agents-md
+  - git-commit-and-push
+  - resolve-cicd
+  - create-github-pr
+  - merge-github-pr
+  - deep-review-pr
+  - run-release
   - follow-devin-global-subagents
   - use-subagents
   - report
+  - report-progress
   - suggest-next-action
 ---
 
 ## Goal
 
-Ship code ตาม `AGENTS.md` โดย `/update-agents-md` หรือ `/follow-agents-md`
+Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเอกสารให้เป้นปัจจุบัน ดำเนินการตาม workflow ทีกำหนด และส่งมอบงานจนผ่าน CI/CD
 
 ## Scope
 
 - ใช้กับ project ทีมี `AGENTS.md`
-- รองรับ subagents สำหรับงานทีมีหลายด้าน
-- ไม่ข้าม validation หรือ workflow ที AGENTS.md กำหนด
+- รองรับ subagents สำหรับงานทีมีหลายด้านหรือหลาย workspace
+- ไม่ข้าม validation หรือ workflow ที `AGENTS.md` กำหนด
+- ไม่แก้ไข source code นอก scope ที `AGENTS.md` ระบุ
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: อัปเดตและทำตาม `AGENTS.md`
+> Goal: ให้ `AGENTS.md` เป้นปัจจุบัน และเข้าใจ workflow
 
-1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` พร้อม ship workflow
+1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ให้สะท้อน project ปัจจุบัน
 2. ทำ `/follow-agents-md` เพื่อดำเนินการตาม `AGENTS.md`
-3. ถ้ามีหลาย workflows/skills ที independent → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents` เพื่อใช้ subagents
+3. ถ้ามีหลาย workflow/skill ทีอิสระกัน → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents`
 4. ถ้าพบข้อขัดแย้งหรือต้องการ trade-off → ทำ `/ask-me`
 
-### 2. Report
+### 2. Validate And Ship
 
-> Goal: รายงานผลและ next action
+> Goal: ส่งมอบ code ตาม project conventions
+
+1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
+2. ทำ `/git-commit-and-push` ถ้ามี changes ทีผ่าน validation
+3. ทำ `/resolve-cicd` บน branch ที push ไป
+4. ทำ `/create-github-pr` ไปยัง production branch ตาม project conventions
+5. ทำ `/deep-review-pr`
+6. ถาม user ก่อน merge
+7. ถ้า user ตกลง → ทำ `/merge-github-pr`
+8. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
+
+### 3. Report
+
+> Goal: สรุปผล และแนะนำ next action
 
 1. ทำ `/report-progress`
 2. ทำ `/report` สรุป status, PR, version
@@ -51,10 +72,28 @@ Ship code ตาม `AGENTS.md` โดย `/update-agents-md` หรือ `/fol
 
 ## Rules
 
+### 1. AGENTS.md First
+
 - ทำตาม `AGENTS.md` ของ project นั้นๆ
+- ถ้า `AGENTS.md` ไม่ชัดเจน → ทำ `/update-agents-md` ก่อน
+
+### 2. Validation Gate
+
 - ไม่ commit ถ้ายังไม่ผ่าน validation
+- ไม่ push ถ้า local verify ยังไม่ผ่าน
+- ไม่ merge ถ้า CI/CD ยังไม่ผ่าน
+
+### 3. User Confirmation
+
+- ต้อง user ยืนยันก่อน merge
 - ต้อง user ยืนยันก่อน release
+- ถ้ามี breaking change → ทำ `/ask-me` ก่อน ship
+
+### 4. No Bypass
+
 - ไม่ bypass checks หรือ validation
+- ไม่ force-push โดยไม่จำเป็น
+- ไม่ merge โดยไม่มี review/approval
 
 ## Expected Outcome
 
