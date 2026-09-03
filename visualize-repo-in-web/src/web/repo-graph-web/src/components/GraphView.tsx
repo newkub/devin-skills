@@ -36,7 +36,7 @@ export default function GraphView(props: { query: string; filter: string }) {
         {
           selector: 'node',
           style: {
-            'background-color': (ele: cytoscape.SingularElementReturnValue) => colorByType(ele.data('type')),
+            'background-color': (ele: cytoscape.NodeSingular) => colorByType(ele.data('type')),
             label: 'data(label)',
             color: '#e4e4e7',
             'font-size': '10px',
