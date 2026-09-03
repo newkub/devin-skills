@@ -25,6 +25,7 @@ related:
 
 ### 1. Identify Use Case And Permissions
 
+> Goal: ระบุ Use Case And Permissions
 เลือก permissions ตาม use case:
 
 | Use case | Permission keys |
@@ -55,6 +56,7 @@ Common permission keys:
 
 ### 2. Generate Dashboard URL
 
+> Goal: สร้าง Dashboard URL
 1. สร้าง JSON permissions array:
    ```json
    [
@@ -91,6 +93,7 @@ console.log('https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=
 
 ### 3. Create Token Via API (If Seed Token Available)
 
+> Goal: สร้าง Token Via API If Seed Token Available
 ถ้ามี `CLOUDFLARE_API_TOKEN` seed ทีมีสิทธิ์ `User > API Tokens > Edit` หรือ `Account > API Tokens > Edit`:
 
 1. หา permission group IDs ด้วย `GET /client/v4/user/tokens/permission_groups`
@@ -117,6 +120,7 @@ console.log('https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=
 
 ### 4. Store Token Securely
 
+> Goal: Store Token Securely
 - `wrangler secret put CLOUDFLARE_API_TOKEN`
 - `gh secret set CLOUDFLARE_API_TOKEN --repo <owner>/<repo>` สำหรับ GitHub Actions
 - `.env` ที่ gitignored สำหรับ local dev
@@ -126,6 +130,7 @@ AI ไม่ควรเขียนค่า token ลงไฟล์ ยกเ
 
 ### 5. Verify Token
 
+> Goal: ตรวจสอบ Token
 ใช้ `GET /client/v4/user/tokens/verify` เพื่อตรวจสอบสิทธิ์ token:
 ```bash
 curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \

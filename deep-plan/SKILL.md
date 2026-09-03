@@ -22,6 +22,8 @@ related:
 
 สำหรับสำรวจ libraries ใช้ `/alternative`
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ (Step N ขึ้นกับ Step N-1)

@@ -44,10 +44,13 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 - สำหรับ TUI/CLI: capture หน้าจอ terminal output ของ commands สำคัญ
 - บันทึกภาพลง `public/screenshots/` ของ workspace นั้น
 
+- ดูเพิ่มเติม: /from-recent-windows-capture, /scan-codebase, /run-build, /run-verify
+
 ## Execute
 
 ### 1. Detect App Type
 
+> Goal: ตรวจจับ App Type
 1. ตรวจ `package.json` scripts, dependencies, และ file structure
 2. ระบุ type: web (browser routes) หรือ terminal/CLI (TUI)
 3. หา entry points และ routes จาก `src/app`, `src/pages`, `src/routes`, `apps/*/pages`, `examples`
@@ -55,12 +58,14 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 
 ### 2. Setup Output
 
+> Goal: ตั้งค่า Output
 1. ตรวจ `public/screenshots/` ถ้าไม่มีให้สร้าง
 2. ลบ screenshots เก่าถ้า user ต้องการ refresh
 3. กำหนด naming convention: `<route-or-component-name>.png`
 
 ### 3. Generate Capture Script
 
+> Goal: สร้าง Capture Script
 1. สร้าง `tools/capture-screenshots.{js|ts|mjs}` ใน workspace ถ้าไม่มี
 2. Script ต้องรองรับ:
    - เปิด dev server (ถ้าจำเป็น)
@@ -70,6 +75,7 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 
 ### 4. Capture Web Routes
 
+> Goal: capture Web Routes
 1. เริ่ม dev server ถ้าจำเป็น (`npm run dev` หรือ `bun dev`)
 2. สำหรับแต่ละ route:
    - สร้าง URL จาก base URL + route path
@@ -83,12 +89,14 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 
 ### 5. Capture Terminal Views
 
+> Goal: capture Terminal Views
 1. สำหรับ TUI/CLI apps ระบุ commands หรือ views สำคัญ
 2. ทำ `/capture-terminal` สำหรับแต่ละ command
 3. บันทึกลง `public/screenshots/terminal/<command-name>.png`
 
 ### 6. Verify And Report
 
+> Goal: ตรวจสอบ And Report
 1. ตรวจ `public/screenshots/` ว่ามีไฟล์ถูกสร้าง
 2. ทำ `/report-table` แสดง: No, Type, Name, File, Size
 3. ถ้าบาง route fail → ทำ `/resolve-errors` แล้ว retry

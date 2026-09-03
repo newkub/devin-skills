@@ -14,48 +14,66 @@ related:
 
 ใช้สำหรับ project ที่ต้องการรัน tests แบบ watch mode ขณะพัฒนา
 
-## Prompt
+### Prompt
 
 ใช้ workflow นี้เมื่อต้องการรัน tests แบบ watch mode เพื่อตรวจสอบ test failures และ coverage อย่างต่อเนื่องขณะพัฒนา
 
 ## Execute
 
-1. ตรวจสอบ Test Setup
+### 1. ตรวจสอบ Test Setup
+
+> Goal: ตรวจสอบ Test Setup
+
 
 - ตรวจสอบว่าโปรเจกต์มี test framework ที่เหมาะสม (Vitest, Jest, ฯลฯ)
 - ตรวจสอบ test configuration files
 - ยืนยันว่า test script ถูกกำหนดใน main config
 - ตรวจสอบว่า test dependencies ถูกติดตั้งแล้ว
 
-2. รัน Test Watch Mode
+### 2. รัน Test Watch Mode
+
+> Goal: รัน Test Watch Mode
+
 
 - รัน tests ด้วย watch mode (vitest --watch, jest --watch, ฯลฯ)
 - กำหนด test patterns ที่จะ monitor
 - ตั้งค่า ignore patterns สำหรับ files ที่ไม่ใช่ tests
 - ติดตาม test results และ failures
 
-3. ติดตามและแก้ไข Test Failures
+### 3. ติดตามและแก้ไข Test Failures
+
+> Goal: ติดตามและแก้ไข Test Failures
+
 
 - ตรวจสอบ test failures ที่เกิดขึ้นทันที
 - แก้ไข failing tests ตาม priority
 - Debug test issues อย่างเป็นระบบ
 - รัน `/resolve-errors` สำหรับ errors ที่ซับซ้อน หรือ `/deep-debug` สำหรับ errors ที่ต้องวางแผนแก้
 
-4. ตรวจสอบ Test Coverage
+### 4. ตรวจสอบ Test Coverage
+
+> Goal: ตรวจสอบ Test Coverage
+
 
 - ตรวจสอบ coverage reports
 - ระบุ code ที่ไม่มี tests
 - เพิ่ม tests สำหรับ uncovered code
 - Target high coverage สำหรับ critical paths
 
-5. ปรับปรุง Test Performance
+### 5. ปรับปรุง Test Performance
+
+> Goal: ปรับปรุง Test Performance
+
 
 - ตรวจสอบ test execution time
 - ใช้ parallel execution เมื่อเป็นไปได้
 - Optimize test setup
 - Minimize wait time
 
-6. รักษา Test Suite
+### 6. รักษา Test Suite
+
+> Goal: รักษา Test Suite
+
 
 - เพิ่ม tests สำหรับ new code
 - Update outdated tests

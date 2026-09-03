@@ -17,6 +17,8 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 
 ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Identify Scope

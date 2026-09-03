@@ -37,16 +37,20 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 
 ใช้เมื่อ user ต้องการ `/deep-review` แต่ไม่ระบุ context หรือ context ไม่ใช่ codebase เท่านั้น `deep-review` จะเลือก sub-workflow ทีเหมาะสม
 
+ดูเพิ่มเติม: /deep-plan, /ask-me
+
 ## Execute
 
 ### 1. Identify Context
 
+> Goal: ระบุ Context
 1. รับ `context` และ `target` จาก argument
 2. ถ้าไม่ระบุ context → ถาม user หรือวิเคราะห์จาก target
 3. อ่าน `AGENTS.md` ถ้ามี
 
 ### 2. Dispatch By Context
 
+> Goal: Dispatch By Context
 1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/update-review-cli-and-fix`
 2. ถ้า context เป็น PR, pull request, branch diff → ทำ `/deep-review-pr`
 3. ถ้า context เป็น issue, bug, feature → ทำ `/deep-analyze` แล้วแนะนำ `/review-*` ทีเหมาะสม
@@ -56,6 +60,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 
 ### 3. Follow Up
 
+> Goal: Follow Up
 1. ทำ `/deep-validate` เพื่อตรวจสอบ findings สำคัญ
 2. ทำ `/deep-report` ถ้าต้องการ report รวม
 3. ทำ `/suggest-next-action`

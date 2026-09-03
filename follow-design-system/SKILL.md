@@ -18,6 +18,8 @@ related:
 
 ครอบคลุม design tokens, component guidelines, และ platform-specific adaptations สำหรับ TUI, Web, Desktop, และ Mobile
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Define Design Tokens

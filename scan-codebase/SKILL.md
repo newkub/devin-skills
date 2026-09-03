@@ -20,6 +20,8 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ครอบคลุม file structure, code patterns, structural analysis, quality metrics, text search, file search, AST-based search, และ structure navigation ด้วย minimal AI token
 
+ดูเพิ่มเติม: /search-with-astgrep
+
 ## Execute
 
 ### 1. File Structure Discovery (30 วินาที)

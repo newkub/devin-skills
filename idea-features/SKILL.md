@@ -24,6 +24,8 @@ related:
 - ไม่ implement
 - ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/deep-idea-features`
 
+- ดูเพิ่มเติม: /report-uxui-sketch
+
 ## Execute
 
 ### 1. Understand Context

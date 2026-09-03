@@ -20,6 +20,8 @@ related:
 
 ครอบคลุมการสร้าง `README.md` สำหรับ root และทุก workspace ใน monorepo และการตั้งค่า `LICENSE.md` พร้อม package manifest license field — idempotent: รันซ้ำได้โดยไม่เกิด side effects
 
+ดูเพิ่มเติม: /capture-component
+
 ## Execute
 
 ### 1. Prepare

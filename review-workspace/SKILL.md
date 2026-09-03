@@ -25,6 +25,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ใช้สำหรับ review workspace หนึ่ย โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/deep-review`
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Identify Workspace
@@ -109,3 +111,4 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 - รายการ config drift, dependency issues, script gaps, SRP/size issues
 - Review score ต่อ dimension และ overall
 - คำแนะนำ action ถัดไป
+

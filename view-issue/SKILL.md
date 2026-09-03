@@ -25,6 +25,8 @@ related:
 
 ใช้เมื่อผู้ใช้ต้องการดู issue, ตรวจสอบ issue, หรืออ่านรายละเอียด issue โดยไม่ต้องเปิด browser รองรับ local repos และ cross-repo issues ผ่าน `gh`
 
+ดูเพิ่มเติม: /list-github-issue, /create-github-issue, /review-github-issue
+
 ## Execute
 
 ### 1. Identify Issue

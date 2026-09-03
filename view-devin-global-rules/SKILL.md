@@ -25,6 +25,8 @@ related:
 
 ใช้เมื่อผู้ใช้ขอดู global rules, project rules หรือไฟล์กฎเฉพาะ ใช้ได้กับ `.codeium/windsurf/memories/global_rules.md`, `.devin/rules/`, และ `AGENTS.md` ของ repository
 
+ดูเพิ่มเติม: /view, /follow-global-rules, /check-reference, /report-file-structure
+
 ## Execute
 
 ### 1. Locate Rule Files

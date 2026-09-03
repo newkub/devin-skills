@@ -24,6 +24,8 @@ related:
 
 ใช้เมื่อผู้ใช้ขอดู PR ตรวจสอบ PR หรืออ่านรายละเอียด PR โดยไม่ต้องเปิด browser ใช้ได้ทั้ง repo ในเครื่องและ PR ข้าม repo ผ่าน `gh`
 
+ดูเพิ่มเติม: /list-github-pr
+
 ## Execute
 
 ### 1. Identify PR

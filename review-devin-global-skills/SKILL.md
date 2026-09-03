@@ -26,6 +26,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่ปรับเนื้อหาเชิง code (ใช้ `/deep-validate`)
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 ### 1. Prepare Context
 

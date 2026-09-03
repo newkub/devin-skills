@@ -23,7 +23,7 @@ related:
 - Default คือ summary เร็ว
 - ถ้าต้องการละเอียดหรือ cycle ให้เลือก mode ทีเหมาะสม
 
-## Modes
+### Modes
 
 | No. | Mode | ใช้เมื่อ | ความเร็ว |
 |----:|------|----------|----------|
@@ -33,6 +33,8 @@ related:
 | 4 | `Cycles` | หา circular references | ช้าหน่อย |
 | 5 | `Verify` | CI check หา cycle | ช้าหน่อย |
 | 6 | `Full` | รายละเอียดทุก skill | ช้า — ใช้เท่าทีจำเป็น |
+
+- ดูเพิ่มเติม: /review-references, /suggest-next-action
 
 ## Execute
 

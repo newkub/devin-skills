@@ -26,6 +26,8 @@ Review PR แบบละเอียด ตอบ comments, resolve conversatio
 - รองรับ code review, architecture review, security/quality review
 - ไม่ merge เองยกเว้น user บอกชัด
 
+- ดูเพิ่มเติม: /review-github-pr, /resolve-errors, /ask-me
+
 ## Execute
 
 ### 1. Fetch PR

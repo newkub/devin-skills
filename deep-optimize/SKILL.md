@@ -43,6 +43,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 1. Define Scope
 
+> Goal: Define Scope
 1. รับ `target` จาก argument
 2. ตรวจ ecosystem, build system, test setup
 3. ระบุ goals: faster build, smaller bundle, less dead code, better structure
@@ -50,6 +51,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 2. Deep Analysis
 
+> Goal: Deep Analysis
 1. ทำ `/deep-analyze` บน target
 2. ทำ `/review-performance` เพื่อหา hotspots
 3. ทำ `/review-redundancy` เพื่อหา duplicate logic
@@ -60,6 +62,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 3. Plan Optimizations
 
+> Goal: วางแผน Optimizations
 1. จัดลำดับ optimizations ตาม impact และ effort
 2. แยก quick wins กับ major changes
 3. ระบุ public API ทีอาจเปลี่ยน
@@ -67,6 +70,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 4. Implement
 
+> Goal: implement Implement
 1. ลบ dead code และ unused dependencies
 2. Refactor hotspots ด้วย `/deep-refactor` ถ้าจำเป็น
 3. Optimize bundle: code splitting, tree shaking, dynamic imports
@@ -76,6 +80,7 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 5. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/run-verify`
 2. ทำ `/run-test-all` ถ้ามี
 3. ทำ `/run-build` หรือ `/deep-build` ถ้ามี build
@@ -84,12 +89,14 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 ### 6. Measure
 
+> Goal: Measure
 1. บันทึก before/after metrics
 2. วัด bundle size, build time, test time, dead code count
 3. ทำ `/report-before-after`
 
 ### 7. Report
 
+> Goal: รายงาน Report
 1. สรุป optimizations ทีทำ
 2. บอก metrics ก่อน-หลัง
 3. ระบุ items ทีค้างและ recommendations

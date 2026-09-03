@@ -30,6 +30,8 @@ related:
 
 ครอบคลุม unit, integration, e2e, component, API, database, performance, security, accessibility, i18n, และ specialized tests ตาม project needs
 
+ดูเพิ่มเติม: /deep-test, /review-codebase-everything
+
 ## Execute
 
 ### 1. Run Lint And Typecheck

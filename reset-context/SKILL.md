@@ -34,6 +34,8 @@ related:
 
 ใช้เมื่อผู้ใช้พูด `reset-context`, ต้องการลบการวิเคราะห์ก่อนหน้า หรือเริ่มงานใหม่ skill นี้ไม่ลบไฟล์ใด ๆ แต่ reset แบบจำลองความเข้าใจของบทสนทนา
 
+ดูเพิ่มเติม: /scan-codebase, /follow-best-practice, /refactor, /use-scripts, /realize-implementation, /deep-validate, /run-verify
+
 ## Execute
 
 ### 1. Reset Mental Context

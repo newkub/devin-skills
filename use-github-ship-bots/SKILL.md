@@ -49,10 +49,13 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 - สร้าง PR พร้อม evidence
 - อัปเดต issue status
 
+- ดูเพิ่มเติม: /setup-cicd, /open-github-repo
+
 ## Execute
 
 ### 1. Read Plan
 
+> Goal: อ่าน Plan
 1. รับ `<issue-or-plan>` จาก argument
    - issue: `/use-github-ship-bots 42`
    - plan file: `/use-github-ship-bots .devin/plan/feed-bot.md`
@@ -63,6 +66,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 2. Choose Bot Stack
 
+> Goal: เลือก Bot Stack
 1. GitHub bot (approve/reject buttons) → `/follow-create-github-bots`
 2. Web dashboard bot → `/follow-create-web`
 3. CLI bot → `/follow-create-bun-cli`
@@ -70,6 +74,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 3. Create Project
 
+> Goal: สร้าง Project
 1. สร้าง directory `{bot-name}/` หรือ repo ใหม่
 2. ใช้ `/follow-create-github-bots` สร้าง skeleton
 3. สร้าง branch `bot/<name>` ถ้าอยู่ใน existing repo
@@ -77,6 +82,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 4. Implement Core Features
 
+> Goal: implement Core Features
 1. สร้าง `src/handlers/` สำหรับ events ที plan ระบุ
 2. สร้าง `src/domain/` สำหรับ business logic
 3. เพิ่ม approve/reject buttons หรือ slash commands ถ้ามี
@@ -85,6 +91,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 5. Add Tests
 
+> Goal: เพิ่ม Tests
 1. สร้าง `test/handlers/` ด้วย fixtures
 2. Mock Octokit API calls
 3. รัน `bun test`
@@ -92,18 +99,21 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 6. Verify
 
+> Goal: ตรวจสอบ Verify
 1. ทำ `/run-verify`
 2. ตรวจ secrets และ env ตัวอย่าง
 3. ตรวจ `README.md` มีวิธี install, config, deploy
 
 ### 7. Commit And Push
 
+> Goal: Commit And Push
 1. ทำ `/git-commit`
 2. ทำ `/git-push`
 3. บันทึก commit hash
 
 ### 8. Create PR
 
+> Goal: สร้าง PR
 1. ใช้ `/use-create-pr` ถ้ามี UI/evidence
 2. หรือใช้ `/create-github-pr`
 3. ใส่ `Closes #<issue>` ใน PR body
@@ -111,6 +121,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 9. Monitor And Deploy
 
+> Goal: ติดตาม And Deploy
 1. ใช้ `/resolve-cicd` ติดตาม CI/CD
 2. ถ้า pass → merge PR
 3. ถ้ามี deploy → ใช้ `/deploy-to-cloudflare` หรือ `/deploy-to-vercel`
@@ -118,6 +129,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 ### 10. Update Issue
 
+> Goal: อัปเดต Issue
 1. อัปเดต checkboxes ใน issue
 2. ระบุ deployed URL, version
 3. ทำ `/report-progress`

@@ -16,6 +16,8 @@ related:
 
 ใช้สำหรับตรวจสอบไฟล์ใน global_workflows และ workspace ว่า match กับ engineering principles — ไม่รวมการ implement หรือ refactor (ใช้ `/refactor`)
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Identify Principle From Filename

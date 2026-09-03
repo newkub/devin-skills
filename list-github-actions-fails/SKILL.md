@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับตรวจสอบ CI/CD failures ทั่วทุก personal repositories และ organization repositories ที user เป็นสมาชิก โดยใช้ `gh` CLI โดยไม่แก้ไข repo หรือ workflow
 
+ดูเพิ่มเติม: /list-ci-configs, /list-github-repo, /list-deployment-fails
+
 ## Execute
 
 ### 1. Verify gh CLI

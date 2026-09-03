@@ -20,6 +20,8 @@ related:
 
 เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Detect Test Framework And Define Strategy

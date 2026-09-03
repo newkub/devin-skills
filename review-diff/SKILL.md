@@ -23,21 +23,27 @@ related:
 ## Execute
 
 ### 1. Capture Diff State
+> Goal: capture Diff State
 ทำตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
 
 ### 2. Summarize Changes
+> Goal: Summarize Changes
 สรุป changes ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
 
 ### 3. Check Risks
+> Goal: ตรวจสอบ Risks
 ตรวจหา risks ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
 
 ### 4. Present Options
+> Goal: Present Options
 เสนอตัวเลือกถัดไปตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
 
 ### 5. Act On Decision
+> Goal: Act On Decision
 ดำเนินการตาม decision ของ user ตาม [references/diff-review-checklist.md](references/diff-review-checklist.md)
 
 ### 6. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules

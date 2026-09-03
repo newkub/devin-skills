@@ -24,6 +24,8 @@ related:
 
 ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`)
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Check Prerequisites
@@ -127,3 +129,4 @@ related:
 - `verify` และ `ci` pipeline ทำงานได้ถูกต้อง — `bun run verify` ผ่าน
 - ถ้ามี `tools/review-codebase` รัน `bun run review-codebase` ผ่านหรือทราบสาเหตุที่ยังไม่ผ่าน
 - ถ้ามี Infisical: root `package.json` มี `secrets:*` scripts และ `INFISICAL_TOKEN` ตั้งค่าใน CI/CD
+

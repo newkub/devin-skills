@@ -36,16 +36,20 @@ related:
 
 ใช้กับ code, architecture, content/docs, workflows, หรือ `SKILL.md` ทีเขียนยาว ซ้ำซ้อน หรือไม่ตรงประเด็น
 
+ดูเพิ่มเติม: /review-quality, /review-writing, /enhance-prompt, /follow-single-responsibility, /check-dead-code, /check-long-files
+
 ## Execute
 
 ### 1. Identify Target
 
+> Goal: ระบุ Target
 1. รับ `path-or-target` จาก argument
 2. ถ้าไม่ระบุ → ถาม user
 3. ตรวจว่าเป้าหมายเป้น code, doc, skill หรือ architecture
 
 ### 2. Analyze
 
+> Goal: วิเคราะห์ Analyze
 1. อ่านเป้าหมายโดยละเอียด
 2. หาสิ่งทีซับซ้อนเกินไป:
    - code: functions ยาว, nested logic, duplication, abstractions เกินจำเป็น
@@ -81,6 +85,7 @@ related:
 
 ### 4. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/run-check` ถ้าเป้นหมายเป้น code
 2. ทำ `/check-broken-skills-references` ถ้าเป้นหมายเป้น skill
 3. ทำ `git diff --check`
@@ -88,6 +93,7 @@ related:
 
 ### 5. Commit And Report
 
+> Goal: รายงาน Commit And Report
 1. ทำ `/git-commit` ถ้ามีการเปลี่ยนแปลง
 2. รายงานสิ่งทีลบ, แก้, และสถานะ final
 

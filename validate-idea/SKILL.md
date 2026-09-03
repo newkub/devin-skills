@@ -21,6 +21,8 @@ related:
 
 ใช้กับทุกไอเดียฟีเจอร์ การเปลี่ยนแปลง หรือ proposal ที่ต้องตรวจสอบความเป็นไปได้และความคุ้มค่าก่อน execute
 
+ดูเพิ่มเติม: /deep-idea-features
+
 ## Execute
 
 ### 1. Capture Idea

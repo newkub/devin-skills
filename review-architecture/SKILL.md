@@ -19,6 +19,8 @@ Review architecture ระดับ macro ครอบคลุม design patter
 
 architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, governance, data flow tracing, และ cost impact analysis
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare

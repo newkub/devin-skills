@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับตรวจสอบและรัน GitHub Actions หลังจาก push code หรือเมื่อได้รับ `run-id` จาก argument
 
+ดูเพิ่มเติม: /resolve-github-actions-fails
+
 ## Execute
 
 ### 1. Verify GitHub CLI

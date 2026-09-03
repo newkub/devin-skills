@@ -33,10 +33,13 @@ related:
 
 ใช้เมื่อ user ต้องการ save context ทีคุยกันล่าสุด หรือ save `prompt` ทีบอกไป ลงใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` รองรับ input เป็น URL, keyword, concept, library, tool, framework, หรือ reference
 
+ดูเพิ่มเติม: /idea-new-skills
+
 ## Execute
 
 ### 1. Capture Input
 
+> Goal: capture Input
 1. รับค่า input จาก user ได้แก่ `link`, `keyword`, `topic`, `prompt` หรือสรุป context ล่าสุด
 2. ถ้า input เป็น link ให้ fetch หรือ scrape หัวข้อและคำอธิบายสั้น ๆ
 3. ถ้า input เป็น keyword ให้สรุป domain เช่น library, tool, framework, deployment
@@ -44,6 +47,7 @@ related:
 
 ### 2. Discover Relevant Skills
 
+> Goal: Discover Relevant Skills
 1. รายการ global skills ทั้งหมดจาก `C:\Users\Veerapong\AppData\Roaming\devin\skills`
 2. ใช้ `grep` ค้นหาชื่อ skill ทีเกี่ยวข้องแบบ case-insensitive
 3. อ่าน skill ทีมีความเกี่ยวข้องสูง 2-4 ไฟล์
@@ -51,6 +55,7 @@ related:
 
 ### 3. Decide Placement
 
+> Goal: Decide Placement
 1. ถ้า input เป็น tool/library → เน้น skill ทีชื่อตรงกับ tool/library นั้น
 2. ถ้า input เป็นหัวข้อกว้าง → อาจเพิ่ม `related` ใน skill หลักและ skill ย่อย
 3. ถ้า input เป็น deployment/hosting → เน้น deploy skill
@@ -59,6 +64,7 @@ related:
 
 ### 4. Edit Skill
 
+> Goal: แก้ไข Skill
 1. เปิด `SKILL.md` ของ skill ทีเลือก
 2. เพิ่ม input ลงใน `related` ถ้าเป้นชื่อ skill อื่น
 3. เพิ่มลงใน `references/` หรือ `links` ถ้าเป้น URL หรือ resource
@@ -68,12 +74,14 @@ related:
 
 ### 5. Verify
 
+> Goal: ตรวจสอบ Verify
 1. รัน `grep` หรืออ่าน skill อีกครั้งเพื่อตรวจว่า reference ถูกใส่ถูกต้อง
 2. ทำ `/check-skills-related` เพื่อตรวจ `related` ซ้ำซ้อนหรือหาย
 3. ถ้าแก้หลาย skill ให้ตรวจ `related` ซ้ำซ้อน
 
 ### 6. Ask If Uncertain
 
+> Goal: Ask If Uncertain
 1. ถ้ามีหลาย skill ทีอาจเหมาะ ให้ถาม user ก่อนแก้
 2. ถ้า input ไม่ตรงกับ skill ใดเลย ให้ถามว่าต้องการสร้าง skill ใหม่หรือเพิ่มลง skill กว้าง ๆ
 

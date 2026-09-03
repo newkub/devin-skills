@@ -19,6 +19,8 @@ related:
 ใช้สำหรับ restore ไฟล์จาก commit ในประวัติ git โดยเริ่มจาก commit ล่าสุดและเดินกลับทีละ commit
 ไม่ใช้สำหรับ restore จาก stash หรือ reflog — ใช้ `/follow-tool-git` แทน
 
+ดูเพิ่มเติม: /restore-from-my-dotfiles
+
 ## Execute
 
 ### 1. Identify Target Files

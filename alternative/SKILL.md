@@ -36,6 +36,8 @@ related:
 
 ใช้เมื่อ user ถามเกี่ยวกับ libraries, tools, frameworks, patterns หรือ solutions ต่าง ๆ
 
+ดูเพิ่มเติม: /learn-from-web, /vs, /follow-best-practice, /follow-my-tech-stack, /use-lib-effective, /suggest-next-action, /resolve-errors
+
 ## Execute
 
 ### 1. Identify Subject

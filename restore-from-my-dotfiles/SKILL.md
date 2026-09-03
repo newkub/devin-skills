@@ -19,6 +19,8 @@ related:
 
 ใช้เมื่อ dotfiles บนเครื่องหายหรือเสียหาย และต้องการ restore จากประวัติของ dotfiles repo ทีจัดการด้วย chezmoi
 
+ดูเพิ่มเติม: /restore-from-git-log, /follow-tool-git, /check-git-logs, /git-debug, /git-commit
+
 ## Execute
 
 ### 1. Locate Dotfiles Repo

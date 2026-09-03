@@ -16,6 +16,8 @@ related:
 
 ใช้สำหรับ project ที่มี AI agent infrastructure เช่น MCP servers, agent runtimes, tool interfaces, หรือ coding agent systems ที่ต้องการ harness-level engineering
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Assess Harness Components

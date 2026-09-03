@@ -18,6 +18,8 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 ใช้สำหรับ profiling ด้วย Chrome DevTools, Node.js profiler, หรือ Bun profiler เพื่อหา hot paths และ memory issues
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Setup Profiling

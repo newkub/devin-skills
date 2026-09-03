@@ -33,6 +33,8 @@ related:
 
 ใช้สำหรับการเปรียบเทียบทุกประเภท เช่น tools, frameworks, libraries, approaches
 
+ดูเพิ่มเติม: /check-reference, /follow-best-practice, /suggest-next-action
+
 ## Execute
 
 ### 1. Identify Comparison Criteria

@@ -34,6 +34,7 @@ related:
 
 ### 1. Prepare
 
+> Goal: เตรียม Prepare
 1. ทำ `/follow-agents-md` ถ้ามี `AGENTS.md` อยู่แล้ว
 2. ทำ `/check-monorepo` เพื่อตรวจ monorepo status
 3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
@@ -45,6 +46,7 @@ related:
 
 ### 2. Analyze Architecture
 
+> Goal: วิเคราะห์ Architecture
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
 3. map แต่ละ tech เป็น `tech: /follow-<tech>` ถ้ามี skill ตรง
@@ -53,12 +55,14 @@ related:
 
 ### 3. Define Platform And Target User
 
+> Goal: Define Platform And Target User
 1. ระบุ `platform` จาก runtime, OS, deployment target, environment
 2. ระบุ `target user` จาก project domain และผู้ใช้งานสุดท้าย
 3. อัปเดต `### Platform` และ `### Target User` ใน root `AGENTS.md`
 
 ### 4. Write AGENTS.md
 
+> Goal: เขียน AGENTS md
 1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` (frontmatter `name`, `description`, `related`)
 2. เริ่มจาก `references/agents-template.md` สำหรับ root `AGENTS.md`
 3. เขียน sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
@@ -71,6 +75,7 @@ related:
 
 ### 5. Workspace AGENTS.md
 
+> Goal: Workspace AGENTS.md
 1. ทำ `/report-workspace-graph` เพื่อวิเคราะห์ dependencies ระหว่าง workspaces
 2. ทำ `/follow-monorepo` เพื่อเข้าใจ workspace structure
 3. เริ่มจาก `references/workspace-agents-template.md` สำหรับแต่ละ workspace `AGENTS.md`
@@ -86,6 +91,7 @@ related:
 
 ### 6. Review By Stakeholder
 
+> Goal: review By Stakeholder
 1. ทำ `/review-by-stakeholder` เพื่อรับมุมมองจาก stakeholders ที่เหมาะสม
 2. บันทึก findings พร้อม severity, stakeholder, recommendation
 3. ถ้าพบ issues ที่มีผลต่อ `AGENTS.md` → แก้ไขก่อนดำเนินต่อ
@@ -93,6 +99,7 @@ related:
 
 ### 7. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/review-rules` เพื่อ review `AGENTS.md`
 2. แก้ไข issues ที่พบจนผ่าน
 3. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
@@ -100,6 +107,7 @@ related:
 
 ### 8. Ship
 
+> Goal: ship Ship
 1. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
 2. ตรวจสอบ `git status` และ state ของ repository ตาม project conventions
 3. ทำ `/run-verify`, `/run-test-all` ถ้ามี

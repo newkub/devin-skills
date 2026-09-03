@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ documentation site ที่สร้างด้วย VitePress, Docus, หรือ documentation frameworks อื่นๆ
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Check Documentation Setup

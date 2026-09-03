@@ -20,6 +20,8 @@ related:
 
 ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด
 
+ดูเพิ่มเติม: /search-with-astgrep, /review-codebase-everything
+
 ## Execute
 
 ### 1. Review And Inventory

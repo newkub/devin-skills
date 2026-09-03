@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ one-off search บน codebase โดยไม่ต้องตั้งค่า `sgconfig.yml` หรือ project rules รองรับทั้ง structural patterns, regex, และ YAML rule ชั่วคราว
 
+ดูเพิ่มเติม: /use-ast-grep-programatic, /search-files-patterns, /search-similar
+
 ## Execute
 
 ### 1. Prepare

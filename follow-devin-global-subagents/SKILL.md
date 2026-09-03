@@ -22,6 +22,8 @@ related:
 
 ใช้เมื่องานมีหลายด้าน เช่น frontend + backend + QA + DevOps หรือต้องการมุมมองจากหลาย roles พร้อมกัน
 
+ดูเพิ่มเติม: /follow-agents-md, /update-agents-md
+
 ## Execute
 
 ### 1. Decompose Task

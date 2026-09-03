@@ -25,6 +25,8 @@ related:
 
 ใช้เมื่อผู้ใช้ขอให้ดูไฟล์, ชุดไฟล์, หรือ snippet ของ codebase ใน terminal ด้วย layout ที่อ่านง่ายและเอื้อต่อ code review เหมาะสำหรับ source code, configs, logs, และ markdown
 
+ดูเพิ่มเติม: /open-in-explorer, /open-in-windows-terminal, /capture-terminal, /record-video-terminal
+
 ## Execute
 
 ### 1. Resolve Targets

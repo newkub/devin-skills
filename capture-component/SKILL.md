@@ -43,6 +43,8 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 - static HTML file ที import component
 - TUI/CLI component output
 
+- ดูเพิ่มเติม: /capture-image-app-to-screenshot, /follow-design-system, /watch-browser-and-test-all-routes, /from-recent-windows-capture
+
 ## Execute
 
 ### 1. Identify Component

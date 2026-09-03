@@ -22,21 +22,27 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ## Execute
 
 ### 1. Fetch PR Context
+> Goal: Fetch PR Context
 ทำตาม [references/fetch-pr-context.md](references/fetch-pr-context.md)
 
 ### 2. Review PR Metadata
+> Goal: review PR Metadata
 ทำตาม [references/pr-metadata.md](references/pr-metadata.md)
 
 ### 3. Review Code Changes
+> Goal: review Code Changes
 ทำตาม [references/code-changes.md](references/code-changes.md)
 
 ### 4. Validate Findings
+> Goal: ยื่นยัน Findings
 ทำตาม [references/validate-findings.md](references/validate-findings.md)
 
 ### 5. Report And Recommend
+> Goal: รายงาน And Recommend
 ทำตาม [references/report-and-recommend.md](references/report-and-recommend.md)
 
 ### 6. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules
@@ -59,3 +65,4 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - Findings จาก code, security, test, delivery, domain reviews
 - Merge readiness verdict พร้อมเหตุผล
 - Recommended actions ถัดไป
+

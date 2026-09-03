@@ -41,6 +41,7 @@ related:
 
 ### 1. Prepare
 
+> Goal: เตรียม Prepare
 1. ตรวจสอบว่าอยู่ใน branch ทีถูกต้อง ไม่ใช่ `main`
 2. รัน `git status --short` ดูไฟล์ทีเปลี่ยน
 3. รัน `/git-commit` ถ้ามี uncommitted changes
@@ -163,3 +164,4 @@ related:
 - แต่ละ test case มี staging preview link + annotated image
 - Reviewer เห็นว่าแก้ตรงไหนโดยไม่ต้องเปิด code
 - ไม่มี placeholder หรือ mockup
+

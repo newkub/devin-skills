@@ -25,6 +25,8 @@ related:
 
 ใช้สำหรับ deep analysis ที่ต้องการ data processing ซับซ้อน หรือ metrics calculation ที่ต้อง aggregation ครอบคลุม structural analysis ด้วย AST และ cross-reference analysis — ไม่ใช่การวิเคราะห์ทั่วไป (ใช้ `/deep-analyze`)
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Analyze Project

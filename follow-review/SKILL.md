@@ -70,6 +70,8 @@ related:
 
 ใช้เมื่อ user ต้องการ review แต่ยังไม่รู้จะใช้ review- skill ใด หรือต้องการให้ระบบเลือก/จัดลำดับ/execute review skills ให้ รองรับ code, docs, plan, GitHub, devin skills, release, delivery, และ cross-dimensional review
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Detect Review Context

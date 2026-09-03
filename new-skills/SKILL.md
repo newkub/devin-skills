@@ -35,6 +35,8 @@ related:
 
 ใช้เมื่อผู้ใช้ต้องการสร้าง skill files ใหม่ โดย skill นี้จะ delegate ไปยัง `update-devin-global-skills` และ `follow-create-devin-skills` สำหรับการสร้างจริง แต่ให้จุดเริ่มต้นที่รวดเร็วและจัดการ batch naming
 
+ดูเพิ่มเติม: /follow-global-rules
+
 ## Execute
 
 ### 1. Identify Skill Names

@@ -21,6 +21,8 @@ related:
 
 ใช้กับ public หรือ private GitHub repo ที่ระบุ compare URL หรือ `owner/repo` พร้อม tags เป้าหมาย ครอบคลุมทั้ง fetch diff data และ format report
 
+ดูเพิ่มเติม: /vs
+
 ## Execute
 
 ### 1. Identify Repo And Tags

@@ -20,27 +20,35 @@ related:
 ## Execute
 
 ### 1. Inventory And Group Skills
+> Goal: Inventory And Group Skills
 ทำตาม [references/inventory-and-group-skills.md](references/inventory-and-group-skills.md)
 
 ### 2. Detect Duplicate Purpose
+> Goal: ตรวจจับ Duplicate Purpose
 ทำตาม [references/detect-duplicate-purpose.md](references/detect-duplicate-purpose.md)
 
 ### 3. Detect Overlapping Scope
+> Goal: ตรวจจับ Overlapping Scope
 ทำตาม [references/detect-overlapping-scope.md](references/detect-overlapping-scope.md)
 
 ### 4. Detect Redundant Content
+> Goal: ตรวจจับ Redundant Content
 ทำตาม [references/detect-redundant-content.md](references/detect-redundant-content.md)
 
 ### 5. Detect Unused Skills
+> Goal: ตรวจจับ Unused Skills
 ทำตาม [references/detect-unused-skills.md](references/detect-unused-skills.md)
 
 ### 6. Recommend Actions
+> Goal: Recommend Actions
 ทำตาม [references/recommend-actions.md](references/recommend-actions.md)
 
 ### 7. Confirm And Execute
+> Goal: ดำเนินการ Confirm And Execute
 ทำตาม [references/confirm-and-execute.md](references/confirm-and-execute.md)
 
 ### 8. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules

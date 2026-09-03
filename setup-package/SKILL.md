@@ -26,6 +26,7 @@ related:
 
 ### 1. Detect Ecosystem
 
+> Goal: ตรวจจับ Ecosystem
 1. ถ้ามี `package.json` → Node/Bun ecosystem
 2. ถ้ามี `Cargo.toml` → Rust
 3. ถ้ามี `pyproject.toml` หรือ `setup.py` → Python
@@ -35,6 +36,7 @@ related:
 
 ### 2. Setup Node/Bun package.json
 
+> Goal: ตั้งค่า Node Bun package json
 1. ตรวจสอบ required fields: `name`, `version`, `description`, `license`, `repository`, `homepage`, `files`
 2. ถ้า `private: true` → ถาม user ว่าจะ release public ไหม ถ้าใช่ → เปลี่ยน `private` เป้น `false`
 3. ตรวจ `files` ต้องระบุสิ่งทีจะ publish (เช่น `dist`, `src`, `README.md`, `LICENSE`)
@@ -45,6 +47,7 @@ related:
 
 ### 3. Setup Rust Cargo.toml
 
+> Goal: ตั้งค่า Rust Cargo toml
 1. ตรวจสอบ `package.name`, `version`, `description`, `license`, `repository`, `categories`, `keywords`, `edition`, `rust-version`
 2. ถ้าขาด → ให้ user กรอก หรือใช้ค่า default
 3. ตรวจ `[[bin]]` หรือ `[lib]` ตาม project type
@@ -52,6 +55,7 @@ related:
 
 ### 4. Setup Python pyproject.toml
 
+> Goal: ตั้งค่า Python pyproject toml
 1. ตรวจสอบ `project.name`, `version`, `description`, `license`, `readme`, `requires-python`, `classifiers`
 2. ตรวจ `build-system` มี `setuptools`, `hatchling`, หรือ `flit`
 3. ถ้าขาด → ให้ user กรอก
@@ -59,12 +63,14 @@ related:
 
 ### 5. Setup Go go.mod
 
+> Goal: ตั้งค่า Go go mod
 1. ตรวจ `module` path
 2. ตรวจ `go` version
 3. ถ้าไม่มี `LICENSE` หรือ `README.md` → แนะนำเพิ่ม
 
 ### 6. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/review-config` เพื่อตรวจ package manifest
 2. ทำ `/run-verify` เพื่อตรวจ build/test ผ่าน
 3. ถ้า verify ไม่ผ่าน → แก้ไขและ retry สูงสุด 3 ครั้ง
@@ -105,3 +111,4 @@ related:
 - `build`, `test:all`, `verify` scripts พร้อมใช้
 - package พร้อม publish/release
 - ผ่าน `/run-verify`
+

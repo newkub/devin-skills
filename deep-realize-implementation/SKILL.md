@@ -32,6 +32,8 @@ Realize implementation ครบวงจร — แปลง TODO, MOCK, FAKE, 
 
 ใช้เมื่องาน implement มีความซับซ้อนสูง ต้อง integrate หลาย layer หรือต้องแทนที่ mock/placeholder หลายจุด — ไม่ใช่สำหรับแก้ไขเฉพาะหน้า
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ

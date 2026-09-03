@@ -26,10 +26,13 @@ related:
 
 ใช้เมื่อต้องการดูภาพรวม directory structure ของ project หรือโฟลเดอร์ย่อย รองรับการกำหนด depth, include/exclude pattern
 
+ดูเพิ่มเติม: /view, /report-file-structure, /scan-codebase, /search-files-patterns
+
 ## Execute
 
 ### 1. Parse Input
 
+> Goal: Parse Input
 1. รับ `path` จาก argument
 2. ถ้าไม่ระบุ path ให้ถาม user
 3. รับ optional flags:
@@ -40,6 +43,7 @@ related:
 
 ### 2. Resolve Path
 
+> Goal: แก้ไข Path
 1. ตรวจสอบว่า `path` มีอยู่จริง
 2. ถ้าเป้น relative path ให้ resolve จาก current working directory
 3. ถ้าเป้น project ชื่อเดียว เช่น `solid-ui` ให้ลองหาที่ `D:\newkub\solid-ui` ก่อน
@@ -47,6 +51,7 @@ related:
 
 ### 3. Build Tree
 
+> Goal: สร้าง Tree
 1. ใช้ PowerShell `Get-ChildItem` หรือ `tree` สร้าง tree
 2. ยกเว้นโฟลเดอร์เริ่มต้น:
    - `node_modules`
@@ -69,6 +74,7 @@ related:
 
 ### 4. Format Output
 
+> Goal: Format Output
 1. แสดงผลเป็น tree ด้วย indentation `  ` สองช่อง
 2. แยกไฟล์และโฟลเดอร์ให้ดูง่าย
 3. ถ้า output ยาวมาก ให้ summary โครงสร้างหลักก่อน แล้วถาม user ว่าต้องการ expand ส่วนไหน
@@ -76,6 +82,7 @@ related:
 
 ### 5. Report
 
+> Goal: รายงาน Report
 1. ระบุ root path ทีใช้
 2. ระบุจำนวน directories และ files (ถ้าตรวจนับได้)
 3. ระบุ patterns ทีถูก exclude

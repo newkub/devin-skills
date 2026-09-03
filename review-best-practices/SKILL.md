@@ -38,10 +38,13 @@ related:
 
 ใช้เมื่อต้องการ review code หรือ project ว่า follow best practices ในเรื่อง การจัดโครงสร้าง การตั้งชื่อ การจัดการ dependencies, error handling, testing, security, performance, และ maintainability
 
+ดูเพิ่มเติม: /deep-analyze, /deep-review
+
 ## Execute
 
 ### 1. Identify Target
 
+> Goal: ระบุ Target
 1. รับ `file-or-target` จาก argument
 2. ถ้าไม่ระบุ ให้ถาม user ว่าต้องการ review ไฟล์ โฟลเดอร์ หรือ project ใด
 3. ตรวจสอบวา target มีอยู่จริง
@@ -49,6 +52,7 @@ related:
 
 ### 2. Gather Context
 
+> Goal: Gather Context
 1. อ่าน target ไฟล์หรือไฟล์สำคัญใน target
 2. ทำ `/scan-codebase` เพื่อหา patterns, consumers, references
 3. ใช้ `grep` หาสัญญาณทีบ่งบอกปัญหา เช่น `TODO`, `FIXME`, `any`, `console.log`, `eval`, `dangerouslySetInnerHTML`
@@ -56,6 +60,7 @@ related:
 
 ### 3. Apply Best Practice Review
 
+> Goal: review Apply Best Practice Review
 1. ทำ `/follow-best-practice` สำหรับ topic ทีเกี่ยวข้อง เช่น framework, language, library, architecture
 2. ตรวจ check ต่าง ๆ ตาม context:
    - `/check-code-structure` — โครงสร้างไฟล์และการจัดระเบียบ
@@ -67,6 +72,7 @@ related:
 
 ### 4. Prioritize Findings
 
+> Goal: Prioritize Findings
 1. จัดลำดับ findings ตาม severity:
    - `Critical` — อาจเกิดข้อผิดพลาดร้ายแรง เช่น security, data loss
    - `High` — ผลกระทบสูง ควรแก้ก่อน
@@ -77,6 +83,7 @@ related:
 
 ### 5. Recommend Fixes
 
+> Goal: Recommend Fixes
 1. สรุป findings แต่ละข้อพร้อมเหตุผลและ evidence
 2. แนะนำวิธีแก้ไขหรือ skill ทีควรใช้
 3. ถ้า user ตกลง → ใช้ `/resolve-errors`, `/refactor`, `/update-references` หรือ skill ทีเหมาะสมในการแก้
@@ -84,6 +91,7 @@ related:
 
 ### 6. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/deep-validate` หลังแก้ไข
 2. รัน `run-check`, `run-typecheck`, หรือ `run-test` ตาม project
 3. อ่านไฟล์อีกครั้งเพื่อตรวจว่าแก้ถูกต้อง

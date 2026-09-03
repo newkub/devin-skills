@@ -28,6 +28,7 @@ related:
 
 ### 1. Prepare
 
+> Goal: เตรียม Prepare
 1. ตรวจสอบสถานะ project ที `D:\newkub\projects-wrikka-com`
 2. อ่าน `package.json`, `wrangler.jsonc`, `vite.config.ts`, `src/lib/github.ts`, และ `src/start.ts`
 3. ตรวจสอบ `GITHUB_TOKEN`, `BASIC_AUTH_USER`, `BASIC_AUTH_PASS` ใน `.env` (local) และ `wrangler secret` (production)
@@ -35,6 +36,7 @@ related:
 
 ### 2. Sync GitHub Data
 
+> Goal: Sync GitHub Data
 1. เปิด `src/lib/github.ts`
 2. ปรับ GraphQL query หรือ REST endpoints ตาม requirement ใหม่
 3. เพิ่ม `User-Agent` ทุก request เสมอ
@@ -43,6 +45,7 @@ related:
 
 ### 3. Update UI
 
+> Goal: อัปเดต UI
 1. แก้ไข components ใน `src/components/`
 2. ตรวจ responsive และ mobile-friendly ด้วย breakpoints `md:`
 3. ตรวจ syntax highlight ใน `src/lib/markdown.ts`
@@ -51,6 +54,7 @@ related:
 
 ### 4. Deploy
 
+> Goal: deploy Deploy
 1. รัน `bun run build`
 2. ตรวจ `wrangler whoami`
 3. ถ้าไม่ authenticated → รัน `wrangler login` หรือขอ `CLOUDFLARE_API_TOKEN`
@@ -60,6 +64,7 @@ related:
 
 ### 5. Update Skill
 
+> Goal: อัปเดต Skill
 1. ถ้า project structure หรือ scripts เปลี่ยน ให้ update `SKILL.md` นี้
 2. ตรวจสอบ `related` skills
 3. บันทึกเวอร์ชันล่าสุดของเทคโนโลยีทีใช้
@@ -85,3 +90,4 @@ related:
 - Deploy ไป Cloudflare Workers ได้
 - Devin skill นี้สะท้อนขั้นตอนล่าสุดของ project
 - User ทราบ URL, credentials ที่จำเป็น และข้อจำกัดทีเกิดขึ้น
+

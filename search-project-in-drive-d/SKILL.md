@@ -19,12 +19,14 @@ related:
 
 ### 1. รับ Search Criteria
 
+> Goal: ค้นหา Criteria
 1. ถ้า user ไม่ได้ระบุ keyword → ใช้ `/ask-me` ถาม
 2. รองรับ wildcard `*` และ `?`
 3. scope ค้นหาคือ `D:\` เท่านั้น
 
 ### 2. ค้นหา Git Projects
 
+> Goal: ค้นหา Git Projects
 รัน PowerShell command:
 
 ```powershell
@@ -38,6 +40,7 @@ Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3 |
 
 ### 3. แสดงผล
 
+> Goal: แสดงผล
 1. ใช้ `/report-table` สร้างตาราง
 2. columns: `No.`, `Project Name`, `Path`, `Match Type`
 3. เรียง `No.` ลำดับ 1, 2, 3, ...

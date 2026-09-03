@@ -23,6 +23,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ### 1. Prepare And Scan
 
+> Goal: เตรียม And Scan
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup, project structure, tech stack
 2. ระบุ delivery channels, documentation tools, versioning strategy, build tool, CI/CD platform, infrastructure, security tools
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
@@ -30,41 +31,49 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ### 2. Documentation And Web Presence
 
+> Goal: Documentation And Web Presence
 - ตรวจ documentation ใน `references/docs.md`
 - ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ แล้วรวม findings
 
 ### 3. Experience And Insights
 
+> Goal: Experience And Insights
 - ตรวจ DX ใน `references/dx.md`
 - ตรวจ analytics ใน `references/analytics.md`
 
 ### 4. Quality
 
+> Goal: Quality
 - ตรวจ testing ใน `references/testing.md`
 - ตรวจ PR ใน `references/pr-review.md`
 
 ### 5. Operations
 
+> Goal: Operations
 - ตรวจ logging และ debugging ใน `references/logging-debugging.md`
 - ตรวจ versioning ใน `references/versioning.md`
 
 ### 6. Build And Configuration
 
+> Goal: สร้าง And Configuration
 - ตรวจ build efficiency ใน `references/efficiency.md`
 - ตรวจ config health ใน `references/config.md`
 
 ### 7. Infrastructure And Pipeline
 
+> Goal: Infrastructure And Pipeline
 - ตรวจ CI/CD pipeline ใน `references/ci-cd.md`
 - ตรวจ infrastructure ใน `references/infrastructure.md`
 
 ### 8. Performance And Security
 
+> Goal: Performance And Security
 - ทำ `/review-performance` แล้วดู `references/performance.md` สำหรับรายละเอียด
 - ตรวจ security ใน `references/security.md`
 
 ### 9. Validate And Report
 
+> Goal: ยื่นยัน And Report
 1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity ตาม `references/scoring.md`
 3. คำนวณ review score ตาม `references/scoring.md`
@@ -90,3 +99,4 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 - รายงาน recommended actions พร้อม priority
 - Review score ต่อ dimension และ overall score
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

@@ -109,7 +109,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 > Goal: ระบุ deployment target และ URL
 
 1. ใช้ `url-or-target` จาก argument ถ้ามี
-2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, `references/targets.md`
+2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, `watch-deploy/references/targets.md`
 3. ถ้ายังไม่ชัด → ทำ `/ask-me`
 
 ### 6. CD: Determine Platform

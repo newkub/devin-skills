@@ -27,6 +27,8 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 ใช้ร่วมกับ `review-refactor`, `review-restructure`, `review-update` เพื่อ review ก่อน refactor, restructure, หรือ update
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare

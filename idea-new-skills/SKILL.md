@@ -34,6 +34,8 @@ related:
 
 ใช้เมื่อผู้ใช้ต้องการไอเดีย skill ใหม่, สังเกตว่า workflow ใดขาดหายไป หรือถามว่า "ควรมี skill สำหรับ X หรือไม่" ผลลัพธ์เป็นรายการที่เรียงลำดับของ skill proposals พร้อม name, description และ trigger
 
+ดูเพิ่มเติม: /check-skills-related, /follow-create-devin-skills, /report-idea, /follow-skills-map
+
 ## Execute
 
 ### 1. Identify Context

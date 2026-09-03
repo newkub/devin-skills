@@ -25,6 +25,8 @@ related:
 
 ใช้เมื่อผู้ใช้ขอดู diff เปรียบเทียบ refs หรือตรวจสอบการเปลี่ยนแปลงของ PR บน terminal รองรับ diff ของ working tree, staged, commit, branch และ PR
 
+ดูเพิ่มเติม: /view, /check-git-diff, /report-git-diff, /review-diff
+
 ## Execute
 
 ### 1. Identify Diff Source

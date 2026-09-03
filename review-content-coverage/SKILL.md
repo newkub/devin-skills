@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับเขียน content ที่ครอบคลุมทุก aspects ของ skill, project, หรือ documentation
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Research From Multiple Sources

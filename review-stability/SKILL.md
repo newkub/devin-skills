@@ -23,6 +23,8 @@ Review ความเสถียรของ application ครอบคลุ
 - `error-patterns`: log clustering and recurring issue detection from logs
 - ไม่รวมการ fix (ใช้ `/deep-review` สำหรับ fix)
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare And Scan

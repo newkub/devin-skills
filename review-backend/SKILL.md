@@ -19,6 +19,8 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ใช้สำหรับ backend review ทั้งหมด — เรียก sub-review workflows โดยตรง ไม่ทำ review เอง — ไม่รวม frontend, infrastructure, หรือ security reviews
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare And Update Rules

@@ -22,6 +22,8 @@ related:
 - รัน background services
 - ตรวจสอบโปรแกรมทำงานได้ถูกต้อง
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare

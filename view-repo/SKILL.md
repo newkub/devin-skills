@@ -36,6 +36,8 @@ related:
 
 ใช้กับ public/private GitHub repos สำหรับดูข้อมูลสำคัญ: description, stars, forks, open issues, PRs, topics, license, latest release, languages, last update
 
+ดูเพิ่มเติม: /list-github-repo, /open-github-repo-personal, /open-github-repo-org, /ship, /follow-github, /report-release-changelog, /resolve-errors
+
 ## Execute
 
 ### 1. Resolve Repo

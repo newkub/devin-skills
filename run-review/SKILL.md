@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับรัน review CLI ที่ `tools/review-codebase` ที่ project root และแปลผลลัพธ์ ไม่ใช้สำหรับสร้างหรืออัปเดท analyzers (ใช้ `/deep-review` Step 3.5 หรือ `deep-review/references/cli-review-steps.md` แทน)
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Verify CLI Exists

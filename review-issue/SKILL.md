@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ issue source ใดๆ ไม่ใช่แค่ GitHub ครอบคลุม title, description, acceptance criteria, scope, dependencies, risks และ next steps ที่นำไปปฏิบัติได้ ไม่แก้ไข issue เว้นแต่ได้รับการร้องขอ
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Collect Issue Content

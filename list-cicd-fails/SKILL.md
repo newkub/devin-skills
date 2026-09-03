@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับตรวจสอบ failed CI/CD runs โดยไม่แก้ไข ไม่ re-run และไม่ delete อะไร
 
+ดูเพิ่มเติม: /list-github-actions-fails, /list-deployment-fails, /list-ci-configs, /suggest-next-action
+
 ## Execute
 
 ### 1. Verify Target

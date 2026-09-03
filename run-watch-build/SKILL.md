@@ -14,48 +14,66 @@ related:
 
 ใช้สำหรับ project ที่ต้องการรัน build แบบ watch mode ขณะพัฒนา
 
-## Prompt
+### Prompt
 
 ใช้ workflow นี้เมื่อต้องการรัน build แบบ watch mode เพื่อตรวจสอบ build errors และ optimization อย่างต่อเนื่องขณะพัฒนา
 
 ## Execute
 
-1. ตรวจสอบ Build Setup
+### 1. ตรวจสอบ Build Setup
+
+> Goal: ตรวจสอบ Build Setup
+
 
 - ตรวจสอบว่าโปรเจกต์มี build tool ที่เหมาะสม (Vite, Rollup, Webpack, ฯลฯ)
 - ตรวจสอบ build configuration files
 - ยืนยันว่า build script ถูกกำหนดใน main config
 - ตรวจสอบว่า dependencies ที่จำเป็นถูกติดตั้งแล้ว
 
-2. รัน Build Watch Mode
+### 2. รัน Build Watch Mode
+
+> Goal: รัน Build Watch Mode
+
 
 - รัน build ด้วย watch mode (vite build --watch, webpack --watch, ฯลฯ)
 - กำหนด files ที่จะ monitor ตาม project structure
 - ตั้งค่า ignore patterns สำหรับ files ที่ไม่ต้อง build
 - ติดตาม build output และ errors
 
-3. ติดตามและแก้ไข Build Errors
+### 3. ติดตามและแก้ไข Build Errors
+
+> Goal: ติดตามและแก้ไข Build Errors
+
 
 - ตรวจสอบ build errors ที่เกิดขึ้นทันที
 - แก้ไข build errors ตาม priority
 - ตรวจสอบ dependency issues
 - รัน `/resolve-errors` สำหรับ errors ที่ซับซ้อน หรือ `/deep-debug` สำหรับ errors ที่ต้องวางแผนแก้
 
-4. ตรวจสอบ Build Output
+### 4. ตรวจสอบ Build Output
+
+> Goal: ตรวจสอบ Build Output
+
 
 - ตรวจสอบว่า build output ถูกต้อง
 - ตรวจสอบ bundle sizes
 - ตรวจสอบ asset optimization
 - ทดสอบ build output ใน local environment
 
-5. ปรับปรุง Build Performance
+### 5. ปรับปรุง Build Performance
+
+> Goal: ปรับปรุง Build Performance
+
 
 - ตรวจสอบ build time
 - ปรับปรุง build configuration
 - ใช้ caching เมื่อเป็นไปได้
 - Optimize dependencies
 
-6. ตรวจสอบ Production Readiness
+### 6. ตรวจสอบ Production Readiness
+
+> Goal: ตรวจสอบ Production Readiness
+
 
 - ตรวจสอบ environment variables
 - ตรวจสอบ API endpoints

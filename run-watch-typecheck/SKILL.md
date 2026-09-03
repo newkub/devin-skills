@@ -14,41 +14,56 @@ related:
 
 ใช้สำหรับ project ที่ต้องการรัน type checking แบบ watch mode ขณะพัฒนา
 
-## Prompt
+### Prompt
 
 ใช้ workflow นี้เมื่อต้องการรัน type checking แบบ watch mode เพื่อตรวจสอบ type errors อย่างต่อเนื่องขณะพัฒนา
 
 ## Execute
 
-1. ตรวจสอบ Type Checking Setup
+### 1. ตรวจสอบ Type Checking Setup
+
+> Goal: ตรวจสอบ Type Checking Setup
+
 
 - ตรวจสอบว่าโปรเจกต์มี TypeScript หรือ type checking tool ที่เหมาะสม
 - ตรวจสอบ tsconfig.json หรือ configuration files ที่เกี่ยวข้อง
 - ยืนยันว่า type checking script ถูกกำหนดใน main config
 - ตรวจสอบว่า dependencies ที่จำเป็นถูกติดตัวแล้ว
 
-2. รัน Type Check Watch Mode
+### 2. รัน Type Check Watch Mode
+
+> Goal: รัน Type Check Watch Mode
+
 
 - รัน type check ด้วย watch mode (tsc --watch, vue-tsc --watch, ฯลฯ)
 - กำหนด files ที่จะ monitor ตาม project structure
 - ตั้งค่า ignore patterns สำหรับ files ที่ไม่ต้อง type check
 - ติดตาม output จาก type checker
 
-3. ติดตามและแก้ไข Type Errors
+### 3. ติดตามและแก้ไข Type Errors
+
+> Goal: ติดตามและแก้ไข Type Errors
+
 
 - ตรวจสอบ type errors ที่เกิดขึ้นทันที
 - แก้ไข type errors ตาม priority
 - อัพเดท type definitions ถ้าจำเป็น
 - รัน `/resolve-errors` สำหรับ errors ที่ซับซ้อน หรือ `/deep-debug` สำหรับ errors ที่ต้องวางแผนแก้
 
-4. ปรับปรุง Type Safety
+### 4. ปรับปรุง Type Safety
+
+> Goal: ปรับปรุง Type Safety
+
 
 - เพิ่ม type annotations สำหรับ code ที่ขาด
 - แก้ไข any types ที่สามารถระบุ type ได้
 - ปรับปรุง generic types ให้เหมาะสม
 - อัพเดท interface และ type definitions
 
-5. ตรวจสอบ Performance
+### 5. ตรวจสอบ Performance
+
+> Goal: ตรวจสอบ Performance
+
 
 - ตรวจสอบว่า type checking ไม่ช้าเกินไป
 - ปรับปรุง tsconfig options ถ้าจำเป็น

@@ -22,6 +22,8 @@ related:
 - รองรับหลาย ecosystems: TypeScript, JavaScript, Rust, Python, Go
 - ใช้ผลลัพธ์สำหรับ review, refactor, debug, หรือ audit
 
+- ดูเพิ่มเติม: /search-with-astgrep
+
 ## Execute
 
 ### 1. Define Search Target

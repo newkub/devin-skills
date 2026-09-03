@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับตรวจสอบ CI/CD failures ทั่วทุก personal repositories และ organization repositories ที user เป็นสมาชิก โดยใช้ `gh` CLI
 
+- ดูเพิ่มเติม: /resolve-github-actions-fails
+
 ## Execute
 
 ### 1. Verify gh CLI

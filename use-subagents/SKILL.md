@@ -21,6 +21,8 @@ related:
 
 ใช้เมื่องานมีหลายไฟล์/หลาย package/หลายด้าน ต้องการมุมมองจากหลาย roles หรือทำงานขนานเพื่อเร็วขึ้น
 
+ดูเพิ่มเติม: /follow-agents-md
+
 ## Execute
 
 ### 1. Deep Context First

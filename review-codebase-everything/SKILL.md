@@ -25,6 +25,8 @@ triggers:
 
 ใช้สำหรับ monorepo ที่มีหรือกำลังสร้าง `tools/review-codebase` CLI แต่ไม่ควรใช้ skill นี้โดยตรงสำหรับงานใหม่
 
+ดูเพิ่มเติม: /run-review, /update-create-analyze-cli
+
 ## Execute
 
 1. ถ้าต้องการ review แบบ comprehensive ให้ใช้ `/deep-review`

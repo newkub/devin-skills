@@ -24,6 +24,7 @@ related:
 
 ### 1. Check Current State
 
+> Goal: ตรวจสอบ Current State
 1. ตรวจหา `robots.txt` ใน project
 2. ตรวจสอบว่า site เปิดเผยหรือมีการป้องกัน (Cloudflare Access, basic auth, login)
 3. ตรวจสอบ framework เพื่อรู้ว่า `robots.txt` ควรอยู่ที่ไหน:
@@ -34,6 +35,7 @@ related:
 
 ### 2. Decide Policy
 
+> Goal: Decide Policy
 | สถานะ site | robots.txt แนะนำ |
 |------------|------------------|
 | Public, ต้องการ SEO | `User-agent: *\nDisallow:\nSitemap: <url>` |
@@ -43,6 +45,7 @@ related:
 
 ### 3. Create Or Update
 
+> Goal: สร้าง Or Update
 1. สร้างไฟล์ใน `public/robots.txt` (หรือตาม framework)
 2. ถ้า `Disallow: /` ให้พิจารณาเพิ่ม `<meta name="robots" content="noindex,nofollow">` ใน SSR `<head>`
 3. ถ้า public ให้เพิ่ม `Sitemap` URL
@@ -50,6 +53,7 @@ related:
 
 ### 4. Verify
 
+> Goal: ตรวจสอบ Verify
 1. รัน build แล้วตรวจว่า `robots.txt` อยู่ใน output directory
 2. เปิด `http://localhost:<port>/robots.txt` เพื่อตรวจ
 3. ถ้า deploy แล้ว ใช้ `curl` ตรวจ `/robots.txt`
@@ -73,3 +77,4 @@ related:
 - มี `robots.txt` ที่สอดคล้องกับสถานะ site
 - Search engine crawler ทราบว่าควร/ไม่ควร index
 - ไม่มีข้อมูลสำคัญหลุดจาก `robots.txt`
+

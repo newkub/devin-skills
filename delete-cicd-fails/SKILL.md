@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับ cleanup failed workflow runs ทีไม่ต้องการเก็บ history เอาไว้อีกต่อไป
 
+ดูเพิ่มเติม: /watch-github-actions
+
 ## Execute
 
 ### 1. Detect Target

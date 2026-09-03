@@ -26,30 +26,39 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 ## Execute
 
 ### 1. Read Flow
+> Goal: อ่าน Flow
 ทำตาม [references/read-flow.md](references/read-flow.md)
 
 ### 2. Check Speed
+> Goal: ตรวจสอบ Speed
 ทำตาม [references/check-speed.md](references/check-speed.md)
 
 ### 3. Check Safety
+> Goal: ตรวจสอบ Safety
 ทำตาม [references/check-safety.md](references/check-safety.md)
 
 ### 4. Check Usability
+> Goal: ตรวจสอบ Usability
 ทำตาม [references/check-usability.md](references/check-usability.md)
 
 ### 5. Check Efficiency
+> Goal: ตรวจสอบ Efficiency
 ทำตาม [references/check-efficiency.md](references/check-efficiency.md)
 
 ### 6. Remove Redundancy
+> Goal: Remove Redundancy
 ทำตาม [references/remove-redundancy.md](references/remove-redundancy.md)
 
 ### 7. Report
+> Goal: รายงาน Report
 ทำตาม [references/report.md](references/report.md)
 
 ### 8. Validate
+> Goal: ยื่นยัน Validate
 ทำตาม [references/validate.md](references/validate.md)
 
 ### 9. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules
@@ -76,3 +85,4 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ไม่มี redundancy หรือ duplicated steps
 - มี report ชัดเจนพร้อม recommendations
 - ผ่าน `/deep-validate` หลังปรับปรุง
+

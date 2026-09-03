@@ -23,6 +23,8 @@ related:
 
 ใช้สำหรับ capture หน้าเว็บจริง วิเคราะห์ UX/UI ผ่าน stakeholder review และ implement การปรับปรุงทีเหมาะสม
 
+- ดูเพิ่มเติม: /capture-web
+
 ## Execute
 
 ### 1. Install And Verify Agent Browser

@@ -23,6 +23,8 @@ related:
 - รองรับทัง business, technical, security, user, compliance, growth
 - ไม่แก้ code โดยตรง ให้ report findings พร้อม recommendation
 
+- ดูเพิ่มเติม: /review-uxui, /review-security, /review-quality, /review-performance
+
 ## Execute
 
 ### 1. Identify Role

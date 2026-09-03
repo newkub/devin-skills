@@ -24,6 +24,8 @@ related:
 
 ใช้สำหรับตรวจสอบ failures ทั้งหมดจาก CI/CD (GitHub Actions) และ cloud deployment (Cloudflare Workers) โดยไม่แก้ไขหรือ re-run อะไร
 
+ดูเพิ่มเติม: /follow-service-vercel, /follow-service-cloudflare, /open-cloudflare-workers
+
 ## Execute
 
 ### 1. Verify Authentication

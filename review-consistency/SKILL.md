@@ -21,24 +21,31 @@ related:
 ## Execute
 
 ### 1. Inventory And Baseline
+> Goal: Inventory And Baseline
 ทำตาม [references/inventory-and-baseline.md](references/inventory-and-baseline.md)
 
 ### 2. Check Structure Consistency
+> Goal: ตรวจสอบ Structure Consistency
 ทำตาม [references/check-structure-consistency.md](references/check-structure-consistency.md)
 
 ### 3. Check Language And Terminology
+> Goal: ตรวจสอบ Language And Terminology
 ทำตาม [references/check-language-and-terminology.md](references/check-language-and-terminology.md)
 
 ### 4. Check Formatting And Style
+> Goal: ตรวจสอบ Formatting And Style
 ทำตาม [references/check-formatting-and-style.md](references/check-formatting-and-style.md)
 
 ### 5. Apply Fixes
+> Goal: Apply Fixes
 ทำตาม [references/apply-fixes.md](references/apply-fixes.md)
 
 ### 6. Validate
+> Goal: ยื่นยัน Validate
 ทำตาม [references/validate.md](references/validate.md)
 
 ### 7. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules

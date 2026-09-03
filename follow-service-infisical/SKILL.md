@@ -22,7 +22,7 @@ related:
 
 ใช้สำหรับทุก workspace ที่ต้องการ secrets management ทั้ง local development, CI/CD และ production
 
-## When To Use
+### When To Use
 
 ใช้ `/follow-service-infisical` เมื่อ:
 

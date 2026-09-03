@@ -22,24 +22,31 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 ## Execute
 
 ### 1. Prepare Context
+> Goal: เตรียม Context
 ทำตาม [references/prepare-context.md](references/prepare-context.md)
 
 ### 2. Assess Risks
+> Goal: Assess Risks
 ทำตาม [references/risk-assessment.md](references/risk-assessment.md)
 
 ### 3. Map Dependencies
+> Goal: จัดกลุ่ม Dependencies
 ทำตาม [references/dependency-mapping.md](references/dependency-mapping.md)
 
 ### 4. Analyze Alternatives
+> Goal: วิเคราะห์ Alternatives
 ทำตาม [references/alternatives.md](references/alternatives.md)
 
 ### 5. Check Feasibility
+> Goal: ตรวจสอบ Feasibility
 ทำตาม [references/feasibility.md](references/feasibility.md)
 
 ### 6. Validate Scope And Acceptance
+> Goal: ยื่นยัน Scope And Acceptance
 ทำตาม [references/scope-acceptance.md](references/scope-acceptance.md)
 
 ### 7. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md), [references/plan-quality-score.md](references/plan-quality-score.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules

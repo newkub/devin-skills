@@ -25,6 +25,8 @@ Build project อย่างละเอียด ครอบคลุมท�
 - รองรับหลาย ecosystems: Node/bun, Rust, Go, Python, Docker
 - ไม่ใช่แค่ `bun run build` แต่ต้อง verify outputs และ performance impact
 
+- ดูเพิ่มเติม: /run-verify
+
 ## Execute
 
 ### 1. Detect Build Targets

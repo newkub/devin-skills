@@ -26,6 +26,8 @@ related:
 - รองรับ repo ปัจจุบันหรือ `--repo owner/repo`
 - ไม่ project management ขั้นสูง
 
+- ดูเพิ่มเติม: /implement-github-issue, /ask-me, /open-github-repo, /open-github-repo-personal, /open-github-repo-org
+
 ## Execute
 
 ### 1. Verify Repository And Auth

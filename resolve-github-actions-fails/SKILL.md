@@ -22,6 +22,8 @@ List ทุก GitHub Actions workflow run ทีล้มเหลว แล้
 
 ใช้สำหรับตรวจสอบและแก้ไข CI/CD failures ทั่วทุก personal repositories และ organization repositories ที user เป็นสมาชิก โดยใช้ `gh` CLI
 
+ดูเพิ่มเติม: /list-ci-configs, /resolve-cicd, /list-github-repo, /list-deployment-fails
+
 ## Execute
 
 ### 1. Verify gh CLI

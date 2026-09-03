@@ -24,6 +24,8 @@ related:
 - ไม่สร้าง PR/merge เอง ให้ `/create-github-pr` และ `/deep-review-pr` จัดการต่อ
 - รองรับการตั้งชื่อ branch จาก argument หรือ user
 
+- ดูเพิ่มเติม: /git-commit-and-push-current-branch, /follow-git-flow, /merge-github-pr
+
 ## Execute
 
 ### 1. Determine Base And Feature Branch

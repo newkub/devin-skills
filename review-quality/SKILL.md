@@ -25,6 +25,8 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - code, configuration, rule files, workflows, และ skills
 - ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare

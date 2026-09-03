@@ -20,6 +20,8 @@ related:
 
 ใช้เมื่อต้องการหาตัวอย่างเดิมทีคล้ายกัน ก่อนสร้าง skill ใหม่ หรือก่อน refactor
 
+ดูเพิ่มเติม: /use-ast-grep
+
 ## Execute
 
 ### 1. Define Target

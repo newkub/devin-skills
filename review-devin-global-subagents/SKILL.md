@@ -18,21 +18,27 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 ## Execute
 
 ### 1. Prepare Context
+> Goal: เตรียม Context
 ทำตาม [references/prepare-context.md](references/prepare-context.md)
 
 ### 2. Check Frontmatter
+> Goal: ตรวจสอบ Frontmatter
 ทำตาม [references/frontmatter.md](references/frontmatter.md)
 
 ### 3. Check Sections
+> Goal: ตรวจสอบ Sections
 ทำตาม [references/sections.md](references/sections.md)
 
 ### 4. Check Style
+> Goal: ตรวจสอบ Style
 ทำตาม [references/style.md](references/style.md)
 
 ### 5. Check Safety
+> Goal: ตรวจสอบ Safety
 ทำตาม [references/safety.md](references/safety.md)
 
 ### 6. Score And Report
+> Goal: รายงาน Score And Report
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
 
 ## Rules

@@ -22,6 +22,8 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 
 ใช้เมื่อต้องการตรวจสอบและแก้ไข workers ที deploy ไม่ผ่านหรือมี runtime errors ใน Cloudflare account ของผู้ใช้ โดยใช้ `wrangler` หรือ Cloudflare API
 
+ดูเพิ่มเติม: /list-cloudflare-projects, /list-deployment-fails, /open-all-cloudflare-projects, /open-cloudflare-workers
+
 ## Execute
 
 ### 1. Verify wrangler Authentication

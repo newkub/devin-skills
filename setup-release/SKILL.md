@@ -28,6 +28,7 @@ related:
 
 ### 1. Detect Release Needs
 
+> Goal: ตรวจจับ Release Needs
 1. ตรวจ package manifest จาก project files
 2. ระบุ platforms ทีต้อง release:
    - `package.json` มี `private: false` → `npm`
@@ -39,6 +40,7 @@ related:
 
 ### 2. Choose Release Tool
 
+> Goal: เลือก Release Tool
 1. ถ้า project ใช้ conventional commits และต้องการ PR-based release → `/follow-tool-changesets`
 2. ถ้า project ใช้ git tags เป้นหลัก → `/follow-tool-changelogen` หรือ `/gen-changelog-md`
 3. ถ้า project ใช้ npm publish ง่ายๆ → `/follow-tool-semantic-release`
@@ -47,6 +49,7 @@ related:
 
 ### 3. Setup Release Workflow
 
+> Goal: ตั้งค่า Release Workflow
 1. สร้าง `.github/workflows/release.yml` trigger บน `push` tag `v*`
 2. workflow รัน verify, build, แล้ว publish ตาม platform:
    - npm: `npm publish`
@@ -67,12 +70,14 @@ related:
 
 ### 4. Setup Changelog
 
+> Goal: ตั้งค่า Changelog
 1. ถ้าใช้ `/gen-changelog-md` → เพิ่มคำสั่งรัน script หรือ `bunx run skills/gen-changelog-md/scripts/gen-release-md`
 2. ถ้าใช้ `changelogen` → เพิ่ม `changelogen` เป้น devDependency
 3. ถ้าใช้ `changesets` → รัน `changeset init` สร้าง `.changeset/config.json`
 
 ### 5. Validate
 
+> Goal: ยื่นยัน Validate
 1. ทำ `/review-config` ตรวจ release config
 2. ทำ `/run-verify` ตรวจ verify/build ผ่าน
 3. ถ้า platform รองรับ dry-run (เช่น `npm publish --dry-run`, `cargo publish --dry-run`) → รัน

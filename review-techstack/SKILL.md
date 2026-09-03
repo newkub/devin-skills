@@ -23,6 +23,8 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ใช้สำหรับ project หรือ workspace ที่มี manifest files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`) — ครอบคลุม framework selection, library versions, runtime compatibility, build tools, package manager, technology alignment, dependency versions, security, unused dependencies, transitive dependencies, duplicate packages, circular dependencies, license compliance, bundle impact, library API design, export strategy, module format, tree-shaking, peer deps, semver compliance, compatibility matrix, type declarations และ cloud/infrastructure selection — เน้น review และปรับปรุง ไม่รวมการติดตั้งใหม่ (ใช้ `/run-install`)
 
+ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Prepare

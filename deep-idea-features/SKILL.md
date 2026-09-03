@@ -33,6 +33,8 @@ related:
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/realize-implementation` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
+- ดูเพิ่มเติม: /review-codebase-everything
+
 ## Execute
 
 ### 1. Analyze Project

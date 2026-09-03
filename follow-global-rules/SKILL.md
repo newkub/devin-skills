@@ -21,6 +21,8 @@ related:
 
 ใช้เมื่อ global rules ดูอัปเดตช้ากว่า skills/subagents หรือเมื่อพบ rules ซ้ำซ้อนระหว่าง layers
 
+ดูเพิ่มเติม: /alignment
+
 ## Execute
 
 ### 1. Inventory Global Rules

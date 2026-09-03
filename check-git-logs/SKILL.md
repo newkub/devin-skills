@@ -22,6 +22,8 @@ related:
 - แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
 - ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/git-debug`
 
+- ดูเพิ่มเติม: /git-file-history, /restore-from-my-dotfiles
+
 ## Execute
 
 ### 1. Identify Target And Condition

@@ -18,6 +18,8 @@ related:
 
 ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-ast-grep`
 
+ดูเพิ่มเติม: /search-with-astgrep
+
 ## Execute
 
 ### 1. Install Or Use ast-grep
