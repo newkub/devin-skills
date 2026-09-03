@@ -23,7 +23,7 @@ related:
 1. `git branch --merged main` สำหรับ local
 2. `git branch -r --merged main` สำหรับ remote
 3. ตรวจสอบ branches ที่ไม่มี commit นาน
-4. ยกเว้น `main`, `master`, `develop`, release branches
+4. ยกเว้น `main`, `master`, release branches และ long-lived branches ตาม project conventions
 
 ### 2. Confirm With Team
 

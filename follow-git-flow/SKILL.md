@@ -1,6 +1,6 @@
 ---
 name: follow-git-flow
-description: ตั้งค่า git flow ใน repo สร้าง `dev` branch, hooks, worktree convention และอัปเดต AGENTS.md
+description: ตั้งค่า git flow ใน repo ด้วย integration branch, hooks, worktree convention และอัปเดต AGENTS.md
 related:
   - follow-github
   - update-agents-md
@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-ตั้งค่า git flow ใน repo ทีมีอยู่: สร้าง `dev`, ตั้ง local hooks, worktree convention, อัปเดต `AGENTS.md` และตั้ง GitHub protection
+ตั้งค่า git flow ใน repo ทีมีอยู่: สร้าง integration branch, ตั้ง local hooks, worktree convention, อัปเดต `AGENTS.md` และตั้ง GitHub protection
 `/follow-git-flow` ไม่ `git init`, ไม่ `git config --global`, ไม่ทำงานบน `main`
 
 ## Scope
@@ -20,7 +20,7 @@ related:
 รองรับ solo และ team โดย block direct push ไป `main` ทัง local hooks และ GitHub protection
 
 ถ้าต้องการแค่ remote GitHub setup → ใช้ `/follow-github`
-ถ้าต้องการแค่ create `dev` → ทำตามขั้นตอน Create dev Branch ข้างล่าง
+ถ้าต้องการแค่ create integration branch → ทำตามขั้นตอน Create Integration Branch ข้างล่าง
 
 ## Execute
 
@@ -34,17 +34,25 @@ related:
 4. ตรวจ `git status --porcelain` ต้องว่าง
 5. ถ้าไม่ว่าง → ให้ user `/ship` ก่อน
 
-### 2. Create dev Branch
+### 2. Determine Integration Branch
 
-> Goal: ให้ `dev` พร้อมเป้น integration branch
+> Goal: รู้ชื่อ integration branch ตาม project conventions
 
-1. ตรวจ `git branch --list dev`
-2. ถ้ามี `dev` ใน local → ใช้ `git switch dev` แล้วไป Ensure Remote
-3. ถ้าไม่มี `dev` ใน local แต่มีบน remote → ใช้ `git switch -c dev origin/dev`
-4. ถ้าไม่มีทั้งสอง → ใช้ `git switch -c dev <base-branch>`
-5. ทำ `git push -u origin dev` เพื่อ ensure `dev` มีบน remote
+1. อ่าน `AGENTS.md` ถ้ามี `### Ship` หรือ `### Ship Flow`
+2. ถ้าไม่มี → ถาม user ด้วย `/ask-me` หรือใช้ default ว่า `integration`
+3. บันทึกชื่อ integration branch เป็น `<integration-branch>`
 
-### 3. Setup Local Hooks
+### 3. Create Integration Branch
+
+> Goal: ให้ integration branch พร้อมเป้น staging/integration branch
+
+1. ตรวจ `git branch --list <integration-branch>`
+2. ถ้ามีใน local → ใช้ `git switch <integration-branch>` แล้วไป Ensure Remote
+3. ถ้าไม่มีใน local แต่มีบน remote → ใช้ `git switch -c <integration-branch> origin/<integration-branch>`
+4. ถ้าไม่มีทั้งสอง → ใช้ `git switch -c <integration-branch> <base-branch>`
+5. ทำ `git push -u origin <integration-branch>` เพื่อ ensure มีบน remote
+
+### 4. Setup Local Hooks
 
 > Goal: ป้องกัน direct work/push บน `main` ทัง local
 
@@ -75,41 +83,34 @@ related:
 6. ทำ `git update-index --chmod=+x .githooks/pre-commit .githooks/pre-push` เพื่อบันทึก executable bit ใน git index
 7. บน Windows ถ้าไม่ใช้ Git Bash ให้ตรวจสอบว่า `sh.exe` จาก Git for Windows อยู่ใน PATH หรือใช้ `.githooks/pre-commit.ps1` / `pre-push.ps1` แทน
 
-### 4. Setup Worktree Convention
+### 5. Setup Worktree Convention
 
 > Goal: กำหนดโครงสร้าง worktree สำหรับ issue branches
 
 1. สร้าง `worktrees/` directory ที root ถ้ายังไม่มี
-2. บันทึก convention: issue branch ชื่ `dev/<number>` worktree อยู่ที `worktrees/dev-<number>/`
+2. บันทึก convention: issue branch ชื่ `<integration-branch>/<number>` worktree อยู่ที `worktrees/<integration-branch>-<number>/`
 3. ไม่สร้าง worktree ในขั้นตอนนี้
 
-### 5. Setup GitHub
+### 6. Setup GitHub
 
 > Goal: ตั้ง branch protection และ GitHub metadata
 
 1. ทำ `/follow-github`
 2. ถ้า `follow-github` fail → report และ stop
-3. ยืนยันว่า `main` และ `dev` ถูก protect
+3. ยืนยันว่า `main` และ `<integration-branch>` ถูก protect
 
-### 6. Update AGENTS.md
+### 7. Update AGENTS.md
 
-> Goal: เขียน ship-flow section ลง `AGENTS.md`
+> Goal: เขียน ship section ลง `AGENTS.md`
 
 1. ทำ `/update-agents-md` เพื่อให้ `AGENTS.md` อัปเดต
-2. เพิ่มหรืออัปเดต section `### Ship Flow` ใน `AGENTS.md` ด้วยเนื้อหา:
-   - Branch model: `main` (production), `dev` (staging), `dev/<n>` (short-lived issue branches)
-   - Flow: `dev/<n>` → `dev` → `main`
-   - Worktree: `worktrees/dev-<n>/`
-   - Local hooks: block `main` commits/pushes
-   - GitHub protection: PR + status checks on `main`, status checks on `dev`
-   - Skill mapping: `/ship`
-3. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
+2. ถ้า `AGENTS.md` ไม่รองรับภาษาไทย → เขียนภาษาอังกฤษตาม convention
 
-### 7. Report
+### 8. Report
 
 > Goal: สรุปผลการ setup
 
-1. ใช้ `/report-table` สรุป: `dev` branch, hooks, worktree, GitHub protection, AGENTS.md
+1. ใช้ `/report-table` สรุป: integration branch, hooks, worktree, GitHub protection, AGENTS.md
 2. ทำ `/suggest-next-action`
 
 ## Rules
@@ -128,9 +129,9 @@ related:
 
 ### 3. Branch Naming
 
-- issue branch ใช้ `dev/<number>`
+- issue branch ใช้ `<integration-branch>/<number>`
 - ไม่ใช้ `issue/<number>` หรือ `feature/*`
-- `main` และ `dev` เป้น long-lived branches
+- `main` และ `<integration-branch>` เป้น long-lived branches
 
 ### 4. Safety
 
@@ -142,17 +143,16 @@ related:
 ### 5. Idempotent
 
 - รันได้ซ้ำโดยไม่เกิด side effects
-- ถ้า `dev` มีอยู่ → ไม่สร้างซ้ำ
+- ถ้า integration branch มีอยู่ → ไม่สร้างซ้ำ
 - ถ้า hooks มีอยู่ → อัปเดตเฉพาะส่วนที่ขาด
 
 ## Expected Outcome
 
-- `dev` branch ถูกสร้างจาก `main` และ push ไป remote
+- integration branch ถูกสร้างจาก `main` และ push ไป remote
 - `.githooks/pre-commit` และ `.githooks/pre-push` block `main`
 - `core.hooksPath` ตั้งเป้น `.githooks`
 - `worktrees/` directory พร้อม
-- GitHub `main` และ `dev` ถูก protect
-- `AGENTS.md` มี `### Ship Flow` ครบถ้วน
+- GitHub `main` และ `<integration-branch>` ถูก protect
+- `AGENTS.md` มี `### Ship` หรือ `### Ship Flow` ครบถ้วน
 - ไม่เกิด git init หรือ global config
 - มีรายงานผลและ next action
-

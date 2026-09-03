@@ -40,7 +40,7 @@ related:
 
 1. เขียน mermaid source ตาม type ทีเลือก
 2. ตั้งชื่อ node id เป็น `kebab-case` หรือ `camelCase` ไม่มีอักขระพิเศษ
-3. ใช้ quote สำหรับ label ทีมี `/`, `<`, `>`, `&`, space, หรือภาษาไทย เช่น `"dev/<n>"`, `"release/deploy"`
+3. ใช้ quote สำหรับ label ทีมี `/`, `<`, `>`, `&`, space, หรือภาษาไทย เช่น `"feature/<n>"`, `"release/deploy"`
 4. หลีกเลี่ยง `()` `[]` `()` ซ้อนภายใน label ถ้าไม่จำเป็น
 5. สำหรับ flowchart ใช้ `direction` เช่น `direction TB`, `direction LR` เพื่อควบคุม layout
 6. ใส่ `subgraph` เมื่อต้องการจัดกลุ่มชัดเจน
