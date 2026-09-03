@@ -4,7 +4,7 @@ description: Commit ทุกไฟล์ที่มีการเปลี่
 argument-hint: "[target]"
 related:
   - git-commit
-  - git-commit-and-push-and-resolve-cicd
+  - git-commit-and-push
   - git-commit-selected-files
   - follow-git-flow
   - resolve-errors
@@ -137,7 +137,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ bullet points สำหรับหลายรายการ
 
 - ใช้ /git-commit ถ้าจำเป็น
-- ใช้ /git-commit-and-push-and-resolve-cicd ถ้าจำเป็น
+- ใช้ /git-commit-and-push ถ้าจำเป็น
 - ใช้ /git-commit-selected-files ถ้าจำเป็น
 - ใช้ /follow-git-flow ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
