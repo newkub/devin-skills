@@ -11,6 +11,7 @@ related:
   - review-restructure
   - review-quality
   - update-references
+  - update-project
   - run-verify
   - dont-over-engineer
 ---
@@ -89,6 +90,7 @@ Refactor code ตาม context โดยเลือก sub-skill ทีเห�
 
 - ใช้ /review-restructure ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
+- ใช้ /update-project ถ้าต้อง sync root docs/config หลัง refactor
 
 ## Expected Outcome
 

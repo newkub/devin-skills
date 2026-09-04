@@ -11,6 +11,7 @@ related:
   - review-quality
   - follow-architecture
   - review-architecture
+  - update-project
   - dont-over-engineer
   - rethink
   - ship
@@ -71,7 +72,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 1. ทำ `/review-quality` เพื่อตรวจ inconsistencies ใน naming, patterns, structure, หรือ style
 2. ถ้าพบ inconsistencies → แก้ตาม findings
-3. อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง
+3. อัปเดต skills/configs ที่เกี่ยวข้องให้สอดคล้อง — ถ้ามี root project docs/config ให้ทำ `/update-project`
 
 ### 6. Verify
 
@@ -151,3 +152,4 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 - naming, patterns, structure มี consistency ผ่าน `/review-quality`
 - ผ่าน lint/typecheck/test/build
 - รายงาน before/after รวม refactor และ consistency
+- project docs, config, rules, และ tooling sync ผ่าน `/update-project` ถ้ามี root project
