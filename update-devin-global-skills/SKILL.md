@@ -13,6 +13,7 @@ related:
   - update-references
   - review-issue
   - ship
+  - deep-research-and-update-skills
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
@@ -47,25 +48,26 @@ related:
 
 > Goal: สร้างหรืออัปเดตแต่ละ skill ตามมาตรฐาน
 
-1. สำหรับ skill ใหม่ → ทำ `/scan-codebase` เพื่อตรวจว่าไม่ซ้ำกับ skills ที่มีอยู่
-2. ถ้าซ้ำ → ทำ `/use-in-another-skills` เพื่อเสนอ extend หรือ rename ก่อน
-3. สร้าง directory `%APPDATA%\devin\skills\<skill-name>\`
-4. ตรวจ ecosystem ของ target workspace จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `requirements.txt` เพื่อเลือก commands, package manager และ dependencies ที่ถูกต้อง
-5. ถ้า skill ต้องสร้าง app แทน script → เลือก `follow-create-*` ตามประเภท:
+1. ถ้าต้องสร้าง skill ใหม่หรืออัปเดต skill ทีมี topic/library เปลี่ยน → ทำ `/deep-research-and-update-skills` เพื่อหาข้อมูลล่าสุดก่อน
+2. สำหรับ skill ใหม่ → ทำ `/scan-codebase` เพื่อตรวจว่าไม่ซ้ำกับ skills ที่มีอยู่
+3. ถ้าซ้ำ → ทำ `/use-in-another-skills` เพื่อเสนอ extend หรือ rename ก่อน
+4. สร้าง directory `%APPDATA%\devin\skills\<skill-name>\`
+5. ตรวจ ecosystem ของ target workspace จาก `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `requirements.txt` เพื่อเลือก commands, package manager และ dependencies ที่ถูกต้อง
+6. ถ้า skill ต้องสร้าง app แทน script → เลือก `follow-create-*` ตามประเภท:
    - CLI → `/follow-create-cli` (ใช้ `/follow-my-tech-stack` สำหรับ table/command/prompt/TUI)
    - Website → `/follow-create-web`
    - MCP server → `/follow-create-mcp` (พยายามใช้ Rust MCP ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript MCP)
-6. ถ้า skill เป็น `follow-create-*` ให้บังคับมีขั้นตอนนี้ก่อนเขียน `SKILL.md`:
+7. ถ้า skill เป็น `follow-create-*` ให้บังคับมีขั้นตอนนี้ก่อนเขียน `SKILL.md`:
    - ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
    - ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
    - เพิ่มทั้งสอง skill เข้า `related`
    - ใส่เป็นขั้นตอนแรกใน `## Execute` ก่อนขั้นตอนอื่น
-7. ถ้าสร้าง MCP server → อัปเดต `%APPDATA%\devin\mcp_config.json` เพื่อ register server ที่สร้าง
-8. ทำตาม [references/create-devin-skills.md](references/create-devin-skills.md) เพื่อเลือก template, เขียน `SKILL.md`, directory structure, references และ `src/` ถ้าจำเป็น
-9. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
-10. ถ้าไฟล์เกิน 250 บรรทัด → แยกออกไปยัง `references/` หรือ `subskills/`
-11. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
-12. วิเคราะห์ file structure ของ skills ที่คล้ายกัน ถ้าพบ pattern ที่ใช้ซ้ำ → สร้าง template ใน `references/` หรือ `templates/` แล้วให้ skill ใหม่อ้างอิง template แทนที่จะเขียนซ้ำ
+8. ถ้าสร้าง MCP server → อัปเดต `%APPDATA%\devin\mcp_config.json` เพื่อ register server ที่สร้าง
+9. ทำตาม [references/create-devin-skills.md](references/create-devin-skills.md) เพื่อเลือก template, เขียน `SKILL.md`, directory structure, references และ `src/` ถ้าจำเป็น
+10. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
+11. ถ้าไฟล์เกิน 250 บรรทัด → แยกออกไปยัง `references/` หรือ `subskills/`
+12. ตรวจ markdown links ใน `SKILL.md` ชี้ไปยังไฟล์ที่มีอยู่จริง
+13. วิเคราะห์ file structure ของ skills ที่คล้ายกัน ถ้าพบ pattern ที่ใช้ซ้ำ → สร้าง template ใน `references/` หรือ `templates/` แล้วให้ skill ใหม่อ้างอิง template แทนที่จะเขียนซ้ำ
 
 ### 3. Align With Catalog And Global Rules
 
