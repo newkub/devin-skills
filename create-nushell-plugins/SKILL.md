@@ -134,7 +134,7 @@ nu-plugin = "0.104.0"
 nu-protocol = "0.104.0"
 ```
 
-### src/main.rs
+### `src/main.rs`
 
 ```rust
 use nu_plugin::{

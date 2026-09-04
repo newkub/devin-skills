@@ -1,6 +1,6 @@
 ---
 name: run-cleanup
-description: Run Cleanup
+description: รัน cleanup tasks เพื่อลบ build artifacts และ cache
 related:
   - cleanup-files-in-computer
   - cleanup-files-in-project

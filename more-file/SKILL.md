@@ -1,6 +1,6 @@
 ---
 name: more-file
-description: Add more files
+description: เพิ่มไฟล์ใน project เมื่องชุดปัจจุบันไม่เพียงพอ
 related:
   - follow-best-practice
   - suggest-next-action

@@ -186,7 +186,7 @@ packages/bun-plugin-example/
 └── README.md
 ```
 
-### package.json scripts
+### `package.json` Scripts
 
 ```json
 {
@@ -198,7 +198,7 @@ packages/bun-plugin-example/
 }
 ```
 
-### src/index.ts
+### `src/index.ts`
 
 ```ts
 import type { BunPlugin } from "bun";

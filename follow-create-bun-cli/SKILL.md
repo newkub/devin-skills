@@ -151,7 +151,7 @@ project/
 └── tsconfig.json
 ```
 
-### package.json scripts
+### `package.json` Scripts
 
 ```json
 "scripts": {
@@ -163,7 +163,7 @@ project/
 }
 ```
 
-### bunup.config.ts
+### `bunup.config.ts`
 
 ```ts
 import { defineConfig } from "bunup";

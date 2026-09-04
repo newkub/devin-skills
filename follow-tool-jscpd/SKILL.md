@@ -129,7 +129,7 @@ related:
 }
 ```
 
-### package.json script
+### `package.json` Script
 
 ```json
 "report:duplication": "bunx jscpd . --reporters console,json --output report"
