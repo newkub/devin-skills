@@ -1,0 +1,14 @@
+{
+  "name": "review-devin-global-skills",
+  "version": "1.0.0",
+  "description": "Review devin global skills repo for frontmatter, sections, style, line count, references, and cross-skill consistency",
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "review": "bun run src/index.ts",
+    "review:repo": "bun run src/index.ts '%APPDATA%\\devin\\skills'"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  }
+}
