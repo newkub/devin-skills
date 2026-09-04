@@ -1,147 +1,113 @@
 ---
 name: update-version-latest
-description: อัปเดตทุก versioned สิ่งใน project/computer ให้เป็น latest deps, runtimes, tools, config
+description: อัปเดต dependencies ให้ latest เวอร์ชัน ตรวจ breaking changes, test และ verify
+argument-hint: "[package-or-scope]"
 related:
-  - update-dependencies-latest
-  - update-all-program-in-computer
-  - update-config
-  - update-project
-  - deep-update-project
-  - follow-tool-mise
-  - follow-my-package-manager
-  - run-check
-  - deep-validate
+  - ship
+  - follow-monorepo
+  - run-verify
+  - run-test
+  - resolve-errors
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-อัปเดตทุก versioned สิ่งใน project หรือ computer ให้เป็น latest stable: dependencies, language runtimes, global tools, และ versioned config (engines, CI images, Docker)
+อัปเดต dependencies ใน project ให้เป็นเวอร์ชันล่าสุดที stable ตรวจ breaking changes แล้ว verify ว่า build/test ยังผ่าน
 
 ## Scope
 
-ใช้เมื่อต้องการ update ทุกอย่างที่มี version ใน project ให้ทันสมัย โดย delegate งานเฉพาะทางให้ subskills แล้ว sync version references ให้สอดคล้องกัน ไม่ rewrite source code logic
+ใช้กับ project ทีใช้ bun, npm, pnpm, yarn โดย update dependencies, devDependencies, catalog versions และตรวจสอบผลกระทบ
 
 ## Execute
 
-### 1. Detect Version Surfaces
+### 1. Detect Package Manager And Current Versions
 
-> Goal: รู้ว่ามี versioned อะไรบ้าง
+> Goal: รู้ว่าใช้ package manager อะไรและ dependencies มีอะไรบ้าง
 
-1. รายการ manifests และ version pins:
-   - `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `requirements.txt`
-   - `mise.toml`, `.tool-versions`, `.nvmrc`, `.python-version`, `rust-toolchain.toml`, `global.json`
-   - `bun.lock`, `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `Cargo.lock`, `poetry.lock`
-   - `Dockerfile`, `.github/workflows/*.yml`, `.devcontainer/devcontainer.json`
-2. ทำ `/scan-codebase` เพื่อหา version references อื่นๆ
-3. บันทึก category: dependencies, runtimes, tools, CI/container, config
+1. ตรวจ `package.json`, `packageManager` field
+2. ตรวจ `bun.lockb`, `pnpm-lock.yaml`, `package-lock.json`, `yarn.lock`
+3. บันทึก dependencies, devDependencies, peerDependencies
 
-### 2. Prepare And Should Update
+### 2. Check Outdated Packages
 
-> Goal: พร้อมและปลอดภัยก่อน update
+> Goal: รู้ว่ามี dependencies ใด outdated
 
-1. ทำ `/check-should-update` เพื่อตรวจ git changes และตัดสินใจว่าควร update
-2. ถ้า scope ไม่ชัด -> ทำ `/ask-me`
+1. รัน `bun outdated` หรือ package manager equivalent
+2. บันทึก major, minor, patch updates
+3. ระบุ packages ทีมี security advisories
 
-### 3. Update Runtimes
+### 3. Update Dependencies
 
-> Goal: อัปเดต language runtimes และ version pins ให้เป็น latest stable
+> Goal: อัปเดต dependencies
 
-1. ระบุ runtime pins จาก `package.json#engines`, `mise.toml`, `.nvmrc`, `.python-version`, `rust-toolchain.toml`, `go.mod`, `global.json`, `Dockerfile`
-2. เลือก version manager: `mise` ถ้ามี มิฉะนั้น `nvm/fnm`, `pyenv`, `rustup`, `gvm`, `sdkman`
-3. อัปเดตแต่ละ runtime:
-   - Bun: `bun upgrade` หรือ `mise use bun@latest`
-   - Node: `mise use node@latest`, `nvm install node`/`nvm use node`, `fnm install --lts`/`fnm use --lts`
-   - Python: `mise use python@latest`, `pyenv install <latest>`
-   - Rust: `rustup update stable`
-   - Go: `mise use go@latest` หรือ `gvm install go<version>` แล้ว `go mod edit -go=<version>`
-   - Java: `mise use java@latest` หรือ `sdk install java <version>`
-   - .NET: ติดตั้ง latest SDK ผ่าน installer/package manager แล้วอัปเดต `global.json`
-4. อัปเดต version pins: `mise.toml`, `.nvmrc`, `.python-version`, `package.json#engines`, `rust-toolchain.toml`, `go.mod`, `global.json`, `Dockerfile`, `.github/workflows`
-5. รัน `--version` ของทุก runtime ยืนยัน
-6. บันทึก runtimes ที่อัปเดตและ version ใหม่
+1. อัปเดต minor/patch ก่อน (`bun update`)
+2. ถ้ามี catalog → อัปเดต `catalog:` versions ใน root
+3. อัปเดต major ทีละ package พร้อมตรวจ changelog
+4. บันทึก changes
 
-### 4. Update Global Tools
+### 4. Check Breaking Changes
 
-> Goal: global tools/CLIs เป็น latest
+> Goal: หาความเสี่ยงจากการ update
 
-1. ทำ `/update-all-program-in-computer` เพื่ออัปเดต programs ในเครื่อง
-2. ถ้าต้องการเฉพาะ project tools ผ่าน mise -> ทำ `/follow-tool-mise` แล้ว `mise up`
-3. บันทึก tools ที่อัปเดต
+1. อ่าน changelogs ของ major updates
+2. ตรวจ API ที deprecated หรือ removed
+3. ตรวจ peer dependencies conflicts
+4. ถ้ามี breaking change สูง → `/ask-me`
 
-### 5. Update Dependencies
+### 5. Verify Build And Tests
 
-> Goal: project dependencies เป็น latest
+> Goal: ยืนยันว่า update ไม่พัง
 
-1. ทำ `/update-dependencies-latest`
-2. บันทึก dependencies ที่อัปเดต (major, minor, patch)
+1. รัน `bun install` เพื่อ refresh lockfile
+2. รัน `moon run :typecheck` หรือ `turbo run typecheck`
+3. รัน `moon run :build` หรือ `turbo run build`
+4. รัน `moon run :test` หรือ `turbo run test`
+5. รัน `moon run :lint` หรือ `turbo run lint`
+6. ถ้า fail → `/resolve-errors`
 
-### 6. Sync Versioned Config
+### 6. Report
 
-> Goal: config ที่เกี่ยวกับ version สอดคล้องกัน
+> Goal: สรุปผล update
 
-1. ทำ `/update-config` เพื่อ sync shared config และ dependencies catalog
-2. อัปเดต `package.json#engines` ให้ตรงกับ runtime ใหม่
-3. อัปเดต `mise.toml` ให้ทุก tool เป็น version ที่ใช้จริง
-4. อัปเดต `Dockerfile` `FROM` tag, `.github/workflows` version fields, `.devcontainer` image
-5. ถ้ามี Renovate/Dependabot config -> ตรวจ schedule ให้เหมาะสม
-6. บันทึก config ที่ sync
-7. ทำ `/update-project` เพื่อ sync project rules, docs, และ metadata กับ version ใหม่
-
-### 7. Verify
-
-> Goal: ตรวจสอบว่า update ทั้งหมดไม่พัง
-
-1. รัน `bun install` หรือ package manager install เพื่อ refresh lockfile
-2. รัน `bun run typecheck`, `bun run lint`, `bun run test` หรือ ecosystem equivalent
-3. ทำ `/run-check`
-4. ทำ `/deep-validate`
-5. ถ้า fail -> ทำ `/resolve-errors` แล้ว recheck (max 3 รอบ)
-
-### 8. Report And Suggest
-
-> Goal: สรุปผล
-
-1. ใช้ `/report-table` สรุป: Category, Component, Old Version, New Version, Status
-2. ระบุ breaking changes, skipped items, และ failed checks
-3. ทำ `/suggest-next-action`
+1. ใช้ `/report-table` แสดง package, old version, new version, status
+2. ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Delegate, Don't Reimplement
+### 1. Stable Only
 
-- เรียก `/update-dependencies-latest`, `/update-all-program-in-computer`, `/update-config` สำหรับงานเฉพาะทาง
-- `update-version-latest` เป็น orchestrator ลงรายละเอียด runtimes เอง ส่วน dependencies/tools ให้ delegate
+- ไม่อัปเดต major เวอร์ชันเดียวกับ release ไม่กี่วัน
+- ตรวจ `minimumReleaseAge` ถ้ามี security policy
+- ใช้ `latest` เฉพาะเมื่อ stable
 
-### 2. Order Matters
+### 2. Incremental Updates
 
-- Runtimes ก่อน dependencies (เพราะ deps อาจต้องการ runtime ใหม่)
-- Global tools ก่อนหรือคู่กับ runtimes ตาม package manager
-- Config sync หลัง update เพื่อให้ version references ตรง
+- อัปเดตทีละ batch
+- แยก major/minor/patch
+- test หลังแต่ละ batch
 
-### 3. Safety
+### 3. Lockfile Consistency
 
-- ไม่อัปเดต major runtime/dependencies โดยไม่ถาม user
-- ไม่ force install หรือ downgrade
+- อัปเดต lockfile ให้สอดคล้อง
+- ไม่ commit ถ้า lockfile ไม่ match
+- ตรวจ workspace dependencies ใน monorepo
 
-### 4. Scope Control
+### 4. Security
 
-- ถ้า user ระบุเฉพาะ project -> ไม่ update global tools โดย default
-- ถ้า user ระบุ `--global` หรือ computer -> รวม `/update-all-program-in-computer`
-- ถ้าไม่ชัด -> `/ask-me`
+- อัปเดตก่อนถ้ามี security advisory
+- ใช้ `bun audit` หรือ `npm audit`
+- ไม่ downgrade เพื่อแก้ปัญหา
 
-### 5. Cross-Reference Sync
+### 5. No Silent Failures
 
-- ทุก version pin ต้องตรงกันระหว่าง `package.json#engines`, `mise.toml`, `.nvmrc`, CI, Docker
-- ใช้ `mise.toml` เป็น single source of truth ถ้ามี
-- ทำ `/update-references` ถ้ามี rename หรือ move
-
-- ใช้ /update-project ถ้าจำเป็น
-- ใช้ /deep-update-project ถ้าจำเป็น
-- ใช้ /follow-my-package-manager ถ้าจำเป็น
+- ต้อง run build/test หลัง update
+- ไม่อัปเดตแล้วไม่ verify
 
 ## Expected Outcome
 
-- dependencies, runtimes, global tools, versioned config ทั้งหมดเป็น latest stable
-- version references สอดคล้องกันทั่ว project
-- ผ่าน `/run-check` และ `/deep-validate`
-- รายงานครบทุก category พร้อม next action
+- Dependencies อัปเดตเป็น latest stable
+- Lockfile ถูกอัปเดต
+- Build, typecheck, test, lint ผ่าน
+- Report table สรุป versions และผลตรวจสอบ

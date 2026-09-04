@@ -1,161 +1,120 @@
 ---
 name: update-create-analyze-cli
-description: ตรวจสอบและสร้าง/อัปเดต tools/analyze CLI สำหรับ deep codebase analysis
+description: สร้างหรืออัปเดต tools/analyze analyzers ให้ครอบคลุม features ปัจจุบัน 60+ categories 5 domains
+argument-hint: "[category-or-domain]"
 related:
-  - deep-analyze-by-use-scripts
-  - scan-codebase
-  - resolve-errors
-  - review
+  - update-review-cli
   - run-review
-  - review-codebase-everything
-  - follow-clean-architecture
+  - improve-review-cli
+  - report-table
+  - resolve-errors
+  - suggest-next-action
 ---
 
 ## Goal
 
-Review แล้วสร้างหรืออัปเดต `tools/analyze` CLI ให้เป็น deep-analysis engine อิสระ แล้วให้ `tools/review-codebase` นำมาใช้ผ่าน Bun workspace เมื่อใช้ `/deep-analyze-by-use-scripts` ให้แก้ไข analyzer logic ใน `tools/analyze` ไม่ใช้ใน `tools/review-codebase`
+สร้างหรืออัปเดต `tools/analyze` analyzers ให้ครอบคลุม codebase features ปัจจุบัน 60+ categories 5 domains ลด false positives และ analyzer errors
 
 ## Scope
 
-- ใช้กับ monorepo ที่มีหรือกำลังสร้าง `tools/review-codebase`
-- แยก `analyze` ออกจาก `review` ให้เป็น `tools-analyze`
-- ไม่แก้ไข source ของ `apps/` หรือ `packages/`
-- ใช้ Bun, TypeScript strict, Clean Architecture
+ใช้กับ `tools/analyze` ใน monorepo โดย detect features, เพิ่ม/แก้ analyzer categories, tune rules และ validate ด้วย review CLI
 
 ## Execute
 
-### 1. Review Existing Analyze CLI
+### 1. Detect Codebase Features
 
-> Goal: ตรวจสอบ `tools/analyze` ก่อน update
+> Goal: รู้ features ทีต้องวิเคราะห์
 
-1. ทำ `/scan-codebase` ใน `tools/analyze/`
-2. ตรวจว่า `tools/analyze/` มีอยู่ ถ้าไม่ → flag เป็น critical
-3. อ่าน `package.json` ของ `tools/analyze`
-4. ตรวจ root `package.json` workspaces รวม `tools-analyze`
-5. ตรวจ `package.json` มี `name: "tools-analyze"`, `type: "module"`
-6. ตรวจ scripts: `analyze`, `analyze:json`, `lint`, `typecheck`
-7. ตรวจ `exports` field สำหรับ workspace API
-8. ตรวจ directories: `src/adapters/`, `src/domain/`, `src/application/`, `src/presentation/`
-9. ตรวจ `src/domain/analyzers/` มี `user-facing.ts`, `security.ts`, `backend-data.ts`, `infrastructure.ts`, `code-arch.ts`
-10. ตรวจว่าทุก analyzer return `CategoryResult` พร้อม `status`, `score`, `findings`
-11. ตรวจ `tools/review-codebase` import จาก `tools-analyze` ผ่าน workspace ไม่ duplicate logic
-12. บันทึก findings พร้อม evidence คำนวณ score และ grade
-13. ถ้า score < 70 → ดำเนินการ Step 2 ต่อไป ถ้า score >= 70 → ไป Step 8
+1. อ่าน root `package.json`, `moon.yml`, `turbo.json`
+2. สร้าง list workspaces: `apps`, `packages`, `integrations`, `tools`
+3. ระบุ tech stack: framework, database, API, auth, payments, realtime, search, integrations, notifications, mobile, AI, SEO
+4. สร้าง keyword/file patterns สำหรับแต่ละ feature
 
-### 2. Check Existing Analyze
+### 2. Plan Analyzers
 
-> Goal: รู้จุดเริ่มต้นก่อนสร้าง
+> Goal: รู้ว่าต้องเพิ่ม/แก้ analyzers อะไร
 
-1. ใช้ `find_file_by_name` หา `tools/analyze/` หรือ analyze scripts ใน `tools/review-codebase/`
-2. ใช้ `grep` ค้นหา `analyze` ใน `package.json` workspaces
-3. ถ้าพบ analyzer code ใน `tools/review-codebase` ให้วางแผนย้ายมา `tools/analyze`
-4. ถ้าไม่พบ ให้เริ่มสร้างใหม่
+1. อ่าน `tools/analyze/src/domain/analyzers/index.ts` ดูกลุ่ม analyzers
+2. นับจำนวน categories ปัจจุบัน
+3. ระบุ categories ทีขาดหรือ score 0 แบบ false negative
+4. ระบุ categories ที mapping ผิด domain
+5. วางแผนเพิ่ม categories จนถึง 60+
 
-### 3. Plan Analyzer Categories
+### 3. Implement Analyzers
 
-> Goal: รู้ว่าจะ expose analyzers อะไรบ้าง
+> Goal: เพิ่ม/แก้ analyzer code
 
-1. ทำตาม `run-review` หรือ `review-codebase-everything` เพื่อดู category catalog
-2. จัดกลุ่มเป็น 5 domains: `user-facing`, `security-compliance`, `backend-data`, `infrastructure`, `code-architecture`
-3. สร้างรายชื่อ analyzer files ที่จะ implement
+1. แก้ regex ให้รองรับ Windows และ Unix paths ด้วย `[\/]`
+2. normalize paths ใน context loader ถ้าจำเป็น
+3. เพิ่ม analyzer functions ใน group files เช่น `features.ts`, `architecture.ts`, `security.ts`
+4. เพิ่ม `Finding` พร้อม `evidence`: file path, line, message, severity
+5. กำหนด `reviewWorkflow` ให้ถูกต้อง
+6. ใช้ `countMatches`, `matchStats`, `countWordOccurrences` จาก `helpers.ts`
 
-### 4. Create Workspace Package
+### 4. Tune Rules
 
-> Goal: มี workspace `tools-analyze` พร้อมใช้
+> Goal: ลด false positives และ analyzer errors
 
-1. สร้าง directory `tools/analyze/`
-2. เขียน `tools/analyze/package.json` กำหนด `name: "tools-analyze"`, `type: "module"`, scripts `analyze`, `analyze:json`, `lint`, `typecheck`
-3. เขียน `tools/analyze/tsconfig.json`, `biome.jsonc`, `moon.yml`, `README.md`
-4. เพิ่ม `tools-analyze` เข้า `package.json` workspaces ถ้ายังไม่มี
+1. ตรวจ regex patterns ว่า match ถูกต้องบน Windows
+2. ใช้ `try/catch` ใน analyzer functions ไม่ให้ crash
+3. ตรวจ exceptions ถูกจับใน `runAllAnalyzers`
+4. ลด false positives ด้วย stricter patterns
+5. ตรวจ `analyzerErrors` ใน report
 
-### 5. Setup Clean Architecture Structure
+### 5. Validate
 
-> Goal: มีโครงสร้าง Clean Architecture สำหรับ analyzer
+> Goal: ยื่นยันว่า analyzers ทำงาน
 
-1. `src/adapters/file-utils.ts` - walk, readText
-2. `src/adapters/git-grep.ts` - gitGrep, gitGrepCount
-3. `src/domain/models.ts` - CategoryFinding, CategoryResult, AnalyzeReport
-4. `src/domain/analyzers/{user-facing,security,backend-data,infrastructure,code-arch}.ts`
-5. `src/application/analyze.ts` - รวม analyzers
-6. `src/presentation/cli.ts` - entry point
-
-### 6. Implement Analyzers With Use-Scripts
-
-> Goal: มี analyzers ที่ detect ปัญหาได้จริง
-
-1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อน
-2. ใส่ specific checks ตาม domain ที่กำหนดใน Step 3
-3. ให้แต่ละ analyzer return `CategoryResult` กับ `status`, `score`, `findings`
-4. กำหนด `reviewWorkflow` ให้ตรงกับ `review-codebase-everything` references
-
-### 7. Expose Workspace API And Update tools/review-codebase
-
-> Goal: `tools/review-codebase` ใช้ `tools-analyze` ผ่าน workspace
-
-1. เพิ่ม `exports` ใน `tools/analyze/package.json`
-2. สร้าง `src/index.ts` export `runAllAnalyzers`, `createAnalyzePorts`
-3. ใช้ `process.env.ANALYZE_BASE` เพื่อให้ analyzer รู้ repo root
-4. แก้ `tools/review-codebase` ให้ import จาก `tools-analyze`
-5. เปลี่ยน dynamic imports จาก local `src/health` เป็น `tools-analyze`
-6. เพิ่ม `tools-analyze` เป็น dependency ของ `tools/review-codebase`
-7. ลบ analyzer code ที่ duplicate ออกจาก `tools/review-codebase` ถ้ามี
-
-### 8. Update Package Scripts
-
-> Goal: เรียกใช้งานได้สะดวก
-
-1. ใน `tools/analyze/package.json` เพิ่ม `analyze`, `analyze:json`
-2. ใน root `package.json` เพิ่ม `analyze: bun --filter tools-analyze analyze`
-3. อัปเดต `bun.lock` ด้วย `bun install`
-
-### 9. Validate
-
-> Goal: ไม่มี regression
-
-1. รัน `bun --filter tools-analyze typecheck`
-2. รัน `bun --filter tools-analyze lint`
-3. รัน `bun --filter tools-analyze analyze`
+1. รัน `bun --filter tools-analyze lint`
+2. รัน `bun --filter tools-analyze typecheck`
+3. รัน `bun --filter tools-analyze test`
 4. รัน `bun --filter tools-review-codebase review-codebase`
-5. ถ้า fail ให้ทำ `/resolve-errors` แล้ว re-validate (max 3)
+5. ถ้า fail → `/resolve-errors` แล้วแก้ (max 3)
 
-### 10. Report
+### 6. Report
 
-> Goal: user ทราบสถานะ
+> Goal: สรุปผล
 
-1. แสดงไฟล์ที่สร้าง/แก้ไข
-2. รายงาน categories ที่ implement
-3. ระบุคำสั่งที่ใช้งานได้
+1. ทำ `/report-table` แสดง categories ก่อน/หลัง, score, falsePositiveRate
+2. ทำ `/suggest-next-action`
 
 ## Rules
 
-### 1. Separation Of Concerns
+### 1. Path Compatibility
 
-- `tools/analyze` ทำหน้าที่ analyze เท่านั้น
-- `tools/review-codebase` ทำหน้าที่ orchestrate + report
-- ไม่เขียน analyzer logic ซ้ำใน `tools/review-codebase`
+- ใช้ regex `[\/]` แทน `\` หรือ `/` ตรงๆ
+- normalize paths ก่อน match ถ้าได้
+- ทดสอบบน Windows และ Unix paths
 
-### 2. Side Effects
+### 2. Evidence-Based
 
-- ไม่แก้ไข `apps/`, `packages/`, หรือ database source
-- เปลี่ยนแปลงที่เกิดขึ้นใน `tools/analyze`, `tools/review-codebase`, `package.json`, `bun.lock`
+- ทุก finding ต้องมี file path
+- ใช้ metrics จริงจาก codebase
+- ไม่เดา
 
-### 3. Deterministic
+### 3. Category Count
 
-- analyzers ต้อง reproduce ได้
-- ใช้ `git grep` และ `walk` ที่ stable
-- ระบุไฟล์/บรรทัดใน findings เสมอ
+- target 60+ categories
+- categories ต้องกระจายทั่ว 5 domains
+- ไม่รวม category ซ้ำ
 
-### 4. Review And Score
+### 4. No Crash
 
-- ทำ review ก่อนแก้ไข บันทึก findings พร้อม evidence
-- คำนวณ review score ตาม severity: Critical=0, High=25, Medium=50, Low=75, Info=100
-- ถ้า score < 70 → ต้อง update ก่อนดำเนินการ
+- จับ exceptions ใน `runAllAnalyzers`
+- ใช้ safe access
+- ไม่ throw จาก analyzer
 
-- ใช้ /follow-clean-architecture ถ้าจำเป็น
+### 5. Minimal
+
+- แก้เฉพาะ categories ที metrics ระบุ
+- ไม่ rewrite analyzers ทั้งหมด
+- reuse helpers
 
 ## Expected Outcome
 
-- `tools/analyze` เป็น workspace `tools-analyze` ที่รัน standalone ได้
-- `tools/review-codebase` import `tools-analyze` ผ่าน workspace
-- `/deep-analyze-by-use-scripts` แก้ไข analyzer logic ใน `tools/analyze`
-- `bun --filter tools-review-codebase review-codebase` ครอบคลุม analyze categories
+- `tools/analyze` มี 60+ categories
+- categories ครอบคลุม features ปัจจุบัน
+- falsePositiveRate <= 20%
+- analyzerErrors = 0
+- review score >= 70
+- build, typecheck, tests ผ่าน

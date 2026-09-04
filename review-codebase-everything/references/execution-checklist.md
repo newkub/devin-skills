@@ -8,7 +8,7 @@
 
 1. ทำ `/scan-codebase` ใน `tools/review-codebase/` ถ้ามีอยู่
 2. ทำ `/update-project-rules` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
-3. ทำ `/update-review-cli-and-fix` เพื่ออัปเดต `tools/review-codebase` ให้ครอบคลุม features ปัจจุบัน
+3. ทำ `/update-review-cli` เพื่ออัปเดต `tools/review-codebase` ให้ครอบคลุม features ปัจจุบัน
 4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
 5. ถ้าผลเป็น `skip` → ไป Step 9 (Run Review CLI)
 6. ถ้าผลเป็น `update` หรือ `create` → ไป Step 2

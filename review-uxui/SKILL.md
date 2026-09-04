@@ -11,7 +11,7 @@ related:
   - report
   - report-table
   - suggest-next-action
-  - optimize-everything
+  - optimize-codebase-everything
   - follow-design-system
   - capture-component
 ---
@@ -150,7 +150,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
 
-- ใช้ /optimize-everything ถ้าจำเป็น
+- ใช้ /optimize-codebase-everything ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
 
 ## Expected Outcome

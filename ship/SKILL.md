@@ -28,6 +28,14 @@ related:
   - report
   - report-progress
   - suggest-next-action
+  - optimize-codebase-everything
+  - improve-codebase-everything
+  - improve-review-cli
+  - improve-test
+  - update-version-latest
+  - follow-monorepo
+  - run-verify
+  - follow-tasks
 ---
 
 ## Goal
@@ -56,18 +64,25 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 > Goal: ส่งมอบ code ตาม project conventions
 
-1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
-2. ทำ `/git-commit-and-push-features-branch` ถ้ามี changes ทีผ่าน validation
-3. ทำ `/create-github-pr` ไปยัง production branch ตาม project conventions
-4. ทำ `/deep-review-pr` เพื่อ review PR พร้อม comment แต่ละ finding ลงใน PR
-5. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปทำ `/git-commit-and-push-features-branch` ซ้ำ
-6. ถาม user ก่อน merge
-7. ถ้า user ตกลง → ทำ `/merge-github-pr`
-8. ทำ `/run-deploy` เพื่อ deploy ไป production (ถ้า project ยังไม่มี Worker → ทำ `/create-cloudflare-worker-project` ก่อน)
-9. ทำ `/resolve-cicd` บน production branch หลัง deploy
-10. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
-11. `git switch main` หรือ production branch ตาม project conventions
-12. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
+1. ทำ `/improve-review-cli` เพื่อ review codebase ด้วย CLI ก่อนส่งมอบ
+2. ทำ `/improve-codebase-everything` เพื่อ improve frontend, API, database, security, SEO
+3. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
+4. ทำ `/improve-test` ถ้า tests หรือ coverage ไม่ผ่าน threshold
+5. ทำ `/update-version-latest` เพื่ออัปเดต dependencies ก่อนส่งมอบ
+6. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
+7. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
+8. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
+9. ทำ `/git-commit-and-push-features-branch` ถ้ามี changes ทีผ่าน validation
+10. ทำ `/create-github-pr` ไปยัง production branch ตาม project conventions
+11. ทำ `/deep-review-pr` เพื่อ review PR พร้อม comment แต่ละ finding ลงใน PR
+12. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปทำ `/git-commit-and-push-features-branch` ซ้ำ
+13. ถาม user ก่อน merge
+14. ถ้า user ตกลง → ทำ `/merge-github-pr`
+15. ทำ `/run-deploy` เพื่อ deploy ไป production (ถ้า project ยังไม่มี Worker → ทำ `/create-cloudflare-worker-project` ก่อน)
+16. ทำ `/resolve-cicd` บน production branch หลัง deploy
+17. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
+18. `git switch main` หรือ production branch ตาม project conventions
+19. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
 
 ### 3. Report
 

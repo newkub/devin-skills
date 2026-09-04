@@ -12,7 +12,7 @@ related:
   - review-rules
   - review-devin-global-skills
   - git-commit-at-devin-skills-global
-  - update-review-cli-and-fix
+  - update-review-cli
   - ship
   - report
 ---
@@ -68,7 +68,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `github: /follow-github`
 - `skill-format: /update-devin-global-skills`
 - `global-rules: /follow-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
-- `review-cli: /update-review-cli-and-fix` (only if `tools/review-codebase` exists)
+- `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web`
 
 ### 3. Platform
@@ -96,7 +96,7 @@ Core:
 - `update-devin-harness: /update-devin-harness`
 - `follow-global-rules: /follow-global-rules`
 - `git-commit-at-devin-skills-global: /git-commit-at-devin-skills-global`
-- `update-review-cli-and-fix: /update-review-cli-and-fix`
+- `update-review-cli: /update-review-cli`
 - `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`

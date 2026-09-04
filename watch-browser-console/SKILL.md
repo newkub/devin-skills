@@ -3,7 +3,7 @@ name: watch-browser-console
 description: Watch browser console อย่างต่อเนื่อง จัดการ errors อัตโนมัติด้วย agent-browser
 argument-hint: "[url]"
 related:
-  - watch-browser-and-test-all-routes
+  - run-test-browser
   - watch-browser-and-fix
   - resolve-errors
 ---
@@ -13,7 +13,7 @@ related:
 Watch browser console อย่างต่อเนื่องเพื่อตรวจจับและแก้ไข errors อัตโนมัติ โดยใช้ `agent-browser` CLI
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `watch-browser-and-test-all-routes`
+- สำหรับ skills ที่เกี่ยวข้อง: `run-test-browser`
 
 ใช้สำหรับ monitor console messages และ page errors อย่างต่อเนื่อง พร้อมแก้ไข errors ที่พบโดยอัตโนมัติ
 

@@ -9,7 +9,7 @@ allowed-tools:
   - skill
 related:
   - deep-review
-  - update-review-cli-and-fix
+  - update-review-cli
   - run-review
   - update-create-analyze-cli
 triggers:
@@ -19,7 +19,7 @@ triggers:
 
 ## Goal
 
-เนื้อหาและ 10 ขั้นตอนของ `tools/review-codebase` CLI ถูก merge เข้า `/deep-review` (dispatch ไป `/update-review-cli-and-fix`) และ `deep-review/references/cli-review-steps.md` แล้ว
+เนื้อหาและ 10 ขั้นตอนของ `tools/review-codebase` CLI ถูก merge เข้า `/deep-review` (dispatch ไป `/update-review-cli`) และ `deep-review/references/cli-review-steps.md` แล้ว
 
 ## Scope
 
@@ -36,7 +36,7 @@ triggers:
 ## Rules
 
 - ไม่ใช้ skill นี้โดยตรงสำหรับ workflow ใหม่ — ใช้ `/deep-review` แทน
-- ถ้า skill อื่นอ้างอิง `/review-codebase-everything` Step X ให้ map ไปยัง `/deep-review` ซึ่งจะ dispatch ไป `/update-review-cli-and-fix` และ `deep-review/references/cli-review-steps.md`
+- ถ้า skill อื่นอ้างอิง `/review-codebase-everything` Step X ให้ map ไปยัง `/deep-review` ซึ่งจะ dispatch ไป `/update-review-cli` และ `deep-review/references/cli-review-steps.md`
 - `tools/review-codebase` ยังคงสร้างที่ project root เท่านั้น
 
 ## Expected Outcome

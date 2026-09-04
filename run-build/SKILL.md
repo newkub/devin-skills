@@ -2,6 +2,7 @@
 name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
 related:
+  - optimize-bundling
   - review-delivery
   - run-typecheck
   - resolve-errors
@@ -24,8 +25,9 @@ related:
 
 > Goal: ปรับปรุง build configuration และลดขนาด output ก่อน build
 
-1. ทำ `/review-delivery` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
-2. ถ้า `/review-delivery` ล้มเหลว → stop และ report
+1. ทำ `/optimize-bundling` เพื่อวิเคราะห์ bundle size, build config, manual chunks, และ externalization
+2. ทำ `/review-delivery` เพื่อปรับปรุง build configuration, dependencies, imports และ assets
+3. ถ้า `/optimize-bundling` หรือ `/review-delivery` ล้มเหลว → stop และ report
 
 ### 2. Typecheck
 
@@ -73,7 +75,7 @@ related:
 
 ### 1. Build Order
 
-- Optimize: ทำ `/review-delivery` ก่อนเริ่ม
+- Optimize: ทำ `/optimize-bundling` ก่อน แล้วทำ `/review-delivery`
 - Typecheck: ทำ `/run-typecheck` ก่อน build
 - Install: ติดตั้ง dependencies
 - Clean: ทำ `/run-clean` เพื่อลบ artifacts เก่า

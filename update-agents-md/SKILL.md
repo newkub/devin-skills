@@ -17,7 +17,7 @@ related:
   - resolve-cicd
   - create-github-pr
   - merge-github-pr
-  - update-review-cli-and-fix
+  - update-review-cli
   - run-release
   - report
 ---
@@ -42,7 +42,7 @@ related:
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. ทำ `/ask-project-requirement` ถ้า context หรือ requirements ไม่ชัด
 7. ระบุ platform และ target user จาก context และ dependencies
-8. ถ้า project มี `tools/review-codebase` ทำ `/update-review-cli-and-fix`
+8. ถ้า project มี `tools/review-codebase` ทำ `/update-review-cli`
 
 ### 2. Analyze Architecture
 

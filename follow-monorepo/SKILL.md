@@ -1,164 +1,125 @@
 ---
 name: follow-monorepo
-description: สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications
+description: ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
+argument-hint: "[workspace-or-command]"
 related:
-  - follow-math-graph-theory
-  - follow-architecture
-  - follow-tool-turborepo
-  - follow-tool-moonrepo
+  - ship
+  - run-build
   - run-verify
-  - follow-package-manifest
-  - update-readme-md
+  - follow-tool-vite
+  - follow-tool-bun
+  - optimize-bundling
+  - optimize-codebase-everything
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-สร้าง Monorepo Architecture สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications
+ตรวจสอบและดำเนินการตาม monorepo conventions, workspace scripts, dependencies, และ build pipelines
 
 ## Scope
 
-ใช้สำหรับโปรเจกต์ขนาดใหญ่ที่มีหลาย packages หรือ applications ที่ต้องการ shared code และ coordinated development
+ใช้กับ monorepo ทีใช้ `moon`, `turbo`, `pnpm workspace`, `bun workspace`, หรือ `nx` โดย detect tool, verify workspace conventions, run commands, และจัดการ dependencies
 
 ## Execute
 
-### 1. Analyze Requirements
+### 1. Detect Monorepo Tool
 
-> Goal: วิเคราะห์ความต้องการและเลือก tool
+> Goal: รู้ว่าใช้ monorepo tool อะไร
 
-วิเคราะห์ความต้องการ monorepo และเลือก tool ที่เหมาะสม
+1. ตรวจ root `package.json` สำหรับ `workspaces`, `packageManager`
+2. ตรวจ `moon.yml`, `turbo.json`, `nx.json`, `pnpm-workspace.yaml`
+3. ตรวจ `moon --version`, `turbo --version`, `pnpm --version`, `bun --version`
+4. บันทึก tool ทีใช้
 
-1. ทำ `/follow-architecture` เพื่อเลือก architecture pattern ที่เหมาะสม
-2. ระบุจำนวน apps และ packages
-3. ระบุ dependencies ระหว่าง packages
-4. เลือก build system ตาม ecosystem และ requirements
-5. ตรวจสอบ criteria สำหรับ monorepo adoption
+### 2. List Workspaces
 
-### 2. Setup Monorepo
+> Goal: รู้ว่ามี workspaces อะไรบ้าง
 
-> Goal: ตั้งค่า monorepo ด้วย tool ที่เลือก
+1. ถ้า `moon` → รัน `moon query projects`
+2. ถ้า `turbo` → อ่าน `package.json` workspaces
+3. ถ้า `pnpm` → รัน `pnpm -r list`
+4. ถ้า `bun` → อ่าน `package.json` workspaces
+5. สร้าง list: name, path, type (app/package/integration/tool)
 
-ตั้งค่า monorepo ด้วย tool ที่เลือก
+### 3. Verify Workspace Conventions
 
-1. ทำ `/follow-tool-turborepo` หรือ `/follow-tool-moonrepo` สำหรับ tool setup
-2. แยก packages ตาม concerns
-3. ตั้งค่า workspace protocol
-4. ตั้งค่า dependency catalog ใน root (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) สำหรับ shared versions
-5. รัน `/run-verify` เพื่อตรวจสอบ
+> Goal: ตรวจสอบว่าแต่ละ workspace ตาม conventions
 
-### 3. Configure Build System
+1. ตรวจ `package.json` มี `name`, `type: module`, `scripts`
+2. ตรวจ `moon.yml` ถ้าใช้ moon
+3. ตรวจ `tsconfig.json`, `biome.jsonc` มีหรือไม่
+4. ตรวจ `README.md` หรือ `AGENTS.md` ใน workspace
+5. บันทึก workspaces ทีขาด conventions
 
-> Goal: ตั้งค่า build system สำหรับ monorepo
+### 4. Run Workspace Command
 
-ตั้งค่า build system สำหรับ monorepo
+> Goal: รัน command ทั่ว workspaces
 
-1. ตั้งค่า build config ตาม tool ที่เลือก
-2. ระบุ task dependencies
-3. ตั้งค่า outputs สำหรับ cache invalidation
+1. ใช้ tool command ทีเหมาะสม:
+   - moon: `moon run :<task> --concurrency 1`
+   - turbo: `turbo run <task>`
+   - pnpm: `pnpm -r <command>`
+   - bun: `bun run --filter <workspace> <script>`
+2. บันทึกผลลัพธ์และ errors
+3. ถ้า fail → ทำ `/resolve-errors`
 
-### 4. Setup Shared Configuration
+### 5. Check Dependencies
 
-> Goal: ตั้งค่า shared configs สำหรับทั้ง monorepo
+> Goal: ตรวจ dependencies ระหว่าง workspaces
 
-ตั้งค่า shared configs สำหรับทั้ง monorepo
+1. ตรวจ `package.json` dependencies ในแต่ละ workspace
+2. ตรวจ external dependencies ว่า duplicate หรือไม่
+3. ตรวจ internal workspace dependencies (`workspace:*`)
+4. ถ้ามี duplicate หรือ version ต่าง → ทำ `/update-version-latest`
 
-1. Root-level TypeScript config
-2. Shared linting, formatting, git hooks configs
-3. Use extends ใน workspace configs
-4. ทำ `/follow-package-manifest` เพื่อตั้งค่า scripts และ `/update-readme-md` สำหรับ documentation ทุก workspace
+### 6. Verify Build Pipeline
+
+> Goal: ยืนยัน build pipeline ทำงาน
+
+1. รัน `bun install` หรือ package manager install
+2. รัน `moon run :build` หรือ `turbo run build`
+3. รัน `moon run :typecheck` หรือ `turbo run typecheck`
+4. รัน `moon run :lint` หรือ `turbo run lint`
+5. ถ้า fail → ทำ `/resolve-errors`
 
 ## Rules
 
-### 1. Monorepo Organization
+### 1. Tool Agnostic
 
-ใช้สำหรับ large-scale projects ที่มีหลาย packages หรือ applications
+- รองรับ moon, turbo, pnpm, bun, nx
+- ใช้ command ที tool แนะนำ
+- ไม่สมมติว่าทุก project ใช้ tool เดียวกัน
 
-- `apps/` สำหรับ deployable applications
-- `packages/` สำหรับ shared libraries (TypeScript/JavaScript)
-- `crates/` สำหรับ Rust packages (optional)
-- แยก packages/crates ตาม concerns
-- ระบุ dependencies ระหว่าง packages/crates อย่างชัดเจน
-- ใช้ workspace protocol (`workspace:*`) สำหรับ internal deps
+### 2. Workspace Conventions
 
-### 2. Apps Structure
+- ทุก workspace ต้องมี `package.json` กับ `name`
+- ทุก workspace ควรมี `README.md`
+- ทุก app ควรมี `AGENTS.md` ถ้ามี global rules
 
-โครงสร้างของ applications ใน monorepo
+### 3. Consistent Dependencies
 
-- แต่ละ app มี `package.json` และ config ของตัวเอง
-- ใช้ shared packages จาก `packages/`
-- ทำตาม best practices ของ framework แต่ละตัว
+- ใช้ `workspace:*` สำหรับ internal packages
+- หลีกเลี่ยง duplicate external versions
+- อัปเดต `bun.lock` หรือ `pnpm-lock.yaml` เมื่อ dependencies เปลี่ยน
 
-### 3. Packages Structure
+### 4. Parallel Safety
 
-โครงสร้างของ shared packages ใน monorepo
+- รัน commands ด้วย concurrency ทีเหมาะสม
+- ไม่รัน destructive command กับทุก workspace พร้อมกัน
+- ใช้ dry-run ถ้า command มี side effects
 
-- `shared/` - shared libraries (required)
-  - `ui/` - shared UI components (required)
-  - `utils/` - shared utility functions (required)
-- `<domain>/` - domain-specific packages
-- แต่ละ package มี `package.json` และ `exports` field
-- หลีกเลี่ยง circular dependencies
+### 5. Minimal Impact
 
-### 4. Crates Structure
-
-โครงสร้างของ Rust crates ใน monorepo (optional)
-
-- `<domain>/` - domain-specific crates
-- แต่ละ crate มี `Cargo.toml` และ exports
-- หลีกเลี่ยง circular dependencies
-- ใช้ `workspace` dependencies ใน `Cargo.toml`
-
-### 5. Dependencies Management
-
-จัดการ dependencies ระหว่าง packages และ crates
-
-- ระบุ dependencies ระหว่าง packages/crates อย่างชัดเจน
-- ใช้ workspace protocol สำหรับ internal dependencies
-- ใช้ workspace catalog (pnpm `catalog:`, Bun `catalog`/`resolutions`, npm `overrides`) เพื่อ centralize shared dependency versions
-- หลีกเลี่ยง circular dependencies
-- Workspace-level lockfile
-- ใช้ dependency management tools สำหรับ updates
-- Pin versions สำหรับ production
-- ใช้ `overrides` สำหรับ conflict resolution
-
-### 6. Migration Guide
-
-วิธีการ migrate จาก single repo → monorepo
-
-- สร้าง monorepo structure ใหม่ด้วย tool ที่เลือก
-- ย้าย existing code ไปยัง `apps/` หรือ `packages/`
-- อัปเดต dependencies ให้ใช้ `workspace:*`
-- ตั้งค่า shared configs ที่ root level
-- อัปเดต CI/CD pipelines สำหรับ monorepo
-- รัน `/run-verify` เพื่อตรวจสอบ
-
-### 7. Common Pitfalls
-
-ปัญหาที่พบบ่อยและวิธีแก้ไข
-
-- Circular dependencies: ใช้ dependency graph เพื่อตรวจสอบ
-- Slow builds: ใช้ caching และ parallel execution
-- Version conflicts: ใช้ `overrides` ใน root `package.json`
-- Missing exports: ตรวจสอบ `exports` field ในทุก package
-- Type errors: ใช้ `composite: true` ใน root `tsconfig.json`
-
-### 8. Testing Strategy
-
-กลยุทธ์การทดสอบสำหรับ monorepo
-
-- Unit tests ในแต่ละ package/crate
-- Integration tests ข้าม packages
-- E2E tests ใน apps
-- ใช้ `/run-test-all` สำหรับทดสอบทั้ง monorepo
-- ใช้ task pipeline สำหรับ test orchestration
-
-- ใช้ /follow-math-graph-theory ถ้าจำเป็น
+- ไม่เปลี่ยน tool ถ้าไม่จำเป็น
+- ไม่ refactor workspaces ทั้งหมดในครั้งเดียว
+- แก้เฉพาะ workspaces ทีมีปัญหา
 
 ## Expected Outcome
 
-- โครงสร้าง monorepo ชัดเจนพร้อมการแยกส่วนที่เหมาะสม
-- Apps และ packages จัดระเบียบตาม concerns
-- Dependencies ระหว่าง packages ชัดเจน
-- Build system มีประสิทธิภาพพร้อม caching
-- Shared configuration ทั่วทั้ง workspaces
-- Code สามารถทดสอบและบำรุงรักษาได้ง่าย
-- Architecture ที่ scalable สำหรับการเติบโตของทีม
+- Monorepo tool ถูก detect
+- Workspaces ถูก list และ verify conventions
+- Dependencies consistent
+- Build/typecheck/lint ผ่าน
+- Report table สรุปสถานะทุก workspace

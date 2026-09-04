@@ -6,7 +6,7 @@ related:
   - review-frontend
   - review-codebase-everything
   - review-uxui
-  - optimize-everything
+  - optimize-codebase-everything
   - capture-component
 ---
 
@@ -106,7 +106,7 @@ related:
 - UPPER_SNAKE_CASE สำหรับ constants
 
 - ใช้ /review-uxui ถ้าจำเป็น
-- ใช้ /optimize-everything ถ้าจำเป็น
+- ใช้ /optimize-codebase-everything ถ้าจำเป็น
 
 ## Expected Outcome
 
