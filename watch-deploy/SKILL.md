@@ -6,6 +6,7 @@ related:
   - run-watch-build
   - run-watch-test
   - run-watch-typecheck
+  - follow-service-cloudflare
   - ask-me
 ---
 

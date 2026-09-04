@@ -11,6 +11,10 @@ related:
   - follow-tool-vite
   - follow-create-vite-plugins
   - deploy-to-vercel
+  - deploy-to-cloudflare
+  - follow-service-cloudflare
+  - deploy-to-railway
+  - create-cloudflare-worker-project
 ---
 
 ## Goal
@@ -51,7 +55,9 @@ Build application สำหรับ deployment
 Deploy application ตาม platform ที่ใช้
 
 1. สำหรับ Vercel: ทำ `/deploy-to-vercel`
-2. สำหรับ Cloudflare: ทำ `/deploy-to-cloudflare`
+2. สำหรับ Cloudflare:
+   - ถ้า Worker project ยังไม่ถูกสร้าง → ทำ `/create-cloudflare-worker-project` ก่อน
+   - จากนั้นทำ `/deploy-to-cloudflare`
 3. สำหรับ Railway: ทำ `/deploy-to-railway`
 4. สำหรับ platform อื่น: ทำตาม workflow ที่เกี่ยวข้อง
 5. ตรวจสอบว่า deploy สำเร็จ

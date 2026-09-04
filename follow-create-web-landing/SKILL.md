@@ -9,6 +9,7 @@ related:
   - follow-lib-unocss
   - review-uxui
   - review-frontend
+  - follow-service-cloudflare
   - deploy-to-cloudflare
   - deploy-to-vercel
 ---

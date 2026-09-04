@@ -6,7 +6,14 @@ related:
   - open-web-for-config-secret
   - follow-create-cloudflare-token
   - deploy-to-cloudflare
+  - create-cloudflare-worker-project
+  - run-deploy
+  - ship
   - resolve-cicd
+  - resolve-cloudflare-worker-fails
+  - resolve-all-cloudflare-fails
+  - follow-create-web
+  - follow-create-product
   - follow-tool-mise
   - follow-tasks
   - follow-package-manifest

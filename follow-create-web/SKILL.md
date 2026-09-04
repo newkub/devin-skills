@@ -14,6 +14,7 @@ related:
   - optimize-everything
   - follow-design-system
   - review-uxui
+  - follow-service-cloudflare
 ---
 
 ## Goal
@@ -88,6 +89,7 @@ related:
 - ใช้ /follow-lib-unocss ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
 - ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare
 
 ## Expected Outcome
 

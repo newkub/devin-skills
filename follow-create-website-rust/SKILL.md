@@ -15,6 +15,7 @@ related:
   - follow-tool-cargo
   - use-lib-effective
   - follow-create-vite-plugins
+  - follow-service-cloudflare
   - deploy-to-vercel
   - follow-my-tech-stack
   - review-techstack

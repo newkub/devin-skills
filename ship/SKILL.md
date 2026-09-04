@@ -20,6 +20,9 @@ related:
   - merge-github-pr
   - deep-review-pr
   - run-release
+  - run-deploy
+  - create-cloudflare-worker-project
+  - follow-service-cloudflare
   - follow-devin-global-subagents
   - use-subagents
   - report
@@ -60,10 +63,11 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 5. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปทำ `/git-commit-and-push-features-branch` ซ้ำ
 6. ถาม user ก่อน merge
 7. ถ้า user ตกลง → ทำ `/merge-github-pr`
-8. ทำ `/resolve-cicd` บน production branch หลัง merge
-9. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
-10. `git switch main` หรือ production branch ตาม project conventions
-11. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
+8. ทำ `/run-deploy` เพื่อ deploy ไป production (ถ้า project ยังไม่มี Worker → ทำ `/create-cloudflare-worker-project` ก่อน)
+9. ทำ `/resolve-cicd` บน production branch หลัง deploy
+10. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
+11. `git switch main` หรือ production branch ตาม project conventions
+12. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
 
 ### 3. Report
 

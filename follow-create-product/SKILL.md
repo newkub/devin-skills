@@ -8,6 +8,7 @@ related:
   - follow-create-web
   - follow-service-workos
   - follow-service-stripe
+  - follow-service-cloudflare
   - follow-lib-unocss-theme
   - follow-design-system
   - review-uxui
@@ -169,6 +170,7 @@ related:
 - ใช้ design tokens สม่ำเสมอ
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare Workers/Pages
 
 ## Expected Outcome
 

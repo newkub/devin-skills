@@ -4,6 +4,9 @@ description: Deploy project ไปยัง Cloudflare Workers ด้วย wran
 related:
   - follow-secret-manager
   - open-web-for-config-secret
+  - follow-service-cloudflare
+  - follow-create-cloudflare-token
+  - resolve-cicd
 ---
 
 ## Goal

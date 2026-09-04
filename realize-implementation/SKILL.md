@@ -12,6 +12,7 @@ related:
   - resolve-errors
   - refactor
   - update-references
+  - run-test-all
   - run-verify
   - deep-realize-implementation
   - ship
@@ -88,7 +89,8 @@ related:
 1. ทำ `/refactor`, `/update-references`, `/deep-review`, `/review-quality`, `/deep-review` — refactor ครบวงจร, อัปเดท references, เพิ่ม type safety, config optimization
 2. ทำ `/check-unused-deps`, `/check-unused-files` — ตรวจจับ unused dependencies และไฟล์ พิจารณาว่าควรลบหรือ implement ให้ครบ
 3. ทำ `/run-lint` เพื่อรัน lint และแก้ code ให้ผ่าน — ถ้า lint ไม่ผ่านหลังแก้ 3 ครั้ง → stop และ report
-4. ทำ `/run-verify` เพื่อตรวจสอบ scan, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)
+4. ทำ `/run-test-all` เพื่อรัน test suite ครบวงจร (unit, integration, e2e, specialized) — ถ้า fail ให้ validate/review ก่อนแก้
+5. ทำ `/run-verify` เพื่อตรวจสอบ scan, format, lint, typecheck, test, build ครบถ้วน — ถ้าไม่ผ่าน ให้ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ### 7. Ship (If Requested)
 
@@ -136,5 +138,6 @@ related:
 - Type flow ครบ: schema → validation → API → UI
 - Infrastructure พร้อมสำหรับ production — security, error handling, observability ครบถ้วน
 - Unused dependencies และ files ได้รับการพิจารณา — code ผ่าน lint โดยไม่มี errors/warnings
-- `/run-verify` ผ่าน: scan, typecheck, test, build ไม่มี errors
+- `/run-test-all` ผ่าน: unit, integration, e2e, specialized tests ไม่มี failures
+- `/run-verify` ผ่าน: scan, format, lint, typecheck, test, build ไม่มี errors
 

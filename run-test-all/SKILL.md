@@ -20,6 +20,8 @@ related:
   - report
   - report-table
   - suggest-next-action
+  - realize-implementation
+  - run-verify
 ---
 
 ## Goal
@@ -135,7 +137,14 @@ related:
 3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/update-test-and-fix` เพิ่ม แล้วรัน tests ใหม่
 4. ทำ `/report` สรุปผลลัพธ์
 5. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
-6. ทำ `/suggest-next-action` หากยังมี issues
+
+### 11. Continue To Full Verify
+
+> Goal: ส่งต่อไป verify ครบวงจรถ้าจำเป็น
+
+1. ถ้า tests ผ่านทั้งหมด และ user ต้องการ verify ครบวงจร → ทำ `/run-verify`
+2. ถ้า `/run-verify` fail → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
+3. ทำ `/suggest-next-action` หากยังมี issues
 
 ## Rules
 

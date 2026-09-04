@@ -1,120 +1,106 @@
 ---
 name: resolve-github-actions-fails
-description: หาและ resolve GitHub Actions workflow runs ทีล้มเหลวทั้ง personal และ org repos
+argument-hint: "[--repo <owner/repo>]"
+description: ตรวจสอบและแก้ไข GitHub Actions workflow runs ทีล้มเหลวสำหรับ repo ปัจจุบันหรือ repo ทีระบุ
 related:
-  - list-github-actions-fails
-  - list-ci-configs
-  - watch-github-actions
   - resolve-cicd
-  - list-github-repo
+  - resolve-all-github-actions-fails
+  - resolve-all-cloudflare-fails
+  - search-project-in-drive-d
   - resolve-errors
   - report-table
   - suggest-next-action
-  - list-deployment-fails
   - ask-me
 ---
 
 ## Goal
 
-List ทุก GitHub Actions workflow run ทีล้มเหลว แล้ว resolve ให้หมดใน scope ที user เข้าถึง
+List GitHub Actions workflow runs ทีล้มเหลวสำหรับ project/repo ทีระบุ แล้ว resolve ให้หมด
 
 ## Scope
 
-ใช้สำหรับตรวจสอบและแก้ไข CI/CD failures ทั่วทุก personal repositories และ organization repositories ที user เป็นสมาชิก โดยใช้ `gh` CLI
-
-ดูเพิ่มเติม: /list-ci-configs, /resolve-cicd, /list-github-repo, /list-deployment-fails
+ใช้กับ repo ปัจจุบันหรือ repo ที user ระบุ ครอบคลุม public/private ตามสิทธิ์ `gh` token
 
 ## Execute
 
 ### 1. Verify gh CLI
 
-> Goal: ยืนยันว่า `gh` ติดตั้งและ authenticated
-
-1. รัน `gh --version` เพื่อตรวจสอบการติดตั้ง
-2. รัน `gh auth status` เพื่อตรวจสอบ authentication
+> Goal: ยืนยันว่า `gh` พร้อมและ authenticated
+1. รัน `gh --version`
+2. รัน `gh auth status`
 3. ถ้าไม่ authenticated → ทำ `/ask-me` เพื่อให้ user รัน `gh auth login`
-4. ถ้าพร้อม → บันทึก username
+4. บันทึก username
 
-### 2. List Failed Runs
+### 2. Identify Repo
 
-> Goal: หา workflow runs ทีล้มเหลวทั่วทุก repo
+> Goal: ระบุ repo ทีจะ resolve
+1. ถ้ามี `--repo` → ใช้ค่านั้น
+2. ถ้าไม่มี → ใช้ `gh repo view --json nameWithOwner` หรือ `git remote -v` จาก current directory
+3. ถ้าหา repo ไม่พบ → ทำ `/ask-me` เพื่อให้ user ระบุ
 
-1. ทำ `/list-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
-2. รับรายการ failed runs: repo, workflow, branch, commit, event, started at, url
+### 3. List Failed Runs
+
+> Goal: หา workflow runs ทีล้มเหลวใน repo นั้น
+1. รัน `gh run list --repo <owner/repo> --status failure --limit 30`
+2. รับรายการ: workflow, branch, commit, event, started at, url
 3. ถ้าไม่มี failures → report ว่างานเสร็จแล้ว stop
 
-### 3. Analyze Logs
+### 4. Analyze Logs
 
 > Goal: หา root cause ของแต่ละ failure
-
-1. สำหรับแต่ละ failed run รัน:
-   `gh run view <run-id> --repo <owner/repo> --log-failed`
+1. สำหรับแต่ละ failed run รัน `gh run view <run-id> --repo <owner/repo> --log-failed`
 2. หรือดู log จาก URL ทีได้
 3. บันทึกข้อผิดพลาดหลักของแต่ละ run
 
-### 4. Resolve Each Failure
+### 5. Resolve Each Failure
 
 > Goal: แก้ไข workflow failures
+1. ถ้าเป้น transient/error เดิม → รัน `gh run rerun <run-id> --repo <owner/repo>`
+2. ถ้าเป้น issue ที fix ได้ด้วย code change → ทำ `/resolve-errors` แล้วให้ user ตัดสินใจ commit/push
+3. หา local project ด้วย `/search-project-in-drive-d <repo-name>` ถ้าต้องการ code fix
+4. ถ้าเป้น config/secret issue → แนะนำให้ user ตรวจ `.github/workflows/` หรือ repository settings
+5. รอผล rerun ถ้ามี และ recheck
+6. ทำซ้ำสูงสุด 3 รอบต่อ run
+7. ถ้า resolve ไม่ได้ → ทำเครื่องหมาย `manual-fix-required`
 
-1. สำหรับแต่ละ failed run:
-   - ถ้าเป็น transient/error เดิม → รัน `gh run rerun <run-id> --repo <owner/repo>`
-   - ถ้าเป็น issue ที fix ได้ด้วย code change → ทำ `/resolve-errors` แล้วให้ user ตัดสินใจ commit/push
-   - ถ้าเป็น config/secret issue → แนะนำให้ user ตรวจ `.github/workflows/` หรือ repository settings
-2. รอผล rerun ถ้ามี และ recheck
-3. ทำซ้ำสูงสุด 3 รอบต่อ run
-4. ถ้า resolve ไม่ได้ → ทำเครื่องหมาย `manual-fix-required`
-
-### 5. Build Report
+### 6. Build Report
 
 > Goal: สรุปผลเป็นตาราง
-
-1. รวมผลจากทุก repo
-2. ใช้ `/report-table` คอลัมน์:
-   - No.
-   - Repo
-   - Workflow
-   - Branch
-   - Commit
-   - Event
-   - Started At
-   - Status After Resolve
-   - Notes
+1. รวมผลจาก repo ทีระบุ
+2. ใช้ `/report-table` คอลัมน์: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Notes
 3. เรียงตาม Started At ล่าสุด
 4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 
-### 6. Suggest Next Action
+### 7. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
-
-1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `watch-github-actions`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `resolve-cicd`
 
 ## Rules
 
 ### 1. Safety
-
 - ถาม user ก่อน rerun ถ้าจำนวน failures เยอะหรือกระทบ production
 - ไม่ push หรือ merge code โดยอัตโนมัติ
 - ไม่แก้ไข workflow files โดยไม่ได้รับอนุญาต
 
 ### 2. Rate Limit And Scope
+- ใช้ pagination `--limit` และ `--page`
+- ถ้า `gh` ถูก rate limit → รอและ retry
 
-- ถ้า repo จำนวนมาก → จำกัดเฉพาะ repos ทีอัปเดตล่าสุด หรือกรองตาม argument
-- ใช้ pagination ตาม `--limit` และ `--page`
-- ถ้า `gh` ถูก rate limit → รอและ retry ตาม header หรือ report
-
-### 3. Skip Archived
-
-- ข้าม archived repositories โดย default
-- ถ้าต้องการรวม archived ให้ user ระบุ
+### 3. Local Project Matching
+- ใช้ `/search-project-in-drive-d` เมื่อต้องหา local repo เพื่อ code fix
+- ถ้าไม่พบ local repo → แนะนำ user แก้ไขเอง
 
 ### 4. Privacy
-
 - รองรับ public/private repositories ตามสิทธิ์ของ `gh` token
 - ไม่ expose secrets หรือ tokens ใน output
 
+### 5. Account-wide
+- ถ้า user ต้องการ resolve ทั่วทุก repo ให้ส่งต่อไปยัง `/resolve-all-github-actions-fails`
+
 ## Expected Outcome
 
-- รายการ GitHub Actions runs ทีล้มเหลวพร้อมสถานะหลัง resolve
+- รายการ GitHub Actions runs ทีล้มเหลวพร้อมสถานะหลัง resolve สำหรับ repo ทีระบุ
 - ตารางที sort ตามวันที failure เกิด
-- ข้อมูล repo, workflow, branch, commit, url, action taken พร้อม
+- ข้อมูล workflow, branch, commit, url, action taken พร้อม
 - ไม่มีการ push/merge หรือแก้ไข repo โดยไม่ได้รับอนุญาต
