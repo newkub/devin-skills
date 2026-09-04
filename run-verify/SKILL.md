@@ -7,6 +7,7 @@ related:
   - run-typecheck
   - run-test
   - run-build
+  - run-test-coverage
   - run-test-all
   - check-monorepo
   - setup-cicd
@@ -47,7 +48,7 @@ related:
 > Goal: ตัดสินใจว่า project เล็กหรือใหญ่
 
 1. ตรวจสอบ signals ของ project ใหญ่:
-   - ทำ `/check-monorepo` แล้วพบวว่าเป็น monorepo
+   - ทำ `/check-monorepo` แล้วพบว่าเป็น monorepo
    - มี `workspaces` ใน `package.json`, `pnpm-workspace.yaml`, `moon.yml`, `turbo.json`
    - มีหลาย workspace/package หรือ build/test หนัก (เช่น >60 วินาที, กิน RAM/CPU มาก)
    - `AGENTS.md` หรือ user ระบุให้ใช้ CI verify
@@ -110,6 +111,7 @@ related:
 - ใช้ /run-typecheck ถ้าจำเป็น
 - ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
@@ -120,4 +122,3 @@ related:
 - small project: code ผ่าน scan, format, lint, typecheck, test, build บน local
 - large project: branch ถูก push, CI/CD pipeline ผ่าน หรือมี root cause + next action ชัดเจน
 - ไม่มี merge/release/deploy โดยอัตโนมัติ
-
