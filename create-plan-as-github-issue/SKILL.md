@@ -1,6 +1,6 @@
 ---
 name: create-plan-as-github-issue
-description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอร แล้วเขียนลง GitHub issue พร้อม open-web
+description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอร์ แล้วเขียนลง GitHub issue พร้อม open-web
 related:
   - deep-idea-features
   - create-github-issue
@@ -18,37 +18,38 @@ related:
 
 ## Goal
 
-สร้างแผนทีอ่านง่าย มีประโยชน์ และติดตามผลได้ จากไอเดียฟีเจอร แล้วเขียนลง GitHub issue เป้น body พร้อมเปิดหน้า issue ใน browser
+สร้างแผนที่อ่านง่าย มีประโยชน์ และติดตามผลได้ จากไอเดียฟีเจอร์ แล้วเขียนลง GitHub issue เป็น body พร้อมเปิดหน้า issue ใน browser
 
 ## Scope
 
 - รับ request หรือ topic
-- ใช้ `/deep-idea-features` เพื่อ generate features ทีเป้นระบบ
+- ใช้ `/deep-idea-features` เพื่อ generate features ที่เป็นระบบ
 - คำนวณ score ตามสูตรคณิตศาสตร์
-- สร้าง GitHub issue ด้วย body ทีสแกนได้ มี icons, color, diagram, tables
+- สร้าง GitHub issue ด้วย body ที่สแกนได้ มี icons, color, diagram, tables
 - เปิด issue URL ด้วย `open-web`
 
 ## Execute
 
 ### 1. Capture And Prepare
 
-> Goal: เข้าใจสิ่งทีต้องวางแผน
+> Goal: เข้าใจสิ่งที่ต้องวางแผน
 
 1. รับ `<topic>` จาก argument หรือ context
-2. อ่าน context, design, report ทีเกี่ยวข้อง
+2. อ่าน context, design, report ที่เกี่ยวข้อง
 3. ถ้าข้อมูลไม่พอ → ทำ `/ask-me`
 4. รัน `git remote -v` เพื่อระบุ target repo สำหรับ `gh issue create`
 5. ถ้าไม่มี remote หรือต้องการ repo อื่น → ถาม user
 
 ### 2. Generate And Score Features
 
-> Goal: สร้างไอเดียฟีเจอร พร้อมคะแนน
+> Goal: สร้างไอเดียฟีเจอร์ พร้อมคะแนน
 
-1. ทำ `/deep-idea-features <topic>` โดยแบ่งเป้น `New` และ `Extends`
+1. ทำ `/deep-idea-features <topic>` โดยแบ่งเป็น `New` และ `Extends`
 2. คำนวณ score ตาม `references/scoring.md`
    - `Score = (Impact + Effect) / (Risk × Phase)`
-3. เรียงลำดับ features ตาม score สูง → ต่ำ
+3. เรียงลำดับ features ตาม `Score` สูง → ต่ำ แล้ว `Phase` ต่ำ → สูง (กรณี `Score` เท่ากัน)
 4. ทำ `/deep-plan` เพื่อวาง dependencies ระหว่าง features
+5. ทำ `/report-uxui-sketch` สำหรับแต่ละ feature ที่ต้องการ visualize (ถ้ามี)
 
 ### 3. Plan And Refine
 
@@ -57,7 +58,7 @@ related:
 1. ทำ `/improve` กับเนื้อหาแผน
 2. ทำ `/review-plan` เพื่อตรวจคุณภาพ
 3. ถ้าพบปัญหา → `/improve` ซ้ำ (max 3 รอบ)
-4. ทำ `/report-uxui-sketch` หรือ `/report-architecture-diagram` ถ้าต้องการ visual
+4. ทำ `/report-uxui-sketch` หรือ `/report-architecture-diagram` สำหรับภาพรวม visual (ถ้าต้องการ)
 
 ### 4. Check For Duplicate
 
@@ -69,7 +70,7 @@ related:
 
 ### 5. Build Issue Body
 
-> Goal: สร้าง issue body ทีใช้งานได้
+> Goal: สร้าง issue body ที่ใช้งานได้
 
 สร้าง body ตาม `references/issue-body-template.md` โดยมี sections:
 
@@ -77,7 +78,9 @@ related:
 - `## Architecture` — ANSI diagram ตรงกลาง (ถ้ามี)
 - `## Idea Features`
   - `### Scoring` — สูตรและ scale
-  - `### Features` — table มี `Icon`, `No.`, `Feature`, `Description`, `Files Change`, `Impact`, `Risk`, `Effect`, `Score`, `Phase`
+  - `### Visual` — รวม `/report-uxui-sketch` ของแต่ละ feature (ถ้ามี)
+  - `### Features` — table มี `Icon`, `No.`, `Feature`, `Description`, `Dependencies`, `Files Change`, `Benefit`, `Impact`, `Risk`, `Effect`, `Score`, `Phase`, `Test`
+    - คอลัมน์ `Dependencies` เพิ่มเมื่อมี dependencies ระหว่าง features ถ้าไม่มีให้ละเว้นคอลัมน์นี้
 - `## TODO` — task table มี `No.`, `Task`, `Status`, `Depends On`, `Expected Outcome`
 - `## Acceptance Criteria` — checkboxes
 
@@ -116,15 +119,16 @@ related:
 ### 3. Scoring
 
 - ใช้สูตร `Score = (Impact + Effect) / (Risk × Phase)`
-- ระบุ scale ทีชัดเจน
+- ระบุ scale ที่ชัดเจน
 - คำนวณทุก row
+- เรียงลำดับ row หลักตาม `Score` สูง → ต่ำ แล้ว `Phase` ต่ำ → สูง
 - ดูรายละเอียดใน `references/scoring.md`
 
 ### 4. URL Safety
 
 - ตรวจสอบ URL ก่อนเปิด browser
 - ใช้ `open-web` หรือ OS native command เท่านั้น
-- ไม่เปิด URL ทีไม่มาจาก GitHub ถ้าไม่แน่ใจ
+- ไม่เปิด URL ที่ไม่มาจาก GitHub ถ้าไม่แน่ใจ
 
 - ใช้ /create-github-issue ถ้าจำเป็น
 - ใช้ /open-github-issue ถ้าจำเป็น
@@ -134,8 +138,9 @@ related:
 
 ## Expected Outcome
 
-- GitHub issue ถูกสร้างด้วย plan ทีมี features table, scoring math, TODO table
+- GitHub issue ถูกสร้างด้วย plan ที่มี features table, scoring math, TODO table
 - Issue body อ่านง่าย มี Iconify icons, color, และ centered diagram
+- แต่ละ feature ที่ต้องการ visual มี `/report-uxui-sketch` ประกอบ
 - Issue URL ถูกเปิดใน browser
 - Plan สามารถ track ความคืบหน้าได้
 - ทุก reference ใน `references/index.md` ถูกใช้งาน
