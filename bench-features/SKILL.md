@@ -8,7 +8,7 @@ related:
   - idea-features
   - deep-idea-features
   - report-table
-  - create-plan-as-github-issue
+  - create-plan-in-dot-devin
   - ask-me
   - suggest-next-action
 ---
@@ -69,7 +69,7 @@ Benchmark features ของ project เทียบกับคู่แข่�
 > Goal: วางแผนให้ features ดีกว่าคู่แข่ง
 
 1. สร้าง prioritized feature list: Critical, High, Medium, Nice-to-have
-2. ทำ `/create-plan-as-github-issue` จาก feature list ถ้า user ต้องการ implement
+2. ทำ `/create-plan-in-dot-devin` จาก feature list ถ้า user ต้องการ implement
 3. ทำ `/suggest-next-action` โดยแนะนำ `/deep-idea-features` ถ้าต้องการขยายไอเดียต่อ
 
 ## Rules
@@ -96,7 +96,7 @@ Benchmark features ของ project เทียบกับคู่แข่�
 
 - ทุก gap ต้อง map เป็น feature ที่ implement ได้
 - ไม่รายงาน gap ที่กว้างเกินไปโดยไม่แตกเป็น feature ย่อย
-- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-as-github-issue` หรือ `/deep-idea-features`
+- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-in-dot-devin` หรือ `/deep-idea-features`
 
 ## Expected Outcome
 

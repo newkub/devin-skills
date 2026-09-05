@@ -132,7 +132,7 @@ related:
 - ใช้ `open-in-zed` หรือ OS native command เท่านั้น
 
 - ใช้ `/implement-plan` เมื่อต้องการทำงานตามแผน
-- ใช้ `/create-plan-as-github-issue` ถ้าต้องการส่งแผนไป GitHub issue
+- ใช้ `/create-github-issue` ถ้าต้องการส่งแผนไป GitHub issue
 - ใช้ `/report-plan` ถ้าจำเป็น
 
 ## Expected Outcome

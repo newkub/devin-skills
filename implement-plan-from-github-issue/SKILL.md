@@ -4,7 +4,7 @@ description: อ่าน plan จาก GitHub issue แล้ว implement ต
 argument-hint: "[scope]"
 related:
   - implement-github-issue
-  - create-plan-as-github-issue
+  - create-plan-in-dot-devin
   - idea-features
   - productionize-implementation
   - implement-mock
@@ -57,7 +57,7 @@ related:
 
 > Goal: วางแผนการ implement
 
-1. ทำ `/create-plan-as-github-issue` ถ้า issue ซับซ้อน
+1. ทำ `/create-plan-in-dot-devin` ถ้า issue ซับซ้อน
 2. ระบุไฟล์และ skills ทีจำเป็น
 3. วิเคราะห์ dependencies และ risk
 

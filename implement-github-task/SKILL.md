@@ -3,7 +3,7 @@ name: implement-github-task
 description: นำ task จาก GitHub issue หรือ project item ไป implement
 argument-hint: "[task-id]"
 related:
-  - create-plan-as-github-issue
+  - create-plan-in-dot-devin
   - productionize-implementation
   - refactor
   - run-verify
@@ -31,7 +31,7 @@ related:
 
 > Goal: วางแผน
 
-1. เรียก /create-plan-as-github-issue ถ้าซับซ้อน
+1. เรียก /create-plan-in-dot-devin ถ้าซับซ้อน
 1. ระบุ files และ skills ที่จำเป็น
 
 ### 3. Implement

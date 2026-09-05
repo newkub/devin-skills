@@ -3,7 +3,7 @@ name: create-report-in-dot-devin
 description: สร้าง report ละเอียดใน .devin/reports/ พร้อม 3 tables, file structure และ what-you-do
 argument-hint: "[title]"
 related:
-  - create-plan-as-github-issue
+  - create-plan-in-dot-devin
   - report-file-structure
   - report-what-you-do
   - report-table
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-สร้าง report ละเอียดใน `.devin/reports/<title>-<time>.md` คล้ายกับ `/create-plan-as-github-issue` แต่ focus ที่ features, file structure และ progress แบ่ง phase
+สร้าง report ละเอียดใน `.devin/reports/<title>-<time>.md` คล้ายกับ `/create-plan-in-dot-devin` แต่ focus ที่ features, file structure และ progress แบ่ง phase
 
 ## Scope
 

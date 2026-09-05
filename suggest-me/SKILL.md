@@ -1,4 +1,4 @@
-﻿---
+---
 name: suggest-me
 description: ถามผู้ใช้เพื่อเข้าใจว่าอยากทำอะไรหรือได้ features อะไร โดยไม่สร้าง report files
 argument-hint: "[topic]"
@@ -79,7 +79,7 @@ related:
 
 - ถ้า user ต้องการไอเดีย features → ส่งต่อ `/idea-features`
 - ถ้า user ต้องการ implement → ส่งต่อ `/productionize-implementation`
-- ถ้าต้องการ plan → ส่งต่อ `/create-plan-as-github-issue`
+- ถ้าต้องการ plan → ส่งต่อ `/create-plan-in-dot-devin`
 
 - ใช้ /understand-me ถ้าจำเป็น
 - ใช้ /ask-project-requirement ถ้าจำเป็น

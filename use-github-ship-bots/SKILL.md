@@ -16,7 +16,7 @@ triggers:
 related:
   - follow-create-github-bots
   - implement-plan-from-github-issue
-  - create-plan-as-github-issue
+  - create-plan-in-dot-devin
   - create-github-pr
   - use-create-pr
   - run-verify
@@ -137,7 +137,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ## Rules
 
 - ไม่เริ่ม implement ถ้า plan ไม่ชัด
-- ใช้ `/create-plan-as-github-issue` ถ้าต้องการ plan ใหม่
+- ใช้ `/create-plan-in-dot-devin` ถ้าต้องการ plan ใหม่
 - ใช้ `/implement-plan-from-github-issue` ถ้าเริ่ม implement จาก issue
 - แยก webhook wiring ออกจาก business logic
 - ใช้ `try/catch` รอบทุก handler
