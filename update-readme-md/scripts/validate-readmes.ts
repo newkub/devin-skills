@@ -15,7 +15,7 @@ const PROJECTS = [
   "D:\\newkub\\slides",
   "D:\\newkub\\solid-ui",
   "D:\\newkub\\template-starter",
-  "D:\\newkub\\use-create-pr",
+  "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\create-github-pr",
   "D:\\newkub\\wpackages",
   "D:\\newkub\\newkub\\slides",
   "D:\\newkub\\products\\agents-manager",

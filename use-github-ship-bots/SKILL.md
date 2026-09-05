@@ -18,7 +18,6 @@ related:
   - implement-plan-from-github-issue
   - create-plan-in-dot-devin
   - create-github-pr
-  - use-create-pr
   - run-verify
   - resolve-cicd
   - setup-cicd
@@ -114,10 +113,9 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 8. Create PR
 
 > Goal: สร้าง PR
-1. ใช้ `/use-create-pr` ถ้ามี UI/evidence
-2. หรือใช้ `/create-github-pr`
-3. ใส่ `Closes #<issue>` ใน PR body
-4. แนบ screenshots, test results, staging preview
+1. ใช้ `/create-github-pr`
+2. ใส่ `Closes #<issue>` ใน PR body
+3. แนบ screenshots, test results, staging preview
 
 ### 9. Monitor And Deploy
 
