@@ -22,11 +22,15 @@ related:
 
 ### 1. Audit Assets
 
+> Goal: Audit Assets
+
 1. ตรวจ `public/`, `src/assets` files
 2. วัดขนาดไฟล์ทีใหญ่
 3. ระบุ assets ทีไม่ optimize
 
 ### 2. Image Optimization
+
+> Goal: Image Optimization
 
 1. แปลง PNG/JPG เป็น WebP/AVIF
 2. ใช้ `srcset` และ `sizes`
@@ -36,6 +40,8 @@ related:
 
 ### 3. Font Optimization
 
+> Goal: Font Optimization
+
 1. ใช้ `font-display: swap`
 2. Preload critical fonts
 3. ใช้ subset fonts ถ้าได้
@@ -43,11 +49,15 @@ related:
 
 ### 4. Media And Icons
 
+> Goal: Media And Icons
+
 1. ใช้ SVG icons ถ้าเหมาะสม
 2. ใช้ video lazy loading
 3. ใช้ audio compression
 
 ### 5. Validate
+
+> Goal: Validate
 
 1. รัน `/run-build`
 2. วัด total asset size

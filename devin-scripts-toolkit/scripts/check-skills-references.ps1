@@ -10,12 +10,19 @@ function Get-FrontmatterHashtable {
     param([string]$Content)
     if ($Content -notmatch '(?s)^---\r?\n(.*?)\r?\n---\r?\n') { return $null }
     $fm = @{}
+    $inRelated = $false
     foreach ($line in $matches[1] -split '\r?\n') {
         if ($line -match '^(\w+):\s*(.*)$') {
             $key = $matches[1].Trim()
             $val = $matches[2].Trim()
-            if ($key -eq 'related') { $fm[$key] = @() } else { $fm[$key] = $val }
-        } elseif ($line -match '^\s*-\s*(.+)$' -and $fm.ContainsKey('related')) {
+            if ($key -eq 'related') {
+                $fm[$key] = @()
+                $inRelated = $true
+            } else {
+                $fm[$key] = $val
+                $inRelated = $false
+            }
+        } elseif ($inRelated -and $line -match '^\s*-\s*(.+)$') {
             $fm['related'] += $matches[1].Trim()
         }
     }
@@ -29,7 +36,7 @@ foreach ($skillDir in Get-ChildItem -Path $SkillsDir -Directory) {
     $skillFile = Join-Path $skillDir.FullName "SKILL.md"
     if (-not (Test-Path $skillFile)) { continue }
 
-    $content = Get-Content $skillFile -Raw
+    $content = Get-Content $skillFile -Raw -Encoding UTF8
     $fm = Get-FrontmatterHashtable $content
     if ($null -eq $fm) { continue }
 

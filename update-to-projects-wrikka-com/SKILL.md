@@ -5,7 +5,7 @@ argument-hint: "[sync|ui|deploy|deps|all]"
 related:
   - follow-solid-tanstack
   - deploy-to-cloudflare
-  - follow-create-devin-skills
+  - follow-create-devin-project-skills
   - create-cloudflare-token
   - add-to-devin-global-skills
 ---
@@ -80,7 +80,7 @@ related:
 
 - ใช้ /follow-solid-tanstack ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /follow-create-devin-skills ถ้าจำเป็น
+- ใช้ /follow-create-devin-project-skills ถ้าจำเป็น
 - ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /add-to-devin-global-skills ถ้าจำเป็น
 

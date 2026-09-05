@@ -2,34 +2,31 @@
 
 ## Version Info
 
-- Package: `zod` v4.4.3 (published Aug 20, 2026)
-- License: MIT
-- Peer Dependencies: None (zero external dependencies)
-- TypeScript: >=5.5.0 (older versions may work but not officially supported)
+- Package: `zod` v4.5.4 (published Aug 29, 2026)
+- License: MIT, zero external dependencies
+- TypeScript: >= 5.5.0 (older versions may work but not officially supported)
 - Runtime: Node.js and all modern browsers
-- Bundle: 2kb core (gzipped)
 - Source: https://zod.dev
 
 ## Install
 
 ```bash
-# npm
-bun add zod
-
-# Bun
-bun add zod
-
-# Also available on jsr.io as @zod/zod
+npm install zod@latest
+# or
+pnpm add zod@latest
+yarn add zod@latest
+bun add zod@latest
 ```
 
 ## TypeScript Configuration
 
-Zod requires `strict` mode in `tsconfig.json`:
+Zod v4 แนะนำให้เปิด `strict` mode ใน `tsconfig.json`:
 
 ```json
 {
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "noUncheckedIndexedAccess": true
   }
 }
 ```
@@ -37,189 +34,182 @@ Zod requires `strict` mode in `tsconfig.json`:
 ## Defining Schemas
 
 ```ts
-import * as z from 'zod';
+import * as z from "zod"
 
-// Primitive types
-const string = z.string();
-const number = z.number();
-const boolean = z.boolean();
-
-// Object schema
-const Player = z.object({
-  username: z.string(),
-  xp: z.number(),
-});
-
-// Array
-const numbers = z.array(z.number());
-
-// Union
-const stringOrNumber = z.union([z.string(), z.number()]);
-
-// Coercion
-const coercedNumber = z.coerce.number();
-
-// Custom validation
-const custom = z.custom<string>((val) => typeof val === 'string');
+const User = z.object({
+  name: z.string(),
+  age: z.number(),
+})
 ```
 
 ## Parsing Data
 
 ```ts
-// .parse() — throws ZodError on failure
-const data = Player.parse({ username: 'billie', xp: 100 });
-// => returns { username: 'billie', xp: 100 }
+// throws ZodError on failure
+const data = User.parse({ name: "A", age: 10 })
 
-// .safeParse() — returns result object (no throw)
-const result = Player.safeParse({ username: 42, xp: '100' });
+// returns result object, no throw
+const result = User.safeParse({ name: 1, age: "x" })
 if (!result.success) {
-  result.error; // ZodError instance
-} else {
-  result.data; // { username: string; xp: number }
+  result.error.issues
 }
 
-// Async variants (for async refinements/transforms)
-await Player.parseAsync({ username: 'billie', xp: 100 });
-await Player.safeParseAsync('hello');
+// async variants
+await User.parseAsync({ name: "A", age: 10 })
+await User.safeParseAsync({ name: "A", age: 10 })
 ```
 
-## Handling Errors
+ใน Zod 4 `safeParse()` error ไม่ extend `Error` แล้ว ให้ตรวจผ่าน `success` flag
+
+## Error Handling
 
 ```ts
 try {
-  Player.parse({ username: 42, xp: '100' });
+  User.parse({})
 } catch (error) {
   if (error instanceof z.ZodError) {
-    error.issues;
-    // [
-    //   { expected: 'string', code: 'invalid_type', path: ['username'], message: 'Invalid input: expected string' },
-    //   { expected: 'number', code: 'invalid_type', path: ['xp'], message: 'Invalid input: expected number' }
-    // ]
+    error.issues
   }
 }
 ```
 
+ใช้ `z.treeifyError()` สำหรับ formatted error tree แทน `.format()` และ `.flatten()` ที่ deprecated
+
 ## Type Inference
 
 ```ts
-// Infer output type
-type Player = z.infer<typeof Player>;
-// { username: string; xp: number }
-
-// Infer input and output types separately
-const mySchema = z.string().transform((val) => val.length);
-
-type MySchemaIn = z.input<typeof mySchema>;   // string
-type MySchemaOut = z.output<typeof mySchema>;  // number (same as z.infer)
-```
-
-## Matching an Existing Type
-
-```ts
-type Player = {
-  username: string;
-  xp: number;
-};
-
-const Player = z.toZod<Player>()(
-  z.object({
-    username: z.string(),
-    xp: z.number(),
-  })
-);
+type User = z.infer<typeof User>
+type UserIn = z.input<typeof User>
+type UserOut = z.output<typeof User>
 ```
 
 ## Schema Composition
 
 ```ts
-// Spread syntax (recommended — reduces TS compilation time)
-const BaseUser = z.object({
-  id: z.string(),
+const Base = z.object({ id: z.string() })
+
+// แนะนำให้ใช้ spread หรือ extend shape
+const Extended = z.object({
+  ...Base.shape,
   name: z.string(),
-});
+})
 
-const UserWithEmail = z.object({
-  ...BaseUser.shape,
-  email: z.string(),
-});
+const Picked = Base.pick({ id: true })
+const Omitted = Base.omit({ id: true })
+const Partial = Base.partial()
+const Required = Base.partial().required()
+```
 
-// .safeExtend() — for schemas with refinements
-const Extended = BaseUser.safeExtend({ role: z.string() });
+`.merge()` deprecated ใน v4 ให้ใช้ `A.extend(B.shape)` หรือ spread แทน
 
-// .pick() and .omit()
-const OnlyId = BaseUser.pick({ id: true });
-const WithoutId = BaseUser.omit({ id: true });
+## Unknown-Key Handling
 
-// .partial() — all fields optional
-const PartialUser = BaseUser.partial();
+`.strict()` และ `.passthrough()` deprecated ใน v4 ให้ใช้:
 
-// .required() — all fields required
-const RequiredUser = PartialUser.required();
+```ts
+z.strictObject({ name: z.string() })       // reject unknown keys
+z.looseObject({ name: z.string() })        // allow unknown keys
+// หรือ
+z.object({ name: z.string() }).catchall(z.never())
+z.object({ name: z.string() }).catchall(z.unknown())
+```
+
+## Coercion
+
+```ts
+const schema = z.coerce.number()
+schema.parse("42") // 42
+type In = z.input<typeof schema> // unknown
+```
+
+ระบุ generic ถ้าต้องการ input type เฉพาะ:
+
+```ts
+const schema = z.coerce.number<number>()
+```
+
+## Error Customization
+
+ใช้ `error` parameter แทน `message` หรือ `errorMap` ที่ deprecated:
+
+```ts
+const Password = z.string().min(8, {
+  error: "Too short",
+})
+```
+
+Global config:
+
+```ts
+z.config({
+  customError: (issue) => `Invalid: ${issue.code}`,
+})
+
+z.config(z.locales.en())
 ```
 
 ## Advanced Patterns
 
 ```ts
-// .refine() — custom validation
-const password = z.string().refine((val) => val.length >= 8, {
-  message: 'Password must be at least 8 characters',
-});
+// custom validation
+const Odd = z.number().refine((n) => n % 2 === 1, {
+  error: "Must be odd",
+})
 
-// .transform() — data transformation after validation
-const trimmed = z.string().transform((val) => val.trim());
+// transform
+const Trimmed = z.string().transform((s) => s.trim())
 
-// .pipe() — chaining transformations
-const pipeline = z.string().pipe(z.string().transform((v) => v.length));
+// pipe
+const Piped = z
+  .string()
+  .transform((s) => s.length)
+  .pipe(z.number().min(5))
 
-// .preprocess() — normalize before validation
-const normalized = z.preprocess((val) => String(val), z.string());
+// preprocess
+const Preprocessed = z.preprocess((val) => String(val), z.string())
 
-// .discriminatedUnion() — tagged unions
-const Result = z.discriminatedUnion('status', [
-  z.object({ status: z.literal('success'), data: z.string() }),
-  z.object({ status: z.literal('error'), message: z.string() }),
-]);
+// default/prefault/catch
+const WithDefault = z.string().default("hello")
+const WithPrefault = z.string().prefault("hello")
+const WithCatch = z.string().catch("fallback")
 
-// .default() — default value on output side
-const withDefault = z.string().default('hello');
+// discriminated union
+const Result = z.discriminatedUnion("status", [
+  z.object({ status: z.literal("success"), data: z.string() }),
+  z.object({ status: z.literal("error"), message: z.string() }),
+])
 
-// .readonly() — immutable data
-const immutable = z.object({ id: z.string() }).readonly();
+// string formats (top-level preferred)
+const Email = z.email()
+const Uuid = z.uuid()
+const Date = z.iso.date()
 ```
 
-## Recursive Types
+## Zod Mini
+
+สำหรับ bundle ที่เล็กลง:
 
 ```ts
-import * as z from 'zod';
-
-interface Category {
-  name: string;
-  subcategories: Category[];
-}
-
-const Category: z.ZodType<Category> = z.lazy(() =>
-  z.object({
-    name: z.string(),
-    subcategories: z.array(Category),
-  })
-);
-```
-
-## Zod Mini (Bundle Size Optimization)
-
-```ts
-// 64% bundle size reduction — use for size-constrained environments
-import * as z from 'zod/mini';
+import * as z from "zod/mini"
 
 const User = z.object({
   name: z.string(),
   age: z.number(),
-});
+})
+```
+
+## AOT Compilation
+
+```ts
+import * as z from "zod"
+
+const compiled = z.compile(User)
 ```
 
 ## Sources
 
-- Home: https://zod.dev
-- Basic Usage: https://zod.dev/basics
-- Defining Schemas: https://zod.dev/api
-- Error Customization: https://zod.dev/error-customization
+- https://zod.dev/v4
+- https://zod.dev/api
+- https://zod.dev/v4/changelog
+- https://zod.dev/error-customization
+- https://zod.dev/packages/mini

@@ -5,7 +5,7 @@ argument-hint: "[problem]"
 related:
   - follow-math-discrete-math
   - follow-algorithms
-  - follow-data-structures
+  - improve-data-structure
   - follow-monorepo
   - follow-math-concepts
 ---
@@ -89,7 +89,7 @@ related:
 
 - ใช้ /follow-math-discrete-math ถ้าจำเป็น
 - ใช้ /follow-algorithms ถ้าจำเป็น
-- ใช้ /follow-data-structures ถ้าจำเป็น
+- ใช้ /improve-data-structure ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 

@@ -13,7 +13,7 @@ foreach ($skillDir in Get-ChildItem -Path $SkillsDir -Directory) {
     $skillFile = Join-Path $skillDir.FullName "SKILL.md"
     if (-not (Test-Path $skillFile)) { continue }
 
-    $lines = (Get-Content $skillFile).Count
+    $lines = (Get-Content $skillFile -Encoding UTF8).Count
     if ($lines -gt $MaxLines) {
         [void]$issues.Add([pscustomobject]@{
             Skill = $skillDir.Name

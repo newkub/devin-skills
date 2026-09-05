@@ -22,12 +22,16 @@ related:
 
 ### 1. Measure Memory
 
+> Goal: Measure Memory
+
 1. ใช้ DevTools Memory panel
 2. ใช้ `process.memoryUsage()` บน Node
 3. บันทึก heap snapshot
 4. ระบุ leaks และ large objects
 
 ### 2. Fix Memory Leaks
+
+> Goal: Fix Memory Leaks
 
 1. ลบ event listeners ทีไม่ใช้
 2. Clear timers/intervals
@@ -36,6 +40,8 @@ related:
 
 ### 3. Optimize Caches
 
+> Goal: Optimize Caches
+
 1. ตั้ง cache size limits
 2. ใช้ TTL สำหรับ cache entries
 3. ใช้ LRU cache
@@ -43,12 +49,16 @@ related:
 
 ### 4. Reduce Large Objects
 
+> Goal: Reduce Large Objects
+
 1. ไม่เก็บ full dataset ใน memory
 2. ใช้ pagination
 3. Stream data แทน buffer
 4. ลด serialization overhead
 
 ### 5. Validate
+
+> Goal: Validate
 
 1. วัด memory ใหม่
 2. รัน `/run-test`

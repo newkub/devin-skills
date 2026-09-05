@@ -4,7 +4,7 @@ description: วิเคราะห์ Big O, Omega, Theta, recurrence แล�
 argument-hint: "[code-or-algorithm]"
 related:
   - follow-algorithms
-  - follow-data-structures
+  - improve-data-structure
   - follow-test
   - follow-math-concepts
 ---
@@ -92,7 +92,7 @@ related:
 - recursive หลาย branch อาจ exponential
 
 - ใช้ /follow-algorithms ถ้าจำเป็น
-- ใช้ /follow-data-structures ถ้าจำเป็น
+- ใช้ /improve-data-structure ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 

@@ -8,7 +8,7 @@ related:
   - gen-ai-videos
   - gen-voice
   - gen-subtitle-video
-  - follow-framework-remotion
+  - follow-lib-remotion
   - enhance-prompt
   - report-table
 ---
@@ -102,7 +102,7 @@ related:
 
 1. เลือกวิธีสร้างวิดีโอ:
    - เรียก `/gen-ai-videos` จาก prompt หรือ image sequence
-   - ใช้ `/follow-framework-remotion` ถ้าต้องการ render แบบโปรแกรมมิ่ง
+   - ใช้ `/follow-lib-remotion` ถ้าต้องการ render แบบโปรแกรมมิ่ง
 2. ระบุ duration, aspect-ratio, และ fps
 3. ตรวจสอบ video file มีขนาด > 0
 4. ถ้าใช้ paid provider แจ้ง user ก่อน

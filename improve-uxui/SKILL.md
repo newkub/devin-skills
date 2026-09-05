@@ -8,10 +8,9 @@ related:
   - review-uxui
   - review-by-stakeholder
   - follow-tool-agent-browser
-  - browser-preview
-  - run-test-browser
+  - run-test-website-by-agent-browser
   - report-table
-  - report-uxui
+  - report-uxui-sketch
   - suggest-next-action
   - resolve-errors
   - refactor

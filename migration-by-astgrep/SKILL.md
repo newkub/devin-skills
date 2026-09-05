@@ -1,6 +1,6 @@
 ---
 name: migration-by-astgrep
-description: รัน codebase migrations ด้วย ast-grep rules สำหรับ refactor patterns, API renames และ deprecation cleanup
+description: รัน codebase migrations ด้วย ast-grep rules
 argument-hint: "[rule-file-or-pattern]"
 related:
   - scan-codebase

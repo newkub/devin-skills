@@ -3,7 +3,8 @@
 ## Source
 
 - GitHub: https://github.com/hngngn/shadcn-solid
-- Documentation: https://shadcn-solid.netlify.app
+- Website: https://shadcn-solid.com
+- Documentation: https://shadcn-solid.com/docs
 - CLI Docs: https://shadcn-solid.com/docs/cli
 
 ## Overview

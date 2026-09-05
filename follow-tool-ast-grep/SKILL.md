@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 related:
   - use-ast-grep
   - use-ast-grep-programatic
-  - search-with-astgrep
+  - search-by-astgrep
   - follow-tool-agent-browser
   - follow-tool-usage
   - follow-best-practice
@@ -20,7 +20,7 @@ related:
 
 ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-ast-grep`
 
-ดูเพิ่มเติม: /search-with-astgrep
+ดูเพิ่มเติม: /search-by-astgrep
 
 ## Execute
 

@@ -10,8 +10,9 @@ related:
   - follow-create-claude-plugin
   - follow-create-cli
   - follow-create-codex-plugin
+  - follow-create-devin-global-skills
   - follow-create-devin-plugins
-  - follow-create-devin-skills
+  - follow-create-devin-project-skills
   - follow-create-discord-bot
   - follow-create-elysia-plugin
   - follow-create-eslint-plugins
@@ -80,8 +81,9 @@ related:
 1. ใช้ `search-files-patterns` หรือ `exec` ค้นหา `follow-create-*/SKILL.md` ใน `%APPDATA%\devin\skills`
 2. อ่าน frontmatter (`name`, `description`) ของแต่ละ skill
 3. สร้างรายการ: ชื่อ skill, description, category โดยประมาณ
-   - `skills` → `follow-create-devin-skills`
-   - `devin skills` → `follow-create-devin-skills`
+   - `skills` → `follow-create-devin-global-skills`
+   - `devin skills` → `follow-create-devin-global-skills`
+   - `project skills` → `follow-create-devin-project-skills`
    - `update all skills` → `update-devin-global-skills`
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`

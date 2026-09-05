@@ -35,62 +35,51 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. ทำตาม `references/prepare.md`
 
-### 2. Check Frontmatter
+### 2. Run Review Script
 
-> Goal: ตรวจ frontmatter ครบถ้วน
+> Goal: ได้ findings จาก automated checks ทั้งหมด
 
-1. ทำตาม `references/frontmatter.md`
-2. ตรวจทุก `related` ใน frontmatter ว่ามี mention ใน content ด้วย
-3. ถ้า `related` ไม่มีใน content → flag Medium (orphan reference)
+1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ: frontmatter (name, description, `argument-hint`, `related` ≤15, missing/orphan), sections (order, `> Goal:`, step count), line count, style (bold, TODO/MOCK, Title Case, Thai language), references (`/skill-name` refs, markdown links, `references/index.md`), parallel markers, template compliance ตาม prefix และ cross-skill checks (duplicates, naming, prefix distribution)
+2. ใช้ `bun run review:fix` เพื่อ auto-fix findings ที่ `fixable` (เช่น generate `references/index.md`)
+3. ใช้ `bun run review:ci` เพื่อ exit code 1 เมื่อมี Critical/High — สำหรับ pre-check ก่อน `update-all-devin-global-skills`
+4. อ่าน `review-skills-report.json` ที่ skill directory เพื่อดู findings ทั้งหมด
 
-### 3. Check Sections And Style
+### 3. Interpret Findings
 
-> Goal: ตรวจ sections และ style ตามมาตรฐาน
+> Goal: แยก false positives และจัดกลุ่ม findings
 
-1. ทำตาม `references/sections.md`
-2. ทำตาม `references/style.md`
-
-### 4. Check Line Count, Files And Template
-
-> Goal: ตรวจ line count, file structure และ template
-
-1. ทำตาม `references/line-count.md`
-2. ทำตาม `references/template-selection.md`
-
-### 5. Check References And Content Quality
-
-> Goal: ตรวจ references ครบถ้วนและเนื้อหากระชับ
-
-1. ทำ `/check-reference` เพื่อยืนยัน `related` references
-2. ทำ `/check-broken-skills-references` เพื่อ scan หา broken `/skill-name` references ทั้งหมด
-3. ทำตาม `references/content-quality.md`
+1. ตรวจ findings จาก report — เช็ค evidence แต่ละข้อ
+2. ทำตาม `references/frontmatter.md`, `references/sections.md`, `references/style.md`, `references/line-count.md`, `references/template-selection.md` เพื่อตีความ findings
+3. ทำ `/check-reference` ถ้า finding เกี่ยวกับ references ที่ต้องตรวจเพิ่ม
 4. ทำ `/follow-skills-map` เพื่อตรวจว่า skills map sync กับ skills ทีมีอยู่
 
-### 6. Check Parallel And Script Usage
+### 4. Check Content Quality
 
-> Goal: ลด tool calls โดยรักษา safety
+> Goal: ตรวจเนื้อหาเชิงคุณภาพที่ script ตรวจไม่ได้
 
-1. ทำตาม `references/parallel-usage.md`
+1. ทำตาม `references/content-quality.md`
+2. ทำตาม `references/parallel-usage.md` สำหรับ parallel markers ใน Execute
+3. ประเมินความกระชับและ high-impact content ของ skills ที่มี findings สูง
 
-### 7. Plan Refactor
+### 5. Plan Refactor
 
 > Goal: วางแผนการ refactor ตาม findings
 
 1. ทำตาม `references/refactor-guide.md#plan-refactor`
 
-### 8. Execute Refactor
+### 6. Execute Refactor
 
 > Goal: ทำ split, merge, restructure, deduplicate, relocate ตาม plan
 
 1. ทำตาม `references/refactor-guide.md#execute-refactor`
 
-### 9. Cross-Skill Consistency
+### 7. Cross-Skill Consistency
 
 > Goal: ตรวจสอบความสอดคล้องและลด redundancy ข้าม skill
 
 1. ทำตาม `references/refactor-guide.md#cross-skill-consistency`
 
-### 10. Score And Report
+### 8. Score And Report
 
 > Goal: สรุป review score, refactor results และ findings
 
@@ -103,7 +92,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ### 1. Review Before Refactor
 
-- ทำ review (Steps 2-6) ก่อน refactor (Steps 7-9) เสมอ
+- ทำ review (Steps 2-4) ก่อน refactor (Steps 5-7) เสมอ
 - ทุก finding ต้องมี skill name, file path, evidence
 - ไม่แก้ไข skills ระหว่าง review — แก้ใน refactor step
 

@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - ask-me
   - dont-understand
-  - plan-with-me
+  - plan-by-ask-me
 ---
 
 ## Goal
@@ -127,7 +127,7 @@ related:
 
 - ใช้ /ask-me ถ้าจำเป็น
 - ใช้ /dont-understand ถ้าจำเป็น
-- ใช้ /plan-with-me ถ้าจำเป็น
+- ใช้ /plan-by-ask-me ถ้าจำเป็น
 
 ## Expected Outcome
 

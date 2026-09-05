@@ -1,10 +1,7 @@
 ---
 name: follow-lib-gritql
-description: ตั้งค่าและใช้งาน GritQL สำหรับ code search, transformation และ linting ใน Biome
+description: ใช้ GritQL ใน Biome สำหรับ code search, transformation และ custom linting
 related:
-  - follow-lib-animejs
-  - follow-lib-arktype
-  - follow-lib-better-auth
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
@@ -12,11 +9,11 @@ related:
 
 ## Goal
 
-ใช้ GritQL สำหรับ AST-based code search, transformation และ custom linting ใน Biome
+ใช้ GritQL ร่วมกับ Biome สำหรับ structural code search, code transformation และ custom lint rules
 
 ## Scope
 
-ตั้งค่าและใช้งาน GritQL patterns สำหรับ JavaScript/TypeScript, CSS, และ JSON
+ใช้กับ JavaScript/TypeScript, CSS และ JSON ในโปรเจกต์ที่ใช้ Biome v2+
 
 ## Execute
 
@@ -31,12 +28,12 @@ related:
 
 ### 2. Set Up Language Target
 
-> Goal: ระบุ target language สำหรับ patterns
+> Goal: ระบุ target language และ engine สำหรับ patterns
 
-1. ระบุ target language ด้วย `language js`, `language css`, หรือ `language json`
-2. ใช้ flavors เช่น `typescript`, `jsx` สำหรับ JavaScript
-3. ตรวจสอบ integration status ของแต่ละ language
-4. อ่าน language documentation สำหรับ syntax เฉพาะภาษา
+1. ระบุ target language ด้วย `language js`, `language css` หรือ `language json`
+2. ใช้ flavors เช่น `typescript`, `jsx` สำหรับ JavaScript ด้วย `language js(typescript,jsx)`
+3. ใช้ `engine biome(1.0)` เมื่อต้องการ match Biome syntax nodes เช่น `JsIfStatement`
+4. ตรวจสอบ integration status ของแต่ละ language ก่อนใช้งาน
 
 ### 3. Write Basic Patterns
 
@@ -46,48 +43,56 @@ related:
 2. ใช้ variables สำหรับ flexible matching เช่น `$method`, `$message`
 3. ใช้ spread metavariables `$$$args` สำหรับ match arguments
 4. ใช้ same variable multiple times สำหรับ consistency matching
+5. ใช้ `as $name` เพื่อ capture node span สำหรับ diagnostics หรือ rewrite
 
 ### 4. Add Conditions And Filters
 
-> Goal: เพิ่ม conditions และ filters ด้วย where clause
+> Goal: เพิ่ม conditions และ filters ด้วย `where` clause
 
 1. ใช้ `where` clause สำหรับ conditions
 2. ใช้ pattern matching operator `<:` สำหรับ pattern comparison
 3. ใช้ `or` สำหรับ multiple pattern options
-4. ใช้ built-in functions สำหรับ complex logic
+4. ใช้ built-in functions เช่น `register_diagnostic()` สำหรับ complex logic
 
-### 5. Create Analyzer Plugin
+### 5. Create GritQL Analyzer Plugin
 
 > Goal: สร้าง GritQL plugin สำหรับ Biome linter
 
-1. สร้าง GritQL plugin file สำหรับ Biome linter
-2. ใช้ `register_diagnostic()` สำหรับ custom lint rules
-3. กำหนด severity และ message สำหรับ diagnostics
-4. ลงทะเบียน plugin ใน Biome configuration
+1. สร้างไฟล์ `.grit` สำหรับ plugin เช่น `.grit/no-console-log.grit`
+2. ใช้ `register_diagnostic()` สำหรับ custom lint rules โดยระบุ `span`, `message` และ `severity`
+3. ใช้ `fix_kind` (`safe` หรือ `unsafe`) เมื่อมี rewrite ด้วย `=>`
+4. ลงทะเบียน plugin ใน `biome.jsonc` หรือ `biome.json` ภายใต้ key `plugins`
 
 ### 6. Use Biome Search Command
 
-> Goal: ใช้ biome search สำหรับ structural code search
+> Goal: ใช้ `biome search` สำหรับ structural code search
 
-1. ใช้ `biome search` สำหรับ structural code search
-2. ใช้ single quotes รอบ GritQL patterns เพื่อ avoid shell conflicts
-3. ใช้ `--language` flag สำหรับ specify target language
-4. ใช้ output options สำหรับ format results
+1. ใช้ `biome search '<pattern>' [path]` โดยห่อ pattern ด้วย single quotes
+2. ใช้ `--language=<lang>` เช่น `javascript`, `css`, `json` สำหรับ target language
+3. ระบุ path หรือ glob patterns สำหรับ scope ของ search
+4. จำไว้ว่า `biome search` รองรับเฉพาะ search pattern ไม่รองรับ rewrites
 
-### 7. Optimize Performance
+### 7. Apply Rewrites (Optional)
+
+> Goal: แก้ไข code ด้วย rewrite operator ใน plugins
+
+1. ใช้ rewrite operator `=>` สำหรับ transform matched code
+2. กำหนด `fix_kind` ใน `register_diagnostic()` เพื่อบ่งบอกความปลอดภัยของ fix
+3. รัน `biome check --write` หรือ `biome lint --write` เพื่อ apply safe fixes
+4. หลีกเลี่ยง unsafe rewrites หากอาจทำให้ code logic เปลี่ยน
+
+### 8. Optimize Performance
 
 > Goal: ปรับปรุง performance ของ patterns
 
-1. ใช้ anchor kinds สำหรับ efficient matching
+1. ใช้ specific node types หรือ snippets แทน full-tree walks
 2. หลีกเลี่ยง overly broad patterns
-3. ใช้ specific node types แทน full-tree walks
-4. ตรวจสอบ performance ด้วย benchmarking
+3. ใช้ anchors และ node matchers ที่เหมาะสม
+4. ตรวจสอบ performance ด้วย benchmarking บน codebase จริง
 
 ## Rules
 
 ### 1. Pattern Syntax
-
-เขียน GritQL patterns อย่างถูกต้อง:
 
 - ใช้ backticks สำหรับ code snippets: `` `console.log($message)` ``
 - ใช้ `$variable` สำหรับ metavariables
@@ -95,19 +100,15 @@ related:
 - ใช้ `where` clause สำหรับ conditions
 - ใช้ `<:` operator สำหรับ pattern matching
 
-### 2. Language Support
+### 2. Language And Engine Support
 
-เลือก target language ที่เหมาะสม:
-
-- `language js` สำหรับ JavaScript (รองรับ `typescript`, `jsx` flavors)
+- `language js` สำหรับ JavaScript รองรับ `typescript` และ `jsx` flavors
 - `language css` สำหรับ CSS
 - `language json` สำหรับ JSON
+- `engine biome(1.0)` สำหรับ match Biome AST nodes เช่น `JsIfStatement`
 - ตรวจสอบ integration status ก่อนใช้งาน
-- อ่าน language documentation สำหรับ syntax เฉพาะภาษา
 
 ### 3. Variable Usage
-
-ใช้ variables อย่างมีประสิทธิภาพ:
 
 - ใช้ same variable name หลายครั้งสำหรับ consistency matching
 - ใช้ spread metavariables สำหรับ flexible argument matching
@@ -116,8 +117,6 @@ related:
 
 ### 4. Condition Logic
 
-เขียน conditions อย่างชัดเจน:
-
 - ใช้ `where` clause สำหรับ filtering
 - ใช้ `<:` operator สำหรับ pattern comparison
 - ใช้ `or` สำหรับ multiple options
@@ -125,55 +124,35 @@ related:
 
 ### 5. Plugin Integration
 
-สร้าง Biome plugins อย่างถูกต้อง:
-
-- ใช้ `register_diagnostic()` สำหรับ custom rules
-- กำหนด severity และ message อย่างชัดเจน
+- ใช้ `register_diagnostic()` สำหรับ custom rules โดยระบุ `span`, `message`, `severity`
+- กำหนด `fix_kind` เป็น `safe` หรือ `unsafe` เมื่อใช้ rewrite
 - ลงทะเบียน plugin ใน Biome configuration
 - ตรวจสอบ plugin compatibility กับ Biome version
 
 ### 6. Search Usage
 
-ใช้ `biome search` อย่างถูกต้อง:
+- ใช้ single quotes รอบ patterns: `biome search '`console.log($message)`' ./src`
+- ใช้ `--language=<lang>` สำหรับ target language
+- หลีกเลี่ยง shell conflicts ด้วยการห่อ pattern ด้วย single quotes
+- ไม่ใช้ rewrite (`=>`) กับ `biome search`
 
-- ใช้ single quotes รอบ patterns: `biome search '`console.log($message)`'`
-- ใช้ `--language` flag สำหรับ target language
-- ใช้ output options สำหรับ format results
-- หลีกเลี่ยง shell conflicts ด้วย backticks
+### 7. Rewrite And Fix Safety
 
-### 7. Performance Best Practices
+- ใช้ `=>` operator สำหรับ transformation ใน GritQL plugins เท่านั้น
+- กำหนด `fix_kind` ให้เหมาะสม
+- รัน `biome check --write` สำหรับ safe fixes
+- ทดสอบ rewrite บน sample files ก่อน apply ใน production
 
-ปรับปรุง performance ของ patterns:
+### 8. Performance Best Practices
 
-- ใช้ anchor kinds สำหรับ efficient matching
-- หลีกเลี่ยง overly broad patterns
 - ใช้ specific node types แทน full-tree walks
+- หลีกเลี่ยง overly broad patterns
+- ใช้ anchors สำหรับ efficient matching
 - ตรวจสอบ performance ด้วย benchmarking
 
-- ใช้ /follow-lib-animejs ถ้าจำเป็น
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-lib-better-auth ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-
-## Common Mistakes
-
-ข้อผิดพลาดที่พบบ่อย:
-
-- ไม่ใช้ single quotes รอบ patterns ใน shell
-- ใช้ overly broad patterns ที่ match มากเกินไป
-- ไม่ระบุ target language อย่างชัดเจน
-- ไม่ optimize patterns สำหรับ performance
-
-## Anti-Patterns
-
-รูปแบบที่ไม่ควรทำ:
-
-- ใช้ GritQL สำหรับ simple text search (ใช้ `grep` แทน)
-- ไม่ใช้ conditions เมื่อจำเป็น
-- สร้าง patterns ที่ match ทุกอย่าง
-- ไม่ตรวจสอบ performance ของ complex patterns
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 

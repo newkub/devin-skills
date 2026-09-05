@@ -1,96 +1,146 @@
 ---
 name: follow-lib-animejs
-description: JavaScript animation library สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่าย
+description: ใช้ Anime.js v4 สร้าง DOM/CSS animations, timelines, staggers และ utilities บน web apps
 related:
-  - follow-lib-arktype
-  - follow-lib-better-auth
   - follow-lib-css
+  - follow-lib-react
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
+  - follow-lang-javascript
+  - follow-lang-typescript
 ---
 
 ## Goal
 
-ใช้ Anime.js สร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และใช้งานง่ายในโปรเจกต์
+ใช้ Anime.js v4 (latest v4.5.0) ในโปรเจกต์ด้วย ESM-first API สำหรับสร้าง animation ที่รวดเร็ว มีประสิทธิภาพ และ maintainable
 
 ## Scope
 
-ใช้สำหรับสร้าง CSS/JS animations ด้วย Anime.js
+ใช้สำหรับ:
+- DOM/CSS animations ด้วย `animate()`
+- ควบคุม sequence ด้วย `createTimeline()`
+- staggered animations ด้วย `stagger()`
+- utilities (`utils.set`, `utils.get`, `lerp`, `damp`, `engine`)
+- scroll, layout, SVG, text, WAAPI integrations
+- ใช้ร่วมกับ React, Vue, Svelte, และ plain JS
 
 ## Execute
 
 ### 1. Install And Setup
 
-> Goal: ติดตั้ง Anime.js และเริ่มต้นใช้งาน
+> Goal: Install And Setup
 
-1. ติดตั้ง Anime.js ด้วย `bun add animejs`
-2. อ่าน `guide/installation.md` สำหรับการติดตั้งและ setup
-3. อ่าน `guide/quick-start.md` สำหรับเริ่มต้นใช้งาน
+1. `bun add animejs` หรือ `npm install animejs`
+2. import สำหรับ v4:
 
-### 2. Learn Key Concepts
+```javascript
+import { animate, createTimeline, stagger } from 'animejs';
 
-> Goal: เข้าใจแนวคิดหลักของ Anime.js
+// หรือ import แบบ subpath เพื่อ tree-shaking
+import { animate } from 'animejs/animation';
+import { createTimeline } from 'animejs/timeline';
+```
 
-1. อ่าน `guide/key-concept.md` สำหรับแนวคิดหลัก
-2. อ่าน `key-concepts/timeline.md` สำหรับระบบ timeline
-3. อ่าน `key-concepts/easing.md` สำหรับ easing functions
-4. อ่าน `key-concepts/staggering.md` สำหรับ staggering animations
-5. อ่าน `key-concepts/callbacks.md` สำหรับ callbacks และ event handling
+3. ตรวจสอบ version: `npm ls animejs` หรือดู `package.json`
 
-### 3. Apply Patterns And Best Practices
+### 2. Learn Core API
 
-> Goal: ใช้ patterns และ best practices
+> Goal: Learn Core API
 
-1. อ่าน `guide/features.md` สำหรับ features ที่มี
-2. อ่าน `guide/patterns.md` สำหรับ patterns ทั่วไป
-3. อ่าน `guide/best-practices.md` สำหรับ best practices
-4. อ่าน `principles/performance-first.md` สำหรับ performance
-5. อ่าน `principles/accessibility.md` สำหรับ accessibility
+```javascript
+// สร้าง animation
+animate('.box', {
+  x: 250,
+  rotate: { from: -180 },
+  duration: 1200,
+  delay: stagger(80, { from: 'center' }),
+  ease: 'inOutQuint',
+});
 
-### 4. Configure And Optimize
+// Timeline
+const tl = createTimeline({
+  defaults: { duration: 800, ease: 'outQuad' },
+});
+tl.add('.a', { x: 100 })
+  .add('.b', { y: -50 }, '-=400');
 
-> Goal: ตั้งค่าและ optimize performance
+// Utilities
+import { utils } from 'animejs';
+utils.set('.box', { opacity: 0.5 });
+```
 
-1. อ่าน `guide/configuration.md` สำหรับการตั้งค่า
-2. อ่าน `guide/performance.md` สำหรับ optimization techniques
+### 3. Key Concepts
+
+> Goal: Key Concepts
+
+- `targets`: CSS selector, DOM elements, JS objects, array
+- Animatable properties: CSS, transforms, CSS variables, SVG attributes, HTML attributes, JS object properties
+- Tween parameters: `from`, `to`, `delay`, `duration`, `ease`, `composition` (`replace` | `blend` | `none`), `modifier`
+- Playback: `loop`, `alternate`, `reversed`, `autoplay`, `frameRate`, `playbackRate`, `playbackEase`
+- Keyframes: tween-value, tween-parameter, duration-based, percentage-based
+- Callbacks: `onBegin`, `onBeforeUpdate`, `onUpdate`, `onRender`, `onLoop`, `onComplete`, `onPause`, `then()`
+- Timeline: `add()`, `set()`, `call()`, `sync()`, `label()`, `remove()`, `seek()`, `stretch()`
+- `stagger` options: `from`, `grid`, `axis`, `reversed`, `ease`, `jitter`, `seed`
+
+### 4. Apply Patterns And Best Practices
+
+> Goal: Apply Patterns And Best Practices
+
+- ใช้ `transform` (translate/scale/rotate) และ `opacity` เป็นหลัก
+- หลีกเลี่ยง animate properties ที่ trigger layout (width, height, top, left)
+- ใช้ `will-change` บน elements ที่จะ animate แล้ว remove หลังเสร็จ
+- ใช้ `stagger()` สำหรับ group animations
+- กำหนด `composition: 'blend'` เมื่อต้องการรวม animation
+- ใช้ `revert()` หรือ `cancel()` เพื่อ cleanup
+- รองรับ `prefers-reduced-motion` เพื่อปิด/ลด animation
+- ใช้ subpath imports (`animejs/easings`, `animejs/svg`, `animejs/text`) เมื่อต้องการเฉพาะ module
 
 ### 5. Integrate With Frameworks
 
-> Goal: integrate กับ frameworks
+> Goal: Integrate With Frameworks
 
-1. อ่าน `guide/integration.md` สำหรับการ integrate กับ frameworks
-2. อ่าน `guide/architecture.md` สำหรับ system architecture
-3. อ่าน `guide/structure.md` สำหรับ project structure
+React:
+
+```jsx
+import { useEffect, useRef } from 'react';
+import { animate } from 'animejs';
+
+function Box() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const a = animate(ref.current, { x: 100 });
+    return () => a.revert();
+  }, []);
+  return <div ref={ref} />;
+}
+```
+
+Vue/Svelte: เรียก `animate()` ใน lifecycle hook และ cleanup ใน `onUnmounted`/`onDestroy`
 
 ### 6. Reference And Troubleshoot
 
-> Goal: อ้างอิง API และแก้ปัญหา
+> Goal: Reference And Troubleshoot
 
-1. อ่าน `references/api.md` สำหรับ API documentation
-2. อ่าน `references/configuration.md` สำหรับ configuration reference
-3. อ่าน `guide/troubleshooting.md` สำหรับปัญหาทั่วไป
+- official docs: https://animejs.com/documentation
+- releases/changelog: https://github.com/juliangarnier/anime/releases
+- v3 to v4 migration: https://github.com/juliangarnier/anime/wiki/Migrating-from-v3-to-v4
 
 ## Rules
 
 - ใช้ `bun add animejs` สำหรับ installation
-- ใช้ `bun add -D animejs` สำหรับ dev dependencies
-- ใช้ backticks สำหรับ `anime()`, `timeline()`, commands
-- ใช้ code blocks สำหรับ animation examples
-- ใช้ ansi markdown diagrams สำหรับ flow และ architecture
-- ใช้ `transform` แทน `position` เมื่อเป็นไปได้
-- ใช้ `will-change` สำหรับ elements ที่จะ animate
-- หลีกเลี่ยง animate properties ที่ trigger layout
-- ให้ผู้ใช้ปิด animations ได้ด้วย `prefers-reduced-motion`
+- import ESM: `import { animate, createTimeline, stagger } from 'animejs'`
+- ไม่ใช้ global `anime()` จาก v3
+- ใช้ `ease` แทน `easing`
+- ใช้ `createTimeline()` แทน `anime.timeline()`
+- ใช้ `stagger()` แทน v3 `stagger` syntax เก่า
+- ใช้ `transform` และ `opacity` เมื่อได้
+- ใช้ `will-change` อย่างระมัดระวัง
+- รองรับ `prefers-reduced-motion`
+- cleanup animation ด้วย `revert()` หรือ `cancel()`
 - ใช้ animations เพื่อเสริม UX ไม่ใช่ distraction
-- ให้ feedback ชัดเจนเมื่อ animation เสร็จ
-
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-lib-better-auth ถ้าจำเป็น
-- ใช้ /follow-lib-css ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ `follow-lib-css` ถ้าจำเป็น
+- ใช้ `follow-lib-react` ถ้า integrate กับ React
 
 ## Expected Outcome
 

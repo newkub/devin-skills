@@ -5,174 +5,87 @@ description: Configuration options สำหรับ ArkType
 
 ## Configuration Reference
 
-Configuration options สำหรับ ArkType
+ArkType รองรับการตั้งค่าได้ 4 levels: `default`, `global`, `scope`, และ `type` โดยแต่ละ level มีผลกับ types ที่ parse ภายใน scope นั้น
 
-## Type Configuration
+## Configuration Levels
 
-### Scope Configuration
+### 1. Default
 
-#### Global Scope
+ค่าเริ่มต้นของ built-in keywords ทั่งหมด เปลี่ยนได้ผ่าน global config เท่านั้น
+
+### 2. Global Configuration
+
+ตั้งค่าสากลก่อน import `arktype` โดยใช้ `arktype/config` entrypoint
 
 ```typescript
-import { configure } from 'arktype'
+import { configure } from "arktype/config"
 
-configure({
-  // Global configuration
-  strict: true,
-  onType: (type) => {
-    // Custom type handler
+configure({ numberAllowsNaN: true })
+```
+
+ต้อง import config file ก่อน `arktype` จึงจะมีผลกับ built-in keywords:
+
+```typescript
+import "./config.ts"
+import { type } from "arktype"
+
+type.number.allows(Number.NaN) // true
+```
+
+### 3. Scope Configuration
+
+```typescript
+import { scope } from "arktype"
+
+const myScope = scope(
+  { User: { age: "number < 100" } },
+  {
+    max: {
+      actual: () => "unacceptably large",
+    },
   }
-})
+)
+
+const types = myScope.export()
 ```
 
-### Type Options
-
-#### Strict Mode
+### 4. Per-Type Configuration
 
 ```typescript
-import { type } from 'arktype'
+const Password = type("string >= 8").configure({
+  actual: () => "",
+})
 
-const Schema = type({
-  field: 'string'
-}, {
-  strict: true // Strict validation
+const User = type({
+  email: "string.email",
+  password: Password,
 })
 ```
 
-#### Default Values
+## Common Configuration Options
+
+| Option | Description |
+|--------|-------------|
+| `numberAllowsNaN` | อนุญาต `NaN` สำหรับ `number` |
+| `dateAllowsInvalid` | อนุญาต invalid `Date` objects |
+| `jitless` | ปิด JIT compilation |
+| `onFail` | callback เมื่อ validation fail |
+| `toJsonSchema` | กำหนด JSON Schema output options |
+
+## Error Customization
 
 ```typescript
-const Schema = type({
-  field: 'string',
-  count: 'number'
-}, {
-  defaults: {
-    count: 0 // Default value
-  }
+const Password = type("string >= 8").configure({
+  actual: () => "",
+})
+
+const User = type({
+  email: "string.email",
+  password: Password,
 })
 ```
 
-## Parser Configuration
+## Sources
 
-### Custom Parsers
-
-#### Define Custom Parser
-
-```typescript
-import { type } from 'arktype'
-
-const CustomParser = type.defineParser({
-  parse: (value) => {
-    // Custom parsing logic
-    return value
-  }
-})
-```
-
-### Parser Options
-
-#### Error Messages
-
-```typescript
-const Schema = type({
-  field: 'string'
-}, {
-  errors: {
-    field: {
-      type: 'Invalid field type'
-    }
-  }
-})
-```
-
-## Validation Configuration
-
-### Validation Rules
-
-#### Custom Rules
-
-```typescript
-const Schema = type({
-  field: 'string'
-}, {
-  rules: {
-    field: (value) => {
-      // Custom validation
-      return true
-    }
-  }
-})
-```
-
-### Validation Options
-
-#### Early Exit
-
-```typescript
-const Schema = type({
-  field: 'string'
-}, {
-  earlyExit: true // Stop on first error
-})
-```
-
-## Type Inference Configuration
-
-### Inference Options
-
-#### Deep Inference
-
-```typescript
-const Schema = type({
-  nested: {
-    field: 'string'
-  }
-}, {
-  deepInference: true // Infer nested types
-})
-```
-
-## Error Configuration
-
-### Error Handling
-
-#### Custom Error Handler
-
-```typescript
-const Schema = type({
-  field: 'string'
-}, {
-  onError: (error) => {
-    // Custom error handling
-    console.error(error)
-  }
-})
-```
-
-### Error Messages
-
-#### Custom Messages
-
-```typescript
-const Schema = type({
-  field: 'string'
-}, {
-  messages: {
-    field: {
-      required: 'Field is required',
-      type: 'Invalid type'
-    }
-  }
-})
-```
-
-## ตารางสรุป Configuration Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| strict | boolean | false | Strict validation mode |
-| defaults | object | {} | Default values |
-| earlyExit | boolean | false | Stop on first error |
-| deepInference | boolean | true | Infer nested types |
-| onError | function | - | Custom error handler |
-| messages | object | {} | Custom error messages |
+- https://arktype.io/docs/configuration
+- https://arktype.io/docs/type-api

@@ -1,6 +1,6 @@
 ---
-name: run-test-browser
-description: รัน browser-based tests ทั้ง route discovery, action testing, และ e2e validation
+name: run-test-website-by-agent-browser
+description: เปิด browser แล้วทดสอบ actions ทุกหน้าด้วย agent browser
 argument-hint: "[url]"
 related:
   - list-website-all-routes
@@ -8,7 +8,7 @@ related:
   - run-test-e2e
   - watch-browser-console
   - watch-browser-and-fix
-  - follow-tool-agent-browser
+  - follow-lib-agent-browser
   - resolve-errors
   - loop-until-complete
   - capture-component

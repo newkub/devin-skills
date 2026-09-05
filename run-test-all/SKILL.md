@@ -77,19 +77,14 @@ related:
 2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
 3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
 
-### 6. Run E2E Tests (Conditional)
+### 6. Run Conditional Tests
 
-> Goal: รัน E2E tests ถ้า project มี web frontend
+> Goal: รัน E2E และ specialized tests เฉพาะที่เกี่ยวข้องกับ project
 
 1. ถ้ามี web frontend: ทำ `/run-test-e2e` เพื่อรัน E2E tests ด้วย Playwright หรือ Cypress
 2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
 3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
-
-### 7. Run Specialized Tests (Conditional)
-
-> Goal: Run Specialized Tests (Conditional)
-
-รันเฉพาะ test types ที่เกี่ยวข้องกับ project:
+4. รันเฉพาะ test types ที่เกี่ยวข้องกับ project:
 
 - ถ้ามี UI: component tests และ accessibility tests (WCAG, ARIA, keyboard, screen reader)
 - ถ้ามี API: ทำ `/run-test-api` สำหรับ API tests และ contract tests

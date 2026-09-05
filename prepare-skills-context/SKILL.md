@@ -58,17 +58,17 @@ related:
 > Goal: เลือก template ตามชนิดของ skill
 
 1. เลือก template ตาม prefix:
-   - `run-*` → `update-devin-global-skills/templates/run.md`
-   - `follow-*` → `update-devin-global-skills/templates/follow.md` ยกเว้น `follow-*-architecture` → `update-devin-global-skills/templates/follow-architecture.md`
-   - `check-*` → `update-devin-global-skills/templates/check.md`
-   - `analyze-*` → `update-devin-global-skills/templates/analyze.md`
-   - `deep-*` → `update-devin-global-skills/templates/deep.md`
-   - `review-*` → `update-devin-global-skills/templates/review.md`
-   - `idea-*` → `update-devin-global-skills/templates/idea.md`
-   - `report-*` → `update-devin-global-skills/templates/report.md`
+   - `run-*` → `follow-create-devin-global-skills/templates/run.md`
+   - `follow-*` → `follow-create-devin-global-skills/templates/follow.md` ยกเว้น `follow-*-architecture` → `follow-create-devin-global-skills/templates/follow-architecture.md`
+   - `check-*` → `follow-create-devin-global-skills/templates/check.md`
+   - `analyze-*` → `follow-create-devin-global-skills/templates/analyze.md`
+   - `deep-*` → `follow-create-devin-global-skills/templates/deep.md`
+   - `review-*` → `follow-create-devin-global-skills/templates/review.md`
+   - `idea-*` → `follow-create-devin-global-skills/templates/idea.md`
+   - `report-*` → `follow-create-devin-global-skills/templates/report.md`
    - ถ้าไม่ตรง → บันทึกว่าไม่มี template ตรง prefix
 2. อ่าน template ที่เลือกเพื่อดูโครงสร้าง sections, steps, และ rules ขั้นต่ำ
-   - ใช้ relative path `update-devin-global-skills/templates/<prefix>.md`
+   - ใช้ relative path `follow-create-devin-global-skills/templates/<prefix>.md`
 3. ถ้าไม่มี template ตรง prefix → ระบุใน report และให้ `/suggest-next-action` แนะนำ `/update-devin-global-skills`
 
 ### 5. Confirm Context
@@ -96,7 +96,7 @@ related:
 ### 3. Template Consistency
 
 - ทุก skill ที่มี prefix เดียวกันต้องมีโครงสร้างใกล้เคียงกัน
-- ใช้ templates ใน `update-devin-global-skills/templates/*.md` เป็น canonical structure
+- ใช้ templates ใน `follow-create-devin-global-skills/templates/*.md` เป็น canonical structure
 - ถ้า skill เบี่ยงเบนจาก template → ระบุเหตุผลใน `## Scope`
 - Template เองต้องมี `## Example Template`
 

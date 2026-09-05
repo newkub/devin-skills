@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- Package: `better-auth` v1.6.9 (published ~4 months ago)
+- Package: `better-auth` v1.7.2 (published Aug 26, 2026)
 - CLI Package: `auth` (Better Auth CLI)
 - License: MIT
 - Peer Dependencies: None (database adapter installed separately)
@@ -12,14 +12,14 @@
 ## Install
 
 ```bash
-# npm
+npm install better-auth
+# or
+pnpm add better-auth
+yarn add better-auth
 bun add better-auth
-
-# Bun
-bun add better-auth
-
-# For separate client/server setup, install in both parts
 ```
+
+สำหรับ separate client/server setup ให้ติดตั้งทั้งสองฝั่ง
 
 ## Environment Variables
 
@@ -33,10 +33,12 @@ BETTER_AUTH_SECRET=
 BETTER_AUTH_URL=http://localhost:3000
 ```
 
+สามารถหมุน secret โดยไม่ทำให้ session เก่าใช้ไม่ได้ด้วย `BETTER_AUTH_SECRETS`
+
 ## Server Configuration (`auth.ts`)
 
 ```ts
-import { betterAuth } from 'better-auth'
+import { betterAuth } from "better-auth"
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -44,8 +46,8 @@ export const auth = betterAuth({
   },
   socialProviders: {
     github: {
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     },
   },
 })
@@ -56,18 +58,18 @@ export const auth = betterAuth({
 ### SQLite (built-in Kysely adapter)
 
 ```ts
-import { betterAuth } from 'better-auth'
-import Database from 'better-sqlite3'
+import { betterAuth } from "better-auth"
+import Database from "better-sqlite3"
 
 export const auth = betterAuth({
-  database: new Database('./sqlite.db'),
+  database: new Database("./sqlite.db"),
 })
 ```
 
-### PostgreSQL / MySQL (connection string)
+### PostgreSQL / MySQL connection string
 
 ```ts
-import { betterAuth } from 'better-auth'
+import { betterAuth } from "better-auth"
 
 export const auth = betterAuth({
   database: process.env.DATABASE_URL!,
@@ -77,13 +79,29 @@ export const auth = betterAuth({
 ### Drizzle adapter
 
 ```ts
-import { betterAuth } from 'better-auth'
-import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { db } from '@/db'
+import { betterAuth } from "better-auth"
+import { drizzleAdapter } from "@better-auth/drizzle-adapter"
+import { db } from "@/db"
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
-    provider: 'pg', // or 'mysql', 'sqlite'
+    provider: "pg", // or "sqlite", "mysql"
+  }),
+})
+```
+
+### Prisma adapter
+
+```ts
+import { betterAuth } from "better-auth"
+import { prismaAdapter } from "@better-auth/prisma-adapter"
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+export const auth = betterAuth({
+  database: prismaAdapter(prisma, {
+    provider: "sqlite",
   }),
 })
 ```
@@ -91,24 +109,32 @@ export const auth = betterAuth({
 ## CLI Commands
 
 ```bash
-# Generate ORM schema or SQL migration file
-npx auth@latest generate
+# Initialize Better Auth in a Next.js project
+npx auth@latest init
 
-# Create required tables directly (Kysely adapter only)
+# Generate schema or SQL migration
+npx auth@latest generate
+npx auth@latest generate --adapter prisma
+npx auth@latest generate --adapter drizzle
+
+# Apply migrations (built-in Kysely adapter only)
 npx auth@latest migrate
 
-# Generate a new secret
+# Upgrade Better Auth packages
+npx auth@latest upgrade
+
+# Generate a secret
 npx auth@latest secret
 ```
 
-## Mount Handler (API Route)
+## Mount Handler
 
 ### Next.js App Router
 
 ```ts
 // app/api/auth/[...all]/route.ts
-import { auth } from '@/lib/auth'
-import { toNextJsHandler } from 'better-auth/next-js'
+import { auth } from "@/lib/auth"
+import { toNextJsHandler } from "better-auth/next-js"
 
 export const { POST, GET } = toNextJsHandler(auth)
 ```
@@ -116,12 +142,12 @@ export const { POST, GET } = toNextJsHandler(auth)
 ### Elysia
 
 ```ts
-import { Elysia } from 'elysia'
-import { auth } from './auth'
-import { toElysiaHandler } from 'better-auth/elysia'
+import { Elysia } from "elysia"
+import { auth } from "./auth"
+import { toElysiaHandler } from "better-auth/elysia"
 
 const app = new Elysia()
-  .mount('/api/auth', toElysiaHandler(auth))
+  .mount("/api/auth", toElysiaHandler(auth))
   .listen(3000)
 ```
 
@@ -131,79 +157,61 @@ const app = new Elysia()
 
 ```ts
 // lib/auth-client.ts
-import { createAuthClient } from 'better-auth/react'
+import { createAuthClient } from "better-auth/react"
 
 export const authClient = createAuthClient({
-  baseURL: 'http://localhost:3000',
+  baseURL: "http://localhost:3000",
 })
 
-// Export specific methods
-export const { signIn, signUp, useSession } = authClient
+export const { signIn, signUp, useSession, signOut } = authClient
 ```
 
 ### Vue / Svelte / Solid / Vanilla
 
 ```ts
-import { createAuthClient } from 'better-auth/vue'     // or /svelte, /solid, /client
+import { createAuthClient } from "better-auth/vue"     // or /svelte, /solid, /client
 ```
 
 ## Authentication Methods
 
-### Sign Up
-
 ```ts
-const { data, error } = await authClient.signUp.email({
-  email,
-  password,    // min 8 characters by default
-  name,
-  image,       // optional
-  callbackURL: '/dashboard',
+// Email/password
+await authClient.signUp.email({
+  name: "John Doe",
+  email: "john@example.com",
+  password: "password1234", // 8-128 chars by default
+  callbackURL: "/dashboard",
 })
-```
 
-### Sign In
-
-```ts
-const { data, error } = await authClient.signIn.email({
-  email,
-  password,
-  callbackURL: '/dashboard',
-  rememberMe: false,  // default: true
+await authClient.signIn.email({
+  email: "john@example.com",
+  password: "password1234",
+  rememberMe: true,
+  callbackURL: "/dashboard",
 })
-```
 
-### Social Sign-On
-
-```ts
-await authClient.signIn.social({
-  provider: 'github',
-  callbackURL: '/dashboard',
-  errorCallbackURL: '/error',
-  newUserCallbackURL: '/welcome',
-})
-```
-
-### Sign Out
-
-```ts
 await authClient.signOut()
+
+// Social
+await authClient.signIn.social({
+  provider: "github",
+  callbackURL: "/dashboard",
+})
 ```
 
 ## Session Management
 
-### Client side — `useSession` hook
+### Client side — `useSession`
 
 ```ts
-import { authClient } from '@/lib/auth-client'
-
 const { data: session, isPending, error, refetch } = authClient.useSession()
 ```
 
 ### Server side — `auth.api.getSession`
 
 ```ts
-import { auth } from './auth'
-import { headers } from 'next/headers'
+import { auth } from "./auth"
+import { headers } from "next/headers"
 
 const session = await auth.api.getSession({
   headers: await headers(),
@@ -212,37 +220,31 @@ const session = await auth.api.getSession({
 
 ## Plugins
 
-### Server-side — add plugin
+### Server-side
 
 ```ts
-import { betterAuth } from 'better-auth'
-import { twoFactor } from 'better-auth/plugins'
+import { betterAuth } from "better-auth"
+import { twoFactor } from "better-auth/plugins"
 
 export const auth = betterAuth({
-  plugins: [
-    twoFactor(),
-  ],
+  plugins: [twoFactor()],
 })
 ```
 
-### Client-side — add plugin
+### Client-side
 
 ```ts
-import { createAuthClient } from 'better-auth/client'
-import { twoFactorClient } from 'better-auth/client/plugins'
+import { createAuthClient } from "better-auth/client"
+import { twoFactorClient } from "better-auth/client/plugins"
 
 const authClient = createAuthClient({
-  plugins: [
-    twoFactorClient({
-      twoFactorPage: '/two-factor',
-    }),
-  ],
+  plugins: [twoFactorClient()],
 })
 ```
 
-## Sources
+## v1.7 Notes
 
-- Installation: https://better-auth.com/docs/installation
-- Basic Usage: https://better-auth.com/docs/basic-usage
-- CLI: https://better-auth.com/docs/concepts/cli
-- Database: https://better-auth.com/docs/concepts/database
+- เป็น major release สำหรับ OAuth, OpenID Connect, MCP, SCIM, device authorization
+- อัปเกรด `better-auth` และ `@better-auth/*` พร้อมกัน
+- อ่าน migration guide ก่อนใช้งาน v1.7
+- Sources ดูใน [website.md](website.md)

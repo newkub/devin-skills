@@ -55,23 +55,28 @@ const form = useForm({
 ## TanStack Store
 
 ```typescript
-const store = createStore({
-  count: 0,
-  name: 'default',
-  increment: () => {
-    store.count++;
-  },
-});
+import { createStore } from '@tanstack/store';
+
+const store = createStore({ count: 0, name: 'default' });
+
+// Update ผ่าน setState
+store.setState((prev) => ({ ...prev, count: prev.count + 1 }));
 ```
 
 ## TanStack Start
 
 ```typescript
-// vite.config.ts
+// vite.config.ts — Start v1 ใช้ plugin จาก @tanstack/react-start
+// (รองรับ Vite หรือ Rsbuild เป็น build tool)
 import { defineConfig } from 'vite';
-import tanstackStart from '@tanstack/start/vite';
+import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import viteReact from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [tanstackStart()],
+  plugins: [
+    tanstackStart(),
+    // react's vite plugin must come after start's vite plugin
+    viteReact(),
+  ],
 });
 ```

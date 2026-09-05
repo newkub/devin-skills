@@ -1,25 +1,34 @@
 ---
-name: improve-test
-description: ปรับปรุง test quality โดยเติม tests จาก coverage gaps ผ่าน /run-test-coverage และ /deep-review
+name: improve-test-everything
+description: ปรับปรุง test quality ทุกประเภทจาก coverage gaps
+argument-hint: "[pattern-or-path]"
 related:
   - run-test-coverage
   - improve-test-coverage
+  - run-test
+  - run-test-e2e
+  - run-test-website-by-agent-browser
   - deep-review
   - run-build
-  - optimize-bundling
   - resolve-errors
   - deep-debug
   - update-specs
-  - follow-create-devin-skills
 ---
 
 ## Goal
 
-เติม tests ทีขาดจาก coverage gaps โดยเน้น code paths, security patterns, และ critical paths ตาม test pyramid
+เติมและปรับปรุง tests ทุกประเภท (unit, integration, e2e, security, visual regression, performance, accessibility) จาก coverage gaps โดยเน้น code paths, security patterns, และ critical paths ตาม test pyramid
 
 ## Scope
 
-ใช้กับ project ที่มี test infrastructure อยู่แล้ว โดยรัน coverage วิเคราะห์ gaps แล้วเขียนหรืออัปเดต tests ให้ครอบคลุม code ปัจจุบัน
+ใช้กับ project ที่มี test infrastructure อยู่แล้ว โดยรัน coverage วิเคราะห์ gaps แล้วเขียนหรืออัปเดต tests ให้ครอบคลุม code ปัจจุบัน รวมถึง:
+
+- Unit tests สำหรับ pure functions, utilities, handlers
+- Integration tests สำหรับ service interactions, DB queries, API endpoints
+- E2E tests สำหรับ user flows และ critical paths
+- Security tests สำหรับ auth, permissions, IDOR, sanitization
+- Visual / accessibility tests ถ้ามี infrastructure
+- Performance tests สำหรับ hot paths ถ้ามี baseline
 
 ## Execute
 
@@ -72,7 +81,18 @@ related:
 4. ตรวจ side effects เช่น DB mutations, cache updates, queue jobs
 5. ทำ cleanup หลังแต่ละ test
 
-### 6. Write Security Tests
+### 6. Write E2E Tests
+
+> Goal: ครอบคลุม user flows และ critical paths บน browser
+
+1. ระบุ critical user flows: login, navigation, forms, search, checkout
+2. ใช้ `agent-browser`, Playwright, หรือ Cypress ตาม project
+3. ทำ `/run-test-website-by-agent-browser` ถ้าใช้ agent-browser
+4. ทดสอบ cross-browser compatibility, responsive design, keyboard navigation
+5. ตรวจ real-time features (WebSocket, SSE, live updates)
+6. แก้ failing e2e tests ก่อน ship
+
+### 7. Write Security Tests
 
 > Goal: ครอบคลุง security-critical paths
 
@@ -82,7 +102,7 @@ related:
 4. Sanitization: XSS/malicious input → sanitized
 5. Permission matrix ด้วย `it.each`
 
-### 7. Run And Fix Tests
+### 8. Run And Fix Tests
 
 > Goal: ทุก test ผ่าน
 
@@ -91,16 +111,16 @@ related:
 3. ตรวจ false positives
 4. ตรวจ error tests จริงๆ ทดสอบ error path
 
-### 8. Verify Coverage Again
+### 9. Verify Coverage Again
 
-> Goal: ยืนยันว่า gaps ลดลง
+> Goal: ยืนยืนยันว่า gaps ลดลง
 
 1. รัน `/run-test-coverage` อีกครั้ง
 2. เปรียบเทียบ before/after coverage
-3. ถ้ายังมี gaps ใน critical paths → ทำ Step 4-6 เพิ่ม
+3. ถ้ายังมี gaps ใน critical paths → ทำ Step 4-7 เพิ่ม
 4. บันทึก coverage delta
 
-### 9. Update Specs
+### 10. Update Specs
 
 > Goal: เอกสารสอดคล้อง tests
 
@@ -169,7 +189,7 @@ related:
 ## Expected Outcome
 
 - Coverage gaps ใน critical paths ถูกเติม
-- Tests รันผ่านทั่งหมด ไม่มี false positive
+- Unit, integration, e2e, security tests รันผ่านทั่งหมด
 - Coverage report ดีขึ้น
 - Test code มีคุณภาพ อ่านง่าย
 - `specs/SPEC.md` sync กับ tests ใหม่

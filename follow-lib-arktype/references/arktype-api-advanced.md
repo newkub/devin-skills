@@ -1,45 +1,32 @@
+# ArkType Advanced
+
 ## ArkErrors
 
-### Error Structure
-
 ```typescript
-import { type, ArkErrors } from "arktype";
+import { type } from "arktype"
 
-const result = User(data);
+const result = User(data)
 
-if (result instanceof ArkErrors) {
-  result.summary;    // Full formatted message
-  result[0].path;    // ["field", "nested"]
-  result[0].message; // "must be a string (was a number)"
-  result[0].actual;  // 123
-}
-```
-
-### Checking Errors
-
-```typescript
-const result = User(data);
-
-if (result instanceof ArkErrors) {
-  // Handle error
-} else {
-  // result is typed as T
+if (result instanceof type.errors) {
+  result.summary              // human-readable summary
+  result.flatByPath           // errors grouped by path
+  result.flatProblemsByPath   // string problems grouped by path
 }
 ```
 
 ## Scopes
 
-### Creating Scope
-
 ```typescript
-const App = type.scope({
+import { scope } from "arktype"
+
+const App = scope({
   user: { id: "string", name: "string" },
   post: { id: "string", "author?": "user" },
-});
+})
 
-// Use types
-const User = App("user");
-const Post = App("post");
+const types = App.export()
+const User = types.user
+const Post = types.post
 ```
 
 ## Type Inference
@@ -48,10 +35,9 @@ const Post = App("post");
 const User = type({
   name: "string",
   age: "number",
-});
+})
 
-// Infer type
-type UserType = typeof User.t;
+type UserType = typeof User.t
 // { name: string; age: number }
 ```
 
@@ -60,47 +46,34 @@ type UserType = typeof User.t;
 ### Global Configuration
 
 ```typescript
-import { configure } from "arktype/config";
+import { configure } from "arktype/config"
 
-configure({
-  keywords: {
-    string: "must be a string",
-    "string.email": {
-      actual: () => "definitely fake",
-    },
-  },
-});
+configure({ numberAllowsNaN: true })
 ```
 
 ### Per-Type Configuration
 
 ```typescript
-const Custom = type("1", "@", {
-  message: "Yikes.",
-});
+const Password = type("string >= 8").configure({
+  actual: () => "",
+})
 
-// ArkErrors: Yikes.
-Custom(2);
+const User = type({
+  email: "string.email",
+  password: Password,
+})
 ```
 
 ## Modules
 
-### arktype
-
 ```typescript
-import { type, match, ArkErrors, type scope } from "arktype";
-```
-
-### arktype/config
-
-```typescript
-import { configure } from "arktype/config";
+import { type, match, scope, ArkErrors } from "arktype"
+import { configure } from "arktype/config"
 ```
 
 ## Sources
 
-- https://arktype.io/docs/intro/setup
-- https://arktype.io/docs/expressions
-- https://arktype.io/docs/match
 - https://arktype.io/docs/configuration
-- https://www.npmjs.com/package/arktype
+- https://arktype.io/docs/scopes
+- https://arktype.io/docs/traversal-api
+- https://arktype.io/docs/type-api

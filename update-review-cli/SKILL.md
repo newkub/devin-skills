@@ -1,6 +1,6 @@
 ---
 name: update-review-cli
-description: สร้างหรืออัปเดต tools/review-codebase CLI ให้ครอบคลุม 60+ categories, 5 domains, metrics และรีวิวได้จนผ่าน
+description: สร้างหรืออัปเดต tools/review-codebase CLI ครบถ้วน
 argument-hint: "[target-or-iteration]"
 related:
   - run-review

@@ -6,7 +6,9 @@
   "module": "src/index.ts",
   "scripts": {
     "review": "bun run src/index.ts",
-    "review:repo": "bun run src/index.ts '%APPDATA%\\devin\\skills'"
+    "review:repo": "bun run src/index.ts '%APPDATA%\\devin\\skills'",
+    "review:fix": "bun run src/index.ts --fix",
+    "review:ci": "bun run src/index.ts --ci"
   },
   "devDependencies": {
     "bun-types": "latest"

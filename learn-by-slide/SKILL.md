@@ -1,5 +1,5 @@
 ---
-name: learn-with-slide
+name: learn-by-slide
 description: เรียนรู้และสร้าง Slidev presentation สรุปความรู้ใน D:/newkub/slides/learn/
 argument-hint: "[topic]"
 related:

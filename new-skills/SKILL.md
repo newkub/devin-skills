@@ -17,8 +17,8 @@ triggers:
   - user
   - model
 related:
+  - follow-create-devin-global-skills
   - update-devin-global-skills
-  - follow-create-devin-skills
   - review-devin-global-skills
   - use-in-another-skills
   - follow-global-rules
@@ -29,11 +29,11 @@ related:
 
 ## Goal
 
-สร้าง global Devin skills ใหม่หนึ่งรายการขึ้นไปใน `%APPDATA%\devin\skills` โดยปฏิบัติตามมาตรฐานจาก `update-devin-global-skills`
+สร้าง global Devin skills ใหม่หนึ่งรายการขึ้นไปใน `%APPDATA%\devin\skills` โดยปฏิบัติตามมาตรฐานจาก `follow-create-devin-global-skills`
 
 ## Scope
 
-ใช้เมื่อผู้ใช้ต้องการสร้าง skill files ใหม่ โดย skill นี้จะ delegate ไปยัง `update-devin-global-skills` และ `follow-create-devin-skills` สำหรับการสร้างจริง แต่ให้จุดเริ่มต้นที่รวดเร็วและจัดการ batch naming
+ใช้เมื่อผู้ใช้ต้องการสร้าง skill files ใหม่ โดย skill นี้จะ delegate ไปยัง `follow-create-devin-global-skills` สำหรับการสร้างจริง แต่ให้จุดเริ่มต้นที่รวดเร็วและจัดการ batch naming
 
 ดูเพิ่มเติม: /follow-global-rules
 
@@ -57,11 +57,11 @@ related:
 2. ใช้ `use-in-another-skills` หากพบ skill ที่อาจซ้ำกัน
 3. หากผู้ใช้ยืนยัน ให้ดำเนินการต่อด้วยชื่อใหม่
 
-### 3. Run update-devin-global-skills
+### 3. Run follow-create-devin-global-skills
 
-> Goal: รัน update-devin-global-skills
+> Goal: รัน follow-create-devin-global-skills
 
-1. เรียก `/update-devin-global-skills` ด้วยรายการชื่อ skill ใหม่
+1. เรียก `/follow-create-devin-global-skills` ด้วยรายการชื่อ skill ใหม่
 2. ปล่อยให้ skill นั้นจัดการ naming, frontmatter, sections, templates, และ directory structure
 3. หาก skill ต้องการ code หรือ CLI ให้เรียก `follow-create-*` skill ที่เหมาะสม
 
@@ -97,7 +97,7 @@ related:
 
 ### 2. Delegation
 
-- เสมอให้ delegate การสร้างจริงไปยัง `/update-devin-global-skills` หรือ `/follow-create-devin-skills`
+- เสมอให้ delegate การสร้างจริงไปยัง `/follow-create-devin-global-skills`
 - ห้าม bypass global standards
 - ใช้ `follow-create-*` skill ที่ถูกต้องสำหรับ skill ที่มี code, CLI, web หรือ MCP
 

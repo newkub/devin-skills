@@ -23,11 +23,15 @@ related:
 
 ### 1. Analyze Bundle
 
+> Goal: Analyze Bundle
+
 1. รัน `bunx vite-bundle-visualizer` หรือ `bun run build`
 2. ดู bundle analyzer output
 3. ระบุ chunks ใหญ่และ duplicate vendors
 
 ### 2. Manual Chunks
+
+> Goal: Manual Chunks
 
 1. ตรวจ `vite.config.*` สำหรับ `manualChunks`
 2. แยก vendor chunks ตาม framework/library
@@ -35,11 +39,15 @@ related:
 
 ### 3. Dynamic Imports
 
+> Goal: Dynamic Imports
+
 1. ใช้ `import()` สำหรับ heavy components
 2. ใช้ route-based code splitting
 3. โหลด components ตาม condition
 
 ### 4. Tree Shaking
+
+> Goal: Tree Shaking
 
 1. ลบ unused exports
 2. ลด barrel files
@@ -47,6 +55,8 @@ related:
 4. ตรวจ `sideEffects` ใน `package.json`
 
 ### 5. Validate
+
+> Goal: Validate
 
 1. รัน `/run-build`
 2. วัด bundle size ใหม่

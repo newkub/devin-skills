@@ -32,7 +32,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/follow-agents-md` to read this `AGENTS.md`.
 2. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`.
 3. Check `git status` before making changes.
-4. Read `/update-devin-global-skills` when editing a skill.
+4. Read `/follow-create-devin-global-skills` when creating a skill, and `/update-devin-global-skills` when updating one.
 
 ### 2. Maintain AGENTS.md
 
@@ -59,14 +59,14 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`.
 - Keep the file under 250 lines.
 - Use backticks for `tools`, `commands`, `paths`, and `skill-name`.
-- If a skill has `references/`, write it according to `update-devin-global-skills/references/create-devin-skills.md`.
+- If a skill has `references/`, write it according to `follow-create-devin-global-skills/references/create-devin-skills.md`.
 
 ### 2. Architecture
 
 - `repo-type: skill collection` (no root package manifest; skills are Markdown docs with optional code).
 - `git: /follow-tool-git`
 - `github: /follow-github`
-- `skill-format: /update-devin-global-skills`
+- `skill-format: /follow-create-devin-global-skills` (create) and `/update-devin-global-skills` (update)
 - `global-rules: /follow-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web`

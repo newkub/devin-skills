@@ -6,7 +6,7 @@ related:
   - run-test
   - run-test-unit
   - run-test-all
-  - improve-test
+  - improve-test-everything
   - deep-review
   - review-quality
   - resolve-errors

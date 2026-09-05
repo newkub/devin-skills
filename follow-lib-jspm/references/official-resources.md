@@ -9,7 +9,7 @@
 | CLI Docs | https://jspm.org/cli |
 | Online Generator | https://generator.jspm.io |
 | GitHub Repository | https://github.com/jspm/jspm.org |
-| bun Package | https://www.npmjs.com/package/jspm |
+| npm Package | https://www.npmjs.com/package/jspm |
 
 ## GitHub
 
@@ -33,13 +33,13 @@
 
 ### ES Module Shims
 
-- CDN: https://ga.jspm.io/bun:es-module-shims@2.5.1/dist/es-module-shims.js
+- CDN: https://ga.jspm.io/npm:es-module-shims@2.5.1/dist/es-module-shims.js
 - GitHub: https://github.com/guybedford/es-module-shims
 
 ### jspm.io CDN
 
 - Base URL: https://ga.jspm.io
-- bun Registry: https://ga.jspm.io/bun:
+- npm Registry: https://ga.jspm.io/npm:
 
 ## JSPM CLI Help
 

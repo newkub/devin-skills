@@ -28,7 +28,7 @@ foreach ($skillDir in Get-ChildItem -Path $SkillsDir -Directory) {
     $skillFile = Join-Path $skillDir.FullName "SKILL.md"
     if (-not (Test-Path $skillFile)) { continue }
 
-    $content = Get-Content $skillFile -Raw
+    $content = Get-Content $skillFile -Raw -Encoding UTF8
     $fm = Get-FrontmatterHashtable $content
 
     if ($null -eq $fm) {

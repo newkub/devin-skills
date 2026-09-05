@@ -3,7 +3,7 @@ name: replace
 description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
 related:
   - use-ast-grep-programatic
-  - search-with-astgrep
+  - search-by-astgrep
   - update-references
   - deep-validate
 ---
@@ -19,7 +19,7 @@ related:
 - Plain text / regex replacement: สำหรับเนื้อหาทั่วไป เช่น docs, config
 - AST-based replacement: สำหรับ code ทีต้องการ precision สูง
 
-- ดูเพิ่มเติม: /search-with-astgrep
+- ดูเพิ่มเติม: /search-by-astgrep
 
 ## Execute
 

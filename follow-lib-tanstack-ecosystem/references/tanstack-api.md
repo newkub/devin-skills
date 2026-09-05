@@ -1,18 +1,21 @@
 # API Reference
 
-## Version Info (as of Aug 2026)
+## Version Info (as of Sep 2026)
 
 | Library | Package | Maturity |
 |---------|---------|----------|
-| Query | `@tanstack/react-query` v5.101.x | Stable |
-| Router | `@tanstack/react-router` v1.x | Stable |
-| Table | `@tanstack/react-table` v8.x | Stable |
-| Form | `@tanstack/react-form` v1.x | Stable |
-| Virtual | `@tanstack/react-virtual` v3.x | Stable |
-| Store | `@tanstack/react-store` v1.x | Newer |
-| Start | `@tanstack/start` | RC |
-| DB | `@tanstack/db` | Alpha |
-| AI | `@tanstack/ai` | Alpha |
+| Query | `@tanstack/react-query` v5.102.x | Stable |
+| Router | `@tanstack/react-router` v1.170.x | Stable |
+| Table | `@tanstack/react-table` v9.2.x | Stable |
+| Form | `@tanstack/react-form` v1.33.x | Stable (v2 alpha) |
+| Virtual | `@tanstack/react-virtual` v3.14.x | Stable |
+| Store | `@tanstack/react-store` v0.11.x | 0.x |
+| Start | `@tanstack/react-start` v1.168.x | Stable |
+| DB | `@tanstack/react-db` v0.3.x | 0.x |
+| AI | `@tanstack/ai` v0.53.x | RC |
+| Pacer | `@tanstack/react-pacer` v0.23.x | 0.x |
+
+Naming convention: `@tanstack/{framework}-{lib}` — เช่น `@tanstack/react-query`, `@tanstack/vue-query`, `@tanstack/solid-router`, `@tanstack/svelte-query` (Angular บางตัวใช้ชื่อ `*-experimental` เช่น `@tanstack/angular-query-experimental`)
 
 ## TanStack Query
 
@@ -111,15 +114,19 @@ const form = useForm({
 ### createStore
 
 ```typescript
-import { createStore } from '@tanstack/react-store';
+import { createStore } from '@tanstack/store';
+import { useStore } from '@tanstack/react-store'; // framework adapter
 
 const store = createStore(0);
 
-// Read
+// Read (vanilla)
+console.log(store.state);
+
+// Read (React)
 const count = useStore(store);
 
 // Write
-store.setState((prev) => prev + 1);
+store.setState(() => 1);
 ```
 
 ### useStore with selector
@@ -128,6 +135,12 @@ store.setState((prev) => prev + 1);
 const store = createStore({ count: 0, name: 'default' });
 
 const count = useStore(store, (state) => state.count);
+```
+
+### Derived store
+
+```typescript
+const double = createStore(() => store.state * 2);
 ```
 
 ## TanStack Start

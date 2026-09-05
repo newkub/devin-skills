@@ -11,7 +11,7 @@ triggers:
   - user
   - model
 related:
-  - view
+  - view-files
   - check-git-diff
   - report-git-diff
   - review-diff
@@ -25,7 +25,7 @@ related:
 
 ใช้เมื่อผู้ใช้ขอดู diff เปรียบเทียบ refs หรือตรวจสอบการเปลี่ยนแปลงของ PR บน terminal รองรับ diff ของ working tree, staged, commit, branch และ PR
 
-ดูเพิ่มเติม: /view, /check-git-diff, /report-git-diff, /review-diff
+ดูเพิ่มเติม: /view-files, /check-git-diff, /report-git-diff, /review-diff
 
 ## Execute
 

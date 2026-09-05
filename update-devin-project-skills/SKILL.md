@@ -1,59 +1,65 @@
 ---
 name: update-devin-project-skills
-description: สร้างและอัปเดต project-local skills ใน .devin/skills/ ตาม project conventions
+description: อัปเดต project-local skills ใน .devin/skills/ ตาม project conventions
 argument-hint: "[skill-or-workspace]"
 related:
+  - follow-create-devin-project-skills
   - update-dot-devin
   - update-devin-global-skills
-  - follow-create-devin-skills
+  - update-agents-md
   - deep-validate
   - report-table
 ---
 
 ## Goal
 
-สร้างหรืออัปเดต project-local skills ใน `.devin/skills/` ให้ตรงกับ project conventions และ workspace requirements
+อัปเดต project-local skills ที่มีอยู่ใน `.devin/skills/` ให้ตรงกับ project conventions และ workspace requirements ที่เปลี่ยนไป
 
 ## Scope
 
-ใช้สำหรับ project-level `.devin/skills/` directory ไม่ใช่ global skills ใน `%APPDATA%\devin\skills`
+ใช้สำหรับอัปเดต skills ใน `.devin/skills/` ของ project หรือ workspace — ถ้าต้องสร้าง skill ใหม่ให้ทำ `/follow-create-devin-project-skills` แทน ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills`)
+
+ดูเพิ่มเติม: /follow-create-devin-project-skills, /update-devin-global-skills, /update-agents-md
 
 ## Execute
 
-### 1. Detect Skills Needs
+### 1. Detect Update Needs
 
-> Goal: รู้ว่าต้องสร้าง skill อะไร
+> Goal: รู้ว่า skill ไหนต้องอัปเดต
 
 1. อ่าน `AGENTS.md` root และ workspaces
-2. อ่าน `package.json` ทั้งหมด
-3. ระบุ workflows หรือ patterns เฉพาะ project ทีต้อง skill เฉพาะ
-4. ตรวจ `.devin/skills/` ทีมีอยู่
+2. อ่าน `package.json` และ scripts ทั้งหมดที่เปลี่ยน
+3. ระบุ workflows หรือ patterns ที่เปลี่ยนไปจากตอนสร้าง skill
+4. ตรวจ `.devin/skills/` ที่มีอยู่ว่า skill ไหน stale
+5. ถ้า `.devin/skills/` ยังไม่มี → ส่งต่อ `/follow-create-devin-project-skills`
 
-### 2. Create Or Update Skills
+### 2. Apply Updates
 
-> Goal: สร้าง/แก้ skills
+> Goal: แก้ skills ให้ทันสมัย
 
-1. สร้าง `.devin/skills/<skill-name>/SKILL.md` ถ้ายังไม่มี
-2. ใช้ภาษาอังกฤษทั้งหมดสำหรับ project-local skills
-3. ทำตามมาตรฐาน: frontmatter `name`, `description`, `related`
-4. ใช้ `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`
-5. ไม่เกิน 250 บรรทัด
+1. ทำตามมาตรฐานจาก `/follow-create-devin-project-skills` — structure, naming, content rules
+2. อัปเดต commands, paths และ conventions ให้ตรง `AGENTS.md` และ manifests ปัจจุบัน
+3. ลบ commands/steps ที่ project ไม่มีแล้ว
+4. ใช้ภาษาอังกฤษทั้งหมดสำหรับ project-local skills
+5. แก้เฉพาะสิ่งที่เปลี่ยนจริง — ไม่ rewrite ทั้งไฟล์ถ้าไม่จำเป็น
+6. ไม่เกิน 250 บรรทัด — แยกรายละเอียดไป `references/`
 
 ### 3. Sync With AGENTS.md
 
-> Goal: ให้ AGENTS.md อ้างถึง skills
+> Goal: ให้ AGENTS.md อ้างถึง skills ถูกต้อง
 
-1. อัปเดต `AGENTS.md` ที root และ workspace ให้ reference skills ใหม่
+1. อัปเดต `AGENTS.md` ที่ root และ workspace ให้ตรงกับ skills ที่แก้
 2. ตรวจ `related` ของ skill ไม่ broken
+3. ทำ `/update-dot-devin` ถ้า `.devin/` manifest ต้องอัปเดต
 
 ### 4. Validate
 
-> Goal: ยื่นยันว่า skills ถูกต้อง
+> Goal: ยืนยันว่า skills ถูกต้อง
 
 1. ทำ `/deep-validate`
 2. ตรวจ `name` ตรง directory name
 3. ตรวจไม่มี TODO/MOCK/placeholder
-4. ถ้า fail → แก้ (max 3)
+4. ถ้า fail → แก้ (max 3 รอบ)
 
 ### 5. Report
 
@@ -64,30 +70,30 @@ related:
 
 ## Rules
 
-### 1. Project-Local Only
+### 1. Update Only
 
-- สร้างเฉพาะ skills ทีใช้เฉพาะ project
-- ถ้า skill ทั่วไป → ใช้ `/update-devin-global-skills` แทน
+- skill นี้อัปเดตเท่านั้น — สร้างใหม่ให้ใช้ `/follow-create-devin-project-skills`
+- ใช้เฉพาะ `.devin/skills/` — global skills ใช้ `/update-devin-global-skills`
 
 ### 2. English Content
 
 - project-local skills เขียนด้วยภาษาอังกฤษ
 - ยกเว้น project กำหนดให้ใช้ภาษาอื่น
 
-### 3. Minimal
+### 3. Minimal Changes
 
 - ไม่ซ้ำกับ global skills
-- ไม่เกิน 250 บรรทัด
-- แยกรายละเอียดไป `references/` ถ้าจำเป็น
+- แก้เฉพาะสิ่งที่เปลี่ยนจริง รักษา existing conventions
+- ไม่เกิน 250 บรรทัด แยกรายละเอียดไป `references/` ถ้าจำเป็น
 
 ### 4. Valid References
 
-- `related` ต้องชี้ไปยัง skills ทีมีอยู่จริง
+- `related` ต้องชี้ไปยัง skills ที่มีอยู่จริง
 - ไม่ broken references
 
 ## Expected Outcome
 
-- `.devin/skills/` มี skills ครบตาม project workflows
+- `.devin/skills/` มี skills ทันสมัยตาม project workflows ปัจจุบัน
 - `AGENTS.md` อ้างถึง skills ถูกต้อง
 - skills ผ่าน `/deep-validate`
 - report table สรุปผล

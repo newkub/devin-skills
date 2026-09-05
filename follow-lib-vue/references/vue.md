@@ -2,8 +2,8 @@
 
 ## Version Info
 
-- `vue`: `3.5.41` (latest stable, Aug 2026)
-- `vue`: `3.6.0-rc.2` (latest RC, Vapor Mode feature-complete)
+- `vue`: `3.5.42` (latest stable, Aug 2026)
+- `vue`: `3.6.0-rc.6` (latest RC, Vapor Mode feature-complete)
 - License: MIT
 - Vue 3.6 RC: Vapor Mode stabilization, improved hydration, tree-shaking
 - Source: https://vuejs.org
@@ -183,4 +183,4 @@ Vapor Mode is a new compilation mode that eliminates Virtual DOM overhead.
 - Vue 3.5 Release Notes: https://blog.vuejs.org/posts/vue-3-5
 - Vapor Mode RFC: https://github.com/vuejs/core/pull/10650
 - VueUse Composables: https://vueuse.org/
-- Vue 3.6 RC Release: https://github.com/vuejs/core/releases/tag/v3.6.0-rc.1
+- Vue 3.6 RC Release: https://github.com/vuejs/core/releases/tag/v3.6.0-rc.6

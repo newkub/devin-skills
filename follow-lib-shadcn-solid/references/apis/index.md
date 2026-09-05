@@ -2,42 +2,41 @@
 
 ## Install
 
-```sh
-bun add -D solid-ui
-# or
-npm install --save-dev solid-ui
+shadcn-solid เป็น CLI สำหรับ copy-paste components ไม่ใช่ npm dependency สำหรับ install แบบ runtime
+
+```bash
+# Initialize project
+npx shadcn-solid@latest init
+
+# Add components
+npx shadcn-solid@latest add [component]
 ```
+
+หรือติดตั้ง CLI แบบ global ด้วย `mise use -g npm:shadcn-solid`
 
 ## Version
 
-- Latest: 4.0.0
-- [Package Registry](https://www.npmjs.com/package/solid-ui)
-- [Repository](https://github.com/SolidOS/solid-ui)
+- CLI latest: `0.7.7`
+- Package Registry: https://www.npmjs.com/package/shadcn-solid
+- Repository: https://github.com/hngngn/shadcn-solid
 
 ## Dependencies
 
-- See package registry for transitive dependencies.
+- Components styled ด้วย Tailwind CSS หรือ UnoCSS
+- Built on Kobalte UI primitives
+- `class-variance-authority` หรือ `cva` สำหรับ variants
+- `clsx`, `tailwind-merge` สำหรับ `cn` helper
 
 ## Common API / Commands
 
 | commands | description | default | options |
 |---|---|---|---|
-| `install` | Install solid-ui in project | latest version | --save-dev, --save, --global |
-| `import` | Import from 'solid-ui' | default or named | (none) |
-| `configure` | Configure project settings | project defaults | --config, --file |
-| `use` | Use the main API / runtime | as documented | (none) |
-| `import 'solid-ui/components/button'` | Subpath export for components/button | entry as documented | (none) |
-| `import 'solid-ui/components/footer'` | Subpath export for components/footer | entry as documented | (none) |
-| `import 'solid-ui/components/header'` | Subpath export for components/header | entry as documented | (none) |
-| `import 'solid-ui/components/select'` | Subpath export for components/select | entry as documented | (none) |
-| `import 'solid-ui/components/combobox'` | Subpath export for components/combobox | entry as documented | (none) |
-| `import 'solid-ui/components/loginButton'` | Subpath export for components/loginButton | entry as documented | (none) |
-| `import 'solid-ui/components/forms/select'` | Subpath export for components/forms/select | entry as documented | (none) |
-| `import 'solid-ui/components/login-button'` | Subpath export for components/login-button | entry as documented | (none) |
-| `import 'solid-ui/components/layout/footer'` | Subpath export for components/layout/footer | entry as documented | (none) |
-| `import 'solid-ui/components/layout/header'` | Subpath export for components/layout/header | entry as documented | (none) |
+| `init` | Initialize configuration and dependencies | current project | `-c, --cwd <path>` |
+| `add [components...]` | Add components to project | interactive | `-o, --overwrite`, `-a, --all`, `-c, --cwd` |
+| `diff [component]` | Check upstream updates | all components | `-c, --cwd` |
 
 ## Source
 
-- Official docs: https://github.com/SolidOS/solid-ui
-- Description: UI library for Solid applications
+- Official docs: https://shadcn-solid.com/docs
+- CLI docs: https://shadcn-solid.com/docs/cli
+- About: shadcn/ui port for SolidJS, copy-paste components built on Kobalte UI.

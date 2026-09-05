@@ -1,3 +1,8 @@
-# Lib Zaidian Ui Official Resources
+# Lib Zaidian UI Official Resources
 
-- [Package Registry](https://www.npmjs.com/package/zaidian-ui)
+- Website: https://zaidan.carere.dev
+- Documentation: https://zaidan.carere.dev/docs
+- Components: https://zaidan.carere.dev/docs/components
+- GitHub: https://github.com/carere/zaidan
+- Registry: https://zaidan.carere.dev/r/{style}/{name}.json
+- About: Zaidian is a shadcn registry for SolidJS with copy-paste components built on Kobalte and Corvu.

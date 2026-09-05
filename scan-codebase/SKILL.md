@@ -4,7 +4,7 @@ description: Scan codebase อย่างรวดเร็วเพื่อ�
 related:
   - use-scripts
   - check-code-structure
-  - search-with-astgrep
+  - search-by-astgrep
   - use-ast-grep
   - review-quality
   - report-table
@@ -20,7 +20,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 
 ครอบคลุม file structure, code patterns, structural analysis, quality metrics, text search, file search, AST-based search, และ structure navigation ด้วย minimal AI token
 
-ดูเพิ่มเติม: /search-with-astgrep
+ดูเพิ่มเติม: /search-by-astgrep
 
 ## Execute
 

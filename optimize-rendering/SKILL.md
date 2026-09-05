@@ -22,11 +22,15 @@ related:
 
 ### 1. Measure Render Performance
 
+> Goal: Measure Render Performance
+
 1. รัน build production
 2. ใช้ DevTools Performance panel
 3. ระบุ long frames, forced reflows, re-renders
 
 ### 2. Optimize Re-Renders
+
+> Goal: Optimize Re-Renders
 
 1. ใช้ memo/signal/memoized components
 2. ลด props drilling
@@ -35,11 +39,15 @@ related:
 
 ### 3. Virtualize Lists
 
+> Goal: Virtualize Lists
+
 1. ใช้ virtualized list สำหรับ > 100 items
 2. ใช้ `content-visibility` สำหรับ offscreen content
 3. ใช้ `will-change` อย่างระมัดระวัง
 
 ### 4. Lazy Components
+
+> Goal: Lazy Components
 
 1. ใช้ dynamic import สำหรับ below-fold components
 2. ใช้ `loading="lazy"` สำหรับ images
@@ -47,8 +55,10 @@ related:
 
 ### 5. Validate
 
+> Goal: Validate
+
 1. รัน `/run-build`
-2. รัน `/run-test-browser` ถ้ามี
+2. รัน `/run-test-website-by-agent-browser` ถ้ามี
 3. ทำ `/report-table` สรุป metrics
 
 ## Rules

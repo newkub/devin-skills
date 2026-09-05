@@ -8,7 +8,7 @@ related:
   - run-check
   - run-verify
   - suggest-next-action
-  - run-test-browser
+  - run-test-website-by-agent-browser
 ---
 
 ## Goal
@@ -16,7 +16,7 @@ related:
 รัน E2E tests สำหรับ browser testing ด้วย Playwright หรือ Cypress
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `run-test-browser`
+- สำหรับ skills ที่เกี่ยวข้อง: `run-test-website-by-agent-browser`
 
 ใช้สำหรับรัน browser-based E2E tests ครอบคลุม user flows, critical paths, และ cross-browser compatibility
 

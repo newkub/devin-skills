@@ -26,7 +26,7 @@ related:
   - improve-uxui
   - review-uxui
   - follow-design-system
-  - run-test-browser
+  - run-test-website-by-agent-browser
   - update-readme-md
   - from-recent-windows-capture
 ---
@@ -43,7 +43,7 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 - static HTML file ที import component
 - TUI/CLI component output
 
-- ดูเพิ่มเติม: /capture-image-app-to-screenshot, /follow-design-system, /run-test-browser, /from-recent-windows-capture
+- ดูเพิ่มเติม: /capture-image-app-to-screenshot, /follow-design-system, /run-test-website-by-agent-browser, /from-recent-windows-capture
 
 ## Execute
 

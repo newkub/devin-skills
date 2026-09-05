@@ -7,14 +7,14 @@ allowed-tools:
   - edit
   - grep
   - skill
+triggers:
+  - user
+  - model
 related:
   - deep-review
   - update-review-cli
   - run-review
   - update-create-analyze-cli
-triggers:
-  - user
-  - model
 ---
 
 ## Goal

@@ -7,7 +7,7 @@ related:
   - run-review
   - refactor
   - fix
-  - search-with-astgrep
+  - search-by-astgrep
   - use-ast-grep
 ---
 
@@ -22,7 +22,7 @@ related:
 - รองรับหลาย ecosystems: TypeScript, JavaScript, Rust, Python, Go
 - ใช้ผลลัพธ์สำหรับ review, refactor, debug, หรือ audit
 
-- ดูเพิ่มเติม: /search-with-astgrep
+- ดูเพิ่มเติม: /search-by-astgrep
 
 ## Execute
 

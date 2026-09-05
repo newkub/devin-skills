@@ -1,6 +1,6 @@
 ---
 name: follow-tool-agent-browser
-description: ใช้ agent-browser CLI สำหรับ browser automation, WebMCP, MCP server, a11y และ web testing อย่างครบถ้วน
+description: ใช้ agent-browser CLI สำหรับ browser automation, WebMCP, และ web testing
 related:
   - follow-create-browser-extensions
   - list-brave-browser-history

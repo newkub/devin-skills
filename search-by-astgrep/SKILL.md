@@ -1,5 +1,5 @@
 ---
-name: search-with-astgrep
+name: search-by-astgrep
 description: ค้นหา code patterns ด้วย ast-grep โดยใช้ AST-based patterns
 argument-hint: "[pattern]"
 related:

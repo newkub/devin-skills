@@ -9,7 +9,7 @@ related:
   - update-devin-project-skills
   - update-devin-project-mcp
   - update-devin-global-skills
-  - deep-research-and-update-skills
+  - follow-create-devin-global-skills
   - update-agents-md
   - run-lint
 ---

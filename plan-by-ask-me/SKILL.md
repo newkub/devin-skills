@@ -1,5 +1,5 @@
 ---
-name: plan-with-me
+name: plan-by-ask-me
 description: วางแผนร่วมกับผู้ใช้ ใช้ /follow-deep /deep-report /ask-me เมื่อยังไม่แน่ใจ
 argument-hint: "[topic]"
 related:

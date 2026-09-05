@@ -4,7 +4,7 @@ description: เปิด browser ด้วย agent-browser แล้ว captur
 argument-hint: "[url]"
 related:
   - watch-browser-console
-  - run-test-browser
+  - run-test-website-by-agent-browser
   - improve-uxui
   - resolve-errors
   - run-dev

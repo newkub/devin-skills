@@ -9,7 +9,7 @@ related:
   - improve-data-validation
   - improve-api
   - improve-database
-  - improve-test
+  - improve-test-everything
   - improve-review-cli
   - optimize-codebase-everything
   - follow-monorepo
@@ -82,7 +82,7 @@ related:
 
 > Goal: ปรับปรุง test coverage
 
-1. ทำ `/improve-test`
+1. ทำ `/improve-test-everything`
 2. ทำ `/improve-test-coverage` ถ้าจำเป็น
 3. เพิ่ม tests สำหรับ critical paths
 

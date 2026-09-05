@@ -11,86 +11,66 @@ description: Build และ development configuration สำหรับ ArkTyp
 {
   "compilerOptions": {
     "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
   }
 }
 ```
 
-### Type Definitions
+ArkType ต้องการ `strict` หรือ `strictNullChecks` เปิดไว้ และแนะนำให้เปิด `exactOptionalPropertyTypes` และ `skipLibCheck`
 
-```typescript
-// Global type definitions
-declare global {
-  namespace ArkType {
-    interface Config {
-      // Custom config
-    }
-  }
+### VSCode Settings
+
+```json
+{
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+    "^(node:)?os$"
+  ]
 }
 ```
 
 ## Build Configuration
 
-### Bundler Configuration
-
-#### Vite
+### Vite
 
 ```typescript
 // vite.config.ts
 export default defineConfig({
   optimizeDeps: {
-    include: ['arktype']
-  }
+    include: ["arktype"],
+  },
 })
 ```
 
-#### Rollup
+### Rollup
 
 ```javascript
 // rollup.config.js
 export default {
-  external: ['arktype']
+  external: ["arktype"],
 }
 ```
 
 ## Development Configuration
 
-### Testing Configuration
-
-#### Vitest
+### Vitest
 
 ```typescript
 // vitest.config.ts
 export default defineConfig({
   test: {
-    globals: true
-  }
+    globals: true,
+  },
 })
 ```
 
-### Linting Configuration
+## Sources
 
-#### Biome
-
-```json
-{
-  "linter": {
-    "rules": {
-      "suspicious": {
-        "noExplicitAny": "error"
-      }
-    }
-  }
-}
-```
-
-## ตารางสรุป Configuration Files
-
-| File | Purpose | Example |
-|------|---------|---------|
-| tsconfig.json | TypeScript config | Strict mode |
-| vite.config.ts | Vite config | Optimization |
-| rollup.config.js | Rollup config | External deps |
-| vitest.config.ts | Vitest config | Test globals |
-| biome.json | Biome config | Linting rules |
+- https://arktype.io/docs/intro/setup
+- https://www.typescriptlang.org/tsconfig

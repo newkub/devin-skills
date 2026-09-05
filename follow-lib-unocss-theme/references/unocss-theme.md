@@ -15,11 +15,11 @@ The `unocss` package ships the core, CLI, Vite plugin, and official presets toge
 Create a `uno.config.ts` file at the project root:
 
 ```ts
-import { defineConfig, presetWind3 } from 'unocss'
+import { defineConfig, presetWind4 } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetWind3(),
+    presetWind4(),
   ],
 })
 ```
@@ -32,7 +32,7 @@ import 'virtual:uno.css'
 
 ## Version Info
 
-- Latest stable: `66.8.1`
+- Latest release: `66.10.0`; npm latest: `66.8.1`
 - License: MIT
 - Source: https://unocss.dev
 
@@ -64,11 +64,11 @@ UnoCSS auto-discovers `uno.config.{js,ts,mjs,mts}` or `unocss.config.{js,ts,mjs,
 Use `hsl(var(--color-{name}))` format so colors resolve from CSS variables defined in `theme.css`:
 
 ```ts
-import { defineConfig, presetWind3 } from 'unocss'
+import { defineConfig, presetWind4 } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetWind3(),
+    presetWind4(),
   ],
   theme: {
     colors: {
@@ -168,14 +168,14 @@ Import `theme.css` by framework:
 ```ts
 import {
   defineConfig, presetAttributify, presetIcons, presetTypography,
-  presetWebFonts, presetWind3, transformerDirectives, transformerVariantGroup,
+  presetWebFonts, presetWind4, transformerDirectives, transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
   shortcuts: [/* ... */],
   theme: { colors: { /* ... */ } },
   presets: [
-    presetWind3(), presetAttributify(), presetIcons(),
+    presetWind4(), presetAttributify(), presetIcons(),
     presetTypography(), presetWebFonts({ fonts: { /* ... */ } }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],

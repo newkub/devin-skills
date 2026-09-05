@@ -3,7 +3,7 @@ name: open-in-windows-terminal
 description: เปิด directory ใน Windows Terminal ด้วย wt -d <path>
 argument-hint: "[path]"
 related:
-  - view
+  - view-files
   - capture-terminal
   - from-recent-windows-capture
 ---
@@ -65,7 +65,7 @@ related:
 - รายงานผลเป็นรายการ path พร้อม `wt` command ที่ใช้
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
-- ใช้ /view ถ้าจำเป็น
+- ใช้ /view-files ถ้าจำเป็น
 - ใช้ /capture-terminal ถ้าจำเป็น
 - ใช้ /from-recent-windows-capture ถ้าจำเป็น
 

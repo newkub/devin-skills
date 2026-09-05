@@ -7,7 +7,6 @@ related:
   - run-build
   - run-verify
   - follow-tool-vite
-  - follow-tool-bun
   - optimize-bundling
   - optimize-codebase-everything
   - report-table

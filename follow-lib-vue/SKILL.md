@@ -1,10 +1,13 @@
 ---
 name: follow-lib-vue
-description: แนวทางการพัฒนา Vue 3 applications ตาม best practices 2026
+description: แนวทางการพัฒนา Vue 3.5+ applications ตาม best practices 2026
 related:
   - follow-lib-animejs
   - follow-lib-arktype
   - follow-lib-better-auth
+  - follow-lib-pinia
+  - follow-lib-vueuse
+  - follow-lib-unocss
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
@@ -12,11 +15,11 @@ related:
 
 ## Goal
 
-กำหนดแนวทางการพัฒนา Vue.js applications ด้วย Vue 3, Composition API, TypeScript และ modern best practices
+กำหนดแนวทางการพัฒนา Vue.js applications ด้วย Vue 3.5+, Composition API, TypeScript และ modern best practices
 
 ## Scope
 
-ใช้สำหรับ Vue 3 projects ทั้ง Vite และ Nuxt (Vue 3.5+ หรือ Vue 3.6 beta)
+ใช้สำหรับ Vue 3 projects ทั้ง Vite 8 หรือ Nuxt 4 (Vue 3.5.42 เป็น stable ล่าสุด, Vue 3.6 ยังอยู่ในช่วง RC)
 
 ## Execute
 
@@ -24,14 +27,14 @@ related:
 
 > Goal: ตั้งค่า Vue 3 project ด้วย dependencies และ tools ที่จำเป็น
 
-1. ติดตั้ง Vue 3.5+ ด้วย Vite หรือ Nuxt 4
+1. ติดตั้ง Vue 3.5.42+ ด้วย Vite 8 หรือ Nuxt 4.5+
 2. ใช้ TypeScript strict mode
-3. ติดตั้ง Pinia 3 สำหรับ state management
-4. ติดตั้ง Vue Router สำหรับ routing
-5. ติดตั้ง UnoCSS หรือ TailwindCSS สำหรับ styling
-6. ใช้ Vite 7 เป็น build tool
-7. พิจารณา Vue 3.6 beta สำหรับ Vapor Mode และ alien-signals reactivity
-8. ดูรายละเอียดใน [references/vue.md](references/vue.md)
+3. ติดตั้ง Pinia 4 สำหรับ state management
+4. ติดตั้ง Vue Router 5 สำหรับ routing
+5. ติดตั้ง UnoCSS หรือ Tailwind CSS สำหรับ styling
+6. ใช้ Vite 8 เป็น build tool
+7. พิจารณา Vue 3.6 RC สำหรับ Vapor Mode ในกรณีทดสอบ performance สำคัญ (ยังไม่ stable สำหรับ production)
+8. ดูรายละเอียดเพิ่มเติมใน [references/vue.md](references/vue.md)
 
 ### 2. Component Development
 
@@ -47,21 +50,21 @@ related:
 8. ใช้ `useId()` สำหรับ SSR-safe unique IDs (Vue 3.5+)
 9. ใช้ `defineModel()` สำหรับ two-way binding
 10. ใช้ `defineSlots<T>()` สำหรับ type-safe slots
-11. ดูรายละเอียดใน [references/vue-components.md](references/vue-components.md)
+11. ดูรายละเอียดเพิ่มเติมใน [references/vue-components.md](references/vue-components.md)
 
 ### 3. Composables And State
 
 > Goal: จัดระเบียบ logic และ state ด้วย composables และ Pinia
 
 1. แยก logic ออกจาก components ไปที่ composables
-2. logic ทั้งหมดต้องอยู่ใน composables
-3. ใช้ Pinia 3 สำหรับ global state management
+2. logic ทั้งหมดควรอยู่ใน composables
+3. ใช้ Pinia 4 สำหรับ global state management
 4. จัดระเบียบ stores ตาม features/domains
 5. ใช้ computed getters สำหรับ derived state
 6. ใช้ shared composables สำหรับ local/branch-level state แทนการสร้าง Pinia store
 7. ใช้ `provide`/`inject` พร้อม `InjectionKey<T>` สำหรับ dependency injection
 8. ใช้ `effectScope` สำหรับ cleanup reactive effects ใน composables ที่ซับซ้อน
-9. ดูรายละเอียดใน [references/vue-design-system.md](references/vue-design-system.md)
+9. ดูรายละเอียดเพิ่มเติมใน [references/vue-design-system.md](references/vue-design-system.md)
 
 ### 4. Reactivity Best Practices
 
@@ -74,17 +77,19 @@ related:
 5. หลีกเลี่ยงการสร้าง watchers ที่ไม่จำเป็น (zombie effects)
 6. ใช้ `watchEffect` เฉพาะเมื่อต้องการ auto dependency tracking
 7. ใช้ `watch` เมื่อต้องการ explicit dependency specification
+8. ใช้ `onWatcherCleanup()` และ `onEffectCleanup()` สำหรับ cleanup (Vue 3.5+)
 
 ### 5. Vapor Mode (Vue 3.6+)
 
-> Goal: พิจารณา Vapor Mode สำหรับ performance ทีดีขึ้น
+> Goal: พิจารณา Vapor Mode สำหรับ performance ที่ดีขึ้น
 
-1. ใช้ `vapor` attribute ใน `<script setup>` สำหรับ opt-in Vapor Mode
+1. ใช้ `vapor` attribute ใน `<script setup>` สำหรับ opt-in Vapor Mode (Vue 3.6+)
 2. หรือใช้ `.vapor.vue` file extension สำหรับ opt-in โดยไม่แก้ script
 3. เริ่มจาก leaf components (list items, table rows, icon buttons) ก่อน
 4. Mixed trees ทำงานได้: vdom parent สามารถ render Vapor children ได้
 5. Vapor Mode รองรับ Composition API เท่านั้น (ไม่รองรับ Options API)
 6. `Suspense` ยังไม่รองรับใน Vapor-only mode
+7. ใช้ Vue 3.6 RC เท่านั้น และควรทดสอบก่อนใช้ใน production
 
 ### 6. Styling
 
@@ -93,14 +98,14 @@ related:
 1. ใช้ UnoCSS theme ที่กำหนดไว้
 2. ไม่ hard-code colors หรือ spacing
 3. ใช้ utility classes แทน custom styles
-4. ใช้ `<style scoped>` สำหรับ component-specific styles
+4. ใช้ `<style scoped>` สำหรับ component-specific styles เมื่อจำเป็น
 
 ### 7. Project Organization
 
 > Goal: จัดระเบียบ project structure และ conventions
 
 1. components ที่ใช้ซ้ำกันให้ refactor ไปที่ `components/ui/`
-2. ใช้ import alias (`~/`, `#server`, `#shared`) ห้ามใช้ relative paths
+2. ใช้ import alias (`~/`, `#app`, `#shared`) หลีกเลี่ยง relative paths
 3. ทุก `index.ts` แค่ re-export เท่านั้น ไม่มี logic
 4. ลบ `@deprecated` ทั้งหมดจาก codebase
 5. ใช้ `useHead` ในทุก page component สำหรับ meta tags
@@ -121,15 +126,15 @@ related:
 ### 2. Code Organization
 
 - แยก logic ออกจาก components เข้า composables
-- logic ทั้งหมดต้องอยู่ใน composables
+- logic ทั้งหมดควรอยู่ใน composables
 - components ที่ใช้ซ้ำกันต้องอยู่ใน `components/ui/`
-- ใช้ import alias ห้ามใช้ relative paths
+- ใช้ import alias หลีกเลี่ยง relative paths
 - ทุก `index.ts` แค่ re-export เท่านั้น ไม่มี logic
 - ลบ `@deprecated` ทั้งหมดจาก codebase
 
 ### 3. State Management
 
-- ใช้ Pinia 3 สำหรับ global state management
+- ใช้ Pinia 4 สำหรับ global state management
 - จัดระเบียบ stores ตาม features/domains
 - ใช้ computed getters สำหรับ derived state
 - ใช้ shared composables สำหรับ local/branch-level state
@@ -141,12 +146,13 @@ related:
 - ใช้ `ref()` สำหรับ primitive values
 - หลีกเลี่ยง zombie effects ด้วย `effectScope`
 - หลีกเลี่ยง unnecessary watchers
+- ใช้ `onWatcherCleanup()`/`onEffectCleanup()` สำหรับ cleanup (Vue 3.5+)
 
 ### 5. Styling
 
 - ใช้ UnoCSS theme ที่กำหนดไว้
 - ไม่ hard-code colors หรือ spacing
-- Styles เป็น scoped
+- Styles เป็น scoped เมื่อจำเป็น
 
 ### 6. Performance
 
@@ -154,15 +160,17 @@ related:
 - ใช้ `shallowRef` สำหรับ large data เพื่อประหยัด memory
 - หลีกเลี่ยง unnecessary reactivity
 - ใช้ dynamic imports สำหรับ lazy loading
-- ใช้ Vapor Mode สำหรับ component-heavy scenarios (up to 97% faster)
+- พิจารณา Vapor Mode สำหรับ component-heavy scenarios (Vue 3.6 RC)
 - ใช้ tree-shaking อย่างเต็มที่
 
-- ใช้ /follow-lib-animejs ถ้าจำเป็น
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-lib-better-auth ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ `/follow-lib-animejs` ถ้าจำเป็น
+- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
+- ใช้ `/follow-lib-better-auth` ถ้าจำเป็น
+- ใช้ `/follow-lib-pinia` ถ้าจำเป็น
+- ใช้ `/follow-lib-vueuse` ถ้าจำเป็น
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -23,11 +23,15 @@ related:
 
 ### 1. Measure CWV
 
+> Goal: Measure CWV
+
 1. รัน Lighthouse หรือ web-vitals library
 2. บันทึก LCP, INP, CLS, TTFB, TBT
 3. ระบุ pages ทีมีปัญหา
 
 ### 2. Optimize Long Tasks
+
+> Goal: Optimize Long Tasks
 
 1. ใช้ `requestIdleCallback` หรือ `scheduler.yield`
 2. Split synchronous work
@@ -35,17 +39,23 @@ related:
 
 ### 3. Optimize Third-Party
 
+> Goal: Optimize Third-Party
+
 1. ลด third-party scripts
 2. ใช้ async/defer สำหรับ scripts
 3. Preload critical resources
 
 ### 4. Improve TTI
 
+> Goal: Improve TTI
+
 1. Code split ด้วย dynamic import
 2. Defer non-critical JS
 3. ลด main thread work
 
 ### 5. Validate
+
+> Goal: Validate
 
 1. วัด CWV ใหม่
 2. ทำ `/run-build`

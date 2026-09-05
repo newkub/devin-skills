@@ -10,7 +10,7 @@ npm install --save-dev unocss
 
 ## Version
 
-- Latest: 66.8.1
+- Latest: 66.10.0
 - [Package Registry](https://www.npmjs.com/package/unocss)
 - [Repository](https://github.com/unocss/unocss)
 

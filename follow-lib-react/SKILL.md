@@ -1,23 +1,23 @@
 ---
 name: follow-lib-react
-description: พัฒนา React 19 applications ตาม best practices 2026
+description: พัฒนา React 19.2 applications ด้วย Server Components, React Compiler และ modern hooks
 related:
   - follow-tool-react-scan
   - follow-lib-animejs
   - follow-lib-arktype
+  - follow-lib-unocss
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
-  - follow-lib-unocss
 ---
 
 ## Goal
 
-พัฒนา React applications ตาม best practices ด้วย React 19, Server Components, และ modern patterns
+พัฒนา React applications ตาม best practices ด้วย React 19.2+, React Compiler, Server Components และ modern hooks
 
 ## Scope
 
-ใช้สำหรับพัฒนา React 19 applications ด้วย Vite หรือ Next.js, TypeScript, และ folder structure มาตรฐาน
+ใช้สำหรับพัฒนา React 19.2+ applications ด้วย Vite หรือ Next.js, TypeScript และ folder structure มาตรฐาน
 
 ## Execute
 
@@ -28,10 +28,10 @@ related:
 สร้างโครงสร้างโปรเจกต์ตามมาตรฐาน
 
 1. สร้าง `src/components/ui`, `src/components/features`, `src/hooks`, `src/lib`, `src/types`
-2. ตั้งค่า `package.json` ด้วย scripts มาตรฐาน
-3. ตั้งค่า `vite.config.ts` และ `tsconfig.json`
-4. ติดตั้ง dependencies ที่จำเป็น
-5. ใช้ React 19+ เป็น minimum version
+2. ติดตั้ง `package.json` ด้วย scripts มาตรฐาน `dev`, `build`, `preview`, `typecheck`, `lint`
+3. ตั้งค่า `vite.config.ts` หรือ `next.config.ts` และ `tsconfig.json`
+4. ติดตั้ง dependencies `react@^19.2.8`, `react-dom@^19.2.8`, `typescript`, `babel-plugin-react-compiler` (ถ้าใช้ React Compiler)
+5. ใช้ React 19.2+ เป็น minimum version
 
 ### 2. Configure Core Principles
 
@@ -41,16 +41,16 @@ related:
 
 1. ใช้ `React.StrictMode` ห่อ `App` component
 2. ใช้ Error Boundaries สำหรับส่วนเสี่ยง
-3. ตั้งค่า UnoCSS ตาม `/follow-lib-unocss`
-4. ใช้ React Server Components เป็น default ใช้ Client Components เฉพาะเมื่อจำเป็น
-5. ใช้ React Compiler ก่อนเพิ่ม manual memoization
-6. ใช้ Server Actions สำหรับ form handling และ mutations
+3. ตั้งค่า UnoCSS ตาม `/follow-lib-unocss` หรือใช้ Tailwind CSS ตามโปรเจกต์
+4. ใช้ React Server Components เป็น default และใช้ Client Components เฉพาะเมื่อจำเป็น
+5. เปิด React Compiler ก่อนเพิ่ม manual memoization ด้วย `babel-plugin-react-compiler` หรือ `reactCompilerPreset` ใน Vite/Next.js
+6. ใช้ Server Actions สำหรับ form handling และ mutations ใน Next.js หรือ framework ที่รองรับ
 
 ### 3. React 19 Hooks And APIs
 
-> Goal: ใช้ hooks ใหม่ของ React 19 อย่างถูกต้องตาม use case
+> Goal: ใช้ hooks และ APIs ของ React 19 อย่างถูกต้องตาม use case
 
-ใช้ hooks ใหม่ของ React 19
+ใช้ hooks และ APIs ของ React 19
 
 1. ใช้ `useActionState` สำหรับ form actions พร้อม pending state
 2. ใช้ `useFormStatus` สำหรับ form submission status
@@ -58,6 +58,9 @@ related:
 4. ใช้ `use()` API สำหรับ unwrapping promises และ context
 5. ใช้ `useTransition` สำหรับ non-blocking UI updates
 6. ใช้ `useDeferredValue` สำหรับ deferring expensive renders
+7. ใช้ `useEffectEvent` สำหรับแยก event logic ออกจาก `useEffect` dependencies (React 19.2+)
+8. ใช้ `<Activity>` เมื่อต้องการซ่อน UI โดยรักษา state (React 19.2+)
+9. ใช้ `cacheSignal` เฉพาะใน React Server Components สำหรับ cache lifetime (React 19.2+)
 
 ### 4. Implement Folder Rules
 
@@ -94,7 +97,7 @@ related:
 3. ใช้ `'use client'` directive เฉพาะจุดที่จำเป็น
 4. ใช้ `'use server'` directive สำหรับ Server Actions
 5. ส่ง data จาก Server → Client ผ่าน props ไม่ใช่ fetch ใน Client
-6. ใช้ `loading.tsx` และ `error.tsx` สำหรับ streaming และ error boundaries
+6. ใช้ `loading.tsx` และ `error.tsx` สำหรับ streaming และ error boundaries (Next.js App Router)
 
 ### 7. Optimize Performance
 
@@ -103,10 +106,11 @@ related:
 ตั้งค่า performance optimization
 
 1. ใช้ React Compiler ก่อนเพิ่ม `React.memo`, `useMemo`, `useCallback`
-2. ใช้ code splitting ด้วย `React.lazy`
-3. ใช้ `useTransition` สำหรับ priority updates
-4. ใช้ `useDeferredValue` สำหรับ expensive renders
-5. หลีกเลี่ยง over-memoization ถ้าใช้ React Compiler
+2. ใช้ `eslint-plugin-react-hooks` ล่าสุดเพื่อให้ linter รองรับ React Compiler rules
+3. ใช้ code splitting ด้วย `React.lazy`
+4. ใช้ `useTransition` สำหรับ priority updates
+5. ใช้ `useDeferredValue` สำหรับ expensive renders
+6. หลีกเลี่ยง over-memoization ถ้าใช้ React Compiler
 
 ## Rules
 
@@ -128,6 +132,7 @@ related:
 - ใช้ Server Actions สำหรับ form handling และ mutations
 - ใช้ `useActionState` แทน manual form state management
 - ใช้ `useOptimistic` สำหรับ optimistic UI updates
+- ใช้ `useEffectEvent` เมื่อต้องการแยก event logic ออกจาก effect dependencies
 - หลีกเลี่ยง `useEffect` สำหรับ data fetching ใช้ Server Components แทน
 
 ### 3. Performance Best Practices
@@ -145,7 +150,7 @@ related:
 รักษาคุณภาพโค้ด
 
 - ใช้ TypeScript สำหรับ type safety
-- ใช้ Biome สำหรับ linting
+- ใช้ Biome หรือ ESLint สำหรับ linting
 - ใช้ strict mode สำหรับ development
 - ใช้ Error Boundaries สำหรับ error handling
 
@@ -153,21 +158,21 @@ related:
 
 ตั้งค่า configuration ตามมาตรฐาน
 
-- `package.json`: dev, build, preview, typecheck, lint scripts
-- `vite.config.ts`: Vite configuration
+- `package.json`: `dev`, `build`, `preview`, `typecheck`, `lint` scripts
+- `vite.config.ts`: Vite configuration พร้อม React Compiler plugin เมื่อจำเป็น
 - `tsconfig.json`: TypeScript configuration
 - UnoCSS configuration ตาม `/follow-lib-unocss`
 
-- ใช้ /follow-tool-react-scan ถ้าจำเป็น
-- ใช้ /follow-lib-animejs ถ้าจำเป็น
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ `/follow-tool-react-scan` ถ้าจำเป็น
+- ใช้ `/follow-lib-animejs` ถ้าจำเป็น
+- ใช้ `/follow-lib-arktype` ถ้าจำเป็น
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 
-- React 19 application ด้วย structure ที่ถูกต้อง
+- React 19.2+ application ด้วย structure ที่ถูกต้อง
 - Server Components เป็น default, Client Components เฉพาะเมื่อจำเป็น
 - React Compiler ลดความจำเป็นของ manual memoization
 - Performance optimization ที่เหมาะสม

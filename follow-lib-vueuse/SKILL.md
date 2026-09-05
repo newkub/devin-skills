@@ -1,10 +1,8 @@
 ---
 name: follow-lib-vueuse
-description: ใช้งาน VueUse v14 composables ตาม best practices 2026
+description: ใช้งาน VueUse v14.4 composables ตาม best practices
 related:
-  - follow-lib-animejs
-  - follow-lib-arktype
-  - follow-lib-better-auth
+  - follow-lib-vue
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
@@ -12,11 +10,11 @@ related:
 
 ## Goal
 
-ใช้งาน VueUse v14 composables สำหรับ Vue 3 applications อย่างมีประสิทธิภาพ
+ใช้งาน VueUse v14.4 composables สำหรับ Vue 3.5+ applications อย่างมีประสิทธิภาพ
 
 ## Scope
 
-ใช้สำหรับ Vue 3.5+ projects ที่ใช้ VueUse v14 composables (ต้องการ Vue 3.5+)
+ใช้กับ Vue 3.5+ projects ที่ใช้ VueUse v14.4 ครอบคลุม installation, core composables, v14 features, best practices และ testing
 
 ## Execute
 
@@ -24,26 +22,26 @@ related:
 
 > Goal: ติดตั้งและตั้งค่า VueUse ใน Vue หรือ Nuxt project
 
-1. ติดตั้ง `@vueuse/core` v14+ (ต้องการ Vue 3.5+)
-2. ติดตั้ง `@vueuse/nuxt` สำหรับ Nuxt projects
+1. ติดตั้ง `@vueuse/core` v14.4+ ด้วย `bun add @vueuse/core`
+2. สำหรับ Nuxt ให้ติดตั้ง `@vueuse/nuxt` หรือ `npx nuxt@latest module add vueuse`
 3. ตั้งค่า Nuxt module ใน `nuxt.config.ts`
 4. ใช้ auto-imports สำหรับ VueUse composables
-5. กำหนด imports ที่ต้องการใช้
-6. ดูรายละเอียดใน [references/vueuse.md](references/vueuse.md)
+5. กำหนด imports ที่ต้องการใช้ถ้าไม่ใช้ auto-imports
 
 ### 2. Use VueUse Composables
 
 > Goal: เลือก composables ตาม use case จาก categories หลักของ VueUse
 
-1. State: `useLocalStorage`, `useSessionStorage`, `useAsyncState`, `useStorage`
-2. Elements: `useElementBounding`, `useWindowSize`, `useScroll`, `useIntersectionObserver`
-3. Browser: `useMediaQuery`, `useClipboard`, `useDark`, `useCssSupports`
+1. State: `useLocalStorage`, `useSessionStorage`, `useAsyncState`, `useStorage`, `createSharedComposable`
+2. Elements: `useElementBounding`, `useWindowSize`, `useScroll`, `useIntersectionObserver`, `useResizeObserver`
+3. Browser: `useMediaQuery`, `useClipboard`, `useDark`, `useCssSupports`, `useTitle`
 4. Sensors: `useMouse`, `useGeolocation`, `useNetwork`, `useDraggable`, `useDropZone`
 5. Animation: `useInterval`, `useTimeout`, `useTransition`, `useRafFn`
-6. Utilities: `useSortable`, `useWebSocket`, `useElementVisibility`
-7. ดูรายละเอียดใน [references/vueuse.md](references/vueuse.md)
+6. Network: `useFetch`, `useWebSocket`, `useEventSource`
+7. Utilities: `useSortable`, `useEventListener`, `onClickOutside`, `tryOnScopeDispose`
+8. ดูรายละเอียดครบถ้วนใน `https://vueuse.org/functions`
 
-### 3. VueUse v14 New Features
+### 3. Use VueUse v14.4 New Features
 
 > Goal: ใช้ features ใหม่ของ VueUse v14 ที่ปรับปรุงจากเวอร์ชันก่อนหน้า
 
@@ -54,7 +52,11 @@ related:
 5. `useCssSupports` สำหรับ reactive CSS feature detection (ใหม่ใน v14)
 6. `useWebSocket` รองรับ function support สำหรับ `autoConnect.delay`
 7. `useElementVisibility` มี `initialValue` option
-8. Custom scheduler system จาก v14.1.0 สำหรับ time-based composables
+8. `useElementOverflow` สำหรับ detect element overflow (ใหม่ใน v14.4)
+9. `useSpeechRecognition` expose confidence ของ latest result (v14.4)
+10. `useVirtualList` scrollTo รองรับ `behavior`, `block`, `inline` (v14.4)
+11. Custom scheduler จาก v14.1.0 สำหรับ time-based composables
+12. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
 
 ### 4. Integrate With Components
 
@@ -114,23 +116,28 @@ related:
 - ใช้ `computed` จาก VueUse getters
 - ใช้ `shallowRef` สำหรับ large data
 
-### 5. Testing
+### 5. VueUse v14 Breaking Changes
 
-- Mock VueUse composables ใน unit tests
+- VueUse v14 ต้องการ Vue 3.5+
+- Migrate ไปใช้ `tsdown` และ dist files ย้ายตำแหน่ง (breaking)
+- Alias exports deprecated ให้ใช้ชื่อ function ต้นฉบับ
+- `watchPausable` deprecated ให้ใช้ Vue 3.5 native `watch` controls
+
+### 6. Testing
+
+- จำลอง VueUse composables ใน unit tests
 - ใช้ `flushPromises` สำหรับ async composables
 - ทดสอบ composables ที่ extend จาก VueUse
 - ใช้ `effectScope` สำหรับ test isolation
 
-- ใช้ /follow-lib-animejs ถ้าจำเป็น
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-lib-better-auth ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- ใช้ `/follow-lib-vue` ถ้าจำเป็น
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 
-- VueUse v14 composables ที่ใช้อย่างมีประสิทธิภาพ
+- VueUse v14.4 composables ที่ใช้อย่างมีประสิทธิภาพ
 - Code ที่ clean และ maintainable
 - Type safety จาก VueUse TypeScript support
 - Performance ที่ดีขึ้นด้วย `shallowRef` และ `effectScope`

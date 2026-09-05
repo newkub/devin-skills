@@ -1,35 +1,45 @@
 # CLI
 
-## TanStack Router CLI
+## TanStack CLI (project scaffolding)
 
-### Generate Route
-
-```bash
-npx @tanstack/router-cli generate
-```
-
-### Type Check Routes
-
-```bash
-npx @tanstack/router-cli typecheck
-```
-
-## TanStack Start CLI
+Unified CLI สำหรับสร้าง Start/Router apps (`@tanstack/cli`, docs: `https://tanstack.com/cli/latest`)
 
 ### Create Project
 
 ```bash
-npx create-tanstack-start-app@latest
+# สร้าง TanStack Start app (default: SSR + file-based router)
+npx @tanstack/cli@latest create my-app
+
+# Minimal one-route Start project ไม่มี starter UI/examples
+npx @tanstack/cli create my-app --blank -y
+
+# Router-only SPA (ไม่มี SSR)
+npx @tanstack/cli create my-app --router-only -y
+
+# เลือก add-ons เช่น auth, db, deployment
+npx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
 ```
 
-### Dev Server
+Options หลัก: `--framework` (`React`/`Solid`), `--package-manager` (`npm`/`pnpm`/`yarn`/`bun`/`deno`), `--deployment`, `--toolchain`, `--intent` (skill mappings สำหรับ coding agents), `--no-git`, `--no-install`, `-y/--yes`, `--force`, `--list-add-ons`, `--json`
+
+## TanStack Router CLI
+
+สำหรับ file-based routing — ปกติ route tree (`routeTree.gen.ts`) ถูก generate อัตโนมัติโดย `@tanstack/router-plugin` (Vite/Rsbuild plugin) ไม่ต้องรัน CLI เอง; ใช้ CLI เมื่อไม่ได้ใช้ plugin:
 
 ```bash
+# Generate route tree ครั้งเดียว
+npx tsr generate
+
+# Watch mode
+npx tsr watch
+```
+
+package: `@tanstack/router-cli` (binary: `tsr`)
+
+## Dev / Build
+
+```bash
+# dev server และ build ผ่าน build tool ของ project
 bun run dev
-```
-
-### Build
-
-```bash
 bun run build
 ```

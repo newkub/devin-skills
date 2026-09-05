@@ -1,10 +1,9 @@
 ---
 name: follow-lib-drizzle
-description: ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations ด้วย SQL-like syntax
+description: ติดตั้งและใช้งาน Drizzle ORM 0.45+ สำหรับ type-safe database operations ด้วย SQL-like syntax
 related:
   - run-drizzle-studio
-  - follow-lib-animejs
-  - follow-lib-arktype
+  - follow-lib-zod
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
@@ -12,17 +11,17 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน Drizzle ORM สำหรับ TypeScript-first database operations ด้วย SQL-like syntax และ relational query API
+ติดตั้งและใช้งาน Drizzle ORM เวอร์ชันล่าสุดสำหรับ type-safe database operations ด้วย SQL-like syntax และ relational query API ตาม official best practices
 
 ## Scope
 
-ตั้งค่า Drizzle ORM สำหรับ type-safe database operations ด้วย SQL-like syntax, zero dependencies และ excellent TypeScript support
+ใช้กับโปรเจกต์ที่ต้องการ type-safe database access บน PostgreSQL, MySQL, SQLite, SingleStore, MSSQL, หรือ CockroachDB
 
-- ติดตั้ง Drizzle ORM และ Kit
+- ติดตั้ง `drizzle-orm` และ `drizzle-kit` เวอร์ชันล่าสุด
 - กำหนดค่า `drizzle.config.ts`
 - สร้าง database schema และ migrations
 - ใช้งาน query builder แบบ type-safe และ relational queries
-- รองรับ 6 dialects และ serverless drivers
+- รองรับ serverless/edge drivers
 
 ## Execute
 
@@ -30,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบ environment ก่อนเริ่ม
 
-1. ยืนยันว่า Bun ติดตั้งแล้ว โดยรัน `bun --version`
+1. ยืนยันว่า Bun หรือ Node.js runtime พร้อมใช้งาน (`bun --version` หรือ `node --version`)
 2. ยืนยันว่ามี database server หรือ SQLite file ที่กำหนดใช้งานได้
 3. อ่าน `package.json` ของ project
 4. ถ้าไม่มี `package.json` → stop และ report
@@ -39,10 +38,11 @@ related:
 
 > Goal: ติดตั้ง Drizzle ORM, driver, และ drizzle-kit
 
-1. รัน `bun add drizzle-orm`
+1. รัน `bun add drizzle-orm@0.45.2` หรือ `bun add drizzle-orm` (latest stable)
 2. ติดตั้ง driver ตาม runtime และ database — ดูรายละเอียดใน [references/components/drivers.md](references/components/drivers.md)
-3. รัน `bun add -D drizzle-kit`
+3. รัน `bun add -D drizzle-kit@0.31.10` หรือ `bun add -D drizzle-kit`
 4. ตรวจสอบว่า dependencies อยู่ใน `package.json`
+5. ถ้าต้องการ v1.0 RC (`drizzle-orm@rc`, `drizzle-kit@rc`) → ดูหมายเหตุใน Rules
 
 ### 3. Configure
 
@@ -50,7 +50,7 @@ related:
 
 1. สร้าง `drizzle.config.ts` ด้วย `defineConfig` — ดูตัวอย่างใน [references/components/config.md](references/components/config.md)
 2. ระบุ `dialect` ตาม database: `postgresql`, `mysql`, `sqlite`, `singlestore`, `mssql`, หรือ `cockroach`
-3. ระบุ `driver` เฉพาะเมื่อใช้ driver พิเศษ: `turso`, `d1-http`, `expo`, `aws-data-api`, `pglite`
+3. ระบุ `driver` เฉพาะเมื่อใช้ driver พิเศษ: `turso`, `d1-http`, `expo`, `aws-data-api`, `pglite`, `neon-http`, `bun-sql`
 4. ระบุ `schema`, `out`, และ `dbCredentials.url` อ่านจาก `DATABASE_URL` หรือ environment ที่เหมาะสม
 5. อย่า hardcode credentials ใน `drizzle.config.ts`
 
@@ -63,7 +63,7 @@ related:
 3. ใช้ `pgTable` (PostgreSQL/CockroachDB), `mysqlTable` (MySQL/SingleStore), `sqliteTable` (SQLite), `mssqlTable` (MS SQL)
 4. ระบุ `notNull`, `unique`, `defaultNow` ตามที่จำเป็น
 5. สร้าง type จาก schema ด้วย `typeof table.$inferSelect` และ `$inferInsert`
-6. นิยาม `relations()` เพื่อเปิดใช้งาน relational query API
+6. นิยาม `relations()` เพื่อเปิดใช้งาน relational query API บน v0.x; ถ้าใช้ v1.0 RC ให้ใช้ `defineRelations()` แทน
 
 ### 5. Create Client
 
@@ -110,8 +110,9 @@ related:
 
 ### 1. Installation
 
-- `bun add drizzle-orm` + driver ตาม runtime
+- `bun add drizzle-orm` หรือ pin เวอร์ชันล่าสุดที่ตรวจสอบแล้ว
 - `bun add -D drizzle-kit` สำหรับ dev tools
+- ใช้ driver ตาม runtime/database ที่เลือก
 
 ### 2. Configuration
 
@@ -123,7 +124,8 @@ related:
 
 - กำหนด schema ในไฟล์แยกหรือใช้ glob patterns
 - ใช้ type inference จาก schema (`$inferSelect`, `$inferInsert`)
-- นิยาม `relations()` เพื่อเปิดใช้งาน `db.query` API
+- ใช้ `relations()` สำหรับ v0.x (latest stable)
+- ถ้าใช้ v1.0 RC ให้ใช้ `defineRelations()` และ `getColumns()` แทน `getTableColumns`
 - ไม่ hardcode credentials
 
 ### 4. Migrations
@@ -132,6 +134,7 @@ related:
 - Production ต้อง generate + migrate
 - Development ใช้ push ได้
 - ตรวจ drift ด้วย `check`
+- v1.0 RC มี `drizzle-kit up`, `check` commutativity, `--ignore-conflicts`, `push --explain`
 
 ### 5. Driver Selection
 
@@ -140,12 +143,17 @@ related:
 - Edge/browser: `pglite`
 - ดูรายละเอียดใน [references/components/drivers.md](references/components/drivers.md)
 
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
-- ใช้ /follow-lib-animejs ถ้าจำเป็น
-- ใช้ /follow-lib-arktype ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /use-my-packages-on-registry ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+### 6. Version Notes
+
+- Latest stable: `drizzle-orm@0.45.2` + `drizzle-kit@0.31.10` (verified 2026-07-30)
+- v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` มี breaking changes ได้แก่ `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` ถูกเอาออก, migration folder v3
+- ตรวจสอบ version ใน `package.json` ก่อนเลือก API
+
+- ใช้ `/run-drizzle-studio` ถ้าจำเป็น
+- ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
 
 ## Expected Outcome
 

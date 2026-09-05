@@ -12,7 +12,7 @@ triggers:
   - user
   - model
 related:
-  - view
+  - view-files
   - report-file-structure
   - scan-codebase
   - search-files-patterns
@@ -26,7 +26,7 @@ related:
 
 ใช้เมื่อต้องการดูภาพรวม directory structure ของ project หรือโฟลเดอร์ย่อย รองรับการกำหนด depth, include/exclude pattern
 
-ดูเพิ่มเติม: /view, /report-file-structure, /scan-codebase, /search-files-patterns
+ดูเพิ่มเติม: /view-files, /report-file-structure, /scan-codebase, /search-files-patterns
 
 ## Execute
 
