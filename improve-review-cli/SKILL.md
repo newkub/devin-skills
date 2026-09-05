@@ -1,20 +1,24 @@
 ---
 name: improve-review-cli
 description: สร้างหรืออัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review จนผ่าน
+argument-hint: "[target-or-iteration]"
 related:
   - run-review
+  - review-codebase-everything
   - deep-review
   - update-create-analyze-cli
+  - check-should-update
   - scan-codebase
   - update-project-rules
   - resolve-errors
   - report-table
   - ship
+  - ask-me
 ---
 
 ## Goal
 
-อัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review เพื่อวัด metrics ครบทุกมิติ จนผ่านหรือครบ 3 รอบ
+สร้างหรืออัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review เพื่อวัด metrics ครบทุกมิติ จนผ่านหรือครบ 3 รอบ
 
 ## Scope
 
@@ -22,7 +26,21 @@ related:
 
 ## Execute
 
-### 1. Scan Codebase Features
+### 1. Prepare And Keep Up With Codebase
+
+> Goal: อัปเดต rules, skills และ CLI ให้ทันสมัยก่อนรัน review
+
+1. ทำ `/scan-codebase` ใน `tools/review-codebase/` ถ้ามีอยู่
+2. ทำ `/update-project-rules` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
+3. ทำ `/update-create-analyze-cli` เพื่ออัปเดต `tools/analyze` ให้ครอบคลุม features ปัจจุบัน
+4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
+5. ถ้าผลเป้น `skip` → ไป Step 8
+6. ถ้าผลเป้น `update` หรือ `create` → ดำเนินขั้นตอนถัดไป
+7. อ่าน `AGENTS.md`, `.devin/rules.md`, `tools/review-codebase/README.md` ถ้ามี
+8. ถ้า `tools/review-codebase` มีอยู่ → ทำ pre-review ตาม `references/review-checklist.md` ตรวจ Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count และ evidence
+9. ถ้า pre-review score < 70 → ทำ Step 2-7 ก่อน Step 8
+
+### 2. Scan Codebase Features
 
 > Goal: เข้าใจ features ที่มีใน codebase
 
@@ -31,7 +49,7 @@ related:
 3. อ่าน `AGENTS.md` และ `docs/project/features.md` ถ้ามี
 4. ระบุ features ใหมที่ยังไม่มี analyzer ครอบคลุม
 
-### 2. Update Project Rules
+### 3. Update Project Rules
 
 > Goal: มั่นใจว่า skills/rules ครอบคลุม dependencies และ features
 
@@ -39,7 +57,7 @@ related:
 2. ตรวจ `AGENTS.md` และ `.devin/rules` อัปเดตตาม features ใหม
 3. ถ้ามี skill หรือ rule ขาด → สร้างหรืออัปเดต
 
-### 3. Update Analyze CLI
+### 4. Update Analyze CLI
 
 > Goal: เพิ่ม/อัปเดต analyzers ตาม features ใหม
 
@@ -47,7 +65,7 @@ related:
 2. ตรวจ categories ครอบคลุม features ทั้งหมด
 3. ถ้า categories น้อยกว่า 60 หรือ feature ใหมไม่มี analyzer → เพิ่ม analyzer
 
-### 4. Create Or Update Workspace Package
+### 5. Create Or Update Workspace Package
 
 > Goal: มี workspace `tools-review-codebase` พร้อมใช้
 
@@ -57,7 +75,7 @@ related:
 4. เพิ่ม `tools-review-codebase` เข้า root `package.json` workspaces ถ้ายังไม่มี
 5. ใช้ `bun install` เพื่ออัปเดต `bun.lock`
 
-### 5. Setup Clean Architecture
+### 6. Setup Clean Architecture
 
 > Goal: โครงสร้าง Clean Architecture สำหรับ review CLI
 
@@ -66,9 +84,9 @@ related:
 3. สร้าง `src/domain/models.ts` สำหรับ `CategoryFinding`, `CategoryResult`, `ReviewReport`
 4. สร้าง `src/application/review.ts` import `runAllAnalyzers` จาก `tools-analyze`
 5. สร้าง `src/presentation/cli.ts` เป็น entry point
-6. สร้าง `src/index.ts` export `runReview`
+6. สร้าง `src/index.ts` export `runReview` หรือ `createReviewPorts`
 
-### 6. Integrate Analyzers
+### 7. Integrate Analyzers
 
 > Goal: ใช้ analyzers จาก `tools-analyze` โดยไม่ duplicate logic
 
@@ -77,7 +95,7 @@ related:
 3. กำหนด `reviewWorkflow` map ไปยัง review skills
 4. ถ้า analyzer ยัง implement ไม่เสร็จ ให้ comment `// TODO` พร้อมรายละเอียด
 
-### 7. Validate CLI
+### 8. Validate CLI
 
 > Goal: ตรวจสอบว่า CLI รันได้
 
@@ -85,19 +103,27 @@ related:
 2. รัน `bun --filter tools-review-codebase typecheck`
 3. รัน `bun --filter tools-review-codebase review-codebase --help`
 4. รัน `bun --filter tools-review-codebase review-codebase`
-5. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)
+5. รัน `bun --filter tools-review-codebase review-codebase:json` แล้วตรวจสอบ `reports/review-report.json`
+6. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)
 
-### 8. Run Review And Loop
+### 9. Run Review And Decide
 
-> Goal: รัน review CLI แล้ววนจนผ่าน
+> Goal: รัน review CLI แล้วตัดสินใจอัปเดตตาม metrics
 
-1. รัน `bun --filter tools-review-codebase review-codebase:json`
-2. บันทึก score, grade, domain breakdown, findings count, analyzerErrors, falsePositiveRate
-3. ถ้า `categories < 60`, `score < 70`, `domain score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%` → กลับไป Step 3-7
-4. วนซ้ำไม่เกิน 3 รอบ
+1. รัน `bun --filter tools-review-codebase review-codebase` สำหรับ table output
+2. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อเขียน `reports/review-report.json`
+3. บันทึก score, grade, domain breakdown, category coverage, findings count, analyzerErrors, falsePositiveRate
+4. ถ้าผลตรงเงื่อนไขใดข้างล่าง → ทำ `/update-create-analyze-cli` แล้วทำ Step 4-8 เพื่อ integrate กลับไป Step 9 ใหม่ (ไม่เกิน 3 รอบ):
+   - `categories` น้อยกว่า 60
+   - overall `score` ต่ำกว่า 70 หรือ `grade` เป้น `D`/`F`
+   - domain ใด `score` ต่ำกว่า 50
+   - `analyzerErrors` > 0
+   - `falsePositiveRate` สูงกว่า 20%
+   - findings จำนวนมากไม่มี `evidence` หรือ `severity` ไม่ชัดเจน
+   - `reviewWorkflow` ไม่ map ไปยัง review skills ทีมีอยู่
 5. ถ้าหลัง 3 รอบยังไม่ผ่าน → stop และ report
 
-### 9. Report
+### 10. Report
 
 > Goal: สรุปผล review
 
@@ -111,7 +137,7 @@ related:
 
 - ใช้ `tools/review-codebase` CLI เป็นแหล่งหลักของ findings
 - ไม่ manual อ่าน references ทีละ dimension
-- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ Step 3-7 ก่อนรีวิวต่อ
+- ถ้า metrics บ่งชี้ให้ update CLI → ต้องทำ Step 4-8 ก่อนรีวิวต่อ
 
 ### 2. Metric Triggers
 
@@ -124,7 +150,7 @@ related:
 ### 3. No Duplicate Logic
 
 - ไม่ duplicate analyzer logic ระหว่าง `tools/analyze` และ `tools/review-codebase`
-- ใช้ `runAllAnalyzers` จาก `tools-analyze` ใน `tools/review-codebase`
+- ใช้ `runAllAnalyzers` จาก `tools/analyze` ใน `tools/review-codebase`
 
 ### 4. Evidence-Based
 
@@ -134,9 +160,9 @@ related:
 
 ### 5. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไขระหว่าง review
+- ทำ review/improve CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
-- ใช้ `/deep-review` สำหรับ comprehensive quality gate
+- ใช้ `/deep-review` หรือ `/review-codebase-everything` สำหรับ comprehensive quality gate
 
 ### 6. Formatting
 

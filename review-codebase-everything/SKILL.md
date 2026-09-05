@@ -1,45 +1,139 @@
 ---
 name: review-codebase-everything
-description: (Deprecated) เนื้อหา CLI-driven review ถูก merge เข้า /deep-review
-allowed-tools:
-  - read
-  - write
-  - edit
-  - grep
-  - skill
-triggers:
-  - user
-  - model
+description: ใช้ `tools/review-codebase` CLI รัน review code แบบครอบคลุมทุก domain พร้อมสรุป findings
+argument-hint: "[path-or-target]"
 related:
-  - deep-review
-  - update-review-cli
   - run-review
-  - update-create-analyze-cli
+  - improve-review-cli
+  - deep-review
+  - review-quality
+  - review-security
+  - review-performance
+  - review-architecture
+  - review-stability
+  - review-by-engineer
+  - review-by-qa
+  - review-by-stakeholder
+  - report-table
+  - suggest-next-action
 ---
 
 ## Goal
 
-เนื้อหาและ 10 ขั้นตอนของ `tools/review-codebase` CLI ถูก merge เข้า `/deep-review` (dispatch ไป `/update-review-cli`) และ `deep-review/references/cli-review-steps.md` แล้ว
+ใช้ `tools/review-codebase` CLI รัน review แบบครอบคลุมทุกมิติของ codebase แล้ววิเคราะห์ผล จัดลำดับ findings และส่งต่อไปยัง review/improve ทีเหมาะสม
 
 ## Scope
 
-ใช้สำหรับ monorepo ที่มีหรือกำลังสร้าง `tools/review-codebase` CLI แต่ไม่ควรใช้ skill นี้โดยตรงสำหรับงานใหม่
-
-ดูเพิ่มเติม: /run-review, /update-create-analyze-cli
+ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
 
 ## Execute
 
-1. ถ้าต้องการ review แบบ comprehensive ให้ใช้ `/deep-review`
-2. ถ้าต้องการรายละเอียด 10 ขั้นตอน CLI review ให้อ่าน `deep-review/references/cli-review-steps.md`
-3. ถ้าต้องการ extra checklists ให้อ่าน `review-codebase-everything/references/`
+### 1. Prepare And Verify CLI
+
+> Goal: ตรวจสอบให้ `tools/review-codebase` พร้อมรัน
+
+1. ตรวจสอบว่า `tools/review-codebase/package.json` และ entry point มีอยู่
+2. ถ้าไม่มี → ทำ `/improve-review-cli` เพื่อสร้าง CLI ก่อน
+3. รัน `bun --filter tools-review-codebase lint` และ `typecheck`
+4. รัน `bun --filter tools-review-codebase review-codebase --help` เพื่อยืนยันว่า CLI ใช้งานได้
+5. ถ้า CLI ติดตั้ง/รันไม่ได้ → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
+
+### 2. Run Comprehensive Review
+
+> Goal: รัน review CLI แบบ full output
+
+1. รัน `bun --filter tools-review-codebase review-codebase` เพื่อดู table summary
+2. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อได้ `reports/review-report.json`
+3. เก็บ before score, grade, domain breakdown, findings count, analyzerErrors, falsePositiveRate
+4. ถ้า CLI crash → กลับไป Step 1
+
+### 3. Validate Output Metrics
+
+> Goal: ตรวจสอบความครบถ้วนของผลลัพธ์
+
+1. ตรวจว่า categories ≥ 60 ตาม `run-review` 5 domains
+2. ตรวจว่า `score` / `grade` ถูกสร้างครบ
+3. ตรวจว่า findings มี `severity`, `evidence`, `action` ครบ
+4. ถ้า `falsePositiveRate > 20%` หรือ `analyzerErrors > 0` → ส่งต่อ `/improve-review-cli` ก่อนวิเคราะห์
+
+### 4. Analyze By Domain
+
+> Goal: วิเคราะห์ findings ตาม domain reference
+
+1. อ่าน `references/review-checklist.md` และ `references/index.md`
+2. แบ่ง findings ตาม 5 domains ของ `run-review`
+3. ใช้ reference ที่เหมาะกับปัญหา เช่น:
+   - `clean-architecture.md` สำหรับ architecture issues
+   - `analyzers.md` สำหรับ analyzer gaps
+   - `issue-detection.md` สำหรับ bug-prone patterns
+   - `package-scripts.md` สำหรับ CLI/package issues
+   - `scoring.md` สำหรับ scoring/severity ทีไม่ชัด
+4. บันทึก gaps แต่ละ domain พร้อม evidence
+
+### 5. Deep Review Findings
+
+> Goal: ส่งต่อ findings ให้ review skills ตรง domain
+
+1. ถ้า architecture มีปัญหา → `/review-architecture`
+2. ถ้า security มีปัญหา → `/review-security`
+3. ถ้า performance มีปัญหา → `/review-performance`
+4. ถ้า quality/correctness มีปัญหา → `/review-quality` หรือ `/review-correctness`
+5. ถ้า stability มีปัญหา → `/review-stability`
+6. ถ้า UI/UX มีปัญหา → `/review-uxui`
+7. ถ้า scope ใหญ่หรือไม่ชัด → `/deep-review`
+
+### 6. Stakeholder Prioritization
+
+> Goal: จัดลำดับ findings ตาม impact
+
+1. รวม findings จากทุก domain
+2. ถ้าต้องการมุมมอง engineer/QA → `/review-by-engineer` หรือ `/review-by-qa`
+3. ถ้าต้องการมุมมอง product/user → `/review-by-stakeholder` หรือ `/review-by-product`
+4. เรียงลำดับตาม severity, effort และ business impact
+5. ระบุ clear owner skill สำหรับแต่ละ action
+
+### 7. Report And Route
+
+> Goal: สรุปผลและชี้ next action
+
+1. ทำ `/report-table` สรุป score, findings, owner skill, priority
+2. บันทึก action items เป็น `TODO` หรือ plan
+3. ทำ `/suggest-next-action` โดยแนะนำ `/improve-*` หรือ `/optimize-*` ทีเหมาะสม
 
 ## Rules
 
-- ไม่ใช้ skill นี้โดยตรงสำหรับ workflow ใหม่ — ใช้ `/deep-review` แทน
-- ถ้า skill อื่นอ้างอิง `/review-codebase-everything` Step X ให้ map ไปยัง `/deep-review` ซึ่งจะ dispatch ไป `/update-review-cli` และ `deep-review/references/cli-review-steps.md`
-- `tools/review-codebase` ยังคงสร้างที่ project root เท่านั้น
+### 1. No Duplication
+
+- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `review-codebase-everything` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + ส่งต่อ fix"
+- ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
+
+### 2. Evidence First
+
+- ทุก finding ต้องมี evidence จาก `review-report.json` หรือ screenshots
+- ไม่ตัดสิน severity จาก intuition อย่างเดียว
+- ตรวจ `falsePositiveRate` ก่อนประเมินผล
+
+### 3. Minimal Dispatch
+
+- ส่งต่อเฉพาะ domain ที่มี findings จริง
+- ไม่ต้องรัน `/review-*` ทั้งหมดถ้าไม่มี findings
+- ถ้าหลาย domain มี findings → ทำ `/deep-review` ครั้งเดียวแทน
+
+### 4. Loop Limit
+
+- ถ้า CLI รันไม่ผ่าน วนกลับไป `/improve-review-cli` สูงสุด 3 รอบ
+- ถ้า `score < 70` หรือ `grade D/F` หลัง 3 รอบ → stop และ report
+
+### 5. Safety
+
+- ไม่แก้ business logic โดยตรงจาก skill นี้
+- ไม่เพิ่ม dependencies ใหม่นอกเหนือจาก CLI workspace
+- ถ้า `tools/review-codebase` ติดตั้งไม่ได้ → หยุดและแจ้ง user
 
 ## Expected Outcome
 
-- ไม่มี duplicate workflow ระหว่าง `review-codebase-everything` กับ `/deep-review`
-- CLI-driven review ถูกจัดการโดย `/deep-review` เป็นหลัก
+- `tools/review-codebase` CLI รันได้และ produce `reports/review-report.json`
+- Review ครอบคลุม 5 domains และ 60+ categories
+- Findings ถูกวิเคราะห์ตาม reference ที่ถูกต้อง
+- ทุก high-priority finding ถูก route ไปยัง review/improve skill ทีเหมาะสม
+- รายงานสรุปพร้อม table, score, และ next action

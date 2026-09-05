@@ -4,7 +4,6 @@ description: รัน review CLI วิเคราะห์ผล และแ
 related:
   - deep-review
   - improve-review-cli
-  - update-review-cli
   - update-create-analyze-cli
   - run-verify
   - resolve-errors
@@ -19,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรัน review CLI ที่ `tools/review-codebase` ที่ project root และแปลผลลัพธ์ ถ้าจำเป็นให้ update/fix CLI ด้วย `/update-review-cli` หรือ `/improve-review-cli`
+ใช้สำหรับรัน review CLI ที่ `tools/review-codebase` ที่ project root และแปลผลลัพธ์ ถ้าจำเป็นให้ update/fix CLI ด้วย `/improve-review-cli`
 
 ดูเพิ่มเติม: /improve-review-cli
 
@@ -41,7 +40,7 @@ related:
 2. รัน `bun --filter tools-review-codebase review-codebase:json` สำหรับ JSON output ที่เขียนลง `reports/review-report.json`
 3. ถ้าต้องการ output มาที stdout ให้ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file -`
 4. ถ้าต้องการบันทึกไฟล์ custom ให้ใช้ `bun --filter tools-review-codebase review-codebase:json -- --out-file <path>`
-5. ถ้า CLI error → ทำ `/update-review-cli` เพื่อ fix CLI ก่อน แล้วกลับมารันใหม่
+5. ถ้า CLI error → ทำ `/improve-review-cli` เพื่อ fix CLI ก่อน แล้วกลับมารันใหม่
 
 ### 3. Analyze Results
 
@@ -57,9 +56,9 @@ related:
 > Goal: แก้ไข CLI/analyzers แล้วรัน review ใหม่จนผ่านหรือครบ 3 รอบ
 
 1. บันทึก metrics ปัจจุบัน: score, grade, categories, domain scores, analyzerErrors, falsePositiveRate
-2. ถ้า CLI error, package missing หรือ structure ผิด → ทำ `/update-review-cli`
+2. ถ้า CLI error, package missing หรือ structure ผิด → ทำ `/improve-review-cli`
 3. ถ้า categories < 60, score < 70, domain score < 50, หรือ falsePositiveRate > 20% → ทำ `/improve-review-cli` หรือ `/update-create-analyze-cli`
-4. ถ้า analyzerErrors > 0 → ทำ `/resolve-errors` จากนั้นทำ `/update-review-cli`
+4. ถ้า analyzerErrors > 0 → ทำ `/resolve-errors` จากนั้นทำ `/improve-review-cli`
 5. หลัง fix รัน `/run-verify` เพื่อ build, lint, typecheck
 6. ถ้า verify ผ่าน → กลับไป Step 2 รัน review ใหม่
 7. ทำซ้ำไม่เกิน 3 รอบ ถ้ายังไม่ผ่าน → ไป Step 5
@@ -100,9 +99,9 @@ related:
 
 ### 3. When To Update Or Fix CLI
 
-- ถ้า CLI error, package missing หรือ crash → ทำ `/update-review-cli`
-- ถ้า categories ไม่ครบ 60+ → ทำ `/update-review-cli` หรือ `/improve-review-cli`
-- ถ้า analyzer ให้ผลไม่ถูกต้อง → ทำ `/update-create-analyze-cli` แล้ว `/update-review-cli`
+- ถ้า CLI error, package missing หรือ crash → ทำ `/improve-review-cli`
+- ถ้า categories ไม่ครบ 60+ → ทำ `/improve-review-cli`
+- ถ้า analyzer ให้ผลไม่ถูกต้อง → ทำ `/update-create-analyze-cli` แล้ว `/improve-review-cli`
 - ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้ว rerun (max 3 รอบ)
 
 ## Expected Outcome
@@ -110,15 +109,14 @@ related:
 - Review report พร้อม score, grade, domain breakdown และ findings
 - ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
 - แนะนำ `/review-*` workflows สำหรับแต่ละปัญหา
-- แนะนำ `/update-review-cli` ถ้า CLI ต้องสร้าง/อัปเดท
-- แนะนำ `/improve-review-cli` ถ้า analyzers ต้องปรับปรุง
+- แนะนำ `/improve-review-cli` ถ้า CLI ต้องสร้าง/อัปเดทหรือ analyzers ต้องปรับปรุง
 
 ## References
 
 - ใช้ `tools/review-codebase/package.json` ที่ project root
-- ดูรายละเอียดสร้าง/อัปเดท CLI ใน `/update-review-cli` และ `/improve-review-cli`
+- ดูรายละเอียดสร้าง/อัปเดท CLI ใน `/improve-review-cli`
 
 ## Addendum
 
-- ถ้าต้องแก้ไข analyzer logic ให้เรียก `/update-create-analyze-cli` ก่อน เพื่ออัปเดท `tools/analyze` ก่อน `/update-review-cli`
+- ถ้าต้องแก้ไข analyzer logic ให้เรียก `/update-create-analyze-cli` ก่อน เพื่ออัปเดท `tools/analyze` ก่อน `/improve-review-cli`
 - Fix workflow ย้ายมาอยู่ใน `/run-review` Step 4

@@ -12,7 +12,7 @@ related:
   - review-rules
   - review-devin-global-skills
   - git-commit-at-devin-skills-global
-  - update-review-cli
+  - improve-review-cli
   - ship
   - report
 ---
@@ -68,7 +68,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `github: /follow-github`
 - `skill-format: /follow-create-devin-global-skills` (create) and `/update-devin-global-skills` (update)
 - `global-rules: /follow-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
-- `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
+- `review-cli: /improve-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web`
 
 ### 3. Platform
@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **827** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **830** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -96,18 +96,19 @@ Core:
 - `update-devin-harness: /update-devin-harness`
 - `follow-global-rules: /follow-global-rules`
 - `git-commit-at-devin-skills-global: /git-commit-at-devin-skills-global`
-- `update-review-cli: /update-review-cli`
+- `improve-review-cli: /improve-review-cli`
 - `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
 - `follow-*` (242): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (68): code review, architecture, security, performance, accessibility, dependencies, quality, and stakeholder roleplay domains (`review-by-*`).
+- `review-*` (69): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-*`), and improvement meta-review.
 - `list-*` (49): inventory, lookup, and listing utilities.
-- `update-*` (39): repo, skills, docs, config, runtime, version, and test spec maintenance.
+- `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (38): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
+- `ship-*` (4): standard `/ship`, staging, production, rollback, and swarm dispatch.
 - `deep-*` (24): deep analysis, research, debugging, validation, update, and ship.
 - `create-*` (23): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (19): verification, structure, and health checks.

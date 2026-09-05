@@ -21,7 +21,7 @@ related:
   - pondering
   - deep-plan
   - deep-analyze
-  - update-review-cli
+  - improve-review-cli
   - deep-review-pr
   - roleplay-stakeholder
   - review-by-stakeholder
@@ -33,7 +33,7 @@ related:
 
 ## Goal
 
-Dispatch review ลึกตาม context ของงาน ไปยัง workflow ทีถูกต้อง โดยไม่ซ้ำซ้อนกับ update-review-cli
+Dispatch review ลึกตาม context ของงาน ไปยัง workflow ทีถูกต้อง โดยไม่ซ้ำซ้อนกับ improve-review-cli
 
 ## Scope
 
@@ -53,7 +53,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 ### 2. Dispatch By Context
 
 > Goal: Dispatch By Context
-1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/update-review-cli`
+1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/improve-review-cli`
 2. ถ้า context เป็น PR, pull request, branch diff → ทำ `/deep-review-pr`
 3. ถ้า context เป็น issue, bug, feature → ทำ `/deep-analyze` แล้วแนะนำ `/review-*` ทีเหมาะสม
 4. ถ้า context เป็น docs, README, content → ทำ `/review-docs`
@@ -71,7 +71,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 ## Rules
 
 - `deep-review` ไม่ทำ review เองโดยตรง แต่ dispatch ไปยัง sub-workflow
-- ไม่เรียก `/update-review-cli` ถ้า context ไม่ใช่ codebase
+- ไม่เรียก `/improve-review-cli` ถ้า context ไม่ใช่ codebase
 - ถ้า user ต้องการ review ทั่วไป ให้ถาม scope ก่อน
 - หลีกเลี่ยงการทำซ้ำซ้อนระหว่าง deep-review-* ต่าง ๆ
 
