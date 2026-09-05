@@ -13,9 +13,13 @@ triggers:
   - model
 related:
   - list-github-repo
+  - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
   - view-repo
+  - list-github-project
+  - list-github-star-latest
+  - search-in-github-star
   - report-table
   - suggest-next-action
 ---
@@ -28,7 +32,7 @@ related:
 
 ใช้ `gh` CLI ดึง repo จาก user และแต่ละ org แล้วรวมเป้นตารางเดียว เรียงตาม updatedAt ล่าสุด
 
-ดูเพิ่มเติม: /list-github-repo, /open-github-repo-personal, /open-github-repo-org, /view-repo
+ดูเพิ่มเติม: /list-github-repo, /open-github-repo, /open-github-repo-personal, /open-github-repo-org, /view-repo, /list-github-project, /list-github-star-latest, /search-in-github-star
 
 ## Execute
 
@@ -88,7 +92,9 @@ related:
 1. ถ้าต้องการดู metadata ของ repo ใด ให้ทำ `/view-repo <owner>/<name>`
 2. ถ้าต้องการเปิดหน้า repo บน browser ให้ทำ `/open-github-repo`
 3. ถ้าต้องการดู repo ของ user ส่วนตัวอย่างเดียว ให้ทำ `/list-github-repo`
-4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
+4. ถ้าต้องการดู GitHub Projects ของ owner นั้น ให้ทำ `/list-github-project`
+5. ถ้าต้องการดู starred repositories ให้ทำ `/list-github-star-latest` หรือค้นหาใน stars ด้วย `/search-in-github-star`
+6. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules
 

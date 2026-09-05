@@ -5,6 +5,7 @@ argument-hint: "[owner/repo]"
 related:
   - open-github-repo-personal
   - open-github-repo-org
+  - all-github-repo
   - open-github-issue
   - open-github-pr
   - open-web
@@ -22,6 +23,8 @@ related:
 - ถ้าอยู่ใน git worktree → อ่าน remote และ branch ปัจจุบันอัตโนมัติ
 - ถ้าระบุ `owner/repo` → ใช้ branch ปัจจุบันของ worktree ถ้าตรงกัน หรือ default เป้น `main`
 - ไม่แก้ไข repo
+
+ดูเพิ่มเติม: /all-github-repo, /list-github-repo
 
 ## Execute
 

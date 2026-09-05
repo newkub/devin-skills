@@ -4,6 +4,7 @@ description: แสดง 50 starred repositories ล่าสุดของ au
 argument-hint: "[username]"
 related:
   - list-github-repo
+  - all-github-repo
   - report-table
 ---
 
@@ -14,6 +15,8 @@ related:
 ## Scope
 
 ใช้สำหรับดู starred repositories ล่าสุดเพื่อติดตาม projects ที่สนใจ รองรับทังผู้ใช้ปัจจุบันและ user อื่น
+
+ดูเพิ่มเติม: /all-github-repo, /list-github-repo
 
 ## Execute
 

@@ -15,7 +15,9 @@ related:
   - list-cloudflare-projects
   - open-all-cloudflare-projects
   - resolve-all-cloudflare-fails
+  - resolve-cloudflare-worker-fails
   - list-cloudflare-worker-fails
+  - open-cloudflare-workers
   - follow-service-cloudflare
   - report-table
   - suggest-next-action
@@ -30,7 +32,7 @@ related:
 
 ใช้ `wrangler` หรือ Cloudflare API เพื่อ list projects ทั้งหมดใน account ของผู้ใช้ โดยไม่แก้ไข resource ใด
 
-ดูเพิ่มเติม: /list-cloudflare-projects, /open-all-cloudflare-projects, /resolve-all-cloudflare-fails, /follow-service-cloudflare
+ดูเพิ่มเติม: /list-cloudflare-projects, /open-all-cloudflare-projects, /resolve-all-cloudflare-fails, /resolve-cloudflare-worker-fails, /list-cloudflare-worker-fails, /open-cloudflare-workers, /follow-service-cloudflare
 
 ## Execute
 
@@ -109,9 +111,10 @@ related:
 > Goal: แนะนำ action ถัดไป
 
 1. ถ้าต้องการเปิด dashboard ทุก project ให้ทำ `/open-all-cloudflare-projects`
-2. ถ้าต้องการตรวจสอบ project ที fail ให้ทำ `/resolve-all-cloudflare-fails` หรือ `/list-cloudflare-worker-fails`
-3. ถ้าต้องการดู local projects บนเครื่อง ให้ทำ `/list-cloudflare-projects`
-4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
+2. ถ้าต้องการตรวจสอบ project ที fail ให้ทำ `/resolve-all-cloudflare-fails`, `/resolve-cloudflare-worker-fails` หรือ `/list-cloudflare-worker-fails`
+3. ถ้าต้องการเปิด dashboard ของ worker ใดตัว ให้ทำ `/open-cloudflare-workers`
+4. ถ้าต้องการดู local projects บนเครื่อง ให้ทำ `/list-cloudflare-projects`
+5. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules
 

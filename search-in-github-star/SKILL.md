@@ -6,6 +6,7 @@ related:
   - list-repo-in-github-star
   - list-github-star-filter-bun
   - list-github-star-filter-rust
+  - all-github-repo
   - follow-tool-websearch
   - follow-tool-crw
   - learn-from-web
@@ -18,6 +19,8 @@ related:
 ## Scope
 
 ใช้สำหรับค้นหา repositories จาก GitHub stars ผ่าน `gh search` command
+
+ดูเพิ่มเติม: /all-github-repo, /list-github-star-latest
 
 ## Execute
 

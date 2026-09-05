@@ -6,6 +6,7 @@ related:
   - resolve-cicd
   - resolve-all-cloudflare-fails
   - resolve-all-github-actions-fails
+  - all-cloudflare-projects
   - follow-service-cloudflare
   - search-project-in-drive-d
   - resolve-errors
@@ -23,6 +24,8 @@ related:
 ## Scope
 
 ใช้กับ worker หรือ pages project เดียว ถ้าไม่ระบุจะหาจาก current project หรือ repo name
+
+ดูเพิ่มเติม: /all-cloudflare-projects, /resolve-all-cloudflare-fails, /list-cloudflare-worker-fails
 
 ## Execute
 
