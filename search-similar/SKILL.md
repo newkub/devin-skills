@@ -3,7 +3,7 @@ name: search-similar
 description: ค้นหา skills, code, หรือ patterns ทีคล้ายกับสิ่งทีระบุ
 related:
   - search-files-patterns
-  - search-with-astgrep
+  - search-by-astgrep
   - use-ast-grep
   - list-devin-global-skills
   - use-in-another-skills
@@ -47,7 +47,7 @@ related:
 > Goal: หา similar ด้วยเนื้อหา
 
 1. ทำ `/search-files-patterns` ด้วย keywords จาก target
-2. ทำ `/search-with-astgrep` สำหรับ code patterns (ถ้าเป็น code)
+2. ทำ `/search-by-astgrep` สำหรับ code patterns (ถ้าเป็น code)
 3. ค้นหาใน `AGENTS.md` categories ทีเกี่ยวข้อง
 4. ค้นหา `related` frontmatter ทีอ้างถึง target
 

@@ -1,4 +1,4 @@
-# lib-* Template
+# follow-lib-* Template
 
 library ติดตั้งผ่าน registry ต้องมี `references/api/`, `references/cli.md`, `references/components/`, และ `subskills/`
 

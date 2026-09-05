@@ -11,7 +11,7 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
-  - use-subagents
+  - consider-use-subagents
   - follow-parallel
 ---
 
@@ -76,7 +76,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ /simplify ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
 - ใช้ /review-consistency ถ้าจำเป็น
-- ใช้ /use-subagents ถ้าจำเป็น
+- ใช้ /consider-use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
 
 ## Expected Outcome

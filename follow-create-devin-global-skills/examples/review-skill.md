@@ -7,7 +7,7 @@
 name: review
 description: Review staged changes for issues
 argument-hint: "[file]"
-allowed-tools: [read, grep, glob, exec]
+allowed-tools: [read, grep, find_file_by_name, exec]
 permissions: { allow: [Exec(git diff), Exec(git log)] }
 triggers: [user]
 ---

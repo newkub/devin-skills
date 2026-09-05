@@ -11,4 +11,4 @@ scan codebase หา issues และ report findings โดยต้องม�
 
 ## allowed-tools
 
-`allowed-tools` ต้องรวม `exec`, `grep`, `glob`, `find_file_by_name`. วางแผนใช้ `/use-scripts` สำหรับ scan ซับซ้อน และสร้าง `scripts/<skill-name>.[ext]` ให้พร้อมรัน
+`allowed-tools` ต้องรวม `exec`, `grep`, `find_file_by_name`. วางแผนใช้ `/use-scripts` สำหรับ scan ซับซ้อน และสร้าง `scripts/<skill-name>.[ext]` ให้พร้อมรัน

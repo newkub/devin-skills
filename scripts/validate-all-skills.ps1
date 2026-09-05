@@ -147,8 +147,8 @@ foreach ($skill in $skills) {
     }
 
     # Bold markers (exclude ** inside backticks which are instructions about bold)
-    $boldMatches = $lines | Select-String -Pattern '\*\*' |
-        Where-Object { $_.Line -notmatch '`\*\*`|`\*\*' -and $_.Line -notmatch 'bold markers' }
+    $boldMatches = $lines | Select-String -Pattern '\*\*[^*]+\*\*' |
+        Where-Object { $_.Line -notmatch '`[^`]*\*\*[^`]*`' -and $_.Line -notmatch 'bold markers' }
     if ($boldMatches) {
         $findings += [PSCustomObject]@{
             Skill = $skillName; Category = "style"; Severity = "Low";

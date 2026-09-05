@@ -8,6 +8,8 @@
 
 ใช้สำหรับสร้าง skill ใหม่หรือแก้ไข skill ใน `.devin/skills/`, `.windsurf/skills/`, `.agents/skills/`, `~/.config/devin/skills/`, `~/.codeium/<channel>/skills/`, หรือ `%APPDATA%\devin\skills\` โดยครอบคลุม directory, template selection, validation, references และการสร้าง `src/` สำหรับ CLI หรือ web ถ้าจำเป็น โดยไม่ทำลาย references เดิม
 
+ดูตัวอย่าง skill ใน [../examples/review-skill.md](../examples/review-skill.md)
+
 ## Execute
 
 ### 1. Prepare Context
@@ -27,7 +29,7 @@
 
 1. เลือก template ตาม prefix ดูรายละเอียดใน [../templates/index.md](../templates/index.md)
 2. ถ้าไม่ตรง template → ใช้โครงสร้างมาตรฐาน `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`
-3. อ่าน template ที่เลือกเพื่อดู sections, rules, file structure pattern และ example template
+3. อ่าน execute pattern จาก template ที่เลือก แล้วดูตัวอย่าง skill ครบรูปแบบใน [../examples/review-skill.md](../examples/review-skill.md)
 4. สร้าง directory structure ตาม pattern ใน template ที่เลือก
 
 ### 3. Create From Url (if needed)
@@ -166,7 +168,4 @@
 - ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
-## Examples
-
-ดูตัวอย่าง skill ใน [../examples/review-skill.md](../examples/review-skill.md)
 

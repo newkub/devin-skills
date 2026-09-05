@@ -11,6 +11,7 @@
 
 - `argument-hint` (recommended): ระบุเสมอเมื่อ skill รับ arguments เพื่อให้ autocomplete แสดง placeholder ตอน invoke (เช่น `"[file] [options]"`, `"<ComponentName>"`, `"[session-id]"`). ถ้า skill ไม่รับ arguments → ละได้
 - `allowed-tools` (recommended): จำกัดเฉพาะ tools ที่จำเป็น
+- `related` (recommended): สูงสุด 15 skills ทีเกี่ยวข้อง ทุกตัวต้องมี directory จริงและถูก mention ใน body
 
 ## Optional Fields
 

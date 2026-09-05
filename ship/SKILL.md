@@ -24,14 +24,14 @@ related:
   - create-cloudflare-worker-project
   - follow-service-cloudflare
   - follow-devin-global-subagents
-  - use-subagents
+  - consider-use-subagents
   - report
   - report-progress
   - suggest-next-action
   - optimize-codebase-everything
   - improve-codebase-everything
   - improve-review-cli
-  - improve-test
+  - improve-test-everything
   - update-version-latest
   - follow-monorepo
   - run-verify
@@ -57,7 +57,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ให้สะท้อน project ปัจจุบัน
 2. ทำ `/follow-agents-md` เพื่อดำเนินการตาม `AGENTS.md`
-3. ถ้ามีหลาย workflow/skill ทีอิสระกัน → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents`
+3. ถ้ามีหลาย workflow/skill ทีอิสระกัน → ทำ `/consider-use-subagents` หรือ `/follow-devin-global-subagents`
 4. ถ้าพบข้อขัดแย้งหรือต้องการ trade-off → ทำ `/ask-me`
 
 ### 2. Validate And Ship
@@ -67,7 +67,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 1. ทำ `/improve-review-cli` เพื่อ review codebase ด้วย CLI ก่อนส่งมอบ
 2. ทำ `/improve-codebase-everything` เพื่อ improve frontend, API, database, security, SEO
 3. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
-4. ทำ `/improve-test` ถ้า tests หรือ coverage ไม่ผ่าน threshold
+4. ทำ `/improve-test-everything` ถ้า tests หรือ coverage ไม่ผ่าน threshold
 5. ทำ `/update-version-latest` เพื่ออัปเดต dependencies ก่อนส่งมอบ
 6. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
 7. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
