@@ -1,6 +1,7 @@
 ---
 name: follow-tool-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - follow-tool-astgrep

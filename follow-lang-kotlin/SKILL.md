@@ -1,6 +1,7 @@
 ---
 name: follow-lang-kotlin
 description: พัฒนา Kotlin applications ด้วย Clean Architecture และ Compose
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

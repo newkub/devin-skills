@@ -1,6 +1,7 @@
 ---
 name: follow-tool-crw
 description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - follow-tool-astgrep

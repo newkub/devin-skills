@@ -1,6 +1,7 @@
 ---
 name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
+argument-hint: "[scope]"
 related:
   - follow-lib-drizzle
   - resolve-errors

@@ -1,6 +1,7 @@
 ---
 name: follow-tool-renovate-json
 description: เขียนและตรวจ renovate.json config สำหรับ Renovate bot auto update dependencies
+argument-hint: "[scope]"
 related:
   - follow-tool-renovate
   - follow-tool-agent-browser

@@ -1,6 +1,7 @@
 ---
 name: run-test
 description: รัน unit tests (alias สำหรับ /run-test-unit)
+argument-hint: "[scope]"
 related:
   - run-test-unit
   - run-test-all
@@ -8,7 +9,6 @@ related:
   - run-test-e2e
   - run-test-api
   - run-test-coverage
-  - improve-test-coverage
   - deep-validate
 ---
 

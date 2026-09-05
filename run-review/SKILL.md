@@ -3,7 +3,6 @@ name: run-review
 description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
 argument-hint: "[target]"
 related:
-  - deep-review
   - improve-review-cli
   - update-create-analyze-cli
   - run-verify

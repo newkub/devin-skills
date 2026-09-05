@@ -1,6 +1,7 @@
 ---
 name: follow-service-workos
 description: ใช้งาน WorkOS สำหรับ SSO, Directory Sync, และ Authentication
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

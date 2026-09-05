@@ -1,6 +1,7 @@
 ---
 name: follow-lang-rust
 description: สร้างหรือปรับปรุง Rust project ด้วย Clean Architecture และ Workspace
+argument-hint: "[scope]"
 related:
   - follow-clean-architecture
   - follow-tool-cargo

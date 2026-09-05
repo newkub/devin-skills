@@ -1,6 +1,7 @@
 ---
 name: follow-create-oxlint-plugins
 description: ตั้งค่าและใช้งาน Oxlint plugins ทั้ง built-in และ JavaScript
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-my-tech-stack

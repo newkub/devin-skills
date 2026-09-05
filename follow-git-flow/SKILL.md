@@ -1,6 +1,7 @@
 ---
 name: follow-git-flow
 description: ตั้งค่า git flow ใน repo ด้วย integration branch, hooks, worktree convention และอัปเดต AGENTS.md
+argument-hint: "[scope]"
 related:
   - follow-github
   - update-agents-md

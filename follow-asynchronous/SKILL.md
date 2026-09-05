@@ -1,6 +1,7 @@
 ---
 name: follow-asynchronous
 description: ใช้งาน async patterns ใน JavaScript/TypeScript ให้ถูกต้อง
+argument-hint: "[scope]"
 related:
   - ask-me
   - run-test

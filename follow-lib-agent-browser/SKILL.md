@@ -3,13 +3,6 @@ name: follow-lib-agent-browser
 description: ใช้ agent-browser CLI สำหรับเปิด browser, interact, capture, a11y audit และ debug บน web apps
 argument-hint: "[url]"
 related:
-  - run-test-website-by-agent-browser
-  - run-test-e2e
-  - capture-component
-  - watch-browser-console
-  - watch-browser-and-fix
-  - report-table
-  - follow-tool-agent-browser
 ---
 
 ## Goal

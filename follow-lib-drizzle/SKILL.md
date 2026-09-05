@@ -1,6 +1,7 @@
 ---
 name: follow-lib-drizzle
 description: ติดตั้งและใช้งาน Drizzle ORM 0.45+ สำหรับ type-safe database operations ด้วย SQL-like syntax
+argument-hint: "[scope]"
 related:
   - run-drizzle-studio
   - follow-lib-zod

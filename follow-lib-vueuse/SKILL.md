@@ -1,6 +1,7 @@
 ---
 name: follow-lib-vueuse
 description: ใช้งาน VueUse v14.4 composables ตาม best practices
+argument-hint: "[scope]"
 related:
   - follow-lib-vue
   - follow-best-practice

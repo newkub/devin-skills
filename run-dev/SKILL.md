@@ -1,6 +1,7 @@
 ---
 name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
+argument-hint: "[scope]"
 related:
   - resolve-errors
   - watch-terminal

@@ -1,6 +1,7 @@
 ---
 name: run-test-coverage
 description: รัน test coverage analysis ตรวจสอบ framework และบรรลุ 100% coverage
+argument-hint: "[scope]"
 related:
   - follow-coverage
   - review-content-coverage

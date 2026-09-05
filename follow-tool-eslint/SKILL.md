@@ -1,6 +1,7 @@
 ---
 name: follow-tool-eslint
 description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
+argument-hint: "[scope]"
 related:
   - follow-create-eslint-plugins
   - follow-tool-agent-browser

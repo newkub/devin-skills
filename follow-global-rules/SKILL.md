@@ -1,6 +1,7 @@
 ---
 name: follow-global-rules
 description: ตรวจสอบและอัปเดต global_rules.md ให้สอดคล้องกับ skills และ subagents
+argument-hint: "[scope]"
 related:
   - update-devin-global-rules
   - update-references

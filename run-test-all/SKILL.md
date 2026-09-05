@@ -1,6 +1,7 @@
 ---
 name: run-test-all
 description: รัน test suite อย่างเป็นระบบ จำแนก failures ว่าควรแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
+argument-hint: "[scope]"
 related:
   - run-lint
   - run-typecheck
@@ -11,16 +12,11 @@ related:
   - run-test-coverage
   - deep-test
   - update-test-and-fix
-  - deep-validate
   - run-test
   - review-codebase-everything
   - resolve-errors
   - edit-manual
   - deep-review
-  - report
-  - report-table
-  - suggest-next-action
-  - realize-implementation
   - run-verify
 ---
 

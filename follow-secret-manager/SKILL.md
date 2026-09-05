@@ -1,6 +1,7 @@
 ---
 name: follow-secret-manager
 description: จัดการ secrets และ environment variables อย่างปลอดภัยด้วย secret manager (Infisical เป็น default)
+argument-hint: "[scope]"
 related:
   - follow-service-infisical
   - open-web-for-config-secret

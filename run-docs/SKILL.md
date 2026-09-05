@@ -1,6 +1,7 @@
 ---
 name: run-docs
 description: รัน documentation site และแก้ไขข้อผิดพลาด
+argument-hint: "[scope]"
 related:
   - follow-tool-vitepress
   - review-codebase-everything

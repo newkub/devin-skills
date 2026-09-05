@@ -1,6 +1,7 @@
 ---
 name: follow-harness-engineering
 description: สร้างและปรับปรุง AI agent harness เพื่อ reliability และ verifiable execution
+argument-hint: "[scope]"
 related:
   - follow-context-engineering
   - review-codebase-everything

@@ -1,6 +1,7 @@
 ---
 name: follow-release
 description: เลือกและตั้งค่า release strategy สำหรับ npm, crates, Docker, VSCode และ monorepo versioning
+argument-hint: "[scope]"
 related:
   - follow-tool-auto-it
   - follow-tool-semantic-release

@@ -1,6 +1,7 @@
 ---
 name: follow-framework-slidev
 description: ตั้งค่าและพัฒนา presentation slides ด้วย Slidev framework
+argument-hint: "[scope]"
 related:
   - create-slide-via-slidev
   - follow-framework-astro

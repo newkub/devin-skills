@@ -1,19 +1,13 @@
 ---
 name: follow-service-cloudflare
 description: ใช้งาน Cloudflare Workers, Pages, D1, KV, R2 และ Nitro ผ่าน Wrangler CLI สำหรับ develop และ deploy
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-create-cloudflare-token
   - deploy-to-cloudflare
-  - create-cloudflare-worker-project
-  - run-deploy
-  - ship
   - resolve-cicd
-  - resolve-cloudflare-worker-fails
-  - resolve-all-cloudflare-fails
-  - follow-create-web
-  - follow-create-product
   - follow-tool-mise
   - follow-tasks
   - follow-package-manifest

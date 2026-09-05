@@ -1,6 +1,7 @@
 ---
 name: follow-lang-swift
 description: แนวทางการพัฒนา Swift applications ตาม Clean Architecture และ SwiftUI
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

@@ -1,6 +1,7 @@
 ---
 name: follow-flat-files
 description: แปลง references directory จากโครงสร้าง `<name>/SKILL.md` เป็น flat file `<name>.md`
+argument-hint: "[scope]"
 related:
   - check-reference
   - update-references

@@ -1,6 +1,7 @@
 ---
 name: follow-tool-devin
 description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
+argument-hint: "[scope]"
 related:
   - follow-create-devin-plugins
   - follow-devin-global-subagents

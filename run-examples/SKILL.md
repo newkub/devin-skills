@@ -1,6 +1,7 @@
 ---
 name: run-examples
 description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์
+argument-hint: "[scope]"
 related:
   - follow-tool-vitepress
   - analyze-project

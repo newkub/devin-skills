@@ -1,6 +1,7 @@
 ---
 name: follow-my-global-cli
 description: Run installed global CLI tools correctly based on context and environment
+argument-hint: "[scope]"
 related:
   - idea-convert-my-global-cli-to-skills
   - report-my-global-cli

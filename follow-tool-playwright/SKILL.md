@@ -1,6 +1,7 @@
 ---
 name: follow-tool-playwright
 description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - follow-tool-astgrep

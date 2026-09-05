@@ -1,6 +1,7 @@
 ---
 name: run-cleanup
 description: รัน cleanup tasks เพื่อลบ build artifacts และ cache
+argument-hint: "[scope]"
 related:
   - cleanup-files-in-computer
   - cleanup-files-in-project

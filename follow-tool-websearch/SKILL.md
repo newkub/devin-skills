@@ -1,6 +1,7 @@
 ---
 name: follow-tool-websearch
 description: ใช้ crw สำหรับ web search และ scrape อย่างรวดเร็วและมีประสิทธิภาพ
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - follow-tool-astgrep

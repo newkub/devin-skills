@@ -1,6 +1,7 @@
 ---
 name: follow-coverage
 description: ทำให้ครอบคลุม ตรวจและเติมส่วนที่ขาดใน content skill และ code
+argument-hint: "[scope]"
 related:
   - review-content-coverage
   - ask-me

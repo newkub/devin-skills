@@ -1,6 +1,7 @@
 ---
 name: follow-create-nitro-plugin
 description: สร้าง Nitro plugin สำหรับ Nuxt ด้วย defineNitroPlugin และ hooks
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-create-web

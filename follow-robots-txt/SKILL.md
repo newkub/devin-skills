@@ -1,6 +1,7 @@
 ---
 name: follow-robots-txt
 description: สร้างหรือแก้ไข robots.txt สำหรับ web project ตามสถานะ public/private และการป้องกันการเข้าถึง
+argument-hint: "[scope]"
 related:
   - follow-create-web
   - follow-create-web-landing

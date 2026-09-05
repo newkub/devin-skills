@@ -1,6 +1,7 @@
 ---
 name: follow-tool-semantic-release
 description: ใช้ Semantic Release สำหรับ automated version management และ package publishing
+argument-hint: "[scope]"
 related:
   - follow-release
   - follow-tool-github-actions

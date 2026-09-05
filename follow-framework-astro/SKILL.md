@@ -1,6 +1,7 @@
 ---
 name: follow-framework-astro
 description: พัฒนา Astro 5 applications ด้วย Server Islands, Content Layer และ Actions
+argument-hint: "[scope]"
 related:
   - follow-framework-capacitor
   - follow-framework-desktop-app

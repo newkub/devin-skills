@@ -1,6 +1,7 @@
 ---
 name: follow-lib-orpc
 description: พัฒนา API ด้วย oRPC 1.15+ แบบ type-safe ตาม official best practices
+argument-hint: "[scope]"
 related:
   - follow-lib-zod
   - follow-best-practice

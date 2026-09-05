@@ -1,6 +1,7 @@
 ---
 name: follow-tool-node-modules-inspector
 description: ตั้งค่าและใช้งาน Node Modules Inspector สำหรับตรวจสอบ node_modules แบบ interactive
+argument-hint: "[scope]"
 related:
   - follow-lang-nodejs
   - follow-lang-typescript

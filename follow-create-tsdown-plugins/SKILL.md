@@ -1,6 +1,7 @@
 ---
 name: follow-create-tsdown-plugins
 description: สร้าง tsdown plugins ด้วย Rolldown API และ tsdown-specific hooks
+argument-hint: "[scope]"
 related:
   - follow-tool-tsdown
   - follow-create-rolldown-plugins

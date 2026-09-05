@@ -1,6 +1,7 @@
 ---
 name: follow-tool-ultracite
 description: ตั้งค่า Ultracite กับ Biome สำหรับ zero-config linting และ formatting
+argument-hint: "[scope]"
 related:
   - follow-tool-biome
   - follow-tool-oxlint

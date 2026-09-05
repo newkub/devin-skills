@@ -1,6 +1,7 @@
 ---
 name: follow-tool-aube
 description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - follow-tool-astgrep

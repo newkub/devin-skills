@@ -1,6 +1,7 @@
 ---
 name: follow-algorithms
 description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
+argument-hint: "[scope]"
 related:
   - follow-math-combinatorics
   - follow-math-graph-theory

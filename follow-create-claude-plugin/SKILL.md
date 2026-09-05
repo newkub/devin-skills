@@ -1,6 +1,7 @@
 ---
 name: follow-create-claude-plugin
 description: สร้าง Claude Code plugin ด้วย manifest, skills, agents, hooks, และ MCP servers
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - update-devin-global-skills

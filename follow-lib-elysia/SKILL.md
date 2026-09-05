@@ -1,6 +1,7 @@
 ---
 name: follow-lib-elysia
 description: พัฒนา API ด้วย Elysia 1.4+ บน Bun แบบ type-safe ตาม official best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lib-zod

@@ -1,6 +1,7 @@
 ---
 name: follow-loop-engineering
 description: ออกแบบ agentic loop ทีหา, triage, มอบหมาย, verify, และ persist state ได้เอง
+argument-hint: "[scope]"
 related:
   - loop-continuous
   - loop-until-complete

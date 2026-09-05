@@ -1,13 +1,13 @@
 ---
 name: follow-tool-agent-browser
 description: ใช้ agent-browser CLI สำหรับ browser automation, WebMCP, และ web testing
+argument-hint: "[scope]"
 related:
   - follow-create-browser-extensions
   - list-brave-browser-history
   - roleplay-stakeholder
   - follow-tool-usage
   - follow-best-practice
-  - setup-cicd
   - resolve-errors
 ---
 

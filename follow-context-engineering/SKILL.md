@@ -1,6 +1,7 @@
 ---
 name: follow-context-engineering
 description: จัดการ context ของ AI agent อย่างมีประสิทธิภาพ ลด context rot เพิ่มคุณภาพการทำงาน
+argument-hint: "[scope]"
 related:
   - follow-math-set-theory
   - follow-math-information-theory

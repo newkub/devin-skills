@@ -1,6 +1,7 @@
 ---
 name: run-profiler
 description: Profile performance เพื่อหา bottlenecks และ optimize
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

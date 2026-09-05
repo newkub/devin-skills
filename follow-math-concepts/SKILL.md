@@ -16,11 +16,6 @@ related:
   - follow-math-algorithm-complexity
   - follow-math-numerical-methods
   - follow-math-optimization
-  - follow-math-information-theory
-  - follow-math-category-theory
-  - follow-math-cryptography
-  - follow-math-proofs
-  - follow-math-game-theory
 ---
 
 ## Goal

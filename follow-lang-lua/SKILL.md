@@ -1,6 +1,7 @@
 ---
 name: follow-lang-lua
 description: แนวทางการพัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight automation
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

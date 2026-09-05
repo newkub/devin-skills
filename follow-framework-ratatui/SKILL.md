@@ -1,6 +1,7 @@
 ---
 name: follow-framework-ratatui
 description: สร้าง TUI ด้วย Ratatui library สำหรับ Rust
+argument-hint: "[scope]"
 related:
   - follow-framework-astro
   - follow-framework-capacitor

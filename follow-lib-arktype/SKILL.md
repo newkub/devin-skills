@@ -1,6 +1,7 @@
 ---
 name: follow-lib-arktype
 description: ใช้ ArkType สำหรับ TypeScript runtime validation ด้วย native type syntax
+argument-hint: "[scope]"
 related:
   - follow-lib-zod
   - follow-lib-better-auth

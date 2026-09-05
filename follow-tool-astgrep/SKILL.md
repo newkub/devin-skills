@@ -1,6 +1,7 @@
 ---
 name: follow-tool-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
+argument-hint: "[scope]"
 related:
   - use-astgrep
   - use-astgrep-programatic

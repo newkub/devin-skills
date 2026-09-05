@@ -1,6 +1,7 @@
 ---
 name: follow-framework-tauri
 description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
+argument-hint: "[scope]"
 related:
   - follow-create-tauri-plugins
   - follow-framework-astro

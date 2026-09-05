@@ -1,6 +1,7 @@
 ---
 name: follow-tool-pkg-new
 description: ตั้งค่า pkg.pr.new สำหรับ continuous preview releases
+argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
   - follow-tool-release-it

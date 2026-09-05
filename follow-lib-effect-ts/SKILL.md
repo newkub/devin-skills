@@ -1,6 +1,7 @@
 ---
 name: follow-lib-effect-ts
 description: แนวทางการพัฒนาด้วย Effect-TS 3.22+ สำหรับ functional programming และ type-safe effects
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - use-my-packages-on-registry

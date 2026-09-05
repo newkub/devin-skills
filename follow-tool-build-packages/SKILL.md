@@ -1,6 +1,7 @@
 ---
 name: follow-tool-build-packages
 description: ตั้งค่า build pipeline สำหรับ packages ใน monorepo ด้วย tsdown, vitest, turborepo
+argument-hint: "[scope]"
 related:
   - follow-tool-turborepo
   - follow-tool-tsdown

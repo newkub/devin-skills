@@ -1,6 +1,7 @@
 ---
 name: follow-lang-typescript
 description: พัฒนา TypeScript projects ด้วย type safety และ code quality best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

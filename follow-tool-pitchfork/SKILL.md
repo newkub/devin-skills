@@ -1,6 +1,7 @@
 ---
 name: follow-tool-pitchfork
 description: ตั้งค่าและใช้งาน pitchfork สำหรับจัดการ daemons/processes ใน project
+argument-hint: "[scope]"
 related:
   - follow-tool-mise
   - follow-tool-github-actions

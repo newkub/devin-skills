@@ -1,6 +1,7 @@
 ---
 name: follow-tasks
 description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

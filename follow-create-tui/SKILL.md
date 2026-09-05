@@ -1,6 +1,7 @@
 ﻿---
 name: follow-create-tui
 description: สร้าง TUI application ด้วย Rust และ Ratatui
+argument-hint: "[scope]"
 related:
   - follow-framework-ratatui
   - follow-create-rust-cli

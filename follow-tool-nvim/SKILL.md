@@ -1,6 +1,7 @@
 ---
 name: follow-tool-nvim
 description: ตั้งค่า Neovim configuration ด้วย lazy.nvim ตาม best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-lua
   - follow-tool-formatter

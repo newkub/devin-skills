@@ -1,6 +1,7 @@
 ---
 name: run-deploy
 description: Deploy application ไปยัง platform ที่กำหนด พร้อม commit, push และ watch จน live
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
@@ -12,7 +13,6 @@ related:
   - follow-create-vite-plugins
   - deploy-to-vercel
   - deploy-to-cloudflare
-  - follow-service-cloudflare
   - deploy-to-railway
   - create-cloudflare-worker-project
 ---

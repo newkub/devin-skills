@@ -1,6 +1,7 @@
 ---
 name: follow-git-workflows
 description: สลับไปยัง git branch ที่ถูกต้องสำหรับ workflow ที่ระบุชื่อ
+argument-hint: "[scope]"
 related:
   - restructure
   - refactor

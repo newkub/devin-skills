@@ -1,6 +1,7 @@
 ---
 name: follow-create-cloudflare-token
 description: สร้าง Cloudflare API token URL ที่ pre-fill permissions แล้วเปิด dashboard
+argument-hint: "[scope]"
 related:
   - follow-service-cloudflare
   - open-web-for-config-secret

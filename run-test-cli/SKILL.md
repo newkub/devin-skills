@@ -3,15 +3,8 @@ name: run-test-cli
 description: รัน tests สำหรับ CLI commands, output, exit codes, flags, และ error paths
 argument-hint: "[cli-command]"
 related:
-  - run-test
-  - run-test-unit
-  - run-test-integration
-  - follow-create-cli
-  - follow-create-bun-cli
-  - follow-create-rust-cli
   - resolve-errors
   - report-table
-  - report-ansi
 ---
 
 ## Goal

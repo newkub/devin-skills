@@ -1,6 +1,7 @@
 ---
 name: follow-tool-changelogen
 description: สร้าง changelog และจัดการ releases ด้วย changelogen
+argument-hint: "[scope]"
 related:
   - fix
   - refactor

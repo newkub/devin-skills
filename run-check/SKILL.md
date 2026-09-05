@@ -1,6 +1,7 @@
 ---
 name: run-check
 description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
+argument-hint: "[scope]"
 related:
   - check-bottlenecks
   - run-lint

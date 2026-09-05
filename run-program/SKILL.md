@@ -1,6 +1,7 @@
 ---
 name: run-program
 description: รันโปรแกรมหลักและทำให้ทำงานได้จริง
+argument-hint: "[scope]"
 related:
   - run-install
   - run-build

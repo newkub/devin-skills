@@ -1,6 +1,7 @@
 ---
 name: follow-incident-triage
 description: จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสม
+argument-hint: "[scope]"
 related:
   - follow-math-probability
   - follow-math-statistics

@@ -1,6 +1,7 @@
 ---
 name: follow-tool-mise
 description: ตั้งค่าและใช้งาน mise สำหรับจัดการ dev tools, env vars, และ tasks
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

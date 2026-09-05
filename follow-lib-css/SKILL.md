@@ -1,13 +1,11 @@
 ---
 name: follow-lib-css
 description: เขียน CSS ตาม modern best practices และ Baseline features
+argument-hint: "[scope]"
 related:
   - follow-lib-unocss
-  - follow-lib-unocss-theme
   - follow-tool-formatter
   - follow-best-practice
-  - use-my-packages-on-registry
-  - setup-cicd
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: follow-goal
 description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
+argument-hint: "[scope]"
 related:
   - follow-math-optimization
   - follow-math-probability

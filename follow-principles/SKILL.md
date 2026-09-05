@@ -1,6 +1,7 @@
 ---
 name: follow-principles
 description: ระบุและใช้ principles ของ context นั้นๆ ในการทำงาน
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

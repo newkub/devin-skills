@@ -3,17 +3,6 @@ name: follow-lib-remotion
 description: ใช้ Remotion v4 สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React และ render ผ่าน CLI
 argument-hint: "[composition-or-task]"
 related:
-  - create-video-story
-  - create-social-cover-image
-  - gen-image-character
-  - follow-lib-react
-  - follow-framework-astro
-  - follow-framework-capacitor
-  - follow-framework-desktop-app
-  - follow-best-practice
-  - setup-cicd
-  - follow-my-tech-stack
-  - ask-me
 ---
 
 ## Goal

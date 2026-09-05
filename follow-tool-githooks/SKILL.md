@@ -1,6 +1,7 @@
 ---
 name: follow-tool-githooks
 description: ใช้งาน Git hooks ใน project สำหรับ pre-commit, pre-push, pre-merge-commit
+argument-hint: "[scope]"
 related:
   - follow-tool-hk
   - follow-tool-linter

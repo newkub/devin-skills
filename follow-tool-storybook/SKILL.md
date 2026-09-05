@@ -1,6 +1,7 @@
 ---
 name: follow-tool-storybook
 description: ตั้งค่าและใช้ Storybook สำหรับ component development และ documentation
+argument-hint: "[scope]"
 related:
   - follow-tool-vite
   - follow-create-vite-plugins

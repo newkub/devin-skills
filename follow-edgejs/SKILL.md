@@ -1,6 +1,7 @@
 ---
 name: follow-edgejs
 description: ใช้งาน Edge.js template engine สำหรับ Node.js ตาม official best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-nodejs
   - follow-lang-typescript

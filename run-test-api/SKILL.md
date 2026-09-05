@@ -1,6 +1,7 @@
 ---
 name: run-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
+argument-hint: "[scope]"
 related:
   - follow-test
   - use-scripts

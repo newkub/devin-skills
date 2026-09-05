@@ -1,6 +1,7 @@
 ---
 name: follow-tool-rmux
 description: ตั้งค่าและใช้งาน RMUX terminal multiplexer สำหรับ automation และ scripting
+argument-hint: "[scope]"
 related:
   - follow-lang-rust
   - follow-tool-cargo

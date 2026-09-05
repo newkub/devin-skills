@@ -1,6 +1,7 @@
 ---
 name: follow-lib-license-md
 description: เลือกและตั้งค่า license ด้วย SPDX identifier ให้ถูกต้องสำหรับ project
+argument-hint: "[scope]"
 related:
   - follow-agents-md
   - follow-package-manifest

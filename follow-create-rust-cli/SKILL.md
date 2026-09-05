@@ -1,6 +1,7 @@
 ---
 name: follow-create-rust-cli
 description: สร้าง CLI applications ด้วย Rust ตาม context และ best practices
+argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-tool-cargo

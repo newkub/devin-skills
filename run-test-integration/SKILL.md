@@ -1,6 +1,7 @@
 ---
 name: run-test-integration
 description: รัน integration tests สำหรับ module interactions และ data flow
+argument-hint: "[scope]"
 related:
   - run-test
   - run-test-all

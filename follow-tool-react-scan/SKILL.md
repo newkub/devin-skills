@@ -1,6 +1,7 @@
 ---
 name: follow-tool-react-scan
 description: ตรวจหาและแก้ไข React performance issues ด้วย react-scan
+argument-hint: "[scope]"
 related:
   - check-reference
   - learn-from-web

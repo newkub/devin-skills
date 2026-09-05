@@ -1,6 +1,7 @@
 ---
 name: follow-create-vite-plugins
 description: สร้าง Vite plugins ด้วย Plugin API มาตรฐาน
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-my-tech-stack

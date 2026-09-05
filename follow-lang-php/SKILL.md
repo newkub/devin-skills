@@ -1,6 +1,7 @@
 ---
 name: follow-lang-php
 description: พัฒนา PHP projects ด้วย PSR standards และ modern best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

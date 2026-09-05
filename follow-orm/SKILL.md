@@ -1,6 +1,7 @@
 ---
 name: follow-orm
 description: ใช้งาน ORM และ data access patterns ด้วย repository pattern และ type-safe mappings
+argument-hint: "[scope]"
 related:
   - follow-clean-architecture
   - follow-layered-architecture

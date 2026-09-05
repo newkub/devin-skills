@@ -1,14 +1,8 @@
 ---
 name: follow-lib-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
+argument-hint: "[scope]"
 related:
-  - follow-lib-arktype
-  - follow-lib-zod
-  - follow-lib-drizzle
-  - follow-framework-nextjs
-  - follow-best-practice
-  - use-my-packages-on-registry
-  - setup-cicd
 ---
 
 ## Goal

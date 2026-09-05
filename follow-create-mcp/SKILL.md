@@ -1,6 +1,7 @@
 ---
 name: follow-create-mcp
 description: สร้าง MCP server ด้วย Rust หรือ TypeScript พร้อม register ลง mcp_config.json
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

@@ -1,6 +1,7 @@
 ---
 name: follow-service-instantdb
 description: ติดตั้งและใช้งาน InstantDB เป็น real-time backend สำหรับ frontend apps
+argument-hint: "[scope]"
 related:
   - follow-lib-react
   - follow-framework-nextjs

@@ -1,6 +1,7 @@
 ---
 name: follow-framework-dioxus
 description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
+argument-hint: "[scope]"
 related:
   - follow-framework-astro
   - follow-framework-capacitor

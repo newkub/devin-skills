@@ -1,6 +1,7 @@
 ---
 name: follow-lang-bun
 description: พัฒนาโปรเจกต์ด้วย Bun native APIs และ Web-standard APIs อย่างเต็มประสิทธิภาพ
+argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-bun-plugins

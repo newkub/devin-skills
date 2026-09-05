@@ -1,6 +1,7 @@
 ---
 name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
+argument-hint: "[scope]"
 related:
   - follow-math-combinatorics
   - follow-math-probability

@@ -1,6 +1,7 @@
 ---
 name: follow-software-engineering
 description: ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย
+argument-hint: "[scope]"
 related:
   - follow-math-propositional-logic
   - follow-math-boolean-algebra

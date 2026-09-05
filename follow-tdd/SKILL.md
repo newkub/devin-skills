@@ -1,6 +1,7 @@
 ---
 name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
+argument-hint: "[scope]"
 related:
   - follow-math-proofs
   - follow-math-propositional-logic

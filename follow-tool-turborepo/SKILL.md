@@ -1,6 +1,7 @@
 ---
 name: follow-tool-turborepo
 description: ตั้งค่าและใช้ Turborepo v2.x สำหรับ monorepo task orchestration
+argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-package-manifest

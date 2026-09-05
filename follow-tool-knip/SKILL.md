@@ -1,6 +1,7 @@
 ---
 name: follow-tool-knip
 description: Setup and configure Knip for detecting unused files, dependencies, and exports in monorepos
+argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-package-manifest

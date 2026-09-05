@@ -1,6 +1,7 @@
 ---
 name: follow-create-raycast-extensions
 description: สร้าง Raycast Extensions ด้วย TypeScript, React และ Raycast API สำหรับ macOS productivity
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-my-tech-stack

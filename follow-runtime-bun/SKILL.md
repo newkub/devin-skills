@@ -1,6 +1,7 @@
 ---
 name: follow-runtime-bun
 description: ใช้ Bun runtime สำหรับ run, install, test, build, config
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - use-bun-native-api

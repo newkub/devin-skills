@@ -1,6 +1,7 @@
 ---
 name: follow-tool-release-it
 description: ตั้งค่า release-it สำหรับ automated version bump, tag และ npm publish
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - follow-tool-semantic-release

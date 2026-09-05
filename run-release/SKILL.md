@@ -1,6 +1,7 @@
 ---
 name: run-release
 description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - ship

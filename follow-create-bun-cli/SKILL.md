@@ -1,6 +1,7 @@
 ---
 name: follow-create-bun-cli
 description: สร้าง CLI applications ด้วย Bun runtime ตาม context และ best practices
+argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-create-web

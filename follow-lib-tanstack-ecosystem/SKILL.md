@@ -1,13 +1,13 @@
 ---
 name: follow-lib-tanstack-ecosystem
 description: เลือกและใช้งาน TanStack libraries ใน project ตาม use case และ maturity
+argument-hint: "[scope]"
 related:
   - analyze-project
   - ask-me
   - run-install
   - run-test
   - run-typecheck
-  - follow-solid-tanstack
 ---
 
 ## Goal

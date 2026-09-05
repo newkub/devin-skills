@@ -1,6 +1,7 @@
 ---
 name: follow-create-github-action
 description: สร้าง GitHub Action ด้วย TypeScript/Composite/Docker
+argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-sdk

@@ -1,6 +1,7 @@
 ---
 name: follow-create-discord-bot
 description: สร้าง Discord bot ด้วย TypeScript/Bun พร้อม slash commands, events, auto-load, และ modular handlers
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

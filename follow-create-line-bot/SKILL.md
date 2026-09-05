@@ -1,6 +1,7 @@
 ---
 name: follow-create-line-bot
 description: สร้าง LINE bot ด้วย TypeScript/Bun พร้อม webhook, commands, และ messaging API
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

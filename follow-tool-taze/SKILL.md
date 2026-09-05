@@ -1,6 +1,7 @@
 ---
 name: follow-tool-taze
 description: ใช้ Taze สำหรับจัดการ dependencies อัตโนมัติใน projects และ monorepos
+argument-hint: "[scope]"
 related:
   - follow-tool-turborepo
   - follow-monorepo

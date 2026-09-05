@@ -1,6 +1,7 @@
 ---
 name: follow-tool-jscpd
 description: ตั้งค่าและใช้งาน jscpd สำหรับตรวจจับ code duplication ใน codebase
+argument-hint: "[scope]"
 related:
   - refactor
   - report-table

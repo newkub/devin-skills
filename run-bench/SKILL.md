@@ -1,6 +1,7 @@
 ---
 name: run-bench
 description: รัน benchmark tests เพื่อวัดประสิทธิภาพและเปรียบเทียบ performance
+argument-hint: "[scope]"
 related:
   - run-install
   - report-table

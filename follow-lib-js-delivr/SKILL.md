@@ -1,6 +1,7 @@
 ---
 name: follow-lib-js-delivr
 description: ใช้ jsDelivr CDN สำหรับโหลด npm packages และ GitHub repositories บน web
+argument-hint: "[scope]"
 related:
   - follow-lib-esm-sh
   - follow-lib-jspm

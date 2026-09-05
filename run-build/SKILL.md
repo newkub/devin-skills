@@ -1,6 +1,7 @@
 ---
 name: run-build
 description: รัน build process อย่างเป็นระบบเพื่อสร้าง production-ready artifacts
+argument-hint: "[scope]"
 related:
   - optimize-bundle
   - review-delivery

@@ -1,6 +1,7 @@
 ---
 name: follow-debugging
 description: หลักการ debug อย่างเป็นระบบ ตั้งแต่ reproduce ถึง fix และ prevent
+argument-hint: "[scope]"
 related:
   - follow-math-propositional-logic
   - follow-math-boolean-algebra

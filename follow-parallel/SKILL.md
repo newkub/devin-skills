@@ -1,6 +1,7 @@
 ---
 name: follow-parallel
 description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
+argument-hint: "[scope]"
 related:
   - follow-math-graph-theory
   - follow-math-optimization

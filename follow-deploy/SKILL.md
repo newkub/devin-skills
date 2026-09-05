@@ -1,6 +1,7 @@
 ---
 name: follow-deploy
 description: ตั้งค่า deployment configuration และ CI/CD ครบถ้วน
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

@@ -1,6 +1,7 @@
 ---
 name: follow-create-bun-plugins
 description: สร้าง Bun plugins ด้วย Bun.plugin API สำหรับ runtime และ bundler
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-runtime-bun

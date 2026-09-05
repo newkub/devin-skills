@@ -1,6 +1,7 @@
 ---
 name: run-format
 description: ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter
+argument-hint: "[scope]"
 related:
   - convert-files-format
   - follow-best-practice

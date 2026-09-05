@@ -1,6 +1,7 @@
 ---
 name: follow-lib-zod
 description: ใช้ Zod v4 สำหรับ TypeScript schema validation ด้วย static type inference
+argument-hint: "[scope]"
 related:
   - follow-lib-arktype
   - follow-lib-better-auth

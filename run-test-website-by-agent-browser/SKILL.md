@@ -5,10 +5,6 @@ argument-hint: "[url]"
 related:
   - list-website-all-routes
   - review-by-stakeholder
-  - run-test-e2e
-  - watch-browser-console
-  - watch-browser-and-fix
-  - follow-lib-agent-browser
   - resolve-errors
   - loop-until-complete
   - capture-component

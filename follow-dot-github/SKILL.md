@@ -1,6 +1,7 @@
 ---
 name: follow-dot-github
 description: จัดการ .github directory ครบถ้วน ทั้ง workflows, templates, policies, และ automation config
+argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
   - analyze-project

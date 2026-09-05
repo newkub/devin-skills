@@ -1,6 +1,7 @@
 ---
 name: follow-layered-architecture
 description: จัดโครงสร้าง Frontend projects ด้วย Layered, Feature-based หรือ 4-layer architecture
+argument-hint: "[scope]"
 related:
   - follow-tool-vite
   - follow-tool-vitest

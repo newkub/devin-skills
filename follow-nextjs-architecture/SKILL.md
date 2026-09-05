@@ -1,6 +1,7 @@
 ---
 name: follow-nextjs-architecture
 description: จัดโครงสร้าง Next.js App Router projects ด้วย modules, monorepo และ server/client patterns
+argument-hint: "[scope]"
 related:
   - follow-framework-nextjs
   - follow-tool-vite

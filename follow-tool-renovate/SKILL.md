@@ -1,6 +1,7 @@
 ---
 name: follow-tool-renovate
 description: ตั้งค่า Renovate สำหรับ auto update dependencies ผ่าน GitHub Actions
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

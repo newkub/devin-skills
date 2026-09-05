@@ -1,6 +1,7 @@
 ---
 name: follow-lib-gritql
 description: ใช้ GritQL ใน Biome สำหรับ code search, transformation และ custom linting
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - use-my-packages-on-registry

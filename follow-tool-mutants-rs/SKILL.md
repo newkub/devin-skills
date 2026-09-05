@@ -1,6 +1,7 @@
 ---
 name: follow-tool-mutants-rs
 description: ตั้งค่าและใช้งาน cargo-mutants สำหรับ mutation testing ใน Rust projects
+argument-hint: "[scope]"
 related:
   - follow-lang-rust
   - follow-tool-nextest

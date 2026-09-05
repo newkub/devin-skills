@@ -1,6 +1,7 @@
 ---
 name: follow-lib-pinia
 description: แนวทางการใช้งาน Pinia v4 สำหรับ state management ใน Vue 3
+argument-hint: "[scope]"
 related:
   - follow-lib-vue
   - follow-best-practice

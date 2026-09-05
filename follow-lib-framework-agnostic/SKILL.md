@@ -1,6 +1,7 @@
 ---
 name: follow-lib-framework-agnostic
 description: พัฒนา libraries แบบ core + adapters ให้ใช้ได้บน multiple frameworks
+argument-hint: "[scope]"
 related:
   - deep-validate
   - follow-lang-typescript

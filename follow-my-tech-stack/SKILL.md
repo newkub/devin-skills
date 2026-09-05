@@ -1,6 +1,7 @@
 ---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
+argument-hint: "[scope]"
 related:
   - use-scripts
   - use-bun-native-api

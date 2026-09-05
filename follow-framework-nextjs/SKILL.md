@@ -1,6 +1,7 @@
 ---
 name: follow-framework-nextjs
 description: แนวทางการจัดโครงสร้างและพัฒนา Next.js 16 applications
+argument-hint: "[scope]"
 related:
   - follow-nextjs-architecture
   - follow-framework-astro

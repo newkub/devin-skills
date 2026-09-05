@@ -1,6 +1,7 @@
 ---
 name: run-clean
 description: Clean build artifacts และ cache เพื่อเริ่มต้นใหม่
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

@@ -1,6 +1,7 @@
 ---
 name: follow-lib-jspm
 description: ใช้ JSPM CLI จัดการ import maps และ CDN สำหรับ native ES modules
+argument-hint: "[scope]"
 related:
   - follow-lib-esm-sh
   - follow-lib-js-delivr

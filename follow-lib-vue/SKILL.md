@@ -1,13 +1,13 @@
 ---
 name: follow-lib-vue
 description: แนวทางการพัฒนา Vue 3.5+ applications ตาม best practices 2026
+argument-hint: "[scope]"
 related:
   - follow-lib-animejs
   - follow-lib-arktype
   - follow-lib-better-auth
   - follow-lib-pinia
   - follow-lib-vueuse
-  - follow-lib-unocss
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd

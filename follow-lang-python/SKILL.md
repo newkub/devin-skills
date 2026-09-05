@@ -1,6 +1,7 @@
 ---
 name: follow-lang-python
 description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

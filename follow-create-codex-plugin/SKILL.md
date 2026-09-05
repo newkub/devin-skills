@@ -1,6 +1,7 @@
 ---
 name: follow-create-codex-plugin
 description: สร้าง Codex plugin ด้วย manifest, skills, MCP servers, app wiring, และ marketplace publishing
+argument-hint: "[scope]"
 related:
   - ask-me
   - follow-clean-architecture

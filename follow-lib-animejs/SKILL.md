@@ -1,14 +1,10 @@
 ---
 name: follow-lib-animejs
 description: ใช้ Anime.js v4 สร้าง DOM/CSS animations, timelines, staggers และ utilities บน web apps
+argument-hint: "[scope]"
 related:
   - follow-lib-css
   - follow-lib-react
-  - follow-best-practice
-  - use-my-packages-on-registry
-  - setup-cicd
-  - follow-lang-javascript
-  - follow-lang-typescript
 ---
 
 ## Goal

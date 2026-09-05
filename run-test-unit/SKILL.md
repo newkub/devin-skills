@@ -1,6 +1,7 @@
 ---
 name: run-test-unit
 description: รัน unit tests สำหรับ pure functions และ business logic
+argument-hint: "[scope]"
 related:
   - run-test
   - run-test-all

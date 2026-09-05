@@ -1,6 +1,7 @@
 ---
 name: follow-framework-capacitor
 description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - review-delivery

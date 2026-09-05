@@ -1,6 +1,7 @@
 ---
 name: follow-create-rust-crate
 description: สร้าง Rust library crate ด้วย Cargo ตาม best practices
+argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-create-sdk

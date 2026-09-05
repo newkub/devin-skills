@@ -1,6 +1,7 @@
 ---
 name: follow-create-vscode-extensions
 description: สร้าง VSCode extensions ด้วย TypeScript, official generator, หรือ reactive-vscode
+argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-sdk

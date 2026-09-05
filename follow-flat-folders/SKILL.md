@@ -1,6 +1,7 @@
 ---
 name: follow-flat-folders
 description: แปลงไฟล์ใน nested directories ให้เป็น flat structure ภายใน scope เดียว พร้อมอัปเดท references
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - report-table

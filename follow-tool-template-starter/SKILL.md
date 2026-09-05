@@ -1,6 +1,7 @@
 ---
 name: follow-tool-template-starter
 description: ใช้ templates จาก template-starter repository ด้วย degit
+argument-hint: "[scope]"
 related:
   - follow-tool-git
   - follow-package-manifest

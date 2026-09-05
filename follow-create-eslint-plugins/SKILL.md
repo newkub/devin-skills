@@ -1,6 +1,7 @@
 ---
 name: follow-create-eslint-plugins
 description: สร้าง custom ESLint plugins ด้วย JavaScript/TypeScript
+argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-my-tech-stack

@@ -1,6 +1,7 @@
 ---
 name: follow-microservices-architecture
 description: ออกแบบ distributed systems ด้วย Microservices, API Gateway, service discovery และ event-driven
+argument-hint: "[scope]"
 related:
   - follow-event-driven
   - follow-orm

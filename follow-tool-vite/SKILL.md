@@ -1,6 +1,7 @@
 ---
 name: follow-tool-vite
 description: ตั้งค่าและใช้ Vite 7+ สำหรับ modern web applications
+argument-hint: "[scope]"
 related:
   - follow-tool-vitest
   - follow-tool-rolldown

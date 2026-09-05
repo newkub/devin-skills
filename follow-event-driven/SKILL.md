@@ -1,6 +1,7 @@
 ---
 name: follow-event-driven
 description: Implement Event-Driven Architecture สำหรับ async workflows และ loose coupling
+argument-hint: "[scope]"
 related:
   - follow-layered-architecture
   - follow-microservices-architecture

@@ -1,6 +1,7 @@
 ---
 name: run-audit
 description: Audit dependencies และ security เพื่อตรวจสอบ vulnerabilities
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

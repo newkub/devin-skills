@@ -1,13 +1,12 @@
 ---
 name: follow-lib-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
+argument-hint: "[scope]"
 related:
   - follow-lib-unocss-theme
   - follow-lib-css
   - follow-tool-formatter
   - follow-best-practice
-  - use-my-packages-on-registry
-  - setup-cicd
 ---
 
 ## Goal

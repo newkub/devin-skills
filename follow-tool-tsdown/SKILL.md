@@ -1,6 +1,7 @@
 ---
 name: follow-tool-tsdown
 description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown
+argument-hint: "[scope]"
 related:
   - follow-tool-rolldown
   - follow-tool-vite

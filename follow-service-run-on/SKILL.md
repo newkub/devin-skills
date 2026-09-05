@@ -1,6 +1,7 @@
 ---
 name: follow-service-run-on
 description: ติดตั้ง กำหนดค่า และ validate self-hosted GitHub Actions runners บน AWS ด้วย RunsOn
+argument-hint: "[scope]"
 related:
   - ask-me
   - deep-validate

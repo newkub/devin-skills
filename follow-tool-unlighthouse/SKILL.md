@@ -1,6 +1,7 @@
 ---
 name: follow-tool-unlighthouse
 description: ตั้งค่า Unlighthouse สำหรับ site-wide Lighthouse audit ทั้ง dev และ CI
+argument-hint: "[scope]"
 related:
   - follow-tool-vite
   - follow-tool-playwright

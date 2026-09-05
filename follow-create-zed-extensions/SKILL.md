@@ -1,6 +1,7 @@
 ---
 name: follow-create-zed-extensions
 description: สร้าง Zed extensions ด้วย Rust/WASM และ extension manifest
+argument-hint: "[scope]"
 related:
   - follow-create-rust-crate
   - follow-create-sdk

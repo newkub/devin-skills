@@ -1,6 +1,7 @@
 ---
 name: follow-enter-dot
 description: จัดการเมื่อ user ส่ง "." โดยตรวจ state แล้วทำ continue, suggest, ship, idea-features หรือ ask-me
+argument-hint: "[scope]"
 related:
   - continue
   - idea-features

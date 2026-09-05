@@ -1,6 +1,7 @@
 ﻿---
 name: follow-create-web-saas
 description: สร้าง SaaS website ด้วย SolidJS, TanStack, oRPC, Elysia, UnoCSS
+argument-hint: "[scope]"
 related:
   - follow-create-web
   - follow-create-web-landing

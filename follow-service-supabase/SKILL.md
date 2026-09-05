@@ -1,6 +1,7 @@
 ---
 name: follow-service-supabase
 description: ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime และ CLI
+argument-hint: "[scope]"
 related:
   - follow-service-aws-sdk
   - follow-service-cloudflare

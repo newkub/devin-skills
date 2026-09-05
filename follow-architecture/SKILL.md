@@ -1,6 +1,7 @@
 ---
 name: follow-architecture
 description: เลือก architecture pattern ตาม package manifest แล้วส่งต่อ
+argument-hint: "[scope]"
 related:
   - follow-clean-architecture
   - follow-layered-architecture

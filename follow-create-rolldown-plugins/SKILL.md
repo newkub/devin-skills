@@ -1,6 +1,7 @@
 ---
 name: follow-create-rolldown-plugins
 description: สร้าง Rolldown plugins ด้วย TypeScript สำหรับ Rust-based bundler
+argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-sdk

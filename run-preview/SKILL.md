@@ -1,6 +1,7 @@
 ---
 name: run-preview
 description: รัน preview build เพื่อทดสอบก่อน deploy จริง
+argument-hint: "[scope]"
 related:
   - run-build
   - watch-browser-and-fix

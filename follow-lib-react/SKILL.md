@@ -1,6 +1,7 @@
 ---
 name: follow-lib-react
 description: พัฒนา React 19.2 applications ด้วย Server Components, React Compiler และ modern hooks
+argument-hint: "[scope]"
 related:
   - follow-tool-react-scan
   - follow-lib-animejs

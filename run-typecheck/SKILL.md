@@ -1,6 +1,7 @@
 ---
 name: run-typecheck
 description: Run typecheck with config check
+argument-hint: "[scope]"
 related:
   - deep-review
   - deep-debug

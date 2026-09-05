@@ -1,6 +1,7 @@
 ---
 name: follow-single-responsibility
 description: แยก task หรือ prompt ออกเป็นหน่วยงานย่อยทีละอย่าง (single responsibility)
+argument-hint: "[scope]"
 related:
   - ask-me
   - report-plan

@@ -1,6 +1,7 @@
 ---
 name: follow-solid-tanstack-architecture
 description: จัดโครงสร้าง TanStack Start + SolidJS apps ด้วย file-based routing, modules และ monorepo
+argument-hint: "[scope]"
 related:
   - follow-solid-tanstack
   - follow-lib-tanstack-ecosystem

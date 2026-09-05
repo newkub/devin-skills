@@ -1,6 +1,7 @@
 ---
 name: follow-deep
 description: พิจารณาและเรียก deep-* workflows ที่เกี่ยวข้องตาม context ของ task
+argument-hint: "[scope]"
 related:
   - review
   - review-codebase-everything

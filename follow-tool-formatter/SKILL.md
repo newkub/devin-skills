@@ -1,6 +1,7 @@
 ---
 name: follow-tool-formatter
 description: ใช้งาน code formatter ใน project เพื่อรักษา style สม่ำเสมอ
+argument-hint: "[scope]"
 related:
   - follow-tool-linter
   - follow-tool-validator

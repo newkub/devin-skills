@@ -1,6 +1,7 @@
 ---
 name: follow-clean-architecture
 description: สร้างโครงสร้าง Clean Architecture ด้วย modules, ports, adapters และ pure domain
+argument-hint: "[scope]"
 related:
   - review-architecture
   - follow-lib-effect-ts

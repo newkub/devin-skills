@@ -1,6 +1,7 @@
 ---
 name: follow-create-browser-extensions
 description: สร้างและดูแล browser extensions ตาม Manifest V3 สำหรับ Chrome, Firefox, Edge
+argument-hint: "[scope]"
 related:
   - deploy-to-cloudflare
   - follow-create-web

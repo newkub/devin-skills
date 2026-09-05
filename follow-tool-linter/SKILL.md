@@ -1,6 +1,7 @@
 ---
 name: follow-tool-linter
 description: ใช้งาน linter ใน project
+argument-hint: "[scope]"
 related:
   - follow-tool-biome
   - follow-tool-oxlint

@@ -8,7 +8,6 @@ related:
   - update-dot-devin
   - update-devin-project-rules
   - update-agents-md
-  - follow-agents-md
   - check-skills-related
   - prepare-skills-context
   - scan-codebase

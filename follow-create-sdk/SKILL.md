@@ -4,49 +4,20 @@ description: ถามและส่งต่อไปยัง skill follow-cr
 argument-hint: "[skill-name-or-goal]"
 related:
   - ask-me
-  - follow-create-biome-plugins
-  - follow-create-browser-extensions
-  - follow-create-bun-cli
-  - follow-create-claude-plugin
-  - follow-create-cli
-  - follow-create-codex-plugin
-  - follow-create-devin-global-skills
-  - follow-create-devin-plugins
-  - follow-create-devin-project-skills
-  - follow-create-discord-bot
-  - follow-create-elysia-plugin
-  - follow-create-eslint-plugins
-  - follow-create-github-action
-  - follow-create-line-bot
-  - follow-create-mobile-android
-  - follow-create-mobile-ios
-  - follow-create-mobile-ios-android
-  - follow-create-nitro-plugin
-  - follow-create-nvim-plugins
-  - follow-create-obsidian-plugin
-  - follow-create-oxlint-plugins
-  - follow-create-raycast-extensions
-  - follow-create-rolldown-plugins
-  - follow-create-rust-cli
-  - follow-create-rust-crate
-  - follow-create-tauri-plugins
-  - follow-create-telegram-bot
-  - follow-create-vite-plugins
-  - follow-create-vitest-plugins
-  - follow-create-vscode-extensions
-  - follow-create-web
-  - follow-create-zed-extensions
-  - report-table
-  - run-test
-  - search-files-patterns
   - search-skills
+  - search-files-patterns
+  - report-table
   - ship
-  - update-devin-global-skills
-  - update-devin-global-subagents
   - update-references
-  - update-test-and-fix
   - follow-my-tech-stack
   - review-techstack
+  - run-test
+  - update-test-and-fix
+  - update-devin-global-skills
+  - update-devin-global-subagents
+  - follow-create-web
+  - follow-create-cli
+  - follow-create-rust-cli
 ---
 ## Goal
 

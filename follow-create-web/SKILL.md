@@ -1,6 +1,7 @@
 ﻿---
 name: follow-create-web
 description: เลือกและสร้าง web project ตามประเภท landing, saas หรือ paas
+argument-hint: "[scope]"
 related:
   - follow-create-web-landing
   - follow-create-web-saas

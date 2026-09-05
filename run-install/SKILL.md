@@ -1,6 +1,7 @@
 ---
 name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
+argument-hint: "[scope]"
 related:
   - update-dependencies-latest
   - update-version-latest

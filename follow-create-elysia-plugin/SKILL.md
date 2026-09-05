@@ -1,6 +1,7 @@
 ---
 name: follow-create-elysia-plugin
 description: สร้าง Elysia plugin ด้วย TypeScript/Bun พร้อม type safety และ lifecycle hooks
+argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-sdk

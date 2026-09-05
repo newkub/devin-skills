@@ -1,6 +1,7 @@
 ---
 name: follow-lib-esm-sh
 description: ใช้ esm.sh CDN สำหรับโหลด ES Modules บน browser โดยไม่ต้อง bundler
+argument-hint: "[scope]"
 related:
   - follow-lib-js-delivr
   - follow-lib-jspm

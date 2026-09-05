@@ -1,6 +1,7 @@
 ﻿---
 name: follow-create-web-landing
 description: สร้าง static landing website ด้วย SolidJS, TanStack และ UnoCSS
+argument-hint: "[scope]"
 related:
   - follow-create-web
   - follow-create-web-saas

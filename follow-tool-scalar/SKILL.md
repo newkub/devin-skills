@@ -1,6 +1,7 @@
 ---
 name: follow-tool-scalar
 description: ใช้ Scalar สำหรับออกแบบ ทดสอบ และจัดทำเอกสาร API แบบครบวงจร
+argument-hint: "[scope]"
 related:
   - follow-test
   - follow-release

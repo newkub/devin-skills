@@ -1,6 +1,7 @@
 ---
 name: follow-service-vercel-cli
 description: ใช้งาน Vercel CLI สำหรับ deploy และ manage projects บน Vercel
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

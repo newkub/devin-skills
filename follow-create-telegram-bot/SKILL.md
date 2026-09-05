@@ -1,6 +1,7 @@
 ---
 name: follow-create-telegram-bot
 description: สร้าง Telegram bot ด้วย TypeScript/Bun พร้อม commands, middleware, error handling, และ webhook
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

@@ -1,6 +1,7 @@
 ---
 name: follow-tool-validator
 description: ใช้งาน validator ใน project สำหรับ data, forms, API payloads, และ schemas
+argument-hint: "[scope]"
 related:
   - follow-tool-linter
   - follow-lib-zod

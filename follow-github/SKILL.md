@@ -1,6 +1,7 @@
 ---
 name: follow-github
 description: ตั้งค่า GitHub repository รวม metadata, branch protection และ .github templates
+argument-hint: "[scope]"
 related:
   - update-github-metadata
   - follow-dot-github

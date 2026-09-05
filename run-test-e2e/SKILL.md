@@ -1,6 +1,7 @@
 ---
 name: run-test-e2e
 description: รัน E2E tests ด้วย Playwright หรือ Cypress
+argument-hint: "[scope]"
 related:
   - run-test
   - run-test-all

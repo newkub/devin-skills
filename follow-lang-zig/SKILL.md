@@ -1,6 +1,7 @@
 ---
 name: follow-lang-zig
 description: เขียน Zig ตาม best practices และ language conventions
+argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-lang-javascript

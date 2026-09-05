@@ -1,6 +1,7 @@
 ---
 name: follow-tool-git
 description: ใช้งาน git commands ตามสถานการณ์
+argument-hint: "[scope]"
 related:
   - follow-git-flow
   - follow-git-workflows
