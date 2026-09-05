@@ -1,6 +1,6 @@
 ---
 name: review-quality
-description: Review code quality, bug-prone patterns, correctness, and overall quality with score
+description: Review code quality, best practices, naming, consistency, bug-prone patterns, and correctness
 related:
   - deep-validate
   - scan-codebase
@@ -13,7 +13,10 @@ related:
   - review-test
   - review-security
   - review-stability
-  - review-uxui
+  - review-correctness
+  - refactor
+  - update-references
+  - rename
 ---
 
 ## Goal
@@ -23,7 +26,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 ## Scope
 
 - code, configuration, rule files, workflows, และ skills
-- ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
+- ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/naming.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
 
 - ดูเพิ่มเติม: /review-codebase-everything
 
@@ -44,19 +47,28 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 ทำตาม `references/code-quality.md`
 
-### 3. Bug-Prone
+### 3. Best Practices, Naming, And Consistency
+
+> Goal: ตรวจ best practices, naming, และ consistency
+
+1. ทำตาม `references/best-practices.md` สำหรับ conventions, error handling, testing, security, performance
+2. ทำตาม `references/naming.md` สำหรับ identifiers, files, skill names
+3. ทำตาม `references/consistency.md` สำหรับ structure, formatting, terminology, references
+4. บันทึก findings พร้อม severity และ evidence
+
+### 4. Bug-Prone
 
 > Goal: ระบุรูปแบบโค้ดที่มีแนวโน้มก่อให้เกิด bugs
 
 ทำตาม `references/bug-prone.md`
 
-### 4. Correctness
+### 5. Correctness
 
 > Goal: ตรวจสอบ logic correctness, edge cases, และ invariant checks
 
 ทำตาม `references/correctness.md`
 
-### 5. Validate
+### 6. Validate
 
 > Goal: Findings ถูกต้อง จัดลำดับชัดเจน ไม่มี false positives
 
@@ -64,9 +76,9 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 2. ตรวจสอบ time complexity ของ critical paths ทำตาม `references/time-complexity.md`
 3. จัดลำดับ findings ตาม severity: Critical → High → Medium → Low
 4. ระบุ false positives พร้อมเหตุผล
-5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
+5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3
 
-### 6. Simplify
+### 7. Simplify
 
 > Goal: Findings กระชับ อ่านง่าย ไม่มี noise
 
@@ -76,7 +88,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 4. จัดกลุ่มที่เกี่ยวข้อง
 5. พิจารณา tech debt ที่ควร simplify ทำตาม `references/tech-debt.md`
 
-### 7. Report
+### 8. Report
 
 > Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
 
@@ -85,7 +97,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 3. คำนวณ review score ทำตาม `references/scoring.md`
 4. ทำ `/suggest-next-action`
 
-### 8. Implement All
+### 9. Implement All
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 

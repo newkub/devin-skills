@@ -7,7 +7,7 @@ related:
   - update-project-skills
   - update-dot-devin
   - review-references
-  - review-consistency
+  - review-quality
   - update-agents-md
   - update-readme-md
   - update-usage-md
@@ -41,7 +41,7 @@ related:
 > Goal: หาความไม่สอดคล้อง
 
 1. ทำ `/review-references` เพื่อตรวจ broken/stale/circular references
-2. ทำ `/review-consistency` เพื่อตรวจภาษา, terminology, format ข้ามไฟล์
+2. ทำ `/review-quality` เพื่อตรวจภาษา, terminology, format ข้ามไฟล์
 3. เปรียบเทียบ devin rules กับ ast-grep rules
 4. เปรียบเทียบ `AGENTS.md` กับ skills/rules จริง
 5. เปรียบเทียบ docs (`README.md`, `USAGE.md`) กับ code และ config

@@ -4,7 +4,6 @@ description: Review workflow เพื่อให้เร็ว ปลอด�
 related:
   - review-references
   - review-redundancy
-  - review-consistency
   - review-quality
   - simplify
   - follow-single-responsibility
@@ -81,7 +80,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 - ใช้ /review-references ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
-- ใช้ /review-consistency ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /simplify ถ้าจำเป็น
 - ใช้ /follow-single-responsibility ถ้าจำเป็น

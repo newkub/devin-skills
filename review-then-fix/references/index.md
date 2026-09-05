@@ -1,8 +1,8 @@
-# review-and-fix References Index
+# review-then-fix References Index
 
 | No. | File | Responsibility |
 |-----|------|----------------|
-| 1 | [scoring.md](scoring.md) | Supplementary metrics for review and fix |
+| 1 | [scoring.md](scoring.md) | Supplementary metrics for review-then-fix |
 | 2 | [apply-fixes.md](apply-fixes.md) | Apply Fixes |
 | 3 | [confirm.md](confirm.md) | Confirm |
 | 4 | [identify-scope.md](identify-scope.md) | Identify Scope |

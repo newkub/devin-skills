@@ -4,9 +4,12 @@ description: Review จากมุมมอง security — threat model, attac
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
+  - review-by-stakeholder
+  - review-by-compliance
+  - review-by-engineer
   - review-security
   - improve-security
-  - review-by-engineer
+  - improve-stability
   - report-table
   - suggest-next-action
   - scan-codebase

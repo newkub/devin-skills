@@ -4,8 +4,13 @@ description: Review จากมุมมอง business, product, growth, marke
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
+  - review-by-stakeholder
   - review-by-user
   - review-by-engineer
+  - review-business
+  - review-uxui
+  - improve-business
+  - improve-uxui
   - report-table
   - suggest-next-action
   - scan-codebase

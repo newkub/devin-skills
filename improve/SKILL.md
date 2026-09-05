@@ -53,7 +53,7 @@ related:
 > Goal: หาจุดทีต้องปรับปรุง
 
 1. ทำ `/review-gaps` สำหรับเป้าหมายทีระบุ
-2. ถ้าเป้าหมายเป็น code → ทำ `/review-quality`, `/review-consistency`, `/review-architecture`
+2. ถ้าเป้าหมายเป็น code → ทำ `/review-quality`, `/review-architecture`
 3. ถ้าเป้าหมายเป็น skill → ทำ `/review-devin-global-skills`
 4. ถ้าเป้าหมายเป็น docs → ทำ `/review-readme-md`, `/review-docs`
 5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-probability` หรือ `/follow-math-optimization`
@@ -75,7 +75,7 @@ related:
 1. ถ้าเป็นบั๊ก → ทำ `/fix`
 2. ถ้าเป็น code quality → ทำ `/refactor`
 3. ถ้าเป็น missing features หรือ mock → ทำ `/realize-implementation`
-4. ถ้าเป็น naming → ทำ `/review-naming` แล้วแก้ไข
+4. ถ้าเป็น naming → ทำ `/review-quality` แล้วแก้ไข
 5. ถ้าเป็น documentation → ทำ `/update-readme-md`
 6. ถ้ามีหลายไฟล์ → ใช้ `/edit-by-use-scripts` หรือ `/refactor-all-workspace`
 

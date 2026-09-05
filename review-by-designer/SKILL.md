@@ -4,9 +4,12 @@ description: Review จากมุมมอง UI/UX designer — design system
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
+  - review-by-stakeholder
   - review-uxui
   - review-by-user
   - review-by-product
+  - improve-uxui
+  - improve-accessibility
   - report-table
   - suggest-next-action
   - scan-codebase

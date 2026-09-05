@@ -70,7 +70,7 @@ related:
 
 > Goal: ทุก skill สอดคล้องกันข้าม repo
 
-1. ทำ `/review-consistency` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
+1. ทำ `/review-quality` เพื่อตรวจภาษา, format, terminology, frontmatter ข้าม skill
 2. ทำ `/review-redundancy` เพื่อลบเนื้อหาซ้ำซ้อนข้าม skill
 3. ทำ `/idea-create-devin-skills-global` เพื่อวิเคราะหา gaps และแนะนำ skills ใหม่
 4. ตรวจไม่มี broken references และไม่มี circular dependencies

@@ -1,6 +1,6 @@
 ---
-name: review-and-fix
-description: Review แล้วแก้ไขตาม context โดยขอ user confirm
+name: review-then-fix
+description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
 related:
   - watch-browser-and-fix
   - follow-best-practice

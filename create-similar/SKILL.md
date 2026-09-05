@@ -4,7 +4,7 @@ description: สร้างไฟล์ skill หรือ project ใหม่
 related:
   - at-this-repo
   - update-devin-global-skills
-  - review-naming
+  - review-quality
   - use-in-another-skills
   - edit-by-use-scripts
   - deep-validate
@@ -94,7 +94,7 @@ related:
 - ถ้าสร้าง skill ใหม่ → อัปเดต `AGENTS.md`
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /review-naming ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /use-in-another-skills ถ้าจำเป็น
 - ใช้ /edit-by-use-scripts ถ้าจำเป็น
 

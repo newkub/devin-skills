@@ -1,99 +1,89 @@
 ---
 name: report-todo
-description: รายงานสิ่งที AI จะทำต่อไปในรูปแบบตาราง ไม่ใช่สำหรับอ่าน TODO.md
+description: อ่าน TODO.md หรือ todo list จาก project แล้วรายงานเป้นตารางพร้อมสถานะ
+argument-hint: "[path-or-scope]"
 related:
-  - report-plan
-  - report-progress
   - report-table
-  - continue
-  - suggest-next-action
   - update-todo-md
+  - implement-todo-md
+  - report-progress
+  - suggest-next-action
 ---
 
 ## Goal
 
-รายงานสิ่งที AI จะทำต่อไป ในรูปแบบตาราง ก่อนลงมือทำจริง
+อ่าน TODO.md หรือ todo list จาก project แล้วรายงานเป้นตารางพร้อมสถานะ progress, completed, pending
 
 ## Scope
 
-ใช้เมื่อ:
-- user บอกให้ทำงานบางอย่าง และต้องการเห็นแผนก่อน
-- งานมีหลาย step และต้องการเห็นทีทะลัว
-- ต้องการ report state ก่อน `/continue`
-
-ไม่ใช้สำหรับ:
-- อ่านหรือ update ไฟล์ `TODO.md` (ใช้ `/update-todo-md` หรือ `/report-scan-todo`)
-- รายงาน progress หลังทำงาน (ใช้ `/report-progress` หรือ `/report-progress`)
-- วางแผนละเอียดไฟล์/โครงสร้าง (ใช้ `/report-plan`)
+ใช้กับไฟล์ `TODO.md`, `todo.md`, `.devin/TODO.md`, หรือข้อความ todo list ที่ user ให้มา แสดงผลเป้นตารางที่มีลำดับ สถานะ และหมายเหตุ
 
 ## Execute
 
-### 1. Parse Current State
+### 1. Locate Task Source
 
-> Goal: รู้วาอยู่ทีขั้นตอนใด
+> Goal: หาแหล่ง todo list
 
-1. อ่าน context และ todo list ปัจจุบัน
-2. ระบุงานทีเสร็จแล้ว, งานทีกำลังทำ, งานที pending
-3. ถ้าไม่ชัด → ทำ `/ask-me` หรือ `/suggest-next-action`
+1. ตรวจ `TODO.md` ที root ของ project
+2. ถ้าไม่มี → ตรวจ `.devin/TODO.md` หรือ `todo.md`
+3. ถ้า user ให้ scope มา → ใช้ path ทีระบุ
+4. ถ้าไม่มีไฟล์ → ใช้ todo list จาก context ปัจจุบัน
 
-### 2. Build Action Table
+### 2. Parse Task Items
 
-> Goal: สร้างตารางสิ่งจะทำ
+> Goal: แยก todo แต่ละข้อ
 
-ตารางต้องมีคอลัมน์:
+1. อ่านไฟล์ด้วย `/read`
+2. แยก item ตามลำดับ โดยมักจะอยู่ในรูปแบบ:
+   - `[ ]` = pending
+   - `[x]` = completed
+   - `[~]` = in progress
+   - `1. [ ] text` หรือ `- [ ] text`
+3. ดึงหมายเลข, ข้อความ, สถานะ
+4. ถ้าไฟล์ไม่อยู่ในรูปแบบ checklist → แยกตาม section หรือ numbered list
 
-| No. | Action | Skill/Command | Why | Status |
-|-----|--------|---------------|-----|--------|
-| 1 | ... | `...` | ... | pending |
-| 2 | ... | `...` | ... | pending |
+### 3. Build Report Table
 
-หรือถ้าง่ายกวานั้น:
+> Goal: สร้างตารางทีอ่านง่าย
 
-| No. | ทำอะไร | ด้วย skill ไหน | Output ทีคาดหวัง |
-|-----|--------|----------------|------------------|
-| 1 | ... | `...` | ... |
+1. ทำ `/report-table` ด้วยคอลัมน์:
+   - `No.`
+   - `Task`
+   - `Status` (pending / in-progress / completed)
+   - `Notes`
+2. คำนวณ progress: `completed / total`
+3. เรียงลำดับ: in-progress ก่อน pending แล้ว completed
 
-### 3. Report
+### 4. Output Summary
 
-> Goal: ส่งมอบตารางให้ user
+> Goal: บอกสถานะรวมและ next action
 
-1. ใช้ `/report-table` หรือ format table ในแชท
-2. ระบุงานแรกทีจะเริ่มทันที
-3. ถ้ามี dependency ระบุลำดับทีต้องทำ
-4. ถาม user วาต้องการให้เริ่มทำเลยหรือปรับแผน
+1. แสดงจำนวน completed, in-progress, pending
+2. ระบุ task ถัดไปทีควรทำ (in-progress ก่อน แล้ว pending แรกสุด)
+3. ทำ `/suggest-next-action` ถ้ามี task ค้าง
 
 ## Rules
 
-### 1. Table Only
+### 1. Status Mapping
 
-- ตอบเป้นตารางเท่านั้น
-- ไม่เขียนย่อหน้ายาว นอกจากข้อความสั้นก่อนหรือหลังตาราง
+- `[x]`, `completed`, `done` → completed
+- `[~]`, `in progress`, `in-progress` → in-progress
+- `[ ]`, `pending`, `todo` → pending
 
-### 2. Always Numbered
+### 2. Format
 
-- คอลัมน์แรกต้องเป้น `No.` เริ่มจาก 1
-- เรียงลำดับตาม execution order
+- ตารางต้องมีคอลัมน์ `No.` เป้นคอลัมน์แรก
+- ห้ามใช้ `**` bold markers
+- ใช้ backticks สำหรับ paths และ commands
 
-### 3. No. and Skill
+### 3. Scope
 
-- แต่ละ row ต้องบอกวาจะใช้ skill/command อะไร
-- ถ้าไม่ใช่ skill ให้บอก action ชัดเจน
-
-### 4. Status Column
-
-- `pending` สำหรับงานทียังไม่ทำ
-- `in_progress` สำหรับงานทีกำลังทำ
-- `completed` สำหรับงานทีเสร็จแล้ว
-
-### 5. Not For File TODO
-
-- `report-todo` ไม่อ่าน `TODO.md`
-- ไม่อัปเดต `TODO.md`
-- ไม่ scan TODO markers ใน code
+- ไม่แก้ไข todo ไฟล์ — แค่รายงาน
+- ถ้าต้องการ update todo → ส่งต่อ `/update-todo-md`
+- ถ้าต้องการ implement todo → ส่งต่อ `/implement-todo-md`
 
 ## Expected Outcome
 
-- ตารางสิ่ง AI จะทำต่อไป
-- มีลำดับ มี skill/command มีเหตุผล มี status
-- user เห็นภาพก่อนลงมือ
-- ไม่เกิดความสับสนกับ `/update-todo-md` หรือ `/report-scan-todo`
+- ตาราง todo พร้อมสถานะและ progress
+- ระบุ next task ทีควรทำ
+- ไม่แก้ไขไฟล์ todo

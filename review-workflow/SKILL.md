@@ -7,7 +7,7 @@ related:
   - update-devin-global-skills
   - simplify
   - review-redundancy
-  - review-consistency
+  - review-quality
   - deep-validate
   - report-table
   - suggest-next-action
@@ -75,7 +75,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /simplify ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
-- ใช้ /review-consistency ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /consider-use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
 
