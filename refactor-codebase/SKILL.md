@@ -11,6 +11,7 @@ related:
   - review-quality
   - follow-architecture
   - review-architecture
+  - deep-review
   - update-project
   - dont-over-engineer
   - rethink
