@@ -1,6 +1,6 @@
 ---
 name: improve-docs
-description: แก้ไข documentation findings จาก review-docs, review-readme-md และ review-writing
+description: แก้ไข documentation findings จาก review docs family ให้ docs ตรงกับ code จริง
 argument-hint: "[doc-or-scope]"
 related:
   - review-docs
@@ -8,8 +8,10 @@ related:
   - review-writing
   - review-usage-md
   - review-content-coverage
+  - update-docs
   - update-readme-md
   - update-usage-md
+  - scan-codebase
   - report-table
   - check-reference
   - ask-me
@@ -55,7 +57,8 @@ related:
 
 1. เพิ่ม sections ที่ขาดตาม findings (install, usage, troubleshooting)
 2. ใช้ `/update-readme-md` หรือ `/update-usage-md` สำหรับไฟล์มาตรฐาน
-3. เขียนเฉพาะสิ่งที่มี evidence จาก code — ไม่เดา behavior
+3. ถ้า findings เกี่ยวกับ nav/sidebar หรือ docs structure → ทำ `/update-docs` โดยใช้ `references/<type>.md` และ `templates/sidebar-<type>.md` ตาม type (`product`, `open-source`, `cli`) บวก `templates/sidebar-monorepo.md` สำหรับ monorepo
+4. เขียนเฉพาะสิ่งที่มี evidence จาก code — ไม่เดา behavior
 
 ### 5. Improve Clarity
 
