@@ -7,6 +7,7 @@ related:
   - review-quality
   - run-profiler
   - run-bench
+  - optimize-performance
   - deep-analyze
   - run-review
   - deep-validate
@@ -157,3 +158,4 @@ Review application performance ครอบคลุม network, build/runtime, 
 - Severity และ recommendations ชัดเจน
 - ไม่ซ้ำซ้อนกับ review skills อื่น
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- ถ้าต้อง optimize ให้ทำ `/optimize-performance`

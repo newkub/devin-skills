@@ -3,6 +3,7 @@ name: optimize-assets
 description: ปรับปรุง assets: images, fonts, media, formats, compression, lazy loading
 argument-hint: "[asset-or-folder]"
 related:
+  - review-assets
   - run-build
   - report-table
 ---
@@ -71,3 +72,5 @@ related:
 - Asset size ลดลง
 - LCP ดีขึ้น
 - CLS ลดลง
+- ถ้าต้อง review ก่อน → ใช้ `/review-assets`
+

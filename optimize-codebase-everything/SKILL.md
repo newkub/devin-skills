@@ -6,7 +6,7 @@ related:
   - optimize-bundle
   - optimize-assets
   - optimize-rendering
-  - optimize-perf
+  - optimize-performance
   - optimize-memory
   - optimize-network
   - optimize-cost
@@ -78,7 +78,7 @@ Optimize codebase ทั้งหมดที detect ได้: frontend, API, d
 
 > Goal: ปรับ runtime บน browser
 
-1. ใช้ `/optimize-perf` สำหรับ CWV, long tasks, third-party scripts
+1. ใช้ `/optimize-performance` สำหรับ CWV, long tasks, third-party scripts
 2. ใช้ `/optimize-memory` สำหรับ leaks, caches, large objects
 3. ตรวจ long tasks และ INP
 4. ใช้ `requestIdleCallback` หรือ `scheduler.yield`

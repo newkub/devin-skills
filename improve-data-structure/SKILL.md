@@ -7,6 +7,7 @@ related:
   - follow-math-set-theory
   - follow-math-linear-algebra
   - review-architecture
+  - review-data-structure
   - refactor
   - ask-me
 ---
@@ -100,3 +101,4 @@ related:
 - Implementation encapsulated และ tested
 - เอกสารครบถ้วน
 - ไม่ over-engineer
+- ถ้าต้อง review ก่อน → ใช้ `/review-data-structure`

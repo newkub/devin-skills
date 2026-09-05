@@ -3,6 +3,7 @@ name: optimize-bundle
 description: วิเคราะห์และปรับปรุง bundle size, build time, chunks และ output ก่อน build production
 argument-hint: "[app-or-package]"
 related:
+  - review-bundle
   - optimize-codebase-everything
   - optimize-assets
   - optimize-network
@@ -128,3 +129,5 @@ related:
 - Build time ลดหรือคงที่ ไม่มี duplicate vendors
 - Browser/Node externalization warnings ลดลง
 - `dist/` output พร้อมสำหรับ production deploy โดยไม่มี regression
+- ถ้าต้อง review ก่อน → ใช้ `/review-bundle`
+

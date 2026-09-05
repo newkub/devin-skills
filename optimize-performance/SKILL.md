@@ -1,8 +1,9 @@
 ---
-name: optimize-perf
+name: optimize-performance
 description: ปรับปรุง overall performance: CWV, long tasks, TTI, runtime benchmarks
 argument-hint: "[metric-or-page]"
 related:
+  - review-performance
   - run-build
   - report-table
 ---
@@ -68,3 +69,5 @@ related:
 - CWV ดีขึ้น
 - Long tasks ลดลง
 - TTI ลดลง
+- ถ้าต้อง review ก่อน → ใช้ `/review-performance`
+

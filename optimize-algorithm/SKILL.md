@@ -3,6 +3,7 @@ name: optimize-algorithm
 description: ปรับปรุง algorithms: time complexity, space complexity, data structures, hot paths
 argument-hint: "[function-or-module]"
 related:
+  - review-algorithm
   - run-test
 ---
 
@@ -68,3 +69,5 @@ related:
 - Time complexity ลดลง
 - Space complexity ลดลง
 - Hot paths เร็วขึ้น
+- ถ้าต้อง review ก่อน → ใช้ `/review-algorithm`
+

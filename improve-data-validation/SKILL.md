@@ -3,6 +3,7 @@ name: improve-data-validation
 description: ปรับปรุง data validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe
 argument-hint: "[schema-or-api-pattern]"
 related:
+  - review-data-validation
   - deep-review
   - run-test
 ---
@@ -106,3 +107,5 @@ related:
 - Test cases สำหรับ invalid inputs
 - ลดความเสี่ยง injection และ bypass
 - Build/test ผ่าน
+- ถ้าต้อง review ก่อน → ใช้ `/review-data-validation`
+

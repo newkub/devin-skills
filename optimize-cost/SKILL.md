@@ -3,6 +3,7 @@ name: optimize-cost
 description: ปรับปรุง infrastructure cost: compute, storage, bandwidth, third-party, idle resources
 argument-hint: "[service-or-resource]"
 related:
+  - review-cost
   - report-table
 ---
 
@@ -79,3 +80,5 @@ related:
 - Cost ลดลง
 - ไม่มere reliability regression
 - Idle resources ถูก cleanup
+- ถ้าต้อง review ก่อน → ใช้ `/review-cost`
+
