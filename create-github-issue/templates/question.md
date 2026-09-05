@@ -1,11 +1,11 @@
 ## Question
-[The question in one sentence.]
+[What do you want to know?]
 
 ## Context
-[Background or situation.]
+[Background and why the question matters.]
 
-## What I've Tried
-[Steps already taken or research done.]
+## What I Tried
+[Steps already taken or researched.]
 
 ## Expected Answer
-[What kind of answer you are looking for.]
+[What kind of response would help.]

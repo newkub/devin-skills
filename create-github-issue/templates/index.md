@@ -1,18 +1,19 @@
 # Issue Templates
 
-เลือก template ตามประเภท issue:
+Pick a template based on issue type:
 
-| Type | Template File | ใช้เมื่อ |
+| Type | Template File | Use When |
 |---|---|---|
-| bug | [bug.md](bug.md) | แจ้ง bug |
-| feature | [feature.md](feature.md) | ขอ feature หรือ enhancement |
-| plan | [plan.md](plan.md) | วางแผนงานใหญ่ หรือ epic |
-| question | [question.md](question.md) | ถามคำถาม |
+| bug | [bug.md](bug.md) | Reporting a bug |
+| feature | [feature.md](feature.md) | Requesting a feature or enhancement |
+| idea | [idea.md](idea.md) | Reporting a feature idea from `/deep-idea-features` |
+| plan | [plan.md](plan.md) | Large plan or epic |
+| question | [question.md](question.md) | Asking a question |
 
 ## Rules
 
-- title ต้องขึ้นต้นด้วยประเภท ใช้ Title Case ไม่เกิน 80 ตัวอักษร
-- description เขียนด้วยภาษาอังกฤษ ยกเว้น technical terms, project/skill names, commands, paths
-- ถ้า repo มี `.github/ISSUE_TEMPLATE/*.yml` → ใช้ repo templates ก่อน
-- ถ้า repo ยังไม่มี templates → อ่าน `create-github-issue/templates/<type>.md` เลือกตามประเภท
-- ถ้าไม่ชัดว่าใช้ type ไหน → ทำ `/ask-me`
+- Title must start with the issue type, use Title Case, and be at most 80 characters
+- Description must be in English, except for technical terms, project/skill names, paths, and commands
+- If the repo has `.github/ISSUE_TEMPLATE/*.yml`, use the repo templates first
+- If the repo has no templates, use `create-github-issue/templates/<type>.md`
+- If the type is unclear, use `/ask-me`

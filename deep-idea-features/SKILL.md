@@ -7,7 +7,6 @@ related:
   - bench-features
   - create-github-issue
   - create-plan-in-dot-devin
-  - create-report-in-dot-devin
   - create-files-in-os-temp
   - open-files-in-web
   - productionize-implementation
@@ -15,6 +14,8 @@ related:
   - suggest-me
   - enhance-prompt
   - report-uxui-sketch
+  - report-ansi
+  - update-github-issue
   - analyze-project
 ---
 
@@ -28,7 +29,7 @@ related:
 
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
-- สร้าง report ชั่วคราวใน `.devin/reports/` หรือ OS temp directory ถ้าต้องการ
+- สร้าง report ชั่วคราวใน OS temp directory ถ้าต้องการ preview
 - สร้าง GitHub issue `idea-features` ผ่าน `/create-github-issue` พร้อม plan และ comment ทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
 - สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
@@ -72,29 +73,30 @@ related:
 
 ### 4. Create Temporary Report
 
-> Goal: สร้าง report ชั่วคราวเพื่อสรุปไอเดีย
+> Goal: สร้าง report ชั่วคราวเพื่อ preview ก่อนสรุปลง GitHub issue
 
 1. ถ้าต้องการ preview ใน browser → ใช้ `/create-files-in-os-temp` สร้าง report ใน OS temp
-2. ถ้าไม่ต้องการ preview → ใช้ `/create-report-in-dot-devin` ใน `.devin/reports/`
-3. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
-4. รวม `/report-file-structure` ของ project
-5. บันทึกลง path ทีเลือก
+2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
+3. รวม `/report-file-structure` ของ project
+4. บันทึกลง OS temp path
 
 ### 4.5 Open Preview With Open-Files-In-Web
 
 > Goal: เปิด report ชั่วคราวดูก่อนตัดสินใจ
 
-1. ถ้าสร้าง report ใน temp → ใช้ `/open-files-in-web preview <path>`
-2. ถ้าสร้างใน `.devin/reports/` → ใช้ `/open-files-in-web <path>`
-3. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
+1. ใช้ `/open-files-in-web preview <path>` เปิด report ที่สร้างใน OS temp
+2. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
 
 ### 5. Create Idea-Features Issue
 
 > Goal: สร้าง GitHub issue `idea-features` พร้อม plan และ comment ทุก feature
 
 1. ทำ `/create-github-issue` ด้วย title `idea-features` และ body เป็น plan สรุป features ทั้งหมดพร้อม priority, phase, effort
-2. comment ทุก feature ลงใน issue ด้วย `gh issue comment <issue>` — แต่ละ comment มีรูปแบบ: `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
-3. ใช้ `/report-uxui-sketch` สำหรับ field `uxui-sketch` ของแต่ละ feature
+2. comment ทุก feature ลงใน issue ด้วย template `create-github-issue/templates/idea.md`:
+   - ตาราง `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk`
+   - `Todo` เป็นตาราง `Action | Files | Dependencies | Workspace`
+   - `UX/UI Sketch` เป็น ANSI art จริง โดยอ่าน project files แล้ววาดเอง ไม่ใช่ placeholder หรือ auto-generated
+3. ใช้ `gh issue comment <issue> --body-file <feature-comment>.md` โพสต์ทีละ feature
 4. บันทึก issue number และ URL ไว้รายงาน user
 
 ### 6. Summarize In Chat
@@ -119,7 +121,7 @@ related:
 
 > Goal: จัดการหลังใช้งาน
 
-1. ถ้า report ชั่วคราวยังคงอยู่และไม่ต้องการเก็บ → ลบไฟล์ `.devin/reports/<title>-<time>.md`
+1. ถ้า report ชั่วคราวยังคงอยู่ใน OS temp และไม่ต้องการเก็บ → ลบไฟล์ทันที
 2. ถ้า plan ยังคงอยู่ → ลบไฟล์ `.devin/plan/<title>-<date>-<time>-<session>.md`
 3. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files หรือ plan files ค้าง
 
@@ -134,9 +136,9 @@ related:
 
 ### 2. Report And Plan Are Temporary
 
-- สร้าง report ใน `.devin/reports/` หรือ OS temp directory เท่านั้น
+- สร้าง report ชั่วคราวใน OS temp directory เท่านั้น
 - สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin`
-- ต้องลบ report files และ plan files หลัง `/productionize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
+- ต้องลบ report files ใน OS temp และ plan files หลัง `/productionize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
 - ไม่เก็บ report หรือ plan ค้าง
 
 ### 3. Implement Flow
@@ -147,7 +149,7 @@ related:
 
 ### 4. Data Format
 
-- ใช้ `/create-report-in-dot-devin` สำหรับ report format
+- report ชั่วคราวใช้รูปแบบเดียวกับ `/create-report-in-dot-devin` แต่บันทึกใน OS temp
 - แต่ละ feature ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
 - ใช้ `/enhance-prompt` สำหรับ copy format
 
@@ -175,7 +177,7 @@ related:
 ## Expected Outcome
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
-- Report ชั่วคราวถูกสร้างใน `.devin/reports/` หรือ OS temp (ถ้าต้องการ)
+- Report ชั่วคราวถูกสร้างใน OS temp (ถ้าต้องการ preview)
 - GitHub issue `idea-features` ถูกสร้างพร้อม plan และ comment ครบทุก feature
 - Plan ถูกสร้างใน `.devin/plan/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
