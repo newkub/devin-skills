@@ -9,6 +9,7 @@ related:
   - report
   - report-table
   - suggest-next-action
+  - improve-architecture
 ---
 
 ## Goal
@@ -110,6 +111,8 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 3. ใช้ skip conditions เมื่อ project ไม่มีสภาพแวดล้อมที่เกี่ยวข้อง — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
 4. คำนวณ score, grade, status, และ metrics ตาม [references/scoring.md](references/scoring.md)
 5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)
+
+- ใช้ /improve-architecture ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -9,6 +9,7 @@ related:
   - review-compliance
   - review-observability
   - scan-codebase
+  - improve-security
 ---
 
 ## Goal
@@ -140,6 +141,8 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 - ใช้ /check-secrets-leak ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
+
+- ใช้ /improve-security ถ้าจำเป็น
 
 ## Expected Outcome
 

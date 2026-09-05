@@ -9,6 +9,7 @@ related:
   - suggest-next-action
   - resolve-errors
   - review-writing
+  - improve-docs
 ---
 
 ## Goal
@@ -101,6 +102,8 @@ related:
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
+- ใช้ /improve-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

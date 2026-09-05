@@ -3,7 +3,7 @@ name: analyze-project
 description: วิเคราะห์โปรเจกต์พื้นฐานด้วยเลือกใช้ tools ที่เหมาะสมกับงาน
 related:
   - scan-codebase
-  - use-ast-grep
+  - use-astgrep
   - use-scripts
   - follow-my-global-cli
   - deep-analyze
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์โปรเจกต์พื้นฐานด้วย 4 tools หลัก: `/scan-codebase`, `/use-ast-grep`, `/use-scripts`, `/follow-my-global-cli`
+ครอบคลุมการวิเคราะห์โปรเจกต์พื้นฐานด้วย 4 tools หลัก: `/scan-codebase`, `/use-astgrep`, `/use-scripts`, `/follow-my-global-cli`
 
 Note: ถ้าต้องการวิเคราะห์อย่างลึกซึ้งครบทุกมิติ ให้ทำ `/deep-analyze` แทน
 
@@ -44,7 +44,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 
 1. อ่าน manifest files แบบ parallel
 2. ทำ `/scan-codebase` ค้นหา code patterns และ symbols
-3. ทำ `/use-ast-grep` สำหรับ AST-based code search
+3. ทำ `/use-astgrep` สำหรับ AST-based code search
 4. ทำ `/use-scripts` สำหรับ data processing ซับซ้อน
 
 ### 4. Architecture And Dependencies
@@ -59,7 +59,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 
 > Goal: Code Analysis
 
-1. ทำ `/use-ast-grep` หา patterns, anti-patterns, design patterns
+1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
 2. ทำ `/scan-codebase` หา code smells
 3. ทำ `/use-scripts` คำนวณ metrics
 4. ตรวจสอบ naming conventions
@@ -83,7 +83,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 ## Rules
 
 - ทำ `/scan-codebase` สำหรับค้นหา code patterns, symbols, และ references
-- ใช้ `/use-ast-grep` สำหรับ pattern matching และ structural search
+- ใช้ `/use-astgrep` สำหรับ pattern matching และ structural search
 - ใช้ `/use-scripts` สำหรับ metrics calculation และ complex processing
 - ทำ `/follow-my-global-cli` สำหรับเช็คและใช้ CLI tools ที่ติดตั้ง
 - อ่าน manifest files พร้อมกัน

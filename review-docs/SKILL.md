@@ -9,6 +9,7 @@ related:
   - update-docs
   - review-features
   - review-readme-md
+  - improve-docs
 ---
 
 ## Goal
@@ -108,6 +109,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /improve-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

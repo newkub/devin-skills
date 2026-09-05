@@ -14,6 +14,8 @@ related:
   - optimize-codebase-everything
   - follow-design-system
   - capture-component
+  - review-accessibility
+  - improve-accessibility
 ---
 
 ## Goal
@@ -152,6 +154,9 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 - ใช้ /optimize-codebase-everything ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
+
+- ใช้ /review-accessibility ถ้าจำเป็น
+- ใช้ /improve-accessibility ถ้าจำเป็น
 
 ## Expected Outcome
 

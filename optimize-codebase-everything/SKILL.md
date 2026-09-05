@@ -3,8 +3,6 @@ name: optimize-codebase-everything
 description: Optimize codebase ทั้งหมด: frontend, API, database, network, bundle, SEO, a11y, CWV
 argument-hint: "[file-or-pattern]"
 related:
-  - ship
-  - optimize-bundling
   - optimize-bundle
   - optimize-assets
   - optimize-rendering
@@ -16,10 +14,8 @@ related:
   - follow-tool-vite
   - run-build
   - review-uxui
-  - review-platform
   - review-frontend
   - follow-design-system
-  - deep-build
   - check-bottlenecks
   - report-table
 ---
@@ -169,6 +165,15 @@ Optimize codebase ทั้งหมดที detect ได้: frontend, API, d
 - หลีกเลี่ยง over-engineering
 - แก้เฉพาะจุดที metrics บ่งชี้
 - ไม่เปลี่ยน architecture ถ้าไม่จำเป็น
+
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /review-uxui ถ้าจำเป็น
+- ใช้ /review-platform ถ้าจำเป็น
+- ใช้ /review-frontend ถ้าจำเป็น
+- ใช้ /follow-design-system ถ้าจำเป็น
+- ใช้ /deep-build ถ้าจำเป็น
+- ใช้ /check-bottlenecks ถ้าจำเป็น
 
 ## Expected Outcome
 

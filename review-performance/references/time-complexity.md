@@ -70,7 +70,7 @@
 - ระบุ input size จริงหรือประเมินค่าสูงสุด
 - วิเคราะห์ hot path ก่อน cold path
 - ระบุชื่อ function, file path, line number สำหรับทุก finding
-- ใช้ `/use-ast-grep` เพื่อหา nested loops, recursion patterns, หรือ sorting บน critical paths
+- ใช้ `/use-astgrep` เพื่อหา nested loops, recursion patterns, หรือ sorting บน critical paths
 - อ้างอิง `references/scoring.md` เมื่อคำนวณ score
 
 ## Expected Outcome

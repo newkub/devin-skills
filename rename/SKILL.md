@@ -6,7 +6,7 @@ related:
   - update-references
   - resolve-errors
   - report
-  - use-ast-grep
+  - use-astgrep
   - fix
 ---
 
@@ -108,7 +108,7 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 - ใช้ `--interactive` flag เมื่อต้อง review ทุก change ก่อน apply
 - ใช้ meta-variables (`$OLD`, `$$$ARGS`) เพื่อ capture และ replay ใน fix
 - ใช้ `transform` สำหรับ case conversion (เช่น camelCase → PascalCase)
-- อ้างอิง `/use-ast-grep` สำหรับการใช้งาน ast-grep โดยละเอียด
+- อ้างอิง `/use-astgrep` สำหรับการใช้งาน ast-grep โดยละเอียด
 
 ### 2. Match All Occurrence Types
 

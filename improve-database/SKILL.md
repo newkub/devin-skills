@@ -10,6 +10,7 @@ related:
   - deep-review
   - run-test
   - resolve-errors
+  - review-database
 ---
 
 ## Goal
@@ -101,6 +102,15 @@ related:
 - บันทึก slow queries
 - ใช้ query metrics
 - Alert ถ้า query time เกิน threshold
+
+- ใช้ /improve-codebase-everything ถ้าจำเป็น
+- ใช้ /improve-api ถ้าจำเป็น
+- ใช้ /improve-data-validation ถ้าจำเป็น
+- ใช้ /optimize-codebase-everything ถ้าจำเป็น
+- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /review-database ถ้าจำเป็น
 
 ## Expected Outcome
 

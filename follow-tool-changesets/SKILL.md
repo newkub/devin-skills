@@ -3,7 +3,7 @@ name: follow-tool-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
 related:
   - follow-tool-agent-browser
-  - follow-tool-ast-grep
+  - follow-tool-astgrep
   - follow-tool-aube
   - follow-tool-usage
   - follow-best-practice
@@ -122,7 +122,7 @@ jobs:
 - ใช้ concurrency เพื่อป้องกัน conflicts
 
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

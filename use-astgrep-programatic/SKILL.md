@@ -1,8 +1,8 @@
 ---
-name: use-ast-grep-programatic
+name: use-astgrep-programatic
 description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis และ integrate กับ review CLI
 related:
-  - use-ast-grep
+  - use-astgrep
   - update-project-rules
   - update-review-cli
   - follow-lang-bun
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-ast-grep`) — ไม่รวมการอัปเดต rules (ดู `/update-project-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli`)
+ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-astgrep`) — ไม่รวมการอัปเดต rules (ดู `/update-project-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli`)
 
 ## Execute
 
@@ -37,7 +37,7 @@ related:
 
 > Goal: อ่าน context และเตรียม environment ก่อนเขียน scripts
 
-1. ทำ `/use-ast-grep`, ทำ `/follow-lang-bun`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
+1. ทำ `/use-astgrep`, ทำ `/follow-lang-bun`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
 2. อ่าน `tools/review-codebase/` directory เพื่อเข้าใจ analyzer structure ที่มีอยู่
 3. อ่าน `rules/` directory เพื่อดู ast-grep rules ที่มีอยู่
 4. ทำ `/scan-codebase` เพื่อเข้าใจ codebase structure ที่จะ analyze

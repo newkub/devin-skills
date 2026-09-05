@@ -1,4 +1,4 @@
-# follow-tool-ast-grep References Index
+# follow-tool-astgrep References Index
 
 | File | Responsibility |
 |---|---|

@@ -9,6 +9,7 @@ related:
   - report
   - report-table
   - suggest-next-action
+  - improve-docs
 ---
 
 ## Goal
@@ -87,6 +88,8 @@ related:
 5. Output Format
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /improve-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -8,7 +8,7 @@ related:
   - deep-analyze-by-use-scripts
   - scan-codebase
   - check-code-structure
-  - use-ast-grep
+  - use-astgrep
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ related:
 
 วิเคราะหา architecture และ design patterns
 
-1. ทำ `/use-ast-grep` ระบุ architectural pattern
+1. ทำ `/use-astgrep` ระบุ architectural pattern
 2. วิเคราะหา data flow ด้วย `Grep`
 3. ระบุ design patterns ที่ใช้
 4. ตรวจสอบ adherence ต่อ architecture principles
@@ -93,7 +93,7 @@ related:
 
 วิเคราะหา code quality อย่างละเอียด
 
-1. ทำ `/use-ast-grep` หา patterns, anti-patterns, design patterns
+1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
 2. หา code smells ด้วย `Grep` multiline mode
 3. ทำ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
 4. ตรวจสอบ naming conventions
@@ -164,9 +164,9 @@ related:
 เลือก tools ที่เหมาะสมกับแต่ละมิติ
 
 - Structure: `/scan-codebase`, tree command, `ast-grep outline`
-- Architecture: `/use-ast-grep`, `Grep`
-- Features: `/scan-codebase`, `/use-ast-grep`
-- Code Quality: `/use-ast-grep`, `Grep`, `/use-scripts`, check workflows
+- Architecture: `/use-astgrep`, `Grep`
+- Features: `/scan-codebase`, `/use-astgrep`
+- Code Quality: `/use-astgrep`, `Grep`, `/use-scripts`, check workflows
 - Dependencies: manifest files, `/run-audit`
 - Research: `/deep-research`, DeepWiki, Context7, WebSearch
 

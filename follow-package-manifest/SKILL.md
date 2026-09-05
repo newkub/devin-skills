@@ -13,7 +13,7 @@ related:
   - open-web-for-config-secret
   - review-codebase-everything
   - follow-tool-hk
-  - use-ast-grep
+  - use-astgrep
 ---
 
 ## Goal
@@ -120,7 +120,7 @@ related:
 - scripts ทีต้องการ secrets ให้ใช้ `infisical run -- <command>`
 
 - ใช้ /follow-tool-hk ถ้าจำเป็น
-- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 
 ## Expected Outcome
 

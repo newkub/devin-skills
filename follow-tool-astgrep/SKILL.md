@@ -1,13 +1,15 @@
 ---
-name: use-ast-grep
-description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
+name: follow-tool-astgrep
+description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
 related:
-  - use-ast-grep-programatic
+  - use-astgrep
+  - use-astgrep-programatic
   - search-by-astgrep
+  - follow-tool-agent-browser
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
   - update-project-rules
-  - check-code-structure
-  - replace
-  - follow-tool-ast-grep
 ---
 
 ## Goal
@@ -16,7 +18,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-ast-grep`
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-astgrep`
 
 ดูเพิ่มเติม: /search-by-astgrep
 
@@ -34,7 +36,7 @@ related:
 
 > Goal: สร้าง `sgconfig.yml` พร้อม fields ที่จำเป็น
 
-1. สร้างไฟล์ `sgconfig.yml` ที root directory ด้วยเนื้อหาตาม ## Rules ข้อ 2
+1. สร้างไฟล์ `sgconfig.yml` ที่ root directory ด้วยเนื้อหาตาม ## Rules ข้อ 2
 2. ถ้า project มีหลาย workspace ให้เพิ่ม `devPaths` สำหรับแต่ละ workspace
 3. ถ้า project มี custom file extensions ให้เพิ่ม `languageGlobs`
 4. ถ้าต้องการ test rules ให้เพิ่ม `testConfigs`
@@ -45,9 +47,9 @@ related:
 
 > Goal: สร้างโครงสร้าง directories สำหรับ rules และ tests
 
-1. สร้าง ast-grep rules ใน `rules/` directory ที project root (แยกจาก `.devin/rules/` ทีเก็บ devin rules แบบ markdown)
-2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที project root
-3. ถ้ามี `utilDirs` ให้สร้าง directory `utils/` ที project root
+1. สร้าง ast-grep rules ใน `rules/` directory ที่ project root (แยกจาก `.devin/rules/` ที่เก็บ devin rules แบบ markdown)
+2. ถ้ามี `testConfigs` ให้สร้าง directory `rule-tests/` ที่ project root
+3. ถ้ามี `utilDirs` ให้สร้าง directory `utils/` ที่ project root
 4. ใช้ `bunx ast-grep new` สำหรับ scaffold project ใหม่ได้
 
 ### 4. Add Scan Script
@@ -74,8 +76,7 @@ related:
 3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
 4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
 5. ใช้ `--interactive` สำหรับ interactive edit session
-6. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-ast-grep-programatic`
-7. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
+6. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules
 
@@ -96,7 +97,7 @@ related:
 
 ### 2. Separation From Devin Rules
 
-- `rules/` เก็บ `.yml` ast-grep rules ที project root
+- `rules/` เก็บ `.yml` ast-grep rules ที่ project root
 - `.devin/rules/` เก็บ `.md` devin rules สำหรับ AI agent
 - ไม่ปนกันเพราะต่าง purpose ต่าง format
 - rule files ใช้ `kebab-case` filename
@@ -113,7 +114,17 @@ related:
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
 
-- ใช้ /check-code-structure ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
+- ใช้ /use-astgrep-programatic ถ้าจำเป็น
+- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /follow-tool-usage ถ้าจำเป็น
+- ใช้ /follow-best-practice ถ้าจำเป็น
+- ใช้ /setup-cicd ถ้าจำเป็น
+
+## References
+
+- [CLI reference](references/cli.md)
+- [References index](references/index.md)
 
 ## Expected Outcome
 

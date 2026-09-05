@@ -5,6 +5,7 @@ related:
   - update-usage-md
   - report-table
   - suggest-next-action
+  - improve-docs
 ---
 
 ## Goal
@@ -55,6 +56,8 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 - ทุก finding ต้องมี file path, line number, snippet
 - อ้างอิง `package.json` หรือ `README.md` เป็นหลัก
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+
+- ใช้ /improve-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

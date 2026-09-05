@@ -4,7 +4,7 @@ description: รัน API tests โดยเรียก endpoints และต
 related:
   - follow-test
   - use-scripts
-  - use-ast-grep-programatic
+  - use-astgrep-programatic
   - deep-validate
   - report-table
   - resolve-errors
@@ -37,7 +37,7 @@ related:
 
 1. ทำ `/use-scripts` เพื่อเลือก shell และ location
 2. เลือกภาษา/เครื่องมือ: Bun/Node สำหรับ `fetch`, `ofetch`, `ky`
-3. ใช้ `/use-ast-grep-programatic` ถ้าต้องสแกน call sites หรือ route definitions
+3. ใช้ `/use-astgrep-programatic` ถ้าต้องสแกน call sites หรือ route definitions
 4. script ต้องรองรับ: base URL, headers, body, query params, expected status, expected response shape
 5. เพิ่ม `dryRun` option สำหรับดู requests โดยไม่ส่งจริง
 

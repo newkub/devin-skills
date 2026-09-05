@@ -7,7 +7,7 @@ related:
   - deep-analyze
   - run-review
   - review-codebase-everything
-  - use-ast-grep
+  - use-astgrep
   - report-table
   - suggest-next-action
   - review-test
@@ -110,7 +110,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /review-stability ถ้าจำเป็น

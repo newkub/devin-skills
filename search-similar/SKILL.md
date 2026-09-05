@@ -4,7 +4,7 @@ description: ค้นหา skills, code, หรือ patterns ทีคล้
 related:
   - search-files-patterns
   - search-by-astgrep
-  - use-ast-grep
+  - use-astgrep
   - list-devin-global-skills
   - use-in-another-skills
   - create-similar
@@ -20,7 +20,7 @@ related:
 
 ใช้เมื่อต้องการหาตัวอย่างเดิมทีคล้ายกัน ก่อนสร้าง skill ใหม่ หรือก่อน refactor
 
-ดูเพิ่มเติม: /use-ast-grep
+ดูเพิ่มเติม: /use-astgrep
 
 ## Execute
 

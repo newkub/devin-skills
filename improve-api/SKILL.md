@@ -10,6 +10,7 @@ related:
   - deep-review
   - run-test
   - resolve-errors
+  - review-api
 ---
 
 ## Goal
@@ -102,6 +103,13 @@ related:
 - Log ทุก error
 - ใช้ metrics สำหรับ latency, status codes
 - Trace requests ข้าม services
+
+- ใช้ /improve-codebase-everything ถ้าจำเป็น
+- ใช้ /improve-data-validation ถ้าจำเป็น
+- ใช้ /improve-database ถ้าจำเป็น
+- ใช้ /optimize-codebase-everything ถ้าจำเป็น
+- ใช้ /resolve-errors ถ้าจำเป็น
+- ใช้ /review-api ถ้าจำเป็น
 
 ## Expected Outcome
 

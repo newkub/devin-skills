@@ -3,7 +3,7 @@ name: follow-tool-playwright
 description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
 related:
   - follow-tool-agent-browser
-  - follow-tool-ast-grep
+  - follow-tool-astgrep
   - follow-tool-aube
   - follow-tool-usage
   - follow-best-practice
@@ -193,7 +193,7 @@ related:
 - ติดตั้งเฉพาะ browsers ที่จำเป็นใน CI
 
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

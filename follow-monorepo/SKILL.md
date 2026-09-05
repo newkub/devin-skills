@@ -7,7 +7,7 @@ related:
   - run-build
   - run-verify
   - follow-tool-vite
-  - optimize-bundling
+  - optimize-bundle
   - optimize-codebase-everything
   - report-table
   - suggest-next-action
@@ -114,6 +114,15 @@ related:
 - ไม่เปลี่ยน tool ถ้าไม่จำเป็น
 - ไม่ refactor workspaces ทั้งหมดในครั้งเดียว
 - แก้เฉพาะ workspaces ทีมีปัญหา
+
+- ใช้ /ship ถ้าจำเป็น
+- ใช้ /run-build ถ้าจำเป็น
+- ใช้ /run-verify ถ้าจำเป็น
+- ใช้ /follow-tool-vite ถ้าจำเป็น
+- ใช้ /optimize-bundle ถ้าจำเป็น
+- ใช้ /optimize-codebase-everything ถ้าจำเป็น
+- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome
 

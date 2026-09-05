@@ -3,9 +3,9 @@ name: search-by-astgrep
 description: ค้นหา code patterns ด้วย ast-grep โดยใช้ AST-based patterns
 argument-hint: "[pattern]"
 related:
-  - use-ast-grep
-  - use-ast-grep-programatic
-  - follow-tool-ast-grep
+  - use-astgrep
+  - use-astgrep-programatic
+  - follow-tool-astgrep
   - search-files-patterns
   - search-similar
   - replace
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ one-off search บน codebase โดยไม่ต้องตั้งค่า `sgconfig.yml` หรือ project rules รองรับทั้ง structural patterns, regex, และ YAML rule ชั่วคราว
 
-ดูเพิ่มเติม: /use-ast-grep-programatic, /search-files-patterns, /search-similar
+ดูเพิ่มเติม: /use-astgrep-programatic, /search-files-patterns, /search-similar
 
 ## Execute
 
@@ -42,7 +42,7 @@ related:
 2. ถ้า user ให้ regex → ใช้ `ast-grep run --pattern 'REGEX'`
 3. ถ้าต้องการ match โครงสร้าง → ใช้ YAML rule ชั่วคราวผ่าน `--inline-rules`
 4. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
-5. ถ้า pattern ซับซ้อน → ทำ `/follow-tool-ast-grep` หรือ `/use-ast-grep`
+5. ถ้า pattern ซับซ้อน → ทำ `/follow-tool-astgrep` หรือ `/use-astgrep`
 
 ### 3. Search
 
@@ -62,7 +62,7 @@ related:
 1. ถ้าไม่พบ matches → ลด specificity หรือตรวจ syntax
 2. ถ้า matches เยอะเกิน → เพิ่ม constraints, filters, หรือ transformation conditions
 3. ถ้าต้องการแก้ไข → ส่งต่อ `/replace` พร้อม pattern และ replacements
-4. ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/use-ast-grep` เพื่อตั้งค่า project rules
+4. ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/use-astgrep` เพื่อตั้งค่า project rules
 
 ### 5. Report
 
@@ -90,7 +90,7 @@ related:
 ### 3. No Project Setup
 
 - ไม่ต้องสร้าง `sgconfig.yml` สำหรับ ad-hoc search
-- ถ้าต้องการ reusable rules → ส่งต่อ `/use-ast-grep` หรือ `/update-project-rules`
+- ถ้าต้องการ reusable rules → ส่งต่อ `/use-astgrep` หรือ `/update-project-rules`
 
 ### 4. Validation
 
@@ -103,4 +103,4 @@ related:
 - ได้รายการ matches ครบถ้วนพร้อม `file`, `line`, `snippet`
 - pattern ที่ใช้ถูกต้องและสามารถนำไป reuse ได้
 - ไม่มี broken syntax หรือ invalid ast-grep pattern
-- พร้อมส่งต่อไป `/replace`, `/use-ast-grep`, หรือ `/report-table`
+- พร้อมส่งต่อไป `/replace`, `/use-astgrep`, หรือ `/report-table`

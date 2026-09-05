@@ -4,7 +4,7 @@ description: เขียนและตรวจ renovate.json config สำห
 related:
   - follow-tool-renovate
   - follow-tool-agent-browser
-  - follow-tool-ast-grep
+  - follow-tool-astgrep
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
@@ -98,7 +98,7 @@ Renovate ค้นหา config ตามลำดับนี้:
 
 - ใช้ /follow-tool-renovate ถ้าจำเป็น
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

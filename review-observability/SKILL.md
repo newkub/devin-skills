@@ -7,6 +7,7 @@ related:
   - review-delivery
   - report-table
   - suggest-next-action
+  - improve-observability
 ---
 
 ## Goal
@@ -124,6 +125,8 @@ observability review สำหรับ: metrics collection, distributed tracing
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /improve-observability ถ้าจำเป็น
 
 ## Expected Outcome
 

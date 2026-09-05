@@ -3,7 +3,7 @@ name: follow-tool-aube
 description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
 related:
   - follow-tool-agent-browser
-  - follow-tool-ast-grep
+  - follow-tool-astgrep
   - follow-tool-auto-it
   - follow-tool-usage
   - follow-best-practice
@@ -147,7 +147,7 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - node_modules layout ที่ efficient
 
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-ast-grep ถ้าจำเป็น
+- ใช้ /follow-tool-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-auto-it ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

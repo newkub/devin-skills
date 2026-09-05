@@ -10,7 +10,7 @@ related:
   - run-verify
   - run-test
   - run-test-coverage
-  - use-ast-grep
+  - use-astgrep
   - report-table
   - suggest-next-action
   - review-test
@@ -129,7 +129,7 @@ Review implementation correctness ของ code, configuration, และ tests
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /run-test-coverage ถ้าจำเป็น
-- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 
 ## Expected Outcome

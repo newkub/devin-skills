@@ -8,7 +8,7 @@ related:
   - refactor
   - fix
   - search-by-astgrep
-  - use-ast-grep
+  - use-astgrep
 ---
 
 ## Goal
@@ -78,7 +78,7 @@ related:
 
 - ใช้ `find_file_by_name` สำหรับ glob-based file search
 - ใช้ `grep` สำหรับ regex search ทั้ง codebase
-- ใช้ `ast-grep` หรือ `use-ast-grep` สำหรับ AST-based patterns
+- ใช้ `ast-grep` หรือ `use-astgrep` สำหรับ AST-based patterns
 - ใช้ `code_search` สำหรับ complex codebase exploration
 
 ### 2. Scope Control

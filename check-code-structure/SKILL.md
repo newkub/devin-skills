@@ -3,8 +3,8 @@ name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
 related:
   - search-by-astgrep
-  - use-ast-grep
-  - use-ast-grep-programatic
+  - use-astgrep
+  - use-astgrep-programatic
   - review-architecture
   - restructure
   - review-codebase-everything
@@ -59,7 +59,7 @@ Goal: ระบุ structure issues จาก `sg outline` output ก่อน�
 3. ตรวจสอบ exports ที่ไม่ควร public: internal utilities, helper types
 4. ตรวจสอบ imports ที่ข้าม boundary หรือชั้น layer
 5. ตรวจสอบ file ที่มี symbols จากหลาย domain หรือ layer ปนกัน
-6. ใช้ `/use-ast-grep` สำหรับ patterns ที่ `sg outline` ไม่ครอบ เช่น God class
+6. ใช้ `/use-astgrep` สำหรับ patterns ที่ `sg outline` ไม่ครอบ เช่น God class
 7. ถ้าต้อง review filesystem ด้วย ให้ทำ `/deep-review` แยก
 8. ถ้าต้อง review refactor opportunities ลึก ให้ทำ `/deep-review` แยก
 
@@ -148,7 +148,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 - focus ที่ code-level structure: symbols, exports, members, cohesion
 - สำหรับ system-wide view ทำ `/deep-review`
 
-- ใช้ /use-ast-grep-programatic ถ้าจำเป็น
+- ใช้ /use-astgrep-programatic ถ้าจำเป็น
 
 ## Expected Outcome
 

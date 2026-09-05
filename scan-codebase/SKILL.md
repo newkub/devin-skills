@@ -5,7 +5,7 @@ related:
   - use-scripts
   - check-code-structure
   - search-by-astgrep
-  - use-ast-grep
+  - use-astgrep
   - review-quality
   - report-table
   - report
@@ -74,7 +74,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 4. รัน `ast-grep outline <path> --items imports` สำหรับ imports และ boundary crossing
 5. ใช้ `--type` หรือ `--match` ลด noise ถ้า scope ใหญ่
 6. ใช้ `--view expanded` สำหรับ top-level symbols พร้อม members
-7. ทำ `/use-ast-grep` สำหรับ ad-hoc AST patterns ที่ต้องการ semantic search
+7. ทำ `/use-astgrep` สำหรับ ad-hoc AST patterns ที่ต้องการ semantic search
 
 ### 5. Quality Check (30 วินาที)
 

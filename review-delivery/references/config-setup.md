@@ -25,7 +25,7 @@
 > Goal: รัน workflows ที่จำเป็นตาม stack ที่ใช้
 1. รัน `/follow-package-manifest` สำหรับ scripts ใน `package.json`
 2. รัน workflows ตาม tech stack (เช่น `/follow-tool-biome`, `/follow-tool-moonrepo`, `/follow-lang-typescript`)
-3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-tool-hk`, `/follow-tool-ast-grep`)
+3. รัน workflows สำหรับ tools ที่มี (เช่น `/follow-tool-hk`, `/follow-tool-astgrep`)
 4. รัน `/update-dot-vscode` สำหรับ `.vscode/` directory setup
 5. รัน `/follow-dot-github` สำหรับ `.github/` directory setup
 6. ตรวจสอบว่า config files ถูกต้องและสอดคล้องกัน

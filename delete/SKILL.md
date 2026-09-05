@@ -35,7 +35,7 @@ related:
 > Goal: รู้ว่าการลบกระทบอะไร
 
 1. ทำ `/report-before` เพื่อสรุป state
-2. ทำ `/search-files-patterns` หรือ `use-ast-grep` เพื่อหา references ทีชี้มา targets
+2. ทำ `/search-files-patterns` หรือ `use-astgrep` เพื่อหา references ทีชี้มา targets
 3. ตรวจสอบ `git status` ว่า targets ถูก track หรือ untracked
 4. ระบุ broken refs ทีจะเกิดขึ้นหลังลบ
 5. ถ้ามี reference มากหรือสำคัญ → ทำ `/ask-me` ก่อนดำเนินการ

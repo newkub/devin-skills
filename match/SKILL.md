@@ -11,13 +11,13 @@ allowed-tools:
   - skill
   - run_subagent
   - todo_write
-  - use-ast-grep
+  - use-astgrep
 triggers:
   - user
   - model
 related:
   - scan-codebase
-  - use-ast-grep
+  - use-astgrep
   - search-in-git
   - ask-me
   - follow-your-suggestion
@@ -55,7 +55,7 @@ related:
 
 1. ใช้ `find_file_by_name` สำหรับ file patterns.
 2. ใช้ `grep` สำหรับ text patterns.
-3. ใช้ `use-ast-grep` สำหรับ AST-based code patterns.
+3. ใช้ `use-astgrep` สำหรับ AST-based code patterns.
 4. ใช้ `scan-codebase` สำหรับการค้นหาที่กว้างหรือมีหลาย criteria.
 5. จำกัดผลลัพธ์ให้เหมาะสม; ถ้ามากเกินไป ให้แสดงสรุปแล้วถามก่อนขยาย.
 

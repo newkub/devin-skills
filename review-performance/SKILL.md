@@ -11,8 +11,9 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
-  - use-ast-grep
+  - use-astgrep
   - follow-my-tech-stack
+  - review-dependencies
 ---
 
 ## Goal
@@ -143,8 +144,10 @@ Review application performance ครอบคลุม network, build/runtime, 
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /use-ast-grep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
+
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -4,7 +4,7 @@ description: สมมุติว่ากำลังเข้ามาแก�
 argument-hint: "[file]"
 related:
   - scan-codebase
-  - use-ast-grep
+  - use-astgrep
   - check-skills-related
   - deep-thinking
   - follow-best-practice
@@ -38,7 +38,7 @@ related:
 2. อ่าน `imports` และ dependencies ที่ไฟล์เรียกใช้
 3. อ่านไฟล์ที่ import ไฟล์เป้าหมาย (reverse dependencies)
 4. ทำ `/scan-codebase` เพื่อหา usage patterns และ references ทั้งหมด
-   - ใช้ `/use-ast-grep` สำหรับ AST-based pattern search
+   - ใช้ `/use-astgrep` สำหรับ AST-based pattern search
 5. ทำ `/check-skills-related` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 
 ### 3. Analyze From Scratch

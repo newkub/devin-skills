@@ -6,7 +6,7 @@ related:
   - update-references
   - use-in-another-skills
   - search-files-patterns
-  - use-ast-grep
+  - use-astgrep
   - deep-analyze-by-use-scripts
   - edit-manual
   - report-table
@@ -58,7 +58,7 @@ related:
 6. ค้นหาใน workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
 7. ค้นหาชื่อไฟล์เก่า เส้นทางเก่า import statements และ workflow references
 8. ใช้ `/search-files-patterns` ค้นหาด้วย basename, partial path, หรือ keywords
-9. ใช้ `/use-ast-grep` หา import, call sites, string references ใน code
+9. ใช้ `/use-astgrep` หา import, call sites, string references ใน code
 10. ใช้ `/deep-analyze-by-use-scripts` ถ้าต้องวิเคราะห์ pattern ซับซ้อน
 11. ค้นหาใน docs, comments, config, workflows, rules
 
@@ -67,7 +67,7 @@ related:
 > Goal: ตัดสินใจวิธี edit
 
 1. `Direct path reference` → ใช้ `/update-references`
-2. `Relative / partial path` → แก้ด้วย `edit` หรือ `use-ast-grep`
+2. `Relative / partial path` → แก้ด้วย `edit` หรือ `use-astgrep`
 3. `Semantic / concept` (ชื่อ function, concept, business term) → แก้ตาม context โดยใช้ `edit` ทีละไฟล์
 4. `Pattern duplication` → ใช้ script batch replace ผ่าน `/use-scripts`
 

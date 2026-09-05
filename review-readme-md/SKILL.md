@@ -7,6 +7,7 @@ related:
   - report-table
   - suggest-next-action
   - update-readme-md
+  - improve-docs
 ---
 
 ## Goal
@@ -99,6 +100,8 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
+
+- ใช้ /improve-docs ถ้าจำเป็น
 
 ## Expected Outcome
 
