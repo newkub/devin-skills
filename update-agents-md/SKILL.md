@@ -14,11 +14,8 @@ related:
   - productionize-implementation
   - run-verify
   - git-commit
-  - resolve-cicd
   - create-github-pr
-  - merge-github-pr
   - improve-review-cli
-  - run-release
   - report
 ---
 

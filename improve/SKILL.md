@@ -14,18 +14,8 @@ related:
   - report-numbered-bullet
   - follow-single-responsibility
   - follow-math-concepts
-  - follow-math-probability
-  - follow-math-proofs
-  - follow-math-algorithm-complexity
-  - check-dead-code
-  - check-bottlenecks
-  - review-performance
-  - review-security
-  - review-stability
   - review-architecture
   - review-quality
-  - review-uxui
-  - analyze-attack-surface
   - follow-math-optimization
 ---
 

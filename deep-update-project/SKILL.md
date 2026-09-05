@@ -12,20 +12,12 @@ related:
   - update-features-md
   - update-project-rules
   - update-project-skills
-  - update-examples
-  - update-test-and-fix
-  - update-todo-md
   - update-references
-  - update-gitignore
-  - update-dot-vscode
-  - update-github-metadata
   - update-version-latest
   - deep-analyze
   - deep-review
   - deep-validate
   - all-workspace
-  - check-monorepo
-  - rethink
 ---
 
 ## Goal

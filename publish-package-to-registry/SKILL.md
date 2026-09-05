@@ -7,7 +7,6 @@ related:
   - run-verify
   - gen-changelog-md
   - follow-runtime-bun
-  - follow-create-cli
   - list-my-npm-packages
   - use-my-packages-on-registry
   - ship
@@ -18,8 +17,6 @@ related:
   - follow-tool-changelogen
   - follow-tool-changesets
   - check-backward-compatibility
-  - follow-tool-build-packages
-  - follow-tool-pkg-new
 ---
 
 ## Goal

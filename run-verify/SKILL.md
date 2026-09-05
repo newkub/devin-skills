@@ -7,8 +7,6 @@ related:
   - run-typecheck
   - run-test
   - run-build
-  - run-test-coverage
-  - run-test-all
   - productionize-implementation
   - check-monorepo
   - setup-cicd
@@ -16,7 +14,6 @@ related:
   - ship
   - resolve-cicd
   - watch-github-actions
-  - git-push
   - resolve-errors
   - report-table
   - suggest-next-action

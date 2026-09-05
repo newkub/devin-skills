@@ -4,35 +4,13 @@ argument-hint: "[target]"
 description: อัปเดตเป้าหมายด้วย deep review, planning, cross-reference sync, และ validation ครบวงจร
 related:
   - ask-me
-  - check-monorepo
-  - all-workspace
-  - deep-thinking
   - deep-analyze
   - deep-analyze-by-use-scripts
   - deep-review
-  - report-scan-todo
-  - list-dependencies
   - deep-plan
-  - deep-impact
-  - prioritize
   - deep-update-project
   - update-project
-  - update-version-latest
   - update-config
-  - update-dot-devin
-  - update-readme-md
-  - update-agents-md
-  - update-usage-md
-  - update-features-md
-  - update-project-rules
-  - update-project-skills
-  - update-examples
-  - update-test-and-fix
-  - update-todo-md
-  - update-references
-  - update-gitignore
-  - update-dot-vscode
-  - update-github-metadata
   - update-devin-global-skills
   - update-all-devin-global-skills
   - deep-productionize-implementation
@@ -40,12 +18,6 @@ related:
   - restructure
   - deep-validate
   - run-verify
-  - run-test-all
-  - check-circular-dependencies
-  - resolve-errors
-  - report-before-after
-  - report-table
-  - suggest-next-action
 ---
 
 ## Goal

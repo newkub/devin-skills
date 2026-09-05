@@ -13,15 +13,11 @@ related:
   - deep-plan
   - deep-refactor
   - deep-validate
-  - review-codebase-everything
-  - use-lib-effective
-  - alternative
   - resolve-errors
   - refactor
   - restructure
   - update-references
   - run-verify
-  - rethink
 ---
 
 ## Goal
