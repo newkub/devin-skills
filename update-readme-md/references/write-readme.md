@@ -19,6 +19,6 @@
 - ไม่มี `>` description ที่ด้านบน — เฉพาะ status badge
 - `#` Title เป็นบรรทัดแรกของ README
 - `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
-- `## Features` 3 columns (Icon, Feature, Description)
+- `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)
 - ไม่มี `## API References` แยก — references ใน Usage section
 - ไม่มี ANSI codeblock ด้านล่างสุด

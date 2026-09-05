@@ -83,13 +83,13 @@ related:
 
 จัดเรียง sections ตามลำดับต่อไปนี้:
 
-- `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น (ดู Rule `Status Callout`)
+- `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น
 - `Hero Section`: `#` Title, Description, Badges (ชิดซ้าย, ไม่รวม License badge) — ไม่มี ANSI ใต้ badges
 - `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report-ansi` — วางด้านบน Get Started โดยไม่ต้องมี heading
 - `## Get Started`: numbered steps ตรงๆ ไม่มี `###` subsection — แต่ละ step มี title + codeblock
-- `## Features`: Markdown table 3 columns (Icon, Feature, Description) พร้อม colored icon จาก iconify CDN
-- `## Usage`: `### Usage via ...` heading สำหรับแต่ละ access method (Web, API, CLI, SDK, TUI, etc.) — ครอบคลุมทุก ways ที่ user ใช้งานได้ — ใช้ ANSI drawing แทน image capture (ดู Rule `Usage ANSI Drawing`)
-- `## Contributing`: มีเฉพาะถ้ามี `CONTRIBUTING.md` — สั้นๆ บอกให้อ่านที่ `CONTRIBUTING.md` (ดู Rule `Contributing Section`)
+- `## Features`: Markdown table 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
+- `## Usage`: `### Usage via ...` สำหรับแต่ละ access method — ดู `references/usage-section.md`
+- `## Contributing`: มีเฉพาะถ้ามี `CONTRIBUTING.md` — สั้นๆ บอกให้อ่านที่ `CONTRIBUTING.md`
 - `## License`: มีเฉพาะถ้ามี `LICENSE.md` — Section แยกด้านล่างสุด ไม่มี badge (root เท่านั้น)
 
 ### 2. Status Callout
@@ -113,7 +113,7 @@ related:
 
 ### 5. Table Column Specs
 
-- `Features`: 3 columns (Icon, Feature, Description) — ไม่มี Benefit และ Usage
+- `Features`: 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
 - `Development > Tech Stack`: 4 columns (Layer, Technology, Version, Description)
 - `Development > How It Work`: ภาพ diagram แบบ text codeblock
 - `Development > Architecture`/`Workflows`/`Skills`: file structure codeblock (tree format with `#` comments)
@@ -134,46 +134,40 @@ related:
 
 ### 8. Usage Content Types
 
-- Web: text instructions บอกว่ากดอะไรตรงไหน + ANSI drawing แสดง layout (ดู Rule `Usage ANSI Drawing`)
-- API: code block พร้อม import และ function call + references table (api, description, options, default)
-- CLI: bash code block พร้อม command + ANSI drawing แสดง terminal output
+- Web: `<details>` accordion + text instructions + ANSI drawing
+- API: code block พร้อม import และ function call + references table
+- CLI: bash code block `command --help` + ANSI drawing ของ `--help` output
 - SDK: code block พร้อม install + import + usage + references table
-- TUI: text instructions บอกว่ากด key อะไร + ANSI drawing แสดง TUI layout
-- Desktop: text instructions บอกว่าเปิด app อย่างไร ใช้ menu อะไร + ANSI drawing
-- Browser Extension: text instructions บอกว่า install จาก store ไหน ใช้ปุ่มอะไร + ANSI drawing
+- TUI: `<details>` accordion + text instructions + ANSI drawing
+- Desktop / Browser Extension: text instructions + ANSI drawing
+
+ดูรายละเอียด: `references/usage-section.md`
 
 ### 9. Usage ANSI Drawing
 
 - ใช้ ANSI box-drawing characters วาด layout/output แทนการ capture image จริง
-- ไม่ต้องใช้ `/capture-web` หรือ `/capture-terminal` สำหรับ README
-- ทุกบรรทัดใน ANSI codeblock ต้องมีความยาวเท่ากัน — ใช้ space padding ให้ขอบขวาตรงกัน
-- ใช้ ` ```text ` codeblock (ไม่ใช่ ` ```ansi ` เพื่อหลีกเลี่ยง color rendering ใน GitHub)
-- ตรวจทุกบรรทัดว่ามี box-drawing border ครบทั้งซ้ายและขวา
-- ความกว้างควรเท่ากันทุกบรรทัด — ใช้ fixed width เช่น 60 ตัวอักษร
-- ตัวอย่าง:
-  ```text
-  ┌──────────────────────────────────────────────────────────┐
-  │  gen-password — Password Generator                       │
-  │                                                          │
-  │  ┌────────────────────────────────────────────────────┐  │
-  │  │  Click to randomize & copy             Length 16/32│  │
-  │  │                                                    │  │
-  │  │             Xk9$mP2#vQr7&nL4w                       │  │
-  │  │                                                    │  │
-  │  │  [========================o======================]  │  │
-  │  │                     0 / 32                         │  │
-  │  └────────────────────────────────────────────────────┘  │
-  └──────────────────────────────────────────────────────────┘
-  ```
+- ทุกบรรทัดใน ANSI codeblock ต้องมีความยาวเท่ากัน
+- ใช้ ` ```text ` codeblock (ไม่ใช้ ` ```ansi `)
+- ความกว้าง fixed width เช่น 60 ตัวอักษร
 
-### 10. API References (Inline)
+ดูรายละเอียด: `references/capture-images.md`
+
+### 10. Usage Accordion
+
+- `Usage via Web` และ `Usage via TUI` ต้องห่มเนื้อหาด้วย `<details>` + `<summary>`
+- ภายใน accordion ต้องประกอบด้วย text instructions + ANSI drawing
+- `<details>` block ต้องมี blank line ก่อนเปิดและก่อนปิด
+
+ดูรายละเอียดและตัวอย่าง: `references/usage-section.md`
+
+### 11. API References (Inline)
 
 - ไม่มี `## API References` section แยก
 - ใส่ references table ใน `### Usage via ...` section ที่เกี่ยวข้อง
 - คอลัมน์: api, description, options, default
 - แสดงเฉพาะ public API เท่านั้น
 
-### 11. Contributing Section
+### 12. Contributing Section
 
 - เปลี่ยน `## Development` เป็น `## Contributing`
 - มีเฉพาะถ้ามี `CONTRIBUTING.md` ใน root
@@ -181,41 +175,39 @@ related:
 - ถ้าไม่มี `CONTRIBUTING.md` → ไม่มี `## Contributing` section
 - ทำ `/update-contributing-md` ก่อนถ้าต้องการสร้าง
 
-### 12. License Section
+### 13. License Section
 
 - มีเฉพาะถ้ามี `LICENSE.md` ใน root
 - ถ้าไม่มี `LICENSE.md` → ไม่มี `## License` section
 
-### 13. Icons
+### 14. Icons
 
 - ใช้ iconify CDN: `![icon](https://api.iconify.design/<set>:<name>.svg?color=%23<hex>&width=16)` — ต้องมี `?color=%23<hex>` เสมอ
 - ห้ามใช้ emoji ในตาราง — ใช้ icon set: `mdi`, `lucide`, `material-symbols`, `tabler`, `ph`, `iconoir`
 - คอลัมน์ Icon จัดกึ่งกลางด้วย `:---:` — แต่ละ icon ต้องมี color ที่แตกต่างกัน
 - แนวทางสี: `1976d2` (ฟ้า/core), `388e3c` (เขียว/in scope), `d32f2f` (แดง/out scope), `f57c00` (ส้ม/warning), `7b1fa2` (ม่วง/UI), `c2185b` (ชมพู/features), `303f9f` (คราม/concepts), `0097a7` (ฟ้าขี้ม้า/CLI), `00796b` (เขียวเข้ม/build), `ffa000` (ทอง/content)
-- ห้ามใช้ ANSI codeblock ใน README ยกเว้น Report ANSI ใน Hero section
+- ห้ามใช้ ` ```ansi ` codeblock ใน README — ใช้ ` ```text ` สำหรับ ANSI/box-drawing drawings เท่านั้น
 
-### 14. License Selection
+### 15. License Selection
 
 เลือก license ตามประเภทโปรเจกต์:
 
-- MIT: สำหรับ libraries และ templates ที่ต้องการความเรียบง่าย
+- MIT: สำหรับ libraries และ templates
 - Apache-2.0: สำหรับ projects ที่ต้องการ patent protection
 - BSD-3-Clause: สำหรับ projects ที่ต้องการความยืดหยุ่น
 - Proprietary: สำหรับ commercial products ที่ไม่เปิด source
 - CC-BY-4.0: สำหรับ documentation
 
-### 15. License Templates And Manifest
+ดูรายละเอียด: `references/setup-license.md`
 
-- ใช้ template มาตรฐานตาม SPDX identifier ของ license ที่เลือก (ภาษาอังกฤษ ไม่ต้องมีปี)
-- MIT template สั้น: `MIT License\n\nCopyright (c) [COPYRIGHT HOLDER]\n\nPermission is hereby granted...`
-- ไม่ระบุปีใน copyright — ระบุชื่อ organization หรือผู้ถือลิขสิทธิ์ชัดเจน
-- `package.json`: `"license": "MIT"` หรือ SPDX identifier อื่นๆ
-- `Cargo.toml`: `license = "MIT"` หรือ SPDX identifier อื่นๆ
-- ใช้ SPDX identifier ที่ถูกต้องเสมอ ตรงกับ `LICENSE.md`
+### 16. Example Templates
 
-### 16. Example Template
+ดู templates:
 
-ดู `templates/readme-template.md`
+- `templates/readme-template.md` — full README ตัวอย่าง
+- `templates/usage-via-cli.md` — CLI `--help` ANSI template
+- `templates/usage-via-web.md` — Web accordion template
+- `templates/usage-via-tui.md` — TUI accordion template
 
 - ใช้ /review-readme-md ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
@@ -226,12 +218,14 @@ related:
 - README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/analyze-project` ไม่มี placeholder ยกเว้น banner image
 - Section order: Status > Hero (no ANSI) > UI Sketch > Get Started > Features > Usage (with ANSI) > Contributing (if exists) > License (if exists)
 - `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
-- `## Features` 3 columns (Icon, Feature, Description)
-- `## Usage` ครอบคลุมทุก access methods พร้อม ANSI drawing (ไม่ใช้ capture images)
+- `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)
+- `## Usage` ครอบคลุมทุก access methods พร้อม ANSI drawing
+  - CLI: แสดง `command --help` ANSI output
+  - Web/TUI: ห่มเนื้อหาด้วย `<details>` accordion
 - ไม่มี `## API References` แยก — references อยู่ใน Usage section
 - `## Contributing` มีเฉพาะถ้ามี `CONTRIBUTING.md`
 - `## License` มีเฉพาะถ้ามี `LICENSE.md`
 - ANSI box-drawing ทุกบรรทัดมีความยาวเท่ากัน (border ตรง)
 - ไม่มี ANSI ใต้ logo/badges และไม่มี ANSI ด้านล่างสุด
-- `LICENSE.md` ถูกต้องและครบถ้วน ใช้ template มาตรฐานตามประเภทโปรเจกต์
-- License ใน package manifest ตรงกับ `LICENSE.md` ใช้ SPDX identifier ที่ถูกต้อง
+- `LICENSE.md` ถูกต้องและครบถ้วน
+- License ใน package manifest ตรงกับ `LICENSE.md`

@@ -12,7 +12,10 @@
 
 - text instructions ไม่ใช่ code block
 - ระบุ URL และขั้นตอนการใช้งาน
-- ถ้าใช้ code block แทน text → flag เป็น `Medium`
+- ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
+- ภายใน accordion ต้องมี ANSI drawing แสดง layout
+- ถ้าไม่อยู่ใน accordion → flag เป็น `Medium`
+- ถ้าใช้ code block แทน text instructions (นอก ANSI drawing) → flag เป็น `Medium`
 
 ### Usage via API
 
@@ -22,9 +25,10 @@
 
 ### Usage via CLI
 
-- bash code block พร้อม command
-- ตัวอย่างต้องใช้ command จริงจาก source code
+- bash code block พร้อม `command --help`
+- ANSI drawing ต้องแสดง terminal output ของ `--help` (ไม่ใช่แค่ output ปกติ)
 - ถ้าขาด bash code block → flag เป็น `Medium`
+- ถ้า ANSI ไม่ใช่ `--help` output → flag เป็น `Medium`
 
 ### Usage via SDK
 
@@ -32,7 +36,15 @@
 - ตัวอย่างต้องครบทั้ง 3 ส่วน
 - ถ้าขาดส่วนใดส่วนหนึ่ง → flag เป็น `Medium`
 
-### Usage via TUI / Desktop / Browser Extension
+### Usage via TUI
+
+- text instructions สำหรับการใช้งาน
+- ห่มเนื้อหาด้วย `<details>` + `<summary>` accordion
+- ภายใน accordion ต้องมี ANSI drawing แสดง TUI layout
+- ถ้าไม่อยู่ใน accordion → flag เป็น `Medium`
+- ถ้าใช้ code block แทน text instructions (นอก ANSI drawing) → flag เป็น `Low`
+
+### Usage via Desktop / Browser Extension
 
 - text instructions สำหรับการใช้งาน
 - ถ้าใช้ code block แทน text → flag เป็น `Low`
@@ -51,6 +63,8 @@
 |---|---|
 | ขาด `## Usage` section | `High` |
 | ขาด `### Usage via ...` สำหรับ method ที่รองรับ | `High` |
-| Format ผิด (เช่น Web ใช้ code block) | `Medium` |
+| Web/TUI ไม่อยู่ใน `<details>` accordion | `Medium` |
+| CLI ไม่แสดง `command --help` ANSI output | `Medium` |
+| Format ผิด (เช่น Web ใช้ code block แทน text) | `Medium` |
 | SDK ขาด install/import/usage ส่วนใดส่วนหนึ่ง | `Medium` |
-| TUI/Desktop/Extension ใช้ code block | `Low` |
+| TUI/Desktop/Extension ใช้ code block แทน text | `Low` |
