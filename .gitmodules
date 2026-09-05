@@ -4,6 +4,6 @@
 [submodule "open-files-in-web"]
 	path = open-files-in-web
 	url = https://github.com/newkub/open-files-in-web
-[submodule "use-create-pr"]
-	path = use-create-pr
-	url = git@github.com:newkub/use-create-pr.git
+[submodule "create-github-pr"]
+	path = create-github-pr
+	url = git@github.com:newkub/create-github-pr.git
