@@ -13,9 +13,11 @@ related:
   - review-architecture
   - deep-review
   - update-project
+  - update-references
+  - run-verify
+  - create-plan-as-github-issue
   - dont-over-engineer
   - rethink
-  - ship
 ---
 
 ## Goal
@@ -90,19 +92,13 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
 2. ถ้าไม่มีแผน → รายงานผล
 
-### 8. Report
+### 8. Report And Next Steps
 
 > Goal: สื่อสารผล refactor และ consistency
 
 1. ทำ `/report` สรุป before/after รวม refactor และ consistency check
 2. ระบุ TODO ถ้ามี
-
-### 9. Ship (If Requested)
-
-> Goal: ส่งมอบ refactored code หลัง verify ผ่าน
-
-- ถ้า user ต้องการ ship ผลงานหลัง verify ผ่าน → ทำ `/ship` สำหรับ ship ทั้งหมด ตั้งแต่ verify, release, deploy, จนถึง rollback plan
-- ทำ `/suggest-next-action` หลัง `/ship` เสร็จ
+3. ทำ `/suggest-next-action`
 
 ## Rules
 

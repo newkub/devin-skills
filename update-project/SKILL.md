@@ -1,6 +1,7 @@
 ---
 name: update-project
 description: อัปเดต root project โดยเช็ค git log และ sync project docs/config/rules/tooling
+argument-hint: "[scope]"
 related:
   - update-config
   - update-dot-devin
@@ -12,13 +13,11 @@ related:
   - update-examples
   - update-devin-project-skills
   - update-github-metadata
-  - follow-github
   - update-todo-md
   - update-dependencies-latest
   - update-version-latest
-  - setup-cicd
-  - follow-config
   - deep-update-project
+  - deep-review
 ---
 
 ## Goal

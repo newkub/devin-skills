@@ -16,7 +16,7 @@ related:
   - run-test-all
   - run-verify
   - deep-productionize-implementation
-  - ship
+  - update-project
   - ask-me
 ---
 
@@ -111,17 +111,16 @@ related:
 4. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
 5. ทำ `/update-todo-md` ถ้า TODO.md items เปลี่ยน
 
-### 9. Verify, Rollback Plan, And Ship
+### 9. Verify, Rollback Plan, And Finalize
 
-> Goal: code ผ่าน validation พร้อม rollback plan แล้วส่งมอบ
+> Goal: code ผ่าน validation พร้อม rollback plan
 
 1. ทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
-5. ถ้า user ต้องการ ship → ทำ `/ship`
-6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
-7. ทำ `/suggest-next-action`
+5. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
+6. ทำ `/suggest-next-action`
 
 ## Rules
 
