@@ -14,6 +14,7 @@ related:
   - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
+  - open-web
 ---
 
 ## Goal
@@ -110,7 +111,8 @@ related:
 
 1. ตรวจสอบ issue ถูกสร้าง/แก้ไขสำเร็จ
 2. `gh issue view <number>` เพื่อตรวจสอบครั้งสุดท้าย
-3. รายงาน URL ของ issue กลับ
+3. หลังสร้าง issue สำเร็จ → เปิด issue ใน browser ด้วย `/open-web` หรือ `gh issue view <number> --web`
+4. รายงาน URL ของ issue กลับ
 
 ## Rules
 

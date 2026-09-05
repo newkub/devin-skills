@@ -13,6 +13,7 @@ related:
   - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
+  - open-web
 ---
 
 ## Goal
@@ -91,7 +92,8 @@ related:
 
 1. รายงาน PR number, URL, title
 2. รายงาน status checks และ labels
-3. ถ้าต้องการ merge ต่อ → ทำ `/merge-github-pr`
+3. หลังสร้าง PR สำเร็จ → เปิด PR ใน browser ด้วย `/open-web` หรือ `gh pr view --web`
+4. ถ้าต้องการ merge ต่อ → ทำ `/merge-github-pr`
 
 ## Rules
 
