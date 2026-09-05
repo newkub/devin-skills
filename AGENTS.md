@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **816** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **825** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -103,7 +103,7 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (242): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (61): code review, architecture, security, performance, accessibility, dependencies, and quality.
+- `review-*` (69): code review, architecture, security, performance, accessibility, dependencies, quality, and stakeholder roleplay domains (`review-by-*`).
 - `list-*` (49): inventory, lookup, and listing utilities.
 - `update-*` (39): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (38): reporting, diagrams, and visualization helpers.

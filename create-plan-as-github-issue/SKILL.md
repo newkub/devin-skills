@@ -14,6 +14,7 @@ related:
   - report-plan
   - report-uxui-sketch
   - report-architecture-diagram
+  - create-plan-in-dot-devin
 ---
 
 ## Goal

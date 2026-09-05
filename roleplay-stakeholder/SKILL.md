@@ -1,13 +1,17 @@
 ---
 name: roleplay-stakeholder
-description: รับบทตาม persona / stakeholder ทีระบุ เพื่อ review code/project จากมุมมองนั้น
+description: รับบท persona หรือ stakeholder ที่ user ระบุ แล้วส่งต่อไปยัง review-by-* domain skill
 argument-hint: "[role-name]"
 related:
+  - review-by-user
+  - review-by-designer
+  - review-by-product
+  - review-by-engineer
+  - review-by-security
+  - review-by-compliance
+  - review-by-qa
+  - review-by-data
   - scan-codebase
-  - review-uxui
-  - review-security
-  - review-quality
-  - review-performance
   - report
   - suggest-next-action
   - ask-me
@@ -15,41 +19,39 @@ related:
 
 ## Goal
 
-รับบทเป็น persona หรือ stakeholder ที user ระบุ แล้ว review project จากมุมมองนั้นทีเดียว
+รับบท persona หรือ stakeholder ที่ user ระบุ แล้วส่งต่อไปยัง `review-by-*` domain skill ที่เหมาะสมเพื่อ review project จากมุมมองนั้น
 
 ## Scope
 
-- ใช้กับทุก project ทีต้องการมุมมองภายนอก
-- รองรับทัง business, technical, security, user, compliance, growth
-- ไม่แก้ code โดยตรง ให้ report findings พร้อม recommendation
+ใช้กับทุก project ที่ต้องการมุมมองภายนอก รองรับ business, technical, security, user, compliance, growth ไม่แก้ code โดยตรง
 
-- ดูเพิ่มเติม: /review-uxui, /review-security, /review-quality, /review-performance
+ถ้าต้องการ feedback จาก stakeholder จริง (ไม่ใช่ roleplay) → ใช้ `/review-by-stakeholder` แทน
 
 ## Execute
 
 ### 1. Identify Role
 
-> Goal: รู้ persona ทีจะรับบท
+> Goal: รู้ persona ที่จะรับบท
 
-1. ถ้ามี argument → ใช้ role นั้น
-2. ถ้าไม่มี → แสดงตาราง role แล้วทำ `/ask-me` ให้ user เลือก
+1. ถ้ามี `role-name` argument → ใช้ role นั้น
+2. ถ้าไม่มี → แสดงตาราง mapping แล้ว `/ask-me` ให้ user เลือก
 3. ถ้า role ไม่อยู่ในตาราง → แจ้ง และถามว่าจะใช้ closest role ไหน
 
-### 2. Scan And Understand
+### 2. Map To Domain Skill
 
-> Goal: เข้าใจ context ก่อน review
+> Goal: ส่งต่อไปยัง child skill ที่ถูกต้อง
 
-1. ทำ `/scan-codebase` เพื่อเข้าใจ structure
-2. อ่าน `README.md`, `AGENTS.md`, `docs/` ถ้ามี
-3. ระบุ scope ทีจะ review ตาม role
+1. ใช้ตารางด้านล่างเพื่อ map role → `/review-by-*` skill
+2. ถ้า role ตกอยู่ในหลาย domain ให้ user ยืนยัน domain ทีต้องการ
+3. ส่งต่อไปยัง skill ทีเลือกพร้อม context และ argument
 
-### 3. Roleplay Review
+### 3. Delegate And Collect
 
-> Goal: คิดผ่านเลนส์ของ persona
+> Goal: ให้ child skill ทำ review ตาม lens ของ role
 
-1. ใช้ตารางด้านล่างเพื่อระบุ lens / questions ของ role
-2. หา evidence จาก code, config, docs
-3. จัด findings ตาม severity: Critical, High, Medium, Low, Info
+1. ทำ `/scan-codebase` เพื่อรวบรวม context ก่อนส่งต่อ
+2. เรียก child skill ที่เหมาะสม
+3. รับ findings, severity และ recommendations จาก child skill
 
 ### 4. Report
 
@@ -59,48 +61,48 @@ related:
 2. ระบุ top 3-5 ประเด็นทีสำคัญทีสุด
 3. ทำ `/suggest-next-action`
 
-## Persona Table
+## Role To Domain Mapping
 
-| No. | Role | Lens / Questions |
-|----:|------|------------------|
-| 1 | `user` | user journey, usage friction, onboarding, value proposition |
-| 2 | `ui-designer` | visual design, design system, interaction, consistency |
-| 3 | `ux-researcher` | research questions, pain points, biases, usability |
-| 4 | `qa-tester` | edge cases, boundary conditions, test scenarios, regressions |
-| 5 | `product-manager` | feature completeness, priority, MVP fit, user needs gaps |
-| 6 | `new-developer` | onboarding, missing docs, confusing code, context gaps |
-| 7 | `devops-engineer` | deployability, monitoring, rollback, observability |
-| 8 | `competitor` | weaknesses, vulnerabilities, opportunities to outperform |
-| 9 | `attacker` | vulnerabilities, attack surfaces, exploit paths |
-| 10 | `ceo` | business value, strategic risk, vision, investment |
-| 11 | `compliance-officer` | privacy, legal, regulatory, data handling gaps |
-| 12 | `customer-success-manager` | health score, onboarding, churn, support gaps |
-| 13 | `customer-support-agent` | issues users complain about, support gaps |
-| 14 | `data-analyst` | data quality, event tracking, metrics, dashboards |
-| 15 | `data-engineer` | data pipelines, ETL, schema, data infrastructure |
-| 16 | `financial-analyst` | pricing, burn, unit economics, financial impact |
-| 17 | `growth-manager` | funnel, A/B tests, acquisition, retention |
-| 18 | `incident-commander` | incident response, runbooks, communication |
-| 19 | `legal-counsel` | contracts, terms, IP, liability, legal exposure |
-| 20 | `marketing-manager` | messaging, positioning, SEO, content |
-| 21 | `open-source-contributor` | CONTRIBUTING, PR flow, community, license |
-| 22 | `performance-engineer` | latency, throughput, resource usage, cost |
-| 23 | `security-architect` | threat model, defense in depth, design security |
-| 24 | `solutions-engineer` | integration, security, scalability, ROI for enterprise |
-| 25 | `staff-engineer` | architecture, tech debt, scalability trade-offs |
-| 26 | `technical-writer` | docs, examples, discoverability, clarity |
+| No. | Role | Domain Skill |
+|----:|------|--------------|
+| 1 | `user` | `/review-by-user` |
+| 2 | `ui-designer` | `/review-by-designer` |
+| 3 | `ux-researcher` | `/review-by-user` |
+| 4 | `qa-tester` | `/review-by-qa` |
+| 5 | `product-manager` | `/review-by-product` |
+| 6 | `new-developer` | `/review-by-engineer` |
+| 7 | `devops-engineer` | `/review-by-engineer` |
+| 8 | `competitor` | `/review-by-product` |
+| 9 | `attacker` | `/review-by-security` |
+| 10 | `ceo` | `/review-by-product` |
+| 11 | `compliance-officer` | `/review-by-compliance` |
+| 12 | `customer-success-manager` | `/review-by-user` |
+| 13 | `customer-support-agent` | `/review-by-user` |
+| 14 | `data-analyst` | `/review-by-data` |
+| 15 | `data-engineer` | `/review-by-data` |
+| 16 | `financial-analyst` | `/review-by-product` |
+| 17 | `growth-manager` | `/review-by-product` |
+| 18 | `incident-commander` | `/review-by-security` |
+| 19 | `legal-counsel` | `/review-by-compliance` |
+| 20 | `marketing-manager` | `/review-by-product` |
+| 21 | `open-source-contributor` | `/review-by-engineer` |
+| 22 | `performance-engineer` | `/review-by-engineer` |
+| 23 | `security-architect` | `/review-by-security` |
+| 24 | `solutions-engineer` | `/review-by-engineer` |
+| 25 | `staff-engineer` | `/review-by-engineer` |
+| 26 | `technical-writer` | `/review-by-engineer` |
 
 ## Rules
 
-- ไม่ลงมือแก้ code ระหว่าง roleplay review
+- ไม่แก้ code ระหว่าง roleplay review
 - ทุก finding ต้องมี evidence จาก code หรือ config
 - ถ้า role ไม่ชัด → ถามก่อน
-- ใช้ lens ของ role โดยเฉพาะ ไม่ผสมกับ perspective อื่น
+- ส่งต่อไปยัง `/review-by-*` ที่เหมาะสม ไม่ mixed perspective
 - ไม่ deploy หรือรันอะไรจริง
 
 ## Expected Outcome
 
-- รายงาน findings จากมุมมอง persona ทีเลือก
+- รายงาน findings จากมุมมอง persona ที่เลือก
 - Top issues พร้อม recommendation
 - รายงาน severity ชัดเจน
 - Next actions ผ่าน `/suggest-next-action`
