@@ -6,7 +6,7 @@ related:
   - review-github-issue
   - follow-best-practice
   - suggest-next-action
-  - review-codebase-everything
+  - deep-review-codebase
   - resolve-errors
 ---
 
@@ -18,7 +18,7 @@ related:
 
 ใช้สำหรับ issue source ใดๆ ไม่ใช่แค่ GitHub ครอบคลุม title, description, acceptance criteria, scope, dependencies, risks และ next steps ที่นำไปปฏิบัติได้ ไม่แก้ไข issue เว้นแต่ได้รับการร้องขอ
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

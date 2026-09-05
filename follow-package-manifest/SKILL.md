@@ -11,7 +11,7 @@ related:
   - run-test-all
   - follow-secret-manager
   - open-web-for-config-secret
-  - review-codebase-everything
+  - deep-review-codebase
   - follow-tool-hk
   - use-astgrep
 ---
@@ -24,7 +24,7 @@ related:
 
 ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`)
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

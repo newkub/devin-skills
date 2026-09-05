@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - watch-browser-and-fix
   - follow-best-practice
-  - review-codebase-everything
+  - deep-review-codebase
   - suggest-next-action
   - resolve-errors
 ---
@@ -18,7 +18,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 
 ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

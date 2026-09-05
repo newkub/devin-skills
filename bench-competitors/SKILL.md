@@ -5,7 +5,8 @@ argument-hint: "[scope]"
 related:
   - create-plan-as-github-issue
   - deep-research
-  - review-codebase-everything
+  - bench-features
+  - deep-review-codebase
   - pondering
   - deep-plan
   - ask-me
@@ -21,7 +22,7 @@ related:
 
 ครอบคลุมทุกมิติของ product: features, performance, UX/UI, architecture, DX, security, scalability, business ไม่ใช่แค่มิติใดมิติหนึ่ง
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 
@@ -38,9 +39,9 @@ related:
 
 > Goal: เปรียบเทียบและปรับปรุงมิติ features
 
-1. ทำ `/deep-research` เพื่อ benchmark มิติ features กับคู่แข่ง
+1. ทำ `/bench-features` เพื่อ benchmark มิติ features กับคู่แข่งด้วย `/deep-research`
 2. รับผลเป็น section หรือไฟล์ `comparison-features.md`
-3. ถ้า `/deep-research` fail → stop และ report
+3. ถ้า `/bench-features` fail → stop และ report
 
 ### 3. Benchmark Other Dimensions
 

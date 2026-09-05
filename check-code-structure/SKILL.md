@@ -8,7 +8,7 @@ related:
   - use-astgrep-programatic
   - review-architecture
   - restructure
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-validate
   - scan-codebase
 ---
@@ -21,7 +21,7 @@ related:
 
 ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด
 
-ดูเพิ่มเติม: /search-by-astgrep, /review-codebase-everything
+ดูเพิ่มเติม: /search-by-astgrep, /deep-review-codebase
 
 ## Execute
 

@@ -4,7 +4,7 @@ description: รัน documentation site และแก้ไขข้อผ�
 argument-hint: "[scope]"
 related:
   - follow-tool-vitepress
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-review
   - deep-debug
   - resolve-errors
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ documentation site ที่สร้างด้วย VitePress, Docus, หรือ documentation frameworks อื่นๆ
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

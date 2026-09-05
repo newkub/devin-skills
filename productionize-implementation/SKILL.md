@@ -16,7 +16,7 @@ related:
   - run-test-all
   - run-verify
   - deep-productionize-implementation
-  - update-project
+  - resolve-github-issue-by-me
   - ask-me
 ---
 
@@ -120,7 +120,8 @@ related:
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
 5. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
-6. ทำ `/suggest-next-action`
+6. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
+7. ทำ `/suggest-next-action`
 
 ## Rules
 

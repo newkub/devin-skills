@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-productionize-implementation
 description: Review implementation completeness หา TODO, MOCK, STUB, placeholder, flows ขาด UX/UI
 argument-hint: "[skill-name]"
@@ -7,7 +7,7 @@ related:
   - review-restructure
   - review-update
   - productionize-implementation
-  - review-codebase-everything
+  - deep-review-codebase
   - scan-codebase
   - deep-analyze
 ---
@@ -27,7 +27,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 ใช้ร่วมกับ `review-refactor`, `review-restructure`, `review-update` เพื่อ review ก่อน refactor, restructure, หรือ update
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

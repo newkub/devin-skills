@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - rethink
   - alternative
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-analyze
   - deep-thinking
   - deep-pondering
@@ -22,7 +22,7 @@ related:
 
 สำหรับสำรวจ libraries ใช้ `/alternative`
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

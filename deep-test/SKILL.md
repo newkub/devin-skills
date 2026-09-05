@@ -8,7 +8,7 @@ related:
   - run-test-unit
   - run-test-integration
   - run-test-e2e
-  - review-codebase-everything
+  - deep-review-codebase
   - review-quality
   - deep-validate
   - check-reference
@@ -24,7 +24,7 @@ related:
 
 เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
-ดูเพิ่มเติม: /run-test-unit, /run-test-integration, /run-test-e2e, /review-codebase-everything
+ดูเพิ่มเติม: /run-test-unit, /run-test-integration, /run-test-e2e, /deep-review-codebase
 
 ## Execute
 

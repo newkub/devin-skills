@@ -6,7 +6,7 @@ related:
   - update-all-devin-global-skills
   - update-devin-global-skills
   - idea-refactor-devin-global-skills
-  - review-codebase-everything
+  - deep-review-codebase
   - report-table
   - suggest-next-action
   - check-reference
@@ -26,7 +26,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่ปรับเนื้อหาเชิง code (ใช้ `/deep-validate`)
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 ### 1. Prepare Context

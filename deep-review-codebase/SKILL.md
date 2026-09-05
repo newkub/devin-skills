@@ -1,11 +1,12 @@
 ---
-name: review-codebase-everything
-description: ใช้ `tools/review-codebase` CLI รัน review code แบบครอบคลุมทุก domain พร้อมสรุป findings
+name: deep-review-codebase
+description: รัน review-* ครบทุก domain แล้วรายงานผลลง GitHub issue `deep-review-codebase` (report only)
 argument-hint: "[path-or-target]"
 related:
   - run-review
   - improve-review-cli
   - deep-review
+  - create-github-issue
   - review-quality
   - review-security
   - review-performance
@@ -25,6 +26,8 @@ related:
 ## Scope
 
 ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
+
+ผลลัพธ์รายงานลง GitHub issue title `deep-review-codebase` ผ่าน `/create-github-issue` โดย comment แยกตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code
 
 ## Execute
 
@@ -92,19 +95,22 @@ related:
 4. เรียงลำดับตาม severity, effort และ business impact
 5. ระบุ clear owner skill สำหรับแต่ละ action
 
-### 7. Report And Route
+### 7. Report To GitHub Issue
 
-> Goal: สรุปผลและชี้ next action
+> Goal: รายงานผล review ลง GitHub issue `deep-review-codebase` (report only)
 
 1. ทำ `/report-table` สรุป score, findings, owner skill, priority
-2. บันทึก action items เป็น `TODO` หรือ plan
-3. ทำ `/suggest-next-action` โดยแนะนำ `/improve-*` หรือ `/optimize-*` ทีเหมาะสม
+2. ทำ `/create-github-issue` ด้วย title `deep-review-codebase` และ body เป็น executive summary: score, grade, findings count ตาม domain
+3. comment แต่ละ `review-*` domain ลงใน issue ด้วย `gh issue comment <issue>` — แต่ละ comment มี header ของ review skill, findings, evidence และ severity
+4. บันทึก action items เป็น `TODO` หรือ plan
+5. ทำ `/suggest-next-action` โดยแนะนำ `/improve-*` หรือ `/optimize-*` ทีเหมาะสม
 
 ## Rules
 
 ### 1. No Duplication
 
-- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `review-codebase-everything` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + ส่งต่อ fix"
+- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review-codebase` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + report ลง issue"
+- Report only — รายงานผลลง issue เท่านั้น ไม่แก้ไข code ใน skill นี้
 - ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
 
 ### 2. Evidence First

@@ -4,7 +4,7 @@ description: พิจารณาและเรียก deep-* workflows ท�
 argument-hint: "[scope]"
 related:
   - review
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-analyze
   - deep-analyze-by-use-scripts
   - deep-review
@@ -20,7 +20,7 @@ related:
 
 ใช้เป็น sub-workflow สำหรับพิจารณาว่า task ปัจจุบันควรเรียก `deep-*` workflows ใดบ้าง — ไม่ใช่ workflow หลักที่รันแยกต่างหาก
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

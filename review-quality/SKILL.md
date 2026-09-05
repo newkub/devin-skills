@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-quality
 description: Review code quality, best practices, naming, consistency, bug-prone patterns, and correctness
 argument-hint: "[scope]"
@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - deep-analyze
   - run-review
-  - review-codebase-everything
+  - deep-review-codebase
   - use-astgrep
   - report-table
   - suggest-next-action
@@ -25,7 +25,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - code, configuration, rule files, workflows, และ skills
 - ทบทวนตาม `references/code-quality.md`, `references/bug-prone.md`, `references/correctness.md`, `references/best-practices.md`, `references/naming.md`, `references/consistency.md`, `references/time-complexity.md`, `references/tech-debt.md`, และ `references/scoring.md`
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

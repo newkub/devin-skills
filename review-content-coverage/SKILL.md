@@ -6,7 +6,7 @@ related:
   - follow-coverage
   - run-test-coverage
   - follow-best-practice
-  - review-codebase-everything
+  - deep-review-codebase
   - suggest-next-action
   - resolve-errors
   - review-writing
@@ -21,7 +21,7 @@ related:
 
 ใช้สำหรับเขียน content ที่ครอบคลุมทุก aspects ของ skill, project, หรือ documentation
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

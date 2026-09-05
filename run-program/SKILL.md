@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-install
   - run-build
-  - review-codebase-everything
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -23,7 +23,7 @@ related:
 - รัน background services
 - ตรวจสอบโปรแกรมทำงานได้ถูกต้อง
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

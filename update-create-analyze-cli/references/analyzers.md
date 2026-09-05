@@ -20,8 +20,8 @@
 
 ```typescript
 const reviewWorkflow: Record<string, string> = {
-  "missing-eslint": "review-codebase-everything/lint-rules",
-  "no-tests": "review-codebase-everything/test-coverage",
+  "missing-eslint": "deep-review-codebase/lint-rules",
+  "no-tests": "deep-review-codebase/test-coverage",
 };
 ```
 

@@ -9,7 +9,7 @@ related:
   - follow-package-manifest
   - check-unused-deps
   - run-audit
-  - review-codebase-everything
+  - deep-review-codebase
   - run-verify
   - deep-validate
   - report-table
@@ -26,7 +26,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 ใช้สำหรับ review workspace หนึ่ย โดย focus ที่ structure, package manifest, dependencies, scripts, และ config readiness ไม่รวม deep category reviews เช่น `/deep-review`
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

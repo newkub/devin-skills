@@ -4,7 +4,7 @@ description: สร้างหรืออัปเดต `tools/review-codebas
 argument-hint: "[target-or-iteration]"
 related:
   - run-review
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-review
   - update-create-analyze-cli
   - check-should-update
@@ -160,7 +160,7 @@ related:
 
 - ทำ review/improve CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
-- ใช้ `/deep-review` หรือ `/review-codebase-everything` สำหรับ comprehensive quality gate
+- ใช้ `/deep-review` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
 
 ### 6. Formatting
 

@@ -4,7 +4,7 @@ description: Orchestrator backend review ครอบคลุม 7 sub-review w
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - review-codebase-everything
+  - deep-review-codebase
   - run-review
   - deep-validate
   - report
@@ -20,7 +20,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 
 ใช้สำหรับ backend review ทั้งหมด — เรียก sub-review workflows โดยตรง ไม่ทำ review เอง — ไม่รวม frontend, infrastructure, หรือ security reviews
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

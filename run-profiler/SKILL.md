@@ -8,7 +8,7 @@ related:
   - resolve-errors
   - run-check
   - run-verify
-  - review-codebase-everything
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -19,7 +19,7 @@ Profile performance เพื่อหา bottlenecks และ optimize
 
 ใช้สำหรับ profiling ด้วย Chrome DevTools, Node.js profiler, หรือ Bun profiler เพื่อหา hot paths และ memory issues
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

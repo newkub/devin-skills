@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lib-unocss-theme
   - review-frontend
-  - review-codebase-everything
+  - deep-review-codebase
   - review-uxui
   - optimize-codebase-everything
   - capture-component
@@ -19,7 +19,7 @@ related:
 
 ครอบคลุม design tokens, component guidelines, และ platform-specific adaptations สำหรับ TUI, Web, Desktop, และ Mobile
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

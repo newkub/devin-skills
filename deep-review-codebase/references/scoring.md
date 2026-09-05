@@ -42,7 +42,7 @@
 `categories` metric วัดความครอบคลุมของ review:
 
 - target: `categories >= 60`
-- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `review-codebase-everything` เพื่อ integrate
+- ถ้าต่ำกว่า 60 → ทำ `/update-create-analyze-cli` เพื่อเพิ่ม analyzers ใน `tools/analyze` แล้วทำ `deep-review-codebase` เพื่อ integrate
 
 ## Health Indicator
 

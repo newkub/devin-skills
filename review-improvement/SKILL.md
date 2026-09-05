@@ -5,7 +5,7 @@ argument-hint: "[scope-or-target]"
 related:
   - deep-review
   - scan-codebase
-  - review-codebase-everything
+  - deep-review-codebase
   - improve-codebase-everything
   - review-architecture
   - review-security
@@ -62,7 +62,7 @@ Review scope ที่ user ระบุ (project, workspace, file, feature ห�
 
 1. รวบรวม findings จากทุก dimension พร้อม file/line evidence
 2. ลบ findings ที่ซ้ำกันหรือเป็น symptom ของ root cause เดียวกัน
-3. ถ้า dimension ใดต้องลงลึก → ทำ `/review-architecture`, `/review-security`, `/review-performance`, `/review-quality`, `/review-codebase-everything`, `/review-accessibility` หรือ `/deep-review` ตามด้านที่พบ
+3. ถ้า dimension ใดต้องลงลึก → ทำ `/review-architecture`, `/review-security`, `/review-performance`, `/review-quality`, `/deep-review-codebase`, `/review-accessibility` หรือ `/deep-review` ตามด้านที่พบ
 
 ### 4. Prioritize And Map
 

@@ -5,7 +5,7 @@ argument-hint: "[topic-or-goal]"
 related:
   - review
   - review-then-fix
-  - review-codebase-everything
+  - deep-review-codebase
   - review-quality
   - review-correctness
   - review-security
@@ -27,7 +27,7 @@ related:
 
 ใช้เมื่อ user ต้องการ review แต่ยังไม่รู้จะใช้ review- skill ใด หรือต้องการให้ระบบเลือก/จัดลำดับ/execute review skills ให้ รองรับ code, docs, plan, GitHub, devin skills, release, delivery, และ cross-dimensional review
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

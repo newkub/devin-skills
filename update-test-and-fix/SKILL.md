@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - review-writing
   - run-test-coverage
-  - review-codebase-everything
+  - deep-review-codebase
   - review-quality
   - deep-validate
   - check-reference
@@ -21,7 +21,7 @@ related:
 
 เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

@@ -1,11 +1,11 @@
-﻿---
+---
 name: review-architecture
 description: Review architecture, modularity, isolation, resilience, reliability, governance
 argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-analyze
-  - review-codebase-everything
+  - deep-review-codebase
   - deep-validate
   - report
   - report-table
@@ -21,7 +21,7 @@ Review architecture ระดับ macro ครอบคลุม design patter
 
 architectural patterns, module boundaries, dependency directions, SOLID principles, scalability, concurrency, multi-tenancy, queue architecture, routing, side effects, modularity, isolation, resilience, reliability, governance, data flow tracing, และ cost impact analysis
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

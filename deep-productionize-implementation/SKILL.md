@@ -28,7 +28,7 @@ Productionize implementation ครบวงจร — แปลง TODO, MOCK, 
 
 ใช้เมื่องาน implement มีความซับซ้อนสูง ต้อง integrate หลาย layer หรือต้องแทนที่ mock/placeholder หลายจุด — ไม่ใช่สำหรับแก้ไขเฉพาะหน้า
 
-ดูเพิ่มเติม: /review-codebase-everything
+ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

@@ -3,7 +3,7 @@ name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring and score
 argument-hint: "[scope]"
 related:
-  - review-codebase-everything
+  - deep-review-codebase
   - scan-codebase
   - deep-analyze
   - update-project-rules
@@ -24,7 +24,7 @@ Review ความเสถียรของ application ครอบคลุ
 - `error-patterns`: log clustering and recurring issue detection from logs
 - ไม่รวมการ fix (ใช้ `/deep-review` สำหรับ fix)
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 

@@ -4,12 +4,14 @@ description: สร้างไอเดียฟีเจอรใหม่ ข
 argument-hint: "[topic]"
 related:
   - idea-features
+  - bench-features
+  - create-github-issue
   - create-plan-as-github-issue
   - create-report-in-dot-devin
   - create-files-in-os-temp
   - open-files-in-web
   - productionize-implementation
-  - review-codebase-everything
+  - deep-review-codebase
   - suggest-me
   - enhance-prompt
   - report-uxui-sketch
@@ -27,13 +29,14 @@ related:
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
 - สร้าง report ชั่วคราวใน `.devin/reports/` หรือ OS temp directory ถ้าต้องการ
+- สร้าง GitHub issue `idea-features` ผ่าน `/create-github-issue` พร้อม plan และ comment ทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
 - สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-as-github-issue` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
 - ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/productionize-implementation` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
-- ดูเพิ่มเติม: /review-codebase-everything
+- ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
 
@@ -42,9 +45,10 @@ related:
 > Goal: เข้าใจ project และระบุช่องว่าง
 
 1. ทำ `/analyze-project` และอ่าน `docs/project/features.md` ถ้ามี
-2. ทำ `/learn-from-web` เพื่อศึกษาแนวโน้มตลาดและความต้องการของผู้ใช้
-3. ระบุ gaps และ opportunities จากการวิเคราะห์
-4. ถ้าเข้าถึง project ไม่ได้ → stop และ report
+2. ทำ `/bench-features` เพื่อ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย
+3. ทำ `/learn-from-web` เพื่อศึกษาแนวโน้มตลาดและความต้องการของผู้ใช้
+4. ระบุ gaps และ opportunities จากการวิเคราะห์
+5. ถ้าเข้าถึง project ไม่ได้ → stop และ report
 
 ### 2. Generate Ideas
 
@@ -84,15 +88,24 @@ related:
 2. ถ้าสร้างใน `.devin/reports/` → ใช้ `/open-files-in-web <path>`
 3. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
 
-### 5. Summarize In Chat
+### 5. Create Idea-Features Issue
+
+> Goal: สร้าง GitHub issue `idea-features` พร้อม plan และ comment ทุก feature
+
+1. ทำ `/create-github-issue` ด้วย title `idea-features` และ body เป็น plan สรุป features ทั้งหมดพร้อม priority, phase, effort
+2. comment ทุก feature ลงใน issue ด้วย `gh issue comment <issue>` — แต่ละ comment มีรูปแบบ: `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
+3. ใช้ `/report-uxui-sketch` สำหรับ field `uxui-sketch` ของแต่ละ feature
+4. บันทึก issue number และ URL ไว้รายงาน user
+
+### 6. Summarize In Chat
 
 > Goal: รายงานผลให้ user ทราบ
 
 1. สรุป features หลักใน chat สั้นๆ
-2. ระบุ path ของ report ชั่วคราว
+2. ระบุ path ของ report ชั่วคราว และ URL ของ issue `idea-features`
 3. ถาม user ว่าต้องการทำ features ไหน
 
-### 6. Implement If Asked
+### 7. Implement If Asked
 
 > Goal: ทำตามคำสั่ง "ทำ"
 
@@ -102,7 +115,7 @@ related:
 4. หลัง `/productionize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/` และลบ `PLAN_PATH`
 5. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็นต้อง → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
 
-### 7. Cleanup
+### 8. Cleanup
 
 > Goal: จัดการหลังใช้งาน
 
@@ -163,6 +176,7 @@ related:
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
 - Report ชั่วคราวถูกสร้างใน `.devin/reports/` หรือ OS temp (ถ้าต้องการ)
+- GitHub issue `idea-features` ถูกสร้างพร้อม plan และ comment ครบทุก feature
 - Plan ถูกสร้างใน `.devin/plan/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
 - ไม่มี report หรือ plan files ค้างหลังเสร็จงาน
