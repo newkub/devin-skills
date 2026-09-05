@@ -4,14 +4,9 @@ description: ปรับปรุง test quality ทุกประเภท�
 argument-hint: "[pattern-or-path]"
 related:
   - run-test-coverage
-  - improve-test-coverage
   - run-test
-  - run-test-e2e
   - run-test-website-by-agent-browser
   - deep-review
-  - run-build
-  - resolve-errors
-  - deep-debug
   - update-specs
 ---
 

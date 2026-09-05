@@ -1,6 +1,7 @@
 ---
 name: list-git-branch
 description: แสดง branches ในเครื่องและ remote พร้อมข้อมูลล่าสุด
+argument-hint: "[scope]"
 related:
   - list-github-branch
   - report-table

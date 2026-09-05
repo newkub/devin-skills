@@ -1,6 +1,7 @@
 ﻿---
 name: use-lib-effective
 description: วิเคราะห์ dependencies และใช้งาน libraries ให้ครบและครอบคลุม ไม่ reinvent
+argument-hint: "[scope]"
 related:
   - deep-research
   - learn-from-web

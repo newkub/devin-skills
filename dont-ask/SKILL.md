@@ -1,6 +1,7 @@
 ---
 name: dont-ask
 description: ดำเนินการโดยไม่ถามผู้ใช้เมื่อคำตอบชัดเจนหรืองานมีความเสี่ยงต่ำ
+argument-hint: "[scope]"
 related:
   - ask-me
   - continue

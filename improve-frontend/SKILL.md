@@ -4,13 +4,9 @@ description: แก้ไข frontend findings ด้าน components, state, r
 argument-hint: "[target-or-scope]"
 related:
   - review-frontend
-  - review-uxui
-  - review-accessibility
-  - review-performance
   - improve-uxui
   - improve-accessibility
   - optimize-rendering
-  - resolve-errors
   - run-test
   - run-verify
   - report-table

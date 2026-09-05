@@ -4,17 +4,10 @@ description: Review จากมุมมอง engineer — architecture, maint
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
-  - review-by-stakeholder
   - review-by-product
   - review-by-qa
   - review-by-security
-  - review-architecture
-  - review-quality
   - improve-architecture
-  - improve-correctness
-  - improve-backend
-  - improve-frontend
-  - refactor
   - report-table
   - suggest-next-action
   - ask-me

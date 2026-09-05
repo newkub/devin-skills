@@ -6,7 +6,6 @@ related:
   - use-in-another-skills
   - suggest-next-action
   - follow-skills-map
-  - list-devin-global-skills
   - check-reference
   - report-table
 ---

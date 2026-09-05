@@ -1,6 +1,7 @@
 ---
 name: review-usage-md
 description: Review USAGE.md quality, coverage, and consistency in workspace
+argument-hint: "[scope]"
 related:
   - update-usage-md
   - report-table

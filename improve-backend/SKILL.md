@@ -4,15 +4,10 @@ description: แก้ไข backend findings ด้าน API, service, databas
 argument-hint: "[target-or-scope]"
 related:
   - review-backend
-  - review-api
-  - review-database
-  - review-security
-  - review-stability
   - improve-api
   - improve-database
   - improve-security
   - improve-stability
-  - resolve-errors
   - run-test
   - run-verify
   - report-table

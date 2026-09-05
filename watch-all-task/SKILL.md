@@ -1,6 +1,7 @@
 ---
 name: watch-all-task
 description: เฝ้าติดตามไฟล์งานและรันงานที่ค้างอยู่อัตโนมัติเมื่อมีการเปลี่ยนแปลง
+argument-hint: "[scope]"
 related:
   - run-task-all
   - deep-plan

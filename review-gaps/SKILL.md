@@ -1,6 +1,7 @@
 ---
 name: review-gaps
 description: Meta-review รวบรวม findings จาก dimensional reviews เป็น prioritized improvement list
+argument-hint: "[scope]"
 related:
   - prioritize
   - report

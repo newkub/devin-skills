@@ -1,6 +1,7 @@
 ---
 name: report
 description: ตอบในแชทเป็นตารางพร้อมคอลัมน์ No. เรียงลำดับ 1, 2, 3, ...
+argument-hint: "[scope]"
 related:
   - report-table
   - report-ansi

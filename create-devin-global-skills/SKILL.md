@@ -11,7 +11,6 @@ related:
   - review-devin-global-skills
   - follow-global-rules
   - deep-validate
-  - check-reference
   - update-references
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: list-git-release
 description: รายการ git tags และ releases จาก local repo พร้อม version, date, notes
+argument-hint: "[scope]"
 related:
   - list-git-branch
   - list-git-commit

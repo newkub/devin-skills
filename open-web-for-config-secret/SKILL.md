@@ -1,6 +1,7 @@
 ---
 name: open-web-for-config-secret
 description: อ่าน .env.example แล้วเปิด URLs สำหรับสร้าง API keys และ secret manager dashboard ให้ user กรอกเอง
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - follow-service-infisical

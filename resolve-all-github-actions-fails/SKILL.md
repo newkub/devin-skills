@@ -3,8 +3,6 @@ name: resolve-all-github-actions-fails
 argument-hint: "[--repo <owner/repo>]"
 description: ตรวจสอบและแก้ไข GitHub Actions workflow runs ทีล้มเหลวทั่วทุก repo ทีเข้าถึงได้
 related:
-  - resolve-cicd
-  - resolve-github-actions-fails
   - resolve-all-cloudflare-fails
   - search-project-in-drive-d
   - resolve-errors

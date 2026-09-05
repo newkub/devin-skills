@@ -1,6 +1,7 @@
 ---
 name: check-file-relations
 description: วิเคราะห์ความสัมพันธ์ระหว่างไฟล์ หา imports, consumers และ references
+argument-hint: "[scope]"
 related:
   - update-references
   - check-code-structure

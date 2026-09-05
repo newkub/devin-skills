@@ -1,6 +1,7 @@
 ---
 name: report-my-tech-stack-update
 description: รายงานอัปเดต tech stack ที่ใช้ในการพัฒนารายสัปดาห์
+argument-hint: "[scope]"
 related:
   - follow-my-tech-stack
   - deep-research

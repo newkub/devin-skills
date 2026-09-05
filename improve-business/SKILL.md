@@ -5,12 +5,6 @@ argument-hint: "[target-or-scope]"
 related:
   - review-business
   - review-correctness
-  - review-security
-  - review-stability
-  - improve-correctness
-  - improve-security
-  - improve-stability
-  - resolve-errors
   - run-test
   - run-verify
   - report-table

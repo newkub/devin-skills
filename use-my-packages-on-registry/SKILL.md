@@ -1,6 +1,7 @@
 ---
 name: use-my-packages-on-registry
 description: ดึงรายการ packages ที user เป็นเจ้าของจาก registry แล้วติดตั้งใช้ใน project
+argument-hint: "[scope]"
 related:
   - list-my-npm-packages
   - follow-my-tech-stack

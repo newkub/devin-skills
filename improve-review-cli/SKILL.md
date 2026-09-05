@@ -12,8 +12,6 @@ related:
   - update-project-rules
   - resolve-errors
   - report-table
-  - ship
-  - ask-me
 ---
 
 ## Goal

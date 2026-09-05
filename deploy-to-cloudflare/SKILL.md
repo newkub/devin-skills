@@ -1,12 +1,10 @@
 ---
 name: deploy-to-cloudflare
 description: Deploy project ไปยัง Cloudflare Workers ด้วย wrangler จน live โดยไม่ใช้ Pages
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-service-cloudflare
-  - follow-create-cloudflare-token
-  - resolve-cicd
 ---
 
 ## Goal

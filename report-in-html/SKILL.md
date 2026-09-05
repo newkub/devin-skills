@@ -1,6 +1,7 @@
 ---
 name: report-in-html
 description: สร้างไฟล์ HTML โต้ตอบได้สำหรับรายงานบน browser พร้อมตาราง, dropdown, sort/filter
+argument-hint: "[scope]"
 related:
   - visualize-in-web
   - visualize-project

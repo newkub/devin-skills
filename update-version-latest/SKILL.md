@@ -3,10 +3,6 @@ name: update-version-latest
 description: อัปเดต dependencies ให้ latest เวอร์ชัน ตรวจ breaking changes, test และ verify
 argument-hint: "[package-or-scope]"
 related:
-  - ship
-  - follow-monorepo
-  - run-verify
-  - run-test
   - resolve-errors
   - report-table
   - suggest-next-action

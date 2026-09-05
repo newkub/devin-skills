@@ -11,7 +11,6 @@ triggers:
   - user
   - model
 related:
-  - view-files
   - list-github-issue
   - create-github-issue
   - review-github-issue

@@ -3,18 +3,15 @@ name: improve-uxui-by-agent-browser
 description: Capture หน้าเว็บจริงด้วย agent-browser แล้ว review/improve UX/UI ผ่าน stakeholder
 argument-hint: "[url-or-route]"
 related:
-  - follow-lib-agent-browser
   - capture-image-app-to-screenshot
   - review-by-stakeholder
   - review-uxui
-  - improve-uxui
   - test-uxui-by-agent-browser
   - report-table
   - resolve-errors
   - refactor
   - restructure
   - ask-me
-  - suggest-next-action
 ---
 
 ## Goal

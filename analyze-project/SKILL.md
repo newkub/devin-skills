@@ -1,6 +1,7 @@
 ---
 name: analyze-project
 description: วิเคราะห์โปรเจกต์พื้นฐานด้วยเลือกใช้ tools ที่เหมาะสมกับงาน
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - use-astgrep

@@ -1,6 +1,7 @@
 ---
 name: list-github-action-fail
 description: ดู GitHub Actions workflow runs ทีล้มเหลวทั้ง personal และ org repos
+argument-hint: "[scope]"
 related:
   - list-ci-configs
   - watch-github-actions

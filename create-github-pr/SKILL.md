@@ -1,6 +1,7 @@
 ---
 name: create-github-pr
 description: สร้าง pull request จาก current branch พร้อม title, body, labels, reviewers
+argument-hint: "[scope]"
 related:
   - git-commit
   - git-push

@@ -3,15 +3,11 @@ name: resolve-cloudflare-worker-fails
 argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: ตรวจสอบและแก้ไข Cloudflare Worker หรือ Pages project ทีระบุ
 related:
-  - resolve-cicd
   - resolve-all-cloudflare-fails
-  - resolve-all-github-actions-fails
   - all-cloudflare-projects
-  - follow-service-cloudflare
   - search-project-in-drive-d
   - resolve-errors
   - list-cloudflare-worker-fails
-  - list-deployment-fails
   - report-table
   - suggest-next-action
   - ask-me

@@ -1,6 +1,7 @@
 ---
 name: report-my-cli-update
 description: รายงานอัปเดต CLI tools ที่ติดตั้งในเครื่องรายสัปดาห์
+argument-hint: "[scope]"
 related:
   - follow-my-package-manager
   - list-program-in-computer

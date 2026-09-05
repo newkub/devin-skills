@@ -1,6 +1,7 @@
 ---
 name: refactor-all-workspace
 description: Deep refactoring ทุก workspace ใน monorepo ด้วย comprehensive analysis และ safety measures
+argument-hint: "[scope]"
 related:
   - run-test
   - run-typecheck

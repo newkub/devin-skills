@@ -3,10 +3,6 @@ name: optimize-perf
 description: ปรับปรุง overall performance: CWV, long tasks, TTI, runtime benchmarks
 argument-hint: "[metric-or-page]"
 related:
-  - optimize-codebase-everything
-  - optimize-rendering
-  - optimize-assets
-  - optimize-network
   - run-build
   - report-table
 ---

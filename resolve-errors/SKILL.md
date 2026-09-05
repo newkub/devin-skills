@@ -1,6 +1,7 @@
 ---
 name: resolve-errors
 description: แก้ไข error อย่างเป็นระบบ รวดเร็ว และแม่นยำ — ระบุ root cause แก้น้อยที่สุด ใช้ scripts automate
+argument-hint: "[scope]"
 related:
   - rethink
   - deep-debug

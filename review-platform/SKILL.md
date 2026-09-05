@@ -1,6 +1,7 @@
 ---
 name: review-platform
 description: Review platform ครอบคลุมทุก dimension พร้อม review score
+argument-hint: "[scope]"
 related:
   - review-seo
   - report

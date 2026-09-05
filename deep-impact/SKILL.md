@@ -1,6 +1,7 @@
 ---
 name: deep-impact
 description: วิเคราะห์ผลกระทบลึกของ change ก่อน refactor, delete, rename, หรือ upgrade
+argument-hint: "[scope]"
 related:
   - check-file-relations
   - search-files-patterns

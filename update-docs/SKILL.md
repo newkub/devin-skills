@@ -1,6 +1,7 @@
 ---
 name: update-docs
 description: สร้าง documentation สำหรับ project ด้วย VitePress + markdown ไม่ใช้ HTML/UX
+argument-hint: "[scope]"
 related:
   - deep-idea-features
   - check-should-update

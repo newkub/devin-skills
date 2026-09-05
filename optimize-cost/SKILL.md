@@ -3,9 +3,6 @@ name: optimize-cost
 description: ปรับปรุง infrastructure cost: compute, storage, bandwidth, third-party, idle resources
 argument-hint: "[service-or-resource]"
 related:
-  - optimize-codebase-everything
-  - optimize-network
-  - optimize-memory
   - report-table
 ---
 

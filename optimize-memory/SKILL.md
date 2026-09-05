@@ -3,10 +3,6 @@ name: optimize-memory
 description: ปรับปรุง memory usage: leaks, large objects, caches, garbage collection
 argument-hint: "[component-or-worker]"
 related:
-  - optimize-codebase-everything
-  - optimize-perf
-  - optimize-rendering
-  - deep-debug
   - report-table
 ---
 

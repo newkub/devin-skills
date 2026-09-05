@@ -1,6 +1,7 @@
 ---
 name: list-project-git-in-computer
 description: สแกนและรายการ git projects ทั้งหมดในเครื่อง ทุก drive พร้อม status
+argument-hint: "[scope]"
 related:
   - list-cloudflare-projects
   - report-table

@@ -1,6 +1,7 @@
 ---
 name: fix
 description: แก้ไขปัญหาตาม context ทั่วไปด้วย root cause analysis และ validate
+argument-hint: "[scope]"
 related:
   - resolve-errors
   - analyze-root-cause-analysis

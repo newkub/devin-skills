@@ -1,6 +1,7 @@
 ---
 name: list-my-npm-packages
 description: แสดงรายการ npm packages ทีผู้ใช้เป็น owner/author บน npm registry
+argument-hint: "[scope]"
 related:
   - list-program-in-computer
   - report-table

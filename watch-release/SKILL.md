@@ -1,6 +1,7 @@
 ---
 name: watch-release
 description: ตรวจสอบ release บน registry หรือ GitHub จนกว่าจะ live
+argument-hint: "[scope]"
 related:
   - run-release
   - follow-release

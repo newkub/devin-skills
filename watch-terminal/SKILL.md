@@ -1,6 +1,7 @@
 ---
 name: watch-terminal
 description: เปิดเบราว์เซอร์และ watch terminal ทุก 5 วินาที พร้อมจัดการ error อัตโนมัติ
+argument-hint: "[scope]"
 related:
   - capture-terminal
   - open-in-windows-terminal

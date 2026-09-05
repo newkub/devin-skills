@@ -4,16 +4,12 @@ description: แก้ไขความถูกต้องของ code จ�
 argument-hint: "[target-or-scope]"
 related:
   - review-correctness
-  - review-quality
-  - review-test
   - run-test
   - run-verify
-  - use-astgrep
   - resolve-errors
   - refactor
   - report-table
   - suggest-next-action
-  - ask-me
 ---
 
 ## Goal

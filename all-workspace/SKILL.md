@@ -1,6 +1,7 @@
 ---
 name: all-workspace
 description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
+argument-hint: "[scope]"
 related:
   - analyze-project
   - deep-validate

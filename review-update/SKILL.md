@@ -1,6 +1,7 @@
 ---
 name: review-update
 description: Review drift between current and target state to determine update priority order
+argument-hint: "[scope]"
 related:
   - update-version-latest
   - update-dependencies-latest

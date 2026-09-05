@@ -1,6 +1,7 @@
 ---
 name: review-flow
 description: Review workflow เพื่อให้เร็ว ปลอดภัย ใช้ง่าย มีประสิทธิภาพ และไม่ซ้ำซ้อน
+argument-hint: "[scope]"
 related:
   - review-references
   - review-redundancy

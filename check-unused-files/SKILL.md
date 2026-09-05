@@ -1,6 +1,7 @@
 ---
 name: check-unused-files
 description: Detect and remove unused files in project using Knip and reference analysis
+argument-hint: "[scope]"
 related:
   - check-should-update
   - cleanup-files-in-project

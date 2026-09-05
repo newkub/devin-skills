@@ -1,6 +1,7 @@
 ---
 name: list-chezmoi-files
 description: รายการไฟล์ทีถูก chezmoi จัดการ (chezmoi managed)
+argument-hint: "[scope]"
 related:
   - follow-my-global-cli
   - report-table

@@ -1,6 +1,7 @@
 ---
 name: use-astgrep-programatic
 description: ใช้งาน ast-grep แบบ programmatic ผ่าน scripts เพื่อ automate analysis และ integrate กับ review CLI
+argument-hint: "[scope]"
 related:
   - use-astgrep
   - update-project-rules

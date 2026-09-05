@@ -1,6 +1,7 @@
 ---
 name: restructure
 description: ปรับโครงสร้างไฟล์และโฟลเดอร์ให้มี single responsibility ตาม domain
+argument-hint: "[scope]"
 related:
   - refactor
   - refactor-to-single-responsibility

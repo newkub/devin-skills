@@ -1,6 +1,7 @@
 ---
 name: update-readme-md
 description: สร้าง README.md ครบถ้วนด้วย template มาตรฐานและข้อมูลจริงจากโปรเจกต์
+argument-hint: "[scope]"
 related:
   - review-readme-md
   - analyze-project

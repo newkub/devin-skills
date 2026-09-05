@@ -1,6 +1,7 @@
 ---
 name: replace
 description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
+argument-hint: "[scope]"
 related:
   - use-astgrep-programatic
   - search-by-astgrep

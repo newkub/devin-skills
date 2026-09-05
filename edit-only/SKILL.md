@@ -1,6 +1,7 @@
 ---
 name: edit-only
 description: แก้ไขโค้ดโดยไม่ต้องรัน task หรือ terminal
+argument-hint: "[scope]"
 related:
   - review-architecture
   - update-references

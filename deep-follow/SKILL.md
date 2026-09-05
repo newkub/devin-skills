@@ -1,6 +1,7 @@
 ---
 name: deep-follow
 description: ติดตามและ execute deep workflows ซ้อนลึกแบบ recursive ตาม context จนครบถ้วน
+argument-hint: "[scope]"
 related:
   - ask-me
   - deep-validate

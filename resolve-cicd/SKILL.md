@@ -5,11 +5,8 @@ description: ติดตามและแก้ไข CI/CD pipeline สำห
 related:
   - resolve-github-actions-fails
   - resolve-cloudflare-worker-fails
-  - resolve-all-github-actions-fails
   - resolve-all-cloudflare-fails
-  - follow-service-cloudflare
   - search-project-in-drive-d
-  - resolve-errors
   - report-table
   - suggest-next-action
   - ask-me

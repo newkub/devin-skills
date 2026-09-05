@@ -1,6 +1,7 @@
 ---
 name: idea-refactor-workspace
 description: สร้างไอเดีย refactor workspace ใน monorepo ด้วย /refactor-all-workspace
+argument-hint: "[scope]"
 related:
   - refactor-all-workspace
   - follow-single-responsibility

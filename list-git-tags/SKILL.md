@@ -1,6 +1,7 @@
 ---
 name: list-git-tags
 description: แสดง tags ทั้งหมดพร้อมข้อมูลและ semantic versioning status
+argument-hint: "[scope]"
 related:
   - follow-tool-git
   - report-table

@@ -1,6 +1,7 @@
 ﻿---
 name: review-quality
 description: Review code quality, best practices, naming, consistency, bug-prone patterns, and correctness
+argument-hint: "[scope]"
 related:
   - deep-validate
   - scan-codebase
@@ -13,10 +14,6 @@ related:
   - review-test
   - review-security
   - review-stability
-  - review-correctness
-  - refactor
-  - update-references
-  - rename
 ---
 
 ## Goal

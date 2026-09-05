@@ -1,6 +1,7 @@
 ---
 name: review-stability
 description: Review app stability, error handling, debuggability, recovery, monitoring and score
+argument-hint: "[scope]"
 related:
   - review-codebase-everything
   - scan-codebase

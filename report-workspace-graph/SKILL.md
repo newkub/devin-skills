@@ -1,6 +1,7 @@
 ---
 name: report-workspace-graph
 description: รายงานความสัมพันธ์ระหว่าง workspaces ใน monorepo พร้อม dependency graph
+argument-hint: "[scope]"
 related:
   - check-monorepo
   - list-workspaces

@@ -1,6 +1,7 @@
 ---
 name: update-devin-global-mcp
 description: Add, update, remove, or sync global MCP servers in devin mcp_config.json with dotfiles check
+argument-hint: "[scope]"
 related:
   - list-devin-global-mcp
   - follow-create-mcp

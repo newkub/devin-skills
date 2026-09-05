@@ -1,6 +1,7 @@
 ---
 name: at-this-repo
 description: แก้ไข files ใน repository ปัจจุบันอย่างปลอดภัย minimal และ validate
+argument-hint: "[scope]"
 related:
   - refactor
   - git-commit

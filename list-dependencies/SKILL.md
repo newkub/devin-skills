@@ -1,6 +1,7 @@
 ---
 name: list-dependencies
 description: แสดงรายการ dependencies ทั้งหมดใน project พร้อมข้อมูลและการวิเคราะห์
+argument-hint: "[scope]"
 related:
   - check-unused-deps
   - alternative

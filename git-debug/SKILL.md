@@ -1,6 +1,7 @@
 ---
 name: git-debug
 description: Debug ปัญหาที่เกี่ยวกับ git โดยใช้ bisect, blame, reflog, log และ diff
+argument-hint: "[scope]"
 related:
   - check-git-logs
   - search-in-git

@@ -1,6 +1,7 @@
 ---
 name: list-devin-global-subagents
 description: แสดงรายการ global subagents ทั้งหมดใน devin agents repo พร้อมรายละเอียด
+argument-hint: "[scope]"
 related:
   - follow-devin-global-subagents
   - review-devin-global-subagents

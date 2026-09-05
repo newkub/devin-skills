@@ -1,6 +1,7 @@
 ---
 name: report-config-files
 description: Report configuration files, defaults, and drift in the project
+argument-hint: "[scope]"
 related:
   - list-ci-configs
   - report-table

@@ -1,6 +1,7 @@
 ---
 name: implement-mock
 description: แปลง MOCK, FAKE, STUB implementations เป็น production code
+argument-hint: "[scope]"
 related:
   - run-test
   - run-lint

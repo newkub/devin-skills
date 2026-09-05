@@ -1,6 +1,7 @@
 ---
 name: list-devin-global-mcp
 description: List configured global MCP servers and their tools
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

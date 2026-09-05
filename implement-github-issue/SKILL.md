@@ -1,6 +1,7 @@
 ---
 name: implement-github-issue
 description: นำ GitHub issue ไป implement จนพร้อม merge
+argument-hint: "[scope]"
 related:
   - create-plan-as-github-issue
   - productionize-implementation

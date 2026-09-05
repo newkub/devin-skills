@@ -1,6 +1,7 @@
 ---
 name: visualize-repo-in-web
 description: สร้าง web graph visualize repo ด้วย Rust สแกน + SolidJS แสดงผล พร้อม src
+argument-hint: "[scope]"
 allowed-tools:
   - read
   - edit

@@ -1,6 +1,7 @@
 ---
 name: delete-git-worktree
 description: ลบ git worktree ทีระบุอย่างปลอดภัย
+argument-hint: "[scope]"
 related:
   - list-git-worktree
   - use-git-worktrees

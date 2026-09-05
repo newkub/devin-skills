@@ -1,6 +1,7 @@
 ---
 name: review-migration
 description: Review migration plan พร้อม execution checklist ก่อนลงมือ
+argument-hint: "[scope]"
 related:
   - update-version-latest
   - update-dependencies-latest

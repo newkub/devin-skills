@@ -1,6 +1,7 @@
 ---
 name: analyze-codebase-quality
 description: วิเคราะห์คุณภาพของ codebase ด้วย analyze-codebase-quality CLI
+argument-hint: "[scope]"
 related:
   - deep-validate
   - report-table

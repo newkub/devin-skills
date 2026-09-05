@@ -1,6 +1,7 @@
 ---
 name: devin-scripts-toolkit
 description: รวม PowerShell scripts สำหรับ check, review, setup, build, deploy ใช้ได้ทั่ว skills และ projects
+argument-hint: "[scope]"
 related:
   - devin-templates-toolkit
   - review-devin-global-skills

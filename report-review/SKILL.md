@@ -1,6 +1,7 @@
 ---
 name: report-review
 description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
+argument-hint: "[scope]"
 related:
   - deep-review
   - resolve-errors

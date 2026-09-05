@@ -4,14 +4,9 @@ description: Review จากมุมมอง QA — edge cases, boundary cond
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
-  - review-by-stakeholder
   - review-by-engineer
-  - review-correctness
-  - review-stability
   - run-test
   - improve-test-coverage
-  - improve-correctness
-  - improve-stability
   - report-table
   - suggest-next-action
   - scan-codebase

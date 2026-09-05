@@ -1,6 +1,7 @@
 ---
 name: review-readability
 description: ตรวจอ่านง่ายของ code และ text พร้อม actionable feedback
+argument-hint: "[scope]"
 related:
   - report
   - report-table

@@ -1,6 +1,7 @@
 ---
 name: review-compliance
 description: Review compliance ครอบคลุม GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA, consent, DSAR, audit, retention
+argument-hint: "[scope]"
 related:
   - review-security
   - review-business

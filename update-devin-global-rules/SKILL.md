@@ -1,6 +1,7 @@
 ---
 name: update-devin-global-rules
 description: ทำให้ global rules สอดคล้องกับ skills และ global subagents ไม่ขัดแย้ง
+argument-hint: "[scope]"
 related:
   - update-all-devin-global-skills
   - update-devin-global-subagents

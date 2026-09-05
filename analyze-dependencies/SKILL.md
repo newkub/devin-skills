@@ -1,6 +1,7 @@
 ---
 name: analyze-dependencies
 description: วิเคราะห์ dependencies ของ project ผ่าน Rust CLI รองรับ Cargo, NPM, Go, Python
+argument-hint: "[scope]"
 related:
   - research-dependencies
   - follow-my-tech-stack

@@ -1,6 +1,7 @@
 ---
 name: learn-from-web
 description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official Documentation
+argument-hint: "[scope]"
 related:
   - list-website-all-routes
   - update-devin-global-skills

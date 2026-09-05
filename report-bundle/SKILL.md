@@ -1,6 +1,7 @@
 ---
 name: report-bundle
 description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
+argument-hint: "[scope]"
 related:
   - review-delivery
   - run-build

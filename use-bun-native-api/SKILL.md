@@ -1,6 +1,7 @@
 ---
 name: use-bun-native-api
 description: ใช้ Bun native APIs แทน Node.js libraries เพื่อ performance และ simplicity
+argument-hint: "[scope]"
 related:
   - follow-runtime-bun
   - follow-lang-bun

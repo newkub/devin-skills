@@ -1,6 +1,7 @@
 ---
 name: report-and-continue
 description: รายงานผลและแนะนำ next action เพื่อทำงานต่อ
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

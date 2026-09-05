@@ -1,6 +1,7 @@
 ---
 name: review
 description: Review ตาม context โดยเลือก review skill ที่เหมาะสม
+argument-hint: "[scope]"
 related:
   - follow-review
   - report

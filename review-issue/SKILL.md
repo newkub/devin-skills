@@ -1,6 +1,7 @@
 ---
 name: review-issue
 description: ตรวจสอบ issue ใดๆ เพื่อดูความชัดเจน, scope, acceptance criteria และความพร้อม
+argument-hint: "[scope]"
 related:
   - review-github-issue
   - follow-best-practice

@@ -16,7 +16,6 @@ related:
   - check-git-diff
   - search-by-astgrep
   - read-all-files
-  - list-file-structure
   - view-diff
   - open-in-explorer
   - capture-terminal

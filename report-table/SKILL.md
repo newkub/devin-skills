@@ -1,6 +1,7 @@
 ---
 name: report-table
 description: จัดรูปแบบตาราง, bullet, numbered list, และ metrics สำหรับรายงาน
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

@@ -1,6 +1,7 @@
 ---
 name: check-reference
 description: อ่าน reference จาก sources ต่างๆ เพื่อตรวจสอบความถูกต้อง
+argument-hint: "[scope]"
 related:
   - check-skills-related
   - check-secrets-leak

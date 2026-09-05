@@ -1,6 +1,7 @@
 ---
 name: list-devin-user-request-in-this-session
 description: รายการ requests จาก user ใน session ปัจจุบันจาก history summary
+argument-hint: "[scope]"
 related:
   - report-table
   - summarize

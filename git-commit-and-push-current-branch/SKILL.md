@@ -1,6 +1,7 @@
 ---
 name: git-commit-and-push-current-branch
 description: Commit, push และ resolve CI/CD บน current branch
+argument-hint: "[scope]"
 related:
   - git-commit
   - git-push

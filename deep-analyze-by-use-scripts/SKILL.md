@@ -1,6 +1,7 @@
 ---
 name: deep-analyze-by-use-scripts
 description: วิเคราะห์ codebase ลึกซึ้งด้วย review-codebase CLI, ast-grep napi, Bun scripts และ oxc parser
+argument-hint: "[scope]"
 related:
   - use-scripts
   - use-bun-native-api

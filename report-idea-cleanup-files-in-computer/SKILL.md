@@ -1,6 +1,7 @@
 ---
 name: report-idea-cleanup-files-in-computer
 description: รายงานไอเดียไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้
+argument-hint: "[scope]"
 related:
   - list-system-env
   - follow-my-global-cli

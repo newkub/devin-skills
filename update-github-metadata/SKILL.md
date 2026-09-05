@@ -1,6 +1,7 @@
 ---
 name: update-github-metadata
 description: อัปเดต GitHub repo metadata (description, homepage, topics, license, default branch)
+argument-hint: "[scope]"
 related:
   - git-push
   - update-project

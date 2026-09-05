@@ -3,9 +3,6 @@ name: optimize-rendering
 description: ปรับปรุง rendering performance: re-renders, virtual lists, content-visibility, lazy components
 argument-hint: "[component-or-route]"
 related:
-  - optimize-codebase-everything
-  - optimize-perf
-  - optimize-assets
   - run-build
   - report-table
 ---

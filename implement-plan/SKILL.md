@@ -10,7 +10,6 @@ related:
   - deep-validate
   - run-verify
   - ask-me
-  - create-plan-in-dot-devin
 ---
 
 ## Goal

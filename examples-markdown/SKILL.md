@@ -1,6 +1,7 @@
 ---
 name: examples-markdown
 description: สร้าง markdown templates สำหรับ documentation ครอบคลุมตาม sidebar ของ update-docs
+argument-hint: "[scope]"
 related:
   - update-docs
   - update-readme-md

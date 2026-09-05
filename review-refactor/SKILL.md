@@ -1,6 +1,7 @@
 ---
 name: review-refactor
 description: Review codebase before refactor to establish baseline and identify refactor targets
+argument-hint: "[scope]"
 related:
   - deep-review
   - review-quality

@@ -1,6 +1,7 @@
 ---
 name: test-release
 description: สร้าง release artifact, รัน smoke test, และตรวจสอบก่อน publish จริง
+argument-hint: "[scope]"
 related:
   - setup-release
   - run-release

@@ -1,6 +1,7 @@
 ---
 name: update-all-program-in-computer
 description: อัปเดต programs ทั้งหมดในเครื่องทีติดตั้งผ่าน package managers
+argument-hint: "[scope]"
 related:
   - follow-my-package-manager
   - list-program-in-computer

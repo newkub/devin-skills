@@ -1,6 +1,7 @@
 ---
 name: update-dependencies-latest
 description: อัพเดท dependencies ในทุก workspace ให้เป็น latest version ทั้ง major, minor, patch
+argument-hint: "[scope]"
 related:
   - update-project
   - update-version-latest

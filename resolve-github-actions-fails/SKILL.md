@@ -5,7 +5,6 @@ description: ตรวจสอบและแก้ไข GitHub Actions workfl
 related:
   - resolve-cicd
   - resolve-all-github-actions-fails
-  - resolve-all-cloudflare-fails
   - search-project-in-drive-d
   - resolve-errors
   - report-table

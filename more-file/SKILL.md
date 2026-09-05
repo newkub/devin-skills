@@ -1,6 +1,7 @@
 ---
 name: more-file
 description: เพิ่มไฟล์ใน project เมื่องชุดปัจจุบันไม่เพียงพอ
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

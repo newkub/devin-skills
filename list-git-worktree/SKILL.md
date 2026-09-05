@@ -1,6 +1,7 @@
 ---
 name: list-git-worktree
 description: รายการ git worktrees ใน repo พร้อม branch และ status
+argument-hint: "[scope]"
 related:
   - use-git-worktrees
   - cleanup-worktree

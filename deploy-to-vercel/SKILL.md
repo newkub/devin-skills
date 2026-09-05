@@ -1,6 +1,7 @@
 ---
 name: deploy-to-vercel
 description: Deploy application ไปยัง Vercel จนกว่าจะ live สำเร็จ
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

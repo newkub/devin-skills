@@ -3,13 +3,9 @@ name: create-cloudflare-worker-project
 argument-hint: "[--name <project-name>] [--repo <owner/repo>] [--access]"
 description: สร้าง Cloudflare Workers project ใหม่ เชื่อม Git repository และ deploy โดยไม่ต้องกรอกฟอร์ม dashboard
 related:
-  - deploy-to-cloudflare
-  - follow-service-cloudflare
-  - run-deploy
   - follow-my-tech-stack
   - follow-secret-manager
   - open-web-for-config-secret
-  - resolve-cicd
   - report-table
   - suggest-next-action
   - ask-me

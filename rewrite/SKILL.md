@@ -1,6 +1,7 @@
 ---
 name: rewrite
 description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
+argument-hint: "[scope]"
 related:
   - assume-reset-context
   - deep-validate

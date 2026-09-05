@@ -1,6 +1,7 @@
 ---
 name: update-project-rules
 description: สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
+argument-hint: "[scope]"
 related:
   - update-devin-global-skills
   - use-scripts

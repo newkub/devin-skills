@@ -1,6 +1,7 @@
 ---
 name: read-devin-context
 description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
+argument-hint: "[scope]"
 related:
   - assume-reset-context
   - follow-context-engineering

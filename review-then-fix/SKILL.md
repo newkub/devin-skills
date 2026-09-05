@@ -1,6 +1,7 @@
 ---
 name: review-then-fix
 description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
+argument-hint: "[scope]"
 related:
   - watch-browser-and-fix
   - follow-best-practice

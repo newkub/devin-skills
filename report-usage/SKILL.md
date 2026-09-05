@@ -1,6 +1,7 @@
 ---
 name: report-usage
 description: Report usage statistics and patterns of APIs, functions, or skills
+argument-hint: "[scope]"
 related:
   - report-table
   - report-file-structure

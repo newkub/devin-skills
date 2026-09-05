@@ -1,6 +1,7 @@
 ---
 name: check-circular-dependencies
 description: ตรวจจับและรายงาน circular dependencies ใน codebase และ skills directory
+argument-hint: "[scope]"
 related:
   - check-reference
   - check-skills-related

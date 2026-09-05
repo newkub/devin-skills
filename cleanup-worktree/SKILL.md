@@ -1,6 +1,7 @@
 ---
 name: cleanup-worktree
 description: ลบ git worktree ที่ไม่ใช้ และ prune worktree tracking ที่ตกค้าง
+argument-hint: "[scope]"
 related:
   - suggest-next-action
   - report-table

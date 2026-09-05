@@ -1,6 +1,7 @@
 ---
 name: check-monorepo
 description: ตรวจสอบว่า project เป็น monorepo หรือไม่
+argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-package-manifest

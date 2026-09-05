@@ -3,10 +3,6 @@ name: optimize-network
 description: ปรับปรุง network: requests, CDN, compression, caching, HTTP/2, preconnect
 argument-hint: "[domain-or-endpoint]"
 related:
-  - optimize-codebase-everything
-  - optimize-assets
-  - optimize-perf
-  - improve-api
   - report-table
 ---
 

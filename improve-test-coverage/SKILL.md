@@ -1,16 +1,12 @@
 ---
 name: improve-test-coverage
 description: ปรับปรุง test coverage โดยรัน coverage, หา gaps, เติม tests, และ verify จนถึง threshold
+argument-hint: "[scope]"
 related:
   - run-test-coverage
   - run-test
-  - run-test-unit
-  - run-test-all
-  - improve-test-everything
   - deep-review
   - review-quality
-  - resolve-errors
-  - deep-debug
   - update-specs
 ---
 

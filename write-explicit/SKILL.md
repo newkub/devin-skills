@@ -1,6 +1,7 @@
 ---
 name: write-explicit
 description: เขียนหรือแก้ instructions ให้ชัดเจน วัดผลได้ และมี single responsibility
+argument-hint: "[scope]"
 related:
   - write-how-to
   - write-solutions

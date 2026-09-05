@@ -1,6 +1,7 @@
 ---
 name: refactor-commit
 description: Refactor commits ด้วย rebase (break down, edit, squash, fixup, autosquash, force push, rollback)
+argument-hint: "[scope]"
 related:
   - update-references
   - resolve-merge-conflicts

@@ -1,6 +1,7 @@
 ---
 name: report-uxui-all-routes
 description: สร้างรายงาน routes ทั้งหมดของ app/website ใน markdown table สำหรับ UX/UI
+argument-hint: "[scope]"
 related:
   - report-uxui-sketch
   - list-website-all-routes

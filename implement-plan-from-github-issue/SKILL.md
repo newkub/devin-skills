@@ -1,6 +1,7 @@
 ---
 name: implement-plan-from-github-issue
 description: อ่าน plan จาก GitHub issue แล้ว implement ตาม plan จนพร้อม merge
+argument-hint: "[scope]"
 related:
   - implement-github-issue
   - create-plan-as-github-issue

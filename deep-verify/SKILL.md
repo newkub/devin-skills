@@ -1,6 +1,7 @@
 ---
 name: deep-verify
 description: Verify ละเอียดหลัง merge/parallel ทำงาน โดยรวม checks, tests, references, และ runtime
+argument-hint: "[scope]"
 related:
   - deep-validate
   - ask-me

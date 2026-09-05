@@ -1,6 +1,7 @@
 ---
 name: report-architecture-diagram
 description: วาด architecture diagram ด้วย ANSI box-drawing characters ในแชทจาก codebase จริง
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - report-table

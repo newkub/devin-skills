@@ -1,6 +1,7 @@
 ---
 name: review-readme-md
 description: ตรวจสอบ README.md ก่อน update-readme-md แก้ไข ครอบคลุม section order และ format
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo

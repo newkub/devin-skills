@@ -1,6 +1,7 @@
 ---
 name: review-devin-global-skills
 description: Review, refactor และตรวจ cross-skill consistency ของ devin skills repo
+argument-hint: "[scope]"
 related:
   - update-all-devin-global-skills
   - update-devin-global-skills
@@ -9,7 +10,6 @@ related:
   - report-table
   - suggest-next-action
   - check-reference
-  - check-broken-skills-references
   - follow-skills-map
 ---
 

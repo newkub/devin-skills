@@ -1,6 +1,7 @@
 ---
 name: report-flow
 description: สรุปขั้นตอน workflow หรือกระบวนการเป็นลำดับ step ทีอ่านง่าย
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

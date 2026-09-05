@@ -1,6 +1,7 @@
 ---
 name: review-performance
 description: Review application performance ครอบคลุม network, build, runtime, memory, I/O, database, caching
+argument-hint: "[scope]"
 related:
   - review-frontend
   - review-quality

@@ -1,6 +1,7 @@
 ---
 name: implement-todo-md
 description: อ่าน TODO.md แล้ว implement tasks ทั้งหมดตามลำดับ พร้อม update status
+argument-hint: "[scope]"
 related:
   - update-todo-md
   - productionize-implementation

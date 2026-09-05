@@ -1,6 +1,7 @@
 ---
 name: report-public-api
 description: รายงาน public API ของ project หรือ library ในรูปแบบ markdown table
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-code-structure

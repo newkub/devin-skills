@@ -1,6 +1,7 @@
 ---
 name: analyze-file-structure
 description: วิเคราะห์โครงสร้างไฟล์และโฟลเดอรของ project ด้วย Rust CLI
+argument-hint: "[scope]"
 related:
   - report-file-structure
   - report-table

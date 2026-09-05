@@ -1,6 +1,7 @@
 ---
 name: loop-until-complete
 description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์
+argument-hint: "[scope]"
 related:
   - loop-continuous
   - run-until-pass

@@ -3,10 +3,6 @@ name: optimize-algorithm
 description: ปรับปรุง algorithms: time complexity, space complexity, data structures, hot paths
 argument-hint: "[function-or-module]"
 related:
-  - optimize-codebase-everything
-  - optimize-memory
-  - optimize-perf
-  - deep-review
   - run-test
 ---
 

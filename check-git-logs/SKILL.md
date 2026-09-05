@@ -1,6 +1,7 @@
 ---
 name: check-git-logs
 description: ดูประวัติไฟล์จาก git log ไล่เช็คทีละ commit จนกว่าจะเจอเงื่อนไข รองรับ local/remote
+argument-hint: "[scope]"
 related:
   - git-debug
   - git-file-history

@@ -1,6 +1,7 @@
 ---
 name: update-dot-vscode
 description: อัปเดต .vscode สำหรับ workspace settings, extensions, tasks, launch, snippets, editor associations
+argument-hint: "[scope]"
 related:
   - follow-create-vscode-extensions
   - review-delivery

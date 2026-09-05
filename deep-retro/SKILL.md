@@ -1,6 +1,7 @@
 ---
 name: deep-retro
 description: ทำ post-incident retrospective ลึก หา root cause ระดับ process และ action items
+argument-hint: "[scope]"
 related:
   - follow-incident-triage
   - deep-debug

@@ -1,6 +1,7 @@
 ---
 name: review-frontend
 description: Review frontend code quality, components, state, rendering, type safety, CSS, forms, testing
+argument-hint: "[scope]"
 related:
   - review-uxui
   - review-platform

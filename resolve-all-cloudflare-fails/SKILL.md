@@ -3,14 +3,9 @@ name: resolve-all-cloudflare-fails
 argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: ตรวจสอบและแก้ไข Cloudflare Workers/Pages ที deployment ล้มเหลวทั้งหมดใน account
 related:
-  - resolve-cicd
-  - resolve-cloudflare-worker-fails
   - resolve-all-github-actions-fails
-  - follow-service-cloudflare
   - search-project-in-drive-d
   - resolve-errors
-  - list-cloudflare-worker-fails
-  - list-deployment-fails
   - report-table
   - suggest-next-action
   - ask-me

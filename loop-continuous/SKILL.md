@@ -1,6 +1,7 @@
 ---
 name: loop-continuous
 description: วนปรับปรุงงานซ้ำจนถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
+argument-hint: "[scope]"
 related:
   - ship
   - loop-until-complete

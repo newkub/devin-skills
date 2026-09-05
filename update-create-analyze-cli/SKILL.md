@@ -3,8 +3,6 @@ name: update-create-analyze-cli
 description: สร้างหรืออัปเดต tools/analyze analyzers ให้ครอบคลุม features ปัจจุบัน 60+ categories 5 domains
 argument-hint: "[category-or-domain]"
 related:
-  - improve-review-cli
-  - run-review
   - report-table
   - resolve-errors
   - suggest-next-action

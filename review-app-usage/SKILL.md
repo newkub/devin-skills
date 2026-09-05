@@ -1,6 +1,7 @@
 ---
 name: review-app-usage
 description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage-md แก้ไข
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

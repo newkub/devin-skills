@@ -1,6 +1,7 @@
 ---
 name: create-similar
 description: สร้างไฟล์ skill หรือ project ใหม่โดยอ้างอิงโครงสร้างจากตัวอย่าง
+argument-hint: "[scope]"
 related:
   - at-this-repo
   - update-devin-global-skills

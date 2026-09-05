@@ -1,6 +1,7 @@
 ---
 name: deep-validate
 description: Validate ละเอียดหลายมิติ cross-reference, type safety, runtime, security, compliance
+argument-hint: "[scope]"
 related:
   - rethink
   - run-test

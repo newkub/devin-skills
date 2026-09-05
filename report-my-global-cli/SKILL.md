@@ -1,6 +1,7 @@
 ---
 name: report-my-global-cli
 description: รายงาน CLI tools ที่ติดตั้งและ commands ที่ควรแปลงเป็น skills
+argument-hint: "[scope]"
 related:
   - learn-from-cli
   - report-table

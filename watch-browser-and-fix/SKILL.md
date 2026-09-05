@@ -4,12 +4,9 @@ description: เปิด browser ด้วย agent-browser แล้ว captur
 argument-hint: "[url]"
 related:
   - watch-browser-console
-  - run-test-website-by-agent-browser
-  - improve-uxui
   - resolve-errors
   - run-dev
   - run-program
-  - follow-tool-agent-browser
 ---
 
 ## Goal

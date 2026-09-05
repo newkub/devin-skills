@@ -1,6 +1,7 @@
 ---
 name: save-to-new-notes
 description: สร้าง note ใหม่ใน repo D:\newkub\notes จากไฟล์หรือข้อความท่ีระบุ
+argument-hint: "[scope]"
 related:
   - save-to-notes-idea
   - implement-from-notes-idea

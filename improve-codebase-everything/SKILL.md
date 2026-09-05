@@ -3,7 +3,6 @@ name: improve-codebase-everything
 description: ปรับปรุง codebase ทั้งหมด: UX/UI, SEO, data validation, API, database, security
 argument-hint: "[area-or-pattern]"
 related:
-  - ship
   - improve-uxui
   - improve-seo
   - improve-data-validation
@@ -11,8 +10,6 @@ related:
   - improve-database
   - improve-test-everything
   - improve-review-cli
-  - optimize-codebase-everything
-  - follow-monorepo
   - run-build
   - run-verify
   - report-table

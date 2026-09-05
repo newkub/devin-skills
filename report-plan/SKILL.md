@@ -1,6 +1,7 @@
 ---
 name: report-plan
 description: รายงานแผนงานในแชทก่อนลงมือ implement โดยแบ่งเป็น sections ตามมาตรฐาน
+argument-hint: "[scope]"
 related:
   - report-enhance-prompt
   - report-numbered-bullet

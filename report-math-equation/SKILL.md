@@ -1,6 +1,7 @@
 ---
 name: report-math-equation
 description: ตอบคำถามหรือเปรียบเทียบทางเลือกในรูปแบบสมการ + - = ให้เข้าใจง่าย
+argument-hint: "[scope]"
 related:
   - report-table
   - report-numbered-bullet

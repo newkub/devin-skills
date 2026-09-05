@@ -1,6 +1,7 @@
 ---
 name: refactor-workspace
 description: Refactor workspace members ให้มี SRP, แนะนำ workspace layout
+argument-hint: "[scope]"
 related:
   - refactor
   - refactor-codebase

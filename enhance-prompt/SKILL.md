@@ -1,6 +1,7 @@
 ---
 name: enhance-prompt
 description: สรุป prompt เป็น numbered list แต่ละข้อ single responsibility เพื่อดำเนินการต่อชัดเจน
+argument-hint: "[scope]"
 related:
   - ask-me
   - report-plan

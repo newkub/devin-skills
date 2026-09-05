@@ -1,6 +1,7 @@
 ---
 name: review-release
 description: Review release readiness ก่อน publish
+argument-hint: "[scope]"
 related:
   - test-release
   - run-release

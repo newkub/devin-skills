@@ -1,6 +1,7 @@
 ---
 name: rename-project
 description: Rename project ทั่วทุกจุด ทั้ง local, GitHub, Cloudflare, secrets, env, และ code
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

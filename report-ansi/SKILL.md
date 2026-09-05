@@ -1,6 +1,7 @@
 ---
 name: report-ansi
 description: สร้างรายงาน terminal ด้วย ANSI colors, progress bars, status symbols sketches/diagrams
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - report-table

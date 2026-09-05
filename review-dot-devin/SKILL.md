@@ -1,6 +1,7 @@
 ---
 name: review-dot-devin
 description: ตรวจสอบโครงสร้าง .devin ก่อน update-dot-devin แก้ไข ครอบคลุม hooks และ workspace
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo

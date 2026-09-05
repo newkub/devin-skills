@@ -3,10 +3,6 @@ name: update-devin-project-rules
 description: สร้างและอัปเดต .devin/rules/ Markdown rules สำหรับ always-on, model_decision, glob triggers
 argument-hint: "[rule-or-domain]"
 related:
-  - update-dot-devin
-  - update-project-rules
-  - update-agents-md
-  - deep-validate
   - report-table
 ---
 

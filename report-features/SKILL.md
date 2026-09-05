@@ -1,6 +1,7 @@
 ---
 name: report-features
 description: รายงาน features ทั้งหมดใน project เป็นตารางจาก generated TypeScript files
+argument-hint: "[scope]"
 related:
   - update-features-md
   - deep-review

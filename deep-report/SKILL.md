@@ -1,6 +1,7 @@
 ---
 name: deep-report
 description: สร้าง deep report ละเอียดครบทุกมิติ พร้อมตาราง 7 columns และสรุป 4 ส่วน
+argument-hint: "[scope]"
 related:
   - deep-review
   - deep-analyze

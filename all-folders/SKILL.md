@@ -1,6 +1,7 @@
 ---
 name: all-folders
 description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
+argument-hint: "[scope]"
 related:
   - analyze-project
   - scan-codebase

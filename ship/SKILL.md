@@ -17,7 +17,6 @@ related:
   - ship-by-agents-swarm
   - ship-to-staging
   - ship-to-production
-  - ship-rollback
   - improve-codebase-everything
   - run-verify
   - deep-validate
@@ -64,7 +63,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 > Goal: code ผ่าน local validation
 
-1. เลือก execution mode: ถ้า scope ใหญ่หรือหลายด้าน → ทำ `/ship-by-agents-swarm`; ถ้า diff เล็ก (เช่น typo, docs, config บรรทัดเดียว) → ข้ามข้อ 2-10 ไปข้อ 11 ได้
+1. เลือก execution mode: ถ้า scope ใหญ่หรือหลายด้าน → ทำ `/ship-by-agents-swarm`; ถ้า diff เล็ก (เช่น typo, docs, config บรรทัดเดียว) → ข้ามข้อ 2-8 ไปข้อ 9 ได้ แต่ยังต้องทำข้อ 9-12
 2. ทำ `/improve-review-cli` เพื่อ review codebase ด้วย CLI
 3. ทำ `/improve-codebase-everything` เพื่อ improve frontend, API, database, security, SEO
 4. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
@@ -84,21 +83,18 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 1. ทำ `git pull --rebase origin main` เพื่อให้ feature branch ทัน `main` ล่าสุด
 2. ทำ `/git-commit-and-push-features-branch` ถ้ามี changes ทีผ่าน validation
 3. ทำ `/ship-to-staging` เพื่อ deploy feature branch ไป staging และรัน smoke tests
-4. ถ้า staging ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 1
+4. ถ้า staging ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 1 โดย retry สูงสุด 3 ครั้ง
 
 ### 5. Merge And Production
 
 > Goal: merge และ deploy production หลัง staging ผ่าน
 
-1. ถาม user ก่อน production deploy
-2. ถ้า user ตกลง → ทำ `/ship-to-production` เพื่อ create PR, merge, deploy, watch
-3. ถ้า deploy แล้วพัง → ทำ `/ship-rollback` หรือ `git revert <merge-commit>` แล้ว redeploy
-4. ทำ `/resolve-cicd` บน production branch หลัง deploy
-5. ลบ feature branch ที merge แล้ว ด้วย `git branch -d <feature-branch>`
-6. `git switch main` หรือ production branch ตาม project conventions
-7. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
-8. ถ้ามีงานเก่าที่ stash ไว้จาก Branch Hygiene → ทำ `git stash pop`
-9. ปิด issue/task ที่เกี่ยวข้อง (`gh issue close` หรือตาม project conventions)
+1. ทำ `/ship-to-production` เพื่อ create PR, review, merge, deploy production, watch และ rollback ถ้าพัง
+2. ทำ `/resolve-cicd` บน production branch หลัง deploy
+3. `git switch main` หรือ production branch ตาม project conventions
+4. ถ้ามี release → ทำ `/run-release --dry-run` ก่อน จากนั้นทำ `/run-release` หลัง user ยืนยัน
+5. ถ้ามีงานเก่าที่ stash ไว้จาก Branch Hygiene → ทำ `git stash pop`
+6. ปิด issue/task ที่เกี่ยวข้อง (`gh issue close` หรือตาม project conventions)
 
 ### 6. Report
 

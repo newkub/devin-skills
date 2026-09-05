@@ -3,12 +3,8 @@ name: improve-data-validation
 description: ปรับปรุง data validation ใน API, forms, schemas ให้ครอบคลุม ปลอดภัย และ type-safe
 argument-hint: "[schema-or-api-pattern]"
 related:
-  - improve-codebase-everything
-  - improve-api
-  - improve-database
   - deep-review
   - run-test
-  - resolve-errors
 ---
 
 ## Goal

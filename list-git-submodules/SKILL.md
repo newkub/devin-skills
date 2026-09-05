@@ -1,6 +1,7 @@
 ---
 name: list-git-submodules
 description: รายการ git submodules ใน repo พร้อม status
+argument-hint: "[scope]"
 related:
   - list-project-git-in-computer
   - delete-git-submodules

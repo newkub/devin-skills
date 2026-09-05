@@ -1,6 +1,7 @@
 ---
 name: use-create-pr
 description: สร้าง PR พร้อม template, test cases, screenshots, และ preview links
+argument-hint: "[scope]"
 related:
   - create-github-pr
   - capture-terminal

@@ -1,6 +1,7 @@
 ---
 name: list-system-env
 description: แสดงรายการ OS, shell, environment variables และ global root paths
+argument-hint: "[scope]"
 related:
   - check-system-env
   - follow-best-practice
@@ -237,7 +238,6 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 - ใช้ /check-system-env ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
-
 ## Expected Outcome
 
 - รายงาย OS, shell, environment variables ในตาราง

@@ -4,13 +4,8 @@ description: Review จากมุมมอง data — analytics, tracking, pi
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
-  - review-by-stakeholder
   - review-by-product
   - review-by-engineer
-  - review-database
-  - review-observability
-  - improve-observability
-  - improve-database
   - report-table
   - suggest-next-action
   - scan-codebase

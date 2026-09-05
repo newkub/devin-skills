@@ -1,6 +1,7 @@
 ---
 name: update-features-md
 description: วิเคราะห์ features ที่มีอยู่ใน project และเขียน FEATURES.md ที่ root ของ workspace
+argument-hint: "[scope]"
 related:
   - analyze-project
   - use-scripts

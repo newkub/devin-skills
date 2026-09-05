@@ -1,6 +1,7 @@
 ---
 name: list-brave-browser-history
 description: รายการประวัติการเข้าเว็บจาก Brave browser
+argument-hint: "[scope]"
 related:
   - search-in-raindrop-io
   - list-raindrop-io

@@ -4,12 +4,9 @@ description: Review จากมุมมอง user, customer success และ
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
-  - review-by-stakeholder
   - review-uxui
   - review-by-designer
   - review-by-product
-  - improve-uxui
-  - improve-uxui-by-agent-browser
   - report-table
   - suggest-next-action
   - scan-codebase

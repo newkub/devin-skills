@@ -1,6 +1,7 @@
 ---
 name: ask-again
 description: ถามใหม่เมื่อผู้ใช้ไม่เข้าใจคำถาม โดย rephrase สั้นกระชับและให้ตัวอย่าง
+argument-hint: "[scope]"
 related:
   - ask-me
   - dont-ask

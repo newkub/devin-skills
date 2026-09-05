@@ -1,6 +1,7 @@
 ---
 name: dont-understand
 description: รองรับเมื่อผู้ใช้บอกว่าไม่เข้าใจ ส่งต่อ /ask-again หรืออธิบายใหม่อย่างสั้น
+argument-hint: "[scope]"
 related:
   - ask-again
   - ask-me

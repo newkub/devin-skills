@@ -1,6 +1,7 @@
 ---
 name: report-idea
 description: สร้างและรายงานไอเดียตาม user context ทั่วไป
+argument-hint: "[scope]"
 related:
   - report-table
   - report-before

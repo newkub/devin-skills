@@ -1,6 +1,7 @@
 ---
 name: capture-terminal
 description: Capture ภาพจาก terminal output สำหรับ documentation
+argument-hint: "[scope]"
 related:
   - capture-web
   - from-recent-windows-capture

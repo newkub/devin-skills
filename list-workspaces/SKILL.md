@@ -1,6 +1,7 @@
 ---
 name: list-workspaces
 description: แสดงรายการ workspaces ทั้งหมดใน monorepo พร้อม dependencies graph
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

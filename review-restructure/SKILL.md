@@ -1,6 +1,7 @@
 ---
 name: review-restructure
 description: Review file/folder structure before restructure to plan relocation and dry-run
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-long-files

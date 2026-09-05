@@ -1,6 +1,7 @@
 ---
 name: open-web
 description: เปิด website ด้วย native OS command
+argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
   - watch-browser-and-fix

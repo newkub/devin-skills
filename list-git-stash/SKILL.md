@@ -1,6 +1,7 @@
 ---
 name: list-git-stash
 description: แสดง stashes ทั้งหมดพร้อมข้อมูลและสถานะ
+argument-hint: "[scope]"
 related:
   - follow-tool-git
   - report-table

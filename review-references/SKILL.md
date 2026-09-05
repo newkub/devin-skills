@@ -1,6 +1,7 @@
 ---
 name: review-references
 description: ตรวจสอบ references ระหว่าง devin global skills และ AGENTS.md ไม่ให้ขาด/ซ้ำ/วน
+argument-hint: "[scope]"
 related:
   - update-references
   - check-reference

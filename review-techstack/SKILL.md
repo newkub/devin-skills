@@ -1,6 +1,7 @@
 ---
 name: review-techstack
 description: Review tech stack, dependencies และ library design ครอบคลุม versions, security, API, bundle
+argument-hint: "[scope]"
 related:
   - review-codebase-everything
   - follow-my-tech-stack

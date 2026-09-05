@@ -1,6 +1,7 @@
 ---
 name: create-files-in-os-temp
 description: สร้างไฟล์หรือ directory ชั่วคราวใน OS temp directory
+argument-hint: "[scope]"
 related:
   - cleanup-files-in-computer
   - cleanup-files-in-project

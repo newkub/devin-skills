@@ -1,6 +1,7 @@
 ---
 name: search-files-patterns
 description: Search file name and content patterns across codebases with glob, grep, and ast-grep
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

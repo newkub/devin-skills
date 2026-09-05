@@ -1,6 +1,7 @@
 ---
 name: prioritize
 description: จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

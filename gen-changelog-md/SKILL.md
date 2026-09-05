@@ -1,6 +1,7 @@
 ---
 name: gen-changelog-md
 description: Generate CHANGELOG.md จาก git tags ด้วย Bun Shell script ไม่แก้ไขด้วยมือ
+argument-hint: "[scope]"
 related:
   - run-release
   - report-changelog

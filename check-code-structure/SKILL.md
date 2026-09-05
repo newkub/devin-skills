@@ -1,6 +1,7 @@
 ---
 name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
+argument-hint: "[scope]"
 related:
   - search-by-astgrep
   - use-astgrep

@@ -1,6 +1,7 @@
 ---
 name: write-solutions
 description: เขียน solution documents และ problem-solving workflows
+argument-hint: "[scope]"
 related:
   - analyze-root-cause-analysis
   - deep-research

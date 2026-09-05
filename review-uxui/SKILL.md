@@ -1,6 +1,7 @@
 ---
 name: review-uxui
 description: Review UX/UI design quality, design system, visual, interaction, accessibility, handoff
+argument-hint: "[scope]"
 related:
   - review-platform
   - roleplay-stakeholder

@@ -1,6 +1,7 @@
 ---
 name: update-usage-md
 description: อัปเดต usage.kdl แล้ว generate USAGE.md completions และ manpages
+argument-hint: "[scope]"
 related:
   - review-app-usage
   - follow-tool-usage

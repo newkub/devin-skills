@@ -1,6 +1,7 @@
 ---
 name: review-deploy
 description: Review deployment readiness ก่อน deploy
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

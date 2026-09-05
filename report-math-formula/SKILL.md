@@ -1,6 +1,7 @@
 ---
 name: report-math-formula
 description: แปลง code/description/ปัญหาให้เป้นสูตรคณิตศาสตร
+argument-hint: "[scope]"
 related:
   - report-math-equation
   - report-table

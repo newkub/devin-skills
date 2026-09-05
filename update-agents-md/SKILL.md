@@ -1,9 +1,9 @@
 ﻿---
 name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
+argument-hint: "[scope]"
 related:
   - follow-agents-md
-  - update-devin-global-skills
   - follow-devin-global-subagents
   - consider-use-subagents
   - report-workspace-graph

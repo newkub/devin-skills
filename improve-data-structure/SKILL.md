@@ -7,9 +7,7 @@ related:
   - follow-math-set-theory
   - follow-math-linear-algebra
   - review-architecture
-  - deep-review
   - refactor
-  - restructure
   - ask-me
 ---
 

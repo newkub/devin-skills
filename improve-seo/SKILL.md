@@ -3,12 +3,7 @@ name: improve-seo
 description: ตรวจและปรับปรุง SEO: meta tags, Open Graph, sitemap, robots, structured data
 argument-hint: "[url-or-page]"
 related:
-  - improve-codebase-everything
-  - optimize-codebase-everything
-  - follow-tool-vite
-  - run-build
   - report-table
-  - suggest-next-action
 ---
 
 ## Goal

@@ -18,7 +18,6 @@ triggers:
   - model
 related:
   - follow-create-devin-global-skills
-  - update-devin-global-skills
   - review-devin-global-skills
   - use-in-another-skills
   - follow-global-rules

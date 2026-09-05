@@ -1,6 +1,7 @@
 ---
 name: review-backend
 description: Orchestrator backend review ครอบคลุม 7 sub-review workflows แบบ parallel
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - review-codebase-everything

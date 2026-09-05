@@ -1,6 +1,7 @@
 ---
 name: update-test-and-fix
 description: เขียนและอัปเดต test ตาม code ให้ครอบคลุมทุกกรณีใช้งาน พร้อม fix
+argument-hint: "[scope]"
 related:
   - review-writing
   - run-test-coverage

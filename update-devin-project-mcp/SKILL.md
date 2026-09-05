@@ -3,9 +3,6 @@ name: update-devin-project-mcp
 description: ตั้งค่าและอัปเดต MCP servers ใน .devin/mcp_config.json ตาม project requirements
 argument-hint: "[server-or-config]"
 related:
-  - update-dot-devin
-  - follow-create-mcp
-  - update-devin-global-skills
   - report-table
   - resolve-errors
 ---

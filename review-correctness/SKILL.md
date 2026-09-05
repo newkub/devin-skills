@@ -1,6 +1,7 @@
 ---
 name: review-correctness
 description: Review implementation correctness ตรวจ logic, types, edge cases, contracts, concurrency, tests
+argument-hint: "[scope]"
 related:
   - review-quality
   - deep-validate

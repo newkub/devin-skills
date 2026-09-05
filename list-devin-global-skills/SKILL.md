@@ -1,6 +1,7 @@
 ---
 name: list-devin-global-skills
 description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
+argument-hint: "[scope]"
 related:
   - report-table
   - search-skills

@@ -4,10 +4,6 @@ description: รัน codebase migrations ด้วย ast-grep rules
 argument-hint: "[rule-file-or-pattern]"
 related:
   - scan-codebase
-  - resolve-errors
-  - run-test
-  - run-check
-  - run-verify
   - report-table
   - suggest-next-action
 ---

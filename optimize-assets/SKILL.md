@@ -3,9 +3,6 @@ name: optimize-assets
 description: ปรับปรุง assets: images, fonts, media, formats, compression, lazy loading
 argument-hint: "[asset-or-folder]"
 related:
-  - optimize-codebase-everything
-  - optimize-rendering
-  - optimize-network
   - run-build
   - report-table
 ---

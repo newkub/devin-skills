@@ -1,6 +1,7 @@
 ---
 name: check-unused-deps
 description: Detect and remove unused dependencies using Knip and ecosystem-specific tools
+argument-hint: "[scope]"
 related:
   - follow-tool-knip
   - check-dead-code

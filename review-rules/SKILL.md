@@ -1,6 +1,7 @@
 ---
 name: review-rules
 description: ตรวจสอบ .devin/rules, ast-grep rules และ AGENTS.md ให้ถูกต้อง ครบถ้วน ไม่ซ้ำซ้อน
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-validate

@@ -1,6 +1,7 @@
 ---
 name: update-everythink-in-computer
 description: "อัปเดตทุกอย่างในเครื่อง: programs, chezmoi dotfiles, devin global skills"
+argument-hint: "[scope]"
 related:
   - update-all-program-in-computer
   - update-chezmoi

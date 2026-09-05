@@ -1,6 +1,7 @@
 ---
 name: review-writing
 description: Review writing quality, naming conventions, and discoverability across docs, code, features
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-validate

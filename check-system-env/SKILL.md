@@ -1,6 +1,7 @@
 ---
 name: check-system-env
 description: ตรวจสอบ OS, shell, environment variables และ global root paths
+argument-hint: "[scope]"
 related:
   - check-code-structure
   - prepare-skills-context
@@ -237,7 +238,6 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 - ใช้ /check-code-structure ถ้าจำเป็น
 - ใช้ /prepare-skills-context ถ้าจำเป็น
 - ใช้ /alternative ถ้าจำเป็น
-
 ## Expected Outcome
 
 - รายงาน OS, shell, environment variables ในตาราง

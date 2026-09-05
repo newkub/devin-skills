@@ -1,6 +1,7 @@
 ---
 name: update-chezmoi
 description: อัปเดต dotfiles ด้วย chezmoi รวมถึง chezmoi readd
+argument-hint: "[scope]"
 related:
   - follow-my-global-cli
   - git-commit

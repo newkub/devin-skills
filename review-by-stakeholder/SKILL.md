@@ -3,15 +3,8 @@ name: review-by-stakeholder
 description: รวบรวม evidence, screenshots, context แล้วขอ feedback จาก stakeholder เพื่อ prioritize การปรับปรุง
 argument-hint: "[area-or-question]"
 related:
-  - review-by-user
-  - review-by-designer
-  - review-by-product
-  - review-by-engineer
-  - review-by-qa
-  - review-by-security
   - improve-uxui
   - capture-image-app-to-screenshot
-  - capture-component
   - report-table
   - ask-me
   - suggest-next-action

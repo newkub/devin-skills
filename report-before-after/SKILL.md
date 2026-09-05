@@ -1,6 +1,7 @@
 ---
 name: report-before-after
 description: รายงานแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
+argument-hint: "[scope]"
 related:
   - analyze-project
   - plan

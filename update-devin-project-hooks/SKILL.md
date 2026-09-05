@@ -3,9 +3,7 @@ name: update-devin-project-hooks
 description: สร้างและอัปเดต .devin/hooks TypeScript scripts และ hooks.json ตาม project
 argument-hint: "[hook-event]"
 related:
-  - update-dot-devin
   - run-lint
-  - update-devin-global-skills
   - resolve-errors
 ---
 

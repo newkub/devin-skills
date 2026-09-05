@@ -1,6 +1,7 @@
 ---
 name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
+argument-hint: "[scope]"
 related:
   - git-debug
   - check-git-logs

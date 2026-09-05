@@ -1,6 +1,7 @@
 ---
 name: list-devin-user-request-all-session
 description: รายการ requests จาก user ทังหมด sessions จาก history summaries
+argument-hint: "[scope]"
 related:
   - list-devin-user-request-this-repo
   - list-devin-user-request-in-this-session

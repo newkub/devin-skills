@@ -4,15 +4,10 @@ description: แก้ไข stability findings ด้าน error handling, rec
 argument-hint: "[target-or-scope]"
 related:
   - review-stability
-  - review-observability
-  - review-performance
-  - improve-observability
-  - resolve-errors
   - run-test
   - run-verify
   - report-table
   - suggest-next-action
-  - ask-me
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: list-alternative
 description: List alternatives ที่ดีกว่าสำหรับ libraries, tools, frameworks หรือ patterns
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

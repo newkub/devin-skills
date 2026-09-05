@@ -1,6 +1,7 @@
 ---
 name: list-raindrop-io
 description: รายการ bookmarks จาก Raindrop.io เรียงตามล่าสุด
+argument-hint: "[scope]"
 related:
   - search-in-raindrop-io
   - follow-my-tech-stack

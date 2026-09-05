@@ -1,6 +1,7 @@
 ---
 name: review-security
 description: Review security ครอบคลุม auth, authorization, OWASP, secrets, injection, supply chain, encryption
+argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret

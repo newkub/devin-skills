@@ -1,6 +1,7 @@
 ---
 name: use-bun-scripts
 description: สร้าง Bun scripts สำหรับ automate งาน
+argument-hint: "[scope]"
 related:
   - follow-runtime-bun
   - update-devin-global-skills

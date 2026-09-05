@@ -1,6 +1,7 @@
 ---
 name: bench-competitors
 description: ศึกษาคู่แข่งและปรับปรุง project ให้ดีกว่าในทุกมิติ
+argument-hint: "[scope]"
 related:
   - create-plan-as-github-issue
   - deep-research

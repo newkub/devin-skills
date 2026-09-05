@@ -1,6 +1,7 @@
 ---
 name: update-specs
 description: สร้างหรืออัปเดต `<workspace>/specs/` สำหรับ test specs ตาม project type
+argument-hint: "[scope]"
 related:
   - update-test-and-fix
   - update-project

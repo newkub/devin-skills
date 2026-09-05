@@ -1,6 +1,7 @@
 ---
 name: devin-templates-toolkit
 description: รวม templates สำหรับ web, TUI, CI/CD, docs ใช้ copy แล้วปรับตาม project
+argument-hint: "[scope]"
 related:
   - devin-scripts-toolkit
   - follow-create-web

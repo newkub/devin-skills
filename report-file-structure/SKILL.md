@@ -1,6 +1,7 @@
 ---
 name: report-file-structure
 description: แสดงโครงสร้างไฟล์ โฟลเดอร์ พร้อม metadata สถิติ และคำแนะนำ
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-review

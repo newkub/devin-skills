@@ -1,6 +1,7 @@
 ---
 name: setup-cicd
 description: ตรวจจับ platform และตั้งค่า CI/CD config files, secrets และ workflows
+argument-hint: "[scope]"
 related:
   - setup-package
   - setup-release

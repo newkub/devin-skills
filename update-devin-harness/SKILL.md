@@ -1,6 +1,7 @@
 ---
 name: update-devin-harness
 description: อัปเดต global rules, global skills และ global subagents ให้สอดคล้องกัน
+argument-hint: "[scope]"
 related:
   - update-devin-global-rules
   - update-all-devin-global-skills

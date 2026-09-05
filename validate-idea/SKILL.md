@@ -1,6 +1,7 @@
 ---
 name: validate-idea
 description: ตรวจสอบและประเมินไอเดียก่อน implement ว่าคุ้มค่า ทำได้ และสอดคล้องกับ project
+argument-hint: "[scope]"
 related:
   - idea-features
   - deep-idea-features

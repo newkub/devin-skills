@@ -1,6 +1,7 @@
 ---
 name: report-usage-md
 description: Report the status and coverage of USAGE.md in workspace
+argument-hint: "[scope]"
 related:
   - update-usage-md
   - review-usage-md

@@ -1,6 +1,7 @@
 ---
 name: update-all-devin-global-skills
 description: อัปเดต devin skills repo ทั้งหมดหรือเฉพาะที่ระบุโดย orchestrate update-devin-global-skills ต่อ skill
+argument-hint: "[scope]"
 related:
   - review-references
   - review-devin-global-skills

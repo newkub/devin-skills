@@ -1,6 +1,7 @@
 ---
 name: review-features
 description: ตรวจสอบ features documentation ก่อน update-features-md แก้ไข
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo

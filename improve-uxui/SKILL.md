@@ -4,14 +4,9 @@ description: เปิด browser แล้ว capture หน้าเว็บ 
 argument-hint: "[url-or-route]"
 related:
   - capture-image-app-to-screenshot
-  - capture-component
   - review-uxui
   - review-by-stakeholder
-  - follow-tool-agent-browser
-  - run-test-website-by-agent-browser
   - report-table
-  - report-uxui-sketch
-  - suggest-next-action
   - resolve-errors
   - refactor
   - restructure

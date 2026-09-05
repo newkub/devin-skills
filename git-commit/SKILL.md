@@ -1,6 +1,7 @@
 ---
 name: git-commit
 description: Commit ทุกไฟล์ที่เปลี่ยนแปลงด้วย conventional commits
+argument-hint: "[scope]"
 related:
   - run-check
   - run-verify

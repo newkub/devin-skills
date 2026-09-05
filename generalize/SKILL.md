@@ -1,6 +1,7 @@
 ---
 name: generalize
 description: แปลง how-to หรือ instructions เป็น solution patterns ทั่วไปที่ใช้ซ้ำได้
+argument-hint: "[scope]"
 related:
   - write-explicit
   - deep-validate

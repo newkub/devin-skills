@@ -4,10 +4,7 @@ description: Review จากมุมมอง compliance, legal — privacy, r
 argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
-  - review-by-stakeholder
   - review-by-security
-  - review-security
-  - improve-security
   - report-table
   - suggest-next-action
   - scan-codebase

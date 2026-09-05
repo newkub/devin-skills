@@ -1,6 +1,7 @@
 ---
 name: review-seo
 description: Review SEO ครอบคลุม technical, on-page, structured data, CWV, hreflang
+argument-hint: "[scope]"
 related:
   - review-uxui
   - review-performance

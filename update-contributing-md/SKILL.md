@@ -1,6 +1,7 @@
 ---
 name: update-contributing-md
 description: อัปเดต CONTRIBUTING.md ให้สอดคล้องกับ project workflows และ conventions
+argument-hint: "[scope]"
 related:
   - deep-validate
   - check-reference

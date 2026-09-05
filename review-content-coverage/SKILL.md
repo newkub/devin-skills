@@ -1,6 +1,7 @@
 ---
 name: review-content-coverage
 description: เขียน content ครอบคลุมทุก features, APIs, และ use cases
+argument-hint: "[scope]"
 related:
   - follow-coverage
   - run-test-coverage

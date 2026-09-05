@@ -6,7 +6,6 @@ related:
   - report-table
   - update-todo-md
   - implement-todo-md
-  - report-progress
   - suggest-next-action
 ---
 

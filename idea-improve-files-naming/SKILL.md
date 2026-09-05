@@ -1,6 +1,7 @@
 ---
 name: idea-improve-files-naming
 description: สร้างชื่อไฟล์และ directory สำหรับ idea ใหม่ตาม convention ของ project
+argument-hint: "[scope]"
 related:
   - ask-me
   - report-table

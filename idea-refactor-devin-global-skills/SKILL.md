@@ -1,6 +1,7 @@
 ---
 name: idea-refactor-devin-global-skills
 description: สร้างไอเดีย refactoring สำหรับ devin global skills repo
+argument-hint: "[scope]"
 related:
   - rethink
   - report-numbered-bullet

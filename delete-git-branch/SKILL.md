@@ -1,6 +1,7 @@
 ---
 name: delete-git-branch
 description: ลบ local หรือ remote git branch อย่างปลอดภัย
+argument-hint: "[scope]"
 related:
   - list-git-commit
   - refactor-commit

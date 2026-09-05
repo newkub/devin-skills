@@ -1,6 +1,7 @@
 ---
 name: re-answer
 description: ทบทวนคำถามและตอบใหม่อย่างละเอียดและครบถ้วนขึ้น
+argument-hint: "[scope]"
 related:
   - report-table
   - rethink

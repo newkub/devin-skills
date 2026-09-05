@@ -1,6 +1,7 @@
 ---
 name: dont-over-engineer
 description: หลีกเลี่ยงการ over-engineering ใช้ minimal changes
+argument-hint: "[scope]"
 related:
   - dont-ask
   - dont-understand

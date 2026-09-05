@@ -1,6 +1,7 @@
 ---
 name: update-dot-devin
 description: สร้าง .devin structure ครบถ้วนรวม rules และ hooks โดยไม่มี workflows directory
+argument-hint: "[scope]"
 related:
   - check-monorepo
   - analyze-project
@@ -9,7 +10,6 @@ related:
   - update-devin-project-skills
   - update-devin-project-mcp
   - update-devin-global-skills
-  - follow-create-devin-global-skills
   - update-agents-md
   - run-lint
 ---

@@ -1,6 +1,7 @@
 ---
 name: merge-github-pr
 description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
+argument-hint: "[scope]"
 related:
   - resolve-github-pr
   - refactor-commit

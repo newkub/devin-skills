@@ -1,6 +1,7 @@
 ---
 name: update-gitignore
 description: อัปเดต .gitignore ให้ครบถ้วนตาม stack และ artifacts ทีใช้
+argument-hint: "[scope]"
 related:
   - follow-gitignore
   - follow-best-practice

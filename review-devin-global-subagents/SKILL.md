@@ -1,6 +1,7 @@
 ---
 name: review-devin-global-subagents
 description: ตรวจสอบ subagent ก่อน update-devin-global-subagents แก้ไข ครอบคลุม format
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

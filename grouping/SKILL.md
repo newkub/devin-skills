@@ -1,6 +1,7 @@
 ---
 name: grouping
 description: จัดกลุ่ม items ตามหมวดหมู่หรือคุณลักษณะ
+argument-hint: "[scope]"
 related:
   - follow-best-practice
   - suggest-next-action

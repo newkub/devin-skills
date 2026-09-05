@@ -1,6 +1,7 @@
 ﻿---
 name: report-scan-todo
 description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่งและความสำคัญ
+argument-hint: "[scope]"
 related:
   - update-todo-md
   - productionize-implementation

@@ -1,6 +1,7 @@
 ---
 name: list-todo-md
 description: สแกนหา TODO.md ทั้งหมดใน current workspace และรายงาน summary/รายละเอียดในรูปแบบตาราง
+argument-hint: "[scope]"
 related:
   - update-todo-md
   - report-table

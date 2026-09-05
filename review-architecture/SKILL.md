@@ -1,6 +1,7 @@
 ﻿---
 name: review-architecture
 description: Review architecture, modularity, isolation, resilience, reliability, governance
+argument-hint: "[scope]"
 related:
   - scan-codebase
   - deep-analyze

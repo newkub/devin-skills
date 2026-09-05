@@ -1,6 +1,7 @@
 ---
 name: review-workspace
 description: Review workspace ใน monorepo หรือ project เดี่ยว ครอบคลุม manifest, dependencies, scripts, config
+argument-hint: "[scope]"
 related:
   - check-monorepo
   - list-workspaces

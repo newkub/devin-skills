@@ -1,6 +1,7 @@
 ---
 name: learn-from-references
 description: เรียนรู้จาก references directory และ external sources เพื่อเขียน content ครอบคลุม
+argument-hint: "[scope]"
 related:
   - learn-from-web
   - check-reference

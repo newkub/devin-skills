@@ -1,6 +1,7 @@
 ---
 name: create-plan-as-github-issue
 description: สร้างแผนคุณภาพสูงจากไอเดียฟีเจอร์ แล้วเขียนลง GitHub issue พร้อม open-web
+argument-hint: "[scope]"
 related:
   - deep-idea-features
   - create-github-issue
@@ -14,7 +15,6 @@ related:
   - report-plan
   - report-uxui-sketch
   - report-architecture-diagram
-  - create-plan-in-dot-devin
 ---
 
 ## Goal

@@ -1,6 +1,7 @@
 ---
 name: search-similar
 description: ค้นหา skills, code, หรือ patterns ทีคล้ายกับสิ่งทีระบุ
+argument-hint: "[scope]"
 related:
   - search-files-patterns
   - search-by-astgrep

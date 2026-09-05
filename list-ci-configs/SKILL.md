@@ -1,6 +1,7 @@
 ---
 name: list-ci-configs
 description: รายการ CI/CD config files ใน repository แบบ read-only
+argument-hint: "[scope]"
 related:
   - resolve-cicd
   - watch-github-actions

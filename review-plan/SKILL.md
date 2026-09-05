@@ -1,6 +1,7 @@
 ---
 name: review-plan
 description: Review plan quality ก่อน execute plan
+argument-hint: "[scope]"
 related:
   - report-table
   - suggest-next-action

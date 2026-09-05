@@ -1,6 +1,7 @@
 ---
 name: restore-from-my-dotfiles
 description: กู้คืน dotfiles จาก git log ของ chezmoi repo แล้ว chezmoi apply
+argument-hint: "[scope]"
 related:
   - restore-from-git-log
   - follow-tool-git

@@ -11,7 +11,6 @@ triggers:
   - user
   - model
 related:
-  - view-files
   - view-diff
   - list-github-pr
 ---

@@ -1,6 +1,7 @@
 ---
 name: visualize-in-web
 description: สร้าง visual แบบ Web ใน browser บน OS temp directory
+argument-hint: "[scope]"
 related:
   - report-in-html
   - open-web

@@ -1,6 +1,7 @@
 ---
 name: report-before
 description: รายงานสถานะปัจจุบันตาม context ก่อนเริ่มทำอะไร
+argument-hint: "[scope]"
 related:
   - report-ansi
   - report-progress

@@ -1,6 +1,7 @@
 ---
 name: found-issue
 description: Map ปัญหา/อาการทั่วไปไปยัง skill หรือ workflow ทีถูกต้อง
+argument-hint: "[scope]"
 related:
   - suggest-next-action
   - resolve-errors

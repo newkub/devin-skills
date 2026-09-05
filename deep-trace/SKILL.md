@@ -1,6 +1,7 @@
 ---
 name: deep-trace
 description: Trace ลึกตาม execution flow, logs, metrics, หรือ distributed trace
+argument-hint: "[scope]"
 related:
   - deep-debug
   - analyze-root-cause-analysis
