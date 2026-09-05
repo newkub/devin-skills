@@ -4,9 +4,12 @@ description: อัปเดต usage.kdl แล้ว generate USAGE.md complet
 related:
   - review-app-usage
   - follow-tool-usage
-  - report
+  - report-usage-md
+  - report-table
   - suggest-next-action
   - deep-validate
+  - update-project
+  - deep-update-project
 ---
 
 ## Goal
@@ -15,7 +18,10 @@ related:
 
 ## Scope
 
-ใช้เมื่อ CLI มีการเปลี่ยนแปลง (เพิ่ม/ลบ/แก้ flags, args, commands) และต้องการอัปเดต `usage.kdl` และ `USAGE.md` — `usage.kdl` เป็น KDL source (single source of truth) `USAGE.md` เป็น markdown output ที่ generate จาก spec ไม่รวมการสร้าง `usage.kdl` จาก scratch (ใช้ `follow-tool-usage` แทน)
+ใช้เมื่อ CLI มีการเปลี่ยนแปลง (เพิ่ม/ลบ/แก้ flags, args, commands) และต้องการอัปเดต `usage.kdl` และ `USAGE.md` — `usage.kdl` เป็น KDL source (single source of truth) `USAGE.md` เป็น markdown output ที่ generate จาก spec
+
+- เรียกจาก `/update-project` หรือ `/deep-update-project` เมื่อ sync project docs/config
+- ถ้ายังไม่มี `usage.kdl` → ใช้ `/follow-tool-usage` สร้าง spec ก่อน
 
 ## Execute
 
@@ -82,7 +88,7 @@ related:
 
 > Goal: รายงานผลการอัปเดต
 
-1. ทำ `/report` สรุปสิ่งที่เปลี่ยนแปลงใน `usage.kdl` และ `USAGE.md`
+1. ทำ `/report-usage-md` หรือ `/report-table` สรุปสิ่งที่เปลี่ยนแปลงใน `usage.kdl` และ `USAGE.md`
 2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
