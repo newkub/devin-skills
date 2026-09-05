@@ -13,7 +13,10 @@ related:
   - update-references
   - update-project
   - run-verify
+  - resolve-errors
   - dont-over-engineer
+  - ask-me
+  - report
 ---
 
 ## Goal
@@ -56,22 +59,25 @@ Refactor code ตาม context โดยเลือก sub-skill ทีเห�
 
 1. หลัง sub-skill เสร็จ ทำ `/update-references` ถ้ามีการย้าย/ลบ/rename
 2. ตรวจ broken references ด้วย `/check-skills-related` ถ้ามี
-3. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/test/build
+3. ถ้า root project docs/config เปลี่ยนจาก refactor → ทำ `/update-project` เพื่อ sync
+4. ทำ `/run-verify` เพื่อตรวจ lint/typecheck/test/build
+5. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 รอบ
 
 ### 4. Report
 
 > Goal: สรุปผล
 
 1. ทำ `/report-table` สรุป sub-skill ทีใช้ การเปลี่ยนแปลง และ status
-2. ทำ `/suggest-next-action`
+2. ทำ `/report` สรุป before/after ภาพรวม
+3. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Context Aware
 
 - ไม่เดา scope ถ้าไม่ชัด
-- ถ้าไม่ชัดให้ถาม user
-- ไม่ dispatch ไปหลาย sub-skill พร้อมกัน
+- ถ้าไม่ชัดให้ทำ `/ask-me` ไม่ใช่ตัดสินเอง
+- ไม่ dispatch ไปหลาย sub-skill พร้อมกัน — ทำทีละตัวตาม priority
 
 ### 2. Minimal Change
 

@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **825** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **827** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -103,16 +103,16 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (242): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (69): code review, architecture, security, performance, accessibility, dependencies, quality, and stakeholder roleplay domains (`review-by-*`).
+- `review-*` (68): code review, architecture, security, performance, accessibility, dependencies, quality, and stakeholder roleplay domains (`review-by-*`).
 - `list-*` (49): inventory, lookup, and listing utilities.
 - `update-*` (39): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (38): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
 - `deep-*` (24): deep analysis, research, debugging, validation, update, and ship.
-- `create-*` (22): project, plugin, bot, report, and diagram scaffolding.
+- `create-*` (23): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (19): verification, structure, and health checks.
 - `open-*` (19): browser, editor, and terminal integration.
-- `improve-*` (15): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, docs).
+- `improve-*` (16): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, docs).
 - `optimize-*` (9): performance counterparts (bundle, assets, memory, network, rendering, cost).
 
 Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `improve`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `realize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
