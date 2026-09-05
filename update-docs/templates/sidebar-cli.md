@@ -1,17 +1,17 @@
 ---
-title: Product Sidebar Template
-description: VitePress sidebar config for product documentation
+title: CLI Sidebar Template
+description: VitePress sidebar config for CLI documentation
 ---
 
-# Product Sidebar Template
+# CLI Sidebar Template
 
-Use this config in `docs/.vitepress/config.ts` for product projects with auth/admin features.
-Nav is defined separately — copy the product array from `templates/nav-config.md`.
+Use this config in `docs/.vitepress/config.ts` for command-line tools.
+Nav is defined separately — copy the CLI array from `templates/nav-config.md`.
 
 ```ts
 export default {
   themeConfig: {
-    // nav: copy "Product Nav" from templates/nav-config.md
+    // nav: copy "CLI Nav" from templates/nav-config.md
     sidebar: {
       '/project/': [
         {
@@ -31,6 +31,16 @@ export default {
           items: [
             { text: 'Installation', link: '/getting-started/installation' },
             { text: 'Usage', link: '/getting-started/usage' },
+          ],
+        },
+      ],
+      '/commands/': [
+        {
+          text: 'Commands',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/commands/' },
+            // one item per command: { text: '<name>', link: '/commands/<name>' }
           ],
         },
       ],
@@ -65,9 +75,9 @@ export default {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/references/' },
-            { text: 'Auth', link: '/references/auth' },
-            { text: 'Admin', link: '/references/admin' },
-            { text: 'Pricing', link: '/references/pricing' },
+            { text: 'Contributing', link: '/references/contributing' },
+            { text: 'License', link: '/references/license' },
+            { text: 'Troubleshooting', link: '/references/troubleshooting' },
           ],
         },
       ],
@@ -76,6 +86,37 @@ export default {
 }
 ```
 
-## Content Page Format
+## Command Page Format
 
-Each documentation page should follow the structure in `templates/content-page.md`.
+Each `commands/<name>.md` should include:
+
+```md
+---
+title: <command-name>
+description: What the command does
+---
+
+# <command-name>
+
+## Usage
+
+​```bash
+<cli-name> <command> [options]
+​```
+
+## Options
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+
+## Examples
+
+​```bash
+# real invocation with expected output
+​```
+
+## Exit Codes
+
+| Code | Meaning |
+|------|---------|
+```

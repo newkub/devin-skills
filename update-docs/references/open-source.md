@@ -25,8 +25,9 @@ A project is `open-source` when all of these are true:
 
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage
-- `references/` - contributing, license, roadmap
+- `roadmap/` - index, idea-features
 - `development/` - setup, architecture, workflows, testing, CI/CD, scripts, troubleshooting
+- `references/` - contributing, license
 
 ## Content Focus
 

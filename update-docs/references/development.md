@@ -5,7 +5,7 @@ description: Reference for the shared development sidebar
 
 # Development Sidebar Reference
 
-The development sidebar is shared between `product` and `open-source` docs.
+The development sidebar is shared between `product`, `open-source`, and `cli` docs.
 
 ## Pages
 

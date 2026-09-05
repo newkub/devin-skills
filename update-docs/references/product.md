@@ -25,8 +25,9 @@ A project is `product` when any of these are found:
 
 - `project/` - overview, features, workspaces (monorepo)
 - `getting-started/` - installation, usage
-- `references/` - auth, admin, pricing
+- `roadmap/` - index, idea-features
 - `development/` - setup, architecture, workflows, testing, CI/CD, scripts, troubleshooting
+- `references/` - auth, admin, pricing
 
 ## Content Focus
 

@@ -32,6 +32,18 @@ nav: [
 ]
 ```
 
+## CLI Nav
+
+```ts
+nav: [
+  { text: 'Project', link: '/project/overview' },
+  { text: 'Getting Started', link: '/getting-started/installation' },
+  { text: 'Commands', link: '/commands/' },
+  { text: 'Roadmap', link: '/roadmap/' },
+  { text: 'Development', link: '/development/setup' },
+]
+```
+
 ## Notes
 
 - `Review` and `Release` can be directories with their own `index.md`.

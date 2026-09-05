@@ -5,12 +5,12 @@ description: Shared development sidebar for product and open-source docs
 
 # Development Sidebar Template
 
-Use this for the `development/` section in both `product` and `open-source` projects.
+Use this for the `development/` section in `product`, `open-source`, and `cli` projects.
 
 ```ts
 {
   text: 'Development',
-  collapsed: false,
+  collapsed: true,
   items: [
     { text: 'Setup', link: '/development/setup' },
     { text: 'Architecture', link: '/development/architecture' },

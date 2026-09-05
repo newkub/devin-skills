@@ -30,10 +30,11 @@ related:
 
 1. ทำ `/check-should-update` ถ้ามี git changes
 2. ทำ `/check-monorepo` เพื่อระบุ monorepo
-3. ระบุ distribution type:
-   - `product`: มี auth, `private: true`, license commercial
-   - `open-source`: ไม่มี auth, license เปิด
-4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product)
+3. ระบุ docs type ตาม detection ใน `references/<type>.md`:
+   - `product`: มี auth, `private: true`, license commercial — `references/product.md`
+   - `open-source`: ไม่มี auth, license เปิด — `references/open-source.md`
+   - `cli`: มี `bin` หรือ CLI framework ใน `package.json` — `references/cli.md`
+4. อ่าน `package.json` ระบุ project type (CLI, Library, Web, Product) — ถ้า CLI ให้ใช้ `cli` docs type
 
 ### 2. Ensure Docs Structure
 
@@ -54,39 +55,36 @@ related:
    - `docs/references/index.md`
    - `docs/roadmap/index.md`
 4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
+5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`
 
 ### 3. Update VitePress Config
 
-> Goal: ตั้งค่า nav และ sidebar ที่ถูกต้อง
+> Goal: ตั้งค่า nav และ sidebar ตาม docs type ที่ detect
 
-1. สร้าง/อัปเดท `docs/.vitepress/config.ts`
-2. nav:
-   - product: Project, Features, Getting Started, Roadmap, Development, References
-   - open-source: Project, Features, Getting Started, Roadmap, Development, References
-3. sidebar:
-   - `/project/` — overview, features, workspaces (monorepo)
-   - `/getting-started/` — installation, usage
-   - `/roadmap/` — index, `idea-features` (ถ้ามี)
-   - `/development/` — setup, architecture, workflows, testing
-   - `/references/` — index + ตาม distribution type
-4. ใช้ `collapsed: true` เมื่อหมวดมีหลายหน้า
-5. ไม่ต้องใช้ Vue components ซับซ้อน ใช้ markdown ธรรมดา
+1. อ่าน `references/<type>.md` (`open-source`, `product`, `cli`) สำหรับ nav, sidebar sections และ content focus
+2. สร้าง/อัปเดท `docs/.vitepress/config.ts` — nav จาก `templates/nav-config.md`, sidebar จาก `templates/sidebar-<type>.md`
+3. ใช้ `templates/sidebar-development.md` สำหรับหมวด `/development/` ที่ share กันทุก type
+4. ถ้า monorepo → เพิ่ม sidebar จาก `templates/sidebar-monorepo.md`
+5. ใช้ `collapsed: true` เมื่อหมวดมีหลายหน้า
+6. ไม่ต้องใช้ Vue components ซับซ้อน ใช้ markdown ธรรมดา
+7. ดูรายการ templates ทั้งหมดใน `templates/index.md`
 
 ### 4. Write Content Pages
 
 > Goal: เนื้อหาจากข้อมูลจริงใน project
 
-1. `index.md`: title, tagline, features list, quick start link, actions
-2. `project/overview.md`: สรุป project, architecture, tech stack, key concepts
-3. `project/features.md`: รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
-4. `getting-started/installation.md`: ขั้นตอนติดตั้ง ตรวจ dependencies
-5. `getting-started/usage.md`: ตัวอย่างใช้งานจริง
-6. `development/setup.md`: ตั้งค่า dev environment
-7. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
-8. `development/workflows.md`: slash commands, scripts, CI/CD
-9. `development/testing.md`: วิธี run test, lint, typecheck
-10. `references/index.md`: สรุป references
-11. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
+1. `index.md`: ใช้ `templates/homepage.md` — title, tagline, features list, quick start link, actions
+2. ทุกหน้าเนื้อหาอื่นใช้ `templates/content-page.md` เป็นโครง
+3. `project/overview.md`: สรุป project, architecture, tech stack, key concepts
+4. `project/features.md`: รายการ features ทั้งหมดจาก `update-features-md` หรือ analyze
+5. `getting-started/installation.md`: ขั้นตอนติดตั้ง ตรวจ dependencies
+6. `getting-started/usage.md`: ตัวอย่างใช้งานจริง
+7. `development/setup.md`: ตั้งค่า dev environment
+8. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
+9. `development/workflows.md`: slash commands, scripts, CI/CD
+10. `development/testing.md`: วิธี run test, lint, typecheck
+11. `references/index.md`: สรุป references
+12. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 
 ### 5. Integrate `update-features-md`
 
@@ -135,10 +133,12 @@ related:
 
 ### 2. Sidebar And Nav
 
-- `docs/.vitepress/config.ts` ต้องมี nav และ sidebar
-- sidebar ต้องมีอย่างน้อย 5 หมวด: Project, Getting Started, Roadmap, Development, References
+- `docs/.vitepress/config.ts` ต้องมี nav และ sidebar ตาม `references/<type>.md` และ `templates/sidebar-<type>.md`
+- sidebar มีหมวดหลัก: Project, Getting Started, Roadmap, Development, References — เพิ่ม Commands สำหรับ `cli` และ Workspaces สำหรับ monorepo
 - แต่ละหมวด `collapsed: true` ถ้ามี >5 หน้า
 - ใช้ relative path เริ่มต้นด้วย `/`
+- nav กำหนดจาก `templates/nav-config.md` เท่านั้น ไม่ซ้ำกำหนด nav ใน sidebar templates
+- ดู official resources ใน `references/website.md`
 
 ### 3. Frontmatter
 
