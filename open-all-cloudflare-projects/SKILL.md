@@ -5,6 +5,7 @@ argument-hint: "[account-id]"
 related:
   - open-web
   - list-cloudflare-projects
+  - all-cloudflare-projects
   - resolve-cloudflare-worker-fails
   - open-cloudflare-workers
   - ask-me
@@ -16,7 +17,7 @@ related:
 
 ## Scope
 
-- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `open-cloudflare-workers`, `open-web`
+- สำหรับ skills ที่เกี่ยวข้อง: `list-cloudflare-projects`, `all-cloudflare-projects`, `open-cloudflare-workers`, `open-web`
 
 ใช้หลังจาก `/list-cloudflare-projects` เพื่อเปิดหน้า dashboard ของ Workers/Pages ทีหาได้ ทั้งหมดใน browser
 

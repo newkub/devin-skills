@@ -19,6 +19,7 @@ related:
   - open-github-repo-personal
   - open-github-repo-org
   - view-repo
+  - all-github-repo
   - list-github-project
   - list-project-git-in-computer
   - list-github-star-latest
@@ -34,7 +35,7 @@ related:
 
 ใช้ `gh repo list --source` สำหรับ authenticated user หรือ owner ที่ระบุ แสดงเฉพาะ repo ต้นฉบับ (non-fork) ที่ user สร้างเอง
 
-ดูเพิ่มเติม: /open-github-repo, /open-github-repo-personal, /open-github-repo-org, /list-github-project
+ดูเพิ่มเติม: /open-github-repo, /open-github-repo-personal, /open-github-repo-org, /list-github-project, /all-github-repo
 
 ## Execute
 
