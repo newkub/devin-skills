@@ -1,8 +1,8 @@
-# TODO And FIXME Inventory Criteria
+﻿# TODO And FIXME Inventory Criteria
 
 ## Goal
 
-ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `realize-implementation`
+ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `productionize-implementation`
 
 ## Search Patterns
 

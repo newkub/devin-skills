@@ -1,4 +1,4 @@
-# Implementation Completeness Score Formula
+﻿# Implementation Completeness Score Formula
 
 ## Metrics
 
@@ -48,8 +48,8 @@ Implementation Completeness: 72.7% [██████████████�
 
 | Priority | Action | Impact | Effort | Workflow |
 |----------|--------|--------|--------|----------|
-| 1 | Replace MOCK in auth service | critical | low | `realize-implementation` |
-| 2 | Add missing delete flow | high | medium | `realize-implementation` |
+| 1 | Replace MOCK in auth service | critical | low | `productionize-implementation` |
+| 2 | Add missing delete flow | high | medium | `productionize-implementation` |
 
 ## Supplementary Metrics
 

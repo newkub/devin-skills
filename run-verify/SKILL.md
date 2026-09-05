@@ -1,4 +1,4 @@
----
+﻿---
 name: run-verify
 description: รัน verify แบบครบวงจรบน local หรือ CI/CD ตามขนาด project
 related:
@@ -9,7 +9,7 @@ related:
   - run-build
   - run-test-coverage
   - run-test-all
-  - realize-implementation
+  - productionize-implementation
   - check-monorepo
   - setup-cicd
   - follow-tasks
@@ -33,6 +33,7 @@ related:
 - project ใหญ่ monorepo หรือ build/test หนัก → ส่ง branch ไป CI/CD แล้ว watch และ resolve errors
 - สามารถ force mode ได้: `/run-verify --local` หรือ `/run-verify --ci`
 - ไม่ merge, ไม่ release, ไม่ deploy โดยอัตโนมัติ
+- ใช้หลัง `/productionize-implementation` เพื่อ verify ก่อน ship
 
 ## Execute
 

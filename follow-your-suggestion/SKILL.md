@@ -6,7 +6,7 @@ related:
   - check-skills-related
   - prioritize
   - resolve-errors
-  - realize-implementation
+  - productionize-implementation
   - dont-over-engineer
 ---
 
@@ -47,11 +47,11 @@ related:
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข errors ที่เกิดขึ้น
 
-### 4. Realize Implementation
+### 4. Productionize Implementation
 
-> Goal: Realize Implementation
+> Goal: Productionize Implementation
 
-1. ทำ `/realize-implementation` เพื่อแปลงเป็น production code ครบถ้วน
+1. ทำ `/productionize-implementation` เพื่อแปลงเป็น production code ครบถ้วน
 
 ## Rules
 

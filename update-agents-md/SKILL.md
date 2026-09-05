@@ -1,4 +1,4 @@
----
+﻿---
 name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
 related:
@@ -11,7 +11,7 @@ related:
   - review-rules
   - review-by-stakeholder
   - deep-validate
-  - realize-implementation
+  - productionize-implementation
   - run-verify
   - git-commit
   - resolve-cicd
@@ -108,7 +108,7 @@ related:
 ### 8. Ship
 
 > Goal: ship Ship
-1. ทำ `/realize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
+1. ทำ `/productionize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
 2. ตรวจสอบ `git status` และ state ของ repository ตาม project conventions
 3. ทำ `/run-verify`, `/run-test-all` ถ้ามี
 4. ทำ `/deep-validate`

@@ -4,7 +4,7 @@ description: นำ task จาก GitHub issue หรือ project item ไป
 argument-hint: "[task-id]"
 related:
   - create-plan-as-github-issue
-  - realize-implementation
+  - productionize-implementation
   - refactor
   - run-verify
   - run-test
@@ -39,7 +39,7 @@ related:
 > Goal: implement
 
 1. ทำการเปลี่ยนแปลงตาม task
-1. เรียก /realize-implementation หรือ /refactor
+1. เรียก /productionize-implementation หรือ /refactor
 
 ### 4. Verify
 

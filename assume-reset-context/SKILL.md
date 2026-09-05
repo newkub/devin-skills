@@ -66,7 +66,7 @@ related:
 
 1. ทำ `/refactor` ก่อนเขียน code ใหม่ถ้าจำเป็น
 2. แก้ไขตามแผนที่วางไว้ — ใช้ `/use-scripts` เมื่อต้องประมวลผลไฟล์หลายไฟล์
-3. ทำ `/realize-implementation` เพื่อให้แน่ใจว่า code สมบูรณ์
+3. ทำ `/productionize-implementation` เพื่อให้แน่ใจว่า code สมบูรณ์
 
 ### 6. Validate
 

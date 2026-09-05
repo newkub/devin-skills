@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-web-paas
 description: สร้าง SaaS+ ด้วย SolidJS, TanStack, oRPC, Elysia, UnoCSS และ advanced UX/UI
 related:
@@ -111,7 +111,7 @@ related:
 
 - ทำ `/follow-single-responsibility` หลัง major components
 - ทำ `/review-frontend` ก่อน deploy
-- ทำ `/realize-implementation` หลังเสร็จ
+- ทำ `/productionize-implementation` หลังเสร็จ
 
 ### 3. References
 

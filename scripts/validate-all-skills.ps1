@@ -1,4 +1,4 @@
-# Validate all skills in the repo
+﻿# Validate all skills in the repo
 # Checks: line count, frontmatter, sections, name match, description length, TODO/MOCK, bold markers
 # Requires: PowerShell 7+ (for UTF-8 handling)
 
@@ -16,7 +16,7 @@ $skills = Get-ChildItem -Directory $skillsDir | Where-Object { Test-Path "$($_.F
 # Lines matching ANY of these patterns are NOT real TODO/MOCK/placeholder defects
 $falsePositivePatterns = @(
     # Tool/skill names containing todo/mock
-    'todo_write', 'realize-implementation', 'implement-mock', 'implement-todo-md',
+    'todo_write', 'productionize-implementation', 'implement-mock', 'implement-todo-md',
     'update-todo-md', 'report-scan-todo', 'report-todo', 'mock-inventory', 'todo-inventory',
     # Backtick-quoted markers (instructions about them)
     '`TODO`', '`MOCK`', '`FIXME`', '`STUB`', '`FAKE`', '`placeholder`', '`mock`',

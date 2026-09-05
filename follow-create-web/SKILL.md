@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-web
 description: เลือกและสร้าง web project ตามประเภท landing, saas หรือ paas
 related:
@@ -69,7 +69,7 @@ related:
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
 - ทำ `/optimize-codebase-everything` สำหรับ SEO/performance/bundle
 - ทำ `/review-frontend` ก่อน deploy
-- ทำ `/realize-implementation` หลัง website เสร็จ
+- ทำ `/productionize-implementation` หลัง website เสร็จ
 
 ### 3. Safety
 

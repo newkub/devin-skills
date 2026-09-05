@@ -1,12 +1,12 @@
----
-name: review-realize-implementation
+﻿---
+name: review-productionize-implementation
 description: Review implementation completeness หา TODO, MOCK, STUB, placeholder, flows ขาด UX/UI
 argument-hint: "[skill-name]"
 related:
   - review-refactor
   - review-restructure
   - review-update
-  - realize-implementation
+  - productionize-implementation
   - review-codebase-everything
   - scan-codebase
   - deep-analyze
@@ -66,7 +66,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. ทำ `/realize-implementation` เพื่อตรวจสอบและแก้ไข
+1. ทำ `/productionize-implementation` เพื่อตรวจสอบและแก้ไข
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
 
 ## Rules
@@ -94,7 +94,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 - ถ้าต้อง refactor → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure → ทำ `review-restructure` ก่อน `restructure`
 - ถ้าต้อง update → ทำ `review-update` ก่อน `update-*`
-- ถ้าต้อง implement ให้ใช้ `/realize-implementation` หลัง review
+- ถ้าต้อง implement ให้ใช้ `/productionize-implementation` หลัง review
 
 ### 4. Health Score Formula
 

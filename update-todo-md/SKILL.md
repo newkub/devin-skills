@@ -1,10 +1,10 @@
----
+﻿---
 name: update-todo-md
 description: เพิ่ม อ่าน และ enhance prompt จาก TODO.md ใน project root
 argument-hint: "[add|read] [title/content]"
 related:
   - deep-plan
-  - realize-implementation
+  - productionize-implementation
   - continue
   - enhance-prompt
   - report-table
@@ -78,7 +78,7 @@ related:
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
 1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`
-2. ถ้าพร้อม implement → ใช้ `/realize-implementation`
+2. ถ้าพร้อม implement → ใช้ `/productionize-implementation`
 3. ถ้ามีหลาย task รออยู่ → ใช้ `/continue` เพื่อทำตามลำดับ
 
 ### 6. Validate And Report
@@ -116,7 +116,7 @@ related:
 ### 4. Scope
 
 - รับผิดชอบเฉพาะ `TODO.md` ที่ project root
-- ถ้าต้อง implement → ใช้ `/realize-implementation`
+- ถ้าต้อง implement → ใช้ `/productionize-implementation`
 - ถ้าต้อง queue ใน `QUEUE.md` → ใช้ `edit` โดยตรงหรือสร้างด้วย `write`
 
 ## Expected Outcome

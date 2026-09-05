@@ -1,9 +1,9 @@
 ---
-name: deep-realize-implementation
-description: Realize implementation ครบวงจร — deep review, plan, schema, API, UX, validation
+name: deep-productionize-implementation
+description: Productionize implementation ครบวงจร — deep review, plan, schema, API, UX, validation
 argument-hint: "[scope]"
 related:
-  - realize-implementation
+  - productionize-implementation
   - implement-mock
   - implement-todo-md
   - implement-features-to-mvp
@@ -26,7 +26,7 @@ related:
 
 ## Goal
 
-Realize implementation ครบวงจร — แปลง TODO, MOCK, FAKE, STUB, placeholder เป็น production code จริง พร้อม deep analysis, planning, และ multi-dimensional validation
+Productionize implementation ครบวงจร — แปลง TODO, MOCK, FAKE, STUB, placeholder เป็น production code จริง พร้อม deep analysis, planning, และ multi-dimensional validation
 
 ## Scope
 
@@ -40,7 +40,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 ### 1. Deep Review And Inventory
 
-> Goal: เข้าใจสภาพปัจจุบันและสิ่งที่ต้อง realize ทั้งหมด
+> Goal: เข้าใจสภาพปัจจุบันและสิ่งที่ต้อง productionize ทั้งหมด
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมายและ assumptions
 2. ทำ `/deep-analyze` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ codebase
@@ -127,7 +127,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: รายงานผลและ next action
 
 1. ทำ `/report-before-after` สรุปสิ่งที่เปลี่ยน
-2. ทำ `/report-table` สรุป TODO/MOCK ที่ถูก realize, validation status
+2. ทำ `/report-table` สรุป TODO/MOCK ที่ถูก productionize, validation status
 3. ทำ `/suggest-next-action` เพื่อแนะนำ next action
 
 ## Rules
@@ -167,7 +167,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - user-friendly error messages
 - optimistic updates เฉพาะเมื่อเหมาะสม
 
-- ใช้ /realize-implementation ถ้าจำเป็น
+- ใช้ /productionize-implementation ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 

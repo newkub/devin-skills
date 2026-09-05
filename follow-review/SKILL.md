@@ -85,7 +85,7 @@ related:
 | 32 | ตรวจ migration plan ก่อนลงมือ | `/review-migration` | `/review-risk` |
 | 33 | ตรวจก่อน refactor | `/review-refactor` | `/review-architecture`, `/review-quality` |
 | 34 | ตรวจ implementation readiness | `/review-implement` | `/review-plan`, `/review-quality` |
-| 35 | ตรวจ implementation completeness | `/review-realize-implementation` | `/review-correctness`, `/review-uxui` |
+| 35 | ตรวจ implementation completeness | `/review-productionize-implementation` | `/review-correctness`, `/review-uxui` |
 | 36 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-quality` |
 | 37 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
 | 38 | ตรวจ GitHub issue | `/review-github-issue` | `/review-issue` |

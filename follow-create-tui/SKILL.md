@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-create-tui
 description: สร้าง TUI application ด้วย Rust และ Ratatui
 related:
@@ -123,7 +123,7 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลัง major components
-- ทำ `/realize-implementation` หลังเสร็จ
+- ทำ `/productionize-implementation` หลังเสร็จ
 - รองรับ error handling ด้วย `Result`
 
 ### 3. Safety

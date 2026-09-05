@@ -35,7 +35,7 @@ related:
   - update-github-metadata
   - update-devin-global-skills
   - update-all-devin-global-skills
-  - deep-realize-implementation
+  - deep-productionize-implementation
   - refactor
   - restructure
   - deep-validate
@@ -122,7 +122,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 12. ถ้า target type เป็น `gitignore` → ทำ `/update-gitignore`
 13. ถ้า target type เป็น `vscode` → ทำ `/update-dot-vscode`
 14. ถ้า target type เป็น `github-metadata` → ทำ `/update-github-metadata`
-15. ถ้า target type เป็น `codebase` → ทำ `/deep-realize-implementation` ตาม critical path
+15. ถ้า target type เป็น `codebase` → ทำ `/deep-productionize-implementation` ตาม critical path
 15. ทำ `/update-references` เพื่อ sync ทุก reference หลัง update
 
 ### 6. Restructure And Refactor
@@ -165,7 +165,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - `/deep-update-project` สำหรับ root project update เท่านั้น
 - ใช้ `update-*` skills ตาม target type ไม่ทำงานที `update-*` skills ทำได้เองโดยตรง
-- ถ้า target ไม่ตรงกับ skill ใด → ใช้ `/deep-realize-implementation` สำหรับ code changes
+- ถ้า target ไม่ตรงกับ skill ใด → ใช้ `/deep-productionize-implementation` สำหรับ code changes
 
 ### 3. Cross-Reference Consistency
 

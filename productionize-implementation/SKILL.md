@@ -1,5 +1,5 @@
----
-name: realize-implementation
+﻿---
+name: productionize-implementation
 description: แปลง TODO, MOCK, FAKE, placeholder เป้น production code จริง end-to-end
 argument-hint: "[scope-or-plan]"
 related:
@@ -15,7 +15,7 @@ related:
   - improve-security
   - run-test-all
   - run-verify
-  - deep-realize-implementation
+  - deep-productionize-implementation
   - ship
   - ask-me
 ---
@@ -120,7 +120,7 @@ related:
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
 5. ถ้า user ต้องการ ship → ทำ `/ship`
-6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-realize-implementation` ก่อนเพื่อ deep pass
+6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
 7. ทำ `/suggest-next-action`
 
 ## Rules

@@ -8,7 +8,7 @@ related:
   - report
   - report-table
   - suggest-next-action
-  - realize-implementation
+  - productionize-implementation
 ---
 
 ## Goal
@@ -66,7 +66,7 @@ related:
 
 ### 2. Direct Execution
 
-- ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/realize-implementation` เลย
+- ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/productionize-implementation` เลย
 - ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
 
 ## Expected Outcome

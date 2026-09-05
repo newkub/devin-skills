@@ -1,4 +1,4 @@
----
+﻿---
 name: review-quality
 description: Review code quality, best practices, naming, consistency, bug-prone patterns, and correctness
 related:
@@ -101,7 +101,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. ทำ `/realize-implementation`
+1. ทำ `/productionize-implementation`
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings
 
 ## Rules

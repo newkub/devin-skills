@@ -1,9 +1,9 @@
----
+﻿---
 name: report-scan-todo
 description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่งและความสำคัญ
 related:
   - update-todo-md
-  - realize-implementation
+  - productionize-implementation
   - scan-codebase
   - report-table
   - resolve-errors
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/realize-implementation`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/productionize-implementation`)
 
 ## Execute
 
@@ -89,7 +89,7 @@ related:
 1. สรุปจำนวน markers แยกตาม type และ priority
 2. ระบุ markers ที่ต้องจัดการด่วน (FIXME/BUG high priority)
 3. ระบุ stale markers ที่เก่าเกิน 6 เดือน
-4. แนะนำ next steps: `/realize-implementation` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
+4. แนะนำ next steps: `/productionize-implementation` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
 
 ## Rules
 
@@ -108,7 +108,7 @@ related:
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
 - ใช้ `/update-todo-md` สำหรับเพิ่ม TODO
-- ใช้ `/realize-implementation` สำหรับ implement TODO
+- ใช้ `/productionize-implementation` สำหรับ implement TODO
 
 ### Output Format
 
@@ -126,7 +126,7 @@ related:
 ### Non-Redundancy
 
 - การเพิ่ม TODO อยู่ใน `/update-todo-md` แล้ว
-- การ implement TODO อยู่ใน `/realize-implementation` แล้ว
+- การ implement TODO อยู่ใน `/productionize-implementation` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 
 ## Expected Outcome

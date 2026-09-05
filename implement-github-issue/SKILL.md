@@ -3,7 +3,7 @@ name: implement-github-issue
 description: นำ GitHub issue ไป implement จนพร้อม merge
 related:
   - create-plan-as-github-issue
-  - realize-implementation
+  - productionize-implementation
   - implement-mock
   - run-verify
   - git-commit
@@ -43,7 +43,7 @@ related:
 
 > Goal: แก้ไขตาม issue
 
-1. ทำ `/realize-implementation` สำหรับ production code
+1. ทำ `/productionize-implementation` สำหรับ production code
 2. ถ้ามี MOCK/FAKE/STUB → ทำ `/implement-mock`
 3. ถ้าต้อง refactor → ทำ `/refactor`
 4. ทำการเปลี่ยนแปลงตาม acceptance criteria
@@ -92,7 +92,7 @@ related:
 
 - ไม่แก้ไขเกิน scope ของ issue
 - ทำงานบน branch ทีเหมาะสม
-- ใช้ `/realize-implementation` สำหรับ code จริง
+- ใช้ `/productionize-implementation` สำหรับ code จริง
 - ใส่ `Closes #<issue>` ใน PR body
 - ตรวจสอบก่อน merge ว่า CI ผ่าน
 

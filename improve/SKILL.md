@@ -6,7 +6,7 @@ related:
   - review-gaps
   - fix
   - refactor
-  - realize-implementation
+  - productionize-implementation
   - deep-validate
   - run-check
   - ask-me
@@ -74,7 +74,7 @@ related:
 
 1. ถ้าเป็นบั๊ก → ทำ `/fix`
 2. ถ้าเป็น code quality → ทำ `/refactor`
-3. ถ้าเป็น missing features หรือ mock → ทำ `/realize-implementation`
+3. ถ้าเป็น missing features หรือ mock → ทำ `/productionize-implementation`
 4. ถ้าเป็น naming → ทำ `/review-quality` แล้วแก้ไข
 5. ถ้าเป็น documentation → ทำ `/update-readme-md`
 6. ถ้ามีหลายไฟล์ → ใช้ `/edit-by-use-scripts` หรือ `/refactor-all-workspace`

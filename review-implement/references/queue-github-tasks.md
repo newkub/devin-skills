@@ -1,4 +1,4 @@
----
+﻿---
 title: Queue And GitHub Tasks Validation
 description: ตรวจ queue tasks และ GitHub tasks ก่อน implementation
 related:
@@ -7,7 +7,7 @@ related:
 
 ## Goal
 
-ตรวจ queue tasks ใน `QUEUE.md` และ GitHub tasks ก่อน `realize-implementation` และ `implement-github-task`
+ตรวจ queue tasks ใน `QUEUE.md` และ GitHub tasks ก่อน `productionize-implementation` และ `implement-github-task`
 
 ## Checks
 

@@ -106,7 +106,7 @@ related:
 
 - ไอเดียต้องส่งต่อไปยัง `/refactor-all-workspace` หรือ `/refactor-workspace` ได้ชัดเจน
 - ระบุลำดับการทำงานและ dependency direction
-- ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง realize
+- ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง `/productionize-implementation`
 
 ## Expected Outcome
 

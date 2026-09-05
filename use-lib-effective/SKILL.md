@@ -1,4 +1,4 @@
----
+﻿---
 name: use-lib-effective
 description: วิเคราะห์ dependencies และใช้งาน libraries ให้ครบและครอบคลุม ไม่ reinvent
 related:
@@ -8,7 +8,7 @@ related:
   - review-techstack
   - deep-analyze
   - deep-analyze-by-use-scripts
-  - realize-implementation
+  - productionize-implementation
 ---
 
 ## Goal
@@ -130,5 +130,5 @@ Optimize performance เมื่อใช้ libraries
 - ลด `code duplication` และ `redundant code`
 - `Performance` ของ application ดีขึ้น
 - มี `documentation` สำหรับการใช้งาน library ที่ซับซ้อน
-- พร้อมสำหรับ `/realize-implementation`
+- พร้อมสำหรับ `/productionize-implementation`
 

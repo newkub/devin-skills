@@ -17,7 +17,7 @@ related:
   - enhance-prompt
   - follow-my-tech-stack
   - review-techstack
-  - realize-implementation
+  - productionize-implementation
 ---
 
 ## Goal
@@ -124,7 +124,7 @@ related:
 3. `/pricing`: plans, comparison, FAQ
 4. `/user`: profile, settings, billing shortcut
 5. `/dashboard`: overview, metrics, upgrade prompts
-6. ใช้ `/realize-implementation` เพื่อตรวจว่าไม่มี TODO/MOCK/placeholder
+6. ใช้ `/productionize-implementation` เพื่อตรวจว่าไม่มี TODO/MOCK/placeholder
 
 ### 10. Ship
 

@@ -4,7 +4,7 @@ description: Implement features ที่จำเป็นสำหรับ MV
 related:
   - analyze-project
   - plan
-  - realize-implementation
+  - productionize-implementation
   - dont-over-engineer
   - report
 ---
@@ -44,7 +44,7 @@ Implement features ที่จำเป็นสำหรับ MVP เท่�
 
 > Goal: Implement MVP Features
 
-1. ทำ `/realize-implementation` สำหรับ must-have features
+1. ทำ `/productionize-implementation` สำหรับ must-have features
 2. ทำ `/dont-over-engineer` สำหรับทุกการ implement
 3. เน้น functionality ที่จำเป็นเท่านั้น
 4. ไม่ทำ optional features หรือ enhancements
