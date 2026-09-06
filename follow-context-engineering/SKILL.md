@@ -10,6 +10,7 @@ related:
   - suggest-next-action
   - deep-plan
   - loop-until-complete
+  - optimize-token-usage
 ---
 
 ## Goal

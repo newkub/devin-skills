@@ -10,6 +10,7 @@ related:
   - resolve-errors
   - report-ansi
   - suggest-next-action
+  - check-todo-comments
 ---
 
 ## Goal

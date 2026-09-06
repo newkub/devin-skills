@@ -8,6 +8,9 @@ related:
   - deep-review
   - review-quality
   - update-specs
+  - optimize-tests
+  - improve-test-data
+  - check-error-coverage
 ---
 
 ## Goal

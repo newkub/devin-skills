@@ -5,6 +5,7 @@ argument-hint: "[component-or-route]"
 related:
   - run-build
   - report-table
+  - optimize-web-vitals
 ---
 
 ## Goal

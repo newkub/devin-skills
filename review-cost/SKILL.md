@@ -6,6 +6,7 @@ related:
   - optimize-cost
   - report-table
   - review-performance
+  - optimize-token-usage
 ---
 
 ## Goal

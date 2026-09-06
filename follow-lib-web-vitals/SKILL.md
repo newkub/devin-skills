@@ -7,6 +7,7 @@ related:
   - run-verify
   - run-test
   - report-table
+  - optimize-web-vitals
 ---
 
 ## Goal
