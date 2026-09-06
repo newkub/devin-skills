@@ -6,7 +6,7 @@ Pick a template based on issue type:
 |---|---|---|
 | bug | [bug.md](bug.md) | Reporting a bug |
 | feature | [feature.md](feature.md) | Requesting a feature or enhancement |
-| idea | [idea.md](idea.md) | Reporting a feature idea from `/deep-idea-features` |
+| idea | [idea.md](idea.md) | Reporting a feature idea |
 | plan | [plan.md](plan.md) | Large plan or epic |
 | question | [question.md](question.md) | Asking a question |
 

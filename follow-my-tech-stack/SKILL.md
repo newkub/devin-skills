@@ -1,4 +1,4 @@
----
+﻿---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
 argument-hint: "[scope]"
@@ -63,7 +63,7 @@ related:
 | Desktop App | `Tauri` | `Tauri` (Rust backend) |
 | Mobile App | `Capacitor` | - |
 | ORM | `Drizzle` | `SQLx`, `SeaORM` |
-| Database | `TanStack DB`, `Cloudflare D1` | - |
+| Database | `TanStack DB`, `Cloudflare D1`, `Cloudflare Hyperdrive` (accelerate Postgres/MySQL) | - |
 | Database Migration | `drizzle-kit` | `SQLx` migrations |
 | Data Schema | `Drizzle Schema` | `SQLx` migrations |
 | API Schema | `oRPC`, `Zod` | `Serde` + `Axum` extractors |
@@ -95,7 +95,7 @@ related:
 | Async Runtime | - | `Tokio` |
 | HTTP Client | - | `reqwest` |
 | Logging | `pino` | `tracing` |
-| AI | `TanStack AI` (ดู `/follow-lib-tanstack-ecosystem`), `Workers AI` | - |
+| AI | `TanStack AI` (ดู `/follow-lib-tanstack-ecosystem`), `Workers AI`, `Cloudflare AI Gateway`, `Cloudflare AI Search` (RAG), `Cloudflare Vectorize`, `Cloudflare Agents`, `Cloudflare Agent Memory`, `Cloudflare Browser Run` (headless), `Cloudflare AI Crawl Control` | - |
 | MCP Server | `@modelcontextprotocol/sdk` | `rmcp` |
 | Web Scraping | `fastCRW` | `scraper` |
 | Linter | `Biome` | `Clippy` |
@@ -113,17 +113,29 @@ related:
 | CI/CD | `GitHub Actions` | `GitHub Actions` |
 | Documentation | `Docus`, `VitePress` | - |
 | Release | `Auto` | - |
-| Deployment | `NuxtHub`, `Cloudflare Workers` | - |
-| Storage | `Cloudflare KV`, `Cloudflare R2` | - |
-| Secrets Management | `/follow-secret-manager` (default: `/follow-service-infisical`) | `/open-web-for-config-secret` |
+| Deployment | `NuxtHub`, `Cloudflare Workers`, `Cloudflare Pages`, `Cloudflare Containers`, `Cloudflare Dynamic Workers`, `Cloudflare Sandbox SDK` | - |
+| Storage | `Cloudflare KV`, `Cloudflare R2` (+`R2 Data Catalog`, `R2 SQL`), `Cloudflare Cache`, `Cloudflare Cache Reserve`, `Cloudflare Artifacts`, `Cloudflare Durable Objects` | - |
+| Secrets Management | `/follow-secret-manager` (default: `/follow-service-infisical`), `Cloudflare Secrets Store` | `/open-web-for-config-secret` |
 | Auth | `Supabase`, `Better Auth`, `WorkOS`, `Auth.js` | `jsonwebtoken` |
 | Payment | `Stripe` | `stripe-rust` |
-| Email | `Resend`, `Nodemailer` | `lettre` |
-| Feature Flags | `PostHog`, `Vercel Flags` | - |
+| Email | `Resend`, `Nodemailer`, `Cloudflare Email Service`, `Cloudflare Email Routing`, `Cloudflare DMARC Management` | `lettre` |
+| Feature Flags | `PostHog`, `Vercel Flags`, `Cloudflare Flagship` | - |
 | Error Monitoring | `Sentry` | `Sentry` |
-| Image Optimization | `Cloudflare Images` | - |
+| Media / Image | `Cloudflare Images`, `Cloudflare Stream`, `Cloudflare Realtime`, `Cloudflare RealtimeKit`, `Cloudflare TURN Service`, `Cloudflare MoQ` | - |
 | Bookmarking | `raindrop-cli` (Raindrop.io) — ดู `/list-raindrop-io`, `/search-in-raindrop-io` | - |
 | JSON Processing | `jq` | - |
+| Cloudflare - Background Jobs | `Cloudflare Workflows`, `Cloudflare Queues`, `Cloudflare Cron Triggers`, `Cloudflare Pipelines` | - |
+| Cloudflare - Realtime / State | `Cloudflare Durable Objects`, `Cloudflare Realtime`, `Cloudflare RealtimeKit`, `Cloudflare TURN Service`, `Cloudflare MoQ` | - |
+| Cloudflare - CDN / Performance | `Cloudflare Cache`, `Cloudflare Argo Smart Routing`, `Cloudflare Smart Shield`, `Cloudflare Speed`, `Cloudflare Waiting Room`, `Cloudflare Load Balancing`, `Cloudflare Health Checks`, `Cloudflare Automatic Platform Optimization` | - |
+| Cloudflare - Network | `Cloudflare Tunnel`, `Cloudflare Spectrum`, `Cloudflare Network Interconnect`, `Cloudflare Multi-Cloud Networking`, `Cloudflare BYOIP`, `Cloudflare China Network`, `Cloudflare Workers VPC`, `Cloudflare Privacy Gateway` | - |
+| Cloudflare - Security | `Cloudflare WAF`, `Cloudflare DDoS Protection`, `Cloudflare Bots`, `Cloudflare Turnstile`, `Cloudflare Challenges`, `Cloudflare API Shield`, `Cloudflare SSL/TLS` (+`Keyless SSL`, `Geo Key Manager`), `Cloudflare Client-side security`, `Cloudflare Fraud Detection`, `Cloudflare Rate Limiting` (Rules), `Cloudflare Randomness Beacon`, `Cloudflare Key Transparency Auditor` | - |
+| Cloudflare - Zero Trust | `Cloudflare One`, `Cloudflare Access`, `Cloudflare Gateway`, `Cloudflare WARP Client`, `Cloudflare Browser Isolation`, `Cloudflare CASB`, `Cloudflare DLP`, `Cloudflare WAN`, `Cloudflare Magic Transit`, `Cloudflare Mesh`, `Cloudflare Digital Experience Monitoring`, `Cloudflare Email security` | - |
+| Cloudflare - DNS / Domains | `Cloudflare DNS` (+`Internal DNS`, `DNS Firewall`), `Cloudflare Registrar`, `1.1.1.1`, `Cloudflare Time Services` | - |
+| Cloudflare - Observability | `Cloudflare Web Analytics`, `Cloudflare Analytics` (GraphQL Analytics API), `Cloudflare Logs` / `Logpush`, `Cloudflare Log Explorer`, `Cloudflare Workers Logs`, `Cloudflare Network Error Logging`, `Cloudflare Radar`, `Cloudflare Notifications`, `Cloudflare Agent Lee` | - |
+| Cloudflare - Tag Management | `Cloudflare Zaraz`, `Google tag gateway` | - |
+| Cloudflare - Multi-tenant | `Cloudflare for Platforms`, `Cloudflare for SaaS`, `Cloudflare Tenant` | - |
+| Cloudflare - Deploy Tooling | `Wrangler`, `Cloudflare Workers Builds`, `Cloudflare Version Management`, `Cloudflare Terraform provider`, `Pulumi` | - |
+| Cloudflare - Misc | `Cloudflare Wallets`, `Cloudflare Web3`, `Cloudflare Privacy Pass` / `Privacy Proxy`, `Cloudflare Ruleset Engine`, `Cloudflare Resource Tagging`, `Cloudflare Snippets` | - |
 
 ### 2. Default Must-Have Libraries
 

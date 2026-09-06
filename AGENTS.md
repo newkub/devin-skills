@@ -1,4 +1,4 @@
----
+﻿---
 name: devin-global-skills
 description: Global and project-specific Devin CLI skill collection and conventions
 related:
@@ -39,7 +39,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/check-monorepo` to verify monorepo status.
 2. Run `/analyze-project` to analyze tech stack and structure.
 3. Run `/all-workspace` if it is a monorepo.
-4. For independent subtasks across multiple workspaces, use `/follow-devin-global-subagents` or `/consider-use-subagents`.
+4. For independent subtasks across multiple workspaces, use `/follow-devin-global-subagents` or `/use-subagents`.
 5. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
 6. Keep the file under 250 lines.
 
@@ -125,7 +125,7 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 
 ### 7. Subagents
 
-- Use `/follow-devin-global-subagents` or `/consider-use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
+- Use `/follow-devin-global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
 - Each subagent receives: workspace path, manifest, and target deliverable.
 - Merge subagent results before writing the root `AGENTS.md`.
 

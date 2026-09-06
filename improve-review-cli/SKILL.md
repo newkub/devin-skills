@@ -1,4 +1,4 @@
----
+﻿---
 name: improve-review-cli
 description: สร้างหรืออัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review จนผ่าน
 argument-hint: "[target-or-iteration]"
@@ -101,7 +101,7 @@ related:
 2. รัน `bun --filter tools-review-codebase typecheck`
 3. รัน `bun --filter tools-review-codebase review-codebase --help`
 4. รัน `bun --filter tools-review-codebase review-codebase`
-5. รัน `bun --filter tools-review-codebase review-codebase:json` แล้วตรวจสอบ `reports/review-report.json`
+5. รัน `bun --filter tools-review-codebase review-codebase:json` แล้วตรวจสอบ `<workspace>/reports/review-report.json`
 6. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)
 
 ### 9. Run Review And Decide
@@ -109,7 +109,7 @@ related:
 > Goal: รัน review CLI แล้วตัดสินใจอัปเดตตาม metrics
 
 1. รัน `bun --filter tools-review-codebase review-codebase` สำหรับ table output
-2. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อเขียน `reports/review-report.json`
+2. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อเขียน `reports/review-report.json` ภายใน workspace ที่ถูก review (เช่น `apps/website/reports/review-report.json`) — ห้ามเขียนลง root `reports/`
 3. บันทึก score, grade, domain breakdown, category coverage, findings count, analyzerErrors, falsePositiveRate
 4. ถ้าผลตรงเงื่อนไขใดข้างล่าง → ทำ `/update-create-analyze-cli` แล้วทำ Step 4-8 เพื่อ integrate กลับไป Step 9 ใหม่ (ไม่เกิน 3 รอบ):
    - `categories` น้อยกว่า 60
@@ -156,13 +156,19 @@ related:
 - ไม่เดา ใช้ tools สำหรับ verification
 - จัดลำดับ issues ตาม severity: Critical → High → Medium → Low
 
-### 5. Review Independence
+### 5. Report Location
+
+- Report ต้องถูกเขียนลงใน workspace ที่ถูก review เท่านั้น เช่น `<workspace>/reports/review-report.json`
+- ห้ามสร้างหรือเขียนลง root-level `reports/` directory
+- ถ้า review หลาย workspaces → แต่ละ workspace มี report ของตัวเอง
+
+### 6. Review Independence
 
 - ทำ review/improve CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
 - ใช้ `/deep-review` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
 
-### 6. Formatting
+### 7. Formatting
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ heading levels สำหรับ structure

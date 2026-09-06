@@ -1,4 +1,4 @@
----
+﻿---
 name: deep-verify
 description: Verify ละเอียดหลัง merge/parallel ทำงาน โดยรวม checks, tests, references, และ runtime
 argument-hint: "[scope]"
@@ -18,7 +18,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 ## Scope
 
-ใช้สำหรับ verification ทีลึกซึ้งกว่า `/deep-validate` หลังจาก `/merge` ผลลัพธ์จาก `consider-use-subagents` หรือหลัง implementation ซับซ้อน
+ใช้สำหรับ verification ทีลึกซึ้งกว่า `/deep-validate` หลังจาก `/merge` ผลลัพธ์จาก `use-subagents` หรือหลัง implementation ซับซ้อน
 
 ## Execute
 

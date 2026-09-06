@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - idea-features
   - bench-features
-  - create-github-issue
+  - create-report-in-dot-devin
   - create-plan-in-dot-devin
   - create-files-in-os-temp
   - open-files-in-web
@@ -15,7 +15,6 @@ related:
   - enhance-prompt
   - report-uxui-sketch
   - report-ansi
-  - update-github-issue
   - analyze-project
 ---
 
@@ -30,7 +29,7 @@ related:
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
 - สร้าง report ชั่วคราวใน OS temp directory ถ้าต้องการ preview
-- สร้าง GitHub issue `idea-features` ผ่าน `/create-github-issue` พร้อม plan และ comment ทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
+- สร้าง report `idea-features` ใน `.devin/reports/` ผ่าน `/create-report-in-dot-devin` พร้อมรายละเอียดทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
 - สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
 - ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
@@ -73,7 +72,7 @@ related:
 
 ### 4. Create Temporary Report
 
-> Goal: สร้าง report ชั่วคราวเพื่อ preview ก่อนสรุปลง GitHub issue
+> Goal: สร้าง report ชั่วคราวเพื่อ preview ก่อนสรุปลง `.devin/reports/`
 
 1. ถ้าต้องการ preview ใน browser → ใช้ `/create-files-in-os-temp` สร้าง report ใน OS temp
 2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
@@ -87,24 +86,28 @@ related:
 1. ใช้ `/open-files-in-web preview <path>` เปิด report ที่สร้างใน OS temp
 2. รอ user ดู preview หรือบอก "เสร็จแล้ว" ก่อน cleanup
 
-### 5. Create Idea-Features Issue
+### 5. Create Idea-Features Report
 
-> Goal: สร้าง GitHub issue `idea-features` พร้อม plan และ comment ทุก feature
+> Goal: สร้าง report `idea-features` ใน `.devin/reports/` พร้อมรายละเอียดทุก feature
 
-1. ทำ `/create-github-issue` ด้วย title `idea-features` และ body เป็น plan สรุป features ทั้งหมดพร้อม priority, phase, effort
-2. comment ทุก feature ลงใน issue ด้วย template `create-github-issue/templates/idea.md`:
+1. ทำ `/create-report-in-dot-devin` ด้วย title `idea-features` โดยเนื้อหาเป็น plan สรุป features ทั้งหมดพร้อม priority, phase, effort
+2. แต่ละ feature เป็น section ใน report ด้วยรูปแบบ:
    - ตาราง `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk`
    - `Todo` เป็นตาราง `Action | Files | Dependencies | Workspace`
    - `UX/UI Sketch` เป็น ANSI art จริง โดยอ่าน project files แล้ววาดเอง ไม่ใช่ placeholder หรือ auto-generated
-3. ใช้ `gh issue comment <issue> --body-file <feature-comment>.md` โพสต์ทีละ feature
-4. บันทึก issue number และ URL ไว้รายงาน user
+3. ตรวจสอบ markdown table ก่อนบันทึก:
+   - header, separator, และทุก row ต้องอยู่บนบรรทัดเดียว ห้ามมี newline ภายใน cell
+   - ตารางสรุปต้องมี 9 คอลัมน์ (นับ `|` ได้ 10 ตัว) บนบรรทัดเดียว
+   - ตาราง Todo ต้องมี 4 คอลัมน์ (นับ `|` ได้ 5 ตัว) บนบรรทัดเดียว
+   - ถ้า row หรือ cell ยาวเกิน ให้ลดรายละเอียดหรือใช้ `<br>` ภายใน cell ไม่ให้ขึ้นบรรทัดใหม่
+4. บันทึก report path ไว้รายงาน user
 
 ### 6. Summarize In Chat
 
 > Goal: รายงานผลให้ user ทราบ
 
 1. สรุป features หลักใน chat สั้นๆ
-2. ระบุ path ของ report ชั่วคราว และ URL ของ issue `idea-features`
+2. ระบุ path ของ report ชั่วคราว และ report `idea-features` ใน `.devin/reports/`
 3. ถาม user ว่าต้องการทำ features ไหน
 
 ### 7. Implement If Asked
@@ -153,6 +156,13 @@ related:
 - แต่ละ feature ต้องมี fields: `number, type, impact, feature, description, phase, effort, mvpScore, risk, reason, how, riskDetail`
 - ใช้ `/enhance-prompt` สำหรับ copy format
 
+### 4.5 Markdown Table Integrity
+
+- ห้ามใส่ newline ภายใน markdown table (header, separator, row, หรือ cell)
+- ตารางสรุป `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk` ต้องมี 9 คอลัมน์ บนบรรทัดเดียว
+- ตาราง Todo `Action | Files | Dependencies | Workspace` ต้องมี 4 คอลัมน์ บนบรรทัดเดียว
+- ถ้าข้อความยาว ให้ลดรายละเอียดหรือใช้ `<br>` ภายใน cell ไม่ให้ขึ้นบรรทัดใหม่
+
 ### 5. Direct Execution
 
 - ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/productionize-implementation`
@@ -178,7 +188,7 @@ related:
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
 - Report ชั่วคราวถูกสร้างใน OS temp (ถ้าต้องการ preview)
-- GitHub issue `idea-features` ถูกสร้างพร้อม plan และ comment ครบทุก feature
+- Report `idea-features` ถูกสร้างใน `.devin/reports/` พร้อมรายละเอียดครบทุก feature
 - Plan ถูกสร้างใน `.devin/plan/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
 - ไม่มี report หรือ plan files ค้างหลังเสร็จงาน

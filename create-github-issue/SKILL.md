@@ -12,7 +12,6 @@ related:
   - open-github-issue
   - open-github-pr
   - list-github-issue
-  - view-issue
   - open-github-repo
   - open-github-repo-personal
   - open-github-repo-org
@@ -27,7 +26,7 @@ Use `gh issue` to create, search, view, edit, close, reopen, delete, and manage 
 
 ## Scope
 
-- For skills: `open-github-issue`, `open-github-pr`, `list-github-issue`, `view-issue`, `follow-github-issue-templates`, `create-github-pr`, `review-github-issue`, `update-github-issue`
+- For skills: `open-github-issue`, `open-github-pr`, `list-github-issue`, `follow-github-issue-templates`, `create-github-pr`, `review-github-issue`, `update-github-issue`
 - Supports the current repo or `--repo owner/repo`
 - Not a full project management tool
 
@@ -70,7 +69,7 @@ See also: `/implement-github-issue`, `/ask-me`, `/open-github-repo`, `/open-gith
 2. If the repo has no templates → read `create-github-issue/templates/index.md` and pick the matching type:
    - `bug` → `templates/bug.md`
    - `feature` → `templates/feature.md`
-   - `idea` → `templates/idea.md` (used by `/deep-idea-features`)
+   - `idea` → `templates/idea.md`
    - `plan` → `templates/plan.md`
    - `question` → `templates/question.md`
 3. If the type is `idea` → draw the ANSI UI sketch yourself by reading the actual project files, not by generating it from a placeholder. Put the real sketch inside the code fence.
@@ -100,6 +99,8 @@ See also: `/implement-github-issue`, `/ask-me`, `/open-github-repo`, `/open-gith
    - `{{todo-table}}` with rows of `| action | files | dependencies | workspace |`
 3. Verify the format:
    - The table must be `| Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk |`
+   - The table header, separator, and every row must each be on a single line; do not insert line breaks inside any table cell
+   - Count `|` to confirm the summary row has exactly 10 pipes (9 columns) and the Todo row has exactly 5 pipes (4 columns)
    - `Todo` must be a table with columns `Action`, `Files`, `Dependencies`, `Workspace`
    - `UX/UI Sketch` must be real ANSI art, not a text description; the header must not contain `(ANSI)`
 4. Post with `gh issue comment <number> --body-file <comment.md>`
@@ -162,6 +163,7 @@ For full update workflows, also use `/update-github-issue`.
 - Use `create-github-issue/templates/<type>.md` based on the selected type
 - Replace placeholders with real data
 - If the type is `idea`, use `templates/idea.md` with the `Feature | Type | Why | Benefit | Impact | Phase | Effort | MVP Score | Risk` table, real ANSI sketch, and a `Todo` table with `Action | Files | Dependencies | Workspace`
+- The summary and Todo tables must have each row on a single line; do not insert line breaks inside table cells
 - If the type does not match any template → use `bug.md` as a base and adjust
 
 ### 5. Labels Convention

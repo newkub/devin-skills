@@ -4,6 +4,7 @@ description: แก้ไข security findings จาก review-security ตา�
 argument-hint: "[scope-or-file]"
 related:
   - review-security
+  - review-auth
   - resolve-errors
   - deep-validate
   - run-check

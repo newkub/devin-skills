@@ -4,7 +4,6 @@ description: Update title, body, comments, labels, assignees, and metadata of an
 argument-hint: "[issue-number] [repo]"
 related:
   - create-github-issue
-  - view-issue
   - list-github-issue
   - open-github-issue
   - ask-me

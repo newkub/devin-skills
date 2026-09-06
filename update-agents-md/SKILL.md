@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-agents-md
   - follow-devin-global-subagents
-  - consider-use-subagents
+  - use-subagents
   - report-workspace-graph
   - follow-monorepo
   - review-rules
@@ -67,7 +67,7 @@ related:
 5. ใช้ `tech: /follow-<tech>` สำหรับ tech mapping
 6. ใช้ `skill-name: /skill-name` สำหรับ skill mapping
 7. ทุก step ใน `## Execute` ต้องเป็น actionable command ที่ agent รันได้
-8. ถ้ามีหลาย workspace อิสระกัน ใช้ `/follow-devin-global-subagents` หรือ `/consider-use-subagents`
+8. ถ้ามีหลาย workspace อิสระกัน ใช้ `/follow-devin-global-subagents` หรือ `/use-subagents`
 9. ถ้า context ไม่ชัด → stop และ report
 
 ### 5. Workspace AGENTS.md
@@ -145,7 +145,7 @@ related:
 
 ### 3. Subagent Discipline
 
-- ใช้ `/follow-devin-global-subagents` หรือ `/consider-use-subagents` เมื่อมีหลาย workspace หรือหลากหลาย architecture ที่ตรวจสอบได้อิสระกัน
+- ใช้ `/follow-devin-global-subagents` หรือ `/use-subagents` เมื่อมีหลาย workspace หรือหลากหลาย architecture ที่ตรวจสอบได้อิสระกัน
 - แต่ละ subagent ต้องได้รับ context: workspace path, manifest, และเป้าหมาย
 - รวมผลจาก subagents ก่อนเขียน root `AGENTS.md`
 

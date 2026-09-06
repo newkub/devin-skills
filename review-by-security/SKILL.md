@@ -6,6 +6,7 @@ related:
   - roleplay-stakeholder
   - review-by-engineer
   - review-security
+  - review-auth
   - improve-security
   - report-table
   - suggest-next-action

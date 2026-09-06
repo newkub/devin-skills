@@ -1,4 +1,4 @@
----
+﻿---
 name: ship
 description: Ship code ตาม AGENTS.md โดย branch, validate, deploy staging, merge, แล้ว production
 argument-hint: "[@issue-number-or-title]"
@@ -47,7 +47,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 1. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ให้สะท้อน project ปัจจุบัน
 2. ทำ `/follow-agents-md` เพื่อดำเนินการตาม `AGENTS.md`
-3. ถ้ามีหลาย workflow/skill ทีอิสระกัน → ทำ `/consider-use-subagents` หรือ `/follow-devin-global-subagents`
+3. ถ้ามีหลาย workflow/skill ทีอิสระกัน → ทำ `/use-subagents` หรือ `/follow-devin-global-subagents`
 4. ถ้าพบข้อขัดแย้งหรือต้องการ trade-off → ทำ `/ask-me`
 
 ### 2. Branch Hygiene

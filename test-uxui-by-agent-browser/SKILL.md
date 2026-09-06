@@ -1,4 +1,4 @@
----
+﻿---
 name: test-uxui-by-agent-browser
 description: ทดสอบ UX/UI ด้วย agent-browser ตรวจ layout, interaction, accessibility และ visual regression
 argument-hint: "[url-or-route]"
@@ -41,7 +41,7 @@ related:
 
 1. ทำตาม `references/test-plan.md` — ระบุ viewport sizes, interaction flows และ assertions
 2. แยก tests ตาม lane: visual, interaction, responsive, a11y, performance
-3. ถ้า scope ใหญ่ → ใช้ `/consider-use-subagents` หรือ `/follow-parallel` แยก lanes
+3. ถ้า scope ใหญ่ → ใช้ `/use-subagents` หรือ `/follow-parallel` แยก lanes
 
 ### 3. Run Visual Checks
 

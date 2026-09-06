@@ -1,5 +1,5 @@
 ---
-name: simplify
+name: follow-simplicity
 description: ลดความซับซ้อนและทำให้ content, code, architecture, workflows หรือ skills กระชับ ตรงประเด็น
 argument-hint: "<path-or-target>"
 allowed-tools:

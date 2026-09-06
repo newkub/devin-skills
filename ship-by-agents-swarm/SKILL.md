@@ -1,11 +1,11 @@
----
+﻿---
 name: ship-by-agents-swarm
 description: Ship ด้วย swarm — fan-out ทุก lane แบบ async parallel แล้ว verify ครบก่อน ship
 argument-hint: "[@issue-or-title]"
 related:
   - ship
   - follow-parallel
-  - consider-use-subagents
+  - use-subagents
   - follow-devin-global-subagents
   - use-scripts
   - use-astgrep
@@ -61,7 +61,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 > Goal: ส่งทุก lane ทำงานพร้อมกัน
 
-1. ทำตาม `references/fan-out.md` — spawn subagents ต่อ lane ผ่าน `/follow-devin-global-subagents` หรือ `/consider-use-subagents`
+1. ทำตาม `references/fan-out.md` — spawn subagents ต่อ lane ผ่าน `/follow-devin-global-subagents` หรือ `/use-subagents`
 2. รัน tool calls ที่ independent พร้อมกันในข้อความเดียวตาม `/follow-parallel`
 3. งาน mechanical จำนวนมาก (rename, codemod, scan) ให้ `/use-scripts` หรือ `/use-astgrep` แทน subagent
 4. ทุก lane ต้องมี deliverable และ acceptance criteria ชัดเจน

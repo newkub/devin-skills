@@ -1,4 +1,4 @@
----
+﻿---
 name: use-another-skills
 description: เลือกและเรียก skill อื่นที่เหมาะสมกับ task
 argument-hint: "[task]"
@@ -71,7 +71,7 @@ related:
 ### 3. Single Next Skill
 
 - ถ้าไม่จำเป็นต้องใช้หลาย skills → เลือกทีละตัว
-- ถ้าซับซ้อนมาก → ใช้ `/consider-use-subagents` แทน
+- ถ้าซับซ้อนมาก → ใช้ `/use-subagents` แทน
 
 ### 4. Validation
 

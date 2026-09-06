@@ -7,6 +7,7 @@ related:
   - open-web-for-config-secret
   - check-secrets-leak
   - analyze-attack-surface
+  - review-auth
   - review-compliance
   - review-observability
   - scan-codebase

@@ -17,7 +17,7 @@
 - structure ชัดเจน: heading hierarchy ถูกต้อง (h1 → h2 → h3)
 - navigation ใช้งานได้: sidebar, TOC, breadcrumbs
 - ไม่มี orphan pages — ทุก page เข้าถึงได้จาก navigation
-- ลดความซ้ำซ้อน: ทำ `/simplify` เพื่อตัด noise และ redundant content
+- ลดความซ้ำซ้อน: ทำ `/follow-simplicity` เพื่อตัด noise และ redundant content
 
 ### API Docs
 

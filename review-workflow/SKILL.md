@@ -1,17 +1,17 @@
----
+﻿---
 name: review-workflow
 description: Review workflow ให้เร็ว ปลอดภัย ใช้ง่าย มีประสิทธิภาพ ไม่ซ้ำซ้อน และไม่เกิน scope
 argument-hint: "[workflow-or-skill]"
 related:
   - review-devin-global-skills
   - update-devin-global-skills
-  - simplify
+  - follow-simplicity
   - review-redundancy
   - review-quality
   - deep-validate
   - report-table
   - suggest-next-action
-  - consider-use-subagents
+  - use-subagents
   - follow-parallel
 ---
 
@@ -73,10 +73,10 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 - ใช้ /review-devin-global-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /simplify ถ้าจำเป็น
+- ใช้ /follow-simplicity ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /consider-use-subagents ถ้าจำเป็น
+- ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
 
 ## Expected Outcome

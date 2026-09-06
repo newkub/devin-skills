@@ -1,5 +1,5 @@
----
-name: consider-use-subagents
+﻿---
+name: use-subagents
 description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles
 argument-hint: "[task]"
 related:

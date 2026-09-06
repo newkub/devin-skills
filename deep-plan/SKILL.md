@@ -10,6 +10,7 @@ related:
   - deep-thinking
   - deep-pondering
   - deep-validate
+  - create-plan-in-dot-devin
 ---
 
 ## Goal
