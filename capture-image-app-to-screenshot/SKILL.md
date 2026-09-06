@@ -28,6 +28,7 @@ related:
   - scan-codebase
   - follow-tool-agent-browser
   - follow-tool-playwright
+  - run-test-visual
   - run-build
   - run-verify
   - suggest-next-action

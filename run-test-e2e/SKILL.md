@@ -10,6 +10,7 @@ related:
   - run-verify
   - suggest-next-action
   - run-test-website-by-agent-browser
+  - run-test-visual
 ---
 
 ## Goal

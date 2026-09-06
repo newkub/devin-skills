@@ -3,6 +3,8 @@ name: review-database
 description: ตรวจ schema, indexes, queries, N+1, migrations และ data integrity ของ database
 argument-hint: "[schema-or-scope]"
 related:
+  - check-migrations
+  - report-schema
   - improve-database
   - review-performance
   - run-drizzle-studio

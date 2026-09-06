@@ -3,6 +3,7 @@ name: implement-mock
 description: แปลง MOCK, FAKE, STUB implementations เป็น production code
 argument-hint: "[scope]"
 related:
+  - follow-tool-msw
   - run-test
   - run-lint
 ---
