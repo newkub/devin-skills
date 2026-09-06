@@ -8,6 +8,7 @@ related:
   - create-github-pr
   - review-github-pr
   - report-table
+  - morning-briefing
 ---
 
 ## Goal

@@ -7,6 +7,8 @@ related:
   - search-skills
   - follow-skills-map
   - list-devin-global-skills-relation
+  - check-skill-usage
+  - check-devin-knowledge
 ---
 
 ## Goal

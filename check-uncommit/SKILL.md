@@ -10,6 +10,8 @@ related:
   - search-project-in-drive-d
   - use-pwsh-shell
   - report-table
+  - morning-briefing
+  - report-repo-health
 ---
 
 ## Goal

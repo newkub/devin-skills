@@ -10,6 +10,7 @@ related:
   - follow-tool-unlighthouse
   - improve-security
   - report-table
+  - check-cors-policy
 ---
 
 ## Goal

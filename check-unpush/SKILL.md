@@ -11,6 +11,7 @@ related:
   - search-project-in-drive-d
   - use-pwsh-shell
   - report-table
+  - morning-briefing
 ---
 
 ## Goal

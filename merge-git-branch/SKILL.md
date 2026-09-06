@@ -8,6 +8,7 @@ related:
   - git-push
   - refactor-commit
   - merge
+  - check-merge-conflicts
 ---
 
 ## Goal

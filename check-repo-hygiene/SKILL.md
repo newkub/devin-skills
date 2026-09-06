@@ -13,6 +13,7 @@ related:
   - report-table
   - improve-onboarding
   - check-file-encoding
+  - report-repo-health
 ---
 
 ## Goal

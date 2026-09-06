@@ -10,6 +10,7 @@ related:
   - report-table
   - search-files-patterns
   - use-bun-shell
+  - report-devin-usage
 ---
 
 ## Goal

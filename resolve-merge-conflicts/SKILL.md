@@ -7,6 +7,7 @@ related:
   - merge-git-branch
   - merge-github-pr
   - git-commit
+  - check-merge-conflicts
 ---
 
 ## Goal

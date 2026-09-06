@@ -24,6 +24,7 @@ related:
   - deep-thinking
   - scan-codebase
   - follow-skills-map
+  - idea-from-session
 ---
 
 ## Goal

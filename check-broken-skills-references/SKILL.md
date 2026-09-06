@@ -11,6 +11,7 @@ related:
   - review-security
   - update-references
   - review-devin-global-skills
+  - check-skill-usage
 ---
 
 ## Goal

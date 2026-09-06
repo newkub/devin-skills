@@ -9,6 +9,7 @@ related:
   - review-compliance
   - run-audit
   - report-table
+  - check-supply-chain
 ---
 
 ## Goal

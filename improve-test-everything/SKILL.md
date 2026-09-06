@@ -10,6 +10,7 @@ related:
   - update-specs
   - improve-test-data
   - optimize-tests
+  - run-test-mutation
 ---
 
 ## Goal

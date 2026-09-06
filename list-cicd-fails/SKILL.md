@@ -11,6 +11,8 @@ related:
   - list-ci-configs
   - report-table
   - suggest-next-action
+  - morning-briefing
+  - report-repo-health
 ---
 
 ## Goal
