@@ -118,7 +118,7 @@ related:
 
 ## Expected Outcome
 
-- ไฟล์ plan ใน `.devin/plan/` ถูกสร้างก่อน implement และลบหลัง `/ship` เสร็จ
+- ไฟล์ plan ใน `.devin/plan/<workspace>/` ถูกสร้างก่อน implement และลบหลัง `/ship` เสร็จ
 - ไฟล์ `docs/project.md` ที่มีตารางเปรียบเทียบทุกมิติ
 - Project ดีกว่าคู่แข่งในทุกมิติ
 - ใช้เวลาไม่เกิน 30 นาทีในการ benchmark

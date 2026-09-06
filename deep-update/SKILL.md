@@ -74,7 +74,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. ทำ `/deep-impact` สำหรับ changes ที่มีผลกระทบสูง
 3. ทำ `/prioritize` เพื่อจัดลำดับตาม impact และ effort
 4. กำหนด rollback plan สำหรับ breaking changes
-5. สร้าง `.devin/plan/<title>-<date>.md` ถ้างานซับซ้อน
+5. สร้าง `.devin/plan/<workspace>/<title>-<date>.md` ถ้างานซับซ้อน
 
 ### 5. Apply Targeted Updates
 

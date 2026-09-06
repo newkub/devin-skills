@@ -57,9 +57,9 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 > Goal: อ่าน Plan
 1. รับ `<issue-or-plan>` จาก argument
    - issue: `/use-github-ship-bots 42`
-   - plan file: `/use-github-ship-bots .devin/plan/feed-bot.md`
+   - plan file: `/use-github-ship-bots .devin/plan/<workspace>/feed-bot.md`
 2. ถ้าเป้น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>`
-3. ถ้าเป้น file → อ่าน `.devin/plan/<file>.md`
+3. ถ้าเป้น file → อ่าน `.devin/plan/<workspace>/<file>.md`
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ถ้าไม่ชัด → ทำ `/ask-me`
 

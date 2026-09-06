@@ -109,7 +109,7 @@ related:
 
 > Goal: ตรวจสอบว่ารายงานเรนเดอร์ถูกต้อง
 
-1. บันทึกไฟล์ใน `reports/<report-name>.html` หรือ `.devin/reports/<report-name>.html`
+1. บันทึกไฟล์ใน `reports/<report-name>.html` หรือ `.devin/reports/<workspace>/<report-name>.html`
 2. รัน `/open-web` หรือ `Start-Process <path>` เพื่อเปิดในเบราว์เซอร์
 3. ยืนยันว่าแท็บ, ธีม, sort, filter, dropdown ทำงานได้
 

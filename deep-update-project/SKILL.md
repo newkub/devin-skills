@@ -57,7 +57,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ทำ `/update-readme-md` เพื่อ sync `README.md`
 2. ทำ `/update-agents-md` เพื่อ sync `AGENTS.md`
-3. ทำ `/update-usage-md` ถ้ามี `usage.kdl` หรือ `USAGE.md`
+3. ทำ `/update-usage-md` ถ้ามี `USAGE.md` หรือ workspace มี public API / CLI ที่ต้องอัปเดต
 4. ทำ `/update-features-md` เพื่อ sync `FEATURES.md`
 5. อัปเดต `CHANGELOG.md` หรือ release notes ถ้ามี
 

@@ -53,7 +53,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 2. ทำ `/deep-impact` สำหรับ changes ที่มีผลกระทบสูง
 3. จัดลำดับตาม critical path: schema → data → API → UX/UI
 4. กำหนด rollback plan สำหรับ breaking changes
-5. สร้าง `.devin/plan/<title>-<date>.md` ถ้างานซับซ้อน
+5. สร้าง `.devin/plan/<workspace>/<title>-<date>.md` ถ้างานซับซ้อน
 
 ### 3. Implement Schema And Data Layer
 

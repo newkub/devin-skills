@@ -1,6 +1,6 @@
 ---
 name: create-report-in-dot-devin
-description: สร้าง report ละเอียดใน .devin/reports/ พร้อม 3 tables, file structure และ what-you-do
+description: สร้าง report ละเอียดใน .devin/reports/<workspace>/ พร้อม 3 tables, file structure และ what-you-do
 argument-hint: "[title]"
 related:
   - create-plan-in-dot-devin
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-สร้าง report ละเอียดใน `.devin/reports/<title>-<time>.md` คล้ายกับ `/create-plan-in-dot-devin` แต่ focus ที่ features, file structure และ progress แบ่ง phase
+สร้าง report ละเอียดใน `.devin/reports/<workspace>/<title>-<time>.md` คล้ายกับ `/create-plan-in-dot-devin` แต่ focus ที่ features, file structure และ progress แบ่ง phase
 
 ## Scope
 
@@ -25,7 +25,7 @@ related:
   2. Extended features
   3. What-you-do แบ่งเป็น phase
 - รวม `/report-file-structure` ของ project
-- บันทึกลง `.devin/reports/<title>-<time>.md`
+- บันทึกลง `.devin/reports/<workspace>/<title>-<time>.md`
 - ไม่ลบไฟล์หลังสร้าง (ลบตาม context หรืองานเสร็จ)
 
 ## Execute
@@ -38,7 +38,8 @@ related:
 2. ถ้า title ขาด → derived จาก context หรือถาม user
 3. แปลง title เป็น kebab-case
 4. ใช้ `YYYYMMDDHHMMSS` เป็น time
-5. สร้าง path `.devin/reports/<title>-<time>.md`
+5. ระบุ `<workspace>` = ชื่อ directory ของ target workspace เช่น `apps/cli/agent-browser` → `agent-browser` (ถ้าเป็น single project ใช้ชื่อ root folder)
+6. สร้าง path `.devin/reports/<workspace>/<title>-<time>.md`
 
 ### 2. Analyze And Gather Data
 
@@ -47,7 +48,7 @@ related:
 1. ทำ `/analyze-project` เพื่อดู features ที่มี
 2. ทำ `/scan-codebase` เพื่อดู structure
 3. ถ้าเกี่ยวข้องกับ features → ทำ `/deep-idea-features` แบบไม่เปิด web app เพื่อดู new/extended features
-4. ถ้ามี plan อยู่ → อ่าน `.devin/plan/<title>-<time>.md`
+4. ถ้ามี plan อยู่ → อ่าน `.devin/plan/<workspace>/<title>-<time>.md`
 
 ### 3. Report File Structure
 
@@ -82,8 +83,8 @@ related:
 
 > Goal: บันทึก report ลงไฟล์
 
-1. สร้าง directory `.devin/reports/` ถ้ายังไม่มี
-2. เขียนไฟล์ `.devin/reports/<title>-<time>.md` ด้วย frontmatter:
+1. สร้าง directory `.devin/reports/<workspace>/` ถ้ายังไม่มี
+2. เขียนไฟล์ `.devin/reports/<workspace>/<title>-<time>.md` ด้วย frontmatter:
    - `title`, `description`, `status: pending`, `created`
    - sections: `## Goal`, `## Scope`, `## New Features`, `## Extended Features`, `## What You Do`, `## File Structure`, `## Notes`
 3. ใช้ `/report-table` สำหรับทุก table
@@ -101,7 +102,8 @@ related:
 
 ### 1. File Location
 
-- ไฟล์ต้องอยู่ใน `.devin/reports/`
+- ไฟล์ต้องอยู่ใน `.devin/reports/<workspace>/`
+- `<workspace>` ใช้ชื่อ directory ของ workspace เท่านั้น ห้ามเป็น relative path เช่น `apps/cli`
 - ชื่อไฟล์ format `<title>-<time>.md`
 - title เป็น kebab-case
 - time ใช้ `YYYYMMDDHHMMSS`
@@ -128,7 +130,7 @@ related:
 
 ## Expected Outcome
 
-- ไฟล์ report `.devin/reports/<title>-<time>.md` ถูกสร้าง
+- ไฟล์ report `.devin/reports/<workspace>/<title>-<time>.md` ถูกสร้าง
 - Report มี 3 tables ครบถ้วน
 - รวม `/report-file-structure`
 - ใช้ `/report-what-you-do` แบ่ง phase

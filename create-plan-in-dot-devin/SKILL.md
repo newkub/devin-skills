@@ -1,6 +1,6 @@
 ---
 name: create-plan-in-dot-devin
-description: สร้างแผนจากไอเดียฟีเจอร์พร้อม scoring แล้วเขียนลง .devin/plan/<title-date>.md
+description: สร้างแผนจากไอเดียฟีเจอร์พร้อม scoring แล้วเขียนลง .devin/plan/<workspace>/<title-date>.md
 argument-hint: "[topic]"
 related:
   - deep-idea-features
@@ -17,7 +17,7 @@ related:
 
 ## Goal
 
-สร้างแผนที่อ่านง่าย มีประโยชน์ และติดตามผลได้ จากไอเดียฟีเจอร์ แล้วเขียนลง `.devin/plan/<title-date>.md` พร้อมเปิดไฟล์แผนใน editor
+สร้างแผนที่อ่านง่าย มีประโยชน์ และติดตามผลได้ จากไอเดียฟีเจอร์ แล้วเขียนลง `.devin/plan/<workspace>/<title-date>.md` พร้อมเปิดไฟล์แผนใน editor
 
 ## Scope
 
@@ -36,8 +36,9 @@ related:
 1. รับ `<topic>` จาก argument หรือ context
 2. อ่าน context, design, report ที่เกี่ยวข้อง
 3. ถ้าข้อมูลไม่พอ → ทำ `/ask-me`
-4. ตรวจว่า `.devin/plan/` มีอยู่ ถ้าไม่มี → สร้าง directory
-5. ยืนยัน target workspace กับ user ถ้าไม่ชัด
+4. ยืนยัน target workspace กับ user ถ้าไม่ชัด
+5. ระบุ `<workspace>` = ชื่อ directory ของ target workspace เช่น `apps/cli/agent-browser` → `agent-browser` (ถ้าเป็น single project ใช้ชื่อ root folder)
+6. ตรวจว่า `.devin/plan/<workspace>/` มีอยู่ ถ้าไม่มี → สร้าง directory
 
 ### 2. Generate And Score Features
 
@@ -63,7 +64,7 @@ related:
 
 > Goal: หลีกเลี่ยงแผนซ้ำ
 
-1. list ไฟล์ใน `.devin/plan/` แล้วเปรียบ title กับแผนใหม่
+1. list ไฟล์ใน `.devin/plan/<workspace>/` แล้วเปรียบ title กับแผนใหม่
 2. ถ้ามี plan ซ้ำ → อัปเดตไฟล์เดิมแทน
 3. ถ้าไม่มี → ดำเนินการต่อขั้นตอน 5
 
@@ -90,7 +91,7 @@ related:
 
 > Goal: สร้างไฟล์แผนและเปิดให้ user ตรวจสอบ
 
-1. บันทึก body ลง `.devin/plan/<title>-<YYYY-MM-DD>.md`
+1. บันทึก body ลง `.devin/plan/<workspace>/<title>-<YYYY-MM-DD>.md`
 2. ถ้าไฟล์มีอยู่แล้วและเป็นแผนคนละเรื่อง → เลือก title ใหม่หรือถาม user
 3. เปิดไฟล์ด้วย `open-in-zed` หรือ OS native command ตาม platform
 4. รายงาน path ของไฟล์แผน
@@ -126,9 +127,10 @@ related:
 
 ### 4. File Safety
 
-- สร้าง `.devin/plan/` ถ้าไม่มี
+- สร้าง `.devin/plan/<workspace>/` ถ้าไม่มี
+- `<workspace>` ใช้ชื่อ directory ของ workspace เท่านั้น ห้ามเป็น relative path เช่น `apps/cli`
 - ไม่ overwrite plan ที่มีอยู่โดยไม่ถาม user
-- path ต้องอยู่ภายใต้ `.devin/plan/` เท่านั้น ห้ามมี `..`
+- path ต้องอยู่ภายใต้ `.devin/plan/<workspace>/` เท่านั้น ห้ามมี `..`
 - ใช้ `open-in-zed` หรือ OS native command เท่านั้น
 
 - ใช้ `/implement-plan` เมื่อต้องการทำงานตามแผน
@@ -137,7 +139,7 @@ related:
 
 ## Expected Outcome
 
-- ไฟล์ `.devin/plan/<title>-<date>.md` ถูกสร้างด้วย plan ที่มี features table, scoring math, TODO table, Execution Order
+- ไฟล์ `.devin/plan/<workspace>/<title>-<date>.md` ถูกสร้างด้วย plan ที่มี features table, scoring math, TODO table, Execution Order
 - Plan body อ่านง่าย มี Iconify icons, color, และ centered diagram
 - แต่ละ feature ที่ต้องการ visual มี `/report-uxui-sketch` ประกอบ
 - ไฟล์แผนถูกเปิดใน editor

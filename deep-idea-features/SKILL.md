@@ -29,8 +29,8 @@ related:
 - วิเคราะห์ project, packages, ฟีเจอรที่มีอยู่
 - สร้างไอเดียฟีเจอรจัดลำดับความสำคัญ 2 กลุ่ม: `Extends` และ `New`
 - สร้าง report ชั่วคราวใน OS temp directory ถ้าต้องการ preview
-- สร้าง report `idea-features` ใน `.devin/reports/` ผ่าน `/create-report-in-dot-devin` พร้อมรายละเอียดทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
-- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
+- สร้าง report `idea-features` ใน `.devin/reports/<workspace>/` ผ่าน `/create-report-in-dot-devin` พร้อมรายละเอียดทุก feature ด้วยรูปแบบ `features`, `why`, `benefit`, `impact`, `todo`, `uxui-sketch`
+- สร้าง plan ใน `.devin/plan/<workspace>/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
 - ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
 - เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/productionize-implementation` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
@@ -72,7 +72,7 @@ related:
 
 ### 4. Create Temporary Report
 
-> Goal: สร้าง report ชั่วคราวเพื่อ preview ก่อนสรุปลง `.devin/reports/`
+> Goal: สร้าง report ชั่วคราวเพื่อ preview ก่อนสรุปลง `.devin/reports/<workspace>/`
 
 1. ถ้าต้องการ preview ใน browser → ใช้ `/create-files-in-os-temp` สร้าง report ใน OS temp
 2. รวม 3 tables: New Features, Extended Features, What You Do แบ่ง phase
@@ -88,7 +88,7 @@ related:
 
 ### 5. Create Idea-Features Report
 
-> Goal: สร้าง report `idea-features` ใน `.devin/reports/` พร้อมรายละเอียดทุก feature
+> Goal: สร้าง report `idea-features` ใน `.devin/reports/<workspace>/` พร้อมรายละเอียดทุก feature
 
 1. ทำ `/create-report-in-dot-devin` ด้วย title `idea-features` โดยเนื้อหาเป็น plan สรุป features ทั้งหมดพร้อม priority, phase, effort
 2. แต่ละ feature เป็น section ใน report ด้วยรูปแบบ:
@@ -107,7 +107,7 @@ related:
 > Goal: รายงานผลให้ user ทราบ
 
 1. สรุป features หลักใน chat สั้นๆ
-2. ระบุ path ของ report ชั่วคราว และ report `idea-features` ใน `.devin/reports/`
+2. ระบุ path ของ report ชั่วคราว และ report `idea-features` ใน `.devin/reports/<workspace>/`
 3. ถาม user ว่าต้องการทำ features ไหน
 
 ### 7. Implement If Asked
@@ -117,7 +117,7 @@ related:
 1. ถ้า user บอก "ทำ" → ทำ `/deep-review` ก่อน
 2. ทำ `/create-plan-in-dot-devin` จาก features ที่เลือก โดยใช้ `<topic>` เป้น title บันทึก `PLAN_PATH`
 3. จากนั้นทำ `/productionize-implementation` ตาม `PLAN_PATH`
-4. หลัง `/productionize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/` และลบ `PLAN_PATH`
+4. หลัง `/productionize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/<workspace>/` และลบ `PLAN_PATH`
 5. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็นต้อง → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
 
 ### 8. Cleanup
@@ -125,7 +125,7 @@ related:
 > Goal: จัดการหลังใช้งาน
 
 1. ถ้า report ชั่วคราวยังคงอยู่ใน OS temp และไม่ต้องการเก็บ → ลบไฟล์ทันที
-2. ถ้า plan ยังคงอยู่ → ลบไฟล์ `.devin/plan/<title>-<date>-<time>-<session>.md`
+2. ถ้า plan ยังคงอยู่ → ลบไฟล์ `.devin/plan/<workspace>/<title>-<date>-<time>-<session>.md`
 3. ถ้า user บอกว่าเสร็จแล้ว → ตรวจสอบว่าไม่มี report files หรือ plan files ค้าง
 
 ## Rules
@@ -140,7 +140,7 @@ related:
 ### 2. Report And Plan Are Temporary
 
 - สร้าง report ชั่วคราวใน OS temp directory เท่านั้น
-- สร้าง plan ใน `.devin/plan/` ผ่าน `/create-plan-in-dot-devin`
+- สร้าง plan ใน `.devin/plan/<workspace>/` ผ่าน `/create-plan-in-dot-devin`
 - ต้องลบ report files ใน OS temp และ plan files หลัง `/productionize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
 - ไม่เก็บ report หรือ plan ค้าง
 
@@ -188,8 +188,8 @@ related:
 
 - ไอเดีย features ถูกสร้างและจัดลำดับ
 - Report ชั่วคราวถูกสร้างใน OS temp (ถ้าต้องการ preview)
-- Report `idea-features` ถูกสร้างใน `.devin/reports/` พร้อมรายละเอียดครบทุก feature
-- Plan ถูกสร้างใน `.devin/plan/` ก่อน implement
+- Report `idea-features` ถูกสร้างใน `.devin/reports/<workspace>/` พร้อมรายละเอียดครบทุก feature
+- Plan ถูกสร้างใน `.devin/plan/<workspace>/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
 - ไม่มี report หรือ plan files ค้างหลังเสร็จงาน
 - เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/productionize-implementation` แล้วลบ report files และ plan files

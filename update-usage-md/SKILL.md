@@ -1,133 +1,110 @@
 ---
 name: update-usage-md
-description: อัปเดต usage.kdl แล้ว generate USAGE.md completions และ manpages
+description: สร้างหรืออัปเดต USAGE.md usage documentation ให้สะท้อน public API และ CLI จริง
 argument-hint: "[scope]"
 related:
-  - review-app-usage
-  - follow-tool-usage
+  - review-usage-md
   - report-usage-md
   - report-table
   - suggest-next-action
   - deep-validate
   - update-project
   - deep-update-project
+  - follow-tool-usage
 ---
 
 ## Goal
 
-อัปเดต `usage.kdl` (KDL source spec) ให้สะท้อน CLI จริง แล้ว generate `USAGE.md` (markdown docs), completions และ manpages
+สร้างหรืออัปเดต `USAGE.md` ที่ root ของ workspace ให้สะท้อนการใช้งานจริง — public API, CLI commands, examples และ configuration โดยเขียนจาก code จริงเสมอ
 
 ## Scope
 
-ใช้เมื่อ CLI มีการเปลี่ยนแปลง (เพิ่ม/ลบ/แก้ flags, args, commands) และต้องการอัปเดต `usage.kdl` และ `USAGE.md` — `usage.kdl` เป็น KDL source (single source of truth) `USAGE.md` เป็น markdown output ที่ generate จาก spec
-
-- เรียกจาก `/update-project` หรือ `/deep-update-project` เมื่อ sync project docs/config
-- ถ้ายังไม่มี `usage.kdl` → ใช้ `/follow-tool-usage` สร้าง spec ก่อน
+- ใช้เมื่อ public API, CLI หรือ features เปลี่ยนแปลง หรือ `USAGE.md` ยังไม่มี/ล้าสมัย
+- `USAGE.md` เป็น manual usage documentation ที่เขียนจาก code จริง ไม่ generate จาก spec file
+- เรียกจาก `/update-project` หรือ `/deep-update-project` เมื่อ sync project docs
+- ถ้า project ใช้ `usage` CLI spec tool (มี `usage.kdl`) → ใช้ `/follow-tool-usage` แทน
 
 ## Execute
 
-### 1. Review Current Spec
+### 1. Review Current State
 
-> Goal: เข้าใจสถานะปัจจุบันของ `usage.kdl`
+> Goal: เข้าใจสถานะปัจจุบันของ `USAGE.md`
 
-1. ทำ `/review-app-usage` เพื่อตรวจ `usage.kdl` ก่อนอัปเดต
-2. ถ้าไม่มี `usage.kdl` → ทำ `/follow-tool-usage` แทน
-3. บันทึก findings จาก review
+1. ตรวจว่า `<workspace>/USAGE.md` มีอยู่หรือไม่
+2. ถ้ามี → ทำ `/review-usage-md` เพื่อหา gaps และ stale content
+3. ถ้าไม่มี → บันทึก status `missing` เตรียมสร้างใหม่
+4. บันทึก findings จาก review
 
-### 2. Detect CLI Changes
+### 2. Detect Usage Surface
 
-> Goal: ระบุการเปลี่ยนแปลงของ CLI จริง
+> Goal: ระบุ public API และ CLI จริงของ workspace
 
-1. ตรวจ CLI entry point (`src/presentation/cli.ts` หรือ equivalent)
-2. เปรียบเทียบ flags, args, commands จริงกับ `usage.kdl`
-3. ระบุสิ่งที่เปลี่ยนแปลง:
-   - flags เพิ่ม/ลบ/เปลี่ยน
-   - args เพิ่ม/ลบ/เปลี่ยน
-   - commands เพิ่ม/ลบ/เปลี่ยน
-   - help text เปลี่ยน
-4. บันทึก diff ระหว่าง spec และ CLI จริง
+1. อ่าน package manifest (`Cargo.toml`, `package.json`, `pyproject.toml`) — name, version, bin targets
+2. อ่าน `README.md` สำหรับ overview และ installation
+3. สแกน public API จาก code จริง:
+   - Rust: `pub` items ใน `src/lib.rs`, bin targets ใน `src/main.rs`/`src/bin/`
+   - TypeScript/JS: `exports` ใน `index.ts`, `bin` ใน `package.json`
+   - Python: `__all__` ใน `__init__.py`, entry points ใน `pyproject.toml`
+4. อ่าน `examples/` หรือ tests สำหรับ usage patterns จริง
+5. ระบุสิ่งที่เปลี่ยนแปลงกับ `USAGE.md` เดิม (ถ้ามี)
 
-### 3. Update Spec
+### 3. Write USAGE.md
 
-> Goal: `usage.kdl` ตรงกับ CLI จริง
+> Goal: `USAGE.md` ครอบคลุมการใช้งานจริง
 
-1. อัปเดต metadata: `name`, `bin`, `about`, `version`, `author`, `license`
-2. อัปเดต `flag`, `arg`, `cmd` พร้อม `help`
-3. ใช้ `effect` เช่น `read`, `write`, `destructive` สำหรับ commands และ flags
-4. ตรวจว่าทุก command มี `help` และ `effect`
-5. ตรวจว่า version ตรงกับ `package.json`
+สร้างหรืออัปเดต `<workspace>/USAGE.md` ด้วย sections:
 
-### 4. Validate Spec
+- `## Overview` — paragraph สั้น 1-3 บรรทัด
+- `## Installation` — command ติดตั้งหรือ dependency declaration ตาม ecosystem
+- `## Usage` — basic usage ตาม workspace type (library import / CLI commands / binary)
+- `## API Reference` (library) หรือ `## Commands` (CLI) — table ของ public items พร้อม signature สั้น
+- `## Examples` — code examples ที่มาจาก code จริง
+- `## Configuration` — config options (ถ้ามี)
 
-> Goal: `usage.kdl` ผ่าน validation
+### 4. Validate
 
-1. รัน `usage parse usage.kdl` เพื่อ validate KDL syntax
-2. ถ้า parse ไม่ผ่าน → แก้ไขแล้ว retry (max 3)
-3. รัน `usage lint usage.kdl` ถ้ามี lint command
-4. ตรวจว่าไม่มี error ก่อน generate
+> Goal: `USAGE.md` ถูกต้องและครบถ้วน
 
-### 5. Generate USAGE.md
+1. ทุก public API / CLI command ใน code ต้องมีใน `USAGE.md`
+2. code examples ต้องมี syntax ถูกต้องและมาจาก code จริง
+3. ตรวจว่า `USAGE.md` ไม่เกิน 250 บรรทัด
+4. ตรวจว่า version และ package name ตรงกับ manifest
 
-> Goal: สร้าง `USAGE.md` (markdown docs) จาก `usage.kdl`
-
-1. รัน `usage generate markdown -f usage.kdl > USAGE.md` เพื่อ generate markdown docs
-2. ตรวจว่า `USAGE.md` มีครบ: synopsis, options, commands, examples
-3. ถ้า `USAGE.md` มีอยู่แล้ว → overwrite หลัง confirm เท่านั้น
-4. ตรวจว่า `USAGE.md` ไม่เกิน 250 บรรทัด
-
-### 6. Generate Completions And Manpages
-
-> Goal: สร้าง completions และ manpages
-
-1. รัน `usage generate completion bash -f usage.kdl` สำหรับ bash completions
-2. รัน `usage generate completion zsh -f usage.kdl` สำหรับ zsh completions
-3. รัน `usage generate completion fish -f usage.kdl` สำหรับ fish completions
-4. รัน `usage generate manpage -f usage.kdl` สำหรับ manpages
-5. เก็บ completions ใน `completions/` directory ถ้าจำเป็น
-
-### 7. Report
+### 5. Report
 
 > Goal: รายงานผลการอัปเดต
 
-1. ทำ `/report-usage-md` หรือ `/report-table` สรุปสิ่งที่เปลี่ยนแปลงใน `usage.kdl` และ `USAGE.md`
+1. ทำ `/report-usage-md` หรือ `/report-table` สรุป sections และสิ่งที่เปลี่ยนแปลง
 2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
 
-### 1. KDL Is Source, Markdown Is Output
+### 1. Code Is Source Of Truth
 
-- `usage.kdl` เป็น KDL source spec (single source of truth)
-- `USAGE.md` เป็น markdown docs ที่ generate จาก `usage.kdl`
-- ห้ามแก้ `USAGE.md` โดยตรง — แก้ `usage.kdl` แล้ว regenerate
-- ถ้า `USAGE.md` ต้องการเนื้อหาเพิ่ม → เพิ่มใน `usage.kdl` แล้ว regenerate
+- `USAGE.md` เขียนจาก code จริงเสมอ ห้ามเขียน API หรือ commands ที่ไม่มีใน code
+- ถ้า project ใช้ `usage.kdl` spec → delegate ไป `/follow-tool-usage` แทนการเขียนเอง
 
-### 2. Spec Matches CLI
+### 2. Coverage
 
-- `usage.kdl` ต้องสะท้อน CLI จริงเสมอ
-- ทุก flag, arg, command ใน CLI ต้องมีใน `usage.kdl`
-- ทุก flag, arg, command ใน `usage.kdl` ต้องมีใน CLI จริง
+- ทุก public API ต้องมีใน `USAGE.md` หรือระบุเหตุผลที่ยกเว้น
+- ทุก CLI command ต้องมี help หรือ description
+- ทุก feature หลักต้องมีอย่างน้อย 1 example
 
-### 3. Effects Required
+### 3. Examples
 
-- ทุก command ต้องมี `effect` (`read`, `write`, `destructive`)
-- flags ที่มี side effects ต้องมี `effect` ด้วย
+- examples ต้อง copy หรือ adapt จาก code จริง (`src/`, `examples/`, tests)
+- ห้ามเขียน mock examples ที่ run ไม่ได้
 
-### 4. Version Sync
+### 4. Idempotency
 
-- `version` ใน `usage.kdl` ต้องตรงกับ `package.json`
-- ถ้า version เปลี่ยน → อัปเดต `usage.kdl` แล้ว regenerate `USAGE.md`
-
-### 5. Validate Before Generate
-
-- ต้อง validate `usage.kdl` ก่อน generate `USAGE.md` และ completions
-- ถ้า parse ไม่ผ่าน → ห้าม generate
+- รันซ้ำด้วย code เดิมต้องได้ `USAGE.md` เหมือนเดิม
+- overwrite `USAGE.md` ได้เฉพาะเมื่อไฟล์ถูก maintain โดย skill นี้หรือ user confirm
 
 - ใช้ /deep-validate ถ้าจำเป็น
 
 ## Expected Outcome
 
-- `usage.kdl` ตรงกับ CLI จริง
-- `USAGE.md` ถูก generate จาก `usage.kdl` ครบ synopsis, options, commands, examples
-- completions และ manpages ถูก generate ครบ
-- version ตรงกับ `package.json`
+- `<workspace>/USAGE.md` สะท้อน public API และ CLI จริง
+- ครบ Overview, Installation, Usage, API Reference/Commands, Examples
+- version และ package name ตรงกับ manifest
 - รายงานสรุปการเปลี่ยนแปลงครบถ้วน

@@ -47,7 +47,7 @@ related:
 > Goal: แปลงเนื้อหาเป้น action items
 
 1. วิเคราะห์ numbered list ใน note
-2. สร้าง TODO list หรือ `.devin/plan/<title>.md` ถ้ามีแผนละเอียด
+2. สร้าง TODO list หรือ `.devin/plan/<workspace>/<title>.md` ถ้ามีแผนละเอียด
 3. ใช้ `todo_write` เพื่อ track สถานะ
 
 ### 4. Implement

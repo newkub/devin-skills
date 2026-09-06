@@ -1,6 +1,6 @@
 ---
 name: deep-review-codebase
-description: รัน review-* ครบทุก domain แล้วรายงานผลลง `.devin/reports/` (report only)
+description: รัน review-* ครบทุก domain แล้วรายงานผลลง `.devin/reports/<workspace>/` (report only)
 argument-hint: "[path-or-target]"
 related:
   - run-review
@@ -27,7 +27,7 @@ related:
 
 ใช้เมื่อต้องการ review ครบทุก dimension ของ codebase (architecture, quality, security, performance, delivery, UX/DX) ผ่าน `tools/review-codebase` CLI ที่ project root โดยไม่ซ้ำกับ `/run-review` ที่เน้นการรัน CLI และแปลผลสั้นๆ
 
-ผลลัพธ์รายงานลง `.devin/reports/deep-review-codebase-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code
+ผลลัพธ์รายงานลง `.devin/reports/<workspace>/deep-review-codebase-<time>.md` ผ่าน `/create-report-in-dot-devin` โดยแยก section ตาม `review-*` แต่ละ domain — report เท่านั้น ไม่แก้ไข code
 
 ## Execute
 
@@ -97,7 +97,7 @@ related:
 
 ### 7. Report To .devin/Reports
 
-> Goal: รายงานผล review ลง `.devin/reports/` (report only)
+> Goal: รายงานผล review ลง `.devin/reports/<workspace>/` (report only)
 
 1. ทำ `/report-table` สรุป score, findings, owner skill, priority
 2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review-codebase` และเนื้อหาเป็น executive summary: score, grade, findings count ตาม domain
@@ -109,7 +109,7 @@ related:
 
 ### 1. No Duplication
 
-- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review-codebase` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + report ลง `.devin/reports/`"
+- ไม่ซ้ำกับ `/run-review` — `run-review` เน้น "รันแล้วบอกผล" ส่วน `deep-review-codebase` เน้น "รัน + วิเคราะห์ลึก + จัดลำดับ + report ลง `.devin/reports/<workspace>/`"
 - Report only — รายงานผลลง report เท่านั้น ไม่แก้ไข code ใน skill นี้
 - ถ้าผลลัพธ์สั้นและไม่ต้อง deep analysis → ใช้ `/run-review` แทน
 

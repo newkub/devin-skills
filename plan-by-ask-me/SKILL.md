@@ -67,7 +67,7 @@ related:
 
 > Goal: บันทึกแผนทีตกลงร่วมกัน
 
-1. ถ้า tasks มากกว่า 10 → ทำ `/create-plan-in-dot-devin` เพื่อสร้าง `.devin/plan/<topic>-<date>.md`
+1. ถ้า tasks มากกว่า 10 → ทำ `/create-plan-in-dot-devin` เพื่อสร้าง `.devin/plan/<workspace>/<topic>-<date>.md`
 2. ถ้า tasks น้อยกว่าหรือเท่ากับ 10 → บันทึกใน chat report
 3. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือ implement
 
@@ -117,6 +117,6 @@ related:
 
 - แผนทีผู้ใช้เห็นด้วยหรือตกลงร่วมกัน
 - รายงาน deep report ทีมี evidence ครบถ้วน
-- ไฟล์ plan ใน `.devin/plan/` ถ้ามี tasks มากกว่า 10
+- ไฟล์ plan ใน `.devin/plan/<workspace>/` ถ้ามี tasks มากกว่า 10
 - ลำดับ action ถัดไปทีชัดเจน
 - ไม่มีการตัดสินใจทีสำคัญโดยไม่ได้ถามผู้ใช้

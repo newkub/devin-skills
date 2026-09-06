@@ -73,7 +73,7 @@ related:
    - `/cleanup-files-in-project` (ถ้าจำเป็น)
    - `/update-readme-md`
    - `/update-agents-md`
-   - `/update-usage-md` เพื่ออัปเดต `usage.kdl` CLI spec และ `USAGE.md` ถ้ามี
+   - `/update-usage-md` เพื่อสร้าง/อัปเดต `USAGE.md` ที่ root ของแต่ละ workspace
    - `/update-features-md` เพื่อสร้าง/อัปเดต `FEATURES.md` ที่ root ของทุก workspace
    - `/update-docs` (ถ้ามี `docs/`)
    - `/update-project-rules` (ถ้ามี `sgconfig.yml` และ `rules/`)

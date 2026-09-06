@@ -2,7 +2,7 @@
 
 ## Goal
 
-สร้างไฟล์แผนใน `.devin/plan/` ที่อ่านง่าย สแกนได้ และ track ผลได้ด้วย `/implement-plan`
+สร้างไฟล์แผนใน `.devin/plan/<workspace>/` ที่อ่านง่าย สแกนได้ และ track ผลได้ด้วย `/implement-plan`
 
 ## Section Layout
 

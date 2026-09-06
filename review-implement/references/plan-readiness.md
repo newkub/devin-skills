@@ -8,7 +8,7 @@
 
 ### Plan File Structure
 
-1. ตรวจไฟล์ใน `.devin/plan/` มี frontmatter: `title`, `description`, `status`, `created`
+1. ตรวจไฟล์ใน `.devin/plan/<workspace>/` มี frontmatter: `title`, `description`, `status`, `created`
 2. ตรวจมี sections: `## Goal`, `## Scope`, `## Tasks`, `## Execution Order`, `## Risks`, `## Notes`
 3. ตรวจ task table มี columns: Task, Status, Priority, Dependencies
 4. ตรวจ `status` เป็น `pending` หรือ `in-progress` ไม่ใช่ `completed`

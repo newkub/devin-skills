@@ -94,7 +94,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 > Goal: ทำงานตามแผนจนครบและลบแผน
 
-1. ถ้ามี `.devin/plan/<title>-<date>.md` → ทำ `/implement-plan`
+1. ถ้ามี `.devin/plan/<workspace>/<title>-<date>.md` → ทำ `/implement-plan`
 2. ถ้าไม่มีแผน → รายงานผล
 
 ### 8. Report And Next Steps
