@@ -3,8 +3,7 @@ name: review-update
 description: Review drift between current and target state to determine update priority order
 argument-hint: "[scope]"
 related:
-  - update-version-latest
-  - update-dependencies-latest
+  - update-version-to-latest
   - check-should-update
   - report-table
   - scan-codebase
@@ -109,8 +108,8 @@ Review drift ระหว่าง current state และ target state เพ�
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
 
-- ใช้ /update-version-latest ถ้าจำเป็น
-- ใช้ /update-dependencies-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /update-specs ถ้าจำเป็น
 
 ## Expected Outcome

@@ -4,9 +4,9 @@ Reference สำหรับ dependency review checks
 
 ## Versions And Freshness
 
-1. ตรวจสอบ version ปัจจุบันเทียบกับ latest stable ด้วย `/update-dependencies-latest` (dry run)
-2. ตรวจสอบ runtime versions ด้วย `/update-version-latest` (dry run)
-3. ถ้าต้องการ update ทุก version รวมกัน ให้ใช้ `/update-version-latest` (dry run)
+1. ตรวจสอบ version ปัจจุบันเทียบกับ latest stable ด้วย `/update-version-to-latest` (dry run)
+2. ตรวจสอบ runtime versions ด้วย `/update-version-to-latest` (dry run)
+3. ถ้าต้องการ update ทุก version รวมกัน ให้ใช้ `/update-version-to-latest` (dry run)
 4. ระบุ dependencies ที่ outdated: major, minor, patch
 5. ตรวจสอบ floating ranges (`latest`, `*`, unbounded `>=`) ที่ auto-resolve เป็น brand-new releases
 6. ตรวจสอบ peer dependencies และ compatibility

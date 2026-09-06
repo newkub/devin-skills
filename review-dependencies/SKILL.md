@@ -3,7 +3,7 @@ name: review-dependencies
 description: ตรวจ dependencies — outdated, vulnerabilities, licenses, duplicates, unused packages
 argument-hint: "[workspace-or-package]"
 related:
-  - update-dependencies-latest
+  - update-version-to-latest
   - review-security
   - follow-my-tech-stack
   - scan-codebase
@@ -84,7 +84,7 @@ related:
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
 
-- ใช้ /update-dependencies-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
 
 ## Expected Outcome
 

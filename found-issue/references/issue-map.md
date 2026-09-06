@@ -23,7 +23,7 @@
 | package manifest ไม่พร้อม publish | `/setup-package` |
 | release workflow/config ขาด | `/setup-release`, `/follow-release` |
 | TODO/MOCK/placeholder เหลือ | `/report-scan-todo`, `/implement-mock` |
-| dependencies outdated | `/update-dependencies-latest`, `/update-version-latest`, `/follow-tool-taze` |
+| dependencies outdated | `/update-version-to-latest`, `/follow-tool-taze` |
 | ไฟล์/branch/worktree รก | `/run-cleanup`, `/cleanup-files-in-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
 | git conflict | `/resolve-merge-conflicts`, `/git-debug` |
 | workspace หลายอันไม่ตรงกัน | `/alignment`, `/sync-drive-d-submodules` |

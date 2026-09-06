@@ -3,8 +3,7 @@ name: run-install
 description: ติดตั้ง dependencies และแก้ไขปัญหา installation
 argument-hint: "[scope]"
 related:
-  - update-dependencies-latest
-  - update-version-latest
+  - update-version-to-latest
   - follow-tool-mise
 ---
 
@@ -22,8 +21,7 @@ related:
 
 > Goal: Update Dependencies
 
-1. ทำ `/update-dependencies-latest` เพื่ออัพเดท dependencies ทั้งหมดเป็น latest version
-2. ถ้าต้องการ update ทุก version รวม runtime/tools → ทำ `/update-version-latest` แทนหรือหลัง `/update-dependencies-latest`
+1. ทำ `/update-version-to-latest` เพื่ออัพเดท dependencies, runtime, tools และ versioned config ทั้งหมดเป็น latest version
 3. ตรวจสอบว่าอัพเดทสำเร็จและไม่มี errors
 
 ### 2. Determine Package Manager
@@ -171,7 +169,7 @@ General:
 - ใช้ clean install เมื่อมี dependency conflicts ข้ามภาษา
 - ลบ cache ของทุก package manager ก่อน install
 
-- ใช้ /update-version-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 
 ## Expected Outcome

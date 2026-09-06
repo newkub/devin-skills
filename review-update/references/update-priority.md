@@ -21,8 +21,8 @@ Priority = drift severity × update urgency × dependency order
 
 บาง updates ต้องทำก่อนเพื่อให้ update อื่นทำได้:
 
-1. `update-version-latest` — runtime update ก่อน เพราะ dependencies อาจต้องใช้ runtime ใหม่
-2. `update-dependencies-latest` — dependency update ต่อ กระทบ rules, docs, config
+1. `update-version-to-latest` — runtime update ก่อน เพราะ dependencies อาจต้องใช้ runtime ใหม่
+2. `update-version-to-latest` — dependency update ต่อ กระทบ rules, docs, config
 3. `update-dot-devin` — `.devin` structure ก่อน rules เพราะ rules อยู่ใน `.devin`
 4. `update-project-rules` — รวมทั้ง devin rules (libs/code-quality/architecture grouping) และ ast-grep rules (พร้อมแปลงเป็น ast-grep YAML)
 5. `update-agents-md` — AGENTS.md หลัง rules เพราะอ้างอิง rules
@@ -48,8 +48,8 @@ Priority = drift severity × update urgency × dependency order
 
 | Priority | Update Skill | Drift Area | Effort | Impact |
 |----------|-------------|-----------|--------|--------|
-| 1 | `update-version-latest` | Runtime/dependency security vulnerability | medium | critical |
-| 2 | `update-dependencies-latest` | Dependency security vulnerability | medium | critical |
+| 1 | `update-version-to-latest` | Runtime/dependency security vulnerability | medium | critical |
+| 2 | `update-version-to-latest` | Dependency security vulnerability | medium | critical |
 | 3 | `update-project-rules` | Rules missing coverage | high | high |
 
 ## Update Health Score

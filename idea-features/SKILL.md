@@ -4,7 +4,7 @@ description: สร้างไอเดียฟีเจอรใหม่/ข
 argument-hint: "[topic]"
 related:
   - deep-idea-features
-  - bench-features
+  - bench-competitors
   - suggest-me
   - enhance-prompt
   - analyze-project
@@ -23,7 +23,7 @@ related:
 - ตอบกลับในแชทด้วย markdown tables และ bullets
 - ไม่สร้าง report/plan ไฟล์
 - ไม่ implement
-- ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-features`
+- ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
 - ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/deep-idea-features`
 
 - ดูเพิ่มเติม: /report-uxui-sketch

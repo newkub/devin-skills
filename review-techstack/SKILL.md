@@ -12,8 +12,7 @@ related:
   - suggest-next-action
   - follow-package-manifest
   - list-dependencies
-  - update-version-latest
-  - update-dependencies-latest
+  - update-version-to-latest
 ---
 
 ## Goal
@@ -121,8 +120,8 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /follow-package-manifest ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
-- ใช้ /update-version-latest ถ้าจำเป็น
-- ใช้ /update-dependencies-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
+- ใช้ /update-version-to-latest ถ้าจำเป็น
 
 ## Expected Outcome
 

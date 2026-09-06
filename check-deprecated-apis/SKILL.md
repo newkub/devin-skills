@@ -18,7 +18,7 @@ related:
 ## Scope
 
 - ครอบคลุม: `@deprecated` annotations ใน project, deprecated APIs ของ frameworks/libs ที่ใช้, deprecated npm packages, Node/platform APIs ที่เลิกรองรับ
-- Read-only: รายงาน usages + migration path — แก้ผ่าน `/refactor` หรือ `/update-dependencies-latest`
+- Read-only: รายงาน usages + migration path — แก้ผ่าน `/refactor` หรือ `/update-version-to-latest`
 
 ## Execute
 

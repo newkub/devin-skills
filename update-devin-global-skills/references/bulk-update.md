@@ -85,8 +85,8 @@
 
 1. ตรวจหา `package.json`, `mise.toml`, `bun.lock`, `bun.lockb` ใน `%APPDATA%\devin\skills` และ skills ที่มี `src/`
 2. ระบุ dependencies หรือ dev tools ที่ควรย้ายไป `mise project` หรือ `mise.toml`
-3. ถ้าต้องการ update ทุก version ทั้ง runtime/dependencies/tools → ทำ `/update-version-latest`
-4. ถ้าต้องการเฉพาะ dependencies → ทำ `/update-dependencies-latest`
+3. ถ้าต้องการ update ทุก version ทั้ง runtime/dependencies/tools → ทำ `/update-version-to-latest`
+4. ถ้าต้องการเฉพาะ dependencies → ทำ `/update-version-to-latest`
 6. รัน `/deep-validate` และ `/run-check` หลัง update
 7. รายงาน dependencies ที่เปลี่ยนแปลงลงใน before-after report
 
@@ -150,5 +150,5 @@
 - content ครอบคลุมผ่าน `/follow-coverage`
 - ทุก skill อยู่ในตำแหน่งที่สอดคล้องกับ prefix ผ่าน `/relocation`
 - รายงาน before-after ชัดเจน พร้อม next actions
-- versioned surfaces ถูกอัปเดตผ่าน `/update-version-latest` ตาม scope
-- dependencies หรือ dev tools ที่ควรย้ายไป mise project ถูกระบุ และ deps ทีเหมาะสมถูกสั่ง `/update-dependencies-latest`
+- versioned surfaces ถูกอัปเดตผ่าน `/update-version-to-latest` ตาม scope
+- dependencies หรือ dev tools ที่ควรย้ายไป mise project ถูกระบุ และ deps ทีเหมาะสมถูกสั่ง `/update-version-to-latest`

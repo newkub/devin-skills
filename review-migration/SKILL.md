@@ -3,8 +3,7 @@ name: review-migration
 description: Review migration plan พร้อม execution checklist ก่อนลงมือ
 argument-hint: "[scope]"
 related:
-  - update-version-latest
-  - update-dependencies-latest
+  - update-version-to-latest
   - follow-tool-renovate
   - report-table
   - suggest-next-action
@@ -18,7 +17,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Scope
 
-ใช้ก่อน migration ด้วย `follow-tool-renovate`, `update-version-latest`, `update-dependencies-latest` หรือ execution ตาม `references/migration-checklist.md` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags แล้วสรุป migration risk score พร้อม go/no-go recommendation
+ใช้ก่อน migration ด้วย `follow-tool-renovate`, `/update-version-to-latest` หรือ execution ตาม `references/migration-checklist.md` — ตรวจ migration plan ครอบคลุม backward compatibility, data integrity, rollback, cutover, dependencies, framework, infrastructure, feature flags แล้วสรุป migration risk score พร้อม go/no-go recommendation
 
 ## Execute
 

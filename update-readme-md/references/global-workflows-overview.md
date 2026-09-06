@@ -189,10 +189,10 @@ check-file-length
 /deploy-to-cloudflare
 
 # Update all versions (runtime + deps + tools + config)
-/update-version-latest
+/update-version-to-latest
 
 # Update dependencies
-/update-dependencies-latest
+/update-version-to-latest
 ```
 
 </td>

@@ -71,7 +71,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 4. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
 5. ทำ `/improve-test-everything` ถ้า tests หรือ coverage ไม่ผ่าน threshold
 6. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
-7. ทำ `/update-version-latest` เพื่ออัปเดต dependencies ตามผล audit
+7. ทำ `/update-version-to-latest` เพื่ออัปเดต dependencies ตามผล audit
 8. ทำ `/improve-architecture` ทุก workspace เพื่อแก้ structural findings
 9. ทำ `/improve-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
 10. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions

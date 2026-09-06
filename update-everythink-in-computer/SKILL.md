@@ -6,7 +6,7 @@ related:
   - update-all-program-in-computer
   - update-chezmoi
   - update-devin-global-skills
-  - update-version-latest
+  - update-version-to-latest
   - follow-my-package-manager
   - follow-my-global-cli
   - update-project-skills
@@ -34,7 +34,7 @@ related:
 
 > Goal: อัปเดต project ที่กำลังทำงานอยู่ให้ทันสมัย
 
-1. ถ้ามี project active และ user ต้องการ update ทุก version → ทำ `/update-version-latest`
+1. ถ้ามี project active และ user ต้องการ update ทุก version → ทำ `/update-version-to-latest`
 2. บันทึก runtimes/dependencies/tools ที่อัปเดต
 3. ถ้าไม่มี project active → skip
 

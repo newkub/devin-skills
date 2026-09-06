@@ -73,7 +73,7 @@ related:
 1. ตรวจ `package.json` dependencies ในแต่ละ workspace
 2. ตรวจ external dependencies ว่า duplicate หรือไม่
 3. ตรวจ internal workspace dependencies (`workspace:*`)
-4. ถ้ามี duplicate หรือ version ต่าง → ทำ `/update-version-latest`
+4. ถ้ามี duplicate หรือ version ต่าง → ทำ `/update-version-to-latest`
 
 ### 6. Verify Build Pipeline
 

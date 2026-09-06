@@ -6,7 +6,7 @@ related:
   - review-dependencies
   - list-dependencies
   - check-unused-deps
-  - update-dependencies-latest
+  - update-version-to-latest
   - follow-tool-taze
   - follow-tool-renovate
   - optimize-deps
@@ -46,7 +46,7 @@ related:
 
 > Goal: อัปเดต deps ที่ตก version
 
-1. ใช้ `/follow-tool-taze` หรือ `/update-dependencies-latest` — minor/patch ก่อน, major ทีละตัว
+1. ใช้ `/follow-tool-taze` หรือ `/update-version-to-latest` — minor/patch ก่อน, major ทีละตัว
 2. อ่าน changelog/breaking changes ของ major updates ก่อน apply
 3. ถ้า project ใช้ Renovate → ตรวจ config ให้ auto-update ครอบคลุม (`/follow-tool-renovate`)
 

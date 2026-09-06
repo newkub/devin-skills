@@ -14,8 +14,7 @@ related:
   - update-devin-project-skills
   - update-github-metadata
   - update-todo-md
-  - update-dependencies-latest
-  - update-version-latest
+  - update-version-to-latest
   - deep-update-project
   - deep-review
 ---
@@ -26,7 +25,7 @@ related:
 
 ## Scope
 
-ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies → ใช้ `/update-dependencies-latest` ก่อน ถ้าต้อง update ทุก versioned สิ่งทั้ง runtime, deps, tools, config → ใช้ `/update-version-latest` ก่อนหรือแทนที่จะ update เฉพาะ config
+ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies, runtime, tools หรือ versioned config ใดๆ → ใช้ `/update-version-to-latest` ก่อน update config อื่น
 
 ## Execute
 
@@ -65,8 +64,8 @@ related:
 5. รัน updates ตามลำดับ:
    - `/review-delivery` (ถ้ามี CI/CD ต้องตรวจ)
    - `/setup-cicd` (ถ้า CI/CD config drift หรือยังไม่พร้อม)
-   - `/update-dependencies-latest` (ถ้าต้องการอัปเดต dependencies ทุก workspace เป็น latest)
-   - `/update-version-latest` (ถ้าต้องการอัปเดต runtime, deps, tools, และ versioned config ทั้งหมดเป็น latest)
+   - `/update-version-to-latest` (ถ้าต้องการอัปเดต dependencies ทุก workspace เป็น latest)
+   - `/update-version-to-latest` (ถ้าต้องการอัปเดต runtime, deps, tools, และ versioned config ทั้งหมดเป็น latest)
    - `/follow-config` เพื่อ validate และ sync config files ตาม conventions
    - `/update-config` เพื่อ sync project config, shared config, และ dependencies catalog
    - `/update-dot-devin`
@@ -166,6 +165,6 @@ related:
 - project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-devin-project-skills`
 - GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
 - root project ผ่าน `/deep-validate`
-- dependencies และ versioned items อัปเดตถ้าเลือกใช้ `/update-dependencies-latest` หรือ `/update-version-latest`
+- dependencies และ versioned items อัปเดตถ้าเลือกใช้ `/update-version-to-latest`
 - รายงานสรุป workspace commits, project files, project skills และ GitHub metadata ครบถ้วน
 
