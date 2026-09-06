@@ -27,6 +27,7 @@ related:
   - report
   - ask-me
   - verify-deploy
+  - list-todo-md
 ---
 
 ## Goal
@@ -103,7 +104,8 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 1. ทำ `/report-progress`
 2. ทำ `/report` สรุป status, PR, version
-3. ทำ `/suggest-next-action`
+3. ทำ `/list-todo-md` เพื่อตรวจ pending items ใน `TODO.md` ที่เหลือหลัง ship
+4. ทำ `/suggest-next-action`
 
 ## Rules
 

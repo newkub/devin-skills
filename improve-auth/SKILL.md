@@ -10,6 +10,7 @@ related:
   - check-secrets-leak
   - review-by-security
   - report-review
+  - check-webhook-security
 ---
 
 ## Goal

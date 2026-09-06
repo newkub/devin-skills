@@ -12,6 +12,8 @@ related:
   - suggest-next-action
   - run-load-test
   - gen-postman-collection
+  - check-webhook-security
+  - run-test-contract
 ---
 
 ## Goal

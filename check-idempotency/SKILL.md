@@ -8,6 +8,8 @@ related:
   - follow-asynchronous
   - run-test-api
   - report-table
+  - check-webhook-security
+  - check-webhook-delivery
 ---
 
 ## Goal

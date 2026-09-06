@@ -11,6 +11,7 @@ related:
   - improve-security
   - report-table
   - check-cors-policy
+  - check-ssl-expiry
 ---
 
 ## Goal

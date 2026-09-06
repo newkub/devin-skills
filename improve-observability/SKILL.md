@@ -12,6 +12,7 @@ related:
   - report-table
   - ask-me
   - improve-logging
+  - gen-runbook
 ---
 
 ## Goal

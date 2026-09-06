@@ -11,6 +11,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - report-table
+  - run-test-contract
 ---
 
 ## Goal

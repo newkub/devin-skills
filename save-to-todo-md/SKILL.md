@@ -24,7 +24,14 @@ related:
 
 ## Execute
 
-### 1. Collect Remaining Work
+### 1. Report Progress First
+
+> Goal: สรุปสถานะงานปัจจุบันก่อนเก็บ items
+
+1. ทำ `/report-progress` ก่อนเสมอ — สรุปงานที่เสร็จ/ค้าง เพื่อให้เห็นภาพรวมก่อนเขียน TODO
+2. ใช้ผล report เป็น input สำหรับ remaining work
+
+### 2. Collect Remaining Work
 
 > Goal: รวบรวมงานค้างจาก context
 
@@ -33,7 +40,7 @@ related:
 3. รวม follow-ups ที่ถูกเสนอแต่ยังไม่ทำ (จาก reports/suggestions)
 4. ถ้า argument ระบุ title → เก็บภายใต้หัวข้อนั้น; ไม่ระบุ → ใช้ชื่อ task ปัจจุบัน
 
-### 2. Normalize Items
+### 3. Normalize Items
 
 > Goal: แปลงงานค้างเป็น TODO items ที่ทำต่อได้
 
@@ -42,7 +49,7 @@ related:
 3. ใส่ context พอให้ทำต่อได้โดยไม่ต้องอ่าน session — reference files/decisions ที่เกี่ยว
 4. กำหนด priority: `high` (blocker/critical path), `medium`, `low` (nice-to-have)
 
-### 3. Write To TODO.md
+### 4. Write To TODO.md
 
 > Goal: append items ลง TODO.md โดยไม่ทับของเดิม
 
@@ -56,7 +63,7 @@ related:
 4. Format: `| <title> | <description + why pending> | pending | <priority> | <YYYYMMDD> |`
 5. ถ้ามีหลาย items ที่เกี่ยวกัน → จัดกลุ่มด้วย prefix เดียวกันใน title
 
-### 4. Dedupe And Report
+### 5. Dedupe And Report
 
 > Goal: ไม่ซ้ำกับ items เดิมและรายงานผล
 

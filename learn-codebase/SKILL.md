@@ -9,6 +9,7 @@ related:
   - analyze-project
   - report-file-structure
   - create-report-in-dot-devin
+  - gen-runbook
 ---
 
 ## Goal

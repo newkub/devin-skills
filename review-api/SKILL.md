@@ -13,6 +13,7 @@ related:
   - check-api-contract
   - check-idempotency
   - optimize-serialization
+  - check-api-versioning
 ---
 
 ## Goal

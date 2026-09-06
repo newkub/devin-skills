@@ -9,6 +9,8 @@ related:
   - follow-tool-scalar
   - follow-tool-validator
   - report-table
+  - check-api-versioning
+  - run-test-contract
 ---
 
 ## Goal
