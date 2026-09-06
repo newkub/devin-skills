@@ -28,7 +28,7 @@ Deploy feature branch ไปยัง staging environment แล้วรัน 
 
 > Goal: แน่ใจว่า deploy จาก feature branch ที่ถูกต้อง
 
-1. ตรวจ `git status` — ถ้ามี uncommitted changes ที่ยังไม่ได้ commit บน feature branch → ทำ `git commit` หรือ `/git-commit-and-push-features-branch` ก่อน
+1. ตรวจ `git status` — ถ้ามี uncommitted changes ที่ยังไม่ได้ commit บน feature branch → ทำ `git commit` หรือ `/git-commit-and-push` ก่อน
 2. บันทึก branch name และ current commit hash
 3. ถ้าไม่อยู่บน feature branch → `/ask-me`
 

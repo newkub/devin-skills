@@ -1,6 +1,6 @@
 ---
-name: git-commit-and-push-current-branch
-description: Commit, push และ resolve CI/CD บน current branch
+name: git-commit-and-push
+description: Commit ไฟล์ push ไปยัง remote repository และ resolve CI/CD จนกว่าจะผ่าน
 argument-hint: "[scope]"
 related:
   - git-commit

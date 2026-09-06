@@ -21,7 +21,7 @@ related:
   - run-verify
   - deep-validate
   - create-git-branch
-  - git-commit-and-push-features-branch
+  - git-commit-and-push
   - resolve-cicd
   - run-release
   - report
@@ -83,7 +83,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 > Goal: deploy feature branch ไป staging และ verify
 
 1. ทำ `git pull --rebase origin main` เพื่อให้ feature branch ทัน `main` ล่าสุด
-2. ทำ `/git-commit-and-push-features-branch` ถ้ามี changes ทีผ่าน validation
+2. ทำ `/git-commit-and-push` ถ้ามี changes ทีผ่าน validation
 3. ทำ `/ship-to-staging` เพื่อ deploy feature branch ไป staging และรัน smoke tests
 4. ถ้า staging ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 1 โดย retry สูงสุด 3 ครั้ง
 
