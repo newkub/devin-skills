@@ -15,6 +15,9 @@ related:
   - check-git-diff
   - report-git-diff
   - review-diff
+  - restore-deleted-file
+  - compare-directories
+  - diff-file-history
 ---
 
 ## Goal

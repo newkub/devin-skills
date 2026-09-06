@@ -6,6 +6,7 @@ related:
   - check-skills-related
   - check-secrets-leak
   - update-references
+  - check-broken-symlinks
 ---
 ## Goal
 

@@ -1,6 +1,6 @@
 ---
 name: review-app-usage
-description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อน update-usage-md แก้ไข
+description: ตรวจสอบ usage.kdl spec และ USAGE.md ของ project ที่ใช้ usage spec tool ก่อน update-usage-md หรือ follow-tool-usage แก้ไข
 argument-hint: "[scope]"
 related:
   - report-table
@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown docs) ก่อนเรียก `update-usage-md` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects, version และ generated docs ครบถ้วนและถูกต้อง
+Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown docs) สำหรับ project ที่มี `usage.kdl` ก่อนเรียก `/follow-tool-usage` หรือ `/update-usage-md` เพื่อยืนยันว่า syntax, metadata, flags, args, commands, effects, version และ generated docs ครบถ้วนและถูกต้อง
 
 ## Scope
 
-ใช้ก่อนเรียก `update-usage-md` — ตรวจ `usage.kdl` structure, syntax, coverage และ `USAGE.md` freshness ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review
+ใช้เฉพาะเมื่อ project มี `usage.kdl` — ตรวจ `usage.kdl` structure, syntax, coverage และ `USAGE.md` freshness ทำ review เท่านั้น ไม่แก้ไข spec ระหว่าง review (project ที่ไม่มี `usage.kdl` ใช้ `/review-usage-md` แทน)
 
 ## Execute
 
@@ -53,7 +53,7 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข `usage.kdl` ระหว่าง review
-- ถ้าต้องแก้ไข ให้เรียก `update-usage-md` หลัง review
+- ถ้าต้องแก้ไข ให้เรียก `/follow-tool-usage` (สำหรับ `usage.kdl` spec) หรือ `/update-usage-md` (สำหรับ `USAGE.md`) หลัง review
 - ทุก finding ต้องมี file path และ evidence
 - ใช้ `Critical / High / Medium / Low / Info` สำหรับ severity
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis

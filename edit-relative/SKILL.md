@@ -10,6 +10,7 @@ related:
   - deep-analyze-by-use-scripts
   - edit-manual
   - report-table
+  - batch-rename-files
 ---
 
 ## Goal

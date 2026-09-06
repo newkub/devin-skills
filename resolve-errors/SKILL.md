@@ -10,6 +10,7 @@ related:
   - refactor
   - use-scripts
   - deep-review
+  - check-file-locks
 ---
 
 ## Goal

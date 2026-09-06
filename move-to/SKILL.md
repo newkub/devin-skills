@@ -7,6 +7,7 @@ related:
   - suggest-next-action
   - resolve-errors
   - update-references
+  - flatten-directory
 ---
 
 ## Goal

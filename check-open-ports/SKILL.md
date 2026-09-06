@@ -9,6 +9,7 @@ related:
   - check-system-env
   - resolve-errors
   - report-table
+  - check-file-locks
 ---
 
 ## Goal

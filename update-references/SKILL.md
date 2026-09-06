@@ -9,6 +9,8 @@ related:
   - check-file-relations
   - report-table
   - deep-validate
+  - flatten-directory
+  - batch-rename-files
 ---
 
 ## Goal

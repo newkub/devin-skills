@@ -9,6 +9,7 @@ related:
   - run-check
   - ask-me
   - scan-codebase
+  - check-path-length
 ---
 
 ## Goal

@@ -8,6 +8,8 @@ related:
   - search-files-patterns
   - run-profiler
   - optimize-git-repo
+  - clean-empty-dirs
+  - check-path-length
 ---
 
 ## Goal

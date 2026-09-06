@@ -10,6 +10,7 @@ related:
   - check-reference
   - check-hardcoded-values
   - check-secret-rotation
+  - check-file-permissions
 ---
 
 ## Goal

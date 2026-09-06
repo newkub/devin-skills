@@ -10,6 +10,7 @@ related:
   - report
   - report-table
   - suggest-next-action
+  - flatten-directory
 ---
 
 ## Goal

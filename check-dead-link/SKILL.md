@@ -9,6 +9,7 @@ related:
   - search-files-patterns
   - use-pwsh-shell
   - report-table
+  - check-broken-symlinks
 ---
 
 ## Goal

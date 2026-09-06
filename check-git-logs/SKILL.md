@@ -10,6 +10,7 @@ related:
   - deep-debug
   - report-table
   - suggest-next-action
+  - diff-file-history
 ---
 
 ## Goal
