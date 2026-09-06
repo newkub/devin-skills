@@ -1,9 +1,9 @@
 [submodule "open-devin-in-web"]
 	path = open-devin-in-web
-	url = git@github.com:newkub/open-devin-in-web.git
+	url = ../open-devin-in-web.git
 [submodule "open-files-in-web"]
 	path = open-files-in-web
-	url = https://github.com/newkub/open-files-in-web
+	url = ../open-files-in-web.git
 [submodule "create-github-pr"]
 	path = create-github-pr
-	url = git@github.com:newkub/create-github-pr.git
+	url = ../create-github-pr.git

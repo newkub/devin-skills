@@ -17,7 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: false
+          submodules: true
+          fetch-depth: 1
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -37,6 +38,7 @@ jobs:
           bun run src/index.ts ..
 
       - name: review devin global skills
+        if: always()
         run: |
           cd review-devin-global-skills
           bun install
