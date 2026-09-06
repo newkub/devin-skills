@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('*/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: check broken skill references
+        run: |
+          cd check-broken-skills-references
+          bun install
+          bun run src/index.ts ..
+
+      - name: review devin global skills
+        run: |
+          cd review-devin-global-skills
+          bun install
+          bun run src/index.ts ..
+
+      - name: upload review report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-skills-report
+          path: review-devin-global-skills/review-skills-report.json

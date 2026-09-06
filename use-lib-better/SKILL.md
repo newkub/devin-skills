@@ -8,7 +8,7 @@ related:
   - use-lib-effective
   - follow-my-tech-stack
   - follow-devin-skills
-  - review-codebase-everything
+  - deep-review-codebase
   - optimize-deps
 ---
 
@@ -19,7 +19,7 @@ related:
 ## Scope
 
 - ใช้เมื่อต้องตัดสินใจเลือก library หรือ framework
-- ไม่รวมการ execute การเปลี่ยนแปลงจริง (ให้ส่งต่อไปยัง `/review-codebase-everything` ถ้าต้องการทำ)
+- ไม่รวมการ execute การเปลี่ยนแปลงจริง (ให้ส่งต่อไปยัง `/deep-review-codebase` ถ้าต้องการทำ)
 - ใช้กับ dependencies ทุก ecosystem (npm, cargo, pip, go, etc.)
 
 ## Execute
@@ -104,10 +104,10 @@ Action ใช้ค่า: `keep`, `upgrade`, `replace`, `remove`
 ## Rules
 
 - ตอบเฉพาะรายการที่ควรใช้ / เปลี่ยน / ลบ ไม่ execute การเปลี่ยนแปลง package
-- ถ้าพบ unused / duplicate / security issues ให้ reference ไป `/review-codebase-everything`
+- ถ้าพบ unused / duplicate / security issues ให้ reference ไป `/deep-review-codebase`
 - ใช้ scoring system ชัดเจน (1-35 points)
 - เปรียบเทียบ apples-to-apples กับ version ล่าสุด
-- ไม่เขียน migration plan ละเอียด (ให้ `/review-codebase-everything` ทำ)
+- ไม่เขียน migration plan ละเอียด (ให้ `/deep-review-codebase` ทำ)
 - ถ้าจำเป็นต้องทดสอบ dependency จริง ให้ส่งต่อไป `/use-lib-effective`
 
 ## Expected Outcome

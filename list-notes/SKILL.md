@@ -3,9 +3,7 @@ name: list-notes
 description: แสดงรายการ notes ใน repo D:\newkub\notes
 argument-hint: "[--limit N]"
 related:
-  - save-to-notes-idea
   - save-to-new-notes
-  - implement-from-notes-idea
   - report-table
 ---
 
@@ -68,10 +66,9 @@ related:
 
 ### 4. Empty State
 
-- ถ้าไม่พบ note ให้เสนอใช้ `/save-to-notes-idea`
+- ถ้าไม่พบ note ให้เสนอใช้ `/save-to-new-notes`
 
 - ใช้ /save-to-new-notes ถ้าจำเป็น
-- ใช้ /implement-from-notes-idea ถ้าจำเป็น
 
 ## Expected Outcome
 

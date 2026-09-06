@@ -7,7 +7,6 @@ related:
   - deep-pondering
   - report-architecture-diagram
   - follow-architecture
-  - save-to-notes-idea
   - report-table
 ---
 

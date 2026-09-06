@@ -32,15 +32,21 @@ bunx /path/to/draw-ansi/scripts/draw-ansi.ts --fix --width 60 existing-box.txt
 
 ### 2. Input Modes
 
+> Goal: รองรับทุกรูปแบบ input ของ box
+
 1. **Plain lines**: บรรทัดปกติ ไม่มี border → สคริปต์จะห่มด้วย outer box
 2. **Existing box**: บรรทัดเริ่มต้นด้วย `│` หรือ `┌`/`└` → สคริปต์จะลอง detect กล่องเดิม แล้ว wrap ใหม่
 
 ### 3. Output Modes
 
+> Goal: รองรับทุกรูปแบบ output ของ box
+
 - `--format text` (default): ข้อความธรรมดา เอาไปใส่ ` ```text ` block
 - `--format markdown`: ห่มด้วย ` ```text ` block พร้อม
 
 ### 4. Options
+
+> Goal: ระบุ options ที่รองรับ
 
 | Option | Description | Default |
 |--------|-------------|---------|

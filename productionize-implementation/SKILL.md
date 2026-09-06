@@ -6,6 +6,8 @@ related:
   - implement-mock
   - implement-features-to-mvp
   - implement-todo-md
+  - list-todo-md
+  - update-todo-md
   - deep-review
   - review-architecture
   - resolve-errors
@@ -83,11 +85,13 @@ related:
 
 > Goal: ลบ TODO/FIXME/HACK และ placeholders
 
-1. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-ast-grep` หรือ `grep`
-2. ถ้ามี `TODO.md` → ทำ `/implement-todo-md`
-3. ทำ `/implement-mock` เพื่อแทนที่ MOCK/FAKE/STUB ด้วย real implementations
-4. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
-5. ถ้ามี library ที่เหมาะกว่า → ทำ `/use-lib-effective`
+1. ทำ `/list-todo-md` เพื่อรวบรวม TODO.md ใน workspace ก่อน implement
+2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-ast-grep` หรือ `grep`
+3. ถ้ามี `TODO.md` → ทำ `/implement-todo-md`
+4. ทำ `/implement-mock` เพื่อแทนที่ MOCK/FAKE/STUB ด้วย real implementations
+5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
+6. ถ้ามี library ที่เหมาะกว่า → ทำ `/use-lib-effective`
+7. หลัง implement เสร็จ → ทำ `/update-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
 
 ### 7. Implement Security, Resilience And Observability
 

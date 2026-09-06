@@ -56,7 +56,7 @@ related:
    - ถ้า project ใหญ่ (monorepo หรือ build/test หนัก) → CI/CD pipeline จะรัน full suite แทน; package manifest ต้องมี `test:all`, `build` และ `verify` อย่างน้อย `check && test`
 4. ถ้าไม่มี scripts `verify`, `test:all`, `build` → ทำ `/follow-tasks` เพื่อตั้งค่า
 5. ตรวจว่า `verify` ครบตามขนาด project
-6. ถ้า project ไม่มี package manifest → ทำ `/review-delivery` เพื่อตั้งค่า
+6. ถ้า project ไม่มี package manifest (เช่น skill collection, docs repo) → หา tool directories ที่มี package.json แล้วรัน verify จากแต่ละ subdir ใน CI
 
 ### 3. Setup Secrets
 
@@ -82,37 +82,40 @@ on:
   push:
     branches: [main, master]
   pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - run: bun install
       - run: bun run verify
-  test:
-    runs-on: ubuntu-latest
-    needs: verify
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
       - run: bun run test:all
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
       - run: bun run build
 ```
 
-3. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
+3. ถ้า project ไม่มี root package.json (เช่น skill collection, docs repo) → รัน verify จาก tool directories ที่มี package.json ของตัวเอง โดยไม่ต้อง `bun install` ที root
 
-4. ถ้าต้องการ release:
+4. ถ้าต้องการ deploy ให้สร้าง `.github/workflows/deploy.yml` โดย trigger บน `push` ไป `main`/`master` และเรียก `bun run deploy` หรือ deploy tool ตาม platform
+
+5. ถ้าต้องการ release:
    - ถ้ายังไม่มี release tool หรือ release workflow → ทำ `/setup-release` ก่อน
    - สร้าง `.github/workflows/release.yml` โดย trigger บน `push` tag `v*` เท่านั้น:
 
@@ -227,6 +230,12 @@ jobs:
 
 - ไม่ commit หรือ push config files โดยอัตโนมัติ
 - ถ้า user ต้องการ commit → ทำ `/git-commit` หรือ `/ship` หลัง setup
+
+### 6. Overlap And Cost
+
+- `run-verify`, `check-quality`, `review-*`, `check-*` ทำงานซ้ำซ้อนกันได้ ควรรวมลงใน `verify` job เดียว
+- ใช้ `concurrency`, `timeout-minutes`, `cache`, runner เดียว และหลีกเลี่ง matrix เพื่อประหยัด cost
+- ถ้าไม่มี root package.json ให้รัน verify จาก tool directories แทนการสร้าง root package หลอก
 
 ## Expected Outcome
 
