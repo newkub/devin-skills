@@ -7,6 +7,7 @@ related:
   - from-recent-windows-capture
   - open-in-windows-terminal
   - resolve-errors
+  - capture-bug-context
 ---
 
 ## Goal

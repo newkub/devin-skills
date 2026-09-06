@@ -4,6 +4,8 @@ description: ปรับปรุง network: requests, CDN, compression, cachi
 argument-hint: "[domain-or-endpoint]"
 related:
   - report-table
+  - optimize-serialization
+  - optimize-offline
 ---
 
 ## Goal

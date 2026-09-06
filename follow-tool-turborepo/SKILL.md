@@ -8,6 +8,7 @@ related:
   - follow-tool-taze
   - follow-tool-vite
   - follow-tool-vitest
+  - optimize-workspace
 ---
 
 ## Goal

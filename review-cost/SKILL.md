@@ -7,6 +7,7 @@ related:
   - report-table
   - review-performance
   - optimize-token-usage
+  - deep-cost-analysis
 ---
 
 ## Goal

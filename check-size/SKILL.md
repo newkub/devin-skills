@@ -7,6 +7,7 @@ related:
   - report-table
   - search-files-patterns
   - run-profiler
+  - optimize-git-repo
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - run-test
   - run-verify
   - deep-validate
+  - optimize-workspace
 ---
 
 ## Goal

@@ -11,6 +11,7 @@ related:
   - use-bun-shell
   - update-references
   - report-table
+  - optimize-videos
 ---
 
 ## Goal

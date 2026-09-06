@@ -11,6 +11,8 @@ related:
   - report-table
   - check-reference
   - check-api-contract
+  - check-idempotency
+  - optimize-serialization
 ---
 
 ## Goal

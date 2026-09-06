@@ -6,6 +6,7 @@ related:
   - run-build
   - report-table
   - optimize-web-vitals
+  - optimize-hydration
 ---
 
 ## Goal

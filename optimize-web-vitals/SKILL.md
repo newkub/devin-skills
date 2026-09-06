@@ -11,6 +11,8 @@ related:
   - optimize-network
   - optimize-rendering
   - report-before-after
+  - optimize-fonts
+  - optimize-videos
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - check-bottlenecks
   - improve-test-everything
   - report-before-after
+  - check-test-isolation
 ---
 
 ## Goal

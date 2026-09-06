@@ -11,6 +11,7 @@ related:
   - run-dev
   - run-install
   - report-table
+  - learn-codebase
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - improve-database
   - run-profiler
   - report-before-after
+  - optimize-search
 ---
 
 ## Goal

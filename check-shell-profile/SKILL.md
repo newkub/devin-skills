@@ -11,6 +11,7 @@ related:
   - follow-tool-mise
   - resolve-errors
   - report-table
+  - optimize-terminal
 ---
 
 ## Goal

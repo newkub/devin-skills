@@ -12,6 +12,7 @@ related:
   - check-secrets-leak
   - report-table
   - improve-onboarding
+  - check-file-encoding
 ---
 
 ## Goal

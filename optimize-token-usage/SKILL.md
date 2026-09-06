@@ -10,6 +10,7 @@ related:
   - optimize-cost
   - improve-observability
   - report-before-after
+  - optimize-mcp
 ---
 
 ## Goal

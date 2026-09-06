@@ -16,6 +16,7 @@ related:
   - resolve-errors
   - report-table
   - report-ansi
+  - optimize-css
 ---
 
 ## Goal

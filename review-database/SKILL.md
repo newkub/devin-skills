@@ -13,6 +13,7 @@ related:
   - report-table
   - check-reference
   - optimize-queries
+  - optimize-search
 ---
 
 ## Goal

@@ -14,6 +14,7 @@ related:
   - follow-tool-git
   - refactor
   - update-devin-global-skills
+  - check-deprecated-apis
 ---
 
 ## Goal

@@ -10,6 +10,7 @@ related:
   - follow-release
   - check-commit-quality
   - report-table
+  - report-release-readiness
 ---
 
 ## Goal

@@ -9,6 +9,8 @@ related:
   - check-code-structure
   - replace
   - follow-tool-astgrep
+  - check-unicode-homoglyph
+  - follow-tool-semgrep
 ---
 
 ## Goal
