@@ -13,6 +13,7 @@ related:
   - review-observability
   - scan-codebase
   - improve-security
+  - check-secret-rotation
 ---
 
 ## Goal

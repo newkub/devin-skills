@@ -10,6 +10,7 @@ related:
   - report-table
   - resolve-errors
   - suggest-next-action
+  - run-load-test
 ---
 
 ## Goal

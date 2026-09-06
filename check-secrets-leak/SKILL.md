@@ -9,6 +9,7 @@ related:
   - review-security
   - check-reference
   - check-hardcoded-values
+  - check-secret-rotation
 ---
 
 ## Goal

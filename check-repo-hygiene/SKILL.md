@@ -11,6 +11,7 @@ related:
   - check-dead-link
   - check-secrets-leak
   - report-table
+  - improve-onboarding
 ---
 
 ## Goal

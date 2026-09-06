@@ -6,6 +6,7 @@ related:
   - run-check
   - review-performance
   - improve
+  - run-load-test
 ---
 
 ## Goal

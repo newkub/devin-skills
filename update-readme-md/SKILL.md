@@ -11,6 +11,7 @@ related:
   - report-ansi
   - capture-web
   - capture-component
+  - improve-onboarding
 ---
 
 ## Goal

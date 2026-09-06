@@ -17,6 +17,7 @@ related:
   - follow-my-tech-stack
   - review-dependencies
   - improve-performance
+  - run-load-test
 ---
 
 ## Goal
