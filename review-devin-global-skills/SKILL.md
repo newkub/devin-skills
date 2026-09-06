@@ -7,6 +7,7 @@ related:
   - update-devin-global-skills
   - idea-refactor-devin-global-skills
   - deep-review-codebase
+  - follow-deep
   - report-table
   - suggest-next-action
   - check-reference
@@ -124,6 +125,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - รายงานเป็นตารางด้วย `/report-table`
 
 - ใช้ /idea-refactor-devin-global-skills ถ้าจำเป็น
+- ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 
 ## Expected Outcome

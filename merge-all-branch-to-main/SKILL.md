@@ -1,5 +1,5 @@
 ---
-name: merge-all-branch-to-main-branch
+name: merge-all-branch-to-main
 description: Merge ทุก branch เข้า main แล้วลบ branch เก่าทั้งหมด ให้เหลือเฉพาะ main
 argument-hint: "[--dry-run] [--remote] [--force-unmerged]"
 related:
