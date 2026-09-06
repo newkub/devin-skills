@@ -11,6 +11,8 @@ related:
   - run-test
   - report-table
   - suggest-next-action
+  - check-error-coverage
+  - improve-error-messages
 ---
 
 ## Goal

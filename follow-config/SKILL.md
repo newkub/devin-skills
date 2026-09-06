@@ -27,6 +27,7 @@ related:
   - update-references
   - deep-validate
   - resolve-errors
+  - check-config-drift
 ---
 
 ## Goal

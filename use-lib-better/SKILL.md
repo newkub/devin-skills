@@ -9,6 +9,7 @@ related:
   - follow-my-tech-stack
   - follow-devin-skills
   - review-codebase-everything
+  - optimize-deps
 ---
 
 ## Goal

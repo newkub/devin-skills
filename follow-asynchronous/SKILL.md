@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - ask-me
   - run-test
+  - check-async-misuse
 ---
 
 ## Goal

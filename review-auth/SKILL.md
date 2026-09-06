@@ -13,6 +13,7 @@ related:
   - scan-codebase
   - report-table
   - ask-me
+  - improve-auth
 ---
 
 ## Goal

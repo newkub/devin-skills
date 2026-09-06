@@ -16,6 +16,7 @@ related:
   - use-astgrep
   - follow-my-tech-stack
   - review-dependencies
+  - improve-performance
 ---
 
 ## Goal

@@ -11,6 +11,7 @@ related:
   - report-table
   - suggest-next-action
   - improve-docs
+  - improve-naming
 ---
 
 ## Goal

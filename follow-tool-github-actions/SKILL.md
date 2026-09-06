@@ -11,6 +11,7 @@ related:
   - follow-tool-renovate
   - follow-tool-release-it
   - follow-tool-act
+  - optimize-ci
 ---
 
 ## Goal

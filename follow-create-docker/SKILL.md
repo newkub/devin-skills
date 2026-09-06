@@ -12,6 +12,7 @@ related:
   - check-secrets-leak
   - run-check
   - report-table
+  - optimize-docker
 ---
 
 ## Goal

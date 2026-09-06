@@ -9,6 +9,7 @@ related:
   - run-check
   - run-verify
   - deep-review-codebase
+  - optimize-startup
 ---
 
 ## Goal

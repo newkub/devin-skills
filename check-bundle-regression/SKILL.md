@@ -10,6 +10,7 @@ related:
   - check-size
   - use-pwsh-shell
   - report-table
+  - check-source-maps
 ---
 
 ## Goal

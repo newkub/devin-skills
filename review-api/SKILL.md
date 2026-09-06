@@ -10,6 +10,7 @@ related:
   - deep-review
   - report-table
   - check-reference
+  - check-api-contract
 ---
 
 ## Goal

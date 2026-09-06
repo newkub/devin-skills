@@ -12,6 +12,7 @@ related:
   - search-files-patterns
   - list-website-all-routes
   - report-table
+  - check-api-contract
 ---
 
 ## Goal

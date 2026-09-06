@@ -18,6 +18,7 @@ related:
   - edit-manual
   - deep-review
   - run-verify
+  - optimize-tests
 ---
 
 ## Goal

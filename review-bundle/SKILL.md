@@ -7,6 +7,7 @@ related:
   - run-build
   - report-table
   - review-assets
+  - check-source-maps
 ---
 
 ## Goal

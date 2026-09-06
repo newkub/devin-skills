@@ -10,6 +10,7 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
+  - improve-compliance
 ---
 
 ## Goal

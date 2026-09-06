@@ -11,6 +11,7 @@ related:
   - optimize-codebase-everything
   - report-table
   - suggest-next-action
+  - check-monorepo-boundaries
 ---
 
 ## Goal

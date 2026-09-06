@@ -8,6 +8,7 @@ related:
   - check-env-vars
   - review-security
   - check-reference
+  - check-hardcoded-values
 ---
 
 ## Goal

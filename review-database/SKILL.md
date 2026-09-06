@@ -12,6 +12,7 @@ related:
   - deep-review
   - report-table
   - check-reference
+  - optimize-queries
 ---
 
 ## Goal

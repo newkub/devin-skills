@@ -11,6 +11,7 @@ related:
   - deep-validate
   - report-table
   - ask-me
+  - improve-logging
 ---
 
 ## Goal
