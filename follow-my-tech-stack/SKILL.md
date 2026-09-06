@@ -10,6 +10,7 @@ related:
   - follow-lib-esm-sh
   - use-lib-effective
   - deep-analyze-by-use-scripts
+  - follow-service-cloudflare
 ---
 
 ## Goal
@@ -186,4 +187,4 @@ related:
 - จัดกลุ่ม tools ไม่ถูกต้องตาม domain
 - ทิ้ง tools ที่ obsolete ไว้ในรายการ
 - ไม่ระบุ Rust equivalents เมื่อใช้หลาย ecosystems
-- ลืม conditional libraries สำหรับ project types เฉพาะ (desktop, mobile, AI, animation)
+- ลืม conditional libraries สำหรับ project types เฉพาะ (desktop, mobile, AI, animation, cloudflare) — ให้ใช้ `/follow-service-cloudflare` ด้วย
