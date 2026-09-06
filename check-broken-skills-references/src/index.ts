@@ -31,6 +31,14 @@ for (const d of new Glob("*/SKILL.md").scanSync(skillsRoot)) {
   skillDirs.add(dirname(d as string));
 }
 
+const gitmodulesPath = join(skillsRoot, ".gitmodules");
+if (existsSync(gitmodulesPath)) {
+  const gitmodulesText = await Bun.file(gitmodulesPath).text();
+  for (const match of gitmodulesText.matchAll(/^\s*path\s*=\s*(.+)$/gm)) {
+    skillDirs.add(match[1].trim());
+  }
+}
+
 const findings: Finding[] = [];
 
 const urlRegex = /https?:\/\/\S+/g;
