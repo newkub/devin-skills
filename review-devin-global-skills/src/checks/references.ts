@@ -27,8 +27,8 @@ export function checkReferences(m: SkillMeta, ctx: Context) {
     const outside = textOutsideInlineCode(line);
     const isUrlLine = /https?:\/\//.test(line);
 
-    // Markdown links -> relative target must exist
-    for (const mm of line.matchAll(MD_LINK_RE)) {
+    // Markdown links -> relative target must exist (only outside inline code)
+    for (const mm of outside.matchAll(MD_LINK_RE)) {
       const target = mm[1];
       if (/^(https?:|mailto:|#|\/)/.test(target)) continue;
       if (target.includes("%APPDATA%") || /^[A-Za-z]:[\\/]/.test(target)) continue;

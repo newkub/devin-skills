@@ -1,6 +1,6 @@
 ---
 name: review-app-usage
-description: ตรวจสอบ usage.kdl spec และ USAGE.md ของ project ที่ใช้ usage spec tool ก่อน update-usage-md หรือ follow-tool-usage แก้ไข
+description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อนแก้ไข
 argument-hint: "[scope]"
 related:
   - report-table

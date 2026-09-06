@@ -1,6 +1,6 @@
 ---
 name: update-github-pr
-description: Update title, body, labels, reviewers, base branch, draft status, and comments of an existing GitHub pull request
+description: Update title, body, labels, reviewers, and base branch of an existing GitHub pull request
 argument-hint: "[pr-number] [repo]"
 related:
   - create-github-pr

@@ -1,6 +1,6 @@
 ---
 name: save-to-todo-in-root-drive-d
-description: บันทึกงานค้าง/idea จาก session ลง TODO.md ที่ root ของ drive D โดย enhance เป็น numbered list ก่อนบันทึก
+description: บันทึกงานค้าง/idea จาก session ลง TODO.md ที่ root ของ drive D
 argument-hint: "[todo-title]"
 related:
   - enhance-prompt

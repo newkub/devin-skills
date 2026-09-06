@@ -247,5 +247,4 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 - รายงาน global workflows/skills/rules ในตาราง
 - รายงาน CLI programs inventory ในตาราง
 - รายงาน browser history analysis ในตาราง
-- รายงาน user behavior analysis ในตาราง
 - รายงาน development environment ในตาราง

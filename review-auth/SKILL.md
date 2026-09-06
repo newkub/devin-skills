@@ -1,6 +1,6 @@
 ---
 name: review-auth
-description: Review authentication and authorization — identity, sessions, tokens, OAuth, MFA, RBAC/ABAC, password policy, secrets, audit, and account lifecycle
+description: Review authentication and authorization — identity, sessions, tokens, OAuth, MFA, RBAC/ABAC
 argument-hint: "[scope-or-subsystem]"
 related:
   - review-security
