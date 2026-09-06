@@ -3,7 +3,7 @@ name: update-devin-global-rules
 description: ทำให้ global rules สอดคล้องกับ skills และ global subagents ไม่ขัดแย้ง
 argument-hint: "[scope]"
 related:
-  - update-all-devin-global-skills
+  - update-devin-global-skills
   - update-devin-global-subagents
   - use-in-another-skills
   - follow-global-rules
@@ -114,7 +114,7 @@ related:
 - อัปเดต `AGENTS.md` ถ้ามี skill ใหม่
 - อัปเดต `related` ใน frontmatter ของ skills ที่เกี่ยวข้อง
 
-- ใช้ /update-all-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-subagents ถ้าจำเป็น
 - ใช้ /use-in-another-skills ถ้าจำเป็น
 

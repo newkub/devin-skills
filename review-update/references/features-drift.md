@@ -54,4 +54,4 @@
 
 - `update-features-md` สำหรับ update features doc
 - `update-devin-global-subagents` สำหรับ update global subagents
-- `update-all-devin-global-skills` สำหรับ update skills repo
+- `update-devin-global-skills` สำหรับ update skills repo

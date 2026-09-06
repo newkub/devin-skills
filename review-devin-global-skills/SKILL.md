@@ -3,7 +3,6 @@ name: review-devin-global-skills
 description: Review, refactor และตรวจ cross-skill consistency ของ devin skills repo
 argument-hint: "[scope]"
 related:
-  - update-all-devin-global-skills
   - update-devin-global-skills
   - idea-refactor-devin-global-skills
   - deep-review-codebase
@@ -16,11 +15,11 @@ related:
 
 ## Goal
 
-Review, refactor และตรวจ cross-skill consistency ของ devin skills repo ก่อนเรียก `update-all-devin-global-skills`
+Review, refactor และตรวจ cross-skill consistency ของ devin skills repo ก่อนเรียก `update-devin-global-skills`
 
 ## Scope
 
-ใช้ก่อนเรียก `update-all-devin-global-skills` — ครอบคลุม:
+ใช้ก่อนเรียก `update-devin-global-skills` — ครอบคลุม:
 - `review` — ตรวจ skill package แต่ละตัวตามมาตรฐาน `update-devin-global-skills`
 - `refactor` — split, merge, restructure, deduplicate, relocate ปัญหาโครงสร้าง
 - `cross-skill consistency` — ตรวจภาษา, format, terminology, frontmatter, redundancy
@@ -42,7 +41,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ: frontmatter (name, description, `argument-hint`, `related` ≤15, missing/orphan), sections (order, `> Goal:`, step count), line count, style (bold, TODO/MOCK, Title Case, Thai language), references (`/skill-name` refs, markdown links, `references/index.md`), parallel markers, template compliance ตาม prefix และ cross-skill checks (duplicates, naming, prefix distribution)
 2. ใช้ `bun run review:fix` เพื่อ auto-fix findings ที่ `fixable` (เช่น generate `references/index.md`)
-3. ใช้ `bun run review:ci` เพื่อ exit code 1 เมื่อมี Critical/High — สำหรับ pre-check ก่อน `update-all-devin-global-skills`
+3. ใช้ `bun run review:ci` เพื่อ exit code 1 เมื่อมี Critical/High — สำหรับ pre-check ก่อน `update-devin-global-skills`
 4. อ่าน `review-skills-report.json` ที่ skill directory เพื่อดู findings ทั้งหมด
 
 ### 3. Interpret Findings

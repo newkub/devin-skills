@@ -12,7 +12,6 @@ related:
   - update-project
   - update-config
   - update-devin-global-skills
-  - update-all-devin-global-skills
   - deep-productionize-implementation
   - refactor
   - restructure
@@ -82,7 +81,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ถ้า target type เป็น `root-project` → ทำ `/deep-update-project`
 2. ถ้า target type เป็น `skill` ใน global skills → ทำ `/update-devin-global-skills <skill-name>`
-3. ถ้า target type เป็น `all` global skills → ทำ `/update-all-devin-global-skills`
+3. ถ้า target type เป็น `all` global skills → ทำ `/update-devin-global-skills`
 4. ถ้า target type เป็น `config` → ทำ `/update-config`
 5. ถ้า target type เป็น `versions` (runtime, deps, tools, CI, Docker) → ทำ `/update-version-latest`
 6. ถ้า target type เป็น `project-docs` → ทำ `/update-readme-md`, `/update-agents-md`, `/update-usage-md`, `/update-features-md`

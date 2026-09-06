@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-all-program-in-computer
   - update-chezmoi
-  - update-all-devin-global-skills
+  - update-devin-global-skills
   - update-version-latest
   - follow-my-package-manager
   - follow-my-global-cli
@@ -50,7 +50,7 @@ related:
 
 > Goal: อัปเดต Devin skills catalog
 
-1. ทำ `/update-all-devin-global-skills`
+1. ทำ `/update-devin-global-skills`
 2. บันทึก skills ที update/สร้าง/ลบ
 
 ### 5. Update Project Skills (optional)

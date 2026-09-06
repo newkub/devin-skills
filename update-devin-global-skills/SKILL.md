@@ -37,7 +37,7 @@ related:
 > Goal: รู้ว่าต้องอัปเดต skill ใดบ้าง
 
 1. รับ `@files...` หรือ `topic` จาก argument หรือ context
-2. ถ้าไม่มี `@files` → อ่าน `%APPDATA%\devin\skills` ทั้งหมดเพื่อ update ทุก skill
+2. ถ้าไม่มี `@files` → ทำ bulk orchestration ตาม `references/bulk-update.md` (inventory, per-skill update, cross-skill consistency, dependencies)
 3. ถ้ามี `@files` → อัปเดตเฉพาะ skill ที่ระบุ
 4. ตรวจว่าแต่ละ `<skill-name>\SKILL.md` มีอยู่ — ถ้าไม่มี → ส่งต่อ `/follow-create-devin-global-skills`
 5. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ

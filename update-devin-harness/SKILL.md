@@ -4,7 +4,7 @@ description: อัปเดต global rules, global skills และ global sub
 argument-hint: "[scope]"
 related:
   - update-devin-global-rules
-  - update-all-devin-global-skills
+  - update-devin-global-skills
   - update-devin-global-subagents
   - review-devin-global-subagents
   - list-devin-global-skills
@@ -36,7 +36,7 @@ related:
 > Goal: อัปเดตแต่ละ layer
 
 1. ทำ `/update-devin-global-rules` เพื่อ sync global rules
-2. ทำ `/update-all-devin-global-skills` เพื่อ audit และอัปเดต skills
+2. ทำ `/update-devin-global-skills` เพื่อ audit และอัปเดต skills
 3. ทำ `/update-devin-global-subagents` เพื่ออัปเดต subagents
 4. บันทึก output ของแต่ละ step
 
