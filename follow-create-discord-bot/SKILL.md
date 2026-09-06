@@ -11,6 +11,7 @@ related:
   - follow-create-cli
   - follow-create-sdk
   - follow-create-web
+  - follow-create-slack-bot
   - follow-lang-typescript
   - run-test
   - search-npm-libraries

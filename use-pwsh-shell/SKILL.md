@@ -5,6 +5,7 @@ argument-hint: "[command]"
 related:
   - use-bun-shell
   - use-nu-shell
+  - follow-create-powershell-module
   - follow-best-practice
   - use-scripts
 ---

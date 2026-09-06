@@ -10,6 +10,7 @@ related:
   - run-deploy
   - follow-tool-renovate
   - follow-tool-release-it
+  - follow-tool-act
 ---
 
 ## Goal
