@@ -11,6 +11,7 @@ related:
   - use-pwsh-shell
   - report-table
   - check-source-maps
+  - bench-bundle-tools
 ---
 
 ## Goal

@@ -11,6 +11,7 @@ related:
   - analyze-project
   - scan-codebase
   - open-files-in-web
+  - gen-adr
 ---
 
 ## Goal

@@ -7,6 +7,7 @@ related:
   - follow-my-tech-stack
   - report-table
   - follow-create-rust-cli
+  - gen-sbom
 ---
 
 ## Goal

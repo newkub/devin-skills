@@ -10,6 +10,7 @@ related:
   - follow-lib-postgres
   - use-pwsh-shell
   - report-table
+  - verify-migration-data
 ---
 
 ## Goal

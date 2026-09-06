@@ -10,6 +10,7 @@ related:
   - run-review
   - use-in-another-skills
   - report-table
+  - verify-backup-restore
 ---
 
 ## Goal

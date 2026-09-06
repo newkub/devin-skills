@@ -26,6 +26,7 @@ related:
   - run-release
   - report
   - ask-me
+  - verify-deploy
 ---
 
 ## Goal

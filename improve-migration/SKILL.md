@@ -10,6 +10,7 @@ related:
   - follow-orm
   - ship-rollback
   - report-review
+  - verify-migration-data
 ---
 
 ## Goal

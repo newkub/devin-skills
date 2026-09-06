@@ -6,6 +6,7 @@ related:
   - list-github-branch
   - report-table
   - follow-tool-git
+  - cleanup-branches-merged
 ---
 
 ## Goal

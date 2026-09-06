@@ -10,6 +10,7 @@ related:
   - run-profiler
   - check-open-ports
   - report-before-after
+  - bench-apis
 ---
 
 ## Goal

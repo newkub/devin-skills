@@ -10,6 +10,7 @@ related:
   - optimize-bundle
   - follow-tool-turborepo
   - report-before-after
+  - bench-bundle-tools
 ---
 
 ## Goal

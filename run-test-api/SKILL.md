@@ -11,6 +11,7 @@ related:
   - resolve-errors
   - suggest-next-action
   - run-load-test
+  - gen-postman-collection
 ---
 
 ## Goal

@@ -28,6 +28,7 @@ related:
   - deep-validate
   - resolve-errors
   - check-config-drift
+  - setup-feature-flags
 ---
 
 ## Goal

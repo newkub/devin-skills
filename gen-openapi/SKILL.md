@@ -13,6 +13,7 @@ related:
   - list-website-all-routes
   - report-table
   - check-api-contract
+  - gen-postman-collection
 ---
 
 ## Goal

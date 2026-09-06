@@ -5,6 +5,7 @@ argument-hint: "[input] [output-format]"
 related:
   - convert-to-svg
   - ask-me
+  - convert-to-esm
 ---
 
 ## Goal

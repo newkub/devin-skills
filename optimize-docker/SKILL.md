@@ -8,6 +8,7 @@ related:
   - review-deploy
   - follow-deploy
   - report-before-after
+  - cleanup-docker
 ---
 
 ## Goal
