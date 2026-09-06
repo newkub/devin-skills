@@ -18,6 +18,7 @@ related:
   - test-usage
   - deep-productionize-implementation
   - resolve-github-issue-by-me
+  - save-to-todo-md
 ---
 
 ## Goal
@@ -122,7 +123,8 @@ related:
 5. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
 6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
 7. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
-8. ทำ `/suggest-next-action`
+8. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
+9. ทำ `/suggest-next-action`
 
 ## Rules
 

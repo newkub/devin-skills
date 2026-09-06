@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-todo-md
   - report-table
+  - save-to-todo-md
 ---
 
 ## Goal
