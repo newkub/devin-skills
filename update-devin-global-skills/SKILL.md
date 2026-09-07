@@ -83,8 +83,8 @@ related:
 2. ทำ `/learn-from-web` จาก official docs, changelog, repository เป็นแหล่งหลัก
 3. บันทึก: latest version, breaking changes, new commands, new options, deprecations, environment variables, URLs
 4. หาตัวอย่าง command, config, output จริง — ไม่เดา API หรือ command
-5. ถ้าต้อง batch update `references/website.md` → รัน `bun run scripts/bulk-update-website-md.ts`
-6. ถ้าต้อง batch update `references/routes.md` → รัน `bun run scripts/bulk-update-routes.ts`
+5. ถ้าต้อง batch update `references/website.md` → รัน `bun run scripts/bulk-update-website-md.ts [skill]`
+6. ถ้าต้อง batch update `references/routes.md` ให้เป็นตาราง 2 คอลัมน์ (URL, Description) → รัน `bun run scripts/bulk-update-routes.ts [skill]`
 7. ถ้า topic ไม่ต้อง research (เช่น fix structure ล้วน) → ข้ามขั้นตอนนี้
 
 ### 5. Map Findings To Skills

@@ -1,21 +1,5 @@
 # Update Devin Global Skills Official Resources
 
-## Website
-
-- https://devin.ai
-
-## Documentation
-
-- https://docs.devin.ai
-
-## Repository
-
-- N/A
-
-## Package Registry
-
-- N/A
-
-## Description
-
-อัปเดต global Devin skills ด้วย research ล่าสุดและมาตรฐาน repo
+- [Website](https://docs.devin.ai)
+- [Documentation](https://docs.devin.ai/cli/extensibility/skills)
+- About: Devin is the AI software engineer, built to help ambitious engineering teams crush their backlogs.
