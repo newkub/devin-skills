@@ -5,8 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-service-cloudflare
-  - follow-service-cloudflare-ci
 ---
 
 ## Goal

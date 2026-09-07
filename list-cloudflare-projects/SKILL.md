@@ -7,13 +7,6 @@ related:
   - list-chezmoi-files
   - resolve-cloudflare-worker-fails
   - open-cloudflare-workers
-  - resolve-all-cloudflare-fails
-  - list-cloudflare-worker-fails
-  - follow-service-cloudflare
-  - report-table
-  - suggest-next-action
-  - ask-me
-  - open-web
 
 ---
 ## Goal

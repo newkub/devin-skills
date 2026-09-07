@@ -10,11 +10,6 @@ related:
   - follow-deploy
   - review-security
   - follow-tool-github-actions
-  - follow-math-concepts
-  - follow-tool-mise
-  - follow-tasks
-  - follow-service-cloudflare
-  - follow-service-vercel
 
 ---
 ## Goal

@@ -3,11 +3,7 @@ name: check-infra
 description: ตรวจ infrastructure health — DNS records, TLS certificate expiry และ network endpoints
 argument-hint: "[domain-or-endpoint] [--dns|--ssl]"
 related:
-  - review-security
-  - check-open-ports
   - report-table
-  - verify-email-deliverability
-  - check-security-headers
 
 ---
 

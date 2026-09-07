@@ -7,7 +7,6 @@ related:
   - deep-research
   - report-table
   - report
-  - report
   - suggest-next-action
 ---
 

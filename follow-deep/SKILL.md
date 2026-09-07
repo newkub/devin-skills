@@ -6,15 +6,11 @@ related:
   - review
   - deep-review-codebase
   - deep-analyze
-  - deep-analyze
   - deep-review
   - deep-plan
   - refactor
-  - ask-me
   - deep-validate
   - follow-parallel
-  - follow-devin-global-subagents
-  - report
 ---
 
 

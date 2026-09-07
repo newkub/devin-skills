@@ -14,10 +14,6 @@ related:
   - review-uxui
   - follow-service-cloudflare
   - review-frontend
-  - deploy-to-cloudflare
-  - deploy-to-vercel
-  - follow-lib-better-auth
-  - follow-service-stripe
 
 ---
 ## Goal

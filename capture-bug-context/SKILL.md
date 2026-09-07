@@ -4,8 +4,6 @@ description: เก็บ context ครบตอนเจอ bug — git state,
 argument-hint: "[bug-title]"
 related:
   - capture
-  - capture
-  - capture
   - deep-debug
 ---
 

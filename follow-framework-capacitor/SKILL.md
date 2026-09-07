@@ -8,12 +8,6 @@ related:
   - follow-tool-vite
   - learn-from-web
   - follow-deploy
-  - follow-create-web
-  - follow-tool-cargo
-  - follow-my-tech-stack
-  - review-techstack
-  - follow-lang-bun
-  - ask-me
 
 ---
 ## Goal

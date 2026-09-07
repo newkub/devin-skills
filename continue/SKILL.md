@@ -7,7 +7,6 @@ related:
   - follow-best-practice
   - suggest-next-action
   - ship
-  - ship
 ---
 
 ## Goal

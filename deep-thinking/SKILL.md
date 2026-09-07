@@ -9,7 +9,6 @@ related:
   - deep-debug
   - analyze-root-cause-analysis
   - suggest-next-action
-  - deep-research
 
 ---
 ## Goal

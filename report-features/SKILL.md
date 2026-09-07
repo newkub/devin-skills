@@ -8,7 +8,6 @@ related:
   - all-workspace
   - report-table
   - report
-  - report
   - suggest-next-action
 ---
 

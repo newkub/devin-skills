@@ -9,7 +9,6 @@ related:
   - update-devin-project-rules
   - update-agents-md
   - check-skills-related
-  - update-devin-global-skills
   - scan-codebase
   - deep-validate
 ---

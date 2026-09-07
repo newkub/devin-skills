@@ -4,7 +4,6 @@ description: แก้ findings จาก review-compliance ครอบคล�
 argument-hint: "[finding-or-scope]"
 related:
   - review-compliance
-  - review-compliance
   - check-repo-hygiene
   - follow-lib-license-md
   - report-review

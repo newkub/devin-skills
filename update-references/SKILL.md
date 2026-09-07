@@ -8,9 +8,6 @@ related:
   - check-file-relations
   - report-table
   - deep-validate
-  - use-astgrep
-  - deep-analyze
-  - edit-manual
 
 ---
 ## Goal

@@ -7,9 +7,6 @@ related:
   - update-devin-global-skills
   - alternative
   - report
-  - follow-best-practice
-  - suggest-next-action
-  - report-table
 ---
 
 ## Goal
@@ -237,13 +234,11 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 
 รายงานในรูปแบบตารางตาม `/report`:
 - ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
-- ใช้ headers ชัดเจน
-- ใช้ alignment ที่เหมาะสม
+- ใช้ headers และ alignment ที่เหมาะสม
 - ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
 
-- ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /alternative ถ้าจำเป็น
+- ใช้ /check-code-structure, /update-devin-global-skills, /alternative ถ้าจำเป็น
+
 ## Expected Outcome
 
 - รายงาน OS, shell, environment variables ในตาราง

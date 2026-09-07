@@ -4,7 +4,6 @@ description: shadcn/ui port สำหรับ SolidJS - accessible, customizabl
 argument-hint: "[scope]"
 related:
   - follow-solid-tanstack
-  - follow-solid-tanstack
   - follow-lib-animejs
   - follow-lib-unocss
   - follow-best-practice

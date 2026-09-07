@@ -3,23 +3,7 @@ name: capture
 description: Capture หลักฐานภาพ/วิดีโอ — component, web page, terminal หรือ app screenshot
 argument-hint: "<web|component|terminal|app> [target]"
 related:
-  - follow-tool-agent-browser
   - capture-bug-context
-  - run-test-visual
-  - resolve-errors
-  - improve-uxui
-  - review-uxui
-  - follow-design-system
-  - test-uxui-by-agent-browser
-  - update-readme-md
-  - from-recent-windows-capture
-  - report
-  - suggest-next-action
-  - open-in-windows-terminal
-  - scan-codebase
-  - follow-tool-playwright
-  - run-build
-  - run-verify
 
 ---
 

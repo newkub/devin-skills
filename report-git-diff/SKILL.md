@@ -6,7 +6,6 @@ related:
   - git-commit
   - report-table
   - report
-  - report
   - suggest-next-action
   - follow-tool-git
 ---

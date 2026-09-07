@@ -10,7 +10,6 @@ related:
   - resolve-errors
   - refactor
   - restructure
-  - test-uxui-by-agent-browser
   - report
   - ask-me
 

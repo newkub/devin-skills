@@ -11,8 +11,6 @@ related:
   - scan-codebase
   - update-references
   - deep-validate
-  - review-rules
-  - improve-alignment
   - list-devin-global-subagents
   - report-table
   - suggest-next-action

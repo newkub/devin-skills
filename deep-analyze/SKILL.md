@@ -3,7 +3,6 @@ name: deep-analyze
 description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ ด้วย tools, scripts, CLI, และ external research
 argument-hint: "[scope]"
 related:
-  - rethink
   - deep-thinking
   - scan-codebase
   - check-code-structure

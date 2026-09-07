@@ -8,7 +8,6 @@ related:
   - deep-review
   - review-quality
   - update-specs
-  - run-test-website-by-agent-browser
 
 ---
 ## Goal

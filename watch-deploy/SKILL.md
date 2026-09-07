@@ -4,8 +4,6 @@ description: Poll a deployed URL and report when it becomes healthy after deploy
 argument-hint: "[url]"
 related:
   - run-watch
-  - run-watch
-  - run-watch
   - ask-me
 ---
 

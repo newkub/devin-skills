@@ -8,7 +8,6 @@ related:
   - report-table
   - report
   - suggest-next-action
-  - report
 ---
 
 ## Goal

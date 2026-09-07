@@ -5,7 +5,6 @@ argument-hint: "[path-or-scope]"
 related:
   - review-readability
   - improve-naming
-  - improve-consistency
   - improve-simplicity
   - update-references
   - report-table

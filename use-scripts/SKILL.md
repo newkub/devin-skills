@@ -10,11 +10,8 @@ related:
   - use-pwsh-shell
   - use-astgrep
   - use-astgrep-programmatic
-  - follow-lang-bun
   - follow-tool-rolldown
   - follow-lib-esm-sh
-  - follow-lang-bun
-  - update-devin-global-skills
 
 ---
 

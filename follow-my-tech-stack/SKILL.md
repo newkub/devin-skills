@@ -3,7 +3,6 @@ name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
 argument-hint: "[scope]"
 related:
-  - use-scripts
   - follow-lang-bun
   - follow-tool-rolldown
   - follow-tool-oxlint

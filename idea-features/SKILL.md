@@ -9,12 +9,7 @@ related:
   - deep-analyze
   - report-table
   - report-uxui-sketch
-  - create-report-in-dot-devin
-  - create-plan-in-dot-devin
-  - create-files-in-os-temp
-  - open-files-in-web
   - productionize-implementation
-  - deep-review-codebase
 
 ---
 

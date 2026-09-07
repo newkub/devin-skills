@@ -6,11 +6,6 @@ related:
   - report-table
   - report-progress
   - review-writing
-  - report-plan
-  - report-in-html
-  - follow-single-responsibility
-  - suggest-next-action
-  - scan-codebase
 
 ---
 

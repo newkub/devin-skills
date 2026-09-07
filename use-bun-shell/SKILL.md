@@ -4,8 +4,6 @@ description: ใช้ Bun shell สำหรับ execute commands ด้ว�
 argument-hint: "[command]"
 related:
   - follow-lang-bun
-  - follow-lang-bun
-  - follow-lang-bun
 ---
 
 ## Goal

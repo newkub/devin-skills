@@ -10,8 +10,6 @@ related:
   - resolve-cicd
   - follow-tool-mise
   - follow-tasks
-  - follow-tasks
-  - follow-service-cloudflare-ci
 ---
 
 ## Goal

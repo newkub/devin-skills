@@ -8,11 +8,6 @@ related:
   - follow-best-practice
   - setup-cicd
   - use-scripts
-  - use-bun-shell
-  - follow-tool-bunup
-  - deep-validate
-  - follow-create-bot
-  - convert-to-esm
 
 ---
 ## Goal

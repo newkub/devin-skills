@@ -7,7 +7,6 @@ related:
   - follow-my-tech-stack
   - follow-lang-bun
   - use-scripts
-  - follow-lang-bun
   - suggest-next-action
   - report-table
   - ask-me

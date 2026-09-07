@@ -10,7 +10,6 @@ related:
   - run-build
   - run-test
   - refactor
-  - follow-lang-bun
 ---
 
 ## Goal

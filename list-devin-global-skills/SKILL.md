@@ -6,10 +6,6 @@ related:
   - report-table
   - search-skills
   - follow-skills-map
-  - check-circular-dependencies
-  - check-broken-skills-references
-  - use-scripts
-  - open-devin-in-web
 ---
 
 ## Goal

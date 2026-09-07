@@ -18,9 +18,6 @@ related:
   - follow-monorepo
   - review-delivery
   - follow-tool-taze
-  - deep-review-codebase
-  - follow-tool-hk
-  - use-astgrep
 
 ---
 ## Goal

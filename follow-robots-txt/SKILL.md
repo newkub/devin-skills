@@ -4,9 +4,6 @@ description: สร้างหรือแก้ไข robots.txt สำหร�
 argument-hint: "[scope]"
 related:
   - follow-create-web
-  - follow-create-web
-  - follow-create-web
-  - follow-create-web
   - review-seo
 ---
 

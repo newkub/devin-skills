@@ -10,10 +10,6 @@ related:
   - deep-validate
   - check-reference
   - update-specs
-  - run-test-all
-  - run-test-unit
-  - run-test-integration
-  - run-test-e2e
 
 ---
 ## Goal

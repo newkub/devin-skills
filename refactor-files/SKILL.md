@@ -11,7 +11,6 @@ related:
   - review-quality
   - review-readability
   - update-references
-  - update-references
   - run-verify
 ---
 

@@ -4,7 +4,6 @@ description: ทบทวนและ re-evaluate การตัดสินใ
 argument-hint: "[topic]"
 related:
   - deep-thinking
-  - deep-thinking
   - deep-plan
   - deep-analyze
   - deep-research

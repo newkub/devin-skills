@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - refactor-workspace
   - follow-single-responsibility
-  - refactor-workspace
   - report-table
   - report-file-structure
   - report-before-after

@@ -5,7 +5,6 @@ description: อัปเดตเป้าหมายด้วย deep review,
 related:
   - ask-me
   - deep-analyze
-  - deep-analyze
   - deep-review
   - deep-plan
   - deep-update-project

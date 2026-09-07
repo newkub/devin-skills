@@ -9,7 +9,6 @@ related:
   - follow-devin-global-subagents
   - use-scripts
   - use-astgrep
-  - use-astgrep
   - run-verify
   - deep-verify
   - run-check

@@ -10,7 +10,6 @@ related:
   - run-test
   - report-table
   - open-web-for-config-secret
-  - improve-error-messages
 ---
 
 ## Goal

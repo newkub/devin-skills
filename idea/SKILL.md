@@ -9,19 +9,6 @@ related:
   - report-table
   - suggest-next-action
   - productionize-implementation
-  - report-before
-  - create-devin-global-skills
-  - check-skills-related
-  - use-related-skills
-  - follow-create-devin-global-skills
-  - update-devin-global-skills
-  - deep-thinking
-  - scan-codebase
-  - follow-skills-map
-  - idea-convert-my-global-cli-to-skills
-  - idea-improve-files-naming
-  - update-references
-  - check-reference
 
 ---
 ## Goal

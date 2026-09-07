@@ -10,7 +10,6 @@ related:
   - follow-best-practice
   - setup-cicd
   - follow-lang-bun
-  - follow-lang-bun
 ---
 
 ## Goal

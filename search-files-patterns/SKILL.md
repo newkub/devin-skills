@@ -9,12 +9,6 @@ related:
   - refactor
   - fix
   - use-astgrep
-  - use-astgrep
-  - search-project-in-drive-d
-  - follow-my-global-cli
-  - use-subagents
-  - update-agents-md
-  - ask-me
 
 ---
 ## Goal

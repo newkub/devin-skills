@@ -11,22 +11,8 @@ related:
   - review-observability
   - scan-codebase
   - improve-security
-  - roleplay-stakeholder
-  - review-by-engineer
   - report-table
   - suggest-next-action
-  - ask-me
-  - check-cors-policy
-  - check-rate-limiting
-  - check-security-headers
-  - check-webhook
-  - check-unicode-homoglyph
-  - check-supply-chain
-  - check-source-maps
-  - check-file-permissions
-  - check-idempotency
-  - check-hardcoded-values
-  - check-infra
 
 ---
 ## Goal

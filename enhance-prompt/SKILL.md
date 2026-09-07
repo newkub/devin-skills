@@ -8,9 +8,6 @@ related:
   - continue
   - follow-devin-skills
   - report
-  - follow-single-responsibility
-  - summarize-your-understand
-  - follow-math-concepts
 
 ---
 

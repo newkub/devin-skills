@@ -16,10 +16,7 @@ related:
   - run-test
   - run-typecheck
   - deep-analyze
-  - run-lint
   - review-quality
-  - read-all-files
-  - check-long-files
 
 ---
 

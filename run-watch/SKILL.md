@@ -5,9 +5,6 @@ argument-hint: "<build|test|typecheck> [scope]"
 related:
   - resolve-errors
   - deep-debug
-  - run-build
-  - run-test
-  - run-typecheck
 
 ---
 

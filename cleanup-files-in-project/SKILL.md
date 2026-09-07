@@ -4,7 +4,6 @@ description: Clean up unnecessary source files in the project, not build artifac
 argument-hint: "[target]"
 related:
   - check-unused
-  - check-unused
   - report-table
   - report-file-structure
   - check-reference

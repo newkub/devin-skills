@@ -5,11 +5,6 @@ argument-hint: "[submodule-path]"
 related:
   - git-commit
   - ship
-  - delete-git-branch
-  - delete-git-worktree
-  - follow-git-flow
-  - resolve-errors
-  - follow-best-practice
 
 ---
 ## Goal

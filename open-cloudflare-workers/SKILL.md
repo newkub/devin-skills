@@ -5,9 +5,7 @@ argument-hint: "[account-id]"
 related:
   - open-web
   - list-cloudflare-projects
-  - list-cloudflare-projects
   - resolve-cloudflare-worker-fails
-  - list-cloudflare-projects
   - resolve-cicd
   - follow-service-cloudflare
   - ask-me

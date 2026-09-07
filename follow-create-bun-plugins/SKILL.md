@@ -4,7 +4,6 @@ description: สร้าง Bun plugins ด้วย Bun.plugin API สำห�
 argument-hint: "[scope]"
 related:
   - follow-lang-bun
-  - follow-lang-bun
   - follow-create-bun-cli
   - follow-tool-bunup
   - follow-my-tech-stack

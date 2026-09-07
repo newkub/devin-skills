@@ -7,7 +7,6 @@ related:
   - report
   - report-table
   - report-file-structure
-  - report
   - follow-single-responsibility
   - deep-plan
 ---

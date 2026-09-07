@@ -8,9 +8,6 @@ related:
   - report-table
   - suggest-next-action
   - ask-me
-  - analyze-attack-surface
-  - check-routes-status
-  - test-all-api-routes
   - report
 
 ---

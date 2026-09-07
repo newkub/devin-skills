@@ -10,8 +10,6 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
-  - roleplay-stakeholder
-  - ask-me
 
 ---
 ## Goal

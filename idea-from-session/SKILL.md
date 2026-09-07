@@ -7,7 +7,6 @@ related:
   - save-to-devin-global-skills
   - list-devin-user-requests
   - follow-create-devin-global-skills
-  - idea
 ---
 
 ## Goal

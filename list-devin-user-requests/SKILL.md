@@ -3,12 +3,7 @@ name: list-devin-user-requests
 description: รายการ requests จาก user ตาม scope — ทุก session, session นี้ หรือ repo นี้
 argument-hint: "[--scope all|session|repo]"
 related:
-  - list-devin-session
-  - idea-from-session
   - report-table
-  - summarize
-  - search-files-patterns
-  - use-bun-shell
 
 ---
 

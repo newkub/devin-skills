@@ -8,14 +8,6 @@ related:
   - open-files-in-web
   - visualize-project
   - open-readme-html
-  - follow-framework-solidjs
-  - follow-create-rust-crate
-  - follow-tool-vite
-  - use-lib-effective
-  - review-frontend
-  - resolve-errors
-  - ship
-  - suggest-next-action
 ---
 
 ## Goal

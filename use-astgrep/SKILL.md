@@ -8,10 +8,6 @@ related:
   - update-project-rules
   - check-code-structure
   - replace
-  - follow-tool-agent-browser
-  - follow-tool-usage
-  - follow-best-practice
-  - setup-cicd
 
 ---
 ## Goal

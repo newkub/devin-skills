@@ -18,7 +18,6 @@ related:
   - run-verify
   - test-usage
   - run-test
-  - run-lint
 
 ---
 ## Goal

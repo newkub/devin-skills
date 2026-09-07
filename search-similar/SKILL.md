@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - search-files-patterns
   - use-astgrep
-  - use-astgrep
   - list-devin-global-skills
   - use-related-skills
   - create-similar

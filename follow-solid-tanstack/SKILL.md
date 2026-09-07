@@ -12,9 +12,6 @@ related:
   - follow-lib-effect-ts
   - follow-single-responsibility
   - follow-framework-solidjs
-  - follow-tool-vitest
-  - follow-monorepo
-  - review-architecture
 ---
 
 

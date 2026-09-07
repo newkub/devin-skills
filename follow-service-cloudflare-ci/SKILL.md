@@ -6,16 +6,8 @@ related:
   - follow-service-cloudflare
   - deploy-to-cloudflare
   - resolve-cicd
-  - follow-tool-github-actions
-  - follow-tool-vitest
-  - run-test
-  - run-lint
-  - run-typecheck
-  - run-build
   - follow-secret-manager
   - open-web-for-config-secret
-  - improve-error-handling
-  - report-table
 ---
 
 ## Goal

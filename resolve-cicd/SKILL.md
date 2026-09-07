@@ -6,7 +6,6 @@ related:
   - resolve-github-actions-fails
   - resolve-cloudflare-worker-fails
   - resolve-all-cloudflare-fails
-  - follow-service-cloudflare-ci
   - search-project-in-drive-d
   - report-table
   - suggest-next-action

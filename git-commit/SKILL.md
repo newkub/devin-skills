@@ -10,12 +10,6 @@ related:
   - refactor-commit
   - review-diff
   - ship
-  - git-commit-and-push
-  - git-commit-selected-files
-  - follow-git-flow
-  - resolve-errors
-  - follow-best-practice
-  - update-agents-md
 
 ---
 ## Goal

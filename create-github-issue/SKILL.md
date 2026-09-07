@@ -9,11 +9,7 @@ related:
   - update-github-issue
   - ask-me
   - open-github
-  - open-github
   - list-github-issue
-  - open-github
-  - open-github
-  - open-github
   - open-web
 ---
 

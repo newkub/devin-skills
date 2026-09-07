@@ -7,12 +7,7 @@ related:
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret
-  - create-github-repo
-  - create-cloudflare-token
   - follow-my-tech-stack
-  - report-table
-  - suggest-next-action
-  - ask-me
 
 ---
 ## Goal

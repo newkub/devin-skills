@@ -4,11 +4,7 @@ description: ตรวจ webhook endpoints ด้าน security (signature, re
 argument-hint: "[endpoint-or-provider] [--security|--delivery]"
 related:
   - improve-auth
-  - review-security
   - report-table
-  - check-idempotency
-  - review-stability
-  - improve-observability
 
 ---
 

@@ -5,21 +5,6 @@ argument-hint: "[repo|issue|pr|secrets|org|personal] [owner/repo] [#n]"
 related:
   - list-github-repo
   - all-github-repo
-  - create-github-issue
-  - create-github-pr
-  - open-web
-  - view-repo
-  - list-github-issue
-  - review-github-issue
-  - list-github-pr
-  - review-github-pr
-  - merge-github-pr
-  - explore-github-trending
-  - list-github-star
-  - search-in-github-star
-  - follow-secret-manager
-  - open-web-for-config-secret
-  - follow-math-concepts
 ---
 
 ## Goal

@@ -4,7 +4,6 @@ description: สร้าง devin global skill ใหม่ตามมาต�
 argument-hint: "[idea or topic]"
 related:
   - use-related-skills
-  - use-in-another-skills
   - update-devin-global-skills
   - scan-codebase
   - follow-create-devin-global-skills
@@ -12,13 +11,6 @@ related:
   - update-devin-global-rules
   - deep-validate
   - update-references
-  - check-skills-related
-  - use-scripts
-  - review-writing
-  - check-reference
-  - report-config-files
-  - learn-from-web
-  - update-specs
 ---
 
 ## Goal

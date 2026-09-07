@@ -6,7 +6,6 @@ related:
   - update-test-and-fix
   - update-project
   - update-project-rules
-  - update-test-and-fix
   - review-update
   - run-test-coverage
   - review-writing

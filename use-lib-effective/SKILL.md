@@ -8,7 +8,6 @@ related:
   - alternative
   - review-techstack
   - deep-analyze
-  - deep-analyze
   - productionize-implementation
 ---
 

@@ -4,7 +4,6 @@ description: ตรวจสอบและประเมินไอเดี�
 argument-hint: "[scope]"
 related:
   - idea-features
-  - idea-features
   - research-setup
   - deep-research
   - learn-from-web

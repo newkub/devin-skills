@@ -3,11 +3,6 @@ name: update-project-rules
 description: สร้างและอัปเดต ast-grep rules ใน `rules/` และ `sgconfig.yml` ตาม conventions ของ project
 argument-hint: "[rule-or-pattern]"
 related:
-  - use-astgrep
-  - use-astgrep-programmatic
-  - use-astgrep
-  - scan-codebase
-  - update-dot-devin
   - report-table
 ---
 

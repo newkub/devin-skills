@@ -8,7 +8,6 @@ related:
   - suggest-next-action
   - productionize-implementation
   - implement-plan
-  - productionize-implementation
   - implement-github-task
 ---
 

@@ -5,15 +5,11 @@ argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
   - productionize-implementation
-  - productionize-implementation
   - run-verify
   - git-commit
   - git-push
   - merge-github-pr
   - resolve-errors
-  - idea-features
-  - open-github
-  - create-github-pr
 
 ---
 

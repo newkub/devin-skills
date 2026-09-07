@@ -6,7 +6,6 @@ related:
   - check-skills-related
   - list-devin-global-skills
   - check-broken-skills-references
-  - list-devin-global-skills
   - report-table
 ---
 

@@ -4,8 +4,6 @@ description: แสดงรายการ Devin sessions ทั้งหมด
 argument-hint: "[limit] [keyword]"
 related:
   - list-devin-user-requests
-  - list-devin-user-requests
-  - list-devin-user-requests
   - list-devin-global-skills
   - report-table
   - search-files-patterns

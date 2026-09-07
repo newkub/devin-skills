@@ -4,8 +4,6 @@ description: ปรับ consistency ข้าม codebase — patterns, API sh
 argument-hint: "[path-or-dimension]"
 related:
   - improve-naming
-  - review-quality
-  - refactor
   - follow-best-practice
   - update-references
   - report-table

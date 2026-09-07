@@ -5,9 +5,7 @@ argument-hint: "[pattern]"
 related:
   - use-astgrep
   - use-astgrep-programmatic
-  - search-files-patterns
   - replace
-  - report-table
 ---
 
 ## Goal

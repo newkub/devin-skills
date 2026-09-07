@@ -4,8 +4,6 @@ description: ค้นหา repositories จาก GitHub stars ด้วย gh
 argument-hint: "[query]"
 related:
   - list-github-star
-  - list-github-star
-  - list-github-star
   - all-github-repo
   - follow-tool-websearch
   - follow-tool-crw

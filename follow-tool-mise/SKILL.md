@@ -6,7 +6,6 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - use-scripts
-  - follow-secret-manager
 ---
 
 ## Goal

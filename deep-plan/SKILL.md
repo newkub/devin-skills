@@ -8,7 +8,6 @@ related:
   - deep-review-codebase
   - deep-analyze
   - deep-thinking
-  - deep-thinking
   - deep-validate
   - create-plan-in-dot-devin
 ---

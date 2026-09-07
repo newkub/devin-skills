@@ -8,11 +8,6 @@ related:
   - report
   - list-git-commit
   - report-git-diff
-  - enhance-prompt
-  - generate-prompt-from-image
-  - enhance-prompt
-  - at-this-repo
-  - edit-this-repo
 
 ---
 ## Goal

@@ -11,7 +11,6 @@ related:
   - deep-plan
   - report-table
   - idea-features
-  - idea-features
   - ask-me
   - suggest-next-action
   - ship

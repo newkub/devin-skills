@@ -12,7 +12,6 @@ related:
   - ship
   - continue
   - idea-features
-  - idea-features
   - rethink
 ---
 ## Goal

@@ -11,7 +11,6 @@ related:
   - run-test-api
   - run-test-coverage
   - update-test-and-fix
-  - update-test-and-fix
   - run-test
   - deep-review-codebase
   - resolve-errors

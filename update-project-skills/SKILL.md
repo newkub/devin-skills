@@ -11,9 +11,6 @@ related:
   - update-agents-md
   - check-circular-dependencies
   - report
-  - follow-create-devin-project-skills
-  - update-dot-devin
-  - report-table
 ---
 
 ## Goal

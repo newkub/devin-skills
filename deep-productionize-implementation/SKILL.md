@@ -4,10 +4,8 @@ description: Productionize implementation ครบวงจร — deep review,
 argument-hint: "[scope]"
 related:
   - productionize-implementation
-  - productionize-implementation
   - implement-todo-md
   - implement-features-to-mvp
-  - deep-analyze
   - deep-analyze
   - deep-review
   - deep-plan

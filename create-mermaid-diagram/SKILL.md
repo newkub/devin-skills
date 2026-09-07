@@ -12,11 +12,6 @@ related:
   - ship
   - open-files-in-web
   - report-workspace-graph
-  - list-workspaces
-  - check-monorepo
-  - follow-monorepo
-  - follow-tasks
-  - check-circular-dependencies
 
 ---
 ## Goal

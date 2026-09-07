@@ -13,8 +13,6 @@ related:
   - suggest-next-action
   - use-subagents
   - follow-parallel
-  - review-references
-  - follow-single-responsibility
   - report
 ---
 

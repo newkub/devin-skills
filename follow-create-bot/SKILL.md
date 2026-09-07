@@ -7,22 +7,6 @@ related:
   - review-techstack
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-lang-bun
-  - create-new-project-in-drive-d
-  - follow-create-sdk
-  - follow-lang-typescript
-  - search-npm-libraries
-  - run-test
-  - deploy-to-cloudflare
-  - deploy-to-railway
-  - report-table
-  - follow-create-bun-cli
-  - follow-create-cli
-  - follow-create-web
-  - use-github-ship-bots
-  - follow-service-cloudflare
-  - follow-service-vercel
-  - follow-tool-github-actions
 
 ---
 

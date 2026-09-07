@@ -6,7 +6,6 @@ related:
   - list-cloudflare-projects
   - list-deployment-fails
   - open-cloudflare-workers
-  - list-cloudflare-projects
   - resolve-cloudflare-worker-fails
   - resolve-cicd
   - follow-service-cloudflare

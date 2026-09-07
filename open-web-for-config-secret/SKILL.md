@@ -4,7 +4,6 @@ description: อ่าน .env.example แล้วเปิด URLs สำห�
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
-  - follow-secret-manager
   - follow-create-product
   - follow-create-web
   - follow-deploy
@@ -12,8 +11,6 @@ related:
   - create-cloudflare-token
   - deploy-to-vercel
   - deploy-to-railway
-  - improve-error-handling
-  - improve-error-messages
 ---
 
 ## Goal

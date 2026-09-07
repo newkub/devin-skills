@@ -4,7 +4,6 @@ description: แสดง pull requests ของ repo ที่ระบุพ�
 argument-hint: "[repo]"
 related:
   - open-github
-  - open-github
   - create-github-pr
   - review-github-pr
   - report-table

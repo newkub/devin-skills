@@ -8,7 +8,6 @@ related:
   - use-scripts
   - report-table
   - report
-  - report
   - suggest-next-action
 ---
 

@@ -4,7 +4,6 @@ description: ตรวจ shell profile ($PROFILE), PATH, aliases และ env 
 argument-hint: "[shell]"
 related:
   - check-system-env
-  - check-system-env
   - resolve-errors
   - report-table
 ---

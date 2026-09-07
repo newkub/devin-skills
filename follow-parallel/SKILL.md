@@ -7,7 +7,6 @@ related:
   - review-performance
   - review-quality
   - check-unused
-  - check-unused
 ---
 
 ## Goal

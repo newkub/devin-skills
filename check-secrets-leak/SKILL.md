@@ -7,8 +7,6 @@ related:
   - open-web-for-config-secret
   - review-security
   - check-reference
-  - check-env-vars
-  - report-table
 
 ---
 ## Goal
