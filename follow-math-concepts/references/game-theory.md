@@ -1,14 +1,5 @@
----
-name: follow-math-game-theory
-description: ใช้ minimax, Nash equilibrium, zero-sum games ใน AI opponents, scheduling และ decision systems
-argument-hint: "[problem]"
-related:
-  - follow-math-optimization
-  - follow-goal
-  - follow-parallel
-  - follow-math-probability
-  - follow-math-concepts
----
+# Game Theory
+
 
 ## Goal
 
@@ -87,10 +78,10 @@ related:
 - ใช้ memoization สำหรับ repeated subgames
 - ใช้ simulation ถ้า payoff ไม่ชัดเจน
 
-- ใช้ /follow-math-optimization ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-goal ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome

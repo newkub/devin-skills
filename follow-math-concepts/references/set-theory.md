@@ -1,13 +1,5 @@
----
-name: follow-math-set-theory
-description: เข้าใจ set theory, operations, Venn diagrams และประยุกต์ใช้ใน programming
-argument-hint: "[topic]"
-related:
-  - follow-math-predicate-logic
-  - follow-math-propositional-logic
-  - follow-math-concepts
-  - follow-debugging
----
+# Set Theory
+
 
 ## Goal
 
@@ -100,8 +92,8 @@ related:
 - Union/Intersection = combine datasets
 - Difference = exclude
 
-- ใช้ /follow-math-predicate-logic ถ้าจำเป็น
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-debugging ถ้าจำเป็น
 

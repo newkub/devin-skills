@@ -1,14 +1,5 @@
----
-name: follow-math-combinatorics
-description: ใช้ permutations, combinations, counting principles ใน test cases และ algorithms
-argument-hint: "[problem]"
-related:
-  - follow-math-probability
-  - follow-math-algorithm-complexity
-  - follow-test
-  - follow-algorithms
-  - follow-math-concepts
----
+# Combinatorics
+
 
 ## Goal
 
@@ -79,8 +70,8 @@ related:
 - ใช้ bitmask สำหรับ subset/combination ถ้า `n` เล็ก
 - ใช้ library ถ้า `n` ใหญ่
 
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-algorithms ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น

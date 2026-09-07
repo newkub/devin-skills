@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-math-cryptography
+  - follow-math-concepts
   - follow-tool-mise
   - follow-tasks
   - deploy-to-cloudflare
@@ -222,7 +222,7 @@ Export secrets หรือใช้ `infisical run` ใน CI/CD scripts
 - `.env.example` ต้องมี `INFISICAL_TOKEN` และ `INFISICAL_DOMAIN` สำหรับ documentation
 - `turbo.json` ต้องมี `INFISICAL_TOKEN` ใน `passThroughEnv` และ `INFISICAL_DOMAIN` ใน `env`
 
-- ใช้ /follow-math-cryptography ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น

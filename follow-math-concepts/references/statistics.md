@@ -1,14 +1,5 @@
----
-name: follow-math-statistics
-description: ใช้ descriptive statistics, distributions, hypothesis testing ใน metrics, logs, benchmarks
-argument-hint: "[data]"
-related:
-  - follow-math-probability
-  - follow-test
-  - follow-incident-triage
-  - follow-goal
-  - follow-math-concepts
----
+# Statistics
+
 
 ## Goal
 
@@ -87,7 +78,7 @@ related:
 - ใช้ reservoir sampling สำหรับ large datasets
 - ใช้ time-series ถ้ามี temporal data
 
-- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-incident-triage ถ้าจำเป็น
 - ใช้ /follow-goal ถ้าจำเป็น

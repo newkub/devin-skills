@@ -3,9 +3,7 @@ name: follow-parallel
 description: รวม independent operations เป็น parallel execution เพื่อลดเวลาและเพิ่ม efficiency
 argument-hint: "[scope]"
 related:
-  - follow-math-graph-theory
-  - follow-math-optimization
-  - follow-math-game-theory
+  - follow-math-concepts
   - review-performance
   - review-quality
   - check-unused-files
@@ -111,9 +109,7 @@ related:
 - ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
 - ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
 
-- ใช้ /follow-math-graph-theory ถ้าจำเป็น
-- ใช้ /follow-math-optimization ถ้าจำเป็น
-- ใช้ /follow-math-game-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

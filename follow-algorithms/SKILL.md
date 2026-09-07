@@ -3,11 +3,7 @@ name: follow-algorithms
 description: เลือกและ implement algorithms ตามปัญหาและ complexity ทีเหมาะสม
 argument-hint: "[scope]"
 related:
-  - follow-math-combinatorics
-  - follow-math-graph-theory
-  - follow-math-algorithm-complexity
-  - follow-math-discrete-math
-  - follow-math-proofs
+  - follow-math-concepts
   - review-quality
   - ask-me
 ---
@@ -87,11 +83,7 @@ related:
 - ทดสอบ worst case ถ้าเป็นไปได้
 - ใช้ property-based tests ถ้าเหมาะสม
 
-- ใช้ /follow-math-combinatorics ถ้าจำเป็น
-- ใช้ /follow-math-graph-theory ถ้าจำเป็น
-- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
-- ใช้ /follow-math-discrete-math ถ้าจำเป็น
-- ใช้ /follow-math-proofs ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

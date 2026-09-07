@@ -3,8 +3,7 @@ name: follow-deterministic
 description: พัฒนาโปรเจกต์ด้วย deterministic programming พร้อม predictable outputs, no randomness
 argument-hint: "[scope]"
 related:
-  - follow-math-propositional-logic
-  - follow-math-proofs
+  - follow-math-concepts
 ---
 
 ## Goal
@@ -163,8 +162,7 @@ related:
 - Handle `consistently`
 - Test `error paths`
 
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
-- ใช้ /follow-math-proofs ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

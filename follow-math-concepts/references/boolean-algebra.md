@@ -1,13 +1,5 @@
----
-name: follow-math-boolean-algebra
-description: เข้าใจและ simplify boolean expressions, logic gates, Karnaugh maps ใน programming
-argument-hint: "[expression]"
-related:
-  - follow-math-propositional-logic
-  - follow-math-concepts
-  - follow-debugging
-  - follow-software-engineering
----
+# Boolean Algebra
+
 
 ## Goal
 
@@ -79,7 +71,7 @@ related:
 - ternary `? :` เป็น multiplexer
 - ห้าม over-simplify จนทำให้คนอ่านไม่เข้าใจ
 
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-debugging ถ้าจำเป็น
 - ใช้ /follow-software-engineering ถ้าจำเป็น

@@ -1,15 +1,5 @@
----
-name: follow-math-optimization
-description: หาค่า min/max ภายใต้ constraints ด้วย linear programming, gradient descent, dynamic programming
-argument-hint: "[problem]"
-related:
-  - follow-math-linear-algebra
-  - follow-math-algorithm-complexity
-  - follow-goal
-  - follow-software-engineering
-  - follow-parallel
-  - follow-math-concepts
----
+# Optimization
+
 
 ## Goal
 
@@ -90,8 +80,8 @@ related:
 - ใช้ DP table ถ้า subproblems ซ้ำ
 - ใช้ gradient ถ้ามี differentiable objective
 
-- ใช้ /follow-math-linear-algebra ถ้าจำเป็น
-- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-goal ถ้าจำเป็น
 - ใช้ /follow-software-engineering ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น

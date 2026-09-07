@@ -3,12 +3,7 @@ name: follow-test
 description: ตั้งค่าและใช้งาน testing strategies ครบวงจร รวม regression testing ตามมาตรฐาน
 argument-hint: "[scope]"
 related:
-  - follow-math-combinatorics
-  - follow-math-probability
-  - follow-math-statistics
-  - follow-math-proofs
-  - follow-math-numerical-methods
-  - follow-math-algorithm-complexity
+  - follow-math-concepts
   - follow-monorepo
 ---
 
@@ -183,12 +178,7 @@ tests/
 - เพิ่ม test cases สำหรับ bugs ที่พบ ใช้ mutation testing สำหรับ critical code
 - ห้ามข้าม regression testing เพื่อ save time หรือรันเฉพาะ unit tests และข้าม integration/e2e
 
-- ใช้ /follow-math-combinatorics ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-statistics ถ้าจำเป็น
-- ใช้ /follow-math-proofs ถ้าจำเป็น
-- ใช้ /follow-math-numerical-methods ถ้าจำเป็น
-- ใช้ /follow-math-algorithm-complexity ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

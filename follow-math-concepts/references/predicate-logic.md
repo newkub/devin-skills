@@ -1,14 +1,5 @@
----
-name: follow-math-predicate-logic
-description: เข้าใจและใช้ predicate logic, quantifiers all/some, sets, และ inference ใน programming และ prompts
-argument-hint: "[topic]"
-related:
-  - follow-math-propositional-logic
-  - follow-math-concepts
-  - follow-math-set-theory
-  - follow-debugging
-  - ask-me
----
+# Predicate Logic
+
 
 ## Goal
 
@@ -20,7 +11,7 @@ related:
 - ครอบคลุม sets, membership, subset, union, intersection, complement
 - ครอบคลุม predicates และ quantifiers: ∀ (forall), ∃ (exists), ∃! (exists unique)
 - แนะนำ inference rules และ valid/invalid arguments
-- ไม่ลงลึก propositional operators เบื้องต้น (ดู `/follow-math-propositional-logic`)
+- ไม่ลงลึก propositional operators เบื้องต้น (ดู `/follow-math-concepts`)
 
 ## Execute
 
@@ -126,7 +117,7 @@ related:
 - ใช้ Venn diagram ตรวจความถูกต้อง
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-debugging ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
 

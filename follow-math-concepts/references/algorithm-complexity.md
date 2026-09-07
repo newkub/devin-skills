@@ -1,13 +1,5 @@
----
-name: follow-math-algorithm-complexity
-description: วิเคราะห์ Big O, Omega, Theta, recurrence และ Master theorem สำหรับ algorithms
-argument-hint: "[code-or-algorithm]"
-related:
-  - follow-algorithms
-  - improve-data-structure
-  - follow-test
-  - follow-math-concepts
----
+# Algorithm Complexity
+
 
 ## Goal
 

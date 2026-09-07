@@ -1,13 +1,5 @@
----
-name: follow-math-linear-algebra
-description: ใช้ vectors, matrices, dot product ใน ML, graphics, embeddings และ transformations
-argument-hint: "[topic]"
-related:
-  - follow-math-concepts
-  - follow-math-optimization
-  - follow-math-probability
-  - follow-math-statistics
----
+# Linear Algebra
+
 
 ## Goal
 
@@ -80,9 +72,9 @@ related:
 - ใช้ WebGL matrices สำหรับ graphics
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-optimization ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

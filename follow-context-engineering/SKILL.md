@@ -3,8 +3,7 @@ name: follow-context-engineering
 description: จัดการ context ของ AI agent อย่างมีประสิทธิภาพ ลด context rot เพิ่มคุณภาพการทำงาน
 argument-hint: "[scope]"
 related:
-  - follow-math-set-theory
-  - follow-math-information-theory
+  - follow-math-concepts
   - deep-validate
   - report
   - suggest-next-action
@@ -165,8 +164,7 @@ related:
 - ใช้ `/report-table` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
-- ใช้ /follow-math-set-theory ถ้าจำเป็น
-- ใช้ /follow-math-information-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
 ## Expected Outcome

@@ -5,7 +5,7 @@ argument-hint: "[repo]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-math-cryptography
+  - follow-math-concepts
 ---
 
 ## Goal
@@ -34,7 +34,7 @@ related:
 2. ต้องเป็น owner หรือ maintainer ของ repository
 3. ระบุชื่อ repository และ username ให้ถูกต้อง
 
-- ใช้ /follow-math-cryptography ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

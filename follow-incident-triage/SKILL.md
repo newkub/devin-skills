@@ -3,8 +3,7 @@ name: follow-incident-triage
 description: จัดลำดับความสำคัญของ incident และกำหนด action ที่เหมาะสม
 argument-hint: "[scope]"
 related:
-  - follow-math-probability
-  - follow-math-statistics
+  - follow-math-concepts
   - deep-debug
   - resolve-errors
 ---
@@ -124,8 +123,7 @@ related:
 - P2: Scheduled updates
 - P3: Next scheduled meeting
 
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

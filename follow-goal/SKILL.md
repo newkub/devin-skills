@@ -3,9 +3,7 @@ name: follow-goal
 description: ตั้งเป้าหมายและวางแผนงานอย่างเป็นระบบ
 argument-hint: "[scope]"
 related:
-  - follow-math-optimization
-  - follow-math-probability
-  - follow-math-game-theory
+  - follow-math-concepts
   - pondering
   - check-skills-related
 ---
@@ -95,9 +93,7 @@ related:
 - ปรับแผนตาม feedback
 - ตรวจสอบว่าแผนครอบคลุมทุกอย่าง
 
-- ใช้ /follow-math-optimization ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-game-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

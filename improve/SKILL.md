@@ -17,7 +17,6 @@ related:
   - follow-math-concepts
   - review-architecture
   - review-quality
-  - follow-math-optimization
 ---
 
 ## Goal
@@ -47,7 +46,7 @@ related:
 2. ถ้าเป้าหมายเป็น code → ทำ `/review-quality`, `/review-architecture`
 3. ถ้าเป้าหมายเป็น skill → ทำ `/review-devin-global-skills`
 4. ถ้าเป้าหมายเป็น docs → ทำ `/review-readme-md`, `/review-docs`
-5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-probability` หรือ `/follow-math-optimization`
+5. ถ้ามี trade-offs หรือ uncertainty → ใช้ `/follow-math-concepts` หรือ `/follow-math-concepts`
 6. บันทึก gaps ทีพร้อมแก้ไข
 
 ### 3. Prioritize
@@ -98,10 +97,10 @@ related:
 
 ### 2. Math Support
 
-- ถ้ามี performance, complexity, cost → ใช้ `/follow-math-algorithm-complexity`, `/follow-math-optimization`
-- ถ้ามี uncertainty หรือ risk → ใช้ `/follow-math-probability`
-- ถ้ามี invariants หรือ correctness → ใช้ `/follow-math-proofs`
-- ถ้ามี metrics หรือ benchmarks → ใช้ `/follow-math-statistics`
+- ถ้ามี performance, complexity, cost → ใช้ `/follow-math-concepts`, `/follow-math-concepts`
+- ถ้ามี uncertainty หรือ risk → ใช้ `/follow-math-concepts`
+- ถ้ามี invariants หรือ correctness → ใช้ `/follow-math-concepts`
+- ถ้ามี metrics หรือ benchmarks → ใช้ `/follow-math-concepts`
 
 ### 3. Scope And Safety
 

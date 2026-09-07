@@ -1,14 +1,5 @@
----
-name: follow-math-information-theory
-description: ใช้ entropy, encoding, compression, KL-divergence ใน data, logs, และ AI
-argument-hint: "[topic]"
-related:
-  - follow-math-probability
-  - follow-math-statistics
-  - follow-context-engineering
-  - follow-tool-knip
-  - follow-math-concepts
----
+# Information Theory
+
 
 ## Goal
 
@@ -85,8 +76,8 @@ related:
 - ใช้ streaming algorithm สำหรับ large datasets
 - ใช้ histogram หรือ count-min sketch ประมาณ distribution
 
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-statistics ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-context-engineering ถ้าจำเป็น
 - ใช้ /follow-tool-knip ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น

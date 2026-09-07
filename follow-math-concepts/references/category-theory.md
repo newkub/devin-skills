@@ -1,12 +1,5 @@
----
-name: follow-math-category-theory
-description: เข้าใจ categories, functors, monads และประยุกต์ใน functional programming และ type systems
-argument-hint: "[topic]"
-related:
-  - review-architecture
-  - follow-math-set-theory
-  - follow-math-concepts
----
+# Category Theory
+
 
 ## Goal
 
@@ -85,7 +78,7 @@ related:
 - ใช้ library เช่น `fp-ts`, `effect` ถ้าจำเป็น
 
 - ใช้ /review-architecture ถ้าจำเป็น
-- ใช้ /follow-math-set-theory ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome

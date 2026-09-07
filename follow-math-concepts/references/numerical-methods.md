@@ -1,12 +1,5 @@
----
-name: follow-math-numerical-methods
-description: จัดการ floating point, rounding, approximation และ precision ใน numerical computing
-argument-hint: "[problem]"
-related:
-  - follow-debugging
-  - follow-test
-  - follow-math-concepts
----
+# Numerical Methods
+
 
 ## Goal
 

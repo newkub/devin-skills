@@ -9,7 +9,6 @@ related:
   - review-devin-global-skills
   - deep-research
   - follow-math-concepts
-  - follow-math-probability
   - update-devin-global-skills
 ---
 
@@ -41,7 +40,7 @@ related:
 3. หา skills ที frontmatter ไม่ครบหรือ description ยาวเกิน
 4. หา skills ทียัง force architecture เดิม (e.g. Clean) แบบไม่ conditional
 5. หา skills ทีควร extract เป็น references/templates
-6. ถ้ามี uncertainty เรื่อง impact → ใช้ `/follow-math-probability`
+6. ถ้ามี uncertainty เรื่อง impact → ใช้ `/follow-math-concepts`
 
 ### 3. Generate Ideas
 
@@ -67,7 +66,7 @@ related:
 1. ใช้ `/rethink` กับแต่ละไอเดีย ตอบว่า keep/revise/replace/defer
 2. ประเมิน impact กับ effort
 3. เรียงลำดับตาม foundation → high impact → low risk
-4. ถ้ามี trade-offs หลายตัว → ใช้ `/follow-math-optimization`
+4. ถ้ามี trade-offs หลายตัว → ใช้ `/follow-math-concepts`
 
 ### 5. Report
 

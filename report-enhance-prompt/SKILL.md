@@ -8,8 +8,6 @@ related:
   - sumarize-your-understand
   - report-plan
   - follow-math-concepts
-  - follow-math-probability
-  - follow-math-proofs
 ---
 
 ## Goal
@@ -37,8 +35,8 @@ related:
 
 1. ทำ `/follow-single-responsibility` แยกแต่ละคำขอ/งาน
 2. เรียงลำดับตาม dependency, priority, หรือลำดับเวลา
-3. ถ้ามีคณิตศาสตร์/ตรรกะซับซ้อน → ใช้ `/follow-math-concepts` หรือ `/follow-math-proofs`
-4. ถ้ามีการตัดสินใจภายใต้ความไม่แน่นอน → ใช้ `/follow-math-probability`
+3. ถ้ามีคณิตศาสตร์/ตรรกะซับซ้อน → ใช้ `/follow-math-concepts` หรือ `/follow-math-concepts`
+4. ถ้ามีการตัดสินใจภายใต้ความไม่แน่นอน → ใช้ `/follow-math-concepts`
 
 ### 3. Enhance Prompt
 
@@ -89,10 +87,10 @@ related:
 
 ### 4. Math Support
 
-- ถ้ามี performance, complexity, cost trade-off → ใช้ `/follow-math-algorithm-complexity` หรือ `/follow-math-optimization`
-- ถ้ามี uncertainty หรือ risk → ใช้ `/follow-math-probability`
-- ถ้าต้อง proving correctness → ใช้ `/follow-math-proofs`
-- ถ้ามีสถิติหรือ metrics → ใช้ `/follow-math-statistics`
+- ถ้ามี performance, complexity, cost trade-off → ใช้ `/follow-math-concepts` หรือ `/follow-math-concepts`
+- ถ้ามี uncertainty หรือ risk → ใช้ `/follow-math-concepts`
+- ถ้าต้อง proving correctness → ใช้ `/follow-math-concepts`
+- ถ้ามีสถิติหรือ metrics → ใช้ `/follow-math-concepts`
 
 ## Expected Outcome
 

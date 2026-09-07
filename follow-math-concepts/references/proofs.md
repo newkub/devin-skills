@@ -1,15 +1,5 @@
----
-name: follow-math-proofs
-description: ใช้ proof techniques induction, contradiction, contrapositive ในการตรวจ invariants และ correctness
-argument-hint: "[statement]"
-related:
-  - follow-math-propositional-logic
-  - follow-math-predicate-logic
-  - follow-test
-  - follow-tdd
-  - follow-deterministic
-  - follow-math-concepts
----
+# Proofs
+
 
 ## Goal
 
@@ -89,8 +79,8 @@ related:
 - ใช้ property-based testing ยืนยัน invariants
 - ใช้ formal methods ถ้าจำเป็น
 
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
-- ใช้ /follow-math-predicate-logic ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-tdd ถ้าจำเป็น
 - ใช้ /follow-deterministic ถ้าจำเป็น

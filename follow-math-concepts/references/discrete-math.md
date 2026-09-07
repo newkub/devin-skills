@@ -1,13 +1,5 @@
----
-name: follow-math-discrete-math
-description: ใช้ number theory, modular arithmetic, gcd, primes ใน hashing, cryptography และ algorithms
-argument-hint: "[topic]"
-related:
-  - follow-math-cryptography
-  - follow-math-combinatorics
-  - follow-algorithms
-  - follow-math-concepts
----
+# Discrete Math
+
 
 ## Goal
 
@@ -75,8 +67,8 @@ related:
 - `%` ใน programming คือ remainder ซึงอาจติดลบกับ negative numbers
 - ใช้ `((a % m) + m) % m` เพื่อให้เป็นบวก
 
-- ใช้ /follow-math-cryptography ถ้าจำเป็น
-- ใช้ /follow-math-combinatorics ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-algorithms ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 

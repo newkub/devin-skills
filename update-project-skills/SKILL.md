@@ -9,7 +9,7 @@ related:
   - check-monorepo
   - deep-validate
   - update-agents-md
-  - prepare-skills-context
+  - update-devin-global-skills
   - check-circular-dependencies
   - report
 ---

@@ -3,9 +3,7 @@ name: improve-data-structure
 description: เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements
 argument-hint: "[component-or-data-pattern]"
 related:
-  - follow-math-graph-theory
-  - follow-math-set-theory
-  - follow-math-linear-algebra
+  - follow-math-concepts
   - review-architecture
   - review-data-structure
   - refactor
@@ -91,9 +89,9 @@ related:
 
 ### 4. Cross-Discipline References
 
-- ใช้ `/follow-math-graph-theory` ถ้าจำเป็น
-- ใช้ `/follow-math-set-theory` ถ้าจำเป็น
-- ใช้ `/follow-math-linear-algebra` ถ้าจำเป็น
+- ใช้ `/follow-math-concepts` ถ้าจำเป็น
+- ใช้ `/follow-math-concepts` ถ้าจำเป็น
+- ใช้ `/follow-math-concepts` ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -1,15 +1,5 @@
----
-name: follow-math-cryptography
-description: เข้าใจ hashing, primes, symmetric/asymmetric encryption และประยุกต์ใน security
-argument-hint: "[topic]"
-related:
-  - follow-math-discrete-math
-  - follow-secret-manager
-  - follow-service-infisical
-  - open-github-secrets
-  - follow-math-concepts
-  - open-web-for-config-secret
----
+# Cryptography
+
 
 ## Goal
 
@@ -89,7 +79,7 @@ related:
 - `node:crypto` ใน Node/Bun
 - `libsodium` สำหรับ high-level crypto
 
-- ใช้ /follow-math-discrete-math ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-service-infisical ถ้าจำเป็น
 - ใช้ /open-github-secrets ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น

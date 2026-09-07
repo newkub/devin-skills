@@ -3,11 +3,7 @@ name: follow-debugging
 description: หลักการ debug อย่างเป็นระบบ ตั้งแต่ reproduce ถึง fix และ prevent
 argument-hint: "[scope]"
 related:
-  - follow-math-propositional-logic
-  - follow-math-boolean-algebra
-  - follow-math-probability
-  - follow-math-statistics
-  - follow-math-numerical-methods
+  - follow-math-concepts
   - use-bun-shell
   - run-test
 ---
@@ -141,11 +137,7 @@ related:
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
-- ใช้ /follow-math-boolean-algebra ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
-- ใช้ /follow-math-statistics ถ้าจำเป็น
-- ใช้ /follow-math-numerical-methods ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

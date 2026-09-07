@@ -3,8 +3,7 @@ name: follow-tdd
 description: พัฒนา feature ด้วย Test-Driven Development red-green-refactor
 argument-hint: "[scope]"
 related:
-  - follow-math-proofs
-  - follow-math-propositional-logic
+  - follow-math-concepts
   - use-in-another-skills
   - run-verify
   - git-commit
@@ -106,8 +105,7 @@ related:
 - ไม่ใช้ placeholder assertions
 - ตรวจ output/behavior จริง
 
-- ใช้ /follow-math-proofs ถ้าจำเป็น
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

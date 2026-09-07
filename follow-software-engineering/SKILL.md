@@ -3,10 +3,7 @@ name: follow-software-engineering
 description: ออกแบบและเขียน software ที่ test ง่าย, scale ง่าย, debug ง่าย, และใช้งานง่าย
 argument-hint: "[scope]"
 related:
-  - follow-math-propositional-logic
-  - follow-math-boolean-algebra
-  - follow-math-optimization
-  - follow-math-probability
+  - follow-math-concepts
   - follow-clean-architecture
   - review-architecture
   - review-frontend
@@ -166,10 +163,7 @@ related:
 - README: ครบถ้วนสำหรับ project
 - Up-to-date: อัปเดตอย่างต่อเนื่อง
 
-- ใช้ /follow-math-propositional-logic ถ้าจำเป็น
-- ใช้ /follow-math-boolean-algebra ถ้าจำเป็น
-- ใช้ /follow-math-optimization ถ้าจำเป็น
-- ใช้ /follow-math-probability ถ้าจำเป็น
+- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 
