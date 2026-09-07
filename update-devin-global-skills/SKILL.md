@@ -14,7 +14,6 @@ related:
   - check-circular-dependencies
   - check-reference
   - update-references
-  - review-issue
   - report
   - ship
   - follow-context-engineering

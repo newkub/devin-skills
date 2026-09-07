@@ -6,15 +6,9 @@ related:
   - follow-lib-remotion
   - optimize-videos
   - gen-subtitle-video
-  - record-video-web
-  - convert-to-svg
-  - create-video-story
   - follow-runtime-bun
   - follow-lib-animejs
   - follow-lib-iconify
-  - follow-create-web
-  - follow-tool-bunup
-  - follow-lib-openai
   - optimize-images
 ---
 
@@ -161,6 +155,10 @@ related:
 - ใช้ /follow-lib-remotion สำหรับรายละเอียด Remotion API
 - ใช้ /optimize-videos สำหรับ optimize input/output
 - ใช้ /gen-subtitle-video สำหรับ generate subtitle
+- ใช้ /follow-runtime-bun ถ้าใช้ Bun เป็น runtime
+- ใช้ /follow-lib-animejs ถ้าต้องการ complex animations
+- ใช้ /follow-lib-iconify ถ้าต้องการ icon overlay
+- ใช้ /optimize-images ถ้าต้องการ optimize image assets
 
 ## Expected Outcome
 
