@@ -117,7 +117,6 @@
 - ใช้ Venn diagram ตรวจความถูกต้อง
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-debugging ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
 

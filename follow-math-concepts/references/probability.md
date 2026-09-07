@@ -79,11 +79,9 @@
 - ใช้ BigInt หรือ arbitrary precision ถ้าจำเป็น
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-incident-triage ถ้าจำเป็น
 - ใช้ /follow-goal ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

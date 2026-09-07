@@ -72,9 +72,6 @@
 - ใช้ WebGL matrices สำหรับ graphics
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

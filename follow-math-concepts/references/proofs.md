@@ -80,11 +80,9 @@
 - ใช้ formal methods ถ้าจำเป็น
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-tdd ถ้าจำเป็น
 - ใช้ /follow-deterministic ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

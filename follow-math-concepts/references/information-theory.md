@@ -77,10 +77,8 @@
 - ใช้ histogram หรือ count-min sketch ประมาณ distribution
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-context-engineering ถ้าจำเป็น
 - ใช้ /follow-tool-knip ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 

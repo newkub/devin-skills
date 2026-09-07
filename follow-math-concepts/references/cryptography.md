@@ -82,7 +82,6 @@
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 - ใช้ /follow-service-infisical ถ้าจำเป็น
 - ใช้ /open-github-secrets ถ้าจำเป็น
-- ใช้ /follow-math-concepts ถ้าจำเป็น
 
 ## Expected Outcome
 
