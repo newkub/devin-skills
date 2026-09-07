@@ -5,12 +5,8 @@ argument-hint: "[path]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - check-env-vars
   - review-security
   - check-reference
-  - check-hardcoded-values
-  - check-secret-rotation
-  - check-file-permissions
 ---
 
 ## Goal

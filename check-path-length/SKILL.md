@@ -3,10 +3,6 @@ name: check-path-length
 description: หา file paths ที่เกิน Windows MAX_PATH (260) — สาเหตุ build/copy/extract พัง
 argument-hint: "[path]"
 related:
-  - check-long-files
-  - check-size
-  - list-file-structure
-  - fix
   - report-table
 ---
 

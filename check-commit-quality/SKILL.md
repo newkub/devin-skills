@@ -6,9 +6,7 @@ related:
   - git-commit
   - refactor-commit
   - list-git-commit
-  - follow-tool-git
   - follow-tool-hk
-  - resolve-errors
   - report-table
 ---
 

@@ -9,7 +9,6 @@ related:
   - follow-my-tech-stack
   - follow-devin-skills
   - deep-review-codebase
-  - optimize-deps
 ---
 
 ## Goal
@@ -81,8 +80,8 @@ related:
 | Dependencies | 5 | น้อยกว่าหรือเท่ากับปัจจุบัน |
 
 คำนวณ Total Score (สูงสุด 35) และระบุ Migration Effort + Risk:
-- **Effort**: Low / Medium / High
-- **Risk**: Low / Medium / High
+- Effort: Low / Medium / High
+- Risk: Low / Medium / High
 
 ### 6. Recommend
 
@@ -97,9 +96,9 @@ related:
 Action ใช้ค่า: `keep`, `upgrade`, `replace`, `remove`
 
 เรียงลำดับตาม priority:
-- **High**: Score >= 25, Effort Low, Risk Low
-- **Medium**: Score 20-24 หรือ Effort Medium
-- **Low**: Score < 20 หรือ Risk High
+- High: Score >= 25, Effort Low, Risk Low
+- Medium: Score 20-24 หรือ Effort Medium
+- Low: Score < 20 หรือ Risk High
 
 ## Rules
 

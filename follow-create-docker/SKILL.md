@@ -7,12 +7,10 @@ related:
   - review-techstack
   - follow-deploy
   - setup-cicd
-  - run-build
   - follow-secret-manager
   - check-secrets-leak
   - run-check
   - report-table
-  - optimize-docker
 ---
 
 ## Goal

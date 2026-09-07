@@ -10,9 +10,7 @@ related:
   - deploy-to-railway
   - follow-deploy
   - review-security
-  - review-auth
   - follow-tool-github-actions
-  - check-secret-rotation
 ---
 
 ## Goal

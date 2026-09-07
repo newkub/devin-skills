@@ -4,9 +4,6 @@ description: ตรวจ DNS health — records ถูกต้อง, expiry, 
 argument-hint: "[domain]"
 related:
   - verify-email-deliverability
-  - check-ssl-expiry
-  - verify-deploy
-  - check-security-headers
   - report-table
 ---
 
@@ -35,8 +32,8 @@ related:
 > Goal: ตรวจ records หลักต่อ domain
 
 1. `nslookup`/`Resolve-DnsName` per type: A/AAAA → IPs ที่ตอบ, CNAME → target ถูก
-2. **Dangling CNAME**: target ที่ไม่ resolve แล้ว (subdomain takeover risk — severity สูง)
-3. **CNAME at apex**: invalid ตาม DNS spec — flag
+2. Dangling CNAME: target ที่ไม่ resolve แล้ว (subdomain takeover risk — severity สูง)
+3. CNAME at apex: invalid ตาม DNS spec — flag
 4. NS records: nameservers ตอบ consistent, ไม่มี lame delegation
 5. CAA records: จำกัด CA ที่ออก cert ได้ — missing CAA = info
 

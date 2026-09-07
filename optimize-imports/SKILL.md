@@ -3,12 +3,9 @@ name: optimize-imports
 description: จัดการ imports ทั้ง project ลบ unused, แก้ barrel files ที่ทำ tree-shaking พัง
 argument-hint: "[path]"
 related:
-  - check-dead-code
   - run-lint
   - follow-tool-knip
   - use-astgrep
-  - optimize-bundle
-  - follow-tool-biome
   - report-before-after
 ---
 

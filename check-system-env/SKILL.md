@@ -4,7 +4,6 @@ description: ตรวจสอบ OS, shell, environment variables และ gl
 argument-hint: "[scope]"
 related:
   - check-code-structure
-  - check-shell-profile
   - prepare-skills-context
   - alternative
   - report-table

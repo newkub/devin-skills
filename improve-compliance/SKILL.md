@@ -5,7 +5,6 @@ argument-hint: "[finding-or-scope]"
 related:
   - review-compliance
   - review-by-compliance
-  - improve-security
   - check-repo-hygiene
   - follow-lib-license-md
   - report-review

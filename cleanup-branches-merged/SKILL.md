@@ -3,10 +3,6 @@ name: cleanup-branches-merged
 description: ลบ local และ remote branches ที่ merge เข้า main แล้วทั้งหมดพร้อม dry-run
 argument-hint: "[base-branch] [--remote]"
 related:
-  - cleanup-git-branch
-  - delete-git-branch
-  - list-git-branch
-  - merge-git-branch
   - ask-me
   - report-table
 ---
@@ -48,7 +44,7 @@ related:
 
 1. ใช้ `/report-table` คอลัมน์: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
 2. ระบุจำนวนรวมและ branches ที่ข้ามพร้อมเหตุผล
-3. **รอ user confirmation ผ่าน `/ask-me` ก่อนลบเสมอ**
+3. รอ user confirmation ผ่าน `/ask-me` ก่อนลบเสมอ
 
 ### 4. Delete
 

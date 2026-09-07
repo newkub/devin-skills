@@ -8,8 +8,6 @@ related:
   - alternative
   - delete
   - report-table
-  - clean-empty-dirs
-  - check-broken-symlinks
 ---
 
 ## Goal

@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-ioredis
 description: ใช้ ioredis สำหรับ Redis client — connection, pipeline, pub/sub, cluster, Sentinel
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

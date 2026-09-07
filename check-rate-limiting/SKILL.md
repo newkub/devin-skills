@@ -3,10 +3,6 @@ name: check-rate-limiting
 description: ตรวจ endpoints ที่ขาด rate limiting — abuse, brute force และ cost exposure
 argument-hint: "[routes-or-framework]"
 related:
-  - review-security
-  - run-test-api
-  - analyze-attack-surface
-  - follow-lib-elysia
   - improve-security
   - report-table
 ---

@@ -6,12 +6,8 @@ related:
   - convert-files-format
   - convert-to-svg
   - check-size
-  - report-bundle
-  - review-performance
-  - use-bun-shell
   - update-references
   - report-table
-  - optimize-videos
 ---
 
 ## Goal

@@ -6,8 +6,6 @@ related:
   - capture-terminal
   - capture-web
   - capture-image-app-to-screenshot
-  - git-debug
-  - report-config-files
   - deep-debug
 ---
 

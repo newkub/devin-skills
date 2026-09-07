@@ -4,10 +4,7 @@ description: สรุป Devin session usage และ cost ตาม billing t
 argument-hint: "[period-or-tag]"
 related:
   - list-devin-session
-  - list-devin-user-request-all-session
-  - read-devin-context
   - report-table
-  - deep-report
 ---
 
 ## Goal

@@ -7,7 +7,6 @@ related:
   - list-devin-global-skills-relation
   - check-broken-skills-references
   - list-devin-global-skills
-  - cleanup-files-in-computer
   - report-table
 ---
 
@@ -35,10 +34,10 @@ related:
 
 > Goal: แยกระดับการใช้งาน
 
-1. **Orphaned**: 0 inbound + ไม่ถูกอ้างใน `AGENTS.md`/`global_rules.md`/docs
-2. **Leaf**: 0 inbound แต่เป็น entry-point skills (user เรียกตรงผ่าน `/name`) — ไม่ใช่ dead โดยอัตโนมัติ
-3. **Hub**: inbound สูง — core skills ที่อื่นพึ่ง
-4. **Self-referencing only**: อ้างถึงเฉพาะในกลุ่มตัวเอง — อาจเป็น cluster ที่ตายทั้งก้อน
+1. Orphaned: 0 inbound + ไม่ถูกอ้างใน `AGENTS.md`/`global_rules.md`/docs
+2. Leaf: 0 inbound แต่เป็น entry-point skills (user เรียกตรงผ่าน `/name`) — ไม่ใช่ dead โดยอัตโนมัติ
+3. Hub: inbound สูง — core skills ที่อื่นพึ่ง
+4. Self-referencing only: อ้างถึงเฉพาะในกลุ่มตัวเอง — อาจเป็น cluster ที่ตายทั้งก้อน
 
 ### 3. Check Utility Signals
 

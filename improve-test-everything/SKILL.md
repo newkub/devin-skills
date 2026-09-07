@@ -8,9 +8,6 @@ related:
   - run-test-website-by-agent-browser
   - deep-review
   - update-specs
-  - improve-test-data
-  - optimize-tests
-  - run-test-mutation
 ---
 
 ## Goal

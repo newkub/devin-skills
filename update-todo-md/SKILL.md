@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-todo-md
 description: เพิ่ม อ่าน และ enhance prompt จาก TODO.md ใน project root
 argument-hint: "[add|read] [title/content]"
@@ -9,7 +9,6 @@ related:
   - enhance-prompt
   - report-table
   - ask-me
-  - save-to-todo-md
 ---
 
 ## Goal

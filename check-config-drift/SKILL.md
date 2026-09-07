@@ -3,10 +3,8 @@ name: check-config-drift
 description: ตรวจ config files ว่า parse ได้ ตรง schema และไม่ drift จาก defaults หรือ env อื่น
 argument-hint: "[env-or-config-file]"
 related:
-  - follow-config
   - report-config-files
   - check-env-vars
-  - review-config
   - update-config
   - report-table
 ---

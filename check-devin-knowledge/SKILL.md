@@ -3,8 +3,6 @@ name: check-devin-knowledge
 description: Audit Devin knowledge notes — stale, contradicting, unused และ missing references
 argument-hint: "[folder-or-topic]"
 related:
-  - list-devin-global-skills
-  - check-dead-link
   - check-reference
   - report-table
 ---

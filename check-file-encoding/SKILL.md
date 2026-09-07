@@ -4,8 +4,6 @@ description: ตรวจ file encodings ทั้ง repo — BOM ปน, mixed
 argument-hint: "[path]"
 related:
   - search-files-patterns
-  - follow-config
-  - check-repo-hygiene
   - report-table
 ---
 
@@ -33,11 +31,11 @@ related:
 
 > Goal: flag anomalies ตาม project convention
 
-1. **Mixed line endings**: ไฟล์เดียวที่มี CRLF+LF ปนกัน
-2. **Inconsistent BOM**: บางไฟล์ BOM บางไฟล์ไม่มีใน filetype เดียวกัน
-3. **Non-UTF8**: UTF-16/Latin-1 files ที่ tools อ่านผิดได้
-4. **Missing `.gitattributes`**: repo ไม่มี `* text=auto` หรือ per-type rules → line endings ขึ้นกับเครื่อง dev
-5. **`.editorconfig` drift**: editorconfig บอกอย่างหนึ่ง ไฟล์จริงเป็นอีกอย่าง
+1. Mixed line endings: ไฟล์เดียวที่มี CRLF+LF ปนกัน
+2. Inconsistent BOM: บางไฟล์ BOM บางไฟล์ไม่มีใน filetype เดียวกัน
+3. Non-UTF8: UTF-16/Latin-1 files ที่ tools อ่านผิดได้
+4. Missing `.gitattributes`: repo ไม่มี `* text=auto` หรือ per-type rules → line endings ขึ้นกับเครื่อง dev
+5. `.editorconfig` drift: editorconfig บอกอย่างหนึ่ง ไฟล์จริงเป็นอีกอย่าง
 
 ### 3. Check Git-Level Consistency
 

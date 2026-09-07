@@ -5,10 +5,7 @@ argument-hint: "[table-or-migration]"
 related:
   - check-migrations
   - improve-migration
-  - review-migration
-  - follow-orm
   - report-before-after
-  - report-table
 ---
 
 ## Goal

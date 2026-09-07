@@ -4,10 +4,7 @@ description: รัน mutation testing วัดว่า test suite จับ 
 argument-hint: "[path-or-module]"
 related:
   - follow-tool-stryker-mutator
-  - follow-tool-mutants-rs
   - improve-test-everything
-  - run-test-coverage
-  - run-test
   - report-table
 ---
 
@@ -28,7 +25,7 @@ related:
 > Goal: เลือก mutation tool ตาม ecosystem
 
 1. ตรวจ stack จาก manifest — เลือก tool ที่ตรง (`/follow-tool-stryker-mutator` สำหรับ JS/TS)
-2. **จำกัด scope เสมอ**: เลือก module/files ที่สำคัญหรือที่เพิ่งเปลี่ยน — mutation testing ทั้ง repo ใช้เวลานานมาก
+2. จำกัด scope เสมอ: เลือก module/files ที่สำคัญหรือที่เพิ่งเปลี่ยน — mutation testing ทั้ง repo ใช้เวลานานมาก
 3. ติดตั้ง tool ถ้ายังไม่มี (`npx stryker`, `cargo install cargo-mutants`)
 
 ### 2. Run Baseline

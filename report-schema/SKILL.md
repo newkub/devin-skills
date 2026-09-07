@@ -4,13 +4,9 @@ description: สร้างรายงาน DB schema จาก migrations/sc
 argument-hint: "[path]"
 related:
   - review-database
-  - follow-lib-drizzle
   - run-drizzle-studio
   - create-mermaid-diagram
   - report-table
-  - report-file-structure
-  - analyze-project
-  - use-pwsh-shell
 ---
 
 ## Goal

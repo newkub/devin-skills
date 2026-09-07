@@ -3,10 +3,7 @@ name: batch-rename-files
 description: Mass rename ไฟล์ตาม pattern พร้อม preview/dry-run และ reference updates
 argument-hint: "<pattern> <replacement> [path]"
 related:
-  - edit-relative
   - update-references
-  - use-pwsh-shell
-  - list-file-structure
   - report-table
 ---
 
@@ -36,10 +33,10 @@ Rename ไฟล์จำนวนมากตาม pattern — preview ก่�
 
 1. Generate `old → new` mapping สำหรับทุกไฟล์ที่ match
 2. flag issues:
-   - **Collisions**: หลายไฟล์ map ไปชื่อเดียวกัน
-   - **No-ops**: names ที่ไม่เปลี่ยนจริง
-   - **Case-only**: Windows ที่ rename case-only ต้องสองขั้น (via temp name)
-   - **Locked files**: ทำ `/check-file-locks` ถ้าสงสัย
+   - Collisions: หลายไฟล์ map ไปชื่อเดียวกัน
+   - No-ops: names ที่ไม่เปลี่ยนจริง
+   - Case-only: Windows ที่ rename case-only ต้องสองขั้น (via temp name)
+   - Locked files: ทำ `/check-file-locks` ถ้าสงสัย
 3. ใช้ `/report-table`: `No.`, `Old Name`, `New Name`, `Status`, `Issue`
 
 ### 3. Confirm And Execute

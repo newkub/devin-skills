@@ -3,11 +3,7 @@ name: optimize-hydration
 description: ลด hydration cost — partial hydration, islands และลด client JS ที่ไม่จำเป็น
 argument-hint: "[page-or-component]"
 related:
-  - optimize-rendering
   - optimize-web-vitals
-  - optimize-bundle
-  - follow-framework-astro
-  - review-frontend
   - report-before-after
 ---
 
@@ -43,12 +39,12 @@ related:
 
 > Goal: ลด hydration scope ตาม framework
 
-1. **Islands**: แปลงเป็น islands ถ้า framework รองรับ — Astro `client:*` directives, Fresh islands
-2. **Lazy hydration**: `client:visible`/`client:idle` สำหรับ below-fold/non-critical widgets
-3. **Reduce client components**: Next/Nuxt — ย้าย display-only กลับ server components
-4. **Event delegation**: แทน hydration บางจุดด้วย progressive enhancement/vanilla listeners
-5. **Split third-party**: defer chat/analytics/ads ออกจาก hydration path — load on interaction/idle
-6. **Resumability**: พิจารณา frameworks ที่ไม่ hydrate เลย (Qwik) ถ้า cost สูงมาก — เสนอเป็น decision
+1. Islands: แปลงเป็น islands ถ้า framework รองรับ — Astro `client:*` directives, Fresh islands
+2. Lazy hydration: `client:visible`/`client:idle` สำหรับ below-fold/non-critical widgets
+3. Reduce client components: Next/Nuxt — ย้าย display-only กลับ server components
+4. Event delegation: แทน hydration บางจุดด้วย progressive enhancement/vanilla listeners
+5. Split third-party: defer chat/analytics/ads ออกจาก hydration path — load on interaction/idle
+6. Resumability: พิจารณา frameworks ที่ไม่ hydrate เลย (Qwik) ถ้า cost สูงมาก — เสนอเป็น decision
 
 ### 4. Verify
 

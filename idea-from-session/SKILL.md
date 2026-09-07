@@ -6,7 +6,6 @@ related:
   - idea-new-skills
   - save-to-devin-global-skills
   - list-devin-user-request-in-this-session
-  - summarize-this-chat-session
   - follow-create-devin-global-skills
   - report-idea
 ---

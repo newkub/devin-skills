@@ -7,11 +7,7 @@ related:
   - check-security-headers
   - run-test-api
   - ship-rollback
-  - deploy-to-cloudflare
   - report-before-after
-  - check-dns-health
-  - check-ssl-expiry
-  - verify-email-deliverability
 ---
 
 ## Goal

@@ -1,4 +1,4 @@
-﻿---
+---
 name: productionize-implementation
 description: แปลง TODO, MOCK, FAKE, placeholder เป้น production code จริง end-to-end
 argument-hint: "[scope-or-plan]"
@@ -18,9 +18,6 @@ related:
   - run-test-all
   - run-verify
   - test-usage
-  - deep-productionize-implementation
-  - resolve-github-issue-by-me
-  - save-to-todo-md
 ---
 
 ## Goal

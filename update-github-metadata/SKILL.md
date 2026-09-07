@@ -8,8 +8,6 @@ related:
   - follow-dot-github
   - list-github-repo
   - create-github-repo
-  - view-repo
-  - check-reference
   - ask-me
 ---
 

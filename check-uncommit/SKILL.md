@@ -4,14 +4,9 @@ description: สแกน git repos ทั้งเครื่องหา unco
 argument-hint: "[path]"
 related:
   - list-project-git-in-computer
-  - follow-tool-git
   - git-commit
   - check-unpush
-  - search-project-in-drive-d
-  - use-pwsh-shell
   - report-table
-  - morning-briefing
-  - report-repo-health
 ---
 
 ## Goal

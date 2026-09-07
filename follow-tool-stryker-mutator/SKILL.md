@@ -9,7 +9,6 @@ related:
   - follow-tool-vitest
   - follow-lang-typescript
   - follow-lang-javascript
-  - run-test-mutation
 ---
 
 ## Goal

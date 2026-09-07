@@ -3,10 +3,6 @@ name: check-broken-symlinks
 description: หา symlinks/junctions ที่ target ตาย — broken links ที่ทำ build/tools fail เงียบๆ
 argument-hint: "[path]"
 related:
-  - check-dead-link
-  - check-reference
-  - list-file-structure
-  - cleanup-files-in-computer
   - report-table
 ---
 
@@ -43,11 +39,11 @@ related:
 
 > Goal: แยกความรุนแรง
 
-1. **Critical**: links ที่ build/tooling พึ่งพา — `node_modules` links, workspace links
-2. **High**: repo symlinks ที่ target หาย — ใคร clone ใหม่จะพัง
-3. **Medium**: utility links ที่ใช้น้อย
-4. **Info**: Windows compat junctions (`Documents and Settings` → `Users`) ที่ broken-by-design — ข้าม
-5. **Orphans**: links ที่ target หายและไม่มีใครใช้ — safe to clean
+1. Critical: links ที่ build/tooling พึ่งพา — `node_modules` links, workspace links
+2. High: repo symlinks ที่ target หาย — ใคร clone ใหม่จะพัง
+3. Medium: utility links ที่ใช้น้อย
+4. Info: Windows compat junctions (`Documents and Settings` → `Users`) ที่ broken-by-design — ข้าม
+5. Orphans: links ที่ target หายและไม่มีใครใช้ — safe to clean
 
 ### 4. Report
 

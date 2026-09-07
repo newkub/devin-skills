@@ -5,7 +5,6 @@ argument-hint: "[version-or-tag]"
 related:
   - follow-release
   - check-release-drift
-  - verify-deploy
   - run-test-all
   - check-migrations
   - check-uncommit

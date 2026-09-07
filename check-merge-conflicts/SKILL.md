@@ -4,10 +4,6 @@ description: ทำนาย merge conflicts ก่อน merge จริง —
 argument-hint: "[source-branch] [target-branch]"
 related:
   - merge-git-branch
-  - resolve-merge-conflicts
-  - check-git-diff
-  - list-git-branch
-  - check-file-relations
   - report-table
 ---
 

@@ -6,9 +6,7 @@ related:
   - update-todo-md
   - list-todo-md
   - implement-todo-md
-  - productionize-implementation
   - report-progress
-  - continue
   - report-table
 ---
 

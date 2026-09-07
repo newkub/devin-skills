@@ -4,8 +4,6 @@ description: Benchmark เทียบ API performance ข้าม versions, im
 argument-hint: "[baseline-vs-candidate]"
 related:
   - run-load-test
-  - run-bench
-  - run-test-api
   - check-bottlenecks
   - report-before-after
 ---

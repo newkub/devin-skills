@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-drizzle-kit
 description: ใช้ drizzle-kit จัดการ migrations — generate, migrate, push, studio
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

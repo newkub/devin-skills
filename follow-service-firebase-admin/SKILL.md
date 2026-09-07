@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-service-firebase-admin
 description: ใช้ firebase-admin ฝั่ง server — Auth, Firestore, FCM, storage, service account
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

@@ -3,13 +3,8 @@ name: optimize-ci
 description: ลดเวลาและต้นทุน CI pipeline ด้วย cache, matrix tuning, path filters และ job splitting
 argument-hint: "[workflow-file]"
 related:
-  - follow-tool-github-actions
   - list-ci-configs
-  - list-cicd-fails
-  - review-workflow
-  - setup-cicd
   - follow-tool-act
-  - report-before-after
 ---
 
 ## Goal

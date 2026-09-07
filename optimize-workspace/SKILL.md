@@ -3,12 +3,7 @@ name: optimize-workspace
 description: Optimize monorepo task graph — affected-only runs, remote cache และ pipeline tuning
 argument-hint: "[task-or-workspace]"
 related:
-  - check-monorepo-boundaries
-  - optimize-build
   - optimize-ci
-  - follow-tool-moonrepo
-  - follow-tool-turborepo
-  - follow-monorepo
   - report-before-after
 ---
 
@@ -36,20 +31,20 @@ related:
 
 > Goal: ตรวจ correctness ของ task declarations
 
-1. **Inputs/outputs ครบไหม**: cache keys ขาด inputs → stale cache; outputs ผิด → cache miss ตลอด
-2. **DependsOn ถูกไหม**: build ต้องรอ deps' build, test ต้องรอ codegen ฯลฯ
-3. **Global deps**: env files, lockfile changes ควร invalidate ที่เกี่ยว ไม่ใช่ทั้ง repo
+1. Inputs/outputs ครบไหม: cache keys ขาด inputs → stale cache; outputs ผิด → cache miss ตลอด
+2. DependsOn ถูกไหม: build ต้องรอ deps' build, test ต้องรอ codegen ฯลฯ
+3. Global deps: env files, lockfile changes ควร invalidate ที่เกี่ยว ไม่ใช่ทั้ง repo
 4. flag: `cache: false` ที่ไม่จำเป็น, tasks ที่ไม่ deterministic แต่ถูก cache
 
 ### 3. Apply Optimizations
 
 > Goal: แก้ config ตาม findings
 
-1. **Affected filtering**: `--filter=[origin/main]`, `moon run :build --affected` — รันเฉพาะที่เปลี่ยน
-2. **Fix declarations**: เติม inputs/outputs/dependsOn ให้ครบ — cache hit ขึ้น
-3. **Remote cache**: เปิด remote caching (Turborepo remote, moonbase, Nx Cloud หรือ self-hosted)
-4. **Parallelism**: ปรับ concurrency ตามเครื่อง/CI runners
-5. **Split heavy tasks**: แยก slow tasks เป็น parallel units (per-package tests)
+1. Affected filtering: `--filter=[origin/main]`, `moon run :build --affected` — รันเฉพาะที่เปลี่ยน
+2. Fix declarations: เติม inputs/outputs/dependsOn ให้ครบ — cache hit ขึ้น
+3. Remote cache: เปิด remote caching (Turborepo remote, moonbase, Nx Cloud หรือ self-hosted)
+4. Parallelism: ปรับ concurrency ตามเครื่อง/CI runners
+5. Split heavy tasks: แยก slow tasks เป็น parallel units (per-package tests)
 
 ### 4. Integrate CI
 

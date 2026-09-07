@@ -3,14 +3,10 @@ name: run-load-test
 description: รัน load test กับ endpoints ด้วย k6 หรือ autocannon วัด throughput, latency และ breaking point
 argument-hint: "[url-or-endpoints] [--vus N] [--duration Ns]"
 related:
-  - run-test-api
   - check-bottlenecks
-  - review-performance
-  - run-bench
   - run-profiler
   - check-open-ports
   - report-before-after
-  - bench-apis
 ---
 
 ## Goal
@@ -33,7 +29,7 @@ related:
 1. ตรวจว่า app รันอยู่ — ทำ `/check-open-ports` ยืนยัน port หรือ `/run-dev` ถ้ายังไม่รัน
 2. เลือก endpoints: จาก argument, หรือ auto-pick (health, main reads, main writes)
 3. เตรียม auth/data ที่จำเป็น (test tokens, seed data)
-4. **ยืนยัน target**: ถ้าเป็น shared/staging/prod → ต้องถาม user ก่อนเสมอ
+4. ยืนยัน target: ถ้าเป็น shared/staging/prod → ต้องถาม user ก่อนเสมอ
 
 ### 2. Select Tool And Scenario
 

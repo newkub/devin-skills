@@ -4,11 +4,8 @@ description: ปรับ CLI experience ทั้ง help text, output format, 
 argument-hint: "[command-or-entry]"
 related:
   - run-test-cli
-  - follow-create-cli
   - improve-error-messages
   - capture-terminal
-  - review-by-user
-  - follow-lang-bun
   - report-before-after
 ---
 
@@ -36,12 +33,12 @@ related:
 
 > Goal: หา UX issues ตาม CLI conventions
 
-1. **Help**: มี description, examples, flag docs ครบไหม — ไม่มี wall of text
-2. **Flags**: naming consistent (`--verbose`/`--quiet` pairs), มี short aliases สำหรับ flags หลัก
-3. **Output**: stdout สำหรับ data (pipeable), stderr สำหรับ messages/progress, มี `--json`/`--quiet` mode ถ้าเหมาะ
-4. **Errors**: messages บอกว่าเกิดอะไร + แก้อย่างไร, exit codes ถูกต้อง (0 success, 1 general, 2 usage)
-5. **Interactivity**: prompts มี defaults, confirm สำหรับ destructive ops, non-interactive fallback (CI detection)
-6. **Progress**: long ops มี spinner/progress, ปิดอัตโนมัติเมื่อ non-TTY
+1. Help: มี description, examples, flag docs ครบไหม — ไม่มี wall of text
+2. Flags: naming consistent (`--verbose`/`--quiet` pairs), มี short aliases สำหรับ flags หลัก
+3. Output: stdout สำหรับ data (pipeable), stderr สำหรับ messages/progress, มี `--json`/`--quiet` mode ถ้าเหมาะ
+4. Errors: messages บอกว่าเกิดอะไร + แก้อย่างไร, exit codes ถูกต้อง (0 success, 1 general, 2 usage)
+5. Interactivity: prompts มี defaults, confirm สำหรับ destructive ops, non-interactive fallback (CI detection)
+6. Progress: long ops มี spinner/progress, ปิดอัตโนมัติเมื่อ non-TTY
 
 ### 3. Apply Improvements
 

@@ -4,10 +4,7 @@ description: รัน contract testing ข้าม services — consumer-drive
 argument-hint: "[consumer-or-provider]"
 related:
   - check-api-contract
-  - run-test-api
-  - follow-tool-msw
   - gen-openapi
-  - run-test-integration
   - report-table
 ---
 

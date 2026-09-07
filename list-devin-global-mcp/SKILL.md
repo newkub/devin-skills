@@ -6,7 +6,6 @@ related:
   - report-table
   - suggest-next-action
   - update-devin-global-mcp
-  - optimize-mcp
 ---
 
 ## Goal

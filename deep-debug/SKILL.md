@@ -16,7 +16,6 @@ related:
   - deep-impact
   - deep-trace
   - report-table
-  - capture-bug-context
 ---
 
 ## Goal

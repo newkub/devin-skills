@@ -3,11 +3,7 @@ name: check-todo-comments
 description: Audit TODO, FIXME, HACK comments หาอันที่เก่า ไม่มี owner หรือเป็น debt ที่ลืม
 argument-hint: "[path-or-max-age]"
 related:
-  - report-scan-todo
-  - list-todo-md
   - update-todo-md
-  - check-dead-code
-  - check-commit-quality
   - report-table
 ---
 
@@ -43,11 +39,11 @@ related:
 
 > Goal: แยก debt ที่ยัง relevant ออกจากที่ค้าง
 
-1. **Stale**: >90 วันไม่มีการแก้ — candidate สำหรับทำหรือลบ
-2. **Orphaned**: code ที่ comment อ้างถึงเปลี่ยน/ถูกลบไปแล้ว
-3. **Vague**: markers ไม่มีคำอธิบาย (`// TODO` เปล่าๆ)
-4. **Actionable**: มี context ครบและยัง relevant — เสนอเป็น task
-5. **Blocking**: `FIXME`/`BUG`/`HACK` ที่อยู่ใน critical paths — severity สูงกว่า TODO ทั่วไป
+1. Stale: >90 วันไม่มีการแก้ — candidate สำหรับทำหรือลบ
+2. Orphaned: code ที่ comment อ้างถึงเปลี่ยน/ถูกลบไปแล้ว
+3. Vague: markers ไม่มีคำอธิบาย (`// TODO` เปล่าๆ)
+4. Actionable: มี context ครบและยัง relevant — เสนอเป็น task
+5. Blocking: `FIXME`/`BUG`/`HACK` ที่อยู่ใน critical paths — severity สูงกว่า TODO ทั่วไป
 
 ### 4. Report
 

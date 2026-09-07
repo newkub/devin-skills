@@ -4,7 +4,6 @@ description: สร้าง GitHub App จริงด้วย Octokit/Probot 
 argument-hint: "[scope]"
 related:
   - follow-create-github-bots
-  - follow-tool-github-actions
   - follow-my-tech-stack
   - review-techstack
   - follow-secret-manager

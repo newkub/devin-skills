@@ -3,9 +3,6 @@ name: check-types-coverage
 description: วัด type coverage ของ TypeScript หา any, ts-ignore และ weak types ที่กระจายอยู่
 argument-hint: "[path-or-threshold]"
 related:
-  - follow-lang-typescript
-  - run-typecheck
-  - scan-codebase
   - use-astgrep
   - report-table
   - improve

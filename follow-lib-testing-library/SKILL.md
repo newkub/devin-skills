@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-testing-library
 description: ใช้ Testing Library — queries by role/text, user-event, jest-dom matchers
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

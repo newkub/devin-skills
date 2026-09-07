@@ -7,7 +7,6 @@ related:
   - list-git-commit
   - list-git-stash
   - report-table
-  - check-release-drift
 ---
 
 ## Goal

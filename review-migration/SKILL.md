@@ -8,7 +8,6 @@ related:
   - report-table
   - suggest-next-action
   - scan-codebase
-  - improve-migration
 ---
 
 ## Goal

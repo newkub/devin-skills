@@ -18,8 +18,6 @@ related:
   - update-references
   - run-verify
   - create-plan-in-dot-devin
-  - dont-over-engineer
-  - rethink
 ---
 
 ## Goal

@@ -10,7 +10,6 @@ related:
   - report-table
   - run-check
   - ask-me
-  - improve-dependencies
 ---
 
 ## Goal

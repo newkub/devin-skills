@@ -10,7 +10,6 @@ related:
   - follow-create-bun-cli
   - follow-create-sdk
   - follow-create-web
-  - follow-create-slack-bot
   - follow-lang-typescript
   - run-test
   - use-bun-native-api

@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-fast-check
 description: ใช้ fast-check สำหรับ property-based testing — arbitraries, shrinking, invariants
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

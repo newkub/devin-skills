@@ -1,13 +1,10 @@
-﻿---
+---
 name: follow-lib-simplewebauthn
 description: ใช้ simplewebauthn ทำ passkeys/WebAuthn — registration + authentication ceremonies
 argument-hint: "[target-or-scope]"
 related:
-  - review-auth
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

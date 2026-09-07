@@ -3,10 +3,6 @@ name: bench-bundle-tools
 description: Benchmark เทียบ bundlers บน project เดียวกัน — build time, output size และ features
 argument-hint: "[tools-to-compare]"
 related:
-  - optimize-build
-  - check-bundle-regression
-  - follow-tool-vite
-  - follow-tool-rolldown
   - run-build
   - report-before-after
 ---

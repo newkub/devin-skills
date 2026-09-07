@@ -6,8 +6,6 @@ related:
   - follow-asynchronous
   - use-astgrep
   - run-lint
-  - run-typecheck
-  - follow-lang-typescript
   - improve-error-handling
   - report-table
 ---

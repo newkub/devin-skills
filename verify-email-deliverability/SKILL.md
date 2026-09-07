@@ -3,11 +3,6 @@ name: verify-email-deliverability
 description: ตรวจ email deliverability — SPF, DKIM, DMARC records และ test send จริง
 argument-hint: "[domain]"
 related:
-  - follow-service-resend
-  - follow-service-twilio
-  - check-dns-health
-  - check-security-headers
-  - verify-deploy
   - report-table
 ---
 
@@ -60,7 +55,7 @@ related:
 
 > Goal: ส่ง test email จริงยืนยัน end-to-end
 
-1. **ต้อง user confirm** — ส่ง email จริงมีผลจริง
+1. ต้อง user confirm — ส่ง email จริงมีผลจริง
 2. ส่ง test ไปยัง address ที่ user ระบุ หรือ mail-tester service
 3. ตรวจ headers ที่ได้รับ: SPF/DKIM/DMARC pass results
 

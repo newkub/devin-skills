@@ -6,7 +6,6 @@ related:
   - check-code-structure
   - refactor
   - report-scan-todo
-  - check-path-length
 ---
 ## Goal
 

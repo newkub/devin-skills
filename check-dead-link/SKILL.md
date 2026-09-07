@@ -5,11 +5,8 @@ argument-hint: "[path-or-glob]"
 related:
   - check-broken-skills-references
   - check-reference
-  - review-docs
   - search-files-patterns
-  - use-pwsh-shell
   - report-table
-  - check-broken-symlinks
 ---
 
 ## Goal

@@ -3,11 +3,7 @@ name: check-deprecated-apis
 description: หา code ที่ใช้ deprecated APIs, functions และ dependencies ที่จะถูกลบ
 argument-hint: "[path]"
 related:
-  - review-dependencies
   - use-astgrep
-  - check-should-update
-  - check-types-coverage
-  - list-dependencies
   - report-table
 ---
 

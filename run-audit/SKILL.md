@@ -8,7 +8,6 @@ related:
   - resolve-errors
   - run-check
   - run-verify
-  - check-supply-chain
 ---
 
 ## Goal

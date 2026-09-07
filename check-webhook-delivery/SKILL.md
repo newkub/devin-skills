@@ -5,8 +5,6 @@ argument-hint: "[endpoint-or-provider]"
 related:
   - check-idempotency
   - review-stability
-  - check-webhook-security
-  - check-error-coverage
   - improve-observability
   - report-table
 ---
@@ -35,10 +33,10 @@ related:
 
 > Goal: ตรวจ delivery guarantees
 
-1. **Retries**: มี retry policy ไหม — count, backoff, max attempts
-2. **Ordering**: events ที่ต้องเรียง (created→updated→deleted) รับ out-of-order ได้ไหม
-3. **Idempotency**: handler รับ duplicate delivery ปลอดภัยไหม — ทำ `/check-idempotency` ร่วม
-4. **Timeout**: processing timeout vs provider retry window — flag handlers ช้ากว่า provider timeout
+1. Retries: มี retry policy ไหม — count, backoff, max attempts
+2. Ordering: events ที่ต้องเรียง (created→updated→deleted) รับ out-of-order ได้ไหม
+3. Idempotency: handler รับ duplicate delivery ปลอดภัยไหม — ทำ `/check-idempotency` ร่วม
+4. Timeout: processing timeout vs provider retry window — flag handlers ช้ากว่า provider timeout
 
 ### 3. Check Failure Handling
 

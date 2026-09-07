@@ -7,9 +7,6 @@ related:
   - watch-github-actions
   - list-cicd-fails
   - resolve-cicd
-  - follow-tool-mise
-  - download-program
-  - run-check
   - report-table
 ---
 

@@ -6,8 +6,6 @@ related:
   - follow-lib-unocss
   - follow-tool-formatter
   - follow-best-practice
-  - optimize-fonts
-  - optimize-css
 ---
 
 ## Goal

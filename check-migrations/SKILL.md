@@ -3,14 +3,10 @@ name: check-migrations
 description: ตรวจ database migrations ที่ pending vs applied และ schema drift ระหว่าง code กับ DB
 argument-hint: "[path]"
 related:
-  - follow-lib-drizzle
   - run-drizzle-studio
   - review-database
   - report-schema
-  - follow-lib-postgres
-  - use-pwsh-shell
   - report-table
-  - verify-migration-data
 ---
 
 ## Goal

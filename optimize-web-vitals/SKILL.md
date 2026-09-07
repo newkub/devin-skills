@@ -3,16 +3,10 @@ name: optimize-web-vitals
 description: แก้ Core Web Vitals ของ web app ทั้ง LCP, INP, CLS ด้วย field data และ targeted fixes
 argument-hint: "[url-or-metric]"
 related:
-  - follow-lib-web-vitals
   - follow-tool-unlighthouse
-  - review-performance
   - optimize-images
   - optimize-bundle
-  - optimize-network
-  - optimize-rendering
   - report-before-after
-  - optimize-fonts
-  - optimize-videos
 ---
 
 ## Goal
@@ -39,19 +33,19 @@ related:
 
 > Goal: หา root cause ของ metric ที่ fail
 
-1. **LCP**: หา LCP element (image/heading) — ตรวจ render-blocking CSS/JS, image ไม่ preload, font blocking, server TTFB
-2. **INP/TBT**: หา long tasks, heavy hydration, event handlers ช้า, main-thread blocking
-3. **CLS**: หา images/ads/embeds ไม่มี dimensions, font swap shifts, late-injected content
+1. LCP: หา LCP element (image/heading) — ตรวจ render-blocking CSS/JS, image ไม่ preload, font blocking, server TTFB
+2. INP/TBT: หา long tasks, heavy hydration, event handlers ช้า, main-thread blocking
+3. CLS: หา images/ads/embeds ไม่มี dimensions, font swap shifts, late-injected content
 
 ### 3. Apply Fixes
 
 > Goal: แก้ตาม metric ที่ fail โดยเรียง impact
 
-1. **LCP**: preload LCP image, `fetchpriority="high"`, inline critical CSS, defer non-critical JS, แก้ TTFB (caching/edge)
-2. **Images**: ทำ `/optimize-images` — WebP/AVIF, `width`/`height` attrs, `loading="lazy"` ใต้ fold
-3. **INP**: แตก long tasks, defer hydration, `content-visibility`, ลด JS ใน bundle (`/optimize-bundle`)
-4. **CLS**: กำหนด dimensions/aspect-ratio ทุก media, `font-display: swap` + size-adjust, reserve space สำหรับ dynamic content
-5. **Fonts**: self-host, `preload` critical fonts, `font-display` ที่เหมาะ
+1. LCP: preload LCP image, `fetchpriority="high"`, inline critical CSS, defer non-critical JS, แก้ TTFB (caching/edge)
+2. Images: ทำ `/optimize-images` — WebP/AVIF, `width`/`height` attrs, `loading="lazy"` ใต้ fold
+3. INP: แตก long tasks, defer hydration, `content-visibility`, ลด JS ใน bundle (`/optimize-bundle`)
+4. CLS: กำหนด dimensions/aspect-ratio ทุก media, `font-display: swap` + size-adjust, reserve space สำหรับ dynamic content
+5. Fonts: self-host, `preload` critical fonts, `font-display` ที่เหมาะ
 
 ### 4. Verify
 

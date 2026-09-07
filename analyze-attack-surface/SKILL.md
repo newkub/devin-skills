@@ -6,8 +6,6 @@ related:
   - review-security
   - check-secrets-leak
   - list-website-all-routes
-  - check-rate-limiting
-  - check-cors-policy
 ---
 
 ## Goal

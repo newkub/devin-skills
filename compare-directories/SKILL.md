@@ -4,8 +4,6 @@ description: เทียบสอง directory trees ระดับ content �
 argument-hint: "<dir-a> <dir-b>"
 related:
   - view-diff
-  - list-file-structure
-  - check-file-relations
   - report-table
 ---
 
@@ -33,9 +31,9 @@ related:
 
 > Goal: หา files ที่อยู่ฝั่งเดียว
 
-1. **Only in A**: files ที่ B ขาด
-2. **Only in B**: files ที่ A ขาด
-3. **Both**: candidates สำหรับ content comparison
+1. Only in A: files ที่ B ขาด
+2. Only in B: files ที่ A ขาด
+3. Both: candidates สำหรับ content comparison
 
 ### 3. Compare Content
 

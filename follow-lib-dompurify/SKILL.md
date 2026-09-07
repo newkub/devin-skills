@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-dompurify
 description: ใช้ dompurify/isomorphic-dompurify sanitize HTML กัน XSS ทุก environment
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

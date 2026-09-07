@@ -23,7 +23,6 @@ related:
   - check-skills-related
   - use-in-another-skills
   - review-devin-global-skills
-  - idea-from-session
 ---
 
 ## Goal

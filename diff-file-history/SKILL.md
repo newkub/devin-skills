@@ -3,11 +3,7 @@ name: diff-file-history
 description: เทียบไฟล์เดียวกันข้าม git history — evolution, regressions และ change patterns
 argument-hint: "<path> [range]"
 related:
-  - check-git-logs
   - git-file-history
-  - check-git-diff
-  - restore-from-git-log
-  - git-debug
   - report-table
 ---
 

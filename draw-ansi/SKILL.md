@@ -3,8 +3,6 @@ name: draw-ansi
 description: วาด/ปรับ ANSI box-drawing ให้กล่องภายนอกมีขนาดเท่ากัน ไม่เพี้ยน
 argument-hint: "[input]"
 related:
-  - update-readme-md
-  - report-ansi
 ---
 
 ## Goal
@@ -34,8 +32,8 @@ bunx /path/to/draw-ansi/scripts/draw-ansi.ts --fix --width 60 existing-box.txt
 
 > Goal: รองรับทุกรูปแบบ input ของ box
 
-1. **Plain lines**: บรรทัดปกติ ไม่มี border → สคริปต์จะห่มด้วย outer box
-2. **Existing box**: บรรทัดเริ่มต้นด้วย `│` หรือ `┌`/`└` → สคริปต์จะลอง detect กล่องเดิม แล้ว wrap ใหม่
+1. Plain lines: บรรทัดปกติ ไม่มี border → สคริปต์จะห่มด้วย outer box
+2. Existing box: บรรทัดเริ่มต้นด้วย `│` หรือ `┌`/`└` → สคริปต์จะลอง detect กล่องเดิม แล้ว wrap ใหม่
 
 ### 3. Output Modes
 

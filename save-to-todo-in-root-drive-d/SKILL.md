@@ -6,7 +6,6 @@ related:
   - enhance-prompt
   - list-todo-md-in-drive-d
   - update-todo-md
-  - save-to-todo-md
   - continue
 ---
 

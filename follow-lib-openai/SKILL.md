@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-openai
 description: ใช้ openai SDK — chat completions, structured output, streaming, embeddings
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

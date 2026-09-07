@@ -7,8 +7,6 @@ related:
   - follow-secret-manager
   - check-env-vars
   - follow-service-infisical
-  - improve-security
-  - review-security
   - report-table
 ---
 
@@ -56,7 +54,7 @@ related:
 > Goal: สรุป rotation status พร้อมแผน
 
 1. ใช้ `/report-table` คอลัมน์: `No.`, `Secret Name`, `Source`, `Age`, `Severity`, `Rotation Path`
-2. รายงานเป็น **ชื่อ secret เท่านั้น — ห้ามแสดงค่า**
+2. รายงานเป็น ชื่อ secret เท่านั้น — ห้ามแสดงค่า
 3. แนะนำ rotation order: critical ก่อน พร้อมระบุ downtime risk ต่อตัว
 
 ## Rules

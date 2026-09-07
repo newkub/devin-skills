@@ -4,14 +4,9 @@ description: สแกน git repos ทั้งเครื่องหา comm
 argument-hint: "[path]"
 related:
   - list-project-git-in-computer
-  - follow-tool-git
   - git-push
   - check-uncommit
-  - list-git-branch
-  - search-project-in-drive-d
-  - use-pwsh-shell
   - report-table
-  - morning-briefing
 ---
 
 ## Goal

@@ -9,7 +9,6 @@ related:
   - report-table
   - suggest-next-action
   - improve-observability
-  - improve-logging
 ---
 
 ## Goal

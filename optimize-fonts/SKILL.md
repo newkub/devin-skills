@@ -4,9 +4,6 @@ description: Optimize web fonts — subsetting, preload, font-display และ 
 argument-hint: "[font-or-path]"
 related:
   - optimize-web-vitals
-  - optimize-images
-  - optimize-bundle
-  - follow-lib-css
   - report-before-after
 ---
 
@@ -42,12 +39,12 @@ related:
 
 > Goal: แก้ตาม impact
 
-1. **Self-host**: ย้ายจาก Google Fonts CDN → self-hosted woff2 (ตัด DNS+TLS ของ CDN)
-2. **Subset**: subset fonts ตาม unicode-range ที่ใช้จริง (latin, thai) — `pyftsubset`/`glyphhanger`
-3. **Preload**: `<link rel="preload" as="font" crossorigin>` สำหรับ critical fonts เท่านั้น
-4. **font-display**: `swap` สำหรับ body text, `optional` สำหรับ decorative — เลือกตาม CLS tolerance
-5. **Fallback metrics**: `size-adjust`, `ascent-override` ใน `@font-face` เพื่อลด CLS
-6. **Variable fonts**: รวม weights เป็นไฟล์เดียวถ้าใช้หลาย weights
+1. Self-host: ย้ายจาก Google Fonts CDN → self-hosted woff2 (ตัด DNS+TLS ของ CDN)
+2. Subset: subset fonts ตาม unicode-range ที่ใช้จริง (latin, thai) — `pyftsubset`/`glyphhanger`
+3. Preload: `<link rel="preload" as="font" crossorigin>` สำหรับ critical fonts เท่านั้น
+4. font-display: `swap` สำหรับ body text, `optional` สำหรับ decorative — เลือกตาม CLS tolerance
+5. Fallback metrics: `size-adjust`, `ascent-override` ใน `@font-face` เพื่อลด CLS
+6. Variable fonts: รวม weights เป็นไฟล์เดียวถ้าใช้หลาย weights
 7. ลด font count: dedupe families/weights ที่ใกล้กัน
 
 ### 4. Verify

@@ -4,9 +4,6 @@ description: Audit ACLs/permissions บน sensitive files — .env, keys, confi
 argument-hint: "[path-or-file]"
 related:
   - check-secrets-leak
-  - review-security
-  - check-shell-profile
-  - check-hardcoded-values
   - report-table
 ---
 
@@ -34,19 +31,19 @@ related:
 
 > Goal: ตรวจ ACLs/modes ต่อไฟล์
 
-1. **Windows**: `Get-Acl <path>` — ดู Access rules, flag `Everyone`, `BUILTIN\Users` ที่มี Write/FullControl
-2. **Unix/WSL**: `stat -c %a <path>` — flag perms กว้างกว่า `600`/`400` สำหรับ secrets, `700` สำหรับ dirs
-3. **Inheritance**: Windows inherited ACLs ที่ permissive กว่าที่ตั้งใจ
+1. Windows: `Get-Acl <path>` — ดู Access rules, flag `Everyone`, `BUILTIN\Users` ที่มี Write/FullControl
+2. Unix/WSL: `stat -c %a <path>` — flag perms กว้างกว่า `600`/`400` สำหรับ secrets, `700` สำหรับ dirs
+3. Inheritance: Windows inherited ACLs ที่ permissive กว่าที่ตั้งใจ
 4. `.ssh/` specifics: `id_rsa` ต้อง owner-only, `authorized_keys`/`config` จำกัด, SSH refuse keys ที่ permissive
 
 ### 3. Classify Findings
 
 > Goal: แยกตาม risk
 
-1. **Critical**: secrets readable โดย Everyone/ทุก user — credentials exposure
-2. **High**: writable โดย non-owner — tamper risk
-3. **Medium**: permissive dirs ที่อนุญาต listing (`755` บน `.ssh/`)
-4. **Info**: restrictive เกินจน tools fail (read-only `.env` ที่ app ต้องเขียน)
+1. Critical: secrets readable โดย Everyone/ทุก user — credentials exposure
+2. High: writable โดย non-owner — tamper risk
+3. Medium: permissive dirs ที่อนุญาต listing (`755` บน `.ssh/`)
+4. Info: restrictive เกินจน tools fail (read-only `.env` ที่ app ต้องเขียน)
 
 ### 4. Report
 

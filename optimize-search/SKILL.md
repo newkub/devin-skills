@@ -3,10 +3,6 @@ name: optimize-search
 description: Optimize search performance — indexes, query plans, facets และ relevance tuning
 argument-hint: "[feature-or-table]"
 related:
-  - optimize-queries
-  - follow-lib-postgres
-  - review-database
-  - check-bottlenecks
   - report-before-after
 ---
 
@@ -34,22 +30,22 @@ Optimize search features — full-text search, filtering, facets — ให้�
 
 > Goal: หาสาเหตุที่ช้า
 
-1. **`LIKE '%x%'`**: leading wildcard ข้าม B-tree index — ต้อง trigram (`pg_trgm` + GIN)
-2. **Missing FTS index**: `to_tsvector` คำนวณทุก query — ต้อง generated column + GIN index
-3. **Facet counts**: `COUNT(*)` ต่อ filter แยกกัน — รวมหรือ approximate
-4. **Ranking**: `ts_rank` ที่คำนวณทุก row — จำกัดด้วย candidate filter ก่อน
-5. **N+1**: search results แล้ว fetch relations ทีละอัน
+1. `LIKE '%x%'`: leading wildcard ข้าม B-tree index — ต้อง trigram (`pg_trgm` + GIN)
+2. Missing FTS index: `to_tsvector` คำนวณทุก query — ต้อง generated column + GIN index
+3. Facet counts: `COUNT(*)` ต่อ filter แยกกัน — รวมหรือ approximate
+4. Ranking: `ts_rank` ที่คำนวณทุก row — จำกัดด้วย candidate filter ก่อน
+5. N+1: search results แล้ว fetch relations ทีละอัน
 
 ### 3. Apply Optimizations
 
 > Goal: แก้ตาม pattern
 
-1. **Trigram indexes**: `CREATE INDEX ... USING gin (col gin_trgm_ops)` สำหรับ ILKE/contains
-2. **FTS**: generated `tsvector` column + GIN index + `tsquery` แทน LIKE chains
-3. **Composite indexes**: columns ที่ filter ร่วมกันบ่อย — ทำ `/check-migrations` สำหรับ index migrations
-4. **Facets**: precompute หรือ `FILTER` clauses แทน queries แยก
-5. **Ranking**: limit candidates ก่อน rank, precomputed rank columns สำหรับ static weights
-6. **Engine upgrade**: ถ้า requirements เกิน SQL (typo tolerance, synonyms, geo) → เสนอ dedicated engine ผ่าน `/ask-me`
+1. Trigram indexes: `CREATE INDEX ... USING gin (col gin_trgm_ops)` สำหรับ ILKE/contains
+2. FTS: generated `tsvector` column + GIN index + `tsquery` แทน LIKE chains
+3. Composite indexes: columns ที่ filter ร่วมกันบ่อย — ทำ `/check-migrations` สำหรับ index migrations
+4. Facets: precompute หรือ `FILTER` clauses แทน queries แยก
+5. Ranking: limit candidates ก่อน rank, precomputed rank columns สำหรับ static weights
+6. Engine upgrade: ถ้า requirements เกิน SQL (typo tolerance, synonyms, geo) → เสนอ dedicated engine ผ่าน `/ask-me`
 
 ### 4. Verify
 

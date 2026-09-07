@@ -9,7 +9,6 @@ related:
   - search-files-patterns
   - use-astgrep
   - report-table
-  - check-file-permissions
 ---
 
 ## Goal

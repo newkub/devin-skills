@@ -3,10 +3,6 @@ name: optimize-git-repo
 description: ลดขนาด git repo — history bloat, large objects, gc และ LFS migration
 argument-hint: "[--analyze-only]"
 related:
-  - check-size
-  - check-git-logs
-  - follow-tool-git
-  - use-git-worktrees
   - report-before-after
 ---
 
@@ -34,10 +30,10 @@ related:
 
 > Goal: หาสาเหตุ repo บวม
 
-1. **Binaries in history**: images, videos, builds, `node_modules` ที่เคย commit
-2. **Dead branches/tags**: refs ที่ไม่ prune — pack objects ค้าง
-3. **Pack inefficiency**: objects ไม่ถูก pack/delta-compress
-4. **Large current files**: binaries ที่ควรเป็น LFS — ทำ `/check-git-lfs` ร่วมถ้ามี
+1. Binaries in history: images, videos, builds, `node_modules` ที่เคย commit
+2. Dead branches/tags: refs ที่ไม่ prune — pack objects ค้าง
+3. Pack inefficiency: objects ไม่ถูก pack/delta-compress
+4. Large current files: binaries ที่ควรเป็น LFS — ทำ `/check-git-lfs` ร่วมถ้ามี
 
 ### 3. Apply Safe Optimizations
 
@@ -52,7 +48,7 @@ related:
 
 > Goal: ลบ bloat จาก history — destructive ต้อง confirm
 
-1. **ต้อง user confirmation ชัดเจน** — rewrite ทำให้ทุก clone ต้อง re-clone
+1. ต้อง user confirmation ชัดเจน — rewrite ทำให้ทุก clone ต้อง re-clone
 2. ใช้ `git filter-repo` (ไม่ใช่ `filter-branch`) ลบ paths/blobs ที่ใหญ่
 3. แจ้ง consequences: SHAs เปลี่ยนทั้งหมด, open PRs พัง, CI caches invalid
 4. หลัง rewrite: force-push ต้อง coordinate กับทีม — อย่าทำเองโดยไม่แจ้ง

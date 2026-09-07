@@ -3,10 +3,6 @@ name: check-cors-policy
 description: ตรวจ CORS configuration — wildcard origins, credentials exposure และ over-permissive policies
 argument-hint: "[url-or-config]"
 related:
-  - check-security-headers
-  - review-security
-  - run-test-api
-  - analyze-attack-surface
   - improve-security
   - report-table
 ---
@@ -43,10 +39,10 @@ related:
 
 > Goal: flag misconfigurations ตาม risk
 
-1. **Critical**: `Allow-Origin: *` ร่วมกับ `Allow-Credentials: true` (browsers ปฏิเสธ แต่ config ผิด), origin reflection ที่ reflect ทุก origin + credentials
-2. **High**: `*` origin บน endpoints ที่ return sensitive data
-3. **Medium**: `Allow-Methods: *`, `Allow-Headers: *` เกินจำเป็น, `Max-Age` สูงเกิน
-4. **Info**: missing CORS บน API ที่ browser clients ต้องใช้
+1. Critical: `Allow-Origin: *` ร่วมกับ `Allow-Credentials: true` (browsers ปฏิเสธ แต่ config ผิด), origin reflection ที่ reflect ทุก origin + credentials
+2. High: `*` origin บน endpoints ที่ return sensitive data
+3. Medium: `Allow-Methods: *`, `Allow-Headers: *` เกินจำเป็น, `Max-Age` สูงเกิน
+4. Info: missing CORS บน API ที่ browser clients ต้องใช้
 5. ตรวจ regex origin patterns ที่ bypass ได้ (`*.example.com` ที่ match `evil-example.com`)
 
 ### 4. Report

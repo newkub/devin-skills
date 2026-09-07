@@ -4,10 +4,7 @@ description: ปรับ log quality ทั้ง levels, structure, context �
 argument-hint: "[path-or-layer]"
 related:
   - improve-observability
-  - review-observability
-  - follow-service-signoz
   - check-console-logs
-  - improve-error-handling
   - report-table
 ---
 
@@ -35,23 +32,23 @@ related:
 
 > Goal: flag logging issues
 
-1. **Levels**: `info` ที่ควรเป็น `debug`, errors ที่ log เป็น `warn`, fatal ที่ไม่มี
-2. **Structure**: string interpolation แทน structured fields (`logger.info('user ' + id)` → `logger.info({ userId: id })`)
-3. **Context**: logs ที่ไม่มี request id/trace id/user context — trace ยาก
-4. **Leaks**: passwords, tokens, PII, full request bodies ใน logs
-5. **Noise**: logs ใน hot loops, duplicate logs, success spam
-6. **Errors**: catch ที่ไม่ log error object หรือ log แค่ message ไม่มี stack
+1. Levels: `info` ที่ควรเป็น `debug`, errors ที่ log เป็น `warn`, fatal ที่ไม่มี
+2. Structure: string interpolation แทน structured fields (`logger.info('user ' + id)` → `logger.info({ userId: id })`)
+3. Context: logs ที่ไม่มี request id/trace id/user context — trace ยาก
+4. Leaks: passwords, tokens, PII, full request bodies ใน logs
+5. Noise: logs ใน hot loops, duplicate logs, success spam
+6. Errors: catch ที่ไม่ log error object หรือ log แค่ message ไม่มี stack
 
 ### 3. Apply Improvements
 
 > Goal: แก้ตาม priority
 
-1. **Standardize**: ผ่าน logger เดียว — แทน `console.*` ด้วย logger calls
-2. **Levels**: ปรับให้ถูก — `error` เมื่อ operation fail, `warn` สำหรับ recoverable, `info` สำหรับ lifecycle, `debug` สำหรับ diagnostics
-3. **Structure**: เปลี่ยนเป็น structured fields — ทุก log มี searchable keys
-4. **Context**: เพิ่ม correlation — request id middleware, child loggers ต่อ request/module
-5. **Redact**: mask sensitive fields (passwords, tokens, email/PII ตาม policy) — ใช้ redact paths ของ logger
-6. **Errors**: log error objects ครบ (`logger.error({ err }, 'msg')` ไม่ใช่ `err.message` อย่างเดียว)
+1. Standardize: ผ่าน logger เดียว — แทน `console.*` ด้วย logger calls
+2. Levels: ปรับให้ถูก — `error` เมื่อ operation fail, `warn` สำหรับ recoverable, `info` สำหรับ lifecycle, `debug` สำหรับ diagnostics
+3. Structure: เปลี่ยนเป็น structured fields — ทุก log มี searchable keys
+4. Context: เพิ่ม correlation — request id middleware, child loggers ต่อ request/module
+5. Redact: mask sensitive fields (passwords, tokens, email/PII ตาม policy) — ใช้ redact paths ของ logger
+6. Errors: log error objects ครบ (`logger.error({ err }, 'msg')` ไม่ใช่ `err.message` อย่างเดียว)
 
 ### 4. Verify And Report
 

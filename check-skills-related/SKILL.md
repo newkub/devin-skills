@@ -11,7 +11,6 @@ related:
   - review-references
   - update-references
   - suggest-next-action
-  - check-skill-usage
 ---
 
 ## Goal

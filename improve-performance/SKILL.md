@@ -4,7 +4,6 @@ description: แก้ findings จาก review-performance ครอบคล�
 argument-hint: "[finding-or-scope]"
 related:
   - review-performance
-  - optimize-performance
   - check-bottlenecks
   - run-profiler
   - optimize-bundle

@@ -3,8 +3,6 @@ name: search-in-npmx
 description: ค้นหา เปรียบเทียบ และประเมิน npm packages บน npmx.dev
 argument-hint: "[package-query]"
 related:
-  - search-npm-libraries
-  - list-my-npm-packages
   - follow-best-practice
   - follow-tool-crw
   - follow-tool-websearch

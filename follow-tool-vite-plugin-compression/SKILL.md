@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-vite-plugin-compression
 description: ใช้ vite-plugin-compression2 สร้าง gzip/brotli pre-compressed assets ตอน build
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

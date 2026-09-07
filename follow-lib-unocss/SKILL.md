@@ -7,7 +7,6 @@ related:
   - follow-lib-css
   - follow-tool-formatter
   - follow-best-practice
-  - optimize-css
 ---
 
 ## Goal

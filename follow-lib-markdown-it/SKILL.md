@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-markdown-it
 description: ใช้ markdown-it + plugins — render markdown, syntax highlight ด้วย shiki
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

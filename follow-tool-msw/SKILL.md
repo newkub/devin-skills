@@ -3,15 +3,11 @@ name: follow-tool-msw
 description: ตั้งค่าและใช้งาน MSW (Mock Service Worker) สำหรับ API mocking ใน dev และ test
 argument-hint: "[scope]"
 related:
-  - follow-tool-vitest
   - run-test-api
-  - run-test-unit
   - implement-mock
-  - follow-lib-testing-library
   - follow-my-tech-stack
   - review-techstack
   - report-table
-  - run-test-contract
 ---
 
 ## Goal

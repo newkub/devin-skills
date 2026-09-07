@@ -3,12 +3,7 @@ name: optimize-docker
 description: ลดขนาดและเวลา build ของ Docker image ด้วย multi-stage, layer cache และ base image tuning
 argument-hint: "[dockerfile-path]"
 related:
-  - follow-create-docker
-  - check-size
-  - review-deploy
-  - follow-deploy
   - report-before-after
-  - cleanup-docker
 ---
 
 ## Goal

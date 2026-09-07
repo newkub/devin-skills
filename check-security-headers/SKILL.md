@@ -5,13 +5,8 @@ argument-hint: "[url-or-config]"
 related:
   - review-security
   - analyze-attack-surface
-  - review-by-security
-  - run-test-api
-  - follow-tool-unlighthouse
   - improve-security
   - report-table
-  - check-cors-policy
-  - check-ssl-expiry
 ---
 
 ## Goal

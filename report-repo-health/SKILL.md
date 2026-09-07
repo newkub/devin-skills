@@ -28,11 +28,11 @@ related:
 
 > Goal: เก็บ health signals ต่อ repo
 
-1. **Hygiene**: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
-2. **Dependencies**: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
-3. **CI**: `/list-cicd-fails` — latest run status, failure rate
-4. **Activity**: `/check-git-logs` — last commit, commit frequency, staleness
-5. **Working state**: `/check-uncommit` — dirty working tree?
+1. Hygiene: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
+2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
+3. CI: `/list-cicd-fails` — latest run status, failure rate
+4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
+5. Working state: `/check-uncommit` — dirty working tree?
 
 ### 2. Score Dimensions
 

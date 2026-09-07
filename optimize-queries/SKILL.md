@@ -3,14 +3,9 @@ name: optimize-queries
 description: แก้ slow queries, N+1 problems และ missing indexes ใน database layer
 argument-hint: "[endpoint-or-model]"
 related:
-  - review-database
   - check-migrations
-  - follow-lib-drizzle
-  - follow-lib-postgres
-  - improve-database
   - run-profiler
   - report-before-after
-  - optimize-search
 ---
 
 ## Goal
@@ -48,11 +43,11 @@ related:
 
 > Goal: แก้ตาม severity โดยเรียง impact
 
-1. **N+1**: รวมเป็น batch query, `IN` clause, joins, หรือ ORM eager loading (`with`/`include`)
-2. **Missing index**: เพิ่ม index ใน migration — ทำ `/check-migrations` ตรวจ pending migrations
-3. **Unbounded**: เพิ่ม `limit`/pagination (cursor-based สำหรับตารางใหญ่)
-4. **Over-fetching**: select เฉพาะ columns ที่ใช้
-5. **Sequential awaits**: parallel ด้วย `Promise.all` เมื่อ independent
+1. N+1: รวมเป็น batch query, `IN` clause, joins, หรือ ORM eager loading (`with`/`include`)
+2. Missing index: เพิ่ม index ใน migration — ทำ `/check-migrations` ตรวจ pending migrations
+3. Unbounded: เพิ่ม `limit`/pagination (cursor-based สำหรับตารางใหญ่)
+4. Over-fetching: select เฉพาะ columns ที่ใช้
+5. Sequential awaits: parallel ด้วย `Promise.all` เมื่อ independent
 6. รัน `EXPLAIN`/`EXPLAIN ANALYZE` เทียบก่อน-หลังสำหรับ queries สำคัญ
 
 ### 4. Verify

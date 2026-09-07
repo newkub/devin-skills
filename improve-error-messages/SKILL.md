@@ -4,10 +4,6 @@ description: ปรับคุณภาพ error messages ที่ user เห
 argument-hint: "[path-or-layer]"
 related:
   - improve-error-handling
-  - check-error-coverage
-  - review-by-user
-  - improve-uxui
-  - improve-cli-ux
   - report-table
 ---
 
@@ -45,7 +41,7 @@ related:
 
 > Goal: แก้ให้ทุก message ตอบ 3 คำถาม
 
-1. ทุก message ต้องบอก: **what** (เกิดอะไร), **why** (ถ้าทราบ), **how** (แก้อย่างไร/next step)
+1. ทุก message ต้องบอก: what (เกิดอะไร), why (ถ้าทราบ), how (แก้อย่างไร/next step)
    - แย่: `Invalid token` → ดี: `Token expired — run 'auth login' to refresh`
 2. เพิ่ม error codes สำหรับ API errors ที่ต้อง programmatic handling
 3. ทำ format ให้ consistent — define error shape เดียว (`{ code, message, details? }` สำหรับ API)

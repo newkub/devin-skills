@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-postgres
 description: ใช้ postgres (postgres.js) driver — tagged templates, connection pool, listen/notify
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

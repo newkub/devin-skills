@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - verify-deploy
 ---
 
 ## Goal

@@ -10,7 +10,6 @@ related:
   - run-clean
   - report-table
   - report-ansi
-  - optimize-build
 ---
 
 ## Goal

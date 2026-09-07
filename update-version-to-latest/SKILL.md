@@ -1,15 +1,12 @@
 ---
 name: update-version-to-latest
-description: อัปเดต dependencies, runtime, tools, CI และ versioned config ในทุก workspace ให้เป็น latest แล้ว verify ด้วย build/test/usage
+description: อัปเดต dependencies, runtime, tools, CI ในทุก workspace ให้ latest พร้อม verify
 argument-hint: "[scope]"
 related:
   - resolve-errors
   - report-table
-  - run-check
-  - deep-validate
   - test-usage
   - run-verify
-  - follow-tool-taze
   - ask-me
 ---
 

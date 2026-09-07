@@ -9,8 +9,6 @@ related:
   - follow-git-flow
   - resolve-errors
   - follow-best-practice
-  - restore-deleted-file
-  - diff-file-history
 ---
 
 ## Goal

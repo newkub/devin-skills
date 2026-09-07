@@ -14,7 +14,6 @@ related:
   - suggest-me
   - enhance-prompt
   - report-uxui-sketch
-  - report-ansi
   - analyze-project
 ---
 

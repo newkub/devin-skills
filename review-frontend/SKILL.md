@@ -13,8 +13,6 @@ related:
   - report
   - report-table
   - suggest-next-action
-  - optimize-hydration
-  - optimize-offline
 ---
 
 ## Goal

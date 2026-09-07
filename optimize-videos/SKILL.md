@@ -3,9 +3,7 @@ name: optimize-videos
 description: Optimize video delivery — compression, formats, poster frames และ lazy loading
 argument-hint: "[path-or-page]"
 related:
-  - optimize-images
   - optimize-web-vitals
-  - optimize-network
   - report-before-after
 ---
 
@@ -42,13 +40,13 @@ related:
 
 > Goal: แก้ตามประเภท
 
-1. **Compress**: transcode ด้วย ffmpeg — target bitrate ตาม content, CRF-based (ไม่ใช่ขนาดตายตัว)
-2. **Formats**: H.264 baseline สำหรับ compat + AV1/H.265 สำหรับ modern — multiple sources
-3. **Posters**: `poster` attr ทุก video — รูปเบาแทน first-frame fetch
-4. **Preload**: `preload="none"` + poster สำหรับ non-critical; `metadata` สำหรับที่เห็นทันที
-5. **Lazy**: `loading="lazy"` iframes, facade pattern สำหรับ embeds (thumbnail → click → load)
-6. **Background videos**: พิจารณาแทนด้วย image/animation เบากว่า — หรือ `muted playsinline` + compress หนัก
-7. **Streaming**: HLS/DASH สำหรับ videos ยาว — progressive เฉพาะสั้นๆ
+1. Compress: transcode ด้วย ffmpeg — target bitrate ตาม content, CRF-based (ไม่ใช่ขนาดตายตัว)
+2. Formats: H.264 baseline สำหรับ compat + AV1/H.265 สำหรับ modern — multiple sources
+3. Posters: `poster` attr ทุก video — รูปเบาแทน first-frame fetch
+4. Preload: `preload="none"` + poster สำหรับ non-critical; `metadata` สำหรับที่เห็นทันที
+5. Lazy: `loading="lazy"` iframes, facade pattern สำหรับ embeds (thumbnail → click → load)
+6. Background videos: พิจารณาแทนด้วย image/animation เบากว่า — หรือ `muted playsinline` + compress หนัก
+7. Streaming: HLS/DASH สำหรับ videos ยาว — progressive เฉพาะสั้นๆ
 
 ### 4. Verify
 

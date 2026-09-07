@@ -15,7 +15,6 @@ related:
   - report-table
   - check-reference
   - ask-me
-  - check-api-contract
 ---
 
 ## Goal

@@ -10,7 +10,6 @@ related:
   - deep-validate
   - ship
   - deep-plan
-  - save-to-todo-md
 ---
 
 ## Goal

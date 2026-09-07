@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-qrcode
 description: ใช้ qrcode สร้าง QR codes — PNG/SVG/dataURL ฝั่ง server หรือ client
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

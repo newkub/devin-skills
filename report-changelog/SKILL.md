@@ -10,7 +10,6 @@ related:
   - suggest-next-action
   - follow-tool-git
   - fix
-  - check-release-drift
 ---
 
 ## Goal

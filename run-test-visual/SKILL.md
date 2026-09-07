@@ -6,8 +6,6 @@ related:
   - capture-image-app-to-screenshot
   - follow-lib-agent-browser
   - run-test-e2e
-  - follow-tool-playwright
-  - check-bundle-regression
   - review-uxui
   - run-dev
   - report-table

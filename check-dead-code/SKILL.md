@@ -8,8 +8,6 @@ related:
   - refactor-to-single-responsibility
   - improve
   - report-table
-  - optimize-imports
-  - check-console-logs
 ---
 
 ## Goal

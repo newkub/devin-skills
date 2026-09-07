@@ -3,11 +3,8 @@ name: deep-cost-analysis
 description: วิเคราะห์ cost drivers เชิงลึก — infra, APIs, data transfer และ scaling trajectory
 argument-hint: "[service-or-scope]"
 related:
-  - review-cost
   - optimize-cost
   - optimize-token-usage
-  - analyze-dependencies
-  - report-schema
   - report-table
 ---
 

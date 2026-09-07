@@ -6,14 +6,9 @@ related:
   - follow-tool-scalar
   - review-api
   - update-docs
-  - run-test-api
-  - follow-lib-elysia
-  - follow-lib-orpc
   - search-files-patterns
   - list-website-all-routes
   - report-table
-  - check-api-contract
-  - gen-postman-collection
 ---
 
 ## Goal

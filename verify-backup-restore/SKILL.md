@@ -3,10 +3,7 @@ name: verify-backup-restore
 description: ทดสอบว่า backup ล่าสุด restore ได้จริง — ไม่ใช่แค่มีไฟล์ backup อยู่
 argument-hint: "[backup-source]"
 related:
-  - review-stability
   - improve-stability
-  - ship-rollback
-  - report-before-after
   - report-table
 ---
 

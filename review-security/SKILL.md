@@ -6,14 +6,11 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - check-secrets-leak
-  - check-security-headers
   - analyze-attack-surface
-  - review-auth
   - review-compliance
   - review-observability
   - scan-codebase
   - improve-security
-  - check-secret-rotation
 ---
 
 ## Goal

@@ -11,8 +11,6 @@ related:
   - deep-validate
   - report-table
   - ask-me
-  - improve-logging
-  - gen-runbook
 ---
 
 ## Goal

@@ -3,12 +3,9 @@ name: setup-feature-flags
 description: ตั้งระบบ feature flags ครบ — flag definitions, evaluation, cleanup path และ naming convention
 argument-hint: "[provider-or-approach]"
 related:
-  - follow-config
-  - implement-features-to-mvp
   - check-dead-code
   - follow-my-tech-stack
   - ask-me
-  - report-table
 ---
 
 ## Goal

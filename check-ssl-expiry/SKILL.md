@@ -4,9 +4,7 @@ description: ตรวจ TLS certificate expiry และ renewal readiness ท
 argument-hint: "[domain-or-all]"
 related:
   - check-dns-health
-  - verify-deploy
   - check-security-headers
-  - review-stability
   - report-table
 ---
 

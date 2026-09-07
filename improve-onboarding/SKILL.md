@@ -3,15 +3,8 @@ name: improve-onboarding
 description: ปรับ onboarding experience ให้ dev ใหม่ setup project ได้เร็วผ่าน docs และ automation
 argument-hint: "[doc-or-step]"
 related:
-  - update-readme-md
-  - review-readme-md
-  - review-docs
-  - improve-docs
   - check-repo-hygiene
-  - run-dev
-  - run-install
   - report-table
-  - learn-codebase
 ---
 
 ## Goal
@@ -38,23 +31,23 @@ related:
 
 > Goal: หาสิ่งที่ทำให้ onboarding ช้าหรือพัง
 
-1. **Missing**: prerequisites, env setup, seed data, troubleshooting
-2. **Stale**: commands/versions ที่ไม่ตรงกับ repo ปัจจุบัน
-3. **Manual**: steps ที่ script ทำแทนได้ (copy .env, install, migrate, seed)
-4. **Ambiguous**: "configure X" โดยไม่บอกว่าอยู่ไหน/ค่าอะไร
-5. **Undocumented failures**: errors ที่เจอบ่อยแต่ไม่มีใน troubleshooting
+1. Missing: prerequisites, env setup, seed data, troubleshooting
+2. Stale: commands/versions ที่ไม่ตรงกับ repo ปัจจุบัน
+3. Manual: steps ที่ script ทำแทนได้ (copy .env, install, migrate, seed)
+4. Ambiguous: "configure X" โดยไม่บอกว่าอยู่ไหน/ค่าอะไร
+5. Undocumented failures: errors ที่เจอบ่อยแต่ไม่มีใน troubleshooting
 6. ทำ `/check-repo-hygiene` เพื่อดูไฟล์ essential ที่ขาด
 
 ### 3. Apply Improvements
 
 > Goal: แก้ตาม friction ที่เจอ
 
-1. **README**: prerequisites table (tool + version + install link), copy-paste setup commands, architecture diagram สั้น, common commands
-2. **Automation**: setup script เดียว (`scripts/setup` หรือ `mise tasks`) ที่ทำ install→env→migrate→seed
-3. **Env**: `.env.example` ครบทุก key พร้อม comment แหล่งที่มา/ค่า default
-4. **Tool versions**: pin ผ่าน `mise.toml`/`asdf`/`devcontainer`/`engines` field
-5. **Troubleshooting**: เพิ่ม errors ที่เจอจริงระหว่าง simulate พร้อมวิธีแก้
-6. **Verify step**: เพิ่ม "รัน X แล้วควรเห็น Y" ให้ dev รู้ว่าสำเร็จ
+1. README: prerequisites table (tool + version + install link), copy-paste setup commands, architecture diagram สั้น, common commands
+2. Automation: setup script เดียว (`scripts/setup` หรือ `mise tasks`) ที่ทำ install→env→migrate→seed
+3. Env: `.env.example` ครบทุก key พร้อม comment แหล่งที่มา/ค่า default
+4. Tool versions: pin ผ่าน `mise.toml`/`asdf`/`devcontainer`/`engines` field
+5. Troubleshooting: เพิ่ม errors ที่เจอจริงระหว่าง simulate พร้อมวิธีแก้
+6. Verify step: เพิ่ม "รัน X แล้วควรเห็น Y" ให้ dev รู้ว่าสำเร็จ
 
 ### 4. Verify
 

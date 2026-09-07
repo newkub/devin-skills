@@ -1,13 +1,10 @@
-﻿---
+---
 name: follow-lib-web-vitals
 description: ใช้ web-vitals วัด Core Web Vitals — LCP, INP, CLS, FCP, TTFB reporting
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
-  - optimize-web-vitals
 ---
 
 ## Goal

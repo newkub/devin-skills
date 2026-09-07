@@ -3,10 +3,7 @@ name: improve-test-data
 description: ปรับ fixtures, factories และ test data ให้ realistic, maintainable และ deterministic
 argument-hint: "[test-path]"
 related:
-  - improve-test-everything
   - follow-lib-fast-check
-  - follow-lib-testing-library
-  - implement-mock
   - follow-tool-msw
   - run-test
   - report-table
@@ -36,23 +33,23 @@ related:
 
 > Goal: flag test data issues
 
-1. **Duplication**: objects ซ้ำใน 3+ tests → ควรเป็น factory/fixture
-2. **Unrealistic**: `test@test.com`, `'foo'`, `'asdf'` ที่ไม่ represent domain
-3. **Brittle**: full-object assertions เมื่อ test สนแค่บาง fields
-4. **Non-deterministic**: `Date.now()`, `Math.random()` ไม่มี seed → flaky
-5. **Missing edges**: ไม่มี empty/null/boundary cases
-6. **Over-mocked**: mocks ที่ต่างจาก reality จน test ไม่มีค่า
+1. Duplication: objects ซ้ำใน 3+ tests → ควรเป็น factory/fixture
+2. Unrealistic: `test@test.com`, `'foo'`, `'asdf'` ที่ไม่ represent domain
+3. Brittle: full-object assertions เมื่อ test สนแค่บาง fields
+4. Non-deterministic: `Date.now()`, `Math.random()` ไม่มี seed → flaky
+5. Missing edges: ไม่มี empty/null/boundary cases
+6. Over-mocked: mocks ที่ต่างจาก reality จน test ไม่มีค่า
 
 ### 3. Apply Improvements
 
 > Goal: refactor test data ตาม issues
 
-1. **Factories**: สร้าง factory functions ด้วย defaults + overrides (`makeUser({ role: 'admin' })`)
-2. **Deterministic**: fixed dates (frozen time), seeded random — ทำ `/follow-lib-fast-check` สำหรับ property-based edge cases
-3. **Realistic**: data ที่ตรง domain invariants (valid formats, realistic ranges)
-4. **Isolate**: fixture ต่อ test หรือ immutable shared fixtures — ไม่มี mutation leaks
-5. **Edge cases**: เพิ่ม empty, boundary, invalid inputs สำหรับ paths สำคัญ
-6. **API mocks**: ใช้ `/follow-tool-msw` สำหรับ HTTP mocks ที่สมจริงแทน inline stubs
+1. Factories: สร้าง factory functions ด้วย defaults + overrides (`makeUser({ role: 'admin' })`)
+2. Deterministic: fixed dates (frozen time), seeded random — ทำ `/follow-lib-fast-check` สำหรับ property-based edge cases
+3. Realistic: data ที่ตรง domain invariants (valid formats, realistic ranges)
+4. Isolate: fixture ต่อ test หรือ immutable shared fixtures — ไม่มี mutation leaks
+5. Edge cases: เพิ่ม empty, boundary, invalid inputs สำหรับ paths สำคัญ
+6. API mocks: ใช้ `/follow-tool-msw` สำหรับ HTTP mocks ที่สมจริงแทน inline stubs
 
 ### 4. Verify
 

@@ -4,12 +4,7 @@ description: ตรวจ mutation endpoints ว่า retry-safe — idempotenc
 argument-hint: "[endpoints]"
 related:
   - review-api
-  - check-error-coverage
-  - follow-asynchronous
-  - run-test-api
   - report-table
-  - check-webhook-security
-  - check-webhook-delivery
 ---
 
 ## Goal

@@ -3,13 +3,11 @@ name: learn-codebase
 description: สร้าง learning path ของ codebase — ลำดับไฟล์ที่ควรอ่านและ concept map สำหรับคนใหม่
 argument-hint: "[area-or-role]"
 related:
-  - improve-onboarding
   - report-architecture-diagram
   - scan-codebase
   - analyze-project
   - report-file-structure
   - create-report-in-dot-devin
-  - gen-runbook
 ---
 
 ## Goal

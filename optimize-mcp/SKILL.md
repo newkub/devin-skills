@@ -4,11 +4,7 @@ description: ลด MCP context overhead — ปิด servers ที่ไม�
 argument-hint: "[scope-or-server]"
 related:
   - list-devin-global-mcp
-  - optimize-token-usage
-  - follow-context-engineering
   - update-devin-global-mcp
-  - search-mcp
-  - report-table
 ---
 
 ## Goal
@@ -43,10 +39,10 @@ related:
 
 > Goal: หา servers/tools ที่ควรปรับ
 
-1. **Unused**: servers ที่ไม่เคยถูกเรียกใน recent sessions (ดูจาก session history ถ้ามี)
-2. **Duplicates**: servers ที่ทำหน้าที่ซ้ำ (เช่น github หลายตัว, docs servers ซ้อน)
-3. **Over-scoped**: servers ที่ expose ทุกอย่างทั้งที่ใช้ subset (เช่น filesystem full access)
-4. **Heavy schemas**: tools ที่ description ยาวมากหรือ schema ซับซ้อนเกิน
+1. Unused: servers ที่ไม่เคยถูกเรียกใน recent sessions (ดูจาก session history ถ้ามี)
+2. Duplicates: servers ที่ทำหน้าที่ซ้ำ (เช่น github หลายตัว, docs servers ซ้อน)
+3. Over-scoped: servers ที่ expose ทุกอย่างทั้งที่ใช้ subset (เช่น filesystem full access)
+4. Heavy schemas: tools ที่ description ยาวมากหรือ schema ซับซ้อนเกิน
 
 ### 4. Optimize
 

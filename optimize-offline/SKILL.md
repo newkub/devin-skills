@@ -3,11 +3,6 @@ name: optimize-offline
 description: ตั้ง offline-first strategy — service worker caching, fallback และ sync queue
 argument-hint: "[strategy-or-route]"
 related:
-  - optimize-network
-  - review-frontend
-  - follow-framework-nextjs
-  - optimize-web-vitals
-  - report-before-after
 ---
 
 ## Goal
@@ -34,10 +29,10 @@ related:
 
 > Goal: เลือก strategy ต่อ resource type
 
-1. **Static assets** (JS/CSS/fonts/images): cache-first + content-hash — ไม่ต้อง revalidate
-2. **HTML/navigation**: network-first + offline fallback page
-3. **API reads**: stale-while-revalidate สำหรับ data ที่ stale ได้, network-only สำหรับ critical
-4. **Mutations**: ไม่ cache — background sync queue ถ้าต้อง offline write
+1. Static assets (JS/CSS/fonts/images): cache-first + content-hash — ไม่ต้อง revalidate
+2. HTML/navigation: network-first + offline fallback page
+3. API reads: stale-while-revalidate สำหรับ data ที่ stale ได้, network-only สำหรับ critical
+4. Mutations: ไม่ cache — background sync queue ถ้าต้อง offline write
 5. กำหนด cache limits: max entries, max age, storage quota
 
 ### 3. Implement

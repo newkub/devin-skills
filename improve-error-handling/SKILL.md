@@ -1,18 +1,14 @@
-﻿---
+---
 name: improve-error-handling
 description: ปรับปรุง error handling ให้ลึก — taxonomy, boundaries, propagation, retry และ user-facing errors
 argument-hint: "[target-or-scope]"
 related:
-  - review-stability
   - improve-stability
   - resolve-errors
   - refactor
   - run-verify
   - run-test
   - report-table
-  - suggest-next-action
-  - check-error-coverage
-  - improve-error-messages
 ---
 
 ## Goal

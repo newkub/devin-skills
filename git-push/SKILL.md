@@ -3,7 +3,6 @@ name: git-push
 description: Push commits จาก local repository และ git submodules ไปยัง remote repository อย่างปลอดภัย
 argument-hint: "[scope]"
 related:
-  - check-unpush
   - git-commit
   - git-commit-and-push
   - refactor-commit

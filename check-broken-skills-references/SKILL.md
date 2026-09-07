@@ -5,13 +5,11 @@ argument-hint: "[path]"
 related:
   - check-reference
   - check-skills-related
-  - check-dead-link
   - deep-validate
   - check-backward-compatibility
   - review-security
   - update-references
   - review-devin-global-skills
-  - check-skill-usage
 ---
 
 ## Goal

@@ -3,12 +3,9 @@ name: improve-naming
 description: ปรับ naming consistency ข้าม codebase ตัวแปร, functions, files และ exports
 argument-hint: "[path-or-convention]"
 related:
-  - review-writing
   - rename
-  - check-file-relations
   - search-files-patterns
   - update-references
-  - follow-simplicity
   - report-table
 ---
 

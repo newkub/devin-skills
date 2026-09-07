@@ -3,14 +3,10 @@ name: check-release-drift
 description: เทียบ version ใน manifest, git tags และ changelog หา release drift ที่ไม่ตรงกัน
 argument-hint: "[repo-path]"
 related:
-  - list-git-release
-  - list-git-tags
-  - report-changelog
   - gen-changelog-md
   - follow-release
   - check-commit-quality
   - report-table
-  - report-release-readiness
 ---
 
 ## Goal

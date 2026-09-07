@@ -4,13 +4,11 @@ description: แก้ findings จาก review-auth ครอบคลุม a
 argument-hint: "[finding-or-scope]"
 related:
   - review-auth
-  - improve-security
   - follow-lib-better-auth
   - check-security-headers
   - check-secrets-leak
   - review-by-security
   - report-review
-  - check-webhook-security
 ---
 
 ## Goal

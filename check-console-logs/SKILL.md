@@ -3,11 +3,7 @@ name: check-console-logs
 description: หา console.log, debugger และ debug statements ที่ค้างใน code ก่อน commit หรือ deploy
 argument-hint: "[path-or-staged]"
 related:
-  - run-lint
   - use-astgrep
-  - check-dead-code
-  - follow-tool-biome
-  - follow-tool-eslint
   - report-table
 ---
 

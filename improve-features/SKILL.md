@@ -1,4 +1,4 @@
-﻿---
+---
 name: improve-features
 description: ปรับปรุง feature ที่มีอยู่ให้สมบูรณ์ — edge cases, states, flow, polish จนพร้อม production
 argument-hint: "<feature-name-or-module>"
@@ -7,11 +7,7 @@ related:
   - review-features
   - implement-features-to-mvp
   - update-features-md
-  - productionize-implementation
-  - deep-review
-  - improve-uxui
   - run-verify
-  - report-table
 ---
 
 ## Goal

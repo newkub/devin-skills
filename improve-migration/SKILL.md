@@ -5,12 +5,8 @@ argument-hint: "[finding-or-migration]"
 related:
   - review-migration
   - check-migrations
-  - follow-tool-drizzle-kit
-  - improve-database
-  - follow-orm
   - ship-rollback
   - report-review
-  - verify-migration-data
 ---
 
 ## Goal
@@ -37,10 +33,10 @@ related:
 
 > Goal: แก้ migrations ที่เสี่ยง data loss หรือ downtime
 
-1. **Destructive**: `DROP`, `RENAME`, type narrowing → เปลี่ยนเป็น expand-contract (add new → migrate → drop old ใน release ถัดไป)
-2. **Lock risks**: `ALTER` บนตารางใหญ่ → `CONCURRENTLY` indexes, batched updates, หรือ shadow-table approach
-3. **NOT NULL ใหม่**: เพิ่ม column แบบ nullable/default ก่อน → backfill → ค่อยบังคับ constraint
-4. **Defaults หนัก**: เลี่ยง `ALTER ... SET DEFAULT` ที่ rewrite ทั้งตารางใน DB versions เก่า
+1. Destructive: `DROP`, `RENAME`, type narrowing → เปลี่ยนเป็น expand-contract (add new → migrate → drop old ใน release ถัดไป)
+2. Lock risks: `ALTER` บนตารางใหญ่ → `CONCURRENTLY` indexes, batched updates, หรือ shadow-table approach
+3. NOT NULL ใหม่: เพิ่ม column แบบ nullable/default ก่อน → backfill → ค่อยบังคับ constraint
+4. Defaults หนัก: เลี่ยง `ALTER ... SET DEFAULT` ที่ rewrite ทั้งตารางใน DB versions เก่า
 
 ### 3. Add Rollback Paths
 

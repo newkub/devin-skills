@@ -3,7 +3,6 @@ name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
 argument-hint: "[scope]"
 related:
-  - check-open-ports
   - resolve-errors
   - watch-terminal
   - open-web

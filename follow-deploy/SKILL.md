@@ -9,7 +9,6 @@ related:
   - follow-service-cloudflare
   - follow-service-vercel
   - follow-service-vercel-cli
-  - follow-create-docker
   - deploy-to-railway
 ---
 

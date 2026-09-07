@@ -5,12 +5,7 @@ argument-hint: "[target-or-framework]"
 related:
   - run-build
   - check-bottlenecks
-  - run-watch-build
-  - follow-tool-vite
-  - optimize-bundle
-  - follow-tool-turborepo
   - report-before-after
-  - bench-bundle-tools
 ---
 
 ## Goal
@@ -45,10 +40,10 @@ related:
 
 > Goal: ปรับ config ตาม findings โดยเรียง impact
 
-1. **Cache**: เปิด persistent cache (`turbo`, `moon`, babel/esbuild cache, `incremental` ใน tsconfig)
-2. **Parallelism**: workers/threads สำหรับ minify, transpile
-3. **Skip work**: ลด transpile targets, ปิด sourcemap ใน dev, lazy codegen
-4. **Deps**: prebundle, dedupe, เปลี่ยน lib หนักเป็นเบา (ทำ `/optimize-deps` ถ้าเจอ)
+1. Cache: เปิด persistent cache (`turbo`, `moon`, babel/esbuild cache, `incremental` ใน tsconfig)
+2. Parallelism: workers/threads สำหรับ minify, transpile
+3. Skip work: ลด transpile targets, ปิด sourcemap ใน dev, lazy codegen
+4. Deps: prebundle, dedupe, เปลี่ยน lib หนักเป็นเบา (ทำ `/optimize-deps` ถ้าเจอ)
 5. แก้ครั้งละอย่าง แล้ววัดผลทันที
 
 ### 4. Verify And Report

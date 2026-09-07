@@ -5,12 +5,7 @@ argument-hint: "[spec-file-or-url]"
 related:
   - gen-openapi
   - review-api
-  - run-test-api
-  - follow-tool-scalar
-  - follow-tool-validator
   - report-table
-  - check-api-versioning
-  - run-test-contract
 ---
 
 ## Goal

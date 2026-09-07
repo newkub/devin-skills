@@ -9,9 +9,7 @@ related:
   - report-table
   - deep-validate
   - report-ansi
-  - capture-web
   - capture-component
-  - improve-onboarding
 ---
 
 ## Goal

@@ -10,7 +10,6 @@ related:
   - run-deploy
   - run-build
   - resolve-errors
-  - verify-deploy
 ---
 
 ## Goal

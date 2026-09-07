@@ -4,8 +4,6 @@ description: สร้าง Slack bot ด้วย TypeScript/Bun พร้อ�
 argument-hint: "[scope]"
 related:
   - follow-create-discord-bot
-  - follow-create-telegram-bot
-  - follow-create-line-bot
   - follow-my-tech-stack
   - review-techstack
   - follow-secret-manager

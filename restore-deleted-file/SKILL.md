@@ -4,10 +4,6 @@ description: กู้ไฟล์ที่ถูกลบ — จาก recycle
 argument-hint: "<path-or-name>"
 related:
   - restore-from-git-log
-  - git-file-history
-  - view-diff
-  - check-git-logs
-  - capture-bug-context
 ---
 
 ## Goal

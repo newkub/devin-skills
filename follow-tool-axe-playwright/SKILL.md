@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-axe-playwright
 description: ใช้ @axe-core/playwright เทส accessibility ใน e2e — WCAG violations, scan rules
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

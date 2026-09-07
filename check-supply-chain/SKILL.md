@@ -4,9 +4,6 @@ description: ตรวจ supply chain risks — lockfile integrity, typosquat s
 argument-hint: "[manifest-or-lockfile]"
 related:
   - gen-sbom
-  - run-audit
-  - review-dependencies
-  - list-dependencies
   - improve-security
   - report-table
 ---

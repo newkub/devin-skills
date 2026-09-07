@@ -9,9 +9,6 @@ related:
   - cleanup-git-branch
   - resolve-merge-conflicts
   - git-push
-  - git-commit
-  - follow-git-flow
-  - follow-tool-git
   - report-table
   - resolve-errors
   - ask-me

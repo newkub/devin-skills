@@ -3,7 +3,6 @@ name: git-commit
 description: Commit ทุกไฟล์ที่เปลี่ยนแปลงด้วย conventional commits
 argument-hint: "[scope]"
 related:
-  - check-uncommit
   - run-check
   - run-verify
   - follow-tool-hk

@@ -9,7 +9,6 @@ related:
   - follow-tool-pkg-new
   - follow-tool-changesets
   - run-release
-  - report-release-readiness
 ---
 
 ## Goal

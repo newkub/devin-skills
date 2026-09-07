@@ -5,8 +5,6 @@ argument-hint: "[service-or-resource]"
 related:
   - review-cost
   - report-table
-  - optimize-token-usage
-  - deep-cost-analysis
 ---
 
 ## Goal

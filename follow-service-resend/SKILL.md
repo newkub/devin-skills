@@ -1,13 +1,10 @@
-﻿---
+---
 name: follow-service-resend
 description: ใช้ Resend ส่ง transactional emails — send, templates, domains, webhooks
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
-  - verify-email-deliverability
 ---
 
 ## Goal

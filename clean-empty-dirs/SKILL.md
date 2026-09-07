@@ -4,8 +4,6 @@ description: ลบ empty directory trees พร้อม dry-run preview แล
 argument-hint: "[path] [--dry-run]"
 related:
   - delete
-  - check-size
-  - list-file-structure
   - report-table
 ---
 
@@ -33,10 +31,10 @@ related:
 
 > Goal: แยก empty dirs ที่ปลอดภัยจากที่อาจจำเป็น
 
-1. **Safe to delete**: dirs ว่างที่ไม่มี purpose marker
-2. **Suspicious**: dirs ที่ code อาจ expect (`logs/`, `tmp/`, `uploads/`, `data/`) — ค้น code ว่ามี reference ถึง path ไหม
-3. **Git-ignored**: dirs ใน `.gitignore` — อาจตั้งใจให้ว่าง (git ไม่ track empty dirs)
-4. **Keep markers**: dirs ที่มี `.gitkeep`/`.keep` = ตั้งใจเก็บ — ไม่ลบ
+1. Safe to delete: dirs ว่างที่ไม่มี purpose marker
+2. Suspicious: dirs ที่ code อาจ expect (`logs/`, `tmp/`, `uploads/`, `data/`) — ค้น code ว่ามี reference ถึง path ไหม
+3. Git-ignored: dirs ใน `.gitignore` — อาจตั้งใจให้ว่าง (git ไม่ track empty dirs)
+4. Keep markers: dirs ที่มี `.gitkeep`/`.keep` = ตั้งใจเก็บ — ไม่ลบ
 
 ### 3. Preview
 

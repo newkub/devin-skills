@@ -5,9 +5,7 @@ argument-hint: "[path]"
 related:
   - improve-error-handling
   - use-astgrep
-  - review-stability
   - run-test
-  - follow-asynchronous
   - report-table
 ---
 

@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-iconify
 description: ใช้ @iconify-json/* icon sets — Iconify API, offline bundles, on-demand loading
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

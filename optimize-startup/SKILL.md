@@ -3,11 +3,7 @@ name: optimize-startup
 description: ลดเวลา startup ของ app/CLI ด้วย lazy loading, defer init และลดงานหนักตอน boot
 argument-hint: "[entry-point]"
 related:
-  - run-profiler
-  - check-bottlenecks
   - optimize-imports
-  - run-dev
-  - improve-performance
   - report-before-after
 ---
 
@@ -44,11 +40,11 @@ related:
 
 > Goal: defer/parallelize ตาม impact
 
-1. **Lazy load**: dynamic `import()` สำหรับ modules ที่ไม่จำเป็นตอน boot (routes, commands, plugins)
-2. **Parallelize**: `Promise.all` สำหรับ independent init (DB + cache + config)
-3. **Defer**: งานหนักเลื่อนไปทำหลัง ready (background warm-up) หรือตอนใช้จริง
-4. **Cache**: precomputed artifacts, snapshot/compile cache (`--snapshot`, V8 compile cache)
-5. **Trim imports**: ลด eager imports ของ lib หนักใน entry chain
+1. Lazy load: dynamic `import()` สำหรับ modules ที่ไม่จำเป็นตอน boot (routes, commands, plugins)
+2. Parallelize: `Promise.all` สำหรับ independent init (DB + cache + config)
+3. Defer: งานหนักเลื่อนไปทำหลัง ready (background warm-up) หรือตอนใช้จริง
+4. Cache: precomputed artifacts, snapshot/compile cache (`--snapshot`, V8 compile cache)
+5. Trim imports: ลด eager imports ของ lib หนักใน entry chain
 6. สำหรับ CLI: ให้ help/version path ไม่ผ่าน heavy init
 
 ### 4. Verify

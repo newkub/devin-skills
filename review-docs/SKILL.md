@@ -11,7 +11,6 @@ related:
   - review-features
   - review-readme-md
   - improve-docs
-  - improve-onboarding
 ---
 
 ## Goal

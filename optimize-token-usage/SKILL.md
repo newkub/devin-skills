@@ -3,14 +3,7 @@ name: optimize-token-usage
 description: ลด LLM token usage และ cost ด้วย prompt trimming, context pruning, caching และ model routing
 argument-hint: "[feature-or-call-site]"
 related:
-  - follow-context-engineering
-  - follow-lib-openai
-  - follow-service-claude-agent-sdk
-  - review-cost
-  - optimize-cost
-  - improve-observability
   - report-before-after
-  - optimize-mcp
 ---
 
 ## Goal
@@ -37,23 +30,23 @@ related:
 
 > Goal: หาแหล่ง token ที่ไม่จำเป็น
 
-1. **Prompt bloat**: system prompts ยาว, instructions ซ้ำ, few-shot examples เยอะเกิน, docs ที่ dump ทั้งไฟล์
-2. **Context เกิน**: history ทั้งหมดทุก turn, RAG chunks ไม่ filter, tool outputs ดิบทั้งก้อน
-3. **No caching**: prompts ซ้ำที่ cache ได้ (prompt caching, response cache สำหรับ identical inputs)
-4. **Wrong model**: model แพงกับงานง่าย (classification, extraction, simple QA)
-5. **Retry amplification**: retries ที่ส่ง context เต็มซ้ำโดยไม่จำเป็น
-6. **Verbose output**: ขอ prose ทั้งที่ structured output พอ, missing `max_tokens`
+1. Prompt bloat: system prompts ยาว, instructions ซ้ำ, few-shot examples เยอะเกิน, docs ที่ dump ทั้งไฟล์
+2. Context เกิน: history ทั้งหมดทุก turn, RAG chunks ไม่ filter, tool outputs ดิบทั้งก้อน
+3. No caching: prompts ซ้ำที่ cache ได้ (prompt caching, response cache สำหรับ identical inputs)
+4. Wrong model: model แพงกับงานง่าย (classification, extraction, simple QA)
+5. Retry amplification: retries ที่ส่ง context เต็มซ้ำโดยไม่จำเป็น
+6. Verbose output: ขอ prose ทั้งที่ structured output พอ, missing `max_tokens`
 
 ### 3. Apply Optimizations
 
 > Goal: แก้ตาม impact × effort
 
-1. **Trim prompts**: ตัด instructions ซ้ำ, ย้าย stable content ไป prefix (cache-friendly), ลด examples เหลือที่จำเป็น
-2. **Prune context**: sliding window/summarization สำหรับ history, relevance filtering สำหรับ RAG, truncate tool outputs
-3. **Cache**: เปิด prompt caching (anthropic `cache_control`), response cache สำหรับ deterministic calls
-4. **Model routing**: เพิ่ม tier — model เบาสำหรับงานง่าย, model หนักเฉพาะที่ต้อง reasoning
-5. **Output control**: `max_tokens` ที่เหมาะ, structured output/JSON mode แทน prose
-6. **Batch**: รวมหลายคำถามใน call เดียวเมื่อ independent
+1. Trim prompts: ตัด instructions ซ้ำ, ย้าย stable content ไป prefix (cache-friendly), ลด examples เหลือที่จำเป็น
+2. Prune context: sliding window/summarization สำหรับ history, relevance filtering สำหรับ RAG, truncate tool outputs
+3. Cache: เปิด prompt caching (anthropic `cache_control`), response cache สำหรับ deterministic calls
+4. Model routing: เพิ่ม tier — model เบาสำหรับงานง่าย, model หนักเฉพาะที่ต้อง reasoning
+5. Output control: `max_tokens` ที่เหมาะ, structured output/JSON mode แทน prose
+6. Batch: รวมหลายคำถามใน call เดียวเมื่อ independent
 
 ### 4. Verify
 

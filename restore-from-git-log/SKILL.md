@@ -9,7 +9,6 @@ related:
   - follow-tool-git
   - ask-me
   - git-commit
-  - restore-deleted-file
 ---
 
 ## Goal

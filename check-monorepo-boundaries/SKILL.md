@@ -3,10 +3,6 @@ name: check-monorepo-boundaries
 description: ตรวจ import ข้าม workspace boundary ใน monorepo ว่าผิดกฎ layering หรือ visibility
 argument-hint: "[workspace-or-package]"
 related:
-  - follow-monorepo
-  - check-monorepo
-  - follow-tool-moonrepo
-  - follow-tool-turborepo
   - follow-tool-madge
   - list-workspaces
   - check-circular-dependencies

@@ -8,10 +8,7 @@ related:
   - optimize-bundle
   - run-build
   - check-size
-  - use-pwsh-shell
   - report-table
-  - check-source-maps
-  - bench-bundle-tools
 ---
 
 ## Goal

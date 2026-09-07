@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-otplib
 description: ใช้ otplib สำหรับ TOTP/HOTP 2FA — generate secret, verify token, QR provisioning
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

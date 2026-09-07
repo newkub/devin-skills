@@ -4,7 +4,6 @@ description: แก้ findings จาก review-dependencies ทั้ง outda
 argument-hint: "[finding-or-package]"
 related:
   - review-dependencies
-  - list-dependencies
   - check-unused-deps
   - update-version-to-latest
   - follow-tool-taze

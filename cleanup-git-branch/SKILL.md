@@ -4,7 +4,6 @@ description: ลบ git branches เก่าที merge แล้วหรื�
 argument-hint: "[filter]"
 related:
   - delete-git-branch
-  - cleanup-branches-merged
 ---
 
 ## Goal

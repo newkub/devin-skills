@@ -4,9 +4,6 @@ description: ลด CSS payload — unused rules, critical CSS, dedupe และ
 argument-hint: "[path-or-bundle]"
 related:
   - follow-lib-css
-  - optimize-bundle
-  - follow-lib-unocss
-  - optimize-web-vitals
   - report-before-after
 ---
 
@@ -34,22 +31,22 @@ related:
 
 > Goal: หา CSS ที่ไม่จำเป็น
 
-1. **Unused selectors**: rules ที่ไม่ match element ไหนใน pages จริง
-2. **Duplication**: declarations ซ้ำข้ามไฟล์, vendor prefixes เกิน (autoprefixer targets เก่า)
-3. **Utility bloat**: Tailwind/UnoCSS safelist กว้างเกิน, dynamic classes ที่ทำ purge ไม่ได้
-4. **Legacy**: IE-era hacks, unused vendor prefixes, dead theme variants
-5. **CSS-in-JS**: runtime-generated styles ที่ static ได้
+1. Unused selectors: rules ที่ไม่ match element ไหนใน pages จริง
+2. Duplication: declarations ซ้ำข้ามไฟล์, vendor prefixes เกิน (autoprefixer targets เก่า)
+3. Utility bloat: Tailwind/UnoCSS safelist กว้างเกิน, dynamic classes ที่ทำ purge ไม่ได้
+4. Legacy: IE-era hacks, unused vendor prefixes, dead theme variants
+5. CSS-in-JS: runtime-generated styles ที่ static ได้
 
 ### 3. Apply Optimizations
 
 > Goal: ลด payload ตาม impact
 
-1. **Purge/prune**: purgecss หรือ utility framework content config — ขยาย `content` globs ให้ครบแต่ไม่เกิน
-2. **Critical CSS**: inline above-fold styles, defer ที่เหลือ (`media` trick หรือ critters/beasties)
-3. **Split**: route-level CSS splitting — โหลดเฉพาะที่ page ใช้
-4. **Dedupe**: merge duplicate rules, ลบ vendor prefixes สำหรับ targets ที่ไม่รองรับแล้ว
-5. **Minify**: ตรวจ cssnano/lightningcss เปิดจริงใน production build
-6. **Modern**: ใช้ modern CSS (`:is()`, `clamp()`, container queries) แทน verbose fallbacks ตาม `/follow-lib-css`
+1. Purge/prune: purgecss หรือ utility framework content config — ขยาย `content` globs ให้ครบแต่ไม่เกิน
+2. Critical CSS: inline above-fold styles, defer ที่เหลือ (`media` trick หรือ critters/beasties)
+3. Split: route-level CSS splitting — โหลดเฉพาะที่ page ใช้
+4. Dedupe: merge duplicate rules, ลบ vendor prefixes สำหรับ targets ที่ไม่รองรับแล้ว
+5. Minify: ตรวจ cssnano/lightningcss เปิดจริงใน production build
+6. Modern: ใช้ modern CSS (`:is()`, `clamp()`, container queries) แทน verbose fallbacks ตาม `/follow-lib-css`
 
 ### 4. Verify
 

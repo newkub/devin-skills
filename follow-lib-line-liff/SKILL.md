@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-line-liff
 description: ใช้ @line/liff สร้าง LIFF mini-apps — init, profile, login, shareTargetPicker
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-capgo
 description: ใช้ @capgo/capacitor-updater OTA updates และ native-biometric auth ใน Capacitor apps
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

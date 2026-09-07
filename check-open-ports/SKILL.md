@@ -5,11 +5,8 @@ argument-hint: "[port...]"
 related:
   - run-dev
   - use-pwsh-shell
-  - list-computer-info
-  - check-system-env
   - resolve-errors
   - report-table
-  - check-file-locks
 ---
 
 ## Goal

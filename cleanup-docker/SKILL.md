@@ -3,12 +3,7 @@ name: cleanup-docker
 description: ล้าง Docker images, containers, volumes และ build cache ที่ไม่ใช้เพื่อคืนพื้นที่
 argument-hint: "[--images|--volumes|--all]"
 related:
-  - optimize-docker
-  - check-size
-  - cleanup-files-in-computer
-  - run-clean
   - ask-me
-  - report-table
 ---
 
 ## Goal
@@ -35,9 +30,9 @@ related:
 
 > Goal: แยกสิ่งที่ลบได้ออกจากที่ต้องเก็บ
 
-1. **Safe**: dangling images (`<none>`), stopped containers >N วัน, unused networks, build cache
-2. **Caution**: tagged images ที่ไม่มี container ใช้, volumes ที่ไม่ attach
-3. **Keep**: running containers, volumes ที่ mount, images ของ active projects, base images ล่าสุด
+1. Safe: dangling images (`<none>`), stopped containers >N วัน, unused networks, build cache
+2. Caution: tagged images ที่ไม่มี container ใช้, volumes ที่ไม่ attach
+3. Keep: running containers, volumes ที่ mount, images ของ active projects, base images ล่าสุด
 4. เช็ค volumes กับ compose files ใน project — named volumes อาจมี data สำคัญ
 
 ### 3. Dry-Run Report
@@ -46,7 +41,7 @@ related:
 
 1. ใช้ table: `No.`, `Resource`, `Type`, `Size`, `Last Used`, `Safe`
 2. สรุป reclaimable total จาก `docker system df`
-3. **รอ user confirmation ผ่าน `/ask-me` ก่อนลบ**
+3. รอ user confirmation ผ่าน `/ask-me` ก่อนลบ
 
 ### 4. Clean
 

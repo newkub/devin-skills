@@ -11,7 +11,6 @@ related:
   - ship
   - review-techstack
   - rethink
-  - improve-cli-ux
 ---
 ## Goal
 

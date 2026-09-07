@@ -3,11 +3,6 @@ name: follow-lib-better-auth
 description: ใช้งาน Better Auth สำหรับ authentication และ authorization
 argument-hint: "[scope]"
 related:
-  - review-auth
-  - review-security
-  - improve-security
-  - run-verify
-  - run-test
 ---
 
 ## Goal

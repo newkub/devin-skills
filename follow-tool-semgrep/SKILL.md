@@ -4,10 +4,6 @@ description: ใช้ Semgrep สแกน code patterns และ security rul
 argument-hint: "[ruleset-or-path]"
 related:
   - use-astgrep
-  - review-security
-  - analyze-attack-surface
-  - run-scan
-  - run-lint
   - report-table
 ---
 

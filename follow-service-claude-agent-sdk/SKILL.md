@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-service-claude-agent-sdk
 description: ใช้ @anthropic-ai/claude-agent-sdk สร้าง AI agents — query, tools, MCP, sessions
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

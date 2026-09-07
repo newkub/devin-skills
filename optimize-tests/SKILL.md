@@ -4,13 +4,8 @@ description: ลดเวลารัน test suite ด้วย parallelization
 argument-hint: "[suite-or-path]"
 related:
   - run-test-all
-  - follow-tool-vitest
-  - follow-tool-nextest
   - run-test-coverage
-  - check-bottlenecks
-  - improve-test-everything
   - report-before-after
-  - check-test-isolation
 ---
 
 ## Goal
@@ -47,12 +42,12 @@ related:
 
 > Goal: แก้ตาม impact
 
-1. **Parallelism**: เพิ่ม workers/threads (`vitest --maxWorkers`, `--test-threads`, nextest default parallel)
-2. **Sharding**: แบ่ง suite ใน CI (`--shard=n/m`, matrix ต่อ test group) — ทำ `/optimize-ci` ร่วม
-3. **Shared setup**: ใช้ global setup / per-file fixtures แทน per-test rebuild
-4. **Mock I/O**: แทน real network/DB ด้วย mocks หรือ in-memory equivalents
-5. **Smart scope**: `--changed`, `--related`, affected-only ใน monorepo
-6. **Retry/flake**: flag tests ที่ flaky — อย่าเพิ่ม retry เพื่อซ่อนปัญหา
+1. Parallelism: เพิ่ม workers/threads (`vitest --maxWorkers`, `--test-threads`, nextest default parallel)
+2. Sharding: แบ่ง suite ใน CI (`--shard=n/m`, matrix ต่อ test group) — ทำ `/optimize-ci` ร่วม
+3. Shared setup: ใช้ global setup / per-file fixtures แทน per-test rebuild
+4. Mock I/O: แทน real network/DB ด้วย mocks หรือ in-memory equivalents
+5. Smart scope: `--changed`, `--related`, affected-only ใน monorepo
+6. Retry/flake: flag tests ที่ flaky — อย่าเพิ่ม retry เพื่อซ่อนปัญหา
 
 ### 4. Verify
 

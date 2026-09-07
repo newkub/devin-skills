@@ -3,13 +3,9 @@ name: gen-sbom
 description: Generate SBOM (CycloneDX/SPDX) จาก dependency manifests สำหรับ supply chain audit
 argument-hint: "[format] [--output path]"
 related:
-  - analyze-dependencies
-  - list-dependencies
-  - improve-dependencies
   - review-compliance
   - run-audit
   - report-table
-  - check-supply-chain
 ---
 
 ## Goal

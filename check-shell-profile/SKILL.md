@@ -5,13 +5,8 @@ argument-hint: "[shell]"
 related:
   - check-system-env
   - list-system-env
-  - use-pwsh-shell
-  - use-nu-shell
-  - use-bun-shell
-  - follow-tool-mise
   - resolve-errors
   - report-table
-  - optimize-terminal
 ---
 
 ## Goal

@@ -3,11 +3,7 @@ name: gen-adr
 description: สร้าง Architecture Decision Record จาก decision ใน session เก็บใน .devin/adr
 argument-hint: "[decision-topic]"
 related:
-  - create-report-in-dot-devin
   - deep-pondering
-  - report-architecture-diagram
-  - follow-architecture
-  - report-table
 ---
 
 ## Goal

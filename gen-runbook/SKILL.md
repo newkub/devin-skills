@@ -7,7 +7,6 @@ related:
   - create-report-in-dot-devin
   - improve-observability
   - review-stability
-  - improve-onboarding
   - report-architecture-diagram
   - report-table
 ---

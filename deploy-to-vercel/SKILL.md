@@ -9,7 +9,6 @@ related:
   - run-build
   - git-commit
   - watch-browser-and-fix
-  - verify-deploy
 ---
 
 ## Goal

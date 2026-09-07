@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-service-twilio
 description: ใช้ Twilio ส่ง SMS/OTP/verify — Messaging, Verify API, webhooks
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

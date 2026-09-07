@@ -5,9 +5,7 @@ argument-hint: "[spec-or-framework]"
 related:
   - gen-openapi
   - check-api-contract
-  - run-test-api
   - scan-codebase
-  - follow-tool-scalar
   - report-table
 ---
 
@@ -43,10 +41,10 @@ Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec ห�
 
 > Goal: ทำให้ requests ใช้ได้จริงทันที
 
-1. **Base URL**: environment variable `{{baseUrl}}` — สร้าง environments: `local`, `staging`, `prod`
-2. **Auth**: collection-level auth (Bearer/API key) ถ้า API ใช้ — ใช้ variables ไม่ hardcode
-3. **Examples**: request body จาก schema examples หรือ generate จาก types
-4. **Descriptions**: จาก spec descriptions หรือ docstrings
+1. Base URL: environment variable `{{baseUrl}}` — สร้าง environments: `local`, `staging`, `prod`
+2. Auth: collection-level auth (Bearer/API key) ถ้า API ใช้ — ใช้ variables ไม่ hardcode
+3. Examples: request body จาก schema examples หรือ generate จาก types
+4. Descriptions: จาก spec descriptions หรือ docstrings
 5. Path params และ query params จาก spec ครบ
 
 ### 4. Add Test Scripts (ถ้าเหมาะ)

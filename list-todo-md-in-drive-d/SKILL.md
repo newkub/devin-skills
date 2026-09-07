@@ -3,12 +3,8 @@ name: list-todo-md-in-drive-d
 description: สแกนหา TODO.md ทั้งหมดใน drive D และรายงาน summary/รายละเอียดในรูปแบบตาราง
 argument-hint: "[scope]"
 related:
-  - list-todo-md
   - update-todo-md
-  - save-to-todo-in-root-drive-d
   - report-table
-  - save-to-todo-md
-  - continue
 ---
 
 ## Goal

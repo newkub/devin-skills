@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-madge
 description: ใช้ madge หา circular dependencies และ orphan files ใน JS/TS codebase
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

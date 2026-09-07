@@ -4,9 +4,6 @@ description: ลดเวลา shell startup — profile profiling, plugin audi
 argument-hint: "[shell]"
 related:
   - check-shell-profile
-  - use-pwsh-shell
-  - use-nu-shell
-  - follow-tool-mise
   - report-before-after
 ---
 
@@ -43,12 +40,12 @@ related:
 
 > Goal: แก้ตาม impact
 
-1. **Lazy/defer**: ย้าย inits ที่ไม่ต้องการทันที — first-use hooks หรือ background jobs
-2. **Cache**: cache ผลของ slow commands (completions, tool versions) พร้อม invalidation
-3. **Trim**: ลบ plugins/modules ที่ไม่ใช้จริง — ทำ `/check-shell-profile` findings
-4. **Probe once**: รวม `Get-Command`/`Test-Path` checks ไม่ให้ซ้ำ
-5. **Async prompt**: ใช้ prompt engine ที่ non-blocking หรือ minimal prompt
-6. **Shims**: เช็ค shim overhead (`mise`, `scoop` shims) — ใช้ direct paths สำหรับ tools หนัก
+1. Lazy/defer: ย้าย inits ที่ไม่ต้องการทันที — first-use hooks หรือ background jobs
+2. Cache: cache ผลของ slow commands (completions, tool versions) พร้อม invalidation
+3. Trim: ลบ plugins/modules ที่ไม่ใช้จริง — ทำ `/check-shell-profile` findings
+4. Probe once: รวม `Get-Command`/`Test-Path` checks ไม่ให้ซ้ำ
+5. Async prompt: ใช้ prompt engine ที่ non-blocking หรือ minimal prompt
+6. Shims: เช็ค shim overhead (`mise`, `scoop` shims) — ใช้ direct paths สำหรับ tools หนัก
 
 ### 4. Verify
 

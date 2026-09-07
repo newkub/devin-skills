@@ -3,7 +3,6 @@ name: report-bundle
 description: สรุปขนาด bundle ต่อ chunk, dependency, tree-shaking effectiveness
 argument-hint: "[scope]"
 related:
-  - check-bundle-regression
   - review-delivery
   - run-build
   - report-table

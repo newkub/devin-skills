@@ -5,8 +5,6 @@ argument-hint: "[base-ref] [head-ref]"
 related:
   - review-references
   - run-release
-  - convert-to-esm
-  - check-api-versioning
 ---
 
 ## Goal

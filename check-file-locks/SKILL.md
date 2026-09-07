@@ -3,10 +3,6 @@ name: check-file-locks
 description: หาไฟล์ที่ถูก lock โดย process — สาเหตุ delete/move/build fail บน Windows
 argument-hint: "[path-or-file]"
 related:
-  - resolve-errors
-  - use-pwsh-shell
-  - check-open-ports
-  - cleanup-files-in-computer
   - report-table
 ---
 
@@ -34,21 +30,21 @@ related:
 
 > Goal: ระบุว่าใคร lock
 
-1. **Sysinternals handle**: `handle.exe <path>` (ถ้ามี) — แม่นสุด
-2. **openfiles**: `openfiles /query /v` (ต้องเปิด maintain objects list — ส่วนใหญ่ local only)
-3. **Process scan**: `Get-Process | Where-Object { $_.Modules.FileName -like "*<name>*" }` สำหรับ loaded DLLs/exes
-4. **cwd check**: processes ที่ working directory อยู่ใน target — PowerShell/WMI query
-5. **Resource Monitor**: resmon → CPU → Associated Handles — manual fallback
+1. Sysinternals handle: `handle.exe <path>` (ถ้ามี) — แม่นสุด
+2. openfiles: `openfiles /query /v` (ต้องเปิด maintain objects list — ส่วนใหญ่ local only)
+3. Process scan: `Get-Process | Where-Object { $_.Modules.FileName -like "*<name>*" }` สำหรับ loaded DLLs/exes
+4. cwd check: processes ที่ working directory อยู่ใน target — PowerShell/WMI query
+5. Resource Monitor: resmon → CPU → Associated Handles — manual fallback
 
 ### 3. Common Culprits
 
 > Goal: ตรวจ suspects ที่เจอบ่อย
 
-1. **Dev servers**: node/bun watch processes lock `dist/`, `node_modules`
-2. **Editors**: VS Code language servers, file watchers
-3. **Antivirus**: real-time scan ที่ lock ชั่วคราว — ตรวจ defender exclusions
-4. **Git**: `index.lock` — stale lock files ใน `.git/`
-5. **Docker/WSL**: mounts ที่ lock filesystem
+1. Dev servers: node/bun watch processes lock `dist/`, `node_modules`
+2. Editors: VS Code language servers, file watchers
+3. Antivirus: real-time scan ที่ lock ชั่วคราว — ตรวจ defender exclusions
+4. Git: `index.lock` — stale lock files ใน `.git/`
+5. Docker/WSL: mounts ที่ lock filesystem
 
 ### 4. Report And Options
 
@@ -56,7 +52,7 @@ related:
 
 1. ใช้ `/report-table`: `No.`, `Locked Path`, `Locking Process`, `PID`, `Type`, `Unlock Option`
 2. Options per lock: `close app`, `kill PID <n>` (ต้อง confirm), `wait and retry` (transient locks), `exclude from AV`
-3. **ห้าม kill process เอง** — เสนอให้ user ตัดสินใจ เว้นแต่เป็นตัวที่ user สั่งชัดเจน
+3. ห้าม kill process เอง — เสนอให้ user ตัดสินใจ เว้นแต่เป็นตัวที่ user สั่งชัดเจน
 
 ## Rules
 

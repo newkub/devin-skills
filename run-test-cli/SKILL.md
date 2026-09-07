@@ -5,7 +5,6 @@ argument-hint: "[cli-command]"
 related:
   - resolve-errors
   - report-table
-  - improve-cli-ux
 ---
 
 ## Goal

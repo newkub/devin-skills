@@ -7,13 +7,9 @@ related:
   - follow-dot-github
   - follow-lib-license-md
   - update-readme-md
-  - update-contributing-md
   - check-dead-link
   - check-secrets-leak
   - report-table
-  - improve-onboarding
-  - check-file-encoding
-  - report-repo-health
 ---
 
 ## Goal

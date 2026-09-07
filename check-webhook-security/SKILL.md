@@ -4,10 +4,6 @@ description: ตรวจ webhook endpoints — signature verification, replay p
 argument-hint: "[endpoint-or-provider]"
 related:
   - improve-auth
-  - run-test-api
-  - check-idempotency
-  - review-security
-  - analyze-attack-surface
   - report-table
 ---
 
@@ -35,10 +31,10 @@ related:
 
 > Goal: ตรวจว่า signature verification ถูกต้อง
 
-1. **มีไหม**: handler ต้อง verify signature ก่อน process — flag ที่ parse payload ก่อน verify
-2. **ถูกไหม**: ใช้ provider SDK verification (เช่น `stripe.webhooks.constructEvent`) ไม่ใช่ compare เอง
-3. **Raw body**: signature คำนวณบน raw body — flag body parsing ที่ทำลาย raw bytes ก่อน verify
-4. **Timing-safe**: comparison ต้อง timing-safe (HMAC compare) ไม่ใช่ `===`
+1. มีไหม: handler ต้อง verify signature ก่อน process — flag ที่ parse payload ก่อน verify
+2. ถูกไหม: ใช้ provider SDK verification (เช่น `stripe.webhooks.constructEvent`) ไม่ใช่ compare เอง
+3. Raw body: signature คำนวณบน raw body — flag body parsing ที่ทำลาย raw bytes ก่อน verify
+4. Timing-safe: comparison ต้อง timing-safe (HMAC compare) ไม่ใช่ `===`
 
 ### 3. Check Replay And Secret Hygiene
 

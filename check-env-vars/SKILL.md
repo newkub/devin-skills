@@ -7,9 +7,7 @@ related:
   - check-secrets-leak
   - open-web-for-config-secret
   - search-files-patterns
-  - use-pwsh-shell
   - report-table
-  - run-check
 ---
 
 ## Goal

@@ -9,7 +9,6 @@ related:
   - analyze-dependencies
   - follow-tool-node-modules-inspector
   - check-unused-deps
-  - optimize-bundle
   - report-before-after
 ---
 

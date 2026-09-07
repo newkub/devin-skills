@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-pdfkit
 description: ใช้ pdfkit สร้าง PDF ฝั่ง server — layout, fonts, streams, images
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

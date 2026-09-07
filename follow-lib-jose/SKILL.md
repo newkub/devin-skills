@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-jose
 description: ใช้ jose สำหรับ JWT/JWS/JWE/JWK — sign, verify, encrypt, key management บน edge runtimes
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

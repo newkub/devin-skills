@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-tool-jsdom
 description: ใช้ jsdom เป็น DOM environment สำหรับ tests — setup, limitations, polyfills
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal

@@ -1,12 +1,10 @@
-﻿---
+---
 name: follow-lib-mcp-sdk
 description: ใช้ @modelcontextprotocol/sdk สร้าง MCP servers/clients — tools, resources, prompts
 argument-hint: "[target-or-scope]"
 related:
-  - follow-best-practice
   - run-verify
   - run-test
-  - report-table
 ---
 
 ## Goal
