@@ -10,7 +10,7 @@ related:
   - run-review
   - deep-validate
   - report
-
+  - report-in-table
   - suggest-next-action
   - deep-optimize
   - follow-design-system
@@ -90,7 +90,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report`
+1. ทำ `/report` พร้อม `/report-in-table`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง design maturity scorecard: 5 dimensions, score 1-5
@@ -150,25 +150,25 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report`
+- รายงานเป็นตารางด้วย `/report-in-table`
 
 - ใช้ /deep-optimize ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น
 
 - ใช้ /review-accessibility ถ้าจำเป็น
-- ใช้ /review-accessibility ถ้าจำเป็น
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
 
 Merged from: improve-uxui
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-uxui.md` — เปิด browser แล้ว capture หน้าเว็บ เพื่อ review และปรับปรุง UX/UI ด้วย stakeholder feedback
+
 ## Expected Outcome
 
 - รายงานตาราง findings จากทุก UX/UI section พร้อม severity และ location

@@ -14,11 +14,12 @@ triggers:
 related:
   - update-agents-md
   - follow-agents-md
-  - ship-by-agents-swarm
+
   - use-subagents
   - ship-to-staging
   - ship-to-production
   - deep-optimize
+  - deep-review-codebase-then-fix
   - run-verify
   - deep-validate
   - create-git-branch
@@ -65,7 +66,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 > Goal: code ผ่าน local validation
 
 1. เลือก execution mode: ถ้า scope ใหญ่หรือหลายด้าน → ทำ `/ship-by-agents-swarm`; ถ้า diff เล็ก (เช่น typo, docs, config บรรทัดเดียว) → ข้ามข้อ 2-8 ไปข้อ 9 ได้ แต่ยังต้องทำข้อ 9-12
-2. ทำ `/update-review-cli` เพื่อ review codebase ด้วย CLI
+2. ทำ `/deep-review-codebase-then-fix` เพื่อ review และ fix issues ก่อน ship
 3. ทำ `/deep-optimize` เพื่อ optimize ครบทุก layer — frontend, API, database, SEO, bundle
 4. ทำ `/review-test` ถ้า tests หรือ coverage ไม่ผ่าน threshold
 5. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages

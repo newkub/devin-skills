@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - resolve-errors
   - analyze-root-cause-analysis
+  - follow-your-suggestion
   - deep-validate
   - run-check
   - ask-me
@@ -28,6 +29,14 @@ related:
 1. รับ error, symptom, หรือ issue จาก user
 2. ถ้ามี stack trace หรือ logs → อ่านและสรุป
 3. ถ้าไม่ชัด → ทำ `/ask-me` ขอข้อมูลเพิ่ม
+
+### 1.5 Choose Fix Mode
+
+> Goal: ตัดสินใจว่าจะ fix อย่างไร
+
+1. ถ้า user พิมพ์ `fix` โดยไม่ระบุ scope หรือ `fix all` → แก้ทุก issue ทีพบใน context ปัจจุบัน
+2. ถ้ามีข้อเสนอจากการวิเคราะห์ก่อนหน้า → ทำ `/follow-your-suggestion`
+3. ถ้า user ระบุ scope เฉพาะ → แก้เฉพาะ scope นั้น
 
 ### 2. Analyze Context
 
@@ -83,6 +92,7 @@ related:
 - ไม่แก้ไขนอก scope ที่ตกลง
 - ถ้าค้างใช้ TODO → ระบุชัดเจนใน `TODO.md`
 
+- ใช้ /follow-your-suggestion ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome

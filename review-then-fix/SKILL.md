@@ -3,6 +3,8 @@ name: review-then-fix
 description: Review แล้วค่อย fix ตาม context โดยขอ user confirm
 argument-hint: "[scope]"
 related:
+  - review
+  - fix
   - watch-browser-and-fix
   - follow-best-practice
   - deep-review-codebase
@@ -60,7 +62,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 ## Rules
 
 ### 1. Review Before Fix
-- ต้อง review และ report ก่อนแก้ไข
+- ต้อง `/review` และ report ก่อนแก้ไข
 - ไม่แก้ไขโดยไม่ได้รับ confirmation
 
 ### 2. Incremental Fix
@@ -71,6 +73,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ทุก fix ต้องมีเหตุผลจาก review
 - ระบุ file path และ line number
 
+- ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
 - ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
@@ -97,4 +100,4 @@ Merged from: improve
 - รายงาน issues ก่อน fix
 - issues ถูกแก้ไขตามที่ user ตกลง
 - ผ่าน verify
-- สรุป next action
+- สรุป next action พร้อม `/review` และ `/fix`
