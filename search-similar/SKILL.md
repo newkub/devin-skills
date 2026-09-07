@@ -4,7 +4,7 @@ description: ค้นหา skills, code, หรือ patterns ทีคล้
 argument-hint: "[scope]"
 related:
   - search-files-patterns
-  - search-by-astgrep
+  - use-astgrep
   - use-astgrep
   - list-devin-global-skills
   - suggest-related-skills

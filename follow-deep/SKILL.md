@@ -6,7 +6,7 @@ related:
   - review
   - deep-review-codebase
   - deep-analyze
-  - deep-analyze-by-use-scripts
+  - deep-analyze
   - deep-review
   - deep-plan
   - refactor
@@ -43,7 +43,7 @@ related:
 
 > Goal: เลือก deep- workflows ที่เกี่ยวข้องกับ task context
 
-1. Analysis → `deep-analyze` หรือ `deep-analyze-by-use-scripts` (ถ้าต้อง scripts/review CLI)
+1. Analysis → `deep-analyze` (รวม scripts/review CLI)
 2. Review → `deep-review` (comprehensive) หรือ `/review-*` (specific dimension)
 3. Planning → `deep-plan`
 4. Refactoring → `refactor`
@@ -84,7 +84,7 @@ related:
 - เลือกเฉพาะ deep- workflows ที่เกี่ยวข้องกับ task จริง
 - ไม่เรียกทุก deep- workflows เสมอ — เลือกตาม context
 - ถ้า task เกี่ยวกับ review → ใช้ `deep-review` ไม่ใช่ `deep-analyze`
-- ถ้า task เกี่ยวกับ analysis ที่ต้อง scripts → ใช้ `deep-analyze-by-use-scripts` ไม่ใช่ `deep-analyze`
+- ถ้า task เกี่ยวกับ analysis ที่ต้อง scripts → ใช้ `deep-analyze` (รวม scripts/review CLI แล้ว)
 
 ### 3. Parallel Execution
 

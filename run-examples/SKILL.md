@@ -4,7 +4,7 @@ description: เขียน examples ครอบคลุมทุก API ใ�
 argument-hint: "[scope]"
 related:
   - follow-tool-vitepress
-  - analyze-project
+  - deep-analyze
   - update-readme-md
   - update-references
 ---

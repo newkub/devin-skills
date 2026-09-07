@@ -3,7 +3,7 @@ name: all-workspace
 description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - deep-validate
   - resolve-errors
 ---

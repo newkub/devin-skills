@@ -9,7 +9,7 @@ related:
   - report-table
   - deep-validate
   - use-astgrep
-  - deep-analyze-by-use-scripts
+  - deep-analyze
   - edit-manual
 
 ---

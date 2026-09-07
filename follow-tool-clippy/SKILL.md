@@ -3,7 +3,7 @@ name: follow-tool-clippy
 description: ตั้งค่า Clippy lint rules และ error handling standards
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - run-verify
 ---
 

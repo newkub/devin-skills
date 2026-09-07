@@ -15,7 +15,7 @@ related:
   - run-verify
   - run-test
   - run-typecheck
-  - analyze-project
+  - deep-analyze
   - run-lint
   - review-quality
   - read-all-files

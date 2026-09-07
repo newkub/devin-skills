@@ -3,7 +3,7 @@ name: all-folders
 description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - scan-codebase
   - deep-validate
   - resolve-errors

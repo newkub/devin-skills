@@ -5,7 +5,7 @@ argument-hint: "[prompt]"
 related:
   - review-architecture
   - follow-architecture
-  - analyze-project
+  - deep-analyze
   - alternative
   - use-lib-effective
   - prioritize
@@ -26,7 +26,7 @@ related:
 
 > Goal: Analyze And Research
 
-1. ทำ `analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
+1. ทำ `deep-analyze` เพื่อวิเคราะห์ project structure และ dependencies
 2. ระบุ scope, constraints, และ assumptions
 3. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
 4. ทำ `alternative` และ `use-lib-effective` เพื่อสำรวจและวิเคราะห์ libraries

@@ -3,7 +3,7 @@ name: update-project-skills
 description: สร้างและอัปเดต project skills ใน .devin/skills/ ตามมาตรฐาน update-devin-global-skills
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - list-devin-global-skills
   - update-devin-global-skills
   - check-monorepo

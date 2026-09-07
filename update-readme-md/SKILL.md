@@ -4,7 +4,7 @@ description: สร้าง README.md ครบถ้วนด้วย templat
 argument-hint: "[scope]"
 related:
   - review-readme-md
-  - analyze-project
+  - deep-analyze
   - translate-to-lang-en
   - report-table
   - deep-validate

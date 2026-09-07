@@ -4,7 +4,7 @@ description: แทนที่เนื้อหาในไฟล์หรื�
 argument-hint: "[scope]"
 related:
   - use-astgrep-programmatic
-  - search-by-astgrep
+  - use-astgrep
   - update-references
   - deep-validate
 ---

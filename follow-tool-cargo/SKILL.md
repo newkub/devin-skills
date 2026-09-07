@@ -3,7 +3,7 @@ name: follow-tool-cargo
 description: ตั้งค่า Cargo lint rules และ workspace lint configuration
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - run-verify
 ---
 

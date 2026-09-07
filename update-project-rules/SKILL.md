@@ -5,7 +5,7 @@ argument-hint: "[rule-or-pattern]"
 related:
   - use-astgrep
   - use-astgrep-programmatic
-  - search-by-astgrep
+  - use-astgrep
   - scan-codebase
   - update-dot-devin
   - report-table

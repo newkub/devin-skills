@@ -8,7 +8,7 @@ related:
   - report-what-you-do
   - report-table
   - idea-features
-  - analyze-project
+  - deep-analyze
   - scan-codebase
   - open-files-in-web
 ---

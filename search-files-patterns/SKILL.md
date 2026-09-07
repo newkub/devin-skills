@@ -8,7 +8,7 @@ related:
   - run-review
   - refactor
   - fix
-  - search-by-astgrep
+  - use-astgrep
   - use-astgrep
   - search-project-in-drive-d
   - follow-my-global-cli

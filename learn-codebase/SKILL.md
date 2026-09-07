@@ -5,7 +5,7 @@ argument-hint: "[area-or-role]"
 related:
   - report-architecture-diagram
   - scan-codebase
-  - analyze-project
+  - deep-analyze
   - report-file-structure
   - create-report-in-dot-devin
 ---

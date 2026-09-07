@@ -4,7 +4,7 @@ description: สร้าง .devin structure ครบถ้วนรวม rul
 argument-hint: "[scope]"
 related:
   - check-monorepo
-  - analyze-project
+  - deep-analyze
   - update-devin-project-rules
   - update-devin-project-hooks
   - update-project-skills

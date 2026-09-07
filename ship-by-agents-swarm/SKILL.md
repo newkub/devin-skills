@@ -9,7 +9,7 @@ related:
   - follow-devin-global-subagents
   - use-scripts
   - use-astgrep
-  - search-by-astgrep
+  - use-astgrep
   - run-verify
   - deep-verify
   - run-check
@@ -22,7 +22,7 @@ related:
 
 ## Goal
 
-Ship งานโดย fan-out ทุก lane ที่ทำขนานกันได้แบบ async parallel — ใช้ `use-scripts`, `use-astgrep`, `search-by-astgrep`, `follow-devin-global-subagents` และ `follow-parallel` เต็มประสิทธิภาพ — แล้ว merge ผลและ verify ทุกอย่างให้ถูกต้องก่อน ship จริง
+Ship งานโดย fan-out ทุก lane ที่ทำขนานกันได้แบบ async parallel — ใช้ `use-scripts`, `use-astgrep`, `follow-devin-global-subagents` และ `follow-parallel` เต็มประสิทธิภาพ — แล้ว merge ผลและ verify ทุกอย่างให้ถูกต้องก่อน ship จริง
 
 ## Scope
 

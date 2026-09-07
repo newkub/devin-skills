@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-vscode-extensions
   - review-delivery
-  - analyze-project
+  - deep-analyze
   - check-monorepo
   - learn-from-web
   - update-references

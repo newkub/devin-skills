@@ -3,7 +3,7 @@ name: all-files
 description: ทำงานกับแต่ละ file ใน project จนครบถ้วน
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - deep-validate
   - resolve-errors
 ---

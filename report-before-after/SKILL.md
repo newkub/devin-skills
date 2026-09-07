@@ -3,7 +3,7 @@ name: report-before-after
 description: รายงานแผนการทำงานก่อนดำเนินการ และแสดง before-after comparison
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - plan
   - report-table
   - report

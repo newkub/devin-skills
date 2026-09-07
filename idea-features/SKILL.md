@@ -6,7 +6,7 @@ related:
   - bench-competitors
   - suggest-me
   - enhance-prompt
-  - analyze-project
+  - deep-analyze
   - report-table
   - report-uxui-sketch
   - create-report-in-dot-devin

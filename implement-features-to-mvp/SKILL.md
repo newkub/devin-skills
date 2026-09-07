@@ -3,7 +3,7 @@ name: implement-features-to-mvp
 description: Implement features ที่จำเป็นสำหรับ MVP เท่านั้น หยุดเมื่อครบถ้วน
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - plan
   - productionize-implementation
   - dont-over-engineer

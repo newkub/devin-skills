@@ -7,7 +7,7 @@ related:
   - suggest-next-action
   - report-before
   - report-before-after
-  - analyze-project
+  - deep-analyze
   - scan-codebase
   - deep-report
 ---

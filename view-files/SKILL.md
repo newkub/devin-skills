@@ -15,7 +15,7 @@ related:
   - review
   - scan-codebase
   - check-git-diff
-  - search-by-astgrep
+  - use-astgrep
   - read-all-files
   - view-diff
   - open-in-explorer

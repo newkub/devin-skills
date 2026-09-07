@@ -4,7 +4,7 @@ description: วิเคราะห์และปรับปรุง code s
 argument-hint: "[scope]"
 related:
   - deep-analyze
-  - search-by-astgrep
+  - use-astgrep
   - use-astgrep
   - use-astgrep-programmatic
   - review-architecture

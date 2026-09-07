@@ -4,7 +4,7 @@ description: จัดการ .github directory ครบถ้วน ทั�
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
-  - analyze-project
+  - deep-analyze
   - check-monorepo
   - follow-github-issue-templates
   - update-references

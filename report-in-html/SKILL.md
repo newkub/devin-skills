@@ -7,7 +7,7 @@ related:
   - visualize-project
   - open-web
   - open-files-in-web
-  - analyze-project
+  - deep-analyze
   - idea-features
 ---
 

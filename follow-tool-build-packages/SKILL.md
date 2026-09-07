@@ -9,7 +9,7 @@ related:
   - follow-tool-vite
   - follow-create-vite-plugins
   - review-architecture
-  - analyze-project
+  - deep-analyze
   - refactor-workspace
 ---
 

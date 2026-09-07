@@ -3,7 +3,7 @@ name: update-examples
 description: เขียน examples ครอบคลุมทุก API ในโปรเจกต์สำหรับ docs, tests, และ onboarding
 argument-hint: "[scope]"
 related:
-  - analyze-project
+  - deep-analyze
   - scan-codebase
   - update-readme-md
   - run-dev
