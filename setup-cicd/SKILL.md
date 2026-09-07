@@ -7,7 +7,7 @@ related:
   - setup-release
   - follow-tool-github-actions
   - follow-secret-manager
-  - open-github-secrets
+  - open-github
   - follow-tasks
   - review-delivery
   - review-config
@@ -63,7 +63,7 @@ related:
 > Goal: ตั้งค่า secrets ที CI/CD ต้องใช้
 
 1. ทำ `/follow-secret-manager` เพื่อจัดการ secrets อย่างปลอดภัย
-2. ถ้าใช้ GitHub Actions → เปิดหน้า GitHub Secrets ด้วย `/open-github-secrets`
+2. ถ้าใช้ GitHub Actions → เปิดหน้า GitHub Secrets ด้วย `/open-github`
 3. ตรวจสอบว่ามี secrets ทีจำเป็น เช่น `NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `CLOUDFLARE_API_TOKEN`, `VERCEL_TOKEN`
 4. ไม่ hardcode secrets ลงในไฟล์ config
 

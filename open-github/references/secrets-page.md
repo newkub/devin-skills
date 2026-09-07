@@ -1,12 +1,4 @@
----
-name: open-github-secrets
-description: เปิดหน้า GitHub Secrets สำหรับตั้งค่า
-argument-hint: "[repo]"
-related:
-  - follow-secret-manager
-  - open-web-for-config-secret
-  - follow-math-concepts
----
+# open-github-secrets (merged content)
 
 ## Goal
 
