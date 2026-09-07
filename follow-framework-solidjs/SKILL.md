@@ -3,7 +3,7 @@ name: follow-framework-solidjs
 description: พัฒนา Solid.js applications ด้วย fine-grained reactivity และ performance optimization
 argument-hint: "[task]"
 related:
-  - follow-solid-tanstack-architecture
+  - follow-solid-tanstack
   - follow-lang-typescript
   - follow-tool-vite
   - follow-create-vite-plugins
@@ -101,7 +101,7 @@ related:
 
 ### 4. Related Workflows
 
-- ทำ `/follow-solid-tanstack-architecture` สำหรับ TanStack Start + SolidJS applications
+- ทำ `/follow-solid-tanstack` สำหรับ TanStack Start + SolidJS applications
 - ทำ `/follow-lang-typescript` สำหรับ TypeScript best practices
 - ทำ `/follow-tool-vitest` สำหรับ testing configuration
 

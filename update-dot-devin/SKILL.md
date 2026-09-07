@@ -7,7 +7,7 @@ related:
   - analyze-project
   - update-devin-project-rules
   - update-devin-project-hooks
-  - update-devin-project-skills
+  - update-project-skills
   - update-devin-project-mcp
   - update-devin-global-skills
   - update-agents-md
@@ -72,7 +72,7 @@ related:
 
 1. อ่าน https://docs.devin.ai/cli/extensibility/skills/overview เพื่อเข้าใจ skills
 2. อ่าน https://docs.devin.ai/cli/extensibility/mcp/overview เพื่อเข้าใจ MCP
-3. ทำ `/update-devin-project-skills` เพื่อสร้าง/อัปเดต `.devin/skills/`
+3. ทำ `/update-project-skills` เพื่อสร้าง/อัปเดต `.devin/skills/`
 4. ทำ `/update-devin-project-mcp` เพื่อตั้งค่า `.devin/mcp_config.json`
 
 ### 7. Update Ast-Grep Rules
@@ -131,7 +131,7 @@ related:
 
 - ใช้ `/update-devin-project-rules` สำหรับเขียนและอัพเดท `.devin/rules/` ที่ root
 - ใช้ `/update-devin-project-hooks` สำหรับเขียนและอัพเดท `.devin/hooks/`
-- ใช้ `/update-devin-project-skills` สำหรับสร้าง `.devin/skills/`
+- ใช้ `/update-project-skills` สำหรับสร้าง `.devin/skills/`
 - ใช้ `/update-devin-project-mcp` สำหรับตั้งค่า `.devin/mcp_config.json`
 - ใช้ `/update-devin-global-skills` สำหรับสร้าง/อัปเดต global skills ที project ต้องการ
 - Rules ต้องสอดคล้องกับ dependencies ใน `package.json`

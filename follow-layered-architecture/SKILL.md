@@ -7,7 +7,7 @@ related:
   - follow-tool-vitest
   - follow-lib-vue
   - follow-framework-nuxt
-  - follow-framework-svelte-kit
+  - follow-framework-svelte
   - follow-framework-nextjs
   - follow-lib-react
   - follow-clean-architecture
@@ -179,7 +179,7 @@ src/
 
 - ใช้ /follow-lib-vue ถ้าจำเป็น
 - ใช้ /follow-framework-nuxt ถ้าจำเป็น
-- ใช้ /follow-framework-svelte-kit ถ้าจำเป็น
+- ใช้ /follow-framework-svelte ถ้าจำเป็น
 - ใช้ /follow-framework-nextjs ถ้าจำเป็น
 - ใช้ /follow-lib-react ถ้าจำเป็น
 

@@ -8,13 +8,23 @@ related:
   - open-files-in-web
   - visualize-project
   - open-readme-html
----
+  - --
+  - follow-framework-solidjs
+  - follow-create-rust-crate
+  - follow-tool-vite
+  - use-lib-effective
+  - review-frontend
+  - resolve-errors
+  - ship
+  - suggest-next-action
 
 ## Goal
 
 สร้าง visual แบบ Web (HTML) ใน browser ให้เข้าใจข้อมูล โครงสร้าง หรือ concept ได้ง่าย โดยเลือก frontend runtime ตาม user context
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: visualize-repo-in-web)
 
 - ใช้สำหรับ visualize ข้อมูล โครงสร้าง หรือ concept ที่ซับซ้อน
 - สร้างไฟล์เดียวใน OS temp directory แบบ no-build

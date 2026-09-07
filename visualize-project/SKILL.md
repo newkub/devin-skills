@@ -10,7 +10,7 @@ related:
   - follow-tool-vite
   - resolve-errors
   - open-web
-  - visualize-repo-in-web
+  - visualize-in-web
 ---
 
 ## Goal
@@ -145,7 +145,7 @@ related:
 - Click ข้างซ้ายแล้ว scroll ข้างขวาไปยัง item นั้น
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /visualize-repo-in-web ถ้าจำเป็น
+- ใช้ /visualize-in-web ถ้าจำเป็น
 
 ## Expected Outcome
 

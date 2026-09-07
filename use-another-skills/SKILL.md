@@ -3,7 +3,7 @@ name: use-another-skills
 description: เลือกและเรียก skill อื่นที่เหมาะสมกับ task
 argument-hint: "[task]"
 related:
-  - use-in-another-skills
+  - suggest-related-skills
   - suggest-next-action
   - follow-skills-map
   - check-reference
@@ -32,7 +32,7 @@ related:
 
 > Goal: หา skills ทีเหมาะสม
 
-1. ทำ `/use-in-another-skills` ถ้ามี skill ปัจจุบัน
+1. ทำ `/suggest-related-skills` ถ้ามี skill ปัจจุบัน
 2. ทำ `/suggest-next-action` ถ้ามี task ทั่วไป
 3. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills
 4. กรอง candidates ให้เหลือ 1-3 ตัว
@@ -84,4 +84,4 @@ related:
 - skill ทีเหมาะสมถูกเลือกและเรียก
 - context ถูกส่งต่อไปยัง skill ทีเลือก
 - มีรายงานสรุป skill ทีใช้และผลลัพธ์
-- ใช้ร่วมกับ `/use-in-another-skills` ใน `/update-devin-global-skills`
+- ใช้ร่วมกับ `/suggest-related-skills` ใน `/update-devin-global-skills`

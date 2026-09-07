@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-usage-md
   - review-usage-md
-  - use-in-another-skills
+  - suggest-related-skills
   - report-usage
   - report
   - report-table
@@ -29,7 +29,7 @@ related:
 
 > Goal: ตรวจสอบว่ามี skill อื่นเหมาะสมกว่าหรือไม่
 
-1. ทำ `/use-in-another-skills` เพื่อหา skills ที่เกี่ยวข้อง
+1. ทำ `/suggest-related-skills` เพื่อหา skills ที่เกี่ยวข้อง
 2. ถ้า project เป็น CLI ที่มี `usage.kdl` → ใช้ `/report-usage` แทน
 3. ถ้า project ไม่มี `USAGE.md` ทั่วไป → ดำเนินการตาม steps ต่อไป
 4. ถ้า `/report` ทั่วไปครอบคลุมพอ → delegate ไปยัง `/report`

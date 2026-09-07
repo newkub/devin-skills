@@ -12,7 +12,7 @@ related:
   - report-before
   - create-devin-global-skills
   - check-skills-related
-  - use-in-another-skills
+  - suggest-related-skills
   - follow-create-devin-global-skills
   - update-devin-global-skills
   - deep-thinking

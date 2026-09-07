@@ -1,133 +1,72 @@
 ---
 name: update-project-rules
-description: สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
-argument-hint: "[scope]"
+description: สร้างและอัปเดต ast-grep rules ใน `rules/` และ `sgconfig.yml` ตาม conventions ของ project
+argument-hint: "[rule-or-pattern]"
 related:
-  - update-devin-global-skills
-  - use-scripts
-  - update-references
-  - review-writing
-  - check-reference
-  - report-config-files
-  - learn-from-web
-  - update-specs
+  - use-astgrep
+  - use-astgrep-programmatic
+  - search-by-astgrep
+  - scan-codebase
+  - update-dot-devin
+  - report-table
 ---
 
 ## Goal
 
-สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
+สร้างหรืออัปเดต ast-grep rules ใน `rules/` directory และ `sgconfig.yml` ให้ตรงกับ conventions และ patterns ที่ project ต้องการบังคับใช้
 
 ## Scope
 
-ครอบคลุมการอ่าน package manifest, เช็ค skills ใน global, และสร้าง skills ที่ขาด
+- ใช้เมื่อต้องการ lint rules แบบ AST-based ที่ enforce conventions เฉพาะ project
+- ครอบคลุม `rules/*.yml`, `sgconfig.yml`, และ custom rule directories
+- ไม่รวม `.devin/rules` (Markdown rules) — ใช้ `/update-devin-project-rules` แทน
+- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/create-skills-from-manifest` แทน
 
 ## Execute
 
-### 1. Read Package Manifest
+### 1. Detect Existing Rules Setup
 
-> Goal: Read Package Manifest
+> Goal: รู้ว่า project มี ast-grep rules อยู่แล้วหรือไม่
 
-1. อ่าน `package.json` หรือ `Cargo.toml` จาก workspace
-2. ดึงรายชื่อ dependencies ที่มี skills ใน Cascade
-3. กรองเฉพาะ dependencies ที่มี official skills
+1. หา `sgconfig.yml` ที่ project root
+2. สแกน `rules/` directory หา `*.yml` rule files ที่มีอยู่
+3. อ่าน `package.json` หา `ast-grep` scripts หรือ devDependencies
+4. ถ้าไม่มี setup → สร้าง `sgconfig.yml` พร้อม `ruleDirs: [rules]` และ `rules/` directory
 
-### 2. Check Skills In Global
+### 2. Define Or Update Rules
 
-> Goal: Check Skills In Global
+> Goal: rules ตรงกับ pattern ที่ต้องการบังคับ
 
-1. อ่านรายการ skills ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
-2. เปรียบเทียบ dependencies กับ skills ที่มีอยู่
-3. ระบุ skills ที่ยังไม่มีใน global
+1. รับ pattern/convention ที่ต้องการจาก user หรือ context
+2. เขียน rule ด้วย YAML format: `id`, `language`, `rule.pattern`, `message`, `severity`, `fix`
+3. ใช้ meta-variables `$VAR`, `$$$ARGS` ตาม ast-grep rule syntax
+4. เพิ่ม `constraints` หรือ `utils` ถ้า rule ซับซ้อน
+5. ทดสอบ rule ด้วย `ast-grep scan --rule rules/<name>.yml <path>` ก่อน commit
 
-### 3. Create Missing Skills
+### 3. Wire Into Workflow
 
-> Goal: Create Missing Skills
+> Goal: rules ถูกใช้งานจริง
 
-1. ทำ `/update-devin-global-skills` สำหรับแต่ละ skill ที่ขาด
-2. สร้าง folder structure ตามมาตรฐาน
-3. เขียน SKILL.md index และ content files
-4. ใช้ `/learn-from-web` ก่อนเขียนเนื้อหา
+1. เพิ่ม script ใน `package.json` เช่น `"scan": "ast-grep scan"` ถ้ายังไม่มี
+2. ถ้า project มี CI → เพิ่ม `ast-grep scan` step
+3. ทำ `/run-scan` เพื่อยืนยันว่า rules ทำงานและไม่มี false positives มากเกิน
 
-### 4. Update Test Specs
+### 4. Report
 
-> Goal: สร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
+> Goal: สรุป rules ที่สร้าง/อัปเดต
 
-1. ทำ `/update-specs` เพื่อสร้าง/อัปเดต `specs/overview.md` และ `specs/SPEC.md`
-2. ตรวจว่า spec files สอดคล้องกับ project type และ dependencies
-3. ถ้า fail → retry (max 3 → stop/report)
-
-### 5. Validate And Finalize
-
-> Goal: Validate And Finalize
-
-1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
-2. ใช้ `/review-writing` สำหรับทุกไฟล์
-3. ตรวจสอบ folder structure ถูกต้อง
-4. ใช้ `/update-references` หากมี file operations
+1. ใช้ `/report-table` คอลัมน์: No., Rule, Pattern, Severity, Fix, Status
+2. ระบุ rules ที่เพิ่ม แก้ไข หรือลบ
 
 ## Rules
 
-### 1. Package Manifest Detection
-
-ตรวจสอบประเภท package manifest:
-
-- `package.json` สำหรับ JavaScript/TypeScript projects
-- `Cargo.toml` สำหรับ Rust projects
-- `pyproject.toml` หรือ `requirements.txt` สำหรับ Python projects
-
-### 2. Skills Mapping
-
-แมป dependencies กับ skills ที่มีใน Cascade:
-
-- อ่าน skills list จาก Cascade system
-- ตรวจสอบว่า dependency มี official skill หรือไม่
-- กรองเฉพาะ dependencies ที่มี skills ในระบบ
-
-### 3. Global Skills Location
-
-ตำแหน่ง global skills:
-
-- `C:\Users\Veerapong\.codeium\windsurf\skills`
-- ตรวจสอบโฟลเดอร์ skill แต่ละตัว
-- อ่าน SKILL.md เพื่อยืนยันว่า skill มีอยู่จริง
-
-### 4. Batch Creation
-
-สร้าง skills แบบ batch:
-
-- สร้าง skills ที่ขาดทั้งหมดในครั้งเดียว
-- ใช้ `/update-devin-global-skills` สำหรับแต่ละ skill
-- รักษาความสม่ำเสมอทั้งหมด
-
-### 5. Error Handling
-
-จัดการกับข้อผิดพลาด:
-
-- ข้าม dependencies ที่ไม่มี skills
-- ข้าม skills ที่มีอยู่แล้ว
-- บันทึก skills ที่สร้างไม่สำเร็จ
-
-- ใช้ /use-scripts ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /report-config-files ถ้าจำเป็น
+- ทดสอบ rule ก่อน commit เสมอ — rule ที่ match ผิดทำให้ scan พัง
+- ใช้ `severity: warning` สำหรับ rules ใหม่ ก่อนเลื่อนเป็น `error`
+- ห้ามแก้ `sgconfig.yml` โดยไม่ตรวจ `ruleDirs` ที่มีอยู่
+- ast-grep rules เท่านั้น — `.devin/rules` (markdown) ไปที่ `/update-devin-project-rules`
 
 ## Expected Outcome
 
-- Skills ทั้งหมดจาก dependencies ถูกสร้างใน global
-- Folder structure ถูกต้องตามมาตรฐาน
-- Content มีคุณภาพและสมบูรณ์
-- ไม่มี duplicate skills
-
-## Common Mistakes
-
-- ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
-- สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/update-devin-global-skills` ในการสร้าง
-- ไม่ตรวจสอบ folder structure หลังสร้าง
-
-## Anti-Patterns
-
-- ❌ สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
-- ❌ สร้าง skills แบบ manual ไม่ตามมาตรฐาน
-- ❌ ข้าม `/learn-from-web` ก่อนเขียนเนื้อหา
-- ❌ ไม่ตรวจสอบคุณภาพ content
+- `rules/` และ `sgconfig.yml` ถูกต้องและทดสอบผ่าน
+- Rules ถูก wire เข้า `package.json` scripts หรือ CI
+- ตารางสรุป rules พร้อม status

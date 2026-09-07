@@ -13,7 +13,11 @@ related:
   - suggest-next-action
   - use-subagents
   - follow-parallel
----
+  - --
+  - review-references
+  - follow-single-responsibility
+  - report
+
 
 ## Goal
 
@@ -86,3 +90,5 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - มี report ชัดเจนพร้อม recommendations
 - ผ่าน `/deep-validate` หลังปรับปรุง
 
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-flow)

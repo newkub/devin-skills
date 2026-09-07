@@ -5,19 +5,19 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-service-vercel-cli
   - deploy-to-vercel
   - watch-browser-and-fix
   - resolve-errors
   - loop-until-complete
----
+  - --
+
 
 ## Goal
 
 Deploy applications บน Vercel platform พร้อม auto-build, preview deployments, serverless functions และ edge functions
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel-cli`, `deploy-to-vercel`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-web-for-config-secret`, `follow-service-vercel`, `deploy-to-vercel`
 
 ครอบคลุมการติดตั้ง Vercel CLI, link project, configure, build, deploy, environment variables, serverless/edge functions และ CI/CD
 
@@ -209,3 +209,5 @@ jobs:
 
 - [references/vercel-overview.md](references/vercel-overview.md) — overview ของ Vercel platform
 - [references/vercel-website.md](references/vercel-website.md) — links หลักของ Vercel
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-service-vercel-cli)

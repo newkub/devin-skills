@@ -9,7 +9,10 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
----
+  - --
+  - run-verify
+  - run-test
+
 
 ## Goal
 
@@ -211,3 +214,5 @@ related:
 - Config รองรับ browsers, parallelism, และ monorepo
 - E2E tests รันได้ทั้งหมด
 - เป็นไปตาม best practices จาก Playwright 2026 official documentation
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-axe-playwright)

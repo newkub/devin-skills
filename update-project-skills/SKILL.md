@@ -9,16 +9,20 @@ related:
   - check-monorepo
   - deep-validate
   - update-agents-md
-  - update-devin-global-skills
   - check-circular-dependencies
   - report
----
+  - --
+  - follow-create-devin-project-skills
+  - update-dot-devin
+  - report-table
 
 ## Goal
 
 สร้างและอัปเดต project-level skills ใน `.devin/skills/` ของ project โดยวิเคราะห์ dependencies, workflows และ gaps แล้วเขียนตาม `/update-devin-global-skills`
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: update-devin-project-skills)
 
 ใช้เพื่อสร้างหรืออัปเดต skills ใน project's `.devin/skills/` directory ครอบคลุมการวิเคราะห์ project needs, เลือก template, สร้าง `SKILL.md` และไฟล์ย่อย ไม่รวมการแก้ไข global skills หรือ source code ของ project
 
@@ -104,7 +108,7 @@ related:
 ### 3. No Commit
 
 - `update-project-skills` ไม่ commit การเปลี่ยนแปลง
-- ถ้าใช้ standalone → ทำ `/git-commit` หลัง `/update-project-skills`
+- ถ้าใช้ standalone → ทำ `/git-commit` หลังจบ skill นี้
 - ถ้าใช้ใน `/update-project` → commit ตาม workflow ของ `/update-project`
 
 ### 4. Global Skills First

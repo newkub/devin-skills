@@ -4,7 +4,7 @@ description: อัปเดต global Devin skills ด้วย research ล่
 argument-hint: "[@files-or-topic...]"
 related:
   - follow-create-devin-global-skills
-  - update-devin-project-skills
+  - update-project-skills
   - deep-research
   - learn-from-web
   - follow-skills-map
@@ -28,7 +28,7 @@ related:
 
 ใช้เมื่อต้องอัปเดต skill ที่มีอยู่ รองรับการระบุ skill เดียว หลาย skill หรือไม่ระบุ (ทั้งหมด) — ถ้าต้องสร้าง skill ใหม่ให้ทำ `/follow-create-devin-global-skills` แทน
 
-ดูเพิ่มเติม: /follow-create-devin-global-skills, /update-devin-project-skills, /review-devin-global-skills
+ดูเพิ่มเติม: /follow-create-devin-global-skills, /update-project-skills, /review-devin-global-skills
 
 ## Execute
 

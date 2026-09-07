@@ -11,13 +11,20 @@ related:
   - follow-lib-elysia
   - follow-lib-effect-ts
   - follow-single-responsibility
----
+  - --
+  - follow-framework-solidjs
+  - follow-tool-vitest
+  - follow-monorepo
+  - review-architecture
+
 
 ## Goal
 
 ตั้งค่าและพัฒนา full-stack application ด้วย TanStack Start (SolidJS), Elysia และ oRPC แบบ type-safe
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-solid-tanstack-architecture)
 
 ใช้สำหรับ projects ที่ต้องการ:
 

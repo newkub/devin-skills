@@ -1,19 +1,24 @@
 ---
 name: list-devin-global-skills
 description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
-argument-hint: "[scope]"
+argument-hint: "[scope] [--relation]"
 related:
   - report-table
   - search-skills
   - follow-skills-map
-  - list-devin-global-skills-relation
----
+  - --
+  - check-circular-dependencies
+  - check-broken-skills-references
+  - use-scripts
+  - open-devin-in-web
 
 ## Goal
 
 แสดงรายการ skills ทั้งหมดใน `skills` directory
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-devin-global-skills-relation)
 
 ใช้สำหรับดู skills ที่มีอยู่ก่อนเลือกใช้ใน `AGENTS.md`
 
@@ -47,7 +52,7 @@ related:
 1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
 2. ทำ `/report-table` สำหรับจัดรูปแบบ
 3. ทำ `/follow-skills-map` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
-4. ถ้าต้องการดูความสัมพันธ์/flow ของ skills → ทำ `/list-devin-global-skills-relation`
+4. ถ้าต้องการดูความสัมพันธ์/flow ของ skills → ใช้ `--relation` mode ของ skill นี้ (ดู [references/relation-view.md](references/relation-view.md))
 
 ## Rules
 

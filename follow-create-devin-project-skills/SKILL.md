@@ -3,7 +3,7 @@ name: follow-create-devin-project-skills
 description: มาตรฐานการสร้าง project-local Devin skills ใน .devin/skills/ ตาม project conventions
 argument-hint: "[skill-name...]"
 related:
-  - update-devin-project-skills
+  - update-project-skills
   - follow-create-devin-global-skills
   - update-dot-devin
   - update-devin-project-rules
@@ -22,7 +22,7 @@ related:
 
 ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/follow-create-devin-global-skills` แทน)
 
-ดูเพิ่มเติม: /update-devin-project-skills, /follow-create-devin-global-skills, /update-devin-project-rules, /update-agents-md
+ดูเพิ่มเติม: /update-project-skills, /follow-create-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
 ## Execute
 
@@ -40,7 +40,7 @@ related:
 > Goal: ไม่ซ้ำกับ skills ที่มีและตรง conventions
 
 1. ตรวจ `.devin/skills/` ของ project และ `%APPDATA%\devin\skills` ว่ามี skill คล้ายกันไหม
-2. ทำ `/check-skills-related` หรือ `/use-in-another-skills` ถ้าพบ skill ที่อาจซ้ำ
+2. ทำ `/check-skills-related` หรือ `/suggest-related-skills` ถ้าพบ skill ที่อาจซ้ำ
 3. อ่าน `AGENTS.md` root และ workspace เพื่อดึง project conventions, commands และ tech stack
 4. ทำ `/prepare-skills-context` เพื่อเลือก template และ directory pattern
 
@@ -81,7 +81,7 @@ related:
 1. ทำ `/deep-validate` — frontmatter, ความยาว, TODO/placeholder, broken links
 2. ตรวจ `related` ไม่มี missing หรือ circular
 3. ถ้าไม่ผ่าน → แก้และ recheck ไม่เกิน 3 รอบ
-4. ส่งต่อ `/update-devin-project-skills` สำหรับการอัปเดตภายหลัง
+4. ส่งต่อ `/update-project-skills` สำหรับการอัปเดตภายหลัง
 
 ## Rules
 

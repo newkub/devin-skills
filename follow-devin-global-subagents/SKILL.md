@@ -41,7 +41,7 @@ related:
 
 1. ทำ `/list-devin-global-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
-3. ถ้าไม่มี role ที่ต้องการ → ทำ `/use-in-another-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/suggest-related-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
 
 ### 3. Spawn Subagents

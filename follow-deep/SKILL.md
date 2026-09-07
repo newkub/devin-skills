@@ -10,7 +10,13 @@ related:
   - deep-review
   - deep-plan
   - refactor
----
+  - --
+  - ask-me
+  - deep-validate
+  - follow-parallel
+  - follow-devin-global-subagents
+  - report
+
 
 ## Goal
 
@@ -59,10 +65,10 @@ related:
 
 ### 4. Apply Deep Follow If Needed
 
-> Goal: ถ้า task ต้องการการทำตามแบบ recursive ใช้ `deep-follow`
+> Goal: ถ้า task ต้องการการทำตามแบบ recursive ใช้ `follow-deep`
 
-1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `deep-follow`
-2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `deep-follow`
+1. ถ้า deep- workflows ที่เลือกมี sub-workflows ซับซ้อน → ทำ `follow-deep`
+2. ถ้า deep- workflows ที่เลือกตรงไปตรงมา → ไม่ต้องใช้ `follow-deep`
 3. บันทึกผลลัพธ์สรุป
 
 ## Rules
@@ -88,9 +94,9 @@ related:
 
 ### 4. Deep Follow Integration
 
-- ใช้ `deep-follow` เมื่อ deep- workflows มี sub-workflows ซับซ้อน
-- ไม่ใช้ `deep-follow` สำหรับ deep- workflows ที่ตรงไปตรงมา
-- `deep-follow` รองรับทั้ง workflows และ skills แบบ recursive
+- ใช้ `follow-deep` เมื่อ deep- workflows มี sub-workflows ซับซ้อน
+- ไม่ใช้ `follow-deep` สำหรับ deep- workflows ที่ตรงไปตรงมา
+- `follow-deep` รองรับทั้ง workflows และ skills แบบ recursive
 
 ## Expected Outcome
 
@@ -98,3 +104,5 @@ related:
 - ไม่เรียก deep- workflows ที่ไม่จำเป็น
 - Independent deep- workflows รัน parallel ลด total execution time
 - ผลลัพธ์จาก deep- workflows ถูกบันทึกและสรุป
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-follow)

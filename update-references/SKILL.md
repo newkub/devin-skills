@@ -3,7 +3,7 @@ name: update-references
 description: อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์
 argument-hint: "[scope]"
 related:
-  - use-in-another-skills
+  - suggest-related-skills
   - search-files-patterns
   - check-file-relations
   - report-table
@@ -137,7 +137,7 @@ related:
 - ตรวจสอบว่า code ยังทำงานได้
 - ตรวจสอบว่าไม่มี broken imports
 
-- ใช้ /use-in-another-skills ถ้าจำเป็น
+- ใช้ /suggest-related-skills ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /search-files-patterns ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น

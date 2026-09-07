@@ -3,10 +3,14 @@ name: follow-framework-svelte
 description: ตั้งค่า Vite + Svelte 5 Runes + TypeScript (client-side only)
 argument-hint: "[scope]"
 related:
-  - follow-framework-svelte-kit
   - follow-lib-unocss
   - refactor
----
+  - --
+  - follow-framework-astro
+  - follow-framework-capacitor
+  - follow-best-practice
+  - setup-cicd
+  - follow-my-tech-stack
 
 ## Goal
 
@@ -14,8 +18,10 @@ related:
 
 ## Scope
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-framework-svelte-kit)
+
 ใช้สำหรับ Svelte 5 projects ที่ใช้ Vite เป็น build tool (client-side only)
-หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ `/follow-framework-svelte-kit` แทน
+หมายเหตุ: ถ้าต้องการ fullstack meta-framework ให้ใช้ SvelteKit mode ของ skill นี้ — ดู [references/sveltekit-ssr.md](references/sveltekit-ssr.md)
 
 ## Execute
 

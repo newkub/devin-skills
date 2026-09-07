@@ -7,10 +7,10 @@ related:
   - follow-layered-architecture
   - follow-microservices-architecture
   - follow-nextjs-architecture
-  - follow-solid-tanstack-architecture
+  - follow-solid-tanstack
   - follow-monorepo
   - follow-framework-nuxt
-  - follow-framework-svelte-kit
+  - follow-framework-svelte
   - follow-lib-vue
   - restructure
   - learn-from-web
@@ -69,8 +69,8 @@ related:
 | Nuxt | `nuxt` in dependencies | `/follow-framework-nuxt` |
 | Next.js | `next` in dependencies | `/follow-nextjs-architecture` |
 | Vue.js | `vue` in dependencies | `/follow-lib-vue` |
-| SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack-architecture` |
-| Svelte | `svelte` in dependencies | `/follow-framework-svelte-kit` |
+| SolidJS | `solid-js` in dependencies | `/follow-solid-tanstack` |
+| Svelte | `svelte` in dependencies | `/follow-framework-svelte` |
 | Frontend ขนาดเล็ก-กลาง | 1-2 devs, frontend-only | `/follow-layered-architecture` |
 | Rust | `Cargo.toml` exists | `/follow-clean-architecture` |
 | Bun | `bun` in dependencies | `/follow-clean-architecture` |

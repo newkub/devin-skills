@@ -22,7 +22,7 @@ related:
   - create-devin-global-skills
   - idea
   - check-skills-related
-  - use-in-another-skills
+  - suggest-related-skills
   - review-devin-global-skills
 ---
 
@@ -94,7 +94,7 @@ related:
 - ถ้า input เป็น secret/token ให้ปฏิเสธและบอกให้เก็บใน `secret manager`
 - ถ้า input เป็น URL ทีละเอียด ให้ fetch เพื่อสรุป title/คำอธิบายก่อนตัดสินใจ
 - ถ้าต้องสร้าง skill ใหม่ → ใช้ `/create-devin-global-skills` หรือ `/update-devin-global-skills`
-- ถ้าไม่แน่ใจว่า input ควรใส่ skill ไหน → ใช้ `/use-in-another-skills`
+- ถ้าไม่แน่ใจว่า input ควรใส่ skill ไหน → ใช้ `/suggest-related-skills`
 - หลังแก้ skill → ใช้ `/review-devin-global-skills` เพื่อตรวจความถูกต้อง
 
 ## Expected Outcome

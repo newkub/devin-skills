@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-devin-global-skills
   - update-devin-global-subagents
-  - use-in-another-skills
+  - suggest-related-skills
   - idea
   - list-devin-global-skills
   - scan-codebase
@@ -123,7 +123,7 @@ related:
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-subagents ถ้าจำเป็น
-- ใช้ /use-in-another-skills ถ้าจำเป็น
+- ใช้ /suggest-related-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

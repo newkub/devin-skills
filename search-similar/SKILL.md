@@ -7,7 +7,7 @@ related:
   - search-by-astgrep
   - use-astgrep
   - list-devin-global-skills
-  - use-in-another-skills
+  - suggest-related-skills
   - create-similar
   - ask-me
   - report-table
@@ -81,7 +81,7 @@ related:
 - ไม่expose secrets หรือ sensitive ใน snippets
 - ถ้า context ไม่ชัด → ถาม user ก่อน
 
-- ใช้ /use-in-another-skills ถ้าจำเป็น
+- ใช้ /suggest-related-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -3,7 +3,7 @@ name: create-devin-global-skills
 description: สร้าง devin global skill ใหม่ตามมาตรฐาน repo
 argument-hint: "[idea or topic]"
 related:
-  - use-in-another-skills
+  - suggest-related-skills
   - use-another-skills
   - update-devin-global-skills
   - scan-codebase
@@ -39,7 +39,7 @@ related:
 > Goal: ตรวจว่าไม่ซ้ำกับ skills ที่มี
 
 1. ทำ `/scan-codebase` เพื่อหา skills ที่คล้ายกัน
-2. ทำ `/use-in-another-skills` เพื่อพิจารณาความเกี่ยวข้อง/extend/rename
+2. ทำ `/suggest-related-skills` เพื่อพิจารณาความเกี่ยวข้อง/extend/rename
 3. ถ้าซ้ำมาก → แนะนำ `/update-devin-global-skills` แทน
 
 ### 3. Research
@@ -98,6 +98,6 @@ related:
 - `SKILL.md` มี frontmatter ครบถ้วนและเนื้อหาสอดคล้อง goal
 - references ไม่ broken
 - ผ่าน `/deep-validate`
-- ใช้ร่วมกับ `/use-in-another-skills` และ `/use-another-skills` ในกระบวนการสร้าง
+- ใช้ร่วมกับ `/suggest-related-skills` และ `/use-another-skills` ในกระบวนการสร้าง
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: new-skills)

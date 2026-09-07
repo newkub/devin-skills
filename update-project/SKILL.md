@@ -11,7 +11,7 @@ related:
   - update-project-rules
   - update-specs
   - update-examples
-  - update-devin-project-skills
+  - update-project-skills
   - update-github-metadata
   - update-todo-md
   - update-version-to-latest
@@ -93,7 +93,7 @@ related:
 
 > Goal: project skills ใน `.devin/skills/` เป็นปัจจุบัน
 
-1. ทำ `/update-devin-project-skills` เพื่อสร้างหรืออัปเดต skills ใน `.devin/skills/`
+1. ทำ `/update-project-skills` เพื่อสร้างหรืออัปเดต skills ใน `.devin/skills/`
 2. ตรวจว่า skills ที่สร้างผ่าน `/deep-validate`
 3. ยืนยันว่า project `AGENTS.md` อ้างถึง skills ใหม่ครบถ้วน
 
@@ -162,7 +162,7 @@ related:
 - ข้อมูลที่เปลี่ยนแปลงถูก restore มาอัปเดต root docs
 - root `AGENTS.md` และ `README.md` อัปเดต
 - project docs, config, rules, และ tooling sync กัน
-- project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-devin-project-skills`
+- project skills ใน `.devin/skills/` อัปเดตผ่าน `/update-project-skills`
 - GitHub repo metadata อัปเดตผ่าน `/update-github-metadata`
 - root project ผ่าน `/deep-validate`
 - dependencies และ versioned items อัปเดตถ้าเลือกใช้ `/update-version-to-latest`

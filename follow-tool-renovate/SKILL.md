@@ -5,12 +5,17 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-tool-renovate-json
   - follow-tool-github-actions
   - follow-tool-pkg-new
   - follow-tool-release-it
   - follow-tool-semantic-release
----
+  - --
+  - follow-tool-agent-browser
+  - use-astgrep
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
+
 
 ## Goal
 
@@ -103,7 +108,6 @@ related:
 - ลืมตั้งค่า permissions ใน workflow
 - ใช้ `--frozen-lockfile` ทำให้ Renovate ไม่สามารถ update lockfile ได้
 
-- ใช้ /follow-tool-renovate-json ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
@@ -122,3 +126,5 @@ related:
 - Lock files อัปเดตอัตโนมัติ
 - Workflow ไม่ fail จาก token หรือ permissions
 
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-renovate-json)

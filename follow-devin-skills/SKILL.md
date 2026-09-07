@@ -5,7 +5,7 @@ argument-hint: "[skill-name]"
 related:
   - list-devin-global-skills
   - follow-skills-map
-  - update-devin-project-skills
+  - update-project-skills
   - check-reference
   - update-devin-global-skills
   - deep-validate
@@ -104,7 +104,7 @@ related:
 - ห้ามส่ง skill ซ้ำซ้อน
 - ใช้ `argument-hint` ตามที่ skill ระบุ
 
-- ใช้ /update-devin-project-skills ถ้าจำเป็น
+- ใช้ /update-project-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
