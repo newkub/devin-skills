@@ -3,6 +3,7 @@ name: match
 description: หา match items จาก codebase แล้ว apply rules ที่ผู้ใช้กำหนดให้กับแต่ละ match
 argument-hint: "<what-to-match>"
 allowed-tools:
+---
   - read
   - grep
   - find_file_by_name

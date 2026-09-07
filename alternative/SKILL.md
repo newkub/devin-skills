@@ -3,6 +3,7 @@ name: alternative
 description: ค้นหาและแนะนำ alternatives ทีดีกว่าสำหรับสิ่งที user ระบุ
 argument-hint: "<subject>"
 allowed-tools:
+---
   - read
   - write
   - edit

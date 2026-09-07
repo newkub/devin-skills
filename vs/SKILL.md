@@ -3,6 +3,7 @@ name: vs
 description: เปรียบเทียบ options, tools, หรือ solutions เพื่อเลือกตัวเลือกทีเหมาะสมทีสุด
 argument-hint: "[a] [b]"
 allowed-tools:
+---
   - read
   - write
   - edit

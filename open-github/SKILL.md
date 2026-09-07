@@ -9,7 +9,6 @@ related:
   - create-github-pr
   - open-web
   - view-repo
-  - --
   - list-github-issue
   - review-github-issue
   - list-github-pr
@@ -19,6 +18,7 @@ related:
   - list-github-star
   - search-in-github-star
 
+---
 
 ## Goal
 

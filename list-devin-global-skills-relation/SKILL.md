@@ -3,6 +3,7 @@ name: list-devin-global-skills-relation
 description: แสดงตารางความสัมพันธ์และ flow ของ devin global skills จาก `related` และ `/skill-name` references
 argument-hint: "[skills-dir]"
 allowed-tools:
+---
   - read
   - write
   - edit

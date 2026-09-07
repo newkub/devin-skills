@@ -3,6 +3,7 @@ name: try-in-temp
 description: รันคำสั่งหรือการทดลองใน OS temp directory โดยไม่แตะต้อง workspace
 argument-hint: "<command-or-experiment>"
 allowed-tools:
+---
   - exec
   - read
   - write

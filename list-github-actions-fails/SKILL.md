@@ -11,8 +11,8 @@ related:
   - report-table
   - suggest-next-action
   - ask-me
-  - --
 
+---
 
 ## Goal
 

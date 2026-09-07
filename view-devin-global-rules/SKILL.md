@@ -3,6 +3,7 @@ name: view-devin-global-rules
 description: แสดง devin global rules ในเทอร์มินัลพร้อม syntax highlighting
 argument-hint: "[rule-name]"
 allowed-tools:
+---
   - exec
   - read
   - grep

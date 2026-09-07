@@ -3,6 +3,7 @@ name: view-diff
 description: แสดง git diff บน terminal พร้อม syntax highlighting และ file headers
 argument-hint: "[ref-or-range]"
 allowed-tools:
+---
   - exec
   - read
   - grep

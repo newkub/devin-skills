@@ -8,9 +8,9 @@ related:
   - report-table
   - summarize
   - search-files-patterns
-  - --
   - use-bun-shell
 
+---
 
 ## Goal
 

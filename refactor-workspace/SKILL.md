@@ -13,7 +13,6 @@ related:
   - review-architecture
   - update-references
   - run-verify
-  - --
   - run-test
   - run-typecheck
   - analyze-project
@@ -22,6 +21,7 @@ related:
   - read-all-files
   - check-long-files
 
+---
 
 ## Goal
 

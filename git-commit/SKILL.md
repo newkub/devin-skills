@@ -10,7 +10,6 @@ related:
   - refactor-commit
   - review-diff
   - ship
-  - --
   - git-commit-and-push
   - git-commit-selected-files
   - follow-git-flow
@@ -18,6 +17,7 @@ related:
   - follow-best-practice
   - update-agents-md
 
+---
 ## Goal
 
 Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills directory ตามมาตรฐาน conventional commits

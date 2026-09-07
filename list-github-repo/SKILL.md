@@ -3,6 +3,7 @@ name: list-github-repo
 description: รายการ remote repositories ทั้งหมดบน GitHub ที่ผู้ใช้เป้นเจ้าของ โดยกรอง fork และ archived ออก
 argument-hint: "[owner]"
 allowed-tools:
+---
   - read
   - write
   - edit

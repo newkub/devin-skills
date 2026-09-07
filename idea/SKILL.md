@@ -9,7 +9,6 @@ related:
   - report-table
   - suggest-next-action
   - productionize-implementation
-  - --
   - report-before
   - create-devin-global-skills
   - check-skills-related
@@ -24,6 +23,7 @@ related:
   - update-references
   - check-reference
 
+---
 ## Goal
 
 สร้างไอเดียตาม user context วิเคราะห์ gaps, needs และ opportunities แล้วรายงานเป็นตาราง

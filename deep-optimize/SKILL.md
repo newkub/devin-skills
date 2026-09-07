@@ -3,6 +3,7 @@ name: deep-optimize
 description: Optimize codebase แบบลึก ครอบคลุมหลายมิติ พร้อม implement และ validate
 argument-hint: "<target>"
 allowed-tools:
+---
   - read
   - write
   - edit

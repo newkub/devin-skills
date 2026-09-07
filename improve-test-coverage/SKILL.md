@@ -8,9 +8,9 @@ related:
   - deep-review
   - review-quality
   - update-specs
-  - --
   - run-test-website-by-agent-browser
 
+---
 ## Goal
 
 รัน coverage หา coverage gaps แล้วเติม tests ตาม gaps จนถึง threshold ที่กำหนด

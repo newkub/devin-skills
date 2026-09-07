@@ -9,10 +9,10 @@ related:
   - check-reference
   - update-references
   - review-diff
-  - --
   - suggest-next-action
   - report
 
+---
 
 ## Goal
 

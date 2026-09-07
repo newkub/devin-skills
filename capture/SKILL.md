@@ -7,7 +7,6 @@ related:
   - capture-bug-context
   - run-test-visual
   - resolve-errors
-  - --
   - improve-uxui
   - review-uxui
   - follow-design-system
@@ -22,6 +21,7 @@ related:
   - run-build
   - run-verify
 
+---
 
 ## Goal
 
@@ -29,7 +29,7 @@ Capture ภาพหรือวิดีโอหลักฐานตาม ta
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: capture, capture, capture, capture)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: capture-web, capture-component, capture-terminal, capture-image-app-to-screenshot)
 - `web` → screenshot/PDF หน้าเว็บด้วย `agent-browser` CLI
 - `component` → capture UI component เฉพาะส่วน
 - `terminal` → บันทึก terminal output/session

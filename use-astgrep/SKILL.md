@@ -8,12 +8,12 @@ related:
   - update-project-rules
   - check-code-structure
   - replace
-  - --
   - follow-tool-agent-browser
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
 
+---
 ## Goal
 
 ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns ที่แม่นยำกว่า regex

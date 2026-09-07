@@ -3,6 +3,7 @@ name: report-progress
 description: รายงานสถานะและความคืบหน้าของ agent session รวม completed, pending, blockers และ next actions
 argument-hint: "[all|completed|pending|blockers]"
 allowed-tools:
+---
   - read
   - grep
   - find_file_by_name

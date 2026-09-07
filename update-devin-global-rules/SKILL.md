@@ -9,7 +9,6 @@ related:
   - idea
   - list-devin-global-skills
   - scan-codebase
-  - --
   - update-references
   - deep-validate
   - review-rules
@@ -18,6 +17,7 @@ related:
   - report-table
   - suggest-next-action
 
+---
 
 ## Goal
 

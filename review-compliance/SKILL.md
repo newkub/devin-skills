@@ -10,10 +10,10 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
-  - --
   - roleplay-stakeholder
   - ask-me
 
+---
 ## Goal
 
 สร้าง short orchestrator สำหรับ review compliance ทุก dimension โดย delegate ไปยัง reference files แล้ว aggregate findings และ review score

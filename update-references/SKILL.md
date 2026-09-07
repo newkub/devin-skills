@@ -8,11 +8,11 @@ related:
   - check-file-relations
   - report-table
   - deep-validate
-  - --
   - use-astgrep
   - deep-analyze-by-use-scripts
   - edit-manual
 
+---
 ## Goal
 
 อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่งที่เก็บ references

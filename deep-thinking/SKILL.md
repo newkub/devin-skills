@@ -9,9 +9,9 @@ related:
   - deep-debug
   - analyze-root-cause-analysis
   - suggest-next-action
-  - --
   - deep-research
 
+---
 ## Goal
 
 ใช้ structured thinking เพื่อวิเคราะห์ปัญหาอย่างเป็นระบบ ก่อนดำเนินการใดๆ โดย AI คิดเอง

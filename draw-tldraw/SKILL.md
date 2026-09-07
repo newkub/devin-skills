@@ -4,9 +4,9 @@ description: สร้างไฟล์ .tldr จากคำอธิบาย
 argument-hint: "[description]"
 related:
   - draw-excalidraw
-  - --
   - draw-svg-image
 
+---
 ## Goal
 
 สร้างไฟล์ `.tldr` จากคำอธิบาย drawing หรือ diagram

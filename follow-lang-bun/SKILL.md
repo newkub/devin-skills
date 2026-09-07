@@ -8,13 +8,13 @@ related:
   - follow-best-practice
   - setup-cicd
   - use-scripts
-  - --
   - use-bun-shell
   - follow-tool-bunup
   - deep-validate
   - follow-create-bot
   - convert-to-esm
 
+---
 ## Goal
 
 ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ Web-standard APIs ที่ Bun รองรับ

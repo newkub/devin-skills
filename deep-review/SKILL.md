@@ -3,6 +3,7 @@ name: deep-review
 description: Dispatch งาน review ลึกตาม context ไปยัง deep-review-* หรือ review-* workflows ทีเหมาะสม
 argument-hint: "[context] [target-or-path]"
 allowed-tools:
+---
   - read
   - write
   - edit

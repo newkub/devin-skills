@@ -8,13 +8,13 @@ related:
   - report
   - list-git-commit
   - report-git-diff
-  - --
   - enhance-prompt
   - generate-prompt-from-image
   - enhance-prompt
   - at-this-repo
   - edit-this-repo
 
+---
 ## Goal
 
 สรุปเนื้อหาตาม context ทั่วไป เช่น project, chat, code, files, หรือ topic ที่ระบุ

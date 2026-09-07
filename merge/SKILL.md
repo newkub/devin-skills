@@ -3,6 +3,7 @@ name: merge
 description: merge ไฟล์หรือ folder เข้าด้วยกันและลบ source เดิม
 argument-hint: "@files [destination]"
 allowed-tools:
+---
   - read
   - edit
   - write

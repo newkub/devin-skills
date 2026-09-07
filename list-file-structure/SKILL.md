@@ -3,6 +3,7 @@ name: list-file-structure
 description: แสดงโครงสร้างไฟล์และโฟลเดอร์ของ project ในรูปแบบ tree โดยยกเว้นไฟล์ระบบและ build artifacts
 argument-hint: "<path> [--depth=N] [--include=pattern] [--exclude=pattern]"
 allowed-tools:
+---
   - exec
   - read
   - find_file_by_name

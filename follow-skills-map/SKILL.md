@@ -3,6 +3,7 @@ name: follow-skills-map
 description: แสดง map ของ skills ตาม task type และ ecosystem ช่วยเลือก skill เร็วขึ้น
 argument-hint: "[task-or-ecosystem]"
 allowed-tools:
+---
   - read
   - grep
   - find_file_by_name

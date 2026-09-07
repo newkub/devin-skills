@@ -11,7 +11,6 @@ related:
   - use-scripts
   - ship
   - open-files-in-web
-  - --
   - report-workspace-graph
   - list-workspaces
   - check-monorepo
@@ -19,6 +18,7 @@ related:
   - follow-tasks
   - check-circular-dependencies
 
+---
 ## Goal
 
 สร้าง Mermaid source code จาก prompt, คำอธิบาย, หรือไฟล์ทีให้มา บันทึกเป็นไฟล์ `.md` หรือ `.mmd` ทีเปิด render ได้ด้วย Mermaid Live Editor, VS Code Mermaid extension, หรือ markdown preview

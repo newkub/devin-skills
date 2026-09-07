@@ -8,12 +8,12 @@ related:
   - report-table
   - suggest-next-action
   - ask-me
-  - --
   - analyze-attack-surface
   - check-routes-status
   - test-all-api-routes
   - report
 
+---
 ## Goal
 
 สร้างรายงาน routes ทั้งหมดของ app หรือ website ใน markdown table สำหรับวางแผน UX/UI, navigation, และ tab structure

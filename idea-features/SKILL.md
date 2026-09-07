@@ -9,7 +9,6 @@ related:
   - analyze-project
   - report-table
   - report-uxui-sketch
-  - --
   - create-report-in-dot-devin
   - create-plan-in-dot-devin
   - create-files-in-os-temp
@@ -17,6 +16,7 @@ related:
   - productionize-implementation
   - deep-review-codebase
 
+---
 
 ## Goal
 

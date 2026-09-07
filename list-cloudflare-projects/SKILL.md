@@ -7,7 +7,6 @@ related:
   - list-chezmoi-files
   - resolve-cloudflare-worker-fails
   - open-cloudflare-workers
-  - --
   - resolve-all-cloudflare-fails
   - list-cloudflare-worker-fails
   - follow-service-cloudflare
@@ -16,6 +15,7 @@ related:
   - ask-me
   - open-web
 
+---
 ## Goal
 
 สแกนเครื่องหา projects ทีใช้ Cloudflare (Workers, Pages, Wrangler) พร้อม local path, remote repo match, deployment status และสรุปเป็น table

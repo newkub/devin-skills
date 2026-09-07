@@ -5,13 +5,13 @@ argument-hint: "[submodule-path]"
 related:
   - git-commit
   - ship
-  - --
   - delete-git-branch
   - delete-git-worktree
   - follow-git-flow
   - resolve-errors
   - follow-best-practice
 
+---
 ## Goal
 
 ลบ git submodule ออกจาก repository อย่างสมบูรณ์ ทั้งจาก `.gitmodules`, `.git/modules`, และ working tree

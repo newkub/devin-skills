@@ -12,9 +12,9 @@ related:
   - update-devin-global-rules
   - deep-validate
   - update-references
-  - --
   - check-skills-related
 
+---
 
 ## Goal
 

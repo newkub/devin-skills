@@ -3,6 +3,7 @@ name: all-github-repo
 description: รายการ GitHub repositories ทั้งหมดของ user และ organizations ที user เป้นสมาชิก
 argument-hint: "[username]"
 allowed-tools:
+---
   - read
   - exec
   - report-table

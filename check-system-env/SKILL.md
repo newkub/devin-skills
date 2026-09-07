@@ -7,10 +7,11 @@ related:
   - update-devin-global-skills
   - alternative
   - report
-  - --
   - follow-best-practice
   - suggest-next-action
   - report-table
+---
+
 ## Goal
 
 ตรวจสอบ system environment ของ Windsurf รวมถึง OS, shell, environment variables และ global root paths

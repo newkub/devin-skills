@@ -17,10 +17,10 @@ related:
   - run-test-all
   - run-verify
   - test-usage
-  - --
   - run-test
   - run-lint
 
+---
 ## Goal
 
 แปลง TODO, MOCK, FAKE, STUB, placeholder เป้น production code จริง ครบทุกมิติ พร้อม architecture, security, observability และ rollback plan

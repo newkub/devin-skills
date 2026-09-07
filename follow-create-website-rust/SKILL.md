@@ -3,6 +3,7 @@ name: follow-create-website-rust
 description: สร้าง website ด้วย Rust WASM + Solid frontend ผ่าน Vite plugin
 argument-hint: "[project-name]"
 allowed-tools:
+---
   - exec
   - read
   - edit

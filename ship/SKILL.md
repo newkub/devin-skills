@@ -3,6 +3,7 @@ name: ship
 description: Ship code ตาม AGENTS.md โดย branch, validate, deploy staging, merge, แล้ว production
 argument-hint: "[@issue-number-or-title]"
 allowed-tools:
+---
   - read
   - exec
   - skill

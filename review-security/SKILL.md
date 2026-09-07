@@ -11,7 +11,6 @@ related:
   - review-observability
   - scan-codebase
   - improve-security
-  - --
   - roleplay-stakeholder
   - review-by-engineer
   - report-table
@@ -29,6 +28,7 @@ related:
   - check-hardcoded-values
   - check-infra
 
+---
 ## Goal
 
 Review security ครอบคลุมทุก dimension ของ application security พร้อม aggregate findings, severity, และ review score

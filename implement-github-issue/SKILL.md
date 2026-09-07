@@ -11,11 +11,11 @@ related:
   - git-push
   - merge-github-pr
   - resolve-errors
-  - --
   - idea-features
   - open-github
   - create-github-pr
 
+---
 
 ## Goal
 

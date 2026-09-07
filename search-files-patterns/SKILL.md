@@ -10,13 +10,13 @@ related:
   - fix
   - search-by-astgrep
   - use-astgrep
-  - --
   - search-project-in-drive-d
   - follow-my-global-cli
   - use-subagents
   - update-agents-md
   - ask-me
 
+---
 ## Goal
 
 ค้นหา patterns ในไฟล์ทั้งชื่อไฟล์และเนื้อหา โดยใช้ glob, regex, และ ast-grep

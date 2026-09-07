@@ -3,6 +3,7 @@ name: save-to-devin-global-skills
 description: รับ link, resource, topic หรือ prompt แล้วบันทึกลง global skill ทีเหมาะสม
 argument-hint: "<input-or-prompt>"
 allowed-tools:
+---
   - read
   - write
   - edit

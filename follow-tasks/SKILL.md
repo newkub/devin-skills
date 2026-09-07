@@ -16,13 +16,13 @@ related:
   - run-test-coverage
   - use-scripts
   - follow-monorepo
-  - --
   - review-delivery
   - follow-tool-taze
   - deep-review-codebase
   - follow-tool-hk
   - use-astgrep
 
+---
 ## Goal
 
 ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete

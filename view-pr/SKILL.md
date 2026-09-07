@@ -3,6 +3,7 @@ name: view-pr
 description: แสดงรายละเอียด PR ใน terminal พร้อม metadata และ diff
 argument-hint: "[pr-number-or-url]"
 allowed-tools:
+---
   - exec
   - read
   - grep

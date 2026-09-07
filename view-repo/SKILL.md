@@ -3,6 +3,7 @@ name: view-repo
 description: แสดง metadata, health และ summary ของ GitHub repository
 argument-hint: "[owner/repo-or-url]"
 allowed-tools:
+---
   - read
   - write
   - edit

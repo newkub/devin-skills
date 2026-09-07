@@ -13,9 +13,9 @@ related:
   - delete-projects
   - resolve-errors
   - report
-  - --
   - report-table
 
+---
 
 ## Goal
 

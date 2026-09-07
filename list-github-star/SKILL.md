@@ -7,8 +7,8 @@ related:
   - all-github-repo
   - search-in-github-star
   - report-table
-  - --
 
+---
 
 ## Goal
 

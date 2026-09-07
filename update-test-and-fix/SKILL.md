@@ -10,12 +10,12 @@ related:
   - deep-validate
   - check-reference
   - update-specs
-  - --
   - run-test-all
   - run-test-unit
   - run-test-integration
   - run-test-e2e
 
+---
 ## Goal
 
 เขียนและอัปเดต test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language และใช้ `/run-test-coverage` เมื่องานเช็คหรือ verify coverage

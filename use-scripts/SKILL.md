@@ -13,10 +13,10 @@ related:
   - follow-lang-bun
   - follow-tool-rolldown
   - follow-lib-esm-sh
-  - --
   - follow-lang-bun
   - update-devin-global-skills
 
+---
 
 ## Goal
 

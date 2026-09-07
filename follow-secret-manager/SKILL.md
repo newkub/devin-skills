@@ -10,13 +10,13 @@ related:
   - follow-deploy
   - review-security
   - follow-tool-github-actions
-  - --
   - follow-math-concepts
   - follow-tool-mise
   - follow-tasks
   - follow-service-cloudflare
   - follow-service-vercel
 
+---
 ## Goal
 
 ตั้งค่าและใช้งาน secret manager สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย โดยไม่ให้ AI หรือ codebase ต้องรู้ค่า secrets จริง

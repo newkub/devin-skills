@@ -3,6 +3,7 @@ name: view-files
 description: ดูไฟล์ด้วย bat พร้อม syntax highlighting, line ranges, multi-file และ git diff integration
 argument-hint: "[files-or-glob]"
 allowed-tools:
+---
   - read
   - exec
   - find_file_by_name

@@ -7,7 +7,6 @@ related:
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret
-  - --
   - create-github-repo
   - create-cloudflare-token
   - follow-my-tech-stack
@@ -15,6 +14,7 @@ related:
   - suggest-next-action
   - ask-me
 
+---
 ## Goal
 
 สร้าง Cloudflare Workers project ใหม่ พร้อมเชื่อม Git repository อัตโนมัติ โดย user ไม่ต้องกรอกฟอร์มบน Cloudflare dashboard เอง และถามก่อนเสมอว่าต้องการเปิดใช้งาน Cloudflare Access หรือไม่

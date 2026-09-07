@@ -10,7 +10,6 @@ related:
   - follow-lang-bun
   - create-new-project-in-drive-d
   - follow-create-sdk
-  - --
   - follow-lang-typescript
   - search-npm-libraries
   - run-test
@@ -25,6 +24,7 @@ related:
   - follow-service-vercel
   - follow-tool-github-actions
 
+---
 
 ## Goal
 
@@ -32,7 +32,7 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-bot, follow-create-bot, follow-create-bot, follow-create-bot, follow-create-bot, follow-create-bot)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-slack-bot, follow-create-discord-bot, follow-create-telegram-bot, follow-create-line-bot, follow-create-github-app, follow-create-github-bots)
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
 - ทำตาม `/follow-my-tech-stack` สำหรับ runtime และ dependencies
 

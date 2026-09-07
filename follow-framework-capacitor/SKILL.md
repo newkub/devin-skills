@@ -8,7 +8,6 @@ related:
   - follow-tool-vite
   - learn-from-web
   - follow-deploy
-  - --
   - follow-create-web
   - follow-tool-cargo
   - follow-my-tech-stack
@@ -16,6 +15,7 @@ related:
   - follow-lang-bun
   - ask-me
 
+---
 ## Goal
 
 พัฒนา cross-platform mobile applications ด้วย Capacitor 8 โดยใช้ web technologies ที่ทำงานบน iOS, Android และ PWA จาก codebase เดียว

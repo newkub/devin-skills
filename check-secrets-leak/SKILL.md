@@ -7,10 +7,10 @@ related:
   - open-web-for-config-secret
   - review-security
   - check-reference
-  - --
   - check-env-vars
   - report-table
 
+---
 ## Goal
 ตรวจหา secrets, API keys, tokens หรือ credentials ทีอาจหลุดรอดใน repository หรือไฟล์
 
