@@ -6,7 +6,7 @@ related:
   - roleplay-stakeholder
   - review-by-product
   - review-by-qa
-  - review-by-security
+  - review-security
   - improve-architecture
   - report-table
   - suggest-next-action
@@ -78,7 +78,7 @@ Review project จากมุมมอง engineering — หา tech debt, arc
 
 - ใช้ /review-by-product ถ้าจำเป็น
 - ใช้ /review-by-qa ถ้าจำเป็น
-- ใช้ /review-by-security ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
 - ใช้ /improve-architecture ถ้าจำเป็น
 
 ## Expected Outcome

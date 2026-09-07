@@ -9,7 +9,7 @@ related:
   - resolve-errors
   - run-clean
   - report-table
-  - report-ansi
+  - report
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ related:
 > Goal: สรุปผล build
 
 1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
-2. รัน `/report-ansi` เพื่อแสดงสรุปผลลัพธ์
+2. รัน `/report` เพื่อแสดงสรุปผลลัพธ์
 
 ## Rules
 
@@ -92,7 +92,7 @@ related:
 ### 3. Reporting
 
 - ใช้ `/report-table` สำหรับ metrics
-- ใช้ `/report-ansi` สำหรับสรุปข้อความ
+- ใช้ `/report` สำหรับสรุปข้อความ
 - ไม่รายงานซ้ำซ้อน
 
 ## Expected Outcome
@@ -151,7 +151,7 @@ related:
 > Goal: สรุปผล
 
 1. ทำ `/report-table`
-2. ทำ `/report-ansi`
+2. ทำ `/report`
 
 ### Rules
 

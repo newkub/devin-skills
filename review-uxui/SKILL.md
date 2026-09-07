@@ -14,7 +14,7 @@ related:
   - suggest-next-action
   - optimize-codebase-everything
   - follow-design-system
-  - capture-component
+  - capture
   - review-accessibility
   - improve-accessibility
 ---
@@ -46,7 +46,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 4. ทำ `/run-review` เพื่อดึง metrics ล่าสุด
 5. ถ้ามี user flow หรือ journey ให้ map ตาม `references/user-flow.md`
 6. ถ้าสแกนไม่ได้ → stop และ report
-7. ถ้าต้องการ capture ภาพ component สำหรับ review ให้ทำ `/capture-component`
+7. ถ้าต้องการ capture ภาพ component สำหรับ review ให้ทำ `/capture`
 
 ### 2. Design System
 

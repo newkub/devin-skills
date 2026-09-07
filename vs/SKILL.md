@@ -19,7 +19,7 @@ triggers:
 related:
   - deep-research
   - report-table
-  - pondering
+  - deep-thinking
   - check-reference
   - follow-best-practice
   - suggest-next-action
@@ -75,7 +75,7 @@ related:
 
 > Goal: Provide Recommendation
 
-1. ทำ `/pondering` เพื่อทบทวน trade-offs และผลกระทบก่อนแนะนำ
+1. ทำ `/deep-thinking` เพื่อทบทวน trade-offs และผลกระทบก่อนแนะนำ
 2. สรุป findings จากการเปรียบเทียบ
 3. แนะนำ option ทีเหมาะสมทีสุดตาม context
 4. อธิบายเหตุผลสำหรับ recommendation

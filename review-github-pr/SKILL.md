@@ -3,10 +3,10 @@ name: review-github-pr
 description: Review pull request ทั้งหมดก่อน merge โดยตรวจสอบ diff, commits, PR metadata, CI และ code changes
 argument-hint: "[pr-number]"
 related:
-  - open-github-pr
+  - open-github
   - list-github-pr
   - merge-github-pr
-  - list-github-action-fail
+  - list-github-actions-fails
   - report-table
   - suggest-next-action
 ---
@@ -54,10 +54,10 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ทุก finding ต้องมี file path, line number หรือ commit reference
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
-- ใช้ /open-github-pr ถ้าจำเป็น
+- ใช้ /open-github ถ้าจำเป็น
 - ใช้ /list-github-pr ถ้าจำเป็น
 - ใช้ /merge-github-pr ถ้าจำเป็น
-- ใช้ /list-github-action-fail ถ้าจำเป็น
+- ใช้ /list-github-actions-fails ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -7,7 +7,12 @@ related:
   - report-plan
   - continue
   - follow-devin-skills
----
+  - --
+  - report
+  - follow-single-responsibility
+  - summarize-your-understand
+  - follow-math-concepts
+
 
 ## Goal
 
@@ -81,3 +86,5 @@ related:
 - ไฟล์/งานที่เกี่ยวข้องระบุชัดเจน
 - ข้อกำหนดของผู้ใช้ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
 - พร้อมส่งต่อให้ `/report-plan`, `/continue`, หรือ `/follow-devin-skills` ต่อไป
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-enhance-prompt)

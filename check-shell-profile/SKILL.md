@@ -4,7 +4,7 @@ description: ตรวจ shell profile ($PROFILE), PATH, aliases และ env 
 argument-hint: "[shell]"
 related:
   - check-system-env
-  - list-system-env
+  - check-system-env
   - resolve-errors
   - report-table
 ---
@@ -90,7 +90,7 @@ related:
 - รวม `mise` activation และ tool shims ใน PATH check
 
 - ใช้ /check-system-env ถ้าจำเป็น
-- ใช้ /list-system-env ถ้าจำเป็น
+- ใช้ /check-system-env ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome

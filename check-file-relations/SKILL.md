@@ -6,7 +6,7 @@ related:
   - update-references
   - check-code-structure
   - report-table
-  - follow-tool-astgrep
+  - use-astgrep
   - search-files-patterns
   - suggest-next-action
   - refactor
@@ -116,7 +116,7 @@ related:
 - ถ้าต้องการแก้ → ทำ `/update-references` หลังจากนี้
 
 - ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ /follow-tool-astgrep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /search-files-patterns ถ้าจำเป็น
 
 ## Expected Outcome

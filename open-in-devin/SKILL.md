@@ -4,7 +4,7 @@ description: เปิด directory หรือ file ใน Devin session ใ�
 argument-hint: "[path]"
 related:
   - create-report-in-dot-devin
-  - list-devin-user-request-in-this-session
+  - list-devin-user-requests
   - open-in-explorer
 ---
 
@@ -64,7 +64,7 @@ related:
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /create-report-in-dot-devin ถ้าจำเป็น
-- ใช้ /list-devin-user-request-in-this-session ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
 - ใช้ /open-in-explorer ถ้าจำเป็น
 
 ## Expected Outcome

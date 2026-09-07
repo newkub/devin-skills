@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-validate
   - follow-lang-typescript
-  - follow-package-manifest
+  - follow-tasks
   - follow-tool-tsdown
 ---
 
@@ -130,7 +130,7 @@ src/
 
 - `/deep-validate` — ตรวจสอบความถูกต้องก่อนเริ่ม
 - `/follow-lang-typescript` — TypeScript best practices
-- `/follow-package-manifest` — ตั้งค่า `exports`/`peerDependencies` ให้ถูกต้อง
+- `/follow-tasks` — ตั้งค่า `exports`/`peerDependencies` ให้ถูกต้อง
 - `/follow-tool-tsdown` — build multi-entry library
 
 ## Expected Outcome

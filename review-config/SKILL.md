@@ -13,7 +13,10 @@ related:
   - follow-tool-mise
   - follow-tool-moonrepo
   - deep-validate
----
+---  - check-env-vars
+  - check-config-drift
+  - check-hardcoded-values
+
 
 ## Goal
 

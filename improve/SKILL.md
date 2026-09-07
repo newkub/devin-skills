@@ -12,7 +12,7 @@ related:
   - run-check
   - ask-me
   - rethink
-  - report-numbered-bullet
+  - report
   - follow-single-responsibility
   - follow-math-concepts
   - review-architecture
@@ -67,7 +67,7 @@ related:
 3. ถ้าเป็น missing features หรือ mock → ทำ `/productionize-implementation`
 4. ถ้าเป็น naming → ทำ `/review-quality` แล้วแก้ไข
 5. ถ้าเป็น documentation → ทำ `/update-readme-md`
-6. ถ้ามีหลายไฟล์ → ใช้ `/edit-by-use-scripts` หรือ `/refactor-all-workspace`
+6. ถ้ามีหลายไฟล์ → ใช้ `/edit-by-use-scripts` หรือ `/refactor-workspace`
 
 ### 5. Validate
 
@@ -82,7 +82,7 @@ related:
 
 > Goal: สรุปผลการปรับปรุง
 
-1. ใช้ `/report-numbered-bullet` สรุป gaps ทีแก้ไข
+1. ใช้ `/report` สรุป gaps ทีแก้ไข
 2. รายงานไฟล์/ skill ทีเปลี่ยนแปลง พร้อม references `/<skill-name>`, URLs, paths
 3. รายงานผลการ validate
 4. ถ้ายังมี gaps เหลือ → ระบุและทำ `/suggest-next-action`
@@ -91,7 +91,7 @@ related:
 
 ### 1. Format
 
-- สรุป gaps และ actions ด้วย `/report-numbered-bullet`
+- สรุป gaps และ actions ด้วย `/report`
 - ใช้ numbered สำหรับลำดับงาน ใช้ bullet สำหรับรายละเอียด
 - ใส่ references ทุกครั้ง: URLs, `/<skill-name>`, paths
 
@@ -115,7 +115,7 @@ related:
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /follow-single-responsibility ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
-- ใช้ /check-dead-code ถ้าจำเป็น
+- ใช้ /check-unused ถ้าจำเป็น
 - ใช้ /check-bottlenecks ถ้าจำเป็น
 - ใช้ /review-performance ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น

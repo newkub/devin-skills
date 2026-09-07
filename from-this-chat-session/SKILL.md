@@ -4,7 +4,7 @@ description: สกัดการทำงานจาก chat session นี�
 argument-hint: "[target]"
 related:
   - update-devin-global-skills
-  - summarize-this-chat-session
+  - summarize
   - scan-codebase
   - deep-validate
   - ship
@@ -16,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อการทำงานใน chat session นี้มีรูปแบบที่ reusable และควรเป็น skill ไม่รวมการสรุป session (ใช้ `/summarize-this-chat-session`) หรือการบันทึก context ทั่วไป
+ใช้เมื่อการทำงานใน chat session นี้มีรูปแบบที่ reusable และควรเป็น skill ไม่รวมการสรุป session (ใช้ `/summarize`) หรือการบันทึก context ทั่วไป
 
 ## Execute
 
@@ -91,7 +91,7 @@ related:
 
 ### 4. Non-Redundancy
 
-- การสรุป session อยู่ใน `/summarize-this-chat-session` แล้ว
+- การสรุป session อยู่ใน `/summarize` แล้ว
 - skill นี้เน้นการสกัด workflow เป็น skill ใหม่เท่านั้น
 
 ## Expected Outcome

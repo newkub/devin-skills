@@ -5,7 +5,7 @@ argument-hint: "[app-url|repo-path]"
 related:
   - review-security
   - check-secrets-leak
-  - list-website-all-routes
+  - report-uxui-all-routes
 ---
 
 ## Goal
@@ -21,7 +21,7 @@ related:
 
 > Goal: List Exposed Surfaces
 
-1. ใช้ `list-website-all-routes` หรือ `raindrop list` สำหรับ routes
+1. ใช้ `report-uxui-all-routes` หรือ `raindrop list` สำหรับ routes
 2. scan ports ด้วย `nmap` ถ้าได้รับอนุญาต
 3. หา public IPs, domains, load balancers
 

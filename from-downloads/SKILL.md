@@ -15,7 +15,7 @@ triggers:
   - model
 related:
   - from-recent-windows-capture
-  - capture-image-app-to-screenshot
+  - capture
   - improve-uxui
   - open-in-explorer
   - suggest-next-action
@@ -29,7 +29,7 @@ related:
 
 ใช้กับไฟล์ทีอยู่ใน `~/Downloads` เช่น screenshots, images, documents, archives โดย list, filter และ read ไฟล์ทีเลือก
 
-ดูเพิ่มเติม: /from-recent-windows-capture, /capture-image-app-to-screenshot, /improve-uxui, /open-in-explorer
+ดูเพิ่มเติม: /from-recent-windows-capture, /capture, /improve-uxui, /open-in-explorer
 
 ## Execute
 

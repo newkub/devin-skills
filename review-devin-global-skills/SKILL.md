@@ -12,6 +12,8 @@ related:
   - check-reference
   - follow-skills-map
 ---
+  - check-skill-usage
+  - check-devin-knowledge
 
 ## Goal
 

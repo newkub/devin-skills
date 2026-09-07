@@ -4,7 +4,7 @@ description: เลือกและตั้งค่า license ด้วย 
 argument-hint: "[scope]"
 related:
   - follow-agents-md
-  - follow-package-manifest
+  - follow-tasks
   - publish-package-to-registry
   - update-readme-md
   - use-my-packages-on-registry
@@ -101,7 +101,7 @@ license-files = ["LICENSE*"]
 - อ้างอิง `https://choosealicense.com` สำหรับเลือก license
 
 - ใช้ `/follow-agents-md` ถ้าจำเป็น
-- ใช้ `/follow-package-manifest` ถ้าจำเป็น
+- ใช้ `/follow-tasks` ถ้าจำเป็น
 - ใช้ `/publish-package-to-registry` ถ้าจำเป็น
 - ใช้ `/update-readme-md` ถ้าจำเป็น
 - ใช้ `/use-my-packages-on-registry` ถ้าจำเป็น

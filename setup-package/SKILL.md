@@ -3,7 +3,7 @@ name: setup-package
 description: ตั้งค่า package manifest ให้พร้อม build, publish และ release
 argument-hint: "[path]"
 related:
-  - follow-package-manifest
+  - follow-tasks
   - follow-monorepo
   - setup-cicd
   - setup-release
@@ -43,7 +43,7 @@ related:
 4. ตรวจ `exports` หรือ `main` ให้ชี้ไปยัง build output
 5. ตรวจ `scripts` ต้องมี `build`, `test:all`, `verify` (ไม่มี `release` — ใช้ `/setup-release` หรือ CI/CD workflow)
 6. ถ้าขาด field → ให้ user กรอก หรือใช้ค่า default จาก project
-7. ทำ `/follow-package-manifest` เพื่อปรับ scripts ให้สมบูรณ์
+7. ทำ `/follow-tasks` เพื่อปรับ scripts ให้สมบูรณ์
 
 ### 3. Setup Rust Cargo.toml
 

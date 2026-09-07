@@ -6,7 +6,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - use-scripts
-  - follow-service-infisical
+  - follow-secret-manager
 ---
 
 ## Goal
@@ -124,7 +124,7 @@ related:
 - ตรวจสอบ exit code ของ `mise run`
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
 
 ## References
 

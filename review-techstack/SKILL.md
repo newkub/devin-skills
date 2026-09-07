@@ -10,7 +10,7 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
-  - follow-package-manifest
+  - follow-tasks
   - list-dependencies
   - update-version-to-latest
 ---
@@ -118,7 +118,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
 - ใช้ /run-review ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /update-version-to-latest ถ้าจำเป็น

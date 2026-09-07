@@ -9,15 +9,20 @@ related:
   - review-quality
   - deep-validate
   - check-reference
-  - deep-test
   - update-specs
----
+  - --
+  - run-test-all
+  - run-test-unit
+  - run-test-integration
+  - run-test-e2e
 
 ## Goal
 
 เขียนและอัปเดต test ที่มีคุณภาพสูง ครอบคลุมทุกกรณีใช้งาน ตรงตาม location ที่กำหนด ใช้ได้กับทุก programming language และใช้ `/run-test-coverage` เมื่องานเช็คหรือ verify coverage
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-test)
 
 เขียน test files ทั้งหมดใน workspace ตาม test pyramid, conventions, และความปลอดภัย — ใช้ `/review-writing` เพื่อคุณภาพเนื้อหา
 
@@ -230,7 +235,6 @@ Use `parameterized tests` (`it.each`, `table-driven`) สำหรับ:
 
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /deep-test ถ้าจำเป็น
 
 ## Expected Outcome
 

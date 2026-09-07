@@ -8,12 +8,12 @@ related:
   - create-github-pr
   - update-github-issue
   - ask-me
-  - open-github-issue
-  - open-github-pr
+  - open-github
+  - open-github
   - list-github-issue
-  - open-github-repo
-  - open-github-repo-personal
-  - open-github-repo-org
+  - open-github
+  - open-github
+  - open-github
   - open-web
 ---
 
@@ -23,11 +23,11 @@ related:
 
 ## Scope
 
-- ใช้ร่วมกับ skills: `/open-github-issue`, `/open-github-pr`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-github-issue`, `/update-github-issue`
+- ใช้ร่วมกับ skills: `/open-github`, `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-github-issue`, `/update-github-issue`
 - รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
 - ไม่ใช่ project management tool ครบวงจร
 
-ดูเพิ่มเติม: `/implement-github-issue`, `/ask-me`, `/open-github-repo`, `/open-github-repo-personal`, `/open-github-repo-org`, `/open-web`
+ดูเพิ่มเติม: `/implement-github-issue`, `/ask-me`, `/open-github`, `/open-github`, `/open-github`, `/open-web`
 
 ## Execute
 

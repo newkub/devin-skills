@@ -5,12 +5,12 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - follow-create-cloudflare-token
+  - create-cloudflare-token
   - deploy-to-cloudflare
   - resolve-cicd
   - follow-tool-mise
   - follow-tasks
-  - follow-package-manifest
+  - follow-tasks
   - follow-service-cloudflare-ci
 ---
 
@@ -200,12 +200,12 @@ export default defineNuxtConfig({
 หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
 
 ## Expected Outcome
 

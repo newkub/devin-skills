@@ -4,18 +4,23 @@ description: สร้างรายงาน routes ทั้งหมดข�
 argument-hint: "[scope]"
 related:
   - report-uxui-sketch
-  - list-website-all-routes
   - review-uxui
   - report-table
   - suggest-next-action
   - ask-me
----
+  - --
+  - analyze-attack-surface
+  - check-routes-status
+  - test-all-api-routes
+  - report
 
 ## Goal
 
 สร้างรายงาน routes ทั้งหมดของ app หรือ website ใน markdown table สำหรับวางแผน UX/UI, navigation, และ tab structure
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-website-all-routes)
 
 - ใช้สำหรับ app/website ทีมี tab หรือ multi-screen navigation
 - รองรับ file-based routing, config-based routing, หรือ manual route list
@@ -29,7 +34,7 @@ related:
 
 > Goal: หา routes จาก project หรือ context
 
-1. ถ้ามี project → อ่าน `package.json` และใช้ `/list-website-all-routes`
+1. ถ้ามี project → อ่าน `package.json` แล้ว scan routes ตามขั้นตอนใน [references/route-scanner.md](references/route-scanner.md)
 2. ถ้าไม่มี project → อ่าน context จาก prompt, references, หรือ `AGENTS.md`
 3. ระบุ framework (Next.js, Nuxt, SvelteKit, SolidStart, Capacitor, ฯลฯ)
 4. ระบุ tab/switcher structure ถ้ามี

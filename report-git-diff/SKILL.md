@@ -5,8 +5,8 @@ argument-hint: "[ref]"
 related:
   - git-commit
   - report-table
-  - report-codeblock
-  - report-ansi
+  - report
+  - report
   - suggest-next-action
   - follow-tool-git
 ---
@@ -66,7 +66,7 @@ related:
 > Goal: จัดรูปแบบรายงานให้อ่านง่าย
 
 1. ทำ `/report-table` เพื่อจัดรูปแบบสถิติเป็นตาราง
-2. ทำ `/report-codeblock` เพื่อจัดรูปแบบ diff blocks
+2. ทำ `/report` เพื่อจัดรูปแบบ diff blocks
 3. แสดงผลตามลำดับ: Summary → Statistics Table → Changes by Category → Key Diffs
 4. ใช้ `diff` language tag สำหรับ diff code blocks
 
@@ -97,7 +97,7 @@ related:
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
@@ -133,7 +133,7 @@ related:
 
 - การ commit และ stage อยู่ใน `/git-commit` แล้ว
 - การดู file history อยู่ใน `/follow-tool-git` แล้ว
-- การจัดรูปแบบ code blocks อยู่ใน `/report-codeblock` แล้ว
+- การจัดรูปแบบ code blocks อยู่ใน `/report` แล้ว
 - การจัดรูปแบบตารางอยู่ใน `/report-table` แล้ว
 
 ## Expected Outcome

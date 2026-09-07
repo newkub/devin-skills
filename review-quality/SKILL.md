@@ -15,6 +15,12 @@ related:
   - review-security
   - review-stability
 ---
+  - check-error-coverage
+  - check-types-coverage
+  - check-todo-comments
+  - check-test-isolation
+  - check-unused
+  - check-merge-conflicts
 
 ## Goal
 

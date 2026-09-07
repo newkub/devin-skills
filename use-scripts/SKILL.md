@@ -3,18 +3,20 @@ name: use-scripts
 description: สร้าง scripts สำหรับ automate งานด้วย Bun, nushell, pwsh, หรือ ast-grep
 argument-hint: "[target]"
 related:
-  - use-bun-scripts
   - use-bun-shell
-  - use-bun-native-api
+  - follow-lang-bun
   - create-files-in-os-temp
   - use-nu-shell
   - use-pwsh-shell
   - use-astgrep
-  - use-astgrep-programatic
+  - use-astgrep-programmatic
   - follow-lang-bun
   - follow-tool-rolldown
   - follow-lib-esm-sh
----
+  - --
+  - follow-lang-bun
+  - update-devin-global-skills
+
 
 ## Goal
 
@@ -30,7 +32,7 @@ related:
 
 > Goal: เลือก shell/script type ให้เหมาะสม
 
-1. ค่าเริ่มต้น: ใช้ `/use-bun-scripts` / `/use-bun-shell` เมื่อ:
+1. ค่าเริ่มต้น: ใช้ skill นี้ หรือ `/use-bun-shell` เมื่อ:
    - ต้องการ Bun native APIs สำหรับ automate งาน
    - ใช้ JS/TS scripts เป็นค่าเริ่มต้น
    - ต้องการ JavaScript/TypeScript runtime
@@ -65,7 +67,7 @@ related:
 > Goal: เขียน script ตาม standards
 
 1. เขียนแบบ composable: `createScript()` return state + actions
-2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/use-bun-native-api`, `/follow-lang-bun`)
+2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/follow-lang-bun`, `/follow-lang-bun`)
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
 5. ใช้ CDN imports สำหรับ external dependencies ที Bun native APIs ไม่ครอบคลุม: `https://esm.sh/<name>`
@@ -141,4 +143,6 @@ import { render } from "https://esm.sh/eta@4.6.0"
 - Scripts อยู่ใน location ถูกต้องตาม Rules
 - Temp scripts ใน `$env:TEMP` ถูกลบหลังใช้งาน, permanent scripts เก็บไว้ใช้ซ้ำ
 - Dry run mode สำหรับทดสอบก่อน execute จิง
-- สามารถใช้ /use-pwsh-shell /use-bun-shell /use-bun-scripts /use-astgrep-programatic ได้ ตามเหมาะสม
+- สามารถใช้ /use-pwsh-shell /use-bun-shell /use-astgrep-programmatic ได้ ตามเหมาะสม
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-bun-scripts)

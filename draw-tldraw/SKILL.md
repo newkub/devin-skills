@@ -4,14 +4,16 @@ description: สร้างไฟล์ .tldr จากคำอธิบาย
 argument-hint: "[description]"
 related:
   - draw-excalidraw
-  - draw-tldraw-diagram
----
+  - --
+  - draw-svg-image
 
 ## Goal
 
 สร้างไฟล์ `.tldr` จากคำอธิบาย drawing หรือ diagram
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: draw-tldraw-diagram)
 
 - สร้าง JSON ตาม tldraw schema
 - รองรับ shapes: geo, text, draw, arrow, line, note
@@ -86,7 +88,6 @@ related:
 - ค่อยๆ เพิ่ม detail ถ้า user ต้องการ
 
 - ใช้ /draw-excalidraw ถ้าจำเป็น
-- ใช้ /draw-tldraw-diagram ถ้าจำเป็น
 
 ## Expected Outcome
 

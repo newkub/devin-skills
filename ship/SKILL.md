@@ -68,7 +68,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 2. ทำ `/improve-review-cli` เพื่อ review codebase ด้วย CLI
 3. ทำ `/improve-codebase-everything` เพื่อ improve frontend, API, database, security, SEO
 4. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
-5. ทำ `/improve-test-everything` ถ้า tests หรือ coverage ไม่ผ่าน threshold
+5. ทำ `/improve-test-coverage` ถ้า tests หรือ coverage ไม่ผ่าน threshold
 6. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
 7. ทำ `/update-version-to-latest` เพื่ออัปเดต dependencies ตามผล audit
 8. ทำ `/improve-architecture` ทุก workspace เพื่อแก้ structural findings

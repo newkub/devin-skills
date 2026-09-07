@@ -15,7 +15,7 @@ related:
   - review-delivery
   - resolve-errors
   - report-table
-  - report-ansi
+  - report
 ---
 
 ## Goal
@@ -91,7 +91,7 @@ related:
 
 1. รัน `/run-build` อีกครั้ง วัด `dist/` size, build time, chunk count
 2. ทำ `/report-table` เปรียบเทียบ before/after
-3. ทำ `/report-ansi` สรุป recommendations ที่ยังค้าง
+3. ทำ `/report` สรุป recommendations ที่ยังค้าง
 
 ## Rules
 

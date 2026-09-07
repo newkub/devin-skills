@@ -3,11 +3,11 @@ name: report-plan
 description: รายงานแผนงานในแชทก่อนลงมือ implement โดยแบ่งเป็น sections ตามมาตรฐาน
 argument-hint: "[scope]"
 related:
-  - report-enhance-prompt
-  - report-numbered-bullet
+  - enhance-prompt
+  - report
   - report-table
   - report-file-structure
-  - report-ansi
+  - report
   - follow-single-responsibility
   - deep-plan
 ---
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้หลังจาก `/deep-plan` เสร็จ หรือก่อนเริ่มงานซับซ้อน รายงานต้องมี sections: TODOs, file changes table, file structure, report-ansi (ถ้าจำเป็น) แล้วทำงานต่อได้เลย
+ใช้หลังจาก `/deep-plan` เสร็จ หรือก่อนเริ่มงานซับซ้อน รายงานต้องมี sections: TODOs, file changes table, file structure, report (ถ้าจำเป็น) แล้วทำงานต่อได้เลย
 
 ## Execute
 
@@ -26,15 +26,15 @@ related:
 
 > Goal: เข้าใจ prompt ให้ชัดก่อนวางแผน
 
-1. ถ้า prompt ยาว/คลุมเครือ/มีหลายงาน → ทำ `/report-enhance-prompt` ก่อน
-2. ใช้ผลลัพธ์จาก `/report-enhance-prompt` เป็นต้นฉบับ plan
+1. ถ้า prompt ยาว/คลุมเครือ/มีหลายงาน → ทำ `/enhance-prompt` ก่อน
+2. ใช้ผลลัพธ์จาก `/enhance-prompt` เป็นต้นฉบับ plan
 
 ### 1. Generate Plan Sections
 
 > Goal: สร้างแผนงานเป็น sections ทีครบถ้วน
 
 1. สรุป goal และ scope ของงาน 1-2 ประโยค
-2. สร้างรายการ TODOs แบบ numbered list + bullet points ด้วย `/report-numbered-bullet`
+2. สร้างรายการ TODOs แบบ numbered list + bullet points ด้วย `/report`
 3. สร้างตาราง file changes ด้วย columns:
    - No.
    - File
@@ -42,7 +42,7 @@ related:
    - Risk (high / medium / low)
    - Note
 4. แสดง file structure ด้วย `/report-file-structure` ถ้ามีการสร้าง/ย้าย/ลบไฟล์
-5. แสดง report-ansi ถ้ามีสถานะ/progress/logs ที่ควรเห็นภาพ
+5. แสดง report ถ้ามีสถานะ/progress/logs ที่ควรเห็นภาพ
 6. ทำ `/suggest-next-action` ท้าย report
 
 ### 2. Format Output
@@ -79,7 +79,7 @@ related:
 - ใช้ภาษาไทย กระชับ ตรงประเด็น
 - ใช้ `/report-table` สำหรับตาราง
 - ใช้ `/report-file-structure` สำหรับ tree
-- ใช้ `/report-ansi` สำหรับ status/progress/logs
+- ใช้ `/report` สำหรับ status/progress/logs
 - ไม่ต้องรอยืนยัน แต่ถ้าเสี่ยงสูง ให้ใช้ `/ask-me`
 
 - ใช้ /follow-single-responsibility ถ้าจำเป็น

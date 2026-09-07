@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - resolve-errors
-  - check-unused-files
+  - check-unused
 ---
 
 ## Goal
@@ -94,7 +94,7 @@ related:
 - รัน lint อีกครั้งเพื่อยืนยัน
 - รัน tests ทั้งหมด
 - ตรวจสอบว่าไม่มี regressions
-- ทำ `/check-unused-files` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
+- ทำ `/check-unused` เพื่อตรวจสอบว่าทุกไฟล์ถูกใช้
 - ห้ามใช้ unsafe / no-verify / bypass flags กับ linter, formatter, validator และ githooks (เช่น `--unsafe`, `--allow-unsafe`, `--no-verify`, `-n`, `--bypass`)
 
 ## Expected Outcome

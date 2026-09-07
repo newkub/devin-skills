@@ -20,8 +20,8 @@ related:
   - review-performance
   - review-redundancy
   - check-bottlenecks
-  - check-dead-code
-  - check-unused-deps
+  - check-unused
+  - check-unused
   - deep-refactor
   - deep-analyze
   - resolve-errors
@@ -55,8 +55,8 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 1. ทำ `/deep-analyze` บน target
 2. ทำ `/review-performance` เพื่อหา hotspots
 3. ทำ `/review-redundancy` เพื่อหา duplicate logic
-4. ทำ `/check-dead-code`
-5. ทำ `/check-unused-deps`
+4. ทำ `/check-unused`
+5. ทำ `/check-unused`
 6. ทำ `/check-bottlenecks`
 7. วิเคราะห์ bundle / build output ถ้ามี
 

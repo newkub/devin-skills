@@ -4,7 +4,7 @@ argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: ตรวจสอบและแก้ไข Cloudflare Worker หรือ Pages project ทีระบุ
 related:
   - resolve-all-cloudflare-fails
-  - all-cloudflare-projects
+  - list-cloudflare-projects
   - search-project-in-drive-d
   - resolve-errors
   - list-cloudflare-worker-fails
@@ -21,7 +21,7 @@ related:
 
 ใช้กับ worker หรือ pages project เดียว ถ้าไม่ระบุจะหาจาก current project หรือ repo name
 
-ดูเพิ่มเติม: /all-cloudflare-projects, /resolve-all-cloudflare-fails, /list-cloudflare-worker-fails
+ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-fails, /list-cloudflare-worker-fails
 
 ## Execute
 

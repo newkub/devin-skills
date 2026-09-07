@@ -69,7 +69,7 @@ Note: ถ้าต้องการวิเคราะห์อย่าง�
 
 > Goal: Quality And Security
 
-1. ทำ `/review-quality`, `/check-unused-files`, `/check-unused-deps` แบบ parallel
+1. ทำ `/review-quality`, `/check-unused`, `/check-unused` แบบ parallel
 2. ทำ `/run-audit` ตรวจสอบ security
 3. ทำ `/scan-codebase` ตรวจหา hardcoded secrets
 

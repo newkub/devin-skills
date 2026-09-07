@@ -18,7 +18,7 @@ triggers:
   - model
 related:
   - deep-thinking
-  - pondering
+  - deep-thinking
   - deep-plan
   - deep-analyze
   - improve-review-cli
@@ -59,7 +59,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 4. ถ้า context เป็น docs, README, content → ทำ `/review-docs`
 5. ถ้า context เป็น security incident → ทำ `/review-security`
 6. ถ้า context เป็น stakeholder, persona, role หรือ user perspective → ทำ `/roleplay-stakeholder`; ถ้าต้องการ feedback จาก stakeholder จริง → ทำ `/review-by-stakeholder`
-7. ถ้า context ไม่ชัด → ทำ `/deep-thinking` และ `/pondering` ก่อน แล้วค่อย dispatch
+7. ถ้า context ไม่ชัด → ทำ `/deep-thinking` และ `/deep-thinking` ก่อน แล้วค่อย dispatch
 
 ### 3. Follow Up
 

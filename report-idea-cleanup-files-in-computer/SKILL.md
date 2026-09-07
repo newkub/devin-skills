@@ -3,7 +3,7 @@ name: report-idea-cleanup-files-in-computer
 description: รายงานไอเดียไฟล์และโฟลเดอร์ในเครื่องที่สามารถลบหรือทำความสะอาดได้
 argument-hint: "[scope]"
 related:
-  - list-system-env
+  - check-system-env
   - follow-my-global-cli
   - use-scripts
   - report-table
@@ -31,7 +31,7 @@ related:
 1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-before`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
-4. ทำ `/list-system-env` เพื่อดู paths หลัก
+4. ทำ `/check-system-env` เพื่อดู paths หลัก
    - ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
 
 ### 2. Scan System Caches And Temp Files
@@ -95,7 +95,7 @@ related:
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ

@@ -4,7 +4,7 @@ description: วิเคราะห์ codebase ลึกซึ้งด้ว
 argument-hint: "[scope]"
 related:
   - use-scripts
-  - use-bun-native-api
+  - follow-lang-bun
   - create-files-in-os-temp
   - deep-analyze
   - deep-report
@@ -35,7 +35,7 @@ related:
 > Goal: วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
 
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
-2. ถ้าต้องสร้าง scripts สำหรับ analysis → ทำ `/use-scripts` และ `/use-bun-native-api` เพื่อใช้ Bun native APIs
+2. ถ้าต้องสร้าง scripts สำหรับ analysis → ทำ `/use-scripts` และ `/follow-lang-bun` เพื่อใช้ Bun native APIs
 3. สร้าง temp directory สำหรับ output ด้วย `/create-files-in-os-temp` ถ้าต้องการไฟล์ชั่วคราว
 4. รัน `bunx ast-grep outline <path>` เพื่อสร้าง structural overview ของ source files
 5. ใช้ผลลัพธ์จาก step 1-4 เป็น foundation สำหรับ deep analysis

@@ -23,7 +23,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 ## Scope
 
 ใช้กับ project หรือ workspace หนึ่งตัวที่ต้องการ refactor ลึก
-ไม่ใช่สำหรับทุก workspace ใน monorepo — ใช้ `/refactor-all-workspace` สำหรับกรณีนั้น
+ไม่ใช่สำหรับทุก workspace ใน monorepo — ใช้ `/refactor-workspace` สำหรับกรณีนั้น
 ครอบคลุม SRP, architecture, file/folder structure, boundaries, references, และ validation
 ไม่ใช่สำหรับแก้ bug เฉพาะหน้า หรือเปลี่ยนชื่อ identifier อย่างเดียว
 
@@ -80,7 +80,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 > Goal: อัปเดต references ทั้งหมดหลังการเปลี่ยนแปลง
 
-1. ทำ `/edit-relative` เพื่ออัปเดต relative paths และ imports
+1. ทำ `/update-references` เพื่ออัปเดต relative paths และ imports
 2. ทำ `/update-references` เพื่ออัปเดต references ใน skills, AGENTS.md, .devin/rules, และ codebase
 3. ค้นหา references เก่าอีกครั้งเพื่อยืนยันว่าไม่เหลือ
 4. ถ้ามี broken references → ทำ `/resolve-errors`
@@ -127,7 +127,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 ### 4. Reference Safety
 
-- ทำ `/edit-relative` และ `/update-references` หลังย้าย, แยก, หรือเปลี่ยนชื่อไฟล์
+- ทำ `/update-references` และ `/update-references` หลังย้าย, แยก, หรือเปลี่ยนชื่อไฟล์
 - ตรวจสอบ imports, barrel exports, path aliases ให้ถูกต้อง
 
 ### 5. Verification

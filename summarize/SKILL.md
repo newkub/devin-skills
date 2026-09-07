@@ -3,20 +3,25 @@ name: summarize
 description: สรุปเนื้อหาตาม context ทั่วไป
 argument-hint: "<context>"
 related:
-  - summarize-this-project
-  - summarize-this-chat-session
   - report-table
   - scan-codebase
   - report
   - list-git-commit
   - report-git-diff
----
+  - --
+  - enhance-prompt
+  - generate-prompt-from-image
+  - enhance-prompt
+  - at-this-repo
+  - edit-this-repo
 
 ## Goal
 
 สรุปเนื้อหาตาม context ทั่วไป เช่น project, chat, code, files, หรือ topic ที่ระบุ
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: summarize-prompt, summarize-this-chat-session, summarize-this-project)
 
 ใช้เมื่อ user ต้องการสรุปเนื้อหาโดยไม่ระบุ skill ย่อย โดย `summarize` จะเลือกหรือ delegate ไปยัง skill ทีเหมาะสม
 
@@ -35,8 +40,8 @@ related:
 
 > Goal: เลือก skill สรุปทีเหมาะสม
 
-1. ถ้า `project` → ทำ `/summarize-this-project`
-2. ถ้า `chat` หรือ `conversation` → ทำ `/summarize-this-chat-session`
+1. ถ้า `project` → สรุป scope project ตาม flow ของ skill นี้
+2. ถ้า `chat` หรือ `conversation` → สรุป scope chat/session ตาม flow ของ skill นี้
 3. ถ้าต้องการ bullet/numbered list → ทำ `/report-table`
 4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
 5. ถ้า `file` → อ่านไฟล์แล้วสรุป

@@ -4,7 +4,7 @@ description: ทบทวนและ re-evaluate การตัดสินใ
 argument-hint: "[topic]"
 related:
   - deep-thinking
-  - pondering
+  - deep-thinking
   - deep-plan
   - deep-analyze
   - deep-research
@@ -23,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้เมื่องานดำเนินไปแล้ว แต่ต้องการถอยกลับมาทบทวน ไม่ใช่การคิดครั้งแรก (ใช้ `/deep-thinking`) และไม่ใช่การครุ่นคิดก่อนตัดสินใจ (ใช้ `/pondering`)
+ใช้เมื่องานดำเนินไปแล้ว แต่ต้องการถอยกลับมาทบทวน ไม่ใช่การคิดครั้งแรก (ใช้ `/deep-thinking`) และไม่ใช่การครุ่นคิดก่อนตัดสินใจ (ใช้ `/deep-thinking`)
 
 ## Execute
 
@@ -100,7 +100,7 @@ related:
 
 - เป็น low-risk change ทีแก้ไขง่าย
 - ยังไม่ได้เริ่มทำ หรือยังไม่มีข้อมูลพอ (ใช้ `/deep-thinking`)
-- แค่ต้องการทบทวนก่อนตัดสินใจ (ใช้ `/pondering`)
+- แค่ต้องการทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`)
 - ทุกอย่างดำเนินไปตามแผนและไม่มี red flag
 
 ### 3. Sunk Cost
@@ -125,7 +125,7 @@ related:
 ### 6. Integration
 
 - ใช้ `/deep-thinking` ถ้าต้องวิเคราะห์เชิงโครงสร้างใหม่
-- ใช้ `/pondering` ถ้าต้องทบทวนก่อนตัดสินใจ
+- ใช้ `/deep-thinking` ถ้าต้องทบทวนก่อนตัดสินใจ
 - ใช้ `/deep-plan` ถ้าต้องสร้างแผนใหม่
 - ใช้ `/ask-me` ถ้าต้องการ user input
 - ใช้ `/update-references` ถ้ามีการเปลี่ยน structure

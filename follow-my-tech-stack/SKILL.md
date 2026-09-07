@@ -4,7 +4,7 @@ description: สรุป tech stack ที่ใช้ในการพัฒ�
 argument-hint: "[scope]"
 related:
   - use-scripts
-  - use-bun-native-api
+  - follow-lang-bun
   - follow-tool-rolldown
   - follow-tool-oxlint
   - follow-lib-esm-sh
@@ -116,7 +116,7 @@ related:
 | Release | `Auto` | - |
 | Deployment | `NuxtHub`, `Cloudflare Workers`, `Cloudflare Pages`, `Cloudflare Containers`, `Cloudflare Dynamic Workers`, `Cloudflare Sandbox SDK` | - |
 | Storage | `Cloudflare KV`, `Cloudflare R2` (+`R2 Data Catalog`, `R2 SQL`), `Cloudflare Cache`, `Cloudflare Cache Reserve`, `Cloudflare Artifacts`, `Cloudflare Durable Objects` | - |
-| Secrets Management | `/follow-secret-manager` (default: `/follow-service-infisical`), `Cloudflare Secrets Store` | `/open-web-for-config-secret` |
+| Secrets Management | `/follow-secret-manager` (default: `/follow-secret-manager`), `Cloudflare Secrets Store` | `/open-web-for-config-secret` |
 | Auth | `Supabase`, `Better Auth`, `WorkOS`, `Auth.js` | `jsonwebtoken` |
 | Payment | `Stripe` | `stripe-rust` |
 | Email | `Resend`, `Nodemailer`, `Cloudflare Email Service`, `Cloudflare Email Routing`, `Cloudflare DMARC Management` | `lettre` |
@@ -168,7 +168,7 @@ related:
 - ดู `/follow-tool-rolldown` และ `/follow-tool-oxlint` สำหรับ setup และ best practices
 - ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด
 
-- ใช้ /use-bun-native-api ถ้าจำเป็น
+- ใช้ /follow-lang-bun ถ้าจำเป็น
 - ใช้ /follow-lib-esm-sh ถ้าจำเป็น
 - ใช้ /use-lib-effective ถ้าจำเป็น
 

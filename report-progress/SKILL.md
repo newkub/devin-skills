@@ -17,8 +17,8 @@ triggers:
 related:
   - report
   - report-table
-  - report-ansi
-  - report-numbered-bullet
+  - report
+  - report
   - report-before
   - report-before-after
   - suggest-next-action
@@ -80,7 +80,7 @@ related:
 > Goal: report ชัดเจน พร้อม next steps
 
 1. สรุปสถานะโดยรวมของ session พร้อม progress bar
-2. ใช้ `/report-table` หรือ `/report-ansi` แสดง completed, pending, blockers
+2. ใช้ `/report-table` หรือ `/report` แสดง completed, pending, blockers
 3. ระบุ priority ของงานค้าง
 4. ทำ `/suggest-next-action` เพื่อเสนอ next step
 
@@ -111,8 +111,8 @@ related:
 - สรุป key findings ไว้ด้านบนสุด
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
 - ใช้ `/report-table` สำหรับงานทีต้องการหลาย columns
-- ใช้ `/report-ansi` สำหรับสถานะ/progress
-- ใช้ `/report-numbered-bullet` สำหรับรายละเอียดงาน
+- ใช้ `/report` สำหรับสถานะ/progress
+- ใช้ `/report` สำหรับรายละเอียดงาน
 
 ### 5. Privacy
 

@@ -4,9 +4,9 @@ description: สร้างหรือแก้ไข robots.txt สำหร�
 argument-hint: "[scope]"
 related:
   - follow-create-web
-  - follow-create-web-landing
-  - follow-create-web-saas
-  - follow-create-web-paas
+  - follow-create-web
+  - follow-create-web
+  - follow-create-web
   - review-seo
 ---
 
@@ -68,9 +68,9 @@ related:
 5. ตรวจ `robots.txt` หลัง build/deploy ทุกครั้ง
 
 - ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-create-web-landing ถ้าจำเป็น
-- ใช้ /follow-create-web-saas ถ้าจำเป็น
-- ใช้ /follow-create-web-paas ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
+- ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /review-seo ถ้าจำเป็น
 
 ## Expected Outcome

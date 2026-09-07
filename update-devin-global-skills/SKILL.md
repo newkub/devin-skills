@@ -9,7 +9,7 @@ related:
   - learn-from-web
   - follow-skills-map
   - review-devin-global-skills
-  - follow-global-rules
+  - update-devin-global-rules
   - deep-validate
   - check-circular-dependencies
   - check-reference
@@ -111,7 +111,7 @@ related:
 > Goal: skill ที่อัปเดตสอดคล้องกับ repo standards และ global rules
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions, naming, structure และ content quality
-2. ทำ `/follow-global-rules` เพื่อตรวจว่าไม่ขัด `global_rules.md`
+2. ทำ `/update-devin-global-rules` เพื่อตรวจว่าไม่ขัด `global_rules.md`
 3. ถ้ามี misalignment → ปรับแก้ก่อน validate
 4. บันทึก findings และการแก้ไข
 
@@ -132,7 +132,7 @@ related:
 2. บันทึก findings พร้อม severity และ recommendation
 3. ทำ `/update-references` เพื่ออัปเดต references ระหว่าง skills
 4. อัปเดต `AGENTS.md` ถ้ามีการ rename หรือย้าย skill
-5. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/follow-global-rules`
+5. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/update-devin-global-rules`
 6. ตรวจว่า skills อื่นที่อ้างถึง skill นี้ยังถูกต้อง — broken references แก้ทันที
 
 ### 10. Ship

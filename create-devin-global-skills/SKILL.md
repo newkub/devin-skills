@@ -9,10 +9,12 @@ related:
   - scan-codebase
   - follow-create-devin-global-skills
   - review-devin-global-skills
-  - follow-global-rules
+  - update-devin-global-rules
   - deep-validate
   - update-references
----
+  - --
+  - check-skills-related
+
 
 ## Goal
 
@@ -61,7 +63,7 @@ related:
 > Goal: skill พร้อมใช้งาน
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions
-2. ทำ `/follow-global-rules` เพื่อตรวจ global rules
+2. ทำ `/update-devin-global-rules` เพื่อตรวจ global rules
 3. ทำ `/deep-validate` เพื่อตรวจ frontmatter, links, TODO, placeholders
 4. ทำ `/update-references` เพื่อ sync references ทั่ว repo
 5. ทำ `/ship` เมื่องานเสร็จ
@@ -70,8 +72,8 @@ related:
 
 ### 1. Single Skill
 
-- สร้างครั้งละหนึ่ง skill เท่านั้น
-- ถ้าต้องสร้างหลายตัว → ใช้ `/new-skills` หรือ `/follow-create-devin-global-skills`
+- สร้างทีละ skill ต่อ invocation (ทำซ้ำได้ถ้าต้องสร้างหลายตัว — รองรับ capability จาก new-skills ที่ merge มา)
+- ถ้าต้องสร้างหลายตัว → ทำซ้ำ flow นี้ทีละตัว ตามมาตรฐาน `/follow-create-devin-global-skills`
 
 ### 2. No Duplicate
 
@@ -97,3 +99,5 @@ related:
 - references ไม่ broken
 - ผ่าน `/deep-validate`
 - ใช้ร่วมกับ `/use-in-another-skills` และ `/use-another-skills` ในกระบวนการสร้าง
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: new-skills)

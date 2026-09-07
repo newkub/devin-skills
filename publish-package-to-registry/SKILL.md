@@ -7,7 +7,7 @@ related:
   - run-release
   - run-verify
   - gen-changelog-md
-  - follow-runtime-bun
+  - follow-lang-bun
   - list-my-npm-packages
   - use-my-packages-on-registry
   - ship
@@ -130,7 +130,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ build artifacts ชั่วคราว
 
 - ใช้ /run-release ถ้าจำเป็น
-- ใช้ /follow-runtime-bun ถ้าจำเป็น
+- ใช้ /follow-lang-bun ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น

@@ -3,7 +3,6 @@ name: follow-secret-manager
 description: จัดการ secrets และ environment variables อย่างปลอดภัยด้วย secret manager (Infisical เป็น default)
 argument-hint: "[scope]"
 related:
-  - follow-service-infisical
   - open-web-for-config-secret
   - deploy-to-cloudflare
   - deploy-to-vercel
@@ -11,13 +10,20 @@ related:
   - follow-deploy
   - review-security
   - follow-tool-github-actions
----
+  - --
+  - follow-math-concepts
+  - follow-tool-mise
+  - follow-tasks
+  - follow-service-cloudflare
+  - follow-service-vercel
 
 ## Goal
 
 ตั้งค่าและใช้งาน secret manager สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย โดยไม่ให้ AI หรือ codebase ต้องรู้ค่า secrets จริง
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-service-infisical)
 
 ใช้สำหรับทุก workspace ที่ต้องการ secrets management ทั้ง local development, CI/CD และ production รองรับ secret manager หลายตัวแต่แนะนำ Infisical เป็น default
 
@@ -27,7 +33,7 @@ related:
 
 > Goal: เลือก secret manager ทีเหมาะสม
 
-1. Default: ใช้ `/follow-service-infisical` (Infisical)
+1. Default: ใช้ Infisical ตาม [references/infisical.md](references/infisical.md)
 2. Self-hosted: ใช้ Infisical self-hosted หรือ HashiCorp Vault
 3. Cloud-native: AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, Cloudflare Secrets
 4. ถ้า user ไม่ระบุ → ใช้ Infisical เพราะฟรี tier ใช้งานได้ดี มี CLI/SDK ครบ และรองรับ OIDC

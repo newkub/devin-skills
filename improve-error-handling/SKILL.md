@@ -67,7 +67,7 @@ related:
 
 > Goal: signatures และ callers ถูกต้องหลังเปลี่ยน error contract
 
-1. ทำ `/edit-relative` เมื่อเปลี่ยน return type เป็น Result หรือเปลี่ยน throw behavior
+1. ทำ `/update-references` เมื่อเปลี่ยน return type เป็น Result หรือเปลี่ยน throw behavior
 2. ทำ `/update-references` เพื่ออัปเดต callers, tests, และ error-handling docs
 3. ค้นหา `catch`/`unwrapResult`/`.catch(` sites ที่เกี่ยวข้องอีกครั้งเพื่อยืนยันครบ
 

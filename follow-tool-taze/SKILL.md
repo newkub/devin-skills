@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-turborepo
   - follow-monorepo
-  - follow-package-manifest
+  - follow-tasks
   - follow-tool-semantic-release
 ---
 
@@ -93,7 +93,7 @@ related:
 
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-tool-semantic-release ถ้าจำเป็น
 
 ## References

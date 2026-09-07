@@ -4,7 +4,7 @@ description: แสดง releases ทั้งหมดของ repo ที่
 argument-hint: "[repo]"
 related:
   - list-git-release
-  - list-github-action-fail
+  - list-github-actions-fails
   - list-github-branch
   - report-table
 ---
@@ -63,7 +63,7 @@ related:
 - แสดงข้อมูลสำคัญ: tag, title, draft, prerelease, published, author
 
 - ใช้ /list-git-release ถ้าจำเป็น
-- ใช้ /list-github-action-fail ถ้าจำเป็น
+- ใช้ /list-github-actions-fails ถ้าจำเป็น
 - ใช้ /list-github-branch ถ้าจำเป็น
 
 ## Expected Outcome

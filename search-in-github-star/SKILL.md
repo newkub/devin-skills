@@ -3,9 +3,9 @@ name: search-in-github-star
 description: ค้นหา repositories จาก GitHub stars ด้วย gh CLI
 argument-hint: "[query]"
 related:
-  - list-repo-in-github-star
-  - list-github-star-filter-bun
-  - list-github-star-filter-rust
+  - list-github-star
+  - list-github-star
+  - list-github-star
   - all-github-repo
   - follow-tool-websearch
   - follow-tool-crw
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับค้นหา repositories จาก GitHub stars ผ่าน `gh search` command
 
-ดูเพิ่มเติม: /all-github-repo, /list-github-star-latest
+ดูเพิ่มเติม: /all-github-repo, /list-github-star
 
 ## Execute
 
@@ -111,9 +111,9 @@ related:
 - Cache frequent search queries ถ้าจำเป็น
 - ใช้ `gh search` โดยตรงแทน API calls
 
-- ใช้ /list-repo-in-github-star ถ้าจำเป็น
-- ใช้ /list-github-star-filter-bun ถ้าจำเป็น
-- ใช้ /list-github-star-filter-rust ถ้าจำเป็น
+- ใช้ /list-github-star ถ้าจำเป็น
+- ใช้ /list-github-star ถ้าจำเป็น
+- ใช้ /list-github-star ถ้าจำเป็น
 - ใช้ /follow-tool-websearch ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
 - ใช้ /learn-from-web ถ้าจำเป็น

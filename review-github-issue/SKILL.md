@@ -4,7 +4,7 @@ description: ตรวจสอบเนื้อหา, labels และคว�
 argument-hint: "[issue-number]"
 related:
   - review-issue
-  - open-github-issue
+  - open-github
   - list-github-issue
   - create-github-issue
   - implement-github-issue
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `list-github-issue`, `create-github-issue`, `implement-github-issue`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `list-github-issue`, `create-github-issue`, `implement-github-issue`
 
 ใช้ก่อน implement หรือ assign issue — สำหรับ issue ที่ไม่ใช่ GitHub (ไฟล์, chat, tracker อื่น) ให้ใช้ `/review-issue` แทน
 

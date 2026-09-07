@@ -3,7 +3,7 @@ name: learn-from-web
 description: เรียนรู้จากเว็บไซต์หลักและเอกสารด้วย DeepWiki, Context7 และ Official Documentation
 argument-hint: "[scope]"
 related:
-  - list-website-all-routes
+  - report-uxui-all-routes
   - update-devin-global-skills
   - check-reference
   - deep-research
@@ -130,7 +130,7 @@ related:
 
 > Goal: สร้าง route reference สำหรับ website project เมื่อจำเป็น
 
-1. ถ้า skill หรือ project มี dependencies กับ website framework/library/tool → ทำ `/list-website-all-routes`
+1. ถ้า skill หรือ project มี dependencies กับ website framework/library/tool → ทำ `/report-uxui-all-routes`
 2. ระบุ framework จาก `package.json` ก่อน
 3. รวบรวม page routes, API routes, redirects, catch-all, dynamic segments, และ auth-required routes
 4. จัดกลุ่ม routes ตาม feature/module (auth, billing, settings, admin)

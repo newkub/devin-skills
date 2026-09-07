@@ -6,8 +6,8 @@ related:
   - check-monorepo
   - list-workspaces
   - scan-codebase
-  - follow-package-manifest
-  - check-unused-deps
+  - follow-tasks
+  - check-unused
   - run-audit
   - deep-review-codebase
   - run-verify
@@ -16,7 +16,10 @@ related:
   - suggest-next-action
   - refactor-workspace
   - review-techstack
----
+---  - check-file-encoding
+  - check-path-length
+  - check-broken-symlinks
+
 
 ## Goal
 
@@ -97,8 +100,8 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 
 - ใช้ /check-monorepo ถ้าจำเป็น
 - ใช้ /list-workspaces ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
-- ใช้ /check-unused-deps ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
+- ใช้ /check-unused ถ้าจำเป็น
 - ใช้ /run-audit ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น

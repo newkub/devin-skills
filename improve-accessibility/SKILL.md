@@ -6,7 +6,7 @@ related:
   - review-accessibility
   - review-uxui
   - run-test-website-by-agent-browser
-  - capture-image-app-to-screenshot
+  - capture
   - follow-best-practice
   - resolve-errors
   - run-check
@@ -91,7 +91,7 @@ related:
 
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /run-test-website-by-agent-browser ถ้าจำเป็น
-- ใช้ /capture-image-app-to-screenshot ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

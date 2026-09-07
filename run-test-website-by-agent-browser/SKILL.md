@@ -3,11 +3,11 @@ name: run-test-website-by-agent-browser
 description: เปิด browser แล้วทดสอบ actions ทุกหน้าด้วย agent browser
 argument-hint: "[url]"
 related:
-  - list-website-all-routes
+  - report-uxui-all-routes
   - review-by-stakeholder
   - resolve-errors
   - loop-until-complete
-  - capture-component
+  - capture
   - report-table
 ---
 
@@ -51,8 +51,8 @@ related:
 
 > Goal: รวบรวมทุกหน้าที่ต้องทดสอบ
 
-1. ทำ `/list-website-all-routes` เพื่อ list ทุก route
-2. ถ้าไม่มี skill `/list-website-all-routes` ให้ใช้ `agent-browser snapshot -i` และ `agent-browser links` เพื่อค้นหา links
+1. ทำ `/report-uxui-all-routes` เพื่อ list ทุก route
+2. ถ้าไม่มี skill `/report-uxui-all-routes` ให้ใช้ `agent-browser snapshot -i` และ `agent-browser links` เพื่อค้นหา links
 3. บันทึกรายการ routes พร้อม priority
 
 ### 5. Identify Actions Per Route
@@ -76,7 +76,7 @@ related:
 6. ทดสอบ form submit ด้วย `agent-browser submit @e1`
 7. ทดสอบ modal เปิด/ปิด
 8. ใช้ `agent-browser screenshot` หรือ `agent-browser screenshot --annotate` เมื่อ action ล้มเหลว
-9. ถ้าต้องการ capture ภาพ component แยกตัว ใช้ `/capture-component`
+9. ถ้าต้องการ capture ภาพ component แยกตัว ใช้ `/capture`
 
 ### 7. Resolve Failures And Errors
 
@@ -119,7 +119,7 @@ related:
 ### 1. Scope Boundary
 
 - เปิด browser + list ทุก route + ทดสอบ actions ทุกหน้า + stakeholder review
-- ไม่ใช้ test watch mode ต่อเนื่อง — ใช้ `/run-watch-test` สำหรับสิ่งนั้น
+- ไม่ใช้ test watch mode ต่อเนื่อง — ใช้ `/run-watch` สำหรับสิ่งนั้น
 - ห้าม fix โดยใช้ `.skip`, `.only`, `xit`, `xtest`
 
 ### 2. Route Coverage

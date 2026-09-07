@@ -7,13 +7,21 @@ related:
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret
----
+  - --
+  - create-github-repo
+  - create-cloudflare-token
+  - follow-my-tech-stack
+  - report-table
+  - suggest-next-action
+  - ask-me
 
 ## Goal
 
 สร้าง Cloudflare Workers project ใหม่ พร้อมเชื่อม Git repository อัตโนมัติ โดย user ไม่ต้องกรอกฟอร์มบน Cloudflare dashboard เอง และถามก่อนเสมอว่าต้องการเปิดใช้งาน Cloudflare Access หรือไม่
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-cloudflare-project, create-cloudflare-worker-project)
 
 - ใช้ Wrangler CLI หรือ Cloudflare API v4 สร้าง Workers project
 - เชื่อม Git repository ผ่าน Cloudflare Workers Builds API หรือ dashboard

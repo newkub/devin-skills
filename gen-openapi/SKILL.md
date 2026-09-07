@@ -7,7 +7,7 @@ related:
   - review-api
   - update-docs
   - search-files-patterns
-  - list-website-all-routes
+  - report-uxui-all-routes
   - report-table
 ---
 
@@ -35,7 +35,7 @@ Generate OpenAPI 3.x spec (`openapi.json`/`openapi.yaml`) จาก API code จ
 
 > Goal: รวบรวม routes ทั้งหมด
 
-1. ใช้ `/list-website-all-routes` หรือ grep patterns ของ framework:
+1. ใช้ `/report-uxui-all-routes` หรือ grep patterns ของ framework:
    - Elysia/Hono: `.get()`, `.post()`, `.put()`, `.delete()`, `.patch()`
    - Express/Fastify: `app.<method>()`, `router.<method>()`
    - oRPC: `os.router({...})` procedures

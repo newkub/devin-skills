@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน dprint สำห�
 argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
-  - follow-tool-astgrep
+  - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
   - follow-best-practice
@@ -114,7 +114,7 @@ related:
 - ต้องใช้ semiColons: asi สำหรับ TypeScript
 
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-astgrep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

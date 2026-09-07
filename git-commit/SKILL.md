@@ -10,13 +10,21 @@ related:
   - refactor-commit
   - review-diff
   - ship
----
+  - --
+  - git-commit-and-push
+  - git-commit-selected-files
+  - follow-git-flow
+  - resolve-errors
+  - follow-best-practice
+  - update-agents-md
 
 ## Goal
 
 Commit ทุกไฟล์ที่มีการเปลี่ยนแปลงใน global devin skills directory ตามมาตรฐาน conventional commits
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-commit-at-devin-skills-global)
 
 ใช้สำหรับ commit changes ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` เท่านั้น
 

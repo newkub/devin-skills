@@ -8,7 +8,7 @@ related:
   - suggest-next-action
   - productionize-implementation
   - implement-plan
-  - implement-mock
+  - productionize-implementation
   - implement-github-task
 ---
 
@@ -18,7 +18,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `productionize-implementation`, `implement-plan`, `implement-mock`, `implement-github-task`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `productionize-implementation`, `implement-plan`, `productionize-implementation`, `implement-github-task`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 

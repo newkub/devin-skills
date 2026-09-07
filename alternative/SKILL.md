@@ -26,7 +26,8 @@ related:
   - use-lib-effective
   - suggest-next-action
   - resolve-errors
----
+  - --
+
 
 ## Goal
 
@@ -117,3 +118,5 @@ related:
 - Pros/cons และ trade-offs ทีชัดเจน
 - Examples หรือ migration guides
 - References สำหรับ deeper learning
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-alternative)

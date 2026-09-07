@@ -3,7 +3,7 @@ name: gen-adr
 description: สร้าง Architecture Decision Record จาก decision ใน session เก็บใน .devin/adr
 argument-hint: "[decision-topic]"
 related:
-  - deep-pondering
+  - deep-thinking
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ related:
 1. ระบุ decision จาก argument หรือ session context — คำถามคืออะไร, ตัดสินใจอะไร
 2. เก็บ options ที่พิจารณาและเหตุที่ตัดออก
 3. เก็บ constraints และ forces ที่กดดัน (deadline, scale, team skills, cost)
-4. ถ้า context ไม่พอ → ใช้ `/deep-pondering` หรือถาม user ก่อนเขียน
+4. ถ้า context ไม่พอ → ใช้ `/deep-thinking` หรือถาม user ก่อนเขียน
 
 ### 2. Prepare ADR Storage
 

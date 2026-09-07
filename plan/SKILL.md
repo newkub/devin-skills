@@ -9,7 +9,7 @@ related:
   - alternative
   - use-lib-effective
   - prioritize
-  - pondering
+  - deep-thinking
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: Plan Architecture
 
-1. ทำ `pondering` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
+1. ทำ `deep-thinking` เพื่อทบทวน architectural decisions และผลกระทบระยะยาวก่อนเลือก architecture
 2. ทำ `/follow-architecture` เพื่อเลือก architecture ที่เหมาะสม
 3. วางแผน file architecture โดยจัดกลุ่มตาม responsibility พร้อม tree diagram
 4. สร้าง file pattern table: File Pattern, Description, Naming, Import

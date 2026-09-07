@@ -4,7 +4,7 @@ description: ทดสอบ UX/UI ด้วย agent-browser ตรวจ layou
 argument-hint: "[url-or-route]"
 related:
   - follow-lib-agent-browser
-  - capture-image-app-to-screenshot
+  - capture
   - run-test-website-by-agent-browser
   - review-uxui
   - improve-uxui
@@ -32,7 +32,7 @@ related:
 > Goal: เตรียม URL และ baseline สำหรับเปรียบเทียบ
 
 1. เปิด dev server หรือใช้ deployed URL ตาม argument
-2. ทำ `/capture-image-app-to-screenshot` เพื่อเก็บ baseline screenshots ของ routes/components ที่ต้อง test
+2. ทำ `/capture` เพื่อเก็บ baseline screenshots ของ routes/components ที่ต้อง test
 3. ถ้าไม่มี baseline → สร้าง baseline ก่อนครั้งแรกและข้าม regression check
 
 ### 2. Plan UX/UI Tests

@@ -8,13 +8,21 @@ related:
   - follow-tool-vite
   - learn-from-web
   - follow-deploy
----
+  - --
+  - follow-create-web
+  - follow-tool-cargo
+  - follow-my-tech-stack
+  - review-techstack
+  - follow-lang-bun
+  - ask-me
 
 ## Goal
 
 พัฒนา cross-platform mobile applications ด้วย Capacitor 8 โดยใช้ web technologies ที่ทำงานบน iOS, Android และ PWA จาก codebase เดียว
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-create-mobile-ios-android)
 
 ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
 

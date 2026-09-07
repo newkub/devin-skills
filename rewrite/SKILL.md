@@ -9,7 +9,7 @@ related:
   - check-skills-related
   - follow-best-practice
   - use-scripts
-  - edit-relative
+  - update-references
 ---
 
 ## Goal
@@ -74,7 +74,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 2. ไม่อ้างอิง context ก่อนหน้า
 3. ใช้ `write` เพื่อ overwrite ไฟล์เดิมด้วยเนื้อหาใหม่
 4. ถ้ามีหลายไฟล์ ใช้ `use-scripts` สำหรับ automation
-5. ทำ `edit-relative` หากชื่อไฟล์หรือ path เปลี่ยน
+5. ทำ `update-references` หากชื่อไฟล์หรือ path เปลี่ยน
 
 ### 6. Validate
 
@@ -110,7 +110,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 - รักษา public API และ interfaces ที่ผู้ใช้กำหนด
 - รักษา file paths และ naming conventions
-- ถ้าต้องเปลี่ยน contract ให้ทำ `edit-relative` อัปเดท references ทั้งหมด
+- ถ้าต้องเปลี่ยน contract ให้ทำ `update-references` อัปเดท references ทั้งหมด
 
 ### 5. Complete Delivery
 

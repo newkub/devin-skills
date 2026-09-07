@@ -7,16 +7,23 @@ related:
   - list-chezmoi-files
   - resolve-cloudflare-worker-fails
   - open-cloudflare-workers
-  - open-all-cloudflare-projects
-  - all-cloudflare-projects
----
+  - --
+  - resolve-all-cloudflare-fails
+  - list-cloudflare-worker-fails
+  - follow-service-cloudflare
+  - report-table
+  - suggest-next-action
+  - ask-me
+  - open-web
 
 ## Goal
 
 สแกนเครื่องหา projects ทีใช้ Cloudflare (Workers, Pages, Wrangler) พร้อม local path, remote repo match, deployment status และสรุปเป็น table
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`, `open-all-cloudflare-projects`, `all-cloudflare-projects`
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: all-cloudflare-projects, open-all-cloudflare-projects)
+- สำหรับ skills ที่เกี่ยวข้อง: `list-chezmoi-files`, `open-cloudflare-workers`, `list-cloudflare-projects`, `list-cloudflare-projects`
 
 ใช้เพื่อหา Cloudflare projects ทั้งหมดในเครื่อง โดย detect จาก `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`, หรือ `wrangler.config.ts`
 

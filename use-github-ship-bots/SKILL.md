@@ -14,8 +14,8 @@ triggers:
   - user
   - model
 related:
-  - follow-create-github-bots
-  - implement-plan-from-github-issue
+  - follow-create-bot
+  - implement-github-issue
   - create-plan-in-dot-devin
   - create-github-pr
   - run-verify
@@ -23,7 +23,7 @@ related:
   - setup-cicd
   - deploy-to-cloudflare
   - deploy-to-vercel
-  - open-github-repo
+  - open-github
   - report-progress
 ---
 
@@ -48,7 +48,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 - สร้าง PR พร้อม evidence
 - อัปเดต issue status
 
-- ดูเพิ่มเติม: /setup-cicd, /open-github-repo
+- ดูเพิ่มเติม: /setup-cicd, /open-github
 
 ## Execute
 
@@ -58,7 +58,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 1. รับ `<issue-or-plan>` จาก argument
    - issue: `/use-github-ship-bots 42`
    - plan file: `/use-github-ship-bots .devin/plan/<workspace>/feed-bot.md`
-2. ถ้าเป้น issue → ใช้ `/implement-plan-from-github-issue` หรือ `gh issue view <number>`
+2. ถ้าเป้น issue → ใช้ `/implement-github-issue` หรือ `gh issue view <number>`
 3. ถ้าเป้น file → อ่าน `.devin/plan/<workspace>/<file>.md`
 4. ระบุ bot type, platform, features, acceptance criteria
 5. ถ้าไม่ชัด → ทำ `/ask-me`
@@ -66,7 +66,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 ### 2. Choose Bot Stack
 
 > Goal: เลือก Bot Stack
-1. GitHub bot (approve/reject buttons) → `/follow-create-github-bots`
+1. GitHub bot (approve/reject buttons) → `/follow-create-bot`
 2. Web dashboard bot → `/follow-create-web`
 3. CLI bot → `/follow-create-bun-cli`
 4. บันทึก stack, เหตุผล, dependencies
@@ -75,7 +75,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 > Goal: สร้าง Project
 1. สร้าง directory `{bot-name}/` หรือ repo ใหม่
-2. ใช้ `/follow-create-github-bots` สร้าง skeleton
+2. ใช้ `/follow-create-bot` สร้าง skeleton
 3. สร้าง branch `bot/<name>` ถ้าอยู่ใน existing repo
 4. ตั้งค่า `.env.example`, `tsconfig.json`, `package.json`
 
@@ -136,7 +136,7 @@ Ship bot project ตาม plan หรือ GitHub issue โดยสร้า�
 
 - ไม่เริ่ม implement ถ้า plan ไม่ชัด
 - ใช้ `/create-plan-in-dot-devin` ถ้าต้องการ plan ใหม่
-- ใช้ `/implement-plan-from-github-issue` ถ้าเริ่ม implement จาก issue
+- ใช้ `/implement-github-issue` ถ้าเริ่ม implement จาก issue
 - แยก webhook wiring ออกจาก business logic
 - ใช้ `try/catch` รอบทุก handler
 - ไม่ hardcode secrets

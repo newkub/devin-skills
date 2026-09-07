@@ -10,13 +10,20 @@ related:
   - fix
   - search-by-astgrep
   - use-astgrep
----
+  - --
+  - search-project-in-drive-d
+  - follow-my-global-cli
+  - use-subagents
+  - update-agents-md
+  - ask-me
 
 ## Goal
 
 ค้นหา patterns ในไฟล์ทั้งชื่อไฟล์และเนื้อหา โดยใช้ glob, regex, และ ast-grep
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: search-files-patterns-in-drive-d)
 
 - ค้นหาไฟล์ตามชื่อ pattern เช่น `*.test.ts`, `/{mock,fixture}.*`
 - ค้นหาเนื้อหาไฟล์ตาม regex หรือ AST pattern

@@ -16,13 +16,20 @@ related:
   - run-test-coverage
   - use-scripts
   - follow-monorepo
----
+  - --
+  - review-delivery
+  - follow-tool-taze
+  - deep-review-codebase
+  - follow-tool-hk
+  - use-astgrep
 
 ## Goal
 
 ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-package-manifest)
 
 ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/review-delivery`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test-coverage` เพื่อรัน scripts ที่ตั้งค่า
 
@@ -61,7 +68,7 @@ related:
 > Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
 
 1. ทำ `/use-scripts` ตาม tech stack จากตาราง Rules — Single workspace: แก้ไข `package.json` หรือ `Cargo.toml` โดยตรง
-2. Multiple workspaces: ทำ `/follow-monorepo` ก่อน แล้วใช้ `/use-bun-scripts` สำหรับ batch update
+2. Multiple workspaces: ทำ `/follow-monorepo` ก่อน แล้วใช้ `/use-scripts` สำหรับ batch update
 3. ถ้า operations > 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ batch update
 4. ถ้า apply fail → retry (max 3 → stop/report)
 

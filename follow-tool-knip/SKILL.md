@@ -4,7 +4,7 @@ description: Setup and configure Knip for detecting unused files, dependencies, 
 argument-hint: "[scope]"
 related:
   - follow-monorepo
-  - follow-package-manifest
+  - follow-tasks
 ---
 
 ## Goal
@@ -33,7 +33,7 @@ related:
 > Goal: กำหนด entry points และ project patterns สำหรับแต่ละ workspace
 
 1. Knip อ่าน workspaces จาก `package.json#workspaces`, `pnpm-workspace.yaml`, หรือ `knip.json#workspaces` อัตโนมัติ
-2. แต่ละ workspace ต้องมี `package.json` ที่ถูกต้อง — ถ้า package manifest ไม่ถูกต้องให้ทำ `/follow-package-manifest` ก่อน; ถ้าไม่มี `package.json` → เพิ่ม path ลงใน `workspaces` object ของ `knip.json`
+2. แต่ละ workspace ต้องมี `package.json` ที่ถูกต้อง — ถ้า package manifest ไม่ถูกต้องให้ทำ `/follow-tasks` ก่อน; ถ้าไม่มี `package.json` → เพิ่ม path ลงใน `workspaces` object ของ `knip.json`
 3. ระบุ `entry` เฉพาะไฟล์ที่ Knip ไม่ detect อัตโนมัติ — Knip มี plugins ที่ auto-detect entry files จาก common patterns เช่น `src/index.ts`, `package.json#exports`
 4. ระบุ `project` เป็น glob patterns ของ source files ใน workspace นั้น
 5. ถ้า workspace ไม่มี custom entry/project → ใช้ empty object `{}`

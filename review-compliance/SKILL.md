@@ -10,13 +10,17 @@ related:
   - deep-validate
   - report-table
   - suggest-next-action
----
+  - --
+  - roleplay-stakeholder
+  - ask-me
 
 ## Goal
 
 สร้าง short orchestrator สำหรับ review compliance ทุก dimension โดย delegate ไปยัง reference files แล้ว aggregate findings และ review score
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-compliance)
 
 compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Thailand), consent management, DSAR, audit trails, data retention, cross-border transfer, privacy by design
 

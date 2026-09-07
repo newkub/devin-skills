@@ -7,8 +7,8 @@ related:
   - review-by-designer
   - review-by-product
   - review-by-engineer
-  - review-by-security
-  - review-by-compliance
+  - review-security
+  - review-compliance
   - review-by-qa
   - review-by-data
   - scan-codebase
@@ -73,21 +73,21 @@ related:
 | 6 | `new-developer` | `/review-by-engineer` |
 | 7 | `devops-engineer` | `/review-by-engineer` |
 | 8 | `competitor` | `/review-by-product` |
-| 9 | `attacker` | `/review-by-security` |
+| 9 | `attacker` | `/review-security` |
 | 10 | `ceo` | `/review-by-product` |
-| 11 | `compliance-officer` | `/review-by-compliance` |
+| 11 | `compliance-officer` | `/review-compliance` |
 | 12 | `customer-success-manager` | `/review-by-user` |
 | 13 | `customer-support-agent` | `/review-by-user` |
 | 14 | `data-analyst` | `/review-by-data` |
 | 15 | `data-engineer` | `/review-by-data` |
 | 16 | `financial-analyst` | `/review-by-product` |
 | 17 | `growth-manager` | `/review-by-product` |
-| 18 | `incident-commander` | `/review-by-security` |
-| 19 | `legal-counsel` | `/review-by-compliance` |
+| 18 | `incident-commander` | `/review-security` |
+| 19 | `legal-counsel` | `/review-compliance` |
 | 20 | `marketing-manager` | `/review-by-product` |
 | 21 | `open-source-contributor` | `/review-by-engineer` |
 | 22 | `performance-engineer` | `/review-by-engineer` |
-| 23 | `security-architect` | `/review-by-security` |
+| 23 | `security-architect` | `/review-security` |
 | 24 | `solutions-engineer` | `/review-by-engineer` |
 | 25 | `staff-engineer` | `/review-by-engineer` |
 | 26 | `technical-writer` | `/review-by-engineer` |

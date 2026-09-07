@@ -4,7 +4,7 @@ description: แก้ findings จาก review-compliance ครอบคล�
 argument-hint: "[finding-or-scope]"
 related:
   - review-compliance
-  - review-by-compliance
+  - review-compliance
   - check-repo-hygiene
   - follow-lib-license-md
   - report-review
@@ -16,7 +16,7 @@ related:
 
 ## Scope
 
-- รับ findings จาก `/review-compliance` หรือ `/review-by-compliance`
+- รับ findings จาก `/review-compliance` หรือ `/review-compliance`
 - ครอบคลุม: dependency licenses, LICENSE/NOTICE files, personal data handling, logging of sensitive data, cookie/consent, data retention, audit logging
 - Action-oriented: แก้ไขจริงตาม severity — legal-critical items ต้อง escalate ให้ user
 

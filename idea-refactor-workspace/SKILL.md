@@ -1,9 +1,9 @@
 ---
 name: idea-refactor-workspace
-description: สร้างไอเดีย refactor workspace ใน monorepo ด้วย /refactor-all-workspace
+description: สร้างไอเดีย refactor workspace ใน monorepo ด้วย /refactor-workspace
 argument-hint: "[scope]"
 related:
-  - refactor-all-workspace
+  - refactor-workspace
   - follow-single-responsibility
   - refactor-workspace
   - report-table
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-สร้างไอเดียการ refactor workspace ใน monorepo โดยวิเคราะห์ SRP, แยก responsibility ของแต่ละ workspace member แล้วส่งต่อไปยัง `/refactor-all-workspace` เพื่อ deep refactor
+สร้างไอเดียการ refactor workspace ใน monorepo โดยวิเคราะห์ SRP, แยก responsibility ของแต่ละ workspace member แล้วส่งต่อไปยัง `/refactor-workspace` เพื่อ deep refactor
 
 ## Scope
 
@@ -77,7 +77,7 @@ related:
 
 > Goal: แนะนำขั้นตอนการลงมือ refactor
 
-1. ถ้า user ต้องการ deep refactor ทั้งหมด → ทำ `/refactor-all-workspace`
+1. ถ้า user ต้องการ deep refactor ทั้งหมด → ทำ `/refactor-workspace`
 2. ถ้า user ต้องการ refactor ทีละ workspace → ทำ `/refactor-workspace` ตามลำดับทีเลือก
 3. หลัง refactor เสร็จ → ทำ `/report-before-after` อีกครั้งเพื่อเปรียบเทียบผลลัพธ์ (after)
 4. ถ้า user ต้องการ decompose เพิ่ม → ทำ `/follow-single-responsibility` อีกครั้ง
@@ -105,7 +105,7 @@ related:
 
 ### 4. Hand Off To Refactor
 
-- ไอเดียต้องส่งต่อไปยัง `/refactor-all-workspace` หรือ `/refactor-workspace` ได้ชัดเจน
+- ไอเดียต้องส่งต่อไปยัง `/refactor-workspace` หรือ `/refactor-workspace` ได้ชัดเจน
 - ระบุลำดับการทำงานและ dependency direction
 - ไม่ implement โดยตรงใน skill นี้ ยกเว้น user สั่ง `/productionize-implementation`
 
@@ -114,5 +114,5 @@ related:
 - ไอเดีย refactor workspace ทีมี single responsibility, มาจากข้อมูลจริง
 - รายงาน `/report-file-structure` และ `/report-before-after` (before baseline) ก่อนเสนอไอเดีย
 - ตารางเปรียบเทียบ impact, effort, risk พร้อม Top 3
-- แผนการส่งต่อไปยัง `/refactor-all-workspace` หรือ `/refactor-workspace` พร้อมเปรียบเทียบ after state ด้วย `/report-before-after`
+- แผนการส่งต่อไปยัง `/refactor-workspace` หรือ `/refactor-workspace` พร้อมเปรียบเทียบ after state ด้วย `/report-before-after`
 - ไม่ over-engineer หรือสร้าง fragmentation

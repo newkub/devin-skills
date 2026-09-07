@@ -4,7 +4,7 @@ description: สร้างไอเดีย refactoring สำหรับ de
 argument-hint: "[scope]"
 related:
   - rethink
-  - report-numbered-bullet
+  - report
   - follow-single-responsibility
   - review-devin-global-skills
   - deep-research
@@ -47,7 +47,7 @@ related:
 > Goal: สร้างรายการไอเดีย
 
 1. แยกแต่ละไอเดียตาม `/follow-single-responsibility`
-2. ใช้ `/report-numbered-bullet` สำหรับรูปแบบ output
+2. ใช้ `/report` สำหรับรูปแบบ output
 3. แบ่งหมวดหมู่:
    - Merge/Remove
    - Rename
@@ -72,7 +72,7 @@ related:
 
 > Goal: นำเสนอไอเดีย
 
-1. ทำ `/report-numbered-bullet` ด้วย numbered หลัก + bullet ย่อย
+1. ทำ `/report` ด้วย numbered หลัก + bullet ย่อย
 2. แสดง `## Summary` ก่อน
 3. แสดง `## Refactor Ideas` ตามลำดับ priority
 4. แสดง `## References` ทีเกี่ยวข้อง

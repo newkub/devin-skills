@@ -10,7 +10,7 @@ related:
   - review-restructure
   - review-quality
   - review-readability
-  - edit-relative
+  - update-references
   - update-references
   - run-verify
 ---
@@ -60,7 +60,7 @@ Refactor ไฟล์ทีระบุให้มี SRP, naming, structure, �
 
 > Goal: ไม่ให้เกิด broken references
 
-1. ทำ `/edit-relative` สำหรับ relative paths/imports
+1. ทำ `/update-references` สำหรับ relative paths/imports
 2. ทำ `/update-references` สำหรับ global references
 3. ถ้ามี broken references → ทำ `/resolve-errors`
 

@@ -8,13 +8,16 @@ related:
   - deep-review
   - review-quality
   - update-specs
----
+  - --
+  - run-test-website-by-agent-browser
 
 ## Goal
 
 รัน coverage หา coverage gaps แล้วเติม tests ตาม gaps จนถึง threshold ที่กำหนด
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: improve-test-everything)
 
 ใช้กับ project ที่มี test infrastructure อยู่แล้ว โดยรัน coverage วิเคราะห์ gaps แล้วเขียนหรืออัปเดต tests ให้ครอบคลุม code ปัจจุบัน
 

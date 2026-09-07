@@ -47,7 +47,7 @@ Optimize codebase ทั้งหมดที detect ได้: frontend, API, d
 1. ใช้ `/optimize-bundle` สำหรับ manual chunks, dynamic imports, tree-shaking
 2. ใช้ `/optimize-assets` สำหรับ images, fonts, media
 3. ใช้ `/optimize-rendering` สำหรับ re-renders, virtual lists, lazy components
-4. ลบ unused dependencies ด้วย `/check-unused-deps`
+4. ลบ unused dependencies ด้วย `/check-unused`
 5. เปิด compression `brotli`/`gzip` สำหรับ CDN
 6. ทำ `/run-build` เพื่อวัด bundle size
 

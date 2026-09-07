@@ -11,6 +11,11 @@ related:
   - suggest-next-action
   - resolve-errors
 ---
+  - check-file-encoding
+  - check-path-length
+  - check-broken-symlinks
+  - check-file-locks
+  - check-open-ports
 
 ## Goal
 

@@ -4,13 +4,13 @@ description: ตั้งค่า Bunup สำหรับ bundle TypeScript li
 argument-hint: "[scope]"
 related:
   - follow-tool-agent-browser
-  - follow-tool-astgrep
+  - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - follow-runtime-bun
-  - use-bun-native-api
+  - follow-lang-bun
+  - follow-lang-bun
 ---
 
 ## Goal
@@ -19,7 +19,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/follow-runtime-bun` สำหรับ setup Bun runtime
+ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/follow-lang-bun` สำหรับ setup Bun runtime
 
 ## Execute
 
@@ -88,7 +88,7 @@ project/
 ```
 
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-astgrep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

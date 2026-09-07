@@ -4,8 +4,8 @@ description: ถาม user เลือกอันดีทีสุดจา�
 argument-hint: "[question] [options...]"
 related:
   - ask-me
-  - sumarize-your-understand
-  - report-numbered-bullet
+  - summarize-your-understand
+  - report
   - follow-create-cli
   - improve
   - report-plan
@@ -28,7 +28,7 @@ related:
 1. รับ question ทีต้องการถามและ list ของ options
 2. ตรวจสอบว่า options ไม่ซ้ำกัน
 3. ถ้ามีมากกว่า 10 ตัวเลือก → จัดกลุ่มหรือกรองก่อนถาม
-4. ถ้า options ไม่ชัด → ทำ `/sumarize-your-understand` ก่อน
+4. ถ้า options ไม่ชัด → ทำ `/summarize-your-understand` ก่อน
 5. ระบุ recommendation ถ้ามี โดยทำเครื่องหมาย `(recommended)` หรืออธิบายสั้นๆ
 
 ### 2. Ask User
@@ -76,7 +76,7 @@ related:
 
 - ถ้า options เป็น skill → ใช้ `/<skill-name>`
 - ถ้า options เป็น URL/path → ใช้ backticks
-- ถ้าต้องอธิบายเพิ่ม → ใช้ `/report-numbered-bullet`
+- ถ้าต้องอธิบายเพิ่ม → ใช้ `/report`
 
 ## Expected Outcome
 

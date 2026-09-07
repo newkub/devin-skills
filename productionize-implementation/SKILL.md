@@ -3,7 +3,6 @@ name: productionize-implementation
 description: แปลง TODO, MOCK, FAKE, placeholder เป้น production code จริง end-to-end
 argument-hint: "[scope-or-plan]"
 related:
-  - implement-mock
   - implement-features-to-mvp
   - implement-todo-md
   - list-todo-md
@@ -18,13 +17,17 @@ related:
   - run-test-all
   - run-verify
   - test-usage
----
+  - --
+  - run-test
+  - run-lint
 
 ## Goal
 
 แปลง TODO, MOCK, FAKE, STUB, placeholder เป้น production code จริง ครบทุกมิติ พร้อม architecture, security, observability และ rollback plan
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-mock)
 
 แปลงทุก unfinished features เป้น production code: schema, data, API, UX/UI, external services พร้อม infrastructure จริง end-to-end — ไม่รวมงานที่ควรเริ่มจาก architecture ใหม่ (ใช้ `/review-architecture` ก่อน)
 
@@ -85,7 +88,7 @@ related:
 1. ทำ `/list-todo-md` เพื่อรวบรวม TODO.md ใน workspace ก่อน implement
 2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-ast-grep` หรือ `grep`
 3. ถ้ามี `TODO.md` → ทำ `/implement-todo-md`
-4. ทำ `/implement-mock` เพื่อแทนที่ MOCK/FAKE/STUB ด้วย real implementations
+4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
 6. ถ้ามี library ที่เหมาะกว่า → ทำ `/use-lib-effective`
 7. หลัง implement เสร็จ → ทำ `/update-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
@@ -109,7 +112,7 @@ related:
 
 1. ทำ `/refactor` เพื่อลด long files, SRP issues และ import/exports
 2. ทำ `/update-references` ถ้ามี move/rename/delete
-3. ทำ `/check-unused-deps` และ `/check-unused-files` — พิจารณาลบหรือ implement
+3. ทำ `/check-unused` และ `/check-unused` — พิจารณาลบหรือ implement
 4. ทำ `/update-dot-devin` หรือ `/update-project` ถ้ามี config/manifest/docs เปลี่ยน
 5. ทำ `/update-todo-md` ถ้า TODO.md items เปลี่ยน
 

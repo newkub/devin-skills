@@ -11,6 +11,13 @@ related:
   - report-table
   - check-reference
 ---
+  - check-api-versioning
+  - check-backward-compatibility
+  - check-api-contract
+  - check-idempotency
+  - check-webhook
+  - check-cors-policy
+  - check-rate-limiting
 
 ## Goal
 

@@ -10,7 +10,7 @@ related:
   - run-test-e2e
   - run-test-api
   - run-test-coverage
-  - deep-test
+  - update-test-and-fix
   - update-test-and-fix
   - run-test
   - deep-review-codebase
@@ -28,7 +28,7 @@ related:
 
 ครอบคลุม unit, integration, e2e, component, API, database, performance, security, accessibility, i18n, และ specialized tests ตาม project needs
 
-ดูเพิ่มเติม: /deep-test, /deep-review-codebase
+ดูเพิ่มเติม: /update-test-and-fix, /deep-review-codebase
 
 ## Execute
 

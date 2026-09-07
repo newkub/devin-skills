@@ -4,7 +4,7 @@ description: รวบรวม evidence, screenshots, context แล้วข�
 argument-hint: "[area-or-question]"
 related:
   - improve-uxui
-  - capture-image-app-to-screenshot
+  - capture
   - report-table
   - ask-me
   - suggest-next-action
@@ -24,7 +24,7 @@ related:
 
 > Goal: มี evidence ครบถ้วนสำหรับ review
 
-1. ใช้ screenshots จาก `/capture-image-app-to-screenshot` หรือ `/improve-uxui`
+1. ใช้ screenshots จาก `/capture` หรือ `/improve-uxui`
 2. ใช้ `agent-browser snapshot` ถ้าจำเป็น
 3. รวบรวม URLs, routes, components, states
 4. ระบุ user stories หรือ acceptance criteria

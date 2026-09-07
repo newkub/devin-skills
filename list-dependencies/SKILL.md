@@ -3,7 +3,7 @@ name: list-dependencies
 description: แสดงรายการ dependencies ทั้งหมดใน project พร้อมข้อมูลและการวิเคราะห์
 argument-hint: "[scope]"
 related:
-  - check-unused-deps
+  - check-unused
   - alternative
   - run-audit
   - follow-tool-taze
@@ -48,7 +48,7 @@ related:
 
 วิเคราะห์การใช้งาน dependencies
 
-1. ทำ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ได้ใช้
+1. ทำ `/check-unused` เพื่อหา dependencies ที่ไม่ได้ใช้
 2. ค้นหา dependencies ที่ซ้ำซ้อนหรือทำงานคล้ายกัน
 3. ตรวจสอบ dependencies ที่มี security vulnerabilities
 4. ดู dependencies ที่มี version เก่ากว่า latest
@@ -88,7 +88,7 @@ related:
 
 วิเคราะห์การใช้งาน dependencies
 
-- ใช้ `/check-unused-deps` เพื่อหา dependencies ที่ไม่ได้ใช้
+- ใช้ `/check-unused` เพื่อหา dependencies ที่ไม่ได้ใช้
 - ตรวจสอบ dependencies ที่ซ้ำซ้อนหรือทำงานคล้ายกัน
 - ตรวจสอบ security vulnerabilities ด้วย `/run-audit`
 - ดู dependencies ที่มี version เก่ากว่า latest

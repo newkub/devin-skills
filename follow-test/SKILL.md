@@ -38,7 +38,7 @@ related:
 
 - ทำ `/follow-tool-vitest` สำหรับ framework testing
 - ทำ `/follow-tool-playwright` สำหรับ E2E testing
-- ทำ `/follow-package-manifest` สำหรับ test scripts
+- ทำ `/follow-tasks` สำหรับ test scripts
 - ตั้งค่า config files ตาม tech stack
 
 ### 4. Apply Test Scripts

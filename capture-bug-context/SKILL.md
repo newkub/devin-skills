@@ -3,9 +3,9 @@ name: capture-bug-context
 description: เก็บ context ครบตอนเจอ bug — git state, env, logs, screenshots ไว้ใน .devin/bugs
 argument-hint: "[bug-title]"
 related:
-  - capture-terminal
-  - capture-web
-  - capture-image-app-to-screenshot
+  - capture
+  - capture
+  - capture
   - deep-debug
 ---
 
@@ -53,8 +53,8 @@ related:
 
 > Goal: เก็บ artifacts ที่พิสูจน์ bug
 
-1. Terminal output/errors → `logs/` (ทำ `/capture-terminal` ถ้าเหมาะ)
-2. UI bugs → screenshots ลง `screenshots/` (ทำ `/capture-image-app-to-screenshot` หรือ `/capture-web`)
+1. Terminal output/errors → `logs/` (ทำ `/capture` ถ้าเหมาะ)
+2. UI bugs → screenshots ลง `screenshots/` (ทำ `/capture` หรือ `/capture`)
 3. Error stack traces เต็ม — ไม่ตัด
 4. Request/response ถ้าเป็น API bug — headers + body (mask secrets)
 

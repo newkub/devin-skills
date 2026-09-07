@@ -5,7 +5,7 @@ argument-hint: "[skill-name...]"
 related:
   - update-devin-global-skills
   - update-devin-project-skills
-  - new-skills
+  - create-devin-global-skills
   - follow-skills-map
   - check-skills-related
   - use-in-another-skills
@@ -15,7 +15,7 @@ related:
   - follow-create-cli
   - follow-create-web
   - follow-create-mcp
-  - follow-global-rules
+  - update-devin-global-rules
   - review-devin-global-skills
 ---
 
@@ -27,7 +27,7 @@ related:
 
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-devin-global-skills)
-ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `%APPDATA%\devin\skills` — skill อื่นที่สร้าง skill (เช่น `/new-skills`, `/follow-create-devin-global-skills`) ต้อง follow มาตรฐานนี้ ส่วน project-local skills ใน `.devin/skills/` ใช้ `/update-devin-project-skills`
+ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `%APPDATA%\devin\skills` — skill อื่นที่สร้าง skill (เช่น `/create-devin-global-skills`, `/follow-create-devin-global-skills`) ต้อง follow มาตรฐานนี้ ส่วน project-local skills ใน `.devin/skills/` ใช้ `/update-devin-project-skills`
 
 ดูเพิ่มเติม: /update-devin-global-skills, /update-devin-project-skills, /check-skills-related, /follow-skills-map
 
@@ -117,7 +117,7 @@ related:
 > Goal: skill สอดคล้องกับ repo standards
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions, naming, structure
-2. ทำ `/follow-global-rules` เพื่อตรวจว่าไม่ขัด `global_rules.md`
+2. ทำ `/update-devin-global-rules` เพื่อตรวจว่าไม่ขัด `global_rules.md`
 3. ส่งต่อ `/update-devin-global-skills` สำหรับ validate, update references และ ship
 
 ## Rules

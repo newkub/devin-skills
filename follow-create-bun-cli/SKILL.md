@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-create-web
-  - use-bun-native-api
+  - follow-lang-bun
   - follow-tool-bunup
   - follow-architecture
   - follow-flat-folders
@@ -68,7 +68,7 @@ related:
 
 > Goal: ใช้ lightweight libraries และ Bun native APIs
 
-1. ทำตาม `/use-bun-native-api` โดยใช้ `Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob` แทน `node:*`
+1. ทำตาม `/follow-lang-bun` โดยใช้ `Bun.file`, `Bun.write`, `Bun.spawn`, `Bun.Glob` แทน `node:*`
 2. ใช้ `picocolors` สำหรับสีใน terminal
 3. ใช้ `cac` สำหรับ argument parsing และ command structure
 4. หลีกเลี่ยง `chalk`, `commander` และ `node:fs`/`node:child_process` ถ้ามี Bun native equivalent
@@ -178,9 +178,9 @@ export default defineConfig({
 ## Guide
 
 - `/follow-architecture` — architecture selection
-- `/follow-runtime-bun` — Bun runtime setup, install, test, build
+- `/follow-lang-bun` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards
-- `/use-bun-native-api` — Bun native APIs แทน Node.js
+- `/follow-lang-bun` — Bun native APIs แทน Node.js
 - [Bun Documentation](https://bun.sh/docs)
 

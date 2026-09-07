@@ -8,8 +8,8 @@ related:
   - translate-to-lang-en
   - report-table
   - deep-validate
-  - report-ansi
-  - capture-component
+  - report
+  - capture
 ---
 
 ## Goal
@@ -20,7 +20,7 @@ related:
 
 ครอบคลุมการสร้าง `README.md` สำหรับ root และทุก workspace ใน monorepo และการตั้งค่า `LICENSE.md` พร้อม package manifest license field — idempotent: รันซ้ำได้โดยไม่เกิด side effects
 
-ดูเพิ่มเติม: /capture-component
+ดูเพิ่มเติม: /capture
 
 ## Execute
 
@@ -84,7 +84,7 @@ related:
 
 - `Status Callout`: ด้านบนสุด — ใช้ `>` เฉพาะ status project เท่านั้น
 - `Hero Section`: `#` Title, Description, Badges (ชิดซ้าย, ไม่รวม License badge) — ไม่มี ANSI ใต้ badges
-- `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report-ansi` — วางด้านบน Get Started โดยไม่ต้องมี heading
+- `UI Sketch`: text codeblock แสดง UX/UI layout sketch จาก `/report` — วางด้านบน Get Started โดยไม่ต้องมี heading
 - `## Get Started`: numbered steps ตรงๆ ไม่มี `###` subsection — แต่ละ step มี title + codeblock
 - `## Features`: Markdown table 5 columns (Icon, Feature, Description, Benefit, Usage) — ดู `references/features-table.md`
 - `## Usage`: `### Usage via ...` สำหรับแต่ละ access method — ดู `references/usage-section.md`

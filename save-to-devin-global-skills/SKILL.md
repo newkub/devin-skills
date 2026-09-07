@@ -18,8 +18,8 @@ triggers:
   - model
 related:
   - update-devin-global-skills
-  - new-skills
-  - idea-new-skills
+  - create-devin-global-skills
+  - idea
   - check-skills-related
   - use-in-another-skills
   - review-devin-global-skills
@@ -33,7 +33,7 @@ related:
 
 ใช้เมื่อ user ต้องการ save context ทีคุยกันล่าสุด หรือ save `prompt` ทีบอกไป ลงใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` รองรับ input เป็น URL, keyword, concept, library, tool, framework, หรือ reference
 
-ดูเพิ่มเติม: /idea-new-skills
+ดูเพิ่มเติม: /idea
 
 ## Execute
 
@@ -92,7 +92,7 @@ related:
 - อย่าแก้ `name` หรือ `description` ของ skill โดยไม่จำเป็น
 - ถ้า input เป็น secret/token ให้ปฏิเสธและบอกให้เก็บใน `secret manager`
 - ถ้า input เป็น URL ทีละเอียด ให้ fetch เพื่อสรุป title/คำอธิบายก่อนตัดสินใจ
-- ถ้าต้องสร้าง skill ใหม่ → ใช้ `/new-skills` หรือ `/update-devin-global-skills`
+- ถ้าต้องสร้าง skill ใหม่ → ใช้ `/create-devin-global-skills` หรือ `/update-devin-global-skills`
 - ถ้าไม่แน่ใจว่า input ควรใส่ skill ไหน → ใช้ `/use-in-another-skills`
 - หลังแก้ skill → ใช้ `/review-devin-global-skills` เพื่อตรวจความถูกต้อง
 

@@ -4,7 +4,7 @@ description: เช็ค HTTP status ทุก page routes ของ domain ด
 argument-hint: "<domain> [depth]"
 related:
   - follow-tool-crw
-  - list-website-all-routes
+  - report-uxui-all-routes
   - test-all-api-routes
   - check-security-headers
   - report
@@ -42,7 +42,7 @@ related:
 1. รัน `crw map <base-url> --format json` — discover จาก sitemap ก่อน ถ้าไม่มี sitemap จะ crawl ตาม link อัตโนมัติ
 2. ถ้าได้ 0 routes → retry `crw map <base-url> --no-sitemap --format json` บังคับ crawl
 3. ถ้า target เป็น SPA ที่ render ด้วย JS → เพิ่ม `--js`
-4. ถ้า discover จากเว็บไม่ได้แต่มี source code → ทำ `/list-website-all-routes` แล้วเอา paths มาต่อท้าย base URL
+4. ถ้า discover จากเว็บไม่ได้แต่มี source code → ทำ `/report-uxui-all-routes` แล้วเอา paths มาต่อท้าย base URL
 5. กรองเฉพาะ same-origin URLs และ dedupe
 
 ### 3. Check Response Per Route
@@ -92,7 +92,7 @@ related:
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /list-website-all-routes ถ้าจำเป็น
+- ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /test-all-api-routes ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

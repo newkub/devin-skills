@@ -34,7 +34,7 @@ related:
 
 > Goal: เลือก deep workflows ทีเหมาะสมกับ context
 
-1. ทำ `/follow-deep` เพื่อพิจารณาว่าควรเรียก `deep-plan`, `deep-analyze`, `deep-research`, `deep-thinking`, `deep-pondering` หรือ `deep-validate`
+1. ทำ `/follow-deep` เพื่อพิจารณาว่าควรเรียก `deep-plan`, `deep-analyze`, `deep-research`, `deep-thinking`, `deep-thinking` หรือ `deep-validate`
 2. ถ้างานซับซ้อนสูง หรือมี risk สูง → เลือก `deep-plan` เป็นหลัก
 3. ถ้างานต้องการวิเคราะห์ปัจจุบันก่อน → เลือก `deep-analyze` หรือ `deep-analyze-by-use-scripts`
 4. ถ้าต้องการ research ภายนอก → เลือก `deep-research`

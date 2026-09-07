@@ -18,9 +18,9 @@ triggers:
   - model
 related:
   - list-github-repo
-  - open-github-repo
-  - open-github-repo-personal
-  - open-github-repo-org
+  - open-github
+  - open-github
+  - open-github
   - update-github-metadata
   - ship
   - follow-github
@@ -36,7 +36,7 @@ related:
 
 ใช้กับ public/private GitHub repos สำหรับดูข้อมูลสำคัญ: description, stars, forks, open issues, PRs, topics, license, latest release, languages, last update
 
-ดูเพิ่มเติม: /list-github-repo, /open-github-repo-personal, /open-github-repo-org, /ship, /follow-github, /report-release-changelog, /resolve-errors
+ดูเพิ่มเติม: /list-github-repo, /open-github, /open-github, /ship, /follow-github, /report-release-changelog, /resolve-errors
 
 ## Execute
 
@@ -92,7 +92,7 @@ related:
 
 ### 3. Next Actions
 
-- ถ้าต้องการ open browser → `/open-github-repo`
+- ถ้าต้องการ open browser → `/open-github`
 - ถ้าต้องการ list issues → `/list-github-issue`
 - ถ้าต้องการ list PRs → `/list-github-pr`
 - ถ้าต้องการ update metadata → `/update-github-metadata`

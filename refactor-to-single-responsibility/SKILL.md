@@ -9,7 +9,7 @@ related:
   - relocation
   - restructure
   - rename
-  - check-dead-code
+  - check-unused
   - review-quality
   - dont-over-engineer
 ---
@@ -22,7 +22,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 - ใช้ภายใต้ `/refactor`, `/refactor-codebase` หรือ `/refactor-files` เมื่องาน refactor
 
-- ใช้กับ source code ใน project หรือ workspace ที่พบ SRP violations เช่น ไฟล์/ฟังก์ชัน/class ทำหลายหน้าที่ โดยใช้ `/check-code-structure` เพื่อหา issues และ `/edit-relative` เพื่ออัปเดท references หลังการเปลี่ยนแปลง
+- ใช้กับ source code ใน project หรือ workspace ที่พบ SRP violations เช่น ไฟล์/ฟังก์ชัน/class ทำหลายหน้าที่ โดยใช้ `/check-code-structure` เพื่อหา issues และ `/update-references` เพื่ออัปเดท references หลังการเปลี่ยนแปลง
 
 ## Execute
 
@@ -64,7 +64,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 > Goal: อัปเดท references ทั้งหมดหลังการเปลี่ยนแปลง
 
-1. ทำ `/edit-relative` เพื่ออัปเดท relative paths, imports, exports, และ references ทั้งหมด
+1. ทำ `/update-references` เพื่ออัปเดท relative paths, imports, exports, และ references ทั้งหมด
 2. ทำ `/update-references` เพื่ออัปเดท references ใน global workflows/skills, AGENTS.md, .devin/rules, และ codebase
 3. ค้นหา references เก่าอีกครั้งเพื่อยืนยันว่าไม่เหลือ
 4. ถ้ามี broken references → ทำ `/resolve-errors`
@@ -104,7 +104,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 ### 3. Reference Safety
 
-- ทำ `/edit-relative` และ `/update-references` หลังทุกการ split, rename, ย้าย, หรือลบ
+- ทำ `/update-references` และ `/update-references` หลังทุกการ split, rename, ย้าย, หรือลบ
 - ตรวจสอบ imports, barrel exports, path aliases ให้ถูกต้อง
 
 ### 4. Verification
@@ -113,7 +113,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 - ต้องผ่าน `/run-verify` และ `/run-test` ก่อนถือว่าเสร็จ
 
 - ใช้ /restructure ถ้าจำเป็น
-- ใช้ /check-dead-code ถ้าจำเป็น
+- ใช้ /check-unused ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - improve-accessibility
   - review-uxui
   - run-test-website-by-agent-browser
-  - capture-image-app-to-screenshot
+  - capture
   - follow-lib-agent-browser
   - report-table
   - deep-review
@@ -88,7 +88,7 @@ related:
 - ใช้ `/deep-review` ถ้าต้องการวิเคราะห์เชิงลึกเพิ่ม
 
 - ใช้ /review-uxui ถ้าจำเป็น
-- ใช้ /capture-image-app-to-screenshot ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /follow-lib-agent-browser ถ้าจำเป็น
 
 ## Expected Outcome

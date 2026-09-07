@@ -3,9 +3,9 @@ name: list-devin-session
 description: แสดงรายการ Devin sessions ทั้งหมดพร้อม title, mode, model, และเวลาใช้งานล่าสุด
 argument-hint: "[limit] [keyword]"
 related:
-  - list-devin-user-request-in-this-session
-  - list-devin-user-request-all-session
-  - list-devin-user-request-this-repo
+  - list-devin-user-requests
+  - list-devin-user-requests
+  - list-devin-user-requests
   - list-devin-global-skills
   - report-table
   - search-files-patterns
@@ -100,9 +100,9 @@ related:
 - ถ้า user ไม่ระบุ `limit` ใช้ `50` เป็นค่า default
 - ใช้ `/report-table` สำหรับ output
 
-- ใช้ /list-devin-user-request-in-this-session ถ้าจำเป็น
-- ใช้ /list-devin-user-request-all-session ถ้าจำเป็น
-- ใช้ /list-devin-user-request-this-repo ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
+- ใช้ /list-devin-user-requests ถ้าจำเป็น
 - ใช้ /list-devin-global-skills ถ้าจำเป็น
 - ใช้ /use-bun-shell ถ้าจำเป็น
 

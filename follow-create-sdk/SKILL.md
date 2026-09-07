@@ -59,7 +59,7 @@ related:
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web`
-   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-ios-android`
+   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-framework-capacitor`
 4. ใช้ `/report-table` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
 ### 4. Build And Ask Options
@@ -106,11 +106,11 @@ related:
 - ใช้ /follow-create-biome-plugins ถ้าจำเป็น
 - ใช้ /follow-create-browser-extensions ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-create-discord-bot ถ้าจำเป็น
+- ใช้ /follow-create-bot ถ้าจำเป็น
 - ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
 - ใช้ /follow-create-github-action ถ้าจำเป็น
-- ใช้ /follow-create-line-bot ถ้าจำเป็น
+- ใช้ /follow-create-bot ถ้าจำเป็น
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น
 - ใช้ /follow-create-nvim-plugins ถ้าจำเป็น
 - ใช้ /follow-create-obsidian-plugin ถ้าจำเป็น
@@ -120,7 +120,7 @@ related:
 - ใช้ /follow-create-rust-cli ถ้าจำเป็น
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
-- ใช้ /follow-create-telegram-bot ถ้าจำเป็น
+- ใช้ /follow-create-bot ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vscode-extensions ถ้าจำเป็น

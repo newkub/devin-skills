@@ -5,13 +5,17 @@ argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
   - productionize-implementation
-  - implement-mock
+  - productionize-implementation
   - run-verify
   - git-commit
   - git-push
   - merge-github-pr
   - resolve-errors
----
+  - --
+  - idea-features
+  - open-github
+  - create-github-pr
+
 
 ## Goal
 
@@ -45,7 +49,7 @@ related:
 > Goal: แก้ไขตาม issue
 
 1. ทำ `/productionize-implementation` สำหรับ production code
-2. ถ้ามี MOCK/FAKE/STUB → ทำ `/implement-mock`
+2. ถ้ามี MOCK/FAKE/STUB → ทำ `/productionize-implementation`
 3. ถ้าต้อง refactor → ทำ `/refactor`
 4. ทำการเปลี่ยนแปลงตาม acceptance criteria
 
@@ -103,3 +107,5 @@ related:
 - Branch ถูก push พร้อม PR
 - PR มี `Closes #<issue>`
 - Issue ถูกปิดหรืออัปเดต status
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-plan-from-github-issue)

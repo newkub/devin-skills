@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-eslint-plugins
   - follow-tool-agent-browser
-  - follow-tool-astgrep
+  - use-astgrep
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
@@ -179,7 +179,7 @@ export default defineConfig([
 
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
-- ใช้ /follow-tool-astgrep ถ้าจำเป็น
+- ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

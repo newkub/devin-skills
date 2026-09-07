@@ -11,13 +11,21 @@ related:
   - use-scripts
   - ship
   - open-files-in-web
----
+  - --
+  - report-workspace-graph
+  - list-workspaces
+  - check-monorepo
+  - follow-monorepo
+  - follow-tasks
+  - check-circular-dependencies
 
 ## Goal
 
 สร้าง Mermaid source code จาก prompt, คำอธิบาย, หรือไฟล์ทีให้มา บันทึกเป็นไฟล์ `.md` หรือ `.mmd` ทีเปิด render ได้ด้วย Mermaid Live Editor, VS Code Mermaid extension, หรือ markdown preview
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-mermaid-diagram-all-workspace)
 
 ใช้สำหรับสร้าง diagram ทั่วไป เช่น flowchart, sequence, class, state, er, gantt, gitgraph, pie, user-journey, quadrant, mindmap สำหรับ project ใดก็ได้
 รองรับทั้งการระบุ prompt โดยตรง และการอ่านจากไฟล์/รูปภาพ ถ้าต้องการ visualize จาก code ให้ใช้ `/report-architecture-diagram` หรือ `/report-workspace-graph` แทน

@@ -9,7 +9,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
-  - refactor-all-workspace
+  - refactor-workspace
 ---
 
 ## Goal
@@ -139,7 +139,7 @@ const response = await invoke('greet', { name: 'World' })
 2. รัน `bun run dev` สำหรับ development server
 3. ใช้ `.tsx` สำหรับ components
 4. กำหนด types สำหรับ props
-5. ทำ `/refactor-all-workspace` เพื่อปรับปรุงโค้ด
+5. ทำ `/refactor-workspace` เพื่อปรับปรุงโค้ด
 
 ### 9. Build And Test
 

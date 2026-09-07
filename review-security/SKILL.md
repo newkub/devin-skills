@@ -11,13 +11,31 @@ related:
   - review-observability
   - scan-codebase
   - improve-security
----
+  - --
+  - roleplay-stakeholder
+  - review-by-engineer
+  - report-table
+  - suggest-next-action
+  - ask-me
+  - check-cors-policy
+  - check-rate-limiting
+  - check-security-headers
+  - check-webhook
+  - check-unicode-homoglyph
+  - check-supply-chain
+  - check-source-maps
+  - check-file-permissions
+  - check-idempotency
+  - check-hardcoded-values
+  - check-infra
 
 ## Goal
 
 Review security ครอบคลุมทุก dimension ของ application security พร้อม aggregate findings, severity, และ review score
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-by-security)
 
 ครอบคลุม: authentication, authorization, OWASP Top 10, secrets management, injection prevention, CORS/CSP, API security, session/token management, encryption, file upload security, security scoring
 

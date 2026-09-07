@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้ Turborepo v2.x สำหร
 argument-hint: "[scope]"
 related:
   - follow-monorepo
-  - follow-package-manifest
+  - follow-tasks
   - follow-tool-taze
   - follow-tool-vite
   - follow-tool-vitest
@@ -111,7 +111,7 @@ related:
 - หลีกเลี่ยง imports ข้าม package boundaries
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-tool-taze ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-vitest ถ้าจำเป็น

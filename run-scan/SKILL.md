@@ -3,9 +3,9 @@ name: run-scan
 description: รัน ast-grep scan เพื่อตรวจสอบ codebase ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - follow-tool-astgrep
+  - use-astgrep
   - update-project-rules
-  - report-ansi
+  - report
   - loop-until-complete
   - resolve-errors
 ---
@@ -24,7 +24,7 @@ related:
 
 > Goal: Setup And Write Rules
 
-1. ทำ `/follow-tool-astgrep` เพื่อติดตั้งและตั้งค่า `ast-grep`
+1. ทำ `/use-astgrep` เพื่อติดตั้งและตั้งค่า `ast-grep`
 2. ตรวจสอบ `sgconfig.yml` มี `ruleDirs: rules` และมี `scan` script ใน `package.json`
 3. ถ้ายังไม่มี rules ให้ทำ `/update-project-rules` เพื่อสร้าง rules ใน `rules/` directory
 4. ทำ `/update-project-rules` เพื่อตรวจสอบ rules ก่อนรัน scan
@@ -34,7 +34,7 @@ related:
 > Goal: Run Scan
 
 1. รัน `bun run scan` หรือ `ast-grep scan`
-2. ทำ `/report-ansi` เพื่อจัดรูปแบบ output และระบุ issues
+2. ทำ `/report` เพื่อจัดรูปแบบ output และระบุ issues
 3. พิจารณา rules ที่ไม่เหมาะสม ว่าถูกต้องและเหมาะสมหรือไม่
 4. แก้ไข code ตาม suggestions ที่เหมาะสม หรือใช้ `--interactive` mode สำหรับ selective apply
 

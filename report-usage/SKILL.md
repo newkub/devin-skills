@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-table
   - report-file-structure
-  - report-ansi
+  - report
 ---
 
 ## Goal
@@ -41,7 +41,7 @@ related:
 
 1. ทำ `/report-table` สำหรับ top consumers, frequency, versions
 2. ทำ `/report-file-structure` สำหรับ caller tree
-3. ทำ `/report-ansi` สำหรับ status/progress
+3. ทำ `/report` สำหรับ status/progress
 4. สรุป unused, overused, deprecated usages
 
 ## Rules

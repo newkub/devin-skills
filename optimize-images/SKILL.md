@@ -58,7 +58,7 @@ Optimize รูปภาพใน project: compress PNG/JPEG, convert เป็�
 > Goal: รูปยังแสดงผลถูกต้อง
 
 1. ตรวจ output เปิดได้และ dimension ไม่เสีย (ยกเว้น resize ตาม plan)
-2. ถ้า project เป็น web app → ทำ `/run-dev` หรือ `/capture-web` verify rendering
+2. ถ้า project เป็น web app → ทำ `/run-dev` หรือ `/capture` verify rendering
 3. ตรวจ references ที่อัปเดทว่าชี้ไปไฟล์ใหม่ถูกต้อง
 
 ### 5. Report Savings

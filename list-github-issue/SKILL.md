@@ -3,7 +3,7 @@ name: list-github-issue
 description: แสดงรายการ issues ของ repository ที่ระบุบน GitHub
 argument-hint: "[repo]"
 related:
-  - open-github-issue
+  - open-github
   - create-github-issue
   - review-github-issue
   - list-github-pr
@@ -15,7 +15,7 @@ related:
 แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github-issue`, `create-github-issue`, `review-github-issue`, `list-github-pr`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github-issue`, `review-github-issue`, `list-github-pr`
 
 ใช้สำหรับดู issues ของ repository ใดๆ บน GitHub ที่ authenticated user มีสิทธิ์เข้าถึง
 

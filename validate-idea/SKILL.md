@@ -4,7 +4,7 @@ description: ตรวจสอบและประเมินไอเดี�
 argument-hint: "[scope]"
 related:
   - idea-features
-  - deep-idea-features
+  - idea-features
   - research-setup
   - deep-research
   - learn-from-web
@@ -22,7 +22,7 @@ related:
 
 ใช้กับทุกไอเดียฟีเจอร์ การเปลี่ยนแปลง หรือ proposal ที่ต้องตรวจสอบความเป็นไปได้และความคุ้มค่าก่อน execute
 
-ดูเพิ่มเติม: /deep-idea-features
+ดูเพิ่มเติม: /idea-features
 
 ## Execute
 

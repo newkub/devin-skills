@@ -8,8 +8,8 @@ related:
   - follow-create-sdk
   - follow-my-tech-stack
   - follow-your-suggestion
-  - follow-create-mobile-ios-android
-  - follow-create-telegram-bot
+  - follow-framework-capacitor
+  - follow-create-bot
 ---
 
 ## Goal
@@ -37,10 +37,10 @@ related:
 
 1. `cli` → `/follow-create-cli`
 2. `website` หรือ `web` → `/follow-create-web`
-3. `mobile` → `/follow-create-mobile-ios-android`
-4. `telegram-bot` → `/follow-create-telegram-bot`
-5. `discord-bot` → `/follow-create-discord-bot`
-6. `line-bot` → `/follow-create-line-bot`
+3. `mobile` → `/follow-framework-capacitor`
+4. `telegram-bot` → `/follow-create-bot`
+5. `discord-bot` → `/follow-create-bot`
+6. `line-bot` → `/follow-create-bot`
 7. `browser-extension` → `/follow-create-browser-extensions`
 8. `obsidian-plugin` → `/follow-create-obsidian-plugin`
 9. `vscode-extension` → `/follow-create-vscode-extensions`

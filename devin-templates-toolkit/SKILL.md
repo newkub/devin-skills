@@ -6,7 +6,7 @@ related:
   - devin-scripts-toolkit
   - follow-create-web
   - follow-create-tui
-  - create-cloudflare-project
+  - create-cloudflare-worker
   - setup-cicd
   - setup-package
   - write-how-to
@@ -24,7 +24,7 @@ related:
 - CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
 - Package setup templates สำหรับ `/setup-package`
 - Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)
-- Cloudflare templates สำหรับ `/create-cloudflare-project`
+- Cloudflare templates สำหรับ `/create-cloudflare-worker`
 
 ## Execute
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-math-equation
   - report-table
-  - report-codeblock
+  - report
   - deep-analyze
   - ask-me
   - use-scripts
@@ -101,7 +101,7 @@ related:
 
 - ใช้ /report-math-equation ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
-- ใช้ /report-codeblock ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-analyze ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
 - ใช้ /use-scripts ถ้าจำเป็น

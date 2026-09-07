@@ -8,7 +8,7 @@ related:
   - follow-tool-cargo
   - follow-my-tech-stack
   - review-techstack
-  - follow-create-mobile-ios-android
+  - follow-framework-capacitor
   - ask-me
 ---
 ## Goal
@@ -150,7 +150,7 @@ related:
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /follow-create-mobile-ios-android ถ้าจำเป็น
+- ใช้ /follow-framework-capacitor ถ้าจำเป็น
 
 ## Expected Outcome
 

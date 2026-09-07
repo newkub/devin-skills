@@ -5,18 +5,23 @@ argument-hint: "[scope]"
 related:
   - follow-create-bun-cli
   - follow-create-bun-plugins
-  - follow-runtime-bun
-  - use-bun-native-api
   - follow-best-practice
   - setup-cicd
   - use-scripts
----
+  - --
+  - use-bun-shell
+  - follow-tool-bunup
+  - deep-validate
+  - follow-create-bot
+  - convert-to-esm
 
 ## Goal
 
 ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun native APIs ให้เต็มประสิทธิภาพ โดยใช้ทั้ง Bun-specific APIs และ Web-standard APIs ที่ Bun รองรับ
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-runtime-bun, use-bun-native-api)
 
 ใช้สำหรับพัฒนาโปรเจกต์ด้วย Bun runtime ทั้ง HTTP server, file I/O, networking, database, และ utilities
 
@@ -73,7 +78,7 @@ related:
 - FFI & Low-level: `references/bun-ffi.md`
 - Other Bun APIs: `references/bun-other.md`
 - Web-standard APIs: `references/bun-web-apis.md`
-- Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `follow-runtime-bun`
+- Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `follow-lang-bun`
 
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-bun-plugins ถ้าจำเป็น

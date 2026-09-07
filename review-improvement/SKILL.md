@@ -53,7 +53,7 @@ Review scope ที่ user ระบุ (project, workspace, file, feature ห�
 | 5 | Dependencies | outdated, vulnerable, unused, licenses | `/review-dependencies` |
 | 6 | Accessibility | WCAG violations, keyboard, contrast | `/improve-accessibility` |
 | 7 | Docs | stale docs, missing guides, broken links | `/improve-docs` |
-| 8 | Tests | coverage gaps, missing edge cases | `/improve-test-everything` |
+| 8 | Tests | coverage gaps, missing edge cases | `/improve-test-coverage` |
 | 9 | Observability | missing logs, metrics, alerts | `/improve-observability` |
 
 ### 3. Collect And Deduplicate

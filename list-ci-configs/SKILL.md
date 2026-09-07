@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - resolve-cicd
   - watch-github-actions
-  - list-github-action-fail
+  - list-github-actions-fails
   - report-config-files
   - review-config
   - review-delivery
@@ -95,7 +95,7 @@ related:
 
 - ใช้ /resolve-cicd ถ้าจำเป็น
 - ใช้ /watch-github-actions ถ้าจำเป็น
-- ใช้ /list-github-action-fail ถ้าจำเป็น
+- ใช้ /list-github-actions-fails ถ้าจำเป็น
 - ใช้ /report-config-files ถ้าจำเป็น
 - ใช้ /review-config ถ้าจำเป็น
 - ใช้ /review-delivery ถ้าจำเป็น

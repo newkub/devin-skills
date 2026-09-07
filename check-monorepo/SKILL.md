@@ -4,7 +4,7 @@ description: ตรวจสอบว่า project เป็น monorepo หร
 argument-hint: "[scope]"
 related:
   - follow-monorepo
-  - follow-package-manifest
+  - follow-tasks
   - follow-tool-moonrepo
   - report-table
 ---
@@ -80,7 +80,7 @@ related:
 - ถ้าเป็น monorepo ให้ระบุ workspaces ทั้งหมดและ monorepo tool
 
 - ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-package-manifest ถ้าจำเป็น
+- ใช้ /follow-tasks ถ้าจำเป็น
 - ใช้ /follow-tool-moonrepo ถ้าจำเป็น
 
 ## Expected Outcome

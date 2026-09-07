@@ -18,7 +18,7 @@ related:
   - read-all-files
   - view-diff
   - open-in-explorer
-  - capture-terminal
+  - capture
 ---
 
 ## Goal
@@ -29,7 +29,7 @@ related:
 
 ใช้เมื่อผู้ใช้ขอให้ดูไฟล์, ชุดไฟล์ หรือ snippet ใน terminal ด้วย layout ที่อ่านง่าย — เหมาะสำหรับ `source code`, `configs`, `logs` และ `markdown` รองรับ single file, multiple files, line ranges และ git diffs
 
-ดูเพิ่มเติม: /review, /scan-codebase, /check-git-diff, /search-by-astgrep, /view-diff, /open-in-explorer, /capture-terminal
+ดูเพิ่มเติม: /review, /scan-codebase, /check-git-diff, /search-by-astgrep, /view-diff, /open-in-explorer, /capture
 
 ## Execute
 
@@ -110,7 +110,7 @@ git show HEAD~1:src/api.ts | bat -l ts  # ดูไฟล์จาก commit เ
 
 1. สรุป structure, entry points และ key symbols ที่พบ
 2. อ้างอิงตำแหน่งด้วย `file:line` format
-3. ถ้าต้องการรายงาน code block ใน chat ให้ใช้ `/report-codeblock`
+3. ถ้าต้องการรายงาน code block ใน chat ให้ใช้ `/report`
 
 ## Rules
 

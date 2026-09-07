@@ -3,9 +3,9 @@ name: watch-deploy
 description: Poll a deployed URL and report when it becomes healthy after deployment
 argument-hint: "[url]"
 related:
-  - run-watch-build
-  - run-watch-test
-  - run-watch-typecheck
+  - run-watch
+  - run-watch
+  - run-watch
   - ask-me
 ---
 
@@ -103,9 +103,9 @@ Use with static sites and web apps deployed to Cloudflare Pages, Vercel, Netlify
 - ไม่ส่ง headers ลับ เช่น API keys, โดยไม่ได้รับอนุญาต
 - หยุดทันทีเมื่อ user กด `Ctrl+C`
 
-- ใช้ /run-watch-build ถ้าจำเป็น
-- ใช้ /run-watch-test ถ้าจำเป็น
-- ใช้ /run-watch-typecheck ถ้าจำเป็น
+- ใช้ /run-watch ถ้าจำเป็น
+- ใช้ /run-watch ถ้าจำเป็น
+- ใช้ /run-watch ถ้าจำเป็น
 
 ## Expected Outcome
 

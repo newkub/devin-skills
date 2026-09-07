@@ -3,9 +3,9 @@ name: from-recent-windows-capture
 description: ดึงกลุ่มภาพ capture ล่าสุดจาก Windows Screenshots เพื่อ analyze หลายไฟล์ตามช่วงเวลา ไม่ใช่ไฟล์เดียว
 argument-hint: "[time-range-or-count]"
 related:
-  - capture-terminal
+  - capture
   - analyze-codebase-quality
-  - report-ansi
+  - report
   - report-table
   - suggest-next-action
 ---
@@ -88,9 +88,9 @@ related:
 - ไม่ลบ ไม่ย้าย ไม่แก้ไขไฟล์ต้นฉบับ
 - ถ้าไฟล์เยอะเกิน 20 ให้ confirm ก่อน
 
-- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /analyze-codebase-quality ถ้าจำเป็น
-- ใช้ /report-ansi ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

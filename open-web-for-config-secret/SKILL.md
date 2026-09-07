@@ -4,12 +4,12 @@ description: อ่าน .env.example แล้วเปิด URLs สำห�
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
-  - follow-service-infisical
+  - follow-secret-manager
   - follow-create-product
   - follow-create-web
   - follow-deploy
   - deploy-to-cloudflare
-  - follow-create-cloudflare-token
+  - create-cloudflare-token
   - deploy-to-vercel
   - deploy-to-railway
   - improve-error-handling
@@ -154,12 +154,12 @@ Map variable names ไปยัง services:
 - ไม่แนะนำให้เก็บค่าลง `.env`
 - ถ้า `open-web-for-config-secret` ถูกเรียกเพราะ app เปิดไม่ได้จาก missing keys → ตรวจสอบว่า app มี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
 
-- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /follow-create-product ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
+- ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-railway ถ้าจำเป็น
 

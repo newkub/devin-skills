@@ -4,13 +4,13 @@ description: คิดวิเคราะห์ปัญหาอย่าง�
 argument-hint: "[topic]"
 related:
   - rethink
-  - pondering
   - deep-plan
   - ask-me
   - deep-debug
   - analyze-root-cause-analysis
   - suggest-next-action
----
+  - --
+  - deep-research
 
 ## Goal
 
@@ -18,7 +18,9 @@ related:
 
 ## Scope
 
-ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/pondering`) และไม่ใช่การวางแผนงาน (ใช้ `/deep-plan`)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: pondering, deep-pondering)
+
+ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`) และไม่ใช่การวางแผนงาน (ใช้ `/deep-plan`)
 
 ## Execute
 
@@ -109,7 +111,7 @@ related:
 
 - เป็น low-risk action ที่ทำได้เลย
 - คำตอบชัดเจนจาก context หรือ memory
-- ต้องการแค่ทบทวนก่อนตัดสินใจ (ใช้ `/pondering`)
+- ต้องการแค่ทบทวนเบาๆ ก่อนตัดสินใจ
 - เป็น reversible change ที่แก้ไขง่าย
 - การวิเคราะห์นานกว่าการทำจะเสียเวลามากกว่า
 
@@ -148,15 +150,7 @@ related:
 - ยึดติดทางเลือกแรกที่คิดได้
 - ไม่พิจารณา worst-case scenario
 
-### 6. Deep Thinking vs Pondering
-
-- `/deep-thinking` = วิเคราะห์เชิงระบบ แบ่งปัญหา สร้างทางเลือก ตรวจสอบ assumptions
-- `/pondering` = ทบทวนมุมมอง ชั่งน้ำหนัก พิจารณาผลกระทบ ระบุความไม่แน่ใจ
-- ใช้ `/deep-thinking` เมื่อต้องวิเคราะห์ปัญหาเชิงโครงสร้าง
-- ใช้ `/pondering` เมื่อต้องทบทวนและพิจารณาก่อนตัดสินใจ
-- สามารถใช้ `/pondering` ก่อน `/deep-thinking` เพื่อทบทวนก่อนวิเคราะห์
-
-### 7. Time Budget
+### 6. Time Budget
 
 - ถ้าเป็นปัญหาเล็ก ใช้เวลาวิเคราะห์ไม่เกิน 3 นาที
 - ถ้าเป็นปัญหากลาง ใช้เวลาวิเคราะห์ไม่เกิน 10 นาที
@@ -167,7 +161,7 @@ related:
 
 เชื่อมโยงกับ workflows อื่น:
 
-- ทำ `/pondering` ก่อน deep thinking เพื่อทบทวนก่อนวิเคราะห์
+- ทบทวนมุมมอง (pondering) ก่อนเริ่มวิเคราะห์ได้ภายใน skill นี้
 - ทำ `/deep-debug` สำหรับปัญหาที่ต้องแก้ไข
 - ทำ `/analyze-root-cause-analysis` สำหรับหาสาเหตุหลัก
 - ทำ `/deep-plan` สำหรับวางแผนงานหลังวิเคราะห์

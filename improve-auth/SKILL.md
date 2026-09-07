@@ -7,7 +7,7 @@ related:
   - follow-lib-better-auth
   - check-security-headers
   - check-secrets-leak
-  - review-by-security
+  - review-security
   - report-review
 ---
 
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-- รับ findings จาก `/review-auth` หรือ `/review-by-security`
+- รับ findings จาก `/review-auth` หรือ `/review-security`
 - ครอบคลุม: session/cookie security, JWT handling, password storage, RBAC/permissions, OAuth flows, rate limiting บน auth endpoints, secrets rotation
 - Action-oriented: แก้ไขจริง — auth changes เสี่ยงสูง ต้อง test ครบ
 

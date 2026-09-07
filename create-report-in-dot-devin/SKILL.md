@@ -7,7 +7,7 @@ related:
   - report-file-structure
   - report-what-you-do
   - report-table
-  - deep-idea-features
+  - idea-features
   - analyze-project
   - scan-codebase
   - open-files-in-web
@@ -47,7 +47,7 @@ related:
 
 1. ทำ `/analyze-project` เพื่อดู features ที่มี
 2. ทำ `/scan-codebase` เพื่อดู structure
-3. ถ้าเกี่ยวข้องกับ features → ทำ `/deep-idea-features` แบบไม่เปิด web app เพื่อดู new/extended features
+3. ถ้าเกี่ยวข้องกับ features → ทำ `/idea-features` แบบไม่เปิด web app เพื่อดู new/extended features
 4. ถ้ามี plan อยู่ → อ่าน `.devin/plan/<workspace>/<title>-<time>.md`
 
 ### 3. Report File Structure

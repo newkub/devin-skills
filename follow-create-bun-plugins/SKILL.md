@@ -4,7 +4,7 @@ description: สร้าง Bun plugins ด้วย Bun.plugin API สำห�
 argument-hint: "[scope]"
 related:
   - follow-lang-bun
-  - follow-runtime-bun
+  - follow-lang-bun
   - follow-create-bun-cli
   - follow-tool-bunup
   - follow-my-tech-stack
@@ -225,7 +225,7 @@ export function yamlPlugin(): BunPlugin {
 ## Guide
 
 - `follow-lang-bun` — Bun native APIs
-- `follow-runtime-bun` — Bun runtime setup
+- `follow-lang-bun` — Bun runtime setup
 - `follow-create-bun-cli` — Bun CLI setup
 - `follow-tool-bunup` — Bunup bundler
 - [Bun Plugin Docs](https://bun.com/docs/runtime/plugins)

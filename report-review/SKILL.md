@@ -6,7 +6,7 @@ related:
   - deep-review
   - resolve-errors
   - report-table
-  - report-ansi
+  - report
   - suggest-next-action
   - report
 ---
@@ -40,7 +40,7 @@ related:
 
 1. ใช้ `/report-table` สำหรับตาราง findings แยกตาม dimension
 2. ใช้ `/report-table` สำหรับสรุปภาพรวม
-3. ใช้ `/report-ansi` สำหรับความคืบหน้ารวม
+3. ใช้ `/report` สำหรับความคืบหน้ารวม
 
 ### 3. Report Dimension Findings
 
@@ -95,7 +95,7 @@ related:
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
-3. ใช้ `/report-ansi` สำหรับรายงานสถานะ/progress/logs
+3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ

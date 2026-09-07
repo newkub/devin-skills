@@ -46,7 +46,7 @@ related:
 7. Security → `review-delivery`
 8. Performance → `/deep-review` (comprehensive) หรือ `review-delivery` (specific)
 9. Research → `deep-research` (multi-source) หรือ `learn-from-web` (single-source)
-10. Thinking → `deep-thinking` (systematic) หรือ `pondering` (reflective)
+10. Thinking → `deep-thinking` (systematic) หรือ `deep-thinking` (reflective)
 
 ### 3. Execute Selected Workflows
 
@@ -71,7 +71,7 @@ related:
 
 - ใช้ `deep-*` workflows เมื่อ task มีความซับซ้อนสูง หรือ risk สูง
 - ไม่ใช้ `deep-*` workflows สำหรับ task ง่ายๆ ที่ทำได้โดยตรง
-- ถ้าไม่แน่ใจ → ทำ `pondering` เพื่อพิจารณาก่อนเลือก
+- ถ้าไม่แน่ใจ → ทำ `deep-thinking` เพื่อพิจารณาก่อนเลือก
 
 ### 2. Selection Criteria
 

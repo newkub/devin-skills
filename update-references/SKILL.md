@@ -4,18 +4,22 @@ description: อัปเดท references ทั้งหมดที่เก�
 argument-hint: "[scope]"
 related:
   - use-in-another-skills
-  - edit-relative
   - search-files-patterns
   - check-file-relations
   - report-table
   - deep-validate
----
+  - --
+  - use-astgrep
+  - deep-analyze-by-use-scripts
+  - edit-manual
 
 ## Goal
 
 อัปเดท references ทั้งหมดที่เกี่ยวข้องเมื่อมีการแก้ไข ย้าย หรือลบไฟล์ ครอบคลุมทุกตำแหน่งที่เก็บ references
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: edit-relative)
 
 ใช้เมื่อ:
 - แก้ไขไฟล์ที่ถูกอ้างอิงจากไฟล์อื่น
@@ -134,7 +138,7 @@ related:
 - ตรวจสอบว่าไม่มี broken imports
 
 - ใช้ /use-in-another-skills ถ้าจำเป็น
-- ใช้ /edit-relative ถ้าจำเป็น
+- ใช้ /update-references ถ้าจำเป็น
 - ใช้ /search-files-patterns ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น

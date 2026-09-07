@@ -4,7 +4,7 @@ description: เปิด directory ใน Windows Terminal ด้วย wt -d <
 argument-hint: "[path]"
 related:
   - view-files
-  - capture-terminal
+  - capture
   - from-recent-windows-capture
 ---
 
@@ -66,7 +66,7 @@ related:
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /view-files ถ้าจำเป็น
-- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /from-recent-windows-capture ถ้าจำเป็น
 
 ## Expected Outcome

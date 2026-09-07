@@ -9,13 +9,28 @@ related:
   - report-table
   - suggest-next-action
   - productionize-implementation
----
+  - --
+  - report-before
+  - create-devin-global-skills
+  - check-skills-related
+  - use-in-another-skills
+  - follow-create-devin-global-skills
+  - update-devin-global-skills
+  - deep-thinking
+  - scan-codebase
+  - follow-skills-map
+  - idea-convert-my-global-cli-to-skills
+  - idea-improve-files-naming
+  - update-references
+  - check-reference
 
 ## Goal
 
 สร้างไอเดียตาม user context วิเคราะห์ gaps, needs และ opportunities แล้วรายงานเป็นตาราง
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-idea, idea-new-skills, idea-create-devin-skills-global)
 
 ใช้เมื่อผู้ใช้บอกว่า "ขอ idea" หรือต้องการไอเดียสำหรับงานใดๆ ครอบคลุม features, UX/UI, refactor, และ improvements
 

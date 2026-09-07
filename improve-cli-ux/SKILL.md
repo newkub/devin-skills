@@ -5,7 +5,7 @@ argument-hint: "[command-or-entry]"
 related:
   - run-test-cli
   - improve-error-messages
-  - capture-terminal
+  - capture
   - report-before-after
 ---
 
@@ -26,7 +26,7 @@ related:
 > Goal: map commands, flags และ output ทั้งหมด
 
 1. หา CLI entry และ command registrations (commander, citty, clap, cobra ตาม ecosystem)
-2. รัน `--help` ทุก command — บันทึก output ปัจจุบัน (`/capture-terminal` ถ้าต้องการ)
+2. รัน `--help` ทุก command — บันทึก output ปัจจุบัน (`/capture` ถ้าต้องการ)
 3. รัน error cases — ดู error messages และ exit codes ปัจจุบัน
 
 ### 2. Evaluate Against Conventions

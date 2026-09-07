@@ -13,13 +13,23 @@ related:
   - review-architecture
   - update-references
   - run-verify
----
+  - --
+  - run-test
+  - run-typecheck
+  - analyze-project
+  - run-lint
+  - review-quality
+  - read-all-files
+  - check-long-files
+
 
 ## Goal
 
 Refactor workspace members (packages, crates, modules) ให้มี single responsibility, high cohesion, low coupling และแนะนำ workspace members จาก workspace ที่ควรนำมาใช้
 
 ## Scope
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: refactor-all-workspace)
 
 ใช้กับ project หรือ monorepo ที่ต้อง split/merge/relocate workspace members หรือแนะนำ workspace members จาก workspace
 
@@ -89,7 +99,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 2. ทำ `/check-circular-dependencies` และ `/review-quality`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline
 4. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-5 (สูงสุด 3 ครั้ง → stop/report)
-5. ทำ `/update-references` และ `/edit-relative` สำหรับทุก references ที่เปลี่ยน
+5. ทำ `/update-references` และ `/update-references` สำหรับทุก references ที่เปลี่ยน
 
 ## Rules
 

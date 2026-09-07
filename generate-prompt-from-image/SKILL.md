@@ -5,7 +5,7 @@ argument-hint: "[image-path] [style]"
 related:
   - gen-ai-images
   - gen-image-character
-  - report-codeblock
+  - report
 ---
 
 ## Goal
@@ -58,7 +58,7 @@ related:
 1. ตัดส่วนที่ไม่จำเป็น เช่น "Sure, here is..."
 2. ถ้า prompt ยาวเกินไป → ย่อให้เหลือประมาณ 100 คำ
 3. ถ้า user ต้องการ style เฉพาะ → เติม parameters เช่น `--ar 16:9` หรือ `--v 6`
-4. แสดงผลด้วย `/report-codeblock`
+4. แสดงผลด้วย `/report`
 
 ## Rules
 

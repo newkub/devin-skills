@@ -4,7 +4,7 @@ description: แก้ findings จาก review-dependencies ทั้ง outda
 argument-hint: "[finding-or-package]"
 related:
   - review-dependencies
-  - check-unused-deps
+  - check-unused
   - update-version-to-latest
   - follow-tool-taze
   - follow-tool-renovate
@@ -53,7 +53,7 @@ related:
 
 > Goal: ลบ deps ที่ไม่จำเป็น
 
-1. ใช้ `/check-unused-deps` — ลบ deps ที่ไม่มี imports จริง (ตรวจ transitive/dev usage ก่อน)
+1. ใช้ `/check-unused` — ลบ deps ที่ไม่มี imports จริง (ตรวจ transitive/dev usage ก่อน)
 2. dedupe duplicate versions (`pnpm dedupe`, lockfile cleanup)
 3. ย้าย deps ที่ผิดที่: runtime deps ใน devDependencies หรือกลับกัน
 4. สำหรับ heavy deps → ทำ `/optimize-deps` หาทางเลือกเบากว่า

@@ -33,7 +33,7 @@ related:
 > Goal: วิเคราะห์สาเหตุที่ช้า
 
 1. flag: `sleep`/`setTimeout`/`waitFor` ที่ใช้ fixed delays แทน polling/conditions
-2. flag: real network/DB/filesystem ใน tests ที่ mock ได้ (`/implement-mock`, `/follow-tool-msw`)
+2. flag: real network/DB/filesystem ใน tests ที่ mock ได้ (`/productionize-implementation`, `/follow-tool-msw`)
 3. flag: setup ที่สร้างทั้ง app/DB ต่อ test file ทั้งที่ share ได้
 4. flag: tests รัน sequential ทั้งที่ parallel ได้ (ไม่มี shared state)
 5. flag: coverage instrumentation ที่เปิดตลอดทั้งที่ใช้เฉพาะ CI

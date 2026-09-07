@@ -3,14 +3,16 @@ name: use-in-another-skills
 description: หา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่
 argument-hint: "[skill-name]"
 related:
-  - idea-use-skills-in-another-skills
   - report-table
   - list-devin-global-skills
   - scan-codebase
   - check-reference
   - update-references
   - review-diff
----
+  - --
+  - suggest-next-action
+  - report
+
 
 ## Goal
 
@@ -57,7 +59,7 @@ related:
 2. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
 3. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
 4. ถ้า skill ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `idea-convert-my-global-cli-to-skills`
-5. ใช้ `/idea-use-skills-in-another-skills` เพื่อขยายไอเดียการใช้ร่วม
+5. วิเคราะห์ reverse usage — skill นี้ควรถูกเรียกโดย skills ไหน — ตาม capability ที่ merge มา
 6. ใช้ `/report-table` สำหรับนำเสนอผล
 
 ### 5. Update Related Skills
@@ -107,4 +109,6 @@ related:
 - ไอเดีย skills ใหม่ที่ควรสร้างถูกระบุพร้อม rationale
 - `related` ใน frontmatter อัปเดตครบถ้วน
 - การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
-- มี `/idea-use-skills-in-another-skills` และ `/report-table` ใช้ในการวิเคราะห์
+- มี `/report-table` ใช้ในการนำเสนอผลการวิเคราะห์
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: idea-use-skills-in-another-skills)

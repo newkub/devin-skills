@@ -6,8 +6,8 @@ related:
   - follow-math-concepts
   - review-performance
   - review-quality
-  - check-unused-files
-  - check-unused-deps
+  - check-unused
+  - check-unused
 ---
 
 ## Goal
@@ -55,7 +55,7 @@ related:
 > Goal: รัน independent workflows แบบ parallel ใน orchestrator workflows
 
 1. ระบุ sub-workflows ที่ independent — ไม่มี data dependency กัน
-2. รัน independent sub-workflows พร้อมกัน เช่น `/review-quality`, `/check-unused-files`, `/check-unused-deps`
+2. รัน independent sub-workflows พร้อมกัน เช่น `/review-quality`, `/check-unused`, `/check-unused`
 3. รัน dependent sub-workflows แบบ sequential เช่น `/deep-validate` หลัง `/review-*`
 4. รวบรวม results จากทุก sub-workflow ก่อน aggregate report
 5. ถ้า sub-workflow หนึ่งพบ critical issue → หยุดและ validate ก่อนดำเนินต่อ

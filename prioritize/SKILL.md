@@ -6,7 +6,7 @@ related:
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
-  - pondering
+  - deep-thinking
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 คำนวณ priority จาก impact และ effort
 
-1. ทำ `/pondering` เพื่อทบทวนมุมมองหลายด้านก่อนตัดสินใจ priority
+1. ทำ `/deep-thinking` เพื่อทบทวนมุมมองหลายด้านก่อนตัดสินใจ priority
 
 | Impact | Effort | Priority | Rationale |
 |--------|--------|----------|-----------|

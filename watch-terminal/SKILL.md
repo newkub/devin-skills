@@ -3,7 +3,7 @@ name: watch-terminal
 description: เปิดเบราว์เซอร์และ watch terminal ทุก 5 วินาที พร้อมจัดการ error อัตโนมัติ
 argument-hint: "[scope]"
 related:
-  - capture-terminal
+  - capture
   - open-in-windows-terminal
   - record-video-terminal
   - resolve-errors
@@ -84,7 +84,7 @@ Watch terminal ทุก 5 วินาที พร้อมจัดการ 
 - ตรวจสอบ build status
 - ตรวจสอบ hot reload ทำงานได้
 
-- ใช้ /capture-terminal ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /open-in-windows-terminal ถ้าจำเป็น
 - ใช้ /record-video-terminal ถ้าจำเป็น
 

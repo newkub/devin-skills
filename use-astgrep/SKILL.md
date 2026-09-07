@@ -3,13 +3,16 @@ name: use-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ refactoring ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
-  - use-astgrep-programatic
+  - use-astgrep-programmatic
   - search-by-astgrep
   - update-project-rules
   - check-code-structure
   - replace
-  - follow-tool-astgrep
----
+  - --
+  - follow-tool-agent-browser
+  - follow-tool-usage
+  - follow-best-practice
+  - setup-cicd
 
 ## Goal
 
@@ -17,7 +20,9 @@ related:
 
 ## Scope
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-astgrep`
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-astgrep)
+
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/use-astgrep`
 
 ดูเพิ่มเติม: /search-by-astgrep
 
@@ -75,7 +80,7 @@ related:
 3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
 4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
 5. ใช้ `--interactive` สำหรับ interactive edit session
-6. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programatic`
+6. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
 7. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules

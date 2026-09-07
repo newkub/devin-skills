@@ -4,8 +4,8 @@ description: ค้นหา code patterns ด้วย ast-grep โดยใช
 argument-hint: "[pattern]"
 related:
   - use-astgrep
-  - use-astgrep-programatic
-  - follow-tool-astgrep
+  - use-astgrep-programmatic
+  - use-astgrep
   - search-files-patterns
   - search-similar
   - replace
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ one-off search บน codebase โดยไม่ต้องตั้งค่า `sgconfig.yml` หรือ project rules รองรับทั้ง structural patterns, regex, และ YAML rule ชั่วคราว
 
-ดูเพิ่มเติม: /use-astgrep-programatic, /search-files-patterns, /search-similar
+ดูเพิ่มเติม: /use-astgrep-programmatic, /search-files-patterns, /search-similar
 
 ## Execute
 
@@ -42,7 +42,7 @@ related:
 2. ถ้า user ให้ regex → ใช้ `ast-grep run --pattern 'REGEX'`
 3. ถ้าต้องการ match โครงสร้าง → ใช้ YAML rule ชั่วคราวผ่าน `--inline-rules`
 4. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
-5. ถ้า pattern ซับซ้อน → ทำ `/follow-tool-astgrep` หรือ `/use-astgrep`
+5. ถ้า pattern ซับซ้อน → ทำ `/use-astgrep` หรือ `/use-astgrep`
 
 ### 3. Search
 

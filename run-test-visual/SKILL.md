@@ -3,7 +3,7 @@ name: run-test-visual
 description: รัน visual regression testing เทียบ screenshots ก่อน/หลังต่อ route หรือ component
 argument-hint: "[scope]"
 related:
-  - capture-image-app-to-screenshot
+  - capture
   - follow-lib-agent-browser
   - run-test-e2e
   - review-uxui
@@ -36,7 +36,7 @@ related:
 > Goal: ได้ screenshots ชุดปัจจุบัน
 
 1. ทำ `/run-dev` เพื่อเปิด app หรือใช้ preview build
-2. ใช้ `/capture-image-app-to-screenshot` หรือ `agent-browser` capture ทุก route/component ใน scope
+2. ใช้ `/capture` หรือ `agent-browser` capture ทุก route/component ใน scope
 3. Fix viewport (เช่น `1280x720`) และ disable animations ถ้าจำเป็นเพื่อลด noise
 4. เก็บลง `tests/visual/current/`
 
@@ -85,7 +85,7 @@ related:
 - ครอบทุก route ใน scope และอย่างน้อย critical flows
 - ระบุ routes ที่ข้ามและเหตุผล (auth-required, external deps)
 
-- ใช้ /capture-image-app-to-screenshot ถ้าจำเป็น
+- ใช้ /capture ถ้าจำเป็น
 - ใช้ /follow-lib-agent-browser ถ้าจำเป็น
 - ใช้ /run-test-e2e ถ้าจำเป็น
 

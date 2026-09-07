@@ -7,11 +7,11 @@ related:
   - update-devin-global-skills
   - update-devin-global-rules
   - update-devin-harness
-  - follow-global-rules
+  - update-devin-global-rules
   - deep-validate
   - review-rules
   - review-devin-global-skills
-  - git-commit-at-devin-skills-global
+  - git-commit
   - improve-review-cli
   - ship
   - report
@@ -48,7 +48,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/review-rules` to check `AGENTS.md` and rules coverage.
 2. Run `/review-devin-global-skills` when editing skills.
 3. Run `/deep-validate` to verify correctness.
-4. Run `/git-commit-at-devin-skills-global` or `/ship` to commit changes.
+4. Run `/git-commit` or `/ship` to commit changes.
 5. Run `/report` to summarize results.
 
 ## Rules
@@ -67,7 +67,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - `git: /follow-tool-git`
 - `github: /follow-github`
 - `skill-format: /follow-create-devin-global-skills` (create) and `/update-devin-global-skills` (update)
-- `global-rules: /follow-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
+- `global-rules: /update-devin-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
 - `review-cli: /improve-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
 
@@ -94,8 +94,8 @@ Core:
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-devin-global-rules: /update-devin-global-rules`
 - `update-devin-harness: /update-devin-harness`
-- `follow-global-rules: /follow-global-rules`
-- `git-commit-at-devin-skills-global: /git-commit-at-devin-skills-global`
+- `update-devin-global-rules: /update-devin-global-rules`
+- `git-commit: /git-commit`
 - `improve-review-cli: /improve-review-cli`
 - `ship: /ship`
 - `report: /report`

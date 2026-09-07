@@ -3,14 +3,20 @@ name: idea-features
 description: สร้างไอเดียฟีเจอรใหม่/ขยาย และตอบกลับในแชท ไม่สร้างไฟล์
 argument-hint: "[topic]"
 related:
-  - deep-idea-features
   - bench-competitors
   - suggest-me
   - enhance-prompt
   - analyze-project
   - report-table
   - report-uxui-sketch
----
+  - --
+  - create-report-in-dot-devin
+  - create-plan-in-dot-devin
+  - create-files-in-os-temp
+  - open-files-in-web
+  - productionize-implementation
+  - deep-review-codebase
+
 
 ## Goal
 
@@ -24,7 +30,7 @@ related:
 - ไม่สร้าง report/plan ไฟล์
 - ไม่ implement
 - ถ้าต้องการ benchmark features เทียบคู่แข่งก่อนคิดไอเดีย → ใช้ `/bench-competitors` (features dimension อยู่ใน step 2)
-- ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/deep-idea-features`
+- ถ้าต้องการ report/plan/implementation ให้ส่งต่อ `/plan` หรือ `/implement-features-to-mvp`
 
 - ดูเพิ่มเติม: /report-uxui-sketch
 
@@ -63,7 +69,7 @@ related:
 1. แสดง summary 1-2 บรรทัด
 2. แสดง tables ในแชท
 3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ plan/report/implementation → แนะนำ `/deep-idea-features`
+4. ถ้าต้องการ plan/report/implementation → แนะนำ `/plan` หรือ `/implement-features-to-mvp`
 5. ถ้าต้องการถามต่อ → ใช้ `/suggest-me`
 
 ## Rules
@@ -83,9 +89,9 @@ related:
 
 ### 3. Suggest Deep Workflow
 
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/deep-idea-features`
-- ถ้า user ต้องการ plan หรือ report → แนะนำ `/deep-idea-features`
-- ถ้า user ต้องการแค่ไอเดียเพิ่ม → ใช้ `/idea-features` ต่อ
+- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
+- ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
+- ถ้า user ต้องการแค่ไอเดียเพิ่ม → ทำต่อใน skill นี้
 
 ### 4. Format
 
@@ -104,3 +110,5 @@ related:
 - ไม่มี implementation เกิดขึ้น
 - มีคำแนะนำถัดไปชัดเจน
 
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-idea-features)

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-service-cloudflare
-  - follow-service-infisical
+  - follow-secret-manager
   - follow-best-practice
   - learn-from-web
   - setup-cicd
@@ -66,7 +66,7 @@ related:
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /follow-service-infisical ถ้าจำเป็น
+- ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /learn-from-web ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

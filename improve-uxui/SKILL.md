@@ -3,18 +3,22 @@ name: improve-uxui
 description: เปิด browser แล้ว capture หน้าเว็บ เพื่อ review และปรับปรุง UX/UI ด้วย stakeholder feedback
 argument-hint: "[url-or-route]"
 related:
-  - capture-image-app-to-screenshot
+  - capture
   - review-uxui
   - review-by-stakeholder
   - report-table
   - resolve-errors
   - refactor
   - restructure
----
+  - --
+  - test-uxui-by-agent-browser
+  - report
+  - ask-me
+
 
 ## Goal
 
-เปิด browser แล้วใช้ `capture-image-app-to-screenshot` หรือ `agent-browser` เพื่อ capture หน้าเว็บ แล้ว review และ improve UX/UI ด้วย `/review-by-stakeholder`
+เปิด browser แล้วใช้ `capture` หรือ `agent-browser` เพื่อ capture หน้าเว็บ แล้ว review และ improve UX/UI ด้วย `/review-by-stakeholder`
 
 ## Scope
 
@@ -36,7 +40,7 @@ related:
 > Goal: เปิด browser และ capture หน้าเว็บ
 
 1. เปิด dev server ถ้าจำเป็น (`npm run dev`, `bun dev` ฯลฯ)
-2. ใช้ `/capture-image-app-to-screenshot` เพื่อ capture ทุก route/component/view ลง `public/screenshots/`
+2. ใช้ `/capture` เพื่อ capture ทุก route/component/view ลง `public/screenshots/`
 3. ถ้าไม่ครอบคลุมหน้าเว็บนั้น → ใช้ `agent-browser open <url> --headed` แล้ว `agent-browser screenshot` แทน
 4. ถ้าเปิดไม่ได้ ให้ใช้ `browser-preview` tool แทน
 5. ใช้ `agent-browser snapshot -i` เพื่อบันทึก interactive elements และ state
@@ -136,3 +140,5 @@ related:
 - ปรับปรุง UX/UI ตาม feedback สำเร็จ
 - มี before/after screenshots พร้อมสรุป
 - ไม่มี TODO/MOCK/placeholder
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: improve-uxui-by-agent-browser)

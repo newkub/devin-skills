@@ -7,11 +7,11 @@ related:
   - create-report-in-dot-devin
   - deep-research
   - deep-review-codebase
-  - pondering
+  - deep-thinking
   - deep-plan
   - report-table
   - idea-features
-  - deep-idea-features
+  - idea-features
   - ask-me
   - suggest-next-action
   - ship
@@ -27,7 +27,7 @@ related:
 ครอบคลุมทุกมิติของ product: features, performance, UX/UI, architecture, DX, security, scalability, business ไม่ใช่แค่มิติใดมิติหนึ่ง
 
 - มิติ features ทำ inline ใน skill นี้ (merged จาก `/bench-features`) — ใช้ `/deep-research` รวบรวม features คู่แข่ง, สร้าง comparison matrix, หา gaps
-- ถ้าต้องการไอเดีย features ใหม่ → ใช้ `/idea-features` หรือ `/deep-idea-features`
+- ถ้าต้องการไอเดีย features ใหม่ → ใช้ `/idea-features` หรือ `/idea-features`
 
 ดูเพิ่มเติม: /deep-review-codebase
 
@@ -70,7 +70,7 @@ related:
 
 > Goal: วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
 
-1. ทำ `/pondering` เพื่อทบทวน priority และผลกระทบ
+1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
 2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
 3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
@@ -101,7 +101,7 @@ related:
 1. ทำ `/update-docs` เพื่ออัปเดต `docs/project.md`
 2. อัปเดต status ในตารางเปรียบเทียบ
 3. Re-benchmark หลังการปรับปรุง แล้วทำ `/create-report-in-dot-devin` ใหม่
-4. ทำ `/suggest-next-action` โดยแนะนำ `/deep-idea-features` ถ้าต้องการขยายไอเดียต่อ
+4. ทำ `/suggest-next-action` โดยแนะนำ `/idea-features` ถ้าต้องการขยายไอเดียต่อ
 
 ## Rules
 
@@ -133,7 +133,7 @@ related:
 - ไม่สรุปว่า project ด้อยกว่าถ้าไม่มีหลักฐาน
 - แยก `fact` (คู่แข่งมีจริง) ออกจาก `assumption` (คาดว่ามี)
 - ทุก gap ต้อง map เป็น feature ที่ implement ได้ — ไม่รายงาน gap ที่กว้างเกินไปโดยไม่แตกเป็น feature ย่อย
-- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-in-dot-devin` หรือ `/deep-idea-features`
+- ผลลัพธ์ต้องพร้อมส่งต่อ `/create-plan-in-dot-devin` หรือ `/idea-features`
 
 ### 5. Implementation Discipline
 

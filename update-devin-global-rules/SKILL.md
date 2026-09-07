@@ -6,11 +6,18 @@ related:
   - update-devin-global-skills
   - update-devin-global-subagents
   - use-in-another-skills
-  - follow-global-rules
-  - report-idea
+  - idea
   - list-devin-global-skills
   - scan-codebase
----
+  - --
+  - update-references
+  - deep-validate
+  - review-rules
+  - alignment
+  - list-devin-global-subagents
+  - report-table
+  - suggest-next-action
+
 
 ## Goal
 
@@ -58,7 +65,7 @@ related:
 1. สำหรับ rules ทีซ้ำหรือควรเป็น global → สรุป draft สำหรับ `global_rules.md`
 2. ระบุ skills/subagents ทีต้องลบหรืออ้างอิงแทน
 3. ทำ `/report-table` คอลัมน์: Rule, Source, Target, Risk, Action
-4. ถ้าต้องสร้าง rule ใหม่ → ทำ `/report-idea`
+4. ถ้าต้องสร้าง rule ใหม่ → ทำ `/idea`
 
 ### 5. Apply Changes
 
@@ -66,7 +73,7 @@ related:
 
 1. สำรอง `global_rules.md` ก่อนแก้ไข
 2. แก้ไข `global_rules.md` โดยใช้ `edit` หรือ `write` ตาม draft
-3. หรือใช้ `/follow-global-rules` เพื่อ sync global rules กับ skills
+3. หรือ sync global rules กับ skills ตาม flow ของ skill นี้
 4. อัปเดต skills ทีมี rules ซ้ำโดยลบหรือเปลี่ยนเป็น reference
 5. อัปเดต subagents ที่จำเป็น
 6. ใช้ `/update-references` เพื่อ sync
@@ -125,3 +132,5 @@ related:
 - ไม่มีข้อขัดแย้งระหว่าง global rules และ skill rules
 - มีรายงานการเปลี่ยนแปลง
 - ผ่าน validation
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-global-rules)

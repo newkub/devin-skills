@@ -3,7 +3,7 @@ name: report-before
 description: รายงานสถานะปัจจุบันตาม context ก่อนเริ่มทำอะไร
 argument-hint: "[scope]"
 related:
-  - report-ansi
+  - report
   - report-progress
   - suggest-next-action
 ---
@@ -34,7 +34,7 @@ related:
 1. ถ้าข้อมูลมีหลาย columns ทีต้องเปรียบเทียบ → ใช้ตาราง
 2. ถ้าต้องการเน้นลำดับความสำคัญ → ใช้ numbered list
 3. ถ้าเหมาะสม → ผสมทั้งสองรูปแบบ
-4. ถ้าเป็นรายงานความคืบหน้า → อ้างอิง `/report-ansi`
+4. ถ้าเป็นรายงานความคืบหน้า → อ้างอิง `/report`
 5. ถ้าเป็นรายงานสถานะ → อ้างอิง `/report-progress`
 
 ### 3. Format Output

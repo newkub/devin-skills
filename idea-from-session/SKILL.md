@@ -3,11 +3,11 @@ name: idea-from-session
 description: Mine session ปัจจุบันหา workflow ที่ทำซ้ำหรือ manual แล้วเสนอเป็น skill candidates
 argument-hint: "[min-candidates]"
 related:
-  - idea-new-skills
+  - idea
   - save-to-devin-global-skills
-  - list-devin-user-request-in-this-session
+  - list-devin-user-requests
   - follow-create-devin-global-skills
-  - report-idea
+  - idea
 ---
 
 ## Goal
@@ -26,7 +26,7 @@ related:
 
 > Goal: รวบรวมสิ่งที่ทำใน session
 
-1. ทบทวน user requests และงานที่ทำจริงใน session — ใช้ `/list-devin-user-request-in-this-session` ถ้าต้องการ list
+1. ทบทวน user requests และงานที่ทำจริงใน session — ใช้ `/list-devin-user-requests` ถ้าต้องการ list
 2. หา command sequences ที่ทำซ้ำ (git workflows, validation scripts, batch operations)
 3. หา manual multi-step processes ที่ควรเป็น workflow เดียว
 
@@ -53,7 +53,7 @@ related:
 
 > Goal: ให้ user เลือก
 
-1. ใช้ `/report-idea` หรือตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
+1. ใช้ `/idea` หรือตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
 2. จัดลำดับตาม reusability × frequency ที่เห็นใน session
 3. ถาม user เลือกตัวที่จะสร้าง — ไม่สร้างเอง
 
@@ -66,7 +66,7 @@ related:
 
 ### 2. No Duplicates
 
-- เช็ค skills ที่มีก่อนเสนอ — ใช้ `/idea-new-skills` flow สำหรับ gap analysis ทั่วไป
+- เช็ค skills ที่มีก่อนเสนอ — ใช้ `/idea` flow สำหรับ gap analysis ทั่วไป
 - ถ้าซ้อนกับที่มี → เสนอขยาย skill นั้น
 
 ### 3. User-Driven

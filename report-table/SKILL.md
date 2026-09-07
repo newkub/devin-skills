@@ -6,7 +6,7 @@ related:
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
-  - report-ansi
+  - report
 ---
 
 ## Goal
@@ -98,7 +98,7 @@ related:
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
 2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ bullet หรือ numbered list สำหรับสรุป points
-4. ใช้ `report-ansi` สำหรับรายงานสถานะ/progress/logs
+4. ใช้ `report` สำหรับรายงานสถานะ/progress/logs
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ suggest-next-action ท้าย report เสมอ
 

@@ -10,7 +10,7 @@ related:
   - run-build
   - run-test
   - refactor
-  - use-bun-native-api
+  - follow-lang-bun
 ---
 
 ## Goal

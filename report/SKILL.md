@@ -4,10 +4,15 @@ description: ตอบในแชทเป็นตารางพร้อม�
 argument-hint: "[scope]"
 related:
   - report-table
-  - report-ansi
   - report-progress
   - review-writing
----
+  - --
+  - report-plan
+  - report-in-html
+  - follow-single-responsibility
+  - suggest-next-action
+  - scan-codebase
+
 
 ## Goal
 
@@ -39,9 +44,9 @@ related:
 1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-table`
 2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-table` พร้อมคอลัมน์ "No." เป็นคอลัมน์แรก
 3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
-4. ถ้าเป็นรายงานความคืบหน้า ใช้ `/report-ansi`
+4. ถ้าเป็นรายงานความคืบหน้า/สถานะ ใช้ progress bar ตาม [references/format-ansi.md](references/format-ansi.md) หรือ `/report-progress`
 5. ถ้าเป็นรายงานสถานะ ใช้ `/report-progress`
-6. ถ้าเป็นรายงาน error ใช้ `/report-ansi`
+6. ถ้าเป็นรายงาน error ใช้ code block format ตาม [references/format-codeblock.md](references/format-codeblock.md)
 
 ### 3. Apply Grouping And Sorting
 
@@ -116,3 +121,5 @@ related:
 - ข้อมูลที่อ่านง่าย
 - รูปแบบที่เหมาะสมกับประเภทข้อมูล
 - ตอบกลับในแชทเท่านั้น ไม่สร้างไฟล์แยก
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-numbered-bullet, report-codeblock, report-ansi)

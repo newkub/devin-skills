@@ -4,13 +4,14 @@ argument-hint: "[--repo <owner/repo>]"
 description: ตรวจสอบและแก้ไข GitHub Actions workflow runs ทีล้มเหลวสำหรับ repo ปัจจุบันหรือ repo ทีระบุ
 related:
   - resolve-cicd
-  - resolve-all-github-actions-fails
   - search-project-in-drive-d
   - resolve-errors
   - report-table
   - suggest-next-action
   - ask-me
----
+  - --
+  - resolve-all-cloudflare-fails
+
 
 ## Goal
 
@@ -95,7 +96,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ไม่ expose secrets หรือ tokens ใน output
 
 ### 5. Account-wide
-- ถ้า user ต้องการ resolve ทั่วทุก repo ให้ส่งต่อไปยัง `/resolve-all-github-actions-fails`
+- ถ้า user ต้องการ resolve ทั่วทุก repo ให้ใช้ scope `--all` ของ skill นี้
 
 ## Expected Outcome
 
@@ -103,3 +104,5 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ตารางที sort ตามวันที failure เกิด
 - ข้อมูล workflow, branch, commit, url, action taken พร้อม
 - ไม่มีการ push/merge หรือแก้ไข repo โดยไม่ได้รับอนุญาต
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: resolve-all-github-actions-fails)

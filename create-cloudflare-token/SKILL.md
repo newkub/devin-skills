@@ -3,12 +3,17 @@ name: create-cloudflare-token
 description: สร้าง Cloudflare API token สำหรับ use case ทีระบุ ทังแบบ dashboard URL และ API (เมื่อมี seed token)
 argument-hint: "<use-case>"
 related:
-  - follow-create-cloudflare-token
   - follow-secret-manager
   - deploy-to-cloudflare
   - follow-service-cloudflare
   - open-web-for-config-secret
----
+  - --
+  - create-cloudflare-worker
+  - open-web
+  - follow-my-tech-stack
+  - review-techstack
+  - resolve-cicd
+
 
 ## Goal
 
@@ -145,7 +150,6 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 4. Account resource ควรระบุ account ID เฉพาะ ไม่ใช้ `*` ถ้าไม่จำเป็น
 5. สำหรับ Cloudflare Access ตรวจให้ account เปิด Zero Trust แล้วหรือ token มีสิทธิ์ enable ได้
 
-- ใช้ /follow-create-cloudflare-token ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
@@ -157,3 +161,5 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 - User สร้าง token และเก็บใน secret manager เอง
 - Token มี permissions ตรงกับ use case (Workers, D1, Pages, R2, KV, Access, Zero Trust)
 - Project สามารถใช้ token สำหรับ deploy หรือจัดการ Cloudflare resources ต่อไป
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-cloudflare-tokens, follow-create-cloudflare-token)

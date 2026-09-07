@@ -8,7 +8,7 @@ related:
   - deep-review-codebase
   - review-uxui
   - optimize-codebase-everything
-  - capture-component
+  - capture
 ---
 
 ## Goal
@@ -40,7 +40,7 @@ related:
 2. ใช้ design tokens สำหรับทุก component
 3. Document ทุก component และ pattern
 4. กำหนด component variants (sizes, states, colors)
-5. ทำ `/capture-component` เพื่อบันทึกภาพ component แต่ละตัวสำหรับ documentation
+5. ทำ `/capture` เพื่อบันทึกภาพ component แต่ละตัวสำหรับ documentation
 
 ### 3. Apply To Platforms
 

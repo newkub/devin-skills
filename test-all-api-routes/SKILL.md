@@ -7,7 +7,7 @@ related:
   - check-routes-status
   - check-api-contract
   - gen-openapi
-  - list-website-all-routes
+  - report-uxui-all-routes
   - report
   - resolve-errors
   - use-scripts
@@ -20,7 +20,7 @@ related:
 ## Scope
 
 - ใช้ /check-routes-status ถ้าจำเป็น
-- ใช้ /list-website-all-routes ถ้าจำเป็น
+- ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - Safe by default: ยิงเฉพาะ `GET`/`HEAD`/`OPTIONS` — mutation methods ต้องใช้ `-AllowWrite` พร้อม user confirmation
 - ไม่รันกับ production ยกเว้น user ยืนยัน
 
@@ -34,7 +34,7 @@ related:
 2. เลือก route source ตามลำดับ:
 - ถ้ามี routes file → ใช้ `-RoutesFile <file>`
 - ถ้ามี OpenAPI spec URL → ใช้ `-SpecUrl <url>`
-- ถ้ามี source code → ทำ `/list-website-all-routes` แล้วนำ paths มา test
+- ถ้ามี source code → ทำ `/report-uxui-all-routes` แล้วนำ paths มา test
 3. ถ้าหา routes ไม่ได้เลย → stop และ report ว่าต้องการ source ใด
 
 ### 2. Run Route Checks
@@ -89,7 +89,7 @@ related:
 
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /check-api-contract ถ้าจำเป็น
-- ใช้ /list-website-all-routes ถ้าจำเป็น
+- ใช้ /report-uxui-all-routes ถ้าจำเป็น
 - ใช้ /gen-openapi ถ้าจำเป็น
 
 - ใช้ /use-scripts ถ้าจำเป็น
