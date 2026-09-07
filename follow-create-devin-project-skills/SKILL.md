@@ -40,7 +40,7 @@ related:
 > Goal: ไม่ซ้ำกับ skills ที่มีและตรง conventions
 
 1. ตรวจ `.devin/skills/` ของ project และ `%APPDATA%\devin\skills` ว่ามี skill คล้ายกันไหม
-2. ทำ `/check-skills-related` หรือ `/suggest-related-skills` ถ้าพบ skill ที่อาจซ้ำ
+2. ทำ `/check-skills-related` หรือ `/use-related-skills` ถ้าพบ skill ที่อาจซ้ำ
 3. อ่าน `AGENTS.md` root และ workspace เพื่อดึง project conventions, commands และ tech stack
 4. ทำ `/prepare-skills-context` เพื่อเลือก template และ directory pattern
 

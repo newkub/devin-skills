@@ -27,6 +27,8 @@ related:
   - improve-security
   - improve-readability
   - update-version-to-latest
+  - use-related-skills
+  - use-in-another-skills
 ---
 
 ## Goal
@@ -67,7 +69,8 @@ related:
 3. ถ้ามี `@files` → อัปเดตเฉพาะ skill ที่ระบุ
 4. ตรวจว่าแต่ละ `<skill-name>\SKILL.md` มีอยู่ — ถ้าไม่มี → ส่งต่อ `/follow-create-devin-global-skills`
 5. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ
-6. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ที่เกี่ยวข้องก่อนดำเนินการต่อ
+6. ทำ `/use-related-skills` เพื่อหา skills ที่เกี่ยวข้องกับ skill เป้าหมาย
+7. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ที่เกี่ยวข้องก่อนดำเนินการต่อ
 
 ### 3. Manage Context And Token Usage
 
@@ -153,6 +156,7 @@ related:
 4. อัปเดต `AGENTS.md` ถ้ามีการ rename หรือย้าย skill
 5. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/update-devin-global-rules`
 6. ตรวจว่า skills อื่นที่อ้างถึง skill นี้ยังถูกต้อง — broken references แก้ทันที
+7. ทำ `/use-in-another-skills` เพื่อหา skills อื่นที่ควรใช้ skill นี้ หรือถูกใช้โดย skill นี้ แล้วอัปเดต references ให้ครบ
 
 ### 10. Ship
 

@@ -1,5 +1,5 @@
 ---
-name: suggest-related-skills
+name: use-related-skills
 description: หา skills ที่เกี่ยวข้องและสร้างไอเดีย skills ใหม่
 argument-hint: "[skill-name]"
 related:

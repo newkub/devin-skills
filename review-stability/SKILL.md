@@ -8,7 +8,7 @@ related:
   - deep-analyze
   - update-project-rules
   - run-review
-  - suggest-related-skills
+  - use-related-skills
   - report-table
 ---
 
@@ -77,7 +77,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 > Goal: ไม่ซ้ำซ้อนกับ review skills อื่น
 
-1. ทำ `/suggest-related-skills` เพื่อหา skills ที่เกี่ยวข้อง
+1. ทำ `/use-related-skills` เพื่อหา skills ที่เกี่ยวข้อง
 2. ถ้าพบ performance issues ให้ทำ `/deep-review`
 3. ถ้าพบ concurrency issues ให้ทำ `/deep-review`
 4. ถ้าพบ security issues ให้ทำ `/deep-review`

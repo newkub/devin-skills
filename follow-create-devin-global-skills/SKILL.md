@@ -8,8 +8,8 @@ related:
   - create-devin-global-skills
   - follow-skills-map
   - check-skills-related
-  - suggest-related-skills
-  - update-devin-global-skills
+  - use-related-skills
+  - use-in-another-skills
   - follow-my-tech-stack
   - review-techstack
   - follow-create-cli
@@ -42,7 +42,7 @@ related:
 3. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
 4. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ที่เกี่ยวข้อง
 5. ทำ `/check-skills-related` หรือ `/scan-codebase` เพื่อหา skills ที่ซ้ำหรือคล้ายกัน
-6. ถ้าซ้ำ → ทำ `/suggest-related-skills` เพื่อเสนอ extend หรือ rename แทนการสร้างทับ
+6. ถ้าซ้ำ → ทำ `/use-related-skills` เพื่อเสนอ extend หรือ rename แทนการสร้างทับ
 7. ห้ามสร้างทับ skill ที่มีอยู่โดยไม่ได้รับ confirmation
 
 ### 2. Select Template And Structure
@@ -118,7 +118,8 @@ related:
 
 1. ทำ `/review-devin-global-skills` เพื่อตรวจ conventions, naming, structure
 2. ทำ `/update-devin-global-rules` เพื่อตรวจว่าไม่ขัด `global_rules.md`
-3. ส่งต่อ `/update-devin-global-skills` สำหรับ validate, update references และ ship
+3. ทำ `/use-in-another-skills` เพื่อหา skills อื่นที่ควรใช้ skill ใหม่ หรือใช้ skill อื่นใน skill ใหม่
+4. ส่งต่อ `/update-devin-global-skills` สำหรับ validate, update references และ ship
 
 ## Rules
 

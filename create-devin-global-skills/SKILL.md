@@ -3,8 +3,8 @@ name: create-devin-global-skills
 description: สร้าง devin global skill ใหม่ตามมาตรฐาน repo
 argument-hint: "[idea or topic]"
 related:
-  - suggest-related-skills
-  - use-another-skills
+  - use-related-skills
+  - use-in-another-skills
   - update-devin-global-skills
   - scan-codebase
   - follow-create-devin-global-skills
@@ -46,7 +46,7 @@ related:
 > Goal: ตรวจว่าไม่ซ้ำกับ skills ที่มี
 
 1. ทำ `/scan-codebase` เพื่อหา skills ที่คล้ายกัน
-2. ทำ `/suggest-related-skills` เพื่อพิจารณาความเกี่ยวข้อง/extend/rename
+2. ทำ `/use-related-skills` เพื่อพิจารณาความเกี่ยวข้อง/extend/rename
 3. ถ้าซ้ำมาก → แนะนำ `/update-devin-global-skills` แทน
 
 ### 3. Research

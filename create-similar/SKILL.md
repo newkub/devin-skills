@@ -6,7 +6,7 @@ related:
   - at-this-repo
   - update-devin-global-skills
   - review-quality
-  - suggest-related-skills
+  - use-related-skills
   - edit-by-use-scripts
   - deep-validate
   - search-files-patterns
@@ -96,7 +96,7 @@ related:
 
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /suggest-related-skills ถ้าจำเป็น
+- ใช้ /use-related-skills ถ้าจำเป็น
 - ใช้ /edit-by-use-scripts ถ้าจำเป็น
 
 ## Expected Outcome
