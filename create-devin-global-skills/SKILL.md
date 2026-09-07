@@ -105,6 +105,6 @@ related:
 - `SKILL.md` มี frontmatter ครบถ้วนและเนื้อหาสอดคล้อง goal
 - references ไม่ broken
 - ผ่าน `/deep-validate`
-- ใช้ร่วมกับ `/suggest-related-skills` และ `/use-another-skills` ในกระบวนการสร้าง
+- ใช้ร่วมกับ `/follow-create-devin-global-skills` ในกระบวนการสร้าง
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: new-skills)
