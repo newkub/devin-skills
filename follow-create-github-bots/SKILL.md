@@ -82,7 +82,7 @@ related:
 4. หรือใช้ `@octokit/webhooks`:
    ```ts
    import { Webhooks } from "@octokit/webhooks";
-   const webhooks = new Webhooks({ secret: process.env.WEBHOOK_SECRET });
+   const webhooks = new Webhooks({ secret: Bun.env.WEBHOOK_SECRET });
    webhooks.on("issues.opened", async ({ payload }) => { ... });
    ```
 5. แยก business logic ออกจาก webhook wiring → `src/domain/`

@@ -17,7 +17,7 @@ related:
 
 - Config files: `*.json`, `*.yaml`, `*.toml`, `*.ini`, `*.config.*`, `wrangler.toml`, `next.config.*`, `vite.config.*`, `tsconfig.json`
 - เทียบ config ข้าม env (`.env.*`, `config/*.yaml`, deployment configs)
-- เทียบ config keys กับ code ที่ consume (`process.env.*`, `import.meta.env.*`, config loaders)
+- เทียบ config keys กับ code ที่ consume (`process.env.*`, `Bun.env.*`, `import.meta.env.*`, config loaders)
 - Read-only: รายงาน drift — แก้ไขผ่าน `/update-config`
 
 ## Execute
@@ -52,7 +52,7 @@ related:
 
 > Goal: หา config keys ที่ code ไม่ใช้หรือ code อ่านแต่ไม่มีใน config
 
-1. ค้น code สำหรับ config access patterns (`process.env.X`, `config.get`, `useRuntimeConfig`)
+1. ค้น code สำหรับ config access patterns (`process.env.X`, `Bun.env.X`, `config.get`, `useRuntimeConfig`)
 2. เทียบกับ keys ที่ define ใน config files
 3. flag: keys ใน config ที่ไม่มี code ใช้ (dead config) และ code อ่าน key ที่ไม่มีใน config
 

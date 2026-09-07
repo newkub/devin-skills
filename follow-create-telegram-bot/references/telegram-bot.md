@@ -26,7 +26,7 @@ Create a bot and get token via @BotFather:
 
 - `bot.start()`: long-polling, easiest for local dev.
 - `webhookCallback(bot, 'express'|'hono'|'fastify')`: use for production with a public URL.
-- Webhook path should include token as a secret, e.g. `/webhook/${process.env.BOT_TOKEN}`.
+- Webhook path should include token as a secret, e.g. `/webhook/${Bun.env.BOT_TOKEN}`.
 
 ## Key Concepts
 

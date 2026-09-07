@@ -61,7 +61,7 @@ related:
 > Goal: เชื่อมต่อ Telegram Bot API
 
 1. ติดตั้ง library ทีเลือก เช่น `bun add grammy`
-2. สร้าง `src/bot.ts` ด้วย token จาก `process.env.BOT_TOKEN`
+2. สร้าง `src/bot.ts` ด้วย token จาก `Bun.env.BOT_TOKEN`
 3. สร้าง `src/index.ts` เป็น entry point
 4. สร้าง `src/commands/start.ts`, `src/commands/help.ts` เป็นตัวอย่าง
 5. เพิ่ม middleware สำหรับ logging, error handling, rate limiting
