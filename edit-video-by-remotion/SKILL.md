@@ -9,7 +9,6 @@ related:
   - follow-lang-bun
   - follow-lib-animejs
   - follow-lib-iconify
-  - review-assets
 ---
 
 ## Goal

@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-project-all-drive-d
 description: อัปเดต project ทั้งหมดใน drive D โดย pull/fetch/sync submodules/อัปเดต project files ตาม state
 argument-hint: "[filter]"

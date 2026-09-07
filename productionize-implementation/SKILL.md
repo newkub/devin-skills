@@ -13,7 +13,6 @@ related:
   - refactor
   - update-references
   - review-security
-  - review-security
   - run-test-all
   - run-verify
   - test-usage

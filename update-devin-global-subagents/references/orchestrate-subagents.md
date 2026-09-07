@@ -1,18 +1,4 @@
-﻿---
-name: follow-devin-global-subagents
-description: แบ่งงานซับซ้อนเป็น subtasks แล้วใช้ global subagents ตาม job roles ทำขนานกัน
-argument-hint: "[task]"
-related:
-  - follow-agents-md
-  - update-agents-md
-  - use-subagents
-  - list-devin-global-subagents
-  - review-workflow
-  - review-then-fix
-  - deep-validate
-  - ship
-  - report
----
+# Orchestrate Subagents
 
 ## Goal
 
@@ -21,8 +7,6 @@ related:
 ## Scope
 
 ใช้เมื่องานมีหลายด้าน เช่น frontend + backend + QA + DevOps หรือต้องการมุมมองจากหลาย roles พร้อมกัน
-
-ดูเพิ่มเติม: /follow-agents-md, /update-agents-md
 
 ## Execute
 
@@ -41,7 +25,7 @@ related:
 
 1. ทำ `/list-devin-global-subagents` เพื่อดู subagent pool ที่มี
 2. เลือก role ตามความเชี่ยวชาญที่ต้องการ
-3. ถ้าไม่มี role ที่ต้องการ → ทำ `/use-related-skills` หรือสร้าง AGENT.md ใหม่ตาม `/follow-devin-global-subagents/templates/`
+3. ถ้าไม่มี role ที่ต้องการ → ทำ `/use-related-skills` หรือสร้าง AGENT.md ใหม่ตาม `/update-devin-global-subagents`
 4. ระบุว่าแต่ละ subagent ต้องทำ subtask ไหน
 
 ### 3. Spawn Subagents
@@ -113,4 +97,3 @@ related:
 - ผลลัพธ์ถูก merge และ review แล้ว
 - ผ่าน `/deep-validate`
 - มีรายงานสรุปจากแต่ละ role
-

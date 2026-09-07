@@ -4,8 +4,8 @@ description: Devin/Cascade AI coding assistant สำหรับ autonomous sof
 argument-hint: "[scope]"
 related:
   - follow-create-devin-plugins
-  - follow-devin-global-subagents
-  - follow-devin-skills
+  - update-devin-global-subagents
+  - follow-devin-global-skills
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
@@ -105,8 +105,8 @@ related:
 - Follow security best practices
 
 - ใช้ /follow-create-devin-plugins ถ้าจำเป็น
-- ใช้ /follow-devin-global-subagents ถ้าจำเป็น
-- ใช้ /follow-devin-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
+- ใช้ /follow-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - review-config
   - report-config-files
-  - follow-devin-skills
+  - follow-devin-global-skills
   - follow-tool-mise
   - follow-tool-moonrepo
   - update-project
@@ -172,7 +172,7 @@ related:
 
 - ต้องทำ `/review-config` ก่อน update
 - ไม่แก้ไขก่อนมี findings และ priority
-- ถ้า project ใหญ่หรือ monorepo ซับซ้อน → ใช้ `/follow-devin-global-subagents`
+- ถ้า project ใหญ่หรือ monorepo ซับซ้อน → ใช้ `/update-devin-global-subagents`
 
 ### 2. Prefer Shared And Extends
 
@@ -196,7 +196,7 @@ related:
 ### 5. Ecosystem Aware
 
 - ใช้ conventions ของ Bun, pnpm, Node, Rust, Python ตามทีตรวจพบ
-- ใช้ `/follow-devin-skills` เพื่อหา config skills เฉพาะทาง
+- ใช้ `/follow-devin-global-skills` เพื่อหา config skills เฉพาะทาง
 
 - ใช้ /update-project ถ้าจำเป็น
 - ใช้ /report-idea-cleanup-files-in-computer ถ้าจำเป็น

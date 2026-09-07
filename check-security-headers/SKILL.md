@@ -5,7 +5,6 @@ argument-hint: "[url-or-config]"
 related:
   - review-security
   - analyze-attack-surface
-  - review-security
   - report-table
 ---
 

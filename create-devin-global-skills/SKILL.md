@@ -92,13 +92,11 @@ related:
 |-----|--------|--------|--------|----------|
 | 1 | `check-*` | Detector — ตรวจจุดเดียว เร็ว deterministic | pass/fail + locations | ไม่ |
 | 2 | `review-*` | Assessor — ประเมิน 1 มิติ | findings + severity + evidence | ไม่ |
-| 3 | `improve-*` | Fixer ฝั่ง quality — correctness, security, docs, UX | code ที่แก้แล้ว | ใช่ |
-| 4 | `optimize-*` | Fixer ฝั่ง resource — ต้องมี metric วัดได้ (size, ms, MB, $) | code ที่เร็ว/เบาขึ้น | ใช่ |
-| 5 | `deep-*` | Orchestrator หลายขั้น/หลายมิติ | dispatch ไป skill ย่อย | ตามย่อย |
+| 3 | `deep-*` | Orchestrator หลายขั้น/หลายมิติ | dispatch ไป skill ย่อย | ตามย่อย |
 
-- `improve-*`/`optimize-*` ควรมี `review-*` หรือ `check-*` คู่ใน `related` ถ้าเป็นไปได้
-- ทิศทางเดียว: `improve/optimize` → `review` → `check` — ห้ามย้อนกลับ
-- ถ้า fix ที่ไม่มีตัวเลขวัด → ห้ามใช้ `optimize-*`
+- ห้ามสร้าง `improve-*` หรือ `optimize-*` ใหม่ — fixer ถูกยุบรวมเป็น section `## Fix` ใน `review-*` ที่ตรง domain (ทำงานเฉพาะเมื่อ user confirm)
+- ทิศทางเดียว: `check` → `review` → `## Fix` — ห้ามย้อนกลับ
+- fix ใดๆ ให้เขียนเป็น `references/fix-*.md` แล้วอ้างจาก section `## Fix` ของ review skill
 - ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge-files`)
 
 ### 5. References

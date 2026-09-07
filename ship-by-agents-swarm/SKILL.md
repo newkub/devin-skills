@@ -6,7 +6,7 @@ related:
   - ship
   - follow-parallel
   - use-subagents
-  - follow-devin-global-subagents
+  - update-devin-global-subagents
   - use-scripts
   - use-astgrep
   - run-verify
@@ -21,7 +21,7 @@ related:
 
 ## Goal
 
-Ship งานโดย fan-out ทุก lane ที่ทำขนานกันได้แบบ async parallel — ใช้ `use-scripts`, `use-astgrep`, `follow-devin-global-subagents` และ `follow-parallel` เต็มประสิทธิภาพ — แล้ว merge ผลและ verify ทุกอย่างให้ถูกต้องก่อน ship จริง
+Ship งานโดย fan-out ทุก lane ที่ทำขนานกันได้แบบ async parallel — ใช้ `use-scripts`, `use-astgrep`, `update-devin-global-subagents` และ `follow-parallel` เต็มประสิทธิภาพ — แล้ว merge ผลและ verify ทุกอย่างให้ถูกต้องก่อน ship จริง
 
 ## Scope
 
@@ -60,7 +60,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 > Goal: ส่งทุก lane ทำงานพร้อมกัน
 
-1. ทำตาม `references/fan-out.md` — spawn subagents ต่อ lane ผ่าน `/follow-devin-global-subagents` หรือ `/use-subagents`
+1. ทำตาม `references/fan-out.md` — spawn subagents ต่อ lane ผ่าน `/update-devin-global-subagents` หรือ `/use-subagents`
 2. รัน tool calls ที่ independent พร้อมกันในข้อความเดียวตาม `/follow-parallel`
 3. งาน mechanical จำนวนมาก (rename, codemod, scan) ให้ `/use-scripts` หรือ `/use-astgrep` แทน subagent
 4. ทุก lane ต้องมี deliverable และ acceptance criteria ชัดเจน

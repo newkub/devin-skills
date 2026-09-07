@@ -7,7 +7,6 @@ related:
   - update-devin-global-skills
   - review-quality
   - review-redundancy
-  - review-quality
   - deep-validate
   - report-table
   - suggest-next-action

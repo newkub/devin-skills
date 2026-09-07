@@ -1,4 +1,4 @@
-﻿---
+---
 name: suggest-next-action
 description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
 argument-hint: "[context]"
@@ -6,7 +6,7 @@ related:
   - loop-continuous
   - follow-enter-dot
   - follow-agents-md
-  - follow-devin-global-subagents
+  - update-devin-global-subagents
   - report-before
   - ask-me
   - ship
@@ -80,7 +80,7 @@ related:
 7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-references`
 8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
 9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
-10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
+10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
 11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/idea-features` ถ้าต้องการ plan/implementation
 
 ### 5. Present Options
@@ -160,7 +160,7 @@ related:
 ใช้ `/follow-agents-md` และ subagents อย่างถูกต้อง
 
 - ถ้า `AGENTS.md` มีอยู่ → แนะนำ `/follow-agents-md` ก่อน ไม่แนะนำทำเองโดยตรง
-- ถ้างานต้องใช้หลาย roles/perspectives → แนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents`
+- ถ้างานต้องใช้หลาย roles/perspectives → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents`
 - ห้ามแนะนำ subagent หรือ skill ที่ไม่เกี่ยวข้องกับ task
 - ตรวจสอบ `related` และ `AGENTS.md` ก่อนอ้างอิง workflow หรือ subagent
 - ถ้าไม่แน่ใจว่าควรใช้ subagent ใด → ทำ `/ask-me` ก่อน
@@ -192,7 +192,7 @@ related:
 - การทำงานมีทิศทางชัดเจน
 - ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
-- ถ้างานซับซ้อน multi-role จะแนะนำ `/follow-devin-global-subagents` หรือ `/use-subagents` ตาม context
+- ถ้างานซับซ้อน multi-role จะแนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
 - ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea-features` หรือ `/idea-features` ตาม context
 - สิ้นสุดด้วย `/ask-me` เพื่อให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
 

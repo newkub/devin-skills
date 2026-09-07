@@ -6,7 +6,7 @@
 
 วัดและแก้ web performance — LCP (loading), INP (interactivity), CLS (visual stability), long tasks, TTI, third-party scripts — ให้ผ่าน thresholds ที่ดี (LCP ≤2.5s, INP ≤200ms, CLS ≤0.1)
 
-รวม scope จาก `/optimize-web-vitals` ที่ถูก merge เข้าตัวนี้
+รวม scope จาก `optimize-web-vitals` ที่ถูก merge เข้าตัวนี้
 
 ## Scope
 

@@ -8,8 +8,8 @@ related:
   - setup-cicd
   - setup-package
   - setup-release
-  - follow-devin-skills
-  - follow-devin-global-subagents
+  - follow-devin-global-skills
+  - update-devin-global-subagents
   - follow-tool-mise
   - follow-tool-moonrepo
   - deep-validate
@@ -83,7 +83,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 ### 2. Ecosystem Aware
 
 - ใช้ conventions ตาม tech stack
-- ใช้ `/follow-devin-skills` เพื่อหา config-related skills
+- ใช้ `/follow-devin-global-skills` เพื่อหา config-related skills
 - ถ้า monorepo → ใช้ `/follow-tool-moonrepo`
 
 ### 3. Comprehensive Coverage
@@ -106,7 +106,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - เก็บเฉพาะ config หลักๆ ที่มีผลต่อ project
 
 - ใช้ /list-ci-configs ถ้าจำเป็น
-- ใช้ /follow-devin-global-subagents ถ้าจำเป็น
+- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 

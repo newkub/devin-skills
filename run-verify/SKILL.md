@@ -1,4 +1,4 @@
-﻿---
+---
 name: run-verify
 description: รัน verify แบบครบวงจรบน local หรือ CI/CD ตามขนาด project
 argument-hint: "[scope]"

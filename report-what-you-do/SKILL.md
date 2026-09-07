@@ -1,4 +1,4 @@
-﻿---
+---
 name: report-what-you-do
 description: รายงานสิ่งที agent กำลังทำ ทำไม และขั้นตอนถัดไปแบบ real-time
 argument-hint: "[scope]"

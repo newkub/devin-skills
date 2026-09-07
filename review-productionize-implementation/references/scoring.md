@@ -1,4 +1,4 @@
-﻿# Implementation Completeness Score Formula
+# Implementation Completeness Score Formula
 
 ## Metrics
 

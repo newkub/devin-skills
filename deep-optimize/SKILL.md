@@ -1,6 +1,6 @@
 ---
 name: deep-optimize
-description: Optimize codebase ครบทุก layer — frontend, API, DB, bundle, SEO, a11y, cost — dispatch ไป optimize-*/improve-* ตาม domain พร้อม validate
+description: Optimize codebase ครบทุก layer — frontend, API, DB, bundle, SEO, a11y, cost — dispatch ไป `## Fix` section ของ review-* ตาม domain พร้อม validate
 argument-hint: "<target>"
 allowed-tools:
   - read
@@ -25,7 +25,6 @@ related:
   - deep-analyze
   - review-bundle
   - review-assets
-  - review-performance
   - review-dependencies
   - review-api
   - review-database
@@ -38,7 +37,7 @@ related:
 
 ## Goal
 
-Optimize codebase แบบละเอียดครบทุก layer — performance, bundle, dead code, dependencies, architecture, SEO, accessibility, API, database, network, cost — โดย dispatch ไปยัง `optimize-*`/`improve-*` skill ที่ตรง domain แล้ว implement และ validate
+Optimize codebase แบบละเอียดครบทุก layer — performance, bundle, dead code, dependencies, architecture, SEO, accessibility, API, database, network, cost — โดย dispatch ไปยัง section `## Fix` ของ `review-*` ที่ตรง domain แล้ว implement และ validate
 
 รวม scope จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: optimize-codebase-everything, improve-codebase-everything)
 
@@ -81,13 +80,13 @@ Optimize codebase แบบละเอียดครบทุก layer — per
 
 > Goal: implement แยกตาม domain ผ่าน sub-skills
 
-Dispatch ตาม layer — ทำทีละ layer แล้ว verify ก่อนไปต่อ:
+Dispatch ตาม layer — เรียก section `## Fix` ของ review skill ที่ตรง domain ทำทีละ layer แล้ว verify ก่อนไปต่อ:
 
 | No. | Domain | Skill |
 |-----|--------|-------|
 | 1 | Bundle / code splitting / tree-shaking | `/review-bundle` |
 | 2 | Images, fonts, media | `/review-assets` |
-| 3 | Rendering / re-renders / hydration | `/review-frontend`, `/review-frontend` |
+| 3 | Rendering / re-renders / hydration | `/review-frontend` |
 | 4 | CWV / long tasks / third-party scripts | `/review-performance` |
 | 5 | Network / caching / CDN | `/review-performance` |
 | 6 | Memory leaks / GC pressure | `/review-performance` |

@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-implement
 description: Review implementation readiness ก่อน execute implement-* skills
 argument-hint: "[scope]"

@@ -103,7 +103,7 @@ related:
 2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review-codebase` และเนื้อหาเป็น executive summary: score, grade, findings count ตาม domain
 3. แต่ละ `review-*` domain เป็น section ใน report — แต่ละ section มี header ของ review skill, findings, evidence และ severity
 4. บันทึก action items เป็น `TODO` หรือ plan
-5. ทำ `/suggest-next-action` โดยแนะนำ `/improve-*` หรือ `/optimize-*` ทีเหมาะสม
+5. ทำ `/suggest-next-action` โดยแนะนำ section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/review-then-fix`
 
 ## Rules
 

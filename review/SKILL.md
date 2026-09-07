@@ -141,7 +141,7 @@ related:
 ### 4. Evidence-Based
 - ทุก finding ต้องมี file, line, หรือ reference
 - ไม่สรุป finding โดยไม่มี evidence
-- ไม่แก้ไขหรือ implement fixes — รายงาน findings เท่านั้น ส่งต่อไป `/improve-*` หรือ `/fix-*`
+- ไม่แก้ไขหรือ implement fixes — รายงาน findings เท่านั้น ส่งต่อไป section `## Fix` ของ `review-*` ที่ตรง domain หรือ `/fix`
 
 ### 5. No Duplication
 - `/review` คือ canonical entry สำหรับ routing — ไม่เรียกซ้อนกับ router อื่น

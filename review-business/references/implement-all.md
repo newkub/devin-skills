@@ -1,4 +1,4 @@
-﻿---
+---
 name: implement-all
 description: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 ---

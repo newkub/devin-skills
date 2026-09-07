@@ -16,7 +16,6 @@ related:
   - follow-design-system
   - capture
   - review-accessibility
-  - review-accessibility
 ---
 
 ## Goal

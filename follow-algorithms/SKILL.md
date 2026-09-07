@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-math-concepts
   - review-algorithm
-  - review-algorithm
   - review-quality
   - ask-me
 ---

@@ -8,7 +8,7 @@
 
 ## Scope
 
-ใช้กับ business logic เฉพาะทาง: payment, subscription, multi-tenancy, feature flags, realtime, email, pricing, billing — ไม่รวม general code quality หรือ UX (ใช้ `/improve-quality`, `/review-uxui` แทน)
+ใช้กับ business logic เฉพาะทาง: payment, subscription, multi-tenancy, feature flags, realtime, email, pricing, billing — ไม่รวม general code quality หรือ UX (ใช้ `/review-quality`, `/review-uxui` แทน)
 
 ## Execute
 

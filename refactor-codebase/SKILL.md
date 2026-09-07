@@ -10,7 +10,6 @@ related:
   - review-refactor
   - review-quality
   - follow-architecture
-  - review-quality
   - review-architecture
   - review-stability
   - deep-review

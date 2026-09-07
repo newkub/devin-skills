@@ -1,4 +1,4 @@
-﻿# ship-by-subagents-team — TODO
+# ship-by-subagents-team — TODO
 
 > สร้าง skill สำหรับ agentic orchestration แบบทีม subagents พร้อม dashboard ClickUp-style แทน Linear MCP
 > สถานะ: วางแผน / ยังไม่เริ่ม implement

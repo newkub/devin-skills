@@ -1,5 +1,5 @@
 ---
-name: follow-devin-skills
+name: follow-devin-global-skills
 description: อ่านและใช้ skills ทีมีใน global และ project (.devin/skills) ตามทีเหมาะสม
 argument-hint: "[skill-name]"
 related:
@@ -48,7 +48,7 @@ related:
 
 1. ถ้ามี `argument [skill-name]` → ค้นหา skill ทีตรง
 2. ถ้าไม่ระบุ → ค้นหาจาก context ของ task
-3. ค้นหาทั้งใน `follow-devin-skills` (global) และ `.devin/skills/` (project)
+3. ค้นหาทั้งใน `follow-devin-global-skills` (global) และ `.devin/skills/` (project)
 4. ถ้ามีทั้ง global และ project ชื่อเดียวกัน → ใช้ project skill เว้นแต่ global ใหม่กว่าหรือ user ระบุ
 
 ### 4. Read Skill
@@ -74,7 +74,7 @@ related:
 
 1. ทำตาม instructions ใน `## Execute`
 2. ใช้ tools ที่ skill ระบุ
-3. ถ้า skill บอกให้ใช้ skills อื่น → ทำ `/follow-devin-skills` ซ้ำตามลำดับ
+3. ถ้า skill บอกให้ใช้ skills อื่น → ทำ `/follow-devin-global-skills` ซ้ำตามลำดับ
 4. ตรวจสอบผลลัพธ์ตาม `## Expected Outcome`
 
 ### 7. Report

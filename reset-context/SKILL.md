@@ -1,4 +1,4 @@
-﻿---
+---
 name: reset-context
 description: ลบ context ของบทสนทนาก่อนหน้าและดำเนินการต่อเหมือนกับ session ใหม่
 argument-hint: "[optional-target-or-task]"

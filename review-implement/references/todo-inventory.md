@@ -1,4 +1,4 @@
-﻿# TODO And FIXME Inventory Criteria
+# TODO And FIXME Inventory Criteria
 
 ## Goal
 

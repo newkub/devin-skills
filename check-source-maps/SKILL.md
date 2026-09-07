@@ -6,7 +6,6 @@ related:
   - review-bundle
   - run-build
   - review-security
-  - review-security
   - report-table
 ---
 

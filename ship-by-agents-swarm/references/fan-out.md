@@ -8,7 +8,7 @@
 
 | Mode | เหมาะกับ | วิธี |
 |------|---------|-----|
-| `subagent` | lane ที่ต้อง judgment, multi-step, แก้ไฟล์ | `run_subagent` หรือ `/follow-devin-global-subagents` |
+| `subagent` | lane ที่ต้อง judgment, multi-step, แก้ไฟล์ | `run_subagent` หรือ `/update-devin-global-subagents` |
 | `script` | mechanical, deterministic, scan จำนวนมาก | `/use-scripts`, `/use-astgrep`, `/search-by-astgrep` |
 | `parallel-calls` | read-only checks, commands อิสระ | tool calls หลายอันในข้อความเดียวตาม `/follow-parallel` |
 

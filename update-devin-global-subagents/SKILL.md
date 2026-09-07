@@ -1,12 +1,18 @@
 ---
 name: update-devin-global-subagents
-description: สร้างหรืออัปเดต global subagent ใน devin agents repo ให้ถูกต้องตาม AGENT.md
+description: สร้าง อัปเดต และ orchestrate global subagents ตาม AGENT.md และ job roles
 argument-hint: "[agent-name]"
 related:
   - list-devin-global-subagents
   - review-devin-global-subagents
-  - follow-create-devin-plugins
+  - follow-agents-md
+  - update-agents-md
+  - use-subagents
+  - review-workflow
+  - review-then-fix
+  - deep-validate
   - ship
+  - report
   - ask-me
 ---
 
@@ -16,7 +22,9 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง agent ใหม่หรือแก้ไข agent ใน `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, หรือ `%APPDATA%\devin\agents\`
+ใช้เมื่อต้องสร้าง agent ใหม่หรือแก้ไข agent ใน `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, หรือ `%APPDATA%\devin\agents\` รวมถึง orchestrate subagents เมื่องานซับซ้อน
+
+ดูเพิ่มเติม: /follow-agents-md, /update-agents-md
 
 ## Execute
 
@@ -74,7 +82,17 @@ related:
 6. ตรวจว่า `name` ตรงกับ directory name และไม่ซ้ำกับ agent ตัวอื่น
 7. ถ้ามีปัญหา → แก้ไขและ revalidate จนผ่าน
 
-### 6. Update References
+### 6. Orchestrate Subagents In Complex Tasks
+
+> Goal: ใช้หลาย subagents ตาม roles ทำงานขนานกัน
+
+1. ถ้างานมีหลายด้านอิสระกัน → อ่าน [references/orchestrate-subagents.md](references/orchestrate-subagents.md)
+2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
+3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
+4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/review-then-fix`
+5. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
+
+### 7. Update References
 
 > Goal: รักษาความสอดคล้องกับ catalog
 
@@ -83,7 +101,7 @@ related:
 3. ทำ `/update-references` ถ้ามีชื่อเปลี่ยน
 4. ทำ `/suggest-next-action` เมื่อเสร็จ
 
-### 7. Ship
+### 8. Ship
 
 > Goal: ส่งมอบงาน
 

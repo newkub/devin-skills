@@ -1,4 +1,4 @@
-﻿---
+---
 title: Realization Blockers
 description: ระบุ blockers ก่อน `productionize-implementation`
 related:

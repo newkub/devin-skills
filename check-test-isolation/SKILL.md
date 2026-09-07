@@ -4,7 +4,6 @@ description: ตรวจ tests ที่พึ่ง execution order หรื�
 argument-hint: "[test-path]"
 related:
   - review-test
-  - review-test
   - use-astgrep
   - report-table
 ---

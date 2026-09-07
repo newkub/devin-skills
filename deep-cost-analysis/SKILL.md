@@ -4,7 +4,6 @@ description: วิเคราะห์ cost drivers เชิงลึก — 
 argument-hint: "[service-or-scope]"
 related:
   - review-cost
-  - review-cost
   - report-table
 ---
 
@@ -69,7 +68,7 @@ related:
 
 ### 2. Analysis Only
 
-- ไม่เปลี่ยน infra/services — รายงานแล้วให้ optimize skills ทำ
+- ไม่เปลี่ยน infra/services — รายงานแล้วให้ section `## Fix` ของ `/review-cost` ทำ
 - คำแนะนำที่เสี่ยง (เปลี่ยน provider) ต้องระบุ trade-offs ครบ
 
 ### 3. Business Context

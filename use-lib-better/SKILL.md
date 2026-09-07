@@ -7,7 +7,7 @@ related:
   - learn-from-web
   - use-lib-effective
   - follow-my-tech-stack
-  - follow-devin-skills
+  - follow-devin-global-skills
   - deep-review-codebase
 ---
 
@@ -29,7 +29,7 @@ related:
 
 1. อ่าน project manifest (`package.json`, `Cargo.toml`, `pyproject.toml`, ฯลฯ)
 2. รัน `/follow-my-tech-stack` เพื่อดู tech stack ทั้งหมด
-3. รัน `/follow-devin-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
+3. รัน `/follow-devin-global-skills` เพื่ออ่าน workflows ที่เกี่ยวข้อง
 4. ถ้าขาด tool หรือ context → รัน `/research-setup`
 
 ### 2. Snapshot Dependencies

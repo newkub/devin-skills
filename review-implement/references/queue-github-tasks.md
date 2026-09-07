@@ -1,4 +1,4 @@
-﻿---
+---
 title: Queue And GitHub Tasks Validation
 description: ตรวจ queue tasks และ GitHub tasks ก่อน implementation
 related:

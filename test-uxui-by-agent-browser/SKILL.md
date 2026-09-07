@@ -1,4 +1,4 @@
-﻿---
+---
 name: test-uxui-by-agent-browser
 description: ทดสอบ UX/UI ด้วย agent-browser ตรวจ layout, interaction, accessibility และ visual regression
 argument-hint: "[url-or-route]"
@@ -7,8 +7,6 @@ related:
   - capture
   - run-test-website-by-agent-browser
   - review-uxui
-  - review-uxui
-  - review-accessibility
   - review-accessibility
   - report-uxui-all-routes
   - report-table

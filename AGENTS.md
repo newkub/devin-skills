@@ -1,4 +1,4 @@
-﻿---
+---
 name: devin-global-skills
 description: Global and project-specific Devin CLI skill collection and conventions
 related:
@@ -7,7 +7,6 @@ related:
   - update-devin-global-skills
   - update-devin-global-rules
   - update-devin-harness
-  - update-devin-global-rules
   - deep-validate
   - review-rules
   - review-devin-global-skills
@@ -39,7 +38,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/check-monorepo` to verify monorepo status.
 2. Run `/analyze-project` to analyze tech stack and structure.
 3. Run `/all-workspace` if it is a monorepo.
-4. For independent subtasks across multiple workspaces, use `/follow-devin-global-subagents` or `/use-subagents`.
+4. For independent subtasks across multiple workspaces, use `/update-devin-global-subagents` or `/use-subagents`.
 5. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
 6. Keep the file under 250 lines.
 
@@ -84,7 +83,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **889** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **817** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -102,19 +101,17 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (275): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (73): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-*`), and improvement meta-review.
-- `list-*` (50): inventory, lookup, and listing utilities.
+- `follow-*` (235): language, framework, library, tool, service, architecture, and best-practice guides.
+- `review-*` (69): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-*`), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
+- `list-*` (38): inventory, lookup, and listing utilities.
 - `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
-- `report-*` (42): reporting, diagrams, and visualization helpers.
-- `run-*` (40): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (5): standard `/ship`, staging, production, rollback, and swarm dispatch.
-- `deep-*` (26): deep analysis, research, debugging, validation, update, and ship.
-- `create-*` (22): project, plugin, bot, report, and diagram scaffolding.
-- `check-*` (62): verification, structure, and health checks.
-- `open-*` (19): browser, editor, and terminal integration.
-- `improve-*` (39): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, correctness, stability, backend, frontend, business, docs).
-- `optimize-*` (31): performance counterparts (bundle, assets, memory, network, rendering, cost).
+- `report-*` (36): reporting, diagrams, and visualization helpers.
+- `run-*` (38): test, build, lint, typecheck, format, and deployment runners.
+- `ship-*` (4): standard `/ship`, staging, production, and swarm dispatch.
+- `deep-*` (22): deep analysis, research, debugging, validation, update, and ship.
+- `create-*` (19): project, plugin, bot, report, and diagram scaffolding.
+- `check-*` (57): verification, structure, and health checks.
+- `open-*` (13): browser, editor, and terminal integration.
 
 Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
 
@@ -125,7 +122,7 @@ Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `c
 
 ### 7. Subagents
 
-- Use `/follow-devin-global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
+- Use `/update-devin-global-subagents` or `/use-subagents` when there are independent subtasks across multiple workspaces or large skill families.
 - Each subagent receives: workspace path, manifest, and target deliverable.
 - Merge subagent results before writing the root `AGENTS.md`.
 

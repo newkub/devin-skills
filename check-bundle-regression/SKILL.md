@@ -5,7 +5,6 @@ argument-hint: "[baseline]"
 related:
   - report-bundle
   - review-bundle
-  - review-bundle
   - run-build
   - check-size
   - report-table

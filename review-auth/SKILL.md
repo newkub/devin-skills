@@ -4,7 +4,6 @@ description: Review authentication and authorization — identity, sessions, tok
 argument-hint: "[scope-or-subsystem]"
 related:
   - review-security
-  - review-security
   - follow-lib-better-auth
   - follow-lib-simplewebauthn
   - scan-codebase

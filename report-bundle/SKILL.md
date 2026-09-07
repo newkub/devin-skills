@@ -16,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/review-delivery` สำหรับ optimization)
+ใช้สำหรับการรายงาน bundle size หลัง build — ไม่รวมการ optimize build (ใช้ `/review-bundle` สำหรับ optimization)
 
 ## Execute
 
@@ -92,7 +92,7 @@ related:
 2. ระบุ chunks ที่ใหญ่เกิน threshold (เช่น > 100KB)
 3. ระบุ dependencies ที่ควรเป็น dynamic import
 4. ระบุ modules ที่มี side effects
-5. แนะนำ next steps: `/review-delivery` สำหรับ optimization
+5. แนะนำ next steps: `/review-bundle` สำหรับ optimization
 
 ## Rules
 
@@ -110,7 +110,7 @@ related:
 ### Read-Only Report
 
 - ไม่ optimize ไม่แก้ไข build config — รายงานเท่านั้น
-- ใช้ `/review-delivery` สำหรับ optimization
+- ใช้ `/review-bundle` สำหรับ optimization
 - ใช้ `/run-build` สำหรับการ build
 
 ### Output Format
@@ -136,7 +136,7 @@ related:
 
 ### Non-Redundancy
 
-- การ optimize build อยู่ใน `/review-delivery` แล้ว
+- การ optimize build อยู่ใน `/review-bundle` แล้ว
 - การ build อยู่ใน `/run-build` แล้ว
 
 ## Expected Outcome

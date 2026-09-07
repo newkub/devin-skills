@@ -9,7 +9,7 @@
 ## Scope
 
 - รับ findings จาก `/review-performance` หรือ `/check-bottlenecks`
-- แก้ไขจริงตามประเภท: `/review-bundle`, `/review-bundle`, `/review-database`, `/review-performance`, `/review-performance` ตาม domain
+- แก้ไขจริงตามประเภท: `/review-bundle`, `/review-database`, `references/fix-optimize-network.md`, `references/fix-optimize-memory.md` ตาม domain
 - Action-oriented: ทุก fix ต้องวัดผลหรือมี evidence รองรับ
 
 ## Execute
@@ -26,9 +26,9 @@
 
 > Goal: เลือก optimize skill ที่ตรงกับ domain
 
-1. Bundle/bundler issues → `/review-bundle`, `/review-bundle`
-2. Network/API latency, waterfalls → `/review-performance`
-3. Memory leaks, GC pressure → `/review-performance`
+1. Bundle/bundler issues → `/review-bundle`
+2. Network/API latency, waterfalls → `references/fix-optimize-network.md`
+3. Memory leaks, GC pressure → `references/fix-optimize-memory.md`
 4. Database/N+1/slow queries → `/review-database`
 5. Runtime/hot paths → `/run-profiler` หา hotspot แล้ว refactor algorithm
 6. Caching issues → แก้ invalidation, TTL, stampede protection

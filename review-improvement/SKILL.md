@@ -1,6 +1,6 @@
 ---
 name: review-improvement
-description: Review scope แล้วบอกว่า improve อะไรได้บ้าง พร้อม map ไปยัง improve-* skill ที่เหมาะสม
+description: Review scope แล้วบอกว่า improve อะไรได้บ้าง พร้อม map ไปยัง section `## Fix` ของ review-* skill ที่เหมาะสม
 argument-hint: "[scope-or-target]"
 related:
   - deep-review
@@ -21,11 +21,11 @@ related:
 
 ## Goal
 
-Review scope ที่ user ระบุ (project, workspace, file, feature หรือ skill) แล้วตอบคำถามว่า "improve อะไรได้บ้าง" พร้อม map แต่ละ finding ไปยัง `improve-*` หรือ `optimize-*` skill ที่เหมาะสม
+Review scope ที่ user ระบุ (project, workspace, file, feature หรือ skill) แล้วตอบคำถามว่า "improve อะไรได้บ้าง" พร้อม map แต่ละ finding ไปยัง section `## Fix` ของ `review-*` skill ที่เหมาะสม
 
 ## Scope
 
-ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไรอีก" โดยไม่ต้องการ review เชิงลึกเฉพาะด้าน — เป็น meta-review ที่สแกนหลายมิติแล้วจัดลำดับ ไม่แก้ไข code โดยตรง ให้ส่งต่อไปยัง `improve-*` skill ที่เหมาะสม
+ใช้เมื่อ user ถามว่า scope นี้ "ควร improve อะไรอีก" โดยไม่ต้องการ review เชิงลึกเฉพาะด้าน — เป็น meta-review ที่สแกนหลายมิติแล้วจัดลำดับ ไม่แก้ไข code โดยตรง ให้ส่งต่อไปยัง section `## Fix` ของ `review-*` skill ที่เหมาะสม
 
 ## Execute
 
@@ -70,7 +70,7 @@ Review scope ที่ user ระบุ (project, workspace, file, feature ห�
 
 1. จัด severity: Critical → High → Medium → Low
 2. ประเมิน impact vs effort ต่อ finding
-3. map แต่ละ finding ไปยัง `improve-*` หรือ `optimize-*` skill ที่เหมาะสม
+3. map แต่ละ finding ไปยัง `review-*` skill ที่เหมาะสม (fix ทำใน section `## Fix` ของ skill นั้น)
 4. ถ้าไม่มี skill ตรง → ทำ `/idea` เพื่อ explore options หรือลงลึกด้วย `/deep-review`
 
 ### 5. Report
@@ -95,11 +95,11 @@ Review scope ที่ user ระบุ (project, workspace, file, feature ห�
 
 ### 3. No Fixes During Review
 
-- ไม่แก้ไข code ระหว่าง review — ส่งต่อ `improve-*` skill เท่านั้น
+- ไม่แก้ไข code ระหว่าง review — ส่งต่อ section `## Fix` ของ `review-*` เท่านั้น
 - ไม่สร้าง findings จาก style preference ที่ไม่มีผลจริง
 
 ## Expected Outcome
 
 - ตาราง findings ครบทุก dimension พร้อม severity และ evidence
-- ทุก finding map ไปยัง `improve-*`/`optimize-*` skill
+- ทุก finding map ไปยัง `review-*` skill (section `## Fix`)
 - Top improvements เรียงลำดับพร้อม next action ชัดเจน

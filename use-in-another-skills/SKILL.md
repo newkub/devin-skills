@@ -1,4 +1,4 @@
-﻿---
+---
 name: use-in-another-skills
 description: เลือกและเรียก skill อื่นที่เหมาะสมกับ task
 argument-hint: "[task]"

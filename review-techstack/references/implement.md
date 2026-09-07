@@ -1,4 +1,4 @@
-﻿# Implement All
+# Implement All
 
 ตรวจสอบว่า findings ที่พบสามารถ implement ได้จริง
 
