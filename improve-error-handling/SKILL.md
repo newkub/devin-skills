@@ -9,6 +9,8 @@ related:
   - run-verify
   - run-test
   - report-table
+  - open-web-for-config-secret
+  - improve-error-messages
 ---
 
 ## Goal
@@ -47,6 +49,10 @@ related:
 2. เอา `try/catch` ที่ไม่เพิ่มค่าออก — ให้ error propagate ขึ้น boundary แทน
 3. แปลง internal errors เป็น user-safe messages ที่ boundary เดียว ไม่ซ้ำหลายชั้น
 4. ตรวจว่า errors ไม่รั่ว stack trace/secrets ไปยัง user-facing responses
+5. จัดการ missing config/keys ที่ boundary
+   - ถ้า error มาจาก missing API keys, secrets, หรือ required config → ห้ามปล่อยให้ UI แสดงหน้าขาว/blank หรือ crash โดยไม่มีคำอธิบาย
+   - ให้แสดง setup/onboarding UI ทีบอก user ว่าต้องตั้งค่าอะไร, key ชื่ออะไร, และชี้วิธีแก้
+   - ใช้ `/open-web-for-config-secret` เพื่อเปิด URLs สำหรับสร้าง keys ต่อจาก UX นั้น
 
 ### 4. Improve Recoverability
 
@@ -104,10 +110,18 @@ related:
 - ต้องรัน `/run-test` และ `/run-verify` ก่อนถือว่าเสร็จ
 - error-path tests ต้องมีสำหรับทุก boundary ที่เปลี่ยน
 
+### 5. Missing Config And Keys UX
+
+- missing API keys, secrets, หรือ required config ต้องถูกจัดการที boundary เดียว
+- ห้ามแสดงหน้าขาว/blank screen, empty state, หรือ generic error toast ทีไม่บอกวิธีแก้
+- user-facing message ต้องระบุชื่อ key/config ทีขาด และชี้ไปยังวิธีตั้งค่า
+- ถ้าจำเป็นให้เปิด `/open-web-for-config-secret` เพื่อสร้าง keys แล้วค่อยกลับมา reload
+
 ## Expected Outcome
 
 - Errors มี taxonomy ชัดเจนและ type-safe ตาม convention ของ codebase
 - ไม่มี silent catch หรือ unhandled promise rejections ใน scope ที่แก้
 - Boundaries ชัดเจน: user-facing errors safe, internal errors logged
+- missing config/keys ถูกแสดงเป้น setup/onboarding UX แทน blank/white screen
 - Callers, tests, docs อัปเดตครบ
 - Lint, typecheck, tests ผ่าน

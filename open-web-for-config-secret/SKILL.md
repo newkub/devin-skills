@@ -12,6 +12,8 @@ related:
   - follow-create-cloudflare-token
   - deploy-to-vercel
   - deploy-to-railway
+  - improve-error-handling
+  - improve-error-messages
 ---
 
 ## Goal
@@ -150,6 +152,7 @@ Map variable names ไปยัง services:
 - หลัง user กรอกเสร็จให้เรียก `/follow-secret-manager` ต่อ
 - ไม่ให้ user deploy ก่อนยืนยันว่า secrets ครบ
 - ไม่แนะนำให้เก็บค่าลง `.env`
+- ถ้า `open-web-for-config-secret` ถูกเรียกเพราะ app เปิดไม่ได้จาก missing keys → ตรวจสอบว่า app มี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
 
 - ใช้ /follow-service-infisical ถ้าจำเป็น
 - ใช้ /follow-create-product ถ้าจำเป็น
@@ -167,4 +170,5 @@ Map variable names ไปยัง services:
 - URL ของ secret manager dashboard ถูกเปิดสำหรับวาง keys
 - User กรอก secrets เองโดย AI ไม่เห็นค่า
 - รายการ keys ทีขาดหรือครบถูกต้อง
+- ถ้า app เปิดไม่ได้จาก missing keys ต้องมี setup/onboarding UX แทน blank/white screen ก่อนเปิด URLs
 - พร้อมเรียก `/follow-secret-manager` เพื่อใช้งาน secrets
