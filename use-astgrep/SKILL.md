@@ -4,7 +4,6 @@ description: ตั้งค่าและใช้งาน ast-grep สำห
 argument-hint: "[scope]"
 related:
   - use-astgrep-programmatic
-  - search-by-astgrep
   - update-project-rules
   - check-code-structure
   - replace

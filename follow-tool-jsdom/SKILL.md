@@ -6,7 +6,7 @@ related:
   - follow-tool-vitest
   - follow-lib-testing-library
   - run-check
-  - run-test
+  - run-test-unit
 ---
 
 ## Goal
@@ -88,7 +88,7 @@ related:
 > Goal: ตรวจสอบว่าใช้งานถูกต้อง
 
 1. ทำ `/run-check` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
+2. ทำ `/run-test-unit` ถ้ามี test ที่เกี่ยวข้อง
 3. ถ้าใช้ Testing Library ใน component tests → ทำ `/follow-lib-testing-library` สำหรับ queries และ matchers
 4. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ
 5. ถ้าเจอ error เกี่ยวกับ DOM จริง → พิจารณา `/run-test-e2e` หรือ `/follow-tool-playwright` แทน

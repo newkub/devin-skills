@@ -3,7 +3,7 @@ name: follow-tool-changesets
 description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
 argument-hint: "[scope]"
 related:
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -122,7 +122,7 @@ jobs:
 - ตั้งค่า version และ publish commands
 - ใช้ concurrency เพื่อป้องกัน conflicts
 
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

@@ -29,7 +29,7 @@
 
 1. update ไป patched version — ตรวจ breaking changes ก่อน major bumps
 2. transitive vulnerabilities → ใช้ `overrides` (pnpm/npm) หรือ `resolutions` (yarn)
-3. ถ้าไม่มี patch → flag ให้ user: replace lib (`/use-lib-better`), accept risk, หรือ workaround
+3. ถ้าไม่มี patch → flag ให้ user: replace lib (`/review-dependencies`), accept risk, หรือ workaround
 
 ### 3. Update Outdated
 

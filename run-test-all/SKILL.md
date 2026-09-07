@@ -11,7 +11,6 @@ related:
   - run-test-api
   - run-test-coverage
   - update-test-and-fix
-  - run-test
   - deep-review-codebase
   - resolve-errors
   - edit-manual
@@ -100,7 +99,7 @@ related:
 > Goal: Validate And Classify Failures
 
 1. ทำ `/deep-validate` กับ source code ที่เกี่ยวข้องเพื่อตรวจสอบความถูกต้อง
-2. ทำ `/run-test` เพื่อตรวจสอบ test quality, assertions, mocks
+2. ทำ `/run-test-unit` เพื่อตรวจสอบ test quality, assertions, mocks
 3. ทำ `/deep-review` เพื่อ review ทั้ง source และ test files
 4. จำแนกผล:
    - ถ้า source ผิด → ระบุไฟล์ source ที่ต้องแก้ แนะนำ `/resolve-errors` หรือ `/edit-manual`
@@ -149,7 +148,7 @@ related:
 ### 2. Validation And Review
 
 - ทำ `/deep-validate` กับ source ทุกครั้งเมื่อ test fail
-- ทำ `/run-test` กับ test ทุกครั้งเมื่อ test fail
+- ทำ `/run-test-unit` กับ test ทุกครั้งเมื่อ test fail
 - ทำ `/deep-review` เพื่อหาต้นเหตุ
 - ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report
 

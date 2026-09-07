@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-coverage
   - review-content-coverage
-  - run-test
+  - run-test-unit
   - run-check
   - run-verify
   - suggest-next-action

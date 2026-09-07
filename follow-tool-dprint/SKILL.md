@@ -3,7 +3,7 @@ name: follow-tool-dprint
 description: ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
 argument-hint: "[scope]"
 related:
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -113,7 +113,7 @@ related:
 - ต้องใช้ quoteStyle: alwaysSingle สำหรับ TypeScript
 - ต้องใช้ semiColons: asi สำหรับ TypeScript
 
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

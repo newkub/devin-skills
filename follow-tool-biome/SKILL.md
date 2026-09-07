@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน Biome สำหร
 argument-hint: "[scope]"
 related:
   - follow-create-biome-plugins
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-usage
   - follow-best-practice
@@ -180,7 +180,7 @@ jobs:
 - Vue: สำหรับ Vue projects
 
 - ใช้ /follow-create-biome-plugins ถ้าจำเป็น
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

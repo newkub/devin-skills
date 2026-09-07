@@ -63,7 +63,7 @@ related:
 1. ใน test setup file: `beforeAll(() => server.listen())`, `afterEach(() => server.resetHandlers())`, `afterAll(() => server.close())`
 2. ชี้ setup file ใน `vitest.config.ts` → `test.setupFiles`
 3. ต่อ test ที่ต้องการ response เฉพาะ → `server.use(http.get(...))` override
-4. ทำ `/run-test` เพื่อยืนยัน tests ผ่านกับ mock layer
+4. ทำ `/run-test-unit` เพื่อยืนยัน tests ผ่านกับ mock layer
 
 ### 6. Report
 

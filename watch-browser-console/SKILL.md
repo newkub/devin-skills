@@ -6,6 +6,7 @@ related:
   - run-test-website-by-agent-browser
   - watch-browser-and-fix
   - resolve-errors
+  - use-agent-browser
 ---
 
 ## Goal

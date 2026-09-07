@@ -1,14 +1,19 @@
 ---
 name: review-deploy
-description: Review deployment readiness ก่อน deploy
+description: Review deployment readiness ก่อน deploy และ verify หลัง deploy
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
   - run-deploy
   - follow-deploy
+  - watch-deploy
+  - check-security-headers
+  - run-test-api
+  - ship-rollback
   - scan-codebase
   - report-table
+  - report-before-after
   - suggest-next-action
 ---
 
@@ -87,6 +92,17 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
+
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify deployment หลัง deploy เสร็จ (merged from: verify-deploy)
+
+1. ทำตาม `references/verify-deploy.md`
+2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
+3. ทำ `/run-test-api` สำหรับ endpoints สำคัญ
+4. ทำ `/check-security-headers` บน deployed URL
+5. ใช้ `/report-before-after` หรือ `/report-table` สรุป pass/fail
+6. ถ้า failed → แนะนำ `/ship-rollback` พร้อม evidence
 
 ## Expected Outcome
 

@@ -14,7 +14,7 @@ related:
   - follow-framework-solidjs
   - follow-tool-vite
   - follow-tool-cargo
-  - use-lib-effective
+  - review-dependencies
   - follow-create-vite-plugins
   - follow-service-cloudflare
   - deploy-to-vercel
@@ -150,7 +150,7 @@ related:
 1. รัน `cargo test` ใน crate directory
 2. รัน `bun run build` ใน web directory
 3. รัน `bun run dev` เพื่อตรวจ dev mode
-4. ทำ `/run-test` สำหรับ frontend ถ้ามี test suites
+4. ทำ `/run-test-unit` สำหรับ frontend ถ้ามี test suites
 
 ### 9. Deploy And Ship
 
@@ -201,7 +201,7 @@ related:
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /use-lib-effective ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 - ใช้ /follow-create-vite-plugins ถ้าจำเป็น
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น

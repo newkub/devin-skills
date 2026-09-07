@@ -66,7 +66,7 @@ Optimize search features — full-text search, filtering, facets — ให้�
 ### 3. Migration Safe
 
 - Indexes ผ่าน migration files — GIN indexes ใหญ่ใช้ `CONCURRENTLY`
-- ทำ `/verify-migration-data` ถ้ามี data changes
+- ทำ `/review-migration` ในส่วน `## Verify` ถ้ามี data changes
 
 ## Expected Outcome
 

@@ -8,7 +8,7 @@ related:
   - follow-tool-formatter
   - run-verify
   - follow-gitignore
-  - run-test
+  - run-test-unit
   - fix
 ---
 
@@ -74,7 +74,7 @@ related:
 2. ทดสอบด้วยไฟล์ทีตั้งใจ fail (ลืม format, type error)
 3. ตรวจสอบว่า hooks ไม่ทำให้ commit ล่มโดยไม่จำเป็น
 4. รัน `/run-verify` เพื่อ verify lint/typecheck/scan
-5. ทำ `/run-test` เพื่อตรวจ tests หลัง config
+5. ทำ `/run-test-unit` เพื่อตรวจ tests หลัง config
 
 ## Rules
 

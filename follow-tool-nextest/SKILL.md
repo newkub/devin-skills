@@ -8,7 +8,7 @@ related:
   - follow-test
   - update-test-and-fix
   - follow-tool-mutants-rs
-  - run-test
+  - run-test-unit
 ---
 
 ## Goal
@@ -105,7 +105,7 @@ related:
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /update-test-and-fix ถ้าจำเป็น
 - ใช้ /follow-tool-mutants-rs ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 
 ## References
 

@@ -6,7 +6,7 @@ related:
   - follow-tool-linter
   - follow-lib-zod
   - update-test-and-fix
-  - run-test
+  - run-test-unit
 ---
 
 ## Goal
@@ -68,7 +68,7 @@ related:
 1. ทำ `/update-test-and-fix` สำหรับ happy path, invalid type, missing field, edge cases
 2. ทดสอบ custom error messages
 3. ทดสอบ schema composition/refinement
-4. รัน `/run-test` เพื่อ verify
+4. รัน `/run-test-unit` เพื่อ verify
 
 ## Rules
 

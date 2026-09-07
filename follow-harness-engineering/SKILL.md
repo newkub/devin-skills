@@ -6,7 +6,7 @@ related:
   - follow-context-engineering
   - deep-review-codebase
   - deep-validate
-  - run-test
+  - run-test-unit
 ---
 
 ## Goal
@@ -82,7 +82,7 @@ related:
 2. สร้าง deterministic checks: test suite, type check, lint, build
 3. สร้าง behavioral checks: output format validation, schema compliance
 4. บันทึก verification results เป็น structured reports
-5. ทำ `/run-test` และ `/deep-validate` สำหรับ comprehensive verification
+5. ทำ `/run-test-unit` และ `/deep-validate` สำหรับ comprehensive verification
 
 ### 6. Apply Harness Ladder
 

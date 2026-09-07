@@ -1,6 +1,6 @@
 ---
 name: implement-github-issue
-description: นำ GitHub issue ไป implement จนพร้อม merge
+description: นำ GitHub issue หรือ project item ไป implement จนพร้อม merge
 argument-hint: "[scope]"
 related:
   - create-plan-in-dot-devin
@@ -10,6 +10,7 @@ related:
   - git-push
   - merge-github-pr
   - resolve-errors
+  - use-gh-cli
 
 ---
 
@@ -27,8 +28,8 @@ related:
 
 > Goal: เข้าใจ issue
 
-1. รับ issue number จาก user
-2. รัน `gh issue view <issue>` เพื่อดู title, body, labels, assignees
+1. รับ issue number หรือ project item ID จาก user
+2. รัน `gh issue view <issue>` เพื่อดู title, body, labels, assignees — ถ้าเป็น project item ให้ใช้ `gh project item-list` แทน
 3. บันทึก acceptance criteria ถ้ามี
 4. ถ้าไม่ชัด → ทำ `/ask-me`
 
@@ -54,7 +55,7 @@ related:
 > Goal: ยืนยันว่า code ถูกต้อง
 
 1. รัน `/run-verify`
-2. รัน `/run-test` สำหรับ tests
+2. รัน `/run-test-unit` สำหรับ tests
 3. รัน `git diff --check`
 4. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry (max 3)
 
@@ -104,4 +105,4 @@ related:
 - PR มี `Closes #<issue>`
 - Issue ถูกปิดหรืออัปเดต status
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-plan-from-github-issue)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-plan-from-github-issue, implement-github-task)

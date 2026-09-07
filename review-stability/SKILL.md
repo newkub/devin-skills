@@ -1,6 +1,6 @@
 ---
 name: review-stability
-description: Review app stability, error handling, debuggability, recovery, monitoring and score
+description: Review app stability, error handling, debuggability, recovery, monitoring, backup/restore and score
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
@@ -135,17 +135,26 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
 Merged from: improve-error-handling, improve-error-messages, improve-stability
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-error-handling.md` — ปรับปรุง error handling ให้ลึก — taxonomy, boundaries, propagation, retry และ user-facing errors
 - `references/fix-improve-error-messages.md` — ปรับคุณภาพ error messages ที่ user เห็นให้บอกสาเหตุและวิธีแก้ชัดเจน
 - `references/fix-improve-stability.md` — แก้ไข stability findings ด้าน error handling, recovery, monitoring, debuggability
+
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify ว่า backup สามารถ restore ได้จริง (merged from: verify-backup-restore)
+
+1. ทำตาม `references/verify-backup-restore.md`
+2. ใช้ `/report-table` สรุป integrity, restore OK, data valid, RTO, verdict
+3. ถ้า RTO เกินเป้าหรือ restore ไม่ได้ → รายงาน gap พร้อม recommendation
+
 ## Expected Outcome
 
 - รายงานความเสถียรของ app ครอบคลุมทุกด้าน: stability, error handling, debuggability

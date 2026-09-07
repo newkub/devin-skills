@@ -44,7 +44,7 @@
 > Goal: แทนที่ imports ที่ดึง bundle ใหญ่
 
 1. flag default imports ของ lib หนัก → เปลี่ยนเป็น named/subpath imports (`import debounce from 'lodash/debounce'`)
-2. flag date/moment libs → แนะนำทางเลือกเบากว่า (`/use-lib-better`, `/review-dependencies`)
+2. flag date/moment libs → แนะนำทางเลือกเบากว่า (`/review-dependencies`, `/review-dependencies`)
 3. dynamic import สำหรับ modules ที่ใช้เฉพาะบาง route/branch
 
 ### 5. Verify

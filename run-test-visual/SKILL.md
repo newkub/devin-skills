@@ -4,7 +4,7 @@ description: รัน visual regression testing เทียบ screenshots ก
 argument-hint: "[scope]"
 related:
   - capture
-  - follow-lib-agent-browser
+  - use-agent-browser
   - run-test-e2e
   - review-uxui
   - run-dev
@@ -86,7 +86,7 @@ related:
 - ระบุ routes ที่ข้ามและเหตุผล (auth-required, external deps)
 
 - ใช้ /capture ถ้าจำเป็น
-- ใช้ /follow-lib-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /run-test-e2e ถ้าจำเป็น
 
 ## Expected Outcome

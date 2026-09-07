@@ -3,7 +3,7 @@ name: follow-tool-crw
 description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
 argument-hint: "[scope]"
 related:
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -206,7 +206,7 @@ crw serve --port 3000
 - text: สำหรับ plain text
 - links: สำหรับ URL extraction
 
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

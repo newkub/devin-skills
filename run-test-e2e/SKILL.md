@@ -3,7 +3,7 @@ name: run-test-e2e
 description: รัน E2E tests ด้วย Playwright หรือ Cypress
 argument-hint: "[scope]"
 related:
-  - run-test
+  - run-test-unit
   - run-test-all
   - run-test-api
   - run-check
@@ -88,7 +88,7 @@ related:
 - ดู videos สำหรับ replay test failures
 - ใช้ debug mode สำหรับ troubleshooting
 
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น

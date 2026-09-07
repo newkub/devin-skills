@@ -15,7 +15,7 @@ related:
   - follow-framework-solidjs
   - follow-create-rust-crate
   - follow-tool-vite
-  - use-lib-effective
+  - alternative
   - review-frontend
   - resolve-errors
   - open-web
@@ -59,7 +59,7 @@ related:
 
 > Goal: เลือก library สำหรับ render graph
 
-1. ทำ `/use-lib-effective` ประเมิน `cytoscape`, `vis-network`, `force-graph`, `d3`
+1. ทำ `/alternative` ประเมิน `cytoscape`, `vis-network`, `force-graph`, `d3`
 2. สำหรับ SolidJS แนะนำ `cytoscape` หรือ `force-graph` ผ่าน npm
 3. ติดตั้งด้วย `bun add cytoscape` หรือ `bun add force-graph` ใน web project
 4. เลือก library ที่รองรับ zoom, pan, drag, tooltip โดยไม่เขียน engine เอง

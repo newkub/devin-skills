@@ -90,7 +90,8 @@ related:
 2. ทำ `/list-devin-global-subagents` เพื่อเลือก roles
 3. ใช้ `/use-subagents` เพื่อ spawn subagents ขนานกัน
 4. รวมผล แก้ conflicts ด้วย `/resolve-errors` แล้ว `/review-then-fix`
-5. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
+5. ถ้า subtask ใดมี workflow ซับซ้อน → ทำ `/review-workflow`
+6. ทำ `/report` สรุปงานทีแต่ละ subagent ทำ
 
 ### 7. Update References
 
@@ -105,8 +106,9 @@ related:
 
 > Goal: ส่งมอบงาน
 
-1. ทำ `/ship`
-2. ถ้า `ship` ไม่ผ่าน → report สถานะ
+1. ทำ `/deep-validate`
+2. ทำ `/ship`
+3. ถ้า `ship` ไม่ผ่าน → report สถานะ
 
 ## Rules
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-build
   - watch-browser-and-fix
-  - run-test
+  - run-test-unit
   - report-table
   - resolve-errors
   - run-deploy
@@ -57,7 +57,7 @@ related:
 2. ทำ `/watch-browser-and-fix` เพื่อตรวจสอบหน้าเว็บต่อเนื่อง
 3. ทดสอบ features สำคัญที่เปลี่ยนแปลงล่าสุด
 4. ตรวจสอบ console errors และ warnings
-5. ทำ `/run-test` สำหรับทดสอบแบบละเอียด
+5. ทำ `/run-test-unit` สำหรับทดสอบแบบละเอียด
 
 ### 4. Verify Preview
 
@@ -103,7 +103,7 @@ related:
 - ทดสอบ critical user flows ทุกครั้ง
 - ทดสอบ responsive design บนหลาย screen sizes
 - ใช้ `/watch-browser-and-fix` สำหรับตรวจสอบต่อเนื่อง
-- ใช้ `/run-test` สำหรับทดสอบแบบละเอียด
+- ใช้ `/run-test-unit` สำหรับทดสอบแบบละเอียด
 - ใช้ `/report-table` สำหรับรายงาน issues
 - Preview server ควรหยุดเมื่อไม่ใช้งาน
 - ลบ preview builds เก่าเป็นระยะ

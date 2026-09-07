@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-test
   - update-test-and-fix
-  - run-test
+  - run-test-unit
   - follow-tool-vitest
   - follow-lang-typescript
   - follow-lang-javascript
@@ -95,7 +95,7 @@ related:
 - ตรวจสอบ `timeout` mutants
 
 - ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /follow-tool-vitest ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น

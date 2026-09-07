@@ -3,7 +3,7 @@ name: run-test-integration
 description: รัน integration tests สำหรับ module interactions และ data flow
 argument-hint: "[scope]"
 related:
-  - run-test
+  - run-test-unit
   - run-test-all
   - run-test-api
   - run-check
@@ -79,7 +79,7 @@ related:
 - ใช้ parallel execution ด้วยความระมัดระวัง
 - ถ้า tests แชร์ database ให้รันแบบ sequential
 
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น

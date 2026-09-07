@@ -6,7 +6,7 @@ related:
   - deep-validate
   - ask-me
   - run-verify
-  - run-test
+  - run-test-unit
   - check-reference
   - scan-codebase
   - report
@@ -36,7 +36,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 > Goal: ตรวจสอบ checks อัตโนมัติผ่านทั้งหมด
 
 1. ทำ `/run-verify` เพื่อรัน lint, format, และ quality checks
-2. ทำ `/run-test` เพื่อรัน unit/integration tests
+2. ทำ `/run-test-unit` เพื่อรัน unit/integration tests
 3. ถ้า project มี `package.json` ระบุ typecheck script ให้รัน `bunx tsc --noEmit` หรือคำสั่งทีเหมาะสม
 4. บันทึกผลลัพธ์ของแต่ละ check พร้อม evidence
 
@@ -88,7 +88,7 @@ Verify ผลลัพธ์แบบละเอียดหลัง merge ห
 
 ### 3. Stop On Failure
 
-- ถ้า `/run-test` หรือ `/run-verify` ไม่ผ่าน → หยุดทันที
+- ถ้า `/run-test-unit` หรือ `/run-verify` ไม่ผ่าน → หยุดทันที
 - ถ้า `/deep-validate` พบ Critical หรือ High → หยุดทันที
 - ถ้า `/check-reference` พบ broken references → หยุดทันที
 - ถ้าต้องทำงานต่อ ให้ทำ `/resolve-errors` แล้วทำ `/deep-verify` ซ้ำ

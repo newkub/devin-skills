@@ -9,7 +9,7 @@ related:
   - review-release
   - run-verify
   - run-check
-  - run-test
+  - run-test-unit
   - setup-package
   - watch-release
   - resolve-errors
@@ -112,7 +112,7 @@ Build release artifact ตาม platform แล้วรัน smoke test ก�
 - ใช้ /review-release ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /setup-package ถ้าจำเป็น
 - ใช้ /watch-release ถ้าจำเป็น
 

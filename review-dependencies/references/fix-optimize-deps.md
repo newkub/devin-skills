@@ -30,7 +30,7 @@
 
 1. flag patterns คลาสสิก: `moment`→`date-fns`/`dayjs`, `lodash`→native/subpath, `axios`→`fetch`, `request`→หยุดใช้
 2. flag deps ที่ใช้ 1-2 functions → พิจารณา inline หรือ lib เฉพาะทาง
-3. ใช้ `/use-lib-better` เพื่อเทียบทางเลือกตาม tech stack
+3. ใช้ `/review-dependencies` เพื่อเทียบทางเลือกตาม tech stack
 4. ใช้ `/follow-tool-node-modules-inspector` ดู size จริงของแต่ละ package
 
 ### 3. Replace And Remove

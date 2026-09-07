@@ -11,7 +11,7 @@ related:
   - update-references
   - follow-my-tech-stack
   - review-techstack
-  - run-test
+  - run-test-unit
   - update-test-and-fix
   - update-devin-global-skills
   - update-devin-global-subagents
@@ -125,7 +125,7 @@ related:
 - ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vscode-extensions ถ้าจำเป็น
 - ใช้ /follow-create-zed-extensions ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /update-test-and-fix ถ้าจำเป็น
 

@@ -4,7 +4,7 @@ description: ตั้งค่า ESLint 9 พร้อม plugins ครบถ
 argument-hint: "[scope]"
 related:
   - follow-create-eslint-plugins
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-usage
   - follow-best-practice
@@ -178,7 +178,7 @@ export default defineConfig([
 - ไม่ใช้ `.eslintignore` ใน ESLint 9
 
 - ใช้ /follow-create-eslint-plugins ถ้าจำเป็น
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

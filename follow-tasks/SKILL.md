@@ -11,7 +11,7 @@ related:
   - run-scan
   - run-lint
   - run-typecheck
-  - run-test
+  - run-test-unit
   - run-build
   - run-test-coverage
   - use-scripts

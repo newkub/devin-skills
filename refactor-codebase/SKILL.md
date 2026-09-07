@@ -136,7 +136,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 
 ### 5. Verification
 
-- ต้องผ่าน `/run-verify` และ `/run-test`
+- ต้องผ่าน `/run-verify` และ `/run-test-unit`
 - ไฟล์ไม่เกิน 250 บรรทัด
 - ไม่มี broken references
 

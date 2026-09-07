@@ -8,7 +8,7 @@ related:
   - follow-my-tech-stack
   - review-techstack
   - follow-best-practice
-  - run-test
+  - run-test-unit
   - run-check
   - report-table
 ---
@@ -73,7 +73,7 @@ related:
 1. ติดตั้ง Pester ถ้ายังไม่มี: `Install-Module Pester -Scope CurrentUser -Force`
 2. สร้าง `Tests/<Function>.Tests.ps1` ด้วย `Describe`, `Context`, `It`
 3. ทดสอบ happy path, parameter validation และ error cases
-4. ทำ `/run-test` ด้วย `Invoke-Pester ./Tests`
+4. ทำ `/run-test-unit` ด้วย `Invoke-Pester ./Tests`
 
 ### 6. Verify And Report
 

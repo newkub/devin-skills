@@ -55,7 +55,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 - วิเคราะห์ project structure, tech stack, และ architecture
 - ระบุ existing modules, shared code, และ integration points
-- สำรวจ libraries: ทำ `/alternative` และ `/use-lib-effective`
+- สำรวจ libraries: ทำ `/alternative`
 - บันทึก library ที่เลือกพร้อมเหตุผล: modern, type safety, performance, DX, maintenance
 
 ### 4. Define Implementation Path

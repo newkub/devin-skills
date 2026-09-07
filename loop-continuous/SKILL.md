@@ -49,7 +49,7 @@ related:
 
 1. เลือกสิ่งเดียวที improve ได้มากทีสุดในรอบนี้
 2. ใช้ minimal changes ในการปรับปรุง
-3. รัน verify ตาม criteria ทีกำหนด เช่น `/run-check`, `/run-test`, `/deep-validate`
+3. รัน verify ตาม criteria ทีกำหนด เช่น `/run-check`, `/run-test-unit`, `/deep-validate`
 4. บันทึก delta ระหว่างรอบ: ดีขึ้นหรือไม่, ดีขึ้นเท่าใด, มี regression หรือไม่
 
 ### 4. Check Diminishing Returns

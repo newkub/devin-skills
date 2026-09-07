@@ -6,7 +6,7 @@ related:
   - deep-analyze
   - ask-me
   - run-install
-  - run-test
+  - run-test-unit
   - run-typecheck
 ---
 
@@ -72,7 +72,7 @@ related:
 
 > Goal: ตรวจสอบว่า integration ทำงานได้ดี
 
-1. รัน `/run-test` และ `/run-typecheck`
+1. รัน `/run-test-unit` และ `/run-typecheck`
 2. ตรวจสอบ caching behavior ของ `Query`/`DB` ผ่าน Devtools
 3. วัด re-render ของ components
 4. ตรวจสอบ error boundaries, pending และ loading states

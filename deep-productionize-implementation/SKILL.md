@@ -68,7 +68,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: เชื่อมต่อ API กับ data layer จริง
 
-1. ทำ `/use-lib-effective` เพื่อเลือก libraries ที่มีอยู่
+1. ทำ `/review-dependencies` เพื่อเลือก libraries ที่มีอยู่
 2. Implement API handlers ด้วย real data queries
 3. เพิ่ม auth middleware, rate limiting, validation
 4. Implement external service integrations ด้วย real credentials

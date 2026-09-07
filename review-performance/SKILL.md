@@ -152,13 +152,13 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
 Merged from: improve-performance, optimize-memory, optimize-network, optimize-performance, optimize-serialization, optimize-startup
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-performance.md` — แก้ findings จาก review-performance ครอบคลุม network, runtime, memory และ caching
 - `references/fix-optimize-memory.md` — ปรับปรุง memory usage: leaks, large objects, caches, garbage collection

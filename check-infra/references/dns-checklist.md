@@ -42,7 +42,7 @@
 
 > Goal: ตรวจ records รองที่สำคัญ
 
-1. MX records ถ้า domain รับ email — ทำ `/verify-email-deliverability` สำหรับ SPF/DKIM/DMARC
+1. MX records ถ้า domain รับ email — ทำ `/review-delivery` ในส่วน `## Verify` สำหรับ SPF/DKIM/DMARC
 2. TXT records: verification tokens ที่ค้าง, legacy records
 3. HTTPS/SVCB records ถ้ามี
 

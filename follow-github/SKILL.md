@@ -9,6 +9,8 @@ related:
   - suggest-next-action
   - follow-git-flow
   - view-repo
+  - use-mcp
+  - use-gh-cli
 ---
 
 ## Goal

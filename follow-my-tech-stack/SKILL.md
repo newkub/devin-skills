@@ -7,7 +7,7 @@ related:
   - follow-tool-rolldown
   - follow-tool-oxlint
   - follow-lib-esm-sh
-  - use-lib-effective
+  - review-dependencies
   - deep-analyze
   - follow-service-cloudflare
 ---
@@ -169,7 +169,7 @@ related:
 
 - ใช้ /follow-lang-bun ถ้าจำเป็น
 - ใช้ /follow-lib-esm-sh ถ้าจำเป็น
-- ใช้ /use-lib-effective ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome
 

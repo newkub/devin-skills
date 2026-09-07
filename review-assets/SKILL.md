@@ -63,13 +63,13 @@ related:  - scan-codebase
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
 Merged from: optimize-assets, optimize-fonts, optimize-images, optimize-videos
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-optimize-assets.md` — Dispatch การ optimize static assets ไปยัง review-assets, review-assets, review-assets ตาม asset type
 - `references/fix-optimize-fonts.md` — Optimize web fonts — subsetting, preload, font-display และ self-hosting สำหรับ LCP/CLS

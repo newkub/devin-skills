@@ -1,11 +1,13 @@
 ---
 name: review-migration
-description: Review migration plan พร้อม execution checklist ก่อนลงมือ
+description: Review migration plan พร้อม execution checklist และ verify ข้อมูลหลัง migrate
 argument-hint: "[scope]"
 related:
   - update-version-to-latest
   - follow-tool-renovate
+  - check-migrations
   - report-table
+  - report-before-after
   - suggest-next-action
   - scan-codebase
 ---
@@ -91,15 +93,25 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
 Merged from: improve-migration
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-migration.md` — แก้ findings จาก review-migration ทั้ง schema safety, rollbacks, data migration และ deploy order
+
+## Verify
+
+> ทำ section นี้เมื่อต้องการ verify data integrity หลัง migration applied (merged from: verify-migration-data)
+
+1. ทำตาม `references/verify-migration-data.md`
+2. ใช้ `/check-migrations` ยืนยัน version ล่าสุด
+3. ทำ `/report-before-after` เทียบ row counts/aggregates
+4. ถ้า mismatch → ระบุ rows/columns ที่ต่าง และแนะนำ fix-forward หรือ rollback
+
 ## Expected Outcome
 
 - รายงาน Migration Risk Summary พร้อม risk level

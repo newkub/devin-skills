@@ -75,7 +75,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 
 1. ทำ `/check-code-structure` อีกครั้งเพื่อเปรียบเทียบก่อน/หลัง
 2. ทำ `/run-verify` สำหรับ lint, typecheck, scan
-3. ทำ `/run-test` สำหรับ regression
+3. ทำ `/run-test-unit` สำหรับ regression
 4. ทำ `/check-circular-dependencies` และ `/review-quality`
 5. ถ้าไม่ผ่าน → กลับไปแก้ที่ Step 3-4 (สูงสุด 3 ครั้ง → stop/report)
 
@@ -110,7 +110,7 @@ Refactor code ให้ทุก unit มี single responsibility (SRP) โด�
 ### 4. Verification
 
 - ต้องรัน `/check-code-structure` ก่อนและหลัง refactor
-- ต้องผ่าน `/run-verify` และ `/run-test` ก่อนถือว่าเสร็จ
+- ต้องผ่าน `/run-verify` และ `/run-test-unit` ก่อนถือว่าเสร็จ
 
 - ใช้ /restructure ถ้าจำเป็น
 - ใช้ /check-unused ถ้าจำเป็น

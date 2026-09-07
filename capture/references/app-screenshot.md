@@ -38,7 +38,7 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
    - เปิด dev server (ถ้าจำเป็น)
    - วนลูป routes และ capture แต่ละ route
    - ใช้ `agent-browser` หรือ `playwright` ตามทีมี
-3. ถ้า project ไม่มี capture tool → ใช้ `/follow-tool-agent-browser` หรือ `/follow-tool-playwright` ติดตั้ง
+3. ถ้า project ไม่มี capture tool → ใช้ `/use-agent-browser` หรือ `/follow-tool-playwright` ติดตั้ง
 
 ### 4. Capture Web Routes
 

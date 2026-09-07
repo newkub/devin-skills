@@ -3,7 +3,7 @@ name: follow-tool-websearch
 description: ใช้ crw สำหรับ web search และ scrape อย่างรวดเร็วและมีประสิทธิภาพ
 argument-hint: "[scope]"
 related:
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -111,7 +111,7 @@ related:
 - ใช้ `--summary` ร่วมกับ `--llm-provider` เพื่อเลือก AI provider
 - ใช้ `--prompt "hint"` สำหรับกำหนด style ของ summary
 
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

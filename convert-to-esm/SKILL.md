@@ -8,7 +8,7 @@ related:
   - check-backward-compatibility
   - update-references
   - run-build
-  - run-test
+  - run-test-unit
   - refactor
 ---
 
@@ -67,7 +67,7 @@ Migrate JavaScript/TypeScript project จาก CommonJS (`require`/`module.expo
 
 1. `/run-typecheck` + `/run-lint` ผ่าน
 2. `/run-build` ผ่าน — bundle/output correct
-3. `/run-test` ผ่าน — ระวัง test mocks ที่พึ่ง CJS semantics (`jest.mock` vs `vi.mock`)
+3. `/run-test-unit` ผ่าน — ระวัง test mocks ที่พึ่ง CJS semantics (`jest.mock` vs `vi.mock`)
 4. smoke test runtime entry points จริง
 
 ## Rules

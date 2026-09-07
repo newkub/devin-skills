@@ -14,7 +14,7 @@ Capture ภาพหน้าเว็บ (screenshot, PDF) ด้วย `agent-
 
 > Goal: Install And Verify
 
-ติดตั้งและตรวจสอบ `agent-browser` ตาม `/follow-tool-agent-browser` ข้อ 1
+ติดตั้งและตรวจสอบ `agent-browser` ตาม `/use-agent-browser` ข้อ 1
 
 1. ตรวจสอบด้วย `agent-browser --help`
 2. ถ้าไม่ได้ติดตั้ง ให้ติดตั้งด้วย `bun add -g agent-browser` แล้ว `agent-browser install`
@@ -23,7 +23,7 @@ Capture ภาพหน้าเว็บ (screenshot, PDF) ด้วย `agent-
 
 > Goal: Open Browser
 
-เปิด browser ไปยัง URL ที่ต้องการ capture ตาม `/follow-tool-agent-browser` ข้อ 2
+เปิด browser ไปยัง URL ที่ต้องการ capture ตาม `/use-agent-browser` ข้อ 2
 
 1. ใช้ `agent-browser open <url> --headed` เพื่อเปิด browser
 2. รอให้ page load เสร็จด้วย `agent-browser wait --load networkidle`
@@ -117,7 +117,7 @@ Save หน้าเว็บเป็น PDF
 
 ### 6. Error Handling
 
-- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/follow-tool-agent-browser` ข้อ 8 (fallback)
+- ถ้า `agent-browser` ไม่ติดตั้ง ให้ทำตาม `/use-agent-browser` ข้อ 8 (fallback)
 - ถ้า screenshot ไม่ออก ให้ตรวจสอบว่า browser เปิดอยู่
 - เรียก `/resolve-errors` เมื่อเจอ error
 - ใช้ `agent-browser wait --load networkidle` ก่อน screenshot เพื่อให้ page load สมบูรณ์

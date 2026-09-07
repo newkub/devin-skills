@@ -3,7 +3,7 @@ name: follow-tool-playwright
 description: ติดตั้งและตั้งค่า Playwright สำหรับ E2E testing
 argument-hint: "[scope]"
 related:
-  - follow-tool-agent-browser
+  - use-agent-browser
   - use-astgrep
   - follow-tool-aube
   - follow-tool-usage
@@ -194,7 +194,7 @@ related:
 - ใช้ `reuseExistingServer: true` สำหรับ local iteration speed
 - ติดตั้งเฉพาะ browsers ที่จำเป็นใน CI
 
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-aube ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น

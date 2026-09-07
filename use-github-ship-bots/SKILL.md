@@ -26,6 +26,7 @@ related:
   - deploy-to-vercel
   - open-github
   - report-progress
+  - use-gh-cli
 ---
 
 ![use-github-ship-bots logo](bot-logo.png)

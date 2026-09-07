@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - follow-create-web
   - follow-lang-typescript
-  - run-test
+  - run-test-unit
   - update-dot-vscode
   - follow-my-tech-stack
   - review-techstack
@@ -107,7 +107,7 @@ related:
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /update-dot-vscode ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 

@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
+  - use-wrangler
 ---
 
 ## Goal

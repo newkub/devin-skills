@@ -8,7 +8,7 @@ related:
   - run-deploy
   - watch-deploy
   - resolve-errors
-  - run-test
+  - run-test-unit
   - run-verify
   - report-table
   - ask-me
@@ -37,7 +37,7 @@ Deploy feature branch ไปยัง staging environment แล้วรัน 
 > Goal: แน่ใจว่า artifact พร้อม deploy
 
 1. ทำ `/run-verify` เบื้องต้น — build, lint, typecheck
-2. ถ้ามี `e2e` หรือ `integration` tests สำหรับ staging → ทำ `/run-test`
+2. ถ้ามี `e2e` หรือ `integration` tests สำหรับ staging → ทำ `/run-test-unit`
 3. ถ้าไม่ผ่าน → `/resolve-errors` ก่อน deploy
 
 ### 3. Detect Staging Environment

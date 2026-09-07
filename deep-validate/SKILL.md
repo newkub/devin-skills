@@ -4,7 +4,7 @@ description: Validate ละเอียดหลายมิติ cross-refere
 argument-hint: "[scope]"
 related:
   - rethink
-  - run-test
+  - run-test-unit
   - review-quality
   - run-typecheck
   - report-table
@@ -25,7 +25,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-สำหรับ validate ทั่วไป ใช้ `/deep-validate`; สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-quality`
+สำหรับ validate ทั่วไป ใช้ `/deep-validate`; สำหรับ validate tests ใช้ `/run-test-unit`; สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
 

@@ -13,7 +13,7 @@ related:
   - review-architecture
   - update-references
   - run-verify
-  - run-test
+  - run-test-unit
   - run-typecheck
   - deep-analyze
   - review-quality
@@ -91,7 +91,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 > Goal: ตรวจสอบผลกระทบและอัปเดท references
 
 1. ทำ `/run-verify`
-   - ทำ `/run-test`
+   - ทำ `/run-test-unit`
    - ทำ `/run-typecheck`
 2. ทำ `/check-circular-dependencies` และ `/review-quality`
 3. ทำ `/check-code-structure` เพื่อเปรียบเทียบกับ baseline

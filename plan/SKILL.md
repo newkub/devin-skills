@@ -7,7 +7,6 @@ related:
   - follow-architecture
   - deep-analyze
   - alternative
-  - use-lib-effective
   - prioritize
   - deep-thinking
 ---
@@ -20,7 +19,7 @@ related:
 
 ครอบคลุมการวางแผน tasks, libraries, implementation path, file architecture, module structure และการ validate แผนงาน ถ้า tasks เยอะมาก (>10) ให้สร้างใน `.devin/tasks/`
 
-Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis และ research front-loading → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → `/plan-by-ask-me`
+Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis และ research front-loading → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → ใช้ `/ask-me` กับ `/deep-report` ใน section `Collaborative Planning`
 
 ## Execute
 
@@ -31,7 +30,7 @@ Boundary: งานซับซ้อนสูง/เสี่ยงสูงท
 1. ทำ `deep-analyze` เพื่อวิเคราะห์ project structure และ dependencies
 2. ระบุ scope, constraints, และ assumptions
 3. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
-4. ทำ `alternative` และ `use-lib-effective` เพื่อสำรวจและวิเคราะห์ libraries
+4. ทำ `alternative` เพื่อสำรวจและวิเคราะห์ libraries
 5. บันทึก library ที่เลือกพร้อมเหตุผล (modern, type safety, performance, DX, maintenance)
 
 ### 2. Define Implementation Path
@@ -96,8 +95,8 @@ Boundary: งานซับซ้อนสูง/เสี่ยงสูงท
 2. ตรวจสอบทุก task มี single responsibility และ test ได้
 3. ตรวจสอบไม่มี missing tasks หรือ gaps
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ และ risks พร้อม mitigation
-5. จัดรูปแบบตาราง tasks ตาม `report-table` และ file structure ตาม `report-file-structure`
-6. ทำ `report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ แล้วทำงานต่อได้เลย
+5. จัดรูปแบบตาราง tasks ตาม `/report` และ file structure ตาม `/report-file-structure`
+6. รายงานแผนในแชทก่อนลงมือทำ ตาม section `Report Plan` ด้านล่าง แล้วทำงานต่อได้เลย
 
 ## Metrics
 

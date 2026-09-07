@@ -4,7 +4,7 @@ description: อัปเดต fields และสถานะของงา�
 argument-hint: "[task-id]"
 related:
   - cleanup-github-task
-  - implement-github-task
+  - implement-github-issue
   - update-github-metadata
   - update-references
   - suggest-next-action
@@ -55,7 +55,7 @@ related:
 - ห้ามเปลี่ยนสถานะโดยไม่มี context
 
 - ใช้ /cleanup-github-task ถ้าจำเป็น
-- ใช้ /implement-github-task ถ้าจำเป็น
+- ใช้ /implement-github-issue ถ้าจำเป็น
 - ใช้ /update-github-metadata ถ้าจำเป็น
 - ใช้ /update-references ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

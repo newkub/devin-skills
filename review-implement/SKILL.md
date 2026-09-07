@@ -8,7 +8,7 @@ related:
   - suggest-next-action
   - productionize-implementation
   - implement-plan
-  - implement-github-task
+  - implement-github-issue
 ---
 
 ## Goal
@@ -17,7 +17,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `productionize-implementation`, `implement-plan`, `productionize-implementation`, `implement-github-task`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `productionize-implementation`, `implement-plan`, `implement-github-issue`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -96,13 +96,13 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
 Merged from: improve-features
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-features.md` — ปรับปรุง feature ที่มีอยู่ให้สมบูรณ์ — edge cases, states, flow, polish จนพร้อม production
 ## Expected Outcome

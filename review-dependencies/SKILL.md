@@ -18,7 +18,9 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้อง audit dependencies ของ workspace/monorepo: runtime, dev, peer deps — ครอบคลุม manifests, lockfile และ usage จริงใน code — ไม่ติดตั้งหรืออัปเดต (ใช้ `/update` หรือ package manager)
+ใช้เมื่อต้อง audit dependencies ของ workspace/monorepo: runtime, dev, peer deps — ครอบคลุม manifests, lockfile, usage จริงใน code และการเปรียบเทียบ alternatives — ไม่ติดตั้งหรืออัปเดต (ใช้ `/update` หรือ package manager)
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-lib-better)
 
 ## Execute
 
@@ -54,7 +56,23 @@ related:
 2. ตรวจว่า dep สอดคล้อง `/follow-my-tech-stack` หรือไม่
 3. ระบุ deps ที่ต้อง pin version และ deps ที่ auto-update ได้
 
-### 5. Rate And Report
+### 5. Score Alternatives
+
+> Goal: เปรียบเทียบและให้คะแนน candidates สำหรับ deps ที่ควร replace
+
+เมื่อ finding เป็น `replace` หรือต้องเลือก library:
+
+1. หา alternatives ด้วย `/deep-research` หรือ `/learn-from-web` — npm trends, GitHub stars, release frequency, bundle size, security advisories
+2. จำกัดเหลือ 2-3 candidates แล้วให้คะแนน apples-to-apples:
+
+| Criteria | Weight |
+|---|:---:|
+| Modern / Type Safety / Performance / DX / Maintenance / Bundle Size / Dependencies | 5 ต่อข้อ (รวม 35) |
+
+3. ระบุ Migration Effort และ Risk (Low/Medium/High) ต่อ candidate
+4. จัด priority: High = Score ≥25 + Effort Low + Risk Low
+
+### 6. Rate And Report
 
 > Goal: สรุป findings พร้อม action plan
 
@@ -87,16 +105,17 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
 
-Merged from: improve-dependencies, optimize-deps
+Merged from: improve-dependencies, optimize-deps, use-lib-effective
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
 
 - `references/fix-improve-dependencies.md` — แก้ findings จาก review-dependencies ทั้ง outdated, vulnerable, unused และ duplicate deps
 - `references/fix-optimize-deps.md` — ลดน้ำหนัก dependencies เปลี่ยน lib หนักเป็นตัวเบา ลด dep tree และ bundle impact
+- `references/fix-use-lib-effective.md` — แทนที่ custom code ด้วย library functions ที่มีอยู่ ใช้ libs ให้ครบไม่ reinvent
 ## Expected Outcome
 
 - รายงาน deps ครบ: outdated, vulnerable, unused, license issues

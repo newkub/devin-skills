@@ -6,7 +6,6 @@ related:
   - scan-codebase
   - deep-review
   - use-scripts
-  - report-table
   - report
   - suggest-next-action
 ---
@@ -34,7 +33,19 @@ related:
 3. กำหนด root directory และ depth สำหรับ tree
 4. กรองไฟล์ที่ไม่จำเป็น (`node_modules`, `.git`, `dist`, `build`)
 
-### 2. Format Tree
+### 2. Quick Tree Mode
+
+> Goal: แสดง tree อย่างรวดเร็วตาม args
+
+1. รับ `path` จาก argument (default คือ working directory)
+2. รองรับ flags ทีจำเป็น:
+   - `--depth=N` จำกัดความลึกของ tree
+   - `--include=pattern` แสดงเฉพาะ path ทีตรง pattern
+   - `--exclude=pattern` ยกเว้น path ทีตรง pattern
+3. กรองไฟล์ระบบและ build artifacts (`node_modules`, `.git`, `dist`, `.cache`)
+4. ถ้า output ยาวเกิน 100 รายการ ให้ summary โครงสร้างหลักก่อน แล้วถาม user ว่าต้องการ expand ส่วนไหน
+
+### 3. Format Tree
 
 > Goal: Format Tree
 
@@ -43,7 +54,7 @@ related:
 3. จัด sorting ตาม logical order (directories ก่อน, แล้ว files ตามตัวอักษร)
 4. ใช้ depth limits สำหรับ large projects (default: 3 levels)
 
-### 3. Calculate Statistics
+### 4. Calculate Statistics
 
 > Goal: Calculate Statistics
 
@@ -53,7 +64,7 @@ related:
 4. ระบุไฟล์ที่ใหญ่ที่สุด 5 ไฟล์
 5. ถ้า project มีมากกว่า 10 directories ให้ทำ `/use-scripts` สำหรับ aggregation
 
-### 4. Analyze Organization
+### 5. Analyze Organization
 
 > Goal: Analyze Organization
 
@@ -64,7 +75,7 @@ related:
 3. ตรวจสอบ empty directories และ deeply nested files (> 5 levels)
 4. ระบุ files ที่อยู่ผิดที่ (out of convention)
 
-### 5. Highlight Important Files
+### 6. Highlight Important Files
 
 > Goal: Highlight Important Files
 
@@ -74,7 +85,7 @@ related:
 4. ระบุ CI/CD files (`.github/`, `lefthook.yml`)
 5. ใช้ markers สำหรับ highlight
 
-### 6. Add Metadata
+### 7. Add Metadata
 
 > Goal: Add Metadata
 
@@ -83,12 +94,12 @@ related:
 3. เพิ่ม summary statistics สำหรับ overview
 4. แสดงจำนวนไฟล์ที่กรองในสรุป
 
-### 7. Report Output
+### 8. Report Output
 
 > Goal: Report Output
 
 1. แสดง tree view พร้อม icons และ hierarchy
-2. แสดงสถิติโดยใช้ `/report-table`:
+2. แสดงสถิติโดยใช้ `/report`:
    - Metric, Value (total files, total dirs, total size, file types)
 3. แสดงสรุป: structure health, issues found, recommendations
 4. ทำ `/report` สำหรับจัดรูปแบบ output รวม
@@ -100,7 +111,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
@@ -142,4 +153,5 @@ related:
 - Important files ที่ถูก highlight
 - Metadata ที่เป็นประโยชน์
 - Report อ่านง่าย มี key findings ด้านบน
+- รวม capability จาก `list-file-structure` (tree args, quick mode, depth/include/exclude)
 - มี next action ชัดเจน

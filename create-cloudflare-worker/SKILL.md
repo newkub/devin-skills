@@ -8,6 +8,7 @@ related:
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-my-tech-stack
+  - use-wrangler
 
 ---
 ## Goal

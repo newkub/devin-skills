@@ -28,7 +28,7 @@
 
 1. เพิ่ม/แก้ `LICENSE` file ให้ตรงกับ declared license — ทำ `/follow-lib-license-md`
 2. เพิ่ม `NOTICE`/attribution ถ้า deps บังคับ (Apache-2.0, BSD)
-3. flag deps ที่ license ขัดกับ project (GPL ใน proprietary) — escalate ให้ user เลือก: เปลี่ยน lib (`/use-lib-better`) หรือรับความเสี่ยง
+3. flag deps ที่ license ขัดกับ project (GPL ใน proprietary) — escalate ให้ user เลือก: เปลี่ยน lib (`/review-dependencies`) หรือรับความเสี่ยง
 4. ตรวจ `/check-repo-hygiene` ให้ repo files ครบ
 
 ### 3. Fix Data Handling

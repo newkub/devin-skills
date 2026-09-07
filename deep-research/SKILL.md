@@ -11,6 +11,7 @@ related:
   - check-reference
   - follow-my-tech-stack
   - follow-tool-crw
+  - use-mcp
 ---
 
 ## Goal

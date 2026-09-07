@@ -87,7 +87,7 @@ Renovate ค้นหา config ตามลำดับนี้:
 - ตรวจ `packageRules` ว่า matchers ถูกต้อง
 
 - ใช้ /follow-tool-renovate ถ้าจำเป็น
-- ใช้ /follow-tool-agent-browser ถ้าจำเป็น
+- ใช้ /use-agent-browser ถ้าจำเป็น
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

@@ -9,6 +9,7 @@ related:
   - deep-research
   - research-setup
   - follow-best-practice
+  - use-mcp
 ---
 
 ## Goal

@@ -3,7 +3,7 @@ name: test-uxui-by-agent-browser
 description: ทดสอบ UX/UI ด้วย agent-browser ตรวจ layout, interaction, accessibility และ visual regression
 argument-hint: "[url-or-route]"
 related:
-  - follow-lib-agent-browser
+  - use-agent-browser
   - capture
   - run-test-website-by-agent-browser
   - review-uxui
@@ -113,7 +113,7 @@ related:
 
 - ห้ามแก้ UX/UI ตรงๆ ระหว่าง test — ส่งต่อ `/review-uxui`
 - ห้าม approve visual regression โดยไม่มี rationale บันทึก
-- ใช้ `/follow-lib-agent-browser` เพื่อดู commands เต็ม
+- ใช้ `/use-agent-browser` เพื่อดู commands เต็ม
 - ถ้า test หลาย routes ใช้ `/run-test-website-by-agent-browser` หรือ `/report-uxui-all-routes`
 - ถ้าพบ UX issues ส่งต่อ `/review-uxui` — ถ้าขาด context ทีชัดเจน → `/ask-me`
 

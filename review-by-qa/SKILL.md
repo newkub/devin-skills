@@ -5,7 +5,7 @@ argument-hint: "[sub-role]"
 related:
   - roleplay-stakeholder
   - review-by-engineer
-  - run-test
+  - run-test-unit
   - review-test
   - report-table
   - suggest-next-action
@@ -69,7 +69,7 @@ Review project จากมุมมอง QA — หา edge cases, boundary co
 - ทุก finding ต้องมี test/code evidence
 - ถ้า role ไม่ชัด → ถามก่อน
 
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-by-engineer ถ้าจำเป็น
 

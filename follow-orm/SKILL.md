@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-clean-architecture
   - follow-layered-architecture
-  - use-lib-effective
+  - review-dependencies
   - follow-lib-drizzle
   - update-test-and-fix
   - delete
@@ -138,7 +138,7 @@ related:
 
 - ใช้ /follow-clean-architecture ถ้าจำเป็น
 - ใช้ /follow-layered-architecture ถ้าจำเป็น
-- ใช้ /use-lib-effective ถ้าจำเป็น
+- ใช้ /review-dependencies ถ้าจำเป็น
 
 ## Expected Outcome
 

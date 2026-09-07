@@ -3,7 +3,6 @@ name: report
 description: ตอบในแชทเป็นตารางพร้อมคอลัมน์ No. เรียงลำดับ 1, 2, 3, ...
 argument-hint: "[scope]"
 related:
-  - report-table
   - report-progress
   - review-writing
 
@@ -36,8 +35,8 @@ related:
 
 > Goal: ข้อมูลถูกจัดรูปแบบในรูปแบบที่อ่านง่ายที่สุด
 
-1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ ใช้ `/report-table`
-2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report-table` พร้อมคอลัมน์ "No." เป็นคอลัมน์แรก
+1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ จัดตารางด้วย `/report`
+2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report` พร้อมคอลัมน์ "No." เป็นคอลัมน์แรก
 3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
 4. ถ้าเป็นรายงานความคืบหน้า/สถานะ ใช้ progress bar ตาม [references/format-ansi.md](references/format-ansi.md) หรือ `/report-progress`
 5. ถ้าเป็นรายงานสถานะ ใช้ `/report-progress`
@@ -109,6 +108,27 @@ related:
 - ใช้ภาษาที่เข้าใจง่าย
 - จัดรูปแบบให้สอดคล้องกันทั้งเอกสาร
 
+### 7. Bullet And Numbered Format
+
+- หนึ่ง bullet/number = หนึ่ง idea
+- ใช้ภาษากระชับ ตรงประเด็น
+- จัดกลุ่มที่เกี่ยวข้องและเรียงตาม priority
+- รักษา context และไม่ distort ความหมาย
+
+### 8. Summary And Metrics
+
+- สรุป key findings และ critical issues ก่อนรายละเอียด
+- ใช้ bullet points สำหรับ quick scanning
+- จัดกลุ่ม metrics ตาม category
+- ใช้ progress bars `████████░░░░ 50%` สำหรับ percentages พร้อม baseline
+- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
+
+### 9. Report UX/UI
+
+- สรุป key findings ไว้ด้านบนก่อนรายละเอียด
+- ใช้ `/report` สำหรับสถานะ/progress/logs
+- ทำ `/suggest-next-action` ท้าย report เสมอ
+
 ## Expected Outcome
 
 - ตารางที่มีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
@@ -116,5 +136,6 @@ related:
 - ข้อมูลที่อ่านง่าย
 - รูปแบบที่เหมาะสมกับประเภทข้อมูล
 - ตอบกลับในแชทเท่านั้น ไม่สร้างไฟล์แยก
+- Report สรุป key findings ด้านบน พร้อม next action ชัดเจน
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-numbered-bullet, report-codeblock, report-ansi)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-numbered-bullet, report-codeblock, report-ansi, report-table)

@@ -4,7 +4,7 @@ description: รันงานที่ค้างอยู่ทั้งห�
 argument-hint: "[target]"
 related:
   - run-verify
-  - run-test
+  - run-test-unit
   - report-table
   - suggest-next-action
   - resolve-errors
@@ -40,7 +40,7 @@ related:
 
 > Goal: ตรวจสอบ
 
-1. รัน `/run-verify` และ `/run-test` หลังทำงานเสร็จ
+1. รัน `/run-verify` และ `/run-test-unit` หลังทำงานเสร็จ
 1. เปรียบเทียบผลลัพธ์กับที่คาดหวัง
 1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
 

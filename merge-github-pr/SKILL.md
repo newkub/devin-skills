@@ -57,7 +57,7 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 > Goal: ตรวจสอบครั้งสุดท้าย
 
 1. ทำ `/run-check` (lint, typecheck, tests)
-2. ทำ `/run-test` สำหรับ critical paths
+2. ทำ `/run-test-unit` สำหรับ critical paths
 3. ตรวจสอบว่า branch ที merge เป็ต สมบูรณ์
 
 ### 5. Merge

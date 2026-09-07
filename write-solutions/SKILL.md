@@ -9,7 +9,7 @@ related:
   - update-devin-global-skills
   - resolve-errors
   - dont-over-engineer
-  - run-test
+  - run-test-unit
 ---
 
 ## Goal
@@ -114,7 +114,7 @@ related:
 
 ตรวจสอบและ monitor solution
 
-- ทำ `/run-test` เพื่อ validate ใน production-like environment
+- ทำ `/run-test-unit` เพื่อ validate ใน production-like environment
 - ตั้งค่า monitoring และ alerts สำหรับ metrics ที่เกี่ยวข้อง
 - รวบรวม feedback จาก users และ stakeholders
 - ปรับปรุง solution ตาม data และ feedback

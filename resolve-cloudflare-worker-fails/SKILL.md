@@ -11,6 +11,7 @@ related:
   - report-table
   - suggest-next-action
   - ask-me
+  - use-wrangler
 ---
 
 ## Goal

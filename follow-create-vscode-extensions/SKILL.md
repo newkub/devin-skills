@@ -8,7 +8,7 @@ related:
   - follow-lang-typescript
   - follow-release
   - follow-tool-vite
-  - run-test
+  - run-test-unit
   - follow-my-tech-stack
   - review-techstack
   - report-table
@@ -101,7 +101,7 @@ related:
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /follow-release ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 
 ## Expected Outcome

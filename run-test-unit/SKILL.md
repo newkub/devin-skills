@@ -3,7 +3,6 @@ name: run-test-unit
 description: รัน unit tests สำหรับ pure functions และ business logic
 argument-hint: "[scope]"
 related:
-  - run-test
   - run-test-all
   - run-test-api
   - run-check
@@ -71,7 +70,7 @@ related:
 - ทดสอบ null/undefined/empty inputs
 - ทดสอบ parameterized cases
 
-- ใช้ /run-test ถ้าจำเป็น
+- ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
