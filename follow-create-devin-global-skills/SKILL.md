@@ -9,7 +9,7 @@ related:
   - follow-skills-map
   - check-skills-related
   - use-in-another-skills
-  - prepare-skills-context
+  - update-devin-global-skills
   - follow-my-tech-stack
   - review-techstack
   - follow-create-cli
@@ -37,7 +37,7 @@ related:
 
 > Goal: รู้ว่าจะสร้าง skill อะไรและไม่ซ้ำกับที่มีอยู่
 
-1. ทำ `/prepare-skills-context` เพื่อเตรียม AI tool, directory และ conventions
+1. ตรวจจับ AI tool และ skills directory จาก path แล้วอ่าน `global_rules.md` ก่อน — ถ้าตรวจจับไม่ได้ให้ถามผู้ใช้ด้วย `/ask-me`
 2. รับ `skill-name` จาก argument หรือ context — ถ้าไม่ชัด → ทำ `/ask-me`
 3. ใช้ kebab-case และ `name` ใน frontmatter ต้องตรงกับ directory name
 4. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ที่เกี่ยวข้อง

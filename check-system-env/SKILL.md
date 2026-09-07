@@ -4,9 +4,9 @@ description: ตรวจสอบ OS, shell, environment variables และ gl
 argument-hint: "[scope]"
 related:
   - check-code-structure
-  - prepare-skills-context
+  - update-devin-global-skills
   - alternative
-  - report-table
+  - report
 ---
 ## Goal
 
@@ -229,14 +229,14 @@ Test-Path "$env:APPDATA\Mozilla\Firefox\Profiles"
 
 ### 4. Report Format
 
-รายงานในรูปแบบตารางตาม `/report-table`:
+รายงานในรูปแบบตารางตาม `/report`:
 - ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
 - ใช้ headers ชัดเจน
 - ใช้ alignment ที่เหมาะสม
 - ใช้ symbols (✅, ❌, ⚠️) สำหรับ status
 
 - ใช้ /check-code-structure ถ้าจำเป็น
-- ใช้ /prepare-skills-context ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /alternative ถ้าจำเป็น
 ## Expected Outcome
 

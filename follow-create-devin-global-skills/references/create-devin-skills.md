@@ -16,7 +16,7 @@
 
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
-1. ทำ `/prepare-skills-context` เพื่อตรวจจับ AI tool, อ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
+1. ตรวจจับ AI tool และ skills directory จาก path แล้วอ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
 2. ทำ `/check-skills-related` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/use-in-another-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
 4. ทำ `/learn-from-web` จาก Devin CLI docs เมื่อต้องการ verify spec

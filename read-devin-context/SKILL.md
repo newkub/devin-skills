@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - assume-reset-context
   - follow-context-engineering
-  - prepare-skills-context
+  - update-devin-global-skills
   - ask-me
 ---
 
@@ -106,7 +106,7 @@ related:
 
 - ใช้ /assume-reset-context ถ้าจำเป็น
 - ใช้ /follow-context-engineering ถ้าจำเป็น
-- ใช้ /prepare-skills-context ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

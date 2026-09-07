@@ -48,7 +48,7 @@
 - [ ] อ่าน `follow-loop-engineering/SKILL.md`
 - [ ] อ่าน `update-devin-global-subagents/SKILL.md`
 - [ ] อ่าน `follow-create-devin-global-skills/SKILL.md` หรือ template ที่เกี่ยวข้อง
-- [ ] อ่าน `prepare-skills-context/SKILL.md` เพื่อยืนยันรูปแบบ skill
+- [ ] อ่าน `update-devin-global-skills/SKILL.md` เพื่อยืนยันรูปแบบ skill
 - [ ] ตรวจสอบ `global_rules.md` ว่า skill ใหม่นี้ impact workflow ใดบ้าง
 
 ## Phase 1: Skill Structure
