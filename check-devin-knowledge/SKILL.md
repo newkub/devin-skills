@@ -4,7 +4,7 @@ description: Audit Devin knowledge notes — stale, contradicting, unused แล
 argument-hint: "[folder-or-topic]"
 related:
   - check-reference
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุป knowledge health
 
-1. ใช้ `/report-table`: `No.`, `Note`, `Issue`, `Age`, `Severity`, `Action`
+1. ใช้ `/report`: `No.`, `Note`, `Issue`, `Age`, `Severity`, `Action`
 2. Actions: `update`, `merge`, `dismiss`, `delete`, `keep`
 3. สรุป coverage: topics ที่มี notes ครบ vs ที่ขาด
 

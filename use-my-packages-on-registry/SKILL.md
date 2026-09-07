@@ -8,7 +8,7 @@ related:
   - follow-lang-bun
   - use-scripts
   - suggest-next-action
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -39,13 +39,13 @@ related:
 1. npm/bun → ทำ `/list-my-npm-packages`
 2. cargo → ใช้ `cargo search` หรือ `https://crates.io/api/v1/crates?user_id=<id>` ถ้าหา username ได้
 3. python → ใช้ `pip index versions <pkg>` หรือ `https://pypi.org/pypi/<pkg>/json` ตามทีทราบชื่อ
-4. แสดงผลด้วย `/report-table` คอลัมน์ `No.`, `Package`, `Version`, `Registry`, `Description`
+4. แสดงผลด้วย `/report` คอลัมน์ `No.`, `Package`, `Version`, `Registry`, `Description`
 
 ### 3. Select Packages
 
 > Goal: เลือก packages ทีจะติดตั้ง
 
-1. ทำ `/ask-me` หรือเลือกจาก `/report-table` ว่าจะติดตั้ง package ใด
+1. ทำ `/ask-me` หรือเลือกจาก `/report` ว่าจะติดตั้ง package ใด
 2. ตรวจสอบ `/follow-my-tech-stack` ว่า package ทีเลือกสอดคล้องกับ tech stack หรือไม่
 3. ระบุว่าเป็น `dependencies`, `devDependencies` หรือ `peerDependencies`
 4. ถ้ามีหลาย package manager → ทำตามลำดับที user เลือก

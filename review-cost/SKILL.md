@@ -3,7 +3,7 @@ name: review-cost
 description: ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party, idle resources
 argument-hint: "[service-or-resource]"
 related:
-  - report-table
+  - report
   - review-performance
 ---
 
@@ -14,6 +14,8 @@ related:
 ## Scope
 
 ใช้กับ cloud deployment: Cloudflare Workers, AWS, Vercel, fly.io โดย audit usage โดยไม่แก้ไข resources
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-cost-analysis) — ถ้าต้อง deep cost model, unit economics และ projection ที่ scale สูง ดู `references/deep-cost-analysis.md`
 
 ## Execute
 
@@ -54,7 +56,7 @@ related:
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
+1. ทำ `/report` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี performance ปัญหา → เชื่อม `/review-performance`
 

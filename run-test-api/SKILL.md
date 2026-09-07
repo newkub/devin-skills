@@ -7,7 +7,7 @@ related:
   - use-scripts
   - use-astgrep-programmatic
   - deep-validate
-  - report-table
+  - report
   - resolve-errors
   - suggest-next-action
 ---
@@ -57,7 +57,7 @@ related:
 > Goal: ตรวจสอบผลและรายงาน
 
 1. ทำ `/deep-validate` กับ source ที่เกี่ยวข้องเมื่อ API test fail
-2. สรุปผลด้วย `/report-table`: endpoint, status, latency, pass/fail
+2. สรุปผลด้วย `/report`: endpoint, status, latency, pass/fail
 3. ถ้า source ผิด → แนะนำ `/resolve-errors` หรือ `/edit`
 4. ถ้า test ผิด → แนะนำ `/edit` กับ test script
 5. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป

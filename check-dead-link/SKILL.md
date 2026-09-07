@@ -6,7 +6,7 @@ related:
   - check-broken-skills-references
   - check-reference
   - search-files-patterns
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ related:
 
 > Goal: สรุป dead links แก้ไขได้ทันที
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `File`, `Line`, `Link`, `Type`, `Status`, `Suggestion`
+1. ทำ `/report` คอลัมน์: `No.`, `File`, `Line`, `Link`, `Type`, `Status`, `Suggestion`
 2. จัดกลุ่มตามไฟล์และเรียง `dead` ก่อน `redirect`
 3. เสนอ fix: path ที่น่าจะถูก (จาก `find_file_by_name`) หรือลบ link
 4. สรุป counts: total links, dead, redirect, ok

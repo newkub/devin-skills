@@ -6,8 +6,8 @@ related:
   - open-github
   - list-github-pr
   - merge-github-pr
-  - list-github-actions-fails
-  - report-table
+  - resolve-github-actions-fails
+  - report
   - suggest-next-action
 ---
 
@@ -18,6 +18,8 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ## Scope
 
 ใช้สำหรับ review pull request ก่อน merge — ทำงานบน PR จาก GitHub หรือ local branch diff — ไม่แก้ไข code โดยไม่ได้รับอนุญาต
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-review-pr) — ถ้าต้อง deep review พร้อมตอบ comments, resolve conversations และถาม user ก่อน merge ดู `references/deep-pr-review.md`
 
 ## Execute
 
@@ -43,7 +45,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -57,7 +59,9 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ใช้ /open-github ถ้าจำเป็น
 - ใช้ /list-github-pr ถ้าจำเป็น
 - ใช้ /merge-github-pr ถ้าจำเป็น
-- ใช้ /list-github-actions-fails ถ้าจำเป็น
+- ใช้ /resolve-github-actions-fails ถ้าจำเป็น
+
+- ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
 ## Expected Outcome
 

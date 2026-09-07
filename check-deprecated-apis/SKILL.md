@@ -4,7 +4,7 @@ description: หา code ที่ใช้ deprecated APIs, functions และ
 argument-hint: "[path]"
 related:
   - use-astgrep
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุป deprecation debt พร้อมแผน
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Deprecated`, `Type`, `Usages`, `Replacement`, `Severity`
+1. ใช้ `/report` คอลัมน์: `No.`, `Deprecated`, `Type`, `Usages`, `Replacement`, `Severity`
 2. Severity: `high` (EOL/removal announced, security-related), `medium` (มี replacement ชัด), `low` (deprecated แต่ยัง maintain)
 3. จัดกลุ่มเป็น batches ที่ migrate พร้อมกันได้
 

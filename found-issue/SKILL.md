@@ -7,7 +7,7 @@ related:
   - resolve-errors
   - search-skills
   - ask-me
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -42,7 +42,7 @@ related:
 
 > Goal: สรุปผลการ map
 
-1. ใช้ `/report-table` สรุป: symptom, matched skill, reason, next action
+1. ใช้ `/report` สรุป: symptom, matched skill, reason, next action
 2. ทำ `/suggest-next-action`
 
 ## Rules

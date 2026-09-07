@@ -1,0 +1,124 @@
+---
+name: align-devin-layers
+description: จัด alignment ระหว่าง global rules, devin global skills และ subagents ให้สอดคล้องกัน
+argument-hint: "[scope]"
+related:
+  - list-devin-global-skills
+  - list-devin-global-subagents
+  - update-devin-global-rules
+  - update-devin-global-skills
+  - update-devin-global-subagents
+  - deep-validate
+  - check-reference
+  - use-related-skills
+  - report-in-table
+  - suggest-next-action
+  - review-devin-global-skills
+  - review-devin-global-subagents
+  - check-broken-skills-references
+  - update-references
+  - scan-codebase
+---
+
+## Goal
+
+ทำให้ `global_rules.md`, `devin global skills`, และ `devin global subagents` มี alignment ทีตรงกัน สอดคล้องกัน และไม่ขัดแย้งกัน
+
+## Scope
+
+ใช้เมื่อต้อง sync ทั้งสาม layer ของ devin ecosystem โดยเฉพาะหลังมีการ rename, merge, หรือสร้าง skills/subagents จำนวนมาก
+
+## Execute
+
+### 1. Inventory All Layers
+
+> Goal: รวบรวมข้อมูลจากทุก layer
+
+1. อ่าน `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+2. ทำ `/list-devin-global-skills`
+3. ทำ `/list-devin-global-subagents`
+4. บันทึก versions, last updated, และ critical rules
+
+### 2. Run Update Workflows
+
+> Goal: อัปเดตแต่ละ layer
+
+1. ทำ `/update-devin-global-rules` เพื่อ sync global rules
+2. ทำ `/update-devin-global-skills` เพื่อ audit และอัปเดต skills
+3. ทำ `/update-devin-global-subagents` เพื่ออัปเดต subagents
+4. บันทึก output ของแต่ละ step
+
+### 3. Detect Cross-Layer Misalignment
+
+> Goal: หาความไม่สอดคล้อง
+
+1. เปรียบเทียบ rules จาก global rules vs skills vs subagents
+2. ทำ `/scan-codebase` เพื่อค้นหา references ทั่ว repo
+3. ตรวจ references: ชื่อ skills/subagents ใน AGENTS.md, global rules, และ skill `related`
+4. ทำ `/check-broken-skills-references` หา broken references
+5. หา circular dependencies หรือ broken references
+6. ระบุ skills/subagents ทีล้าหลัง global rules
+
+### 4. Resolve Conflicts
+
+> Goal: แก้ไขความขัดแย้ง
+
+1. ถ้า global rules กับ skill ขัดแย้ง → ปรับ skill หรือ update `global_rules.md`
+2. ถ้า subagent เรียก skill ทีไม่มี → อัปเดต subagent
+3. ถ้า skill อ้างอิง rules ทีไม่มี → เพิ่มหรือลบ reference
+4. ใช้ `/update-references` เพื่อ sync ทั่ว repo
+5. ใช้ `/use-related-skills` เพื่อหา overlaps
+
+### 5. Validate Harness
+
+> Goal: ตรวจสอบความสมบูรณ์
+
+1. ทำ `/deep-validate` กับ global rules
+2. ตรวจ frontmatter ของ skills ทั้งหมดด้วย `/review-devin-global-skills`
+3. ตรวจ `AGENT.md` ของ subagents ด้วย `/review-devin-global-subagents` ถ้าจำเป็น
+4. รัน `/check-reference`
+5. รัน `git diff --check`
+
+### 6. Report
+
+> Goal: สรุป alignment status
+
+1. ทำ `/report-in-table` คอลัมน์: `No.`, `Layer`, `Status`, `Changes`, `Issues`
+2. ระบุสิ่งที่ยังค้าง
+3. ทำ `/suggest-next-action`
+
+## Rules
+
+### 1. Run In Order
+
+- อัปเดต global rules ก่อน skills ก่อน subagents
+- ถ้ามี dependency loop → แก้ loop ก่อน
+- ไม่ข้าม layer
+
+### 2. Minimal Scope
+
+- แก้เฉพาะสิ่งที่ขัดแย้งหรือล้าหลัง
+- ไม่เปลี่ยนโครงสร้างใหญ่ถ้าไม่จำเป็น
+- เก็บ intent เดิมของแต่ละ layer
+
+### 3. Cross-Reference Integrity
+
+- `name` ใน frontmatter ต้องตรง directory
+- `related` ต้องมีอยู่จริง
+- `AGENTS.md` ต้อง sync
+
+### 4. Backup
+
+- สำรอง `global_rules.md` ก่อนแก้ไข
+- สำรอง `AGENTS.md` ถ้ามีการเปลี่ยนแปลงใหญ่
+- ใช้ `git commit` ทีละ layer
+
+- ใช้ `/review-devin-global-subagents` ถ้าจำเป็น
+
+## Expected Outcome
+
+- global rules, global skills, global subagents สอดคล้องกัน
+- ไม่มี broken references
+- ไม่มี rules ซ้ำซ้อนหรือขัดแย้ง
+- มีรายงาน alignment status
+- ผ่าน validation

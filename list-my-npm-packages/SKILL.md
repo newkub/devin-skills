@@ -4,7 +4,7 @@ description: แสดงรายการ npm packages ทีผู้ใช�
 argument-hint: "[scope]"
 related:
   - list-program-in-computer
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
 ---
@@ -50,7 +50,7 @@ related:
 
 > Goal: รายงานผลเป็นตาราง
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report` คอลัมน์:
    - No.
    - Package
    - Version

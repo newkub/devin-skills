@@ -9,7 +9,7 @@ related:
   - run-review
   - deep-review-codebase
   - use-astgrep
-  - report-table
+  - report
   - suggest-next-action
   - review-test
   - review-security
@@ -95,7 +95,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: รายงานชัดเจน ครบทุก dimension พร้อม review score
 
-1. ทำ `/report-table`
+1. ทำ `/report`
 2. สร้าง Quality Metrics Summary, Findings by Category, Recommended Actions
 3. คำนวณ review score ทำตาม `references/scoring.md`
 4. ทำ `/suggest-next-action`
@@ -119,7 +119,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ตรวจ pattern ทีใช้ว่าช่วย maintainability และ extensibility หรือไม่
 - หลีกเลี่ยง anti-patterns ทีทำให้ code ซับซ้อนโดยไม่จำเป็น
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ tools, commands, paths, skill references
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 - ใช้ symbols: ✅ ผ่าน, ❌ ไม่ผ่าน, ⚠️ มี warning
 
 - ใช้ /deep-analyze ถ้าจำเป็น

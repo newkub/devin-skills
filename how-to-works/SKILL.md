@@ -8,7 +8,7 @@ related:
   - learn
   - scan-codebase
   - deep-trace
-  - learn-from-web
+  - learn-web
   - read-related
 ---
 
@@ -36,7 +36,7 @@ related:
 > Goal: Gather Context
 
 1. ถ้า target อยู่ใน project ปัจจุบัน → ทำ `/scan-codebase` หรือ `/deep-trace`
-2. ถ้า target เป็น tool/library ภายนอก → ทำ `/learn-from-web` ด้วย official docs
+2. ถ้า target เป็น tool/library ภายนอก → ทำ `/learn-web` ด้วย official docs
 3. ถ้าเกี่ยวข้องกับ skills ใน repo → ทำ `/read-related`
 4. รวบรวม source paths, docs, และ examples
 
@@ -57,7 +57,7 @@ related:
 2. แบ่งการทำงานเป็น 3-7 ขั้นตอน
 3. แต่ละขั้นตอนระบุ what happens, why, และ how
 4. ใช้ analogies หรือตัวอย่างเพื่อช่วยให้เข้าใจ
-5. ใช้ `/report-flow`, `/report-table`, หรือ `/draw-tldraw` ถ้าช่วยให้เห็นภาพ
+5. ใช้ `/report-flow`, `/report`, หรือ `/draw-tldraw` ถ้าช่วยให้เห็นภาพ
 
 ### 5. Validate Understanding
 

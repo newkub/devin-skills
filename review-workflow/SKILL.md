@@ -7,8 +7,7 @@ related:
   - update-devin-global-skills
   - review-quality
   - review-redundancy
-  - deep-validate
-  - report-table
+  - deep-validate
   - suggest-next-action
   - use-subagents
   - follow-parallel
@@ -60,7 +59,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ### 9. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 

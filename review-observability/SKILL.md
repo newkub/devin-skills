@@ -6,7 +6,7 @@ related:
   - review-stability
   - review-security
   - review-delivery
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -124,7 +124,7 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`

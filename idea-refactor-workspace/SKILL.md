@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - refactor-workspace
   - follow-single-responsibility
-  - report-table
+  - report
   - report-file-structure
   - report-before-after
   - suggest-next-action
@@ -61,7 +61,7 @@ related:
 
 1. ให้คะแนนแต่ละไอเดียตาม impact/effort ratio
 2. จัดลำดับ: High → Medium → Low
-3. ใช้ `/report-table` คอลัมน์:
+3. ใช้ `/report` คอลัมน์:
    - No
    - Idea
    - Type

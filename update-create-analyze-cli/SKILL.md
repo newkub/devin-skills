@@ -3,7 +3,7 @@ name: update-create-analyze-cli
 description: สร้างหรืออัปเดต tools/analyze analyzers ให้ครอบคลุม features ปัจจุบัน 60+ categories 5 domains
 argument-hint: "[category-or-domain]"
 related:
-  - report-table
+  - report
   - resolve-errors
   - suggest-next-action
 ---
@@ -72,7 +72,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง categories ก่อน/หลัง, score, falsePositiveRate
+1. ทำ `/report` แสดง categories ก่อน/หลัง, score, falsePositiveRate
 2. ทำ `/suggest-next-action`
 
 ## Rules

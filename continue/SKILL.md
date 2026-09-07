@@ -3,7 +3,7 @@ name: continue
 description: ทำงานต่อให้ครบถ้วนตามที่ได้รับมอบหมาย ตรวจสอบความสมบูรณ์ และหยุดเมื่องานเสร็จสิ้น
 argument-hint: "[session-id]"
 related:
-  - report-and-continue
+  - report-progress
   - follow-best-practice
   - suggest-next-action
   - ship
@@ -88,7 +88,7 @@ related:
 3. บอกสถานะสุดท้ายของงานว่าครบถ้วนหรือไม่
 4. หยุดทำงานเมื่อรายงานเสร็จสมบูรณ์
 
-- ใช้ /report-and-continue ถ้าจำเป็น
+- ใช้ /report-progress ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 
 ## Expected Outcome

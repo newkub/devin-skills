@@ -7,7 +7,7 @@ related:
   - productionize-implementation
   - continue
   - enhance-prompt
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -89,7 +89,7 @@ related:
 2. ตรวจว่า nested items มีเลขย่อย
 3. ตรวจว่าไม่มี `` (bold markers)
 4. ตรวจว่าใช้ backticks สำหรับ `tools`, `commands`, paths
-5. ทำ `/report-table` สรุป action, title, status, next step
+5. ทำ `/report` สรุป action, title, status, next step
 
 ## Rules
 

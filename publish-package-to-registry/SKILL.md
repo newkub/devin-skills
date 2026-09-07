@@ -140,7 +140,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /follow-tool-changelogen ถ้าจำเป็น
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
-- ใช้ /follow-tool-build-packages ถ้าจำเป็น
+- ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 
 ## Expected Outcome

@@ -25,6 +25,6 @@
 | TODO/MOCK/placeholder เหลือ | `/report-scan-todo`, `/implement-mock` |
 | dependencies outdated | `/update-version-to-latest`, `/follow-tool-taze` |
 | ไฟล์/branch/worktree รก | `/run-cleanup`, `/cleanup-files-in-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
-| git conflict | `/resolve-merge-conflicts`, `/git-debug` |
+| git conflict | `/resolve-merge-conflicts`, `/deep-debug` |
 | workspace หลายอันไม่ตรงกัน | `/review-references`, `/sync-drive-d-submodules` |
 | ไม่รู้ว่าควรใช้ skill ใด | `/search-skills`, `/suggest-next-action`, `/ask-me` |

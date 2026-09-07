@@ -6,7 +6,7 @@ related:  - review-uxui
   - run-test-website-by-agent-browser
   - capture
   - use-agent-browser
-  - report-table
+  - report
   - deep-review
 ---
 
@@ -65,7 +65,7 @@ related:  - review-uxui
 > Goal: สรุป findings พร้อม severity และ remediation path
 
 1. จัดกลุ่ม findings ตาม WCAG principle และ severity
-2. ทำ `/report-table` พร้อม columns: No., Rule, Severity, Element, Evidence, Fix
+2. ทำ `/report` พร้อม columns: No., Rule, Severity, Element, Evidence, Fix
 3. ชี้ไป section `## Fix` สำหรับการแก้ไข
 
 ## Rules

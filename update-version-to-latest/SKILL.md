@@ -4,7 +4,7 @@ description: อัปเดต dependencies, runtime, tools, CI ในทุก
 argument-hint: "[scope]"
 related:
   - resolve-errors
-  - report-table
+  - report
   - test-usage
   - run-verify
   - ask-me
@@ -96,7 +96,7 @@ related:
 > Goal: เก็บ changes พร้อมสรุป
 
 1. แยก commit ตามประเภท: `chore: update patch dependencies`, `chore: update minor dependencies`, `chore: update major dependencies`, `chore: update runtime/CI versions` (ถ้า user ยินยอม push)
-2. ใช้ `/report-table` สรุป: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
+2. ใช้ `/report` สรุป: `No.`, `Package`, `Old`, `New`, `Type`, `Status`
 3. รายงาน breaking changes หรือ action ที่ต้องทำต่อ
 
 ## Rules

@@ -3,7 +3,7 @@ name: restore-from-devin-history
 description: กู้คืนไฟล์ที่เสียหายรุนแรงโดยอ่านประวัติ Devin session แทน git restore เมื่อง git ใช้ไม่ได้แล้ว
 argument-hint: "[file]"
 related:
-  - git-debug
+  - deep-debug
   - restore-from-git-log
   - ask-me
 ---
@@ -94,7 +94,7 @@ related:
 - แสดง timeline เป็นข้อๆ
 - ไม่ตอบคำถามก่อนรวบรวมข้อมูลครบ
 
-- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /deep-debug ถ้าจำเป็น
 - ใช้ /restore-from-git-log ถ้าจำเป็น
 
 ## Expected Outcome

@@ -3,7 +3,7 @@ name: check-broken-symlinks
 description: หา symlinks/junctions ที่ target ตาย — broken links ที่ทำ build/tools fail เงียบๆ
 argument-hint: "[path]"
 related:
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุป broken links พร้อม actions
 
-1. ใช้ `/report-table`: `No.`, `Link`, `Target`, `Type`, `Severity`, `Action`
+1. ใช้ `/report`: `No.`, `Link`, `Target`, `Type`, `Severity`, `Action`
 2. Actions: `repoint` (target ย้ายไปที่อื่น — หา new location), `remove` (orphan), `recreate` (target ถูกลบโดยไม่ตั้งใจ)
 3. สำหรับ repoint: ค้น filesystem หา target ที่ย้ายไป — name/type เดียวกัน
 

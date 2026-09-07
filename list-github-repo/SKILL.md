@@ -9,7 +9,7 @@ allowed-tools:
   - edit
   - exec
   - skill
-  - report-table
+  - report
   - suggest-next-action
   - ask_user_question
 triggers:
@@ -17,12 +17,11 @@ triggers:
   - model
 related:
   - open-github
-  - view-repo
   - all-github-repo
   - list-github-project
   - list-project-git-in-computer
   - list-github-star
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -62,7 +61,7 @@ related:
 1. เรียงตาม `updatedAt` ล่าสุดก่อน
 2. แปลง `updatedAt` เป้น `YYYY-MM-DD`
 3. ดึง `primaryLanguage.name` ถ้ามี ถ้าไม่มีให้แสดง `n/a`
-4. ทำ `/report-table` ด้วยคอลัมน์:
+4. ทำ `/report` ด้วยคอลัมน์:
    - No
    - Name
    - Description
@@ -80,7 +79,7 @@ related:
 
 1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-project-git-in-computer`
 2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-star`
-3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/view-repo <owner>/<name>`
+3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/open-github <owner>/<name>`
 4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม
 
 ## Rules
@@ -104,7 +103,7 @@ related:
 
 ### 4. Output
 
-- ใช้ `/report-table` เสมอ
+- ใช้ `/report` เสมอ
 - เรียงตาม `updatedAt` ล่าสุด
 - ไม่แสดง secrets, tokens, หรือข้อมูล sensitive
 

@@ -7,7 +7,7 @@ related:
   - deep-analyze
   - deep-impact
   - refactor
-  - refactor-to-single-responsibility
+
   - restructure
   - deep-validate
   - run-verify
@@ -70,7 +70,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 
 > Goal: ทำการ refactor ตามแผน
 
-1. ทำ `/refactor-to-single-responsibility` สำหรับ SRP violations
+1. ทำ `/refactor` สำหรับ SRP violations
 2. ทำ `/refactor` สำหรับ code style, boundaries, consistency
 3. ทำ `/restructure` สำหรับ file/folder structure ที่ผิด domain
 4. ทำ `/rename` สำหรับ identifier ที่ต้องเปลี่ยนชื่อ
@@ -100,7 +100,7 @@ Deep refactor หนึ่ง workspace ด้วย baseline, multi-dimensional
 > Goal: รายงานผล before/after และสิ่งที่ทำ
 
 1. ทำ `/report-before-after` สรุป metrics ก่อนและหลัง refactor
-2. ทำ `/report-table` สร้างตาราง: target, action, status, risk, verification
+2. ทำ `/report` สร้างตาราง: target, action, status, risk, verification
 3. ระบุข้อควรระวังหรือสิ่งที่ต้องติดตามถ้ามี
 4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 

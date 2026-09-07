@@ -9,7 +9,7 @@ related:
   - update-readme-md
   - check-dead-link
   - check-secrets-leak
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -63,7 +63,7 @@ Audit repository hygiene: ตรวจว่า repo มีไฟล์และ
 
 > Goal: scorecard ที่แก้ไขได้ทันที
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Item`, `Status`, `Severity`, `Suggestion`
+1. ทำ `/report` คอลัมน์: `No.`, `Item`, `Status`, `Severity`, `Suggestion`
 2. Status: `present`, `missing`, `empty`, `stale`
 3. สรุป hygiene score (present/total) และ top gaps
 4. แนะนำ skills ที่แก้แต่ละ gap: `/update-readme-md`, `/follow-lib-license-md`, `/follow-dot-github`

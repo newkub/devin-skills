@@ -101,7 +101,7 @@ related:
 
 1. รัน test suite ทั้งหมด
 2. รัน lint, typecheck, build
-3. ทำ `/report-table` สรุป impact, risk, mitigation, test results
+3. ทำ `/report` สรุป impact, risk, mitigation, test results
 4. บันทึก migration notes สำหรับ consumer
 5. แจ้งทีมหรือ stakeholder ถ้ามี breaking change
 

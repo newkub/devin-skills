@@ -2,7 +2,7 @@
 
 ## Goal
 
-ตรวจ plan completeness ก่อน execute `implement-plan`
+ตรวจ plan completeness ก่อน execute `productionize-implementation`
 
 ## Checks
 

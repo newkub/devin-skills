@@ -1,6 +1,5 @@
 # Combinatorics
 
-
 ## Goal
 
 ใช้ combinatorics เพื่อนับจำนวนวิธี สร้าง test cases วิเคราะห์ brute-force bounds และจัดการ permutations/combinations ใน code

@@ -10,7 +10,7 @@ related:
   - follow-best-practice
   - run-test-unit
   - run-check
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -82,7 +82,7 @@ related:
 1. รัน `Import-Module ./<ModuleName> -Force` แล้ว `Get-Command -Module <ModuleName>`
 2. รัน `Invoke-ScriptAnalyzer -Path ./<ModuleName> -Recurse` แล้วแก้ findings
 3. ทำ `/run-check` ถ้า project มี lint pipeline
-4. รายงานด้วย `/report-table`: functions, coverage, analyzer results
+4. รายงานด้วย `/report`: functions, coverage, analyzer results
 
 ## Rules
 

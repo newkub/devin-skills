@@ -4,7 +4,7 @@ description: Review USAGE.md quality, coverage, and consistency in workspace
 argument-hint: "[scope]"
 related:
   - update-usage-md
-  - report-table
+  - report
   - suggest-next-action
   - review-docs
 ---
@@ -48,7 +48,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 ### 7. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) และ [references/score-and-report.md](references/score-and-report.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) และ [references/score-and-report.md](references/score-and-report.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 

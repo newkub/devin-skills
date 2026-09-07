@@ -7,14 +7,14 @@ related:
   - ship-to-staging
   - ship-rollback
   - create-github-pr
-  - deep-review-pr
+  - review-github-pr
   - watch-github-actions
   - merge-github-pr
   - merge-git-branch
   - run-deploy
   - watch-deploy
   - resolve-errors
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -50,7 +50,7 @@ Merge feature branch แล้ว deploy ไป production หลังจาก
 > Goal: สร้าง PR และ review ถ้าใช้ PR workflow
 
 1. ถ้า repo มี remote ใช้ PR workflow และยังไม่มี PR → ทำ `/create-github-pr`
-2. ทำ `/deep-review-pr` เพื่อ review PR พร้อม comment แต่ละ finding
+2. ทำ `/review-github-pr` เพื่อ review PR พร้อม comment แต่ละ finding
 3. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 2
 4. ทำ `/watch-github-actions` หรือ `gh run watch` เพื่อรอ CI ผ่านก่อน merge
 
@@ -66,9 +66,10 @@ Merge feature branch แล้ว deploy ไป production หลังจาก
 
 > Goal: production มี version ล่าสุด
 
-1. รัน production deploy command ตาม `AGENTS.md` หรือ `package.json` — ใช้ `/run-deploy` ถ้ามี skill สำหรับ target
-2. บันทึก deploy URL, commit hash, deploy time
-3. ถ้า deploy fail → `/resolve-errors` แล้ว report
+1. ทำ `/deep-validate` เป็น production gate ถ้ายังไม่ได้ validate ใน pipeline ก่อนหน้า
+2. รัน production deploy command ตาม `AGENTS.md` หรือ `package.json` — ใช้ `/run-deploy` ถ้ามี skill สำหรับ target
+3. บันทึก deploy URL, commit hash, deploy time
+4. ถ้า deploy fail → `/resolve-errors` แล้ว report
 
 ### 6. Health Check And Watch
 
@@ -89,7 +90,7 @@ Merge feature branch แล้ว deploy ไป production หลังจาก
 
 > Goal: สรุปผล production
 
-1. ทำ `/report-table` สรุป deploy, status, version, rollback status
+1. ทำ `/report` สรุป deploy, status, version, rollback status
 2. ทำ `/suggest-next-action`
 
 ## Rules

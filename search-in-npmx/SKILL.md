@@ -5,8 +5,8 @@ argument-hint: "[package-query]"
 related:
   - follow-best-practice
   - follow-tool-crw
-  - follow-tool-websearch
-  - learn-from-web
+  - follow-tool-crw
+  - learn-web
   - use-my-packages-on-registry
   - review-dependencies
   - follow-my-tech-stack
@@ -122,8 +122,8 @@ related:
 ### 4. Tools
 
 - ใช้ `follow-tool-crw` หรือ `crw_scrape` เพื่อดึงข้อมูลจาก npmx.dev
-- ใช้ `follow-tool-websearch` ถ้าต้องหา context เพิ่มเติม
-- ใช้ `learn-from-web` ถ้าต้องอ่าน docs นอก npmx
+- ใช้ `follow-tool-crw` ถ้าต้องหา context เพิ่มเติม
+- ใช้ `learn-web` ถ้าต้องอ่าน docs นอก npmx
 - ใช้ `review-dependencies` ถ้าต้อง audit ลึก
 
 ### 5. Safety

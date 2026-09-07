@@ -1,6 +1,5 @@
 # Game Theory
 
-
 ## Goal
 
 เข้าใจ game theory: minimax, Nash equilibrium, zero-sum games, dominant strategies, prisoner's dilemma และประยุกต์ใช้ใน AI opponents, scheduling, auctions, decision systems

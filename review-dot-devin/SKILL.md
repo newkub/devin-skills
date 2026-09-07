@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo
-  - report-table
+  - report
   - suggest-next-action
   - update-dot-devin
   - review-rules
@@ -71,7 +71,7 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
 ทำตาม references/scoring.md
 
 - คำนวณ review score, grade และ supplementary metrics
-- ทำ `/report-table` พร้อม findings
+- ทำ `/report` พร้อม findings
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -93,7 +93,7 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
    - Grade A-F ตาม thresholds ใน references/scoring.md
 5. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

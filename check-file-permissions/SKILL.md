@@ -4,7 +4,7 @@ description: Audit ACLs/permissions บน sensitive files — .env, keys, confi
 argument-hint: "[path-or-file]"
 related:
   - check-secrets-leak
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุป permission findings พร้อม fixes
 
-1. ใช้ `/report-table`: `No.`, `Path`, `Current Perms`, `Expected`, `Risk`, `Fix Command`
+1. ใช้ `/report`: `No.`, `Path`, `Current Perms`, `Expected`, `Risk`, `Fix Command`
 2. ระบุ exact fix commands:
    - Windows: `icacls <path> /inheritance:r /grant:r "$env:USERNAME:F"`
    - Unix: `chmod 600 <path>`

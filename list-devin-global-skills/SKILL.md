@@ -3,7 +3,7 @@ name: list-devin-global-skills
 description: แสดงรายการ Devin global skills ทั้งหมดพร้อมคำอธิบาย
 argument-hint: "[scope] [--relation]"
 related:
-  - report-table
+  - report
   - search-skills
   - follow-skills-map
 ---
@@ -46,7 +46,7 @@ related:
 แสดงรายการ skills ทั้งหมด
 
 1. แสดงเป็นตาราง: ชื่อ skill, description, กลุ่ม
-2. ทำ `/report-table` สำหรับจัดรูปแบบ
+2. ทำ `/report` สำหรับจัดรูปแบบ
 3. ทำ `/follow-skills-map` เพื่อแสดง map ตาม task หรือ ecosystem ถ้า user ต้องการ
 4. ถ้าต้องการดูความสัมพันธ์/flow ของ skills → ใช้ `--relation` mode ของ skill นี้ (ดู [references/relation-view.md](references/relation-view.md))
 
@@ -55,7 +55,7 @@ related:
 - อ่านเฉพาะไดเรกทอรีที่มี `SKILL.md` ใน `skills` directory
 - แสดงทุก skill ไม่กรองออก
 - จัดกลุ่มตามประเภทของ skill
-- ใช้ `/report-table` สำหรับ output
+- ใช้ `/report` สำหรับ output
 - ถ้าต้องการค้นหา skills จาก external registry ให้ใช้ `/search-skills`
 
 ## Expected Outcome

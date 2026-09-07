@@ -76,7 +76,7 @@ Build release artifact ตาม platform แล้วรัน smoke test ก�
 
 > Goal: สรุปผล test
 
-1. ทำ `/report-table`: platform, artifact path, smoke test, status
+1. ทำ `/report`: platform, artifact path, smoke test, status
 2. รายงานขนาด, version, และ findings
 3. ทำ `/suggest-next-action` เช่น `/run-release` หรือ `/resolve-errors`
 

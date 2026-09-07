@@ -1,6 +1,5 @@
 # Statistics
 
-
 ## Goal
 
 เข้าใจ statistics สำหรับ software: descriptive stats, percentiles, distributions, hypothesis testing, regression และประยุกต์ใช้ใน metrics, logs, benchmarks

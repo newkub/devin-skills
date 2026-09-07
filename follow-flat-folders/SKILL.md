@@ -4,7 +4,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - report-table
+
   - deep-validate
   - report
 ---
@@ -44,7 +44,7 @@ related:
 
 1. ตรวจสอบว่า flat names ไม่ซ้ำ ไม่เกิน length limit ของ filesystem
 2. ตรวจสอบว่าไม่ overwrite ไฟล์ที่มีอยู่
-3. แสดง mapping ตัวอย่างให้ user ด้วย `/report-table`
+3. แสดง mapping ตัวอย่างให้ user ด้วย `/report`
 4. ถ้ามีการลบ/ย้ายจำนวนมาก ให้ขอ user confirmation ด้วย `/ask_user_question` ก่อนดำเนื่อนการจริง
 5. ถ้า user ไม่ยินยัน → stop และ report
 
@@ -64,7 +64,7 @@ related:
 
 1. ทำ `/deep-validate` เพื่อตรวจสอบ broken references
 2. รัน build / test / lint ตาม project
-3. ทำ `/report-table` แสดง before/after path mapping
+3. ทำ `/report` แสดง before/after path mapping
 4. ถ้ามี error → แก้และ re-verify (max 3 ครั้ง → stop/report)
 
 ## Rules

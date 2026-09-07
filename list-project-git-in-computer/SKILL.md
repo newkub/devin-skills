@@ -4,7 +4,7 @@ description: สแกนและรายการ git projects ทั้ง�
 argument-hint: "[scope]"
 related:
   - list-cloudflare-projects
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -57,7 +57,7 @@ related:
 
 > Goal: รายงานผลด้วย table
 
-1. ใช้ `/report-table` คอลัมน์ดังนี้:
+1. ใช้ `/report` คอลัมน์ดังนี้:
    - No
    - Project (directory name)
    - Path (absolute)

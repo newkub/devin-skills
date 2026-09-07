@@ -4,7 +4,7 @@ description: แสดง branches ในเครื่องและ remote �
 argument-hint: "[scope]"
 related:
   - list-github-branch
-  - report-table
+  - report
   - follow-tool-git
 ---
 
@@ -55,7 +55,7 @@ related:
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Branch ชื่อ branch
@@ -77,7 +77,7 @@ related:
 
 ### Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - เรียง local branches ก่อน แล้ว remote-only branches
 - แสดง current branch ด้วย bold
 - ใช้ symbols: ✅ merged, ❌ not merged

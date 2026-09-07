@@ -4,7 +4,7 @@ description: หา console.log, debugger และ debug statements ที่�
 argument-hint: "[path-or-staged]"
 related:
   - use-astgrep
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -51,9 +51,9 @@ related:
 
 > Goal: รายงานตำแหน่งพร้อมคำแนะนำ
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File:Line`, `Statement`, `Severity`, `Suggestion`
+1. ใช้ `/report` คอลัมน์: `No.`, `File:Line`, `Statement`, `Severity`, `Suggestion`
 2. แนะนำ lint rule ที่ป้องกันระยะยาว เช่น `no-console` ใน eslint/biome
-3. ถ้าเจอเยอะ → แนะนำเพิ่ม pre-commit hook ผ่าน `/follow-tool-githooks`
+3. ถ้าเจอเยอะ → แนะนำเพิ่ม pre-commit hook ผ่าน `/follow-tool-hk`
 
 ## Rules
 

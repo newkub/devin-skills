@@ -3,8 +3,8 @@ name: compare-directories
 description: เทียบสอง directory trees ระดับ content — ไฟล์ที่ต่าง, หาย, เพิ่ม พร้อมรายละเอียด
 argument-hint: "<dir-a> <dir-b>"
 related:
-  - view-diff
-  - report-table
+  - review-diff
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: เข้าใจลักษณะ diff สำหรับ actionable report
 
-1. สำหรับ `content-differs`: sample diff บรรทัดแรกที่ต่าง — `/view-diff` สำหรับรายละเอียด
+1. สำหรับ `content-differs`: sample diff บรรทัดแรกที่ต่าง — `/review-diff` สำหรับรายละเอียด
 2. Pattern detection: mass differences (generated files, line endings) vs isolated changes
 3. flag: files ที่ต่างแต่ไม่ควร (binary drift, unexpected modifications)
 
@@ -55,7 +55,7 @@ related:
 
 > Goal: สรุป diff แบบ actionable
 
-1. ใช้ `/report-table`: `No.`, `Path`, `Status`, `A Detail`, `B Detail`, `Notes`
+1. ใช้ `/report`: `No.`, `Path`, `Status`, `A Detail`, `B Detail`, `Notes`
 2. Summary: counts ต่อ category + verdict (`identical`, `minor drift`, `significantly different`)
 3. แนะนำ: sync direction ถ้าเห็นชัดว่าฝั่งไหน newer/correct
 

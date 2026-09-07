@@ -13,7 +13,7 @@ related:
   - follow-framework-svelte
   - follow-lib-vue
   - restructure
-  - learn-from-web
+  - learn-web
   - rethink
 ---
 
@@ -109,7 +109,7 @@ related:
 - ลำดับต้องอ่านง่าย ค้นหาได้ง่าย และสอดคล้องกับวัตถุประสงค์
 
 - ใช้ /restructure ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome

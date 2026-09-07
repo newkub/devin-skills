@@ -4,7 +4,7 @@ description: Clean up unnecessary source files in the project, not build artifac
 argument-hint: "[target]"
 related:
   - check-unused
-  - report-table
+  - report
   - report-file-structure
   - check-reference
 ---
@@ -41,7 +41,7 @@ related:
 
 > Goal: ขอ explicit confirmation ก่อนลบ
 
-1. ทำ `/report-table` รายงาน candidates พร้อมเหตุผลและ path
+1. ทำ `/report` รายงาน candidates พร้อมเหตุผลและ path
 2. ทำ `/report-file-structure` แสดง top-level files ที่จะลบ
 3. ถาม user ด้วย `ask_user_question` ว่าต้องการลบไหม
 

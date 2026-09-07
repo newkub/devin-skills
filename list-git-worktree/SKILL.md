@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-git-worktrees
   - cleanup-worktree
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -46,7 +46,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` คอลัมน์: Path, Branch, Commit, Status
+1. ทำ `/report` คอลัมน์: Path, Branch, Commit, Status
 2. หรือ bullet list ถ้าน้อย
 
 ## Rules

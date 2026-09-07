@@ -8,7 +8,7 @@ related:
   - review-observability
   - review-stability
   - report-architecture-diagram
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -88,7 +88,7 @@ related:
 > Goal: ส่งมอบ runbook พร้อม gaps
 
 1. บันทึกด้วย `/create-report-in-dot-devin` หรือ `docs/runbook-<service>.md`
-2. ใช้ `/report-table` สรุป: sections ที่ครบ vs ที่ต้อง user เติม
+2. ใช้ `/report` สรุป: sections ที่ครบ vs ที่ต้อง user เติม
 3. แนะนำ `/review-observability` ถ้า diagnosis steps ขาด signals ที่ต้องมี
 
 ## Rules

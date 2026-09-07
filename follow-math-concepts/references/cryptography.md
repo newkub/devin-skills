@@ -1,6 +1,5 @@
 # Cryptography
 
-
 ## Goal
 
 เข้าใจ cryptography: hashing, symmetric/asymmetric encryption, primes, modular arithmetic, key exchange และประยุกต์ใช้ใน security, auth, secret management

@@ -7,7 +7,7 @@ related:
   - review-uxui
   - review-by-designer
   - review-by-product
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
   - ask-me
@@ -53,7 +53,7 @@ Review project จากมุมมอง end-user และ customer-facing te
 
 > Goal: สรุป findings และ next actions
 
-1. ทำ `/report-table` พร้อม findings, evidence, recommendation
+1. ทำ `/report` พร้อม findings, evidence, recommendation
 2. ระบุ top 3-5 ประเด็น
 3. ทำ `/suggest-next-action`
 
@@ -76,6 +76,8 @@ Review project จากมุมมอง end-user และ customer-facing te
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /review-by-designer ถ้าจำเป็น
 - ใช้ /review-by-product ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-uxui`
 
 ## Expected Outcome
 

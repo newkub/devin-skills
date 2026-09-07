@@ -1,6 +1,5 @@
 # Numerical Methods
 
-
 ## Goal
 
 เข้าใจ numerical methods: floating point representation, rounding errors, approximation, interpolation และประยุกต์ใช้ใน code เพื่อความถูกต้องทางคณิตศาสตร์

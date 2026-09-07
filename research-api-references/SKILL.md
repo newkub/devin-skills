@@ -5,10 +5,10 @@ argument-hint: "[api-or-library]"
 related:
   - deep-research
   - follow-best-practice
-  - learn-from-web
+  - learn-web
   - check-reference
   - ask-me
-  - follow-tool-websearch
+  - follow-tool-crw
 ---
 
 ## Goal
@@ -43,7 +43,7 @@ related:
 > Goal: รวบรวม references จากหลายแหล่ง
 
 1. ทำ `/deep-research` ด้วย query หลัก
-2. ใช้ `/learn-from-web` เพื่ออ่าน official docs เฉพาะเจาะจงถ้ามี URL
+2. ใช้ `/learn-web` เพื่ออ่าน official docs เฉพาะเจาะจงถ้ามี URL
 3. ใช้ `/follow-best-practice` ถ้าหา best practices ของ API นั้น
 4. บันทึก source, URL, version, และคะแนนความน่าเชื่อถือ
 
@@ -77,7 +77,7 @@ related:
 ### 2. Always Use Deep Research
 
 - ต้องเรียก `/deep-research` ในทุกกรณี
-- ไม่ใช้ `/follow-tool-websearch` หรือการค้นหาผิวเดียวแทน `/deep-research`
+- ไม่ใช้ `/follow-tool-crw` หรือการค้นหาผิวเดียวแทน `/deep-research`
 - ถ้า `/deep-research` ไม่พบข้อมูล ให้รายงาน gaps
 
 ### 3. Credibility
@@ -99,4 +99,4 @@ related:
 - รายการ API references ครบถ้วน ไม่ซ้ำซ้อน
 - มี official source เป็น primary
 - ระบุ URL, version, แหล่งที่มา และ key takeaways
-- ส่งต่อไปยัง `/follow-best-practice` หรือ `/learn-from-web` ได้
+- ส่งต่อไปยัง `/follow-best-practice` หรือ `/learn-web` ได้

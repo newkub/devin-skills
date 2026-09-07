@@ -3,7 +3,7 @@ name: update-devin-project-mcp
 description: ตั้งค่าและอัปเดต MCP servers ใน .devin/mcp_config.json ตาม project requirements
 argument-hint: "[server-or-config]"
 related:
-  - report-table
+  - report
   - resolve-errors
 ---
 
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง servers, command, status
+1. ทำ `/report` แสดง servers, command, status
 2. ทำ `/suggest-next-action`
 
 ## Rules

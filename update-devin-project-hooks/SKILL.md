@@ -67,7 +67,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง hook event, script, status
+1. ทำ `/report` แสดง hook event, script, status
 2. ทำ `/suggest-next-action`
 
 ## Rules

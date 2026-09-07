@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const ROOT = process.env.APPDATA + "\\devin\\skills";
 const dirs = [
-  "create-devin-global-skills",
+  "new-skills",
   "follow-deep",
   "follow-framework-svelte",
   "follow-service-vercel",

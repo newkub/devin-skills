@@ -1,13 +1,13 @@
 ---
 name: suggest-next-action
-description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ
+description: วิเคราะห์สถานการณ์และแนะนำ action ถัดไปที่ควรทำ พร้อม /ask-me เพื่อให้ user เลือก
 argument-hint: "[context]"
 related:
-  - loop-continuous
+  - loop-until-complete
   - follow-enter-dot
   - follow-agents-md
   - update-devin-global-subagents
-  - report-before
+  - report
   - ask-me
   - ship
   - continue
@@ -20,7 +20,9 @@ related:
 
 ## Scope
 
-ใช้สำหรับวิเคราะห์สถานการณ์หลังจากทำงานเสร็จ task ใด task หนึ่ง หรือเมื่อไม่แน่ใจว่าควรทำอะไรต่อ ครอบคลุมทั้ง context ของโปรเจกต์และสถานะปัจจุบัน
+ใช้สำหรับวิเคราะห์สถานการณ์หลังจากทำงานเสร็จ task ใด task หนึ่ง หรือเมื่อไม่แน่ใจว่าควรทำอะไรต่อ ครอบคลุมทั้ง context ของโปรเจกต์และสถานะปัจจุบัน พร้อมอธิบายสิ่งทีกำลังทำถ้า user ถาม
+
+(merged from: `report-what-you-do`)
 
 ## Execute
 
@@ -39,7 +41,18 @@ related:
 7. ตรวจสอบ `AGENTS.md` ว่ามีอยู่และระบุ workflows อะไรบ้าง
 8. ตรวจสอบว่างานถัดไปสามารถแบ่งเป็น subtasks อิสระได้หรือไม่
 
-### 2. Identify Context
+### 2. Explain What You Do (If Asked)
+
+> Goal: รายงานสิ่งทีกำลังทำแบบ real-time
+
+1. ถ้า user ถามว่า "กำลังทำอะไร" หรือ "ทำไมถึงทำแบบนี้" → บอก:
+   - `what` — กำลังทำอะไร
+   - `why` — เหตุผลสั้น ๆ
+   - `next` — ขั้นตอนถัดไป 1-2 ขั้น
+2. ใช้ symbols: 🔄 กำลังทำ, ⏳ รอ, ✅ เสร็จ, ⚠️ ติดปัญหา
+3. ไม่ over-share logs ยาว สรุปเป็นสาระ
+
+### 3. Identify Context
 
 > Goal: Identify Context
 
@@ -52,7 +65,7 @@ related:
 - เป็นการ review หรือ audit
 - เป็นการ learning หรือ research
 
-### 3. Evaluate Priority
+### 4. Evaluate Priority
 
 > Goal: Evaluate Priority
 
@@ -65,7 +78,7 @@ related:
 - Dependencies กับ tasks อื่น
 - Time sensitivity
 
-### 4. Suggest Actions
+### 5. Suggest Actions
 
 > Goal: Suggest Actions
 
@@ -78,29 +91,29 @@ related:
 5. ระบุ dependencies ระหว่าง actions
 6. ให้ estimate effort ถ้าเป็นไปได้
 7. ถ้ามีไฟล์หรือ folder ที่ควรลบ ให้แนะนำ `git rm` พร้อมระบุเหตุผล แล้ว `/update-references`
-8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report-table`
+8. ถ้ามีไฟล์ที่ควรสรุปเนื้อหา ให้แนะนำ `/report`
 9. ถ้ามี `AGENTS.md` → แนะนำ `/follow-agents-md` เป็น action หลัก แทนการทำเองโดยตรง
 10. ถ้างานมี subtasks อิสระหลายด้าน (frontend/backend/qa/devops/security) → แนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
 11. ถ้าอยู่ในช่วง brainstorm หรือ user ต้องการไอเดียฟีเจอร → แนะนำ `/idea-features` เบื้องต้น หรือ `/idea-features` ถ้าต้องการ plan/implementation
 
-### 5. Present Options
+### 6. Present Options
 
 > Goal: Present Options
 
 เตรียม options สำหรับนำเสนอ
 
-1. เตรียมข้อมูล actions สำหรับ `/report-table`: #, Action, Priority, Impact, Effort, Workflow, Reason
+1. เตรียมข้อมูล actions สำหรับ `/report`: #, Action, Priority, Impact, Effort, Workflow, Reason
 2. จัดลำดับ actions ที่แนะนำพร้อม priority
 3. ระบุ action ทีเหมาะสมทีสุดสำหรับแต่ละ context แต่ไม่ตอบสินใจแทน user
-4. เตรียม trade-offs ระหว่าง options สำหรับ `/report-table`: Option, Pros, Cons, Risk
+4. เตรียม trade-offs ระหว่าง options สำหรับ `/report`: Option, Pros, Cons, Risk
 5. ระบุว่า action ไหนสามารถทำ parallel ได้
-6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report-table`
+6. ถ้าต้องการ user confirmation ก่อนดำเนินการ → เก็บคำถามไว้ให้ `/ask-me` หลัง `/report`
 
-### 6. Report
+### 7. Report
 
 > Goal: นำเสนอผลลัพธ์ให้ user เห็นภาพรวม
 
-1. ทำ `/report-table` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
+1. ทำ `/report` เสมอเพื่อจัดรูปแบบ actions, options และ trade-offs เป็นตาราง
 2. สรุปคำแนะนำหลัก 1-2 บรรทัดก่อนตาราง
 3. ระบุ next action ทีเหมาะสมทีสุดและเหตุผลสั้นๆ แต่ไม่ตอบสินใจแทน user
 4. ทำ `/ask-me` เสมอเพื่อถามให้ user เลือก action ตอบมา ไม่ตอบสินใจแทน user ในแชท
@@ -174,9 +187,9 @@ related:
 - ระบุ opportunity costs
 - ให้ผู้ใช้ตัดสินใจขั้นสุดท้าย
 
-- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /loop-until-complete ถ้าจำเป็น
 - ใช้ /follow-enter-dot ถ้าจำเป็น
-- ใช้ /report-before ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
 - ใช้ /continue ถ้าจำเป็น
 - ใช้ /idea-features หรือ /idea-features ถ้าจำเป็น
@@ -190,7 +203,7 @@ related:
 - Workflow ที่เหมาะสมถูกแนะนำ
 - Trade-offs ระหว่าง options ชัดเจน
 - การทำงานมีทิศทางชัดเจน
-- ผลลัพธ์ถูกนำเสนอด้วย `/report-table` ในรูปแบบตาราง
+- ผลลัพธ์ถูกนำเสนอด้วย `/report` ในรูปแบบตาราง
 - ถ้ามี `AGENTS.md` จะแนะนำ `/follow-agents-md` ก่อน
 - ถ้างานซับซ้อน multi-role จะแนะนำ `/update-devin-global-subagents` หรือ `/use-subagents` ตาม context
 - ถ้า user ต้องการไอเดียฟีเจอร จะแนะนำ `/idea-features` หรือ `/idea-features` ตาม context

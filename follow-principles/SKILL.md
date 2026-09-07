@@ -3,7 +3,7 @@ name: follow-principles
 description: ระบุและใช้ principles ของ context นั้นๆ ในการทำงาน
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -75,7 +75,7 @@ related:
 
 > Goal: สรุป principles ทีใช้
 
-1. ใช้ `/report-table` แสดง: Principle, Source, Priority, Applied
+1. ใช้ `/report` แสดง: Principle, Source, Priority, Applied
 2. สรุป principles หลักทีมีผลต่อผลงาน
 3. ทำ `/suggest-next-action`
 

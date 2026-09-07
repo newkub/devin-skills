@@ -7,7 +7,7 @@ related:
   - review-uxui
   - review-by-user
   - review-by-product
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
   - ask-me
@@ -53,7 +53,7 @@ Review project จากมุมมอง designer — หา inconsistency, in
 
 > Goal: สรุป design findings
 
-1. ทำ `/report-table` พร้อม visual evidence
+1. ทำ `/report` พร้อม visual evidence
 2. ระบุ top issues
 3. ทำ `/suggest-next-action`
 
@@ -73,6 +73,8 @@ Review project จากมุมมอง designer — หา inconsistency, in
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /review-by-user ถ้าจำเป็น
 - ใช้ /review-by-product ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-uxui`
 
 ## Expected Outcome
 

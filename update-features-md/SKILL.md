@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - use-scripts
-  - report-table
+  - report
   - update-docs
 ---
 
@@ -56,7 +56,7 @@ related:
 
 > Goal: สรุปผลลัพธ์ให้ user
 
-1. แสดงตาราง existing features ในแชทตาม `/report-table`
+1. แสดงตาราง existing features ในแชทตาม `/report`
 2. ระบุ path `FEATURES.md` ที่สร้างและ action ถัดไป
 
 ## Rules

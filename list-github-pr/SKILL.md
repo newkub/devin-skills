@@ -6,7 +6,7 @@ related:
   - open-github
   - create-github-pr
   - review-github-pr
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -40,7 +40,7 @@ related:
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. เลข PR
    - Title ชื่อ PR
@@ -61,7 +61,7 @@ related:
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: number, title, state, author, branch, reviews, updated
 

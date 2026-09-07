@@ -3,7 +3,7 @@ name: review-app-usage
 description: ตรวจสอบ usage.kdl spec และ USAGE.md ก่อนแก้ไข
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
   - update-usage-md
 ---
@@ -48,7 +48,7 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 
 ### 8. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 

@@ -4,12 +4,7 @@ description: ใช้ GitHub CLI (`gh`) สำหรับ repos, issues, PRs, 
 argument-hint: "[command-or-scope]"
 related:
   - follow-github
-  - create-github-pr
-  - implement-github-issue
   - resolve-cicd
-  - resolve-github-actions-fails
-  - use-github-ship-bots
-  - resolve-errors
 ---
 
 ## Goal
@@ -74,7 +69,7 @@ gh search issues "..." / gh search prs "..." / gh search code "..."
 
 > Goal: สรุปผล
 
-1. แสดงผลด้วย `/report-table` (No., Item, State, URL)
+1. แสดงผลด้วย `/report` (No., Item, State, URL)
 2. ทำ `/suggest-next-action` ท้ายรายงาน
 
 ## Rules

@@ -5,7 +5,7 @@ argument-hint: "[test-path]"
 related:
   - review-test
   - use-astgrep
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -56,7 +56,7 @@ related:
 
 > Goal: สรุป isolation violations
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Test/File`, `Violation Type`, `Shared Resource`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Test/File`, `Violation Type`, `Shared Resource`, `Severity`, `Fix`
 2. Severity: `high` (proven flaky จาก shuffle run), `medium` (shared state pattern), `low` (potential risk)
 3. แนะนำ: per-test fixtures, `beforeEach` cleanup, dynamic ports, isolated DB per test
 

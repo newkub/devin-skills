@@ -1,141 +1,63 @@
 ---
 name: report
-description: ตอบในแชทเป็นตารางพร้อมคอลัมน์ No. เรียงลำดับ 1, 2, 3, ...
+description: เลือก format รายงานทีเหมาะสม: table หรือ numbered list
 argument-hint: "[scope]"
 related:
+  - report-in-table
+  - report-in-numbered
+  - report-in-codeblock
+  - report-todo
   - report-progress
-  - review-writing
-
+  - report-scan-todo
+  - suggest-next-action
 ---
 
 ## Goal
 
-ตอบในแชทเป็นตารางที่มีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... พร้อม grouping, sorting เพื่อความชัดเจน
+เลือกและ execute format รายงานทีเหมาะสมกับ context
 
 ## Scope
 
-ใช้สำหรับการรายงานข้อมูลทุกประเภทในรูปแบบตารางและ numbered list ในแชทเท่านั้น
+ใช้สำหรับรายงานผลในแชท โดย `/report` จะ dispatch ไปยัง `report-in-table` หรือ `report-in-numbered` ตามประเภทข้อมูล
 
 ## Execute
 
-### 1. Prepare Data
+### 1. Select Format
 
-> Goal: รวบรวมและจัดเตรียมข้อมูลก่อนจัดรูปแบบ
+> Goal: เลือกรูปแบบรายงาน
 
-> Goal: ข้อมูลพร้อมจัดรูปแบบ รู้ประเภทและลำดับความสำคัญ
+1. ถ้าข้อมูลเหมาะกับตารางหลาย columns → ใช้ `/report-in-table`
+2. ถ้าข้อมูลเหมาะกับลำดับ steps/priority → ใช้ `/report-in-numbered`
+3. ถ้าเป็น action plan จาก chat โดยยังไม่ลงมือ → ใช้ `/report-todo`
+4. ถ้าเป็น commands, code snippets, config, logs, diff → ใช้ `/report-in-codeblock`
+5. ถ้าเป็น progress/status → ใช้ `/report-progress`
+6. ถ้าเป็น TODO markers → ใช้ `/report-scan-todo`
 
-1. รวบรวมข้อมูลที่ต้องการรายงาน
-2. จัดกลุ่มข้อมูลตาม category ที่เกี่ยวข้อง
-3. กำหนดลำดับความสำคัญของแต่ละ item
-4. ตัดสินใจว่าจะใช้รูปแบบตารางหรือ numbered list
+### 2. Execute Selected Skill
 
-### 2. Format Output
+> Goal: รายงานตาม format
 
-> Goal: จัดรูปแบบข้อมูลตามประเภทที่เหมาะสม
+1. ส่งข้อมูลให้ skill ทีเลือก
+2. ตรวจ output ว่าตรง format
+3. ถ้าจำเป็น ใช้ `/review-writing`
 
-> Goal: ข้อมูลถูกจัดรูปแบบในรูปแบบที่อ่านง่ายที่สุด
+### 3. Finalize
 
-1. ถ้าข้อมูลมีหลาย columns ที่ต้องเปรียบเทียบ จัดตารางด้วย `/report`
-2. ถ้าต้องการเน้นลำดับความสำคัญ ใช้ `/report` พร้อมคอลัมน์ "No." เป็นคอลัมน์แรก
-3. ถ้าเหมาะสม สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
-4. ถ้าเป็นรายงานความคืบหน้า/สถานะ ใช้ progress bar ตาม [references/format-ansi.md](references/format-ansi.md) หรือ `/report-progress`
-5. ถ้าเป็นรายงานสถานะ ใช้ `/report-progress`
-6. ถ้าเป็นรายงาน error ใช้ code block format ตาม [references/format-codeblock.md](references/format-codeblock.md)
+> Goal: สรุปและชี้ next action
 
-### 3. Apply Grouping And Sorting
-
-> Goal: จัดกลุ่มและเรียงลำดับข้อมูลหลังจัดรูปแบบ
-
-> Goal: ข้อมูลจัดกลุ่มและเรียงลำดับชัดเจน อ่านง่าย
-
-1. จัดกลุ่มข้อมูลตามหมวดหมู่ที่เกี่ยวข้อง
-2. ใช้ headers สำหรับแยกกลุ่มที่ชัดเจน
-3. เรียงลำดับภายในกลุ่มตามความสำคัญ
-4. ถ้ากลุ่มซับซ้อน ใช้ separators สำหรับแยกกลุ่ม
-
-### 4. Validate Output
-
-> Goal: ตรวจสอบคุณภาพของผลลัพธ์ก่อนส่ง
-
-> Goal: ผลลัพธ์ผ่าน quality check อ่านง่าย สม่ำเสมอ
-
-1. ตรวจสอบว่าตารางมีคอลัมน์ "No." เป็นคอลัมน์แรกและเรียงลำดับถูกต้อง
-2. ตรวจสอบ grouping และ sorting ที่ถูกต้อง
-3. ตรวจสอบว่าอ่านง่ายบนทุก device
-4. ทำ `/review-writing` เพื่อตรวจสอบคุณภาพเนื้อหา
+1. ทำ `/suggest-next-action` ถ้ามี next steps
+2. ถ้า output มาจาก `/report-todo` ต้องมีตาราง + สรุป numbered list
 
 ## Rules
 
-### 1. Format Selection
-
-- ใช้ตารางเมื่อมีข้อมูลหลาย columns ที่ต้องเปรียบเทียบ
-- ใช้ numbered list เมื่อต้องการเน้นลำดับความสำคัญ
-- สามารถผสมทั้งสองรูปแบบในรายงานเดียวกันได้
-- เลือกรูปแบบที่อ่านง่ายที่สุดสำหรับผู้รับ
-
-### 2. Table Structure
-
-- ทุกตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ตามลำดับของแถว
-- ใช้ headers ชัดเจนสำหรับแต่ละ column
-- จัดเรียง columns ตามความสำคัญ
-- ใช้ alignment (`left`, `center`, `right`) ที่เหมาะสมกับ data types
-
-### 3. Grouping And Sorting
-
-- จัดกลุ่มข้อมูลตาม category ที่เกี่ยวข้อง
-- ใช้ headers สำหรับ grouping ที่ชัดเจน
-- เรียงลำดับภายในกลุ่มตามความสำคัญ
-- ถ้ากลุ่มซับซ้อน ใช้ separators สำหรับแยกกลุ่ม
-
-### 4. Content Formatting
-
-- ใช้ backticks สำหรับ headers และ keywords สำคัญ
-- ใช้ `code blocks` สำหรับ commands และ file paths
-- ใช้ backticks สำหรับ inline code
-- ใช้ symbols (✅, ❌, ⚠️) สำหรับ status indicators
-
-### 5. Output Channel
-
-- ตอบกลับในแชทเท่านั้น
-- ไม่สร้างไฟล์แยกสำหรับรายงาน
-- ใช้ `markdown` table format มาตรฐาน
-- ตารางต้องอ่านง่ายบนทุก device
-
-### 6. Readability
-
-- แต่ละข้อต้องกระชับ ตรงประเด็น
-- หลีกเลี่ยงข้อความที่ยาวเกินไป
-- ใช้ภาษาที่เข้าใจง่าย
-- จัดรูปแบบให้สอดคล้องกันทั้งเอกสาร
-
-### 7. Bullet And Numbered Format
-
-- หนึ่ง bullet/number = หนึ่ง idea
-- ใช้ภาษากระชับ ตรงประเด็น
-- จัดกลุ่มที่เกี่ยวข้องและเรียงตาม priority
-- รักษา context และไม่ distort ความหมาย
-
-### 8. Summary And Metrics
-
-- สรุป key findings และ critical issues ก่อนรายละเอียด
-- ใช้ bullet points สำหรับ quick scanning
-- จัดกลุ่ม metrics ตาม category
-- ใช้ progress bars `████████░░░░ 50%` สำหรับ percentages พร้อม baseline
-- ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
-
-### 9. Report UX/UI
-
-- สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-- ใช้ `/report` สำหรับสถานะ/progress/logs
-- ทำ `/suggest-next-action` ท้าย report เสมอ
+- `/report` ไม่ใช่รายงานเอง แต่ dispatch ไปยัง format ย่อย
+- ใช้ `/report-in-table` เมื่องานมี comparison/status หลาย columns
+- ใช้ `/report-in-numbered` เมื่องานเน้นลำดับ steps
+- ใช้ `/report-todo` เมื่องานยังไม่ลงมือ ต้องการ action plan
+- ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 
 ## Expected Outcome
 
-- ตารางที่มีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
-- Grouping และ sorting ที่ชัดเจน
-- ข้อมูลที่อ่านง่าย
-- รูปแบบที่เหมาะสมกับประเภทข้อมูล
-- ตอบกลับในแชทเท่านั้น ไม่สร้างไฟล์แยก
-- Report สรุป key findings ด้านบน พร้อม next action ชัดเจน
-
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-numbered-bullet, report-codeblock, report-ansi, report-table)
+- รายงานออกมาตาม format ทีเหมาะสม
+- `/report-todo` สำหรับ action plan จาก chat
+- สรุป key findings และ next action ชัดเจน

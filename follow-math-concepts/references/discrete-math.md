@@ -1,6 +1,5 @@
 # Discrete Math
 
-
 ## Goal
 
 เข้าใจ discrete mathematics: number theory, modular arithmetic, gcd, lcm, primes, congruences และประยุกต์ใช้ใน hashing, cryptography, algorithms

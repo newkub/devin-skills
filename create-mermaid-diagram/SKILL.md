@@ -5,7 +5,7 @@ argument-hint: "[prompt or topic]"
 related:
   - draw-excalidraw
   - draw-tldraw
-  - report-table
+  - report
   - report-flow
   - report-architecture-diagram
   - use-scripts
@@ -79,7 +79,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง output file, diagram type, render status
+1. ทำ `/report` แสดง output file, diagram type, render status
 2. แนะนำ next action หรือวิธีแก้ไขถ้า syntax validation ไม่ผ่าน
 
 ## Rules

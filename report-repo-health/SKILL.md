@@ -4,12 +4,12 @@ description: สร้าง health scorecard ต่อ repo — hygiene, deps, 
 argument-hint: "[repo-or-all]"
 related:
   - check-repo-hygiene
-  - list-github-actions-fails
+  - resolve-github-actions-fails
   - check-git-logs
   - list-dependencies
   - run-audit
   - check-uncommit
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -30,7 +30,7 @@ related:
 
 1. Hygiene: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
-3. CI: `/list-github-actions-fails` — latest run status, failure rate
+3. CI: `/resolve-github-actions-fails` — latest run status, failure rate
 4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
 5. Working state: `/check-uncommit` — dirty working tree?
 
@@ -53,7 +53,7 @@ related:
 
 > Goal: ตารางเทียบข้าม repos
 
-1. ใช้ `/report-table`: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
+1. ใช้ `/report`: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
 2. Per-repo detail: top issues ที่กดคะแนน
 3. สรุป: repos ที่ต้อง attention เรียงตาม grade
 

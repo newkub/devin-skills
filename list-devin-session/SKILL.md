@@ -5,7 +5,7 @@ argument-hint: "[limit] [keyword]"
 related:
   - list-devin-user-requests
   - list-devin-global-skills
-  - report-table
+  - report
   - search-files-patterns
   - use-bun-shell
 ---
@@ -76,7 +76,7 @@ related:
 
 > Goal: นำเสนอผลลัพธ์ให้อ่านง่าย
 
-1. ทำ `/report-table` คอลัมน์: No, Session ID, Title, Working Directory, Mode, Model, Created, Last Activity
+1. ทำ `/report` คอลัมน์: No, Session ID, Title, Working Directory, Mode, Model, Created, Last Activity
 2. ถ้า `title` หรือ `working_directory` ยาว > 60 ตัวอักษร ตัดเหลือ 60 แล้วเติม `...`
 3. เรียงตาม `last_activity` จากใหม่ไปเก่า
 4. ระบุสถิติ: จำนวน sessions ทั้งหมดทีแสดง
@@ -96,7 +96,7 @@ related:
 - ใช้ `bun:sqlite` เป็น primary tool สำหรับอ่าน `sessions.db`
 - fallback ใช้ `search-files-patterns` หรือ `use-pwsh-shell` สำหรับ list `history_*.md`
 - ถ้า user ไม่ระบุ `limit` ใช้ `50` เป็นค่า default
-- ใช้ `/report-table` สำหรับ output
+- ใช้ `/report` สำหรับ output
 
 - ใช้ /list-devin-user-requests ถ้าจำเป็น
 - ใช้ /list-devin-user-requests ถ้าจำเป็น

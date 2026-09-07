@@ -4,8 +4,8 @@ description: สร้างหรืออัปเดต USAGE.md usage docume
 argument-hint: "[scope]"
 related:
   - review-usage-md
-  - report-usage-md
-  - report-table
+  - report-usage
+  - report
   - suggest-next-action
   - deep-validate
   - update-project
@@ -74,7 +74,7 @@ related:
 
 > Goal: รายงานผลการอัปเดต
 
-1. ทำ `/report-usage-md` หรือ `/report-table` สรุป sections และสิ่งที่เปลี่ยนแปลง
+1. ทำ `/report-usage` หรือ `/report` สรุป sections และสิ่งที่เปลี่ยนแปลง
 2. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules

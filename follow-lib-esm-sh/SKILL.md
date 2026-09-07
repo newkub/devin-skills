@@ -3,8 +3,6 @@ name: follow-lib-esm-sh
 description: ใช้ esm.sh CDN สำหรับโหลด ES Modules บน browser โดยไม่ต้อง bundler
 argument-hint: "[scope]"
 related:
-  - follow-lib-js-delivr
-  - follow-lib-jspm
   - follow-lib-animejs
   - follow-lib-arktype
   - follow-lib-better-auth
@@ -20,6 +18,8 @@ related:
 ## Scope
 
 ใช้สำหรับการ `import` modules ผ่าน `HTTPS URL` พร้อม `tree-shaking`, `bundling`, `dependency rewriting` และ `import maps` อัตโนมัติ
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-js-delivr, follow-lib-jspm) — CDN อื่นดู `references/js-delivr.md` และ `references/jspm.md`
 
 ## Execute
 

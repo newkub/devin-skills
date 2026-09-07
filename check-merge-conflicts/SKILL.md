@@ -4,7 +4,7 @@ description: ทำนาย merge conflicts ก่อน merge จริง —
 argument-hint: "[source-branch] [target-branch]"
 related:
   - merge-git-branch
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุป conflict risk พร้อมแผน
 
-1. ใช้ `/report-table`: `No.`, `File`, `Conflict Type`, `Severity`, `Auto-resolvable`, `Notes`
+1. ใช้ `/report`: `No.`, `File`, `Conflict Type`, `Severity`, `Auto-resolvable`, `Notes`
 2. Verdict: `clean`, `trivial conflicts`, `needs manual resolution`, `high risk`
 3. แนะนำ: merge เลย, rebase ก่อน, หรือแบ่งเป็น smaller merges
 

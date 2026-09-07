@@ -1,6 +1,5 @@
 # Linear Algebra
 
-
 ## Goal
 
 เข้าใจ linear algebra: vectors, matrices, dot product, cross product, matrix multiplication, transformations และประยุกต์ใช้ใน ML, graphics, embeddings

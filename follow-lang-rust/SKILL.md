@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-clean-architecture
   - follow-tool-cargo
-  - follow-tool-clippy
+  - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
 ---
@@ -61,7 +61,7 @@ related:
 > Goal: ตั้งค่า lints, security checks, และ test infrastructure
 
 1. รัน `/follow-tool-cargo` เพื่อตั้งค่า Cargo lint rules และ workspace lint inheritance
-2. รัน `/follow-tool-clippy` เพื่อตั้งค่า Clippy lint rules และ thresholds
+2. รัน `/follow-tool-cargo` เพื่อตั้งค่า Clippy lint rules และ thresholds
 3. ตั้งค่า `forbid unsafe_code` ใน workspace
 4. ตั้งค่า `cargo-deny` สำหรับ security advisories
 5. ตั้งค่า rustdoc warnings เป็น errors

@@ -30,6 +30,8 @@ related:
 
 Boundary: comprehensive root sync พร้อม deep analysis baseline — ถ้าต้องการ quick sync หลัง ship → ใช้ `/update-project`
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-update) — ถ้า target ไม่ใช่ root project ดู dispatch table ใน `references/target-dispatch.md`
+
 ## Execute
 
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ
@@ -98,7 +100,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 1. ทำ `/deep-validate` เพื่อ validate structure, references, docs
 2. รัน `git diff --check`
 3. รัน checks ตาม project เช่น `bun run scan`, `bun run lint`
-4. ทำ `/report-table` สรุป workspace commits, docs/config/rules ที่ sync, project skills, examples, GitHub metadata
+4. ทำ `/report` สรุป workspace commits, docs/config/rules ที่ sync, project skills, examples, GitHub metadata
 
 ### 8. Suggest Next Action
 

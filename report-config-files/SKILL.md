@@ -3,8 +3,7 @@ name: report-config-files
 description: Report configuration files, defaults, and drift in the project
 argument-hint: "[scope]"
 related:
-  - list-ci-configs
-  - report-table
+  - report
   - report-file-structure
 ---
 
@@ -39,7 +38,7 @@ related:
 
 > Goal: สร้าง report
 
-1. ทำ `/report-table` สำหรับ drift ระหว่าง environments
+1. ทำ `/report` สำหรับ drift ระหว่าง environments
 2. ทำ `/report-file-structure` สำหรับ tree ของ config files
 3. สรุป missing keys, inconsistent values, default drift
 
@@ -60,7 +59,6 @@ related:
 
 - ใช้ conventions ของ framework เช่น `.env` สำหรับ JS, `Cargo.toml` สำหรับ Rust
 
-- ใช้ /list-ci-configs ถ้าจำเป็น
 
 ## Expected Outcome
 

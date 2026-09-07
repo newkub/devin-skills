@@ -13,7 +13,6 @@ npm install --save-dev hk
 - Latest: 0.1.0
 - [Package Registry](https://www.npmjs.com/package/hk)
 
-
 ## Dependencies
 
 - See package registry for transitive dependencies.

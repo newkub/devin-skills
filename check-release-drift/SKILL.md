@@ -6,7 +6,7 @@ related:
   - gen-changelog-md
   - follow-release
   - check-commit-quality
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -44,7 +44,7 @@ related:
 
 > Goal: สรุป drift
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Source`, `Version`, `Expected`, `Drift Type`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Source`, `Version`, `Expected`, `Drift Type`, `Fix`
 2. สรุป recommended action: สร้าง tag, อัปเดต changelog, หรือสร้าง release
 3. แนะนำ `/follow-release` หรือ `/gen-changelog-md` สำหรับการแก้ไข
 

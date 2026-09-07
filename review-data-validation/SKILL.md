@@ -3,7 +3,7 @@ name: review-data-validation
 description: ตรวจสอบ data validation ใน API, forms, schemas ว่าครอบคลุม, ปลอดภัย และ type-safe หรือไม่
 argument-hint: "[schema-or-api-pattern]"
 related:  - scan-codebase
-  - report-table
+  - report
   - review-security
 ---
 
@@ -49,7 +49,7 @@ related:  - scan-codebase
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Endpoint/Form, Issue, Severity, Fix
+1. ทำ `/report` ด้วย columns: No., Endpoint/Form, Issue, Severity, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี security risk สูง → เชื่อม `/review-security`
 

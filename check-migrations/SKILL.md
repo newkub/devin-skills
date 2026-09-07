@@ -6,7 +6,7 @@ related:
   - run-drizzle-studio
   - review-database
   - report-schema
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -59,7 +59,7 @@ related:
 
 > Goal: สรุป migration health
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Migration`, `File`, `Journal`, `Applied`, `Status`, `Action`
+1. ทำ `/report` คอลัมน์: `No.`, `Migration`, `File`, `Journal`, `Applied`, `Status`, `Action`
 2. Status: `ok`, `pending`, `orphaned`, `unregistered`, `drift`
 3. สรุปว่าพร้อม deploy หรือต้อง reconcile ก่อน
 4. แนะนำ next action: `migrate`, `generate` หรือ `/review-database`

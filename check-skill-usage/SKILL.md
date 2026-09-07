@@ -6,7 +6,7 @@ related:
   - check-skills-related
   - list-devin-global-skills
   - check-broken-skills-references
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -50,7 +50,7 @@ related:
 
 > Goal: รายงาน dead/dying candidates พร้อม action
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Skill`, `Inbound`, `Tier`, `Last Signal`, `Recommendation`
+1. ใช้ `/report` คอลัมน์: `No.`, `Skill`, `Inbound`, `Tier`, `Last Signal`, `Recommendation`
 2. Recommendations: `keep` (entry-point ที่มีค่า), `integrate` (มีค่าแต่ไม่มี ref — เพิ่ม related), `merge` (ซ้ำกับตัวอื่น), `delete` (dead จริง)
 3. ระบุชัดว่า "0 references ≠ ไร้ค่า" — entry points ไม่ต้องมี inbound
 

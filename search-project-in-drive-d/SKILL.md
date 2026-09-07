@@ -4,7 +4,7 @@ description: ค้นหา project ใน drive D ที่ตรงกับ 
 argument-hint: "[keyword]"
 related:
   - ask-me
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -41,7 +41,7 @@ Get-ChildItem -Path "D:\" -Directory -Recurse -Depth 3 |
 ### 3. แสดงผล
 
 > Goal: แสดงผล
-1. ใช้ `/report-table` สร้างตาราง
+1. ใช้ `/report` สร้างตาราง
 2. columns: `No.`, `Project Name`, `Path`, `Match Type`
 3. เรียง `No.` ลำดับ 1, 2, 3, ...
 4. path ใส่ backticks

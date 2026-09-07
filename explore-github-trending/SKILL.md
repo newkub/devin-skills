@@ -6,7 +6,7 @@ related:
   - search-in-github-star
   - open-github
   - open-web
-  - report-table
+  - report
   - search-files-patterns
   - enhance-prompt
   - ask-me
@@ -72,7 +72,7 @@ related:
 
 > Goal: แสดงผลอ่านง่าย
 
-1. ใช้ `/report-table` สร้างตาราง
+1. ใช้ `/report` สร้างตาราง
 2. คอลัมน์: `No.`, `Repository`, `Description`, `Language`, `Stars Today`, `Total Stars`, `Forks`
 3. เรียงตาม `No.` ตามลำดับบน GitHub Trending
 4. ถ้ามากกว่า 25 รายการ → แสดง top 25 พร้อมบอกว่าเหลืออีกกี่รายการ
@@ -113,7 +113,7 @@ related:
 
 ### 5. Output
 
-- ใช้ `/report-table` หรือ markdown table
+- ใช้ `/report` หรือ markdown table
 - แสดง URL ทีใช้ fetch
 - ระบุเวลา (daily/weekly/monthly) และ language
 

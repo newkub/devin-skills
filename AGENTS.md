@@ -36,7 +36,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 ### 2. Maintain AGENTS.md
 
 1. Run `/check-monorepo` to verify monorepo status.
-2. Run `/analyze-project` to analyze tech stack and structure.
+2. Run `/deep-analyze` to analyze tech stack and structure.
 3. Run `/all-workspace` if it is a monorepo.
 4. For independent subtasks across multiple workspaces, use `/update-devin-global-subagents` or `/use-subagents`.
 5. Update `### Architecture`, `### Skills`, and `### Workspaces` based on the actual project.
@@ -83,7 +83,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **811** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **775** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 

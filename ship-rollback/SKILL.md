@@ -9,7 +9,7 @@ related:
   - run-deploy
   - watch-deploy
   - resolve-errors
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -61,7 +61,7 @@ Rollback production deployment ที่พัง กลับไปยัง ve
 
 > Goal: สรุปเหตุการณ์
 
-1. ทำ `/report-table` สรุป cause, version rolled back, time, status
+1. ทำ `/report` สรุป cause, version rolled back, time, status
 2. เปิด issue สำหรับ root cause ถ้ายังไม่มี
 3. ทำ `/suggest-next-action`
 

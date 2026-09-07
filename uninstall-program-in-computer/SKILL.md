@@ -9,7 +9,7 @@ related:
   - download-program
   - enhance-prompt
   - resolve-errors
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -80,7 +80,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` แสดง program ทีลบ, package manager, สถานะ
+1. ใช้ `/report` แสดง program ทีลบ, package manager, สถานะ
 2. ถ้าไม่สามารถลบได้ → ระบุสาเหตุและขั้นตอนถัดไป
 
 ## Rules

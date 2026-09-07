@@ -3,7 +3,6 @@ name: review-issue
 description: ตรวจสอบ issue ใดๆ เพื่อดูความชัดเจน, scope, acceptance criteria และความพร้อม
 argument-hint: "[scope]"
 related:
-  - review-github-issue
   - follow-best-practice
   - suggest-next-action
   - deep-review-codebase
@@ -64,7 +63,6 @@ related:
 - ทุกผลการตรวจต้องมีข้อแนะนำที่เป็นรูปธรรม
 - ผลลัพธ์ต้องระบุความพร้อมโดยรวม: Ready, Needs Clarification, Blocked หรือ Not Ready
 
-- ใช้ /review-github-issue ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
@@ -73,6 +71,8 @@ related:
 ## Metrics
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+
+- ถ้า fail → ปรับ issue ให้ชัดเจนก่อน implement
 
 ## Expected Outcome
 

@@ -5,7 +5,7 @@ argument-hint: "[repo]"
 related:
   - list-git-branch
   - cleanup-git-branch
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -37,7 +37,7 @@ related:
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Branch ชื่อ branch
@@ -54,7 +54,7 @@ related:
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - แสดงข้อมูลสำคัญ: branch name, last commit SHA, protected status
 
 - ใช้ /list-git-branch ถ้าจำเป็น

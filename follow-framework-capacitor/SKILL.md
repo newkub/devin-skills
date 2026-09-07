@@ -6,7 +6,7 @@ related:
   - follow-lang-bun
   - review-delivery
   - follow-tool-vite
-  - learn-from-web
+  - learn-web
   - follow-deploy
 
 ---
@@ -76,7 +76,7 @@ related:
 5. ใช้ `includePlugins` สำหรับ allowlist plugins ใน `cap sync`
 6. ตรวจสอบ plugin versions ให้เข้ากันกับ Capacitor major version
 7. ใช้ Capacitor 8 compatible plugins เท่านั้น
-8. ทำ `/learn-from-web` เมื่อต้องการค้นหา plugins ใหม่
+8. ทำ `/learn-web` เมื่อต้องการค้นหา plugins ใหม่
 
 ### 5. Platform Development
 

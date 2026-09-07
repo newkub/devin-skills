@@ -11,7 +11,7 @@ related:
   - run-test-unit
   - follow-my-tech-stack
   - review-techstack
-  - report-table
+  - report
 ---
 ## Goal
 
@@ -115,7 +115,7 @@ related:
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /run-test-unit ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

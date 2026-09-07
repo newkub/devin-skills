@@ -7,7 +7,6 @@ related:
   - resolve-errors
   - run-dev
   - run-program
-  - use-agent-browser
 ---
 
 ## Goal
@@ -81,7 +80,7 @@ related:
 > Goal: สรุปผล
 
 1. บันทึก errors ทีแก้ไขแล้ว และ errors ทียังคงอยู่
-2. ใช้ `/report-table` แสดงสรุป
+2. ใช้ `/report` แสดงสรุป
 3. ปิด browser ด้วย `agent-browser close`
 
 ## Rules

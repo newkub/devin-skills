@@ -6,7 +6,7 @@ related:
   - update-features-md
   - deep-review
   - all-workspace
-  - report-table
+
   - report
   - suggest-next-action
 ---
@@ -50,7 +50,7 @@ related:
 
 จัดรูปแบบ features เป็นตารางในแชท
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบตาราง
 2. คอลัมน์: No. | Workspace | Feature | Description | Why | Solutions | Module | Route | API | DB | Topics | Status
 3. จัดกลุ่มตาม workspace แล้วตาม module
 4. เรียงลำดับ features ตาม module และ status (`active` ก่อน, `partial` ทีหลัง, `deprecated` สุดท้าย)
@@ -73,7 +73,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators

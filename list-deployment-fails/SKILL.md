@@ -3,11 +3,11 @@ name: list-deployment-fails
 description: สรุป deployment failures จาก CI/CD และ cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
-  - list-github-actions-fails
-  - list-cloudflare-worker-fails
   - resolve-github-actions-fails
   - resolve-cloudflare-worker-fails
-  - report-table
+  - resolve-github-actions-fails
+  - resolve-cloudflare-worker-fails
+  - report
   - suggest-next-action
   - watch-github-actions
   - resolve-cicd
@@ -41,7 +41,7 @@ related:
 
 > Goal: รวบรวม GitHub Actions failures
 
-1. ทำ `/list-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
+1. ทำ `/resolve-github-actions-fails` เพื่อหา workflow runs ทีล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: repo, workflow, branch, commit, event, started at, url
 
@@ -49,7 +49,7 @@ related:
 
 > Goal: รวบรวม Cloudflare Workers failures
 
-1. ทำ `/list-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
+1. ทำ `/resolve-cloudflare-worker-fails` เพื่อหา workers ที deploy/health ล้มเหลว
 2. จำกัดจำนวนตาม `limit` (default 50)
 3. บันทึก: worker, type, latest deployment, status, errors
 
@@ -65,7 +65,7 @@ related:
 
 > Goal: สรุปผลเป็นตาราง
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report` คอลัมน์:
    - No.
    - Source
    - Name

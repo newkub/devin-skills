@@ -15,7 +15,7 @@
 ไม่ใช้ deep research เมื่อ:
 
 - แค่ต้องการอ่าน docs เฉพาะ library (ใช้ `/follow-best-practice`)
-- แค่ต้องการเรียนรู้ concept เร็วๆ (ใช้ `/learn-from-web`)
+- แค่ต้องการเรียนรู้ concept เร็วๆ (ใช้ `/learn-web`)
 - ต้องการแค่ตรวจสอบ reference เดียว (ใช้ `/check-reference`)
 - เป็น low-risk ที่ไม่ต้องข้อมูลลึก
 - การค้นหานานกว่าการทำจะเสียเวลามากกว่า
@@ -92,7 +92,7 @@
 เชื่อมโยงกับ workflows อื่น:
 
 - ทำ `/pondering` ก่อน research เพื่อทบทวน scope
-- ทำ `/learn-from-web` สำหรับการเรียนรู้เร็วๆ
+- ทำ `/learn-web` สำหรับการเรียนรู้เร็วๆ
 - ทำ `/follow-best-practice` หลัง research เพื่อ apply ที่พบ
 - ทำ `/follow-tool-crw` สำหรับการใช้ CRW อย่างเต็มประสิทธิภาพ
 - ทำ `/check-reference` เพื่อตรวจสอบ references ที่พบ

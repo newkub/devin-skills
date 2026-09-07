@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-analyze
   - plan
-  - report-table
   - report
   - suggest-next-action
   - update-devin-global-skills
@@ -68,7 +67,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators

@@ -4,10 +4,11 @@ description: Review, refactor และตรวจ cross-skill consistency ข�
 argument-hint: "[scope]"
 related:
   - update-devin-global-skills
-  - idea-refactor-devin-global-skills
+  - idea-new-devin-global-skills
   - deep-review-codebase
   - follow-deep
   - report
+  - create-report-in-dot-devin
   - suggest-next-action
   - check-reference
   - follow-skills-map
@@ -86,9 +87,10 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 > Goal: สรุป review score, refactor results และ findings
 
 1. ทำตาม `references/scoring.md` สำหรับ severity weights, grade, report format
-2. ทำ `/report` พร้อม findings: Skill, Category, Severity, Finding, Evidence, Action
-3. สรุป refactor actions: skill, action, status, ไฟล์ที่เปลี่ยน
-4. ทำ `/suggest-next-action`
+2. ทำ `/report` พร้อม findings: `No.`, Skill, Category, Severity, Finding, Evidence, Action
+3. ทำ `/create-report-in-dot-devin` เพื่อบันทึก report ลง `.devin/review-devin-global-skills.md`
+4. สรุป refactor actions: skill, action, status, ไฟล์ที่เปลี่ยน
+5. ทำ `/suggest-next-action`
 
 ## Rules
 
@@ -125,7 +127,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, skill references
 - รายงานเป็นตารางด้วย `/report`
 
-- ใช้ /idea-refactor-devin-global-skills ถ้าจำเป็น
+- ใช้ /idea-new-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 
@@ -138,4 +140,5 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ทุก skill มี SRP ชัดเจน ไม่มีเนื้อหาซ้ำซ้อน
 - ไม่มี broken references
 - `related` skills ถูกอ้างถึงใน `SKILL.md`
+- บันทึก report ลง `.devin/review-devin-global-skills.md`
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

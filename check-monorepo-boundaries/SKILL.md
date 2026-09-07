@@ -6,7 +6,7 @@ related:
   - follow-tool-madge
   - list-workspaces
   - check-circular-dependencies
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -51,7 +51,7 @@ related:
 
 > Goal: รายงาน violations พร้อมแนวทางแก้
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Importer`, `Imported`, `Violation`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Importer`, `Imported`, `Violation`, `Severity`, `Fix`
 2. Severity: `critical` (circular, app→app), `high` (layer violation, phantom dep), `medium` (deep import)
 3. แนะนำ fix เช่น ย้าย code ไป shared, declare dep, หรือ export ผ่าน entry point
 

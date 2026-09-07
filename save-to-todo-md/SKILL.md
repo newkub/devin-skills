@@ -4,10 +4,10 @@ description: เก็บงานค้าง/ขั้นตอนที่ย
 argument-hint: "[title-or-auto]"
 related:
   - update-todo-md
-  - list-todo-md
-  - implement-todo-md
+  - report-scan-todo
+  - productionize-implementation
   - report-progress
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -69,7 +69,7 @@ related:
 > Goal: ไม่ซ้ำกับ items เดิมและรายงานผล
 
 1. เทียบกับ rows ที่มีอยู่ — skip หรือ merge items ที่ซ้ำ (อัปเดต status/priority แทนการเพิ่มซ้ำ)
-2. ใช้ `/report-table` สรุป: `No.`, `Item`, `Priority`, `Why Pending`, `Action`
+2. ใช้ `/report` สรุป: `No.`, `Item`, `Priority`, `Why Pending`, `Action`
 3. บอก path และจำนวน items ที่เพิ่ม/ข้าม
 
 ## Rules
@@ -93,6 +93,6 @@ related:
 
 - งานค้างทั้งหมดถูกเก็บใน `TODO.md` เป็น tracked items พร้อม priority และเหตุ
 - ไม่มี items ซ้ำกับที่มีอยู่
-- Session หน้า resume ได้จาก TODO.md ผ่าน `/list-todo-md` และ `/implement-todo-md`
+- Session หน้า resume ได้จาก TODO.md ผ่าน `/report-scan-todo` และ `/productionize-implementation`
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: save-to-todo-in-root-drive-d)

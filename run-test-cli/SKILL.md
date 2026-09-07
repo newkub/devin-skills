@@ -4,7 +4,7 @@ description: รัน tests สำหรับ CLI commands, output, exit codes
 argument-hint: "[cli-command]"
 related:
   - resolve-errors
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -96,7 +96,7 @@ related:
 1. บันทึก exit codes, stdout, stderr ของแต่ละ command
 2. รวบรวม failures และ inconsistencies
 3. ทำ `/resolve-errors` สำหรับ failures
-4. ใช้ `/report-table` เพื่อแสดง test results
+4. ใช้ `/report` เพื่อแสดง test results
 
 ### 10. Re-run Until Pass
 

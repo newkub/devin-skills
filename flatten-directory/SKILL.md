@@ -6,9 +6,9 @@ related:
   - move-to
   - update-references
   - restructure
-  - list-file-structure
+  - report-file-structure
   - review-restructure
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -27,7 +27,7 @@ related:
 
 > Goal: map structure และหาจุดที่ลึกเกิน
 
-1. ทำ `/list-file-structure` ดู tree ปัจจุบัน
+1. ทำ `/report-file-structure` ดู tree ปัจจุบัน
 2. หา patterns: single-child chains (`a/b/c/` ที่ b,c มีลูกเดียว), name repetition (`foo/foo/`, `src/src/`), wrapper dirs ที่มีแค่ dir เดียว
 3. วัด depth ต่อ leaf — flag paths ที่ลึกกว่า threshold (default: >4 จาก root)
 
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุป structural change
 
-1. ใช้ `/report-table`: `No.`, `Old Path`, `New Path`, `Files Moved`, `Refs Updated`
+1. ใช้ `/report`: `No.`, `Old Path`, `New Path`, `Files Moved`, `Refs Updated`
 2. Before/after depth comparison
 3. ระบุ manual follow-ups ถ้ามี (docs นอก repo, external links)
 

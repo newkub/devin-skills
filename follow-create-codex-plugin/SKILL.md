@@ -13,7 +13,7 @@ related:
   - update-devin-global-subagents
   - follow-my-tech-stack
   - review-techstack
-  - report-table
+  - report
 ---
 ## Goal
 
@@ -97,7 +97,7 @@ related:
 - ใช้ /follow-clean-architecture ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /search-skills ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

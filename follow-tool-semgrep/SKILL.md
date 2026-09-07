@@ -4,7 +4,7 @@ description: ใช้ Semgrep สแกน code patterns และ security rul
 argument-hint: "[ruleset-or-path]"
 related:
   - use-astgrep
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,14 +49,14 @@ related:
 
 1. จัดกลุ่มตาม rule severity และ confidence — semgrep มีทั้ง false positives
 2. ใช้ `// nosemgrep` สำหรับ intentional patterns พร้อม comment เหตุผล
-3. ใช้ `/report-table` คอลัมน์: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
+3. ใช้ `/report` คอลัมน์: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
 4. ส่งต่อ `/review-security` หรือ `/fix` สำหรับ remediation
 
 ### 5. Integrate (ถ้าต้องการถาวร)
 
 > Goal: ทำ semgrep เป็นส่วนของ workflow
 
-1. CI step หรือ pre-commit hook (`/follow-tool-githooks`)
+1. CI step หรือ pre-commit hook (`/follow-tool-hk`)
 2. Commit custom rules ใน `.semgrep/` พร้อม tests (`semgrep --test`)
 3. Baseline strategy สำหรับ legacy code
 

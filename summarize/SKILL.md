@@ -3,7 +3,7 @@ name: summarize
 description: สรุปเนื้อหาตาม context ทั่วไป
 argument-hint: "<context>"
 related:
-  - report-table
+
   - scan-codebase
   - report
   - list-git-commit
@@ -37,7 +37,7 @@ related:
 
 1. ถ้า `project` → สรุป scope project ตาม flow ของ skill นี้
 2. ถ้า `chat` หรือ `conversation` → สรุป scope chat/session ตาม flow ของ skill นี้
-3. ถ้าต้องการ bullet/numbered list → ทำ `/report-table`
+3. ถ้าต้องการ bullet/numbered list → ทำ `/report`
 4. ถ้า `code` → ทำ `/scan-codebase` แล้ว `/report`
 5. ถ้า `file` → อ่านไฟล์แล้วสรุป
 6. ถ้า `changes` → ทำ `/list-git-commit` หรือ `/report-git-diff`
@@ -60,7 +60,7 @@ related:
 > Goal: นำเสนอสรุป
 
 1. ใช้รูปแบบตามที user ต้องการ (bullet, paragraph, table)
-2. ใช้ `/report-table` ถ้ามีหลายหมวด
+2. ใช้ `/report` ถ้ามีหลายหมวด
 3. ระบุสิ่งทีขาดหรือต้องทำต่อ
 4. ทำ `/suggest-next-action`
 

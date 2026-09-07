@@ -10,10 +10,10 @@ related:
   - use-scripts
   - use-astgrep
   - run-verify
-  - deep-verify
+  - deep-validate
   - run-check
   - resolve-errors
-  - report-table
+  - report
   - report-progress
   - follow-agents-md
   - ask-me
@@ -78,7 +78,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 > Goal: ทุกอย่างผ่านก่อน ship — เร็วด้วย parallel verification
 
 1. ทำ `/run-verify` — build, lint, typecheck, format พร้อมกันตาม `/follow-parallel`
-2. ทำ `/deep-verify` สำหรับ correctness เชิงลึกของ merged result
+2. ทำ `/deep-validate` สำหรับ correctness เชิงลึกของ merged result
 3. ทำ `/run-check` สำหรับ static checks ที่เหลือ
 4. ถ้า verification fail → `/resolve-errors` แล้ว re-verify
 
@@ -94,7 +94,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 > Goal: สรุป swarm results แบบ traceable
 
-1. ทำ `/report-table` แสดงแต่ละ lane: status, files changed, findings, duration
+1. ทำ `/report` แสดงแต่ละ lane: status, files changed, findings, duration
 2. ทำ `/report-progress` สรุปเปอร์เซ็นต์งานและ lanes ที่เหลือ
 3. ระบุ lanes ที่ fail/skip พร้อมเหตุผล
 

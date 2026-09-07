@@ -6,7 +6,7 @@ related:
   - gen-openapi
   - check-api-contract
   - scan-codebase
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ Generate API collection (Postman หรือ Bruno) จาก OpenAPI spec ห�
 
 1. Validate JSON schema (Postman collection schema) หรือเปิดใน Bruno
 2. เทียบ endpoint count กับ spec — ไม่มีที่ขาด
-3. ใช้ `/report-table` สรุป: `No.`, `Folder`, `Endpoints`, `Auth`, `Examples`
+3. ใช้ `/report` สรุป: `No.`, `Folder`, `Endpoints`, `Auth`, `Examples`
 4. บอกวิธี import/run
 
 ## Rules

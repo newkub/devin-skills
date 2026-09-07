@@ -6,7 +6,7 @@ related:
   - idea-features
   - review-frontend
   - report
-  - report-table
+
   - suggest-next-action
   - productionize-implementation
 
@@ -54,7 +54,7 @@ related:
 
 1. จัดลำดับตาม value vs effort
 2. ระบุ quick wins และ strategic ideas
-3. ทำ `/report` พร้อม `/report-table` เพื่อแสดงผลเป็นตาราง: #, Idea, Type, Problem, Impact, Effort
+3. ทำ `/report` พร้อม `/report` เพื่อแสดงผลเป็นตาราง: #, Idea, Type, Problem, Impact, Effort
 4. ใช้ Impact: 🔴 สูง → 🟡 ปานกลาง → 🟢 ต่ำ
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 

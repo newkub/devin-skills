@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-git-diff
   - check-git-diff
-  - report-table
+  - report
   - deep-validate
   - ask-me
   - ship
@@ -44,7 +44,7 @@ related:
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -59,6 +59,8 @@ related:
 - ใช้ /check-git-diff ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 - ใช้ /ask-me ถ้าจำเป็น
+
+- ตัดสินใจ keep/revert ตาม findings เท่านั้น
 
 ## Expected Outcome
 

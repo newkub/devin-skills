@@ -4,7 +4,7 @@ description: สร้าง CLI spec ด้วย usage เพื่อ generat
 argument-hint: "[scope]"
 related:
   - report-usage
-  - report-usage-md
+
   - review-app-usage
   - follow-best-practice
   - setup-cicd
@@ -125,7 +125,7 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 - regenerate completions/docs ใน CI ถ้ามีการเปลี่ยน spec
 
 - ใช้ /report-usage ถ้าจำเป็น
-- ใช้ /report-usage-md ถ้าจำเป็น
+- ใช้ /report-usage ถ้าจำเป็น
 - ใช้ /review-app-usage ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

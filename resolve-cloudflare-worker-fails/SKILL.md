@@ -7,11 +7,9 @@ related:
   - list-cloudflare-projects
   - search-project-in-drive-d
   - resolve-errors
-  - list-cloudflare-worker-fails
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
-  - use-wrangler
 ---
 
 ## Goal
@@ -22,7 +20,9 @@ related:
 
 ใช้กับ worker หรือ pages project เดียว ถ้าไม่ระบุจะหาจาก current project หรือ repo name
 
-ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-fails, /list-cloudflare-worker-fails
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-cloudflare-worker-fails) — สำหรับ list fails ดู `references/list-fails.md`
+
+ดูเพิ่มเติม: /list-cloudflare-projects, /resolve-all-cloudflare-fails, `references/list-fails.md`
 
 ## Execute
 
@@ -65,7 +65,7 @@ related:
 ### 5. Build Report
 
 > Goal: สรุปผล
-1. ใช้ `/report-table` คอลัมน์: No., Worker/Project, Type, Latest Deployment, Status, Action Taken, Errors / Notes
+1. ใช้ `/report` คอลัมน์: No., Worker/Project, Type, Latest Deployment, Status, Action Taken, Errors / Notes
 2. ระบุ: resolve ได้หรือ manual-fix-required
 
 ### 6. Suggest Next Action

@@ -9,7 +9,7 @@ related:
   - open-in-zed
   - follow-my-tech-stack
   - review-techstack
-  - report-table
+  - report
 ---
 ## Goal
 
@@ -102,7 +102,7 @@ related:
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /open-in-zed ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

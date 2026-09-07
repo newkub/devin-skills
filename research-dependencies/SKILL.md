@@ -7,7 +7,7 @@ related:
   - follow-my-tech-stack
   - follow-best-practice
   - check-reference
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -68,7 +68,7 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 > Goal: เลือก dependency ทีดีทีสุด
 
-1. ทำ `/report-table` ด้วย columns: No., Package, Version, License, Maintenance, Size, Pros, Cons, Verdict
+1. ทำ `/report` ด้วย columns: No., Package, Version, License, Maintenance, Size, Pros, Cons, Verdict
 2. ระบุ primary recommendation พร้อมเหตุผล
 3. ระบุ alternatives ถ้าหลักไม่เหมาะ
 4. ระบุ install command ตาม ecosystem

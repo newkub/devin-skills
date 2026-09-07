@@ -9,7 +9,7 @@ related:
   - follow-tool-vite
   - review-bundle
   - deep-optimize
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -121,7 +121,7 @@ related:
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /review-bundle ถ้าจำเป็น
 - ใช้ /deep-optimize ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome

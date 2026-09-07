@@ -19,7 +19,7 @@ triggers:
   - model
 related:
   - deep-research
-  - report-table
+  - report
   - deep-thinking
   - check-reference
   - follow-best-practice
@@ -59,7 +59,7 @@ related:
 
 > Goal: Create Comparison Table
 
-1. ทำ `/report-table` สำหรับจัดรูปแบบตาราง
+1. ทำ `/report` สำหรับจัดรูปแบบตาราง
 2. กำหนด columns สำหรับ comparison criteria
 3. เติมข้อมูลสำหรับแต่ละ option ในแต่ละ row
 

@@ -6,7 +6,7 @@ related:
   - scan-codebase
   - deep-validate
   - check-reference
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -74,7 +74,7 @@ related:
 
 - คำนวณ score ตามสูตรและ supplementary metrics
 - ทำ `/deep-validate`, `/check-reference`
-- ทำ `/report-table` พร้อม severity, evidence, action
+- ทำ `/report` พร้อม severity, evidence, action
 - ทำ `/suggest-next-action`
 
 ## Rules

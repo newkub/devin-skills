@@ -7,15 +7,10 @@ related:
   - run-test-unit
   - review-quality
   - run-typecheck
-  - report-table
+  - report
   - suggest-next-action
   - resolve-errors
 ---
-  - check-file-encoding
-  - check-path-length
-  - check-broken-symlinks
-  - check-file-locks
-  - check-open-ports
 
 ## Goal
 
@@ -25,7 +20,8 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
-สำหรับ validate ทั่วไป ใช้ `/deep-validate`; สำหรับ validate tests ใช้ `/run-test-unit`; สำหรับ validate review ใช้ `/review-quality`
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-verify) — ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
+- สำหรับ validate tests ใช้ `/run-test-unit`; สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
 
@@ -115,7 +111,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 ตรวจสอบ cross-references ทั้งหมด
 
-- ทำ `/deep-validate` เพื่อตรวจสอบ config files และ environment variables
+- ตรวจสอบ config files และ environment variables
 - ตรวจสอบ references ระหว่าง modules ถูกต้อง
 - ตรวจสอบ API contracts ตรงกับ implementation
 - ตรวจสอบ documentation ตรงกับ code จริง
@@ -126,7 +122,7 @@ Goal reminder: ตรวจสอบความเหมาะสมกับ r
 
 > Goal: Report And Suggest
 
-ทำ `/report-table` เพื่อสร้างตารางสรุปผล
+ทำ `/report` เพื่อสร้างตารางสรุปผล
 
 - ตาราง: Dimension, Finding, Severity, Location, Recommendation
 - จัดกลุ่ม findings ตาม dimension

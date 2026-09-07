@@ -8,7 +8,7 @@ related:
   - scan-codebase
   - deep-analyze
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
 
 ---
@@ -63,7 +63,7 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 1. ทำ `/deep-validate` สำหรับทุก finding
 2. จัดลำดับ findings ตาม severity: Critical, High, Medium, Low
 3. คำนวณ per-dimension และ overall score ตาม `references/scoring.md`
-4. รายงานด้วย `/report-table` และ `/suggest-next-action`
+4. รายงานด้วย `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -71,7 +71,7 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 - ใช้ evidence-based findings พร้อม file path และ regulation อ้างอิง
 - ไม่แก้ไข code ระหว่าง review
 - ดูรายละเอียด severity, formatting, และ independence rules ใน `references/rules.md`
-- รายงานผลด้วย `/report-table` และ `/suggest-next-action`
+- รายงานผลด้วย `/report` และ `/suggest-next-action`
 
 ## Fix
 

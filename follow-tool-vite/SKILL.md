@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับ modern web applications ทีใช้ Vite เป็น build tool และ dev server
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-vite-plugin-compression) — สำหรับ gzip/brotli pre-compression ดู `references/plugin-compression.md`
+
 ## Execute
 
 ### 1. Installation

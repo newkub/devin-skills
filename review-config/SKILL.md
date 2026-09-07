@@ -4,7 +4,6 @@ description: Review config files หา drift, missing, duplicate, shared config
 argument-hint: "[path]"
 related:
   - report-config-files
-  - list-ci-configs
   - setup-cicd
   - setup-package
   - setup-release
@@ -68,7 +67,7 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 > Goal: สรุป findings สำหรับ update
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report-table` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
+2. ทำ `/report` ด้วย columns: Category, File, Status, Issue, Severity, Recommendation
 3. ทำ `/report-file-structure` สำหรับ config tree
 4. ระบุ next actions สำหรับ `/update-config`, `/setup-package`, `/setup-release`, `/setup-cicd`
 
@@ -105,7 +104,6 @@ Review ทุก configuration files ใน project หา drift, missing, dupli
 - เขียนเฉพาะสิ่งที่ต่างจาก default พร้อม comment
 - เก็บเฉพาะ config หลักๆ ที่มีผลต่อ project
 
-- ใช้ /list-ci-configs ถ้าจำเป็น
 - ใช้ /update-devin-global-subagents ถ้าจำเป็น
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น

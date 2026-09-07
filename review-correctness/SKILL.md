@@ -12,7 +12,7 @@ related:
   - run-test-unit
   - run-test-coverage
   - use-astgrep
-  - report-table
+  - report
   - suggest-next-action
   - review-test
 ---
@@ -86,7 +86,7 @@ Review implementation correctness ของ code, configuration, และ tests
 1. ทำ `/deep-validate`
 2. ทำตาม `references/validate-score-and-report.md`
 3. คำนวณ metrics ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
+4. ทำ `/report` พร้อม `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -121,7 +121,7 @@ Review implementation correctness ของ code, configuration, และ tests
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 - ตารางทุกใบต้องมี `No.` เป็นคอลัมน์แรก
 
 - ใช้ /review-quality ถ้าจำเป็น

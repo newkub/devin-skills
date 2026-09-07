@@ -1,6 +1,6 @@
 ---
 name: deep-optimize
-description: Optimize codebase ครบทุก layer — frontend, API, DB, bundle, SEO, a11y, cost — dispatch ไป `## Fix` section ของ review-* ตาม domain พร้อม validate
+description: Optimize codebase ครบทุก layer แล้ว dispatch ไป review-* ตาม domain พร้อม validate
 argument-hint: "<target>"
 allowed-tools:
   - read
@@ -32,7 +32,6 @@ related:
   - run-verify
   - run-build
   - run-test-all
-  - report
 ---
 
 ## Goal
@@ -74,7 +73,7 @@ Optimize codebase แบบละเอียดครบทุก layer — per
 1. จัดลำดับ optimizations ตาม impact และ effort
 2. แยก quick wins กับ major changes
 3. ระบุ public API ทีอาจเปลี่ยน
-4. สร้าง plan แล้วทำ `/report-plan` เพื่อ user confirm
+4. สร้าง plan แล้วทำ `/plan` เพื่อ user confirm
 
 ### 4. Implement By Domain
 

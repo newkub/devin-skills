@@ -3,7 +3,7 @@ name: follow-best-practice
 description: เขียนตาม best practices จาก context นั้นๆ
 argument-hint: "[topic]"
 related:
-  - learn-from-web
+  - learn-web
   - deep-research
 ---
 
@@ -31,7 +31,7 @@ related:
 > Goal: ค้นคว้า best practices ที่เป็นปัจจุบันจากแหล่งน่าเชื่อถือ
 
 1. ระบุ library, framework หรือ tool ที่ต้องการเรียนรู้ best practices
-2. ทำตาม `/learn-from-web` สำหรับ systematic learning จาก web sources
+2. ทำตาม `/learn-web` สำหรับ systematic learning จาก web sources
 3. ทำตาม `/deep-research` เมื่อต้องการข้อมูลลึกจาก multiple sources
 4. ตรวจสอบว่าข้อมูลเป็นปัจจุบัน
 
@@ -68,7 +68,7 @@ related:
 - Well-known blogs และ articles
 - GitHub repositories ที่มีคนใช้เยอะ
 - Stack Overflow สำหรับ common issues
-- ใช้ `/learn-from-web` เป็น primary workflow สำหรับ learning
+- ใช้ `/learn-web` เป็น primary workflow สำหรับ learning
 - ใช้ `/deep-research` เมื่อต้องการข้อมูลลึกจาก multiple sources
 
 ### 2. Language-Specific Conventions

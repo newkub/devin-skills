@@ -7,7 +7,7 @@ related:
   - review-security
   - run-test-api
   - deep-review
-  - report-table
+  - report
   - check-reference
 ---
   - check-api-versioning
@@ -64,7 +64,7 @@ related:
 
 > Goal: สรุป findings พร้อม severity และ fix direction
 
-1. ทำ `/report-table` พร้อม columns: No., Endpoint, Severity, Finding, Evidence, Fix
+1. ทำ `/report` พร้อม columns: No., Endpoint, Severity, Finding, Evidence, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้า security findings เสี่ยงสูง → เชื่อม `/review-security` และ `/review-security`
 

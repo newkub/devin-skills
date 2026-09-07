@@ -19,6 +19,8 @@ related:
 
 ใช้ `follow-tool-biome` สำหรับ tasks และ workflows เฉพาะที่กำหนด
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-ultracite) — สำหรับ Ultracite preset บน Biome ดู `references/ultracite.md`
+
 ## Execute
 
 ### 1. Setup

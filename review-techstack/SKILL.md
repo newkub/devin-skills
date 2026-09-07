@@ -8,7 +8,7 @@ related:
   - run-review
   - deep-analyze
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
   - follow-tasks
   - list-dependencies
@@ -112,7 +112,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น

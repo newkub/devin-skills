@@ -9,7 +9,7 @@ related:
   - review-uxui
   - review-accessibility
   - report-uxui-all-routes
-  - report-table
+  - report
   - resolve-errors
   - run-check
   - ask-me
@@ -86,7 +86,7 @@ related:
 > Goal: ยืนยันผลและสรุป findings
 
 1. ทำ `/run-check` ถ้ามี unit tests ที่เกี่ยวข้อง
-2. ทำ `/report-table` สรุป test results: route, viewport, status, evidence
+2. ทำ `/report` สรุป test results: route, viewport, status, evidence
 3. ระบุ baseline diffs, interaction failures, a11y issues ทีละรายการ
 
 ## Rules

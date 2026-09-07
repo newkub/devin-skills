@@ -9,7 +9,7 @@ related:
   - deep-review-codebase
   - deep-thinking
   - deep-plan
-  - report-table
+  - report
   - idea-features
   - ask-me
   - suggest-next-action
@@ -49,7 +49,7 @@ related:
 1. ทำ `/deep-research` ต่อ competitor เพื่อรวบรวม feature list, feature matrix, pricing tiers ที่ผูกกับ features จาก official docs, changelogs, reviews และ user feedback
 2. จัดกลุ่ม features ตามหมวด เช่น core, advanced, integrations, automation
 3. ทำ `/deep-research` เพื่อยืนยัน features ปัจจุบันของ project ถ้า codebase ไม่พอ
-4. สร้าง feature comparison matrix: project vs คู่แข่งแต่ละราย — ทำ `/report-table` โดยมีคอลัมน์ `No.` เป็นคอลัมน์แรก และระบุสถานะแต่ละ feature: `มี`, `ไม่มี`, `ดีกว่า`, `ด้อยกว่า`, `เท่ากัน`
+4. สร้าง feature comparison matrix: project vs คู่แข่งแต่ละราย — ทำ `/report` โดยมีคอลัมน์ `No.` เป็นคอลัมน์แรก และระบุสถานะแต่ละ feature: `มี`, `ไม่มี`, `ดีกว่า`, `ด้อยกว่า`, `เท่ากัน`
 5. บันทึกผลเป็น `comparison-features.md` ใน `docs/project/`
 6. รวม features ที่ project `ไม่มี` และ `ด้อยกว่า` เป็น gap list — แต่ละ gap ระบุ: feature, competitor ที่มี, impact, effort โดยประมาณ
 7. ระบุ unique features ของ project ที่คู่แข่งไม่มีเพื่อรักษาไว้

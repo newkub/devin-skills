@@ -8,7 +8,7 @@ related:
   - run-test-e2e
   - review-uxui
   - run-dev
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 
 > Goal: สรุปให้ตัดสินใจ approve baseline หรือแก้ bug
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Route/Component`, `Diff %`, `Status`, `Verdict`
+1. ทำ `/report` คอลัมน์: `No.`, `Route/Component`, `Diff %`, `Status`, `Verdict`
 2. แนบ diff image paths สำหรับ findings สำคัญ
 3. ถ้าทุก change เป็น intended → เสนออัปเดต baseline
 4. ถ้ามี regression → ส่งต่อ `/resolve-errors` หรือ `/fix`

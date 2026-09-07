@@ -4,8 +4,7 @@ description: รัน test coverage analysis ตรวจสอบ framework �
 argument-hint: "[scope]"
 related:
   - follow-coverage
-  - review-content-coverage
-  - run-test-unit
+  - review-docs
   - run-check
   - run-verify
   - suggest-next-action
@@ -127,7 +126,7 @@ related:
 - ไม่มีข้อยกเว้นสำหรับ error paths
 
 - ใช้ /follow-coverage ถ้าจำเป็น
-- ใช้ /review-content-coverage ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น

@@ -4,7 +4,7 @@ description: Mass rename ไฟล์ตาม pattern พร้อม preview/d
 argument-hint: "<pattern> <replacement> [path]"
 related:
   - update-references
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -37,7 +37,7 @@ Rename ไฟล์จำนวนมากตาม pattern — preview ก่�
    - No-ops: names ที่ไม่เปลี่ยนจริง
    - Case-only: Windows ที่ rename case-only ต้องสองขั้น (via temp name)
    - Locked files: ทำ `/check-file-locks` ถ้าสงสัย
-3. ใช้ `/report-table`: `No.`, `Old Name`, `New Name`, `Status`, `Issue`
+3. ใช้ `/report`: `No.`, `Old Name`, `New Name`, `Status`, `Issue`
 
 ### 3. Confirm And Execute
 

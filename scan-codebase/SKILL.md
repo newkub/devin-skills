@@ -7,7 +7,7 @@ related:
   - check-code-structure
   - use-astgrep
   - use-scripts
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -54,7 +54,7 @@ Scan codebase อย่างรวดเร็วเพื่อเข้าใ
 > Goal: สรุปผล scan เป็น structured data และรายงานที่อ่านง่าย
 
 1. ทำ `/use-scripts` สร้าง structured data
-2. ทำ `/report-table` สรุปผล
+2. ทำ `/report` สรุปผล
 
 ## Rules
 

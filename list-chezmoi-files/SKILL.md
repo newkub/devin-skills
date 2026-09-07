@@ -3,8 +3,8 @@ name: list-chezmoi-files
 description: รายการไฟล์ทีถูก chezmoi จัดการ (chezmoi managed)
 argument-hint: "[scope]"
 related:
-  - follow-my-global-cli
-  - report-table
+  - download-program
+  - report
   - suggest-next-action
   - update-chezmoi
 ---
@@ -24,7 +24,7 @@ related:
 > Goal: ตรวจสอบ chezmoi
 
 1. รัน `chezmoi --version`
-2. ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
+2. ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
 3. รัน `chezmoi source-path` เพื่อหา source directory
 4. รัน `chezmoi dest-dir` หรือ `chezmoi data` เพื่อหา destination directory
 
@@ -59,7 +59,7 @@ related:
 
 > Goal: นำเสนอรายการไฟล์
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report` คอลัมน์:
    - No
    - Managed File (destination path)
    - Source Path

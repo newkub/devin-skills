@@ -7,7 +7,7 @@ related:
   - deploy-to-cloudflare
   - follow-create-devin-project-skills
   - create-cloudflare-token
-  - save-to-devin-global-skills
+  - add-context-to-devin-global-skills
 ---
 
 ## Goal
@@ -82,7 +82,7 @@ related:
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-create-devin-project-skills ถ้าจำเป็น
 - ใช้ /create-cloudflare-token ถ้าจำเป็น
-- ใช้ /save-to-devin-global-skills ถ้าจำเป็น
+- ใช้ /add-context-to-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome
 

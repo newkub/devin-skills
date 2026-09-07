@@ -15,6 +15,8 @@ related:
 
 ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-jsdom) — สำหรับ jsdom DOM environment ดู `references/jsdom.md`
+
 ## Execute
 
 ### 1. Installation

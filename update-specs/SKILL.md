@@ -65,7 +65,7 @@ related:
 1. ทำ `/deep-validate` เพื่อตรวจ `specs/` ครบถ้วน
 2. ตรวจว่า `specs/overview.md` และ `specs/SPEC.md` มีอยู่
 3. ตรวจว่า spec files ไม่เกิน 250 บรรทัด
-4. ทำ `/report-table` สรุป spec files ที่สร้าง/อัปเดต, gaps, และ next actions
+4. ทำ `/report` สรุป spec files ที่สร้าง/อัปเดต, gaps, และ next actions
 
 ## Rules
 

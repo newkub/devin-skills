@@ -6,7 +6,7 @@ related:
   - roleplay-stakeholder
   - review-by-user
   - review-by-engineer
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
   - ask-me
@@ -52,7 +52,7 @@ Review project จากมุมมอง business/product — หา value gap
 
 > Goal: สรุป business/product findings
 
-1. ทำ `/report-table` พร้อม priority และ impact
+1. ทำ `/report` พร้อม priority และ impact
 2. ระบุ top 3-5 ประเด็น
 3. ทำ `/suggest-next-action`
 
@@ -74,6 +74,8 @@ Review project จากมุมมอง business/product — หา value gap
 
 - ใช้ /review-by-user ถ้าจำเป็น
 - ใช้ /review-by-engineer ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-business`
 
 ## Expected Outcome
 

@@ -22,10 +22,10 @@ related:
   - deep-plan
   - deep-analyze
   - update-review-cli
-  - deep-review-pr
+  - review-github-pr
   - roleplay-stakeholder
   - review-by-stakeholder
-  - deep-report
+  - report-deep
   - deep-validate
   - suggest-next-action
   - ask-me
@@ -54,7 +54,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 
 > Goal: Dispatch By Context
 1. ถ้า context เป็น codebase, project, repo หรือ directory → ทำ `/deep-review-codebase`
-2. ถ้า context เป็น PR, pull request, branch diff → ทำ `/deep-review-pr`
+2. ถ้า context เป็น PR, pull request, branch diff → ทำ `/review-github-pr`
 3. ถ้า context เป็น issue, bug, feature → ทำ `/deep-analyze` แล้วแนะนำ `/review-*` ทีเหมาะสม
 4. ถ้า context เป็น docs, README, content → ทำ `/review-docs`
 5. ถ้า context เป็น security incident → ทำ `/review-security`
@@ -65,7 +65,7 @@ Dispatch review ลึกตาม context ของงาน ไปยัง wo
 
 > Goal: Follow Up
 1. ทำ `/deep-validate` เพื่อตรวจสอบ findings สำคัญ
-2. ทำ `/deep-report` ถ้าต้องการ report รวม
+2. ทำ `/report-deep` ถ้าต้องการ report รวม
 3. ทำ `/suggest-next-action`
 
 ## Rules

@@ -7,7 +7,7 @@ related:
   - alternative
   - run-audit
   - follow-tool-taze
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -104,7 +104,7 @@ related:
 
 ### 5. Report Formatting
 
-จัดรูปแบบ output ตาม `/report-table`
+จัดรูปแบบ output ตาม `/report`
 
 1. กำหนด table structure ด้วยคอลัมน์ "No." เป็นคอลัมน์แรก (No. | Name | Version | Type | Purpose | Status)
 2. ใช้ markdown table format มาตรฐานพร้อม headers ชัดเจน

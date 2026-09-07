@@ -6,7 +6,7 @@ related:
   - resolve-cicd
   - search-project-in-drive-d
   - resolve-errors
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
 
@@ -19,6 +19,8 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 ## Scope
 
 ใช้กับ repo ปัจจุบันหรือ repo ที user ระบุ ครอบคลุม public/private ตามสิทธิ์ `gh` token
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-github-actions-fails) — สำหรับ list fails ดู `references/list-fails.md`
 
 ## Execute
 
@@ -66,7 +68,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 
 > Goal: สรุปผลเป็นตาราง
 1. รวมผลจาก repo ทีระบุ
-2. ใช้ `/report-table` คอลัมน์: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Notes
+2. ใช้ `/report` คอลัมน์: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Notes
 3. เรียงตาม Started At ล่าสุด
 4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 

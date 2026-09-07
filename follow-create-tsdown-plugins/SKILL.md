@@ -9,7 +9,7 @@ related:
   - follow-lang-typescript
   - follow-my-tech-stack
   - review-techstack
-  - follow-tool-build-packages
+  - follow-tool-turborepo
 ---
 ## Goal
 
@@ -185,7 +185,7 @@ packages/tsdown-plugin-example/
 - `follow-tool-tsdown` — tsdown bundler setup
 - `follow-create-rolldown-plugins` — Rolldown plugin patterns
 - `follow-create-vite-plugins` — Vite plugin patterns
-- `follow-tool-build-packages` — package build pipeline
+- `follow-tool-turborepo` — package build pipeline
 - `follow-lang-typescript` — TypeScript best practices
 - [tsdown Plugin Architecture](https://github.com/rolldown/tsdown/blob/main/docs/advanced/plugins.md)
 - [Rolldown Plugin API](https://rolldown.rs/apis/plugin-api)

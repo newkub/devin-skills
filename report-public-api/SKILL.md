@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-code-structure
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -39,7 +39,7 @@ related:
 
 > Goal: สร้างรายงาน public API
 
-1. ใช้ `/report-table` แสดง:
+1. ใช้ `/report` แสดง:
    - `| API | Type | Module | Description | Stability |`
 2. กลุ่มตาม domain ด้วย heading `## <domain>`
 3. สรุปจำนวน public API, breaking changes, deprecations
@@ -56,4 +56,4 @@ related:
 - ตาราง public API ครบถ้วน
 - จัดกลุ่มตาม domain
 - ระบุ stability และ description
-- ใช้ `/report-table` เป็นหลัก
+- ใช้ `/report` เป็นหลัก

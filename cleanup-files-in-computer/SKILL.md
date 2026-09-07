@@ -7,7 +7,7 @@ related:
   - follow-tool-mise
   - alternative
   - delete
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -90,7 +90,7 @@ related:
 1. รัน `mise run cleanup -- --dry-run`
 2. หรือ `mise run cleanup --dry-run`
 3. รวบรวม output: cache paths, sizes, commands
-4. ทำ `/report-table` หรือ `/report-idea-cleanup-files-in-computer` เพื่อสรุป
+4. ทำ `/report` หรือ `/report-idea-cleanup-files-in-computer` เพื่อสรุป
 
 ### 5. Confirm
 

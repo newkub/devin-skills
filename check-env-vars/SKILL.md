@@ -7,7 +7,7 @@ related:
   - check-secrets-leak
   - open-web-for-config-secret
   - search-files-patterns
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 
 > Goal: สรุปผลให้แก้ไขได้ทันที
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Key`, `Status`, `Found In`, `Action`
+1. ทำ `/report` คอลัมน์: `No.`, `Key`, `Status`, `Found In`, `Action`
 2. Status: `missing-env`, `missing-example`, `unused`, `drift`, `leaked`
 3. สรุป counts และจัดลำดับ `leaked`/`missing-env` ก่อน
 4. แนะนำ next action ต่อ finding

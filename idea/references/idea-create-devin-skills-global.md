@@ -98,7 +98,7 @@
 - ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
 
 - ใช้ /idea-features ถ้าจำเป็น
-- ใช้ /idea-improve-files-naming ถ้าจำเป็น
+- ใช้ /idea-naming ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 
 ## Expected Outcome

@@ -10,7 +10,7 @@ related:
   - review-compliance
   - review-observability
   - scan-codebase
-  - report-table
+  - report
   - suggest-next-action
 
 ---
@@ -92,7 +92,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ทำตาม `references/scoring.md`
 
-ทำ `/deep-validate` ก่อนรายงาน แล้ว `/report` พร้อม `/report-table`
+ทำ `/deep-validate` ก่อนรายงาน แล้ว `/report` พร้อม `/report`
 
 ## Rules
 
@@ -141,7 +141,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ห้ามใช้ `**`
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /check-secrets-leak ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น

@@ -16,6 +16,8 @@ related:
 
 ใช้ hk สำหรับ pre-commit, pre-push, pre-merge-commit และคำสั่ง `check`/`fix`
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-githooks) — สำหรับ git hooks patterns ทั่วไป ดู `references/githooks.md`
+
 ## Execute
 
 ### 1. Install hk

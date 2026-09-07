@@ -8,7 +8,7 @@ related:
   - cleanup-files-in-project
   - update-references
   - update-config
-  - refactor-to-single-responsibility
+  - refactor
   - review-then-fix
   - delete-projects
   - resolve-errors
@@ -99,7 +99,7 @@ related:
 - ใช้ /check-should-update ถ้าจำเป็น
 - ใช้ /cleanup-files-in-project ถ้าจำเป็น
 - ใช้ /update-config ถ้าจำเป็น
-- ใช้ /refactor-to-single-responsibility ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
 - ใช้ /review-then-fix ถ้าจำเป็น
 - ใช้ /delete-projects ถ้าจำเป็น
 ## Expected Outcome

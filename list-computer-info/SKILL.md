@@ -6,7 +6,7 @@ related:
   - list-program-in-computer
   - check-size
   - use-pwsh-shell
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -90,7 +90,7 @@ related:
 
 > Goal: แสดงผลอ่านง่าย
 
-1. ใช้ `/report-table` สร้างตาราง
+1. ใช้ `/report` สร้างตาราง
 2. คอลัมน์ summary: `Category`, `Value`
 3. คอลัมน์ full: `Category`, `Item`, `Value`
 4. เรียงตาม category: OS, CPU, RAM, Disk, GPU, System
@@ -124,7 +124,7 @@ related:
 
 ### 5. Output
 
-- ใช้ `/report-table` หรือ markdown table
+- ใช้ `/report` หรือ markdown table
 - แสดง unit ชัดเจน (GB, MHz, cores)
 - ถ้า value ไม่พบ ให้ระบุ `N/A`
 

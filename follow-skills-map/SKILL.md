@@ -10,8 +10,7 @@ allowed-tools:
   - exec
   - skill
   - ask_user_question
-  - report
-  - report-table
+  - report
   - suggest-next-action
 triggers:
   - user
@@ -76,7 +75,7 @@ related:
 
 > Goal: แสดง map ให้อ่านง่าย
 
-1. ทำ `/report-table` ด้วยคอลัมน์: No, Category, Skill, Description, Related
+1. ทำ `/report` ด้วยคอลัมน์: No, Category, Skill, Description, Related
 2. ทำ `/report` สรุป map
 3. ทำ `/suggest-next-action`
 

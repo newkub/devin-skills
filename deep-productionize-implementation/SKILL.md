@@ -4,7 +4,7 @@ description: Productionize implementation ครบวงจร — deep review,
 argument-hint: "[scope]"
 related:
   - productionize-implementation
-  - implement-todo-md
+  - productionize-implementation
   - implement-features-to-mvp
   - deep-analyze
   - deep-review
@@ -90,7 +90,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: แปลงทุก TODO/STUB เป็น production code
 
-1. ทำ `/implement-todo-md` ถ้ามี `TODO.md`
+1. ทำ `/productionize-implementation` ถ้ามี `TODO.md`
 2. ทำ `/productionize-implementation` ถ้ามี MOCK/FAKE/STUB
 3. ค้นหา placeholder functions และแทนที่ real implementation
 4. ใช้ `/alternative` ถ้าต้องเลือก library ใหม่
@@ -121,7 +121,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: รายงานผลและ next action
 
 1. ทำ `/report-before-after` สรุปสิ่งที่เปลี่ยน
-2. ทำ `/report-table` สรุป TODO/MOCK ที่ถูก productionize, validation status
+2. ทำ `/report` สรุป TODO/MOCK ที่ถูก productionize, validation status
 3. ทำ `/suggest-next-action` เพื่อแนะนำ next action
 
 ## Rules

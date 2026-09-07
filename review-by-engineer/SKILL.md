@@ -8,7 +8,7 @@ related:
   - review-by-qa
   - review-security
   - review-architecture
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
 ---
@@ -53,7 +53,7 @@ Review project จากมุมมอง engineering — หา tech debt, arc
 
 > Goal: สรุป engineering findings
 
-1. ทำ `/report-table` พร้อม file/line evidence
+1. ทำ `/report` พร้อม file/line evidence
 2. ระบุ top issues
 3. ทำ `/suggest-next-action`
 
@@ -80,6 +80,8 @@ Review project จากมุมมอง engineering — หา tech debt, arc
 - ใช้ /review-by-qa ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-architecture` หรือ `/review-quality`
 
 ## Expected Outcome
 

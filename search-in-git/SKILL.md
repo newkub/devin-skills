@@ -3,10 +3,10 @@ name: search-in-git
 description: ค้นหา git history, commits, diffs ด้วย log/grep/blame/pickaxe
 argument-hint: "[scope]"
 related:
-  - git-debug
+  - deep-debug
   - check-git-logs
   - deep-debug
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -20,7 +20,7 @@ related:
 - ใช้ `git log`, `git grep`, `git blame`, `git diff`, `git show`
 - รองรับ remote repo ผ่าน `gh api`
 - รายงานผลเป็นตารางพร้อม commit SHA, author, date, message
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/git-debug`
+- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/deep-debug`
 
 ## Execute
 
@@ -64,7 +64,7 @@ related:
 
 > Goal: สรุปผลค้นหา
 
-1. ทำ `/report-table` แสดง: No, Commit SHA, Date, Author, Scope, Match
+1. ทำ `/report` แสดง: No, Commit SHA, Date, Author, Scope, Match
 2. ถ้าเจอบรรทัด → แสดง file path, line, snippet
 3. ถ้าไม่เจอ → แนะนำให้เปลี่ยน pattern หรือ scope
 4. ทำ `/suggest-next-action` เช่น bisect, restore, หรือดู diff
@@ -92,7 +92,7 @@ related:
 
 ### 4. Output
 
-- ใช้ `/report-table` เสมอ
+- ใช้ `/report` เสมอ
 - แสดง exact match และ context สั้นๆ
 - เรียงผลลัพธ์ตาม date ล่าสุดก่อน
 
@@ -103,4 +103,4 @@ related:
 - หา commit/file/line ทีตรงเงื่อนไขได้
 - รายงานชัดเจนพร้อม evidence
 - รองรับทั้ง local และ remote
-- ใช้งานได้กับ `/deep-debug` และ `/git-debug`
+- ใช้งานได้กับ `/deep-debug` และ `/deep-debug`

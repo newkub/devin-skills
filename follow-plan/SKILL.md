@@ -4,7 +4,7 @@ description: อ่านแผนจาก AGENTS.md หรือเอกส�
 argument-hint: "[plan-file]"
 related:
   - deep-plan
-  - implement-plan
+  - productionize-implementation
   - follow-agents-md
   - report
   - test-usage
@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับ execute plan ที่มีรายการ workflows, skills, หรือ tasks เช่นจาก `deep-plan` หรือ `follow-agents-md`
 
-Boundary: ถ้าเป็นไฟล์แผนใน `.devin/plan/<workspace>/` ที่ต้อง track status และลบหลังเสร็จ → ใช้ `/implement-plan` แทน
+Boundary: ถ้าเป็นไฟล์แผนใน `.devin/plan/<workspace>/` ที่ต้อง track status และลบหลังเสร็จ → ใช้ `/productionize-implementation` แทน
 
 ## Execute
 

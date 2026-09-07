@@ -7,7 +7,7 @@ related:
   - deep-debug
   - analyze-root-cause-analysis
   - deep-thinking
-  - report-table
+  - report
   - update-test-and-fix
   - follow-tool-git
 ---
@@ -39,7 +39,7 @@ related:
 
 1. รวบรวมเหตุการณ์ทีเกิดขึ้นตามลำดับเวลา
 2. ระบุ trigger, detection, response, mitigation, resolution
-3. ทำ `/report-table` เพื่อแสดง timeline: Time, Event, Actor, Evidence
+3. ทำ `/report` เพื่อแสดง timeline: Time, Event, Actor, Evidence
 4. ตรวจสอบ gap หรือความล่าช้าในแต่ละช่วง
 
 ### 3. Gather Evidence
@@ -68,7 +68,7 @@ related:
 1. ระบุผลกระทบต่อ user: จำนวน, ระยะเวลา, severity
 2. ระบุผลกระทบต่อทีม: time to detect, time to resolve, context switching
 3. ระบุผลกระทบต่อ business: revenue, reputation, compliance
-4. ทำ `/report-table` แสดง impact ตามมิติ
+4. ทำ `/report` แสดง impact ตามมิติ
 
 ### 6. Extract Learnings
 
@@ -94,7 +94,7 @@ related:
 
 > Goal: สื่อสารผล retro และติดตาม action items
 
-1. ทำ `/report-table` สรุป timeline, root cause, impact, learnings, action items
+1. ทำ `/report` สรุป timeline, root cause, impact, learnings, action items
 2. บันทึก retro ลงไฟล์บันทึกหรือ wiki ของ project
 3. ติดตาม action items ตาม due date
 4. ทบทวนใน retro ครั้งต่อไปว่า action items ทำงานจริงหรือไม

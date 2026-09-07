@@ -3,7 +3,7 @@ name: save-to-new-notes
 description: สร้าง note ใหม่ใน repo D:\newkub\notes จากไฟล์หรือข้อความท่ีระบุ
 argument-hint: "[scope]"
 related:
-  - list-notes
+  - list-newkub-notes
   - open-web
 ---
 
@@ -61,7 +61,7 @@ related:
 - ตรวจสอบเนื้อหาก่อน commit
 - ถ้าไฟล์ใหญ่เกิน 10 MB ให้แจ้ง user
 
-- ใช้ /list-notes ถ้าจำเป็น
+- ใช้ /list-newkub-notes ถ้าจำเป็น
 - ใช้ /open-web ถ้าจำเป็น
 
 ## Expected Outcome

@@ -3,7 +3,6 @@ name: report-progress
 description: รายงานสถานะและความคืบหน้าของ agent session รวม completed, pending, blockers และ next actions
 argument-hint: "[all|completed|pending|blockers]"
 allowed-tools:
----
   - read
   - grep
   - find_file_by_name
@@ -17,10 +16,6 @@ triggers:
   - model
 related:
   - report
-  - report-table
-  - report
-  - report
-  - report-before
   - report-before-after
   - suggest-next-action
   - ask-me
@@ -28,11 +23,11 @@ related:
 
 ## Goal
 
-รายงานสถานะและความคืบหน้าของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จกี่เปอร์เซ็นต์ อะไรยังค้าง และต้องทำอะไรต่อ
+รายงานสถานะและความคืบหน้าของ agent session ปัจจุบันว่า ทำอะไรไปแล้วบ้าง เสร็จกี่เปอร์เซ็นต์ อะไรยังค้าง และต้องทำอะไรต่อ พร้อมช่วย user ตัดสินใจว่าจะทำต่อ หยุด หรือขอข้อมูลเพิ่ม
 
 ## Scope
 
-ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, todo list, และ validation results ทีมีอยู่
+ใช้สำหรับสรุปสถานะของ Devin session ปัจจุบัน จาก conversation history, git status, project state, todo list, และ validation results ทีมีอยู่ (merged from: `report-and-continue`)
 
 ดูเพิ่มเติม: /report-before-after
 
@@ -55,7 +50,7 @@ related:
 1. สรุป commit ล่าสุด ชื่องาน และ files ทีเปลี่ยนแปลง
 2. ตรวจสอบสถานะ working tree ว่าสะอาดหรือมี uncommitted changes
 3. ระบุ checkpoints สำคัญจาก conversation history
-4. ใช้ `/report-table` แสดง completed work
+4. ใช้ `/report` แสดง completed work
 
 ### 3. Identify Pending Work
 
@@ -81,9 +76,18 @@ related:
 > Goal: report ชัดเจน พร้อม next steps
 
 1. สรุปสถานะโดยรวมของ session พร้อม progress bar
-2. ใช้ `/report-table` หรือ `/report` แสดง completed, pending, blockers
+2. ใช้ `/report` แสดง completed, pending, blockers
 3. ระบุ priority ของงานค้าง
 4. ทำ `/suggest-next-action` เพื่อเสนอ next step
+
+### 6. Continue Or Stop
+
+> Goal: ช่วย user ตัดสินใจหลัง report
+
+1. ถ้าผู้ใช้ต้องการ fix ต่อ → ใช้ `/resolve-errors`, `/fix` หรือ skill ทีเหมาะสม
+2. ถ้าผู้ใช้ต้องการหยุด → report สถานะและจุดทีหยุด
+3. ถ้าต้องการข้อมูลเพิ่ม → ทำ `/deep-research` หรือ `/ask-me`
+4. ถ้า action เสี่ยง → ใช้ `/ask-me` ขอ approval ก่อนทำ
 
 ## Rules
 
@@ -111,17 +115,12 @@ related:
 
 - สรุป key findings ไว้ด้านบนสุด
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
-- ใช้ `/report-table` สำหรับงานทีต้องการหลาย columns
-- ใช้ `/report` สำหรับสถานะ/progress
-- ใช้ `/report` สำหรับรายละเอียดงาน
+- ใช้ `/report` สำหรับงานทีต้องการหลาย columns
 
 ### 5. Privacy
 
 - ไม่อ้างอิงหรือเปิดเผย secrets, API keys, credentials
 - ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
-
-- ใช้ `/report-before` ถ้าจำเป็น
-- ใช้ `/save-to-devin-global-skills` ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -129,4 +128,4 @@ related:
 - รู้เปอร์เซ็นต์ความคืบหน้าทีแม่นยำ
 - รายงาน completed work, pending work, blockers ชัดเจน
 - มี priority และ next actions ที actionable
-- report อ่านง่าย พร้อม progress bar, symbols และ table
+- user สามารถเลือก continue, stop, หรือ ask-for-more-info ได้

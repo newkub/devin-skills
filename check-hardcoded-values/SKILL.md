@@ -8,7 +8,7 @@ related:
   - check-secrets-leak
   - search-files-patterns
   - use-astgrep
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -48,7 +48,7 @@ related:
 
 > Goal: สรุปพร้อม fix location
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File:Line`, `Value`, `Category`, `Severity`, `Move To`
+1. ใช้ `/report` คอลัมน์: `No.`, `File:Line`, `Value`, `Category`, `Severity`, `Move To`
 2. Severity: `critical` (prod URL/IP ใน code), `warning` (dev-only hardcoded), `info` (duplicate strings)
 3. แนะนำ `/check-env-vars` หลังย้ายค่าไป env
 

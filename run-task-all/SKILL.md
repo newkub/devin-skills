@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - run-verify
   - run-test-unit
-  - report-table
+  - report
   - suggest-next-action
   - resolve-errors
 ---
@@ -59,7 +59,7 @@ related:
 - หยุดและรายงานหากงานล้มเหลวหลังจากลองใหม่ครบจำนวนสูงสุด
 - อัปเดตสถานะคิวหลังจบแต่ละงาน
 
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

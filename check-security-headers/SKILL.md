@@ -5,7 +5,7 @@ argument-hint: "[url-or-config]"
 related:
   - review-security
   - analyze-attack-surface
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -62,7 +62,7 @@ related:
 
 > Goal: สรุป grade และ fixes
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Header`, `Expected`, `Actual`, `Severity`, `Fix`
+1. ทำ `/report` คอลัมน์: `No.`, `Header`, `Expected`, `Actual`, `Severity`, `Fix`
 2. Severity: `critical` (CSP/HSTS ขาด), `warning`, `info`
 3. สรุป overall grade (A-F ตาม coverage)
 4. ส่งต่อ `/review-security` สำหรับการแก้ไข

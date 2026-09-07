@@ -1,6 +1,5 @@
 # Propositional Logic
 
-
 ## Goal
 
 เข้าใจตรรกศาสตร์ประพจน์ (propositional logic) ได้แก่ propositions, truth values, logical operators, truth tables, tautology, contradiction, logical equivalences และประยุกต์ใช้ใน programming, debugging, และ prompts

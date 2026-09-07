@@ -7,7 +7,7 @@ related:
   - review-security
   - follow-my-tech-stack
   - scan-codebase
-  - report-table
+  - report
   - run-check
   - ask-me
 ---
@@ -62,7 +62,7 @@ related:
 
 เมื่อ finding เป็น `replace` หรือต้องเลือก library:
 
-1. หา alternatives ด้วย `/deep-research` หรือ `/learn-from-web` — npm trends, GitHub stars, release frequency, bundle size, security advisories
+1. หา alternatives ด้วย `/deep-research` หรือ `/learn-web` — npm trends, GitHub stars, release frequency, bundle size, security advisories
 2. จำกัดเหลือ 2-3 candidates แล้วให้คะแนน apples-to-apples:
 
 | Criteria | Weight |
@@ -76,7 +76,7 @@ related:
 
 > Goal: สรุป findings พร้อม action plan
 
-1. ทำ `/report-table` พร้อม columns: No., Package, Current, Latest, Severity, Issue, Action
+1. ทำ `/report` พร้อม columns: No., Package, Current, Latest, Severity, Issue, Action
 2. แยก actions: update now, update with caution, remove, replace, keep
 3. ถ้ามี vulnerability → เชื่อม `/review-security` และ `/review-security`
 

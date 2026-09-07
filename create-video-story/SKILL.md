@@ -10,7 +10,7 @@ related:
   - gen-subtitle-video
   - follow-lib-remotion
   - enhance-prompt
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -64,7 +64,7 @@ related:
    - ข้อความ subtitle
    - transition ไปฉากถัดไป
 2. เก็บ scene brief ไว้ในรูปแบบ list/table
-3. ใช้ `/report-table` เพื่อแสดงผล
+3. ใช้ `/report` เพื่อแสดงผล
 
 ### 4. Generate Characters
 
@@ -129,7 +129,7 @@ related:
 
 > Goal: สรุปผลลัพธ์
 
-1. ใช้ `/report-table` แสดง scenes, durations, output paths
+1. ใช้ `/report` แสดง scenes, durations, output paths
 2. ระบุ video path, subtitle path, voice path
 3. ระบุ provider/model ทีใช้
 4. ถ้า fail แสดง error และแนะนำ fallback

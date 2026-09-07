@@ -9,7 +9,7 @@ related:
   - check-migrations
   - check-uncommit
   - check-unpush
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -53,7 +53,7 @@ related:
 
 > Goal: เอกสารและ data พร้อม
 
-1. Changelog มี entry สำหรับ version นี้ — `/report-changelog` ดูว่าครบ
+1. Changelog มี entry สำหรับ version นี้ — `/report` ดูว่าครบ
 2. ทำ `/check-migrations` — pending migrations ระบุ deploy order ชัด
 3. Docs/readme ตรงกับ release ถ้ามี user-facing changes
 4. Breaking changes ถูก documented
@@ -62,7 +62,7 @@ related:
 
 > Goal: go/no-go พร้อม blockers
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Check`, `Status`, `Detail`, `Blocker`
+1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Status`, `Detail`, `Blocker`
 2. Verdict: `ready` / `ready-with-warnings` / `blocked` พร้อมรายการที่ต้องแก้
 3. แนะนำ next steps: `/follow-release`, `/run-release` เมื่อ ready
 

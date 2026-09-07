@@ -4,7 +4,7 @@ description: แสดง tags ทั้งหมดพร้อมข้อม�
 argument-hint: "[scope]"
 related:
   - follow-tool-git
-  - report-table
+  - report
   - list-github-release
   - list-git-branch
 ---
@@ -51,7 +51,7 @@ related:
 
 > Goal: จัดรูปแบบผลลัพธ์เป็นตาราง
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Tag ชื่อ tag
@@ -73,7 +73,7 @@ related:
 
 ### Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตาม version ล่าสุดก่อน
 - ชี้เน้น latest stable และ latest pre-release
 - ใช้ symbols: ✅ SemVer compliant, ❌ non-SemVer

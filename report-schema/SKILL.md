@@ -6,7 +6,7 @@ related:
   - review-database
   - run-drizzle-studio
   - create-mermaid-diagram
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -50,7 +50,7 @@ related:
 
 > Goal: รายงานครบพร้อมใช้เป็น docs
 
-1. ทำ `/report-table` สรุป tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
+1. ทำ `/report` สรุป tables: `No.`, `Table`, `Columns`, `Indexes`, `Relations`, `Note`
 2. แสดง table detail ต่อกลุ่ม: columns พร้อม type, nullability, constraints
 3. รวม ER diagram ใน section เดียว
 4. ระบุ findings: missing indexes บน FK, tables ไม่มี PK, naming ไม่ consistent

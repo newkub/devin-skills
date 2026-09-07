@@ -6,7 +6,7 @@ related:
   - report-config-files
   - check-env-vars
   - update-config
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุป drift ทุกประเภทพร้อม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Config File`, `Drift Type`, `Detail`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Config File`, `Drift Type`, `Detail`, `Severity`, `Fix`
 2. Drift types: `parse-error`, `schema-violation`, `env-mismatch`, `dead-key`, `missing-key`, `suspicious-value`
 3. แนะนำ `/update-config` สำหรับไฟล์ที่ต้องแก้
 

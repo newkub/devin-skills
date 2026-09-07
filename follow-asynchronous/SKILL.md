@@ -4,7 +4,6 @@ description: ใช้งาน async patterns ใน JavaScript/TypeScript ใ�
 argument-hint: "[scope]"
 related:
   - ask-me
-  - run-test-unit
 ---
 
 ## Goal

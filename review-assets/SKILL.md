@@ -3,7 +3,7 @@ name: review-assets
 description: ตรวจสอบ static assets: images, fonts, media ว่า optimize, format และ loading strategy เหมาะสมหรือไม่
 argument-hint: "[asset-or-folder]"
 related:  - scan-codebase
-  - report-table
+  - report
   - review-bundle
 ---
 
@@ -45,7 +45,7 @@ related:  - scan-codebase
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Asset, Issue, Severity, Fix
+1. ทำ `/report` ด้วย columns: No., Asset, Issue, Severity, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี bundle ปัญหาด้วย → เชื่อม `/review-bundle`
 

@@ -3,7 +3,6 @@ name: watch-github-actions
 description: รันและตรวจสอบ GitHub Actions จนกว่าจะผ่าน
 argument-hint: "[run-id]"
 related:
-  - list-ci-configs
   - resolve-github-actions-fails
   - ask-me
   - follow-tool-github-actions
@@ -123,7 +122,6 @@ related:
 - `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ fix-and-push
 - `ghRunWatchTimeout` = `300` วินาที สำหรับ `gh run watch`
 
-- ใช้ /list-ci-configs ถ้าจำเป็น
 
 ## Expected Outcome
 

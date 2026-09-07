@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo
-  - report-table
+  - report
   - suggest-next-action
   - update-readme-md
   - review-docs
@@ -71,7 +71,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 > Goal: สรุป review score และ findings
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report-table` พร้อม findings
+2. ทำ `/report` พร้อม findings
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -100,7 +100,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /review-docs ถ้าจำเป็น
 

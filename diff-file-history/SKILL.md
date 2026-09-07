@@ -4,7 +4,7 @@ description: เทียบไฟล์เดียวกันข้าม git
 argument-hint: "<path> [range]"
 related:
   - git-file-history
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -43,13 +43,13 @@ related:
 1. Major rewrites: commits ที่ diff ใหญ่ผิดปกติ (>50% ของไฟล์)
 2. Regression candidates: ถ้า bug ปัจจุบัน → bisect-style หา commit ที่ introduce
 3. `git log -S"<pattern>"` — หาเมื่อไหร่ที่ string/symbol เข้าหรือออก (pickaxe)
-4. `/view-diff` หรือ `/git-file-history` สำหรับ diff ละเอียดต่อ commit ที่สนใจ
+4. `/review-diff` หรือ `/git-file-history` สำหรับ diff ละเอียดต่อ commit ที่สนใจ
 
 ### 4. Report Evolution
 
 > Goal: สรุป history เป็น insight
 
-1. ใช้ `/report-table`: `No.`, `Commit`, `Date`, `Author`, `Lines Δ`, `Type`, `Significance`
+1. ใช้ `/report`: `No.`, `Commit`, `Date`, `Author`, `Lines Δ`, `Type`, `Significance`
 2. Timeline summary: created → major changes → current state
 3. Insights: hotspot (เปลี่ยนบ่อย = ควร split/refactor?), stable (ไม่แตะนาน), regression point (ถ้าหาเจอ)
 

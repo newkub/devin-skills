@@ -10,7 +10,7 @@ related:
   - deep-analyze
   - run-review
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
   - use-astgrep
   - follow-my-tech-stack
@@ -131,7 +131,7 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 - ห้ามใช้ `**` — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning
 
 ### 6. High Impact Content

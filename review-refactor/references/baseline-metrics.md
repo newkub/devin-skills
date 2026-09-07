@@ -38,8 +38,8 @@
 
 | Target | Issue Type | Effort | Impact | Priority | Recommended Workflow |
 |--------|-----------|--------|--------|----------|---------------------|
-| `src/auth.ts` | SRP violation | low | high | 1 | `refactor-to-single-responsibility` |
-| `src/utils.ts` | Long file (450 lines) | medium | medium | 2 | `refactor-to-single-responsibility` |
+| `src/auth.ts` | SRP violation | low | high | 1 | `/refactor` |
+| `src/utils.ts` | Long file (450 lines) | medium | medium | 2 | `/refactor` |
 
 ## Priority Formula
 

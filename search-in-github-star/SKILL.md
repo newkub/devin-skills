@@ -5,9 +5,9 @@ argument-hint: "[query]"
 related:
   - list-github-star
   - all-github-repo
-  - follow-tool-websearch
   - follow-tool-crw
-  - learn-from-web
+  - follow-tool-crw
+  - learn-web
 ---
 
 ## Goal
@@ -112,9 +112,9 @@ related:
 - ใช้ /list-github-star ถ้าจำเป็น
 - ใช้ /list-github-star ถ้าจำเป็น
 - ใช้ /list-github-star ถ้าจำเป็น
-- ใช้ /follow-tool-websearch ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 
 ## Expected Outcome
 

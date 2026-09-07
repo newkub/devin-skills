@@ -3,7 +3,6 @@ name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
 argument-hint: "[scope]"
 related:
-  - git-debug
   - check-git-logs
   - search-in-git
   - analyze-root-cause-analysis
@@ -15,7 +14,7 @@ related:
   - deep-retro
   - deep-impact
   - deep-trace
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -27,7 +26,7 @@ related:
 ใช้สำหรับ debug ที่ซับซ้อน ต้องการ systematic approach ครบวงจร ไม่ใช่แค่หาสาเหตุเฉพาะหน้า
 
 ครอบคลุมทั้ง VSCode, terminal, shell, runtime และ OS layers
-ไม่ใช้สำหรับ debug ปัญหาที่เกี่ยวกับ git โดยเฉพาะ — ใช้ `/git-debug` แทน
+ไม่ใช้สำหรับ debug ปัญหาที่เกี่ยวกับ git โดยเฉพาะ — ทำตาม `references/git-debug.md` แทน
 สำหรับแก้ error เฉพาะที่รู้สาเหตุแล้ว ใช้ `/resolve-errors`
 
 ## Execute
@@ -84,7 +83,7 @@ related:
    - Reproduce ได้ — สร้างปัญหาซ้ำได้
    - Fix แล้วหาย — แก้แล้วปัญหาหาย
    - กลับมา error ถ้าถอย fix — ถอนการแก้แล้วปัญหากลับมา
-5. ถ้าต้องค้นหา pattern ใน code หรือ history → ทำ `/search-in-git` หรือ `/git-debug`
+5. ถ้าต้องค้นหา pattern ใน code หรือ history → ทำ `/search-in-git` หรือ `references/git-debug.md`
 6. ถ้าไม่ผ่าน 3 เงื่อนไข → กลับไป Step 4
 
 ### 6. Root Cause Analysis
@@ -122,7 +121,7 @@ related:
 
 > Goal: สร้างตารางสรุปผลและแนะนำขั้นต่อไป
 
-1. ทำ `/report-table` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
+1. ทำ `/report` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
 2. สรุป root cause, fix, regression tests, preventive measures
 3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
@@ -135,7 +134,7 @@ related:
 - ห้ามแก้หลายอย่างพร้อมกัน
 - ห้ามเดา
 - ต้อง isolate variable
-- ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
+- ถ้าปัญหาเกี่ยวกับ git → ทำตาม `references/git-debug.md` แทน
 
 ### 2. Heuristic Cheatsheet
 
@@ -184,7 +183,7 @@ related:
 - ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที
 - ถ้าเกินเวลา → ทำ `/deep-thinking` หรือ `/deep-research`
 - ถ้าหา root cause ไม่ได้หลังพยายาม 3 รอบ → ทำ `/deep-thinking` หรือขอความช่วยเหลือ
-- ถ้าปัญหาเกี่ยวกับ git → ใช้ `/git-debug` แทน
+- ถ้าปัญหาเกี่ยวกับ git → ทำตาม `references/git-debug.md` แทน
 
 ### 7. Prevention
 

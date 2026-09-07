@@ -4,7 +4,7 @@ description: สร้าง taxonomy หรือจัดหมวดหมู
 argument-hint: "[items-or-domain]"
 related:
   - grouping
-  - report-table
+
   - report
   - visualize-project
 ---
@@ -94,7 +94,7 @@ related:
 - รายงาน gaps หรือ items ที่ยังจัดหมวดหมู่ไม่สมบูรณ์
 
 - ใช้ /grouping ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 - ใช้ /visualize-project ถ้าจำเป็น
 

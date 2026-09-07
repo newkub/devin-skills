@@ -6,7 +6,7 @@ related:
   - follow-github
   - update-agents-md
   - ship
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -111,7 +111,7 @@ related:
 
 > Goal: สรุปผลการ setup
 
-1. ใช้ `/report-table` สรุป: integration branch, hooks, worktree, GitHub protection, AGENTS.md
+1. ใช้ `/report` สรุป: integration branch, hooks, worktree, GitHub protection, AGENTS.md
 2. ทำ `/suggest-next-action`
 
 ## Rules

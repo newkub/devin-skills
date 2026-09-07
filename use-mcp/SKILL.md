@@ -1,12 +1,10 @@
 ---
 name: use-mcp
-description: ใช้ MCP servers ที่ติดตั้งไว้ — discover tools, เลือก server, call tool และ handle ผลลัพธ์อย่างถูกต้อง
+description: ใช้ MCP servers ที่ติดตั้งไว้ discover tools, เลือก server, call tool และ handle ผลลัพธ์
 argument-hint: "[server-or-task]"
 related:
   - deep-research
-  - learn-from-web
-  - follow-github
-  - follow-best-practice
+  - learn-web
   - resolve-errors
   - ask-me
 ---
@@ -26,7 +24,7 @@ related:
 > Goal: รู้ว่ามี server และ tool อะไรใช้ได้
 
 1. เรียก `mcp_list_servers` เพื่อดู servers ที่พร้อมใช้
-2. เรียก `mcp_list_tools <server>` **เสมอก่อน** call tool — ห้ามเดาชื่อ tool หรือ arguments
+2. เรียก `mcp_list_tools <server>` เสมอก่อน call tool — ห้ามเดาชื่อ tool หรือ arguments
 3. อ่าน tool description และ input schema จาก list result
 
 ### 2. Select Server By Task
@@ -43,7 +41,7 @@ related:
 | 6 | WorkOS workspace management | `workos` |
 | 7 | Devin sessions/knowledge/playbooks | `deepwiki` (devin_* tools) |
 
-- ถ้าไม่มี server ที่ตรง → fallback `/learn-from-web` หรือ `web_search`
+- ถ้าไม่มี server ที่ตรง → fallback `/learn-web` หรือ `web_search`
 - ถ้าไม่แน่ใจ server ไหน → ทำ `/ask-me`
 
 ### 3. Call Tool
@@ -69,7 +67,7 @@ related:
 > Goal: สรุปผลอย่างเป็นระบบ
 
 1. ระบุ server/tool ที่ใช้และเหตุผล
-2. สรุปผลลัพธ์ด้วย `/report-table` ถ้าเป็น structured data
+2. สรุปผลลัพธ์ด้วย `/report` ถ้าเป็น structured data
 3. ทำ `/suggest-next-action` ท้ายรายงาน
 
 ## Rules
@@ -92,10 +90,10 @@ related:
 
 ### 4. Fallback Order
 
-- server ที่ต้องการไม่มี → `web_search`/`webfetch` → `/learn-from-web` → `/deep-research`
+- server ที่ต้องการไม่มี → `web_search`/`webfetch` → `/learn-web` → `/deep-research`
 - tool call ล้มเหลวซ้ำ → report error ชัดเจน อย่า retry เกิน 3 รอบ
 
-- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /deep-research ถ้าจำเป็น
 
 ## Expected Outcome

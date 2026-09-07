@@ -7,7 +7,7 @@ related:
   - suggest-me
   - enhance-prompt
   - deep-analyze
-  - report-table
+  - report
   - report-uxui-sketch
   - productionize-implementation
 
@@ -53,7 +53,7 @@ related:
 > Goal: จัดลำดับและจัดรูปแบบตอบกลับ
 
 1. จัดลำดับตาม MVP score สูง → ต่ำ
-2. สร้าง markdown tables ด้วย `/report-table`
+2. สร้าง markdown tables ด้วย `/report`
 3. สรุป top 3-5 features สั้นๆ ด้วย bullets
 4. ระบุ phase: MVP, v2, v3
 
@@ -78,7 +78,7 @@ related:
 
 ### 2. Lightweight
 
-- ไม่ต้อง `/learn-from-web` ลึก ยกเว้น user บอก
+- ไม่ต้อง `/learn-web` ลึก ยกเว้น user บอก
 - ไม่ต้องวิเคราะห์ codebase ละเอียด ถ้า context พอ
 - ใช้เวลาไม่เกิน 5-10 นาที
 
@@ -92,7 +92,7 @@ related:
 
 - ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 - เรียงลำดับ 1, 2, 3, ...
-- ใช้ `/report-table` สำหรับ tables
+- ใช้ `/report` สำหรับ tables
 - ไม่ต้องตอบยาวเกินความจำเป็น
 
 - ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ

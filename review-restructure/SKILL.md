@@ -8,7 +8,7 @@ related:
   - follow-flat-folders
   - follow-architecture
   - report
-  - report-table
+
   - suggest-next-action
 ---
 
@@ -83,7 +83,7 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 > Goal: รายงาน structure health และ relocation plan
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report` พร้อม `/report-table`
+2. ทำ `/report` พร้อม `/report`
 3. สร้างตาราง Structure Health Metrics และ Relocation Plan
 4. แสดง dry-run preview before/after
 5. ทำ `/suggest-next-action`
@@ -126,7 +126,9 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
+
+- ถ้า pass → ดำเนินการ restructure ถ้า fail → แก้ findings ก่อน
 
 ## Expected Outcome
 

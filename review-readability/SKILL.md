@@ -4,7 +4,7 @@ description: ตรวจอ่านง่ายของ code และ text �
 argument-hint: "[scope]"
 related:
   - report
-  - report-table
+
   - edit-only
   - suggest-next-action
 ---
@@ -74,7 +74,7 @@ Review code และ text ให้อ่านง่าย ลด cognitive lo
 - ใช้ backticks สำหรับ code, tools, paths, skill references
 - ห้ามใช้ `**` (bold markers)
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ### 4. Review Independence
 

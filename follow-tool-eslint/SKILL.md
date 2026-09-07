@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับตั้งค่า ESLint 9 ใน TypeScript, Vue, และ Nuxt projects
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-oxlint) — สำหรับ eslint-plugin-oxlint ดู `references/oxlint.md`
+
 ## Execute
 
 ### 1. Install Core Dependencies

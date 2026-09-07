@@ -3,10 +3,10 @@ name: re-answer
 description: ทบทวนคำถามและตอบใหม่อย่างละเอียดและครบถ้วนขึ้น
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - rethink
   - ask-again
-  - try-again
+  - retry
   - deep-thinking
   - suggest-next-action
 ---
@@ -47,7 +47,7 @@ related:
 2. ใช้ข้อมูลใหม่ หรือ context เพิ่มถ้ามี
 3. ทำให้คำตอบกระชับ ชัดเจน เป็นระบบ
 4. ถ้ามีหลายทางเลือก ให้เปรียบเทียบและแนะนำทางเลือกทีดีทีสุดพร้อมเหตุผล
-5. ใช้ `/report-table` สรุปเป็นตาราง 3 คอลัมน์:
+5. ใช้ `/report` สรุปเป็นตาราง 3 คอลัมน์:
    - คอลัมน์ที่ 1: `ประเด็นคำถาม`
    - คอลัมน์ที่ 2: `สิ่งที่ขาดหรือต้องทบทวน`
    - คอลัมน์ที่ 3: `คำตอบใหม่ / การปรับปรุง`
@@ -89,7 +89,7 @@ related:
 
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /ask-again ถ้าจำเป็น
-- ใช้ /try-again ถ้าจำเป็น
+- ใช้ /retry ถ้าจำเป็น
 - ใช้ /deep-thinking ถ้าจำเป็น
 
 ## Expected Outcome

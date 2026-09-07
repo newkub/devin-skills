@@ -5,8 +5,7 @@ argument-hint: "[scope]"
 related:
   - list-git-branch
   - list-git-commit
-  - list-git-stash
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -57,7 +56,7 @@ related:
 
 > Goal: แสดงผลในรูปแบบทีอ่านง่าย
 
-1. ใช้ `/report-table` คอลัมน์: No, Tag, Commit, Date, Author, Notes Preview
+1. ใช้ `/report` คอลัมน์: No, Tag, Commit, Date, Author, Notes Preview
 2. เรียงตามวันทีสร้างจากใหม่ไปเก่า
 3. ระบุ latest release และ upcoming changes จาก `CHANGELOG.md` ถ้ามี
 
@@ -82,7 +81,6 @@ related:
 
 - ใช้ /list-git-branch ถ้าจำเป็น
 - ใช้ /list-git-commit ถ้าจำเป็น
-- ใช้ /list-git-stash ถ้าจำเป็น
 
 ## Expected Outcome
 

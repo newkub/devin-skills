@@ -41,7 +41,7 @@
 
 > Goal: ลด coupling ระหว่าง modules
 
-1. แยก god modules ด้วย `/refactor-to-single-responsibility`
+1. แยก god modules ด้วย `/refactor`
 2. แทนที่ direct dependencies ด้วย abstractions ที่เหมาะสม
 3. ย้าย misplaced files ด้วย `/restructure`
 

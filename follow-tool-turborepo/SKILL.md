@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับ monorepos ที่ต้องการ orchestrate tasks, cache outputs, remote cache, package boundaries
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-build-packages) — สำหรับ package build pipeline ดู `references/build-packages.md`
+
 ## Execute
 
 ### 1. Repository Structure

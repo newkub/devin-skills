@@ -4,7 +4,7 @@ description: ตรวจสอบ bundle size, build output, chunks และ o
 argument-hint: "[app-or-package]"
 related:
   - run-build
-  - report-table
+  - report
   - review-assets
 ---
 
@@ -46,7 +46,7 @@ related:
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Area, Severity, Finding, Evidence, Fix
+1. ทำ `/report` ด้วย columns: No., Area, Severity, Finding, Evidence, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี assets ปัญหาด้วย → เชื่อม `/review-assets`
 

@@ -47,7 +47,7 @@ related:
 1. อ่าน `package.json`, `Cargo.toml`, `pyproject.toml`, หรือ manifest ที่เกี่ยวข้อง
 2. ระบุ libraries, frameworks, runtime, build tools ที่ใช้
 3. map แต่ละ tech เป็น `tech: /follow-<tech>` ถ้ามี skill ตรง
-4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-web` หรือ `tech: none`
+4. ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
 5. อัปเดต `### Architecture` ใน root `AGENTS.md`
 
 ### 3. Define Platform And Target User
@@ -60,7 +60,7 @@ related:
 ### 4. Write AGENTS.md
 
 > Goal: เขียน AGENTS md
-1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` และ [references/frontmatter.md](../update-devin-global-skills/references/frontmatter.md)
+1. ใช้ format ตาม `update-devin-global-skills/SKILL.md` และ `references/frontmatter.md`
 2. เริ่มจาก `references/agents-template.md` สำหรับ root `AGENTS.md`
 3. เขียน sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`
 4. เพิ่ม `### Architecture`, `### Platform`, `### Target User`, `### Skills`, `### Workspaces` ถ้าเกี่ยวข้อง
@@ -115,7 +115,7 @@ related:
 8. ทำ `/resolve-cicd`
 9. ถ้า fail → resolve, commit, push, re-watch สูงสุด 5 รอบ
 10. ทำ `/create-github-pr` เป้าหมายหลักของ project
-11. ทำ `/deep-review-pr`
+11. ทำ `/review-github-pr`
 12. ถาม user ก่อน merge
 13. ถ้า user ตกลง → ทำ `/merge-github-pr`
 14. ทำ `/resolve-cicd` บน production ก่อน release
@@ -152,7 +152,7 @@ related:
 ### 4. Architecture Mapping
 
 - ระบุ tech stack ด้วย `tech: /follow-<tech>`
-- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-from-web` หรือ `tech: none`
+- ถ้าไม่มี skill ตรง ใช้ `tech: /learn-web` หรือ `tech: none`
 - map ตาม dependencies ใน manifest
 
 ### 5. Skills Mapping

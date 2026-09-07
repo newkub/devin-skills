@@ -4,9 +4,9 @@ description: เรียนรู้ concept, tool, หรือ library อย
 argument-hint: "[topic]"
 related:
   - deep-research
-  - learn-from-web
+  - learn-web
   - follow-best-practice
-  - learn-from-pattern
+  - learn-pattern
   - update-examples
 ---
 
@@ -47,7 +47,7 @@ related:
 
 > Goal: Learn From Web
 
-ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก:
+ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก:
 
 1. ใช้ DeepWiki สำหรับ GitHub repositories
 2. ใช้ Context7 สำหรับ libraries และ frameworks
@@ -69,7 +69,7 @@ related:
 
 > Goal: Learn From Code Patterns
 
-ทำ `/learn-from-pattern` เพื่อสกัด reusable patterns
+ทำ `/learn-pattern` เพื่อสกัด reusable patterns
 
 1. ค้นหา code patterns จาก real-world projects
 2. วิเคราะห์ patterns ที่ใช้ใน production codebases
@@ -102,7 +102,7 @@ related:
 ### 2. Research Standards
 
 - ทำ `/deep-research` สำหรับค้นหาข้อมูลลึกจาก multiple sources
-- ทำ `/learn-from-web` สำหรับเรียนรู้จากเว็บไซต์หลัก
+- ทำ `/learn-web` สำหรับเรียนรู้จากเว็บไซต์หลัก
 - ตรวจสอบ credibility และ freshness ของข้อมูล
 - บันทึก code examples และ configuration examples
 

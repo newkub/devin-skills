@@ -3,13 +3,12 @@ name: idea-convert-my-global-cli-to-skills
 description: สร้างไอเดียและ draft แปลง CLI tools ที่ติดตั้งเป็น Devin skills
 argument-hint: "[cli-name]"
 related:
-  - report-my-global-cli
+  - check-my-global-cli
   - update-devin-global-skills
-  - follow-my-global-cli
   - create-plan-in-dot-devin
-  - learn-from-cli
+  - learn-cli
   - delete
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -18,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้หลัง `/report-my-global-cli` หรือเมื่อต้องการ convert CLI ใดๆ เป็น skills:
+ใช้หลัง `/check-my-global-cli` หรือเมื่อต้องการ convert CLI ใดๆ เป็น skills:
 
 - สำรวจ commands ของ installed CLI tools
 - ประเมิน command ใดควรเป็น skill
@@ -31,8 +30,8 @@ related:
 
 > Goal: ระบุ CLI ทีต้องการ convert
 
-1. ดูรายการจาก `/report-my-global-cli` หรือถาม user
-2. ถ้าไม่มี report ทำ `/follow-my-global-cli` เพื่อ list ทีติดตั้ง
+1. ดูรายการจาก `/check-my-global-cli` หรือถาม user
+2. ถ้าไม่มี report ทำ `/check-my-global-cli` เพื่อ list ทีติดตั้ง
 3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-in-dot-devin`
 4. ตรวจสอบ version, installation path และ global availability
 
@@ -40,7 +39,7 @@ related:
 
 > Goal: เรียนรู้ command structure ของแต่ละ tool
 
-1. ทำ `/learn-from-cli` กับแต่ละ tool
+1. ทำ `/learn-cli` กับแต่ละ tool
 2. รัน `<tool> --help` และ `<tool> <command> --help`
 3. บันทึก:
    - ชื่อ command และ subcommand
@@ -81,7 +80,7 @@ related:
    - `triggers`, `allowed-tools`, `related`
    - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
-4. ทำ `/report-table` เพื่อสรุป draft skills ทีสร้าง
+4. ทำ `/report` เพื่อสรุป draft skills ทีสร้าง
 
 ### 6. Validate And Suggest
 
@@ -90,7 +89,7 @@ related:
 1. ทำ `/deep-validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
 2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
 3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
-4. ถ้าต้องปรับ → ทำ `/follow-my-global-cli` อีกรอบหรือ `/learn-from-cli`
+4. ถ้าต้องปรับ → ทำ `/check-my-global-cli` อีกรอบหรือ `/learn-cli`
 5. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
 
 ## Rules

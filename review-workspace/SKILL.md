@@ -12,7 +12,7 @@ related:
   - deep-review-codebase
   - run-verify
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
   - refactor-workspace
   - review-techstack
@@ -77,7 +77,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 ทำตาม references/validate-findings-and-report.md และ references/scoring.md
 
 - คำนวณ review score, dimension scores และ supplementary metrics
-- ทำ `/report-table`
+- ทำ `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -97,7 +97,7 @@ Review workspace เดี่ยวใน monorepo หรือ project เด�
 5. Formatting
    - ใช้ backticks สำหรับ paths, commands, skill names
    - ไม่ใช้ bold markers
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /check-monorepo ถ้าจำเป็น
 - ใช้ /list-workspaces ถ้าจำเป็น

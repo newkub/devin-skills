@@ -5,7 +5,7 @@ argument-hint: "[path-or-module]"
 related:
   - follow-tool-stryker-mutator
   - review-test
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -48,7 +48,7 @@ related:
 
 > Goal: สรุป mutation score พร้อม weak spots
 
-1. ใช้ `/report-table`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
+1. ใช้ `/report`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
 2. รายงาน top surviving mutants พร้อม suggested test cases
 3. แนะนำ `/review-test` สำหรับ files ที่ score ต่ำ
 

@@ -5,7 +5,7 @@ argument-hint: "[path]"
 related:
   - search-files-patterns
   - review-security
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุป findings พร้อม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File:Line:Col`, `Codepoint`, `Type`, `Severity`, `Rendered As`
+1. ใช้ `/report` คอลัมน์: `No.`, `File:Line:Col`, `Codepoint`, `Type`, `Severity`, `Rendered As`
 2. Severity: `critical` (bidi controls, zero-width ใน code), `high` (homoglyph identifiers), `info` (non-ASCII ที่ดูตั้งใจ)
 3. แนะนำ: strip chars, linter rule (`eslint-plugin-security`, unicode-aware linters), pre-commit check
 

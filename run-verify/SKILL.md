@@ -16,7 +16,7 @@ related:
   - resolve-cicd
   - watch-github-actions
   - resolve-errors
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -114,7 +114,7 @@ related:
 - ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น
 - ใช้ /ship ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 
 ## Expected Outcome

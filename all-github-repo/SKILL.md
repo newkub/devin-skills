@@ -6,7 +6,7 @@ allowed-tools:
 ---
   - read
   - exec
-  - report-table
+  - report
   - suggest-next-action
   - ask_user_question
 triggers:
@@ -15,11 +15,10 @@ triggers:
 related:
   - list-github-repo
   - open-github
-  - view-repo
   - list-github-project
   - list-github-star
   - search-in-github-star
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -31,7 +30,7 @@ related:
 
 ใช้ `gh` CLI ดึง repo จาก user และแต่ละ org แล้วรวมเป้นตารางเดียว เรียงตาม updatedAt ล่าสุด
 
-ดูเพิ่มเติม: /list-github-repo, /open-github, /view-repo, /list-github-project, /list-github-star, /search-in-github-star
+ดูเพิ่มเติม: /list-github-repo, /open-github, /list-github-project, /list-github-star, /search-in-github-star
 
 ## Execute
 
@@ -71,7 +70,7 @@ related:
 2. เรียงตาม `updatedAt` ล่าสุดก่อน
 3. แปลง `updatedAt` เป้น `YYYY-MM-DD`
 4. ดึง `primaryLanguage.name` ถ้าไม่มีให้แสดง `n/a`
-5. ทำ `/report-table` ด้วยคอลัมน์:
+5. ทำ `/report` ด้วยคอลัมน์:
    - No.
    - Owner
    - Name
@@ -88,7 +87,7 @@ related:
 
 > Goal: แนะนำ action ถัดไป
 
-1. ถ้าต้องการดู metadata ของ repo ใด ให้ทำ `/view-repo <owner>/<name>`
+1. ถ้าต้องการดู metadata ของ repo ใด ให้ทำ `/open-github <owner>/<name>`
 2. ถ้าต้องการเปิดหน้า repo บน browser ให้ทำ `/open-github`
 3. ถ้าต้องการดู repo ของ user ส่วนตัวอย่างเดียว ให้ทำ `/list-github-repo`
 4. ถ้าต้องการดู GitHub Projects ของ owner นั้น ให้ทำ `/list-github-project`
@@ -115,7 +114,7 @@ related:
 
 ### 4. Output
 
-- ใช้ `/report-table` เสมอ
+- ใช้ `/report` เสมอ
 - คอลัมน์ No. ต้องเป้นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ...
 - ไม่แสดง secrets, tokens หรือข้อมูล sensitive
 - ระบุสรุปจำนวน repo ทั้งหมดและต่อ owner

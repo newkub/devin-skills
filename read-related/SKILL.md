@@ -4,7 +4,7 @@ description: อ่านและสรุป skills ที่เกี่ย�
 argument-hint: "[skill-name]"
 related:
   - check-skills-related
-  - report-table
+  - report
   - suggest-next-action
   - review-quality
 ---
@@ -31,7 +31,7 @@ related:
 
 1. รวบรวม guidelines และ instructions จาก skills ที่อ่าน
 2. ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้งกัน
-3. ทำ `/report-table` เพื่อจัดรูปแบบ output
+3. ทำ `/report` เพื่อจัดรูปแบบ output
 4. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
 
 ## Rules

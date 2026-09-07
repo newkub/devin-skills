@@ -6,7 +6,7 @@ related:
   - list-project-git-in-computer
   - git-commit
   - check-unpush
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -51,7 +51,7 @@ related:
 
 > Goal: สรุป repos ที่มีงานค้าง
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Repo`, `Path`, `Staged`, `Modified`, `Untracked`, `Stashes`, `Severity`
+1. ทำ `/report` คอลัมน์: `No.`, `Repo`, `Path`, `Staged`, `Modified`, `Untracked`, `Stashes`, `Severity`
 2. เรียง severity สูง → ต่ำ
 3. แนะนำ `/git-commit` หรือ `/git-commit-selected-files` ต่อ repo ที่มีงานค้าง
 

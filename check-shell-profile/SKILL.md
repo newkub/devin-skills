@@ -5,7 +5,7 @@ argument-hint: "[shell]"
 related:
   - check-system-env
   - resolve-errors
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -67,7 +67,7 @@ related:
 
 > Goal: สรุป findings พร้อม fix suggestion
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Area`, `Finding`, `Severity`, `Location`, `Suggestion`
+1. ทำ `/report` คอลัมน์: `No.`, `Area`, `Finding`, `Severity`, `Location`, `Suggestion`
 2. Severity: `error`, `warning`, `info`
 3. ส่งต่อ `/resolve-errors` ถ้ามี errors
 

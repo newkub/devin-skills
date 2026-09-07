@@ -1,10 +1,10 @@
 ---
 name: review-redundancy
-description: ตรวจหา skills ที่ซ้ำซ้อนกันใน devin skills repo
+description: ตรวจหา skills ที่ซ้ำซ้อนหรือไม่จำเป็นใน devin skills repo
 argument-hint: "[scope]"
 related:
   - review-devin-global-skills
-  - report-table
+  - report
   - suggest-next-action
   - update-references
 ---
@@ -15,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ audit redundancy ของ skills ใน `%APPDATA%\devin\skills` ครอบคลุม duplicate purpose, overlapping scope, redundant content และ unused skills ไม่ใช่ review quality ทั่วไป (ใช้ `/review-devin-global-skills`)
+ใช้เมื่อต้องการ audit redundancy และสิ่งที่ไม่จำเป็นของ skills ใน `%APPDATA%\devin\skills` ครอบคลุม duplicate purpose, overlapping scope, redundant content, unused skills และ unnecessary skills ไม่ใช่ review quality ทั่วไป (ใช้ `/review-devin-global-skills`)
 
 ## Execute
 
@@ -35,9 +35,9 @@ related:
 > Goal: ตรวจจับ Redundant Content
 ทำตาม [references/detect-redundant-content.md](references/detect-redundant-content.md)
 
-### 5. Detect Unused Skills
-> Goal: ตรวจจับ Unused Skills
-ทำตาม [references/detect-unused-skills.md](references/detect-unused-skills.md)
+### 5. Detect Unused Or Unnecessary Skills
+> Goal: ตรวจจับ Unused Or Unnecessary Skills
+ทำตาม [references/detect-unused-skills.md](references/detect-unused-skills.md) เพื่อหา skills ที่ไม่ถูกใช้หรือไม่จำเป็น
 
 ### 6. Recommend Actions
 > Goal: Recommend Actions
@@ -49,14 +49,15 @@ related:
 
 ### 8. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 
 - Duplicate purpose: `description` และ `## Goal` ซ้อนทับ >70%
 - Overlapping scope: `## Scope` บอกขอบเขตที่ทับซ้อน
 - Redundant content: text blocks ที่เหมือนกัน >50%
-- Unused skill: ไม่ถูกอ้างถึงใน `related` ของ skill อื่นและไม่อยู่ใน `AGENTS.md`
+- Unused skill: ไม่ถูกอ้างถึงใน `related` ของ skill อื่นและไม่อยู่ใน `AGENTS.md` หรือ `global_rules.md`
+- Unnecessary skill: มี responsibility ทับซ้อนหรือไม่มี use case ที่ชัดเจนใน repo
 - ไม่ลบ ไม่ merge โดยไม่มี user confirmation
 - ทำ `/update-references` หลังทุกการเปลี่ยนแปลง
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
@@ -77,6 +78,6 @@ Merged from: improve-redundancy
 - รายงาน duplicate purpose พร้อม overlap % และ recommendations
 - รายงาน overlapping scope พร้อมการปรับขอบเขต
 - รายงาน redundant content พร้อม line ranges
-- รายงาน unused skills พร้อมประเภทและ recommendations
+- รายงาน unused skills และ unnecessary skills พร้อมประเภทและ recommendations
 - ตารางสรุป recommendations พร้อม priority
 - การดำเนินการผ่าน user confirmation เท่านั้น

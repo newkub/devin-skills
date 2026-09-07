@@ -1,6 +1,5 @@
 # Boolean Algebra
 
-
 ## Goal
 
 เข้าใจ boolean algebra ลด/simplify boolean expressions ใช้ De Morgan, distributive, absorption และ Karnaugh maps เพื่อลด complexity ของ conditions

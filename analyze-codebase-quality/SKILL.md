@@ -4,7 +4,7 @@ description: วิเคราะห์คุณภาพของ codebase ด
 argument-hint: "[scope]"
 related:
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -38,7 +38,7 @@ related:
 > Goal: สรุปผลและ validate
 
 1. ทำ `/deep-validate` เพื่อตรวจ output
-2. ทำ `/report-table` ถ้ามีตาราง
+2. ทำ `/report` ถ้ามีตาราง
 3. ทำ `/suggest-next-action`
 
 ## Rules

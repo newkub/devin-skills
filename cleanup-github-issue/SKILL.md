@@ -3,7 +3,6 @@ name: cleanup-github-issue
 description: ปิด ลบ หรือจัดระเบียบ GitHub issues ที่ค้างอยู่
 argument-hint: "[repo]"
 related:
-  - cleanup-github-task
   - cleanup-files-in-computer
   - cleanup-files-in-project
   - suggest-next-action
@@ -53,7 +52,6 @@ related:
 - ปิดพร้อม comment อธิบายเหตุผล
 - ห้าม mass-close โดยไม่ได้รับอนุมัติ
 
-- ใช้ /cleanup-github-task ถ้าจำเป็น
 - ใช้ /cleanup-files-in-computer ถ้าจำเป็น
 - ใช้ /cleanup-files-in-project ถ้าจำเป็น
 

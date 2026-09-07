@@ -8,7 +8,7 @@ related:
   - resolve-errors
   - loop-until-complete
   - capture
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -112,7 +112,7 @@ related:
 
 1. ปิด browser session ด้วย `agent-browser close`
 2. สรุปผล: routes ทีทดสอบ, actions ทีผ่าน/ไม่ผ่าน, failures, stakeholder feedback
-3. ใช้ `/report-table` เพื่อแสดงสรุป
+3. ใช้ `/report` เพื่อแสดงสรุป
 
 ## Rules
 

@@ -8,7 +8,7 @@ related:
   - check-deprecated-apis
   - review-api
   - gen-openapi
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ related:
 
 > Goal: สรุป versioning health
 
-1. ใช้ `/report-table`: `No.`, `Version`, `Status`, `Consumers`, `Issue`, `Severity`, `Action`
+1. ใช้ `/report`: `No.`, `Version`, `Status`, `Consumers`, `Issue`, `Severity`, `Action`
 2. Severity: `critical` (breaking ใน live version), `high` (deprecated ไม่มี sunset), `medium` (inconsistent strategy)
 
 ## Rules

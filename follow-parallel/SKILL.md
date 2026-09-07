@@ -66,7 +66,7 @@ related:
 1. ตรวจว่าทุก parallel operation มีผลลัพธ์ครบ — ไม่มี operation ที่หายไป
 2. ตรวจ errors จาก `Promise.allSettled` — แยก fulfilled และ rejected
 3. ถ้ามี rejected operations → ระบุสาเหตุและ retry หรือ report
-4. ทำ `/report-table` สรุปผลลัพธ์เป็นตาราง
+4. ทำ `/report` สรุปผลลัพธ์เป็นตาราง
 5. ระบุใน report ว่า operations ไหนรัน parallel และใช้เวลาเท่าไหร่
 
 ## Rules
@@ -104,7 +104,7 @@ related:
 ### 5. High Impact Content
 
 - รวม independent tool calls เป็น parallel เสมอเมื่อเป็นไปได้ — ลด context accumulation
-- ระบุ parallelizable tasks ใน `/deep-plan` และ `/report-plan`
+- ระบุ parallelizable tasks ใน `/deep-plan` และ `/plan`
 - ใช้ parallel execution ใน `/run-verify` สำหรับ lint, typecheck, scan
 - ไม่ parallelize operations ที่มี dependencies โดยไม่จำเป็น
 

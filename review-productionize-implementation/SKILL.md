@@ -121,7 +121,7 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

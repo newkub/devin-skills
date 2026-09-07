@@ -6,7 +6,7 @@ related:
   - gen-ai-images
   - draw-svg-image
   - follow-design-system
-  - report-table
+  - report
   - create-video-story
   - gen-image-character
   - enhance-prompt
@@ -39,7 +39,7 @@ related:
 
 > Goal: เลือกขนาด cover image ตาม platform
 
-1. ใช้ `/report-table` แสดงตัวเลือก platform:
+1. ใช้ `/report` แสดงตัวเลือก platform:
    - `twitter`: 1500 x 500 px (header)
    - `facebook`: 820 x 312 px (cover)
    - `linkedin`: 1584 x 396 px (cover)
@@ -89,7 +89,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` แสดง platform, dimension, file path, file size
+1. ใช้ `/report` แสดง platform, dimension, file path, file size
 2. แนะนำการใช้งานบนแต่ละ platform
 3. ถ้าต้องการ resize → ใช้ `/draw-svg-image` หรือ `use-scripts`
 

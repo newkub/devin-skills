@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - use-wrangler
 ---
 
 ## Goal
@@ -38,6 +37,7 @@ Deploy application ไปยัง Cloudflare Workers ด้วย wrangler ต�
 2. รัน `bun run build`
 3. ตรวจสอบว่า `dist/` หรือ build output มี `index.html` และ static assets (ถ้ามี frontend)
 4. ตรวจ worker bundle ว่า build ผ่าน
+5. ทำ `/deep-validate` ก่อน deploy
 
 ### 3. Authenticate
 

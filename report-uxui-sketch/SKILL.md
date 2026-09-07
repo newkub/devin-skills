@@ -4,7 +4,7 @@ description: สร้างรายงาน UX/UI sketch ใน markdown ส�
 argument-hint: "[scope]"
 related:
   - report-uxui-all-routes
-  - report-table
+  - report
   - report-architecture-diagram
   - follow-design-system
   - roleplay-stakeholder
@@ -68,7 +68,7 @@ related:
 > Goal: สรุป report ให้อ่านง่าย
 
 1. สรุป key findings ด้านบน
-2. ใช้ `/report-table` สำหรับ screen/tab summary
+2. ใช้ `/report` สำหรับ screen/tab summary
 3. ใช้ `/report-architecture-diagram` สำหรับ user flow
 4. ใช้ symbols `✅` `⚠️` สำหรับสถานะ
 5. ทำ `/suggest-next-action` ท้าย report
@@ -121,7 +121,7 @@ related:
 ## Expected Outcome
 
 - Markdown UX/UI sketch ครอบคลุมทุก screen/tab
-- Screen summary table ด้วย `/report-table`
+- Screen summary table ด้วย `/report`
 - User flow หรือ navigation diagram ด้วย `/report-architecture-diagram`
 - Clear interactions, loading/empty/error states, และ accessibility notes
 - Next action ชัดเจนท้าย report

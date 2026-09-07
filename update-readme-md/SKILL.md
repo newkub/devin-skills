@@ -6,7 +6,7 @@ related:
   - review-readme-md
   - deep-analyze
   - translate-to-lang-en
-  - report-table
+
   - deep-validate
   - report
   - capture
@@ -209,7 +209,7 @@ related:
 - `templates/usage-via-tui.md` — TUI accordion template
 
 - ใช้ /review-readme-md ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
 ## Expected Outcome

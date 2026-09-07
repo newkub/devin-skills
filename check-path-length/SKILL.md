@@ -3,7 +3,7 @@ name: check-path-length
 description: หา file paths ที่เกิน Windows MAX_PATH (260) — สาเหตุ build/copy/extract พัง
 argument-hint: "[path]"
 related:
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุป at-risk paths พร้อม fixes
 
-1. ใช้ `/report-table`: `No.`, `Path` (truncated), `Length`, `Risk`, `Cause`, `Fix`
+1. ใช้ `/report`: `No.`, `Path` (truncated), `Length`, `Risk`, `Cause`, `Fix`
 2. Top offenders เรียงตามความยาว
 3. แนะนำ: enable long paths, shorten base path, flatten structure (`/flatten-directory`), `.gitignore` deep generated paths
 

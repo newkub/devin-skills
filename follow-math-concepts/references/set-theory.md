@@ -1,6 +1,5 @@
 # Set Theory
 
-
 ## Goal
 
 เข้าใจ set theory: sets, elements, operations, Venn diagrams, power sets, และ cartesian products และประยุกต์ใช้ใน programming, data filtering, และ prompts

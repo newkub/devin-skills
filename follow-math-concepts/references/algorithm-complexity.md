@@ -1,6 +1,5 @@
 # Algorithm Complexity
 
-
 ## Goal
 
 เข้าใจ algorithm complexity: Big O, Omega, Theta, recurrence relations, Master theorem และประยุกต์วิเคราะห์ code

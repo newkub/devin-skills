@@ -7,7 +7,7 @@ related:
   - summarize
   - dont-understand
   - write-how-to
-  - learn-from-web
+  - learn-web
   - deep-research
 ---
 
@@ -36,7 +36,7 @@ related:
 
 1. ถ้า target อยู่ใน project ปัจจุบัน → อ่านไฟล์ที่เกี่ยวข้อง
 2. ถ้า target เป็น skill ใน repo → อ่าน `SKILL.md` ด้วย `/read`
-3. ถ้า target เป็น tool/library ภายนอก → ใช้ `/learn-from-web` ดู official docs
+3. ถ้า target เป็น tool/library ภายนอก → ใช้ `/learn-web` ดู official docs
 4. เก็บ snippets หรือ examples ทีช่วยอธิบาย
 
 ### 3. Provide Concise Explanation

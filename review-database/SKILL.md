@@ -7,7 +7,7 @@ related:
   - run-drizzle-studio
   - follow-lib-drizzle
   - deep-review
-  - report-table
+  - report
   - check-reference
 ---
 
@@ -57,7 +57,7 @@ related:
 
 > Goal: สรุป findings พร้อม severity และ fix direction
 
-1. ทำ `/report-table` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix
+1. ทำ `/report` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้า findings เกี่ยวกับ performance → เชื่อม `/review-performance`
 

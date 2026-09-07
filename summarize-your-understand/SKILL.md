@@ -4,7 +4,7 @@ description: สรุปความเข้าใจของคำสั่�
 argument-hint: "[topic]"
 related:
   - ask-me
-  - report-plan
+  - plan
   - rethink
   - deep-thinking
   - deep-plan
@@ -75,7 +75,7 @@ related:
 
 ### 4. Use Reports
 
-- ถ้าต้องการแสดง plan ละเอียด → ใช้ `/report-plan`
+- ถ้าต้องการแสดง plan ละเอียด → ใช้ `/plan`
 - ถ้าต้องการแสดง todo list → ใช้ `/report-scan-todo`
 - ถ้าต้องการแสดง file structure → ใช้ `/report-file-structure`
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lang-bun
   - follow-tool-rolldown
-  - follow-tool-oxlint
+  - follow-tool-eslint
   - follow-lib-esm-sh
   - review-dependencies
   - deep-analyze
@@ -164,7 +164,7 @@ related:
 
 - ใช้ `oxc-parser` แทน `acorn`, `babel`, `typescript` parser สำหรับ JS/TS AST เมื่อต้องการความเร็วสูง
 - ใช้ `rolldown` แทน `Vite`/`esbuild` สำหรับ bundle ขนาดใหญ่ หรือ `Vite` ก็ยังใช้ Rolldown engine ได้
-- ดู `/follow-tool-rolldown` และ `/follow-tool-oxlint` สำหรับ setup และ best practices
+- ดู `/follow-tool-rolldown` และ `/follow-tool-eslint` สำหรับ setup และ best practices
 - ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด
 
 - ใช้ /follow-lang-bun ถ้าจำเป็น

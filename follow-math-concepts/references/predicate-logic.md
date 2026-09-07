@@ -1,6 +1,5 @@
 # Predicate Logic
 
-
 ## Goal
 
 เข้าใจตรรกศาสตร์ปริมาณ (predicate logic / first-order logic) ได้แก่ predicates, quantifiers, domains, set theory, inference rules และประยุกต์ใช้ใน programming, debugging, database queries, และ prompts

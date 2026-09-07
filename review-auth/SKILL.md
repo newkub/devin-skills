@@ -7,7 +7,7 @@ related:
   - follow-lib-better-auth
   - follow-lib-simplewebauthn
   - scan-codebase
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -78,7 +78,7 @@ Review authentication (authn) and authorization (authz) ของ codebase ใ�
 
 1. จัดกลุ่ม findings ตาม category: authn, authz, session, token, secrets, audit
 2. ให้ severity: Critical/High/Medium/Low พร้อม evidence
-3. ทำ `/report-table` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
+3. ทำ `/report` ด้วย columns: Category, Finding, Severity, Evidence, Mitigation
 4. ทำ `/suggest-next-action`
 
 ## Rules

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo
-  - report-table
+  - report
   - suggest-next-action
   - update-features-md
 ---
@@ -68,7 +68,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
 ทำตาม references/scoring.md
 
 - คำนวณ review score, grade และ supplementary metrics
-- ทำ `/report-table`
+- ทำ `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -88,7 +88,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
    - Score < 70 → แนะนำให้เรียก `update-features-md`
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

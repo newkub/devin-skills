@@ -4,7 +4,7 @@ description: วัด type coverage ของ TypeScript หา any, ts-ignore 
 argument-hint: "[path-or-threshold]"
 related:
   - use-astgrep
-  - report-table
+  - report
   - review-then-fix
 ---
 
@@ -52,7 +52,7 @@ related:
 
 > Goal: รายงาน coverage และ priority fixes
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File/Module`, `Weak Patterns`, `Density`, `Severity`, `Suggestion`
+1. ใช้ `/report` คอลัมน์: `No.`, `File/Module`, `Weak Patterns`, `Density`, `Severity`, `Suggestion`
 2. สรุป overall type coverage % และ weak pattern totals
 3. แนะนำ quick wins (ไฟล์ที่แก้น้อยแต่ได้ coverage เยอะ)
 

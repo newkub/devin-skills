@@ -4,11 +4,12 @@ description: เลือกและ execute review skill(s) ที่เหม
 argument-hint: "[topic-or-goal]"
 related:
   - deep-review
-  - deep-review-codebase
+  - review-redundancy
+  - check-unused
   - review-gaps
+  - review-issue
   - review-then-fix
   - follow-parallel
-  - use-related-skills
   - report
   - suggest-next-action
 ---
@@ -64,14 +65,14 @@ related:
 | 17 | ตรวจความพร้อมก่อน deploy | `/review-deploy` | `/review-delivery`, `/review-release` |
 | 18 | ตรวจความพร้อมก่อน release | `/review-release` | `/review-delivery`, `/review-techstack` |
 | 19 | ตรวจ `.devin/rules`, ast-grep rules, `AGENTS.md` | `/review-rules` | `/review-quality`, `/review-references` |
-| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-content-coverage` |
+| 20 | ตรวจ docs structure ก่อน `update-docs` | `/review-docs` | `/review-features` |
 | 21 | ตรวจ `README.md` ก่อน `update-readme-md` | `/review-readme-md` | `/review-docs` |
-| 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-features` | `/review-content-coverage` |
+| 22 | ตรวจ `FEATURES.md` ก่อน `update-features-md` | `/review-features` | `/review-docs` |
 | 23 | ตรวจ `USAGE.md` / `usage.kdl` | `/review-usage-md` หรือ `/review-app-usage` | `/review-docs` |
-| 24 | ตรวจ content coverage ครบทุก features/API | `/review-content-coverage` | `/review-features` |
+| 24 | ตรวจ content coverage ครบทุก features/API | `/review-docs` | `/review-features` |
 | 25 | ตรวจ naming conventions | `/review-quality` | `/review-readability` |
 | 26 | ตรวจ readability | `/review-readability` | `/review-quality` |
-| 27 | ตรวจ redundancy / duplication ใน skills หรือ code | `/review-redundancy` | `/review-quality` |
+| 27 | ตรวจ redundancy / duplication / สิ่งที่ไม่จำเป็น ใน skills หรือ code | `/review-redundancy` | `/check-unused`, `/review-quality` |
 | 28 | ตรวจ consistency ข้าม skills / code | `/review-quality` | `/review-references` |
 | 29 | ตรวจ references ระหว่าง skills และ `AGENTS.md` | `/review-references` | `/review-quality` |
 | 30 | ตรวจ git diff ก่อน keep/revert | `/review-diff` | `/review-quality` |
@@ -82,16 +83,17 @@ related:
 | 35 | ตรวจ implementation completeness | `/review-productionize-implementation` | `/review-correctness`, `/review-uxui` |
 | 36 | รวม findings จาก dimensional reviews | `/review-gaps` | `/review-quality` |
 | 37 | ต้องการ multi-stakeholder / roleplay review | `/review-by-stakeholder` | `/review-gaps` |
-| 38 | ตรวจ GitHub issue | `/review-github-issue` | `/review-issue` |
+| 38 | ตรวจ GitHub issue | `/review-issue` | `/review-github-pr` |
 | 39 | ตรวจ GitHub PR | `/review-github-pr` | `/review-diff`, `/review-quality` |
 | 40 | ตรวจ issue ทั่วไป | `/review-issue` | `/review-plan` |
 | 41 | ตรวจ devin global skills repo | `/review-devin-global-skills` | `/review-quality`, `/review-redundancy` |
 | 42 | ตรวจ devin global subagents | `/review-devin-global-subagents` | `/review-references` |
 | 43 | ตรวจแล้วค่อย fix ตาม context | `/review-then-fix` | `/review-quality` |
+| 44 | ตรวจ dead code / unused files / unused deps ใน code | `/check-unused` | `/review-redundancy`, `/review-quality` |
 
 1. ถ้า user ระบุ review skill เฉพาะ → ใช้ skill นั้นเป็นหลัก แล้วดู secondary จากตาราง
 2. ถ้ามีหลาย context ที่ชัดเจน → เลือก primary ทั้งหมดที่เกี่ยวข้อง
-3. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report-before` แล้วถาม user ก่อนเลือก
+3. ถ้า context ไม่ชัด → ทำ `/scan-codebase` แล้ว `/report` แล้วถาม user ก่อนเลือก
 
 ### 3. Execute Selected Skills
 
@@ -116,7 +118,7 @@ related:
 
 > Goal: สรุปผล review และแนะนำทางต่อ
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report`
 2. สร้างตาราง Review Skills Used, Findings Count, Severity Breakdown, Review Score
 3. ระบุ skill ถัดไปที่ควรทำ เช่น `/review-then-fix`, `/resolve-errors`, `/deep-validate`, หรือ `/ship`
 4. ทำ `/suggest-next-action`
@@ -126,7 +128,7 @@ related:
 ### 1. Context First
 - ไม่เดาหาก context ไม่ชัด
 - ถาม user ก่อนเลือก review skill ถ้าจำเป็น
-- ใช้ `/scan-codebase` และ `/report-before` เพื่อช่วยตัดสินใจ
+- ใช้ `/scan-codebase` และ `/report` เพื่อช่วยตัดสินใจ
 
 ### 2. Skill Selection
 - เลือก skill ตาม target object และ user intent ไม่ใช่แค่ชื่อ file
@@ -150,7 +152,7 @@ related:
 ### 6. Formatting
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 - ทุก report table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
 
 - ใช้ /review-seo ถ้าจำเป็น

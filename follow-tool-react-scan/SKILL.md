@@ -4,7 +4,7 @@ description: ตรวจหาและแก้ไข React performance issues
 argument-hint: "[scope]"
 related:
   - check-reference
-  - learn-from-web
+  - learn-web
 ---
 
 ## Goal
@@ -22,7 +22,7 @@ related:
 > Goal: เตรียม references และเข้าใจ react-scan APIs
 
 1. ทำ `/check-reference` เพื่อตรวจ references จาก sources
-2. ทำ `/learn-from-web` เพื่อเรียนรู้ react-scan APIs และ integration methods
+2. ทำ `/learn-web` เพื่อเรียนรู้ react-scan APIs และ integration methods
 3. ทบทวน workflows และ patterns ตาม conventions
 
 ### 2. Select Integration Method

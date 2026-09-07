@@ -3,12 +3,11 @@ name: follow-loop-engineering
 description: ออกแบบ agentic loop ทีหา, triage, มอบหมาย, verify, และ persist state ได้เอง
 argument-hint: "[scope]"
 related:
-  - loop-continuous
   - loop-until-complete
   - run-until-pass
   - suggest-next-action
   - report
-  - report-table
+
   - scan-codebase
 ---
 
@@ -102,10 +101,9 @@ related:
 
 ### 5. Observability
 - loop ต้องทิ้ง audit trail: state, log, decision, ผล
-- รายงานทุกรอบด้วย `/report` หรือ `/report-table`
+- รายงานทุกรอบด้วย `/report` หรือ `/report`
 - ระบุจุดทีต้องให้คนตรวจสอบ
 
-- ใช้ /loop-continuous ถ้าจำเป็น
 - ใช้ /loop-until-complete ถ้าจำเป็น
 - ใช้ /run-until-pass ถ้าจำเป็น
 

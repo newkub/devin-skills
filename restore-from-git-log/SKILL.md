@@ -4,7 +4,7 @@ description: กู้คืนไฟล์จาก git log โดยเริ�
 argument-hint: "[scope]"
 related:
   - restore-from-my-dotfiles
-  - git-debug
+  - deep-debug
   - check-git-logs
   - follow-tool-git
   - ask-me
@@ -84,7 +84,7 @@ related:
 - ถ้าไฟล์ถูกลบ → ใช้ `git log --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
 - ระบุ commit hash ที่ชัดเจนก่อน restore เสมอ
 
-- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /deep-debug ถ้าจำเป็น
 - ใช้ /check-git-logs ถ้าจำเป็น
 
 ## Expected Outcome

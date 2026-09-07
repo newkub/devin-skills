@@ -1,6 +1,5 @@
 # Proofs
 
-
 ## Goal
 
 เข้าใจ proof techniques: direct proof, proof by contradiction, contrapositive, mathematical induction, strong induction และประยุกต์ใช้ตรวจ correctness, invariants, algorithms

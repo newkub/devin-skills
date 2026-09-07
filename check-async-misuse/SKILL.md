@@ -7,7 +7,7 @@ related:
   - use-astgrep
   - run-lint
   - review-stability
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -44,7 +44,7 @@ related:
 
 > Goal: สรุปตาม bug risk
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File:Line`, `Pattern`, `Risk`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `File:Line`, `Pattern`, `Risk`, `Severity`, `Fix`
 2. Severity: `critical` (floating promise ใน request handler), `warning` (missing await), `info` (sequential await)
 3. แนะนำ `/follow-asynchronous` สำหรับวิธีแก้แต่ละ pattern
 

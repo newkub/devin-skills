@@ -9,7 +9,7 @@ related:
   - update-project-rules
   - run-review
   - use-related-skills
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -81,7 +81,7 @@ Review ความเสถียรของ application ครอบคลุ
 2. ถ้าพบ performance issues ให้ทำ `/deep-review`
 3. ถ้าพบ concurrency issues ให้ทำ `/deep-review`
 4. ถ้าพบ security issues ให้ทำ `/deep-review`
-5. ใช้ `/report-table` เพื่อจัดรูปแบบผลลัพธ์
+5. ใช้ `/report` เพื่อจัดรูปแบบผลลัพธ์
 
 ### 8. Validate, Score And Report
 
@@ -90,7 +90,7 @@ Review ความเสถียรของ application ครอบคลุ
 1. ทำ `/deep-validate` เพื่อ validate findings จากทุก section
 2. จัดลำดับตาม severity: Critical → High → Medium → Low
 3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report-table` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
+4. ทำ `/report` พร้อม `/report` กำหนด columns: `No`, `Category`, `Issue`, `Severity`, `Location`, `Recommendation`
 5. จัดกลุ่มตาม category: Crashes, Errors, Debuggability, Monitoring, Recovery, Health
 6. ทำ `/suggest-next-action`
 
@@ -126,7 +126,7 @@ Review ความเสถียรของ application ครอบคลุ
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ backticks สำหรับ `files`, `functions`, `commands`
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ### 6. High Impact Content
 
@@ -152,7 +152,7 @@ Merged from: improve-error-handling, improve-error-messages, improve-stability
 > ทำ section นี้เมื่อต้องการ verify ว่า backup สามารถ restore ได้จริง (merged from: verify-backup-restore)
 
 1. ทำตาม `references/verify-backup-restore.md`
-2. ใช้ `/report-table` สรุป integrity, restore OK, data valid, RTO, verdict
+2. ใช้ `/report` สรุป integrity, restore OK, data valid, RTO, verdict
 3. ถ้า RTO เกินเป้าหรือ restore ไม่ได้ → รายงาน gap พร้อม recommendation
 
 ## Expected Outcome

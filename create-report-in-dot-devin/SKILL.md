@@ -5,8 +5,8 @@ argument-hint: "[title]"
 related:
   - create-plan-in-dot-devin
   - report-file-structure
-  - report-what-you-do
-  - report-table
+  - suggest-next-action
+  - report
   - idea-features
   - deep-analyze
   - scan-codebase
@@ -77,7 +77,7 @@ related:
 1. แบ่งเป็น phase: Prepare, Analyze, Write, Validate, Report
 2. แต่ละ phase ระบุสิ่งทีทำ, สถานะ, หมายเหตุ
 3. columns: No., Phase, Action, Status, Note
-4. ใช้ `/report-what-you-do` เพื่อช่วยสร้างเนื้อหา
+4. ใช้ `/suggest-next-action` เพื่อช่วยสร้างเนื้อหา
 
 ### 6. Write Report File
 
@@ -87,7 +87,7 @@ related:
 2. เขียนไฟล์ `.devin/reports/<workspace>/<title>-<time>.md` ด้วย frontmatter:
    - `title`, `description`, `status: pending`, `created`
    - sections: `## Goal`, `## Scope`, `## New Features`, `## Extended Features`, `## What You Do`, `## File Structure`, `## Notes`
-3. ใช้ `/report-table` สำหรับทุก table
+3. ใช้ `/report` สำหรับทุก table
 4. ใช้ `write` tool สร้างไฟล์
 5. รายงาน path ให้ผู้ใช้
 
@@ -113,7 +113,7 @@ related:
 - ต้องมี 3 tables: New Features, Extended Features, What You Do
 - ทุก table ต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก
 - เรียงลำดับ 1, 2, 3, ...
-- ใช้ `/report-table` เพื่อจัดรูปแบบ
+- ใช้ `/report` เพื่อจัดรูปแบบ
 
 ### 3. File Structure
 
@@ -133,5 +133,5 @@ related:
 - ไฟล์ report `.devin/reports/<workspace>/<title>-<time>.md` ถูกสร้าง
 - Report มี 3 tables ครบถ้วน
 - รวม `/report-file-structure`
-- ใช้ `/report-what-you-do` แบ่ง phase
+- ใช้ `/suggest-next-action` แบ่ง phase
 - References อัปเดตครบ

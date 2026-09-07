@@ -4,7 +4,7 @@ description: Generate CHANGELOG.md จาก git tags ด้วย Bun Shell scr
 argument-hint: "[scope]"
 related:
   - run-release
-  - report-changelog
+  - report
   - review-release
   - follow-tool-changelogen
   - follow-tool-semantic-release
@@ -16,7 +16,7 @@ Generate `CHANGELOG.md` จาก `git tag --sort=-version:refname` ด้วย
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการ `CHANGELOG.md` อัตโนมัติจาก git tags — ไม่รวมการ publish ไปยัง platforms (ใช้ `run-release`) และไม่รวมการรายงาน changelog (ใช้ `report-changelog`)
+ใช้สำหรับ projects ที่ต้องการ `CHANGELOG.md` อัตโนมัติจาก git tags — ไม่รวมการ publish ไปยัง platforms (ใช้ `run-release`) และไม่รวมการรายงาน changelog (ใช้ `report`)
 
 ## Execute
 
@@ -79,7 +79,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md --output PATH
 ### 4. Non-Redundancy
 
 - การ publish ไปยัง platforms อยู่ใน `run-release` แล้ว
-- การรายงาน changelog อยู่ใน `report-changelog` แล้ว
+- การรายงาน changelog อยู่ใน `report` แล้ว
 - การ review changelog completeness อยู่ใน `review-release` แล้ว
 - สำหรับ projects ที่ใช้ changelogen หรือ semantic-release ให้ใช้ `follow-tool-changelogen` หรือ `follow-tool-semantic-release` แทน
 

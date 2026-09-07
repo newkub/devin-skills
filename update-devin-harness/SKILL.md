@@ -72,7 +72,7 @@ related:
 
 > Goal: สรุป alignment status
 
-1. ทำ `/report-table` คอลัมน์: Layer, Status, Changes, Issues
+1. ทำ `/report` คอลัมน์: Layer, Status, Changes, Issues
 2. ระบุสิ่งที่ยังค้าง
 3. ทำ `/suggest-next-action`
 

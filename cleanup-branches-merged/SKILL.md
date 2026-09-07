@@ -4,7 +4,7 @@ description: ลบ local และ remote branches ที่ merge เข้า
 argument-hint: "[base-branch] [--remote]"
 related:
   - ask-me
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -42,7 +42,7 @@ related:
 
 > Goal: แสดงสิ่งที่จะลบก่อนทำจริง
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
+1. ใช้ `/report` คอลัมน์: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
 2. ระบุจำนวนรวมและ branches ที่ข้ามพร้อมเหตุผล
 3. รอ user confirmation ผ่าน `/ask-me` ก่อนลบเสมอ
 

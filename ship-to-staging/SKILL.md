@@ -10,7 +10,7 @@ related:
   - resolve-errors
   - run-test-unit
   - run-verify
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -68,7 +68,7 @@ Deploy feature branch ไปยัง staging environment แล้วรัน 
 
 > Goal: บอกผล staging
 
-1. ทำ `/report-table` สรุป staging deploy, tests, status
+1. ทำ `/report` สรุป staging deploy, tests, status
 2. ถ้าผ่าน → ระบุ `ready-for-production: true` พร้อม commit hash แล้วส่งต่อ `/ship-to-production`
 3. ถ้าไม่ผ่าน → report findings และ stop
 

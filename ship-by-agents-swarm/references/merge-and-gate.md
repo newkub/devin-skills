@@ -16,7 +16,7 @@
 
 หลังทุก lane ผ่านและ merge เรียบร้อย ต้องผ่าน gates เดียวกับ `/ship`:
 
-1. `/run-verify` + `/deep-verify` + `/run-check` ผ่านครบ
+1. `/run-verify` + `/deep-validate` + `/run-check` ผ่านครบ
 2. commit ตาม project conventions
 3. สร้าง PR + review ตาม `/ship` workflow
 4. user confirmation ก่อน merge และก่อน release/deploy

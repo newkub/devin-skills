@@ -1,9 +1,10 @@
 ---
 name: rename
-description: เปลี่ยนชื่อ identifier ใน code ด้วย ast-grep และอัปเดท references ทั้งหมด
+description: เปลี่ยนชื่อ identifier, file, หรือ skill พร้อมอัปเดท context และ references ทั้งหมด
 argument-hint: "[old-name] [new-name]"
 related:
   - update-references
+  - check-broken-skills-references
   - resolve-errors
   - report
   - use-astgrep
@@ -16,7 +17,7 @@ related:
 
 ## Scope
 
-Rename code identifiers ด้วย ast-grep AST-based pattern matching
+Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/directory พร้อม update context: `name`, `description`, `related`, `AGENTS.md`, `global_rules.md`, paths
 
 ## Execute
 
@@ -96,6 +97,19 @@ Rename code identifiers ด้วย ast-grep AST-based pattern matching
 3. รัน lint: `biome lint` หรือ `bun run lint`
 4. รัน tests: `bun run test` หรือ `vitest run`
 5. ถ้า validation ไม่ผ่าน → ทำ `/resolve-errors` และ fix จนผ่าน (max 3 ครั้ง → stop/report)
+
+### 6. Rename File Or Skill
+
+> Goal: เปลี่ยนชื่อไฟล์, directory, หรือ skill พร้อม update context
+
+1. ถ้า rename skill → เปลี่ยนชื่อ directory ด้วย `git mv`
+2. อัปเดท `name` ใน frontmatter ให้ตรง directory name
+3. อัปเดท `description` ถ้าชื่อเปลี่ยนทำให้ความหมายเปลี่ยน
+4. อัปเดท `related` ถ้ามี skill ที่เปลี่ยนชื่อ
+5. อัปเดท body ทั้งหมด: `/<old-name>` → `/<new-name>`, paths, และ markdown links
+6. อัปเดท `AGENTS.md` และ `global_rules.md` ถ้ามี slash references
+7. ทำ `/update-references` ทั่ว repo
+8. ทำ `/check-broken-skills-references` ยืนยันครบ
 
 ## Rules
 

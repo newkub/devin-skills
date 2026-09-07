@@ -4,8 +4,7 @@ description: Review platform ครอบคลุมทุก dimension พร�
 argument-hint: "[scope]"
 related:
   - review-seo
-  - report
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -99,7 +98,9 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
+
+- ส่ง findings ไป domain `/review-*` ที่เกี่ยวข้องเพื่อแก้ใน section `## Fix`
 
 ## Expected Outcome
 

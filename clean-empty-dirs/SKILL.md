@@ -4,7 +4,7 @@ description: ลบ empty directory trees พร้อม dry-run preview แล
 argument-hint: "[path] [--dry-run]"
 related:
   - delete
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -40,7 +40,7 @@ related:
 
 > Goal: แสดงรายการก่อนลบ
 
-1. ใช้ `/report-table`: `No.`, `Path`, `Depth`, `Classification`, `Action`
+1. ใช้ `/report`: `No.`, `Path`, `Depth`, `Classification`, `Action`
 2. สรุป counts: safe to delete vs flagged vs kept
 3. ถาม user confirm — dry-run เป็น default
 

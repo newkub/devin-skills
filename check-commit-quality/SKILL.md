@@ -7,7 +7,7 @@ related:
   - refactor-commit
   - list-git-commit
   - follow-tool-hk
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -61,7 +61,7 @@ related:
 
 > Goal: สรุป quality และแนวทางแก้
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `SHA`, `Message`, `Issues`, `Suggested`
+1. ทำ `/report` คอลัมน์: `No.`, `SHA`, `Message`, `Issues`, `Suggested`
 2. สรุป compliance rate และ issue breakdown
 3. แนะนำ `/refactor-commit` ถ้าต้อง rewrite (เฉพาะ commits ที่ยังไม่ push)
 4. แนะนำ `commitlint` + `/follow-tool-hk` ถ้าต้องการ enforce ต่อเนื่อง

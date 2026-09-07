@@ -4,7 +4,7 @@ description: ตรวจ CORS configuration — wildcard origins, credentials e
 argument-hint: "[url-or-config]"
 related:
   - review-security
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุป CORS posture พร้อม fixes
 
-1. ใช้ `/report-table`: `No.`, `Endpoint/Scope`, `Origin Policy`, `Credentials`, `Risk`, `Severity`, `Fix`
+1. ใช้ `/report`: `No.`, `Endpoint/Scope`, `Origin Policy`, `Credentials`, `Risk`, `Severity`, `Fix`
 2. แนะนำ allowlist ที่ถูกต้องต่อ environment
 3. ระบุว่า fix อยู่ที่ code config หรือ platform layer
 

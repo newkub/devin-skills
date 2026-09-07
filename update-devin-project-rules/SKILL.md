@@ -3,7 +3,7 @@ name: update-devin-project-rules
 description: สร้างและอัปเดต .devin/rules/ Markdown rules สำหรับ always-on, model_decision, glob triggers
 argument-hint: "[rule-or-domain]"
 related:
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ globs:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง rule, trigger, globs, status
+1. ทำ `/report` แสดง rule, trigger, globs, status
 2. ทำ `/suggest-next-action`
 
 ## Rules

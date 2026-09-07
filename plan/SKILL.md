@@ -17,9 +17,9 @@ related:
 
 ## Scope
 
-ครอบคลุมการวางแผน tasks, libraries, implementation path, file architecture, module structure และการ validate แผนงาน ถ้า tasks เยอะมาก (>10) ให้สร้างใน `.devin/tasks/`
+ครอบคลุมการวางแผน tasks, libraries, implementation path, file architecture, module structure และการ validate แผนงาน ถ้า tasks เยอะมาก (>10) ให้สร้างใน `.devin/tasks/` (merged from: `plan-by-ask-me`, `report-plan`)
 
-Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis และ research front-loading → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → ใช้ `/ask-me` กับ `/deep-report` ใน section `Collaborative Planning`
+Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis และ research front-loading → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → ใช้ `/ask-me` กับ `/report-deep` ใน section `Collaborative Planning`
 
 ## Execute
 
@@ -98,6 +98,25 @@ Boundary: งานซับซ้อนสูง/เสี่ยงสูงท
 5. จัดรูปแบบตาราง tasks ตาม `/report` และ file structure ตาม `/report-file-structure`
 6. รายงานแผนในแชทก่อนลงมือทำ ตาม section `Report Plan` ด้านล่าง แล้วทำงานต่อได้เลย
 
+### 8. Report Plan
+
+> Goal: รายงานแผนในแชทก่อนลงมือ
+
+1. ขึ้นต้นด้วย summary 1-2 บรรทัด
+2. แสดง `## TODOs` แบบ numbered list + bullets
+3. แสดง `## File Changes` ตารางมี columns: `No.`, `File`, `How to`, `Risk`, `Note`
+4. แสดง `## File Structure` ถ้ามีการเปลี่ยนโครงสร้าง
+5. แสดง `## Next Action` ชัดเจนท้าย report
+
+### 9. Collaborative Planning
+
+> Goal: วางแผนร่วมกับ user เมื่อไม่แน่ใจหรืองานเสี่ยงสูง
+
+1. ถ้า context ไม่ชัด หรือมีหลายทางเลือก → ใช้ `/ask-me`
+2. ทำ `/follow-deep` และ `/report-deep` เพื่อรวบรวม evidence
+3. สรุป options, risks, trade-offs แล้วให้ user ตัดสินใจ
+4. บันทึกแผนทีตกลงร่วมกัน ด้วย `/create-plan-in-dot-devin` ถ้า tasks > 10
+
 ## Metrics
 
 วัดคุณภาพแผนด้วย metrics ต่อไปนี้:
@@ -135,8 +154,9 @@ Boundary: งานซับซ้อนสูง/เสี่ยงสูงท
 
 - ถ้า tasks > 10 สร้างใน `.devin/tasks/` และทำ `update-dot-devin`
 - ถ้า tasks <= 10 บันทึกใน chat report เท่านั้น
-- ต้องทำ `report-plan` ก่อนลงมือทำ ตอบในแชท แล้วทำต่อได้เลย
-- ไม่ต้องรอยืนยันจาก user ยกเว้นกรณีเสี่ยงสูง
+- ถ้า tasks > 10 สร้างใน `.devin/tasks/` แล้วรายงานสรุปในแชท
+- ตอบในแชทด้วย sections: `## TODOs`, `## File Changes`, `## File Structure`, `## Next Action`
+- ถ้างานเสี่ยงสูง/ไม่แน่ใจ → ถาม user ด้วย `/ask-me` ก่อนลงมือ
 
 ### 4. Trade-Off And Risk Analysis
 

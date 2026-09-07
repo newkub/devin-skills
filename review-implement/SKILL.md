@@ -4,11 +4,11 @@ description: Review implementation readiness ก่อน execute implement-* sk
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - report-table
+  - report
   - suggest-next-action
   - productionize-implementation
-  - implement-plan
-  - implement-github-issue
+  - productionize-implementation
+  - implement-github-issue-by-me
 ---
 
 ## Goal
@@ -17,7 +17,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `productionize-implementation`, `implement-plan`, `implement-github-issue`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `productionize-implementation`, `productionize-implementation`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -32,7 +32,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ### 2. Review Plan Readiness
 
-> Goal: ตรวจ plan completeness ก่อน execute `implement-plan`
+> Goal: ตรวจ plan completeness ก่อน execute `productionize-implementation`
 
 ทำตาม references/plan-readiness.md
 
@@ -73,7 +73,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 ทำตาม references/scoring.md
 
 - คำนวณ implementation readiness score, grade และ supplementary metrics
-- ทำ `/report-table`
+- ทำ `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -92,7 +92,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
    - Score < 70 → แนะนำให้แก้ blockers ก่อน
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 ## Fix
 

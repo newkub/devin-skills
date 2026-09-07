@@ -3,7 +3,7 @@ name: list-devin-user-requests
 description: รายการ requests จาก user ตาม scope — ทุก session, session นี้ หรือ repo นี้
 argument-hint: "[--scope all|session|repo]"
 related:
-  - report-table
+  - report
 
 ---
 
@@ -43,7 +43,7 @@ related:
 
 > Goal: สรุปเป็น table
 
-1. ทำ `/report-table` คอลัมน์: No., Session, Request, Type, Length
+1. ทำ `/report` คอลัมน์: No., Session, Request, Type, Length
 2. ตัด request ยาว > 80 ตัวอักษร แล้วเติม `...`
 3. เรียงตาม session (ใหม่ไปเก่า) แล้ว message number
 4. ระบุสถิติ: จำนวน sessions, จำนวน requests
@@ -53,7 +53,7 @@ related:
 - ไม่โหลดทุก file พร้อมกัน ใช้ streaming
 - ไม่รวม system หรือ assistant messages
 - ไม่แก้ไข history files
-- ใช้ `/report-table` เสมอ
+- ใช้ `/report` เสมอ
 
 ## Expected Outcome
 

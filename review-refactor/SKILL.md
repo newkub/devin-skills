@@ -6,10 +6,10 @@ related:
   - deep-review
   - review-quality
   - report
-  - report-table
+
   - suggest-next-action
   - refactor
-  - refactor-to-single-responsibility
+
 ---
 
 ## Goal
@@ -18,7 +18,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ## Scope
 
-ใช้ก่อนเรียก `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-workspace` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
+ใช้ก่อนเรียก `refactor`, `refactor`, หรือ `refactor-workspace` เพื่อระบุเป้าหมาย refactor ครอบคลุม SRP violations, long files, function quality, imports/exports, package boundaries, code smells, dead code, anti-patterns ไม่รวมการ refactor จริง — เป็น review เท่านั้น
 
 ## Execute
 
@@ -84,7 +84,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 > Goal: รายงาน baseline และ refactor targets
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report` พร้อม `/report-table`
+2. ทำ `/report` พร้อม `/report`
 3. สร้างตาราง Baseline Metrics และ Refactor Targets
 4. แสดง refactor health score
 5. ทำ `/suggest-next-action`
@@ -95,7 +95,7 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 - แยก review process จาก refactor process
-- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-workspace` หลัง review
+- ถ้าต้อง refactor ให้ทำ `refactor`, `refactor`, หรือ `refactor-workspace` หลัง review
 
 ### 2. Evidence-Based Findings
 
@@ -127,7 +127,9 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
+
+- ถ้า pass → ทำ `/refactor` ถ้า fail → แก้ findings ก่อน refactor
 
 ## Expected Outcome
 

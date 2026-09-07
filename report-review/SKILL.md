@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - resolve-errors
-  - report-table
+
   - report
   - suggest-next-action
 ---
@@ -37,8 +37,8 @@ related:
 
 จัดรูปแบบรายงานตามประเภทข้อมูล
 
-1. ใช้ `/report-table` สำหรับตาราง findings แยกตาม dimension
-2. ใช้ `/report-table` สำหรับสรุปภาพรวม
+1. ใช้ `/report` สำหรับตาราง findings แยกตาม dimension
+2. ใช้ `/report` สำหรับสรุปภาพรวม
 3. ใช้ `/report` สำหรับความคืบหน้ารวม
 
 ### 3. Report Dimension Findings
@@ -93,7 +93,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators

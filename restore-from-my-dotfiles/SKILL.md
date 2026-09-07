@@ -6,9 +6,9 @@ related:
   - restore-from-git-log
   - follow-tool-git
   - check-git-logs
-  - git-debug
+  - deep-debug
   - ask-me
-  - report-table
+  - report
   - git-commit
 ---
 
@@ -20,7 +20,7 @@ related:
 
 ใช้เมื่อ dotfiles บนเครื่องหายหรือเสียหาย และต้องการ restore จากประวัติของ dotfiles repo ทีจัดการด้วย chezmoi
 
-ดูเพิ่มเติม: /restore-from-git-log, /follow-tool-git, /check-git-logs, /git-debug, /git-commit
+ดูเพิ่มเติม: /restore-from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
 
 ## Execute
 
@@ -91,7 +91,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report` คอลัมน์:
    - No.
    - Target
    - Source Path

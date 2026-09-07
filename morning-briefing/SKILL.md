@@ -5,11 +5,11 @@ argument-hint: "[repos-scope]"
 related:
   - check-uncommit
   - check-unpush
-  - list-github-actions-fails
+  - resolve-github-actions-fails
   - list-github-pr
   - list-github-issue
   - list-git-branch
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -31,13 +31,13 @@ related:
 
 1. ทำ `/check-uncommit` — repos ที่มี uncommitted changes
 2. ทำ `/check-unpush` — commits ที่ยังไม่ push, branches ไม่มี upstream
-3. ทำ `/list-todo-md` — TODO.md items ที่ pending
+3. ทำ `/report-scan-todo` — TODO.md items ที่ pending
 
 ### 2. CI And PRs
 
 > Goal: สิ่งที่ต้อง attention บน remote
 
-1. ทำ `/list-github-actions-fails` — workflows ที่ fail ล่าสุด
+1. ทำ `/resolve-github-actions-fails` — workflows ที่ fail ล่าสุด
 2. ทำ `/list-github-pr` — PRs ที่รอ review (ของตัวเอง + ที่ถูก request)
 3. ทำ `/list-github-issue` — issues ที่ assigned/mention
 
@@ -52,7 +52,7 @@ related:
 
 > Goal: รวมเป็น briefing เดียว
 
-1. ใช้ `/report-table` แยก sections:
+1. ใช้ `/report` แยก sections:
    - `Needs Action`: uncommit, unpush, failed CI, review requests
    - `Waiting`: PRs ที่รอคนอื่น, blocked items
    - `Hygiene`: stale branches, old TODOs

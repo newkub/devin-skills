@@ -1,6 +1,5 @@
 # Containerization Setup And Review
 
-
 ## Goal
 
 สร้าง `Dockerfile` หรือ `Containerfile` ที่ปลอดภัย มีขนาดเล็ก และ build เร็ว สำหรับ Docker, Podman และ container engines อื่น รองรับ monorepo และใช้ mise จัดการ tool versions ภายใน container

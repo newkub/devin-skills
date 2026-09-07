@@ -16,7 +16,7 @@
 
 > Goal: ศึกษา capabilities ของ libraries ที่มี
 
-1. ทำ `/deep-research` หรือ `/learn-from-web` เพื่อศึกษา documentation, features, best practices
+1. ทำ `/deep-research` หรือ `/learn-web` เพื่อศึกษา documentation, features, best practices
    - ใช้ DeepWiki สำหรับ GitHub repositories ของ libraries
    - ใช้ Context7 สำหรับ API reference — เข้าถึง official documentation เสมอ
 2. ระบุ features ที่ยังไม่ได้ใช้งานแต่จะเป็นประโยชน์

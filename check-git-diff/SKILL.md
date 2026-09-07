@@ -4,7 +4,7 @@ description: ตรวจสอบความแตกต่างของ git
 argument-hint: "[ref]"
 related:
   - check-git-logs
-  - git-debug
+  - deep-debug
   - search-in-git
   - ask-me
   - delete
@@ -69,11 +69,11 @@ related:
 
 ### 3. Output
 
-- ใช้ `/report-table` สำหรับสรุป stat
+- ใช้ `/report` สำหรับสรุป stat
 - ระบุ file paths เป็น relative จาก repo root
 
 - ใช้ /check-git-logs ถ้าจำเป็น
-- ใช้ /git-debug ถ้าจำเป็น
+- ใช้ /deep-debug ถ้าจำเป็น
 - ใช้ /search-in-git ถ้าจำเป็น
 
 ## Expected Outcome

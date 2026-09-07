@@ -7,7 +7,7 @@ related:
   - productionize-implementation
   - follow-my-tech-stack
   - review-techstack
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -69,7 +69,7 @@ related:
 
 > Goal: สรุปสิ่งที่ตั้งค่า
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
+1. ทำ `/report` คอลัมน์: `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
 2. ระบุ endpoints ที่ยัง unhandled (`onUnhandledRequest: 'warn'` ช่วยหา)
 
 ## Rules
@@ -82,7 +82,7 @@ related:
 
 - ใช้ /productionize-implementation ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

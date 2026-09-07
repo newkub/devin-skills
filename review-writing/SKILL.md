@@ -8,7 +8,7 @@ related:
   - run-verify
   - resolve-errors
   - report
-  - report-table
+
   - suggest-next-action
   - review-docs
 ---
@@ -65,7 +65,7 @@ related:
 - คำนวณ review score และ supplementary metrics
 - รัน `tsc --noEmit`, `bunx biome lint`, `/run-verify` — ถ้าแก้ไขเอกสารที่เกี่ยวกับ code
 - ถ้า validation fail → ทำ `/resolve-errors` แล้ว retry (max 3)
-- ทำ `/report` พร้อม `/report-table`
+- ทำ `/report` พร้อม `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -88,7 +88,7 @@ related:
    - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 5. Output Format
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /review-docs ถ้าจำเป็น
 

@@ -8,7 +8,7 @@ related:
   - run-typecheck
   - resolve-errors
   - run-clean
-  - report-table
+
   - report
 ---
 
@@ -69,7 +69,7 @@ related:
 
 > Goal: สรุปผล build
 
-1. รัน `/report-table` เพื่อแสดง build metrics (time, size, files)
+1. รัน `/report` เพื่อแสดง build metrics (time, size, files)
 2. รัน `/report` เพื่อแสดงสรุปผลลัพธ์
 
 ## Rules
@@ -91,7 +91,7 @@ related:
 
 ### 3. Reporting
 
-- ใช้ `/report-table` สำหรับ metrics
+- ใช้ `/report` สำหรับ metrics
 - ใช้ `/report` สำหรับสรุปข้อความ
 - ไม่รายงานซ้ำซ้อน
 
@@ -150,7 +150,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table`
+1. ทำ `/report`
 2. ทำ `/report`
 
 ### Rules

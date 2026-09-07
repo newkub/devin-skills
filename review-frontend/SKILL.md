@@ -11,7 +11,7 @@ related:
   - run-review
   - deep-validate
   - report
-  - report-table
+
   - suggest-next-action
 ---
 
@@ -144,7 +144,7 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 ### 7. Formatting
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ## Fix
 

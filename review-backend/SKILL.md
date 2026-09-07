@@ -7,8 +7,7 @@ related:
   - deep-review-codebase
   - run-review
   - deep-validate
-  - report
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -57,7 +56,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
 - ทำ `/deep-validate` เพื่อ validate findings
 - จัดลำดับตาม severity: Critical → High → Medium → Low
 - คำนวณ review score, dimension scores และ supplementary metrics ตาม references/scoring.md
-- ทำ `/report` พร้อม `/report-table`
+- ทำ `/report` พร้อม `/report`
 - ทำ `/suggest-next-action`
 
 ## Rules
@@ -79,7 +78,7 @@ Orchestrate backend review ครอบคลุม API, service, database, data
    - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
 6. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 ## Fix
 

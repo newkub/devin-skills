@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-my-tech-stack
   - deep-research
-  - report-table
+
   - report
   - suggest-next-action
 ---
@@ -66,7 +66,7 @@ related:
 
 > Goal: สร้างรายงานอัปเดตรายสัปดาห์
 
-1. ทำ `/report-table` สร้างตารางอัปเดต
+1. ทำ `/report` สร้างตารางอัปเดต
 2. กำหนด columns: No., Library, Category, Current Version, Latest Version, Impact, Summary
 3. จัดกลุ่มตาม category และจัดลำดับตาม impact
 4. เพิ่ม summary สั้นๆ สำหรับแต่ละอัปเดต
@@ -79,7 +79,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
@@ -111,7 +111,7 @@ related:
 
 ### 4. Report Format
 
-- ใช้ `/report-table` สำหรับ structured output
+- ใช้ `/report` สำหรับ structured output
 - ตารางต้องมีคอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... ทุกแถว
 - จัดกลุ่มตาม category และจัดลำดับตาม impact
 - ใช้ `/report` สำหรับ executive summary

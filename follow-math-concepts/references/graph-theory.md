@@ -1,6 +1,5 @@
 # Graph Theory
 
-
 ## Goal
 
 เข้าใจ graph theory: nodes, edges, directed/undirected graphs, trees, DAGs, paths, cycles, connectivity และประยุกต์ใช้ใน dependencies, workflows, data structures

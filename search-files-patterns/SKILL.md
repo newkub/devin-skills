@@ -3,7 +3,7 @@ name: search-files-patterns
 description: Search file name and content patterns across codebases with glob, grep, and ast-grep
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
   - run-review
   - refactor
@@ -70,7 +70,7 @@ related:
 
 > Goal: สรุปผลการค้นหา
 
-1. ทำ `/report-table` แสดง matches: File, Line, Pattern, Snippet, Severity
+1. ทำ `/report` แสดง matches: File, Line, Pattern, Snippet, Severity
 2. ทำ `/suggest-next-action` หรือ `/run-review` ถ้าต้องการดำเนินการต่อ
 3. ถ้า matches มากเกิน 100 ให้สรุปเป็น top 20 พร้อม count
 
@@ -105,7 +105,7 @@ related:
 
 - ห้ามใช้ `` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

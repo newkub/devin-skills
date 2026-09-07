@@ -3,7 +3,7 @@ name: check-file-locks
 description: หาไฟล์ที่ถูก lock โดย process — สาเหตุ delete/move/build fail บน Windows
 argument-hint: "[path-or-file]"
 related:
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -50,7 +50,7 @@ related:
 
 > Goal: บอกว่าใคร lock + ทางเลือกปลด
 
-1. ใช้ `/report-table`: `No.`, `Locked Path`, `Locking Process`, `PID`, `Type`, `Unlock Option`
+1. ใช้ `/report`: `No.`, `Locked Path`, `Locking Process`, `PID`, `Type`, `Unlock Option`
 2. Options per lock: `close app`, `kill PID <n>` (ต้อง confirm), `wait and retry` (transient locks), `exclude from AV`
 3. ห้าม kill process เอง — เสนอให้ user ตัดสินใจ เว้นแต่เป็นตัวที่ user สั่งชัดเจน
 

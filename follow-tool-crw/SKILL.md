@@ -19,6 +19,8 @@ related:
 
 ใช้ `follow-tool-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-websearch) — สำหรับ web search/scrape ด้วย crw ดู `references/websearch.md`
+
 ## Execute
 
 ### 1. Web Search

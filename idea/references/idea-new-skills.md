@@ -68,7 +68,7 @@
 
 > Goal: สร้าง skills ที่เลือก
 
-1. สำหรับแต่ละไอเดียที่เลือก ให้เรียก `/create-devin-global-skills` หรือ `/update-devin-global-skills`
+1. สำหรับแต่ละไอเดียที่เลือก ให้เรียก `/new-skills` หรือ `/update-devin-global-skills`
 2. ให้ผู้ใช้ปรับแต่ง skill ก่อนสร้าง
 3. ตรวจสอบ skill แต่ละอันด้วย `/deep-validate`
 4. อัปเดต references ด้วย `/update-references`
@@ -79,7 +79,7 @@
 
 - ตรวจสอบ skills ที่มีอยู่ก่อนเสนอ skill ใหม่
 - ถ้ามี skill คล้ายกันอยู่แล้ว ให้เสนอการขยาย skill นั้นแทน
-- ใช้ `use-in-another-skills` เมื่อพบความซ้อนทับ
+- ใช้ `use-related-skills` เมื่อพบความซ้อนทับ
 
 ### 2. Concrete And Focused
 

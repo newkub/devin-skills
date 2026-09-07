@@ -6,9 +6,6 @@ related:
   - create-cloudflare-worker
   - deploy-to-cloudflare
   - resolve-cloudflare-worker-fails
-  - follow-service-cloudflare
-  - follow-deploy
-  - resolve-errors
 ---
 
 ## Goal
@@ -91,7 +88,7 @@ bunx wrangler deployments list           # ดู deployment history
 
 > Goal: สรุปผล
 
-1. แสดงผลด้วย `/report-table` (No., Resource, Status, URL/ID)
+1. แสดงผลด้วย `/report` (No., Resource, Status, URL/ID)
 2. ทำ `/suggest-next-action` ท้ายรายงาน
 
 ## Rules

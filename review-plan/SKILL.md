@@ -3,12 +3,12 @@ name: review-plan
 description: Review plan quality ก่อน execute plan
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
   - plan
   - deep-plan
   - create-plan-in-dot-devin
-  - implement-plan
+  - productionize-implementation
   - follow-plan
 ---
 
@@ -18,7 +18,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ## Scope
 
-ใช้ก่อนเรียก `plan`, `deep-plan`, `create-plan-in-dot-devin`, `implement-plan` หรือ `follow-plan` — ตรวจ plan quality แล้วสรุป plan quality score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `plan`, `deep-plan`, `create-plan-in-dot-devin`, `productionize-implementation` หรือ `follow-plan` — ตรวจ plan quality แล้วสรุป plan quality score พร้อม go/no-go recommendation
 
 ## Execute
 
@@ -48,7 +48,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ### 7. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md), [references/plan-quality-score.md](references/plan-quality-score.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md), [references/plan-quality-score.md](references/plan-quality-score.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -57,6 +57,8 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 - ทุก finding ต้องมี evidence และ location
 - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+
+- ถ้า pass → implement ตาม plan ถ้า fail → แก้ plan ให้ผ่านก่อน
 
 ## Expected Outcome
 

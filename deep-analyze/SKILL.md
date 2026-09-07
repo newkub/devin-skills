@@ -5,10 +5,11 @@ argument-hint: "[scope]"
 related:
   - deep-thinking
   - scan-codebase
+  - check-file-structure
   - check-code-structure
   - use-astgrep
   - use-astgrep-programmatic
-  - deep-report
+  - report-deep
   - deep-research
   - run-audit
   - use-scripts
@@ -20,7 +21,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์หลายมิติ (merged from: `analyze-project`, `deep-analyze-by-use-scripts`, `scan-codebase`, `check-code-structure`):
+ครอบคลุมการวิเคราะห์หลายมิติ (merged from: `analyze-project`, `deep-analyze-by-use-scripts`, `scan-codebase`, `check-code-structure`, `check-file-structure`):
 
 - Architecture และ design patterns
 - Code quality และ technical debt
@@ -43,18 +44,20 @@ related:
 
 > Goal: Scan codebase อย่างรวดเร็วและเลือก analysis depth
 
-1. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 3 นาที
-2. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
+1. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 2 นาที
+2. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` ดู physical layout และ file-level issues ใน 1 นาที
+3. ใช้ `/use-astgrep` หา patterns เบื้องต้น และ `/use-scripts` รวบรวม metrics ถ้าต้องการ
+4. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
    - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
    - ใช้ `@ast-grep/napi` หรือ `oxc-parser` สำหรับ programmatic AST analysis
    - รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`
-3. สร้าง structured data สำหรับ analysis
+5. สร้าง structured data สำหรับ analysis
 
 ### 3. Structure Analysis
 
 > Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
 
-1. รัน tree command ดู directory structure
+1. ทำ `/check-file-structure` ด้วย `eza --tree --level 2` หรือ `tree` ดู directory structure
 2. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
 3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
 4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
@@ -122,7 +125,7 @@ related:
 
 > Goal: สร้างรายงานครบถ้วน
 
-1. ทำ `/deep-report` สร้างตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
+1. ทำ `/report-deep` สร้างตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
 2. ทำ `/report` สรุปตารางจัดกลุ่มตามหมวดหมู่ถ้าต้องการ chat output
 3. ให้ recommendations ตาม priority และ impact
 4. ระบุ action items ที่ชัดเจน
@@ -140,7 +143,7 @@ related:
 
 ### 2. Tool Selection
 
-- Structure: `/scan-codebase`, tree, `ast-grep outline`, `/check-code-structure`
+- Structure: `/scan-codebase`, `/check-file-structure`, `eza --tree`, `ast-grep outline`, `/check-code-structure`
 - Architecture: `/use-astgrep`, `Grep`
 - Features: `/scan-codebase`, `/use-astgrep`
 - Code Quality: `/use-astgrep`, `/use-astgrep-programmatic`, `Grep`, `/use-scripts`
@@ -176,7 +179,7 @@ related:
 - ให้ recommendations ตาม priority และ impact
 - ระบุ action items ที่ชัดเจน
 - สร้าง roadmap สำหรับ improvements
-- ใช้ `/deep-report` สำหรับ detailed report
+- ใช้ `/report-deep` สำหรับ detailed report
 - ใช้ `/report` สำหรับ chat table
 
 ### 7. Deep Analysis Scripts
@@ -186,6 +189,7 @@ related:
 - ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis
 - รวบรวม metrics จาก knip, biome, vitest, madge
 - รัน `bunx ast-grep outline` ดู structure
+- รัน `eza --tree --level 2` หรือ `/check-file-structure` ดู physical layout
 
 ## Expected Outcome
 

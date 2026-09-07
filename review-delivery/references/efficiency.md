@@ -44,7 +44,7 @@
 2. ลด unnecessary resources, right-size instances, ใช้ spot/preemptible ถ้าเหมาะสม
 3. ปิด environments/integrations ที่ไม่ใช้
 4. ตรวจ logs retention, observability cost, data transfer
-5. ใช้ `/follow-best-practice` หรือ `/learn-from-web` สำหรับ cloud stack
+5. ใช้ `/follow-best-practice` หรือ `/learn-web` สำหรับ cloud stack
 
 ## Rules
 

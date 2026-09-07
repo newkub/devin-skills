@@ -1,6 +1,5 @@
 # Optimization
 
-
 ## Goal
 
 เข้าใจ optimization: หาค่า min/max ภายใต้ constraints ด้วย linear programming, greedy, dynamic programming, gradient descent และประยุกต์ใช้ใน resource allocation, scheduling, ML

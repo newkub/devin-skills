@@ -6,7 +6,7 @@ related:
   - roleplay-stakeholder
   - review-by-product
   - review-by-engineer
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
   - ask-me
@@ -52,7 +52,7 @@ Review project จากมุมมอง data — หา tracking gaps, data q
 
 > Goal: สรุป data findings
 
-1. ทำ `/report-table` พร้อม metric และ impact
+1. ทำ `/report` พร้อม metric และ impact
 2. ระบุ top issues
 3. ทำ `/suggest-next-action`
 
@@ -72,6 +72,8 @@ Review project จากมุมมอง data — หา tracking gaps, data q
 
 - ใช้ /review-by-product ถ้าจำเป็น
 - ใช้ /review-by-engineer ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-observability` หรือ domain review ที่ตรง
 
 ## Expected Outcome
 

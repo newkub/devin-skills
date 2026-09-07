@@ -5,9 +5,9 @@ argument-hint: "[scope]"
 related:
   - search-in-raindrop-io
   - follow-my-tech-stack
-  - follow-my-global-cli
+  - download-program
   - use-scripts
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -24,7 +24,7 @@ related:
 
 > Goal: ตรวจสอบ raindrop CLI และ authentication
 
-1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/follow-my-global-cli`
+1. รัน `raindrop --version` — ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
 2. รัน `raindrop auth status`
 3. ถ้ายังไม่ authenticated → รัน `printf '%s' "$RAINDROP_ACCESS_TOKEN" | raindrop auth login --token-stdin`
 4. รัน `raindrop doctor` เพื่อ verify config, auth, และ API connectivity
@@ -59,7 +59,7 @@ related:
    - url: `| jq -r '.items[].link'`
    - created: `| jq -r '.items[].created'`
    - tags: `| jq -r '.items[].tags[]'`
-3. ใช้ `/report-table` เพื่อสร้างตาราง: No, Title, Link, Tags, Created
+3. ใช้ `/report` เพื่อสร้างตาราง: No, Title, Link, Tags, Created
 4. บันทึกลงไฟล์: `raindrop bookmark search "" --sort created > raindrop-latest.json`
 
 ### 5. Handle Pagination And Empty Results

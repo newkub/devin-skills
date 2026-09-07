@@ -91,7 +91,7 @@
 - ถ้า context ไม่ชัด → ถาม user ก่อนลงมือ
 - ไม่แก้ไขนอก scope ทีตกลง
 
-- ใช้ /loop-continuous ถ้าจำเป็น
+- ใช้ /loop-until-complete ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /follow-single-responsibility ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น

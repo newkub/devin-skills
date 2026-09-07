@@ -6,7 +6,7 @@ related:
   - update-version-to-latest
   - follow-tool-renovate
   - check-migrations
-  - report-table
+  - report
   - report-before-after
   - suggest-next-action
   - scan-codebase
@@ -89,7 +89,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
    - Score < 70 → No-Go แนะนำให้ปรับ migration plan ก่อน
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 ## Fix
 

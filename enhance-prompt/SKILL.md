@@ -4,7 +4,7 @@ description: สรุป prompt เป็น numbered list แต่ละข�
 argument-hint: "[scope]"
 related:
   - ask-me
-  - report-plan
+  - plan
   - continue
   - follow-devin-global-skills
   - report
@@ -82,6 +82,6 @@ related:
 - Numbered list ทีอ่านง่าย แต่ละข้อมี single responsibility
 - ไฟล์/งานที่เกี่ยวข้องระบุชัดเจน
 - ข้อกำหนดของผู้ใช้ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
-- พร้อมส่งต่อให้ `/report-plan`, `/continue`, หรือ `/follow-devin-global-skills` ต่อไป
+- พร้อมส่งต่อให้ `/plan`, `/continue`, หรือ `/follow-devin-global-skills` ต่อไป
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: report-enhance-prompt)

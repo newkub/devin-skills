@@ -77,7 +77,6 @@ export default {
 } satisfies Config
 ```
 
-
 ### Git options
 
 | Option | Description |

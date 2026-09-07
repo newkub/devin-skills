@@ -3,7 +3,7 @@ name: check-infra
 description: ตรวจ infrastructure health — DNS records, TLS certificate expiry และ network endpoints
 argument-hint: "[domain-or-endpoint] [--dns|--ssl]"
 related:
-  - report-table
+  - report
 
 ---
 
@@ -47,7 +47,7 @@ related:
 
 > Goal: สรุปสถานะพร้อม action
 
-1. ใช้ `/report-table` คอลัมน์: No., Endpoint, Area, Status, Severity, Action
+1. ใช้ `/report` คอลัมน์: No., Endpoint, Area, Status, Severity, Action
 2. ระบุวันหมดอายุและช่องทาง renewal
 
 ## Rules

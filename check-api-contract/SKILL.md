@@ -5,7 +5,7 @@ argument-hint: "[spec-file-or-url]"
 related:
   - gen-openapi
   - review-api
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -52,7 +52,7 @@ related:
 
 > Goal: สรุป contract drift แยกตาม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Endpoint`, `Drift Type`, `Spec`, `Code`, `Severity`
+1. ใช้ `/report` คอลัมน์: `No.`, `Endpoint`, `Drift Type`, `Spec`, `Code`, `Severity`
 2. Severity: `critical` (spec-only, response shape ต่าง), `high` (code-only, required field ต่าง), `medium` (optional field ต่าง)
 3. แนะนำ `/gen-openapi` regenerate หรือ `/review-api` สำหรับ fix
 

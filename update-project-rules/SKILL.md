@@ -3,7 +3,7 @@ name: update-project-rules
 description: สร้างและอัปเดต ast-grep rules ใน `rules/` และ `sgconfig.yml` ตาม conventions ของ project
 argument-hint: "[rule-or-pattern]"
 related:
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -15,7 +15,7 @@ related:
 - ใช้เมื่อต้องการ lint rules แบบ AST-based ที่ enforce conventions เฉพาะ project
 - ครอบคลุม `rules/*.yml`, `sgconfig.yml`, และ custom rule directories
 - ไม่รวม `.devin/rules` (Markdown rules) — ใช้ `/update-devin-project-rules` แทน
-- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/create-devin-global-skills` แทน
+- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/new-skills` แทน
 
 ## Execute
 
@@ -50,7 +50,7 @@ related:
 
 > Goal: สรุป rules ที่สร้าง/อัปเดต
 
-1. ใช้ `/report-table` คอลัมน์: No., Rule, Pattern, Severity, Fix, Status
+1. ใช้ `/report` คอลัมน์: No., Rule, Pattern, Severity, Fix, Status
 2. ระบุ rules ที่เพิ่ม แก้ไข หรือลบ
 
 ## Rules

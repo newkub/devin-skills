@@ -4,7 +4,7 @@ description: ตรวจ webhook endpoints ด้าน security (signature, re
 argument-hint: "[endpoint-or-provider] [--security|--delivery]"
 related:
   - review-auth
-  - report-table
+  - report
 
 ---
 
@@ -51,7 +51,7 @@ related:
 
 > Goal: สรุปผลพร้อม severity และ fix
 
-1. ใช้ `/report-table` คอลัมน์: No., Endpoint, Provider, Area, Finding, Severity, Fix
+1. ใช้ `/report` คอลัมน์: No., Endpoint, Provider, Area, Finding, Severity, Fix
 2. เรียงตาม Severity: Critical → Info
 
 ## Rules

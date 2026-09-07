@@ -20,7 +20,7 @@ related:
 
 ใช้สำหรับวางแผนงานที่ซับซ้อนสูง ต้องการ comprehensive analysis ก่อน implement
 
-Boundary: งานวางแผนมาตรฐานที่ไม่ซับซ้อน → ใช้ `/plan`; ต้องการตัดสินใจร่วมกับ user → `/plan-by-ask-me`
+Boundary: งานวางแผนมาตรฐานที่ไม่ซับซ้อน → ใช้ `/plan`; ต้องการตัดสินใจร่วมกับ user → `/plan`
 
 สำหรับสำรวจ libraries ใช้ `/alternative`
 
@@ -130,8 +130,8 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 4. ระบุไฟล์ที่จะสร้างใหม่, แก้ไข, หรือลบ พร้อม risks และ mitigation
 5. ทำ `/deep-validate` เพื่อ validate แผนก่อนบันทึก
 6. ทำ `/create-plan-in-dot-devin` เพื่อสร้างแผนลง `.devin/plan/<workspace>/<title>-<date>.md`
-7. ทำ `/report-table` สำหรับ tasks และ file structure
-8. ทำ `/report-plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
+7. ทำ `/report` สำหรับ tasks และ file structure
+8. ทำ `/plan` เพื่อรายงานแผนในแชทก่อนลงมือทำ
 9. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
 
 ## Rules
@@ -161,7 +161,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 
 - ถ้า tasks > 10 สร้างใน `.devin/tasks/` และทำ `/update-dot-devin`
 - ถ้า tasks <= 10 บันทึกใน chat report เท่านั้น
-- ต้องทำ `/report-plan` ก่อนลงมือทำ ตอบในแชท แล้วทำต่อได้เลย
+- ต้องทำ `/plan` ก่อนลงมือทำ ตอบในแชท แล้วทำต่อได้เลย
 - ไม่ต้องรอยืนยันจาก user ยกเว้นกรณีเสี่ยงสูง
 
 ### 5. Stress-Test

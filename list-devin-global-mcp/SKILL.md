@@ -3,7 +3,7 @@ name: list-devin-global-mcp
 description: List configured global MCP servers and their tools
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
   - update-devin-global-mcp
 ---
@@ -51,7 +51,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง server, command, tools count, status
+1. ทำ `/report` แสดง server, command, tools count, status
 2. ถ้าไม่มี server → report ว่า global MCP ยังไม่ถูกตั้งค่า
 3. ทำ `/suggest-next-action` ถ้าต้องแก้ไข
 
@@ -76,7 +76,7 @@ related:
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ file paths, server names, tool names
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

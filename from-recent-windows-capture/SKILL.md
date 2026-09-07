@@ -6,7 +6,7 @@ related:
   - capture
   - analyze-codebase-quality
   - report
-  - report-table
+
   - suggest-next-action
 ---
 
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุปผลการ analyze
 
-1. ทำ `/report-table` ด้วยคอลัมน์: No, Filename, Timestamp, Key Observations
+1. ทำ `/report` ด้วยคอลัมน์: No, Filename, Timestamp, Key Observations
 2. สรุป overall context และ likely next steps
 3. ทำ `/suggest-next-action` ถ้าจำเป็น
 

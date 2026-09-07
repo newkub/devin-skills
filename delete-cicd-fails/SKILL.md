@@ -3,7 +3,7 @@ name: delete-cicd-fails
 description: ลบ CI/CD workflow runs ทีล้มเหลวออกจาก repo ปัจจุบันหรือทีระบุ
 argument-hint: "[workflow-or-run-id-or-all]"
 related:
-  - list-github-actions-fails
+  - resolve-github-actions-fails
   - resolve-cicd
   - watch-github-actions
   - ask-me
@@ -30,7 +30,7 @@ related:
 3. ถ้าได้รับ `<run-id>` จาก argument → ลบเฉพาะ run ID นั้น
 4. ถ้าได้รับ `<workflow>` จาก argument → ลบ failed runs ของ workflow นั้น
 5. ถ้าได้รับ `all` → ลบ failed runs ทั้งหมดใน repo
-6. ถ้าไม่มี argument → ทำ `/list-github-actions-fails` แสดงรายการก่อนแล้วถาม user
+6. ถ้าไม่มี argument → ทำ `/resolve-github-actions-fails` แสดงรายการก่อนแล้วถาม user
 
 ### 2. Confirm
 
@@ -54,7 +54,7 @@ related:
 > Goal: ตรวจสอบว่าไม่มี failed runs เหลือ
 
 1. รัน `gh run list --status failure --limit 50`
-2. ถ้ายังมี → รายงานและแนะนำ `/resolve-cicd` หรือ `/list-github-actions-fails`
+2. ถ้ายังมี → รายงานและแนะนำ `/resolve-cicd` หรือ `/resolve-github-actions-fails`
 3. ถ้าไม่มี → รายงาน success
 
 ## Rules

@@ -9,7 +9,7 @@ related:
   - resolve-errors
   - follow-tasks
   - suggest-next-action
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -76,7 +76,7 @@ related:
 > Goal: แนะนำ action ถัดไปตาม findings และจัดลำดับความสำคัญ
 
 1. ทำ `/suggest-next-action` ตาม findings ที่จัดลำดับแล้ว
-2. ทำ `/report-table` แสดง summary: domain scores, top findings, recommended workflows
+2. ทำ `/report` แสดง summary: domain scores, top findings, recommended workflows
 3. แนะนำ `/review-*` workflows สำหรับแต่ละ finding ตาม `reviewWorkflow` field
 
 ## Rules
@@ -107,7 +107,7 @@ related:
 ## Expected Outcome
 
 - Review report พร้อม score, grade, domain breakdown และ findings
-- ตาราง summary ตาม `/report-table` แสดง top findings และ recommended actions
+- ตาราง summary ตาม `/report` แสดง top findings และ recommended actions
 - แนะนำ `/review-*` workflows สำหรับแต่ละปัญหา
 - แนะนำ `/update-review-cli` ถ้า CLI ต้องสร้าง/อัปเดทหรือ analyzers ต้องปรับปรุง
 

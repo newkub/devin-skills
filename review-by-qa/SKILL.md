@@ -7,7 +7,7 @@ related:
   - review-by-engineer
   - run-test-unit
   - review-test
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
   - ask-me
@@ -53,7 +53,7 @@ Review project จากมุมมอง QA — หา edge cases, boundary co
 
 > Goal: สรุป QA findings
 
-1. ทำ `/report-table` พร้อม test scenario gaps
+1. ทำ `/report` พร้อม test scenario gaps
 2. ระบุ top issues
 3. ทำ `/suggest-next-action`
 
@@ -72,6 +72,8 @@ Review project จากมุมมอง QA — หา edge cases, boundary co
 - ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-by-engineer ถ้าจำเป็น
+
+- ส่ง findings ไปแก้ที่ section `## Fix` ของ `/review-test`
 
 ## Expected Outcome
 

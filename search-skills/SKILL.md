@@ -6,9 +6,9 @@ related:
   - follow-best-practice
   - suggest-next-action
   - resolve-errors
-  - follow-tool-websearch
   - follow-tool-crw
-  - learn-from-web
+  - follow-tool-crw
+  - learn-web
   - follow-skills-map
 ---
 
@@ -99,9 +99,9 @@ related:
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
-- ใช้ /follow-tool-websearch ถ้าจำเป็น
 - ใช้ /follow-tool-crw ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /follow-tool-crw ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 
 ## Expected Outcome
 

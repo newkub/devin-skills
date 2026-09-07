@@ -3,7 +3,7 @@ name: list-devin-global-hooks
 description: List global and project-level devin hooks from common config paths
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง path, event, command, enabled
+1. ทำ `/report` แสดง path, event, command, enabled
 2. ถ้าไม่มี hooks → report ว่าไม่มี global hooks ตั้งค่า
 3. ทำ `/suggest-next-action` ถ้าต้องแก้ไขหรือสร้าง
 
@@ -85,7 +85,7 @@ related:
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, events, commands
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome
 

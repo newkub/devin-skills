@@ -7,7 +7,7 @@ related:
   - review-bundle
   - run-build
   - check-size
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุป regression ให้ตัดสินใจได้
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Chunk`, `Before`, `After`, `Delta`, `Status`, `Suspected Cause`
+1. ทำ `/report` คอลัมน์: `No.`, `Chunk`, `Before`, `After`, `Delta`, `Status`, `Suspected Cause`
 2. Status: `ok`, `regression`, `critical`, `new`, `removed`
 3. สรุป total bundle delta และ top regressions
 4. ถ้า `critical` → เสนอ `/review-bundle` หรือ `/review-bundle` เป็น next action

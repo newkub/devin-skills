@@ -5,9 +5,9 @@ argument-hint: "[workflow-or-job]"
 related:
   - follow-tool-github-actions
   - watch-github-actions
-  - list-github-actions-fails
+  - resolve-github-actions-fails
   - resolve-cicd
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -18,7 +18,7 @@ related:
 
 - ใช้เมื่อต้องการทดสอบ `.github/workflows/*.yml` โดยไม่ต้อง push
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
-- ใช้ร่วมกับ `/list-github-actions-fails` (ดู fails บน remote) และ `/watch-github-actions` (remote)
+- ใช้ร่วมกับ `/resolve-github-actions-fails` (ดู fails บน remote) และ `/watch-github-actions` (remote)
 
 ## Execute
 
@@ -70,7 +70,7 @@ related:
 
 > Goal: สรุปผลก่อน push จริง
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Workflow`, `Job`, `Result`, `Duration`, `Note`
+1. ทำ `/report` คอลัมน์: `No.`, `Workflow`, `Job`, `Result`, `Duration`, `Note`
 2. ระบุ jobs ที่ผ่าน local และความมั่นใจว่าจะผ่าน remote
 3. ถ้าผ่านหมด → พร้อม push; ถ้าไม่ → ทำ `/resolve-cicd`
 

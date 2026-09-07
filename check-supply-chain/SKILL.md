@@ -3,9 +3,8 @@ name: check-supply-chain
 description: ตรวจ supply chain risks — lockfile integrity, typosquat signals และ install scripts
 argument-hint: "[manifest-or-lockfile]"
 related:
-  - gen-sbom
   - review-security
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -56,9 +55,9 @@ related:
 
 > Goal: สรุป supply chain risks
 
-1. ใช้ `/report-table`: `No.`, `Finding`, `Package/Location`, `Severity`, `Evidence`, `Fix`
+1. ใช้ `/report`: `No.`, `Finding`, `Package/Location`, `Severity`, `Evidence`, `Fix`
 2. Severity: `critical` (suspicious install script, registry hijack signals), `high` (unpinned, git deps), `medium` (missing integrity, loose ranges)
-3. แนะนำ: `/gen-sbom` สำหรับ inventory, hash pinning, registry allowlist
+3. แนะนำ: SBOM generation (CycloneDX/SPDX) สำหรับ inventory, hash pinning, registry allowlist
 
 ## Rules
 

@@ -6,7 +6,7 @@ related:
   - list-github-repo
   - all-github-repo
   - search-in-github-star
-  - report-table
+  - report
 
 ---
 
@@ -48,12 +48,12 @@ related:
 
 > Goal: แสดงผลเป็นตาราง
 
-1. ทำ `/report-table` คอลัมน์: No., Owner, Name, Description, Language, Stars, Updated
+1. ทำ `/report` คอลัมน์: No., Owner, Name, Description, Language, Stars, Updated
 2. แสดงสรุป: จำนวน repo, top languages, filter ที่ใช้
 
 ## Rules
 
-- ใช้ `/report-table` เสมอ ห้าม plain list
+- ใช้ `/report` เสมอ ห้าม plain list
 - ระบุ filter ที่ใช้ใน report header
 - ถ้าไม่พบ repo ตาม filter → รายงานจำนวน 0 พร้อมคำแนะนำ
 - ไม่แก้ไข starred state ใด ๆ

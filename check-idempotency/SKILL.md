@@ -4,7 +4,7 @@ description: ตรวจ mutation endpoints ว่า retry-safe — idempotenc
 argument-hint: "[endpoints]"
 related:
   - review-api
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุป non-idempotent operations พร้อม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Operation`, `Side Effect`, `Protection`, `Retry Risk`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Operation`, `Side Effect`, `Protection`, `Retry Risk`, `Severity`, `Fix`
 2. Severity: `critical` (payments/irreversible ไม่มี protection), `high` (webhook/queue ไม่ dedup), `medium` (forms ไม่มี idempotency key)
 3. แนะนำ fix ต่อประเภท: idempotency keys, unique constraints, event dedup store, request fingerprinting
 

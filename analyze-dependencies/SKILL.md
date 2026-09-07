@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - research-dependencies
   - follow-my-tech-stack
-  - report-table
+  - report
   - follow-create-rust-cli
 ---
 
@@ -40,7 +40,7 @@ related:
 
 > Goal: รายงานผล
 
-1. ใช้ `--json` แล้วส่งไปยัง `/report-table`
+1. ใช้ `--json` แล้วส่งไปยัง `/report`
 2. สรุปจำนวน dependencies, จำนวน outdated, แยกตาม source
 3. ถ้าต้องการเปรียบเทียบทางเลือก → ใช้ `/research-dependencies`
 

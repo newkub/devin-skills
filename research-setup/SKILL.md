@@ -4,7 +4,7 @@ description: ค้นหา setup, config, CI และ integration ของ t
 argument-hint: "[tool-or-service]"
 related:
   - deep-research
-  - learn-from-web
+  - learn-web
   - follow-best-practice
   - research-dependencies
   - setup-cicd
@@ -37,7 +37,7 @@ related:
 
 > Goal: เก็บข้อมูลหลักจาก official documentation
 
-1. ใช้ `/learn-from-web` หรือ `crw_scrape` เพื่อหา official docs
+1. ใช้ `/learn-web` หรือ `crw_scrape` เพื่อหา official docs
 2. เริ่มจาก getting started, quickstart, installation, setup guide
 3. เก็บลิงก์ official docs และคำสั่่ง setup หลัก
 4. ถ้ามี CLI tool → บันทึกคำสั่่ง install และ version ทีแนะนำ
@@ -76,7 +76,7 @@ related:
 > Goal: ส่งมอบข้อมูลให้ใช้ต่อได้
 
 1. ถ้าพบข้อมูลยาวหรือซับซ้อน → สร้าง `references/setup-<topic>.md`
-2. ทำ `/report-progress` หรือ `/report-table` สรุปผล
+2. ทำ `/report-progress` หรือ `/report` สรุปผล
 3. ระบุ source links ทั้งหมดทีใช้อ้างอิง
 4. ถ้าข้อมูลไม่แน่นอน → ระบุเป็น assumption หรือข้อควรระวัง
 

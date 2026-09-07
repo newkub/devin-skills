@@ -161,7 +161,7 @@ related:
   - High: คุณภาพตอบลดลงชัดเจน ไม่มีการ preserve context ไม่มี goal reminders
   - Medium: อ่านไฟล์ซ้ำหรืออ่านเกินจำเป็น sub-task ไม่ชัดเจน ไม่มี progress summary
   - Low: ข้อความ goal reminder ไม่สม่ำเสมอ จัดการ context window ได้ปานกลาง
-- ใช้ `/report-table` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
+- ใช้ `/report` สำหรับตาราง findings: Category, Finding, Severity, Location, Recommendation
 - ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 
 - ใช้ /follow-math-concepts ถ้าจำเป็น

@@ -4,7 +4,7 @@ description: สร้าง ค้นหา แก้ไข ปิด เปิ
 argument-hint: "[action] [repo]"
 related:
   - follow-github-issue-templates
-  - implement-github-issue
+  - implement-github-issue-by-me
   - create-github-pr
   - update-github-issue
   - ask-me
@@ -19,11 +19,11 @@ related:
 
 ## Scope
 
-- ใช้ร่วมกับ skills: `/open-github`, `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-github-issue`, `/update-github-issue`
+- ใช้ร่วมกับ skills: `/open-github`, `/open-github`, `/list-github-issue`, `/follow-github-issue-templates`, `/create-github-pr`, `/review-issue`, `/update-github-issue`
 - รองรับ repo ปัจจุบัน หรือ `--repo owner/repo`
 - ไม่ใช่ project management tool ครบวงจร
 
-ดูเพิ่มเติม: `/implement-github-issue`, `/ask-me`, `/open-github`, `/open-github`, `/open-github`, `/open-web`
+ดูเพิ่มเติม: `/implement-github-issue-by-me`, `/ask-me`, `/open-github`, `/open-github`, `/open-github`, `/open-web`
 
 ## Execute
 

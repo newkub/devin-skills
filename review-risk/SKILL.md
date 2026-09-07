@@ -10,7 +10,7 @@ related:
   - review-compliance
   - deep-plan
   - prioritize
-  - report-table
+  - report
   - suggest-next-action
   - scan-codebase
 ---
@@ -78,8 +78,8 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 > Goal: สรุป risk score และ prioritized actions
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report-table` risk register: No., Risk, Category, Probability, Impact, Score, Severity, Mitigation
-3. ทำ `/report-table` Risk Summary และ Action Items
+2. ทำ `/report` risk register: No., Risk, Category, Probability, Impact, Score, Severity, Mitigation
+3. ทำ `/report` Risk Summary และ Action Items
 4. แสดง go/no-go หรือ proceed-with-caution
 5. ทำ `/suggest-next-action`
 
@@ -117,7 +117,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /prioritize ถ้าจำเป็น
 

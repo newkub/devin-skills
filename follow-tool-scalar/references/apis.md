@@ -13,7 +13,6 @@ npm install --save-dev -D
 - Latest: see registry
 - [Package Registry](https://www.npmjs.com/package/-D)
 
-
 ## Dependencies
 
 - See package registry for transitive dependencies.

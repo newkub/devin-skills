@@ -15,7 +15,7 @@
 > Goal: เลือก CI/CD pipeline ที่เหมาะสม
 1. ถ้าเป็น GitHub → สร้าง `.github/workflows/ci.yml`
 2. ถ้าเป็น GitLab → สร้าง `.gitlab-ci.yml`
-3. ถ้าไม่แน่ใจ → ทำ `/learn-from-web` หา official best practices
+3. ถ้าไม่แน่ใจ → ทำ `/learn-web` หา official best practices
 4. ใช้ `/review-delivery` เพื่อ sync config กับ project conventions
 ### 3. Write Pipeline
 > Goal: เขียน pipeline ที่ใช้งานได้

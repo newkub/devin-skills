@@ -7,10 +7,9 @@ related:
   - review-seo
   - review-security
   - review-quality
-  - list-ci-configs
   - scan-codebase
   - deep-analyze
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -79,7 +78,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity ตาม `references/scoring.md`
 3. คำนวณ review score ตาม `references/scoring.md`
-4. ทำ `/report` พร้อม `/report-table` และ `/suggest-next-action`
+4. ทำ `/report` พร้อม `/report` และ `/suggest-next-action`
 
 ## Rules
 
@@ -89,11 +88,10 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
 - คำนวณ score เป็น percentage (0-100) ตาม `references/scoring.md` แล้วเปรียบเทียบ before/after
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
-- ใช้ `/report-table` สำหรับรายงาน findings, score, actions
+- ใช้ `/report` สำหรับรายงาน findings, score, actions
 
 - ใช้ /review-security ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /list-ci-configs ถ้าจำเป็น
 
 ## Fix
 
@@ -113,7 +111,7 @@ Merged from: optimize-ci, optimize-docker
 > ทำ section นี้เมื่อต้องการ verify email deliverability ของ domain/service (merged from: verify-email-deliverability)
 
 1. ทำตาม `references/verify-email-deliverability.md`
-2. ใช้ `/report-table` สรุป SPF, DKIM, DMARC, service config, test send
+2. ใช้ `/report` สรุป SPF, DKIM, DMARC, service config, test send
 3. ถ้า broken → ระบุ exact DNS record values ที่ user ต้องใส่
 
 ## Expected Outcome

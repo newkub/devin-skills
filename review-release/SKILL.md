@@ -9,7 +9,7 @@ related:
   - setup-release
   - review-correctness
   - review-architecture
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -71,7 +71,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 ทำตาม references/scoring.md
 
 - คำนวณ release readiness score, grade และ supplementary metrics
-- ทำ `/report-table` สรุป category, status, findings, score
+- ทำ `/report` สรุป category, status, findings, score
 - สร้าง go/no-go checklist
 - ทำ `/suggest-next-action`
 
@@ -90,11 +90,13 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
    - Score < 70 → No-Go แนะนำให้แก้ก่อน publish
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /test-release ถ้าจำเป็น
 - ใช้ /review-correctness ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
+
+- ถ้า pass → ทำ `/ship` หรือ release ถ้า fail → แก้ findings ก่อน release
 
 ## Expected Outcome
 

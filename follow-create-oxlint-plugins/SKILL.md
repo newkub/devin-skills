@@ -6,7 +6,7 @@ related:
   - follow-create-sdk
   - follow-my-tech-stack
   - review-techstack
-  - follow-tool-oxlint
+  - follow-tool-eslint
   - ship
 ---
 ## Goal
@@ -110,7 +110,7 @@ related:
 - nursery: Rules ที่อยู่ระหว่างพัฒนาอาจเปลี่ยนแปลง
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-tool-oxlint ถ้าจำเป็น
+- ใช้ /follow-tool-eslint ถ้าจำเป็น
 
 ## Expected Outcome
 

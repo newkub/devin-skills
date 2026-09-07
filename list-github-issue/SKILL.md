@@ -5,9 +5,9 @@ argument-hint: "[repo]"
 related:
   - open-github
   - create-github-issue
-  - review-github-issue
+  - review-issue
   - list-github-pr
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -15,7 +15,7 @@ related:
 แสดงรายการ issues ของ repository ที่ระบุพร้อมข้อมูลสำคัญ
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github-issue`, `review-github-issue`, `list-github-pr`
+- สำหรับ skills ที่เกี่ยวข้อง: `open-github`, `create-github-issue`, `review-issue`, `list-github-pr`
 
 ใช้สำหรับดู issues ของ repository ใดๆ บน GitHub ที่ authenticated user มีสิทธิ์เข้าถึง
 
@@ -45,7 +45,7 @@ related:
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. เลข issue
    - Title ชื่อ issue
@@ -67,7 +67,7 @@ related:
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่อัปเดตล่าสุด
 - แสดงข้อมูลสำคัญ: number, title, labels, state, author, comments, updated
 

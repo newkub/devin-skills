@@ -4,9 +4,6 @@ description: Refactor workspace members ให้มี SRP, แนะนำ wor
 argument-hint: "[scope]"
 related:
   - refactor
-  - refactor-codebase
-  - refactor-files
-  - refactor-to-single-responsibility
   - follow-single-responsibility
   - restructure
   - relocation
@@ -62,7 +59,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 3. ระบุ workspace member boundaries ตาม domain, reason to change, cohesion
 4. ระบุ consumers, public API, และ dependencies ที่จะกระทบ
 5. จัดลำดับตาม dependency direction (foundation ก่อน)
-6. ทำ `/report-plan` ก่อนลงมือ execute
+6. ทำ `/plan` ก่อนลงมือ execute
 
 ### 4. Scan And Recommend Workspace Members
 
@@ -133,9 +130,9 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 - ทำ `/update-references` หลังทุกการย้าย code
 - ถ้า broken references → ทำ `/resolve-errors`
 
-- ใช้ /refactor-codebase ถ้าจำเป็น
-- ใช้ /refactor-files ถ้าจำเป็น
-- ใช้ /refactor-to-single-responsibility ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
+- ใช้ /refactor ถ้าจำเป็น
 
 ## Expected Outcome
 

@@ -6,7 +6,7 @@ related:
   - review-stability
   - use-astgrep
   - run-test-unit
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุป coverage gaps พร้อม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Location`, `Issue Type`, `Error`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `Location`, `Issue Type`, `Error`, `Severity`, `Fix`
 2. Issue types: `unhandled`, `swallowed`, `untested`, `no-top-level-handler`
 3. แนะนำ `/review-stability` สำหรับ remediation
 

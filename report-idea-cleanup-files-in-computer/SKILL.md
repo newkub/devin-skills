@@ -4,9 +4,9 @@ description: รายงานไอเดียไฟล์และโฟล�
 argument-hint: "[scope]"
 related:
   - check-system-env
-  - follow-my-global-cli
+  - check-my-global-cli
   - use-scripts
-  - report-table
+  - report
   - report-file-structure
   - suggest-next-action
   - cleanup-files-in-project
@@ -19,7 +19,7 @@ related:
 ## Scope
 
 ใช้กับ computer ของผู้ใช้ทั่วไป (ไม่จำกัด workspace) ครอบคลุม package caches, temp files, logs, editor caches, browser caches, และ artifacts เก่า
-- เป็น `report-before` ไม่ลบอัตโนมัติ
+- เป็น `report` ไม่ลบอัตโนมัติ
 - ไม่รวมการลบไฟล์ส่วนบุคคล, source code, หรือ secrets
 
 ## Execute
@@ -28,11 +28,11 @@ related:
 
 > Goal: เตรียมขอบเขตและความปลอดภัยก่อนเริ่ม
 
-1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report-before`
+1. ยืนยันกับผู้ใช้ว่า workflow นี้ `report`
 2. ระบุ scope: home directory, temp, package caches, editor/browser caches, หรือทั้งหมด
 3. เลือก OS commands ตาม shell (PowerShell, bash, zsh)
 4. ทำ `/check-system-env` เพื่อดู paths หลัก
-   - ทำ `/follow-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
+   - ทำ `/check-my-global-cli` เพื่อดู CLI tools ที่ติดตั้ง
 
 ### 2. Scan System Caches And Temp Files
 
@@ -68,7 +68,7 @@ related:
 
 > Goal: จัดรูปแบบ report ให้เห็นภาพรวมและรายละเอียด
 
-1. ทำ `/report-table` ด้วย columns:
+1. ทำ `/report` ด้วย columns:
    - `No.`, `Category`, `Path/Pattern`, `Estimated Size`, `Safety`, `Suggested Command`, `Notes`
 2. ทำ `/report-file-structure` สำหรับ top 10 directories ที่ใหญ่ที่สุด
 3. สรุป:
@@ -94,7 +94,7 @@ related:
 > Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
 
 1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
 4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators

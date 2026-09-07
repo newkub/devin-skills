@@ -7,7 +7,7 @@ related:
   - follow-service-cloudflare
   - follow-secret-manager
   - follow-best-practice
-  - learn-from-web
+  - learn-web
   - setup-cicd
   - delete
 ---
@@ -172,7 +172,7 @@ related:
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
+- ใช้ /learn-web ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 
 ## Expected Outcome

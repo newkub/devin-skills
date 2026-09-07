@@ -4,7 +4,7 @@ description: วิเคราะห์โครงสร้างไฟล์�
 argument-hint: "[scope]"
 related:
   - report-file-structure
-  - report-table
+  - report
   - follow-create-rust-cli
   - follow-my-tech-stack
   - report-in-html
@@ -42,7 +42,7 @@ related:
 
 > Goal: รายงานผล
 
-1. ใช้ `--json` แล้วส่งไปยัง `/report-table` หรือ `/report-file-structure`
+1. ใช้ `--json` แล้วส่งไปยัง `/report` หรือ `/report-file-structure`
 2. กรณี simple output ใช้ `--stats` แล้วอ่านค่าผ่าน terminal
 3. ถ้าต้องการ visualize ใน browser → ใช้ `/report-in-html`
 

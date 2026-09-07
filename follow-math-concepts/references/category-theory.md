@@ -1,6 +1,5 @@
 # Category Theory
 
-
 ## Goal
 
 เข้าใจ category theory: categories, objects, morphisms, functors, natural transformations, monads และประยุกต์ใช้ใน functional programming, type systems, composition

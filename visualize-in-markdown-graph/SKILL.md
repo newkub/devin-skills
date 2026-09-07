@@ -3,7 +3,7 @@ name: visualize-in-markdown-graph
 description: ตอบกลับเป็น markdown graph แสดงความเชื่อมโยงของข้อมูล
 argument-hint: "[topic]"
 related:
-  - report-table
+  - report
   - report-flow
   - report-workspace-graph
   - visualize-in-web
@@ -52,7 +52,7 @@ related:
 2. ถ้าต้องการ hierarchy → ใช้ `mermaid mindmap` หรือ nested markdown list
 3. ถ้าต้องการ comparison → ใช้ `mermaid quadrantChart` หรือ table
 4. ถ้า mermaid ไม่รองรับหรือ user context ไม่รองรับ → ใช้ text graph หรือ ASCII boxes
-5. ถ้าต้องการความละเอียดสูง → ใช้ `/report-table` ประกอบ
+5. ถ้าต้องการความละเอียดสูง → ใช้ `/report` ประกอบ
 
 ### 4. Render Markdown Graph
 
@@ -69,7 +69,7 @@ related:
 > Goal: ทำให้ graph อ่านง่ายขึ้น
 
 1. เพิ่ม legend อธิบายสี/กลุ่ม/สัญลักษณ์
-2. ใช้ `/report-table` สรุป nodes, edges, groups ถ้าช่วยให้เข้าใจ
+2. ใช้ `/report` สรุป nodes, edges, groups ถ้าช่วยให้เข้าใจ
 3. อธิบาย insight สั้นๆ หลัง graph
 
 ### 6. Output And Suggest

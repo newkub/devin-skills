@@ -4,7 +4,7 @@ description: ใช้งาน linter ใน project
 argument-hint: "[scope]"
 related:
   - follow-tool-biome
-  - follow-tool-oxlint
+  - follow-tool-eslint
   - resolve-errors
 ---
 
@@ -34,7 +34,7 @@ related:
 > Goal: ติดตั้งและตั้งค่า linter
 
 1. รัน `/follow-tool-biome` สำหรับ TypeScript/JavaScript
-2. รัน `/follow-tool-oxlint` สำหรับ TypeScript/JavaScript
+2. รัน `/follow-tool-eslint` สำหรับ TypeScript/JavaScript
 3. รัน `clippy` สำหรับ Rust
 
 ### 3. Validate

@@ -6,7 +6,7 @@ related:
   - follow-my-package-manager
   - list-program-in-computer
   - download-program
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -67,7 +67,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` คอลัมน์: Manager, Command, Status, Notes
+1. ใช้ `/report` คอลัมน์: Manager, Command, Status, Notes
 2. ระบุ manager ใดสำเร็จ ใดมี error
 3. ระบุ programs ทียังไม่อัปเดตและเหตุผล
 4. ทำ `/suggest-next-action`

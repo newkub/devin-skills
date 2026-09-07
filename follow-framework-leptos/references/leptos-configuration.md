@@ -33,5 +33,4 @@ LEPTOS_OPTION2=value2
 | option2 | boolean | false | Description of option2 |
 | option3 | number | 0 | Description of option3 |
 
-
 ---

@@ -4,7 +4,7 @@ description: ตรวจ file encodings ทั้ง repo — BOM ปน, mixed
 argument-hint: "[path]"
 related:
   - search-files-patterns
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,7 +49,7 @@ related:
 
 > Goal: สรุป encoding health พร้อม fixes
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File/Pattern`, `Issue`, `Current`, `Expected`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `File/Pattern`, `Issue`, `Current`, `Expected`, `Fix`
 2. แนะนำ: เพิ่ม/แก้ `.gitattributes` และ `.editorconfig`, `git add --renormalize` ถ้าจำเป็น
 3. ระบุไฟล์ที่ต้อง manual fix (non-UTF8)
 

@@ -3,7 +3,7 @@ name: report-flow
 description: สรุปขั้นตอน workflow หรือกระบวนการเป็นลำดับ step ทีอ่านง่าย
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -58,7 +58,7 @@ related:
 
 > Goal: นำเสนอ flow ให้สวยงามและใช้งานได้
 
-1. ใช้ `/report-table` สรุป overview: Step, Action, Input, Output, Tool
+1. ใช้ `/report` สรุป overview: Step, Action, Input, Output, Tool
 2. แสดงลำดับ steps แบบ numbered list
 3. ถ้ามี branches → ใช้ nested list หรือ flow chart ASCII
 4. ทำ `/suggest-next-action`

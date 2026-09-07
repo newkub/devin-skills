@@ -10,13 +10,12 @@ related:
   - run-review
   - deep-validate
   - report
-  - report-table
+
   - suggest-next-action
   - deep-optimize
   - follow-design-system
   - capture
   - review-accessibility
-  - use-agent-browser
 ---
 
 ## Goal
@@ -91,7 +90,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 > Goal: รายงาน aggregate findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report`
 2. สร้างตาราง findings: Dimension, Finding, Severity, Location, Design Impact, Recommendation
 3. คำนวณ review score ตามสูตรใน `references/scoring.md`
 4. สร้าง design maturity scorecard: 5 dimensions, score 1-5
@@ -151,7 +150,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 - ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /deep-optimize ถ้าจำเป็น
 - ใช้ /follow-design-system ถ้าจำเป็น

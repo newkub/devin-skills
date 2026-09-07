@@ -3,7 +3,7 @@ name: review-devin-global-subagents
 description: ตรวจสอบ subagent ก่อน update-devin-global-subagents แก้ไข ครอบคลุม format
 argument-hint: "[scope]"
 related:
-  - report-table
+  - report
   - suggest-next-action
   - update-devin-global-subagents
 ---
@@ -40,7 +40,7 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules
 

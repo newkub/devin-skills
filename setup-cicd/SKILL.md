@@ -14,7 +14,7 @@ related:
   - run-verify
   - run-test-all
   - ship
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -188,7 +188,7 @@ jobs:
 
 > Goal: สรุปสถานะ setup
 
-1. ใช้ `/report-table` สรุป: platform, workflow files, missing scripts, missing secrets, next action
+1. ใช้ `/report` สรุป: platform, workflow files, missing scripts, missing secrets, next action
 2. ทำ `/suggest-next-action`
 
 ### 7. Optional Release Setup

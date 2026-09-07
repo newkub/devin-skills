@@ -5,7 +5,7 @@ argument-hint: "[consumer-or-provider]"
 related:
   - check-api-contract
   - gen-openapi
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -56,7 +56,7 @@ related:
 
 > Goal: สรุป contract verification
 
-1. ใช้ `/report-table`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
+1. ใช้ `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
 2. Verdict ต่อ contract: `verified`, `drift`, `broken`
 3. แนะนำ: fix provider, update contract, หรือ version API (`/check-api-versioning`)
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-monorepo
-  - report-table
+  - report
   - suggest-next-action
   - update-docs
   - review-features
@@ -19,6 +19,8 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 ## Scope
 
 ใช้ก่อนเรียก `update-docs` — ตรวจ `docs/` structure, VitePress config, content quality และ link integrity ทำ review เท่านั้น ไม่แก้ไข docs ไม่ตรวจ features coverage (scope ของ `review-features`)
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-content-coverage) — สำหรับตรวจ content coverage ครบทุก features/APIs/use cases ดู `references/content-coverage-checklist.md`
 
 ## Execute
 
@@ -72,7 +74,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 > Goal: สรุป review score และ findings
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report-table` พร้อม findings
+2. ทำ `/report` พร้อม findings
 3. ทำ `/suggest-next-action`
 
 ## Rules
@@ -108,7 +110,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 ## Fix
 
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`

@@ -3,12 +3,12 @@ name: check-git-logs
 description: ดูประวัติไฟล์จาก git log ไล่เช็คทีละ commit จนกว่าจะเจอเงื่อนไข รองรับ local/remote
 argument-hint: "[scope]"
 related:
-  - git-debug
+  - deep-debug
   - git-file-history
   - restore-from-git-log
   - restore-from-my-dotfiles
   - deep-debug
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -21,7 +21,7 @@ related:
 - ระบุไฟล์เป้าหมายและเงื่อนไขทีต้องการหา
 - รองรับ local git repo และ remote GitHub repo
 - แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
-- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/git-debug`
+- ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/deep-debug`
 - Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
 - ดูเพิ่มเติม: /git-file-history, /restore-from-my-dotfiles
@@ -70,7 +70,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง: No, Commit SHA, Date, Author, Message, Match
+1. ทำ `/report` แสดง: No, Commit SHA, Date, Author, Message, Match
 2. ถ้าเจอ condition → แสดง content ของไฟล์ใน commit นั้น (ถ้าไม่ sensitive)
 3. ถ้าไม่เจอ → ระบุว่าไม่พบ
 4. ทำ `/suggest-next-action` เช่น กู้คืน, bisect, หรือดู commit ก่อนหน้า
@@ -107,4 +107,4 @@ related:
 - หา commit ทีตรงเงื่อนไขได้
 - รายงาน commit SHA, date, author, message และ content
 - รองรับทั้ง local และ remote repo
-- ใช้งานได้กับ `/deep-debug` และ `/git-debug`
+- ใช้งานได้กับ `/deep-debug` และ `/deep-debug`

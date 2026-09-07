@@ -6,7 +6,7 @@ related:  - follow-algorithms
   - scan-codebase
   - run-profiler
   - run-bench
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ related:  - follow-algorithms
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Function, Complexity, Hot Path, Severity, Fix
+1. ทำ `/report` ด้วย columns: No., Function, Complexity, Hot Path, Severity, Fix
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี data structure ปัญหา → เชื่อม `/review-data-structure`
 

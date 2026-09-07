@@ -10,7 +10,7 @@ related:
   - follow-secret-manager
   - check-secrets-leak
   - run-check
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -83,7 +83,7 @@ related:
 1. รัน `docker build -t <name>:local .` และตรวจ image size
 2. รัน `docker run --rm -p <port>:<port> <name>:local` แล้ว smoke test
 3. ทำ `/run-check` กับ project ก่อน ship
-4. รายงานผลด้วย `/report-table`: image size, layers, warnings
+4. รายงานผลด้วย `/report`: image size, layers, warnings
 
 ## Rules
 

@@ -3,9 +3,9 @@ name: update-chezmoi
 description: อัปเดต dotfiles ด้วย chezmoi รวมถึง chezmoi readd
 argument-hint: "[scope]"
 related:
-  - follow-my-global-cli
+  - download-program
   - git-commit
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -24,7 +24,7 @@ related:
 > Goal: ตรวจสอบ chezmoi
 
 1. รัน `chezmoi --version`
-2. ถ้าไม่มี → ทำ `/follow-my-global-cli` เพื่อติดตั้ง
+2. ถ้าไม่มี → ทำ `/download-program` เพื่อติดตั้ง
 3. รัน `chezmoi doctor` เพื่อตรวจสอบสถานะ
 4. ระบุ source directory และ destination directory
 
@@ -61,7 +61,7 @@ related:
 
 1. รัน `chezmoi git status` หรือ `chezmoi cd` แล้ว `git status`
 2. ทำ `/git-commit` ถ้ามี source dir repo
-3. ใช้ `/report-table` แสดง: File, Action, Status
+3. ใช้ `/report` แสดง: File, Action, Status
 4. ทำ `/suggest-next-action`
 
 ## Rules

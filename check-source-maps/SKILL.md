@@ -6,7 +6,7 @@ related:
   - review-bundle
   - run-build
   - review-security
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -48,7 +48,7 @@ related:
 
 > Goal: สรุป exposure
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `File/Asset`, `Map Location`, `Exposed`, `Severity`, `Fix`
+1. ใช้ `/report` คอลัมน์: `No.`, `File/Asset`, `Map Location`, `Exposed`, `Severity`, `Fix`
 2. Severity: `critical` (map พร้อม sourcesContent เข้าถึงได้ภายนอก), `warning` (map ใน build แต่ไม่ deploy), `info` (hidden map สำหรับ error tracking)
 3. แนะนำ fix: `sourcemap: 'hidden'` หรือ `false`, upload map ไป error tracking แทน, strip `sourceMappingURL`
 

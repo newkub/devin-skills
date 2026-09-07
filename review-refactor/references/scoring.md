@@ -23,7 +23,7 @@
 
 ## Action Threshold
 
-- Score < 70 → แนะนำ `refactor`, `refactor-to-single-responsibility`, หรือ `refactor-workspace`
+- Score < 70 → แนะนำ `/refactor` หรือ `/refactor-workspace`
 - Score < 50 → หยุดและ report
 
 ## Report Format

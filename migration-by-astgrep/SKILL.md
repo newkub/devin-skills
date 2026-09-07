@@ -4,7 +4,7 @@ description: รัน codebase migrations ด้วย ast-grep rules
 argument-hint: "[rule-file-or-pattern]"
 related:
   - scan-codebase
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -78,7 +78,7 @@ related:
 > Goal: ทำ migration ครบทุก patterns
 
 1. ทำซ้ำสำหรับแต่ละ migration rule
-2. ใช้ `/report-table` สรุปจำนวน matches, files changed, tests status
+2. ใช้ `/report` สรุปจำนวน matches, files changed, tests status
 3. ทำ `/suggest-next-action`
 
 ## Rules

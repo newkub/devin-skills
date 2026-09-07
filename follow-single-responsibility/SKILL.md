@@ -4,7 +4,7 @@ description: แยก task หรือ prompt ออกเป็นหน่�
 argument-hint: "[scope]"
 related:
   - ask-me
-  - report-plan
+  - plan
   - continue
 ---
 
@@ -46,7 +46,7 @@ related:
 > Goal: พร้อมให้ step ถัดไปรับผิดชอบ
 1. แสดง numbered list ในแชททันที
 2. ไม่ลงมือ implement หรือแก้ไขไฟล์ใดๆ ในขั้นตอนนี้
-3. ถ้าต้องการ → ทำ `/report-plan` หรือ `/continue` ต่อไป
+3. ถ้าต้องการ → ทำ `/plan` หรือ `/continue` ต่อไป
 
 ## Rules
 
@@ -71,4 +71,4 @@ related:
 - Numbered list ทีอ่านง่าย แต่ละข้อมี single responsibility
 - ไฟล์/งานทีเกี่ยวข้องระบุชัดเจน
 - ข้อกำหนดของ user ถูกถ่ายทอดครบถ้วนโดยไม่เพิ่มหรือลด
-- พร้อมส่งต่อให้ `/report-plan` หรือ `/continue`
+- พร้อมส่งต่อให้ `/plan` หรือ `/continue`

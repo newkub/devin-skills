@@ -3,10 +3,10 @@ name: follow-coverage
 description: ทำให้ครอบคลุม ตรวจและเติมส่วนที่ขาดใน content skill และ code
 argument-hint: "[scope]"
 related:
-  - review-content-coverage
+  - review-docs
   - ask-me
   - scan-codebase
-  - report-table
+  - report
   - review-writing
   - use-scripts
   - check-reference
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ ensure coverage ของ skill package, documentation, หรือ codebase โดยวิเคราะห์ gaps และเติมส่วนที่ขาด ไม่ใช่ review quality (ใช้ `/review-content-coverage` สำหรับ review)
+ใช้เมื่อต้องการ ensure coverage ของ skill package, documentation, หรือ codebase โดยวิเคราะห์ gaps และเติมส่วนที่ขาด ไม่ใช่ review quality (ใช้ `/review-docs` สำหรับ review)
 
 ## Execute
 
@@ -37,7 +37,7 @@ related:
 
 1. ทำ `/scan-codebase` ใน target directory
 2. จัดทำรายการ content ที่มีอยู่แบ่งตามประเภท (`features`, `apis`, `use-cases`, `references`, `examples`)
-3. บันทึกเป็นตารางด้วย `/report-table`: ประเภท, ชื่อ, ไฟล์, สถานะ
+3. บันทึกเป็นตารางด้วย `/report`: ประเภท, ชื่อ, ไฟล์, สถานะ
 4. ถ้าเป็น skill ที่มี dependencies → ตรวจว่าทุก dependency มี reference file ใน `references/`
 
 ### 3. Analyze Coverage Gaps
@@ -53,7 +53,7 @@ related:
    - `examples` ที่ไม่ครอบคลุมทุก API
    - `edge-cases` ที่ไม่มีการกล่าวถึง
 3. จัดลำดับ gaps ตาม impact และ priority
-4. ทำ `/report-table` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
+4. ทำ `/report` สรุป gaps: ประเภท, สิ่งที่ขาด, priority, impact
 
 ### 4. Fill Coverage Gaps
 
@@ -83,7 +83,7 @@ related:
 
 > Goal: รายงานผล coverage
 
-1. ทำ `/report-table` เปรียบเทียบ before-after coverage
+1. ทำ `/report` เปรียบเทียบ before-after coverage
 2. สรุปจำนวน gaps ที่เติม, ไฟล์ที่สร้าง, ไฟล์ที่แก้ไข
 3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นตอนถัดไป
 
@@ -98,8 +98,8 @@ related:
 ### 2. Differentiate From Review
 
 - `follow-coverage` เติมส่วนที่ขาด (implement)
-- `review-content-coverage` วิเคราะห์ quality ของ content (review)
-- ใช้ `follow-coverage` ก่อน แล้วใช้ `review-content-coverage` ตรวจทีหลังได้
+- `review-docs` วิเคราะห์ quality ของ content (review)
+- ใช้ `follow-coverage` ก่อน แล้วใช้ `review-docs` ตรวจทีหลังได้
 
 ### 3. Content Quality
 

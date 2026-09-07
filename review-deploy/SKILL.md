@@ -12,7 +12,7 @@ related:
   - run-test-api
   - ship-rollback
   - scan-codebase
-  - report-table
+  - report
   - report-before-after
   - suggest-next-action
 ---
@@ -68,7 +68,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 ทำตาม references/scoring.md
 
 - คำนวณ deploy readiness score, grade และ supplementary metrics
-- ทำ `/report-table` สรุป category, status, findings, score
+- ทำ `/report` สรุป category, status, findings, score
 - สร้าง go/no-go checklist
 - ทำ `/suggest-next-action`
 
@@ -88,7 +88,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
    - Score < 70 → No-Go แนะนำให้แก้ก่อน deploy
 4. Formatting
    - ห้ามใช้ bold markers — ใช้ backticks
-   - รายงานเป็นตารางด้วย `/report-table`
+   - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
@@ -101,8 +101,10 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 2. ใช้ `/watch-deploy` ดู logs/error rate ช่วงแรก
 3. ทำ `/run-test-api` สำหรับ endpoints สำคัญ
 4. ทำ `/check-security-headers` บน deployed URL
-5. ใช้ `/report-before-after` หรือ `/report-table` สรุป pass/fail
+5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
 6. ถ้า failed → แนะนำ `/ship-rollback` พร้อม evidence
+
+- ถ้า pass → deploy ถ้า fail → ทำ `/resolve-errors` ก่อน deploy ใหม่
 
 ## Expected Outcome
 

@@ -3,7 +3,6 @@ name: implement-github-issue-by-me
 description: นำ GitHub issues ทั้งหมดที่สร้างโดยฉันมา productionize-implementation ทีละ issue
 argument-hint: "[repo-or-filter]"
 related:
-  - implement-github-issue
   - productionize-implementation
   - resolve-github-issue-by-me
   - create-github-issue
@@ -23,7 +22,7 @@ related:
 - implement แต่ละ issue ด้วย `/productionize-implementation` ตามลำดับ priority
 - หลัง implement แต่ละ issue เสร็จ → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
 - ไม่แตะ issues ของผู้อื่น และไม่ implement เกิน scope ของแต่ละ issue
-- ถ้า issue เดียวต้องการ plan ก่อน → ใช้ `/create-plan-in-dot-devin` หรือ `/implement-github-issue` สำหรับ issue เดี่ยว
+- ถ้า issue เดียวต้องการ plan ก่อน → ใช้ `/create-plan-in-dot-devin` สำหรับ issue เดี่ยว
 
 ## Execute
 

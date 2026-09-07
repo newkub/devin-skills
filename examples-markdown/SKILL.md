@@ -6,7 +6,7 @@ related:
   - update-docs
   - update-readme-md
   - update-features-md
-  - report-table
+  - report
   - deep-validate
   - run-format
 ---
@@ -90,7 +90,7 @@ related:
 
 - ใช้ /update-readme-md ถ้าจำเป็น
 - ใช้ /update-features-md ถ้าจำเป็น
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome
 

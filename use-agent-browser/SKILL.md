@@ -1,16 +1,10 @@
 ---
 name: use-agent-browser
-description: ใช้ agent-browser CLI สำหรับเปิด browser, interact, capture, a11y audit, WebMCP และ debug บน web apps
+description: ใช้ agent-browser CLI สำหรับเปิด browser, interact, capture และ debug บน web apps
 argument-hint: "[url]"
 related:
   - watch-browser-and-fix
-  - watch-browser-console
   - test-uxui-by-agent-browser
-  - run-test-website-by-agent-browser
-  - run-test-visual
-  - record-video-web
-  - review-uxui
-  - review-accessibility
   - capture
   - follow-tool-playwright
   - resolve-errors

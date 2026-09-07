@@ -8,7 +8,7 @@ related:
   - update-docs
   - search-files-patterns
   - report-uxui-all-routes
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -66,7 +66,7 @@ Generate OpenAPI 3.x spec (`openapi.json`/`openapi.yaml`) จาก API code จ
 > Goal: spec ใช้งานได้จริง
 
 1. เปิด preview ด้วย `/follow-tool-scalar` หรือ `bunx @scalar/cli`
-2. ทำ `/report-table` สรุป: `No.`, `Method`, `Path`, `OperationId`, `Schemas`, `Auth`
+2. ทำ `/report` สรุป: `No.`, `Method`, `Path`, `OperationId`, `Schemas`, `Auth`
 3. ระบุ endpoints ที่ขาด schema หรือ docs
 4. แนะนำ `/review-api` หรือ `/update-docs` เป็น next action
 

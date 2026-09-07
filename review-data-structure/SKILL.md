@@ -3,7 +3,7 @@ name: review-data-structure
 description: ตรวจสอบ data structures ใน project ว่าเหมาะสมกับ access pattern และ complexity หรือไม่
 argument-hint: "[component-or-data-pattern]"
 related:  - scan-codebase
-  - report-table
+  - report
   - review-algorithm
 ---
 
@@ -45,7 +45,7 @@ related:  - scan-codebase
 
 > Goal: สรุป findings พร้อม fix direction
 
-1. ทำ `/report-table` ด้วย columns: No., Structure, Operation, Current Complexity, Target, Severity
+1. ทำ `/report` ด้วย columns: No., Structure, Operation, Current Complexity, Target, Severity
 2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี algorithmic ปัญหาซับซ้อน → เชื่อม `/review-algorithm`
 

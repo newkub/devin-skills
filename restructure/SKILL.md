@@ -4,7 +4,7 @@ description: ปรับโครงสร้างไฟล์และโฟ�
 argument-hint: "[scope]"
 related:
   - refactor
-  - refactor-to-single-responsibility
+
   - relocation
   - update-references
   - rethink
@@ -49,7 +49,7 @@ related:
 
 แยกไฟล์ที่มีหลาย responsibility ออกเป็นไฟล์ย่อย
 
-1. ทำ `/refactor-to-single-responsibility` สำหรับไฟล์ที่ยาวกว่า 250 บรรทัด
+1. ทำ `/refactor` สำหรับไฟล์ที่ยาวกว่า 250 บรรทัด
 2. ทำ `/update-references` เพื่ออัปเดต imports
 3. ถ้าไม่มีไฟล์เกิน 250 บรรทัด → skip ไป Step 4
 
@@ -84,7 +84,8 @@ related:
 
 1. รัน build หรือ type check เพื่อยืนยัน import paths ถูกต้อง
 2. ทำ `/check-long-files` เพื่อยืนยันไม่มีไฟล์ที่ยาวกว่า 250 บรรทัด
-3. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3 และ re-validate
+3. ทำ `/deep-validate` เพื่อตรวจ cross-references หลังย้ายไฟล์
+4. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 3 และ re-validate
    - ถ้าไม่ผ่านหลังจาก 3 ครั้ง → stop และ report
 
 ## Rules
@@ -94,7 +95,7 @@ related:
 - ทำ `/dont-over-engineer` เสมอเมื่อเริ่มทำงาน
 - ใช้ minimal changes เสมอ
 - ถ้า file operations มากกว่า 10 ไฟล์ → ใช้ `/use-scripts`
-- สำหรับ logical concern separation ให้ใช้ `/refactor-to-single-responsibility`
+- สำหรับ logical concern separation ให้ใช้ `/refactor`
 
 ### 2. File And Folder Boundaries
 

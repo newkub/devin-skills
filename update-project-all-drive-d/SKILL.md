@@ -16,7 +16,7 @@ related:
   - check-should-update
   - follow-parallel
   - use-subagents
-  - report-table
+  - report
   - ask-me
 ---
 
@@ -89,7 +89,7 @@ related:
 
 > Goal: สรุปผลการอัปเดต
 
-1. ใช้ `/report-table` คอลัมน์: No., Project, Path, Branch, Before, After, Action, Status
+1. ใช้ `/report` คอลัมน์: No., Project, Path, Branch, Before, After, Action, Status
 2. แสดง projects ที update สำเร็จ, skip, error
 3. ระบุ count แต่ละประเภท
 4. ทำ `/suggest-next-action`

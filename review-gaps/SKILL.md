@@ -7,7 +7,7 @@ related:
   - report
   - dont-over-engineer
   - suggest-next-action
-  - report-table
+
 ---
 
 ## Goal
@@ -17,6 +17,9 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 ## Scope
 
 ใช้เมื่อต้องการรวม findings จากหลาย dimensional reviews เป็นรายการเดียวที่เรียงลำดับแล้ว ไม่ทำ dimensional review เอง — รวบรวม ตัดซ้ำ และจัดลำดับเท่านั้น
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: review-improvement)
+- ถ้าต้องสแกนกว้างหา "improve อะไรได้บ้าง" โดยยังไม่มี findings → ใช้ [references/dimension-map.md](references/dimension-map.md) สแกนแต่ละ dimension แบบเบาแล้ว map ไป `## Fix` ของ `review-*`
 
 ## Execute
 
@@ -85,7 +88,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 ### 5. Simple Output
 
 - ตอบในแชทเท่านั้น ไม่สร้างไฟล์แยก
-- ใช้ `/report-table` สำหรับตาราง
+- ใช้ `/report` สำหรับตาราง
 - ระบุ quick wins และ top 3-5 opportunities เท่าที่จำเป็น
 
 ## Metrics

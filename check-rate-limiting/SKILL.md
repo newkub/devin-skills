@@ -4,7 +4,7 @@ description: ตรวจ endpoints ที่ขาด rate limiting — abuse, 
 argument-hint: "[routes-or-framework]"
 related:
   - review-security
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -52,7 +52,7 @@ related:
 
 > Goal: สรุป coverage gaps พร้อม severity
 
-1. ใช้ `/report-table` คอลัมน์: `No.`, `Endpoint`, `Risk Type`, `Current Limit`, `Severity`, `Recommendation`
+1. ใช้ `/report` คอลัมน์: `No.`, `Endpoint`, `Risk Type`, `Current Limit`, `Severity`, `Recommendation`
 2. Severity: `critical` (auth ไม่มี limit), `high` (expensive/public ไม่มี), `medium` (limit loose), `info` (มีแล้ว)
 3. แนะนำ limits ที่เหมาะต่อประเภท endpoint
 

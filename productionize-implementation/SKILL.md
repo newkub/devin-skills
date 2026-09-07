@@ -4,8 +4,7 @@ description: แปลง TODO, MOCK, FAKE, placeholder เป้น production 
 argument-hint: "[scope-or-plan]"
 related:
   - implement-features-to-mvp
-  - implement-todo-md
-  - list-todo-md
+  - report-scan-todo
   - update-todo-md
   - deep-review
   - review-architecture
@@ -16,7 +15,6 @@ related:
   - run-test-all
   - run-verify
   - test-usage
-  - run-test-unit
 
 ---
 ## Goal
@@ -25,7 +23,9 @@ related:
 
 ## Scope
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-mock)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: implement-mock, implement-plan, implement-todo-md)
+- ถ้า input เป็นไฟล์แผน `.devin/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md`
+- ถ้า input เป็น `TODO.md` task list → ทำตาม `references/implement-todo-md.md`
 
 แปลงทุก unfinished features เป้น production code: schema, data, API, UX/UI, external services พร้อม infrastructure จริง end-to-end — ไม่รวมงานที่ควรเริ่มจาก architecture ใหม่ (ใช้ `/review-architecture` ก่อน)
 
@@ -37,7 +37,7 @@ related:
 
 1. ทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
 2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values
-3. ถ้ามี `.devin/plan/<workspace>/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
+3. ถ้ามี `.devin/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
 
 ### 2. Review Architecture
@@ -83,9 +83,9 @@ related:
 
 > Goal: ลบ TODO/FIXME/HACK และ placeholders
 
-1. ทำ `/list-todo-md` เพื่อรวบรวม TODO.md ใน workspace ก่อน implement
+1. ทำ `/report-scan-todo` เพื่อรวบรวม TODO.md ใน workspace ก่อน implement
 2. ค้นหา `TODO`, `FIXME`, `XXX`, `HACK`, placeholder functions ด้วย `/use-ast-grep` หรือ `grep`
-3. ถ้ามี `TODO.md` → ทำ `/implement-todo-md`
+3. ถ้ามี `TODO.md` → ทำตาม `references/implement-todo-md.md`
 4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้
 5. ทำ `/implement-features-to-mvp` เพื่อ implement missing features
 6. ถ้ามี library ที่เหมาะกว่า → ทำ `/review-dependencies`

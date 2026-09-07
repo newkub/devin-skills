@@ -83,7 +83,7 @@ related:
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ paths, commands, skill names
-- รายงานด้วย `/report-table`
+- รายงานด้วย `/report`
 
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
 - ใช้ /review-techstack ถ้าจำเป็น

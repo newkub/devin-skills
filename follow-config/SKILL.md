@@ -13,7 +13,7 @@ allowed-tools:
   - skill
   - ask_user_question
   - report
-  - report-table
+
   - suggest-next-action
   - resolve-errors
 triggers:
@@ -87,7 +87,7 @@ related:
 
 > Goal: สรุปผลลัพธ์
 
-1. ทำ `/report-table` แสดง config files ทีตรวจ, สถานะ, การเปลี่ยนแปลง
+1. ทำ `/report` แสดง config files ทีตรวจ, สถานะ, การเปลี่ยนแปลง
 2. ทำ `/report` สรุป findings และ next actions
 3. ทำ `/suggest-next-action`
 

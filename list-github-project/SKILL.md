@@ -6,7 +6,7 @@ related:
   - follow-tool-github-project
   - list-github-repo
   - all-github-repo
-  - report-table
+  - report
   - ask-me
   - list-github-issue
   - list-github-pr
@@ -65,7 +65,7 @@ related:
 
 > Goal: สรุปผลเป็นตาราง
 
-1. ใช้ `/report-table` คอลัมน์:
+1. ใช้ `/report` คอลัมน์:
    - No.
    - Project
    - Owner
@@ -91,7 +91,7 @@ related:
 
 ### 3. Output
 
-- ใช้ `/report-table` เป็นค่าเริ่มต้น
+- ใช้ `/report` เป็นค่าเริ่มต้น
 - ระบุ `source` ทีใช้กรองใน output
 - ถ้าไม่มี project ให้แจ้งอย่างชัดเจน
 

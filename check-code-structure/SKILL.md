@@ -102,7 +102,7 @@ Goal reminder: ปรับปรุง code structure ตาม findings จา
 
 > Goal: Report
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report`
 2. สร้างตาราง Structure Metrics: File, Top-Level Symbols, Exports, Public Members, Status
 3. สร้างตาราง Improvements: File, Issue Type, Action Taken, Severity, Result
 4. สร้างตาราง Recommended Actions: Priority, Action, Impact, Workflow

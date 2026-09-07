@@ -10,7 +10,6 @@ related:
   - resolve-cicd
   - follow-tool-mise
   - follow-tasks
-  - use-wrangler
 ---
 
 ## Goal

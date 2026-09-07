@@ -5,7 +5,7 @@ argument-hint: "[area-or-question]"
 related:
   - review-uxui
   - capture
-  - report-table
+  - report
   - ask-me
   - suggest-next-action
 ---
@@ -41,7 +41,7 @@ related:
 
 > Goal: ถาม stakeholder อย่างชัดเจน
 
-1. ใช้ `/report-table` แสดง finding, evidence, proposed change
+1. ใช้ `/report` แสดง finding, evidence, proposed change
 2. ถามคำถามเฉพาะเจาะจง ไม่ถามทั่วไป
 3. ระบุ options และ trade-offs
 4. ถ้าไม่ชัด → ใช้ `/ask-me`
@@ -97,6 +97,8 @@ related:
 - ไม่เดา stakeholder intent
 - ถามก่อน implement
 - ถ้า conflict → escalate
+
+- ส่ง findings ไปจัดลำดับที่ `/review-gaps` หรือ domain review ที่ตรง
 
 ## Expected Outcome
 

@@ -9,7 +9,7 @@ related:
   - deep-analyze
   - run-review
   - deep-validate
-  - report-table
+  - report
   - suggest-next-action
   - review-frontend
   - follow-my-tech-stack
@@ -84,7 +84,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 2. ทำ `/deep-validate` สำหรับ issues จาก scripts
 3. จัดลำดับ severity: Critical → High → Medium → Low → Info
 4. ทำตาม `references/scoring.md`
-5. ทำ `/report` พร้อม `/report-table`
+5. ทำ `/report` พร้อม `/report`
 6. ทำ `/suggest-next-action`
 
 ## Rules
@@ -120,7 +120,7 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 - ใช้ symbols: ผ่าน, ไม่ผ่าน, warning
 
 - ใช้ /review-frontend ถ้าจำเป็น

@@ -5,7 +5,7 @@ argument-hint: "[filter]"
 related:
   - follow-my-package-manager
   - use-pwsh-shell
-  - report-table
+  - report
   - download-program
   - uninstall-program-in-computer
   - enhance-prompt
@@ -21,7 +21,7 @@ related:
 - ใช้บน Windows เป็นหลัก
 - query จาก `mise`, `scoop`, `winget`
 - รองรับ filter ด้วยชื่อ program
-- แสดงผลด้วย `/report-table`
+- แสดงผลด้วย `/report`
 - ไม่แก้ไข/ลบ program
 
 ## Execute
@@ -84,7 +84,7 @@ related:
 
 > Goal: แสดงผลอ่านง่าย
 
-1. ใช้ `/report-table` เพื่อสร้างตาราง
+1. ใช้ `/report` เพื่อสร้างตาราง
 2. คอลัมน์: `Name`, `Version`, `Package Manager`, `Source/Path`
 3. เรียงตามชื่อ
 
@@ -112,7 +112,7 @@ related:
 
 ### 5. Output
 
-- ใช้ `/report-table` หรือ markdown table
+- ใช้ `/report` หรือ markdown table
 - ถ้าไม่พบ program → รายงานว่าไม่พบ
 
 - ใช้ /use-pwsh-shell ถ้าจำเป็น

@@ -1,6 +1,5 @@
 # Probability
 
-
 ## Goal
 
 เข้าใจและประยุกต์ probability: events, random variables, distributions, expected value, conditional probability, Bayes theorem ใน software

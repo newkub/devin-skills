@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-references
   - check-code-structure
-  - report-table
+  - report
   - use-astgrep
   - search-files-patterns
   - suggest-next-action
@@ -83,7 +83,7 @@ related:
 
 > Goal: รายงาน relation map
 
-1. ทำ `/report-table`: target, relation type, related file, direction, severity
+1. ทำ `/report`: target, relation type, related file, direction, severity
 2. ระบุ files ที่ต้อง update references ถ้าย้าย/ลบ/เปลี่ยนชื่อ target
 3. ทำ `/suggest-next-action` แนะนำ `/update-references` หรือ `/refactor`
 

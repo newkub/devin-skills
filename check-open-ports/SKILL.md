@@ -6,7 +6,7 @@ related:
   - run-dev
   - use-pwsh-shell
   - resolve-errors
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -60,7 +60,7 @@ related:
 
 > Goal: สรุปผลอ่านง่าย
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Port`, `Status`, `Process`, `PID`, `Action`
+1. ทำ `/report` คอลัมน์: `No.`, `Port`, `Status`, `Process`, `PID`, `Action`
 2. Status: `free`, `listening`, `conflict`
 3. สรุปว่าพร้อม `run-dev` หรือไม่
 

@@ -3,7 +3,6 @@ name: ship
 description: Ship code ตาม AGENTS.md โดย branch, validate, deploy staging, merge, แล้ว production
 argument-hint: "[@issue-number-or-title]"
 allowed-tools:
----
   - read
   - exec
   - skill
@@ -16,6 +15,7 @@ related:
   - update-agents-md
   - follow-agents-md
   - ship-by-agents-swarm
+  - use-subagents
   - ship-to-staging
   - ship-to-production
   - deep-optimize
@@ -27,7 +27,6 @@ related:
   - resolve-cicd
   - run-release
   - report
-  - ask-me
 ---
 
 ## Goal
@@ -72,10 +71,11 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 5. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
 6. ทำ `/update-version-to-latest` เพื่ออัปเดต dependencies ตามผล audit
 7. ทำ `/review-architecture` ทุก workspace เพื่อแก้ structural findings
-9. ทำ `/review-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
-10. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
-11. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
-12. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
+8. ทำ `/review-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
+9. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
+10. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
+11. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
+12. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
 
 ### 4. Stage
 
@@ -104,7 +104,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 
 1. ทำ `/report-progress`
 2. ทำ `/report` สรุป status, PR, version
-3. ทำ `/list-todo-md` เพื่อตรวจ pending items ใน `TODO.md` ที่เหลือหลัง ship
+3. ทำ `/report-scan-todo` เพื่อตรวจ pending items ใน `TODO.md` ที่เหลือหลัง ship
 4. ทำ `/suggest-next-action`
 
 ## Rules

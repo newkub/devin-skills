@@ -6,7 +6,7 @@ related:
   - resolve-github-actions-fails
   - search-project-in-drive-d
   - resolve-errors
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
 ---
@@ -63,7 +63,7 @@ List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา �
 ### 5. Build Report
 
 > Goal: รายงานผลเป็นตาราง
-1. ใช้ `/report-table` คอลัมน์: No., Worker, Type, Latest Deployment, Status, Action Taken, Errors / Notes
+1. ใช้ `/report` คอลัมน์: No., Worker, Type, Latest Deployment, Status, Action Taken, Errors / Notes
 2. เรียงตาม Worker name
 3. ระบุสรุป: จำนวนทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 

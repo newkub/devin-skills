@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report-uxui-sketch
   - review-uxui
-  - report-table
+
   - suggest-next-action
   - ask-me
   - report
@@ -23,7 +23,7 @@ related:
 - รองรับ file-based routing, config-based routing, หรือ manual route list
 - ระบุ route/screen, tab group, method, purpose, actions, entry points
 - ใช้ร่วมกับ `/report-uxui-sketch` เพื่อสร้าง wireframe ครบ
-- ถ้าต้องการ ANSI table ตาม context ให้ใช้ `/report-table`
+- ถ้าต้องการ ANSI table ตาม context ให้ใช้ `/report`
 
 ## Execute
 
@@ -58,7 +58,7 @@ related:
 
 > Goal: สรุป routes ในตาราง
 
-1. ใช้ `/report-table`
+1. ใช้ `/report`
 2. คอลัมน์: No., Tab/Screen, Route, Method, Tab Group, Purpose, Primary Actions, Notes
 3. เรียงลำดับตาม Tab Group แล้ว Route
 4. ใช้ symbols `✅` `❌` `⚠️` สำหรับ status
@@ -99,7 +99,7 @@ related:
 ### Report UX/UI
 
 - สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-- ใช้ `/report-table` สำหรับตารางเปรียบเทียบหลาย columns
+- ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
 - ใช้ bullet หรือ numbered list สำหรับสรุป points
 - ใช้ symbols `✅` `❌` `⚠️` สำหรับ status indicators
 - ทำ `/suggest-next-action` ท้าย report เสมอ

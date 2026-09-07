@@ -3,9 +3,8 @@ name: report-math-equation
 description: ตอบคำถามหรือเปรียบเทียบทางเลือกในรูปแบบสมการ + - = ให้เข้าใจง่าย
 argument-hint: "[scope]"
 related:
-  - report-table
   - report
-  - report-plan
+  - plan
   - deep-analyze
   - ask-me
 ---
@@ -21,10 +20,13 @@ related:
 - อธิบาย root cause หรือผลลัพธ์
 - สรุปสิ่งบวก สิ่งลบ และผลสุดท้าย
 - ช่วยตัดสินใจระหว่าง 2+ ทางเลือก
+- แปลง code/algorithm/description/problem เป้นสูตรคณิตศาสตร์ (LaTeX)
 
 ไม่ใช่สำหรับ:
 - คำถาม factual ทีต้องการคำตอบสั้น (เช่น "file นี้อยู่ทีไหน")
 - คำถามทีไม่มี variables ให้เปรียบเทียบ
+
+(merged from: `report-math-formula`)
 
 ## Execute
 
@@ -70,12 +72,22 @@ related:
 > Goal: สรุปในรูปแบบทีอ่านง่าย
 
 1. แสดงสมการหลัก 3-5 ข้อ
-2. ตามด้วย `report-table` สรุป:
+2. ตามด้วย `/report` สรุป:
    - ตัวเลือก
    - สิ่งบวก (+)
    - สิ่งลบ (-)
    - ผล (=)
 3. จบด้วยคำตอบสั้นๆ
+
+### 5. LaTeX Formula (Optional)
+
+> Goal: สร้างสูตรคณิตศาสตรทีถูกต้อง
+
+1. ถ้า input เป้น code/algorithm/description/problem ที่ต้องสูตรจริง → ใช้ LaTeX: `$...$` inline, `$$...$$` block
+2. สรุปตัวแปร, ความสัมพันธ์, เงื่อนไข
+3. ระบุสัญลักษณ์มาตรฐาน: `\sum`, `\prod`, `\int`, `\frac`, `\sqrt`, `\begin{cases}`
+4. ทดสอบกับค่าตัวอย่าง 1 ตัวอย่าง
+5. ระบุเงื่อนไขและข้อจำกัด
 
 ## Rules
 
@@ -92,7 +104,7 @@ related:
 
 ### 3. Always Include Table
 
-- ต้องมี `report-table` ประกอบทุกครั้ง
+- ต้องมี `/report` ประกอบทุกครั้ง
 - ตารางช่วยให้ user scan ได้เร็ว
 
 ### 4. Honest About Uncertainty
@@ -101,7 +113,7 @@ related:
 - ไม่ตัดสินแทน user ถ้าไม่มีข้อมูลพอ
 
 - ใช้ /report ถ้าจำเป็น
-- ใช้ /report-plan ถ้าจำเป็น
+- ใช้ /plan ถ้าจำเป็น
 - ใช้ /deep-analyze ถ้าจำเป็น
 
 ## Expected Outcome

@@ -6,11 +6,9 @@ description: Cloud platform for front-end developers providing deployment and ho
 
 ใช้ Vercel platform สำหรับ deploy และ host web applications ด้วย CI/CD, edge functions และ serverless APIs
 
-
 ## Scope
 
 ใช้สำหรับการ deploy Next.js, React, Vue, Svelte apps ด้วย preview deployments และ global edge network
-
 
 ## Execute
 
@@ -50,7 +48,6 @@ Configure environment variables ใน dashboard
 
 Monitor deployments ใน dashboard
 
-
 ## Rules
 
 - ใช้ `bun add -D vercel` สำหรับ development
@@ -61,7 +58,6 @@ Monitor deployments ใน dashboard
 - ใช้ edge functions สำหรับ low latency
 - ใช้ image optimization สำหรับ performance
 - Monitor deployments ใน dashboard
-
 
 ## Expected Outcome
 

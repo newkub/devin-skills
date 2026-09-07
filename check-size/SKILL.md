@@ -4,7 +4,7 @@ description: ตรวจสอบขนาดไฟล์, directory หรื�
 argument-hint: "[path|disk]"
 related:
   - use-pwsh-shell
-  - report-table
+  - report
   - search-files-patterns
   - run-profiler
 ---
@@ -65,7 +65,7 @@ related:
 
 > Goal: แสดงผลอ่านง่าย
 
-1. ใช้ `/report-table` สร้างตาราง
+1. ใช้ `/report` สร้างตาราง
 2. คอลัมน์: `Item`, `Type`, `Size`, `Files`, `Note`
 3. แสดง human-readable (เช่น `1.23 GB`)
 4. ถ้าหลาย target → แสดงทีละแถว
@@ -98,7 +98,7 @@ related:
 
 ### 5. Output
 
-- ใช้ `/report-table`
+- ใช้ `/report`
 - แสดง size ก่อนและหลัง (ถ้าเปรียบเทียบ)
 - ถ้าเปรียบเทียบหลาย path → เรียงตาม size
 

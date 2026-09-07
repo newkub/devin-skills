@@ -8,8 +8,7 @@ allowed-tools:
   - find_file_by_name
   - exec
   - ask_user_question
-  - report
-  - report-table
+  - report
   - suggest-next-action
 triggers:
   - user
@@ -67,7 +66,7 @@ related:
 ### 5. Report
 
 > Goal: รายงาน Report
-1. ทำ `/report-table` แสดงไฟล์ทีพบ: No, Name, Size, Type, Modified
+1. ทำ `/report` แสดงไฟล์ทีพบ: No, Name, Size, Type, Modified
 2. ทำ `/report` สำหรับไฟล์ทีเลือก
 3. ทำ `/suggest-next-action`
 

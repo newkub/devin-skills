@@ -1,6 +1,5 @@
 # Information Theory
 
-
 ## Goal
 
 เข้าใจ information theory: entropy, information content, encoding, compression, KL-divergence และประยุกต์ใช้ใน data analysis, logs, compression, AI

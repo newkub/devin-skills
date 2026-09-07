@@ -3,7 +3,7 @@ name: resolve-merge-conflicts
 description: แก้ไข git merge conflicts อย่างปลอดภัย ไม่สูญเสีย changes
 argument-hint: "[scope]"
 related:
-  - idea-merge-files
+  - idea-merge
   - merge-git-branch
   - merge-github-pr
   - git-commit
@@ -87,7 +87,7 @@ related:
 - commit message ระบุว่า resolve conflicts
 - ถ้า rebase มีหลาย conflict ให้ squash ถ้าเหมาะสม
 
-- ใช้ /idea-merge-files ถ้าจำเป็น
+- ใช้ /idea-merge ถ้าจำเป็น
 - ใช้ /merge-git-branch ถ้าจำเป็น
 - ใช้ /merge-github-pr ถ้าจำเป็น
 

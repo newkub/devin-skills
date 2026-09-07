@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-version-to-latest
   - check-should-update
-  - report-table
+
   - scan-codebase
   - report
   - update-specs
@@ -77,7 +77,7 @@ Review drift ระหว่าง current state และ target state เพ�
 > Goal: รายงาน drift report และ update priority order
 
 1. ทำตาม `references/scoring.md`
-2. ทำ `/report` พร้อม `/report-table`
+2. ทำ `/report` พร้อม `/report`
 3. สร้างตาราง Drift Report และ Update Priority
 4. ทำ `/suggest-next-action`
 
@@ -106,7 +106,7 @@ Review drift ระหว่าง current state และ target state เพ�
 
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /update-version-to-latest ถ้าจำเป็น

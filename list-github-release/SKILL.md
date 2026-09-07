@@ -4,9 +4,9 @@ description: แสดง releases ทั้งหมดของ repo ที่
 argument-hint: "[repo]"
 related:
   - list-git-release
-  - list-github-actions-fails
+  - resolve-github-actions-fails
   - list-github-branch
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -38,7 +38,7 @@ related:
 
 > Goal: Format Output
 
-1. ทำ `/report-table` เพื่อจัดรูปแบบเป็นตาราง
+1. ทำ `/report` เพื่อจัดรูปแบบเป็นตาราง
 2. กำหนด columns:
    - No. ลำดับ
    - Tag tag name
@@ -58,12 +58,12 @@ related:
 
 ### 2. Output Format
 
-- ทำ `/report-table` สำหรับจัดรูปแบบผลลัพธ์
+- ทำ `/report` สำหรับจัดรูปแบบผลลัพธ์
 - เรียงตามวันที่ publish ล่าสุด
 - แสดงข้อมูลสำคัญ: tag, title, draft, prerelease, published, author
 
 - ใช้ /list-git-release ถ้าจำเป็น
-- ใช้ /list-github-actions-fails ถ้าจำเป็น
+- ใช้ /resolve-github-actions-fails ถ้าจำเป็น
 - ใช้ /list-github-branch ถ้าจำเป็น
 
 ## Expected Outcome

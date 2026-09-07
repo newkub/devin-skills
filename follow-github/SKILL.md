@@ -5,12 +5,10 @@ argument-hint: "[scope]"
 related:
   - update-github-metadata
   - follow-dot-github
-  - report-table
+  - report
   - suggest-next-action
   - follow-git-flow
-  - view-repo
-  - use-mcp
-  - use-gh-cli
+  - open-github
 ---
 
 ## Goal
@@ -119,13 +117,13 @@ related:
 2. ทำ `gh api repos/<owner>/<repo>/branches/main/protection --jq .`
 3. ทำ `gh api repos/<owner>/<repo>/branches/<integration-branch>/protection --jq .`
 4. ตรวจสอบว่า `main` และ `<integration-branch>` มี protection
-5. ทำ `/view-repo` เพื่อตรวจ metadata และ health หลังตั้งค่า
+5. ทำ `/open-github` เพื่อตรวจ metadata บน browser หลังตั้งค่า
 
 ### 7. Report
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` สรุป: metadata, branch protection, templates
+1. ใช้ `/report` สรุป: metadata, branch protection, templates
 2. ทำ `/suggest-next-action`
 
 ## Rules

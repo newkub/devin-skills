@@ -7,9 +7,9 @@ related:
   - review-delivery
   - deep-analyze
   - check-monorepo
-  - learn-from-web
+  - learn-web
   - update-references
-  - report-table
+  - report
   - deep-validate
 ---
 
@@ -71,7 +71,7 @@ related:
 
 > Goal: สร้างหรืออัปเดต `settings.json` ตาม tech stack ของ project
 
-1. ทำ `/learn-from-web` จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
+1. ทำ `/learn-web` จาก VSCode settings docs เพื่อยืนยัน settings ที่เกี่ยวข้อง
 2. กำหนด formatter settings:
    - `editor.defaultFormatter` → ตาม formatter ที่ใช้ (เช่น `biomejs.biome` สำหรับ Biome)
    - `editor.formatOnSave` → `true`
@@ -222,7 +222,7 @@ related:
 - ถ้าไฟล์ที่มีอยู่ถูกต้องแล้ว → ไม่สร้างใหม่ แต่อัปเดตเฉพาะส่วนที่ขาด
 - ถ้ามา user settings ที่ขัดแย้ง → workspace settings จะ override โดยอัตโนมัติ
 
-- ใช้ /report-table ถ้าจำเป็น
+- ใช้ /report ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
 ## Expected Outcome

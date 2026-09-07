@@ -125,7 +125,7 @@ related:
 2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
 3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/update-test-and-fix` เพิ่ม แล้วรัน tests ใหม่
 4. ทำ `/report` สรุปผลลัพธ์
-5. ใช้ `/report-table` สำหรับ test results, coverage metrics, และ action items
+5. ใช้ `/report` สำหรับ test results, coverage metrics, และ action items
 
 ### 11. Continue To Full Verify
 

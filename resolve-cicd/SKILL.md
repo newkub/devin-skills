@@ -7,10 +7,9 @@ related:
   - resolve-cloudflare-worker-fails
   - resolve-all-cloudflare-fails
   - search-project-in-drive-d
-  - report-table
+  - report
   - suggest-next-action
   - ask-me
-  - use-gh-cli
 ---
 
 ## Usage
@@ -56,7 +55,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 2. เรียก `/resolve-github-actions-fails --repo <owner/repo>`
 3. หา worker ทีตรงกับ repo name แล้วเรียก `/resolve-cloudflare-worker-fails --worker <worker>`
 4. หรือหา Cloudflare Pages project แล้วเรียก `/resolve-all-cloudflare-fails --project <project>`
-5. สรุปผลด้วย `/report-table`
+5. สรุปผลด้วย `/report`
 
 ### 3. Single-Run Resolve
 
@@ -64,12 +63,12 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 1. อ่านรายละเอียดจาก `references/single-run.md`
 2. ใช้ helper script `scripts/resolve-cicd.ts` หรือทำตามขั้นตอนใน reference
 3. ถ้า fail → `/resolve-github-actions-fails` สำหรับ CI หรือ `/resolve-cloudflare-worker-fails` สำหรับ CD
-4. สรุปผลด้วย `/report-table`
+4. สรุปผลด้วย `/report`
 
 ### 4. Report
 
 > Goal: สรุปผลและ next step
-1. ใช้ `/report-table` คอลัมน์: No., Mode, Repo/Run, CI Status, CD Status, Action Taken, Notes
+1. ใช้ `/report` คอลัมน์: No., Mode, Repo/Run, CI Status, CD Status, Action Taken, Notes
 2. ทำ `/suggest-next-action`
 
 ## Rules
@@ -100,6 +99,6 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 ## Expected Outcome
 
 - Repo ทีระบุมี CI/CD ผ่าน หรือแต่ละ run/URL live/healthy
-- รายงาน `/report-table` สมบูรณ์
+- รายงาน `/report` สมบูรณ์
 - ระบุ next step ผ่าน `/suggest-next-action`
 - ไม่มี auto-rollback โดยไม่แจ้ง user
