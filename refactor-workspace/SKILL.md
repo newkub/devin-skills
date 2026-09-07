@@ -40,7 +40,7 @@ Refactor workspace members (packages, crates, modules) ให้มี single re
 > Goal: วิเคราะห์โปรเจกต์และโครงสร้าง workspace members
 
 1. อ่าน `package.json`, `Cargo.toml`, `bun.lock` หรือ manifest ที่เกี่ยวข้อง
-2. ทำ `/analyze-project` เพื่อดูภาพรวม project type และ structure
+2. ทำ `/deep-analyze` เพื่อดูภาพรวม project type และ structure
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์ cognitive complexity, reasons to change, coupling, cohesion
 4. ทำ `/scan-codebase` ∥ `/check-code-structure` เพื่อค้นหา consumers, call sites, exports, cohesion
 5. ทำ `/review-quality` และ `/check-circular-dependencies`

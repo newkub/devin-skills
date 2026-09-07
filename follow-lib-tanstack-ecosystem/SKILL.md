@@ -30,7 +30,7 @@ related:
 
 > Goal: ระบุว่าต้องการ library ตัวไหนของ TanStack
 
-1. ทำ `/analyze-project` เพื่อเข้าใจ state, data flow, routing, form needs
+1. ทำ `/deep-analyze` เพื่อเข้าใจ state, data flow, routing, form needs
 2. ดูว่า project ต้องการ:
    - async server state / data fetching → `Query`
    - client state → `Store`

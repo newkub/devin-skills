@@ -21,7 +21,7 @@ related:
 
 > Goal: ตรวจสอบโครงสร้าง project เพื่อระบุ single crate หรือ workspace
 
-1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
+1. รัน `/deep-analyze` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
 3. ตรวจสอบ workspace configuration
 4. ระบุว่าเป็น single crate หรือ workspace

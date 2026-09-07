@@ -59,7 +59,7 @@ related:
 
 > Goal: วิเคราะห์ project เพื่อกำหนด settings ที่จำเป็น
 
-1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
+1. ทำ `/deep-analyze` เพื่อดู tech stack และ structure
 2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
 3. ระบุ package manager (Bun, npm, pnpm, yarn)
 4. ระบุ formatter/linter (Biome, ESLint, Prettier)

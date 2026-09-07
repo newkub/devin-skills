@@ -22,7 +22,7 @@ related:
 
 > Goal: Discover Files
 
-1. ทำ `/analyze-project` เพื่อดูโครงสร้าง
+1. ทำ `/deep-analyze` เพื่อดูโครงสร้าง
 2. ใช้ `find_by_name` หรือ `list_dir` เพื่อค้นหา files ตาม pattern
 
 ### 2. Process Each File

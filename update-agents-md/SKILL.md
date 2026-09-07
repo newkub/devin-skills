@@ -1,4 +1,4 @@
-﻿---
+---
 name: update-agents-md
 description: สร้างหรืออัปเดต AGENTS.md ให้ agents และ subagents สามารถอ่านแล้วลงมือได้
 argument-hint: "[scope]"
@@ -34,7 +34,7 @@ related:
 > Goal: เตรียม Prepare
 1. ทำ `/follow-agents-md` ถ้ามี `AGENTS.md` อยู่แล้ว
 2. ทำ `/check-monorepo` เพื่อตรวจ monorepo status
-3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack และ structure
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์ tech stack และ structure
 4. ทำ `/all-workspace` ถ้าเป็น monorepo
 5. อ่าน global rules จาก `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. ทำ `/ask-project-requirement` ถ้า context หรือ requirements ไม่ชัด

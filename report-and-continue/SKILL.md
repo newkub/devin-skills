@@ -27,7 +27,7 @@ related:
 > Goal: สร้าง report สถานะปัจจุบัน
 
 1. ทำ `/report-before` เพื่อสร้าง report เริ่มต้น
-2. ทำ `/analyze-project` และ `/scan-codebase` ถ้าจำเป็น
+2. ทำ `/deep-analyze` และ `/scan-codebase` ถ้าจำเป็น
 3. ระบุ issues พร้อม severity
 
 ### 2. Analyze Findings

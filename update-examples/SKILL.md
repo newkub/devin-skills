@@ -30,7 +30,7 @@ related:
 
 > Goal: ค้นหาและจัดกลุ่ม public APIs ทั้งหมด
 
-1. รัน `/analyze-project` เพื่อดูภาพรวม
+1. รัน `/deep-analyze` เพื่อดูภาพรวม
 2. ทำ `/scan-codebase` เพื่อหา public APIs ทั้งหมด (exports, functions, classes, types)
 3. อ่าน `package.json` exports field เพื่อหา entry points
 4. ระบุ API ทั้งหมดจาก source code

@@ -20,7 +20,7 @@ related:
 - Plain text / regex replacement: สำหรับเนื้อหาทั่วไป เช่น docs, config
 - AST-based replacement: สำหรับ code ทีต้องการ precision สูง
 
-- ดูเพิ่มเติม: /search-by-astgrep
+- ดูเพิ่มเติม: /use-astgrep
 
 ## Execute
 

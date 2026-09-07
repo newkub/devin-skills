@@ -29,7 +29,7 @@ related:
 
 > Goal: มีข้อมูลที่สะอาดและมีโครงสร้างก่อนเรนเดอร์
 
-1. รัน `/analyze-project` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea-features`)
+1. รัน `/deep-analyze` หรือ skill หลักที่สร้างข้อมูล (เช่น `/idea-features`)
 2. แปลงผลลัพธ์เป็น JavaScript array ของ objects หรือ 2D arrays
 3. ตรวจสอบให้แต่ละแถวมี `id` ที่ไม่ซ้ำและครบทุกฟิลด์ที่จำเป็น
 4. เพิ่มฟิลด์คำนวณสำหรับ `group` และ `searchText` หากจำเป็น

@@ -26,7 +26,7 @@ related:
 
 > Goal: ระบุ workspace และ tech stack ที่ต้องวิเคราะห์
 
-1. ทำ `/analyze-project` เพื่อวิเคราะห์ project structure
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ project structure
 2. ระบุ workspace ที่ต้องวิเคราะห์ (monorepo ให้ระบุทุก workspace)
 3. บันทึก tech stack และ dependencies
 

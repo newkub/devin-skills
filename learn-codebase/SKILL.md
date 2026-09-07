@@ -26,7 +26,7 @@ related:
 
 > Goal: สร้างภาพรวมโครงสร้าง
 
-1. ใช้ `/scan-codebase` และ `/analyze-project` — entry points, layers, boundaries
+1. ใช้ `/scan-codebase` และ `/deep-analyze` — entry points, layers, boundaries
 2. ทำ `/report-file-structure` หรือ `/report-architecture-diagram` เป็น base map
 3. ระบุ core domain vs peripheral (infra, utils, generated)
 

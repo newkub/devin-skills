@@ -22,9 +22,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-astgrep)
 
-ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/use-astgrep`
-
-ดูเพิ่มเติม: /search-by-astgrep
+ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, การ search แบบ ad-hoc, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/update-project-rules` (merged from: `follow-tool-astgrep`, `search-by-astgrep`)
 
 ## Execute
 
@@ -75,13 +73,18 @@ related:
 ### 5. Scan And Run
 
 > Goal: รัน scan และค้นหาด้วย ast-grep ได้ถูกต้อง
+
 1. รัน `bun run scan` สำหรับ scan ทั้ง project
-2. รัน `bunx ast-grep run --pattern 'PATTERN'` สำหรับ ad-hoc search
-3. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
-4. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
-5. ใช้ `--interactive` สำหรับ interactive edit session
-6. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
-7. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
+2. รัน `bunx ast-grep run --pattern 'PATTERN' [paths]` สำหรับ ad-hoc search
+3. รัน `bunx ast-grep scan --inline-rules 'YAML_RULE' [paths]` สำหรับ temporary rule
+4. รัน `bunx ast-grep scan --json pretty` สำหรับ structured output
+5. รัน `bunx ast-grep scan --filter 'RULE_ID'` สำหรับ filter rules
+6. ใช้ `--interactive` สำหรับ interactive edit session
+7. ทดสอบ pattern บนไฟล์ตัวอย่าง 1-2 ไฟล์ก่อนรันทั้ง project
+8. ถ้า matches เยอะเกิน → ปรับ pattern ให้จำเพาะขึ้น
+9. ถ้าต้องการแก้ไข → ส่งต่อ `/replace`
+10. ถ้าต้องการ batch/integrate ast-grep ใน scripts หรือ review CLI → ทำ `/use-astgrep-programmatic`
+11. ถ้าต้องการเขียน rules ให้ทำ `/update-project-rules`
 
 ## Rules
 
@@ -118,6 +121,16 @@ related:
 ### 4. Rule Writing
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
+
+### 5. Ad-Hoc Search
+
+- ใช้ AST-based patterns สำหรับ structural match ก่อน regex
+- ตรวจสอบ syntax ด้วย `ast-grep run --pattern 'PATTERN' --debug`
+- ทดสอบ pattern บนไฟล์ตัวอย่างก่อนรันทั้ง project
+- ปล่อยให้ ast-grep auto-detect ภาษา หรือระบุ `--lang` ถ้า extension ไม่มาตรฐาน
+- ถ้า matches เยอะเกิน → เพิ่ม constraints หรือ filters
+- ถ้า pattern ซับซ้อน → ทำ `/use-astgrep-programmatic`
+- ถ้าต้องการ scan ซ้ำบ่อย → ทำ `/update-project-rules`
 
 - ใช้ /check-code-structure ถ้าจำเป็น
 

@@ -36,7 +36,7 @@ related:
 
 > Goal: วิเคราะห์ project เพื่อดู tech stack, structure, และ patterns
 
-1. ทำ `/analyze-project` เพื่อดู tech stack, structure, และ patterns
+1. ทำ `/deep-analyze` เพื่อดู tech stack, structure, และ patterns
 2. อ่าน `package.json` ทั้ง root และ workspace เพื่อดู dependencies ทั้งหมด
 
 ### 3. Setup Root Rules

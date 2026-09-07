@@ -26,7 +26,7 @@ related:
 
 > Goal: เข้าใจโครงสร้างและปัญหาของ workspaces
 
-1. ทำ `/analyze-project` เพื่อดู workspace configuration และ package manifest
+1. ทำ `/deep-analyze` เพื่อดู workspace configuration และ package manifest
 2. ทำ `/report-file-structure` เพื่อสแกนโครงสร้างไฟล์, สถิติ, และปัญหาเกี่ยวกับ organization
 3. ทำ `/report-before-after` ใน mode `before` เพื่อบันทึก baseline ก่อน refactor
 4. ทำ `/list-workspaces` เพื่อแสดงรายการ workspaces พร้อม dependency graph
@@ -93,7 +93,7 @@ related:
 
 ### 2. Evidence Based
 
-- ทุกไอเดียต้องมาจาก `/analyze-project`, `/list-workspaces`, หรือ `/review-quality`
+- ทุกไอเดียต้องมาจาก `/deep-analyze`, `/list-workspaces`, หรือ `/review-quality`
 - ระบุ file, workspace, หรือ dependency ทีเกี่ยวข้อง
 - ไม่เสนอไอเดีย generic ทีไม่มีพื้นฐานจากข้อมูลจริง
 

@@ -36,7 +36,7 @@ related:
 2. ตรวจว่า project มี `.devin/skills/` directory หรือไม่:
    - ถ้ามี → อ่าน skills ที่มีอยู่ทั้งหมด
    - ถ้าไม่มี → สร้าง `.devin/skills/` directory
-3. ทำ `/analyze-project` เพื่อวิเคราะห์ tech stack, dependencies และ workflows
+3. ทำ `/deep-analyze` เพื่อวิเคราะห์ tech stack, dependencies และ workflows
 4. ทำ `/check-monorepo` ถ้า project เป็น monorepo เพื่อระบุ workspaces
 5. บันทึก project context: stack, dependencies, existing skills, gaps
 

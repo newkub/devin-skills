@@ -24,7 +24,7 @@ related:
 > Goal: Prepare
 
 1. ใช้ `/follow-tool-vitepress` เพื่อเก็บ reference
-2. รัน `/analyze-project` เพื่อดูภาพรวม
+2. รัน `/deep-analyze` เพื่อดูภาพรวม
 
 ### 2. Analyze APIs
 

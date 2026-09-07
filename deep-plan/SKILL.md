@@ -51,7 +51,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: Analyze Project
 
-ทำ `/analyze-project` เพื่อวิเคราะห์ project structure และ dependencies
+ทำ `/deep-analyze` เพื่อวิเคราะห์ project structure และ dependencies
 
 - วิเคราะห์ project structure, tech stack, และ architecture
 - ระบุ existing modules, shared code, และ integration points

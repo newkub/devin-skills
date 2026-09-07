@@ -38,7 +38,7 @@ related:
 > Goal: เข้าใจ scope และปัญหาก่อน implement
 
 1. ทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
-2. ทำ `/deep-analyze-by-use-scripts` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values
+2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values
 3. ถ้ามี `.devin/plan/<workspace>/<title-date>.md` → ทำ `/implement-plan` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
 

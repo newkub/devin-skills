@@ -6,7 +6,11 @@ export function checkFrontmatter(m: SkillMeta, ctx: Context) {
   const { frontmatter: fm, body } = m;
 
   if (!fm) {
-    ctx.addFinding({ file: rpath, line: 1, category: "frontmatter", severity: "Critical", finding: "missing frontmatter", evidence: "no --- frontmatter block" }, m.skill);
+    if (m.hasFrontmatterOpen) {
+      ctx.addFinding({ file: rpath, line: 1, category: "frontmatter", severity: "Critical", finding: "unclosed frontmatter", evidence: "opening --- found but no closing ---" }, m.skill);
+    } else {
+      ctx.addFinding({ file: rpath, line: 1, category: "frontmatter", severity: "Critical", finding: "missing frontmatter", evidence: "no --- frontmatter block" }, m.skill);
+    }
     return;
   }
   if (!fm.name) {

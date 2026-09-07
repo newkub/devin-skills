@@ -1,4 +1,4 @@
-﻿---
+---
 name: use-lib-effective
 description: วิเคราะห์ dependencies และใช้งาน libraries ให้ครบและครอบคลุม ไม่ reinvent
 argument-hint: "[scope]"
@@ -27,7 +27,7 @@ related:
 > Goal: วิเคราะห์ dependencies และ usage แบบลึกซึ้งครบทุกมิติ
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์โปรเจกต์อย่างลึกซึ้ง ครอบคลุม architecture, code quality, dependencies และ tech stack
-2. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ usage patterns เฉพาะส่วน
+2. ทำ `/deep-analyze` เพื่อวิเคราะห์ dependencies และ usage patterns เฉพาะส่วน
 3. อ่าน `package manifest` เช่น `package.json`, `Cargo.toml`, `pyproject.toml` แบบ parallel
 4. สร้างรายการ dependencies พร้อม categorize ตาม purpose
 5. ระบุ dependencies ที่ซ้ำซ้อนหรือทำงานคล้ายกัน

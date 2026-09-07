@@ -30,7 +30,7 @@ related:
 
 ใช้เมื่อผู้ใช้ขอให้ดูไฟล์, ชุดไฟล์ หรือ snippet ใน terminal ด้วย layout ที่อ่านง่าย — เหมาะสำหรับ `source code`, `configs`, `logs` และ `markdown` รองรับ single file, multiple files, line ranges และ git diffs
 
-ดูเพิ่มเติม: /review, /scan-codebase, /check-git-diff, /search-by-astgrep, /view-diff, /open-in-explorer, /capture
+ดูเพิ่มเติม: /review, /scan-codebase, /check-git-diff, /use-astgrep, /view-diff, /open-in-explorer, /capture
 
 ## Execute
 
@@ -40,7 +40,7 @@ related:
 
 1. รับ file paths, glob pattern หรือ directory จาก argument หรือ context
 2. ใช้ `find_file_by_name` สำหรับ patterns เช่น `src/**/*.ts`
-3. ถ้าได้ symbol (function/class name) ให้ค้นหาตำแหน่งก่อนด้วย `grep` หรือ `/search-by-astgrep`
+3. ถ้าได้ symbol (function/class name) ให้ค้นหาตำแหน่งก่อนด้วย `grep` หรือ `/use-astgrep`
 4. ข้าม paths ใน `node_modules`, `.git`, `dist`, `build`, `coverage`
 5. เรียงลำดับไฟล์ตาม import order หรือ path เพื่อ output ที่เสถียร
 

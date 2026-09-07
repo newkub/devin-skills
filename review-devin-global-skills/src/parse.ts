@@ -1,7 +1,11 @@
 import type { Frontmatter } from "./types";
 
+export function hasFrontmatterOpen(text: string): boolean {
+  return /^\uFEFF?---\r?\n/.test(text);
+}
+
 export function parseFrontmatter(text: string): Frontmatter | null {
-  const fmMatch = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  const fmMatch = text.match(/^\uFEFF?---\r?\n([\s\S]*?)\r?\n---/);
   if (!fmMatch) return null;
   const fm = fmMatch[1];
   const nameMatch = fm.match(/^name:\s*(.+)$/m);
@@ -25,7 +29,7 @@ export function parseFrontmatter(text: string): Frontmatter | null {
 }
 
 export function stripFrontmatter(text: string): string {
-  return text.replace(/^---[\s\S]*?---\r?\n/, "");
+  return text.replace(/^\uFEFF?---[\s\S]*?---\r?\n/, "");
 }
 
 export function extractSectionsWithLevels(text: string): string[] {

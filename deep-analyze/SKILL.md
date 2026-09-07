@@ -1,15 +1,18 @@
 ---
 name: deep-analyze
-description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งด้วยหลายมิติและ external research
+description: วิเคราะห์โปรเจกต์อย่างลึกซึ้งครบทุกมิติ ด้วย tools, scripts, CLI, และ external research
 argument-hint: "[scope]"
 related:
   - rethink
   - deep-thinking
-  - analyze-project
-  - deep-analyze-by-use-scripts
   - scan-codebase
   - check-code-structure
   - use-astgrep
+  - use-astgrep-programmatic
+  - deep-report
+  - deep-research
+  - run-audit
+  - use-scripts
 ---
 
 ## Goal
@@ -18,7 +21,8 @@ related:
 
 ## Scope
 
-ครอบคลุมการวิเคราะห์หลายมิติ:
+ครอบคลุมการวิเคราะห์หลายมิติ (merged from: `analyze-project`, `deep-analyze-by-use-scripts`, `scan-codebase`, `check-code-structure`):
+
 - Architecture และ design patterns
 - Code quality และ technical debt
 - Features และ business logic
@@ -31,57 +35,43 @@ related:
 
 ### 1. Deep Thinking Phase
 
-> Goal: Deep Thinking Phase
+> Goal: วิเคราะห์ปัญหาและวางแผนก่อนเริ่ม
 
-ทำ `/deep-thinking` เพื่อวิเคราะห์ปัญหาและวางแผนก่อนเริ่ม
-
-1. กำหนด objectives ของการวิเคราะห์
-2. แบ่งปัญหาออกเป็น sub-problems
-3. สร้างทางเลือกสำหรับ analysis approach
-4. ตรวจสอบ assumptions
-5. สร้าง action plan ที่ชัดเจน
+1. ทำ `/deep-thinking` เพื่อกำหนด objectives, sub-problems, assumptions และ action plan
+2. ระบุ scope และ thresholds ตาม ## Rules ข้อ 4
 
 ### 2. Quick Scan Phase
 
-> Goal: ทำ `/analyze-project` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์โปรเจกต์พื้นฐานและลึกด้วย scripts
+> Goal: Scan codebase อย่างรวดเร็วและเลือก analysis depth
 
-1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์อย่างครบถ้วน
-2. ถ้าต้องการ analysis ด้วย review CLI และ scripts → ทำ `/deep-analyze-by-use-scripts`
-3. Scan file structure และ project type
-3. Search code patterns ทั่วไป
-4. Structural analysis ด้วย ast-grep
-5. Quality check พื้นฐาน
-6. สร้าง structured data สำหรับ analysis
+1. ทำ `/scan-codebase` ดู structure, patterns, quality ใน 3 นาที
+2. ถ้าต้องการ analysis ด้วย review CLI, ast-grep NAPI, Bun scripts:
+   - ตรวจสอบ `tools/review-codebase` กับ `tools/analyze`
+   - ใช้ `@ast-grep/napi` หรือ `oxc-parser` สำหรับ programmatic AST analysis
+   - รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`
+3. สร้าง structured data สำหรับ analysis
 
 ### 3. Structure Analysis
 
-> Goal: Structure Analysis
-
-ทำ `/scan-codebase` เพื่อวิเคราะห์โครงสร้าง
+> Goal: วิเคราะห์โครงสร้างไฟล์และ symbols
 
 1. รัน tree command ดู directory structure
-2. ทำ `/check-code-structure` เพื่อเข้าใจวิธีใช้งาน `ast-grep outline`
-3. รัน `bunx ast-grep outline` ดู structure ภายในไฟล์
-4. วิเคราะหา findings (SRP violations, tight coupling)
-5. ตรวจสอบ file patterns และ naming conventions
+2. ทำ `/check-code-structure` เพื่อใช้ `ast-grep outline`
+3. วิเคราะห์ top-level symbols, exports, members, SRP violations, cohesion
+4. ตรวจสอบ file patterns, naming conventions, และ cross-layer imports
 
 ### 4. Architecture Analysis
 
-> Goal: Architecture Analysis
+> Goal: วิเคราะห์ architecture และ design patterns
 
-วิเคราะหา architecture และ design patterns
-
-1. ทำ `/use-astgrep` ระบุ architectural pattern
-2. วิเคราะหา data flow ด้วย `Grep`
-3. ระบุ design patterns ที่ใช้
-4. ตรวจสอบ adherence ต่อ architecture principles
-5. วิเคราะหา coupling และ cohesion
+1. ทำ `/use-astgrep` ระบุ architectural patterns
+2. วิเคราะห์ data flow ด้วย `Grep`
+3. ระบุ design patterns และ adherence ต่อ principles
+4. วิเคราะห์ coupling และ cohesion
 
 ### 5. Features Analysis
 
-> Goal: Features Analysis
-
-วิเคราะหา features และ business logic
+> Goal: วิเคราะห์ features และ business logic
 
 1. Discovery และ inventory features ทั้งหมด
 2. Categorize และ group features
@@ -90,69 +80,58 @@ related:
 
 ### 6. Code Quality Analysis
 
-> Goal: Code Quality Analysis
-
-วิเคราะหา code quality อย่างละเอียด
+> Goal: วิเคราะห์ code quality อย่างละเอียด
 
 1. ทำ `/use-astgrep` หา patterns, anti-patterns, design patterns
-2. หา code smells ด้วย `Grep` multiline mode
-3. ทำ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
-4. ตรวจสอบ naming conventions
-5. ทำ `/review-quality`, `/check-unused`, `/check-unused` แบบ parallel
+2. ทำ `/use-astgrep-programmatic` สำหรับ AST-based metrics ถ้าต้องการ
+3. หา code smells ด้วย `Grep` multiline mode
+4. ใช้ `/use-scripts` คำนวณ metrics (complexity, coupling, cohesion)
+5. ทำ `/review-quality`, `/check-unused` แบบ parallel
 6. ตรวจหา hardcoded secrets ด้วย `Grep`
 
 ### 7. Dependencies And Tech Stack
 
-> Goal: Dependencies And Tech Stack
-
-วิเคราะหา dependencies และ tech stack
+> Goal: วิเคราะห์ dependencies และ tech stack
 
 1. อ่าน manifest files แบบ parallel
 2. ระบุ tech stack และ versions
-3. วิเคราะหา dependency graph
+3. วิเคราะห์ dependency graph
 4. ตรวจสอบ outdated dependencies
-5. วิเคราะหา security vulnerabilities ด้วย `/run-audit`
+5. วิเคราะห์ security vulnerabilities ด้วย `/run-audit`
 
 ### 8. Performance And Security
 
-> Goal: Performance And Security
+> Goal: วิเคราะห์ performance และ security
 
-วิเคราะหา performance และ security
-
-1. วิเคราะหา performance bottlenecks
+1. วิเคราะห์ performance bottlenecks
 2. ตรวจสอบ security vulnerabilities
-3. วิเคราะหา error handling และ resilience
+3. วิเคราะห์ error handling และ resilience
 4. ตรวจสอบ caching strategies
-5. วิเคราะหา database queries ถ้ามี
+5. วิเคราะห์ database queries ถ้ามี
 
 ### 9. External Research
 
-> Goal: External Research
-
-ทำ `/deep-research` เพื่อค้นหา best practices
+> Goal: ทำ `/deep-research` เพื่อค้นหา best practices
 
 1. ค้นหา best practices สำหรับ tech stack ที่ใช้
 2. ค้นหา alternatives ที่ดีกว่าสำหรับ dependencies
-3. ค้นหา official documentation สำหรับ tools/libraries
+3. ค้นหา official documentation
 4. เปรียบเทียบ findings กับ project ปัจจุบัน
 5. ระบุ gaps ระหว่าง current implementation และ best practices
 
 ### 10. Comprehensive Report
 
-> Goal: Comprehensive Report
+> Goal: สร้างรายงานครบถ้วน
 
-สร้างรายงานครบถ้วน
-
-1. ทำ `/report` สร้างตารางจัดกลุ่มตามหมวดหมู่
-2. ให้ recommendations ตาม priority และ impact
-3. ระบุ action items ที่ชัดเจน
-4. สร้าง roadmap สำหรับ improvements
+1. ทำ `/deep-report` สร้างตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
+2. ทำ `/report` สรุปตารางจัดกลุ่มตามหมวดหมู่ถ้าต้องการ chat output
+3. ให้ recommendations ตาม priority และ impact
+4. ระบุ action items ที่ชัดเจน
+5. สร้าง roadmap สำหรับ improvements
 
 ## Rules
 
 ### 1. Analysis Depth
-
-วิเคราะห์อย่างละเอียดและครบถ้วน
 
 - ใช้ `/deep-thinking` ก่อนเริ่มเสมอ
 - ใช้ `/scan-codebase` สำหรับ quick overview
@@ -162,18 +141,14 @@ related:
 
 ### 2. Tool Selection
 
-เลือก tools ที่เหมาะสมกับแต่ละมิติ
-
-- Structure: `/scan-codebase`, tree command, `ast-grep outline`
+- Structure: `/scan-codebase`, tree, `ast-grep outline`, `/check-code-structure`
 - Architecture: `/use-astgrep`, `Grep`
 - Features: `/scan-codebase`, `/use-astgrep`
-- Code Quality: `/use-astgrep`, `Grep`, `/use-scripts`, check workflows
+- Code Quality: `/use-astgrep`, `/use-astgrep-programmatic`, `Grep`, `/use-scripts`
 - Dependencies: manifest files, `/run-audit`
 - Research: `/deep-research`, DeepWiki, Context7, WebSearch
 
 ### 3. Parallel Processing
-
-ประมวลผลแบบ parallel เพื่อความเร็ว
 
 - อ่าน manifest files พร้อมกัน
 - รัน checks หลายอย่างพร้อมกัน
@@ -181,8 +156,6 @@ related:
 - รัน ast-grep patterns พร้อมกัน
 
 ### 4. Metric Thresholds
-
-กำหนด thresholds สำหรับ code quality
 
 - Long functions: > 50 lines
 - Deep nesting: > 3 levels
@@ -193,24 +166,27 @@ related:
 
 ### 5. Research Validation
 
-ตรวจสอบความถูกต้องของ external research
-
 - ใช้ multiple sources สำหรับ validation
 - ตรวจสอบ credibility ของ sources
 - เปรียบเทียบกับ project context
-- ระบุ assumptions ที่ใช้ใน research
+- ระบุ assumptions ที่ใช้
 
 ### 6. Report Quality
-
-สร้างรายงานที่มีคุณภาพและนำไปปฏิบัติได้
 
 - จัดกลุ่ม findings ตามหมวดหมู่
 - ให้ recommendations ตาม priority และ impact
 - ระบุ action items ที่ชัดเจน
 - สร้าง roadmap สำหรับ improvements
-- ใช้ `/report-table` สำหรับ structured output
+- ใช้ `/deep-report` สำหรับ detailed report
+- ใช้ `/report` สำหรับ chat table
 
-- ใช้ /rethink ถ้าจำเป็น
+### 7. Deep Analysis Scripts
+
+- ตรวจสอบ `tools/review-codebase` ก่อนใช้
+- ตรวจสอบ `tools/analyze` ถ้ามี
+- ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis
+- รวบรวม metrics จาก knip, biome, vitest, madge
+- รัน `bunx ast-grep outline` ดู structure
 
 ## Expected Outcome
 

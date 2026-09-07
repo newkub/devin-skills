@@ -1,156 +1,42 @@
 ---
 name: deep-analyze-by-use-scripts
-description: วิเคราะห์ codebase ลึกซึ้งด้วย review-codebase CLI, ast-grep napi, Bun scripts และ oxc parser
+description: (merged into /deep-analyze) วิเคราะห์ codebase ลึกด้วย scripts และ CLI
 argument-hint: "[scope]"
 related:
-  - use-scripts
-  - follow-lang-bun
-  - create-files-in-os-temp
   - deep-analyze
-  - deep-report
-  - scan-codebase
-  - follow-clean-architecture
+  - use-scripts
+  - use-astgrep-programmatic
   - follow-create-cli
-  - deep-review-codebase
-  - run-review
-  - report-table
-  - update-references
-  - check-reference
 ---
 
 ## Goal
 
-วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review-codebase` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts พร้อมรองรับ `/deep-review` และ `/run-review`
+วิเคราะห์ codebase อย่างลึกซึ้งด้วย `tools/review-codebase` CLI, `tools/analyze` CLI, `@ast-grep/napi` และ scripts
 
 ## Scope
 
-ใช้สำหรับ deep analysis ที่ต้องการ data processing ซับซ้อน หรือ metrics calculation ที่ต้อง aggregation ครอบคลุม structural analysis ด้วย AST และ cross-reference analysis — ไม่ใช่การวิเคราะห์ทั่วไป (ใช้ `/deep-analyze`)
-
-ดูเพิ่มเติม: /deep-review-codebase
+ทำงานนี้ผ่าน `/deep-analyze` ได้เลย ตั้งแต่ทีถูก merge เข้าด้วยกัน ดู Step 2 "Quick Scan Phase" และ Step 6 "Code Quality Analysis" ใน `/deep-analyze`
 
 ## Execute
 
-### 1. Analyze Project
+### 1. Redirect
 
-> Goal: วิเคราะห์โปรเจกต์พื้นฐานและสร้าง structural overview
+> Goal: ใช้ `/deep-analyze` และ sub-skills แทน
 
-1. ทำ `/analyze-project` เพื่อวิเคราะห์โปรเจกต์พื้นฐาน
-2. ถ้าต้องสร้าง scripts สำหรับ analysis → ทำ `/use-scripts` และ `/follow-lang-bun` เพื่อใช้ Bun native APIs
-3. สร้าง temp directory สำหรับ output ด้วย `/create-files-in-os-temp` ถ้าต้องการไฟล์ชั่วคราว
-4. รัน `bunx ast-grep outline <path>` เพื่อสร้าง structural overview ของ source files
-5. ใช้ผลลัพธ์จาก step 1-4 เป็น foundation สำหรับ deep analysis
-
-### 2. Setup Analyze CLI
-
-> Goal: สร้าง `tools/analyze` CLI สำหรับ AST-based analysis
-
-1. ถ้ายังไม่มี `tools/analyze/` → ทำ `/follow-create-cli` เพื่อสร้าง CLI project
-2. ทำ `/follow-clean-architecture` เพื่อวางโครงสร้าง `src/domain/`, `src/application/`, `src/adapters/`, `src/presentation/`
-3. เลือก stack: Rust ถ้าต้องการ binary performance, Bun ถ้าทีมใช้ TypeScript
-4. ทำ `/deep-review` เพื่อตรวจสอบคุณภาพก่อน integrate
-5. ผสาน CLI เข้ากับ package manifest ด้วย `/follow-tasks`
-
-### 3. Ensure Review CLI Ready
-
-> Goal: ตรวจสอบและอัปเดท review CLI ก่อนรัน analysis
-
-1. ทำ `/deep-review` เพื่อให้แน่ใจว่า analyzers ครอบคลุม categories ล่าสุด
-2. ถ้า review CLI มีอยู่แล้วและไม่ต้องอัปเดท → ข้ามไป Step 4
-3. ถ้าต้องสร้างใหม่ → ทำ `/deep-review` ก่อน แล้วกลับมาทำ Step 4
-
-### 4. Run Review CLI And NAPI Analysis
-
-> Goal: รัน review CLI และ `tools/analyze` พร้อมใช้ `@ast-grep/napi` สำหรับ AST-based deep analysis
-
-1. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report เป็น JSON
-2. รัน `bun --filter tools-analyze analyze:json` ถ้ามี `tools/analyze` ใน monorepo
-3. ใช้ `@ast-grep/napi` สำหรับ programmatic AST analysis ใน scripts — Bun auto-install บน `import`
-4. รวบรวม metrics จาก knip, biome, vitest, madge, `ast-grep scan`, `@ast-grep/napi`
-5. รัน review CLI และ analyze CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer แล้ว process results
-
-### 5. Deep Report Findings
-
-> Goal: จัดรูปแบบผลลัพธ์เป็น deep report ตาราง 7 columns พร้อม deep summary
-
-1. ทำ `/deep-report` เพื่อจัดรูปแบบผลลัพธ์เป็นตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
-2. จัดกลุ่มตาม `reviewWorkflow` และเรียงลำดับตาม severity: Critical > High > Medium > Low
-3. สร้าง deep summary 5 ส่วน: Domain Breakdown, Severity Distribution, Analyzer Changes, False Positive Analysis, Recommended Actions
-4. ระบุ action items จัดลำดับตาม priority: quick wins ก่อน, major improvements รองลงมา
-
-### 6. Analyze Cross-References
-
-> Goal: ระบุ workflows และ skills ที่ควรอ้างอิงจากผล deep analysis
-
-1. ระบุ workflow หรือ skill ที่เกี่ยวข้องกับ findings จาก step 5
-2. ทำ `/scan-codebase` เพื่อค้นหา references ปัจจุบัน
-3. วิเคราะห์ไฟล์ที่ควรมี reference แต่ยังไม่มี: `AGENTS.md`, `README.md`, workflow files, skill files
-4. ตรวจสอบว่าไฟล์ที่ควรอ้างอิงมีเงื่อนไขตรงกับ findings หรือไม่
-
-### 7. Apply References And Report
-
-> Goal: เพิ่ม references ที่ขาดและรายงานผลลัพธ์
-
-1. ทำ `/update-references` เพื่อเพิ่ม references ในไฟล์ที่ขาด
-2. ทำ `/check-reference` เพื่อตรวจสอบว่า references มีอยู่จริง
-3. ทำ `/report-table` เพื่อสรุปผลลัพธ์เป็นตาราง
-4. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. ทำ `/deep-analyze` แทน
+2. ถ้าต้องการ custom scripts → ทำ `/use-scripts`
+3. ถ้าต้องการ AST analysis ใน scripts → ทำ `/use-astgrep-programmatic`
+4. ถ้าต้องการสร้าง `tools/analyze` → ทำ `/follow-create-cli`
 
 ## Rules
 
-### 1. Review CLI Integration
-
-- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบและรองรับ `/deep-review` ก่อนรัน `/run-review`
-- ถ้า review CLI ไม่มี → ทำ `/deep-review` ก่อนเสมอ
-- ถ้า review CLI มีอยู่ → รัน `bun --filter tools-review-codebase review-codebase:json` ได้เลย
-- รัน review CLI อีกครั้งหลังเพิ่มหรืออัปเดท analyzer
-
-### 2. Analyze CLI Integration
-
-- ทุกครั้งที่เรียก workflow นี้ ต้องตรวจสอบ `tools/analyze/` ด้วย
-- ถ้า `tools/analyze/` ไม่มี → ทำ `/follow-create-cli` ก่อนเสมอ
-- `tools/analyze/` ต้อง follow `/follow-clean-architecture`
-- ทำ `/deep-review` ก่อนใช้งาน
-
-### 3. Ast-Grep NAPI And OXC Parser Usage
-
-- `@ast-grep/napi` เป็น native addon — Bun auto-install บน `import` โดยไม่ต้อง `bun add`
-- `@ast-grep/wasm` เป็น WASM version — ใช้ผ่าน CDN ได้: `import { parse } from 'https://esm.sh/@ast-grep/wasm'`
-- `oxc-parser` เป็น Rust-based JS/TS parser ทีเร็วมาก — ใช้ผ่าน CDN `https://esm.sh/oxc-parser` หรือ `bun add oxc-parser`
-- ถ้าต้องการ AST ละเอียดหรือ speed สูงสุด → ใช้ `oxc-parser` แทน `@ast-grep/napi` หรือใช้คู่กัน
-- `parse(Lang.TypeScript, source)` สร้าง `SgRoot`
-- `root.find('console.log($A)')` ค้นหา pattern แรกที่ match
-- `root.findAll('function $A($$$) { $$$ }')` ค้นหาทุก pattern ที่ match
-- `node.getMatch('A')` ดึง single meta variable — `node.getMultipleMatches('ARGS')` ดึง multi meta variable
-- `node.range()` ดึง start/end position (0-indexed)
-- `node.replace(text)` สร้าง `Edit` object — `node.commitEdits(edits)` apply edits และ return new source string
-
-### 4. Ast-Grep Outline Usage
-
-- `bunx ast-grep outline <file>` — สรุป functions, classes, imports, exports, members
-- `bunx ast-grep outline <directory>` — สรุป exported surface ของ directory
-- `bunx ast-grep outline <file> --match <symbol> --view expanded` — focus ที่ symbol เฉพาะ
-- ไม่มี index building, ไม่มี cross-file analysis — parse ใหม่ทุกครั้ง
-
-### 5. Cross-Reference Quality
-
-- เพิ่ม reference เฉพาะไฟล์ที่เกี่ยวข้องจริง — ไม่เพิ่มในไฟล์ที่ไม่เกี่ยวข้อง
-- ถ้า project เป็น monorepo ตรวจสอบทุก workspace
-- ตรวจสอบ `AGENTS.md` ใน root และแต่ละ workspace
-- ใช้ `/check-reference` หลังเพิ่ม reference
-
-### 6. Output Format
-
-- Review CLI output เป็น JSON หรือ table format
-- Analyze CLI output เป็น JSON หรือ table format
-- Deep report ใช้ตาราง 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
-- ทุก finding ต้องมี evidence ที่ตรวจสอบได้ — ถ้าเป็น false positive ให้ระบุใน column Cause
+- ใช้ `/deep-analyze` เป็น entry หลัก
+- ใช้ `/use-scripts` สำหรับ metrics calculation และ complex processing
+- ใช้ `/use-astgrep-programmatic` สำหรับ AST analysis ใน scripts
 
 ## Expected Outcome
 
-- Review CLI JSON report พร้อม metrics ครบถ้วน
-- `tools/analyze` CLI พร้อมใช้งานและผ่าน `/deep-review`
+- Review CLI JSON report พร้อม metrics
+- `tools/analyze` CLI พร้อมใช้งาน
 - Structural overview ด้วย `ast-grep outline`
-- Deep report ตาราง 7 columns พร้อม evidence ที่ตรวจสอบได้
-- Deep summary 5 ส่วน: Domain Breakdown, Severity Distribution, Analyzer Changes, False Positive Analysis, Recommended Actions
-- Cross-references ถูกเพิ่มในไฟล์ที่ขาด ไม่มี broken references
-- Action items จัดลำดับตาม priority: quick wins ก่อน, major improvements รองลงมา
+- Deep report 7 columns พร้อม evidence

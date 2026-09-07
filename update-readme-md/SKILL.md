@@ -121,7 +121,7 @@ related:
 ### 6. Content Standards
 
 - ทำ `/translate-to-lang-en` — README.md ทั้งหมดเป็นภาษาอังกฤษ
-- ใช้ข้อมูลจริงจาก `/analyze-project`, code รันได้จริง
+- ใช้ข้อมูลจริงจาก `/deep-analyze`, code รันได้จริง
 - ไม่ใช้ placeholder ยกเว้น banner image
 - ไม่มี `## Information`, `## Key Concepts`, `## Tech Stack` เป็น section แยก
 
@@ -214,7 +214,7 @@ related:
 
 ## Expected Outcome
 
-- README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/analyze-project` ไม่มี placeholder ยกเว้น banner image
+- README.md ครบถ้วน ใช้ข้อมูลจริงจาก `/deep-analyze` ไม่มี placeholder ยกเว้น banner image
 - Section order: Status > Hero (no ANSI) > UI Sketch > Get Started > Features > Usage (with ANSI) > Contributing (if exists) > License (if exists)
 - `## Get Started` ใช้ numbered list ตรงๆ ไม่มี `###` subsection
 - `## Features` 5 columns (Icon, Feature, Description, Benefit, Usage)

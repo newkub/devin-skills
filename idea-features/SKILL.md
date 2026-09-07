@@ -41,7 +41,7 @@ related:
 > Goal: เข้าใจ topic และ project
 
 1. รับ `<topic>` จาก argument หรือ conversation context
-2. ทำ `/analyze-project` แบบ lightweight ถ้าต้องการ
+2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ
 3. ถ้า topic ไม่ชัด → ใช้ `/suggest-me` ถาม user
 
 ### 2. Generate Ideas

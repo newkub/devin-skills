@@ -11,9 +11,9 @@ related:
   - suggest-next-action
   - check-reference
   - follow-skills-map
----
   - check-skill-usage
   - check-devin-knowledge
+---
 
 ## Goal
 
@@ -28,7 +28,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 ไม่สร้าง skill ใหม่ (ใช้ `/update-devin-global-skills`) ไม่ปรับเนื้อหาเชิง code (ใช้ `/deep-validate`)
 
-- ดูเพิ่มเติม: /deep-review-codebase
+- ดูเพิ่มเติม: /deep-review-codebase, /check-skill-usage, /check-devin-knowledge
 
 ## Execute
 ### 1. Prepare Context

@@ -48,7 +48,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: เข้าใจสถานะปัจจุบันและสิ่งที่ต้อง update ทั้งหมด
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมายและ assumptions
-2. ทำ `/deep-analyze` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ target อย่างลึก
+2. ทำ `/deep-analyze` และ `/deep-analyze` เพื่อวิเคราะห์ target อย่างลึก
 3. ทำ `/deep-review` เพื่อ review ครบทุกมิติ
 4. ทำ `/report-scan-todo` เพื่อรวบรวม TODO/FIXME/HACK/placeholder ที่ยังค้าง
 5. ทำ `/list-dependencies` เพื่อดู dependencies ที่เก่าหรือขาด

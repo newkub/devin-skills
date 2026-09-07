@@ -39,7 +39,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: เข้าใจสภาพปัจจุบันและสิ่งที่ต้อง productionize ทั้งหมด
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมายและ assumptions
-2. ทำ `/deep-analyze` และ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ codebase
+2. ทำ `/deep-analyze` และ `/deep-analyze` เพื่อวิเคราะห์ codebase
 3. ทำ `/deep-review` เพื่อ review ครบทุกมิติ
 4. ทำ `/report-scan-todo` เพื่อรวบรวม TODO/FIXME/HACK/placeholder
 5. ระบุ MOCK, FAKE, STUB, hard-coded values, in-memory stores, simulated delays

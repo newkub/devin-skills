@@ -66,7 +66,7 @@ related:
 
 > Goal: วิเคราะห์ project เพื่อกำหนดไฟล์ที่จำเป็น
 
-1. ทำ `/analyze-project` เพื่อดู tech stack และ structure
+1. ทำ `/deep-analyze` เพื่อดู tech stack และ structure
 2. ทำ `/check-monorepo` เพื่อตรวจสอบประเภท project
 3. ระบุว่าเป็น open source, private, หรือ organization repo
 4. ระบุว่ามี contributors หลายคนหรือไม่

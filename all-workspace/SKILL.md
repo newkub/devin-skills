@@ -24,7 +24,7 @@ related:
 
 ค้นหาและระบุ workspaces ทั้งหมดใน monorepo
 
-1. ทำ `/analyze-project` เพื่อดู workspace configuration ทั้งหมด
+1. ทำ `/deep-analyze` เพื่อดู workspace configuration ทั้งหมด
 2. อ่าน package manifest เพื่อดูว่ามี workspace อะไรบ้าง
 3. จัดลำดับ workspaces ตามความสำคัญ (foundation packages ก่อน, applications ทีหลัง)
 

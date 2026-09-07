@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
 argument-hint: "[scope]"
@@ -27,7 +27,7 @@ related:
 
 > Goal: ระบุ tools และ frameworks ที่ใช้
 
-1. ทำ `/deep-analyze-by-use-scripts` เพื่อวิเคราะห์ dependencies และ tools ที่ใช้
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์ dependencies และ tools ที่ใช้
 2. ระบุ ecosystem: TypeScript/JavaScript หรือ Rust หรือทั้งสองอย่าง
 3. ระบุ runtime, build tools, frameworks, ORM, และ ecosystem libraries
 4. ถ้าไม่พบ tech stack หรือ library ที่ต้องการใน table → ทำ `/deep-research` หรือ `/research-dependencies` เพื่อหาทางเลือกทีเหมาะสม

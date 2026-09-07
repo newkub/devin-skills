@@ -1,4 +1,4 @@
-﻿---
+---
 name: improve-review-cli
 description: สร้างหรืออัปเดต `tools/review-codebase` CLI ให้ครอบคลุม features ปัจจุบัน แล้วรัน review จนผ่าน
 argument-hint: "[target-or-iteration]"
@@ -43,7 +43,7 @@ related:
 > Goal: เข้าใจ features ที่มีใน codebase
 
 1. ทำ `/scan-codebase` เพื่อดู structure, tech stack, packages
-2. ทำ `/analyze-project` เพื่อดู features หลัก
+2. ทำ `/deep-analyze` เพื่อดู features หลัก
 3. อ่าน `AGENTS.md` และ `docs/project/features.md` ถ้ามี
 4. ระบุ features ใหมที่ยังไม่มี analyzer ครอบคลุม
 

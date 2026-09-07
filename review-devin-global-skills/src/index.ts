@@ -13,6 +13,7 @@ import { applyFixes } from "./fix";
 import {
   countExecuteSteps,
   extractSectionsWithLevels,
+  hasFrontmatterOpen,
   nonCodeLines,
   parseFrontmatter,
   stripFrontmatter,
@@ -67,6 +68,7 @@ for (const skill of skillDirs) {
     path: skillPath,
     lineCount: visibleLines(text),
     frontmatter: parseFrontmatter(text),
+    hasFrontmatterOpen: hasFrontmatterOpen(text),
     sections: extractSectionsWithLevels(text),
     executeSteps: countExecuteSteps(text),
     hasReferences: existsSync(join(SKILLS_ROOT, skill, "references")),

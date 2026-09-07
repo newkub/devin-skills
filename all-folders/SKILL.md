@@ -24,7 +24,7 @@ related:
 
 > Goal: รู้ว่า project มี folders อะไรบ้างและเรียงลำดับยังไง
 
-1. ทำ `/analyze-project` เพื่อดูโครงสร้างหลัก
+1. ทำ `/deep-analyze` เพื่อดูโครงสร้างหลัก
 2. ทำ `/scan-codebase` เพื่อหา directories ที่เกี่ยวข้อง
 3. ใช้ `glob` หรือ `find_file_by_name` เพื่อค้นหา folders ตาม pattern
 4. บันทึกรายการ folders พร้อมลำดับ processing

@@ -29,6 +29,7 @@ export interface SkillMeta {
   path: string;
   lineCount: number;
   frontmatter: Frontmatter | null;
+  hasFrontmatterOpen: boolean;
   sections: string[];
   executeSteps: number;
   hasReferences: boolean;

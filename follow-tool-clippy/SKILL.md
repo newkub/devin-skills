@@ -21,7 +21,7 @@ related:
 
 > Goal: ตรวจสอบโครงสร้าง project และ config ที่มีอยู่
 
-1. รัน `/analyze-project` เพื่อดูโครงสร้างโปรเจกต์
+1. รัน `/deep-analyze` เพื่อดูโครงสร้างโปรเจกต์
 2. ตรวจสอบ `Cargo.toml` ที่มีอยู่
 3. ตรวจสอบว่ามี `clippy.toml` หรือไม่
 4. ตรวจสอบ workspace configuration

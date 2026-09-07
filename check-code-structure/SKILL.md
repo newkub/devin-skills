@@ -3,6 +3,7 @@ name: check-code-structure
 description: วิเคราะห์และปรับปรุง code structure ด้วย sg outline ครอบคลุม symbols, exports, members, และ cohesion
 argument-hint: "[scope]"
 related:
+  - deep-analyze
   - search-by-astgrep
   - use-astgrep
   - use-astgrep-programmatic
@@ -19,9 +20,9 @@ related:
 
 ## Scope
 
-ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด
+ใช้กับ source code ที่ต้องการปรับปรุง code structure เช่น `src/` หรือ workspace ใด workspace หนึ่ง ครอบคลุม top-level symbols, exports, imports, members, และรูปแบบการจัดกลุ่มโค้ด เป็น sub-step ของ `/deep-analyze` Step 3
 
-ดูเพิ่มเติม: /search-by-astgrep, /deep-review-codebase
+ดูเพิ่มเติม: /use-astgrep, /deep-review-codebase
 
 ## Execute
 

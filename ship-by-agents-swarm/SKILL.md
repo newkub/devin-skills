@@ -1,4 +1,4 @@
-﻿---
+---
 name: ship-by-agents-swarm
 description: Ship ด้วย swarm — fan-out ทุก lane แบบ async parallel แล้ว verify ครบก่อน ship
 argument-hint: "[@issue-or-title]"
@@ -46,7 +46,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 1. ทำตาม `references/swarm-plan.md` — แยก lanes ตาม ownership ของไฟล์ ไม่ให้ 2 lanes แก้ไฟล์เดียวกัน
 2. ทำตาม `references/lanes.md` — lane types: verify, review, test, docs, deps, ship-ops
-3. ใช้ `/search-by-astgrep` หรือ `/use-astgrep` เพื่อ map symbols/call sites แยก lane ownership
+3. ใช้ `/use-astgrep` เพื่อ map symbols/call sites แยก lane ownership
 4. ถ้า lanes ไม่ independent → ทำ sequential ตาม `/ship` แทน
 
 ### 3. Preflight Checks
@@ -115,7 +115,7 @@ Ship งานโดย fan-out ทุก lane ที่ทำขนานกั
 
 ### 3. Prefer Scripts Over Agents
 
-- งาน mechanical/deterministic → `/use-scripts`, `/use-astgrep` หรือ `/search-by-astgrep`
+- งาน mechanical/deterministic → `/use-scripts` หรือ `/use-astgrep`
 - subagent ใช้เฉพาะ lane ที่ต้องการ judgment หรือ multi-step reasoning
 - ห้าม spawn subagent ซ้ำซ้อนสำหรับงานที่ script ทำได้
 

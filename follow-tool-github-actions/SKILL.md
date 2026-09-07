@@ -62,7 +62,7 @@ related:
 
 > Goal: เขียน workflow YAML ตาม best practices
 
-1. ทำ `/analyze-project` เพื่อวิเคราะห์โครงสร้างและ dependencies
+1. ทำ `/deep-analyze` เพื่อวิเคราะห์โครงสร้างและ dependencies
 2. อ่าน `.github/workflows/` directory แล้ววิเคราะห์ workflows ที่มีอยู่
 3. ระบุ workflows ที่ขาดหายหรือซ้ำซ้อน
 4. เขียน workflow YAML โดยใช้ `actions/checkout@v7`, caching, และ permissions อย่างปลอดภัย

@@ -47,7 +47,7 @@ packages/
 
 ## Core Principles
 
-- เริ่มจาก `/analyze-project` และ `/refactor-workspace`
+- เริ่มจาก `/deep-analyze` และ `/refactor-workspace`
 - เลือก runtime:
   - Node: `/review-architecture`
   - Bun: `/review-architecture`
