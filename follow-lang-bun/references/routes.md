@@ -1,4 +1,4 @@
-# Follow Runtime Bun Route Map
+# Follow Lang Bun Route Map
 
 - Website: <https://bun.com>
 - Documentation: <https://bun.com/docs>
