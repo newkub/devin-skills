@@ -50,7 +50,6 @@ related:
 8. ใช้ `useId()` สำหรับ SSR-safe unique IDs (Vue 3.5+)
 9. ใช้ `defineModel()` สำหรับ two-way binding
 10. ใช้ `defineSlots<T>()` สำหรับ type-safe slots
-11. ดูรายละเอียดเพิ่มเติมใน [references/vue-components.md](references/vue-components.md)
 
 ### 3. Composables And State
 
@@ -64,7 +63,6 @@ related:
 6. ใช้ shared composables สำหรับ local/branch-level state แทนการสร้าง Pinia store
 7. ใช้ `provide`/`inject` พร้อม `InjectionKey<T>` สำหรับ dependency injection
 8. ใช้ `effectScope` สำหรับ cleanup reactive effects ใน composables ที่ซับซ้อน
-9. ดูรายละเอียดเพิ่มเติมใน [references/vue-design-system.md](references/vue-design-system.md)
 
 ### 4. Reactivity Best Practices
 

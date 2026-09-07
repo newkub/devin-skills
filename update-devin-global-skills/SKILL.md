@@ -18,6 +18,7 @@ related:
   - report
   - ship
   - follow-context-engineering
+  - optimize-token-usage
 ---
 
 ## Goal
@@ -60,7 +61,21 @@ related:
 5. ถ้าชื่อไม่ชัด → ทำ `/ask-me` ก่อนดำเนินการ
 6. ทำ `/follow-skills-map` เพื่อดูกลุ่ม skills ที่เกี่ยวข้องก่อนดำเนินการต่อ
 
-### 3. Deep Research
+### 3. Manage Context And Token Usage
+
+> Goal: รักษา context คุณภาพสูงและลด token usage ระหว่าง update process
+
+1. ถ้า update เป็น long-horizon task หรือ context ใกล้เต็ม → ใช้ `/follow-context-engineering` สำหรับ context management
+2. คัดเลือกเฉพาะ high-signal tokens ที่จำเป็นต่อ task ปัจจุบัน ทิ้งข้อมูลที่ไม่เกี่ยวข้อง
+3. ย้ำ goal หลักทุก 5-10 tool calls เพื่อรักษา goal alignment
+4. ใช้ parallel tool calls รวม independent operations เพื่อลด context accumulation
+5. ใช้ `offset`/`limit` สำหรับอ่านไฟล์ใหญ่ และไม่อ่านไฟล์เดิมซ้ำโดยไม่จำเป็น
+6. วัด token usage baseline ก่อน research หนัก — ใช้ `/optimize-token-usage`
+7. หาแหล่ง token waste: prompt bloat, context เกิน, no caching, wrong model, retry amplification
+8. ใช้ prompt caching, response cache, model routing, และ output control ตาม provider ที่ project ใช้
+9. สรุป progress ลง notes หลังเส็จ sub-task สำคัญเพื่อ preserve context ข้าม session
+
+### 4. Deep Research
 
 > Goal: มีข้อมูลล่าสุดและถูกต้องก่อนแก้ไข
 
@@ -72,7 +87,7 @@ related:
 6. ถ้าต้อง batch update `references/routes.md` → รัน `bun run scripts/bulk-update-routes.ts`
 7. ถ้า topic ไม่ต้อง research (เช่น fix structure ล้วน) → ข้ามขั้นตอนนี้
 
-### 4. Map Findings To Skills
+### 5. Map Findings To Skills
 
 > Goal: รู้ว่าต้องแก้ skill และ section ไหนบ้าง
 
@@ -81,7 +96,7 @@ related:
 3. ระบุ `references/` ที่ต้องสร้างหรือแก้
 4. แก้เฉพาะสิ่งที่เปลี่ยนจริง — ไม่ rewrite ทั้งไฟล์ถ้าไม่จำเป็น
 
-### 5. Apply Updates
+### 6. Apply Updates
 
 > Goal: skill ทันสมัยตาม research และมาตรฐาน
 
@@ -92,7 +107,7 @@ related:
 5. ถ้าไฟล์เกิน 250 บรรทัด → แยกไป `references/` ตาม `/follow-create-devin-global-skills`
 6. ตรวจ markdown links ชี้ไปไฟล์ที่มีอยู่จริง
 
-### 6. Align With Catalog And Global Rules
+### 7. Align With Catalog And Global Rules
 
 > Goal: skill ที่อัปเดตสอดคล้องกับ repo standards และ global rules
 
@@ -101,7 +116,7 @@ related:
 3. ถ้ามี misalignment → ปรับแก้ก่อน validate
 4. บันทึก findings และการแก้ไข
 
-### 7. Validate
+### 8. Validate
 
 > Goal: skill ผ่านเกณฑ์ทั้งหมด
 
@@ -110,7 +125,7 @@ related:
 3. ทำ `/check-circular-dependencies` ถ้ามีการแก้ `related`
 4. ถ้าไม่ผ่าน → แก้และ recheck (max 3 รอบ → stop และ report)
 
-### 8. Review Issue And Update References
+### 9. Review Issue And Update References
 
 > Goal: issues ถูกบันทึกและ references ถูกต้อง
 
@@ -121,7 +136,7 @@ related:
 5. ถ้า skill เกี่ยวข้องกับ global rules → อัปเดต `global_rules.md` และ `/follow-global-rules`
 6. ตรวจว่า skills อื่นที่อ้างถึง skill นี้ยังถูกต้อง — broken references แก้ทันที
 
-### 9. Ship
+### 10. Ship
 
 > Goal: ส่งมอบงาน
 

@@ -3,6 +3,7 @@ name: follow-lib-remotion
 description: ใช้ Remotion v4 สร้างวิดีโอแบบโปรแกรมมิ่งด้วย React และ render ผ่าน CLI
 argument-hint: "[composition-or-task]"
 related:
+  - edit-video-with-remotion
 ---
 
 ## Goal
