@@ -3,4 +3,4 @@
 - [Website](https://github.com/ryanve/cargo)
 - [Repository](https://github.com/ryanve/cargo)
 - [Package Registry](https://www.npmjs.com/package/cargo)
-- About: HTML5 web storage module
+- About: Web storage API JavaScript module.

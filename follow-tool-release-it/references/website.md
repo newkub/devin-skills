@@ -1,6 +1,7 @@
 # Tool Release It Official Resources
 
 - [Website](https://github.com/release-it/release-it)
+- [Documentation](https://github.com/release-it/release-it/tree/main/docs)
 - [Repository](https://github.com/release-it/release-it)
 - [Package Registry](https://www.npmjs.com/package/release-it)
-- About: Generic CLI tool to automate versioning and package publishing-related tasks.
+- About: 🚀 Automate versioning and package publishing.

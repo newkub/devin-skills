@@ -3,4 +3,4 @@
 - [Website](https://github.com/mozilla/webextension-polyfill)
 - [Repository](https://github.com/mozilla/webextension-polyfill)
 - [Package Registry](https://www.npmjs.com/package/webextension-polyfill)
-- About: A lightweight polyfill library for Promise-based WebExtension APIs in Chrome.
+- About: A lightweight polyfill library for Promise-based WebExtension APIs in Chrome - mozilla/webextension-polyfill

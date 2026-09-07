@@ -1,6 +1,7 @@
 # Tool Ultracite Official Resources
 
-- [Website](https://www.ultracite.ai/)
+- [Website](https://www.ultracite.ai)
+- [Documentation](https://www.ultracite.ai/docs)
 - [Repository](https://github.com/haydenbleasel/ultracite)
 - [Package Registry](https://www.npmjs.com/package/ultracite)
-- About: The AI-ready formatter that helps you write and generate code faster.
+- About: Ultracite is a zero-config preset for ESLint, Biome, and Oxlint that helps teams and AI write consistent, type-safe code.

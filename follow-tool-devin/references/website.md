@@ -3,4 +3,4 @@
 - [Website](https://github.com/devjmetivier/devin#readme)
 - [Repository](https://github.com/devjmetivier/devin)
 - [Package Registry](https://www.npmjs.com/package/devin)
-- About: Devin Metivier
+- About: Contribute to devjmetivier/devin development by creating an account on GitHub.

@@ -1,6 +1,7 @@
 # Framework Nuxt Official Resources
 
 - [Website](https://nuxt.com)
+- [Documentation](https://nuxt.com/docs)
 - [Repository](https://github.com/nuxt/nuxt)
 - [Package Registry](https://www.npmjs.com/package/nuxt)
-- About: Nuxt is a free and open-source framework with an intuitive and extendable way to create type-safe, performant and production-grade full-stack web applications and websites with Vue.js.
+- About: Build fast, production-ready web apps with Vue. File-based routing, auto-imports, and server-side rendering — all configured out of the box.

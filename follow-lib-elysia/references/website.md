@@ -3,4 +3,4 @@
 - [Website](https://github.com/elysiajs/elysia)
 - [Repository](https://github.com/elysiajs/elysia)
 - [Package Registry](https://www.npmjs.com/package/elysia)
-- About: Ergonomic Framework for Human
+- About: Ergonomic Framework for Humans.

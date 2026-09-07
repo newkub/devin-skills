@@ -1,7 +1,6 @@
 # Framework Leptos Official Resources
 
-- [Website](https://leptos.dev/)
-- [Documentation](https://crates.io/crates/leptos)
+- [Website](https://leptos.dev)
 - [Repository](https://github.com/leptos-rs/leptos)
 - [Package Registry](https://crates.io/crates/leptos)
-- About: Leptos is a full-stack, isomorphic Rust web framework leveraging fine-grained reactivity to build declarative user interfaces.
+- About: Leptos is a cutting-edge Rust web framework designed for building fast, reliable, web applications.

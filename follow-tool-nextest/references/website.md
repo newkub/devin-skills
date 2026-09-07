@@ -1,7 +1,7 @@
 # Tool Nextest Official Resources
 
 - [Website](https://nexte.st)
-- [Documentation](https://crates.io/crates/nextest)
+- [Documentation](https://nexte.st/docs/installation/pre-built-binaries/)
 - [Repository](https://github.com/nextest-rs/nextest)
 - [Package Registry](https://crates.io/crates/nextest)
-- About: Stub crate, you likely want cargo-nextest instead
+- About: A next-generation test runner for Rust.

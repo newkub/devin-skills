@@ -1,6 +1,6 @@
 # Tool Hk Official Resources
 
 - [Website](https://github.com/chshersh/hk)
-- [Documentation](https://www.npmjs.com/package/hk)
+- [Repository](https://github.com/)
 - [Package Registry](https://www.npmjs.com/package/hk)
-- About: An experimental Heroku CLI
+- About: GitHub is where people build software. More than 150 million people use GitHub to discover, fork, and contribute to over 420 million proj...
