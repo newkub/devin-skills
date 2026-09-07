@@ -12,10 +12,6 @@ allowed-tools:
   - skill
   - ask_user_question
   - browser_preview
-  - report
-  - report-table
-  - suggest-next-action
-  - resolve-errors
 triggers:
   - user
   - model
@@ -26,9 +22,11 @@ related:
   - improve-uxui
   - review-uxui
   - follow-design-system
-  - run-test-website-by-agent-browser
+  - test-uxui-by-agent-browser
   - update-readme-md
   - from-recent-windows-capture
+  - report
+  - suggest-next-action
 ---
 
 ## Goal
@@ -43,7 +41,7 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 - static HTML file ที import component
 - TUI/CLI component output
 
-- ดูเพิ่มเติม: /capture-image-app-to-screenshot, /follow-design-system, /run-test-website-by-agent-browser, /from-recent-windows-capture
+- ดูเพิ่มเติม: /capture-image-app-to-screenshot, /follow-design-system, /test-uxui-by-agent-browser, /from-recent-windows-capture
 
 ## Execute
 
@@ -85,7 +83,7 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 
 > Goal: สรุปผล
 
-1. ทำ `/report-table` แสดง captured components
+1. ทำ `/report` แสดง captured components
 2. ทำ `/report` สรุป paths และ variants
 3. ทำ `/suggest-next-action`
 

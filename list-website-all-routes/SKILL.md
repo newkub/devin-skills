@@ -4,7 +4,9 @@ description: รายการ routes ทั้งหมดใน website proje
 argument-hint: "[scope]"
 related:
   - analyze-attack-surface
-  - report-table
+  - check-routes-status
+  - test-all-api-routes
+  - report
 ---
 
 ## Goal
@@ -56,7 +58,7 @@ related:
 
 > Goal: แสดงผล routes ในรูปแบบทีอ่านง่าย
 
-1. ใช้ `/report-table` เพื่อจัดรูปแบบตาราง
+1. ใช้ `/report` เพื่อจัดรูปแบบตาราง
 2. คอลัมน์: No, Type, Method, Path, File, Parameters, Notes
 3. เรียงตาม path ตามตัวอักษร
 4. แยก group: Page Routes, API Routes, Redirects, Catch-all
@@ -83,11 +85,13 @@ related:
 
 ### 4. Reporting
 
-- ใช้ `/report-table` สำหรับรายงาน
+- ใช้ `/report` สำหรับรายงาน
 - ใช้ backticks สำหรับ paths และ method
 - ระบุ routes ทีอาจ conflict หรือซ้ำซ้อน
 
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
+- ใช้ /check-routes-status ถ้าจำเป็น
+- ใช้ /test-all-api-routes ถ้าจำเป็น
 
 ## Expected Outcome
 

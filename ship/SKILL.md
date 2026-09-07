@@ -27,7 +27,6 @@ related:
   - run-release
   - report
   - ask-me
-  - list-todo-md
 ---
 
 ## Goal
