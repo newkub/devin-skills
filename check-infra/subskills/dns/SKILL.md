@@ -1,4 +1,8 @@
-# check-dns-health (merged content)
+---
+name: check-infra-dns
+description: ตรวจ DNS records — A/AAAA/CNAME, TTL, dangling records
+argument-hint: "[target]"
+---
 
 ## Goal
 

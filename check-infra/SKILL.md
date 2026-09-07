@@ -26,22 +26,18 @@ related:
 1. อ่านจาก argument, deploy config, `wrangler.toml`, `vercel.json`, DNS provider หรือ env vars
 2. รวมทุก domain/subdomain ที่ project ใช้
 
-### 2. Check DNS Health
+### 2. Dispatch To Subskills
 
-> Goal: DNS records ถูกต้องและไม่ misconfigure
+> Goal: ตรวจแต่ละด้านผ่าน subskill ที่เฉพาะเจาะจง
 
-1. ตรวจ A/AAAA/CNAME records ด้วย `Resolve-DnsName` หรือ `nslookup`/`dig`
-2. ตรวจ TTL, propagation, conflicting records
-3. ตรวจ records ที่ชี้ไป service ที่เลิกใช้ (dangling)
+| Flag    | Subskill |
+|---------|----------|
+| `--dns` | `subskills/dns/SKILL.md` — A/AAAA/CNAME, TTL, dangling records |
+| `--ssl` | `subskills/ssl/SKILL.md` — cert expiry, chain, renewal readiness |
 
-### 3. Check TLS Certificates
-
-> Goal: certificates ไม่หมดอายุเร็วๆ นี้
-
-1. เช็ค expiry ของแต่ละ endpoint ด้วย `openssl s_client -connect <host>:443 -servername <host>`
-2. Flag: <7 วัน Critical, <30 วัน High, <90 วัน Medium
-3. ตรวจ chain completeness และ protocol/cipher ที่อนุญาต
-4. ตรวจ renewal readiness (auto-renew configured, ACME working)
+1. ถ้าระบุ `--dns` → อ่านและทำตาม `subskills/dns/SKILL.md`
+2. ถ้าระบุ `--ssl` → อ่านและทำตาม `subskills/ssl/SKILL.md`
+3. ถ้าไม่ระบุ → ทำทั้งสองตามลำดับ
 
 ### 4. Report
 

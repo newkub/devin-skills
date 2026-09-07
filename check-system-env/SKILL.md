@@ -25,8 +25,7 @@ related:
 - MCP configuration
 - CLI programs inventory
 - Browser history analysis
-- User behavior analysis
-- Development environment
+- User behavior analysis และ development environment → ดู `references/extended-checks.md` (steps 11-13)
 
 ## Execute
 

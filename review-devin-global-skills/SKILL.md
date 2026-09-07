@@ -5,6 +5,8 @@ argument-hint: "[scope]"
 related:
   - update-devin-global-skills
   - idea-new-devin-global-skills
+  - review-gaps
+  - review-issue
   - deep-review-codebase
   - follow-deep
   - report
@@ -32,6 +34,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ดูเพิ่มเติม: /deep-review-codebase, /check-skill-usage, /check-devin-knowledge
 
 ## Execute
+
 ### 1. Prepare Context
 
 > Goal: เข้าใจ skills repo และ conventions
@@ -90,7 +93,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 2. ทำ `/report` พร้อม findings: `No.`, Skill, Category, Severity, Finding, Evidence, Action
 3. ทำ `/create-report-in-dot-devin` เพื่อบันทึก report ลง `.devin/review-devin-global-skills.md`
 4. สรุป refactor actions: skill, action, status, ไฟล์ที่เปลี่ยน
-5. ทำ `/suggest-next-action`
+5. ทำ `/suggest-next-action` พร้อม `/review-gaps` หรือ `/review-issue` ถ้าพบ gaps/issues
 
 ## Rules
 
@@ -141,4 +144,4 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ไม่มี broken references
 - `related` skills ถูกอ้างถึงใน `SKILL.md`
 - บันทึก report ลง `.devin/review-devin-global-skills.md`
-- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+- แนะนำ action ถัดไปผ่าน `/suggest-next-action` พร้อม `/review-gaps` `/review-issue` ด้วย

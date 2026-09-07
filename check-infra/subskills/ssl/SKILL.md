@@ -1,4 +1,8 @@
-# check-ssl-expiry (merged content)
+---
+name: check-infra-ssl
+description: ตรวจ TLS certificate expiry, chain, renewal readiness
+argument-hint: "[target]"
+---
 
 ## Goal
 

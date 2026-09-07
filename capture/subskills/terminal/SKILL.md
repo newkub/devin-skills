@@ -1,4 +1,8 @@
-# capture-terminal (merged content)
+---
+name: capture-terminal
+description: Capture terminal output เป็นภาพสำหรับ docs/README/reports
+argument-hint: "[target]"
+---
 
 ## Goal
 

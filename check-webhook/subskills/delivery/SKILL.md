@@ -1,4 +1,8 @@
-# check-webhook-delivery (merged content)
+---
+name: check-webhook-delivery
+description: ตรวจ webhook delivery — retries, ordering, dead-letter
+argument-hint: "[target]"
+---
 
 ## Goal
 

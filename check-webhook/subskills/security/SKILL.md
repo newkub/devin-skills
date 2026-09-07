@@ -1,4 +1,8 @@
-# check-webhook-security (merged content)
+---
+name: check-webhook-security
+description: ตรวจ webhook security — signature, replay, endpoint auth
+argument-hint: "[target]"
+---
 
 ## Goal
 

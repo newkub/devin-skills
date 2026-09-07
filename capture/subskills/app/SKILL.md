@@ -1,4 +1,8 @@
-# capture-image-app-to-screenshot (merged content)
+---
+name: capture-app
+description: Capture ภาพหน้าจอ app ครอบคลุม routes ลง screenshots/
+argument-hint: "[target]"
+---
 
 ## Goal
 

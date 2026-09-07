@@ -29,23 +29,18 @@ related:
 2. ระบุ provider ของแต่ละ endpoint
 3. ตรวจ config ระดับ platform (gateway, Cloudflare, ngrok)
 
-### 2. Check Security
+### 2. Dispatch To Subskills
 
-> Goal: ตรวจด้าน security
+> Goal: ตรวจแต่ละด้านผ่าน subskill ที่เฉพาะเจาะจง
 
-1. Signature verification — ทุก endpoint ต้อง verify signature ก่อน process
-2. Replay protection — timestamp tolerance, nonce, idempotency
-3. Endpoint auth — path obscurity, IP allowlist, token ใน URL ห้ามมี
-4. Secrets ที่ใช้ verify ต้องมาจาก secret manager ไม่ hardcode
+| Flag         | Subskill |
+|--------------|----------|
+| `--security` | `subskills/security/SKILL.md` — signature, replay, endpoint auth |
+| `--delivery` | `subskills/delivery/SKILL.md` — retries, ordering, dead-letter |
 
-### 3. Check Delivery Reliability
-
-> Goal: ตรวจด้าน delivery
-
-1. Retry handling — endpoint ต้อง idempotent ต่อ delivery ซ้ำ
-2. Ordering — รองรับ events ที่มาไม่เรียงลำดับ
-3. Dead-letter / failure logging — events ที่ process ไม่สำเร็จต้องถูกบันทึก
-4. Response time — ตอบ 2xx เร็ว แล้ว process แบบ async ถ้างานหนัก
+1. ถ้าระบุ `--security` → อ่านและทำตาม `subskills/security/SKILL.md`
+2. ถ้าระบุ `--delivery` → อ่านและทำตาม `subskills/delivery/SKILL.md`
+3. ถ้าไม่ระบุ → ทำทั้งสองตามลำดับ security ก่อน delivery
 
 ### 4. Report
 

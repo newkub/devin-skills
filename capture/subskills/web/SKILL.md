@@ -1,4 +1,8 @@
-# capture-web (merged content)
+---
+name: capture-web
+description: Capture หน้าเว็บ screenshot/PDF ด้วย agent-browser CLI
+argument-hint: "[target]"
+---
 
 ## Goal
 
