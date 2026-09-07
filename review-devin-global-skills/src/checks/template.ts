@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { join } from "node:path";
 import type { Context, SkillMeta } from "../types";
 
@@ -22,11 +21,11 @@ function templateFor(skill: string): string | null {
   return null;
 }
 
-export function checkTemplate(m: SkillMeta, ctx: Context) {
+export async function checkTemplate(m: SkillMeta, ctx: Context) {
   const tpl = templateFor(m.skill);
   if (!tpl) return; // custom/unprefixed names are legitimate — prefix coverage is reported by cross-skill checks
   const tplPath = join(ctx.skillsRoot, TEMPLATE_DIR, `${tpl}.md`);
-  if (!existsSync(tplPath)) {
+  if (!(await Bun.file(tplPath).exists())) {
     const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
     ctx.addFinding({ file: rpath, line: 1, category: "template", severity: "Low", finding: "template file missing for prefix", evidence: `${TEMPLATE_DIR}/${tpl}.md` }, m.skill);
   }

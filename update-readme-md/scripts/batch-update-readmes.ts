@@ -5,7 +5,7 @@
  * Run: bun ./batch-update-readmes.ts
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { statSync } from "node:fs";
 import { join } from "node:path";
 
 const DRAW_ANSI = "C:\\Users\\Veerapong\\AppData\\Roaming\\devin\\skills\\draw-ansi\\scripts\\draw-ansi.ts";
@@ -22,19 +22,11 @@ const REMAINING = [
   "D:\\saas\\booking-platform",
 ];
 
-function readJson(path: string): any {
+async function readJson(path: string): Promise<any> {
   try {
-    return JSON.parse(readFileSync(path, "utf-8"));
+    return await Bun.file(path).json();
   } catch {
     return null;
-  }
-}
-
-function listDir(path: string): string[] {
-  try {
-    return readdirSync(path);
-  } catch {
-    return [];
   }
 }
 
@@ -42,18 +34,18 @@ function isDir(path: string): boolean {
   try { return statSync(path).isDirectory(); } catch { return false; }
 }
 
-function hasFile(path: string, name: string): boolean {
-  return existsSync(join(path, name));
+async function hasFile(path: string, name: string): Promise<boolean> {
+  return Bun.file(join(path, name)).exists();
 }
 
 function execDraw(title: string, content: string, totalWidth = 60): string {
-  const { spawnSync } = require("node:child_process");
-  const result = spawnSync(
-    "bun",
-    [DRAW_ANSI, "--width", String(totalWidth), "--title", title],
-    { input: content, encoding: "utf-8", shell: false }
-  );
-  if (result.status === 0) return result.stdout.trim();
+  const result = Bun.spawnSync({
+    cmd: ["bun", DRAW_ANSI, "--width", String(totalWidth), "--title", title],
+    stdin: Buffer.from(content),
+    stdout: "pipe",
+    stderr: "pipe",
+  });
+  if (result.exitCode === 0) return result.stdout.toString().trim();
   // Fallback simple box
   const inner = totalWidth - 4;
   const top = "┌" + "─".repeat(inner) + "┐";
@@ -89,8 +81,8 @@ function badgeUrl(label: string, color: string) {
   return `https://img.shields.io/badge/${msg}-${color}`;
 }
 
-function getStatus(path: string): string {
-  return hasFile(path, "CHANGELOG.md") ? "active" : "in development";
+async function getStatus(path: string): Promise<string> {
+  return (await hasFile(path, "CHANGELOG.md")) ? "active" : "in development";
 }
 
 function getProjectName(path: string, pkg: any): string {
@@ -279,8 +271,8 @@ function buildGetStarted(pkg: any): string {
   return ["## Get Started", "", ...steps, ""].join("\n");
 }
 
-function buildHero(path: string, pkg: any): string {
-  const status = getStatus(path);
+async function buildHero(path: string, pkg: any): Promise<string> {
+  const status = await getStatus(path);
   const statusColor = status === "active" ? "brightgreen" : "red";
   const projectName = getProjectName(path, pkg);
   const description = getDescription(path, pkg);
@@ -309,21 +301,21 @@ function buildUISketch(projectName: string): string {
   ].join("\n");
 }
 
-function buildReadme(path: string): string {
-  const pkg = readJson(join(path, "package.json"));
+async function buildReadme(path: string): Promise<string> {
+  const pkg = await readJson(join(path, "package.json"));
   const projectName = getProjectName(path, pkg);
 
   const sections: string[] = [];
-  sections.push(buildHero(path, pkg));
+  sections.push(await buildHero(path, pkg));
   sections.push(buildUISketch(projectName));
   sections.push(buildGetStarted(pkg));
   sections.push(buildFeaturesTable(pkg, projectName));
   sections.push(buildUsage(path, pkg, projectName));
 
-  if (hasFile(path, "CONTRIBUTING.md")) {
+  if (await hasFile(path, "CONTRIBUTING.md")) {
     sections.push("## Contributing", "", "See [CONTRIBUTING.md](CONTRIBUTING.md).", "");
   }
-  if (hasFile(path, "LICENSE.md")) {
+  if (await hasFile(path, "LICENSE.md")) {
     const license = pkg?.license || "License";
     sections.push("## License", "", `${license} — see [LICENSE](LICENSE.md).`, "");
   }
@@ -331,20 +323,20 @@ function buildReadme(path: string): string {
   return sections.join("\n");
 }
 
-function main() {
+async function main() {
   for (const path of REMAINING) {
     if (!isDir(path)) {
       console.error(`Skip: not a directory ${path}`);
       continue;
     }
-    if (!hasFile(path, "README.md")) {
+    if (!(await hasFile(path, "README.md"))) {
       console.error(`Skip: no README.md in ${path}`);
       continue;
     }
     console.log(`Updating ${path}...`);
     try {
-      const content = buildReadme(path);
-      writeFileSync(join(path, "README.md"), content, "utf-8");
+      const content = await buildReadme(path);
+      await Bun.write(join(path, "README.md"), content);
       console.log(`  OK`);
     } catch (e: any) {
       console.error(`  FAIL: ${e.message}`);
@@ -352,4 +344,4 @@ function main() {
   }
 }
 
-main();
+await main();

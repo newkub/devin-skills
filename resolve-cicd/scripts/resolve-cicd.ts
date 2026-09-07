@@ -27,7 +27,7 @@ function parseArgs(argv: string[]): Args {
 }
 
 async function main() {
-	const args = parseArgs(process.argv.slice(2));
+	const args = parseArgs(Bun.argv.slice(2));
 
 	if (args.url) {
 		await watchUrl(args.url, args.maxRetries, args.noRetry);

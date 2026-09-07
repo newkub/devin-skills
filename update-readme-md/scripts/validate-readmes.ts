@@ -4,7 +4,6 @@
  * Check all D: project READMEs against update-readme-md rules.
  */
 
-import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const PROJECTS = [
@@ -39,9 +38,9 @@ const PROJECTS = [
   "D:\\saas\\wrikka-platform\\apps\\mobile",
 ];
 
-function readReadme(path: string): string | null {
+async function readReadme(path: string): Promise<string | null> {
   try {
-    return readFileSync(join(path, "README.md"), "utf-8");
+    return await Bun.file(join(path, "README.md")).text();
   } catch {
     return null;
   }
@@ -115,10 +114,10 @@ function validate(path: string, content: string): string[] {
   return issues;
 }
 
-function main() {
+async function main() {
   const results: { path: string; issues: string[] }[] = [];
   for (const path of PROJECTS) {
-    const content = readReadme(path);
+    const content = await readReadme(path);
     if (!content) {
       results.push({ path, issues: ["README.md missing"] });
       continue;
@@ -143,4 +142,4 @@ function main() {
   console.log(`\n${ok}/${results.length} projects passed validation.`);
 }
 
-main();
+await main();

@@ -12,14 +12,14 @@ interface Finding {
   severity: "Critical" | "Warning";
 }
 
-const args = process.argv.slice(2);
+const args = Bun.argv.slice(2);
 const rawPath = args[0];
 
 const skillsRoot = rawPath
   ? resolve(rawPath)
   : process.platform === "win32"
-  ? resolve(`${process.env.APPDATA}/devin/skills`)
-  : resolve(`${process.env.HOME}/.devin/skills`);
+  ? resolve(`${Bun.env.APPDATA}/devin/skills`)
+  : resolve(`${Bun.env.HOME}/.devin/skills`);
 
 if (!existsSync(skillsRoot)) {
   console.error(`Skills root not found: ${skillsRoot}`);
@@ -32,8 +32,9 @@ for (const d of new Glob("*/SKILL.md").scanSync(skillsRoot)) {
 }
 
 const gitmodulesPath = join(skillsRoot, ".gitmodules");
-if (existsSync(gitmodulesPath)) {
-  const gitmodulesText = await Bun.file(gitmodulesPath).text();
+const gitmodulesFile = Bun.file(gitmodulesPath);
+if (await gitmodulesFile.exists()) {
+  const gitmodulesText = await gitmodulesFile.text();
   for (const match of gitmodulesText.matchAll(/^\s*path\s*=\s*(.+)$/gm)) {
     skillDirs.add(match[1].trim());
   }
@@ -187,8 +188,8 @@ function parseRelated(text: string): { skill: string; refs: { ref: string; line:
 
 for (const skill of skillDirs) {
   const skillPath = join(skillsRoot, skill, "SKILL.md");
-  if (!existsSync(skillPath)) continue;
   const file = Bun.file(skillPath);
+  if (!(await file.exists())) continue;
   const text = await file.text();
 
   const relatedInfo = parseRelated(text);

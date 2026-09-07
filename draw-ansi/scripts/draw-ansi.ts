@@ -8,7 +8,6 @@
  */
 
 import { parseArgs } from "node:util";
-import { readFileSync } from "node:fs";
 
 const options = {
   width: { type: "string" as const },
@@ -33,13 +32,13 @@ Options:
   process.exit(0);
 }
 
-function getInputText(): string {
+async function getInputText(): Promise<string> {
   const pos = args.positionals[0];
   if (pos) {
-    return readFileSync(pos, "utf-8");
+    return Bun.file(pos).text();
   }
   if (!process.stdin.isTTY) {
-    return readFileSync(0, "utf-8");
+    return Bun.stdin.text();
   }
   return "";
 }
@@ -110,8 +109,8 @@ function drawBox(content: string, totalWidth: number, title?: string): string {
   return box;
 }
 
-function main() {
-  let input = getInputText();
+async function main() {
+  let input = await getInputText();
   if (input.trim() === "") {
     console.error("Error: no input provided.");
     process.exit(1);
@@ -159,4 +158,4 @@ function main() {
   console.log(output);
 }
 
-main();
+await main();

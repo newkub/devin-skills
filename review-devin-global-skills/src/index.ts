@@ -20,13 +20,13 @@ import {
 } from "./parse";
 import type { Finding, SkillMeta } from "./types";
 
-const args = process.argv.slice(2);
+const args = Bun.argv.slice(2);
 const FIX = args.includes("--fix");
 const CI = args.includes("--ci");
-const cliRoot = args.find((a) => !a.startsWith("--")) || process.env.DEVIN_SKILLS_ROOT;
+const cliRoot = args.find((a) => !a.startsWith("--")) || Bun.env.DEVIN_SKILLS_ROOT;
 const SKILLS_ROOT = cliRoot
-  ? cliRoot.replace(/%APPDATA%/g, process.env.APPDATA || "")
-  : (process.env.APPDATA || "/tmp") + "\\devin\\skills";
+  ? cliRoot.replace(/%APPDATA%/g, Bun.env.APPDATA || "")
+  : (Bun.env.APPDATA || "/tmp") + "\\devin\\skills";
 const SELF_DIR = join(SKILLS_ROOT, "review-devin-global-skills");
 
 const findings: Finding[] = [];
@@ -47,8 +47,9 @@ const ctx = {
 
 for (const skill of skillDirs) {
   const skillPath = join(SKILLS_ROOT, skill, "SKILL.md");
-  if (!existsSync(skillPath)) continue;
-  const text = await Bun.file(skillPath).text();
+  const skillFile = Bun.file(skillPath);
+  if (!(await skillFile.exists())) continue;
+  const text = await skillFile.text();
   const body = stripFrontmatter(text);
 
   const allMdFiles: SkillMeta["allMdFiles"] = [];
@@ -83,7 +84,7 @@ for (const skill of skillDirs) {
   checkLanguage(meta, ctx);
   checkReferences(meta, ctx);
   checkParallel(meta, ctx);
-  checkTemplate(meta, ctx);
+  await checkTemplate(meta, ctx);
 }
 
 checkCrossSkill(skills, ctx);
