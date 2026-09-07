@@ -17,9 +17,9 @@
 > Goal: ทราบ target AI tool, directory, dependencies, template
 
 1. ตรวจจับ AI tool และ skills directory จาก path แล้วอ่าน `global_rules.md`, related skills, และเลือก template ตาม prefix
-2. ทำ `/check-skills-related` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/use-in-another-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
+2. ทำ `/check-skills-related` เพื่ออ่าน skills ที่เกี่ยวข้อง และทำ `/use-related-skills` เพื่อพิจารณาว่า skill นี้สามารถใช้ร่วมหรือขยายจาก skills อื่นได้หรือไม่
 3. ถ้า skill มีอยู่แล้ว → อ่านไฟล์เดิมและระบุสิ่งที่ต้องปรับปรุง
-4. ทำ `/learn-from-web` จาก Devin CLI docs เมื่อต้องการ verify spec
+4. ทำ `/learn-web` จาก Devin CLI docs เมื่อต้องการ verify spec
 5. ถ้า context ไม่ชัดหรือ skill ซ้ำ → stop และ `/ask-me`
 6. ถ้า skill มี dependencies (จำเป็นหรือ optional) จึงสร้าง `references/` → ดู [dependencies.md](dependencies.md)
 
@@ -165,7 +165,7 @@
 - ถ้าต้องการ CLI จะมี `src/presentation/cli.ts` ที่ทดสอบผ่านแล้ว. ถ้าต้องการ web จะมี `src/` directory ที่ทดสอบผ่านแล้ว
 - ถ้า skill มี `src/` จะถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules` และ ship ผ่าน `/ship` เลย
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
-- ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
+- ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
 
 

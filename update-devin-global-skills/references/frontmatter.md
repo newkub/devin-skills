@@ -21,6 +21,11 @@
 - `permissions` (optional): `allow`, `deny`, `ask` ตามความเสี่ยง
 - `triggers` (optional): default `['user', 'model']`
 
+## Subskill Frontmatter
+
+- `subskills/<name>/SKILL.md` ใช้ spec เดียวกันทั้งหมด
+- `name` ตั้งเป็น `<parent>-<name>` เพื่อไม่ชนถ้า promote เป็น top-level skill ภายหลัง
+
 ## Prompt Body Order
 
 `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`

@@ -11,7 +11,7 @@
 1. ถ้า user ส่ง URL มา → ใช้ URL นั้น
 2. ถ้า user ส่ง domain หรือ root website → ใช้ `/web_search` หาหน้าสำคัญทั้งหมด
 3. ถ้าไม่มีอะไรเลย → ทำ `/ask-me` เพื่อขอ URL หรือ domain
-4. ถ้าต้องการ crawl ลึก → ใช้ `/learn-from-web` หรือ `/use-scripts` ช่วยดึง links
+4. ถ้าต้องการ crawl ลึก → ใช้ `/learn-web` หรือ `/use-scripts` ช่วยดึง links
 
 ## Fetch Content
 

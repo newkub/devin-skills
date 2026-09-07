@@ -27,7 +27,7 @@
 ### 4. Cross-Skill Overlap
 
 - ถ้าเนื้อหาซ้ำกับ skill อื่น → merge เข้าตัวเดิม หรือย้ายไป skill ที่เหมาะสม
-- ถ้า skill หนึ่งตัวตอบสนองหลาย goal ทีแตกต่างกันมาก → แยกเป็น subskills ภายใต้ `subskills/`
+- ถ้า skill หนึ่งตัวตอบสนองหลาย goal ทีแตกต่างกันมาก → แยกเป็น `subskills/` หรือ `subagents/` ตาม decision matrix ใน [references/subskills-and-subagents.md](subskills-and-subagents.md)
 
 ### 5. Nested References
 

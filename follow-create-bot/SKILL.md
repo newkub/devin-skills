@@ -1,7 +1,7 @@
 ---
 name: follow-create-bot
 description: สร้าง bot สำหรับ Slack, Discord, Telegram, LINE หรือ GitHub App/bot ด้วย TypeScript/Bun
-argument-hint: "<slack|discord|telegram|line|github> [features]"
+argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
 related:
   - follow-my-tech-stack
   - review-techstack
@@ -26,23 +26,24 @@ related:
 
 > Goal: ระบุ platform และอ่านรายละเอียดเฉพาะ platform
 
-| Platform | Reference |
-|----------|-----------|
-| Slack    | `references/slack.md` — slash commands, events, Socket Mode |
-| Discord  | `references/discord.md` — commands, intents, gateway |
-| Telegram | `references/telegram.md` — Bot API, commands, webhooks |
-| LINE     | `references/line.md` — Messaging API, webhook, reply |
-| GitHub   | `references/github.md` — GitHub App, probot, webhooks |
+| Platform   | Subskill |
+|------------|----------|
+| Slack      | `subskills/slack/SKILL.md` — slash commands, events, Socket Mode |
+| Discord    | `subskills/discord/SKILL.md` — commands, intents, gateway |
+| Telegram   | `subskills/telegram/SKILL.md` — Bot API, commands, webhooks |
+| LINE       | `subskills/line/SKILL.md` — Messaging API, webhook, reply |
+| GitHub     | `subskills/github/SKILL.md` — GitHub bot, probot, webhooks |
+| GitHub App | `subskills/github-app/SKILL.md` — app manifest, JWT auth, installation |
 
 1. อ่าน platform จาก argument — ถ้าไม่ระบุ → ทำ `/ask-me`
 2. ทำ `/follow-my-tech-stack` และ `/review-techstack`
-3. อ่าน reference ของ platform ที่เลือกก่อนเริ่ม
+3. อ่าน `subskills/<platform>/SKILL.md` ของ platform ที่เลือกแล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
 
 ### 2. Setup Project
 
 > Goal: project structure พร้อมใช้งาน
 
-1. สร้าง project ตาม reference ของ platform
+1. สร้าง project ตาม subskill ของ platform ที่เลือก
 2. ติดตั้ง SDK/dependencies ด้วย `bun add`
 3. เก็บ tokens/secrets ผ่าน `/follow-secret-manager` — ห้าม hardcode
 
@@ -50,14 +51,14 @@ related:
 
 > Goal: bot ทำงานได้จริงพร้อม deploy
 
-1. Implement commands/events ตาม reference
+1. Implement commands/events ตาม subskill
 2. ทดสอบ local (Socket Mode / polling / webhook tunnel)
 3. เตรียม deploy target และ document usage
 
 ## Rules
 
 - ห้าม commit tokens หรือ webhook secrets
-- ทำตาม reference ของ platform — ห้ามเดา API
+- ทำตาม subskill ของ platform — ห้ามเดา API
 - ใช้ `/open-web-for-config-secret` เพื่อชี้ user ไปสร้าง bot token เอง
 
 ## Expected Outcome
