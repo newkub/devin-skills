@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-runtime-bun
   - follow-lang-bun
+  - follow-create-bun-cli
 ---
 
 ## Goal
@@ -33,6 +34,9 @@ related:
 8. ใช้ `Bun.gzipSync`, `Bun.deflateSync`, `Bun.zstdCompressSync` สำหรับ compression
 9. ใช้ `Bun.password`, `Bun.hash`, `Bun.CryptoHasher` สำหรับ crypto
 10. ใช้ `Bun.sleep`, `Bun.nanoseconds`, `Bun.deepEquals` สำหรับ utilities
+11. ใช้ `Bun.argv`, `Bun.stdin` แทน `process.argv`, `process.stdin`
+12. ใช้ `Bun.pathToFileURL`, `Bun.fileURLToPath` แทน `node:url` และ `import.meta.path`/`import.meta.dir` แทน `fileURLToPath(import.meta.url)`
+13. ใช้ `Bun.Glob` แทน `readdir` เมื่อต้อง scan pattern (เช่น `*/SKILL.md`) — ระวังว่า Glob ไม่คืน dotfiles ตาม default
 
 ### 2. Use Environment Variables
 
@@ -202,6 +206,18 @@ related:
 
 - ใช้ `/follow-runtime-bun` สำหรับ install, verify, `bunfig.toml`, `bun run`, `bun test`, `bun build`
 - ใช้ `/follow-lang-bun` สำหรับ Bun APIs and Web-standard APIs ใน code
+
+### 8. Node APIs Without Bun Equivalents
+
+เก็บ `node:*` APIs ที่ Bun ไม่มี native equivalent ไว้ตามเดิม
+
+- ใช้ `existsSync`/`statSync` จาก `node:fs` สำหรับ **directory checks** — `Bun.file().exists()` คืน `false` กับ directory เสมอ
+- ใช้ `Bun.file().exists()` ได้เฉพาะกับ file เท่านั้น
+- ใช้ `node:path` (`join`, `resolve`, `dirname`, `extname`, `relative`, `basename`) — Bun ไม่มี path API
+- ใช้ `node:os` (`homedir`, `tmpdir`) หรือ `Bun.env.USERPROFILE`/`HOME`/`TEMP` ตามความเหมาะสม
+- ใช้ `stat`, `cp`, `mkdir`, `readdir` จาก `node:fs` เมื่อต้องการ metadata, recursive copy/mkdir หรือ list รวม dotfiles
+- ใช้ `parseArgs` จาก `node:util` — Bun ไม่มี args parser built-in
+- `process.exit`, `process.stdout`, `process.stderr`, `process.platform`, `process.execPath`, `process.on` ใช้ได้ปกติใน Bun
 
 ## Expected Outcome
 

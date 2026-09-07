@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — เลือกระหว่าง `/follow-create-rust-cli` และ `/follow-create-bun-cli` ตาม performance, distribution, ecosystem
+ใช้เมื่อต้องสร้าง CLI ใหม่ หรือสร้าง tools CLI (เช่น `tools/review-codebase`, `tools/analyze`) — skill นี้เป็น dispatcher เท่านั้น: เลือก stack แล้วส่งต่อ implementation ไปยัง `/follow-create-rust-cli` หรือ `/follow-create-bun-cli` ตามความเหมาะสมเสมอ ไม่ implement CLI เองใน skill นี้
 
 ## Execute
 
@@ -79,9 +79,10 @@ related:
 
 ### 1. Stack Selection
 
-- Rust: เหมาะกับ binary distribution, performance critical, ไม่ต้อง runtime
-- Bun: เหมาะกับทีม TypeScript, rapid iteration, ใช้ Bun runtime
+- Rust: เหมาะกับ binary distribution, performance critical, ไม่ต้อง runtime → ส่งต่อ `/follow-create-rust-cli`
+- Bun: เหมาะกับทีม TypeScript, rapid iteration, ใช้ Bun runtime → ส่งต่อ `/follow-create-bun-cli`
 - ไม่ force ใช้ stack ที่ไม่เหมาะกับ context
+- เมื่อเลือก stack แล้วต้อง delegate ไปยัง `/follow-create-bun-cli` หรือ `/follow-create-rust-cli` เสมอ ห้าม implement เองใน skill นี้
 - บันทึกเหตุผลที่เลือก stack ใน `README.md` หรือ plan
 
 ดู [references/cli-frameworks.md](references/cli-frameworks.md) สำหรับ framework details และ stack selection guide

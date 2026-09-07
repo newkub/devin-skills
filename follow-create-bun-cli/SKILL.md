@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-create-web
+  - use-bun-native-api
   - follow-tool-bunup
   - follow-architecture
   - follow-flat-folders
