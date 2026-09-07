@@ -149,7 +149,7 @@
 - ถ้า skill มี `references/` → ทุกไฟล์ `.md` ต้องมีชื่อบ่งบอก content และไฟล์ทีสำคัญควรถูกอ้างถึงจาก `SKILL.md`
 - ต้องมี `references/website.md` พร้อม official `Website`, `Documentation`, `Repository`, `Package Registry` (ถ้ามี) และ description สั้นๆ
 - `references/cli.md` สำหรับ CLI tool ใช้ตาราง 4 คอลัมน์: `| commands | description | default | options |`
-- `references/apis/index.md` สำหรับ `follow-lib-*`, `follow-framework-*`, `follow-service-*`, `follow-create-*-plugins/extensions/bots` ทีมี dependencies ประกอบด้วย:
+- `references/apis.md` สำหรับ `follow-lib-*`, `follow-framework-*`, `follow-service-*`, `follow-create-*-plugins/extensions/bots` ทีมี dependencies ประกอบด้วย:
   - `## Install` ด้วยคำสั่่งทีเหมาะสมกับ ecosystem เช่น `bun add -D <package>`, `cargo add <crate>`, `pip install <pkg>`
   - `## Version` ระบุ latest version, Package Registry, Repository
   - `## Dependencies` สั้นๆ
