@@ -6,7 +6,7 @@
 |----------|-----|
 | Documentation | https://arktype.io/ |
 | GitHub | https://github.com/arktypeio/arktype |
-| bun | https://www.bunjs.com/package/arktype |
+| npm | https://www.npmjs.com/package/arktype |
 | Discord | https://discord.gg/arktype |
 
 ## Quick Links

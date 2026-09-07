@@ -15,7 +15,7 @@ description: ใช้งาน GitHub Actions สำหรับ automation
 
 ```yaml
 - name: Cache Dependencies
-  uses: actions/cache@v3
+  uses: actions/cache@v6
   with:
     path: node_modules
     key: ${{ runner.os }}-node-${{ hashFiles('**/bun.lockb') }}

@@ -88,7 +88,7 @@ Response:
   "size": 45000,
   "gzipped": 15000,
   "deps": ["@vue/shared"],
-  "mjs": "https://esm.sh/vue@3.4.21/+esm"
+  "mjs": "https://esm.sh/vue@3.5.42/+esm"
 }
 ```
 

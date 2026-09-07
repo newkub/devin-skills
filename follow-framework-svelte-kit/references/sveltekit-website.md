@@ -8,7 +8,7 @@
 | Tutorial | https://svelte.dev/tutorial/kit |
 | Playground | https://svelte.dev/playground |
 | GitHub | https://github.com/sveltejs/kit |
-| bun | https://www.bunjs.com/package/@sveltejs/kit |
+| npm | https://www.npmjs.com/package/@sveltejs/kit |
 | Discord | https://svelte.dev/chat |
 
 ## Quick Links
@@ -51,4 +51,4 @@
 
 ## Version
 
-Current stable version: Check [bun](https://www.bunjs.com/package/@sveltejs/kit) for latest
+Current stable version: Check [npm](https://www.npmjs.com/package/@sveltejs/kit) for latest

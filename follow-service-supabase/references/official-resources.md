@@ -10,7 +10,7 @@ Official links และ resources สำหรับ Supabase
 |----------|------|
 | Website | https://supabase.com |
 | GitHub | https://github.com/supabase/supabase |
-| bun | https://www.bunjs.com/package/@supabase/supabase-js |
+| npm | https://www.npmjs.com/package/@supabase/supabase-js |
 | Docs | https://supabase.com/docs |
 
 ## Documentation
@@ -43,11 +43,11 @@ Official links และ resources สำหรับ Supabase
 
 ## Packages
 
-| Package | bun | Description |
+| Package | npm | Description |
 |--------|-----|-------------|
-| Client | [@supabase/supabase-js](https://www.bunjs.com/package/@supabase/supabase-js) | JS client |
-| Auth | [@supabase/auth-helpers](https://www.bunjs.com/package/@supabase/auth-helpers) | Auth helpers |
-| SSR | [@supabase/ssr](https://www.bunjs.com/package/@supabase/ssr) | SSR support |
+| Client | [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js) | JS client |
+| Auth | [@supabase/auth-helpers](https://www.npmjs.com/package/@supabase/auth-helpers) | Auth helpers |
+| SSR | [@supabase/ssr](https://www.npmjs.com/package/@supabase/ssr) | SSR support |
 
 ## Summary
 

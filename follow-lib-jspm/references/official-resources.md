@@ -33,7 +33,7 @@
 
 ### ES Module Shims
 
-- CDN: https://ga.jspm.io/npm:es-module-shims@2.5.1/dist/es-module-shims.js
+- CDN: https://ga.jspm.io/npm:es-module-shims@2.8.4/dist/es-module-shims.js
 - GitHub: https://github.com/guybedford/es-module-shims
 
 ### jspm.io CDN

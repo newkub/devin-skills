@@ -4,7 +4,7 @@
 
 Add 3rd-party scripts without sacrificing performance.
 
-[675.8K](https://bun.chart.dev/@nuxt/scripts)[572](https://github.com/nuxt/scripts#main/packages/script)
+[675.8K](https://npm.chart.dev/@nuxt/scripts)[572](https://github.com/nuxt/scripts#main/packages/script)
 
 Add moduleCopy command to install scripts
 
@@ -18,7 +18,7 @@ OfficialSponsor
 
 The file-based CMS with support for Markdown, YAML, JSON.
 
-[554.3K](https://bun.chart.dev/@nuxt/content)[3.6K](https://github.com/nuxt/content#main)
+[554.3K](https://npm.chart.dev/@nuxt/content)[3.6K](https://github.com/nuxt/content#main)
 
 Add moduleCopy command to install content
 
@@ -32,7 +32,7 @@ OfficialSponsor
 
 Nuxt module that shows hints for aspects of your application such as Performance, Security, and more!
 
-[120.7K](https://bun.chart.dev/@nuxt/hints)[337](https://github.com/nuxt/hints)
+[120.7K](https://npm.chart.dev/@nuxt/hints)[337](https://github.com/nuxt/hints)
 
 Add moduleCopy command to install hints
 
@@ -46,7 +46,7 @@ OfficialSponsor
 
 Real-time accessibility feedback and automated testing in your browser during development.
 
-[80.7K](https://bun.chart.dev/@nuxt/a11y)[224](https://github.com/nuxt/a11y)
+[80.7K](https://npm.chart.dev/@nuxt/a11y)[224](https://github.com/nuxt/a11y)
 
 Add moduleCopy command to install a11y
 
@@ -60,7 +60,7 @@ OfficialSponsor
 
 Privacy-friendly, real-time traffic insights for your Nuxt app
 
-[15.8M](https://bun.chart.dev/@vercel/analytics)[508](https://github.com/vercel/analytics#main/packages/web)
+[15.8M](https://npm.chart.dev/@vercel/analytics)[508](https://github.com/vercel/analytics#main/packages/web)
 
 Add moduleCopy command to install vercel-analytics
 
@@ -74,7 +74,7 @@ OfficialSponsor
 
 Real user performance metrics and suggestions for your Nuxt app
 
-[10.3M](https://bun.chart.dev/@vercel/speed-insights)[105](https://github.com/vercel/speed-insights#main/packages/web)
+[10.3M](https://npm.chart.dev/@vercel/speed-insights)[105](https://github.com/vercel/speed-insights#main/packages/web)
 
 Add moduleCopy command to install vercel-speed-insights
 
@@ -88,7 +88,7 @@ magic-regexp
 
 A compiled-away, type-safe, readable RegExp alternative
 
-[7.5M](https://bun.chart.dev/magic-regexp)[4.3K](https://github.com/unjs/magic-regexp)
+[7.5M](https://npm.chart.dev/magic-regexp)[4.3K](https://github.com/unjs/magic-regexp)
 
 Add moduleCopy command to install magic-regexp
 
@@ -102,7 +102,7 @@ reka-ui
 
 Vue port of Radix UI Primitives. An open-source UI component library for building high-quality, accessible design systems and web apps.
 
-[5M](https://bun.chart.dev/reka-ui)[6.6K](https://github.com/unovue/reka-ui)
+[5M](https://npm.chart.dev/reka-ui)[6.6K](https://github.com/unovue/reka-ui)
 
 Add moduleCopy command to install reka-ui
 
@@ -116,7 +116,7 @@ OfficialSponsor
 
 Automatic animations for your Nuxt app with a single line of code.
 
-[3.7M](https://bun.chart.dev/@formkit/auto-animate)[13.8K](https://github.com/formkit/auto-animate)
+[3.7M](https://npm.chart.dev/@formkit/auto-animate)[13.8K](https://github.com/formkit/auto-animate)
 
 Add moduleCopy command to install auto-animate
 

@@ -8,10 +8,10 @@
 
 ```text
 # Vue 3
-https://esm.sh/vue@3.4.21
+https://esm.sh/vue@3.5.42
 
 # Vue Router
-https://esm.sh/vue-router@4.2.5
+https://esm.sh/vue-router@5.3.1
 
 # React
 https://esm.sh/react@18
@@ -114,13 +114,13 @@ Cache-Control: public, max-age=3600
 
 ```javascript
 // ✅ Production: exact version
-https://esm.sh/vue@3.4.21
+https://esm.sh/vue@3.5.42
 
 // ✅ Development: major version
 https://esm.sh/vue@3
 
 // ✅ With options
-https://esm.sh/vue@3.4.21?target=es2022
+https://esm.sh/vue@3.5.42?target=es2022
 
 // ✅ External deps
 https://esm.sh/react-dom@18?external=react
@@ -139,7 +139,7 @@ Fair use policy applies.
 
 ```html
 <script type="module" crossorigin>
-  import { createApp } from 'https://esm.sh/vue@3.4.21';
+  import { createApp } from 'https://esm.sh/vue@3.5.42';
 </script>
 ```
 
@@ -148,7 +148,7 @@ Fair use policy applies.
 ```json
 {
   "imports": {
-    "vue": "https://esm.sh/vue@3.4.21"
+    "vue": "https://esm.sh/vue@3.5.42"
   }
 }
 ```
@@ -156,7 +156,7 @@ Fair use policy applies.
 ### Deno
 
 ```typescript
-import { createApp } from 'https://esm.sh/vue@3.4.21';
+import { createApp } from 'https://esm.sh/vue@3.5.42';
 ```
 
 ## สรุป

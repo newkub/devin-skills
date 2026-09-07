@@ -6,7 +6,7 @@
 
 The Intuitive UI Library powered by Reka UI and Tailwind CSS.
 
-[1.5M downloads](https://bun.chart.dev/@nuxt/ui)•[6.7K stars](https://github.com/nuxt/ui)•[v4.9.0](https://github.com/nuxt/ui/releases)
+[1.5M downloads](https://npm.chart.dev/@nuxt/ui)•[6.7K stars](https://github.com/nuxt/ui)•[v4.9.0](https://github.com/nuxt/ui/releases)
 
 [![benjamincanac](https://ipx.nuxt.com/f_auto,s_20x20/gh_avatar/benjamincanac)benjamincanac](https://github.com/benjamincanac)•
 
@@ -16,7 +16,7 @@ The Intuitive UI Library powered by Reka UI and Tailwind CSS.
 
 # Nuxt UI
 
-[![bun version](https://img.shields.io/bun/v/@nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://bunjs.com/package/@nuxt/ui)[![bun downloads](https://img.shields.io/bun/dm/@nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://bun.chart.dev/@nuxt/ui)[![License](https://img.shields.io/github/license/nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://github.com/nuxt/ui/blob/v4/LICENSE.md)[![Nuxt](https://img.shields.io/badge/Nuxt-18181B?logo=nuxt)](https://nuxt.com)
+[![npm version](https://img.shields.io/npm/v/@nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://npmjs.com/package/@nuxt/ui)[![npm downloads](https://img.shields.io/npm/dm/@nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://npm.chart.dev/@nuxt/ui)[![License](https://img.shields.io/github/license/nuxt/ui.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://github.com/nuxt/ui/blob/v4/LICENSE.md)[![Nuxt](https://img.shields.io/badge/Nuxt-18181B?logo=nuxt)](https://nuxt.com)
 
 Nuxt UI harnesses the combined strengths of [Reka UI](https://reka-ui.com/), [Tailwind CSS](https://tailwindcss.com/), and [Tailwind Variants](https://www.tailwind-variants.org/) to offer developers an unparalleled set of tools for creating sophisticated, accessible, and highly performant user interfaces.
 

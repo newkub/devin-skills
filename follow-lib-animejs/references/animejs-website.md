@@ -22,23 +22,23 @@
 
 | Format | URL | Description |
 |--------|-----|-------------|
-| ESM | https://cdn.jsdelivr.net/bun/animejs@3.2.1/lib/anime.es.js | ES Module |
-| UMD | https://cdn.jsdelivr.net/bun/animejs@3.2.1/lib/anime.min.js | Universal Module Definition |
+| ESM | https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.esm.min.js | ES Module |
+| UMD | https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js | Universal Module Definition |
 
 ## Package Managers
 
 | Manager | Package | Command |
 |---------|---------|---------|
-| bun | animejs | `bun add animejs` |
+| npm | animejs | `npm install animejs` |
 | yarn | animejs | `yarn add animejs` |
-| bun | animejs | `bun add animejs` |
+| pnpm | animejs | `pnpm add animejs` |
 | bun | animejs | `bun add animejs` |
 
 ## Type Definitions
 
 | Resource | URL | Description |
 |----------|-----|-------------|
-| @types/animejs | https://www.bunjs.com/package/@types/animejs | TypeScript definitions |
+| Built-in types | https://www.npmjs.com/package/animejs | v4 ships TypeScript definitions |
 
 ## Community Resources
 
@@ -51,6 +51,7 @@
 
 | Version | Date | Release Notes |
 |---------|------|---------------|
-| 4.0.0 | 2024 | Latest version with TypeScript support |
-| 3.2.1 | 2021 | Stable version |
+| 4.5.0 | 2026 | Latest stable |
+| 4.0.0 | 2024 | TypeScript rewrite, new API |
+| 3.2.1 | 2021 | Legacy v3 stable |
 | 2.1.0 | 2019 | Legacy version |

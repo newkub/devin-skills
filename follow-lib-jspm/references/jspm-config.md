@@ -31,11 +31,11 @@ JSPM อ่าน entry points และ dependencies จาก `package.json` �
 ```json
 {
   "imports": {
-    "lit": "https://ga.jspm.io/npm:lit@3.3.0/index.js"
+    "lit": "https://ga.jspm.io/npm:lit@3.3.3/index.js"
   },
   "scopes": {
-    "https://ga.jspm.io/npm:lit@3.3.0/": {
-      "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.0/reactive-element.js"
+    "https://ga.jspm.io/npm:lit@3.3.3/": {
+      "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.2/reactive-element.js"
     }
   }
 }

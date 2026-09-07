@@ -10,7 +10,7 @@
 | Vitest | `vitest.config.ts` with shared `defineConfig` |
 | Moonrepo | `.moon/tasks/*.yml`, `.moon/workspace.yml` |
 | pnpm | `pnpm-workspace.yaml` `catalogs:` |
-| Bun | `bun-workspace.toml`, `bunfig.toml` |
+| Bun | `package.json#workspaces`, `bunfig.toml` |
 | mise | `mise.toml` |
 | [website.md](website.md) | Official resources and links |
 

@@ -22,7 +22,7 @@ Shift+click to select modules for bulk installation
 
 The better Nuxt auth module for developers.
 
-[2.6K](https://bun.chart.dev/@logto/nuxt)[93](https://github.com/logto-io/js#master/packages/nuxt)
+[2.6K](https://npm.chart.dev/@logto/nuxt)[93](https://github.com/logto-io/js#master/packages/nuxt)
 
 Add moduleCopy command to install logto
 
@@ -36,7 +36,7 @@ OfficialSponsor
 
 Kinde authentication integration for Nuxt
 
-[1.6K](https://bun.chart.dev/@nuxtjs/kinde)[90](https://github.com/nuxt-modules/kinde)
+[1.6K](https://npm.chart.dev/@nuxtjs/kinde)[90](https://github.com/nuxt-modules/kinde)
 
 Add moduleCopy command to install kinde
 
@@ -50,7 +50,7 @@ OfficialSponsor
 
 Visual tools that help you to know your Nuxt application better.
 
-[6.1M](https://bun.chart.dev/@nuxt/devtools)[3.3K](https://github.com/nuxt/devtools#main/packages/devtools)
+[6.1M](https://npm.chart.dev/@nuxt/devtools)[3.3K](https://github.com/nuxt/devtools#main/packages/devtools)
 
 Add moduleCopy command to install devtools
 
@@ -64,7 +64,7 @@ OfficialSponsor
 
 Test utilities for Nuxt.
 
-[2.2M](https://bun.chart.dev/@nuxt/test-utils)[439](https://github.com/nuxt/test-utils#main)
+[2.2M](https://npm.chart.dev/@nuxt/test-utils)[439](https://github.com/nuxt/test-utils#main)
 
 Add moduleCopy command to install test-utils
 
@@ -78,7 +78,7 @@ OfficialSponsor
 
 Project-aware, easy-to-use, extensible and future-proof ESLint integration.
 
-[2.2M](https://bun.chart.dev/@nuxt/eslint)[637](https://github.com/nuxt/eslint)
+[2.2M](https://npm.chart.dev/@nuxt/eslint)[637](https://github.com/nuxt/eslint)
 
 Add moduleCopy command to install eslint
 
@@ -92,7 +92,7 @@ OfficialSponsor
 
 Icon module for Nuxt with 200,000+ ready to use icons from Iconify.
 
-[2.1M](https://bun.chart.dev/@nuxt/icon)[1.2K](https://github.com/nuxt/icon)
+[2.1M](https://npm.chart.dev/@nuxt/icon)[1.2K](https://github.com/nuxt/icon)
 
 Add moduleCopy command to install icon
 
@@ -106,7 +106,7 @@ OfficialSponsor
 
 Add custom web fonts with performance in mind.
 
-[1.9M](https://bun.chart.dev/@nuxt/fonts)[592](https://github.com/nuxt/fonts)
+[1.9M](https://npm.chart.dev/@nuxt/fonts)[592](https://github.com/nuxt/fonts)
 
 Add moduleCopy command to install fonts
 
@@ -120,7 +120,7 @@ OfficialSponsor
 
 Add images with progressive processing, lazy-loading, resizing and providers support.
 
-[1.6M](https://bun.chart.dev/@nuxt/image)[1.5K](https://github.com/nuxt/image)
+[1.6M](https://npm.chart.dev/@nuxt/image)[1.5K](https://github.com/nuxt/image)
 
 Add moduleCopy command to install image
 
@@ -134,7 +134,7 @@ OfficialSponsor
 
 The Intuitive UI Library powered by Reka UI and Tailwind CSS.
 
-[1.5M](https://bun.chart.dev/@nuxt/ui)[6.7K](https://github.com/nuxt/ui#dev)
+[1.5M](https://npm.chart.dev/@nuxt/ui)[6.7K](https://github.com/nuxt/ui#dev)
 
 Add moduleCopy command to install ui
 

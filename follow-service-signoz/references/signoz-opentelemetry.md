@@ -85,7 +85,7 @@ bun run src/index.ts
 
 ```dockerfile
 # Install OpenTelemetry packages
-RUN bun add @opentelemetry/api@^1.9.0 @opentelemetry/auto-instrumentations-node
+RUN bun add @opentelemetry/api@^1.9.1 @opentelemetry/auto-instrumentations-node
 
 # Set environment variables
 ENV OTEL_TRACES_EXPORTER="otlp"

@@ -98,7 +98,7 @@ dprint uses `dprint.json` or `dprint.jsonc` (also `.dprint.json` / `.dprint.json
 ```json
 {
   "plugins": [
-    "npm:@dprint/typescript@0.95.15",
+    "npm:@dprint/typescript@0.96.1",
     "npm:@dprint/json",
     "npm:@dprint/markdown"
   ]

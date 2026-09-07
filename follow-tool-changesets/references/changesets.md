@@ -83,7 +83,7 @@ Changesets keeps configuration in `.changeset/config.json`:
 
 ```json
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@4.0.0/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],

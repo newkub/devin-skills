@@ -10,7 +10,7 @@ Official links และ resources สำหรับ Playwright
 |----------|------|
 | Website | https://playwright.dev |
 | GitHub | https://github.com/microsoft/playwright |
-| bun | https://www.bunjs.com/package/@playwright/test |
+| npm | https://www.npmjs.com/package/@playwright/test |
 | Docs | https://playwright.dev/docs/intro |
 
 ## Documentation
@@ -34,10 +34,10 @@ Official links และ resources สำหรับ Playwright
 
 ## Packages
 
-| Package | bun | Description |
+| Package | npm | Description |
 |--------|-----|-------------|
-| Test | [@playwright/test](https://www.bunjs.com/package/@playwright/test) | Test framework |
-| Core | [playwright](https://www.bunjs.com/package/playwright) | Core library |
+| Test | [@playwright/test](https://www.npmjs.com/package/@playwright/test) | Test framework |
+| Core | [playwright](https://www.npmjs.com/package/playwright) | Core library |
 
 ## Community
 
@@ -70,5 +70,5 @@ Official links และ resources สำหรับ Playwright
 |----------|------|
 | Docs | https://playwright.dev/docs/intro |
 | GitHub | https://github.com/microsoft/playwright |
-| bun | https://www.bunjs.com/package/@playwright/test |
+| npm | https://www.npmjs.com/package/@playwright/test |
 | Discord | https://aka.ms/playwright/discord |

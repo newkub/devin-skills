@@ -31,8 +31,8 @@ related:
 2. ใช้ `https://cdn.jsdelivr.net/gh/{user}/{repo}@{version}/{file}` สำหรับ `GitHub`
 3. `version` รองรับ exact (`5.3.3`), range (`5`, `5.3`), tag (`latest`, `beta`) หรือ `commit`/`branch` สำหรับ `GitHub`
 4. ตัวอย่าง:
-   - `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`
-   - `https://cdn.jsdelivr.net/gh/jquery/jquery@3.7.1/dist/jquery.min.js`
+   - `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css`
+   - `https://cdn.jsdelivr.net/gh/jquery/jquery@4.0.0/dist/jquery.min.js`
 
 ### 2. Use ESM Mode
 

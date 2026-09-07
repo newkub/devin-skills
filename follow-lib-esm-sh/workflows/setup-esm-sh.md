@@ -16,7 +16,7 @@
 
 ```html
 <script type="module">
-  import { useState } from 'https://esm.sh/react@18.2.0'
+  import { useState } from 'https://esm.sh/react@19.2.8'
   // ใช้งาน React
 </script>
 ```
@@ -25,7 +25,7 @@
 
 ```html
 <script type="module">
-  import { useState } from 'https://esm.sh/react@18.2.0'
+  import { useState } from 'https://esm.sh/react@19.2.8'
   // ระบุ version ที่ต้องการ
 </script>
 ```
@@ -34,7 +34,7 @@
 
 ```html
 <script type="module">
-  import { useState } from 'https://esm.sh/react@18.2.0?target=es2020'
+  import { useState } from 'https://esm.sh/react@19.2.8?target=es2020'
   // ระบุ target environment
 </script>
 ```

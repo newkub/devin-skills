@@ -116,7 +116,7 @@ wrangler deploy
 
 ### GitHub Actions
 
-ใช้ `cloudflare/wrangler-action@v3` สำหรับ auth ใน CI เพราะ `bunx wrangler deploy` โดยตรงมักไม่ detect `CLOUDFLARE_API_TOKEN` env var ใน non-interactive environment:
+ใช้ `cloudflare/wrangler-action@v4` สำหรับ auth ใน CI เพราะ `bunx wrangler deploy` โดยตรงมักไม่ detect `CLOUDFLARE_API_TOKEN` env var ใน non-interactive environment:
 
 ```yaml
 - uses: actions/checkout@v7
@@ -126,13 +126,15 @@ wrangler deploy
 - name: Build
   run: bun run build
 - name: Deploy to Cloudflare Workers
-  uses: cloudflare/wrangler-action@v3
+  uses: cloudflare/wrangler-action@v4
   with:
     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     command: deploy
     packageManager: bun
 ```
+
+หมายเหตุ: `wrangler-action@v4` ติดตั้ง Wrangler v4 เป็น default — ถ้าต้อง pin Wrangler v3 ให้ใส่ `wranglerVersion: "3.90.0"` ใน `with:`
 
 ### Common Pitfalls
 

@@ -37,7 +37,7 @@ Official resources for Raycast extension development
 |------|-----|
 | Raycast CLI | https://developers.raycast.com/cli |
 | VS Code Extension | https://developers.raycast.com/vscode |
-| API Package | https://www.bunjs.com/package/@raycast/api |
+| API Package | https://www.npmjs.com/package/@raycast/api |
 
 ## Publishing
 

@@ -117,7 +117,7 @@ duf --only local
 ### mise
 
 ```bash
-mise install node@20 python@3.12
+mise install node@24 python@3.13
 mise use node@20
 mise ls
 mise run build
