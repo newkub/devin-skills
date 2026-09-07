@@ -7,6 +7,7 @@ related:
   - update-project
   - follow-dot-github
   - list-github-repo
+  - list-cloudflare-projects
   - create-github-repo
   - ask-me
 ---
@@ -17,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้หลัง push หรือหลัง `update-project` เพื่อ sync GitHub repo metadata กับเนื้อหาใน `README.md`, `package.json` และ `AGENTS.md` ครอบคลุบเฉพาะ metadata ที่ตั้งผ่าน `gh repo edit` ไม่แก้ไข code, docs หรือ license
+ใช้หลัง push หรือหลัง `update-project` เพื่อ sync GitHub repo metadata กับเนื้อหาใน `README.md`, `package.json` และ `AGENTS.md` รวมถึง Cloudflare project URL จาก `/list-cloudflare-projects` ครอบคลุม metadata ที่ตั้งผ่าน `gh repo edit` ไม่แก้ไข code, docs หรือ license
 
 ## Execute
 
@@ -37,16 +38,17 @@ related:
 2. อ่าน `package.json` fields: `name`, `description`, `homepage`, `repository.url`, `license`
 3. อ่าน `AGENTS.md` ส่วน `### Architecture`, `### Platform` หรือ `### Skills` เพื่อระบุ `topics` จาก tech stack
 4. ถ้า `package.json` ไม่มี `homepage` → ค้นหา `VITE_APP_URL`, `APP_URL` หรือ production URL ใน `wrangler.toml`, `.env.example`, หรือ `AGENTS.md`
-5. ถ้าไม่มี `README.md` หรือ `package.json` → stop และ report
+5. ถ้า project ใช้ Cloudflare (มี `wrangler.toml`, `cloudflare` ใน `package.json` หรือ `AGENTS.md`) → ทำ `/list-cloudflare-projects` เพื่อหา production URL และ topic candidates เช่น `cloudflare-workers`, `cloudflare-pages`
+6. ถ้าไม่มี `README.md` หรือ `package.json` → stop และ report
 
 ### 3. Determine Desired Metadata
 
 > Goal: สร้าง target metadata ทีจะตั้ง
 
 1. `description` = บรรทัดสั้นที่สุดจาก `README.md` หรือ `package.json.description` (ไม่เกิน 350 ตัวอักษร)
-2. `homepageUrl` = `package.json.homepage` หรือ production URL ที่พบใน config
+2. `homepageUrl` = `package.json.homepage` → production URL จาก `wrangler.toml`/`.env.example`/`AGENTS.md` → URL จาก `/list-cloudflare-projects`
 3. `defaultBranchRef` = `main` (ถ้า project ใช้ branch อื่น ให้ใช้ค่านั้น)
-4. `topics` = ไม่เกิน 10 topics จาก tech stack เรียงลำดับ: framework > language > platform > tool > service > domain
+4. `topics` = ไม่เกิน 10 topics จาก tech stack เรียงลำดับ: framework > language > platform > tool > service > domain; ถ้าใช้ Cloudflare ให้เพิ่ม `cloudflare-workers` หรือ `cloudflare-pages` ตามประเภท
 5. ไม่เปลี่ยน `license` — ถ้า `licenseInfo` ไม่ตรงกับ `package.json.license` ให้ report ไว้แต่ไม่อัปเดต
 
 ### 4. Check Current Metadata
@@ -102,6 +104,7 @@ related:
 
 - ห้ามใส่ generic topics เช่น `awesome`, `cool`, `project`
 - เลือก topics ที่เกี่ยวข้องกับ tech stack จริง และพบได้บน GitHub
+- ถ้า project อยู่บน Cloudflare ให้เพิ่ม `cloudflare`, `cloudflare-workers` หรือ `cloudflare-pages` ตามประเภท
 - จำกัดไม่เกิน 10 topics
 - ลำดับความสำคัญ: framework > language > platform > tool > service > domain
 
@@ -124,6 +127,7 @@ related:
 - ใช้ `/git-push` ถ้าจำเป็นต้อง push ก่อน
 - ใช้ `/follow-dot-github` ถ้าจำเป็นต้องตรวจ GitHub settings
 - ใช้ `/list-github-repo` ถ้าจำเป็นต้อง list repos
+- ใช้ `/list-cloudflare-projects` ถ้าจำเป็นต้องหา Cloudflare URL
 - ใช้ `/create-github-repo` ถ้า repo ยังไม่มี
 - ใช้ `/ask-me` ถ้าไม่แน่ใจเรื่อง topics หรือ homepage
 

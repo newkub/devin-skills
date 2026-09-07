@@ -4,11 +4,17 @@ description: สร้างโครงสร้าง Clean Architecture ด�
 argument-hint: "[scope]"
 related:
   - review-architecture
+  - review-quality
   - follow-lib-effect-ts
   - follow-lib-zod
   - follow-orm
+  - follow-event-driven
   - follow-tool-vitest
-  - follow-tool-vite
+  - update-test-and-fix
+  - refactor
+  - refactor-workspace
+  - update-references
+  - run-test-unit
   - follow-lang-typescript
   - follow-lang-rust
   - follow-create-bun-cli
@@ -155,6 +161,7 @@ Clean Architecture มี 3 rules หลัก:
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /review-architecture ถ้าจำเป็น
+- ใช้ /improve ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -162,4 +169,3 @@ Clean Architecture มี 3 rules หลัก:
 - Pure domain logic ใน `modules/` (100% functional)
 - Side effects isolation ใน `adapters/` layer เท่านั้น
 - Production-grade testability จาก pure functions + clear boundaries
-

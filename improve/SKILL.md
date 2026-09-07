@@ -4,6 +4,7 @@ description: หาสิ่งที่ improve ใน scope รวม findings
 argument-hint: "[scope]"
 related:
   - review-gaps
+  - review-issue
   - review
   - report
   - suggest-next-action
@@ -25,8 +26,9 @@ related:
 > Goal: ได้ prioritized improvement list
 
 1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ทำ `/review-gaps` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `references/dimension-map.md` ของ `/review-gaps` สแกนกว้างก่อน
-3. รวบรวม prioritized list พร้อม severity และ evidence
+2. ถ้า scope เป้น issue หรือ GitHub issue → ทำ `/review-issue` เพื่อรวบรวม findings ของ issue
+3. ทำ `/review-gaps` กับ scope นั้น — ถ้ายังไม่มี findings ให้ใช้ `references/dimension-map.md` ของ `/review-gaps` สแกนกว้างก่อน
+4. รวบรวม prioritized list พร้อม severity และ evidence
 
 ### 2. Present And Confirm
 
@@ -44,12 +46,12 @@ related:
 
 ## Rules
 
-- ไม่ทำ review เอง — delegate ไป `/review-gaps` เท่านั้น
+- ไม่ทำ review เอง — delegate ไป `/review-gaps` หรือ `/review-issue` ถ้าเป้น issue
 - ไม่แก้ไขโดยไม่ได้ user confirm
 - ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
 
 ## Expected Outcome
 
-- Prioritized improvement list จาก `/review-gaps`
+- Prioritized improvement list จาก `/review-gaps` หรือ `/review-issue` ถ้าเป้น issue
 - User เลือกสิ่งที่จะแก้
 - Findings ที่ confirm ถูกส่งไปแก้ที่ `## Fix` ของ `review-*` ที่ถูกต้อง
