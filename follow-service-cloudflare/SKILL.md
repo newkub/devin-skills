@@ -11,6 +11,7 @@ related:
   - follow-tool-mise
   - follow-tasks
   - follow-package-manifest
+  - follow-service-cloudflare-ci
 ---
 
 ## Goal
