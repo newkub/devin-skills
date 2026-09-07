@@ -9,11 +9,11 @@ related:
   - follow-service-workos
   - follow-service-stripe
   - follow-service-cloudflare
-  - follow-lib-unocss-theme
+  - follow-lib-unocss
   - follow-design-system
   - review-uxui
   - ship
-  - report-table
+  - report
   - enhance-prompt
   - follow-my-tech-stack
   - review-techstack
@@ -56,7 +56,7 @@ related:
 2. ระบุ MVP scope
 3. ระบุ out-of-scope
 4. ระบุ success metrics
-5. ใช้ `/report-table` สรุป scope, priority, effort
+5. ใช้ `/report` สรุป scope, priority, effort
 
 ### 3. Build Product Spec
 
@@ -76,14 +76,14 @@ related:
 1. แบ่ง phase: `now`, `next`, `later`
 2. ระบุ dependencies ระหว่าง features
 3. ประเมิน effort แบบ rough (S/M/L)
-4. ใช้ `/report-table` สรุป roadmap
+4. ใช้ `/report` สรุป roadmap
 
 ### 5. Design UX And Pages
 
 > Goal: ออกแบบ UX/UI และ page structure
 
 1. ใช้ `/follow-design-system` เพื่อกำหนด design principles
-2. ใช้ `/follow-lib-unocss-theme` เพื่อสร้าง theme tokens
+2. ใช้ `/follow-lib-unocss` เพื่อติดตั้ง UnoCSS และสร้าง HSL theme tokens
 3. วาง page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
 4. ใช้ `/review-uxui` ตรวจ layout, navigation, responsive, CTA
 5. สร้าง wireframe/sketch ด้วย `/report-uxui-sketch` ถ้าจำเป็น

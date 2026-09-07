@@ -3,7 +3,7 @@ name: follow-design-system
 description: Design system principles พื้นฐานที่ใช้ได้กับทุก platform (TUI, Web, Desktop, Mobile)
 argument-hint: "[scope]"
 related:
-  - follow-lib-unocss-theme
+  - follow-lib-unocss
   - review-frontend
   - deep-review-codebase
   - review-uxui
@@ -30,7 +30,7 @@ related:
 1. กำหนด visual tokens: colors, typography, spacing, shadows, borders
 2. กำหนด interaction tokens: transitions, animations, cursors
 3. กำหนด language tokens: terminology, tone of voice, iconography
-4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss-theme` สำหรับ HSL theme variables
+4. ถ้า project ใช้ UnoCSS ทำ `/follow-lib-unocss` สำหรับ UnoCSS และ HSL theme variables
 
 ### 2. Create Component Guidelines
 

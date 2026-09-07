@@ -9,7 +9,7 @@ related:
   - follow-create-web
   - follow-service-workos
   - follow-lib-zod
-  - follow-lib-unocss-theme
+  - follow-lib-unocss
   - deploy-to-vercel
   - deploy-to-cloudflare
 ---
@@ -50,7 +50,7 @@ related:
 
 > Goal: สร้างหน้า `/pricing` ทีดึงดูด
 
-1. ทำ `/follow-lib-unocss-theme` กำหนด theme tokens
+1. ทำ `/follow-lib-unocss` สำหรับ UnoCSS และ HSL theme tokens
 2. ออกแบบ cards สำหรับแต่ละ plan พร้อม price, features, CTA
 3. เรียก `/review-uxui` ก่อน deploy หน้า pricing
 4. ส่ง price_id ไปยัง checkout session
