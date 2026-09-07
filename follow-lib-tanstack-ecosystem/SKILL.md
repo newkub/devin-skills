@@ -85,7 +85,7 @@ related:
 - `Query` กับ `Store` ไม่ทดแทนกัน — ใช้ `Query` สำหรับ server state, `Store` สำหรับ client state
 - `Router`/`Start` รองรับเฉพาะ React และ Solid — ถ้าใช้ Vue/Svelte ให้ใช้ router ของ framework นั้น
 - อ้างอิง official docs `https://tanstack.com` เป็นแหล่งหลักเสมอ
-- ดูรายละเอียดเพิ่มเติมที่ `references/index.md` (versions, API, CLI, config) และ `workflows/` (Query, Table)
+- ดูรายละเอียดเพิ่มเติมที่ `references/` (versions, API, CLI, config) และ `workflows/` (Query, Table)
 
 ### 2. Type Safety
 
@@ -106,3 +106,4 @@ related:
 - Integration ทำงานได้และผ่าน typecheck/test
 - Performance ที่เหมาะสม ไม่ over-fetching หรือ over-rendering
 - Code อ่านง่ายและ maintain ได้
+

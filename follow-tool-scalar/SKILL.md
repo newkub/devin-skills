@@ -99,7 +99,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -108,3 +108,4 @@ related:
 - Mock server ทำงานได้
 - Documentation publish ได้
 - Tests และ validation ผ่าน
+

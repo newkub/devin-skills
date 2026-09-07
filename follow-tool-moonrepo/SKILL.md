@@ -118,7 +118,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -127,3 +127,4 @@ related:
 - root scripts ใช้ `moon run`
 - project graph สามารถ build ได้
 - รองรับ JS/Bun packages และ Rust crates
+

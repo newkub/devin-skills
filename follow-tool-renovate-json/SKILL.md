@@ -107,7 +107,7 @@ Renovate ค้นหา config ตามลำดับนี้:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -115,3 +115,4 @@ Renovate ค้นหา config ตามลำดับนี้:
 - Config ผ่าน `renovate-config-validator`
 - ใช้ presets ที่มีอยู่จริง
 - ไม่มี config ซ้ำซ้อนในหลายไฟล์
+

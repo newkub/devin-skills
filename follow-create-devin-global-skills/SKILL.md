@@ -4,8 +4,7 @@ description: มาตรฐานการสร้าง global Devin skills �
 argument-hint: "[skill-name...]"
 related:
   - update-devin-global-skills
-  - follow-create-devin-project-skills
-  - create-devin-global-skills
+  - update-devin-project-skills
   - new-skills
   - follow-skills-map
   - check-skills-related
@@ -26,9 +25,11 @@ related:
 
 ## Scope
 
-ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `%APPDATA%\devin\skills` — skill อื่นที่สร้าง skill (เช่น `/new-skills`, `/create-devin-global-skills`) ต้อง follow มาตรฐานนี้ ส่วน project-local skills ใน `.devin/skills/` ใช้ `/follow-create-devin-project-skills`
 
-ดูเพิ่มเติม: /update-devin-global-skills, /follow-create-devin-project-skills, /check-skills-related, /follow-skills-map
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: create-devin-global-skills)
+ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `%APPDATA%\devin\skills` — skill อื่นที่สร้าง skill (เช่น `/new-skills`, `/follow-create-devin-global-skills`) ต้อง follow มาตรฐานนี้ ส่วน project-local skills ใน `.devin/skills/` ใช้ `/update-devin-project-skills`
+
+ดูเพิ่มเติม: /update-devin-global-skills, /update-devin-project-skills, /check-skills-related, /follow-skills-map
 
 ## Execute
 
@@ -48,7 +49,7 @@ related:
 
 > Goal: skill มีโครงสร้างเริ่มต้นที่ถูกต้องตาม prefix
 
-1. อ่าน [references/index.md](references/index.md) และ [references/create-devin-skills.md](references/create-devin-skills.md)
+1. อ่าน [references/create-devin-skills.md](references/create-devin-skills.md)
 2. เลือก execute pattern template ตาม prefix จาก `templates/` โดยใช้ longest match ก่อน:
    - `run-*` → `templates/run.md`
    - `follow-lib-*` → `templates/lib.md`
@@ -141,7 +142,7 @@ related:
 
 ### 4. References Discipline
 
-- บันทึก external docs ลง `references/` พร้อม `references/index.md` เป็น index
+- บันทึก external docs ลง `references/` ในไฟล์ `.md` ที่มีชื่อบ่งบอก content
 - หลังสร้าง skill → skills ที่เกี่ยวข้องต้องอัปเดต `related` ถ้าเหมาะสม
 
 ## Expected Outcome
@@ -151,3 +152,4 @@ related:
 - Ecosystem detection ถูกต้อง — commands/dependencies ตรง stack
 - ไม่มี duplicate กับ skills เดิม และ references ไม่ broken
 - พร้อมส่งต่อ `/update-devin-global-skills` สำหรับ validate และ ship
+

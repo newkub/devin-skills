@@ -119,7 +119,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -128,3 +128,4 @@ related:
 - Watch mode และ filter ทำงาน
 - Remote cache ตั้งค่าได้
 - Package isolation enforce ด้วย boundaries
+

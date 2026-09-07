@@ -52,7 +52,7 @@ related:
    - `docs/development/architecture.md`
    - `docs/development/workflows.md`
    - `docs/development/testing.md`
-   - `docs/references/index.md`
+   - `docs/references/`
    - `docs/roadmap/index.md`
 4. ถ้า monorepo ให้เพิ่ม `docs/project/workspaces.md` และ `docs/workspaces/<name>.md`
 5. เพิ่มหน้าเฉพาะ type จาก `references/<type>.md` เช่น `docs/commands/` สำหรับ `cli`, `docs/references/contributing.md` สำหรับ `open-source`, `docs/references/auth.md` สำหรับ `product`
@@ -83,7 +83,7 @@ related:
 8. `development/architecture.md`: สถาปัตยกรรม, conventions, boundaries
 9. `development/workflows.md`: slash commands, scripts, CI/CD
 10. `development/testing.md`: วิธี run test, lint, typecheck
-11. `references/index.md`: สรุป references
+11. `references/`: สรุป references
 12. `roadmap/index.md`: สรุป roadmap และ link ไป `idea-features`
 
 ### 5. Integrate `update-features-md`
@@ -186,3 +186,4 @@ related:
 - ไม่มี HTML/UX ซับซ้อน
 - Links ถูกต้อง ไม่เสีย
 - README อัปเดทลิงก์ไป docs
+

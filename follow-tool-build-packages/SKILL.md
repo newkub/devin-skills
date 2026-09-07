@@ -87,9 +87,10 @@ tests/examples <-- src
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
 Completed `follow-tool-build-packages` workflow with correct output
+
 

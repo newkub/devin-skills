@@ -97,7 +97,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -106,3 +106,4 @@ related:
 - Reports สร้างได้ทั้งแบบ text และ JSON
 - MCP server เปิดใช้งานได้สำหรับ AI tools
 - Static build ใช้สำหรับ share ผลลัพธ์
+

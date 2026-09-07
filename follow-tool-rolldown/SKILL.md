@@ -113,7 +113,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -122,3 +122,4 @@ related:
 - Migration จาก Rollup smooth
 - Output bundle มี performance ทีดีขึ้น
 - Plugins เลือกใช้อย่างเหมาะสม
+

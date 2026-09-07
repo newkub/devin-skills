@@ -99,7 +99,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -107,3 +107,4 @@ related:
 - Dependencies ติดตั้งครบถ้วน
 - Template รัน dev, build, test ผ่าน
 - Project ถูก init และพร้อมพัฒนาต่อ
+

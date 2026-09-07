@@ -3,7 +3,6 @@ name: follow-tool-astgrep
 description: ตั้งค่าและใช้งาน ast-grep สำหรับ code search, lint และ transformation ด้วย AST patterns
 argument-hint: "[scope]"
 related:
-  - use-astgrep
   - use-astgrep-programatic
   - search-by-astgrep
   - follow-tool-agent-browser
@@ -19,6 +18,8 @@ related:
 
 ## Scope
 
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: use-astgrep)
 ครอบคลุมการตั้งค่า `sgconfig.yml`, การ scan, และใช้งาน CLI commands ของ ast-grep — การเขียน rules อยู่ใน `/follow-tool-astgrep`
 
 ดูเพิ่มเติม: /search-by-astgrep
@@ -115,7 +116,7 @@ related:
 
 - การเขียน rules อยู่ใน `/update-project-rules` ไม่ใช่ workflow นี้
 
-- ใช้ /use-astgrep ถ้าจำเป็น
+- ใช้ /follow-tool-astgrep ถ้าจำเป็น
 - ใช้ /use-astgrep-programatic ถ้าจำเป็น
 - ใช้ /follow-tool-agent-browser ถ้าจำเป็น
 - ใช้ /follow-tool-usage ถ้าจำเป็น
@@ -125,7 +126,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -134,3 +135,4 @@ related:
 - Scan script เพิ่มใน `package.json` และทำงานได้
 - `ast-grep scan` ทำงานได้ถูกต้องและ report ผลลัพธ์
 - ใช้ร่วมกับ `Biome` ได้โดยไม่ขัดแย้ง
+

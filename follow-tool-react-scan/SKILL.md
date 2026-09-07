@@ -136,7 +136,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -146,3 +146,4 @@ related:
 - Components ที่เป็นปัญหาถูก optimize อย่างเหมาะสม
 - Production build ไม่มี react-scan code หรือ overhead
 - Developer เห็น performance ของ app ได้ทันที
+

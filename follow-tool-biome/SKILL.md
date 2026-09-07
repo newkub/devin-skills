@@ -189,7 +189,7 @@ jobs:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -197,3 +197,4 @@ jobs:
 - มี scripts `lint`, `lint:fix` และ `format` พร้อมใช้
 - Config รองรับ git ignore
 - Monorepo workspaces extends จาก root config ถูกต้อง
+

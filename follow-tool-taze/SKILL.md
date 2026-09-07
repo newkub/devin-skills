@@ -99,7 +99,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -107,3 +107,4 @@ related:
 - `package.json` scripts พร้อมใช้
 - Updates ผ่าน tests และ lint
 - Monorepo จัดการ dependencies ได้
+

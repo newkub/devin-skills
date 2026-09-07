@@ -129,7 +129,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -138,3 +138,4 @@ related:
 - Env vars load อัตโนมัติเมื่อเข้า project directory
 - Tasks รันได้ด้วย `mise run <task>`
 - Project setup repeatable บนเครื่องอื่น
+

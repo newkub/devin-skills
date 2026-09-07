@@ -104,7 +104,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -113,3 +113,4 @@ related:
 - Lint scripts พร้อมใช้
 - `bun run lint` ผ่าน
 - CI รัน linting อัตโนมัติ
+

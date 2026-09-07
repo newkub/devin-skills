@@ -33,9 +33,8 @@ related:
 
 > Goal: เข้าใจพื้นฐาน Node.js
 
-1. อ่าน `references/index.md` สำหรับภาพรวม
-2. อ่าน `references/nodejs-globals.md` สำหรับ global APIs
-3. อ่าน `references/nodejs-modules.md` สำหรับ module system
+1. อ่าน `references/nodejs-globals.md` สำหรับ global APIs
+2. อ่าน `references/nodejs-modules.md` สำหรับ module system
 
 ### 3. Use CLI And Resources
 
@@ -71,3 +70,4 @@ related:
 - Projects ที่ compatible กับ ecosystem ที่ใหญ่
 - Development ที่ stable ด้วย mature runtime
 - Integration ที่ smooth กับ Node.js ecosystem
+

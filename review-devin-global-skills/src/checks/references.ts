@@ -13,11 +13,6 @@ const IGNORED_PATH_TOKENS = new Set([
 export function checkReferences(m: SkillMeta, ctx: Context) {
   const rpath = m.path.replace(ctx.skillsRoot + "\\", "").replace(ctx.skillsRoot + "/", "");
 
-  // references/ dir must have index.md
-  if (m.hasReferences && !m.hasReferencesIndex) {
-    ctx.addFinding({ file: rpath, line: 1, category: "file-structure", severity: "Medium", finding: "references/ exists without index.md", evidence: "missing references/index.md", fixable: true }, m.skill);
-  }
-
   const dir = dirname(m.path);
   const skillDir = resolve(dir);
   const seenSkillRefs = new Set<string>();

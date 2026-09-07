@@ -32,7 +32,6 @@ export interface SkillMeta {
   sections: string[];
   executeSteps: number;
   hasReferences: boolean;
-  hasReferencesIndex: boolean;
   allMdFiles: MdFile[];
   body: string;
   bodyLines: string[];

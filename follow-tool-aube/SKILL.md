@@ -157,7 +157,7 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -166,3 +166,4 @@ Aube จะ auto-install และ cache dependencies อัตโนมัต�
 - Security defaults ที่เหมาะสมที่สุด
 - ลด disk usage ด้วย global store
 - รองรับ lockfiles หลายประเภท
+

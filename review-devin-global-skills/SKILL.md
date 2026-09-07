@@ -7,7 +7,7 @@ related:
   - idea-refactor-devin-global-skills
   - deep-review-codebase
   - follow-deep
-  - report-table
+  - report
   - suggest-next-action
   - check-reference
   - follow-skills-map
@@ -39,8 +39,8 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 
 > Goal: ได้ findings จาก automated checks ทั้งหมด
 
-1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ: frontmatter (name, description, `argument-hint`, `related` ≤15, missing/orphan), sections (order, `> Goal:`, step count), line count, style (bold, TODO/MOCK, Title Case, Thai language), references (`/skill-name` refs, markdown links, `references/index.md`), parallel markers, template compliance ตาม prefix และ cross-skill checks (duplicates, naming, prefix distribution)
-2. ใช้ `bun run review:fix` เพื่อ auto-fix findings ที่ `fixable` (เช่น generate `references/index.md`)
+1. รัน `bun run review` ใน skill directory — script ใน `src/` ตรวจ: frontmatter (name, description, `argument-hint`, `related` ≤15, missing/orphan), sections (order, `> Goal:`, step count), line count, style (bold, TODO/MOCK, Title Case, Thai language), references (`/skill-name` refs, markdown links), parallel markers, template compliance ตาม prefix และ cross-skill checks (duplicates, naming, prefix distribution)
+2. ใช้ `bun run review:fix` เพื่อ auto-fix findings ที่ `fixable` (ปัจจุบันยังไม่มี auto-fix เปิดใช้งาน)
 3. ใช้ `bun run review:ci` เพื่อ exit code 1 เมื่อมี Critical/High — สำหรับ pre-check ก่อน `update-devin-global-skills`
 4. อ่าน `review-skills-report.json` ที่ skill directory เพื่อดู findings ทั้งหมด
 
@@ -84,7 +84,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 > Goal: สรุป review score, refactor results และ findings
 
 1. ทำตาม `references/scoring.md` สำหรับ severity weights, grade, report format
-2. ทำ `/report-table` พร้อม findings: Skill, Category, Severity, Finding, Evidence, Action
+2. ทำ `/report` พร้อม findings: Skill, Category, Severity, Finding, Evidence, Action
 3. สรุป refactor actions: skill, action, status, ไฟล์ที่เปลี่ยน
 4. ทำ `/suggest-next-action`
 
@@ -121,7 +121,7 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - คำนวณ review score ตาม `references/scoring.md`
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ `tools`, `commands`, `paths`, skill references
-- รายงานเป็นตารางด้วย `/report-table`
+- รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /idea-refactor-devin-global-skills ถ้าจำเป็น
 - ใช้ /follow-deep ถ้าจำเป็น

@@ -84,10 +84,11 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
 - เลือก workflows ที่เหมาะสมกับ project
 - GitHub Actions ตั้งค่าครบถ้วนตามความต้องการ
 - CI/CD ทำงานอัตโนมัติ
+

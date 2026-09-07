@@ -126,7 +126,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -135,3 +135,4 @@ related:
 - Production build optimized
 - Test setup integrate กับ Vitest
 - Deployment config ถูกต้อง
+

@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-web-landing
 description: สร้าง static landing website ด้วย SolidJS, TanStack และ UnoCSS
 argument-hint: "[scope]"
@@ -119,8 +119,8 @@ related:
 ### 3. References
 
 - ใช้ `?follow-solid-tanstack/references/` สำหรับ framework details
-- ใช้ `?follow-lib-tanstack-ecosystem/references/index.md` สำหรับ libraries
-- ใช้ `?follow-lib-unocss/references/index.md` สำหรับ UnoCSS
+- ใช้ `?follow-lib-tanstack-ecosystem/references/` สำหรับ libraries
+- ใช้ `?follow-lib-unocss/references/` สำหรับ UnoCSS
 
 ### 4. Safety
 
@@ -141,3 +141,4 @@ related:
 - SEO และ responsive รองรับ
 - Tests ผ่านหรือมี plan
 - Deploy สำเร็จหรือพร้อม deploy
+

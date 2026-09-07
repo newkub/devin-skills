@@ -104,7 +104,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -113,3 +113,4 @@ related:
 - CI ตรวจ code ที่ยังไม่ format
 - Editor settings สนับสนุน format on save
 - Code style สม่ำเสมอทั้ง project
+

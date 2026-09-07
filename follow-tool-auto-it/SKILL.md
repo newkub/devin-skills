@@ -179,7 +179,7 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -188,3 +188,4 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 - GitHub token พร้อมใช้งาน
 - Releases สร้างอัตโนมัติตาม conventional commits
 - Released plugin comment บน PRs และ issues
+

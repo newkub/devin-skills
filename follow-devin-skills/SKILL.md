@@ -5,7 +5,7 @@ argument-hint: "[skill-name]"
 related:
   - list-devin-global-skills
   - follow-skills-map
-  - update-project-skills
+  - update-devin-project-skills
   - check-reference
   - update-devin-global-skills
   - deep-validate
@@ -56,7 +56,7 @@ related:
 > Goal: เข้าใจเนื้อหา skill
 
 1. อ่าน `SKILL.md` ของ skill ทีเลือก
-2. ถ้ามี `references/` ให้อ่าน `references/index.md`
+2. ถ้ามี `references/` ให้อ่านไฟล์ `.md` ที่เกี่ยวข้อง
 3. ระบุ goal, scope, execute, rules, expected outcome
 4. ตรวจสอบ `related` ว่า skills ทีอ้างอิงมีอยู่จริง
 
@@ -104,7 +104,7 @@ related:
 - ห้ามส่ง skill ซ้ำซ้อน
 - ใช้ `argument-hint` ตามที่ skill ระบุ
 
-- ใช้ /update-project-skills ถ้าจำเป็น
+- ใช้ /update-devin-project-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 - ใช้ /deep-validate ถ้าจำเป็น
 
@@ -114,3 +114,4 @@ related:
 - ใช้ skills ที่เหมาะสมกับ task
 - References ถูกต้องทั้งหมด
 - ผลลัพธ์ถูกต้องตามที่คาดหวัง
+

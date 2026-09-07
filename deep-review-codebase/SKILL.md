@@ -15,7 +15,7 @@ related:
   - review-by-engineer
   - review-by-qa
   - review-by-stakeholder
-  - report-table
+  - report
   - suggest-next-action
 ---
 
@@ -63,7 +63,7 @@ related:
 
 > Goal: วิเคราะห์ findings ตาม domain reference
 
-1. อ่าน `references/review-checklist.md` และ `references/index.md`
+1. อ่าน `references/review-checklist.md`
 2. แบ่ง findings ตาม 5 domains ของ `run-review`
 3. ใช้ reference ที่เหมาะกับปัญหา เช่น:
    - `clean-architecture.md` สำหรับ architecture issues
@@ -99,7 +99,7 @@ related:
 
 > Goal: รายงานผล review ลง `.devin/reports/<workspace>/` (report only)
 
-1. ทำ `/report-table` สรุป score, findings, owner skill, priority
+1. ทำ `/report` สรุป score, findings, owner skill, priority
 2. ทำ `/create-report-in-dot-devin` ด้วย title `deep-review-codebase` และเนื้อหาเป็น executive summary: score, grade, findings count ตาม domain
 3. แต่ละ `review-*` domain เป็น section ใน report — แต่ละ section มี header ของ review skill, findings, evidence และ severity
 4. บันทึก action items เป็น `TODO` หรือ plan
@@ -143,3 +143,4 @@ related:
 - Findings ถูกวิเคราะห์ตาม reference ที่ถูกต้อง
 - ทุก high-priority finding ถูก route ไปยัง review/improve skill ทีเหมาะสม
 - รายงานสรุปพร้อม table, score, และ next action
+

@@ -144,4 +144,5 @@ related:
 - แต่ละ feature ที่ต้องการ visual มี `/report-uxui-sketch` ประกอบ
 - ไฟล์แผนถูกเปิดใน editor
 - Plan สามารถ track ความคืบหน้าได้ด้วย `/implement-plan`
-- ทุก reference ใน `references/index.md` ถูกใช้งาน
+- ทุก reference ใน `references/` ถูกใช้งาน
+

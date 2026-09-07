@@ -108,7 +108,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -116,3 +116,4 @@ related:
 - Test coverage และ quality ดีขึ้น
 - Missed mutants ถูกระบุและแก้ไข
 - Test suite มีความเชื่อถือได้สูงขึ้น
+

@@ -124,7 +124,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -132,3 +132,4 @@ related:
 - ใช้งานได้ทั้ง interactive (TTY) และ scripted (flags)
 - Token มี scope `project` และ owner ระบุถูกต้อง
 - ไม่มี project ถูกลบหรือปิดโดยไม่ได้รับอนุญาต
+

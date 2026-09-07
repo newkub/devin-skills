@@ -105,7 +105,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -114,3 +114,4 @@ related:
 - Version, tag, npm publish และ GitHub release เกิดขึ้นอัตโนมัติ
 - Secrets และ permissions ตั้งค่าถูกต้อง
 - Plugins ทีต้องการทำงานตาม config
+

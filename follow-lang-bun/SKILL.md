@@ -55,7 +55,7 @@ related:
 
 ## Rules
 
-ดูรายละเอียด API แต่ละ category ใน `references/` เริ่มจาก `references/index.md` สำหรับภาพรวม
+ดูรายละเอียด API แต่ละ category ใน `references/`
 
 - HTTP Server: `references/bun-http-server.md`
 - Shell & Process: `references/bun-shell-process.md`

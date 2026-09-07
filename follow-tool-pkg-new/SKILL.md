@@ -94,7 +94,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -103,3 +103,4 @@ related:
 - Workflow ตั้งค่าถูกต้อง
 - Preview packages publish อัตโนมัติ
 - Comments ปรากฏบน pull requests
+

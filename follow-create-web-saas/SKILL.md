@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-web-saas
 description: สร้าง SaaS website ด้วย SolidJS, TanStack, oRPC, Elysia, UnoCSS
 argument-hint: "[scope]"
@@ -139,8 +139,8 @@ related:
 ### 3. References
 
 - ใช้ `?follow-solid-tanstack/references/` สำหรับ oRPC, Elysia, TanStack Start, UnoCSS
-- ใช้ `?follow-lib-tanstack-ecosystem/references/index.md` สำหรับ TanStack libraries
-- ใช้ `?follow-lib-effect-ts/references/index.md` ถ้าใช้ Effect-TS
+- ใช้ `?follow-lib-tanstack-ecosystem/references/` สำหรับ TanStack libraries
+- ใช้ `?follow-lib-effect-ts/references/` ถ้าใช้ Effect-TS
 
 ### 4. Safety
 
@@ -163,3 +163,4 @@ related:
 - Type safety ระหว่าง client และ server
 - Tests ผ่านหรือมี plan
 - Deploy สำเร็จหรือพร้อม deploy
+

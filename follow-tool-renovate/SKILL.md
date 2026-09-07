@@ -112,7 +112,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -121,3 +121,4 @@ related:
 - PRs สร้างขึ้นสำหรับ dependency updates
 - Lock files อัปเดตอัตโนมัติ
 - Workflow ไม่ fail จาก token หรือ permissions
+

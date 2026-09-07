@@ -44,7 +44,7 @@ score = sum(severity_score[f] for f in findings) / len(findings)
 
 ## Report Format
 
-รายงานผ่าน `/report-table` พร้อม columns:
+รายงานผ่าน `/report` พร้อม columns:
 
 | Column | คำอธิบาย |
 |---|---|
@@ -54,4 +54,5 @@ score = sum(severity_score[f] for f in findings) / len(findings)
 | Evidence | file path และบรรทัดที่อ้างถึง |
 | Action | action ที่ต้องทำ |
 
-ดู `references/index.md` สำหรับ mapping ของ reference files ทั้งหมด
+ดูไฟล์ใน `references/` สำหรับรายละเอียดแต่ละ reference
+

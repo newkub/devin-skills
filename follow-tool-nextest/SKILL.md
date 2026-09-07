@@ -110,7 +110,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -118,3 +118,4 @@ related:
 - Tests รันแบบ parallel อัตโนมัติ
 - CI integration ที่เหมาะสม
 - Test execution time ลดลง
+

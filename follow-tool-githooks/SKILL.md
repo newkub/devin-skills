@@ -116,7 +116,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -125,3 +125,4 @@ related:
 - Config อยู่ใน version control
 - Hooks ไม่ช้าจนรบกวน developer experience
 - ไฟล์ local override ไม่ถูก commit
+

@@ -69,7 +69,6 @@ for (const skill of skillDirs) {
     sections: extractSectionsWithLevels(text),
     executeSteps: countExecuteSteps(text),
     hasReferences: existsSync(join(SKILLS_ROOT, skill, "references")),
-    hasReferencesIndex: existsSync(join(SKILLS_ROOT, skill, "references", "index.md")),
     allMdFiles,
     body,
     bodyLines: body.split(/\r?\n/),

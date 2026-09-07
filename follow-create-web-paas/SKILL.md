@@ -1,4 +1,4 @@
-﻿---
+---
 name: follow-create-web-paas
 description: สร้าง SaaS+ ด้วย SolidJS, TanStack, oRPC, Elysia, UnoCSS และ advanced UX/UI
 argument-hint: "[scope]"
@@ -118,7 +118,7 @@ related:
 
 - ใช้ `?follow-create-web-saas/SKILL.md` สำหรับ base SaaS scope
 - ใช้ `?follow-solid-tanstack/references/` สำหรับ framework details
-- ใช้ `?follow-lib-unocss/references/index.md` สำหรับ UnoCSS
+- ใช้ `?follow-lib-unocss/references/` สำหรับ UnoCSS
 
 ### 4. Safety
 
@@ -132,6 +132,7 @@ related:
 - ใช้ /follow-service-stripe ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
+- ใช้ /follow-solid-tanstack ถ้าจำเป็น
 
 ## Expected Outcome
 
@@ -141,3 +142,4 @@ related:
 - Auth, payments, dashboard ทำงานได้
 - Tests ผ่านหรือมี plan
 - Deploy สำเร็จหรือพร้อม deploy
+

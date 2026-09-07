@@ -123,7 +123,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -132,3 +132,4 @@ related:
 - LSP, formatter และ linter ทำงานได้
 - Unit tests สำหรับ utilities รันได้
 - CI ตรวจ format และ tests อัตโนมัติ
+

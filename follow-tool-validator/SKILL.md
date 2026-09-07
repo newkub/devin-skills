@@ -102,7 +102,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -111,3 +111,4 @@ related:
 - Validation errors สม่ำเสมอและ readable
 - Tests ครอบคลุม happy path และ invalid cases
 - Business logic ไม่ซ้ำซ้อน validation
+

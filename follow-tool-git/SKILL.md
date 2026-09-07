@@ -98,7 +98,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -106,3 +106,4 @@ related:
 - ไม่ทำลาย history ของทีม
 - สามารถ trace ปัญหาได้ด้วย history tools
 - repo สะอาด อ่านง่าย
+

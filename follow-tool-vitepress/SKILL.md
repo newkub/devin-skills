@@ -231,7 +231,7 @@ export default {
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -247,3 +247,4 @@ export default {
 - `tsconfig.json` สำหรับ type checking ของ `.vitepress/` config
 - Project docs 4 sections (Project, Features, Review, Release) ด้วย Vue components
 - ข้อมูลจริงจาก project ผ่าน Bun shell scripts ไม่ hardcoded
+

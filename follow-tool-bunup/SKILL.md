@@ -96,7 +96,7 @@ project/
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -137,3 +137,4 @@ export default defineConfig({
   dts: true
 })
 ```
+

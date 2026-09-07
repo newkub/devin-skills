@@ -103,7 +103,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -112,3 +112,4 @@ related:
 - Surviving mutants ถูกระบุและแก้ไข
 - Tests มีคุณภาพดีขึ้น
 - CI รัน mutation testing อัตโนมัติ
+

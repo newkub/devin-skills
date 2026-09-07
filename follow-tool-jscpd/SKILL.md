@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน jscpd สำหร
 argument-hint: "[scope]"
 related:
   - refactor
-  - report-table
+  - report
   - use-scripts
 ---
 
@@ -44,7 +44,7 @@ related:
 2. จัดกลุ่ม duplicates ตาม file และ pattern
 3. จัดลำดับตามขนาด (lines, tokens) และความถี่ (จำนวน clones)
 4. แยก core logic duplication จาก boilerplate และ config patterns
-5. ทำ `/report-table` เพื่อสรุปผลเป็นตาราง
+5. ทำ `/report` เพื่อสรุปผลเป็นตาราง
 
 ### 4. Plan Refactor
 
@@ -96,7 +96,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 

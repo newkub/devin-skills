@@ -119,7 +119,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -128,3 +128,4 @@ related:
 - `dist/` มี bundled files และ `.d.ts`
 - Watch mode ทำงาน
 - Validation (`publint`, `attw`) ผ่าน
+

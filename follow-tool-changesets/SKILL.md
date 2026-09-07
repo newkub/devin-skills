@@ -132,7 +132,7 @@ jobs:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -140,3 +140,4 @@ jobs:
 - Config กำหนดค่าถูกต้อง
 - GitHub Actions workflow พร้อมใช้งาน
 - Versioning และ publishing ทำงานอัตโนมัติ
+

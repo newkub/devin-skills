@@ -8,7 +8,6 @@ related:
   - deep-review-codebase
   - deep-validate
   - report
-  - report-table
   - suggest-next-action
   - improve-architecture
 ---
@@ -41,7 +40,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติ
 2. ทำ `/deep-review` แล้วรัน review analyzers
 3. รัน `bun --filter tools-review-codebase review-codebase:json` เพื่อดึง review report พร้อม metrics
-4. ตรวจสอบแต่ละ dimension ตาม reference files ใน [references/index.md](references/index.md)
+4. ตรวจสอบแต่ละ dimension ตาม reference files ใน `references/`
 5. ทำ data flow analysis ตาม [references/data-flow.md](references/data-flow.md)
 6. ทำ cost impact analysis ตาม [references/cost-impact.md](references/cost-impact.md)
 7. คำนวณ architecture review score จาก [references/scoring.md](references/scoring.md)
@@ -92,7 +91,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
-1. ทำ `/report` พร้อม `/report-table`
+1. ทำ `/report` พร้อม `/report`
 2. สร้างตาราง findings: Category, Finding, Severity, Location, Recommendation
 3. สร้างตาราง Metrics Summary ตาม dimension พร้อม status indicators และ score
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
@@ -122,3 +121,4 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 - รายงาน recommended actions พร้อม priority
 - Architecture review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
+

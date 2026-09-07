@@ -17,6 +17,8 @@ related:
 
 ## Scope
 
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-agent-browser)
 ใช้สำหรับ browser automation, web testing, monitoring, debugging, WebMCP, MCP server และ accessibility audits ด้วย `agent-browser` CLI จาก Vercel Labs
 
 ## Execute
@@ -200,7 +202,7 @@ related:
 
 - [CLI reference](references/cli.md)
 - [WebMCP and MCP reference](references/webmcp.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -213,3 +215,4 @@ related:
 - Accessibility audit ทำงานได้
 - Errors ถูกจัดการและมี fallback options
 - Sessions ถูก cleanup หลังใช้งาน
+

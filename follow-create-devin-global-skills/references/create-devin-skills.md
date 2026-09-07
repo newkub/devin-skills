@@ -113,7 +113,7 @@
 - `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด โดยค่าเริ่มต้น skill ใหม่มีเฉพาะ `SKILL.md`
 - ถ้า skill มี dependencies, CLI, web, templates, หรือ examples คงทีจำเป็น → จึงเพิ่ม `references/`, `src/`, `templates/`, `examples/`, `scripts/`, `subskills/`, `guide/` หรือ `.devin/rules/` ตามความเหมาะสม แล้ว refactor file structure ให้ SRP ชัดเจน
 - ถ้ามี CLI หรือ web ต้องมี `src/` เป็น root ของ code. CLI entry point ที่ `src/presentation/cli.ts`. directory name ต้องตรงกับ `name` ใน frontmatter. ไฟล์ย่อยทุกไฟล์ไม่เกิน 250 บรรทัด
-- ถ้า `references/` มี nested directories → ใช้ `/follow-flat-files`. ถ้า flat ทั้ง skill package → ใช้ `/follow-flat-folders`
+- ถ้า `references/` มี nested directories → ใช้ `/flatten-directory`. ถ้า flat ทั้ง skill package → ใช้ `/flatten-directory`
 - ทุกไฟล์ใน file structure ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์รับผิดชอบหน้าที่เดียวชัดเจน ถ้าไฟล์รวมหลาย responsibilities → แยกเป็นไฟล์ย่อย
 
 ### 3. Safety
@@ -146,7 +146,7 @@
 
 ### 8. References
 
-- ถ้า skill มี `references/` → ต้องมี `references/index.md` ทีอ้างถึงไฟล์ย่อยทั้งหมดด้วยตาราง `| File | Responsibility |`
+- ถ้า skill มี `references/` → ทุกไฟล์ `.md` ต้องมีชื่อบ่งบอก content และไฟล์ทีสำคัญควรถูกอ้างถึงจาก `SKILL.md`
 - ต้องมี `references/website.md` พร้อม official `Website`, `Documentation`, `Repository`, `Package Registry` (ถ้ามี) และ description สั้นๆ
 - `references/cli.md` สำหรับ CLI tool ใช้ตาราง 4 คอลัมน์: `| commands | description | default | options |`
 - `references/apis/index.md` สำหรับ `follow-lib-*`, `follow-framework-*`, `follow-service-*`, `follow-create-*-plugins/extensions/bots` ทีมี dependencies ประกอบด้วย:
@@ -167,5 +167,6 @@
 - ถ้าต้องการ project rules จะมี `.devin/rules/` ที่ตรวจสอบผ่านแล้ว. references อัปเดตครบถ้วน. `AGENTS.md` อัปเดตผ่าน `/update-agents-md`
 - ทุก skill ที่มี dependencies ต้องมี `references/` ทีเขียนจริงโดย `/learn-from-web` ครบทุก dependency ไม่มี placeholder; ถ้าไม่มี dependencies ให้เริ่มต้นด้วย `SKILL.md` เพียงไฟล์เดียว
 - install commands ใช้ `bun add` เป็น default สำหรับ JS/TS projects และ `bun add -g` สำหรับ global CLI (ยกเว้น project ใช้ npm/pnpm/yarn เป็นหลัก)
+
 
 

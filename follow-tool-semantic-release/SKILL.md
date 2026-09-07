@@ -102,7 +102,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -110,3 +110,4 @@ related:
 - Changelog สร้างถูกต้อง
 - GitHub release และ npm publish ทำงาน
 - Release process ปลอดภัยและ reproducible
+

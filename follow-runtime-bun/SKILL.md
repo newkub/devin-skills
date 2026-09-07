@@ -92,7 +92,7 @@ related:
 - `bun install` แทน `npm install` หรือ `npm i` สำหรับ project dependencies (ยกเว้น project ใช้ npm เป็นหลัก)
 - สำหรับ global CLI ที่เป็น npm package ให้ใช้ `mise use -g npm:<package>` แทน `bun add -g`
 - ใช้ `bunfig.toml` สำหรับ config ที่เกี่ยวข้องกับ runtime ดู `references/bunfig.md`
-- ดู references ทั้งหมดเริ่มจาก `references/index.md`
+- ดูไฟล์ใน `references/` สำหรับรายละเอียดเฉพาะทาง
 - ใช้ Web-standard APIs เมื่อเป็นไปได้ สำหรับ Bun native APIs ใน code ดู `follow-lang-bun` และ `use-bun-native-api`
 - ตรวจ Node.js compatibility ก่อน migrate โดยอ้างอิง bun.com docs ดู `references/routes.md`
 - ดู bun.com docs เป็นแหล่งหลัก ดู `references/routes.md` สำหรับ route map
@@ -112,3 +112,4 @@ related:
 - `bunfig.toml` ตั้งค่าถูกต้อง
 - skill ผ่าน `/deep-validate` ไม่เกิน 250 บรรทัด ไม่มี TODO/MOCK/placeholder
 - references ครบถ้วน ไม่มี broken links
+

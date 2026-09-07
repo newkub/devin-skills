@@ -119,7 +119,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -128,3 +128,4 @@ related:
 - Addons ติดตั้งและทำงาน
 - Tests ผ่านใน CI
 - Static docs build และ deploy ได้
+

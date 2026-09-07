@@ -133,7 +133,7 @@ on_output = { filter = "connected", run = "echo 'worker ready'" }
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -142,3 +142,4 @@ on_output = { filter = "connected", run = "echo 'worker ready'" }
 - daemon auto-start/stop ผ่าน shell hook หรือ IDE integration
 - ready checks ช่วยให้รู้ว่า service พร้อม
 - lifecycle hooks ช่วย monitor และ cleanup
+

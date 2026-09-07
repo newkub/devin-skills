@@ -104,7 +104,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -113,3 +113,4 @@ related:
 - Config โหลดได้และ key bindings ทำงานตามตั้งค่า
 - SDK หรือ CLI ใช้ automation ได้
 - ไม่มี detached sessions ค้างหลังจากจบ workflow
+

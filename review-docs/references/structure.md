@@ -27,7 +27,7 @@
 - `docs/development/architecture.md` — architecture, conventions
 - `docs/development/workflows.md` — slash commands, scripts, CI/CD
 - `docs/development/testing.md` — test, lint, typecheck
-- `docs/references/index.md` — references summary
+- `docs/references/` — references summary
 - `docs/roadmap/index.md` — roadmap summary
 
 ## Monorepo Additional Pages
@@ -41,3 +41,4 @@
 - High: ขาด required pages สำคัญ (index, overview, features)
 - Medium: ขาด development pages, references
 - Low: ขาด monorepo workspace pages
+

@@ -105,7 +105,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -114,3 +114,4 @@ related:
 - CI รัน audit อัตโนมัติ
 - Budgets enforce ได้
 - Reports generate ใน format ทีต้องการ
+

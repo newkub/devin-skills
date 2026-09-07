@@ -100,7 +100,7 @@ related:
 ## References
 
 - [CLI reference](references/cli.md)
-- [References index](references/index.md)
+
 
 ## Expected Outcome
 
@@ -108,3 +108,4 @@ related:
 - Oxlint rules ทำงานผ่าน ESLint flat config
 - Scripts `lint` และ `lint:fix` พร้อมใช้งาน
 - สามารถใช้ร่วมกับ ESLint rules อื่นๆ ได้
+
