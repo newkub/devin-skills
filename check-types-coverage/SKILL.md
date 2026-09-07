@@ -5,7 +5,7 @@ argument-hint: "[path-or-threshold]"
 related:
   - use-astgrep
   - report-table
-  - improve
+  - review-then-fix
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ related:
 
 ### 3. Read-Only
 
-- ไม่แก้ code — ถ้าต้องการแก้ให้ทำ `/improve` หรือ `/refactor`
+- ไม่แก้ code — ถ้าต้องการแก้ให้ทำ `/review-then-fix` หรือ `/refactor`
 
 ## Expected Outcome
 

@@ -3,7 +3,6 @@ name: review-database
 description: ตรวจ schema, indexes, queries, N+1, migrations และ data integrity ของ database
 argument-hint: "[schema-or-scope]"
 related:
-  - improve-database
   - review-performance
   - run-drizzle-studio
   - follow-lib-drizzle
@@ -14,11 +13,11 @@ related:
 
 ## Goal
 
-ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity ก่อนแก้ไขด้วย `/improve-database`
+ตรวจสอบ database layer — schema design, indexes, queries, N+1 problems, migrations และ data integrity ก่อนแก้ไขตาม section `## Fix`
 
 ## Scope
 
-ใช้เมื่อต้อง review database ของ project: schema, relations, indexes, query patterns, migration safety — รองรับ ORM ทั่วไป (Drizzle, Prisma) และ raw SQL — ไม่แก้ไข schema หรือ data (ใช้ `/improve-database`)
+ใช้เมื่อต้อง review database ของ project: schema, relations, indexes, query patterns, migration safety — รองรับ ORM ทั่วไป (Drizzle, Prisma) และ raw SQL — ไม่แก้ไข schema หรือ data (แก้ไขตาม section `## Fix`)
 
 ## Execute
 
@@ -59,7 +58,7 @@ related:
 > Goal: สรุป findings พร้อม severity และ fix direction
 
 1. ทำ `/report-table` พร้อม columns: No., Area, Severity, Finding, Evidence, Fix
-2. ชี้ไป `/improve-database` สำหรับการแก้ไข
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้า findings เกี่ยวกับ performance → เชื่อม `/review-performance`
 
 ## Rules
@@ -83,8 +82,21 @@ related:
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-database, optimize-queries, optimize-search
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-database.md` — ปรับปรุง database: indexes, queries, migrations, connection pool, N+1 detection
+- `references/fix-optimize-queries.md` — แก้ slow queries, N+1 problems และ missing indexes ใน database layer
+- `references/fix-optimize-search.md` — Optimize search performance — indexes, query plans, facets และ relevance tuning
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม schema, indexes, queries, migrations, integrity
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน `/improve-database`
+- next action ชัดเจนผ่าน section `## Fix`

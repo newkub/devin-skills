@@ -1,7 +1,7 @@
 ---
 name: list-todo-md
-description: สแกนหา TODO.md ทั้งหมดใน current workspace และรายงาน summary/รายละเอียดในรูปแบบตาราง
-argument-hint: "[scope]"
+description: สแกนหา TODO.md ทั้งหมดใน workspace หรือ path/drive ทีระบุ แล้วรายงาน summary/รายละเอียดเป็นตาราง
+argument-hint: "[path | --drive]"
 related:
   - update-todo-md
   - report-table
@@ -13,33 +13,35 @@ related:
 
 ## Scope
 
-- ใช้ใน current working directory เท่านั้น
-- หาไฟล์ชื่อ `TODO.md` ทั้งหมดด้วย pattern `/TODO.md`
+- default: current workspace — ถ้าระบุ `path` หรือ `--drive` → สแกน path/drive นั้น (เช่น `D:\`)
+- หาไฟล์ชื่อ `TODO.md` ทั้งหมดแบบ recursive
 - ไม่แก้ไข ไม่เพิ่ม ไม่ลบไฟล์ใด ๆ
-- รองรับ checkbox รูปแบบ `- [ ]`, `- [x]`, `* [ ]`, `* [x]`
+- รองรับ checkbox รูปแบบ `- [ ]`, `- [x]`, `* [ ]`, `* [x]` และ table รูปแบบ `| Title | Description | Status | Priority | Created |`
 
 ## Execute
 
 ### 1. Discover TODO.md Files
 
-> Goal: หาไฟล์ `TODO.md` ทั้งหมดใน workspace
+> Goal: หาไฟล์ `TODO.md` ทั้งหมดใน scope ทีเลือก
 
-1. ใช้ `find_file_by_name` ด้วย pattern `/TODO.md` ใน current workspace
-2. เก็บ relative path ของแต่ละไฟล์
-3. เรียงลำดับตาม path ก่อนอ่าน
+1. ถ้าระบุ `--drive` → scope คือ `D:\`; ถ้าระบุ `path` → scope คือ path นั้น; ไม่ระบุ → current workspace
+2. ใช้ `find_file_by_name` ด้วย pattern `TODO.md` ใน scope ทีเลือก
+3. เก็บ relative path (ใน workspace) หรือ absolute path (นอก workspace) ของแต่ละไฟล์
+4. เรียงลำดับตาม path ก่อนอ่าน
+5. ถ้า permission denied บาง directory → ข้ามและ report เป็น warning
 
 ### 2. Read And Parse Each File
 
 > Goal: ดึงรายการ tasks จากแต่ละ TODO.md
 
 1. อ่านแต่ละไฟล์ `TODO.md`
-2. แยกแต่ละบรรทัดที่ตรง pattern checkbox:
-   - `^- \[([ xX])\]\s*(.+)$`
-   - `^\* \[([ xX])\]\s*(.+)$`
-3. จำแนก status:
-   - `[ ]`, `[ ]` → `pending`
-   - `[x]`, `[X]` → `done`
-4. นับจำนวน `total`, `pending`, `done`
+2. แยกแต่ละ task:
+   - รูปแบบ checkbox: `^- \[([ xX])\]\s*(.+)$` หรือ `^\* \[([ xX])\]\s*(.+)$`
+     - `[ ]` → `pending`
+     - `[x]`, `[X]` → `done`
+   - รูปแบบ table: แถวทีมี `| Title | Description | Status | Priority | Created |` — ใช้ column `Status`
+     - `pending`, `in_progress`, `done`, `completed`, `blocked` (เก็บตามตัวอักษร)
+3. นับจำนวน `total`, `pending`, `done`, `blocked`
 
 ### 3. Build Summary Table
 
@@ -71,7 +73,7 @@ related:
 
 1. แสดง summary table ก่อน
 2. แสดง detail table ต่อ
-3. ถ้าไม่พบไฟล์ `TODO.md` เลย ให้รายงานว่า "ไม่พบไฟล์ TODO.md ใน workspace นี้"
+3. ถ้าไม่พบไฟล์ `TODO.md` เลย ให้รายงานว่า "ไม่พบไฟล์ TODO.md ใน <scope> นี้"
 4. ใช้ภาษาไทยสำหรับคำอธิบาย แต่เก็บ text ของ task ต้นฉบับ
 
 ## Rules
@@ -84,7 +86,7 @@ related:
 ### 2. Path Format
 
 - ใช้ relative path จาก current workspace root
-- ไม่แสดง absolute path
+- ใช้ absolute path สำหรับ scope นอก workspace (เช่น `D:\project\TODO.md`)
 
 ### 3. Status Mapping
 
@@ -101,6 +103,8 @@ related:
 
 ## Expected Outcome
 
-- ตารางสรุปจำนวน `TODO.md` ใน workspace พร้อม counts
+- ตารางสรุปจำนวน `TODO.md` ใน scope พร้อม counts
 - ตารางรายละเอียด tasks ทั้งหมด
 - ไม่มีการแก้ไขไฟล์ใด ๆ
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: list-todo-md-in-drive-d)

@@ -6,7 +6,7 @@ related:
   - idea
   - save-to-devin-global-skills
   - list-devin-user-requests
-  - follow-create-devin-global-skills
+  - update-devin-global-skills
 ---
 
 ## Goal
@@ -77,4 +77,4 @@ related:
 
 - รายการ skill candidates ที่มี evidence จาก session จริง
 - แต่ละตัวพร้อม name, description, trigger, related
-- User เลือกสร้างต่อผ่าน `/follow-create-devin-global-skills` หรือ `/save-to-devin-global-skills`
+- User เลือกสร้างต่อผ่าน `/update-devin-global-skills` หรือ `/save-to-devin-global-skills`

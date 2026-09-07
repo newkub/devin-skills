@@ -3,7 +3,7 @@ name: check-rate-limiting
 description: ตรวจ endpoints ที่ขาด rate limiting — abuse, brute force และ cost exposure
 argument-hint: "[routes-or-framework]"
 related:
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -15,7 +15,7 @@ related:
 
 - ตรวจ route definitions และ middleware chain ของ framework ที่ใช้ (Elysia, Express, Hono, Next.js, Fastify)
 - ครอบคลุม: login/auth endpoints, password reset, expensive queries, file uploads, AI/LLM endpoints, public APIs
-- Read-only: รายงาน gaps — เพิ่ม rate limiting ผ่าน `/improve-security`
+- Read-only: รายงาน gaps — เพิ่ม rate limiting ผ่าน `/review-security`
 
 ## Execute
 
@@ -65,7 +65,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ rate limiting — รายงานแล้วทำ `/improve-security`
+- ไม่แก้ rate limiting — รายงานแล้วทำ `/review-security`
 - ไม่ยิง endpoints จริงเพื่อทดสอบ limits — ใช้ `/run-load-test` แยกถ้าต้องการ
 
 ### 3. Context Aware

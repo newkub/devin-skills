@@ -5,7 +5,7 @@ argument-hint: "[workflow-or-job]"
 related:
   - follow-tool-github-actions
   - watch-github-actions
-  - list-cicd-fails
+  - list-github-actions-fails
   - resolve-cicd
   - report-table
 ---
@@ -18,7 +18,7 @@ related:
 
 - ใช้เมื่อต้องการทดสอบ `.github/workflows/*.yml` โดยไม่ต้อง push
 - ครอบคลุมการรัน workflow เต็ม, job เดียว, event simulation และ secrets injection
-- ใช้ร่วมกับ `/list-cicd-fails` (ดู fails บน remote) และ `/watch-github-actions` (remote)
+- ใช้ร่วมกับ `/list-github-actions-fails` (ดู fails บน remote) และ `/watch-github-actions` (remote)
 
 ## Execute
 

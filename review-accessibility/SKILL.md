@@ -2,9 +2,7 @@
 name: review-accessibility
 description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, ARIA, contrast, screen reader
 argument-hint: "[url-or-route-or-component]"
-related:
-  - improve-accessibility
-  - review-uxui
+related:  - review-uxui
   - run-test-website-by-agent-browser
   - capture
   - follow-lib-agent-browser
@@ -18,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้กับ web apps, pages หรือ components ที่ต้องตรวจ a11y แยกจาก UX/UI ทั่วไป — ครอบคลุม WCAG 2.2 Level A/AA: perceivable, operable, understandable, robust — ไม่แก้ไข code (ใช้ `/improve-accessibility`)
+ใช้กับ web apps, pages หรือ components ที่ต้องตรวจ a11y แยกจาก UX/UI ทั่วไป — ครอบคลุม WCAG 2.2 Level A/AA: perceivable, operable, understandable, robust — ไม่แก้ไข code (แก้ไขตาม section `## Fix`)
 
 ## Execute
 
@@ -68,7 +66,7 @@ related:
 
 1. จัดกลุ่ม findings ตาม WCAG principle และ severity
 2. ทำ `/report-table` พร้อม columns: No., Rule, Severity, Element, Evidence, Fix
-3. ชี้ไป `/improve-accessibility` สำหรับการแก้ไข
+3. ชี้ไป section `## Fix` สำหรับการแก้ไข
 
 ## Rules
 
@@ -84,16 +82,27 @@ related:
 
 ### 3. No Fixes During Review
 
-- ไม่แก้ไข code ระหว่าง review — ส่งต่อ `/improve-accessibility`
+- ไม่แก้ไข code ระหว่าง review — ส่งต่อไปยัง section `## Fix`
 - ใช้ `/deep-review` ถ้าต้องการวิเคราะห์เชิงลึกเพิ่ม
 
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น
 - ใช้ /follow-lib-agent-browser ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-accessibility
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-accessibility.md` — แก้ไข accessibility findings ตาม WCAG — semantics, ARIA, keyboard, focus, contrast
 ## Expected Outcome
 
 - รายงาน a11y findings พร้อม WCAG rule, severity, element และ evidence
 - ครอบคลุม semantics, keyboard, ARIA, contrast, motion
 - ระบุ coverage ของ automated vs manual checks
-- next action ชัดเจนผ่าน `/improve-accessibility`
+- next action ชัดเจนผ่าน section `## Fix`

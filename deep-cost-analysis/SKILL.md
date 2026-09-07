@@ -3,8 +3,8 @@ name: deep-cost-analysis
 description: วิเคราะห์ cost drivers เชิงลึก — infra, APIs, data transfer และ scaling trajectory
 argument-hint: "[service-or-scope]"
 related:
-  - optimize-cost
-  - optimize-token-usage
+  - review-cost
+  - review-cost
   - report-table
 ---
 
@@ -15,7 +15,7 @@ related:
 ## Scope
 
 - ครอบคลุม: compute, storage, egress/transfer, third-party APIs (per-call pricing), LLM tokens, managed services, CI minutes
-- Analysis-first: ผลลัพธ์คือ cost model + recommendations — แก้ไขผ่าน `/optimize-cost`, `/optimize-token-usage`
+- Analysis-first: ผลลัพธ์คือ cost model + recommendations — แก้ไขผ่าน `/review-cost`, `/review-cost`
 - ใช้ข้อมูลจริงเมื่อมี (bills, usage metrics) — ระบุ assumptions ชัดเจนเมื่อ estimate
 
 ## Execute
@@ -50,7 +50,7 @@ related:
 
 1. เรียง levers ตาม savings potential: idle resources, oversized instances, missing caching, chatty APIs, uncompressed transfer, expensive service ที่มีทางเลือก
 2. เทียบกับ effort — quick wins vs architectural changes
-3. เชื่อมไป `/optimize-cost`, `/optimize-network`, `/optimize-token-usage` ตาม domain
+3. เชื่อมไป `/review-cost`, `/review-performance`, `/review-cost` ตาม domain
 
 ### 5. Report
 

@@ -3,7 +3,7 @@ name: verify-backup-restore
 description: ทดสอบว่า backup ล่าสุด restore ได้จริง — ไม่ใช่แค่มีไฟล์ backup อยู่
 argument-hint: "[backup-source]"
 related:
-  - improve-stability
+  - review-stability
   - report-table
 ---
 
@@ -74,7 +74,7 @@ related:
 ### 3. Non-Destructive
 
 - cleanup test target หลังจบ — ไม่ทิ้ง restored data ค้าง
-- ไม่แก้ backup scripts — ถ้าพังให้รายงานและทำ `/improve-stability`
+- ไม่แก้ backup scripts — ถ้าพังให้รายงานและทำ `/review-stability`
 
 ## Expected Outcome
 

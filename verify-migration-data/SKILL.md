@@ -4,7 +4,7 @@ description: เทียบข้อมูลก่อน-หลัง migratio
 argument-hint: "[table-or-migration]"
 related:
   - check-migrations
-  - improve-migration
+  - review-migration
   - report-before-after
 ---
 
@@ -16,7 +16,7 @@ related:
 
 - ใช้หลัง apply migration หรือ data backfill บน staging/copy ก่อน production
 - ครอบคลุม: row counts, aggregate checksums, key columns integrity, constraint violations, orphaned rows
-- Read-only ต่อข้อมูลจริง: ตรวจสอบอย่างเดียว — แก้ไขผ่าน `/improve-migration`
+- Read-only ต่อข้อมูลจริง: ตรวจสอบอย่างเดียว — แก้ไขผ่าน `/review-migration`
 
 ## Execute
 
@@ -74,7 +74,7 @@ related:
 
 ### 3. Read-Only
 
-- ไม่แก้ข้อมูลระหว่าง verify — mismatch ให้รายงานแล้วทำ `/improve-migration`
+- ไม่แก้ข้อมูลระหว่าง verify — mismatch ให้รายงานแล้วทำ `/review-migration`
 - queries ต้อง read-only เสมอ
 
 ## Expected Outcome

@@ -89,4 +89,4 @@ Capture ภาพแต่ละ UI component แยกจากกัน เพ
 - มีภาพของแต่ละ component แยกไฟล์
 - รองรับ variants และ states ต่าง ๆ
 - บันทึกลง `public/screenshots/components/`
-- พร้อมใช้กับ `/improve-uxui`, `/review-uxui`, `/update-readme-md`
+- พร้อมใช้กับ `/review-uxui`, `/review-uxui`, `/update-readme-md`

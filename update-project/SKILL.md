@@ -27,6 +27,8 @@ related:
 
 ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies, runtime, tools หรือ versioned config ใดๆ → ใช้ `/update-version-to-latest` ก่อน update config อื่น
 
+Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → ใช้ `/deep-update-project`
+
 ## Execute
 
 ### 1. Check Latest Git Log

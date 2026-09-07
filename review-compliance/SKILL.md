@@ -73,6 +73,17 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 - ดูรายละเอียด severity, formatting, และ independence rules ใน `references/rules.md`
 - รายงานผลด้วย `/report-table` และ `/suggest-next-action`
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-compliance
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-compliance.md` — แก้ findings จาก review-compliance ครอบคลุม licenses, privacy, audit และ data handling
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก compliance section

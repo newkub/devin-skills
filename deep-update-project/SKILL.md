@@ -28,6 +28,8 @@ related:
 
 ใช้หลัง ship ทุก workspace หรือก่อน release เพื่อ sync root project ให้สะท้อนสถานะล่าสุด — ไม่แก้ไข workspace source code
 
+Boundary: comprehensive root sync พร้อม deep analysis baseline — ถ้าต้องการ quick sync หลัง ship → ใช้ `/update-project`
+
 ## Execute
 
 Step dependencies: แต่ละ step ขึ้นกับ step ก่อนหน้าตามลำดับ

@@ -15,7 +15,7 @@ related:
 
 - ตรวจ POST/PUT/PATCH/DELETE endpoints และ async handlers (webhooks, queues, consumers)
 - ครอบคลุม: idempotency keys, natural dedup keys, unique constraints, at-least-once delivery handlers, retry-unsafe side effects
-- Read-only: รายงาน gaps — แก้ไขผ่าน `/review-api` remediation หรือ `/improve`
+- Read-only: รายงาน gaps — แก้ไขผ่าน `/review-api` remediation หรือ `/review-then-fix`
 
 ## Execute
 

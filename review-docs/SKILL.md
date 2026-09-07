@@ -10,7 +10,6 @@ related:
   - update-docs
   - review-features
   - review-readme-md
-  - improve-docs
 ---
 
 ## Goal
@@ -110,9 +109,18 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - ห้ามใช้ `**` (bold markers)
 - ใช้ backticks สำหรับ emphasis
 - รายงานเป็นตารางด้วย `/report-table`
+## Fix
 
-- ใช้ /improve-docs ถ้าจำเป็น
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
 
+Merged from: improve-docs, improve-onboarding
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-docs.md` — แก้ไข documentation findings จาก review docs family ให้ docs ตรงกับ code จริง
+- `references/fix-improve-onboarding.md` — ปรับ onboarding experience ให้ dev ใหม่ setup project ได้เร็วผ่าน docs และ automation
 ## Expected Outcome
 
 - รายงาน Docs Review พร้อม score และ grade

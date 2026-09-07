@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - run-check
   - review-performance
-  - improve
+  - review-then-fix
 ---
 
 ## Goal
@@ -63,7 +63,7 @@ related:
 - focus หา bottleneck ไม่ใช่แก้ไข
 - ระบุ metric ทีวัดได้
 - ใช้ /run-check ถ้าจำเป็น
-- ใช้ /improve ถ้าจำเป็น
+- ใช้ /review-then-fix ถ้าจำเป็น
 
 ## Expected Outcome
 - รายการ bottlenecks พร้อม metric

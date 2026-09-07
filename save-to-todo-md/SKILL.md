@@ -18,6 +18,7 @@ related:
 
 - ใช้เมื่อ: task จบแต่เหลืองานค้าง, session ใกล้หมด, งาน blocked รอ input, หรือ user สั่งเก็บงานไว้ทำต่อ
 - เขียนลง `TODO.md` ที่ project root — ต่างจาก `/update-todo-md` ที่รับ request เดียว, skill นี้เก็บ remaining work ทั้งชุดจาก context ปัจจุบัน
+- ถ้าระบุ `--drive` → เขียนลง `D:\TODO.md` (drive-level inbox) โดยทำ `/enhance-prompt` กับเนื้อหาก่อน และ stop ถ้า title ซ้ำ
 - ไม่ implement งาน — เก็บเป็น tracked items เท่านั้น
 
 ## Execute
@@ -51,15 +52,17 @@ related:
 
 > Goal: append items ลง TODO.md โดยไม่ทับของเดิม
 
-1. อ่าน `TODO.md` ถ้ามี — เก็บ structure เดิมไว้
-2. ถ้ายังไม่มี → สร้างพร้อม header ตาม convention ของ `/update-todo-md`:
+1. เลือก target: default = `TODO.md` ที่ project root; ถ้าระบุ `--drive` → `D:\TODO.md`
+2. ถ้าโหมด `--drive` → ทำ `/enhance-prompt` กับเนื้อหาให้เป็น numbered list ก่อน และ stop ถ้าพบ title ซ้ำใน `D:\TODO.md`
+3. อ่าน `TODO.md` เป้าหมายถ้ามี — เก็บ structure เดิมไว้
+4. ถ้ายังไม่มี → สร้างพร้อม header ตาม convention ของ `/update-todo-md`:
    ```
    | Title | Description | Status | Priority | Created |
    |---|---|---|---|---|
    ```
-3. Append rows ใหม่ — ห้ามเขียนทับ items เดิม
-4. Format: `| <title> | <description + why pending> | pending | <priority> | <YYYYMMDD> |`
-5. ถ้ามีหลาย items ที่เกี่ยวกัน → จัดกลุ่มด้วย prefix เดียวกันใน title
+5. Append rows ใหม่ — ห้ามเขียนทับ items เดิม
+6. Format: `| <title> | <description + why pending> | pending | <priority> | <YYYYMMDD> |`
+7. ถ้ามีหลาย items ที่เกี่ยวกัน → จัดกลุ่มด้วย prefix เดียวกันใน title
 
 ### 5. Dedupe And Report
 
@@ -91,3 +94,5 @@ related:
 - งานค้างทั้งหมดถูกเก็บใน `TODO.md` เป็น tracked items พร้อม priority และเหตุ
 - ไม่มี items ซ้ำกับที่มีอยู่
 - Session หน้า resume ได้จาก TODO.md ผ่าน `/list-todo-md` และ `/implement-todo-md`
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: save-to-todo-in-root-drive-d)

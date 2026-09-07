@@ -6,7 +6,7 @@ related:
   - review-bundle
   - run-build
   - review-security
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -18,7 +18,7 @@ related:
 
 - ตรวจ output directory หลัง build (`dist/`, `build/`, `.output/`, `out/`) และ deployed URL
 - ครอบคลุม: `.map` files, `//# sourceMappingURL=` comments, hidden sourcemaps (sourcemap ไม่ link แต่อัปโหลด), CSS sourcemaps
-- Read-only: รายงานอย่างเดียว — แก้ไขผ่าน `/improve-security`
+- Read-only: รายงานอย่างเดียว — แก้ไขผ่าน `/review-security`
 
 ## Execute
 
@@ -62,7 +62,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ bundler config หรือลบไฟล์ — แนะนำผ่าน `/improve-security`
+- ไม่แก้ bundler config หรือลบไฟล์ — แนะนำผ่าน `/review-security`
 
 ### 3. Context Aware
 
@@ -70,7 +70,7 @@ related:
 
 - ใช้ /review-security สำหรับ security audit ภาพรวม
 - ใช้ /review-bundle สำหรับ bundle analysis
-- ใช้ /improve-security เมื่อต้องแก้ไข
+- ใช้ /review-security เมื่อต้องแก้ไข
 
 ## Expected Outcome
 

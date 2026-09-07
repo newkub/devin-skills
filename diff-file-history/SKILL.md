@@ -16,6 +16,7 @@ related:
 - ตรวจ file เดียวข้าม commits: change frequency, growth/shrink, major rewrites, regression points
 - ครอบคลุม: per-commit diffs, line counts over time, blame patterns, rename history
 - Read-only: วิเคราะห์จาก git — ไม่แก้ไฟล์หรือ history
+- Boundary: วิเคราะห์ evolution/patterns เท่านั้น — หา commit ที่ตรงเงื่อนไข → `/check-git-logs`; interactive viewer → `/git-file-history`
 
 ## Execute
 

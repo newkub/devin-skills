@@ -4,7 +4,7 @@ description: รัน mutation testing วัดว่า test suite จับ 
 argument-hint: "[path-or-module]"
 related:
   - follow-tool-stryker-mutator
-  - improve-test-coverage
+  - review-test
   - report-table
 ---
 
@@ -50,7 +50,7 @@ related:
 
 1. ใช้ `/report-table`: `No.`, `File`, `Mutants`, `Killed`, `Survived`, `Score %`, `Weakest Area`
 2. รายงาน top surviving mutants พร้อม suggested test cases
-3. แนะนำ `/improve-test-coverage` สำหรับ files ที่ score ต่ำ
+3. แนะนำ `/review-test` สำหรับ files ที่ score ต่ำ
 
 ## Rules
 

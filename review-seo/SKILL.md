@@ -126,6 +126,17 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 - ใช้ /review-frontend ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-seo
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-seo.md` — ตรวจและปรับปรุง SEO: meta tags, Open Graph, sitemap, robots, structured data
 ## Expected Outcome
 - รายงาน SEO findings ครอบคลุมทุก dimension
 - Review score ต่อ dimension และ overall

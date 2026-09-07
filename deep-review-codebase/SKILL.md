@@ -4,7 +4,7 @@ description: รัน review-* ครบทุก domain แล้วราย�
 argument-hint: "[path-or-target]"
 related:
   - run-review
-  - improve-review-cli
+  - update-review-cli
   - deep-review
   - create-report-in-dot-devin
   - review-quality
@@ -21,7 +21,7 @@ related:
 
 ## Goal
 
-ใช้ `tools/review-codebase` CLI รัน review แบบครอบคลุมทุกมิติของ codebase แล้ววิเคราะห์ผล จัดลำดับ findings และส่งต่อไปยัง review/improve ทีเหมาะสม
+ใช้ `tools/review-codebase` CLI รัน review แบบครอบคลุมทุกมิติของ codebase แล้ววิเคราะห์ผล จัดลำดับ findings และส่งต่อไปยัง review/review-then-fix ทีเหมาะสม
 
 ## Scope
 
@@ -36,7 +36,7 @@ related:
 > Goal: ตรวจสอบให้ `tools/review-codebase` พร้อมรัน
 
 1. ตรวจสอบว่า `tools/review-codebase/package.json` และ entry point มีอยู่
-2. ถ้าไม่มี → ทำ `/improve-review-cli` เพื่อสร้าง CLI ก่อน
+2. ถ้าไม่มี → ทำ `/update-review-cli` เพื่อสร้าง CLI ก่อน
 3. รัน `bun --filter tools-review-codebase lint` และ `typecheck`
 4. รัน `bun --filter tools-review-codebase review-codebase --help` เพื่อยืนยันว่า CLI ใช้งานได้
 5. ถ้า CLI ติดตั้ง/รันไม่ได้ → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
@@ -57,7 +57,7 @@ related:
 1. ตรวจว่า categories ≥ 60 ตาม `run-review` 5 domains
 2. ตรวจว่า `score` / `grade` ถูกสร้างครบ
 3. ตรวจว่า findings มี `severity`, `evidence`, `action` ครบ
-4. ถ้า `falsePositiveRate > 20%` หรือ `analyzerErrors > 0` → ส่งต่อ `/improve-review-cli` ก่อนวิเคราะห์
+4. ถ้า `falsePositiveRate > 20%` หรือ `analyzerErrors > 0` → ส่งต่อ `/update-review-cli` ก่อนวิเคราะห์
 
 ### 4. Analyze By Domain
 
@@ -127,7 +127,7 @@ related:
 
 ### 4. Loop Limit
 
-- ถ้า CLI รันไม่ผ่าน วนกลับไป `/improve-review-cli` สูงสุด 3 รอบ
+- ถ้า CLI รันไม่ผ่าน วนกลับไป `/update-review-cli` สูงสุด 3 รอบ
 - ถ้า `score < 70` หรือ `grade D/F` หลัง 3 รอบ → stop และ report
 
 ### 5. Safety
@@ -141,6 +141,6 @@ related:
 - `tools/review-codebase` CLI รันได้และ produce `reports/review-report.json`
 - Review ครอบคลุม 5 domains และ 60+ categories
 - Findings ถูกวิเคราะห์ตาม reference ที่ถูกต้อง
-- ทุก high-priority finding ถูก route ไปยัง review/improve skill ทีเหมาะสม
+- ทุก high-priority finding ถูก route ไปยัง review/review-then-fix skill ทีเหมาะสม
 - รายงานสรุปพร้อม table, score, และ next action
 

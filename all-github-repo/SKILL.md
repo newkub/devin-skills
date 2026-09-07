@@ -15,8 +15,6 @@ triggers:
 related:
   - list-github-repo
   - open-github
-  - open-github
-  - open-github
   - view-repo
   - list-github-project
   - list-github-star
@@ -33,7 +31,7 @@ related:
 
 ใช้ `gh` CLI ดึง repo จาก user และแต่ละ org แล้วรวมเป้นตารางเดียว เรียงตาม updatedAt ล่าสุด
 
-ดูเพิ่มเติม: /list-github-repo, /open-github, /open-github, /open-github, /view-repo, /list-github-project, /list-github-star, /search-in-github-star
+ดูเพิ่มเติม: /list-github-repo, /open-github, /view-repo, /list-github-project, /list-github-star, /search-in-github-star
 
 ## Execute
 

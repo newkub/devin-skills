@@ -9,7 +9,7 @@ related:
   - update-references
   - update-config
   - refactor-to-single-responsibility
-  - improve
+  - review-then-fix
   - delete-projects
   - resolve-errors
   - report
@@ -100,7 +100,7 @@ related:
 - ใช้ /cleanup-files-in-project ถ้าจำเป็น
 - ใช้ /update-config ถ้าจำเป็น
 - ใช้ /refactor-to-single-responsibility ถ้าจำเป็น
-- ใช้ /improve ถ้าจำเป็น
+- ใช้ /review-then-fix ถ้าจำเป็น
 - ใช้ /delete-projects ถ้าจำเป็น
 ## Expected Outcome
 

@@ -44,7 +44,7 @@
 
 1. Delivery logs/metrics: success rate, latency, retry counts
 2. Correlation: event IDs traceable ข้าม sender/receiver
-3. Dashboard/alerting สำหรับ delivery health — ทำ `/improve-observability` ถ้าขาด
+3. Dashboard/alerting สำหรับ delivery health — ทำ `/review-observability` ถ้าขาด
 
 ### 5. Report
 

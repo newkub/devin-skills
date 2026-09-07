@@ -107,4 +107,4 @@ Capture ภาพหน้าจอของ app ครอบคลุม routes
 - `public/screenshots/` มีภาพของทุก routes/components/views สำคัญ
 - มี `tools/capture-screenshots` script สำหรับ rerun
 - รายงาน captured files พร้อม paths
-- พร้อมใช้กับ `/improve-uxui` หรือ `/review-uxui`
+- พร้อมใช้กับ `/review-uxui` หรือ `/review-uxui`

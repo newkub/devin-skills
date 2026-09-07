@@ -10,7 +10,7 @@ related:
   - run-verify
   - suggest-next-action
   - review-quality
-  - improve-test-coverage
+  - review-test
 ---
 
 ## Goal
@@ -70,7 +70,7 @@ related:
 3. ตรวจสอบ `functions` coverage ถึง 100%
 4. ตรวจสอบ `statements` coverage ถึง 100%
 5. ถ้า coverage ถึง 100% ทุก category → ไป Report
-6. ถ้า coverage ไม่ถึง 100% → ทำ `/improve-test-coverage` วิเคราะห์ gaps เติม tests ทีขาด
+6. ถ้า coverage ไม่ถึง 100% → ทำ `/review-test` วิเคราะห์ gaps เติม tests ทีขาด
 7. ถ้าเขียน tests แล้ว → กลับไป Step 3 Run Coverage Analysis ใหม่
 8. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report พร้อม remaining gaps
 

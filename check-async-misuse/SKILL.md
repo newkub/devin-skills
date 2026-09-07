@@ -6,7 +6,7 @@ related:
   - follow-asynchronous
   - use-astgrep
   - run-lint
-  - improve-error-handling
+  - review-stability
   - report-table
 ---
 
@@ -66,7 +66,7 @@ related:
 
 - ใช้ /follow-asynchronous สำหรับ best practices
 - ใช้ /run-lint รัน linter ที่มีอยู่
-- ใช้ /improve-error-handling สำหรับ error handling gaps
+- ใช้ /review-stability สำหรับ error handling gaps
 
 ## Expected Outcome
 

@@ -1,9 +1,8 @@
 ---
 name: deep-optimize
-description: Optimize codebase แบบลึก ครอบคลุมหลายมิติ พร้อม implement และ validate
+description: Optimize codebase ครบทุก layer — frontend, API, DB, bundle, SEO, a11y, cost — dispatch ไป optimize-*/improve-* ตาม domain พร้อม validate
 argument-hint: "<target>"
 allowed-tools:
----
   - read
   - write
   - edit
@@ -22,9 +21,14 @@ related:
   - review-redundancy
   - check-bottlenecks
   - check-unused
-  - check-unused
   - deep-refactor
   - deep-analyze
+  - review-bundle
+  - review-assets
+  - review-performance
+  - review-dependencies
+  - review-api
+  - review-database
   - resolve-errors
   - run-verify
   - run-build
@@ -34,54 +38,74 @@ related:
 
 ## Goal
 
-Optimize codebase แบบละเอียด ครอบคลุม performance, bundle size, dead code, unused dependencies, redundant logic, architecture และ implement การเปลี่ยนแปลงทีจำเป็น
+Optimize codebase แบบละเอียดครบทุก layer — performance, bundle, dead code, dependencies, architecture, SEO, accessibility, API, database, network, cost — โดย dispatch ไปยัง `optimize-*`/`improve-*` skill ที่ตรง domain แล้ว implement และ validate
+
+รวม scope จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: optimize-codebase-everything, improve-codebase-everything)
 
 ## Scope
 
-ใช้เมื่อ optimize ทั่วไปไม่เพียงพอ หรือต้องการ optimize หลายมิติพร้อมกัน
+ใช้เมื่อ optimize ทั่วไปไม่เพียงพอ หรือต้องการ optimize หลายมิติพร้อมกัน รองรับ web project, monorepo, platform ที่มี frontend, backend, API, database
 
 ## Execute
 
 ### 1. Define Scope
 
 > Goal: Define Scope
+
 1. รับ `target` จาก argument
-2. ตรวจ ecosystem, build system, test setup
+2. ตรวจ ecosystem, build system, test setup (`package.json`, `vite.config.ts`, `wrangler.jsonc`, `turbo.json`, `apps/*`, `packages/*`)
 3. ระบุ goals: faster build, smaller bundle, less dead code, better structure
-4. ถาม user ถ้า scope ไม่ชัด
+4. ทำ `/run-build` เพื่อสร้าง production artifacts สำหรับ baseline
+5. ถาม user ถ้า scope ไม่ชัด
 
 ### 2. Deep Analysis
 
 > Goal: Deep Analysis
+
 1. ทำ `/deep-analyze` บน target
 2. ทำ `/review-performance` เพื่อหา hotspots
 3. ทำ `/review-redundancy` เพื่อหา duplicate logic
-4. ทำ `/check-unused`
-5. ทำ `/check-unused`
-6. ทำ `/check-bottlenecks`
-7. วิเคราะห์ bundle / build output ถ้ามี
+4. ทำ `/check-unused` และ `/check-bottlenecks`
+5. วิเคราะห์ bundle / build output ถ้ามี
 
 ### 3. Plan Optimizations
 
 > Goal: วางแผน Optimizations
+
 1. จัดลำดับ optimizations ตาม impact และ effort
 2. แยก quick wins กับ major changes
 3. ระบุ public API ทีอาจเปลี่ยน
 4. สร้าง plan แล้วทำ `/report-plan` เพื่อ user confirm
 
-### 4. Implement
+### 4. Implement By Domain
 
-> Goal: implement Implement
-1. ลบ dead code และ unused dependencies
-2. Refactor hotspots ด้วย `/deep-refactor` ถ้าจำเป็น
-3. Optimize bundle: code splitting, tree shaking, dynamic imports
-4. Optimize performance: memoization, lazy loading, query batching
-5. รวม redundant code
-6. ถ้าต้องเปลี่ยน architecture → ถาม user ก่อน
+> Goal: implement แยกตาม domain ผ่าน sub-skills
+
+Dispatch ตาม layer — ทำทีละ layer แล้ว verify ก่อนไปต่อ:
+
+| No. | Domain | Skill |
+|-----|--------|-------|
+| 1 | Bundle / code splitting / tree-shaking | `/review-bundle` |
+| 2 | Images, fonts, media | `/review-assets` |
+| 3 | Rendering / re-renders / hydration | `/review-frontend`, `/review-frontend` |
+| 4 | CWV / long tasks / third-party scripts | `/review-performance` |
+| 5 | Network / caching / CDN | `/review-performance` |
+| 6 | Memory leaks / GC pressure | `/review-performance` |
+| 7 | Heavy หรือ duplicate deps | `/review-dependencies` |
+| 8 | Algorithms / hot paths | `/review-algorithm` |
+| 9 | Infrastructure cost | `/review-cost` |
+| 10 | SEO / meta / structured data | `/review-seo` |
+| 11 | Accessibility / UX | `/review-uxui` |
+| 12 | API endpoints | `/review-api` |
+| 13 | Data validation | `/review-data-validation` |
+| 14 | Database / queries / indexes | `/review-database` |
+| 15 | Test coverage | `/review-test` |
+| 16 | Dead code / redundant logic | ลบและรวมเอง หรือ `/deep-refactor` ถ้าใหญ่ |
 
 ### 5. Validate
 
-> Goal: ยื่นยัน Validate
+> Goal: Validate
+
 1. ทำ `/run-verify`
 2. ทำ `/run-test-all` ถ้ามี
 3. ทำ `/run-build` หรือ `/deep-build` ถ้ามี build
@@ -91,13 +115,15 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 ### 6. Measure
 
 > Goal: Measure
+
 1. บันทึก before/after metrics
-2. วัด bundle size, build time, test time, dead code count
+2. วัด bundle size, build time, test time, dead code count, API latency, query time
 3. ทำ `/report-before-after`
 
 ### 7. Report
 
-> Goal: รายงาน Report
+> Goal: Report
+
 1. สรุป optimizations ทีทำ
 2. บอก metrics ก่อน-หลัง
 3. ระบุ items ทีค้างและ recommendations
@@ -107,14 +133,16 @@ Optimize codebase แบบละเอียด ครอบคลุม perfor
 
 - ต้องมี user confirmation ก่อนเปลี่ยน public API หรือ architecture
 - ไม่ลบ code โดยไม่ตรวจ consumers
-- ทุก major change ต้องมี validation
+- ทุก major change ต้องมี validation — ผ่าน build, typecheck, tests
+- ไม่ลด security หรือ accessibility เพื่อ performance
 - ถ้า codebase ใหญ่ ให้ใช้ subagents แยกตาม module/package
 - ไม่เพิ่ม dependency ใหม่ถ้าไม่จำเป็น
 - เก็บ evidence ของ metrics ก่อนและหลัง
+- หลีกเลี่ยง over-engineering — แก้เฉพาะจุดที่ metrics บ่งชี้
 
 ## Expected Outcome
 
-- Codebase ถูก optimize หลายมิติ
-- Metrics before/after ชัดเจน
-- Validation ผ่าน
+- Codebase ถูก optimize ครบทุก layer ที่เกี่ยวข้อง
+- Metrics before/after ชัดเจน (bundle, build time, latency, query time, cost)
+- Validation ผ่าน ไม่มี regression
 - User ทราบสิ่งทีเปลี่ยนและผลกระทบ

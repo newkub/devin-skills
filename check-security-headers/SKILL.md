@@ -5,7 +5,7 @@ argument-hint: "[url-or-config]"
 related:
   - review-security
   - analyze-attack-surface
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -17,7 +17,7 @@ related:
 
 - ใช้กับ running app (local หรือ deployed URL) และ config files ที่ set headers (`next.config.*`, `wrangler.toml`, `nginx.conf`, `vercel.json`, middleware)
 - ครอบคลุม: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Frame-Options`/`frame-ancestors`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-*` และ `Set-Cookie` flags
-- Read-only: ตรวจและรายงาน — แก้ไขให้ทำ `/improve-security`
+- Read-only: ตรวจและรายงาน — แก้ไขให้ทำ `/review-security`
 
 ## Execute
 
@@ -66,7 +66,7 @@ related:
 1. ทำ `/report-table` คอลัมน์: `No.`, `Header`, `Expected`, `Actual`, `Severity`, `Fix`
 2. Severity: `critical` (CSP/HSTS ขาด), `warning`, `info`
 3. สรุป overall grade (A-F ตาม coverage)
-4. ส่งต่อ `/improve-security` สำหรับการแก้ไข
+4. ส่งต่อ `/review-security` สำหรับการแก้ไข
 
 ## Rules
 
@@ -77,7 +77,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ config หรือ code — ส่งต่อ `/improve-security`
+- ไม่แก้ config หรือ code — ส่งต่อ `/review-security`
 - ไม่ fuzz หรือ attack target — audit headers เท่านั้น
 
 ### 3. Context Aware
@@ -86,7 +86,7 @@ related:
 - ระบุเมื่อ header ถูก set โดย platform (Cloudflare/Vercel) ไม่ใช่ app
 
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /improve-security ถ้าจำเป็น
+- ใช้ /review-security ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 
 ## Expected Outcome

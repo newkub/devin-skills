@@ -4,6 +4,8 @@ description: เลือกและ implement algorithms ตามปัญห
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
+  - review-algorithm
+  - review-algorithm
   - review-quality
   - ask-me
 ---
@@ -14,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องแก้ปัญหาด้วย algorithm หรือ optimize existing algorithm
+ใช้เมื่อต้องเลือกหรือ implement algorithm ใหม่ — ถ้าจะประเมินของเดิมใช้ `/review-algorithm` ถ้าจะปรับของเดิมใช้ `/review-algorithm`
 
 ## Execute
 

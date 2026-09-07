@@ -3,7 +3,7 @@ name: review-by-stakeholder
 description: รวบรวม evidence, screenshots, context แล้วขอ feedback จาก stakeholder เพื่อ prioritize การปรับปรุง
 argument-hint: "[area-or-question]"
 related:
-  - improve-uxui
+  - review-uxui
   - capture
   - report-table
   - ask-me
@@ -24,7 +24,7 @@ related:
 
 > Goal: มี evidence ครบถ้วนสำหรับ review
 
-1. ใช้ screenshots จาก `/capture` หรือ `/improve-uxui`
+1. ใช้ screenshots จาก `/capture` หรือ `/review-uxui`
 2. ใช้ `agent-browser snapshot` ถ้าจำเป็น
 3. รวบรวม URLs, routes, components, states
 4. ระบุ user stories หรือ acceptance criteria
@@ -69,7 +69,7 @@ related:
 > Goal: แนะนำ action ถัดไป
 
 1. ทำ `/suggest-next-action`
-2. แนะนำ skill ทีเหมาะสม เช่น `/improve-uxui`, `/refactor`, `/restructure`
+2. แนะนำ skill ทีเหมาะสม เช่น `/review-uxui`, `/refactor`, `/restructure`
 3. บันทึก next steps
 
 ## Rules

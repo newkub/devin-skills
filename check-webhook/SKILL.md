@@ -3,7 +3,7 @@ name: check-webhook
 description: ตรวจ webhook endpoints ด้าน security (signature, replay, auth) และ delivery (retries, dead-letter)
 argument-hint: "[endpoint-or-provider] [--security|--delivery]"
 related:
-  - improve-auth
+  - review-auth
   - report-table
 
 ---
@@ -17,7 +17,7 @@ related:
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-webhook-security, check-webhook-delivery)
 - ใช้กับ webhook endpoints ของ providers เช่น Stripe, GitHub, LINE, Slack
 - `--security` → เช็คเฉพาะด้าน security; `--delivery` → เช็คเฉพาะ delivery; ไม่ระบุ → เช็คทั้งสอง
-- Read-only: รายงาน — แก้ผ่าน `/improve-auth` หรือ `/improve-*` ที่เกี่ยวข้อง
+- Read-only: รายงาน — แก้ผ่าน `/review-auth` หรือ `/improve-*` ที่เกี่ยวข้อง
 
 ## Execute
 

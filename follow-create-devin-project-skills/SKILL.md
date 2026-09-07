@@ -4,7 +4,7 @@ description: มาตรฐานการสร้าง project-local Devin s
 argument-hint: "[skill-name...]"
 related:
   - update-project-skills
-  - follow-create-devin-global-skills
+  - update-devin-global-skills
   - update-dot-devin
   - update-devin-project-rules
   - update-agents-md
@@ -19,9 +19,9 @@ related:
 
 ## Scope
 
-ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/follow-create-devin-global-skills` แทน)
+ใช้เป็น reference หลักเมื่อสร้าง skill ใหม่ใน `.devin/skills/` ของ project หรือ workspace ใน monorepo — ไม่ใช้กับ global skills ใน `%APPDATA%\devin\skills` (ใช้ `/update-devin-global-skills` แทน)
 
-ดูเพิ่มเติม: /update-project-skills, /follow-create-devin-global-skills, /update-devin-project-rules, /update-agents-md
+ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
 ## Execute
 
@@ -31,7 +31,7 @@ related:
 
 1. รับ `skill-name` จาก argument หรือ context — ถ้าไม่ชัด → ทำ `/ask-me`
 2. ระบุ target: root `.devin/skills/` หรือ `apps/<workspace>/.devin/skills/`
-3. ตรวจว่า skill นั้นเฉพาะ project จริง — ถ้าใช้ได้ทั่วไป → ส่งต่อ `/follow-create-devin-global-skills`
+3. ตรวจว่า skill นั้นเฉพาะ project จริง — ถ้าใช้ได้ทั่วไป → ส่งต่อ `/update-devin-global-skills`
 4. ทำ `/scan-codebase` เพื่อหา workflow/pattern เฉพาะ project ที่ skill จะครอบคลุม
 
 ### 2. Check Duplicates And Conventions
@@ -86,7 +86,7 @@ related:
 
 ### 1. Project-Local Only
 
-- สร้างเฉพาะ skills ที่ใช้เฉพาะ project — skill ทั่วไปใช้ `/follow-create-devin-global-skills`
+- สร้างเฉพาะ skills ที่ใช้เฉพาะ project — skill ทั่วไปใช้ `/update-devin-global-skills`
 - ไม่ duplicate กับ global skills ที่มีอยู่
 
 ### 2. English Content

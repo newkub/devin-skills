@@ -17,7 +17,7 @@ related:
 ---
   - check-error-coverage
   - check-types-coverage
-  - check-todo-comments
+  - report-scan-todo
   - check-test-isolation
   - check-unused
   - check-merge-conflicts
@@ -85,7 +85,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: Findings กระชับ อ่านง่าย ไม่มี noise
 
-1. ทำ `/improve-simplicity` กับ findings
+1. ทำ section `## Fix` กับ findings
 2. กรอง noise และ low-value findings
 3. รวม findings ที่ซ้ำกัน
 4. จัดกลุ่มที่เกี่ยวข้อง
@@ -131,6 +131,20 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 - ใช้ /review-stability ถ้าจำเป็น
 - ใช้ /review-uxui ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-cli-ux, improve-consistency, improve-simplicity, optimize-imports
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-cli-ux.md` — ปรับ CLI experience ทั้ง help text, output format, flags, prompts และ error messages
+- `references/fix-improve-consistency.md` — ปรับ consistency ข้าม codebase — patterns, API shapes, error handling, config และ doc style
+- `references/fix-improve-simplicity.md` — ปรับความกระชับ — ลดความซับซ้อนของ content, code, architecture, workflows หรือ skills
+- `references/fix-optimize-imports.md` — จัดการ imports ทั้ง project ลบ unused, แก้ barrel files ที่ทำ tree-shaking พัง
 ## Expected Outcome
 
 - รายงาน Quality Metrics Summary, Findings by Category, Recommended Actions

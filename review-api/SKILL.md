@@ -3,7 +3,6 @@ name: review-api
 description: ตรวจ API design — REST conventions, versioning, errors, auth, validation, docs
 argument-hint: "[endpoint-or-scope]"
 related:
-  - improve-api
   - review-backend
   - review-security
   - run-test-api
@@ -21,11 +20,11 @@ related:
 
 ## Goal
 
-ตรวจสอบ API design — REST/resource conventions, versioning, error handling, authn/authz, input validation, response formats และ documentation ก่อนแก้ไขด้วย `/improve-api`
+ตรวจสอบ API design — REST/resource conventions, versioning, error handling, authn/authz, input validation, response formats และ documentation ก่อนแก้ไขตาม section `## Fix`
 
 ## Scope
 
-ใช้เมื่อต้อง review API surface ของ project: REST, GraphQL, RPC (เช่น oRPC/tRPC) — ครอบคลุม contract, consistency และ security posture — ไม่แก้ไข implementation (ใช้ `/improve-api`)
+ใช้เมื่อต้อง review API surface ของ project: REST, GraphQL, RPC (เช่น oRPC/tRPC) — ครอบคลุม contract, consistency และ security posture — ไม่แก้ไข implementation (แก้ไขตาม section `## Fix`)
 
 ## Execute
 
@@ -66,8 +65,8 @@ related:
 > Goal: สรุป findings พร้อม severity และ fix direction
 
 1. ทำ `/report-table` พร้อม columns: No., Endpoint, Severity, Finding, Evidence, Fix
-2. ชี้ไป `/improve-api` สำหรับการแก้ไข
-3. ถ้า security findings เสี่ยงสูง → เชื่อม `/review-security` และ `/improve-security`
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
+3. ถ้า security findings เสี่ยงสูง → เชื่อม `/review-security` และ `/review-security`
 
 ## Rules
 
@@ -90,8 +89,19 @@ related:
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-api
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-api.md` — ปรับปรุง API endpoints ด้าน performance, structure, error handling, caching และ security
 ## Expected Outcome
 
 - รายงาน API findings ครอบคลุม conventions, validation, errors, auth, docs
 - ทุก finding มี endpoint evidence และ severity
-- next action ชัดเจนผ่าน `/improve-api`
+- next action ชัดเจนผ่าน section `## Fix`

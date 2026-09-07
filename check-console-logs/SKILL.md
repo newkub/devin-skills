@@ -64,7 +64,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่ลบหรือแก้ code — รายงานและให้ user ตัดสินใจ หรือทำ `/improve-logging` ถ้าควรเปลี่ยนเป็น logger
+- ไม่ลบหรือแก้ code — รายงานและให้ user ตัดสินใจ หรือทำ `/review-observability` ถ้าควรเปลี่ยนเป็น logger
 
 ### 3. Context Aware
 

@@ -20,6 +20,8 @@ related:
 
 ครอบคลุมการวางแผน tasks, libraries, implementation path, file architecture, module structure และการ validate แผนงาน ถ้า tasks เยอะมาก (>10) ให้สร้างใน `.devin/tasks/`
 
+Boundary: งานซับซ้อนสูง/เสี่ยงสูงที่ต้อง comprehensive analysis และ research front-loading → ใช้ `/deep-plan`; ต้องการตัดสินใจร่วมกับ user → `/plan-by-ask-me`
+
 ## Execute
 
 ### 1. Analyze And Research

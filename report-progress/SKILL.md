@@ -121,7 +121,7 @@ related:
 - ไม่อ่านไฟล์ทีไม่เกี่ยวข้อง
 
 - ใช้ `/report-before` ถ้าจำเป็น
-- ใช้ `/add-to-devin-global-skills` ถ้าจำเป็น
+- ใช้ `/save-to-devin-global-skills` ถ้าจำเป็น
 
 ## Expected Outcome
 

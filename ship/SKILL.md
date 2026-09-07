@@ -18,7 +18,7 @@ related:
   - ship-by-agents-swarm
   - ship-to-staging
   - ship-to-production
-  - improve-codebase-everything
+  - deep-optimize
   - run-verify
   - deep-validate
   - create-git-branch
@@ -66,14 +66,13 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 > Goal: code ผ่าน local validation
 
 1. เลือก execution mode: ถ้า scope ใหญ่หรือหลายด้าน → ทำ `/ship-by-agents-swarm`; ถ้า diff เล็ก (เช่น typo, docs, config บรรทัดเดียว) → ข้ามข้อ 2-8 ไปข้อ 9 ได้ แต่ยังต้องทำข้อ 9-12
-2. ทำ `/improve-review-cli` เพื่อ review codebase ด้วย CLI
-3. ทำ `/improve-codebase-everything` เพื่อ improve frontend, API, database, security, SEO
-4. ทำ `/optimize-codebase-everything` ถ้ามี bundle ใหญ่หรือ performance issues
-5. ทำ `/improve-test-coverage` ถ้า tests หรือ coverage ไม่ผ่าน threshold
-6. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
-7. ทำ `/update-version-to-latest` เพื่ออัปเดต dependencies ตามผล audit
-8. ทำ `/improve-architecture` ทุก workspace เพื่อแก้ structural findings
-9. ทำ `/improve-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
+2. ทำ `/update-review-cli` เพื่อ review codebase ด้วย CLI
+3. ทำ `/deep-optimize` เพื่อ optimize ครบทุก layer — frontend, API, database, SEO, bundle
+4. ทำ `/review-test` ถ้า tests หรือ coverage ไม่ผ่าน threshold
+5. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
+6. ทำ `/update-version-to-latest` เพื่ออัปเดต dependencies ตามผล audit
+7. ทำ `/review-architecture` ทุก workspace เพื่อแก้ structural findings
+9. ทำ `/review-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
 10. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
 11. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
 12. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship

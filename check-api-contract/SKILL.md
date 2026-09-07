@@ -65,7 +65,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ spec หรือ code — รายงาน drift แล้วให้ `/gen-openapi` หรือ `/improve-api` แก้
+- ไม่แก้ spec หรือ code — รายงาน drift แล้วให้ `/gen-openapi` หรือ `/review-api` แก้
 
 ### 3. Context Aware
 

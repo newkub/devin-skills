@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-astgrep
   - update-project-rules
-  - improve-review-cli
+  - update-review-cli
   - follow-lang-bun
   - follow-create-bun-cli
   - scan-codebase
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-astgrep`) — ไม่รวมการอัปเดต rules (ดู `/update-project-rules`) หรืออัปเดต review CLI (ดู `/improve-review-cli`)
+ครอบคลุมการใช้ ast-grep ผ่าน napi bindings และ CLI ใน Bun scripts, การสร้าง programmatic analyzers, การ integrate กับ review CLI — ไม่รวม manual ast-grep CLI usage (ดู `/use-astgrep`) — ไม่รวมการอัปเดต rules (ดู `/update-project-rules`) หรืออัปเดต review CLI (ดู `/update-review-cli`)
 
 ## Execute
 
@@ -97,7 +97,7 @@ related:
 ### 3. Scope Boundary
 
 - ไม่รวมการอัปเดต rules — อยู่ใน `/update-project-rules`
-- ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/improve-review-cli`
+- ไม่รวมการอัปเดต review CLI analyzers — อยู่ใน `/update-review-cli`
 - เน้นเฉพาะการใช้ ast-grep แบบ programmatic ผ่าน scripts
 
 ### 4. Formatting

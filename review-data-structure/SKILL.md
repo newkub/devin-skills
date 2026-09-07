@@ -2,16 +2,14 @@
 name: review-data-structure
 description: ตรวจสอบ data structures ใน project ว่าเหมาะสมกับ access pattern และ complexity หรือไม่
 argument-hint: "[component-or-data-pattern]"
-related:
-  - improve-data-structure
-  - scan-codebase
+related:  - scan-codebase
   - report-table
   - review-algorithm
 ---
 
 ## Goal
 
-ตรวจสอบ data structures ใน project ว่าเหมาะสมกับ access pattern, operation requirements และ complexity หรือไม่ ก่อนส่งต่อให้ `/improve-data-structure`
+ตรวจสอบ data structures ใน project ว่าเหมาะสมกับ access pattern, operation requirements และ complexity หรือไม่ ก่อนส่งต่อไปยัง section `## Fix`
 
 ## Scope
 
@@ -48,7 +46,7 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report-table` ด้วย columns: No., Structure, Operation, Current Complexity, Target, Severity
-2. ชี้ไป `/improve-data-structure` สำหรับการแก้ไข
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี algorithmic ปัญหาซับซ้อน → เชื่อม `/review-algorithm`
 
 ## Rules
@@ -63,8 +61,19 @@ related:
 - ทุก finding ต้องอ้างอิง file/line และ operation frequency
 - ไม่เดาได้ว่า data structure ควรเปลี่ยน โดยไม่มี access-pattern evidence
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-data-structure
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-data-structure.md` — เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม data structures, access patterns, complexity gaps
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน `/improve-data-structure`
+- next action ชัดเจนผ่าน section `## Fix`

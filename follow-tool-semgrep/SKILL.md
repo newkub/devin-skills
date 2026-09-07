@@ -15,7 +15,7 @@ related:
 
 - ใช้เมื่อ: security scanning (`p/security-audit`, `p/owasp-top-ten`), framework-specific rules, custom org rules, taint tracking
 - เปรียบเทียบ: `use-astgrep` เหมาะกับ structural patterns ง่ายๆ, Semgrep เหมาะกับ dataflow/taint และ rulesets สำเร็จรูป
-- Scan-only ใน skill นี้ — fix ผ่าน `/improve-security` หรือ `/fix`
+- Scan-only ใน skill นี้ — fix ผ่าน `/review-security` หรือ `/fix`
 
 ## Execute
 
@@ -50,7 +50,7 @@ related:
 1. จัดกลุ่มตาม rule severity และ confidence — semgrep มีทั้ง false positives
 2. ใช้ `// nosemgrep` สำหรับ intentional patterns พร้อม comment เหตุผล
 3. ใช้ `/report-table` คอลัมน์: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
-4. ส่งต่อ `/improve-security` หรือ `/fix` สำหรับ remediation
+4. ส่งต่อ `/review-security` หรือ `/fix` สำหรับ remediation
 
 ### 5. Integrate (ถ้าต้องการถาวร)
 

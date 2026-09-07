@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับดู git file history ของไฟล์ใดๆ ใน workspace ที่มี git repository และติดตั้ง `@wrikka/git-cli` แล้ว
 
+Boundary: interactive HTML viewer เท่านั้น — หา commit ที่ตรงเงื่อนไข → `/check-git-logs`; วิเคราะห์ evolution/patterns → `/diff-file-history`
+
 ## Execute
 
 ### 1. Install @wrikka/git-cli

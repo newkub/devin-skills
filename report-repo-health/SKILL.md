@@ -4,7 +4,7 @@ description: สร้าง health scorecard ต่อ repo — hygiene, deps, 
 argument-hint: "[repo-or-all]"
 related:
   - check-repo-hygiene
-  - list-cicd-fails
+  - list-github-actions-fails
   - check-git-logs
   - list-dependencies
   - run-audit
@@ -30,7 +30,7 @@ related:
 
 1. Hygiene: `/check-repo-hygiene` — LICENSE, README, SECURITY, CODEOWNERS
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
-3. CI: `/list-cicd-fails` — latest run status, failure rate
+3. CI: `/list-github-actions-fails` — latest run status, failure rate
 4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
 5. Working state: `/check-uncommit` — dirty working tree?
 
@@ -63,7 +63,7 @@ related:
 
 1. ระบุ quick wins ต่อ repo (เช่น เพิ่ม LICENSE, enable CI, ลบ stale branches)
 2. flag repos ที่ควร archive หรือ revive
-3. เชื่อมไป skills ที่เกี่ยว: `/check-repo-hygiene`, `/improve-dependencies`, `/optimize-ci`
+3. เชื่อมไป skills ที่เกี่ยว: `/check-repo-hygiene`, `/review-dependencies`, `/review-delivery`
 
 ## Rules
 

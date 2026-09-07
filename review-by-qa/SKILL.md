@@ -6,7 +6,7 @@ related:
   - roleplay-stakeholder
   - review-by-engineer
   - run-test
-  - improve-test-coverage
+  - review-test
   - report-table
   - suggest-next-action
   - scan-codebase
@@ -70,7 +70,7 @@ Review project จากมุมมอง QA — หา edge cases, boundary co
 - ถ้า role ไม่ชัด → ถามก่อน
 
 - ใช้ /run-test ถ้าจำเป็น
-- ใช้ /improve-test-coverage ถ้าจำเป็น
+- ใช้ /review-test ถ้าจำเป็น
 - ใช้ /review-by-engineer ถ้าจำเป็น
 
 ## Expected Outcome

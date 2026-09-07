@@ -10,7 +10,6 @@ related:
   - review-compliance
   - review-observability
   - scan-codebase
-  - improve-security
   - report-table
   - suggest-next-action
 
@@ -146,9 +145,17 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 - ใช้ /check-secrets-leak ถ้าจำเป็น
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
+## Fix
 
-- ใช้ /improve-security ถ้าจำเป็น
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
 
+Merged from: improve-security
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-security.md` — แก้ไข security findings จาก review-security ตาม severity และมาตรฐาน OWASP
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก security section

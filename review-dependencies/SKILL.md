@@ -60,7 +60,7 @@ related:
 
 1. ทำ `/report-table` พร้อม columns: No., Package, Current, Latest, Severity, Issue, Action
 2. แยก actions: update now, update with caution, remove, replace, keep
-3. ถ้ามี vulnerability → เชื่อม `/review-security` และ `/improve-security`
+3. ถ้ามี vulnerability → เชื่อม `/review-security` และ `/review-security`
 
 ## Rules
 
@@ -85,6 +85,18 @@ related:
 
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-dependencies, optimize-deps
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-dependencies.md` — แก้ findings จาก review-dependencies ทั้ง outdated, vulnerable, unused และ duplicate deps
+- `references/fix-optimize-deps.md` — ลดน้ำหนัก dependencies เปลี่ยน lib หนักเป็นตัวเบา ลด dep tree และ bundle impact
 ## Expected Outcome
 
 - รายงาน deps ครบ: outdated, vulnerable, unused, license issues

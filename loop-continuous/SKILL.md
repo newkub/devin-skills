@@ -8,7 +8,7 @@ related:
   - run-until-pass
   - follow-loop-engineering
   - dont-over-engineer
-  - improve
+  - review-then-fix
   - follow-your-suggestion
   - suggest-next-action
   - report-progress

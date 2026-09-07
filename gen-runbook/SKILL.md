@@ -5,7 +5,7 @@ argument-hint: "[service-or-incident-type]"
 related:
   - learn-codebase
   - create-report-in-dot-devin
-  - improve-observability
+  - review-observability
   - review-stability
   - report-architecture-diagram
   - report-table
@@ -89,7 +89,7 @@ related:
 
 1. บันทึกด้วย `/create-report-in-dot-devin` หรือ `docs/runbook-<service>.md`
 2. ใช้ `/report-table` สรุป: sections ที่ครบ vs ที่ต้อง user เติม
-3. แนะนำ `/improve-observability` ถ้า diagnosis steps ขาด signals ที่ต้องมี
+3. แนะนำ `/review-observability` ถ้า diagnosis steps ขาด signals ที่ต้องมี
 
 ## Rules
 

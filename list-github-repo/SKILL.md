@@ -17,8 +17,6 @@ triggers:
   - model
 related:
   - open-github
-  - open-github
-  - open-github
   - view-repo
   - all-github-repo
   - list-github-project
@@ -36,7 +34,7 @@ related:
 
 ใช้ `gh repo list --source` สำหรับ authenticated user หรือ owner ที่ระบุ แสดงเฉพาะ repo ต้นฉบับ (non-fork) ที่ user สร้างเอง
 
-ดูเพิ่มเติม: /open-github, /open-github, /open-github, /list-github-project, /all-github-repo
+ดูเพิ่มเติม: /open-github, /list-github-project, /all-github-repo
 
 ## Execute
 

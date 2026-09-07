@@ -7,7 +7,7 @@ related:
   - summarize-your-understand
   - report
   - follow-create-cli
-  - improve
+  - review-then-fix
   - report-plan
 ---
 
@@ -69,7 +69,7 @@ related:
 ### 3. General Purpose
 
 - ใช้ได้กับทุก context ไม่ผูกกับ skill creation
-- สามารถเรียกจาก skills อื่น เช่น `/follow-create-cli`, `/improve`, `/report-plan`
+- สามารถเรียกจาก skills อื่น เช่น `/follow-create-cli`, `/review-then-fix`, `/report-plan`
 - คืนค่าเป็น option เดียวที user เลือก
 
 ### 4. References

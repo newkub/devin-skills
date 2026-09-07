@@ -3,7 +3,7 @@ name: check-error-coverage
 description: ตรวจ errors ที่ throw แล้วไม่มี handler จับ และ catch blocks ที่ swallow errors
 argument-hint: "[path]"
 related:
-  - improve-error-handling
+  - review-stability
   - use-astgrep
   - run-test
   - report-table
@@ -18,7 +18,7 @@ related:
 - ตรวจ `throw`, `Promise.reject`, `Result.err` และ call sites ของ fallible functions
 - ตรวจ `catch` blocks: empty catch, catch ที่ไม่ rethrow/log, catch ที่ return default เงียบๆ
 - ตรวจ async error paths: unhandled rejection, missing `.catch()`, `await` ที่ไม่อยู่ใน try
-- Read-only: รายงาน gaps — แก้ไขผ่าน `/improve-error-handling`
+- Read-only: รายงาน gaps — แก้ไขผ่าน `/review-stability`
 
 ## Execute
 
@@ -62,7 +62,7 @@ related:
 
 1. ใช้ `/report-table` คอลัมน์: `No.`, `Location`, `Issue Type`, `Error`, `Severity`, `Fix`
 2. Issue types: `unhandled`, `swallowed`, `untested`, `no-top-level-handler`
-3. แนะนำ `/improve-error-handling` สำหรับ remediation
+3. แนะนำ `/review-stability` สำหรับ remediation
 
 ## Rules
 
@@ -73,7 +73,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ error handling — รายงานแล้วทำ `/improve-error-handling`
+- ไม่แก้ error handling — รายงานแล้วทำ `/review-stability`
 
 ### 3. Context Aware
 

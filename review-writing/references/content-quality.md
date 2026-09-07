@@ -4,7 +4,7 @@
 
 ## 1. Simplify And Remove Redundancy
 
-- ทำ `/improve-simplicity` เพื่อลดความซับซ้อนโดยไม่สูญเสีย context
+- ทำ `/review-quality` เพื่อลดความซับซ้อนโดยไม่สูญเสีย context
 - ลบข้อมูลที่ซ้ำซ้อนระหว่าง Execute และ Rules — ใช้ references แทนการเขียนซ้ำ
 - ทำ `/dont-over-engineer` เพื่อกำหนดขอบเขตการแก้ไขให้ minimal
 

@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import type { Context, SkillMeta } from "../types";
 
-const TEMPLATE_DIR = join("follow-create-devin-global-skills", "templates");
+const TEMPLATE_DIR = join("update-devin-global-skills", "templates");
 
 const PREFIX_MAP: [RegExp, string][] = [
   [/^follow-.*-architecture$/, "follow-architecture"],

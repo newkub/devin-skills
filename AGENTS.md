@@ -12,7 +12,7 @@ related:
   - review-rules
   - review-devin-global-skills
   - git-commit
-  - improve-review-cli
+  - update-review-cli
   - ship
   - report
 ---
@@ -32,7 +32,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 1. Run `/follow-agents-md` to read this `AGENTS.md`.
 2. Read global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`.
 3. Check `git status` before making changes.
-4. Read `/follow-create-devin-global-skills` when creating a skill, and `/update-devin-global-skills` when updating one.
+4. Read `/update-devin-global-skills` when creating or updating a skill.
 
 ### 2. Maintain AGENTS.md
 
@@ -59,16 +59,16 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 - Section order: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome`.
 - Keep the file under 250 lines.
 - Use backticks for `tools`, `commands`, `paths`, and `skill-name`.
-- If a skill has `references/`, write it according to `follow-create-devin-global-skills/references/create-devin-skills.md`.
+- If a skill has `references/`, write it according to `update-devin-global-skills/references/create-devin-skills.md`.
 
 ### 2. Architecture
 
 - `repo-type: skill collection` (no root package manifest; skills are Markdown docs with optional code).
 - `git: /follow-tool-git`
 - `github: /follow-github`
-- `skill-format: /follow-create-devin-global-skills` (create) and `/update-devin-global-skills` (update)
+- `skill-format: /update-devin-global-skills` for create and update
 - `global-rules: /update-devin-global-rules` (source: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`)
-- `review-cli: /improve-review-cli` (only if `tools/review-codebase` exists)
+- `review-cli: /update-review-cli` (only if `tools/review-codebase` exists)
 - `submodules: open-files-in-web, open-devin-in-web, create-github-pr`
 
 ### 3. Platform
@@ -84,7 +84,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **921** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **889** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -96,7 +96,7 @@ Core:
 - `update-devin-harness: /update-devin-harness`
 - `update-devin-global-rules: /update-devin-global-rules`
 - `git-commit: /git-commit`
-- `improve-review-cli: /improve-review-cli`
+- `update-review-cli: /update-review-cli`
 - `ship: /ship`
 - `report: /report`
 - `deep-validate: /deep-validate`
@@ -116,7 +116,7 @@ Major skill families by current count:
 - `improve-*` (39): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, correctness, stability, backend, frontend, business, docs).
 - `optimize-*` (31): performance counterparts (bundle, assets, memory, network, rendering, cost).
 
-Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `improve`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
+Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `review-then-fix`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
 
 ### 6. Workspaces
 

@@ -7,7 +7,6 @@ related:
   - review-quality
   - run-profiler
   - run-bench
-  - optimize-performance
   - deep-analyze
   - run-review
   - deep-validate
@@ -151,6 +150,22 @@ Review application performance ครอบคลุม network, build/runtime, 
 
 - ใช้ /review-dependencies ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-performance, optimize-memory, optimize-network, optimize-performance, optimize-serialization, optimize-startup
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-performance.md` — แก้ findings จาก review-performance ครอบคลุม network, runtime, memory และ caching
+- `references/fix-optimize-memory.md` — ปรับปรุง memory usage: leaks, large objects, caches, garbage collection
+- `references/fix-optimize-network.md` — ปรับปรุง network: requests, CDN, compression, caching, HTTP/2, preconnect
+- `references/fix-optimize-performance.md` — แก้ web performance — Core Web Vitals (LCP, INP, CLS), long tasks, TTI, third-party scripts ด้วย field data และ targeted fixes
+- `references/fix-optimize-serialization.md` — ลดขนาด serialization payloads — JSON trimming, compression และ format selection
+- `references/fix-optimize-startup.md` — ลดเวลา startup ของ app/CLI ด้วย lazy loading, defer init และลดงานหนักตอน boot
 ## Expected Outcome
 
 - รายงาน performance findings ครอบคลุมทุก dimension
@@ -158,4 +173,4 @@ Review application performance ครอบคลุม network, build/runtime, 
 - Severity และ recommendations ชัดเจน
 - ไม่ซ้ำซ้อนกับ review skills อื่น
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
-- ถ้าต้อง optimize ให้ทำ `/optimize-performance`
+- ถ้าต้อง optimize ให้ทำ section `## Fix`

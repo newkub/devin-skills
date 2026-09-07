@@ -9,7 +9,7 @@ related:
   - follow-solid-tanstack
   - follow-lib-unocss
   - follow-robots-txt
-  - optimize-codebase-everything
+  - deep-optimize
   - follow-design-system
   - review-uxui
   - follow-service-cloudflare
@@ -68,7 +68,7 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
-- ทำ `/optimize-codebase-everything` สำหรับ SEO/performance/bundle
+- ทำ `/deep-optimize` สำหรับ SEO/performance/bundle
 - ทำ `/review-frontend` ก่อน deploy
 - ทำ `/productionize-implementation` หลัง website เสร็จ
 

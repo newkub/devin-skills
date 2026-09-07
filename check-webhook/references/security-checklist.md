@@ -8,7 +8,7 @@
 
 - ตรวจ webhook handlers: Stripe, GitHub, Twilio, LINE, custom webhooks ตามที่ project รับ
 - ครอบคลุม: signature verification, timestamp tolerance, replay protection, secret management, endpoint exposure
-- Read-only: รายงาน — แก้ผ่าน `/improve-auth` หรือ `/improve-security`
+- Read-only: รายงาน — แก้ผ่าน `/review-auth` หรือ `/review-security`
 
 ## Execute
 

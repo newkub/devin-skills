@@ -125,7 +125,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 1. ถ้า success/healthy/release สำเร็จ → report platform, target, duration, status
 2. ถ้าไม่ผ่าน → report failures ทีเหลือ, root cause, last green SHA, next step
 3. ใช้ `/report-table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
-4. ทำ `/list-cicd-fails` เพื่อดู failures ทีค้างใน repo
+4. ทำ `/list-github-actions-fails` เพื่อดู failures ทีค้างใน repo
 5. ถ้า user ต้องการ cleanup → ทำ `/delete-cicd-fails` ก่อน next step
 6. ทำ `/suggest-next-action`
 

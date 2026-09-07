@@ -22,7 +22,7 @@ related:
 
 ใช้เมื่อต้องการตรวจสอบ workers ที deploy ไม่ผ่านหรือมี deployment status ล้มเหลว ใน Cloudflare account ของผู้ใช้ โดยใช้ `wrangler` หรือ Cloudflare API โดยไม่แก้ไข worker หรือ redeploy
 
-ดูเพิ่มเติม: /list-cloudflare-projects, /list-deployment-fails, /open-cloudflare-workers, /list-cloudflare-projects, /follow-service-cloudflare
+ดูเพิ่มเติม: /list-cloudflare-projects, /list-deployment-fails, /open-cloudflare-workers, /follow-service-cloudflare
 
 ## Execute
 

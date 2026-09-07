@@ -2,8 +2,7 @@
 name: review-algorithm
 description: ตรวจสอบ algorithms: time/space complexity, correctness และ hot paths
 argument-hint: "[function-or-module]"
-related:
-  - optimize-algorithm
+related:  - follow-algorithms
   - scan-codebase
   - run-profiler
   - run-bench
@@ -12,7 +11,7 @@ related:
 
 ## Goal
 
-ตรวจสอบ algorithms ใน project ว่ามี time/space complexity, correctness และ hot paths ที่เหมาะสมหรือไม่ ก่อนส่งต่อให้ `/optimize-algorithm`
+ตรวจสอบ algorithms ใน project ว่ามี time/space complexity, correctness และ hot paths ที่เหมาะสมหรือไม่ ก่อนส่งต่อไปยัง section `## Fix`
 
 ## Scope
 
@@ -49,7 +48,7 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report-table` ด้วย columns: No., Function, Complexity, Hot Path, Severity, Fix
-2. ชี้ไป `/optimize-algorithm` สำหรับการแก้ไข
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี data structure ปัญหา → เชื่อม `/review-data-structure`
 
 ## Rules
@@ -64,8 +63,19 @@ related:
 - ทุก finding ต้องมี line, call frequency, และ complexity analysis
 - ไม่เดาว่า function ควร optimize โดยไม่มี benchmark
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: optimize-algorithm
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-optimize-algorithm.md` — ปรับปรุง algorithms: time complexity, space complexity, data structures, hot paths
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม complexity, hot paths, correctness
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน `/optimize-algorithm`
+- next action ชัดเจนผ่าน section `## Fix`

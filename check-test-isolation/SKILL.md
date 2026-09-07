@@ -3,8 +3,8 @@ name: check-test-isolation
 description: ตรวจ tests ที่พึ่ง execution order หรือ shared state — flaky by design
 argument-hint: "[test-path]"
 related:
-  - improve-test-coverage
-  - improve-test-data
+  - review-test
+  - review-test
   - use-astgrep
   - report-table
 ---
@@ -17,7 +17,7 @@ related:
 
 - ตรวจ test files: unit, integration, e2e ตาม runner ที่ใช้ (Vitest, Jest, Playwright, Cargo, go test)
 - ครอบคลุม: shared globals, missing cleanup, order dependencies, port/resource conflicts, DB state ร่วม, env mutations ที่ไม่ restore
-- Read-only: รายงาน violations — แก้ผ่าน `/improve-test-data` หรือ `/improve-test-coverage`
+- Read-only: รายงาน violations — แก้ผ่าน `/review-test` หรือ `/review-test`
 
 ## Execute
 
@@ -70,7 +70,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ tests — รายงานให้ `/improve-test-data`/`/improve-test-coverage` แก้
+- ไม่แก้ tests — รายงานให้ `/review-test`/`/review-test` แก้
 - shuffle run ไม่แก้ผลการทดสอบจริง — แค่เผยปัญหา
 
 ### 3. Runner Aware

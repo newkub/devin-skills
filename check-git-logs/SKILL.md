@@ -22,6 +22,7 @@ related:
 - รองรับ local git repo และ remote GitHub repo
 - แสดง commit ทีตรงเงื่อนไขพร้อมเนื้อหาไฟล์ใน commit นั้น
 - ใช้เป็นเครื่องมือตัวช่วยใน `/deep-debug` และ `/git-debug`
+- Boundary: หา commit ที่ตรงเงื่อนไขเท่านั้น — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
 
 - ดูเพิ่มเติม: /git-file-history, /restore-from-my-dotfiles
 

@@ -3,14 +3,13 @@ name: review-cost
 description: ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party, idle resources
 argument-hint: "[service-or-resource]"
 related:
-  - optimize-cost
   - report-table
   - review-performance
 ---
 
 ## Goal
 
-ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อให้ `/optimize-cost`
+ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party services และ idle resources ก่อนส่งต่อไปยัง section `## Fix`
 
 ## Scope
 
@@ -56,7 +55,7 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report-table` ด้วย columns: No., Service, Cost, Waste, Severity, Fix
-2. ชี้ไป `/optimize-cost` สำหรับการแก้ไข
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี performance ปัญหา → เชื่อม `/review-performance`
 
 ## Rules
@@ -71,8 +70,20 @@ related:
 - ทุก finding ต้องมี billing amount, usage metric หรือ resource id
 - ไม่แนะนำ cost cut โดยไม่มี risk assessment
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: optimize-cost, optimize-token-usage
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-optimize-cost.md` — ปรับปรุง infrastructure cost: compute, storage, bandwidth, third-party, idle resources
+- `references/fix-optimize-token-usage.md` — ลด LLM token usage และ cost ด้วย prompt trimming, context pruning, caching และ model routing
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม compute, storage, bandwidth, third-party
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน `/optimize-cost`
+- next action ชัดเจนผ่าน section `## Fix`

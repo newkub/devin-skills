@@ -5,7 +5,7 @@ argument-hint: "[baseline]"
 related:
   - report-bundle
   - review-bundle
-  - optimize-bundle
+  - review-bundle
   - run-build
   - check-size
   - report-table
@@ -64,7 +64,7 @@ related:
 1. ทำ `/report-table` คอลัมน์: `No.`, `Chunk`, `Before`, `After`, `Delta`, `Status`, `Suspected Cause`
 2. Status: `ok`, `regression`, `critical`, `new`, `removed`
 3. สรุป total bundle delta และ top regressions
-4. ถ้า `critical` → เสนอ `/optimize-bundle` หรือ `/review-bundle` เป็น next action
+4. ถ้า `critical` → เสนอ `/review-bundle` หรือ `/review-bundle` เป็น next action
 
 ## Rules
 
@@ -76,7 +76,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ไข code หรือ config เพื่อลด size ใน skill นี้ — ส่งต่อ `/optimize-bundle`
+- ไม่แก้ไข code หรือ config เพื่อลด size ใน skill นี้ — ส่งต่อ `/review-bundle`
 - ไม่ลบ build artifacts ของ baseline
 
 ### 3. Thresholds
@@ -86,7 +86,7 @@ related:
 
 - ใช้ /report-bundle ถ้าจำเป็น
 - ใช้ /review-bundle ถ้าจำเป็น
-- ใช้ /optimize-bundle ถ้าจำเป็น
+- ใช้ /review-bundle ถ้าจำเป็น
 
 ## Expected Outcome
 

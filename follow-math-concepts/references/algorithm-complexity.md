@@ -84,7 +84,7 @@
 - recursive หลาย branch อาจ exponential
 
 - ใช้ /follow-algorithms ถ้าจำเป็น
-- ใช้ /improve-data-structure ถ้าจำเป็น
+- ใช้ /review-data-structure ถ้าจำเป็น
 - ใช้ /follow-test ถ้าจำเป็น
 - ใช้ /follow-math-concepts ถ้าจำเป็น
 

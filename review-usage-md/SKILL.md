@@ -6,7 +6,7 @@ related:
   - update-usage-md
   - report-table
   - suggest-next-action
-  - improve-docs
+  - review-docs
 ---
 
 ## Goal
@@ -58,7 +58,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 - อ้างอิง `package.json` หรือ `README.md` เป็นหลัก
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 
-- ใช้ /improve-docs ถ้าจำเป็น
+- ใช้ /review-docs ถ้าจำเป็น
 
 ## Expected Outcome
 

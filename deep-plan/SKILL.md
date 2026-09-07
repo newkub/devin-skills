@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับวางแผนงานที่ซับซ้อนสูง ต้องการ comprehensive analysis ก่อน implement
 
+Boundary: งานวางแผนมาตรฐานที่ไม่ซับซ้อน → ใช้ `/plan`; ต้องการตัดสินใจร่วมกับ user → `/plan-by-ask-me`
+
 สำหรับสำรวจ libraries ใช้ `/alternative`
 
 ดูเพิ่มเติม: /deep-review-codebase
@@ -39,9 +41,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: ทำ `/deep-analyze`, `/deep-thinking`, `/deep-thinking`, `/deep-validate`, และ `/deep-research` เพื่อเตรียมการวางแผน
 
 1. ทำ `/deep-analyze` เพื่อวิเคราะห์ปัจจุบันหลายมิติ: architecture, quality, dependencies, risks
-2. ทำ `/deep-thinking` เพื่อวางแผนการวางแผนอย่างเป็นระบบ
-3. ทำ `/deep-thinking` เพื่อครุ่นคิด trade-offs, uncertainties, และ goal alignment
-4. ทำ `/deep-validate` เพื่อ validate assumptions และ constraints
+2. ทำ `/deep-thinking` เพื่อครุ่นคิด trade-offs, uncertainties, และ goal alignment
+3. ทำ `/deep-validate` เพื่อ validate assumptions และ constraints
 5. ทำ `/deep-research` สำหรับ tech stack และ architecture patterns ที่เกี่ยวข้อง
 6. ระบุ scope, constraints, assumptions ของงาน
 7. ถ้า project มี `AGENTS.md` ให้อ่านและทำตาม
@@ -116,7 +117,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - จำลอง worst-case scenario และตรวจสอบว่าแผนยังทำได้
 - ระบุ critical path และ bottlenecks
 - ตรวจสอบ assumptions ทุกข้อในแผน
-- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` และ `/deep-thinking` ก่อน step นี้
+- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` ก่อน step นี้
 - ถ้าพบ issue ให้กลับไป Step 4-5 แก้แผน
 
 ### 9. Validate And Report
@@ -147,7 +148,7 @@ Goal reminder: ทุก architectural decision ต้องมี trade-off ana
 - ทุก architectural decision ต้องมี trade-off analysis พร้อม alternatives ที่ปฏิเสธ
 - ทุก high-risk task ต้องมี mitigation plan และ rollback strategy
 - จัดลำดับ risks ตาม probability × impact
-- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking`, `/deep-thinking`, และ `/deep-research` ก่อนวางแผน
+- ถ้างานซับซ้อนสูง: ทำ `/deep-thinking` และ `/deep-research` ก่อนวางแผน
 
 ### 3. Module Design
 

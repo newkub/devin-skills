@@ -6,7 +6,6 @@ related:
   - use-related-skills
   - update-devin-global-skills
   - scan-codebase
-  - follow-create-devin-global-skills
   - review-devin-global-skills
   - update-devin-global-rules
   - deep-validate
@@ -52,7 +51,7 @@ related:
 
 > Goal: สร้าง SKILL.md และ directory structure ทีถูกต้อง
 
-1. ใช้ `/follow-create-devin-global-skills` เพื่อเลือก template และเขียน `SKILL.md`
+1. ใช้ `/update-devin-global-skills` เพื่อเลือก template และเขียน `SKILL.md`
 2. กำหนด `name` ให้ตรงกับ directory name และ `description` ไม่เกิน 100 ตัวอักษร
 3. ใส่ `related` ครบถ้วน
 4. ถ้าไฟล์เกิน 250 บรรทัด → แยกส่วนลง `references/`
@@ -72,7 +71,7 @@ related:
 ### 1. Single Skill
 
 - สร้างทีละ skill ต่อ invocation (ทำซ้ำได้ถ้าต้องสร้างหลายตัว — รองรับ capability จาก new-skills ที่ merge มา)
-- ถ้าต้องสร้างหลายตัว → ทำซ้ำ flow นี้ทีละตัว ตามมาตรฐาน `/follow-create-devin-global-skills`
+- ถ้าต้องสร้างหลายตัว → ทำซ้ำ flow นี้ทีละตัว ตามมาตรฐาน `/update-devin-global-skills`
 
 ### 2. No Duplicate
 
@@ -85,7 +84,24 @@ related:
 - ใช้ backticks สำหรับ commands, skill names, paths
 - ภาษาไทยสำหรับเนื้อหา ยกเว้น heading Title Case
 
-### 4. References
+### 4. Prefix Naming Contract
+
+เลือก prefix ตาม semantics เดียวเท่านั้น — ห้ามสร้าง skill ใหม่ที่ขัด contract:
+
+| No. | Prefix | หน้าที่ | Output | เขียนไฟล์ |
+|-----|--------|--------|--------|----------|
+| 1 | `check-*` | Detector — ตรวจจุดเดียว เร็ว deterministic | pass/fail + locations | ไม่ |
+| 2 | `review-*` | Assessor — ประเมิน 1 มิติ | findings + severity + evidence | ไม่ |
+| 3 | `improve-*` | Fixer ฝั่ง quality — correctness, security, docs, UX | code ที่แก้แล้ว | ใช่ |
+| 4 | `optimize-*` | Fixer ฝั่ง resource — ต้องมี metric วัดได้ (size, ms, MB, $) | code ที่เร็ว/เบาขึ้น | ใช่ |
+| 5 | `deep-*` | Orchestrator หลายขั้น/หลายมิติ | dispatch ไป skill ย่อย | ตามย่อย |
+
+- `improve-*`/`optimize-*` ควรมี `review-*` หรือ `check-*` คู่ใน `related` ถ้าเป็นไปได้
+- ทิศทางเดียว: `improve/optimize` → `review` → `check` — ห้ามย้อนกลับ
+- ถ้า fix ที่ไม่มีตัวเลขวัด → ห้ามใช้ `optimize-*`
+- ถ้า skill ใหม่ทับ scope กับที่มี → merge เข้าตัวเดิมแทนสร้างใหม่ (`/merge`, `/idea-merge-files`)
+
+### 5. References
 
 - บันทึก external docs ลง `references/`
 - ตรวจ markdown links ไม่ให้ broken
@@ -97,6 +113,6 @@ related:
 - `SKILL.md` มี frontmatter ครบถ้วนและเนื้อหาสอดคล้อง goal
 - references ไม่ broken
 - ผ่าน `/deep-validate`
-- ใช้ร่วมกับ `/follow-create-devin-global-skills` ในกระบวนการสร้าง
+- ใช้ร่วมกับ `/update-devin-global-skills` ในกระบวนการสร้าง
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: new-skills)

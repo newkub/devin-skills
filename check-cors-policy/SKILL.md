@@ -3,7 +3,7 @@ name: check-cors-policy
 description: ตรวจ CORS configuration — wildcard origins, credentials exposure และ over-permissive policies
 argument-hint: "[url-or-config]"
 related:
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -15,7 +15,7 @@ related:
 
 - ตรวจ CORS config ใน code (middleware settings) และ actual responses (`Access-Control-*` headers)
 - ครอบคลุม: `Allow-Origin`, `Allow-Credentials`, `Allow-Methods`, `Allow-Headers`, `Max-Age`, preflight handling
-- Read-only: รายงาน — แก้ผ่าน `/improve-security`
+- Read-only: รายงาน — แก้ผ่าน `/review-security`
 
 ## Execute
 
@@ -62,7 +62,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ config — รายงานให้ `/improve-security`
+- ไม่แก้ config — รายงานให้ `/review-security`
 - ทดสอบด้วย benign origins เท่านั้น — ไม่ exploit
 
 ### 3. Context Aware

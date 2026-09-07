@@ -7,7 +7,7 @@ related:
   - review-by-product
   - review-by-qa
   - review-security
-  - improve-architecture
+  - review-architecture
   - report-table
   - suggest-next-action
   - ask-me
@@ -79,7 +79,7 @@ Review project จากมุมมอง engineering — หา tech debt, arc
 - ใช้ /review-by-product ถ้าจำเป็น
 - ใช้ /review-by-qa ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /improve-architecture ถ้าจำเป็น
+- ใช้ /review-architecture ถ้าจำเป็น
 
 ## Expected Outcome
 

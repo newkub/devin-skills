@@ -5,7 +5,7 @@ argument-hint: "[workflow-or-skill]"
 related:
   - review-devin-global-skills
   - update-devin-global-skills
-  - improve-simplicity
+  - review-quality
   - review-redundancy
   - review-quality
   - deep-validate
@@ -75,7 +75,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 - ใช้ /review-devin-global-skills ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
-- ใช้ /improve-simplicity ถ้าจำเป็น
+- ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /use-subagents ถ้าจำเป็น

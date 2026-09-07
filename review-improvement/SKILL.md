@@ -6,7 +6,7 @@ related:
   - deep-review
   - scan-codebase
   - deep-review-codebase
-  - improve-codebase-everything
+  - deep-optimize
   - review-architecture
   - review-security
   - review-performance
@@ -46,15 +46,15 @@ Review scope ที่ user ระบุ (project, workspace, file, feature ห�
 
 | No. | Dimension | ดูอะไร | Fix Skill |
 |-----|-----------|--------|-----------|
-| 1 | Architecture | boundaries, coupling, SRP, layer violations | `/improve-architecture` |
-| 2 | Security | secrets, auth, injection, headers, deps vulns | `/improve-security` |
-| 3 | Performance | bundle, rendering, queries, memory, network | `/optimize-codebase-everything` |
-| 4 | Quality | naming, duplication, complexity, dead code | `/improve-codebase-everything` |
+| 1 | Architecture | boundaries, coupling, SRP, layer violations | `/review-architecture` |
+| 2 | Security | secrets, auth, injection, headers, deps vulns | `/review-security` |
+| 3 | Performance | bundle, rendering, queries, memory, network | `/review-performance` |
+| 4 | Quality | naming, duplication, complexity, dead code | `/review-then-fix` |
 | 5 | Dependencies | outdated, vulnerable, unused, licenses | `/review-dependencies` |
-| 6 | Accessibility | WCAG violations, keyboard, contrast | `/improve-accessibility` |
-| 7 | Docs | stale docs, missing guides, broken links | `/improve-docs` |
-| 8 | Tests | coverage gaps, missing edge cases | `/improve-test-coverage` |
-| 9 | Observability | missing logs, metrics, alerts | `/improve-observability` |
+| 6 | Accessibility | WCAG violations, keyboard, contrast | `/review-accessibility` |
+| 7 | Docs | stale docs, missing guides, broken links | `/review-docs` |
+| 8 | Tests | coverage gaps, missing edge cases | `/review-test` |
+| 9 | Observability | missing logs, metrics, alerts | `/review-observability` |
 
 ### 3. Collect And Deduplicate
 

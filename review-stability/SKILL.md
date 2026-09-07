@@ -133,6 +133,19 @@ Review ความเสถียรของ application ครอบคลุ
 - ทุก bullet ต้องตอบได้ว่า "ถ้าไม่มีแล้วผลลัพธ์เปลี่ยนไหม" — ถ้าไม่เปลี่ยน → ลบ
 - ห้าม TODO, MOCK, placeholder
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-error-handling, improve-error-messages, improve-stability
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-error-handling.md` — ปรับปรุง error handling ให้ลึก — taxonomy, boundaries, propagation, retry และ user-facing errors
+- `references/fix-improve-error-messages.md` — ปรับคุณภาพ error messages ที่ user เห็นให้บอกสาเหตุและวิธีแก้ชัดเจน
+- `references/fix-improve-stability.md` — แก้ไข stability findings ด้าน error handling, recovery, monitoring, debuggability
 ## Expected Outcome
 
 - รายงานความเสถียรของ app ครอบคลุมทุกด้าน: stability, error handling, debuggability

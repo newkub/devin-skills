@@ -3,7 +3,6 @@ name: review-bundle
 description: ตรวจสอบ bundle size, build output, chunks และ output ก่อน build production
 argument-hint: "[app-or-package]"
 related:
-  - optimize-bundle
   - run-build
   - report-table
   - review-assets
@@ -11,7 +10,7 @@ related:
 
 ## Goal
 
-ตรวจสอบ bundle size, build output, chunks และ output ก่อน build production โดยไม่แก้ไข config ก่อนส่งต่อให้ `/optimize-bundle`
+ตรวจสอบ bundle size, build output, chunks และ output ก่อน build production โดยไม่แก้ไข config ก่อนส่งต่อไปยัง section `## Fix`
 
 ## Scope
 
@@ -48,7 +47,7 @@ related:
 > Goal: สรุป findings พร้อม fix direction
 
 1. ทำ `/report-table` ด้วย columns: No., Area, Severity, Finding, Evidence, Fix
-2. ชี้ไป `/optimize-bundle` สำหรับการแก้ไข
+2. ชี้ไป section `## Fix` สำหรับการแก้ไข
 3. ถ้ามี assets ปัญหาด้วย → เชื่อม `/review-assets`
 
 ## Rules
@@ -63,8 +62,20 @@ related:
 - ทุก finding ต้องมี bundle size, chunk name หรือ config line
 - ไม่แนะนำ chunking โดยไม่มี evidence
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: optimize-build, optimize-bundle
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-optimize-build.md` — ลดเวลา build ด้วย cache, incremental builds, parallelism และ config tuning
+- `references/fix-optimize-bundle.md` — วิเคราะห์และปรับปรุง bundle size, build time, chunks และ output ก่อน build production
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม bundle size, chunks, deps
 - ทุก finding มี evidence และ severity
-- next action ชัดเจนผ่าน `/optimize-bundle`
+- next action ชัดเจนผ่าน section `## Fix`

@@ -7,9 +7,9 @@ related:
   - capture
   - run-test-website-by-agent-browser
   - review-uxui
-  - improve-uxui
+  - review-uxui
   - review-accessibility
-  - improve-accessibility
+  - review-accessibility
   - report-uxui-all-routes
   - report-table
   - resolve-errors
@@ -23,7 +23,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้อง verify ว่า UI ทำงานตาม expected บน browser จริง ไม่ใช่แค่ unit tests ครอบคลุม visual, interaction, responsive, a11y และ route coverage — ไม่รวมการ design หรือ implement UX/UI ใหม่ (ใช้ `/improve-uxui`)
+ใช้เมื่อต้อง verify ว่า UI ทำงานตาม expected บน browser จริง ไม่ใช่แค่ unit tests ครอบคลุม visual, interaction, responsive, a11y และ route coverage — ไม่รวมการ design หรือ implement UX/UI ใหม่ (ใช้ `/review-uxui`)
 
 ## Execute
 
@@ -65,7 +65,7 @@ related:
 
 1. ใช้ `agent-browser snapshot -i` เพื่อบันทึก interactive elements
 2. ตรวจ focus order, visible focus indicator และ semantic roles
-3. ถ้าพบ a11y issues → เชื่อม `/review-accessibility` หรือ `/improve-accessibility`
+3. ถ้าพบ a11y issues → เชื่อม `/review-accessibility` หรือ `/review-accessibility`
 
 ### 6. Run Responsive Checks
 
@@ -113,7 +113,7 @@ related:
 
 ### 4. No Manual Design Changes
 
-- ห้ามแก้ UX/UI ตรงๆ ระหว่าง test — ส่งต่อ `/improve-uxui`
+- ห้ามแก้ UX/UI ตรงๆ ระหว่าง test — ส่งต่อ `/review-uxui`
 - ห้าม approve visual regression โดยไม่มี rationale บันทึก
 - ใช้ `/follow-lib-agent-browser` เพื่อดู commands เต็ม
 - ถ้า test หลาย routes ใช้ `/run-test-website-by-agent-browser` หรือ `/report-uxui-all-routes`

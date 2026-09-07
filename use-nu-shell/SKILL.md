@@ -15,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ task ที่ต้องการอ่าน/ประมวลผล structured data, file operations, หรือ cross-platform shell commands ด้วย `nu`
+ใช้สำหรับ task ที่ต้องการอ่าน/ประมวลผล structured data, file operations, หรือ cross-platform shell commands ด้วย `nu` ถ้าต้องการ shell อื่น ให้อ้างอิง `/use-bun-shell` หรือ `/use-pwsh-shell`; สร้างสคริปต์ automation ด้วย `/use-scripts` และใช้ `/follow-best-practice` สำหรับ best practices เฉพาะ domain
 
 ## Execute
 
@@ -60,7 +60,7 @@ related:
 2. ใช้ `let` สำหรับ immutable variables และ `mut` สำหรับ mutable
 3. ใช้ `print` สำหรับ side-effect logging
 4. จัดการ data types: int, float, string, bool, list, record, table, filesize, duration
-5. ใช้ `into <type>` เพื่อ convert data
+5. ใช้ `into <type>` เพื่อ convert data เช่น `into int`, `into string`, `into filesize`
 6. เก็บ script ไว้ใน `.devin/scripts/` ถ้าใช้ซ้ำ หรือ `$env:TEMP` ถ้าชั่วคราวตาม `/use-scripts`
 
 ### 5. Integrate With Use Scripts
@@ -92,7 +92,7 @@ related:
 
 - ใช้ `^<command>` เมื่อชนกับ `nu` internal
 - ใช้ `lines` เพื่อ split external output เป็น lines
-- ใช้ `spread operator` `...$list` สำหรับ external arguments
+- ใช้ `spread operator` `...$list` สำหรับ external arguments เช่น `^git ...$args`
 
 ### 4. Fallback
 
@@ -106,7 +106,7 @@ related:
 
 - ใช้ `nu -c` สำหรับคำสั่งทันที
 - ไม่สร้างไฟล์ `.nu` เพื่อรัน command ชั่วคราว
-- ถ้า command มี side effects ให้ dry run ด้วย `print` หรือ `describe` ก่อน
+- ถ้า command มี side effects ให้ dry run ด้วย `print` หรือ preview ด้วย `first`/`take` ก่อน
 - ถ้าจำเป็นต้องเขียนไฟล์ ให้ตรวจสอบ path ด้วย `path expand` ก่อน
 
 ### 6. Script Location
@@ -114,10 +114,6 @@ related:
 - ใช้ `.devin/scripts/` สำหรับ permanent scripts
 - ใช้ `$env:TEMP` สำหรับ throwaway scripts (OS temp directory, ไม่สร้างใน project)
 - ใช้ `.nu` สำหรับ Nushell scripts
-
-- ใช้ /use-bun-shell ถ้าจำเป็น
-- ใช้ /use-pwsh-shell ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
 
 ## Expected Outcome
 

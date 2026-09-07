@@ -1,6 +1,6 @@
 ---
 name: report-scan-todo
-description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่งและความสำคัญ
+description: รวบรวม TODO/FIXME/HACK markers จาก codebase พร้อมตำแหน่ง ความสำคัญ และอายุจาก git blame
 argument-hint: "[scope]"
 related:
   - update-todo-md
@@ -53,6 +53,7 @@ related:
 2. ระบุ function หรือ class ที่ marker อยู่
 3. ระบุ module หรือ feature ที่ marker เกี่ยวข้อง
 4. ระบุไฟล์และบรรทัดที่ marker อยู่
+5. ใช้ `git blame -L` ดูวันที่และ author ของแต่ละ marker line แล้วจัดกลุ่มตามอายุ: <30 วัน, 30-90 วัน, >90 วัน (stale)
 
 ### 4. Assess Priority
 
@@ -65,6 +66,7 @@ related:
    - NOTE: informational (ไม่ต้องแก้)
 2. ปรับ priority ตาม context: critical path, security, performance
 3. ระบุ markers ที่เก่าเกิน 6 เดือน (stale)
+4. จัดหมวด debt: stale (>90 วันไม่มีการแก้), orphaned (code ที่ comment อ้างถึงเปลี่ยนหรือถูกลบไปแล้ว), vague (marker เปล่าไม่มี owner/ticket reference), actionable (context ครบและยัง relevant)
 
 ### 5. Format Report
 
@@ -138,3 +140,5 @@ related:
 - ไม่มีการแก้ไข markers — read-only report
 - Report อ่านง่าย มี key findings ด้านบน
 - มี next action ชัดเจน
+
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: check-todo-comments)

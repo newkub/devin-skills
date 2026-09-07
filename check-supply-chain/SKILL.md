@@ -4,7 +4,7 @@ description: ตรวจ supply chain risks — lockfile integrity, typosquat s
 argument-hint: "[manifest-or-lockfile]"
 related:
   - gen-sbom
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -16,7 +16,7 @@ related:
 
 - ตรวจ manifests + lockfiles: `package.json`, `bun.lock`, `pnpm-lock.yaml`, `Cargo.lock`, `go.sum`
 - ครอบคลุม: lockfile integrity, install scripts (`postinstall`), typosquat lookalikes, git/url deps, registry sources, version pinning
-- Read-only: รายงาน — remediation ผ่าน `/improve-security` หรือ `/improve-dependencies`
+- Read-only: รายงาน — remediation ผ่าน `/review-security` หรือ `/review-dependencies`
 
 ## Execute
 
@@ -69,7 +69,7 @@ related:
 
 ### 2. Read-Only
 
-- ไม่แก้ lockfile/manifests — รายงานให้ `/improve-dependencies` แก้
+- ไม่แก้ lockfile/manifests — รายงานให้ `/review-dependencies` แก้
 - ไม่รัน install scripts เพื่อทดสอบ
 
 ### 3. Practical

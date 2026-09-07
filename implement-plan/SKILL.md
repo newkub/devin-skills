@@ -5,6 +5,7 @@ argument-hint: "[plan-file]"
 related:
   - plan
   - deep-plan
+  - follow-plan
   - report-plan
   - resolve-errors
   - deep-validate
@@ -22,6 +23,7 @@ related:
 - ทำงานตาม task table ให้ครบ
 - ลบไฟล์แผนเมื่องานเสร็จ
 - ใช้ได้กับงาน refactor หรือ implement ทั่วไป
+- Boundary: แผนจาก `AGENTS.md` หรือเอกสารทั่วไปที่ไม่ต้องลบไฟล์ → ใช้ `/follow-plan` แทน
 
 ## Execute
 

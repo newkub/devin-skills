@@ -13,7 +13,7 @@ related:
   - refactor
   - update-references
   - review-security
-  - improve-security
+  - review-security
   - run-test-all
   - run-verify
   - test-usage
@@ -97,13 +97,13 @@ related:
 > Goal: code ปลอดภัย resilient และติดตามได้เมื่อขึ้น production
 
 1. ทำ `/review-security` เพื่อหา vulnerabilities
-2. ทำ `/improve-security` สำหรับ findings ที่พบ
+2. ทำ `/review-security` สำหรับ findings ที่พบ
 3. Validate/sanitize user inputs, ใช้ parameterized queries, ห้าม expose secrets
 4. Implement retry logic, exponential backoff, graceful degradation
 5. ตั้งค่า structured logging สำหรับ external calls
 6. เพิ่ม metrics: response time, error rate
 7. เพิ่ม correlation IDs สำหรับ tracing
-8. ถ้าจำเป็น → ทำ `/improve-observability`
+8. ถ้าจำเป็น → ทำ `/review-observability`
 
 ### 8. Refactor And Cleanup
 

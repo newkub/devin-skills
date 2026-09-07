@@ -7,8 +7,8 @@ related:
   - run-build
   - run-verify
   - follow-tool-vite
-  - optimize-bundle
-  - optimize-codebase-everything
+  - review-bundle
+  - deep-optimize
   - report-table
   - suggest-next-action
 ---
@@ -119,8 +119,8 @@ related:
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /optimize-bundle ถ้าจำเป็น
-- ใช้ /optimize-codebase-everything ถ้าจำเป็น
+- ใช้ /review-bundle ถ้าจำเป็น
+- ใช้ /deep-optimize ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 

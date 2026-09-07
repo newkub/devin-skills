@@ -5,7 +5,7 @@ argument-hint: "[topic]"
 related:
   - idea-features
   - deep-plan
-  - improve
+  - review-then-fix
   - review-plan
   - report-plan
   - report-uxui-sketch
@@ -55,9 +55,9 @@ related:
 
 > Goal: ทำให้แผนกระชับและอ่านง่าย
 
-1. ทำ `/improve` กับเนื้อหาแผน
+1. ทำ `/review-then-fix` กับเนื้อหาแผน
 2. ทำ `/review-plan` เพื่อตรวจคุณภาพ
-3. ถ้าพบปัญหา → `/improve` ซ้ำ (max 3 รอบ)
+3. ถ้าพบปัญหา → `/review-then-fix` ซ้ำ (max 3 รอบ)
 4. ทำ `/report-uxui-sketch` หรือ `/report-architecture-diagram` สำหรับภาพรวม visual (ถ้าต้องการ)
 
 ### 4. Check For Duplicate

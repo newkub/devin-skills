@@ -4,7 +4,7 @@ description: ตรวจ invisible characters และ homoglyphs ใน code 
 argument-hint: "[path]"
 related:
   - search-files-patterns
-  - improve-security
+  - review-security
   - report-table
 ---
 
@@ -16,7 +16,7 @@ related:
 
 - ตรวจ source files ทุกภาษา: identifiers, strings, comments
 - ครอบคลุม: zero-width chars (ZWSP, ZWJ, ZWNJ, BOM กลางไฟล์), bidi controls (U+202A-E, U+2066-9), homoglyphs ใน identifiers, confusable characters
-- Read-only: รายงานตำแหน่ง — ลบ/แก้ผ่าน `/improve-security`
+- Read-only: รายงานตำแหน่ง — ลบ/แก้ผ่าน `/review-security`
 
 ## Execute
 
@@ -65,7 +65,7 @@ related:
 
 ### 3. Read-Only
 
-- ไม่ลบ characters — รายงานให้ `/improve-security` แก้
+- ไม่ลบ characters — รายงานให้ `/review-security` แก้
 - ห้ามแก้ไฟล์ที่อาจเป็น intentionally internationalized โดยไม่ยืนยัน
 
 ## Expected Outcome

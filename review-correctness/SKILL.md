@@ -133,6 +133,17 @@ Review implementation correctness ของ code, configuration, และ tests
 - ใช้ /use-astgrep ถ้าจำเป็น
 - ใช้ /review-test ถ้าจำเป็น
 
+## Fix
+
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+
+Merged from: improve-correctness
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-correctness.md` — แก้ไขความถูกต้องของ code จาก findings ของ `/review-correctness`
 ## Expected Outcome
 
 - รายงาน correctness findings ครอบคลุมทุก dimension

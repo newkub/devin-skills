@@ -5,7 +5,7 @@ argument-hint: "[repos-scope]"
 related:
   - check-uncommit
   - check-unpush
-  - list-cicd-fails
+  - list-github-actions-fails
   - list-github-pr
   - list-github-issue
   - list-git-branch
@@ -37,7 +37,7 @@ related:
 
 > Goal: สิ่งที่ต้อง attention บน remote
 
-1. ทำ `/list-cicd-fails` — workflows ที่ fail ล่าสุด
+1. ทำ `/list-github-actions-fails` — workflows ที่ fail ล่าสุด
 2. ทำ `/list-github-pr` — PRs ที่รอ review (ของตัวเอง + ที่ถูก request)
 3. ทำ `/list-github-issue` — issues ที่ assigned/mention
 

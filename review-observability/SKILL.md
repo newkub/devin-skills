@@ -8,7 +8,6 @@ related:
   - review-delivery
   - report-table
   - suggest-next-action
-  - improve-observability
 ---
 
 ## Goal
@@ -126,9 +125,18 @@ observability review สำหรับ: metrics collection, distributed tracing
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-table`
+## Fix
 
-- ใช้ /improve-observability ถ้าจำเป็น
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
 
+Merged from: improve-logging, improve-observability
+
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+
+- `references/fix-improve-logging.md` — ปรับ log quality ทั้ง levels, structure, context และ redaction ของ sensitive data
+- `references/fix-improve-observability.md` — เพิ่ม logging, metrics, tracing และ alerting ตาม findings จาก review-observability
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก observability section
