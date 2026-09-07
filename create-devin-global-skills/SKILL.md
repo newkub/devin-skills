@@ -13,8 +13,13 @@ related:
   - deep-validate
   - update-references
   - check-skills-related
-
----
+  - --
+  - use-scripts
+  - review-writing
+  - check-reference
+  - report-config-files
+  - learn-from-web
+  - update-specs
 
 ## Goal
 
@@ -23,6 +28,8 @@ related:
 ## Scope
 
 ใช้เมื่องานต้องสร้าง skill ใหม่เท่านั้น ไม่รวมการ update หรือ refactor skills เดิม
+
+ถ้าต้องการสร้าง skills จาก dependencies ใน package manifest (`package.json`, `Cargo.toml`) ที่ยังไม่มีใน global → ดู flow ใน [references/create-skills-from-manifest.md](references/create-skills-from-manifest.md) (แก้ path เป็น `%APPDATA%\devin\skills`)
 
 ## Execute
 

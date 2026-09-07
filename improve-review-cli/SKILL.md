@@ -9,7 +9,7 @@ related:
   - update-create-analyze-cli
   - check-should-update
   - scan-codebase
-  - create-skills-from-manifest
+  - create-devin-global-skills
   - resolve-errors
   - report-table
 ---
@@ -29,7 +29,7 @@ related:
 > Goal: อัปเดต rules, skills และ CLI ให้ทันสมัยก่อนรัน review
 
 1. ทำ `/scan-codebase` ใน `tools/review-codebase/` ถ้ามีอยู่
-2. ทำ `/create-skills-from-manifest` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
+2. ทำ `/create-devin-global-skills` เพื่อสร้าง skills ที่ขาดจาก dependencies และ features
 3. ทำ `/update-create-analyze-cli` เพื่ออัปเดต `tools/analyze` ให้ครอบคลุม features ปัจจุบัน
 4. ทำ `/check-should-update` โดยระบุ target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
 5. ถ้าผลเป้น `skip` → ไป Step 8
@@ -51,7 +51,7 @@ related:
 
 > Goal: มั่นใจว่า skills/rules ครอบคลุม dependencies และ features
 
-1. ทำ `/create-skills-from-manifest` เพื่อสร้าง skills ที่ขาดจาก dependencies
+1. ทำ `/create-devin-global-skills` เพื่อสร้าง skills ที่ขาดจาก dependencies
 2. ตรวจ `AGENTS.md` และ `.devin/rules` อัปเดตตาม features ใหม
 3. ถ้ามี skill หรือ rule ขาด → สร้างหรืออัปเดต
 

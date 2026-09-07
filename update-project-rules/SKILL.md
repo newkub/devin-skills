@@ -20,7 +20,7 @@ related:
 - ใช้เมื่อต้องการ lint rules แบบ AST-based ที่ enforce conventions เฉพาะ project
 - ครอบคลุม `rules/*.yml`, `sgconfig.yml`, และ custom rule directories
 - ไม่รวม `.devin/rules` (Markdown rules) — ใช้ `/update-devin-project-rules` แทน
-- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/create-skills-from-manifest` แทน
+- ไม่รวมการสร้าง skills จาก manifest — ใช้ `/create-devin-global-skills` แทน
 
 ## Execute
 

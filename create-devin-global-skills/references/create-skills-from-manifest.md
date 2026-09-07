@@ -1,17 +1,6 @@
----
-name: create-skills-from-manifest
-description: สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
-argument-hint: "[scope]"
-related:
-  - update-devin-global-skills
-  - use-scripts
-  - update-references
-  - review-writing
-  - check-reference
-  - report-config-files
-  - learn-from-web
-  - update-specs
----
+# create-skills-from-manifest (merged content)
+
+> หมายเหตุ: เนื้อหาเดิมอ้าง path Windsurf เก่า — ใช้ %APPDATA%\devin\skills แทน
 
 ## Goal
 
