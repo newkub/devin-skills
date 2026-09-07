@@ -7,7 +7,8 @@ related:
   - delete-git-worktree
   - cleanup-worktree
   - resolve-merge-conflicts
-  - report-table
+  - refactor-commit
+  - report
   - suggest-next-action
 ---
 
@@ -71,10 +72,11 @@ related:
 1. cd ไปยัง main working tree หรือ worktree ที target branch
 2. `git switch <target-branch>`
 3. รัน `git status` ให้สะอาด
-4. `git merge <feature-branch>`
-5. ถ้ามี conflict → ใช้ `/resolve-merge-conflicts`
-6. ถ้าต้องการ squash → `git merge --squash <feature-branch>`
-7. ถ้าต้องการ rebase → rebase ใน feature worktree ก่อน merge
+4. ถ้า feature worktree มี commit history รก → สลับไป feature worktree แล้วทำ `/refactor-commit` ก่อน merge
+5. `git merge <feature-branch>`
+6. ถ้ามี conflict → ใช้ `/resolve-merge-conflicts`
+7. ถ้าต้องการ squash → `git merge --squash <feature-branch>`
+8. ถ้าต้องการ rebase → rebase ใน feature worktree ก่อน merge
 
 ### 5. Verify Merge
 
@@ -99,7 +101,7 @@ related:
 
 > Goal: สรุปผล
 
-1. ใช้ `/report-table` แสดง: Worktree Path, Branch, Target Branch, Merge Status, Cleanup Status
+1. ใช้ `/report` แสดง: Worktree Path, Branch, Target Branch, Merge Status, Cleanup Status
 2. ทำ `/suggest-next-action`
 
 ## Rules

@@ -11,6 +11,7 @@ related:
   - review-security
   - resolve-errors
   - git-push
+  - refactor-commit
   - open-web
   - ask-me
   - report
@@ -68,7 +69,8 @@ Review PR แบบละเอียด ตอบ comments, resolve conversatio
 1. ถ้ามี changes ต้องทำ → implement ตาม severity
 2. ทำ `/run-check`, `/run-test` หลังแก้
 3. ทำ `/git-push` ไม่ force
-4. เปิด web ให้ user ดู diff หรือ PR
+4. ถ้า commits บน PR branch รก → ทำ `/refactor-commit` ก่อน push หรือ merge
+5. เปิด web ให้ user ดู diff หรือ PR
 
 ### 5. Ask To Merge
 
@@ -86,8 +88,10 @@ Review PR แบบละเอียด ตอบ comments, resolve conversatio
 - ต้อง resolve ทุก conversation ก่อน merge
 - ต้องมี CI ผ่านก่อน merge
 - ถ้ามี change ต้อง push กลับ PR branch
+- ถ้า commit history รก → ทำ `/refactor-commit` ก่อน merge
 - ใช้ evidence ในการตอบ comment
 
+- ใช้ /report ถ้าจำเป็น
 ## Expected Outcome
 
 - PR ถูก review ละเอียด

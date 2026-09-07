@@ -5,8 +5,9 @@ argument-hint: "[path]"
 related:
   - list-project-git-in-computer
   - git-push
+  - refactor-commit
   - check-uncommit
-  - report-table
+  - report
 ---
 
 ## Goal
@@ -49,10 +50,10 @@ related:
 
 > Goal: สรุป repos ที่มีงานยังไม่ backup
 
-1. ทำ `/report-table` คอลัมน์: `No.`, `Repo`, `Branch`, `Ahead`, `Behind`, `Upstream`, `Status`
+1. ทำ `/report` คอลัมน์: `No.`, `Repo`, `Branch`, `Ahead`, `Behind`, `Upstream`, `Status`
 2. Status: `unpushed`, `no-upstream`, `gone`, `no-remote`, `unreachable`, `clean`
 3. เรียง `unpushed` มากสุดก่อน
-4. แนะนำ `/git-push` ต่อ repo/branch ที่ต้อง push
+4. แนะนำ `/git-push` ต่อ repo/branch ที่ต้อง push — ถ้า unpushed commits รก แนะนำ `/refactor-commit` ก่อน push
 
 ## Rules
 
@@ -75,6 +76,7 @@ related:
 - ใช้ /list-project-git-in-computer ถ้าจำเป็น
 - ใช้ /check-uncommit ถ้าจำเป็น
 - ใช้ /git-push ถ้าจำเป็น
+- ใช้ /refactor-commit ถ้าจำเป็น
 
 ## Expected Outcome
 

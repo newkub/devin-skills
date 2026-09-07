@@ -6,6 +6,7 @@ related:
   - git-commit
   - git-commit-and-push
   - git-commit-selected-files
+  - refactor-commit
   - follow-git-flow
   - resolve-errors
   - follow-best-practice
@@ -139,6 +140,7 @@ Stage ทุกไฟล์ที่มีการเปลี่ยนแป�
 - ใช้ /git-commit ถ้าจำเป็น
 - ใช้ /git-commit-and-push ถ้าจำเป็น
 - ใช้ /git-commit-selected-files ถ้าจำเป็น
+- ใช้ /refactor-commit ถ้าจำเป็น
 - ใช้ /follow-git-flow ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

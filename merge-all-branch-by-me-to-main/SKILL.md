@@ -6,10 +6,11 @@ related:
   - list-git-branch
   - merge-git-branch
   - delete-git-branch
-  - cleanup-git-branch
+  - cleanup-branches-merged
   - resolve-merge-conflicts
+  - refactor-commit
   - git-push
-  - report-table
+  - report
   - resolve-errors
   - ask-me
 ---
@@ -20,7 +21,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 
 ## Scope
 
-ใช้เมื่อต้องรวม branches ที่ตัวเองสร้างกลับ `main` และทำความสะอาด repo — เป็น destructive workflow ต้องมี dry-run และ user confirmation ก่อนลบจริง ไม่รวมการ resolve PR บน remote (ใช้ `/merge-github-pr` หรือ `/resolve-github-pr`)
+ใช้เมื่อต้องรวม branches ที่ตัวเองสร้างกลับ `main` และทำความสะอาด repo — เป็น destructive workflow ต้องมี dry-run และ user confirmation ก่อนลบจริง ไม่รวมการ resolve PR บน remote (ใช้ `/merge-github-pr` หรือ `/merge-github-pr`)
 
 หากต้องการ merge branch ที่ไม่ใช่ของตัวเอง → ต้องตรวจสอบเจ้าของ branch และขออนุญาตก่อน ไม่มี skill auto-merge ทั้งหมดให้ใช้โดย default
 
@@ -51,7 +52,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 > Goal: แสดงแผนก่อนทำจริง
 
 1. สร้างตาราง: branch → commits ahead/behind → merged? → created by → action (merge/delete/skip)
-2. ทำ `/report-table` แสดง plan พร้อม branches ที่จะถูกลบ
+2. ทำ `/report` แสดง plan พร้อม branches ที่จะถูกลบ
 3. ถ้ามี unmerged branches → แจ้งว่าจะพยายาม merge และจะ conflict ตรงไหน
 4. ทำ `/ask-me` ให้ user ยืนยันก่อนดำเนินการ
 
@@ -76,7 +77,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 
 > Goal: ลบ branch เก่าของ user หลัง merge สำเร็จ
 
-1. ลบ local branches ที่ merged แล้วด้วย `git branch -d <branch>` — ใช้ `/delete-git-branch` หรือ `/cleanup-git-branch`
+1. ลบ local branches ที่ merged แล้วด้วย `git branch -d <branch>` — ใช้ `/delete-git-branch` หรือ `/cleanup-branches-merged`
 2. unmerged branches ที่ merge สำเร็จแล้ว → `git branch -d` ได้; ที่ยังไม่ merge → ห้ามลบเว้นแต่ user ยืนยัน `--force-unmerged`
 3. ถ้า `--remote` → ลบ remote branches ด้วย `git push origin --delete <branch>` เฉพาะที่ merged และยืนยันแล้ว
 4. prune stale remote refs ด้วย `git fetch --prune`
@@ -87,7 +88,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 
 1. `git branch` ยืนยันเหลือเฉพาะ `main`
 2. ถ้าต้องการ sync remote → `/git-push` หรือ `git push origin main`
-3. ทำ `/report-table` สรุป: merged, deleted, skipped, conflicts, remaining branches
+3. ทำ `/report` สรุป: merged, deleted, skipped, conflicts, remaining branches
 
 ## Rules
 
@@ -115,6 +116,7 @@ Merge เฉพาะ branch ที่ `git config user.name` / `user.email` ห
 - merge ทีละ branch
 - ถ้า merge ใดพัง → หยุดและ report
 - ลบ branches เฉพาะหลัง main verified ผ่าน
+- ถ้า branch ที่ merge มี history รก → ทำ `/refactor-commit` บน branch นั้นก่อน merge
 
 ## Expected Outcome
 
