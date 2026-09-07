@@ -15,7 +15,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: echo "Hello"
 ```
 
@@ -59,7 +59,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
 ```
@@ -67,7 +67,7 @@ jobs:
 ## Caching
 
 ```yaml
-- uses: actions/cache@v4
+- uses: actions/cache@v6
   with:
     path: ~/.bun
     key: ${{ runner.os }}-bun-${{ hashFiles('**/package-lock.json') }}

@@ -170,11 +170,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
       - run: bun install
       - name: Create Release Pull Request or Publish
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: bun changeset version
           publish: bun changeset publish

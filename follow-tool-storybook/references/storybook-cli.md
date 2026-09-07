@@ -7,8 +7,8 @@
 | `storybook dev` | Start development server |
 | `storybook build` | Build static site for production |
 | `storybook test` | Run tests (Vitest addon) |
-| `bun create storybook@latest` | Initialize Storybook (v8.3+) |
-| `npx storybook@latest init` | Initialize Storybook (pre-v8.3) |
+| `bun create storybook@latest` | Initialize Storybook (v10.6+) |
+| `npx storybook@latest init` | Initialize Storybook (legacy, pre-v8.3) |
 
 ## Options
 
@@ -24,7 +24,7 @@
 
 | Flag | Description |
 |---|---|
-| `--package-manager` | Specify package manager (bun, bun, yarn, bun) |
+| `--package-manager` | Specify package manager (npm, pnpm, yarn, bun) |
 | `--type` | Specify project type (react, vue, angular, svelte, etc.) |
 
 ## Scripts
@@ -57,7 +57,7 @@ bun run test-storybook
 
 ## Version-Specific Commands
 
-### v10.4+ (ESM-only)
+### v10.6+ (ESM-only)
 
 ```bash
 bun create storybook@latest

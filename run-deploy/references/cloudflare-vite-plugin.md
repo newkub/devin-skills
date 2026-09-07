@@ -119,7 +119,7 @@ wrangler deploy
 ใช้ `cloudflare/wrangler-action@v3` สำหรับ auth ใน CI เพราะ `bunx wrangler deploy` โดยตรงมักไม่ detect `CLOUDFLARE_API_TOKEN` env var ใน non-interactive environment:
 
 ```yaml
-- uses: actions/checkout@v4
+- uses: actions/checkout@v7
 - uses: oven-sh/setup-bun@v2
 - name: Install dependencies
   run: bun install --frozen-lockfile

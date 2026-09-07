@@ -126,10 +126,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
@@ -137,7 +137,7 @@ jobs:
         run: bun install --ignore-scripts
 
       - name: Run Renovate
-        uses: renovatebot/github-action@v39.2.4
+        uses: renovatebot/github-action@v46
         with:
           configurationFile: .github/renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}

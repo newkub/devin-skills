@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- Package: `elysia` v1.4.29 (published ~23 days ago)
+- Package: `elysia` v1.4.30 (published ~12 days ago)
 - Companion: `@elysia/eden` (end-to-end type safety client)
 - License: MIT
 - Runtime: Optimized for Bun; also supports Node.js

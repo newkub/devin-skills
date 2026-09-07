@@ -214,8 +214,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v2
+      - uses: actions/checkout@v7
+      - uses: supabase/setup-cli@v3
         with:
           version: '2.115.0'
       - run: supabase db push

@@ -2,8 +2,8 @@
 
 ## Version Info
 
-- Package: `@opentelemetry/auto-instrumentations-node` v0.79.0
-- API Package: `@opentelemetry/api` v1.9.0+
+- Package: `@opentelemetry/auto-instrumentations-node` v0.80.0
+- API Package: `@opentelemetry/api` v1.9.1+
 - License: Apache-2.0
 - Node.js: >=20.6.0 (Node 18.19.0+ supported but EOL)
 - SigNoz Cloud Endpoint: `https://ingest.<region>.signoz.cloud:443`

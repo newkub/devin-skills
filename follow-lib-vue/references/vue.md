@@ -183,4 +183,4 @@ Vapor Mode is a new compilation mode that eliminates Virtual DOM overhead.
 - Vue 3.5 Release Notes: https://blog.vuejs.org/posts/vue-3-5
 - Vapor Mode RFC: https://github.com/vuejs/core/pull/10650
 - VueUse Composables: https://vueuse.org/
-- Vue 3.6 RC Release: https://github.com/vuejs/core/releases/tag/v3.6.0-rc.6
+- Vue Latest Release: https://github.com/vuejs/core/releases/tag/v3.5.42

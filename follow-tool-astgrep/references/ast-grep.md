@@ -150,8 +150,8 @@ jobs:
   sg-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ast-grep/action@v1.4
+      - uses: actions/checkout@v7
+      - uses: ast-grep/action@v1.5
 ```
 
 ## Source

@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '20'
 
@@ -74,7 +74,7 @@ steps:
 ```yaml
 steps:
   - name: Cache node modules
-    uses: actions/cache@v4
+    uses: actions/cache@v6
     with:
       path: ~/.bun
       key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}

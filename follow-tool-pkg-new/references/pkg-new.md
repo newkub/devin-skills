@@ -69,10 +69,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "pnpm"
@@ -102,8 +102,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bun run build
       - run: bunx pkg-pr-new publish
@@ -146,7 +146,7 @@ Use `needs.publish.outputs.urls` in a downstream job to install the preview pack
   e2e-test:
     needs: publish
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pnpm install
       - run: pnpm add ${{ needs.publish.outputs.urls }}
       - run: pnpm test

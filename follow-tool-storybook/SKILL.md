@@ -83,7 +83,7 @@ related:
 
 ### 1. Installation
 
-- ใช้ `bunx storybook@latest create` สำหรับ latest version
+- ใช้ `bun create storybook@latest` สำหรับ latest version
 - ใช้ `--type` ถ้า auto-detect ล้มเหลว
 - ใช้ official framework packages
 
