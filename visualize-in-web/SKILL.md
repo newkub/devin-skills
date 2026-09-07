@@ -8,7 +8,6 @@ related:
   - open-files-in-web
   - visualize-project
   - open-readme-html
-  - --
   - follow-framework-solidjs
   - follow-create-rust-crate
   - follow-tool-vite
@@ -17,6 +16,7 @@ related:
   - resolve-errors
   - ship
   - suggest-next-action
+---
 
 ## Goal
 

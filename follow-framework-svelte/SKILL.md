@@ -5,12 +5,12 @@ argument-hint: "[scope]"
 related:
   - follow-lib-unocss
   - refactor
-  - --
   - follow-framework-astro
   - follow-framework-capacitor
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
+---
 
 ## Goal
 

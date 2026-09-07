@@ -38,10 +38,10 @@ related:
 
 > Goal: แยกประเภทก่อนแก้
 
-1. **Code duplication** — ฟังก์ชัน/บล็อก code ซ้ำ
-2. **Content duplication** — ข้อความอธิบายซ้ำในหลายไฟล์
-3. **Config duplication** — ค่า/setting ซ้ำซ้อน
-4. **Cross-skill duplication** — เนื้อหา skill ทับกัน → ส่งต่อ `/review-redundancy`
+1. Code duplication — ฟังก์ชัน/บล็อก code ซ้ำ
+2. Content duplication — ข้อความอธิบายซ้ำในหลายไฟล์
+3. Config duplication — ค่า/setting ซ้ำซ้อน
+4. Cross-skill duplication — เนื้อหา skill ทับกัน → ส่งต่อ `/review-redundancy`
 
 ### 3. Choose Canonical
 

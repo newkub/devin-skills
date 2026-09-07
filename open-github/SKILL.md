@@ -17,10 +17,10 @@ related:
   - explore-github-trending
   - list-github-star
   - search-in-github-star
-  - --
   - follow-secret-manager
   - open-web-for-config-secret
   - follow-math-concepts
+---
 
 ## Goal
 

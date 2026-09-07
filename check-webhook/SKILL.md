@@ -1,6 +1,6 @@
 ---
 name: check-webhook
-description: ตรวจ webhook endpoints ทั้งด้าน security (signature, replay, auth) และ delivery (retries, ordering, dead-letter)
+description: ตรวจ webhook endpoints ด้าน security (signature, replay, auth) และ delivery (retries, dead-letter)
 argument-hint: "[endpoint-or-provider] [--security|--delivery]"
 related:
   - improve-auth

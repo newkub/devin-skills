@@ -10,12 +10,12 @@ related:
   - deep-review
   - deep-plan
   - refactor
-  - --
   - ask-me
   - deep-validate
   - follow-parallel
   - follow-devin-global-subagents
   - report
+---
 
 
 ## Goal

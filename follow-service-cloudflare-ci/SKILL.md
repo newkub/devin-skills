@@ -1,6 +1,6 @@
 ---
 name: follow-service-cloudflare-ci
-description: ใช้ Cloudflare CI SDK รัน build, lint, test, typecheck บน Workflows — ไม่รวม Wrangler dev/deploy (ใช้ /follow-service-cloudflare)
+description: ใช้ Cloudflare CI SDK รัน build, lint, test, typecheck บน Workflows
 argument-hint: "[scope]"
 related:
   - follow-service-cloudflare

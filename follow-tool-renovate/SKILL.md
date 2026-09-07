@@ -9,12 +9,12 @@ related:
   - follow-tool-pkg-new
   - follow-tool-release-it
   - follow-tool-semantic-release
-  - --
   - follow-tool-agent-browser
   - use-astgrep
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
+---
 
 
 ## Goal

@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-workflow
 description: Review workflow ให้เร็ว ปลอดภัย ใช้ง่าย มีประสิทธิภาพ ไม่ซ้ำซ้อน และไม่เกิน scope
 argument-hint: "[workflow-or-skill]"
@@ -13,10 +13,10 @@ related:
   - suggest-next-action
   - use-subagents
   - follow-parallel
-  - --
   - review-references
   - follow-single-responsibility
   - report
+---
 
 
 ## Goal

@@ -18,11 +18,11 @@ related:
 ## Scope
 
 - ครอบคลุม dimensions ที่ซ้ำกันหลายจุดแต่เขียนต่างกัน:
-  - **patterns** — วิธีทำสิ่งเดียวกันหลายแบบ (fetch แบบต่างกัน, state handling ปนกัน)
-  - **API shapes** — response format, error format, pagination, naming conventions ของ endpoints
-  - **error handling** — throw style, error types, user-facing messages
-  - **config** — env naming, config file structure, default values style
-  - **docs/comments** — comment style, JSDoc/docstring coverage, README structure
+  - patterns — วิธีทำสิ่งเดียวกันหลายแบบ (fetch แบบต่างกัน, state handling ปนกัน)
+  - API shapes — response format, error format, pagination, naming conventions ของ endpoints
+  - error handling — throw style, error types, user-facing messages
+  - config — env naming, config file structure, default values style
+  - docs/comments — comment style, JSDoc/docstring coverage, README structure
 - Naming ลงลึก (rename ข้าม codebase) → ส่งต่อ `/improve-naming`
 - Action-oriented: แก้จริง — ต้อง `/update-references` เมื่อมีการย้าย/เปลี่ยนชื่อ
 

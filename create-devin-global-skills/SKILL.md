@@ -13,13 +13,13 @@ related:
   - deep-validate
   - update-references
   - check-skills-related
-  - --
   - use-scripts
   - review-writing
   - check-reference
   - report-config-files
   - learn-from-web
   - update-specs
+---
 
 ## Goal
 

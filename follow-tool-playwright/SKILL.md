@@ -9,9 +9,9 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - --
   - run-verify
   - run-test
+---
 
 
 ## Goal
