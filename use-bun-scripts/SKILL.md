@@ -4,6 +4,7 @@ description: สร้าง Bun scripts สำหรับ automate งาน
 argument-hint: "[scope]"
 related:
   - follow-runtime-bun
+  - use-bun-native-api
   - update-devin-global-skills
 ---
 

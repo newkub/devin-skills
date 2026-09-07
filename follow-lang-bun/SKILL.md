@@ -6,6 +6,7 @@ related:
   - follow-create-bun-cli
   - follow-create-bun-plugins
   - follow-runtime-bun
+  - use-bun-native-api
   - follow-best-practice
   - setup-cicd
   - use-scripts

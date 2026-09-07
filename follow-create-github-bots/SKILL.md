@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - use-github-ship-bots
   - follow-create-bun-cli
+  - use-bun-native-api
   - follow-create-web
   - follow-service-cloudflare
   - follow-service-vercel

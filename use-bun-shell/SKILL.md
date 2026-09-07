@@ -5,6 +5,7 @@ argument-hint: "[command]"
 related:
   - follow-runtime-bun
   - follow-lang-bun
+  - use-bun-native-api
 ---
 
 ## Goal

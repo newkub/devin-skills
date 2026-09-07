@@ -10,6 +10,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - follow-runtime-bun
+  - use-bun-native-api
 ---
 
 ## Goal

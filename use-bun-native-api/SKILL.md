@@ -6,6 +6,11 @@ related:
   - follow-runtime-bun
   - follow-lang-bun
   - follow-create-bun-cli
+  - use-bun-shell
+  - use-bun-scripts
+  - follow-tool-bunup
+  - follow-create-github-bots
+  - convert-to-esm
 ---
 
 ## Goal
