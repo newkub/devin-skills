@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับพัฒนาโปรเจกต์ TypeScript ทั้ง type system, code quality, testing, และ documentation (TypeScript 7.0+)
+ใช้สำหรับพัฒนาโปรเจกต์ TypeScript ทั้ง type system, code quality, testing, และ documentation (TypeScript 5.0+)
 
 ## Execute
 
@@ -25,7 +25,7 @@ related:
 
 > Goal: ตั้งค่า TypeScript type system ให้เข้มงวดสำหรับ type safety สูงสุด
 
-1. เปิดใช้งาน `strict: true` และ enhanced options ใน `tsconfig.json` (`strict` เป็น default ใน TS 7.0)
+1. เปิดใช้งาน `strict: true` และ enhanced options ใน `tsconfig.json`
 2. ใช้ `type narrowing` แทน `type assertion` และ `discriminated unions` สำหรับ complex state
 3. ไม่ใช้ `any` ใช้ `unknown` แทน และใช้ `readonly` สำหรับ immutable properties
 4. ใช้ utility types, `satisfies`, type guards และ exhaustive switch ด้วย `never`

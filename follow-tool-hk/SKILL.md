@@ -42,7 +42,7 @@ related:
 
 1. รัน `mise use bun gitleaks hk` เพื่อเพิ่ม tools ใน project
 2. กำหนด `HK_MISE = "1"` ใน `[env]`
-3. ใช้ version ที match `packageManager` เช่น `bun = "1.3.14"`
+3. ใช้ version ที match `packageManager` เช่น `bun = "1.4.2"`
 4. ไม่ commit secrets หรือ user-specific paths
 
 ### 4. Create hk.pkl
@@ -96,7 +96,7 @@ related:
 - ใช้ `hk.local.pkl` สำหรับ local overrides (ไม่ commit)
 - ใช้ `amends` กับ release package URL เสมอ
 - ใช้ `import Builtins.pkl` เพื่อใช้ builtin linters
-- ใช้ version tag ล่าสุด เช่น `v1.54.0`
+- ใช้ version tag ล่าสุด เช่น `v1.58.1`
 
 ### 2. mise Integration
 
@@ -128,9 +128,9 @@ related:
 
 ```toml
 [tools]
-bun = "1.3.14"
+bun = "1.4.2"
 gitleaks = "8.30.1"
-hk = "1.54.0"
+hk = "1.58.1"
 
 [env]
 HK_MISE = "1"
@@ -142,8 +142,8 @@ postinstall = "hk install"
 ### 6. Example hk.pkl
 
 ```pkl
-amends "package://github.com/jdx/hk/releases/download/v1.54.0/hk@1.54.0#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.54.0/hk@1.54.0#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.58.1/hk@1.58.1#/Builtins.pkl"
 
 mise = true
 

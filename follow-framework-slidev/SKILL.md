@@ -123,7 +123,7 @@ related:
 - ใช้ `v-motion` สำหรับ motion effects (powered by @vueuse/motion)
 - กำหนด states: `initial`, `enter`, `leave`, `click-N`, `click-N-M`
 - ใช้ร่วมกับ `v-click` บน element เดียวกันเพื่อ trigger motion ตาม click states
-- ใช้ `preload: false` ใน frontmatter สำหรับเปิดใช้ motion (ก่อน v0.48.9)
+- ใช้ `preload: false` ใน frontmatter ถ้าต้องการ control lazy loading ของ slide elements
 
 #### Slide Transitions
 

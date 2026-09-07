@@ -14,7 +14,7 @@ yarn add -D turbo
 
 ## Version
 
-- Latest stable: `2.x` (v2.8.x series)
+- Latest stable: `2.x` (v2.10.x series)
 - License: MIT
 - Requires: Node.js (any modern version)
 

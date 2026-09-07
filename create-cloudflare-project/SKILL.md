@@ -161,7 +161,7 @@ jobs:
       run:
         working-directory: <project-directory>
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest

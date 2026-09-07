@@ -56,7 +56,7 @@ related:
 8. `useElementOverflow` สำหรับ detect element overflow (ใหม่ใน v14.4)
 9. `useSpeechRecognition` expose confidence ของ latest result (v14.4)
 10. `useVirtualList` scrollTo รองรับ `behavior`, `block`, `inline` (v14.4)
-11. Custom scheduler จาก v14.1.0 สำหรับ time-based composables
+11. Custom scheduler จาก v14.4.0 สำหรับ time-based composables
 12. `watchPausable` deprecated เนื่องจาก Vue 3.5 native `watch` มี `pause/resume/stop`
 
 ### 4. Integrate With Components

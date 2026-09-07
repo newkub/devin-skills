@@ -32,7 +32,7 @@ related:
 3. ตัวอย่าง:
    - `import React from 'https://esm.sh/react@19.2.4'`
    - `import { encodeBase64 } from 'https://esm.sh/jsr/@std/encoding@1.0.0/base64'`
-   - `import tslib from 'https://esm.sh/gh/microsoft/tslib@v2.8.0'`
+   - `import tslib from 'https://esm.sh/gh/microsoft/tslib@v2.8.1'`
 
 ### 2. Configure Dependencies And Build Options
 

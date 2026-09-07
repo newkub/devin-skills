@@ -65,7 +65,7 @@ related:
 1. ทำ `/analyze-project` เพื่อวิเคราะห์โครงสร้างและ dependencies
 2. อ่าน `.github/workflows/` directory แล้ววิเคราะห์ workflows ที่มีอยู่
 3. ระบุ workflows ที่ขาดหายหรือซ้ำซ้อน
-4. เขียน workflow YAML โดยใช้ `actions/checkout@v4`, caching, และ permissions อย่างปลอดภัย
+4. เขียน workflow YAML โดยใช้ `actions/checkout@v7`, caching, และ permissions อย่างปลอดภัย
 5. แยก CI และ CD workflows
 6. ใช้ matrix strategy สำหรับ multiple configurations
 7. ตั้งค่า monitoring และ notifications สำหรับ failures

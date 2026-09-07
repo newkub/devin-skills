@@ -42,7 +42,7 @@ related:
 2. ตั้งค่า `cron` รันเวลา `0 2 * * *`
 3. เพิ่ม `workflow_dispatch` สำหรับ manual trigger
 4. กำหนด permissions `contents: write`, `pull-requests: write`, `issues: write`
-5. ใช้ `renovatebot/github-action@v39.2.4` หรือ version ล่าสุด
+5. ใช้ `renovatebot/github-action@v46` หรือ version ล่าสุด
 6. ดูรายละเอียดใน [references/renovate.md](references/renovate.md)
 
 ### 3. Setup Token

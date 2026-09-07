@@ -55,7 +55,7 @@ related:
 
 1. สร้าง `.github/workflows/release.yml`
 2. ใช้ `/follow-secret-manager` เพื่อจัดการ `NPM_TOKEN` และ `GITHUB_TOKEN` secrets หรือ `/open-web-for-config-secret` เพื่อเปิด URLs สร้าง tokens
-3. ใช้ `actions/checkout@v4` และ `oven-sh/setup-bun@v1`
+3. ใช้ `actions/checkout@v7` และ `oven-sh/setup-bun@v2`
 4. รัน `bun install` แล้ว `bun run release --ci`
 5. ดูรายละเอียดใน [references/release-it.md](references/release-it.md)
 

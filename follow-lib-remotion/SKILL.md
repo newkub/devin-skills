@@ -129,7 +129,7 @@ const MyComp: React.FC<MyProps> = ({ title, color }) => {
 };
 ```
 
-- ถ้าไม่ต้องการ validation ซับซ้อน สามารถใช้ `defaultProps` อย่างเดียวได้ (Studio infer basic controls ตั้งแต่ v4.0.516)
+- ถ้าไม่ต้องการ validation ซับซ้อน สามารถใช้ `defaultProps` อย่างเดียวได้ (Studio infer basic controls ตั้งแต่ v4.0.521)
 - ใช้ schema เมื่อต้องการ constraints, choices, descriptions, หรือ specialized controls
 
 ### 5. Use Assets And Media
@@ -203,7 +203,7 @@ bunx remotion render MyComp --sequence
 - ใช้ `interpolate()` สำหรับ smooth transitions
 - ใช้ `spring()` สำหรับ physics-based motion
 - ใช้ `extrapolateLeft/Right: 'clamp'` เพื่อหยุดค่านอก range
-- ใช้ `output: 'perceptual-scale'` สำหรับ scale interpolation (v4.0.490+)
+- ใช้ `output: 'perceptual-scale'` สำหรับ scale interpolation (v4.0.521+)
 
 ### 2. Type Safety
 

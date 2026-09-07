@@ -47,7 +47,7 @@ related:
 ```json [dprint.json]
 {
   "includes": [
-    "/*.{ts,tsx,js,jsx,json,md,rs,toml,yaml,yml,css,scss,sass,less,html,vue,svelte,astro,py,go,php}"
+    "/*.{ts,tsx,js,jsx,json,md,toml,yaml,yml,css,scss,sass,less,html,vue,svelte,astro,py,go}"
   ],
   "excludes": [
     "/node_modules",
@@ -55,18 +55,17 @@ related:
     "/.git"
   ],
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.95.13.wasm",
-    "https://plugins.dprint.dev/json-0.21.1.wasm",
-    "https://plugins.dprint.dev/markdown-0.16.3.wasm",
-    "https://plugins.dprint.dev/toml-0.5.4.wasm",
-    "https://plugins.dprint.dev/pretty_yaml-0.2.0.wasm",
-    "https://plugins.dprint.dev/dockerfile-0.3.1.wasm",
-    "https://plugins.dprint.dev/rustfmt-0.6.2.wasm",
-    "https://plugins.dprint.dev/malva-0.4.0.wasm",
-    "https://plugins.dprint.dev/markup_fmt-0.7.0.wasm",
-    "https://plugins.dprint.dev/ruff-0.2.0.wasm",
-    "https://plugins.dprint.dev/gofmt-0.3.0.wasm",
-    "https://plugins.dprint.dev/mago-0.1.0.wasm"
+    "https://plugins.dprint.dev/typescript-0.96.1.wasm",
+    "https://plugins.dprint.dev/json-0.23.0.wasm",
+    "https://plugins.dprint.dev/markdown-0.23.3.wasm",
+    "https://plugins.dprint.dev/toml-0.8.0.wasm",
+    "npm:dprint-plugin-yaml@0.6.0",
+    "https://plugins.dprint.dev/dockerfile-0.6.0.wasm",
+    "npm:dprint-plugin-malva@0.16.0",
+    "npm:dprint-plugin-markup@0.27.3",
+    "https://plugins.dprint.dev/ruff-0.8.6.wasm",
+    "npm:@jakebailey/dprint-plugin-gofumpt@0.0.17",
+    "https://plugins.dprint.dev/mago-0.25.5.wasm"
   ]
 }
 ```

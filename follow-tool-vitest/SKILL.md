@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vitest
-description: ติดตั้งและตั้งค่า Vitest 4 สำหรับ unit testing ด้วย Vite
+description: ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ด้วย Vite
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
@@ -13,7 +13,7 @@ related:
 
 ## Scope
 
-ติดตั้งและตั้งค่า Vitest 4 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
+ติดตั้งและตั้งค่า Vitest 5 สำหรับ unit testing ในโปรเจกต์เดี่ยวและ monorepo
 
 ## Execute
 
@@ -95,9 +95,9 @@ related:
 
 1. ใช้ `test.extend()` สำหรับ create reusable fixtures
 2. ใช้ scopes: `test`, `file`, `worker` สำหรับ lifecycle management
-3. ใช้ builder pattern ใน Vitest 4.1: return value แทนการเรียก `use()` แล้ว TypeScript infer type อัตโนมัติ
+3. ใช้ builder pattern ใน Vitest 5: return value แทนการเรียก `use()` แล้ว TypeScript infer type อัตโนมัติ
 4. ใช้ `onCleanup` callback สำหรับ teardown logic
-5. ใช้ `test.override` สำหรับ override fixture values ใน specific suites (Vitest 4.1)
+5. ใช้ `test.override` สำหรับ override fixture values ใน specific suites (Vitest 5)
 6. ใช้ `{ injected: true }` สำหรับ project-specific fixture values
 
 ### 8. Hooks

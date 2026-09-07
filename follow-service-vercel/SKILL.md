@@ -144,8 +144,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bunx vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
 ```

@@ -37,12 +37,12 @@ related:
 > Goal: ติดตั้ง AWS infrastructure สำหรับ RunsOn
 
 1. ใช้ CloudFormation quick-create URL:
-   `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.2.2.yaml&stackName=runs-on`
+   `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.2.3.yaml&stackName=runs-on`
 2. กรอก parameters หลัก: GitHub org, `LicenseKey`, email สำหรับ cost alerts, `Environment` (optional)
 3. ถ้า stack fail ด้วย `Unable to assume the service linked role` ให้รัน:
    `aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com`
 4. รอ stack status `CREATE_COMPLETE` แล้วบันทึก `RunsOnEntryPoint` output URL
-5. ถ้าต้องการ Terraform: ใช้ module `runs-on/runs-on/aws//flex` version `v3.2.2`
+5. ถ้าต้องการ Terraform: ใช้ module `runs-on/runs-on/aws//flex` version `v3.2.3`
 
 ### 3. Register GitHub App And Repository
 

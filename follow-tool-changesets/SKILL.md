@@ -38,7 +38,7 @@ related:
 
 ```json [.changeset/config.json]
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@4.0.0/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
@@ -71,14 +71,14 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
       - run: bun install
       - name: Create Release Pull Request or Publish
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
-          version: bun changeset version
-          publish: bun changeset publish
+          version-script: bun changeset version
+          publish-script: bun changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -118,7 +118,7 @@ jobs:
 
 ### 4. Workflow
 
-- ใช้ changesets/action@v1 สำหรับ GitHub Actions
+- ใช้ changesets/action@v2 สำหรับ GitHub Actions
 - ตั้งค่า version และ publish commands
 - ใช้ concurrency เพื่อป้องกัน conflicts
 

@@ -104,8 +104,8 @@ related:
      build:
        runs-on: ubuntu-latest
        steps:
-         - uses: actions/checkout@v4
-         - uses: Infisical/secrets-action@v1.0.9
+         - uses: actions/checkout@v7
+         - uses: Infisical/secrets-action@v1.0.17
            with:
              method: oidc
              identity-id: <identity-id>
