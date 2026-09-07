@@ -19,7 +19,7 @@ related:
   - open-github
   - all-github-repo
   - list-github-project
-  - list-project-git-in-computer
+  - list-projects-git-in-drive-d
   - list-github-star
   - report
   - suggest-next-action
@@ -77,7 +77,7 @@ related:
 
 > Goal: แนะนำ action ถัดไป
 
-1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-project-git-in-computer`
+1. ถ้าต้องการดู repo บนเครื่อง → ใช้ `/list-projects-git-in-drive-d`
 2. ถ้าต้องการดู starred ล่าสุด → ใช้ `/list-github-star`
 3. ถ้าต้องการดู metadata ของ repo ใด → ทำ `/open-github <owner>/<name>`
 4. ทำ `/suggest-next-action` เพื่อแนะนำเพิ่ม

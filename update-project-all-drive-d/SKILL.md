@@ -9,7 +9,7 @@ allowed-tools:
   - grep
   - read
 related:
-  - list-project-in-drive-d
+  - list-projects-git-in-drive-d
   - search-project-in-drive-d
   - sync-drive-d-submodules
   - update-project
@@ -35,7 +35,7 @@ related:
 > Goal: ระบุ project ทีจะอัปเดต
 
 1. ถ้า user ระบุ `filter` → ทำ `/search-project-in-drive-d <filter>` เพื่อกรอง project
-2. ถ้าไม่ระบุ → ทำ `/list-project-in-drive-d` เพื่อรายการทั้งหมด
+2. ถ้าไม่ระบุ → ทำ `/list-projects-git-in-drive-d` เพื่อรายการทั้งหมด
 3. ตรวจสอบว่าได้รายการอย่างน้อย 1 project ถ้าไม่มี → stop และ report
 4. ถาม user ด้วย `/ask-me` ว่าจะ update ทั้งหมดหรือเลือกบาง project
 

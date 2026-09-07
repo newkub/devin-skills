@@ -1,19 +1,19 @@
 ---
-name: list-project-in-drive-d
-description: แสดง template shell script list projects ใน drive D ที่มี .git
+name: list-projects-git-in-drive-d
+description: แสดง template shell script list git projects ใน drive D
 argument-hint: "[filter]"
 related:
   - create-new-project-in-drive-d
-  - list-project-git-in-computer
+  - list-uncommit-unpush-in-drive-d
 ---
 
 ## Goal
 
-สร้าง shell script template สำหรับ list projects ใน drive D ที่มี `.git` directory
+สร้าง shell script template สำหรับ list git projects ใน drive D ที่มี `.git` directory
 
 ## Scope
 
-ใช้ `list-project-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `/list-projects-git-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
 
@@ -21,7 +21,7 @@ related:
 
 > Goal: Create Shell Script Template
 
-1. สร้าง shell script สำหรับ list projects
+1. สร้าง shell script สำหรับ list git projects
 2. ใช้ `find` command หรือ PowerShell equivalent
 3. Filter เฉพาะ directories ที่มี `.git`
 4. แสดงผลเป็น list พร้อม path
@@ -47,7 +47,7 @@ related:
 
 ### 1. Git Detection
 
-ตรวจสอบว่า directory เป็น git repository:
+ตรวจสอบว่า directory เป้น git repository:
 
 - ตรวจสอบ `.git` directory
 - ใช้ `find` command กับ `-name ".git"` option
@@ -57,7 +57,7 @@ related:
 
 Filter เฉพาะ projects ใน drive D:
 
-- Search เฉพาะใน `d:\` หรือ `D:\`
+- Search เฉพาะใน `D:\`
 - Exclude hidden directories
 - Exclude system directories
 
@@ -69,13 +69,13 @@ Filter เฉพาะ projects ใน drive D:
 - แสดง project name (directory name)
 - รองรับ table format หรือ list format
 
-- ใช้ /create-new-project-in-drive-d ถ้าจำเป็น
-- ใช้ /list-project-git-in-computer ถ้าจำเป็น
+- ใช้ `/create-new-project-in-drive-d` ถ้าจำเป็น
+- ใช้ `/list-uncommit-unpush-in-drive-d` ถ้าจำเป็น
 
 ## Expected Outcome
 
 - Shell script template ถูกสร้างแล้ว
-- Script สามารถ list projects ใน drive D ที่มี `.git`
+- Script สามารถ list git projects ใน drive D ที่มี `.git`
 - User สามารถ copy และ run script ได้ทันที
 - Output แสดงผลในรูปแบบที่อ่านง่าย
 

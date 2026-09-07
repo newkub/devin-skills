@@ -3,7 +3,7 @@ name: list-cloudflare-projects
 description: รายการ Cloudflare projects ทั้งหมดในเครื่อง พร้อม local path, remote match และ status
 argument-hint: "[path]"
 related:
-  - list-project-git-in-computer
+  - list-projects-git-in-drive-d
   - list-chezmoi-files
   - resolve-cloudflare-worker-fails
   - open-cloudflare-workers
@@ -26,7 +26,7 @@ related:
 
 > Goal: หาไฟล์ config ของ Wrangler
 
-1. ใช้ `/list-project-git-in-computer` เพื่อหา git projects ทั้งหมด
+1. ใช้ `/list-projects-git-in-drive-d` เพื่อหา git projects ทั้งหมด
 2. ในแต่ละ project ตรวจหา:
    - `wrangler.toml`
    - `wrangler.jsonc`

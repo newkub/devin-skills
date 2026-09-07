@@ -3,7 +3,7 @@ name: check-uncommit
 description: สแกน git repos ทั้งเครื่องหา uncommitted changes (modified, staged, untracked)
 argument-hint: "[path]"
 related:
-  - list-project-git-in-computer
+  - list-projects-git-in-drive-d
   - git-commit
   - check-unpush
   - report
@@ -16,7 +16,7 @@ related:
 ## Scope
 
 - ใช้เมื่อต้องการ audit repos ทั้งหมดหางานที่ยังไม่ commit
-- Default scope: ทุก repo ที่พบในเครื่องผ่าน `/list-project-git-in-computer` หรือ path ที่ระบุ
+- Default scope: ทุก repo ที่พบในเครื่องผ่าน `/list-projects-git-in-drive-d` หรือ path ที่ระบุ
 - Read-only: รายงานสถานะเท่านั้น ไม่ commit หรือแก้ไข
 
 ## Execute
@@ -25,7 +25,7 @@ related:
 
 > Goal: รู้ว่าต้อง scan repo ไหนบ้าง
 
-1. รับ `path` จาก argument — default: scan ทุก drive ผ่าน `/list-project-git-in-computer`
+1. รับ `path` จาก argument — default: scan ทุก drive ผ่าน `/list-projects-git-in-drive-d`
 2. หา directories ที่มี `.git` (รวม worktrees และ submodules)
 3. ข้าม bare repos และ cache directories
 
@@ -72,7 +72,7 @@ related:
 - ใช้ `git status --porcelain` เท่านั้น — ไม่เดาจาก file timestamps
 - ระบุ detached HEAD และ merge/rebase in-progress ในรายงาน
 
-- ใช้ /list-project-git-in-computer ถ้าจำเป็น
+- ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
 - ใช้ /check-unpush ถ้าจำเป็น
 - ใช้ /git-commit ถ้าจำเป็น
 

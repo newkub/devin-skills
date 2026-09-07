@@ -3,7 +3,7 @@ name: list-git-submodules
 description: รายการ git submodules ใน repo พร้อม status
 argument-hint: "[scope]"
 related:
-  - list-project-git-in-computer
+  - list-projects-git-in-drive-d
   - delete-git-submodules
   - convert-to-git-submodules
   - report
@@ -66,7 +66,7 @@ related:
 - ถ้า submodule ไม่ถูก initialize → ระบุ `(not initialized)`
 - ถ้า `.gitmodules` ไม่มี → รายงานว่าไม่มี submodules
 
-- ใช้ /list-project-git-in-computer ถ้าจำเป็น
+- ใช้ /list-projects-git-in-drive-d ถ้าจำเป็น
 - ใช้ /delete-git-submodules ถ้าจำเป็น
 - ใช้ /convert-to-git-submodules ถ้าจำเป็น
 
