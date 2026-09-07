@@ -18,6 +18,15 @@ related:
   - ship
   - follow-context-engineering
   - optimize-token-usage
+  - improve-consistency
+  - improve-correctness
+  - improve-alignment
+  - improve-redundancy
+  - improve-simplicity
+  - improve-stability
+  - improve-security
+  - improve-readability
+  - update-version-to-latest
 ---
 
 ## Goal
@@ -105,6 +114,16 @@ related:
 4. เพิ่ม new commands/sections เฉพาะที่จำเป็นต้องรู้
 5. ถ้าไฟล์เกิน 250 บรรทัด → แยกไป `references/` ตาม `/follow-create-devin-global-skills`
 6. ตรวจ markdown links ชี้ไปไฟล์ที่มีอยู่จริง
+7. ถ้าหลังอัปเดต skill พบปัญหาคุณภาพ ให้เรียก improvement skills ตามประเภท:
+   - consistency/alignment → `/improve-consistency` หรือ `/improve-alignment`
+   - correctness/logic → `/improve-correctness`
+   - redundancy → `/improve-redundancy`
+   - simplicity → `/improve-simplicity`
+   - stability/resilience → `/improve-stability`
+   - security/safety → `/improve-security`
+   - readability → `/improve-readability`
+   - token usage สูง → `/optimize-token-usage`
+   - version/dependencies ล้าหลัง → `/update-version-to-latest`
 
 ### 7. Align With Catalog And Global Rules
 
@@ -174,7 +193,7 @@ related:
 - global skills เขียนภาษาไทยคงคำศัพท์เทคนิคอังกฤษ ตาม `/follow-create-devin-global-skills`
 - install commands ตาม ecosystem: `bun add`/`bun install` (Bun/Node), `cargo add` (Rust), `go get` (Go), `pip install` (Python), `mise use -g npm:<package>` สำหรับ global npm CLI
 
-- ใช้ /alignment ถ้าจำเป็น
+- ใช้ /improve-alignment หรือ /improve-simplicity ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
 ## Expected Outcome

@@ -12,7 +12,7 @@ related:
   - update-references
   - deep-validate
   - review-rules
-  - alignment
+  - improve-alignment
   - list-devin-global-subagents
   - report-table
   - suggest-next-action

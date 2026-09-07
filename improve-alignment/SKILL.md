@@ -1,6 +1,6 @@
 ---
-name: alignment
-description: จัดให้ project artifacts, rules, skills, docs และ code มี alignment สอดคล้องกัน
+name: improve-alignment
+description: ปรับ alignment ให้ project artifacts, rules, skills, docs และ code สอดคล้องกัน
 argument-hint: "[scope]"
 related:
   - update-project

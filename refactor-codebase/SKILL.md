@@ -10,7 +10,7 @@ related:
   - review-refactor
   - review-quality
   - follow-architecture
-  - follow-simplicity
+  - improve-simplicity
   - review-architecture
   - improve-error-handling
   - deep-review
@@ -60,7 +60,7 @@ Refactor codebase ครบวงจรเพื่อปรับปรุง S
 5. ถ้า architecture ไม่ชัด → ทำ `/follow-architecture`
 6. ถ้ามี package/module ปัญหา → ทำ `/refactor-workspace`
 7. ถ้ามีไฟล์ทีต้องย้าย → ทำ `/relocation`
-8. ถ้ามี code/content ซับซ้อนหรือซ้ำซ้อนเกิน → ทำ `/follow-simplicity`
+8. ถ้ามี code/content ซับซ้อนหรือซ้ำซ้อนเกิน → ทำ `/improve-simplicity`
 9. ถ้ามี error handling issues → ทำ `/improve-error-handling`
 10. ถ้า refactor เปลี่ยน structure, dependencies หรือ workspaces → ทำ `/update-project` เพื่อ sync root docs/config
 

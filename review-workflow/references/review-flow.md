@@ -72,7 +72,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ /review-redundancy ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
-- ใช้ /follow-simplicity ถ้าจำเป็น
+- ใช้ /improve-simplicity ถ้าจำเป็น
 - ใช้ /follow-single-responsibility ถ้าจำเป็น
 
 ## Metrics

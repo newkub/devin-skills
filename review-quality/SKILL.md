@@ -85,7 +85,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: Findings กระชับ อ่านง่าย ไม่มี noise
 
-1. ทำ `/follow-simplicity` กับ findings
+1. ทำ `/improve-simplicity` กับ findings
 2. กรอง noise และ low-value findings
 3. รวม findings ที่ซ้ำกัน
 4. จัดกลุ่มที่เกี่ยวข้อง

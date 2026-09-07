@@ -1,6 +1,6 @@
 ---
-name: follow-simplicity
-description: ลดความซับซ้อนและทำให้ content, code, architecture, workflows หรือ skills กระชับ ตรงประเด็น
+name: improve-simplicity
+description: ปรับความกระชับ — ลดความซับซ้อนของ content, code, architecture, workflows หรือ skills
 argument-hint: "<path-or-target>"
 allowed-tools:
 ---

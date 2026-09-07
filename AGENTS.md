@@ -102,7 +102,7 @@ Core:
 - `deep-validate: /deep-validate`
 
 Major skill families by current count:
-- `follow-*` (276): language, framework, library, tool, service, architecture, and best-practice guides.
+- `follow-*` (275): language, framework, library, tool, service, architecture, and best-practice guides.
 - `review-*` (73): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-*`), and improvement meta-review.
 - `list-*` (50): inventory, lookup, and listing utilities.
 - `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
@@ -113,7 +113,7 @@ Major skill families by current count:
 - `create-*` (22): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (62): verification, structure, and health checks.
 - `open-*` (19): browser, editor, and terminal integration.
-- `improve-*` (35): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, correctness, stability, backend, frontend, business, docs).
+- `improve-*` (39): fix counterparts of `review-*` findings (quality, UX/UI, security, architecture, correctness, stability, backend, frontend, business, docs).
 - `optimize-*` (31): performance counterparts (bundle, assets, memory, network, rendering, cost).
 
 Other prefixes: `all-*`, `analyze-*`, `ask-*`, `assume-*`, `at-*`, `bench-*`, `capture-*`, `cleanup-*`, `convert-*`, `delete-*`, `deploy-*`, `dont-*`, `download-*`, `draw-*`, `edit-*`, `explain`, `explore-*`, `fix`, `from-*`, `gen-*`, `grouping`, `how-to-works`, `idea-*`, `implement-*`, `improve`, `learn-*`, `loop-*`, `merge-*`, `more-*`, `move-*`, `plan`, `prepare-*`, `read-*`, `productionize-*`, `record-*`, `refactor*`, `relocate-*`, `rename-*`, `re-answer`, `research-setup`, `resolve-*`, `restore-*`, `save-*`, `scan-*`, `search-*`, `set-*`, `setup-*`, `suggest-*`, `summarize-*`, `sync-*`, `test-*`, `translate-*`, `try-*`, `understand-*`, `uninstall-*`, `use-*`, `view-*`, `vs`, `watch-*`, `write-*`.
