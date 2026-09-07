@@ -49,7 +49,7 @@ Upload build artifacts:
 
 ```yaml
 - name: Upload Artifacts
-  uses: actions/upload-artifact@v3
+  uses: actions/upload-artifact@v7
   with:
     name: build-output
     path: dist/

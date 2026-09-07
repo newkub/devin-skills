@@ -230,7 +230,7 @@ Options:
 ### GitHub Actions CI
 ```yaml
 - name: Install Stylua (Formatter)
-  uses: JohnnyMorganz/stylua-action@v4
+  uses: JohnnyMorganz/stylua-action@v5
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
     args: --check .

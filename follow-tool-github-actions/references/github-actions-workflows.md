@@ -63,7 +63,7 @@ steps:
 ```yaml
 steps:
   - name: Upload artifact
-    uses: actions/upload-artifact@v4
+    uses: actions/upload-artifact@v7
     with:
       name: dist
       path: dist/
