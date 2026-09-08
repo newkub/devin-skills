@@ -2,14 +2,24 @@
 name: ship-to-staging
 description: Deploy feature branch ไปยัง staging environment แล้วรัน smoke tests
 argument-hint: "[app-or-package]"
+allowed-tools:
+  - exec
+  - read
+  - skill
+  - ask_user_question
+  - todo_write
 related:
   - ship
   - ship-to-production
+  - git-commit
+  - git-commit-and-push
   - run-deploy
   - watch-deploy
   - resolve-errors
-  - run-test-unit
   - run-verify
+  - run-test-e2e
+  - run-test-integration
+  - test-uxui-by-agent-browser
   - report
   - ask-me
 ---
@@ -28,7 +38,7 @@ Deploy feature branch ไปยัง staging environment แล้วรัน 
 
 > Goal: แน่ใจว่า deploy จาก feature branch ที่ถูกต้อง
 
-1. ตรวจ `git status` — ถ้ามี uncommitted changes ที่ยังไม่ได้ commit บน feature branch → ทำ `git commit` หรือ `/git-commit-and-push` ก่อน
+1. ตรวจ `git status` — ถ้ามี uncommitted changes ที่ยังไม่ได้ commit บน feature branch → ทำ `/git-commit` หรือ `/git-commit-and-push` ก่อน
 2. บันทึก branch name และ current commit hash
 3. ถ้าไม่อยู่บน feature branch → `/ask-me`
 
@@ -37,8 +47,9 @@ Deploy feature branch ไปยัง staging environment แล้วรัน 
 > Goal: แน่ใจว่า artifact พร้อม deploy
 
 1. ทำ `/run-verify` เบื้องต้น — build, lint, typecheck
-2. ถ้ามี `e2e` หรือ `integration` tests สำหรับ staging → ทำ `/run-test-unit`
-3. ถ้าไม่ผ่าน → `/resolve-errors` ก่อน deploy
+2. ถ้ามี `e2e` tests สำหรับ staging → ทำ `/run-test-e2e`
+3. ถ้ามี `integration` tests สำหรับ staging → ทำ `/run-test-integration`
+4. ถ้าไม่ผ่าน → `/resolve-errors` ก่อน deploy
 
 ### 3. Detect Staging Environment
 
