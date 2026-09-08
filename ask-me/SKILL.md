@@ -7,7 +7,7 @@ related:
   - understand-me
   - follow-your-suggestion
   - ask-again
-  - dont-ask
+  - dont-ask-me
   - update-references
   - deep-plan
   - follow-skills-map
@@ -107,7 +107,7 @@ related:
 - เป็นการเก็บ requirements (ใช้ `/ask-project-requirement`)
 - เป็นการสัมภาษณ์ preferences (ใช้ `/understand-me`)
 - เป็น low-risk action ที่ทำได้เลย
-- ผู้ใช้หรือ workflow ระบุ `/dont-ask`
+- ผู้ใช้หรือ workflow ระบุ `/dont-ask-me`
 
 ### 3. Question Design
 

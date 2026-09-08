@@ -83,7 +83,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **775** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **780** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -107,7 +107,7 @@ Major skill families by current count:
 - `update-*` (38): repo, skills, docs, config, runtime, version, and test spec maintenance.
 - `report-*` (36): reporting, diagrams, and visualization helpers.
 - `run-*` (38): test, build, lint, typecheck, format, and deployment runners.
-- `ship-*` (4): standard `/ship`, staging, production, and swarm dispatch.
+- `ship-*` (5): standard `/ship`, staging, production, rollback, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user).
 - `deep-*` (22): deep analysis, research, debugging, validation, update, and ship.
 - `create-*` (19): project, plugin, bot, report, and diagram scaffolding.
 - `check-*` (57): verification, structure, and health checks.

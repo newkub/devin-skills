@@ -4,7 +4,7 @@ description: ถามใหม่เมื่อผู้ใช้ไม่เ�
 argument-hint: "[scope]"
 related:
   - ask-me
-  - dont-ask
+  - dont-ask-me
   - understand-me
   - continue
   - ask-project-requirement
@@ -67,8 +67,8 @@ related:
 
 1. นับจำนวนครั้งที่ re-ask แล้ว
 2. ถ้าครั้งที่ 2 → ถามแบบ open-ended หรือลดเหลือ 2 ตัวเลือกชัดเจนที่สุด
-3. ถ้าครั้งที่ 3 ขึ้นไป → ใช้ `/dont-ask` หรือ default โดยไม่ถามต่อ
-4. ถ้าผู้ใช้บอกว่าไม่ต้องการถามอีก → ใช้ `/dont-ask`
+3. ถ้าครั้งที่ 3 ขึ้นไป → ใช้ `/dont-ask-me` หรือ default โดยไม่ถามต่อ
+4. ถ้าผู้ใช้บอกว่าไม่ต้องการถามอีก → ใช้ `/dont-ask-me`
 
 ### 6. Process Response
 
@@ -95,7 +95,7 @@ related:
 ### 3. Loop Limit
 
 - ถามใหม่ได้สูงสุด 2 ครั้ง
-- ครั้งที่ 3 ให้ใช้ `/dont-ask` หรือ open-ended
+- ครั้งที่ 3 ให้ใช้ `/dont-ask-me` หรือ open-ended
 - ถ้าผู้ใช้บอกให้หยุดถาม → หยุดทันที
 
 ### 4. Tool Discipline
@@ -107,7 +107,7 @@ related:
 
 - ถ้าผู้ใช้ไม่เข้าใจเพราะข้อมูลไม่พอ → ใช้ `/ask-project-requirement`
 - ถ้าผู้ใช้ต้องการอธิบายความชอบ → ใช้ `/understand-me`
-- ถ้าผู้ใช้บอกไม่ต้องการถาม → ใช้ `/dont-ask`
+- ถ้าผู้ใช้บอกไม่ต้องการถาม → ใช้ `/dont-ask-me`
 
 - ใช้ /continue ถ้าจำเป็น
 ## Expected Outcome

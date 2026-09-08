@@ -3,7 +3,7 @@ name: dont-over-engineer
 description: หลีกเลี่ยงการ over-engineering ใช้ minimal changes
 argument-hint: "[scope]"
 related:
-  - dont-ask
+  - dont-ask-me
   - dont-understand
   - roleplay-stakeholder
   - deep-debug
@@ -87,7 +87,7 @@ related:
 - ลบ code ที่ไม่จำเป็นที่เพิ่มขึ้น
 - วัดผลกระทบ (performance, complexity)
 
-- ใช้ /dont-ask ถ้าจำเป็น
+- ใช้ /dont-ask-me ถ้าจำเป็น
 - ใช้ /dont-understand ถ้าจำเป็น
 - ใช้ /roleplay-stakeholder ถ้าจำเป็น
 
