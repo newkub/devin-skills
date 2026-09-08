@@ -1,6 +1,6 @@
 ---
 name: follow-tasks
-description: ตั้งค่า scripts ใน package.json หรือ Cargo.toml ตามมาตรฐาน
+description: ตั้งค่า scripts ใน package.json, Cargo.toml หรือ moon.yml ตามมาตรฐาน
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -15,6 +15,7 @@ related:
   - run-test-coverage
   - use-scripts
   - follow-monorepo
+  - follow-tool-moonrepo
   - review-delivery
   - follow-tool-taze
 
@@ -37,6 +38,7 @@ related:
 
 1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
 2. ตรวจสอบ monorepo (หลาย `package.json`, workspace config, git submodules) — ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
+   - ถ้ามี `.moon/workspace.yml` หรือ `moon.yml` → ทำ `/follow-tool-moonrepo` ก่อน แล้วใช้ moonrepo mode (ดู Rules §12)
 3. ยืนยัน tools ติดตั้งแล้ว: Node.js/Bun (`biome`, `vitest`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
 4. ถ้า tool จำเป็นไม่มี → stop และ report
 
@@ -213,6 +215,17 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 ถ้า project ใช้ `tools/review-codebase` ให้เพิ่ม scripts นี้ใน package.json เมื่อตั้งค่า scripts ตาม `/follow-tasks`
 
 หลังจากตั้งค่า scripts แล้ว ถ้า `tools/review-codebase` มีอยู่ใน workspace ให้รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก และใช้ `/deep-review` ถ้าต้องการสร้างหรืออัปเดต CLI
+
+### 12. Moonrepo Mode
+
+ถ้า project ใช้ moonrepo (มี `.moon/workspace.yml` หรือ `moon.yml`):
+
+- ใช้ `moon.yml` แทน `package.json` scripts ทั่วไป — แก้ไขเพิ่มเติม `.moon/tasks/all.yml` สำหรับ shared tasks เช่น `build`, `test`, `typecheck`, `lint`
+- แต่ละ workspace `moon.yml` กำหนดเฉพาะ project-specific tasks — ไม่ต้องกำหนด `project` ซ้ำทุกไฟล์ ใช้ `id` และ `.moon/tasks/all.yml` เป็นหลัก
+- กำหนด `package.json` scripts ให้ชี้ไปที่ `moon run <task>` เฉพาะที่จำเป็น
+- ห้ามนิยาม task เดียวกันทั้งใน `moon.yml` และ `package.json` scripts — `package.json` มีเฉพาะ scripts ที่ไม่อยู่ใน `moon.yml`
+- Validate ด้วย `moon run :check`
+- รายละเอียดเต็มทำตาม `/follow-tool-moonrepo`
 
 - ใช้ /open-web-for-config-secret ถ้าจำเป็น
 - ใช้ /run-check ถ้าจำเป็น
