@@ -2,6 +2,11 @@
 name: ask-me
 description: ถามผู้ใช้ด้วยตัวเลือกและคำแนะนำ รองรับ multi-select, multi-step, tech stack
 argument-hint: "[question]"
+allowed-tools:
+  - ask_user_question
+  - read
+  - skill
+  - todo_write
 related:
   - ask-project-requirement
   - understand-me
@@ -46,7 +51,7 @@ related:
 1. แบ่งคำถามออกเป็น steps ตามลำดับทีต้องถาม
 2. แต่ละ step มี 1-4 คำถาม แต่ละคำถามมี 2-4 ตัวเลือก
 3. แต่ละตัวเลือกต้องมี `label` สั้นกระชับ และ `description` อธิบายรายละเอียด
-4. ระบุตัวเลือกที่แนะนำโดยเพิ่ม emoji นำหน้า `label` เสมอ เช่น `✨ ทำ /deep-plan ต่อ` พร้อมอธิบายเหตุผลใน `description`
+4. ระบุตัวเลือกแนะนำโดยเพิ่ม visual marker นำหน้า `label` เช่น `✨ ทำ /deep-plan ต่อ` หรือ `(recommended) ทำ /deep-plan ต่อ` พร้อมอธิบายเหตุผลใน `description`
 5. ตั้ง `multi_select: true` สำหรับคำถามที่เลือกได้หลายตัว
 6. ไม่ใส่ตัวเลือก "other" เพราะผู้ใช้สามารถตอบเองได้เสมอ
 7. ตัวเลือกต้องครอบคลุมทุกกรณีที่เป็นไปได้
@@ -120,7 +125,8 @@ related:
 ### 4. Recommendation
 
 - ทุกคำถามต้องมีตัวเลือกที่แนะนำอย่างน้อย 1 ตัวเลือก
-- ระบุตัวเลือกแนะนำด้วย emoji นำหน้า `label` เสมอ เช่น `✨`, `⭐`, `👍` พร้อมข้อความแนะนำ
+- ระบุตัวเลือกแนะนำด้วย visual marker นำหน้า `label` เช่น `✨`, `⭐`, `👍` หรือข้อความ `(recommended)`
+- ถ้าผู้ใช้หรือ context ไม่ต้องการ emoji ให้ใช้ `(recommended)` แทน
 - ไม่ต้องสร้างตัวเลือก `recommended` แยกต่างหาก
 - อธิบายเหตุผลใน `description` ว่าทำไมแนะนำตัวเลือกนี้
 - คำแนะนำต้องอ้างอิงจาก context, best practices หรือ project conventions
@@ -156,6 +162,36 @@ related:
 - `test-tool`: "เลือก test runner" — `Vitest`, `Playwright`, `Cypress`
 - `deploy-target`: "เลือก deploy platform" — `Vercel`, `Cloudflare`, `Railway`
 - `ci-tool`: "เลือก CI tool" — `GitHub Actions`, `Renovate`, `Changesets`
+
+### Example: Single-Select Question
+
+```json
+{
+  "question": "เลือก runtime สำหรับ backend",
+  "header": "Runtime",
+  "multi_select": false,
+  "options": [
+    { "label": "✨ Bun", "description": "แนะนำ — เร็ว ใช้ native APIs ได้" },
+    { "label": "Node.js", "description": "ecosystem ใหญ่ ใช้งานได้ทั่วไป" },
+    { "label": "Deno", "description": "secure by default สำหรับ TypeScript" }
+  ]
+}
+```
+
+### Example: Multi-Select Question
+
+```json
+{
+  "question": "เลือก tools ทีต้องติดตั้งเพิ่ม",
+  "header": "Extra tools",
+  "multi_select": true,
+  "options": [
+    { "label": "Vitest", "description": "test runner" },
+    { "label": "Playwright", "description": "E2E testing" },
+    { "label": "Biome", "description": "lint + format" }
+  ]
+}
+```
 
 ## Expected Outcome
 
