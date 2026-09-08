@@ -1,11 +1,25 @@
 ---
-name: design-by-user-in-temp
-description: ออกแบบ UI/UX หรือ component กับ user ใน temp directory แล้วเปิด preview
+name: design-with-me-first
+description: สร้าง temp UI/UX design พร้อม preview โดยเริ่มจาก ask-me และ suggest-me
 argument-hint: "[topic]"
+allowed-tools:
+  - exec
+  - write
+  - edit
+  - read
+  - skill
+  - ask_user_question
+  - todo_write
+  - find_file_by_name
 related:
   - ask-me
+  - suggest-me
   - report-in-html
   - open-web
+  - report-in-table
+  - choose-and-apply
+  - implement-to-production
+  - move-to
   - suggest-next-action
 ---
 
@@ -17,29 +31,30 @@ related:
 
 ใช้เมื่อต้องการลองออกแบบหน้าตา UI หรือ component ก่อนตัดสินใจ implement จริง
 
-- สร้างไฟล์ HTML/CSS/JS ชั่วคราวใน temp directory
-- ออกแบบ interactive กับ user ผ่าน `/ask-me`
+- สร้างไฟล์ HTML/CSS/JS ชั่วคราวใน OS temp directory
+- เริ่มจาก `/ask-me` และ `/suggest-me` เพื่อเข้าใจความต้องการ
 - ใช้ `/report-in-html` สร้าง preview จาก design
 - เปิดด้วย `/open-web` เสมอ
 - ไม่ต้อง commit ถ้ายังไม่ตกลง
 
 ## Execute
 
-### 1. Setup Temp Workspace
+### 1. Clarify Intent
+
+> Goal: เข้าใจสิ่งที user ต้องการออกแบบก่อน
+
+1. ทำ `/suggest-me` เพื่อดูตัวเลือกทั่วไปเกี่ยวกับ UI/UX design
+2. ทำ `/ask-me` ถาม user เรื่อง: topic, target users, key features, style/mood
+3. ถ้ามี reference → ขอ URL หรือภาพ
+4. สรุป requirements ด้วย `/report-in-table` คอลัมน์: `No.`, `Requirement`, `Priority`
+
+### 2. Setup Temp Workspace
 
 > Goal: สร้าง temp directory สำหรับ design
 
-1. สร้าง temp directory ใน `%TEMP%\design-with-me-<timestamp>`
+1. สร้าง temp directory ใน `%TEMP%\design-with-me-first-<timestamp>` ของ OS
 2. ถ้ามี existing temp → ถาม user ว่าล้างหรือไม่
 3. ตั้งค่า `index.html`, `style.css`, `script.js` พื้นฐาน
-
-### 2. Gather Requirements
-
-> Goal: เข้าใจสิ่งที user ต้องการออกแบบ
-
-1. ถาม user เรื่อง: topic, target users, key features, style/mood
-2. ถ้ามี reference → ขอ URL หรือภาพ
-3. สรุป requirements ด้วย `/report-in-table` คอลัมน์: `No.`, `Requirement`, `Priority`
 
 ### 3. Design Iterations
 
@@ -70,7 +85,8 @@ related:
 
 ## Rules
 
-- ทำงานใน temp directory เท่านั้น
+- ทำงานใน OS temp directory เท่านั้น
+- เริ่มต้นด้วย `/ask-me` และ `/suggest-me` เสมอ
 - ต้องเปิด preview ด้วย `/open-web` หลังทุก iteration
 - ไม่ commit หรือ push โดยอัตโนมัติ
 - เก็บ feedback เป็น checklist ก่อนแก้
