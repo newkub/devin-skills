@@ -3,7 +3,7 @@ name: follow-lang-nodejs
 description: ใช้ Node.js JavaScript runtime สำหรับพัฒนาและรันโปรเจกต์ JavaScript/TypeScript ด้วย ecosystem
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
@@ -58,7 +58,7 @@ related:
 - ใช้ proper error handling
 - ใช้ async/await สำหรับ async operations
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

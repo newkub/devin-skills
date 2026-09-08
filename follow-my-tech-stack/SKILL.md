@@ -3,7 +3,7 @@ name: follow-my-tech-stack
 description: สรุป tech stack ที่ใช้ในการพัฒนา จัดกลุ่มตาม ecosystem
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-tool-rolldown
   - follow-tool-eslint
   - follow-lib-esm-sh
@@ -167,7 +167,7 @@ related:
 - ดู `/follow-tool-rolldown` และ `/follow-tool-eslint` สำหรับ setup และ best practices
 - ถ้าใช้ Bun scripts ให้ใช้ `Bun.Transpiler` ก่อน แล้ว fallback ไป `oxc-parser` ถ้าต้องการ AST ละเอียด
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lib-esm-sh ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
 

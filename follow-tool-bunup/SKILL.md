@@ -9,7 +9,7 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - follow-lang-bun
+  - use-bun-native-api
 ---
 
 ## Goal
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/follow-lang-bun` สำหรับ setup Bun runtime
+ใช้สำหรับ TypeScript library projects ที่ต้องการ bundling ด้วย Bun's native bundler — ดู `/use-bun-native-api` สำหรับ setup Bun runtime
 
 ## Execute
 

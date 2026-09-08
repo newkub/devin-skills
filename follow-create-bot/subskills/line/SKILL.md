@@ -107,7 +107,7 @@ argument-hint: "[features]"
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /report-table ถ้าจำเป็น
 
 ## Expected Outcome

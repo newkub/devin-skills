@@ -3,7 +3,7 @@ name: follow-lang-kotlin
 description: พัฒนา Kotlin applications ด้วย Clean Architecture และ Compose
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-lua
   - follow-best-practice
@@ -86,7 +86,7 @@ related:
 - ใช้ `data class` สำหรับ immutable data models
 - ดูรายละเอียดใน `references/error-handling.md`
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-lua ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

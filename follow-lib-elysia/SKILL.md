@@ -3,7 +3,7 @@ name: follow-lib-elysia
 description: พัฒนา API ด้วย Elysia 1.4+ บน Bun แบบ type-safe ตาม official best practices
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lib-zod
   - follow-best-practice
   - setup-cicd
@@ -34,7 +34,7 @@ related:
 2. ถ้าต้องการ end-to-end type safety ติดตั้ง `bun add @elysia/eden`
 3. สร้าง project ใหม่ได้ด้วย `bun create elysia app`
 4. ใช้ `bun --hot` สำหรับ hot reloading ใน development
-5. ใช้ Bun เป็น runtime เท่านั้น (ทำ `/follow-lang-bun`)
+5. ใช้ Bun เป็น runtime เท่านั้น (ทำ `/use-bun-native-api`)
 6. สร้าง `new Elysia()` instance และ `.listen(port)`
 
 ### 2. Define Routes
@@ -117,7 +117,7 @@ related:
 
 ### 1. Project Setup
 
-- ใช้ Bun เป็น runtime เท่านั้น (ทำ `/follow-lang-bun`)
+- ใช้ Bun เป็น runtime เท่านั้น (ทำ `/use-bun-native-api`)
 - ใช้ `bun add elysia` สำหรับติดตั้ง
 - ใช้ `Bun.serve` ผ่าน Elysia `.listen()` เท่านั้น
 - ใช้ `bun --hot` สำหรับ hot reloading ใน development
@@ -184,7 +184,7 @@ related:
 - v2.0 มี breaking changes ได้แก่ route hooks/schemas ต้องอยู่ก่อน handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, ใช้ `problem` สำหรับ RFC 9457 errors แทน `status`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 
-- ใช้ `/follow-lang-bun` ถ้าจำเป็น
+- ใช้ `/use-bun-native-api` ถ้าจำเป็น
 - ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator
 - ใช้ `/follow-best-practice` ถ้าจำเป็น
 - ใช้ `/setup-cicd` ถ้าจำเป็น
@@ -198,4 +198,4 @@ related:
 - Error handling แบบ centralized และ type-safe
 - OpenAPI docs สร้างอัตโนมัติจาก code
 - สอดคล้องกับ official ElysiaJS documentation
-- ใช้ Bun native APIs ตาม `/follow-lang-bun`
+- ใช้ Bun native APIs ตาม `/use-bun-native-api`

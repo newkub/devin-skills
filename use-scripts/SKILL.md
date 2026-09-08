@@ -4,7 +4,7 @@ description: สร้าง scripts สำหรับ automate งานด้
 argument-hint: "[target]"
 related:
   - use-bun-shell
-  - follow-lang-bun
+  - use-bun-native-api
   - create-files-in-os-temp
   - use-nu-shell
   - use-pwsh-shell
@@ -64,7 +64,7 @@ related:
 > Goal: เขียน script ตาม standards
 
 1. เขียนแบบ composable: `createScript()` return state + actions
-2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/follow-lang-bun`, `/follow-lang-bun`)
+2. ใช้ Bun native APIs สำหรับ `.ts` scripts โดยไม่ใช้ Node.js libraries ยกเว้นไม่มีทางเลือก (ดู `/use-bun-shell`, `/use-bun-native-api`, `/use-bun-native-api`)
 3. ใช้ `nu` สำหรับ `.nu` scripts ถ้าประมวลผล structured data
 4. ใช้ `pwsh` สำหรับ `.ps1` scripts ถ้า Windows-specific
 5. ใช้ CDN imports สำหรับ external dependencies ที Bun native APIs ไม่ครอบคลุม: `https://esm.sh/<name>`

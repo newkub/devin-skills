@@ -6,7 +6,7 @@ related:
   - follow-lib-remotion
   - review-assets
   - gen-subtitle-video
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lib-animejs
   - follow-lib-iconify
 ---
@@ -154,7 +154,7 @@ related:
 - ใช้ /follow-lib-remotion สำหรับรายละเอียด Remotion API
 - ใช้ /review-assets สำหรับ optimize input/output
 - ใช้ /gen-subtitle-video สำหรับ generate subtitle
-- ใช้ /follow-lang-bun ถ้าใช้ Bun เป็น runtime
+- ใช้ /use-bun-native-api ถ้าใช้ Bun เป็น runtime
 - ใช้ /follow-lib-animejs ถ้าต้องการ complex animations
 - ใช้ /follow-lib-iconify ถ้าต้องการ icon overlay
 - ใช้ /review-assets ถ้าต้องการ optimize image assets

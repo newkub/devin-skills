@@ -3,7 +3,7 @@ name: follow-lang-python
 description: แนวทางการพัฒนาโปรเจกต์ Python ด้วย best practices
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
@@ -83,7 +83,7 @@ related:
 - จัดโครงสร้างตาม Clean Architecture
 - ใช้ `dataclass` หรือ `pydantic` สำหรับ data models
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

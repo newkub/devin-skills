@@ -58,7 +58,7 @@ argument-hint: "[features]"
 
 1. สร้าง handlers สำหรับ messages, callback queries, inline queries ตาม need
 2. ใช้ `bot.api.setMyCommands` เพื่อลงทะเบียน slash commands
-3. ใช้ `/follow-lang-bun` แทน `node:*` ถ้าใช้ Bun
+3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
 4. เพิ่ม type safety ด้วย TypeScript interfaces สำหรับ context/dependencies
 
 ### 6. Test Locally

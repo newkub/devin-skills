@@ -3,7 +3,7 @@ name: follow-lang-javascript
 description: เขียน JavaScript ตาม modern best practices และ ES2025+
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-kotlin
   - follow-lang-lua
   - follow-best-practice
@@ -108,7 +108,7 @@ related:
 - sanitize input, หลีกเลี่ยง `eval()`, ใช้ CSP/HTTPS
 - ดู [references/javascript-security.md](references/javascript-security.md)
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-lang-lua ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

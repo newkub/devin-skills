@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - list-my-npm-packages
   - follow-my-tech-stack
-  - follow-lang-bun
+  - use-bun-native-api
   - use-scripts
   - suggest-next-action
   - report
@@ -100,8 +100,8 @@ related:
 - ถ้าต้อง process ข้อมูลซับซ้อน → ทำ `/use-scripts`
 - ใช้ `/create-files-in-os-temp` สำหรับ temp files หรือ reports ชั่วคราว
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 
 ## Expected Outcome
 

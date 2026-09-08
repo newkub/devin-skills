@@ -58,7 +58,7 @@ argument-hint: "[features]"
 
 1. สร้าง `src/actions/` สำหรับ `app.action()`, `app.view()` (modals), `app.shortcut()`
 2. ใช้ Block Kit (`blocks`) สำหรับ rich messages
-3. ใช้ `/follow-lang-bun` แทน `node:*` ถ้าใช้ Bun
+3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
 4. เพิ่ม type safety ด้วย TypeScript interfaces สำหรับ payloads และ dependencies
 
 ### 6. Test Locally

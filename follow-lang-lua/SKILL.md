@@ -3,7 +3,7 @@ name: follow-lang-lua
 description: แนวทางการพัฒนา Lua ตาม best practices สำหรับ embedded scripting และ lightweight automation
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
@@ -100,7 +100,7 @@ related:
 - log errors อย่างเหมาะสม
 - ให้ error messages ที่ชัดเจน
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

@@ -68,7 +68,7 @@ argument-hint: "[features]"
 
 1. สร้าง slash commands ด้วย `SlashCommandBuilder`
 2. รองรับ buttons, select menus, modals, context menus ถ้าต้องการ
-3. ใช้ `/follow-lang-bun` แทน `node:*` ถ้าใช้ Bun
+3. ใช้ `/use-bun-native-api` แทน `node:*` ถ้าใช้ Bun
 4. เพิ่ม guards/middleware สำหรับ permission checks, rate limiting
 5. ใช้ `Interaction` types สำหรับ type safety
 

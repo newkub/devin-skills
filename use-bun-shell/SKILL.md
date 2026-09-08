@@ -3,7 +3,7 @@ name: use-bun-shell
 description: ใช้ Bun shell สำหรับ execute commands ด้วย bun -e
 argument-hint: "[command]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
 ---
 
 ## Goal
@@ -20,7 +20,7 @@ related:
 
 > Goal: Prepare Bun Shell Environment
 
-1. ทำ `/follow-lang-bun` เพื่อ setup Bun environment (install, verify) แล้วใช้ `/follow-lang-bun` สำหรับ Bun APIs ถ้าจำเป็น
+1. ทำ `/use-bun-native-api` เพื่อ setup Bun environment (install, verify) แล้วใช้ `/use-bun-native-api` สำหรับ Bun APIs ถ้าจำเป็น
 2. ตรวจสอบว่า Bun ติดตั้งและพร้อมใช้งาน
 3. ตั้งค่า environment variables ที่จำเป็นสำหรับ Bun
 

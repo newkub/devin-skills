@@ -3,7 +3,7 @@ name: follow-framework-capacitor
 description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - review-delivery
   - follow-tool-vite
   - learn-web
@@ -32,7 +32,7 @@ related:
 3. ตรวจสอบ Xcode สำหรับ iOS development
 4. ตรวจสอบ JDK 21 หรือสูงกว่า
 5. ตั้งค่า environment variables ถ้าจำเป็น: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
-6. ทำ `/follow-lang-bun` สำหรับ Bun runtime และ package manager
+6. ทำ `/use-bun-native-api` สำหรับ Bun runtime และ package manager
 7. ทำ `/review-delivery` สำหรับ configuration files
 
 ### 2. Project Configuration

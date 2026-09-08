@@ -6,7 +6,7 @@ related:
   - use-astgrep
   - update-project-rules
   - update-review-cli
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-create-bun-cli
   - scan-codebase
   - use-scripts
@@ -38,7 +38,7 @@ related:
 
 > Goal: อ่าน context และเตรียม environment ก่อนเขียน scripts
 
-1. ทำ `/use-astgrep`, ทำ `/follow-lang-bun`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
+1. ทำ `/use-astgrep`, ทำ `/use-bun-native-api`, ทำ `/follow-create-bun-cli` — อ่าน ast-grep patterns, Bun native APIs, และ CLI best practices
 2. อ่าน `tools/review-codebase/` directory เพื่อเข้าใจ analyzer structure ที่มีอยู่
 3. อ่าน `rules/` directory เพื่อดู ast-grep rules ที่มีอยู่
 4. ทำ `/scan-codebase` เพื่อเข้าใจ codebase structure ที่จะ analyze

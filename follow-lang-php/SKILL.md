@@ -3,7 +3,7 @@ name: follow-lang-php
 description: พัฒนา PHP projects ด้วย PSR standards และ modern best practices
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
@@ -152,7 +152,7 @@ related:
 - เขียน README.md สำหรับ project
 - เขียน CHANGELOG.md สำหรับ version history
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

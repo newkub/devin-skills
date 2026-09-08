@@ -3,7 +3,7 @@ name: follow-lang-typescript
 description: พัฒนา TypeScript projects ด้วย type safety และ code quality best practices
 argument-hint: "[scope]"
 related:
-  - follow-lang-bun
+  - use-bun-native-api
   - follow-lang-javascript
   - follow-lang-kotlin
   - follow-best-practice
@@ -98,7 +98,7 @@ related:
 - ใช้ `JSDoc`/`TSDoc` พร้อม `@param`, `@returns`, `@example`, `@remarks`, `@deprecated`
 - ดู [references/typescript-testing.md](references/typescript-testing.md) และ [references/typescript-documentation.md](references/typescript-documentation.md)
 
-- ใช้ /follow-lang-bun ถ้าจำเป็น
+- ใช้ /use-bun-native-api ถ้าจำเป็น
 - ใช้ /follow-lang-javascript ถ้าจำเป็น
 - ใช้ /follow-lang-kotlin ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น

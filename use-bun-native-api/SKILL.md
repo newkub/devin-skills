@@ -1,5 +1,5 @@
 ---
-name: follow-lang-bun
+name: use-bun-native-api
 description: พัฒนาโปรเจกต์ด้วย Bun native APIs และ Web-standard APIs อย่างเต็มประสิทธิภาพ
 argument-hint: "[scope]"
 related:
@@ -73,7 +73,7 @@ related:
 - FFI & Low-level: `references/bun-ffi.md`
 - Other Bun APIs: `references/bun-other.md`
 - Web-standard APIs: `references/bun-web-apis.md`
-- Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `follow-lang-bun`
+- Bun runtime CLI (`bun run`, `bun install`, `bun test`, `bun build`): `use-bun-native-api`
 
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-bun-plugins ถ้าจำเป็น
