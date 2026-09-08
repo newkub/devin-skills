@@ -26,7 +26,7 @@
 
 | Framework | Workflows |
 |-----------|-----------|
-| Vue | `/follow-lib-vue`, `/follow-framework-nuxt`, `/follow-lib-vueuse` |
+| Vue | `/follow-lib-vue`, `/follow-create-web-nuxt`, `/follow-lib-vueuse` |
 | React | `/follow-lib-react`, `/follow-create-web-nextjs` |
 | Rust | `/follow-lang-rust` |
 | Bun | `/use-bun-native-api`, `/use-bun-native-api` |

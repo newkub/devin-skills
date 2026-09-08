@@ -98,7 +98,7 @@
 | Prefix | สำหรับ | ตัวอย่าง |
 |--------|--------|----------|
 | `follow-lang-` | programming language / runtime | `follow-lang-rust`, `follow-lang-python`, `follow-lang-typescript` |
-| `follow-framework-` | meta-framework / app framework | `follow-framework-nuxt`, `follow-create-desktop-tauri` |
+| `follow-framework-` | meta-framework / app framework | `follow-create-web-nuxt`, `follow-create-desktop-tauri` |
 | `follow-service-` | external service / cloud platform | `follow-service-supabase`, `follow-service-vercel`, `follow-service-aws-sdk` |
 | `follow-lib-` | library / package ที่ import ใน app code | `follow-lib-drizzle`, `follow-lib-zod`, `follow-lib-pinia`, `follow-lib-vue` |
 | `follow-tool-` | CLI tool / dev tool / build tool | `follow-tool-biome`, `follow-tool-vite`, `follow-tool-astgrep` |
