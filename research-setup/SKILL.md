@@ -2,6 +2,18 @@
 name: research-setup
 description: ค้นหา setup, config, CI และ integration ของ tool/service จากหลายแหล่ง
 argument-hint: "[tool-or-service]"
+allowed-tools:
+  - web_search
+  - webfetch
+  - mcp_call_tool
+  - read
+  - write
+  - edit
+  - skill
+  - ask_user_question
+  - todo_write
+  - find_file_by_name
+  - exec
 related:
   - deep-research
   - learn-web
@@ -10,6 +22,8 @@ related:
   - setup-cicd
   - follow-tool-usage
   - follow-my-tech-stack
+  - search-in-github-star
+  - explore-github-trending
   - check-reference
 ---
 
@@ -82,18 +96,25 @@ related:
 
 ## Rules
 
+### 1. Source Discipline
+
 - ใช้ official documentation เป็นแหล่งหลักเสมอ
 - cross-check อย่างน้อย 2-3 แหล่งก่อนสรุป
 - แยกแยะระหว่าง stable steps กับ experimental/deprecated steps
-- ระบุ version, platform และ constraints เสมอ
 - ไม่ copy-paste config โดยไม่ระบุ source
+
+### 2. Context Capture
+
+- ระบุ version, platform และ constraints เสมอ
 - ถ้า setup เกี่ยวกับ dependencies → ใช้ `/research-dependencies` ก่อน
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-my-tech-stack ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
+### 3. Fallback Skills
+
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/setup-cicd` ถ้าจำเป็น
+- ใช้ `/follow-tool-usage` ถ้าจำเป็น
+- ใช้ `/follow-my-tech-stack` ถ้าจำเป็น
+- ใช้ `/check-reference` ถ้าจำเป็น
 
 ## Expected Outcome
 
