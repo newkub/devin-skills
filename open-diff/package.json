@@ -1,0 +1,28 @@
+{
+  "name": "open-diff",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"bun run dev:client\" \"bun run dev:server\"",
+    "dev:client": "bun run --bun vite",
+    "dev:server": "bun --watch src/server.ts",
+    "build:client": "bun run --bun vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pierre/diffs": "^1.4.1",
+    "@tanstack/solid-router": "1.110.0",
+    "shiki": "4.0.0",
+    "solid-js": "1.9.0",
+    "unocss": "66.10.0"
+  },
+  "devDependencies": {
+    "@unocss/preset-wind4": "^66.10.0",
+    "bun-types": "1.1.0",
+    "concurrently": "9.0.0",
+    "typescript": "5.5.4",
+    "vite": "5.4.0",
+    "vite-plugin-solid": "2.11.0"
+  }
+}
+

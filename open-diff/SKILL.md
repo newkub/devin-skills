@@ -30,8 +30,11 @@ related:
 - Sidebar file list พร้อมสถิติ add/delete
 - Auto-load เมื่อสั่งจาก CLI
 - Prompt ใน terminal เมื่อปิด tab
-- Action buttons (Merge, Close, Checkout) ส่งคำสั่งไป terminal ให้ execute
-- Keyboard: ←/→ เปลี่ยนไฟล์, ↑/↓ scroll diff
+- Action buttons (Merge ▾ merge/squash/rebase, Approve, Comment, Checkout, Close) ส่งคำสั่งไป terminal ให้ execute
+- File filter/search ใน sidebar (กด `f` เพื่อ focus)
+- Unified/Split view toggle และ line wrap toggle
+- Status bar แสดง keyboard hints และไฟล์ปัจจุบัน
+- Keyboard: ←/→ หรือ [/] เปลี่ยนไฟล์, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, t theme, Esc ปิด menu/blur input
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit
@@ -53,7 +56,7 @@ related:
 > Goal: ติดตั้งและ build แอป `open-diff` ถ้ายังไม่มี
 
 1. สร้าง workspace ชั่วคราว เช่น `.devin/open-diff-app`
-2. Copy `references/open-diff-app/` จาก skill directory ไปยัง workspace (หรือ clone submodule)
+2. Copy ไฟล์ app จาก skill directory (`src/`, `index.html`, `package.json`, `tsconfig.json`, `uno.config.ts`, `vite.config.ts`, `bun.lock`) ไปยัง workspace
 3. รัน `bun install` ใน workspace
 4. รัน `bun run build:client` เพื่อสร้าง `dist/` (server จะ serve `dist/` โดยตรง)
 

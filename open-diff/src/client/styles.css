@@ -1,0 +1,102 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0c10;
+  --surface: #10141a;
+  --surface-2: #161b22;
+  --border: #262c36;
+  --text: #c9d1d9;
+  --text-dim: #6e7681;
+  --add: #238636;
+  --add-bg: rgba(35, 134, 54, 0.13);
+  --add-num: rgba(35, 134, 54, 0.20);
+  --del: #da3633;
+  --del-bg: rgba(218, 54, 51, 0.13);
+  --del-num: rgba(218, 54, 51, 0.20);
+  --hunk: #58a6ff;
+  --hunk-bg: rgba(88, 166, 255, 0.08);
+  --hunk-text: #8b949e;
+  --focus: #58a6ff;
+}
+
+.light {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface-2: #ffffff;
+  --border: #d0d7de;
+  --text: #1f2328;
+  --text-dim: #656d76;
+  --add: #1a7f37;
+  --add-bg: rgba(31, 136, 61, 0.10);
+  --add-num: rgba(31, 136, 61, 0.15);
+  --del: #cf222e;
+  --del-bg: rgba(207, 34, 46, 0.10);
+  --del-num: rgba(207, 34, 46, 0.15);
+  --hunk: #0969da;
+  --hunk-bg: rgba(9, 105, 218, 0.08);
+  --hunk-text: #656d76;
+  --focus: #0969da;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.line-content {
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
+
+.shiki {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: transparent !important;
+}
+
+.shiki span {
+  background: transparent !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
