@@ -27,6 +27,9 @@ related:
 
 ใช้เมื่อ user ต้องการสร้าง project/plugin/library/extension/CLI/skills/subagents/MCP/web/mobile แต่ยังไม่แน่ใจว่าควรใช้ `follow-create-*` หรือ skill ทีเหมาะสมใด
 
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-framework-agnostic)
+- ถ้า goal เป็น `sdk`/`library`/`framework-agnostic` → ใช้ [references/framework-agnostic-sdk.md](references/framework-agnostic-sdk.md) (Core + Adapters pattern)
+
 ## Execute
 
 ### 1. Review Tech Stack
@@ -60,6 +63,7 @@ related:
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web`
    - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-cross-capacitor`
+   - `sdk`/`library`/`framework-agnostic` → `references/framework-agnostic-sdk.md` (Core + Adapters pattern)
 4. ใช้ `/report` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
 ### 4. Build And Ask Options
