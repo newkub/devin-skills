@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-create-web-astro
   - follow-framework-capacitor
-  - follow-framework-desktop-app
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
@@ -139,7 +138,6 @@ related:
 
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
-- ใช้ /follow-framework-desktop-app ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
