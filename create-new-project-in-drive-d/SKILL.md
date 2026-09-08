@@ -41,7 +41,7 @@ related:
 4. `telegram-bot` → `/follow-create-bot`
 5. `discord-bot` → `/follow-create-bot`
 6. `line-bot` → `/follow-create-bot`
-7. `browser-extension` → `/follow-create-browser-extensions`
+7. `browser-extension` → `/follow-create-browser-extensions-wxt`
 8. `obsidian-plugin` → `/follow-create-obsidian-plugin`
 9. `vscode-extension` → `/follow-create-vscode-extensions`
 10. `zed-extension` → `/follow-create-zed-extensions`

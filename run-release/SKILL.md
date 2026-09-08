@@ -95,7 +95,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 1. `npm`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
 2. `crates`: ทำ `/publish-package-to-registry` เพื่อตั้งค่า release tool
 3. `vscode`: ทำ `/follow-create-vscode-extensions` เพื่อตั้งค่า release tool
-4. `webstore`: ทำ `/follow-create-browser-extensions` เพื่อตั้งค่า release tool
+4. `webstore`: ทำ `/follow-create-browser-extensions-wxt` เพื่อตั้งค่า release tool
 5. `docker`: ทำ `/follow-release` เพื่อตั้งค่า release tool
 
 ### 6. Run Prerelease

@@ -104,7 +104,7 @@ related:
 - ถ้า user ต้องการ ship ให้ invoke `/ship` หลัง skill ทีเลือกเสร็จ
 
 - ใช้ /follow-create-biome-plugins ถ้าจำเป็น
-- ใช้ /follow-create-browser-extensions ถ้าจำเป็น
+- ใช้ /follow-create-browser-extensions-wxt ถ้าจำเป็น
 - ใช้ /follow-create-cli ถ้าจำเป็น
 - ใช้ /follow-create-bot ถ้าจำเป็น
 - ใช้ /follow-create-elysia-plugin ถ้าจำเป็น
