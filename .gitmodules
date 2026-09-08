@@ -7,3 +7,6 @@
 [submodule "create-github-pr"]
 	path = create-github-pr
 	url = ../create-github-pr.git
+[submodule "open-diff/references/open-diff-app"]
+	path = open-diff/references/open-diff-app
+	url = https://github.com/newkub/open-diff-app.git
