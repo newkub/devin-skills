@@ -3,9 +3,9 @@ name: follow-framework-desktop-app
 description: สร้าง Desktop Applications ด้วย Tauri, SolidStart, และ UnoCSS
 argument-hint: "[scope]"
 related:
-  - follow-framework-astro
+  - follow-create-web-astro
   - follow-framework-capacitor
-  - follow-framework-dioxus
+  - follow-create-cross-dioxus
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
@@ -166,9 +166,9 @@ const response = await invoke('greet', { name: 'World' })
 - IPC ใช้ `invoke()` สำหรับ frontend → backend
 - เขียน isomorphic code (ใช้ได้ทั้ง client และ server)
 
-- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
-- ใช้ /follow-framework-dioxus ถ้าจำเป็น
+- ใช้ /follow-create-cross-dioxus ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
