@@ -123,7 +123,9 @@ related:
 - `/use-gh-cli` สำหรับ PR
 - `/follow-lib-unocss` สำหรับ styling
 - `/follow-create-web-solid-tanstack-router` สำหรับ stack
-- `/open-web` สำหรับเปิด browser
+- /open-web สำหรับเปิด browser
+- /report-git-diff สำหรับสร้างรายงาน diff
+- /review-diff สำหรับ review diff
 
 ## Expected Outcome
 
@@ -134,5 +136,6 @@ related:
 - สลับไฟล์ได้
 - ปิด tab แล้ว server ปิดตัวเอง
 - ไม่มีไฟล์หรือ dependency ใหม่ใน repo หลัก
+
 
 
