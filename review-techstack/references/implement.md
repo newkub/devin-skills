@@ -8,7 +8,7 @@
 
 ## Execute
 
-1. ทำ `/productionize-implementation` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
+1. ทำ `/implement-to-production` เพื่อตรวจสอบ implementation completeness ของ areas ที่ review
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings ใน report
 
 ## Expected Outcome

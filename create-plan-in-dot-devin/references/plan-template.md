@@ -2,7 +2,7 @@
 
 ## Goal
 
-สร้างไฟล์แผนใน `.devin/plan/<workspace>/` ที่อ่านง่าย สแกนได้ และ track ผลได้ด้วย `/productionize-implementation`
+สร้างไฟล์แผนใน `.devin/plan/<workspace>/` ที่อ่านง่าย สแกนได้ และ track ผลได้ด้วย `/implement-to-production`
 
 ## Section Layout
 
@@ -11,7 +11,7 @@
 3. `## Idea Features` — scoring formula + features table
 4. `## TODO` — task table พร้อม `Status` (`pending` เริ่มต้น)
 5. `## Acceptance Criteria` — checkboxes
-6. `## Execution Order` — ลำดับ task ที่ `/productionize-implementation` ใช้จัด critical path
+6. `## Execution Order` — ลำดับ task ที่ `/implement-to-production` ใช้จัด critical path
 
 ## Features Table
 
@@ -30,7 +30,7 @@
 |-----|------|--------|------------|------------------|
 | 1 | ... | pending | - | ... |
 
-- `Status` ใช้ `pending`, `in-progress`, `completed` ให้ตรงกับที่ `/productionize-implementation` อ่าน
+- `Status` ใช้ `pending`, `in-progress`, `completed` ให้ตรงกับที่ `/implement-to-production` อ่าน
 - `Expected Outcome` วัดผลได้
 
 ## Acceptance Criteria

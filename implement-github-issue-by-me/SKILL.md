@@ -1,9 +1,9 @@
 ---
 name: implement-github-issue-by-me
-description: นำ GitHub issues ทั้งหมดที่สร้างโดยฉันมา productionize-implementation ทีละ issue
+description: นำ GitHub issues ทั้งหมดที่สร้างโดยฉันมา implement-to-production ทีละ issue
 argument-hint: "[repo-or-filter]"
 related:
-  - productionize-implementation
+  - implement-to-production
   - resolve-github-issue-by-me
   - create-github-issue
   - list-github-issue
@@ -14,12 +14,12 @@ related:
 
 ## Goal
 
-รวบรวม GitHub issues ทั้งหมดที่สร้างโดยฉัน (`@me`) แล้ว implement ทีละ issue ผ่าน `/productionize-implementation` จนครบ จากนั้น resolve แต่ละ issue ด้วย `/resolve-github-issue-by-me`
+รวบรวม GitHub issues ทั้งหมดที่สร้างโดยฉัน (`@me`) แล้ว implement ทีละ issue ผ่าน `/implement-to-production` จนครบ จากนั้น resolve แต่ละ issue ด้วย `/resolve-github-issue-by-me`
 
 ## Scope
 
 - จัดการเฉพาะ open issues ที่ authenticated user เป็น author (`gh issue list --author @me`)
-- implement แต่ละ issue ด้วย `/productionize-implementation` ตามลำดับ priority
+- implement แต่ละ issue ด้วย `/implement-to-production` ตามลำดับ priority
 - หลัง implement แต่ละ issue เสร็จ → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
 - ไม่แตะ issues ของผู้อื่น และไม่ implement เกิน scope ของแต่ละ issue
 - ถ้า issue เดียวต้องการ plan ก่อน → ใช้ `/create-plan-in-dot-devin` สำหรับ issue เดี่ยว
@@ -55,11 +55,11 @@ related:
 
 ### 4. Implement Each Issue
 
-> Goal: ทำ `/productionize-implementation` ทีละ issue ตาม queue
+> Goal: ทำ `/implement-to-production` ทีละ issue ตาม queue
 
 1. อ่าน issue ด้วย `gh issue view <issue> --comments` เพื่อดู acceptance criteria และ context
 2. สร้าง branch ตาม project conventions ถ้า issue ต้องการ code changes
-3. ทำ `/productionize-implementation` โดยใช้ issue body และ comments เป็น requirements
+3. ทำ `/implement-to-production` โดยใช้ issue body และ comments เป็น requirements
 4. ทำ `/run-verify` หลัง implement แต่ละ issue — ถ้าไม่ผ่านให้แก้ก่อนไป issue ถัดไป
 5. บันทึก commits และ PR (ถ้ามี) ที่เชื่อมกับ issue
 
@@ -104,7 +104,7 @@ related:
 
 - ทุก issue ที่ implement เสร็จต้องผ่าน `/resolve-github-issue-by-me`
 - ไม่ปิด issue โดยไม่มี evidence การ implement
-- ถ้า `/productionize-implementation` fail กลางคัน → ไม่ resolve issue นั้น
+- ถ้า `/implement-to-production` fail กลางคัน → ไม่ resolve issue นั้น
 
 ### 5. Scope Per Issue
 
@@ -113,7 +113,7 @@ related:
 
 ## Expected Outcome
 
-- Open issues ที่ฉันสร้างทั้งหมดถูก implement ผ่าน `/productionize-implementation`
+- Open issues ที่ฉันสร้างทั้งหมดถูก implement ผ่าน `/implement-to-production`
 - แต่ละ issue ที่เสร็จถูก comment สรุปและปิดผ่าน `/resolve-github-issue-by-me`
 - Verification ผ่านสำหรับทุก issue ที่ implement
 - รายงานสรุปครบ: implemented, resolved, skipped, failed พร้อม URL

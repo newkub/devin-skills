@@ -4,7 +4,7 @@ description: รวบรวม TODO/FIXME/HACK/NOTE/XXX/BUG จาก code mark
 argument-hint: "[scope]"
 related:
   - update-todo-md
-  - productionize-implementation
+  - implement-to-production
   - scan-codebase
   - resolve-errors
   - report
@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับการรายงาน TODO/FIXME/HACK/NOTE/XXX/BUG ทั้งจากไฟล์ `TODO.md` และจาก code markers ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/productionize-implementation`)
+ใช้สำหรับการรายงาน TODO/FIXME/HACK/NOTE/XXX/BUG ทั้งจากไฟล์ `TODO.md` และจาก code markers ใน codebase — ไม่รวมการเพิ่ม TODO (ใช้ `/update-todo-md`) และไม่รวมการ implement TODO (ใช้ `/implement-to-production`)
 
 (merged from: `report-todo`, `list-todo-md`)
 
@@ -105,7 +105,7 @@ related:
 1. สรุปจำนวน markers แยกตาม type และ priority
 2. ระบุ markers ที่ต้องจัดการด่วน (FIXME/BUG high priority)
 3. ระบุ stale markers ที่เก่าเกิน 6 เดือน
-4. แนะนำ next steps: `/productionize-implementation` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
+4. แนะนำ next steps: `/implement-to-production` สำหรับ implement, `/resolve-errors` สำหรับแก้ FIXME
 
 ## Rules
 
@@ -124,7 +124,7 @@ related:
 
 - ไม่เพิ่ม ไม่แก้ ไม่ลบ markers — รายงานเท่านั้น
 - ใช้ `/update-todo-md` สำหรับเพิ่ม TODO
-- ใช้ `/productionize-implementation` สำหรับ implement TODO
+- ใช้ `/implement-to-production` สำหรับ implement TODO
 
 ### Output Format
 
@@ -142,7 +142,7 @@ related:
 ### Non-Redundancy
 
 - การเพิ่ม TODO อยู่ใน `/update-todo-md` แล้ว
-- การ implement TODO อยู่ใน `/productionize-implementation` แล้ว
+- การ implement TODO อยู่ใน `/implement-to-production` แล้ว
 - การค้นหา code อยู่ใน `/scan-codebase` แล้ว
 
 ## Expected Outcome

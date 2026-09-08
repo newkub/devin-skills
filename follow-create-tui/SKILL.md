@@ -124,7 +124,7 @@ related:
 ### 2. Quality
 
 - ทำ `/follow-single-responsibility` หลัง major components
-- ทำ `/productionize-implementation` หลังเสร็จ
+- ทำ `/implement-to-production` หลังเสร็จ
 - รองรับ error handling ด้วย `Result`
 
 ### 3. Safety

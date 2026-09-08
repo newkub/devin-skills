@@ -22,7 +22,7 @@
 | 12 | `gitignore` | `/update-gitignore` |
 | 13 | `vscode` | `/update-dot-vscode` |
 | 14 | `github-metadata` | `/update-github-metadata` |
-| 15 | `codebase` | `/deep-productionize-implementation` ตาม critical path |
+| 15 | `codebase` | `/deep-implement-to-production` ตาม critical path |
 
 หลัง update ทุก target ให้ทำ `/update-references` เพื่อ sync ทุก reference
 
@@ -30,6 +30,6 @@
 
 - ต้องระบุ target type ก่อนเริ่ม — ถ้าไม่ชัด → ทำ `/ask-me`
 - ใช้ `update-*` skills ตาม target type ไม่ทำงานที่ `update-*` skills ทำได้เองโดยตรง
-- ถ้า target ไม่ตรงกับ skill ใด → ใช้ `/deep-productionize-implementation` สำหรับ code changes
+- ถ้า target ไม่ตรงกับ skill ใด → ใช้ `/deep-implement-to-production` สำหรับ code changes
 - รันซ้ำได้โดยไม่เกิด side effects — ข้าม steps ที่ไม่จำเป็น
 - ต้องผ่าน `/deep-validate` และ `/run-verify` ก่อนถือว่าเสร็จ

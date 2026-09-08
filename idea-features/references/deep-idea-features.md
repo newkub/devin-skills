@@ -15,7 +15,7 @@
 - สร้าง plan ใน `.devin/plan/<workspace>/` ผ่าน `/create-plan-in-dot-devin` ก่อน implement
 - เปิด report/plan ชั่วคราวด้วย `/open-files-in-web` ถ้าผู้ใช้ต้องการ preview
 - ไม่สร้าง web app ถาวร, ไม่มี `src/`, ไม่มี `package.json` ใน skill directory
-- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/productionize-implementation` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
+- เมื่อ user บอกให้ "ทำ" ให้ทำตาม `/implement-to-production` โดยก่อนรันต้อง `/deep-review` ก่อน และลบ report/plan files หลังเสร็จ
 - ถ้าต้องการลบ `.git`, remote repo, submodules, web src ของ project ที่สร้าง → ดำเนินการตาม context ให้เหลือแค่ SKILL.md หรือไฟล์จำเป็น
 
 - ดูเพิ่มเติม: /deep-review-codebase
@@ -98,8 +98,8 @@
 
 1. ถ้า user บอก "ทำ" → ทำ `/deep-review` ก่อน
 2. ทำ `/create-plan-in-dot-devin` จาก features ที่เลือก โดยใช้ `<topic>` เป้น title บันทึก `PLAN_PATH`
-3. จากนั้นทำ `/productionize-implementation` ตาม `PLAN_PATH`
-4. หลัง `/productionize-implementation` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/<workspace>/` และลบ `PLAN_PATH`
+3. จากนั้นทำ `/implement-to-production` ตาม `PLAN_PATH`
+4. หลัง `/implement-to-production` เสร็จ ลบ report files ที่สร้างใน `.devin/reports/<workspace>/` และลบ `PLAN_PATH`
 5. ถ้ามี `.git`, remote repo, submodules, web src ของ project ที่ไม่จำเป็นต้อง → ลบตาม context ให้เหลือแค่ไฟล์ที่จำเป็น
 
 ### 8. Cleanup
@@ -123,14 +123,14 @@
 
 - สร้าง report ชั่วคราวใน OS temp directory เท่านั้น
 - สร้าง plan ใน `.devin/plan/<workspace>/` ผ่าน `/create-plan-in-dot-devin`
-- ต้องลบ report files ใน OS temp และ plan files หลัง `/productionize-implementation` เสร็จ หรือหลัง user ดู preview เสร็จ
+- ต้องลบ report files ใน OS temp และ plan files หลัง `/implement-to-production` เสร็จ หรือหลัง user ดู preview เสร็จ
 - ไม่เก็บ report หรือ plan ค้าง
 
 ### 3. Implement Flow
 
-- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/create-plan-in-dot-devin` แล้ว `/productionize-implementation`
+- ถ้า user บอก "do ... now" หรือ "ทำ" → ทำ `/deep-review` ก่อน แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/productionize-implementation`
+- ถ้า user ขอ implement ทั้งหมด → ทำ `/implement-to-production`
 
 ### 4. Data Format
 
@@ -147,9 +147,9 @@
 
 ### 5. Direct Execution
 
-- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/productionize-implementation`
+- ถ้า user บอก "do ... now" → ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production`
 - ถ้า user ขอ implement ฟีเจอรเฉพาะ → ทำ `/implement-features-to-mvp`
-- ถ้า user ขอ implement ทั้งหมด → ทำ `/productionize-implementation`
+- ถ้า user ขอ implement ทั้งหมด → ทำ `/implement-to-production`
 
 ### 6. Start With MVP
 
@@ -174,5 +174,5 @@
 - Plan ถูกสร้างใน `.devin/plan/<workspace>/` ก่อน implement
 - สามารถเปิด preview ด้วย `/open-files-in-web` ได้ โดยไม่สร้าง web app ถาวร
 - ไม่มี report หรือ plan files ค้างหลังเสร็จงาน
-- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/productionize-implementation` แล้วลบ report files และ plan files
+- เมื่อ user บอก "ทำ" ให้ทำ `/deep-review` แล้ว `/create-plan-in-dot-devin` แล้ว `/implement-to-production` แล้วลบ report files และ plan files
 - ไม่ต้องตอบยาวใน chat สรุป path และ features สั้นๆ

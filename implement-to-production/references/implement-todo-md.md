@@ -10,7 +10,7 @@
 
 - อ่าน `TODO.md` ใน project root
 - เรียง task ตาม priority, dependency, created
-- implement ทีละ task ด้วย `/productionize-implementation` หรือ `/continue`
+- implement ทีละ task ด้วย `/implement-to-production` หรือ `/continue`
 - update status เป็น `in-progress`, `completed`, หรือ `blocked`
 
 ## Execute
@@ -39,7 +39,7 @@
 
 > Goal: ทำ task จนเสร็จ
 
-1. ทำ `/productionize-implementation` สำหรับ task ปัจจุบัน
+1. ทำ `/implement-to-production` สำหรับ task ปัจจุบัน
 2. ถ้า task ง่ายและมี state อยู่แล้ว → ใช้ `/continue`
 3. ถ้า task ซับซ้อน → ใช้ `/deep-plan` ก่อน
 4. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)

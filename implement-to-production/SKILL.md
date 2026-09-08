@@ -1,8 +1,13 @@
 ---
-name: productionize-implementation
+name: implement-to-production
 description: แปลง TODO, MOCK, FAKE, placeholder เป้น production code จริง end-to-end
 argument-hint: "[scope-or-plan]"
 related:
+  - follow-review
+  - deep-analyze
+  - deep-plan
+  - deep-research
+  - deep-validate
   - implement-features-to-mvp
   - report-scan-todo
   - update-todo-md
@@ -35,8 +40,8 @@ related:
 
 > Goal: เข้าใจ scope และปัญหาก่อน implement
 
-1. ทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
-2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values
+1. ทำ `/follow-review` เป็น gate ก่อน implement — เลือกและรัน `review-*` ที่ตรง context แล้วทำ `/deep-review` ครบทุกมิติ เพื่อหา TODO/MOCK/placeholder และ issues
+2. ทำ `/deep-analyze` เพื่อ scan หา `TODO`, `FIXME`, `XXX`, `HACK`, mock data, hard-coded values และทำ `/deep-research` ถ้าต้องหา external patterns หรือ sources
 3. ถ้ามี `.devin/plan/<workspace>/<title-date>.md` → ทำตาม `references/implement-plan.md` ให้ครบก่อน
 4. บันทึก baseline: รายการ unfinished items, files, dependencies, infrastructure gaps
 
@@ -44,7 +49,7 @@ related:
 
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
-1. ทำ `/review-architecture` หรือ `/follow-architecture` เพื่อดู boundary, layer, data flow
+1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/follow-architecture` เพื่อดู boundary, layer, data flow
 2. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
 3. ระบุ critical path: schema → data → API → UX/UI
 
@@ -118,12 +123,12 @@ related:
 
 > Goal: code ผ่าน validation พร้อม rollback plan
 
-1. ทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests
+1. ทำ `/deep-validate` เพื่อ validate หลายมิติ แล้วทำ `/run-test-all` เพื่อรัน unit, integration, e2e, specialized tests
 2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. ทำ `/test-usage` เพื่อทดสอบ usage examples ใน `README.md`, docs และ `package.json` scripts ว่าทำงานได้จริงก่อน ship
 5. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
-6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-productionize-implementation` ก่อนเพื่อ deep pass
+6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-implement-to-production` ก่อนเพื่อ deep pass
 7. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
 8. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
 9. ทำ `/suggest-next-action`

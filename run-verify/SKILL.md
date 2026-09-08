@@ -9,7 +9,7 @@ related:
   - run-typecheck
   - run-test-unit
   - run-build
-  - productionize-implementation
+  - implement-to-production
   - check-monorepo
   - setup-cicd
   - follow-tasks
@@ -32,7 +32,7 @@ related:
 - project ใหญ่ monorepo หรือ build/test หนัก → ส่ง branch ไป CI/CD แล้ว watch และ resolve errors
 - สามารถ force mode ได้: `/run-verify --local` หรือ `/run-verify --ci`
 - ไม่ merge, ไม่ release, ไม่ deploy โดยอัตโนมัติ
-- ใช้หลัง `/productionize-implementation` เพื่อ verify ก่อน ship
+- ใช้หลัง `/implement-to-production` เพื่อ verify ก่อน ship
 
 ## Execute
 

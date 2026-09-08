@@ -22,6 +22,10 @@ related:
   - deep-review-codebase-then-fix
   - run-verify
   - deep-validate
+  - deep-refactor
+  - deep-implement-to-production
+  - deep-update-project
+  - deep-verify
   - create-git-branch
   - git-commit-and-push
   - refactor-commit
@@ -77,6 +81,10 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 10. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
 11. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
 12. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
+13. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/deep-implement-to-production`
+14. ถ้าพบ structural หรือ quality issues → ทำ `/deep-refactor`
+15. ทำ `/deep-update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
+16. ทำ `/deep-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
 
 ### 4. Stage
 

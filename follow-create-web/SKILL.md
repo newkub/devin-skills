@@ -70,7 +70,7 @@ related:
 - ทำ `/follow-single-responsibility` หลังจากสร้าง major components
 - ทำ `/deep-optimize` สำหรับ SEO/performance/bundle
 - ทำ `/review-frontend` ก่อน deploy
-- ทำ `/productionize-implementation` หลัง website เสร็จ
+- ทำ `/implement-to-production` หลัง website เสร็จ
 
 ### 3. Safety
 

@@ -20,7 +20,7 @@ related:
   - resolve-errors
   - review-quality
   - check-should-update
-  - productionize-implementation
+  - implement-to-production
   - ship
   - report
 ---
@@ -31,7 +31,7 @@ related:
 
 ## Scope
 
-ใช้กับ CLI commands, SDK code examples, package scripts และ instructions ที่ปรากฏใน docs ก่อน release — ถูกเรียกจาก `/productionize-implementation` ใน step Verify ก่อน ship
+ใช้กับ CLI commands, SDK code examples, package scripts และ instructions ที่ปรากฏใน docs ก่อน release — ถูกเรียกจาก `/implement-to-production` ใน step Verify ก่อน ship
 
 ## Execute
 

@@ -10,7 +10,7 @@ related:
   - report-in-table
   - then-apply
   - report-uxui-sketch
-  - productionize-implementation
+  - implement-to-production
 
 ---
 
@@ -76,7 +76,7 @@ related:
 - ตอบกลับในแชทเท่านั้น
 - ไม่สร้างไฟล์ใน `.devin/reports/<workspace>/` หรือ `.devin/plan/<workspace>/`
 - ไม่สร้าง web app ถาวร
-- ไม่เรียก `/productionize-implementation` หรือ `/ship`
+- ไม่เรียก `/implement-to-production` หรือ `/ship`
 
 ### 2. Lightweight
 

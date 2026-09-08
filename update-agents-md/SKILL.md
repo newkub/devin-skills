@@ -11,7 +11,7 @@ related:
   - review-rules
   - review-by-stakeholder
   - deep-validate
-  - productionize-implementation
+  - implement-to-production
   - run-verify
   - git-commit
   - create-github-pr
@@ -105,7 +105,7 @@ related:
 ### 8. Ship
 
 > Goal: ship Ship
-1. ทำ `/productionize-implementation` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
+1. ทำ `/implement-to-production` เพื่อลบ TODO/MOCK/FAKE/STUB/placeholder
 2. ตรวจสอบ `git status` และ state ของ repository ตาม project conventions
 3. ทำ `/run-verify`, `/run-test-all` ถ้ามี
 4. ทำ `/deep-validate`

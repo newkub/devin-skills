@@ -4,7 +4,7 @@ description: ตั้งค่าและใช้งาน MSW (Mock Service 
 argument-hint: "[scope]"
 related:
   - run-test-api
-  - productionize-implementation
+  - implement-to-production
   - follow-my-tech-stack
   - review-techstack
   - report
@@ -18,7 +18,7 @@ related:
 
 - ใช้เมื่อ frontend หรือ Node app ต้องการ mock API responses ใน dev, unit tests หรือ integration tests
 - ครอบคลุม REST และ GraphQL handlers, `setupWorker` (browser) และ `setupServer` (Node/Vitest)
-- ใช้ร่วมกับ `/productionize-implementation` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
+- ใช้ร่วมกับ `/implement-to-production` เมื่อต้องการแปลง mock เป็น production code ภายหลัง
 
 ## Execute
 
@@ -80,7 +80,7 @@ related:
 - แยก test override ด้วย `server.use()` — ห้ามแก้ base handlers เพื่อ test เดียว
 - ไม่ commit `mockServiceWorker.js` ที่ generate เองนอก `public/` convention
 
-- ใช้ /productionize-implementation ถ้าจำเป็น
+- ใช้ /implement-to-production ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 

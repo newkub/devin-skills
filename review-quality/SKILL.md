@@ -104,7 +104,7 @@ Review คุณภาพ code โดยรวม ครอบคลุม code 
 
 > Goal: ไม่มี TODO, MOCK, STUB, placeholder ค้างอยู่หลัง review
 
-1. ทำ `/productionize-implementation`
+1. ทำ `/implement-to-production`
 2. ถ้าพบ incomplete implementations → เพิ่มเป็น findings
 
 ## Rules

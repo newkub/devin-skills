@@ -58,14 +58,14 @@ related:
 
 1. บันทึก final `index.html` พร้อม assets
 2. ทำ `/report-in-table` สรุป: `No.`, `File`, `Description`
-3. แจ้ง user ว่าเป็น temp design — ต้อง implement เองหรือใช้ `/productionize-implementation`
+3. แจ้ง user ว่าเป็น temp design — ต้อง implement เองหรือใช้ `/implement-to-production`
 
 ### 5. Next Action
 
 > Goal: สรุปทิศทางถัดไป
 
 1. ทำ `/suggest-next-action`
-2. ถ้า user ต้องการ implement → แนะนำ `/productionize-implementation`
+2. ถ้า user ต้องการ implement → แนะนำ `/implement-to-production`
 3. ถ้า user ต้องการ save → ย้ายจาก temp ไป project ด้วย `/move-to`
 
 ## Rules

@@ -48,8 +48,8 @@ Implementation Completeness: 72.7% [██████████████�
 
 | Priority | Action | Impact | Effort | Workflow |
 |----------|--------|--------|--------|----------|
-| 1 | Replace MOCK in auth service | critical | low | `productionize-implementation` |
-| 2 | Add missing delete flow | high | medium | `productionize-implementation` |
+| 1 | Replace MOCK in auth service | critical | low | `implement-to-production` |
+| 2 | Add missing delete flow | high | medium | `implement-to-production` |
 
 ## Supplementary Metrics
 

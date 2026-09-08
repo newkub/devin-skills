@@ -2,7 +2,7 @@
 
 ## Goal
 
-ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `productionize-implementation`
+ระบุ TODO, FIXME, HACK, XXX ที่ต้องแปลงเป็น production code ก่อน `implement-to-production`
 
 ## Search Patterns
 

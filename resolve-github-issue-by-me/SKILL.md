@@ -5,7 +5,7 @@ argument-hint: "[issue-or-scope]"
 related:
   - list-github-issue
   - implement-github-issue-by-me
-  - productionize-implementation
+  - implement-to-production
   - resolve-github-pr
   - ask-me
 ---
@@ -101,7 +101,7 @@ related:
 
 - ประมวลผลทีละ issue ไม่ bulk close โดยไม่ตรวจ
 - หลังแต่ละ issue ให้บันทึกผลลัพธ์ก่อนไป issue ถัดไป
-- ถ้า implement ยังไม่เสร็จ → ส่งต่อ `/productionize-implementation` ผ่าน `/implement-github-issue-by-me`
+- ถ้า implement ยังไม่เสร็จ → ส่งต่อ `/implement-to-production` ผ่าน `/implement-github-issue-by-me`
 
 ## Expected Outcome
 

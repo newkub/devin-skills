@@ -7,7 +7,7 @@ related:
 
 ## Goal
 
-ตรวจ queue tasks ใน `QUEUE.md` และ GitHub tasks ก่อน `productionize-implementation` และ `implement-github-issue-by-me`
+ตรวจ queue tasks ใน `QUEUE.md` และ GitHub tasks ก่อน `implement-to-production` และ `implement-github-issue-by-me`
 
 ## Checks
 

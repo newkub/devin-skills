@@ -10,7 +10,7 @@ related:
   - plan
   - report-uxui-sketch
   - report-architecture-diagram
-  - productionize-implementation
+  - implement-to-production
   - ask-me
   - open-in-zed
 ---
@@ -83,7 +83,7 @@ related:
     - คอลัมน์ `Dependencies` เพิ่มเมื่อมี dependencies ระหว่าง features ถ้าไม่มีให้ละเว้นคอลัมน์นี้
 - `## TODO` — task table มี `No.`, `Task`, `Status`, `Depends On`, `Expected Outcome`
 - `## Acceptance Criteria` — checkboxes
-- `## Execution Order` — ลำดับทำงานที่ `/productionize-implementation` ใช้
+- `## Execution Order` — ลำดับทำงานที่ `/implement-to-production` ใช้
 
 ใช้ `references/uxui-tips.md` เพื่อตรวจ visual hierarchy, icons, color, tables, checkboxes
 
@@ -95,7 +95,7 @@ related:
 2. ถ้าไฟล์มีอยู่แล้วและเป็นแผนคนละเรื่อง → เลือก title ใหม่หรือถาม user
 3. เปิดไฟล์ด้วย `open-in-zed` หรือ OS native command ตาม platform
 4. รายงาน path ของไฟล์แผน
-5. ทำ `/suggest-next-action` โดยแนะนำ `/productionize-implementation`
+5. ทำ `/suggest-next-action` โดยแนะนำ `/implement-to-production`
 
 ## Rules
 
@@ -104,7 +104,7 @@ related:
 - Plan ต้องมาจาก `/idea-features`
 - ทุก feature ต้องมี score คำนวณจากสูตร
 - ทุก task ต้องมี expected outcome วัดผลได้
-- ต้องมี `## Execution Order` เพื่อให้ `/productionize-implementation` อ่านได้
+- ต้องมี `## Execution Order` เพื่อให้ `/implement-to-production` อ่านได้
 
 ### 2. Plan File UX
 
@@ -133,7 +133,7 @@ related:
 - path ต้องอยู่ภายใต้ `.devin/plan/<workspace>/` เท่านั้น ห้ามมี `..`
 - ใช้ `open-in-zed` หรือ OS native command เท่านั้น
 
-- ใช้ `/productionize-implementation` เมื่อต้องการทำงานตามแผน
+- ใช้ `/implement-to-production` เมื่อต้องการทำงานตามแผน
 - ใช้ `/create-github-issue` ถ้าต้องการส่งแผนไป GitHub issue
 - ใช้ `/plan` ถ้าจำเป็น
 
@@ -143,6 +143,6 @@ related:
 - Plan body อ่านง่าย มี Iconify icons, color, และ centered diagram
 - แต่ละ feature ที่ต้องการ visual มี `/report-uxui-sketch` ประกอบ
 - ไฟล์แผนถูกเปิดใน editor
-- Plan สามารถ track ความคืบหน้าได้ด้วย `/productionize-implementation`
+- Plan สามารถ track ความคืบหน้าได้ด้วย `/implement-to-production`
 - ทุก reference ใน `references/` ถูกใช้งาน
 

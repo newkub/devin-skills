@@ -4,7 +4,7 @@ description: เพิ่ม อ่าน และ enhance prompt จาก TOD
 argument-hint: "[add|read] [title/content]"
 related:
   - deep-plan
-  - productionize-implementation
+  - implement-to-production
   - continue
   - enhance-prompt
   - report
@@ -78,7 +78,7 @@ related:
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
 1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`
-2. ถ้าพร้อม implement → ใช้ `/productionize-implementation`
+2. ถ้าพร้อม implement → ใช้ `/implement-to-production`
 3. ถ้ามีหลาย task รออยู่ → ใช้ `/continue` เพื่อทำตามลำดับ
 
 ### 6. Validate And Report
@@ -116,7 +116,7 @@ related:
 ### 4. Scope
 
 - รับผิดชอบเฉพาะ `TODO.md` ที่ project root
-- ถ้าต้อง implement → ใช้ `/productionize-implementation`
+- ถ้าต้อง implement → ใช้ `/implement-to-production`
 - ถ้าต้อง queue ใน `QUEUE.md` → ใช้ `edit` โดยตรงหรือสร้างด้วย `write`
 
 ## Expected Outcome

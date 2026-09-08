@@ -6,8 +6,8 @@ related:
   - scan-codebase
   - report
   - suggest-next-action
-  - productionize-implementation
-  - productionize-implementation
+  - implement-to-production
+  - implement-to-production
   - implement-github-issue-by-me
 ---
 
@@ -17,7 +17,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Scope
 
-ใช้ก่อนเรียก `productionize-implementation`, `productionize-implementation`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
+ใช้ก่อนเรียก `implement-to-production`, `implement-to-production`, `implement-github-issue-by-me`, `implement-features-to-mvp` — ตรวจ plan completeness, mock/stub inventory, TODO/FIXME/HACK inventory, queue task validation, GitHub task clarity, MVP scope validation, realization blockers แล้วสรุป readiness score พร้อม prioritized implementation order
 
 ## Execute
 
@@ -32,7 +32,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ### 2. Review Plan Readiness
 
-> Goal: ตรวจ plan completeness ก่อน execute `productionize-implementation`
+> Goal: ตรวจ plan completeness ก่อน execute `implement-to-production`
 
 ทำตาม references/plan-readiness.md
 
@@ -62,7 +62,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ### 7. Check Realization Blockers
 
-> Goal: ระบุ blockers ก่อน `productionize-implementation`
+> Goal: ระบุ blockers ก่อน `implement-to-production`
 
 ทำตาม references/realization-blockers.md
 

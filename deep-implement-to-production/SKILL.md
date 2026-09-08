@@ -1,10 +1,9 @@
 ---
-name: deep-productionize-implementation
+name: deep-implement-to-production
 description: Productionize implementation ครบวงจร — deep review, plan, schema, API, UX, validation
 argument-hint: "[scope]"
 related:
-  - productionize-implementation
-  - productionize-implementation
+  - implement-to-production
   - implement-features-to-mvp
   - deep-analyze
   - deep-review
@@ -90,8 +89,8 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 > Goal: แปลงทุก TODO/STUB เป็น production code
 
-1. ทำ `/productionize-implementation` ถ้ามี `TODO.md`
-2. ทำ `/productionize-implementation` ถ้ามี MOCK/FAKE/STUB
+1. ทำ `/implement-to-production` ถ้ามี `TODO.md`
+2. ทำ `/implement-to-production` ถ้ามี MOCK/FAKE/STUB
 3. ค้นหา placeholder functions และแทนที่ real implementation
 4. ใช้ `/alternative` ถ้าต้องเลือก library ใหม่
 5. ตรวจสอบว่าไม่มี TODO/MOCK/placeholder เหลือ
@@ -161,7 +160,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - user-friendly error messages
 - optimistic updates เฉพาะเมื่อเหมาะสม
 
-- ใช้ /productionize-implementation ถ้าจำเป็น
+- ใช้ /implement-to-production ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 

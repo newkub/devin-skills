@@ -3,6 +3,7 @@ name: refactor
 description: Refactor ไฟล์, workspace, หรือ codebase ตาม context — SRP, boundaries, style, consistency
 argument-hint: "[@files... | scope]"
 related:
+  - follow-review
   - refactor-workspace
   - relocation
   - update-references
@@ -32,11 +33,12 @@ Refactor ตาม context โดยเลือก scope ทีเหมาะ�
 
 > Goal: ระบุ scope ของ refactoring
 
-1. ถ้ามี `@files...` → file refactor
-2. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
-3. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
-4. ถ้าต้องการ refactor ทั้ม codebase หรือไม่มี files/workspace context → codebase refactor
-5. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
+1. ทำ `/follow-review` ก่อน refactor เสมอ — เลือกและรัน `review-*` ที่ตรง context ก่อนลงมือ
+2. ถ้ามี `@files...` → file refactor
+3. ถ้าไม่มี `@files` แต่ context เป็น monorepo/workspace → workspace refactor
+4. ถ้า project มีไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → SRP refactor
+5. ถ้าต้องการ refactor ทั้ม codebase หรือไม่มี files/workspace context → codebase refactor
+6. ถ้า user บอกว่าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
 ### 2. File Refactor
 
