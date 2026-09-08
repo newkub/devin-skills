@@ -3,7 +3,7 @@ name: open-web-dependencies
 description: เปิด website ของ dependencies จาก package manifest
 argument-hint: "[manifest]"
 related:
-  - analyze-dependencies
+  - research-dependencies
   - check-circular-dependencies
   - list-dependencies
 ---
@@ -42,7 +42,7 @@ related:
 3. ใช้ environment variables หรือ secrets management tools
 4. อย่าแชร์ secrets กับบุคคลอื่น
 
-- ใช้ /analyze-dependencies ถ้าจำเป็น
+- ใช้ /research-dependencies ถ้าจำเป็น
 - ใช้ /check-circular-dependencies ถ้าจำเป็น
 - ใช้ /list-dependencies ถ้าจำเป็น
 

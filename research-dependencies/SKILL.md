@@ -1,7 +1,21 @@
 ---
 name: research-dependencies
-description: Research dependencies/libraries สำหรับ project โดยเปรียบเทียบ NPM, crates, Go modules, Python
-argument-hint: "[package query]"
+description: Research dependencies สำหรับ project โดย analyze manifest, compare และหา fast/modern deps
+argument-hint: "[package or manifest]"
+allowed-tools:
+  - read
+  - write
+  - edit
+  - exec
+  - skill
+  - ask_user_question
+  - todo_write
+  - find_file_by_name
+  - grep
+  - web_search
+  - webfetch
+  - context7
+  - mcp_call_tool
 related:
   - deep-research
   - follow-my-tech-stack
@@ -9,15 +23,25 @@ related:
   - check-reference
   - report
   - suggest-next-action
+  - search-in-github-star
+  - search-in-raindrop-io
+  - search-in-npmx
+  - list-dependencies
+  - check-circular-dependencies
+  - open-web-dependencies
 ---
 
 ## Goal
 
-Research dependencies หรือ libraries ที่เหมาะสมกับ project โดยเปรียบเทียบ alternatives จาก package registries, GitHub, และ docs
+Research dependencies หรือ libraries ที่เหมาะสมกับ project โดย analyze manifest files, เปรียบเทียบ alternatives, และหา fast/modern deps
 
 ## Scope
 
-ใช้เมื่อต้องเลือก dependencies ใหม่ เปรียบเทียบ libraries หรือหา compatible versions สำหรับภาษา/tech stack ปัจจุบัน
+ใช้เมื่อต้องเลือก dependencies ใหม่, เปรียบเทียบ libraries, หา compatible versions หรือตรวจ dependencies ใน project ปัจจุบัน
+
+- รองรับ `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
+- ใช้ `/search-in-github-star`, `/search-in-raindrop-io`, `/search-in-npmx` เพื่อหา deps ที fast/modern
+- ไม่แก้ไข manifest files โดยตรง — ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
 
 ## Execute
 
@@ -25,22 +49,32 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 > Goal: ระบุว่าต้องหา dependency ประเภทใด
 
-1. ระบุ package name หรือ capability ที่ต้องการ เช่น "table rendering in Rust" หรือ "HTTP client in Bun"
-2. ระบุ ecosystem: `npm` / `crates.io` / `go` / `pypi`
-3. ระบุ constraints: version, license, bundle size, maintenance
-4. ถ้าไม่ชัด → ทำ `/follow-my-tech-stack` ก่อน
+1. ถ้ามี manifest file → อ่าน `Cargo.toml`, `package.json`, `go.mod`, `pyproject.toml`
+2. ระบุ package name หรือ capability ที่ต้องการ เช่น "HTTP client in Bun" หรือ "existing deps ที outdated"
+3. ระบุ ecosystem: `npm` / `crates.io` / `go` / `pypi`
+4. ระบุ constraints: fast, modern, minimal bundle, secure, maintained
+5. ถ้าไม่ชัด → ทำ `/follow-my-tech-stack` ก่อน
 
-### 2. Search Package Registries
+### 2. Analyze Manifest
 
-> Goal: หา candidates จาก registries
+> Goal: รวบรวม dependencies ทีมีอยู่
 
-1. ใช้ `npm` registry สำหรับ JS/TS packages (หรือ `jsr` สำหรับ Deno-compatible modules)
-2. ใช้ `crates.io` สำหรับ Rust crates
-3. ใช้ `pkg.go.dev` สำหรับ Go modules
-4. ใช้ `pypi.org` สำหรับ Python packages
-5. ค้นหาด้วย keywords ที่ตรงกับ capability
+1. ใช้ `/list-dependencies` หรือ `/check-circular-dependencies` ดู tree
+2. ตรวจ version ปัจจุบันและ source ของแต่ละ dep
+3. ระบุ outdated, duplicate, heavy, หรือ unused deps
+4. บันทึก baseline: จำนวน deps, size, จำนวน outdated
 
-### 3. Compare Candidates
+### 3. Search Modern/Fast Alternatives
+
+> Goal: หา deps ทีเหมาะกับ tech stack ปัจจุบัน
+
+1. ทำ `/search-in-github-star` หา popular/quality libraries
+2. ทำ `/search-in-raindrop-io` หา bookmarks หรือ comparison ที่เคยเก็บไว้
+3. ทำ `/search-in-npmx` สำหรับ JS/TS packages
+4. ใช้ package registries เบื้องต้น: `npm`, `crates.io`, `pkg.go.dev`, `pypi`
+5. ค้นหาด้วย keywords ที่ตรงกับ capability + `fast`, `modern`, `lightweight`, `zero-dependency`
+
+### 4. Compare Candidates
 
 > Goal: เปรียบเทียบทางเลือก
 
@@ -52,27 +86,31 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
    - API stability
    - Documentation quality
    - Type safety
+   - Last release (prefer ไม่เกิน 6 เดือน)
 3. ตรวจสอบ compatibility กับ tech stack ปัจจุบัน
+4. ให้ priority กับ fast, modern, minimal deps
 
-### 4. Deep Check
+### 5. Deep Check
 
 > Goal: ตรวจสอบ candidates ทีละตัว
 
-1. อ่าน official docs ผ่าน Context7 หรือ `read_url_content`
+1. อ่าน official docs ผ่าน `context7` หรือ `webfetch`
 2. ดู GitHub: open issues, recent commits, release frequency
-3. ตรวจสอบ security advisories ถ้ามี
-4. ค้นหา benchmark/comparison blog posts ถ้าจำเป็น
-5. ใช้ `/deep-research` เฉพาะเมื่อต้อง cross-check หลายแหล่ง
+3. ตรวจสอบ security advisories
+4. ค้นหา benchmark/comparison ถ้าจำเป็น
+5. ทำ `/deep-research` เฉพาะเมื่อต้อง cross-check หลายแหล่ง
 
-### 5. Recommend
+### 6. Recommend
 
 > Goal: เลือก dependency ทีดีทีสุด
 
-1. ทำ `/report` ด้วย columns: No., Package, Version, License, Maintenance, Size, Pros, Cons, Verdict
+1. ทำ `/report` ด้วย columns: `No.`, `Package`, `Version`, `License`, `Maintenance`, `Size`, `Pros`, `Cons`, `Verdict`
 2. ระบุ primary recommendation พร้อมเหตุผล
 3. ระบุ alternatives ถ้าหลักไม่เหมาะ
 4. ระบุ install command ตาม ecosystem
-5. ทำ `/suggest-next-action` ท้าย report
+5. ถ้า analyze project deps → ระบุ outdated/heavy/duplicate พร้อม suggestions
+6. ถ้าต้องเปิด website ของ deps → ส่งต่อ `/open-web-dependencies`
+7. ทำ `/suggest-next-action` ท้าย report
 
 ## Rules
 
@@ -82,12 +120,12 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 - ตรวจ `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` ก่อนแนะนำ
 - ไม่แนะนำ dependency ที่ซ้ำกับของเดิม
 
-### 2. Quality Check
+### 2. Prefer Fast And Modern
 
+- ให้ priority กับ deps ที zero/low dependency, fast, modern API
+- หลีกเลี่ยง deprecated, archived, หรือ heavy/legacy libraries
 - ดู last commit ภายใน 6 เดือน
-- ระวัง packages ที่ deprecated หรือ archived
-- ตรวจ license ว่าเข้ากันกับ project หรือไม่
-- ถ้ามี security issues → แจ้งและหา alternatives
+- ตรวจ license ว่าเข้ากันกับ project
 
 ### 3. Time Budget
 
@@ -99,14 +137,22 @@ Research dependencies หรือ libraries ที่เหมาะสมก�
 
 - ถ้า library ไม่อยู่ใน `/follow-my-tech-stack` table → ใช้ `/deep-research` เพิ่ม
 - ถ้าต้อง add ลง tech stack table → แนะนำ update `/follow-my-tech-stack`
+- ถ้าต้องแก้ไข manifest → ส่งต่อ `/list-dependencies` หรือ `/review-dependencies`
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
+### 5. Safety
+
+- ไม่แก้ไข manifest files โดยตรง
+- ใช้ `/check-circular-dependencies` หรือ `/list-dependencies` ก่อนการเปลี่ยนแปลง
+- ถ้า dep มี security issues → แจ้งและหา alternatives
+
+- ใช้ `/follow-best-practice` ถ้าจำเป็น
+- ใช้ `/check-reference` ถ้าจำเป็น
 
 ## Expected Outcome
 
 - ตารางเปรียบเทียบ dependencies
 - Primary recommendation พร้อมเหตุผล
 - Install command ตาม ecosystem
+- รายการ manifest deps ที outdated/heavy/duplicate พร้อม suggestions
 - Security/maintenance notes
 - Next action ชัดเจน
