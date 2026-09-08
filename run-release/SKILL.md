@@ -3,6 +3,7 @@ name: run-release
 description: Auto-detect platforms, release ไปยัง external platforms, gen CHANGELOG
 argument-hint: "[scope]"
 related:
+  - review-release
   - follow-secret-manager
   - ship
   - setup-cicd
@@ -28,6 +29,8 @@ Auto-detect platforms ที่ project รองรับจาก configuratio
 Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, และ Docker Hub พร้อม gen `CHANGELOG.md` จาก git tags
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Check Conditions And Detect Platforms
 

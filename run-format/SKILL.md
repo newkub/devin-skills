@@ -3,6 +3,7 @@ name: run-format
 description: ฟอร์แมตโค้ดและแก้ไขปัญหาจาก formatter
 argument-hint: "[scope]"
 related:
+  - review-quality
   - convert-files-format
   - follow-best-practice
   - suggest-next-action
@@ -20,6 +21,8 @@ related:
 รัน format สำหรับทุก project types และจัดการ errors/warnings จาก formatter
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-quality` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Check Formatter Config
 

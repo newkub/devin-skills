@@ -3,6 +3,7 @@ name: run-dev
 description: รัน development server และแก้ไขข้อผิดพลาด
 argument-hint: "[scope]"
 related:
+  - check-open-ports
   - resolve-errors
   - watch-terminal
   - open-web
@@ -21,6 +22,8 @@ related:
 ใช้สำหรับรัน development server ของ project ใดๆ พร้อมตรวจสอบและแก้ไข errors
 
 ## Execute
+
+> **Pre-Run**: ทำ `/check-open-ports` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Check Configuration
 

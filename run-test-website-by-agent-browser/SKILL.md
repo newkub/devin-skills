@@ -3,6 +3,7 @@ name: run-test-website-by-agent-browser
 description: เปิด browser แล้วทดสอบ actions ทุกหน้าด้วย agent browser
 argument-hint: "[url]"
 related:
+  - review-uxui
   - report-uxui-all-routes
   - review-by-stakeholder
   - resolve-errors
@@ -20,6 +21,8 @@ related:
 ใช้กับ web apps, SPA, SSR ทีต้องการ e2e route coverage และ interaction testing บน browser จริง
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-uxui` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Detect Environment
 

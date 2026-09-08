@@ -3,6 +3,7 @@ name: run-lint
 description: รัน lint และแก้ code เพื่อให้ผ่าน โดยไม่ใช้ ignore patterns และห้ามแก้ไข config ไฟล์
 argument-hint: "[scope]"
 related:
+  - review-quality
   - deep-review
   - resolve-errors
   - check-unused
@@ -17,6 +18,8 @@ related:
 รัน lint สำหรับทุก project types และจัดการ errors/warnings จาก linter
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-quality` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Run Lint
 

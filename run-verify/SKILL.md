@@ -3,6 +3,7 @@ name: run-verify
 description: รัน verify แบบครบวงจรบน local หรือ CI/CD ตามขนาด project
 argument-hint: "[scope]"
 related:
+  - review-config
   - run-scan
   - run-lint
   - run-typecheck
@@ -34,6 +35,8 @@ related:
 - ใช้หลัง `/productionize-implementation` เพื่อ verify ก่อน ship
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-config` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Detect Mode
 

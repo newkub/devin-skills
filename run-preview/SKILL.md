@@ -3,6 +3,7 @@ name: run-preview
 description: รัน preview build เพื่อทดสอบก่อน deploy จริง
 argument-hint: "[scope]"
 related:
+  - review-bundle
   - run-build
   - watch-browser-and-fix
   - run-test-unit
@@ -20,6 +21,8 @@ related:
 ใช้สำหรับ preview ทุกประเภททั้ง local preview server และ deployment preview (Vercel, Cloudflare, Netlify) ก่อน deploy จริง
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-bundle` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Build Preview
 

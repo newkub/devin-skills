@@ -3,6 +3,7 @@ name: run-scan
 description: รัน ast-grep scan เพื่อตรวจสอบ codebase ด้วย AST-based patterns
 argument-hint: "[scope]"
 related:
+  - review-rules
   - use-astgrep
   - update-project-rules
   - report
@@ -19,6 +20,8 @@ related:
 ใช้สำหรับ scan codebase ด้วย `ast-grep` ใน project ที่มี `sgconfig.yml` และ rules ใน `rules/` directory
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-rules` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Setup And Write Rules
 

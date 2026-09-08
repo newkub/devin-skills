@@ -3,6 +3,7 @@ name: run-test-unit
 description: รัน unit tests สำหรับ pure functions และ business logic
 argument-hint: "[scope]"
 related:
+  - review-test
   - run-test-all
   - run-test-api
   - run-check
@@ -19,6 +20,8 @@ related:
 ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test`)
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Detect Test Framework
 

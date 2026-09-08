@@ -3,6 +3,7 @@ name: run-docs
 description: รัน documentation site และแก้ไขข้อผิดพลาด
 argument-hint: "[scope]"
 related:
+  - review-docs
   - follow-tool-vitepress
   - deep-review-codebase
   - deep-review
@@ -23,6 +24,8 @@ related:
 ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-docs` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Check Documentation Setup
 

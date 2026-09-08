@@ -3,6 +3,7 @@ name: run-check
 description: รัน lint, typecheck และ scan เพื่อตรวจสอบคุณภาพ
 argument-hint: "[scope]"
 related:
+  - review-quality
   - check-bottlenecks
   - run-lint
   - run-typecheck
@@ -18,6 +19,8 @@ related:
 ใช้ `run-check` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-quality` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Run Lint
 

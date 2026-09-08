@@ -3,6 +3,7 @@ name: run-test-cli
 description: รัน tests สำหรับ CLI commands, output, exit codes, flags, และ error paths
 argument-hint: "[cli-command]"
 related:
+  - review-test
   - resolve-errors
   - report
 ---
@@ -16,6 +17,8 @@ related:
 ใช้กับ CLI tools ทีสร้างด้วย Bun/Node/Rust/Go/Python โดยรันจาก built binary หรือ package script
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Detect CLI
 

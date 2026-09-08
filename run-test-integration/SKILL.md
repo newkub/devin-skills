@@ -3,6 +3,7 @@ name: run-test-integration
 description: รัน integration tests สำหรับ module interactions และ data flow
 argument-hint: "[scope]"
 related:
+  - review-test
   - run-test-unit
   - run-test-all
   - run-test-api
@@ -20,6 +21,8 @@ related:
 ใช้สำหรับรัน integration tests ที่ทดสอบ interactions ระหว่าง modules, APIs, databases, และ external services ไม่รวม unit tests หรือ E2E tests
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Detect Test Framework
 

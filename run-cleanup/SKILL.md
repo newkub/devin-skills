@@ -3,6 +3,7 @@ name: run-cleanup
 description: รัน cleanup tasks เพื่อลบ build artifacts และ cache
 argument-hint: "[scope]"
 related:
+  - check-file-locks
   - cleanup-files-in-computer
   - cleanup-files-in-project
   - cleanup-git-branch
@@ -20,6 +21,8 @@ related:
 ใช้ `run-cleanup` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
 
 ## Execute
+
+> **Pre-Run**: ทำ `/check-file-locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 run task มีปัญหา ต้อง cleanup file ต่างๆ เช่น node_modules, dist, .nuxt, target และอื่นๆ ที่อยู่ใน .gitignore ตามตามเหมาะสมและให้เข้ากับภาษา
 

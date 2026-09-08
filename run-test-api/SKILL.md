@@ -3,6 +3,7 @@ name: run-test-api
 description: รัน API tests โดยเรียก endpoints และตรวจสอบ responses ด้วย scripts
 argument-hint: "[scope]"
 related:
+  - review-api
   - follow-test
   - use-scripts
   - use-astgrep-programmatic
@@ -21,6 +22,8 @@ related:
 ใช้สำหรับ REST, GraphQL, tRPC, WebSocket, หรือ API endpoints อื่นๆ ในโปรเจกต์
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-api` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Prepare API Test Context
 

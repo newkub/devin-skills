@@ -3,6 +3,7 @@ name: run-load-test
 description: รัน load test กับ endpoints ด้วย k6 หรือ autocannon วัด throughput, latency และ breaking point
 argument-hint: "[url-or-endpoints] [--vus N] [--duration Ns]"
 related:
+  - review-performance
   - check-bottlenecks
   - run-profiler
   - check-open-ports
@@ -21,6 +22,8 @@ related:
 - ห้ามยิง production/external services โดยไม่ได้รับอนุญาตชัดเจน
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-performance` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Prepare Target
 

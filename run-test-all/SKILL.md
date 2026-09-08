@@ -3,6 +3,7 @@ name: run-test-all
 description: รัน test suite อย่างเป็นระบบ จำแนก failures ว่าควรแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
 argument-hint: "[scope]"
 related:
+  - review-test
   - run-lint
   - run-typecheck
   - run-test-unit
@@ -29,6 +30,8 @@ related:
 ดูเพิ่มเติม: /update-test-and-fix, /deep-review-codebase
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Run Lint And Typecheck
 

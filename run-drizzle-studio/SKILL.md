@@ -3,6 +3,7 @@ name: run-drizzle-studio
 description: รัน Drizzle Studio สำหรับจัดการ database ผ่าน GUI
 argument-hint: "[scope]"
 related:
+  - review-database
   - follow-lib-drizzle
   - resolve-errors
   - open-web
@@ -17,6 +18,8 @@ related:
 ใช้สำหรับ project ที่ติดตั้ง `drizzle-kit` แล้ว — เน้นการ execute รัน studio ไม่ใช่ guide ทั่วไป
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-database` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Verify Prerequisites
 

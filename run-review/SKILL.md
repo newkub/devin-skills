@@ -3,6 +3,7 @@ name: run-review
 description: รัน review CLI วิเคราะห์ผล และแนะนำ action items ตาม findings
 argument-hint: "[target]"
 related:
+  - review-rules
   - update-review-cli
   - update-create-analyze-cli
   - run-verify
@@ -23,6 +24,8 @@ related:
 ดูเพิ่มเติม: /update-review-cli
 
 ## Execute
+
+> **Pre-Run**: ทำ `/review-rules` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Verify CLI Exists
 
