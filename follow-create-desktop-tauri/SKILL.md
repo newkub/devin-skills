@@ -1,8 +1,9 @@
 ---
 name: follow-create-desktop-tauri
-description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
+description: สร้าง Desktop Apps ด้วย Tauri, Solid+TanStack Router และ Rust backend
 argument-hint: "[scope]"
 related:
+  - follow-create-web-solid-tanstack-router
   - follow-create-tauri-plugins
   - follow-create-web-astro
   - follow-framework-capacitor
@@ -13,7 +14,7 @@ related:
 
 ## Goal
 
-สร้าง Tauri desktop application ที่ใช้ web frontend (Vite + React) ร่วมกับ Rust backend สำหรับ cross-platform desktop apps
+สร้าง Tauri desktop application ที่ใช้ web frontend ร่วมกับ Rust backend สำหรับ cross-platform desktop apps — frontend ใช้ Solid + TanStack Router ตาม `/follow-create-web-solid-tanstack-router`
 
 ## Scope
 
@@ -127,6 +128,7 @@ desktop-apps/{project}/
 - อัปเดต `src-tauri/capabilities/default.json` สำหรับ permission ของ plugin
 - ไม่เปิด permission กว้างเกินความจำเป็น
 
+- ใช้ /follow-create-web-solid-tanstack-router สำหรับ frontend (Solid + TanStack Router + UnoCSS)
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
