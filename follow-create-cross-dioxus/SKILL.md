@@ -1,9 +1,9 @@
 ---
-name: follow-framework-dioxus
+name: follow-create-cross-dioxus
 description: ตั้งค่าและพัฒนา Desktop, Web และ Mobile Applications ด้วย Dioxus Rust framework
 argument-hint: "[scope]"
 related:
-  - follow-framework-astro
+  - follow-create-web-astro
   - follow-framework-capacitor
   - follow-framework-desktop-app
   - follow-best-practice
@@ -92,7 +92,7 @@ related:
 - Web: ต้องมี `wasm32-unknown-unknown` target
 - Mobile: ใช้ Dioxus mobile target ตาม official docs
 
-- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
 - ใช้ /follow-framework-desktop-app ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
