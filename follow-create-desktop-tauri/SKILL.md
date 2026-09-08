@@ -1,10 +1,10 @@
 ---
-name: follow-framework-tauri
+name: follow-create-desktop-tauri
 description: สร้าง Desktop Applications ด้วย Tauri, Vite, React และ Rust backend
 argument-hint: "[scope]"
 related:
   - follow-create-tauri-plugins
-  - follow-framework-astro
+  - follow-create-web-astro
   - follow-framework-capacitor
   - follow-best-practice
   - setup-cicd
@@ -128,7 +128,7 @@ desktop-apps/{project}/
 - ไม่เปิด permission กว้างเกินความจำเป็น
 
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
-- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
