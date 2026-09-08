@@ -1,7 +1,16 @@
 ---
 name: follow-create-mcp
-description: สร้าง MCP server ด้วย Rust หรือ TypeScript พร้อม register ลง mcp_config.json
+description: สร้าง MCP server ด้วย Rust หรือ TypeScript รองรับทุก client โดยไม่บังคับ register
 argument-hint: "[scope]"
+allowed-tools:
+  - exec
+  - read
+  - write
+  - edit
+  - skill
+  - ask_user_question
+  - todo_write
+  - find_file_by_name
 related:
   - follow-secret-manager
   - open-web-for-config-secret
@@ -10,16 +19,25 @@ related:
   - follow-lang-typescript
   - follow-my-tech-stack
   - review-techstack
-  - update-devin-global-mcp
+  - follow-architecture
+  - follow-single-responsibility
+  - deep-validate
+  - create-devin-global-mcp
 ---
 
 ## Goal
 
-สร้าง MCP server ใหม่ โดยเริ่มจาก Rust ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript พร้อม register ลง `%APPDATA%\devin\mcp_config.json`
+สร้าง MCP server ใหม่ โดยเริ่มจาก Rust ก่อน ถ้าไม่เหมาะจึง fallback ไป TypeScript รองรับทุก MCP client และ transport โดยไม่บังคับ register ลง config ใด
 
 ## Scope
 
 ใช้เมื่อ skill หรือ project ต้อง expose tools, resources, หรือ prompts ผ่าน Model Context Protocol (MCP) รองรับทั้ง stdio, Streamable HTTP และ SSE transport
+
+- สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
+- ถ้าต้องการ register ลง Devin global MCP config ให้ใช้ `/create-devin-global-mcp` หลังจากนี้
+- ถ้าต้องการ register ลง project MCP config ให้ใช้ `/update-devin-project-mcp`
+
+ดูเพิ่มเติม: `/follow-my-tech-stack`, `/review-techstack`, `/follow-lang-rust`, `/follow-lang-typescript`
 
 ## Execute
 
@@ -39,13 +57,13 @@ related:
 2. เลือก Rust ถ้า: ต้องการ binary เดียว, performance สูง, zero runtime dependency, หรือ deploy เป็น native binary
 3. เลือก TypeScript ถ้า: ทีมใช้ TS/Bun หลัก, ต้องการ rapid iteration, หรือต้อง integration กับ JS ecosystem
 4. ถ้าไม่ชัด → ใช้ Rust เป็น default
-5. ดูรายละเอียด stack ใน [references/mcp-stacks.md](references/mcp-stacks.md)
+5. ดูรายละเอียด stack ใน `references/mcp-stacks.md` ถ้ามี
 
 ### 3. Create MCP Server Project
 
 > Goal: สร้าง scaffold ตาม stack ที่เลือก
 
-1. ถ้าเลือก Rust → สร้าง Rust project ด้วย `cargo new` แล้วเพิ่ม `rmcp` หรือ `rust-mcp-sdk` เป็น dependency ตามตัวอย่างใน [references/mcp-stacks.md](references/mcp-stacks.md)
+1. ถ้าเลือก Rust → สร้าง Rust project ด้วย `cargo new` แล้วเพิ่ม `rmcp` หรือ `rust-mcp-sdk` เป็น dependency ตามตัวอย่างใน `references/mcp-stacks.md` ถ้ามี
 2. ถ้าเลือก TypeScript → สร้าง project ด้วย `bun init` แล้ว `bun add @modelcontextprotocol/server`
 3. สร้าง entry point: `src/main.rs` สำหรับ Rust หรือ `src/index.ts` สำหรับ TypeScript
 4. กำหนด server name, version, และ capabilities (tools, resources, prompts)
@@ -78,16 +96,7 @@ related:
 3. ตรวจสอบว่า tools สามารถ list และ invoke ได้
 4. ถ้า transport เป็น stdio → ทดสอบ spawn ผ่าน client เช่น Claude Code หรือ `npx @anthropic/mcp-inspector`
 
-### 7. Register In mcp_config.json
-
-> Goal: ให้ Devin หรือ client อื่นใช้งาน server ได้
-
-1. อ่านไฟล์ `%APPDATA%\devin\mcp_config.json`
-2. เพิ่ม server ภายใต้ `mcpServers` ด้วย `command`, `args`, และ `env` ที่จำเป็น
-3. ถ้าไฟล์ยังไม่มี → สร้างใหม่ด้วยโครงสร้าง `{ "mcpServers": {} }`
-4. ใช้ `/update-devin-global-mcp` ถ้าต้องการควบคุม MCP config อย่างปลอดภัย
-
-### 8. Ship
+### 7. Ship
 
 > Goal: ส่งมอบ MCP server
 
@@ -115,21 +124,25 @@ related:
 - Streamable HTTP เมื่อต้องการรองรับหลาย clients ผ่าน network
 - ไม่ใช้ SSE สำหรับ implementation ใหม่ ยกเว้น backward compatibility
 
-### 4. Integration
+### 4. No Registry In This Skill
 
-- server ต้อง register ใน `%APPDATA%\devin\mcp_config.json` หรือ `mcp_config.json` ของ project ก่อนถือว่าเสร็จ
+- สร้าง server เท่านั้น ไม่ register ลง `mcp_config.json`
+- ถ้าต้องการ register ลง Devin global config ให้ส่งต่อ `/create-devin-global-mcp`
+- ถ้าต้องการ register ลง project config ให้ส่งต่อ `/update-devin-project-mcp`
+
+### 5. Integration
+
 - ถ้า skill นี้ถูกสร้างใน global skills repo → อัปเดต `related` และ `AGENTS.md`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
-- ใช้ /follow-create-cli ถ้าจำเป็น
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- ใช้ `/open-web-for-config-secret` ถ้าจำเป็น
+- ใช้ `/follow-create-cli` ถ้าจำเป็น
+- ใช้ `/follow-lang-rust` ถ้าจำเป็น
+- ใช้ `/follow-lang-typescript` ถ้าจำเป็น
 
 ## Expected Outcome
 
 - MCP server ทำงานได้ทั้ง Rust หรือ TypeScript
 - Tools/resources/prompts ถูก expose ผ่าน MCP protocol
 - Transport ทีเลือกทดสอบผ่าน
-- `%APPDATA%\devin\mcp_config.json` ถูกอัปเดตพร้อม server entry
 - ผ่าน `/deep-validate` และ `/ship`
-
+- พร้อมส่งต่อไป register ด้วย `/create-devin-global-mcp` หรือ `/update-devin-project-mcp` ถ้าต้องการ

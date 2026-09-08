@@ -3,8 +3,8 @@ name: update-devin-global-mcp
 description: Add, update, remove, or sync global MCP servers in devin mcp_config.json with dotfiles check
 argument-hint: "[scope]"
 related:
-  - list-devin-global-mcp
   - follow-create-mcp
+  - create-devin-global-mcp
   - update-chezmoi
   - report
   - suggest-next-action
@@ -21,6 +21,7 @@ related:
 - เพิ่ม อัปเดต หรือลบ server ใน `mcpServers`
 - สำรอง config ก่อนแก้ไข
 - Validate JSON syntax และ schema
+- ถ้าต้องการสร้าง server ใหม่และ register ทันที → ส่งต่อ `/create-devin-global-mcp`
 
 ## Execute
 
@@ -31,7 +32,7 @@ related:
 1. อ่าน `%APPDATA%\devin\mcp_config.json`
 2. ถ้าไฟล์ไม่มี → สร้างใหม่ด้วย `{ "mcpServers": {} }`
 3. สำรองไฟล์ไปยัง `mcp_config.json.bak`
-4. ใช้ `/list-devin-global-mcp` เพื่อดู live servers
+4. ใช้ `mcp_list_servers` เพื่อดู live servers ถ้ามี
 
 ### 2. Check Dotfiles Remote
 
@@ -81,7 +82,7 @@ related:
 
 > Goal: ยืนยันการทำงาน
 
-1. รัน `/list-devin-global-mcp` หลังแก้ไข
+1. รัน `mcp_list_servers` หรือ `mcp_call_tool` หลังแก้ไข
 2. รัน `mcp_list_tools` สำหรับ server ทีแก้
 3. ทำ `/report` พร้อมสรุปการเปลี่ยนแปลง
 4. ถ้ามี dotfiles → ทำ `/update-chezmoi` หรือ report ว่าต้อง sync ต่อ
