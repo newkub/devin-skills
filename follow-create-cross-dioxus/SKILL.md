@@ -4,7 +4,7 @@ description: ตั้งค่าและพัฒนา Desktop, Web แล�
 argument-hint: "[scope]"
 related:
   - follow-create-web-astro
-  - follow-framework-capacitor
+  - follow-create-mobile-cross-capacitor
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
@@ -92,7 +92,7 @@ related:
 - Mobile: ใช้ Dioxus mobile target ตาม official docs
 
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น

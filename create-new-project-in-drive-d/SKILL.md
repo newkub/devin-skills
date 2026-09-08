@@ -8,7 +8,7 @@ related:
   - follow-create-sdk
   - follow-my-tech-stack
   - follow-your-suggestion
-  - follow-framework-capacitor
+  - follow-create-mobile-cross-capacitor
   - follow-create-bot
 ---
 
@@ -37,7 +37,7 @@ related:
 
 1. `cli` → `/follow-create-cli`
 2. `website` หรือ `web` → `/follow-create-web`
-3. `mobile` → `/follow-framework-capacitor`
+3. `mobile` → `/follow-create-mobile-cross-capacitor`
 4. `telegram-bot` → `/follow-create-bot`
 5. `discord-bot` → `/follow-create-bot`
 6. `line-bot` → `/follow-create-bot`

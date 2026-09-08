@@ -59,7 +59,7 @@ related:
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web`
-   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-framework-capacitor`
+   - `mobile` → `follow-create-mobile-ios`, `follow-create-mobile-android`, `follow-create-mobile-cross-capacitor`
 4. ใช้ `/report` แสดงตารางสรุปให้ user เห็นภาพรวมก่อนถาม
 
 ### 4. Build And Ask Options

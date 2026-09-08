@@ -4,7 +4,7 @@ description: พัฒนา Flutter applications ด้วย Clean Architectur
 argument-hint: "[scope]"
 related:
   - follow-create-web-astro
-  - follow-framework-capacitor
+  - follow-create-mobile-cross-capacitor
   - follow-best-practice
   - setup-cicd
   - follow-my-tech-stack
@@ -137,7 +137,7 @@ related:
 - Code generation ต้องรันก่อน commit
 
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-framework-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น
