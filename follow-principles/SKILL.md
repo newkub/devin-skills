@@ -2,9 +2,22 @@
 name: follow-principles
 description: ระบุและใช้ principles ของ context นั้นๆ ในการทำงาน
 argument-hint: "[scope]"
+allowed-tools:
+  - read
+  - grep
+  - find_file_by_name
+  - exec
+  - skill
+  - ask_user_question
+  - todo_write
 related:
   - report
   - suggest-next-action
+  - scan-codebase
+  - search-files-patterns
+  - deep-analyze
+  - ask-me
+  - check-reference
 ---
 
 ## Goal
@@ -23,22 +36,23 @@ related:
 
 1. รับ context จาก user, task, หรือ workspace ปัจจุบัน
 2. ระบุประเภท: `project`, `framework`, `language`, `team`, `skill`, `domain`
-3. ถ้า context ไม่ชัด → ถาม user ก่อน
+3. ถ้า context ไม่ชัด → ถาม user ก่อนด้วย `/ask-me`
 4. บันทึกชื่อ context และ scope
 
 ### 2. Discover Principle Sources
 
 > Goal: หาแหล่ง principles ทีมีอยู่
 
-1. ค้นหาไฟล์มาตรฐาน:
+1. ใช้ `/scan-codebase` และ `/search-files-patterns` ค้นหาไฟล์มาตรฐาน:
    - `PRINCIPLES.md`, `ARCHITECTURE.md`, `DESIGN.md`
    - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
    - `global_rules.md`, `AGENTS.md`
    - `README.md` ส่วน principles/conventions
    - `docs/principles/`, `.github/`, `.devin/`
 2. ค้นหาใน `SKILL.md` ของ skill ที่เกี่ยวข้อง โดยเฉพาะ section `Rules` และ `Expected Outcome`
-3. ตรวจ `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` เพื่อดู ecosystem
-4. บันทึกแหล่งทีพบพร้อม path
+3. ทำ `/deep-analyze` หรือ `/check-reference` เพื่อตรวจสอบความสมบูรณ์ของแหล่งอ้างอิง
+4. ตรวจ `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` เพื่อดู ecosystem
+5. บันทึกแหล่งทีพบพร้อม path
 
 ### 3. Extract Principles
 
