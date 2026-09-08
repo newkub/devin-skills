@@ -6,7 +6,7 @@ related:
   - follow-create-bun-cli
   - follow-create-rust-cli
   - follow-architecture
-  - follow-flat-folders
+  - flatten-directory
   - follow-my-tech-stack
   - ship
   - review-techstack
@@ -48,7 +48,7 @@ related:
 1. ถ้าเลือก Rust → ทำ `/follow-create-rust-cli`
 2. ถ้าเลือก Bun → ทำ `/follow-create-bun-cli`
 3. ทำ `/follow-architecture` หรือ `/review-architecture` เพื่อเลือก architecture ตาม context ไม่บังคับ Clean
-4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
+4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
 5. ถ้า CLI ต้องมี table, command, prompt, หรือ TUI → ทำ `/follow-my-tech-stack` เพื่อเลือก libraries ตาม tech stack ที่กำหนดไว้
 6. สร้าง `tools/<tool-name>/` ถ้าเป็น tooling CLI ใน monorepo
 
@@ -116,7 +116,7 @@ related:
 
 - CLI project ที่เลือก stack เหมาะสม
 - โครงสร้างตาม architecture ที่เลือกไม่บังคับ Clean
-- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
+- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
 - ผ่าน `/deep-review`
 - ผสานเข้ากับ workspace ได้
 

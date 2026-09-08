@@ -8,7 +8,7 @@ related:
   - follow-lang-bun
   - follow-tool-bunup
   - follow-architecture
-  - follow-flat-folders
+  - flatten-directory
   - rethink
   - follow-my-tech-stack
   - review-techstack
@@ -42,7 +42,7 @@ related:
    - ต้อง support หลาย output/consumer → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
    - มีหลาย adapter ซับซ้อน → `src/core/`, `src/ports/`, `src/app/`, `src/adapters/`, `src/presentation/cli.ts`
 3. สร้าง entry points ตาม architecture ที่เลือก เช่น `src/cli.ts`, `src/index.ts`, หรือ `src/presentation/cli.ts`
-4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
+4. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
 
 ### 3. Configure Build Tools
 
@@ -131,7 +131,7 @@ related:
 ## Expected Outcome
 
 - CLI project ที่มีโครงสร้างตาม architecture ที่เลือกและ maintainable
-- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
+- Directory ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
 - `bun run dev` รัน CLI ได้โดยตรง
 - `bun run build` สร้าง dist/ พร้อม type declarations
 - Scripts สอดคล้องกับ `/follow-tasks`

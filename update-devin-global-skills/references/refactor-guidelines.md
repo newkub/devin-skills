@@ -31,7 +31,7 @@
 
 ### 5. Nested References
 
-- `references/` ต้อง flat — ถ้ามี nested directories → ใช้ `/follow-flat-files` หรือ `/flatten-directory`
+- `references/` ต้อง flat — ถ้ามี nested directories → ใช้ `/flatten-directory --mode refs`
 - ทุกไฟล์ใน `references/` ไม่เกิน 250 บรรทัด
 
 ## How To Refactor

@@ -1,12 +1,13 @@
 ---
 name: read-all-files
 description: อ่านไฟล์ทั้งหมดในโปรเจกต์เพื่อวิเคราะห์
-argument-hint: "[scope]"
+argument-hint: "all | patterns <glob>"
 related:
+  - all-this-patterns
+  - deep-analyze
+  - report-file-structure
   - read-devin-context
-  - read-related
-  - all-files
-  - update-references
+  - update-devin-global-skills
 ---
 
 ## Goal
@@ -15,61 +16,54 @@ related:
 
 ## Scope
 
-ใช้ `read-all-files` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้เมื่อต้องการอ่านทุกไฟล์หรือเฉพาะ pattern ที่เกี่ยวข้องกับ task
+
+- `all` — อ่านทุกไฟล์ที่จำเป็นในโปรเจกต์
+- `patterns <glob>` — อ่านเฉพาะไฟล์ที่ตรง glob pattern เช่น `src/**/*.ts`
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: Prepare
+> Goal: วางแผนการอ่าน
 
-1. ใช้ `/update-references` เพื่อเก็บ reference
-2. ระบุประเภทไฟล์ที่ต้องการอ่าน
-3. กำหนดลำดับความสำคัญของไฟล์
+1. ทำ `/report-file-structure` เพื่อดู overview
+2. ระบุประเภทไฟล์ที่ต้องการอ่าน ตาม argument
+3. กำหนดลำดับความสำคัญ: config → entry points → core → tests → docs
 
 ### 2. Read Files
 
-> Goal: Read Files
+> Goal: อ่านไฟล์ครบถ้วน
 
-1. อ่านไฟล์ที่สำคัญก่อน (config, index, main)
-2. อ่านไฟล์ตามลำดับ dependency
-3. ใช้ parallel reading สำหรับไฟล์ที่ไม่มีความสัมพันธ์
-4. อ่านไฟล์ใน directory structure ตามลำดับ
+1. ถ้า argument `all`:
+   - อ่าน config files ก่อน
+   - อ่าน entry points ต่อมา
+   - อ่าน files ตาม import chain
+   - ข้าม `node_modules`, `.git`, `dist`, `build`, `coverage`, `.devin/tmp`
+2. ถ้า argument `patterns`:
+   - ใช้ `/all-this-patterns` หา files ตาม pattern
+   - อ่าน matching files ทั้งหมด
+3. ใช้ parallel read สำหรับไฟล์อิสระ
+4. จำกัด file ละ 250 บรรทัด; ถ้ายาวกว่า ให้อ่านต่อด้วย offset
 
 ### 3. Analyze
 
-> Goal: Analyze
+> Goal: วิเคราะห์สิ่งทีอ่าน
 
 1. วิเคราะห์โครงสร้างโปรเจกต์
 2. ระบุความสัมพันธ์ระหว่างไฟล์
-3. สรุป pattern และ architecture
+3. สรุป pattern และ architecture — ทำ `/deep-analyze` หากต้องการวิเคราะห์ลึก
 4. ตรวจสอบความสมบูรณ์ของการอ่าน
 
 ## Rules
-
-1. Reading Order
 
 - อ่าน config ก่อนเสมอ
 - อ่าน entry points ก่อน dependencies
 - อ่านตาม import chain
 - ใช้ parallel reading สำหรับไฟล์อิสระ
-
-2. File Selection
-
-- อ่านไฟล์ที่เกี่ยวข้องกับ task เป็นหลัก
-- อ่าน test files หลังจาก source files
-- อ่าน documentation เมื่อจำเป็น
 - ข้ามไฟล์ที่ไม่เกี่ยวข้อง
-
-3. Analysis
-
-- ติดตาม import chain
-- ระบุ shared patterns
-- หาความสัมพันธ์ระหว่าง modules
-- สรุป architecture ที่ใช้
-
-- ใช้ /read-devin-context ถ้าจำเป็น
-- ใช้ /read-related ถ้าจำเป็น
+- ใช้ `/read-devin-context` ถ้าจำเป็น
+- ถ้าอ่านเพื่อปรับปรุง devin global skills → ใช้คู่กับ `/update-devin-global-skills`
 
 ## Expected Outcome
 

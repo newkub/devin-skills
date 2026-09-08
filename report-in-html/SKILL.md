@@ -199,7 +199,13 @@ related:
   - ใช้ข้อความสีดำบนพื้นหลังสีขาว
 - รักษา URL และ code blocks ให้อ่านได้เมื่อพิมพ์
 
-### 11. Safety
+### 11. Always Open After Create
+
+- ทุกครั้งทีสร้างรายงาน HTML เสร็จ ต้องเปิดด้วย `/open-web` เสมอ
+- ไม่ถือวารูปงานเสร็จจนกว่าจะเปิดใน browser ได้
+- ถ้าไม่สามารถเปิดได้ → รายงานปัญหาและหาทางเปิดด้วย `Start-Process` หรือ OS command
+
+### 12. Safety
 
 - ห้ามมี secrets, credentials หรือ paths ที่ละเอียดอ่อนที่ hardcode ไว้
 - ใช้ relative paths สำหรับไฟล์โปรเจกต์

@@ -17,5 +17,5 @@ skill directory รองรับไฟล์ย่อยโดยไม่ท�
 - ทุกไฟล์ใน file structure ต่างๆ (`references/`, `scripts/`, `subskills/`, `subagents/`, `guide/`, `examples/`, `src/`, `.devin/rules/`) ต้องทำตาม `/follow-single-responsibility` — แต่ละไฟล์มีหน้าที่เดียวชัดเจน ไม่ผสมหลาย responsibilities ในไฟล์เดียว
 - `SKILL.md` เป็น entry point หลัก ไม่เกิน 250 บรรทัด
 - ถ้ามี CLI หรือ web ต้องมี `src/` เป็น root ของ code. CLI entry point ที่ `src/presentation/cli.ts`. directory name ต้องตรงกับ `name` ใน frontmatter
-- ถ้า `references/` มี nested directories → ใช้ `/follow-flat-files`. ถ้า flat ทั้ง skill package → ใช้ `/follow-flat-folders`
+- ถ้า `references/` มี nested directories → ใช้ `/flatten-directory --mode refs`. ถ้า flat ทั้ง skill package → ใช้ `/flatten-directory --mode code`
 - skill ที่มี `src/` ต้องถูกแปลงเป็น submodule ผ่าน `/convert-to-git-submodules`

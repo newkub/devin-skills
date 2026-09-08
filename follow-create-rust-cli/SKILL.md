@@ -6,7 +6,7 @@ related:
   - follow-create-cli
   - follow-tool-cargo
   - follow-architecture
-  - follow-flat-folders
+  - flatten-directory
   - rethink
   - follow-my-tech-stack
   - review-techstack
@@ -56,7 +56,7 @@ related:
 3. แยก concerns: CLI parsing, business logic, output, external I/O
 4. สร้าง entry point: `src/main.rs` สำหรับ binary, `src/lib.rs` สำหรับ library
 5. ถ้า project มีหลาย binaries: สร้างใน `src/bin/`
-6. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/follow-flat-folders`
+6. ถ้า directory ซ้อนลึกเกิน 3 ระดับและไม่จำเป็น → ทำ `/flatten-directory --mode code`
 
 ### 4. Configure Dependencies
 
@@ -188,7 +188,7 @@ related:
 
 - CLI project ที่มีโครงสร้างที่ดีและ maintainable
 - Architecture ที่เลือกเหมาะสมกับ context และบันทึกเหตุผล
-- Directory structure ไม่ซ้อนลึกเกินไป (ใช้ `/follow-flat-folders` ถ้าจำเป็น)
+- Directory structure ไม่ซ้อนลึกเกินไป (ใช้ `/flatten-directory` ถ้าจำเป็น)
 - Development workflow ที่มีประสิทธิภาพ
 - Type-safe CLI application พร้อมสำหรับ production
 - Zero-cost abstractions และ memory safety

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - scan-codebase
   - check-long-files
-  - follow-flat-folders
+  - flatten-directory
   - follow-architecture
   - report
 
@@ -62,7 +62,7 @@ Review file/folder structure BEFORE restructure เพื่อประเม�
 > Goal: ประเมินว่า structure ควรเป็น flat หรือ nested
 
 1. ตรวจสอบ nesting depth ของ directory tree
-2. ประเมินตาม `/follow-flat-folders`
+2. ประเมินตาม `/flatten-directory`
 3. ประเมินตาม `/follow-architecture`
 4. บันทึก: directory, current depth, recommended depth, flatten/keep
 
