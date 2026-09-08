@@ -1,9 +1,9 @@
 ---
-name: follow-framework-flutter
+name: follow-create-mobile-cross-flutter
 description: พัฒนา Flutter applications ด้วย Clean Architecture และ Riverpod
 argument-hint: "[scope]"
 related:
-  - follow-framework-astro
+  - follow-create-web-astro
   - follow-framework-capacitor
   - follow-framework-desktop-app
   - follow-best-practice
@@ -137,7 +137,7 @@ related:
 - ใช้ `mocktail` สำหรับ mocks
 - Code generation ต้องรันก่อน commit
 
-- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
 - ใช้ /follow-framework-desktop-app ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
