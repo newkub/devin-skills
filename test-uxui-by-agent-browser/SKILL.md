@@ -2,6 +2,14 @@
 name: test-uxui-by-agent-browser
 description: ทดสอบ UX/UI ด้วย agent-browser ตรวจ layout, interaction, accessibility และ visual regression
 argument-hint: "[url-or-route]"
+allowed-tools:
+  - exec
+  - skill
+  - ask_user_question
+  - todo_write
+  - read
+  - write
+  - find_file_by_name
 related:
   - use-agent-browser
   - capture
@@ -9,6 +17,9 @@ related:
   - review-uxui
   - review-accessibility
   - report-uxui-all-routes
+  - watch-browser-console
+  - use-subagents
+  - follow-parallel
   - report
   - resolve-errors
   - run-check
@@ -63,7 +74,7 @@ related:
 
 1. ใช้ `agent-browser snapshot -i` เพื่อบันทึก interactive elements
 2. ตรวจ focus order, visible focus indicator และ semantic roles
-3. ถ้าพบ a11y issues → เชื่อม `/review-accessibility` หรือ `/review-accessibility`
+3. ถ้าพบ a11y issues → ส่งต่อ `/review-accessibility`
 
 ### 6. Run Responsive Checks
 
