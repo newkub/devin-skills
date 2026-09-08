@@ -2,11 +2,19 @@
 name: use-subagents
 description: แบ่งงานซับซ้อนและ spawn subagents ตาม roles
 argument-hint: "[task]"
+allowed-tools:
+  - run_subagent
+  - read_subagent
+  - kill_shell
+  - skill
+  - read
+  - ask_user_question
+  - todo_write
+  - exec
 related:
   - follow-agents-md
   - update-devin-global-subagents
   - follow-deep
-  - list-devin-global-subagents
   - deep-validate
   - ship
   - report
@@ -46,10 +54,11 @@ related:
 
 > Goal: เลือก role ที่ตรงกับแต่ละ subtask
 
-1. ทำ `/list-devin-global-subagents` เพื่อดู roles ทีม
+1. เลือก profile จาก subagent profiles ทีมีใน system prompt
 2. เลือก profile เช่น fixer, debugger, refactor, qa, security, architect
 3. ถ้าไม่มี role ที่ต้องการ → ใช้ `subagent_general` หรือ `subagent_explore`
-4. ระบุ context ให้ครบใน prompt
+4. ถ้าไม่แน่ใจ → ทำ `/ask-me` ก่อน
+5. ระบุ context ให้ครบใน prompt
 
 ### 4. Spawn Subagents
 
@@ -88,6 +97,7 @@ related:
 4. `Merge before ship` — ต้องรวบรวม results, ตรวจ conflicts, และ merge ก่อน push หรือ final report
 5. `Run checks after merge` — ไม่ส่งมอบโดยไม่ validate
 6. `Stop on 3 failures` — ถ้า resolve errors เกิน 3 รอบ ให้ stop และ report
+7. ใช้ `/update-devin-global-subagents` เพื่อ sync subagent catalog ถ้าจำเป็น
 
 ### 2. Independence
 
@@ -105,8 +115,6 @@ related:
 - ตรวจสอบ conflicts ก่อน merge
 - รักษา consistency ของ codebase
 - ทำ `/deep-validate` หลัง merge
-
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
 
 ## Expected Outcome
 
