@@ -1,5 +1,5 @@
 ---
-name: from-downloads
+name: read-from-downloads
 description: อ่านและ list ไฟล์จาก home downloads folder
 argument-hint: "[pattern-or-filename]"
 allowed-tools:
