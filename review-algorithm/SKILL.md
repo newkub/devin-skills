@@ -1,6 +1,6 @@
 ---
 name: review-algorithm
-description: ตรวจสอบ algorithms: time/space complexity, correctness และ hot paths
+description: "ตรวจสอบ algorithms: time/space complexity, correctness และ hot paths"
 argument-hint: "[function-or-module]"
 related:  - follow-algorithms
   - scan-codebase

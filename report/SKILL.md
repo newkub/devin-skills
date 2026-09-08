@@ -1,6 +1,6 @@
 ---
 name: report
-description: เลือก format รายงานทีเหมาะสม: table หรือ numbered list
+description: "เลือก format รายงานทีเหมาะสม: table หรือ numbered list"
 argument-hint: "[scope]"
 related:
   - report-in-table

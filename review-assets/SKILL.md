@@ -1,6 +1,6 @@
 ---
 name: review-assets
-description: ตรวจสอบ static assets: images, fonts, media ว่า optimize, format และ loading strategy เหมาะสมหรือไม่
+description: "ตรวจสอบ static assets: images, fonts, media ว่า optimize, format และ loading strategy เหมาะสมหรือไม่"
 argument-hint: "[asset-or-folder]"
 related:  - scan-codebase
   - report

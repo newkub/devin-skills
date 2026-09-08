@@ -1,6 +1,6 @@
 ---
 name: review-cost
-description: ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party, idle resources
+description: "ตรวจสอบ infrastructure cost: compute, storage, bandwidth, third-party, idle resources"
 argument-hint: "[service-or-resource]"
 related:
   - report

@@ -1,6 +1,6 @@
 ---
 name: update-devin-global-skills
-description: จัดการ global Devin skills: สร้าง อัปเดต refactor และตรวจสอบมาตรฐาน
+description: "จัดการ global Devin skills: สร้าง อัปเดต refactor และตรวจสอบมาตรฐาน"
 argument-hint: "[@files-or-topic...]"
 related:
   - new-skills
