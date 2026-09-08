@@ -4,6 +4,7 @@ description: ตอบในแชทเป็นตารางพร้อม�
 argument-hint: "[scope]"
 related:
   - review-writing
+  - report
 ---
 
 ## Goal
@@ -41,18 +42,29 @@ related:
 1. จัดกลุ่มข้อมูลตาม category
 2. ใช้ headers สำหรับแยกกลุ่ม
 3. เรียงลำดับภายในกลุ่มตาม priority
+4. ถ้ามี status ให้ sort ตาม: `✅ completed` → `⏳ in_progress` → `⚠️ pending` → `❌ blocker`
 
-### 4. Validate
+### 4. Add Summary
+
+> Goal: สรุปให้เข้าใจเร็ว
+
+1. เริ่มด้วย key findings 2-3 ข้อ
+2. ระบุ overall status ด้วย emoji
+3. ทำ `/suggest-next-action` ถ้ามี next steps
+
+### 5. Validate
 
 > Goal: ตรวจคุณภาพก่อนส่ง
 
 1. ตรวจ `No.` เรียงถูกต้อง
 2. ตรวจ grouping และ sorting
-3. ทำ `/review-writing` ถ้าจำเป็น
+3. ตรวจ emoji ใช้ตาม legend
+4. ทำ `/review-writing` ถ้าจำเป็น
 
 ## Rules
 
 - ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
+- ถ้าไม่แน่ใจ format ให้ใช้ `/report` dispatch ตาม context
 - ใช้ backticks สำหรับ code, paths, skill names
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
 - ไม่ใช้ bold markers

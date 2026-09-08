@@ -10,6 +10,7 @@ related:
   - report-progress
   - report-scan-todo
   - suggest-next-action
+  - review-writing
 ---
 
 ## Goal
@@ -41,7 +42,16 @@ related:
 2. ตรวจ output ว่าตรง format
 3. ถ้าจำเป็น ใช้ `/review-writing`
 
-### 3. Finalize
+### 3. Apply UX/UI Format
+
+> Goal: ทำให้ report อ่านง่าย
+
+1. ทำตาม `[references/uxui.md](references/uxui.md)`
+2. ใช้ emoji ตาม legend ทีกำหนด
+3. เรียงลำดับตาม status ให้ `completed` อยู่บนสุด
+4. ไม่ใช้ bold markers
+
+### 4. Finalize
 
 > Goal: สรุปและชี้ next action
 
@@ -55,6 +65,9 @@ related:
 - ใช้ `/report-in-numbered` เมื่องานเน้นลำดับ steps
 - ใช้ `/report-todo` เมื่องานยังไม่ลงมือ ต้องการ action plan
 - ทุกตารางต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
+- ทุก report ต้องสรุป key findings ด้านบน
+- ใช้ emoji ตาม legend ใน `references/uxui.md`
+- ไม่ใช้ bold markers
 
 ## Expected Outcome
 

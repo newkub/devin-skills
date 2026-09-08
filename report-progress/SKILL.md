@@ -16,6 +16,7 @@ triggers:
   - model
 related:
   - report
+  - report-in-table
   - report-before-after
   - suggest-next-action
   - ask-me
@@ -76,7 +77,7 @@ related:
 > Goal: report ชัดเจน พร้อม next steps
 
 1. สรุปสถานะโดยรวมของ session พร้อม progress bar
-2. ใช้ `/report` แสดง completed, pending, blockers
+2. ใช้ `/report-in-table` แสดง todo/roadmap โดย sort ตาม status ให้ `completed` อยู่บนสุด
 3. ระบุ priority ของงานค้าง
 4. ทำ `/suggest-next-action` เพื่อเสนอ next step
 
@@ -115,7 +116,7 @@ related:
 
 - สรุป key findings ไว้ด้านบนสุด
 - ใช้ symbols ✅ ❌ ⚠️ สำหรับ status
-- ใช้ `/report` สำหรับงานทีต้องการหลาย columns
+- ใช้ `/report-in-table` สำหรับรายการ todos โดย sort ตาม status: `completed` → `in_progress` → `pending` → `blocker`
 
 ### 5. Privacy
 

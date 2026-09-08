@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - report
   - report-in-table
+  - report-in-codeblock
   - suggest-next-action
 ---
 
@@ -38,9 +39,12 @@ related:
 
 > Goal: ทำให้อ่านง่าย
 
-1. ใช้ bullet ย่อยภายใต้แต่ละหมายเลขถ้าจำเป็น
-2. ใช้ backticks สำหรับ code, paths, skill names
-3. ใช้ `/report-in-table` ถ้าข้อมูลเหมาะกับตารางมากกวา
+1. เริ่มด้วย summary 2-3 ข้อก่อน numbered list
+2. ใช้ emoji ตาม status: `✅` `⏳` `❌` `⚠️`
+3. ใช้ bullet ย่อยภายใต้แต่ละหมายเลขถ้าจำเป็น
+4. ใช้ backticks สำหรับ code, paths, skill names
+5. ใช้ `/report-in-table` ถ้าข้อมูลเหมาะกับตารางมากกวา
+6. ใช้ `/report-in-codeblock` ถ้ามี commands หรือ code snippets
 
 ### 4. Validate
 
@@ -53,8 +57,9 @@ related:
 ## Rules
 
 - หนึ่งเลข = หนึ่ง idea/step
-- เรียงตาม priority
+- เรียงตาม priority หรือ status ให้ `completed` อยู่ก่อน
 - ใช้ backticks สำหรับ paths, commands, skill names
+- ใช้ emoji ตาม legend ของ `/report`
 - ไม่ใช้ bold markers
 - ตอบในแชทเท่านั้น
 

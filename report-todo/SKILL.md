@@ -4,6 +4,7 @@ description: ตอบ action plan ในแชทเป็นตาราง No
 argument-hint: "[actions-or-context]"
 related:
   - report-in-numbered
+  - report-in-table
   - suggest-next-action
   - report
 ---
@@ -39,7 +40,8 @@ related:
    - `Why` เหตุผลทีควรทำ
    - `File Change` ไฟล์ทีคาดว่าจะเปลี่ยน
    - `Risk` ความเสี่ยงหรือข้อควรระวัง
-2. เรียงลำดับตาม priority
+   - `Status` ใช้ emoji `✅` `⏳` `❌` `⚠️`
+2. เรียงลำดับตาม priority และ sort ตาม `Status` ให้ `✅` อยู่บนสุด
 3. ใช้ backticks สำหรับ paths, skill names, commands
 4. ไม่ใช้ bold markers
 
@@ -65,10 +67,11 @@ related:
 - ทุก action ต้องมี single responsibility
 - ไฟล์ทีระบุต้องพอจะเดาได้ ถ้าไม่แน่ใจให้ระบุ `TBD`
 - ด้านล่างต้องมี `/report-in-numbered` เสมอ
+- ถ้ามี status หลายรายการให้ใช้ `/report-in-table` สำหรับรายการเดียวกัน
 - ตอบในแชทเท่านั้น
 
 ## Expected Outcome
 
-- ตารางครบ 7 คอลัมน์: No., Action, Before, After, Why, File Change, Risk
+- ตารางครบ 8 คอลัมน์: No., Action, Before, After, Why, File Change, Risk, Status
 - สรุป numbered list ด้านล่าง
 - ระบุ next action และ dependencies

@@ -3,6 +3,8 @@ name: report-in-codeblock
 description: ตอบในแชทเป็น code block สำหรับ commands, code snippets, config, logs
 argument-hint: "[scope]"
 related:
+  - report
+  - report-in-table
 ---
 
 ## Goal
@@ -30,16 +32,24 @@ related:
 4. ถ้าเป็น log → ใช้ `text`
 5. ถ้าเป็น diff → ใช้ `diff`
 
-### 2. Format Content
+### 2. Add Context Header
+
+> Goal: บอกว่า code block นี้คืออะไร
+
+1. ก่อน code block ใส่ heading หรือสั้น ๆ บอกว่าเป็นส่วนไหน
+2. ถ้ามีหลาย block ให้แยกเป็นส่วน ๆ พร้อม `###` หรือ short description
+
+### 3. Format Content
 
 > Goal: ทำให้ code block อ่านและ copy ได้ง่าย
 
 1. ไม่ใส่ line numbers ภายใน code block
 2. ใช้เครื่องหมาย ``` เปิดและปิด
-3. ถ้ามีหลาย block ให้แยกเป็นส่วน ๆ พร้อมสั้น ๆ ข้างบน
-4. ถ้ามีคำอธิบายเพิ่มเติม ใส่นอก code block
+3. ระบุ language หลัง ```
+4. ถ้ามีหลาย block ให้แยกเป็นส่วน ๆ พร้อมสั้น ๆ ข้างบน
+5. ถ้ามีคำอธิบายเพิ่มเติม ใส่นอก code block
 
-### 3. Validate
+### 4. Validate
 
 > Goal: ตรวจคุณภาพก่อนส่ง
 
@@ -50,6 +60,8 @@ related:
 ## Rules
 
 - ใช้ code block เมื่องานเหมาะกับ copy-paste หรือ syntax highlighting
+- ถ้าต้องการรายงานหลาย columns ให้ใช้ `/report` หรือ `/report-in-table`
+- ถ้าต้องการรายงานหลาย code blocks คู่กับ table ให้ใช้ `/report-in-table`
 - ระบุ language หลังเครื่องหมาย ```
 - ไม่ใช้ bold markers ภายใน code block
 - ถ้ามีหลาย block ให้ใช้ `###` หรือสั้น ๆ แยก
