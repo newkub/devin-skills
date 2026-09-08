@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย SolidJS + TanStack Router บน Bun server โดยมี UX แบบ dim-focused และ close tab แล้ว server ปิดตัวเอง
+เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย SolidJS + TanStack Router บน Bun server โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
 
 ## Scope
 
@@ -29,7 +29,9 @@ related:
 - Dark / light mode
 - Sidebar file list พร้อมสถิติ add/delete
 - Auto-load เมื่อสั่งจาก CLI
-- Auto-shutdown เมื่อปิด tab
+- Prompt ใน terminal เมื่อปิด tab
+- Action buttons (Merge, Close, Checkout) ส่งคำสั่งไป terminal ให้ execute
+- Keyboard: ←/→ เปลี่ยนไฟล์, ↑/↓ scroll diff
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit
@@ -53,7 +55,7 @@ related:
 1. สร้าง workspace ชั่วคราว เช่น `.devin/open-diff-app`
 2. Copy `references/open-diff-app/` จาก skill directory ไปยัง workspace (หรือ clone submodule)
 3. รัน `bun install` ใน workspace
-4. รัน `bun run build:client && bun run build:server` เพื่อ embed frontend assets
+4. รัน `bun run build:client` เพื่อสร้าง `dist/` (server จะ serve `dist/` โดยตรง)
 
 ### 3. Run And Open
 
@@ -73,7 +75,7 @@ related:
 3. ตรวจ main area แสดง diff พร้อม line numbers และ +/- markers
 4. ลอง click เปลี่ยนไฟล์
 5. ลองกด Dark/Light
-6. ปิด tab แล้วตรวจสอบว่า server process หยุด (รอ 2-5 วินาที)
+6. ปิด tab แล้วตรวจสอบว่า terminal แสดง prompt หรือข้อความปิด tab
 7. ถ้ามี error → ทำ `/resolve-errors`
 
 ## Rules
@@ -111,11 +113,15 @@ related:
 - แสดง stats +additions/-deletions/files บน header
 - แสดง PR metadata (title, author avatar, state) เมื่อโหลด PR
 
-### 5. Auto-Shutdown
+### 5. Close Tab Behavior
 
 - Frontend ส่ง heartbeat ไป `/api/ping` ทุก 2 วินาที
 - Frontend ส่ง `/api/close` ผ่าน `navigator.sendBeacon` เมื่อ `beforeunload`
-- Server ปิดตัวเองเมื่อไม่มี ping เกิน 5 วินาที (หลัง first ping) หรือได้รับ `/api/close`
+- เมื่อปิด tab (หรือหยุด ping เกิน 5 วินาที) server จะแสดง prompt ใน terminal ให้เลือก:
+  - `(r)eopen` → เปิด browser ใหม่
+  - `(q)uit` → ปิด server
+  - `(c)ontinue` → ทำงานต่อ
+- ถ้าไม่ใช่ TTY → server จะรอคำสั่งต่อไป
 - ถ้า user ปิด tab แล้ว process ยังไม่ตาย → ตรวจสอบว่ามี tab อื่นเปิดอยู่
 
 ### 6. Use Existing Skills
@@ -134,8 +140,9 @@ related:
 - มี line numbers, +/- markers, syntax highlight
 - สลับ dark/light ได้
 - สลับไฟล์ได้
-- ปิด tab แล้ว server ปิดตัวเอง
+- ปิด tab แล้ว terminal แสดง prompt ให้เลือก action
 - ไม่มีไฟล์หรือ dependency ใหม่ใน repo หลัก
+
 
 
 
