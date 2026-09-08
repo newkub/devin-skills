@@ -83,7 +83,7 @@ Use with the root workspace `%APPDATA%\devin\skills\` that holds all skill packa
 
 ### 5. Skills
 
-The repository currently contains **780** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
+The repository currently contains **771** skills under `%APPDATA%\devin\skills\`. Each skill is a folder with a `SKILL.md` file and an optional `README.md`. Invoke a skill with `/<skill-name>`.
 
 For the full current index, run `git ls-files -- '*/SKILL.md'` or invoke `list-devin-global-skills`.
 
@@ -93,7 +93,6 @@ Core:
 - `update-devin-global-skills: /update-devin-global-skills`
 - `update-devin-global-rules: /update-devin-global-rules`
 - `update-devin-harness: /update-devin-harness`
-- `update-devin-global-rules: /update-devin-global-rules`
 - `git-commit: /git-commit`
 - `update-review-cli: /update-review-cli`
 - `ship: /ship`
