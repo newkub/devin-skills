@@ -1,5 +1,5 @@
 ---
-name: follow-framework-capacitor
+name: follow-create-mobile-cross-capacitor
 description: แนวทางการพัฒนา Capacitor 8 cross-platform mobile apps ด้วย web technologies
 argument-hint: "[scope]"
 related:
