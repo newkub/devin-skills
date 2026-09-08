@@ -5,8 +5,10 @@ argument-hint: "[action-or-skill]"
 related:
   - follow-your-suggestion
   - continue
-  - report
+  - report-in-table
+  - report-progress
   - manage
+  - all-this-patterns
   - suggest-next-action
   - deep-validate
   - run-check
@@ -40,7 +42,19 @@ Apply งานถัดไปตาม context หรือผลลัพธ�
 2. ถ้า user ระบุ action/skill ถัดไป → ทำ `/continue`
 3. ถ้าไม่ชัด → ทำ `/suggest-next-action`
 
-### 3. Align And Apply
+### 3. Plan And Dry Run
+
+> Goal: วางแผนการ apply อย่างปลอดภัย
+
+1. เลือก strategy:
+   - งานเดียว → ทำตาม `/continue` หรือ `/follow-your-suggestion`
+   - งานซ้ำหลายที่ → ใช้ `/all-this-patterns`
+   - หลาย step ต่อเนื่อง → ใช้ `/manage`
+2. ทำ dry run ถ้าเป้น destructive หรือมีหลายไฟล์
+3. ระบุ input ทีต้องใช้จากงานก่อนหน้า
+4. ถ้าขัดแย้งกับงานก่อนหน้า → stop และถาม user
+
+### 4. Align And Apply
 
 > Goal: ให้งานถัดไปสอดคล้องกับงานก่อน
 
@@ -49,7 +63,7 @@ Apply งานถัดไปตาม context หรือผลลัพธ�
 3. แก้ไขหรือ apply ตาม context
 4. ถ้าต้องแก้หลายที่ → ทำ `/manage`
 
-### 4. Validate
+### 5. Validate
 
 > Goal: ยืนยันว่า apply ถูกต้อง
 
@@ -57,12 +71,13 @@ Apply งานถัดไปตาม context หรือผลลัพธ�
 2. ทำ `/deep-validate` ถ้าต้องตรวจหลายมิติ
 3. ตรวจว่าไม่ทำลายงานก่อนหน้า
 
-### 5. Report
+### 6. Report
 
 > Goal: สรุปลำดับงาน
 
-1. ทำ `/report` คอลัมน์: `No.`, `Step`, `Action`, `Input From Previous`, `Output`, `Status`
-2. ทำ `/suggest-next-action`
+1. ทำ `/report-in-table` คอลัมน์: `No.`, `Step`, `Action`, `Input From Previous`, `Output`, `Status`
+2. ถ้ามีหลาย step ค้าง → ทำ `/report-progress` แสดง progress bar
+3. ทำ `/suggest-next-action`
 
 ## Rules
 

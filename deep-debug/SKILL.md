@@ -3,207 +3,157 @@ name: deep-debug
 description: Debug อย่างละเอียดหลายมิติ ตั้งแต่ reproduce จนถึง prevent recurrence
 argument-hint: "[scope]"
 related:
+  - validate-then-apply
   - check-git-logs
-  - search-in-git
   - analyze-root-cause-analysis
   - resolve-errors
-  - update-test-and-fix
-  - follow-debugging
-  - follow-incident-triage
   - deep-thinking
-  - deep-retro
-  - deep-impact
-  - deep-trace
-  - report
+  - report-in-table
+  - report-progress
+  - suggest-next-action
 ---
 
 ## Goal
 
-หา root cause ของปัญหาอย่างเป็นระบบ ตั้งแต่ triage, reproduce, isolate, fix, regression test, verify และ prevent recurrence โดยลดการเดาและแก้หลายอย่างพร้อมกัน
+ปฏิบัติตามหลักการ debug ที่เป็นระบบ เพื่อหา root cause ได้เร็วและแม่นยำ ลดการเดา และป้องกันปัญหาซ้ำ
 
 ## Scope
 
-ใช้สำหรับ debug ที่ซับซ้อน ต้องการ systematic approach ครบวงจร ไม่ใช่แค่หาสาเหตุเฉพาะหน้า
-
-ครอบคลุมทั้ง VSCode, terminal, shell, runtime และ OS layers
-ไม่ใช้สำหรับ debug ปัญหาที่เกี่ยวกับ git โดยเฉพาะ — ทำตาม `references/git-debug.md` แทน
-สำหรับแก้ error เฉพาะที่รู้สาเหตุแล้ว ใช้ `/resolve-errors`
+ใช้สำหรับทุก debugging session — runtime errors, test failures, build errors, deployment issues, performance problems
 
 ## Execute
 
-### 1. Triage And Reproduce
+### 1. Reproduce Consistently
 
-> Goal: จัดลำดับความสำคัญและสร้างปัญหาซ้ำได้
+> Goal: สร้าง reproduction case ที่ trigger ปัญหาได้สม่ำเสมอก่อนเริ่ม debug
 
-1. ทำ `/follow-incident-triage` เพื่อจัดลำดับความสำคัญและกำหนด action plan
-2. เขียนปัญหาให้ชัดเจน: Expected, Actual, Scope (VSCode / OS / app / API), Frequency
-3. บันทึก environment: runtime version, OS, config, dependencies
-4. ทำ `/follow-debugging` เพื่อ reproduce ปัญหา ถ้า reproduce ไม่ได้ให้หาเงื่อนไขที่ทำให้เกิด
-5. ถ้าปัญหาซับซ้อนหรือเกิดซ้ำๆ → ทำ `/deep-thinking` ก่อน debug
-6. ถ้า reproduce ไม่ได้ → stop และ report ไม่ฝืน debug
+1. สร้าง minimal reproduction case ที่ trigger ปัญหาได้ทุกครั้ง
+2. ระบุ exact steps, input, environment ที่ทำให้เกิดปัญหา
+3. ถ้า reproduce ไม่ได้ ให้เก็บ logs, screenshots, และ environment info ไว้ก่อน
+4. ใช้ `/use-bun-shell` เพื่อรัน reproduction script ซ้ำจนกว่าจะ stable
 
-### 2. Hypothesis Generation
+### 2. Define Problem Clearly
 
-> Goal: สร้าง hypothesis list 3–5 ข้อ
+> Goal: กำหนดปัญหาแบบ Expected vs Actual พร้อม scope และ impact ชัดเจน
 
-1. สร้าง hypothesis list H = {H₁, H₂, ..., Hₙ} 3–5 ข้อ เช่น: config issue, environment (PATH / runtime), dependency / package, tool version mismatch, user mistake
-2. กำหนด prior probability P(H) สำหรับแต่ละ hypothesis (0.1–0.9)
-3. ระบุ evidence ที่ต้องการเพื่อยืนยันหรือปฏิเสธแต่ละ hypothesis
-4. ถ้าทุก hypothesis ถูกตัดใน step ต่อไป → กลับมาสร้าง hypothesis ใหม่
+1. เขียนปัญหาแบบ Expected vs Actual
+2. ระบุ scope: file, function, module, API endpoint, หรือ system level
+3. ระบุ frequency: always, intermittent, หรือ under specific conditions
+4. ระบุ impact: blocking, degraded, หรือ cosmetic
 
-### 3. Rank By Probability
+### 3. Gather Evidence
 
-> Goal: ใช้ Bayesian Inference เพื่อจัดลำดับความเป็นไปได้
+> Goal: เก็บ error messages, logs, และ context ที่เกี่ยวข้องทั้งหมด
 
-1. ประเมิน likelihood P(E|H) ความน่าจะเป็นที่ evidence เกิดขึ้นถ้า H เป็นจริง
-2. คำนวณ posterior probability P(H|E) = P(E|H) × P(H) / P(E)
-3. เลือก top 1–2 ที่มี P(H|E) สูงสุด
-4. จัดลำดับตาม probability สูงก่อน
+1. เก็บ error messages, stack traces, และ logs ทั้งหมด
+2. ใช้ `/run-test` เพื่อดูว่า tests ไหน fail
+3. ตรวจสอบ recent changes ด้วย `git log` และ `git diff`
+4. ตรวจสอบ environment: runtime version, dependencies, config
+5. ถ้ามี monitoring ให้เก็บ metrics และ traces ด้วย
 
-### 4. Eliminate Fast
+### 4. Form Hypotheses
 
-> Goal: ใช้ Information Theory เพื่อเลือก test ที่ให้ข้อมูลมากที่สุด
+> Goal: สร้างและจัดลำดับ hypotheses ตาม evidence ไม่ใช่ความรู้สึก
 
-1. คำนวณ entropy H(H) = -Σ P(Hᵢ) log₂ P(Hᵢ) ของ hypotheses ปัจจุบัน
-2. สำหรับแต่ละ test T คำนวณ conditional entropy H(H|T)
-3. เลือก test ที่มี Information Gain = H(H) - H(H|T) สูงสุด
-4. ทำ test ที่เลือกและอัปเดต P(H|E) ด้วย Bayesian update
-5. ตัด hypothesis ที่ P(H|E) < 0.05
-6. ทำซ้ำจนเหลือ hypothesis ที่ P(H|E) → 1.0
-7. ทางเลือกง่าย: ถ้าไม่ต้องการคำนวณ entropy → เลือก test ที่แยก hypothesis ได้มากที่สุด (ครึ่งหนึ่งผ่าน ครึ่งหนึ่งไม่ผ่าน)
+1. สร้าง 3-5 hypotheses ที่เป็นไปได้
+2. จัดลำดับตาม probability และ ease of testing
+3. ทำ `/deep-thinking` เพื่อใช้ Bayesian approach ในการจัดลำดับ
+4. เลือก top 1-2 hypotheses ที่ test ง่ายและมี probability สูงสุด
 
-### 5. Isolate And Confirm Root Cause
+### 5. Test And Eliminate
 
-> Goal: ยืนยัน root cause ด้วย 3 เงื่อนไข
+> Goal: ทดสอบทีละ hypothesis เปลี่ยนทีละ variable เพื่อตัดที่ไม่ใช่
 
-1. เปลี่ยนทีละอย่างเท่านั้น: ปิด extension, เปลี่ยน PATH, ใช้ clean terminal, run bare command, เปลี่ยน config, dependency, runtime, code
-2. ไล่จากบนลงล่าง: UI (VSCode) → Terminal → Shell (pwsh / powershell) → Runtime → OS
-3. บันทึกผลลัพธ์ของแต่ละการเปลี่ยนแปลง
-4. ยืนยัน root cause ด้วย 3 เงื่อนไข:
-   - Reproduce ได้ — สร้างปัญหาซ้ำได้
-   - Fix แล้วหาย — แก้แล้วปัญหาหาย
-   - กลับมา error ถ้าถอย fix — ถอนการแก้แล้วปัญหากลับมา
-5. ถ้าต้องค้นหา pattern ใน code หรือ history → ทำ `/search-in-git` หรือ `references/git-debug.md`
-6. ถ้าไม่ผ่าน 3 เงื่อนไข → กลับไป Step 4
+1. ทดสอบทีละ hypothesis — เปลี่ยนทีละ variable เท่านั้น
+2. ใช้ `/use-bun-shell` เพื่อ execute test แต่ละ hypothesis
+3. บันทึกผลลัพธ์ทุกครั้ง: pass, fail, หรือ inconclusive
+4. ตัด hypothesis ที่ไม่ใช่ แล้วไปถัดไป
+5. ถ้าทดสอบหมดแล้วไม่ตรง ให้กลับไปสร้าง hypotheses ใหม่
 
-### 6. Root Cause Analysis
+### 6. Isolate Root Cause
 
-> Goal: วิเคราะห์หาสาเหตุหลักอย่างละเอียด
+> Goal: ยืนยัน root cause ที่ reproduce ได้ แก้แล้วหาย ถอนแล้วกลับมา
 
-1. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลักอย่างละเอียด
-2. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
-3. ถ้าซับซ้อนมาก → ทำ `/deep-research` หา known issues ที่คล้ายกัน
+1. ทำ `/analyze-root-cause-analysis` เพื่อวิเคราะห์หาสาเหตุหลัก
+2. ใช้ 5 Whys เพื่อ trace จาก symptom ไป root cause
+3. ยืนยัน root cause ด้วย 3 เงื่อนไข: reproduce ได้, fix แล้วหาย, กลับมาถ้าถอน fix
+4. ตรวจสอบว่าไม่ใช่ symptom ของปัญหาที่ลึกกว่า
 
-### 7. Fix And Regression Tests
+### 7. Validate And Fix
 
-> Goal: แก้ปัญหาที่ root cause และสร้าง regression tests
+> Goal: แก้น้อยที่สุดที่จบ root cause แล้ว verify ว่าไม่ทำลายอย่างอื่น
 
-1. แก้ปัญหาที่ root cause ไม่ใช่ symptoms ใช้ minimal changes ที่สุด
-2. ทำ `/resolve-errors` เพื่อแก้ปัญหาที่ root cause อย่างเป็นระบบ ใช้ scripts automate เมื่อมีหลายไฟล์
-3. ทำ `/update-test-and-fix` เพื่อสร้าง regression tests จาก reproduction steps
-4. ทดสอบว่า test fail ก่อน fix และ pass หลัง fix
-5. ครอบคลุม edge cases ที่เกี่ยวข้อง
-6. รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression
-7. ถ้ามี regression → กลับไปแก้ fix
+1. ทำ `/validate-then-apply` เพื่อ validate ก่อนแก้
+2. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
+3. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
+4. ทำ `/run-test` เพื่อยืนยันว่า fix ใช้งานได้
+5. ทดสอบว่า fix ไม่ทำลาย functionality อื่น
+6. ทำ `/run-lint` และ `/run-typecheck` เพื่อตรวจสอบ code quality
 
-### 8. Verify And Prevent
+### 8. Prevent Recurrence
 
-> Goal: Verify จนกว่าจะผ่านทุกเงื่อนไขและป้องกันการเกิดซ้ำ
+> Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
 
-1. ทำ `/loop-until-complete` เพื่อรัน test suite ทั้งหมดจนกว่าจะผ่าน
-2. ทำ `/run-verify` เพื่อตรวจสอบ lint และ typecheck ผ่าน
-3. ระบุ root cause ในระดับ process: ทำไมปัญหานี้ถึงเกิดขึ้นได้
-4. แนะนำ preventive measures: linter rules, type constraints, code review checklist
-5. บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
-6. ถ้าเกิน 3 รอบแล้วยังไม่ผ่าน → stop และ report
+1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
+2. ทำ `/deep-review` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
+3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
+4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
 
 ### 9. Report
 
-> Goal: สร้างตารางสรุปผลและแนะนำขั้นต่อไป
+> Goal: สรุปผล debug และ next action
 
-1. ทำ `/report` เพื่อสร้างตาราง: Step, Hypothesis, P(H|E), Test, Result, Status
+1. ทำ `/report-in-table` คอลัมน์: `No.`, `Step`, `Hypothesis`, `Result`, `Status`
 2. สรุป root cause, fix, regression tests, preventive measures
-3. ทำ `/suggest-next-action` เพื่อแนะนำขั้นต่อไป
+3. ทำ `/report-progress` ถ้ามีหลาย step
+4. ทำ `/suggest-next-action`
 
 ## Rules
 
 ### 1. Core Principles
 
-> Goal: debug อย่างเป็นระบบ ไม่เดา
+- ห้ามเดา — ทุก hypothesis ต้องมี evidence สนับสนุน
+- ห้ามแก้หลายอย่างพร้อมกัน — เปลี่ยนทีละ variable
+- ห้ามแก้ symptom — ต้องถึง root cause
+- ห้าม bypass — ไม่ใช้ `@ts-ignore`, `eslint-disable`, หรือ try-catch ซ่อน error
+- ต้อง reproduce ได้ก่อนแก้
+- ทุก fix ต้องผ่าน `/validate-then-apply` ก่อน apply
 
-- ห้ามแก้หลายอย่างพร้อมกัน
-- ห้ามเดา
-- ต้อง isolate variable
-- ถ้าปัญหาเกี่ยวกับ git → ทำตาม `references/git-debug.md` แทน
+### 2. Debug Strategy
 
-### 2. Heuristic Cheatsheet
+- ไล่จากบนลงล่าง: UI → API → Database → Infrastructure
+- ไล่จาก narrow ไป broad: specific function → module → system
+- ใช้ binary search สำหรับ large codebase
+- ถ้า intermittent ให้เก็บ log ทุกครั้งจนกว่าจะ pattern ชัด
+- ถ้า environment-specific ให้เปรียบเทียบ working vs broken environment
 
-> Goal: เริ่ม debug ได้เร็วด้วย common patterns
+### 3. Logging For Debug
 
-| Symptom                 | Likely Cause                         |
-| ----------------------- | ------------------------------------ |
-| tool detect wrong shell | PATH                                 |
-| VSCode weird behavior   | extension / profile                  |
-| command not found       | PATH                                 |
-| version mismatch        | runtime manager (mise / node / etc.) |
-| build fail              | config / dependency version          |
-| test fail suddenly      | code change / test data / flaky test |
-| import error            | alias / export / barrel file         |
-| type error cascade      | upstream type change / missing type  |
-| runtime crash           | null / undefined / async timing      |
+- ใช้ structured logging ไม่ใช่ `console.log`
+- ใส่ context: function name, input values, state
+- ใช้ log levels: `debug`, `info`, `warn`, `error`
+- หลัง fix ให้ลบ debug logging ที่ไม่จำเป็น
 
-### 3. Bayesian Method
+### 4. Tool Selection
 
-> Goal: ใช้ Bayesian Inference อย่างถูกต้อง
+- Runtime errors → `/resolve-errors` + `/deep-thinking`
+- Test failures → `/run-test` + `/follow-tool-vitest`
+- E2E failures → `/follow-tool-playwright`
+- Build errors → `/run-build` + `/resolve-errors`
+- Type errors → `/run-typecheck` + `/follow-lang-typescript`
+- Performance → `/run-profiler` + `/deep-review`
+- Git issues → `/follow-tool-git` + `/check-git-logs`
 
-- กำหนด prior probability สำหรับทุก hypothesis
-- เลือก test ที่มี Information Gain สูงสุดก่อน
-- ตัด hypothesis ที่ P(H|E) < 0.05
-- ถ้าทุก hypothesis ถูกตัด ให้สร้าง hypothesis ใหม่
-
-### 4. Fast Debug Loop
-
-> Goal: debug loop ที่รวดเร็วและซ้ำได้
-
-1. Observe → 2. List 3–5 causes → 3. Pick top 1–2 → 4. Test one change at a time → 5. Eliminate → 6. Repeat
-
-### 5. Regression Safety
-
-> Goal: ทุก bug fix ต้องมี regression test
-
-- ทุก bug fix ต้องมี regression test
-- Test ต้อง fail ก่อน fix และ pass หลัง fix
-- รัน test suite ทั้งหมดเพื่อยืนยันไม่มี regression
-- ถ้ามี regression ให้กลับไปแก้ fix
-
-### 6. Time Budget And Escalation
-
-> Goal: ไม่ใช้เวลานานเกินไปกับปัญหาเดียว
+### 5. Time Budget And Escalation
 
 - ปัญหาเล็ก: ≤ 5 นาที | กลาง: ≤ 15 นาที | ใหญ่: ≤ 30 นาที
 - ถ้าเกินเวลา → ทำ `/deep-thinking` หรือ `/deep-research`
 - ถ้าหา root cause ไม่ได้หลังพยายาม 3 รอบ → ทำ `/deep-thinking` หรือขอความช่วยเหลือ
-- ถ้าปัญหาเกี่ยวกับ git → ทำตาม `references/git-debug.md` แทน
-
-### 7. Prevention
-
-> Goal: ป้องกันการเกิดปัญหาซ้ำ
-
-- ระบุ root cause ในระดับ process ไม่ใช่แค่ code
-- แนะนำ preventive measures ที่ actionable
-- บันทึก root cause และ prevention ลงไฟล์บันทึกหรือ memory ของ project
-
-- ใช้ /check-git-logs ถ้าจำเป็น
-- ใช้ /deep-retro ถ้าจำเป็น
-- ใช้ /deep-impact ถ้าจำเป็น
-- ใช้ /deep-trace ถ้าจำเป็น
 
 ## Expected Outcome
 
-1. หา root cause ได้เร็วขึ้นด้วย Bayesian approach
-2. ลดการเดาและแก้หลายอย่างพร้อมกัน
-3. มี systematic approach สำหรับ debug ทุกประเภท
-4. Root cause ถูกระบุอย่างชัดเจนด้วย evidence
-5. Bug ถูกแก้ที่ root cause ไม่ใช่ symptoms
-6. Regression tests ที่ป้องกันปัญหาซ้ำ
-7. Preventive measures สำหรับ future
+- Root cause หาได้เร็วและแม่นยำ
+- ไม่มีการเดาหรือแก้หลายอย่างพร้อมกัน
+- Fix แก้ที่ root cause ไม่ใช่ symptom
+- มี test case ป้องกัน regression
+- Debugging experience ดีขึ้นเรื่อยๆ

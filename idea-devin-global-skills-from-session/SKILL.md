@@ -7,6 +7,8 @@ related:
   - add-context-to-devin-global-skills
   - list-devin-user-requests
   - update-devin-global-skills
+  - report-in-table
+  - then-apply
 ---
 
 ## Goal
@@ -52,9 +54,10 @@ related:
 
 > Goal: ให้ user เลือก
 
-1. ใช้ `/idea` หรือตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
+1. ใช้ `/report-in-table` ตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
 2. จัดลำดับตาม reusability × frequency ที่เห็นใน session
-3. ถาม user เลือกตัวที่จะสร้าง — ไม่สร้างเอง
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. ถาม user เลือกตัวที่จะสร้าง — ไม่สร้างเอง
 
 ## Rules
 

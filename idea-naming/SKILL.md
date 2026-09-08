@@ -4,7 +4,8 @@ description: สร้างชื่อไฟล์และ directory สำ�
 argument-hint: "[scope]"
 related:
   - ask-me
-  - report
+  - report-in-table
+  - then-apply
 ---
 
 ## Goal
@@ -58,8 +59,9 @@ related:
 
 > Goal: สรุปผลให้ user เลือก
 
-1. ใช้ `/report` แสดง: Type, Suggested Name, Convention, Notes
+1. ใช้ `/report-in-table` แสดง: `No.`, `Type`, `Suggested Name`, `Convention`, `Notes`
 2. แยกเป็น groups: directories, source files, tests, docs
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
 3. ถ้ามีหลายทางเลือกให้เรียงตาม preference
 
 ## Rules

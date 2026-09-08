@@ -7,6 +7,7 @@ related:
   - review-devin-global-skills
   - update-devin-global-skills
   - follow-parallel
+  - use-subagents
   - update-references
   - deep-validate
   - check-broken-skills-references
@@ -45,7 +46,7 @@ related:
 > Goal: แก้ไข skills ตามลำดับ
 
 1. ทำ `/update-devin-global-skills` กับ skill หรือกลุ่มที่เลือก
-2. ถ้ามีหลายอันที่อิสระ → ทำ `/follow-parallel`
+2. ถ้ามีหลายอันที่อิสระ → ทำ `/follow-parallel` หรือ `/use-subagents`
 3. หลังแก้ไขทุกกลุ่ม → ทำ `/update-references`
 
 ### 4. Validate

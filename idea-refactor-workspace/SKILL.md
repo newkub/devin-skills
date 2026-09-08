@@ -5,7 +5,8 @@ argument-hint: "[scope]"
 related:
   - refactor-workspace
   - follow-single-responsibility
-  - report
+  - report-in-table
+  - then-apply
   - report-file-structure
   - report-before-after
   - suggest-next-action
@@ -61,16 +62,17 @@ related:
 
 1. ให้คะแนนแต่ละไอเดียตาม impact/effort ratio
 2. จัดลำดับ: High → Medium → Low
-3. ใช้ `/report` คอลัมน์:
-   - No
-   - Idea
-   - Type
-   - Target Workspace
-   - Problem
-   - Impact
-   - Effort
-   - Risk
-4. ระบุ Top 3 ไอเดียทีควรทำก่อน
+3. ใช้ `/report-in-table` คอลัมน์:
+   - `No.`
+   - `Idea`
+   - `Type`
+   - `Target Workspace`
+   - `Problem`
+   - `Impact`
+   - `Effort`
+   - `Risk`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+5. ระบุ Top 3 ไอเดียทีควรทำก่อน
 
 ### 5. Propose Execution
 

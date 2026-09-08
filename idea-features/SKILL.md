@@ -7,7 +7,8 @@ related:
   - suggest-me
   - enhance-prompt
   - deep-analyze
-  - report
+  - report-in-table
+  - then-apply
   - report-uxui-sketch
   - productionize-implementation
 
@@ -53,8 +54,9 @@ related:
 > Goal: จัดลำดับและจัดรูปแบบตอบกลับ
 
 1. จัดลำดับตาม MVP score สูง → ต่ำ
-2. สร้าง markdown tables ด้วย `/report`
-3. สรุป top 3-5 features สั้นๆ ด้วย bullets
+2. สร้าง markdown tables ด้วย `/report-in-table`
+3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+4. สรุป top 3-5 features สั้นๆ ด้วย bullets
 4. ระบุ phase: MVP, v2, v3
 
 ### 4. Reply In Chat

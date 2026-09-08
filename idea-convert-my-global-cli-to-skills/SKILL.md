@@ -8,7 +8,8 @@ related:
   - create-plan-in-dot-devin
   - learn-cli
   - delete
-  - report
+  - report-in-table
+  - then-apply
 ---
 
 ## Goal
@@ -80,7 +81,7 @@ related:
    - `triggers`, `allowed-tools`, `related`
    - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
 3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
-4. ทำ `/report` เพื่อสรุป draft skills ทีสร้าง
+4. ทำ `/report-in-table` เพื่อสรุป draft skills ทีสร้าง คอลัมน์: `No.`, `Skill`, `Command(s)`, `Priority`, `Notes`
 
 ### 6. Validate And Suggest
 
@@ -90,7 +91,8 @@ related:
 2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
 3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
 4. ถ้าต้องปรับ → ทำ `/check-my-global-cli` อีกรอบหรือ `/learn-cli`
-5. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
+5. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+6. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
 
 ## Rules
 

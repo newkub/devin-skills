@@ -1,5 +1,5 @@
 ---
-name: report-repo-health
+name: report-health-repo
 description: สร้าง health scorecard ต่อ repo — hygiene, deps, CI, activity และ risks รวมตารางเดียว
 argument-hint: "[repo-or-all]"
 related:
@@ -9,7 +9,10 @@ related:
   - list-dependencies
   - run-audit
   - check-uncommit
-  - report
+  - report-in-table
+  - report-progress
+  - suggest-next-action
+  - validate-then-apply
 ---
 
 ## Goal
@@ -53,9 +56,11 @@ related:
 
 > Goal: ตารางเทียบข้าม repos
 
-1. ใช้ `/report`: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
-2. Per-repo detail: top issues ที่กดคะแนน
-3. สรุป: repos ที่ต้อง attention เรียงตาม grade
+1. ทำ `/report-in-table` คอลัมน์: `No.`, `Repo`, `Hygiene`, `Deps`, `CI`, `Activity`, `Security`, `Clean`, `Grade`
+2. ใช้ status symbols: `✅ pass`, `⚠️ warning`, `❌ fail`, `ℹ️ n/a`
+3. Per-repo detail: top issues ที่กดคะแนน
+4. สรุป: repos ที่ต้อง attention เรียงตาม grade
+5. ถ้ามีหลาย repo/round ให้ทำ `/report-progress`
 
 ### 4. Recommend
 
@@ -64,6 +69,8 @@ related:
 1. ระบุ quick wins ต่อ repo (เช่น เพิ่ม LICENSE, enable CI, ลบ stale branches)
 2. flag repos ที่ควร archive หรือ revive
 3. เชื่อมไป skills ที่เกี่ยว: `/check-repo-hygiene`, `/review-dependencies`, `/review-delivery`
+4. ถ้าต้อง apply หลาย fix อย่างปลอดภัย → แนะนำ `/validate-then-apply`
+5. ทำ `/suggest-next-action`
 
 ## Rules
 

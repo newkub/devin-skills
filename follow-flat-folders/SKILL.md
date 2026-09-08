@@ -4,7 +4,7 @@ description: แปลงไฟล์ใน nested directories ให้เป�
 argument-hint: "[scope]"
 related:
   - scan-codebase
-
+  - update-references
   - deep-validate
   - report
 ---
@@ -53,10 +53,11 @@ related:
 > Goal: ไฟล์อยู่ flat directory และ references ถูกต้อง
 
 1. ย้ายไฟล์ตาม mapping ด้วย `git mv` ถ้าอยู่ใน git repo หรือ `Move-Item`/`mv` ถ้าไม่ใช่
-2. แก้ไข relative imports (`../`, `./`) ในไฟล์ที่ย้าย
-3. อัปเดท barrel exports (`index.ts`, `mod.ts`, `lib.rs`) ถ้ามี
-4. อัปเดท `package.json` `exports`, `types`, `main` ถ้าจำเป็น
-5. อัปเดท README, เอกสาร, และ comments ที่อ้างอิง path เก่า
+2. ทำ `/update-references` เสมอหลังย้าย — imports, config paths, docs, scripts
+3. แก้ไข relative imports (`../`, `./`) ในไฟล์ที่ย้าย
+4. อัปเดท barrel exports (`index.ts`, `mod.ts`, `lib.rs`) ถ้ามี
+5. อัปเดท `package.json` `exports`, `types`, `main` ถ้าจำเป็น
+6. อัปเดท README, เอกสาร, และ comments ที่อ้างอิง path เก่า
 
 ### 5. Verify
 

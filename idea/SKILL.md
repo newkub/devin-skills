@@ -5,8 +5,8 @@ argument-hint: "[topic]"
 related:
   - idea-features
   - review-frontend
-  - report
-
+  - report-in-table
+  - then-apply
   - suggest-next-action
   - productionize-implementation
 
@@ -54,7 +54,8 @@ related:
 
 1. จัดลำดับตาม value vs effort
 2. ระบุ quick wins และ strategic ideas
-3. ทำ `/report` พร้อม `/report` เพื่อแสดงผลเป็นตาราง: #, Idea, Type, Problem, Impact, Effort
+3. ทำ `/report-in-table` แสดงผลเป็นตาราง: `No.`, `Idea`, `Type`, `Problem`, `Impact`, `Effort`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
 4. ใช้ Impact: 🔴 สูง → 🟡 ปานกลาง → 🟢 ต่ำ
 5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
 

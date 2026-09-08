@@ -3,7 +3,6 @@ name: merge
 description: merge ไฟล์หรือ folder เข้าด้วยกันและลบ source เดิม
 argument-hint: "@files [destination]"
 allowed-tools:
----
   - read
   - edit
   - write
@@ -20,6 +19,9 @@ related:
   - deep-validate
   - ask-me
   - deep-analyze
+  - validate-then-apply
+  - report-in-table
+  - report-progress
 ---
 
 ## Goal
@@ -51,7 +53,16 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 2. ถ้า source เป็นโฟลเดอร์ → อ่านทุก `SKILL.md` หรือไฟล์หลักในโฟลเดอร์
 3. บันทึกโครงสร้าง ความสัมพันธ์ และสิ่งทีซ้ำซ้อน
 
-### 3. Merge Content
+### 3. Plan Merge
+
+> Goal: วางแผนการ merge อย่างปลอดภัย
+
+1. ทำ `/validate-then-apply` เพื่อ validate ก่อน merge
+2. ระบุ references ทีอ้างอิงถึง source
+3. วางแผนการ update references ไปยัง destination
+4. ถ้ามี references ซับซ้อน → ทำ `/update-references` ล่วงหน้า
+
+### 4. Merge Content
 
 > Goal: รวม source เข้าด้วยกันอย่างถูกต้อง
 
@@ -60,7 +71,7 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 3. ใช้ `git mv` หรือ `git rm` ถ้าอยู่ใน git repo
 4. ตรวจสอบว่า merge ถูกต้องและไม่มี data loss
 
-### 4. Delete Old Sources
+### 5. Delete Old Sources
 
 > Goal: ลบ source เดิมหลัง merge
 
@@ -68,13 +79,23 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 2. ใช้ `git rm -r` สำหรับโฟลเดอร์ หรือ `git rm` สำหรับไฟล์
 3. ตรวจสอบว่าไม่มี references เก่าเหลือถ้า source ถูก reference
 
-### 5. Validate
+### 6. Update References
+
+> Goal: ไม่ให้มี broken references จาก source ทีถูกลบ
+
+1. ทำ `/update-references` เพื่ออัปเดตทุก skills ทีอ้างอิงถึง source
+2. ตรวจหา skills ที่เกี่ยวกับ file ops (`move-to`, `batch-rename-files`, `all-this-patterns`, `edit-only`, `restructure`, `refactor`, `flatten-directory`) และอัปเดต references ให้ชี้ไป destination
+3. ใช้ `grep` ตรวจซ้ำเพื่อหา reference เก่าทีหลงเหลือ
+
+### 7. Validate
 
 > Goal: ตรวจสอบความถูกต้อง
 
 1. ทำ `/deep-validate` เพื่อตรวจ merge
 2. ตรวจหา broken references
 3. ตรวจ data loss
+4. ทำ `/report-in-table` สรุป: `No.`, `Source`, `Destination`, `Status`, `Notes`
+5. ถ้ามีหลาย step ค้าง → ทำ `/report-progress`
 
 ## Rules
 
@@ -83,6 +104,7 @@ merge ไฟล์หรือโฟลเดอร์ต้นทางเข�
 - ใช้ git สำหรับ file operations ถ้าเป็นไปได้
 - ถ้ามี references ชี้ไปยัง source → ทำ `/update-references` ก่อนลบ
 - ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก → ทำ `/deep-validate` แล้วเลือกสิ่งทีดีทีสุด
+- ทุก merge ต้องผ่าน `/validate-then-apply` ก่อน
 
 ## Expected Outcome
 

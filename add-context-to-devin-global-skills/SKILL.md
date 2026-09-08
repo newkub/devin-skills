@@ -23,6 +23,8 @@ related:
   - use-related-skills
   - review-devin-global-skills
   - idea-devin-global-skills-from-session
+  - from-chat-session
+  - ask-me
 ---
 
 ## Goal
@@ -39,10 +41,11 @@ related:
 
 > Goal: รับและสรุป context ทีต้องการเพิ่ม
 
-1. รับ input จาก user เช่น สรุป context, keyword, topic, prompt, หรือสรุปสิ่งทีคุยกัน
-2. ถ้า input เป้น link/URL ให้ fetch หรือ scrape เพื่อสรุป title และคำอธิบาย
-3. ถ้า input กว้างหรือไม่ชัด ให้ถาม user ว่าต้องการ save อะไร
-4. ถ้าไม่มี input ให้สรุป context ล่าสุดจาก session
+1. ถ้ามี argument จาก user ให้ทำ `/from-chat-session` เพื่อดึง context จาก session แล้วทำ `/ask-me` ถาม user ว่าเหมายถึงอันไหน
+2. รับ input จาก user เช่น สรุป context, keyword, topic, prompt, หรือสรุปสิ่งทีคุยกัน
+3. ถ้า input เป้น link/URL ให้ fetch หรือ scrape เพื่อสรุป title และคำอธิบาย
+4. ถ้า input กว้างหรือไม่ชัด ให้ถาม user ว่าต้องการ save อะไร
+5. ถ้าไม่มี input ให้สรุป context ล่าสุดจาก session
 
 ### 2. List Existing Skills
 

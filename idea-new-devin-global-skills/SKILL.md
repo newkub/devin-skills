@@ -6,7 +6,8 @@ related:
   - check-my-global-cli
   - follow-devin-global-skills
   - rethink
-  - report
+  - report-in-table
+  - then-apply
   - follow-single-responsibility
   - review-devin-global-skills
   - deep-research
@@ -51,7 +52,7 @@ related:
 > Goal: สร้างรายการไอเดีย
 
 1. แยกแต่ละไอเดียตาม `/follow-single-responsibility`
-2. ใช้ `/report` สำหรับรูปแบบ output
+2. ใช้ `/report-in-table` สำหรับรูปแบบ output คอลัมน์: `No.`, `Idea`, `Category`, `Impact`, `Effort`, `Scope`
 3. แบ่งหมวดหมู่:
    - Merge/Remove
    - Rename
@@ -76,11 +77,12 @@ related:
 
 > Goal: นำเสนอไอเดีย
 
-1. ทำ `/report` ด้วย numbered หลัก + bullet ย่อย
+1. ทำ `/report-in-table` ด้วย numbered หลัก + bullet ย่อย
 2. แสดง `## Summary` ก่อน
 3. แสดง `## Refactor Ideas` ตามลำดับ priority
-4. แสดง `## References` ที่เกี่ยวข้อง
-5. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/deep-refactor`
+4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
+5. แสดง `## References` ที่เกี่ยวข้อง
+6. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/deep-refactor`
 
 ## Rules
 

@@ -10,9 +10,14 @@ related:
   - ship
   - follow-parallel
   - follow-enter-dot
-  - loop-until-complete
   - report
   - ask-me
+  - refactor
+  - restructure
+  - edit-only
+  - move-to
+  - batch-rename-files
+  - all-this-patterns
 ---
 
 ## Goal
@@ -43,7 +48,21 @@ related:
 3. ระบุ dependencies ระหว่าง tasks
 4. ถ้า context ทับซ้อนหรือขัดแย้ง → ทำ `/ask-me`
 
-### 3. Dispatch Next Actions
+### 3. Decide File Operation Mode
+
+> Goal: ถ้ามี file operations ให้เลือกรูปแบบทีเหมาะสม
+
+1. ถ้างานไม่เกี่ยวกับ file operations → ข้ามไป step ถัดไป
+2. ทำ `/rethink` โดยถามว่าควรใช้ file op แบบไหน:
+   - `/edit-only` — แก้ไขเฉพาะจุด
+   - `/refactor` — refactor code โดยรักษา behavior
+   - `/restructure` — ย้าย/จัดโครงสร้างไฟล์
+   - `/move-to` — ย้ายไฟล์/โฟลเดอร
+   - `/batch-rename-files` — เปลี่ยนชื่อหลายไฟล์
+   - `/all-this-patterns` — แก้หลายจุดตาม pattern
+3. เลือกตามผล `/rethink` โดย user confirm ถ้ามีหลายทางเลือกใกล้เคียงกัน
+
+### 4. Dispatch Next Actions
 
 > Goal: ส่งงานไปยัง skill ที่ถูกต้อง
 
@@ -53,7 +72,7 @@ related:
 4. ถ้าต้อง planning → `/report-todo` แล้วทำตามลำดับ
 5. ถ้างานยาวหรือต้องวนซ้ำ → `/loop-until-complete`
 
-### 4. Track And Report
+### 5. Track And Report
 
 > Goal: ติดตามความคืบหน้า
 
