@@ -3,10 +3,10 @@ name: follow-create-web
 description: เลือกและสร้าง web project ตามประเภท landing, saas หรือ paas
 argument-hint: "[scope]"
 related:
-  - follow-create-tui
+  - follow-create-tui-ratatui
   - follow-my-tech-stack
   - review-techstack
-  - follow-solid-tanstack
+  - follow-create-web-solid-tanstack-router
   - follow-lib-unocss
   - follow-robots-txt
   - deep-optimize
@@ -46,8 +46,8 @@ related:
 1. ถ้าเป็น static info นำเสนอข้อมูล → สร้างแบบ landing page ตาม flow ของ skill นี้
 2. ถ้ามี services + pricing + auth + dashboard → สร้างแบบ SaaS ตาม flow ของ skill นี้
 3. ถ้าเป็น saas + advanced UI/UX → สร้างแบบ PaaS/advanced ตาม flow ของ skill นี้
-4. ถ้าต้องการ TUI Rust → ทำ `/follow-create-tui`
-5. ถ้า stack ไม่ชัด → ใช้ default `/follow-solid-tanstack`
+4. ถ้าต้องการ TUI Rust → ทำ `/follow-create-tui-ratatui`
+5. ถ้า stack ไม่ชัด → ใช้ default `/follow-create-web-solid-tanstack-router`
 
 ### 3. Delegate And Validate
 
