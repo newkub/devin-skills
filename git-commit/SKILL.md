@@ -10,6 +10,7 @@ related:
   - refactor-commit
   - review-diff
   - ship
+  - git-commit-at-devin-global-skills
 
 ---
 ## Goal
@@ -21,6 +22,8 @@ Commit ทุกไฟล์ที่มีการเปลี่ยนแป�
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: git-commit-at-devin-skills-global)
 
 ใช้สำหรับ commit changes ใน `C:\Users\Veerapong\AppData\Roaming\devin\skills` เท่านั้น
+
+- ถ้าต้องการรัน pre-commit validation ก่อน commit ใน devin global skills ให้ใช้ `/git-commit-at-devin-global-skills`
 
 ## Execute
 
