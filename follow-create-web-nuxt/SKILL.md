@@ -1,9 +1,9 @@
 ---
-name: follow-framework-nuxt
+name: follow-create-web-nuxt
 description: สร้างหรือปรับปรุง Nuxt 4 project ด้วย Universal Rendering และ Nitro
 argument-hint: "[scope]"
 related:
-  - follow-framework-astro
+  - follow-create-web-astro
   - follow-framework-capacitor
   - follow-framework-desktop-app
   - follow-best-practice
@@ -212,7 +212,7 @@ related:
 - ใช้ `Lazy` prefix สำหรับ lazy loading
 - หลีกเลี่ยง costly plugins
 
-- ใช้ /follow-framework-astro ถ้าจำเป็น
+- ใช้ /follow-create-web-astro ถ้าจำเป็น
 - ใช้ /follow-framework-capacitor ถ้าจำเป็น
 - ใช้ /follow-framework-desktop-app ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
