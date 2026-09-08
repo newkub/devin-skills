@@ -1,10 +1,11 @@
 import { createSignal, createEffect, onMount, onCleanup, Show, For } from 'solid-js';
 import { useNavigate, useSearch } from '@tanstack/solid-router';
-import { parsePatchFiles } from '@pierre/diffs';
+import { parsePatchFiles, type FileDiffMetadata } from '@pierre/diffs';
 import SourceForm from './components/SourceForm';
-import FileSidebar from './components/FileSidebar';
+import FileStrip from './components/FileStrip';
 import DiffView from './components/DiffView';
-import type { DiffResult, DiffFile, SourceKind } from '../types';
+import { splitPatch } from './split';
+import type { DiffResult, SourceKind } from '../types';
 
 type MergeMethod = 'merge' | 'squash' | 'rebase';
 const MERGE_METHODS: { value: MergeMethod; label: string }[] = [
@@ -32,6 +33,8 @@ export default function App() {
   const [commentText, setCommentText] = createSignal('');
   let filterEl: HTMLInputElement | undefined;
 
+  const metaCache = new Map<number, FileDiffMetadata>();
+
   const getSource = () => (search().source as SourceKind) || 'pr';
   const params = () => search() as Record<string, string>;
 
@@ -39,7 +42,23 @@ export default function App() {
     const files = data()?.files ?? [];
     const q = fileQuery().trim().toLowerCase();
     if (!q) return files.map((_, i) => i);
-    return files.map((f, i) => ({ f, i })).filter(({ f }) => f.meta.name.toLowerCase().includes(q)).map(({ i }) => i);
+    return files.map((f, i) => ({ f, i })).filter(({ f }) => f.name.toLowerCase().includes(q)).map(({ i }) => i);
+  };
+
+  const getMeta = (i: number): FileDiffMetadata | undefined => {
+    const files = data()?.files;
+    const entry = files?.[i];
+    if (!entry) return undefined;
+    let m = metaCache.get(i);
+    if (!m) {
+      try {
+        m = parsePatchFiles(entry.chunk)[0]?.files?.[0];
+        if (m) metaCache.set(i, m);
+      } catch {
+        return undefined;
+      }
+    }
+    return m;
   };
 
   const isTyping = (e: KeyboardEvent) => {
@@ -53,13 +72,6 @@ export default function App() {
     const pos = vis.indexOf(selected());
     const next = pos < 0 ? 0 : pos + delta;
     if (next >= 0 && next < vis.length) setSelected(vis[next]);
-    scrollSelectedIntoView();
-  };
-
-  const scrollSelectedIntoView = () => {
-    requestAnimationFrame(() => {
-      document.querySelector('.file-item-active')?.scrollIntoView({ block: 'nearest' });
-    });
   };
 
   const scrollDiff = (delta: number) => {
@@ -167,19 +179,8 @@ export default function App() {
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || 'Unknown error');
 
-      const parsed = parsePatchFiles(json.raw);
-      const files: DiffFile[] = [];
-      for (const patch of parsed) {
-        for (const f of patch.files) {
-          files.push({
-            meta: f,
-            additions: f.additionLines?.length ?? 0,
-            deletions: f.deletionLines?.length ?? 0,
-          });
-        }
-      }
-
-      setData({ source: json.source, files, raw: json.raw, prMeta: json.prMeta });
+      metaCache.clear();
+      setData({ source: json.source, files: splitPatch(json.raw), raw: json.raw, prMeta: json.prMeta });
       setSelected(0);
       setFileQuery('');
     } catch (e: any) {
@@ -244,111 +245,112 @@ export default function App() {
 
   const isPr = () => data()?.source?.kind === 'pr';
   const busy = () => actionBusy() !== null;
+  const currentFile = () => data()?.files[selected()];
 
   return (
     <div class="h-full flex flex-col bg-[var(--bg)] text-[var(--text)]">
-      <header class="shrink-0 px-4 py-3 border-b border-[var(--border)] flex flex-col gap-3 bg-[var(--surface)]">
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2">
-            <div class="i-mdi-source-branch w-5 h-5 text-[var(--focus)]" />
-            <h1 class="text-lg font-semibold tracking-tight">open-diff</h1>
-          </div>
-
-          <Show when={data()?.prMeta}>
-            <a
-              href={data()!.prMeta!.url}
-              target="_blank"
-              rel="noreferrer"
-              class="flex items-center gap-2 px-2.5 py-1 rounded-md bg-[var(--surface-2)] border border-[var(--border)] text-xs hover:border-[var(--focus)] transition-colors"
-            >
-              <img
-                src={data()!.prMeta!.author?.avatarUrl || `https://github.com/${data()!.prMeta!.author?.login || 'unknown'}.png`}
-                class="w-4 h-4 rounded-full"
-                alt="author"
-              />
-              <span class="font-medium truncate max-w-72">{data()!.prMeta!.title}</span>
-              <span class={`px-1.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${
-                data()!.prMeta!.state === 'OPEN'
-                  ? 'bg-green-500/15 text-green-400'
-                  : data()!.prMeta!.state === 'MERGED'
-                    ? 'bg-purple-500/15 text-purple-400'
-                    : 'bg-zinc-500/15 text-zinc-400'
-              }`}>{data()!.prMeta!.state}</span>
-              <span class="text-[var(--text-dim)]">#{data()!.prMeta!.number}</span>
-            </a>
-          </Show>
-
-          <div class="ml-auto flex items-center gap-2">
-            <Show when={data()}>
-              <div class="hidden sm:flex items-center gap-2 px-2 py-1 rounded-md bg-[var(--surface-2)] border border-[var(--border)] text-xs font-mono">
-                <span class="text-green-500">+{totals().add}</span>
-                <span class="text-red-500">-{totals().del}</span>
-                <span class="dim">{data()?.files.length} files</span>
-              </div>
-            </Show>
-            <Show when={isPr()}>
-              <div class="flex items-center gap-1">
-                <div class="relative">
-                  <button
-                    onClick={() => setMergeOpen(!mergeOpen())}
-                    disabled={busy()}
-                    class="btn text-xs flex items-center gap-1 !bg-green-700/30 !border-green-700/50 hover:!bg-green-700/40"
-                    title="gh pr merge"
-                  >
-                    <span class="i-mdi-source-merge w-3.5 h-3.5" />
-                    {actionBusy() === 'merge' ? 'Merging…' : 'Merge'}
-                    <span class="i-mdi-chevron-down w-3 h-3" />
-                  </button>
-                  <Show when={mergeOpen()}>
-                    <div class="absolute right-0 top-full mt-1 z-50 w-52 panel shadow-lg">
-                      <For each={MERGE_METHODS}>
-                        {(m) => (
-                          <button
-                            class="w-full text-left px-3 py-2 text-xs hover:bg-[var(--surface-2)] flex items-center gap-2"
-                            onClick={() => { setMergeOpen(false); runAction('merge', { method: m.value }); }}
-                          >
-                            <span class="i-mdi-check w-3.5 h-3.5 text-green-500" />
-                            {m.label}
-                          </button>
-                        )}
-                      </For>
-                    </div>
-                  </Show>
-                </div>
-                <button onClick={() => runAction('approve')} disabled={busy()} class="btn text-xs" title="gh pr review --approve">
-                  <span class="i-mdi-check-decagram w-3.5 h-3.5 text-green-500 inline-block align-[-2px]" /> {actionBusy() === 'approve' ? 'Approving…' : 'Approve'}
-                </button>
-                <button onClick={() => setCommentOpen(!commentOpen())} disabled={busy()} class="btn text-xs" title="gh pr comment">
-                  <span class="i-mdi-comment-outline w-3.5 h-3.5 inline-block align-[-2px]" /> Comment
-                </button>
-                <button onClick={() => runAction('checkout')} disabled={busy()} class="btn text-xs" title="git checkout">
-                  <span class="i-mdi-source-pull w-3.5 h-3.5 inline-block align-[-2px]" /> {actionBusy() === 'checkout' ? 'Checking out…' : 'Checkout'}
-                </button>
-                <button onClick={() => runAction('close')} disabled={busy()} class="btn text-xs !text-red-400 hover:!bg-red-900/20" title="gh pr close">
-                  Close
-                </button>
-              </div>
-            </Show>
-            <button onClick={toggleTheme} class="btn shrink-0" title="Toggle theme (t)">
-              <span class={theme() === 'dark' ? 'i-mdi-weather-sunny w-4 h-4' : 'i-mdi-weather-night w-4 h-4'} />
-            </button>
-          </div>
+      <header class="shrink-0 px-4 py-2 border-b border-[var(--border)] flex items-center gap-3 bg-[var(--surface)]/70">
+        <div class="flex items-center gap-2">
+          <div class="i-mdi-source-branch w-4 h-4 text-[var(--focus)]" />
+          <h1 class="text-sm font-semibold tracking-tight">open-diff</h1>
         </div>
 
-        <SourceForm source={getSource()} params={params()} setSource={setSource} setField={setField} onSubmit={load} />
+        <Show when={data()?.prMeta}>
+          <a
+            href={data()!.prMeta!.url}
+            target="_blank"
+            rel="noreferrer"
+            class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--surface-2)] border border-[var(--border)] text-xs hover:border-[var(--focus)] transition-colors"
+          >
+            <img
+              src={data()!.prMeta!.author?.avatarUrl || `https://github.com/${data()!.prMeta!.author?.login || 'unknown'}.png`}
+              class="w-4 h-4 rounded-full"
+              alt="author"
+            />
+            <span class="font-medium truncate max-w-64">{data()!.prMeta!.title}</span>
+            <span class={`px-1.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${
+              data()!.prMeta!.state === 'OPEN'
+                ? 'bg-green-500/15 text-green-400'
+                : data()!.prMeta!.state === 'MERGED'
+                  ? 'bg-purple-500/15 text-purple-400'
+                  : 'bg-zinc-500/15 text-zinc-400'
+            }`}>{data()!.prMeta!.state}</span>
+            <span class="text-[var(--text-dim)]">#{data()!.prMeta!.number}</span>
+          </a>
+        </Show>
+
+        <div class="ml-auto flex items-center gap-2">
+          <Show when={data()}>
+            <div class="hidden sm:flex items-center gap-2 px-2 py-1 rounded-full bg-[var(--surface-2)] border border-[var(--border)] text-xs font-mono">
+              <span class="text-green-500">+{totals().add}</span>
+              <span class="text-red-500">-{totals().del}</span>
+              <span class="dim">{data()?.files.length} files</span>
+            </div>
+          </Show>
+          <Show when={isPr()}>
+            <div class="flex items-center gap-1">
+              <div class="relative">
+                <button
+                  onClick={() => setMergeOpen(!mergeOpen())}
+                  disabled={busy()}
+                  class="btn text-xs flex items-center gap-1 !rounded-full !bg-green-700/30 !border-green-700/50 hover:!bg-green-700/40"
+                  title="gh pr merge"
+                >
+                  <span class="i-mdi-source-merge w-3.5 h-3.5" />
+                  {actionBusy() === 'merge' ? 'Merging…' : 'Merge'}
+                  <span class="i-mdi-chevron-down w-3 h-3" />
+                </button>
+                <Show when={mergeOpen()}>
+                  <div class="absolute right-0 top-full mt-1 z-50 w-52 panel shadow-lg">
+                    <For each={MERGE_METHODS}>
+                      {(m) => (
+                        <button
+                          class="w-full text-left px-3 py-2 text-xs hover:bg-[var(--surface-2)] flex items-center gap-2"
+                          onClick={() => { setMergeOpen(false); runAction('merge', { method: m.value }); }}
+                        >
+                          <span class="i-mdi-check w-3.5 h-3.5 text-green-500" />
+                          {m.label}
+                        </button>
+                      )}
+                    </For>
+                  </div>
+                </Show>
+              </div>
+              <button onClick={() => runAction('approve')} disabled={busy()} class="btn text-xs !rounded-full" title="gh pr review --approve">
+                <span class="i-mdi-check-decagram w-3.5 h-3.5 text-green-500 inline-block align-[-2px]" /> {actionBusy() === 'approve' ? 'Approving…' : 'Approve'}
+              </button>
+              <button onClick={() => setCommentOpen(!commentOpen())} disabled={busy()} class="btn text-xs !rounded-full" title="gh pr comment">
+                <span class="i-mdi-comment-outline w-3.5 h-3.5 inline-block align-[-2px]" /> Comment
+              </button>
+              <button onClick={() => runAction('checkout')} disabled={busy()} class="btn text-xs !rounded-full" title="git checkout">
+                <span class="i-mdi-source-pull w-3.5 h-3.5 inline-block align-[-2px]" /> {actionBusy() === 'checkout' ? 'Checking out…' : 'Checkout'}
+              </button>
+              <button onClick={() => runAction('close')} disabled={busy()} class="btn text-xs !rounded-full !text-red-400 hover:!bg-red-900/20" title="gh pr close">
+                Close
+              </button>
+            </div>
+          </Show>
+          <button onClick={toggleTheme} class="btn shrink-0 !rounded-full !px-2.5" title="Toggle theme (t)">
+            <span class={theme() === 'dark' ? 'i-mdi-weather-sunny w-4 h-4' : 'i-mdi-weather-night w-4 h-4'} />
+          </button>
+        </div>
       </header>
+
+      <div class="shrink-0 pt-2 pb-1">
+        <SourceForm source={getSource()} params={params()} setSource={setSource} setField={setField} onSubmit={load} />
+      </div>
 
       <Show when={commentOpen()}>
         <div class="shrink-0 px-4 py-2 border-b border-[var(--border)] bg-[var(--surface)] flex items-center gap-2">
           <input
-            class="input flex-1 !py-1.5 text-xs"
+            class="input flex-1 !py-1.5 !rounded-full text-xs"
             placeholder="Write a PR comment… (Enter to send, Esc to cancel)"
             value={commentText()}
             onInput={(e) => setCommentText(e.currentTarget.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') submitComment(); }}
             autofocus
           />
-          <button class="btn text-xs" onClick={submitComment} disabled={!commentText().trim()}>Send</button>
+          <button class="btn text-xs !rounded-full" onClick={submitComment} disabled={!commentText().trim()}>Send</button>
         </div>
       </Show>
 
@@ -373,53 +375,58 @@ export default function App() {
         fallback={
           <div class="flex-1 flex flex-col items-center justify-center gap-2 text-[var(--text-dim)]">
             <span class="i-mdi-file-compare w-10 h-10 opacity-40" />
-            <span class="text-sm">Select a source and click Load diff.</span>
+            <span class="text-sm">Select a source and click Load.</span>
           </div>
         }
       >
-        <main class="flex-1 flex overflow-hidden">
-          <FileSidebar
-            files={data()!.files}
-            indices={visibleIndices()}
-            selected={selected()}
-            onSelect={setSelected}
-            query={fileQuery()}
-            onQuery={setFileQuery}
-            filterRef={(el) => (filterEl = el)}
-          />
-          <div class="flex-1 flex flex-col overflow-hidden">
-            <div class="shrink-0 flex items-center gap-1 px-3 py-1.5 border-b border-[var(--border)] bg-[var(--surface)]/60 text-xs">
-              <span class="dim mr-1">View:</span>
-              <div class="flex items-center rounded-md border border-[var(--border)] overflow-hidden">
-                <button
-                  class={`px-2 py-1 text-[11px] ${diffStyle() === 'unified' ? 'bg-[var(--focus)]/15 text-[var(--text)]' : 'text-[var(--text-dim)] hover:text-[var(--text)]'}`}
-                  onClick={() => setDiffStyle('unified')}
-                >Unified</button>
-                <button
-                  class={`px-2 py-1 text-[11px] border-l border-[var(--border)] ${diffStyle() === 'split' ? 'bg-[var(--focus)]/15 text-[var(--text)]' : 'text-[var(--text-dim)] hover:text-[var(--text)]'}`}
-                  onClick={() => setDiffStyle('split')}
-                >Split</button>
-              </div>
-              <button
-                class={`px-2 py-1 text-[11px] rounded-md border ${wrap() ? 'border-[var(--focus)]/50 bg-[var(--focus)]/10 text-[var(--text)]' : 'border-[var(--border)] text-[var(--text-dim)] hover:text-[var(--text)]'}`}
-                onClick={() => setWrap(!wrap())}
-                title="Toggle line wrap"
-              >Wrap</button>
-              <span class="dim ml-auto hidden md:inline">
-                {selected() + 1} / {data()!.files.length}
-              </span>
-            </div>
-            <DiffView file={data()!.files[selected()]} theme={theme()} diffStyle={diffStyle()} wrap={wrap()} />
+        <FileStrip
+          files={data()!.files}
+          indices={visibleIndices()}
+          selected={selected()}
+          onSelect={setSelected}
+        />
+        <div class="shrink-0 flex items-center gap-2 px-3 py-1.5 border-b border-[var(--border)] bg-[var(--surface)]/40 text-xs">
+          <span class="dim mr-1">View:</span>
+          <div class="flex items-center rounded-full border border-[var(--border)] overflow-hidden">
+            <button
+              class={`px-2.5 py-1 text-[11px] ${diffStyle() === 'unified' ? 'bg-[var(--focus)]/15 text-[var(--text)]' : 'text-[var(--text-dim)] hover:text-[var(--text)]'}`}
+              onClick={() => setDiffStyle('unified')}
+            >Unified</button>
+            <button
+              class={`px-2.5 py-1 text-[11px] border-l border-[var(--border)] ${diffStyle() === 'split' ? 'bg-[var(--focus)]/15 text-[var(--text)]' : 'text-[var(--text-dim)] hover:text-[var(--text)]'}`}
+              onClick={() => setDiffStyle('split')}
+            >Split</button>
           </div>
+          <button
+            class={`px-2.5 py-1 text-[11px] rounded-full border ${wrap() ? 'border-[var(--focus)]/50 bg-[var(--focus)]/10 text-[var(--text)]' : 'border-[var(--border)] text-[var(--text-dim)] hover:text-[var(--text)]'}`}
+            onClick={() => setWrap(!wrap())}
+            title="Toggle line wrap"
+          >Wrap</button>
+          <div class="relative ml-auto w-52">
+            <span class="i-mdi-magnify absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-dim)] pointer-events-none" />
+            <input
+              ref={filterEl!}
+              class="input !py-1 !pl-7 !rounded-full !text-xs"
+              placeholder="Filter files…  (f)"
+              value={fileQuery()}
+              onInput={(e) => setFileQuery(e.currentTarget.value)}
+            />
+          </div>
+          <span class="dim font-mono text-[11px]">
+            {visibleIndices().indexOf(selected()) + 1} / {visibleIndices().length}
+          </span>
+        </div>
+        <main class="flex-1 flex overflow-hidden">
+          <DiffView file={currentFile()} meta={getMeta(selected())} theme={theme()} diffStyle={diffStyle()} wrap={wrap()} />
         </main>
       </Show>
 
       <footer class="shrink-0 flex items-center gap-4 px-4 py-1.5 border-t border-[var(--border)] bg-[var(--surface)] text-[11px] text-[var(--text-dim)]">
-        <span class="flex items-center gap-1"><kbd class="kbd">←</kbd><kbd class="kbd">→</kbd> files</span>
+        <span class="flex items-center gap-1"><kbd class="kbd">←</kbd><kbd class="kbd">→</kbd> changes</span>
         <span class="flex items-center gap-1"><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> scroll</span>
         <span class="flex items-center gap-1"><kbd class="kbd">f</kbd> filter</span>
         <span class="flex items-center gap-1"><kbd class="kbd">t</kbd> theme</span>
-        <span class="ml-auto truncate font-mono">{data()?.files[selected()]?.meta.name ?? ''}</span>
+        <span class="ml-auto truncate font-mono">{currentFile()?.name ?? ''}</span>
       </footer>
     </div>
   );

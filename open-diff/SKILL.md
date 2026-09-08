@@ -27,14 +27,16 @@ related:
 - แสดง diff ด้วย `@pierre/diffs` (diffs.com)
 - Syntax highlighting ด้วย Shiki
 - Dark / light mode
-- Sidebar file list พร้อมสถิติ add/delete
+- File slider strip ด้านบน (horizontal cards เลือกตรงกลาง + path tooltip แบบ githistory)
+- Source tabs เป็น floating pill (PR/Commit/Branch/File + params pill)
 - Auto-load เมื่อสั่งจาก CLI
 - Prompt ใน terminal เมื่อปิด tab
 - Action buttons (Merge ▾ merge/squash/rebase, Approve, Comment, Checkout, Close) ส่งคำสั่งไป terminal ให้ execute
-- File filter/search ใน sidebar (กด `f` เพื่อ focus)
+- File filter/search (กด `f` เพื่อ focus)
 - Unified/Split view toggle และ line wrap toggle
+- Lazy load: split raw diff เป็น chunk ต่อไฟล์ แล้ว parse เฉพาะไฟล์ที่เลือก
 - Status bar แสดง keyboard hints และไฟล์ปัจจุบัน
-- Keyboard: ←/→ หรือ [/] เปลี่ยนไฟล์, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, t theme, Esc ปิด menu/blur input
+- Keyboard: ←/→ หรือ [/] เปลี่ยน change, ↑/↓ หรือ j/k scroll diff, PageUp/PageDown, f filter, t theme, Esc ปิด menu/blur input
 
 ไม่รองรับ:
 - PR diff ที่ใหญ่เกิน GitHub API limit

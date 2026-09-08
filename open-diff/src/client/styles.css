@@ -100,3 +100,12 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-dim);
 }
+
+.file-strip::-webkit-scrollbar {
+  height: 4px;
+}
+
+.file-strip::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}

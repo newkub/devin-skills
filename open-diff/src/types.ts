@@ -1,5 +1,13 @@
 import type { FileDiffMetadata } from '@pierre/diffs';
 
+export interface FileEntry {
+  name: string;
+  type: string;
+  additions: number;
+  deletions: number;
+  chunk: string;
+}
+
 export interface DiffFile {
   meta: FileDiffMetadata;
   additions: number;
@@ -16,7 +24,7 @@ export interface PrMeta {
 
 export interface DiffResult {
   source: DiffSource;
-  files: DiffFile[];
+  files: FileEntry[];
   raw: string;
   prMeta?: PrMeta | null;
 }
