@@ -1,5 +1,5 @@
 ---
-name: follow-framework-solidstart
+name: follow-create-web-solidstart
 description: "สร้าง SolidStart app SSR ผ่าน nitro/vite — streaming HTML, assets, hydration"
 argument-hint: "[project-name]"
 related:
