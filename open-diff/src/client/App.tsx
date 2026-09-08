@@ -132,6 +132,11 @@ export default function App() {
     document.documentElement.classList.toggle('light', theme() === 'light');
   });
 
+  createEffect(() => {
+    const vis = visibleIndices();
+    if (vis.length && !vis.includes(selected())) setSelected(vis[0]);
+  });
+
   async function load() {
     setLoading(true);
     setError(null);
