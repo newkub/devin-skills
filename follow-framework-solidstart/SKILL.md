@@ -3,7 +3,7 @@ name: follow-framework-solidstart
 description: "สร้าง SolidStart app SSR ผ่าน nitro/vite — streaming HTML, assets, hydration"
 argument-hint: "[project-name]"
 related:
-  - follow-framework-solidjs
+  - follow-lib-solidjs
   - follow-create-nitro-plugin
   - follow-tool-vite
   - use-bun-native-api
@@ -27,7 +27,7 @@ related:
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack
 2. ยืนยันว่าใช้ SolidJS + SolidStart + Nitro + Vite
-3. ทำ `/follow-framework-solidjs` สำหรับ component patterns
+3. ทำ `/follow-lib-solidjs` สำหรับ component patterns
 
 ### 2. Setup Project
 
@@ -94,7 +94,7 @@ related:
 
 ### 3. SolidJS Patterns
 
-- ทำตาม `/follow-framework-solidjs` สำหรับ reactivity (`createSignal`, `createStore`, `createResource`)
+- ทำตาม `/follow-lib-solidjs` สำหรับ reactivity (`createSignal`, `createStore`, `createResource`)
 - ใช้ `FileRoutes` สำหรับ file-based routing ไม่สร้าง route config เอง
 - ใช้ `Suspense` ใน root layout เสมอ
 
@@ -109,7 +109,7 @@ related:
 - ไม่ commit secrets ลง repository — ใช้ environment variables
 - ถ้ามี destructive changes → dry run ก่อน
 
-- ใช้ /follow-framework-solidjs ถ้าจำเป็น
+- ใช้ /follow-lib-solidjs ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-create-nitro-plugin ถ้าจำเป็น

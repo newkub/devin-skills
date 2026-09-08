@@ -4,8 +4,8 @@ description: สร้าง Vite + Solid + TanStack project ชั่วคร�
 argument-hint: "[project-or-items]"
 related:
   - taxonomy
-  - follow-solid-tanstack
-  - follow-framework-solidjs
+  - follow-create-web-solid-tanstack-router
+  - follow-lib-solidjs
   - follow-lib-unocss
   - follow-tool-vite
   - resolve-errors
@@ -20,7 +20,7 @@ related:
 ## Scope
 
 - ทำ `/taxonomy` ก่อนเพื่อได้หมวดหมู่และ items
-- ใช้ Vite + SolidJS + TanStack Router ตาม `/follow-solid-tanstack`
+- ใช้ Vite + SolidJS + TanStack Router ตาม `/follow-create-web-solid-tanstack-router`
 - UX/UI เป็น 2 columns: ซ้าย `1/4` (taxonomy nav) ขวา `3/4` (scrollable content)
 - ข้างขวา scroll แล้ว active item ข้างซ้ายเปลี่ยนตาม (scrollspy)
 - Skill สร้าง `package.json`, `index.html`, `vite.config.ts`, `uno.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/styles.css` ทั้งหมด
@@ -48,7 +48,7 @@ related:
 
 ### 3. Generate Vite Project
 
-> Goal: สร้าง project ตาม `/follow-solid-tanstack`
+> Goal: สร้าง project ตาม `/follow-create-web-solid-tanstack-router`
 
 1. สร้าง `package.json` ด้วย dependencies:
    - `solid-js`, `vite`, `vite-plugin-solid`, `@tanstack/solid-router`
@@ -112,7 +112,7 @@ related:
 
 - Skill สร้าง `package.json`, `index.html`, `vite.config.ts`, `uno.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/styles.css` ทั้งหมด
 - ไม่ต้องให้ user จัดเตรียม `package.json` หรือ `index.html`
-- สร้าง project ตาม `/follow-solid-tanstack` โดยตรง
+- สร้าง project ตาม `/follow-create-web-solid-tanstack-router` โดยตรง
 
 ### 2. Temp Only
 
@@ -122,14 +122,14 @@ related:
 
 ### 3. Follow Solid TanStack Stack
 
-- ทำตาม `/follow-solid-tanstack` สำหรับ `Vite`, `SolidJS`, `TanStack Router`, `Elysia/oRPC` ถ้าใช้
+- ทำตาม `/follow-create-web-solid-tanstack-router` สำหรับ `Vite`, `SolidJS`, `TanStack Router`, `Elysia/oRPC` ถ้าใช้
 - ทำตาม `/follow-lib-unocss` สำหรับ styling
-- ทำตาม `/follow-framework-solidjs` สำหรับ component patterns
+- ทำตาม `/follow-lib-solidjs` สำหรับ component patterns
 
 ### 4. No Report-HTML Dependency
 
 - ไม่อ้างอิง `/report-in-html` หรือใช้ no-build HTML report pattern
-- ใช้ Vite build และ Solid TSX ตาม `/follow-solid-tanstack`
+- ใช้ Vite build และ Solid TSX ตาม `/follow-create-web-solid-tanstack-router`
 
 ### 5. Taxonomy First
 

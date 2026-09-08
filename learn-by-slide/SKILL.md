@@ -7,7 +7,7 @@ related:
   - create-slide-in-newkub-slides
   - translate-to-lang-th
   - open-web
-  - follow-framework-slidev
+  - follow-create-slide-slidev
 ---
 
 ## Goal
@@ -95,7 +95,7 @@ related:
 
 ### 3. Slide Quality
 
-- ทำ `/follow-framework-slidev` สำหรับ Slidev best practices
+- ทำ `/follow-create-slide-slidev` สำหรับ Slidev best practices
 - ใช้ `v-click` สำหรับ step-by-step reveals
 - ใช้ transition สำหรับ slide transitions
 - ไม่เกิน 5 bullet points ต่อ slide

@@ -3,7 +3,7 @@ name: follow-lib-shadcn-solid
 description: shadcn/ui port สำหรับ SolidJS - accessible, customizable copy-paste components
 argument-hint: "[scope]"
 related:
-  - follow-solid-tanstack
+  - follow-create-web-solid-tanstack-router
   - follow-lib-animejs
   - follow-lib-unocss
   - follow-best-practice
@@ -102,8 +102,8 @@ related:
 - หลีกเลี่ยงการแก้ไข core Kobalte primitives โดยตรง
 - ใช้ `diff` ตรวจสอบ upstream updates
 
-- ใช้ `/follow-solid-tanstack` ถ้าจำเป็น
-- ใช้ `/follow-solid-tanstack` ถ้าจำเป็น
+- ใช้ `/follow-create-web-solid-tanstack-router` ถ้าจำเป็น
+- ใช้ `/follow-create-web-solid-tanstack-router` ถ้าจำเป็น
 - ใช้ `/follow-lib-animejs` ถ้าจำเป็น
 - ใช้ `/follow-lib-unocss` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

@@ -11,7 +11,7 @@ related:
   - follow-lib-elysia
   - follow-lib-effect-ts
   - follow-single-responsibility
-  - follow-framework-solidjs
+  - follow-lib-solidjs
 ---
 
 
@@ -179,7 +179,7 @@ related:
 - ใช้ SolidJS 1.x สำหรับ Bun deployment
 - ตั้งค่า `vite-plugin-solid` ด้วย `ssr: true`
 - ใช้ `HydrationScript` สำหรับ hydration
-- ทำตาม `/follow-framework-solidjs`
+- ทำตาม `/follow-lib-solidjs`
 
 ### 4. Elysia Server
 

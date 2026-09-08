@@ -4,7 +4,7 @@ description: ติดตั้งและใช้งาน InstantDB เป�
 argument-hint: "[scope]"
 related:
   - follow-lib-react
-  - follow-framework-nextjs
+  - follow-create-web-nextjs
   - follow-lang-python
   - resolve-errors
   - update-references
@@ -25,7 +25,7 @@ related:
 - ใช้งาน `instant-cli` สำหรับ push/pull schema และ manage apps
 
 ไม่รวม:
-- สร้าง UI component ตาม framework (ให้ใช้ `follow-lib-react`, `follow-framework-nextjs`, ฯลฯ)
+- สร้าง UI component ตาม framework (ให้ใช้ `follow-lib-react`, `follow-create-web-nextjs`, ฯลฯ)
 - Self-hosting (ให้ดู official docs)
 
 ## Execute

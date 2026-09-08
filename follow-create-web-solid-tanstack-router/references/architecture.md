@@ -50,7 +50,7 @@
 
 > Goal: จัดระเบียบ feature-based modules ใน `src/modules/`
 
-1. ทำ `/follow-framework-solidjs` เพื่อใช้ component patterns และ reactivity
+1. ทำ `/follow-lib-solidjs` เพื่อใช้ component patterns และ reactivity
 2. ทำ `/follow-lib-tanstack-ecosystem` สำหรับ data fetching patterns ใน modules
 3. ทำ `/follow-lib-tanstack-ecosystem` สำหรับ state management ใน modules
 4. สร้าง `src/modules/<feature>/` สำหรับแต่ละ domain feature

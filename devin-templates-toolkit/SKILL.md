@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - devin-scripts-toolkit
   - follow-create-web
-  - follow-create-tui
+  - follow-create-tui-ratatui
   - create-cloudflare-worker
   - setup-cicd
   - setup-package
@@ -20,7 +20,7 @@ related:
 ## Scope
 
 - Web templates (landing, saas, paas) สำหรับ `/follow-create-web`
-- TUI templates (`/follow-create-tui`) แบบ Ratatui
+- TUI templates (`/follow-create-tui-ratatui`) แบบ Ratatui
 - CI/CD templates (GitHub Actions) สำหรับ `/setup-cicd`
 - Package setup templates สำหรับ `/setup-package`
 - Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)

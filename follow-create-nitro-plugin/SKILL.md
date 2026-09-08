@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - follow-create-web
-  - follow-framework-nextjs
+  - follow-create-web-nextjs
   - follow-lang-typescript
   - run-test-unit
   - follow-my-tech-stack
@@ -108,7 +108,7 @@ related:
 
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-framework-nextjs ถ้าจำเป็น
+- ใช้ /follow-create-web-nextjs ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

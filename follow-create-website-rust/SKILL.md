@@ -11,7 +11,7 @@ allowed-tools:
   - ask_user_question
 related:
   - follow-create-rust-crate
-  - follow-framework-solidjs
+  - follow-lib-solidjs
   - follow-tool-vite
   - follow-tool-cargo
   - review-dependencies
@@ -141,7 +141,7 @@ related:
 1. สร้าง `src/components/` สำหรับ input form, result display, error boundary
 2. ใช้ `createStore` ถ้ามี state ซับซ้อน
 3. ใช้ `<ErrorBoundary>` รองรับ WASM init errors
-4. ทำ `/follow-framework-solidjs` เพื่อตรวจ patterns ของ Solid
+4. ทำ `/follow-lib-solidjs` เพื่อตรวจ patterns ของ Solid
 
 ### 8. Test And Build
 

@@ -3,7 +3,7 @@ name: update-to-projects-wrikka-com
 description: อัปเดตและ maintain project projects-wrikka-com ที D:\newkub\projects-wrikka-com
 argument-hint: "[sync|ui|deploy|deps|all]"
 related:
-  - follow-solid-tanstack
+  - follow-create-web-solid-tanstack-router
   - deploy-to-cloudflare
   - follow-create-devin-project-skills
   - create-cloudflare-token
@@ -78,7 +78,7 @@ related:
 5. ถ้า deploy ไม่ผ่านให้หยุดและ report ก่อน retry
 6. ห้ามลบ `wrangler.jsonc`, `vite.config.ts`, `src/router.tsx`, `src/routes/__root.tsx`, `src/start.ts` โดยไม่สร้างใหม่
 
-- ใช้ /follow-solid-tanstack ถ้าจำเป็น
+- ใช้ /follow-create-web-solid-tanstack-router ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-create-devin-project-skills ถ้าจำเป็น
 - ใช้ /create-cloudflare-token ถ้าจำเป็น

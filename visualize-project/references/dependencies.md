@@ -6,7 +6,7 @@
 - `vite` >= 5.0.0 — dev server และ bundler
 - `vite-plugin-solid` — คอมไพล์ Solid TSX
 - `solid-js` >= 1.9.0 — UI library
-- `@tanstack/solid-router` — type-safe routing ตาม `/follow-solid-tanstack`
+- `@tanstack/solid-router` — type-safe routing ตาม `/follow-create-web-solid-tanstack-router`
 - `unocss` — atomic CSS ตาม `/follow-lib-unocss`
 - `@iconify-json/mdi` — iconify Material Design icons สำหรับ `presetIcons`
 

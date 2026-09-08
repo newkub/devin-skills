@@ -3,7 +3,7 @@ name: follow-nextjs-architecture
 description: จัดโครงสร้าง Next.js App Router projects ด้วย modules, monorepo และ server/client patterns
 argument-hint: "[scope]"
 related:
-  - follow-framework-nextjs
+  - follow-create-web-nextjs
   - follow-tool-vite
   - follow-tool-vitest
   - follow-lib-react
@@ -38,7 +38,7 @@ related:
 
 > Goal: ตั้งค่า Next.js และ build tools
 
-1. ทำ `/follow-framework-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
+1. ทำ `/follow-create-web-nextjs` เพื่อติดตั้ง dependencies และตั้งค่า Next.js
 2. ทำ `/follow-tool-vite` เพื่อตั้งค่า build tooling
 3. ตั้งค่า `next.config.js` หรือ `next.config.mjs`
 4. ตั้งค่า `tsconfig.json` พร้อม path aliases

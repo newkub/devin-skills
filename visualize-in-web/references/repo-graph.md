@@ -12,7 +12,7 @@ triggers:
   - model
 related:
   - visualize-project
-  - follow-framework-solidjs
+  - follow-lib-solidjs
   - follow-create-rust-crate
   - follow-tool-vite
   - alternative
@@ -121,7 +121,7 @@ related:
 - ใช้ commands ตาม ecosystem เช่น `cargo run` สำหรับ Rust, `bun install` สำหรับ JS/TS
 
 - ใช้ /visualize-project ถ้าจำเป็น
-- ใช้ /follow-framework-solidjs ถ้าจำเป็น
+- ใช้ /follow-lib-solidjs ถ้าจำเป็น
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /review-frontend ถ้าจำเป็น
 

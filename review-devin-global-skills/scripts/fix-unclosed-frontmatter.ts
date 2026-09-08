@@ -5,9 +5,9 @@ const ROOT = process.env.APPDATA + "\\devin\\skills";
 const dirs = [
   "new-skills",
   "follow-deep",
-  "follow-framework-svelte",
+  "follow-create-web-svelte",
   "follow-service-vercel",
-  "follow-solid-tanstack",
+  "follow-create-web-solid-tanstack-router",
   "follow-tool-playwright",
   "follow-tool-renovate",
   "list-devin-global-skills",
