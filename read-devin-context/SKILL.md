@@ -3,7 +3,7 @@ name: read-devin-context
 description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
 argument-hint: "[scope]"
 related:
-  - assume-reset-context
+  - reset-context
   - follow-context-engineering
   - update-devin-global-skills
   - ask-me
@@ -104,7 +104,7 @@ related:
 - ระบุ context ที่หาไม่เจอหรือขาดหาย
 - ไม่แก้ไข context ใน step นี้
 
-- ใช้ /assume-reset-context ถ้าจำเป็น
+- ใช้ /reset-context ถ้าจำเป็น
 - ใช้ /follow-context-engineering ถ้าจำเป็น
 - ใช้ /update-devin-global-skills ถ้าจำเป็น
 

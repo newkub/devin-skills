@@ -3,7 +3,7 @@ name: rewrite
 description: rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้งหมดโดยไม่อ้างอิง context ก่อนหน้า
 argument-hint: "[scope]"
 related:
-  - assume-reset-context
+  - reset-context
   - deep-validate
   - scan-codebase
   - check-skills-related
@@ -26,9 +26,9 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 > Goal: Reset Context
 
-เริ่มต้นด้วย `/assume-reset-context` เพื่อล้าง context ก่อนหน้า
+เริ่มต้นด้วย `/reset-context` เพื่อล้าง context ก่อนหน้า
 
-1. เรียก `/assume-reset-context` ก่อนแก้ไขทุกครั้ง
+1. เรียก `/reset-context` ก่อนแก้ไขทุกครั้ง
 2. ไม่อ้างอิงข้อสรุป การวิเคราะห์ หรือ decisions จากการสนทนาก่อนหน้า
 3. ถือว่าไฟล์เป้าหมายเป็นไฟล์ใหม่ที่ต้องเขียนใหม่ทั้งหมด
 
@@ -90,7 +90,7 @@ rewrite ไฟล์หรือหลายไฟล์ใหม่ทั้ง
 
 ### 1. Always Reset Context
 
-- ต้องเรียก `/assume-reset-context` ก่อน rewrite ทุกครั้ง
+- ต้องเรียก `/reset-context` ก่อน rewrite ทุกครั้ง
 - ห้ามอ้างอิง conclusions หรือ analysis จากการสนทนาก่อนหน้า
 - ห้ามสมมติว่า code เดิมถูกต้อง
 
