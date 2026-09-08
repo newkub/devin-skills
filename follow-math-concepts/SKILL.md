@@ -6,6 +6,14 @@ related:
   - follow-context-engineering
   - deep-research
   - follow-best-practice
+  - follow-algorithms
+  - report-math-equation
+  - explain
+  - learn-references
+  - follow-lib-fast-check
+  - review-performance
+  - learn-by-slide
+  - ask-me
 ---
 
 ## Goal
