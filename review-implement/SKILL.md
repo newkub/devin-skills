@@ -80,7 +80,7 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 1. Review Independence
    - ทำ review เท่านั้น ไม่แก้ไข code หรือ plan ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (implement)
 2. Evidence-Based Findings
    - ใช้ `Grep` และ `scan-codebase` สำหรับ inventory
    - ทุก finding ระบุ file path, line number, context
@@ -96,13 +96,13 @@ Review implementation readiness ก่อนเริ่ม execute `implement-*
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (implement)
 
 Merged from: improve-features
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (implement)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (implement)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (implement)
 
 - `references/fix-improve-features.md` — ปรับปรุง feature ที่มีอยู่ให้สมบูรณ์ — edge cases, states, flow, polish จนพร้อม production
 ## Expected Outcome

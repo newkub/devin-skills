@@ -15,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้ `analyze-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `analyze-root-cause-analysis` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (root cause analysis)
 
 ## Execute
 

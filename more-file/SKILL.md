@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้ `more-file` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `more-file` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (file)
 
 ## Execute
 
@@ -22,7 +22,7 @@ related:
 
 ## Rules
 
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (file)
 - Use the allowed tools only when needed
 
 - ใช้ /follow-best-practice ถ้าจำเป็น

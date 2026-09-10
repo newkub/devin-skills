@@ -60,7 +60,7 @@ related:
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `devin` command ที่ใช้
+- รายงานผลเป็นรายการ path พร้อม `devin` command ที่ใช้ (in devin)
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /create-report-in-dot-devin ถ้าจำเป็น

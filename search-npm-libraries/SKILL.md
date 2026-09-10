@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้ `search-npm-libraries` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `search-npm-libraries` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (npm libraries)
 
 ## Execute
 
@@ -29,7 +29,7 @@ related:
 
 ## Rules
 
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (npm libraries)
 - Use the allowed tools only when needed
 
 - ใช้ /list-my-npm-packages ถ้าจำเป็น

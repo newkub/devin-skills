@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้ `follow-lang-swift` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `follow-lang-swift` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (lang swift)
 
 ## Execute
 

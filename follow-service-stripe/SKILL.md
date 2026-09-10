@@ -151,7 +151,7 @@ related:
 - แสดง error ทีชัดเจนถ้า payment fail
 - ให้ user สามารถ manage billing เองได้
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (service stripe)
 - ใช้ /follow-create-product ถ้าจำเป็น
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-lib-zod ถ้าจำเป็น

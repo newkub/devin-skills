@@ -93,7 +93,7 @@ related:
 - Windows/macOS jobs มักรันไม่ได้ใน container — skip และรันบน remote
 - ถ้า act ทำไม่ได้ → fallback ไป `/watch-github-actions`
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool act)
 - ใช้ /watch-github-actions ถ้าจำเป็น
 - ใช้ /resolve-cicd ถ้าจำเป็น
 

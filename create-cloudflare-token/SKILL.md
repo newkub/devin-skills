@@ -149,7 +149,7 @@ curl -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (cloudflare token)
 
 ## Expected Outcome
 

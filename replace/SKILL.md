@@ -54,7 +54,7 @@ related:
 
 - ใช้ `/use-astgrep-programmatic` เมื่อ replace ใน source code เพื่อหลีกเลี่ยง false positives
 - ใช้ `/use-astgrep-programmatic` เมื่อต้อง batch replace หลายไฟล์หรือ integrate กับ scripts
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (replace)
 - Use the allowed tools only when needed
 
 ## Expected Outcome

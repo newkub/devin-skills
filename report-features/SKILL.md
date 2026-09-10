@@ -70,12 +70,12 @@ related:
 
 ### Report UX/UI
 
-> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action
+> Goal: report อ่านง่าย สรุป key findings ไว้ด้านบน และนำไปสู่ action (features)
 
-1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด
-2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns
+1. สรุป key findings ไว้ด้านบนก่อนรายละเอียด (features)
+2. ใช้ `/report` สำหรับตารางเปรียบเทียบหลาย columns (features)
 3. ใช้ `/report` สำหรับรายงานสถานะ/progress/logs
-4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ
+4. ใช้คอลัมน์ "No." เป็นคอลัมน์แรก เรียงลำดับ 1, 2, 3, ... โดย headers ชัดเจน จัดกลุ่ม/เรียงลำดับตามความสำคัญ (features)
 5. ใช้ symbols ✅ ❌ ⚠️ สำหรับ status indicators
 6. ทำ `/suggest-next-action` ท้าย report เสมอ
 

@@ -22,7 +22,7 @@ related:
 
 ## Execute
 
-> Pre-Run: ทำ `/review-uxui` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/review-uxui` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test website by agent browser)
 
 ### 1. Detect Environment
 

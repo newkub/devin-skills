@@ -70,7 +70,7 @@ related:
 
 - ใช้ environment-based config
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (service workos)
 - ใช้ /follow-create-product ถ้าจำเป็น
 - ใช้ /follow-lib-better-auth ถ้าจำเป็น
 

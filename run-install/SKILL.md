@@ -14,11 +14,11 @@ related:
 
 ## Scope
 
-ใช้ `run-install` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `run-install` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (install)
 
 ## Execute
 
-> Pre-Run: ทำ `/review-dependencies` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/review-dependencies` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (install)
 
 ### 1. Update Dependencies
 

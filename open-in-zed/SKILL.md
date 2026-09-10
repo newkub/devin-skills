@@ -70,7 +70,7 @@ related:
 
 ### 4. Output
 
-- รายงานผลเป็นรายการ path พร้อม command ที่ใช้
+- รายงานผลเป็นรายการ path พร้อม command ที่ใช้ (in zed)
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /follow-create-zed-extensions ถ้าจำเป็น

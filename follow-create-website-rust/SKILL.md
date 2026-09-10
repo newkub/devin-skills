@@ -38,8 +38,8 @@ related:
 > Goal: ตรวจสอบ tech stack และยืนยันว่า Rust และ wasm-pack พร้อมใช้
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create website rust)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create website rust)
 4. รัน `rustc --version` และ `cargo --version`
 5. รัน `wasm-pack --version` ถ้าไม่มี → ติดตั้งด้วย `cargo install wasm-pack`
 6. รัน `bun --version` หรือ `node --version` สำหรับ frontend tooling
@@ -202,7 +202,7 @@ related:
 - ใช้ /follow-tool-vite ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
 - ใช้ /review-dependencies ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create website rust)
 - ใช้ /deploy-to-vercel ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 

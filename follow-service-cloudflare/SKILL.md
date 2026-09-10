@@ -197,7 +197,7 @@ export default defineNuxtConfig({
 
 หมายเหตุ: ถ้า Wrangler version ในเครื่องไม่รองรับ subcommand `build` ให้ใช้ `wrangler deploy --dry-run` หรือ `wrangler deploy` ก่อน deploy จริง
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (service cloudflare)
 - ใช้ /create-cloudflare-token ถ้าจำเป็น
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /resolve-cicd ถ้าจำเป็น

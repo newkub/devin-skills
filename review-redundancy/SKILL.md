@@ -71,7 +71,7 @@ related:
 
 > Goal: รายงาน Score And Report
 
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-in-table` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-in-table` และ `/suggest-next-action` (redundancy)
 
 ## Rules
 
@@ -81,17 +81,17 @@ related:
 - Unused skill: ไม่ถูกอ้างถึงใน `related` ของ skill อื่นและไม่อยู่ใน `AGENTS.md`
 - ไม่ลบ ไม่ merge โดยไม่มี user confirmation
 - ทำ `/update-references` หลังทุกการเปลี่ยนแปลง
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (redundancy)
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review` (redundancy)
 
 Merged from: improve-redundancy
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (redundancy)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (redundancy)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (redundancy)
 
 - `references/fix-improve-redundancy.md` — ลด redundancy และ duplication ใน code, content และ config โดยรักษา canonical version เดียว
 

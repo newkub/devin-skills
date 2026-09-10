@@ -131,7 +131,7 @@ desktop-apps/{project}/
 - ใช้ /follow-create-web-solid-tanstack-router สำหรับ frontend (Solid + TanStack Router + UnoCSS)
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create desktop tauri)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น

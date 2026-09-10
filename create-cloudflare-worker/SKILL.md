@@ -216,7 +216,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 
 - ใช้ /deploy-to-cloudflare ถ้าจำเป็น
 - ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (cloudflare worker)
 
 ## Expected Outcome
 

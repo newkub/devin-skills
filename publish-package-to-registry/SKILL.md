@@ -136,7 +136,7 @@ Auto-detect registry จาก project manifest แล้ว publish package ไ
 - ใช้ /ship ถ้าจำเป็น
 - ใช้ /watch-release ถ้าจำเป็น
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (package to registry)
 - ใช้ /follow-tool-changelogen ถ้าจำเป็น
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น

@@ -91,7 +91,7 @@ Review drift ระหว่าง current state และ target state เพ�
 
 ### 2. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ evidence
+- ทุก finding ต้องมี file path และ evidence (update)
 - ใช้ tools สำหรับ verification ไม่เดา
 - ระบุ false positives ที่พบ
 

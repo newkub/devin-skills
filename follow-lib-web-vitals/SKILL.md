@@ -13,7 +13,7 @@ related:
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices
+ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib web vitals)
 
 ## Execute
 
@@ -32,7 +32,7 @@ related:
 
 1. ทำ `/run-verify` สำหรับ lint, typecheck
 2. ทำ `/run-test-unit` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ
+3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (lib web vitals)
 
 ## Rules
 
@@ -42,6 +42,6 @@ related:
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices
-- ไม่มี security/performance pitfalls ที่รู้จัก
+- ใช้งาน library ถูกต้องตาม best practices (lib web vitals)
+- ไม่มี security/performance pitfalls ที่รู้จัก (lib web vitals)
 - Lint, typecheck, tests ผ่าน

@@ -98,7 +98,7 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ### 1. Scope Boundary
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (security)
 - ไม่ซ้ำกับ `/review-compliance` สำหรับ compliance
 - ไม่ซ้ำกับ `/review-delivery` Section 15 สำหรับ security เชิงลึก
 
@@ -119,21 +119,21 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 ### 4. Evidence
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (security)
 - ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `grep`, dependency audit)
 - ระบุ endpoint, function, secret, algorithm, หรือ vulnerability type ที่เกี่ยวข้อง
 
 ### 5. Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (security)
 - ไม่ซ้ำกับ `/review-compliance`
 - ไม่ซ้ำกับ `/review-delivery` Section 15
 
 ### 6. Health Score
 
 - คำนวณ review score เป็น percentage (0-100) ตาม `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (security)
+- แสดง score ต่อ dimension และ overall score (security)
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
 ### 7. Formatting
@@ -147,18 +147,18 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 - ใช้ /analyze-attack-surface ถ้าจำเป็น
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (security)
 
 Merged from: improve-security
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (security)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (security)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (security)
 
 - `references/fix-improve-security.md` — แก้ไข security findings จาก review-security ตาม severity และมาตรฐาน OWASP
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก security section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (security)
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้ `follow-incident-triage` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `follow-incident-triage` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (incident triage)
 
 ## Execute
 

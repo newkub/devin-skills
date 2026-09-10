@@ -27,8 +27,8 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create nitro plugin)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create nitro plugin)
 
 ### 2. Choose Plugin Type
 

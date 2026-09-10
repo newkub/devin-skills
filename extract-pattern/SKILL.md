@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้ `extract-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `extract-pattern` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (pattern)
 
 ## Execute
 

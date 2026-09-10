@@ -102,7 +102,7 @@ related:
 
 ### 4. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (astgrep programmatic)
 - รายงานเป็นตารางด้วย `/report`
 
 ## Expected Outcome

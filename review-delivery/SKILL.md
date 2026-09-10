@@ -83,11 +83,11 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 ## Rules
 
 - ข้าม dimension ใด ถ้า project ไม่มี — ดู criteria ในแต่ละ reference
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (delivery)
 - ใช้ tools สำหรับ verification ไม่เดา
 - ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
 - คำนวณ score เป็น percentage (0-100) ตาม `references/scoring.md` แล้วเปรียบเทียบ before/after
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (delivery)
 - ใช้ `/report` สำหรับรายงาน findings, score, actions
 
 - ใช้ /review-security ถ้าจำเป็น
@@ -95,13 +95,13 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (delivery)
 
 Merged from: optimize-ci, optimize-docker
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (delivery)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (delivery)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (delivery)
 
 - `references/fix-optimize-ci.md` — ลดเวลาและต้นทุน CI pipeline ด้วย cache, matrix tuning, path filters และ job splitting
 - `references/fix-optimize-docker.md` — ลดขนาดและเวลา build ของ Docker image ด้วย multi-stage, layer cache และ base image tuning
@@ -117,7 +117,7 @@ Merged from: optimize-ci, optimize-docker
 ## Expected Outcome
 
 - ตาราง aggregate findings จากทุก delivery section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (delivery)
 - Review score ต่อ dimension และ overall score
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 

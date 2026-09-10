@@ -78,25 +78,25 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 
 ### 2. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (platform)
 - ไม่เดา ใช้ tools สำหรับ verification
 - ระบุ locale, URL, meta tag, หรือ function ที่เกี่ยวข้อง
 
 ### 3. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (platform)
 - ไม่ลบไฟล์หรือส่วนประกอบใดๆ ในระหว่าง review
 
 ### 4. Health Score
 
 - คำนวณ review score เป็น percentage (0-100) ตาม `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (platform)
+- แสดง score ต่อ dimension และ overall score (platform)
 - ใช้ score เปรียบเทียบ before/after
 
 ### 5. Formatting
 
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (platform)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 
@@ -105,6 +105,6 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก platform section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (platform)
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

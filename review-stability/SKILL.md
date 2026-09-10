@@ -118,13 +118,13 @@ Review ความเสถียรของ application ครอบคลุ
 
 ### 4. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (stability)
 - ระบุ function, error handler, หรือ error path ที่เกี่ยวข้อง
 - ให้ actionable recommendations ทุกรายการ
 
 ### 5. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (stability)
 - ใช้ backticks สำหรับ `files`, `functions`, `commands`
 - รายงานเป็นตารางด้วย `/report`
 
@@ -135,13 +135,13 @@ Review ความเสถียรของ application ครอบคลุ
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (stability)
 
 Merged from: improve-error-handling, improve-error-messages, improve-stability
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (stability)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (stability)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (stability)
 
 - `references/fix-improve-error-handling.md` — ปรับปรุง error handling ให้ลึก — taxonomy, boundaries, propagation, retry และ user-facing errors
 - `references/fix-improve-error-messages.md` — ปรับคุณภาพ error messages ที่ user เห็นให้บอกสาเหตุและวิธีแก้ชัดเจน

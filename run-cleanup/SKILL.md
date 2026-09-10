@@ -18,17 +18,17 @@ related:
 
 ## Scope
 
-ใช้ `run-cleanup` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `run-cleanup` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (cleanup)
 
 ## Execute
 
-> Pre-Run: ทำ `/check-file-locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/check-file-locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (cleanup)
 
 run task มีปัญหา ต้อง cleanup file ต่างๆ เช่น node_modules, dist, .nuxt, target และอื่นๆ ที่อยู่ใน .gitignore ตามตามเหมาะสมและให้เข้ากับภาษา
 
 ## Rules
 
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (cleanup)
 - Use the allowed tools only when needed
 
 - ใช้ /cleanup-files-in-computer ถ้าจำเป็น

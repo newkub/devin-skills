@@ -105,7 +105,7 @@ related:
 - ใช้ `argument-hint` ตามที่ skill ระบุ
 
 - ใช้ /update-project-skills ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น (devin global skills)
 - ใช้ /deep-validate ถ้าจำเป็น
 
 ## Expected Outcome

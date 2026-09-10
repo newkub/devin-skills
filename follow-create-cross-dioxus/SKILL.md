@@ -92,7 +92,7 @@ related:
 - Mobile: ใช้ Dioxus mobile target ตาม official docs
 
 - ใช้ /follow-create-web-astro ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create cross dioxus)
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น
 - ใช้ /follow-my-tech-stack ถ้าจำเป็น

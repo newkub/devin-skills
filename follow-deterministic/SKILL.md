@@ -12,7 +12,7 @@ related:
 
 ## Scope
 
-ใช้ `follow-deterministic` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `follow-deterministic` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (deterministic)
 
 ## Execute
 

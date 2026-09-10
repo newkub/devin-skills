@@ -80,7 +80,7 @@ Review `README.md` ทั้ง root และ workspace ก่อนเรี�
 
 - ทำ review เท่านั้น ไม่แก้ไข `README.md`
 - ถ้าต้องแก้ไข ให้เรียก `update-readme-md`
-- ทุก finding ต้องมี file path และ evidence
+- ทุก finding ต้องมี file path และ evidence (readme md)
 
 ### 2. Severity Ratings
 

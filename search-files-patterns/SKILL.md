@@ -103,7 +103,7 @@ related:
 
 ### 5. Formatting
 
-- ห้ามใช้ `` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `` (bold markers) — ใช้ backticks สำหรับ emphasis (files patterns)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 

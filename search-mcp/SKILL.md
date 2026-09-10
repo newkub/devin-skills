@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้ `search-mcp` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `search-mcp` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (mcp)
 
 ## Execute
 

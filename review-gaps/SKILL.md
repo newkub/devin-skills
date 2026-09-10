@@ -93,7 +93,7 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (gaps)
 
 ## Expected Outcome
 

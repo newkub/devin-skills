@@ -126,7 +126,7 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ### 4. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (uxui)
 - ไม่ลบไฟล์, โค้ด, styles, หรือ configuration ระหว่าง review
 - ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
@@ -141,14 +141,14 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 ### 6. Health Score
 
 - คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (uxui)
+- แสดง score ต่อ dimension และ overall score (uxui)
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
 ### 7. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (uxui)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report-in-table`
 
@@ -159,13 +159,13 @@ UX/UI design review สำหรับ project ที่มี UI — ตรว�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/follow-review` (uxui)
 
 Merged from: improve-uxui
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (uxui)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (uxui)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (uxui)
 
 - `references/fix-improve-uxui.md` — เปิด browser แล้ว capture หน้าเว็บ เพื่อ review และปรับปรุง UX/UI ด้วย stakeholder feedback
 

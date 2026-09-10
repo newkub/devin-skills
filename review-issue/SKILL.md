@@ -70,7 +70,7 @@ related:
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (issue)
 
 - ถ้า fail → ปรับ issue ให้ชัดเจนก่อน implement
 

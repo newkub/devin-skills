@@ -79,7 +79,7 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 
 1. Review Independence
    - ทำ review เท่านั้น ไม่ publish ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (release)
 2. Evidence-Based Findings
    - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
    - จัดลำดับตาม severity: Critical → High → Medium → Low

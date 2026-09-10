@@ -40,8 +40,8 @@ related:
 > Goal: ตรวจสอบ tech stack และวิเคราะห์ product idea ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create product)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create product)
 4. รับ `product-idea`, requirements, หรือ feedback จาก user
 5. ระบุ target users และ personas
 6. ระบุ problems ทีจะแก้
@@ -169,7 +169,7 @@ related:
 - ทำ responsive, dark mode, accessible
 - ใช้ design tokens สม่ำเสมอ
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (create product)
 - ใช้ /follow-service-cloudflare ถ้า deploy บน Cloudflare Workers/Pages
 
 ## Expected Outcome

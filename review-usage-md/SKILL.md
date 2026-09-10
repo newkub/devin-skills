@@ -28,7 +28,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 ### 2. Prepare Context
 > Goal: เตรียม Context
-ทำตาม [references/prepare-context.md](references/prepare-context.md)
+ทำตาม [references/prepare-context.md](references/prepare-context.md) (usage md)
 
 ### 3. Check Structure
 > Goal: ตรวจสอบ Structure
@@ -56,7 +56,7 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 - ถ้าต้องแก้ → สรุป findings แล้วใช้ `/update-usage-md`
 - ทุก finding ต้องมี file path, line number, snippet
 - อ้างอิง `package.json` หรือ `README.md` เป็นหลัก
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (usage md)
 
 - ใช้ /review-docs ถ้าจำเป็น
 

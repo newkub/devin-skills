@@ -44,7 +44,7 @@ related:
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (diff)
 
 ## Rules
 
@@ -53,7 +53,7 @@ related:
 - ถ้า diff มีการลบ/ย้าย/overwrite ต้องระบุและถามก่อน
 - ไม่ commit หรือ ship ถ้ายังไม่ได้ user confirmation
 - ทุกสรุปต้องมาจาก `git status`, `git diff` หรือการอ่านไฟล์จริง
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (diff)
 
 - ใช้ /report-git-diff ถ้าจำเป็น
 - ใช้ /check-git-diff ถ้าจำเป็น

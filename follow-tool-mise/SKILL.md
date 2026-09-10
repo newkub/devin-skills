@@ -122,7 +122,7 @@ related:
 - ไม่ลบ `.mise` cache โดยไม่รู้ผล
 - ตรวจสอบ exit code ของ `mise run`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (tool mise)
 - ใช้ /follow-secret-manager ถ้าจำเป็น
 
 ## References

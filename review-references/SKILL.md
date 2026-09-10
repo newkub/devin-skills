@@ -48,7 +48,7 @@ related:
 
 ### 7. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (references)
 
 ## Rules
 
@@ -58,7 +58,7 @@ related:
 - ไม่ self-references ใน `related`
 - skill name ต้องตรง directory name
 - ไม่ auto-delete references โดยไม่ถาม
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (references)
 
 - ใช้ /check-reference ถ้าจำเป็น
 - ใช้ /list-devin-global-skills ถ้าจำเป็น
@@ -67,13 +67,13 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (references)
 
 Merged from: improve-alignment
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (references)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (references)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (references)
 
 - `references/fix-improve-alignment.md` — ปรับ alignment ให้ project artifacts, rules, skills, docs และ code สอดคล้องกัน
 ## Expected Outcome

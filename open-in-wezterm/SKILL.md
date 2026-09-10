@@ -59,7 +59,7 @@ related:
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `wezterm` command ที่ใช้
+- รายงานผลเป็นรายการ path พร้อม `wezterm` command ที่ใช้ (in wezterm)
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /open-in-devin ถ้าจำเป็น

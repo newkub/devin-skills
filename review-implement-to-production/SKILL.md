@@ -82,14 +82,14 @@ Review implementation completeness ใน codebase เพื่อหา TODO, F
 
 ### 2. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (implement to production)
 - ระบุ code snippet หรือ evidence
 - ระบุ false positives
 - ระบุ critical path: schema → data → API → UI/flow
 
 ### 3. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (implement to production)
 - ใช้ `/deep-review` สำหรับระบุ issues ใน code
 - ถ้าต้อง refactor → ทำ `review-refactor` ก่อน `refactor`
 - ถ้าต้อง restructure → ทำ `review-restructure` ก่อน `restructure`

@@ -89,7 +89,7 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 
 ## Rules
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (business)
 - ข้าม section ที่ไม่เกียวข้อง: ดู [references/prepare-and-scan.md](references/prepare-and-scan.md)
 - จัดลำดับ severity และ evidence: ดู [references/validate-findings.md](references/validate-findings.md)
 - คำนวณ score และ metrics: ดู [references/scoring.md](references/scoring.md)
@@ -97,17 +97,17 @@ business review สำหรับ: payment processing, subscription lifecycle, 
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (business)
 
 Merged from: improve-business
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (business)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (business)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (business)
 
 - `references/fix-improve-business.md` — แก้ไข business logic findings ด้าน payment, subscription, multi-tenancy, feature flags, และ email
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก business section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (business)
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

@@ -30,7 +30,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ## Execute
 
-> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (release)
 
 ### 1. Check Conditions And Detect Platforms
 
@@ -211,7 +211,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - ใช้ /watch-release ถ้าจำเป็น
 - ใช้ /use-my-packages-on-registry ถ้าจำเป็น
 - ใช้ /check-backward-compatibility ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น (release)
 
 ## Expected Outcome
 

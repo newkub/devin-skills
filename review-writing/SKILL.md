@@ -85,7 +85,7 @@ related:
    - ทุก finding ต้องมี file path หรือ URL
 4. Safety And Scope Control
    - แก้ public API docs ต้องมี dry run และ user confirmation
-   - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+   - ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (writing)
 5. Output Format
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
@@ -94,13 +94,13 @@ related:
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (writing)
 
 Merged from: improve-naming
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (writing)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (writing)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (writing)
 
 - `references/fix-improve-naming.md` — ปรับ naming consistency ข้าม codebase ตัวแปร, functions, files และ exports
 ## Expected Outcome

@@ -94,7 +94,7 @@ related:
 - ใช้ /follow-tool-turborepo ถ้าจำเป็น
 - ใช้ /follow-monorepo ถ้าจำเป็น
 - ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool taze)
 
 ## References
 

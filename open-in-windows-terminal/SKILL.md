@@ -62,7 +62,7 @@ related:
 
 ### 3. Output
 
-- รายงานผลเป็นรายการ path พร้อม `wt` command ที่ใช้
+- รายงานผลเป็นรายการ path พร้อม `wt` command ที่ใช้ (in windows terminal)
 - ถ้า fail ให้ระบุสาเหตุและขั้นตอนต่อไป
 
 - ใช้ /report-file-structure ถ้าจำเป็น

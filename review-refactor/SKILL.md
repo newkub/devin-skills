@@ -93,13 +93,13 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 ### 1. Review Only
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (refactor)
 - แยก review process จาก refactor process
 - ถ้าต้อง refactor ให้ทำ `refactor`, `refactor`, หรือ `refactor-workspace` หลัง review
 
 ### 2. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (refactor)
 - ใช้ tools สำหรับ verification ไม่เดา
 - ระบุ false positives ที่พบ
 

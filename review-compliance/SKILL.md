@@ -75,18 +75,18 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (compliance)
 
 Merged from: improve-compliance
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (compliance)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (compliance)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (compliance)
 
 - `references/fix-improve-compliance.md` — แก้ findings จาก review-compliance ครอบคลุม licenses, privacy, audit และ data handling
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก compliance section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (compliance)
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

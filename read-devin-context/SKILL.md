@@ -106,7 +106,7 @@ related:
 
 - ใช้ /reset-context ถ้าจำเป็น
 - ใช้ /follow-context-engineering ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น (devin context)
 
 ## Expected Outcome
 

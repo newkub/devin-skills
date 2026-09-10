@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้ `search-skills` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `search-skills` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (skills)
 
 ## Execute
 

@@ -174,7 +174,7 @@ Important: ต้องเพิ่ม `permissions` เพื่อให้ wo
 - `includeBotPrs`: comment บน PRs จาก bots
 
 - ใช้ /follow-tool-release-it ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool auto it)
 
 ## References
 

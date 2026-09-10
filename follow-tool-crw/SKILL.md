@@ -17,7 +17,7 @@ related:
 
 ## Scope
 
-ใช้ `follow-tool-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `follow-tool-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (tool crw)
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-tool-websearch) — สำหรับ web search/scrape ด้วย crw ดู `references/websearch.md`
 

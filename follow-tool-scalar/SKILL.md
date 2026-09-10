@@ -94,7 +94,7 @@ related:
 
 - ใช้ /follow-release ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool scalar)
 
 ## References
 

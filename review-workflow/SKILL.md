@@ -59,7 +59,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ### 9. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (workflow)
 
 ## Rules
 
@@ -69,10 +69,10 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ existing skills แทนการ duplicate logic
 - ถ้ามี destructive change → ต้อง dry-run ก่อน
 - ไม่เกิน 250 บรรทัดต่อไฟล์
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (workflow)
 
 - ใช้ /review-devin-global-skills ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น (workflow)
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /review-redundancy ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น

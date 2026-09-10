@@ -228,7 +228,7 @@ related:
 
 กฎ maturity: `DB`, `Store`, `Pacer`, `AI` เป็น 0.x/RC — ห้าม adopt โดยไม่มี justification; `Query`, `Router`, `Start`, `Form`, `Table`, `Virtual` stable พร้อมใช้
 
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create web solid tanstack router)
 
 ## Expected Outcome
 

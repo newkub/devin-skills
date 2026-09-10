@@ -150,7 +150,7 @@ related:
 - ถ้า `/review` ทำงานอยู่แล้ว ไม่ต้องเรียกซ้ำ
 
 ### 6. Formatting
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (review)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 - ทุก report table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก
@@ -163,7 +163,7 @@ related:
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (review)
 
 ## Expected Outcome
 

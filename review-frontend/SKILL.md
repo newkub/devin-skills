@@ -124,37 +124,37 @@ frontend code review สำหรับ project ที่มี UI code (React, 
 - Info: suggestion, best practice recommendation
 
 ### 4. Evidence-Based Findings
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (frontend)
 - ไม่เดา ใช้ tools สำหรับ verification (`ast-grep`, `knip`, `madge`, React DevTools profiler)
 - ระบุ component, hook, store, page, หรือ CSS rule ที่เกี่ยวข้อง
 - ระบุ false positives ที่พบ
 
 ### 5. Review Independence
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (frontend)
 - ไม่ลบไฟล์, โค้ด, components, หรือ configuration ระหว่าง review
 - ถ้าพบ issues ที่ต้องแก้ไข → report ผ่าน `/report` และ `/suggest-next-action`
 
 ### 6. Health Score
 - คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (frontend)
+- แสดง score ต่อ dimension และ overall score (frontend)
 - Grade: A (90+), B (80+), C (70+), D (60+), F (<60)
 - ใช้ score เปรียบเทียบ before/after ในการปรับปรุง
 
 ### 7. Formatting
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (frontend)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (frontend)
 
 Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offline, optimize-rendering
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (frontend)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (frontend)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (frontend)
 
 - `references/fix-improve-frontend.md` — แก้ไข frontend findings ด้าน components, state, rendering, type safety, CSS, forms
 - `references/fix-optimize-css.md` — ลด CSS payload — unused rules, critical CSS, dedupe และ utility coverage
@@ -165,6 +165,6 @@ Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offlin
 
 - รายงานตาราง findings จากทุก frontend section พร้อม severity และ location
 - รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (frontend)
 - Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

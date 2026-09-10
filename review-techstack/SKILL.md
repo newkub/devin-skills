@@ -92,7 +92,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ### 3. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (techstack)
 - ถ้าแก้ไข → ทำหลัง review เสร็จและ report แยก
 
 ### 4. Safety
@@ -110,7 +110,7 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 
 ### 6. Formatting
 
-- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ `**` (bold markers) — ใช้ backticks สำหรับ emphasis (techstack)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 

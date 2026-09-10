@@ -14,7 +14,7 @@ related:
 
 ## Scope
 
-ใช้ `learn-cli` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `learn-cli` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (cli)
 
 ## Execute
 
@@ -48,7 +48,7 @@ related:
 
 ## Rules
 
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (cli)
 - Use the allowed tools only when needed
 
 - ใช้ /learn-pattern ถ้าจำเป็น

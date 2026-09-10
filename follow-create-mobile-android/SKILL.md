@@ -28,8 +28,8 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create mobile android)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create mobile android)
 
 ### 2. Gather Requirements
 
@@ -150,7 +150,7 @@ related:
 
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create mobile android)
 
 ## Expected Outcome
 

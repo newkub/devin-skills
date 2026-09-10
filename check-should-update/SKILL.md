@@ -79,7 +79,7 @@ Skill นี้มี Rust CLI เพื่อตรวจสอบเร็ว�
 - ใช้ /follow-create-rust-cli ถ้าจำเป็น
 - ใช้ /follow-tool-git ถ้าจำเป็น
 - ใช้ /refactor ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- ใช้ /update-devin-global-skills ถ้าจำเป็น (should update)
 
 ## Expected Outcome
 

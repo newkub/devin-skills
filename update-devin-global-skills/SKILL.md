@@ -31,7 +31,7 @@ related:
 
 > Goal: รู้ environment, conventions, และ scope ก่อนลงมือ
 
-ทำตาม [references/prepare-context.md](references/prepare-context.md)
+ทำตาม [references/prepare-context.md](references/prepare-context.md) (devin global skills)
 
 ### 2. Identify Targets
 

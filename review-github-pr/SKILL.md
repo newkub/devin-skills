@@ -45,7 +45,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
 
 ## Rules
 
@@ -54,7 +54,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 - ถ้า PR ใหญ่ → แนะนำ split ก่อน review ละเอียด
 - Title และ commits ต้องตาม conventional commits
 - ทุก finding ต้องมี file path, line number หรือ commit reference
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (github pr)
 
 - ใช้ /open-github ถ้าจำเป็น
 - ใช้ /list-github-pr ถ้าจำเป็น

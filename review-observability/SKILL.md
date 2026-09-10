@@ -104,42 +104,42 @@ observability review สำหรับ: metrics collection, distributed tracing
 
 ### 3. Evidence-Based Findings
 
-- ทุก finding ต้องมี file path และ line number
+- ทุก finding ต้องมี file path และ line number (observability)
 - ไม่เดา ใช้ tools สำหรับ verification
 - ระบุ metric, span, log, alert, dashboard, SLO ที่เกี่ยวข้อง
 
 ### 4. Review Independence
 
-- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review
+- ทำ review เท่านั้น ไม่แก้ไข code ระหว่าง review (observability)
 - ไม่ซ้ำกับ `/review-stability` — ใช้ workflow นั้นสำหรับ crash และ error handling
 - ไม่ซ้ำกับ `/review-delivery` Section 8 — ใช้ workflow นี้สำหรับ observability เชิงลึก
 
 ### 5. Health Score
 
 - คำนวณ review score เป็น percentage (0-100) — ดูสูตรใน `references/scoring.md`
-- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding
-- แสดง score ต่อ dimension และ overall score
+- 0 = ทุก finding เป็น Critical, 100 = ไม่มี finding (observability)
+- แสดง score ต่อ dimension และ overall score (observability)
 
 ### 6. Formatting
 
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (observability)
 - ใช้ heading levels สำหรับ structure
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (observability)
 
 Merged from: improve-logging, improve-observability
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (observability)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (observability)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (observability)
 
 - `references/fix-improve-logging.md` — ปรับ log quality ทั้ง levels, structure, context และ redaction ของ sensitive data
 - `references/fix-improve-observability.md` — เพิ่ม logging, metrics, tracing และ alerting ตาม findings จาก review-observability
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก observability section
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (observability)
 - Review score ต่อ dimension และ overall
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

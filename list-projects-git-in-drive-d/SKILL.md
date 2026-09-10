@@ -13,7 +13,7 @@ related:
 
 ## Scope
 
-ใช้ `/list-projects-git-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `/list-projects-git-in-drive-d` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (projects git in drive d)
 
 ## Execute
 

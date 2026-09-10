@@ -121,7 +121,7 @@ related:
 - ใช้ /follow-tool-rolldown ถ้าจำเป็น
 - ใช้ /follow-tool-tsdown ถ้าจำเป็น
 - ใช้ /follow-tool-vitepress ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool vite)
 - ใช้ /follow-tool-biome ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 

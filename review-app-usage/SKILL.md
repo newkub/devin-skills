@@ -20,7 +20,7 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 
 ### 1. Prepare Context
 > Goal: เตรียม Context
-ทำตาม [references/prepare-context.md](references/prepare-context.md)
+ทำตาม [references/prepare-context.md](references/prepare-context.md) (app usage)
 
 ### 2. Check Syntax
 > Goal: ตรวจสอบ Syntax
@@ -48,15 +48,15 @@ Review `usage.kdl` (KDL source spec) และ `USAGE.md` (generated markdown do
 
 ### 8. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (app usage)
 
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข `usage.kdl` ระหว่าง review
 - ถ้าต้องแก้ไข ให้เรียก `/follow-tool-usage` (สำหรับ `usage.kdl` spec) หรือ `/update-usage-md` (สำหรับ `USAGE.md`) หลัง review
-- ทุก finding ต้องมี file path และ evidence
+- ทุก finding ต้องมี file path และ evidence (app usage)
 - ใช้ `Critical / High / Medium / Low / Info` สำหรับ severity
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (app usage)
 
 ## Expected Outcome
 

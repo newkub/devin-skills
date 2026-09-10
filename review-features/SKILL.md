@@ -75,7 +75,7 @@ Review features documentation ก่อนเรียก `update-features-md` �
 
 1. Review Only
    - ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (features)
 2. Severity Ratings
    - Critical: ไม่มี features.md, ไม่มี features เลย
    - High: ขาด features สำคัญ, format ผิด

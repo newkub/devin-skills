@@ -96,9 +96,9 @@ related:
 - ใช้ `secrets.NPM_TOKEN` และ `secrets.GITHUB_TOKEN` ผ่าน GitHub Actions
 - ถ้าจำเป็น ใช้ `gh secret set` สำหรับตั้งค่าผ่าน CLI
 
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- ใช้ /follow-tool-semantic-release ถ้าจำเป็น (tool release it)
 - ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool release it)
 - ใช้ /follow-tool-pkg-new ถ้าจำเป็น
 - ใช้ /follow-lang-nodejs ถ้าจำเป็น
 

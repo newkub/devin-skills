@@ -184,7 +184,7 @@ related:
 - ใช้ /deploy-to-railway ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
 - ใช้ /review-security ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น
+- ใช้ /follow-tool-github-actions ถ้าจำเป็น (secret manager)
 
 ## Expected Outcome
 

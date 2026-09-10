@@ -27,8 +27,8 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create rolldown plugins)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create rolldown plugins)
 
 ### 2. Setup Project
 
@@ -109,7 +109,7 @@ related:
 
 - ใช้ /follow-create-bun-cli ถ้าจำเป็น
 - ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create rolldown plugins)
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
 - ใช้ /run-test-unit ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น

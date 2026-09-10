@@ -15,7 +15,7 @@ related:
 
 ## Scope
 
-ใช้ `move` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `move` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (to)
 
 ## Execute
 

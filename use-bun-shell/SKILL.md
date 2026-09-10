@@ -12,7 +12,7 @@ related:
 
 ## Scope
 
-ใช้ `use-bun-shell` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `use-bun-shell` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (bun shell)
 
 ## Execute
 

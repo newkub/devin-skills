@@ -77,7 +77,7 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 1. Review Independence
    - ทำ review เท่านั้น ไม่ execute migration ระหว่าง review
    - ถ้าต้อง migrate ให้ทำตาม `references/migration-checklist.md` หลัง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (migration)
 2. Evidence-Based Findings
    - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
    - ตรวจ changelogs และ migration guides
@@ -93,13 +93,13 @@ Review migration plan ก่อน execution เพื่อยืนยัน�
 
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (migration)
 
 Merged from: improve-migration
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (migration)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (migration)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (migration)
 
 - `references/fix-improve-migration.md` — แก้ findings จาก review-migration ทั้ง schema safety, rollbacks, data migration และ deploy order
 

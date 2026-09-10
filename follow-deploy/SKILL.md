@@ -120,7 +120,7 @@ related:
 - ต้องตรวจสอบว่า application ทำงานได้
 - ต้องตรวจสอบ logs ว่าไม่มี error
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (deploy)
 
 ## Expected Outcome
 

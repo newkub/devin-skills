@@ -227,7 +227,7 @@ Scripts สำหรับรัน review CLI เพื่อ review codebase �
 - Validate ด้วย `moon run :check`
 - รายละเอียดเต็มทำตาม `/follow-tool-moonrepo`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (tasks)
 - ใช้ /run-check ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 

@@ -83,7 +83,7 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 
 - ทำ review เท่านั้น ไม่แก้ไข docs ระหว่าง review
 - ถ้าต้องแก้ไข ให้เรียก `update-docs`
-- ทุก finding ต้องมี file path และ evidence
+- ทุก finding ต้องมี file path และ evidence (docs)
 
 ### 2. Scope Coordination
 
@@ -113,13 +113,13 @@ Review documentation structure ก่อนเรียก `update-docs` เพ�
 - รายงานเป็นตารางด้วย `/report`
 ## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (docs)
 
 Merged from: improve-docs, improve-onboarding
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (docs)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (docs)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (docs)
 
 - `references/fix-improve-docs.md` — แก้ไข documentation findings จาก review docs family ให้ docs ตรงกับ code จริง
 - `references/fix-improve-onboarding.md` — ปรับ onboarding experience ให้ dev ใหม่ setup project ได้เร็วผ่าน docs และ automation

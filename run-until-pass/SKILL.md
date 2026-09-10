@@ -18,11 +18,11 @@ run command จนกว่าจะผ่าน ถ้าเจอ error ให
 
 ## Scope
 
-ใช้ `run-until-pass` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม
+ใช้ `run-until-pass` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (until pass)
 
 ## Execute
 
-> Pre-Run: ทำ `/review-plan` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/review-plan` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (until pass)
 
 ### 1. Run Command
 

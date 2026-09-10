@@ -110,20 +110,20 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. คำนวณ score, grade, status, และ metrics ตาม [references/scoring.md](references/scoring.md)
 5. รายงานด้วยตารางและไม่ใช้ bold markers — ดูรายละเอียดใน [references/review-rules.md](references/review-rules.md)## Fix
 
-> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review`
+> ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (architecture)
 
 Merged from: improve-architecture
 
-1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้
-2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after`
+1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (architecture)
+2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (architecture)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (architecture)
 
 - `references/fix-improve-architecture.md` — แก้ไข architecture findings จาก review-architecture ด้วย restructure และ refactor
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location
 - รายงาน Metrics Summary พร้อม status indicators และ score ต่อ dimension
-- รายงาน recommended actions พร้อม priority
+- รายงาน recommended actions พร้อม priority (architecture)
 - Architecture review score พร้อม grade และ progress bar
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
 

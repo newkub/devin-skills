@@ -37,8 +37,8 @@ related:
 > Goal: ตรวจสอบ tech stack ก่อนสร้าง
 
 1. ทำ `/follow-my-tech-stack` เพื่อสรุป tech stack ที่ใช้
-2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design
-3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป
+2. ทำ `/review-techstack` เพื่อ review tech stack, dependencies, และ library design (create sdk)
+3. บันทึกเหตุผลที่เลือก stack และ libraries สำหรับ reference ต่อไป (create sdk)
 
 ### 2. Parse Argument
 
@@ -125,7 +125,7 @@ related:
 - ใช้ /follow-create-rust-crate ถ้าจำเป็น
 - ใช้ /follow-create-tauri-plugins ถ้าจำเป็น
 - ใช้ /follow-create-bot ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (create sdk)
 - ใช้ /follow-create-vitest-plugins ถ้าจำเป็น
 - ใช้ /follow-create-vscode-extensions ถ้าจำเป็น
 - ใช้ /follow-create-zed-extensions ถ้าจำเป็น

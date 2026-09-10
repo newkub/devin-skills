@@ -78,7 +78,7 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
 
 1. Review Only
    - ทำ review เท่านั้น ไม่แก้ไข `.devin` ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (dot devin)
 2. Scope Coordination
    - ตรวจเฉพาะ structure ของ `.devin/`, hooks, `sgconfig.yml`, ast-grep rules location
    - ไม่ตรวจเนื้อหา rules ใน `.devin/rules/` — ใช้ `review-rules` แทน

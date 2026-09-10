@@ -226,7 +226,7 @@ export default {
 - สำหรับ monorepo ให้เพิ่ม `docs` ใน `exclude` ของ root `tsconfig.json`
 
 - ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-vite-plugins ถ้าจำเป็น
+- ใช้ /follow-create-vite-plugins ถ้าจำเป็น (tool vitepress)
 
 ## References
 

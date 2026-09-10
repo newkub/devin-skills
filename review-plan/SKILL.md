@@ -24,7 +24,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ### 1. Prepare Context
 > Goal: เตรียม Context
-ทำตาม [references/prepare-context.md](references/prepare-context.md)
+ทำตาม [references/prepare-context.md](references/prepare-context.md) (plan)
 
 ### 2. Assess Risks
 > Goal: Assess Risks
@@ -56,7 +56,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 - ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `deep-plan` หลัง review
 - ทุก finding ต้องมี evidence และ location
 - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (plan)
 
 - ถ้า pass → implement ตาม plan ถ้า fail → แก้ plan ให้ผ่านก่อน
 

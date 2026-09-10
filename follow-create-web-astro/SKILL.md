@@ -176,7 +176,7 @@ related:
 - ใช้ Biome สำหรับ linting และ formatting
 - ใช้ `import.meta.env` สำหรับ type-safe env access
 
-- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น
+- ใช้ /follow-create-mobile-cross-capacitor ถ้าจำเป็น (create web astro)
 - ใช้ /follow-create-cross-dioxus ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
 - ใช้ /setup-cicd ถ้าจำเป็น

@@ -20,7 +20,7 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 
 ### 1. Prepare Context
 > Goal: เตรียม Context
-ทำตาม [references/prepare-context.md](references/prepare-context.md)
+ทำตาม [references/prepare-context.md](references/prepare-context.md) (devin global subagents)
 
 ### 2. Check Frontmatter
 > Goal: ตรวจสอบ Frontmatter
@@ -40,15 +40,15 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 
 ### 6. Score And Report
 > Goal: รายงาน Score And Report
-คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action`
+คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (devin global subagents)
 
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข subagents ระหว่าง review
 - ถ้าต้องแก้ไข ให้เรียก `update-devin-global-subagents` หลัง review
-- ทุก finding ต้องมี file path และ evidence
+- ทุก finding ต้องมี file path และ evidence (devin global subagents)
 - ใช้ `Critical / High / Medium / Low / Info` สำหรับ severity
-- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis
+- ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (devin global subagents)
 
 ## Expected Outcome
 

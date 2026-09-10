@@ -76,7 +76,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
 
 1. Review Independence
    - ทำ review เท่านั้น ไม่ deploy ระหว่าง review
-   - ทุก finding ต้องมี file path และ evidence
+   - ทุก finding ต้องมี file path และ evidence (deploy)
 2. Evidence-Based Findings
    - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
    - ตรวจ config files และ env files แบบ cross-reference
@@ -91,7 +91,7 @@ Review deployment readiness ก่อนเริ่ม deploy เพื่อ�
    - รายงานเป็นตารางด้วย `/report`
 
 - ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (deploy)
 
 ## Verify
 

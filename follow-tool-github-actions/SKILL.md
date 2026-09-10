@@ -73,10 +73,10 @@ related:
 
 ## Rules
 
-- Follow the project conventions and global rules
+- Follow the project conventions and global rules (tool github actions)
 - Use the allowed tools only when needed
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น
+- ใช้ /open-web-for-config-secret ถ้าจำเป็น (tool github actions)
 - ใช้ /follow-dot-github ถ้าจำเป็น
 - ใช้ /follow-deploy ถ้าจำเป็น
 - ใช้ /run-deploy ถ้าจำเป็น
