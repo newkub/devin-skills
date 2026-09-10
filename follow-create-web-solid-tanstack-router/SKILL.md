@@ -215,16 +215,16 @@ related:
 
 เลือก TanStack library ตาม use case จริง — ห้ามติดตั้งโดยไม่มีความจำเป็น:
 
-- **Router** → type-safe routing (มีแล้วใน skill นี้)
-- **Query** → server state (fetch/cache/mutation) — ใช้ร่วมกับ oRPC ผ่าน `@orpc/tanstack-query`
-- **Store** → client state เมื่อ signal เดียวไม่พอ (shared state ข้าม component)
-- **Start** → SSR/server functions (ใช้แล้วใน skill นี้)
-- **Form** → form state + validation (ใช้เมื่อมี form จริง เช่น login, settings)
-- **Table** → headless data grid เมื่อมีตาราง complex (sorting/filter/pagination)
-- **Virtual** → virtualized list เมื่อ render รายการยาว >100 items
-- **Pacer** → debounce/throttle/rate-limit utilities
-- **DB** → reactive local-first data — **0.x ยังไม่ stable** ต้องมีเหตุผลชัดเจนก่อนใช้
-- **AI** → LLM integration — **RC/0.x** ใช้เฉพาะเมื่อต้องการจริง
+- Router → type-safe routing (มีแล้วใน skill นี้)
+- Query → server state (fetch/cache/mutation) — ใช้ร่วมกับ oRPC ผ่าน `@orpc/tanstack-query`
+- Store → client state เมื่อ signal เดียวไม่พอ (shared state ข้าม component)
+- Start → SSR/server functions (ใช้แล้วใน skill นี้)
+- Form → form state + validation (ใช้เมื่อมี form จริง เช่น login, settings)
+- Table → headless data grid เมื่อมีตาราง complex (sorting/filter/pagination)
+- Virtual → virtualized list เมื่อ render รายการยาว >100 items
+- Pacer → debounce/throttle/rate-limit utilities
+- DB → reactive local-first data — `0.x` ยังไม่ stable ต้องมีเหตุผลชัดเจนก่อนใช้
+- AI → LLM integration — `RC/0.x` ใช้เฉพาะเมื่อต้องการจริง
 
 กฎ maturity: `DB`, `Store`, `Pacer`, `AI` เป็น 0.x/RC — ห้าม adopt โดยไม่มี justification; `Query`, `Router`, `Start`, `Form`, `Table`, `Virtual` stable พร้อมใช้
 

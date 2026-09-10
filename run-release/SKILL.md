@@ -30,7 +30,7 @@ Release ไปยัง npm, crates.io, VSCode Marketplace, Chrome Web Store, �
 
 ## Execute
 
-> **Pre-Run**: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
+> Pre-Run: ทำ `/review-release` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน
 
 ### 1. Check Conditions And Detect Platforms
 

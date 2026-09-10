@@ -6,9 +6,6 @@ related:
   - follow-tasks
   - follow-lang-typescript
   - follow-tool-github-actions
-  - follow-create-web
-  - follow-my-tech-stack
-  - deploy-to-cloudflare
 ---
 
 ## Goal

@@ -1,5 +1,5 @@
 ---
-name: design-with-me-first
+name: design-by-me-first
 description: สร้าง temp UI/UX design พร้อม preview โดยเริ่มจาก ask-me และ suggest-me
 argument-hint: "[topic]"
 allowed-tools:
@@ -52,7 +52,7 @@ related:
 
 > Goal: สร้าง temp directory สำหรับ design
 
-1. สร้าง temp directory ใน `%TEMP%\design-with-me-first-<timestamp>` ของ OS
+1. สร้าง temp directory ใน `%TEMP%\design-by-me-first-<timestamp>` ของ OS
 2. ถ้ามี existing temp → ถาม user ว่าล้างหรือไม่
 3. ตั้งค่า `index.html`, `style.css`, `script.js` พื้นฐาน
 

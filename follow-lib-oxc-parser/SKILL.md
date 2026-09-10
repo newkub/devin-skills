@@ -4,7 +4,6 @@ description: "ใช้ oxc-parser parse JS/TS เป็น AST เร็วม�
 argument-hint: "[files-or-goal]"
 related:
   - use-astgrep-programmatic
-  - update-review-cli
   - follow-lang-typescript
   - use-scripts
   - follow-best-practice
@@ -23,7 +22,7 @@ related:
 - หา call sites, unused exports, dependency graph
 - เดิน AST ด้วย visitor pattern
 
-เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules
+เลือก `oxc-parser` เมื่อต้องการ full AST + types; เลือก `/use-astgrep-programmatic` เมื่อต้องการ pattern matching แบบ declarative rules; ทำตาม `/follow-best-practice` และดู `/follow-lang-typescript` หรือ `/use-scripts` ตาม context
 
 ## Execute
 

@@ -1,6 +1,6 @@
 ---
 name: follow-enter-dot
-description: จัดการ trigger "." โดยตรวจ state แล้วเลือก continue, suggest, ship, ship-dont-ask-me, idea-features หรือ ask-me
+description: จัดการ trigger "." โดยตรวจ state แล้วเลือก continue, suggest, ship, ask-me หรือ ship-dont-ask-me
 argument-hint: "[scope]"
 related:
   - continue

@@ -12,9 +12,7 @@ related:
   - report-scan-todo
   - update-todo-md
   - deep-review
-  - review-architecture
   - resolve-errors
-  - refactor
   - update-references
   - review-security
   - run-test-all
