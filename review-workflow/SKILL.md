@@ -54,7 +54,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 ทำตาม [references/report.md](references/report.md)
 
 ### 8. Validate
-> Goal: validate findings
+> Goal: ยืนยัน findings
 ทำตาม [references/validate.md](references/validate.md)
 
 ### 9. Score And Report

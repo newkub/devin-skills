@@ -36,7 +36,7 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ทำตาม [references/code-changes.md](references/code-changes.md)
 
 ### 4. Validate Findings
-> Goal: validate findings
+> Goal: ยืนยัน findings
 ทำตาม [references/validate-findings.md](references/validate-findings.md)
 
 ### 5. Report And Recommend
