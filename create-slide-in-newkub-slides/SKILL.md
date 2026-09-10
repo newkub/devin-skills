@@ -118,7 +118,7 @@ graph LR
 1. ทำ `/run-dev` เพื่อรัน dev server ด้วย `bunx slidev`
 2. รอให้ dev server เริ่มทำงาน
 
-### Ship
+### 8. Ship
 
 > Goal: ส่งมอบงาน
 

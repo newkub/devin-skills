@@ -111,7 +111,7 @@ related:
 4. รัน `devin plugins remove <plugin-name>` ถ้าต้องการถอนการติดตั้ง
 5. ทำ `/update-references` ถ้ามี project อ้างอิง plugin
 
-### Ship
+### 10. Ship
 
 > Goal: ส่งมอบงาน
 

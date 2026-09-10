@@ -79,7 +79,7 @@ related:
 3. ทดสอบ command ใน NuShell หลัง `plugin use <command_name>`
 4. ปรับ `Signature` ให้ประกาศ input/output types ถูกต้องเพื่อ type checking
 
-### Ship
+### 7. Ship
 
 > Goal: ส่งมอบงาน
 

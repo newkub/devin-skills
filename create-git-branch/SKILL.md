@@ -41,10 +41,10 @@ related:
 > Goal: Create And Switch
 
 1. `git switch -c <branch>`
-3. ตรวจสอบว่าอยู่บน commit ที่ถูกต้อง
-4. push upstream ด้วย `git push -u origin <branch>`
+2. ตรวจสอบว่าอยู่บน commit ที่ถูกต้อง
+3. push upstream ด้วย `git push -u origin <branch>`
 
-### Ship
+### 4. Ship
 
 > Goal: ส่งมอบงาน
 
