@@ -11,19 +11,27 @@ bun add effect
 
 # Platform abstractions
 bun add @effect/platform
-bun add @effect/platform-bun
+bun add @effect/platform-bun   # Bun runtime
+bun add @effect/platform-node  # Node.js runtime
 
-# Testing
-bun add -D vitest
+# Testing (@effect/vitest peers: effect ^3.22.0, vitest ^3.2.0)
+bun add -D vitest@^3.2 @effect/vitest
 bun add -D tstyche
 ```
 
 ## Version Info
 
-- Latest stable: `3.22.x` (as of 2026)
-- Effect v4 in RC (not yet stable)
-- TypeScript >= 5.4 required
+- Latest stable: `3.22.2` (verified 2026-09-11)
+- Effect v4 in RC (`4.0.0-rc.113`) — not yet stable; API differs from v3 (see below)
+- TypeScript >= 5.4 required (TS 7.x/tsgo is the latest major — verify toolchain support)
 - Supports Node.js, Deno, and Bun
+
+## v3 vs v4 API Differences
+
+- v3: `Context.Tag`/`Context.GenericTag`/`Effect.Service` for services; v4: unified `Context.Service`
+- v3: yield `Effect`/`Option`/`Either`/`TaggedError` directly; v4: `Yieldable` types may need `.asEffect()`
+- v4 consolidates packages under `effect/unstable/*` and changes `Layer`/`Runtime` APIs
+- Always check the installed version in `package.json` before choosing an API
 
 ## TypeScript Config
 
@@ -35,7 +43,10 @@ bun add -D tstyche
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022"
   }
 }
 ```
@@ -52,11 +63,7 @@ const program = Console.log("Hello, World!")
 Effect.runSync(program)
 ```
 
-Run:
-
-```bash
-bun src/index.ts
-```
+Run with `bun src/index.ts`.
 
 ## Effect.gen
 
@@ -157,26 +164,42 @@ const program = Effect.gen(function* () {
 Effect.runPromise(program).then(console.log) // 2
 ```
 
-## Layer.mock (Testing)
+## Effect.Service (v3.9+, recommended)
 
-Partial implementations for testing (v3.17.0+):
+Creates a service Tag with a default Layer in one declaration:
 
 ```ts
-import { Context, Effect, Layer } from "effect"
+import { Effect } from "effect"
 
-const MyServiceTest = Layer.mock(MyService, {
-  two: () => Effect.succeed(2),
-})
+class MyService extends Effect.Service<MyService>()("MyService", {
+  effect: Effect.gen(function* () {
+    return {
+      one: Effect.succeed(1),
+      two: () => Effect.succeed(2),
+    } as const
+  }),
+}) {}
+
+// Auto-generated layers: MyService.Default, MyService.DefaultWithoutDependencies
+// Test with: MyService.layerTest or Layer.mock(MyService, { ... })
+
+const program = Effect.gen(function* () {
+  const service = yield* MyService
+  return yield* service.two()
+}).pipe(Effect.provide(MyService.Default))
 ```
 
-## Schedule (Retry/Backoff)
+## Effect.fn (named traced functions)
 
 ```ts
-import { Effect, Schedule } from "effect"
+import { Effect } from "effect"
 
-const program = Effect.fail("error").pipe(
-  Effect.retry(Schedule.exponential("1 seconds").pipe(Schedule.upTo("30 seconds")))
-)
+const fetchUser = Effect.fn("fetchUser")(function* (id: string) {
+  const service = yield* MyService
+  return yield* service.two()
+})
+// Creates a span named "fetchUser" when tracing is enabled
+// Use Effect.fnUntraced to skip span creation
 ```
 
 ## Schema (core `effect` package)
@@ -207,6 +230,11 @@ Effect.runSync(program)       // Synchronous execution
 Effect.runPromise(program)    // Asynchronous (returns Promise)
 Effect.runFork(program)       // Fork as a fiber
 ```
+
+## See Also
+
+- Advanced patterns (Config, Option/Either, Schedule, concurrency, Scope, Stream, platform runtimes, observability): [patterns.md](patterns.md)
+- Testing (`@effect/vitest`, `Layer.mock`, `TestClock`, type-level tests): [testing.md](testing.md)
 
 ## Source
 
