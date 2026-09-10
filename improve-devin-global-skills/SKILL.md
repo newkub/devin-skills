@@ -1,17 +1,13 @@
 ---
 name: improve-devin-global-skills
-description: ปรับปรุง devin global skills โดย review, improve และ update อย่างเป็นระบบ
+description: ปรับปรุง devin global skills ให้สอดคล้องและมีคุณภาพสูง — orchestrator สำหรับ improve workflow
 argument-hint: "[scope]"
 related:
-  - improve
   - review-devin-global-skills
   - update-devin-global-skills
-  - follow-parallel
-  - use-subagents
-  - update-references
-  - deep-validate
+  - improve
   - check-broken-skills-references
-  - learn-web
+  - deep-validate
   - report
   - suggest-next-action
 ---
