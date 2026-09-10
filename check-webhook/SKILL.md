@@ -42,7 +42,7 @@ related:
 2. ถ้าระบุ `--delivery` → อ่านและทำตาม `subskills/delivery/SKILL.md`
 3. ถ้าไม่ระบุ → ทำทั้งสองตามลำดับ security ก่อน delivery
 
-### 4. Report
+### 3. Report
 
 > Goal: สรุปผลพร้อม severity และ fix
 

@@ -1,11 +1,11 @@
 ---
+
 name: search-in-github-star
 description: ค้นหา repositories จาก GitHub stars ด้วย gh CLI
 argument-hint: "[query]"
 related:
   - list-github-star
   - all-github-repo
-  - follow-tool-crw
   - follow-tool-crw
   - learn-web
 ---

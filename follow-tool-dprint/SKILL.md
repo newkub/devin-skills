@@ -21,25 +21,25 @@ related:
 
 ## Execute
 
-1. Precondition Check
+### 1. Precondition Check
 
-ตรวจสอบ environment ก่อนเริ่มติดตั้ง
+> Goal: ตรวจสอบ environment ก่อนเริ่มติดตั้ง
 
 - ตรวจสอบว่ามี Bun ติดตั้งแล้ว
 - ตรวจสอบว่ามี package.json อยู่แล้ว
 - ตรวจสอบว่า project มี structure ที่ถูกต้อง
 
-2. Install Dprint
+### 2. Install Dprint
 
-ติดตั้ง dprint ด้วย Bun
+> Goal: ติดตั้ง dprint ด้วย Bun
 
 - รันคำสั่ง `bun add -D dprint` เพื่อติดตั้ง dprint เป็น dev dependency
 - ตรวจสอบว่า installation สำเร็จโดยตรวจสอบ bun.lock และ package.json
 - ตรวจสอบว่าสามารถรัน `dprint --version` ได้
 
-3. Create Configuration File
+### 3. Create Configuration File
 
-สร้าง dprint.json config file
+> Goal: สร้าง dprint.json config file
 
 - ดาวน์โหลด config จาก reference repository ด้วย `gh download https://github.com/newkub/my-config/blob/main/dprint.json`
 - หรือสร้าง dprint.json ใหม่ด้วย configuration พื้นฐาน:
@@ -73,9 +73,9 @@ related:
 - ตรวจสอบว่า dprint.json ถูกสร้างขึ้นอย่างถูกต้อง
 - ปรับแต่ง configuration ตามความต้องการของ project (ถ้าจำเป็น)
 
-4. Add Format Scripts
+### 4. Add Format Scripts
 
-เพิ่ม scripts ใน package.json
+> Goal: เพิ่ม scripts ใน package.json
 
 - เพิ่ม script `format` สำหรับ format files อัตโนมัติ
 
@@ -90,9 +90,9 @@ related:
 - ตรวจสอบว่า scripts ถูกเพิ่มเข้าไปใน package.json อย่างถูกต้อง
 - ตรวจสอบว่าไม่มี conflict กับ scripts ที่มีอยู่แล้ว
 
-5. Verify Installation
+### 5. Verify Installation
 
-ทดสอบการทำงานของ dprint
+> Goal: ทดสอบการทำงานของ dprint
 
 - รัน `bun run format` เพื่อ format files ทั้งหมด
 - ตรวจสอบว่า dprint ทำงานได้ถูกต้องกับทุก file types ที่ระบุ

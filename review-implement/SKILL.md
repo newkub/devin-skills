@@ -1,4 +1,5 @@
 ---
+
 name: review-implement
 description: Review implementation readiness ก่อน execute implement-* skills
 argument-hint: "[scope]"
@@ -6,7 +7,6 @@ related:
   - scan-codebase
   - report
   - suggest-next-action
-  - implement-to-production
   - implement-to-production
   - implement-github-issue-by-me
 ---

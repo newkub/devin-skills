@@ -1,10 +1,9 @@
 ---
+
 name: list-deployment-fails
 description: สรุป deployment failures จาก CI/CD และ cloud (GitHub Actions, Cloudflare Workers)
 argument-hint: "[limit]"
 related:
-  - resolve-github-actions-fails
-  - resolve-cloudflare-worker-fails
   - resolve-github-actions-fails
   - resolve-cloudflare-worker-fails
   - report

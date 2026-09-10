@@ -97,7 +97,7 @@ related:
 - ถ้ามี users: usage tests ใน production-like environment
 - ถ้ามี critical components: formal verification, security tests, mutation tests (score > 80%)
 
-### 8. Validate And Classify Failures
+### 7. Validate And Classify Failures
 
 > Goal: Validate And Classify Failures
 
@@ -110,7 +110,7 @@ related:
    - ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report ก่อนดำเนินการ
 5. ห้ามแก้ source หรือ test โดยไม่มี evidence จาก validate/review
 
-### 9. Fix Based On Classification
+### 8. Fix Based On Classification
 
 > Goal: Fix Based On Classification
 
@@ -120,7 +120,7 @@ related:
 2. รัน tests อีกครั้งหลังแก้ไข
 3. ถ้ายัง fail ให้กลับไปขั้นตอน Validate/Review ไม่แก้ให้ผ่านแบบอัตโนมัติ
 
-### 10. Check Coverage And Report
+### 9. Check Coverage And Report
 
 > Goal: Check Coverage และรายงานผล
 
@@ -130,7 +130,7 @@ related:
 4. ทำ `/report` สรุปผลลัพธ์
 5. ใช้ `/report` สำหรับ test results, coverage metrics, และ action items
 
-### 11. Continue To Full Verify
+### 10. Continue To Full Verify
 
 > Goal: ส่งต่อไป verify ครบวงจรถ้าจำเป็น
 

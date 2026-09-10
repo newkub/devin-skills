@@ -1,11 +1,11 @@
 ---
+
 name: search-in-git
 description: ค้นหา git history, commits, diffs ด้วย log/grep/blame/pickaxe
 argument-hint: "[scope]"
 related:
   - deep-debug
   - check-git-logs
-  - deep-debug
   - report
   - suggest-next-action
 ---

@@ -39,7 +39,7 @@ related:
 2. ถ้าระบุ `--ssl` → อ่านและทำตาม `subskills/ssl/SKILL.md`
 3. ถ้าไม่ระบุ → ทำทั้งสองตามลำดับ
 
-### 4. Report
+### 3. Report
 
 > Goal: สรุปสถานะพร้อม action
 

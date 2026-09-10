@@ -1,10 +1,10 @@
 ---
+
 name: search-in-npmx
 description: ค้นหา เปรียบเทียบ และประเมิน npm packages บน npmx.dev
 argument-hint: "[package-query]"
 related:
   - follow-best-practice
-  - follow-tool-crw
   - follow-tool-crw
   - learn-web
   - use-my-packages-on-registry

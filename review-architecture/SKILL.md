@@ -68,14 +68,14 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 5. ระบุ anti-patterns และ premature abstraction จาก [references/patterns-boundaries.md](references/patterns-boundaries.md)
 6. บันทึก findings
 
-### 6. Review Import, Export And Barrel Exports
+### 5. Review Import, Export And Barrel Exports
 
 > Goal: ตรวจสอบ import/export strategy และ barrel exports ของ module
 
 1. ทำตาม [references/import-export.md](references/import-export.md)
 2. บันทึก findings
 
-### 7. Validate Findings
+### 6. Validate Findings
 
 > Goal: Findings ถูกต้องและจัดลำดับตาม severity
 
@@ -85,7 +85,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. ระบุ false positives ที่พบ
 5. ถ้า validation ไม่ผ่าน → กลับไปแก้ที่ Step 2
 
-### 8. Report
+### 7. Report
 
 > Goal: รายงาน findings พร้อม actionable recommendations
 
@@ -95,7 +95,7 @@ architectural patterns, module boundaries, dependency directions, SOLID principl
 4. จัดกลุ่ม findings ตาม category และเรียงตาม severity
 5. ทำ `/suggest-next-action`
 
-### 9. Implement All
+### 8. Implement All
 
 > Goal: ไม่มี implementation gap ค้างหลัง review
 
