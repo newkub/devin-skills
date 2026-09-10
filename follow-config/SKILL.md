@@ -3,7 +3,6 @@ name: follow-config
 description: จัดการและ validate config files ของ project ให้สอดคล้องกับ conventions
 argument-hint: "[config-type-or-file]"
 allowed-tools:
----
   - read
   - write
   - edit
@@ -13,7 +12,6 @@ allowed-tools:
   - skill
   - ask_user_question
   - report
-
   - suggest-next-action
   - resolve-errors
 triggers:

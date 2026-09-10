@@ -3,7 +3,6 @@ name: check-skills-related
 description: ดูความสัมพันธ์ระหว่าง skills แบบเร็ว หรือลึกตาม mode ทีเลือก
 argument-hint: "[skill-name | mode]"
 allowed-tools:
----
   - exec
   - grep
   - read

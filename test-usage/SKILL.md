@@ -3,7 +3,6 @@ name: test-usage
 description: ทดสอบ usage examples จาก README/docs/package.json เพื่อยื่นยันว่าทำงานได่จริงก่อน ship
 argument-hint: "[scope]"
 allowed-tools:
----
   - read
   - edit
   - grep

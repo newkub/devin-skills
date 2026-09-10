@@ -3,7 +3,6 @@ name: use-github-ship-bots
 description: สร้าง ship bot project จาก plan/issue จนถึง deploy ผ่าน PR
 argument-hint: "<issue-or-plan>"
 allowed-tools:
----
   - read
   - write
   - edit
@@ -26,7 +25,6 @@ related:
   - deploy-to-vercel
   - open-github
   - report-progress
-  - use-gh-cli
 ---
 
 ![use-github-ship-bots logo](bot-logo.png)

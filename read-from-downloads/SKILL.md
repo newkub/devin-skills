@@ -3,7 +3,6 @@ name: read-from-downloads
 description: อ่านและ list ไฟล์จาก home downloads folder
 argument-hint: "[pattern-or-filename]"
 allowed-tools:
----
   - read
   - find_file_by_name
   - exec

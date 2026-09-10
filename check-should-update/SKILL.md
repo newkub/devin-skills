@@ -3,7 +3,6 @@ name: check-should-update
 description: ตรวจสอบ git changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่
 argument-hint: "<target>... [--refs <from-ref..to-ref>]"
 allowed-tools:
----
   - exec
   - grep
   - glob
