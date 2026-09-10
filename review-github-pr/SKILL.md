@@ -24,27 +24,27 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 ## Execute
 
 ### 1. Fetch PR Context
-> Goal: Fetch PR Context
+> Goal: ดึง PR context
 ทำตาม [references/fetch-pr-context.md](references/fetch-pr-context.md)
 
 ### 2. Review PR Metadata
-> Goal: review PR Metadata
+> Goal: ตรวจ PR metadata
 ทำตาม [references/pr-metadata.md](references/pr-metadata.md)
 
 ### 3. Review Code Changes
-> Goal: review Code Changes
+> Goal: ตรวจ code changes
 ทำตาม [references/code-changes.md](references/code-changes.md)
 
 ### 4. Validate Findings
-> Goal: ยื่นยัน Findings
+> Goal: validate findings
 ทำตาม [references/validate-findings.md](references/validate-findings.md)
 
 ### 5. Report And Recommend
-> Goal: รายงาน And Recommend
+> Goal: รายงานและแนะนำ
 ทำตาม [references/report-and-recommend.md](references/report-and-recommend.md)
 
 ### 6. Score And Report
-> Goal: รายงาน Score And Report
+> Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (github pr)
 
 ## Rules

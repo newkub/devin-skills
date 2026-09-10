@@ -33,52 +33,52 @@ Review test strategy และ quality ก่อนเริ่ม run หรื
 
 ### 1. Prepare
 
-> Goal: เตรียม Prepare
+> Goal: เตรียม context ก่อน review
 ทำตาม `references/prepare.md` เพื่อเข้าใจ project structure, test framework, test config และ directory structure ก่อน review
 
 ### 2. Coverage
 
-> Goal: Coverage
+> Goal: ตรวจ coverage ครอบคลุม
 ทำตาม `references/coverage-gaps.md` เพื่อระบุ source files, functions, branches และ coverage categories ที่ยังไม่ถูก test
 
 ### 3. Edge Cases
 
-> Goal: Edge Cases
+> Goal: ตรวจ edge cases ครบ
 ทำตาม `references/edge-cases.md` เพื่อตรวจ happy path, error path, boundary values, validation และ security tests
 
 ### 4. Isolation
 
-> Goal: Isolation
+> Goal: ตรวจ test isolation
 ทำตาม `references/test-isolation.md` เพื่อตรวจ test isolation, cleanup, fixtures/factories, mock strategy และ flakiness
 
 ### 5. Pyramid
 
-> Goal: Pyramid
+> Goal: ตรวจ test pyramid balance
 ทำตาม `references/test-pyramid.md` เพื่อตรวจ distribution unit/integration/e2e, performance targets, test types และ CI integration
 
 ### 6. Regression
 
-> Goal: Regression
+> Goal: ตรวจ regression coverage
 ทำตาม `references/regression-coverage.md` เพื่อตรวจ regression tests สำหรับ bug fixes, critical paths, mutation testing และ CI pipeline
 
 ### 7. Pre-Run Score
 
-> Goal: รัน Score
+> Goal: คำนวณ score ก่อน run
 ทำตาม `references/test-quality-score.md` เพื่อคำนวณ test quality score, grade และ go/no-go ก่อน run
 
 ### 8. Capture Output
 
-> Goal: capture Output
+> Goal: อ่าน test output
 ทำตาม `references/capture-output.md` เพื่ออ่าน stdout/stderr, บันทึกไฟล์ output, ตรวจ exit code และจัดหมวดหมู่ failure
 
 ### 9. Analyze Coverage/Flaky
 
-> Goal: วิเคราะห์ Coverage Flaky
+> Goal: วิเคราะห์ coverage และ flaky
 ทำตาม `references/analyze-coverage-flaky.md` เพื่อเปรียบเทียบ coverage target, หา missing branches, รัน test ซ้ำ และตรวจ root cause ของ flaky
 
 ### 10. Decide Actions
 
-> Goal: Decide Actions
+> Goal: สรุป action ถัดไป
 ทำตาม `references/decide-actions.md` เพื่อสรุป action ถัดไป, อัปเดต skill เมื่อพบ systemic gap และสร้างรายงาน
 
 ## Rules

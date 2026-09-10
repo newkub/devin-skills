@@ -23,31 +23,31 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 ## Execute
 
 ### 1. Consider Existing Skills
-> Goal: Consider Existing Skills
+> Goal: พิจารณา skills ที่มีอยู่
 ทำตาม [references/consider-existing-skills.md](references/consider-existing-skills.md)
 
 ### 2. Prepare Context
-> Goal: เตรียม Context
+> Goal: เตรียม context
 ทำตาม [references/prepare-context.md](references/prepare-context.md) (usage md)
 
 ### 3. Check Structure
-> Goal: ตรวจสอบ Structure
+> Goal: ตรวจ structure
 ทำตาม [references/check-structure.md](references/check-structure.md)
 
 ### 4. Check Content
-> Goal: ตรวจสอบ Content
+> Goal: ตรวจ content
 ทำตาม [references/check-content.md](references/check-content.md)
 
 ### 5. Check Consistency
-> Goal: ตรวจสอบ Consistency
+> Goal: ตรวจ consistency
 ทำตาม [references/check-consistency.md](references/check-consistency.md)
 
 ### 6. Check Formatting
-> Goal: ตรวจสอบ Formatting
+> Goal: ตรวจ formatting
 ทำตาม [references/check-formatting.md](references/check-formatting.md)
 
 ### 7. Score And Report
-> Goal: รายงาน Score And Report
+> Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) และ [references/score-and-report.md](references/score-and-report.md) แล้วทำ `/report` และ `/suggest-next-action`
 
 ## Rules

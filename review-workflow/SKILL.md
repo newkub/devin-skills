@@ -26,39 +26,39 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 ## Execute
 
 ### 1. Read Flow
-> Goal: อ่าน Flow
+> Goal: อ่าน flow ปัจจุบัน
 ทำตาม [references/read-flow.md](references/read-flow.md)
 
 ### 2. Check Speed
-> Goal: ตรวจสอบ Speed
+> Goal: ตรวจ speed
 ทำตาม [references/check-speed.md](references/check-speed.md)
 
 ### 3. Check Safety
-> Goal: ตรวจสอบ Safety
+> Goal: ตรวจ safety
 ทำตาม [references/check-safety.md](references/check-safety.md)
 
 ### 4. Check Usability
-> Goal: ตรวจสอบ Usability
+> Goal: ตรวจ usability
 ทำตาม [references/check-usability.md](references/check-usability.md)
 
 ### 5. Check Efficiency
-> Goal: ตรวจสอบ Efficiency
+> Goal: ตรวจ efficiency
 ทำตาม [references/check-efficiency.md](references/check-efficiency.md)
 
 ### 6. Remove Redundancy
-> Goal: Remove Redundancy
+> Goal: ลบ redundancy
 ทำตาม [references/remove-redundancy.md](references/remove-redundancy.md)
 
 ### 7. Report
-> Goal: รายงาน Report
+> Goal: รายงานผล
 ทำตาม [references/report.md](references/report.md)
 
 ### 8. Validate
-> Goal: ยื่นยัน Validate
+> Goal: validate findings
 ทำตาม [references/validate.md](references/validate.md)
 
 ### 9. Score And Report
-> Goal: รายงาน Score And Report
+> Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (workflow)
 
 ## Rules

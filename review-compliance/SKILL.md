@@ -37,7 +37,7 @@ compliance review สำหรับ GDPR, CCPA, HIPAA, PCI-DSS, SOC2, PDPA (Tha
 
 ### 2. Regulation Reviews
 
-> Goal: Regulation Reviews
+> Goal: ตรวจแต่ละ regulation
 Review แต่ละ regulation ที่เกี่ยวข้องโดยใช้ reference checklist แลกบันทึก findings พร้อม file paths และ severity
 
 1. GDPR — ดู `references/gdpr.md`
@@ -49,7 +49,7 @@ Review แต่ละ regulation ที่เกี่ยวข้องโด�
 
 ### 3. Cross-Cutting Reviews
 
-> Goal: Cross-Cutting Reviews
+> Goal: ตรวจ cross-cutting topics
 1. Consent management — ดู `references/consent.md`
 2. DSAR process — ดู `references/dsar.md`
 3. Audit trail — ดู `references/audit-trail.md`

@@ -20,52 +20,52 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 
 ### 1. Prepare And Mobile And Desktop
 
-> Goal: เตรียม And Mobile And Desktop
+> Goal: เตรียม context และตรวจ mobile/desktop
 ทำตาม `references/prepare.md` และ `references/mobile-desktop.md`
 
 ### 2. CLI And TUI
 
-> Goal: CLI And TUI
+> Goal: ตรวจ CLI และ TUI
 ทำตาม `references/cli-tui.md`
 
 ### 3. SSR, State, Routing, PWA
 
-> Goal: SSR, State, Routing, PWA
+> Goal: ตรวจ SSR, state, routing และ PWA
 ทำตาม `references/ssr-state-routing-pwa.md`
 
 ### 4. I18n
 
-> Goal: I18n
+> Goal: ตรวจ i18n coverage
 ทำตาม `references/i18n.md`
 
 ### 5. SEO
 
-> Goal: SEO
+> Goal: ตรวจ SEO
 ทำ `/review-seo`
 
 ### 6. Battery And Energy
 
-> Goal: Battery And Energy
+> Goal: ตรวจ battery และ energy usage
 ทำตาม `references/battery.md`
 
 ### 7. Performance
 
-> Goal: Performance
+> Goal: ตรวจ performance
 ทำตาม `references/performance.md`
 
 ### 8. Accessibility
 
-> Goal: Accessibility
+> Goal: ตรวจ accessibility
 ทำตาม `references/accessibility.md`
 
 ### 9. Compatibility
 
-> Goal: Compatibility
+> Goal: ตรวจ compatibility
 ทำตาม `references/compatibility.md`
 
 ### 10. Validate And Report
 
-> Goal: ยื่นยัน And Report
+> Goal: validate findings และรายงาน
 ทำตาม `references/validate.md` และ `references/report.md` และคำนวณ score จาก `references/scoring.md`
 
 ## Rules

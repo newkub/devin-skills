@@ -24,7 +24,7 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ### 1. Prepare And Scan
 
-> Goal: เตรียม And Scan
+> Goal: เตรียม context และสแกน delivery setup
 1. ทำ `/scan-codebase` เพื่อเข้าใจ delivery setup, project structure, tech stack
 2. ระบุ delivery channels, documentation tools, versioning strategy, build tool, CI/CD platform, infrastructure, security tools
 3. ทำ `/deep-analyze` เพื่อวิเคราะห์หลายมิติอย่างลึกซึ้ง
@@ -32,49 +32,49 @@ delivery review สำหรับ: documentation, SEO, developer experience, an
 
 ### 2. Documentation And Web Presence
 
-> Goal: Documentation And Web Presence
+> Goal: ตรวจ documentation และ web presence
 - ตรวจ documentation ใน `references/docs.md`
 - ทำ `/review-seo` เพื่อรีวิว SEO โดยเฉพาะ แล้วรวม findings
 
 ### 3. Experience And Insights
 
-> Goal: Experience And Insights
+> Goal: ตรวจ DX และ analytics
 - ตรวจ DX ใน `references/dx.md`
 - ตรวจ analytics ใน `references/analytics.md`
 
 ### 4. Quality
 
-> Goal: Quality
+> Goal: ตรวจ testing และ PR process
 - ตรวจ testing ใน `references/testing.md`
 - ตรวจ PR ใน `references/pr-review.md`
 
 ### 5. Operations
 
-> Goal: Operations
+> Goal: ตรวจ logging, debugging และ versioning
 - ตรวจ logging และ debugging ใน `references/logging-debugging.md`
 - ตรวจ versioning ใน `references/versioning.md`
 
 ### 6. Build And Configuration
 
-> Goal: สร้าง And Configuration
+> Goal: ตรวจ build efficiency และ config health
 - ตรวจ build efficiency ใน `references/efficiency.md`
 - ตรวจ config health ใน `references/config.md`
 
 ### 7. Infrastructure And Pipeline
 
-> Goal: Infrastructure And Pipeline
+> Goal: ตรวจ CI/CD pipeline และ infrastructure
 - ตรวจ CI/CD pipeline ใน `references/ci-cd.md`
 - ตรวจ infrastructure ใน `references/infrastructure.md`
 
 ### 8. Performance And Security
 
-> Goal: Performance And Security
+> Goal: ตรวจ performance และ security
 - ทำ `/review-performance` แล้วดู `references/performance.md` สำหรับรายละเอียด
 - ตรวจ security ใน `references/security.md`
 
 ### 9. Validate And Report
 
-> Goal: ยื่นยัน And Report
+> Goal: validate findings และรายงาน
 1. ทำ `/deep-validate` สำหรับ findings ทุกรายการ
 2. จัดลำดับ severity ตาม `references/scoring.md`
 3. คำนวณ review score ตาม `references/scoring.md`

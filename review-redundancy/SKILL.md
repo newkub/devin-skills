@@ -23,37 +23,37 @@ related:
 
 ### 1. Inventory And Group Skills
 
-> Goal: Inventory And Group Skills
+> Goal: รวบรวมและจัดกลุ่ม skills
 
 ทำตาม [references/inventory-and-group-skills.md](references/inventory-and-group-skills.md)
 
 ### 2. Detect Duplicate Purpose
 
-> Goal: ตรวจจับ Duplicate Purpose
+> Goal: ตรวจจับ duplicate purpose
 
 ทำตาม [references/detect-duplicate-purpose.md](references/detect-duplicate-purpose.md)
 
 ### 3. Detect Overlapping Scope
 
-> Goal: ตรวจจับ Overlapping Scope
+> Goal: ตรวจจับ overlapping scope
 
 ทำตาม [references/detect-overlapping-scope.md](references/detect-overlapping-scope.md)
 
 ### 4. Detect Redundant Content
 
-> Goal: ตรวจจับ Redundant Content
+> Goal: ตรวจจับ redundant content
 
 ทำตาม [references/detect-redundant-content.md](references/detect-redundant-content.md)
 
 ### 5. Detect Unused Skills
 
-> Goal: ตรวจจับ Unused Skills
+> Goal: ตรวจจับ unused skills
 
 ทำตาม [references/detect-unused-skills.md](references/detect-unused-skills.md)
 
 ### 6. Recommend Actions
 
-> Goal: Recommend Actions
+> Goal: แนะนำ actions
 
 ทำตาม [references/recommend-actions.md](references/recommend-actions.md)
 
@@ -63,13 +63,13 @@ related:
 
 ### 7. Confirm And Execute
 
-> Goal: ดำเนินการ Confirm And Execute
+> Goal: ยืนยันและดำเนินการ
 
 ทำตาม [references/confirm-and-execute.md](references/confirm-and-execute.md)
 
 ### 8. Score And Report
 
-> Goal: รายงาน Score And Report
+> Goal: รายงาน score และสรุปผล
 
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report-in-table` และ `/suggest-next-action` (redundancy)
 

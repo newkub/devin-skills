@@ -23,31 +23,31 @@ related:
 ## Execute
 
 ### 1. Inventory Skills
-> Goal: Inventory Skills
+> Goal: รวบรวม skills ทั้งหมด
 ทำตาม [references/inventory-skills.md](references/inventory-skills.md)
 
 ### 2. Check AGENTS.md
-> Goal: ตรวจสอบ AGENTS md
+> Goal: ตรวจ AGENTS.md
 ทำตาม [references/check-agentsmd.md](references/check-agentsmd.md)
 
 ### 3. Check Frontmatter Related
-> Goal: ตรวจสอบ Frontmatter Related
+> Goal: ตรวจ frontmatter related
 ทำตาม [references/check-frontmatter-related.md](references/check-frontmatter-related.md)
 
 ### 4. Check In-Body References
-> Goal: ตรวจสอบ In Body References
+> Goal: ตรวจ in-body references
 ทำตาม [references/check-in-body-references.md](references/check-in-body-references.md)
 
 ### 5. Check Circular Dependencies
-> Goal: ตรวจสอบ Circular Dependencies
+> Goal: ตรวจ circular dependencies
 ทำตาม [references/check-circular-dependencies.md](references/check-circular-dependencies.md)
 
 ### 6. Check Global Rules References
-> Goal: ตรวจสอบ Global Rules References
+> Goal: ตรวจ global rules references
 ทำตาม [references/check-global-rules-references.md](references/check-global-rules-references.md)
 
 ### 7. Score And Report
-> Goal: รายงาน Score And Report
+> Goal: รายงาน score และสรุปผล
 คำนวณ score/grade ตาม [references/scoring.md](references/scoring.md) แล้วทำ `/report` และ `/suggest-next-action` (references)
 
 ## Rules
