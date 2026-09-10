@@ -10,7 +10,7 @@ npm install --save-dev @moonrepo/cli
 
 ## Version
 
-- Latest: 2.5.3
+- Latest: 2.5.4 (verified 2026-09-11)
 - [Package Registry](https://www.npmjs.com/package/@moonrepo/cli)
 - [Repository](https://github.com/moonrepo/moon)
 

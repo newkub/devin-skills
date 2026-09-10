@@ -1,4 +1,4 @@
-# Vite 7+ Reference
+# Vite 8 Reference
 
 ## Install
 
@@ -12,10 +12,11 @@ bun add -D vite
 
 ## Version Info
 
-- Latest stable: `7.3.x` (Vite 7 series, as of 2026)
-- Node.js >= 20.19+ or >= 22.12+
-- Vite 7 is ESM-only
-- Build tool: Rolldown (default bundler in Vite 8+; Vite 7 via `experimental.rolldown`)
+- Latest stable: `8.3.0` (verified 2026-09-11)
+- Node.js `^20.19.0 || >=22.12.0` — ESM-only
+- Vite 8 ships Rolldown as the single bundler — replaces esbuild + Rollup (10–30x faster builds)
+- Transform/minify now use Oxc: `esbuild` option → `oxc`, `optimizeDeps.esbuildOptions` → `optimizeDeps.rolldownOptions`, `transformWithEsbuild` → `transformWithOxc` (esbuild is an optional dep, only needed by legacy plugins)
+- Migrating from Vite 7: `rolldown-vite` package is the intermediate step
 - Templates: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `react-compiler-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`, `solid`, `solid-ts`, `qwik`, `qwik-ts`
 
 ## CLI Commands
@@ -101,17 +102,20 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    target: 'baseline-widely-available', // Vite 7 default
-    minify: 'esbuild', // 'terser' for smaller output
+    target: 'baseline-widely-available',
+    minify: 'oxc', // default; 'esbuild' deprecated, 'terser' for smaller output
     chunkSizeWarningLimit: 1000,
     rolldownOptions: {
       output: {
+        minify: {
+          compress: { dropConsole: true, dropDebugger: true }, // esbuild.drop replacement
+        },
         // Chunking strategy
       },
     },
   },
-  esbuild: {
-    drop: ['console', 'debugger'], // Production only
+  oxc: {
+    // JSX/transform options — replaces deprecated `esbuild` option
   },
 })
 ```
@@ -156,15 +160,15 @@ const isSSR = import.meta.env.SSR
 
 `.env` files: `.env`, `.env.local`, `.env.[mode]`, `.env.[mode].local`
 
-## Rolldown (Experimental in Vite 7)
+## Rolldown (Default Bundler in Vite 8)
+
+No opt-in needed — Rolldown is the only bundler in Vite 8. Configure via `build.rolldownOptions` (Rollup-compatible API; `build.rollupOptions` is still aliased):
 
 ```ts
-import { defineConfig } from 'vite'
-
 export default defineConfig({
-  experimental: {
-    rolldown: true,
-  },
+  build: { rolldownOptions: { output: {
+    advancedChunks: { groups: [{ name: 'vendor', test: /node_modules/ }] },
+  } } },
 })
 ```
 

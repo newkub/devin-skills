@@ -8,9 +8,10 @@
 
 ## Version
 
-- `@tanstack/solid-start`: `1.168.47` (latest stable)
-- `@tanstack/solid-router`: `1.170.30` (latest stable)
+- `@tanstack/solid-start`: `1.168.50` (latest stable, verified 2026-09-11) — requires `vite >=7.0.0`, `solid-js >=1.0.0`
+- `@tanstack/solid-router`: `1.170.33` (latest stable)
 - `solid-js`: `1.9.15` (latest stable)
+- `vite-plugin-solid`: `2.11.14` — peer `vite ^3–^9` (รองรับ Vite 8)
 
 ## Installation
 

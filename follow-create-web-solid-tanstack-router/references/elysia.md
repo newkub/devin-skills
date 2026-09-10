@@ -8,7 +8,7 @@
 
 ## Version
 
-- `elysia`: `1.4.29` (latest stable)
+- `elysia`: `1.4.30` (latest stable, verified 2026-09-11)
 - Runtime: Bun (optimized) — also supports Node.js via `@elysia/node`
 
 ## Installation

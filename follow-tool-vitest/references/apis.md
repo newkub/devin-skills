@@ -10,7 +10,7 @@ npm install --save-dev vitest
 
 ## Version
 
-- Latest: 4.1.11
+- Latest: 5.0.0 (verified 2026-09-11) — requires Vite >= 6.4.0, Node >= 22.12.0
 - [Package Registry](https://www.npmjs.com/package/vitest)
 - [Repository](https://github.com/vitest-dev/vitest)
 

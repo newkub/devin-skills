@@ -8,7 +8,7 @@ bun add -D vite
 
 ## Version
 
-- Latest: `7.x`
+- Latest: `8.x` (`8.3.0`, verified 2026-09-11) — Rolldown is the default bundler
 - Repository: https://github.com/vitejs/vite
 - Docs: https://vitejs.dev/guide/
 

@@ -18,7 +18,7 @@ bun add -D babel-preset-solid vite-plugin-solid
 
 ## Version
 
-- Latest: 1.9.15 (`solid-js`); Solid 2.0 in beta/rc
+- Latest: 1.9.15 (`solid-js`, verified 2026-09-11); `vite-plugin-solid` 2.11.14; `@solidjs/start` 2.0.5; Solid 2.0 in beta/rc
 - [Package Registry](https://www.npmjs.com/package/solid-js)
 - [Repository](https://github.com/solidjs/solid)
 

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vite
-description: ตั้งค่าและใช้ Vite 7+ สำหรับ modern web applications
+description: ตั้งค่าและใช้ Vite 8 (Rolldown bundler) สำหรับ modern web applications
 argument-hint: "[scope]"
 related:
   - follow-tool-vitest
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้ Vite 7+ สำหรับ development และ production builds ทั้ง single project และ monorepo
+ตั้งค่าและใช้ Vite 8+ (Rolldown เป็น bundler เดียว, Oxc สำหรับ transform/minify) สำหรับ development และ production builds ทั้ง single project และ monorepo
 
 ## Scope
 
@@ -29,7 +29,7 @@ related:
 > Goal: ติดตั้ง Vite และ verify environment
 
 1. ตรวจสอบ Node.js version ไม่ต่ำกว่า 20.19 หรือ 22.12
-2. ติดตั้ม Vite ด้วย `bun add -D vite`
+2. ติดตั้ง Vite ด้วย `bun add -D vite` (latest `8.3.0`, verified 2026-09-11)
 3. ตรวจสอบ version ด้วย `bunx vite --version`
 4. ดูรายละเอียดใน [references/vite.md](references/vite.md)
 
@@ -61,9 +61,9 @@ related:
 
 1. รัน `bunx vite build`
 2. ใช้ `build.target: 'baseline-widely-available'`
-3. เปิดใช้ `experimental.rolldown: true` ถ้า project พร้อม
-4. ใช้ `build.rolldownOptions.output.manualChunks` สำหรับ vendor splitting
-5. ใช้ `esbuild.drop: ['console', 'debugger']` ใน production
+3. Vite 8 ใช้ Rolldown เป็น bundler เดียวโดย default — ไม่ต้อง opt-in; ถ้า migrate จาก Vite 7 ใช้ `rolldown-vite` package เป็นขั้นกลาง
+4. ใช้ `build.rolldownOptions.output.advancedChunks`/`manualChunks` สำหรับ vendor splitting
+5. Drop console/debugger ด้วย `build.rolldownOptions.output.minify.compress` (`dropConsole`, `dropDebugger`) — ตัวเลือก `esbuild`/`esbuild.drop` deprecated แล้ว (`debugger` ถูกลบโดย default)
 6. กำหนด `chunkSizeWarningLimit` สำหรับ monitor bundle size
 
 ### 5. Performance Optimization
@@ -103,8 +103,8 @@ related:
 ### 3. Build
 
 - ใช้ `build.target: 'baseline-widely-available'`
-- เปิด `experimental.rolldown` ถ้า compatible
-- ใช้ `manualChunks` สำหรับ vendor splitting
+- Vite 8 ใช้ Rolldown + Oxc โดย default — ใช้ `oxc` option แทน `esbuild` (deprecated), `optimizeDeps.rolldownOptions` แทน `optimizeDeps.esbuildOptions`
+- ใช้ `manualChunks`/`advancedChunks` สำหรับ vendor splitting
 
 ### 4. Environment Variables
 
@@ -132,7 +132,7 @@ related:
 
 ## Expected Outcome
 
-- Vite 7+ ติดตั้มและทำงาน
+- Vite 8 ติดตั้งและทำงาน
 - Dev server มี HMR และ warmup
 - Production build optimized
 - Test setup integrate กับ Vitest

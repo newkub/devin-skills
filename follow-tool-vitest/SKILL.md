@@ -24,11 +24,12 @@ related:
 > Goal: Installation
 
 1. ทำ `/follow-tool-vite` เพื่อตรวจสอบ Vite setup
-2. ติดตั้ง Vitest ด้วย `bun add -D vitest`
+2. ติดตั้ง Vitest ด้วย `bun add -D vitest` (latest `5.0.0`, verified 2026-09-11)
 3. ติดตั้ง coverage tool ด้วย `bun add -D @vitest/coverage-v8`
-4. ตรวจสอบว่ามี Vite >= v6.0.0 และ Node >= v20.0.0
+4. ตรวจสอบว่ามี Vite >= v6.4.0 และ Node >= v22.12.0 (Vitest 5 requirements)
 5. เพิ่ม test script ใน `package.json`
 6. ใช้ `bun run test` แทน `bun test` เพื่อหลีกเลี่ยง Bun test runner
+7. ถ้า project ใช้ `@effect/vitest` → peer dep ต้องการ `vitest ^3.2.0` ให้ pin `vitest@^3.2` แทน (ดู `/follow-lib-effect-ts`)
 
 ### 2. Configuration
 
@@ -169,6 +170,16 @@ related:
 - ตั้งค่า `retry` สำหรับ flaky tests ใน CI
 - ใช้ `--detect-async-leaks` ขณะ debugging เท่านั้นเพราะมี runtime overhead
 - ใช้ `coverage.changed` สำหรับ limit coverage report ใน CI
+- Artifacts/output ย้ายไปอยู่ใต้ `.vitest/` directory ใน Vitest 5 — อัปเดต CI artifact paths
+
+### 6. Vitest 5 Breaking Changes
+
+- `clearMocks` default เป็น `true` — `vi.clearAllMocks()` ถูกเรียกก่อนทุก test (implementations ยังอยู่ ลบเฉพาะ call history)
+- `test.sequential`/`describe.sequential` ถูก removed — ใช้ `{ concurrent: false }` แทน
+- `vi.mock`/`vi.unmock`/`vi.hoisted` ต้องอยู่ top-level เท่านั้น (Vitest 4 warn → Vitest 5 throw)
+- `extends` ใน inline projects default เป็น `true` และ share Vite server (`sharedViteServer`) โดย default
+- `testNamePattern` (`-t` flag) match ด้วย full name ที่ join ด้วย `' > '`
+- unawaited `resolves`/`rejects` assertions fail แทนที่จะ pass เงียบๆ
 
 ## References
 
@@ -177,7 +188,7 @@ related:
 
 ## Expected Outcome
 
-- Vitest 4 ติดตั้งและทำงานได้
+- Vitest 5 ติดตั้งและทำงานได้
 - Config รองรับ globals, projects, และ monorepo
 - Tests รันได้ทั้งหมด
-- เป็นไปตาม best practices จาก Vitest 4.1 official documentation
+- เป็นไปตาม best practices จาก Vitest 5 official documentation

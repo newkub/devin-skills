@@ -8,8 +8,8 @@
 
 ## Version
 
-- `@orpc/server`: `1.14.1` (latest stable, May 2026)
-- `@orpc/client`: `1.14.0` (latest stable, Apr 2026)
+- `@orpc/server`: `1.15.0` (latest stable, verified 2026-09-11)
+- `@orpc/client`: `1.15.0` (latest stable, verified 2026-09-11)
 - Peer: `zod` for schema validation (also supports Valibot, ArkType, any Standard Schema library)
 
 ## Installation

@@ -10,7 +10,7 @@ npm install --save-dev zod
 
 ## Version
 
-- Latest: 4.5.4
+- Latest: 4.6.2 (verified 2026-09-11)
 - [Package Registry](https://www.npmjs.com/package/zod)
 - [Repository](https://github.com/colinhacks/zod)
 

@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- Package: `zod` v4.5.4 (published Aug 29, 2026)
+- Package: `zod` v4.6.2 (verified 2026-09-11)
 - License: MIT, zero external dependencies
 - TypeScript: >= 5.5.0 (older versions may work but not officially supported)
 - Runtime: Node.js and all modern browsers

@@ -24,26 +24,21 @@ bunx vitest init
 
 ## Version Info
 
-- Latest stable: `4.1.11`
+- Latest stable: `5.0.0` (released 2026-09-03, verified 2026-09-11)
 - License: MIT
-- Node.js: `^20.0.0 || ^22.0.0 || >=24.0.0`
+- Node.js: `^22.12.0 || ^24.0.0 || >=26.0.0`
+- Vite: `>= 6.4.0` (required for Vitest 5)
 - Source: https://vitest.dev
 
 ## Peer Dependencies
 
 Vitest declares the following peer dependencies. Only `vite` is required; all others are optional.
 
-- `vite`: `^6.0.0 || ^7.0.0 || ^8.0.0` (required)
-- `@vitest/coverage-v8`: `4.1.11` (optional)
-- `@vitest/coverage-istanbul`: `4.1.11` (optional)
-- `@vitest/ui`: `4.1.11` (optional)
-- `@vitest/browser-playwright`: `4.1.11` (optional)
-- `@vitest/browser-webdriverio`: `4.1.11` (optional)
-- `@vitest/browser-preview`: `4.1.11` (optional)
-- `@types/node`: `^20.0.0 || ^22.0.0 || >=24.0.0` (optional)
-- `jsdom`: `*` (optional)
-- `happy-dom`: `*` (optional)
-- `@edge-runtime/vm`: `*` (optional)
+- `vite`: `>= 6.4.0` (required — Vitest 5 supports Vite 6.4+, 7.x and 8.x)
+- `@vitest/coverage-v8`, `@vitest/coverage-istanbul`, `@vitest/ui`: `5.0.0` (optional)
+- `@vitest/browser-playwright`, `@vitest/browser-webdriverio`, `@vitest/browser-preview`: `5.0.0` (optional)
+- `@types/node`: `^22.12.0 || ^24.0.0 || >=26.0.0` (optional)
+- `jsdom` / `happy-dom` / `@edge-runtime/vm`: `*` (optional)
 - `@opentelemetry/api`: `^1.9.0` (optional)
 
 ## Configuration
@@ -216,6 +211,18 @@ vitest run -u
 
 When using Bun as the package manager, use `bun run test` instead of `bun test` to avoid Bun's own test runner.
 
+## Vitest 5 Breaking Changes (from v4)
+
+- Requires Vite >= 6.4.0 and Node.js >= 22.12.0
+- `clearMocks` defaults to `true` — mocks cleared before every test
+- `test.sequential`/`describe.sequential` removed — use `{ concurrent: false }`
+- `vi.mock`, `vi.unmock`, `vi.hoisted` must be top-level (v4 warned, v5 throws)
+- Inline `test.projects` inherit root config by default (`extends: true` default) and share the Vite server via `sharedViteServer`
+- `testNamePattern` (`-t`) matches the `' > '`-joined full test name
+- Generated artifacts moved under `.vitest/` directory — update CI artifact paths
+- Unawaited `resolves`/`rejects` assertions now fail instead of passing silently
+- Note: `@effect/vitest@0.30.0` still requires `vitest ^3.2.0` — pin vitest 3.x for Effect projects
+
 ## Vitest 4 Breaking Changes
 
 - `poolOptions` is removed; use top-level `maxWorkers`, `isolate`, `vmMemoryLimit` instead
@@ -233,6 +240,6 @@ When using Bun as the package manager, use `bun run test` instead of `bun test` 
 - https://vitest.dev/guide/cli
 - https://vitest.dev/guide/coverage
 - https://vitest.dev/guide/projects
-- https://vitest.dev/blog/vitest-4
-- https://vitest.dev/blog/vitest-4-1
+- https://vitest.dev/blog/vitest-5
+- https://vitest.dev/guide/migration
 - https://github.com/vitest-dev/vitest

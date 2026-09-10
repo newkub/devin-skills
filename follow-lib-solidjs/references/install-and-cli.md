@@ -13,7 +13,8 @@ bun add -D babel-preset-solid
 
 ## Version Info
 
-- Latest stable: `1.9.x` (as of 2026)
+- Latest stable: `1.9.15` (verified 2026-09-11)
+- `vite-plugin-solid`: `2.11.14` (supports Vite 8 — verify peer range in project)
 - Solid 2.0 in beta/rc (not yet stable)
 - No Virtual DOM — fine-grained reactivity
 - Components run once (render-once mental model)
