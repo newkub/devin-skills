@@ -24,20 +24,50 @@ related:
 
 > Pre-Run: ทำ `/check-file-locks` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (cleanup)
 
-run task มีปัญหา ต้อง cleanup file ต่างๆ เช่น node_modules, dist, .nuxt, target และอื่นๆ ที่อยู่ใน .gitignore ตามตามเหมาะสมและให้เข้ากับภาษา
+### 1. Identify Cleanup Targets
+
+> Goal: ระบุ artifacts และ cache ที่ต้องลบ
+
+1. อ่าน `.gitignore` เพื่อหา ignored paths ที่เป็น build artifacts
+2. ระบุ targets ตาม language/stack:
+   - Node.js: `node_modules/`, `dist/`, `.nuxt/`, `.next/`, `.turbo/`
+   - Rust: `target/`
+   - Python: `__pycache__/`, `.pytest_cache/`, `*.pyc`
+   - Go: `vendor/`, `bin/`
+   - General: `.cache/`, `coverage/`, `*.log`
+3. ถ้ามี stale branches หรือ worktrees → ทำ `/cleanup-git-branch` หรือ `/cleanup-worktree`
+
+### 2. Run Cleanup
+
+> Goal: ลบ artifacts อย่างปลอดภัย
+
+1. ลบ build artifacts ด้วย command ที่เหมาะสม (`rm -rf`, `cargo clean`, `bun pm cache rm` ฯลฯ)
+2. ถ้าต้องการ system-wide cleanup → ทำ `/cleanup-files-in-computer`
+3. ถ้าต้องการ project cleanup → ทำ `/cleanup-files-in-project`
+4. ถ้ามี file locks → ทำ `/check-file-locks` แล้วแก้ก่อนลบ
+
+### 3. Verify
+
+> Goal: ยืนยันว่า cleanup สำเร็จ
+
+1. ตรวจสอบว่า targets ถูกลบแล้ว
+2. ทำ `/run-check` เพื่อยืนยันว่า project ยังทำงานได้
+3. ทำ `/run-verify` ถ้าต้องการ verify ครบวงจร
+4. ทำ `/report` แสดง artifacts ที่ลบและพื้นที่ที่คืน
 
 ## Rules
 
-- Follow the project conventions and global rules (cleanup)
-- Use the allowed tools only when needed
-
-- ใช้ /cleanup-files-in-computer ถ้าจำเป็น
-- ใช้ /cleanup-files-in-project ถ้าจำเป็น
-- ใช้ /cleanup-git-branch ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+- ลบเฉพาะ artifacts ที่อยู่ใน `.gitignore` หรือเป็น build output
+- ไม่ลบ source files, config, หรือ user data
+- ถ้ามี file locks → แก้ก่อนลบ
+- ใช้ `/cleanup-files-in-computer` สำหรับ system cleanup
+- ใช้ `/cleanup-files-in-project` สำหรับ project cleanup
+- ใช้ `/cleanup-git-branch` สำหรับ branch cleanup
+- ใช้ `/suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
 
 ## Expected Outcome
 
-Completed `run-cleanup` workflow with correct output
+- Build artifacts และ cache ถูกลบ
+- Disk space ถูกคืน
+- Project ยังทำงานได้หลัง cleanup
+- รายงาน artifacts ที่ลบและพื้นที่ที่คืน

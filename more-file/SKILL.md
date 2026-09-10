@@ -18,17 +18,45 @@ related:
 
 ## Execute
 
-เพิ่มไฟล์มากกว่านี้
+### 1. Identify Needed Files
+
+> Goal: ระบุไฟล์ที่ต้องเพิ่ม
+
+1. รับ `<scope>` จาก argument หรือ context — ถ้าไม่ชัดให้ถาม user
+2. วิเคราะห์ว่าไฟล์ปัจจุบันครอบคลุม scope หรือไม่
+3. ระบุไฟล์ที่ขาด: source files, config, tests, docs, หรือ assets
+4. ถ้าไม่แน่ใจ → ทำ `/follow-best-practice` เพื่อดู structure ที่เหมาะสม
+
+### 2. Create Files
+
+> Goal: สร้างไฟล์ตาม conventions
+
+1. สร้างไฟล์ที่ระบุด้วย naming และ location ตาม project conventions
+2. เพิ่ม boilerplate ที่จำเป็น: imports, exports, types, หรือ config
+3. ถ้าเป็น source file → เพิ่ม stub implementation หรือ TODO
+4. ถ้าเป็น config → ใช้ shared config หรือ defaults ที่เหมาะสม
+5. ถ้ามีหลายไฟล์ → ทำ `/use-scripts` สำหรับ bulk creation
+
+### 3. Verify And Report
+
+> Goal: ยืนยันว่าไฟล์ถูกสร้างและใช้งานได้
+
+1. ตรวจสอบว่าไฟล์ถูกสร้างใน location ที่ถูกต้อง
+2. ถ้าเป็น source file → ตรวจว่าไม่มี import errors
+3. ถ้าเป็น config → ตรวจว่า valid syntax
+4. ทำ `/report` แสดงไฟล์ที่สร้างและสถานะ
 
 ## Rules
 
-- Follow the project conventions and global rules (file)
-- Use the allowed tools only when needed
-
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- ตั้งชื่อไฟล์ตาม project conventions
+- วางไฟล์ใน location ที่ถูกต้อง
+- ไม่สร้างไฟล์ที่ไม่จำเป็น
+- ใช้ `/follow-best-practice` สำหรับ structure ที่เหมาะสม
+- ใช้ `/suggest-next-action` หลังเสร็จเพื่อแนะนำขั้นตอนถัดไป
+- ใช้ `/resolve-errors` ถ้าสร้างไฟล์แล้วมี errors
 
 ## Expected Outcome
 
-Completed `more-file` workflow with correct output
+- ไฟล์ที่ขาดถูกสร้างครบถ้วน
+- ไฟล์อยู่ใน location และ naming ตาม conventions
+- ไม่มี import errors หรือ config errors จากไฟล์ใหม่
