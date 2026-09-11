@@ -101,10 +101,10 @@ Core:
 
 Major skill families by current count:
 - `follow-*` (218): language, framework, library, tool, service, architecture, and best-practice guides.
-- `review-*` (56): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
+- `review-*` (57): code review, architecture, security, performance, accessibility, dependencies, quality, stakeholder roleplay domains (`review-by-stakeholder` รวม persona reviews), and improvement meta-review — domain `review-*` มี section `## Fix` สำหรับแก้ findings เมื่อ user confirm (merged from improve-*/optimize-* เดิม).
 - `list-*` (32): inventory, lookup, and listing utilities.
 - `update-*` (37): repo, skills, docs, config, runtime, version, and test spec maintenance.
-- `report-*` (31): reporting, diagrams, and visualization helpers.
+- `report-*` (32): reporting, diagrams, and visualization helpers.
 - `run-*` (36): test, build, lint, typecheck, format, and deployment runners.
 - `ship-*` (4): standard `/ship`, staging, production, rollback, swarm dispatch, and `/ship-dont-ask-me` (ship ภายใต้ `dont-ask-me` mode โดยไม่ถาม user).
 - `deep-*` (19): deep analysis, research, debugging, validation, verification, and orchestration (8 alias stubs merged into canonical skills).
