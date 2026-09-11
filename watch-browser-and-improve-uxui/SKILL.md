@@ -44,7 +44,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 1. ดึง interactive elements ด้วย `agent-browser snapshot -i` เพื่อหา links/nav
 2. cross-check กับ route definitions ใน codebase (`scan-codebase` — router config, pages/, app/ dir)
-3. รวม **ทุก route** ที่ reachable — รวม dynamic routes (ใช้ sample params ของแต่ละ pattern), nested routes, และ error routes (404, error boundary)
+3. รวมทุก route ที่ reachable — รวม dynamic routes (ใช้ sample params ของแต่ละ pattern), nested routes, และ error routes (404, error boundary)
 4. สร้าง checklist ทุก route — route ที่ auth-gated ให้ login ก่อนหรือบันทึกเป็น requires-auth (ยังต้อง cover)
 
 ### 3. Dispatch UXUI Subagents Per Route

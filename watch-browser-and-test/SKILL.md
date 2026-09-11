@@ -43,7 +43,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 1. `agent-browser snapshot -i` เพื่อหา nav links
 2. cross-check route definitions ใน codebase
-3. สร้าง checklist **ทุก route** — รวม dynamic routes (sample params ต่อ pattern), nested routes, error routes, และ auth-gated routes (login ก่อน test — ยังต้อง cover)
+3. สร้าง checklist ทุก route — รวม dynamic routes (sample params ต่อ pattern), nested routes, error routes, และ auth-gated routes (login ก่อน test — ยังต้อง cover)
 
 ### 3. Dispatch User-Roleplay Subagents
 
