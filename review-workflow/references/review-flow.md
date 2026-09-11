@@ -14,49 +14,49 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 > Goal: เข้าใจ workflow ปัจจุบัน
 
-1. ดูรายละเอียดใน [references/read-flow.md](references/read-flow.md)
+1. ดูรายละเอียดใน [references/read-flow.md](read-flow.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 2. Check Speed
 
 > Goal: ลด latency และ unnecessary steps
 
-1. ดูรายละเอียดใน [references/check-speed.md](references/check-speed.md)
+1. ดูรายละเอียดใน [references/check-speed.md](check-speed.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 3. Check Safety
 
 > Goal: ลด risk ของ workflow
 
-1. ดูรายละเอียดใน [references/check-safety.md](references/check-safety.md)
+1. ดูรายละเอียดใน [references/check-safety.md](check-safety.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 4. Check Usability
 
 > Goal: ให้ง่ายต่อการเรียกใช้
 
-1. ดูรายละเอียดใน [references/check-usability.md](references/check-usability.md)
+1. ดูรายละเอียดใน [references/check-usability.md](check-usability.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 5. Check Efficiency
 
 > Goal: ใช้ resources คุ้มค่า
 
-1. ดูรายละเอียดใน [references/check-efficiency.md](references/check-efficiency.md)
+1. ดูรายละเอียดใน [references/check-efficiency.md](check-efficiency.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 6. Remove Redundancy
 
 > Goal: ไม่ซ้ำซ้อน
 
-1. ดูรายละเอียดใน [references/remove-redundancy.md](references/remove-redundancy.md)
+1. ดูรายละเอียดใน [references/remove-redundancy.md](remove-redundancy.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ### 7. Report
 
 > Goal: สรุปผลการ review
 
-1. ดูรายละเอียดใน [references/report.md](references/report.md)
+1. ดูรายละเอียดใน [references/report.md](report.md)
 2. บันทึก findings พร้อม severity และ evidence
 
 ## Rules
@@ -77,7 +77,7 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 
 ## Metrics
 
-- ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md)
+- ดู metrics สำหรับ review ใน [references/scoring.md](scoring.md)
 
 ## Expected Outcome
 

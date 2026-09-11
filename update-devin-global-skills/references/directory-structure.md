@@ -7,7 +7,7 @@ skill directory รองรับไฟล์ย่อยโดยไม่ท�
 1. ถ้าต้องการ external references → สร้าง `references/` และเขียน references ให้ครบถ้วน. ถ้า skill มี dependencies (จำเป็นหรือ optional) → ต้องมี `references/` เสมอ และทุก dependency ต้องมี reference file ของตัวเอง (บังคับ ห้ามข้าม)
 2. ถ้าต้องการ helper scripts → สร้าง `scripts/` ตาม `/use-scripts`
 3. ถ้าต้องการ expanded documentation → สร้าง `guide/` หรือ `examples/`
-4. ถ้า skill มีหลาย sub-workflows ที invoke แยกได้ → สร้าง `subskills/<name>/SKILL.md` ตาม [references/subskills-and-subagents.md](references/subskills-and-subagents.md)
+4. ถ้า skill มีหลาย sub-workflows ที invoke แยกได้ → สร้าง `subskills/<name>/SKILL.md` ตาม [references/subskills-and-subagents.md](subskills-and-subagents.md)
 5. ถ้า skill ต้อง ship subagent profiles เฉพาะ skill → สร้าง `subagents/<name>.md` หรือ `subagents/<name>/AGENT.md` ตาม reference เดียวกัน
 6. ถ้าต้องการ project rules → ทำ `/update-dot-devin` เพื่อสร้าง `.devin/rules/`
 

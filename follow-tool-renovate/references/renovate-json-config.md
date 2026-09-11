@@ -95,7 +95,7 @@ Renovate ค้นหา config ตามลำดับนี้:
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](cli.md)
 
 
 ## Expected Outcome

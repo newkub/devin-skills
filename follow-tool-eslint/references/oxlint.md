@@ -20,7 +20,7 @@
 1. ติดตั้ง oxlint และ `eslint-plugin-oxlint` ด้วย package manager ของ project:
    - Bun project: `bun add -D oxlint@latest eslint-plugin-oxlint`
    - ถ้า project ไม่ใช้ Bun: ใช้ package manager ของ project (npm, pnpm, yarn)
-2. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
+2. ดูรายละเอียดใน [references/oxlint.md](oxlint.md)
 
 ### 2. Configure Oxlint
 
@@ -28,7 +28,7 @@
 
 1. สร้าง `oxlint.config.ts` หรือ `.oxlintrc.json`
 2. กำหนด categories, rules และ plugins ตาม project
-3. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
+3. ดูรายละเอียดใน [references/oxlint.md](oxlint.md)
 
 ### 3. Configure ESLint
 
@@ -37,7 +37,7 @@
 1. สร้างหรือแก้ไข `eslint.config.js` ที่ root
 2. ใช้ `oxlint.configs['flat/recommended']` หรือ `oxlint.buildFromOxlintConfig({ plugins: ['react', 'typescript', 'import'] })`
 3. วาง oxlint config สุดท้ายใน array
-4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
+4. ดูรายละเอียดใน [references/oxlint.md](oxlint.md)
 
 ### 4. Add Scripts
 
@@ -46,7 +46,7 @@
 1. เพิ่ม `lint` script รัน `oxlint --type-aware`
 2. เพิ่ม `lint:fix` script รัน `oxlint --type-aware --fix`
 3. รัน `bun run lint` เพื่อทดสอบ
-4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
+4. ดูรายละเอียดใน [references/oxlint.md](oxlint.md)
 
 ### 5. Verify
 
@@ -55,7 +55,7 @@
 1. รัน `bun run lint`
 2. ตรวจสอบว่า oxlint rules ทำงานถูกต้อง
 3. ตรวจสอบว่า ESLint integration ทำงานได้
-4. ดูรายละเอียดใน [references/oxlint.md](references/oxlint.md)
+4. ดูรายละเอียดใน [references/oxlint.md](oxlint.md)
 
 ## Rules
 
@@ -93,7 +93,7 @@
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](cli.md)
 
 
 ## Expected Outcome

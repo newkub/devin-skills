@@ -76,7 +76,7 @@ tests/examples <-- src
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](cli.md)
 
 
 ## Expected Outcome

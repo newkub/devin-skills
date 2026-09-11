@@ -106,7 +106,7 @@
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](cli.md)
 
 
 ## Expected Outcome

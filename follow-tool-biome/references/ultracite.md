@@ -20,7 +20,7 @@
 1. ตรวจสอบ package manager และ existing linter config
 2. ติดตั้ง `bun add -D ultracite @biomejs/biome`
 3. ติดตั้ม optional dependencies ถ้าจำเป็น เช่น `oxlint`
-4. ดู install options ใน [references/ultracite.md](references/ultracite.md)
+4. ดู install options ใน [references/ultracite.md](ultracite.md)
 
 ### 2. Initialize Configuration
 
@@ -58,7 +58,7 @@
 2. เพิ่ม custom overrides อย่าง minimum
 3. เพิ่ม lint step ใน CI pipeline
 4. ไม่ commit ถ้า lint ไม่ผ่าน
-5. ดู config options ใน [references/ultracite.md](references/ultracite.md)
+5. ดู config options ใน [references/ultracite.md](ultracite.md)
 
 ## Rules
 
@@ -95,7 +95,7 @@
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](cli.md)
 
 
 ## Expected Outcome
