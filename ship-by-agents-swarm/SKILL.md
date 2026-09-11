@@ -8,7 +8,6 @@ related:
   - use-subagents
   - update-devin-global-subagents
   - use-scripts
-  - use-astgrep
   - run-verify
   - deep-validate
   - run-check

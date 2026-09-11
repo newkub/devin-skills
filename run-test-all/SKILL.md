@@ -18,8 +18,6 @@ related:
   - update-test-and-fix
   - deep-review-codebase
   - resolve-errors
-  - edit-manual
-  - run-verify
 ---
 
 ## Goal

@@ -18,7 +18,6 @@ triggers:
   - model
 related:
   - review-performance
-  - review-devin-global-skills
   - check-bottlenecks
   - check-unused
   - refactor

@@ -6,7 +6,6 @@ related:
   - follow-review
   - deep-analyze
   - plan
-  - deep-research
   - deep-validate
   - implement-features-to-mvp
   - report-scan-todo
@@ -18,7 +17,6 @@ related:
   - run-test-all
   - run-verify
   - test-usage
-  - run-check
   - run-build
 ---
 ## Goal

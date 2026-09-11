@@ -17,7 +17,6 @@ related:
   - refactor-workspace
   - review-techstack
   - run-review
-  - run-build
   - run-test-all
 ---
 ---  - check-file-encoding

@@ -4,7 +4,6 @@ description: ตั้งค่า scripts ใน package.json, Cargo.toml ห�
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
-  - open-web-for-config-secret
   - run-test-all
   - run-task-all
   - run-check
@@ -18,7 +17,6 @@ related:
   - follow-monorepo
   - follow-tool-moonrepo
   - review-delivery
-  - follow-tool-taze
   - update-version-to-latest
 
 ---
