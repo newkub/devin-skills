@@ -55,7 +55,8 @@ related:
 
 > Goal: มีข้อมูลล่าสุดก่อนแก้ไข
 
-ทำตาม [references/deep-research.md](references/deep-research.md)
+1. ทำ `/deep-research` โดยระบุ topic หรือ skill ที่จะอัปเดต — ข้ามถ้า topic ไม่ต้อง research
+2. ทำตาม [references/deep-research.md](references/deep-research.md)
 
 ### 6. Write Or Update SKILL.md
 
