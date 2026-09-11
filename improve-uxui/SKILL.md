@@ -7,6 +7,7 @@ related:
   - watch-browser-and-test
   - watch-browser-and-improve-uxui
   - review-uxui
+  - review-accessibility
   - deep-thinking
   - use-subagents
   - report
@@ -19,10 +20,11 @@ related:
 
 ## Scope
 
-ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 2 มิติ:
+ใช้เมื่อต้องการ UX/UI pass แบบครบวงจร — orchestrator ที่รวม 3 มิติ:
 
 - Functional UX — ทำตาม `/watch-browser-and-test` (flows, actions, error states ที่ user เจอจริง)
 - Visual UX — ทำตาม `/watch-browser-and-improve-uxui` (layout, responsive, polish จาก screenshots)
+- Accessibility — อยู่ใน visual pass ตาม `/review-accessibility` (contrast, focus order, aria, keyboard nav — a11y คือส่วนหนึ่งของ UX ไม่แยก skill)
 
 ถ้าต้องการแค่มิติเดียว → เรียก sub-skill นั้นโดยตรง
 
@@ -47,7 +49,8 @@ related:
 > Goal: หา UX issues จากภาพจริงทุก route
 
 1. ทำ `/watch-browser-and-improve-uxui` — subagents capture + `/review-uxui` ทุก route ทั้ง desktop และ mobile
-2. เก็บ findings พร้อม screenshot evidence
+2. แต่ละ agent รวม a11y checks ตาม `/review-accessibility` ด้วย — contrast, focus order, aria labels, keyboard navigation
+3. เก็บ findings พร้อม screenshot evidence
 
 ### 4. Merge And Prioritize
 

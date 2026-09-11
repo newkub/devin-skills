@@ -3,6 +3,7 @@ name: review-seo
 description: Review SEO ครอบคลุม technical, on-page, structured data, CWV, hreflang
 argument-hint: "[scope]"
 related:
+  - improve-seo
   - review-uxui
   - review-performance
   - scan-codebase
@@ -131,6 +132,8 @@ Review SEO ครอบคลุม technical SEO, on-page SEO, structured data,
 > ทำ section นี้เฉพาะเมื่อ user confirm ให้แก้ findings หลังรายงาน — ข้ามถ้า scope เป็น review/report-only เช่นถูก dispatch จาก `/deep-review-codebase` หรือ `/review` (seo)
 
 Merged from: improve-seo
+
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-seo`
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (seo)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (seo)

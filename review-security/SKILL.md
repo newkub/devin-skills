@@ -152,6 +152,8 @@ Review security ครอบคลุมทุก dimension ของ applicatio
 
 Merged from: improve-security
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/improve-security`
+
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (security)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (security)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (security)

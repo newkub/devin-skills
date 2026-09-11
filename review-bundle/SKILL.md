@@ -69,6 +69,8 @@ related:
 
 Merged from: optimize-build, optimize-bundle
 
+สำหรับ dedicated fix pass แบบ standalone workflow → `/optimize-bundling`
+
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (bundle)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (bundle)
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (bundle)
