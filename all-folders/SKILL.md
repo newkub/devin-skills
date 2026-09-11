@@ -1,6 +1,6 @@
 ---
 name: all-folders
-description: ทำงานกับทุก folder ใน project ตาม workflow จนครบ scope
+description: รัน task หรือ workflow เดียวกันกับทุก folder ใน project จนครบ scope
 argument-hint: "[scope]"
 related:
   - deep-analyze

@@ -1,6 +1,6 @@
 ---
 name: all-files
-description: ทำงานกับแต่ละ file ใน project จนครบถ้วน
+description: รัน task หรือ workflow เดียวกันกับทุก file ใน project จนครบทุกไฟล์
 argument-hint: "[scope]"
 related:
   - deep-analyze

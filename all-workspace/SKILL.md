@@ -1,6 +1,6 @@
 ---
 name: all-workspace
-description: ทำงานกับทุก workspace ใน monorepo จนครบถ้วน
+description: รัน task เดียวกันกับทุก workspace ใน monorepo จนครบทุก package
 argument-hint: "[scope]"
 related:
   - deep-analyze
