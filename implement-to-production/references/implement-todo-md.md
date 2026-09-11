@@ -41,7 +41,7 @@
 
 1. ทำ `/implement-to-production` สำหรับ task ปัจจุบัน
 2. ถ้า task ง่ายและมี state อยู่แล้ว → ใช้ `/continue`
-3. ถ้า task ซับซ้อน → ใช้ `/deep-plan` ก่อน
+3. ถ้า task ซับซ้อน → ใช้ `/plan` ก่อน
 4. ถ้า fail → ทำ `/resolve-errors` แล้ว retry (max 3)
 5. update status เป็น `completed` ถ้าผ่าน
 

@@ -4,7 +4,7 @@ description: คิดวิเคราะห์ปัญหาอย่าง�
 argument-hint: "[topic]"
 related:
   - rethink
-  - deep-plan
+  - plan
   - ask-me
   - deep-debug
   - analyze-root-cause-analysis
@@ -19,7 +19,7 @@ related:
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: pondering, deep-pondering)
 
-ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`) และไม่ใช่การวางแผนงาน (ใช้ `/deep-plan`)
+ใช้สำหรับงานที่ต้องการวิเคราะห์เชิงลึก วางแผน หรือแก้ปัญหาที่ซับซ้อน ไม่ใช่การทบทวนก่อนตัดสินใจ (ใช้ `/deep-thinking`) และไม่ใช่การวางแผนงาน (ใช้ `/plan`)
 
 ## Execute
 
@@ -163,7 +163,7 @@ related:
 - ทบทวนมุมมอง (pondering) ก่อนเริ่มวิเคราะห์ได้ภายใน skill นี้
 - ทำ `/deep-debug` สำหรับปัญหาที่ต้องแก้ไข
 - ทำ `/analyze-root-cause-analysis` สำหรับหาสาเหตุหลัก
-- ทำ `/deep-plan` สำหรับวางแผนงานหลังวิเคราะห์
+- ทำ `/plan` สำหรับวางแผนงานหลังวิเคราะห์
 - ทำ `/ask-me` ถ้าวิเคราะห์แล้วยังไม่ชัดเจน
 - ทำ `/suggest-next-action` หลังวิเคราะห์เพื่อรู้ว่าควรทำอะไรต่อ
 

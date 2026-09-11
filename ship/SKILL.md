@@ -28,10 +28,10 @@ related:
   - run-test-e2e
   - run-test-integration
   - run-test-e2e
-  - deep-review-codebase-then-fix
+  - review-then-fix
   - run-verify
   - deep-validate
-  - deep-implement-to-production
+  - implement-to-production
   - create-git-branch
   - git-commit-and-push
   - refactor-commit
@@ -79,7 +79,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 > Goal: code ผ่าน local validation
 
 1. เลือก execution mode: ถ้า scope ใหญ่หรือหลายด้าน → ทำ `/ship-by-agents-swarm`; ถ้า diff เล็ก (เช่น typo, docs, config บรรทัดเดียว) → ข้ามข้อ 2-8 ไปข้อ 9 ได้ แต่ยังต้องทำข้อ 9-12
-2. ทำ `/deep-review-codebase-then-fix` เพื่อ review และ fix issues ก่อน ship
+2. ทำ `/review-then-fix` เพื่อ review และ fix issues ก่อน ship
 3. ทำ `/deep-optimize` เพื่อ optimize ครบทุก layer — frontend, API, database, SEO, bundle
 4. ทำ `/review-test` ถ้า tests หรือ coverage ไม่ผ่าน threshold
 5. ทำ `/review-dependencies` เพื่อ audit vulnerabilities, licenses และ outdated packages
@@ -91,10 +91,10 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 11. ทำ `/run-test-all` เสมอ — เลือกและรัน `run-test-*` ที่เกี่ยวข้องกับ project ให้ผ่านครบก่อน ship
 12. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
 13. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
-14. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/deep-implement-to-production`
+14. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/implement-to-production`
 15. ถ้าพบ structural หรือ quality issues → ทำ `/deep-refactor-codebase`
-16. ทำ `/deep-update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
-17. ทำ `/deep-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
+16. ทำ `/update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
+17. ทำ `/run-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
 
 ### 4. Stage
 

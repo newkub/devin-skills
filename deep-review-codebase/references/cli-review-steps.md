@@ -50,7 +50,7 @@
 
 > Goal: `tools/review-codebase` ใช้ analyzers จาก `tools-analyze` โดยไม่ duplicate logic
 
-1. ทำตาม `/deep-analyze-by-use-scripts` เพื่อประมวลผล patterns ซับซ้อนใน `tools/analyze` ไม่ใช่ใน `tools/review-codebase`
+1. ทำตาม `/deep-analyze` เพื่อประมวลผล patterns ซับซ้อนใน `tools/analyze` ไม่ใช่ใน `tools/review-codebase`
 2. import `runAllAnalyzers` จาก `tools-analyze` ใน `src/application/review.ts`
 3. แปลงผล `CategoryResult` ของแต่ละ analyzer เป็น `ReviewReport` พร้อม score, grade, domain breakdown
 4. กำหนด `reviewWorkflow` map ไปยัง `/review-*` workflows ที่เหมาะสม

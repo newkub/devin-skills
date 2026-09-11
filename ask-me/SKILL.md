@@ -14,7 +14,7 @@ related:
   - ask-again
   - dont-ask-me
   - update-references
-  - deep-plan
+  - plan
   - follow-skills-map
 ---
 
@@ -51,7 +51,7 @@ related:
 1. แบ่งคำถามออกเป็น steps ตามลำดับทีต้องถาม
 2. แต่ละ step มี 1-4 คำถาม แต่ละคำถามมี 2-4 ตัวเลือก
 3. แต่ละตัวเลือกต้องมี `label` สั้นกระชับ และ `description` อธิบายรายละเอียด
-4. ระบุตัวเลือกแนะนำโดยเพิ่ม visual marker นำหน้า `label` เช่น `✨ ทำ /deep-plan ต่อ` หรือ `(recommended) ทำ /deep-plan ต่อ` พร้อมอธิบายเหตุผลใน `description`
+4. ระบุตัวเลือกแนะนำโดยเพิ่ม visual marker นำหน้า `label` เช่น `✨ ทำ /plan ต่อ` หรือ `(recommended) ทำ /plan ต่อ` พร้อมอธิบายเหตุผลใน `description`
 5. ตั้ง `multi_select: true` สำหรับคำถามที่เลือกได้หลายตัว
 6. ไม่ใส่ตัวเลือก "other" เพราะผู้ใช้สามารถตอบเองได้เสมอ
 7. ตัวเลือกต้องครอบคลุมทุกกรณีที่เป็นไปได้

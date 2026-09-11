@@ -7,7 +7,7 @@ related:
   - deep-validate
   - report
   - suggest-next-action
-  - deep-plan
+  - plan
   - loop-until-complete
 ---
 
@@ -69,7 +69,7 @@ related:
 1. แบ่ง task ใหญ่เป็น sub-tasks ที่มี context แยกอิสระ
 2. แต่ละ sub-task ทำงานใน context สะอาด ไม่สะสม context จาก sub-task อื่น
 3. แต่ละ sub-task ส่งกลับเฉพาะ condensed summary (1,000-2,000 tokens) ไม่ใช่ raw context
-4. ใช้ `/deep-plan` สำหรับวางแผน sub-tasks ก่อนเริ่ม
+4. ใช้ `/plan` สำหรับวางแผน sub-tasks ก่อนเริ่ม
 5. ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
 
 ### 6. Manage Context Lifecycle
@@ -135,7 +135,7 @@ related:
 
 - แต่ละ sub-task มี context แยกอิสระ
 - ส่งกลับเฉพาะ condensed summary ไม่ใช่ raw context
-- ใช้ `/deep-plan` สำหรับวางแผน sub-tasks
+- ใช้ `/plan` สำหรับวางแผน sub-tasks
 - ใช้ `/loop-until-complete` สำหรับแต่ละ sub-task
 
 ### 5. Goal Alignment

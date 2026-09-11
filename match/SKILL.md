@@ -22,7 +22,7 @@ related:
   - ask-me
   - follow-your-suggestion
   - use-scripts
-  - deep-plan
+  - plan
   - deep-validate
 ---
 
@@ -34,7 +34,7 @@ related:
 
 ใช้เมื่อผู้ใช้พูดในลักษณะ "find X, then do Y if A, do Z if B" หรือต้องการรัน rule-based batch operation บนชุด items ที่ค้นพบ ใช้ได้กับ files, code symbols, skills, dependencies หรือ searchable target ใดๆ
 
-ดูเพิ่มเติม: /search-in-git, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /deep-plan
+ดูเพิ่มเติม: /search-in-git, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /plan
 
 ## Execute
 

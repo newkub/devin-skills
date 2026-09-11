@@ -3,7 +3,7 @@ name: update-todo-md
 description: เพิ่ม อ่าน และ enhance prompt จาก TODO.md ใน project root
 argument-hint: "[add|read] [title/content]"
 related:
-  - deep-plan
+  - plan
   - implement-to-production
   - continue
   - enhance-prompt
@@ -77,7 +77,7 @@ related:
 
 > Goal: ผู้ใช้รู้ว่าจะทำต่อยังไง
 
-1. ถ้าต้องการวางแผนละเอียด → ใช้ `/deep-plan`
+1. ถ้าต้องการวางแผนละเอียด → ใช้ `/plan`
 2. ถ้าพร้อม implement → ใช้ `/implement-to-production`
 3. ถ้ามีหลาย task รออยู่ → ใช้ `/continue` เพื่อทำตามลำดับ
 

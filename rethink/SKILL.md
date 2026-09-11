@@ -4,7 +4,7 @@ description: ทบทวนและ re-evaluate การตัดสินใ
 argument-hint: "[topic]"
 related:
   - deep-thinking
-  - deep-plan
+  - plan
   - deep-analyze
   - deep-research
   - deep-review-codebase
@@ -125,7 +125,7 @@ related:
 
 - ใช้ `/deep-thinking` ถ้าต้องวิเคราะห์เชิงโครงสร้างใหม่
 - ใช้ `/deep-thinking` ถ้าต้องทบทวนก่อนตัดสินใจ
-- ใช้ `/deep-plan` ถ้าต้องสร้างแผนใหม่
+- ใช้ `/plan` ถ้าต้องสร้างแผนใหม่
 - ใช้ `/ask-me` ถ้าต้องการ user input
 - ใช้ `/update-references` ถ้ามีการเปลี่ยน structure
 

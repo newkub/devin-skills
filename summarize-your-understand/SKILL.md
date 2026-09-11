@@ -7,7 +7,7 @@ related:
   - plan
   - rethink
   - deep-thinking
-  - deep-plan
+  - plan
   - report-scan-todo
   - report-file-structure
 ---
@@ -81,7 +81,7 @@ related:
 
 - ใช้ /rethink ถ้าจำเป็น
 - ใช้ /deep-thinking ถ้าจำเป็น
-- ใช้ /deep-plan ถ้าจำเป็น
+- ใช้ /plan ถ้าจำเป็น
 
 ## Expected Outcome
 

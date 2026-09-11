@@ -21,6 +21,9 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 
 ใช้เมื่อต้องการทั้ง review และ fix โดยไม่เฉพาะจอดจง รองรับ code, docs, และ skills
 
+- Scope เล็ก/เฉพาะจุด → ใช้ `/review` domain ที่ตรง; scope ทั้ง codebase → ใช้ `/deep-review-codebase` เป็น review pass (merged from: `deep-review-codebase-then-fix`)
+- Fix mode: user confirm ตาม findings (default), ตาม suggestion เดิม (`/follow-your-suggestion`), หรือ `fix all` ตามที่ user ระบุ
+
 ดูเพิ่มเติม: /deep-review-codebase
 
 ## Execute

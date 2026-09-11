@@ -3,7 +3,7 @@ name: follow-plan
 description: อ่านแผนจาก AGENTS.md หรือเอกสาร plan แล้วทำตามทีละ step จนครบ พร้อม track ใน todo list
 argument-hint: "[plan-file]"
 related:
-  - deep-plan
+  - plan
   - implement-to-production
   - follow-agents-md
   - report
@@ -18,7 +18,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับ execute plan ที่มีรายการ workflows, skills, หรือ tasks เช่นจาก `deep-plan` หรือ `follow-agents-md`
+ใช้สำหรับ execute plan ที่มีรายการ workflows, skills, หรือ tasks เช่นจาก `plan` หรือ `follow-agents-md`
 
 Boundary: ถ้าเป็นไฟล์แผนใน `.devin/plan/<workspace>/` ที่ต้อง track status และลบหลังเสร็จ → ใช้ `/implement-to-production` แทน
 

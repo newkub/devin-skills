@@ -8,7 +8,7 @@ related:
   - review-release
   - review-security
   - review-compliance
-  - deep-plan
+  - plan
   - prioritize
   - report
   - suggest-next-action
@@ -89,7 +89,7 @@ Review project, plan, or implementation risks เพื่อระบุคว�
 ### 1. Review Independence
 
 - ทำ review เท่านั้น ไม่แก้ไข target ระหว่าง review
-- ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `deep-plan` หลัง review
+- ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `plan` หลัง review
 - ถ้าต้องแก้ไข implementation ให้ใช้ `fix`, `resolve-errors`, หรือ `refactor` หลัง review
 - ทุก finding ต้องมี evidence และ location
 

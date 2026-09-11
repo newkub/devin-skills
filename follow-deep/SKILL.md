@@ -6,7 +6,7 @@ related:
   - review
   - deep-review-codebase
   - deep-analyze
-  - deep-plan
+  - plan
   - refactor
   - deep-validate
   - follow-parallel
@@ -40,7 +40,7 @@ related:
 
 1. Analysis → `deep-analyze` (รวม scripts/review CLI)
 2. Review → `deep-review-codebase` (comprehensive) หรือ `/review-*` (specific dimension)
-3. Planning → `deep-plan`
+3. Planning → `plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`
 6. Validation → `deep-validate`

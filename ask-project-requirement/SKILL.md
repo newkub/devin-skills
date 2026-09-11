@@ -7,7 +7,7 @@ related:
   - update-agents-md
   - alternative
   - ship
-  - deep-plan
+  - plan
   - follow-goal
 ---
 
@@ -67,7 +67,7 @@ related:
 
 1. รวบรวมคำตอบจากทุก step เป็น bullet หรือ `requirement-summary.md`
 2. ถ้าต้องการเลือก library → ทำ `/alternative`
-3. ถ้าต้องการ plan ต่อ → ทำ `/deep-plan`
+3. ถ้าต้องการ plan ต่อ → ทำ `/plan`
 4. ถ้าต้องการตั้งเป้า → ทำ `/follow-goal`
 5. ทำ `/update-agents-md` เพื่ออัปเดต `AGENTS.md` ด้วย requirements
 
@@ -105,6 +105,6 @@ related:
 - ได้ `requirement-summary.md` หรือสรุปใน `AGENTS.md`
 - รู้ interfaces, users, tech, scale, constraints, compliance, definition of done
 - `AGENTS.md` อัปเดตตาม requirements
-- พร้อมทำ `/deep-plan` หรือ `/follow-goal` ต่อ
+- พร้อมทำ `/plan` หรือ `/follow-goal` ต่อ
 
 

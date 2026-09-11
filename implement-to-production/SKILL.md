@@ -5,7 +5,7 @@ argument-hint: "[scope-or-plan]"
 related:
   - follow-review
   - deep-analyze
-  - deep-plan
+  - plan
   - deep-research
   - deep-validate
   - implement-features-to-mvp
@@ -48,7 +48,7 @@ related:
 
 > Goal: ยืนยัน architecture ก่อนลงมือ
 
-1. ทำ `/deep-plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/follow-architecture` เพื่อดู boundary, layer, data flow
+1. ทำ `/plan` เพื่อวางแผน implement อย่างละเอียด แล้วทำ `/review-architecture` หรือ `/follow-architecture` เพื่อดู boundary, layer, data flow
 2. ถ้า architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน
 3. ระบุ critical path: schema → data → API → UX/UI
 
@@ -127,7 +127,7 @@ related:
 3. ถ้าไม่ผ่าน → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 4. ทำ `/test-usage` เพื่อทดสอบ usage examples ใน `README.md`, docs และ `package.json` scripts ว่าทำงานได้จริงก่อน ship
 5. สร้าง rollback plan: `git revert <merge-commit>` หรือ redeploy เวอร์ชันเดิม
-6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ `/deep-implement-to-production` ก่อนเพื่อ deep pass
+6. ถ้างานซับซ้อนหรือหลาย workspace → ทำ deep pass เพิ่ม: front-load `/deep-thinking`, `/deep-impact` สำหรับ high-impact changes, จัดลำดับ critical path (schema → data → API → UX) และกำหนด rollback plan ก่อนแต่ละ batch
 7. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → ทำ `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue
 8. ถ้ามีงานที่ยังไม่เสร็จ blocked หรือ deferred → ทำ `/save-to-todo-md` เพื่อเก็บ remaining items ลง `TODO.md`
 9. ทำ `/suggest-next-action`

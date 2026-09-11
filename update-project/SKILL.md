@@ -15,7 +15,7 @@ related:
   - update-github-metadata
   - update-todo-md
   - update-version-to-latest
-  - deep-update-project
+  - update-project
   - deep-review-codebase
 ---
 
@@ -27,7 +27,7 @@ related:
 
 ใช้หลัง ship ทุก workspace — เช็ค git log ล่าสุดของแต่ละ workspace, restore ข้อมูลมาอัปเดต root `AGENTS.md`, `README.md`, sync project files, อัปเดต project skills, GitHub metadata ไม่แก้ไข workspace code ถ้าต้อง update dependencies, runtime, tools หรือ versioned config ใดๆ → ใช้ `/update-version-to-latest` ก่อน update config อื่น
 
-Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → ใช้ `/deep-update-project`
+Boundary: quick root sync — ถ้าต้อง comprehensive update ก่อน release พร้อม deep analysis baseline → front-load `/deep-analyze` + `/deep-review-codebase` ก่อน Step 1 (merged from: `deep-update-project`)
 
 ## Execute
 
@@ -156,7 +156,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
 - รัน validation หลัง update
 - ไม่อ้างว่า check ผ่าน ถ้า command fail
 
-- ใช้ /deep-update-project ถ้าจำเป็น
+- ใช้ /update-project ถ้าจำเป็น
 
 ## Expected Outcome
 

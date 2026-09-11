@@ -21,7 +21,7 @@ related:
   - deep-thinking
   - follow-best-practice
   - follow-layered-architecture
-  - deep-plan
+  - plan
   - refactor
   - use-scripts
   - implement-to-production
@@ -42,7 +42,7 @@ related:
 - ถ้าระบุ target เป็นไฟล์หรือ directory → reset มุมมองต่อไฟล์/ไดเรกทอรีนั้น โดยทำตามขั้นตอน `Assume Reset Context For Target` ด้านล่าง
 - ไม่ลบไฟล์ใด ๆ แต่ reset แบบจำลองความเข้าใจของบทสนทนาหรือไฟล์
 
-ดูเพิ่มเติม: `/scan-codebase`, `/use-astgrep`, `/check-skills-related`, `/deep-thinking`, `/deep-plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
+ดูเพิ่มเติม: `/scan-codebase`, `/use-astgrep`, `/check-skills-related`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
 
 ## Execute
 
@@ -77,7 +77,7 @@ related:
 
 1. ถ้าผู้ใช้ให้งานใหม ให้วางแผนงานนั้นโดยอิสระ
 2. ใช้ `/deep-thinking` เพื่อวิเคราะห์ปัญหาใหมโดยไม่มีอคติจากก่อนหน้า
-3. ใช้ `/deep-plan` เพื่อสร้างแผนใหมจากสถานะไฟล์ปัจจุบัน
+3. ใช้ `/plan` เพื่อสร้างแผนใหมจากสถานะไฟล์ปัจจุบัน
 4. ไม่นำแผนเก่ากลับมาใช้ เว้นแต่ผู้ใช้ขอให้ทำ
 
 ### 5. Assume Reset Context For Target
@@ -89,7 +89,7 @@ related:
 3. ทำ `/scan-codebase` พร้อม `/use-astgrep` และ `/check-skills-related`
 4. ทำ `/deep-thinking` เพื่อวิเคราะห์โครงสร้าง, issues, และ improvements
 5. ทำ `/follow-best-practice` และ `/follow-layered-architecture` เพื่อเทียบมาตรฐาน
-6. ทำ `/deep-plan` เพื่อวางแผนการแก้ไขตาม findings ใหม
+6. ทำ `/plan` เพื่อวางแผนการแก้ไขตาม findings ใหม
 7. ทำ `/refactor` และ `/use-scripts` ก่อน implement ถ้าจำเป็น
 8. ทำ `/implement-to-production` เพื่อส่งมอบ code สมบูรณ์
 

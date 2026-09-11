@@ -4,7 +4,7 @@ description: สร้างแผนจากไอเดียฟีเจอ�
 argument-hint: "[topic]"
 related:
   - idea-features
-  - deep-plan
+  - plan
   - review-then-fix
   - review-plan
   - plan
@@ -48,7 +48,7 @@ related:
 2. คำนวณ score ตาม `references/scoring.md`
    - `Score = (Impact + Effect) / (Risk × Phase)`
 3. เรียงลำดับ features ตาม `Score` สูง → ต่ำ แล้ว `Phase` ต่ำ → สูง (กรณี `Score` เท่ากัน)
-4. ทำ `/deep-plan` เพื่อวาง dependencies ระหว่าง features
+4. ทำ `/plan` เพื่อวาง dependencies ระหว่าง features
 5. ทำ `/report-uxui-sketch` สำหรับแต่ละ feature ที่ต้องการ visualize (ถ้ามี)
 
 ### 3. Plan And Refine

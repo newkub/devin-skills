@@ -6,7 +6,7 @@ related:
   - report
   - suggest-next-action
   - plan
-  - deep-plan
+  - plan
   - create-plan-in-dot-devin
   - implement-to-production
   - follow-plan
@@ -19,7 +19,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 ## Scope
 
-ใช้ก่อนเรียก `plan`, `deep-plan`, `create-plan-in-dot-devin`, `implement-to-production` หรือ `follow-plan` — ตรวจ plan quality แล้วสรุป plan quality score พร้อม go/no-go recommendation
+ใช้ก่อนเรียก `plan`, `plan`, `create-plan-in-dot-devin`, `implement-to-production` หรือ `follow-plan` — ตรวจ plan quality แล้วสรุป plan quality score พร้อม go/no-go recommendation
 
 ## Execute
 
@@ -54,7 +54,7 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 ## Rules
 
 - ทำ review เท่านั้น ไม่แก้ไข plan ระหว่าง review
-- ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `deep-plan` หลัง review
+- ถ้าต้องแก้ plan ให้ใช้ `plan` หรือ `plan` หลัง review
 - ทุก finding ต้องมี evidence และ location
 - ใช้ `Grep` และ `scan-codebase` สำหรับ verification
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (plan)

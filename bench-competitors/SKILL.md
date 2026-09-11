@@ -8,7 +8,7 @@ related:
   - deep-research
   - deep-review-codebase
   - deep-thinking
-  - deep-plan
+  - plan
   - report
   - idea-features
   - ask-me
@@ -71,7 +71,7 @@ related:
 > Goal: วางแผนปรับปรุงให้ดีกว่าคู่แข่ง
 
 1. ทำ `/deep-thinking` เพื่อทบทวน priority และผลกระทบ
-2. ทำ `/deep-plan` เพื่อสร้าง roadmap ครอบทุกมิติ
+2. ทำ `/plan` เพื่อสร้าง roadmap ครอบทุกมิติ
 3. ทำ `/create-plan-in-dot-devin` จาก roadmap บันทึก `PLAN_PATH`
 4. ระบุ priority: Critical, High, Medium, Nice-to-have
 5. ถ้า scope ไม่ชัด → ใช้ `/ask-me` ก่อน plan

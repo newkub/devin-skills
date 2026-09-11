@@ -30,6 +30,7 @@ related:
 - project เล็ก ไม่หนัก RAM/compute ไม่ช้า → รันบน local ผ่าน package script `verify`
 - project ใหญ่ monorepo หรือ build/test หนัก → ส่ง branch ไป CI/CD แล้ว watch และ resolve errors
 - สามารถ force mode ได้: `/run-verify --local` หรือ `/run-verify --ci`
+- ถ้าต้องการ end-to-end readiness gate (ก่อน ship/deploy หรือหลังงานใหญ่) → ทำ section `Deep Verify` ด้านล่างด้วย (merged from: `deep-verify`)
 - ไม่ merge, ไม่ release, ไม่ deploy โดยอัตโนมัติ
 - ใช้หลัง `/implement-to-production` เพื่อ verify ก่อน ship
 
@@ -81,7 +82,17 @@ related:
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
 
-### 5. Ship (If Requested)
+### 5. Deep Verify (Readiness Gate)
+
+> Goal: ยืนยัน project ทำงานได้จริง end-to-end — ใช้เมื่อ `--deep` หรือก่อน ship/deploy ใหญ่
+
+1. Runtime gate: ทำ `/run-test-e2e` ถ้ามี UI flows, `/check-open-ports` + smoke test entry points จริง, `/watch-browser-and-fix` จับ console/network errors ถ้ามี web URL
+2. Usage gate: ทำ `/test-usage` ยืนยัน examples ใน README/docs ทำงานได้จริง
+3. Deep validation: ทำ `/deep-validate` สำหรับ cross-reference, compliance, security ครั้งสุดท้าย; ถ้าพบ issues → `/review-then-fix` แล้ว verify ใหม่
+4. แต่ละ gate fail → fix แล้วเริ่ม gate นั้นใหม่ ไม่ข้าม; retry สูงสุด 3 ครั้ง → stop + report
+5. ทำ `/report-in-table` คอลัมน์: No., Gate, Result, Evidence, Fix ที่ทำ — สรุป ready / not-ready
+
+### 6. Ship (If Requested)
 
 > Goal: ส่งมอบงานหลัง verify ผ่าน
 
