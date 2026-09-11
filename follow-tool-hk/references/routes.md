@@ -1,37 +1,21 @@
-# Follow Tool Hk Route Map
+# hk Route Map
 
-- Website: <https://github.com/chshersh/hk>
-- Routes discovered (homepage): 30
+- Website: <https://hk.jdx.dev>
+- Repository: <https://github.com/jdx/hk>
 
 ## Routes
 
-- /about
-- /about/diversity
-- /apps/desktop
-- /chshersh/hk
-- /collections
-- /customer-stories
-- /education
-- /enterprise
-- /enterprise/premium-support
-- /enterprise/startups
-- /features
-- /features/actions
-- /features/ai
-- /features/ai/github-app
-- /features/code-quality
-- /features/code-review
-- /features/codespaces
-- /features/copilot
-- /features/copilot/copilot-business
-- /features/issues
-- /git-guides
-- /github
-- /github/roadmap
-- /login
-- /marketplace
-- /mcp
-- /mobile
-- /newsletter
-- /newsroom
-- /open-source/sponsors
+- / — landing + quickstart
+- /getting_started — install, `hk init`, `hk install`
+- /configuration — `hk.pkl` schema, steps, hooks, Builtins.pkl
+- /cli — CLI reference (`run`, `check`, `fix`, `test`, `inspect`, `agent`, `mcp`)
+- /environment_variables — `HK_*` env vars
+- /integrations — editors, CI (GitHub Actions), Lefthook migration
+- /mcp — MCP server usage
+- /reference — full Pkl schema reference
+- /about — project info
+
+## Notes
+
+- Docs built with VitePress บน `hk.jdx.dev`
+- GitHub repo `jdx/hk` เป็น source of truth สำหรับ releases และ issues
