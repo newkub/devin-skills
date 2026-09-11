@@ -28,7 +28,7 @@ related:
 
 > Goal: เลือก secret manager ทีเหมาะสม
 
-Latest: `@infisical/cli@0.43.130`, `@infisical/sdk@5.0.2` (verified 2026-09-12)
+Latest: `@infisical/cli@0.43.131`, `@infisical/sdk@5.0.2` (verified 2026-09-12)
 
 1. Default: ใช้ Infisical ตาม [references/infisical.md](references/infisical.md)
 2. Self-hosted: ใช้ Infisical self-hosted หรือ HashiCorp Vault

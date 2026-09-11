@@ -67,7 +67,7 @@ related:
 > Goal: package.json หรือ manifest หลักอัปเดต
 
 1. ตรวจ `package.json`:
-   - มี `packageManager` หรือไม่ (`pnpm@12.3.4`, `bun@1.4.2`)
+   - มี `packageManager` หรือไม่ (`pnpm@12.4.1`, `bun@1.4.2`)
    - มี `engines` หรือไม่
    - มี `workspaces` หรือ `package.json#workspaces`
    - มี `trustedDependencies` / `onlyBuiltDependencies` (Bun) หรือไม่
