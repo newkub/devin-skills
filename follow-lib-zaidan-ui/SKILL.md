@@ -1,5 +1,5 @@
 ---
-name: follow-lib-zaidian-ui
+name: follow-lib-zaidan-ui
 description: ใช้ Zaidan UI สำหรับ SolidJS components ด้วย Kobalte, Corvu และ Tailwind CSS
 argument-hint: "[scope]"
 related:
@@ -37,7 +37,7 @@ related:
 2. ติดตั้ง Tailwind CSS v4 (`tailwindcss` และ `@tailwindcss/vite`) ตาม framework
 3. ตั้งค่า path alias `@/` ใน `tsconfig.json` และ Vite config
 4. รัน `bunx shadcn@latest init` เพื่อสร้าง `components.json`
-5. อ่านคำแนะนำเพิ่มเติมที่ [references/zaidian-ui-resources.md](references/zaidian-ui-resources.md)
+5. อ่านคำแนะนำเพิ่มเติมที่ [references/zaidan-ui-resources.md](references/zaidan-ui-resources.md)
 
 ### 2. Configure Registry
 
@@ -52,7 +52,7 @@ related:
    ```
 3. ตั้งค่า `tailwind.css` เป็น `src/styles/globals.css` (หรือ path ที่ project ใช้)
 4. ตั้งค่า `aliases` ให้ตรงกับ project (`@/components`, `@/lib/utils`, `@/lib`, `@/hooks`)
-5. ดูตัวอย่างเต็มใน [references/zaidian-ui-config.md](references/zaidian-ui-config.md)
+5. ดูตัวอย่างเต็มใน [references/zaidan-ui-config.md](references/zaidan-ui-config.md)
 
 ### 3. Add Components
 
@@ -73,7 +73,7 @@ related:
 3. Styled ด้วย Tailwind CSS v4
 4. รองรับ copy-paste หรือ pull ผ่าน shadcn CLI
 5. มี components, blocks, charts, และ typeset
-6. ดูรายละเอียดใน [references/zaidian-ui-resources.md](references/zaidian-ui-resources.md)
+6. ดูรายละเอียดใน [references/zaidan-ui-resources.md](references/zaidan-ui-resources.md)
 
 ### 5. Customize And Apply Best Practices
 
