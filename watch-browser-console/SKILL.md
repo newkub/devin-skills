@@ -4,6 +4,7 @@ description: Watch browser console อย่างต่อเนื่อง �
 argument-hint: "[url]"
 related:
   - run-test-website-by-agent-browser
+  - watch-browser
   - watch-browser-and-fix
   - resolve-errors
 ---

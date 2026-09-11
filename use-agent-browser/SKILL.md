@@ -3,6 +3,7 @@ name: use-agent-browser
 description: ใช้ agent-browser CLI สำหรับเปิด browser, interact, capture และ debug บน web apps
 argument-hint: "[url]"
 related:
+  - watch-browser
   - watch-browser-and-fix
   - test-uxui-by-agent-browser
   - capture

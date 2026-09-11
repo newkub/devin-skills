@@ -3,6 +3,7 @@ name: watch-browser-and-fix
 description: เปิด browser ด้วย agent-browser แล้ว capture แก้ไข และ confirm web server
 argument-hint: "[url]"
 related:
+  - watch-browser
   - watch-browser-console
   - resolve-errors
   - run-dev
