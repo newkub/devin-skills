@@ -24,6 +24,9 @@ function basename(path: string) {
 export default function FileStrip(props: Props) {
   let strip: HTMLDivElement | undefined;
   const cardRefs = new Map<number, HTMLElement>();
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let dragged = false;
 
   createEffect(() => {
     const el = cardRefs.get(props.selected);
@@ -32,13 +35,30 @@ export default function FileStrip(props: Props) {
     }
   });
 
+  const onPointerDown = (e: PointerEvent) => {
+    dragStartX = e.clientX;
+    dragStartScroll = strip?.scrollLeft ?? 0;
+    dragged = false;
+  };
+
+  const onPointerMove = (e: PointerEvent) => {
+    if (!strip || e.buttons !== 1) return;
+    const dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 5) {
+      dragged = true;
+      strip.scrollLeft = dragStartScroll - dx;
+    }
+  };
+
   const selectedFile = () => props.files[props.selected];
 
   return (
     <div class="shrink-0 relative border-b border-[var(--border)] bg-[var(--surface)]/50">
       <div
         ref={strip!}
-        class="flex items-stretch gap-2 px-4 pt-3 pb-1 overflow-x-auto overflow-y-hidden file-strip"
+        class="flex items-stretch gap-2 px-4 pt-3 pb-1 overflow-x-auto overflow-y-hidden file-strip select-none"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
       >
         <For each={props.indices}>
           {(idx) => {
@@ -48,7 +68,7 @@ export default function FileStrip(props: Props) {
             return (
               <button
                 ref={(el) => cardRefs.set(idx, el)}
-                onClick={() => props.onSelect(idx)}
+                onClick={() => { if (!dragged) props.onSelect(idx); }}
                 title={file.name}
                 class={`relative shrink-0 w-44 px-3 py-2 rounded-lg border text-left transition-all duration-150 ${
                   active()

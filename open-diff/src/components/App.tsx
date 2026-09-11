@@ -132,6 +132,9 @@ export default function App() {
         setDiffStyle(diffStyle() === 'unified' ? 'split' : 'unified');
       } else if (e.key === 'w' && !e.ctrlKey && !e.metaKey) {
         setWrap(!wrap());
+      } else if (e.key === 'r' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        load();
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -142,18 +145,44 @@ export default function App() {
       window.removeEventListener('keydown', onKeyDown);
     });
 
+    // Restore persisted prefs
+    try {
+      const t = localStorage.getItem('od-theme');
+      if (t === 'dark' || t === 'light') setTheme(t);
+      else if (window.matchMedia?.('(prefers-color-scheme: light)').matches) setTheme('light');
+      const ds = localStorage.getItem('od-diff-style');
+      if (ds === 'unified' || ds === 'split') setDiffStyle(ds);
+      if (localStorage.getItem('od-wrap') === '1') setWrap(true);
+    } catch {}
+  });
+
+  // Auto-load as soon as source params become ready (covers /api/default → navigate)
+  let autoLoaded = false;
+  createEffect(() => {
     const p = params();
     const ready =
       (p.source === 'pr' && p.pr) ||
       (p.source === 'git' && p.ref) ||
       (p.source === 'branch' && p.base && p.head) ||
       (p.source === 'file' && p.old && p.new);
-    if (ready) load();
+    if (ready && !autoLoaded) {
+      autoLoaded = true;
+      load();
+    }
   });
 
   createEffect(() => {
     document.documentElement.classList.toggle('dark', theme() === 'dark');
     document.documentElement.classList.toggle('light', theme() === 'light');
+  });
+
+  // Persist UI prefs
+  createEffect(() => {
+    try {
+      localStorage.setItem('od-theme', theme());
+      localStorage.setItem('od-diff-style', diffStyle());
+      localStorage.setItem('od-wrap', wrap() ? '1' : '0');
+    } catch {}
   });
 
   createEffect(() => {
@@ -477,8 +506,16 @@ export default function App() {
           <button
             class={`px-2.5 py-1 text-[11px] rounded-full border ${wrap() ? 'border-[var(--focus)]/50 bg-[var(--focus)]/10 text-[var(--text)]' : 'border-[var(--border)] text-[var(--text-dim)] hover:text-[var(--text)]'}`}
             onClick={() => setWrap(!wrap())}
-            title="Toggle line wrap"
+            title="Toggle line wrap (w)"
           >Wrap</button>
+          <button
+            class="px-2 py-1 text-[11px] rounded-full border border-[var(--border)] text-[var(--text-dim)] hover:text-[var(--text)] flex items-center gap-1"
+            onClick={load}
+            title="Reload diff (r)"
+            disabled={loading()}
+          >
+            <span class={`i-mdi-refresh w-3 h-3 ${loading() ? 'animate-spin' : ''}`} />
+          </button>
           <div class="relative ml-auto w-52">
             <span class="i-mdi-magnify absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-dim)] pointer-events-none" />
             <input
@@ -517,6 +554,7 @@ export default function App() {
               <span><kbd class="kbd">f</kbd></span><span class="dim">Focus file filter</span>
               <span><kbd class="kbd">v</kbd></span><span class="dim">Toggle unified / split</span>
               <span><kbd class="kbd">w</kbd></span><span class="dim">Toggle line wrap</span>
+              <span><kbd class="kbd">r</kbd></span><span class="dim">Reload diff</span>
               <span><kbd class="kbd">t</kbd></span><span class="dim">Toggle theme</span>
               <span><kbd class="kbd">?</kbd></span><span class="dim">This help</span>
               <span><kbd class="kbd">Esc</kbd></span><span class="dim">Close menu / blur input</span>
@@ -531,6 +569,7 @@ export default function App() {
         <span class="flex items-center gap-1"><kbd class="kbd">f</kbd> filter</span>
         <span class="flex items-center gap-1"><kbd class="kbd">v</kbd> view</span>
         <span class="flex items-center gap-1"><kbd class="kbd">w</kbd> wrap</span>
+        <span class="flex items-center gap-1"><kbd class="kbd">r</kbd> reload</span>
         <span class="flex items-center gap-1"><kbd class="kbd">t</kbd> theme</span>
         <button
           class="flex items-center gap-1 hover:text-[var(--text)] transition-colors"
