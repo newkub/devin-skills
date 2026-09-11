@@ -1,6 +1,6 @@
 ---
 name: review-web
-description: Review เว็บแอป/เว็บไซต์ที่รันอยู่จริง — pages, routes, console, network, forms, vitals
+description: Review เว็บที่รันจริงทุกมิติ — routes, auth, console, network, forms, state, PWA, vitals
 argument-hint: "[url-or-scope]"
 related:
   - review-frontend
@@ -104,7 +104,38 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 2. ตรวจ horizontal scroll, overflow, touch targets, viewport meta
 3. ตรวจ browser-specific issues ถ้า target หลาย browser
 
-### 9. Validate Findings
+### 9. Auth And Session Review
+
+> Goal: ตรวจ auth flows และ access control — ข้ามถ้า site ไม่มี auth
+
+1. ทดสอบ login/logout/register, password reset, session expiry, token refresh
+2. ตรวจ protected routes: unauthenticated → redirect ถูกต้อง, unauthorized → 403 ไม่ใช่ 200
+3. ตรวจ role-based access: user ธรรมดาเข้า admin routes ไม่ได้
+4. ตรวจ token storage: session tokens ควร httpOnly cookie ไม่ใช่ localStorage (XSS risk)
+5. ตรวจ OAuth/SSO redirect flow, callback handling, state parameter
+6. flag credentials/tokens ใน URL, query string หรือ referrer เป็น Critical
+
+### 10. Storage, State And Realtime Review
+
+> Goal: ตรวจ client-side state และ realtime behavior
+
+1. ตรวจ cookies/localStorage/sessionStorage: ไม่มี secrets, size เหมาะสม, expiry ถูกต้อง
+2. ตรวจ URL state: refresh แล้ว state คงอยู่, shareable URLs, back/forward restore state
+3. ตรวจ WebSocket/SSE: reconnect หลัง disconnect, heartbeat, stale data handling
+4. ตรวจ optimistic UI: rollback เมื่อ mutation fail, conflict resolution
+5. ตรวจ race conditions: rapid navigation, double-submit, stale fetch override
+
+### 11. PWA, i18n And Theming Review
+
+> Goal: ตรวจ app-like capabilities และ localization — ข้าม dimensions ที่ site ไม่มี
+
+1. ถ้า PWA: manifest valid, service worker ทำงาน, offline fallback, install prompt
+2. ตรวจ dark mode/theme: toggle ทำงาน, persist, ไม่มี flash-of-unstyled-content
+3. ตรวจ i18n: locale detection, language switcher, hreflang, RTL layout ถ้ารองรับ
+4. ตรวจ date/time/number formatting ตาม locale และ timezone
+5. ตรวจ print styles และ reduced-motion preference ถ้า claim รองรับ
+
+### 12. Validate Findings
 
 > Goal: findings ถูกต้องและจัดลำดับ severity
 
@@ -112,12 +143,12 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info
 3. ระบุ false positives ที่พบ
 
-### 10. Report
+### 13. Report
 
 > Goal: รายงาน aggregate findings พร้อม evidence
 
 1. ทำ `/report` ตาราง: `No.`, `Page/URL`, `Finding`, `Severity`, `Evidence`, `Recommendation`
-2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F)
+2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
 3. ทำ `/suggest-next-action` แนะนำ fix order
 
 ## Rules
@@ -135,10 +166,10 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 
 ### 3. Severity Classification
 
-- Critical: page พัง, console errors บนทุก page, form submit ไม่ได้, 5xx บน critical routes, secrets รั่ว
-- High: broken links/navigation, 4xx บน resources, hydration errors, LCP > 4s, missing error states
-- Medium: console warnings, LCP > 2.5s, CLS > 0.1, missing meta, slow API calls
-- Low: minor visual glitches, non-blocking issues, missing nice-to-have meta
+- Critical: page พัง, console errors บนทุก page, form submit ไม่ได้, 5xx บน critical routes, secrets รั่ว, credentials ใน URL, auth bypass
+- High: broken links/navigation, 4xx บน resources, hydration errors, LCP > 4s, missing error states, protected route เข้าได้โดยไม่ auth, session ไม่ expire
+- Medium: console warnings, LCP > 2.5s, CLS > 0.1, missing meta, slow API calls, URL state หายเมื่อ refresh, websocket ไม่ reconnect
+- Low: minor visual glitches, non-blocking issues, missing nice-to-have meta, theme flash
 - Info: suggestions, best practice recommendations
 
 ### 4. Evidence-Based Findings
@@ -167,6 +198,7 @@ runtime web review สำหรับ site ที่เข้าถึงได�
 
 - page/route inventory พร้อมผลตรวจครบทุก URL ที่เข้าถึงได้
 - รายงานตาราง findings พร้อม severity, URL และ evidence (console/network/screenshot)
+- auth/session, storage/state, PWA/i18n/theme coverage ที่ตรวจแล้ว
 - Core Web Vitals ของ pages หลักพร้อม threshold status
 - Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`

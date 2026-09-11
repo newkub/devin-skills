@@ -1,6 +1,6 @@
 ---
 name: review-cli
-description: Review CLI/TUI app — commands, flags, help, stdout/stderr, exit codes, distribution
+description: Review CLI/TUI app ทุกมิติ — commands, stdin, I/O contract, exit codes, security, distribution
 argument-hint: "[scope]"
 related:
   - review-platform
@@ -46,7 +46,17 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 4. ตรวจ `--help` ทุก command: ครบ, มี examples, consistent format
 5. ตรวจ shell completions (bash/zsh/fish) ถ้ามี
 
-### 3. Output Contract Review
+### 3. Input And stdin Review
+
+> Goal: ตรวจ input contract — stdin, files, positional args
+
+1. ตรวจ stdin: อ่านจาก stdin เมื่อไม่มี args หรือเมื่อ pipe เข้ามา, รองรับ `-` เป็น stdin convention
+2. ตรวจ file arguments: multi-file, glob expansion, missing file errors, `--` separator สำหรับ args ที่ขึ้นต้น `-`
+3. ตรวจ EOF/Ctrl+D handling และไม่ hang เมื่อ stdin เป็น TTY แต่รอ input
+4. ตรวจ input size limits, streaming vs buffering สำหรับ input ใหญ่
+5. ตรวจ idempotency: รันซ้ำด้วย input เดิมได้ผลเดิม, `--dry-run` สำหรับ destructive commands
+
+### 4. Output Contract Review
 
 > Goal: ตรวจ stdout/stderr contract และ output formats
 
@@ -56,7 +66,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 4. ตรวจ `--quiet`/`--verbose`/`--debug` verbosity levels consistent
 5. ตรวจ output ไม่ leak secrets, tokens, absolute paths ที่ไม่จำเป็น
 
-### 4. Exit Codes And Error Handling Review
+### 5. Exit Codes And Error Handling Review
 
 > Goal: ตรวจ exit code contract และ resilience
 
@@ -67,7 +77,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 5. ตรวจ retry, timeout, graceful degradation สำหรับ network/external calls
 6. ตรวจ cleanup เมื่อถูก interrupt (SIGINT/SIGTERM) — temp files, locks, terminal state
 
-### 5. Interactive And TUI Review
+### 6. Interactive And TUI Review
 
 > Goal: ตรวจ interactive prompts และ TUI
 
@@ -76,7 +86,18 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 3. ตรวจ TUI: layout, resize handling, focus management, keyboard/mouse input
 4. ตรวจ terminal detection: `TERM`, `COLORTERM`, `NO_COLOR`, `CI`
 
-### 6. Config And Environment Review
+### 7. Security Review
+
+> Goal: ตรวจ CLI security surface
+
+1. ตรวจ argument injection: args ที่ผ่านไป shell/subprocess ต้อง escaped — ไม่มี command injection ผ่าน user input
+2. ตรวจ path traversal: file args ที่ชี้นอก scope ต้องถูกจัดการหรือ reject
+3. ตรวจ secrets: ไม่รับ secrets ผ่าน positional args (เห็นใน `ps`/shell history) — ใช้ env/flags/stdin แทน
+4. ตรวจ file permissions: files ที่สร้าง (config, keys, cache) มี perms ถูกต้อง (0600 สำหรับ secrets)
+5. ตรวจไม่มี privilege escalation: sudo/root check เมื่อจำเป็น, ไม่ write นอก user scope โดยไม่เตือน
+6. ตรวจ temp files: secure creation (`mktemp`-equivalent), cleanup หลังจบ
+
+### 8. Config And Environment Review
 
 > Goal: ตรวจ config files, env vars, และ precedence
 
@@ -85,7 +106,26 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 3. ตรวจ config file: schema validation, error เมื่อ malformed, `.example` มีให้
 4. ตรวจ XDG/platform conventions สำหรับ config/cache paths
 
-### 7. Tests Review
+### 9. Cross-Platform And Encoding Review
+
+> Goal: ตรวจ Windows/Unix compatibility และ text encoding
+
+1. ตรวจ path handling: separators, `~`/HOME expansion, spaces ใน paths, Windows long paths
+2. ตรวจ line endings (CRLF/LF) และ signal handling บน Windows (SIGINT only, ไม่มี SIGTERM/SIGHUP)
+3. ตรวจ Unicode: emoji/CJK width ใน TUI, non-UTF8 input, NFC/NFD normalization
+4. ตรวจ symlinks, junctions, case-sensitivity ข้าม filesystems
+
+### 10. Versioning, Docs And Upgrade Review
+
+> Goal: ตรวจ version contract และ documentation parity
+
+1. ตรวจ `--version` output ตรงกับ manifest/tag, มี commit/build info ถ้า claim
+2. ตรวจ `--help` parity กับ docs/man pages — ไม่มี flags ที่ undocumented หรือ documented-but-missing
+3. ตรวจ deprecation notices: warnings ก่อน remove, migration guide สำหรับ breaking changes
+4. ตรวจ update mechanism: self-update หรือ update-notifier เป็น opt-in, ไม่ auto-mutate โดยไม่บอก
+5. ตรวจ man pages หรือ `help <cmd>` ถ้ามี — generate จาก source เดียวกันไม่ให้ drift
+
+### 11. Tests Review
 
 > Goal: ตรวจ test coverage ของ CLI surface
 
@@ -94,7 +134,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 3. ตรวจไม่ over-mock external systems และ test isolation จาก global state
 4. ถ้าไม่มี tests เลย → flag เป็น High finding
 
-### 8. Build And Distribution Review
+### 12. Build And Distribution Review
 
 > Goal: ตรวจ packaging และ release pipeline
 
@@ -103,7 +143,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 3. ตรวจ release automation: CI pipeline, checksums, signing, version sync กับ `--version`
 4. ตรวจ install/upgrade docs และ migration path ระหว่าง versions
 
-### 9. Validate Findings
+### 13. Validate Findings
 
 > Goal: findings ถูกต้องและจัดลำดับ severity
 
@@ -111,12 +151,12 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info
 3. ระบุ false positives ที่พบ
 
-### 10. Report
+### 14. Report
 
 > Goal: รายงาน findings พร้อม reproduction commands
 
 1. ทำ `/report` ตาราง: `No.`, `Command/Area`, `Finding`, `Severity`, `Evidence`, `Recommendation`
-2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F)
+2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F) — ใช้ `references/checklist.md` เป็น checklist ครบทุกมิติ
 3. ทำ `/suggest-next-action` แนะนำ fix order
 
 ## Rules
@@ -131,14 +171,15 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 - ถ้า project ไม่มี CLI entry point → stop และ report
 - ถ้า CLI ไม่มี interactive mode → ข้าม prompt checks
 - ถ้า CLI ไม่มี TUI → ข้าม TUI checks
-- ถ้าไม่มี distribution pipeline → ข้าม section 8 แต่ flag เป็น Info
+- ถ้าไม่มี distribution pipeline → ข้าม section Build And Distribution แต่ flag เป็น Info
+- ถ้า CLI รองรับ platform เดียว → ข้าม section Cross-Platform ที่ไม่เกี่ยว
 
 ### 3. Severity Classification
 
-- Critical: command พัง, exit code ผิดบน error paths, secrets leak ใน output, TUI crash
-- High: ไม่มี help text, error messages สับสน, stdout/stderr ปนกัน, non-interactive พัง, ไม่มี tests
-- Medium: output format ไม่ consistent, ไม่รองรับ `NO_COLOR`, missing completions, coverage ต่ำ
-- Low: docs ขาด, cosmetic UX, minor naming inconsistency
+- Critical: command พัง, exit code ผิดบน error paths, secrets leak ใน output/`ps`, command injection ผ่าน args, TUI crash
+- High: ไม่มี help text, error messages สับสน, stdout/stderr ปนกัน, non-interactive พัง, stdin hang, ไม่มี tests, config perms ผิด
+- Medium: output format ไม่ consistent, ไม่รองรับ `NO_COLOR`, missing completions, coverage ต่ำ, help/docs drift, ไม่มี `--dry-run` สำหรับ destructive
+- Low: docs ขาด, cosmetic UX, minor naming inconsistency, Unicode width glitches
 - Info: suggestions, best practice recommendations
 
 ### 4. Evidence-Based Findings
@@ -161,6 +202,7 @@ CLI review สำหรับ project ที่ ship เป็น command-line t
 
 - command inventory พร้อมผลตรวจครบทุก command/flag
 - รายงานตาราง findings พร้อม severity, reproduction command และ evidence
-- stdout/stderr contract และ exit code matrix ที่ verify แล้ว
+- stdout/stderr contract, stdin contract และ exit code matrix ที่ verify แล้ว
+- security, cross-platform, versioning/docs coverage ที่ตรวจแล้ว
 - Review score ต่อ dimension และ overall พร้อม grade
 - แนะนำ action ถัดไปผ่าน `/suggest-next-action`
