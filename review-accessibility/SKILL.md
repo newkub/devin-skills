@@ -7,7 +7,7 @@ related:  - review-uxui
   - capture
   - use-agent-browser
   - report
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -83,7 +83,7 @@ related:  - review-uxui
 ### 3. No Fixes During Review
 
 - ไม่แก้ไข code ระหว่าง review — ส่งต่อไปยัง section `## Fix`
-- ใช้ `/deep-review` ถ้าต้องการวิเคราะห์เชิงลึกเพิ่ม
+- ใช้ `/deep-review-codebase` ถ้าต้องการวิเคราะห์เชิงลึกเพิ่ม
 
 - ใช้ /review-uxui ถ้าจำเป็น
 - ใช้ /capture ถ้าจำเป็น

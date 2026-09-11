@@ -23,7 +23,7 @@
 
 - [ ] independent skills → parallel via `/follow-parallel`
 - [ ] dependency order respected (plan → implement)
-- [ ] deep scans via `/deep-analyze`/`/deep-review` when needed
+- [ ] deep scans via `/deep-analyze`/`/deep-review-codebase` when needed
 
 ## 4. Aggregation
 

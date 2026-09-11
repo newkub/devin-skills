@@ -76,7 +76,7 @@ Review แล้วแก้ไข issues ตาม context โดยขอ user
 - ใช้ /fix ถ้าต้องการให้ fix ตาม suggestion หรือ fix all
 - ใช้ /watch-browser-and-fix ถ้าจำเป็น
 - ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 

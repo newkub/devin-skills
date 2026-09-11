@@ -6,7 +6,7 @@ related:
   - review-backend
   - review-security
   - run-test-api
-  - deep-review
+  - deep-review-codebase
   - report
   - check-reference
 ---
@@ -87,7 +87,7 @@ related:
 
 - ใช้ /review-backend ถ้าจำเป็น
 - ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 
 ## Fix
 

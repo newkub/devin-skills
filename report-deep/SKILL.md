@@ -3,7 +3,7 @@ name: report-deep
 description: สร้าง deep report ละเอียดครบทุกมิติ พร้อมตาราง 7 columns และสรุป 4 ส่วน
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - deep-analyze
   - report
   - suggest-next-action
@@ -24,7 +24,7 @@ related:
 
 > Goal: รวบรวมข้อมูลจาก review workflows และ codebase analysis
 
-1. ทำ `/deep-review` เพื่อวิเคราะห์ codebase ครบทุกด้าน
+1. ทำ `/deep-review-codebase` เพื่อวิเคราะห์ codebase ครบทุกด้าน
 2. ทำ `/deep-analyze` เพื่อวิเคราะห์เชิงลึกถ้าต้องการข้อมูลเพิ่มเติม
 3. รวบรวม findings จาก review results และ codebase analysis
 > Goal: มีข้อมูลครบจาก review workflows และ codebase analysis

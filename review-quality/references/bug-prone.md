@@ -61,4 +61,4 @@ criteria สำหรับตรวจจับรูปแบบโค้ด�
 
 - ไม่ซ้ำกับ `deep-review-codebase` สำหรับ race condition, deadlock, parallel execution
 - ไม่ซ้ำกับ `deep-review-codebase` สำหรับ error boundaries, error messages, graceful degradation
-- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/deep-review`
+- ถ้าพบ issues ในหมวดเหล่านั้น ให้ส่งต่อไปยัง `/deep-review-codebase`

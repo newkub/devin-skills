@@ -48,8 +48,8 @@ related:
 
 1. แปลง tokens ตาม platform constraints (ดูตารางด้านล่าง)
 2. ถ้า project เป็น web ทำ `/review-frontend` สำหรับ web-specific guidelines
-3. ถ้า project มี mobile ทำ `/deep-review`
-4. ถ้า project มี TUI ทำ `/deep-review`
+3. ถ้า project มี mobile ทำ `/deep-review-codebase`
+4. ถ้า project มี TUI ทำ `/deep-review-codebase`
 
 ### 4. Ensure Accessibility
 

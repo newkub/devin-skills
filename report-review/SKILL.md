@@ -3,7 +3,7 @@ name: report-review
 description: รายงานผล review ครบทุกมิติอย่างละเอียดที่สุด พร้อม severity และ recommendations
 argument-hint: "[scope]"
 related:
-  - deep-review
+  - deep-review-codebase
   - resolve-errors
 
   - report
@@ -16,7 +16,7 @@ related:
 
 ## Scope
 
-ใช้สำหรับรายงานผลหลังทำ `/deep-review` หรือ `/resolve-errors` เสร็จ ครอบคลุมทุกมิติ: code quality, architecture, security, performance, testing, documentation, configuration, dependencies
+ใช้สำหรับรายงานผลหลังทำ `/deep-review-codebase` หรือ `/resolve-errors` เสร็จ ครอบคลุมทุกมิติ: code quality, architecture, security, performance, testing, documentation, configuration, dependencies
 
 ## Execute
 

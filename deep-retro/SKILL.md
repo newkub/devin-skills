@@ -20,7 +20,7 @@ related:
 
 ใช้หลัง incident, failed deployment, major bug, project milestone, หรือเมื่อทีมต้องการทบทวนว่าทำไมสิ่งทีเกิดขึ้นถึงเกิดขึ้นได้
 ไม่ใช้สำหรับ debug ปัญหาเฉพาะหน้า — ใช้ `/deep-debug` ก่อน
-ไม่ใช้สำหรับทบทวนงานทีไม่มี incident — ใช้ `/deep-review` แทน
+ไม่ใช้สำหรับทบทวนงานทีไม่มี incident — ใช้ `/deep-review-codebase` แทน
 
 ## Execute
 

@@ -12,7 +12,7 @@
 
 ### 1. Backup Strategy Review
 
-ทำ `/deep-review` เพื่อตรวจสอบ backup strategy ก่อน deploy:
+ทำ `/deep-review-codebase` เพื่อตรวจสอบ backup strategy ก่อน deploy:
 
 - ตรวจ database backup ล่าสุด
 - ตรวจ config backup (env vars, secrets)

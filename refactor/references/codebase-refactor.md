@@ -6,7 +6,7 @@
 
 ## Steps
 
-1. ทำ `/deep-review` หรือ `/review-quality` สำหรับภาพรวม
+1. ทำ `/deep-review-codebase` หรือ `/review-quality` สำหรับภาพรวม
 2. ทำ `/check-code-structure` และ `/check-long-files` เพื่อหา targets
 3. ถ้ามี SRP violations หรือไฟล์ยาว >250 บรรทัด:
    - แยก multi-responsibility functions/classes ออกเป็นย่อย

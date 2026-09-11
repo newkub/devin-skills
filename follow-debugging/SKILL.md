@@ -89,7 +89,7 @@ related:
 > Goal: เพิ่ม test case และปรับปรุง debuggability เพื่อป้องกันปัญหาซ้ำ
 
 1. เพิ่ม test case สำหรับป้องกัน regression — ทำ `/follow-tool-vitest` หรือ `/follow-tool-playwright`
-2. ทำ `/deep-review` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
+2. ทำ `/deep-review-codebase` ถ้าพบว่า debug ยากเพราะ logging ไม่พอ
 3. อัปเดท documentation ถ้าปัญหาเกี่ยวกับ config หรือ setup
 4. บันทึก root cause และ solution ใน `docs/` หรือ commit message
 
@@ -117,7 +117,7 @@ related:
 - ใส่ context: function name, input values, state
 - ใช้ log levels: `debug`, `info`, `warn`, `error`
 - หลัง fix ให้ลบ debug logging ที่ไม่จำเป็น
-- รายละเอียดเพิ่มเติมอยู่ใน `/deep-review`
+- รายละเอียดเพิ่มเติมอยู่ใน `/deep-review-codebase`
 
 ### 4. Tool Selection
 
@@ -126,14 +126,14 @@ related:
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
-- Performance → `/run-profiler` + `/deep-review`
+- Performance → `/run-profiler` + `/deep-review-codebase`
 - Git issues → `/follow-tool-git` + `/follow-tool-git`
 
 ### 5. Non-Redundancy
 
 - รายละเอียด Bayesian approach อยู่ใน `/deep-debug` แล้ว
 - รายละเอียด causal analysis อยู่ใน `/analyze-root-cause-analysis` แล้ว
-- รายละเอียด improving debuggability อยู่ใน `/deep-review` แล้ว
+- รายละเอียด improving debuggability อยู่ใน `/deep-review-codebase` แล้ว
 - รายละเอียด error resolution อยู่ใน `/resolve-errors` แล้ว
 - workflow นี้เป็น principles และ orchestrator ไม่ duplicate
 

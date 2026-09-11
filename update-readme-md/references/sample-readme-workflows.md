@@ -7,7 +7,7 @@
 
 | Category | Workflows |
 |----------|-----------|
-| Project Analysis | `/analyze-project`, `/deep-analyze`, `/deep-review` |
+| Project Analysis | `/analyze-project`, `/deep-analyze`, `/deep-review-codebase` |
 | Code Quality | `/run-lint`, `/run-test`, `/run-typecheck`, `/run-verify` |
 | Development | `/run-dev`, `/run-build`, `/run-watch-build` |
 | Deployment | `/follow-deploy`, `/deploy-to-cloudflare`, `/follow-service-vercel` |

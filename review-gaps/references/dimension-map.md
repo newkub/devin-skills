@@ -18,7 +18,7 @@
 
 ## Rules
 
-- สแกนกว้างไม่ลงลึก — ถ้าต้องการ depth ให้ใช้ `review-*` เฉพาะด้านหรือ `/deep-review`
+- สแกนกว้างไม่ลงลึก — ถ้าต้องการ depth ให้ใช้ `review-*` เฉพาะด้านหรือ `/deep-review-codebase`
 - ทุก finding ต้องมี evidence ไม่เดา
 - แสดงเฉพาะ findings ที่มี fix path ชัดเจน — ถ้าไม่มี skill ตรงให้ระบุ "no skill" พร้อมแนวทาง
 - ไม่แก้ไข code ระหว่าง scan — ส่งต่อ section `## Fix` ของ `review-*` เท่านั้น

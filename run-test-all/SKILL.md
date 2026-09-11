@@ -15,7 +15,6 @@ related:
   - deep-review-codebase
   - resolve-errors
   - edit-manual
-  - deep-review
   - run-verify
 ---
 
@@ -103,11 +102,11 @@ related:
 
 1. ทำ `/deep-validate` กับ source code ที่เกี่ยวข้องเพื่อตรวจสอบความถูกต้อง
 2. ทำ `/run-test-unit` เพื่อตรวจสอบ test quality, assertions, mocks
-3. ทำ `/deep-review` เพื่อ review ทั้ง source และ test files
+3. ทำ `/deep-review-codebase` เพื่อ review ทั้ง source และ test files
 4. จำแนกผล:
    - ถ้า source ผิด → ระบุไฟล์ source ที่ต้องแก้ แนะนำ `/resolve-errors` หรือ `/edit-manual`
    - ถ้า test ผิด (assertion, mock, expectation) → ระบุไฟล์ test ที่ต้องแก้ แนะนำ `/update-test-and-fix` หรือ `/edit-manual`
-   - ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report ก่อนดำเนินการ
+   - ถ้าไม่ชัดเจน → ทำ `/deep-review-codebase` แล้ว report ก่อนดำเนินการ
 5. ห้ามแก้ source หรือ test โดยไม่มี evidence จาก validate/review
 
 ### 8. Fix Based On Classification
@@ -152,8 +151,8 @@ related:
 
 - ทำ `/deep-validate` กับ source ทุกครั้งเมื่อ test fail
 - ทำ `/run-test-unit` กับ test ทุกครั้งเมื่อ test fail
-- ทำ `/deep-review` เพื่อหาต้นเหตุ
-- ถ้าไม่ชัดเจน → ทำ `/deep-review` แล้ว report
+- ทำ `/deep-review-codebase` เพื่อหาต้นเหตุ
+- ถ้าไม่ชัดเจน → ทำ `/deep-review-codebase` แล้ว report
 
 ### 3. Fix Direction
 

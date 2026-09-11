@@ -5,7 +5,6 @@ argument-hint: "[target-or-iteration]"
 related:
   - run-review
   - deep-review-codebase
-  - deep-review
   - update-create-analyze-cli
   - check-should-update
   - scan-codebase
@@ -166,7 +165,7 @@ related:
 
 - ทำ review/review-then-fix CLI เท่านั้น ไม่แก้ไข business logic
 - แยก review process จาก fix process
-- ใช้ `/deep-review` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
+- ใช้ `/deep-review-codebase` หรือ `/deep-review-codebase` สำหรับ comprehensive quality gate
 
 ### 7. Formatting
 

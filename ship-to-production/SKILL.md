@@ -51,7 +51,7 @@ Merge feature branch แล้ว deploy ไป production หลังจาก
 
 1. ถ้า repo มี remote ใช้ PR workflow และยังไม่มี PR → ทำ `/create-github-pr`
 2. ทำ `/review-github-pr` เพื่อ review PR พร้อม comment แต่ละ finding
-3. ถ้า deep-review ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 2
+3. ถ้า deep-review-codebase ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 2
 4. ทำ `/resolve-github-actions-fails` หรือ `gh run watch` เพื่อรอ CI ผ่านก่อน merge
 
 ### 4. Merge

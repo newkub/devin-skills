@@ -5,7 +5,7 @@ argument-hint: "[path-or-target]"
 related:
   - run-review
   - update-review-cli
-  - deep-review
+  - deep-review-codebase
   - create-report-in-dot-devin
   - review-quality
   - review-security
@@ -81,7 +81,7 @@ related:
 4. ถ้า quality/correctness มีปัญหา → `/review-quality` หรือ `/review-correctness`
 5. ถ้า stability มีปัญหา → `/review-stability`
 6. ถ้า UI/UX มีปัญหา → `/review-uxui`
-7. ถ้า scope ใหญ่หรือไม่ชัด → `/deep-review`
+7. ถ้า scope ใหญ่หรือไม่ชัด → `/deep-review-codebase`
 
 ### 6. Stakeholder Prioritization
 
@@ -121,7 +121,7 @@ related:
 
 - ส่งต่อเฉพาะ domain ที่มี findings จริง
 - ไม่ต้องรัน `/review-*` ทั้งหมดถ้าไม่มี findings
-- ถ้าหลาย domain มี findings → ทำ `/deep-review` ครั้งเดียวแทน
+- ถ้าหลาย domain มี findings → ทำ `/deep-review-codebase` ครั้งเดียวแทน
 
 ### 4. Loop Limit
 

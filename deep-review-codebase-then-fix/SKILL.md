@@ -69,7 +69,7 @@ Review ลึกทั้ม codebase แล้วแก้ไข issues ตา�
 - แก้ทีละ batch แล้ว verify
 - รักษา behavior เดิม
 
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /resolve-errors ถ้าจำเป็น
 
 ## Expected Outcome

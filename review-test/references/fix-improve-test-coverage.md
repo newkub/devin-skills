@@ -20,7 +20,7 @@
 
 1. ทำ `/run-test-coverage` เพื่อดู coverage report
 2. บันทึก files, functions, branches, statements ทีไม่ผ่าน threshold
-3. รัน `/deep-review` หรือ `/review-quality` เพื่อวิเคราะห์ code paths ทีไม่มี test
+3. รัน `/deep-review-codebase` หรือ `/review-quality` เพื่อวิเคราะห์ code paths ทีไม่มี test
 4. กำหนด target coverage threshold (default 100% หรือตาม project กำหนด)
 
 ### 2. Identify Priorities

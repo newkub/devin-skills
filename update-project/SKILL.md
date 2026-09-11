@@ -16,7 +16,7 @@ related:
   - update-todo-md
   - update-version-to-latest
   - deep-update-project
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
@@ -84,7 +84,7 @@ Boundary: quick root sync — ถ้าต้อง comprehensive update ก่�
    - `/update-todo-md` (ถ้ามี `TODO.md`)
    - `/update-references` เพื่อ sync references
    - `/update-gitignore` เพื่อ sync `.gitignore`
-   - `/deep-review` (ถ้ามี `tools/review-codebase/`)
+   - `/deep-review-codebase` (ถ้ามี `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing-md`
 6. ทำ `/review-delivery` เพื่อ sync config ทั้งหมด

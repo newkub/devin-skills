@@ -3,7 +3,7 @@ name: review
 description: เลือกและ execute review skill(s) ที่เหมาะสมกับ context รองรับ parallel multi-dimension
 argument-hint: "[topic-or-goal]"
 related:
-  - deep-review
+  - deep-review-codebase
   - review-devin-global-skills
   - check-unused
   - review-gaps
@@ -46,7 +46,7 @@ related:
 
 | No. | Context / User Intent | Primary Skill | Secondary Skills |
 |-----|----------------------|---------------|------------------|
-| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review` | `/review-quality`, `/review-correctness` |
+| 1 | ต้องการ review โค้ดทั้งหมด / ไม่รู้จะเริ่มตรงไหน | `/deep-review-codebase` | `/review-quality`, `/review-correctness` |
 | 2 | เน้น code quality, bug-prone patterns, smells | `/review-quality` | `/review-correctness`, `/review-readability` |
 | 3 | เน้น logic, types, edge cases, contracts, tests | `/review-correctness` | `/review-quality`, `/review-test` |
 | 4 | เน้น security | `/review-security` | `/review-compliance`, `/review-delivery` |
@@ -102,7 +102,7 @@ related:
 1. ถ้ามี skill เดียว → เรียก skill นั้นโดยตรง
 2. ถ้ามีหลาย skills และ independent → ใช้ `/follow-parallel` รัน parallel (จำกัดไม่เกิน 10 ต่อ batch)
 3. ถ้ามี dependency เช่น `/review-plan` ก่อน `/review-implement` → รันตามลำดับ
-4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/deep-review` ก่อน
+4. ถ้า skill ต้องการ scan ลึก → ทำ `/deep-analyze` หรือ `/deep-review-codebase` ก่อน
 5. บันทึก output และ findings จากแต่ละ skill
 
 ### 4. Validate And Aggregate

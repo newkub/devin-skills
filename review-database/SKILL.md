@@ -6,7 +6,7 @@ related:
   - review-performance
   - run-drizzle-studio
   - follow-lib-drizzle
-  - deep-review
+  - deep-review-codebase
   - report
   - check-reference
 ---
@@ -79,7 +79,7 @@ related:
 - ใช้ dev/staging environment หรือ EXPLAIN เท่านั้น
 
 - ใช้ /follow-lib-drizzle ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /check-reference ถ้าจำเป็น
 
 ## Fix

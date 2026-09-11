@@ -6,7 +6,7 @@ related:
   - implement-to-production
   - implement-features-to-mvp
   - deep-analyze
-  - deep-review
+  - deep-review-codebase
   - deep-plan
   - deep-refactor
   - deep-validate
@@ -37,7 +37,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมายและ assumptions
 2. ทำ `/deep-analyze` เพื่อวิเคราะห์ codebase
-3. ทำ `/deep-review` เพื่อ review ครบทุกมิติ
+3. ทำ `/deep-review-codebase` เพื่อ review ครบทุกมิติ
 4. ทำ `/report-scan-todo` เพื่อรวบรวม TODO/FIXME/HACK/placeholder
 5. ระบุ MOCK, FAKE, STUB, hard-coded values, in-memory stores, simulated delays
 6. บันทึก inventory เป็น prioritized list ตาม critical path
@@ -161,7 +161,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 - optimistic updates เฉพาะเมื่อเหมาะสม
 
 - ใช้ /implement-to-production ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- ใช้ /deep-review-codebase ถ้าจำเป็น
 - ใช้ /rethink ถ้าจำเป็น
 
 ## Expected Outcome

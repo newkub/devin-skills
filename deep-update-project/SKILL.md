@@ -15,7 +15,7 @@ related:
   - update-references
   - update-version-to-latest
   - deep-analyze
-  - deep-review
+  - deep-review-codebase
   - deep-validate
   - all-workspace
 ---
@@ -41,7 +41,7 @@ Step dependencies: แต่ละ step ขึ้นกับ step ก่อน�
 > Goal: เข้าใจสถานะปัจจุบันของ root project และ workspaces
 
 1. ทำ `/deep-thinking` เพื่อวิเคราะห์เป้าหมาย
-2. ทำ `/deep-analyze` และ `/deep-review` เพื่อวิเคราะห์ root project
+2. ทำ `/deep-analyze` และ `/deep-review-codebase` เพื่อวิเคราะห์ root project
 3. ทำ `/check-monorepo` เพื่อยืนยัน monorepo status
 4. ทำ `/all-workspace` เพื่อรายการทุก workspace
 5. บันทึก baseline: structure, docs, configs, skills, metadata

@@ -8,7 +8,7 @@ related:
   - relocation
   - update-references
   - rethink
-  - deep-review
+  - deep-review-codebase
   - check-long-files
 ---
 
@@ -28,7 +28,7 @@ related:
 
 วิเคราะห์โครงสร้างปัจจุบันเพื่อระบุปัญหาก่อนเปลี่ยนแปลง
 
-1. ทำ `/deep-review` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
+1. ทำ `/deep-review-codebase` เพื่อระบุ SRP, SoC, type safety, hard code, anti-patterns, code smells, dead code, side effects, naming conventions
 2. ทำ `/check-long-files` เพื่อระบุไฟล์ที่ยาวกว่า 250 บรรทัด
 3. ทำ `/review-refactor` เพื่อระบุโฟลเดอร์ที่มีไฟล์เยอะเกินเกณฑ์
 4. ถ้าไม่พบปัญหา → stop และ report
@@ -39,7 +39,7 @@ related:
 
 ปรับปรุง naming ให้สะท้อน responsibility ของไฟล์
 
-1. ทำ `/deep-review` เพื่อปรับปรุง naming
+1. ทำ `/deep-review-codebase` เพื่อปรับปรุง naming
 2. ทำ `/update-references` เพื่ออัปเดต import paths
 3. ถ้า naming ไม่ต้องปรับ → skip ไป Step 3
 
