@@ -14,6 +14,7 @@ related:
   - run-verify
   - run-watch
   - update-test-and-fix
+  - update-unit-test
   - resolve-errors
   - suggest-next-action
 ---
@@ -27,6 +28,8 @@ related:
 ใช้สำหรับรัน unit tests ที่ทดสอบ pure functions, edge cases, parameterized tests ไม่รวม integration, E2E, หรือ component tests (merged from: `run-test-unit`)
 
 ครอบคลุม framework detection: Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test, dotnet test, cargo nextest
+
+- ถ้าต้องการ update/เขียน unit tests → `/update-unit-test` (run-only skill นี้ไม่แก้ tests)
 
 ## Execute
 

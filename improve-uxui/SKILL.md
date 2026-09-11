@@ -9,6 +9,7 @@ related:
   - review-uxui
   - review-accessibility
   - deep-thinking
+  - update-e2e-test
   - use-subagents
   - report
   - suggest-next-action
@@ -75,11 +76,18 @@ related:
 1. re-run เฉพาะ routes ที่แก้: re-capture screenshots + replay failed actions
 2. fix-verify loop สูงสุด `3` รอบ
 
-### 7. Report
+### 7. Sync E2E Suite
+
+> Goal: fixes ที่ผ่านแล้วมี e2e regression coverage
+
+1. หลัง verify ผ่านหมด → ทำ `/update-e2e-test` — เขียน/อัปเดต Playwright tests จาก flows + fixes ที่เพิ่งทำ
+2. re-run Playwright e2e suite อีกครั้งยืนยันเขียว — ถ้า FAIL ให้แก้ตาม `/update-e2e-test` flow ก่อน report
+
+### 8. Report
 
 > Goal: ส่งมอบผลรวม
 
-1. ทำ `/report` — functional findings + visual findings + fixes + before/after evidence ต่อ route
+1. ทำ `/report` — functional findings + visual findings + fixes + before/after evidence ต่อ route + e2e sync status
 2. ปิด browser session (`agent-browser close`)
 3. ทำ `/suggest-next-action`
 
@@ -93,6 +101,7 @@ related:
 ### 2. Evidence First
 
 - ทุก finding ต้องมี screenshot หรือ repro steps — ห้ามแก้จาก intuition
+- screenshots save ไป OS temp dir (`$env:TEMP`/`os.tmpdir()`) — ห้าม commit เข้า repo
 - before/after screenshots ทุก fix
 
 ### 3. All Routes

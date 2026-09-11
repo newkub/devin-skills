@@ -103,6 +103,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 ### 2. Real Interactions Only
 
 - agent ต้อง interact จริงผ่าน `agent-browser` (click, type, submit) — ห้าม "test" โดยอ่าน code
+- screenshots/evidence save ไป OS temp dir (`$env:TEMP`/`os.tmpdir()`) — ห้าม commit เข้า repo
 - ทุก FAIL ต้องมี repro steps + screenshot + console errors
 
 ### 3. Coverage Discipline

@@ -16,6 +16,7 @@ related:
   - run-dev
   - use-agent-browser
   - report-uxui-all-routes
+  - update-e2e-test
   - suggest-next-action
 ---
 
@@ -29,6 +30,7 @@ related:
 
 - Playwright เป็น framework หลัก — ไม่ใช้ Cypress
 - `agent-browser` (headless) ใช้สำหรับ exploratory route/action testing เมื่อยังไม่มี Playwright suite หรือต้องการ ad-hoc verification
+- ถ้าต้องการ update/เขียน Playwright tests → `/update-e2e-test` (run-only skill นี้ไม่แก้ tests)
 
 ## Execute
 

@@ -98,6 +98,7 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 ### 1. Screenshot Evidence First
 
 - ทุก UX/UI finding ต้องมี screenshot — ห้ามตัดสินจาก DOM/code อย่างเดียว
+- screenshots ทั้งหมด save ไป OS temp dir (`$env:TEMP`/`os.tmpdir()`) — ห้าม commit เข้า repo
 - capture ทั้ง desktop (`1280x720`) และ mobile (`390x844`) viewport เสมอ
 
 ### 2. Server Before Review

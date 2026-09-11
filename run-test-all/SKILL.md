@@ -16,6 +16,7 @@ related:
   - run-test-coverage
   - run-test-mutation
   - update-test-and-fix
+
   - deep-review-codebase
   - resolve-errors
 ---
@@ -27,6 +28,8 @@ related:
 ## Scope
 
 Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
+
+- ถ้าต้องการ update/เขียน tests → `/update-unit-test`, `/update-integration`, `/update-e2e-test` ตาม layer (run-* เป็น run-only)
 
 | No. | Signal ที่พบ | Skill ที่เลือก |
 |----:|-------------|---------------|

@@ -95,6 +95,8 @@ Latest: `agent-browser@0.37.1` (verified 2026-09-12)
 
 ### 1. Capture Before Fix
 
+- screenshots save ไป OS temp dir (`$env:TEMP`/`os.tmpdir()`) — ห้าม commit เข้า repo
+
 - ต้องมี screenshot ก่อนแก้ไข
 - ต้องบันทึก console errors ก่อนแก้ไข
 - ไม่แก้โดยไม่มี evidence
