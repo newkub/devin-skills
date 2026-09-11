@@ -39,17 +39,17 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ### 2. Discover Routes
 
-> Goal: รู้ routes ทั้งหมดที่ต้อง test
+> Goal: รู้ routes ทั้งหมดที่ต้อง test — ห้ามข้าม route ใด
 
 1. `agent-browser snapshot -i` เพื่อหา nav links
 2. cross-check route definitions ใน codebase
-3. สร้าง route list พร้อม dynamic route samples
+3. สร้าง checklist **ทุก route** — รวม dynamic routes (sample params ต่อ pattern), nested routes, error routes, และ auth-gated routes (login ก่อน test — ยังต้อง cover)
 
 ### 3. Dispatch User-Roleplay Subagents
 
-> Goal: ทดสอบจริงแบบ parallel ครบทุก route
+> Goal: ทดสอบจริงแบบ parallel ครบทุก route — ทุก route ต้องมี agent ดูแล
 
-ทำตาม `/use-subagents` — spawn subagent ต่อ route (batch 3-5 routes ต่อ agent) โดยแต่ละ agent roleplay เป็น user และต้อง:
+ทำตาม `/use-subagents` — spawn subagent ครอบคลุมทุก route ใน checklist (แบ่ง batch 3-5 routes ต่อ agent เพื่อ parallelism แต่ห้ามตัด route ทิ้ง) โดยแต่ละ agent roleplay เป็น user และต้อง:
 
 1. `agent-browser open <route>` แล้ว `snapshot -i` เพื่อหา interactive elements ทั้งหมด
 2. ทดลองทุก action ที่พบ: click buttons/links, submit forms (valid + invalid input), toggle controls, pagination, search, filters
@@ -59,11 +59,12 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ### 4. Aggregate Results
 
-> Goal: รวมผล test จากทุก agent
+> Goal: รวมผล test จากทุก agent — ทุก route ใน checklist ต้องมีผล
 
-1. รวม report: route → actions tested → PASS/FAIL + evidence
-2. dedupe failures ที่มี root cause เดียวกัน (เช่น shared component, API endpoint)
-3. จัด severity: Critical (flow หลักพัง), High (action ไม่ทำงาน), Medium (behavior ผิดเล็กน้อย), Low (cosmetic)
+1. ตรวจ checklist — route ที่ไม่มี report ให้ dispatch เพิ่ม (ห้ามปล่อย route untested)
+2. รวม report: route → actions tested → PASS/FAIL + evidence
+3. dedupe failures ที่มี root cause เดียวกัน (เช่น shared component, API endpoint)
+4. จัด severity: Critical (flow หลักพัง), High (action ไม่ทำงาน), Medium (behavior ผิดเล็กน้อย), Low (cosmetic)
 
 ### 5. Fix Failures
 

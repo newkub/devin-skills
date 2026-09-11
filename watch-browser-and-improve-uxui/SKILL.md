@@ -40,17 +40,18 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 ### 2. Discover Routes
 
-> Goal: รู้ routes ทั้งหมดที่ต้อง cover
+> Goal: รู้ routes ทั้งหมดที่ต้อง cover — ห้ามข้าม route ใด
 
 1. ดึง interactive elements ด้วย `agent-browser snapshot -i` เพื่อหา links/nav
 2. cross-check กับ route definitions ใน codebase (`scan-codebase` — router config, pages/, app/ dir)
-3. รวม list routes ที่ reachable — dynamic routes ใช้ sample params
+3. รวม **ทุก route** ที่ reachable — รวม dynamic routes (ใช้ sample params ของแต่ละ pattern), nested routes, และ error routes (404, error boundary)
+4. สร้าง checklist ทุก route — route ที่ auth-gated ให้ login ก่อนหรือบันทึกเป็น requires-auth (ยังต้อง cover)
 
 ### 3. Dispatch UXUI Subagents Per Route
 
-> Goal: analyze ครบทุก route แบบ parallel
+> Goal: analyze ครบทุก route แบบ parallel — ทุก route ต้องมี agent ดูแล
 
-ทำตาม `/use-subagents` — spawn subagent ต่อ route (batch 3-5 routes ต่อ agent ถ้า routes เยอะ) โดยแต่ละ agent ต้อง:
+ทำตาม `/use-subagents` — spawn subagent ครอบคลุมทุก route ใน checklist (แบ่ง batch 3-5 routes ต่อ agent เพื่อ parallelism แต่ห้ามตัด route ทิ้ง) โดยแต่ละ agent ต้อง:
 
 1. `agent-browser open <route>` + capture screenshot ที่ viewport `1280x720` (desktop) และ `390x844` (mobile)
 2. ทำ `/review-uxui` บน screenshots — layout, spacing, typography, contrast, hierarchy, empty/loading/error states, responsive breakpoints
@@ -60,9 +61,10 @@ Watch หน้าเว็บผ่าน `agent-browser` เพื่อ confi
 
 > Goal: รวมและจัดลำดับ findings จากทุก agent
 
-1. รวม findings ทั้งหมด dedupe ตาม component/pattern
-2. จัด severity: Critical (broken layout/overflow), High (responsive แตก, contrast ต่ำ), Medium (spacing/hierarchy), Low (polish)
-3. ทำ `/deep-analyze` สำหรับ findings ที่ไม่ชัดสาเหตุ — map กลับไปหา source component
+1. ตรวจ checklist — ทุก route ต้องมี agent report กลับมา ถ้า route ไหนไม่มีให้ dispatch เพิ่ม (ห้ามปล่อย route ที่ไม่ถูก review)
+2. รวม findings ทั้งหมด dedupe ตาม component/pattern
+3. จัด severity: Critical (broken layout/overflow), High (responsive แตก, contrast ต่ำ), Medium (spacing/hierarchy), Low (polish)
+4. ทำ `/deep-analyze` สำหรับ findings ที่ไม่ชัดสาเหตุ — map กลับไปหา source component
 
 ### 5. Fix UXUI Issues
 
