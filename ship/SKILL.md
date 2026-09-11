@@ -92,7 +92,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 12. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
 13. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
 14. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/implement-to-production`
-15. ถ้าพบ structural หรือ quality issues → ทำ `/deep-refactor-codebase`
+15. ถ้าพบ structural หรือ quality issues → ทำ `/refactor`
 16. ทำ `/update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
 17. ทำ `/run-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
 

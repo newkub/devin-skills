@@ -22,10 +22,10 @@ Refactor ตาม context โดยเลือก scope ทีเหมาะ�
 - ถ้า user ระบุ `@files...` → refactor เฉพาะไฟล์ โดยลงลึกถึง SRP/naming/structure
 - ถ้า context เป็น workspace หรือ monorepo → ใช้ `/refactor-workspace`
 - ถ้าไฟล์/โมดูลยาว >250 บรรทัด หรือมี SRP issues → ทำ SRP refactor
-- ถ้าต้องการ refactor ทั้ม codebase → ทำ codebase refactor
+- ถ้าต้องการ refactor ทั้ม codebase → ทำ codebase refactor ตาม `references/codebase-refactor.md` (deep procedure: baseline → impact → batches → validation)
 - ถ้าต้องการย้ายไฟล์ → ใช้ `/relocation`
 
-(merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`)
+(merged from: `refactor-codebase`, `refactor-to-single-responsibility`, `refactor-files`, `deep-refactor-codebase`, `deep-refactor`)
 
 ## Execute
 
@@ -54,7 +54,7 @@ Refactor ตาม context โดยเลือก scope ทีเหมาะ�
 
 ### 4. Codebase And SRP Refactor
 
-> Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ม codebase
+> Goal: แก้ไขปัญหา SRP, long files, consistency ทั้ม codebase ด้วย baseline, impact analysis, incremental batches (merged from: `deep-refactor-codebase`)
 
 ทำตาม [references/codebase-refactor.md](references/codebase-refactor.md)
 

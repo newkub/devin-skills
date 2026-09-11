@@ -1,6 +1,6 @@
 ---
-name: deep-refactor
-description: Alias for refactor — merged into the canonical skill (codebase scope)
+name: deep-refactor-codebase
+description: Alias for refactor — merged into canonical skill (codebase scope)
 related:
   - refactor
 ---

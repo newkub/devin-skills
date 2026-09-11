@@ -82,7 +82,7 @@ related:
 3. แสดง `## Refactor Ideas` ตามลำดับ priority
 4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/then-apply`
 5. แสดง `## References` ที่เกี่ยวข้อง
-6. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/deep-refactor`
+6. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/refactor`
 
 ## Rules
 
@@ -117,4 +117,4 @@ related:
 - รายการไอเดียสำหรับ devin skills repo
 - แต่ละไอเดียมี single responsibility, priority, impact
 - มี references ครบถ้วน
-- พร้อมส่งต่อให้ `/deep-refactor` หรือ `/update-devin-global-skills`
+- พร้อมส่งต่อให้ `/refactor` หรือ `/update-devin-global-skills`

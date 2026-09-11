@@ -21,7 +21,7 @@ related:
   - review-devin-global-skills
   - check-bottlenecks
   - check-unused
-  - deep-refactor
+  - refactor
   - deep-analyze
   - review-bundle
   - review-assets
@@ -99,7 +99,7 @@ Dispatch ตาม layer — เรียก section `## Fix` ของ review s
 | 13 | Data validation | `/review-data-validation` |
 | 14 | Database / queries / indexes | `/review-database` |
 | 15 | Test coverage | `/review-test` |
-| 16 | Dead code / redundant logic | ลบและรวมเอง หรือ `/deep-refactor` ถ้าใหญ่ |
+| 16 | Dead code / redundant logic | ลบและรวมเอง หรือ `/refactor` ถ้าใหญ่ |
 
 ### 5. Validate
 
