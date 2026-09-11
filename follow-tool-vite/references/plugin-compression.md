@@ -27,7 +27,7 @@
 > Goal: ตรวจสอบว่าใช้งานถูกต้อง
 
 1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test-unit` ถ้ามี test ที่เกี่ยวข้อง
+2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
 3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ
 
 ## Rules

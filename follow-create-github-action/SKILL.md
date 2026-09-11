@@ -9,7 +9,7 @@ related:
   - follow-dot-github
   - follow-release
   - follow-tool-github-actions
-  - run-test-unit
+  - run-test
   - follow-my-tech-stack
   - review-techstack
   - report
@@ -112,7 +112,7 @@ related:
 - ใช้ /follow-dot-github ถ้าจำเป็น
 - ใช้ /follow-release ถ้าจำเป็น
 - ใช้ /follow-tool-github-actions ถ้าจำเป็น (create github action)
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

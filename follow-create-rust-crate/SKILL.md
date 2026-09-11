@@ -8,7 +8,7 @@ related:
   - follow-lang-rust
   - follow-release
   - follow-tool-cargo
-  - run-test-unit
+  - run-test
   - follow-my-tech-stack
   - review-techstack
   - report
@@ -116,7 +116,7 @@ related:
 - ใช้ /follow-create-sdk ถ้าจำเป็น
 - ใช้ /follow-lang-rust ถ้าจำเป็น
 - ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

@@ -5,7 +5,7 @@ argument-hint: "[target]"
 related:
   - review-plan
   - run-verify
-  - run-test-unit
+  - run-test
   - report
   - suggest-next-action
   - resolve-errors
@@ -43,7 +43,7 @@ related:
 
 > Goal: ตรวจสอบ
 
-1. รัน `/run-verify` และ `/run-test-unit` หลังทำงานเสร็จ
+1. รัน `/run-verify` และ `/run-test` หลังทำงานเสร็จ
 1. เปรียบเทียบผลลัพธ์กับที่คาดหวัง
 1. ลองใหม่งานที่ล้มเหลวสูงสุด 3 ครั้ง
 

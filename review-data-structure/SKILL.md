@@ -71,7 +71,7 @@ Merged from: improve-data-structure
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (data structure)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (data structure)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (data structure)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (data structure)
 
 - `references/fix-improve-data-structure.md` — เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements
 ## References

@@ -95,7 +95,7 @@ Merged from: improve-readability
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (readability)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (readability)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (readability)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (readability)
 
 - `references/fix-improve-readability.md` — ปรับ code และ text ให้อ่านง่ายขึ้น ลด cognitive load ด้วย naming, structure, comments และ formatting
 ## Expected Outcome

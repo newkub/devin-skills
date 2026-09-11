@@ -51,6 +51,7 @@ related:
 9. ตั้งค่า `screenshot: 'only-on-failure'` สำหรับ failure artifacts
 10. ตั้งค่า `reporter` เป็น `html` สำหรับ local และ `blob` สำหรับ CI sharding
 11. ตั้งค่า `forbidOnly: !!process.env.CI` สำหรับป้องกัน `test.only` ใน CI
+12. ตั้งค่า `webServer: { command, url, reuseExistingServer: !process.env.CI }` ให้ Playwright start dev server เอง
 
 ### 3. Monorepo Setup
 
@@ -128,7 +129,17 @@ related:
 5. รัน tests ใน UI mode ด้วย `--ui` สำหรับ authoring และ debugging
 6. ใช้ `--last-failed` สำหรับ re-run เฉพาะ tests ที่ fail
 
-### 10. CI/CD Integration
+### 10. All-Routes Coverage
+
+> Goal: ทุก route มี E2E coverage
+
+1. List routes จาก `/report-uxui-all-routes` หรือ route config/filesystem routes
+2. สร้าง smoke spec ที่ visit ทุก route แล้ว assert: page load 200, ไม่มี console errors, ไม่มี uncaught page errors
+3. สำหรับ critical routes → เขียน spec เฉพาะพร้อม interaction tests (click, form submit, navigation)
+4. ถ้ายังไม่มี suite เลยและต้องการ check ด่วน → ใช้ `agent-browser` headless (`agent-browser open <url>` + `snapshot -i` + `console`/`errors`) เป็น stopgap แทน Playwright suite ชั่วคราว
+5. Track route gaps — route ที่ยังไม่มี test ต้องถูกบันทึก
+
+### 11. CI/CD Integration
 
 > Goal: ตั้งค่า Playwright ใน CI/CD pipeline
 

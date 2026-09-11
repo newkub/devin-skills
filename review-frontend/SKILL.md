@@ -154,7 +154,7 @@ Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offlin
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (frontend)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (frontend)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (frontend)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (frontend)
 
 - `references/fix-improve-frontend.md` — แก้ไข frontend findings ด้าน components, state, rendering, type safety, CSS, forms
 - `references/fix-optimize-css.md` — ลด CSS payload — unused rules, critical CSS, dedupe และ utility coverage

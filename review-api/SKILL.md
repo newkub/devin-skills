@@ -98,7 +98,7 @@ Merged from: improve-api
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (api)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (api)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (api)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (api)
 
 - `references/fix-improve-api.md` — ปรับปรุง API endpoints ด้าน performance, structure, error handling, caching และ security
 ## References

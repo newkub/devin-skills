@@ -5,7 +5,7 @@ argument-hint: "[url]"
 related:
   - watch-browser
   - watch-browser-and-fix
-  - test-uxui-by-agent-browser
+  - run-test-e2e
   - capture
   - follow-tool-playwright
   - resolve-errors
@@ -175,7 +175,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - ปรับ stream quality ด้วย `AGENT_BROWSER_STREAM_QUALITY`, `AGENT_BROWSER_STREAM_MAX_WIDTH`, `AGENT_BROWSER_STREAM_MAX_HEIGHT`
 
 - ใช้ /watch-browser-and-fix ถ้าจำเป็น
-- ใช้ /test-uxui-by-agent-browser ถ้าจำเป็น
+- ใช้ /run-test-e2e ถ้าจำเป็น
 - ใช้ /follow-tool-playwright ถ้าจำเป็น
 
 ## References

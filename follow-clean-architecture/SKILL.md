@@ -14,7 +14,7 @@ related:
   - refactor
   - refactor-workspace
   - update-references
-  - run-test-unit
+  - run-test
   - follow-lang-typescript
   - follow-lang-rust
   - follow-create-bun-cli
@@ -113,7 +113,7 @@ test/                             # Mirror src structure: fixtures/ helpers/ moc
 2. เลือก pattern: sub-module (ยังเกี่ยวข้อง parent), sibling module (อิสระ), shared module (ใช้ร่วม)
 3. สร้าง sub-module directories ตาม Clean Architecture structure
 4. ทำ `/update-references` เพื่ออัปเดท imports
-5. ทำ `/run-test-unit` เพื่อยืนยัน functionality ไม่พัง
+5. ทำ `/run-test` เพื่อยืนยัน functionality ไม่พัง
 
 ## Rules
 

@@ -1,106 +1,131 @@
 ---
 name: run-test-e2e
-description: รัน E2E tests ด้วย Playwright หรือ Cypress
+description: รัน E2E tests ด้วย Playwright ครบทุก route — user flows, actions, cross-browser, headless
 argument-hint: "[scope]"
 related:
+  - follow-tool-playwright
   - review-test
-  - run-test-unit
+  - review-uxui
+  - run-test
   - run-test-all
   - run-test-api
+  - run-test-visual
+  - run-test-coverage
   - run-check
   - run-verify
+  - run-dev
+  - use-agent-browser
+  - report-uxui-all-routes
   - suggest-next-action
-  - test-website-by-agent-browser
 ---
 
 ## Goal
 
-รัน E2E tests สำหรับ browser testing ด้วย Playwright หรือ Cypress
+รัน E2E tests สำหรับ browser testing ด้วย Playwright ครบทุก route และ user flow — รวมถึง exploratory all-routes testing ผ่าน `agent-browser` แบบ headless เมื่อยังไม่มี test suite (merged from: `test-website-by-agent-browser`, `test-uxui-by-agent-browser`)
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `test-website-by-agent-browser`
 
-ใช้สำหรับรัน browser-based E2E tests ครอบคลุม user flows, critical paths, และ cross-browser compatibility
+ใช้สำหรับรัน browser-based E2E tests ครอบคลุม user flows, critical paths, all routes และ cross-browser compatibility
+
+- Playwright เป็น framework หลัก — ไม่ใช้ Cypress
+- `agent-browser` (headless) ใช้สำหรับ exploratory route/action testing เมื่อยังไม่มี Playwright suite หรือต้องการ ad-hoc verification
 
 ## Execute
 
 > Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test e2e)
 
-### 1. Check Test Framework
+### 1. Detect Setup
 
-> Goal: ตรวจสอบ E2E test framework ที่ใช้
+> Goal: รู้ว่า project มี Playwright suite หรือยัง
 
-1. ตรวจสอบ `playwright.config.ts` สำหรับ Playwright
-2. ตรวจสอบ `cypress.config.ts` สำหรับ Cypress
-3. ตรวจสอบ test files ใน `tests/` หรือ `e2e/`
-4. ตรวจสอบ scripts ใน `package.json`
+1. ตรวจ `playwright.config.ts`/`playwright.config.js`, test files ใน `tests/`, `e2e/`, `*.spec.ts`
+2. ตรวจ `package.json` — `@playwright/test`, scripts `test:e2e`, `e2e`
+3. ถ้ามี suite → ไป Step 3; ถ้าไม่มี → Step 2 (exploratory) หรือ `/follow-tool-playwright` เพื่อ setup ใหม่
 
-### 2. Install Browser Dependencies
+### 2. Exploratory All-Routes (agent-browser, headless)
 
-> Goal: ติดตั้ง browser dependencies ถ้าจำเป็น
+> Goal: ทดสอบทุก route แบบ programmatic เมื่อยังไม่มี test suite
 
-1. รัน `bunx playwright install` สำหรับ Playwright
-2. รัน `bunx playwright install-deps` สำหรับ system dependencies
+1. รัน dev server ถ้าจำเป็น (`/run-dev`) แล้วได้ base URL
+2. List routes จาก `/report-uxui-all-routes` หรือ `agent-browser snapshot -i` + `agent-browser links`
+3. เปิดแต่ละ route ด้วย `agent-browser open <url>` (headless เป็น default — ไม่ต้องใส่ `--headed`)
+4. ต่อ route: `agent-browser snapshot -i` list interactive elements → ทดสอบ click/toggle/select/fill/submit ตามที่พบ
+5. `agent-browser console` + `agent-browser errors` เก็บ page errors; `agent-browser screenshot` เมื่อ action ล้มเหลว
+6. จบด้วย `agent-browser close`
+7. รายงานตาราง: route → actions tested → pass/fail → console errors
+
+### 3. Install Browser Dependencies
+
+> Goal: ติดตั้ง browser binaries ถ้าจำเป็น
+
+1. รัน `bunx playwright install` สำหรับ browsers
+2. รัน `bunx playwright install-deps` สำหรับ system dependencies (Linux)
 3. ตรวจสอบ browser binaries ถูกติดตั้งแล้ว
 
-### 3. Run E2E Tests
+### 4. Run E2E Tests
 
-> Goal: รัน E2E tests ตาม framework
+> Goal: รัน Playwright tests
 
-1. ถ้าใช้ Playwright: รัน `bunx playwright test`
-2. ถ้าใช้ Cypress: รัน `bunx cypress run`
-3. ใช้ script จาก `package.json` ถ้ามี
-4. รัน specific tests ด้วย file patterns
+1. Prefer script จาก `package.json` (`bun run test:e2e` ฯลฯ)
+2. Fallback: `bunx playwright test`
+3. Headless เป็น default สำหรับ CI; `--headed` เฉพาะตอน debug
+4. ใช้ `--project`, file pattern, `--grep` เมื่อ scope ระบุ
+5. ใช้ `--last-failed` สำหรับ re-run เฉพาะที่ fail
+6. ใช้ `--ui` หรือ `--debug` เมื่อต้องการ authoring/troubleshooting
 
-### 4. Review Test Results
+### 5. Cover All Routes And Flows
+
+> Goal: coverage ครบ routes + critical flows
+
+1. เทียบ test files กับ route list จาก Step 2 — route ไหนไม่มี test ให้บันทึกเป็น gap
+2. Critical flows ต้องมี test เสมอ: auth, main user journey, forms submit, error states
+3. ถ้า routes เยอะ → สร้าง smoke spec ที่ visit ทุก route แล้ว assert ไม่มี console errors / 5xx
+
+### 6. Review Test Results
 
 > Goal: ตรวจสอบผลลัพธ์จากการทดสอบ
 
-1. ดู test report จาก framework
-2. ตรวจสอบ failed tests
-3. ดู screenshots สำหรับ failed tests
-4. ดู videos สำหรับ test runs
+1. ดู test report จาก framework (`bunx playwright show-report` สำหรับ html report)
+2. ตรวจสอบ failed tests พร้อม screenshots, videos, traces
+3. จำแนก failure: source bug / outdated test / flaky / environment
+4. แก้ที่ root cause — ถ้า test ผิด → `/update-test-and-fix`; ถ้า source ผิด → `/resolve-errors`
 
 ## Rules
 
-### 1. Test Framework Setup
+### 1. Test Framework
 
-- ใช้ Playwright สำหรับ modern E2E testing
-- ใช้ Cypress ถ้า project ใช้อยู่แล้ว
-- ตั้งค่า browsers ที่ต้องการ test
-- ตั้งค่า viewport และ device emulation
+- ใช้ Playwright เท่านั้น — ถ้า project มี Cypress อยู่ให้แนะนำ migrate ไป Playwright
+- ตั้งค่า browsers (`projects`), viewport, device emulation ตาม target
+- `forbidOnly: !!process.env.CI` กัน `.only` หลุดเข้า CI
 
 ### 2. Test Execution
 
-- รัน tests ใน headless mode สำหรับ CI
-- รัน tests ใน headed mode สำหรับ debugging
-- ใช้ parallel execution สำหรับ speed
-- ใช้ retries สำหรับ flaky tests
+- Headless สำหรับ CI/การรันปกติ — `--headed` เฉพาะ debug
+- ใช้ parallel execution และ `retries: 2` บน CI
+- ใช้ `webServer` ใน config ให้ Playwright start dev server เอง (`reuseExistingServer` ตอน local)
 
 ### 3. Test Isolation
 
-- แต่ละ test ต้อง independent
-- ใช้ `beforeEach` และ `afterEach` สำหรับ setup/teardown
-- ลบ cookies/localStorage ระหว่าง tests
-- ใช้ test data ที่ isolated
+- แต่ละ test independent — ใช้ `beforeEach`/`afterEach` setup/teardown
+- ใช้ `storageState` สำหรับ auth reuse แทน login ผ่าน UI ทุก test
+- ใช้ test data ที่ isolated, seed ผ่าน `request` fixture ไม่ใช่ UI
 
-### 4. Error Handling
+### 4. Locators And Assertions
 
-- ดู error messages จาก test framework
-- ดู screenshots สำหรับ visual debugging
-- ดู videos สำหรับ replay test failures
-- ใช้ debug mode สำหรับ troubleshooting
+- ใช้ `getByRole`/`getByLabel`/`getByText`/`getByTestId` — หลีกเลี่ยง CSS selectors ที่ fragile
+- ใช้ web-first assertions (`toBeVisible`, `toHaveText`) ที่ auto-wait — ห้าม `waitForTimeout`
+- ไม่ใช้ conditional logic (`if`/`try-catch`) ใน test bodies
 
-- ใช้ /run-test-unit ถ้าจำเป็น
-- ใช้ /run-test-all ถ้าจำเป็น
-- ใช้ /run-test-api ถ้าจำเป็น
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
+### 5. Failure Handling
+
+- ดู error, screenshot, video, trace ก่อนแก้
+- แก้ root cause ไม่ suppress; ห้าม `.skip`/`.only` หลีกเลี่ยง failure
+- Flaky test ที่ fail ซ้ำ ≥3 ครั้ง → tag และ report แทนการ re-run ไปเรื่อย
 
 ## Expected Outcome
 
-- E2E tests รันผ่านทั้งหมด
-- Test report แสดงผลลัพธ์ชัดเจน
-- Screenshots และ videos สำหรับ failed tests
-- Tests ทำงานได้ใน browsers ที่ตั้งค่าไว้
+- E2E tests รันผ่านทั้งหมดบน browsers ที่ตั้งค่าไว้
+- ทุก route มี coverage: Playwright spec หรือ exploratory pass ผ่าน agent-browser
+- Route gaps ถูกบันทึกชัดเจน
+- Test report พร้อม screenshots/videos/traces สำหรับ failed tests
+- Console errors และ page errors ถูกจับและรายงาน

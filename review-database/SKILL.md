@@ -91,7 +91,7 @@ Merged from: improve-database, optimize-queries, optimize-search
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (database)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (database)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (database)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (database)
 
 - `references/fix-improve-database.md` — ปรับปรุง database: indexes, queries, migrations, connection pool, N+1 detection
 - `references/fix-optimize-queries.md` — แก้ slow queries, N+1 problems และ missing indexes ใน database layer

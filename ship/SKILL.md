@@ -27,7 +27,7 @@ related:
   - watch-deploy
   - run-test-e2e
   - run-test-integration
-  - test-uxui-by-agent-browser
+  - run-test-e2e
   - deep-review-codebase-then-fix
   - run-verify
   - deep-validate
@@ -88,12 +88,13 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 8. ทำ `/review-docs` ถ้า docs/README ไม่ตรงกับ code ล่าสุด
 9. ทำ `/follow-monorepo` ถ้าเป็น monorepo เพื่อ verify workspace conventions
 10. ทำ `/run-verify` เพื่อ verify build, lint, typecheck
-11. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
-12. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
-13. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/deep-implement-to-production`
-14. ถ้าพบ structural หรือ quality issues → ทำ `/deep-refactor`
-15. ทำ `/deep-update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
-16. ทำ `/deep-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
+11. ทำ `/run-test-all` เสมอ — เลือกและรัน `run-test-*` ที่เกี่ยวข้องกับ project ให้ผ่านครบก่อน ship
+12. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้องก่อน ship
+13. ถ้า validation หรือ staging ยังไม่ผ่าน ให้ทำ `/loop-until-complete` จนกว่าจะผ่านหรือถึง max iterations
+14. ถ้าพบ TODO/MOCK/placeholder หรือ unfinished implementation → ทำ `/deep-implement-to-production`
+15. ถ้าพบ structural หรือ quality issues → ทำ `/deep-refactor-codebase`
+16. ทำ `/deep-update-project` เพื่อ sync project files/docs กับ changes ก่อน ship
+17. ทำ `/deep-verify` เป็น final end-to-end verification gate ก่อน proceed ไป staging
 
 ### 4. Stage
 
@@ -105,7 +106,7 @@ Ship code ตาม `AGENTS.md` ของ project โดยอัปเดตเ
 4. ทำ `/git-commit-and-push` ถ้ามี changes ทีผ่าน validation
 5. ตรวจ staging env จาก `AGENTS.md`/`package.json` scripts (`deploy:staging` ฯลฯ) — ถ้าไม่มี staging → ทำ `/ask-me` ก่อน deploy production โดยตรง
 6. deploy ไป staging ด้วย `/run-deploy` หรือ command ตาม project; บันทึก deploy URL, commit hash, deploy time
-7. ทำ `/watch-deploy` + smoke tests: critical flows, API health, DB connectivity; ถ้ามี `/test-uxui-by-agent-browser` สำหรับ critical routes → รันด้วย; ถ้ามี e2e/integration tests สำหรับ staging → `/run-test-e2e`, `/run-test-integration`
+7. ทำ `/watch-deploy` + smoke tests: critical flows, API health, DB connectivity; ถ้ามี `/run-test-e2e` สำหรับ critical routes → รันด้วย; ถ้ามี e2e/integration tests สำหรับ staging → `/run-test-e2e`, `/run-test-integration`
 8. ถ้า staging ไม่ผ่าน → แก้ code แล้วกลับไปข้อ 1 โดย retry สูงสุด 3 ครั้ง — staging ผ่านเท่านั้นถึงไปต่อ (`ready-for-production`)
 
 ### 5. Merge

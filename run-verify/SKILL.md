@@ -7,7 +7,7 @@ related:
   - run-scan
   - run-lint
   - run-typecheck
-  - run-test-unit
+  - run-test
   - run-build
   - implement-to-production
   - check-monorepo
@@ -111,7 +111,7 @@ related:
 - ใช้ /run-scan ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
 - ใช้ /run-typecheck ถ้าจำเป็น
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-test-coverage ถ้าจำเป็น
 - ใช้ /run-test-all ถ้าจำเป็น

@@ -139,7 +139,7 @@ Merged from: improve-cli-ux, improve-consistency, improve-simplicity, optimize-i
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (quality)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (quality)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (quality)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (quality)
 
 - `references/fix-improve-cli-ux.md` — ปรับ CLI experience ทั้ง help text, output format, flags, prompts และ error messages
 - `references/fix-improve-consistency.md` — ปรับ consistency ข้าม codebase — patterns, API shapes, error handling, config และ doc style

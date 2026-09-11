@@ -15,7 +15,7 @@ triggers:
   - model
 related:
   - review-correctness
-  - run-test-unit
+  - run-test
   - resolve-errors
   - review-quality
   - check-should-update
@@ -124,7 +124,7 @@ related:
 - บันทึก findings จาก review-correctness ใน report
 - ถ้ามี critical/high issues → ถาม user ก่อน ship
 
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /review-quality ถ้าจำเป็น
 - ใช้ /check-should-update ถ้าจำเป็น
 

@@ -52,7 +52,7 @@ Review ลึกทั้ม codebase แล้วแก้ไข issues ตา�
 > Goal: ยืนยันผลหลัง fix
 
 1. รัน `/run-check`
-2. รัน `/run-test-unit` ถ้ามี
+2. รัน `/run-test` ถ้ามี
 3. ทำ `/deep-validate`
 4. ถ้าไม่ผ่าน → กลับไป step 3
 

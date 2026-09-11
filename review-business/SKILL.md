@@ -104,7 +104,7 @@ Merged from: improve-business
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (business)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (business)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (business)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (business)
 
 - `references/fix-improve-business.md` — แก้ไข business logic findings ด้าน payment, subscription, multi-tenancy, feature flags, และ email
 ## References

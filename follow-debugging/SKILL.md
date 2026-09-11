@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-math-concepts
   - use-bun-shell
-  - run-test-unit
+  - run-test
   - run-check
   - run-test-all
   - run-until-pass
@@ -44,7 +44,7 @@ related:
 > Goal: เก็บ error messages, logs, และ context ที่เกี่ยวข้องทั้งหมด
 
 1. เก็บ error messages, stack traces, และ logs ทั้งหมด
-2. ใช้ `/run-test-unit` เพื่อดูว่า tests ไหน fail
+2. ใช้ `/run-test` เพื่อดูว่า tests ไหน fail
 3. ตรวจสอบ recent changes ด้วย `git log` และ `git diff`
 4. ตรวจสอบ environment: runtime version, dependencies, config
 5. ถ้ามี monitoring ให้เก็บ metrics และ traces ด้วย
@@ -83,7 +83,7 @@ related:
 
 1. ทำ `/resolve-errors` เพื่อแก้ไข error ที่พบ
 2. แก้น้อยที่สุด — minimal change ที่แก้ root cause ไม่ใช่ symptom
-3. ทำ `/run-test-unit` เพื่อยืนยันว่า fix ใช้งานได้
+3. ทำ `/run-test` เพื่อยืนยันว่า fix ใช้งานได้
 4. ทดสอบว่า fix ไม่ทำลาย functionality อื่น
 5. ทำ `/run-lint` และ `/run-typecheck` เพื่อตรวจสอบ code quality
 
@@ -125,7 +125,7 @@ related:
 ### 4. Tool Selection
 
 - Runtime errors → `/deep-debug` + `/resolve-errors`
-- Test failures → `/run-test-unit` + `/follow-tool-vitest`
+- Test failures → `/run-test` + `/follow-tool-vitest`
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`

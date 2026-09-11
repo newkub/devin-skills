@@ -134,7 +134,7 @@ Merged from: improve-logging, improve-observability
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (observability)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (observability)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (observability)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (observability)
 
 - `references/fix-improve-logging.md` — ปรับ log quality ทั้ง levels, structure, context และ redaction ของ sensitive data
 - `references/fix-improve-observability.md` — เพิ่ม logging, metrics, tracing และ alerting ตาม findings จาก review-observability

@@ -100,7 +100,7 @@ Merged from: optimize-terminal
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (shell profile)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (shell profile)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (shell profile)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (shell profile)
 
 - `references/fix-optimize-terminal.md` — ลดเวลา shell startup — profile profiling, plugin audit และ lazy loading
 ## Expected Outcome

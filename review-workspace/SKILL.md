@@ -120,7 +120,7 @@ Merged from: optimize-git-repo, optimize-workspace
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (workspace)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (workspace)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (workspace)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (workspace)
 
 - `references/fix-optimize-git-repo.md` — ลดขนาด git repo — history bloat, large objects, gc และ LFS migration
 - `references/fix-optimize-workspace.md` — Optimize monorepo task graph — affected-only runs, remote cache และ pipeline tuning

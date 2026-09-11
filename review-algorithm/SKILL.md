@@ -73,7 +73,7 @@ Merged from: optimize-algorithm
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (algorithm)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (algorithm)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (algorithm)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (algorithm)
 
 - `references/fix-optimize-algorithm.md` — ปรับปรุง algorithms: time complexity, space complexity, data structures, hot paths
 ## References

@@ -159,7 +159,7 @@ Merged from: improve-performance, optimize-memory, optimize-network, optimize-pe
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (performance)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (performance)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (performance)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (performance)
 
 - `references/fix-improve-performance.md` — แก้ findings จาก review-performance ครอบคลุม network, runtime, memory และ caching
 - `references/fix-optimize-memory.md` — ปรับปรุง memory usage: leaks, large objects, caches, garbage collection

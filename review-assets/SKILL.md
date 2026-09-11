@@ -71,7 +71,7 @@ Merged from: optimize-assets, optimize-fonts, optimize-images, optimize-videos
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (assets)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้างล่าง
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (assets)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (assets)
 
 - `references/fix-optimize-assets.md` — Dispatch การ optimize static assets ไปยัง review-assets, review-assets, review-assets ตาม asset type
 - `references/fix-optimize-fonts.md` — Optimize web fonts — subsetting, preload, font-display และ self-hosting สำหรับ LCP/CLS

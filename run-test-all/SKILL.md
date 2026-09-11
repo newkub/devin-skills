@@ -1,16 +1,20 @@
 ---
 name: run-test-all
-description: รัน test suite อย่างเป็นระบบ จำแนก failures ว่าควรแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
+description: Orchestrate test suite ทั้งหมด — เลือก run-test-* ที่เหมาะกับ project แล้วรันจนครบ จำแนก failures
 argument-hint: "[scope]"
 related:
   - review-test
   - run-lint
   - run-typecheck
-  - run-test-unit
+  - run-test
   - run-test-integration
   - run-test-e2e
   - run-test-api
+  - run-test-cli
+  - run-test-contract
+  - run-test-visual
   - run-test-coverage
+  - run-test-mutation
   - update-test-and-fix
   - deep-review-codebase
   - resolve-errors
@@ -20,11 +24,24 @@ related:
 
 ## Goal
 
-รัน test suite อย่างเป็นระบบ ตรวจหา failures แล้ว validate/review เพื่อกำหนดว่าควรแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
+รัน test suite ทั้งหมดอย่างเป็นระบบ — เลือก `run-test-*` ที่เหมาะกับ project จาก signals จริง รันตามลำดับ fail-fast แล้ว validate/classify failures ว่าแก้ source หรือ test โดยไม่แก้ให้ผ่านอัตโนมัติ
 
 ## Scope
 
-ครอบคลุม unit, integration, e2e, component, API, database, performance, security, accessibility, i18n, และ specialized tests ตาม project needs
+Orchestrator ของ test runners ทั้งหมด — ไม่รัน test เอง แต่เลือกและเรียก `run-test-*` ตามสิ่งที่ project มีจริง
+
+| No. | Signal ที่พบ | Skill ที่เลือก |
+|----:|-------------|---------------|
+| 1 | `*.test.*`, `*.spec.*`, vitest/jest/pytest/go test | `/run-test` (unit/fast) |
+| 2 | shared modules, DB, services integration | `/run-test-integration` |
+| 3 | HTTP endpoints, OpenAPI spec, API routes | `/run-test-api` + `/test-all-api-routes` |
+| 4 | CLI binary, `bin` field, command definitions | `/run-test-cli` |
+| 5 | consumer/provider services, Pact, contract files | `/run-test-contract` |
+| 6 | web frontend, browser flows | `/run-test-e2e` (Playwright; agent-browser headless ถ้ายังไม่มี suite) |
+| 7 | UI components, design system, screenshots | `/run-test-visual` |
+| 8 | coverage config หรือ target กำหนดไว้ | `/run-test-coverage` |
+| 9 | critical logic, mutation config | `/run-test-mutation` |
+| 10 | ทุก case | `/run-lint` + `/run-typecheck` ก่อนเสมอ |
 
 ดูเพิ่มเติม: /update-test-and-fix, /deep-review-codebase
 
@@ -32,157 +49,97 @@ related:
 
 > Pre-Run: ทำ `/review-test` ก่อนเสมอ — `run-*` ต้อง review/ประเมินก่อนลงมือหลัก ห้ามข้าม; ถ้า findings เป็น blocker ให้แก้หรือ report ก่อนรัน (test all)
 
-### 1. Run Lint And Typecheck
+### 1. Lint And Typecheck First
 
-> Goal: Run Lint And Typecheck
+> Goal: code quality pass ก่อนรัน tests
 
-1. ทำ `/run-lint` เพื่อตรวจสอบ code quality
-2. ทำ `/run-typecheck` เพื่อตรวจสอบ type safety
-3. แก้ไข lint/type errors ก่อนรัน tests (code quality ไม่ใช่ test failure)
+1. ทำ `/run-lint` และ `/run-typecheck`
+2. แก้ lint/type errors ก่อน — ไม่ใช่ test failure
 
-### 2. Setup Test Structure
+### 2. Detect Applicable Test Types
 
-> Goal: Setup Test Structure
+> Goal: เลือก `run-test-*` ที่เกี่ยวข้องจาก signals
 
-1. ตรวจสอบ test structure: `test/unit/`, `test/integration/`, `test/e2e/`, `test/fixtures/`, `test/mocks/`, `test/utils/`
-2. สร้าง directories ถ้ายังไม่มี
-3. ตรวจสอบ test frameworks ติดตั้ง (Vitest, Playwright)
-4. ตรวจสอบ test config files (`vitest.config.ts`, `playwright.config.ts`)
+1. สแกน `package.json`, configs, test dirs, routes — เทียบกับตารางใน Scope
+2. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ → `/update-test-and-fix` สร้าง tests ที่ขาดก่อน
+3. บันทึกรายการ test types ที่จะรันและเหตุผล — ไม่รันทุก type โดยไม่มี signal
 
-### 3. Prepare Tests
+### 3. Run In Fail-Fast Order
 
-> Goal: Prepare Tests
+> Goal: รันเร็วสุดก่อน เจอปัญหาเร็ว
 
-1. ถ้า project ยังไม่มี tests หรือ coverage ไม่ครบ ให้ทำ `/update-test-and-fix` เพื่อสร้าง tests ที่ขาดหายไป
-2. ตรวจสอบ test files ครอบคลุม happy path, edge cases, error cases
-3. ไม่แก้ไข test assertions หรือ source code เพื่อให้ผ่านในขั้นตอนนี้
+1. ลำดับ: `/run-test` (unit) → `/run-test-integration` → `/run-test-api` / `/run-test-cli` / `/run-test-contract` (ตาม signals) → `/run-test-e2e` → `/run-test-visual`
+2. ต่อ type: บันทึกผลลัพธ์, duration, รายการ tests ที่ fail
+3. ถ้ามี fail → ไปขั้นตอน Validate/Classify ทันที ไม่แก้ไข code ก่อน
 
-### 4. Run Unit Tests
+### 4. Validate And Classify Failures
 
-> Goal: รัน unit tests สำหรับ pure functions และ business logic
+> Goal: ระบุว่า source หรือ test ผิด
 
-1. ทำ `/run-test-unit` เพื่อรัน unit tests
-2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
-3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
+1. ทำ `/deep-validate` กับ source ที่เกี่ยวข้อง และ review test files (`/deep-review-codebase` ถ้าต้องการ)
+2. จำแนกผล:
+   - source ผิด → ระบุไฟล์ แนะนำ `/resolve-errors` หรือ `/edit-manual`
+   - test ผิด (assertion, mock, expectation outdated) → ระบุไฟล์ แนะนำ `/update-test-and-fix` หรือ `/edit-manual`
+   - ไม่ชัดเจน → report ก่อนดำเนินการ
+3. ห้ามแก้โดยไม่มี evidence
 
-### 5. Run Integration Tests
+### 5. Fix Based On Classification
 
-> Goal: รัน integration tests สำหรับ module interactions และ data flow
+> Goal: แก้ตามผล classify แล้วรันซ้ำ
 
-1. ทำ `/run-test-integration` เพื่อรัน integration tests
-2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
-3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
+1. source ผิด → `/resolve-errors`; test ผิด → `/update-test-and-fix` หรือ `/edit-manual`
+2. รัน tests ที่ fail อีกครั้ง — ถ้ายัง fail กลับไป Step 4
+3. Failure เดิมซ้ำ ≥3 ครั้ง → stop และ report
 
-### 6. Run Conditional Tests
+### 6. Coverage And Report
 
-> Goal: รัน E2E และ specialized tests เฉพาะที่เกี่ยวข้องกับ project
+> Goal: ครอบคลุมและรายงาน
 
-1. ถ้ามี web frontend: ทำ `/run-test-e2e` เพื่อรัน E2E tests ด้วย Playwright หรือ Cypress
-2. บันทึกผลลัพธ์, duration, และรายการ tests ที่ fail
-3. ถ้ามี fail ให้ไปขั้นตอน Validate/Review ทันที โดยไม่แก้ไข code
-4. รันเฉพาะ test types ที่เกี่ยวข้องกับ project:
+1. ทำ `/run-test-coverage` เมื่อ project มี coverage target
+2. ถ้าไม่ถึงเป้า → `/update-test-and-fix` เพิ่ม แล้วรันใหม่
+3. ทำ `/report` สรุป: test types ที่รัน, pass/fail ต่อ type, classification, coverage, action items
 
-- ถ้ามี UI: component tests และ accessibility tests (WCAG, ARIA, keyboard, screen reader)
-- ถ้ามี API: ทำ `/run-test-api` สำหรับ API tests และ contract tests
-- ถ้ามี database: database tests สำหรับ queries, migrations, transactions, data integrity, indexes
-- ถ้ามี GraphQL: GraphQL tests สำหรับ queries, mutations, subscriptions, schema validation, resolvers
-- ถ้ามี WebSocket: WebSocket tests สำหรับ connections, real-time messaging, reconnection, error handling
-- ถ้ามี file operations: file tests สำหรับ upload, download, validation, large files, security
-- ถ้ามี i18n: i18n tests สำหรับ translation completeness, RTL, formatting, locale switching, pluralization
-- ถ้ามี caching: cache tests สำหรับ invalidation, TTL, CDN caching
-- ถ้ามี network dependencies: network tests สำหรับ offline mode, retry, timeout, slow connections
-- ถ้าต้องการ performance validation: performance tests และ load tests
-- ถ้าต้องการ resilience validation: chaos tests
-- ถ้ามี users: usage tests ใน production-like environment
-- ถ้ามี critical components: formal verification, security tests, mutation tests (score > 80%)
+### 7. Continue To Full Verify
 
-### 7. Validate And Classify Failures
+> Goal: ส่งต่อ verify ครบวงจรถ้าจำเป็น
 
-> Goal: Validate And Classify Failures
-
-1. ทำ `/deep-validate` กับ source code ที่เกี่ยวข้องเพื่อตรวจสอบความถูกต้อง
-2. ทำ `/run-test-unit` เพื่อตรวจสอบ test quality, assertions, mocks
-3. ทำ `/deep-review-codebase` เพื่อ review ทั้ง source และ test files
-4. จำแนกผล:
-   - ถ้า source ผิด → ระบุไฟล์ source ที่ต้องแก้ แนะนำ `/resolve-errors` หรือ `/edit-manual`
-   - ถ้า test ผิด (assertion, mock, expectation) → ระบุไฟล์ test ที่ต้องแก้ แนะนำ `/update-test-and-fix` หรือ `/edit-manual`
-   - ถ้าไม่ชัดเจน → ทำ `/deep-review-codebase` แล้ว report ก่อนดำเนินการ
-5. ห้ามแก้ source หรือ test โดยไม่มี evidence จาก validate/review
-
-### 8. Fix Based On Classification
-
-> Goal: Fix Based On Classification
-
-1. ถ้าได้รับการยืนยันและผล validate/review ชัดเจน:
-   - ถ้า source ผิด → ทำ `/resolve-errors` กับ source
-   - ถ้า test ผิด → ทำ `/update-test-and-fix` หรือ `/edit-manual` กับ test
-2. รัน tests อีกครั้งหลังแก้ไข
-3. ถ้ายัง fail ให้กลับไปขั้นตอน Validate/Review ไม่แก้ให้ผ่านแบบอัตโนมัติ
-
-### 9. Check Coverage And Report
-
-> Goal: Check Coverage และรายงานผล
-
-1. ทำ `/run-test-coverage` เพื่อวิเคราะห์ coverage
-2. ตรวจสอบ coverage ทุก category (lines, branches, functions, statements)
-3. ถ้าไม่ถึงเป้าหมาย ให้ทำ `/update-test-and-fix` เพิ่ม แล้วรัน tests ใหม่
-4. ทำ `/report` สรุปผลลัพธ์
-5. ใช้ `/report` สำหรับ test results, coverage metrics, และ action items
-
-### 10. Continue To Full Verify
-
-> Goal: ส่งต่อไป verify ครบวงจรถ้าจำเป็น
-
-1. ถ้า tests ผ่านทั้งหมด และ user ต้องการ verify ครบวงจร → ทำ `/run-verify`
-2. ถ้า `/run-verify` fail → ทำ `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
-3. ทำ `/suggest-next-action` หากยังมี issues
+1. ถ้า tests ผ่านทั้งหมด → `/run-verify`
+2. ถ้า `/run-verify` fail → `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง
 
 ## Rules
 
-### 1. Test Failure Handling
+### 1. Test Selection
+
+- เลือก `run-test-*` จาก signals จริงเท่านั้น — ไม่รันทุก type
+- ถ้าไม่แน่ใจว่า type ไหนเกี่ยวข้อง → ถามผู้ใช้
+
+### 2. Test Failure Handling
 
 - Test fail: ห้ามแก้ให้ผ่านโดยไม่ validate/review ก่อน
-- Test error: ตรวจสอบ error message แล้ว classify
-- Test pass: continue ไป test ถัดไป
-- Test timeout: ตรวจสอบ performance
 - ก่อนแก้ไขต้องมี evidence ว่า source หรือ test ผิด
-
-### 2. Validation And Review
-
-- ทำ `/deep-validate` กับ source ทุกครั้งเมื่อ test fail
-- ทำ `/run-test-unit` กับ test ทุกครั้งเมื่อ test fail
-- ทำ `/deep-review-codebase` เพื่อหาต้นเหตุ
-- ถ้าไม่ชัดเจน → ทำ `/deep-review-codebase` แล้ว report
+- ห้าม `.skip`, `.only`, `xit`, `xtest` เพื่อหลีกเลี่ยง failure
 
 ### 3. Fix Direction
 
 - ถ้า source ผิด → แก้ source ไม่ใช่ test
-- ถ้า test ผิด (outdated, assertion ผิด, mock ผิด) → แก้ test
+- ถ้า test ผิด → แก้ test
 - ห้ามแก้ assertion ให้อ่อนลงเพื่อให้ผ่าน
 - ห้ามแก้ source ให้เข้ากับ test ที่ผิด
 
-### 4. Specialized Test Selection
+### 4. Coverage
 
-- รันเฉพาะ test types ที่เกี่ยวข้องกับ project
-- ไม่ต้องรันทุก type
-- ถ้าไม่แน่ใจ ถามผู้ใช้
+- ตรวจ coverage ทุก category (line, branch, function, statement)
+- ถ้ายังไม่ถึงเป้า → เพิ่ม tests ไม่ใช่ลด coverage target
 
-### 5. Coverage
+### 5. Reporting
 
-- ตรวจสอบ coverage ทุก category (line, branch, function, statement)
-- เป้าหมาย 100% ถ้า project กำหนด
-- ถ้ายังไม่ถึง ให้เพิ่ม tests ไม่ใช่ลด coverage target
-
-### 6. Reporting
-
-- รายงานชัดเจนและ action-oriented
+- รายงานชัดเจน action-oriented แยก source issue กับ test issue
 - ระบุ priority
-- แยกผลเป็น source issue กับ test issue
 
 ## Expected Outcome
 
-- Tests รันเสร็จสมบูรณ์
-- Test failures ได้รับการ validate/review และจำแนกว่าเป็น source หรือ test issue
+- ทุก applicable `run-test-*` ถูกรันครบตาม signals ของ project
+- Test failures ได้รับ validate/classify ว่าเป็น source หรือ test issue
 - ไม่มีการแก้ไขโดยไม่มี evidence
 - Coverage ผ่านเป้าหมาย (ถ้ามี)
 - รายงานผล test results, coverage, และ action items ชัดเจน

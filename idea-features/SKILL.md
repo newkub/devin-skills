@@ -11,6 +11,7 @@ related:
   - then-apply
   - report-uxui-sketch
   - implement-to-production
+  - run-test-all
 
 ---
 
@@ -89,6 +90,7 @@ related:
 - ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-features-to-mvp`
 - ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
 - ถ้า user ต้องการแค่ไอเดียเพิ่ม → ทำต่อใน skill นี้
+- เมื่อ features ใดๆ ถูก implement → ต้องทำ `/run-test-all` เสมอเพื่อ verify ว่า features ทำงานและไม่พังของเดิม
 
 ### 4. Format
 

@@ -7,7 +7,7 @@ related:
   - follow-tool-mise
   - run-build
   - run-lint
-  - run-test-unit
+  - run-test
   - run-verify
   - deep-validate
   - run-test-all
@@ -113,7 +113,7 @@ related:
 - ใช้ /follow-tool-mise ถ้าจำเป็น
 - ใช้ /run-build ถ้าจำเป็น
 - ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /run-verify ถ้าจำเป็น
 
 ## References

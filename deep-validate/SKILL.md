@@ -4,7 +4,7 @@ description: Validate ละเอียดหลายมิติ cross-refere
 argument-hint: "[scope]"
 related:
   - rethink
-  - run-test-unit
+  - run-test
   - review-quality
   - run-typecheck
   - report
@@ -25,7 +25,7 @@ Validate ละเอียดหลายมิติ: correctness, type safety
 ใช้สำหรับ validation ที่ต้องการความละเอียดสูง ครอบคลุมทุกมิติของระบบ
 
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: deep-verify) — ถ้าต้อง verify หลัง `/merge` หรือ parallel work ดู `references/post-merge-verify.md`
-- สำหรับ validate tests ใช้ `/run-test-unit`; สำหรับ validate review ใช้ `/review-quality`
+- สำหรับ validate tests ใช้ `/run-test`; สำหรับ validate review ใช้ `/review-quality`
 
 ## Execute
 

@@ -101,7 +101,7 @@ Merged from: improve-naming
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (writing)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (writing)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (writing)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (writing)
 
 - `references/fix-improve-naming.md` — ปรับ naming consistency ข้าม codebase ตัวแปร, functions, files และ exports
 ## References

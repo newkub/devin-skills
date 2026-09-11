@@ -3,7 +3,7 @@ name: review-test
 description: Review test strategy, quality, และผลลัพธ์หลัง run tests พร้อมสรุป action ถัดไป
 argument-hint: "[scope]"
 related:
-  - run-test-unit
+  - run-test
   - run-test-coverage
   - update-test-and-fix
   - follow-test
@@ -102,7 +102,7 @@ Merged from: improve-test-coverage, improve-test-data, optimize-tests
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (test)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (test)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (test)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (test)
 
 - `references/fix-improve-test-coverage.md` — ปรับปรุง test coverage โดยรัน coverage, หา gaps, เติม tests, และ verify จนถึง threshold
 - `references/fix-improve-test-data.md` — ปรับ fixtures, factories และ test data ให้ realistic, maintainable และ deterministic

@@ -3,7 +3,7 @@ name: review-accessibility
 description: ตรวจ accessibility ตาม WCAG — semantics, keyboard, ARIA, contrast, screen reader
 argument-hint: "[url-or-route-or-component]"
 related:  - review-uxui
-  - test-website-by-agent-browser
+  - run-test-e2e
   - capture
   - use-agent-browser
   - report
@@ -27,7 +27,7 @@ related:
 > Goal: เปิด target พร้อม audit tools
 
 1. เปิด dev server หรือใช้ deployed URL ตาม argument
-2. ใช้ `/test-website-by-agent-browser` เพื่อเปิด page ด้วย `agent-browser`
+2. ใช้ `/run-test-e2e` เพื่อเปิด page ด้วย `agent-browser`
 3. ถ้าเป็น component เดี่ยว → เปิด storybook หรือ route ที่ render component นั้น
 
 ### 2. Run Automated Audit
@@ -99,7 +99,7 @@ Merged from: improve-accessibility
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (accessibility)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (accessibility)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (accessibility)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (accessibility)
 
 - `references/fix-improve-accessibility.md` — แก้ไข accessibility findings ตาม WCAG — semantics, ARIA, keyboard, focus, contrast
 ## References

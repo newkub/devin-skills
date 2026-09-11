@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - follow-create-web-nextjs
   - follow-lang-typescript
-  - run-test-unit
+  - run-test
   - follow-my-tech-stack
   - review-techstack
   - report
@@ -112,7 +112,7 @@ related:
 - ใช้ /follow-create-web ถ้าจำเป็น
 - ใช้ /follow-create-web-nextjs ถ้าจำเป็น
 - ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /run-test-unit ถ้าจำเป็น
+- ใช้ /run-test ถ้าจำเป็น
 - ใช้ /report ถ้าจำเป็น
 
 ## Expected Outcome

@@ -152,7 +152,7 @@ related:
 1. รัน `cargo test` ใน crate directory
 2. รัน `bun run build` ใน web directory
 3. รัน `bun run dev` เพื่อตรวจ dev mode
-4. ทำ `/run-test-unit` สำหรับ frontend ถ้ามี test suites
+4. ทำ `/run-test` สำหรับ frontend ถ้ามี test suites
 
 ### 9. Deploy And Ship
 

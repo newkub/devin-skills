@@ -103,7 +103,7 @@ Merged from: optimize-ci, optimize-docker
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (delivery)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (delivery)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (delivery)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (delivery)
 
 - `references/fix-optimize-ci.md` — ลดเวลาและต้นทุน CI pipeline ด้วย cache, matrix tuning, path filters และ job splitting
 - `references/fix-optimize-docker.md` — ลดขนาดและเวลา build ของ Docker image ด้วย multi-stage, layer cache และ base image tuning

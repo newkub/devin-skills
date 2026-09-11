@@ -134,7 +134,7 @@ Merged from: improve-seo
 
 1. จัดลำดับ findings ตาม severity — critical ก่อน แล้วแก้ทีละรายการพร้อม verify ทันทีหลังแก้ (seo)
 2. เลือก fix guide ที่ตรงกับ finding จากรายการด้านล่าง (seo)
-3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (seo)
+3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (seo)
 
 - `references/fix-improve-seo.md` — ตรวจและปรับปรุง SEO: meta tags, Open Graph, sitemap, robots, structured data
 ## Expected Outcome
