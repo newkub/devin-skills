@@ -64,7 +64,17 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 6. ทำซ้ำสูงสุด 3 รอบต่อ run
 7. ถ้า resolve ไม่ได้ → ทำเครื่องหมาย `manual-fix-required`
 
-### 6. Build Report
+### 6. Watch Run Real-time
+
+> Goal: ติดตาม run แบบ real-time จนกว่าจะจบ (merged from: watch-github-actions)
+1. รัน `gh run watch <run-id> --repo <owner/repo>` เพื่อติดตามแบบ real-time
+2. ถ้า `gh run watch` ค้างหรือ timeout → รัน `gh run view <run-id>` เพื่อตรวจสอบสถานะแทน
+3. ถ้า run ล้มเหลว → กลับไปขั้นตอน Analyze Logs และ resolve ต่อ
+4. loop จนกว่าทุก workflow ผ่าน — สูงสุด 5 รอบ ถ้ายังไม่ผ่าน → หยุดและรายงานสถานะ
+5. ก่อน push fix ให้บันทึก last green SHA ด้วย `git rev-parse HEAD`
+6. ถ้า fix round ≥ 3 และสร้าง failure ใหม่ → `git revert` กลับไป last green SHA
+
+### 7. Build Report
 
 > Goal: สรุปผลเป็นตาราง
 1. รวมผลจาก repo ทีระบุ
@@ -72,7 +82,7 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 3. เรียงตาม Started At ล่าสุด
 4. ระบุสรุป: จำนวน failures ทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
 
-### 7. Suggest Next Action
+### 8. Suggest Next Action
 
 > Goal: แนะนำขั้นตอนถัดไป
 1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `resolve-cicd`
@@ -99,6 +109,20 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 ### 5. Account-wide
 - ถ้า user ต้องการ resolve ทั่วทุก repo ให้ใช้ scope `--all` ของ skill นี้
 
+### 6. Watch Timeouts (merged from: watch-github-actions)
+- `perRoundTimeout` = `120` วินาที สำหรับแต่ละรอบ fix-and-push
+- `ghRunWatchTimeout` = `300` วินาที สำหรับ `gh run watch`
+- หยุดทันทีเมื่อ user กด `Ctrl+C` — บันทึกสถานะ run ก่อนหยุด
+
+### 7. Push Failure Handling
+- ถ้า `git push` ล้มเหลวเพราะ merge conflict → `git pull --rebase` แล้ว push ใหม่
+- ถ้า `git push` ล้มเหลวเพราะ branch protection → ทำ `/ask-me`
+- ถ้า `git push` ล้มเหลวเพราะ network → retry สูงสุด `3` ครั้ง
+
+### 8. Clean Failed Runs (Optional)
+- คง run ที่ failure ไว้สำหรับ post-incident analysis โดย default
+- ถ้า user ขอให้ลบ → ทำ `/ask-me` เพื่อยืนยันก่อนลบแต่ละ run ด้วย `gh run delete <run-id>` หรือ `/delete-cicd-fails`
+
 ## Expected Outcome
 
 - รายการ GitHub Actions runs ทีล้มเหลวพร้อมสถานะหลัง resolve สำหรับ repo ทีระบุ
@@ -106,4 +130,4 @@ List GitHub Actions workflow runs ทีล้มเหลวสำหรับ 
 - ข้อมูล workflow, branch, commit, url, action taken พร้อม
 - ไม่มีการ push/merge หรือแก้ไข repo โดยไม่ได้รับอนุญาต
 
-- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: resolve-all-github-actions-fails)
+- รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: resolve-all-github-actions-fails, watch-github-actions) — ใช้ใน `git-push` ด้วย
