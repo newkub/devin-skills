@@ -17,7 +17,7 @@ Rollback production deployment ที่พัง กลับไปยัง ve
 
 ## Scope
 
-ใช้ภายหลัง `/ship`, `/ship` หรือ `/ship` เมื่อ production deploy แล้วพัง — โดยทั่วไป trigger มาจาก `/watch-deploy` หรือ observability alert
+ใช้ภายหลัง `/ship` เมื่อ production deploy แล้วพัง — โดยทั่วไป trigger มาจาก `/watch-deploy` หรือ observability alert
 
 ## Execute
 

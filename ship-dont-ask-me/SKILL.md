@@ -24,7 +24,7 @@ Ship code ตาม flow ของ `/ship` ครบทุกขั้นตอ�
 - ใช้เมื่อผู้ใช้ระบุ `/ship-dont-ask-me`, `ship` พร้อม `dont-ask-me`, หรือเมื่อ `/follow-enter-dot` ตรวจพบว่า session นี้เคยใช้ `/ship-dont-ask-me` แล้ว
 - การเรียกใช้ครั้งแรกเปิด `dont-ask-me` mode ให้ session ทันที — มีผลกับทุก `/ask-me` ใน `global_rules.md` และ skills ทีเกี่ยวข้อง
 - ครอบคลุม ship lifecycle เดียวกับ `/ship`: prepare → branch → validate → staging → merge → production → report
-- ship lifecycle ใช้ `/run-verify` และ `/deep-validate` สำหรับ validate, `/ship` สำหรับ staging, `/ship` สำหรับ production
+- ship lifecycle ใช้ `/run-verify` และ `/deep-validate` สำหรับ validate, `/ship` สำหรับ staging และ production
 - action ทีเป็นอันตรายหรือย้อนกลับไม่ได้ → เลือก safe path แล้ว report แทนการถามยืนยัน
 
 ## Execute
@@ -40,7 +40,7 @@ Ship code ตาม flow ของ `/ship` ครบทุกขั้นตอ�
 
 > Goal: ทำตาม `/ship` ครบทุก step โดยไม่ถาม
 
-1. ทำตาม `/ship` ทีละ section ตามลำดับ: `Prepare` → `Branch Hygiene` → `Validate` → `Stage` → `Merge And Production` → `Report` — ห้ามข้าม step
+1. ทำตาม `/ship` ทีละ section ตามลำดับ: `Prepare` → `Branch Hygiene` → `Validate` → `Stage` → `Merge` → `Production Deploy And Verify` → `Wrap Up And Report` — ห้ามข้าม step
 2. ทุกจุดที `/ship` ระบุ "ทำ `/ask-me`", "user ยืนยัน" หรือ "user confirm" → ตัดสินใจเองผ่าน `/follow-your-suggestion` ด้วย safe default ทีสอดคล้อง `AGENTS.md` และ conventions
 3. ทำงาน incremental: แก้ไขและ verify ทีละจุดเล็กๆ ไม่รวมหลาย change เสี่ยงในรอบเดียว
 4. บันทึกทุกการตัดสินใจทีแทนการถามไว้ใน report เพื่อให้ traceable
