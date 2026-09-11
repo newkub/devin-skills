@@ -25,7 +25,7 @@ related:
 1. ตรวจสอบ framework ที่ใช้ (`Vite`, `Nuxt`, `Next.js`, `Astro`, `HTML/CLI`)
 2. อ่าน config ที่มีอยู่แล้ว (`uno.config.*`, `vite.config.*`, `nuxt.config.*`, `postcss.config.*`, `astro.config.*`)
 3. ระบุ CSS entry point (`main.ts`, `app/globals.css`, `src/style.css`, ฯลฯ)
-4. ตรวจสอบ UnoCSS version ที่ install (ควรเป็น v66+; ล่าสุด v66.10.0)
+4. ตรวจสอบ UnoCSS version ที่ install (ควรเป็น v66+; ล่าสุด v66.10.1)
 
 ### 2. Install Dependencies
 
@@ -177,7 +177,7 @@ related:
 
 ### Installation
 
-- ใช้ `unocss` v66+ (latest v66.10.0)
+- ใช้ `unocss` v66+ (latest v66.10.1)
 - สำหรับ Next.js ติดตั้ง `@unocss/postcss`
 - สำหรับ Nuxt ติดตั้ง `@unocss/nuxt`
 - สำหรับ Astro ติดตั้ง `@unocss/astro`

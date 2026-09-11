@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib ioredis)
 
+- Latest: `ioredis@6.0.0` (v6 major — ตรวจ changelog เมื่อ migrate จาก v5) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage

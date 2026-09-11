@@ -164,8 +164,8 @@ related:
 
 ### 8. Version Notes
 
-- Latest stable: `@orpc/server@1.15.0` / `@orpc/client@1.15.0` (verified 2026-07-30)
-- oRPC v2 beta: `@orpc/server@beta @orpc/client@beta` (2.0.0-beta.32) มี breaking changes เช่น `route`/`prefix`/`tag` → `meta(openapi(...))`, `isDefinedError` → `isInferableError`, `safe` คืน `[error, data, inferableError]`, `eventIterator` → `asyncIteratorObject`
+- Latest stable: `@orpc/server@1.15.0` / `@orpc/client@1.15.0` (verified 2026-09-11)
+- oRPC v2 beta: `@orpc/server@beta @orpc/client@beta` (2.0.0-beta.35) มี breaking changes เช่น `route`/`prefix`/`tag` → `meta(openapi(...))`, `isDefinedError` → `isInferableError`, `safe` คืน `[error, data, inferableError]`, `eventIterator` → `asyncIteratorObject`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 
 - ใช้ `/follow-lib-zod` ถ้าใช้ Zod เป็น validator

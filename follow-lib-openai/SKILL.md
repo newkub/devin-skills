@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib openai)
 
+- Latest: `openai@7.15.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage

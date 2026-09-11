@@ -8,7 +8,7 @@ related:
 
 ## Goal
 
-ใช้งาน Remotion v4 (latest ~4.0.520) สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React, animations แบบ frame-based, และ render ผ่าน CLI หรือ cloud
+ใช้งาน Remotion v4 (latest ~4.0.523) สำหรับสร้างวิดีโอแบบโปรแกรมมิ่งด้วย React, animations แบบ frame-based, และ render ผ่าน CLI หรือ cloud
 
 ## Scope
 

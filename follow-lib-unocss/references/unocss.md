@@ -9,7 +9,7 @@
 
 ## Version
 
-- `unocss`: latest `66.10.0`
+- `unocss`: latest `66.10.1`
 - `@unocss/preset-wind4`: bundled in `unocss` package
 
 ## Installation

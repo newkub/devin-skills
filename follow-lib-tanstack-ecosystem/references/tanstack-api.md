@@ -12,7 +12,7 @@
 | Store | `@tanstack/react-store` v0.11.x | 0.x |
 | Start | `@tanstack/react-start` v1.168.x | Stable |
 | DB | `@tanstack/react-db` v0.3.x | 0.x |
-| AI | `@tanstack/ai` v0.53.x | RC |
+| AI | `@tanstack/ai` v0.54.x | RC |
 | Pacer | `@tanstack/react-pacer` v0.23.x | 0.x |
 
 Naming convention: `@tanstack/{framework}-{lib}` — เช่น `@tanstack/react-query`, `@tanstack/vue-query`, `@tanstack/solid-router`, `@tanstack/svelte-query` (Angular บางตัวใช้ชื่อ `*-experimental` เช่น `@tanstack/angular-query-experimental`)

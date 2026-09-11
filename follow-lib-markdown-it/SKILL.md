@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib markdown it)
 
+- Latest: `markdown-it@15.0.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage

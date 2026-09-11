@@ -30,7 +30,7 @@ related:
 1. ใช้ URL format `https://esm.sh/{package}@{version}/{subpath}`
 2. รองรับ `npm` (default), `JSR` (`/jsr/`), `GitHub` (`/gh/`) และ `pkg.pr.new` (`/pr/`)
 3. ตัวอย่าง:
-   - `import React from 'https://esm.sh/react@19.2.8'`
+   - `import React from 'https://esm.sh/react@19.3.0'`
    - `import { encodeBase64 } from 'https://esm.sh/jsr/@std/encoding@1.0.0/base64'`
    - `import tslib from 'https://esm.sh/gh/microsoft/tslib@v2.8.1'`
 
@@ -50,7 +50,7 @@ related:
 > Goal: ใช้ bare specifiers กับ `import maps`
 
 1. สร้าง `<script type="importmap">` แล้ว map specifier ไปยัง `esm.sh` URL
-2. สำหรับ trailing slash ให้เปลี่ยน `?` เป็น `&` หลัง version เช่น `https://esm.sh/react-dom@19.2.8&dev/`
+2. สำหรับ trailing slash ให้เปลี่ยน `?` เป็น `&` หลัง version เช่น `https://esm.sh/react-dom@19.3.0&dev/`
 3. ใช้ `?external` ร่วมกับ `import maps` เพื่อให้ `browser` resolve dependency เอง
 
 ### 4. Use Advanced Features
@@ -67,7 +67,7 @@ related:
 
 > Goal: รักษาความเสถียรของ production
 
-1. Pin version เสมอ เช่น `https://esm.sh/react@19.2.8` แทน `latest` หรือ bare package
+1. Pin version เสมอ เช่น `https://esm.sh/react@19.3.0` แทน `latest` หรือ bare package
 2. ตั้งแต่ build v136 ระบบไม่ใช้ build version prefix (`/v135/...`) และ `?pin` ถูก ignore
 3. ทดสอบ URL ใน `browser` หรือ `Deno` ก่อน deploy
 4. ติดตาม changelog ที่ `https://github.com/esm-dev/esm.sh/releases`

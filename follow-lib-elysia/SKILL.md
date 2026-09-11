@@ -179,8 +179,8 @@ related:
 
 ### 9. Version Notes
 
-- Latest stable: `elysia@1.4.30`, `@elysia/eden` latest (verified 2026-07-30)
-- Elysia 2.0 beta: `bun add elysia@next` (2.0.0-beta.12) หรือ migrate ด้วย `bunx @elysia/codemod@latest`
+- Latest stable: `elysia@1.4.30`, `@elysia/eden` latest (verified 2026-09-11)
+- Elysia 2.0 beta: `bun add elysia@next` (2.0.0-beta.14) หรือ migrate ด้วย `bunx @elysia/codemod@latest`
 - v2.0 มี breaking changes ได้แก่ route hooks/schemas ต้องอยู่ก่อน handler, `resolve` → `derive`, `as: 'scoped'` → `'plugin'`, ใช้ `problem` สำหรับ RFC 9457 errors แทน `status`
 - ตรวจสอบ version ใน `package.json` ก่อนเลือก API
 

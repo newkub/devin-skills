@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib pdfkit)
 
+- Latest: `pdfkit@0.20.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage

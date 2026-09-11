@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib mcp sdk)
 
+- Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage

@@ -32,7 +32,7 @@ bun add @remotion/media
 
 ## Version
 
-- Latest version: `4.0.522`
+- Latest version: `4.0.523`
 - Package Registry: https://www.npmjs.com/package/remotion
 - Repository: https://github.com/remotion-dev/remotion
 

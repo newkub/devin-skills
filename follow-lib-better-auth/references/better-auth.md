@@ -2,7 +2,7 @@
 
 ## Version Info
 
-- Package: `better-auth` v1.7.3 (published Sep 6, 2026)
+- Package: `better-auth` v1.7.4 (verified 2026-09-11)
 - CLI Package: `auth` (Better Auth CLI)
 - License: MIT
 - Peer Dependencies: None (database adapter installed separately)

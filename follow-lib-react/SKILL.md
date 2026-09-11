@@ -31,7 +31,7 @@ related:
 1. สร้าง `src/components/ui`, `src/components/features`, `src/hooks`, `src/lib`, `src/types`
 2. ติดตั้ง `package.json` ด้วย scripts มาตรฐาน `dev`, `build`, `preview`, `typecheck`, `lint`
 3. ตั้งค่า `vite.config.ts` หรือ `next.config.ts` และ `tsconfig.json`
-4. ติดตั้ง dependencies `react@^19.2.8`, `react-dom@^19.2.8`, `typescript`, `babel-plugin-react-compiler` (ถ้าใช้ React Compiler)
+4. ติดตั้ง dependencies `react@^19.3.0`, `react-dom@^19.3.0`, `typescript`, `babel-plugin-react-compiler` (ถ้าใช้ React Compiler)
 5. ใช้ React 19.2+ เป็น minimum version
 
 ### 2. Configure Core Principles

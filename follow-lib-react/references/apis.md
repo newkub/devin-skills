@@ -10,7 +10,7 @@ npm install react react-dom
 
 ## Version
 
-- Latest: 19.2.8
+- Latest: 19.3.0
 - Package Registry: https://www.npmjs.com/package/react
 - Repository: https://github.com/react/react
 

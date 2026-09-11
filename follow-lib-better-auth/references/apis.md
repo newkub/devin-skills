@@ -10,7 +10,7 @@ npm install --save-dev better-auth
 
 ## Version
 
-- Latest: 1.7.2
+- Latest: 1.7.4 (verified 2026-09-11)
 - [Package Registry](https://www.npmjs.com/package/better-auth)
 - [Repository](https://github.com/better-auth/better-auth)
 

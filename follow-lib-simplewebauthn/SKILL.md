@@ -15,6 +15,8 @@ related:
 
 ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (lib simplewebauthn)
 
+- Latest: `@simplewebauthn/server@14.0.1` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup And Usage
