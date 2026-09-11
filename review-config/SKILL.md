@@ -121,6 +121,10 @@ Merged from: optimize-mcp
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (config)
 
 - `references/fix-optimize-mcp.md` — ลด MCP context overhead — ปิด servers ที่ไม่ใช้, prune tools และ audit config
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายการ config files ทั้งหมดจัดกลุ่มตาม category

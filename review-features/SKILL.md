@@ -90,6 +90,10 @@ Review features documentation ก่อนเรียก `update-features-md` �
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Features Review พร้อม score และ grade

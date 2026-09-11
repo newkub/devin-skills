@@ -84,6 +84,10 @@ Merged from: improve-compliance
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (compliance)
 
 - `references/fix-improve-compliance.md` — แก้ findings จาก review-compliance ครอบคลุม licenses, privacy, audit และ data handling
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก compliance section

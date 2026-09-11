@@ -74,6 +74,10 @@ Merged from: optimize-build, optimize-bundle
 
 - `references/fix-optimize-build.md` — ลดเวลา build ด้วย cache, incremental builds, parallelism และ config tuning
 - `references/fix-optimize-bundle.md` — วิเคราะห์และปรับปรุง bundle size, build time, chunks และ output ก่อน build production
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม bundle size, chunks, deps

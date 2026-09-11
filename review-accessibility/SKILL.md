@@ -100,6 +100,10 @@ Merged from: improve-accessibility
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (accessibility)
 
 - `references/fix-improve-accessibility.md` — แก้ไข accessibility findings ตาม WCAG — semantics, ARIA, keyboard, focus, contrast
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน a11y findings พร้อม WCAG rule, severity, element และ evidence

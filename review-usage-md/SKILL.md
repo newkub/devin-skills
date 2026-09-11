@@ -69,6 +69,10 @@ Review `USAGE.md` ใน workspace ว่ามีคุณภาพ ครอ�
 
 - ใช้ /review-docs ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน `USAGE.md` review พร้อม score และ grade

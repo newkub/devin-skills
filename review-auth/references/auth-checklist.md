@@ -43,3 +43,48 @@
 - [ ] Auth events (sign in, sign out, password change, role change) ถูก log
 - [ ] Logs ไม่เก็บ password/token
 - [ ] Failed login attempts ถูกตรวจจับ
+
+---
+## Extended Full-Dimension Checklist
+
+## 1. Authentication
+
+- [ ] password policy: length, breach-check (haveibeenpwned), hashing (argon2/bcrypt)
+- [ ] MFA: TOTP/WebAuthn, backup codes, enrollment flow
+- [ ] brute force: rate limit, lockout, CAPTCHA ที่ถูกจุด
+- [ ] magic links/OTP: expiry, single-use, no enumeration
+- [ ] OAuth/OIDC: state, nonce, PKCE, redirect_uri validation
+
+## 2. Session And Tokens
+
+- [ ] session fixation protection, rotation after login
+- [ ] token storage: httpOnly+Secure+SameSite cookies, ไม่ใช่ localStorage
+- [ ] JWT: algorithm allowlist, expiry, audience/issuer checks
+- [ ] refresh token rotation + reuse detection
+- [ ] logout invalidates server-side; remember-me bounded
+
+## 3. Authorization
+
+- [ ] RBAC/ABAC enforced server-side ทุก request
+- [ ] object-level authz (BOLA/IDOR), tenant isolation
+- [ ] privilege escalation paths, admin actions audited
+- [ ] deny-by-default, least privilege service accounts
+
+## 4. Recovery And Lifecycle
+
+- [ ] password reset: single-use tokens, expiry, no user enumeration
+- [ ] account recovery ไม่ bypass MFA
+- [ ] email/phone change verification, session invalidation on change
+- [ ] deactivation/deletion flow, data retention
+
+## 5. Secrets And Audit
+
+- [ ] secrets ใน env/vault ไม่ hardcode, rotation policy
+- [ ] auth events logged: login, fail, reset, privilege change
+- [ ] anomaly detection: impossible travel, new device notify
+- [ ] SSO/SCIM provisioning ถ้า enterprise
+
+## Scoring
+
+- pass = 1, warning = 0.5, fail = 0; grade A (90+), B (80+), C (70+), D (60+), F (<60)
+

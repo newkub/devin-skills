@@ -91,6 +91,10 @@ Merged from: improve-backend
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (backend)
 
 - `references/fix-improve-backend.md` — แก้ไข backend findings ด้าน API, service, database, data flow
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - Findings และ recommendations จาก 7 backend sub-review workflows

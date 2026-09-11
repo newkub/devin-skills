@@ -63,6 +63,10 @@ Review pull request ทั้งหมดก่อน merge โดยตรว�
 
 - ถ้า pass → ทำ `/merge-github-pr` ถ้า fail → แจ้ง author แก้ตาม findings
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - PR metadata review: title, description, size, commits, conflicts

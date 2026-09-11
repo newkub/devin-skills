@@ -119,6 +119,10 @@ Merged from: improve-architecture
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (architecture)
 
 - `references/fix-improve-architecture.md` — แก้ไข architecture findings จาก review-architecture ด้วย restructure และ refactor
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location

@@ -60,6 +60,10 @@ Review plan quality ก่อน execution เพื่อยืนยันว�
 
 - ถ้า pass → implement ตาม plan ถ้า fail → แก้ plan ให้ผ่านก่อน
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Plan Quality Summary พร้อม score และ grade

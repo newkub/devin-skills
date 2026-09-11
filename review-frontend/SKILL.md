@@ -161,6 +161,10 @@ Merged from: improve-frontend, optimize-css, optimize-hydration, optimize-offlin
 - `references/fix-optimize-hydration.md` — ลด hydration cost — partial hydration, islands และลด client JS ที่ไม่จำเป็น
 - `references/fix-optimize-offline.md` — ตั้ง offline-first strategy — service worker caching, fallback และ sync queue
 - `references/fix-optimize-rendering.md` — ปรับปรุง rendering performance: re-renders, virtual lists, content-visibility, lazy components
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง findings จากทุก frontend section พร้อม severity และ location

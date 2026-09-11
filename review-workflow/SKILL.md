@@ -78,6 +78,10 @@ Review workflow ใดๆ แล้วปรับปรุงให้ทำง
 - ใช้ /use-subagents ถ้าจำเป็น
 - ใช้ /follow-parallel ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - Flow ทำงานเร็วขึ้น ปลอดภัยขึ้น ใช้ง่ายขึ้น

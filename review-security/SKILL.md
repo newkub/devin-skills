@@ -156,6 +156,10 @@ Merged from: improve-security
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (security)
 
 - `references/fix-improve-security.md` — แก้ไข security findings จาก review-security ตาม severity และมาตรฐาน OWASP
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก security section

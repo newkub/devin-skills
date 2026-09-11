@@ -155,6 +155,10 @@ Review, refactor และตรวจ cross-skill consistency ของ devin s
 - ใช้ /follow-deep ถ้าจำเป็น
 - ใช้ /deep-review ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Skills Review พร้อม score และ grade

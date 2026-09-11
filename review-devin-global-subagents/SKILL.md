@@ -50,6 +50,10 @@ Review devin subagents ก่อนเรียก `update-devin-global-subagent
 - ใช้ `Critical / High / Medium / Low / Info` สำหรับ severity
 - ห้ามใช้ bold markers — ใช้ backticks สำหรับ emphasis (devin global subagents)
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Subagent Review พร้อม score และ grade

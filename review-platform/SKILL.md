@@ -104,6 +104,10 @@ platform review สำหรับ: mobile app, desktop app, CLI/TUI, SSR, state
 
 - ส่ง findings ไป domain `/review-*` ที่เกี่ยวข้องเพื่อแก้ใน section `## Fix`
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก platform section

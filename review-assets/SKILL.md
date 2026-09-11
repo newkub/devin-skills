@@ -77,6 +77,10 @@ Merged from: optimize-assets, optimize-fonts, optimize-images, optimize-videos
 - `references/fix-optimize-images.md` — Compress และ convert รูปใน project เป็น WebP/AVIF พร้อมรายงาน size savings
 - `references/fix-optimize-videos.md` — Optimize video delivery — compression, formats, poster frames และ lazy loading
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม images, fonts, media

@@ -106,6 +106,10 @@ Merged from: improve-business
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (business)
 
 - `references/fix-improve-business.md` — แก้ไข business logic findings ด้าน payment, subscription, multi-tenancy, feature flags, และ email
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก business section

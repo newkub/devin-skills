@@ -145,6 +145,10 @@ Merged from: improve-cli-ux, improve-consistency, improve-simplicity, optimize-i
 - `references/fix-improve-consistency.md` — ปรับ consistency ข้าม codebase — patterns, API shapes, error handling, config และ doc style
 - `references/fix-improve-simplicity.md` — ปรับความกระชับ — ลดความซับซ้อนของ content, code, architecture, workflows หรือ skills
 - `references/fix-optimize-imports.md` — จัดการ imports ทั้ง project ลบ unused, แก้ barrel files ที่ทำ tree-shaking พัง
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Quality Metrics Summary, Findings by Category, Recommended Actions

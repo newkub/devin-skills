@@ -114,6 +114,10 @@ Merged from: optimize-ci, optimize-docker
 2. ใช้ `/report` สรุป SPF, DKIM, DMARC, service config, test send
 3. ถ้า broken → ระบุ exact DNS record values ที่ user ต้องใส่
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - ตาราง aggregate findings จากทุก delivery section

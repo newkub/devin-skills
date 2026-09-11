@@ -121,6 +121,10 @@ Merged from: optimize-git-repo, optimize-workspace
 
 - `references/fix-optimize-git-repo.md` — ลดขนาด git repo — history bloat, large objects, gc และ LFS migration
 - `references/fix-optimize-workspace.md` — Optimize monorepo task graph — affected-only runs, remote cache และ pipeline tuning
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - Review report ของ single workspace พร้อม review score

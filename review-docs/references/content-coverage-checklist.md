@@ -63,3 +63,47 @@
 - จัดลำดับ content ตาม logical flow
 - ใช้ index files สำหรับ organization
 - ทุก feature, API, use case, concept, best practice ต้องมี content ครอบคลุม
+
+---
+## Extended Full-Dimension Checklist
+
+## 1. Structure
+
+- [ ] `docs/` structure สมเหตุสมผล, index pages, section grouping
+- [ ] VitePress/config: nav, sidebar, search, theme consistent
+- [ ] frontmatter ทุก page: title, description
+
+## 2. Content Quality
+
+- [ ] accurate กับ code ปัจจุบัน (no drift)
+- [ ] getting-started รันได้จริง end-to-end
+- [ ] examples ทดสอบได้, copy-paste safe
+- [ ] tone/style consistent, heading hierarchy ถูก
+
+## 3. Coverage
+
+- [ ] features/APIs/use cases ครบ (references/content-coverage-checklist.md)
+- [ ] error/troubleshooting guides, FAQ
+- [ ] migration/upgrade guides, changelog links
+
+## 4. Links And Assets
+
+- [ ] internal links ไม่ 404, anchors valid
+- [ ] external links current, images/diagrams present
+- [ ] workspace duplicates eliminated
+
+## 5. README (merged: review-readme-md)
+
+- [ ] section order, badges, table columns + icons
+- [ ] usage/features coverage ครบ
+- [ ] workspace README consistency
+
+## 6. Discoverability
+
+- [ ] search works, sitemap, meta/OG per page
+- [ ] i18n structure ถ้ามี, versioning docs ถ้าจำเป็น
+
+## Scoring
+
+- ตาม references/scoring.md; grade A (90+), B (80+), C (70+), D (60+), F (<60)
+

@@ -146,6 +146,10 @@ Review codebase BEFORE refactor to establish baseline metrics and identify prior
 
 - ถ้า pass → ทำ `/refactor` ถ้า fail → แก้ findings ก่อน refactor
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Baseline Metrics

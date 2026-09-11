@@ -106,6 +106,10 @@ Merged from: improve-test-coverage, improve-test-data, optimize-tests
 - `references/fix-improve-test-coverage.md` — ปรับปรุง test coverage โดยรัน coverage, หา gaps, เติม tests, และ verify จนถึง threshold
 - `references/fix-improve-test-data.md` — ปรับ fixtures, factories และ test data ให้ realistic, maintainable และ deterministic
 - `references/fix-optimize-tests.md` — ลดเวลารัน test suite ด้วย parallelization, sharding และการตัดงานหนักซ้ำซ้อน
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Test Quality Summary พร้อม score, grade และ progress bar

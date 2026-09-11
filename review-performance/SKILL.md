@@ -166,6 +166,10 @@ Merged from: improve-performance, optimize-memory, optimize-network, optimize-pe
 - `references/fix-optimize-performance.md` — แก้ web performance — Core Web Vitals (LCP, INP, CLS), long tasks, TTI, third-party scripts ด้วย field data และ targeted fixes
 - `references/fix-optimize-serialization.md` — ลดขนาด serialization payloads — JSON trimming, compression และ format selection
 - `references/fix-optimize-startup.md` — ลดเวลา startup ของ app/CLI ด้วย lazy loading, defer init และลดงานหนักตอน boot
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน performance findings ครอบคลุมทุก dimension

@@ -165,6 +165,10 @@ related:
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (review)
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รู้ว่า review อะไรและใช้ review skill ใด

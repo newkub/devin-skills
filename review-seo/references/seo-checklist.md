@@ -55,3 +55,47 @@
 - High: missing Open Graph, missing structured data, broken heading hierarchy, missing hreflang, poor URL structure, missing internal links, slow LCP
 - Medium: suboptimal meta description length, missing Twitter Cards, inconsistent URL structure, missing breadcrumbs, minor heading issue
 - Low: cosmetic, minor meta tag improvement, documentation gap
+
+---
+## Extended Full-Dimension Checklist
+
+## 1. Technical SEO
+
+- [ ] indexability: robots.txt, meta robots, canonical
+- [ ] sitemap.xml current, submitted
+- [ ] URL structure clean, HTTPS, redirect chains
+- [ ] crawl budget: pagination, faceted nav, params
+
+## 2. On-Page
+
+- [ ] title/description unique + compelling per page
+- [ ] heading structure h1-h6, keyword relevance
+- [ ] internal linking, anchor text, breadcrumbs
+- [ ] image alt/optimization, lazy loading
+
+## 3. Structured Data
+
+- [ ] schema.org types appropriate, valid JSON-LD
+- [ ] rich results eligibility (rich results test)
+- [ ] OG/Twitter cards, social previews
+
+## 4. Performance For SEO
+
+- [ ] Core Web Vitals: LCP/INP/CLS thresholds
+- [ ] mobile-friendly, page experience signals
+
+## 5. International And SSR
+
+- [ ] hreflang correct, ccTLD/subdir strategy
+- [ ] SSR/prerender for crawlers, JS-rendering risks
+
+## 6. Content
+
+- [ ] thin/duplicate content flagged
+- [ ] semantic HTML, entity coverage
+- [ ] freshness signals, E-E-A-T markers
+
+## Scoring
+
+- pass = 1, warning = 0.5, fail = 0; grade A (90+), B (80+), C (70+), D (60+), F (<60)
+

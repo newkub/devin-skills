@@ -116,6 +116,10 @@ Merged from: improve-dependencies, optimize-deps, use-lib-effective
 - `references/fix-improve-dependencies.md` — แก้ findings จาก review-dependencies ทั้ง outdated, vulnerable, unused และ duplicate deps
 - `references/fix-optimize-deps.md` — ลดน้ำหนัก dependencies เปลี่ยน lib หนักเป็นตัวเบา ลด dep tree และ bundle impact
 - `references/fix-use-lib-effective.md` — แทนที่ custom code ด้วย library functions ที่มีอยู่ ใช้ libs ให้ครบไม่ reinvent
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน deps ครบ: outdated, vulnerable, unused, license issues

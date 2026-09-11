@@ -57,3 +57,42 @@
 - High: compatibility ไม่ตรวจ, migration path ขาด, data integrity validation ไม่ครบ
 - Medium: documentation ไม่อัปเดต, timeline ไม่ชัด, monitoring ไม่ครบ
 - Low: cleanup ไม่สมบูรณ์, feature branch ค้าง
+
+---
+## Extended Full-Dimension Checklist
+
+## 1. Backward Compatibility
+
+- [ ] API/schema compat ระหว่าง old/new (`/check-backward-compatibility`)
+- [ ] dual-read/dual-write strategy ถ้าจำเป็น
+- [ ] consumer notification, deprecation timeline
+
+## 2. Data Integrity
+
+- [ ] data mapping verified, no loss/corruption
+- [ ] checksums/counts validation old vs new
+- [ ] PII/sensitive data handling during migration
+
+## 3. Rollback And Cutover
+
+- [ ] rollback plan tested, cutover criteria defined
+- [ ] feature flag/kill switch for instant revert
+- [ ] zero/low-downtime strategy, maintenance window
+
+## 4. Migration Types
+
+- [ ] schema migrations: expand/contract, versioned
+- [ ] framework/runtime upgrades: codemods, breaking changes list
+- [ ] infra/platform moves: DNS, secrets, state transfer
+
+## 5. Checklist And Verification
+
+- [ ] pre/post migration checklists
+- [ ] verification queries/smoke tests
+- [ ] monitoring during migration, abort criteria
+- [ ] post-migration cleanup plan
+
+## Scoring
+
+- ตาม references/scoring.md; grade A (90+), B (80+), C (70+), D (60+), F (<60)
+

@@ -95,6 +95,10 @@ Meta-review ที่รวบรวม findings จาก dimensional reviews �
 
 - ดู metrics สำหรับ review ใน [references/scoring.md](references/scoring.md) (gaps)
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - ตาราง prioritized improvement list พร้อม category, score, action skill

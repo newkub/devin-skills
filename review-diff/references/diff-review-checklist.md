@@ -58,3 +58,36 @@
 - ตัวเลือกทัดไปที user เลือกได้ชัดเจน
 - ไม่มีการ commit/ship/revert โดยไม่ได้รับ user confirmation
 
+
+---
+## Extended Full-Dimension Checklist
+
+## 1. Diff Capture
+
+- [ ] scope ถูก: staged/unstaged/branch commits
+- [ ] binary/large files flagged, generated files excluded จาก focus
+
+## 2. Change Quality
+
+- [ ] changes ตรง intent, no unrelated edits
+- [ ] no debug leftovers: console.log, TODO, commented code
+- [ ] no secrets/keys/credentials ใน diff
+- [ ] formatting-only changes แยกจาก semantic changes
+
+## 3. Risk Assessment
+
+- [ ] public API/signature changes, breaking changes flagged
+- [ ] migration needs: schema, config, data
+- [ ] deleted code: callers still referencing?
+- [ ] test coverage ของ changes
+
+## 4. Reviewability
+
+- [ ] diff size reviewable, atomic commits
+- [ ] commit messages ตรง content
+- [ ] PR size/scope reasonable
+
+## Scoring
+
+- pass = 1, warning = 0.5, fail = 0; grade A (90+), B (80+), C (70+), D (60+), F (<60)
+

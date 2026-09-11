@@ -95,6 +95,10 @@ Merged from: improve-database, optimize-queries, optimize-search
 - `references/fix-improve-database.md` — ปรับปรุง database: indexes, queries, migrations, connection pool, N+1 detection
 - `references/fix-optimize-queries.md` — แก้ slow queries, N+1 problems และ missing indexes ใน database layer
 - `references/fix-optimize-search.md` — Optimize search performance — indexes, query plans, facets และ relevance tuning
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม schema, indexes, queries, migrations, integrity

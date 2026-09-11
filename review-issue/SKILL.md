@@ -74,6 +74,10 @@ related:
 
 - ถ้า fail → ปรับ issue ให้ชัดเจนก่อน implement
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานการตรวจสอบ issue พร้อม severity, evidence และข้อแนะนำ

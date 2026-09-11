@@ -100,6 +100,10 @@ Merged from: improve-api
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (api)
 
 - `references/fix-improve-api.md` — ปรับปรุง API endpoints ด้าน performance, structure, error handling, caching และ security
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน API findings ครอบคลุม conventions, validation, errors, auth, docs

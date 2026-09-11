@@ -103,6 +103,10 @@ Merged from: improve-naming
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (writing)
 
 - `references/fix-improve-naming.md` — ปรับ naming consistency ข้าม codebase ตัวแปร, functions, files และ exports
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - documentation ชัดเจน กระชับ

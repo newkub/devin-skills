@@ -74,6 +74,10 @@ Merged from: optimize-algorithm
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (algorithm)
 
 - `references/fix-optimize-algorithm.md` — ปรับปรุง algorithms: time complexity, space complexity, data structures, hot paths
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม complexity, hot paths, correctness

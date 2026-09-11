@@ -123,6 +123,10 @@ Review tech stack, dependencies และ library design ครอบคลุ�
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 - ใช้ /update-version-to-latest ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง findings พร้อม severity และ location

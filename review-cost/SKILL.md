@@ -84,6 +84,10 @@ Merged from: optimize-cost, optimize-token-usage
 
 - `references/fix-optimize-cost.md` — ปรับปรุง infrastructure cost: compute, storage, bandwidth, third-party, idle resources
 - `references/fix-optimize-token-usage.md` — ลด LLM token usage และ cost ด้วย prompt trimming, context pruning, caching และ model routing
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม compute, storage, bandwidth, third-party

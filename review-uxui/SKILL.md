@@ -169,6 +169,10 @@ Merged from: improve-uxui
 
 - `references/fix-improve-uxui.md` — เปิด browser แล้ว capture หน้าเว็บ เพื่อ review และปรับปรุง UX/UI ด้วย stakeholder feedback
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง findings จากทุก UX/UI section พร้อม severity และ location

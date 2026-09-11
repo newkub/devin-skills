@@ -137,6 +137,10 @@ Merged from: improve-logging, improve-observability
 
 - `references/fix-improve-logging.md` — ปรับ log quality ทั้ง levels, structure, context และ redaction ของ sensitive data
 - `references/fix-improve-observability.md` — เพิ่ม logging, metrics, tracing และ alerting ตาม findings จาก review-observability
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานตาราง aggregate findings จากทุก observability section

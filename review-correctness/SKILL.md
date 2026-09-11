@@ -144,6 +144,10 @@ Merged from: improve-correctness
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (correctness)
 
 - `references/fix-improve-correctness.md` — แก้ไขความถูกต้องของ code จาก findings ของ `/review-correctness`
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน correctness findings ครอบคลุมทุก dimension

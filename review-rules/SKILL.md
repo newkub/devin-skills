@@ -106,6 +106,10 @@ related:
 - ไม่ลบ rule โดยไม่ user confirm
 - ระบุ evidence พร้อม file path และ line number
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - `.devin/rules` และ `rules/` sync กัน

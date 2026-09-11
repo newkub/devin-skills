@@ -72,6 +72,10 @@ Merged from: improve-data-structure
 3. ทุก fix ต้องรักษา behavior เดิม ผ่าน `/run-check` และ `/run-test-unit` ถ้ามี แล้วสรุปผลด้วย `/report-before-after` (data structure)
 
 - `references/fix-improve-data-structure.md` — เลือกและใช้งาน data structure ทีเหมาะสมกับ access pattern และ operation requirements
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings ครอบคลุม data structures, access patterns, complexity gaps

@@ -124,6 +124,10 @@ Review release readiness ก่อนเริ่ม publish เพื่อย�
 5. ใช้ `/report-before-after` หรือ `/report` สรุป pass/fail
 6. ถ้า failed → แนะนำ `/ship-rollback` พร้อม evidence
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน Release Readiness Summary พร้อม score และ grade

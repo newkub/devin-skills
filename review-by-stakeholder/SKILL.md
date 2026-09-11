@@ -168,6 +168,10 @@ merged from: review-by-engineer, review-by-product, review-by-data, review-by-de
 - QA findings → `## Fix` ของ `/review-test`
 - data findings → `## Fix` ของ `/review-observability` หรือ domain ที่ตรง
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน findings จากมุมมอง persona ที่เลือก พร้อม severity และ evidence

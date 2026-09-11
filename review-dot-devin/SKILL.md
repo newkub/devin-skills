@@ -95,6 +95,10 @@ Review โครงสร้าง `.devin` โดยรวมก่อนเร
    - ห้ามใช้ bold markers — ใช้ backticks
    - รายงานเป็นตารางด้วย `/report`
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน `.devin` Structure Review พร้อม score และ grade

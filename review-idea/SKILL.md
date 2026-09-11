@@ -98,6 +98,10 @@ related:
 - ใช้ /suggest-next-action ถ้าจำเป็น
 - ใช้ /pick-bestest ถ้าจำเป็น
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงาน validation เป็นตาราง: Criteria, Score, Notes

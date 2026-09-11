@@ -155,6 +155,10 @@ Merged from: improve-error-handling, improve-error-messages, improve-stability
 2. ใช้ `/report` สรุป integrity, restore OK, data valid, RTO, verdict
 3. ถ้า RTO เกินเป้าหรือ restore ไม่ได้ → รายงาน gap พร้อม recommendation
 
+## References
+
+- [Full-dimension checklist](references/checklist.md)
+
 ## Expected Outcome
 
 - รายงานความเสถียรของ app ครอบคลุมทุกด้าน: stability, error handling, debuggability
