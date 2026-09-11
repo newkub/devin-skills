@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย TanStack Start (SolidJS, SPA mode) + server routes บน Bun โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
+เปิด diff จากหลายแหล่ง (GitHub PR, git ref, branch, หรือไฟล์สองไฟล์) ใน browser ด้วย SolidJS + TanStack Router (TanStack Start, SPA mode) บน Bun server โดยมี UX แบบ dim-focused และ close tab แล้ว terminal จะ prompt ให้เลือก action
 
 ## Scope
 
@@ -54,7 +54,7 @@ related:
 
 1. อ่าน argument แรกเป็น subcommand (`pr`, `git`, `branch`, `file`)
 2. อ่าน argument `--repo` สำหรับ `pr`/`git`/`branch`
-3. ถ้าไม่ระบุ `--repo` สำหรับ `pr` → ใช้ repo ปัจจุบุบันจาก `gh repo view --json nameWithOwner`
+3. ถ้าไม่ระบุ `--repo` สำหรับ `pr` → ใช้ repo ปัจจุบันจาก `gh repo view --json nameWithOwner`
 4. ถ้าไม่ระบุ subcommand → เปิด app แบบไม่มี default source
 
 ### 2. Prepare App Workspace
@@ -64,7 +64,7 @@ related:
 1. สร้าง workspace ชั่วคราว เช่น `.devin/open-diff-app`
 2. Copy ไฟล์ app จาก skill directory (`src/`, `package.json`, `tsconfig.json`, `uno.config.ts`, `vite.config.ts`, `bun.lock`) ไปยัง workspace
 3. รัน `bun install` ใน workspace
-4. รัน `bun run build` (TanStack Start build → `dist/client/_shell.html` + assets ซึ่ง server จะ serve โดยตรง)
+4. รัน `bun run build` เพื่อสร้าง `dist/client/` (`_shell.html` + assets ซึ่ง server จะ serve โดยตรง)
 
 ### 3. Run And Open
 
@@ -80,7 +80,7 @@ related:
 > Goal: ยืนยันว่า app ทำงาน
 
 1. ตรวจสอบ header แสดง source ถูกต้อง
-2. ตรวจ sidebar มี file list
+2. ตรวจ file strip ด้านบนมี file cards
 3. ตรวจ main area แสดง diff พร้อม line numbers และ +/- markers
 4. ลอง click เปลี่ยนไฟล์
 5. ลองกด Dark/Light
@@ -110,7 +110,7 @@ related:
 - ต้องมี `git` สำหรับ git/branch/file diff
 - ติดตั้ง dependencies ด้วย `bun install`
 - build ด้วย `bun run build`
-- API อยู่ที่ `src/server/api.ts` (`handleApi`) — expose ผ่าน server route `src/routes/api.$.ts` (dev) และ Bun wrapper `src/serve.ts` (prod)
+- API อยู่ที่ `src/server/api.ts` (`handleApi`) — expose ผ่าน server route `src/routes/api.$.ts` (vite dev) และ Bun wrapper `src/serve.ts` (prod)
 - `src/serve.ts` serve `dist/client` statics + `_shell.html` fallback และ heartbeat/prompt — อย่าสร้าง `src/server.ts` (Start จองชื่อนี้เป็น custom server entry)
 
 ### 4. UX Requirements
@@ -153,7 +153,3 @@ related:
 - สลับไฟล์ได้
 - ปิด tab แล้ว terminal แสดง prompt ให้เลือก action
 - ไม่มีไฟล์หรือ dependency ใหม่ใน repo หลัก
-
-
-
-
