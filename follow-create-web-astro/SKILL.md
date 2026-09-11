@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับ Astro 5 projects ที่ใช้ Vite 6+ เป็น build tool (content-heavy sites, marketing, docs)
 
+- Latest: `astro@7.3.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup Project

@@ -17,6 +17,8 @@ related:
 
 ใช้สำหรับตั้งค่า Oxlint plugins ทั้ง built-in (native) และ JavaScript plugins สำหรับ linting
 
+- Latest: `oxlint@1.82.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

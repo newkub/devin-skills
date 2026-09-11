@@ -11,7 +11,7 @@ Nuxt is a free and open-source framework for building type-safe, production-grad
 
 ## Versions
 
-- `nuxt`: `4.5.0` (latest stable, Jul 2026)
+- `nuxt`: `4.5.2` (latest stable, verified 2026-09-11)
 - `nuxt`: `3.21.11` (latest 3.x — EOL July 31, 2026, use Nuxt 4 for new projects)
 - License: MIT
 - Vue requirement: `3.5+`

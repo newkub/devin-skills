@@ -25,7 +25,7 @@ docker run --rm oven/bun --version
 
 ## Version
 
-- Latest: `1.4.0`
+- Latest: `1.4.2` (verified 2026-09-11)
 - License: MIT
 - Repository: https://github.com/oven-sh/bun
 - Docs: https://bun.sh/docs

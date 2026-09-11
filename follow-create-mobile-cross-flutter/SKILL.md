@@ -23,6 +23,8 @@ related:
 - จัดการ data layer, domain layer, presentation layer
 - ตั้งค่า error handling, navigation, และ testing
 
+- Latest: Flutter `3.47.x` stable (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup Project

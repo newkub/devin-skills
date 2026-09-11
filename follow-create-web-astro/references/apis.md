@@ -16,7 +16,7 @@ npm install astro
 
 ## Version
 
-- Latest: 7.3.1
+- Latest: 7.3.2 (verified 2026-09-11)
 - Requires: Node.js `>=22.12.0`
 - [Package Registry](https://www.npmjs.com/package/astro)
 - [Repository](https://github.com/withastro/astro)

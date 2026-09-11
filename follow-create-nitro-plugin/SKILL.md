@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับสร้าง plugin ที extend Nitro runtime ใน Nuxt 3/4 หรือ standalone Nitro project รองรับทั้ง project plugin (`server/plugins/`) และ npm package
 
+- Latest: `nitro@2.x` (`nitropack@2.13.4` stable; `nitro@3.0-beta` มีให้ทดลอง) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

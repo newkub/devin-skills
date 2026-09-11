@@ -23,6 +23,8 @@ related:
 
 ใช้สำหรับสร้าง Codex plugin จาก scratch เพื่อขยายความสามารถของ ChatGPT Work และ Codex ด้วย custom skills, MCP tools, และ apps
 
+- Latest: Codex plugin format — ตรวจสอบ docs ล่าสุด (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

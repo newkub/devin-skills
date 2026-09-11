@@ -35,8 +35,7 @@ dx --version
 
 ## Version Info
 
-- Latest stable: `0.6.3`
-- Also available: `0.7.0`
+- Latest stable: `0.7.10` (verified 2026-09-11); `0.8.0-alpha` available as pre-release
 - The `dioxus` crate is the core framework; `dx` is the CLI tool
 
 ## Create a New Project
@@ -76,7 +75,7 @@ dx serve
 
 ```toml
 [dependencies]
-dioxus = { version = "0.6.0" }
+dioxus = { version = "0.7.10" }
 
 [features]
 default = ["web"]

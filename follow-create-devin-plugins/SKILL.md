@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับสร้าง plugin ใหม่หรือปรับปรุง plugin ที่มีอยู่ ให้ติดตั้งและแชร์ผ่าน GitHub repo, git URL, หรือ local folder
 
+- Latest: Devin CLI latest (ตรวจ `devin --version`) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

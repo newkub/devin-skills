@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับสร้าง SolidStart (SolidJS meta-framework) project ที่ใช้ Vite เป็น build tool และ Nitro เป็น server engine ผ่าน `@solidjs/start` v2 alpha + `nitro` — อ้างอิง https://nitro.build/examples/vite-ssr-solidstart
 
+- Latest: `@solidjs/start@2.0.5` (stable), `@solidjs/router@1.0.0`, `solid-js@1.9.15` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack
@@ -34,7 +36,7 @@ related:
 > Goal: สร้าง project structure และติดตั้ง dependencies
 
 1. สร้าง `package.json` ด้วย `"type": "module"` และ scripts `dev: "vite dev"`, `build: "vite build"`
-2. ติดตั้ง dependencies ด้วย `bun add @solidjs/start@alpha @solidjs/router @solidjs/meta solid-js nitro vite`
+2. ติดตั้ง dependencies ด้วย `bun add @solidjs/start @solidjs/router @solidjs/meta solid-js nitro vite` (`@solidjs/start@2.0.5` stable แล้ว — ไม่ต้องใช้ `@alpha`; verified 2026-09-11)
 3. ตั้งค่า `engines.node >= 22`
 4. ดูรายละเอียดใน [references/solid-start-nitro.md](references/solid-start-nitro.md)
 

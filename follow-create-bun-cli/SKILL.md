@@ -22,6 +22,8 @@ related:
 
 ใช้สำหรับสร้าง CLI applications ด้วย Bun runtime — ไม่ครอบคลุม library bundling (ดู `/follow-tool-bunup`) — ถ้ายังไม่ชัด Bun หรือ Rust ให้ใช้ `/follow-create-cli` เลือก stack ก่อน
 
+- Latest: Bun `1.4.2`, `cac@7.0.0`, `picocolors@1.1.1`, `bunup@0.16.32` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

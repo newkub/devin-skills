@@ -17,6 +17,8 @@ related:
 
 ครอบคลุมการสร้าง plugins สำหรับ desktop และ mobile platforms พร้อม commands, state management, lifecycle events และ mobile native code
 
+- Latest: `tauri@2.11.5` / `@tauri-apps/cli@2.11.4` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

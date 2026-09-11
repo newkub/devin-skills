@@ -23,6 +23,8 @@ related:
 - ครอบคลุม module layout, naming (Verb-Noun), parameter validation, pipeline support และ error handling
 - ไม่ครอบคลุมการ publish ขึ้น PSGallery นอกเหนือ checklist พื้นฐาน
 
+- Latest: PowerShell `7.6.x` (ใช้ `pwsh`, ไม่ใช่ Windows PowerShell 5.1) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

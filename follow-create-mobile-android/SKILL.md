@@ -21,6 +21,8 @@ related:
 - ครอบคลุม setup, project structure, Compose UI, architecture, build, test และ deploy
 - ใช้ Android Studio เป็น primary IDE
 
+- Latest: Android Studio Otter `2025.2.1`, Kotlin `>=2.2.20`, AGP `>=8.13.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

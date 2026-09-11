@@ -21,6 +21,8 @@ related:
 
 ใช้สำหรับสร้าง library crate เป้น pure Rust หรือ FFI ครอบคลุม `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, และ CI
 
+- Latest: Rust `1.98.1`, edition 2024 (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

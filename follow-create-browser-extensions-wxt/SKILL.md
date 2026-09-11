@@ -23,6 +23,8 @@ related:
 - แยก pure logic ออกจาก browser API integration
 - ตั้งค่า CI/CD สำหรับ release ไป Chrome Web Store
 
+- Latest: `wxt@0.21.4` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Initialize Project

@@ -19,6 +19,8 @@ related:
 
 ครอบคลุมการ setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, และ verification สำหรับ Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
+- Latest: `nuxt@4.5.2`, `@nuxt/ui@4.11.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Setup

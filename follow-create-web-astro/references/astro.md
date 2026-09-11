@@ -15,9 +15,9 @@ bun add astro
 
 ## Version Info
 
-- Latest stable: `5.x` (Astro 5.15+ as of 2026)
-- Node.js >= 18.20.8, >= 20.3.0, or >= 22.0.0
-- Build tool: Vite 6+
+- Latest stable: `7.3.2` (verified 2026-09-11)
+- Node.js `>=22.12.0`
+- Build tool: Vite 8 (Rolldown)
 - Peer dependencies: `vite`, `typescript` (optional)
 
 ## CLI Commands

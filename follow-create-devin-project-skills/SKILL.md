@@ -23,6 +23,8 @@ related:
 
 ดูเพิ่มเติม: /update-project-skills, /update-devin-global-skills, /update-devin-project-rules, /update-agents-md
 
+- Latest: Devin skill format (`SKILL.md` + `references/`) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Identify Skill And Workspace

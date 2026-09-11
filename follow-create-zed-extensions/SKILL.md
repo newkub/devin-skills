@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับสร้าง Zed extension ที provide languages, themes, icon themes, snippets, debuggers, หรือ MCP servers รองรับทั้ง pure manifest และ Rust/WASM custom code
 
+- Latest: Zed extensions API (ตรวจสอบ docs ล่าสุดที่ zed.dev) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

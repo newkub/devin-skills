@@ -24,6 +24,8 @@ related:
 - ครอบคลุม `Dockerfile`, `.dockerignore`, `docker-compose.yml` และ health checks
 - ไม่ครอบคลุม Kubernetes manifests หรือ orchestration ระดับ production cluster
 
+- Latest: Docker Engine `29.x` (ตรวจ `docker --version` ในเครื่อง) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

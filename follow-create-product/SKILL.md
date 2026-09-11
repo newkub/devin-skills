@@ -33,6 +33,8 @@ related:
 - เรียก `/follow-service-stripe` สำหรับ payments, pricing, billing
 - เรียก `/ship` เมื่องานเสร็จ
 
+- Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack And Understand Input

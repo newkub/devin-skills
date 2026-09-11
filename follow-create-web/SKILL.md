@@ -28,6 +28,8 @@ related:
 - ส่งต่องานสร้าง project ไปยัง sub-skill
 - ไม่ลงมือ implement เองโดยตรง
 
+- Latest: Vite `8.3.0` (default toolchain) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Gather Requirements

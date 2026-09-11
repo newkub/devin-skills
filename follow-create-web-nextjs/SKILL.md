@@ -19,6 +19,8 @@ related:
 
 จัดโครงสร้างและพัฒนา Next.js 16 applications ด้วย App Router, React 19.2, Cache Components และ TypeScript
 
+- Latest: `next@16.3.4` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Project Structure

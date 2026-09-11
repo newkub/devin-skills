@@ -18,6 +18,8 @@ related:
 
 ครอบคลุมการสร้าง `.grit` plugin files, การเขียน GritQL patterns, การกำหนดค่าใน `biome.jsonc`, และการ verify plugins
 
+- Latest: `@biomejs/biome@2.5.13` / `@biomejs/js-api@6.0.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

@@ -8,7 +8,7 @@
 
 ```sh
 # ผ่าน cargo
-cargo install tauri-cli --version "^2.0.0"
+cargo install tauri-cli --version "^2.11"
 
 # ผ่าน npm
 bun add -g @tauri-apps/cli

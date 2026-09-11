@@ -12,7 +12,7 @@ bun add next@latest react@latest react-dom@latest
 
 ## Version Info
 
-- Latest stable: `16.3.2` (as of Aug 2026)
+- Latest stable: `16.3.4` (verified 2026-09-11)
 - Node.js >= 20.9 (Node.js 18 no longer supported)
 - TypeScript >= 5.1
 - React 19.2 stable (View Transitions, `useEffectEvent()`)

@@ -45,7 +45,7 @@ related:
 > Goal: กำหนด `package.json` ตาม VSCode schema
 
 1. ระบุ `name`, `displayName`, `description`, `version`, `publisher`
-2. ระบุ `engines.vscode` เช่น `^1.90.0`
+2. ระบุ `engines.vscode` เช่น `^1.137.0` (latest VS Code 1.137.x, verified 2026-09-11)
 3. ระบุ `categories`, `keywords`, `activationEvents`, `main`
 4. ระบุ `contributes.commands`, `menus`, `keybindings`, `configuration`
 5. ระบุ `scripts` สำหรับ `compile`, `watch`, `package`, `publish`

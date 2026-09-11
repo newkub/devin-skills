@@ -16,6 +16,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างหรือจัดการ Neovim plugins
 
+- Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

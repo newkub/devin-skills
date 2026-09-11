@@ -21,6 +21,8 @@ related:
 - ครอบคลุม setup, project structure, SwiftUI, architecture, build, test และ deploy
 - ใช้ Xcode เป็น primary IDE
 
+- Latest: Xcode 26.x / Swift 6.x (ตรวจสอบเวอร์ชันล่าสุดใน App Store) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

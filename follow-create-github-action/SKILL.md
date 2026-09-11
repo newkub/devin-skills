@@ -22,6 +22,8 @@ related:
 
 ใช้สำหรับสร้าง action สำหรับ GitHub Marketplace หรือ private repos ครอบคลุม inputs, outputs, runs, branding, และ `dist/` สำหรับ TS actions
 
+- Latest: GitHub Actions — pin `actions/*` ด้วย major version tag ล่าสุดจาก marketplace (ตรวจสอบก่อนใช้)
+
 ## Execute
 
 ### 1. Review Tech Stack

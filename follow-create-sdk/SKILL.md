@@ -30,6 +30,8 @@ related:
 - รวม capability จาก skills เดิมที่ถูก merge เข้าตัวนี้ (merged from: follow-lib-framework-agnostic)
 - ถ้า goal เป็น `sdk`/`library`/`framework-agnostic` → ใช้ [references/framework-agnostic-sdk.md](references/framework-agnostic-sdk.md) (Core + Adapters pattern)
 
+- Latest: TypeScript `>=5.4` + `tsdown@0.23.0` สำหรับ build (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

@@ -20,6 +20,8 @@ related:
 
 ใช้สำหรับพัฒนาและดูแล Capacitor 8 mobile apps ใน monorepo ครอบคลุม setup, configuration, plugins, build, deployment และ security
 
+- Latest: `@capacitor/core@8.5.1` / `@capacitor/cli@8.5.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Environment Setup

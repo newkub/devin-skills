@@ -30,6 +30,8 @@ related:
 
 ใช้เมื่องานต้องการ performance จาก Rust ใน browser โดยไม่เขียน backend เช่น image/audio processing, simulation, cryptography, graph layout หรือ computational geometry
 
+- Latest: Rust `1.98.1` (axum/leptos/dioxus ecosystems) (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack And Verify Toolchain

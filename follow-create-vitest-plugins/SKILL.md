@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับ project ที่ต้องการสร้างและใช้งาน Vitest plugins ตาม Plugin API มาตรฐาน
 
+- Latest: `vitest@5.0.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

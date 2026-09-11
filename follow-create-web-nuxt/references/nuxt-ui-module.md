@@ -6,7 +6,7 @@
 
 The Intuitive UI Library powered by Reka UI and Tailwind CSS.
 
-[1.5M downloads](https://npm.chart.dev/@nuxt/ui)•[6.7K stars](https://github.com/nuxt/ui)•[v4.9.0](https://github.com/nuxt/ui/releases)
+[1.5M downloads](https://npm.chart.dev/@nuxt/ui)•[6.7K stars](https://github.com/nuxt/ui)•[v4.11.1](https://github.com/nuxt/ui/releases)
 
 [![benjamincanac](https://ipx.nuxt.com/f_auto,s_20x20/gh_avatar/benjamincanac)benjamincanac](https://github.com/benjamincanac)•
 

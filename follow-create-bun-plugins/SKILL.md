@@ -18,6 +18,8 @@ related:
 
 ใช้สำหรับสร้าง plugins สำหรับ Bun runtime และ `bun build` bundler ด้วย TypeScript ครอบคลุม `Bun.plugin`, namespaces, filters, loaders, build, และ tests
 
+- Latest: Bun `1.4.2` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

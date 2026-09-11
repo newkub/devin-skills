@@ -20,6 +20,8 @@ related:
 - ใช้เมื่อต้องสร้าง chat bot หรือ GitHub automation bot
 - ทำตาม `/follow-my-tech-stack` สำหรับ runtime และ dependencies
 
+- Latest: `discord.js@14.27.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Select Platform

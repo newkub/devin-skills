@@ -25,6 +25,8 @@ related:
 - Newkub slides: ใช้ `D:/newkub/slides` ที่มี single `package.json` ที่ root — แต่ละ project มีแค่ `slides.md` ไม่ต้องสร้าง `package.json` ใหม่
 - ถ้าต้องการ flow เฉพาะ `D:/newkub/slides` → ใช้ `/create-slide-in-newkub-slides`
 
+- Latest: `@slidev/cli@52.19.1` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Choose Project Mode

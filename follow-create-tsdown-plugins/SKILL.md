@@ -19,6 +19,8 @@ related:
 
 ใช้สำหรับสร้าง plugins สำหรับ `tsdown` bundler ด้วย TypeScript ครอบคลุม plugin object, hooks, build, tests, และ npm package
 
+- Latest: `tsdown@0.23.0` (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack

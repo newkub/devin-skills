@@ -14,10 +14,10 @@ Reference จาก https://nitro.build/examples/vite-ssr-solidstart — SSR ด
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.4",
-    "@solidjs/start": "^2.0.0-alpha.2",
+    "@solidjs/router": "^1.0.0",
+    "@solidjs/start": "^2.0.5",
     "nitro": "latest",
-    "solid-js": "^1.9.11",
+    "solid-js": "^1.9.15",
     "vite": "latest"
   },
   "engines": {

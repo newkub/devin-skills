@@ -14,8 +14,8 @@
 
 ## TypeScript
 
-- Official SDK: `@modelcontextprotocol/server`
-  - `bun add @modelcontextprotocol/server`
+- Official SDK: `@modelcontextprotocol/sdk` (latest `1.30.0`, verified 2026-09-11 — package เก่า `@modelcontextprotocol/server` ถูกแทนด้วย `sdk`)
+  - `bun add @modelcontextprotocol/sdk`
 - Transport: stdio, Streamable HTTP, SSE
 - Validation: `zod` หรือ native schema
 - เหมาะกับ: team ที่คุ้นเคยกับ TS/Bun, rapid iteration, integration กับ JS ecosystem

@@ -60,8 +60,8 @@ related:
   "categories": ["Productivity"],
   "commands": [{ "name": "index", "title": "Command", "mode": "view" }],
   "dependencies": {
-    "@raycast/api": "^1.79.0",
-    "@raycast/utils": "^1.16.0"
+    "@raycast/api": "^2.3.0",
+    "@raycast/utils": "^2.3.1"
   }
 }
 ```

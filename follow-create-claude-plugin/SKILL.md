@@ -22,6 +22,8 @@ related:
 
 ใช้สำหรับสร้าง Claude Code plugin จาก scratch เพื่อขยายความสามารถของ Claude ด้วย custom skills, agents, hooks, MCP servers หรือ slash commands
 
+- Latest: Claude Code plugin format — ตรวจสอบ docs ล่าสุดที่ code.claude.com (verified 2026-09-11)
+
 ## Execute
 
 ### 1. Review Tech Stack
