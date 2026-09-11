@@ -432,9 +432,16 @@ export default function App() {
       <Show
         when={data()}
         fallback={
-          <div class="flex-1 flex flex-col items-center justify-center gap-2 text-[var(--text-dim)]">
-            <span class="i-mdi-file-compare w-10 h-10 opacity-40" />
-            <span class="text-sm">Select a source and click Load.</span>
+          <div class="flex-1 flex flex-col items-center justify-center gap-3 text-[var(--text-dim)]">
+            <span class="i-mdi-file-compare w-12 h-12 opacity-30" />
+            <span class="text-sm">Select a source and click Load</span>
+            <div class="flex items-center gap-3 text-[11px] opacity-70 font-mono">
+              <span>open-diff pr 123</span>
+              <span class="opacity-40">·</span>
+              <span>open-diff branch main..feat</span>
+              <span class="opacity-40">·</span>
+              <span>open-diff file a.ts b.ts</span>
+            </div>
           </div>
         }
       >

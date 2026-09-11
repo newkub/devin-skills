@@ -60,6 +60,20 @@ html {
   word-wrap: normal;
 }
 
+/* Tune @pierre/diffs theme — softer add/del fills, tighter lines */
+.diff-scroll {
+  --diffs-bg-addition-override: var(--add-bg);
+  --diffs-bg-deletion-override: var(--del-bg);
+  --diffs-bg-addition-emphasis-override: rgba(63, 185, 80, 0.18);
+  --diffs-bg-deletion-emphasis-override: rgba(248, 81, 73, 0.18);
+  --diffs-bg-addition-number-override: var(--add-num);
+  --diffs-bg-deletion-number-override: var(--del-num);
+  --diffs-bg-context-gutter-override: transparent;
+  --diffs-bg-separator-override: var(--surface-2);
+  --diffs-font-size: 12.5px;
+  --diffs-line-height: 20px;
+}
+
 .kbd {
   display: inline-block;
   padding: 1px 5px;
