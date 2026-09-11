@@ -15,7 +15,7 @@ related:
   - follow-tasks
   - ship
   - resolve-cicd
-  - watch-github-actions
+  - resolve-github-actions-fails
   - resolve-errors
   - report
 ---
@@ -77,7 +77,7 @@ related:
 4. ตรวจหา CI/CD config (`setup-cicd` รายการ); ถ้าไม่มี → ทำ `/setup-cicd`
 5. ทำ `/git-push` ถ้ามี unpushed commits
 6. ถ้า push ถูก reject → stop และ report (ไม่ force push)
-7. ถ้าเป็น GitHub Actions → `/watch-github-actions` มิฉะนั้น `/resolve-cicd`
+7. ถ้าเป็น GitHub Actions → `/resolve-github-actions-fails` มิฉะนั้น `/resolve-cicd`
 8. ถ้า fail → ทำ `/resolve-errors` แล้ว push ใหม่/re-run สูงสุด 3 ครั้ง
 9. ถ้า pass → report
 

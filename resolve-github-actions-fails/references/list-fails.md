@@ -70,7 +70,7 @@
 
 > Goal: แนะนำขั้นตอนถัดไป
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, `watch-github-actions` หรือ `resolve-github-actions-fails`
+1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `resolve-github-actions-fails`
 
 ## Rules
 

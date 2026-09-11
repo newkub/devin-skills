@@ -3,6 +3,7 @@ name: follow-lib-unocss
 description: ติดตั้งและตั้งค่า UnoCSS v66 พร้อม presetWind4 และ transformers
 argument-hint: "[scope]"
 related:
+  - follow-lib-unocss-design-system
   - follow-lib-css
   - follow-tool-formatter
   - follow-best-practice
@@ -149,20 +150,7 @@ related:
 2. ใช้ `@unocss/language-server` สำหรับ LSP
 3. ใช้ `@unocss/twoslash` สำหรับ TypeScript twoslash
 
-### 8. Setup Theme (Optional)
-
-> Goal: ตั้งค่า theme colors สำหรับ UnoCSS ด้วย HSL variables
-
-1. ทำขั้นตอน `Prepare` และ `Configure` ก่อน
-2. ใช้ `theme.colors` ใน `uno.config.ts` ดัวย `hsl(var(--color-{name}))`
-3. สร้าง `theme.css` ด้วย CSS variables ใน `:root` และ `.dark`
-4. import `theme.css` ตาม framework:
-   - Nuxt: `app.vue` import `./assets/theme.css`
-   - Next.js: `app/layout.tsx` import `./theme.css`
-   - Vite: `main.ts` import `./theme.css`
-5. ดูตัวอย่างและรายละเอียดเต็มใน [references/unocss-theme.md](references/unocss-theme.md)
-
-### 9. Verify
+### 8. Verify
 
 > Goal: ตรวจสอบว่า UnoCSS ทำงานได้ถูกต้อง
 
@@ -217,7 +205,7 @@ related:
 - Theme CSS variables generate แบบ on-demand ภายใต้ `theme` layer
 - `@property` rules generate ภายใต้ `properties` layer
 
-- อ่าน [references/unocss-theme.md](references/unocss-theme.md) ถ้าต้องปรับ theme
+- ทำ `/follow-lib-unocss-design-system` ถ้าต้องปรับ theme colors, dark mode หรือ design tokens
 - ใช้ `/follow-lib-css` ถ้าจำเป็น
 - ใช้ `/follow-tool-formatter` ถ้าจำเป็น
 - ใช้ `/follow-best-practice` ถ้าจำเป็น

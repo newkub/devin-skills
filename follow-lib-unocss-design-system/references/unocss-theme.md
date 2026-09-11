@@ -32,7 +32,7 @@ import 'virtual:uno.css'
 
 ## Version Info
 
-- Latest release: `66.10.1` (npm latest, verified 2026-09-11)
+- Latest release: `66.10.2` (npm latest, verified 2026-09-11)
 - License: MIT
 - Source: https://unocss.dev
 

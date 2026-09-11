@@ -27,7 +27,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 - CI: GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins
 - CD: Cloudflare Pages, Vercel, Railway, Render, Fly.io, Netlify, custom domain, release/tag
 
-สำหรับ CI platform เฉพาะจะส่งต่อ `/watch-github-actions`
+สำหรับ CI platform เฉพาะจะส่งต่อ `/resolve-github-actions-fails`
 สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-release`, `/watch-deploy`
 
 ไม่รวม trigger ครั้งแรก — ต้องถูก trigger โดย `/run-deploy`, `/deploy-to-*`, `/run-release` หรือ push ก่อน
@@ -69,7 +69,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\scripts\resolve-cicd.ts" \
 ### 4. CI: Watch Pipeline
 
 > Goal: ติดตาม CI จนสิ้นสุด
-1. ถ้า GitHub Actions → ทำ `/watch-github-actions [run-id]` แล้ว return ผล ถ้า fail → ทำ `/resolve-github-actions-fails` ก่อน resolve ต่อ
+1. ถ้า GitHub Actions → ทำ `/resolve-github-actions-fails [run-id]` แล้ว return ผล
 2. GitLab CI: `glab pipeline trace <pipeline-id>`
 3. Azure DevOps: `az pipelines runs show --id <run-id>` poll ทุก 10 วิ
 4. CircleCI: poll API

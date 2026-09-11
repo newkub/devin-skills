@@ -7,7 +7,7 @@ related:
   - git-commit-and-push
   - refactor-commit
   - update-github-metadata
-  - watch-github-actions
+  - resolve-github-actions-fails
   - resolve-errors
   - open-web
 ---
@@ -50,7 +50,7 @@ Push commits จาก local repository และ git submodules ไปยัง
 > Goal: Check GitHub Actions
 
 - ทำ `gh workflow list` เพื่อตรวจสอบว่ามี GitHub Actions ใน repo ไหม
-- ถ้ามี ให้ทำ `/watch-github-actions` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
+- ถ้ามี ให้ทำ `/resolve-github-actions-fails` เพื่อตรวจสอบและรันจนกว่าจะผ่าน
 
 ### 5. Update GitHub Repo Metadata
 

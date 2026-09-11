@@ -5,7 +5,6 @@ argument-hint: "[workflow-or-run-id-or-all]"
 related:
   - resolve-github-actions-fails
   - resolve-cicd
-  - watch-github-actions
   - ask-me
 ---
 
@@ -17,7 +16,7 @@ related:
 
 ใช้สำหรับ cleanup failed workflow runs ทีไม่ต้องการเก็บ history เอาไว้อีกต่อไป
 
-ดูเพิ่มเติม: /watch-github-actions
+ดูเพิ่มเติม: /resolve-github-actions-fails
 
 ## Execute
 

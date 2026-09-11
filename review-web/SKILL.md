@@ -1,0 +1,172 @@
+---
+name: review-web
+description: Review เว็บแอป/เว็บไซต์ที่รันอยู่จริง — pages, routes, console, network, forms, vitals
+argument-hint: "[url-or-scope]"
+related:
+  - review-frontend
+  - review-uxui
+  - review-seo
+  - review-accessibility
+  - review-performance
+  - review-platform
+  - watch-browser
+  - use-agent-browser
+  - deep-validate
+  - report
+  - suggest-next-action
+---
+
+## Goal
+
+Review เว็บแอป/เว็บไซต์ที่ deploy หรือรันอยู่จริงแบบ end-to-end — ตรวจ pages, routes, navigation, links, forms, console errors, network requests, Core Web Vitals, meta/SEO basics, accessibility และ responsive behavior พร้อม severity ratings และ review score
+
+## Scope
+
+runtime web review สำหรับ site ที่เข้าถึงได้ผ่าน URL (local dev server, staging, production) — ตรวจพฤติกรรมจริงของเว็บจาก browser ไม่ใช่ static code review
+
+ไม่รวม:
+- frontend source code quality (components, state, hooks) → ใช้ `/review-frontend`
+- visual design, design system, UX flow → ใช้ `/review-uxui`
+- SEO deep-dive → ใช้ `/review-seo`
+- accessibility deep-dive → ใช้ `/review-accessibility`
+- performance deep-dive → ใช้ `/review-performance`
+
+## Execute
+
+### 1. Prepare And Open Site
+
+> Goal: ระบุ target URL และเปิด browser พร้อม evidence baseline
+
+1. ระบุ target URL จาก argument — ถ้าไม่มีให้หา dev server หรือ deployment URL ของ project
+2. ถ้ายังไม่มี dev server → ทำ `/run-program` เพื่อรัน site ก่อน
+3. ทำ `/watch-browser` เพื่อเปิด site ผ่าน agent-browser MCP และ capture baseline evidence (screenshot, console, errors)
+4. ถ้า agent-browser ไม่พร้อม → fallback เป็น `use-agent-browser` CLI หรือ `browser-preview`
+5. ถ้าเข้าถึง site ไม่ได้ → stop และ report
+
+### 2. Pages And Routes Review
+
+> Goal: ตรวจครบทุก page/route ที่เข้าถึงได้
+
+1. สร้าง page inventory จาก nav links, sitemap, router config
+2. visit ทุก route แล้วตรวจ: render สำเร็จ, ไม่มี blank/error page, status code ถูกต้อง
+3. ตรวจ 404 handling, redirect chains, trailing-slash consistency
+4. ตรวจ broken links, broken images, missing assets (404 ใน network)
+5. ตรวจ deep links และ browser back/forward navigation
+
+### 3. Console And Errors Review
+
+> Goal: ไม่มี runtime errors หรือ warnings ที่มีนัยสำคัญ
+
+1. ใช้ `agent-browser console` และ `agent-browser errors` เก็บ console errors, page errors, unhandled rejections ทุก page
+2. จำแนก error vs warning vs info — flag hydration errors, CORS errors, CSP violations เป็น High
+3. ตรวจ source maps ชี้กลับ source ได้ถูกต้อง (production)
+
+### 4. Network And Requests Review
+
+> Goal: ตรวจ network behavior และ API calls
+
+1. ใช้ `agent-browser network` ดู requests ทั้งหมด — failed requests, 4xx/5xx, slow endpoints
+2. ตรวจ API calls: auth headers, error responses, retry behavior
+3. ตรวจ resource loading: render-blocking resources, oversized assets, cache headers
+4. ตรวจ ไม่มี secrets/tokens รั่วใน request หรือ response
+
+### 5. Forms And Interactions Review
+
+> Goal: forms และ interactions ทำงานครบ
+
+1. ทดสอบทุก form: submit success, validation errors, required fields, error messages
+2. ตรวจ keyboard navigation และ focus management บน interactive elements
+3. ตรวจ buttons/links ทำงานจริง — ไม่มี dead click, disabled state ถูกต้อง
+4. ตรวจ loading states, empty states, error states ของ UI
+
+### 6. Web Vitals And Performance Review
+
+> Goal: ตรวจ Core Web Vitals และ perceived performance
+
+1. วัด LCP, INP, CLS บน pages หลัก (ผ่าน agent-browser performance หรือ Lighthouse ถ้ามี)
+2. ตรวจ time-to-interactive, layout shifts, slow third-party scripts
+3. flag pages ที่ LCP > 2.5s หรือ CLS > 0.1 เป็น Medium+
+4. ตรวจ bundle size ผลรวมและ route-level code splitting — deep-dive ที่ `/review-performance`
+
+### 7. Meta, SEO And Accessibility Basics
+
+> Goal: ตรวจ signals พื้นฐานก่อนส่งต่อ deep-dive
+
+1. ตรวจ `title`, meta description, canonical, OG tags บนทุก page — deep-dive ที่ `/review-seo`
+2. ตรวจ lang attribute, heading order, alt text, label associations — deep-dive ที่ `/review-accessibility`
+3. ตรวจ HTTPS, mixed content, security headers (CSP, HSTS) — deep-dive ที่ `/review-security`
+
+### 8. Responsive And Compatibility Review
+
+> Goal: ตรวจข้าม viewport และ browser
+
+1. ทดสอบ mobile (375px), tablet (768px), desktop (1280px+) viewports
+2. ตรวจ horizontal scroll, overflow, touch targets, viewport meta
+3. ตรวจ browser-specific issues ถ้า target หลาย browser
+
+### 9. Validate Findings
+
+> Goal: findings ถูกต้องและจัดลำดับ severity
+
+1. ทำ `/deep-validate` กับ findings ทุก section — reproduce error ซ้ำก่อน flag
+2. จัดลำดับตาม severity: Critical → High → Medium → Low → Info
+3. ระบุ false positives ที่พบ
+
+### 10. Report
+
+> Goal: รายงาน aggregate findings พร้อม evidence
+
+1. ทำ `/report` ตาราง: `No.`, `Page/URL`, `Finding`, `Severity`, `Evidence`, `Recommendation`
+2. คำนวณ review score ต่อ dimension และ overall (0-100, grade A-F)
+3. ทำ `/suggest-next-action` แนะนำ fix order
+
+## Rules
+
+### 1. Scope Boundary
+
+- เน้น runtime behavior ของ live site — ไม่ใช่ source code review
+- ไม่ซ้ำกับ `/review-frontend`, `/review-uxui`, `/review-seo`, `/review-accessibility`, `/review-performance` — findings ลึกส่งต่อให้ domain skills
+
+### 2. Skip Conditions
+
+- ถ้าเข้าถึง URL ไม่ได้ → stop และ report
+- ถ้า site ไม่มี forms → ข้าม form checks
+- ถ้าไม่สามารถวัด vitals ได้ → ข้ามพร้อม note ใน report
+
+### 3. Severity Classification
+
+- Critical: page พัง, console errors บนทุก page, form submit ไม่ได้, 5xx บน critical routes, secrets รั่ว
+- High: broken links/navigation, 4xx บน resources, hydration errors, LCP > 4s, missing error states
+- Medium: console warnings, LCP > 2.5s, CLS > 0.1, missing meta, slow API calls
+- Low: minor visual glitches, non-blocking issues, missing nice-to-have meta
+- Info: suggestions, best practice recommendations
+
+### 4. Evidence-Based Findings
+
+- ทุก finding ต้องมี URL, console output, network trace หรือ screenshot เป็นหลักฐาน
+- ไม่เดา — reproduce ก่อน flag; ใช้ agent-browser tools สำหรับ verification
+- ระบุ page, element, request หรือ console message ที่เกี่ยวข้อง
+
+### 5. Review Independence
+
+- ทำ review เท่านั้น ไม่แก้ไข code หรือ config ระหว่าง review
+- ไม่ submit forms ที่มีผลจริง (payment, destructive actions) โดยไม่ได้รับอนุญาต
+- ถ้าพบ issues ที่ต้องแก้ → report ผ่าน `/report` และ `/suggest-next-action`
+
+### 6. Circuit Breaker
+
+- timeout 600s ต่อ site review, max 3 retries ต่อ page ที่เข้าถึงไม่ได้
+- ถ้า console errors ซ้ำเกิน 20 ต่อ page → flag ครั้งเดียวแล้วข้าม
+
+### 7. Formatting
+
+- ห้ามใช้ `**` bold markers — ใช้ backticks สำหรับ emphasis
+- รายงานเป็นตารางด้วย `/report` ทุก report table เริ่มด้วยคอลัมน์ `No.`
+
+## Expected Outcome
+
+- page/route inventory พร้อมผลตรวจครบทุก URL ที่เข้าถึงได้
+- รายงานตาราง findings พร้อม severity, URL และ evidence (console/network/screenshot)
+- Core Web Vitals ของ pages หลักพร้อม threshold status
+- Review score ต่อ dimension และ overall พร้อม grade
+- แนะนำ action ถัดไปผ่าน `/suggest-next-action`
